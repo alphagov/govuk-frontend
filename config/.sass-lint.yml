@@ -1,0 +1,355 @@
+# Not yet supported by sass-lint:
+# ChainedClasses, DisableLinterReason, ElsePlacement, PropertyCount
+# PseudoElement, SelectorDepth, SpaceAroundOperator, TrailingWhitespace
+# UnnecessaryParentReference, Compass::*
+#
+# The following settings/values are unsupported by sass-lint:
+# Linter Comment, option "style"
+# Linter Indentation, option "allow_non_nested_indentation"
+# Linter Indentation, option "character"
+# Linter NestingDepth, option "ignore_parent_selectors"
+# Linter SpaceBeforeBrace, option "allow_single_line_padding"
+
+files:
+  include: '**/*.s+(a|c)ss'
+options:
+  formatter: stylish
+  merge-default-rules: true
+rules:
+
+  # Rule bem-depth will enforce how many elements a BEM selector can contain.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/bem-depth.md
+  bem-depth: 0
+
+  # Rule border-zero will enforce whether one should use 0 or none when specifying a zero border value
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/border-zero.md
+  border-zero: 1
+
+  # Rule brace-style will enforce the use of the chosen brace style.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/brace-style.md
+  brace-style:
+    - 1
+    - allow-single-line: false
+
+  # Rule class-name-format will enforce a convention for class names.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/class-name-format.md#example-7
+  # will allow .block {}, .block__element{}, .block--modifier {}
+  class-name-format:
+    - 1
+    - convention: hyphenatedbem
+
+  # Rule clean-import-paths will enforce whether or not @import paths should have leading underscores and/or filename extensions.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/clean-import-paths.md
+  clean-import-paths:
+    - 1
+    - filename-extension: false
+      leading-underscore: false
+
+  # TODO: empty-args
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/empty-args.md
+
+  # Rule empty-line-between-blocks will enforce whether or not nested blocks should include a space between the last non-comment declaration or not.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/empty-line-between-blocks.md
+  empty-line-between-blocks:
+    - 1
+    - ignore-single-line-rulesets: true
+
+  # Rule extends-before-declarations will enforce that extends should be written before declarations in a ruleset.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/extends-before-declarations.md
+  extends-before-declarations: 0
+
+  # Rule extends-before-mixins will enforce that extends should be written before mixins in a ruleset.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/extends-before-mixins.md
+  extends-before-mixins: 0
+
+  # Rule final-newline will enforce whether or not files should end with a newline.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/final-newline.md
+  final-newline:
+    - 1
+    - include: true
+
+  # Rule force-attribute-nesting will enforce the nesting of attributes
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/force-attribute-nesting.md
+  force-attribute-nesting:
+    - 0
+
+  # Rule force-element-nesting will enforce the nesting of elements
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/force-element-nesting.md
+  force-element-nesting:
+    - 0
+
+  # Rule force-pseudo-nesting will enforce the nesting of pseudo elements/classes.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/force-pseudo-nesting.md
+  force-pseudo-nesting:
+    - 0
+
+  # Rule function-name-format will enforce a convention for function names.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/function-name-format.md
+  function-name-format:
+    - 1
+    - allow-leading-underscore: true
+      convention: hyphenatedlowercase
+
+  # Rule hex-length will enforce the length of hexadecimal values
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/hex-length.md
+  hex-length:
+    - 1
+    - style: long
+
+  # Rule hex-notation will enforce the case of hexadecimal values
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/hex-notation.md
+  hex-notation:
+    - 1
+    - style: lowercase
+
+  # Rule id-name-format will enforce a convention for ids.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/id-name-format.md
+  id-name-format:
+    - 1
+    - convention: hyphenatedlowercase
+
+  # Rule indentation will enforce an indentation size (tabs and spaces) and it will also ensure that tabs and spaces are not mixed.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/indentation.md
+  indentation:
+    - 1
+    - size: 2
+
+  # Rule leading-zero will enforce whether or not decimal numbers should include a leading zero.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/leading-zero.md
+  leading-zero:
+    - 1
+    - include: false
+
+  # Rule mixin-name-format will enforce a convention for mixin names.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/mixin-name-format.md
+  mixin-name-format:
+    - 1
+    - allow-leading-underscore: true
+      convention: hyphenatedlowercase
+
+  # Rule mixins-before-declarations will enforce that mixins should be written before declarations in a ruleset.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/mixins-before-declarations.md
+  mixins-before-declarations: 0
+
+  # Rule nesting-depth will enforce how deeply a selector can be nested.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/nesting-depth.md
+  nesting-depth:
+    - 1
+    - max-depth: 3
+
+  # TODO: no-attribute-selectors
+  # Rule no-attribute-selectors will warn against the use of attribute selectors.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-attribute-selectors.md
+
+  # TODO: no-colour-hex
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-color-hex.md
+
+  # Rule no-color-keywords will enforce the use of hexadecimal color values rather than literals.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-color-keywords.md
+  no-color-keywords: 1
+
+  # Rule no-color-literals will disallow the use of color literals and basic color functions in any declarations other than variables or maps/lists.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-color-literals.md
+  no-color-literals: 1
+
+  # TODO: no-combniators
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-combinators.md
+
+  # Rule no-css-comments will enforce the use of Sass single-line comments and disallow CSS comments. Bang comments (/*! */, will be printed even in minified mode) are still allowed.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-css-comments.md
+  no-css-comments: 1
+
+  # Rule no-debug will enforce that @debug statements are not allowed to be used.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-debug.md
+  no-debug: 1
+
+  # TODO: no-disallowed-properties
+  # Rule no-disallowed-properties will warn against the use of certain properties.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-disallowed-properties.md
+
+  # Rule no-duplicate-properties will enforce that duplicate properties are not allowed within the same block.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-duplicate-properties.md
+  no-duplicate-properties: 1
+
+  # Rule no-empty-rulesets will enforce that rulesets are not empty.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-empty-rulesets.md
+  no-empty-rulesets: 1
+
+  # Rule no-extends will enforce that @extend is not allowed to be used.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-extends.md
+  no-extends: 0
+
+  # Rule no-ids will enforce that ID selectors are not allowed to be used.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-ids.md
+  no-ids: 1
+
+  # Rule no-important will enforce that important declarations are not allowed to be used.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-important.md
+  no-important: 0
+
+  # Rule no-invalid-hex will enforce that only valid of hexadecimal values are written.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-invalid-hex.md
+  no-invalid-hex: 1
+
+  # Rule no-mergeable-selectors will enforce that selectors aren't repeated and that their properties are merged.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-mergeable-selectors.md
+  no-mergeable-selectors: 0
+
+  # Rule no-misspelled-properties will enforce the correct spelling of CSS properties and prevent the use of unknown CSS properties.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-misspelled-properties.md
+  no-misspelled-properties: 1
+
+  # Rule no-qualifying-elements will enforce that selectors are not allowed to have qualifying elements.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-qualifying-elements.md
+  no-qualifying-elements:
+    - 1
+    - allow-element-with-attribute: true
+      allow-element-with-class: false
+      allow-element-with-id: false
+
+  # TODO: no-trailing-whitespace
+  # Rule no-trailing-whitespace will enforce that trailing whitespace is not allowed.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-trailing-whitespace.md
+
+  # Rule no-trailing-zero will enforce that trailing zeros are not allowed.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-trailing-zero.md
+  no-trailing-zero: 1
+
+  # Rule no-transition-all will enforce whether the keyword all can be used with the transition or transition-property property.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-transition-all.md
+  no-transition-all: 1
+
+  # TODO: no-universal-selectors
+  # Rule no-universal-selectors will warn against the use of * (universal) selectors.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-universal-selectors.md
+
+  # Rule no-url-protocols will enforce that protocols and domains are not used within urls.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-url-protocols.md
+  no-url-protocols: 1
+
+  # Rule no-vendor-prefixes will enforce that vendor prefixes are not allowed to be used.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-vendor-prefixes.md
+  no-vendor-prefixes: 0
+
+  # Rule placeholder-in-extend will enforce whether extends should only include placeholder selectors.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/placeholder-in-extend.md
+  placeholder-in-extend: 1
+
+  # Rule placeholder-name-format will enforce a convention for placeholder names.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/placeholder-name-format.md
+  placeholder-name-format:
+    - 1
+    - convention: hyphenatedlowercase
+
+  # Rule property-sort-order will enforce the order in which declarations are written.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/property-sort-order.md
+  property-sort-order:
+    - 0
+    - order: 'smacss'
+
+  # Rule property-units will disallow the use of units not specified in global or per-property.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/property-units.md
+  property-units:
+    - 1
+    - global: [
+        'cm',
+        'em',
+        'pt',
+        'px',
+        'rem',
+        'vh'
+      ]
+
+  # TODO: pseudo-element
+  # Rule pseudo-element will enforce that:
+  # - pseudo-elements must start with double colons
+  # - pseudo-classes must start with single colon
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/pseudo-element.md
+
+  # Rule quotes will enforce whether single quotes ('') or double quotes ("") should be used for all strings.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/quotes.md
+  quotes:
+    - 1
+    - style: double
+
+  # Rule shorthand-values will enforce that values in their shorthand form are as concise as specified.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/shorthand-values.md
+  shorthand-values:
+    - 0
+    - allowed-shorthands:
+        - 1
+        - 2
+        - 3
+
+  # Rule single-line-per-selector will enforce whether selectors should be placed on a new line.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/single-line-per-selector.md
+  single-line-per-selector: 1
+
+  # Rule space-after-bang will enforce whether or not a space should be included after a bang (!).
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/space-after-bang.md
+  space-after-bang:
+    - 1
+    - include: false
+
+  # Rule space-after-colon will enforce whether or not a space should be included after a colon (:).
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/space-after-colon.md
+  space-after-colon:
+    - 1
+    - include: true
+
+  # Rule space-after-comma will enforce whether or not a space should be included after a comma (,).
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/space-after-comma.md
+  space-after-comma:
+    - 1
+    - include: true
+
+  # Rule space-around-operator will enforce whether or not a single space should be included before and after the following operators: +, -, /, *, %, <, > ==, !=, <= and >=.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/space-around-operator.md
+  space-around-operator:
+    - 1
+    - include: true
+
+  # Rule space-before-bang will enforce whether or not a space should be included before a bang (!).
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/space-before-bang.md
+  space-before-bang:
+    - 1
+    - include: true
+
+  # Rule space-before-brace will enforce whether or not a space should be included before a brace ({).
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/space-before-brace.md
+  space-before-brace:
+    - 1
+    - include: true
+
+  # Rule space-before-colon will enforce whether or not a space should be included before a colon (:).
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/space-before-colon.md
+  space-before-colon: 1
+
+  # Rule space-between-parens will enforce whether or not a space should be included before the first item and after the last item inside parenthesis (()).
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/space-between-parens.md
+  space-between-parens: 0
+
+  # Rule trailing-semicolon will enforce whether the last declaration in a block should include a semicolon (;) or not.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/trailing-semicolon.md
+  trailing-semicolon: 1
+
+  # Rule url-quotes will enforce that URLs are wrapped in quotes.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/url-quotes.md
+  url-quotes: 1
+
+  # Rule variable-for-property will enforce the use of variables for the values of specified properties.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/variable-for-property.md
+  variable-for-property:
+    - 0
+    - properties: []
+
+  # Rule variable-name-format will enforce a convention for variable names.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/variable-name-format.md
+  variable-name-format:
+    - 1
+    - allow-leading-underscore: true
+      convention: hyphenatedlowercase
+
+  # Rule zero-unit will enforce whether or not values of 0 used for length should be unitless.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/zero-unit.md
+  zero-unit: 1
