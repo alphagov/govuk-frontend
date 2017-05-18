@@ -21,7 +21,7 @@ Objects, components, utilites and JS hooks use a prefix:
     Utility            u-               .govuk-u-visually-hidden
 
     JS hooks           js-              .govuk-js-enabled
-    
+
 **Why**
 
 To easily identify components, objects and utilties and to know what the implications of changing each one will be.
@@ -47,12 +47,12 @@ It can be reused and is not tied to any specific piece of UI.
 
 ## JS hooks js-
 
-Use a prefix for all JavaScript hooks. 
+Use a prefix for all JavaScript hooks.
 
 
 # BEM
 
-BEM – meaning block, element, modifier – is a front-end naming methodology. 
+BEM – meaning block, element, modifier – is a front-end naming methodology.
 
 BEM tells developers how classes relate to each other.
 
@@ -65,11 +65,11 @@ The naming convention follows this pattern:
     .govuk-c-card               // Block - the root of a component
     .govuk-c-card__body         // Element - a part of the block
     .govuk-c-card--active       // Modifier - a variant of the block
-    
+
 The reason for double hyphens and underscores after the block name, is so that the block can be hyphen delimited, for example:
 
     .govuk-c-phase-banner
-    
+
 BEM stands for `Block__Element--Modifier`, not `Block__Element__Element--Modifier`.
 Avoid multiple element level naming.
 
@@ -83,7 +83,7 @@ Avoid multiple element level naming.
 # Linting
 
 To ensure code quality and consistency in our Sass files we check that certain style rules are followed using a project [YAML file](../config/.sass-lint.yml)
-As we're using node-sass parser to parse our scss files, the packing of choice is [sass-lint](https://github.com/sasstools/sass-lint).
+As we're using node-sass parser to parse our scss files, the package of choice is [sass-lint](https://github.com/sasstools/sass-lint).
 
 ## Running the lint task
 You can run the linter in [gulp](https://www.npmjs.com/package/gulp-sass-lint) or check linting directly in [Sublime Text](https://github.com/skovhus/SublimeLinter-contrib-sass-lint), [Atom](https://atom.io/packages/linter-sass-lint) or other [IDE's](https://github.com/sasstools/sass-lint#ide-integration)
