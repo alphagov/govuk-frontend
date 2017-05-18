@@ -2,10 +2,15 @@
 
 # Class naming convention
 
+## Namespace
+
 All classnames start with a `.govuk-` namespace.
 
-** Why? **
+**Why?**
+
 To encapsulate component styling and prevent unnecessary style leaks. Also to identify ‘approved’ components, that have been rewritten to meet the new coding conventions.
+
+## Prefixes
 
 Objects, components, utilites and JS hooks use a prefix:
 
@@ -15,18 +20,9 @@ Objects, components, utilites and JS hooks use a prefix:
 
     Utility            u-               .govuk-u-visually-hidden
 
-    JS hooks           js-              .js-enabled
-
-States use a BEM modifier:
-
-    States             is-              is-visible
-                       has-             has-loaded
-
-    <div class="govuk-c-card govuk-c-card--is-active">
-        […]
-    </div>
-
-** Why **
+    JS hooks           js-              .govuk-js-enabled
+    
+**Why**
 
 To easily identify components, objects and utilties and to know what the implications of changing each one will be.
 
@@ -49,14 +45,37 @@ It has a very specific role (often providing only one declaration) and should no
 
 It can be reused and is not tied to any specific piece of UI.
 
+## JS hooks js-
+
+Use a prefix for all JavaScript hooks. 
+
+
 # BEM
 
-Block__Element--Modifier classes.
+BEM – meaning block, element, modifier – is a front-end naming methodology. 
 
+BEM tells developers how classes relate to each other.
+
+The naming convention follows this pattern:
+
+    .block {}
+    .block__element {}
+    .block--modifier {}
+
+    .govuk-c-card               // Block - the root of a component
+    .govuk-c-card__body         // Element - a part of the block
+    .govuk-c-card--active       // Modifier - a variant of the block
+    
+The reason for double hyphens and underscores after the block name, is so that the block can be hyphen delimited, for example:
+
+    .govuk-c-phase-banner
+    
 BEM stands for `Block__Element--Modifier`, not `Block__Element__Element--Modifier`.
 Avoid multiple element level naming.
 
-    .govuk-c-modal
-    .govuk-c-modal__content
-    .govuk-c-modal--supersize
+### Further reading:
+
+* [Harry Roberts - More Transparent UI Code with Namespaces](https://csswizardry.com/2015/03/more-transparent-ui-code-with-namespaces/)
+* [Harry Roberts - BEMIT: Taking the BEM Naming Convention a Step Further](https://csswizardry.com/2015/08/bemit-taking-the-bem-naming-convention-a-step-further/)
+* [CSS-Tricks - BEM - 101](https://css-tricks.com/bem-101/)
 
