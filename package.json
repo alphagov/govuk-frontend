@@ -9,5 +9,8 @@
   },
   "license": "MIT",
   "author": "Government Digital Service developers (https://gds.blog.gov.uk/)",
-  "homepage": "https://github.com/alphagov/govuk-frontend#readme"
+  "homepage": "https://github.com/alphagov/govuk-frontend#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
 }
