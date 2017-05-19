@@ -73,6 +73,36 @@ The reason for double hyphens and underscores after the block name, is so that t
 BEM stands for `Block__Element--Modifier`, not `Block__Element__Element--Modifier`.
 Avoid multiple element level naming.
 
+## Nesting
+
+Aim to keep nesting to a minimum.
+
+Break elements and modifiers outside of blocks rather than nesting using a parent selector `&`.
+
+Bad:
+
+    .gv-c-breadcrumb {
+      ...
+      &__item {
+        ...
+      }
+    }
+
+Good:
+
+    .gv-c-breadcrumb {
+      ...
+    }
+
+    .gv-c-breadcrumb__item {
+      ...
+    }
+
+**Why?**
+
+This makes the code base more searchable and straightforward, making it easier to maintain.
+It also  discourages the (bad) habit of excessive nesting.
+
 ### Further reading:
 
 * [Harry Roberts - More Transparent UI Code with Namespaces](https://csswizardry.com/2015/03/more-transparent-ui-code-with-namespaces/)
