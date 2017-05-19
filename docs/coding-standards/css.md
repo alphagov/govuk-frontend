@@ -80,23 +80,25 @@ Aim to keep nesting to a minimum.
 Break elements and modifiers outside of blocks rather than nesting using a parent selector `&`.
 
 Bad:
-
-    .gv-c-breadcrumb {
-      ...
-      &__item {
-        ...
-      }
-    }
+```
+.gv-c-breadcrumb {
+  ...
+  &__item {
+    ...
+  }
+}
+```
 
 Good:
+```
+.gv-c-breadcrumb {
+  ...
+}
 
-    .gv-c-breadcrumb {
-      ...
-    }
-
-    .gv-c-breadcrumb__item {
-      ...
-    }
+.gv-c-breadcrumb__item {
+  ...
+}
+```
 
 **Why?**
 
@@ -123,11 +125,13 @@ You can run the linter in [gulp](https://www.npmjs.com/package/gulp-sass-lint) o
 We use the following rules when linting files:
 
 ### Use soft tabs (2 spaces)
-### Write each property in own line
+
+### Write each property on its own line
 
 Bad:
-
-`.selector {border: 0; padding: 0;}`
+```
+.selector {border: 0; padding: 0;}
+```
 
 Good:
 ```
@@ -145,10 +149,13 @@ Bad:
   color: #005ea5;
 }
 ```
+
 Good:
+```
 .selector {
   color: $govuk-blue;
 }
+```
 
 ### Colours defined as variables should be in lowercase and in full length
 
@@ -156,13 +163,44 @@ Bad:
 ```
 $white: #FFF;
 ```
+
 Good:
 ```
 $white: #ffffff;
 ```
 
 ### Use `border: 0` not `none` to denote no border
+
+Bad:
+```
+.selector {
+  border: none;
+}
+```
+
+Good:
+```
+.selector {
+  border: 0;
+}
+```
+
 ### Avoid using ID selectors
+
+Bad:
+```
+#content {
+  ...
+}
+```
+
+Good:
+```
+.govuk-o-wrapper {
+  ...
+}
+```
+
 ### Separate rule, function, and mixin declarations with empty lines
 
 Bad:
@@ -194,18 +232,53 @@ a {
 ```
 
 ### Use no more than 3 levels of nesting
+
+Bad:
+```
+.gv-c-breadcrumb {
+  ...
+  &__item {
+    ...
+  }
+}
+```
+
+Good:
+```
+.gv-c-breadcrumb {
+  ...
+}
+
+.gv-c-breadcrumb__item {
+  ...
+}
+```
+
 ### Don't use extends, use mixins
+
+Bad:
+```
+@extend %contain-floats;
+```
+
+Good:
+```
+@include clearfix;
+```
+
 ### Allow max 3-rule property shorthand if possible
 
 Bad:
 ```
 margin: 1px 2px 3px 2px;
 ```
+
 Good:
 ```
 margin: 1px 2px 3px;
 ```
 ### Files should always have a final newline
+
 ### Commas in lists should be followed by a space
 
 ### The basenames of `@import`ed SCSS partials should not begin with an underscore and should not include the filename extension
@@ -215,6 +288,7 @@ Bad:
 @import '_foo.scss';
 @import '_bar/foo.scss';
 ```
+
 Good:
 ```
 @import 'foo';
@@ -226,9 +300,10 @@ Good:
 Bad:
 ```
 .foo {
-  content:bar';
+  content:'bar';
 }
 ```
+
 Good:
 ```
 .foo {
@@ -262,6 +337,7 @@ $bar: 2-1;
   $baz: 1;
 }
 ```
+
 Good:
 ```
 .selector {
@@ -292,13 +368,14 @@ $bar: 2 - 1;
 Bad:
 ```
 @mixin FONT_STACK() {
-  content: '';
+  font-family: $govuk-font-stack;
 }
 ```
+
 Good:
 ```
 @mixin font-stack() {
-  content: '';
+  font-family: $govuk-font-stack;
 }
 ```
 
@@ -310,6 +387,7 @@ Bad:
   margin: 0px;
 }
 ```
+
 Good:
 ```
 .selector {
@@ -318,13 +396,34 @@ Good:
 ```
 
 ### Property values and variable declarations should always end with a semicolon
-### Don't write trailing zeros for numeric values with a decimal point
 
+Bad:
 ```
 .selector {
-  font-size: 0.5em;
+  margin: 0
+}
+
+$my-example-var: value
+```
+
+Good:
+```
+.selector {
+  margin: 0;
+}
+
+$my-example-var: value;
+```
+
+### Don't write trailing zeros for numeric values with a decimal point
+
+Bad:
+```
+.selector {
+  font-size: 0.50em;
 }
 ```
+
 Good:
 ```
 .selector {
