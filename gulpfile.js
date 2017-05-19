@@ -11,7 +11,7 @@ gulp.task('default', () => {
 
 // Sass lint task
 gulp.task('lint:styles', () => {
-  return gulp.src(paths.assetsScss + '**/*.scss')
+  return gulp.src(paths.src + '**/*.scss')
     .pipe(sasslint({
       configFile: paths.config + '.sass-lint.yml'
     }))
