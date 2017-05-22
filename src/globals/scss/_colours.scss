@@ -1,0 +1,199 @@
+// https://raw.githubusercontent.com/alphagov/govuk_frontend_toolkit/master/stylesheets/colours/_palette.scss
+
+// Brand colours
+$govuk-blue: #005ea5;
+$mainstream-brand: $govuk-blue;
+
+// Standard palette, colours
+$purple: #2e358b;
+$purple-50: #9799c4;
+$purple-25: #d5d6e7;
+$mauve: #6f72af;
+$mauve-50: #b7b9d7;
+$mauve-25: #e2e2ef;
+$fuschia: #912b88;
+$fuschia-50: #c994c3;
+$fuschia-25: #e9d4e6;
+$pink: #d53880;
+$pink-50: #eb9bbe;
+$pink-25: #f6d7e5;
+$baby-pink: #f499be;
+$baby-pink-50: #faccdf;
+$baby-pink-25: #fdebf2;
+$red: #b10e1e;
+$red-50: #d9888c;
+$red-25: #efcfd1;
+$mellow-red: #df3034;
+$mellow-red-50: #ef9998;
+$mellow-red-25: #f9d6d6;
+$orange: #f47738;
+$orange-50: #fabb96;
+$orange-25: #fde4d4;
+$brown: #b58840;
+$brown-50: #dac39c;
+$brown-25: #f0e7d7;
+$yellow: #ffbf47;
+$yellow-50: #ffdf94;
+$yellow-25: #fff2d3;
+$grass-green: #85994b;
+$grass-green-50: #c2cca3;
+$grass-green-25: #e7ebda;
+$green: #006435;
+$green-50: #7fb299;
+$green-25: #cce0d6;
+$turquoise: #28a197;
+$turquoise-50: #95d0cb;
+$turquoise-25: #d5ecea;
+$light-blue: #2b8cc4;
+$light-blue-50: #96c6e2;
+$light-blue-25: #d5e8f3;
+
+// Standard palette, greys
+$black: #0b0c0c;
+$grey-1: #6f777b;
+$grey-2: #bfc1c3;
+$grey-3: #dee0e2;
+$grey-4: #f8f8f8;
+$white: #ffffff;
+
+// Semantic colour names
+$link-colour: $govuk-blue;
+$link-active-colour: $light-blue;
+$link-hover-colour: $light-blue;
+$link-visited-colour: #4c2c92;
+$button-colour: #00823b;
+$focus-colour: $yellow;
+$text-colour: $black;             // Standard text colour
+$secondary-text-colour: $grey-1;  // Section headers, help text etc.
+$border-colour: $grey-2;          // Borders, seperators, rules, keylines etc.
+$panel-colour: $grey-3;           // Related links panel, page footer etc.
+$canvas-colour: $grey-4;          // Page background
+$highlight-colour: $grey-4;       // Table stripes etc.
+$page-colour: $white;             // The page
+$discovery-colour: $govuk-blue;   // Discovery badges and banners
+$alpha-colour: $govuk-blue;       // Alpha badges and banners
+$beta-colour: $govuk-blue;        // Beta badges and banners
+$live-colour: $grass-green;       // Live badges and banners
+$banner-text-colour: #000000;     // Text colour for Alpha & Beta banners
+$error-colour: $red;              // Error text and border colour
+$error-background: #fef7f7;       // Error background colour
+
+// https://github.com/alphagov/govuk_template/blob/master/source/assets/stylesheets/styleguide/_colours.scss#L3
+// GOV.UK template colours
+$proposition-border: #2e3133;
+// Based on GOV.UK brand blue but slightly lighter so it hits contrast on the
+// black header bar when used as copy colour.
+$proposition-active-nav: #1d8feb;
+$footer-background: $grey-3;
+$footer-border-top: #a1acb2;
+$footer-link: #454a4c;
+$footer-link-hover: #171819;
+$footer-text: $footer-link;
+
+// https://github.com/alphagov/govuk_frontend_toolkit/blob/master/stylesheets/colours/_organisation.scss
+
+// We use `websafe` to mean strong enough contrast against white to
+// be used for copy and meet the AAA (large text) and AA (smaller
+// copy) WCAG guidelines.
+
+$attorney-generals-office: #9f1888;
+$attorney-generals-office-websafe: #a03a88;
+$cabinet-office: #005abb;
+$cabinet-office-websafe: #347da4;
+$civil-service: #af292e;
+$department-for-business-innovation-skills: #003479;
+$department-for-business-innovation-skills-websafe: #347da4;
+$department-for-communities-and-local-government: #00857e;
+$department-for-communities-and-local-government-websafe: #37836e;
+$department-for-culture-media-sport: #d40072;
+$department-for-culture-media-sport-websafe: #a03155;
+$department-for-education: #003a69;
+$department-for-education-websafe: #347ca9;
+$department-for-environment-food-rural-affairs: #00a33b;
+$department-for-environment-food-rural-affairs-websafe: #008938;
+$department-for-international-development: #002878;
+$department-for-international-development-websafe: #405e9a;
+$department-for-international-trade: #cf102d;
+$department-for-international-trade-websafe: $link-colour;
+$department-for-transport: #006c56;
+$department-for-transport-websafe: #398373;
+$department-for-work-pensions: #00beb7;
+$department-for-work-pensions-websafe: #37807b;
+$department-of-energy-climate-change: #009ddb;
+$department-of-energy-climate-change-websafe: #2b7cac;
+$department-of-health: #00ad93;
+$department-of-health-websafe: #39836e;
+$foreign-commonwealth-office: #003e74;
+$foreign-commonwealth-office-websafe: #406e97;
+$government-equalities-office: #9325b2;
+$hm-government: #0076c0;
+$hm-government-websafe: #347da4;
+$hm-revenue-customs: #009390;
+$hm-revenue-customs-websafe: #008670;
+$hm-treasury: #af292e;
+$hm-treasury-websafe: #832322;
+$home-office: #9325b2;
+$home-office-websafe: #9440b2;
+$ministry-of-defence: #4d2942;
+$ministry-of-defence-websafe: #5a5c92;
+$ministry-of-justice: #231f20;
+$ministry-of-justice-websafe: #5a5c92;
+$northern-ireland-office: #002663;
+$northern-ireland-office-websafe: #3e598c;
+$office-of-the-advocate-general-for-scotland: #002663;
+$office-of-the-advocate-general-for-scotland-websafe: $link-colour;
+$office-of-the-leader-of-the-house-of-lords: #9c132e;
+$office-of-the-leader-of-the-house-of-lords-websafe: #c2395d;
+$scotland-office: #002663;
+$scotland-office-websafe: #405c8a;
+// Note: the "the" part here will get dropped
+$the-office-of-the-leader-of-the-house-of-commons: #317023;
+$the-office-of-the-leader-of-the-house-of-commons-websafe: #005f8f;
+$uk-export-finance: #005747;
+$uk-export-finance-websafe: $link-colour;
+$uk-trade-investment: #c80651;
+$uk-trade-investment-websafe: $link-colour;
+$wales-office: #a33038;
+$wales-office-websafe: #7a242a;
+
+// All organisation colours in a list
+// (class_name, brand colour, WCAG acceptible text colour)
+//
+// example usage:
+// @each $organisation in $all-organisation-brand-colours {
+//    .#{nth($organisation, 1)} {
+//      border-color: nth($organisation, 2);
+//    }
+// }
+
+$all-organisation-brand-colours: (
+  "attorney-generals-office": $attorney-generals-office $attorney-generals-office-websafe,
+  "cabinet-office": $cabinet-office $cabinet-office-websafe,
+  "civil-service": $civil-service $civil-service,
+  "department-for-business-innovation-skills": $department-for-business-innovation-skills $department-for-business-innovation-skills-websafe,
+  "department-for-communities-and-local-government": $department-for-communities-and-local-government $department-for-communities-and-local-government-websafe,
+  "department-for-culture-media-sport": $department-for-culture-media-sport $department-for-culture-media-sport-websafe,
+  "department-for-education": $department-for-education $department-for-education-websafe,
+  "department-for-environment-food-rural-affairs": $department-for-environment-food-rural-affairs $department-for-environment-food-rural-affairs-websafe,
+  "department-for-international-development": $department-for-international-development $department-for-international-development-websafe,
+  "department-for-international-trade": $department-for-international-trade $department-for-international-trade-websafe,
+  "department-for-transport": $department-for-transport $department-for-transport-websafe,
+  "department-for-work-pensions": $department-for-work-pensions $department-for-work-pensions-websafe,
+  "department-of-energy-climate-change": $department-of-energy-climate-change $department-of-energy-climate-change-websafe,
+  "department-of-health": $department-of-health $department-of-health-websafe,
+  "foreign-commonwealth-office": $foreign-commonwealth-office $foreign-commonwealth-office-websafe,
+  "hm-government": $hm-government $hm-government-websafe,
+  "hm-revenue-customs": $hm-revenue-customs $hm-revenue-customs-websafe,
+  "hm-treasury": $hm-treasury $hm-treasury-websafe,
+  "home-office": $home-office $home-office-websafe,
+  "ministry-of-defence": $ministry-of-defence $ministry-of-defence-websafe,
+  "ministry-of-justice": $ministry-of-justice $ministry-of-justice-websafe,
+  "northern-ireland-office": $northern-ireland-office $northern-ireland-office-websafe,
+  "office-of-the-advocate-general-for-scotland": $office-of-the-advocate-general-for-scotland $office-of-the-advocate-general-for-scotland-websafe,
+  "office-of-the-leader-of-the-house-of-lords": $office-of-the-leader-of-the-house-of-lords $office-of-the-leader-of-the-house-of-lords-websafe,
+  "scotland-office": $scotland-office $scotland-office-websafe,
+  "the-office-of-the-leader-of-the-house-of-commons": $the-office-of-the-leader-of-the-house-of-commons $the-office-of-the-leader-of-the-house-of-commons-websafe,
+  "uk-export-finance": $uk-export-finance $uk-export-finance-websafe,
+  "uk-trade-investment": $uk-trade-investment $uk-trade-investment-websafe,
+  "wales-office": $wales-office $wales-office-websafe
+);
