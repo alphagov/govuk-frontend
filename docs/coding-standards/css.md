@@ -81,7 +81,7 @@ Break elements and modifiers outside of blocks rather than nesting using a paren
 
 Bad:
 ```
-.gv-c-breadcrumb {
+.govuk-c-breadcrumb {
   ...
   &__item {
     ...
@@ -91,11 +91,11 @@ Bad:
 
 Good:
 ```
-.gv-c-breadcrumb {
+.govuk-c-breadcrumb {
   ...
 }
 
-.gv-c-breadcrumb__item {
+.govuk-c-breadcrumb__item {
   ...
 }
 ```
@@ -235,7 +235,7 @@ a {
 
 Bad:
 ```
-.gv-c-breadcrumb {
+.govuk-c-breadcrumb {
   ...
   &__item {
     ...
@@ -245,11 +245,11 @@ Bad:
 
 Good:
 ```
-.gv-c-breadcrumb {
+.govuk-c-breadcrumb {
   ...
 }
 
-.gv-c-breadcrumb__item {
+.govuk-c-breadcrumb__item {
   ...
 }
 ```
