@@ -1,6 +1,7 @@
 const paths = require('./config/paths.json')
 const gulp = require('gulp')
 const sasslint = require('gulp-sass-lint')
+const sass = require('gulp-sass');
 
 // Default task --------------------------
 // Lists out available tasks.
@@ -17,4 +18,11 @@ gulp.task('lint:styles', () => {
     }))
     .pipe(sasslint.format())
     .pipe(sasslint.failOnError())
+})
+
+// Sass build task
+gulp.task('sass:build', () => {
+  return gulp.src(paths.globalScss + '**/*.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest(paths.distCss))
 })
