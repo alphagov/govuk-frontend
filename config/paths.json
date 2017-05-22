@@ -1,6 +1,6 @@
 {
   "config": "config/",
-  "src": "src",
+  "src": "src/",
   "componentScss": "src/components/",
   "globalScss": "src/globals/"
 }
