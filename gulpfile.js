@@ -31,3 +31,8 @@ gulp.task('scss:build', () => {
 gulp.task('build:styles', cb => {
   runsequence('lint:styles', 'scss:build', cb)
 })
+
+// Sass watch task
+gulp.task('watch', () => {
+  gulp.watch([paths.src +'**/**/*.scss'], ['build:styles'])
+})
