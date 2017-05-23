@@ -2,6 +2,7 @@
 
 const paths = require('./config/paths.json')
 const gulp = require('gulp')
+const gutil = require('gulp-util')
 const sasslint = require('gulp-sass-lint')
 const sass = require('gulp-sass')
 const runsequence = require('run-sequence')
@@ -42,4 +43,22 @@ gulp.task('watch', () => {
 gulp.task('dev', cb => {
   runsequence('styles',
               'watch', cb)
+})
+
+// Default task --------------------------
+// Lists out available tasks.
+// ---------------------------------------
+gulp.task('default', () => {
+  const cyan = gutil.colors.cyan
+  const green = gutil.colors.green
+
+  gutil.log(green('----------'))
+
+  gutil.log(('The following main ') + cyan('tasks') + (' are available:'))
+
+  gutil.log(cyan('dev'
+    ) + ': compiles assets then sets up watches.'
+  )
+
+  gutil.log(green('----------'))
 })
