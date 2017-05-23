@@ -1,0 +1,7 @@
+// dependencies go here, import-once at the end
+@import "import-once";
+
+// export styles with component name
+@include exports("component-example") {
+  // component styles go here
+}
