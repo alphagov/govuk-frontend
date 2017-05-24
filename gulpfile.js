@@ -6,6 +6,8 @@ const gutil = require('gulp-util')
 const sasslint = require('gulp-sass-lint')
 const sass = require('gulp-sass')
 const runsequence = require('run-sequence')
+const gls = require('gulp-live-server')
+const concat = require('gulp-concat')
 
 // Styles build task ---------------------
 // Compiles CSS from Sass
@@ -43,6 +45,23 @@ gulp.task('watch', () => {
 gulp.task('dev', cb => {
   runsequence('styles',
               'watch', cb)
+})
+
+// Serve task --------------------------
+// Creates a server to preview components
+// ---------------------------------------
+gulp.task('serve', function() {
+  const server = gls.static(paths.dist + 'html/', 8888)
+  server.start()
+})
+
+// Combine html task --------------------------
+// Combines all html files in components into a single  file
+// ---------------------------------------
+gulp.task('combine:html', function() {
+  return gulp.src(paths.src + 'components/**/*.html')
+    .pipe(concat('index.html'))
+    .pipe(gulp.dest(paths.dist + '/html/'))
 })
 
 // Default task --------------------------
