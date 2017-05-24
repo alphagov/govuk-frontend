@@ -62,7 +62,7 @@ gulp.task('serve', () => {
 // Combine html task --------------------------
 // Combines all html files in components into a single  file
 // ---------------------------------------
-gulp.task('combine:html', function () {
+gulp.task('combine:html', () => {
   gulp.src(paths.dist + 'index.html')
   .pipe(inject(gulp.src([paths.src + 'components/**/*.html']), {
     starttag: '<!-- inject:html -->',
