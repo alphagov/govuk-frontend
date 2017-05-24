@@ -15,7 +15,6 @@
   },
   "devDependencies": {
     "gulp": "^3.9.1",
-    "gulp-concat": "^2.6.1",
     "gulp-inject": "^4.2.0",
     "gulp-live-server": "0.0.30",
     "gulp-sass": "^3.1.0",
