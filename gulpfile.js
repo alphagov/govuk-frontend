@@ -50,7 +50,7 @@ gulp.task('dev', cb => {
 // Serve task --------------------------
 // Creates a server to preview components
 // ---------------------------------------
-gulp.task('serve', function() {
+gulp.task('serve', () => {
   const server = gls.static(paths.dist + 'html/', 8888)
   server.start()
 })
@@ -58,7 +58,7 @@ gulp.task('serve', function() {
 // Combine html task --------------------------
 // Combines all html files in components into a single  file
 // ---------------------------------------
-gulp.task('combine:html', function() {
+gulp.task('combine:html', () => {
   return gulp.src(paths.src + 'components/**/*.html')
     .pipe(concat('index.html'))
     .pipe(gulp.dest(paths.dist + '/html/'))
