@@ -37,6 +37,13 @@ gulp.task('scss:compile', () => {
 // ---------------------------------------
 gulp.task('watch', () => {
   gulp.watch([paths.src + '**/**/*.scss'], ['styles'])
+  const watcher = gulp.watch([paths.src + 'components/**/*.html'], ['combine:html'])
+  watcher.on('change', event => {
+    if (event.type === 'deleted') {
+      gulp.watch([paths.src + 'components/**/*.html'], ['combine:html'])
+    }
+    gulp.watch([paths.src + 'components/**/*.html'], ['combine:html'])
+  })
 })
 
 // Dev task --------------------------
@@ -45,6 +52,7 @@ gulp.task('watch', () => {
 gulp.task('dev', cb => {
   runsequence('styles',
               'watch',
+              'combine:html',
               'serve', cb)
 })
 
@@ -54,7 +62,7 @@ gulp.task('dev', cb => {
 gulp.task('serve', () => {
   const server = gls.static(paths.dist, 8888)
   server.start()
-  gulp.watch([paths.src + 'components/**/*.html'], ['combine:html'], function (file) {
+  gulp.watch([paths.src + 'components/**/*.html'], ['combine:html'], file => {
     server.notify.apply(server, [file])
   })
 })
