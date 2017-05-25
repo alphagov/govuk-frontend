@@ -1,0 +1,34 @@
+@import "import-once";
+@import "../../globals/scss/colours";
+@import "../../globals/scss/font-face";
+@import "../../globals/scss/typography";
+
+@include exports("panel") {
+
+  .govuk-c-panel {
+    margin: 1em 0;
+    padding: 2em 1em;
+    text-align: center;
+  }
+
+  .govuk-c-panel--confirmation {
+    color: $govuk-white;
+    background: $govuk-turquoise;
+  }
+
+  .govuk-c-panel--information {
+    color: $govuk-white;
+    background: $govuk-blue;
+  }
+
+  .govuk-c-panel__title {
+    @include bold-48;
+    margin-top: em(60px, 48px);
+    margin-bottom: em(30px, 48px);
+  }
+
+  .govuk-c-panel__body {
+    @include core-36;
+  }
+
+}
