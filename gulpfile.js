@@ -8,6 +8,7 @@ const sass = require('gulp-sass')
 const runsequence = require('run-sequence')
 const gls = require('gulp-live-server')
 const inject = require('gulp-inject')
+
 // Styles build task ---------------------
 // Compiles CSS from Sass
 // Output both a minified and non-minified version into /public/stylesheets/
@@ -44,9 +45,9 @@ gulp.task('watch', () => {
 // ---------------------------------------
 gulp.task('dev', cb => {
   runsequence('styles',
-    'combine:html',
-    'serve',
-    'watch', cb)
+              'preview:components',
+              'serve',
+              'watch', cb)
 })
 
 // Serve task --------------------------
@@ -57,10 +58,11 @@ gulp.task('serve', () => {
   server.start()
 })
 
-// Combine html task --------------------------
+// Preview components --------------------------
 // Combines all html files in components into a single  file
+// Inserts compiled component css into the head of the page
 // ---------------------------------------
-gulp.task('combine:html', () => {
+gulp.task('preview:components', () => {
   gulp.src(paths.src + 'index.html')
   .pipe(inject(gulp.src([paths.src + 'components/**/*.html']), {
     starttag: '<!-- inject:html -->',
@@ -68,6 +70,7 @@ gulp.task('combine:html', () => {
       return file.contents.toString('utf8')
     }
   }))
+  .pipe(inject(gulp.src(paths.distCss + '*.css', {read: false}), {name: 'head', ignorePath: paths.dist}))
   .pipe(gulp.dest(paths.dist))
 })
 
