@@ -6,7 +6,8 @@ const gutil = require('gulp-util')
 const sasslint = require('gulp-sass-lint')
 const sass = require('gulp-sass')
 const runsequence = require('run-sequence')
-
+const gls = require('gulp-live-server')
+const inject = require('gulp-inject')
 // Styles build task ---------------------
 // Compiles CSS from Sass
 // Output both a minified and non-minified version into /public/stylesheets/
@@ -35,6 +36,7 @@ gulp.task('scss:compile', () => {
 // ---------------------------------------
 gulp.task('watch', () => {
   gulp.watch([paths.src + '**/**/*.scss'], ['styles'])
+  gulp.watch([paths.src + 'components/**/*.html'], ['combine:html'])
 })
 
 // Dev task --------------------------
@@ -42,7 +44,31 @@ gulp.task('watch', () => {
 // ---------------------------------------
 gulp.task('dev', cb => {
   runsequence('styles',
-              'watch', cb)
+    'combine:html',
+    'serve',
+    'watch', cb)
+})
+
+// Serve task --------------------------
+// Creates a server to preview components
+// ---------------------------------------
+gulp.task('serve', () => {
+  const server = gls.static(paths.dist, 8888)
+  server.start()
+})
+
+// Combine html task --------------------------
+// Combines all html files in components into a single  file
+// ---------------------------------------
+gulp.task('combine:html', () => {
+  gulp.src(paths.src + 'index.html')
+  .pipe(inject(gulp.src([paths.src + 'components/**/*.html']), {
+    starttag: '<!-- inject:html -->',
+    transform: function (filePath, file) {
+      return file.contents.toString('utf8')
+    }
+  }))
+  .pipe(gulp.dest(paths.dist))
 })
 
 // Default task --------------------------
