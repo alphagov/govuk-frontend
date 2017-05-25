@@ -3,6 +3,6 @@
   "src": "src/",
   "componentScss": "src/components/",
   "globalScss": "src/globals/scss/",
-  "dist" : "dist/",
-  "distCss" : "dist/css/"
+  "dist": "dist/",
+  "distCss": "dist/css/"
 }
