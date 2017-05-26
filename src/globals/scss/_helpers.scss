@@ -6,3 +6,7 @@
 @function file-url($file) {
   @return url($global-images + $file);
 }
+
+@function em($px, $base: 19) {
+  @return ($px / $base) + em;
+}
