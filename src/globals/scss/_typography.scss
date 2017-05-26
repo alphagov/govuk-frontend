@@ -1,13 +1,37 @@
-$base-font-size: 16px !default;
+$govuk-base-font-size: 16px !default;
 
 @function rem($px) {
-  @return ($px / $base-font-size) * 1rem;
+  @return ($px / $govuk-base-font-size) * 1rem;
 }
+
+@function em($px, $govuk-context-font-size) {
+  @return ($px / $govuk-context-font-size) * 1em;
+}
+
+// New Transport Light font family
+$govuk-nta-light: "nta", Arial, sans-serif;
+$govuk-nta-light-tabular: "ntatabularnumbers", $govuk-nta-light;
+
+// Allow font stack to be overridden
+$govuk-font-stack: $govuk-nta-light !default;
+$govuk-font-stack-tabular: $govuk-nta-light-tabular !default;
 
 @mixin font-size($px) {
   // sass-lint:disable no-duplicate-properties
   font-size: $px;
   font-size: rem($px);
+}
+
+
+@mixin bold-48 {
+  @include font-size(48px);
+  line-height: (50 / 48);
+  font-weight: 700;
+}
+
+@mixin core-36 {
+  @include font-size(36px);
+  line-height: (40 / 36);
 }
 
 @mixin core-16 {
