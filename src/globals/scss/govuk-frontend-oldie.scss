@@ -3,3 +3,10 @@
 // Create a separate stylesheet served exclusively to these browsers,
 // meaning @media queries will be rasterized, relying on the cascade itself
 $mq-responsive: false;
+
+// Set is-ie to true to output IE specific styles
+// uses the IE helpers in globals/_helpers.scss
+$is-ie: true;
+$ie-version: 8;
+
+@import "govuk-frontend";
