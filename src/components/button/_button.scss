@@ -2,7 +2,7 @@
 @import "../../globals/scss/colours";
 @import "../../globals/scss/font-face";
 @import "../../globals/scss/typography";
-@import "../../globals/scss/conditionals";
+@import "../../globals/scss/media-queries";
 @import "../../globals/scss/helpers";
 
 @include exports("button") {
@@ -26,10 +26,12 @@
     -webkit-font-smoothing: antialiased;
     cursor: pointer;
 
-    @include media (mobile) {
+    // Apply styling up to devices smaller than tablets (exclude tablets)
+    @include mq($until: tablet) {
       width: 100%;
       text-align: center;
     }
+
     // Set text colour depending on background colour
     @if lightness($govuk-button-colour) < 50% {
       color: $govuk-white;
