@@ -11,7 +11,7 @@
     background-color: $govuk-button-colour;
     position: relative;
     display: inline-block;
-    padding: .526315em .789473em .263157em; // 10px 15px 5px
+    padding: em(10px, 19px) em(15px, 19px) em(5px, 19px);
     border: 0;
     border-radius: 0; //used to be a mixin with vendor
     outline: 1px solid transparent; // keep some button appearance when changing colour settings in browsers
@@ -19,7 +19,7 @@
     box-sizing: border-box;
     vertical-align: top;
     box-shadow: 0 2px 0 darken($govuk-button-colour, 15%);
-    font-size: 1em; // inherit from parent
+    @include font-size(19px);
     font-family: $govuk-font-stack;
     line-height: 1.25;
     text-decoration: none;
@@ -104,7 +104,8 @@
 
   .govuk-c-button--start {
     @include bold-24;
-    padding: em(7) em(41) em(4) em(16);
+    // TODO: Fix padding values
+    padding: em(8.842px, 24px) em(51.789px, 24px) em(5.053px, 24px) em(20.211px, 24px);
     background-image: file-url("icon-pointer.png");
     background-repeat: no-repeat;
     background-position: 100% 50%;

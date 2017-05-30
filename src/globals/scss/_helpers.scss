@@ -7,8 +7,9 @@
   @return url($global-images + $file);
 }
 
-@function em($px, $base: 19) {
-  @return ($px / $base) + em;
+// Convert pixels to em
+@function em($px, $govuk-context-font-size) {
+  @return ($px / $govuk-context-font-size) * 1em;
 }
 
 // Old IE Helpers

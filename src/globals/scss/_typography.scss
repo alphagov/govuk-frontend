@@ -4,10 +4,6 @@ $govuk-base-font-size: 16px !default;
   @return ($px / $govuk-base-font-size) * 1rem;
 }
 
-@function em($px, $govuk-context-font-size) {
-  @return ($px / $govuk-context-font-size) * 1em;
-}
-
 // New Transport Light font family
 $govuk-nta-light: "nta", Arial, sans-serif;
 $govuk-nta-light-tabular: "ntatabularnumbers", $govuk-nta-light;
