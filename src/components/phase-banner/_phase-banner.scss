@@ -1,0 +1,45 @@
+@import "import-once";
+@import "../../globals/scss/colours";
+@import "../../globals/scss/font-face";
+@import "../../globals/scss/typography";
+
+@include exports("phase-banner") {
+  .govuk-c-phase-banner {
+    font-family: $govuk-font-stack;
+    -webkit-font-smoothing: antialiased;
+
+    padding-top: em(10px, 16px);
+    padding-bottom: em(8px, 16px);
+    // Apply styling to tablet and upwards
+    // @include mq($from:tablet) {
+    //  padding-bottom: em(10px, 16px);
+    // }
+    border-bottom: 1px solid $govuk-border-colour;
+  }
+
+  .govuk-c-phase-banner__content {
+    display: table;
+    margin: 0;
+  }
+
+  .govuk-c-phase-banner__tag {
+    display: inline-block;
+    margin: 0 8px 0 0;
+    padding: 4px 5px 0;
+
+    @include bold-16;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    color: $govuk-white;
+    background-color: $govuk-blue;
+  }
+
+  .govuk-c-phase-banner__text {
+    display: table-cell;
+    vertical-align: baseline;
+    color: $govuk-banner-text-colour;
+    @include core-16;
+  }
+}
