@@ -37,7 +37,7 @@ gulp.task('scss:compile', () => {
 // ---------------------------------------
 gulp.task('watch', () => {
   gulp.watch([paths.src + '**/**/*.scss'], ['styles'])
-  gulp.watch([paths.src + 'components/**/*.html'], ['combine:html'])
+  gulp.watch([paths.src + 'components/**/*.html'], ['preview:components'])
 })
 
 // Dev task --------------------------
@@ -67,11 +67,20 @@ gulp.task('preview:components', () => {
   .pipe(inject(gulp.src([paths.src + 'components/**/*.html']), {
     starttag: '<!-- inject:html -->',
     transform: function (filePath, file) {
-      return file.contents.toString('utf8')
+      return '<div class="component">' + file.contents.toString('utf8') + '</div>'
     }
   }))
   .pipe(inject(gulp.src(paths.distCss + '*.css', {read: false}), {name: 'head', ignorePath: paths.dist}))
   .pipe(gulp.dest(paths.dist))
+  gulp.start('copy:images')
+})
+
+// Copy images --------------------------
+// Copy images to dist for component preview
+// ---------------------------------------
+gulp.task('copy:images', () => {
+  return gulp.src(paths.globalImages + '**/*')
+    .pipe(gulp.dest(paths.dist + 'images'))
 })
 
 // Default task --------------------------

@@ -21,5 +21,8 @@
     "gulp-sass-lint": "^1.3.2",
     "run-sequence": "^1.2.2",
     "standard": "^10.0.2"
+  },
+  "dependencies": {
+    "sass-mq": "^3.3.2"
   }
 }

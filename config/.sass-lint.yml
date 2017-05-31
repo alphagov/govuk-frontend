@@ -260,11 +260,12 @@ rules:
         'vh'
       ]
 
-  # TODO: pseudo-element
   # Rule pseudo-element will enforce that:
   # - pseudo-elements must start with double colons
   # - pseudo-classes must start with single colon
   # https://github.com/sasstools/sass-lint/blob/master/docs/rules/pseudo-element.md
+  pseudo-element:
+    - 0
 
   # Rule quotes will enforce whether single quotes ('') or double quotes ("") should be used for all strings.
   # https://github.com/sasstools/sass-lint/blob/master/docs/rules/quotes.md
