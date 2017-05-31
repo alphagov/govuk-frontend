@@ -25,6 +25,12 @@ $govuk-font-stack-tabular: $govuk-nta-light-tabular !default;
   font-weight: 700;
 }
 
+@mixin bold-18 {
+  @include font-size(18px);
+  line-height: (21.6 / 18);
+  font-weight: 700;
+}
+
 @mixin bold-16 {
   @include font-size(16px);
   line-height: (20 / 16);
@@ -32,14 +38,24 @@ $govuk-font-stack-tabular: $govuk-nta-light-tabular !default;
 }
 
 @mixin bold-24 {
-  @include font-size(24px);
-  line-height: (30 / 24);
-  font-weight: 700;
+  @include bold-18;
+  @include mq($from: tablet) {
+    @include font-size(24px);
+    line-height: (30 / 24);
+  }
 }
 
 @mixin core-36 {
   @include font-size(36px);
   line-height: (40 / 36);
+}
+
+@mixin core-19 {
+  @include core-16;
+  @include mq($from: tablet) {
+    @include font-size(19px);
+    line-height: (25 / 19);
+  }
 }
 
 @mixin core-16 {
