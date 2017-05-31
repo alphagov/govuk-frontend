@@ -2,6 +2,7 @@
 @import "../../globals/scss/colours";
 @import "../../globals/scss/font-face";
 @import "../../globals/scss/typography";
+@import "../phase-tag/phase-tag";
 
 @include exports("phase-banner") {
   .govuk-c-phase-banner {
@@ -20,20 +21,6 @@
   .govuk-c-phase-banner__content {
     display: table;
     margin: 0;
-  }
-
-  .govuk-c-phase-banner__tag {
-    display: inline-block;
-    margin: 0 8px 0 0;
-    padding: 4px 5px 0;
-
-    @include bold-16;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    text-decoration: none;
-
-    color: $govuk-white;
-    background-color: $govuk-blue;
   }
 
   .govuk-c-phase-banner__text {
