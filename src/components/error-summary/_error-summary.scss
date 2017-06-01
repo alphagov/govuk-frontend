@@ -3,6 +3,7 @@
 @import "../../globals/scss/font-face";
 @import "../../globals/scss/typography";
 @import "../../globals/scss/vars";
+@import "../list/list";
 
 @include exports("error-summary") {
 
@@ -51,26 +52,24 @@
   .govuk-c-error-summary__body {
     @include core-19;
 
+    // TODO: consistent paragraph margins
     p {
       margin-top: 6px;
       margin-bottom: 10px;
     }
   }
 
-  // The list should use a list component
-  .govuk-c-list {
+  // Cross-component class - adjusts styling of list component
+  .govuk-c-error-summary__list {
     margin-top: 0;
     margin-bottom: 0;
-    padding-left: 0;
-    list-style-type: none;
+  }
 
-    > li {
-      @include mq($from: tablet) {
-        margin-bottom: 5px;
-      }
-    }
-
-    a {
+  .govuk-c-error-summary__list a {
+    &:link,
+    &:visited,
+    &:hover,
+    &:active {
       color: $govuk-error-colour;
       font-weight: bold;
       text-decoration: underline;

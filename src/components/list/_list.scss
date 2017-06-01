@@ -17,7 +17,27 @@
   }
 
   .govuk-c-list > li {
-    margin-bottom: 5px;
+    @include mq($from: tablet) {
+      margin-bottom: 5px;
+    }
+  }
+
+  .govuk-c-list a {
+    &:link {
+      color: $govuk-link-colour;
+    }
+
+    &:visited {
+      color: $govuk-link-visited-colour;
+    }
+
+    &:hover {
+      color: $govuk-link-hover-colour;
+    }
+
+    a:active {
+      color: $govuk-link-active-colour;
+    }
   }
 
   .govuk-c-list--bullet {
