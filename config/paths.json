@@ -1,9 +1,10 @@
 {
   "config": "config/",
   "src": "src/",
-  "componentScss": "src/components/",
+  "components": "src/components/",
   "globalScss": "src/globals/scss/",
   "globalImages": "src/globals/images/",
   "dist": "dist/",
-  "distCss": "dist/css/"
+  "distCss": "dist/css/",
+  "distJs": "dist/js/"
 }
