@@ -8,6 +8,8 @@ const sass = require('gulp-sass')
 const runsequence = require('run-sequence')
 const gls = require('gulp-live-server')
 const inject = require('gulp-inject')
+const concat = require('gulp-concat')
+const standard = require('gulp-standard')
 
 // Styles build task ---------------------
 // Compiles CSS from Sass
@@ -32,12 +34,33 @@ gulp.task('scss:compile', () => {
     .pipe(gulp.dest(paths.distCss))
 })
 
+// Scripts build tasks --------------------
+// Lints, compiles javascript partials
+gulp.task('js:compile', () => {
+  return gulp.src([paths.src + '/**/*.js'])
+    .pipe(concat('govuk-frontend.js'))
+    .pipe(gulp.dest(paths.dist + 'js'))
+})
+gulp.task('js:lint', () => {
+  return gulp.src([paths.components + '**/*.js'])
+    .pipe(standard())
+    .pipe(standard.reporter('default', {
+      breakOnError: true,
+      quiet: true
+    }))
+})
+
+gulp.task('scripts', cb => {
+  runsequence('js:lint', 'js:compile', cb)
+})
+
 // Watch task ----------------------------
 // When a file is changed, re-run the build task.
 // ---------------------------------------
 gulp.task('watch', () => {
   gulp.watch([paths.src + '**/**/*.scss'], ['styles'])
-  gulp.watch([paths.src + 'components/**/*.html'], ['preview:components'])
+  gulp.watch([paths.src + '**/**/*.js'], ['scripts'])
+  gulp.watch([paths.components + '**/*.html'], ['preview:components'])
 })
 
 // Dev task --------------------------
@@ -45,6 +68,7 @@ gulp.task('watch', () => {
 // ---------------------------------------
 gulp.task('dev', cb => {
   runsequence('styles',
+              'scripts',
               'preview:components',
               'serve',
               'watch', cb)
@@ -70,7 +94,9 @@ gulp.task('preview:components', () => {
       return '<div class="component">' + file.contents.toString('utf8') + '</div>'
     }
   }))
-  .pipe(inject(gulp.src(paths.distCss + '*.css', {read: false}), {name: 'head', ignorePath: paths.dist}))
+  .pipe(inject(gulp.src(paths.distCss + '*-oldie.css', {read: false}), {starttag: '<!- - oldie:css - ->', endtag: '<!- - oldieend:css - ->', ignorePath: paths.dist}))
+  .pipe(inject(gulp.src([paths.distCss + '*.css', '!' + paths.distCss + '*-oldie.css'], {read: false}), {name: 'head', ignorePath: paths.dist}))
+  .pipe(inject(gulp.src([paths.distJs + '*.js', paths.distJs], {read: false}), {ignorePath: paths.dist}))
   .pipe(gulp.dest(paths.dist))
   gulp.start('copy:images')
 })
