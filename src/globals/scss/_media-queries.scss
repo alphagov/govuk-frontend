@@ -5,6 +5,7 @@
 // $from: inclusive min-width boundary
 // $until: exclusive max-width boundary
 // $and: additional custom directives
+// $media-type: $mq-media-type // defaults to 'all'
 
 // Write css mobile-first, overriding mobile styles for tablet and desktop
 //
@@ -24,6 +25,10 @@
 //    // Apply styling to tablets up to desktop (exclude desktop)
 //    @include mq(tablet, desktop) {
 //        color: green;
+//    }
+//    // Print only styling
+//    @include mq($media-type: print) {
+//        display: none;
 //    }
 // }
 
