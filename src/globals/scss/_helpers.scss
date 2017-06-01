@@ -1,4 +1,6 @@
 @import "vars";
+@import "media-queries";
+@import "spacing";
 
 // URL Helpers
 // A function which outputs a plain url which is prefixed with a defined
@@ -28,5 +30,20 @@ $is-ie: false !default;
     @if $ie-version == $version {
       @content;
     }
+  }
+}
+
+// Mixin to wrap your entire site content block. It limits the sites width to be 960px wide and maintains consistent margins
+@mixin site-width-container {
+  max-width: $site-width;
+  @include ie-lte(8) {
+    width: $site-width;
+  }
+  margin: 0 $gutter-half;
+  @include mq($from: tablet) {
+    margin: 0 $gutter;
+  }
+  @include mq($and: "(min-width: #{($site-width + $gutter * 2)})") {
+    margin: 0 auto;
   }
 }
