@@ -4,6 +4,10 @@
   <title>GOV.UK Frontend</title>
   <!-- head:css -->
   <!-- endinject -->
+  <!--[if IE 8]>
+  <!- - oldie:css - ->
+  <!- - oldieend:css - ->
+  <![endif]-->
   <style>
   /*add space between components*/
   .component {
@@ -12,9 +16,12 @@
   </style>
 </head>
 <body>
+  <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
   <h1>Components</h1>
   <!-- inject:html -->
   <!-- contents of components will be injected here -->
+  <!-- endinject -->
+  <!-- inject:js -->
   <!-- endinject -->
 </body>
 </html>
