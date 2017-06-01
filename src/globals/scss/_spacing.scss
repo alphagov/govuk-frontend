@@ -1,0 +1,12 @@
+// Measurements used across GOV.UK
+$one-quarter: $full-width / 4;
+$one-third: $full-width / 3;
+$half: $full-width / 2;
+$two-thirds: ($full-width) - ($one-third);
+$three-quarters: ($full-width) - ($one-quarter);
+
+$gutter: 30px;
+$gutter-one-quarter: $gutter / 4;
+$gutter-one-third: $gutter / 3;
+$gutter-half: $gutter / 2;
+$gutter-two-thirds: $gutter - $gutter-one-third;
