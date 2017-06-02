@@ -103,6 +103,15 @@ gulp.task('preview:components', () => {
   gulp.start('copy:images')
 })
 
+// Tests ----------------
+// ---------------------------------------
+gulp.task('test', cb => {
+  runsequence('html:tenon',
+              'js:lint',
+              'scss:lint',
+              cb)
+})
+
 // Check HTML using Tenon ----------------
 // ---------------------------------------
 gulp.task('html:tenon', function () {
