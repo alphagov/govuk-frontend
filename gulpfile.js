@@ -10,6 +10,7 @@ const gls = require('gulp-live-server')
 const inject = require('gulp-inject')
 const concat = require('gulp-concat')
 const standard = require('gulp-standard')
+const gtenon = require('gulp-tenon-client')
 
 // Styles build task ---------------------
 // Compiles CSS from Sass
@@ -36,6 +37,7 @@ gulp.task('scss:compile', () => {
 
 // Scripts build tasks --------------------
 // Lints, compiles javascript partials
+// ---------------------------------------
 gulp.task('js:compile', () => {
   return gulp.src([paths.src + '/**/*.js'])
     .pipe(concat('govuk-frontend.js'))
@@ -63,7 +65,7 @@ gulp.task('watch', () => {
   gulp.watch([paths.src + 'components/**/*.html'], ['preview:components'])
 })
 
-// Dev task --------------------------
+// Dev task ------------------------------
 // Compiles assets and sets up watches.
 // ---------------------------------------
 gulp.task('dev', cb => {
@@ -74,7 +76,7 @@ gulp.task('dev', cb => {
               'watch', cb)
 })
 
-// Serve task --------------------------
+// Serve task ---------------------------
 // Creates a server to preview components
 // ---------------------------------------
 gulp.task('serve', () => {
@@ -82,7 +84,7 @@ gulp.task('serve', () => {
   server.start()
 })
 
-// Preview components --------------------------
+// Preview components --------------------
 // Combines all html files in components into a single  file
 // Inserts compiled component css into the head of the page
 // ---------------------------------------
@@ -99,6 +101,31 @@ gulp.task('preview:components', () => {
   .pipe(inject(gulp.src([paths.distJs + '*.js', paths.distJs], {read: false}), {ignorePath: paths.dist}))
   .pipe(gulp.dest(paths.dist))
   gulp.start('copy:images')
+})
+
+// Tests ----------------
+// ---------------------------------------
+gulp.task('test', cb => {
+  runsequence('html:tenon',
+              'js:lint',
+              'scss:lint',
+              cb)
+})
+
+// Check HTML using Tenon ----------------
+// ---------------------------------------
+gulp.task('html:tenon', function () {
+  gulp.src('src/components/**/*.html', {read: false})
+  .pipe(gtenon({
+    key: 'fc7b85e07ea9b862c6422e412e999f3b',
+    snippet: true, // include errorSnippet in the console output
+    filter: [
+      3,  // Ignore: language of page is not set
+      31, // Ignore: link uses an invalid hypertext reference
+      64, // Ignore: page has no title
+      97  // Ignore: page has no headings
+    ]
+  }))
 })
 
 // Copy images --------------------------
