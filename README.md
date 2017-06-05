@@ -18,3 +18,4 @@ To follow.
 ## Docs
 
 [Coding Standards](/docs/coding-standards/) - our guides for CSS and JavaScript.
+[Legacy IE](/docs/legacy-ie.md) - legacy IE support
