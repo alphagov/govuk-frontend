@@ -17,5 +17,6 @@ To follow.
 
 ## Docs
 
-[Coding Standards](/docs/coding-standards/) - our guides for CSS and JavaScript.
-[Legacy IE](/docs/legacy-ie.md) - legacy IE support
+* [coding standards](/docs/coding-standards/) - our guides for CSS and JavaScript
+* [components](/docs/components.md) - rules for components
+* [legacy IE](/docs/legacy-ie.md) - legacy IE support
