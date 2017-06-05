@@ -1,0 +1,22 @@
+@import "import-once";
+@import "../../globals/scss/colours";
+@import "../../globals/scss/typography";
+
+@include exports("input") {
+  .govuk-c-input {
+    box-sizing: border-box; // should this be global?
+
+    font-family: $govuk-font-stack;
+    -webkit-font-smoothing: antialiased;
+    @include core-19;
+  }
+
+  .govuk-c-input--text {
+    width: 100%;
+    padding: 5px 4px 4px;
+
+    // setting any background-color makes text invisible when changing colours to dark backgrounds in Firefox (https://bugzilla.mozilla.org/show_bug.cgi?id=1335476)
+    // as background-color and color need to always be set together, color should not be set either
+    border: $govuk-border-width-form-element solid $govuk-text-colour;
+  }
+}
