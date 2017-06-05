@@ -11,13 +11,18 @@ const inject = require('gulp-inject')
 const concat = require('gulp-concat')
 const standard = require('gulp-standard')
 const gtenon = require('gulp-tenon-client')
+const postcss = require('gulp-postcss')
+const autoprefixer = require('autoprefixer')
+const cssnano = require('cssnano')
+const postcssnormalize = require('postcss-normalize')
+const merge = require('merge-stream')
 
 // Styles build task ---------------------
 // Compiles CSS from Sass
 // Output both a minified and non-minified version into /public/stylesheets/
 // ---------------------------------------
 gulp.task('styles', cb => {
-  runsequence('scss:lint', 'scss:compile', cb)
+  runsequence('scss:lint', 'scss:compile', 'scss:compile:ie', cb)
 })
 
 gulp.task('scss:lint', () => {
@@ -30,16 +35,64 @@ gulp.task('scss:lint', () => {
 })
 
 gulp.task('scss:compile', () => {
-  return gulp.src(paths.globalScss + '**/*.scss')
+  let processors = [
+    autoprefixer,
+    postcssnormalize,
+    cssnano
+  ]
+  let compileAll = gulp.src(paths.globalScss + '**/*.scss')
     .pipe(sass().on('error', sass.logError))
+    .pipe(postcss(processors))
     .pipe(gulp.dest(paths.distCss))
+
+  let prefixScss = gulp.src(paths.src + '**/*.scss')
+    .pipe(postcss([
+      autoprefixer,
+      require('postcss-nested')
+    ], {syntax: require('postcss-scss')}))
+    .pipe(gulp.dest(paths.dist))
+
+  return merge(compileAll, prefixScss)
+})
+
+// Compile old IE compatible CSS ---------
+// ---------------------------------------
+gulp.task('scss:compile:ie', () => {
+  let compileAllForOldIe = gulp.src(paths.distCss + '*-oldie.css')
+    .pipe(
+      postcss([
+        require('oldie')({
+          rgba: {filter: true},
+          rem: {disable: true},
+          unmq: {disable: true}
+          // more rules go here
+        })
+      ])
+    )
+    .pipe(gulp.dest(paths.distCss))
+
+  // oldie doesn't currently work when source is scss. author checking
+  // let prefixScssIe = gulp.src(paths.src + '**/*.scss')
+  //   .pipe(postcss([
+  //     autoprefixer,
+  //     require('oldie')({
+  //       rgba: {filter: true},
+  //       rem: {disable: true},
+  //       unmq: {disable: true}
+  //       // more rules go here
+  //     }),
+  //     require('postcss-nested')
+  //   ], {syntax: require('postcss-scss')}))
+  //   .pipe(gulp.dest(paths.dist))
+
+  return merge(compileAllForOldIe)
 })
 
 // Scripts build tasks --------------------
 // Lints, compiles javascript partials
 // ---------------------------------------
 gulp.task('js:compile', () => {
-  return gulp.src([paths.src + '/**/*.js'])
+  return gulp.src([paths.src + '**/*.js'])
     .pipe(concat('govuk-frontend.js'))
     .pipe(gulp.dest(paths.dist + 'js'))
 })
@@ -90,7 +143,7 @@ gulp.task('serve', () => {
 // ---------------------------------------
 gulp.task('preview:components', () => {
   gulp.src(paths.src + 'index.html')
-  .pipe(inject(gulp.src([paths.src + 'components/**/*.html']), {
+  .pipe(inject(gulp.src([paths.components + '**/*.html']), {
     starttag: '<!-- inject:html -->',
     transform: function (filePath, file) {
       return '<div class="component">' + file.contents.toString('utf8') + '</div>'
