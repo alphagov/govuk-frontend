@@ -12,6 +12,11 @@ $govuk-nta-light-tabular: "ntatabularnumbers", $govuk-nta-light;
 $govuk-font-stack: $govuk-nta-light !default;
 $govuk-font-stack-tabular: $govuk-nta-light-tabular !default;
 
+@mixin font-smoothing {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 @mixin font-size($px) {
   // sass-lint:disable no-duplicate-properties
   font-size: $px;

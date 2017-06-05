@@ -17,6 +17,7 @@
   .govuk-c-breadcrumb__list-item {
     @include core-16;
     font-family: $govuk-font-stack;
+    @include font-smoothing;
     margin-bottom: .4em;
     margin-left: .6em;
     padding-left: .9em;

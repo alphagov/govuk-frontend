@@ -7,7 +7,7 @@
 @include exports("list") {
   .govuk-c-list {
     font-family: $govuk-font-stack;
-    -webkit-font-smoothing: antialiased;
+    @include font-smoothing;
     @include core-19;
 
     padding-left: 0;

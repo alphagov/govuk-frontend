@@ -7,7 +7,7 @@
 @include exports("phase-banner") {
   .govuk-c-phase-banner {
     font-family: $govuk-font-stack;
-    -webkit-font-smoothing: antialiased;
+    @include font-smoothing;
 
     padding-top: em(10px, 16px);
     padding-bottom: em(8px, 16px);

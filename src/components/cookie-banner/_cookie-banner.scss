@@ -9,7 +9,7 @@
     padding-top: 10px;
     padding-bottom: 10px;
     font-family: $govuk-font-stack;
-    -webkit-font-smoothing: antialiased;
+    @include font-smoothing;
   }
 
   .js-enabled .govuk-c-cookie-banner {

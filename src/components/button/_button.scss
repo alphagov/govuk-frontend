@@ -23,7 +23,7 @@
     font-family: $govuk-font-stack;
     line-height: 1.25;
     text-decoration: none;
-    -webkit-font-smoothing: antialiased;
+    @include font-smoothing;
     cursor: pointer;
 
     // Apply styling up to devices smaller than tablets (exclude tablets)

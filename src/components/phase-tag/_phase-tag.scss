@@ -6,7 +6,7 @@
 @include exports("phase-tag") {
   .govuk-c-phase-tag {
     font-family: $govuk-font-stack;
-    -webkit-font-smoothing: antialiased;
+    @include font-smoothing;
 
     display: inline-block;
     margin: 0 8px 0 0;
