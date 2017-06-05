@@ -32,6 +32,18 @@ $is-ie: false !default;
   }
 }
 
+// Mixin to clear floats
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  @include ie-lte(7) {
+    zoom: 1;
+  }
+}
+
 // Mixin to wrap your entire site content block. It limits the sites width to be 960px wide and maintains consistent margins
 @mixin site-width-container {
   max-width: $govuk-site-width;
