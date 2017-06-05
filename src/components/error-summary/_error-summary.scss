@@ -9,7 +9,7 @@
 
   .govuk-c-error-summary {
     font-family: $govuk-font-stack;
-    -webkit-font-smoothing: antialiased;
+    @include font-smoothing;
     border: $govuk-border-width-mobile solid $govuk-error-colour;
 
     margin-top: 15px; // should these be 16px?
@@ -38,7 +38,7 @@
 
   .govuk-c-error-summary__title {
     font-family: $govuk-font-stack;
-    -webkit-font-smoothing: antialiased;
+    @include font-smoothing;
 
     @include bold-24;
     margin-top: 0;
