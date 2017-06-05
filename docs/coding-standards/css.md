@@ -70,8 +70,9 @@ The reason for double hyphens and underscores after the block name, is so that t
 
     .govuk-c-phase-banner
 
-BEM stands for `Block__Element--Modifier`, not `Block__Element__Element--Modifier`.
-Avoid multiple element level naming.
+**Why?**
+
+Styles can be applied without location dependence. This prevents module styles interfering with global or sidewide styles.
 
 ## Nesting
 
@@ -100,10 +101,40 @@ Good:
 }
 ```
 
+BEM stands for `Block__Element--Modifier`, not `Block__Element__Element--Modifier`.
+
+Avoid multiple element level naming.
+
 **Why?**
 
 This makes the code base more searchable and straightforward, making it easier to maintain.
 It also  discourages the (bad) habit of excessive nesting.
+
+## Single Responsibility Principle
+
+Each class has a single purpose, so you can be sure when making a change to a class - it will only affect the element that class is applied to.
+
+Also when deprecating classes, all of the CSS for this class can be removed without affecting another component that had reused this css.
+
+**Why?**
+
+To ensure that styles can safely be added or removed without fear of breaking other components.
+
+## Component modifiers
+
+Keep all of the variants of a component in the same place.
+
+`.govuk-c-error-summary` modifies the `.govuk-c-list` component.
+
+Component modifiers use an extra class, scoped to the component:
+
+`.govuk-c-error-summary__list`
+
+This class is part of the component, rather than a parent of a component.
+
+**Why?**
+This makes it easier to keep track of different contexts.
+
 
 ### Further reading:
 
