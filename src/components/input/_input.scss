@@ -11,6 +11,10 @@
     @include core-19;
   }
 
+  .govuk-c-input:focus {
+    outline: $govuk-outline-width-focus solid $govuk-focus-colour;
+  }
+
   .govuk-c-input--text {
     width: 100%;
     padding: 5px 4px 4px;
