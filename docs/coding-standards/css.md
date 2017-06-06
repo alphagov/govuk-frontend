@@ -49,6 +49,9 @@ It can be reused and is not tied to any specific piece of UI.
 
 Use a prefix for all JavaScript hooks.
 
+### Further reading:
+
+* [Harry Roberts - More Transparent UI Code with Namespaces](https://csswizardry.com/2015/03/more-transparent-ui-code-with-namespaces/)
 
 # BEM
 
@@ -73,6 +76,11 @@ The reason for double hyphens and underscores after the block name, is so that t
 **Why?**
 
 Styles can be applied without location dependence. This prevents module styles interfering with global or sidewide styles.
+
+### Further reading:
+
+* [BEM Resources](https://github.com/sturobson/BEM-resources)
+* [Harry Roberts - BEMIT: Taking the BEM Naming Convention a Step Further](https://csswizardry.com/2015/08/bemit-taking-the-bem-naming-convention-a-step-further/)
 
 ## Nesting
 
@@ -134,14 +142,6 @@ This class is part of the component, rather than a parent of a component.
 
 **Why?**
 This makes it easier to keep track of different contexts.
-
-
-### Further reading:
-
-* [Harry Roberts - More Transparent UI Code with Namespaces](https://csswizardry.com/2015/03/more-transparent-ui-code-with-namespaces/)
-* [Harry Roberts - BEMIT: Taking the BEM Naming Convention a Step Further](https://csswizardry.com/2015/08/bemit-taking-the-bem-naming-convention-a-step-further/)
-* [CSS-Tricks - BEM - 101](https://css-tricks.com/bem-101/)
-
 
 # Linting
 
