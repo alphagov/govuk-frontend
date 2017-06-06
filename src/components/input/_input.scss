@@ -1,6 +1,8 @@
 @import "import-once";
 @import "../../globals/scss/colours";
 @import "../../globals/scss/typography";
+@import "../label/label";
+@import "../error-message/error-message";
 
 @include exports("input") {
   .govuk-c-input {
@@ -24,6 +26,10 @@
 
   .govuk-c-input:focus {
     outline: $govuk-outline-width-focus solid $govuk-focus-colour;
+  }
+
+  .govuk-c-input--error {
+    border: $govuk-border-width-error solid $govuk-error-colour;
   }
 
 }
