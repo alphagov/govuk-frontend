@@ -43,20 +43,4 @@
     text-align: left;
     @include bold-19;
   }
-
-  .govuk-c-table--font-xsmall {
-
-    .govuk-c-table__header {
-      @include bold-16;
-    }
-
-    .govuk-c-table__cell {
-      @include core-16;
-    }
-
-    .govuk-c-table__header,
-    .govuk-c-table__cell {
-      padding: em(12, 16) em(20, 16) em(9, 16) 0;
-    }
-  }
 }
