@@ -12,7 +12,15 @@
   "homepage": "https://github.com/alphagov/govuk-frontend#readme",
   "scripts": {
     "start": "gulp dev",
-    "test": "standard && gulp test"
+    "test": "standard && gulp test",
+    "lerna:bootstrap": "lerna bootstrap",
+    "lerna:init": "lerna init",
+    "lerna:publish": "lerna publish -m 'chore: publish'",
+    "lerna:updated": "lerna updated",
+    "lerna:diff": "lerna diff",
+    "lerna:run": "lerna run",
+    "lerna:ls": "lerna ls",
+    "lerna:help": "lerna --help"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.1",
