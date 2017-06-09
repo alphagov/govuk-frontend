@@ -1,0 +1,29 @@
+@import "@govuk-frontend/globals/import-once";
+@import "@govuk-frontend/globals/colours";
+@import "@govuk-frontend/globals/font-face";
+@import "@govuk-frontend/globals/typography";
+@import "@govuk-frontend/globals/vars";
+@import "@govuk-frontend/label/label";
+@import "@govuk-frontend/error-message/error-message";
+
+@include exports("textarea") {
+  .govuk-c-textarea {
+    display: block;
+    -webkit-appearance: none;
+    border-radius: 0;
+    border: $govuk-border-width-form-element solid $govuk-text-colour;
+    box-sizing: border-box; // should this be global?
+    font-family: $govuk-font-stack;
+    -webkit-font-smoothing: antialiased;
+    width: 100%;
+    @include core-19;
+  }
+
+  .govuk-c-textarea:focus {
+    outline: $govuk-outline-width-focus solid $govuk-focus-colour;
+  }
+
+  .govuk-c-textarea--error {
+    border: $govuk-border-width-error solid $govuk-error-colour;
+  }
+}
