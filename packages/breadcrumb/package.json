@@ -1,0 +1,7 @@
+{
+  "name": "@govuk-frontend/breadcrumb",
+  "version": "0.0.1-alpha",
+  "dependencies": {
+    "@govuk-frontend/globals": "0.0.1-alpha"
+  }
+}
