@@ -6,5 +6,6 @@
   "globalImages": "src/globals/images/",
   "dist": "dist/",
   "distCss": "dist/css/",
-  "distJs": "dist/js/"
+  "distJs": "dist/js/",
+  "packages": "packages/"
 }

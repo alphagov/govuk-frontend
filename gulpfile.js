@@ -16,6 +16,10 @@ const autoprefixer = require('autoprefixer')
 const cssnano = require('cssnano')
 const postcssnormalize = require('postcss-normalize')
 const merge = require('merge-stream')
+const replace = require('gulp-replace')
+const flatten = require('gulp-flatten')
+const rename = require('gulp-rename')
+const changed = require('gulp-changed')
 
 // Styles build task ---------------------
 // Compiles CSS from Sass
@@ -86,6 +90,29 @@ gulp.task('scss:compile:ie', () => {
   //   .pipe(gulp.dest(paths.dist))
 
   return merge(compileAllForOldIe)
+})
+
+// Create packages -----------------------
+// Creates packages for npm publish
+// ---------------------------------------
+gulp.task('create:package', () => {
+  let components = gulp.src([paths.components + '**/*'])
+    .pipe(changed(paths.packages))
+    .pipe(replace('../../globals/scss', '@govuk-frontend/globals'))
+    .pipe(replace('../', '@govuk-frontend/'))
+    .pipe(flatten({includeParents: -1}))
+    .pipe(gulp.dest(paths.packages))
+
+  let globals = gulp.src([paths.globalScss + '**/*'])
+    .pipe(changed(paths.packages))
+    .pipe(replace('../../components', '@govuk-frontend'))
+    .pipe(flatten({includeParents: 1}))
+    .pipe(rename({
+      dirname: 'globals'
+    }))
+    .pipe(gulp.dest(paths.packages))
+
+  return merge(components, globals)
 })
 
 // Scripts build tasks --------------------
