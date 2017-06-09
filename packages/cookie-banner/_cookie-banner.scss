@@ -1,0 +1,31 @@
+@import "@govuk-frontend/globals/import-once";
+@import "@govuk-frontend/globals/colours";
+@import "@govuk-frontend/globals/typography";
+
+@include exports("cookie-banner") {
+  .govuk-c-cookie-banner {
+    width: 100%;
+    background-color: $govuk-light-blue-25;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: $govuk-font-stack;
+    @include font-smoothing;
+  }
+
+  .js-enabled .govuk-c-cookie-banner {
+    display: none;
+  }
+
+  .govuk-c-cookie-banner__text {
+    @include site-width-container;
+    @include core-16;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  @include mq($media-type: print) {
+    .govuk-c-cookie-banner {
+      display: none !important;
+    }
+  }
+}
