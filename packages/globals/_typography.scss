@@ -1,0 +1,74 @@
+$govuk-base-font-size: 16px !default;
+
+@function rem($px) {
+  @return ($px / $govuk-base-font-size) * 1rem;
+}
+
+// New Transport Light font family
+$govuk-nta-light: "nta", Arial, sans-serif;
+$govuk-nta-light-tabular: "ntatabularnumbers", $govuk-nta-light;
+
+// Allow font stack to be overridden
+$govuk-font-stack: $govuk-nta-light !default;
+$govuk-font-stack-tabular: $govuk-nta-light-tabular !default;
+
+@mixin font-smoothing {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin font-size($px) {
+  // sass-lint:disable no-duplicate-properties
+  font-size: $px;
+  font-size: rem($px);
+}
+
+
+@mixin bold-48 {
+  @include font-size(48px);
+  line-height: (50 / 48);
+  font-weight: 700;
+}
+
+@mixin bold-19 {
+  @include font-size(19px);
+  line-height: (25 / 19);
+  font-weight: 700;
+}
+@mixin bold-18 {
+  @include font-size(18px);
+  line-height: (21.6 / 18);
+  font-weight: 700;
+}
+
+@mixin bold-16 {
+  @include font-size(16px);
+  line-height: (20 / 16);
+  font-weight: 700;
+}
+
+@mixin bold-24 {
+  @include bold-18;
+  @include mq($from: tablet) {
+    @include font-size(24px);
+    line-height: (30 / 24);
+  }
+}
+
+@mixin core-36 {
+  @include font-size(36px);
+  line-height: (40 / 36);
+}
+
+@mixin core-19 {
+  @include core-16;
+  @include mq($from: tablet) {
+    @include font-size(19px);
+    line-height: (25 / 19);
+  }
+}
+
+@mixin core-16 {
+  @include font-size(16px);
+  line-height: (20 / 16);
+}
