@@ -1,0 +1,17 @@
+@import "@govuk-frontend/globals/import-once";
+@import "@govuk-frontend/globals/colours";
+@import "@govuk-frontend/globals/font-face";
+@import "@govuk-frontend/globals/typography";
+@import "@govuk-frontend/globals/helpers";
+
+@include exports("error-message") {
+  .govuk-c-error-message {
+    @include bold-19;
+    font-family: $govuk-font-stack;
+    color: $govuk-error-colour;
+    display: block;
+    clear: both;
+    margin: 0;
+    padding: 2px 0;
+  }
+}
