@@ -6,6 +6,12 @@
   ],
   "changelog": {
     "repo": "https://github.com/alphagov/govuk-frontend",
+    "labels": {
+      "bug": "Bug fix",
+      "feature": "New feature",
+      "breaking": "Breaking change",
+      "docs": "Documentation"
+    },
     "cacheDir": ".changelog"
   }
 }
