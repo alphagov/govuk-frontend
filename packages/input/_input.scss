@@ -1,0 +1,35 @@
+@import "@govuk-frontend/globals/import-once";
+@import "@govuk-frontend/globals/colours";
+@import "@govuk-frontend/globals/typography";
+@import "@govuk-frontend/label/label";
+@import "@govuk-frontend/error-message/error-message";
+
+@include exports("input") {
+  .govuk-c-input {
+    box-sizing: border-box; // should this be global?
+
+    font-family: $govuk-font-stack;
+    -webkit-font-smoothing: antialiased;
+    @include core-19;
+
+    width: 100%;
+    padding: 5px 4px 4px;
+
+    // setting any background-color makes text invisible when changing colours to dark backgrounds in Firefox (https://bugzilla.mozilla.org/show_bug.cgi?id=1335476)
+    // as background-color and color need to always be set together, color should not be set either
+    border: $govuk-border-width-form-element solid $govuk-text-colour;
+
+    // Disable inner shadow and remove rounded corners
+    -webkit-appearance: none;
+    border-radius: 0;
+  }
+
+  .govuk-c-input:focus {
+    outline: $govuk-outline-width-focus solid $govuk-focus-colour;
+  }
+
+  .govuk-c-input--error {
+    border: $govuk-border-width-error solid $govuk-error-colour;
+  }
+
+}
