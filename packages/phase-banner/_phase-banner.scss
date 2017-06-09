@@ -1,0 +1,32 @@
+@import "@govuk-frontend/globals/import-once";
+@import "@govuk-frontend/globals/colours";
+@import "@govuk-frontend/globals/font-face";
+@import "@govuk-frontend/globals/typography";
+@import "@govuk-frontend/phase-tag/phase-tag";
+
+@include exports("phase-banner") {
+  .govuk-c-phase-banner {
+    font-family: $govuk-font-stack;
+    @include font-smoothing;
+
+    padding-top: em(10px, 16px);
+    padding-bottom: em(8px, 16px);
+    // Apply styling to tablet and upwards
+    // @include mq($from:tablet) {
+    //  padding-bottom: em(10px, 16px);
+    // }
+    border-bottom: 1px solid $govuk-border-colour;
+  }
+
+  .govuk-c-phase-banner__content {
+    display: table;
+    margin: 0;
+  }
+
+  .govuk-c-phase-banner__text {
+    display: table-cell;
+    vertical-align: baseline;
+    color: $govuk-banner-text-colour;
+    @include core-16;
+  }
+}
