@@ -1,0 +1,88 @@
+@import "@govuk-frontend/globals/import-once";
+@import "@govuk-frontend/globals/vars";
+@import "@govuk-frontend/globals/colours";
+@import "@govuk-frontend/globals/media-queries";
+@import "@govuk-frontend/globals/font-face";
+@import "@govuk-frontend/globals/typography";
+@import "@govuk-frontend/globals/helpers";
+
+@include exports("radio") {
+  .govuk-c-radio {
+    display: block;
+    clear: left;
+    position: relative;
+    padding: 0 0 0 38px;
+    margin-bottom: $gutter-one-third;
+    font-family: $govuk-font-stack;
+    @include core-19;
+  }
+
+  .govuk-c-radio:last-child,
+  .govuk-c-radio:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .govuk-c-radio__input {
+    position: absolute;
+    cursor: pointer;
+    left: 0;
+    top: 0;
+    width: 38px;
+    height: 38px;
+    z-index: 1;
+    // IE8 doesn’t support pseudoelements, so we don’t want to hide native elements there.
+    @if ($is-ie == false) or ($ie-version == 9) {
+      margin: 0;
+      opacity: 0;
+    }
+  }
+
+  .govuk-c-radio__label {
+    cursor: pointer;
+    padding: 8px $gutter-one-third 9px 12px;
+    display: block;
+    // remove 300ms pause on mobile
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    @include mq($from: tablet) {
+      padding-top: 7px;
+      padding-bottom: 7px;
+    }
+  }
+
+  .govuk-c-radio__input + .govuk-c-radio__label:before {
+    content: "";
+    border: 2px solid;
+    background: transparent;
+    width: 34px;
+    height: 34px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+  }
+
+  .govuk-c-radio__input + .govuk-c-radio__label:after {
+    content: "";
+    border: 10px solid;
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 9px;
+    left: 9px;
+    border-radius: 50%;
+    opacity: 0;
+  }
+
+  .govuk-c-radio__input:focus + .govuk-c-radio__label:before {
+    box-shadow: 0 0 0 4px $govuk-focus-colour;
+  }
+
+  .govuk-c-radio__input:focus + .govuk-c-radio__label:after {
+    opacity: 1;
+  }
+
+  .govuk-c-radio__input:disabled + .govuk-c-radio__label {
+    opacity: .5;
+  }
+}
