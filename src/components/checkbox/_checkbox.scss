@@ -1,0 +1,89 @@
+@import "../../globals/scss/import-once";
+@import "../../globals/scss/vars";
+@import "../../globals/scss/colours";
+@import "../../globals/scss/media-queries";
+@import "../../globals/scss/font-face";
+@import "../../globals/scss/typography";
+@import "../../globals/scss/helpers";
+
+@include exports("checkbox") {
+  .govuk-c-checkbox {
+    display: block;
+    clear: left;
+    position: relative;
+    padding: 0 0 0 38px;
+    margin-bottom: $gutter-one-third;
+    font-family: $govuk-font-stack;
+    @include core-19;
+  }
+
+  .govuk-c-checkbox:last-child,
+  .govuk-c-checkbox:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .govuk-c-checkbox__input {
+    position: absolute;
+    cursor: pointer;
+    left: 0;
+    top: 0;
+    width: 38px;
+    height: 38px;
+    z-index: 1;
+    // IE8 doesn’t support pseudoelements, so we don’t want to hide native elements there.
+    @if ($is-ie == false) or ($ie-version == 9) {
+      margin: 0;
+      opacity: 0;
+    }
+  }
+
+  .govuk-c-checkbox__label {
+    cursor: pointer;
+    padding: 8px $gutter-one-third 9px 12px;
+    display: block;
+    // remove 300ms pause on mobile
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    @include mq($from: tablet) {
+      padding-top: 7px;
+      padding-bottom: 7px;
+    }
+  }
+
+  .govuk-c-checkbox__input + .govuk-c-checkbox__label:before {
+    content: "";
+    border: 2px solid;
+    background: transparent;
+    width: 34px;
+    height: 34px;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .govuk-c-checkbox__input + .govuk-c-checkbox__label:after {
+    content: "";
+    border: solid;
+    border-width: 0 0 5px 5px;
+    background: transparent;
+    width: 17px;
+    height: 7px;
+    position: absolute;
+    top: 10px;
+    left: 8px;
+    transform: rotate(-45deg);
+    opacity: 0;
+  }
+
+  .govuk-c-checkbox__input:focus + .govuk-c-checkbox__label:before {
+    box-shadow: 0 0 0 3px $govuk-focus-colour;
+  }
+
+  .govuk-c-checkbox__input:focus + .govuk-c-checkbox__label:after {
+    opacity: 1;
+  }
+
+  .govuk-c-checkbox__input:disabled + .govuk-c-checkbox__label {
+    opacity: .5;
+  }
+}
