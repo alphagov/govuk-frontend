@@ -1,0 +1,46 @@
+@import "@govuk-frontend/globals/import-once";
+@import "@govuk-frontend/globals/colours";
+@import "@govuk-frontend/globals/font-face";
+@import "@govuk-frontend/globals/typography";
+
+@include exports("table") {
+  .govuk-c-table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    font-family: $govuk-font-stack;
+  }
+
+  .govuk-c-table__header {
+    @include core-19;
+    font-weight: 700;
+    padding: em(12, 19) em(20, 19) em(9, 19) 0;
+    text-align: left;
+    border-bottom: 1px solid $govuk-border-colour;
+  }
+
+  .govuk-c-table__cell {
+    @include core-19;
+    padding: em(12, 19) em(20, 19) em(9, 19) 0;
+    text-align: left;
+    border-bottom: 1px solid $govuk-border-colour;
+  }
+  .govuk-c-table__cell--numeric {
+    font-family: $govuk-font-stack-tabular;
+  }
+
+  .govuk-c-table__header--numeric,
+  .govuk-c-table__cell--numeric {
+    text-align: right;
+  }
+
+  .govuk-c-table__header:last-child,
+  .govuk-c-table__cell:last-child {
+    padding-right: 0;
+  }
+
+  .govuk-c-table__caption {
+    text-align: left;
+    @include bold-19;
+  }
+}
