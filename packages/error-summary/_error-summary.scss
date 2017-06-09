@@ -51,29 +51,26 @@
 
   .govuk-c-error-summary__body {
     @include core-19;
+  }
 
     // TODO: consistent paragraph margins
-    p {
+    .govuk-c-error-summary__body p {
       margin-top: 6px;
       margin-bottom: 10px;
     }
-  }
 
   // Cross-component class - adjusts styling of list component
   .govuk-c-error-summary__list {
     margin-top: 0;
     margin-bottom: 0;
   }
-
-  .govuk-c-error-summary__list a {
-    &:link,
-    &:visited,
-    &:hover,
-    &:active {
+    .govuk-c-error-summary__list a:link,
+    .govuk-c-error-summary__list a:visited,
+    .govuk-c-error-summary__list a:hover,
+    .govuk-c-error-summary__list a:active {
       color: $govuk-error-colour;
       font-weight: bold;
       text-decoration: underline;
     }
-  }
 
 }

@@ -20,16 +20,17 @@
     border-bottom: 1px solid $govuk-black;
 
     background: file-url("icon-arrow-left.png") no-repeat 0 4px;
+  }
 
-    &:link,
-    &:visited,
-    &:hover,
-    &:active {
+    .govuk-c-link-back:link,
+    .govuk-c-link-back:visited,
+    .govuk-c-link-back:hover,
+    .govuk-c-link-back:active {
       color: $govuk-black;
     }
 
     // Back arrow - left pointing black arrow
-    &::before {
+    .govuk-c-link-back::before {
       content: "";
       display: block;
       width: 0;
@@ -44,5 +45,4 @@
       top: 50%;
       margin-top: -6px;
     }
-  }
 }

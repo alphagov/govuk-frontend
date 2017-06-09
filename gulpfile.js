@@ -20,6 +20,7 @@ const replace = require('gulp-replace')
 const flatten = require('gulp-flatten')
 const rename = require('gulp-rename')
 const changed = require('gulp-changed')
+const filter = require('gulp-filter')
 
 // Styles build task ---------------------
 // Compiles CSS from Sass
@@ -96,16 +97,33 @@ gulp.task('scss:compile:ie', () => {
 // Creates packages for npm publish
 // ---------------------------------------
 gulp.task('create:package', () => {
+  let filterComponents = filter([paths.components + '**/*.scss'], {restore: true})
   let components = gulp.src([paths.components + '**/*'])
     .pipe(changed(paths.packages))
     .pipe(replace('../../globals/scss', '@govuk-frontend/globals'))
     .pipe(replace('../', '@govuk-frontend/'))
+    .pipe(filterComponents)
+    .pipe(postcss([
+      autoprefixer,
+      require('postcss-nested')
+    ], {syntax: require('postcss-scss')}))
+    .pipe(filterComponents.restore)
     .pipe(flatten({includeParents: -1}))
     .pipe(gulp.dest(paths.packages))
-
-  let globals = gulp.src([paths.globalScss + '**/*'])
+  let filterGlobals = filter([paths.globalScss + '**/*.scss'], {restore: true})
+  let globals = gulp.src([
+    paths.globalScss + '**/*',
+    '!' + paths.globalScss + 'govuk-frontend.scss',
+    '!' + paths.globalScss + 'govuk-frontend-oldie.scss'
+  ])
     .pipe(changed(paths.packages))
     .pipe(replace('../../components', '@govuk-frontend'))
+    .pipe(filterGlobals)
+    .pipe(postcss([
+      autoprefixer,
+      require('postcss-nested')
+    ], {syntax: require('postcss-scss')}))
+    .pipe(filterGlobals.restore)
     .pipe(flatten({includeParents: 1}))
     .pipe(rename({
       dirname: 'globals'
