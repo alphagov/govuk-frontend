@@ -12,7 +12,8 @@
     -webkit-appearance: none;
     border-radius: 0;
     border: $govuk-border-width-form-element solid $govuk-text-colour;
-    box-sizing: border-box; // should this be global?
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box; // should this be global?
     font-family: $govuk-font-stack;
     -webkit-font-smoothing: antialiased;
     width: 100%;

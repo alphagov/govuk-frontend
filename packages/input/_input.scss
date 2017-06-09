@@ -6,7 +6,8 @@
 
 @include exports("input") {
   .govuk-c-input {
-    box-sizing: border-box; // should this be global?
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box; // should this be global?
 
     font-family: $govuk-font-stack;
     -webkit-font-smoothing: antialiased;
