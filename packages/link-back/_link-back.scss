@@ -1,0 +1,48 @@
+@import "@govuk-frontend/globals/import-once";
+@import "@govuk-frontend/globals/helpers";
+@import "@govuk-frontend/globals/vars";
+@import "@govuk-frontend/globals/colours";
+@import "@govuk-frontend/globals/typography";
+
+@include exports("link-back") {
+
+  .govuk-c-link-back {
+    display: inline-block;
+
+    position: relative;
+
+    @include core-16;
+
+    padding-left: 14px;
+
+    color: $govuk-black;
+    text-decoration: none;
+    border-bottom: 1px solid $govuk-black;
+
+    background: file-url("icon-arrow-left.png") no-repeat 0 4px;
+
+    &:link,
+    &:visited,
+    &:hover,
+    &:active {
+      color: $govuk-black;
+    }
+
+    // Back arrow - left pointing black arrow
+    &::before {
+      content: "";
+      display: block;
+      width: 0;
+      height: 0;
+
+      border-top: 5px solid transparent;
+      border-right: 6px solid $govuk-black;
+      border-bottom: 5px solid transparent;
+
+      position: absolute;
+      left: 0;
+      top: 50%;
+      margin-top: -6px;
+    }
+  }
+}

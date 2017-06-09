@@ -1,0 +1,56 @@
+@import "@govuk-frontend/globals/import-once";
+@import "@govuk-frontend/globals/colours";
+@import "@govuk-frontend/globals/font-face";
+@import "@govuk-frontend/globals/typography";
+@import "@govuk-frontend/globals/vars";
+
+@include exports("list") {
+  .govuk-c-list {
+    font-family: $govuk-font-stack;
+    @include font-smoothing;
+    @include core-19;
+
+    padding-left: 0;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    list-style-type: none;
+  }
+
+  .govuk-c-list > li {
+    @include mq($from: tablet) {
+      margin-bottom: 5px;
+    }
+  }
+
+  .govuk-c-list a {
+    &:link {
+      color: $govuk-link-colour;
+    }
+
+    &:visited {
+      color: $govuk-link-visited-colour;
+    }
+
+    &:hover {
+      color: $govuk-link-hover-colour;
+    }
+
+    a:active {
+      color: $govuk-link-active-colour;
+    }
+  }
+
+  .govuk-c-list--bullet {
+    list-style-type: disc;
+    padding-left: 20px;
+  }
+
+  .govuk-c-list--number {
+    list-style-type: decimal;
+    padding-left: 20px;
+    // TODO: Fix IE < 8
+    @include ie-lte(7) {
+      padding-left: 28px;
+    }
+  }
+}

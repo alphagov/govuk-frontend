@@ -1,0 +1,24 @@
+@import "@govuk-frontend/globals/import-once";
+@import "@govuk-frontend/globals/colours";
+
+@include exports("label") {
+  .govuk-c-label {
+    display: block;
+
+    font-family: $govuk-font-stack;
+    @include font-smoothing;
+    @include core-19;
+    color: $govuk-text-colour;
+  }
+
+  .govuk-c-label--bold {
+    font-weight: 700;
+  }
+
+  // Hint text sits inside a label, to be read by AT
+  .govuk-c-label__hint {
+    display: block;
+    color: $govuk-secondary-text-colour;
+    font-weight: 400;
+  }
+}

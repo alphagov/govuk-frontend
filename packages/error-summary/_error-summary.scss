@@ -1,0 +1,79 @@
+@import "@govuk-frontend/globals/import-once";
+@import "@govuk-frontend/globals/colours";
+@import "@govuk-frontend/globals/font-face";
+@import "@govuk-frontend/globals/typography";
+@import "@govuk-frontend/globals/vars";
+@import "@govuk-frontend/list/list";
+
+@include exports("error-summary") {
+
+  .govuk-c-error-summary {
+    font-family: $govuk-font-stack;
+    @include font-smoothing;
+    border: $govuk-border-width-mobile solid $govuk-error-colour;
+
+    margin-top: 15px; // should these be 16px?
+    margin-bottom: 15px;
+
+    padding: 15px 10px;
+
+    @include mq($from: tablet) {
+      border: $govuk-border-width-tablet solid $govuk-error-colour;
+
+      margin-top: 30px; // should this be 32px?
+      margin-bottom: 30px;
+
+      padding: 20px 15px 15px;
+    }
+
+    // TODO: Fix IE < 8
+    @include ie-lte(6) {
+      zoom: 1;
+    }
+  }
+
+  .govuk-c-error-summary:focus {
+    outline: $govuk-outline-width-focus solid $govuk-focus-colour;
+  }
+
+  .govuk-c-error-summary__title {
+    font-family: $govuk-font-stack;
+    @include font-smoothing;
+
+    @include bold-24;
+    margin-top: 0;
+    margin-bottom: .5em;
+
+    @include mq($from: tablet) {
+      margin-bottom: 20px;
+    }
+  }
+
+  .govuk-c-error-summary__body {
+    @include core-19;
+
+    // TODO: consistent paragraph margins
+    p {
+      margin-top: 6px;
+      margin-bottom: 10px;
+    }
+  }
+
+  // Cross-component class - adjusts styling of list component
+  .govuk-c-error-summary__list {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .govuk-c-error-summary__list a {
+    &:link,
+    &:visited,
+    &:hover,
+    &:active {
+      color: $govuk-error-colour;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+  }
+
+}

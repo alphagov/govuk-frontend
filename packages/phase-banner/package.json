@@ -1,0 +1,8 @@
+{
+  "name": "@govuk-frontend/phase-banner",
+  "version": "0.0.1-alpha",
+  "dependencies": {
+    "@govuk-frontend/globals": "^0.0.1-alpha",
+    "@govuk-frontend/phase-tag": "^0.0.1-alpha"
+  }
+}
