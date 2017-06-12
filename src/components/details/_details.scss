@@ -1,5 +1,6 @@
 @import "../../globals/scss/import-once";
 @import "../../globals/scss/colours";
+@import "../../globals/scss/utilities/borders";
 
 @include exports("details") {
   .govuk-c-details {
@@ -40,6 +41,7 @@
   .govuk-c-details__text {
     padding: em(15, 19);
     margin-bottom: em(15, 19);
+    @include govuk-u-border-left;
   }
 
   .govuk-c-details__text p {
