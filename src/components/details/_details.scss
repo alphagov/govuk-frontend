@@ -41,7 +41,7 @@
   .govuk-c-details__text {
     padding: em(15, 19);
     margin-bottom: em(15, 19);
-    @include govuk-u-border-left;
+    @include govuk-u-border-left($govuk-border-width, $govuk-border-colour);
   }
 
   .govuk-c-details__text p {
