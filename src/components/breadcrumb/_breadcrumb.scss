@@ -8,6 +8,9 @@
   .govuk-c-breadcrumb {
     padding-top: .75em;
     padding-bottom: .75em;
+
+    font-family: $govuk-font-stack;
+    @include font-smoothing;
   }
 
   .govuk-c-breadcrumb__list {
@@ -16,16 +19,14 @@
 
   .govuk-c-breadcrumb__list-item {
     @include core-16;
-    font-family: $govuk-font-stack;
-    @include font-smoothing;
     margin-bottom: .4em;
     margin-left: .6em;
     padding-left: .9em;
     float: left;
+    list-style: none;
     background-image: file-url("separator.png");
     background-repeat: no-repeat;
     background-position: 0% 50%;
-    list-style: none;
   }
 
   .govuk-c-breadcrumb__list-item:first-child {
