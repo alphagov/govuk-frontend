@@ -6,9 +6,6 @@
 
 @include exports("phase-banner") {
   .govuk-c-phase-banner {
-    font-family: $govuk-font-stack;
-    @include font-smoothing;
-
     padding-top: em(10px, 16px);
     padding-bottom: em(8px, 16px);
     // Apply styling to tablet and upwards
@@ -16,6 +13,9 @@
     //  padding-bottom: em(10px, 16px);
     // }
     border-bottom: 1px solid $govuk-border-colour;
+
+    font-family: $govuk-font-stack;
+    @include font-smoothing;
   }
 
   .govuk-c-phase-banner__content {
@@ -25,8 +25,8 @@
 
   .govuk-c-phase-banner__text {
     display: table-cell;
-    vertical-align: baseline;
     color: $govuk-banner-text-colour;
+    vertical-align: baseline;
     @include core-16;
   }
 }
