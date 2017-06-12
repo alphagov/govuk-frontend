@@ -6,12 +6,18 @@
 
 @include exports("error-message") {
   .govuk-c-error-message {
-    @include bold-19;
-    font-family: $govuk-font-stack;
-    color: $govuk-error-colour;
     display: block;
-    clear: both;
+
     margin: 0;
     padding: 2px 0;
+
+    clear: both;
+
+    color: $govuk-error-colour;
+
+    font-family: $govuk-font-stack;
+    @include font-smoothing;
+    @include bold-19;
+
   }
 }
