@@ -5,19 +5,20 @@
 
 @include exports("phase-tag") {
   .govuk-c-phase-tag {
-    font-family: $govuk-font-stack;
-    @include font-smoothing;
-
     display: inline-block;
     margin: 0 8px 0 0;
     padding: 4px 5px 0;
 
-    @include bold-16;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    text-decoration: none;
-
     color: $govuk-white;
     background-color: $govuk-blue;
+
+    font-family: $govuk-font-stack;
+    @include font-smoothing;
+    @include bold-16;
+    letter-spacing: 1px;
+    line-height: 1.25;
+
+    text-decoration: none;
+    text-transform: uppercase;
   }
 }
