@@ -1,0 +1,29 @@
+@import "../../globals/scss/import-once";
+@import "../../globals/scss/colours";
+@import "../../globals/scss/typography";
+@import "../label/label";
+
+@include exports("select-box") {
+  .govuk-c-select-box {
+    box-sizing: border-box; // should this be global?
+    font-family: $govuk-font-stack;
+    @include core-19;
+    @include font-smoothing;
+    width: 100%;
+    padding: 5px 4px 4px;
+    border: $govuk-border-width-form-element solid $govuk-text-colour;
+  }
+
+  .govuk-c-select-box:focus {
+    outline: $govuk-outline-width-focus solid $govuk-focus-colour;
+    outline-offset: 0;
+  }
+
+  .govuk-c-select-box option:active,
+  .govuk-c-select-box option:checked,
+  .govuk-c-select-box:focus::-ms-value {
+    color: $govuk-white;
+    background-color: $govuk-blue;
+  }
+
+}
