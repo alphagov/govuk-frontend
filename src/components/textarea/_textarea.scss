@@ -8,15 +8,21 @@
 
 @include exports("textarea") {
   .govuk-c-textarea {
-    display: block;
-    -webkit-appearance: none;
-    border-radius: 0;
-    border: $govuk-border-width-form-element solid $govuk-text-colour;
     box-sizing: border-box; // should this be global?
-    font-family: $govuk-font-stack;
-    -webkit-font-smoothing: antialiased;
+    display: block;
+
     width: 100%;
+
+    border: $govuk-border-width-form-element solid $govuk-text-colour;
+    border-radius: 0;
+
+    font-family: $govuk-font-stack;
+    @include font-smoothing;
     @include core-19;
+    line-height: 1.25;
+
+    -webkit-appearance: none;
+
   }
 
   .govuk-c-textarea:focus {
