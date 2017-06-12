@@ -26,25 +26,29 @@ $govuk-font-stack-tabular: $govuk-nta-light-tabular !default;
 
 @mixin bold-48 {
   @include font-size(48px);
-  line-height: (50 / 48);
   font-weight: 700;
+
+  line-height: (50 / 48);
 }
 
 @mixin bold-19 {
   @include font-size(19px);
-  line-height: (25 / 19);
   font-weight: 700;
+
+  line-height: (25 / 19);
 }
 @mixin bold-18 {
   @include font-size(18px);
-  line-height: (21.6 / 18);
   font-weight: 700;
+
+  line-height: (21.6 / 18);
 }
 
 @mixin bold-16 {
   @include font-size(16px);
-  line-height: (20 / 16);
   font-weight: 700;
+
+  line-height: (20 / 16);
 }
 
 @mixin bold-24 {
