@@ -7,9 +7,37 @@ GOV.UK Frontend ·
 
 A single package containing everything needed to start building a GOV.UK service.
 
-> :rotating_light: This will not work until packages are published to npm.
+:rotating_light: **This project is in development and these instructions are likely to change.** :rotating_light:
 
-## Install
+Guidance for building a GOV.UK service - [GOV.UK Design System](TODO: Insert link to GOV.UK Design System).
+
+## Quick start
+
+:rotating_light: **This will not work until packages are published to npm.** :rotating_light:
+
+```
+npm install --save @govuk-frontend/all
+```
+
+Include the CSS and JavaScript
+
+```
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Example</title>
+    <link rel="stylesheet"
+          href="node_modules/@govuk-frontend/all/all.min.css">
+  </head>
+  <body>
+    <!-- Copy and paste component HTML-->
+    <button class="govuk-c-button">This is a button component</button>
+    <script src="node_modules/@govuk-frontend/all/all.min.js"></script>
+  </body>
+</html>
+```
+
+## Installation
 
 ## Install all components
 
@@ -40,39 +68,21 @@ In your main.scss file
 
 ```
 // All components
-@import "@govuk-frontend/all/govuk-frontend-all";
+@import "@govuk-frontend/all/all";
 
 // Pick and choose components
-@import "@govuk-frontend/button/govuk-button";
-@import "@govuk-frontend/input/govuk-input"
-```
-
-## CSS
-
-```
-npm install --save @govuk-frontend/all
-```
-
-Include the CSS and JavaScript.
-
-```
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Example</title>
-    <link rel="stylesheet"
-          href="node_modules/@govuk-frontend/all/govuk-frontend-all.min.css">
-  </head>
-  <body>
-    <!-- Copy and paste component HTML-->
-    <button class="govuk-c-button">This is a button component</button>
-    <script src="node_modules/@govuk-frontend/all/govuk-frontend-all.min.js"></script>
-  </body>
-</html>
+@import "@govuk-frontend/button/button";
+@import "@govuk-frontend/input/input"
 ```
 
 ## Docs
 
-* [coding standards](/docs/coding-standards/) - our guides for CSS and JavaScript
-* [components](/docs/components.md) - rules for components
-* [legacy IE](/docs/legacy-ie.md) - legacy IE support
+Check out the [GOV.UK Frontend documentation](/dcos/index.md).
+
+## Licence
+
+[MIT license](LICENSE.txt).
+
+## Contributing
+
+[View our contribution guidelines](CONTRIBUTING.md).
