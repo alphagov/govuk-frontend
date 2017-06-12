@@ -77,7 +77,7 @@ In your main.scss file
 
 ## Docs
 
-Check out the [GOV.UK Frontend documentation](/dcos/index.md).
+Check out the [GOV.UK Frontend documentation](/docs/index.md).
 
 ## Licence
 
