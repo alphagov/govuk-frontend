@@ -1,0 +1,26 @@
+@import "../vars";
+@import "../colours";
+
+// Mixin to output a border
+// @param $govuk-u-border-width - width of border
+// Defaults to $govuk-border-width
+
+// Adds a top border to an element
+@mixin govuk-u-border-top($govuk-u-border-width: $govuk-border-width) {
+  border-top: $govuk-u-border-width solid $govuk-border-colour;
+}
+
+// Adds a right border to an element
+@mixin govuk-u-border-right($govuk-u-border-width: $govuk-border-width) {
+  border-right: $govuk-u-border-width solid $govuk-border-colour;
+}
+
+// Adds a bottom border to an element
+@mixin govuk-u-border-bottom($govuk-u-border-width: $govuk-border-width) {
+  border-bottom: $govuk-u-border-width solid $govuk-border-colour;
+}
+
+// Adds a left border to an element
+@mixin govuk-u-border-left($govuk-u-border-width: $govuk-border-width) {
+  border-left: $govuk-u-border-width solid $govuk-border-colour;
+}
