@@ -1,0 +1,19 @@
+@import "../../globals/scss/import-once";
+@import "../../globals/scss/vars";
+@import "../../globals/scss/colours";
+@import "../../globals/scss/font-face";
+@import "../../globals/scss/typography";
+
+@include exports("file-upload") {
+  .govuk-c-file-upload {
+    @include core-19;
+  }
+
+  .govuk-c-file-upload:focus {
+    outline: $govuk-outline-width-focus solid $govuk-focus-colour;
+  }
+
+  .govuk-c-file-upload--error {
+    border: $govuk-border-width-error solid $govuk-error-colour;
+  }
+}
