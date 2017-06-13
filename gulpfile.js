@@ -98,6 +98,7 @@ gulp.task('scss:compile:ie', () => {
 // ---------------------------------------
 gulp.task('create:package', () => {
   let filterComponents = filter([paths.components + '**/*.scss'], {restore: true})
+  let readmeComponents = filter([paths.components + '**/*.md'], {restore: true})
   let components = gulp.src([paths.components + '**/*'])
     .pipe(changed(paths.packages))
     .pipe(replace('../../globals/scss', '@govuk-frontend/globals'))
@@ -108,9 +109,14 @@ gulp.task('create:package', () => {
       require('postcss-nested')
     ], {syntax: require('postcss-scss')}))
     .pipe(filterComponents.restore)
+    .pipe(readmeComponents)
+    .pipe(replace('<!--', ''))
+    .pipe(replace('-->', ''))
+    .pipe(readmeComponents.restore)
     .pipe(flatten({includeParents: -1}))
     .pipe(gulp.dest(paths.packages))
   let filterGlobals = filter([paths.globalScss + '**/*.scss'], {restore: true})
+  let readmeGlobals = filter([paths.globalScss + '**/*.md'], {restore: true})
   let globals = gulp.src([
     paths.globalScss + '**/*',
     '!' + paths.globalScss + 'govuk-frontend.scss',
@@ -124,6 +130,10 @@ gulp.task('create:package', () => {
       require('postcss-nested')
     ], {syntax: require('postcss-scss')}))
     .pipe(filterGlobals.restore)
+    .pipe(readmeGlobals)
+    .pipe(replace('<!--', ''))
+    .pipe(replace('-->', ''))
+    .pipe(readmeGlobals.restore)
     .pipe(flatten({includeParents: 1}))
     .pipe(rename({
       dirname: 'globals'
