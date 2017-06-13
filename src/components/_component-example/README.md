@@ -1,6 +1,6 @@
-# Breadcrumb
+# Component name
 
-Breadcrumb navigation, showing page hierarchy.
+Description of component.
 
 ## Guidance
 
@@ -8,7 +8,7 @@ Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
 
 ## Demo
 
-Breadcrumb [demo](linkgoeshere).
+Component name [demo](linkgoeshere).
 
 ## Usage
 
@@ -23,6 +23,6 @@ Code example(s)
 ## Installation
 
 ```
-npm install --save @govuk-frontend/breadcrumb
+npm install --save @govuk-frontend/component-name
 ```
 -->

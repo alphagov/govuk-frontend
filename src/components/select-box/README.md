@@ -1,3 +1,28 @@
-#Select boxes
+# Select box
 
-Avoid using select boxes (drop-down lists) - use radio buttons or checkboxes instead.
+The HTML `<select>` element represents a control that provides a menu of options.
+
+## Guidance
+
+Guidance and documentation can be found on [GOV.UK Design system](linkgoeshere).
+
+## Demo
+
+Select box [demo](linkgoeshere).
+
+## Usage
+
+Code example(s)
+
+```
+// code goes here
+```
+
+
+<!--
+## Installation
+
+```
+npm install --save @govuk-frontend/select-box
+```
+-->

@@ -1,4 +1,28 @@
-#Checkboxes
+# Checkbox
 
-* use these to select either on/off toggles or multiple selections
-* make it clear with words when users can select one or multiple options
+Checkbox intro.
+
+## Guidance
+
+Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
+
+## Demo
+
+Checkbox [demo](linkgoeshere).
+
+## Usage
+
+Code example(s)
+
+```
+// code goes here
+```
+
+
+<!--
+## Installation
+
+```
+npm install --save @govuk-frontend/checkbox
+```
+-->

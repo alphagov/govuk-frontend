@@ -1,18 +1,28 @@
 # Table
 
-Consider putting content into tables to make it easier to scan.
+A component for tabular data.
 
-## Numeric tabular data
+## Guidance
 
-when comparing rows of numbers, align numbers to the right in table cells
-use the GOV.UK tabular numbers to allow numbers of the same width to be more easily compared
+Guidance and documentation can be found on [GOV.UK Design system](linkgoeshere).
 
-## Data in a table
+## Demo
 
-Not all content in tables should be right aligned.
+Table [demo](linkgoeshere).
 
-Use a caption to describe the table in the same way you would use a heading. It can help users find, navigate and understand tables.
+## Usage
 
-## Captions
+Code example(s)
 
-Use a caption to describe the table in the same way you would use a heading. It can help users find, navigate and understand tables.
+```
+// code goes here
+```
+
+
+<!--
+## Installation
+
+```
+npm install --save @govuk-frontend/table
+```
+-->

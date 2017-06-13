@@ -1,6 +1,6 @@
 // dependencies go here, ../../globals/scss/import-once at the end
-@import "../../globals/scss/import-once";
 @import "../../globals/scss/colours";
+@import "../../globals/scss/import-once";
 
 // export styles with component name
 @include exports("component-example") {

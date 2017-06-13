@@ -1,4 +1,28 @@
 # List
 
-* list items start with a lowercase letter and have no full stop at the end
-* see the style guide to check how to [punctuate numbered lists](https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style#steps)
+A list of items, list variants are bulleted or numbered.
+
+## Guidance
+
+Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
+
+## Demo
+
+List [demo](linkgoeshere).
+
+## Usage
+
+Code example(s)
+
+```
+// code goes here
+```
+
+
+<!--
+## Installation
+
+```
+npm install --save @govuk-frontend/list
+```
+-->

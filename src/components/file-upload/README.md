@@ -2,6 +2,33 @@
 
 A control that lets the user select a file.
 
+## Guidance
+
+Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
+
+## Demo
+
+File upload [demo](linkgoeshere).
+
+## Usage
+
+Code example(s)
+
+```
+// code goes here
+```
+
+
+<!--
+## Installation
+
+```
+npm install --save @govuk-frontend/file-upload
+```
+-->
+
+## Implementation
+
 We recommend using a native input using `type="file"`, rather than a custom implementation.
 
 This is so:
