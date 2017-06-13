@@ -11,15 +11,19 @@
 
     position: relative;
 
-    @include core-16;
-
     padding-left: 14px;
 
-    color: $govuk-black;
-    text-decoration: none;
     border-bottom: 1px solid $govuk-black;
 
+    color: $govuk-black;
     background: file-url("icon-arrow-left.png") no-repeat 0 4px;
+
+    font-family: $govuk-font-stack;
+    @include font-smoothing;
+    @include core-16;
+    line-height: 1.25;
+
+    text-decoration: none;
 
     &:link,
     &:visited,
@@ -32,17 +36,19 @@
     &::before {
       content: "";
       display: block;
+
+      position: absolute;
+      top: 50%;
+      left: 0;
+
       width: 0;
       height: 0;
+
+      margin-top: -6px;
 
       border-top: 5px solid transparent;
       border-right: 6px solid $govuk-black;
       border-bottom: 5px solid transparent;
-
-      position: absolute;
-      left: 0;
-      top: 50%;
-      margin-top: -6px;
     }
   }
 }

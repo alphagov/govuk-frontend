@@ -6,12 +6,14 @@
 @include exports("select-box") {
   .govuk-c-select-box {
     box-sizing: border-box; // should this be global?
-    font-family: $govuk-font-stack;
-    @include core-19;
-    @include font-smoothing;
     width: 100%;
     padding: 5px 4px 4px;
     border: $govuk-border-width-form-element solid $govuk-text-colour;
+
+    font-family: $govuk-font-stack;
+    @include font-smoothing;
+    @include core-19;
+    line-height: 1.25;
   }
 
   .govuk-c-select-box:focus {

@@ -4,11 +4,10 @@
 @include exports("label") {
   .govuk-c-label {
     display: block;
-
+    color: $govuk-text-colour;
     font-family: $govuk-font-stack;
     @include font-smoothing;
     @include core-19;
-    color: $govuk-text-colour;
   }
 
   .govuk-c-label--bold {

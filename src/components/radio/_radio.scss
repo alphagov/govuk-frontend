@@ -9,12 +9,18 @@
 @include exports("radio") {
   .govuk-c-radio {
     display: block;
-    clear: left;
+
     position: relative;
-    padding: 0 0 0 38px;
+
     margin-bottom: $gutter-one-third;
+    padding: 0 0 0 38px;
+
+    clear: left;
+
     font-family: $govuk-font-stack;
+    @include font-smoothing;
     @include core-19;
+    line-height: 1.25;
   }
 
   .govuk-c-radio:last-child,
@@ -24,12 +30,16 @@
 
   .govuk-c-radio__input {
     position: absolute;
-    cursor: pointer;
-    left: 0;
+
+    z-index: 1;
     top: 0;
+    left: 0;
+
     width: 38px;
     height: 38px;
-    z-index: 1;
+
+    cursor: pointer;
+
     // IE8 doesn’t support pseudoelements, so we don’t want to hide native elements there.
     @if ($is-ie == false) or ($ie-version == 9) {
       margin: 0;
@@ -38,12 +48,16 @@
   }
 
   .govuk-c-radio__label {
-    cursor: pointer;
-    padding: 8px $gutter-one-third 9px 12px;
     display: block;
+
+    padding: 8px $gutter-one-third 9px 12px;
+
+    cursor: pointer;
+
     // remove 300ms pause on mobile
     -ms-touch-action: manipulation;
     touch-action: manipulation;
+
     @include mq($from: tablet) {
       padding-top: 7px;
       padding-bottom: 7px;
@@ -52,24 +66,30 @@
 
   .govuk-c-radio__input + .govuk-c-radio__label:before {
     content: "";
-    border: 2px solid;
-    background: transparent;
-    width: 34px;
-    height: 34px;
+
     position: absolute;
     top: 0;
     left: 0;
+
+    width: 34px;
+    height: 34px;
+
+    border: 2px solid;
     border-radius: 50%;
+    background: transparent;
   }
 
   .govuk-c-radio__input + .govuk-c-radio__label:after {
     content: "";
-    border: 10px solid;
-    width: 0;
-    height: 0;
+
     position: absolute;
     top: 9px;
     left: 9px;
+
+    width: 0;
+    height: 0;
+
+    border: 10px solid;
     border-radius: 50%;
     opacity: 0;
   }

@@ -13,10 +13,12 @@
 
   .govuk-c-details__summary {
     display: inline-block;
-    color: $govuk-blue;
-    cursor: pointer;
+
     position: relative;
     margin-bottom: em(5, 19);
+
+    color: $govuk-blue;
+    cursor: pointer;
   }
 
   .govuk-c-details__summary:hover {
@@ -39,8 +41,8 @@
   }
 
   .govuk-c-details__text {
-    padding: em(15, 19);
     margin-bottom: em(15, 19);
+    padding: em(15, 19);
     @include govuk-u-border-left($govuk-border-width, $govuk-border-colour);
   }
 
