@@ -12,7 +12,7 @@
 
     font-family: $govuk-font-stack;
     @include font-smoothing;
-    @include core-19;
+    @include govuk-core-19;
     line-height: 1.25;
   }
 

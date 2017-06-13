@@ -17,7 +17,7 @@
 
     font-family: $govuk-font-stack;
     @include font-smoothing;
-    @include bold-19;
+    @include govuk-bold-19;
 
   }
 }

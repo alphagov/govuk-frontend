@@ -6,7 +6,7 @@
 @include exports("inset-text") {
   .govuk-c-inset-text {
     font-family: $govuk-font-stack;
-    @include core-19;
+    @include govuk-core-19;
     @include font-smoothing;
     @include govuk-u-border-left($govuk-border-width-wide, $govuk-border-colour);
     clear: both;

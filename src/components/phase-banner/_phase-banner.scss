@@ -27,6 +27,6 @@
     display: table-cell;
     color: $govuk-banner-text-colour;
     vertical-align: baseline;
-    @include core-16;
+    @include govuk-core-16;
   }
 }
