@@ -20,7 +20,7 @@
 
     font-family: $govuk-font-stack;
     @include font-smoothing;
-    @include core-16;
+    @include govuk-core-16;
     line-height: 1.25;
 
     text-decoration: none;

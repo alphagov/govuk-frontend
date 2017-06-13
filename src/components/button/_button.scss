@@ -22,7 +22,7 @@
 
     font-family: $govuk-font-stack;
     @include font-smoothing;
-    @include core-19;
+    @include govuk-core-19;
     line-height: 1.25;
 
     text-decoration: none;
@@ -110,7 +110,7 @@
   }
 
   .govuk-c-button--start {
-    @include bold-24;
+    @include govuk-bold-24;
     // TODO: Fix padding values
     padding: em(8.842px, 24px) em(51.789px, 24px) em(5.053px, 24px) em(20.211px, 24px);
     background-image: file-url("icon-pointer.png");

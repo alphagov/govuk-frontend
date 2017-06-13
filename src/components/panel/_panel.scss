@@ -11,7 +11,7 @@
 
     font-family: $govuk-font-stack;
     @include font-smoothing;
-    @include core-19;
+    @include govuk-core-19;
 
     text-align: center;
   }
@@ -30,7 +30,7 @@
     margin-top: em(60px, 48px);
     margin-bottom: em(30px, 48px);
 
-    @include bold-48;
+    @include govuk-bold-48;
   }
 
   .govuk-c-panel__body {
@@ -38,7 +38,7 @@
     margin-top: em(11.25px, 48px);
     margin-bottom: em(37.895px, 48px);
 
-    @include core-36;
+    @include govuk-core-36;
   }
 
 }

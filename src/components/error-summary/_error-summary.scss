@@ -47,11 +47,11 @@
 
     font-family: $govuk-font-stack;
     @include font-smoothing;
-    @include bold-24;
+    @include govuk-bold-24;
   }
 
   .govuk-c-error-summary__body {
-    @include core-19;
+    @include govuk-core-19;
 
     // TODO: consistent paragraph margins
     p {
