@@ -5,13 +5,15 @@
 
 @include exports("inset-text") {
   .govuk-c-inset-text {
+    margin-bottom: em(15, 19);
+    padding: em(15, 19);
+
+    clear: both;
+
     font-family: $govuk-font-stack;
     @include govuk-core-19;
     @include font-smoothing;
     @include govuk-u-border-left($govuk-border-width-wide, $govuk-border-colour);
-    clear: both;
-    padding: em(15, 19);
-    margin-bottom: em(15, 19);
 
     :first-child {
       margin-top: 0;
