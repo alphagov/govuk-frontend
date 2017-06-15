@@ -1,9 +1,3 @@
-$govuk-base-font-size: 16px !default;
-
-@function rem($px) {
-  @return ($px / $govuk-base-font-size) * 1rem;
-}
-
 // New Transport Light font family
 $govuk-nta-light: "nta", Arial, sans-serif;
 $govuk-nta-light-tabular: "ntatabularnumbers", $govuk-nta-light;
@@ -17,58 +11,62 @@ $govuk-font-stack-tabular: $govuk-nta-light-tabular !default;
   -moz-osx-font-smoothing: grayscale;
 }
 
-@mixin font-size($px) {
-  // sass-lint:disable no-duplicate-properties
-  font-size: $px;
-  font-size: rem($px);
+// Add the govuk- prefix to prevent inteference
+// with the govuk_frontend_toolkit's core-x and bold-x mixins
+@mixin govuk-font-size($px) {
+  font-size: $px + px;
 }
 
 
-@mixin bold-48 {
-  @include font-size(48px);
+@mixin govuk-bold-48 {
+  @include govuk-font-size(48);
+  font-weight: 700;
+
   line-height: (50 / 48);
-  font-weight: 700;
 }
 
-@mixin bold-19 {
-  @include font-size(19px);
+@mixin govuk-bold-19 {
+  @include govuk-font-size(19);
+  font-weight: 700;
+
   line-height: (25 / 19);
-  font-weight: 700;
 }
-@mixin bold-18 {
-  @include font-size(18px);
+@mixin govuk-bold-18 {
+  @include govuk-font-size(18);
+  font-weight: 700;
+
   line-height: (21.6 / 18);
-  font-weight: 700;
 }
 
-@mixin bold-16 {
-  @include font-size(16px);
+@mixin govuk-bold-16 {
+  @include govuk-font-size(16);
+  font-weight: 700;
+
   line-height: (20 / 16);
-  font-weight: 700;
 }
 
-@mixin bold-24 {
-  @include bold-18;
+@mixin govuk-bold-24 {
+  @include govuk-bold-18;
   @include mq($from: tablet) {
-    @include font-size(24px);
+    @include govuk-font-size(24);
     line-height: (30 / 24);
   }
 }
 
-@mixin core-36 {
-  @include font-size(36px);
+@mixin govuk-core-36 {
+  @include govuk-font-size(36);
   line-height: (40 / 36);
 }
 
-@mixin core-19 {
-  @include core-16;
+@mixin govuk-core-19 {
+  @include govuk-core-16;
   @include mq($from: tablet) {
-    @include font-size(19px);
+    @include govuk-font-size(19);
     line-height: (25 / 19);
   }
 }
 
-@mixin core-16 {
-  @include font-size(16px);
+@mixin govuk-core-16 {
+  @include govuk-font-size(16);
   line-height: (20 / 16);
 }

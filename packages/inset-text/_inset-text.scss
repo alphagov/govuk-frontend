@@ -1,0 +1,27 @@
+@import "@govuk-frontend/globals/colours";
+@import "@govuk-frontend/globals/vars";
+@import "@govuk-frontend/globals/utilities/borders";
+@import "@govuk-frontend/globals/import-once";
+
+@include exports("inset-text") {
+  .govuk-c-inset-text {
+    margin-bottom: em(15, 19);
+    padding: em(15, 19);
+
+    clear: both;
+
+    font-family: $govuk-font-stack;
+    @include govuk-core-19;
+    @include font-smoothing;
+    @include govuk-u-border-left($govuk-border-width-wide, $govuk-border-colour);
+  }
+
+    .govuk-c-inset-text :first-child {
+      margin-top: 0;
+    }
+
+    .govuk-c-inset-text :only-child,
+    .govuk-c-inset-text :last-child {
+      margin-bottom: 0;
+    }
+}

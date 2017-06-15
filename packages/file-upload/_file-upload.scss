@@ -1,0 +1,21 @@
+@import "@govuk-frontend/globals/import-once";
+@import "@govuk-frontend/globals/vars";
+@import "@govuk-frontend/globals/colours";
+@import "@govuk-frontend/globals/font-face";
+@import "@govuk-frontend/globals/typography";
+
+@include exports("file-upload") {
+  .govuk-c-file-upload {
+    font-family: $govuk-font-stack;
+    @include font-smoothing;
+    @include govuk-core-19;
+  }
+
+  .govuk-c-file-upload:focus {
+    outline: $govuk-outline-width-focus solid $govuk-focus-colour;
+  }
+
+  .govuk-c-file-upload--error {
+    border: $govuk-border-width-error solid $govuk-error-colour;
+  }
+}
