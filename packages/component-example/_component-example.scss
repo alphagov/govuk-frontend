@@ -1,8 +1,0 @@
-// dependencies go here, @govuk-frontend/globals/import-once at the end
-@import "@govuk-frontend/globals/import-once";
-@import "@govuk-frontend/globals/colours";
-
-// export styles with component name
-@include exports("component-example") {
-  // component styles go here
-}
