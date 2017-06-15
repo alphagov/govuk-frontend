@@ -1,7 +1,7 @@
 {
   "name": "@govuk-frontend/phase-tag",
-  "version": "0.0.3-alpha",
+  "version": "0.0.4-alpha",
   "dependencies": {
-    "@govuk-frontend/globals": "^0.0.3-alpha"
+    "@govuk-frontend/globals": "^0.0.4-alpha"
   }
 }

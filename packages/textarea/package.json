@@ -1,9 +1,9 @@
 {
   "name": "@govuk-frontend/textarea",
-  "version": "0.0.3-alpha",
+  "version": "0.0.4-alpha",
   "dependencies": {
-    "@govuk-frontend/error-message": "^0.0.3-alpha",
-    "@govuk-frontend/globals": "^0.0.3-alpha",
-    "@govuk-frontend/label": "^0.0.3-alpha"
+    "@govuk-frontend/error-message": "^0.0.4-alpha",
+    "@govuk-frontend/globals": "^0.0.4-alpha",
+    "@govuk-frontend/label": "^0.0.4-alpha"
   }
 }

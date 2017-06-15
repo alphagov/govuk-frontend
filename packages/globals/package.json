@@ -1,6 +1,6 @@
 {
   "name": "@govuk-frontend/globals",
-  "version": "0.0.3-alpha",
+  "version": "0.0.4-alpha",
   "dependencies": {
     "sass-mq": "^3.3.2"
   }
