@@ -2,8 +2,27 @@
 
 A single-line text field.
 
-Make field widths proportional to the input they take.
+## Guidance
 
-Ensure that users can enter the information they need at smaller screen sizes.
+Guidance and documentation can be found on [GOV.UK Design system](linkgoeshere).
 
-Snap form fields to 100% width at smaller screen sizes.
+## Demo
+
+Input [demo](linkgoeshere).
+
+## Usage
+
+Code example(s)
+
+```
+// code goes here
+```
+
+
+
+## Installation
+
+```
+npm install --save @govuk-frontend/input
+```
+

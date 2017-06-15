@@ -7,26 +7,33 @@
 
 @include exports("button") {
   .govuk-c-button {
-    -webkit-appearance: none;
-    background-color: $govuk-button-colour;
-    position: relative;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     display: inline-block;
+    position: relative;
     padding: em(10px, 19px) em(15px, 19px) em(5px, 19px);
     border: 0;
     border-radius: 0; //used to be a mixin with vendor
+
     outline: 1px solid transparent; // keep some button appearance when changing colour settings in browsers
     outline-offset: -1px; // fixes bug in Safari that outline width on focus is not overwritten, is reset to 0 on focus in govuk_template
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-    vertical-align: top;
+
+    background-color: $govuk-button-colour;
     -webkit-box-shadow: 0 2px 0 darken($govuk-button-colour, 15%);
             box-shadow: 0 2px 0 darken($govuk-button-colour, 15%);
-    @include font-size(19px);
+
     font-family: $govuk-font-stack;
-    line-height: 1.25;
-    text-decoration: none;
     @include font-smoothing;
+    @include govuk-core-19;
+    line-height: 1.25;
+
+    text-decoration: none;
+
+    vertical-align: top;
+
     cursor: pointer;
+
+    -webkit-appearance: none;
 
     // Apply styling up to devices smaller than tablets (exclude tablets)
     @include mq($until: tablet) {
@@ -84,13 +91,13 @@
   .govuk-c-button--disabled,
   .govuk-c-button[disabled="disabled"],
   .govuk-c-button[disabled] {
-    background: $govuk-button-colour;
     opacity: (.5);
+    background: $govuk-button-colour;
   }
 
     .govuk-c-button--disabled:hover, .govuk-c-button[disabled="disabled"]:hover, .govuk-c-button[disabled]:hover {
-      cursor: default;
       background-color: $govuk-button-colour;
+      cursor: default;
     }
 
     .govuk-c-button--disabled:active, .govuk-c-button[disabled="disabled"]:active, .govuk-c-button[disabled]:active {
@@ -107,7 +114,7 @@
   }
 
   .govuk-c-button--start {
-    @include bold-24;
+    @include govuk-bold-24;
     // TODO: Fix padding values
     padding: em(8.842px, 24px) em(51.789px, 24px) em(5.053px, 24px) em(20.211px, 24px);
     background-image: file-url("icon-pointer.png");
@@ -119,13 +126,14 @@
   // (and fill the space made when the button moves)
   .govuk-c-button:before {
     content: "";
-    height: 110%;
-    width: 100%;
     display: block;
-    background: transparent;
     position: absolute;
     top: 0;
     left: 0;
+
+    width: 100%;
+    height: 110%;
+    background: transparent;
   }
 
   .govuk-c-button:active:before {

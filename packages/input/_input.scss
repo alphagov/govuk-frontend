@@ -8,21 +8,30 @@
   .govuk-c-input {
     -webkit-box-sizing: border-box;
             box-sizing: border-box; // should this be global?
-
-    font-family: $govuk-font-stack;
-    -webkit-font-smoothing: antialiased;
-    @include core-19;
-
     width: 100%;
     padding: 5px 4px 4px;
 
     // setting any background-color makes text invisible when changing colours to dark backgrounds in Firefox (https://bugzilla.mozilla.org/show_bug.cgi?id=1335476)
     // as background-color and color need to always be set together, color should not be set either
     border: $govuk-border-width-form-element solid $govuk-text-colour;
+    border-radius: 0;
+
+    font-family: $govuk-font-stack;
+    @include font-smoothing;
+    @include govuk-core-19;
 
     // Disable inner shadow and remove rounded corners
     -webkit-appearance: none;
-    border-radius: 0;
+  }
+
+  .govuk-c-input::-webkit-outer-spin-button,
+  .govuk-c-input::-webkit-inner-spin-button {
+    margin: 0;
+    -webkit-appearance: none;
+  }
+
+  .govuk-c-input[type="number"] {
+    -moz-appearance: textfield;
   }
 
   .govuk-c-input:focus {

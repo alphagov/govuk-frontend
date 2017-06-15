@@ -8,10 +8,12 @@
   .govuk-c-panel {
     margin: 1em 0;
     padding: 2em 1em;
-    text-align: center;
 
     font-family: $govuk-font-stack;
     @include font-smoothing;
+    @include govuk-core-19;
+
+    text-align: center;
   }
 
   .govuk-c-panel--confirmation {
@@ -25,16 +27,18 @@
   }
 
   .govuk-c-panel__title {
-    @include bold-48;
     margin-top: em(60px, 48px);
     margin-bottom: em(30px, 48px);
+
+    @include govuk-bold-48;
   }
 
   .govuk-c-panel__body {
-    @include core-36;
     // TODO: Fix margin values
     margin-top: em(11.25px, 48px);
     margin-bottom: em(37.895px, 48px);
+
+    @include govuk-core-36;
   }
 
 }
