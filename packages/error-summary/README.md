@@ -1,13 +1,33 @@
 # Error summary
 
-## Summarise errors at the top of the page
+Component to show an error summary box - used at the top of the page, to summarise validation errors.
 
-You must:
-* show an error summary at the top of the page
-* include a heading to alert the user to the error
-* link to each of the problematic questions
+## Guidance
 
-## Implementation advice
+Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
+
+## Demo
+
+Error summary [demo](linkgoeshere).
+
+## Usage
+
+Code example(s)
+
+```
+// code goes here
+```
+
+
+
+## Installation
+
+```
+npm install --save @govuk-frontend/error-summary
+```
+
+
+## Implementation
 
 When an error occurs:
 

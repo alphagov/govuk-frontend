@@ -5,9 +5,12 @@
 @include exports("cookie-banner") {
   .govuk-c-cookie-banner {
     width: 100%;
-    background-color: $govuk-light-blue-25;
+
     padding-top: 10px;
     padding-bottom: 10px;
+
+    background-color: $govuk-light-blue-25;
+
     font-family: $govuk-font-stack;
     @include font-smoothing;
   }
@@ -18,7 +21,7 @@
 
   .govuk-c-cookie-banner__text {
     @include site-width-container;
-    @include core-16;
+    @include govuk-core-16;
     margin-top: 0;
     margin-bottom: 0;
   }

@@ -1,8 +1,32 @@
 # Label
 
-* all form fields should be given labels
-* don’t hide labels, unless the surrounding context makes them unnecessary
-* labels should be aligned above their fields
-* label text should be short, direct and in sentence case
-* avoid colons at the end of labels
-* labels should be associated with form fields using the `for` attribute
+Use labels for all form fields.
+
+## Guidance
+
+Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
+
+## Demo
+
+Label [demo](linkgoeshere).
+
+## Usage
+
+Code example(s)
+
+```
+// code goes here
+```
+
+
+## Installation
+
+```
+npm install --save @govuk-frontend/label
+```
+
+
+
+# Implementation
+
+Labels should be associated with form fields using the `for` attribute.

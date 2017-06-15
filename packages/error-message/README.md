@@ -1,7 +1,28 @@
-#Error message in forms
+# Error message
 
-For each error:
-write a message that helps the user to understand why the error occurred and what to do about it
-put the message in the <label> or <legend> for the question, after the question text, in red
-use a red border to visually connect the message and the question it belongs to
-if the error relates to specific text fields within the question, give these a red border as well
+Component to show a red error message - used for form valiation.
+Use inside a label or legend.
+
+## Guidance
+
+Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
+
+## Demo
+
+Error message [demo](linkgoeshere).
+
+## Usage
+
+Code example(s)
+
+```
+// code goes here
+```
+
+
+## Installation
+
+```
+npm install --save @govuk-frontend/error-message
+```
+

@@ -1,18 +1,28 @@
 # Button
 
-Use buttons to move though a transaction, aim to use only one button per page.
+Button intro.
 
-Button text should be short and describe the action the button performs.
+## Guidance
 
-## Start now
-Launch your service with a Start now button.
+Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
 
-## Button alignment
-Align the primary action button to the left edge of your form, in the user’s line of sight.
+## Demo
 
-## Disabled buttons
+Button [demo](linkgoeshere).
 
-- don’t disable buttons, unless there’s a good reason to
-- if you have to disable buttons, make sure they look like you can’t click them (use 50% opacity)
-- an example of a useful disabled option is a calendar with greyed out days where no bookings are available
-- provide another way for the user to continue, add an error message or text to explain why the button is disabled
+## Usage
+
+Code example(s)
+
+```
+// code goes here
+```
+
+
+
+## Installation
+
+```
+npm install --save @govuk-frontend/button
+```
+

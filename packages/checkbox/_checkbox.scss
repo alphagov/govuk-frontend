@@ -9,12 +9,16 @@
 @include exports("checkbox") {
   .govuk-c-checkbox {
     display: block;
-    clear: left;
     position: relative;
-    padding: 0 0 0 38px;
+
     margin-bottom: $gutter-one-third;
+    padding: 0 0 0 38px;
+
+    clear: left;
+
     font-family: $govuk-font-stack;
-    @include core-19;
+    @include font-smoothing;
+    @include govuk-core-19;
   }
 
   .govuk-c-checkbox:last-child,
@@ -24,12 +28,16 @@
 
   .govuk-c-checkbox__input {
     position: absolute;
-    cursor: pointer;
-    left: 0;
+
+    z-index: 1;
     top: 0;
+    left: 0;
+
     width: 38px;
     height: 38px;
-    z-index: 1;
+
+    cursor: pointer;
+
     // IE8 doesn’t support pseudoelements, so we don’t want to hide native elements there.
     @if ($is-ie == false) or ($ie-version == 9) {
       margin: 0;
@@ -38,9 +46,9 @@
   }
 
   .govuk-c-checkbox__label {
-    cursor: pointer;
-    padding: 8px $gutter-one-third 9px 12px;
     display: block;
+    padding: 8px $gutter-one-third 9px 12px;
+    cursor: pointer;
     // remove 300ms pause on mobile
     -ms-touch-action: manipulation;
     touch-action: manipulation;
@@ -52,28 +60,37 @@
 
   .govuk-c-checkbox__input + .govuk-c-checkbox__label:before {
     content: "";
-    border: 2px solid;
-    background: transparent;
-    width: 34px;
-    height: 34px;
+
     position: absolute;
     top: 0;
     left: 0;
+
+    width: 34px;
+    height: 34px;
+
+    border: 2px solid;
+    background: transparent;
   }
 
   .govuk-c-checkbox__input + .govuk-c-checkbox__label:after {
     content: "";
-    border: solid;
-    border-width: 0 0 5px 5px;
-    background: transparent;
-    width: 17px;
-    height: 7px;
+
     position: absolute;
     top: 10px;
     left: 8px;
+
+    width: 17px;
+    height: 7px;
+
     -webkit-transform: rotate(-45deg);
+
             transform: rotate(-45deg);
+    border: solid;
+    border-width: 0 0 5px 5px;
+
     opacity: 0;
+
+    background: transparent;
   }
 
   .govuk-c-checkbox__input:focus + .govuk-c-checkbox__label:before {
