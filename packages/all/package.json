@@ -1,6 +1,6 @@
 {
   "name": "@govuk-frontend/all",
-  "version": "0.0.3-alpha",
+  "version": "0.0.4-alpha",
   "dependencies": {
     "@govuk-frontend/breadcrumb": "^0.0.3-alpha",
     "@govuk-frontend/button": "^0.0.3-alpha",
