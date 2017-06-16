@@ -10,19 +10,17 @@ Guidance and documentation can be found on [GOV.UK Design system](linkgoeshere).
 
 Textarea [demo](linkgoeshere).
 
-## Usage
-
-Code example(s)
-
-```
-// code goes here
-```
-
-
-
+<!--
 ## Installation
 
 ```
 npm install --save @govuk-frontend/textarea
 ```
+## Usage
 
+Including the Sass
+
+```
+@import "@govuk-frontend/textarea/textarea";
+```
+-->

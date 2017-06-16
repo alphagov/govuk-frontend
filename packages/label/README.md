@@ -10,22 +10,20 @@ Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
 
 Label [demo](linkgoeshere).
 
-## Usage
-
-Code example(s)
-
-```
-// code goes here
-```
-
-
+<!--
 ## Installation
 
 ```
 npm install --save @govuk-frontend/label
 ```
+## Usage
 
+Including the Sass
 
+```
+@import "@govuk-frontend/label/label";
+```
+-->
 
 # Implementation
 

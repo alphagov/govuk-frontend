@@ -10,19 +10,17 @@ Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
 
 Cookie banner [demo](linkgoeshere).
 
-## Usage
-
-Code example(s)
-
-```
-// code goes here
-```
-
-
-
+<!--
 ## Installation
 
 ```
 npm install --save @govuk-frontend/cookie-banner
 ```
+## Usage
 
+Including the Sass
+
+```
+@import "@govuk-frontend/cookie-banner/cookie-banner";
+```
+-->

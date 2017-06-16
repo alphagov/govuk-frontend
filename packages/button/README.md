@@ -10,19 +10,18 @@ Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
 
 Button [demo](linkgoeshere).
 
-## Usage
-
-Code example(s)
-
-```
-// code goes here
-```
-
-
-
+<!--
 ## Installation
 
 ```
 npm install --save @govuk-frontend/button
 ```
 
+## Usage
+
+Including the Sass
+
+```
+@import "@govuk-frontend/button/button";
+```
+-->
