@@ -10,22 +10,20 @@ Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
 
 File upload [demo](linkgoeshere).
 
-## Usage
-
-Code example(s)
-
-```
-// code goes here
-```
-
-
-
+<!--
 ## Installation
 
 ```
 npm install --save @govuk-frontend/file-upload
 ```
+## Usage
 
+Including the Sass
+
+```
+@import "@govuk-frontend/file-upload/file-upload";
+```
+-->
 
 ## Implementation
 

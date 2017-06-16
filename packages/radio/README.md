@@ -10,19 +10,17 @@ Guidance and documentation can be found on [GOV.UK Design system](linkgoeshere).
 
 Radio button [demo](linkgoeshere).
 
-## Usage
-
-Code example(s)
-
-```
-// code goes here
-```
-
-
-
+<!--
 ## Installation
 
 ```
 npm install --save @govuk-frontend/radio
 ```
+## Usage
 
+Including the Sass
+
+```
+@import "@govuk-frontend/radio/radio";
+```
+-->

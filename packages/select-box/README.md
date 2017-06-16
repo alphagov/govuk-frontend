@@ -10,19 +10,17 @@ Guidance and documentation can be found on [GOV.UK Design system](linkgoeshere).
 
 Select box [demo](linkgoeshere).
 
-## Usage
-
-Code example(s)
-
-```
-// code goes here
-```
-
-
-
+<!--
 ## Installation
 
 ```
 npm install --save @govuk-frontend/select-box
 ```
+## Usage
 
+Including the Sass
+
+```
+@import "@govuk-frontend/select-box/select-box";
+```
+-->

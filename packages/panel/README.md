@@ -12,21 +12,19 @@ Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
 
 ## Demo
 
-* Panel [demo](linkgoeshere).
+Panel [demo](linkgoeshere).
 
-## Usage
-
-Code example(s)
-
-```
-// code goes here
-```
-
-
-
+<!--
 ## Installation
 
 ```
-npm install --save @govuk-frontend/phase-banner
+npm install --save @govuk-frontend/panel
 ```
+## Usage
 
+Including the Sass
+
+```
+@import "@govuk-frontend/panel/panel";
+```
+-->

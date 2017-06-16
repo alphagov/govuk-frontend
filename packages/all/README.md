@@ -10,19 +10,17 @@ Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
 
 A [demo](linkgoeshere).
 
-## Usage
-
-Including the Sass
-
-```
-@import "@govuk-frontend/all";
-```
-
-
 <!--
 ## Installation
 
 ```
 npm install --save @govuk-frontend/all
+```
+## Usage
+
+Including the Sass
+
+```
+@import "@govuk-frontend/all/all";
 ```
 -->

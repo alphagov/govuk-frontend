@@ -10,19 +10,17 @@ Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
 
 Date [demo](linkgoeshere).
 
-## Usage
-
-Code example(s)
-
-```
-// code goes here
-```
-
-
-
+<!--
 ## Installation
 
 ```
 npm install --save @govuk-frontend/date
 ```
+## Usage
 
+Including the Sass
+
+```
+@import "@govuk-frontend/date/date";
+```
+-->
