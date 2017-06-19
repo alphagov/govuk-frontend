@@ -68,4 +68,4 @@ Scss source files.
 
 Component source files.
 
-[Component documentation](compoenents.md)
+[Component documentation](components.md)
