@@ -1,6 +1,6 @@
 {
   "name": "@govuk-frontend/button",
-  "version": "0.0.4-alpha",
+  "version": "0.0.5-alpha",
   "dependencies": {
     "@govuk-frontend/globals": "^0.0.4-alpha"
   }
