@@ -20,12 +20,7 @@
     "lerna:diff": "lerna diff",
     "lerna:run": "lerna run",
     "lerna:ls": "lerna ls",
-    "lerna:help": "lerna --help",
-    "lerna:log": "lerna-changelog",
-    "lerna:log:tagfrom": "lerna-changelog --tag-from",
-    "lerna:log:tagto": "lerna-changelog --tag-to",
-    "lerna:log:version": "lerna-changelog --version",
-    "lerna:log:help": "lerna-changelog --help"
+    "lerna:help": "lerna --help"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.1",
@@ -46,7 +41,6 @@
     "gulp-task-listing": "^1.0.1",
     "gulp-tenon-client": "^0.1.1",
     "lerna": "^2.0.0-rc.5",
-    "lerna-changelog": "^0.5.0",
     "merge-stream": "^1.0.1",
     "oldie": "^1.3.0",
     "postcss-normalize": "^3.0.0",
