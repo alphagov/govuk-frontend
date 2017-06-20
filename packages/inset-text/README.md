@@ -8,19 +8,26 @@ Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
 
 ## Demo
 
-Inset text [demo](linkgoeshere).
+Inset text [demo](inset-text.html).
 
-<!--
+## Usage
+
+Code example(s)
+
+```
+<div class="govuk-c-inset-text">
+  <p>
+    It can take up to 8 weeks to register a lasting power of attorney if<br>
+    there are no mistakes in the application.
+  </p>
+</div>
+
+```
+
+
 ## Installation
 
 ```
 npm install --save @govuk-frontend/inset-text
 ```
-## Usage
 
-Including the Sass
-
-```
-@import "@govuk-frontend/inset-text/inset-text";
-```
--->

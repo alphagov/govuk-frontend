@@ -8,14 +8,14 @@ Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
 
 ## Demo
 
-File upload [demo](linkgoeshere).
+File upload [demo](file-upload.html).
 
 ## Usage
 
 Code example(s)
 
 ```
-// code goes here
+@@include('file-upload.html')
 ```
 
 

@@ -1,0 +1,56 @@
+@import "../../globals/scss/import-once";
+@import "../../globals/scss/colours";
+@import "../../globals/scss/utilities/borders";
+
+@include exports("details") {
+  .govuk-c-details {
+    display: block;
+    clear: both;
+    font-family: $govuk-font-stack;
+    @include font-smoothing;
+    @include govuk-core-19;
+  }
+
+  .govuk-c-details__summary {
+    display: inline-block;
+
+    position: relative;
+    margin-bottom: em(5, 19);
+
+    color: $govuk-blue;
+    cursor: pointer;
+  }
+
+  .govuk-c-details__summary:hover {
+    color: $govuk-link-hover-colour;
+  }
+
+  .govuk-c-details__summary:focus {
+    outline: $govuk-outline-width-focus solid $govuk-focus-colour;
+  }
+
+  // Underline only summary text (not the arrow)
+  .govuk-c-details__summary-text {
+    text-decoration: underline;
+  }
+
+  // Match fallback arrow spacing with -webkit default
+  .govuk-c-details__arrow {
+    margin-right: .35em;
+    font-style: normal;
+  }
+
+  .govuk-c-details__text {
+    margin-bottom: em(15, 19);
+    padding: em(15, 19);
+    @include govuk-u-border-left($govuk-border-width, $govuk-border-colour);
+  }
+
+  .govuk-c-details__text p {
+    margin-top: 0;
+  }
+
+  .govuk-c-details__text p:last-child {
+    margin-bottom: 0;
+  }
+}

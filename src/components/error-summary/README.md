@@ -8,14 +8,14 @@ Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
 
 ## Demo
 
-Error summary [demo](linkgoeshere).
+Error summary [demo](error-summary.html).
 
 ## Usage
 
 Code example(s)
 
 ```
-// code goes here
+@@include('error-summary.html')
 ```
 
 

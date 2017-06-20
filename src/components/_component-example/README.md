@@ -8,14 +8,14 @@ Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
 
 ## Demo
 
-Component name [demo](linkgoeshere).
+Component name [demo](component-example.html).
 
 ## Usage
 
 Code example(s)
 
 ```
-// code goes here
+@@include('component-example.html')
 ```
 
 

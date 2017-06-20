@@ -8,14 +8,14 @@ Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
 
 ## Demo
 
-Cookie banner [demo](linkgoeshere).
+Cookie banner [demo](cookie-banner.html).
 
 ## Usage
 
 Code example(s)
 
 ```
-// code goes here
+@@include('cookie-banner.html')
 ```
 
 

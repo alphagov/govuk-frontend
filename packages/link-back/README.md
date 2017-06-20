@@ -8,19 +8,21 @@ Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
 
 ## Demo
 
-Link back [demo](linkgoeshere).
+Link back [demo](link-back.html).
 
-<!--
+## Usage
+
+Code example(s)
+
+```
+<a href="#" class="govuk-c-link-back">Back</a>
+
+```
+
+
 ## Installation
 
 ```
 npm install --save @govuk-frontend/link-back
 ```
-## Usage
 
-Including the Sass
-
-```
-@import "@govuk-frontend/link-back/link-back";
-```
--->

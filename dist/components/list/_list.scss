@@ -1,0 +1,56 @@
+@import "../../globals/scss/import-once";
+@import "../../globals/scss/colours";
+@import "../../globals/scss/font-face";
+@import "../../globals/scss/typography";
+@import "../../globals/scss/vars";
+
+@include exports("list") {
+  .govuk-c-list {
+    margin-top: 5px;
+    margin-bottom: 20px;
+    padding-left: 0;
+
+    list-style-type: none;
+
+    font-family: $govuk-font-stack;
+    @include font-smoothing;
+    @include govuk-core-19;
+  }
+
+  .govuk-c-list > li {
+    @include mq($from: tablet) {
+      margin-bottom: 5px;
+    }
+  }
+    .govuk-c-list a:link {
+      color: $govuk-link-colour;
+    }
+
+    .govuk-c-list a:visited {
+      color: $govuk-link-visited-colour;
+    }
+
+    .govuk-c-list a:hover {
+      color: $govuk-link-hover-colour;
+    }
+
+    .govuk-c-list a:active {
+      color: $govuk-link-active-colour;
+    }
+
+  .govuk-c-list--bullet {
+    padding-left: 20px;
+
+    list-style-type: disc;
+  }
+
+  .govuk-c-list--number {
+    padding-left: 20px;
+    // TODO: Fix IE < 8
+    @include ie-lte(7) {
+      padding-left: 28px;
+    }
+
+    list-style-type: decimal;
+  }
+}

@@ -1,0 +1,165 @@
+@import "../../globals/scss/import-once";
+@import "../../globals/scss/colours";
+@import "../../globals/scss/font-face";
+@import "../../globals/scss/typography";
+@import "../../globals/scss/media-queries";
+@import "../../globals/scss/helpers";
+
+@include exports("button") {
+  .govuk-c-button {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    display: inline-block;
+    position: relative;
+    padding: em(10px, 19px) em(15px, 19px) em(5px, 19px);
+    border: 0;
+    border-radius: 0; //used to be a mixin with vendor
+
+    outline: 1px solid transparent; // keep some button appearance when changing colour settings in browsers
+    outline-offset: -1px; // fixes bug in Safari that outline width on focus is not overwritten, is reset to 0 on focus in govuk_template
+
+    background-color: $govuk-button-colour;
+    -webkit-box-shadow: 0 2px 0 darken($govuk-button-colour, 15%);
+            box-shadow: 0 2px 0 darken($govuk-button-colour, 15%);
+
+    font-family: $govuk-font-stack;
+    @include font-smoothing;
+    @include govuk-core-19;
+    line-height: 1.25;
+
+    text-decoration: none;
+
+    vertical-align: top;
+
+    cursor: pointer;
+
+    -webkit-appearance: none;
+
+    // Apply styling up to devices smaller than tablets (exclude tablets)
+    @include mq($until: tablet) {
+      width: 100%;
+      text-align: center;
+    }
+
+    // Set text colour depending on background colour
+    @if lightness($govuk-button-colour) < 50% {
+      color: $govuk-white;
+
+      &:link,
+      &:hover,
+      &:focus,
+      &:visited {
+        color: $govuk-white;
+      }
+    } @else {
+      color: $govuk-text-colour;
+
+      &:link,
+      &:hover,
+      &:focus,
+      &:visited {
+        color: $govuk-text-colour;
+      }
+    }
+  }
+
+    .govuk-c-button:visited {
+      background-color: $govuk-button-colour;
+    }
+
+    .govuk-c-button:hover,
+    .govuk-c-button:focus {
+      background-color: darken($govuk-button-colour, 5%);
+    }
+
+    .govuk-c-button:active {
+      top: 2px;
+      -webkit-box-shadow: 0 0 0 $govuk-button-colour;
+              box-shadow: 0 0 0 $govuk-button-colour;
+    }
+
+    // Fix unwanted button padding in Firefox
+    .govuk-c-button:-moz-focus-inner {
+      padding: 0;
+      border: 0;
+    }
+
+    .govuk-c-button:focus {
+      outline: 3px solid $govuk-focus-colour;
+    }
+
+  .govuk-c-button--disabled,
+  .govuk-c-button[disabled="disabled"],
+  .govuk-c-button[disabled] {
+    opacity: (.5);
+    background: $govuk-button-colour;
+  }
+
+    .govuk-c-button--disabled:hover, .govuk-c-button[disabled="disabled"]:hover, .govuk-c-button[disabled]:hover {
+      background-color: $govuk-button-colour;
+      cursor: default;
+    }
+
+    .govuk-c-button--disabled:active, .govuk-c-button[disabled="disabled"]:active, .govuk-c-button[disabled]:active {
+      top: 0;
+      -webkit-box-shadow: 0 2px 0 darken($govuk-button-colour, 15%);
+              box-shadow: 0 2px 0 darken($govuk-button-colour, 15%);
+      @include ie-lte(8) {
+        border-bottom: 2px solid darken($govuk-button-colour, 15%);
+      }
+    }
+
+  .govuk-c-button--disabled:focus {
+    outline: none;
+  }
+
+  .govuk-c-button--start {
+    @include govuk-bold-24;
+    // TODO: Fix padding values
+    padding: em(8.842px, 24px) em(51.789px, 24px) em(5.053px, 24px) em(20.211px, 24px);
+    background-image: file-url("icon-pointer.png");
+    background-repeat: no-repeat;
+    background-position: 100% 50%;
+  }
+
+  // making the click target bigger than the button
+  // (and fill the space made when the button moves)
+  .govuk-c-button:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 110%;
+    background: transparent;
+  }
+
+  .govuk-c-button:active:before {
+    top: -10%;
+    height: 120%;
+
+    // IE6 ignores the :before psuedo-class but applies the block to :active
+    // It therefore needs to be reset
+    @include ie(6) {
+      top: auto;
+      height: 100%;
+    }
+  }
+
+  // Fixes a bug where IE puts a black border around certain elements
+  @include ie-lte(8) {
+    .govuk-c-button[type="submit"],
+    .govuk-c-button[type="reset"],
+    .govuk-c-button[type="button"] {
+      -webkit-filter: chroma(color = $govuk-black);
+              filter: chroma(color = $govuk-black);
+    }
+
+    .govuk-c-button[type="submit"].button {
+      -webkit-filter: none;
+              filter: none;
+    }
+  }
+}

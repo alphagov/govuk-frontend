@@ -8,14 +8,14 @@ Guidance and documentation can be found on [GOV.UK Design system](linkgoeshere).
 
 ## Demo
 
-Phase banner [demo](linkgoeshere).
+Phase banner [demo](phase-banner.html).
 
 ## Usage
 
 Code example(s)
 
 ```
-// code goes here
+@@include('phase-banner.html')
 ```
 
 

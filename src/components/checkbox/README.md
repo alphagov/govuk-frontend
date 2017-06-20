@@ -8,14 +8,14 @@ Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
 
 ## Demo
 
-Checkbox [demo](linkgoeshere).
+Checkbox [demo](checkbox.html).
 
 ## Usage
 
 Code example(s)
 
 ```
-// code goes here
+@@include('checkbox.html')
 ```
 
 

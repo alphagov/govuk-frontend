@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>GOV.UK Frontend</title>
+  <link rel="stylesheet" href="/css/govuk-frontend.min.css">
+  <!--[if IE 8]>
+  <link rel="stylesheet" href="/css/govuk-frontend-oldie.min.css">
+  <![endif]-->
+</head>
+<body>
+  <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+  <h1 id="label">Label</h1>
+<p>Use labels for all form fields.</p>
+<h2 id="guidance">Guidance</h2>
+<p>Guidance and documentation can be found on <a href="linkgoeshere">GOV.UK Design System</a>.</p>
+<h2 id="demo">Demo</h2>
+<p>Label <a href="label.html">demo</a>.</p>
+<h2 id="usage">Usage</h2>
+<p>Code example(s)</p>
+<pre><code>&lt;label class=&quot;govuk-c-label&quot;&gt;
+  National Insurance number
+  &lt;span class=&quot;govuk-c-label__hint&quot;&gt;
+    It&#39;s on your National Insurance card, benefit letter, payslip or P60.
+    For example, ‘QQ 12 34 56 C’.
+  &lt;/span&gt;
+&lt;/label&gt;
+
+&lt;label class=&quot;govuk-c-label govuk-c-label--bold&quot;&gt;
+  National Insurance number
+  &lt;span class=&quot;govuk-c-label__hint&quot;&gt;
+    It&#39;s on your National Insurance card, benefit letter, payslip or P60.
+    For example, ‘QQ 12 34 56 C’.
+  &lt;/span&gt;
+&lt;/label&gt;
+</code></pre><!--
+## Installation
+
+```
+npm install --save @govuk-frontend/label
+```
+-->
+<h1 id="implementation">Implementation</h1>
+<p>Labels should be associated with form fields using the <code>for</code> attribute.</p>
+
+  <script src="/js/govuk-frontend.min.js"></script>
+</body>
+</html>

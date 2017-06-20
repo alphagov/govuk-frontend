@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>GOV.UK Frontend</title>
+  <link rel="stylesheet" href="/css/govuk-frontend0.0.6-alpha.min.css">
+  <!--[if IE 8]>
+  <link rel="stylesheet" href="/css/govuk-frontend-oldie0.0.6-alpha.min.css">
+  <![endif]-->
+</head>
+<body>
+  <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+  <label class="govuk-c-label" for="govuk-c-textarea-a">
+  Why can't you provide a National Insurance number?
+</label>
+<textarea class="govuk-c-textarea" name="govuk-c-textarea-a" id="govuk-c-textarea-a" rows="5"></textarea>
+
+<label class="govuk-c-label" for="govuk-c-textarea-b">
+  Why can't you provide a National Insurance number?
+  <span class="govuk-c-error-message">
+    Error message goes here
+  </span>
+</label>
+<textarea class="govuk-c-textarea govuk-c-textarea--error" name="govuk-c-textarea-b" id="govuk-c-textarea-b" rows="5"></textarea>
+
+  <script src="/js/govuk-frontend0.0.6-alpha.min.js"></script>
+</body>
+</html>

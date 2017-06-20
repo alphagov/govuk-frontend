@@ -8,14 +8,14 @@ Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
 
 ## Demo
 
-Inset text [demo](linkgoeshere).
+Inset text [demo](inset-text.html).
 
 ## Usage
 
 Code example(s)
 
 ```
-// code goes here
+@@include('inset-text.html')
 ```
 
 <!--

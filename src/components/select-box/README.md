@@ -8,14 +8,14 @@ Guidance and documentation can be found on [GOV.UK Design system](linkgoeshere).
 
 ## Demo
 
-Select box [demo](linkgoeshere).
+Select box [demo](select-box.html).
 
 ## Usage
 
 Code example(s)
 
 ```
-// code goes here
+@@include('select-box.html')
 ```
 
 

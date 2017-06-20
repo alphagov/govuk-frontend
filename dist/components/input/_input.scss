@@ -1,0 +1,45 @@
+@import "../../globals/scss/import-once";
+@import "../../globals/scss/colours";
+@import "../../globals/scss/typography";
+@import "../label/label";
+@import "../error-message/error-message";
+
+@include exports("input") {
+  .govuk-c-input {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box; // should this be global?
+    width: 100%;
+    padding: 5px 4px 4px;
+
+    // setting any background-color makes text invisible when changing colours to dark backgrounds in Firefox (https://bugzilla.mozilla.org/show_bug.cgi?id=1335476)
+    // as background-color and color need to always be set together, color should not be set either
+    border: $govuk-border-width-form-element solid $govuk-text-colour;
+    border-radius: 0;
+
+    font-family: $govuk-font-stack;
+    @include font-smoothing;
+    @include govuk-core-19;
+
+    // Disable inner shadow and remove rounded corners
+    -webkit-appearance: none;
+  }
+
+  .govuk-c-input::-webkit-outer-spin-button,
+  .govuk-c-input::-webkit-inner-spin-button {
+    margin: 0;
+    -webkit-appearance: none;
+  }
+
+  .govuk-c-input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+  .govuk-c-input:focus {
+    outline: $govuk-outline-width-focus solid $govuk-focus-colour;
+  }
+
+  .govuk-c-input--error {
+    border: $govuk-border-width-error solid $govuk-error-colour;
+  }
+
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>GOV.UK Frontend</title>
+  <link rel="stylesheet" href="/css/govuk-frontend0.0.6-alpha.min.css">
+  <!--[if IE 8]>
+  <link rel="stylesheet" href="/css/govuk-frontend-oldie0.0.6-alpha.min.css">
+  <![endif]-->
+</head>
+<body>
+  <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+  <h1 id="panel">Panel</h1>
+<p>The confirmation panel has a turquoise background and white text.
+Used for transaction end pages, and Bank Holidays.</p>
+<p>The information panel has a GOV.UK blue background and white text.
+Used for explanatory pages.</p>
+<h2 id="guidance">Guidance</h2>
+<p>Guidance and documentation can be found on <a href="linkgoeshere">GOV.UK Design System</a>.</p>
+<h2 id="demo">Demo</h2>
+<ul>
+<li>Panel <a href="panel.html">demo</a>.</li>
+</ul>
+<h2 id="usage">Usage</h2>
+<p>Code example(s)</p>
+<pre><code>&lt;div class=&quot;govuk-c-panel govuk-c-panel--confirmation&quot;&gt;
+  &lt;h2 class=&quot;govuk-c-panel__title&quot;&gt;
+    Application complete
+  &lt;/h2&gt;
+  &lt;div class=&quot;govuk-c-panel__body&quot;&gt;
+    Your reference number is
+    &lt;br&gt;
+    &lt;strong&gt;HDJ2123F&lt;/strong&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;govuk-c-panel govuk-c-panel--information&quot;&gt;
+  Panel content
+&lt;/div&gt;
+</code></pre><!--
+## Installation
+
+```
+npm install --save @govuk-frontend/phase-banner
+```
+-->
+
+  <script src="/js/govuk-frontend0.0.6-alpha.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>GOV.UK Frontend</title>
+  <link rel="stylesheet" href="/css/govuk-frontend0.0.6-alpha.min.css">
+  <!--[if IE 8]>
+  <link rel="stylesheet" href="/css/govuk-frontend-oldie0.0.6-alpha.min.css">
+  <![endif]-->
+</head>
+<body>
+  <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+  <h1 id="file-upload">File upload</h1>
+<p>A control that lets the user select a file.</p>
+<h2 id="guidance">Guidance</h2>
+<p>Guidance and documentation can be found on <a href="linkgoeshere">GOV.UK Design System</a>.</p>
+<h2 id="demo">Demo</h2>
+<p>File upload <a href="file-upload.html">demo</a>.</p>
+<h2 id="usage">Usage</h2>
+<p>Code example(s)</p>
+<pre><code>&lt;label class=&quot;govuk-c-label&quot; for=&quot;file-upload-a&quot;&gt;
+  Upload a file
+&lt;/label&gt;
+&lt;input class=&quot;govuk-c-file-upload&quot; type=&quot;file&quot; id=&quot;file-upload-a&quot;&gt;
+
+&lt;label class=&quot;govuk-c-label&quot; for=&quot;file-upload-b&quot;&gt;
+  Upload a file
+  &lt;span class=&quot;govuk-c-error-message&quot;&gt;
+    Error message goes here
+  &lt;/span&gt;
+&lt;/label&gt;
+&lt;input class=&quot;govuk-c-file-upload govuk-c-file-upload--error&quot; type=&quot;file&quot; id=&quot;file-upload-b&quot;&gt;
+</code></pre><!--
+## Installation
+
+```
+npm install --save @govuk-frontend/file-upload
+```
+-->
+<h2 id="implementation">Implementation</h2>
+<p>We recommend using a native input using <code>type=&quot;file&quot;</code>, rather than a custom implementation.</p>
+<p>This is so:</p>
+<ul>
+<li>the control gains focus when tabbing through the page</li>
+<li>the control functions using a keyboard</li>
+<li>the control functions using assistive technology</li>
+<li>the control functions when javascript is not available</li>
+</ul>
+<p>A custom implementation of this control would need to meet the criteria above.</p>
+
+  <script src="/js/govuk-frontend0.0.6-alpha.min.js"></script>
+</body>
+</html>

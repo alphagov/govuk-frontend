@@ -8,14 +8,14 @@ Guidance and documentation can be found on [GOV.UK Design system](linkgoeshere).
 
 ## Demo
 
-Radio button [demo](linkgoeshere).
+Radio button [demo](radio.html).
 
 ## Usage
 
 Code example(s)
 
 ```
-// code goes here
+@@include('radio.html')
 ```
 
 
