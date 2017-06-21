@@ -176,7 +176,7 @@ gulp.task('build:demo', () => {
 gulp.task('prepare:files', () => {
   let scssFiles = filter([paths.src + '**/*.scss'], {restore: true})
   let readmeFiles = filter([paths.src + '**/*.md'], {restore: true})
-  return gulp.src(paths.src + '**/*')
+  return gulp.src([paths.src + '**/*', '!' + paths.src + 'components/_component-example/**/*'])
     .pipe(scssFiles)
     .pipe(postcss([
       // postcssnormalize,
@@ -242,7 +242,7 @@ const getName = file => {
 
 gulp.task('list:components', () => {
   gulp.src(paths.src + 'component-list-template.html')
-  .pipe(inject(gulp.src([paths.components + '**/*.html']), {
+  .pipe(inject(gulp.src([paths.components + '**/*.html', '!' + paths.components + '_component-example/*.html']), {
     starttag: '<!-- inject:componentlinks -->',
     transform: function (filepath, file, i, length) {
       return '<li class="component-link"><a href="components/' + path.basename(file.path, '.html') + '/index.html">' + getName(file) + '</a></li>'
