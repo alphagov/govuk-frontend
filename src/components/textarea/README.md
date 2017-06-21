@@ -8,14 +8,14 @@ Guidance and documentation can be found on [GOV.UK Design system](linkgoeshere).
 
 ## Demo
 
-Textarea [demo](linkgoeshere).
+Textarea [demo](textarea.html).
 
 ## Usage
 
 Code example(s)
 
 ```
-// code goes here
+@@include('textarea.html')
 ```
 
 

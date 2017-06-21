@@ -9,14 +9,14 @@ Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
 
 ## Demo
 
-Error message [demo](linkgoeshere).
+Error message [demo](error-message.html).
 
 ## Usage
 
 Code example(s)
 
 ```
-// code goes here
+@@include('error-message.html')
 ```
 
 <!--

@@ -8,22 +8,36 @@ Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
 
 ## Demo
 
-File upload [demo](linkgoeshere).
+File upload [demo](file-upload.html).
 
-<!--
+## Usage
+
+Code example(s)
+
+```
+<label class="govuk-c-label" for="file-upload-a">
+  Upload a file
+</label>
+<input class="govuk-c-file-upload" type="file" id="file-upload-a">
+
+<label class="govuk-c-label" for="file-upload-b">
+  Upload a file
+  <span class="govuk-c-error-message">
+    Error message goes here
+  </span>
+</label>
+<input class="govuk-c-file-upload govuk-c-file-upload--error" type="file" id="file-upload-b">
+
+```
+
+
+
 ## Installation
 
 ```
 npm install --save @govuk-frontend/file-upload
 ```
-## Usage
 
-Including the Sass
-
-```
-@import "@govuk-frontend/file-upload/file-upload";
-```
--->
 
 ## Implementation
 

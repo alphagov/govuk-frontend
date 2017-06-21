@@ -8,14 +8,14 @@ Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
 
 ## Demo
 
-Link back [demo](linkgoeshere).
+Link back [demo](link-back.html).
 
 ## Usage
 
 Code example(s)
 
 ```
-// code goes here
+@@include('link-back.html')
 ```
 
 <!--

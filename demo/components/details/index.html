@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>GOV.UK Frontend</title>
+  <link rel="stylesheet" href="/css/govuk-frontend0.0.6-alpha.min.css">
+  <!--[if IE 8]>
+  <link rel="stylesheet" href="/css/govuk-frontend-oldie0.0.6-alpha.min.css">
+  <![endif]-->
+</head>
+<body>
+  <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+  <h1 id="details">Details</h1>
+<p>Component for conditionally revealing content, using the details HTML element.</p>
+<h2 id="guidance">Guidance</h2>
+<p>Guidance and documentation can be found on <a href="linkgoeshere">GOV.UK Design System</a>.</p>
+<h2 id="demo">Demo</h2>
+<p>Details <a href="details.html">demo</a>.</p>
+<h2 id="usage">Usage</h2>
+<p>Code example(s)</p>
+<pre><code>&lt;details class=&quot;govuk-c-details&quot;&gt;
+  &lt;summary class=&quot;govuk-c-details__summary&quot;&gt;
+    &lt;span class=&quot;govuk-c-details__summary-text&quot;&gt;Help with nationality&lt;/span&gt;
+  &lt;/summary&gt;
+  &lt;div class=&quot;govuk-c-border govuk-c-border--left-narrow&quot;&gt;
+    &lt;div class=&quot;govuk-c-details__text&quot;&gt;
+      &lt;p&gt;
+        If you’re not sure about your nationality, try to find out from an official document like a passport or national ID card.
+      &lt;/p&gt;
+      &lt;p&gt;
+        We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post.
+      &lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/details&gt;
+</code></pre><!--
+## Installation
+
+```
+npm install --save @govuk-frontend/details
+```
+-->
+
+  <script src="/js/govuk-frontend0.0.6-alpha.min.js"></script>
+</body>
+</html>

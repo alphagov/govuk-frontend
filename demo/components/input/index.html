@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>GOV.UK Frontend</title>
+  <link rel="stylesheet" href="/css/govuk-frontend0.0.6-alpha.min.css">
+  <!--[if IE 8]>
+  <link rel="stylesheet" href="/css/govuk-frontend-oldie0.0.6-alpha.min.css">
+  <![endif]-->
+</head>
+<body>
+  <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+  <h1 id="input">Input</h1>
+<p>A single-line text field.</p>
+<h2 id="guidance">Guidance</h2>
+<p>Guidance and documentation can be found on <a href="linkgoeshere">GOV.UK Design system</a>.</p>
+<h2 id="demo">Demo</h2>
+<p>Input <a href="input.html">demo</a>.</p>
+<h2 id="usage">Usage</h2>
+<p>Code example(s)</p>
+<pre><code>&lt;label class=&quot;govuk-c-label&quot; for=&quot;govuk-c-input-a&quot;&gt;
+  National Insurance number
+&lt;/label&gt;
+&lt;input class=&quot;govuk-c-input&quot; id=&quot;govuk-c-input-a&quot; type=&quot;text&quot;&gt;
+
+&lt;label class=&quot;govuk-c-label&quot; for=&quot;govuk-c-label-b&quot;&gt;
+  National Insurance number
+  &lt;span class=&quot;govuk-c-error-message&quot;&gt;
+    Error message goes here
+  &lt;/span&gt;
+&lt;/label&gt;
+&lt;input class=&quot;govuk-c-input govuk-c-input--error&quot; id=&quot;govuk-c-input-b&quot; type=&quot;text&quot;&gt;
+
+&lt;label class=&quot;govuk-c-label&quot; for=&quot;govuk-c-input-c&quot;&gt;
+  National Insurance number
+  &lt;span class=&quot;govuk-c-label__hint&quot;&gt;
+    It&#39;s on your National Insurance card, benefit letter, payslip or P60.
+    &lt;br&gt;
+    For example, ‘QQ 12 34 56 C’.
+  &lt;/span&gt;
+&lt;/label&gt;
+&lt;input class=&quot;govuk-c-input&quot; id=&quot;govuk-c-input-c&quot; type=&quot;text&quot;&gt;
+
+&lt;label class=&quot;govuk-c-label&quot; for=&quot;govuk-c-label-d&quot;&gt;
+  National Insurance number
+  &lt;span class=&quot;govuk-c-label__hint&quot;&gt;
+    It&#39;s on your National Insurance card, benefit letter, payslip or P60.
+    &lt;br&gt;
+    For example, ‘QQ 12 34 56 C’.
+  &lt;/span&gt;
+  &lt;span class=&quot;govuk-c-error-message&quot;&gt;
+    Error message goes here
+  &lt;/span&gt;
+&lt;/label&gt;
+&lt;input class=&quot;govuk-c-input govuk-c-input--error&quot; id=&quot;govuk-c-input-d&quot; type=&quot;text&quot;&gt;
+</code></pre><!--
+## Installation
+
+```
+npm install --save @govuk-frontend/input
+```
+-->
+
+  <script src="/js/govuk-frontend0.0.6-alpha.min.js"></script>
+</body>
+</html>

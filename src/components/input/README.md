@@ -8,14 +8,14 @@ Guidance and documentation can be found on [GOV.UK Design system](linkgoeshere).
 
 ## Demo
 
-Input [demo](linkgoeshere).
+Input [demo](input.html).
 
 ## Usage
 
 Code example(s)
 
 ```
-// code goes here
+@@include('input.html')
 ```
 
 

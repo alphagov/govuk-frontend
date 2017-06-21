@@ -43,7 +43,7 @@ This enables changelogs to be automatically generated.
 3. Run the build to ensure any changes to `src/components/component-name` are made to `packages/component-name`.
 
 ```
-gulp create:packages (ideally gulp build)
+gulp build:packages
 ```
 
 4. Commit changes to the updated packages
@@ -66,6 +66,18 @@ lerna:bootstrap
 ```
 
 This will bump the version number in each packages package.json file and update the CHANGELOG.md file.
+
+6. Update `dist` folder with the latest versions
+
+```
+gulp build:dist
+```
+
+7. Update `demo` folder with latest files and versioned assets
+
+```
+gulp build:demo
+```
 
 ## Useful Lerna commands
 

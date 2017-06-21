@@ -8,14 +8,14 @@ Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
 
 ## Demo
 
-Date [demo](linkgoeshere).
+Date [demo](date.html).
 
 ## Usage
 
 Code example(s)
 
 ```
-// code goes here
+@@include('date.html')
 ```
 
 

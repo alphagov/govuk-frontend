@@ -8,14 +8,14 @@ Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
 
 ## Demo
 
-Details [demo](linkgoeshere).
+Details [demo](details.html).
 
 ## Usage
 
 Code example(s)
 
 ```
-// code goes here
+@@include('details.html')
 ```
 
 

@@ -5,7 +5,9 @@
   "globalScss": "src/globals/scss/",
   "globalImages": "src/globals/images/",
   "dist": "dist/",
-  "distCss": "dist/css/",
-  "distJs": "dist/js/",
-  "packages": "packages/"
+  "distComponents": "dist/components/",
+  "tmp": "tmp/",
+  "packages": "packages/",
+  "preview" : "preview/",
+  "demo" : "demo/"
 }

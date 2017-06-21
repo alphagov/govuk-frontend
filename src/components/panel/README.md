@@ -12,14 +12,14 @@ Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
 
 ## Demo
 
-* Panel [demo](linkgoeshere).
+* Panel [demo](panel.html).
 
 ## Usage
 
 Code example(s)
 
 ```
-// code goes here
+@@include('panel.html')
 ```
 
 

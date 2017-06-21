@@ -1,0 +1,23 @@
+@import "../../globals/scss/import-once";
+@import "../../globals/scss/colours";
+@import "../../globals/scss/font-face";
+@import "../../globals/scss/typography";
+@import "../../globals/scss/helpers";
+
+@include exports("error-message") {
+  .govuk-c-error-message {
+    display: block;
+
+    margin: 0;
+    padding: 2px 0;
+
+    clear: both;
+
+    color: $govuk-error-colour;
+
+    font-family: $govuk-font-stack;
+    @include font-smoothing;
+    @include govuk-bold-19;
+
+  }
+}

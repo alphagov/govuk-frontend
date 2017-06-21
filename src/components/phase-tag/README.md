@@ -8,14 +8,14 @@ Guidance and documentation can be found on [GOV.UK Design system](linkgoeshere).
 
 ## Demo
 
-Phase tag [demo](linkgoeshere).
+Phase tag [demo](phase-tag.html).
 
 ## Usage
 
 Code example(s)
 
 ```
-// code goes here
+@@include('phase-tag.html')
 ```
 
 

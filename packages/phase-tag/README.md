@@ -8,19 +8,24 @@ Guidance and documentation can be found on [GOV.UK Design system](linkgoeshere).
 
 ## Demo
 
-Phase tag [demo](linkgoeshere).
+Phase tag [demo](phase-tag.html).
 
-<!--
+## Usage
+
+Code example(s)
+
+```
+<strong class="govuk-c-phase-tag">ALPHA</strong>
+
+<strong class="govuk-c-phase-tag">BETA</strong>
+
+```
+
+
+
 ## Installation
 
 ```
 npm install --save @govuk-frontend/phase-tag
 ```
-## Usage
 
-Including the Sass
-
-```
-@import "@govuk-frontend/phase-tag/phase-tag";
-```
--->

@@ -1,0 +1,72 @@
+// New Transport Light font family
+$govuk-nta-light: "nta", Arial, sans-serif;
+$govuk-nta-light-tabular: "ntatabularnumbers", $govuk-nta-light;
+
+// Allow font stack to be overridden
+$govuk-font-stack: $govuk-nta-light !default;
+$govuk-font-stack-tabular: $govuk-nta-light-tabular !default;
+
+@mixin font-smoothing {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Add the govuk- prefix to prevent inteference
+// with the govuk_frontend_toolkit's core-x and bold-x mixins
+@mixin govuk-font-size($px) {
+  font-size: $px + px;
+}
+
+
+@mixin govuk-bold-48 {
+  @include govuk-font-size(48);
+  font-weight: 700;
+
+  line-height: (50 / 48);
+}
+
+@mixin govuk-bold-19 {
+  @include govuk-font-size(19);
+  font-weight: 700;
+
+  line-height: (25 / 19);
+}
+@mixin govuk-bold-18 {
+  @include govuk-font-size(18);
+  font-weight: 700;
+
+  line-height: (21.6 / 18);
+}
+
+@mixin govuk-bold-16 {
+  @include govuk-font-size(16);
+  font-weight: 700;
+
+  line-height: (20 / 16);
+}
+
+@mixin govuk-bold-24 {
+  @include govuk-bold-18;
+  @include mq($from: tablet) {
+    @include govuk-font-size(24);
+    line-height: (30 / 24);
+  }
+}
+
+@mixin govuk-core-36 {
+  @include govuk-font-size(36);
+  line-height: (40 / 36);
+}
+
+@mixin govuk-core-19 {
+  @include govuk-core-16;
+  @include mq($from: tablet) {
+    @include govuk-font-size(19);
+    line-height: (25 / 19);
+  }
+}
+
+@mixin govuk-core-16 {
+  @include govuk-font-size(16);
+  line-height: (20 / 16);
+}

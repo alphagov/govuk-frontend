@@ -8,14 +8,14 @@ Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
 
 ## Demo
 
-Button [demo](linkgoeshere).
+Button [demo](button.html).
 
 ## Usage
 
 Code example(s)
 
 ```
-// code goes here
+@@include('button.html')
 ```
 
 

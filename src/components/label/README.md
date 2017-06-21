@@ -8,14 +8,14 @@ Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
 
 ## Demo
 
-Label [demo](linkgoeshere).
+Label [demo](label.html).
 
 ## Usage
 
 Code example(s)
 
 ```
-// code goes here
+@@include('label.html')
 ```
 
 <!--

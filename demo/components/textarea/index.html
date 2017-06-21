@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>GOV.UK Frontend</title>
+  <link rel="stylesheet" href="/css/govuk-frontend0.0.6-alpha.min.css">
+  <!--[if IE 8]>
+  <link rel="stylesheet" href="/css/govuk-frontend-oldie0.0.6-alpha.min.css">
+  <![endif]-->
+</head>
+<body>
+  <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+  <h1 id="textarea">Textarea</h1>
+<p>A multi-line text field.</p>
+<h2 id="guidance">Guidance</h2>
+<p>Guidance and documentation can be found on <a href="linkgoeshere">GOV.UK Design system</a>.</p>
+<h2 id="demo">Demo</h2>
+<p>Textarea <a href="textarea.html">demo</a>.</p>
+<h2 id="usage">Usage</h2>
+<p>Code example(s)</p>
+<pre><code>&lt;label class=&quot;govuk-c-label&quot; for=&quot;govuk-c-textarea-a&quot;&gt;
+  Why can&#39;t you provide a National Insurance number?
+&lt;/label&gt;
+&lt;textarea class=&quot;govuk-c-textarea&quot; name=&quot;govuk-c-textarea-a&quot; id=&quot;govuk-c-textarea-a&quot; rows=&quot;5&quot;&gt;&lt;/textarea&gt;
+
+&lt;label class=&quot;govuk-c-label&quot; for=&quot;govuk-c-textarea-b&quot;&gt;
+  Why can&#39;t you provide a National Insurance number?
+  &lt;span class=&quot;govuk-c-error-message&quot;&gt;
+    Error message goes here
+  &lt;/span&gt;
+&lt;/label&gt;
+&lt;textarea class=&quot;govuk-c-textarea govuk-c-textarea--error&quot; name=&quot;govuk-c-textarea-b&quot; id=&quot;govuk-c-textarea-b&quot; rows=&quot;5&quot;&gt;&lt;/textarea&gt;
+</code></pre><!--
+## Installation
+
+```
+npm install --save @govuk-frontend/textarea
+```
+-->
+
+  <script src="/js/govuk-frontend0.0.6-alpha.min.js"></script>
+</body>
+</html>
