@@ -25,6 +25,7 @@ const marked = require('gulp-marked')
 const path = require('path')
 const fileinclude = require('gulp-file-include')
 const wrap = require('gulp-wrap')
+const naturalSort = require('gulp-natural-sort')
 
 // Build packages task --------------
 // ready for publishing with Lerna
@@ -93,7 +94,8 @@ gulp.task('prepare:dist', () => {
       .pipe(gulp.dest(paths.dist + 'js/'))
 
   let listComponents = gulp.src(paths.tmp + 'component-list-template.html')
-    .pipe(inject(gulp.src([paths.tmp + '/components/**/*.html']), {
+    .pipe(inject(gulp.src([paths.tmp + '/components/**/*.html'])
+    .pipe(naturalSort()), {
       starttag: '<!-- inject:componentlinks -->',
       transform: function (filepath, file, i, length) {
         return '<li class="component-link"><a href="components/' + path.basename(file.path, '.html') + '/index.html">' + getName(file) + '</a></li>'
@@ -242,7 +244,8 @@ const getName = file => {
 
 gulp.task('list:components', () => {
   gulp.src(paths.src + 'component-list-template.html')
-  .pipe(inject(gulp.src([paths.components + '**/*.html', '!' + paths.components + '_component-example/*.html']), {
+  .pipe(inject(gulp.src([paths.components + '**/*.html', '!' + paths.components + '_component-example/*.html'])
+  .pipe(naturalSort()), {
     starttag: '<!-- inject:componentlinks -->',
     transform: function (filepath, file, i, length) {
       return '<li class="component-link"><a href="components/' + path.basename(file.path, '.html') + '/index.html">' + getName(file) + '</a></li>'
