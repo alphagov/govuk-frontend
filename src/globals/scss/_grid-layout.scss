@@ -20,3 +20,15 @@
     margin: 0 auto;
   }
 }
+
+@mixin govuk-grid {
+  @include clearfix;
+  margin-right: - ($govuk-gutter / 2);
+  margin-left: - ($govuk-gutter / 2);
+}
+
+@mixin govuk-grid-item {
+  box-sizing: border-box;
+  padding: 0 $govuk-gutter-half;
+  float: left;
+}
