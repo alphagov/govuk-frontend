@@ -1,0 +1,22 @@
+// Build your own grids using these grid mixins
+// usage:
+// .container {
+//   @include govuk-site-width-container;
+// }
+
+@mixin govuk-site-width-container {
+  max-width: $govuk-site-width;
+
+  @include ie-lte(8) {
+    width: $govuk-site-width;
+  }
+
+  margin: 0 $govuk-gutter-half;
+  @include mq($from: tablet) {
+    margin: 0 $govuk-gutter;
+  }
+
+  @include mq($and: "(min-width: #{($govuk-site-width + $govuk-gutter * 2)})") {
+    margin: 0 auto;
+  }
+}
