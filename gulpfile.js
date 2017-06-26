@@ -420,6 +420,13 @@ gulp.task('serve:demo', () => {
   server.start()
 })
 
+gulp.task('review', () => {
+  runsequence('styles',
+              'scripts',
+              'preview:compile:docs',
+              'list:components')
+})
+
 // Default task --------------------------
 // Lists out available tasks.
 // ---------------------------------------

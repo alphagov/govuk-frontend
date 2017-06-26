@@ -12,11 +12,13 @@
   "homepage": "https://github.com/alphagov/govuk-frontend#readme",
   "scripts": {
     "start": "gulp dev",
-    "test": "standard && gulp test"
+    "test": "standard && gulp test",
+    "heroku": "gulp review && node review.js"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.1",
     "cssnano": "^3.10.0",
+    "express": "^4.15.3",
     "gulp": "^3.9.1",
     "gulp-changed": "^3.1.0",
     "gulp-concat": "^2.6.1",
