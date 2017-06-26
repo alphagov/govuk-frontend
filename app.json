@@ -3,6 +3,7 @@
   "scripts": {
   },
   "env": {
+    "HEROKU_APP": "REVIEW"
   },
   "formation": {
   },
@@ -10,6 +11,8 @@
 
   ],
   "buildpacks": [
-
+    {
+      "url": "heroku/nodejs"
+    }
   ]
 }
