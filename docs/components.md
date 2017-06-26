@@ -79,6 +79,8 @@ gulp build:dist
 gulp build:demo
 ```
 
+A brief [explanation](gulp-tasks.md) of used gulp tasks.
+
 ## Useful Lerna commands
 
 To see which components have been changed since the last release:
