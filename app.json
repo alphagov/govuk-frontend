@@ -3,6 +3,7 @@
   "scripts": {
   },
   "env": {
+    "HEROKU_APP": "REVIEW"
   },
   "formation": {
   },
