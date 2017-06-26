@@ -1,1 +1,1 @@
-web: node review.js
+web: npm run heroku

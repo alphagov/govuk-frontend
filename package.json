@@ -12,7 +12,8 @@
   "homepage": "https://github.com/alphagov/govuk-frontend#readme",
   "scripts": {
     "start": "gulp dev",
-    "test": "standard && gulp test"
+    "test": "standard && gulp test",
+    "heroku": "gulp review && node review.js"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.1",
