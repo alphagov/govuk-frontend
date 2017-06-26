@@ -1,1 +1,1 @@
-web: vendor/bin/heroku-php-apache2 demo/
+web: node review.js
