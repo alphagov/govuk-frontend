@@ -7,7 +7,7 @@ const gtenon = require('gulp-tenon-client')
 gulp.task('html:tenon', function () {
   gulp.src('src/components/**/*.html', {read: false})
   .pipe(gtenon({
-    key: 'fc7b85e07ea9b862c6422e412e999f3b',
+    config: 'config/tenon.json',
     snippet: true, // include errorSnippet in the console output
     filter: [
       3,  // Ignore: language of page is not set
