@@ -19,7 +19,7 @@ This task will:
 
 ## `gulp build:packages`
 
-This task is made up of `gulp test`, `gulp prepare:files`, `gulp update:packages` and will:
+This task is made up of `gulp test`, `gulp prepare:files`, `gulp packages:update` and will:
 
 - run javascript & scss lint checker and an accessibility test on `src/` folder
 - apply vendor prefixes via postcss and add them to `tmp/` folder
@@ -31,7 +31,7 @@ This task is made up of `gulp test`, `gulp prepare:files`, `gulp update:packages
 
 ## `gulp build:dist`
 
-This task is made up of `gulp prepare:dist`, `dist:compile:docs` and will:
+This task is made up of `gulp dist:prepare`, `dist:docs` and will:
 
 - add vendor prefixes to scss files, minimize them and compile them to `dist/css/govuk-frontend.css` file
 - add vendor prefixes to scss files, minimize them strip or replace legacy IE properties and compile them to `dist/css/govuk-frontend-oldie.css` file

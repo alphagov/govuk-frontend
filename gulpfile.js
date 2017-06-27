@@ -85,7 +85,7 @@ gulp.task('review', () => {
   runsequence('styles',
               'scripts',
               'preview:docs',
-              'preview:component-list')
+              'preview:component:list')
 })
 
 // Default task -------------------------
