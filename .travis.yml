@@ -7,7 +7,9 @@ sudo: false
 script:
 - npm test
 before_install:
-  openssl aes-256-cbc -K $encrypted_ca4a154c2e6b_key -iv $encrypted_ca4a154c2e6b_iv -in config/tenon.json.enc -out config/tenon.json -d
+- openssl aes-256-cbc -K $encrypted_ca4a154c2e6b_key -iv $encrypted_ca4a154c2e6b_iv -in config/tenon.json.enc -out config/tenon.json -d
+before_deploy:
+- test $TRAVIS_TEST_RESULT = 0
 jobs:
   include:
     - stage: Deploy to the review app
