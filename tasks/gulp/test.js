@@ -1,6 +1,7 @@
 'use strict'
 const gulp = require('gulp')
 const gtenon = require('gulp-tenon-client')
+const axe = require('gulp-axe-webdriver')
 
 // Check HTML using Tenon ----------------
 // ---------------------------------------
@@ -16,4 +17,18 @@ gulp.task('html:tenon', function () {
       97  // Ignore: page has no headings
     ]
   }))
+})
+
+// Check HTML using aXe ------------------
+// ---------------------------------------
+// Check HTML using aXe ----------------
+// ---------------------------------------
+
+gulp.task('html:axe', (done) => {
+  let options = {
+    browser: 'phantomjs',
+    saveOutputIn: 'axeReport.json',
+    urls: ['src/components/**/*.html']
+  }
+  return axe(options, done)
 })

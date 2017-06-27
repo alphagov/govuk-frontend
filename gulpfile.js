@@ -73,6 +73,7 @@ gulp.task('copy:images', () => {
 // --------------------------------------
 gulp.task('test', cb => {
   runsequence('html:tenon',
+              'html:axe',
               'js:lint',
               'scss:lint',
               cb)
