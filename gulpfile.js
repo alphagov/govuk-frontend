@@ -19,22 +19,22 @@ require('./tasks/gulp/preview-compile.js')
 require('./tasks/gulp/preview-component-list.js')
 require('./tasks/gulp/preview-docs.js')
 
-// Build packages task --------------
-// ready for publishing with Lerna
-// ----------------------------------
+// Build packages task -----------------
+// Prepare package folder for publishing
+// -------------------------------------
 gulp.task('build:packages', cb => {
   runsequence('test', 'prepare:files', 'packages:update', cb)
 })
 
-// Build dist task ---------------------
-// tmp files are ready, packages updated
-// -------------------------------------
+// Build dist task ----------------------
+// Create temp files, update packages
+// --------------------------------------
 gulp.task('build:dist', cb => {
   runsequence('dist:prepare', 'dist:docs', cb)
 })
 
 // Dev task -----------------------------
-// Compiles assets and sets up watches.
+// Compiles assets and sets up watches
 // --------------------------------------
 gulp.task('dev', cb => {
   runsequence('styles',
@@ -46,26 +46,31 @@ gulp.task('dev', cb => {
               'watch', cb)
 })
 
-// Umbrrella scripts tasks for preview --
+// Umbrella scripts tasks for preview ---
+// Runs js lint and compilation
 // --------------------------------------
 gulp.task('scripts', cb => {
   runsequence('js:lint', 'js:compile', cb)
 })
 
 // Umbrella styles tasks for preview ----
+// Runs js lint and compilation
+// --------------------------------------
 gulp.task('styles', cb => {
   runsequence('scss:lint', 'scss:compile', cb)
 })
 
 // Copy images task for preview ---------
+// Copies images to preview
 // --------------------------------------
 gulp.task('copy:images', () => {
   return gulp.src(paths.globalImages + '**/*')
     .pipe(gulp.dest(paths.preview + 'images/'))
 })
 
-// All test combined ---------------------
-// ---------------------------------------
+// All test combined --------------------
+// Runs js, scss and accessibility tests
+// --------------------------------------
 gulp.task('test', cb => {
   runsequence('html:tenon',
               'js:lint',
@@ -73,16 +78,17 @@ gulp.task('test', cb => {
               cb)
 })
 
-// Review task for heroku deployments ----
-// ---------------------------------------
+// Review task for heroku deployments ---
+// Compiles files ready for deployment
+// --------------------------------------
 gulp.task('review', () => {
   runsequence('styles',
               'scripts',
               'preview:docs',
-              'list:components')
+              'preview:component-list')
 })
 
-// Default task --------------------------
+// Default task -------------------------
 // Lists out available tasks.
-// ---------------------------------------
+// --------------------------------------
 gulp.task('default', taskListing)

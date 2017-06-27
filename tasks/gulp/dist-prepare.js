@@ -22,7 +22,7 @@ const getName = file => {
 }
 
 // Copy files to dist ---------------
-// create minified verisons as well
+// Create minified versions as well
 // ----------------------------------
 gulp.task('dist:prepare', () => {
   let pkg = require('../../' + paths.packages + 'all/package.json')

@@ -7,8 +7,9 @@ const replace = require('gulp-replace')
 const wrap = require('gulp-wrap')
 const marked = require('gulp-marked')
 
-// Compile docs in dist -------------
-// ----------------------------------
+// Compile docs in dist ----------------------
+// Convert .md to .html abd wrap in template
+// -------------------------------------------
 gulp.task('dist:docs', cb => {
   return gulp.src([paths.distComponents + '**/*.md'])
     .pipe(marked({}))
