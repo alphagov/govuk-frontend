@@ -6,6 +6,8 @@ notifications:
 sudo: false
 script:
 - npm test
+before_deploy:
+- test $TRAVIS_TEST_RESULT = 0
 jobs:
   include:
     - stage: Deploy to the review app
