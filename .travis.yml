@@ -1,8 +1,16 @@
 language: node_js
 node_js:
-  - 6.0
+- 6.0
 notifications:
   email: false
 sudo: false
 script:
-  - npm test
+- npm test
+deploy:
+  # Deploy to a review app, with a nodejs buildpack - to preview PRs before they are merged.
+  - script: echo "Deploying to govuk-frontend-review.herokuapp.com ..."
+  - provider: heroku
+    app: govuk-frontend-review
+    buildpack: heroku/nodejs
+    api_key:
+      secure: OL58snlcd9Z4ge6m4N9VpvD9ZAYon8RZze16nMHifiHyIP98xwKY14WjXIRe68yaKplHINzJBTZTjkUqKugr4o+I1T28rhSqm/QQJa+5E2sQTgORV/4FccGCtR6hiC0kS2cq26KlV1zVFxO/ayXVtRat0vXB6faPdevaJM5p5lO4htW9sOFH6Nwj+Ig7+Noj7QugSiDJJqdAWxBZe5kZ4aw1spusNEFEI09UAVLJq+OI82taQl03AFR07Wxind8uJmslKMtYQUaAw/9C57w9i7jmtpv3tHuXIC1jAaWqNMnOJRB15MMias6oaT/bX0rBTE1MVe43YckLu5F1lhWkG6/FP7X6iMS3BgEShOGZFuKtczPCKUnPu6TANEXKPXnhIiAMbp/UUWe/7hRO8c/e8bVEOJ1URUWBvC9zWbVUyyeyOICVxmeRCZbTLizJQ6flRI+QuDgl6MCr3SKQ04J7YsXr2fb6j/CQh/axsVLb31At3fHcPGCdelPzpQCFG1oW/JUjrHV6E8k8VKuJiHPk/wF5Fs7HKY3E6mFG5iSqrMNl3VPE00TAmR9nXj464Z2zBNeaXngMDXBYwfukCeH825HfmnM2sFzZVR7YD+9ubiss8Qt5jDGtpIvJWH7FLIITuiXOM7cpXyb5i9HNYdZOYUkF4G+E0BEMJ1UvX0TnSN4=
