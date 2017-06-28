@@ -4,10 +4,13 @@ node_js:
 notifications:
   email: false
 sudo: false
-script:
-- npm test
+before_deploy:
+- test $TRAVIS_TEST_RESULT = 0
 jobs:
   include:
+    - stage: Run npm test
+      script:
+      - npm test
     - stage: Deploy to the review app
       script: echo "Deploying to govuk-frontend-review.herokuapp.com ..."
       deploy:
