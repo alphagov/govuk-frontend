@@ -4,12 +4,18 @@ node_js:
 notifications:
   email: false
 sudo: false
-script:
-- npm test
+before_install:
+  openssl aes-256-cbc -K $encrypted_ca4a154c2e6b_key -iv $encrypted_ca4a154c2e6b_iv -in config/tenon.json.enc -out config/tenon.json -d
+before_deploy:
+- test $TRAVIS_TEST_RESULT = 0
 jobs:
   include:
+    - stage: Run npm test
+      script:
+      - npm test
     - stage: Deploy to the review app
       script: echo "Deploying to govuk-frontend-review.herokuapp.com ..."
+      install: skip
       deploy:
         - provider: heroku
           app: govuk-frontend-review
@@ -19,6 +25,7 @@ jobs:
           on: master
     - stage: Deploy to production
       script: echo "Deploying to govuk-frontend.herokuapp.com ..."
+      install: skip
       deploy:
         - provider: heroku
           app: govuk-frontend
