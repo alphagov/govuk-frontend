@@ -13,6 +13,7 @@ jobs:
       - npm test
     - stage: Deploy to the review app
       script: echo "Deploying to govuk-frontend-review.herokuapp.com ..."
+      install: skip
       deploy:
         - provider: heroku
           app: govuk-frontend-review
@@ -22,6 +23,7 @@ jobs:
           on: master
     - stage: Deploy to production
       script: echo "Deploying to govuk-frontend.herokuapp.com ..."
+      install: skip
       deploy:
         - provider: heroku
           app: govuk-frontend
