@@ -5,3 +5,4 @@ preview/
 tmp/
 lerna-debug.log
 axeReports/
+config/tenon.json
