@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
   <title>GOV.UK Frontend</title>
-  <link rel="stylesheet" href="/css/govuk-frontend0.0.6-alpha.min.css">
+  <link rel="stylesheet" href="/css/govuk-frontend0.0.7-alpha.min.css">
   <!--[if IE 8]>
-  <link rel="stylesheet" href="/css/govuk-frontend-oldie0.0.6-alpha.min.css">
+  <link rel="stylesheet" href="/css/govuk-frontend-oldie0.0.7-alpha.min.css">
   <![endif]-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism.min0.0.7-alpha.min.css">
 </head>
-<body>
+<body class="language-markup govuk-c-site-width-container">
   <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
   <h1 id="date">Date</h1>
 <p>Component for entering Day/Month/Year dates.</p>
@@ -37,16 +38,16 @@
 &lt;/legend&gt;
 &lt;div class=&quot;govuk-c-date&quot;&gt;
   &lt;div class=&quot;govuk-c-date__item govuk-c-date__item--day&quot;&gt;
-    &lt;label class=&quot;govuk-c-label govuk-c-date__label&quot; for=&quot;dob-day&quot;&gt;Day&lt;/label&gt;
-    &lt;input class=&quot;govuk-c-input govuk-c-date__input govuk-c-input--error&quot; id=&quot;dob-day&quot; name=&quot;dob-day&quot; type=&quot;number&quot; pattern=&quot;[0-9]*&quot; min=&quot;0&quot; max=&quot;31&quot;&gt;
+    &lt;label class=&quot;govuk-c-label govuk-c-date__label&quot; for=&quot;dob-day-1&quot;&gt;Day&lt;/label&gt;
+    &lt;input class=&quot;govuk-c-input govuk-c-date__input govuk-c-input--error&quot; id=&quot;dob-day-1&quot; name=&quot;dob-day&quot; type=&quot;number&quot; pattern=&quot;[0-9]*&quot; min=&quot;0&quot; max=&quot;31&quot;&gt;
   &lt;/div&gt;
   &lt;div class=&quot;govuk-c-date__item govuk-c-date__item--month&quot;&gt;
-    &lt;label class=&quot;govuk-c-label govuk-c-date__label&quot; for=&quot;dob-month&quot;&gt;Month&lt;/label&gt;
-    &lt;input class=&quot;govuk-c-input govuk-c-date__input&quot; id=&quot;dob-month&quot; name=&quot;dob-month&quot; type=&quot;number&quot; pattern=&quot;[0-9]*&quot; min=&quot;0&quot; max=&quot;12&quot;&gt;
+    &lt;label class=&quot;govuk-c-label govuk-c-date__label&quot; for=&quot;dob-month-1&quot;&gt;Month&lt;/label&gt;
+    &lt;input class=&quot;govuk-c-input govuk-c-date__input&quot; id=&quot;dob-month-1&quot; name=&quot;dob-month&quot; type=&quot;number&quot; pattern=&quot;[0-9]*&quot; min=&quot;0&quot; max=&quot;12&quot;&gt;
   &lt;/div&gt;
   &lt;div class=&quot;govuk-c-date__item govuk-c-date__item--year&quot;&gt;
-    &lt;label class=&quot;govuk-c-label govuk-c-date__label&quot; for=&quot;dob-year&quot;&gt;Year&lt;/label&gt;
-    &lt;input class=&quot;govuk-c-input govuk-c-date__input&quot; id=&quot;dob-year&quot; name=&quot;dob-year&quot; type=&quot;number&quot; pattern=&quot;[0-9]*&quot; min=&quot;0&quot; max=&quot;2016&quot;&gt;
+    &lt;label class=&quot;govuk-c-label govuk-c-date__label&quot; for=&quot;dob-year-1&quot;&gt;Year&lt;/label&gt;
+    &lt;input class=&quot;govuk-c-input govuk-c-date__input&quot; id=&quot;dob-year-1&quot; name=&quot;dob-year&quot; type=&quot;number&quot; pattern=&quot;[0-9]*&quot; min=&quot;0&quot; max=&quot;2016&quot;&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 </code></pre><!--
@@ -57,6 +58,7 @@ npm install --save @govuk-frontend/date
 ```
 -->
 
-  <script src="/js/govuk-frontend0.0.6-alpha.min.js"></script>
+  <script src="/js/govuk-frontend0.0.7-alpha.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min0.0.7-alpha.min.js"></script>
 </body>
 </html>
