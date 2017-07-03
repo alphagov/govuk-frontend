@@ -20,6 +20,20 @@ if (herokuApp === 'DEMO') {
   app.use('/', express.static(path.join(__dirname, 'demo')))
 }
 
+// Disallow search index indexing
+app.use(function (req, res, next) {
+  // none - Equivalent to noindex, nofollow
+  // noindex - Do not show this page in search results and do not show a "Cached" link in search results.
+  // nofollow - Do not follow the links on this page
+  res.setHeader('X-Robots-Tag', 'none')
+  next()
+})
+
+app.get('/robots.txt', function (req, res) {
+  res.type('text/plain')
+  res.send('User-agent: *\nDisallow: /')
+})
+
 app.get('/', (req, res) => {
   res.render('index.html')
 })
