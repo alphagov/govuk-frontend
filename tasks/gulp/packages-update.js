@@ -24,7 +24,7 @@ gulp.task('packages:update', () => {
     .pipe(flatten({includeParents: -1}))
     .pipe(gulp.dest(paths.packages))
 
-  let readmeGlobals = filter([paths.tmp + 'globals/**/*.md'], {restore: true})
+  let readmeGlobals = filter([paths.tmp + '**/*.md'], {restore: true})
 
   let globals = gulp.src([
     paths.tmp + 'globals/scss/**/*',
@@ -32,15 +32,18 @@ gulp.task('packages:update', () => {
     '!' + paths.tmp + 'globals/scss/govuk-frontend-oldie.scss'
   ])
     .pipe(replace('../../components', '@govuk-frontend'))
-    .pipe(readmeGlobals)
-    .pipe(replace('<!--', ''))
-    .pipe(replace('-->', ''))
-    .pipe(readmeGlobals.restore)
     .pipe(flatten({
       newPath: 'globals',
       includeParents: -1
     }))
     .pipe(gulp.dest(paths.packages))
 
-  return merge(components, globals)
+  let icons = gulp.src([paths.tmp + 'icons/*'])
+    .pipe(readmeGlobals)
+    .pipe(replace('<!--', ''))
+    .pipe(replace('-->', ''))
+    .pipe(readmeGlobals.restore)
+    .pipe(gulp.dest(paths.packages + '/icons'))
+
+  return merge(components, globals, icons)
 })
