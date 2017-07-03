@@ -1,6 +1,7 @@
 @import "@govuk-frontend/globals/import-once";
 @import "@govuk-frontend/globals/colours";
 @import "@govuk-frontend/globals/typography";
+@import "@govuk-frontend/site-width-container/site-width-container";
 
 @include exports("cookie-banner") {
   .govuk-c-cookie-banner {
@@ -20,7 +21,7 @@
   }
 
   .govuk-c-cookie-banner__text {
-    @include site-width-container;
+    @include govuk-site-width-container;
     @include govuk-core-16;
     margin-top: 0;
     margin-bottom: 0;

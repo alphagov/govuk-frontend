@@ -1,9 +1,9 @@
 {
   "name": "@govuk-frontend/input",
-  "version": "0.0.5-alpha",
+  "version": "0.0.6-alpha",
   "dependencies": {
     "@govuk-frontend/error-message": "^0.0.5-alpha",
-    "@govuk-frontend/globals": "^0.0.4-alpha",
+    "@govuk-frontend/globals": "^0.0.5-alpha",
     "@govuk-frontend/label": "^0.0.5-alpha"
   }
 }

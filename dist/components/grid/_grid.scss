@@ -1,0 +1,36 @@
+@import "../../globals/scss/vars";
+@import "../../globals/scss/grid-layout";
+@import "../../globals/scss/import-once";
+@import "../site-width-container/site-width-container";
+
+@include exports("grid") {
+
+  .govuk-c-grid {
+    @include govuk-grid;
+  }
+
+  .govuk-c-grid__item {
+    @include govuk-grid-item;
+  }
+
+  .govuk-c-grid__item--full {
+    width: 100%;
+  }
+
+  .govuk-c-grid__item--one-half {
+    width: percentage( 1 / 2);
+  }
+
+  .govuk-c-grid__item--one-third {
+    width: percentage( 1 / 3);
+  }
+
+  .govuk-c-grid__item--two-thirds {
+    width: percentage( 2 / 3);
+  }
+
+  .govuk-c-grid__item--one-quarter {
+    width: percentage( 1 / 4);
+  }
+
+}

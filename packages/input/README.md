@@ -20,7 +20,7 @@ Code example(s)
 </label>
 <input class="govuk-c-input" id="govuk-c-input-a" type="text">
 
-<label class="govuk-c-label" for="govuk-c-label-b">
+<label class="govuk-c-label" for="govuk-c-input-b">
   National Insurance number
   <span class="govuk-c-error-message">
     Error message goes here
@@ -38,7 +38,7 @@ Code example(s)
 </label>
 <input class="govuk-c-input" id="govuk-c-input-c" type="text">
 
-<label class="govuk-c-label" for="govuk-c-label-d">
+<label class="govuk-c-label" for="govuk-c-input-d">
   National Insurance number
   <span class="govuk-c-label__hint">
     It's on your National Insurance card, benefit letter, payslip or P60.
