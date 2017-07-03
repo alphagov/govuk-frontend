@@ -24,8 +24,8 @@ Code example(s)
   <label class="govuk-c-radio__label" for="radio-inline-2">No</label>
 </div>
 <div class="govuk-c-radio">
-  <input class="govuk-c-radio__input" id="radio-inline-2" type="radio" name="radio2" disabled="disabled" value="NA">
-  <label class="govuk-c-radio__label" for="radio-inline-2">Not applicable</label>
+  <input class="govuk-c-radio__input" id="radio-inline-3" type="radio" name="radio2" disabled="disabled" value="NA">
+  <label class="govuk-c-radio__label" for="radio-inline-3">Not applicable</label>
 </div>
 
 ```
