@@ -2,7 +2,7 @@
   "name": "@govuk-frontend/grid",
   "version": "0.0.1-alpha",
   "dependencies": {
-    "@govuk-frontend/globals": "^0.0.4-alpha",
+    "@govuk-frontend/globals": "^0.0.5-alpha",
     "@govuk-frontend/site-width-container": "^0.0.1-alpha"
   }
 }
