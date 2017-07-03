@@ -2,6 +2,11 @@
   "name": "@govuk-frontend/button",
   "version": "0.0.5-alpha",
   "dependencies": {
+<<<<<<< HEAD
+    "@govuk-frontend/globals": "^0.0.5-alpha",
+    "@govuk-frontend/icons": "^0.0.1-alpha"
+=======
     "@govuk-frontend/globals": "^0.0.5-alpha"
+>>>>>>> 7d5184e... chore(packages): update package dependencies
   }
 }

@@ -2,6 +2,14 @@
   "name": "@govuk-frontend/site-width-container",
   "version": "0.0.1-alpha",
   "dependencies": {
+<<<<<<< HEAD
+<<<<<<< HEAD
     "@govuk-frontend/globals": "^0.0.5-alpha"
+=======
+    "@govuk-frontend/globals": "^0.0.4-alpha"
+>>>>>>> 3198fb7... chore(site-width-container): add package.json
+=======
+    "@govuk-frontend/globals": "^0.0.5-alpha"
+>>>>>>> 7d5184e... chore(packages): update package dependencies
   }
 }

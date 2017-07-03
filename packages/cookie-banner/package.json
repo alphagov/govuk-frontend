@@ -2,7 +2,15 @@
   "name": "@govuk-frontend/cookie-banner",
   "version": "0.0.6-alpha",
   "dependencies": {
+<<<<<<< HEAD
+<<<<<<< HEAD
     "@govuk-frontend/globals": "^0.0.5-alpha",
+=======
+    "@govuk-frontend/globals": "^0.0.4-alpha",
+>>>>>>> a1488e6... chore(cookie-banner): update package.json
+=======
+    "@govuk-frontend/globals": "^0.0.5-alpha",
+>>>>>>> 7d5184e... chore(packages): update package dependencies
     "@govuk-frontend/site-width-container": "^0.0.1-alpha"
   }
 }
