@@ -1,0 +1,11 @@
+@import "@govuk-frontend/globals/vars";
+@import "@govuk-frontend/globals/grid-layout";
+@import "@govuk-frontend/globals/import-once";
+
+@include exports("site-width-container") {
+
+  .govuk-c-site-width-container {
+    @include govuk-site-width-container;
+  }
+
+}
