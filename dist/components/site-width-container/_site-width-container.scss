@@ -1,0 +1,11 @@
+@import "../../globals/scss/vars";
+@import "../../globals/scss/grid-layout";
+@import "../../globals/scss/import-once";
+
+@include exports("site-width-container") {
+
+  .govuk-c-site-width-container {
+    @include govuk-site-width-container;
+  }
+
+}

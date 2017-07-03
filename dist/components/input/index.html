@@ -6,8 +6,9 @@
   <!--[if IE 8]>
   <link rel="stylesheet" href="/css/govuk-frontend-oldie.min.css">
   <![endif]-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism.min.min.css">
 </head>
-<body>
+<body class="language-markup govuk-c-site-width-container">
   <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
   <h1 id="input">Input</h1>
 <p>A single-line text field.</p>
@@ -22,7 +23,7 @@
 &lt;/label&gt;
 &lt;input class=&quot;govuk-c-input&quot; id=&quot;govuk-c-input-a&quot; type=&quot;text&quot;&gt;
 
-&lt;label class=&quot;govuk-c-label&quot; for=&quot;govuk-c-label-b&quot;&gt;
+&lt;label class=&quot;govuk-c-label&quot; for=&quot;govuk-c-input-b&quot;&gt;
   National Insurance number
   &lt;span class=&quot;govuk-c-error-message&quot;&gt;
     Error message goes here
@@ -40,7 +41,7 @@
 &lt;/label&gt;
 &lt;input class=&quot;govuk-c-input&quot; id=&quot;govuk-c-input-c&quot; type=&quot;text&quot;&gt;
 
-&lt;label class=&quot;govuk-c-label&quot; for=&quot;govuk-c-label-d&quot;&gt;
+&lt;label class=&quot;govuk-c-label&quot; for=&quot;govuk-c-input-d&quot;&gt;
   National Insurance number
   &lt;span class=&quot;govuk-c-label__hint&quot;&gt;
     It&#39;s on your National Insurance card, benefit letter, payslip or P60.
@@ -61,5 +62,6 @@ npm install --save @govuk-frontend/input
 -->
 
   <script src="/js/govuk-frontend.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.min.js"></script>
 </body>
 </html>
