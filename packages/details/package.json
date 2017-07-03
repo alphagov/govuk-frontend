@@ -2,6 +2,6 @@
   "name": "@govuk-frontend/details",
   "version": "0.0.5-alpha",
   "dependencies": {
-    "@govuk-frontend/globals": "^0.0.4-alpha"
+    "@govuk-frontend/globals": "^0.0.5-alpha"
   }
 }
