@@ -1,7 +1,5 @@
 # Icons
 
-Component for conditionally revealing content, using the details HTML element.
-
 ## Usage
 
 If using express or similar, you need to configure the app to use resolve the npm package install path to `/icons`
@@ -19,4 +17,3 @@ See `dist` folder for an example.
 ```
 npm install --save @govuk-frontend/icons
 ```
-

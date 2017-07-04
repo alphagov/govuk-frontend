@@ -1,7 +1,5 @@
 # Icons
 
-Component for conditionally revealing content, using the details HTML element.
-
 ## Usage
 
 If using express or similar, you need to configure the app to use resolve the npm package install path to `/icons`
