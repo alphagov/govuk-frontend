@@ -1,6 +1,6 @@
 {
   "name": "@govuk-frontend/cookie-banner",
-  "version": "0.0.6-alpha",
+  "version": "0.0.7-alpha",
   "dependencies": {
     "@govuk-frontend/globals": "^0.0.5-alpha",
     "@govuk-frontend/site-width-container": "^0.0.1-alpha"
