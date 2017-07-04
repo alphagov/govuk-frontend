@@ -15,6 +15,7 @@ const inject = require('gulp-inject')
 const naturalSort = require('gulp-natural-sort')
 const replace = require('gulp-replace')
 const path = require('path')
+const eol = require('gulp-eol')
 
 const getName = file => {
   let name = path.basename(file.path).slice(0, -path.extname(file.path).length).replace(/^_/g, '')
@@ -46,6 +47,7 @@ gulp.task('dist:prepare', () => {
     .pipe(rename({
       extname: '.min.css'
     }))
+    .pipe(eol())
     .pipe(gulp.dest(paths.dist + 'css/'))
 
   let legacyScss = gulp.src(paths.tmp + 'globals/scss/govuk-frontend-oldie.scss')
@@ -66,6 +68,7 @@ gulp.task('dist:prepare', () => {
     .pipe(rename({
       extname: '.min.css'
     }))
+    .pipe(eol())
     .pipe(gulp.dest(paths.dist + 'css/'))
 
   let js = gulp.src([paths.tmp + '**/*.js'])
@@ -74,6 +77,7 @@ gulp.task('dist:prepare', () => {
       .pipe(rename({
         extname: '.min.js'
       }))
+      .pipe(eol())
       .pipe(gulp.dest(paths.dist + 'js/'))
 
   let listComponents = gulp.src(paths.tmp + 'component-list-template.html')
@@ -91,6 +95,7 @@ gulp.task('dist:prepare', () => {
     }))
     .pipe(replace('.css', '.min.css'))
     .pipe(replace('.js', '.min.js'))
+    .pipe(eol())
     .pipe(gulp.dest(paths.dist))
 
   return merge(scss, legacyScss, js, listComponents, copy)
