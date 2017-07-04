@@ -39,7 +39,7 @@ gulp.task('build:dist', cb => {
 gulp.task('dev', cb => {
   runsequence('styles',
               'scripts',
-              'copy:images',
+              'copy:icons',
               'preview:docs',
               'preview:component:list',
               'serve:preview',
@@ -60,12 +60,12 @@ gulp.task('styles', cb => {
   runsequence('scss:lint', 'scss:compile', cb)
 })
 
-// Copy images task for preview ---------
-// Copies images to preview
+// Copy icons task for preview ---------
+// Copies icons to preview
 // --------------------------------------
-gulp.task('copy:images', () => {
-  return gulp.src(paths.globalImages + '**/*')
-    .pipe(gulp.dest(paths.preview + 'images/'))
+gulp.task('copy:icons', () => {
+  return gulp.src(paths.src + 'globals/icons/**/*.{png,svg,gif,jpg}')
+    .pipe(gulp.dest(paths.preview + 'icons/'))
 })
 
 // All test combined --------------------
@@ -85,6 +85,7 @@ gulp.task('test', cb => {
 gulp.task('review', () => {
   runsequence('styles',
               'scripts',
+              'copy:icons',
               'preview:docs',
               'preview:component:list')
 })
