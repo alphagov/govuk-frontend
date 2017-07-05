@@ -1,8 +1,8 @@
 {
   "name": "@govuk-frontend/breadcrumb",
-  "version": "0.0.6-alpha",
+  "version": "0.0.8-alpha",
   "dependencies": {
-    "@govuk-frontend/globals": "^0.0.5-alpha",
-    "@govuk-frontend/icons": "^0.0.1-alpha"
+    "@govuk-frontend/globals": "^0.0.8-alpha",
+    "@govuk-frontend/icons": "^0.0.2-alpha"
   }
 }
