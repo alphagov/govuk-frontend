@@ -1,0 +1,12 @@
+@import "../import-once";
+@import "../colours";
+
+@include exports("shapes") {
+  .govuk-u-circle {
+    display: inline-block;
+    border-radius: 50%;
+    color: $govuk-white;
+    background: $govuk-black;
+    text-align: center;
+  }
+}
