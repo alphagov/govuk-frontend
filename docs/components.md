@@ -28,17 +28,19 @@ In a new branch:
 gulp build:packages
 ```
 
+- Ensure each component has a package.json file listing its dependencies.
+
 - Commit changes to the updated packages
 
 ```
+git add packages/*
 git commit -m "chore(packages): copy changes to packages"
 ```
 
-- Ensure each component has a package.json file listing its dependencies.
+Open a pull request for these changes.
 
-```
-git commit -m "chore(componentname): add package.json"
-```
+
+Once these have been merged into master.
 
 - Run lerna bootstrap to install all package dependencies and link any cross-dependencies
 
@@ -46,16 +48,29 @@ git commit -m "chore(componentname): add package.json"
 lerna bootstrap
 ```
 
+- Run lerna updated to see which packages have been changed
+
+```
+lerna updated
+```
+
 - Manually bump the version of each package
 
 ```
-lerna publish --skip-git --skip-npm
+lerna publish -m "chore(release): update packages and publish"
 ```
+
+Then in a new branch:
 
 - Update `dist` folder with the latest versions
 
 ```
 gulp build:dist
+```
+
+```
+git add dist/*
+git commit -m "chore(dist): update dist to version x.x.x-alpha"
 ```
 
 - Update `demo` folder with latest files and versioned assets
@@ -64,42 +79,13 @@ gulp build:dist
 gulp build:demo
 ```
 
-Open a pull request for these changes. 
-[Here is an example](https://github.com/alphagov/govuk-frontend/pull/102).
-
-
-Once these changes have been merged into master.
-
-Update the master branch
-
-``
-git checkout master
-git pull --rebase origin/master
+```
+git add demo/*
+git commit -m "chore(demo): update demo to version x.x.x-alpha"
 ```
 
-Publish these changes to git and to npm.
+Open a pull request for these changes.
 
-```
-lerna publish -m "chore(release): update packages and publish"
-```
-
-### Publishing components using conventional-commits (when ready to publish pre-release components).
-
-We are using independent mode to version each package independently.
-
-To keep track of whether versions are major, minor or patch - we can use Lerna's conventional commits flag when publishing to decide on the next version number.
-
-To test conventional-commits (but not publish to npm):
-
-    lerna publish --conventional-commits --skip-npm
-
-This will generate a changelog for each component split into:
-
-```
-fix:
-feature:
-BREAKING CHANGE:
-```
 
 ## Commit structure
 
