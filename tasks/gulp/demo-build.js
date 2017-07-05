@@ -7,6 +7,7 @@ const rename = require('gulp-rename')
 const replace = require('gulp-replace')
 const filter = require('gulp-filter')
 const wrap = require('gulp-wrap')
+const eol = require('gulp-eol')
 
 // Copy files to demo -------------------
 // create minified verisons as well
@@ -40,12 +41,14 @@ gulp.task('build:demo', () => {
   ])
   .pipe(replace('.min.css', pkg.version + '.min.css'))
   .pipe(replace('.min.js', pkg.version + '.min.js'))
+  .pipe(eol())
   .pipe(gulp.dest(paths.demo + 'components/'))
 
   let original = gulp.src([paths.dist + 'components/**/*.html', '!' + paths.dist + '/components/**/index.html'])
     .pipe(wrap({src: paths.src + 'component-view-template.html'}))
     .pipe(replace('.css', pkg.version + '.min.css'))
     .pipe(replace('.js', pkg.version + '.min.js'))
+    .pipe(eol())
     .pipe(gulp.dest(paths.demo + 'components/'))
 
   let copyIcons = gulp.src(paths.dist + 'icons/**/*.{png,svg,gif,jpg}')

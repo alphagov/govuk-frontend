@@ -17,3 +17,4 @@ See `dist` folder for an example.
 ```
 npm install --save @govuk-frontend/icons
 ```
+

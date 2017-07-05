@@ -6,6 +6,7 @@ const rename = require('gulp-rename')
 const replace = require('gulp-replace')
 const wrap = require('gulp-wrap')
 const marked = require('gulp-marked')
+const eol = require('gulp-eol')
 
 // Compile docs in dist ----------------------
 // Convert .md to .html abd wrap in template
@@ -19,5 +20,6 @@ gulp.task('dist:docs', cb => {
     }))
     .pipe(replace('.css', '.min.css'))
     .pipe(replace('.js', '.min.js'))
+    .pipe(eol())
     .pipe(gulp.dest(paths.distComponents))
 })
