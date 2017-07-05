@@ -3,18 +3,17 @@
 @import "../../globals/scss/font-face";
 @import "../../globals/scss/typography";
 @import "../../globals/scss/vars";
+@import "../../globals/scss/utilities/shapes";
 
 @include exports("list") {
   .govuk-c-list {
+    @include font-smoothing;
+    @include govuk-core-19;
     margin-top: 5px;
     margin-bottom: 20px;
     padding-left: 0;
-
     list-style-type: none;
-
     font-family: $govuk-font-stack;
-    @include font-smoothing;
-    @include govuk-core-19;
   }
 
   .govuk-c-list > li {
@@ -48,12 +47,31 @@
   }
 
   .govuk-c-list--number {
-    padding-left: 20px;
     // TODO: Fix IE < 8
     @include ie-lte(7) {
       padding-left: 28px;
     }
-
+    padding-left: 20px;
     list-style-type: decimal;
+  }
+
+  .govuk-c-list--icon > li {
+    margin-bottom: 15px;
+  }
+
+  .govuk-c-list__icon {
+    @include govuk-bold-12;
+    min-width: 24px;
+    min-height: 24px;
+    margin-right: .75em;
+    font-family: $govuk-font-stack-tabular;
+    line-height: 24px;
+  }
+
+  .govuk-c-list__icon--large {
+    @include govuk-bold-19;
+    min-width: 38px;
+    min-height: 38px;
+    line-height: 38px;
   }
 }
