@@ -39,15 +39,13 @@ gulp.task('build:demo', () => {
   let copyIndex = gulp.src([
     paths.dist + 'components/**/index.html'
   ])
-  .pipe(replace('.min.css', pkg.version + '.min.css'))
-  .pipe(replace('.min.js', pkg.version + '.min.js'))
+  .pipe(replace(/(govuk.*)(?=\.min)/g, '$1' + pkg.version))
   .pipe(eol())
   .pipe(gulp.dest(paths.demo + 'components/'))
 
   let original = gulp.src([paths.dist + 'components/**/*.html', '!' + paths.dist + '/components/**/index.html'])
     .pipe(wrap({src: paths.src + 'component-view-template.html'}))
-    .pipe(replace('.css', pkg.version + '.min.css'))
-    .pipe(replace('.js', pkg.version + '.min.js'))
+    .pipe(replace(/(govuk.*)(?=\.(js|css))/g, '$1' + pkg.version + '.min'))
     .pipe(eol())
     .pipe(gulp.dest(paths.demo + 'components/'))
 

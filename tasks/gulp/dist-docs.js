@@ -18,8 +18,7 @@ gulp.task('dist:docs', cb => {
     .pipe(rename(path => {
       path.basename = 'index'
     }))
-    .pipe(replace('.css', '.min.css'))
-    .pipe(replace('.js', '.min.js'))
+    .pipe(replace(/(govuk.*\.)(?=(js|css))/g, '$1min.'))
     .pipe(eol())
     .pipe(gulp.dest(paths.distComponents))
 })
