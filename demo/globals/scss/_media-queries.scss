@@ -55,10 +55,13 @@ $mq-breakpoints: (
 // (i.e. when $mq-responsive is set to 'false').
 $mq-static-breakpoint: desktop;
 
+// sass-lint:disable no-css-comments
+// for dev and demo only
+/*start:devonly
 // If you want to display the currently active breakpoint in the top
 // right corner of your site during development, add the breakpoints
 // to this list, ordered by width, e.g. (mobile, tablet, desktop).
 $mq-show-breakpoints: (mobile, tablet, desktop);
+end:devonly*/
 
 @import "./node_modules/sass-mq/mq";
-
