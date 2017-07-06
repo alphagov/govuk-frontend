@@ -28,7 +28,7 @@ const getName = file => {
 gulp.task('dist:prepare', () => {
   let pkg = require('../../' + paths.packages + 'all/package.json')
   let fs = require('fs')
-  fs.writeFileSync(paths.dist + 'VERSION.txt', pkg.version)
+  fs.writeFileSync(paths.dist + 'VERSION.txt', pkg.version + '\r\n')
 
   let copy = gulp.src([
     paths.tmp + '**/*',
