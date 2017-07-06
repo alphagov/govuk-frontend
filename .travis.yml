@@ -12,6 +12,9 @@ jobs:
   include:
     - stage: Run npm test
       script:
+      # Ensure Travis aborts without running tests if the package-lock.json file needs updating
+      - set -e
+      - ./check-package-lock.sh
       - npm test
     - stage: Deploy to the review app
       script: echo "Deploying to govuk-frontend-review.herokuapp.com ..."
