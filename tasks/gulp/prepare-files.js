@@ -7,6 +7,7 @@ const autoprefixer = require('autoprefixer')
 const filter = require('gulp-filter')
 const fileinclude = require('gulp-file-include')
 const flatten = require('gulp-flatten')
+const replace = require('gulp-replace')
 
 // Copy to temp ----------------------------
 // Copies to temp/ & autoprefix scss
@@ -17,6 +18,8 @@ gulp.task('prepare:files', () => {
   let icons = filter([paths.src + 'globals/icons/*'], {restore: true})
   return gulp.src([paths.src + '**/*', '!' + paths.src + 'components/_component-example/**/*', '!' + paths.src + 'globals/icons'])
     .pipe(scssFiles)
+    .pipe(replace('//start:devonly', '/*start:devonly'))
+    .pipe(replace('//end:devonly', 'end:devonly*/'))
     .pipe(postcss([
       // postcssnormalize,
       autoprefixer,
