@@ -93,15 +93,18 @@
     background: transparent;
   }
 
+  // Focused state
   .govuk-c-checkbox__input:focus + .govuk-c-checkbox__label:before {
     -webkit-box-shadow: 0 0 0 3px $govuk-focus-colour;
             box-shadow: 0 0 0 3px $govuk-focus-colour;
   }
 
-  .govuk-c-checkbox__input:focus + .govuk-c-checkbox__label:after {
+  // Selected state
+  .govuk-c-checkbox__input:checked + .govuk-c-checkbox__label:after {
     opacity: 1;
   }
 
+  // Disabled state
   .govuk-c-checkbox__input:disabled + .govuk-c-checkbox__label {
     opacity: .5;
   }
