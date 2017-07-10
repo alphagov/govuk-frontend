@@ -1,8 +1,8 @@
 {
   "name": "@govuk-frontend/grid",
-  "version": "0.0.2-alpha",
+  "version": "0.0.3-alpha",
   "dependencies": {
-    "@govuk-frontend/globals": "^0.0.8-alpha",
-    "@govuk-frontend/site-width-container": "^0.0.2-alpha"
+    "@govuk-frontend/globals": "^0.0.9-alpha",
+    "@govuk-frontend/site-width-container": "^0.0.3-alpha"
   }
 }
