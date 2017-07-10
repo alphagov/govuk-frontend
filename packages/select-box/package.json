@@ -1,8 +1,8 @@
 {
   "name": "@govuk-frontend/select-box",
-  "version": "0.0.8-alpha",
+  "version": "0.0.9-alpha",
   "dependencies": {
-    "@govuk-frontend/globals": "^0.0.8-alpha",
-    "@govuk-frontend/label": "^0.0.8-alpha"
+    "@govuk-frontend/globals": "^0.0.9-alpha",
+    "@govuk-frontend/label": "^0.0.9-alpha"
   }
 }
