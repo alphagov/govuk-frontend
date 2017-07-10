@@ -8,6 +8,6 @@ const paths = require('../../config/paths.json')
 gulp.task('watch', () => {
   gulp.watch([paths.src + '**/**/*.scss'], ['styles'])
   gulp.watch([paths.src + '**/**/*.js'], ['scripts'])
-  gulp.watch([paths.src + 'components/**/*.html'], ['preview:component:list'])
+  gulp.watch([paths.src + 'components/**/*.html'], ['preview:component:list', 'preview:docs'])
   gulp.watch([paths.src + 'components/**/*.md'], ['preview:docs'])
 })
