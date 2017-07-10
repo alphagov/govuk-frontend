@@ -9,11 +9,11 @@
     box-sizing: border-box; // should this be global?
     width: 100%;
     padding: 5px 4px 4px;
-
     // setting any background-color makes text invisible when changing colours to dark backgrounds in Firefox (https://bugzilla.mozilla.org/show_bug.cgi?id=1335476)
     // as background-color and color need to always be set together, color should not be set either
     border: $govuk-border-width-form-element solid $govuk-text-colour;
     border-radius: 0;
+
 
     font-family: $govuk-font-stack;
     @include font-smoothing;
@@ -38,6 +38,7 @@
   }
 
   .govuk-c-input--error {
+    padding: 3px 2px 2px;
     border: $govuk-border-width-error solid $govuk-error-colour;
   }
 
