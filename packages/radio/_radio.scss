@@ -94,15 +94,18 @@
     opacity: 0;
   }
 
+  // Focused state
   .govuk-c-radio__input:focus + .govuk-c-radio__label:before {
     -webkit-box-shadow: 0 0 0 4px $govuk-focus-colour;
             box-shadow: 0 0 0 4px $govuk-focus-colour;
   }
 
-  .govuk-c-radio__input:focus + .govuk-c-radio__label:after {
+  // Selected state
+  .govuk-c-radio__input:checked + .govuk-c-radio__label:after {
     opacity: 1;
   }
 
+  // Disabled state
   .govuk-c-radio__input:disabled + .govuk-c-radio__label {
     opacity: .5;
   }
