@@ -1,4 +1,4 @@
-# Check to see whether the package-lock.json file needs updating.
+# Check to see whether the VERSION.txt file has changed.
 
 echo "Check if Demo VERSION.txt has been updated"
 
