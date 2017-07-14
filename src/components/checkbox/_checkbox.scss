@@ -85,6 +85,9 @@
     transform: rotate(-45deg);
     border: solid;
     border-width: 0 0 5px 5px;
+    // Fix bug in IE11 caused by transform rotate (-45deg).
+    // See: alphagov/govuk_elements/issues/518
+    border-top-color: transparent;
 
     opacity: 0;
 
