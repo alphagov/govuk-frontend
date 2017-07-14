@@ -105,6 +105,11 @@
   }
 
   // Disabled state
+  .govuk-c-radio__input:disabled,
+  .govuk-c-radio__input:disabled + .govuk-c-radio__label {
+    cursor: default;
+  }
+
   .govuk-c-radio__input:disabled + .govuk-c-radio__label {
     opacity: .5;
   }

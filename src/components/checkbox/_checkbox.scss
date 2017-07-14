@@ -102,6 +102,11 @@
   }
 
   // Disabled state
+  .govuk-c-checkbox__input:disabled,
+  .govuk-c-checkbox__input:disabled + .govuk-c-checkbox__label {
+    cursor: default;
+  }
+
   .govuk-c-checkbox__input:disabled + .govuk-c-checkbox__label {
     opacity: .5;
   }
