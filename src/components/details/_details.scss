@@ -1,6 +1,7 @@
-@import "../../globals/scss/import-once";
 @import "../../globals/scss/colours";
+@import "../../globals/scss/typography";
 @import "../../globals/scss/utilities/borders";
+@import "../../globals/scss/import-once";
 
 @include exports("details") {
   .govuk-c-details {
