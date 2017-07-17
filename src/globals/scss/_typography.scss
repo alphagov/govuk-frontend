@@ -75,3 +75,7 @@ $govuk-font-stack-tabular: $govuk-nta-light-tabular !default;
   @include govuk-font-size(16);
   line-height: (20 / 16);
 }
+
+@mixin govuk-bold {
+  font-weight: 700;
+}
