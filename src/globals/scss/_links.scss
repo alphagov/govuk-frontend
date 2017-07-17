@@ -1,0 +1,29 @@
+@import "import-once";
+@import "colours";
+
+@include exports("links") {
+  a:link {
+    color: $govuk-link-colour;
+  }
+
+  a:visited {
+    color: $govuk-link-visited-colour;
+  }
+
+  a:hover {
+    color: $govuk-link-hover-colour;
+  }
+
+  a:active {
+    color: $govuk-link-active-colour;
+  }
+
+  a {
+    -webkit-tap-highlight-color: rgba($govuk-black, .3);
+  }
+
+  a:focus {
+    outline: 3px solid $govuk-focus-colour;
+    background-color: $govuk-focus-colour;
+  }
+}
