@@ -28,22 +28,6 @@
     background-color: $govuk-focus-colour;
   }
 
-  .govuk-c-link--skip {
-    position: absolute;
-    left: -9999em;
-  }
-
-  //Default link colour doesn't have enough contrast against $govuk-focus-colour
-  .govuk-c-link--skip:focus,
-  .govuk-c-link--skip:visited {
-    color: $govuk-text-colour;
-  }
-
-  .govuk-c-link--skip:focus {
-    z-index: 1;
-    left: 0;
-  }
-
   @include mq($media-type: print) {
     a,
     a:visited {
