@@ -56,7 +56,16 @@
   }
 
   .govuk-c-link--muted {
-    color: $govuk-grey-1;
+    &:link,
+    &:visited,
+    &:hover,
+    &:active {
+      color: $govuk-grey-1;
+    }
+
+    &:focus {
+      color: $govuk-black;
+    }
   }
 
   .govuk-c-link--download {
