@@ -1,8 +1,7 @@
-@import "../../globals/scss/colours";
-@import "../../globals/scss/typography";
-@import "../../globals/scss/vars";
-@import "../../globals/scss/utilities/borders";
 @import "../../globals/scss/import-once";
+@import "../../globals/scss/typography";
+@import "../../globals/scss/utilities/borders";
+@import "../../globals/scss/vars";
 
 @include exports("inset-text") {
   .govuk-c-inset-text {

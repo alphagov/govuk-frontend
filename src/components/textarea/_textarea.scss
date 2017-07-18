@@ -1,5 +1,4 @@
 @import "../../globals/scss/import-once";
-@import "../../globals/scss/colours";
 @import "../../globals/scss/font-face";
 @import "../../globals/scss/typography";
 @import "../../globals/scss/vars";
@@ -26,7 +25,7 @@
   }
 
   .govuk-c-textarea:focus {
-    outline: $govuk-outline-width-focus solid $govuk-focus-colour;
+    outline: $govuk-focus-width solid $govuk-focus-colour;
   }
 
   .govuk-c-textarea--error {

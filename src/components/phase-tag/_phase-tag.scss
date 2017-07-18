@@ -1,7 +1,7 @@
 @import "../../globals/scss/import-once";
-@import "../../globals/scss/colours";
 @import "../../globals/scss/font-face";
 @import "../../globals/scss/typography";
+@import "../../globals/scss/vars";
 
 @include exports("phase-tag") {
   .govuk-c-phase-tag {

@@ -1,10 +1,9 @@
-@import "../../globals/scss/colours";
+@import "../../globals/scss/import-once";
 @import "../../globals/scss/font-face";
 @import "../../globals/scss/media-queries";
 @import "../../globals/scss/typography";
-@import "../../globals/scss/utilities/visually-hidden";
 @import "../../globals/scss/utilities/shapes";
-@import "../../globals/scss/import-once";
+@import "../../globals/scss/utilities/visually-hidden";
 
 @include exports("legal-text") {
 

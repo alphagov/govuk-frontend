@@ -1,7 +1,7 @@
-@import "../../globals/scss/colours";
+@import "../../globals/scss/import-once";
 @import "../../globals/scss/typography";
 @import "../../globals/scss/utilities/borders";
-@import "../../globals/scss/import-once";
+@import "../../globals/scss/vars";
 
 @include exports("details") {
   .govuk-c-details {
@@ -27,7 +27,7 @@
   }
 
   .govuk-c-details__summary:focus {
-    outline: $govuk-outline-width-focus solid $govuk-focus-colour;
+    outline: $govuk-focus-width solid $govuk-focus-colour;
   }
 
   // Underline only summary text (not the arrow)
