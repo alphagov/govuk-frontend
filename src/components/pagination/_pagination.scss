@@ -3,6 +3,7 @@
 @import "../../globals/scss/colours";
 @import "../../globals/scss/media-queries";
 @import "../../globals/scss/typography";
+@import "../../globals/scss/links";
 @import "../../globals/scss/import-once";
 
 @include exports("pagination") {
