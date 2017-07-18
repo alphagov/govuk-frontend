@@ -1,8 +1,8 @@
-@import "import-once";
-@import "colours";
+@import "vars";
 @import "media-queries";
+@import "import-once";
 
-@include exports("global-link-styles") {
+@include exports("links") {
   a:link {
     color: $govuk-link-colour;
   }
@@ -24,7 +24,7 @@
   }
 
   a:focus {
-    outline: 3px solid $govuk-focus-colour;
+    outline: $govuk-focus-width solid $govuk-focus-colour;
     background-color: $govuk-focus-colour;
   }
 
