@@ -1,7 +1,8 @@
 @import "import-once";
 @import "colours";
+@import "media-queries";
 
-@include exports("links") {
+@include exports("global-link-styles") {
   a:link {
     color: $govuk-link-colour;
   }
@@ -25,5 +26,40 @@
   a:focus {
     outline: 3px solid $govuk-focus-colour;
     background-color: $govuk-focus-colour;
+  }
+
+  .govuk-c-link--skip {
+    position: absolute;
+    left: -9999em;
+  }
+
+  //Default link colour doesn't have enough contrast against $govuk-focus-colour
+  .govuk-c-link--skip:focus,
+  .govuk-c-link--skip:visited {
+    color: $govuk-text-colour;
+  }
+
+  .govuk-c-link--skip:focus {
+    z-index: 1;
+    left: 0;
+  }
+
+  @include mq($media-type: print) {
+    a,
+    a:visited {
+      word-wrap: break-word;
+    }
+
+    a[href^="/"]:after,
+    a[href^="http://"]:after,
+    a[href^="https://"]:after {
+      content: " (" attr(href) ")";
+      font-size: 90%;
+    }
+
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+      content: "";
+    }
   }
 }
