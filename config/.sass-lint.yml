@@ -150,7 +150,9 @@ rules:
 
   # Rule no-color-literals will disallow the use of color literals and basic color functions in any declarations other than variables or maps/lists.
   # https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-color-literals.md
-  no-color-literals: 1
+  no-color-literals:
+    - 1
+    - allow-rgba: true
 
   # TODO: no-combniators
   # https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-combinators.md
