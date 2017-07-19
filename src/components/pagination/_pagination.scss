@@ -1,10 +1,9 @@
-@import "../../globals/scss/vars";
-@import "../../globals/scss/helpers";
-@import "../../globals/scss/colours";
+@import "../../globals/scss/import-once";
+@import "../../globals/scss/links";
 @import "../../globals/scss/media-queries";
 @import "../../globals/scss/typography";
-@import "../../globals/scss/links";
-@import "../../globals/scss/import-once";
+@import "../../globals/scss/utilities/clearfix";
+@import "../../globals/scss/vars";
 
 @include exports("pagination") {
 
@@ -19,7 +18,7 @@
   }
 
   .govuk-c-pagination__list {
-    @include clearfix;
+    @include govuk-u-clearfix;
     margin: 0;
     padding: 0;
   }
