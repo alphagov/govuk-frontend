@@ -1,0 +1,98 @@
+@import "../../globals/scss/import-once";
+@import "../../globals/scss/font-face";
+@import "../../globals/scss/helpers-url";
+@import "../../globals/scss/links";
+@import "../../globals/scss/typography";
+@import "../../globals/scss/vars";
+
+@include exports("link") {
+
+  .govuk-c-link {
+    font-family: $govuk-font-stack;
+    @include font-smoothing;
+    @include govuk-core-16;
+    line-height: 1.25;
+
+    text-decoration: underline;
+  }
+
+  .govuk-c-link--back {
+    display: inline-block;
+
+    position: relative;
+
+    padding-left: 14px;
+
+    border-bottom: 1px solid $govuk-black;
+    color: $govuk-black;
+    background: file-url("icon-arrow-left.png") no-repeat 0 4px;
+    text-decoration: none;
+
+    &:link,
+    &:visited,
+    &:hover,
+    &:active {
+      color: $govuk-black;
+    }
+
+    // Back arrow - left pointing black arrow
+    &::before {
+      content: "";
+      display: block;
+
+      position: absolute;
+      top: 50%;
+      left: 0;
+
+      width: 0;
+      height: 0;
+
+      margin-top: -6px;
+
+      border-top: 5px solid transparent;
+      border-right: 6px solid $govuk-black;
+      border-bottom: 5px solid transparent;
+    }
+  }
+
+  .govuk-c-link--muted {
+    &:link,
+    &:visited,
+    &:hover,
+    &:active {
+      color: $govuk-grey-1;
+    }
+
+    &:focus {
+      color: $govuk-black;
+    }
+  }
+
+  .govuk-c-link--download {
+    display: block;
+    min-height: 40px;
+    padding: 0 0 0 40px;
+    background: file-url("icon-file-download.png") no-repeat scroll 0 0;
+    font-weight: 700; // Replace with @include govuk-bold;
+  }
+
+  .govuk-c-link--download a:focus {
+    color: $govuk-black;
+  }
+
+  .govuk-c-link--skip {
+    position: absolute;
+    left: -9999em;
+  }
+
+  // Default link colour doesn't have enough contrast against $govuk-focus-colour
+  .govuk-c-link--skip:focus,
+  .govuk-c-link--skip:visited {
+    color: $govuk-text-colour;
+  }
+
+  .govuk-c-link--skip:focus {
+    z-index: 1;
+    left: 0;
+  }
+}
