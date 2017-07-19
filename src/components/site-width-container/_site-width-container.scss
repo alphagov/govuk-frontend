@@ -1,6 +1,6 @@
-@import "../../globals/scss/vars";
-@import "../../globals/scss/grid-layout";
 @import "../../globals/scss/import-once";
+@import "../../globals/scss/grid-layout";
+@import "../../globals/scss/vars";
 
 @include exports("site-width-container") {
 

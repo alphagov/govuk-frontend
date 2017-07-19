@@ -1,12 +1,5 @@
 @import "media-queries";
-
-// New Transport Light font family
-$govuk-nta-light: "nta", Arial, sans-serif;
-$govuk-nta-light-tabular: "ntatabularnumbers", $govuk-nta-light;
-
-// Allow font stack to be overridden
-$govuk-font-stack: $govuk-nta-light !default;
-$govuk-font-stack-tabular: $govuk-nta-light-tabular !default;
+@import "vars";
 
 @mixin font-smoothing {
   -webkit-font-smoothing: antialiased;

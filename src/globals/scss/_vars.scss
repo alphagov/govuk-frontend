@@ -1,5 +1,15 @@
+// Variables
+
+// Colour
+@import "vars/colours";
+
+// Image paths
 $global-images: "/icons/";
 
+// Media query breakpoints
+// in ../_media-queries.scss
+
+// Border widths
 $govuk-border-width-mobile: 4px;
 $govuk-border-width-tablet: 5px;
 $govuk-border-width-form-element: 2px;
@@ -8,9 +18,23 @@ $govuk-border-width-error: 4px;
 $govuk-border-width: 5px;
 $govuk-border-width-wide: 10px;
 
-$govuk-outline-width-focus: 3px;
+// Focus
+$govuk-focus-width: 3px;
+
+// Widths
 $govuk-site-width: 960px;
 $govuk-full-width: 100%;
+
+// Spacing
 $govuk-gutter: 30px;
 $govuk-gutter-half: $govuk-gutter / 2;
 $gutter-one-third: $govuk-gutter / 3;
+
+// Fonts
+// New Transport Light font family
+$govuk-nta-light: "nta", Arial, sans-serif;
+$govuk-nta-light-tabular: "ntatabularnumbers", $govuk-nta-light;
+
+// Allow font stack to be overridden
+$govuk-font-stack: $govuk-nta-light !default;
+$govuk-font-stack-tabular: $govuk-nta-light-tabular !default;

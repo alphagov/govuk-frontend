@@ -1,10 +1,9 @@
 @import "../../globals/scss/import-once";
-@import "../../globals/scss/vars";
-@import "../../globals/scss/colours";
-@import "../../globals/scss/media-queries";
 @import "../../globals/scss/font-face";
+@import "../../globals/scss/helpers-ie";
+@import "../../globals/scss/media-queries";
 @import "../../globals/scss/typography";
-@import "../../globals/scss/helpers";
+@import "../../globals/scss/vars";
 
 @include exports("radio") {
   .govuk-c-radio {

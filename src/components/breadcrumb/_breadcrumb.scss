@@ -1,7 +1,8 @@
 @import "../../globals/scss/import-once";
-@import "../../globals/scss/helpers";
-@import "../../globals/scss/colours";
+@import "../../globals/scss/helpers-url";
 @import "../../globals/scss/typography";
+@import "../../globals/scss/utilities/clearfix";
+@import "../../globals/scss/vars";
 
 
 @include exports("breadcrumb") {
@@ -14,7 +15,7 @@
   }
 
   .govuk-c-breadcrumb__list {
-    @include clearfix;
+    @include govuk-u-clearfix;
   }
 
   .govuk-c-breadcrumb__list-item {

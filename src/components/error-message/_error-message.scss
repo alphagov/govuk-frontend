@@ -1,8 +1,7 @@
 @import "../../globals/scss/import-once";
-@import "../../globals/scss/colours";
 @import "../../globals/scss/font-face";
 @import "../../globals/scss/typography";
-@import "../../globals/scss/helpers";
+@import "../../globals/scss/vars";
 
 @include exports("error-message") {
   .govuk-c-error-message {
@@ -18,6 +17,5 @@
     font-family: $govuk-font-stack;
     @include font-smoothing;
     @include govuk-bold-19;
-
   }
 }
