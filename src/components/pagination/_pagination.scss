@@ -10,10 +10,10 @@
   .govuk-c-pagination {
     @include font-smoothing;
     display: block;
-    margin-top: $govuk-gutter;
-    margin-right: -$govuk-gutter-half;
-    margin-bottom: $govuk-gutter;
-    margin-left: -$govuk-gutter-half;
+    margin-top: $govuk-spacing-scale-5;
+    margin-right: -$govuk-spacing-scale-3;
+    margin-bottom: $govuk-spacing-scale-5;
+    margin-left: -$govuk-spacing-scale-3;
     font-family: $govuk-font-stack;
   }
 
@@ -51,7 +51,7 @@
 
   .govuk-c-pagination__link {
     display: block;
-    padding: $govuk-gutter-half;
+    padding: $govuk-spacing-scale-3;
     text-decoration: none;
 
     &:visited {
