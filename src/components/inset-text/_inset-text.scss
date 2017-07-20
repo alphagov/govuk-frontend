@@ -1,12 +1,13 @@
 @import "../../globals/scss/import-once";
+@import "../../globals/scss/spacing";
 @import "../../globals/scss/typography";
 @import "../../globals/scss/utilities/borders";
 @import "../../globals/scss/vars";
 
 @include exports("inset-text") {
   .govuk-c-inset-text {
-    margin-bottom: em(15, 19);
-    padding: em(15, 19);
+    margin-bottom: em($spacing-scale-3, 19);
+    padding: em($spacing-scale-3, 19);
 
     clear: both;
 
