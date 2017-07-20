@@ -16,7 +16,7 @@
     width: $govuk-site-width;
   }
 
-  margin: 0 $spacing-scale-3;
+  margin: 0 $govuk-spacing-scale-3;
   @include mq($from: tablet) {
     margin: 0 $govuk-spacing-scale-5;
   }
@@ -34,6 +34,6 @@
 
 @mixin govuk-grid-item {
   box-sizing: border-box;
-  padding: 0 $spacing-scale-5;
+  padding: 0 $govuk-spacing-scale-5;
   float: left;
 }
