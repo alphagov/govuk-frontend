@@ -1,0 +1,44 @@
+@import "vars";
+
+// Spacing properties
+$spacing-properties: (
+  "padding": "p",
+  "margin": "m",
+) !default;
+
+// Spacing directions
+$spacing-directions: (
+  null: null,
+  "-top": "t",
+  "-right": "r",
+  "-bottom": "b",
+  "-left": "l"
+) !default;
+
+// Set spacing scale
+$spacing-scale: (
+  0: 0,
+  1: $spacing-scale-xs,
+  2: $spacing-scale-s,
+  3: $spacing-scale-m,
+  4: $spacing-scale-l,
+  5: $spacing-scale-xl,
+  6: $spacing-scale-xxl
+);
+
+@import "import-once";
+
+@include exports("spacing") {
+  // Create spacing utility classes
+  @each $spacing-property-key, $spacing-property-value in $spacing-properties {
+    @each $spacing-direction-key, $spacing-direction-value in $spacing-directions {
+      @each $spacing-scale-key, $spacing-scale-value in $spacing-scale {
+        .govuk-u-#{$spacing-property-value}#{$spacing-direction-value}-#{$spacing-scale-key} {
+          @each $direction in $spacing-direction-key {
+            #{$spacing-property-key}#{$direction}: $spacing-scale-value !important;
+          }
+        }
+      }
+    }
+  }
+}

@@ -30,6 +30,14 @@ $govuk-gutter: 30px;
 $govuk-gutter-half: $govuk-gutter / 2;
 $gutter-one-third: $govuk-gutter / 3;
 
+// Spacing scale
+$spacing-scale-xs: 5px;
+$spacing-scale-s: 10px;
+$spacing-scale-m: 15px;
+$spacing-scale-l: 20px;
+$spacing-scale-xl: 30px;
+$spacing-scale-xxl: 60px;
+
 // Fonts
 // New Transport Light font family
 $govuk-nta-light: "nta", Arial, sans-serif;
