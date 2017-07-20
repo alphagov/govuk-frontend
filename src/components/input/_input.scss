@@ -1,4 +1,5 @@
 @import "../../globals/scss/import-once";
+@import "../../globals/scss/spacing";
 @import "../../globals/scss/typography";
 @import "../../globals/scss/vars";
 @import "../label/label";
@@ -8,7 +9,7 @@
   .govuk-c-input {
     box-sizing: border-box; // should this be global?
     width: 100%;
-    padding: 5px 4px 4px;
+    padding: $spacing-scale-1;
 
     // setting any background-color makes text invisible when changing colours to dark backgrounds in Firefox (https://bugzilla.mozilla.org/show_bug.cgi?id=1335476)
     // as background-color and color need to always be set together, color should not be set either
