@@ -26,9 +26,18 @@ $govuk-site-width: 960px;
 $govuk-full-width: 100%;
 
 // Spacing
+// TODO: remove these, instead use spacing scale
 $govuk-gutter: 30px;
 $govuk-gutter-half: $govuk-gutter / 2;
 $gutter-one-third: $govuk-gutter / 3;
+
+// Spacing scale
+$spacing-scale-1: 5px;
+$spacing-scale-2: 10px;
+$spacing-scale-3: 15px;
+$spacing-scale-4: 20px;
+$spacing-scale-5: 30px;
+$spacing-scale-6: 60px;
 
 // Fonts
 // New Transport Light font family
