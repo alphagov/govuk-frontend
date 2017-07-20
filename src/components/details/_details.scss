@@ -1,4 +1,5 @@
 @import "../../globals/scss/import-once";
+@import "../../globals/scss/spacing";
 @import "../../globals/scss/typography";
 @import "../../globals/scss/utilities/borders";
 @import "../../globals/scss/vars";
@@ -16,7 +17,7 @@
     display: inline-block;
 
     position: relative;
-    margin-bottom: em(5, 19);
+    margin-bottom: em($spacing-scale-1, 19);
 
     color: $govuk-blue;
     cursor: pointer;
@@ -42,8 +43,8 @@
   }
 
   .govuk-c-details__text {
-    margin-bottom: em(15, 19);
-    padding: em(15, 19);
+    margin-bottom: em($spacing-scale-3, 19);
+    padding: em($spacing-scale-3, 19);
     @include govuk-u-border-left($govuk-border-width, $govuk-border-colour);
   }
 
