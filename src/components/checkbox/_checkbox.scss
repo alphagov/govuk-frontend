@@ -2,6 +2,7 @@
 @import "../../globals/scss/font-face";
 @import "../../globals/scss/helpers-ie";
 @import "../../globals/scss/media-queries";
+@import "../../globals/scss/spacing";
 @import "../../globals/scss/typography";
 @import "../../globals/scss/vars";
 
@@ -46,7 +47,7 @@
 
   .govuk-c-checkbox__label {
     display: block;
-    padding: 8px $gutter-one-third 9px 12px;
+    padding: 8px $govuk-spacing-scale-2 9px 12px;
     cursor: pointer;
     // remove 300ms pause on mobile
     -ms-touch-action: manipulation;
@@ -67,7 +68,7 @@
     width: 34px;
     height: 34px;
 
-    border: 2px solid;
+    border: $govuk-border-width-form-element solid;
     background: transparent;
   }
 
@@ -75,7 +76,7 @@
     content: "";
 
     position: absolute;
-    top: 10px;
+    top: $govuk-spacing-scale-2;
     left: 8px;
 
     width: 17px;
@@ -83,7 +84,7 @@
 
     transform: rotate(-45deg);
     border: solid;
-    border-width: 0 0 5px 5px;
+    border-width: 0 0 $govuk-border-width $govuk-border-width;
     // Fix bug in IE11 caused by transform rotate (-45deg).
     // See: alphagov/govuk_elements/issues/518
     border-top-color: transparent;
@@ -95,7 +96,7 @@
 
   // Focused state
   .govuk-c-checkbox__input:focus + .govuk-c-checkbox__label:before {
-    box-shadow: 0 0 0 3px $govuk-focus-colour;
+    box-shadow: 0 0 0 $govuk-focus-width $govuk-focus-colour;
   }
 
   // Selected state

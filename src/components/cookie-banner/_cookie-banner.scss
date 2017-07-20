@@ -1,4 +1,5 @@
 @import "../../globals/scss/import-once";
+@import "../../globals/scss/spacing";
 @import "../../globals/scss/typography";
 @import "../../globals/scss/vars";
 @import "../site-width-container/site-width-container";
@@ -7,8 +8,8 @@
   .govuk-c-cookie-banner {
     width: 100%;
 
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: $govuk-spacing-scale-2;
+    padding-bottom: $govuk-spacing-scale-2;
 
     background-color: $govuk-light-blue-25;
 

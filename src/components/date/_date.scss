@@ -1,4 +1,5 @@
 @import "../../globals/scss/import-once";
+@import "../../globals/scss/spacing";
 @import "../../globals/scss/typography";
 @import "../../globals/scss/utilities/clearfix";
 @import "../../globals/scss/vars";
@@ -13,7 +14,7 @@
 
   .govuk-c-date__item {
     width: 50px;
-    margin-right: 20px;
+    margin-right: $govuk-spacing-scale-4;
     margin-bottom: 0;
     float: left;
     clear: none;

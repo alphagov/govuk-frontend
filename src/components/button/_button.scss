@@ -1,8 +1,8 @@
 @import "../../globals/scss/import-once";
-
 @import "../../globals/scss/font-face";
 @import "../../globals/scss/helpers-ie";
 @import "../../globals/scss/media-queries";
+@import "../../globals/scss/spacing";
 @import "../../globals/scss/typography";
 @import "../../globals/scss/vars";
 
@@ -11,7 +11,7 @@
     box-sizing: border-box;
     display: inline-block;
     position: relative;
-    padding: em(10px, 19px) em(15px, 19px) em(5px, 19px);
+    padding: em($govuk-spacing-scale-2, 19px) em($govuk-spacing-scale-3, 19px) em($govuk-spacing-scale-1, 19px);
     border: 0;
     border-radius: 0; //used to be a mixin with vendor
 
@@ -82,7 +82,7 @@
     }
 
     &:focus {
-      outline: 3px solid $govuk-focus-colour;
+      outline: $govuk-focus-width solid $govuk-focus-colour;
     }
   }
 
@@ -112,8 +112,8 @@
 
   .govuk-c-button--start {
     @include govuk-bold-24;
-    // TODO: Fix padding values
-    padding: em(8.842px, 24px) em(51.789px, 24px) em(5.053px, 24px) em(20.211px, 24px);
+    // TODO: Check padding values
+    padding: em($govuk-spacing-scale-2, 24px) em($govuk-spacing-scale-6, 24px) em($govuk-spacing-scale-1, 24px) em($govuk-spacing-scale-4, 24px);
     background-image: file-url("icon-pointer.png");
     background-repeat: no-repeat;
     background-position: 100% 50%;
