@@ -1,5 +1,6 @@
 @import "../../globals/scss/import-once";
 @import "../../globals/scss/helpers-url";
+@import "../../globals/scss/spacing";
 @import "../../globals/scss/typography";
 @import "../../globals/scss/utilities/clearfix";
 @import "../../globals/scss/vars";
@@ -7,8 +8,8 @@
 
 @include exports("breadcrumb") {
   .govuk-c-breadcrumb {
-    padding-top: .75em;
-    padding-bottom: .75em;
+    padding-top: $spacing-scale-3;
+    padding-bottom: $spacing-scale-3;
 
     font-family: $govuk-font-stack;
     @include font-smoothing;
@@ -20,9 +21,9 @@
 
   .govuk-c-breadcrumb__list-item {
     @include govuk-core-16;
-    margin-bottom: .4em;
-    margin-left: .6em;
-    padding-left: .9em;
+    margin-bottom: $spacing-scale-1;
+    margin-left: $spacing-scale-2;
+    padding-left: $spacing-scale-3;
     float: left;
     list-style: none;
     background-image: file-url("separator.png");
