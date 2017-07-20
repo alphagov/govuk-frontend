@@ -36,7 +36,6 @@
 @mixin govuk-bold-16 {
   @include govuk-font-size(16);
   font-weight: 700;
-
   line-height: (20 / 16);
 }
 @mixin govuk-bold-12 {
@@ -56,6 +55,11 @@
 @mixin govuk-core-36 {
   @include govuk-font-size(36);
   line-height: (40 / 36);
+}
+
+@mixin govuk-core-27 {
+  @include govuk-font-size(27);
+  line-height: (30 / 27);
 }
 
 @mixin govuk-core-19 {
