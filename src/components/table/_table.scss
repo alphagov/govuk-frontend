@@ -13,7 +13,7 @@
   }
 
   .govuk-c-table__header {
-    padding: $spacing-scale-2 $spacing-scale-4 $spacing-scale-2 0;
+    padding: em(12, 19) em(20, 19) em(9, 19) 0;
     @include govuk-core-19;
     border-bottom: 1px solid $govuk-border-colour;
     font-weight: 700;
@@ -22,7 +22,7 @@
 
   .govuk-c-table__cell {
     @include govuk-core-19;
-    padding: $spacing-scale-2 $spacing-scale-4 $spacing-scale-2 0;
+    padding: em(12, 19) em(20, 19) em(9, 19) 0;
     border-bottom: 1px solid $govuk-border-colour;
     text-align: left;
   }
