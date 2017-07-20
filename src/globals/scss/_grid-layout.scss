@@ -18,18 +18,18 @@
 
   margin: 0 $govuk-gutter-half;
   @include mq($from: tablet) {
-    margin: 0 $spacing-scale-5;
+    margin: 0 $govuk-spacing-scale-5;
   }
 
-  @include mq($and: "(min-width: #{($govuk-site-width + $spacing-scale-5 * 2)})") {
+  @include mq($and: "(min-width: #{($govuk-site-width + $govuk-spacing-scale-5 * 2)})") {
     margin: 0 auto;
   }
 }
 
 @mixin govuk-grid {
   @include govuk-u-clearfix;
-  margin-right: - ($spacing-scale-3);
-  margin-left: - ($spacing-scale-3);
+  margin-right: - ($govuk-spacing-scale-3);
+  margin-left: - ($govuk-spacing-scale-3);
 }
 
 @mixin govuk-grid-item {

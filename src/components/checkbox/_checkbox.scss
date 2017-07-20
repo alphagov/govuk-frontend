@@ -47,7 +47,7 @@
 
   .govuk-c-checkbox__label {
     display: block;
-    padding: 8px $spacing-scale-2 9px 12px;
+    padding: 8px $govuk-spacing-scale-2 9px 12px;
     cursor: pointer;
     // remove 300ms pause on mobile
     -ms-touch-action: manipulation;
@@ -76,7 +76,7 @@
     content: "";
 
     position: absolute;
-    top: $spacing-scale-2;
+    top: $govuk-spacing-scale-2;
     left: 8px;
 
     width: 17px;

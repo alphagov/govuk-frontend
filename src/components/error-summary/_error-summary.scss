@@ -9,7 +9,7 @@
 
   .govuk-c-error-summary {
 
-    padding: $spacing-scale-3 $spacing-scale-2;
+    padding: $govuk-spacing-scale-3 $govuk-spacing-scale-2;
 
     border: $govuk-border-width-mobile solid $govuk-error-colour;
 
@@ -18,7 +18,7 @@
 
     @include mq($from: tablet) {
 
-      padding: $spacing-scale-4 $spacing-scale-3 $spacing-scale-3;
+      padding: $govuk-spacing-scale-4 $govuk-spacing-scale-3 $govuk-spacing-scale-3;
 
       border: $govuk-border-width-tablet solid $govuk-error-colour;
     }
@@ -35,10 +35,10 @@
 
   .govuk-c-error-summary__title {
     margin-top: 0;
-    margin-bottom: $spacing-scale-2;
+    margin-bottom: $govuk-spacing-scale-2;
 
     @include mq($from: tablet) {
-      margin-bottom: $spacing-scale-4;
+      margin-bottom: $govuk-spacing-scale-4;
     }
 
     font-family: $govuk-font-stack;

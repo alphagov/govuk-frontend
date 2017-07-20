@@ -17,7 +17,7 @@
     display: inline-block;
 
     position: relative;
-    margin-bottom: em($spacing-scale-1, 19);
+    margin-bottom: em($govuk-spacing-scale-1, 19);
 
     color: $govuk-blue;
     cursor: pointer;
@@ -43,8 +43,8 @@
   }
 
   .govuk-c-details__text {
-    margin-bottom: em($spacing-scale-3, 19);
-    padding: em($spacing-scale-3, 19);
+    margin-bottom: em($govuk-spacing-scale-3, 19);
+    padding: em($govuk-spacing-scale-3, 19);
     @include govuk-u-border-left($govuk-border-width, $govuk-border-colour);
   }
 

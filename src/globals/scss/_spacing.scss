@@ -16,14 +16,14 @@ $spacing-directions: (
 ) !default;
 
 // Set spacing scale
-$spacing-scale: (
+$govuk-spacing-scale: (
   0: 0,
-  1: $spacing-scale-1,
-  2: $spacing-scale-2,
-  3: $spacing-scale-3,
-  4: $spacing-scale-4,
-  5: $spacing-scale-5,
-  6: $spacing-scale-6
+  1: $govuk-spacing-scale-1,
+  2: $govuk-spacing-scale-2,
+  3: $govuk-spacing-scale-3,
+  4: $govuk-spacing-scale-4,
+  5: $govuk-spacing-scale-5,
+  6: $govuk-spacing-scale-6
 );
 
 @import "import-once";
@@ -32,7 +32,7 @@ $spacing-scale: (
   // Create spacing utility classes
   @each $spacing-property-key, $spacing-property-value in $spacing-properties {
     @each $spacing-direction-key, $spacing-direction-value in $spacing-directions {
-      @each $spacing-scale-key, $spacing-scale-value in $spacing-scale {
+      @each $spacing-scale-key, $spacing-scale-value in $govuk-spacing-scale {
         .govuk-u-#{$spacing-property-value}#{$spacing-direction-value}-#{$spacing-scale-key} {
           @each $direction in $spacing-direction-key {
             #{$spacing-property-key}#{$direction}: $spacing-scale-value !important;

@@ -8,8 +8,8 @@
 
 @include exports("breadcrumb") {
   .govuk-c-breadcrumb {
-    padding-top: $spacing-scale-3;
-    padding-bottom: $spacing-scale-3;
+    padding-top: $govuk-spacing-scale-3;
+    padding-bottom: $govuk-spacing-scale-3;
 
     font-family: $govuk-font-stack;
     @include font-smoothing;
@@ -21,9 +21,9 @@
 
   .govuk-c-breadcrumb__list-item {
     @include govuk-core-16;
-    margin-bottom: $spacing-scale-1;
-    margin-left: $spacing-scale-2;
-    padding-left: $spacing-scale-3;
+    margin-bottom: $govuk-spacing-scale-1;
+    margin-left: $govuk-spacing-scale-2;
+    padding-left: $govuk-spacing-scale-3;
     float: left;
     list-style: none;
     background-image: file-url("separator.png");
