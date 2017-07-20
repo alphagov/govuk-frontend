@@ -2,6 +2,7 @@
 @import "../../globals/scss/font-face";
 @import "../../globals/scss/helpers-url";
 @import "../../globals/scss/links";
+@import "../../globals/scss/spacing";
 @import "../../globals/scss/typography";
 @import "../../globals/scss/vars";
 
@@ -49,9 +50,9 @@
 
       margin-top: -6px;
 
-      border-top: 5px solid transparent;
+      border-top: $govuk-spacing-scale-1 solid transparent;
       border-right: 6px solid $govuk-black;
-      border-bottom: 5px solid transparent;
+      border-bottom: $govuk-spacing-scale-1 solid transparent;
     }
   }
 

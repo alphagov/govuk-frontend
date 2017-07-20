@@ -1,37 +1,30 @@
 @import "../../globals/scss/import-once";
 @import "../../globals/scss/font-face";
+@import "../../globals/scss/spacing";
 @import "../../globals/scss/typography";
 @import "../../globals/scss/vars";
 
 @include exports("table") {
   .govuk-c-table {
     width: 100%;
-
     border-spacing: 0;
     border-collapse: collapse;
-
     font-family: $govuk-font-stack;
     @include font-smoothing;
   }
 
   .govuk-c-table__header {
-    padding: em(12, 19) em(20, 19) em(9, 19) 0;
-
+    padding: em($govuk-spacing-scale-2, 19) em($govuk-spacing-scale-4, 19) em($govuk-spacing-scale-2, 19) 0;
     @include govuk-core-19;
-
     border-bottom: 1px solid $govuk-border-colour;
-
     font-weight: 700;
-
     text-align: left;
   }
 
   .govuk-c-table__cell {
     @include govuk-core-19;
-    padding: em(12, 19) em(20, 19) em(9, 19) 0;
-
+    padding: em($govuk-spacing-scale-2, 19) em($govuk-spacing-scale-4, 19) em($govuk-spacing-scale-2, 19) 0;
     border-bottom: 1px solid $govuk-border-colour;
-
     text-align: left;
   }
 

@@ -2,6 +2,7 @@
 @import "../../globals/scss/font-face";
 @import "../../globals/scss/helpers-ie";
 @import "../../globals/scss/media-queries";
+@import "../../globals/scss/spacing";
 @import "../../globals/scss/typography";
 @import "../../globals/scss/vars";
 
@@ -11,7 +12,7 @@
 
     position: relative;
 
-    margin-bottom: $gutter-one-third;
+    margin-bottom: $govuk-spacing-scale-2;
     padding: 0 0 0 38px;
 
     clear: left;
@@ -49,7 +50,7 @@
   .govuk-c-radio__label {
     display: block;
 
-    padding: 8px $gutter-one-third 9px 12px;
+    padding: 8px $govuk-spacing-scale-2 9px 12px;
 
     cursor: pointer;
 
@@ -73,7 +74,7 @@
     width: 34px;
     height: 34px;
 
-    border: 2px solid;
+    border: $govuk-border-width-form-element solid;
     border-radius: 50%;
     background: transparent;
   }
@@ -88,7 +89,7 @@
     width: 0;
     height: 0;
 
-    border: 10px solid;
+    border: $govuk-spacing-scale-2 solid;
     border-radius: 50%;
     opacity: 0;
   }

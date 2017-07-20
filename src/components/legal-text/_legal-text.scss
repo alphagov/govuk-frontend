@@ -1,6 +1,7 @@
 @import "../../globals/scss/import-once";
 @import "../../globals/scss/font-face";
 @import "../../globals/scss/media-queries";
+@import "../../globals/scss/spacing";
 @import "../../globals/scss/typography";
 @import "../../globals/scss/utilities/shapes";
 @import "../../globals/scss/utilities/visually-hidden";
@@ -9,7 +10,7 @@
 
   .govuk-c-legal-text {
     position: relative;
-    padding: 5px 0;
+    padding: $govuk-spacing-scale-1 0;
 
     font-family: $govuk-font-stack;
     @include font-smoothing;
