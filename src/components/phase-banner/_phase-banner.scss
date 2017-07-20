@@ -6,8 +6,8 @@
 
 @include exports("phase-banner") {
   .govuk-c-phase-banner {
-    padding-top: em(10px, 16px);
-    padding-bottom: em(8px, 16px);
+    padding-top: em($spacing-scale-2, 16px);
+    padding-bottom: em($spacing-scale-2, 16px); //use to be 8
     // Apply styling to tablet and upwards
     // @include mq($from:tablet) {
     //  padding-bottom: em(10px, 16px);
