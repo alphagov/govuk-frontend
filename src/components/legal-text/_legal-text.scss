@@ -10,7 +10,7 @@
 
   .govuk-c-legal-text {
     position: relative;
-    padding: $spacing-scale-1 0;
+    padding: $govuk-spacing-scale-1 0;
 
     font-family: $govuk-font-stack;
     @include font-smoothing;

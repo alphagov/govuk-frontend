@@ -12,7 +12,7 @@
 
     position: relative;
 
-    margin-bottom: $spacing-scale-2;
+    margin-bottom: $govuk-spacing-scale-2;
     padding: 0 0 0 38px;
 
     clear: left;
@@ -50,7 +50,7 @@
   .govuk-c-radio__label {
     display: block;
 
-    padding: 8px $spacing-scale-2 9px 12px;
+    padding: 8px $govuk-spacing-scale-2 9px 12px;
 
     cursor: pointer;
 
@@ -89,7 +89,7 @@
     width: 0;
     height: 0;
 
-    border: $spacing-scale-2 solid;
+    border: $govuk-spacing-scale-2 solid;
     border-radius: 50%;
     opacity: 0;
   }

@@ -8,7 +8,7 @@
   .govuk-c-select-box {
     box-sizing: border-box; // should this be global?
     width: 100%;
-    padding: $spacing-scale-1; // was 5px 4px 4px - size of it should be adjusted to match other form elements
+    padding: $govuk-spacing-scale-1; // was 5px 4px 4px - size of it should be adjusted to match other form elements
     border: $govuk-border-width-form-element solid $govuk-text-colour;
 
     font-family: $govuk-font-stack;

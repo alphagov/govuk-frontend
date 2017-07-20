@@ -6,8 +6,8 @@
 @include exports("phase-tag") {
   .govuk-c-phase-tag {
     display: inline-block;
-    margin: 0 $spacing-scale-2 0 0;
-    padding: $spacing-scale-1 $spacing-scale-1 0;
+    margin: 0 $govuk-spacing-scale-2 0 0;
+    padding: $govuk-spacing-scale-1 $govuk-spacing-scale-1 0;
 
     color: $govuk-white;
     background-color: $govuk-blue;

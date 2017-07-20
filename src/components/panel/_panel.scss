@@ -7,8 +7,8 @@
 @include exports("panel") {
 
   .govuk-c-panel {
-    margin: $spacing-scale-3 0;
-    padding: $spacing-scale-5 $spacing-scale-3;
+    margin: $govuk-spacing-scale-3 0;
+    padding: $govuk-spacing-scale-5 $govuk-spacing-scale-3;
 
     font-family: $govuk-font-stack;
     @include font-smoothing;
@@ -28,16 +28,16 @@
   }
 
   .govuk-c-panel__title {
-    margin-top: em($spacing-scale-6, 48px);
-    margin-bottom: em($spacing-scale-25, 48px);
+    margin-top: em($govuk-spacing-scale-6, 48px);
+    margin-bottom: em($govuk-spacing-scale-5, 48px);
 
     @include govuk-bold-48;
   }
 
   .govuk-c-panel__body {
     // TODO: Fix margin values
-    margin-top: em($spacing-scale-2, 48px);
-    margin-bottom: em($spacing-scale-5, 48px); //use to be 37.895px
+    margin-top: em($govuk-spacing-scale-2, 48px);
+    margin-bottom: em($govuk-spacing-scale-5, 48px); //use to be 37.895px
 
     @include govuk-core-36;
   }

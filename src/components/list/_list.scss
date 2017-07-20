@@ -10,8 +10,8 @@
   .govuk-c-list {
     @include font-smoothing;
     @include govuk-core-19;
-    margin-top: $spacing-scale-1;
-    margin-bottom: $spacing-scale-4;
+    margin-top: $govuk-spacing-scale-1;
+    margin-bottom: $govuk-spacing-scale-4;
     padding-left: 0;
     list-style-type: none;
     font-family: $govuk-font-stack;
@@ -19,7 +19,7 @@
 
   .govuk-c-list > li {
     @include mq($from: tablet) {
-      margin-bottom: $spacing-scale-1;
+      margin-bottom: $govuk-spacing-scale-1;
     }
   }
 
@@ -42,7 +42,7 @@
   }
 
   .govuk-c-list--bullet {
-    padding-left: $spacing-scale-4;
+    padding-left: $govuk-spacing-scale-4;
 
     list-style-type: disc;
   }
@@ -50,21 +50,21 @@
   .govuk-c-list--number {
     // TODO: Fix IE < 8
     @include ie-lte(7) {
-      padding-left: $spacing-scale-5; //used to be 28
+      padding-left: $govuk-spacing-scale-5; //used to be 28
     }
-    padding-left: $spacing-scale-4;
+    padding-left: $govuk-spacing-scale-4;
     list-style-type: decimal;
   }
 
   .govuk-c-list--icon > li {
-    margin-bottom: $spacing-scale-3;
+    margin-bottom: $govuk-spacing-scale-3;
   }
 
   .govuk-c-list__icon {
     @include govuk-bold-12;
     min-width: 24px;
     min-height: 24px;
-    margin-right: $spacing-scale-3;
+    margin-right: $govuk-spacing-scale-3;
     font-family: $govuk-font-stack-tabular;
     line-height: 24px;
   }
