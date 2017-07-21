@@ -18,6 +18,7 @@ require('./tasks/gulp/demo-build.js')
 require('./tasks/gulp/preview-compile.js')
 require('./tasks/gulp/preview-component-list.js')
 require('./tasks/gulp/preview-docs.js')
+require('./tasks/gulp/examples.js')
 
 // Build packages task -----------------
 // Prepare package folder for publishing
@@ -41,6 +42,7 @@ gulp.task('dev', cb => {
               'scripts',
               'copy:icons',
               'preview:docs',
+              'examples',
               'preview:component:list',
               'serve:preview',
               'watch', cb)
@@ -87,6 +89,7 @@ gulp.task('review', () => {
               'scripts',
               'copy:icons',
               'preview:docs',
+              'examples',
               'preview:component:list')
 })
 
