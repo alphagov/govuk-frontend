@@ -28,6 +28,12 @@
     margin-bottom: 0;
   }
 
+  .govuk-c-radio--inline {
+    margin-right: $govuk-spacing-scale-4;
+    float: left;
+    clear: none;
+  }
+
   .govuk-c-radio__input {
     position: absolute;
 
