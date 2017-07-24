@@ -61,7 +61,7 @@
   }
 
   .govuk-c-list__icon {
-    @include govuk-bold-12;
+    @include govuk-bold-14($line-height: (24 / 14), $line-height-640: (24 / 12));
     min-width: 24px;
     min-height: 24px;
     margin-right: $govuk-spacing-scale-3;
@@ -70,7 +70,7 @@
   }
 
   .govuk-c-list__icon--large {
-    @include govuk-bold-19;
+    @include govuk-bold-19($line-height: (38 / 19), $line-height-640: (38 / 16));
     min-width: 38px;
     min-height: 38px;
     line-height: 38px;
