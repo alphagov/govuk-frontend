@@ -33,4 +33,20 @@
     width: percentage( 1 / 4);
   }
 
+  // for testing purposes
+  $govuk-width-proportions: (
+    full: 100%,
+    half: percentage(1 / 2),
+    third: percentage(1 / 3),
+    quarter: percentage(1 / 4),
+    two-thirds: percentage(2 / 3)
+  );
+  @each $govuk-width-proportions-key, $govuk-width-proportions-value in $govuk-width-proportions {
+    .govuk-u-w-#{$govuk-width-proportions-key} {
+      width: $govuk-width-proportions-value;
+      @if $govuk-width-proportions-key != 'full' {
+       float: left;
+     }
+    }
+  }
 }
