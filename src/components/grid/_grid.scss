@@ -45,7 +45,7 @@
     .govuk-u-w-#{$govuk-width-proportions-key} {
       width: $govuk-width-proportions-value;
       @if $govuk-width-proportions-key != 'full' {
-       float: left;
+        float: left;
      }
     }
   }
