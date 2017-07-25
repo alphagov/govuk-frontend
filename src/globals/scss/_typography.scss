@@ -353,4 +353,79 @@ $is-print: false !default;
     @include govuk-copy-19;
   }
 
+  // Copy headings with extra margins from GOV.UK elements
+  .heading-xlarge {
+    @include govuk-bold-48;
+
+    margin-top: em(15, 32);
+    margin-bottom: em(30, 32);
+
+    @include mq($from: tablet) {
+      margin-top: em(30, 48);
+      margin-bottom: em(60, 48);
+    }
+
+    .heading-secondary {
+      @include govuk-heading-27;
+
+      display: block;
+      color: $govuk-secondary-text-colour;
+    }
+
+  }
+
+  .heading-large {
+    @include govuk-bold-36;
+
+    margin-top: em(25, 24);
+    margin-bottom: em(10, 24);
+
+    @include mq($from: tablet) {
+      margin-top: em(45, 36);
+      margin-bottom: em(20, 36);
+    }
+
+    .heading-secondary {
+      @include govuk-heading-24;
+
+      display: block;
+      color: $govuk-secondary-text-colour;
+    }
+
+  }
+
+  .heading-medium {
+    @include govuk-bold-24;
+
+    margin-top: em(25, 20);
+    margin-bottom: em(10, 20);
+
+    @include mq($from: tablet) {
+      margin-top: em(45, 24);
+      margin-bottom: em(20, 24);
+    }
+
+  }
+
+  .heading-small {
+    @include govuk-bold-19;
+
+    margin-top: em(10, 16);
+    margin-bottom: em(5, 16);
+
+    @include mq($from: tablet) {
+      margin-top: em(20, 19);
+    }
+  }
+
+  .body-text {
+    @include govuk-core-19;
+    margin-top: em(5, 16);
+    margin-bottom: em(20, 16);
+
+    @include mq($from: tablet) {
+      margin-top: em(5);
+      margin-bottom: em(20);
+    }
+  }
 }
