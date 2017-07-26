@@ -17,6 +17,9 @@
 
   .govuk-c-breadcrumb__list {
     @include govuk-u-clearfix;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
   }
 
   .govuk-c-breadcrumb__list-item {
@@ -25,7 +28,6 @@
     margin-left: $govuk-spacing-scale-2;
     padding-left: $govuk-spacing-scale-3;
     float: left;
-    list-style: none;
     background-image: file-url("separator.png");
     background-repeat: no-repeat;
     background-position: 0% 50%;
