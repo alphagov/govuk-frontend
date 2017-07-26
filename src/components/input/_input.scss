@@ -9,7 +9,10 @@
   .govuk-c-input {
     box-sizing: border-box; // should this be global?
     width: 100%;
-    padding: $govuk-spacing-scale-1;
+    padding: $govuk-spacing-scale-2 $govuk-spacing-scale-1 $govuk-spacing-scale-1 + 1;
+    @include mq($from:tablet) {
+      padding: $govuk-spacing-scale-1 + 3 $govuk-spacing-scale-1 $govuk-spacing-scale-1;
+    }
 
     // setting any background-color makes text invisible when changing colours to dark backgrounds in Firefox (https://bugzilla.mozilla.org/show_bug.cgi?id=1335476)
     // as background-color and color need to always be set together, color should not be set either
