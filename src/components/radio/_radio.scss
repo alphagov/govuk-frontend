@@ -13,7 +13,7 @@
     position: relative;
 
     margin-bottom: $govuk-spacing-scale-2;
-    padding: 0 0 0 38px;
+    padding: 0 0 0 40px;
 
     clear: left;
 
@@ -41,8 +41,8 @@
     top: 0;
     left: 0;
 
-    width: 38px;
-    height: 38px;
+    width: 40px;
+    height: 40px;
 
     cursor: pointer;
 
@@ -56,7 +56,7 @@
   .govuk-c-radio__label {
     display: block;
 
-    padding: 8px $govuk-spacing-scale-2 9px 12px;
+    padding: 12px $govuk-spacing-scale-2 8px 12px;
 
     cursor: pointer;
 
@@ -65,7 +65,7 @@
     touch-action: manipulation;
 
     @include mq($from: tablet) {
-      padding-top: 7px;
+      padding-top: 10px;
       padding-bottom: 7px;
     }
   }
@@ -77,8 +77,8 @@
     top: 0;
     left: 0;
 
-    width: 34px;
-    height: 34px;
+    width: 36px;
+    height: 36px;
 
     border: $govuk-border-width-form-element solid;
     border-radius: 50%;
@@ -89,8 +89,8 @@
     content: "";
 
     position: absolute;
-    top: 9px;
-    left: 9px;
+    top: 10px;
+    left: 10px;
 
     width: 0;
     height: 0;
