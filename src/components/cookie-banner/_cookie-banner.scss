@@ -24,8 +24,6 @@
   .govuk-c-cookie-banner__text {
     @include govuk-site-width-container;
     @include govuk-core-16;
-    margin-top: 0;
-    margin-bottom: 0;
   }
 
   @include mq($media-type: print) {
