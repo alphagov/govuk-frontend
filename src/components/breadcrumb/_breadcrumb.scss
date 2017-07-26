@@ -40,6 +40,11 @@
   }
 
   .govuk-c-breadcrumb__link {
-    color: $govuk-text-colour;
+    &:link,
+    &:visited,
+    &:hover,
+    &:active {
+      color: $govuk-text-colour;
+    }
   }
 }
