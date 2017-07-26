@@ -39,6 +39,7 @@
     // Apply styling up to devices smaller than tablets (exclude tablets)
     @include mq($until: tablet) {
       width: 100%;
+      padding: .7em .78947em .41em;
       text-align: center;
     }
 
