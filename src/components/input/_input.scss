@@ -10,7 +10,7 @@
     box-sizing: border-box; // should this be global?
     width: 100%;
     padding: $govuk-spacing-scale-2 $govuk-spacing-scale-1 $govuk-spacing-scale-1 + 1;
-    @include mq($from:tablet) {
+    @include mq($from: tablet) {
       padding: $govuk-spacing-scale-1 + 3 $govuk-spacing-scale-1 $govuk-spacing-scale-1;
     }
 
