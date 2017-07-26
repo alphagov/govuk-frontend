@@ -9,11 +9,7 @@
   .govuk-c-input {
     box-sizing: border-box; // should this be global?
     width: 100%;
-    padding: $govuk-spacing-scale-2 $govuk-spacing-scale-1 $govuk-spacing-scale-1 + 1;
-    @include mq($from: tablet) {
-      padding: $govuk-spacing-scale-1 + 3 $govuk-spacing-scale-1 $govuk-spacing-scale-1;
-    }
-
+    padding: em(10px, 19px) em($govuk-spacing-scale-3, 19px) em(9px, 19px);
     // setting any background-color makes text invisible when changing colours to dark backgrounds in Firefox (https://bugzilla.mozilla.org/show_bug.cgi?id=1335476)
     // as background-color and color need to always be set together, color should not be set either
     border: $govuk-border-width-form-element solid $govuk-text-colour;
@@ -25,6 +21,9 @@
 
     // Disable inner shadow and remove rounded corners
     -webkit-appearance: none;
+    @include mq($from: tablet) {
+      padding: em(7px, 19px) em($govuk-spacing-scale-3, 19px) em(4px, 19px);
+    }
   }
 
   .govuk-c-input::-webkit-outer-spin-button,
