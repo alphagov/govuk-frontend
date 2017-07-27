@@ -10,7 +10,7 @@
   .govuk-c-list {
     @include font-smoothing;
     @include govuk-core-19;
-    margin-top: $govuk-spacing-scale-1;
+    // TODO: Make margins under components consistent
     margin-bottom: $govuk-spacing-scale-4;
     padding-left: 0;
     list-style-type: none;

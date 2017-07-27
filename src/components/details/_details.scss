@@ -18,6 +18,7 @@
     display: inline-block;
 
     position: relative;
+    // TODO: Make margins under components consistent
     margin-bottom: em($govuk-spacing-scale-1, 19px);
 
     color: $govuk-blue;

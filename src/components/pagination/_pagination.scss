@@ -10,8 +10,8 @@
   .govuk-c-pagination {
     @include font-smoothing;
     display: block;
-    margin-top: $govuk-spacing-scale-5;
     margin-right: -$govuk-spacing-scale-3;
+    // TODO: Make margins under components consistent
     margin-bottom: $govuk-spacing-scale-5;
     margin-left: -$govuk-spacing-scale-3;
     font-family: $govuk-font-stack;
