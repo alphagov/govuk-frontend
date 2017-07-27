@@ -58,6 +58,8 @@
   },
   "browserslist": [
     "last 2 versions",
-    "ie 8"
+    "ie 8",
+    "ie 9",
+    "iOS 9"
   ]
 }
