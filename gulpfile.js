@@ -74,10 +74,11 @@ gulp.task('copy:icons', () => {
 // Runs js, scss and accessibility tests
 // --------------------------------------
 gulp.task('test', cb => {
-  runsequence('html:tenon',
-              'html:axe',
+  runsequence(
               'js:lint',
               'scss:lint',
+              'html:axe',
+              'html:tenon',
               cb)
 })
 
