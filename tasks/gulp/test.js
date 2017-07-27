@@ -6,7 +6,7 @@ const axe = require('gulp-axe-webdriver')
 // Check HTML using Tenon ----------------
 // ---------------------------------------
 gulp.task('html:tenon', function () {
-  gulp.src('src/components/**/*.html', {read: false})
+  return gulp.src('src/components/**/*.html', {read: false})
   .pipe(gtenon({
     config: 'config/tenon.json',
     snippet: true, // include errorSnippet in the console output
