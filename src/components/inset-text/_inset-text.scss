@@ -7,8 +7,7 @@
 
 @include exports("inset-text") {
   .govuk-c-inset-text {
-    margin-bottom: em($govuk-spacing-scale-3, 19);
-    padding: em($govuk-spacing-scale-3, 19);
+    padding: em($govuk-spacing-scale-3, 19px);
 
     clear: both;
 

@@ -1,7 +1,7 @@
 # Fieldset
 
-The <fieldset> element is used to group several controls within a web form.
-The <legend> element represents a caption for the content of its parent <fieldset>.
+The fieldset element is used to group several controls within a web form.
+The legend element represents a caption for the content of its parent fieldset.
 
 ## Guidance
 

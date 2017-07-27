@@ -18,7 +18,8 @@
     display: inline-block;
 
     position: relative;
-    margin-bottom: em($govuk-spacing-scale-1, 19);
+    // TODO: Make margins under components consistent
+    margin-bottom: em($govuk-spacing-scale-1, 19px);
 
     color: $govuk-blue;
     cursor: pointer;
@@ -44,13 +45,16 @@
   }
 
   .govuk-c-details__text {
-    margin-bottom: em($govuk-spacing-scale-3, 19);
-    padding: em($govuk-spacing-scale-3, 19);
+    // TODO: Make margins underneath components consistent
+    margin-bottom: em($govuk-spacing-scale-3, 19px);
+    padding: em($govuk-spacing-scale-3, 19px);
     @include govuk-u-border-left($govuk-border-width, $govuk-border-colour);
   }
 
   .govuk-c-details__text p {
+    // TODO: Make margins on paragraphs consistent
     margin-top: 0;
+    margin-bottom: em(20px, 19px);
   }
 
   .govuk-c-details__text p:last-child {
