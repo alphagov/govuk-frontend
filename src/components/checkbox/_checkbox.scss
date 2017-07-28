@@ -11,8 +11,9 @@
     display: block;
     position: relative;
 
+
     margin-bottom: $gutter-one-third;
-    padding: 0 0 0 40px;
+    padding: 0 0 0 em(40px,19px);
 
     clear: left;
 
@@ -46,41 +47,35 @@
   }
 
   .govuk-c-checkbox__label {
+    border: 2px solid transparent;
     display: block;
-    padding: 12px $govuk-spacing-scale-2 8px 12px;
+    padding: em($govuk-spacing-scale-2, 19px) em($govuk-spacing-scale-3, 19px) em($govuk-spacing-scale-1, 19px);
     cursor: pointer;
     // remove 300ms pause on mobile
     -ms-touch-action: manipulation;
     touch-action: manipulation;
-    @include mq($from: tablet) {
-      padding-top: 10px;
-      padding-bottom: 7px;
-    }
   }
 
   .govuk-c-checkbox__input + .govuk-c-checkbox__label:before {
     content: "";
-
     position: absolute;
     top: 0;
     left: 0;
-
-    width: 36px;
-    height: 36px;
-
-    border: $govuk-border-width-form-element solid;
+    width: em(36px, 19px);
+    height: em(36px, 19px);
+    border: $govuk-border-width-form-element solid $govuk-text-colour;
     background: transparent;
+    // padding-bottom: 1px;
   }
 
   .govuk-c-checkbox__input + .govuk-c-checkbox__label:after {
     content: "";
 
     position: absolute;
-    top: 11px;
-    left: 9px;
-
-    width: 17px;
-    height: 7px;
+    top: em(12px, 19px);
+    left: em(10px, 19px);
+    width: em(18px, 19px);
+    height: em(7px, 19px);
 
     transform: rotate(-45deg);
     border: solid;

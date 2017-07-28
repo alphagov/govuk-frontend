@@ -20,7 +20,6 @@
     font-family: $govuk-font-stack;
     @include font-smoothing;
     @include govuk-core-19;
-    line-height: 1.25;
   }
 
   .govuk-c-radio:last-child,
@@ -41,8 +40,8 @@
     top: 0;
     left: 0;
 
-    width: 40px;
-    height: 40px;
+    width: em(40px, 19px);
+    height: em(40px, 19px);
 
     cursor: pointer;
 
@@ -55,19 +54,14 @@
 
   .govuk-c-radio__label {
     display: block;
-
-    padding: 12px $govuk-spacing-scale-2 8px 12px;
+    border: 2px solid transparent;
+    padding: em($govuk-spacing-scale-2, 19px) em($govuk-spacing-scale-3, 19px) em($govuk-spacing-scale-1, 19px);
 
     cursor: pointer;
 
     // remove 300ms pause on mobile
     -ms-touch-action: manipulation;
     touch-action: manipulation;
-
-    @include mq($from: tablet) {
-      padding-top: 10px;
-      padding-bottom: 7px;
-    }
   }
 
   .govuk-c-radio__input + .govuk-c-radio__label:before {
@@ -77,8 +71,8 @@
     top: 0;
     left: 0;
 
-    width: 36px;
-    height: 36px;
+    width: em(36px, 19px);
+    height: em(36px, 19px);
 
     border: $govuk-border-width-form-element solid;
     border-radius: 50%;
@@ -89,13 +83,13 @@
     content: "";
 
     position: absolute;
-    top: 10px;
-    left: 10px;
+    top: em(10px, 19px);
+    left: em(10px, 19px);
 
     width: 0;
     height: 0;
 
-    border: $govuk-spacing-scale-2 solid;
+    border: em(10px, 19px) solid;
     border-radius: 50%;
     opacity: 0;
   }
