@@ -49,7 +49,7 @@
   .govuk-c-checkbox__label {
     border: 2px solid transparent;
     display: block;
-    padding: em($govuk-spacing-scale-2, 19px) em($govuk-spacing-scale-3, 19px) em($govuk-spacing-scale-1, 19px);
+    padding: em(8px, 19px) em($govuk-spacing-scale-3, 19px) em($govuk-spacing-scale-1, 19px);
     cursor: pointer;
     // remove 300ms pause on mobile
     -ms-touch-action: manipulation;
