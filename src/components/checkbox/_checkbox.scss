@@ -13,7 +13,7 @@
 
 
     margin-bottom: $gutter-one-third;
-    padding: 0 0 0 em(40px,19px);
+    padding: 0 0 0 em(40px, 19px);
 
     clear: left;
 
@@ -47,9 +47,9 @@
   }
 
   .govuk-c-checkbox__label {
-    border: 2px solid transparent;
     display: block;
     padding: em(8px, 19px) em($govuk-spacing-scale-3, 19px) em($govuk-spacing-scale-1, 19px);
+    border: 2px solid transparent;
     cursor: pointer;
     // remove 300ms pause on mobile
     -ms-touch-action: manipulation;
