@@ -17,6 +17,8 @@ gulp.task('packages:update', () => {
     .pipe(replace('../../globals/scss', '@govuk-frontend/globals'))
     .pipe(replace('../', '@govuk-frontend/'))
     .pipe(readmeComponents)
+    .pipe(replace('[demo](', '[demo](http://govuk-frontend.herokuapp.com/components/'))
+    .pipe(replace('.html)', '/index.html)'))
     .pipe(replace('<!--', ''))
     .pipe(replace('-->', ''))
     .pipe(replace(/---(.|\n)*---/g, ''))
