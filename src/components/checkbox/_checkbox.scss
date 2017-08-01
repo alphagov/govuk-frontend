@@ -61,10 +61,11 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: em(36px, 19px);
-    height: em(36px, 19px);
+    width: em(40px, 19px);
+    height: em(40px, 19px);
     border: $govuk-border-width-form-element solid $govuk-text-colour;
     background: transparent;
+    box-sizing: border-box;
     // padding-bottom: 1px;
   }
 
@@ -72,8 +73,8 @@
     content: "";
 
     position: absolute;
-    top: em(12px, 19px);
-    left: em(10px, 19px);
+    top: em(11px, 19px);
+    left: em(9px, 19px);
     width: em(18px, 19px);
     height: em(7px, 19px);
 
