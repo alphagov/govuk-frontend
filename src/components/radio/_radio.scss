@@ -64,13 +64,13 @@
 
   .govuk-c-radio__input + .govuk-c-radio__label:before {
     content: "";
-
+    box-sizing: border-box;
     position: absolute;
     top: 0;
     left: 0;
 
-    width: em(36px, 19px);
-    height: em(36px, 19px);
+    width: em(40px, 19px);
+    height: em(40px, 19px);
 
     border: $govuk-border-width-form-element solid;
     border-radius: 50%;
