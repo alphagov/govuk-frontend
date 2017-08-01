@@ -60,7 +60,8 @@ gulp.task('dist:prepare', () => {
         require('oldie')({
           rgba: {filter: true},
           rem: {disable: true},
-          unmq: {disable: true}
+          unmq: {disable: true},
+          pseudo: {disable: true}
           // more rules go here
         })
       ])

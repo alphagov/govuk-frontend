@@ -56,7 +56,7 @@
     touch-action: manipulation;
   }
 
-  .govuk-c-checkbox__input + .govuk-c-checkbox__label:before {
+  .govuk-c-checkbox__input + .govuk-c-checkbox__label::before {
     content: "";
     box-sizing: border-box;
     position: absolute;
@@ -70,7 +70,7 @@
     // padding-bottom: 1px;
   }
 
-  .govuk-c-checkbox__input + .govuk-c-checkbox__label:after {
+  .govuk-c-checkbox__input + .govuk-c-checkbox__label::after {
     content: "";
 
     position: absolute;
@@ -92,12 +92,12 @@
   }
 
   // Focused state
-  .govuk-c-checkbox__input:focus + .govuk-c-checkbox__label:before {
+  .govuk-c-checkbox__input:focus + .govuk-c-checkbox__label::before {
     box-shadow: 0 0 0 $govuk-focus-width $govuk-focus-colour;
   }
 
   // Selected state
-  .govuk-c-checkbox__input:checked + .govuk-c-checkbox__label:after {
+  .govuk-c-checkbox__input:checked + .govuk-c-checkbox__label::after {
     opacity: 1;
   }
 
