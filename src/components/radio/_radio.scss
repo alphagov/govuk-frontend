@@ -82,13 +82,13 @@
     content: "";
 
     position: absolute;
-    top: em(10px, 19px);
-    left: em(10px, 19px);
+    top: em($govuk-spacing-scale-2, 19px);
+    left: em($govuk-spacing-scale-2, 19px);
 
     width: 0;
     height: 0;
 
-    border: em(10px, 19px) solid;
+    border: em($govuk-spacing-scale-2, 19px) solid;
     border-radius: 50%;
     opacity: 0;
   }
