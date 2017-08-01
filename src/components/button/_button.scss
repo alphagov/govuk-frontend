@@ -13,7 +13,7 @@
     display: inline-block;
     position: relative;
     width: 100%;
-    height: em(40px, 19px);
+    min-height: em(40px, 19px);
     margin-top: 0;
     padding: 0 em($govuk-spacing-scale-3, 19px) 0 em($govuk-spacing-scale-1, 19px);
     border-width: 2px;
