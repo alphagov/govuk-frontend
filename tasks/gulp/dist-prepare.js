@@ -33,7 +33,8 @@ gulp.task('dist:prepare', () => {
   let copy = gulp.src([
     paths.tmp + '**/*',
     '!' + paths.tmp + 'component-list-template.html',
-    '!' + paths.tmp + 'component-view-template.html'
+    '!' + paths.tmp + 'component-view-template.html',
+    '!' + paths.tmp + 'examples/**/*.html'
   ])
     .pipe(gulp.dest(paths.dist))
 
@@ -100,6 +101,8 @@ gulp.task('dist:prepare', () => {
     .pipe(gulp.dest(paths.dist))
 
   let copyExamples = gulp.src(paths.tmp + 'examples/**/*')
+    .pipe(replace(/(govuk.*\.)(?=(js|css))/g, '$1min.'))
+    .pipe(eol())
     .pipe(gulp.dest(paths.dist + 'examples/'))
 
   return merge(scss, legacyScss, js, listComponents, copy, copyExamples)
