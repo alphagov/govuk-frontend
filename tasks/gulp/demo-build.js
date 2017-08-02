@@ -21,6 +21,7 @@ gulp.task('build:demo', () => {
     '!' + paths.dist + 'components/**/*.md',
     '!' + paths.dist + 'components/**/*.html',
     '!' + paths.dist + 'components/**/*.js',
+    '!' + paths.dist + 'examples/**/*',
     '!' + paths.dist + 'icons/**/*'
   ])
   .pipe(replace('.min.css', pkg.version + '.min.css'))
@@ -43,6 +44,13 @@ gulp.task('build:demo', () => {
   .pipe(eol())
   .pipe(gulp.dest(paths.demo + 'components/'))
 
+  let copyExamples = gulp.src([
+    paths.dist + 'examples/**/*'
+  ])
+  .pipe(replace(/(govuk.*)(?=\.min)/g, '$1' + pkg.version))
+  .pipe(eol())
+  .pipe(gulp.dest(paths.demo + 'examples/'))
+
   let original = gulp.src([paths.dist + 'components/**/*.html', '!' + paths.dist + '/components/**/index.html'])
     .pipe(wrap({src: paths.src + 'component-view-template.html'}))
     .pipe(replace(/(govuk.*)(?=\.(js|css))/g, '$1' + pkg.version + '.min'))
@@ -52,5 +60,5 @@ gulp.task('build:demo', () => {
   let copyIcons = gulp.src(paths.dist + 'icons/**/*.{png,svg,gif,jpg}')
     .pipe(gulp.dest(paths.demo + 'icons/'))
 
-  return merge(copy, copyIndex, original, copyIcons)
+  return merge(copy, copyIndex, original, copyIcons, copyExamples)
 })
