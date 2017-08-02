@@ -99,5 +99,8 @@ gulp.task('dist:prepare', () => {
     .pipe(eol())
     .pipe(gulp.dest(paths.dist))
 
-  return merge(scss, legacyScss, js, listComponents, copy)
+  let copyExamples = gulp.src(paths.tmp + 'examples/**/*')
+    .pipe(gulp.dest(paths.dist + 'examples/'))
+
+  return merge(scss, legacyScss, js, listComponents, copy, copyExamples)
 })
