@@ -1,10 +1,11 @@
 @import "../../globals/scss/import-once";
-@import "../../globals/scss/vars";
-@import "../../globals/scss/colours";
-@import "../../globals/scss/media-queries";
 @import "../../globals/scss/font-face";
+@import "../../globals/scss/helpers-ie";
+@import "../../globals/scss/helpers-px-to-em";
+@import "../../globals/scss/media-queries";
+@import "../../globals/scss/spacing";
 @import "../../globals/scss/typography";
-@import "../../globals/scss/helpers";
+@import "../../globals/scss/vars";
 
 @include exports("radio") {
   .govuk-c-radio {
@@ -12,20 +13,25 @@
 
     position: relative;
 
-    margin-bottom: $gutter-one-third;
-    padding: 0 0 0 38px;
+    margin-bottom: $govuk-spacing-scale-2;
+    padding: 0 0 0 em(40px, 19px);
 
     clear: left;
 
     font-family: $govuk-font-stack;
     @include font-smoothing;
     @include govuk-core-19;
-    line-height: 1.25;
   }
 
   .govuk-c-radio:last-child,
   .govuk-c-radio:last-of-type {
     margin-bottom: 0;
+  }
+
+  .govuk-c-radio--inline {
+    margin-right: $govuk-spacing-scale-4;
+    float: left;
+    clear: none;
   }
 
   .govuk-c-radio__input {
@@ -35,12 +41,12 @@
     top: 0;
     left: 0;
 
-    width: 38px;
-    height: 38px;
+    width: em(40px, 19px);
+    height: em(40px, 19px);
 
     cursor: pointer;
 
-    // IE8 doesn’t support pseudoelements, so we don’t want to hide native elements there.
+    // IE8 doesn’t support pseudoelements, so we don’t want to hide native elements there. Double colons get ommited by IE8.
     @if ($is-ie == false) or ($ie-version == 9) {
       margin: 0;
       opacity: 0;
@@ -49,63 +55,62 @@
 
   .govuk-c-radio__label {
     display: block;
-
-    padding: 8px $gutter-one-third 9px 12px;
-
+    padding: em(8px, 19px) em($govuk-spacing-scale-3, 19px) em($govuk-spacing-scale-1, 19px);
+    border: 2px solid transparent;
     cursor: pointer;
-
     // remove 300ms pause on mobile
     -ms-touch-action: manipulation;
     touch-action: manipulation;
-
-    @include mq($from: tablet) {
-      padding-top: 7px;
-      padding-bottom: 7px;
-    }
   }
 
-  .govuk-c-radio__input + .govuk-c-radio__label:before {
+  .govuk-c-radio__input + .govuk-c-radio__label::before {
     content: "";
-
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     position: absolute;
     top: 0;
     left: 0;
 
-    width: 34px;
-    height: 34px;
+    width: em(40px, 19px);
+    height: em(40px, 19px);
 
-    border: 2px solid;
+    border: $govuk-border-width-form-element solid;
     border-radius: 50%;
     background: transparent;
   }
 
-  .govuk-c-radio__input + .govuk-c-radio__label:after {
+  .govuk-c-radio__input + .govuk-c-radio__label::after {
     content: "";
 
     position: absolute;
-    top: 9px;
-    left: 9px;
+    top: em($govuk-spacing-scale-2, 19px);
+    left: em($govuk-spacing-scale-2, 19px);
 
     width: 0;
     height: 0;
 
-    border: 10px solid;
+    border: em($govuk-spacing-scale-2, 19px) solid;
     border-radius: 50%;
     opacity: 0;
   }
 
   // Focused state
-  .govuk-c-radio__input:focus + .govuk-c-radio__label:before {
+  .govuk-c-radio__input:focus + .govuk-c-radio__label::before {
     -webkit-box-shadow: 0 0 0 4px $govuk-focus-colour;
             box-shadow: 0 0 0 4px $govuk-focus-colour;
   }
 
   // Selected state
-  .govuk-c-radio__input:checked + .govuk-c-radio__label:after {
+  .govuk-c-radio__input:checked + .govuk-c-radio__label::after {
     opacity: 1;
   }
 
   // Disabled state
+  .govuk-c-radio__input:disabled,
+  .govuk-c-radio__input:disabled + .govuk-c-radio__label {
+    cursor: default;
+  }
+
   .govuk-c-radio__input:disabled + .govuk-c-radio__label {
     opacity: .5;
   }

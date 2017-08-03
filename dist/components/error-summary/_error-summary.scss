@@ -1,6 +1,6 @@
 @import "../../globals/scss/import-once";
-@import "../../globals/scss/colours";
 @import "../../globals/scss/font-face";
+@import "../../globals/scss/spacing";
 @import "../../globals/scss/typography";
 @import "../../globals/scss/vars";
 @import "../list/list";
@@ -8,10 +8,8 @@
 @include exports("error-summary") {
 
   .govuk-c-error-summary {
-    margin-top: 15px; // should these be 16px?
-    margin-bottom: 15px;
 
-    padding: 15px 10px;
+    padding: $govuk-spacing-scale-3 $govuk-spacing-scale-2;
 
     border: $govuk-border-width-mobile solid $govuk-error-colour;
 
@@ -19,10 +17,8 @@
     @include font-smoothing;
 
     @include mq($from: tablet) {
-      margin-top: 30px; // should this be 32px?
-      margin-bottom: 30px;
 
-      padding: 20px 15px 15px;
+      padding: $govuk-spacing-scale-4 $govuk-spacing-scale-3 $govuk-spacing-scale-3;
 
       border: $govuk-border-width-tablet solid $govuk-error-colour;
     }
@@ -34,15 +30,15 @@
   }
 
   .govuk-c-error-summary:focus {
-    outline: $govuk-outline-width-focus solid $govuk-focus-colour;
+    outline: $govuk-focus-width solid $govuk-focus-colour;
   }
 
   .govuk-c-error-summary__title {
     margin-top: 0;
-    margin-bottom: .5em;
+    margin-bottom: $govuk-spacing-scale-2;
 
     @include mq($from: tablet) {
-      margin-bottom: 20px;
+      margin-bottom: $govuk-spacing-scale-4;
     }
 
     font-family: $govuk-font-stack;

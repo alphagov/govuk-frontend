@@ -1,0 +1,46 @@
+@import "../../globals/scss/import-once";
+@import "../../globals/scss/font-face";
+@import "../../globals/scss/media-queries";
+@import "../../globals/scss/spacing";
+@import "../../globals/scss/typography";
+@import "../../globals/scss/utilities/shapes";
+@import "../../globals/scss/utilities/visually-hidden";
+
+@include exports("legal-text") {
+
+  .govuk-c-legal-text {
+    position: relative;
+    padding: $govuk-spacing-scale-1 0;
+
+    font-family: $govuk-font-stack;
+    @include font-smoothing;
+    @include govuk-core-19;
+  }
+
+  .govuk-c-legal-text__assistive {
+    @include govuk-u-visually-hidden;
+  }
+
+  .govuk-c-legal-text__icon {
+    display: inline-block;
+
+    position: absolute;
+    top: 50%;
+    left: 0;
+
+    min-width: 38px;
+    min-height: 35px;
+    margin-top: -19px; // Half the height of the 38px circle
+    padding-top: 3px;
+
+    font-size: 1.6em;
+    @include govuk-bold;
+    line-height: 35px;
+  }
+
+  .govuk-c-legal-text__text {
+    display: block;
+    margin-left: -$govuk-gutter-half;
+    padding-left: 65px;
+  }
+}

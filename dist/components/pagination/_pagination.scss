@@ -1,0 +1,90 @@
+@import "../../globals/scss/import-once";
+@import "../../globals/scss/links";
+@import "../../globals/scss/media-queries";
+@import "../../globals/scss/typography";
+@import "../../globals/scss/utilities/clearfix";
+@import "../../globals/scss/vars";
+
+@include exports("pagination") {
+
+  .govuk-c-pagination {
+    @include font-smoothing;
+    display: block;
+    margin-right: -$govuk-spacing-scale-3;
+    // TODO: Make margins under components consistent
+    margin-bottom: $govuk-spacing-scale-5;
+    margin-left: -$govuk-spacing-scale-3;
+    font-family: $govuk-font-stack;
+  }
+
+  .govuk-c-pagination__list {
+    @include govuk-u-clearfix;
+    margin: 0;
+    padding: 0;
+  }
+
+  .govuk-c-pagination__item {
+    @include govuk-core-16;
+    width: 50%;
+    padding: 0;
+    list-style: none;
+    text-align: right;
+  }
+
+  .govuk-c-pagination__item--previous {
+    @include mq($until: tablet) {
+      width: 100%;
+      float: none;
+    }
+    float: left;
+    text-align: left;
+  }
+
+  .govuk-c-pagination__item--next {
+    @include mq($until: tablet) {
+      width: 100%;
+      float: none;
+    }
+    float: right;
+    text-align: right;
+  }
+
+  .govuk-c-pagination__link {
+    display: block;
+    padding: $govuk-spacing-scale-3;
+    text-decoration: none;
+  }
+
+    .govuk-c-pagination__link:visited {
+      color: $govuk-link-colour;
+    }
+
+    .govuk-c-pagination__link:hover,
+    .govuk-c-pagination__link:active {
+      background-color: $govuk-canvas-colour;
+    }
+
+  .govuk-c-pagination__link-title {
+    @include govuk-core-27;
+    display: block;
+    line-height: (33.75 / 27);
+  }
+
+  .govuk-c-pagination__link-icon {
+    display: inline-block;
+    width: .63em;
+    height: .482em;
+    margin-bottom: 1px;
+  }
+
+  .govuk-c-pagination__link-label {
+    display: inline-block;
+    margin-top: .1em;
+    text-decoration: underline;
+  }
+
+    .govuk-c-pagination__link-label:empty {
+      display: none;
+    }
+
+}

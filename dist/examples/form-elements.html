@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>GOV.UK Frontend</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/css/govuk-frontend.min.css">
+  <!--[if IE 8]>
+  <link rel="stylesheet" href="/css/govuk-frontend-oldie.min.css">
+  <![endif]-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism.min.css">
+  <style>
+  /*
+  togle full page grid background debug mode
+  you can also apply .govuk-c-debug-grid class to a specific container
+  */
+  .govuk-c-debug-grid__toggler {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    background: #28a197;
+    color: #fff;
+    font-size: 13px;
+    padding: 5px 8px;
+    cursor: pointer;
+    font-family: sans-serif;
+  }
+  .govuk-c-debug-grid {
+    pointer-events: none;
+    background-repeat: repeat;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkY5NDMwQzgzMDg4RDExRTU5NDlGRTE3QUQxMEQ0NDY3IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkY5NDMwQzg0MDg4RDExRTU5NDlGRTE3QUQxMEQ0NDY3Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6Rjk0MzBDODEwODhEMTFFNTk0OUZFMTdBRDEwRDQ0NjciIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6Rjk0MzBDODIwODhEMTFFNTk0OUZFMTdBRDEwRDQ0NjciLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7YvL7kAAAAIElEQVR42mL8//8/AzGAiYFIMIAKWRgPMIQMF88ABBgAsbsEKILHaEsAAAAASUVORK5CYII=);
+  }
+  .govuk-c-debug-grid--full-page {
+    position: absolute;
+    opacity: 0.4;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: calc(100vh + 100%);
+    display: none;
+    z-index: -1;
+  }
+  .govuk-c-debug-grid--full-page.is-visible {
+    display: block;
+  }
+  </style>
+</head>
+<body class="language-markup govuk-c-site-width-container">
+  <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+  <h1 class="govuk-u-bold-48">Form elements</h1>
+<ul>
+  <li><a href="#input">Label and text input</a></li>
+  <li><a href="#textarea">Label and textarea</a></li>
+  <li><a href="#radio-stacked">Fieldset, legend and radio buttons (stacked)</a></li>
+  <li><a href="#radio-inline">Fieldset, legend and radio buttons (inline - yes or no)</a></li>
+  <li><a href="#checkbox-stacked">Fieldset, legend and checkboxes (stacked)</a></li>
+  <li><a href="#date">Date pattern</a></li>
+  <li><a href="#select">Select box</a></li>
+  <li><a href="#file">File upload</a></li>
+</ul>
+
+<form action="/" method="post">
+
+  <fieldset class="govuk-c-fieldset" id="input">
+    <label class="govuk-c-label" for="govuk-c-input-a">
+      National Insurance number
+    </label>
+    <input class="govuk-c-input" id="govuk-c-input-a" type="text">
+    <input class="govuk-c-button" type="submit" value="Save and continue">
+  </fieldset>
+
+  <fieldset class="govuk-c-fieldset" id="textarea">
+    <label class="govuk-c-label" for="govuk-c-textarea-a">
+      Why can't you provide a National Insurance number?
+    </label>
+    <textarea class="govuk-c-textarea" name="govuk-c-textarea-a" id="govuk-c-textarea-a" rows="5"></textarea>
+  </fieldset>
+
+  <fieldset class="govuk-c-fieldset" id="radio-stacked">
+    <legend class="govuk-c-fieldset__legend">
+      <h2 class="govuk-u-bold-24">How do you want to be contacted?</h2>
+    </legend>
+    <div class="govuk-c-radio">
+      <input class="govuk-c-radio__input" id="radio-stacked-1" type="radio" name="radio-stacked-group" value="Email">
+      <label class="govuk-c-radio__label" for="radio-stacked-1">Email</label>
+    </div>
+    <div class="govuk-c-radio">
+      <input class="govuk-c-radio__input" id="radio-stacked-2" type="radio" name="radio-stacked-group" value="Phone">
+      <label class="govuk-c-radio__label" for="radio-stacked-2">Phone</label>
+    </div>
+    <div class="govuk-c-radio">
+      <input class="govuk-c-radio__input" id="radio-stacked-3" type="radio" name="radio-stacked-group" value="Text">
+      <label class="govuk-c-radio__label" for="radio-stacked-3">Text message</label>
+    </div>
+  </fieldset>
+
+  <fieldset class="govuk-c-fieldset" id="radio-inline">
+    <div class="govuk-c-radio govuk-c-radio--inline">
+      <input class="govuk-c-radio__input" id="radio-1" type="radio" name="radio-group" value="Yes">
+      <label class="govuk-c-radio__label" for="radio-1">Yes</label>
+    </div>
+    <div class="govuk-c-radio govuk-c-radio--inline">
+      <input class="govuk-c-radio__input" id="radio-2" type="radio" name="radio-group" value="No">
+      <label class="govuk-c-radio__label" for="radio-2">No</label>
+    </div>
+  </fieldset>
+
+  <fieldset class="govuk-c-fieldset" id="checkbox-stacked">
+    <div class="govuk-c-checkbox">
+      <input class="govuk-c-checkbox__input" id="waste-type-1" name="waste-types" type="checkbox" value="waste-animal">
+      <label class="govuk-c-checkbox__label" for="waste-type-1">Waste from animal carcasses</label>
+    </div>
+    <div class="govuk-c-checkbox">
+      <input class="govuk-c-checkbox__input" id="waste-type-2" name="waste-types" type="checkbox" value="waste-mines">
+      <label class="govuk-c-checkbox__label" for="waste-type-2">Waste from mines or quarries</label>
+    </div>
+    <div class="govuk-c-checkbox">
+      <input class="govuk-c-checkbox__input" id="waste-type-3" name="waste-types" type="checkbox" disabled="disabled" value="waste-animal">
+      <label class="govuk-c-checkbox__label" for="waste-type-3">Waste from animal carcasses</label>
+    </div>
+  </fieldset>
+
+  <fieldset class="govuk-c-fieldset" id="date">
+    <div class="govuk-c-date">
+      <div class="govuk-c-date__item govuk-c-date__item--day">
+        <label class="govuk-c-label govuk-c-date__label" for="dob-day">Day</label>
+        <input class="govuk-c-input govuk-c-date__input" id="dob-day" name="dob-day" type="number">
+      </div>
+      <div class="govuk-c-date__item govuk-c-date__item--month">
+        <label class="govuk-c-label govuk-c-date__label" for="dob-month">Month</label>
+        <input class="govuk-c-input govuk-c-date__input" id="dob-month" name="dob-month" type="number">
+      </div>
+      <div class="govuk-c-date__item govuk-c-date__item--year">
+        <label class="govuk-c-label govuk-c-date__label" for="dob-year">Year</label>
+        <input class="govuk-c-input govuk-c-date__input" id="dob-year" name="dob-year" type="number">
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="govuk-c-fieldset" id="select">
+    <label class="govuk-c-label" for="select-box">This is the label text</label>
+    <select class="govuk-c-select-box" id="select-box" name="select-box">
+      <option>GOV.UK elements option 1</option>
+      <option>GOV.UK elements option 2</option>
+      <option>GOV.UK elements option 3</option>
+    </select>
+  </fieldset>
+
+  <fieldset class="govuk-c-fieldset" id="file">
+    <label class="govuk-c-label" for="file-upload-a">
+      Upload a file
+    </label>
+    <input class="govuk-c-file-upload" type="file" id="file-upload-a">
+  </fieldset>
+
+</form>
+
+  <script src="/js/govuk-frontend.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
+<span class="govuk-c-debug-grid__toggler">Show page debug grid</span>
+<div class="govuk-c-debug-grid govuk-c-debug-grid--full-page"></div>
+<script>
+ var toggler = document.querySelectorAll(".govuk-c-debug-grid__toggler")[0];
+    toggler.addEventListener("click",function(event){
+    event.preventDefault();
+    if (new RegExp('(^| )is-visible( |$)', 'gi').test(this.nextElementSibling.className)) {
+      this.nextElementSibling.className = 'govuk-c-debug-grid govuk-c-debug-grid--full-page';
+      toggler.innerHTML = "Show page debug grid";
+    } else {
+      this.nextElementSibling.className = 'govuk-c-debug-grid govuk-c-debug-grid--full-page is-visible';
+      toggler.innerHTML = "Hide page debug grid";
+    }
+},false);
+</script>
+</body>
+</html>
