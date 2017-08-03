@@ -34,6 +34,7 @@ gulp.task('packages:update', () => {
     '!' + paths.tmp + 'globals/scss/govuk-frontend-oldie.scss'
   ])
     .pipe(replace('../../components', '@govuk-frontend'))
+    .pipe(replace('./node_modules/', ''))
     .pipe(flatten({
       newPath: 'globals',
       includeParents: -1
