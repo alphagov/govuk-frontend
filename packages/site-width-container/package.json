@@ -1,7 +1,7 @@
 {
   "name": "@govuk-frontend/site-width-container",
-  "version": "0.0.3-alpha",
+  "version": "0.0.11-alpha",
   "dependencies": {
-    "@govuk-frontend/globals": "^0.0.9-alpha"
+    "@govuk-frontend/globals": "^0.0.11-alpha"
   }
 }

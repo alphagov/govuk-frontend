@@ -1,8 +1,8 @@
 {
   "name": "@govuk-frontend/error-summary",
-  "version": "0.0.9-alpha",
+  "version": "0.0.11-alpha",
   "dependencies": {
-    "@govuk-frontend/globals": "^0.0.9-alpha",
-    "@govuk-frontend/list": "^0.0.9-alpha"
+    "@govuk-frontend/globals": "^0.0.11-alpha",
+    "@govuk-frontend/list": "^0.0.11-alpha"
   }
 }
