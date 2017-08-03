@@ -8,7 +8,7 @@ Guidance and documentation can be found on [GOV.UK Design system](linkgoeshere).
 
 ## Demo
 
-Textarea [demo](textarea.html).
+Textarea [demo](http://govuk-frontend.herokuapp.com/components/textarea/index.html).
 
 ## Usage
 

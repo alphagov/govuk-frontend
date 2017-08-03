@@ -1,13 +1,13 @@
 @import "@govuk-frontend/globals/import-once";
-@import "@govuk-frontend/globals/colours";
 @import "@govuk-frontend/globals/font-face";
 @import "@govuk-frontend/globals/typography";
+@import "@govuk-frontend/globals/vars";
 
 @include exports("phase-tag") {
   .govuk-c-phase-tag {
     display: inline-block;
-    margin: 0 8px 0 0;
-    padding: 4px 5px 0;
+    margin-right: $govuk-spacing-scale-2;
+    padding: $govuk-spacing-scale-1 $govuk-spacing-scale-1 0;
 
     color: $govuk-white;
     background-color: $govuk-blue;

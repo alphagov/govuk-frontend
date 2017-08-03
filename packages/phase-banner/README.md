@@ -8,7 +8,7 @@ Guidance and documentation can be found on [GOV.UK Design system](linkgoeshere).
 
 ## Demo
 
-Phase banner [demo](phase-banner.html).
+Phase banner [demo](http://govuk-frontend.herokuapp.com/components/phase-banner/index.html).
 
 ## Usage
 

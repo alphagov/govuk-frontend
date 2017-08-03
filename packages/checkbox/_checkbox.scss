@@ -1,18 +1,19 @@
 @import "@govuk-frontend/globals/import-once";
-@import "@govuk-frontend/globals/vars";
-@import "@govuk-frontend/globals/colours";
-@import "@govuk-frontend/globals/media-queries";
 @import "@govuk-frontend/globals/font-face";
+@import "@govuk-frontend/globals/helpers-ie";
+@import "@govuk-frontend/globals/media-queries";
+@import "@govuk-frontend/globals/spacing";
 @import "@govuk-frontend/globals/typography";
-@import "@govuk-frontend/globals/helpers";
+@import "@govuk-frontend/globals/vars";
 
 @include exports("checkbox") {
   .govuk-c-checkbox {
     display: block;
     position: relative;
 
+
     margin-bottom: $gutter-one-third;
-    padding: 0 0 0 38px;
+    padding: 0 0 0 em(40px, 19px);
 
     clear: left;
 
@@ -33,8 +34,8 @@
     top: 0;
     left: 0;
 
-    width: 38px;
-    height: 38px;
+    width: 40px;
+    height: 40px;
 
     cursor: pointer;
 
@@ -47,46 +48,48 @@
 
   .govuk-c-checkbox__label {
     display: block;
-    padding: 8px $gutter-one-third 9px 12px;
+    padding: em(8px, 19px) em($govuk-spacing-scale-3, 19px) em($govuk-spacing-scale-1, 19px);
+    border: 2px solid transparent;
     cursor: pointer;
     // remove 300ms pause on mobile
     -ms-touch-action: manipulation;
     touch-action: manipulation;
-    @include mq($from: tablet) {
-      padding-top: 7px;
-      padding-bottom: 7px;
-    }
   }
 
-  .govuk-c-checkbox__input + .govuk-c-checkbox__label:before {
+  .govuk-c-checkbox__input + .govuk-c-checkbox__label::before {
     content: "";
-
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     position: absolute;
     top: 0;
     left: 0;
-
-    width: 34px;
-    height: 34px;
-
-    border: 2px solid;
+    width: em(40px, 19px);
+    height: em(40px, 19px);
+    border: $govuk-border-width-form-element solid $govuk-text-colour;
     background: transparent;
+
+    // padding-bottom: 1px;
   }
 
-  .govuk-c-checkbox__input + .govuk-c-checkbox__label:after {
+  .govuk-c-checkbox__input + .govuk-c-checkbox__label::after {
     content: "";
 
     position: absolute;
-    top: 10px;
-    left: 8px;
-
-    width: 17px;
-    height: 7px;
+    top: em(11px, 19px);
+    left: em(9px, 19px);
+    width: em(18px, 19px);
+    height: em(7px, 19px);
 
     -webkit-transform: rotate(-45deg);
 
+        -ms-transform: rotate(-45deg);
+
             transform: rotate(-45deg);
     border: solid;
-    border-width: 0 0 5px 5px;
+    border-width: 0 0 $govuk-border-width $govuk-border-width;
+    // Fix bug in IE11 caused by transform rotate (-45deg).
+    // See: alphagov/govuk_elements/issues/518
+    border-top-color: transparent;
 
     opacity: 0;
 
@@ -94,17 +97,22 @@
   }
 
   // Focused state
-  .govuk-c-checkbox__input:focus + .govuk-c-checkbox__label:before {
-    -webkit-box-shadow: 0 0 0 3px $govuk-focus-colour;
-            box-shadow: 0 0 0 3px $govuk-focus-colour;
+  .govuk-c-checkbox__input:focus + .govuk-c-checkbox__label::before {
+    -webkit-box-shadow: 0 0 0 $govuk-focus-width $govuk-focus-colour;
+            box-shadow: 0 0 0 $govuk-focus-width $govuk-focus-colour;
   }
 
   // Selected state
-  .govuk-c-checkbox__input:checked + .govuk-c-checkbox__label:after {
+  .govuk-c-checkbox__input:checked + .govuk-c-checkbox__label::after {
     opacity: 1;
   }
 
   // Disabled state
+  .govuk-c-checkbox__input:disabled,
+  .govuk-c-checkbox__input:disabled + .govuk-c-checkbox__label {
+    cursor: default;
+  }
+
   .govuk-c-checkbox__input:disabled + .govuk-c-checkbox__label {
     opacity: .5;
   }

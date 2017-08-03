@@ -1,18 +1,20 @@
 @import "@govuk-frontend/globals/import-once";
-@import "@govuk-frontend/globals/colours";
+@import "@govuk-frontend/globals/spacing";
 @import "@govuk-frontend/globals/typography";
+@import "@govuk-frontend/globals/utilities/clearfix";
+@import "@govuk-frontend/globals/vars";
 @import "@govuk-frontend/label/label";
 @import "@govuk-frontend/input/input";
 @import "@govuk-frontend/error-message/error-message";
 
 @include exports("date") {
   .govuk-c-date {
-    @include clearfix;
+    @include govuk-u-clearfix;
   }
 
   .govuk-c-date__item {
     width: 50px;
-    margin-right: 20px;
+    margin-right: $govuk-spacing-scale-4;
     margin-bottom: 0;
     float: left;
     clear: none;

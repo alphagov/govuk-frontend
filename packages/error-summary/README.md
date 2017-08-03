@@ -8,18 +8,18 @@ Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
 
 ## Demo
 
-Error summary [demo](error-summary.html).
+Error summary [demo](http://govuk-frontend.herokuapp.com/components/error-summary/index.html).
 
 ## Usage
 
 Code example(s)
 
 ```
-<div class="govuk-c-error-summary" aria-labelledby="error-summary-title" role="group" tabindex="-1">
+<div class="govuk-c-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1">
 
-  <h1 class="govuk-c-error-summary__title" id="error-summary-title">
+  <h2 class="govuk-c-error-summary__title" id="error-summary-title">
     Message to alert the user to a problem goes here
-  </h1>
+  </h2>
 
   <div class="govuk-c-error-summary__body">
     <p>

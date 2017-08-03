@@ -8,7 +8,7 @@ Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
 
 ## Demo
 
-Grid [demo](grid.html).
+Grid [demo](http://govuk-frontend.herokuapp.com/components/grid/index.html).
 
 ## Usage
 

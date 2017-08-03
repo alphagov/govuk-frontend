@@ -8,7 +8,7 @@ Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
 
 ## Demo
 
-Breadcrumb [demo](breadcrumb.html).
+Breadcrumb [demo](http://govuk-frontend.herokuapp.com/components/breadcrumb/index.html).
 
 ## Usage
 

@@ -8,7 +8,7 @@ Guidance and documentation can be found on [GOV.UK Design system](linkgoeshere).
 
 ## Demo
 
-Radio button [demo](radio.html).
+Radio button [demo](http://govuk-frontend.herokuapp.com/components/radio/index.html).
 
 ## Usage
 

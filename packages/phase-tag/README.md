@@ -8,7 +8,7 @@ Guidance and documentation can be found on [GOV.UK Design system](linkgoeshere).
 
 ## Demo
 
-Phase tag [demo](phase-tag.html).
+Phase tag [demo](http://govuk-frontend.herokuapp.com/components/phase-tag/index.html).
 
 ## Usage
 

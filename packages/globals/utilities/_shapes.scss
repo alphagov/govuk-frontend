@@ -1,5 +1,5 @@
+@import "../vars";
 @import "../import-once";
-@import "../colours";
 
 @include exports("shapes") {
   .govuk-u-circle {

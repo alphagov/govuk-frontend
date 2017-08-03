@@ -1,13 +1,16 @@
 @import "@govuk-frontend/globals/import-once";
-@import "@govuk-frontend/globals/colours";
+@import "@govuk-frontend/globals/helpers-px-to-em";
 @import "@govuk-frontend/globals/font-face";
+@import "@govuk-frontend/globals/spacing";
 @import "@govuk-frontend/globals/typography";
+@import "@govuk-frontend/globals/vars";
 
 @include exports("panel") {
 
   .govuk-c-panel {
-    margin: 1em 0;
-    padding: 2em 1em;
+    // TODO: Make margins under components consistent
+    margin-bottom: $govuk-spacing-scale-3;
+    padding: $govuk-spacing-scale-5 $govuk-spacing-scale-3;
 
     font-family: $govuk-font-stack;
     @include font-smoothing;
@@ -27,16 +30,16 @@
   }
 
   .govuk-c-panel__title {
-    margin-top: em(60px, 48px);
-    margin-bottom: em(30px, 48px);
+    margin-top: em($govuk-spacing-scale-6, 48px);
+    margin-bottom: em($govuk-spacing-scale-5, 48px);
 
     @include govuk-bold-48;
   }
 
   .govuk-c-panel__body {
     // TODO: Fix margin values
-    margin-top: em(11.25px, 48px);
-    margin-bottom: em(37.895px, 48px);
+    margin-top: em($govuk-spacing-scale-2, 48px);
+    margin-bottom: em($govuk-spacing-scale-5, 48px); //use to be 37.895px
 
     @include govuk-core-36;
   }

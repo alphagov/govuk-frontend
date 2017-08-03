@@ -8,7 +8,7 @@ Guidance and documentation can be found on [GOV.UK Design system](linkgoeshere).
 
 ## Demo
 
-Table [demo](table.html).
+Table [demo](http://govuk-frontend.herokuapp.com/components/table/index.html).
 
 ## Usage
 

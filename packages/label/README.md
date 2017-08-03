@@ -8,7 +8,7 @@ Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
 
 ## Demo
 
-Label [demo](label.html).
+Label [demo](http://govuk-frontend.herokuapp.com/components/label/index.html).
 
 ## Usage
 
