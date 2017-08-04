@@ -2,11 +2,49 @@
 <html lang="en">
 <head>
   <title>GOV.UK Frontend</title>
-  <link rel="stylesheet" href="/css/govuk-frontend0.0.9-alpha.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/css/govuk-frontend0.0.11-alpha.min.css">
   <!--[if IE 8]>
-  <link rel="stylesheet" href="/css/govuk-frontend-oldie0.0.9-alpha.min.css">
+  <link rel="stylesheet" href="/css/govuk-frontend-oldie0.0.11-alpha.min.css">
   <![endif]-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism.min.css">
+  <style>
+  /*
+  togle full page grid background debug mode
+  you can also apply .govuk-c-debug-grid class to a specific container
+  */
+  .govuk-c-debug-grid__toggler {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    background: #28a197;
+    color: #fff;
+    font-size: 13px;
+    padding: 5px 8px;
+    cursor: pointer;
+    font-family: sans-serif;
+  }
+  .govuk-c-debug-grid {
+    pointer-events: none;
+    background-repeat: repeat;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkY5NDMwQzgzMDg4RDExRTU5NDlGRTE3QUQxMEQ0NDY3IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkY5NDMwQzg0MDg4RDExRTU5NDlGRTE3QUQxMEQ0NDY3Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6Rjk0MzBDODEwODhEMTFFNTk0OUZFMTdBRDEwRDQ0NjciIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6Rjk0MzBDODIwODhEMTFFNTk0OUZFMTdBRDEwRDQ0NjciLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7YvL7kAAAAIElEQVR42mL8//8/AzGAiYFIMIAKWRgPMIQMF88ABBgAsbsEKILHaEsAAAAASUVORK5CYII=);
+  }
+  .govuk-c-debug-grid--full-page {
+    position: absolute;
+    opacity: 0.4;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: calc(100vh + 100%);
+    display: none;
+    z-index: -1;
+  }
+  .govuk-c-debug-grid--full-page.is-visible {
+    display: block;
+  }
+  </style>
 </head>
 <body class="language-markup govuk-c-site-width-container">
   <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
@@ -33,7 +71,22 @@ npm install --save @govuk-frontend/select-box
 ```
 -->
 
-  <script src="/js/govuk-frontend0.0.9-alpha.min.js"></script>
+  <script src="/js/govuk-frontend0.0.11-alpha.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
+<span class="govuk-c-debug-grid__toggler">Show page debug grid</span>
+<div class="govuk-c-debug-grid govuk-c-debug-grid--full-page"></div>
+<script>
+ var toggler = document.querySelectorAll(".govuk-c-debug-grid__toggler")[0];
+    toggler.addEventListener("click",function(event){
+    event.preventDefault();
+    if (new RegExp('(^| )is-visible( |$)', 'gi').test(this.nextElementSibling.className)) {
+      this.nextElementSibling.className = 'govuk-c-debug-grid govuk-c-debug-grid--full-page';
+      toggler.innerHTML = "Show page debug grid";
+    } else {
+      this.nextElementSibling.className = 'govuk-c-debug-grid govuk-c-debug-grid--full-page is-visible';
+      toggler.innerHTML = "Hide page debug grid";
+    }
+},false);
+</script>
 </body>
 </html>

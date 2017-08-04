@@ -1,13 +1,15 @@
 @import "../../globals/scss/import-once";
-@import "../../globals/scss/colours";
 @import "../../globals/scss/font-face";
+@import "../../globals/scss/helpers-px-to-em";
+@import "../../globals/scss/spacing";
 @import "../../globals/scss/typography";
+@import "../../globals/scss/vars";
 @import "../phase-tag/phase-tag";
 
 @include exports("phase-banner") {
   .govuk-c-phase-banner {
-    padding-top: em(10px, 16px);
-    padding-bottom: em(8px, 16px);
+    padding-top: em($govuk-spacing-scale-2, 16px);
+    padding-bottom: em($govuk-spacing-scale-2, 16px); //use to be 8
     // Apply styling to tablet and upwards
     // @include mq($from:tablet) {
     //  padding-bottom: em(10px, 16px);

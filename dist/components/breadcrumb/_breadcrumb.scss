@@ -1,29 +1,33 @@
 @import "../../globals/scss/import-once";
-@import "../../globals/scss/helpers";
-@import "../../globals/scss/colours";
+@import "../../globals/scss/helpers-url";
+@import "../../globals/scss/spacing";
 @import "../../globals/scss/typography";
+@import "../../globals/scss/utilities/clearfix";
+@import "../../globals/scss/vars";
 
 
 @include exports("breadcrumb") {
   .govuk-c-breadcrumb {
-    padding-top: .75em;
-    padding-bottom: .75em;
+    padding-top: $govuk-spacing-scale-3;
+    padding-bottom: $govuk-spacing-scale-3;
 
     font-family: $govuk-font-stack;
     @include font-smoothing;
   }
 
   .govuk-c-breadcrumb__list {
-    @include clearfix;
+    @include govuk-u-clearfix;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
   }
 
   .govuk-c-breadcrumb__list-item {
     @include govuk-core-16;
-    margin-bottom: .4em;
-    margin-left: .6em;
-    padding-left: .9em;
+    margin-bottom: $govuk-spacing-scale-1;
+    margin-left: $govuk-spacing-scale-2;
+    padding-left: $govuk-spacing-scale-3;
     float: left;
-    list-style: none;
     background-image: file-url("separator.png");
     background-repeat: no-repeat;
     background-position: 0% 50%;
@@ -34,8 +38,10 @@
     padding-left: 0;
     background-image: none;
   }
-
-  .govuk-c-breadcrumb__link {
-    color: $govuk-text-colour;
-  }
+    .govuk-c-breadcrumb__link:link,
+    .govuk-c-breadcrumb__link:visited,
+    .govuk-c-breadcrumb__link:hover,
+    .govuk-c-breadcrumb__link:active {
+      color: $govuk-text-colour;
+    }
 }

@@ -1,8 +1,7 @@
 @import "../../globals/scss/import-once";
-@import "../../globals/scss/vars";
-@import "../../globals/scss/colours";
 @import "../../globals/scss/font-face";
 @import "../../globals/scss/typography";
+@import "../../globals/scss/vars";
 
 @include exports("file-upload") {
   .govuk-c-file-upload {
@@ -12,7 +11,7 @@
   }
 
   .govuk-c-file-upload:focus {
-    outline: $govuk-outline-width-focus solid $govuk-focus-colour;
+    outline: $govuk-focus-width solid $govuk-focus-colour;
   }
 
   .govuk-c-file-upload--error {

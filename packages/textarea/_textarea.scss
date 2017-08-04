@@ -1,6 +1,6 @@
 @import "@govuk-frontend/globals/import-once";
-@import "@govuk-frontend/globals/colours";
 @import "@govuk-frontend/globals/font-face";
+@import "@govuk-frontend/globals/spacing";
 @import "@govuk-frontend/globals/typography";
 @import "@govuk-frontend/globals/vars";
 @import "@govuk-frontend/label/label";
@@ -27,7 +27,7 @@
   }
 
   .govuk-c-textarea:focus {
-    outline: $govuk-outline-width-focus solid $govuk-focus-colour;
+    outline: $govuk-focus-width solid $govuk-focus-colour;
   }
 
   .govuk-c-textarea--error {

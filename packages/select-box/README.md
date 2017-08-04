@@ -8,7 +8,7 @@ Guidance and documentation can be found on [GOV.UK Design system](linkgoeshere).
 
 ## Demo
 
-Select box [demo](select-box.html).
+Select box [demo](http://govuk-frontend.herokuapp.com/components/select-box/index.html).
 
 ## Usage
 

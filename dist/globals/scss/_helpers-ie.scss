@@ -1,0 +1,18 @@
+// Old IE Helpers
+$is-ie: false !default;
+
+@mixin ie-lte($version) {
+  @if $is-ie {
+    @if $ie-version <= $version {
+      @content;
+    }
+  }
+}
+
+@mixin ie($version) {
+  @if $is-ie {
+    @if $ie-version == $version {
+      @content;
+    }
+  }
+}

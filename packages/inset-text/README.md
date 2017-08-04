@@ -8,7 +8,7 @@ Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
 
 ## Demo
 
-Inset text [demo](inset-text.html).
+Inset text [demo](http://govuk-frontend.herokuapp.com/components/inset-text/index.html).
 
 ## Usage
 

@@ -9,7 +9,7 @@ Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
 
 ## Demo
 
-Error message [demo](error-message.html).
+Error message [demo](http://govuk-frontend.herokuapp.com/components/error-message/index.html).
 
 ## Usage
 

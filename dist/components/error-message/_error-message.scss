@@ -1,14 +1,14 @@
 @import "../../globals/scss/import-once";
-@import "../../globals/scss/colours";
 @import "../../globals/scss/font-face";
 @import "../../globals/scss/typography";
-@import "../../globals/scss/helpers";
+@import "../../globals/scss/vars";
 
 @include exports("error-message") {
   .govuk-c-error-message {
     display: block;
 
     margin: 0;
+    // TODO: use a var for padding
     padding: 2px 0;
 
     clear: both;
@@ -18,6 +18,5 @@
     font-family: $govuk-font-stack;
     @include font-smoothing;
     @include govuk-bold-19;
-
   }
 }

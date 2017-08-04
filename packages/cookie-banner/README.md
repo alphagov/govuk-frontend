@@ -8,7 +8,7 @@ Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
 
 ## Demo
 
-Cookie banner [demo](cookie-banner.html).
+Cookie banner [demo](http://govuk-frontend.herokuapp.com/components/cookie-banner/index.html).
 
 ## Usage
 

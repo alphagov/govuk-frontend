@@ -8,7 +8,7 @@ Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
 
 ## Demo
 
-Site width container [demo](site-width-container.html).
+Site width container [demo](http://govuk-frontend.herokuapp.com/components/site-width-container/index.html).
 
 ## Usage
 

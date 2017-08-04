@@ -1,0 +1,7 @@
+// URL Helpers
+// A function which outputs a plain url which is prefixed with a defined
+// path variable.
+
+@function file-url($file) {
+  @return url($global-images + $file);
+}

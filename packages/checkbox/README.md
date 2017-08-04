@@ -8,7 +8,7 @@ Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
 
 ## Demo
 
-Checkbox [demo](checkbox.html).
+Checkbox [demo](http://govuk-frontend.herokuapp.com/components/checkbox/index.html).
 
 ## Usage
 
@@ -24,8 +24,8 @@ Code example(s)
   <label class="govuk-c-checkbox__label" for="waste-type-2">Waste from mines or quarries</label>
 </div>
 <div class="govuk-c-checkbox">
-  <input class="govuk-c-checkbox__input" id="waste-type-3" name="waste-types" type="checkbox" disabled="disabled" value="waste-animal">
-  <label class="govuk-c-checkbox__label" for="waste-type-3">Waste from animal carcasses</label>
+  <input class="govuk-c-checkbox__input" id="waste-type-3" name="waste-types" type="checkbox" disabled="disabled" value="waste-farm">
+  <label class="govuk-c-checkbox__label" for="waste-type-3">Farm or agricultural waste</label>
 </div>
 
 ```

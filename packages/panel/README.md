@@ -12,7 +12,7 @@ Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
 
 ## Demo
 
-* Panel [demo](panel.html).
+* Panel [demo](http://govuk-frontend.herokuapp.com/components/panel/index.html).
 
 ## Usage
 

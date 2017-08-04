@@ -1,6 +1,7 @@
-@import "@govuk-frontend/globals/vars";
-@import "@govuk-frontend/globals/grid-layout";
 @import "@govuk-frontend/globals/import-once";
+@import "@govuk-frontend/globals/grid-layout";
+@import "@govuk-frontend/globals/spacing";
+@import "@govuk-frontend/globals/vars";
 
 @include exports("site-width-container") {
 
