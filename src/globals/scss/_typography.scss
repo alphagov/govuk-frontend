@@ -1,4 +1,5 @@
 @import "import-once";
+@import "helpers-px-to-em";
 @import "media-queries";
 @import "spacing";
 @import "vars";
@@ -424,8 +425,8 @@ $is-print: false !default;
     margin-bottom: em(20, 16);
 
     @include mq($from: tablet) {
-      margin-top: em(5);
-      margin-bottom: em(20);
+      margin-top: em(5, 19);
+      margin-bottom: em(20, 19);
     }
   }
 }
