@@ -358,12 +358,12 @@ $is-print: false !default;
   .heading-xlarge {
     @include govuk-bold-48;
 
-    margin-top: em(15, 32);
-    margin-bottom: em(30, 32);
+    margin-top: em($govuk-spacing-scale-3, 32);
+    margin-bottom: em($govuk-spacing-scale-5, 32);
 
     @include mq($from: tablet) {
-      margin-top: em(30, 48);
-      margin-bottom: em(60, 48);
+      margin-top: em($govuk-spacing-scale-5, 48);
+      margin-bottom: em($govuk-spacing-scale-6, 48);
     }
 
     .heading-secondary {
@@ -379,11 +379,11 @@ $is-print: false !default;
     @include govuk-bold-36;
 
     margin-top: em(25, 24);
-    margin-bottom: em(10, 24);
+    margin-bottom: em($govuk-spacing-scale-2, 24);
 
     @include mq($from: tablet) {
       margin-top: em(45, 36);
-      margin-bottom: em(20, 36);
+      margin-bottom: em($govuk-spacing-scale-4, 36);
     }
 
     .heading-secondary {
@@ -399,11 +399,11 @@ $is-print: false !default;
     @include govuk-bold-24;
 
     margin-top: em(25, 20);
-    margin-bottom: em(10, 20);
+    margin-bottom: em($govuk-spacing-scale-2, 20);
 
     @include mq($from: tablet) {
       margin-top: em(45, 24);
-      margin-bottom: em(20, 24);
+      margin-bottom: em($govuk-spacing-scale-4, 24);
     }
 
   }
@@ -411,22 +411,22 @@ $is-print: false !default;
   .heading-small {
     @include govuk-bold-19;
 
-    margin-top: em(10, 16);
-    margin-bottom: em(5, 16);
+    margin-top: em($govuk-spacing-scale-2, 16);
+    margin-bottom: em($govuk-spacing-scale-1, 16);
 
     @include mq($from: tablet) {
-      margin-top: em(20, 19);
+      margin-top: em($govuk-spacing-scale-4, 19);
     }
   }
 
   .body-text {
     @include govuk-core-19;
-    margin-top: em(5, 16);
-    margin-bottom: em(20, 16);
+    margin-top: em($govuk-spacing-scale-1, 16);
+    margin-bottom: em($govuk-spacing-scale-4, 16);
 
     @include mq($from: tablet) {
-      margin-top: em(5, 19);
-      margin-bottom: em(20, 19);
+      margin-top: em($govuk-spacing-scale-1, 19);
+      margin-bottom: em($govuk-spacing-scale-4, 19);
     }
   }
 }
