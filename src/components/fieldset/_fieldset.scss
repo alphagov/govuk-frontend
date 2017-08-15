@@ -4,6 +4,7 @@
 
 @include exports("fieldset") {
   .govuk-c-fieldset {
+    margin: 0;
     padding: 0;
     border: 0;
     @include govuk-u-clearfix;
