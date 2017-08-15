@@ -41,7 +41,7 @@
     "gulp-sass-lint": "^1.3.2",
     "gulp-standard": "^10.0.0",
     "gulp-task-listing": "^1.0.1",
-    "gulp-tenon-client": "git+https://git@github.com/alphagov/gulp-tenon-client.git",
+    "gulp-tenon-client": "^0.1.1",
     "gulp-uglify": "^3.0.0",
     "gulp-wrap": "^0.13.0",
     "lerna": "^2.0.0-rc.5",
