@@ -17,7 +17,20 @@ Code example(s)
 ```
 @@include('phase-tag.html')
 ```
+## Nunjucks
 
+```
+{% from "phase-tag/macro.njk" import govukPhaseTag %}
+
+{{ govukPhaseTag(phaseTagText='Alpha') }}
+```
+
+## Arguments
+
+| Name              | Type    | Default | Required  | Description
+|---                |---      |---      |---        |---
+| phaseTagText      | string  |         | Yes       | Tag text
+| classes           | string  |         | No        | Optional additional classes
 
 <!--
 ## Installation
