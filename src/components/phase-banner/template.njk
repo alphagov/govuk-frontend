@@ -1,0 +1,10 @@
+{% from "phase-tag/macro.njk" import govukPhaseTag %}
+
+<div class="govuk-c-phase-banner {{ classes }}">
+  <p class="govuk-c-phase-banner__content">
+  {{ govukPhaseTag(phaseTagText) }}
+    <span class="govuk-c-phase-banner__text">
+      {{ phaseBannerText | safe }}
+    </span>
+  </p>
+</div>

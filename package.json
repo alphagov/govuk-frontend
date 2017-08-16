@@ -34,6 +34,7 @@
     "gulp-live-server": "0.0.30",
     "gulp-marked": "^1.0.0",
     "gulp-natural-sort": "^0.1.1",
+    "gulp-nunjucks-render": "^2.2.1",
     "gulp-postcss": "^7.0.0",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.5.4",
@@ -55,6 +56,9 @@
     "postcss-nested": "^2.0.2",
     "postcss-scss": "^1.0.0",
     "sass-mq": "^3.3.2"
+  },
+  "optionalDependencies": {
+    "fsevents": "*"
   },
   "browserslist": [
     "last 2 versions",

@@ -19,6 +19,7 @@ require('./tasks/gulp/preview-compile.js')
 require('./tasks/gulp/preview-component-list.js')
 require('./tasks/gulp/preview-docs.js')
 require('./tasks/gulp/examples.js')
+require('./tasks/gulp/nunjucks-render.js')
 
 // Build packages task -----------------
 // Prepare package folder for publishing
@@ -44,6 +45,7 @@ gulp.task('dev', cb => {
               'preview:docs',
               'examples',
               'preview:component:list',
+              'nunjucks',
               'serve:preview',
               'watch', cb)
 })
@@ -91,7 +93,9 @@ gulp.task('review', () => {
               'copy:icons',
               'preview:docs',
               'examples',
-              'preview:component:list')
+              'preview:component:list',
+              'nunjucks'
+            )
 })
 
 // Default task -------------------------
