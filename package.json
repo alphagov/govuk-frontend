@@ -57,6 +57,9 @@
     "postcss-scss": "^1.0.0",
     "sass-mq": "^3.3.2"
   },
+  "optionalDependencies": {
+    "fsevents": "*"
+  },
   "browserslist": [
     "last 2 versions",
     "ie 8",
