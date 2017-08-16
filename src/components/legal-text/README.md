@@ -40,6 +40,6 @@ Code example(s)
 ## Installation
 
 ```
-npm install --save @govuk-frontend/component-name
+npm install --save @govuk-frontend/legal-text
 ```
 -->
