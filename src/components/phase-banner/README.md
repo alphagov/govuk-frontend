@@ -17,7 +17,23 @@ Code example(s)
 ```
 @@include('phase-banner.html')
 ```
+## Nunjucks
 
+```
+{% from "phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner(
+  phaseBannerText='This is a new service – your <a href="#">feedback</a> will help us to improve it.',
+  phaseTagText='BETA')
+}}
+```
+
+## Arguments
+
+| Name              | Type    | Default | Required  | Description
+|---                |---      |---      |---        |---
+| phaseTagText      | string  |         | Yes       | Tag text
+| phaseBannerText   | string  |         | Yes       | Banner copy
+| classes           | string  |         | No        | Optional additional classes
 
 <!--
 ## Installation
