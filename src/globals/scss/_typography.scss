@@ -429,4 +429,13 @@ $is-print: false !default;
       margin-bottom: em($govuk-spacing-scale-4, 19);
     }
   }
+
+  .govuk-text-align-button {
+    @include govuk-core-19;
+    @include font-smoothing;
+    display: inline-block;
+    padding-top: em(8, 19);
+    padding-left: em($govuk-spacing-scale-1, 19px);
+  }
+
 }
