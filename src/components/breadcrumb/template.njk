@@ -1,0 +1,13 @@
+<div class="govuk-c-breadcrumb {{ classes }}">
+  <ol class="govuk-c-breadcrumb__list">
+    {% for breadcrumb in breadcrumbs %}
+      {% if breadcrumb.url %}
+      <li class="govuk-c-breadcrumb__list-item">
+        <a class="govuk-c-breadcrumb__link" href="{{ breadcrumb.url }}">{{ breadcrumb.title }}</a>
+      </li>
+      {% else %}
+      <li class="govuk-c-breadcrumb__list-item" aria-current="page">{{ breadcrumb.title }}</li>
+      {% endif %}
+    {% endfor %}
+  </ol>
+</div>
