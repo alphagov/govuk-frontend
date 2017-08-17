@@ -1,8 +1,7 @@
 {% from "button/macro.njk" import govukButton %}
-{% from "button/macro.njk" import govukButtonLink %}
 
-{{ govukButton(classes="", value="Save and continue", type="submit") }}
+{{ govukButton(classes="", text="Save and continue") }}
 
-{{ govukButton(classes="govuk-c-button--disabled", value="Save and continue", isDisabled="true") }}
+{{ govukButton(classes="", text="Save and continue", isDisabled="true") }}
 
-{{ govukButtonLink(classes="govuk-c-button--start", url="#", text="Start now") }}
+{{ govukButton(classes="", text="Start now", url="/", isStart="true") }}

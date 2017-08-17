@@ -20,30 +20,31 @@ Code example(s)
 
 ## Nunjucks
 
+```
 {% from "button/macro.njk" import govukButton %}
+
+Button
 {{ govukButton(classes="", value="Save and continue", type="submit") }}
 
-{% from "button/macro.njk" import govukButtonLink %}
-{{ govukButtonLink(classes="govuk-c-button--start", url="#", text="Start now") }}
+Disabled button
+{{ govukButton(classes="", value="Save and continue", type="submit", isDisabled="true") }}
+
+Start now button
+{{ govukButton(classes="", url="#", text="Start now", isStart="true") }}
+```
 
 ## Arguments
 
-Button (Input)
+Button
 
 | Name       | Type    | Default | Required | Description
 |---         |---      |---      |---       |---
 | classes    | string  |         | No       | Optional additional classes
-| value      | string  |         | Yes      | Value of the button
-| type       | string  |         | No       | Type of the input, type="submit" is the default if the attribute is not specified
-| isDisabled | boolean |         | No       | Disables the button, using disabled="disabled" and aria-disabled="true"
+| text       | string  |         | Yes      | Button or link text
+| isStart    | boolean |         | No       | Adds the class govuk-c-button--start for a "Start now" button
+| isDisabled | boolean |         | No       | Disables the button - adds the class govuk-c-button--disabled and sets disabled="disabled" and aria-disabled="true"
+| url        | string  |         | No       | Url that the hyperlink points to
 
-Button (Link)
-
-| Name       | Type   | Default | Required | Description
-|---         |---     |---      |---       |---
-| classes    | string |         | No       | Use govuk-c-button--start for a "Start now" button
-| url        | string |         | Yes      | Url that the hyperlink points to
-| text       | string |         | Yes      | Link text
 
 <!--
 ## Installation

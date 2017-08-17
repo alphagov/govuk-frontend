@@ -1,1 +1,9 @@
-<input class="govuk-c-button {{ classes}}" {% if value %}value="{{ value }}"{% endif %} {% if type %}type="{{ type }}"{% endif %} {% if isDisabled %}disabled="disabled" aria-disabled="true"{% endif %}>
+{% if url %}
+<a class="govuk-c-button {% if isStart %}govuk-c-button--start{% endif %} {{ classes}}" href="{{ url | safe }}" role="button">
+  {% if text %}{{ text }}{% endif %}
+</a>
+{% else %}
+<input class="govuk-c-button {% if isDisabled %}govuk-c-button--disabled{% endif %} {{ classes}}"
+  {% if text %}value="{{ text }}"{% endif %}
+  {% if isDisabled %}disabled="disabled" aria-disabled="true"{% endif %}>
+{% endif %}
