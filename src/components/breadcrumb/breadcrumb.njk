@@ -1,0 +1,8 @@
+{% from "breadcrumb/macro.njk" import govukBreadcrumb %}
+
+{{ govukBreadcrumb(
+  [
+    { title: 'Home', url: '/' },
+    { title: 'Current page' }
+  ]
+) }}
