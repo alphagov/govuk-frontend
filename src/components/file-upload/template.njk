@@ -1,0 +1,11 @@
+{% from "error-message/macro.njk" import govukErrorMessage %}
+
+<label class="govuk-c-label {{ classes }}" for="{{ id }}">
+  {{ fileUploadText }}
+  {% if errorMessageText %}
+  <span class="govuk-c-error-message">
+    {{ govukErrorMessage(errorMessageText) }}
+  </span>
+  {% endif %}
+</label>
+<input class="govuk-c-file-upload {% if errorMessageText %}govuk-c-file-upload--error{% endif %}" type="file" id="{{ id }}">

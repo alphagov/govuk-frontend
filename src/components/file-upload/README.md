@@ -18,6 +18,33 @@ Code example(s)
 @@include('file-upload.html')
 ```
 
+## Nunjucks
+
+{% from "file-upload/macro.njk" import govukFileUpload %}
+
+{{ govukFileUpload(
+  classes='',
+  id='file-upload',
+  fileUploadText='Upload a file'
+  )
+}}
+
+{{ govukFileUpload(
+  classes='',
+  id='file-upload',
+  fileUploadText='Upload a file',
+  errorMessageText='Error message goes here'
+  )
+}}
+
+## Arguments
+
+| Name              | Type    | Default | Required  | Description
+|---                |---      |---      |---        |---
+| classes           | string  |         | No        | Optional additional classes
+| id                | string  |         | Yes       | The ID of the file upload input
+| fileUploadText    | string  |         | Yes       | Label text
+| errorMessageText  | string  |         | No        | Error message text, also adds --error variant to input
 
 <!--
 ## Installation

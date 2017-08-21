@@ -1,0 +1,16 @@
+{% from "file-upload/macro.njk" import govukFileUpload %}
+
+{{ govukFileUpload(
+  classes='',
+  id='file-upload',
+  fileUploadText='Upload a file'
+  )
+}}
+
+{{ govukFileUpload(
+  classes='',
+  id='file-upload',
+  fileUploadText='Upload a file',
+  errorMessageText='Error message goes here'
+  )
+}}
