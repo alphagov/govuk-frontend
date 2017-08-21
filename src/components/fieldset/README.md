@@ -19,6 +19,24 @@ Code example(s)
 @@include('fieldset.html')
 ```
 
+## Nunjucks
+
+```
+{% from "fieldset/macro.njk" import govukFieldset %}
+
+{{ govukFieldset(
+  classes='',
+  legendText='Legend text goes here'
+  )
+}}
+```
+
+## Arguments
+
+| Name        | Type    | Default | Required  | Description
+|---          |---      |---      |---        |---
+| classes     | string  |         | No        | Optional additional classes
+| legendText  | string  |         | No        | Legend text
 
 <!--
 ## Installation
