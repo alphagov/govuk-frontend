@@ -25,8 +25,7 @@ Code example(s)
 {% from "error-message/macro.njk" import govukErrorMessage %}
 
 {{ govukErrorMessage(
-  classes='',
-  errorMessageText='Error message goes here'
+  errorMessage='Error message goes here'
   )
 }}
 ```
@@ -34,10 +33,9 @@ Code example(s)
 ## Usage
 
 
-| Name              | Type    | Default | Required  | Description
-|---                |---      |---      |---        |---
-| classes           | string  |         | No        | Optional additional classes
-| errorMessageText  | string  |         | Yes       | Error message
+| Name          | Type    | Default | Required  | Description
+|---            |---      |---      |---        |---
+| errorMessage  | string  |         | Yes       | Error message
 
 <!--
 ## Installation
