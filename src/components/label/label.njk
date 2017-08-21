@@ -1,0 +1,29 @@
+{% from "label/macro.njk" import govukLabel %}
+
+{{ govukLabel(
+  classes='',
+  labelText='National Insurance number',
+  hintText='It’s on your National Insurance card, benefit letter, payslip or P60.
+    For example, ‘QQ 12 34 56 C’.',
+  id=''
+  )
+}}
+
+{{ govukLabel(
+  classes='govuk-c-label--bold',
+  labelText='National Insurance number',
+  hintText='It’s on your National Insurance card, benefit letter, payslip or P60.
+    For example, ‘QQ 12 34 56 C’.',
+  id=''
+  )
+}}
+
+{{ govukLabel(
+  classes='',
+  labelText='National Insurance number',
+  hintText='It’s on your National Insurance card, benefit letter, payslip or P60.
+    For example, ‘QQ 12 34 56 C’.',
+  errorMessage='Error message goes here',
+  id=''
+  )
+}}
