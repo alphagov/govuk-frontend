@@ -29,13 +29,22 @@ Code example(s)
   )
 }}
 
+{{ govukFileUpload(
+  classes='',
+  id='file-upload',
+  fileUploadText='Upload a file',
+  errorMessageText='Error message goes here'
+  )
+}}
+
 ## Arguments
 
-| Name            | Type    | Default | Required  | Description
-|---              |---      |---      |---        |---
-| classes         | string  |         | No        | Optional additional classes
-| id              | string  |         | Yes       | The ID of the file upload input
-| fileUploadText  | string  |         | Yes       | Label text
+| Name              | Type    | Default | Required  | Description
+|---                |---      |---      |---        |---
+| classes           | string  |         | No        | Optional additional classes
+| id                | string  |         | Yes       | The ID of the file upload input
+| fileUploadText    | string  |         | Yes       | Label text
+| errorMessageText  | string  |         | No        | Error message text, also adds --error variant to input
 
 <!--
 ## Installation
