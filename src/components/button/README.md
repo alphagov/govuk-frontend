@@ -15,22 +15,13 @@ Button [demo](button.html).
 Code example(s)
 
 ```
-@@include('button.html')
+@@include('button-example.html')
 ```
 
 ## Nunjucks
 
 ```
-{% from "button/macro.njk" import govukButton %}
-
-Button
-{{ govukButton(classes="", value="Save and continue", type="submit") }}
-
-Disabled button
-{{ govukButton(classes="", value="Save and continue", type="submit", isDisabled="true") }}
-
-Start now button
-{{ govukButton(classes="", url="#", text="Start now", isStart="true") }}
+@@include('button.njk')
 ```
 
 ## Arguments

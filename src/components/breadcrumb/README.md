@@ -15,20 +15,13 @@ Breadcrumb [demo](breadcrumb.html).
 Code example(s)
 
 ```
-@@include('breadcrumb.html')
+@@include('breadcrumb-example.html')
 ```
 
 ## Nunjucks
 
 ```
-{% from "breadcrumb/macro.njk" import govukBreadcrumb %}
-
-{{ govukBreadcrumb(
-  [
-    { title: 'Home', url: '/' },
-    { title: 'Current page'}
-  ]
-) }}
+@@include('breadcrumb.njk')
 ```
 
 ## Arguments

@@ -15,16 +15,12 @@ Phase banner [demo](phase-banner.html).
 Code example(s)
 
 ```
-@@include('phase-banner.html')
+@@include('phase-banner-example.html')
 ```
 ## Nunjucks
 
 ```
-{% from "phase-banner/macro.njk" import govukPhaseBanner %}
-{{ govukPhaseBanner(
-  phaseBannerText='This is a new service – your <a href="#">feedback</a> will help us to improve it.',
-  phaseTagText='BETA')
-}}
+@@include('phase-banner.njk')
 ```
 
 ## Arguments

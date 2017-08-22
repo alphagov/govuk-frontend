@@ -18,7 +18,7 @@ gulp.task('prepare:files', () => {
   let readmeFiles = filter([paths.src + '**/*.md'], {restore: true})
   let icons = filter([paths.src + 'globals/icons/*'], {restore: true})
   let examples = filter([paths.src + 'examples/**/*'], {restore: true})
-  return gulp.src([paths.src + '**/*', '!' + paths.src + 'components/_component-example/**/*', '!' + paths.src + 'globals/icons'])
+  return gulp.src(['!' + paths.components + '**/*-example.html', paths.src + '**/*', '!' + paths.src + 'components/_component-example/**/*', '!' + paths.src + 'globals/icons'])
     .pipe(scssFiles)
     .pipe(replace('//start:devonly', '/*start:devonly'))
     .pipe(replace('//end:devonly', 'end:devonly*/'))

@@ -15,24 +15,12 @@ Input [demo](input.html).
 Code example(s)
 
 ```
-@@include('input.html')
+@@include('input-example.html')
 ```
 
 ## Nunjucks
 
-{% from "input/macro.njk" import govukInput %}
-
-{{ govukInput(
-  classes='',
-  labelText='National Insurance number',
-  hintText='It’s on your National Insurance card, benefit letter, payslip or P60.
-    For example, ‘QQ 12 34 56 C’.',
-  errorMessage='Error message goes here',
-  id='input-id',
-  name='input-name',
-  value='initial value'
-  )
-}}
+@@include('input.njk')
 
 ## Arguments
 

@@ -15,18 +15,13 @@ Cookie banner [demo](cookie-banner.html).
 Code example(s)
 
 ```
-@@include('cookie-banner.html')
+@@include('cookie-banner-example.html')
 ```
 
 ## Nunjucks
 
 ```
-{% from "cookie-banner/macro.njk" import govukCookieBanner %}
-{{ govukCookieBanner(
-  classes='',
-  cookieBannerText='GOV.UK uses cookies to make the site simpler. <a href="https://www.gov.uk/help/cookies">Find out more about cookies</a>'
-  )
-}}
+@@include('cookie-banner.njk')
 ```
 
 ## Arguments

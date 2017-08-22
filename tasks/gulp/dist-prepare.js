@@ -18,7 +18,7 @@ const path = require('path')
 const eol = require('gulp-eol')
 
 const getName = file => {
-  let name = path.basename(file.path).slice(0, -path.extname(file.path).length).replace(/^_/g, '')
+  let name = path.basename(file.path).slice(0, -path.extname(file.path).length).replace(/^_/g, '').replace('-example', '')
   return name[0].toUpperCase() + name.substring(1)
 }
 
@@ -87,7 +87,7 @@ gulp.task('dist:prepare', () => {
     .pipe(naturalSort()), {
       starttag: '<!-- inject:componentlinks -->',
       transform: function (filepath, file, i, length) {
-        return '<li class="component-link"><a href="components/' + path.basename(file.path, '.html') + '/index.html">' + getName(file) + '</a></li>'
+        return '<li class="component-link"><a href="components/' + getName(file).toLowerCase() + '/index.html">' + getName(file) + '</a></li>'
       },
       ignorePath: paths.tmp,
       removeTags: true

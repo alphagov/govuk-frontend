@@ -12,7 +12,7 @@ const rename = require('gulp-rename')
 // Inserts compiled component css into the head of the page
 // ---------------------------------------
 const getName = file => {
-  let name = path.basename(file.path).slice(0, -path.extname(file.path).length).replace(/^_/g, '')
+  let name = path.basename(file.path).slice(0, -path.extname(file.path).length).replace(/^_/g, '').replace('-example', '')
   return name[0].toUpperCase() + name.substring(1)
 }
 
@@ -22,7 +22,7 @@ gulp.task('preview:component:list', () => {
   .pipe(naturalSort()), {
     starttag: '<!-- inject:componentlinks -->',
     transform: function (filepath, file, i, length) {
-      return '<li class="component-link"><a href="components/' + path.basename(file.path, '.html') + '/index.html">' + getName(file) + '</a></li>'
+      return '<li class="component-link"><a href="components/' + getName(file).toLowerCase() + '/index.html">' + getName(file) + '</a></li>'
     },
     ignorePath: paths.components,
     removeTags: true

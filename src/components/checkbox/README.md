@@ -15,43 +15,13 @@ Checkbox [demo](checkbox.html).
 Code example(s)
 
 ```
-@@include('checkbox.html')
+@@include('checkbox-example.html')
 ```
 
 ## Nunjucks
 
 ```
-{% from 'checkbox/macro.njk' import govukCheckbox %}
-
-{{ govukCheckbox(
-  classes="",
-  name="waste-types",
-  id="waste-type",
-  checkboxes=[
-   {
-      id: '1',
-      value: 'waste-animal',
-      label: 'Waste from animal carcasses'
-    },
-    {
-      id: '2',
-      value: 'waste-mines',
-      label: 'Waste from mines or quarries'
-    },
-    {
-      id: '3',
-      value: 'waste-farm',
-      label: 'Farm or agricultural waste',
-      checked: 'true'
-    },
-    {
-      id: '4',
-      value: 'waste-disabled',
-      label: 'Disabled checkbox option',
-      disabled: 'true'
-    }
-  ]
-) }}
+@@include('checkbox.njk')
 ```
 
 ## Arguments
