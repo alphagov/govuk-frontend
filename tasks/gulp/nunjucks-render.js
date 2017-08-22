@@ -24,13 +24,13 @@ gulp.task('nunjucks', cb => {
   let tempComponents = gulp.src(['!' + paths.components + '**/macro.njk', '!' + paths.components + '**/template.njk', paths.components + '**/*.njk'])
       .pipe(nunjucksRender({
         path: [paths.components],
-       envOptions: {
-         trimBlocks: true
-       }
+        envOptions: {
+          trimBlocks: true
+        }
       }))
       .pipe(rename(function (path) {
-         path.basename += "-example"
-       }))
+        path.basename += '-example'
+      }))
       .pipe(gulp.dest(paths.src + 'components/'))
 
   let examples = gulp.src(['!' + paths.components + '**/*.njk', paths.src + '**/*.njk'])
