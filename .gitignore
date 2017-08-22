@@ -6,4 +6,4 @@ tmp/
 lerna-debug.log
 axeReports/
 config/tenon.json
-src/components/*-example.html
+src/components/**/*-example.html
