@@ -6,6 +6,7 @@ const eol = require('gulp-eol')
 const nunjucksRender = require('gulp-nunjucks-render')
 const merge = require('merge-stream')
 const wrap = require('gulp-wrap')
+const rename = require('gulp-rename')
 
 // Compile numnjucks ----------------------
 // Convert nunjucks to HTML
@@ -20,6 +21,18 @@ gulp.task('nunjucks', cb => {
     .pipe(eol())
     .pipe(gulp.dest(paths.preview + 'components/'))
 
+  let tempComponents = gulp.src(['!' + paths.components + '**/macro.njk', '!' + paths.components + '**/template.njk', paths.components + '**/*.njk'])
+      .pipe(nunjucksRender({
+        path: [paths.components],
+       envOptions: {
+         trimBlocks: true
+       }
+      }))
+      .pipe(rename(function (path) {
+         path.basename += "-example"
+       }))
+      .pipe(gulp.dest(paths.src + 'components/'))
+
   let examples = gulp.src(['!' + paths.components + '**/*.njk', paths.src + '**/*.njk'])
     .pipe(nunjucksRender({
       path: [paths.components],
@@ -29,5 +42,5 @@ gulp.task('nunjucks', cb => {
     .pipe(eol())
     .pipe(gulp.dest(paths.preview))
 
-  return merge(components, examples)
+  return merge(components, tempComponents, examples)
 })
