@@ -18,6 +18,106 @@ Code example(s)
 @@include('list.html')
 ```
 
+## Nunjucks
+
+```
+{% from "list/macro.njk" import govukList %}
+
+{{ govukList(
+  classes='',
+  [
+    {
+      text: 'Related link',
+      url: '/'
+    },
+    {
+      text: 'Related link',
+      url: '/'
+    },
+    {
+      text: 'Related link',
+      url: '/'
+    }
+  ]
+) }}
+
+{{ govukList(
+  classes='',
+  [
+    {
+      text: 'here is a bulleted list'
+    },
+    {
+      text: 'here is the second bulleted list item'
+    },
+    {
+      text: 'here is the third bulleted list item'
+    }
+  ],
+  isBullet='true'
+) }}
+
+{{ govukList(
+  classes='',
+  [
+    {
+      text: 'This is a numbered list.'
+    },
+    {
+      text: 'This is the second step in a numbered list.'
+    },
+    {
+      text: 'The third step is to make sure each item is a full sentence ending with a full stop.'
+    }
+  ],
+  isNumber='true'
+) }}
+
+{{ govukList(
+  classes='',
+  [
+    {
+      text: 'Step 1'
+    },
+    {
+      text: 'Step 2'
+    },
+    {
+      text: 'Step 3'
+    }
+  ],
+  isStep='true'
+) }}
+
+{{ govukList(
+  classes='',
+  [
+    {
+      text: 'Step 1 Large icon'
+    },
+    {
+      text: 'Step 2 Large icon'
+    },
+    {
+      text: 'Step 3 Large icon'
+    }
+  ],
+  isStepLarge='true'
+) }}
+```
+
+## Arguments
+
+| Name        | Type   | Default | Required | Description
+|---          |---     |---      |---       |---
+| classes     | string |         | No       | Optional additional classes
+| listItems   | array  |         | Yes      | List items array with url and text keys
+| url         | string |         | Yes      | List item url
+| text        | string |         | Yes      | List item text
+| isBullet    | string |         | No       | Optional - creates bulleted list
+| isNumber    | string |         | No       | Optional - creates numbered list
+| isStep      | string |         | No       | Optional - creates list of steps
+| isStepLarge | string |         | No       | Optional - creates list of steps with large icons
 
 <!--
 ## Installation
