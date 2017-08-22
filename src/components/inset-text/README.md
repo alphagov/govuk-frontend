@@ -18,6 +18,27 @@ Code example(s)
 @@include('inset-text.html')
 ```
 
+## Nunjucks
+
+```
+{% from "inset-text/macro.njk" import govukInsetText %}
+
+{{ govukInsetText(
+  content='<p>
+    It can take up to 8 weeks to register a lasting power of attorney if<br>
+    there are no mistakes in the application.
+  </p>'
+  )
+}}
+```
+
+## Arguments
+
+| Name      | Type    | Required  | Description
+|---        |---      |---        |---
+| classes   | string  | No        | Optional additional classes
+| content   | string  | Yes       | Inset text content
+
 <!--
 ## Installation
 
