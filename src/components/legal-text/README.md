@@ -24,6 +24,7 @@ Code example(s)
 {% from "legal-text/macro.njk" import govukLegalText %}
 
 {{ govukLegalText(
+  classes='',
   iconFallbackText='Warning',
   legalText='You can be fined up to £5,000 if you don’t register.')
 }}
@@ -33,6 +34,7 @@ Code example(s)
 
 | Name              | Type    | Default | Required  | Description
 |---                |---      |---      |---        |---
+| classes           | string  |         | No        | Optional additional classes
 | iconFallbackText  | string  |         | Yes       | The fallback text for the icon
 | legalText         | string  |         | Yes       | The text next to the icon
 

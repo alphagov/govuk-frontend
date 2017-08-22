@@ -23,14 +23,11 @@ Code example(s)
 ```
 {% from "button/macro.njk" import govukButton %}
 
-Button
-{{ govukButton(classes="", value="Save and continue", type="submit") }}
+{{ govukButton(classes='', text='Save and continue') }}
 
-Disabled button
-{{ govukButton(classes="", value="Save and continue", type="submit", isDisabled="true") }}
+{{ govukButton(classes='', text='Save and continue', isDisabled='true') }}
 
-Start now button
-{{ govukButton(classes="", url="#", text="Start now", isStart="true") }}
+{{ govukButton(classes='', text='Start now', url='/', isStart='true') }}
 ```
 
 ## Arguments
