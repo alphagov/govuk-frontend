@@ -9,7 +9,7 @@ const merge = require('merge-stream')
 const fileinclude = require('gulp-file-include')
 
 gulp.task('preview:docs', () => {
-  let original = gulp.src([paths.components + '**/*.html'])
+  let original = gulp.src(['!' + paths.components + '**/*.html', paths.components + '**/*.html'])
     .pipe(wrap({src: paths.src + 'component-view-template.html'}))
     .pipe(gulp.dest(paths.preview + 'components/'))
 
