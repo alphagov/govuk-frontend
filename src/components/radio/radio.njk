@@ -1,0 +1,31 @@
+{% from 'radio/macro.njk' import govukRadio %}
+
+{{ govukRadio(
+  classes='',
+  name='radio-group',
+  id='radio',
+  radios=[
+   {
+      id: '1',
+      value: 'Yes',
+      label: 'Yes'
+    },
+    {
+      id: '2',
+      value: 'No',
+      label: 'No'
+    },
+    {
+      id: '3',
+      value: 'No',
+      label: 'No',
+      checked: 'true'
+    },
+    {
+      id: '4',
+      value: 'NA',
+      label: 'Not applicable',
+      disabled: 'true'
+    }
+  ]
+) }}
