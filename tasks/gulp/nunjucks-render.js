@@ -11,7 +11,7 @@ const wrap = require('gulp-wrap')
 // Convert nunjucks to HTML
 // -------------------------------------------
 gulp.task('nunjucks', cb => {
-  let components = gulp.src(['!' + paths.components + '**/macro.njk', paths.components + '**/*.njk'])
+  let components = gulp.src(['!' + paths.components + '**/macro.njk', '!' + paths.components + '**/template.njk', paths.components + '**/*.njk'])
     .pipe(nunjucksRender({
       path: [paths.components],
       watch: true
