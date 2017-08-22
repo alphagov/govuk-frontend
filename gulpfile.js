@@ -42,10 +42,10 @@ gulp.task('dev', cb => {
   runsequence('styles',
               'scripts',
               'copy:icons',
+              'nunjucks',
               'preview:docs',
               'examples',
               'preview:component:list',
-              'nunjucks',
               'serve:preview',
               'watch', cb)
 })
@@ -91,10 +91,10 @@ gulp.task('review', () => {
   runsequence('styles',
               'scripts',
               'copy:icons',
+              'nunjucks',
               'preview:docs',
               'examples',
-              'preview:component:list',
-              'nunjucks'
+              'preview:component:list'
             )
 })
 
