@@ -15,18 +15,13 @@ Legal text [demo](legal-text.html).
 Code example(s)
 
 ```
-@@include('legal-text.html')
+@@include('legal-text-example.html')
 ```
 
 ## Nunjucks
 
 ```
-{% from "legal-text/macro.njk" import govukLegalText %}
-
-{{ govukLegalText(
-  iconFallbackText='Warning',
-  legalText='You can be fined up to £5,000 if you don’t register.')
-}}
+@@include('legal-text.njk')
 ```
 
 ## Arguments

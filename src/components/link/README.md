@@ -28,37 +28,13 @@ Link [demo](link.html).
 Code example(s)
 
 ```
-@@include('link.html')
+@@include('link-example.html')
 ```
 
 ## Nunjucks
 
 ```
-{% from "link/macro.njk" import govukLink %}
-
-{{ govukLink(
-  classes='govuk-c-link--back',
-  linkHref='',
-  linkText='Back')
-}}
-
-{{ govukLink(
-  classes='govuk-c-link--muted',
-  linkHref='',
-  linkText='Is there anything wrong with this page?')
-}}
-
-{{ govukLink(
-  classes='govuk-c-link--download',
-  linkHref='',
-  linkText='Download')
-}}
-
-{{ govukLink(
-  classes='govuk-c-link--skip',
-  linkHref='',
-  linkText='Skip to main content')
-}}
+@@include('link.njk')
 ```
 
 ## Arguments

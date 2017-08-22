@@ -15,14 +15,12 @@ Phase tag [demo](phase-tag.html).
 Code example(s)
 
 ```
-@@include('phase-tag.html')
+@@include('phase-tag-example.html')
 ```
 ## Nunjucks
 
 ```
-{% from "phase-tag/macro.njk" import govukPhaseTag %}
-
-{{ govukPhaseTag(phaseTagText='Alpha') }}
+@@include('phase-tag.njk')
 ```
 
 ## Arguments

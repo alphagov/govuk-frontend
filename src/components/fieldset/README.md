@@ -16,19 +16,13 @@ Fieldset and legend [demo](fieldset.html).
 Code example(s)
 
 ```
-@@include('fieldset.html')
+@@include('fieldset-example.html')
 ```
 
 ## Nunjucks
 
 ```
-{% from "fieldset/macro.njk" import govukFieldset %}
-
-{{ govukFieldset(
-  classes='',
-  legendText='Legend text goes here'
-  )
-}}
+@@include('fieldset.njk')
 ```
 
 ## Arguments

@@ -15,22 +15,12 @@ Label [demo](label.html).
 Code example(s)
 
 ```
-@@include('label.html')
+@@include('label-example.html')
 ```
 
 ## Nunjucks
 
-{% from "label/macro.njk" import govukLabel %}
-
-{{ govukLabel(
-  classes='',
-  labelText='National Insurance number',
-  hintText='It’s on your National Insurance card, benefit letter, payslip or P60.
-    For example, ‘QQ 12 34 56 C’.',
-  errorMessage='Error message goes here',
-  id=''
-  )
-}}
+@@include('label.njk')
 
 ## Arguments
 

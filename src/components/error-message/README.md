@@ -16,18 +16,13 @@ Error message [demo](error-message.html).
 Code example(s)
 
 ```
-@@include('error-message.html')
+@@include('error-message-example.html')
 ```
 
 ## Nujucks
 
 ```
-{% from "error-message/macro.njk" import govukErrorMessage %}
-
-{{ govukErrorMessage(
-  errorMessage='Error message goes here'
-  )
-}}
+@@include('error-message.njk')
 ```
 
 ## Usage
