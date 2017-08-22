@@ -22,15 +22,15 @@ Code example(s)
 ```
 {% from "phase-tag/macro.njk" import govukPhaseTag %}
 
-{{ govukPhaseTag(phaseTagText='Alpha') }}
+{{ govukPhaseTag(classes='', phaseTagText='Alpha') }}
 ```
 
 ## Arguments
 
 | Name              | Type    | Default | Required  | Description
 |---                |---      |---      |---        |---
-| phaseTagText      | string  |         | Yes       | Tag text
 | classes           | string  |         | No        | Optional additional classes
+| phaseTagText      | string  |         | Yes       | Tag text
 
 <!--
 ## Installation

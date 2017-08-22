@@ -24,9 +24,10 @@ Code example(s)
 {% from "breadcrumb/macro.njk" import govukBreadcrumb %}
 
 {{ govukBreadcrumb(
+  classes='',
   [
     { title: 'Home', url: '/' },
-    { title: 'Current page'}
+    { title: 'Current page' }
   ]
 ) }}
 ```
@@ -35,6 +36,7 @@ Code example(s)
 
 | Name        | Type   | Default | Required | Description
 |---          |---     |---      |---       |---
+| classes     | string |         | No       | Optional additional classes
 | breadcrumbs | array  |         | Yes      | Breadcrumbs array with title and url keys
 | title       | string |         | Yes      | Title of the breadcrumb item
 | url         | string |         | Yes      | Url of the breadcrumb item

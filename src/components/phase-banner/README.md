@@ -22,6 +22,7 @@ Code example(s)
 ```
 {% from "phase-banner/macro.njk" import govukPhaseBanner %}
 {{ govukPhaseBanner(
+  classes='',
   phaseBannerText='This is a new service – your <a href="#">feedback</a> will help us to improve it.',
   phaseTagText='BETA')
 }}
@@ -31,9 +32,9 @@ Code example(s)
 
 | Name              | Type    | Default | Required  | Description
 |---                |---      |---      |---        |---
+| classes           | string  |         | No        | Optional additional classes
 | phaseTagText      | string  |         | Yes       | Tag text
 | phaseBannerText   | string  |         | Yes       | Banner copy
-| classes           | string  |         | No        | Optional additional classes
 
 <!--
 ## Installation

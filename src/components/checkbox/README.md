@@ -24,9 +24,9 @@ Code example(s)
 {% from 'checkbox/macro.njk' import govukCheckbox %}
 
 {{ govukCheckbox(
-  classes="",
-  name="waste-types",
-  id="waste-type",
+  classes='',
+  name='waste-types',
+  id='waste-type',
   checkboxes=[
    {
       id: '1',
