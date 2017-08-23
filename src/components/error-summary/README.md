@@ -18,6 +18,39 @@ Code example(s)
 @@include('error-summary.html')
 ```
 
+## Nunjucks
+
+```
+{% from "error-summary/macro.njk" import govukErrorSummary %}
+
+{{ govukErrorSummary(
+  classes='',
+  title='Message to alert the user to a problem goes here',
+  description='Optional description of the errors and how to correct them',
+  listClasses='',
+  listItems=[
+    {
+      text: 'Descriptive link to the question with an error',
+      url: '#example-error-1'
+    },
+    {
+      text: 'Descriptive link to the question with an error',
+      url: '#example-error-2'
+    }
+  ]
+) }}
+```
+
+## Arguments
+
+| Name        | Type   | Default | Required | Description
+|---          |---     |---      |---       |---
+| classes     | string |         | No       | Optional additional classes
+| title       | string |         | Yes      | Error summary title
+| description | string |         | No       | Optional error summary description
+| listItems   | array  |         | Yes      | List items array with url and text keys
+| url         | string |         | Yes      | List item url
+| text        | string |         | Yes      | List item text
 
 <!--
 ## Installation
