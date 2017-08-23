@@ -1,0 +1,11 @@
+{% from "label/macro.njk" import govukLabel %}
+
+{% if hasLabelWithText %}
+{% set forAttribute = id %}
+{{ govukLabel(labelClasses, hasLabelWithText, '', '', forAttribute) }}
+{% endif %}
+<select class="govuk-c-select-box {{ classes }}" id="{{ id }}" name="{{ name }}">
+  {% for option in options %}
+  <option value="{{ option.value }}"{% if option.selected %}selected{% endif %}>{{ option.label }}</option>
+  {% endfor %}
+</select>
