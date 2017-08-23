@@ -1,0 +1,61 @@
+{% from "pagination/macro.njk" import govukPagination %}
+
+{{ govukPagination(
+  classes='',
+  previousPage=[
+   {
+      url: 'previous-page',
+      title: 'Previous page',
+      label: '1 of 3'
+    }
+  ]
+  )
+}}
+
+{{ govukPagination(
+  classes='',
+  nextPage=[
+   {
+      url: 'next-page',
+      title: 'Next page',
+      label: 'Tax disc'
+    }
+  ]
+  )
+}}
+
+{{ govukPagination(
+  classes='',
+  previousPage=[
+   {
+      url: 'previous-page',
+      title: 'Previous page',
+      label: '1 of 3'
+    }
+  ],
+  nextPage=[
+   {
+      url: 'next-page',
+      title: 'Next page',
+      label: '2 of 3'
+    }
+  ]
+  )
+}}
+
+{{ govukPagination(
+  classes='',
+  previousPage=[
+   {
+      url: 'previous-page',
+      title: 'Previous page'
+    }
+  ],
+  nextPage=[
+   {
+      url: 'next-page',
+      title: 'Next page'
+    }
+  ]
+  )
+}}
