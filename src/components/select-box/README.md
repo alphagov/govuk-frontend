@@ -41,8 +41,8 @@ Code example(s)
 )}}
 
 {{ govukSelectBox(
-  hasLabelWithText='Default label text',
-  labelClasses='select-box__label',
+  hasLabelWithText='Label for select box',
+  labelClasses='',
   classes='',
   id='select-box-2',
   name='select-box-2',
@@ -69,9 +69,8 @@ Code example(s)
 | Name             | Type    | Default | Required | Description
 |---               |---      |---      |---       |---
 | classes          | string  |         | No       | Optional additional classes
-| name             | string  |         | Yes      | Name of the group of checkboxes
-| id               | string  |         | Yes      | ID for each checkbox
-| name             | string  |         | Yes      | NAME for each checkbox
+| id               | string  |         | Yes      | Id for each select box
+| name             | string  |         | Yes      | Name for each select box
 | options          | array   |         | Yes      | Options array with value, label, selected keys
 | hasLabelWithText | string  |         | No       | Optional to provide label text that will render the label element
 | labelClasses     | string  |         | No       | Optional to provide label with custom classes
