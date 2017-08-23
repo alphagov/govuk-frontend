@@ -1,0 +1,24 @@
+{% if isNumber or isStep or isStepLarge %}
+<ol class="govuk-c-list {% if isNumber %}govuk-c-list--number{% endif %} {% if isStep or isStepLarge %}govuk-c-list--icon{% endif %} {{ classes }}">
+{% else %}
+<ul class="govuk-c-list {% if isBullet %}govuk-c-list--bullet{% endif %} {{ classes }}">
+{% endif %}
+
+{% for item in listItems %}
+  <li>
+    {% if isStep or isStepLarge %}
+      <span class="govuk-c-list__icon govuk-u-circle {% if isStepLarge %}govuk-c-list__icon--large{% endif %}">{{ loop.index }}</span>
+      {{ item.text }}
+    {% else %}
+      {% if item.url %}<a href="{{ item.url }} ">{% endif %}
+        {{ item.text }}
+      {% if item.url %}</a>{% endif %}
+    {% endif %}
+  </li>
+{% endfor %}
+
+{% if isNumber or isStep or isStepLarge %}
+</ol>
+{% else %}
+</ul>
+{% endif %}

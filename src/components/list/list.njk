@@ -1,26 +1,3 @@
-# List
-
-A list of items, list variants are bulleted or numbered.
-
-## Guidance
-
-Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
-
-## Demo
-
-List [demo](list.html).
-
-## Usage
-
-Code example(s)
-
-```
-@@include('list.html')
-```
-
-## Nunjucks
-
-```
 {% from "list/macro.njk" import govukList %}
 
 {{ govukList(
@@ -104,25 +81,3 @@ Code example(s)
   ],
   isStepLarge='true'
 ) }}
-```
-
-## Arguments
-
-| Name        | Type   | Default | Required | Description
-|---          |---     |---      |---       |---
-| classes     | string |         | No       | Optional additional classes
-| listItems   | array  |         | Yes      | List items array with url and text keys
-| url         | string |         | Yes      | List item url
-| text        | string |         | Yes      | List item text
-| isBullet    | string |         | No       | Optional - creates bulleted list
-| isNumber    | string |         | No       | Optional - creates numbered list
-| isStep      | string |         | No       | Optional - creates list of steps
-| isStepLarge | string |         | No       | Optional - creates list of steps with large icons
-
-<!--
-## Installation
-
-```
-npm install --save @govuk-frontend/list
-```
--->
