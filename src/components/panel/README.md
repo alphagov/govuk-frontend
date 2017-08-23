@@ -22,6 +22,28 @@ Code example(s)
 @@include('panel.html')
 ```
 
+## Nunjucks
+
+```
+{% from "panel/macro.njk" import govukPanel %}
+
+{{ govukInput(
+  classes='',
+  title='Application complete',
+  content='Your reference number is',
+  reference='HDJ2123F'
+  )
+}}
+```
+
+## Arguments
+
+| Name          | Type    | Required  | Description
+|---            |---      |---        |---
+| classes       | string  | No        | Optional additional classes
+| title         | string  | Yes       | The panel title
+| content       | string  | No        | The panel content
+| reference     | string  | No        | Optional reference number
 
 <!--
 ## Installation
