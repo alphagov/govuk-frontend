@@ -14,6 +14,8 @@
 
 {% include "../components/fieldset/fieldset.njk" %}
 
+{% include "../components/grid/grid.njk" %}
+
 {% include "../components/input/input.njk" %}
 
 {% include "../components/inset-text/inset-text.njk" %}
@@ -38,3 +40,28 @@
 {% include "../components/pagination/pagination.njk" %}
 
 {% include "../components/select-box/select-box.njk" %}
+
+{# Example of calling site-width-container and nesting a grid row #}
+{% from "../components/site-width-container/macro.njk" import govukSiteWidthContainer %}
+{% from "../components/grid/macro.njk" import govukGrid %}
+
+{% call govukSiteWidthContainer() %}
+  {% call govukGrid(
+    classes='',
+    gridItems=[ { width: 'full' } ]
+    )
+  %}
+  Example full width grid column
+  <!-- Insert macros to sit inside grid item here -->
+  {% endcall %}
+
+  {% call govukGrid(
+    classes='',
+    gridItems=[ { width: 'two-thirds' } ]
+    )
+  %}
+  Example two-thirds width grid column
+  <!-- Insert macros to sit inside grid item here -->
+  {% endcall %}
+{% endcall %}
+
