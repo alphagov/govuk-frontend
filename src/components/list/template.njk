@@ -1,13 +1,19 @@
-{% if isNumber or isStep or isStepLarge %}
-<ol class="govuk-c-list {% if isNumber %}govuk-c-list--number{% endif %} {% if isStep or isStepLarge %}govuk-c-list--icon{% endif %} {{ classes }}">
+{% if options.isBullet %}
+<ul class="govuk-c-list govuk-c-list--bullet {{ classes }}">
+{% elseif options.isNumber %}
+<ol class="govuk-c-list govuk-c-list--number {{ classes }}">
+{% elseif options.isStep %}
+<ol class="govuk-c-list govuk-c-list--icon {{ classes }}">
+{% elseif options.isStepLarge %}
+<ol class="govuk-c-list govuk-c-list--icon {{ classes }}">
 {% else %}
-<ul class="govuk-c-list {% if isBullet %}govuk-c-list--bullet{% endif %} {{ classes }}">
+<ul class="govuk-c-list {{ classes }}">
 {% endif %}
 
 {% for item in listItems %}
   <li>
-    {% if isStep or isStepLarge %}
-      <span class="govuk-c-list__icon govuk-u-circle {% if isStepLarge %}govuk-c-list__icon--large{% endif %}">{{ loop.index }}</span>
+    {% if (options.isStep) or (options.isStepLarge) %}
+      <span class="govuk-c-list__icon govuk-u-circle {% if (options.isStepLarge) %}govuk-c-list__icon--large{% endif %}">{{ loop.index }}</span>
       {{ item.text }}
     {% else %}
       {% if item.url %}<a href="{{ item.url }} ">{% endif %}
@@ -17,7 +23,7 @@
   </li>
 {% endfor %}
 
-{% if isNumber or isStep or isStepLarge %}
+{% if (options.isNumber) or (options.isStep) or (options.isStepLarge) %}
 </ol>
 {% else %}
 </ul>

@@ -51,6 +51,7 @@ Code example(s)
 | listItems   | array  |         | Yes      | List items array with url and text keys
 | url         | string |         | Yes      | List item url
 | text        | string |         | Yes      | List item text
+| listOptions | object |         | No       | List options
 
 <!--
 ## Installation

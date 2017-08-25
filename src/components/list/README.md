@@ -54,7 +54,9 @@ Code example(s)
       text: 'here is the third bulleted list item'
     }
   ],
-  isBullet='true'
+  options = {
+    'isBullet': 'true'
+  }
 ) }}
 
 {{ govukList(
@@ -70,7 +72,9 @@ Code example(s)
       text: 'The third step is to make sure each item is a full sentence ending with a full stop.'
     }
   ],
-  isNumber='true'
+  options = {
+    'isNumber': 'true'
+  }
 ) }}
 
 {{ govukList(
@@ -86,7 +90,9 @@ Code example(s)
       text: 'Step 3'
     }
   ],
-  isStep='true'
+  options = {
+    'isStep': 'true'
+  }
 ) }}
 
 {{ govukList(
@@ -102,22 +108,25 @@ Code example(s)
       text: 'Step 3 Large icon'
     }
   ],
-  isStepLarge='true'
+  options = {
+    'isStepLarge': 'true'
+  }
 ) }}
 ```
 
 ## Arguments
 
-| Name        | Type   | Default | Required | Description
-|---          |---     |---      |---       |---
-| classes     | string |         | No       | Optional additional classes
-| listItems   | array  |         | Yes      | List items array with url and text keys
-| url         | string |         | Yes      | List item url
-| text        | string |         | Yes      | List item text
-| isBullet    | string |         | No       | Optional - creates bulleted list
-| isNumber    | string |         | No       | Optional - creates numbered list
-| isStep      | string |         | No       | Optional - creates list of steps
-| isStepLarge | string |         | No       | Optional - creates list of steps with large icons
+| Name                | Type   | Default | Required | Description
+|---                  |---     |---      |---       |---
+| classes             | string |         | No       | Optional additional classes
+| listItems           | array  |         | Yes      | List items array with url and text keys
+| url                 | string |         | Yes      | List item url
+| text                | string |         | Yes      | List item text
+| options             | object |         | No       | Options object
+| options.isBullet    |        |         | No       | Creates bulleted list
+| options.isNumber    |        |         | No       | Creates numbered list
+| options.isStep      |        |         | No       | Creates list of steps
+| options.isStepLarge |        |         | No       | Creates list of steps with large icons
 
 <!--
 ## Installation
