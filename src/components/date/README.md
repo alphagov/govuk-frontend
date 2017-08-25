@@ -7,7 +7,7 @@ Date
 
 <h2 class="govuk-u-heading-24">Introduction</h2>
 <p class="govuk-u-core-24">
-  Date description.
+  A component for entering dates, for example - date of birth.
 </p>
 
 
@@ -55,19 +55,244 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 <pre>
 <code>
   
+
+&lt;fieldset class=&quot;govuk-c-fieldset For example, 31 3 1980&quot;&gt;
+  &lt;legend class=&quot;govuk-c-fieldset__legend&quot;&gt;
+    What is your date of birth?
+  &lt;/legend&gt;
+&lt;/fieldset&gt;
+
+
+
+&lt;fieldset class=&quot;govuk-c-fieldset For example, 31 3 1980&quot;&gt;
+  &lt;legend class=&quot;govuk-c-fieldset__legend&quot;&gt;
+    What is your date of birth?
+  &lt;/legend&gt;
+&lt;/fieldset&gt;
+
+
+
+&lt;fieldset class=&quot;govuk-c-fieldset For example, 31 3 1980&quot;&gt;
+  &lt;legend class=&quot;govuk-c-fieldset__legend&quot;&gt;
+    What is your date of birth?
+  &lt;/legend&gt;
+&lt;/fieldset&gt;
+
+
+
+&lt;fieldset class=&quot;govuk-c-fieldset For example, 31 3 1980&quot;&gt;
+  &lt;legend class=&quot;govuk-c-fieldset__legend&quot;&gt;
+    What is your date of birth?
+  &lt;/legend&gt;
+&lt;/fieldset&gt;
+
+
+
+&lt;fieldset class=&quot;govuk-c-fieldset For example, 31 3 1980&quot;&gt;
+  &lt;legend class=&quot;govuk-c-fieldset__legend&quot;&gt;
+    What is your date of birth?
+  &lt;/legend&gt;
+&lt;/fieldset&gt;
+
 </code>
 </pre>
 
 
 <h2 class="govuk-u-heading-24">If you are using Nunjucks</h2>
 <p class="govuk-u-copy-19">To use a macro, follow the below code examples:</p>
-<pre><code></code></pre>
+<pre><code>{% from &quot;date/macro.njk&quot; import govukDate %}
+
+{{ govukDate(
+  fieldsetClasses=&#39;&#39;,
+  legendText=&#39;What is your date of birth?&#39;,
+  legendHintText=&#39;For example, 31 3 1980&#39;,
+  legendErrorMessage=&#39;&#39;,
+  id=&#39;dob&#39;,
+  name=&#39;dob&#39;,
+  dateItems=[
+    {
+      name: &#39;day&#39;,
+      error: &#39;&#39;
+    },
+    {
+      name: &#39;month&#39;,
+      error: &#39;&#39;
+    },
+    {
+      name: &#39;year&#39;,
+      error: &#39;&#39;
+    }
+  ]
+  )
+}}
+
+{{ govukDate(
+  fieldsetClasses=&#39;&#39;,
+  legendText=&#39;What is your date of birth?&#39;,
+  legendHintText=&#39;For example, 31 3 1980&#39;,
+  legendErrorMessage=&#39;Error message goes here&#39;,
+  id=&#39;dob&#39;,
+  name=&#39;dob&#39;,
+  dateItems=[
+    {
+      name: &#39;day&#39;,
+      error: &#39;true&#39;
+    },
+    {
+      name: &#39;month&#39;,
+      error: &#39;true&#39;
+    },
+    {
+      name: &#39;year&#39;,
+      error: &#39;true&#39;
+    }
+  ]
+  )
+}}
+
+{{ govukDate(
+  fieldsetClasses=&#39;&#39;,
+  legendText=&#39;What is your date of birth?&#39;,
+  legendHintText=&#39;For example, 31 3 1980&#39;,
+  legendErrorMessage=&#39;Error message goes here&#39;,
+  id=&#39;dob-day-error&#39;,
+  name=&#39;dob-day-error&#39;,
+  dateItems=[
+    {
+      name: &#39;day&#39;,
+      error: &#39;true&#39;
+    },
+    {
+      name: &#39;month&#39;,
+      error: &#39;&#39;
+    },
+    {
+      name: &#39;year&#39;,
+      error: &#39;&#39;
+    }
+  ]
+  )
+}}
+
+{{ govukDate(
+  fieldsetClasses=&#39;&#39;,
+  legendText=&#39;What is your date of birth?&#39;,
+  legendHintText=&#39;For example, 31 3 1980&#39;,
+  legendErrorMessage=&#39;Error message goes here&#39;,
+  id=&#39;dob-month-error&#39;,
+  name=&#39;dob-month-error&#39;,
+  dateItems=[
+    {
+      name: &#39;day&#39;,
+      error: &#39;&#39;
+    },
+    {
+      name: &#39;month&#39;,
+      error: &#39;true&#39;
+    },
+    {
+      name: &#39;year&#39;,
+      error: &#39;&#39;
+    }
+  ]
+  )
+}}
+
+{{ govukDate(
+  fieldsetClasses=&#39;&#39;,
+  legendText=&#39;What is your date of birth?&#39;,
+  legendHintText=&#39;For example, 31 3 1980&#39;,
+  legendErrorMessage=&#39;Error message goes here&#39;,
+  id=&#39;dob-year-error&#39;,
+  name=&#39;dob-year-error&#39;,
+  dateItems=[
+    {
+      name: &#39;day&#39;,
+      error: &#39;&#39;
+    },
+    {
+      name: &#39;month&#39;,
+      error: &#39;&#39;
+    },
+    {
+      name: &#39;year&#39;,
+      error: &#39;true&#39;
+    }
+  ]
+  )
+}}</code></pre>
 
 <p class="govuk-u-copy-19">Where the macros take the following arguments</p>
 
 <h2 class="govuk-u-heading-24">Component arguments</h2>
 <div>
-  <!-- TODO: Use the table macro here and pass it component argument data -->
+<table class="govuk-c-table ">
+  <thead class="govuk-c-table__head">
+    <tr class="govuk-c-table__row">
+      <th class="govuk-c-table__header "   scope="col">Name</th>
+      <th class="govuk-c-table__header "   scope="col">Type</th>
+      <th class="govuk-c-table__header "   scope="col">Required</th>
+      <th class="govuk-c-table__header "   scope="col">Description</th>
+  </tr>
+  </thead>
+  <tbody class="govuk-c-table__body">
+    <tr class="govuk-c-table__row">
+      <th class="govuk-c-table__header" scope="row"> fieldsetClasses</th>
+      <td class="govuk-c-table__cell "  >string</td>
+      <td class="govuk-c-table__cell "  >No</td>
+      <td class="govuk-c-table__cell "  >Optional additional classes</td>
+    </tr>
+    <tr class="govuk-c-table__row">
+      <th class="govuk-c-table__header" scope="row"> legendText</th>
+      <td class="govuk-c-table__cell "  >string</td>
+      <td class="govuk-c-table__cell "  >No</td>
+      <td class="govuk-c-table__cell "  >Legend text</td>
+    </tr>
+    <tr class="govuk-c-table__row">
+      <th class="govuk-c-table__header" scope="row"> legendHintText</th>
+      <td class="govuk-c-table__cell "  >string</td>
+      <td class="govuk-c-table__cell "  >No</td>
+      <td class="govuk-c-table__cell "  >Optional legend hint text</td>
+    </tr>
+    <tr class="govuk-c-table__row">
+      <th class="govuk-c-table__header" scope="row"> legendErrorMessage</th>
+      <td class="govuk-c-table__cell "  >string</td>
+      <td class="govuk-c-table__cell "  >No</td>
+      <td class="govuk-c-table__cell "  >Optional legend error message</td>
+    </tr>
+    <tr class="govuk-c-table__row">
+      <th class="govuk-c-table__header" scope="row"> id</th>
+      <td class="govuk-c-table__cell "  >string</td>
+      <td class="govuk-c-table__cell "  >No</td>
+      <td class="govuk-c-table__cell "  >Ids of date items</td>
+    </tr>
+    <tr class="govuk-c-table__row">
+      <th class="govuk-c-table__header" scope="row"> Names of date items</th>
+      <td class="govuk-c-table__cell "  >string</td>
+      <td class="govuk-c-table__cell "  >No</td>
+      <td class="govuk-c-table__cell "  >name of each date input</td>
+    </tr>
+    <tr class="govuk-c-table__row">
+      <th class="govuk-c-table__header" scope="row"> dateItems</th>
+      <td class="govuk-c-table__cell "  >object</td>
+      <td class="govuk-c-table__cell "  >Yes</td>
+      <td class="govuk-c-table__cell "  >dateItems object with name and error keys</td>
+    </tr>
+    <tr class="govuk-c-table__row">
+      <th class="govuk-c-table__header" scope="row"> dateItems.name</th>
+      <td class="govuk-c-table__cell "  ></td>
+      <td class="govuk-c-table__cell "  >Yes</td>
+      <td class="govuk-c-table__cell "  >Name of date item, for example - Day, Month or Year</td>
+    </tr>
+    <tr class="govuk-c-table__row">
+      <th class="govuk-c-table__header" scope="row"> dateItems.error</th>
+      <td class="govuk-c-table__cell "  ></td>
+      <td class="govuk-c-table__cell "  >Yes</td>
+      <td class="govuk-c-table__cell "  >Set error for date item</td>
+    </tr>
+  </tbody>
+</table>
+
 </div>
 
 <h3 class="govuk-u-bold-19">Setting up Nunjucks views and paths</h3>
