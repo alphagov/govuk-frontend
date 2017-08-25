@@ -1,7 +1,18 @@
+{% from "error-message/macro.njk" import govukErrorMessage %}
+
 <fieldset class="govuk-c-fieldset {{ classes }}">
-{% if legendText %}
+{% if text %}
   <legend class="govuk-c-fieldset__legend">
-    {{ legendText }}
+    {{ text }}
+
+    {% if hintText %}
+    <span class="govuk-c-fieldset__hint">{{ hintText }}</span>
+    {% endif %}
+
+    {% if errorMessage %}
+      {{ govukErrorMessage(errorMessage) }}
+    {% endif %}
   </legend>
 {% endif %}
+{{ caller() if caller }} {# if statement allows usage of `call` to be optional #}
 </fieldset>
