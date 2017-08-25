@@ -6,7 +6,7 @@
   <thead class="govuk-c-table__head">
     <tr class="govuk-c-table__row">
     {% for item in data.head %}
-      <th class='govuk-c-table__header {% if item.type %} govuk-c-table__header--{{ item.type }} {% endif %}' scope="col">{{ item.text }}</th>
+      <th class="govuk-c-table__header {% if item.type %} govuk-c-table__header--{{ item.type }} {% endif %}" {% if item.colspan %} colspan="{{ item.colspan }}" {% endif %} {% if item.rowspan %} rowspan="{{ item.rowspan }}" {% endif %} scope="col">{{ item.text }}</th>
     {% endfor %}
   </tr>
   </thead>
@@ -17,8 +17,10 @@
     {% for cell in rows %}
       {% if (loop.first) and (options.isFirstCellHeader) %}
       <th class="govuk-c-table__header" scope="row"> {{ cell.text }}</th>
+      {% elseif loop.first %}
+      <td class="govuk-c-table__cell {% if cell.type %} govuk-c-table__cell--numeric {% endif %}" {% if cell.colspan %} colspan="{{ cell.colspan }}" {% endif %} {% if cell.rowspan %} rowspan="{{ cell.rowspan }}" {% endif %} scope="row">{{ cell.text }}</td>
       {% else %}
-      <td class="govuk-c-table__cell {% if cell.type %} govuk-c-table__cell--numeric {% endif %}">{{ cell.text }}</td>
+      <td class="govuk-c-table__cell {% if cell.type %} govuk-c-table__cell--numeric {% endif %}" {% if cell.colspan %} colspan="{{ cell.colspan }}" {% endif %} {% if cell.rowspan %} rowspan="{{ cell.rowspan }}" {% endif %}>{{ cell.text }}</td>
       {% endif %}
     {% endfor %}
     </tr>
