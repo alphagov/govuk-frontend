@@ -1,5 +1,25 @@
-{% extends "layout.njk" %}
+{% extends "component.njk" %}
 
-{% block content %}
-  Component "detail" page
+{# Commented out blocks below inherit from views/component.njk #}
+
+{# componentName #}
+{% block componentDescription %}
+  Breadcrumb navigation, showing page hierarchy.
+{% endblock %}
+{# componentExample #}
+{# componentNunjucks #}
+{# componentHtml #}
+
+{% block componentGuidanceLink %}
+  http://www.linktodesignsystem.com
+{% endblock %}
+
+{% block componentArguments %}
+<!-- TODO: Use the table macro here and pass it component argument data -->
+| Name        | Type   | Default | Required | Description
+|---          |---     |---      |---       |---
+| classes     | string |         | No       | Optional additional classes
+| breadcrumbs | array  |         | Yes      | Breadcrumbs array with title and url keys
+| title       | string |         | Yes      | Title of the breadcrumb item
+| url         | string |         | Yes      | Url of the breadcrumb item
 {% endblock %}
