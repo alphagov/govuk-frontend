@@ -14,6 +14,7 @@
   "author": "Government Digital Service developers (https://gds.blog.gov.uk/)",
   "homepage": "https://github.com/alphagov/govuk-frontend#readme",
   "scripts": {
+    "preinstall": "npm config set package-lock false",
     "dev": "gulp preview --destination 'public' && node app.js",
     "start": "gulp dev",
     "test": "standard && gulp test",
