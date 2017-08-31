@@ -1,0 +1,24 @@
+{% extends "component.njk" %}
+
+{# Commented out blocks below inherit from views/component.njk #}
+
+{# componentName #}
+{% block componentDescription %}
+  The fieldset element is used to group several controls within a web form.
+  The legend element represents a caption for the content of its parent fieldset.
+{% endblock %}
+{# componentExample #}
+{# componentNunjucks #}
+{# componentHtml #}
+
+{% block componentGuidanceLink %}
+  http://www.linktodesignsystem.com
+{% endblock %}
+
+{% block componentArguments %}
+<!-- TODO: Use the table macro here and pass it component argument data -->
+| Name        | Type    | Default | Required  | Description
+|---          |---      |---      |---        |---
+| classes     | string  |         | No        | Optional additional classes
+| legendText  | string  |         | No        | Legend text
+{% endblock %}

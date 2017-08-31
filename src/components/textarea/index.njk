@@ -1,0 +1,29 @@
+{% extends "component.njk" %}
+
+{# Commented out blocks below inherit from views/component.njk #}
+
+{# componentName #}
+{% block componentDescription %}
+  A multi-line text field.
+{% endblock %}
+{# componentExample #}
+{# componentNunjucks #}
+{# componentHtml #}
+
+{% block componentGuidanceLink %}
+  http://www.linktodesignsystem.com
+{% endblock %}
+
+{% block componentArguments %}
+<!-- TODO: Use the table macro here and pass it component argument data -->
+
+| Name          | Type    | Default   | Required  | Description
+|---            |---      |---        |---        |---
+| classes       | string  |           | No        | Optional additional classes
+| labelText     | string  |           | Yes       | The label text
+| hintText      | string  |           | No        | Optional hint text
+| errorMessage  | string  |           | No        | Optional error message
+| id            | string  |           | Yes       | The id of the textarea
+| name          | string  |           | Yes       | The name of the textarea
+| rows          | string  | 5         | No        | Change default number of textarea rows
+{% endblock %}

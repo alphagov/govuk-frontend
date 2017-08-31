@@ -1,0 +1,24 @@
+{% extends "component.njk" %}
+
+{# Commented out blocks below inherit from views/component.njk #}
+
+{# componentName #}
+{% block componentDescription %}
+  Grid row with grid items.
+{% endblock %}
+{# componentExample #}
+{# componentNunjucks #}
+{# componentHtml #}
+
+{% block componentGuidanceLink %}
+  http://www.linktodesignsystem.com
+{% endblock %}
+
+{% block componentArguments %}
+<!-- TODO: Use the table macro here and pass it component argument data -->
+| Name          | Type    | Required  | Description
+|---            |---      |---        |---
+| classes       | string  | No        | Optional additional classes
+| gridItems     | array   | Yes       | Grid items array with width key
+| width         | string  | Yes       | Width of the grid item - full, one-half, one-third, two-thirds, one-quarter
+{% endblock %}
