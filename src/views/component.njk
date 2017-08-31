@@ -1,0 +1,68 @@
+{% extends "default.njk" %}
+
+{% block content %}
+
+  {% set componentName = componentPath %}
+
+  <h1>
+    {% block componentName %}
+      {{ componentName | capitalize }}
+    {% endblock %}
+  </h1>
+
+  <p>
+    {% block componentDescription %}
+    {% endblock %}
+  </p>
+
+  <p>
+    <a href="{% block componentGuidanceLink %}{% endblock %}">
+      Find {{ componentName}} guidance on the GOV.UK Design System.
+    </a>
+  </p>
+
+  <h2>How this component looks</h2>
+  <div>
+    {% block componentExample %}
+      {% include "../components/"+ componentName +"/"+ componentName +".njk" %}
+    {% endblock %}
+  </div>
+
+  <!-- TODO: Add link to isolated component preview -->
+
+  <h2>How to call this component</h2>
+  <pre>
+    <code>
+      {% block componentNunjucks %}
+        {{ componentNunjucksFile }}
+      {% endblock %}
+    </code>
+  </pre>
+
+  {% if isReadme %}
+    <h2>Component arguments</h2>
+    <div>
+      {% block componentArguments %}
+      {% endblock %}
+    </div>
+  {% endif %}
+
+  <h2>Component HTML</h2>
+  <pre>
+    <code>
+      {% block componentHtml %}
+        {{ componentHtmlFile }}
+      {% endblock %}
+    </code>
+  </pre>
+
+  {% if isReadme %}
+  <h2>Installation</h2>
+  <pre>
+    <code>
+      npm install --save @govuk-frontend/{{ componentName }}
+    </code>
+  </pre>
+  {% endif %}
+
+{% endblock %}
