@@ -15,11 +15,15 @@ require('./tasks/gulp/dist-docs.js')
 require('./tasks/gulp/packages-update.js')
 require('./tasks/gulp/prepare-files.js')
 require('./tasks/gulp/demo-build.js')
-require('./tasks/gulp/preview-compile.js')
+// require('./tasks/gulp/preview-compile.js')
 require('./tasks/gulp/preview-component-list.js')
 require('./tasks/gulp/preview-docs.js')
 require('./tasks/gulp/examples.js')
 require('./tasks/gulp/nunjucks-render.js')
+
+require('./tasks/gulp/compile-assets.js')
+
+const taskArguments = require('./tasks/gulp/task-arguments')
 
 // Build packages task -----------------
 // Prepare package folder for publishing
@@ -69,7 +73,7 @@ gulp.task('styles', cb => {
 // --------------------------------------
 gulp.task('copy:icons', () => {
   return gulp.src(paths.src + 'globals/icons/**/*.{png,svg,gif,jpg}')
-    .pipe(gulp.dest(paths.preview + 'icons/'))
+    .pipe(gulp.dest(taskArguments.destination + '/icons/'))
 })
 
 // All test combined --------------------
@@ -84,18 +88,15 @@ gulp.task('test', cb => {
               cb)
 })
 
-// Review task for heroku deployments ---
-// Compiles files ready for deployment
+// Preview task for local & heroku  -----
+// dev preview and heroku deployment
 // --------------------------------------
-gulp.task('review', () => {
+
+gulp.task('preview', cb => {
   runsequence('styles',
               'scripts',
               'copy:icons',
-              'preview:docs',
-              'examples',
-              'preview:component:list',
-              'nunjucks'
-            )
+              cb)
 })
 
 // Default task -------------------------

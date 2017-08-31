@@ -7,6 +7,7 @@ const postcss = require('gulp-postcss')
 const autoprefixer = require('autoprefixer')
 const merge = require('merge-stream')
 const concat = require('gulp-concat')
+const taskArguments = require('./task-arguments')
 
 // Compile SCSS task for preview -------
 // --------------------------------------
@@ -16,7 +17,7 @@ gulp.task('scss:compile', () => {
     .pipe(postcss([
       autoprefixer
     ]))
-    .pipe(gulp.dest('public/css/'))
+    .pipe(gulp.dest(taskArguments.destination + '/css/'))
 
   let compileOldIe = gulp.src(paths.globalScss + 'govuk-frontend-oldie.scss')
     .pipe(sass().on('error', sass.logError))
@@ -32,7 +33,7 @@ gulp.task('scss:compile', () => {
         })
       ])
     )
-    .pipe(gulp.dest('public/css/'))
+    .pipe(gulp.dest(taskArguments.destination + '/css/'))
 
   return merge(compile, compileOldIe)
 })
@@ -42,5 +43,5 @@ gulp.task('scss:compile', () => {
 gulp.task('js:compile', () => {
   return gulp.src([paths.src + '**/*.js'])
     .pipe(concat('govuk-frontend.js'))
-    .pipe(gulp.dest('public/js/'))
+    .pipe(gulp.dest(taskArguments.destination + '/js/'))
 })

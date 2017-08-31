@@ -1,7 +1,11 @@
 {% from "button/macro.njk" import govukButton %}
+{% extends "default.njk" %}
 
+{% block content %}
 {{ govukButton(classes='', text='Save and continue') }}
 
 {{ govukButton(classes='', text='Save and continue', isDisabled='true') }}
 
 {{ govukButton(classes='', text='Start now', url='/', isStart='true') }}
+
+{% endblock %}
