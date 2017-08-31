@@ -16,7 +16,7 @@ gulp.task('scss:compile', () => {
     .pipe(postcss([
       autoprefixer
     ]))
-    .pipe(gulp.dest(paths.preview + 'css/'))
+    .pipe(gulp.dest('public/css/'))
 
   let compileOldIe = gulp.src(paths.globalScss + 'govuk-frontend-oldie.scss')
     .pipe(sass().on('error', sass.logError))
@@ -32,7 +32,7 @@ gulp.task('scss:compile', () => {
         })
       ])
     )
-    .pipe(gulp.dest(paths.preview + 'css/'))
+    .pipe(gulp.dest('public/css/'))
 
   return merge(compile, compileOldIe)
 })
@@ -42,5 +42,5 @@ gulp.task('scss:compile', () => {
 gulp.task('js:compile', () => {
   return gulp.src([paths.src + '**/*.js'])
     .pipe(concat('govuk-frontend.js'))
-    .pipe(gulp.dest(paths.preview + 'js/'))
+    .pipe(gulp.dest('public/js/'))
 })

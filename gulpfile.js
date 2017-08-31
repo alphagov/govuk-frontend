@@ -69,7 +69,7 @@ gulp.task('styles', cb => {
 // --------------------------------------
 gulp.task('copy:icons', () => {
   return gulp.src(paths.src + 'globals/icons/**/*.{png,svg,gif,jpg}')
-    .pipe(gulp.dest(paths.preview + 'icons/'))
+    .pipe(gulp.dest('public/icons/'))
 })
 
 // All test combined --------------------
@@ -96,6 +96,13 @@ gulp.task('review', () => {
               'preview:component:list',
               'nunjucks'
             )
+})
+
+gulp.task('preview', cb => {
+  runsequence('styles',
+              'scripts',
+              'copy:icons',
+              cb)
 })
 
 // Default task -------------------------
