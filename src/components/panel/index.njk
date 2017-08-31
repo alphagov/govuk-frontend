@@ -1,0 +1,25 @@
+{% extends "component.njk" %}
+
+{# Commented out blocks below inherit from views/component.njk #}
+
+{# componentName #}
+{% block componentDescription %}
+  The confirmation panel has a turquoise background and white text. Used for transaction end pages, and Bank Holidays.
+{% endblock %}
+{# componentExample #}
+{# componentNunjucks #}
+{# componentHtml #}
+
+{% block componentGuidanceLink %}
+  http://www.linktodesignsystem.com
+{% endblock %}
+
+{% block componentArguments %}
+<!-- TODO: Use the table macro here and pass it component argument data -->
+| Name          | Type    | Required  | Description
+|---            |---      |---        |---
+| classes       | string  | No        | Optional additional classes
+| title         | string  | Yes       | The panel title
+| content       | string  | No        | The panel content
+| reference     | string  | No        | Optional reference number
+{% endblock %}
