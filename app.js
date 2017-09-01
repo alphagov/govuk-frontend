@@ -41,3 +41,22 @@ app.get('/', function (req, res) {
 app.get('/examples*', function (req, res) {
   res.render('index')
 })
+
+// Component isolated preview
+app.get('/components/*/preview', function (req, res) {
+  var path = (req.params[0]).replace(/\//g, '')
+  console.log(path)
+  res.render(path, function (err, html) {
+    if (err) {
+      res.render(path + '/' + path, function (err2, html) {
+        if (err2) {
+          res.status(404).send(err + '<br>' + err2)
+        } else {
+          res.end(html)
+        }
+      })
+    } else {
+      res.end(html)
+    }
+  })
+})
