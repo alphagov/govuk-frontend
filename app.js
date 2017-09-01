@@ -18,10 +18,6 @@ app.set('view engine', 'njk')
 
 app.set('port', (process.env.PORT || 3000))
 
-app.get('/', function (req, res) {
-  res.render('default')
-})
-
 app.listen(app.get('port'), () => {
   console.log('Node app is running on port', app.get('port'))
 })
@@ -32,6 +28,11 @@ const tree = dirTree('./src/components/')
 
 // Pass the tree object to all routes
 app.locals.componentsDirectory = tree
+
+// Index page - render the component list template
+app.get('/', function (req, res) {
+  res.render('component-list')
+})
 
 // Components
 app.get('/components*', function (req, res) {
