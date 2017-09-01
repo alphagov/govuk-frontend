@@ -25,7 +25,7 @@ nunjucks.configure(appViews, {
 app.set('view engine', 'njk')
 
 // Set up middleware to serve static assets
-app.use('/public', express.static(path.join(__dirname, '/preview')))
+app.use('/public', express.static(path.join(__dirname, '/public')))
 
 app.listen(port, () => {
   console.log('Listening on port ' + port + '   url: http://localhost:' + port)

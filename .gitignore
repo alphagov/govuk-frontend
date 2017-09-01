@@ -7,3 +7,4 @@ lerna-debug.log
 axeReports/
 config/tenon.json
 package-lock.json
+public/
