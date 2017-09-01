@@ -3,9 +3,9 @@ const app = express()
 const nunjucks = require('nunjucks')
 const fs = require('fs')
 const path = require('path')
-const paths = require('./config/paths.json')
 const port = (process.env.PORT || 3000)
 const herokuApp = process.env.HEROKU_APP
+const dirTree = require('directory-tree')
 
 // Set up views
 const appViews = [
@@ -44,20 +44,25 @@ app.get('/examples*', function (req, res) {
   res.render('index')
 })
 
+// Get a directory tree of the components folder
+const tree = dirTree('./src/components/')
+// console.log(tree)
+
+// Pass the tree object to all routes
+app.locals.componentsDirectory = tree
+
 // Components
 app.get('/components*', function (req, res) {
   var path = (req.params[0]).replace(/\//g, '')
 
   // Get component path, component njk and component html files
   try {
-
     var componentNjk = fs.readFileSync('src/components/' + path + '/' + path + '.njk', 'utf8')
     var componentHtml = fs.readFileSync('src/components/' + path + '/' + path + '.html', 'utf8')
 
     res.locals.componentPath = path
     res.locals.componentNunjucksFile = componentNjk
     res.locals.componentHtmlFile = componentHtml
-
   } catch (e) {
     console.log('Error:', e.stack)
   }
@@ -76,7 +81,6 @@ app.get('/components*', function (req, res) {
     }
   })
 })
-
 
 // Component isolated preview
 app.get('/components/*/preview', function (req, res) {
