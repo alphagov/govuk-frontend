@@ -51,6 +51,11 @@ const tree = dirTree('./src/components/')
 // Pass the tree object to all routes
 app.locals.componentsDirectory = tree
 
+// Index page - render the component list template
+app.get('/', function (req, res) {
+  res.render('component-list')
+})
+
 // Components
 app.get('/components*', function (req, res) {
   var path = (req.params[0]).replace(/\//g, '')
