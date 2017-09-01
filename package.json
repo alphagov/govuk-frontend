@@ -16,7 +16,7 @@
   "scripts": {
     "start": "node app.js",
     "test": "standard && gulp test",
-    "heroku": "node app.js"
+    "heroku": "gulp review && node app.js"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.1",
