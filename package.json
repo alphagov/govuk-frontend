@@ -21,7 +21,7 @@
   "devDependencies": {
     "autoprefixer": "^7.1.1",
     "cssnano": "^3.10.0",
-    "express": "^4.15.3",
+    "express": "^4.15.4",
     "gulp": "^3.9.1",
     "gulp-axe-webdriver": "^1.4.0",
     "gulp-changed": "^3.1.0",
