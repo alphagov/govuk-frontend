@@ -5,6 +5,7 @@ const fs = require('fs')
 const path = require('path')
 const paths = require('./config/paths.json')
 const views = ['src/views', 'src/components', 'src/examples']
+const dirTree = require('directory-tree')
 
 nunjucks.configure(views, {
   autoescape: true,
@@ -24,6 +25,13 @@ app.get('/', function (req, res) {
 app.listen(app.get('port'), () => {
   console.log('Node app is running on port', app.get('port'))
 })
+
+// Get a directory tree of the components folder
+const tree = dirTree('./src/components/')
+// console.log(tree)
+
+// Pass the tree object to all routes
+app.locals.componentsDirectory = tree
 
 // Components
 app.get('/components*', function (req, res) {
