@@ -2,7 +2,6 @@ const express = require('express')
 const app = express()
 const nunjucks = require('nunjucks')
 const fs = require('fs')
-const path = require('path')
 const paths = require('./config/paths.json')
 const views = ['src/views', 'src/components', 'src/examples']
 const dirTree = require('directory-tree')
@@ -40,14 +39,12 @@ app.get('/components*', function (req, res) {
 
   // Get component path, component njk and component html files
   try {
-
     var componentNjk = fs.readFileSync('src/components/' + path + '/' + path + '.njk', 'utf8')
     var componentHtml = fs.readFileSync('src/components/' + path + '/' + path + '.html', 'utf8')
 
     res.locals.componentPath = path
     res.locals.componentNunjucksFile = componentNjk
     res.locals.componentHtmlFile = componentHtml
-
   } catch (e) {
     console.log('Error:', e.stack)
   }
@@ -88,12 +85,12 @@ app.get('/examples*', function (req, res) {
 var sassMiddleware = require('node-sass-middleware')
 app.use(sassMiddleware({
     /* Options */
-    src: paths.globalScss,
-    dest: '/public',
-    debug: true,
-    outputStyle: 'compressed',
-    prefix: '/public'  // Where prefix is at <link rel="stylesheets" href="prefix/style.css"/>
-}));
+  src: paths.globalScss,
+  dest: '/public',
+  debug: true,
+  outputStyle: 'compressed',
+  prefix: '/public'  // Where prefix is at <link rel="stylesheets" href="prefix/style.css"/>
+}))
 // Note: you must place sass-middleware *before* `express.static` or else it will
 // not work.
 // app.use('/public', express.static(path.join(__dirname, 'public')));
