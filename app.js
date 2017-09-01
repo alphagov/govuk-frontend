@@ -63,10 +63,6 @@ app.get('/components/*/preview', function (req, res) {
 })
 
 // Config for Heroku
-// If this is the Heroku review app
-if (herokuApp === 'REVIEW') {
-  app.use('/', express.static(path.join(__dirname, '/preview')))
-}
 
 // If this is the Heroku demo app
 if (herokuApp === 'DEMO') {
