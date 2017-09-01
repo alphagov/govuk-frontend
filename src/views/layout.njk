@@ -3,7 +3,7 @@
 <head>
   <title>GOV.UK Frontend</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/css/govuk-frontend.css">
+  <link rel="stylesheet" href="/public/govuk-frontend.css">
   <!--[if IE 8]>
   <link rel="stylesheet" href="/css/govuk-frontend-oldie.css">
   <![endif]-->
@@ -48,7 +48,8 @@
 </head>
 <body class="language-markup govuk-c-site-width-container">
   <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
-  <%= contents %>
+  {% block content %}
+  {% endblock %}
   <script src="/js/govuk-frontend.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
 <span class="govuk-c-debug-grid__toggler">Show page debug grid</span>

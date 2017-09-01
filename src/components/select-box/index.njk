@@ -1,0 +1,27 @@
+{% extends "component.njk" %}
+
+{# Commented out blocks below inherit from views/component.njk #}
+
+{# componentName #}
+{% block componentDescription %}
+  The HTML `<select>` element represents a control that provides a menu of options.
+{% endblock %}
+{# componentExample #}
+{# componentNunjucks #}
+{# componentHtml #}
+
+{% block componentGuidanceLink %}
+  http://www.linktodesignsystem.com
+{% endblock %}
+
+{% block componentArguments %}
+<!-- TODO: Use the table macro here and pass it component argument data -->
+| Name             | Type    | Default | Required | Description
+|---               |---      |---      |---       |---
+| classes          | string  |         | No       | Optional additional classes
+| id               | string  |         | Yes      | Id for each select box
+| name             | string  |         | Yes      | Name for each select box
+| options          | array   |         | Yes      | Options array with value, label, selected keys
+| hasLabelWithText | string  |         | No       | Optional to provide label text that will render the label element
+| labelClasses     | string  |         | No       | Optional to provide label with custom classes
+{% endblock %}

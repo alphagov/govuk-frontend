@@ -1,0 +1,24 @@
+{% extends "component.njk" %}
+
+{# Commented out blocks below inherit from views/component.njk #}
+
+{# componentName #}
+{% block componentDescription %}
+  You have to use an alpha banner if your thing is in alpha, and a beta banner if it’s in beta.
+{% endblock %}
+{# componentExample #}
+{# componentNunjucks #}
+{# componentHtml #}
+
+{% block componentGuidanceLink %}
+  http://www.linktodesignsystem.com
+{% endblock %}
+
+{% block componentArguments %}
+<!-- TODO: Use the table macro here and pass it component argument data -->
+| Name              | Type    | Default | Required  | Description
+|---                |---      |---      |---        |---
+| classes           | string  |         | No        | Optional additional classes
+| phaseTagText      | string  |         | Yes       | Tag text
+| phaseBannerText   | string  |         | Yes       | Banner copy
+{% endblock %}
