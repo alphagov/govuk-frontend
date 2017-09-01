@@ -7,7 +7,7 @@
   <!-- Show the list of components -->
   <ul class="govuk-c-list">
   {% for children in componentsDirectory.children %}
-    <li><a href="/components/{{ children.name }}">{{ children.name }}</a></li>
+    <li><a href="/components/{{ children.name }}">{{ children.name | replace("-", " ") | capitalize }}</a></li>
   {% endfor %}
   </ul>
 {% endblock %}

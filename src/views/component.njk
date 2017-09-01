@@ -6,7 +6,7 @@
 
   <h1 class="govuk-u-heading-36">
     {% block componentName %}
-      {{ componentName | capitalize }}
+      {{ componentName | replace("-", " ") | capitalize }}
     {% endblock %}
   </h1>
 
@@ -15,7 +15,7 @@
     {% endblock %}
   </p>
 
-  <p>
+  <p class="govuk-u-copy-19">
     <a href="{% block componentGuidanceLink %}{% endblock %}">
       Find {{ componentName}} guidance on the GOV.UK Design System.
     </a>
