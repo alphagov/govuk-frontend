@@ -14,9 +14,9 @@
   "author": "Government Digital Service developers (https://gds.blog.gov.uk/)",
   "homepage": "https://github.com/alphagov/govuk-frontend#readme",
   "scripts": {
-    "start": "gulp dev",
+    "start": "node app.js",
     "test": "standard && gulp test",
-    "heroku": "gulp review && node review.js"
+    "heroku": "node app.js"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.1",
