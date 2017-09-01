@@ -1,16 +1,16 @@
-{% extends "default.njk" %}
+{% extends "layout.njk" %}
 
 {% block content %}
 
   {% set componentName = componentPath %}
 
-  <h1>
+  <h1 class="govuk-u-heading-36">
     {% block componentName %}
       {{ componentName | capitalize }}
     {% endblock %}
   </h1>
 
-  <p>
+  <p class="govuk-u-core-24">
     {% block componentDescription %}
     {% endblock %}
   </p>
@@ -21,7 +21,7 @@
     </a>
   </p>
 
-  <h2>How this component looks</h2>
+  <h2 class="govuk-u-heading-24">How this component looks</h2>
   <div>
     {% block componentExample %}
       {% include "../components/"+ componentName +"/"+ componentName +".njk" %}
@@ -30,7 +30,7 @@
 
   <!-- TODO: Add link to isolated component preview -->
 
-  <h2>How to call this component</h2>
+  <h2 class="govuk-u-heading-24">How to call this component</h2>
   <pre>
     <code>
       {% block componentNunjucks %}
@@ -40,14 +40,14 @@
   </pre>
 
   {% if isReadme %}
-    <h2>Component arguments</h2>
+    <h2 class="govuk-u-heading-24">Component arguments</h2>
     <div>
       {% block componentArguments %}
       {% endblock %}
     </div>
   {% endif %}
 
-  <h2>Component HTML</h2>
+  <h2 class="govuk-u-heading-24">Component HTML</h2>
   <pre>
     <code>
       {% block componentHtml %}
@@ -57,7 +57,7 @@
   </pre>
 
   {% if isReadme %}
-  <h2>Installation</h2>
+  <h2 class="govuk-u-heading-24">Installation</h2>
   <pre>
     <code>
       npm install --save @govuk-frontend/{{ componentName }}
