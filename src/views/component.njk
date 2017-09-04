@@ -17,7 +17,7 @@
 
   <p class="govuk-u-copy-19">
     <a href="{% block componentGuidanceLink %}{% endblock %}">
-      Find {{ componentName}} guidance on the GOV.UK Design System.
+      Find {{ componentName }} guidance on the GOV.UK Design System.
     </a>
   </p>
 
@@ -28,7 +28,12 @@
     {% endblock %}
   </div>
 
-  <!-- TODO: Add link to isolated component preview -->
+  <p class="govuk-u-copy-19">
+    {% set componentPreviewPath = "/components/" + componentPath + "/preview" %}
+    <a href="{% if isReadme %} http://govuk-frontend-review.herokuapp.com{% endif %}{{ componentPreviewPath }}">
+      Preview the {{ componentName}} component.
+    </a>
+  </p>
 
   <h2 class="govuk-u-heading-24">How to call this component</h2>
   <pre><code>{% block componentNunjucks %}{{ componentNunjucksFile }}{% endblock %}</code></pre>

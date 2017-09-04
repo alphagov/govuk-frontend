@@ -54,51 +54,43 @@ app.get('/examples*', function (req, res) {
 // Components
 app.get('/components*', function (req, res) {
   var path = (req.params[0]).replace(/\//g, '')
+  // If it isn't the isolated preview, render the component "detail" page
+  if (path.indexOf('preview') === -1) {
+    try {
+      var componentNjk = fs.readFileSync('src/components/' + path + '/' + path + '.njk', 'utf8')
+      var componentHtml = fs.readFileSync('src/components/' + path + '/' + path + '.html', 'utf8')
 
-  // Get component path, component njk and component html files
-  try {
-    var componentNjk = fs.readFileSync('src/components/' + path + '/' + path + '.njk', 'utf8')
-    var componentHtml = fs.readFileSync('src/components/' + path + '/' + path + '.html', 'utf8')
+      res.locals.componentPath = path
+      res.locals.componentNunjucksFile = componentNjk
+      res.locals.componentHtmlFile = componentHtml
+    } catch (e) {
+      console.log('Error:', e.stack)
+    }
 
+    res.render(path, {
+      componentPath: res.locals.componentPath,
+      componentNunjucksFile: res.locals.componentNunjucksFile,
+      componentHtmlFile: res.locals.componentHtmlFile
+    },
+    function (err, html) {
+      if (err) {
+        res.render(path + '/' + 'index', function (err2, html) {
+          if (err2) {
+            res.status(404).send(err + '<br>' + err2)
+          } else {
+            res.end(html)
+          }
+        })
+      } else {
+        res.end(html)
+      }
+    })
+  } else {
+    // Show the isolated component preview
+    path = path.replace(/preview/g, '')
     res.locals.componentPath = path
-    res.locals.componentNunjucksFile = componentNjk
-    res.locals.componentHtmlFile = componentHtml
-  } catch (e) {
-    console.log('Error:', e.stack)
+    res.render('component-preview')
   }
-
-  res.render(path, { componentPath: res.locals.componentPath, componentNunjucksFile: res.locals.componentNunjucksFile, componentHtmlFile: res.locals.componentHtmlFile }, function (err, html) {
-    if (err) {
-      res.render(path + '/' + 'index', function (err2, html) {
-        if (err2) {
-          res.status(404).send(err + '<br>' + err2)
-        } else {
-          res.end(html)
-        }
-      })
-    } else {
-      res.end(html)
-    }
-  })
-})
-
-// Component isolated preview
-app.get('/components/*/preview', function (req, res) {
-  var path = (req.params[0]).replace(/\//g, '')
-  console.log(path)
-  res.render(path, function (err, html) {
-    if (err) {
-      res.render(path + '/' + path, function (err2, html) {
-        if (err2) {
-          res.status(404).send(err + '<br>' + err2)
-        } else {
-          res.end(html)
-        }
-      })
-    } else {
-      res.end(html)
-    }
-  })
 })
 
 // Config for Heroku
