@@ -34,16 +34,6 @@ app.listen(port, () => {
 
 // Routes
 
-// Index page
-app.get('/', function (req, res) {
-  res.render('layout')
-})
-
-// Examples
-app.get('/examples*', function (req, res) {
-  res.render('index')
-})
-
 // Get a directory tree of the components folder
 const tree = dirTree('./src/components/')
 // console.log(tree)
@@ -54,6 +44,11 @@ app.locals.componentsDirectory = tree
 // Index page - render the component list template
 app.get('/', function (req, res) {
   res.render('component-list')
+})
+
+// Examples
+app.get('/examples*', function (req, res) {
+  res.render('index')
 })
 
 // Components
