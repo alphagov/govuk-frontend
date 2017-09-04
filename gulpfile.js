@@ -4,21 +4,20 @@ const paths = require('./config/paths.json')
 const gulp = require('gulp')
 const taskListing = require('gulp-task-listing')
 const runsequence = require('run-sequence')
+const taskArguments = require('./tasks/gulp/task-arguments')
 
 // Gulp sub-tasks
 require('./tasks/gulp/lint.js')
 require('./tasks/gulp/test.js')
+require('./tasks/gulp/compile-assets.js')
 require('./tasks/gulp/watch.js')
-require('./tasks/gulp/serve.js')
 require('./tasks/gulp/dist-prepare.js')
 require('./tasks/gulp/dist-docs.js')
 require('./tasks/gulp/packages-update.js')
 require('./tasks/gulp/prepare-files.js')
 require('./tasks/gulp/demo-build.js')
-require('./tasks/gulp/preview-compile.js')
 require('./tasks/gulp/preview-component-list.js')
 require('./tasks/gulp/preview-docs.js')
-require('./tasks/gulp/examples.js')
 require('./tasks/gulp/nunjucks-render.js')
 
 // Build packages task -----------------
@@ -43,10 +42,8 @@ gulp.task('dev', cb => {
               'scripts',
               'copy:icons',
               'preview:docs',
-              'examples',
               'preview:component:list',
               'nunjucks',
-              'serve:preview',
               'watch', cb)
 })
 
@@ -64,12 +61,12 @@ gulp.task('styles', cb => {
   runsequence('scss:lint', 'scss:compile', cb)
 })
 
-// Copy icons task for preview ---------
-// Copies icons to preview
+// Copy icons task ----------------------
+// Copies icons to /public
 // --------------------------------------
 gulp.task('copy:icons', () => {
   return gulp.src(paths.src + 'globals/icons/**/*.{png,svg,gif,jpg}')
-    .pipe(gulp.dest(paths.preview + 'icons/'))
+    .pipe(gulp.dest(taskArguments.destination + '/icons/'))
 })
 
 // All test combined --------------------
@@ -84,17 +81,14 @@ gulp.task('test', cb => {
               cb)
 })
 
-// Review task for heroku deployments ---
-// Compiles files ready for deployment
+// Copy assets task for local & heroku --
+// Copies files to
+// taskArguments.destination (public)
 // --------------------------------------
-gulp.task('review', () => {
+gulp.task('copy-assets', () => {
   runsequence('styles',
               'scripts',
-              'copy:icons',
-              'preview:docs',
-              'examples',
-              'preview:component:list',
-              'nunjucks'
+              'copy:icons'
             )
 })
 

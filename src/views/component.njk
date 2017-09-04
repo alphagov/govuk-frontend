@@ -1,0 +1,56 @@
+{% extends "layout-debug.njk" %}
+
+{% block content %}
+
+  {% set componentName = componentPath %}
+
+  <h1 class="govuk-u-heading-36">
+    {% block componentName %}
+      {{ componentName | replace("-", " ") | capitalize }}
+    {% endblock %}
+  </h1>
+
+  <p class="govuk-u-core-24">
+    {% block componentDescription %}
+    {% endblock %}
+  </p>
+
+  <p class="govuk-u-copy-19">
+    <a href="{% block componentGuidanceLink %}{% endblock %}">
+      Find {{ componentName}} guidance on the GOV.UK Design System.
+    </a>
+  </p>
+
+  <h2 class="govuk-u-heading-24">How this component looks</h2>
+  <div>
+    {% block componentExample %}
+      {% include "../components/"+ componentName +"/"+ componentName +".njk" %}
+    {% endblock %}
+  </div>
+
+  <!-- TODO: Add link to isolated component preview -->
+
+  <h2 class="govuk-u-heading-24">How to call this component</h2>
+  <pre><code>{% block componentNunjucks %}{{ componentNunjucksFile }}{% endblock %}</code></pre>
+
+  {% if isReadme %}
+    <h2 class="govuk-u-heading-24">Component arguments</h2>
+    <div>
+      {% block componentArguments %}
+      {% endblock %}
+    </div>
+  {% endif %}
+
+  <h2 class="govuk-u-heading-24">Component HTML</h2>
+  <pre><code>{% block componentHtml %}{{ componentHtmlFile }}{% endblock %}</code></pre>
+
+  {% if isReadme %}
+  <h2 class="govuk-u-heading-24">Installation</h2>
+  <pre>
+    <code>
+      npm install --save @govuk-frontend/{{ componentName }}
+    </code>
+  </pre>
+  {% endif %}
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "component.njk" %}
+
+{# Commented out blocks below inherit from views/component.njk #}
+
+{# componentName #}
+{% block componentDescription %}
+  Previous/next page links.
+  <a href="https://www.gov.uk/voting-in-the-uk/polling-stations">View previous/next links on GOV.UK</a>
+{% endblock %}
+{# componentExample #}
+{# componentNunjucks #}
+{# componentHtml #}
+
+{% block componentGuidanceLink %}
+  http://www.linktodesignsystem.com
+{% endblock %}
+
+{% block componentArguments %}
+<!-- TODO: Use the table macro here and pass it component argument data -->
+| Name          | Type    | Default | Required | Description
+|---            |---      |---      |---       |---
+| classes       | string  |         | No       | Optional additional classes
+| name          | string  |         | Yes      | Name of the group of checkboxes
+| id            | string  |         | Yes      | ID is prefixed to the ID of each checkbox
+| previousPage  | array   |         | No       | previousPage array with url, title and label keys
+| nextPage      | array   |         | No       | nextPage array with url, title and label keys
+{% endblock %}

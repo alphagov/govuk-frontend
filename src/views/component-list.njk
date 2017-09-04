@@ -1,0 +1,13 @@
+{% extends "layout-debug.njk" %}
+
+{% block content %}
+  <h1 class="govuk-u-heading-36">
+    GOV.UK Frontend
+  </h1>
+  <!-- Show the list of components -->
+  <ul class="govuk-c-list">
+  {% for children in componentsDirectory.children %}
+    <li><a href="/components/{{ children.name }}">{{ children.name | replace("-", " ") | capitalize }}</a></li>
+  {% endfor %}
+  </ul>
+{% endblock %}

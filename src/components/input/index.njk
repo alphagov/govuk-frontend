@@ -1,0 +1,28 @@
+{% extends "component.njk" %}
+
+{# Commented out blocks below inherit from views/component.njk #}
+
+{# componentName #}
+{% block componentDescription %}
+  A single-line text field.
+{% endblock %}
+{# componentExample #}
+{# componentNunjucks #}
+{# componentHtml #}
+
+{% block componentGuidanceLink %}
+  http://www.linktodesignsystem.com
+{% endblock %}
+
+{% block componentArguments %}
+<!-- TODO: Use the table macro here and pass it component argument data -->
+| Name          | Type    | Required  | Description
+|---            |---      |---        |---
+| classes       | string  | No        | Optional additional classes
+| labelText     | string  | Yes       | The label text
+| hintText      | string  | No        | Optional hint text
+| errorMessage  | string  | No        | Optional error message
+| id            | string  | Yes       | The id of the input
+| name          | string  | Yes       | The name of the input, which is submitted with the form data.
+| value         | string  | No        | Optional initial value of the input
+{% endblock %}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>GOV.UK Frontend</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/public/css/govuk-frontend.css">
+  <!--[if IE 8]>
+  <link rel="stylesheet" href="/css/govuk-frontend-oldie.css">
+  <![endif]-->
+  {% block styles %}
+  {% endblock %}
+</head>
+<body class="{% block bodyClasses %}{% endblock %} govuk-c-site-width-container">
+  <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+
+  {% block content %}
+  {% endblock %}
+
+  <script src="/public/js/govuk-frontend.js"></script>
+  {% block scripts %}
+  {% endblock %}
+</body>
+</html>

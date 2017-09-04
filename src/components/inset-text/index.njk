@@ -1,0 +1,23 @@
+{% extends "component.njk" %}
+
+{# Commented out blocks below inherit from views/component.njk #}
+
+{# componentName #}
+{% block componentDescription %}
+  Use bordered inset text to draw attention to important content on the page.
+{% endblock %}
+{# componentExample #}
+{# componentNunjucks #}
+{# componentHtml #}
+
+{% block componentGuidanceLink %}
+  http://www.linktodesignsystem.com
+{% endblock %}
+
+{% block componentArguments %}
+<!-- TODO: Use the table macro here and pass it component argument data -->
+| Name      | Type    | Required  | Description
+|---        |---      |---        |---
+| classes   | string  | No        | Optional additional classes
+| content   | string  | Yes       | Inset text content
+{% endblock %}
