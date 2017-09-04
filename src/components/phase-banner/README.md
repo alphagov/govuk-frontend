@@ -1,45 +1,87 @@
-# Phase banner
 
-You have to use an alpha banner if your thing is in alpha, and a beta banner if it’s in beta.
+  
 
-## Guidance
+  
 
-Guidance and documentation can be found on [GOV.UK Design system](linkgoeshere).
+  <h1 class="govuk-u-heading-36">
+    
+      Phase banner
+    
+  </h1>
 
-## Demo
+  <p class="govuk-u-core-24">
+    
+  You have to use an alpha banner if your thing is in alpha, and a beta banner if it’s in beta.
 
-Phase banner [demo](phase-banner.html).
+  </p>
 
-## Usage
+  <p class="govuk-u-copy-19">
+    <a href="
+  http://www.linktodesignsystem.com
+">
+      Find phase-banner guidance on the GOV.UK Design System.
+    </a>
+  </p>
 
-Code example(s)
+  <h2 class="govuk-u-heading-24">How this component looks</h2>
+  <div>
+    
+      
 
-```
-@@include('phase-banner.html')
-```
-## Nunjucks
+  
 
-```
-{% from "phase-banner/macro.njk" import govukPhaseBanner %}
-{{ govukPhaseBanner(
-  classes='',
-  phaseBannerText='This is a new service – your <a href="#">feedback</a> will help us to improve it.',
-  phaseTagText='BETA')
-}}
-```
+<div class="govuk-c-phase-banner ">
+  <p class="govuk-c-phase-banner__content">
+    
+  <strong class="govuk-c-phase-tag "> BETA</strong>
 
-## Arguments
 
+    <span class="govuk-c-phase-banner__text">
+      This is a new service – your <a href="#">feedback</a> will help us to improve it.
+    </span>
+  </p>
+</div>
+
+
+
+    
+  </div>
+
+  <p class="govuk-u-copy-19">
+    
+    <a href=" http://govuk-frontend-review.herokuapp.com/components/undefined/preview">
+      Preview the phase-banner component.
+    </a>
+  </p>
+
+  <h2 class="govuk-u-heading-24">How to call this component</h2>
+  <pre><code></code></pre>
+
+  
+    <h2 class="govuk-u-heading-24">Component arguments</h2>
+    <div>
+      
+<!-- TODO: Use the table macro here and pass it component argument data -->
 | Name              | Type    | Default | Required  | Description
 |---                |---      |---      |---        |---
 | classes           | string  |         | No        | Optional additional classes
 | phaseTagText      | string  |         | Yes       | Tag text
 | phaseBannerText   | string  |         | Yes       | Banner copy
 
-<!--
-## Installation
+    </div>
+  
 
-```
-npm install --save @govuk-frontend/phase-banner
-```
--->
+  <h2 class="govuk-u-heading-24">Component HTML</h2>
+  <pre><code></code></pre>
+
+  
+  <h2 class="govuk-u-heading-24">Installation</h2>
+  <pre>
+    <code>
+      npm install --save @govuk-frontend/phase-banner
+    </code>
+  </pre>
+  
+
+
+

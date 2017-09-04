@@ -1,39 +1,106 @@
-# Label
 
-Use labels for all form fields.
+  
 
-## Guidance
+  
 
-Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
+  <h1 class="govuk-u-heading-36">
+    
+      Label
+    
+  </h1>
 
-## Demo
+  <p class="govuk-u-core-24">
+    
+  Use labels for all form fields.
 
-Label [demo](label.html).
+  </p>
 
-## Usage
+  <p class="govuk-u-copy-19">
+    <a href="
+  http://www.linktodesignsystem.com
+">
+      Find label guidance on the GOV.UK Design System.
+    </a>
+  </p>
 
-Code example(s)
+  <h2 class="govuk-u-heading-24">How this component looks</h2>
+  <div>
+    
+      
 
-```
-@@include('label.html')
-```
 
-## Nunjucks
+  
 
-{% from "label/macro.njk" import govukLabel %}
+<label class="govuk-c-label " for="">
+  National Insurance number
 
-{{ govukLabel(
-  classes='',
-  labelText='National Insurance number',
-  hintText='It’s on your National Insurance card, benefit letter, payslip or P60.
-    For example, ‘QQ 12 34 56 C’.',
-  errorMessage='Error message goes here',
-  id=''
-  )
-}}
+  
+    <span class="govuk-c-label__hint">It’s on your National Insurance card, benefit letter, payslip or P60.
+    For example, ‘QQ 12 34 56 C’.</span>
+  
 
-## Arguments
+  
+</label>
 
+
+
+
+  
+
+<label class="govuk-c-label  govuk-c-label--bold " for="">
+  National Insurance number
+
+  
+    <span class="govuk-c-label__hint">It’s on your National Insurance card, benefit letter, payslip or P60.
+    For example, ‘QQ 12 34 56 C’.</span>
+  
+
+  
+</label>
+
+
+
+
+  
+
+<label class="govuk-c-label " for="">
+  National Insurance number
+
+  
+    <span class="govuk-c-label__hint">It’s on your National Insurance card, benefit letter, payslip or P60.
+    For example, ‘QQ 12 34 56 C’.</span>
+  
+
+  
+    
+  <span class="govuk-c-error-message ">
+  Error message goes here
+</span>
+
+
+  
+</label>
+
+
+
+    
+  </div>
+
+  <p class="govuk-u-copy-19">
+    
+    <a href=" http://govuk-frontend-review.herokuapp.com/components/undefined/preview">
+      Preview the label component.
+    </a>
+  </p>
+
+  <h2 class="govuk-u-heading-24">How to call this component</h2>
+  <pre><code></code></pre>
+
+  
+    <h2 class="govuk-u-heading-24">Component arguments</h2>
+    <div>
+      
+<!-- TODO: Use the table macro here and pass it component argument data -->
 | Name          | Type    | Required  | Description
 |---            |---      |---        |---
 | classes       | string  | No        | Optional additional classes
@@ -42,14 +109,20 @@ Code example(s)
 | errorMessage  | string  | No        | Optional error message
 | id            | string  | Yes       | The value of the for attribute, the id input the label is associated with
 
-<!--
-## Installation
+    </div>
+  
 
-```
-npm install --save @govuk-frontend/label
-```
--->
+  <h2 class="govuk-u-heading-24">Component HTML</h2>
+  <pre><code></code></pre>
 
-# Implementation
+  
+  <h2 class="govuk-u-heading-24">Installation</h2>
+  <pre>
+    <code>
+      npm install --save @govuk-frontend/label
+    </code>
+  </pre>
+  
 
-Labels should be associated with form fields using the `for` attribute.
+
+

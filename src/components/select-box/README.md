@@ -1,71 +1,98 @@
-# Select box
 
-The HTML `<select>` element represents a control that provides a menu of options.
+  
 
-## Guidance
+  
 
-Guidance and documentation can be found on [GOV.UK Design system](linkgoeshere).
+  <h1 class="govuk-u-heading-36">
+    
+      Select box
+    
+  </h1>
 
-## Demo
+  <p class="govuk-u-core-24">
+    
+  The HTML `<select>` element represents a control that provides a menu of options.
 
-Select box [demo](select-box.html).
+  </p>
 
-## Usage
+  <p class="govuk-u-copy-19">
+    <a href="
+  http://www.linktodesignsystem.com
+">
+      Find select-box guidance on the GOV.UK Design System.
+    </a>
+  </p>
 
-Code example(s)
+  <h2 class="govuk-u-heading-24">How this component looks</h2>
+  <div>
+    
+      
 
-```
-@@include('select-box.html')
-```
 
-## Nunjucks
-```
-{{ govukSelectBox(
-  classes='',
-  id='select-box-1',
-  name='select-box-1',
-  options=[
-    {
-      value: '1',
-      label: 'GOV.UK frontend option 1'
-    },
-    {
-      value: '2',
-      label: 'GOV.UK frontend option 2'
-    },
-    {
-      value: '3',
-      label: 'GOV.UK frontend option 3'
-    }
-  ]
-)}}
 
-{{ govukSelectBox(
-  hasLabelWithText='Label for select box',
-  labelClasses='',
-  classes='',
-  id='select-box-2',
-  name='select-box-2',
-  options=[
-    {
-      value: 'a',
-      label: 'GOV.UK frontend option a'
-    },
-    {
-      value: 'b',
-      label: 'GOV.UK frontend option b',
-      selected: 'true'
-    },
-    {
-      value: 'c',
-      label: 'GOV.UK frontend option c'
-    }
-  ]
-)}}
-```
+  
 
-## Arguments
 
+<select class="govuk-c-select-box " id="select-box-1" name="select-box-1">
+  
+  <option value="1">GOV.UK frontend option 1</option>
+  
+  <option value="2">GOV.UK frontend option 2</option>
+  
+  <option value="3">GOV.UK frontend option 3</option>
+  
+</select>
+
+
+
+
+  
+
+
+
+
+  
+
+<label class="govuk-c-label " for="select-box-2">
+  Label for select box
+
+  
+
+  
+</label>
+
+
+
+<select class="govuk-c-select-box " id="select-box-2" name="select-box-2">
+  
+  <option value="a">GOV.UK frontend option a</option>
+  
+  <option value="b"selected>GOV.UK frontend option b</option>
+  
+  <option value="c">GOV.UK frontend option c</option>
+  
+</select>
+
+
+
+    
+  </div>
+
+  <p class="govuk-u-copy-19">
+    
+    <a href=" http://govuk-frontend-review.herokuapp.com/components/undefined/preview">
+      Preview the select-box component.
+    </a>
+  </p>
+
+  <h2 class="govuk-u-heading-24">How to call this component</h2>
+  <pre><code></code></pre>
+
+  
+    <h2 class="govuk-u-heading-24">Component arguments</h2>
+    <div>
+      
+<!-- TODO: Use the table macro here and pass it component argument data -->
 | Name             | Type    | Default | Required | Description
 |---               |---      |---      |---       |---
 | classes          | string  |         | No       | Optional additional classes
@@ -75,10 +102,20 @@ Code example(s)
 | hasLabelWithText | string  |         | No       | Optional to provide label text that will render the label element
 | labelClasses     | string  |         | No       | Optional to provide label with custom classes
 
-<!--
-## Installation
+    </div>
+  
 
-```
-npm install --save @govuk-frontend/select-box
-```
--->
+  <h2 class="govuk-u-heading-24">Component HTML</h2>
+  <pre><code></code></pre>
+
+  
+  <h2 class="govuk-u-heading-24">Installation</h2>
+  <pre>
+    <code>
+      npm install --save @govuk-frontend/select-box
+    </code>
+  </pre>
+  
+
+
+

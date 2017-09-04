@@ -1,43 +1,67 @@
-# Panel
 
-The confirmation panel has a turquoise background and white text.
-Used for transaction end pages, and Bank Holidays.
+  
 
-The information panel has a GOV.UK blue background and white text.
-Used for explanatory pages.
+  
 
-## Guidance
+  <h1 class="govuk-u-heading-36">
+    
+      Panel
+    
+  </h1>
 
-Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
+  <p class="govuk-u-core-24">
+    
+  The confirmation panel has a turquoise background and white text. Used for transaction end pages, and Bank Holidays.
 
-## Demo
+  </p>
 
-* Panel [demo](panel.html).
+  <p class="govuk-u-copy-19">
+    <a href="
+  http://www.linktodesignsystem.com
+">
+      Find panel guidance on the GOV.UK Design System.
+    </a>
+  </p>
 
-## Usage
+  <h2 class="govuk-u-heading-24">How this component looks</h2>
+  <div>
+    
+      
 
-Code example(s)
 
-```
-@@include('panel.html')
-```
+  <div class="govuk-c-panel govuk-c-panel--confirmation ">
+  <h2 class="govuk-c-panel__title">
+    Application complete
+  </h2>
+  <div class="govuk-c-panel__body">
+    Your reference number is
+    
+    <br>
+    <strong>HDJ2123F</strong>
+    
+  </div>
+</div>
 
-## Nunjucks
 
-```
-{% from "panel/macro.njk" import govukPanel %}
 
-{{ govukInput(
-  classes='',
-  title='Application complete',
-  content='Your reference number is',
-  reference='HDJ2123F'
-  )
-}}
-```
+    
+  </div>
 
-## Arguments
+  <p class="govuk-u-copy-19">
+    
+    <a href=" http://govuk-frontend-review.herokuapp.com/components/undefined/preview">
+      Preview the panel component.
+    </a>
+  </p>
 
+  <h2 class="govuk-u-heading-24">How to call this component</h2>
+  <pre><code></code></pre>
+
+  
+    <h2 class="govuk-u-heading-24">Component arguments</h2>
+    <div>
+      
+<!-- TODO: Use the table macro here and pass it component argument data -->
 | Name          | Type    | Required  | Description
 |---            |---      |---        |---
 | classes       | string  | No        | Optional additional classes
@@ -45,10 +69,20 @@ Code example(s)
 | content       | string  | No        | The panel content
 | reference     | string  | No        | Optional reference number
 
-<!--
-## Installation
+    </div>
+  
 
-```
-npm install --save @govuk-frontend/phase-banner
-```
--->
+  <h2 class="govuk-u-heading-24">Component HTML</h2>
+  <pre><code></code></pre>
+
+  
+  <h2 class="govuk-u-heading-24">Installation</h2>
+  <pre>
+    <code>
+      npm install --save @govuk-frontend/panel
+    </code>
+  </pre>
+  
+
+
+

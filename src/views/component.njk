@@ -26,7 +26,7 @@
   <h2 class="govuk-u-heading-24">How this component looks</h2>
   <div>
     {% block componentExample %}
-      {% include "../components/"+ componentName +"/"+ componentName +".njk" %}
+      {% include "../components/"+ componentName +"/"+ componentName +".njk" ignore missing %}
     {% endblock %}
   </div>
 {% endif %}

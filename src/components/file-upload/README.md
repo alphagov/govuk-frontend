@@ -1,40 +1,74 @@
-# File upload
 
-A control that lets the user select a file.
+  
 
-## Guidance
+  
 
-Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
+  <h1 class="govuk-u-heading-36">
+    
+      File upload
+    
+  </h1>
 
-## Demo
+  <p class="govuk-u-core-24">
+    
+  Breadcrumb navigation, showing page hierarchy.
 
-File upload [demo](file-upload.html).
+  </p>
 
-## Usage
+  <p class="govuk-u-copy-19">
+    <a href="
+  http://www.linktodesignsystem.com
+">
+      Find file-upload guidance on the GOV.UK Design System.
+    </a>
+  </p>
 
-Code example(s)
+  <h2 class="govuk-u-heading-24">How this component looks</h2>
+  <div>
+    
+      
+    
+  </div>
 
-```
-@@include('file-upload.html')
-```
+  <p class="govuk-u-copy-19">
+    
+    <a href=" http://govuk-frontend-review.herokuapp.com/components/undefined/preview">
+      Preview the file-upload component.
+    </a>
+  </p>
+
+  <h2 class="govuk-u-heading-24">How to call this component</h2>
+  <pre><code></code></pre>
+
+  
+    <h2 class="govuk-u-heading-24">Component arguments</h2>
+    <div>
+      
+
+<!-- TODO: Use the table macro here and pass it component argument data -->
+
+| Name        | Type   | Default | Required | Description
+|---          |---     |---      |---       |---
+| classes     | string |         | No       | Optional additional classes
+| breadcrumbs | array  |         | Yes      | Breadcrumbs array with title and url keys
+| title       | string |         | Yes      | Title of the breadcrumb item
+| url         | string |         | Yes      | Url of the breadcrumb item
 
 
-<!--
-## Installation
+    </div>
+  
 
-```
-npm install --save @govuk-frontend/file-upload
-```
--->
+  <h2 class="govuk-u-heading-24">Component HTML</h2>
+  <pre><code></code></pre>
 
-## Implementation
+  
+  <h2 class="govuk-u-heading-24">Installation</h2>
+  <pre>
+    <code>
+      npm install --save @govuk-frontend/file-upload
+    </code>
+  </pre>
+  
 
-We recommend using a native input using `type="file"`, rather than a custom implementation.
 
-This is so:
-* the control gains focus when tabbing through the page
-* the control functions using a keyboard
-* the control functions using assistive technology
-* the control functions when javascript is not available
 
-A custom implementation of this control would need to meet the criteria above.

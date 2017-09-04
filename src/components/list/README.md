@@ -1,121 +1,230 @@
-# List
 
-A list of items, list variants are bulleted or numbered.
+  
 
-## Guidance
+  
 
-Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
+  <h1 class="govuk-u-heading-36">
+    
+      List
+    
+  </h1>
 
-## Demo
+  <p class="govuk-u-core-24">
+    
+  Breadcrumb navigation, showing page hierarchy.
 
-List [demo](list.html).
+  </p>
 
-## Usage
+  <p class="govuk-u-copy-19">
+    <a href="
+  http://www.linktodesignsystem.com
+">
+      Find list guidance on the GOV.UK Design System.
+    </a>
+  </p>
 
-Code example(s)
+  <h2 class="govuk-u-heading-24">How this component looks</h2>
+  <div>
+    
+      
 
-```
-@@include('list.html')
-```
 
-## Nunjucks
+  
+<ul class="govuk-c-list ">
 
-```
-{% from "list/macro.njk" import govukList %}
 
-{{ govukList(
-  classes='',
-  [
-    {
-      text: 'Related link',
-      url: '/'
-    },
-    {
-      text: 'Related link',
-      url: '/'
-    },
-    {
-      text: 'Related link',
-      url: '/'
-    }
-  ]
-) }}
 
-{{ govukList(
-  classes='',
-  [
-    {
-      text: 'here is a bulleted list'
-    },
-    {
-      text: 'here is the second bulleted list item'
-    },
-    {
-      text: 'here is the third bulleted list item'
-    }
-  ],
-  options = {
-    'isBullet': 'true'
-  }
-) }}
+  <li>
+    
+      <a href="/ ">
+        Related link
+      </a>
+    
+  </li>
 
-{{ govukList(
-  classes='',
-  [
-    {
-      text: 'This is a numbered list.'
-    },
-    {
-      text: 'This is the second step in a numbered list.'
-    },
-    {
-      text: 'The third step is to make sure each item is a full sentence ending with a full stop.'
-    }
-  ],
-  options = {
-    'isNumber': 'true'
-  }
-) }}
+  <li>
+    
+      <a href="/ ">
+        Related link
+      </a>
+    
+  </li>
 
-{{ govukList(
-  classes='',
-  [
-    {
-      text: 'Step 1'
-    },
-    {
-      text: 'Step 2'
-    },
-    {
-      text: 'Step 3'
-    }
-  ],
-  options = {
-    'isStep': 'true'
-  }
-) }}
+  <li>
+    
+      <a href="/ ">
+        Related link
+      </a>
+    
+  </li>
 
-{{ govukList(
-  classes='',
-  [
-    {
-      text: 'Step 1 Large icon'
-    },
-    {
-      text: 'Step 2 Large icon'
-    },
-    {
-      text: 'Step 3 Large icon'
-    }
-  ],
-  options = {
-    'isStepLarge': 'true'
-  }
-) }}
-```
 
-## Arguments
 
+</ul>
+
+
+
+
+
+  
+<ul class="govuk-c-list govuk-c-list--bullet ">
+
+
+
+  <li>
+    
+      
+        here is a bulleted list
+      
+    
+  </li>
+
+  <li>
+    
+      
+        here is the second bulleted list item
+      
+    
+  </li>
+
+  <li>
+    
+      
+        here is the third bulleted list item
+      
+    
+  </li>
+
+
+
+</ul>
+
+
+
+
+
+  
+<ol class="govuk-c-list govuk-c-list--number ">
+
+
+
+  <li>
+    
+      
+        This is a numbered list.
+      
+    
+  </li>
+
+  <li>
+    
+      
+        This is the second step in a numbered list.
+      
+    
+  </li>
+
+  <li>
+    
+      
+        The third step is to make sure each item is a full sentence ending with a full stop.
+      
+    
+  </li>
+
+
+
+</ol>
+
+
+
+
+
+  
+<ol class="govuk-c-list govuk-c-list--icon ">
+
+
+
+  <li>
+    
+      <span class="govuk-c-list__icon govuk-u-circle ">1</span>
+      Step 1
+    
+  </li>
+
+  <li>
+    
+      <span class="govuk-c-list__icon govuk-u-circle ">2</span>
+      Step 2
+    
+  </li>
+
+  <li>
+    
+      <span class="govuk-c-list__icon govuk-u-circle ">3</span>
+      Step 3
+    
+  </li>
+
+
+
+</ol>
+
+
+
+
+
+  
+<ol class="govuk-c-list govuk-c-list--icon ">
+
+
+
+  <li>
+    
+      <span class="govuk-c-list__icon govuk-u-circle govuk-c-list__icon--large">1</span>
+      Step 1 Large icon
+    
+  </li>
+
+  <li>
+    
+      <span class="govuk-c-list__icon govuk-u-circle govuk-c-list__icon--large">2</span>
+      Step 2 Large icon
+    
+  </li>
+
+  <li>
+    
+      <span class="govuk-c-list__icon govuk-u-circle govuk-c-list__icon--large">3</span>
+      Step 3 Large icon
+    
+  </li>
+
+
+
+</ol>
+
+
+
+
+    
+  </div>
+
+  <p class="govuk-u-copy-19">
+    
+    <a href=" http://govuk-frontend-review.herokuapp.com/components/undefined/preview">
+      Preview the list component.
+    </a>
+  </p>
+
+  <h2 class="govuk-u-heading-24">How to call this component</h2>
+  <pre><code></code></pre>
+
+  
+    <h2 class="govuk-u-heading-24">Component arguments</h2>
+    <div>
+      
+<!-- TODO: Use the table macro here and pass it component argument data -->
 | Name                | Type   | Default | Required | Description
 |---                  |---     |---      |---       |---
 | classes             | string |         | No       | Optional additional classes
@@ -128,10 +237,20 @@ Code example(s)
 | options.isStep      |        |         | No       | Creates list of steps
 | options.isStepLarge |        |         | No       | Creates list of steps with large icons
 
-<!--
-## Installation
+    </div>
+  
 
-```
-npm install --save @govuk-frontend/list
-```
--->
+  <h2 class="govuk-u-heading-24">Component HTML</h2>
+  <pre><code></code></pre>
+
+  
+  <h2 class="govuk-u-heading-24">Installation</h2>
+  <pre>
+    <code>
+      npm install --save @govuk-frontend/list
+    </code>
+  </pre>
+  
+
+
+

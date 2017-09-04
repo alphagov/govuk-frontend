@@ -1,39 +1,71 @@
-# Textarea
 
-A multi-line text field.
+  
 
-## Guidance
+  
 
-Guidance and documentation can be found on [GOV.UK Design system](linkgoeshere).
+  <h1 class="govuk-u-heading-36">
+    
+      Textarea
+    
+  </h1>
 
-## Demo
+  <p class="govuk-u-core-24">
+    
+  A multi-line text field.
 
-Textarea [demo](textarea.html).
+  </p>
 
-## Usage
+  <p class="govuk-u-copy-19">
+    <a href="
+  http://www.linktodesignsystem.com
+">
+      Find textarea guidance on the GOV.UK Design System.
+    </a>
+  </p>
 
-Code example(s)
+  <h2 class="govuk-u-heading-24">How this component looks</h2>
+  <div>
+    
+      
 
-```
-@@include('textarea.html')
-```
 
-## Nunjucks
+  
 
-{% from "textarea/macro.njk" import govukTextarea %}
 
-{{ govukTextarea(
-  classes='',
-  labelText='National Insurance number',
-  hintText='',
-  errorMessage='Error message goes here',
-  id='input-id',
-  name='input-name',
-  number='5'
-  )
-}}
+  
 
-## Arguments
+<label class="govuk-c-label " for="textarea">
+  National Insurance number
+
+  
+
+  
+</label>
+
+
+
+<textarea class="govuk-c-textarea  " id="textarea" name="name" rows=" 5 "></textarea>
+
+
+
+    
+  </div>
+
+  <p class="govuk-u-copy-19">
+    
+    <a href=" http://govuk-frontend-review.herokuapp.com/components/undefined/preview">
+      Preview the textarea component.
+    </a>
+  </p>
+
+  <h2 class="govuk-u-heading-24">How to call this component</h2>
+  <pre><code></code></pre>
+
+  
+    <h2 class="govuk-u-heading-24">Component arguments</h2>
+    <div>
+      
+<!-- TODO: Use the table macro here and pass it component argument data -->
 
 | Name          | Type    | Default   | Required  | Description
 |---            |---      |---        |---        |---
@@ -45,10 +77,20 @@ Code example(s)
 | name          | string  |           | Yes       | The name of the textarea
 | rows          | string  | 5         | No        | Change default number of textarea rows
 
-<!--
-## Installation
+    </div>
+  
 
-```
-npm install --save @govuk-frontend/textarea
-```
--->
+  <h2 class="govuk-u-heading-24">Component HTML</h2>
+  <pre><code></code></pre>
+
+  
+  <h2 class="govuk-u-heading-24">Installation</h2>
+  <pre>
+    <code>
+      npm install --save @govuk-frontend/textarea
+    </code>
+  </pre>
+  
+
+
+

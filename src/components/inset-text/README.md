@@ -1,48 +1,80 @@
-# Inset text
 
-Use bordered inset text to draw attention to important content on the page.
+  
 
-## Guidance
+  
 
-Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
+  <h1 class="govuk-u-heading-36">
+    
+      Inset text
+    
+  </h1>
 
-## Demo
+  <p class="govuk-u-core-24">
+    
+  Use bordered inset text to draw attention to important content on the page.
 
-Inset text [demo](inset-text.html).
+  </p>
 
-## Usage
+  <p class="govuk-u-copy-19">
+    <a href="
+  http://www.linktodesignsystem.com
+">
+      Find inset-text guidance on the GOV.UK Design System.
+    </a>
+  </p>
 
-Code example(s)
+  <h2 class="govuk-u-heading-24">How this component looks</h2>
+  <div>
+    
+      
 
-```
-@@include('inset-text.html')
-```
 
-## Nunjucks
-
-```
-{% from "inset-text/macro.njk" import govukInsetText %}
-
-{{ govukInsetText(
-  content='<p>
+  <div class="govuk-c-inset-text ">
+  <p>
     It can take up to 8 weeks to register a lasting power of attorney if<br>
     there are no mistakes in the application.
-  </p>'
-  )
-}}
-```
+  </p>
+</div>
 
-## Arguments
 
+
+    
+  </div>
+
+  <p class="govuk-u-copy-19">
+    
+    <a href=" http://govuk-frontend-review.herokuapp.com/components/undefined/preview">
+      Preview the inset-text component.
+    </a>
+  </p>
+
+  <h2 class="govuk-u-heading-24">How to call this component</h2>
+  <pre><code></code></pre>
+
+  
+    <h2 class="govuk-u-heading-24">Component arguments</h2>
+    <div>
+      
+<!-- TODO: Use the table macro here and pass it component argument data -->
 | Name      | Type    | Required  | Description
 |---        |---      |---        |---
 | classes   | string  | No        | Optional additional classes
 | content   | string  | Yes       | Inset text content
 
-<!--
-## Installation
+    </div>
+  
 
-```
-npm install --save @govuk-frontend/inset-text
-```
--->
+  <h2 class="govuk-u-heading-24">Component HTML</h2>
+  <pre><code></code></pre>
+
+  
+  <h2 class="govuk-u-heading-24">Installation</h2>
+  <pre>
+    <code>
+      npm install --save @govuk-frontend/inset-text
+    </code>
+  </pre>
+  
+
+
+

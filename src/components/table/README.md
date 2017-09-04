@@ -1,28 +1,65 @@
-# Table
 
-A component for tabular data.
+  
 
-## Guidance
+  
 
-Guidance and documentation can be found on [GOV.UK Design system](linkgoeshere).
+  <h1 class="govuk-u-heading-36">
+    
+      Table
+    
+  </h1>
 
-## Demo
+  <p class="govuk-u-core-24">
+    
+  Table description.
 
-Table [demo](table.html).
+  </p>
 
-## Usage
+  <p class="govuk-u-copy-19">
+    <a href="
+  http://www.linktodesignsystem.com
+">
+      Find table guidance on the GOV.UK Design System.
+    </a>
+  </p>
 
-Code example(s)
+  <h2 class="govuk-u-heading-24">How this component looks</h2>
+  <div>
+    
+      
+    
+  </div>
 
-```
-@@include('table.html')
-```
+  <p class="govuk-u-copy-19">
+    
+    <a href=" http://govuk-frontend-review.herokuapp.com/components/undefined/preview">
+      Preview the table component.
+    </a>
+  </p>
+
+  <h2 class="govuk-u-heading-24">How to call this component</h2>
+  <pre><code></code></pre>
+
+  
+    <h2 class="govuk-u-heading-24">Component arguments</h2>
+    <div>
+      
+  <!-- TODO: Use the table macro here and pass it component argument data -->
+
+    </div>
+  
+
+  <h2 class="govuk-u-heading-24">Component HTML</h2>
+  <pre><code></code></pre>
+
+  
+  <h2 class="govuk-u-heading-24">Installation</h2>
+  <pre>
+    <code>
+      npm install --save @govuk-frontend/table
+    </code>
+  </pre>
+  
 
 
-<!--
-## Installation
 
-```
-npm install --save @govuk-frontend/table
-```
--->

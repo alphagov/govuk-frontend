@@ -1,35 +1,58 @@
-# Cookie banner
 
-Cookie banner intro.
+  
 
-## Guidance
+  
 
-Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
+  <h1 class="govuk-u-heading-36">
+    
+      Cookie banner
+    
+  </h1>
 
-## Demo
+  <p class="govuk-u-core-24">
+    
+  Cookie banner description.
 
-Cookie banner [demo](cookie-banner.html).
+  </p>
 
-## Usage
+  <p class="govuk-u-copy-19">
+    <a href="
+  http://www.linktodesignsystem.com
+">
+      Find cookie-banner guidance on the GOV.UK Design System.
+    </a>
+  </p>
 
-Code example(s)
+  <h2 class="govuk-u-heading-24">How this component looks</h2>
+  <div>
+    
+      
 
-```
-@@include('cookie-banner.html')
-```
+  <div class="govuk-c-cookie-banner js-cookie-banner ">
+  <p class="govuk-c-cookie-banner__text">GOV.UK uses cookies to make the site simpler. <a href="https://www.gov.uk/help/cookies">Find out more about cookies</a></p>
+</div>
 
-## Nunjucks
 
-```
-{% from "cookie-banner/macro.njk" import govukCookieBanner %}
-{{ govukCookieBanner(
-  classes='',
-  cookieBannerText='GOV.UK uses cookies to make the site simpler. <a href="https://www.gov.uk/help/cookies">Find out more about cookies</a>'
-  )
-}}
-```
 
-## Arguments
+    
+  </div>
+
+  <p class="govuk-u-copy-19">
+    
+    <a href=" http://govuk-frontend-review.herokuapp.com/components/undefined/preview">
+      Preview the cookie-banner component.
+    </a>
+  </p>
+
+  <h2 class="govuk-u-heading-24">How to call this component</h2>
+  <pre><code></code></pre>
+
+  
+    <h2 class="govuk-u-heading-24">Component arguments</h2>
+    <div>
+      
+
+<!-- TODO: Use the table macro here and pass it component argument data -->
 
 | Name                | Type    | Default | Required  | Description
 |---                  |---      |---      |---        |---
@@ -37,10 +60,20 @@ Code example(s)
 | cookieBannerText    | string  |         | Yes       | Cookie banner copy
 
 
-<!--
-## Installation
+    </div>
+  
 
-```
-npm install --save @govuk-frontend/cookie-banner
-```
--->
+  <h2 class="govuk-u-heading-24">Component HTML</h2>
+  <pre><code></code></pre>
+
+  
+  <h2 class="govuk-u-heading-24">Installation</h2>
+  <pre>
+    <code>
+      npm install --save @govuk-frontend/cookie-banner
+    </code>
+  </pre>
+  
+
+
+

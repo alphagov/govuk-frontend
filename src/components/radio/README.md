@@ -1,60 +1,76 @@
-# Radio
 
-A radio button. You must use the `value` attribute to define the value submitted by this item. Use the `checked` attribute to indicate whether this item is selected by default. Radio buttons that have the same value for the name attribute are in the same "radio button group". Only one radio button in a group can be selected at a time.
+  
 
-## Guidance
+  
 
-Guidance and documentation can be found on [GOV.UK Design system](linkgoeshere).
+  <h1 class="govuk-u-heading-36">
+    
+      Radio
+    
+  </h1>
 
-## Demo
+  <p class="govuk-u-core-24">
+    
+  A radio button. You must use the `value` attribute to define the value submitted by this item. Use the `checked` attribute to indicate whether this item is selected by default. Radio buttons that have the same value for the name attribute are in the same "radio button group". Only one radio button in a group can be selected at a time.
 
-Radio button [demo](radio.html).
+  </p>
 
-## Usage
+  <p class="govuk-u-copy-19">
+    <a href="
+  http://www.linktodesignsystem.com
+">
+      Find radio guidance on the GOV.UK Design System.
+    </a>
+  </p>
 
-Code example(s)
+  <h2 class="govuk-u-heading-24">How this component looks</h2>
+  <div>
+    
+      
 
-```
-@@include('radio.html')
-```
-## Nunjucks
 
-```
-{% from 'checkbox/macro.njk' import govukCheckbox %}
+  
+  <div class="govuk-c-radio">
+    <input class="govuk-c-radio__input " id="radio-1" name="radio-group" type="radio" value="Yes"  >
+    <label class="govuk-c-radio__label" for="radio-1">Yes</label>
+  </div>
 
-{{ govukCheckbox(
-  classes='',
-  name='radio-group',
-  id='radio',
-  radios=[
-   {
-      id: '1',
-      value: 'Yes',
-      label: 'Waste from animal carcasses'
-    },
-    {
-      id: '2',
-      value: No',
-      label: 'Waste from mines or quarries'
-    },
-    {
-      id: '3',
-      value: 'No',
-      label: 'Farm or agricultural waste',
-      checked: 'true'
-    },
-    {
-      id: '4',
-      value: 'NA',
-      label: 'Not applicable',
-      disabled: 'true'
-    }
-  ]
-) }}
-```
+  <div class="govuk-c-radio">
+    <input class="govuk-c-radio__input " id="radio-2" name="radio-group" type="radio" value="No"  >
+    <label class="govuk-c-radio__label" for="radio-2">No</label>
+  </div>
 
-## Arguments
+  <div class="govuk-c-radio">
+    <input class="govuk-c-radio__input " id="radio-3" name="radio-group" type="radio" value="No" checked >
+    <label class="govuk-c-radio__label" for="radio-3">No</label>
+  </div>
 
+  <div class="govuk-c-radio">
+    <input class="govuk-c-radio__input " id="radio-4" name="radio-group" type="radio" value="NA"  disabled>
+    <label class="govuk-c-radio__label" for="radio-4">Not applicable</label>
+  </div>
+
+
+
+
+    
+  </div>
+
+  <p class="govuk-u-copy-19">
+    
+    <a href=" http://govuk-frontend-review.herokuapp.com/components/undefined/preview">
+      Preview the radio component.
+    </a>
+  </p>
+
+  <h2 class="govuk-u-heading-24">How to call this component</h2>
+  <pre><code></code></pre>
+
+  
+    <h2 class="govuk-u-heading-24">Component arguments</h2>
+    <div>
+      
+<!-- TODO: Use the table macro here and pass it component argument data -->
 | Name        | Type    | Default | Required | Description
 |---          |---      |---      |---       |---
 | classes     | string  |         | No       | Optional additional classes
@@ -62,10 +78,20 @@ Code example(s)
 | id          | string  |         | Yes      | ID is prefixed to the ID of each radio button
 | radios      | array   |         | Yes      | Radios array with id, value, label, checked and disabled keys
 
-<!--
-## Installation
+    </div>
+  
 
-```
-npm install --save @govuk-frontend/radio
-```
--->
+  <h2 class="govuk-u-heading-24">Component HTML</h2>
+  <pre><code></code></pre>
+
+  
+  <h2 class="govuk-u-heading-24">Installation</h2>
+  <pre>
+    <code>
+      npm install --save @govuk-frontend/radio
+    </code>
+  </pre>
+  
+
+
+

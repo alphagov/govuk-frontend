@@ -1,101 +1,181 @@
-# Grid
 
-Grid row with grid items.
+  
 
-## Guidance
+  
 
-Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
+  <h1 class="govuk-u-heading-36">
+    
+      Grid
+    
+  </h1>
 
-## Demo
+  <p class="govuk-u-core-24">
+    
+  Grid row with grid items.
 
-Grid [demo](grid.html).
+  </p>
 
-## Usage
+  <p class="govuk-u-copy-19">
+    <a href="
+  http://www.linktodesignsystem.com
+">
+      Find grid guidance on the GOV.UK Design System.
+    </a>
+  </p>
 
-Code example(s)
+  <h2 class="govuk-u-heading-24">How this component looks</h2>
+  <div>
+    
+      
 
-```
-@@include('grid.html')
-```
 
-## Nunjucks
+  
 
-```
-{% call govukGrid(
-  classes='',
-  gridItems=[
-    { width: 'full' }]
-  )
-%}
-<!-- Insert macros to sit inside grid here -->
-{% endcall %}
+<div class="govuk-c-grid ">
+  
+  <div class="govuk-c-grid__item govuk-c-grid__item--full">
+     
+  </div>
+  
+</div>
 
-{% call govukGrid(
-  classes='',
-  gridItems=[
-    { width: 'one-half' },
-    { width: 'one-half' }]
-  )
-%}
-<!-- Insert macros to sit inside grid here -->
-{% endcall %}
 
-{% call govukGrid(
-  classes='',
-  gridItems=[
-    { width: 'one-third' },
-    { width: 'one-third' },
-    { width: 'one-third' }]
-  )
-%}
-<!-- Insert macros to sit inside grid here -->
-{% endcall %}
 
-{% call govukGrid(
-  classes='',
-  gridItems=[
-    { width: 'two-thirds' },
-    { width: 'one-third' }]
-  )
-%}
-<!-- Insert macros to sit inside grid here -->
-{% endcall %}
 
-{% call govukGrid(
-  classes='',
-  gridItems=[
-    { width: 'one-third' },
-    { width: 'two-thirds' }]
-  )
-%}
-<!-- Insert macros to sit inside grid here -->
-{% endcall %}
+  
 
-{% call govukGrid(
-  classes='',
-  gridItems=[
-    { width: 'one-quarter' },
-    { width: 'one-quarter' },
-    { width: 'one-quarter' },
-    { width: 'one-quarter' }]
-  )
-%}
-<!-- Insert macros to sit inside grid here -->
-{% endcall %}
-```
+<div class="govuk-c-grid ">
+  
+  <div class="govuk-c-grid__item govuk-c-grid__item--one-half">
+     
+  </div>
+  
+  <div class="govuk-c-grid__item govuk-c-grid__item--one-half">
+     
+  </div>
+  
+</div>
 
-## Arguments
 
+
+
+  
+
+<div class="govuk-c-grid ">
+  
+  <div class="govuk-c-grid__item govuk-c-grid__item--one-third">
+     
+  </div>
+  
+  <div class="govuk-c-grid__item govuk-c-grid__item--one-third">
+     
+  </div>
+  
+  <div class="govuk-c-grid__item govuk-c-grid__item--one-third">
+     
+  </div>
+  
+</div>
+
+
+
+
+  
+
+<div class="govuk-c-grid ">
+  
+  <div class="govuk-c-grid__item govuk-c-grid__item--two-thirds">
+     
+  </div>
+  
+  <div class="govuk-c-grid__item govuk-c-grid__item--one-third">
+     
+  </div>
+  
+</div>
+
+
+
+
+  
+
+<div class="govuk-c-grid ">
+  
+  <div class="govuk-c-grid__item govuk-c-grid__item--one-third">
+     
+  </div>
+  
+  <div class="govuk-c-grid__item govuk-c-grid__item--two-thirds">
+     
+  </div>
+  
+</div>
+
+
+
+
+  
+
+<div class="govuk-c-grid ">
+  
+  <div class="govuk-c-grid__item govuk-c-grid__item--one-quarter">
+     
+  </div>
+  
+  <div class="govuk-c-grid__item govuk-c-grid__item--one-quarter">
+     
+  </div>
+  
+  <div class="govuk-c-grid__item govuk-c-grid__item--one-quarter">
+     
+  </div>
+  
+  <div class="govuk-c-grid__item govuk-c-grid__item--one-quarter">
+     
+  </div>
+  
+</div>
+
+
+
+    
+  </div>
+
+  <p class="govuk-u-copy-19">
+    
+    <a href=" http://govuk-frontend-review.herokuapp.com/components/undefined/preview">
+      Preview the grid component.
+    </a>
+  </p>
+
+  <h2 class="govuk-u-heading-24">How to call this component</h2>
+  <pre><code></code></pre>
+
+  
+    <h2 class="govuk-u-heading-24">Component arguments</h2>
+    <div>
+      
+<!-- TODO: Use the table macro here and pass it component argument data -->
 | Name          | Type    | Required  | Description
 |---            |---      |---        |---
 | classes       | string  | No        | Optional additional classes
 | gridItems     | array   | Yes       | Grid items array with width key
 | width         | string  | Yes       | Width of the grid item - full, one-half, one-third, two-thirds, one-quarter
 
-<!--
-## Installation
+    </div>
+  
 
-```
-npm install --save @govuk-frontend/grid
-```
--->
+  <h2 class="govuk-u-heading-24">Component HTML</h2>
+  <pre><code></code></pre>
+
+  
+  <h2 class="govuk-u-heading-24">Installation</h2>
+  <pre>
+    <code>
+      npm install --save @govuk-frontend/grid
+    </code>
+  </pre>
+  
+
+
+
