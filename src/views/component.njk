@@ -3,6 +3,8 @@
 {% block content %}
 
   {% set componentName = componentPath %}
+  {% set componentGuidanceLink = componentGuidanceLink | default('http://www.linktodesignsystem.com/' + componentName)%}
+
 
   <h1 class="govuk-u-heading-36">
     {% block componentName %}
@@ -16,7 +18,7 @@
   </p>
 
   <p class="govuk-u-copy-19">
-    <a href="{% block componentGuidanceLink %}{% endblock %}">
+    <a href="{{- componentGuidanceLink -}}">
       Find {{ componentName }} guidance on the GOV.UK Design System.
     </a>
   </p>
