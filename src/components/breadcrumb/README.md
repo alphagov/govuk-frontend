@@ -1,38 +1,40 @@
-# Breadcrumb
 
-Breadcrumb navigation, showing page hierarchy.
 
-## Guidance
 
-Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
+<h1 class="govuk-u-heading-36">
+Breadcrumb
+</h1>
 
-## Demo
+<p class="govuk-u-core-24">
+  Breadcrumb navigation, showing page hierarchy.
+</p>
 
-Breadcrumb [demo](breadcrumb.html).
+<p class="govuk-u-copy-19">
+  <a href="http://www.linktodesignsystem.com">Find breadcrumb guidance on the GOV.UK Design System.</a>
+</p>
 
-## Usage
 
-Code example(s)
+<p class="govuk-u-copy-19">
+<a href="http://govuk-frontend-review.herokuapp.com/components/breadcrumb/preview">Preview the breadcrumb component.
+</a>
+</p>
 
-```
-@@include('breadcrumb.html')
-```
+  <h2 class="govuk-u-heading-24">How to call this component</h2>
 
-## Nunjucks
-
-```
-{% from "breadcrumb/macro.njk" import govukBreadcrumb %}
+  <pre><code>{% from &quot;breadcrumb/macro.njk&quot; import govukBreadcrumb %}
 
 {{ govukBreadcrumb(
-  classes='',
+  classes=&#39;&#39;,
   [
-    { title: 'Home', url: '/' },
-    { title: 'Current page' }
+    { title: &#39;Home&#39;, url: &#39;/&#39; },
+    { title: &#39;Current page&#39; }
   ]
 ) }}
-```
+</code></pre>
 
-## Arguments
+<h2 class="govuk-u-heading-24">Component arguments</h2>
+
+<div>
 
 | Name        | Type   | Default | Required | Description
 |---          |---     |---      |---       |---
@@ -41,10 +43,20 @@ Code example(s)
 | title       | string |         | Yes      | Title of the breadcrumb item
 | url         | string |         | Yes      | Url of the breadcrumb item
 
-<!--
-## Installation
+</div>
 
-```
-npm install --save @govuk-frontend/breadcrumb
-```
--->
+<h2 class="govuk-u-heading-24">Component HTML</h2>
+<pre><code>{% from &quot;breadcrumb/macro.njk&quot; import govukBreadcrumb %}
+
+{{ govukBreadcrumb(
+  classes=&#39;&#39;,
+  [
+    { title: &#39;Home&#39;, url: &#39;/&#39; },
+    { title: &#39;Current page&#39; }
+  ]
+) }}
+</code></pre>
+
+<h2 class="govuk-u-heading-24">Installation</h2>
+<pre><code>npm install --save @govuk-frontend/breadcrumb</code></pre>
+

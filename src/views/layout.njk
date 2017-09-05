@@ -1,3 +1,4 @@
+{% if not isReadme %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,12 +13,13 @@
 </head>
 <body class="{% block bodyClasses %}{% endblock %} govuk-c-site-width-container">
   <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
-
+{% endif %}
   {% block content %}
   {% endblock %}
-
+{% if not isReadme %}
   <script src="/public/js/govuk-frontend.js"></script>
   {% block scripts %}
   {% endblock %}
 </body>
 </html>
+{% endif %}

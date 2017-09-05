@@ -1,60 +1,65 @@
-# Checkbox
 
-Checkbox intro.
 
-## Guidance
 
-Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
+<h1 class="govuk-u-heading-36">
+Checkbox
+</h1>
 
-## Demo
+<p class="govuk-u-core-24">
+  Breadcrumb navigation, showing page hierarchy.
+</p>
 
-Checkbox [demo](checkbox.html).
+<p class="govuk-u-copy-19">
+  <a href="http://www.linktodesignsystem.com/checkbox">Find checkbox guidance on the GOV.UK Design System.</a>
+</p>
 
-## Usage
 
-Code example(s)
+<p class="govuk-u-copy-19">
+<a href="http://govuk-frontend-review.herokuapp.com/components/checkbox/preview">Preview the checkbox component.
+</a>
+</p>
 
-```
-@@include('checkbox.html')
-```
+  <h2 class="govuk-u-heading-24">How to call this component</h2>
 
-## Nunjucks
-
-```
-{% from 'checkbox/macro.njk' import govukCheckbox %}
+  <pre><code>{% from &#39;checkbox/macro.njk&#39; import govukCheckbox %}
 
 {{ govukCheckbox(
-  classes='',
-  name='waste-types',
-  id='waste-type',
+  classes=&#39;&#39;,
+  name=&#39;waste-types&#39;,
+  id=&#39;waste-type&#39;,
   checkboxes=[
    {
-      id: '1',
-      value: 'waste-animal',
-      label: 'Waste from animal carcasses'
+      id: &#39;1&#39;,
+      value: &#39;waste-animal&#39;,
+      label: &#39;Waste from animal carcasses&#39;
     },
     {
-      id: '2',
-      value: 'waste-mines',
-      label: 'Waste from mines or quarries'
+      id: &#39;2&#39;,
+      value: &#39;waste-mines&#39;,
+      label: &#39;Waste from mines or quarries&#39;
     },
     {
-      id: '3',
-      value: 'waste-farm',
-      label: 'Farm or agricultural waste',
-      checked: 'true'
+      id: &#39;3&#39;,
+      value: &#39;waste-farm&#39;,
+      label: &#39;Farm or agricultural waste&#39;,
+      checked: &#39;true&#39;
     },
     {
-      id: '4',
-      value: 'waste-disabled',
-      label: 'Disabled checkbox option',
-      disabled: 'true'
+      id: &#39;4&#39;,
+      value: &#39;waste-disabled&#39;,
+      label: &#39;Disabled checkbox option&#39;,
+      disabled: &#39;true&#39;
     }
   ]
 ) }}
-```
+</code></pre>
 
-## Arguments
+<h2 class="govuk-u-heading-24">Component arguments</h2>
+
+<div>
+
+
+<!-- TODO: Use the table macro here and pass it component argument data -->
 
 | Name        | Type    | Default | Required | Description
 |---          |---      |---      |---       |---
@@ -64,10 +69,42 @@ Code example(s)
 | checkboxes  | array   |         | Yes      | Checkboxes array with id, value, label, checked and disabled keys
 
 
-<!--
-## Installation
+</div>
 
-```
-npm install --save @govuk-frontend/checkbox
-```
--->
+<h2 class="govuk-u-heading-24">Component HTML</h2>
+<pre><code>{% from &#39;checkbox/macro.njk&#39; import govukCheckbox %}
+
+{{ govukCheckbox(
+  classes=&#39;&#39;,
+  name=&#39;waste-types&#39;,
+  id=&#39;waste-type&#39;,
+  checkboxes=[
+   {
+      id: &#39;1&#39;,
+      value: &#39;waste-animal&#39;,
+      label: &#39;Waste from animal carcasses&#39;
+    },
+    {
+      id: &#39;2&#39;,
+      value: &#39;waste-mines&#39;,
+      label: &#39;Waste from mines or quarries&#39;
+    },
+    {
+      id: &#39;3&#39;,
+      value: &#39;waste-farm&#39;,
+      label: &#39;Farm or agricultural waste&#39;,
+      checked: &#39;true&#39;
+    },
+    {
+      id: &#39;4&#39;,
+      value: &#39;waste-disabled&#39;,
+      label: &#39;Disabled checkbox option&#39;,
+      disabled: &#39;true&#39;
+    }
+  ]
+) }}
+</code></pre>
+
+<h2 class="govuk-u-heading-24">Installation</h2>
+<pre><code>npm install --save @govuk-frontend/checkbox</code></pre>
+

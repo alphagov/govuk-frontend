@@ -1,47 +1,58 @@
-# Legal text
 
-Use bold text with an exclamation icon if there are legal consequences - for example, a fine or prison sentence.
 
-## Guidance
 
-Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
+<h1 class="govuk-u-heading-36">
+Legal text
+</h1>
 
-## Demo
+<p class="govuk-u-core-24">
+  Use bold text with an exclamation icon if there are legal consequences - for example, a fine or prison sentence.
+</p>
 
-Legal text [demo](legal-text.html).
+<p class="govuk-u-copy-19">
+  <a href="http://www.linktodesignsystem.com/legal-text">Find legal-text guidance on the GOV.UK Design System.</a>
+</p>
 
-## Usage
 
-Code example(s)
+<p class="govuk-u-copy-19">
+<a href="http://govuk-frontend-review.herokuapp.com/components/legal-text/preview">Preview the legal-text component.
+</a>
+</p>
 
-```
-@@include('legal-text.html')
-```
+  <h2 class="govuk-u-heading-24">How to call this component</h2>
 
-## Nunjucks
-
-```
-{% from "legal-text/macro.njk" import govukLegalText %}
+  <pre><code>{% from &quot;legal-text/macro.njk&quot; import govukLegalText %}
 
 {{ govukLegalText(
-  classes='',
-  iconFallbackText='Warning',
-  legalText='You can be fined up to £5,000 if you don’t register.')
+  classes=&#39;&#39;,
+  iconFallbackText=&#39;Warning&#39;,
+  legalText=&#39;You can be fined up to £5,000 if you don’t register.&#39;)
 }}
-```
+</code></pre>
 
-## Arguments
+<h2 class="govuk-u-heading-24">Component arguments</h2>
 
+<div>
+
+<!-- TODO: Use the table macro here and pass it component argument data -->
 | Name              | Type    | Default | Required  | Description
 |---                |---      |---      |---        |---
 | classes           | string  |         | No        | Optional additional classes
 | iconFallbackText  | string  |         | Yes       | The fallback text for the icon
 | legalText         | string  |         | Yes       | The text next to the icon
 
-<!--
-## Installation
+</div>
 
-```
-npm install --save @govuk-frontend/legal-text
-```
--->
+<h2 class="govuk-u-heading-24">Component HTML</h2>
+<pre><code>{% from &quot;legal-text/macro.njk&quot; import govukLegalText %}
+
+{{ govukLegalText(
+  classes=&#39;&#39;,
+  iconFallbackText=&#39;Warning&#39;,
+  legalText=&#39;You can be fined up to £5,000 if you don’t register.&#39;)
+}}
+</code></pre>
+
+<h2 class="govuk-u-heading-24">Installation</h2>
+<pre><code>npm install --save @govuk-frontend/legal-text</code></pre>
+

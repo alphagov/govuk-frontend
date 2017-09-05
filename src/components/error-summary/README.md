@@ -1,48 +1,51 @@
-# Error summary
 
-Component to show an error summary box - used at the top of the page, to summarise validation errors.
 
-## Guidance
 
-Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
+<h1 class="govuk-u-heading-36">
+Error summary
+</h1>
 
-## Demo
+<p class="govuk-u-core-24">
+  Component to show an error summary box - used at the top of the page, to summarise validation errors.
+</p>
 
-Error summary [demo](error-summary.html).
+<p class="govuk-u-copy-19">
+  <a href="http://www.linktodesignsystem.com/error-summary">Find error-summary guidance on the GOV.UK Design System.</a>
+</p>
 
-## Usage
 
-Code example(s)
+<p class="govuk-u-copy-19">
+<a href="http://govuk-frontend-review.herokuapp.com/components/error-summary/preview">Preview the error-summary component.
+</a>
+</p>
 
-```
-@@include('error-summary.html')
-```
+  <h2 class="govuk-u-heading-24">How to call this component</h2>
 
-## Nunjucks
-
-```
-{% from "error-summary/macro.njk" import govukErrorSummary %}
+  <pre><code>{% from &quot;error-summary/macro.njk&quot; import govukErrorSummary %}
 
 {{ govukErrorSummary(
-  classes='',
-  title='Message to alert the user to a problem goes here',
-  description='Optional description of the errors and how to correct them',
-  listClasses='',
+  classes=&#39;&#39;,
+  title=&#39;Message to alert the user to a problem goes here&#39;,
+  description=&#39;Optional description of the errors and how to correct them&#39;,
+  listClasses=&#39;&#39;,
   listItems=[
     {
-      text: 'Descriptive link to the question with an error',
-      url: '#example-error-1'
+      text: &#39;Descriptive link to the question with an error&#39;,
+      url: &#39;#example-error-1&#39;
     },
     {
-      text: 'Descriptive link to the question with an error',
-      url: '#example-error-2'
+      text: &#39;Descriptive link to the question with an error&#39;,
+      url: &#39;#example-error-2&#39;
     }
   ]
 ) }}
-```
+</code></pre>
 
-## Arguments
+<h2 class="govuk-u-heading-24">Component arguments</h2>
 
+<div>
+
+<!-- TODO: Use the table macro here and pass it component argument data -->
 | Name        | Type   | Default | Required | Description
 |---          |---     |---      |---       |---
 | classes     | string |         | No       | Optional additional classes
@@ -53,31 +56,29 @@ Code example(s)
 | text        | string |         | Yes      | List item text
 | listOptions | object |         | No       | List options
 
-<!--
-## Installation
+</div>
 
-```
-npm install --save @govuk-frontend/error-summary
-```
--->
+<h2 class="govuk-u-heading-24">Component HTML</h2>
+<pre><code>{% from &quot;error-summary/macro.njk&quot; import govukErrorSummary %}
 
-## Implementation
+{{ govukErrorSummary(
+  classes=&#39;&#39;,
+  title=&#39;Message to alert the user to a problem goes here&#39;,
+  description=&#39;Optional description of the errors and how to correct them&#39;,
+  listClasses=&#39;&#39;,
+  listItems=[
+    {
+      text: &#39;Descriptive link to the question with an error&#39;,
+      url: &#39;#example-error-1&#39;
+    },
+    {
+      text: &#39;Descriptive link to the question with an error&#39;,
+      url: &#39;#example-error-2&#39;
+    }
+  ]
+) }}
+</code></pre>
 
-When an error occurs:
+<h2 class="govuk-u-heading-24">Installation</h2>
+<pre><code>npm install --save @govuk-frontend/error-summary</code></pre>
 
-* show an error summary at the top of the page
-* move keyboard focus to the start of the summary
-
-> to move keyboard focus, put tabindex="-1" on the containing div and use obj.focus()
-
-* indicate to screenreaders that the summary represents a collection of information
-
-> add the ARIA role="group" to the containing div
-
-* use a heading at the top of the summary
-* associate the heading with the summary box
-
-> use the ARIA attribute aria-labelledby on the containing div, so that screen readers will automatically announce the
-> heading as soon as focus is moved to the div
-
-* link from the error list in the summary to the fields with errors

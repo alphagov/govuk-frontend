@@ -1,55 +1,49 @@
-# Site width container
 
-A container set to the width of the site (960px) and its margins.
 
-## Guidance
 
-Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
+<h1 class="govuk-u-heading-36">
+Site width container
+</h1>
 
-## Demo
+<p class="govuk-u-core-24">
+  A container set to the width of the site (960px) and its margins.
+</p>
 
-Site width container [demo](site-width-container.html).
+<p class="govuk-u-copy-19">
+  <a href="http://www.linktodesignsystem.com/site-width-container">Find site-width-container guidance on the GOV.UK Design System.</a>
+</p>
 
-## Usage
 
-Code example(s)
+<p class="govuk-u-copy-19">
+<a href="http://govuk-frontend-review.herokuapp.com/components/site-width-container/preview">Preview the site-width-container component.
+</a>
+</p>
 
-```
-@@include('site-width-container.html')
-```
+  <h2 class="govuk-u-heading-24">How to call this component</h2>
 
-## Nunjucks
+  <pre><code>{% from &quot;site-width-container/macro.njk&quot; import govukSiteWidthContainer %}
 
-```
-{% call govukSiteWidthContainer(classes='') %}
-  <!-- Insert content to sit inside govukSiteWidthContainer here -->
-{% endcall %}
-```
+{{ govukSiteWidthContainer(classes) }}
+</code></pre>
 
-Use call to nest of govukGrid items within govukSiteWidthContainer.
+<h2 class="govuk-u-heading-24">Component arguments</h2>
 
-```
-{% call govukSiteWidthContainer(classes='') %}
-  {% call govukGrid(
-    classes='',
-    gridItems=[ { width: 'two-thirds' } ]
-    )
-  %}
-  <!-- Insert macros to sit inside grid item here -->
-  {% endcall %}
-{% endcall %}
-```
+<div>
 
-## Arguments
+<!-- TODO: Use the table macro here and pass it component argument data -->
 
 | Name          | Type    | Required  | Description
 |---            |---      |---        |---
 | classes       | string  | No        | Optional additional classes
 
-<!--
-## Installation
+</div>
 
-```
-npm install --save @govuk-frontend/site-width-container
-```
--->
+<h2 class="govuk-u-heading-24">Component HTML</h2>
+<pre><code>{% from &quot;site-width-container/macro.njk&quot; import govukSiteWidthContainer %}
+
+{{ govukSiteWidthContainer(classes) }}
+</code></pre>
+
+<h2 class="govuk-u-heading-24">Installation</h2>
+<pre><code>npm install --save @govuk-frontend/site-width-container</code></pre>
+

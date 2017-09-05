@@ -1,35 +1,40 @@
-# Cookie banner
 
-Cookie banner intro.
 
-## Guidance
 
-Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
+<h1 class="govuk-u-heading-36">
+Cookie banner
+</h1>
 
-## Demo
+<p class="govuk-u-core-24">
+  Cookie banner description.
+</p>
 
-Cookie banner [demo](cookie-banner.html).
+<p class="govuk-u-copy-19">
+  <a href="http://www.linktodesignsystem.com/cookie-banner">Find cookie-banner guidance on the GOV.UK Design System.</a>
+</p>
 
-## Usage
 
-Code example(s)
+<p class="govuk-u-copy-19">
+<a href="http://govuk-frontend-review.herokuapp.com/components/cookie-banner/preview">Preview the cookie-banner component.
+</a>
+</p>
 
-```
-@@include('cookie-banner.html')
-```
+  <h2 class="govuk-u-heading-24">How to call this component</h2>
 
-## Nunjucks
-
-```
-{% from "cookie-banner/macro.njk" import govukCookieBanner %}
+  <pre><code>{% from &quot;cookie-banner/macro.njk&quot; import govukCookieBanner %}
 {{ govukCookieBanner(
-  classes='',
-  cookieBannerText='GOV.UK uses cookies to make the site simpler. <a href="https://www.gov.uk/help/cookies">Find out more about cookies</a>'
+  classes=&#39;&#39;,
+  cookieBannerText=&#39;GOV.UK uses cookies to make the site simpler. &lt;a href=&quot;https://www.gov.uk/help/cookies&quot;&gt;Find out more about cookies&lt;/a&gt;&#39;
   )
 }}
-```
+</code></pre>
 
-## Arguments
+<h2 class="govuk-u-heading-24">Component arguments</h2>
+
+<div>
+
+
+<!-- TODO: Use the table macro here and pass it component argument data -->
 
 | Name                | Type    | Default | Required  | Description
 |---                  |---      |---      |---        |---
@@ -37,10 +42,17 @@ Code example(s)
 | cookieBannerText    | string  |         | Yes       | Cookie banner copy
 
 
-<!--
-## Installation
+</div>
 
-```
-npm install --save @govuk-frontend/cookie-banner
-```
--->
+<h2 class="govuk-u-heading-24">Component HTML</h2>
+<pre><code>{% from &quot;cookie-banner/macro.njk&quot; import govukCookieBanner %}
+{{ govukCookieBanner(
+  classes=&#39;&#39;,
+  cookieBannerText=&#39;GOV.UK uses cookies to make the site simpler. &lt;a href=&quot;https://www.gov.uk/help/cookies&quot;&gt;Find out more about cookies&lt;/a&gt;&#39;
+  )
+}}
+</code></pre>
+
+<h2 class="govuk-u-heading-24">Installation</h2>
+<pre><code>npm install --save @govuk-frontend/cookie-banner</code></pre>
+

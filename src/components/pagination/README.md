@@ -1,91 +1,94 @@
-# Pagination
 
-Previous/next page links. Example [page](https://www.gov.uk/voting-in-the-uk/polling-stations)
 
-## Guidance
 
-Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
+<h1 class="govuk-u-heading-36">
+Pagination
+</h1>
 
-## Demo
+<p class="govuk-u-core-24">
+  Previous/next page links.
+  <a href="https://www.gov.uk/voting-in-the-uk/polling-stations">View previous/next links on GOV.UK</a>
+</p>
 
-Component name [demo](pagination.html).
+<p class="govuk-u-copy-19">
+  <a href="http://www.linktodesignsystem.com/pagination">Find pagination guidance on the GOV.UK Design System.</a>
+</p>
 
-## Usage
 
-Code example(s)
+<p class="govuk-u-copy-19">
+<a href="http://govuk-frontend-review.herokuapp.com/components/pagination/preview">Preview the pagination component.
+</a>
+</p>
 
-```
-@@include('pagination.html')
-```
+  <h2 class="govuk-u-heading-24">How to call this component</h2>
 
-## Nunjucks
-
-```
-{% from "pagination/macro.njk" import govukPagination %}
+  <pre><code>{% from &quot;pagination/macro.njk&quot; import govukPagination %}
 
 {{ govukPagination(
-  classes='',
+  classes=&#39;&#39;,
   previousPage=[
    {
-      url: 'previous-page',
-      title: 'Previous page',
-      label: '1 of 3'
+      url: &#39;previous-page&#39;,
+      title: &#39;Previous page&#39;,
+      label: &#39;1 of 3&#39;
     }
   ]
   )
 }}
 
 {{ govukPagination(
-  classes='',
+  classes=&#39;&#39;,
   nextPage=[
    {
-      url: 'next-page',
-      title: 'Next page',
-      label: 'Tax disc'
+      url: &#39;next-page&#39;,
+      title: &#39;Next page&#39;,
+      label: &#39;Tax disc&#39;
     }
   ]
   )
 }}
 
 {{ govukPagination(
-  classes='',
+  classes=&#39;&#39;,
   previousPage=[
    {
-      url: 'previous-page',
-      title: 'Previous page',
-      label: '1 of 3'
+      url: &#39;previous-page&#39;,
+      title: &#39;Previous page&#39;,
+      label: &#39;1 of 3&#39;
     }
   ],
   nextPage=[
    {
-      url: 'next-page',
-      title: 'Next page',
-      label: '2 of 3'
+      url: &#39;next-page&#39;,
+      title: &#39;Next page&#39;,
+      label: &#39;2 of 3&#39;
     }
   ]
   )
 }}
 
 {{ govukPagination(
-  classes='',
+  classes=&#39;&#39;,
   previousPage=[
    {
-      url: 'previous-page',
-      title: 'Previous page'
+      url: &#39;previous-page&#39;,
+      title: &#39;Previous page&#39;
     }
   ],
   nextPage=[
    {
-      url: 'next-page',
-      title: 'Next page'
+      url: &#39;next-page&#39;,
+      title: &#39;Next page&#39;
     }
   ]
   )
-}}
-```
+}}</code></pre>
 
-## Arguments
+<h2 class="govuk-u-heading-24">Component arguments</h2>
 
+<div>
+
+<!-- TODO: Use the table macro here and pass it component argument data -->
 | Name          | Type    | Default | Required | Description
 |---            |---      |---      |---       |---
 | classes       | string  |         | No       | Optional additional classes
@@ -94,10 +97,71 @@ Code example(s)
 | previousPage  | array   |         | No       | previousPage array with url, title and label keys
 | nextPage      | array   |         | No       | nextPage array with url, title and label keys
 
-<!--
-## Installation
+</div>
 
-```
-npm install --save @govuk-frontend/component-name
-```
--->
+<h2 class="govuk-u-heading-24">Component HTML</h2>
+<pre><code>{% from &quot;pagination/macro.njk&quot; import govukPagination %}
+
+{{ govukPagination(
+  classes=&#39;&#39;,
+  previousPage=[
+   {
+      url: &#39;previous-page&#39;,
+      title: &#39;Previous page&#39;,
+      label: &#39;1 of 3&#39;
+    }
+  ]
+  )
+}}
+
+{{ govukPagination(
+  classes=&#39;&#39;,
+  nextPage=[
+   {
+      url: &#39;next-page&#39;,
+      title: &#39;Next page&#39;,
+      label: &#39;Tax disc&#39;
+    }
+  ]
+  )
+}}
+
+{{ govukPagination(
+  classes=&#39;&#39;,
+  previousPage=[
+   {
+      url: &#39;previous-page&#39;,
+      title: &#39;Previous page&#39;,
+      label: &#39;1 of 3&#39;
+    }
+  ],
+  nextPage=[
+   {
+      url: &#39;next-page&#39;,
+      title: &#39;Next page&#39;,
+      label: &#39;2 of 3&#39;
+    }
+  ]
+  )
+}}
+
+{{ govukPagination(
+  classes=&#39;&#39;,
+  previousPage=[
+   {
+      url: &#39;previous-page&#39;,
+      title: &#39;Previous page&#39;
+    }
+  ],
+  nextPage=[
+   {
+      url: &#39;next-page&#39;,
+      title: &#39;Next page&#39;
+    }
+  ]
+  )
+}}</code></pre>
+
+<h2 class="govuk-u-heading-24">Installation</h2>
+<pre><code>npm install --save @govuk-frontend/pagination</code></pre>
+

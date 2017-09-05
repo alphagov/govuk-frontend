@@ -1,121 +1,124 @@
-# List
 
-A list of items, list variants are bulleted or numbered.
 
-## Guidance
 
-Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
+<h1 class="govuk-u-heading-36">
+List
+</h1>
 
-## Demo
+<p class="govuk-u-core-24">
+  Breadcrumb navigation, showing page hierarchy.
+</p>
 
-List [demo](list.html).
+<p class="govuk-u-copy-19">
+  <a href="http://www.linktodesignsystem.com/list">Find list guidance on the GOV.UK Design System.</a>
+</p>
 
-## Usage
 
-Code example(s)
+<p class="govuk-u-copy-19">
+<a href="http://govuk-frontend-review.herokuapp.com/components/list/preview">Preview the list component.
+</a>
+</p>
 
-```
-@@include('list.html')
-```
+  <h2 class="govuk-u-heading-24">How to call this component</h2>
 
-## Nunjucks
-
-```
-{% from "list/macro.njk" import govukList %}
+  <pre><code>{% from &quot;list/macro.njk&quot; import govukList %}
 
 {{ govukList(
-  classes='',
+  classes=&#39;&#39;,
   [
     {
-      text: 'Related link',
-      url: '/'
+      text: &#39;Related link&#39;,
+      url: &#39;/&#39;
     },
     {
-      text: 'Related link',
-      url: '/'
+      text: &#39;Related link&#39;,
+      url: &#39;/&#39;
     },
     {
-      text: 'Related link',
-      url: '/'
+      text: &#39;Related link&#39;,
+      url: &#39;/&#39;
     }
   ]
 ) }}
 
 {{ govukList(
-  classes='',
+  classes=&#39;&#39;,
   [
     {
-      text: 'here is a bulleted list'
+      text: &#39;here is a bulleted list&#39;
     },
     {
-      text: 'here is the second bulleted list item'
+      text: &#39;here is the second bulleted list item&#39;
     },
     {
-      text: 'here is the third bulleted list item'
+      text: &#39;here is the third bulleted list item&#39;
     }
   ],
   options = {
-    'isBullet': 'true'
+    &#39;isBullet&#39;: &#39;true&#39;
   }
 ) }}
 
 {{ govukList(
-  classes='',
+  classes=&#39;&#39;,
   [
     {
-      text: 'This is a numbered list.'
+      text: &#39;This is a numbered list.&#39;
     },
     {
-      text: 'This is the second step in a numbered list.'
+      text: &#39;This is the second step in a numbered list.&#39;
     },
     {
-      text: 'The third step is to make sure each item is a full sentence ending with a full stop.'
+      text: &#39;The third step is to make sure each item is a full sentence ending with a full stop.&#39;
     }
   ],
   options = {
-    'isNumber': 'true'
+    &#39;isNumber&#39;: &#39;true&#39;
   }
 ) }}
 
 {{ govukList(
-  classes='',
+  classes=&#39;&#39;,
   [
     {
-      text: 'Step 1'
+      text: &#39;Step 1&#39;
     },
     {
-      text: 'Step 2'
+      text: &#39;Step 2&#39;
     },
     {
-      text: 'Step 3'
+      text: &#39;Step 3&#39;
     }
   ],
   options = {
-    'isStep': 'true'
+    &#39;isStep&#39;: &#39;true&#39;
   }
 ) }}
 
 {{ govukList(
-  classes='',
+  classes=&#39;&#39;,
   [
     {
-      text: 'Step 1 Large icon'
+      text: &#39;Step 1 Large icon&#39;
     },
     {
-      text: 'Step 2 Large icon'
+      text: &#39;Step 2 Large icon&#39;
     },
     {
-      text: 'Step 3 Large icon'
+      text: &#39;Step 3 Large icon&#39;
     }
   ],
   options = {
-    'isStepLarge': 'true'
+    &#39;isStepLarge&#39;: &#39;true&#39;
   }
 ) }}
-```
+</code></pre>
 
-## Arguments
+<h2 class="govuk-u-heading-24">Component arguments</h2>
 
+<div>
+
+<!-- TODO: Use the table macro here and pass it component argument data -->
 | Name                | Type   | Default | Required | Description
 |---                  |---     |---      |---       |---
 | classes             | string |         | No       | Optional additional classes
@@ -128,10 +131,102 @@ Code example(s)
 | options.isStep      |        |         | No       | Creates list of steps
 | options.isStepLarge |        |         | No       | Creates list of steps with large icons
 
-<!--
-## Installation
+</div>
 
-```
-npm install --save @govuk-frontend/list
-```
--->
+<h2 class="govuk-u-heading-24">Component HTML</h2>
+<pre><code>{% from &quot;list/macro.njk&quot; import govukList %}
+
+{{ govukList(
+  classes=&#39;&#39;,
+  [
+    {
+      text: &#39;Related link&#39;,
+      url: &#39;/&#39;
+    },
+    {
+      text: &#39;Related link&#39;,
+      url: &#39;/&#39;
+    },
+    {
+      text: &#39;Related link&#39;,
+      url: &#39;/&#39;
+    }
+  ]
+) }}
+
+{{ govukList(
+  classes=&#39;&#39;,
+  [
+    {
+      text: &#39;here is a bulleted list&#39;
+    },
+    {
+      text: &#39;here is the second bulleted list item&#39;
+    },
+    {
+      text: &#39;here is the third bulleted list item&#39;
+    }
+  ],
+  options = {
+    &#39;isBullet&#39;: &#39;true&#39;
+  }
+) }}
+
+{{ govukList(
+  classes=&#39;&#39;,
+  [
+    {
+      text: &#39;This is a numbered list.&#39;
+    },
+    {
+      text: &#39;This is the second step in a numbered list.&#39;
+    },
+    {
+      text: &#39;The third step is to make sure each item is a full sentence ending with a full stop.&#39;
+    }
+  ],
+  options = {
+    &#39;isNumber&#39;: &#39;true&#39;
+  }
+) }}
+
+{{ govukList(
+  classes=&#39;&#39;,
+  [
+    {
+      text: &#39;Step 1&#39;
+    },
+    {
+      text: &#39;Step 2&#39;
+    },
+    {
+      text: &#39;Step 3&#39;
+    }
+  ],
+  options = {
+    &#39;isStep&#39;: &#39;true&#39;
+  }
+) }}
+
+{{ govukList(
+  classes=&#39;&#39;,
+  [
+    {
+      text: &#39;Step 1 Large icon&#39;
+    },
+    {
+      text: &#39;Step 2 Large icon&#39;
+    },
+    {
+      text: &#39;Step 3 Large icon&#39;
+    }
+  ],
+  options = {
+    &#39;isStepLarge&#39;: &#39;true&#39;
+  }
+) }}
+</code></pre>
+
+<h2 class="govuk-u-heading-24">Installation</h2>
+<pre><code>npm install --save @govuk-frontend/list</code></pre>
+

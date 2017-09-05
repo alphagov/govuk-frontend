@@ -1,47 +1,58 @@
-# Fieldset
 
-The fieldset element is used to group several controls within a web form.
-The legend element represents a caption for the content of its parent fieldset.
 
-## Guidance
 
-Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
+<h1 class="govuk-u-heading-36">
+Fieldset
+</h1>
 
-## Demo
+<p class="govuk-u-core-24">
+  The fieldset element is used to group several controls within a web form.
+  The legend element represents a caption for the content of its parent fieldset.
+</p>
 
-Fieldset and legend [demo](fieldset.html).
+<p class="govuk-u-copy-19">
+  <a href="http://www.linktodesignsystem.com/fieldset">Find fieldset guidance on the GOV.UK Design System.</a>
+</p>
 
-## Usage
 
-Code example(s)
+<p class="govuk-u-copy-19">
+<a href="http://govuk-frontend-review.herokuapp.com/components/fieldset/preview">Preview the fieldset component.
+</a>
+</p>
 
-```
-@@include('fieldset.html')
-```
+  <h2 class="govuk-u-heading-24">How to call this component</h2>
 
-## Nunjucks
-
-```
-{% from "fieldset/macro.njk" import govukFieldset %}
+  <pre><code>{% from &quot;fieldset/macro.njk&quot; import govukFieldset %}
 
 {{ govukFieldset(
-  classes='',
-  legendText='Legend text goes here'
+  classes=&#39;&#39;,
+  legendText=&#39;Legend text goes here&#39;
   )
 }}
-```
+</code></pre>
 
-## Arguments
+<h2 class="govuk-u-heading-24">Component arguments</h2>
 
+<div>
+
+<!-- TODO: Use the table macro here and pass it component argument data -->
 | Name        | Type    | Default | Required  | Description
 |---          |---      |---      |---        |---
 | classes     | string  |         | No        | Optional additional classes
 | legendText  | string  |         | No        | Legend text
 
-<!--
-## Installation
+</div>
 
-```
-npm install --save @govuk-frontend/fieldset
-```
--->
+<h2 class="govuk-u-heading-24">Component HTML</h2>
+<pre><code>{% from &quot;fieldset/macro.njk&quot; import govukFieldset %}
+
+{{ govukFieldset(
+  classes=&#39;&#39;,
+  legendText=&#39;Legend text goes here&#39;
+  )
+}}
+</code></pre>
+
+<h2 class="govuk-u-heading-24">Installation</h2>
+<pre><code>npm install --save @govuk-frontend/fieldset</code></pre>
+

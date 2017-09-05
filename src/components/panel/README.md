@@ -1,43 +1,42 @@
-# Panel
 
-The confirmation panel has a turquoise background and white text.
-Used for transaction end pages, and Bank Holidays.
 
-The information panel has a GOV.UK blue background and white text.
-Used for explanatory pages.
 
-## Guidance
+<h1 class="govuk-u-heading-36">
+Panel
+</h1>
 
-Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
+<p class="govuk-u-core-24">
+  The confirmation panel has a turquoise background and white text. Used for transaction end pages, and Bank Holidays.
+</p>
 
-## Demo
+<p class="govuk-u-copy-19">
+  <a href="http://www.linktodesignsystem.com/panel">Find panel guidance on the GOV.UK Design System.</a>
+</p>
 
-* Panel [demo](panel.html).
 
-## Usage
+<p class="govuk-u-copy-19">
+<a href="http://govuk-frontend-review.herokuapp.com/components/panel/preview">Preview the panel component.
+</a>
+</p>
 
-Code example(s)
+  <h2 class="govuk-u-heading-24">How to call this component</h2>
 
-```
-@@include('panel.html')
-```
+  <pre><code>{% from &quot;panel/macro.njk&quot; import govukPanel %}
 
-## Nunjucks
-
-```
-{% from "panel/macro.njk" import govukPanel %}
-
-{{ govukInput(
-  classes='',
-  title='Application complete',
-  content='Your reference number is',
-  reference='HDJ2123F'
+{{ govukPanel(
+  classes=&#39;&#39;,
+  title=&#39;Application complete&#39;,
+  content=&#39;Your reference number is&#39;,
+  reference=&#39;HDJ2123F&#39;
   )
 }}
-```
+</code></pre>
 
-## Arguments
+<h2 class="govuk-u-heading-24">Component arguments</h2>
 
+<div>
+
+<!-- TODO: Use the table macro here and pass it component argument data -->
 | Name          | Type    | Required  | Description
 |---            |---      |---        |---
 | classes       | string  | No        | Optional additional classes
@@ -45,10 +44,20 @@ Code example(s)
 | content       | string  | No        | The panel content
 | reference     | string  | No        | Optional reference number
 
-<!--
-## Installation
+</div>
 
-```
-npm install --save @govuk-frontend/phase-banner
-```
--->
+<h2 class="govuk-u-heading-24">Component HTML</h2>
+<pre><code>{% from &quot;panel/macro.njk&quot; import govukPanel %}
+
+{{ govukPanel(
+  classes=&#39;&#39;,
+  title=&#39;Application complete&#39;,
+  content=&#39;Your reference number is&#39;,
+  reference=&#39;HDJ2123F&#39;
+  )
+}}
+</code></pre>
+
+<h2 class="govuk-u-heading-24">Installation</h2>
+<pre><code>npm install --save @govuk-frontend/panel</code></pre>
+

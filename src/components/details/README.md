@@ -1,51 +1,70 @@
-# Details
 
-Component for conditionally revealing content, using the details HTML element.
 
-## Guidance
 
-Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
+<h1 class="govuk-u-heading-36">
+Details
+</h1>
 
-## Demo
+<p class="govuk-u-core-24">
+  Component for conditionally revealing content, using the details HTML element.
+</p>
 
-Details [demo](details.html).
+<p class="govuk-u-copy-19">
+  <a href="http://www.linktodesignsystem.com/details">Find details guidance on the GOV.UK Design System.</a>
+</p>
 
-## Usage
 
-Code example(s)
+<p class="govuk-u-copy-19">
+<a href="http://govuk-frontend-review.herokuapp.com/components/details/preview">Preview the details component.
+</a>
+</p>
 
-```
-@@include('details.html')
-```
+  <h2 class="govuk-u-heading-24">How to call this component</h2>
 
-## Nunjucks
-
-{% from "details/macro.njk" import govukDetails %}
+  <pre><code>{% from &quot;details/macro.njk&quot; import govukDetails %}
 
 {{ govukDetails(
-  classes='',
-  detailsSummaryText='Help with nationality',
-  detailsText='<p>
+  classes=&#39;&#39;,
+  detailsSummaryText=&#39;Help with nationality&#39;,
+  detailsText=&#39;&lt;p&gt;
     If you’re not sure about your nationality, try to find out from an official document like a passport or national ID card.
-  </p>
-  <p>
+  &lt;/p&gt;
+  &lt;p&gt;
     We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post.
-  </p>'
+  &lt;/p&gt;&#39;
   )
 }}
+</code></pre>
 
-## Arguments
+<h2 class="govuk-u-heading-24">Component arguments</h2>
 
+<div>
+
+<!-- TODO: Use the table macro here and pass it component argument data -->
 | Name                | Type    | Default | Required  | Description
 |---                  |---      |---      |---        |---
 | classes             | string  |         | No        | Optional additional classes
 | detailsSummaryText  | string  |         | Yes       | Summary element text
 | detailsText         | string  |         | Yes       | Revealed details text
 
-<!--
-## Installation
+</div>
 
-```
-npm install --save @govuk-frontend/details
-```
--->
+<h2 class="govuk-u-heading-24">Component HTML</h2>
+<pre><code>{% from &quot;details/macro.njk&quot; import govukDetails %}
+
+{{ govukDetails(
+  classes=&#39;&#39;,
+  detailsSummaryText=&#39;Help with nationality&#39;,
+  detailsText=&#39;&lt;p&gt;
+    If you’re not sure about your nationality, try to find out from an official document like a passport or national ID card.
+  &lt;/p&gt;
+  &lt;p&gt;
+    We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post.
+  &lt;/p&gt;&#39;
+  )
+}}
+</code></pre>
+
+<h2 class="govuk-u-heading-24">Installation</h2>
+<pre><code>npm install --save @govuk-frontend/details</code></pre>
+

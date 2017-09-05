@@ -1,48 +1,63 @@
-# Inset text
 
-Use bordered inset text to draw attention to important content on the page.
 
-## Guidance
 
-Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
+<h1 class="govuk-u-heading-36">
+Inset text
+</h1>
 
-## Demo
+<p class="govuk-u-core-24">
+  Use bordered inset text to draw attention to important content on the page.
+</p>
 
-Inset text [demo](inset-text.html).
+<p class="govuk-u-copy-19">
+  <a href="http://www.linktodesignsystem.com/inset-text">Find inset-text guidance on the GOV.UK Design System.</a>
+</p>
 
-## Usage
 
-Code example(s)
+<p class="govuk-u-copy-19">
+<a href="http://govuk-frontend-review.herokuapp.com/components/inset-text/preview">Preview the inset-text component.
+</a>
+</p>
 
-```
-@@include('inset-text.html')
-```
+  <h2 class="govuk-u-heading-24">How to call this component</h2>
 
-## Nunjucks
-
-```
-{% from "inset-text/macro.njk" import govukInsetText %}
+  <pre><code>{% from &quot;inset-text/macro.njk&quot; import govukInsetText %}
 
 {{ govukInsetText(
-  content='<p>
-    It can take up to 8 weeks to register a lasting power of attorney if<br>
+  classes=&#39;&#39;,
+  content=&#39;&lt;p&gt;
+    It can take up to 8 weeks to register a lasting power of attorney if&lt;br&gt;
     there are no mistakes in the application.
-  </p>'
+  &lt;/p&gt;&#39;
   )
 }}
-```
+</code></pre>
 
-## Arguments
+<h2 class="govuk-u-heading-24">Component arguments</h2>
 
+<div>
+
+<!-- TODO: Use the table macro here and pass it component argument data -->
 | Name      | Type    | Required  | Description
 |---        |---      |---        |---
 | classes   | string  | No        | Optional additional classes
 | content   | string  | Yes       | Inset text content
 
-<!--
-## Installation
+</div>
 
-```
-npm install --save @govuk-frontend/inset-text
-```
--->
+<h2 class="govuk-u-heading-24">Component HTML</h2>
+<pre><code>{% from &quot;inset-text/macro.njk&quot; import govukInsetText %}
+
+{{ govukInsetText(
+  classes=&#39;&#39;,
+  content=&#39;&lt;p&gt;
+    It can take up to 8 weeks to register a lasting power of attorney if&lt;br&gt;
+    there are no mistakes in the application.
+  &lt;/p&gt;&#39;
+  )
+}}
+</code></pre>
+
+<h2 class="govuk-u-heading-24">Installation</h2>
+<pre><code>npm install --save @govuk-frontend/inset-text</code></pre>
+

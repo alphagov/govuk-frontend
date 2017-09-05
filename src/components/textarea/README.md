@@ -1,39 +1,44 @@
-# Textarea
 
-A multi-line text field.
 
-## Guidance
 
-Guidance and documentation can be found on [GOV.UK Design system](linkgoeshere).
+<h1 class="govuk-u-heading-36">
+Textarea
+</h1>
 
-## Demo
+<p class="govuk-u-core-24">
+  A multi-line text field.
+</p>
 
-Textarea [demo](textarea.html).
+<p class="govuk-u-copy-19">
+  <a href="http://www.linktodesignsystem.com/textarea">Find textarea guidance on the GOV.UK Design System.</a>
+</p>
 
-## Usage
 
-Code example(s)
+<p class="govuk-u-copy-19">
+<a href="http://govuk-frontend-review.herokuapp.com/components/textarea/preview">Preview the textarea component.
+</a>
+</p>
 
-```
-@@include('textarea.html')
-```
+  <h2 class="govuk-u-heading-24">How to call this component</h2>
 
-## Nunjucks
-
-{% from "textarea/macro.njk" import govukTextarea %}
+  <pre><code>{% from &quot;textarea/macro.njk&quot; import govukTextarea %}
 
 {{ govukTextarea(
-  classes='',
-  labelText='National Insurance number',
-  hintText='',
-  errorMessage='Error message goes here',
-  id='input-id',
-  name='input-name',
-  number='5'
+  classes=&#39;&#39;,
+  labelText=&#39;National Insurance number&#39;,
+  hintText=&#39;&#39;,
+  errorMessage=&#39;&#39;,
+  id=&#39;textarea&#39;,
+  name=&#39;name&#39;
   )
 }}
+</code></pre>
 
-## Arguments
+<h2 class="govuk-u-heading-24">Component arguments</h2>
+
+<div>
+
+<!-- TODO: Use the table macro here and pass it component argument data -->
 
 | Name          | Type    | Default   | Required  | Description
 |---            |---      |---        |---        |---
@@ -45,10 +50,22 @@ Code example(s)
 | name          | string  |           | Yes       | The name of the textarea
 | rows          | string  | 5         | No        | Change default number of textarea rows
 
-<!--
-## Installation
+</div>
 
-```
-npm install --save @govuk-frontend/textarea
-```
--->
+<h2 class="govuk-u-heading-24">Component HTML</h2>
+<pre><code>{% from &quot;textarea/macro.njk&quot; import govukTextarea %}
+
+{{ govukTextarea(
+  classes=&#39;&#39;,
+  labelText=&#39;National Insurance number&#39;,
+  hintText=&#39;&#39;,
+  errorMessage=&#39;&#39;,
+  id=&#39;textarea&#39;,
+  name=&#39;name&#39;
+  )
+}}
+</code></pre>
+
+<h2 class="govuk-u-heading-24">Installation</h2>
+<pre><code>npm install --save @govuk-frontend/textarea</code></pre>
+

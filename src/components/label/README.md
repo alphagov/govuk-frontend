@@ -1,39 +1,62 @@
-# Label
 
-Use labels for all form fields.
 
-## Guidance
 
-Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
+<h1 class="govuk-u-heading-36">
+Label
+</h1>
 
-## Demo
+<p class="govuk-u-core-24">
+  Use labels for all form fields.
+</p>
 
-Label [demo](label.html).
+<p class="govuk-u-copy-19">
+  <a href="http://www.linktodesignsystem.com/label">Find label guidance on the GOV.UK Design System.</a>
+</p>
 
-## Usage
 
-Code example(s)
+<p class="govuk-u-copy-19">
+<a href="http://govuk-frontend-review.herokuapp.com/components/label/preview">Preview the label component.
+</a>
+</p>
 
-```
-@@include('label.html')
-```
+  <h2 class="govuk-u-heading-24">How to call this component</h2>
 
-## Nunjucks
-
-{% from "label/macro.njk" import govukLabel %}
+  <pre><code>{% from &quot;label/macro.njk&quot; import govukLabel %}
 
 {{ govukLabel(
-  classes='',
-  labelText='National Insurance number',
-  hintText='It’s on your National Insurance card, benefit letter, payslip or P60.
-    For example, ‘QQ 12 34 56 C’.',
-  errorMessage='Error message goes here',
-  id=''
+  classes=&#39;&#39;,
+  labelText=&#39;National Insurance number&#39;,
+  hintText=&#39;It’s on your National Insurance card, benefit letter, payslip or P60.
+    For example, ‘QQ 12 34 56 C’.&#39;,
+  id=&#39;&#39;
   )
 }}
 
-## Arguments
+{{ govukLabel(
+  classes=&#39;govuk-c-label--bold&#39;,
+  labelText=&#39;National Insurance number&#39;,
+  hintText=&#39;It’s on your National Insurance card, benefit letter, payslip or P60.
+    For example, ‘QQ 12 34 56 C’.&#39;,
+  id=&#39;&#39;
+  )
+}}
 
+{{ govukLabel(
+  classes=&#39;&#39;,
+  labelText=&#39;National Insurance number&#39;,
+  hintText=&#39;It’s on your National Insurance card, benefit letter, payslip or P60.
+    For example, ‘QQ 12 34 56 C’.&#39;,
+  errorMessage=&#39;Error message goes here&#39;,
+  id=&#39;&#39;
+  )
+}}
+</code></pre>
+
+<h2 class="govuk-u-heading-24">Component arguments</h2>
+
+<div>
+
+<!-- TODO: Use the table macro here and pass it component argument data -->
 | Name          | Type    | Required  | Description
 |---            |---      |---        |---
 | classes       | string  | No        | Optional additional classes
@@ -42,14 +65,40 @@ Code example(s)
 | errorMessage  | string  | No        | Optional error message
 | id            | string  | Yes       | The value of the for attribute, the id input the label is associated with
 
-<!--
-## Installation
+</div>
 
-```
-npm install --save @govuk-frontend/label
-```
--->
+<h2 class="govuk-u-heading-24">Component HTML</h2>
+<pre><code>{% from &quot;label/macro.njk&quot; import govukLabel %}
 
-# Implementation
+{{ govukLabel(
+  classes=&#39;&#39;,
+  labelText=&#39;National Insurance number&#39;,
+  hintText=&#39;It’s on your National Insurance card, benefit letter, payslip or P60.
+    For example, ‘QQ 12 34 56 C’.&#39;,
+  id=&#39;&#39;
+  )
+}}
 
-Labels should be associated with form fields using the `for` attribute.
+{{ govukLabel(
+  classes=&#39;govuk-c-label--bold&#39;,
+  labelText=&#39;National Insurance number&#39;,
+  hintText=&#39;It’s on your National Insurance card, benefit letter, payslip or P60.
+    For example, ‘QQ 12 34 56 C’.&#39;,
+  id=&#39;&#39;
+  )
+}}
+
+{{ govukLabel(
+  classes=&#39;&#39;,
+  labelText=&#39;National Insurance number&#39;,
+  hintText=&#39;It’s on your National Insurance card, benefit letter, payslip or P60.
+    For example, ‘QQ 12 34 56 C’.&#39;,
+  errorMessage=&#39;Error message goes here&#39;,
+  id=&#39;&#39;
+  )
+}}
+</code></pre>
+
+<h2 class="govuk-u-heading-24">Installation</h2>
+<pre><code>npm install --save @govuk-frontend/label</code></pre>
+

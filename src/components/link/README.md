@@ -1,5 +1,11 @@
-# Link
 
+
+
+<h1 class="govuk-u-heading-36">
+Link
+</h1>
+
+<p class="govuk-u-core-24">
 Link component, with the following modifiers:
 
 `--back`
@@ -13,56 +19,52 @@ Download Link - with download icon
 
 `--skip`
 Skiplink - skip to the main page content
+</p>
+
+<p class="govuk-u-copy-19">
+  <a href="http://www.linktodesignsystem.com/link">Find link guidance on the GOV.UK Design System.</a>
+</p>
 
 
-## Guidance
+<p class="govuk-u-copy-19">
+<a href="http://govuk-frontend-review.herokuapp.com/components/link/preview">Preview the link component.
+</a>
+</p>
 
-Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
+  <h2 class="govuk-u-heading-24">How to call this component</h2>
 
-## Demo
-
-Link [demo](link.html).
-
-## Usage
-
-Code example(s)
-
-```
-@@include('link.html')
-```
-
-## Nunjucks
-
-```
-{% from "link/macro.njk" import govukLink %}
+  <pre><code>{% from &quot;link/macro.njk&quot; import govukLink %}
 
 {{ govukLink(
-  classes='govuk-c-link--back',
-  linkHref='',
-  linkText='Back')
+  classes=&#39;govuk-c-link--back&#39;,
+  linkHref=&#39;&#39;,
+  linkText=&#39;Back&#39;)
 }}
 
 {{ govukLink(
-  classes='govuk-c-link--muted',
-  linkHref='',
-  linkText='Is there anything wrong with this page?')
+  classes=&#39;govuk-c-link--muted&#39;,
+  linkHref=&#39;&#39;,
+  linkText=&#39;Is there anything wrong with this page?&#39;)
 }}
 
 {{ govukLink(
-  classes='govuk-c-link--download',
-  linkHref='',
-  linkText='Download')
+  classes=&#39;govuk-c-link--download&#39;,
+  linkHref=&#39;&#39;,
+  tagText=&#39;Download&#39;)
 }}
 
 {{ govukLink(
-  classes='govuk-c-link--skip',
-  linkHref='',
-  linkText='Skip to main content')
+  classes=&#39;govuk-c-link--skip&#39;,
+  linkHref=&#39;&#39;,
+  linkText=&#39;Skip to main content&#39;)
 }}
-```
+</code></pre>
 
-## Arguments
+<h2 class="govuk-u-heading-24">Component arguments</h2>
 
+<div>
+
+<!-- TODO: Use the table macro here and pass it component argument data -->
 | Name      | Type    | Default | Required  | Description
 |---        |---      |---      |---        |---
 | linkHref  | string  |         | Yes       | The value of the link href attribute
@@ -73,11 +75,36 @@ Code example(s)
                                             | --download
                                             | --skip
 
+</div>
 
-<!--
-## Installation
+<h2 class="govuk-u-heading-24">Component HTML</h2>
+<pre><code>{% from &quot;link/macro.njk&quot; import govukLink %}
 
-```
-npm install --save @govuk-frontend/link
-```
--->
+{{ govukLink(
+  classes=&#39;govuk-c-link--back&#39;,
+  linkHref=&#39;&#39;,
+  linkText=&#39;Back&#39;)
+}}
+
+{{ govukLink(
+  classes=&#39;govuk-c-link--muted&#39;,
+  linkHref=&#39;&#39;,
+  linkText=&#39;Is there anything wrong with this page?&#39;)
+}}
+
+{{ govukLink(
+  classes=&#39;govuk-c-link--download&#39;,
+  linkHref=&#39;&#39;,
+  tagText=&#39;Download&#39;)
+}}
+
+{{ govukLink(
+  classes=&#39;govuk-c-link--skip&#39;,
+  linkHref=&#39;&#39;,
+  linkText=&#39;Skip to main content&#39;)
+}}
+</code></pre>
+
+<h2 class="govuk-u-heading-24">Installation</h2>
+<pre><code>npm install --save @govuk-frontend/link</code></pre>
+

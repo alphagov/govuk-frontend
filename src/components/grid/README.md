@@ -1,101 +1,158 @@
-# Grid
 
-Grid row with grid items.
 
-## Guidance
 
-Guidance and documentation can be found on [GOV.UK Design System](linkgoeshere).
+<h1 class="govuk-u-heading-36">
+Grid
+</h1>
 
-## Demo
+<p class="govuk-u-core-24">
+  Grid row with grid items.
+</p>
 
-Grid [demo](grid.html).
+<p class="govuk-u-copy-19">
+  <a href="http://www.linktodesignsystem.com/grid">Find grid guidance on the GOV.UK Design System.</a>
+</p>
 
-## Usage
 
-Code example(s)
+<p class="govuk-u-copy-19">
+<a href="http://govuk-frontend-review.herokuapp.com/components/grid/preview">Preview the grid component.
+</a>
+</p>
 
-```
-@@include('grid.html')
-```
+  <h2 class="govuk-u-heading-24">How to call this component</h2>
 
-## Nunjucks
+  <pre><code>{% from &quot;grid/macro.njk&quot; import govukGrid %}
 
-```
-{% call govukGrid(
-  classes='',
+{{ govukGrid(
+  classes=&#39;&#39;,
   gridItems=[
-    { width: 'full' }]
+    { width: &#39;full&#39; }
+  ]
   )
-%}
-<!-- Insert macros to sit inside grid here -->
-{% endcall %}
+}}
 
-{% call govukGrid(
-  classes='',
+{{ govukGrid(
+  classes=&#39;&#39;,
   gridItems=[
-    { width: 'one-half' },
-    { width: 'one-half' }]
+    { width: &#39;one-half&#39; },
+    { width: &#39;one-half&#39; }
+  ]
   )
-%}
-<!-- Insert macros to sit inside grid here -->
-{% endcall %}
+}}
 
-{% call govukGrid(
-  classes='',
+{{ govukGrid(
+  classes=&#39;&#39;,
   gridItems=[
-    { width: 'one-third' },
-    { width: 'one-third' },
-    { width: 'one-third' }]
+    { width: &#39;one-third&#39; },
+    { width: &#39;one-third&#39; },
+    { width: &#39;one-third&#39; }
+  ]
   )
-%}
-<!-- Insert macros to sit inside grid here -->
-{% endcall %}
+}}
 
-{% call govukGrid(
-  classes='',
+{{ govukGrid(
+  classes=&#39;&#39;,
   gridItems=[
-    { width: 'two-thirds' },
-    { width: 'one-third' }]
+    { width: &#39;two-thirds&#39; },
+    { width: &#39;one-third&#39; }
+  ]
   )
-%}
-<!-- Insert macros to sit inside grid here -->
-{% endcall %}
+}}
 
-{% call govukGrid(
-  classes='',
+{{ govukGrid(
+  classes=&#39;&#39;,
   gridItems=[
-    { width: 'one-third' },
-    { width: 'two-thirds' }]
+    { width: &#39;one-third&#39; },
+    { width: &#39;two-thirds&#39; }
+  ]
   )
-%}
-<!-- Insert macros to sit inside grid here -->
-{% endcall %}
+}}
 
-{% call govukGrid(
-  classes='',
+{{ govukGrid(
+  classes=&#39;&#39;,
   gridItems=[
-    { width: 'one-quarter' },
-    { width: 'one-quarter' },
-    { width: 'one-quarter' },
-    { width: 'one-quarter' }]
+    { width: &#39;one-quarter&#39; },
+    { width: &#39;one-quarter&#39; },
+    { width: &#39;one-quarter&#39; },
+    { width: &#39;one-quarter&#39; }
+  ]
   )
-%}
-<!-- Insert macros to sit inside grid here -->
-{% endcall %}
-```
+}}
+</code></pre>
 
-## Arguments
+<h2 class="govuk-u-heading-24">Component arguments</h2>
 
+<div>
+
+<!-- TODO: Use the table macro here and pass it component argument data -->
 | Name          | Type    | Required  | Description
 |---            |---      |---        |---
 | classes       | string  | No        | Optional additional classes
 | gridItems     | array   | Yes       | Grid items array with width key
 | width         | string  | Yes       | Width of the grid item - full, one-half, one-third, two-thirds, one-quarter
 
-<!--
-## Installation
+</div>
 
-```
-npm install --save @govuk-frontend/grid
-```
--->
+<h2 class="govuk-u-heading-24">Component HTML</h2>
+<pre><code>{% from &quot;grid/macro.njk&quot; import govukGrid %}
+
+{{ govukGrid(
+  classes=&#39;&#39;,
+  gridItems=[
+    { width: &#39;full&#39; }
+  ]
+  )
+}}
+
+{{ govukGrid(
+  classes=&#39;&#39;,
+  gridItems=[
+    { width: &#39;one-half&#39; },
+    { width: &#39;one-half&#39; }
+  ]
+  )
+}}
+
+{{ govukGrid(
+  classes=&#39;&#39;,
+  gridItems=[
+    { width: &#39;one-third&#39; },
+    { width: &#39;one-third&#39; },
+    { width: &#39;one-third&#39; }
+  ]
+  )
+}}
+
+{{ govukGrid(
+  classes=&#39;&#39;,
+  gridItems=[
+    { width: &#39;two-thirds&#39; },
+    { width: &#39;one-third&#39; }
+  ]
+  )
+}}
+
+{{ govukGrid(
+  classes=&#39;&#39;,
+  gridItems=[
+    { width: &#39;one-third&#39; },
+    { width: &#39;two-thirds&#39; }
+  ]
+  )
+}}
+
+{{ govukGrid(
+  classes=&#39;&#39;,
+  gridItems=[
+    { width: &#39;one-quarter&#39; },
+    { width: &#39;one-quarter&#39; },
+    { width: &#39;one-quarter&#39; },
+    { width: &#39;one-quarter&#39; }
+  ]
+  )
+}}
+</code></pre>
+
+<h2 class="govuk-u-heading-24">Installation</h2>
+<pre><code>npm install --save @govuk-frontend/grid</code></pre>
+
