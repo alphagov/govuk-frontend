@@ -1,5 +1,6 @@
 
 
+
 <h1 class="govuk-u-heading-36">
 Link
 </h1>
@@ -21,25 +22,9 @@ Skiplink - skip to the main page content
 </p>
 
 <p class="govuk-u-copy-19">
-  <a href="">Find link guidance on the GOV.UK Design System.</a>
+  <a href="http://www.linktodesignsystem.com/link">Find link guidance on the GOV.UK Design System.</a>
 </p>
 
-<h2 class="govuk-u-heading-24">How this component looks</h2>
-
-<div>
-
-<a href="" class="govuk-c-link govuk-c-link--back">Back</a>
-
-
-<a href="" class="govuk-c-link govuk-c-link--muted">Is there anything wrong with this page?</a>
-
-
-<a href="" class="govuk-c-link govuk-c-link--download"></a>
-
-
-<a href="" class="govuk-c-link govuk-c-link--skip">Skip to main content</a>
-
-</div>
 
 <p class="govuk-u-copy-19">
 <a href="http://govuk-frontend-review.herokuapp.com/components/link/preview">Preview the link component.

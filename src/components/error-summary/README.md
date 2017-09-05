@@ -1,5 +1,6 @@
 
 
+
 <h1 class="govuk-u-heading-36">
 Error summary
 </h1>
@@ -9,40 +10,9 @@ Error summary
 </p>
 
 <p class="govuk-u-copy-19">
-  <a href="">Find error-summary guidance on the GOV.UK Design System.</a>
+  <a href="http://www.linktodesignsystem.com/error-summary">Find error-summary guidance on the GOV.UK Design System.</a>
 </p>
 
-<h2 class="govuk-u-heading-24">How this component looks</h2>
-
-<div>
-
-
-<div class="govuk-c-error-summary " aria-labelledby="error-summary-title" role="alert" tabindex="-1">
-
-  <h2 class="govuk-c-error-summary__title" id="error-summary-title">
-    Message to alert the user to a problem goes here
-  </h2>
-
-  <div class="govuk-c-error-summary__body">
-    <p>
-      Optional description of the errors and how to correct them
-    </p>
-    <ul class="govuk-c-list  govuk-c-error-summary__list">
-
-  <li>
-<a href="#example-error-1 ">        Descriptive link to the question with an error
-</a>  </li>
-  <li>
-<a href="#example-error-2 ">        Descriptive link to the question with an error
-</a>  </li>
-
-</ul>
-
-  </div>
-
-</div>
-
-</div>
 
 <p class="govuk-u-copy-19">
 <a href="http://govuk-frontend-review.herokuapp.com/components/error-summary/preview">Preview the error-summary component.

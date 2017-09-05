@@ -1,5 +1,6 @@
 
 
+
 <h1 class="govuk-u-heading-36">
 Input
 </h1>
@@ -9,56 +10,9 @@ Input
 </p>
 
 <p class="govuk-u-copy-19">
-  <a href="">Find input guidance on the GOV.UK Design System.</a>
+  <a href="http://www.linktodesignsystem.com/input">Find input guidance on the GOV.UK Design System.</a>
 </p>
 
-<h2 class="govuk-u-heading-24">How this component looks</h2>
-
-<div>
-
-
-
-<label class="govuk-c-label " for="input-1">
-  National Insurance number
-
-
-</label>
-
-
-<input class="govuk-c-input " id="input-1" name="test-name" type="text" >
-
-
-
-
-<label class="govuk-c-label " for="input-2">
-  National Insurance number
-
-    <span class="govuk-c-label__hint">It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.</span>
-
-</label>
-
-
-<input class="govuk-c-input " id="input-2" name="test-name-2" type="text" >
-
-
-
-
-<label class="govuk-c-label " for="input-3">
-  National Insurance number
-
-    <span class="govuk-c-label__hint">It’s on your National Insurance card, benefit letter, payslip or P60.
-    For example, ‘QQ 12 34 56 C’.</span>
-
-    <span class="govuk-c-error-message ">
-  Error message goes here
-</span>
-
-</label>
-
-
-<input class="govuk-c-input govuk-c-input--error" id="input-3" name="test-name-3" type="text" >
-
-</div>
 
 <p class="govuk-u-copy-19">
 <a href="http://govuk-frontend-review.herokuapp.com/components/input/preview">Preview the input component.

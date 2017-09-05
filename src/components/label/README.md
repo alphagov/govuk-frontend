@@ -1,5 +1,6 @@
 
 
+
 <h1 class="govuk-u-heading-36">
 Label
 </h1>
@@ -9,47 +10,9 @@ Label
 </p>
 
 <p class="govuk-u-copy-19">
-  <a href="">Find label guidance on the GOV.UK Design System.</a>
+  <a href="http://www.linktodesignsystem.com/label">Find label guidance on the GOV.UK Design System.</a>
 </p>
 
-<h2 class="govuk-u-heading-24">How this component looks</h2>
-
-<div>
-
-
-<label class="govuk-c-label " for="">
-  National Insurance number
-
-    <span class="govuk-c-label__hint">It’s on your National Insurance card, benefit letter, payslip or P60.
-    For example, ‘QQ 12 34 56 C’.</span>
-
-</label>
-
-
-
-<label class="govuk-c-label  govuk-c-label--bold " for="">
-  National Insurance number
-
-    <span class="govuk-c-label__hint">It’s on your National Insurance card, benefit letter, payslip or P60.
-    For example, ‘QQ 12 34 56 C’.</span>
-
-</label>
-
-
-
-<label class="govuk-c-label " for="">
-  National Insurance number
-
-    <span class="govuk-c-label__hint">It’s on your National Insurance card, benefit letter, payslip or P60.
-    For example, ‘QQ 12 34 56 C’.</span>
-
-    <span class="govuk-c-error-message ">
-  Error message goes here
-</span>
-
-</label>
-
-</div>
 
 <p class="govuk-u-copy-19">
 <a href="http://govuk-frontend-review.herokuapp.com/components/label/preview">Preview the label component.

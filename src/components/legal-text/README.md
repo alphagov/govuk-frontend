@@ -1,5 +1,6 @@
 
 
+
 <h1 class="govuk-u-heading-36">
 Legal text
 </h1>
@@ -9,23 +10,9 @@ Legal text
 </p>
 
 <p class="govuk-u-copy-19">
-  <a href="">Find legal-text guidance on the GOV.UK Design System.</a>
+  <a href="http://www.linktodesignsystem.com/legal-text">Find legal-text guidance on the GOV.UK Design System.</a>
 </p>
 
-<h2 class="govuk-u-heading-24">How this component looks</h2>
-
-<div>
-
-
-<div class="govuk-c-legal-text ">
-  <span class="govuk-c-legal-text__icon govuk-u-circle" aria-hidden="true">!</span>
-  <strong class="govuk-c-legal-text__text">
-    <span class="govuk-c-legal-text__assistive">Warning</span>
-    You can be fined up to £5,000 if you don’t register.
-  </strong>
-</div>
-
-</div>
 
 <p class="govuk-u-copy-19">
 <a href="http://govuk-frontend-review.herokuapp.com/components/legal-text/preview">Preview the legal-text component.

@@ -1,5 +1,6 @@
 
 
+
 <h1 class="govuk-u-heading-36">
 Inset text
 </h1>
@@ -9,21 +10,9 @@ Inset text
 </p>
 
 <p class="govuk-u-copy-19">
-  <a href="">Find inset-text guidance on the GOV.UK Design System.</a>
+  <a href="http://www.linktodesignsystem.com/inset-text">Find inset-text guidance on the GOV.UK Design System.</a>
 </p>
 
-<h2 class="govuk-u-heading-24">How this component looks</h2>
-
-<div>
-
-<div class="govuk-c-inset-text ">
-  <p>
-    It can take up to 8 weeks to register a lasting power of attorney if<br>
-    there are no mistakes in the application.
-  </p>
-</div>
-
-</div>
 
 <p class="govuk-u-copy-19">
 <a href="http://govuk-frontend-review.herokuapp.com/components/inset-text/preview">Preview the inset-text component.

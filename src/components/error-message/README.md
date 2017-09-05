@@ -1,5 +1,6 @@
 
 
+
 <h1 class="govuk-u-heading-36">
 Error message
 </h1>
@@ -10,18 +11,9 @@ Error message
 </p>
 
 <p class="govuk-u-copy-19">
-  <a href="">Find error-message guidance on the GOV.UK Design System.</a>
+  <a href="http://www.linktodesignsystem.com/error-message">Find error-message guidance on the GOV.UK Design System.</a>
 </p>
 
-<h2 class="govuk-u-heading-24">How this component looks</h2>
-
-<div>
-
-<span class="govuk-c-error-message ">
-  Error message goes here
-</span>
-
-</div>
 
 <p class="govuk-u-copy-19">
 <a href="http://govuk-frontend-review.herokuapp.com/components/error-message/preview">Preview the error-message component.

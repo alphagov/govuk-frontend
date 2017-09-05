@@ -1,5 +1,6 @@
 
 
+
 <h1 class="govuk-u-heading-36">
 Phase banner
 </h1>
@@ -9,24 +10,9 @@ Phase banner
 </p>
 
 <p class="govuk-u-copy-19">
-  <a href="">Find phase-banner guidance on the GOV.UK Design System.</a>
+  <a href="http://www.linktodesignsystem.com/phase-banner">Find phase-banner guidance on the GOV.UK Design System.</a>
 </p>
 
-<h2 class="govuk-u-heading-24">How this component looks</h2>
-
-<div>
-
-<div class="govuk-c-phase-banner ">
-  <p class="govuk-c-phase-banner__content">
-    <strong class="govuk-c-phase-tag "> BETA</strong>
-
-    <span class="govuk-c-phase-banner__text">
-      This is a new service – your <a href="#">feedback</a> will help us to improve it.
-    </span>
-  </p>
-</div>
-
-</div>
 
 <p class="govuk-u-copy-19">
 <a href="http://govuk-frontend-review.herokuapp.com/components/phase-banner/preview">Preview the phase-banner component.

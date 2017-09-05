@@ -1,5 +1,6 @@
 
 
+
 <h1 class="govuk-u-heading-36">
 Breadcrumb
 </h1>
@@ -12,20 +13,6 @@ Breadcrumb
   <a href="http://www.linktodesignsystem.com">Find breadcrumb guidance on the GOV.UK Design System.</a>
 </p>
 
-<h2 class="govuk-u-heading-24">How this component looks</h2>
-
-<div>
-
-<div class="govuk-c-breadcrumb ">
-  <ol class="govuk-c-breadcrumb__list">
-      <li class="govuk-c-breadcrumb__list-item">
-        <a class="govuk-c-breadcrumb__link" href="/">Home</a>
-      </li>
-      <li class="govuk-c-breadcrumb__list-item" aria-current="page">Current page</li>
-  </ol>
-</div>
-
-</div>
 
 <p class="govuk-u-copy-19">
 <a href="http://govuk-frontend-review.herokuapp.com/components/breadcrumb/preview">Preview the breadcrumb component.

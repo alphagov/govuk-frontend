@@ -1,5 +1,6 @@
 
 
+
 <h1 class="govuk-u-heading-36">
 Textarea
 </h1>
@@ -9,25 +10,9 @@ Textarea
 </p>
 
 <p class="govuk-u-copy-19">
-  <a href="">Find textarea guidance on the GOV.UK Design System.</a>
+  <a href="http://www.linktodesignsystem.com/textarea">Find textarea guidance on the GOV.UK Design System.</a>
 </p>
 
-<h2 class="govuk-u-heading-24">How this component looks</h2>
-
-<div>
-
-
-
-<label class="govuk-c-label " for="textarea">
-  National Insurance number
-
-
-</label>
-
-
-<textarea class="govuk-c-textarea  " id="textarea" name="name" rows=" 5 "></textarea>
-
-</div>
 
 <p class="govuk-u-copy-19">
 <a href="http://govuk-frontend-review.herokuapp.com/components/textarea/preview">Preview the textarea component.

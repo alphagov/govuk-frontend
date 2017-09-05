@@ -1,5 +1,6 @@
 
 
+
 <h1 class="govuk-u-heading-36">
 Site width container
 </h1>
@@ -9,18 +10,9 @@ Site width container
 </p>
 
 <p class="govuk-u-copy-19">
-  <a href="">Find site-width-container guidance on the GOV.UK Design System.</a>
+  <a href="http://www.linktodesignsystem.com/site-width-container">Find site-width-container guidance on the GOV.UK Design System.</a>
 </p>
 
-<h2 class="govuk-u-heading-24">How this component looks</h2>
-
-<div>
-
-<div class="govuk-c-site-width-container ">
-   
-</div>
-
-</div>
 
 <p class="govuk-u-copy-19">
 <a href="http://govuk-frontend-review.herokuapp.com/components/site-width-container/preview">Preview the site-width-container component.

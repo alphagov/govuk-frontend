@@ -1,5 +1,6 @@
 
 
+
 <h1 class="govuk-u-heading-36">
 Cookie banner
 </h1>
@@ -9,17 +10,9 @@ Cookie banner
 </p>
 
 <p class="govuk-u-copy-19">
-  <a href="">Find cookie-banner guidance on the GOV.UK Design System.</a>
+  <a href="http://www.linktodesignsystem.com/cookie-banner">Find cookie-banner guidance on the GOV.UK Design System.</a>
 </p>
 
-<h2 class="govuk-u-heading-24">How this component looks</h2>
-
-<div>
-<div class="govuk-c-cookie-banner js-cookie-banner ">
-  <p class="govuk-c-cookie-banner__text">GOV.UK uses cookies to make the site simpler. <a href="https://www.gov.uk/help/cookies">Find out more about cookies</a></p>
-</div>
-
-</div>
 
 <p class="govuk-u-copy-19">
 <a href="http://govuk-frontend-review.herokuapp.com/components/cookie-banner/preview">Preview the cookie-banner component.

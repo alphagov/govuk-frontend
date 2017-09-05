@@ -1,5 +1,6 @@
 
 
+
 <h1 class="govuk-u-heading-36">
 Details
 </h1>
@@ -9,30 +10,9 @@ Details
 </p>
 
 <p class="govuk-u-copy-19">
-  <a href="">Find details guidance on the GOV.UK Design System.</a>
+  <a href="http://www.linktodesignsystem.com/details">Find details guidance on the GOV.UK Design System.</a>
 </p>
 
-<h2 class="govuk-u-heading-24">How this component looks</h2>
-
-<div>
-
-<details class="govuk-c-details ">
-  <summary class="govuk-c-details__summary">
-    <span class="govuk-c-details__summary-text">Help with nationality</span>
-  </summary>
-  <div class="govuk-c-border govuk-c-border--left-narrow">
-    <div class="govuk-c-details__text">
-      <p>
-    If you’re not sure about your nationality, try to find out from an official document like a passport or national ID card.
-  </p>
-  <p>
-    We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post.
-  </p>
-    </div>
-  </div>
-</details>
-
-</div>
 
 <p class="govuk-u-copy-19">
 <a href="http://govuk-frontend-review.herokuapp.com/components/details/preview">Preview the details component.

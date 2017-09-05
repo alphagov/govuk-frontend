@@ -1,5 +1,6 @@
 
 
+
 <h1 class="govuk-u-heading-36">
 Select box
 </h1>
@@ -9,37 +10,9 @@ Select box
 </p>
 
 <p class="govuk-u-copy-19">
-  <a href="">Find select-box guidance on the GOV.UK Design System.</a>
+  <a href="http://www.linktodesignsystem.com/select-box">Find select-box guidance on the GOV.UK Design System.</a>
 </p>
 
-<h2 class="govuk-u-heading-24">How this component looks</h2>
-
-<div>
-
-
-
-<select class="govuk-c-select-box " id="select-box-1" name="select-box-1">
-  <option value="1">GOV.UK frontend option 1</option>
-  <option value="2">GOV.UK frontend option 2</option>
-  <option value="3">GOV.UK frontend option 3</option>
-</select>
-
-
-
-
-<label class="govuk-c-label " for="select-box-2">
-  Label for select box
-
-
-</label>
-
-<select class="govuk-c-select-box " id="select-box-2" name="select-box-2">
-  <option value="a">GOV.UK frontend option a</option>
-  <option value="b"selected>GOV.UK frontend option b</option>
-  <option value="c">GOV.UK frontend option c</option>
-</select>
-
-</div>
 
 <p class="govuk-u-copy-19">
 <a href="http://govuk-frontend-review.herokuapp.com/components/select-box/preview">Preview the select-box component.

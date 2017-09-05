@@ -1,5 +1,6 @@
 
 
+
 <h1 class="govuk-u-heading-36">
 Button
 </h1>
@@ -9,25 +10,9 @@ Button
 </p>
 
 <p class="govuk-u-copy-19">
-  <a href="">Find button guidance on the GOV.UK Design System.</a>
+  <a href="http://www.linktodesignsystem.com/button">Find button guidance on the GOV.UK Design System.</a>
 </p>
 
-<h2 class="govuk-u-heading-24">How this component looks</h2>
-
-<div>
-
-<input class="govuk-c-button  "
-value="Save and continue">
-
-
-<input class="govuk-c-button  govuk-c-button--disabled  "
-value="Save and continue"disabled="disabled" aria-disabled="true">
-
-
-<a class="govuk-c-button  govuk-c-button--start  " href="/" role="button">
-Start now</a>
-
-</div>
 
 <p class="govuk-u-copy-19">
 <a href="http://govuk-frontend-review.herokuapp.com/components/button/preview">Preview the button component.

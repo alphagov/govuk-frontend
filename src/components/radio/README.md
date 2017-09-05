@@ -1,5 +1,6 @@
 
 
+
 <h1 class="govuk-u-heading-36">
 Radio
 </h1>
@@ -9,31 +10,9 @@ Radio
 </p>
 
 <p class="govuk-u-copy-19">
-  <a href="">Find radio guidance on the GOV.UK Design System.</a>
+  <a href="http://www.linktodesignsystem.com/radio">Find radio guidance on the GOV.UK Design System.</a>
 </p>
 
-<h2 class="govuk-u-heading-24">How this component looks</h2>
-
-<div>
-
-  <div class="govuk-c-radio">
-    <input class="govuk-c-radio__input " id="radio-1" name="radio-group" type="radio" value="Yes"  >
-    <label class="govuk-c-radio__label" for="radio-1">Yes</label>
-  </div>
-  <div class="govuk-c-radio">
-    <input class="govuk-c-radio__input " id="radio-2" name="radio-group" type="radio" value="No"  >
-    <label class="govuk-c-radio__label" for="radio-2">No</label>
-  </div>
-  <div class="govuk-c-radio">
-    <input class="govuk-c-radio__input " id="radio-3" name="radio-group" type="radio" value="No" checked >
-    <label class="govuk-c-radio__label" for="radio-3">No</label>
-  </div>
-  <div class="govuk-c-radio">
-    <input class="govuk-c-radio__input " id="radio-4" name="radio-group" type="radio" value="NA"  disabled>
-    <label class="govuk-c-radio__label" for="radio-4">Not applicable</label>
-  </div>
-
-</div>
 
 <p class="govuk-u-copy-19">
 <a href="http://govuk-frontend-review.herokuapp.com/components/radio/preview">Preview the radio component.

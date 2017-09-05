@@ -1,5 +1,6 @@
 
 
+
 <h1 class="govuk-u-heading-36">
 Date
 </h1>
@@ -9,13 +10,9 @@ Date
 </p>
 
 <p class="govuk-u-copy-19">
-  <a href="">Find date guidance on the GOV.UK Design System.</a>
+  <a href="http://www.linktodesignsystem.com/date">Find date guidance on the GOV.UK Design System.</a>
 </p>
 
-<h2 class="govuk-u-heading-24">How this component looks</h2>
-
-<div>
-</div>
 
 <p class="govuk-u-copy-19">
 <a href="http://govuk-frontend-review.herokuapp.com/components/date/preview">Preview the date component.

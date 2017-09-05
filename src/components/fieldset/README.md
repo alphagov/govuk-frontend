@@ -1,5 +1,6 @@
 
 
+
 <h1 class="govuk-u-heading-36">
 Fieldset
 </h1>
@@ -10,20 +11,9 @@ Fieldset
 </p>
 
 <p class="govuk-u-copy-19">
-  <a href="">Find fieldset guidance on the GOV.UK Design System.</a>
+  <a href="http://www.linktodesignsystem.com/fieldset">Find fieldset guidance on the GOV.UK Design System.</a>
 </p>
 
-<h2 class="govuk-u-heading-24">How this component looks</h2>
-
-<div>
-
-<fieldset class="govuk-c-fieldset ">
-  <legend class="govuk-c-fieldset__legend">
-    Legend text goes here
-  </legend>
-</fieldset>
-
-</div>
 
 <p class="govuk-u-copy-19">
 <a href="http://govuk-frontend-review.herokuapp.com/components/fieldset/preview">Preview the fieldset component.

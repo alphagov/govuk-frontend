@@ -1,5 +1,6 @@
 
 
+
 <h1 class="govuk-u-heading-36">
 File upload
 </h1>
@@ -9,13 +10,9 @@ File upload
 </p>
 
 <p class="govuk-u-copy-19">
-  <a href="">Find file-upload guidance on the GOV.UK Design System.</a>
+  <a href="http://www.linktodesignsystem.com/file-upload">Find file-upload guidance on the GOV.UK Design System.</a>
 </p>
 
-<h2 class="govuk-u-heading-24">How this component looks</h2>
-
-<div>
-</div>
 
 <p class="govuk-u-copy-19">
 <a href="http://govuk-frontend-review.herokuapp.com/components/file-upload/preview">Preview the file-upload component.

@@ -1,5 +1,6 @@
 
 
+
 <h1 class="govuk-u-heading-36">
 Checkbox
 </h1>
@@ -9,31 +10,9 @@ Checkbox
 </p>
 
 <p class="govuk-u-copy-19">
-  <a href="">Find checkbox guidance on the GOV.UK Design System.</a>
+  <a href="http://www.linktodesignsystem.com/checkbox">Find checkbox guidance on the GOV.UK Design System.</a>
 </p>
 
-<h2 class="govuk-u-heading-24">How this component looks</h2>
-
-<div>
-
-  <div class="govuk-c-checkbox ">
-    <input class="govuk-c-checkbox__input" id="waste-type-1" name="waste-types" type="checkbox" value="waste-animal"   >
-    <label class="govuk-c-checkbox__label" for="waste-type-1">Waste from animal carcasses</label>
-  </div>
-  <div class="govuk-c-checkbox ">
-    <input class="govuk-c-checkbox__input" id="waste-type-2" name="waste-types" type="checkbox" value="waste-mines"   >
-    <label class="govuk-c-checkbox__label" for="waste-type-2">Waste from mines or quarries</label>
-  </div>
-  <div class="govuk-c-checkbox ">
-    <input class="govuk-c-checkbox__input" id="waste-type-3" name="waste-types" type="checkbox" value="waste-farm"  checked >
-    <label class="govuk-c-checkbox__label" for="waste-type-3">Farm or agricultural waste</label>
-  </div>
-  <div class="govuk-c-checkbox ">
-    <input class="govuk-c-checkbox__input" id="waste-type-4" name="waste-types" type="checkbox" value="waste-disabled"   disabled>
-    <label class="govuk-c-checkbox__label" for="waste-type-4">Disabled checkbox option</label>
-  </div>
-
-</div>
 
 <p class="govuk-u-copy-19">
 <a href="http://govuk-frontend-review.herokuapp.com/components/checkbox/preview">Preview the checkbox component.

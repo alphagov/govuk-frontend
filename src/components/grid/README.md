@@ -1,5 +1,6 @@
 
 
+
 <h1 class="govuk-u-heading-36">
 Grid
 </h1>
@@ -9,85 +10,9 @@ Grid
 </p>
 
 <p class="govuk-u-copy-19">
-  <a href="">Find grid guidance on the GOV.UK Design System.</a>
+  <a href="http://www.linktodesignsystem.com/grid">Find grid guidance on the GOV.UK Design System.</a>
 </p>
 
-<h2 class="govuk-u-heading-24">How this component looks</h2>
-
-<div>
-
-
-<div class="govuk-c-grid ">
-  <div class="govuk-c-grid__item govuk-c-grid__item--full">
-     
-  </div>
-</div>
-
-
-
-<div class="govuk-c-grid ">
-  <div class="govuk-c-grid__item govuk-c-grid__item--one-half">
-     
-  </div>
-  <div class="govuk-c-grid__item govuk-c-grid__item--one-half">
-     
-  </div>
-</div>
-
-
-
-<div class="govuk-c-grid ">
-  <div class="govuk-c-grid__item govuk-c-grid__item--one-third">
-     
-  </div>
-  <div class="govuk-c-grid__item govuk-c-grid__item--one-third">
-     
-  </div>
-  <div class="govuk-c-grid__item govuk-c-grid__item--one-third">
-     
-  </div>
-</div>
-
-
-
-<div class="govuk-c-grid ">
-  <div class="govuk-c-grid__item govuk-c-grid__item--two-thirds">
-     
-  </div>
-  <div class="govuk-c-grid__item govuk-c-grid__item--one-third">
-     
-  </div>
-</div>
-
-
-
-<div class="govuk-c-grid ">
-  <div class="govuk-c-grid__item govuk-c-grid__item--one-third">
-     
-  </div>
-  <div class="govuk-c-grid__item govuk-c-grid__item--two-thirds">
-     
-  </div>
-</div>
-
-
-
-<div class="govuk-c-grid ">
-  <div class="govuk-c-grid__item govuk-c-grid__item--one-quarter">
-     
-  </div>
-  <div class="govuk-c-grid__item govuk-c-grid__item--one-quarter">
-     
-  </div>
-  <div class="govuk-c-grid__item govuk-c-grid__item--one-quarter">
-     
-  </div>
-  <div class="govuk-c-grid__item govuk-c-grid__item--one-quarter">
-     
-  </div>
-</div>
-
-</div>
 
 <p class="govuk-u-copy-19">
 <a href="http://govuk-frontend-review.herokuapp.com/components/grid/preview">Preview the grid component.

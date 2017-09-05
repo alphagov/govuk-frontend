@@ -1,5 +1,6 @@
 
 
+
 <h1 class="govuk-u-heading-36">
 Phase tag
 </h1>
@@ -9,16 +10,9 @@ Phase tag
 </p>
 
 <p class="govuk-u-copy-19">
-  <a href="">Find phase-tag guidance on the GOV.UK Design System.</a>
+  <a href="http://www.linktodesignsystem.com/phase-tag">Find phase-tag guidance on the GOV.UK Design System.</a>
 </p>
 
-<h2 class="govuk-u-heading-24">How this component looks</h2>
-
-<div>
-
-<strong class="govuk-c-phase-tag "> Alpha</strong>
-
-</div>
 
 <p class="govuk-u-copy-19">
 <a href="http://govuk-frontend-review.herokuapp.com/components/phase-tag/preview">Preview the phase-tag component.

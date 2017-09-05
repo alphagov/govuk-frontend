@@ -1,5 +1,6 @@
 
 
+
 <h1 class="govuk-u-heading-36">
 List
 </h1>
@@ -9,94 +10,9 @@ List
 </p>
 
 <p class="govuk-u-copy-19">
-  <a href="">Find list guidance on the GOV.UK Design System.</a>
+  <a href="http://www.linktodesignsystem.com/list">Find list guidance on the GOV.UK Design System.</a>
 </p>
 
-<h2 class="govuk-u-heading-24">How this component looks</h2>
-
-<div>
-
-<ul class="govuk-c-list ">
-
-  <li>
-<a href="/ ">        Related link
-</a>  </li>
-  <li>
-<a href="/ ">        Related link
-</a>  </li>
-  <li>
-<a href="/ ">        Related link
-</a>  </li>
-
-</ul>
-
-
-<ul class="govuk-c-list govuk-c-list--bullet ">
-
-  <li>
-        here is a bulleted list
-  </li>
-  <li>
-        here is the second bulleted list item
-  </li>
-  <li>
-        here is the third bulleted list item
-  </li>
-
-</ul>
-
-
-<ol class="govuk-c-list govuk-c-list--number ">
-
-  <li>
-        This is a numbered list.
-  </li>
-  <li>
-        This is the second step in a numbered list.
-  </li>
-  <li>
-        The third step is to make sure each item is a full sentence ending with a full stop.
-  </li>
-
-</ol>
-
-
-<ol class="govuk-c-list govuk-c-list--icon ">
-
-  <li>
-      <span class="govuk-c-list__icon govuk-u-circle ">1</span>
-      Step 1
-  </li>
-  <li>
-      <span class="govuk-c-list__icon govuk-u-circle ">2</span>
-      Step 2
-  </li>
-  <li>
-      <span class="govuk-c-list__icon govuk-u-circle ">3</span>
-      Step 3
-  </li>
-
-</ol>
-
-
-<ol class="govuk-c-list govuk-c-list--icon ">
-
-  <li>
-      <span class="govuk-c-list__icon govuk-u-circle govuk-c-list__icon--large">1</span>
-      Step 1 Large icon
-  </li>
-  <li>
-      <span class="govuk-c-list__icon govuk-u-circle govuk-c-list__icon--large">2</span>
-      Step 2 Large icon
-  </li>
-  <li>
-      <span class="govuk-c-list__icon govuk-u-circle govuk-c-list__icon--large">3</span>
-      Step 3 Large icon
-  </li>
-
-</ol>
-
-</div>
 
 <p class="govuk-u-copy-19">
 <a href="http://govuk-frontend-review.herokuapp.com/components/list/preview">Preview the list component.

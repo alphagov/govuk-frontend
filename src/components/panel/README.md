@@ -1,5 +1,6 @@
 
 
+
 <h1 class="govuk-u-heading-36">
 Panel
 </h1>
@@ -9,25 +10,9 @@ Panel
 </p>
 
 <p class="govuk-u-copy-19">
-  <a href="">Find panel guidance on the GOV.UK Design System.</a>
+  <a href="http://www.linktodesignsystem.com/panel">Find panel guidance on the GOV.UK Design System.</a>
 </p>
 
-<h2 class="govuk-u-heading-24">How this component looks</h2>
-
-<div>
-
-<div class="govuk-c-panel govuk-c-panel--confirmation ">
-  <h2 class="govuk-c-panel__title">
-    Application complete
-  </h2>
-  <div class="govuk-c-panel__body">
-    Your reference number is
-    <br>
-    <strong>HDJ2123F</strong>
-  </div>
-</div>
-
-</div>
 
 <p class="govuk-u-copy-19">
 <a href="http://govuk-frontend-review.herokuapp.com/components/panel/preview">Preview the panel component.
