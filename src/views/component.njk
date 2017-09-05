@@ -20,14 +20,14 @@
       Find {{ componentName }} guidance on the GOV.UK Design System.
     </a>
   </p>
-
+{% if not isReadme %}
   <h2 class="govuk-u-heading-24">How this component looks</h2>
   <div>
     {% block componentExample %}
       {% include "../components/"+ componentName +"/"+ componentName +".njk" %}
     {% endblock %}
   </div>
-
+{% endif %}
   <p class="govuk-u-copy-19">
     {% set componentPreviewPath = "/components/" + componentPath + "/preview" %}
     <a href="{% if isReadme %} http://govuk-frontend-review.herokuapp.com{% endif %}{{ componentPreviewPath }}">
