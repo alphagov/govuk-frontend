@@ -5,7 +5,7 @@ const fs = require('fs')
 const path = require('path')
 const port = (process.env.PORT || 3000)
 const herokuApp = process.env.HEROKU_APP
-const dirTree = require('directory-tree')
+const dto = require('directory-to-object')
 
 // Set up views
 const appViews = [
@@ -34,12 +34,13 @@ app.listen(port, () => {
 
 // Routes
 
-// Get a directory tree of the components folder
-const tree = dirTree('./src/components/')
-// console.log(tree)
-
-// Pass the tree object to all routes
-app.locals.componentsDirectory = tree
+// Return an object representing the components directory
+dto(path.resolve('./src/components'), (err, res) => {
+  if (err) {
+    console.log(err)
+  }
+  app.locals.componentsDirectory = res
+})
 
 // Index page - render the component list template
 app.get('/', function (req, res) {
