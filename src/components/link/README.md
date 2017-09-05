@@ -1,16 +1,10 @@
 
-  
 
-  
+<h1 class="govuk-u-heading-36">
+Link
+</h1>
 
-  <h1 class="govuk-u-heading-36">
-    
-      Link
-    
-  </h1>
-
-  <p class="govuk-u-core-24">
-    
+<p class="govuk-u-core-24">
 Link component, with the following modifiers:
 
 `--back`
@@ -24,59 +18,67 @@ Download Link - with download icon
 
 `--skip`
 Skiplink - skip to the main page content
+</p>
 
-  </p>
+<p class="govuk-u-copy-19">
+  <a href="">Find link guidance on the GOV.UK Design System.</a>
+</p>
 
-  <p class="govuk-u-copy-19">
-    <a href="
-  http://www.linktodesignsystem.com
-">
-      Find link guidance on the GOV.UK Design System.
-    </a>
-  </p>
+<h2 class="govuk-u-heading-24">How this component looks</h2>
 
-  <h2 class="govuk-u-heading-24">How this component looks</h2>
-  <div>
-    
-      
+<div>
+
+<a href="" class="govuk-c-link govuk-c-link--back">Back</a>
 
 
-  <a href="" class="govuk-c-link govuk-c-link--back">Back</a>
+<a href="" class="govuk-c-link govuk-c-link--muted">Is there anything wrong with this page?</a>
 
 
+<a href="" class="govuk-c-link govuk-c-link--download"></a>
 
 
-  <a href="" class="govuk-c-link govuk-c-link--muted">Is there anything wrong with this page?</a>
+<a href="" class="govuk-c-link govuk-c-link--skip">Skip to main content</a>
 
+</div>
 
-
-
-  <a href="" class="govuk-c-link govuk-c-link--download"></a>
-
-
-
-
-  <a href="" class="govuk-c-link govuk-c-link--skip">Skip to main content</a>
-
-
-
-    
-  </div>
-
-  <p class="govuk-u-copy-19">
-    
-    <a href=" http://govuk-frontend-review.herokuapp.com/components/undefined/preview">
-      Preview the link component.
-    </a>
-  </p>
+<p class="govuk-u-copy-19">
+<a href="http://govuk-frontend-review.herokuapp.com/components/link/preview">Preview the link component.
+</a>
+</p>
 
   <h2 class="govuk-u-heading-24">How to call this component</h2>
-  <pre><code></code></pre>
 
-  
-    <h2 class="govuk-u-heading-24">Component arguments</h2>
-    <div>
-      
+  <pre><code>{% from &quot;link/macro.njk&quot; import govukLink %}
+
+{{ govukLink(
+  classes=&#39;govuk-c-link--back&#39;,
+  linkHref=&#39;&#39;,
+  linkText=&#39;Back&#39;)
+}}
+
+{{ govukLink(
+  classes=&#39;govuk-c-link--muted&#39;,
+  linkHref=&#39;&#39;,
+  linkText=&#39;Is there anything wrong with this page?&#39;)
+}}
+
+{{ govukLink(
+  classes=&#39;govuk-c-link--download&#39;,
+  linkHref=&#39;&#39;,
+  tagText=&#39;Download&#39;)
+}}
+
+{{ govukLink(
+  classes=&#39;govuk-c-link--skip&#39;,
+  linkHref=&#39;&#39;,
+  linkText=&#39;Skip to main content&#39;)
+}}
+</code></pre>
+
+<h2 class="govuk-u-heading-24">Component arguments</h2>
+
+<div>
+
 <!-- TODO: Use the table macro here and pass it component argument data -->
 | Name      | Type    | Default | Required  | Description
 |---        |---      |---      |---        |---
@@ -88,20 +90,36 @@ Skiplink - skip to the main page content
                                             | --download
                                             | --skip
 
-    </div>
-  
+</div>
 
-  <h2 class="govuk-u-heading-24">Component HTML</h2>
-  <pre><code></code></pre>
+<h2 class="govuk-u-heading-24">Component HTML</h2>
+<pre><code>{% from &quot;link/macro.njk&quot; import govukLink %}
 
-  
-  <h2 class="govuk-u-heading-24">Installation</h2>
-  <pre>
-    <code>
-      npm install --save @govuk-frontend/link
-    </code>
-  </pre>
-  
+{{ govukLink(
+  classes=&#39;govuk-c-link--back&#39;,
+  linkHref=&#39;&#39;,
+  linkText=&#39;Back&#39;)
+}}
 
+{{ govukLink(
+  classes=&#39;govuk-c-link--muted&#39;,
+  linkHref=&#39;&#39;,
+  linkText=&#39;Is there anything wrong with this page?&#39;)
+}}
 
+{{ govukLink(
+  classes=&#39;govuk-c-link--download&#39;,
+  linkHref=&#39;&#39;,
+  tagText=&#39;Download&#39;)
+}}
+
+{{ govukLink(
+  classes=&#39;govuk-c-link--skip&#39;,
+  linkHref=&#39;&#39;,
+  linkText=&#39;Skip to main content&#39;)
+}}
+</code></pre>
+
+<h2 class="govuk-u-heading-24">Installation</h2>
+<pre><code>npm install --save @govuk-frontend/link</code></pre>
 

@@ -6,58 +6,56 @@
   {% set componentGuidanceLink = componentGuidanceLink | default('http://www.linktodesignsystem.com/' + componentName)%}
 
 
-  <h1 class="govuk-u-heading-36">
-    {% block componentName %}
-      {{ componentName | replace("-", " ") | capitalize }}
-    {% endblock %}
-  </h1>
+<h1 class="govuk-u-heading-36">
+{% block componentName %}
+{{ componentName | replace("-", " ") | capitalize }}
+{% endblock %}
+</h1>
 
-  <p class="govuk-u-core-24">
-    {% block componentDescription %}
-    {% endblock %}
-  </p>
+<p class="govuk-u-core-24">
+{% block componentDescription %}
+{% endblock %}
+</p>
 
-  <p class="govuk-u-copy-19">
-    <a href="{{- componentGuidanceLink -}}">
-      Find {{ componentName }} guidance on the GOV.UK Design System.
-    </a>
-  </p>
-{% if not isReadme %}
-  <h2 class="govuk-u-heading-24">How this component looks</h2>
-  <div>
-    {% block componentExample %}
-      {% include "../components/"+ componentName +"/"+ componentName +".njk" ignore missing %}
-    {% endblock %}
-  </div>
-{% endif %}
-  <p class="govuk-u-copy-19">
-    {% set componentPreviewPath = "/components/" + componentPath + "/preview" %}
-    <a href="{% if isReadme %} http://govuk-frontend-review.herokuapp.com{% endif %}{{ componentPreviewPath }}">
-      Preview the {{ componentName}} component.
-    </a>
-  </p>
+<p class="govuk-u-copy-19">
+  <a href="{{- componentGuidanceLink -}}">Find {{ componentName }} guidance on the GOV.UK Design System.</a>
+</p>
+
+<h2 class="govuk-u-heading-24">How this component looks</h2>
+
+<div>
+{% block componentExample %}
+{% include "../components/"+ componentName +"/"+ componentName +".njk" ignore missing %}
+{% endblock %}
+</div>
+
+<p class="govuk-u-copy-19">
+{% set componentPreviewPath = "/components/" + componentPath + "/preview" %}
+<a href="{% if isReadme %}http://govuk-frontend-review.herokuapp.com{% endif %}{{ componentPreviewPath }}">Preview the {{ componentName}} component.
+</a>
+</p>
 
   <h2 class="govuk-u-heading-24">How to call this component</h2>
+
   <pre><code>{% block componentNunjucks %}{{ componentNunjucksFile }}{% endblock %}</code></pre>
 
-  {% if isReadme %}
-    <h2 class="govuk-u-heading-24">Component arguments</h2>
-    <div>
-      {% block componentArguments %}
-      {% endblock %}
-    </div>
-  {% endif %}
+{% if isReadme %}
+<h2 class="govuk-u-heading-24">Component arguments</h2>
 
-  <h2 class="govuk-u-heading-24">Component HTML</h2>
-  <pre><code>{% block componentHtml %}{{ componentHtmlFile }}{% endblock %}</code></pre>
+<div>
 
-  {% if isReadme %}
-  <h2 class="govuk-u-heading-24">Installation</h2>
-  <pre>
-    <code>
-      npm install --save @govuk-frontend/{{ componentName }}
-    </code>
-  </pre>
-  {% endif %}
+{% block componentArguments %}
+{% endblock %}
+
+</div>
+{% endif %}
+
+<h2 class="govuk-u-heading-24">Component HTML</h2>
+<pre><code>{% block componentHtml %}{{ componentHtmlFile }}{% endblock %}</code></pre>
+
+{% if isReadme %}
+<h2 class="govuk-u-heading-24">Installation</h2>
+<pre><code>npm install --save @govuk-frontend/{{ componentName }}</code></pre>
+{% endif %}
 
 {% endblock %}

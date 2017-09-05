@@ -1,75 +1,84 @@
 
-  
 
-  
+<h1 class="govuk-u-heading-36">
+Radio
+</h1>
 
-  <h1 class="govuk-u-heading-36">
-    
-      Radio
-    
-  </h1>
-
-  <p class="govuk-u-core-24">
-    
+<p class="govuk-u-core-24">
   A radio button. You must use the `value` attribute to define the value submitted by this item. Use the `checked` attribute to indicate whether this item is selected by default. Radio buttons that have the same value for the name attribute are in the same "radio button group". Only one radio button in a group can be selected at a time.
+</p>
 
-  </p>
+<p class="govuk-u-copy-19">
+  <a href="">Find radio guidance on the GOV.UK Design System.</a>
+</p>
 
-  <p class="govuk-u-copy-19">
-    <a href="
-  http://www.linktodesignsystem.com
-">
-      Find radio guidance on the GOV.UK Design System.
-    </a>
-  </p>
+<h2 class="govuk-u-heading-24">How this component looks</h2>
 
-  <h2 class="govuk-u-heading-24">How this component looks</h2>
-  <div>
-    
-      
+<div>
 
-
-  
   <div class="govuk-c-radio">
     <input class="govuk-c-radio__input " id="radio-1" name="radio-group" type="radio" value="Yes"  >
     <label class="govuk-c-radio__label" for="radio-1">Yes</label>
   </div>
-
   <div class="govuk-c-radio">
     <input class="govuk-c-radio__input " id="radio-2" name="radio-group" type="radio" value="No"  >
     <label class="govuk-c-radio__label" for="radio-2">No</label>
   </div>
-
   <div class="govuk-c-radio">
     <input class="govuk-c-radio__input " id="radio-3" name="radio-group" type="radio" value="No" checked >
     <label class="govuk-c-radio__label" for="radio-3">No</label>
   </div>
-
   <div class="govuk-c-radio">
     <input class="govuk-c-radio__input " id="radio-4" name="radio-group" type="radio" value="NA"  disabled>
     <label class="govuk-c-radio__label" for="radio-4">Not applicable</label>
   </div>
 
+</div>
 
-
-
-    
-  </div>
-
-  <p class="govuk-u-copy-19">
-    
-    <a href=" http://govuk-frontend-review.herokuapp.com/components/undefined/preview">
-      Preview the radio component.
-    </a>
-  </p>
+<p class="govuk-u-copy-19">
+<a href="http://govuk-frontend-review.herokuapp.com/components/radio/preview">Preview the radio component.
+</a>
+</p>
 
   <h2 class="govuk-u-heading-24">How to call this component</h2>
-  <pre><code></code></pre>
 
-  
-    <h2 class="govuk-u-heading-24">Component arguments</h2>
-    <div>
-      
+  <pre><code>{% from &#39;radio/macro.njk&#39; import govukRadio %}
+
+{{ govukRadio(
+  classes=&#39;&#39;,
+  name=&#39;radio-group&#39;,
+  id=&#39;radio&#39;,
+  radios=[
+   {
+      id: &#39;1&#39;,
+      value: &#39;Yes&#39;,
+      label: &#39;Yes&#39;
+    },
+    {
+      id: &#39;2&#39;,
+      value: &#39;No&#39;,
+      label: &#39;No&#39;
+    },
+    {
+      id: &#39;3&#39;,
+      value: &#39;No&#39;,
+      label: &#39;No&#39;,
+      checked: &#39;true&#39;
+    },
+    {
+      id: &#39;4&#39;,
+      value: &#39;NA&#39;,
+      label: &#39;Not applicable&#39;,
+      disabled: &#39;true&#39;
+    }
+  ]
+) }}
+</code></pre>
+
+<h2 class="govuk-u-heading-24">Component arguments</h2>
+
+<div>
+
 <!-- TODO: Use the table macro here and pass it component argument data -->
 | Name        | Type    | Default | Required | Description
 |---          |---      |---      |---       |---
@@ -78,20 +87,42 @@
 | id          | string  |         | Yes      | ID is prefixed to the ID of each radio button
 | radios      | array   |         | Yes      | Radios array with id, value, label, checked and disabled keys
 
-    </div>
-  
+</div>
 
-  <h2 class="govuk-u-heading-24">Component HTML</h2>
-  <pre><code></code></pre>
+<h2 class="govuk-u-heading-24">Component HTML</h2>
+<pre><code>{% from &#39;radio/macro.njk&#39; import govukRadio %}
 
-  
-  <h2 class="govuk-u-heading-24">Installation</h2>
-  <pre>
-    <code>
-      npm install --save @govuk-frontend/radio
-    </code>
-  </pre>
-  
+{{ govukRadio(
+  classes=&#39;&#39;,
+  name=&#39;radio-group&#39;,
+  id=&#39;radio&#39;,
+  radios=[
+   {
+      id: &#39;1&#39;,
+      value: &#39;Yes&#39;,
+      label: &#39;Yes&#39;
+    },
+    {
+      id: &#39;2&#39;,
+      value: &#39;No&#39;,
+      label: &#39;No&#39;
+    },
+    {
+      id: &#39;3&#39;,
+      value: &#39;No&#39;,
+      label: &#39;No&#39;,
+      checked: &#39;true&#39;
+    },
+    {
+      id: &#39;4&#39;,
+      value: &#39;NA&#39;,
+      label: &#39;Not applicable&#39;,
+      disabled: &#39;true&#39;
+    }
+  ]
+) }}
+</code></pre>
 
-
+<h2 class="govuk-u-heading-24">Installation</h2>
+<pre><code>npm install --save @govuk-frontend/radio</code></pre>
 

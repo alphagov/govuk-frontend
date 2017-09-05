@@ -10,11 +10,17 @@
 {# componentNunjucks #}
 {# componentHtml #}
 
+<<<<<<< HEAD
 {# override link to design system here if it's different to base url + componentName #}
 {# {% set componentGuidanceLink = 'new link here' %} #}
+=======
+{% set componentGuidanceLink = 'http://www.linktodesignsystem.com' %}
+{# {% block componentGuidanceLink %}
+  http://www.linktodesignsystem.com
+{% endblock %} #}
+>>>>>>> Get componen file content from path
 
 {% block componentArguments %}
-<!-- TODO: Use the table macro here and pass it component argument data -->
 | Name        | Type   | Default | Required | Description
 |---          |---     |---      |---       |---
 | classes     | string |         | No       | Optional additional classes

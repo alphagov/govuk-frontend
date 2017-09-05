@@ -1,66 +1,56 @@
 
-  
 
-  
+<h1 class="govuk-u-heading-36">
+Panel
+</h1>
 
-  <h1 class="govuk-u-heading-36">
-    
-      Panel
-    
-  </h1>
-
-  <p class="govuk-u-core-24">
-    
+<p class="govuk-u-core-24">
   The confirmation panel has a turquoise background and white text. Used for transaction end pages, and Bank Holidays.
+</p>
 
-  </p>
+<p class="govuk-u-copy-19">
+  <a href="">Find panel guidance on the GOV.UK Design System.</a>
+</p>
 
-  <p class="govuk-u-copy-19">
-    <a href="
-  http://www.linktodesignsystem.com
-">
-      Find panel guidance on the GOV.UK Design System.
-    </a>
-  </p>
+<h2 class="govuk-u-heading-24">How this component looks</h2>
 
-  <h2 class="govuk-u-heading-24">How this component looks</h2>
-  <div>
-    
-      
+<div>
 
-
-  <div class="govuk-c-panel govuk-c-panel--confirmation ">
+<div class="govuk-c-panel govuk-c-panel--confirmation ">
   <h2 class="govuk-c-panel__title">
     Application complete
   </h2>
   <div class="govuk-c-panel__body">
     Your reference number is
-    
     <br>
     <strong>HDJ2123F</strong>
-    
   </div>
 </div>
 
+</div>
 
-
-    
-  </div>
-
-  <p class="govuk-u-copy-19">
-    
-    <a href=" http://govuk-frontend-review.herokuapp.com/components/undefined/preview">
-      Preview the panel component.
-    </a>
-  </p>
+<p class="govuk-u-copy-19">
+<a href="http://govuk-frontend-review.herokuapp.com/components/panel/preview">Preview the panel component.
+</a>
+</p>
 
   <h2 class="govuk-u-heading-24">How to call this component</h2>
-  <pre><code></code></pre>
 
-  
-    <h2 class="govuk-u-heading-24">Component arguments</h2>
-    <div>
-      
+  <pre><code>{% from &quot;panel/macro.njk&quot; import govukPanel %}
+
+{{ govukPanel(
+  classes=&#39;&#39;,
+  title=&#39;Application complete&#39;,
+  content=&#39;Your reference number is&#39;,
+  reference=&#39;HDJ2123F&#39;
+  )
+}}
+</code></pre>
+
+<h2 class="govuk-u-heading-24">Component arguments</h2>
+
+<div>
+
 <!-- TODO: Use the table macro here and pass it component argument data -->
 | Name          | Type    | Required  | Description
 |---            |---      |---        |---
@@ -69,20 +59,20 @@
 | content       | string  | No        | The panel content
 | reference     | string  | No        | Optional reference number
 
-    </div>
-  
+</div>
 
-  <h2 class="govuk-u-heading-24">Component HTML</h2>
-  <pre><code></code></pre>
+<h2 class="govuk-u-heading-24">Component HTML</h2>
+<pre><code>{% from &quot;panel/macro.njk&quot; import govukPanel %}
 
-  
-  <h2 class="govuk-u-heading-24">Installation</h2>
-  <pre>
-    <code>
-      npm install --save @govuk-frontend/panel
-    </code>
-  </pre>
-  
+{{ govukPanel(
+  classes=&#39;&#39;,
+  title=&#39;Application complete&#39;,
+  content=&#39;Your reference number is&#39;,
+  reference=&#39;HDJ2123F&#39;
+  )
+}}
+</code></pre>
 
-
+<h2 class="govuk-u-heading-24">Installation</h2>
+<pre><code>npm install --save @govuk-frontend/panel</code></pre>
 

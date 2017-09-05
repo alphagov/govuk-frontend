@@ -1,77 +1,57 @@
 
-  
 
-  
+<h1 class="govuk-u-heading-36">
+Site width container
+</h1>
 
-  <h1 class="govuk-u-heading-36">
-    
-      Site width container
-    
-  </h1>
-
-  <p class="govuk-u-core-24">
-    
+<p class="govuk-u-core-24">
   A container set to the width of the site (960px) and its margins.
+</p>
 
-  </p>
+<p class="govuk-u-copy-19">
+  <a href="">Find site-width-container guidance on the GOV.UK Design System.</a>
+</p>
 
-  <p class="govuk-u-copy-19">
-    <a href="
-  http://www.linktodesignsystem.com
-">
-      Find site-width-container guidance on the GOV.UK Design System.
-    </a>
-  </p>
+<h2 class="govuk-u-heading-24">How this component looks</h2>
 
-  <h2 class="govuk-u-heading-24">How this component looks</h2>
-  <div>
-    
-      
+<div>
 
-
-  <div class="govuk-c-site-width-container ">
+<div class="govuk-c-site-width-container ">
    
 </div>
 
+</div>
 
-
-    
-  </div>
-
-  <p class="govuk-u-copy-19">
-    
-    <a href=" http://govuk-frontend-review.herokuapp.com/components/undefined/preview">
-      Preview the site-width-container component.
-    </a>
-  </p>
+<p class="govuk-u-copy-19">
+<a href="http://govuk-frontend-review.herokuapp.com/components/site-width-container/preview">Preview the site-width-container component.
+</a>
+</p>
 
   <h2 class="govuk-u-heading-24">How to call this component</h2>
-  <pre><code></code></pre>
 
-  
-    <h2 class="govuk-u-heading-24">Component arguments</h2>
-    <div>
-      
+  <pre><code>{% from &quot;site-width-container/macro.njk&quot; import govukSiteWidthContainer %}
+
+{{ govukSiteWidthContainer(classes) }}
+</code></pre>
+
+<h2 class="govuk-u-heading-24">Component arguments</h2>
+
+<div>
+
 <!-- TODO: Use the table macro here and pass it component argument data -->
 
 | Name          | Type    | Required  | Description
 |---            |---      |---        |---
 | classes       | string  | No        | Optional additional classes
 
-    </div>
-  
+</div>
 
-  <h2 class="govuk-u-heading-24">Component HTML</h2>
-  <pre><code></code></pre>
+<h2 class="govuk-u-heading-24">Component HTML</h2>
+<pre><code>{% from &quot;site-width-container/macro.njk&quot; import govukSiteWidthContainer %}
 
-  
-  <h2 class="govuk-u-heading-24">Installation</h2>
-  <pre>
-    <code>
-      npm install --save @govuk-frontend/site-width-container
-    </code>
-  </pre>
-  
+{{ govukSiteWidthContainer(classes) }}
+</code></pre>
 
-
+<h2 class="govuk-u-heading-24">Installation</h2>
+<pre><code>npm install --save @govuk-frontend/site-width-container</code></pre>
 

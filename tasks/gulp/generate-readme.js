@@ -7,7 +7,7 @@ const rename = require('gulp-rename')
 const data = require('gulp-data')
 const tap = require('gulp-tap')
 const path = require('path')
-
+const fs = require('fs')
 const vinylInfo = {}
 
 function getDataForFile (file) {
@@ -18,12 +18,17 @@ function getDataForFile (file) {
 
 const manageEnvironment = function (environment) {
   environment.addGlobal('isReadme', 'true')
+  environment.opts.lstripBlocks = true
+  environment.opts.trimBlocks = true
 }
 
 gulp.task('generate:readme', () => {
-  return gulp.src([paths.components + '**/index.njk'])
+  return gulp.src(['!' + paths.components + '_component-example/index.njk', paths.components + '**/index.njk'])
   .pipe(tap(file => {
     vinylInfo.componentName = path.dirname(file.path).split(path.sep).pop()
+    vinylInfo.componentPath = vinylInfo.componentName
+    vinylInfo.componentNunjucksFile = fs.readFileSync(paths.components + vinylInfo.componentName + '/' + vinylInfo.componentName + '.njk', 'utf8')
+    vinylInfo.componentHtmlFile = vinylInfo.componentNunjucksFile
   }))
   .pipe(data(getDataForFile))
   .pipe(nunjucksRender({
