@@ -27,6 +27,7 @@ app.set('view engine', 'njk')
 
 // Set up middleware to serve static assets
 app.use('/public', express.static(path.join(__dirname, '/public')))
+app.use('/icons', express.static(path.join(__dirname, '/public/icons')))
 
 app.listen(port, () => {
   console.log('Listening on port ' + port + '   url: http://localhost:' + port)
