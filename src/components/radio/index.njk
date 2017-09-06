@@ -4,7 +4,11 @@
 
 {# componentName #}
 {% block componentDescription %}
-  A radio button. You must use the `value` attribute to define the value submitted by this item. Use the `checked` attribute to indicate whether this item is selected by default. Radio buttons that have the same value for the name attribute are in the same "radio button group". Only one radio button in a group can be selected at a time.
+  A radio button is a GOV.UK element that allows users to answer a question by selecting an option. If you have a question with more than one option you should stack radio buttons.
+{% endblock %}
+
+{% block componentDependencies %}
+Please note, this component depends on @govuk-frontend/globals, which will automatically be installed with the package.
 {% endblock %}
 {# componentExample #}
 {# componentNunjucks #}
