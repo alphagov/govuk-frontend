@@ -59,24 +59,23 @@ Error summary
 </div>
 
 <h2 class="govuk-u-heading-24">Component HTML</h2>
-<pre><code>{% from &quot;error-summary/macro.njk&quot; import govukErrorSummary %}
+<pre><code>&lt;div class=&quot;govuk-c-error-summary&quot; aria-labelledby=&quot;error-summary-title&quot; role=&quot;alert&quot; tabindex=&quot;-1&quot;&gt;
 
-{{ govukErrorSummary(
-  classes=&#39;&#39;,
-  title=&#39;Message to alert the user to a problem goes here&#39;,
-  description=&#39;Optional description of the errors and how to correct them&#39;,
-  listClasses=&#39;&#39;,
-  listItems=[
-    {
-      text: &#39;Descriptive link to the question with an error&#39;,
-      url: &#39;#example-error-1&#39;
-    },
-    {
-      text: &#39;Descriptive link to the question with an error&#39;,
-      url: &#39;#example-error-2&#39;
-    }
-  ]
-) }}
+  &lt;h2 class=&quot;govuk-c-error-summary__title&quot; id=&quot;error-summary-title&quot;&gt;
+    Message to alert the user to a problem goes here
+  &lt;/h2&gt;
+
+  &lt;div class=&quot;govuk-c-error-summary__body&quot;&gt;
+    &lt;p&gt;
+      Optional description of the errors and how to correct them
+    &lt;/p&gt;
+
+    &lt;ul class=&quot;govuk-c-list govuk-c-error-summary__list&quot;&gt;
+      &lt;li&gt;&lt;a href=&quot;#example-personal-details&quot;&gt;Descriptive link to the question with an error&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+
+&lt;/div&gt;
 </code></pre>
 
 <h2 class="govuk-u-heading-24">Installation</h2>

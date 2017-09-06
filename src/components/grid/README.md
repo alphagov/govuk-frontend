@@ -94,63 +94,66 @@ Grid
 </div>
 
 <h2 class="govuk-u-heading-24">Component HTML</h2>
-<pre><code>{% from &quot;grid/macro.njk&quot; import govukGrid %}
+<pre><code>&lt;div class=&quot;govuk-c-site-width-container&quot;&gt;
 
-{{ govukGrid(
-  classes=&#39;&#39;,
-  gridItems=[
-    { width: &#39;full&#39; }
-  ]
-  )
-}}
+  &lt;!-- Full width --&gt;
+  &lt;div class=&quot;govuk-c-grid&quot;&gt;
+    &lt;div class=&quot;govuk-c-grid__item govuk-c-grid__item--full&quot;&gt;
+      Grid item
+    &lt;/div&gt;
+  &lt;/div&gt;
 
-{{ govukGrid(
-  classes=&#39;&#39;,
-  gridItems=[
-    { width: &#39;one-half&#39; },
-    { width: &#39;one-half&#39; }
-  ]
-  )
-}}
+  &lt;!-- Halves --&gt;
+  &lt;div class=&quot;govuk-c-grid&quot;&gt;
+    &lt;div class=&quot;govuk-c-grid__item govuk-c-grid__item--one-half&quot;&gt;
+      Grid item
+    &lt;/div&gt;
+    &lt;div class=&quot;govuk-c-grid__item  govuk-c-grid__item--one-half&quot;&gt;
+      Grid item
+    &lt;/div&gt;
+  &lt;/div&gt;
 
-{{ govukGrid(
-  classes=&#39;&#39;,
-  gridItems=[
-    { width: &#39;one-third&#39; },
-    { width: &#39;one-third&#39; },
-    { width: &#39;one-third&#39; }
-  ]
-  )
-}}
+  &lt;!-- Thirds --&gt;
+  &lt;div class=&quot;govuk-c-grid&quot;&gt;
+    &lt;div class=&quot;govuk-c-grid__item  govuk-c-grid__item--one-third&quot;&gt;
+      Grid item
+    &lt;/div&gt;
+    &lt;div class=&quot;govuk-c-grid__item  govuk-c-grid__item--one-third&quot;&gt;
+      Grid item
+    &lt;/div&gt;
+  &lt;/div&gt;
 
-{{ govukGrid(
-  classes=&#39;&#39;,
-  gridItems=[
-    { width: &#39;two-thirds&#39; },
-    { width: &#39;one-third&#39; }
-  ]
-  )
-}}
+  &lt;!-- Two thirds / one third --&gt;
+  &lt;div class=&quot;govuk-c-grid&quot;&gt;
+    &lt;div class=&quot;govuk-c-grid__item govuk-c-grid__item--two-thirds&quot;&gt;
+      Grid item
+    &lt;/div&gt;
+    &lt;div class=&quot;govuk-c-grid__item govuk-c-grid__item--one-third&quot;&gt;
+      Grid item
+    &lt;/div&gt;
+  &lt;/div&gt;
 
-{{ govukGrid(
-  classes=&#39;&#39;,
-  gridItems=[
-    { width: &#39;one-third&#39; },
-    { width: &#39;two-thirds&#39; }
-  ]
-  )
-}}
+  &lt;!-- One third / two thirds --&gt;
+  &lt;div class=&quot;govuk-c-grid&quot;&gt;
+    &lt;div class=&quot;govuk-c-grid__item govuk-c-grid__item--one-third&quot;&gt;
+      Grid item
+    &lt;/div&gt;
+    &lt;div class=&quot;govuk-c-grid__item govuk-c-grid__item--two-thirds&quot;&gt;
+      Grid item
+    &lt;/div&gt;
+  &lt;/div&gt;
 
-{{ govukGrid(
-  classes=&#39;&#39;,
-  gridItems=[
-    { width: &#39;one-quarter&#39; },
-    { width: &#39;one-quarter&#39; },
-    { width: &#39;one-quarter&#39; },
-    { width: &#39;one-quarter&#39; }
-  ]
-  )
-}}
+  &lt;!-- Quarters --&gt;
+  &lt;div class=&quot;govuk-c-grid&quot;&gt;
+    &lt;div class=&quot;govuk-c-grid__item govuk-c-grid__item--one-quarter&quot;&gt;
+      Grid item
+    &lt;/div&gt;
+    &lt;div class=&quot;govuk-c-grid__item govuk-c-grid__item--one-quarter&quot;&gt;
+      Grid item
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+&lt;/div&gt;
 </code></pre>
 
 <h2 class="govuk-u-heading-24">Installation</h2>

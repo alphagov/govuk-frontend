@@ -39,9 +39,9 @@ Phase tag
 </div>
 
 <h2 class="govuk-u-heading-24">Component HTML</h2>
-<pre><code>{% from &quot;phase-tag/macro.njk&quot; import govukPhaseTag %}
+<pre><code>&lt;strong class=&quot;govuk-c-phase-tag&quot;&gt;ALPHA&lt;/strong&gt;
 
-{{ govukPhaseTag(classes=&#39;&#39;, phaseTagText=&#39;Alpha&#39;) }}
+&lt;strong class=&quot;govuk-c-phase-tag&quot;&gt;BETA&lt;/strong&gt;
 </code></pre>
 
 <h2 class="govuk-u-heading-24">Installation</h2>

@@ -73,38 +73,42 @@ Input
 </div>
 
 <h2 class="govuk-u-heading-24">Component HTML</h2>
-<pre><code>{% from &quot;input/macro.njk&quot; import govukInput %}
+<pre><code>&lt;label class=&quot;govuk-c-label&quot; for=&quot;govuk-c-input-a&quot;&gt;
+  National Insurance number
+&lt;/label&gt;
+&lt;input class=&quot;govuk-c-input&quot; id=&quot;govuk-c-input-a&quot; type=&quot;text&quot;&gt;
 
-{{ govukInput(
-  classes=&#39;&#39;,
-  labelText=&#39;National Insurance number&#39;,
-  hintText=&#39;&#39;,
-  errorMessage=&#39;&#39;,
-  id=&#39;input-1&#39;,
-  name=&#39;test-name&#39;
-  )
-}}
+&lt;label class=&quot;govuk-c-label&quot; for=&quot;govuk-c-input-b&quot;&gt;
+  National Insurance number
+  &lt;span class=&quot;govuk-c-error-message&quot;&gt;
+    Error message goes here
+  &lt;/span&gt;
+&lt;/label&gt;
+&lt;input class=&quot;govuk-c-input govuk-c-input--error&quot; id=&quot;govuk-c-input-b&quot; type=&quot;text&quot;&gt;
 
-{{ govukInput(
-  classes=&#39;&#39;,
-  labelText=&#39;National Insurance number&#39;,
-  hintText=&#39;It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.&#39;,
-  errorMessage=&#39;&#39;,
-  id=&#39;input-2&#39;,
-  name=&#39;test-name-2&#39;
-  )
-}}
+&lt;label class=&quot;govuk-c-label&quot; for=&quot;govuk-c-input-c&quot;&gt;
+  National Insurance number
+  &lt;span class=&quot;govuk-c-label__hint&quot;&gt;
+    It&#39;s on your National Insurance card, benefit letter, payslip or P60.
+    &lt;br&gt;
+    For example, ‘QQ 12 34 56 C’.
+  &lt;/span&gt;
+&lt;/label&gt;
+&lt;input class=&quot;govuk-c-input&quot; id=&quot;govuk-c-input-c&quot; type=&quot;text&quot;&gt;
 
-{{ govukInput(
-  classes=&#39;&#39;,
-  labelText=&#39;National Insurance number&#39;,
-  hintText=&#39;It’s on your National Insurance card, benefit letter, payslip or P60.
-    For example, ‘QQ 12 34 56 C’.&#39;,
-  errorMessage=&#39;Error message goes here&#39;,
-  id=&#39;input-3&#39;,
-  name=&#39;test-name-3&#39;
-  )
-}}
+&lt;label class=&quot;govuk-c-label&quot; for=&quot;govuk-c-input-d&quot;&gt;
+  National Insurance number
+  &lt;span class=&quot;govuk-c-label__hint&quot;&gt;
+    It&#39;s on your National Insurance card, benefit letter, payslip or P60.
+    &lt;br&gt;
+    For example, ‘QQ 12 34 56 C’.
+  &lt;/span&gt;
+  &lt;span class=&quot;govuk-c-error-message&quot;&gt;
+    Error message goes here
+  &lt;/span&gt;
+&lt;/label&gt;
+&lt;input class=&quot;govuk-c-input govuk-c-input--error&quot; id=&quot;govuk-c-input-d&quot; type=&quot;text&quot;&gt;
+
 </code></pre>
 
 <h2 class="govuk-u-heading-24">Installation</h2>

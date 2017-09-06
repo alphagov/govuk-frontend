@@ -42,11 +42,23 @@ Phase banner
 </div>
 
 <h2 class="govuk-u-heading-24">Component HTML</h2>
-<pre><code>{% from &quot;phase-banner/macro.njk&quot; import govukPhaseBanner %}
-{{ govukPhaseBanner(
-  phaseBannerText=&#39;This is a new service – your &lt;a href=&quot;#&quot;&gt;feedback&lt;/a&gt; will help us to improve it.&#39;,
-  phaseTagText=&#39;BETA&#39;)
-}}
+<pre><code>&lt;div class=&quot;govuk-c-phase-banner&quot;&gt;
+  &lt;p class=&quot;govuk-c-phase-banner__content&quot;&gt;
+    &lt;strong class=&quot;govuk-c-phase-tag&quot;&gt;ALPHA&lt;/strong&gt;
+    &lt;span class=&quot;govuk-c-phase-banner__text&quot;&gt;
+      This is a new service – your &lt;a href=&quot;#&quot;&gt;feedback&lt;/a&gt; will help us to improve it.
+    &lt;/span&gt;
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;govuk-c-phase-banner&quot;&gt;
+  &lt;p class=&quot;govuk-c-phase-banner__content&quot;&gt;
+    &lt;strong class=&quot;govuk-c-phase-tag&quot;&gt;BETA&lt;/strong&gt;
+    &lt;span class=&quot;govuk-c-phase-banner__text&quot;&gt;
+      This is a new service – your &lt;a href=&quot;#&quot;&gt;feedback&lt;/a&gt; will help us to improve it.
+    &lt;/span&gt;
+  &lt;/p&gt;
+&lt;/div&gt;
 </code></pre>
 
 <h2 class="govuk-u-heading-24">Installation</h2>

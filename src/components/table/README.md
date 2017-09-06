@@ -167,7 +167,60 @@ Table
 </div>
 
 <h2 class="govuk-u-heading-24">Component HTML</h2>
-<pre><code></code></pre>
+<pre><code>&lt;table class=&quot;govuk-c-table&quot;&gt;
+  &lt;thead class=&quot;govuk-c-table__head&quot;&gt;
+    &lt;tr class=&quot;govuk-c-table__row&quot;&gt;
+      &lt;th class=&quot;govuk-c-table__header&quot; scope=&quot;col&quot;&gt;Month you apply&lt;/th&gt;
+      &lt;th class=&quot;govuk-c-table__header govuk-c-table__header--numeric&quot; scope=&quot;col&quot;&gt;Rate for vehicles&lt;/th&gt;
+      &lt;th class=&quot;govuk-c-table__header govuk-c-table__header--numeric&quot; scope=&quot;col&quot;&gt;Rate for bicycles&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody class=&quot;govuk-c-table__body&quot;&gt;
+    &lt;tr class=&quot;govuk-c-table__row&quot;&gt;
+      &lt;th class=&quot;govuk-c-table__header&quot; scope=&quot;row&quot;&gt;January&lt;/th&gt;
+      &lt;td class=&quot;govuk-c-table__cell govuk-c-table__cell--numeric&quot;&gt;£165.00&lt;/td&gt;
+      &lt;td class=&quot;govuk-c-table__cell govuk-c-table__cell--numeric&quot;&gt;£85.00&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr class=&quot;govuk-c-table__row&quot;&gt;
+      &lt;th class=&quot;govuk-c-table__header&quot; scope=&quot;row&quot;&gt;February&lt;/th&gt;
+      &lt;td class=&quot;govuk-c-table__cell govuk-c-table__cell--numeric&quot;&gt;£165.00&lt;/td&gt;
+      &lt;td class=&quot;govuk-c-table__cell govuk-c-table__cell--numeric&quot;&gt;£85.00&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr class=&quot;govuk-c-table__row&quot;&gt;
+      &lt;th class=&quot;govuk-c-table__header&quot; scope=&quot;row&quot;&gt;March&lt;/th&gt;
+      &lt;td class=&quot;govuk-c-table__cell govuk-c-table__cell--numeric&quot;&gt;£151.25&lt;/td&gt;
+      &lt;td class=&quot;govuk-c-table__cell govuk-c-table__cell--numeric&quot;&gt;£77.90&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr class=&quot;govuk-c-table__row&quot;&gt;
+      &lt;th class=&quot;govuk-c-table__header&quot; scope=&quot;row&quot;&gt;April&lt;/th&gt;
+      &lt;td class=&quot;govuk-c-table__cell govuk-c-table__cell--numeric&quot;&gt;£136.10&lt;/td&gt;
+      &lt;td class=&quot;govuk-c-table__cell govuk-c-table__cell--numeric&quot;&gt;£70.10&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table class=&quot;govuk-c-table&quot;&gt;
+  &lt;caption class=&quot;govuk-c-table__caption heading-small&quot;&gt;Dates and amounts&lt;/caption&gt;
+  &lt;tbody class=&quot;govuk-c-table__body&quot;&gt;
+    &lt;tr class=&quot;govuk-c-table__row&quot;&gt;
+      &lt;td class=&quot;govuk-c-table__cell&quot;&gt;First 6 weeks&lt;/td&gt;
+      &lt;td class=&quot;govuk-c-table__cell&quot;&gt;£109.80 per week&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr class=&quot;govuk-c-table__row&quot;&gt;
+      &lt;td class=&quot;govuk-c-table__cell&quot;&gt;Next 33 weeks&lt;/td&gt;
+      &lt;td class=&quot;govuk-c-table__cell&quot;&gt;£109.80 per week&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr class=&quot;govuk-c-table__row&quot;&gt;
+      &lt;td class=&quot;govuk-c-table__cell&quot;&gt;Total estimated pay&lt;/td&gt;
+      &lt;td class=&quot;govuk-c-table__cell&quot;&gt;£4,282.20&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr class=&quot;govuk-c-table__row&quot;&gt;
+      &lt;td class=&quot;govuk-c-table__cell&quot;&gt;Tell the mother’s employer&lt;/td&gt;
+      &lt;td class=&quot;govuk-c-table__cell&quot;&gt;28 days before they want to start maternity pay&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</code></pre>
 
 <h2 class="govuk-u-heading-24">Installation</h2>
 <pre><code>npm install --save @govuk-frontend/table</code></pre>

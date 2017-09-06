@@ -44,13 +44,11 @@ Fieldset
 </div>
 
 <h2 class="govuk-u-heading-24">Component HTML</h2>
-<pre><code>{% from &quot;fieldset/macro.njk&quot; import govukFieldset %}
-
-{{ govukFieldset(
-  classes=&#39;&#39;,
-  legendText=&#39;Legend text goes here&#39;
-  )
-}}
+<pre><code>&lt;fieldset class=&quot;govuk-c-fieldset&quot;&gt;
+  &lt;legend class=&quot;govuk-c-fieldset__legend&quot;&gt;
+    Legend text in here
+  &lt;/legend&gt;
+&lt;/fieldset&gt;
 </code></pre>
 
 <h2 class="govuk-u-heading-24">Installation</h2>

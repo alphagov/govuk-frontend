@@ -72,37 +72,18 @@ Checkbox
 </div>
 
 <h2 class="govuk-u-heading-24">Component HTML</h2>
-<pre><code>{% from &#39;checkbox/macro.njk&#39; import govukCheckbox %}
-
-{{ govukCheckbox(
-  classes=&#39;&#39;,
-  name=&#39;waste-types&#39;,
-  id=&#39;waste-type&#39;,
-  checkboxes=[
-   {
-      id: &#39;1&#39;,
-      value: &#39;waste-animal&#39;,
-      label: &#39;Waste from animal carcasses&#39;
-    },
-    {
-      id: &#39;2&#39;,
-      value: &#39;waste-mines&#39;,
-      label: &#39;Waste from mines or quarries&#39;
-    },
-    {
-      id: &#39;3&#39;,
-      value: &#39;waste-farm&#39;,
-      label: &#39;Farm or agricultural waste&#39;,
-      checked: &#39;true&#39;
-    },
-    {
-      id: &#39;4&#39;,
-      value: &#39;waste-disabled&#39;,
-      label: &#39;Disabled checkbox option&#39;,
-      disabled: &#39;true&#39;
-    }
-  ]
-) }}
+<pre><code>&lt;div class=&quot;govuk-c-checkbox&quot;&gt;
+  &lt;input class=&quot;govuk-c-checkbox__input&quot; id=&quot;waste-type-1&quot; name=&quot;waste-types&quot; type=&quot;checkbox&quot; value=&quot;waste-animal&quot;&gt;
+  &lt;label class=&quot;govuk-c-checkbox__label&quot; for=&quot;waste-type-1&quot;&gt;Waste from animal carcasses&lt;/label&gt;
+&lt;/div&gt;
+&lt;div class=&quot;govuk-c-checkbox&quot;&gt;
+  &lt;input class=&quot;govuk-c-checkbox__input&quot; id=&quot;waste-type-2&quot; name=&quot;waste-types&quot; type=&quot;checkbox&quot; value=&quot;waste-mines&quot;&gt;
+  &lt;label class=&quot;govuk-c-checkbox__label&quot; for=&quot;waste-type-2&quot;&gt;Waste from mines or quarries&lt;/label&gt;
+&lt;/div&gt;
+&lt;div class=&quot;govuk-c-checkbox&quot;&gt;
+  &lt;input class=&quot;govuk-c-checkbox__input&quot; id=&quot;waste-type-3&quot; name=&quot;waste-types&quot; type=&quot;checkbox&quot; disabled=&quot;disabled&quot; value=&quot;waste-farm&quot;&gt;
+  &lt;label class=&quot;govuk-c-checkbox__label&quot; for=&quot;waste-type-3&quot;&gt;Farm or agricultural waste&lt;/label&gt;
+&lt;/div&gt;
 </code></pre>
 
 <h2 class="govuk-u-heading-24">Installation</h2>

@@ -49,13 +49,9 @@ Button
 </div>
 
 <h2 class="govuk-u-heading-24">Component HTML</h2>
-<pre><code>{% from &quot;button/macro.njk&quot; import govukButton %}
-
-{{ govukButton(classes=&#39;&#39;, text=&#39;Save and continue&#39;) }}
-
-{{ govukButton(classes=&#39;&#39;, text=&#39;Save and continue&#39;, isDisabled=&#39;true&#39;) }}
-
-{{ govukButton(classes=&#39;&#39;, text=&#39;Start now&#39;, url=&#39;/&#39;, isStart=&#39;true&#39;) }}
+<pre><code>&lt;input class=&quot;govuk-c-button&quot; type=&quot;submit&quot; value=&quot;Save and continue&quot;&gt;
+&lt;a class=&quot;govuk-c-button govuk-c-button--start&quot; href=&quot;#&quot; role=&quot;button&quot;&gt;Start now&lt;/a&gt;
+&lt;input class=&quot;govuk-c-button govuk-c-button--disabled&quot; type=&quot;submit&quot; value=&quot;Primary disabled button&quot; disabled=&quot;disabled&quot; aria-disabled=&quot;true&quot;&gt;
 </code></pre>
 
 <h2 class="govuk-u-heading-24">Installation</h2>

@@ -44,13 +44,9 @@ Error message
 </div>
 
 <h2 class="govuk-u-heading-24">Component HTML</h2>
-<pre><code>{% from &quot;error-message/macro.njk&quot; import govukErrorMessage %}
-
-{{ govukErrorMessage(
-  classes=&#39;&#39;,
-  errorMessage=&#39;Error message goes here&#39;
-  )
-}}
+<pre><code>&lt;span class=&quot;govuk-c-error-message&quot;&gt;
+  Error message goes here
+&lt;/span&gt;
 </code></pre>
 
 <h2 class="govuk-u-heading-24">Installation</h2>

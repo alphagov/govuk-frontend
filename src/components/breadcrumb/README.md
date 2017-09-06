@@ -10,7 +10,7 @@ Breadcrumb
 </p>
 
 <p class="govuk-u-copy-19">
-  <a href="http://www.linktodesignsystem.com">Find breadcrumb guidance on the GOV.UK Design System.</a>
+  <a href="http://www.linktodesignsystem.com/breadcrumb">Find breadcrumb guidance on the GOV.UK Design System.</a>
 </p>
 
 
@@ -46,15 +46,14 @@ Breadcrumb
 </div>
 
 <h2 class="govuk-u-heading-24">Component HTML</h2>
-<pre><code>{% from &quot;breadcrumb/macro.njk&quot; import govukBreadcrumb %}
-
-{{ govukBreadcrumb(
-  classes=&#39;&#39;,
-  [
-    { title: &#39;Home&#39;, url: &#39;/&#39; },
-    { title: &#39;Current page&#39; }
-  ]
-) }}
+<pre><code>&lt;div class=&quot;govuk-c-breadcrumb&quot;&gt;
+  &lt;ol class=&quot;govuk-c-breadcrumb__list&quot;&gt;
+    &lt;li class=&quot;govuk-c-breadcrumb__list-item&quot;&gt;
+      &lt;a class=&quot;govuk-c-breadcrumb__link&quot; href=&quot;/&quot;&gt;Previous page&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;govuk-c-breadcrumb__list-item&quot; aria-current=&quot;page&quot;&gt;Current page&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
 </code></pre>
 
 <h2 class="govuk-u-heading-24">Installation</h2>

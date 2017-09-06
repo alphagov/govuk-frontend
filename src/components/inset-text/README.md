@@ -46,16 +46,12 @@ Inset text
 </div>
 
 <h2 class="govuk-u-heading-24">Component HTML</h2>
-<pre><code>{% from &quot;inset-text/macro.njk&quot; import govukInsetText %}
-
-{{ govukInsetText(
-  classes=&#39;&#39;,
-  content=&#39;&lt;p&gt;
+<pre><code>&lt;div class=&quot;govuk-c-inset-text&quot;&gt;
+  &lt;p&gt;
     It can take up to 8 weeks to register a lasting power of attorney if&lt;br&gt;
     there are no mistakes in the application.
-  &lt;/p&gt;&#39;
-  )
-}}
+  &lt;/p&gt;
+&lt;/div&gt;
 </code></pre>
 
 <h2 class="govuk-u-heading-24">Installation</h2>
