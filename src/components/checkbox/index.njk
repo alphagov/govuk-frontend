@@ -18,14 +18,85 @@
 {# {% set componentGuidanceLink = 'new link here' %} #}
 
 {% block componentArguments %}
-
-<!-- TODO: Use the table macro here and pass it component argument data -->
-
-| Name        | Type    | Default | Required | Description
-|---          |---      |---      |---       |---
-| classes     | string  |         | No       | Optional additional classes
-| name        | string  |         | Yes      | Name of the group of checkboxes
-| id          | string  |         | Yes      | ID is prefixed to the ID of each checkbox
-| checkboxes  | array   |         | Yes      | Checkboxes array with id, value, label, checked and disabled keys
-
+{% from "table/macro.njk" import govukTable %}
+{{ govukTable(
+  classes='',
+  options = {
+    'isFirstCellHeader': 'true'
+  },
+  data = {
+    'head' : [
+      {
+        text: 'Name'
+      },
+      {
+        text: 'Type'
+      },
+      {
+        text: 'Required'
+      },
+      {
+        text: 'Description'
+      }
+    ],
+    'rows' : [
+      [
+        {
+          text: 'classes'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'Optional additional classes'
+        }
+      ],
+      [
+        {
+          text: 'name'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'Yes'
+        },
+        {
+          text: 'Name of the group of checkboxes'
+        }
+      ],
+      [
+        {
+          text: 'id'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'Yes'
+        },
+        {
+          text: 'ID is prefixed to the ID of each checkbox'
+        }
+      ],
+      [
+        {
+          text: 'checkboxes'
+        },
+        {
+          text: 'array'
+        },
+        {
+          text: 'Yes'
+        },
+        {
+          text: 'Checkboxes array with id, value, label, checked and disabled keys'
+        }
+      ]
+    ]
+  }
+)}}
 {% endblock %}
