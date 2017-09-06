@@ -41,16 +41,12 @@
 
   <pre><code>{% block componentNunjucks %}{{ componentNunjucksFile }}{% endblock %}</code></pre>
 
-{% if isReadme %}
+
 <h2 class="govuk-u-heading-24">Component arguments</h2>
-
 <div>
-
 {% block componentArguments %}
 {% endblock %}
-
 </div>
-{% endif %}
 
 <h2 class="govuk-u-heading-24">Component HTML</h2>
 <pre><code>{% block componentHtml %}{{ componentHtmlFile }}{% endblock %}</code></pre>
