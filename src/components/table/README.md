@@ -152,9 +152,9 @@ Table
 |---               |---      |---      |---       |---
 | classes          | string  |         | No       | Optional additional classes
 | data             | object  |         | Yes      | Data for the table: rows, head and cells
-| data.options     | Object  |         | No       | Caption text , size and if first cell in bolder
+| options          | Object  |         | No       | Caption text, size and if first cell is bolder
 | data.head        | Array   |         | No       | Data for the table head cells
-| data.rows        | Array   |         | Yes      | Data for the table: rows, head and cells
+| data.rows        | Array   |         | Yes      | Data for the table: rows and cells
 
   <pre><code></code></pre>
 
