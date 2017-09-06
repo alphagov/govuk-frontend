@@ -2,8 +2,8 @@
 
 {% block content %}
 
-  {% set componentName = componentPath %}
-  {% set componentGuidanceLink = componentGuidanceLink | default('http://www.linktodesignsystem.com/' + componentName)%}
+{% set componentName = componentPath %}
+{% set componentGuidanceLink = componentGuidanceLink | default('http://www.linktodesignsystem.com/' + componentName)%}
 
 
 <h1 class="govuk-u-heading-36">
@@ -12,18 +12,13 @@
 {% endblock %}
 </h1>
 
+<h2 class="govuk-u-heading-24">Introduction</h2>
 <p class="govuk-u-core-24">
 {% block componentDescription %}
 {% endblock %}
 </p>
 
-<p class="govuk-u-copy-19">
-  <a href="{{- componentGuidanceLink -}}">Find {{ componentName }} guidance on the GOV.UK Design System.</a>
-</p>
-
 {% if not isReadme %}
-<h2 class="govuk-u-heading-24">How this component looks</h2>
-
 <div>
 {% block componentExample %}
 {% include "../components/"+ componentName +"/"+ componentName +".njk" ignore missing %}
@@ -37,10 +32,52 @@
 </a>
 </p>
 
-  <h2 class="govuk-u-heading-24">How to call this component</h2>
+<h2 class="govuk-u-heading-24">Guidance</h2>
 
-  <pre><code>{% block componentNunjucks %}{{ componentNunjucksFile }}{% endblock %}</code></pre>
+<p class="govuk-u-copy-19">
+  More information about when to use {{ componentName }} can be found on <a href="{{- componentGuidanceLink -}}" title="Link to read guidance on the use of {{ componentName }} on Gov.uk Design system website">GOV.UK Design System</a>
+</p>
 
+<h2 class="govuk-u-heading-24">Dependencies</h2>
+
+<p class="govuk-u-copy-19">To consume the {{ componentName }} component you must be running npm version 5 or above. </p>
+
+<p class="govuk-u-copy-19">{% block componentDependencies %}{% endblock %}</p>
+
+{% if isReadme %}
+<h2 class="govuk-u-heading-24">Installation</h2>
+<pre><code>npm install --save @govuk-frontend/{{ componentName }}</code></pre>
+{% endif %}
+
+<h2 class="govuk-u-heading-24">Requirements</h2>
+<h3 class="govuk-u-bold-19">Build tool configuration</h3>
+<p class="govuk-u-copy-19">When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp</p>
+<pre>
+<code>
+  .pipe(sass({
+      includePaths: 'node_modules/'
+  }))
+</code>
+</pre>
+
+<h3 class="govuk-u-bold-19">Static asset path configuration</h3>
+<p class="govuk-u-copy-19">To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:</p>
+<pre>
+<code>
+app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
+</code>
+</pre>
+
+<h2 class="govuk-u-heading-24">Quick start examples</h2>
+<p class="govuk-u-copy-19">{% block componentHtmlUsageWriteup %}{% endblock %}</p>
+<pre><code>{% block componentHtmlUsage %}{{ componentHtmlFile }}{% endblock %}</code></pre>
+
+<h2 class="govuk-u-heading-24">If you are using Nunjucks</h2>
+<p class="govuk-u-copy-19">To use a macro, follow the below code examples:</p>
+<pre><code>{% block componentNunjucks %}{{ componentNunjucksFile }}{% endblock %}</code></pre>
+
+{% if isReadme %}
+<p class="govuk-u-copy-19">Where the macros take the following arguments</p>
 
 <h2 class="govuk-u-heading-24">Component arguments</h2>
 <div>
@@ -48,12 +85,39 @@
 {% endblock %}
 </div>
 
-<h2 class="govuk-u-heading-24">Component HTML</h2>
-<pre><code>{% block componentHtml %}{{ componentHtmlFile }}{% endblock %}</code></pre>
+<h2 class="govuk-u-heading-24">Getting updates</h2>
 
-{% if isReadme %}
-<h2 class="govuk-u-heading-24">Installation</h2>
-<pre><code>npm install --save @govuk-frontend/{{ componentName }}</code></pre>
-{% endif %}
+<p class="govuk-u-copy-19">To check whether you have the latest version of the button run:</p>
 
+<pre><code>npm outdated @govuk-frontend/{{ componentName }}</code></pre>
+
+<p class="govuk-u-copy-19">To update the latest version run:</p>
+
+<pre><code>npm update @govuk-frontend/{{ componentName }}</code></pre>
+
+<h2 class="govuk-u-heading-24">Contribution</h2>
+<p class="govuk-u-copy-19">
+  Guidelines can be found at <a href="https://github.com/alphagov/govuk-frontend/blob/master/CONTRIBUTING.md" title="link to contributing guidelines on our github repository">on our Github repository.</a>
+</p>
+
+<h2 class="govuk-u-heading-24">Acknowledgements/credits</h2>
+{% from "list/macro.njk" import govukList %}
+
+{{ govukList(
+  classes='',
+  [
+    {
+      text: 'GDS developers'
+    },
+    {
+      text: 'Jani Kraner'
+    },
+    {
+      text: 'Gemma Leigh'
+    }
+  ]
+) }}
+
+<h2 class="govuk-u-heading-24">License</h2>
+<p class="govuk-u-copy-19">MIT</p>
 {% endblock %}
