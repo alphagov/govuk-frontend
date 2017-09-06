@@ -85,6 +85,18 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 {% endblock %}
 </div>
 
+<h3 class="govuk-u-bold-19">Setting up Nunjucks views and paths</h3>
+<p class="govuk-u-copy-19">Below is an example setup using express configure views:</p>
+<pre>
+<code>
+nunjucks.configure('node_modules/@govuk-frontend`, {
+  autoescape: true,
+  cache: false,
+  express: app
+})
+</code>
+</pre>
+
 <h2 class="govuk-u-heading-24">Getting updates</h2>
 
 <p class="govuk-u-copy-19">To check whether you have the latest version of the button run:</p>

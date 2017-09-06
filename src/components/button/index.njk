@@ -5,13 +5,21 @@
 {# componentName #}
 
 {% block componentDescription %}
-  Breadcrumb navigation, showing page hierarchy.
+  A button is an element that allows users to carry out an action on a GOV.UK page. Common use cases include allowing a user to **Start** an application or **Save and continue** their progress.
+
+  A button should have a short text snippet that describes what it will do:
 {% endblock %}
 
+{% block componentDependencies %}
+Please note, this component depends on @govuk-frontend/globals and @govuk-frontend/icons, which will automatically be installed with the package.
+{% endblock %}
 {# componentExample #}
 
 {# componentNunjucks #}
 
+{% block componentHtmlUsageWriteup %}
+Buttons are configured to perform an action and they can have a different look. For example, they can be disabled until a valid action has been performed by the user.  You can use the following three variants:
+{% endblock %}
 {# componentHtml #}
 
 {# override link to design system here if it's different to base url + componentName #}
