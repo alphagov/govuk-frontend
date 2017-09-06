@@ -28,7 +28,6 @@ gulp.task('generate:readme', () => {
     vinylInfo.componentName = path.dirname(file.path).split(path.sep).pop()
     vinylInfo.componentPath = vinylInfo.componentName
     vinylInfo.componentNunjucksFile = fs.readFileSync(paths.components + vinylInfo.componentName + '/' + vinylInfo.componentName + '.njk', 'utf8')
-    vinylInfo.componentHtmlFile = vinylInfo.componentNunjucksFile
   }))
   .pipe(data(getDataForFile))
   .pipe(nunjucksRender({

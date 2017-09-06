@@ -52,26 +52,30 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 
 <h2 class="govuk-u-heading-24">Quick start examples</h2>
 <p class="govuk-u-copy-19"></p>
-<pre><code>
+<pre>
+<code>
+  
+  &lt;div class=&quot;govuk-c-checkbox &quot;&gt;
+    &lt;input class=&quot;govuk-c-checkbox__input&quot; id=&quot;waste-type-1&quot; name=&quot;waste-types&quot; type=&quot;checkbox&quot; value=&quot;waste-animal&quot;   &gt;
+    &lt;label class=&quot;govuk-c-checkbox__label&quot; for=&quot;waste-type-1&quot;&gt;Waste from animal carcasses&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;govuk-c-checkbox &quot;&gt;
+    &lt;input class=&quot;govuk-c-checkbox__input&quot; id=&quot;waste-type-2&quot; name=&quot;waste-types&quot; type=&quot;checkbox&quot; value=&quot;waste-mines&quot;   &gt;
+    &lt;label class=&quot;govuk-c-checkbox__label&quot; for=&quot;waste-type-2&quot;&gt;Waste from mines or quarries&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;govuk-c-checkbox &quot;&gt;
+    &lt;input class=&quot;govuk-c-checkbox__input&quot; id=&quot;waste-type-3&quot; name=&quot;waste-types&quot; type=&quot;checkbox&quot; value=&quot;waste-farm&quot;  checked &gt;
+    &lt;label class=&quot;govuk-c-checkbox__label&quot; for=&quot;waste-type-3&quot;&gt;Farm or agricultural waste&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;govuk-c-checkbox &quot;&gt;
+    &lt;input class=&quot;govuk-c-checkbox__input&quot; id=&quot;waste-type-4&quot; name=&quot;waste-types&quot; type=&quot;checkbox&quot; value=&quot;waste-disabled&quot;   disabled&gt;
+    &lt;label class=&quot;govuk-c-checkbox__label&quot; for=&quot;waste-type-4&quot;&gt;Disabled checkbox option&lt;/label&gt;
+  &lt;/div&gt;
 
-  <div class="govuk-c-checkbox ">
-    <input class="govuk-c-checkbox__input" id="waste-type-1" name="waste-types" type="checkbox" value="waste-animal"   >
-    <label class="govuk-c-checkbox__label" for="waste-type-1">Waste from animal carcasses</label>
-  </div>
-  <div class="govuk-c-checkbox ">
-    <input class="govuk-c-checkbox__input" id="waste-type-2" name="waste-types" type="checkbox" value="waste-mines"   >
-    <label class="govuk-c-checkbox__label" for="waste-type-2">Waste from mines or quarries</label>
-  </div>
-  <div class="govuk-c-checkbox ">
-    <input class="govuk-c-checkbox__input" id="waste-type-3" name="waste-types" type="checkbox" value="waste-farm"  checked >
-    <label class="govuk-c-checkbox__label" for="waste-type-3">Farm or agricultural waste</label>
-  </div>
-  <div class="govuk-c-checkbox ">
-    <input class="govuk-c-checkbox__input" id="waste-type-4" name="waste-types" type="checkbox" value="waste-disabled"   disabled>
-    <label class="govuk-c-checkbox__label" for="waste-type-4">Disabled checkbox option</label>
-  </div>
 
-</code></pre>
+</code>
+</pre>
+
 
 <h2 class="govuk-u-heading-24">If you are using Nunjucks</h2>
 <p class="govuk-u-copy-19">To use a macro, follow the below code examples:</p>
@@ -112,7 +116,6 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 
 <div>
 
-
 <!-- TODO: Use the table macro here and pass it component argument data -->
 
 | Name        | Type    | Default | Required | Description
@@ -121,7 +124,6 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 | name        | string  |         | Yes      | Name of the group of checkboxes
 | id          | string  |         | Yes      | ID is prefixed to the ID of each checkbox
 | checkboxes  | array   |         | Yes      | Checkboxes array with id, value, label, checked and disabled keys
-
 
 </div>
 

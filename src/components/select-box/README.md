@@ -52,32 +52,36 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 
 <h2 class="govuk-u-heading-24">Quick start examples</h2>
 <p class="govuk-u-copy-19"></p>
-<pre><code>
+<pre>
+<code>
+  
+
+
+&lt;select class=&quot;govuk-c-select-box &quot; id=&quot;select-box-1&quot; name=&quot;select-box-1&quot;&gt;
+  &lt;option value=&quot;1&quot;&gt;GOV.UK frontend option 1&lt;/option&gt;
+  &lt;option value=&quot;2&quot;&gt;GOV.UK frontend option 2&lt;/option&gt;
+  &lt;option value=&quot;3&quot;&gt;GOV.UK frontend option 3&lt;/option&gt;
+&lt;/select&gt;
 
 
 
-<select class="govuk-c-select-box " id="select-box-1" name="select-box-1">
-  <option value="1">GOV.UK frontend option 1</option>
-  <option value="2">GOV.UK frontend option 2</option>
-  <option value="3">GOV.UK frontend option 3</option>
-</select>
 
-
-
-
-<label class="govuk-c-label " for="select-box-2">
+&lt;label class=&quot;govuk-c-label &quot; for=&quot;select-box-2&quot;&gt;
   Label for select box
 
 
-</label>
+&lt;/label&gt;
 
-<select class="govuk-c-select-box " id="select-box-2" name="select-box-2">
-  <option value="a">GOV.UK frontend option a</option>
-  <option value="b"selected>GOV.UK frontend option b</option>
-  <option value="c">GOV.UK frontend option c</option>
-</select>
+&lt;select class=&quot;govuk-c-select-box &quot; id=&quot;select-box-2&quot; name=&quot;select-box-2&quot;&gt;
+  &lt;option value=&quot;a&quot;&gt;GOV.UK frontend option a&lt;/option&gt;
+  &lt;option value=&quot;b&quot;selected&gt;GOV.UK frontend option b&lt;/option&gt;
+  &lt;option value=&quot;c&quot;&gt;GOV.UK frontend option c&lt;/option&gt;
+&lt;/select&gt;
 
-</code></pre>
+
+</code>
+</pre>
+
 
 <h2 class="govuk-u-heading-24">If you are using Nunjucks</h2>
 <p class="govuk-u-copy-19">To use a macro, follow the below code examples:</p>
@@ -131,7 +135,6 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 <p class="govuk-u-copy-19">Where the macros take the following arguments</p>
 
 <div>
-
 <!-- TODO: Use the table macro here and pass it component argument data -->
 | Name             | Type    | Default | Required | Description
 |---               |---      |---      |---       |---
@@ -141,7 +144,6 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 | options          | array   |         | Yes      | Options array with value, label, selected keys
 | hasLabelWithText | string  |         | No       | Optional to provide label text that will render the label element
 | labelClasses     | string  |         | No       | Optional to provide label with custom classes
-
 </div>
 
 <h3 class="govuk-u-bold-19">Setting up Nunjucks views and paths</h3>

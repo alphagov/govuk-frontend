@@ -53,99 +53,103 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 
 <h2 class="govuk-u-heading-24">Quick start examples</h2>
 <p class="govuk-u-copy-19"></p>
-<pre><code>
-
-<nav class="govuk-c-pagination " role="navigation" aria-label="Pagination">
-  <ul class="govuk-c-pagination__list">
-    <li class="govuk-c-pagination__item govuk-c-pagination__item--previous">
-      <a class="govuk-c-pagination__link" href="previous-page" rel="prev">
-        <span class="govuk-c-pagination__link-title">
-          <svg class="govuk-c-pagination__link-icon" xmlns="http://www.w3.org/2000/svg" height="13" width="17" viewBox="0 0 17 13">
-            <path fill="currentColor" d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z"></path>
-          </svg>
+<pre>
+<code>
+  
+&lt;nav class=&quot;govuk-c-pagination &quot; role=&quot;navigation&quot; aria-label=&quot;Pagination&quot;&gt;
+  &lt;ul class=&quot;govuk-c-pagination__list&quot;&gt;
+    &lt;li class=&quot;govuk-c-pagination__item govuk-c-pagination__item--previous&quot;&gt;
+      &lt;a class=&quot;govuk-c-pagination__link&quot; href=&quot;previous-page&quot; rel=&quot;prev&quot;&gt;
+        &lt;span class=&quot;govuk-c-pagination__link-title&quot;&gt;
+          &lt;svg class=&quot;govuk-c-pagination__link-icon&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; height=&quot;13&quot; width=&quot;17&quot; viewBox=&quot;0 0 17 13&quot;&gt;
+            &lt;path fill=&quot;currentColor&quot; d=&quot;m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z&quot;&gt;&lt;/path&gt;
+          &lt;/svg&gt;
           Previous page
-        </span>
-          <span class="govuk-c-pagination__link-label">1 of 3</span>
-      </a>
-    </li>
+        &lt;/span&gt;
+          &lt;span class=&quot;govuk-c-pagination__link-label&quot;&gt;1 of 3&lt;/span&gt;
+      &lt;/a&gt;
+    &lt;/li&gt;
 
-  </ul>
-</nav>
+  &lt;/ul&gt;
+&lt;/nav&gt;
 
 
-<nav class="govuk-c-pagination " role="navigation" aria-label="Pagination">
-  <ul class="govuk-c-pagination__list">
+&lt;nav class=&quot;govuk-c-pagination &quot; role=&quot;navigation&quot; aria-label=&quot;Pagination&quot;&gt;
+  &lt;ul class=&quot;govuk-c-pagination__list&quot;&gt;
 
-    <li class="govuk-c-pagination__item govuk-c-pagination__item--next">
-      <a class="govuk-c-pagination__link" href="next-page" rel="next">
-        <span class="govuk-c-pagination__link-title">
+    &lt;li class=&quot;govuk-c-pagination__item govuk-c-pagination__item--next&quot;&gt;
+      &lt;a class=&quot;govuk-c-pagination__link&quot; href=&quot;next-page&quot; rel=&quot;next&quot;&gt;
+        &lt;span class=&quot;govuk-c-pagination__link-title&quot;&gt;
           Next page
-          <svg class="govuk-c-pagination__link-icon" xmlns="http://www.w3.org/2000/svg" height="13" width="17" viewBox="0 0 17 13">
-            <path fill="currentColor" d="m10.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
-          </svg>
-        </span>
-          <span class="govuk-c-pagination__link-label">Tax disc</span>
-      </a>
-    </li>
-  </ul>
-</nav>
+          &lt;svg class=&quot;govuk-c-pagination__link-icon&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; height=&quot;13&quot; width=&quot;17&quot; viewBox=&quot;0 0 17 13&quot;&gt;
+            &lt;path fill=&quot;currentColor&quot; d=&quot;m10.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z&quot;&gt;&lt;/path&gt;
+          &lt;/svg&gt;
+        &lt;/span&gt;
+          &lt;span class=&quot;govuk-c-pagination__link-label&quot;&gt;Tax disc&lt;/span&gt;
+      &lt;/a&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
 
 
-<nav class="govuk-c-pagination " role="navigation" aria-label="Pagination">
-  <ul class="govuk-c-pagination__list">
-    <li class="govuk-c-pagination__item govuk-c-pagination__item--previous">
-      <a class="govuk-c-pagination__link" href="previous-page" rel="prev">
-        <span class="govuk-c-pagination__link-title">
-          <svg class="govuk-c-pagination__link-icon" xmlns="http://www.w3.org/2000/svg" height="13" width="17" viewBox="0 0 17 13">
-            <path fill="currentColor" d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z"></path>
-          </svg>
+&lt;nav class=&quot;govuk-c-pagination &quot; role=&quot;navigation&quot; aria-label=&quot;Pagination&quot;&gt;
+  &lt;ul class=&quot;govuk-c-pagination__list&quot;&gt;
+    &lt;li class=&quot;govuk-c-pagination__item govuk-c-pagination__item--previous&quot;&gt;
+      &lt;a class=&quot;govuk-c-pagination__link&quot; href=&quot;previous-page&quot; rel=&quot;prev&quot;&gt;
+        &lt;span class=&quot;govuk-c-pagination__link-title&quot;&gt;
+          &lt;svg class=&quot;govuk-c-pagination__link-icon&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; height=&quot;13&quot; width=&quot;17&quot; viewBox=&quot;0 0 17 13&quot;&gt;
+            &lt;path fill=&quot;currentColor&quot; d=&quot;m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z&quot;&gt;&lt;/path&gt;
+          &lt;/svg&gt;
           Previous page
-        </span>
-          <span class="govuk-c-pagination__link-label">1 of 3</span>
-      </a>
-    </li>
+        &lt;/span&gt;
+          &lt;span class=&quot;govuk-c-pagination__link-label&quot;&gt;1 of 3&lt;/span&gt;
+      &lt;/a&gt;
+    &lt;/li&gt;
 
-    <li class="govuk-c-pagination__item govuk-c-pagination__item--next">
-      <a class="govuk-c-pagination__link" href="next-page" rel="next">
-        <span class="govuk-c-pagination__link-title">
+    &lt;li class=&quot;govuk-c-pagination__item govuk-c-pagination__item--next&quot;&gt;
+      &lt;a class=&quot;govuk-c-pagination__link&quot; href=&quot;next-page&quot; rel=&quot;next&quot;&gt;
+        &lt;span class=&quot;govuk-c-pagination__link-title&quot;&gt;
           Next page
-          <svg class="govuk-c-pagination__link-icon" xmlns="http://www.w3.org/2000/svg" height="13" width="17" viewBox="0 0 17 13">
-            <path fill="currentColor" d="m10.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
-          </svg>
-        </span>
-          <span class="govuk-c-pagination__link-label">2 of 3</span>
-      </a>
-    </li>
-  </ul>
-</nav>
+          &lt;svg class=&quot;govuk-c-pagination__link-icon&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; height=&quot;13&quot; width=&quot;17&quot; viewBox=&quot;0 0 17 13&quot;&gt;
+            &lt;path fill=&quot;currentColor&quot; d=&quot;m10.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z&quot;&gt;&lt;/path&gt;
+          &lt;/svg&gt;
+        &lt;/span&gt;
+          &lt;span class=&quot;govuk-c-pagination__link-label&quot;&gt;2 of 3&lt;/span&gt;
+      &lt;/a&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
 
 
-<nav class="govuk-c-pagination " role="navigation" aria-label="Pagination">
-  <ul class="govuk-c-pagination__list">
-    <li class="govuk-c-pagination__item govuk-c-pagination__item--previous">
-      <a class="govuk-c-pagination__link" href="previous-page" rel="prev">
-        <span class="govuk-c-pagination__link-title">
-          <svg class="govuk-c-pagination__link-icon" xmlns="http://www.w3.org/2000/svg" height="13" width="17" viewBox="0 0 17 13">
-            <path fill="currentColor" d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z"></path>
-          </svg>
+&lt;nav class=&quot;govuk-c-pagination &quot; role=&quot;navigation&quot; aria-label=&quot;Pagination&quot;&gt;
+  &lt;ul class=&quot;govuk-c-pagination__list&quot;&gt;
+    &lt;li class=&quot;govuk-c-pagination__item govuk-c-pagination__item--previous&quot;&gt;
+      &lt;a class=&quot;govuk-c-pagination__link&quot; href=&quot;previous-page&quot; rel=&quot;prev&quot;&gt;
+        &lt;span class=&quot;govuk-c-pagination__link-title&quot;&gt;
+          &lt;svg class=&quot;govuk-c-pagination__link-icon&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; height=&quot;13&quot; width=&quot;17&quot; viewBox=&quot;0 0 17 13&quot;&gt;
+            &lt;path fill=&quot;currentColor&quot; d=&quot;m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z&quot;&gt;&lt;/path&gt;
+          &lt;/svg&gt;
           Previous page
-        </span>
-      </a>
-    </li>
+        &lt;/span&gt;
+      &lt;/a&gt;
+    &lt;/li&gt;
 
-    <li class="govuk-c-pagination__item govuk-c-pagination__item--next">
-      <a class="govuk-c-pagination__link" href="next-page" rel="next">
-        <span class="govuk-c-pagination__link-title">
+    &lt;li class=&quot;govuk-c-pagination__item govuk-c-pagination__item--next&quot;&gt;
+      &lt;a class=&quot;govuk-c-pagination__link&quot; href=&quot;next-page&quot; rel=&quot;next&quot;&gt;
+        &lt;span class=&quot;govuk-c-pagination__link-title&quot;&gt;
           Next page
-          <svg class="govuk-c-pagination__link-icon" xmlns="http://www.w3.org/2000/svg" height="13" width="17" viewBox="0 0 17 13">
-            <path fill="currentColor" d="m10.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
-          </svg>
-        </span>
-      </a>
-    </li>
-  </ul>
-</nav>
-</code></pre>
+          &lt;svg class=&quot;govuk-c-pagination__link-icon&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; height=&quot;13&quot; width=&quot;17&quot; viewBox=&quot;0 0 17 13&quot;&gt;
+            &lt;path fill=&quot;currentColor&quot; d=&quot;m10.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z&quot;&gt;&lt;/path&gt;
+          &lt;/svg&gt;
+        &lt;/span&gt;
+      &lt;/a&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+
+</code>
+</pre>
+
 
 <h2 class="govuk-u-heading-24">If you are using Nunjucks</h2>
 <p class="govuk-u-copy-19">To use a macro, follow the below code examples:</p>
@@ -214,7 +218,6 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 <p class="govuk-u-copy-19">Where the macros take the following arguments</p>
 
 <div>
-
 <!-- TODO: Use the table macro here and pass it component argument data -->
 | Name          | Type    | Default | Required | Description
 |---            |---      |---      |---       |---
@@ -223,7 +226,6 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 | id            | string  |         | Yes      | ID is prefixed to the ID of each checkbox
 | previousPage  | array   |         | No       | previousPage array with url, title and label keys
 | nextPage      | array   |         | No       | nextPage array with url, title and label keys
-
 </div>
 
 <h3 class="govuk-u-bold-19">Setting up Nunjucks views and paths</h3>

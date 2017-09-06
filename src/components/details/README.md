@@ -52,25 +52,29 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 
 <h2 class="govuk-u-heading-24">Quick start examples</h2>
 <p class="govuk-u-copy-19"></p>
-<pre><code>
-
-<details class="govuk-c-details ">
-  <summary class="govuk-c-details__summary">
-    <span class="govuk-c-details__summary-text">Help with nationality</span>
-  </summary>
-  <div class="govuk-c-border govuk-c-border--left-narrow">
-    <div class="govuk-c-details__text">
-      <p>
+<pre>
+<code>
+  
+&lt;details class=&quot;govuk-c-details &quot;&gt;
+  &lt;summary class=&quot;govuk-c-details__summary&quot;&gt;
+    &lt;span class=&quot;govuk-c-details__summary-text&quot;&gt;Help with nationality&lt;/span&gt;
+  &lt;/summary&gt;
+  &lt;div class=&quot;govuk-c-border govuk-c-border--left-narrow&quot;&gt;
+    &lt;div class=&quot;govuk-c-details__text&quot;&gt;
+      &lt;p&gt;
     If you’re not sure about your nationality, try to find out from an official document like a passport or national ID card.
-  </p>
-  <p>
+  &lt;/p&gt;
+  &lt;p&gt;
     We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post.
-  </p>
-    </div>
-  </div>
-</details>
+  &lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/details&gt;
 
-</code></pre>
+
+</code>
+</pre>
+
 
 <h2 class="govuk-u-heading-24">If you are using Nunjucks</h2>
 <p class="govuk-u-copy-19">To use a macro, follow the below code examples:</p>
@@ -92,14 +96,12 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 <p class="govuk-u-copy-19">Where the macros take the following arguments</p>
 
 <div>
-
 <!-- TODO: Use the table macro here and pass it component argument data -->
 | Name                | Type    | Default | Required  | Description
 |---                  |---      |---      |---        |---
 | classes             | string  |         | No        | Optional additional classes
 | detailsSummaryText  | string  |         | Yes       | Summary element text
 | detailsText         | string  |         | Yes       | Revealed details text
-
 </div>
 
 <h3 class="govuk-u-bold-19">Setting up Nunjucks views and paths</h3>

@@ -53,18 +53,22 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 
 <h2 class="govuk-u-heading-24">Quick start examples</h2>
 <p class="govuk-u-copy-19"></p>
-<pre><code>
+<pre>
+<code>
+  
+&lt;div class=&quot;govuk-c-breadcrumb &quot;&gt;
+  &lt;ol class=&quot;govuk-c-breadcrumb__list&quot;&gt;
+      &lt;li class=&quot;govuk-c-breadcrumb__list-item&quot;&gt;
+        &lt;a class=&quot;govuk-c-breadcrumb__link&quot; href=&quot;/&quot;&gt;Home&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li class=&quot;govuk-c-breadcrumb__list-item&quot; aria-current=&quot;page&quot;&gt;Current page&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
 
-<div class="govuk-c-breadcrumb ">
-  <ol class="govuk-c-breadcrumb__list">
-      <li class="govuk-c-breadcrumb__list-item">
-        <a class="govuk-c-breadcrumb__link" href="/">Home</a>
-      </li>
-      <li class="govuk-c-breadcrumb__list-item" aria-current="page">Current page</li>
-  </ol>
-</div>
 
-</code></pre>
+</code>
+</pre>
+
 
 <h2 class="govuk-u-heading-24">If you are using Nunjucks</h2>
 <p class="govuk-u-copy-19">To use a macro, follow the below code examples:</p>
@@ -82,14 +86,12 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 <p class="govuk-u-copy-19">Where the macros take the following arguments</p>
 
 <div>
-
 | Name        | Type   | Default | Required | Description
 |---          |---     |---      |---       |---
 | classes     | string |         | No       | Optional additional classes
 | breadcrumbs | array  |         | Yes      | Breadcrumbs array with title and url keys
 | title       | string |         | Yes      | Title of the breadcrumb item
 | url         | string |         | Yes      | Url of the breadcrumb item
-
 </div>
 
 <h3 class="govuk-u-bold-19">Setting up Nunjucks views and paths</h3>

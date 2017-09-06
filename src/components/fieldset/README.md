@@ -53,15 +53,19 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 
 <h2 class="govuk-u-heading-24">Quick start examples</h2>
 <p class="govuk-u-copy-19"></p>
-<pre><code>
-
-<fieldset class="govuk-c-fieldset ">
-  <legend class="govuk-c-fieldset__legend">
+<pre>
+<code>
+  
+&lt;fieldset class=&quot;govuk-c-fieldset &quot;&gt;
+  &lt;legend class=&quot;govuk-c-fieldset__legend&quot;&gt;
     Legend text goes here
-  </legend>
-</fieldset>
+  &lt;/legend&gt;
+&lt;/fieldset&gt;
 
-</code></pre>
+
+</code>
+</pre>
+
 
 <h2 class="govuk-u-heading-24">If you are using Nunjucks</h2>
 <p class="govuk-u-copy-19">To use a macro, follow the below code examples:</p>
@@ -77,13 +81,11 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 <p class="govuk-u-copy-19">Where the macros take the following arguments</p>
 
 <div>
-
 <!-- TODO: Use the table macro here and pass it component argument data -->
 | Name        | Type    | Default | Required  | Description
 |---          |---      |---      |---        |---
 | classes     | string  |         | No        | Optional additional classes
 | legendText  | string  |         | No        | Legend text
-
 </div>
 
 <h3 class="govuk-u-bold-19">Setting up Nunjucks views and paths</h3>

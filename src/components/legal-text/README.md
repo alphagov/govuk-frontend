@@ -52,18 +52,22 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 
 <h2 class="govuk-u-heading-24">Quick start examples</h2>
 <p class="govuk-u-copy-19"></p>
-<pre><code>
+<pre>
+<code>
+  
 
-
-<div class="govuk-c-legal-text ">
-  <span class="govuk-c-legal-text__icon govuk-u-circle" aria-hidden="true">!</span>
-  <strong class="govuk-c-legal-text__text">
-    <span class="govuk-c-legal-text__assistive">Warning</span>
+&lt;div class=&quot;govuk-c-legal-text &quot;&gt;
+  &lt;span class=&quot;govuk-c-legal-text__icon govuk-u-circle&quot; aria-hidden=&quot;true&quot;&gt;!&lt;/span&gt;
+  &lt;strong class=&quot;govuk-c-legal-text__text&quot;&gt;
+    &lt;span class=&quot;govuk-c-legal-text__assistive&quot;&gt;Warning&lt;/span&gt;
     You can be fined up to £5,000 if you don’t register.
-  </strong>
-</div>
+  &lt;/strong&gt;
+&lt;/div&gt;
 
-</code></pre>
+
+</code>
+</pre>
+
 
 <h2 class="govuk-u-heading-24">If you are using Nunjucks</h2>
 <p class="govuk-u-copy-19">To use a macro, follow the below code examples:</p>
@@ -79,14 +83,12 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 <p class="govuk-u-copy-19">Where the macros take the following arguments</p>
 
 <div>
-
 <!-- TODO: Use the table macro here and pass it component argument data -->
 | Name              | Type    | Default | Required  | Description
 |---                |---      |---      |---        |---
 | classes           | string  |         | No        | Optional additional classes
 | iconFallbackText  | string  |         | Yes       | The fallback text for the icon
 | legalText         | string  |         | Yes       | The text next to the icon
-
 </div>
 
 <h3 class="govuk-u-bold-19">Setting up Nunjucks views and paths</h3>

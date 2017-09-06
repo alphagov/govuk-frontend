@@ -52,12 +52,16 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 
 <h2 class="govuk-u-heading-24">Quick start examples</h2>
 <p class="govuk-u-copy-19"></p>
-<pre><code>
-<div class="govuk-c-cookie-banner js-cookie-banner ">
-  <p class="govuk-c-cookie-banner__text">GOV.UK uses cookies to make the site simpler. <a href="https://www.gov.uk/help/cookies">Find out more about cookies</a></p>
-</div>
+<pre>
+<code>
+  &lt;div class=&quot;govuk-c-cookie-banner js-cookie-banner &quot;&gt;
+  &lt;p class=&quot;govuk-c-cookie-banner__text&quot;&gt;GOV.UK uses cookies to make the site simpler. &lt;a href=&quot;https://www.gov.uk/help/cookies&quot;&gt;Find out more about cookies&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
 
-</code></pre>
+
+</code>
+</pre>
+
 
 <h2 class="govuk-u-heading-24">If you are using Nunjucks</h2>
 <p class="govuk-u-copy-19">To use a macro, follow the below code examples:</p>
@@ -73,14 +77,12 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 
 <div>
 
-
 <!-- TODO: Use the table macro here and pass it component argument data -->
 
 | Name                | Type    | Default | Required  | Description
 |---                  |---      |---      |---        |---
 | classes             | string  |         | No        | Optional additional classes
 | cookieBannerText    | string  |         | Yes       | Cookie banner copy
-
 
 </div>
 

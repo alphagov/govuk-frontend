@@ -52,60 +52,64 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 
 <h2 class="govuk-u-heading-24">Quick start examples</h2>
 <p class="govuk-u-copy-19"></p>
-<pre><code>
+<pre>
+<code>
+  
+
+&lt;table class=&quot;govuk-c-table &quot;&gt;
+  &lt;caption class=&quot;govuk-c-table__caption  small &quot;&gt;Months and rates&lt;/caption&gt;
+  &lt;tbody class=&quot;govuk-c-table__body&quot;&gt;
+    &lt;tr class=&quot;govuk-c-table__row&quot;&gt;
+      &lt;th class=&quot;govuk-c-table__header&quot; scope=&quot;row&quot;&gt; January&lt;/th&gt;
+      &lt;td class=&quot;govuk-c-table__cell  govuk-c-table__cell--numeric &quot;  &gt;£85&lt;/td&gt;
+      &lt;td class=&quot;govuk-c-table__cell  govuk-c-table__cell--numeric &quot;  &gt;£95&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr class=&quot;govuk-c-table__row&quot;&gt;
+      &lt;th class=&quot;govuk-c-table__header&quot; scope=&quot;row&quot;&gt; February&lt;/th&gt;
+      &lt;td class=&quot;govuk-c-table__cell  govuk-c-table__cell--numeric &quot;  &gt;£75&lt;/td&gt;
+      &lt;td class=&quot;govuk-c-table__cell  govuk-c-table__cell--numeric &quot;  &gt;£55&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr class=&quot;govuk-c-table__row&quot;&gt;
+      &lt;th class=&quot;govuk-c-table__header&quot; scope=&quot;row&quot;&gt; March&lt;/th&gt;
+      &lt;td class=&quot;govuk-c-table__cell  govuk-c-table__cell--numeric &quot;  &gt;£165&lt;/td&gt;
+      &lt;td class=&quot;govuk-c-table__cell  govuk-c-table__cell--numeric &quot;  &gt;£125&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
 
-<table class="govuk-c-table ">
-  <caption class="govuk-c-table__caption  small ">Months and rates</caption>
-  <tbody class="govuk-c-table__body">
-    <tr class="govuk-c-table__row">
-      <th class="govuk-c-table__header" scope="row"> January</th>
-      <td class="govuk-c-table__cell  govuk-c-table__cell--numeric "  >£85</td>
-      <td class="govuk-c-table__cell  govuk-c-table__cell--numeric "  >£95</td>
-    </tr>
-    <tr class="govuk-c-table__row">
-      <th class="govuk-c-table__header" scope="row"> February</th>
-      <td class="govuk-c-table__cell  govuk-c-table__cell--numeric "  >£75</td>
-      <td class="govuk-c-table__cell  govuk-c-table__cell--numeric "  >£55</td>
-    </tr>
-    <tr class="govuk-c-table__row">
-      <th class="govuk-c-table__header" scope="row"> March</th>
-      <td class="govuk-c-table__cell  govuk-c-table__cell--numeric "  >£165</td>
-      <td class="govuk-c-table__cell  govuk-c-table__cell--numeric "  >£125</td>
-    </tr>
-  </tbody>
-</table>
+
+&lt;table class=&quot;govuk-c-table &quot;&gt;
+  &lt;thead class=&quot;govuk-c-table__head&quot;&gt;
+    &lt;tr class=&quot;govuk-c-table__row&quot;&gt;
+      &lt;th class=&quot;govuk-c-table__header &quot;   scope=&quot;col&quot;&gt;Month you apply&lt;/th&gt;
+      &lt;th class=&quot;govuk-c-table__header  govuk-c-table__header--numeric &quot;   scope=&quot;col&quot;&gt;Rate for bicycles&lt;/th&gt;
+      &lt;th class=&quot;govuk-c-table__header  govuk-c-table__header--numeric &quot;   scope=&quot;col&quot;&gt;Rate for vehicles&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody class=&quot;govuk-c-table__body&quot;&gt;
+    &lt;tr class=&quot;govuk-c-table__row&quot;&gt;
+      &lt;th class=&quot;govuk-c-table__header&quot; scope=&quot;row&quot;&gt; January&lt;/th&gt;
+      &lt;td class=&quot;govuk-c-table__cell  govuk-c-table__cell--numeric &quot;  &gt;£85&lt;/td&gt;
+      &lt;td class=&quot;govuk-c-table__cell  govuk-c-table__cell--numeric &quot;  &gt;£95&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr class=&quot;govuk-c-table__row&quot;&gt;
+      &lt;th class=&quot;govuk-c-table__header&quot; scope=&quot;row&quot;&gt; February&lt;/th&gt;
+      &lt;td class=&quot;govuk-c-table__cell  govuk-c-table__cell--numeric &quot;  &gt;£75&lt;/td&gt;
+      &lt;td class=&quot;govuk-c-table__cell  govuk-c-table__cell--numeric &quot;  &gt;£55&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr class=&quot;govuk-c-table__row&quot;&gt;
+      &lt;th class=&quot;govuk-c-table__header&quot; scope=&quot;row&quot;&gt; March&lt;/th&gt;
+      &lt;td class=&quot;govuk-c-table__cell  govuk-c-table__cell--numeric &quot;  &gt;£165&lt;/td&gt;
+      &lt;td class=&quot;govuk-c-table__cell  govuk-c-table__cell--numeric &quot;  &gt;£125&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
 
+</code>
+</pre>
 
-<table class="govuk-c-table ">
-  <thead class="govuk-c-table__head">
-    <tr class="govuk-c-table__row">
-      <th class="govuk-c-table__header "   scope="col">Month you apply</th>
-      <th class="govuk-c-table__header  govuk-c-table__header--numeric "   scope="col">Rate for bicycles</th>
-      <th class="govuk-c-table__header  govuk-c-table__header--numeric "   scope="col">Rate for vehicles</th>
-  </tr>
-  </thead>
-  <tbody class="govuk-c-table__body">
-    <tr class="govuk-c-table__row">
-      <th class="govuk-c-table__header" scope="row"> January</th>
-      <td class="govuk-c-table__cell  govuk-c-table__cell--numeric "  >£85</td>
-      <td class="govuk-c-table__cell  govuk-c-table__cell--numeric "  >£95</td>
-    </tr>
-    <tr class="govuk-c-table__row">
-      <th class="govuk-c-table__header" scope="row"> February</th>
-      <td class="govuk-c-table__cell  govuk-c-table__cell--numeric "  >£75</td>
-      <td class="govuk-c-table__cell  govuk-c-table__cell--numeric "  >£55</td>
-    </tr>
-    <tr class="govuk-c-table__row">
-      <th class="govuk-c-table__header" scope="row"> March</th>
-      <td class="govuk-c-table__cell  govuk-c-table__cell--numeric "  >£165</td>
-      <td class="govuk-c-table__cell  govuk-c-table__cell--numeric "  >£125</td>
-    </tr>
-  </tbody>
-</table>
-
-</code></pre>
 
 <h2 class="govuk-u-heading-24">If you are using Nunjucks</h2>
 <p class="govuk-u-copy-19">To use a macro, follow the below code examples:</p>
@@ -232,9 +236,7 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 <p class="govuk-u-copy-19">Where the macros take the following arguments</p>
 
 <div>
-
   <!-- TODO: Use the table macro here and pass it component argument data -->
-
 </div>
 
 <h3 class="govuk-u-bold-19">Setting up Nunjucks views and paths</h3>

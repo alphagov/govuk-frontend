@@ -52,80 +52,84 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 
 <h2 class="govuk-u-heading-24">Quick start examples</h2>
 <p class="govuk-u-copy-19"></p>
-<pre><code>
+<pre>
+<code>
+  
 
-
-<div class="govuk-c-grid ">
-  <div class="govuk-c-grid__item govuk-c-grid__item--full">
+&lt;div class=&quot;govuk-c-grid &quot;&gt;
+  &lt;div class=&quot;govuk-c-grid__item govuk-c-grid__item--full&quot;&gt;
      
-  </div>
-</div>
+  &lt;/div&gt;
+&lt;/div&gt;
 
 
 
-<div class="govuk-c-grid ">
-  <div class="govuk-c-grid__item govuk-c-grid__item--one-half">
+&lt;div class=&quot;govuk-c-grid &quot;&gt;
+  &lt;div class=&quot;govuk-c-grid__item govuk-c-grid__item--one-half&quot;&gt;
      
-  </div>
-  <div class="govuk-c-grid__item govuk-c-grid__item--one-half">
+  &lt;/div&gt;
+  &lt;div class=&quot;govuk-c-grid__item govuk-c-grid__item--one-half&quot;&gt;
      
-  </div>
-</div>
+  &lt;/div&gt;
+&lt;/div&gt;
 
 
 
-<div class="govuk-c-grid ">
-  <div class="govuk-c-grid__item govuk-c-grid__item--one-third">
+&lt;div class=&quot;govuk-c-grid &quot;&gt;
+  &lt;div class=&quot;govuk-c-grid__item govuk-c-grid__item--one-third&quot;&gt;
      
-  </div>
-  <div class="govuk-c-grid__item govuk-c-grid__item--one-third">
+  &lt;/div&gt;
+  &lt;div class=&quot;govuk-c-grid__item govuk-c-grid__item--one-third&quot;&gt;
      
-  </div>
-  <div class="govuk-c-grid__item govuk-c-grid__item--one-third">
+  &lt;/div&gt;
+  &lt;div class=&quot;govuk-c-grid__item govuk-c-grid__item--one-third&quot;&gt;
      
-  </div>
-</div>
+  &lt;/div&gt;
+&lt;/div&gt;
 
 
 
-<div class="govuk-c-grid ">
-  <div class="govuk-c-grid__item govuk-c-grid__item--two-thirds">
+&lt;div class=&quot;govuk-c-grid &quot;&gt;
+  &lt;div class=&quot;govuk-c-grid__item govuk-c-grid__item--two-thirds&quot;&gt;
      
-  </div>
-  <div class="govuk-c-grid__item govuk-c-grid__item--one-third">
+  &lt;/div&gt;
+  &lt;div class=&quot;govuk-c-grid__item govuk-c-grid__item--one-third&quot;&gt;
      
-  </div>
-</div>
+  &lt;/div&gt;
+&lt;/div&gt;
 
 
 
-<div class="govuk-c-grid ">
-  <div class="govuk-c-grid__item govuk-c-grid__item--one-third">
+&lt;div class=&quot;govuk-c-grid &quot;&gt;
+  &lt;div class=&quot;govuk-c-grid__item govuk-c-grid__item--one-third&quot;&gt;
      
-  </div>
-  <div class="govuk-c-grid__item govuk-c-grid__item--two-thirds">
+  &lt;/div&gt;
+  &lt;div class=&quot;govuk-c-grid__item govuk-c-grid__item--two-thirds&quot;&gt;
      
-  </div>
-</div>
+  &lt;/div&gt;
+&lt;/div&gt;
 
 
 
-<div class="govuk-c-grid ">
-  <div class="govuk-c-grid__item govuk-c-grid__item--one-quarter">
+&lt;div class=&quot;govuk-c-grid &quot;&gt;
+  &lt;div class=&quot;govuk-c-grid__item govuk-c-grid__item--one-quarter&quot;&gt;
      
-  </div>
-  <div class="govuk-c-grid__item govuk-c-grid__item--one-quarter">
+  &lt;/div&gt;
+  &lt;div class=&quot;govuk-c-grid__item govuk-c-grid__item--one-quarter&quot;&gt;
      
-  </div>
-  <div class="govuk-c-grid__item govuk-c-grid__item--one-quarter">
+  &lt;/div&gt;
+  &lt;div class=&quot;govuk-c-grid__item govuk-c-grid__item--one-quarter&quot;&gt;
      
-  </div>
-  <div class="govuk-c-grid__item govuk-c-grid__item--one-quarter">
+  &lt;/div&gt;
+  &lt;div class=&quot;govuk-c-grid__item govuk-c-grid__item--one-quarter&quot;&gt;
      
-  </div>
-</div>
+  &lt;/div&gt;
+&lt;/div&gt;
 
-</code></pre>
+
+</code>
+</pre>
+
 
 <h2 class="govuk-u-heading-24">If you are using Nunjucks</h2>
 <p class="govuk-u-copy-19">To use a macro, follow the below code examples:</p>
@@ -191,14 +195,12 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 <p class="govuk-u-copy-19">Where the macros take the following arguments</p>
 
 <div>
-
 <!-- TODO: Use the table macro here and pass it component argument data -->
 | Name          | Type    | Required  | Description
 |---            |---      |---        |---
 | classes       | string  | No        | Optional additional classes
 | gridItems     | array   | Yes       | Grid items array with width key
 | width         | string  | Yes       | Width of the grid item - full, one-half, one-third, two-thirds, one-quarter
-
 </div>
 
 <h3 class="govuk-u-bold-19">Setting up Nunjucks views and paths</h3>

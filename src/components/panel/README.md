@@ -52,20 +52,24 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 
 <h2 class="govuk-u-heading-24">Quick start examples</h2>
 <p class="govuk-u-copy-19"></p>
-<pre><code>
-
-<div class="govuk-c-panel govuk-c-panel--confirmation ">
-  <h2 class="govuk-c-panel__title">
+<pre>
+<code>
+  
+&lt;div class=&quot;govuk-c-panel govuk-c-panel--confirmation &quot;&gt;
+  &lt;h2 class=&quot;govuk-c-panel__title&quot;&gt;
     Application complete
-  </h2>
-  <div class="govuk-c-panel__body">
+  &lt;/h2&gt;
+  &lt;div class=&quot;govuk-c-panel__body&quot;&gt;
     Your reference number is
-    <br>
-    <strong>HDJ2123F</strong>
-  </div>
-</div>
+    &lt;br&gt;
+    &lt;strong&gt;HDJ2123F&lt;/strong&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
 
-</code></pre>
+
+</code>
+</pre>
+
 
 <h2 class="govuk-u-heading-24">If you are using Nunjucks</h2>
 <p class="govuk-u-copy-19">To use a macro, follow the below code examples:</p>
@@ -83,7 +87,6 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 <p class="govuk-u-copy-19">Where the macros take the following arguments</p>
 
 <div>
-
 <!-- TODO: Use the table macro here and pass it component argument data -->
 | Name          | Type    | Required  | Description
 |---            |---      |---        |---
@@ -91,7 +94,6 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 | title         | string  | Yes       | The panel title
 | content       | string  | No        | The panel content
 | reference     | string  | No        | Optional reference number
-
 </div>
 
 <h3 class="govuk-u-bold-19">Setting up Nunjucks views and paths</h3>

@@ -52,89 +52,93 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 
 <h2 class="govuk-u-heading-24">Quick start examples</h2>
 <p class="govuk-u-copy-19"></p>
-<pre><code>
+<pre>
+<code>
+  
+&lt;ul class=&quot;govuk-c-list &quot;&gt;
 
-<ul class="govuk-c-list ">
+  &lt;li&gt;
+&lt;a href=&quot;/ &quot;&gt;        Related link
+&lt;/a&gt;  &lt;/li&gt;
+  &lt;li&gt;
+&lt;a href=&quot;/ &quot;&gt;        Related link
+&lt;/a&gt;  &lt;/li&gt;
+  &lt;li&gt;
+&lt;a href=&quot;/ &quot;&gt;        Related link
+&lt;/a&gt;  &lt;/li&gt;
 
-  <li>
-<a href="/ ">        Related link
-</a>  </li>
-  <li>
-<a href="/ ">        Related link
-</a>  </li>
-  <li>
-<a href="/ ">        Related link
-</a>  </li>
-
-</ul>
+&lt;/ul&gt;
 
 
-<ul class="govuk-c-list govuk-c-list--bullet ">
+&lt;ul class=&quot;govuk-c-list govuk-c-list--bullet &quot;&gt;
 
-  <li>
+  &lt;li&gt;
         here is a bulleted list
-  </li>
-  <li>
+  &lt;/li&gt;
+  &lt;li&gt;
         here is the second bulleted list item
-  </li>
-  <li>
+  &lt;/li&gt;
+  &lt;li&gt;
         here is the third bulleted list item
-  </li>
+  &lt;/li&gt;
 
-</ul>
+&lt;/ul&gt;
 
 
-<ol class="govuk-c-list govuk-c-list--number ">
+&lt;ol class=&quot;govuk-c-list govuk-c-list--number &quot;&gt;
 
-  <li>
+  &lt;li&gt;
         This is a numbered list.
-  </li>
-  <li>
+  &lt;/li&gt;
+  &lt;li&gt;
         This is the second step in a numbered list.
-  </li>
-  <li>
+  &lt;/li&gt;
+  &lt;li&gt;
         The third step is to make sure each item is a full sentence ending with a full stop.
-  </li>
+  &lt;/li&gt;
 
-</ol>
+&lt;/ol&gt;
 
 
-<ol class="govuk-c-list govuk-c-list--icon ">
+&lt;ol class=&quot;govuk-c-list govuk-c-list--icon &quot;&gt;
 
-  <li>
-      <span class="govuk-c-list__icon govuk-u-circle ">1</span>
+  &lt;li&gt;
+      &lt;span class=&quot;govuk-c-list__icon govuk-u-circle &quot;&gt;1&lt;/span&gt;
       Step 1
-  </li>
-  <li>
-      <span class="govuk-c-list__icon govuk-u-circle ">2</span>
+  &lt;/li&gt;
+  &lt;li&gt;
+      &lt;span class=&quot;govuk-c-list__icon govuk-u-circle &quot;&gt;2&lt;/span&gt;
       Step 2
-  </li>
-  <li>
-      <span class="govuk-c-list__icon govuk-u-circle ">3</span>
+  &lt;/li&gt;
+  &lt;li&gt;
+      &lt;span class=&quot;govuk-c-list__icon govuk-u-circle &quot;&gt;3&lt;/span&gt;
       Step 3
-  </li>
+  &lt;/li&gt;
 
-</ol>
+&lt;/ol&gt;
 
 
-<ol class="govuk-c-list govuk-c-list--icon ">
+&lt;ol class=&quot;govuk-c-list govuk-c-list--icon &quot;&gt;
 
-  <li>
-      <span class="govuk-c-list__icon govuk-u-circle govuk-c-list__icon--large">1</span>
+  &lt;li&gt;
+      &lt;span class=&quot;govuk-c-list__icon govuk-u-circle govuk-c-list__icon--large&quot;&gt;1&lt;/span&gt;
       Step 1 Large icon
-  </li>
-  <li>
-      <span class="govuk-c-list__icon govuk-u-circle govuk-c-list__icon--large">2</span>
+  &lt;/li&gt;
+  &lt;li&gt;
+      &lt;span class=&quot;govuk-c-list__icon govuk-u-circle govuk-c-list__icon--large&quot;&gt;2&lt;/span&gt;
       Step 2 Large icon
-  </li>
-  <li>
-      <span class="govuk-c-list__icon govuk-u-circle govuk-c-list__icon--large">3</span>
+  &lt;/li&gt;
+  &lt;li&gt;
+      &lt;span class=&quot;govuk-c-list__icon govuk-u-circle govuk-c-list__icon--large&quot;&gt;3&lt;/span&gt;
       Step 3 Large icon
-  </li>
+  &lt;/li&gt;
 
-</ol>
+&lt;/ol&gt;
 
-</code></pre>
+
+</code>
+</pre>
+
 
 <h2 class="govuk-u-heading-24">If you are using Nunjucks</h2>
 <p class="govuk-u-copy-19">To use a macro, follow the below code examples:</p>
@@ -234,7 +238,6 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 <p class="govuk-u-copy-19">Where the macros take the following arguments</p>
 
 <div>
-
 <!-- TODO: Use the table macro here and pass it component argument data -->
 | Name                | Type   | Default | Required | Description
 |---                  |---     |---      |---       |---
@@ -247,7 +250,6 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 | options.isNumber    |        |         | No       | Creates numbered list
 | options.isStep      |        |         | No       | Creates list of steps
 | options.isStepLarge |        |         | No       | Creates list of steps with large icons
-
 </div>
 
 <h3 class="govuk-u-bold-19">Setting up Nunjucks views and paths</h3>

@@ -64,20 +64,24 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 
 <h2 class="govuk-u-heading-24">Quick start examples</h2>
 <p class="govuk-u-copy-19"></p>
-<pre><code>
-
-<a href="" class="govuk-c-link govuk-c-link--back">Back</a>
-
-
-<a href="" class="govuk-c-link govuk-c-link--muted">Is there anything wrong with this page?</a>
+<pre>
+<code>
+  
+&lt;a href=&quot;&quot; class=&quot;govuk-c-link govuk-c-link--back&quot;&gt;Back&lt;/a&gt;
 
 
-<a href="" class="govuk-c-link govuk-c-link--download"></a>
+&lt;a href=&quot;&quot; class=&quot;govuk-c-link govuk-c-link--muted&quot;&gt;Is there anything wrong with this page?&lt;/a&gt;
 
 
-<a href="" class="govuk-c-link govuk-c-link--skip">Skip to main content</a>
+&lt;a href=&quot;&quot; class=&quot;govuk-c-link govuk-c-link--download&quot;&gt;&lt;/a&gt;
 
-</code></pre>
+
+&lt;a href=&quot;&quot; class=&quot;govuk-c-link govuk-c-link--skip&quot;&gt;Skip to main content&lt;/a&gt;
+
+
+</code>
+</pre>
+
 
 <h2 class="govuk-u-heading-24">If you are using Nunjucks</h2>
 <p class="govuk-u-copy-19">To use a macro, follow the below code examples:</p>
@@ -111,7 +115,6 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 <p class="govuk-u-copy-19">Where the macros take the following arguments</p>
 
 <div>
-
 <!-- TODO: Use the table macro here and pass it component argument data -->
 | Name      | Type    | Default | Required  | Description
 |---        |---      |---      |---        |---
@@ -122,7 +125,6 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
                                             | --muted
                                             | --download
                                             | --skip
-
 </div>
 
 <h3 class="govuk-u-bold-19">Setting up Nunjucks views and paths</h3>

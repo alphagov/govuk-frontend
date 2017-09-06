@@ -52,35 +52,39 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 
 <h2 class="govuk-u-heading-24">Quick start examples</h2>
 <p class="govuk-u-copy-19"></p>
-<pre><code>
+<pre>
+<code>
+  
 
+&lt;div class=&quot;govuk-c-error-summary &quot; aria-labelledby=&quot;error-summary-title&quot; role=&quot;alert&quot; tabindex=&quot;-1&quot;&gt;
 
-<div class="govuk-c-error-summary " aria-labelledby="error-summary-title" role="alert" tabindex="-1">
-
-  <h2 class="govuk-c-error-summary__title" id="error-summary-title">
+  &lt;h2 class=&quot;govuk-c-error-summary__title&quot; id=&quot;error-summary-title&quot;&gt;
     Message to alert the user to a problem goes here
-  </h2>
+  &lt;/h2&gt;
 
-  <div class="govuk-c-error-summary__body">
-    <p>
+  &lt;div class=&quot;govuk-c-error-summary__body&quot;&gt;
+    &lt;p&gt;
       Optional description of the errors and how to correct them
-    </p>
-    <ul class="govuk-c-list  govuk-c-error-summary__list">
+    &lt;/p&gt;
+    &lt;ul class=&quot;govuk-c-list  govuk-c-error-summary__list&quot;&gt;
 
-  <li>
-<a href="#example-error-1 ">        Descriptive link to the question with an error
-</a>  </li>
-  <li>
-<a href="#example-error-2 ">        Descriptive link to the question with an error
-</a>  </li>
+  &lt;li&gt;
+&lt;a href=&quot;#example-error-1 &quot;&gt;        Descriptive link to the question with an error
+&lt;/a&gt;  &lt;/li&gt;
+  &lt;li&gt;
+&lt;a href=&quot;#example-error-2 &quot;&gt;        Descriptive link to the question with an error
+&lt;/a&gt;  &lt;/li&gt;
 
-</ul>
+&lt;/ul&gt;
 
-  </div>
+  &lt;/div&gt;
 
-</div>
+&lt;/div&gt;
 
-</code></pre>
+
+</code>
+</pre>
+
 
 <h2 class="govuk-u-heading-24">If you are using Nunjucks</h2>
 <p class="govuk-u-copy-19">To use a macro, follow the below code examples:</p>
@@ -107,7 +111,6 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 <p class="govuk-u-copy-19">Where the macros take the following arguments</p>
 
 <div>
-
 <!-- TODO: Use the table macro here and pass it component argument data -->
 | Name        | Type   | Default | Required | Description
 |---          |---     |---      |---       |---
@@ -118,7 +121,6 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 | url         | string |         | Yes      | List item url
 | text        | string |         | Yes      | List item text
 | listOptions | object |         | No       | List options
-
 </div>
 
 <h3 class="govuk-u-bold-19">Setting up Nunjucks views and paths</h3>

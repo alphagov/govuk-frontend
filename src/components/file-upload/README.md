@@ -52,8 +52,12 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 
 <h2 class="govuk-u-heading-24">Quick start examples</h2>
 <p class="govuk-u-copy-19"></p>
-<pre><code>
-</code></pre>
+<pre>
+<code>
+  
+</code>
+</pre>
+
 
 <h2 class="govuk-u-heading-24">If you are using Nunjucks</h2>
 <p class="govuk-u-copy-19">To use a macro, follow the below code examples:</p>
@@ -63,7 +67,6 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 
 <div>
 
-
 <!-- TODO: Use the table macro here and pass it component argument data -->
 
 | Name        | Type   | Default | Required | Description
@@ -72,7 +75,6 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 | breadcrumbs | array  |         | Yes      | Breadcrumbs array with title and url keys
 | title       | string |         | Yes      | Title of the breadcrumb item
 | url         | string |         | Yes      | Url of the breadcrumb item
-
 
 </div>
 
