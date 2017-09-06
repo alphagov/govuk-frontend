@@ -18,15 +18,99 @@
 {# {% set componentGuidanceLink = 'new link here' %} #}
 
 {% block componentArguments %}
-
-<!-- TODO: Use the table macro here and pass it component argument data -->
-
-| Name       | Type    | Default | Required | Description
-|---         |---      |---      |---       |---
-| classes    | string  |         | No       | Optional additional classes
-| text       | string  |         | Yes      | Button or link text
-| isStart    | boolean |         | No       | Adds the class govuk-c-button--start for a "Start now" button
-| isDisabled | boolean |         | No       | Disables the button - adds the class govuk-c-button--disabled and sets disabled="disabled" and aria-disabled="true"
-| url        | string  |         | No       | Url that the hyperlink points to
-
+{% from "table/macro.njk" import govukTable %}
+{{ govukTable(
+  classes='',
+  options = {
+    'isFirstCellHeader': 'true'
+  },
+  data = {
+    'head' : [
+      {
+        text: 'Name'
+      },
+      {
+        text: 'Type'
+      },
+      {
+        text: 'Required'
+      },
+      {
+        text: 'Description'
+      }
+    ],
+    'rows' : [
+      [
+        {
+          text: 'classes'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'Optional additional classes'
+        }
+      ],
+      [
+        {
+          text: 'text'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'Yes'
+        },
+        {
+          text: 'Button or link text'
+        }
+      ],
+      [
+        {
+          text: 'isStart'
+        },
+        {
+          text: 'boolean'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'Adds the class govuk-c-button--start for a "Start now" button'
+        }
+      ],
+      [
+        {
+          text: 'isDisabled'
+        },
+        {
+          text: 'boolean'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'Disables the button - adds the class govuk-c-button--disabled and sets disabled="disabled" and aria-disabled="true"'
+        }
+      ],
+       [
+        {
+          text: 'url'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'Url that the hyperlink points to'
+        }
+      ]
+    ]
+  }
+)}}
 {% endblock %}
