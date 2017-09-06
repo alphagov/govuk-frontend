@@ -53,15 +53,17 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 
 <h2 class="govuk-u-heading-24">Quick start examples</h2>
 <p class="govuk-u-copy-19"></p>
-<pre><code>{% from &quot;breadcrumb/macro.njk&quot; import govukBreadcrumb %}
+<pre><code>
 
-{{ govukBreadcrumb(
-  classes=&#39;&#39;,
-  [
-    { title: &#39;Home&#39;, url: &#39;/&#39; },
-    { title: &#39;Current page&#39; }
-  ]
-) }}
+<div class="govuk-c-breadcrumb ">
+  <ol class="govuk-c-breadcrumb__list">
+      <li class="govuk-c-breadcrumb__list-item">
+        <a class="govuk-c-breadcrumb__link" href="/">Home</a>
+      </li>
+      <li class="govuk-c-breadcrumb__list-item" aria-current="page">Current page</li>
+  </ol>
+</div>
+
 </code></pre>
 
 <h2 class="govuk-u-heading-24">If you are using Nunjucks</h2>

@@ -56,13 +56,19 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 <h2 class="govuk-u-heading-24">Quick start examples</h2>
 <p class="govuk-u-copy-19">Buttons are configured to perform an action and they can have a different look. For example, they can be disabled until a valid action has been performed by the user.  You can use the following three variants:
 </p>
-<pre><code>{% from &quot;button/macro.njk&quot; import govukButton %}
+<pre><code>
 
-{{ govukButton(classes=&#39;&#39;, text=&#39;Save and continue&#39;) }}
+<input class="govuk-c-button  "
+value="Save and continue">
 
-{{ govukButton(classes=&#39;&#39;, text=&#39;Save and continue&#39;, isDisabled=&#39;true&#39;) }}
 
-{{ govukButton(classes=&#39;&#39;, text=&#39;Start now&#39;, url=&#39;/&#39;, isStart=&#39;true&#39;) }}
+<input class="govuk-c-button  govuk-c-button--disabled  "
+value="Save and continue"disabled="disabled" aria-disabled="true">
+
+
+<a class="govuk-c-button  govuk-c-button--start  " href="/" role="button">
+Start now</a>
+
 </code></pre>
 
 <h2 class="govuk-u-heading-24">If you are using Nunjucks</h2>

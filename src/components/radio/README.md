@@ -53,37 +53,25 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 
 <h2 class="govuk-u-heading-24">Quick start examples</h2>
 <p class="govuk-u-copy-19"></p>
-<pre><code>{% from &#39;radio/macro.njk&#39; import govukRadio %}
+<pre><code>
 
-{{ govukRadio(
-  classes=&#39;&#39;,
-  name=&#39;radio-group&#39;,
-  id=&#39;radio&#39;,
-  radios=[
-   {
-      id: &#39;1&#39;,
-      value: &#39;Yes&#39;,
-      label: &#39;Yes&#39;
-    },
-    {
-      id: &#39;2&#39;,
-      value: &#39;No&#39;,
-      label: &#39;No&#39;
-    },
-    {
-      id: &#39;3&#39;,
-      value: &#39;No&#39;,
-      label: &#39;No&#39;,
-      checked: &#39;true&#39;
-    },
-    {
-      id: &#39;4&#39;,
-      value: &#39;NA&#39;,
-      label: &#39;Not applicable&#39;,
-      disabled: &#39;true&#39;
-    }
-  ]
-) }}
+  <div class="govuk-c-radio">
+    <input class="govuk-c-radio__input " id="radio-1" name="radio-group" type="radio" value="Yes"  >
+    <label class="govuk-c-radio__label" for="radio-1">Yes</label>
+  </div>
+  <div class="govuk-c-radio">
+    <input class="govuk-c-radio__input " id="radio-2" name="radio-group" type="radio" value="No"  >
+    <label class="govuk-c-radio__label" for="radio-2">No</label>
+  </div>
+  <div class="govuk-c-radio">
+    <input class="govuk-c-radio__input " id="radio-3" name="radio-group" type="radio" value="No" checked >
+    <label class="govuk-c-radio__label" for="radio-3">No</label>
+  </div>
+  <div class="govuk-c-radio">
+    <input class="govuk-c-radio__input " id="radio-4" name="radio-group" type="radio" value="NA"  disabled>
+    <label class="govuk-c-radio__label" for="radio-4">Not applicable</label>
+  </div>
+
 </code></pre>
 
 <h2 class="govuk-u-heading-24">If you are using Nunjucks</h2>
