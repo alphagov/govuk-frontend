@@ -69,37 +69,18 @@ Radio
 </div>
 
 <h2 class="govuk-u-heading-24">Component HTML</h2>
-<pre><code>{% from &#39;radio/macro.njk&#39; import govukRadio %}
-
-{{ govukRadio(
-  classes=&#39;&#39;,
-  name=&#39;radio-group&#39;,
-  id=&#39;radio&#39;,
-  radios=[
-   {
-      id: &#39;1&#39;,
-      value: &#39;Yes&#39;,
-      label: &#39;Yes&#39;
-    },
-    {
-      id: &#39;2&#39;,
-      value: &#39;No&#39;,
-      label: &#39;No&#39;
-    },
-    {
-      id: &#39;3&#39;,
-      value: &#39;No&#39;,
-      label: &#39;No&#39;,
-      checked: &#39;true&#39;
-    },
-    {
-      id: &#39;4&#39;,
-      value: &#39;NA&#39;,
-      label: &#39;Not applicable&#39;,
-      disabled: &#39;true&#39;
-    }
-  ]
-) }}
+<pre><code>&lt;div class=&quot;govuk-c-radio&quot;&gt;
+  &lt;input class=&quot;govuk-c-radio__input&quot; id=&quot;radio-1&quot; type=&quot;radio&quot; name=&quot;radio-group&quot; value=&quot;Yes&quot;&gt;
+  &lt;label class=&quot;govuk-c-radio__label&quot; for=&quot;radio-1&quot;&gt;Yes&lt;/label&gt;
+&lt;/div&gt;
+&lt;div class=&quot;govuk-c-radio&quot;&gt;
+  &lt;input class=&quot;govuk-c-radio__input&quot; id=&quot;radio-2&quot; type=&quot;radio&quot; name=&quot;radio-group&quot; value=&quot;No&quot;&gt;
+  &lt;label class=&quot;govuk-c-radio__label&quot; for=&quot;radio-2&quot;&gt;No&lt;/label&gt;
+&lt;/div&gt;
+&lt;div class=&quot;govuk-c-radio&quot;&gt;
+  &lt;input class=&quot;govuk-c-radio__input&quot; id=&quot;radio-3&quot; type=&quot;radio&quot; name=&quot;radio-group&quot; disabled=&quot;disabled&quot; value=&quot;NA&quot;&gt;
+  &lt;label class=&quot;govuk-c-radio__label&quot; for=&quot;radio-3&quot;&gt;Not applicable&lt;/label&gt;
+&lt;/div&gt;
 </code></pre>
 
 <h2 class="govuk-u-heading-24">Installation</h2>

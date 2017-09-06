@@ -39,9 +39,9 @@ Site width container
 </div>
 
 <h2 class="govuk-u-heading-24">Component HTML</h2>
-<pre><code>{% from &quot;site-width-container/macro.njk&quot; import govukSiteWidthContainer %}
-
-{{ govukSiteWidthContainer(classes) }}
+<pre><code>&lt;div class=&quot;govuk-c-site-width-container&quot;&gt;
+  Site width container
+&lt;/div&gt;
 </code></pre>
 
 <h2 class="govuk-u-heading-24">Installation</h2>

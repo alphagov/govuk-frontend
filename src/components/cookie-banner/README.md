@@ -45,12 +45,9 @@ Cookie banner
 </div>
 
 <h2 class="govuk-u-heading-24">Component HTML</h2>
-<pre><code>{% from &quot;cookie-banner/macro.njk&quot; import govukCookieBanner %}
-{{ govukCookieBanner(
-  classes=&#39;&#39;,
-  cookieBannerText=&#39;GOV.UK uses cookies to make the site simpler. &lt;a href=&quot;https://www.gov.uk/help/cookies&quot;&gt;Find out more about cookies&lt;/a&gt;&#39;
-  )
-}}
+<pre><code>&lt;div class=&quot;govuk-c-cookie-banner js-cookie-banner&quot;&gt;
+  &lt;p class=&quot;govuk-c-cookie-banner__text&quot;&gt;GOV.UK uses cookies to make the site simpler. &lt;a href=&quot;https://www.gov.uk/help/cookies&quot;&gt;Find out more about cookies&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
 </code></pre>
 
 <h2 class="govuk-u-heading-24">Installation</h2>

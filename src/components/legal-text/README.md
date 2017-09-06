@@ -44,13 +44,13 @@ Legal text
 </div>
 
 <h2 class="govuk-u-heading-24">Component HTML</h2>
-<pre><code>{% from &quot;legal-text/macro.njk&quot; import govukLegalText %}
-
-{{ govukLegalText(
-  classes=&#39;&#39;,
-  iconFallbackText=&#39;Warning&#39;,
-  legalText=&#39;You can be fined up to £5,000 if you don’t register.&#39;)
-}}
+<pre><code>&lt;div class=&quot;govuk-c-legal-text&quot;&gt;
+  &lt;span class=&quot;govuk-c-legal-text__icon govuk-u-circle&quot; aria-hidden=&quot;true&quot;&gt;!&lt;/span&gt;
+  &lt;strong class=&quot;govuk-c-legal-text__text&quot;&gt;
+    &lt;span class=&quot;govuk-c-legal-text__assistive&quot;&gt;Warning&lt;/span&gt;
+    You can be fined up to £5,000 if you don’t register.
+  &lt;/strong&gt;
+&lt;/div&gt;
 </code></pre>
 
 <h2 class="govuk-u-heading-24">Installation</h2>

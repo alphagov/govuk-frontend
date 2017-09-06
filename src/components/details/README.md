@@ -50,19 +50,21 @@ Details
 </div>
 
 <h2 class="govuk-u-heading-24">Component HTML</h2>
-<pre><code>{% from &quot;details/macro.njk&quot; import govukDetails %}
-
-{{ govukDetails(
-  classes=&#39;&#39;,
-  detailsSummaryText=&#39;Help with nationality&#39;,
-  detailsText=&#39;&lt;p&gt;
-    If you’re not sure about your nationality, try to find out from an official document like a passport or national ID card.
-  &lt;/p&gt;
-  &lt;p&gt;
-    We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post.
-  &lt;/p&gt;&#39;
-  )
-}}
+<pre><code>&lt;details class=&quot;govuk-c-details&quot;&gt;
+  &lt;summary class=&quot;govuk-c-details__summary&quot;&gt;
+    &lt;span class=&quot;govuk-c-details__summary-text&quot;&gt;Help with nationality&lt;/span&gt;
+  &lt;/summary&gt;
+  &lt;div class=&quot;govuk-c-border govuk-c-border--left-narrow&quot;&gt;
+    &lt;div class=&quot;govuk-c-details__text&quot;&gt;
+      &lt;p&gt;
+        If you’re not sure about your nationality, try to find out from an official document like a passport or national ID card.
+      &lt;/p&gt;
+      &lt;p&gt;
+        We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post.
+      &lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/details&gt;
 </code></pre>
 
 <h2 class="govuk-u-heading-24">Installation</h2>

@@ -41,7 +41,19 @@ File upload
 </div>
 
 <h2 class="govuk-u-heading-24">Component HTML</h2>
-<pre><code></code></pre>
+<pre><code>&lt;label class=&quot;govuk-c-label&quot; for=&quot;file-upload-a&quot;&gt;
+  Upload a file
+&lt;/label&gt;
+&lt;input class=&quot;govuk-c-file-upload&quot; type=&quot;file&quot; id=&quot;file-upload-a&quot;&gt;
+
+&lt;label class=&quot;govuk-c-label&quot; for=&quot;file-upload-b&quot;&gt;
+  Upload a file
+  &lt;span class=&quot;govuk-c-error-message&quot;&gt;
+    Error message goes here
+  &lt;/span&gt;
+&lt;/label&gt;
+&lt;input class=&quot;govuk-c-file-upload govuk-c-file-upload--error&quot; type=&quot;file&quot; id=&quot;file-upload-b&quot;&gt;
+</code></pre>
 
 <h2 class="govuk-u-heading-24">Installation</h2>
 <pre><code>npm install --save @govuk-frontend/file-upload</code></pre>

@@ -47,15 +47,20 @@ Panel
 </div>
 
 <h2 class="govuk-u-heading-24">Component HTML</h2>
-<pre><code>{% from &quot;panel/macro.njk&quot; import govukPanel %}
+<pre><code>&lt;div class=&quot;govuk-c-panel govuk-c-panel--confirmation&quot;&gt;
+  &lt;h2 class=&quot;govuk-c-panel__title&quot;&gt;
+    Application complete
+  &lt;/h2&gt;
+  &lt;div class=&quot;govuk-c-panel__body&quot;&gt;
+    Your reference number is
+    &lt;br&gt;
+    &lt;strong&gt;HDJ2123F&lt;/strong&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
 
-{{ govukPanel(
-  classes=&#39;&#39;,
-  title=&#39;Application complete&#39;,
-  content=&#39;Your reference number is&#39;,
-  reference=&#39;HDJ2123F&#39;
-  )
-}}
+&lt;div class=&quot;govuk-c-panel govuk-c-panel--information&quot;&gt;
+  Panel content
+&lt;/div&gt;
 </code></pre>
 
 <h2 class="govuk-u-heading-24">Installation</h2>

@@ -85,51 +85,13 @@ Select box
 </div>
 
 <h2 class="govuk-u-heading-24">Component HTML</h2>
-<pre><code>{% from &quot;select-box/macro.njk&quot; import govukSelectBox %}
-
-
-{{ govukSelectBox(
-  classes=&#39;&#39;,
-  id=&#39;select-box-1&#39;,
-  name=&#39;select-box-1&#39;,
-  options=[
-    {
-      value: &#39;1&#39;,
-      label: &#39;GOV.UK frontend option 1&#39;
-    },
-    {
-      value: &#39;2&#39;,
-      label: &#39;GOV.UK frontend option 2&#39;
-    },
-    {
-      value: &#39;3&#39;,
-      label: &#39;GOV.UK frontend option 3&#39;
-    }
-  ]
-)}}
-
-{{ govukSelectBox(
-  hasLabelWithText=&#39;Label for select box&#39;,
-  labelClasses=&#39;&#39;,
-  classes=&#39;&#39;,
-  id=&#39;select-box-2&#39;,
-  name=&#39;select-box-2&#39;,
-  options=[
-    {
-      value: &#39;a&#39;,
-      label: &#39;GOV.UK frontend option a&#39;
-    },
-    {
-      value: &#39;b&#39;,
-      label: &#39;GOV.UK frontend option b&#39;,
-      selected: &#39;true&#39;
-    },
-    {
-      value: &#39;c&#39;,
-      label: &#39;GOV.UK frontend option c&#39;
-    }
-  ]
-)}}
+<pre><code>
+&lt;label class=&quot;govuk-c-label&quot; for=&quot;select-box&quot;&gt;This is the label text&lt;/label&gt;
+&lt;select class=&quot;govuk-c-select-box&quot; id=&quot;select-box&quot; name=&quot;select-box&quot;&gt;
+  &lt;option&gt;GOV.UK elements option 1&lt;/option&gt;
+  &lt;option&gt;GOV.UK elements option 2&lt;/option&gt;
+  &lt;option&gt;GOV.UK elements option 3&lt;/option&gt;
+&lt;/select&gt;
 </code></pre>
 
 <h2 class="govuk-u-heading-24">Installation</h2>

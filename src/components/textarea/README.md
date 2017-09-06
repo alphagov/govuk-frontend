@@ -53,17 +53,18 @@ Textarea
 </div>
 
 <h2 class="govuk-u-heading-24">Component HTML</h2>
-<pre><code>{% from &quot;textarea/macro.njk&quot; import govukTextarea %}
+<pre><code>&lt;label class=&quot;govuk-c-label&quot; for=&quot;govuk-c-textarea-a&quot;&gt;
+  Why can&#39;t you provide a National Insurance number?
+&lt;/label&gt;
+&lt;textarea class=&quot;govuk-c-textarea&quot; name=&quot;govuk-c-textarea-a&quot; id=&quot;govuk-c-textarea-a&quot; rows=&quot;5&quot;&gt;&lt;/textarea&gt;
 
-{{ govukTextarea(
-  classes=&#39;&#39;,
-  labelText=&#39;National Insurance number&#39;,
-  hintText=&#39;&#39;,
-  errorMessage=&#39;&#39;,
-  id=&#39;textarea&#39;,
-  name=&#39;name&#39;
-  )
-}}
+&lt;label class=&quot;govuk-c-label&quot; for=&quot;govuk-c-textarea-b&quot;&gt;
+  Why can&#39;t you provide a National Insurance number?
+  &lt;span class=&quot;govuk-c-error-message&quot;&gt;
+    Error message goes here
+  &lt;/span&gt;
+&lt;/label&gt;
+&lt;textarea class=&quot;govuk-c-textarea govuk-c-textarea--error&quot; name=&quot;govuk-c-textarea-b&quot; id=&quot;govuk-c-textarea-b&quot; rows=&quot;5&quot;&gt;&lt;/textarea&gt;
 </code></pre>
 
 <h2 class="govuk-u-heading-24">Installation</h2>

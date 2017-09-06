@@ -78,31 +78,13 @@ Skiplink - skip to the main page content
 </div>
 
 <h2 class="govuk-u-heading-24">Component HTML</h2>
-<pre><code>{% from &quot;link/macro.njk&quot; import govukLink %}
+<pre><code>&lt;a href=&quot;#&quot; class=&quot;govuk-c-link govuk-c-link--back&quot;&gt;Back&lt;/a&gt;
 
-{{ govukLink(
-  classes=&#39;govuk-c-link--back&#39;,
-  linkHref=&#39;&#39;,
-  linkText=&#39;Back&#39;)
-}}
+&lt;a href=&quot;#&quot; class=&quot;govuk-c-link govuk-c-link--muted&quot;&gt;Is there anything wrong with this page?&lt;/a&gt;
 
-{{ govukLink(
-  classes=&#39;govuk-c-link--muted&#39;,
-  linkHref=&#39;&#39;,
-  linkText=&#39;Is there anything wrong with this page?&#39;)
-}}
+&lt;a href=&quot;#&quot; class=&quot;govuk-c-link govuk-c-link--download&quot;&gt;Download&lt;/a&gt;
 
-{{ govukLink(
-  classes=&#39;govuk-c-link--download&#39;,
-  linkHref=&#39;&#39;,
-  tagText=&#39;Download&#39;)
-}}
-
-{{ govukLink(
-  classes=&#39;govuk-c-link--skip&#39;,
-  linkHref=&#39;&#39;,
-  linkText=&#39;Skip to main content&#39;)
-}}
+&lt;a href=&quot;#&quot; class=&quot;govuk-c-link govuk-c-link--skip&quot;&gt;Skip to main content&lt;/a&gt;
 </code></pre>
 
 <h2 class="govuk-u-heading-24">Installation</h2>

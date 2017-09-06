@@ -32,7 +32,39 @@ Date
 </div>
 
 <h2 class="govuk-u-heading-24">Component HTML</h2>
-<pre><code></code></pre>
+<pre><code>&lt;div class=&quot;govuk-c-date&quot;&gt;
+  &lt;div class=&quot;govuk-c-date__item govuk-c-date__item--day&quot;&gt;
+    &lt;label class=&quot;govuk-c-label govuk-c-date__label&quot; for=&quot;dob-day&quot;&gt;Day&lt;/label&gt;
+    &lt;input class=&quot;govuk-c-input govuk-c-date__input&quot; id=&quot;dob-day&quot; name=&quot;dob-day&quot; type=&quot;number&quot;&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;govuk-c-date__item govuk-c-date__item--month&quot;&gt;
+    &lt;label class=&quot;govuk-c-label govuk-c-date__label&quot; for=&quot;dob-month&quot;&gt;Month&lt;/label&gt;
+    &lt;input class=&quot;govuk-c-input govuk-c-date__input&quot; id=&quot;dob-month&quot; name=&quot;dob-month&quot; type=&quot;number&quot;&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;govuk-c-date__item govuk-c-date__item--year&quot;&gt;
+    &lt;label class=&quot;govuk-c-label govuk-c-date__label&quot; for=&quot;dob-year&quot;&gt;Year&lt;/label&gt;
+    &lt;input class=&quot;govuk-c-input govuk-c-date__input&quot; id=&quot;dob-year&quot; name=&quot;dob-year&quot; type=&quot;number&quot;&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;legend&gt;
+  &lt;span class=&quot;govuk-c-error-message&quot;&gt;Error message goes here&lt;/span&gt;
+&lt;/legend&gt;
+&lt;div class=&quot;govuk-c-date&quot;&gt;
+  &lt;div class=&quot;govuk-c-date__item govuk-c-date__item--day&quot;&gt;
+    &lt;label class=&quot;govuk-c-label govuk-c-date__label&quot; for=&quot;dob-day-1&quot;&gt;Day&lt;/label&gt;
+    &lt;input class=&quot;govuk-c-input govuk-c-date__input govuk-c-input--error&quot; id=&quot;dob-day-1&quot; name=&quot;dob-day&quot; type=&quot;number&quot;&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;govuk-c-date__item govuk-c-date__item--month&quot;&gt;
+    &lt;label class=&quot;govuk-c-label govuk-c-date__label&quot; for=&quot;dob-month-1&quot;&gt;Month&lt;/label&gt;
+    &lt;input class=&quot;govuk-c-input govuk-c-date__input&quot; id=&quot;dob-month-1&quot; name=&quot;dob-month&quot; type=&quot;number&quot;&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;govuk-c-date__item govuk-c-date__item--year&quot;&gt;
+    &lt;label class=&quot;govuk-c-label govuk-c-date__label&quot; for=&quot;dob-year-1&quot;&gt;Year&lt;/label&gt;
+    &lt;input class=&quot;govuk-c-input govuk-c-date__input&quot; id=&quot;dob-year-1&quot; name=&quot;dob-year&quot; type=&quot;number&quot;&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
 
 <h2 class="govuk-u-heading-24">Installation</h2>
 <pre><code>npm install --save @govuk-frontend/date</code></pre>

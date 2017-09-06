@@ -68,35 +68,21 @@ Label
 </div>
 
 <h2 class="govuk-u-heading-24">Component HTML</h2>
-<pre><code>{% from &quot;label/macro.njk&quot; import govukLabel %}
+<pre><code>&lt;label class=&quot;govuk-c-label&quot;&gt;
+  National Insurance number
+  &lt;span class=&quot;govuk-c-label__hint&quot;&gt;
+    It&#39;s on your National Insurance card, benefit letter, payslip or P60.
+    For example, ‘QQ 12 34 56 C’.
+  &lt;/span&gt;
+&lt;/label&gt;
 
-{{ govukLabel(
-  classes=&#39;&#39;,
-  labelText=&#39;National Insurance number&#39;,
-  hintText=&#39;It’s on your National Insurance card, benefit letter, payslip or P60.
-    For example, ‘QQ 12 34 56 C’.&#39;,
-  id=&#39;&#39;
-  )
-}}
-
-{{ govukLabel(
-  classes=&#39;govuk-c-label--bold&#39;,
-  labelText=&#39;National Insurance number&#39;,
-  hintText=&#39;It’s on your National Insurance card, benefit letter, payslip or P60.
-    For example, ‘QQ 12 34 56 C’.&#39;,
-  id=&#39;&#39;
-  )
-}}
-
-{{ govukLabel(
-  classes=&#39;&#39;,
-  labelText=&#39;National Insurance number&#39;,
-  hintText=&#39;It’s on your National Insurance card, benefit letter, payslip or P60.
-    For example, ‘QQ 12 34 56 C’.&#39;,
-  errorMessage=&#39;Error message goes here&#39;,
-  id=&#39;&#39;
-  )
-}}
+&lt;label class=&quot;govuk-c-label govuk-c-label--bold&quot;&gt;
+  National Insurance number
+  &lt;span class=&quot;govuk-c-label__hint&quot;&gt;
+    It&#39;s on your National Insurance card, benefit letter, payslip or P60.
+    For example, ‘QQ 12 34 56 C’.
+  &lt;/span&gt;
+&lt;/label&gt;
 </code></pre>
 
 <h2 class="govuk-u-heading-24">Installation</h2>
