@@ -6,7 +6,7 @@ Select box
 </h1>
 
 <p class="govuk-u-core-24">
-  The HTML `<select>` element represents a control that provides a menu of options.
+The HTML <code>&lt;select&gt;</code> element represents a control that provides a menu of options.
 </p>
 
 <p class="govuk-u-copy-19">
