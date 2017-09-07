@@ -82,13 +82,39 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 
 <p class="govuk-u-copy-19">Where the macros take the following arguments</p>
 
+<h2 class="govuk-u-heading-24">Component arguments</h2>
 <div>
-<!-- TODO: Use the table macro here and pass it component argument data -->
-| Name              | Type    | Default | Required  | Description
-|---                |---      |---      |---        |---
-| classes           | string  |         | No        | Optional additional classes
-| iconFallbackText  | string  |         | Yes       | The fallback text for the icon
-| legalText         | string  |         | Yes       | The text next to the icon
+<table class="govuk-c-table ">
+  <thead class="govuk-c-table__head">
+    <tr class="govuk-c-table__row">
+      <th class="govuk-c-table__header "   scope="col">Name</th>
+      <th class="govuk-c-table__header "   scope="col">Type</th>
+      <th class="govuk-c-table__header "   scope="col">Required</th>
+      <th class="govuk-c-table__header "   scope="col">Description</th>
+  </tr>
+  </thead>
+  <tbody class="govuk-c-table__body">
+    <tr class="govuk-c-table__row">
+      <th class="govuk-c-table__header" scope="row"> classes</th>
+      <td class="govuk-c-table__cell "  >string</td>
+      <td class="govuk-c-table__cell "  >No</td>
+      <td class="govuk-c-table__cell "  >Optional additional classes</td>
+    </tr>
+    <tr class="govuk-c-table__row">
+      <th class="govuk-c-table__header" scope="row"> iconFallbackText</th>
+      <td class="govuk-c-table__cell "  >string</td>
+      <td class="govuk-c-table__cell "  >Yes</td>
+      <td class="govuk-c-table__cell "  >The fallback text for the icon</td>
+    </tr>
+    <tr class="govuk-c-table__row">
+      <th class="govuk-c-table__header" scope="row"> legalText</th>
+      <td class="govuk-c-table__cell "  >string</td>
+      <td class="govuk-c-table__cell "  >Yes</td>
+      <td class="govuk-c-table__cell "  >The text next to the icon</td>
+    </tr>
+  </tbody>
+</table>
+
 </div>
 
 <h3 class="govuk-u-bold-19">Setting up Nunjucks views and paths</h3>

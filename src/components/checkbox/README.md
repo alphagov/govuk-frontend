@@ -114,16 +114,44 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 
 <p class="govuk-u-copy-19">Where the macros take the following arguments</p>
 
+<h2 class="govuk-u-heading-24">Component arguments</h2>
 <div>
-
-<!-- TODO: Use the table macro here and pass it component argument data -->
-
-| Name        | Type    | Default | Required | Description
-|---          |---      |---      |---       |---
-| classes     | string  |         | No       | Optional additional classes
-| name        | string  |         | Yes      | Name of the group of checkboxes
-| id          | string  |         | Yes      | ID is prefixed to the ID of each checkbox
-| checkboxes  | array   |         | Yes      | Checkboxes array with id, value, label, checked and disabled keys
+<table class="govuk-c-table ">
+  <thead class="govuk-c-table__head">
+    <tr class="govuk-c-table__row">
+      <th class="govuk-c-table__header "   scope="col">Name</th>
+      <th class="govuk-c-table__header "   scope="col">Type</th>
+      <th class="govuk-c-table__header "   scope="col">Required</th>
+      <th class="govuk-c-table__header "   scope="col">Description</th>
+  </tr>
+  </thead>
+  <tbody class="govuk-c-table__body">
+    <tr class="govuk-c-table__row">
+      <th class="govuk-c-table__header" scope="row"> classes</th>
+      <td class="govuk-c-table__cell "  >string</td>
+      <td class="govuk-c-table__cell "  >No</td>
+      <td class="govuk-c-table__cell "  >Optional additional classes</td>
+    </tr>
+    <tr class="govuk-c-table__row">
+      <th class="govuk-c-table__header" scope="row"> name</th>
+      <td class="govuk-c-table__cell "  >string</td>
+      <td class="govuk-c-table__cell "  >Yes</td>
+      <td class="govuk-c-table__cell "  >Name of the group of checkboxes</td>
+    </tr>
+    <tr class="govuk-c-table__row">
+      <th class="govuk-c-table__header" scope="row"> id</th>
+      <td class="govuk-c-table__cell "  >string</td>
+      <td class="govuk-c-table__cell "  >Yes</td>
+      <td class="govuk-c-table__cell "  >ID is prefixed to the ID of each checkbox</td>
+    </tr>
+    <tr class="govuk-c-table__row">
+      <th class="govuk-c-table__header" scope="row"> checkboxes</th>
+      <td class="govuk-c-table__cell "  >array</td>
+      <td class="govuk-c-table__cell "  >Yes</td>
+      <td class="govuk-c-table__cell "  >Checkboxes array with id, value, label, checked and disabled keys</td>
+    </tr>
+  </tbody>
+</table>
 
 </div>
 

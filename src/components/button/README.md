@@ -88,17 +88,50 @@ Start now&lt;/a&gt;
 
 <p class="govuk-u-copy-19">Where the macros take the following arguments</p>
 
+<h2 class="govuk-u-heading-24">Component arguments</h2>
 <div>
-
-<!-- TODO: Use the table macro here and pass it component argument data -->
-
-| Name       | Type    | Default | Required | Description
-|---         |---      |---      |---       |---
-| classes    | string  |         | No       | Optional additional classes
-| text       | string  |         | Yes      | Button or link text
-| isStart    | boolean |         | No       | Adds the class govuk-c-button--start for a "Start now" button
-| isDisabled | boolean |         | No       | Disables the button - adds the class govuk-c-button--disabled and sets disabled="disabled" and aria-disabled="true"
-| url        | string  |         | No       | Url that the hyperlink points to
+<table class="govuk-c-table ">
+  <thead class="govuk-c-table__head">
+    <tr class="govuk-c-table__row">
+      <th class="govuk-c-table__header "   scope="col">Name</th>
+      <th class="govuk-c-table__header "   scope="col">Type</th>
+      <th class="govuk-c-table__header "   scope="col">Required</th>
+      <th class="govuk-c-table__header "   scope="col">Description</th>
+  </tr>
+  </thead>
+  <tbody class="govuk-c-table__body">
+    <tr class="govuk-c-table__row">
+      <th class="govuk-c-table__header" scope="row"> classes</th>
+      <td class="govuk-c-table__cell "  >string</td>
+      <td class="govuk-c-table__cell "  >No</td>
+      <td class="govuk-c-table__cell "  >Optional additional classes</td>
+    </tr>
+    <tr class="govuk-c-table__row">
+      <th class="govuk-c-table__header" scope="row"> text</th>
+      <td class="govuk-c-table__cell "  >string</td>
+      <td class="govuk-c-table__cell "  >Yes</td>
+      <td class="govuk-c-table__cell "  >Button or link text</td>
+    </tr>
+    <tr class="govuk-c-table__row">
+      <th class="govuk-c-table__header" scope="row"> isStart</th>
+      <td class="govuk-c-table__cell "  >boolean</td>
+      <td class="govuk-c-table__cell "  >No</td>
+      <td class="govuk-c-table__cell "  >Adds the class govuk-c-button--start for a &quot;Start now&quot; button</td>
+    </tr>
+    <tr class="govuk-c-table__row">
+      <th class="govuk-c-table__header" scope="row"> isDisabled</th>
+      <td class="govuk-c-table__cell "  >boolean</td>
+      <td class="govuk-c-table__cell "  >No</td>
+      <td class="govuk-c-table__cell "  >Disables the button - adds the class govuk-c-button--disabled and sets disabled=&quot;disabled&quot; and aria-disabled=&quot;true&quot;</td>
+    </tr>
+    <tr class="govuk-c-table__row">
+      <th class="govuk-c-table__header" scope="row"> url</th>
+      <td class="govuk-c-table__cell "  >string</td>
+      <td class="govuk-c-table__cell "  >No</td>
+      <td class="govuk-c-table__cell "  >Url that the hyperlink points to</td>
+    </tr>
+  </tbody>
+</table>
 
 </div>
 

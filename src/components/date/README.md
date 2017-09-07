@@ -65,6 +65,7 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 
 <p class="govuk-u-copy-19">Where the macros take the following arguments</p>
 
+<h2 class="govuk-u-heading-24">Component arguments</h2>
 <div>
   <!-- TODO: Use the table macro here and pass it component argument data -->
 </div>

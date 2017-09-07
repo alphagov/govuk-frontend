@@ -128,15 +128,51 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 
 <p class="govuk-u-copy-19">Where the macros take the following arguments</p>
 
+<h2 class="govuk-u-heading-24">Component arguments</h2>
 <div>
-<!-- TODO: Use the table macro here and pass it component argument data -->
-| Name          | Type    | Required  | Description
-|---            |---      |---        |---
-| classes       | string  | No        | Optional additional classes
-| labelText     | string  | Yes       | The label text
-| hintText      | string  | No        | Optional hint text
-| errorMessage  | string  | No        | Optional error message
-| id            | string  | Yes       | The value of the for attribute, the id input the label is associated with
+<table class="govuk-c-table ">
+  <thead class="govuk-c-table__head">
+    <tr class="govuk-c-table__row">
+      <th class="govuk-c-table__header "   scope="col">Name</th>
+      <th class="govuk-c-table__header "   scope="col">Type</th>
+      <th class="govuk-c-table__header "   scope="col">Required</th>
+      <th class="govuk-c-table__header "   scope="col">Description</th>
+  </tr>
+  </thead>
+  <tbody class="govuk-c-table__body">
+    <tr class="govuk-c-table__row">
+      <th class="govuk-c-table__header" scope="row"> classes</th>
+      <td class="govuk-c-table__cell "  >string</td>
+      <td class="govuk-c-table__cell "  >No</td>
+      <td class="govuk-c-table__cell "  >Optional additional classes</td>
+    </tr>
+    <tr class="govuk-c-table__row">
+      <th class="govuk-c-table__header" scope="row"> labelText</th>
+      <td class="govuk-c-table__cell "  >string</td>
+      <td class="govuk-c-table__cell "  >Yes</td>
+      <td class="govuk-c-table__cell "  >The label text</td>
+    </tr>
+    <tr class="govuk-c-table__row">
+      <th class="govuk-c-table__header" scope="row"> hintText</th>
+      <td class="govuk-c-table__cell "  >string</td>
+      <td class="govuk-c-table__cell "  >No</td>
+      <td class="govuk-c-table__cell "  >Optional hint text</td>
+    </tr>
+    <tr class="govuk-c-table__row">
+      <th class="govuk-c-table__header" scope="row"> errorMessage</th>
+      <td class="govuk-c-table__cell "  >string</td>
+      <td class="govuk-c-table__cell "  >No</td>
+      <td class="govuk-c-table__cell "  >Optional error message</td>
+    </tr>
+    <tr class="govuk-c-table__row">
+      <th class="govuk-c-table__header" scope="row"> id</th>
+      <td class="govuk-c-table__cell "  >string</td>
+      <td class="govuk-c-table__cell "  >Yes</td>
+      <td class="govuk-c-table__cell "  >The value of the for attribute, the id input the label is associated with</td>
+    </tr>
+  </tbody>
+</table>
+
 </div>
 
 <h3 class="govuk-u-bold-19">Setting up Nunjucks views and paths</h3>

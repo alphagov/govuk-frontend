@@ -110,17 +110,63 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 
 <p class="govuk-u-copy-19">Where the macros take the following arguments</p>
 
+<h2 class="govuk-u-heading-24">Component arguments</h2>
 <div>
-<!-- TODO: Use the table macro here and pass it component argument data -->
-| Name        | Type   | Default | Required | Description
-|---          |---     |---      |---       |---
-| classes     | string |         | No       | Optional additional classes
-| title       | string |         | Yes      | Error summary title
-| description | string |         | No       | Optional error summary description
-| listItems   | array  |         | Yes      | List items array with url and text keys
-| url         | string |         | Yes      | List item url
-| text        | string |         | Yes      | List item text
-| listOptions | object |         | No       | List options
+<table class="govuk-c-table ">
+  <thead class="govuk-c-table__head">
+    <tr class="govuk-c-table__row">
+      <th class="govuk-c-table__header "   scope="col">Name</th>
+      <th class="govuk-c-table__header "   scope="col">Type</th>
+      <th class="govuk-c-table__header "   scope="col">Required</th>
+      <th class="govuk-c-table__header "   scope="col">Description</th>
+  </tr>
+  </thead>
+  <tbody class="govuk-c-table__body">
+    <tr class="govuk-c-table__row">
+      <th class="govuk-c-table__header" scope="row"> classes</th>
+      <td class="govuk-c-table__cell "  >string</td>
+      <td class="govuk-c-table__cell "  >No</td>
+      <td class="govuk-c-table__cell "  >Optional additional classes</td>
+    </tr>
+    <tr class="govuk-c-table__row">
+      <th class="govuk-c-table__header" scope="row"> title</th>
+      <td class="govuk-c-table__cell "  >string</td>
+      <td class="govuk-c-table__cell "  >Yes</td>
+      <td class="govuk-c-table__cell "  >Error summary title</td>
+    </tr>
+    <tr class="govuk-c-table__row">
+      <th class="govuk-c-table__header" scope="row"> description</th>
+      <td class="govuk-c-table__cell "  >string</td>
+      <td class="govuk-c-table__cell "  >No</td>
+      <td class="govuk-c-table__cell "  >Optional error summary description</td>
+    </tr>
+    <tr class="govuk-c-table__row">
+      <th class="govuk-c-table__header" scope="row"> listItems</th>
+      <td class="govuk-c-table__cell "  >array</td>
+      <td class="govuk-c-table__cell "  >Yes</td>
+      <td class="govuk-c-table__cell "  >List items array with url and text keys</td>
+    </tr>
+    <tr class="govuk-c-table__row">
+      <th class="govuk-c-table__header" scope="row"> url</th>
+      <td class="govuk-c-table__cell "  >string</td>
+      <td class="govuk-c-table__cell "  >Yes</td>
+      <td class="govuk-c-table__cell "  >List item url</td>
+    </tr>
+    <tr class="govuk-c-table__row">
+      <th class="govuk-c-table__header" scope="row"> text</th>
+      <td class="govuk-c-table__cell "  >string</td>
+      <td class="govuk-c-table__cell "  >Yes</td>
+      <td class="govuk-c-table__cell "  >List item text</td>
+    </tr>
+    <tr class="govuk-c-table__row">
+      <th class="govuk-c-table__header" scope="row"> listOptions</th>
+      <td class="govuk-c-table__cell "  >object</td>
+      <td class="govuk-c-table__cell "  >No</td>
+      <td class="govuk-c-table__cell "  >List options</td>
+    </tr>
+  </tbody>
+</table>
+
 </div>
 
 <h3 class="govuk-u-bold-19">Setting up Nunjucks views and paths</h3>
