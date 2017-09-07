@@ -15,12 +15,71 @@
 {# {% set componentGuidanceLink = 'new link here' %} #}
 
 {% block componentArguments %}
-<!-- TODO: Use the table macro here and pass it component argument data -->
-| Name          | Type    | Default | Required | Description
-|---            |---      |---      |---       |---
-| classes       | string  |         | No       | Optional additional classes
-| name          | string  |         | Yes      | Name of the group of checkboxes
-| id            | string  |         | Yes      | ID is prefixed to the ID of each checkbox
-| previousPage  | array   |         | No       | previousPage array with url, title and label keys
-| nextPage      | array   |         | No       | nextPage array with url, title and label keys
+{% from "table/macro.njk" import govukTable %}
+{{ govukTable(
+  classes='',
+  options = {
+    'isFirstCellHeader': 'true'
+  },
+  data = {
+    'head' : [
+      {
+        text: 'Name'
+      },
+      {
+        text: 'Type'
+      },
+      {
+        text: 'Required'
+      },
+      {
+        text: 'Description'
+      }
+    ],
+    'rows' : [
+      [
+        {
+          text: 'classes'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'Optional additional classes'
+        }
+      ],
+      [
+        {
+          text: 'previousPage'
+        },
+        {
+          text: 'array'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'Previous page array with url, title and label keys'
+        }
+      ],
+      [
+        {
+          text: 'nextPage'
+        },
+        {
+          text: 'array'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'Next page array with url, title and label keys'
+        }
+      ]
+    ]
+  }
+)}}
 {% endblock %}
