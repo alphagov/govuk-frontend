@@ -15,6 +15,7 @@
 {# {% set componentGuidanceLink = 'new link here' %} #}
 
 {% block componentArguments %}
+{% from "table/macro.njk" import govukTable %}
 {{ govukTable(
   classes='',
   options = {
