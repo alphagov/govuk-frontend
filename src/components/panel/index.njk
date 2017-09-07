@@ -14,11 +14,85 @@
 {# {% set componentGuidanceLink = 'new link here' %} #}
 
 {% block componentArguments %}
-<!-- TODO: Use the table macro here and pass it component argument data -->
-| Name          | Type    | Required  | Description
-|---            |---      |---        |---
-| classes       | string  | No        | Optional additional classes
-| title         | string  | Yes       | The panel title
-| content       | string  | No        | The panel content
-| reference     | string  | No        | Optional reference number
+{% from "table/macro.njk" import govukTable %}
+{{ govukTable(
+  classes='',
+  options = {
+    'isFirstCellHeader': 'true'
+  },
+  data = {
+    'head' : [
+      {
+        text: 'Name'
+      },
+      {
+        text: 'Type'
+      },
+      {
+        text: 'Required'
+      },
+      {
+        text: 'Description'
+      }
+    ],
+    'rows' : [
+      [
+        {
+          text: 'classes'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'Optional additional classes'
+        }
+      ],
+      [
+        {
+          text: 'title'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'Yes'
+        },
+        {
+          text: 'The panel title'
+        }
+      ],
+      [
+        {
+          text: 'content'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'The panel content'
+        }
+      ],
+      [
+        {
+          text: 'reference'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'Optional reference number'
+        }
+      ]
+    ]
+  }
+)}}
 {% endblock %}
