@@ -14,15 +14,140 @@
 {# {% set componentGuidanceLink = 'new link here' %} #}
 
 {% block componentArguments %}
-<!-- TODO: Use the table macro here and pass it component argument data -->
-
-| Name          | Type    | Default   | Required  | Description
-|---            |---      |---        |---        |---
-| classes       | string  |           | No        | Optional additional classes
-| labelText     | string  |           | Yes       | The label text
-| hintText      | string  |           | No        | Optional hint text
-| errorMessage  | string  |           | No        | Optional error message
-| id            | string  |           | Yes       | The id of the textarea
-| name          | string  |           | Yes       | The name of the textarea
-| rows          | string  | 5         | No        | Change default number of textarea rows
+{{ govukTable(
+  classes='',
+  options = {
+    'isFirstCellHeader': 'true'
+  },
+  data = {
+    'head' : [
+      {
+        text: 'Name'
+      },
+      {
+        text: 'Type'
+      },
+      {
+        text: 'Required'
+      },
+      {
+        text: 'Description'
+      }
+    ],
+    'rows' : [
+      [
+        {
+          text: 'classes'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'Optional additional classes'
+        }
+      ],
+      [
+        {
+          text: 'data'
+        },
+        {
+          text: 'array'
+        },
+        {
+          text: 'Yes'
+        },
+        {
+          text: 'Data array with text and type keys'
+        }
+      ],
+      [
+        {
+          text: 'labelText'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'Yes'
+        },
+        {
+          text: 'The label text'
+        }
+      ],
+      [
+        {
+          text: 'hintText'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'Optional hint text'
+        }
+      ],
+      [
+        {
+          text: 'errorMessage'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'Optional error message'
+        }
+      ],
+      [
+        {
+          text: 'id'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'Yes'
+        },
+        {
+          text: 'The id of the textarea'
+        }
+      ],
+      [
+        {
+          text: 'name'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'Yes'
+        },
+        {
+          text: 'The name of the textarea'
+        }
+      ],
+      [
+        {
+          text: 'rows'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'Change default number of textarea rows (default is 5 rows)'
+        }
+      ]
+    ]
+  }
+)}}
 {% endblock %}
