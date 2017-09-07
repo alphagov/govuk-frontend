@@ -14,14 +14,126 @@
 {# {% set componentGuidanceLink = 'new link here' %} #}
 
 {% block componentArguments %}
-<!-- TODO: Use the table macro here and pass it component argument data -->
-| Name        | Type   | Default | Required | Description
-|---          |---     |---      |---       |---
-| classes     | string |         | No       | Optional additional classes
-| title       | string |         | Yes      | Error summary title
-| description | string |         | No       | Optional error summary description
-| listItems   | array  |         | Yes      | List items array with url and text keys
-| url         | string |         | Yes      | List item url
-| text        | string |         | Yes      | List item text
-| listOptions | object |         | No       | List options
+{{ govukTable(
+  classes='',
+  options = {
+    'isFirstCellHeader': 'true'
+  },
+  data = {
+    'head' : [
+      {
+        text: 'Name'
+      },
+      {
+        text: 'Type'
+      },
+      {
+        text: 'Required'
+      },
+      {
+        text: 'Description'
+      }
+    ],
+    'rows' : [
+      [
+        {
+          text: 'classes'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'Optional additional classes'
+        }
+      ],
+      [
+        {
+          text: 'title'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'Yes'
+        },
+        {
+          text: 'Error summary title'
+        }
+      ],
+      [
+        {
+          text: 'description'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'Optional error summary description'
+        }
+      ],
+      [
+        {
+          text: 'listItems'
+        },
+        {
+          text: 'array'
+        },
+        {
+          text: 'Yes'
+        },
+        {
+          text: 'List items array with url and text keys'
+        }
+      ],
+      [
+        {
+          text: 'url'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'Yes'
+        },
+        {
+          text: 'List item url'
+        }
+      ],
+      [
+        {
+          text: 'text'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'Yes'
+        },
+        {
+          text: 'List item text'
+        }
+      ],
+      [
+        {
+          text: 'listOptions'
+        },
+        {
+          text: 'object'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'List options'
+        }
+      ]
+    ]
+  }
+)}}
 {% endblock %}

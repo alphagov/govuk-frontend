@@ -14,9 +14,42 @@
 {# {% set componentGuidanceLink = 'new link here' %} #}
 
 {% block componentArguments %}
-<!-- TODO: Use the table macro here and pass it component argument data -->
-
-| Name          | Type    | Required  | Description
-|---            |---      |---        |---
-| classes       | string  | No        | Optional additional classes
+{{ govukTable(
+  classes='',
+  options = {
+    'isFirstCellHeader': 'true'
+  },
+  data = {
+    'head' : [
+      {
+        text: 'Name'
+      },
+      {
+        text: 'Type'
+      },
+      {
+        text: 'Required'
+      },
+      {
+        text: 'Description'
+      }
+    ],
+    'rows' : [
+      [
+        {
+          text: 'classes'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'Optional additional classes'
+        }
+      ]
+    ]
+  }
+)}}
 {% endblock %}

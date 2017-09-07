@@ -18,12 +18,57 @@
 {# {% set componentGuidanceLink = 'new link here' %} #}
 
 {% block componentArguments %}
-
-<!-- TODO: Use the table macro here and pass it component argument data -->
-
-| Name                | Type    | Default | Required  | Description
-|---                  |---      |---      |---        |---
-| classes             | string  |         | No        | Optional additional classes
-| cookieBannerText    | string  |         | Yes       | Cookie banner copy
-
+{% from "table/macro.njk" import govukTable %}
+{{ govukTable(
+  classes='',
+  options = {
+    'isFirstCellHeader': 'true'
+  },
+  data = {
+    'head' : [
+      {
+        text: 'Name'
+      },
+      {
+        text: 'Type'
+      },
+      {
+        text: 'Required'
+      },
+      {
+        text: 'Description'
+      }
+    ],
+    'rows' : [
+      [
+        {
+          text: 'classes'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'Optional additional classes'
+        }
+      ],
+      [
+        {
+          text: 'cookieBannerText'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'Yes'
+        },
+        {
+          text: 'Cookie banner text'
+        }
+      ]
+    ]
+  }
+)}}
 {% endblock %}

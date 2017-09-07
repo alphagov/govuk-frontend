@@ -14,10 +14,70 @@
 {# {% set componentGuidanceLink = 'new link here' %} #}
 
 {% block componentArguments %}
-<!-- TODO: Use the table macro here and pass it component argument data -->
-| Name          | Type    | Required  | Description
-|---            |---      |---        |---
-| classes       | string  | No        | Optional additional classes
-| gridItems     | array   | Yes       | Grid items array with width key
-| width         | string  | Yes       | Width of the grid item - full, one-half, one-third, two-thirds, one-quarter
+{{ govukTable(
+  classes='',
+  options = {
+    'isFirstCellHeader': 'true'
+  },
+  data = {
+    'head' : [
+      {
+        text: 'Name'
+      },
+      {
+        text: 'Type'
+      },
+      {
+        text: 'Required'
+      },
+      {
+        text: 'Description'
+      }
+    ],
+    'rows' : [
+      [
+        {
+          text: 'classes'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'Optional additional classes'
+        }
+      ],
+      [
+        {
+          text: 'gridItems'
+        },
+        {
+          text: 'array'
+        },
+        {
+          text: 'Yes'
+        },
+        {
+          text: 'Grid items array with width key'
+        }
+      ],
+      [
+        {
+          text: 'width'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'Yes'
+        },
+        {
+          text: 'Width of the grid item - full, one-half, one-third, two-thirds, one-quarter'
+        }
+      ]
+    ]
+  }
+)}}
 {% endblock %}

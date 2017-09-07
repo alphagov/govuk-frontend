@@ -14,14 +14,126 @@
 {# {% set componentGuidanceLink = 'new link here' %} #}
 
 {% block componentArguments %}
-<!-- TODO: Use the table macro here and pass it component argument data -->
-| Name          | Type    | Required  | Description
-|---            |---      |---        |---
-| classes       | string  | No        | Optional additional classes
-| labelText     | string  | Yes       | The label text
-| hintText      | string  | No        | Optional hint text
-| errorMessage  | string  | No        | Optional error message
-| id            | string  | Yes       | The id of the input
-| name          | string  | Yes       | The name of the input, which is submitted with the form data.
-| value         | string  | No        | Optional initial value of the input
+{{ govukTable(
+  classes='',
+  options = {
+    'isFirstCellHeader': 'true'
+  },
+  data = {
+    'head' : [
+      {
+        text: 'Name'
+      },
+      {
+        text: 'Type'
+      },
+      {
+        text: 'Required'
+      },
+      {
+        text: 'Description'
+      }
+    ],
+    'rows' : [
+      [
+        {
+          text: 'classes'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'Optional additional classes'
+        }
+      ],
+      [
+        {
+          text: 'labelText'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'Yes'
+        },
+        {
+          text: 'The label text'
+        }
+      ],
+      [
+        {
+          text: 'hintText'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'Optional hint text'
+        }
+      ],
+      [
+        {
+          text: 'errorMessage'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'Optional error message'
+        }
+      ],
+      [
+        {
+          text: 'id'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'Yes'
+        },
+        {
+          text: 'The id of the input'
+        }
+      ],
+      [
+        {
+          text: 'name'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'Yes'
+        },
+        {
+          text: 'The name of the input, which is submitted with the form data'
+        }
+      ],
+      [
+        {
+          text: 'value'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'Optional initial value of the input'
+        }
+      ]
+    ]
+  }
+)}}
 {% endblock %}

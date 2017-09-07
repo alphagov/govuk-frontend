@@ -18,5 +18,70 @@
 {# {% set componentGuidanceLink = 'new link here' %} #}
 
 {% block componentArguments %}
-  <!-- TODO: Use the table macro here and pass it component argument data -->
+{{ govukTable(
+  classes='',
+  options = {
+    'isFirstCellHeader': 'true'
+  },
+  data = {
+    'head' : [
+      {
+        text: 'Name'
+      },
+      {
+        text: 'Type'
+      },
+      {
+        text: 'Required'
+      },
+      {
+        text: 'Description'
+      }
+    ],
+    'rows' : [
+      [
+        {
+          text: 'classes'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'Optional additional classes'
+        }
+      ],
+      [
+        {
+          text: 'data'
+        },
+        {
+          text: 'array'
+        },
+        {
+          text: 'Yes'
+        },
+        {
+          text: 'Data array with text and type keys'
+        }
+      ],
+      [
+        {
+          text: 'options'
+        },
+        {
+          text: 'array'
+        },
+        {
+          text: 'Yes'
+        },
+        {
+          text: 'Options array with caption, captionSize and isFirstCellHeader keys'
+        }
+      ]
+    ]
+  }
+)}}
 {% endblock %}
