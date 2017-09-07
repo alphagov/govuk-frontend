@@ -25,7 +25,9 @@
 {% endblock %}
 </h1>
 
+{% if isReadme %}
 <h2 class="govuk-u-heading-24">Introduction</h2>
+{% endif %}
 <p class="govuk-u-core-24">
 {% block componentDescription %}
 {% endblock %}
