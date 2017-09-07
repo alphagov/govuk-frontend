@@ -14,7 +14,7 @@
   "author": "Government Digital Service developers (https://gds.blog.gov.uk/)",
   "homepage": "https://github.com/alphagov/govuk-frontend#readme",
   "scripts": {
-    "start": "gulp copy-assets --destination 'public' && gulp generate:readme && nodemon app.js",
+    "start": "gulp dev --destination 'public'",
     "test": "standard && gulp test",
     "heroku": "gulp copy-assets --destination 'public' && node app.js"
   },

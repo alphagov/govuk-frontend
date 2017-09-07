@@ -5,6 +5,7 @@ const gulp = require('gulp')
 const taskListing = require('gulp-task-listing')
 const runsequence = require('run-sequence')
 const taskArguments = require('./tasks/gulp/task-arguments')
+const nodemon = require('nodemon')
 
 // Gulp sub-tasks
 require('./tasks/gulp/lint.js')
@@ -33,19 +34,6 @@ gulp.task('build:packages', cb => {
 // --------------------------------------
 gulp.task('build:dist', cb => {
   runsequence('dist:prepare', 'dist:docs', cb)
-})
-
-// Dev task -----------------------------
-// Compiles assets and sets up watches
-// --------------------------------------
-gulp.task('dev', cb => {
-  runsequence('styles',
-              'scripts',
-              'copy:icons',
-              'preview:docs',
-              'preview:component:list',
-              'nunjucks',
-              'watch', cb)
 })
 
 // Umbrella scripts tasks for preview ---
@@ -91,6 +79,29 @@ gulp.task('copy-assets', () => {
               'scripts',
               'copy:icons'
             )
+})
+
+// Dev task -----------------------------
+// Runs a sequence of task on start
+// --------------------------------------
+gulp.task('dev', cb => {
+  runsequence(
+              // 'test',
+              'generate:readme',
+              'copy-assets',
+              'serve',
+              cb)
+})
+
+// Serve task ---------------------------
+// Restarts node app when there is changed
+// affecting js, css or njk files
+// --------------------------------------
+
+gulp.task('serve', ['watch'], () => {
+  return nodemon({
+    script: 'app.js'
+  })
 })
 
 // Default task -------------------------
