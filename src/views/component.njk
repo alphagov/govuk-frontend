@@ -8,6 +8,16 @@
   {% include "../components/"+ componentName +"/"+ componentName +".njk" ignore missing %}
 {% endset %}
 
+{% if not isReadme %}
+{% from "breadcrumb/macro.njk" import govukBreadcrumb %}
+{{ govukBreadcrumb(
+  classes='',
+  [
+    { title: 'GOV.UK Frontend', url: '/' },
+    { title: componentName | replace("-", " ") | capitalize }
+  ]
+)}}
+{% endif %}
 
 <h1 class="govuk-u-heading-36">
 {% block componentName %}
