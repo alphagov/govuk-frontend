@@ -14,13 +14,113 @@
 {# {% set componentGuidanceLink = 'new link here' %} #}
 
 {% block componentArguments %}
-<!-- TODO: Use the table macro here and pass it component argument data -->
-| Name             | Type    | Default | Required | Description
-|---               |---      |---      |---       |---
-| classes          | string  |         | No       | Optional additional classes
-| id               | string  |         | Yes      | Id for each select box
-| name             | string  |         | Yes      | Name for each select box
-| options          | array   |         | Yes      | Options array with value, label, selected keys
-| hasLabelWithText | string  |         | No       | Optional to provide label text that will render the label element
-| labelClasses     | string  |         | No       | Optional to provide label with custom classes
+{% from "table/macro.njk" import govukTable %}
+{{ govukTable(
+  classes='',
+  options = {
+    'isFirstCellHeader': 'true'
+  },
+  data = {
+    'head' : [
+      {
+        text: 'Name'
+      },
+      {
+        text: 'Type'
+      },
+      {
+        text: 'Required'
+      },
+      {
+        text: 'Description'
+      }
+    ],
+    'rows' : [
+      [
+        {
+          text: 'classes'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'Optional additional classes'
+        }
+      ],
+      [
+        {
+          text: 'id'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'Yes'
+        },
+        {
+          text: 'Id for each select box'
+        }
+      ],
+      [
+        {
+          text: 'name'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'Yes'
+        },
+        {
+          text: 'Name for each select box'
+        }
+      ],
+      [
+        {
+          text: 'options'
+        },
+        {
+          text: 'array'
+        },
+        {
+          text: 'Yes'
+        },
+        {
+          text: 'Options array with value, label, selected keys'
+        }
+      ],
+      [
+        {
+          text: 'hasLabelWithText'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'Optional to provide label text that will render the label element'
+        }
+      ],
+      [
+        {
+          text: 'labelClasses'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'Optional to provide label with custom classes'
+        }
+      ]
+    ]
+  }
+)}}
 {% endblock %}
