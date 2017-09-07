@@ -5,12 +5,9 @@
 Grid
 </h1>
 
+<h2 class="govuk-u-heading-24">Introduction</h2>
 <p class="govuk-u-core-24">
   Grid row with grid items.
-</p>
-
-<p class="govuk-u-copy-19">
-  <a href="http://www.linktodesignsystem.com/grid">Find grid guidance on the GOV.UK Design System.</a>
 </p>
 
 
@@ -19,81 +16,123 @@ Grid
 </a>
 </p>
 
-  <h2 class="govuk-u-heading-24">How to call this component</h2>
+<h2 class="govuk-u-heading-24">Guidance</h2>
 
-  <pre><code>{% from &quot;grid/macro.njk&quot; import govukGrid %}
+<p class="govuk-u-copy-19">
+  More information about when to use grid can be found on <a href="http://www.linktodesignsystem.com/grid" title="Link to read guidance on the use of grid on Gov.uk Design system website">GOV.UK Design System</a>
+</p>
 
-{{ govukGrid(
-  classes=&#39;&#39;,
-  gridItems=[
-    { width: &#39;full&#39; }
-  ]
-  )
-}}
+<h2 class="govuk-u-heading-24">Dependencies</h2>
 
-{{ govukGrid(
-  classes=&#39;&#39;,
-  gridItems=[
-    { width: &#39;one-half&#39; },
-    { width: &#39;one-half&#39; }
-  ]
-  )
-}}
+<p class="govuk-u-copy-19">To consume the grid component you must be running npm version 5 or above. </p>
 
-{{ govukGrid(
-  classes=&#39;&#39;,
-  gridItems=[
-    { width: &#39;one-third&#39; },
-    { width: &#39;one-third&#39; },
-    { width: &#39;one-third&#39; }
-  ]
-  )
-}}
+<p class="govuk-u-copy-19"></p>
 
-{{ govukGrid(
-  classes=&#39;&#39;,
-  gridItems=[
-    { width: &#39;two-thirds&#39; },
-    { width: &#39;one-third&#39; }
-  ]
-  )
-}}
+<h2 class="govuk-u-heading-24">Installation</h2>
+<pre><code>npm install --save @govuk-frontend/grid</code></pre>
 
-{{ govukGrid(
-  classes=&#39;&#39;,
-  gridItems=[
-    { width: &#39;one-third&#39; },
-    { width: &#39;two-thirds&#39; }
-  ]
-  )
-}}
+<h2 class="govuk-u-heading-24">Requirements</h2>
+<h3 class="govuk-u-bold-19">Build tool configuration</h3>
+<p class="govuk-u-copy-19">When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp</p>
+<pre>
+<code>
+  .pipe(sass({
+      includePaths: 'node_modules/'
+  }))
+</code>
+</pre>
 
-{{ govukGrid(
-  classes=&#39;&#39;,
-  gridItems=[
-    { width: &#39;one-quarter&#39; },
-    { width: &#39;one-quarter&#39; },
-    { width: &#39;one-quarter&#39; },
-    { width: &#39;one-quarter&#39; }
-  ]
-  )
-}}
-</code></pre>
+<h3 class="govuk-u-bold-19">Static asset path configuration</h3>
+<p class="govuk-u-copy-19">To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:</p>
+<pre>
+<code>
+app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
+</code>
+</pre>
 
-<h2 class="govuk-u-heading-24">Component arguments</h2>
+<h2 class="govuk-u-heading-24">Quick start examples</h2>
+<p class="govuk-u-copy-19"></p>
+<pre>
+<code>
+  
 
-<div>
+&lt;div class=&quot;govuk-c-grid &quot;&gt;
+  &lt;div class=&quot;govuk-c-grid__item govuk-c-grid__item--full&quot;&gt;
+     
+  &lt;/div&gt;
+&lt;/div&gt;
 
-<!-- TODO: Use the table macro here and pass it component argument data -->
-| Name          | Type    | Required  | Description
-|---            |---      |---        |---
-| classes       | string  | No        | Optional additional classes
-| gridItems     | array   | Yes       | Grid items array with width key
-| width         | string  | Yes       | Width of the grid item - full, one-half, one-third, two-thirds, one-quarter
 
-</div>
 
-<h2 class="govuk-u-heading-24">Component HTML</h2>
+&lt;div class=&quot;govuk-c-grid &quot;&gt;
+  &lt;div class=&quot;govuk-c-grid__item govuk-c-grid__item--one-half&quot;&gt;
+     
+  &lt;/div&gt;
+  &lt;div class=&quot;govuk-c-grid__item govuk-c-grid__item--one-half&quot;&gt;
+     
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+
+&lt;div class=&quot;govuk-c-grid &quot;&gt;
+  &lt;div class=&quot;govuk-c-grid__item govuk-c-grid__item--one-third&quot;&gt;
+     
+  &lt;/div&gt;
+  &lt;div class=&quot;govuk-c-grid__item govuk-c-grid__item--one-third&quot;&gt;
+     
+  &lt;/div&gt;
+  &lt;div class=&quot;govuk-c-grid__item govuk-c-grid__item--one-third&quot;&gt;
+     
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+
+&lt;div class=&quot;govuk-c-grid &quot;&gt;
+  &lt;div class=&quot;govuk-c-grid__item govuk-c-grid__item--two-thirds&quot;&gt;
+     
+  &lt;/div&gt;
+  &lt;div class=&quot;govuk-c-grid__item govuk-c-grid__item--one-third&quot;&gt;
+     
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+
+&lt;div class=&quot;govuk-c-grid &quot;&gt;
+  &lt;div class=&quot;govuk-c-grid__item govuk-c-grid__item--one-third&quot;&gt;
+     
+  &lt;/div&gt;
+  &lt;div class=&quot;govuk-c-grid__item govuk-c-grid__item--two-thirds&quot;&gt;
+     
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+
+&lt;div class=&quot;govuk-c-grid &quot;&gt;
+  &lt;div class=&quot;govuk-c-grid__item govuk-c-grid__item--one-quarter&quot;&gt;
+     
+  &lt;/div&gt;
+  &lt;div class=&quot;govuk-c-grid__item govuk-c-grid__item--one-quarter&quot;&gt;
+     
+  &lt;/div&gt;
+  &lt;div class=&quot;govuk-c-grid__item govuk-c-grid__item--one-quarter&quot;&gt;
+     
+  &lt;/div&gt;
+  &lt;div class=&quot;govuk-c-grid__item govuk-c-grid__item--one-quarter&quot;&gt;
+     
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+</code>
+</pre>
+
+
+<h2 class="govuk-u-heading-24">If you are using Nunjucks</h2>
+<p class="govuk-u-copy-19">To use a macro, follow the below code examples:</p>
 <pre><code>{% from &quot;grid/macro.njk&quot; import govukGrid %}
 
 {{ govukGrid(
@@ -153,6 +192,86 @@ Grid
 }}
 </code></pre>
 
-<h2 class="govuk-u-heading-24">Installation</h2>
-<pre><code>npm install --save @govuk-frontend/grid</code></pre>
+<p class="govuk-u-copy-19">Where the macros take the following arguments</p>
 
+<h2 class="govuk-u-heading-24">Component arguments</h2>
+<div>
+<table class="govuk-c-table ">
+  <thead class="govuk-c-table__head">
+    <tr class="govuk-c-table__row">
+      <th class="govuk-c-table__header "   scope="col">Name</th>
+      <th class="govuk-c-table__header "   scope="col">Type</th>
+      <th class="govuk-c-table__header "   scope="col">Required</th>
+      <th class="govuk-c-table__header "   scope="col">Description</th>
+  </tr>
+  </thead>
+  <tbody class="govuk-c-table__body">
+    <tr class="govuk-c-table__row">
+      <th class="govuk-c-table__header" scope="row"> classes</th>
+      <td class="govuk-c-table__cell "  >string</td>
+      <td class="govuk-c-table__cell "  >No</td>
+      <td class="govuk-c-table__cell "  >Optional additional classes</td>
+    </tr>
+    <tr class="govuk-c-table__row">
+      <th class="govuk-c-table__header" scope="row"> gridItems</th>
+      <td class="govuk-c-table__cell "  >array</td>
+      <td class="govuk-c-table__cell "  >Yes</td>
+      <td class="govuk-c-table__cell "  >Grid items array with width key</td>
+    </tr>
+    <tr class="govuk-c-table__row">
+      <th class="govuk-c-table__header" scope="row"> width</th>
+      <td class="govuk-c-table__cell "  >string</td>
+      <td class="govuk-c-table__cell "  >Yes</td>
+      <td class="govuk-c-table__cell "  >Width of the grid item - full, one-half, one-third, two-thirds, one-quarter</td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+
+<h3 class="govuk-u-bold-19">Setting up Nunjucks views and paths</h3>
+<p class="govuk-u-copy-19">Below is an example setup using express configure views:</p>
+<pre>
+<code>
+nunjucks.configure('node_modules/@govuk-frontend`, {
+  autoescape: true,
+  cache: false,
+  express: app
+})
+</code>
+</pre>
+
+<h2 class="govuk-u-heading-24">Getting updates</h2>
+
+<p class="govuk-u-copy-19">To check whether you have the latest version of the button run:</p>
+
+<pre><code>npm outdated @govuk-frontend/grid</code></pre>
+
+<p class="govuk-u-copy-19">To update the latest version run:</p>
+
+<pre><code>npm update @govuk-frontend/grid</code></pre>
+
+<h2 class="govuk-u-heading-24">Contribution</h2>
+<p class="govuk-u-copy-19">
+  Guidelines can be found at <a href="https://github.com/alphagov/govuk-frontend/blob/master/CONTRIBUTING.md" title="link to contributing guidelines on our github repository">on our Github repository.</a>
+</p>
+
+<h2 class="govuk-u-heading-24">Acknowledgements/credits</h2>
+
+<ul class="govuk-c-list ">
+
+  <li>
+        GDS developers
+  </li>
+  <li>
+        Jani Kraner
+  </li>
+  <li>
+        Gemma Leigh
+  </li>
+
+</ul>
+
+
+<h2 class="govuk-u-heading-24">License</h2>
+<p class="govuk-u-copy-19">MIT</p>
