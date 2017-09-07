@@ -7,19 +7,26 @@ Link
 
 <h2 class="govuk-u-heading-24">Introduction</h2>
 <p class="govuk-u-core-24">
-Link component, with the following modifiers:
 
-`--back`
-Back link - a black underlined link with a left pointing arrow. To sit at the top left of a page
+Link component, with four variants:
 
-`--muted`
-Muted link - used for is "anything wrong with this page?" links
+<ul class="govuk-c-list govuk-c-list--bullet ">
 
-`--download`
-Download Link - with download icon
+  <li>
+        back link - a black underlined link with a left pointing arrow
+  </li>
+  <li>
+        muted link - used for the “anything wrong with this page?” links
+  </li>
+  <li>
+        download link - with download icon
+  </li>
+  <li>
+        skip link - skip to the main page content
+  </li>
 
-`--skip`
-Skiplink - skip to the main page content
+</ul>
+
 </p>
 
 

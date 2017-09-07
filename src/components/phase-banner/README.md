@@ -7,7 +7,7 @@ Phase banner
 
 <h2 class="govuk-u-heading-24">Introduction</h2>
 <p class="govuk-u-core-24">
-  You have to use an alpha banner if your thing is in alpha, and a beta banner if it’s in beta.
+  A banner that indicates content is in alpha or beta phase with a description.
 </p>
 
 

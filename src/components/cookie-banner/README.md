@@ -7,7 +7,7 @@ Cookie banner
 
 <h2 class="govuk-u-heading-24">Introduction</h2>
 <p class="govuk-u-core-24">
-  Cookie banner description.
+  GOV.UK cookie message, with link to cookie help page.
 </p>
 
 
