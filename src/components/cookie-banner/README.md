@@ -7,7 +7,7 @@ Cookie banner
 
 <h2 class="govuk-u-heading-24">Introduction</h2>
 <p class="govuk-u-core-24">
-  Cookie banner description.
+  GOV.UK cookie message, with link to cookie help page.
 </p>
 
 
@@ -150,3 +150,5 @@ nunjucks.configure('node_modules/@govuk-frontend`, {
 
 <h2 class="govuk-u-heading-24">License</h2>
 <p class="govuk-u-copy-19">MIT</p>
+
+

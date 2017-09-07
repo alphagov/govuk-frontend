@@ -7,8 +7,7 @@ Pagination
 
 <h2 class="govuk-u-heading-24">Introduction</h2>
 <p class="govuk-u-core-24">
-  Previous/next page links.
-  <a href="https://www.gov.uk/voting-in-the-uk/polling-stations">View previous/next links on GOV.UK</a>
+  Navigational links that allow users navigate within a series of pages.
 </p>
 
 
@@ -298,3 +297,5 @@ nunjucks.configure('node_modules/@govuk-frontend`, {
 
 <h2 class="govuk-u-heading-24">License</h2>
 <p class="govuk-u-copy-19">MIT</p>
+
+

@@ -25,7 +25,9 @@
 {% endblock %}
 </h1>
 
+{% if isReadme %}
 <h2 class="govuk-u-heading-24">Introduction</h2>
+{% endif %}
 <p class="govuk-u-core-24">
 {% block componentDescription %}
 {% endblock %}
@@ -156,4 +158,14 @@ nunjucks.configure('node_modules/@govuk-frontend`, {
 <h2 class="govuk-u-heading-24">License</h2>
 <p class="govuk-u-copy-19">MIT</p>
 {% endif %}
+
+{% if not isReadme %}
+<h2 class="govuk-u-heading-24">Installation and setup</h2>
+<p class="govuk-u-copy-19">
+  <a href="https://github.com/alphagov/govuk-frontend/tree/master/src/components/{{ componentName}}">
+    View the {{ componentName }} README on GitHub
+  </a>
+</p>
+{% endif %}
+
 {% endblock %}
