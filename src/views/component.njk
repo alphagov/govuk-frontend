@@ -92,6 +92,7 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 
 <h2 class="govuk-u-heading-24">Component arguments</h2>
 <div>
+{% from "table/macro.njk" import govukTable %}
 {% block componentArguments %}
 {% endblock %}
 </div>
