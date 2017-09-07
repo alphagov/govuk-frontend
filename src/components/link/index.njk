@@ -4,19 +4,30 @@
 
 {# componentName #}
 {% block componentDescription %}
-Link component, with the following modifiers:
+{% from "list/macro.njk" import govukList %}
 
-`--back`
-Back link - a black underlined link with a left pointing arrow. To sit at the top left of a page
+Link component, with four variants:
 
-`--muted`
-Muted link - used for is "anything wrong with this page?" links
-
-`--download`
-Download Link - with download icon
-
-`--skip`
-Skiplink - skip to the main page content
+{{ govukList(
+  classes='',
+  [
+    {
+      text: 'back link - a black underlined link with a left pointing arrow'
+    },
+    {
+      text: 'muted link - used for the “anything wrong with this page?” links'
+    },
+    {
+      text: 'download link - with download icon'
+    },
+    {
+      text: 'skip link - skip to the main page content'
+    }
+  ],
+  options = {
+    'isBullet': 'true'
+  }
+) }}
 {% endblock %}
 {# componentExample #}
 {# componentNunjucks #}
