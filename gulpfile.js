@@ -74,11 +74,11 @@ gulp.task('test', cb => {
 // Copies files to
 // taskArguments.destination (public)
 // --------------------------------------
-gulp.task('copy-assets', () => {
+gulp.task('copy-assets', cb => {
   runsequence('styles',
               'scripts',
-              'copy:icons'
-            )
+              'copy:icons',
+            cb)
 })
 
 // Dev task -----------------------------
@@ -86,7 +86,6 @@ gulp.task('copy-assets', () => {
 // --------------------------------------
 gulp.task('dev', cb => {
   runsequence(
-              // 'test',
               'generate:readme',
               'copy-assets',
               'serve',
