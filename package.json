@@ -35,6 +35,7 @@
     "gulp-inject": "^4.2.0",
     "gulp-marked": "^1.0.0",
     "gulp-natural-sort": "^0.1.1",
+    "gulp-nunjucks": "^3.0.0",
     "gulp-nunjucks-render": "^2.2.1",
     "gulp-postcss": "^7.0.0",
     "gulp-rename": "^1.2.2",
