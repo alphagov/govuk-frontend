@@ -4,6 +4,7 @@ const paths = require('../../config/paths.json')
 const gulp = require('gulp')
 const nunjucks = require('gulp-nunjucks')
 const rename = require('gulp-rename')
+const taskArguments = require('./task-arguments')
 
 // Compile Nunjucks ----------------------
 // Compile Nunjucks to HTML
@@ -18,5 +19,5 @@ gulp.task('compile:components', () => {
     ])
     .pipe(nunjucks.compile({ lstripBlocks: true, trimBlocks: true }))
     .pipe(rename({ extname: '.html' }))
-    .pipe(gulp.dest('public/components/'))
+    .pipe(gulp.dest(taskArguments.destination + '/components/'))
 })
