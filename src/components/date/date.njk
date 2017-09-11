@@ -1,0 +1,121 @@
+{% from "date/macro.njk" import govukDate %}
+
+{{ govukDate(
+  fieldsetClasses='',
+  legendText='What is your date of birth?',
+  legendHintText='For example, 31 3 1980',
+  legendErrorMessage='',
+  id='dob',
+  name='dob',
+  dateItems=[
+    {
+      name: 'day',
+      error: ''
+    },
+    {
+      name: 'month',
+      error: ''
+    },
+    {
+      name: 'year',
+      error: ''
+    }
+  ]
+  )
+}}
+
+{{ govukDate(
+  fieldsetClasses='',
+  legendText='What is your date of birth?',
+  legendHintText='For example, 31 3 1980',
+  legendErrorMessage='Error message goes here',
+  id='dob',
+  name='dob',
+  dateItems=[
+    {
+      name: 'day',
+      error: 'true'
+    },
+    {
+      name: 'month',
+      error: 'true'
+    },
+    {
+      name: 'year',
+      error: 'true'
+    }
+  ]
+  )
+}}
+
+{{ govukDate(
+  fieldsetClasses='',
+  legendText='What is your date of birth?',
+  legendHintText='For example, 31 3 1980',
+  legendErrorMessage='Error message goes here',
+  id='dob-day-error',
+  name='dob-day-error',
+  dateItems=[
+    {
+      name: 'day',
+      error: 'true'
+    },
+    {
+      name: 'month',
+      error: ''
+    },
+    {
+      name: 'year',
+      error: ''
+    }
+  ]
+  )
+}}
+
+{{ govukDate(
+  fieldsetClasses='',
+  legendText='What is your date of birth?',
+  legendHintText='For example, 31 3 1980',
+  legendErrorMessage='Error message goes here',
+  id='dob-month-error',
+  name='dob-month-error',
+  dateItems=[
+    {
+      name: 'day',
+      error: ''
+    },
+    {
+      name: 'month',
+      error: 'true'
+    },
+    {
+      name: 'year',
+      error: ''
+    }
+  ]
+  )
+}}
+
+{{ govukDate(
+  fieldsetClasses='',
+  legendText='What is your date of birth?',
+  legendHintText='For example, 31 3 1980',
+  legendErrorMessage='Error message goes here',
+  id='dob-year-error',
+  name='dob-year-error',
+  dateItems=[
+    {
+      name: 'day',
+      error: ''
+    },
+    {
+      name: 'month',
+      error: ''
+    },
+    {
+      name: 'year',
+      error: 'true'
+    }
+  ]
+  )
+}}
