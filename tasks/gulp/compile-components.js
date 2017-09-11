@@ -20,7 +20,10 @@ gulp.task('compile:components', () => {
       '!' + paths.components + '**/template.njk',
       paths.components + '**/*.njk' // Only compile componentname.njk to html
     ])
-    .pipe(nunjucks.compile({ lstripBlocks: true, trimBlocks: true }))
+    .pipe(nunjucks.compile('', {
+      trimBlocks: true, // automatically remove trailing newlines from a block/tag
+      lstripBlocks: true // automatically remove leading whitespace from a block/tag
+    }))
     .pipe(rename({ extname: '.html' }))
     .pipe(gulp.dest(gulpif(isPackages, taskArguments.destination, taskArguments.destination + '/components/')))
 })
