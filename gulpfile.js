@@ -11,6 +11,7 @@ const nodemon = require('nodemon')
 require('./tasks/gulp/lint.js')
 require('./tasks/gulp/test.js')
 require('./tasks/gulp/compile-assets.js')
+require('./tasks/gulp/compile-components.js')
 require('./tasks/gulp/generate-readme.js')
 require('./tasks/gulp/watch.js')
 require('./tasks/gulp/dist-prepare.js')
@@ -20,7 +21,6 @@ require('./tasks/gulp/prepare-files.js')
 require('./tasks/gulp/demo-build.js')
 require('./tasks/gulp/preview-component-list.js')
 require('./tasks/gulp/preview-docs.js')
-require('./tasks/gulp/nunjucks-render.js')
 
 // Build packages task -----------------
 // Prepare package folder for publishing
@@ -87,6 +87,7 @@ gulp.task('copy-assets', cb => {
 gulp.task('dev', cb => {
   runsequence(
               'generate:readme',
+              'compile:components',
               'copy-assets',
               'serve',
               cb)

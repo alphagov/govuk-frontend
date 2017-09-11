@@ -60,7 +60,7 @@ app.get('/components*', function (req, res) {
   if (path.indexOf('preview') === -1) {
     try {
       var componentNjk = fs.readFileSync('src/components/' + path + '/' + path + '.njk', 'utf8')
-      var componentHtml = fs.readFileSync('src/components/' + path + '/' + path + '.html', 'utf8')
+      var componentHtml = fs.readFileSync('public/components/' + path + '/' + path + '.html', 'utf8')
 
       res.locals.componentPath = path
       res.locals.componentNunjucksFile = componentNjk
