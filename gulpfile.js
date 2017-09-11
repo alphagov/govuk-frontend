@@ -21,13 +21,15 @@ require('./tasks/gulp/prepare-files.js')
 require('./tasks/gulp/demo-build.js')
 require('./tasks/gulp/preview-component-list.js')
 require('./tasks/gulp/preview-docs.js')
+// new tasks
+require('./tasks/gulp/copy-to-destination.js')
 
 // Build packages task -----------------
 // Prepare package folder for publishing
 // -------------------------------------
-gulp.task('build:packages', cb => {
-  runsequence('test', 'prepare:files', 'packages:update', cb)
-})
+// gulp.task('build:packages', cb => {
+//   runsequence('test', 'prepare:files', 'packages:update', cb)
+// })
 
 // Build dist task ----------------------
 // Create temp files, update packages
@@ -102,6 +104,13 @@ gulp.task('serve', ['watch'], () => {
   return nodemon({
     script: 'app.js'
   })
+})
+
+// Build packages task -----------------
+// Prepare package folder for publishing
+// -------------------------------------
+gulp.task('build:packages', cb => {
+  runsequence('copy-files', cb)
 })
 
 // Default task -------------------------
