@@ -16,7 +16,7 @@
   "scripts": {
     "start": "gulp dev --destination 'public'",
     "test": "standard && gulp test",
-    "heroku": "gulp copy-assets --destination 'public' && node app.js"
+    "heroku": "gulp compile:components --destination 'public' && gulp copy-assets --destination 'public' && node app.js"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.1",
