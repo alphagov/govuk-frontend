@@ -110,7 +110,10 @@ gulp.task('serve', ['watch'], () => {
 // Prepare package folder for publishing
 // -------------------------------------
 gulp.task('build:packages', cb => {
-  runsequence('copy-files', cb)
+  runsequence(
+              'compile:components',
+              'copy-files',
+              cb)
 })
 
 // Default task -------------------------
