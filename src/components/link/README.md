@@ -1,185 +1,120 @@
+# Link
 
-
-
-<h1 class="govuk-u-heading-36">
-Link
-</h1>
-
-<h2 class="govuk-u-heading-24">Introduction</h2>
-<p class="govuk-u-core-24">
+## Introduction
 
 Link component, with four variants:
 
-<ul class="govuk-c-list govuk-c-list--bullet ">
+*   back link - a black underlined link with a left pointing arrow
+*   muted link - used for the “anything wrong with this page?” links
+*   download link - with download icon
+*   skip link - skip to the main page content
 
-  <li>
-        back link - a black underlined link with a left pointing arrow
-  </li>
-  <li>
-        muted link - used for the “anything wrong with this page?” links
-  </li>
-  <li>
-        download link - with download icon
-  </li>
-  <li>
-        skip link - skip to the main page content
-  </li>
+[Preview the link component.](http://govuk-frontend-review.herokuapp.com/components/link/preview)
 
-</ul>
+## Guidance
 
-</p>
+More information about when to use link can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/link "Link to read guidance on the use of link on Gov.uk Design system website")
 
+## Dependencies
 
-<p class="govuk-u-copy-19">
-<a href="http://govuk-frontend-review.herokuapp.com/components/link/preview">Preview the link component.
-</a>
-</p>
+To consume the link component you must be running npm version 5 or above.
 
-<h2 class="govuk-u-heading-24">Guidance</h2>
+## Installation
 
-<p class="govuk-u-copy-19">
-  More information about when to use link can be found on <a href="http://www.linktodesignsystem.com/link" title="Link to read guidance on the use of link on Gov.uk Design system website">GOV.UK Design System</a>
-</p>
+    npm install --save @govuk-frontend/link
 
-<h2 class="govuk-u-heading-24">Dependencies</h2>
+## Requirements
 
-<p class="govuk-u-copy-19">To consume the link component you must be running npm version 5 or above. </p>
+### Build tool configuration
 
-<p class="govuk-u-copy-19"></p>
+When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
 
-<h2 class="govuk-u-heading-24">Installation</h2>
-<pre><code>npm install --save @govuk-frontend/link</code></pre>
+      .pipe(sass({
+          includePaths: 'node_modules/'
+      }))
 
-<h2 class="govuk-u-heading-24">Requirements</h2>
-<h3 class="govuk-u-bold-19">Build tool configuration</h3>
-<p class="govuk-u-copy-19">When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp</p>
-<pre>
-<code>
-  .pipe(sass({
-      includePaths: 'node_modules/'
-  }))
-</code>
-</pre>
+### Static asset path configuration
 
-<h3 class="govuk-u-bold-19">Static asset path configuration</h3>
-<p class="govuk-u-copy-19">To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:</p>
-<pre>
-<code>
-app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
-</code>
-</pre>
+To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
 
-<h2 class="govuk-u-heading-24">Quick start examples</h2>
-<p class="govuk-u-copy-19"></p>
-<pre>
-<code>
-  
-&lt;a href=&quot;&quot; class=&quot;govuk-c-link govuk-c-link--back&quot;&gt;Back&lt;/a&gt;
+    app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
+## Quick start examples
 
-&lt;a href=&quot;&quot; class=&quot;govuk-c-link govuk-c-link--muted&quot;&gt;Is there anything wrong with this page?&lt;/a&gt;
+    <a href="" class="govuk-c-link govuk-c-link--back">Back</a>
 
+    <a href="" class="govuk-c-link govuk-c-link--muted">Is there anything wrong with this page?</a>
 
-&lt;a href=&quot;&quot; class=&quot;govuk-c-link govuk-c-link--download&quot;&gt;&lt;/a&gt;
+    <a href="" class="govuk-c-link govuk-c-link--download"></a>
 
+    <a href="" class="govuk-c-link govuk-c-link--skip">Skip to main content</a>
 
-&lt;a href=&quot;&quot; class=&quot;govuk-c-link govuk-c-link--skip&quot;&gt;Skip to main content&lt;/a&gt;
+## If you are using Nunjucks
 
+To use a macro, follow the below code examples:
 
-</code>
-</pre>
+    {% from "link/macro.njk" import govukLink %}
 
+    {{ govukLink(
+      classes='govuk-c-link--back',
+      linkHref='',
+      linkText='Back')
+    }}
 
-<h2 class="govuk-u-heading-24">If you are using Nunjucks</h2>
-<p class="govuk-u-copy-19">To use a macro, follow the below code examples:</p>
-<pre><code>{% from &quot;link/macro.njk&quot; import govukLink %}
+    {{ govukLink(
+      classes='govuk-c-link--muted',
+      linkHref='',
+      linkText='Is there anything wrong with this page?')
+    }}
 
-{{ govukLink(
-  classes=&#39;govuk-c-link--back&#39;,
-  linkHref=&#39;&#39;,
-  linkText=&#39;Back&#39;)
-}}
+    {{ govukLink(
+      classes='govuk-c-link--download',
+      linkHref='',
+      tagText='Download')
+    }}
 
-{{ govukLink(
-  classes=&#39;govuk-c-link--muted&#39;,
-  linkHref=&#39;&#39;,
-  linkText=&#39;Is there anything wrong with this page?&#39;)
-}}
+    {{ govukLink(
+      classes='govuk-c-link--skip',
+      linkHref='',
+      linkText='Skip to main content')
+    }}
 
-{{ govukLink(
-  classes=&#39;govuk-c-link--download&#39;,
-  linkHref=&#39;&#39;,
-  tagText=&#39;Download&#39;)
-}}
+Where the macros take the following arguments
 
-{{ govukLink(
-  classes=&#39;govuk-c-link--skip&#39;,
-  linkHref=&#39;&#39;,
-  linkText=&#39;Skip to main content&#39;)
-}}
-</code></pre>
+## Component arguments
 
-<p class="govuk-u-copy-19">Where the macros take the following arguments</p>
+<div>| Name | Type | Default | Required | Description |--- |--- |--- |--- |--- | linkHref | string | | Yes | The value of the link href attribute | linkText | string | | Yes | The link text | classes | string | | Yes | The modifier required for the link type | --back | --muted | --download | --skip</div>
 
-<h2 class="govuk-u-heading-24">Component arguments</h2>
-<div>
-<!-- TODO: Use the table macro here and pass it component argument data -->
-| Name      | Type    | Default | Required  | Description
-|---        |---      |---      |---        |---
-| linkHref  | string  |         | Yes       | The value of the link href attribute
-| linkText  | string  |         | Yes       | The link text
-| classes   | string  |         | Yes       | The modifier required for the link type
-                                            | --back
-                                            | --muted
-                                            | --download
-                                            | --skip
-</div>
+### Setting up Nunjucks views and paths
 
-<h3 class="govuk-u-bold-19">Setting up Nunjucks views and paths</h3>
-<p class="govuk-u-copy-19">Below is an example setup using express configure views:</p>
-<pre>
-<code>
-nunjucks.configure('node_modules/@govuk-frontend`, {
-  autoescape: true,
-  cache: false,
-  express: app
-})
-</code>
-</pre>
+Below is an example setup using express configure views:
 
-<h2 class="govuk-u-heading-24">Getting updates</h2>
+    nunjucks.configure('node_modules/@govuk-frontend`, {
+      autoescape: true,
+      cache: false,
+      express: app
+    })
 
-<p class="govuk-u-copy-19">To check whether you have the latest version of the button run:</p>
+## Getting updates
 
-<pre><code>npm outdated @govuk-frontend/link</code></pre>
+To check whether you have the latest version of the button run:
 
-<p class="govuk-u-copy-19">To update the latest version run:</p>
+    npm outdated @govuk-frontend/link
 
-<pre><code>npm update @govuk-frontend/link</code></pre>
+To update the latest version run:
 
-<h2 class="govuk-u-heading-24">Contribution</h2>
-<p class="govuk-u-copy-19">
-  Guidelines can be found at <a href="https://github.com/alphagov/govuk-frontend/blob/master/CONTRIBUTING.md" title="link to contributing guidelines on our github repository">on our Github repository.</a>
-</p>
+    npm update @govuk-frontend/link
 
-<h2 class="govuk-u-heading-24">Acknowledgements/credits</h2>
+## Contribution
 
-<ul class="govuk-c-list ">
+Guidelines can be found at [on our Github repository.](https://github.com/alphagov/govuk-frontend/blob/master/CONTRIBUTING.md "link to contributing guidelines on our github repository")
 
-  <li>
-        GDS developers
-  </li>
-  <li>
-        Jani Kraner
-  </li>
-  <li>
-        Gemma Leigh
-  </li>
+## Acknowledgements/credits
 
-</ul>
+*   GDS developers
+*   Jani Kraner
+*   Gemma Leigh
 
+## License
 
-<h2 class="govuk-u-heading-24">License</h2>
-<p class="govuk-u-copy-19">MIT</p>
-
-
+MIT

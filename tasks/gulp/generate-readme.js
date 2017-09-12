@@ -35,7 +35,9 @@ gulp.task('generate:readme', () => {
     path: [paths.src + 'views', paths.components],
     manageEnv: manageEnvironment
   }))
-  .pipe(toMarkdown({ gfm: true }))
+  .pipe(toMarkdown({
+    gfm: true // github flavoured markdown https://github.com/domchristie/to-markdown#gfm-boolean
+  }))
   .pipe(rename(function (path) {
     path.basename = 'README'
     path.extname = '.md'

@@ -1,225 +1,225 @@
+# Label
 
+## Introduction
 
+Use labels for all form fields.
 
-<h1 class="govuk-u-heading-36">
-Label
-</h1>
+[Preview the label component.](http://govuk-frontend-review.herokuapp.com/components/label/preview)
 
-<h2 class="govuk-u-heading-24">Introduction</h2>
-<p class="govuk-u-core-24">
-  Use labels for all form fields.
-</p>
+## Guidance
 
+More information about when to use label can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/label "Link to read guidance on the use of label on Gov.uk Design system website")
 
-<p class="govuk-u-copy-19">
-<a href="http://govuk-frontend-review.herokuapp.com/components/label/preview">Preview the label component.
-</a>
-</p>
+## Dependencies
 
-<h2 class="govuk-u-heading-24">Guidance</h2>
+To consume the label component you must be running npm version 5 or above.
 
-<p class="govuk-u-copy-19">
-  More information about when to use label can be found on <a href="http://www.linktodesignsystem.com/label" title="Link to read guidance on the use of label on Gov.uk Design system website">GOV.UK Design System</a>
-</p>
+## Installation
 
-<h2 class="govuk-u-heading-24">Dependencies</h2>
+    npm install --save @govuk-frontend/label
 
-<p class="govuk-u-copy-19">To consume the label component you must be running npm version 5 or above. </p>
+## Requirements
 
-<p class="govuk-u-copy-19"></p>
+### Build tool configuration
 
-<h2 class="govuk-u-heading-24">Installation</h2>
-<pre><code>npm install --save @govuk-frontend/label</code></pre>
+When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
 
-<h2 class="govuk-u-heading-24">Requirements</h2>
-<h3 class="govuk-u-bold-19">Build tool configuration</h3>
-<p class="govuk-u-copy-19">When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp</p>
-<pre>
-<code>
-  .pipe(sass({
-      includePaths: 'node_modules/'
-  }))
-</code>
-</pre>
+      .pipe(sass({
+          includePaths: 'node_modules/'
+      }))
 
-<h3 class="govuk-u-bold-19">Static asset path configuration</h3>
-<p class="govuk-u-copy-19">To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:</p>
-<pre>
-<code>
-app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
-</code>
-</pre>
+### Static asset path configuration
 
-<h2 class="govuk-u-heading-24">Quick start examples</h2>
-<p class="govuk-u-copy-19"></p>
-<pre>
-<code>
-  
+To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
 
-&lt;label class=&quot;govuk-c-label &quot; for=&quot;&quot;&gt;
-  National Insurance number
+    app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
-    &lt;span class=&quot;govuk-c-label__hint&quot;&gt;It’s on your National Insurance card, benefit letter, payslip or P60.
-    For example, ‘QQ 12 34 56 C’.&lt;/span&gt;
+## Quick start examples
 
-&lt;/label&gt;
+    <label class="govuk-c-label " for="">
+      National Insurance number
 
+        <span class="govuk-c-label__hint">It’s on your National Insurance card, benefit letter, payslip or P60.
+        For example, ‘QQ 12 34 56 C’.</span>
 
+    </label>
 
-&lt;label class=&quot;govuk-c-label  govuk-c-label--bold &quot; for=&quot;&quot;&gt;
-  National Insurance number
+    <label class="govuk-c-label  govuk-c-label--bold " for="">
+      National Insurance number
 
-    &lt;span class=&quot;govuk-c-label__hint&quot;&gt;It’s on your National Insurance card, benefit letter, payslip or P60.
-    For example, ‘QQ 12 34 56 C’.&lt;/span&gt;
+        <span class="govuk-c-label__hint">It’s on your National Insurance card, benefit letter, payslip or P60.
+        For example, ‘QQ 12 34 56 C’.</span>
 
-&lt;/label&gt;
+    </label>
 
+    <label class="govuk-c-label " for="">
+      National Insurance number
 
+        <span class="govuk-c-label__hint">It’s on your National Insurance card, benefit letter, payslip or P60.
+        For example, ‘QQ 12 34 56 C’.</span>
 
-&lt;label class=&quot;govuk-c-label &quot; for=&quot;&quot;&gt;
-  National Insurance number
+        <span class="govuk-c-error-message ">
+      Error message goes here
+    </span>
 
-    &lt;span class=&quot;govuk-c-label__hint&quot;&gt;It’s on your National Insurance card, benefit letter, payslip or P60.
-    For example, ‘QQ 12 34 56 C’.&lt;/span&gt;
+    </label>
 
-    &lt;span class=&quot;govuk-c-error-message &quot;&gt;
-  Error message goes here
-&lt;/span&gt;
+## If you are using Nunjucks
 
-&lt;/label&gt;
+To use a macro, follow the below code examples:
 
+    {% from "label/macro.njk" import govukLabel %}
 
-</code>
-</pre>
+    {{ govukLabel(
+      classes='',
+      labelText='National Insurance number',
+      hintText='It’s on your National Insurance card, benefit letter, payslip or P60.
+        For example, ‘QQ 12 34 56 C’.',
+      id=''
+      )
+    }}
 
+    {{ govukLabel(
+      classes='govuk-c-label--bold',
+      labelText='National Insurance number',
+      hintText='It’s on your National Insurance card, benefit letter, payslip or P60.
+        For example, ‘QQ 12 34 56 C’.',
+      id=''
+      )
+    }}
 
-<h2 class="govuk-u-heading-24">If you are using Nunjucks</h2>
-<p class="govuk-u-copy-19">To use a macro, follow the below code examples:</p>
-<pre><code>{% from &quot;label/macro.njk&quot; import govukLabel %}
+    {{ govukLabel(
+      classes='',
+      labelText='National Insurance number',
+      hintText='It’s on your National Insurance card, benefit letter, payslip or P60.
+        For example, ‘QQ 12 34 56 C’.',
+      errorMessage='Error message goes here',
+      id=''
+      )
+    }}
 
-{{ govukLabel(
-  classes=&#39;&#39;,
-  labelText=&#39;National Insurance number&#39;,
-  hintText=&#39;It’s on your National Insurance card, benefit letter, payslip or P60.
-    For example, ‘QQ 12 34 56 C’.&#39;,
-  id=&#39;&#39;
-  )
-}}
+Where the macros take the following arguments
 
-{{ govukLabel(
-  classes=&#39;govuk-c-label--bold&#39;,
-  labelText=&#39;National Insurance number&#39;,
-  hintText=&#39;It’s on your National Insurance card, benefit letter, payslip or P60.
-    For example, ‘QQ 12 34 56 C’.&#39;,
-  id=&#39;&#39;
-  )
-}}
+## Component arguments
 
-{{ govukLabel(
-  classes=&#39;&#39;,
-  labelText=&#39;National Insurance number&#39;,
-  hintText=&#39;It’s on your National Insurance card, benefit letter, payslip or P60.
-    For example, ‘QQ 12 34 56 C’.&#39;,
-  errorMessage=&#39;Error message goes here&#39;,
-  id=&#39;&#39;
-  )
-}}
-</code></pre>
-
-<p class="govuk-u-copy-19">Where the macros take the following arguments</p>
-
-<h2 class="govuk-u-heading-24">Component arguments</h2>
 <div>
+
 <table class="govuk-c-table ">
-  <thead class="govuk-c-table__head">
-    <tr class="govuk-c-table__row">
-      <th class="govuk-c-table__header "   scope="col">Name</th>
-      <th class="govuk-c-table__header "   scope="col">Type</th>
-      <th class="govuk-c-table__header "   scope="col">Required</th>
-      <th class="govuk-c-table__header "   scope="col">Description</th>
-  </tr>
-  </thead>
-  <tbody class="govuk-c-table__body">
-    <tr class="govuk-c-table__row">
-      <th class="govuk-c-table__header" scope="row"> classes</th>
-      <td class="govuk-c-table__cell "  >string</td>
-      <td class="govuk-c-table__cell "  >No</td>
-      <td class="govuk-c-table__cell "  >Optional additional classes</td>
-    </tr>
-    <tr class="govuk-c-table__row">
-      <th class="govuk-c-table__header" scope="row"> labelText</th>
-      <td class="govuk-c-table__cell "  >string</td>
-      <td class="govuk-c-table__cell "  >Yes</td>
-      <td class="govuk-c-table__cell "  >The label text</td>
-    </tr>
-    <tr class="govuk-c-table__row">
-      <th class="govuk-c-table__header" scope="row"> hintText</th>
-      <td class="govuk-c-table__cell "  >string</td>
-      <td class="govuk-c-table__cell "  >No</td>
-      <td class="govuk-c-table__cell "  >Optional hint text</td>
-    </tr>
-    <tr class="govuk-c-table__row">
-      <th class="govuk-c-table__header" scope="row"> errorMessage</th>
-      <td class="govuk-c-table__cell "  >string</td>
-      <td class="govuk-c-table__cell "  >No</td>
-      <td class="govuk-c-table__cell "  >Optional error message</td>
-    </tr>
-    <tr class="govuk-c-table__row">
-      <th class="govuk-c-table__header" scope="row"> id</th>
-      <td class="govuk-c-table__cell "  >string</td>
-      <td class="govuk-c-table__cell "  >Yes</td>
-      <td class="govuk-c-table__cell "  >The value of the for attribute, the id input the label is associated with</td>
-    </tr>
-  </tbody>
+
+<thead class="govuk-c-table__head">
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header " scope="col">Name</th>
+
+<th class="govuk-c-table__header " scope="col">Type</th>
+
+<th class="govuk-c-table__header " scope="col">Required</th>
+
+<th class="govuk-c-table__header " scope="col">Description</th>
+
+</tr>
+
+</thead>
+
+<tbody class="govuk-c-table__body">
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">classes</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">Optional additional classes</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">labelText</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">Yes</td>
+
+<td class="govuk-c-table__cell ">The label text</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">hintText</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">Optional hint text</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">errorMessage</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">Optional error message</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">id</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">Yes</td>
+
+<td class="govuk-c-table__cell ">The value of the for attribute, the id input the label is associated with</td>
+
+</tr>
+
+</tbody>
+
 </table>
 
 </div>
 
-<h3 class="govuk-u-bold-19">Setting up Nunjucks views and paths</h3>
-<p class="govuk-u-copy-19">Below is an example setup using express configure views:</p>
-<pre>
-<code>
-nunjucks.configure('node_modules/@govuk-frontend`, {
-  autoescape: true,
-  cache: false,
-  express: app
-})
-</code>
-</pre>
+### Setting up Nunjucks views and paths
 
-<h2 class="govuk-u-heading-24">Getting updates</h2>
+Below is an example setup using express configure views:
 
-<p class="govuk-u-copy-19">To check whether you have the latest version of the button run:</p>
+    nunjucks.configure('node_modules/@govuk-frontend`, {
+      autoescape: true,
+      cache: false,
+      express: app
+    })
 
-<pre><code>npm outdated @govuk-frontend/label</code></pre>
+## Getting updates
 
-<p class="govuk-u-copy-19">To update the latest version run:</p>
+To check whether you have the latest version of the button run:
 
-<pre><code>npm update @govuk-frontend/label</code></pre>
+    npm outdated @govuk-frontend/label
 
-<h2 class="govuk-u-heading-24">Contribution</h2>
-<p class="govuk-u-copy-19">
-  Guidelines can be found at <a href="https://github.com/alphagov/govuk-frontend/blob/master/CONTRIBUTING.md" title="link to contributing guidelines on our github repository">on our Github repository.</a>
-</p>
+To update the latest version run:
 
-<h2 class="govuk-u-heading-24">Acknowledgements/credits</h2>
+    npm update @govuk-frontend/label
 
-<ul class="govuk-c-list ">
+## Contribution
 
-  <li>
-        GDS developers
-  </li>
-  <li>
-        Jani Kraner
-  </li>
-  <li>
-        Gemma Leigh
-  </li>
+Guidelines can be found at [on our Github repository.](https://github.com/alphagov/govuk-frontend/blob/master/CONTRIBUTING.md "link to contributing guidelines on our github repository")
 
-</ul>
+## Acknowledgements/credits
 
+*   GDS developers
+*   Jani Kraner
+*   Gemma Leigh
 
-<h2 class="govuk-u-heading-24">License</h2>
-<p class="govuk-u-copy-19">MIT</p>
+## License
 
-
+MIT
