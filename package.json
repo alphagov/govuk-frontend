@@ -59,6 +59,7 @@
     "yargs": "^8.0.2"
   },
   "dependencies": {
+    "gulp-if": "^2.0.2",
     "postcss-nested": "^2.0.2",
     "postcss-scss": "^1.0.0",
     "sass-mq": "^3.3.2"
