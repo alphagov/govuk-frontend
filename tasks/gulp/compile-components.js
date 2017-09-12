@@ -6,7 +6,6 @@ const nunjucks = require('gulp-nunjucks')
 const rename = require('gulp-rename')
 const taskArguments = require('./task-arguments')
 const gulpif = require('gulp-if')
-const flatten = require('gulp-flatten')
 
 // Compile Nunjucks ----------------------
 // Compile Nunjucks to HTML
