@@ -14,27 +14,8 @@ require('./tasks/gulp/compile-assets.js')
 require('./tasks/gulp/compile-components.js')
 require('./tasks/gulp/generate-readme.js')
 require('./tasks/gulp/watch.js')
-require('./tasks/gulp/dist-prepare.js')
-require('./tasks/gulp/dist-docs.js')
-require('./tasks/gulp/packages-update.js')
-require('./tasks/gulp/prepare-files.js')
-require('./tasks/gulp/demo-build.js')
-require('./tasks/gulp/preview-component-list.js')
-require('./tasks/gulp/preview-docs.js')
-
-// Build packages task -----------------
-// Prepare package folder for publishing
-// -------------------------------------
-gulp.task('build:packages', cb => {
-  runsequence('test', 'prepare:files', 'packages:update', cb)
-})
-
-// Build dist task ----------------------
-// Create temp files, update packages
-// --------------------------------------
-gulp.task('build:dist', cb => {
-  runsequence('dist:prepare', 'dist:docs', cb)
-})
+// new tasks
+require('./tasks/gulp/copy-to-destination.js')
 
 // Umbrella scripts tasks for preview ---
 // Runs js lint and compilation
@@ -102,6 +83,17 @@ gulp.task('serve', ['watch'], () => {
   return nodemon({
     script: 'app.js'
   })
+})
+
+// Build packages task -----------------
+// Prepare package folder for publishing
+// -------------------------------------
+gulp.task('build:packages', cb => {
+  runsequence(
+              'compile:components',
+              'copy-files',
+              'generate:readme',
+              cb)
 })
 
 // Default task -------------------------

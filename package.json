@@ -15,8 +15,9 @@
   "homepage": "https://github.com/alphagov/govuk-frontend#readme",
   "scripts": {
     "start": "gulp dev --destination 'public'",
-    "test": "standard && gulp compile:components --destination 'public' && gulp test",
-    "heroku": "gulp compile:components --destination 'public' && gulp copy-assets --destination 'public' && node app.js"
+    "test": "standard && gulp test",
+    "heroku": "gulp compile:components --destination 'public' && gulp copy-assets --destination 'public' && node app.js",
+    "build:packages": "gulp build:packages --destination 'packages' --production"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.1",
@@ -32,9 +33,6 @@
     "gulp-file-include": "^1.1.0",
     "gulp-filter": "^5.0.0",
     "gulp-flatten": "^0.3.1",
-    "gulp-inject": "^4.2.0",
-    "gulp-marked": "^1.0.0",
-    "gulp-natural-sort": "^0.1.1",
     "gulp-nunjucks": "^3.0.0",
     "gulp-nunjucks-render": "^2.2.1",
     "gulp-postcss": "^7.0.0",
@@ -47,7 +45,6 @@
     "gulp-task-listing": "^1.0.1",
     "gulp-tenon-client": "^0.1.2",
     "gulp-uglify": "^3.0.0",
-    "gulp-wrap": "^0.13.0",
     "lerna": "^2.0.0-rc.5",
     "merge-stream": "^1.0.1",
     "nodemon": "^1.12.0",
@@ -58,6 +55,7 @@
     "yargs": "^8.0.2"
   },
   "dependencies": {
+    "gulp-if": "^2.0.2",
     "postcss-nested": "^2.0.2",
     "postcss-scss": "^1.0.0",
     "sass-mq": "^3.3.2"

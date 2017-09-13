@@ -5,10 +5,13 @@ const gulp = require('gulp')
 const nunjucks = require('gulp-nunjucks')
 const rename = require('gulp-rename')
 const taskArguments = require('./task-arguments')
+const gulpif = require('gulp-if')
 
 // Compile Nunjucks ----------------------
 // Compile Nunjucks to HTML
 // ---------------------------------------
+
+const isPackages = (taskArguments.destination === 'packages') || false
 gulp.task('compile:components', () => {
   return gulp.src(
     [
@@ -19,5 +22,5 @@ gulp.task('compile:components', () => {
     ])
     .pipe(nunjucks.compile({ lstripBlocks: true, trimBlocks: true }))
     .pipe(rename({ extname: '.html' }))
-    .pipe(gulp.dest(taskArguments.destination + '/components/'))
+    .pipe(gulp.dest(gulpif(isPackages, taskArguments.destination, taskArguments.destination + '/components/')))
 })
