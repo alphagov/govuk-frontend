@@ -8,6 +8,7 @@ const data = require('gulp-data')
 const tap = require('gulp-tap')
 const path = require('path')
 const fs = require('fs')
+const toMarkdown = require('gulp-to-markdown')
 const vinylInfo = {}
 
 function getDataForFile (file) {
@@ -33,6 +34,9 @@ gulp.task('generate:readme', () => {
   .pipe(nunjucksRender({
     path: [paths.src + 'views', paths.components],
     manageEnv: manageEnvironment
+  }))
+  .pipe(toMarkdown({
+    gfm: true // github flavoured markdown https://github.com/domchristie/to-markdown#gfm-boolean
   }))
   .pipe(rename(function (path) {
     path.basename = 'README'

@@ -44,6 +44,7 @@
     "gulp-tap": "^1.0.1",
     "gulp-task-listing": "^1.0.1",
     "gulp-tenon-client": "^0.1.2",
+    "gulp-to-markdown": "^1.0.0",
     "gulp-uglify": "^3.0.0",
     "lerna": "^2.0.0-rc.5",
     "merge-stream": "^1.0.1",
