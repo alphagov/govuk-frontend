@@ -1,6 +1,6 @@
 'use strict'
 
-const paths = require('../../config/paths.json')
+const configPaths = require('../../config/paths.json')
 const gulp = require('gulp')
 const fs = require('fs')
 const taskArguments = require('./task-arguments')
@@ -15,7 +15,7 @@ const isProduction = taskArguments.isProduction
 // Add all.package.json version
 // ----------------------------------
 gulp.task('update-assets-version', () => {
-  let pkg = require('../../' + paths.packages + 'all/package.json')
+  let pkg = require('../../' + configPaths.packages + 'all/package.json')
   fs.writeFileSync(taskArguments.destination + '/VERSION.txt', pkg.version + '\r\n')
   return gulp.src([
     taskArguments.destination + '/css/govuk-frontend.min.css',
@@ -26,7 +26,7 @@ gulp.task('update-assets-version', () => {
   .pipe(gulpif(isProduction,
     rename(obj => {
       obj.dirname += '/' + obj.extname.replace('.', '')
-      obj.basename = obj.basename.replace(/(govuk.*)(?=\.min)/g, '$1' + pkg.version)
+      obj.basename = obj.basename.replace(/(govuk.*)(?=\.min)/g, '$1-' + pkg.version)
       return obj
     })
   ))

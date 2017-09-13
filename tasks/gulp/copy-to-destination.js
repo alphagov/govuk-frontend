@@ -1,7 +1,7 @@
 'use strict'
 
 const gulp = require('gulp')
-const paths = require('../../config/paths.json')
+const configPaths = require('../../config/paths.json')
 const postcss = require('gulp-postcss')
 const autoprefixer = require('autoprefixer')
 const taskArguments = require('./task-arguments')
@@ -11,27 +11,28 @@ const flatten = require('gulp-flatten')
 const rename = require('gulp-rename')
 const gulpif = require('gulp-if')
 
-let scssFiles = filter([paths.src + '**/*.scss'], {restore: true})
-let icons = filter([paths.src + 'globals/icons/*'], {restore: true})
-let components = filter([paths.src + 'components/**/*'], {restore: true})
-let globals = filter([paths.src + 'globals/scss/**/*'], {restore: true})
+let scssFiles = filter([configPaths.src + '**/*.scss'], {restore: true})
+let icons = filter([configPaths.src + 'globals/icons/*'], {restore: true})
+let components = filter([configPaths.src + 'components/**/*'], {restore: true})
+let globals = filter([configPaths.src + 'globals/scss/**/*'], {restore: true})
 
 const isProduction = taskArguments.isProduction
+const isPackages = (taskArguments.destination === 'packages') || false
 
 gulp.task('copy-files', () => {
   return gulp.src([
-    paths.src + '**/*',
-    '!' + paths.src + 'components/_component-example/**/*',
-    '!' + paths.src + 'globals/icons',
-    '!' + paths.src + 'globals/scss',
-    '!' + paths.src + 'globals',
-    '!' + paths.src + 'views',
-    '!' + paths.src + 'components',
-    '!' + paths.src + 'views/**',
-    '!' + paths.src + 'examples',
-    '!' + paths.src + 'examples/**',
-    '!' + paths.src + 'globals/scss/govuk-frontend-oldie.scss',
-    '!' + paths.src + 'components/**/index.njk'
+    configPaths.src + '**/*',
+    '!' + configPaths.src + 'components/_component-example/**/*',
+    '!' + configPaths.src + 'globals/icons',
+    '!' + configPaths.src + 'globals/scss',
+    '!' + configPaths.src + 'globals',
+    '!' + configPaths.src + 'views',
+    '!' + configPaths.src + 'components',
+    '!' + configPaths.src + 'views/**',
+    '!' + configPaths.src + 'examples',
+    '!' + configPaths.src + 'examples/**',
+    '!' + configPaths.src + 'globals/scss/govuk-frontend-oldie.scss',
+    '!' + configPaths.src + 'components/**/index.njk'
   ])
   .pipe(scssFiles)
   .pipe(replace('//start:devonly', '/*start:devonly'))
@@ -46,9 +47,9 @@ gulp.task('copy-files', () => {
   .pipe(flatten({includeParents: -1}))
   .pipe(icons.restore)
   .pipe(globals)  // replace import in scss files and bring globals/ up one level
-  .pipe(replace('../../components', '@govuk-frontend'))
-  .pipe(replace('../../globals', '@govuk-frontend'))
-  .pipe(replace('./node_modules/', ''))
+  .pipe(gulpif(isPackages, replace('../../components', '@govuk-frontend')))
+  .pipe(gulpif(isPackages, replace('../../globals', '@govuk-frontend')))
+  .pipe(gulpif(isPackages, replace('./node_modules/', '')))
   .pipe(flatten({
     subPath: [2, 3],
     newPath: 'globals'
@@ -63,8 +64,8 @@ gulp.task('copy-files', () => {
   ))
   .pipe(globals.restore)
   .pipe(components) // replace import in scss files and flatten folder (e.g remove components/)
-  .pipe(replace('../../globals/scss', '@govuk-frontend/globals'))
-  .pipe(replace('../', '@govuk-frontend/'))
+  .pipe(gulpif(isPackages, replace('../../globals/scss', '@govuk-frontend/globals')))
+  .pipe(gulpif(isPackages, replace('../', '@govuk-frontend/')))
   .pipe(gulpif(!isProduction, flatten({includeParents: -1})))
   .pipe(components.restore)
   .pipe(gulp.dest(taskArguments.destination + '/'))
