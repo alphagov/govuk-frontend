@@ -9,11 +9,14 @@ const replace = require('gulp-replace')
 const filter = require('gulp-filter')
 const flatten = require('gulp-flatten')
 const rename = require('gulp-rename')
+const gulpif = require('gulp-if')
 
 let scssFiles = filter([paths.src + '**/*.scss'], {restore: true})
 let icons = filter([paths.src + 'globals/icons/*'], {restore: true})
 let components = filter([paths.src + 'components/**/*'], {restore: true})
 let globals = filter([paths.src + 'globals/scss/**/*'], {restore: true})
+
+const isProduction = taskArguments.isProduction
 
 gulp.task('copy-files', () => {
   return gulp.src([
@@ -50,17 +53,19 @@ gulp.task('copy-files', () => {
     subPath: [2, 3],
     newPath: 'globals'
   }))
-  .pipe(rename((path) => {
-    if (path.basename + path.extname === 'govuk-frontend.scss') {
-      path.dirname = 'all'
-      path.basename = '_all'
-    }
-  }))
+  .pipe(gulpif(!isProduction,
+    rename((path) => {
+      if (path.basename + path.extname === 'govuk-frontend.scss') {
+        path.dirname = 'all'
+        path.basename = '_all'
+      }
+    })
+  ))
   .pipe(globals.restore)
   .pipe(components) // replace import in scss files and flatten folder (e.g remove components/)
   .pipe(replace('../../globals/scss', '@govuk-frontend/globals'))
   .pipe(replace('../', '@govuk-frontend/'))
-  .pipe(flatten({includeParents: -1}))
+  .pipe(gulpif(!isProduction, flatten({includeParents: -1})))
   .pipe(components.restore)
   .pipe(gulp.dest(taskArguments.destination + '/'))
 })
