@@ -18,7 +18,7 @@
     {% endfor %}
     {% endif %}
 
-    {% if nextPage %}
+    {%- if nextPage %}
     {% for page in nextPage %}
     <li class="govuk-c-pagination__item govuk-c-pagination__item--next">
       <a class="govuk-c-pagination__link" href="{{ page.url }}" rel="next">
