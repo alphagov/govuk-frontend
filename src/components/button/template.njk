@@ -3,7 +3,5 @@
   {% if text %}{{ text }}{% endif %}
 </a>
 {% else %}
-<input class="govuk-c-button {% if isDisabled %} govuk-c-button--disabled {% endif %} {{ classes }}"
-  {% if text %}value="{{ text }}"{% endif %}
-  {% if isDisabled %}disabled="disabled" aria-disabled="true"{% endif %}>
+<input class="govuk-c-button {% if isDisabled %} govuk-c-button--disabled {% endif %} {{ classes }}" {% if text %}value="{{ text }}"{% endif %} {% if isDisabled %}disabled="disabled" aria-disabled="true"{% endif %}>
 {% endif %}

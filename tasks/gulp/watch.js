@@ -8,5 +8,5 @@ const paths = require('../../config/paths.json')
 gulp.task('watch', () => {
   gulp.watch([paths.src + '**/**/*.scss'], ['styles'])
   gulp.watch([paths.src + '**/**/*.js'], ['scripts'])
-  gulp.watch([paths.src + '**/**/*.njk'], ['generate:readme'])
+  gulp.watch([paths.src + '**/**/*.njk'], ['generate:readme', 'compile:components'])
 })
