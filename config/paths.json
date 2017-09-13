@@ -5,8 +5,7 @@
   "globalScss": "src/globals/scss/",
   "dist": "dist/",
   "distComponents": "dist/components/",
-  "tmp": "tmp/",
   "packages": "packages/",
-  "preview" : "preview/",
+  "public": "public/",
   "demo" : "demo/"
 }
