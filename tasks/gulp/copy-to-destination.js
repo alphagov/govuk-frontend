@@ -27,7 +27,8 @@ gulp.task('copy-files', () => {
     '!' + paths.src + 'views/**',
     '!' + paths.src + 'examples',
     '!' + paths.src + 'examples/**',
-    '!' + paths.src + 'globals/scss/govuk-frontend-oldie.scss'
+    '!' + paths.src + 'globals/scss/govuk-frontend-oldie.scss',
+    '!' + paths.src + 'components/**/index.njk'
   ])
   .pipe(scssFiles)
   .pipe(replace('//start:devonly', '/*start:devonly'))
