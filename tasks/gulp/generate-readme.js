@@ -1,11 +1,11 @@
 'use strict'
 
-const paths = require('../../config/paths.json')
+const configPath = require('../../config/paths.json')
 const gulp = require('gulp')
 const nunjucksRender = require('gulp-nunjucks-render')
 const rename = require('gulp-rename')
 const data = require('gulp-data')
-const tap = require('gulp-tap')
+const vinylPaths = require('vinyl-paths')
 const path = require('path')
 const fs = require('fs')
 const toMarkdown = require('gulp-to-markdown')
@@ -24,15 +24,16 @@ const manageEnvironment = function (environment) {
 }
 
 gulp.task('generate:readme', () => {
-  return gulp.src(['!' + paths.components + '_component-example/index.njk', paths.components + '**/index.njk'])
-  .pipe(tap(file => {
-    vinylInfo.componentName = path.dirname(file.path).split(path.sep).pop()
+  return gulp.src(['!' + configPath.components + '_component-example/index.njk', configPath.components + '**/index.njk'])
+  .pipe(vinylPaths(paths => {
+    vinylInfo.componentName = paths.split(path.sep).slice(-2, -1)[0]
     vinylInfo.componentPath = vinylInfo.componentName
-    vinylInfo.componentNunjucksFile = fs.readFileSync(paths.components + vinylInfo.componentName + '/' + vinylInfo.componentName + '.njk', 'utf8')
+    vinylInfo.componentNunjucksFile = fs.readFileSync(configPath.components + vinylInfo.componentName + '/' + vinylInfo.componentName + '.njk', 'utf8')
+    return Promise.resolve()
   }))
   .pipe(data(getDataForFile))
   .pipe(nunjucksRender({
-    path: [paths.src + 'views', paths.components],
+    path: [configPath.src + 'views', configPath.components],
     manageEnv: manageEnvironment
   }))
   .pipe(toMarkdown({
@@ -42,5 +43,5 @@ gulp.task('generate:readme', () => {
     path.basename = 'README'
     path.extname = '.md'
   }))
-  .pipe(gulp.dest(paths.src + 'components/'))
+  .pipe(gulp.dest(configPath.src + 'components/'))
 })
