@@ -17,7 +17,8 @@
     "start": "gulp dev --destination 'public'",
     "test": "standard && gulp compile:components --destination 'public' && gulp test",
     "heroku": "gulp compile:components --destination 'public' && gulp copy-assets --destination 'public' && node app.js",
-    "build:packages": "gulp build:packages --destination 'packages' --production"
+    "build:packages": "gulp build:packages --destination 'packages'",
+    "build:dist": "gulp build:dist --destination 'dist' --production"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.1",
@@ -53,6 +54,7 @@
     "postcss-normalize": "^3.0.0",
     "run-sequence": "^2.1.0",
     "standard": "^10.0.2",
+    "vinyl-paths": "^2.1.0",
     "yargs": "^8.0.2"
   },
   "dependencies": {

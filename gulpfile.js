@@ -16,6 +16,7 @@ require('./tasks/gulp/generate-readme.js')
 require('./tasks/gulp/watch.js')
 // new tasks
 require('./tasks/gulp/copy-to-destination.js')
+require('./tasks/gulp/asset-version.js')
 
 // Umbrella scripts tasks for preview ---
 // Runs js lint and compilation
@@ -93,6 +94,15 @@ gulp.task('build:packages', cb => {
               'compile:components',
               'copy-files',
               'generate:readme',
+              cb)
+})
+gulp.task('build:dist', cb => {
+  runsequence(
+              'copy-assets',
+              'compile:components',
+              'copy-files',
+              'generate:readme',
+              'update-assets-version',
               cb)
 })
 
