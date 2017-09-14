@@ -55,13 +55,29 @@ app.get('/examples*', function (req, res) {
 
 // Components
 app.get('/components*', function (req, res) {
-  var path = (req.params[0]).replace(/\//g, '')
+  let path = req.params[0]
   // If it isn't the isolated preview, render the component "detail" page
   if (path.indexOf('preview') === -1) {
+    path = path.replace(/\//g, '')
     try {
-      var componentNjk = fs.readFileSync('src/components/' + path + '/' + path + '.njk', 'utf8')
-      var componentHtml = fs.readFileSync('public/components/' + path + '/' + path + '.html', 'utf8')
+      let variantItems = []
+      let files = fs.readdirSync('src/components/' + path + '/')
+      files.forEach(file => {
+        if (file.indexOf('.njk') > -1 && file.indexOf('--') > -1) {
+          let njk = fs.readFileSync('src/components/' + path + '/' + file, 'utf8')
+          let name = file
+          let html = fs.readFileSync('public/components/' + path + '/' + path + '.html', 'utf8')
+          variantItems.push({
+            njk: njk,
+            name: name,
+            html: html
+          })
+        }
+      })
+      let componentNjk = fs.readFileSync('src/components/' + path + '/' + path + '.njk', 'utf8')
+      let componentHtml = fs.readFileSync('public/components/' + path + '/' + path + '.html', 'utf8')
 
+      res.locals.variantItems = variantItems
       res.locals.componentPath = path
       res.locals.componentNunjucksFile = componentNjk
       res.locals.componentHtmlFile = componentHtml
@@ -90,6 +106,17 @@ app.get('/components*', function (req, res) {
   } else {
     // Show the isolated component preview
     path = path.replace(/preview/g, '')
+    if (path.indexOf('--') > -1) {
+      let noLeadingSlash = path.split(/^\/(.+)/)[1]
+      let basePath = noLeadingSlash.substr(0, noLeadingSlash.lastIndexOf('/'))
+      let base = basePath.substr(0, basePath.lastIndexOf('/'))
+      let variant = basePath.split('/')[1]
+      res.locals.variantName = variant
+      res.locals.variantBase = base
+      path = path.replace(/preview/g, '')
+    } else {
+      path = path.replace(/\//g, '').replace(/preview/g, '')
+    }
     res.locals.componentPath = path
     res.render('component-preview')
   }
