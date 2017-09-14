@@ -10,6 +10,14 @@ Component to show a red error message - used for form validation. Use inside a l
 
 More information about when to use error-message can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/error-message "Link to read guidance on the use of error-message on Gov.uk Design system website")
 
+## Quick start examples
+
+    <span class="govuk-c-error-message ">
+      Error message goes here
+    </span>
+
+## Variants
+
 ## Dependencies
 
 To consume the error-message component you must be running npm version 5 or above.
@@ -34,15 +42,9 @@ To show the button image you need to configure your app to show these assets. Be
 
     app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
-## Quick start examples
-
-    <span class="govuk-c-error-message ">
-      Error message goes here
-    </span>
-
 ## If you are using Nunjucks
 
-To use a macro, follow the below code examples:
+To use a macro, follow the below code example:
 
     {% from "error-message/macro.njk" import govukErrorMessage %}
 

@@ -29,6 +29,22 @@ gulp.task('generate:readme', () => {
     vinylInfo.componentName = paths.split(path.sep).slice(-2, -1)[0]
     vinylInfo.componentPath = vinylInfo.componentName
     vinylInfo.componentNunjucksFile = fs.readFileSync(configPath.components + vinylInfo.componentName + '/' + vinylInfo.componentName + '.njk', 'utf8')
+
+    let variantItems = []
+    let files = fs.readdirSync(configPath.components + vinylInfo.componentName + '/')
+    files.forEach(file => {
+      if (file.indexOf('.njk') > -1 && file.indexOf('--') > -1) {
+        let njk = fs.readFileSync('src/components/' + vinylInfo.componentName + '/' + file, 'utf8')
+        let name = file
+        let html = fs.readFileSync('public/components/' + vinylInfo.componentName + '/' + vinylInfo.componentName + '.html', 'utf8')
+        variantItems.push({
+          njk: njk,
+          name: name,
+          html: html
+        })
+      }
+    })
+    vinylInfo.variantItems = variantItems
     return Promise.resolve()
   }))
   .pipe(data(getDataForFile))

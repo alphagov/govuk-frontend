@@ -10,6 +10,35 @@ Use labels for all form fields.
 
 More information about when to use label can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/label "Link to read guidance on the use of label on Gov.uk Design system website")
 
+## Quick start examples
+
+    <label class="govuk-c-label " for="">
+      National Insurance number
+        <span class="govuk-c-label__hint">It’s on your National Insurance card, benefit letter, payslip or P60.
+        For example, ‘QQ 12 34 56 C’.</span>
+
+    </label>
+
+    <label class="govuk-c-label  govuk-c-label--bold " for="">
+      National Insurance number
+        <span class="govuk-c-label__hint">It’s on your National Insurance card, benefit letter, payslip or P60.
+        For example, ‘QQ 12 34 56 C’.</span>
+
+    </label>
+
+    <label class="govuk-c-label " for="">
+      National Insurance number
+        <span class="govuk-c-label__hint">It’s on your National Insurance card, benefit letter, payslip or P60.
+        For example, ‘QQ 12 34 56 C’.</span>
+
+        <span class="govuk-c-error-message ">
+      Error message goes here
+    </span>
+
+    </label>
+
+## Variants
+
 ## Dependencies
 
 To consume the label component you must be running npm version 5 or above.
@@ -34,39 +63,9 @@ To show the button image you need to configure your app to show these assets. Be
 
     app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
-## Quick start examples
-
-    <label class="govuk-c-label " for="">
-      National Insurance number
-
-        <span class="govuk-c-label__hint">It’s on your National Insurance card, benefit letter, payslip or P60.
-        For example, ‘QQ 12 34 56 C’.</span>
-
-    </label>
-
-    <label class="govuk-c-label  govuk-c-label--bold " for="">
-      National Insurance number
-
-        <span class="govuk-c-label__hint">It’s on your National Insurance card, benefit letter, payslip or P60.
-        For example, ‘QQ 12 34 56 C’.</span>
-
-    </label>
-
-    <label class="govuk-c-label " for="">
-      National Insurance number
-
-        <span class="govuk-c-label__hint">It’s on your National Insurance card, benefit letter, payslip or P60.
-        For example, ‘QQ 12 34 56 C’.</span>
-
-        <span class="govuk-c-error-message ">
-      Error message goes here
-    </span>
-
-    </label>
-
 ## If you are using Nunjucks
 
-To use a macro, follow the below code examples:
+To use a macro, follow the below code example:
 
     {% from "label/macro.njk" import govukLabel %}
 

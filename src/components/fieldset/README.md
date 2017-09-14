@@ -10,6 +10,25 @@ The fieldset element is used to group several controls within a web form. The le
 
 More information about when to use fieldset can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/fieldset "Link to read guidance on the use of fieldset on Gov.uk Design system website")
 
+## Quick start examples
+
+    <fieldset class="govuk-c-fieldset ">
+
+      <legend class="govuk-c-fieldset__legend">
+        Legend text goes here
+
+        <span class="govuk-c-fieldset__hint">Legend hint text goes here</span>
+
+          <span class="govuk-c-error-message ">
+      Error message goes here
+    </span>
+
+      </legend>
+
+    </fieldset>
+
+## Variants
+
 ## Dependencies
 
 To consume the fieldset component you must be running npm version 5 or above.
@@ -34,25 +53,9 @@ To show the button image you need to configure your app to show these assets. Be
 
     app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
-## Quick start examples
-
-    <fieldset class="govuk-c-fieldset ">
-      <legend class="govuk-c-fieldset__legend">
-        Legend text goes here
-
-        <span class="govuk-c-fieldset__hint">Legend hint text goes here</span>
-
-          <span class="govuk-c-error-message ">
-      Error message goes here
-    </span>
-
-      </legend>
-
-    </fieldset>
-
 ## If you are using Nunjucks
 
-To use a macro, follow the below code examples:
+To use a macro, follow the below code example:
 
     {% from "fieldset/macro.njk" import govukFieldset %}
 

@@ -10,6 +10,176 @@ A component for entering dates, for example - date of birth.
 
 More information about when to use date can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/date "Link to read guidance on the use of date on Gov.uk Design system website")
 
+## Quick start examples
+
+    <fieldset class="govuk-c-fieldset ">
+
+      <legend class="govuk-c-fieldset__legend">
+        What is your date of birth?
+
+        <span class="govuk-c-fieldset__hint">For example, 31 3 1980</span>
+
+      </legend>
+
+    <div class="govuk-c-date ">
+
+      <div class="govuk-c-date__item govuk-c-date__item--day">
+        <label class="govuk-c-label govuk-c-date__label" for="dob-day">Day</label>
+        <input class="govuk-c-input govuk-c-date__input " id="dob-day" name="dob-day" type="number">
+      </div>
+
+      <div class="govuk-c-date__item govuk-c-date__item--month">
+        <label class="govuk-c-label govuk-c-date__label" for="dob-month">Month</label>
+        <input class="govuk-c-input govuk-c-date__input " id="dob-month" name="dob-month" type="number">
+      </div>
+
+      <div class="govuk-c-date__item govuk-c-date__item--year">
+        <label class="govuk-c-label govuk-c-date__label" for="dob-year">Year</label>
+        <input class="govuk-c-input govuk-c-date__input " id="dob-year" name="dob-year" type="number">
+      </div>
+
+    </div>
+
+    </fieldset>
+
+    <fieldset class="govuk-c-fieldset ">
+
+      <legend class="govuk-c-fieldset__legend">
+        What is your date of birth?
+
+        <span class="govuk-c-fieldset__hint">For example, 31 3 1980</span>
+
+          <span class="govuk-c-error-message ">
+      Error message goes here
+    </span>
+
+      </legend>
+
+    <div class="govuk-c-date ">
+
+      <div class="govuk-c-date__item govuk-c-date__item--day">
+        <label class="govuk-c-label govuk-c-date__label" for="dob-day">Day</label>
+        <input class="govuk-c-input govuk-c-date__input govuk-c-input--error" id="dob-day" name="dob-day" type="number">
+      </div>
+
+      <div class="govuk-c-date__item govuk-c-date__item--month">
+        <label class="govuk-c-label govuk-c-date__label" for="dob-month">Month</label>
+        <input class="govuk-c-input govuk-c-date__input govuk-c-input--error" id="dob-month" name="dob-month" type="number">
+      </div>
+
+      <div class="govuk-c-date__item govuk-c-date__item--year">
+        <label class="govuk-c-label govuk-c-date__label" for="dob-year">Year</label>
+        <input class="govuk-c-input govuk-c-date__input govuk-c-input--error" id="dob-year" name="dob-year" type="number">
+      </div>
+
+    </div>
+
+    </fieldset>
+
+    <fieldset class="govuk-c-fieldset ">
+
+      <legend class="govuk-c-fieldset__legend">
+        What is your date of birth?
+
+        <span class="govuk-c-fieldset__hint">For example, 31 3 1980</span>
+
+          <span class="govuk-c-error-message ">
+      Error message goes here
+    </span>
+
+      </legend>
+
+    <div class="govuk-c-date ">
+
+      <div class="govuk-c-date__item govuk-c-date__item--day">
+        <label class="govuk-c-label govuk-c-date__label" for="dob-day-error-day">Day</label>
+        <input class="govuk-c-input govuk-c-date__input govuk-c-input--error" id="dob-day-error-day" name="dob-day-error-day" type="number">
+      </div>
+
+      <div class="govuk-c-date__item govuk-c-date__item--month">
+        <label class="govuk-c-label govuk-c-date__label" for="dob-day-error-month">Month</label>
+        <input class="govuk-c-input govuk-c-date__input " id="dob-day-error-month" name="dob-day-error-month" type="number">
+      </div>
+
+      <div class="govuk-c-date__item govuk-c-date__item--year">
+        <label class="govuk-c-label govuk-c-date__label" for="dob-day-error-year">Year</label>
+        <input class="govuk-c-input govuk-c-date__input " id="dob-day-error-year" name="dob-day-error-year" type="number">
+      </div>
+
+    </div>
+
+    </fieldset>
+
+    <fieldset class="govuk-c-fieldset ">
+
+      <legend class="govuk-c-fieldset__legend">
+        What is your date of birth?
+
+        <span class="govuk-c-fieldset__hint">For example, 31 3 1980</span>
+
+          <span class="govuk-c-error-message ">
+      Error message goes here
+    </span>
+
+      </legend>
+
+    <div class="govuk-c-date ">
+
+      <div class="govuk-c-date__item govuk-c-date__item--day">
+        <label class="govuk-c-label govuk-c-date__label" for="dob-month-error-day">Day</label>
+        <input class="govuk-c-input govuk-c-date__input " id="dob-month-error-day" name="dob-month-error-day" type="number">
+      </div>
+
+      <div class="govuk-c-date__item govuk-c-date__item--month">
+        <label class="govuk-c-label govuk-c-date__label" for="dob-month-error-month">Month</label>
+        <input class="govuk-c-input govuk-c-date__input govuk-c-input--error" id="dob-month-error-month" name="dob-month-error-month" type="number">
+      </div>
+
+      <div class="govuk-c-date__item govuk-c-date__item--year">
+        <label class="govuk-c-label govuk-c-date__label" for="dob-month-error-year">Year</label>
+        <input class="govuk-c-input govuk-c-date__input " id="dob-month-error-year" name="dob-month-error-year" type="number">
+      </div>
+
+    </div>
+
+    </fieldset>
+
+    <fieldset class="govuk-c-fieldset ">
+
+      <legend class="govuk-c-fieldset__legend">
+        What is your date of birth?
+
+        <span class="govuk-c-fieldset__hint">For example, 31 3 1980</span>
+
+          <span class="govuk-c-error-message ">
+      Error message goes here
+    </span>
+
+      </legend>
+
+    <div class="govuk-c-date ">
+
+      <div class="govuk-c-date__item govuk-c-date__item--day">
+        <label class="govuk-c-label govuk-c-date__label" for="dob-year-error-day">Day</label>
+        <input class="govuk-c-input govuk-c-date__input " id="dob-year-error-day" name="dob-year-error-day" type="number">
+      </div>
+
+      <div class="govuk-c-date__item govuk-c-date__item--month">
+        <label class="govuk-c-label govuk-c-date__label" for="dob-year-error-month">Month</label>
+        <input class="govuk-c-input govuk-c-date__input " id="dob-year-error-month" name="dob-year-error-month" type="number">
+      </div>
+
+      <div class="govuk-c-date__item govuk-c-date__item--year">
+        <label class="govuk-c-label govuk-c-date__label" for="dob-year-error-year">Year</label>
+        <input class="govuk-c-input govuk-c-date__input govuk-c-input--error" id="dob-year-error-year" name="dob-year-error-year" type="number">
+      </div>
+
+    </div>
+
+    </fieldset>
+
+## Variants
+
 ## Dependencies
 
 To consume the date component you must be running npm version 5 or above.
@@ -34,147 +204,9 @@ To show the button image you need to configure your app to show these assets. Be
 
     app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
-## Quick start examples
-
-    <fieldset class="govuk-c-fieldset ">
-      <legend class="govuk-c-fieldset__legend">
-        What is your date of birth?
-
-        <span class="govuk-c-fieldset__hint">For example, 31 3 1980</span>
-
-      </legend>
-    <div class="govuk-c-date ">
-      <div class="govuk-c-date__item govuk-c-date__item--day">
-        <label class="govuk-c-label govuk-c-date__label" for="dob-day">Day</label>
-        <input class="govuk-c-input govuk-c-date__input " id="dob-day" name="dob-day" type="number">
-      </div>
-      <div class="govuk-c-date__item govuk-c-date__item--month">
-        <label class="govuk-c-label govuk-c-date__label" for="dob-month">Month</label>
-        <input class="govuk-c-input govuk-c-date__input " id="dob-month" name="dob-month" type="number">
-      </div>
-      <div class="govuk-c-date__item govuk-c-date__item--year">
-        <label class="govuk-c-label govuk-c-date__label" for="dob-year">Year</label>
-        <input class="govuk-c-input govuk-c-date__input " id="dob-year" name="dob-year" type="number">
-      </div>
-    </div>
-
-    </fieldset>
-
-    <fieldset class="govuk-c-fieldset ">
-      <legend class="govuk-c-fieldset__legend">
-        What is your date of birth?
-
-        <span class="govuk-c-fieldset__hint">For example, 31 3 1980</span>
-
-          <span class="govuk-c-error-message ">
-      Error message goes here
-    </span>
-
-      </legend>
-    <div class="govuk-c-date ">
-      <div class="govuk-c-date__item govuk-c-date__item--day">
-        <label class="govuk-c-label govuk-c-date__label" for="dob-day">Day</label>
-        <input class="govuk-c-input govuk-c-date__input govuk-c-input--error" id="dob-day" name="dob-day" type="number">
-      </div>
-      <div class="govuk-c-date__item govuk-c-date__item--month">
-        <label class="govuk-c-label govuk-c-date__label" for="dob-month">Month</label>
-        <input class="govuk-c-input govuk-c-date__input govuk-c-input--error" id="dob-month" name="dob-month" type="number">
-      </div>
-      <div class="govuk-c-date__item govuk-c-date__item--year">
-        <label class="govuk-c-label govuk-c-date__label" for="dob-year">Year</label>
-        <input class="govuk-c-input govuk-c-date__input govuk-c-input--error" id="dob-year" name="dob-year" type="number">
-      </div>
-    </div>
-
-    </fieldset>
-
-    <fieldset class="govuk-c-fieldset ">
-      <legend class="govuk-c-fieldset__legend">
-        What is your date of birth?
-
-        <span class="govuk-c-fieldset__hint">For example, 31 3 1980</span>
-
-          <span class="govuk-c-error-message ">
-      Error message goes here
-    </span>
-
-      </legend>
-    <div class="govuk-c-date ">
-      <div class="govuk-c-date__item govuk-c-date__item--day">
-        <label class="govuk-c-label govuk-c-date__label" for="dob-day-error-day">Day</label>
-        <input class="govuk-c-input govuk-c-date__input govuk-c-input--error" id="dob-day-error-day" name="dob-day-error-day" type="number">
-      </div>
-      <div class="govuk-c-date__item govuk-c-date__item--month">
-        <label class="govuk-c-label govuk-c-date__label" for="dob-day-error-month">Month</label>
-        <input class="govuk-c-input govuk-c-date__input " id="dob-day-error-month" name="dob-day-error-month" type="number">
-      </div>
-      <div class="govuk-c-date__item govuk-c-date__item--year">
-        <label class="govuk-c-label govuk-c-date__label" for="dob-day-error-year">Year</label>
-        <input class="govuk-c-input govuk-c-date__input " id="dob-day-error-year" name="dob-day-error-year" type="number">
-      </div>
-    </div>
-
-    </fieldset>
-
-    <fieldset class="govuk-c-fieldset ">
-      <legend class="govuk-c-fieldset__legend">
-        What is your date of birth?
-
-        <span class="govuk-c-fieldset__hint">For example, 31 3 1980</span>
-
-          <span class="govuk-c-error-message ">
-      Error message goes here
-    </span>
-
-      </legend>
-    <div class="govuk-c-date ">
-      <div class="govuk-c-date__item govuk-c-date__item--day">
-        <label class="govuk-c-label govuk-c-date__label" for="dob-month-error-day">Day</label>
-        <input class="govuk-c-input govuk-c-date__input " id="dob-month-error-day" name="dob-month-error-day" type="number">
-      </div>
-      <div class="govuk-c-date__item govuk-c-date__item--month">
-        <label class="govuk-c-label govuk-c-date__label" for="dob-month-error-month">Month</label>
-        <input class="govuk-c-input govuk-c-date__input govuk-c-input--error" id="dob-month-error-month" name="dob-month-error-month" type="number">
-      </div>
-      <div class="govuk-c-date__item govuk-c-date__item--year">
-        <label class="govuk-c-label govuk-c-date__label" for="dob-month-error-year">Year</label>
-        <input class="govuk-c-input govuk-c-date__input " id="dob-month-error-year" name="dob-month-error-year" type="number">
-      </div>
-    </div>
-
-    </fieldset>
-
-    <fieldset class="govuk-c-fieldset ">
-      <legend class="govuk-c-fieldset__legend">
-        What is your date of birth?
-
-        <span class="govuk-c-fieldset__hint">For example, 31 3 1980</span>
-
-          <span class="govuk-c-error-message ">
-      Error message goes here
-    </span>
-
-      </legend>
-    <div class="govuk-c-date ">
-      <div class="govuk-c-date__item govuk-c-date__item--day">
-        <label class="govuk-c-label govuk-c-date__label" for="dob-year-error-day">Day</label>
-        <input class="govuk-c-input govuk-c-date__input " id="dob-year-error-day" name="dob-year-error-day" type="number">
-      </div>
-      <div class="govuk-c-date__item govuk-c-date__item--month">
-        <label class="govuk-c-label govuk-c-date__label" for="dob-year-error-month">Month</label>
-        <input class="govuk-c-input govuk-c-date__input " id="dob-year-error-month" name="dob-year-error-month" type="number">
-      </div>
-      <div class="govuk-c-date__item govuk-c-date__item--year">
-        <label class="govuk-c-label govuk-c-date__label" for="dob-year-error-year">Year</label>
-        <input class="govuk-c-input govuk-c-date__input govuk-c-input--error" id="dob-year-error-year" name="dob-year-error-year" type="number">
-      </div>
-    </div>
-
-    </fieldset>
-
 ## If you are using Nunjucks
 
-To use a macro, follow the below code examples:
+To use a macro, follow the below code example:
 
     {% from "date/macro.njk" import govukDate %}
 

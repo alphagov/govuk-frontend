@@ -10,6 +10,30 @@ A radio button is a GOV.UK element that allows users to answer a question by sel
 
 More information about when to use radio can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/radio "Link to read guidance on the use of radio on Gov.uk Design system website")
 
+## Quick start examples
+
+      <div class="govuk-c-radio">
+        <input class="govuk-c-radio__input " id="radio-1" name="radio-group" type="radio" value="Yes"  >
+        <label class="govuk-c-radio__label" for="radio-1">Yes</label>
+      </div>
+
+      <div class="govuk-c-radio">
+        <input class="govuk-c-radio__input " id="radio-2" name="radio-group" type="radio" value="No"  >
+        <label class="govuk-c-radio__label" for="radio-2">No</label>
+      </div>
+
+      <div class="govuk-c-radio">
+        <input class="govuk-c-radio__input " id="radio-3" name="radio-group" type="radio" value="No" checked >
+        <label class="govuk-c-radio__label" for="radio-3">No</label>
+      </div>
+
+      <div class="govuk-c-radio">
+        <input class="govuk-c-radio__input " id="radio-4" name="radio-group" type="radio" value="NA"  disabled>
+        <label class="govuk-c-radio__label" for="radio-4">Not applicable</label>
+      </div>
+
+## Variants
+
 ## Dependencies
 
 To consume the radio component you must be running npm version 5 or above.
@@ -36,28 +60,9 @@ To show the button image you need to configure your app to show these assets. Be
 
     app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
-## Quick start examples
-
-      <div class="govuk-c-radio">
-        <input class="govuk-c-radio__input " id="radio-1" name="radio-group" type="radio" value="Yes"  >
-        <label class="govuk-c-radio__label" for="radio-1">Yes</label>
-      </div>
-      <div class="govuk-c-radio">
-        <input class="govuk-c-radio__input " id="radio-2" name="radio-group" type="radio" value="No"  >
-        <label class="govuk-c-radio__label" for="radio-2">No</label>
-      </div>
-      <div class="govuk-c-radio">
-        <input class="govuk-c-radio__input " id="radio-3" name="radio-group" type="radio" value="No" checked >
-        <label class="govuk-c-radio__label" for="radio-3">No</label>
-      </div>
-      <div class="govuk-c-radio">
-        <input class="govuk-c-radio__input " id="radio-4" name="radio-group" type="radio" value="NA"  disabled>
-        <label class="govuk-c-radio__label" for="radio-4">Not applicable</label>
-      </div>
-
 ## If you are using Nunjucks
 
-To use a macro, follow the below code examples:
+To use a macro, follow the below code example:
 
     {% from 'radio/macro.njk' import govukRadio %}
 

@@ -10,6 +10,30 @@ Breadcrumb navigation, showing page hierarchy.
 
 More information about when to use checkbox can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/checkbox "Link to read guidance on the use of checkbox on Gov.uk Design system website")
 
+## Quick start examples
+
+      <div class="govuk-c-checkbox ">
+        <input class="govuk-c-checkbox__input" id="waste-type-1" name="waste-types" type="checkbox" value="waste-animal"   >
+        <label class="govuk-c-checkbox__label" for="waste-type-1">Waste from animal carcasses</label>
+      </div>
+
+      <div class="govuk-c-checkbox ">
+        <input class="govuk-c-checkbox__input" id="waste-type-2" name="waste-types" type="checkbox" value="waste-mines"   >
+        <label class="govuk-c-checkbox__label" for="waste-type-2">Waste from mines or quarries</label>
+      </div>
+
+      <div class="govuk-c-checkbox ">
+        <input class="govuk-c-checkbox__input" id="waste-type-3" name="waste-types" type="checkbox" value="waste-farm"  checked >
+        <label class="govuk-c-checkbox__label" for="waste-type-3">Farm or agricultural waste</label>
+      </div>
+
+      <div class="govuk-c-checkbox ">
+        <input class="govuk-c-checkbox__input" id="waste-type-4" name="waste-types" type="checkbox" value="waste-disabled"   disabled>
+        <label class="govuk-c-checkbox__label" for="waste-type-4">Disabled checkbox option</label>
+      </div>
+
+## Variants
+
 ## Dependencies
 
 To consume the checkbox component you must be running npm version 5 or above.
@@ -34,28 +58,9 @@ To show the button image you need to configure your app to show these assets. Be
 
     app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
-## Quick start examples
-
-      <div class="govuk-c-checkbox ">
-        <input class="govuk-c-checkbox__input" id="waste-type-1" name="waste-types" type="checkbox" value="waste-animal"   >
-        <label class="govuk-c-checkbox__label" for="waste-type-1">Waste from animal carcasses</label>
-      </div>
-      <div class="govuk-c-checkbox ">
-        <input class="govuk-c-checkbox__input" id="waste-type-2" name="waste-types" type="checkbox" value="waste-mines"   >
-        <label class="govuk-c-checkbox__label" for="waste-type-2">Waste from mines or quarries</label>
-      </div>
-      <div class="govuk-c-checkbox ">
-        <input class="govuk-c-checkbox__input" id="waste-type-3" name="waste-types" type="checkbox" value="waste-farm"  checked >
-        <label class="govuk-c-checkbox__label" for="waste-type-3">Farm or agricultural waste</label>
-      </div>
-      <div class="govuk-c-checkbox ">
-        <input class="govuk-c-checkbox__input" id="waste-type-4" name="waste-types" type="checkbox" value="waste-disabled"   disabled>
-        <label class="govuk-c-checkbox__label" for="waste-type-4">Disabled checkbox option</label>
-      </div>
-
 ## If you are using Nunjucks
 
-To use a macro, follow the below code examples:
+To use a macro, follow the below code example:
 
     {% from 'checkbox/macro.njk' import govukCheckbox %}
 

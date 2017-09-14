@@ -10,6 +10,14 @@ A container set to the width of the site (960px) and its margins.
 
 More information about when to use site-width-container can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/site-width-container "Link to read guidance on the use of site-width-container on Gov.uk Design system website")
 
+## Quick start examples
+
+    <div class="govuk-c-site-width-container ">
+
+    </div>
+
+## Variants
+
 ## Dependencies
 
 To consume the site-width-container component you must be running npm version 5 or above.
@@ -34,15 +42,9 @@ To show the button image you need to configure your app to show these assets. Be
 
     app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
-## Quick start examples
-
-    <div class="govuk-c-site-width-container ">
-
-    </div>
-
 ## If you are using Nunjucks
 
-To use a macro, follow the below code examples:
+To use a macro, follow the below code example:
 
     {% from "site-width-container/macro.njk" import govukSiteWidthContainer %}
 

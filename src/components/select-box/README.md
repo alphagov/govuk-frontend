@@ -10,6 +10,35 @@ The HTML `<select>` element represents a control that provides a menu of options
 
 More information about when to use select-box can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/select-box "Link to read guidance on the use of select-box on Gov.uk Design system website")
 
+## Quick start examples
+
+    <select class="govuk-c-select-box " id="select-box-1" name="select-box-1">
+
+      <option value="1">GOV.UK frontend option 1</option>
+
+      <option value="2">GOV.UK frontend option 2</option>
+
+      <option value="3">GOV.UK frontend option 3</option>
+
+    </select>
+
+    <label class="govuk-c-label " for="select-box-2">
+      Label for select box
+
+    </label>
+
+    <select class="govuk-c-select-box " id="select-box-2" name="select-box-2">
+
+      <option value="a">GOV.UK frontend option a</option>
+
+      <option value="b"selected>GOV.UK frontend option b</option>
+
+      <option value="c">GOV.UK frontend option c</option>
+
+    </select>
+
+## Variants
+
 ## Dependencies
 
 To consume the select-box component you must be running npm version 5 or above.
@@ -34,28 +63,9 @@ To show the button image you need to configure your app to show these assets. Be
 
     app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
-## Quick start examples
-
-    <select class="govuk-c-select-box " id="select-box-1" name="select-box-1">
-      <option value="1">GOV.UK frontend option 1</option>
-      <option value="2">GOV.UK frontend option 2</option>
-      <option value="3">GOV.UK frontend option 3</option>
-    </select>
-
-    <label class="govuk-c-label " for="select-box-2">
-      Label for select box
-
-    </label>
-
-    <select class="govuk-c-select-box " id="select-box-2" name="select-box-2">
-      <option value="a">GOV.UK frontend option a</option>
-      <option value="b"selected>GOV.UK frontend option b</option>
-      <option value="c">GOV.UK frontend option c</option>
-    </select>
-
 ## If you are using Nunjucks
 
-To use a macro, follow the below code examples:
+To use a macro, follow the below code example:
 
     {% from "select-box/macro.njk" import govukSelectBox %}
 

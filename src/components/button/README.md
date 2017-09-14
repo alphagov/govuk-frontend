@@ -2,13 +2,53 @@
 
 ## Introduction
 
-A button is an element that allows users to carry out an action on a GOV.UK page. Common use cases include allowing a user to **Start** an application or **Save and continue** their progress. A button should have a short text snippet that describes what it will do:
+A button is an element that allows users to carry out an action on a GOV.UK page. Common use cases include allowing a user to **Start** an application or **Save and continue** their progress. A button should have a short text snippet that describes what it will do.
 
 [Preview the button component.](http://govuk-frontend-review.herokuapp.com/components/button/preview)
 
 ## Guidance
 
 More information about when to use button can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/button "Link to read guidance on the use of button on Gov.uk Design system website")
+
+## Quick start examples
+
+Buttons are configured to perform an action and they can have a different look. For example, they can be disabled until a valid action has been performed by the user.
+
+    <input class="govuk-c-button  " value="Save and continue" >
+
+## Variants
+
+### Button--disabled
+
+<div><input class="govuk-c-button  govuk-c-button--disabled  " value="Save and continue" disabled="disabled" aria-disabled="true"></div>
+
+[Preview button--disabled variant.](/components/button/button--disabled/preview)
+
+Markup
+
+    <input class="govuk-c-button  " value="Save and continue" >
+
+Macro
+
+    {% from "button/macro.njk" import govukButton %}
+
+    {{ govukButton(classes='', text='Save and continue', isDisabled='true') }}
+
+### Button--start
+
+<div>[Start now](/)</div>
+
+[Preview button--start variant.](/components/button/button--start/preview)
+
+Markup
+
+    <input class="govuk-c-button  " value="Save and continue" >
+
+Macro
+
+    {% from "button/macro.njk" import govukButton %}
+
+    {{ govukButton(classes='', text='Start now', url='/', isStart='true') }}
 
 ## Dependencies
 
@@ -36,30 +76,13 @@ To show the button image you need to configure your app to show these assets. Be
 
     app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
-## Quick start examples
-
-Buttons are configured to perform an action and they can have a different look. For example, they can be disabled until a valid action has been performed by the user. You can use the following three variants:
-
-    <input class="govuk-c-button  "
-    value="Save and continue">
-
-    <input class="govuk-c-button  govuk-c-button--disabled  "
-    value="Save and continue"disabled="disabled" aria-disabled="true">
-
-    <a class="govuk-c-button  govuk-c-button--start  " href="/" role="button">
-    Start now</a>
-
 ## If you are using Nunjucks
 
-To use a macro, follow the below code examples:
+To use a macro, follow the below code example:
 
     {% from "button/macro.njk" import govukButton %}
 
     {{ govukButton(classes='', text='Save and continue') }}
-
-    {{ govukButton(classes='', text='Save and continue', isDisabled='true') }}
-
-    {{ govukButton(classes='', text='Start now', url='/', isStart='true') }}
 
 Where the macros take the following arguments
 

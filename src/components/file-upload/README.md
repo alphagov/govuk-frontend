@@ -10,6 +10,12 @@ The HTML `<input>` element with type="file" lets a user pick one or more files, 
 
 More information about when to use file-upload can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/file-upload "Link to read guidance on the use of file-upload on Gov.uk Design system website")
 
+## Quick start examples
+
+      <input type="file">
+
+## Variants
+
 ## Dependencies
 
 To consume the file-upload component you must be running npm version 5 or above.
@@ -34,33 +40,11 @@ To show the button image you need to configure your app to show these assets. Be
 
     app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
-## Quick start examples
-
-    <label class="govuk-c-label " for="file-upload-1">
-      Upload a file
-    </label>
-
-    <input class="govuk-c-file-upload " id="file-upload-1" name="file-upload-1" type="file">
-
-    <label class="govuk-c-label " for="file-upload-2">
-      Upload your photo
-      <span class="govuk-c-label__hint">
-        Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.
-      </span>
-    </label>
-
-    <input class="govuk-c-file-upload " id="file-upload-2" name="file-upload-2" type="file">
-
-    <label class="govuk-c-label " for="file-upload-3">
-      Upload a file
-      <span class="govuk-c-error-message ">Error message goes here</span>
-    </label>
-
-    <input class="govuk-c-file-upload govuk-c-file-upload--error" id="file-upload-3" name="file-upload-3" type="file">
-
 ## If you are using Nunjucks
 
-To use a macro, follow the below code examples:
+To use a macro, follow the below code example:
+
+    <input type="file">
 
     {% from "file-upload/macro.njk" import govukFileUpload %}
 

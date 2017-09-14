@@ -10,6 +10,23 @@ The confirmation panel has a turquoise background and white text. Used for trans
 
 More information about when to use panel can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/panel "Link to read guidance on the use of panel on Gov.uk Design system website")
 
+## Quick start examples
+
+    <div class="govuk-c-panel govuk-c-panel--confirmation ">
+      <h2 class="govuk-c-panel__title">
+        Application complete
+      </h2>
+      <div class="govuk-c-panel__body">
+        Your reference number is
+
+        <br>
+        <strong>HDJ2123F</strong>
+
+      </div>
+    </div>
+
+## Variants
+
 ## Dependencies
 
 To consume the panel component you must be running npm version 5 or above.
@@ -34,22 +51,9 @@ To show the button image you need to configure your app to show these assets. Be
 
     app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
-## Quick start examples
-
-    <div class="govuk-c-panel govuk-c-panel--confirmation ">
-      <h2 class="govuk-c-panel__title">
-        Application complete
-      </h2>
-      <div class="govuk-c-panel__body">
-        Your reference number is
-        <br>
-        <strong>HDJ2123F</strong>
-      </div>
-    </div>
-
 ## If you are using Nunjucks
 
-To use a macro, follow the below code examples:
+To use a macro, follow the below code example:
 
     {% from "panel/macro.njk" import govukPanel %}
 

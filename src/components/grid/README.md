@@ -10,6 +10,90 @@ Grid row with grid items.
 
 More information about when to use grid can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/grid "Link to read guidance on the use of grid on Gov.uk Design system website")
 
+## Quick start examples
+
+    <div class="govuk-c-grid ">
+
+      <div class="govuk-c-grid__item govuk-c-grid__item--full">
+
+      </div>
+
+    </div>
+
+    <div class="govuk-c-grid ">
+
+      <div class="govuk-c-grid__item govuk-c-grid__item--one-half">
+
+      </div>
+
+      <div class="govuk-c-grid__item govuk-c-grid__item--one-half">
+
+      </div>
+
+    </div>
+
+    <div class="govuk-c-grid ">
+
+      <div class="govuk-c-grid__item govuk-c-grid__item--one-third">
+
+      </div>
+
+      <div class="govuk-c-grid__item govuk-c-grid__item--one-third">
+
+      </div>
+
+      <div class="govuk-c-grid__item govuk-c-grid__item--one-third">
+
+      </div>
+
+    </div>
+
+    <div class="govuk-c-grid ">
+
+      <div class="govuk-c-grid__item govuk-c-grid__item--two-thirds">
+
+      </div>
+
+      <div class="govuk-c-grid__item govuk-c-grid__item--one-third">
+
+      </div>
+
+    </div>
+
+    <div class="govuk-c-grid ">
+
+      <div class="govuk-c-grid__item govuk-c-grid__item--one-third">
+
+      </div>
+
+      <div class="govuk-c-grid__item govuk-c-grid__item--two-thirds">
+
+      </div>
+
+    </div>
+
+    <div class="govuk-c-grid ">
+
+      <div class="govuk-c-grid__item govuk-c-grid__item--one-quarter">
+
+      </div>
+
+      <div class="govuk-c-grid__item govuk-c-grid__item--one-quarter">
+
+      </div>
+
+      <div class="govuk-c-grid__item govuk-c-grid__item--one-quarter">
+
+      </div>
+
+      <div class="govuk-c-grid__item govuk-c-grid__item--one-quarter">
+
+      </div>
+
+    </div>
+
+## Variants
+
 ## Dependencies
 
 To consume the grid component you must be running npm version 5 or above.
@@ -34,71 +118,9 @@ To show the button image you need to configure your app to show these assets. Be
 
     app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
-## Quick start examples
-
-    <div class="govuk-c-grid ">
-      <div class="govuk-c-grid__item govuk-c-grid__item--full">
-
-      </div>
-    </div>
-
-    <div class="govuk-c-grid ">
-      <div class="govuk-c-grid__item govuk-c-grid__item--one-half">
-
-      </div>
-      <div class="govuk-c-grid__item govuk-c-grid__item--one-half">
-
-      </div>
-    </div>
-
-    <div class="govuk-c-grid ">
-      <div class="govuk-c-grid__item govuk-c-grid__item--one-third">
-
-      </div>
-      <div class="govuk-c-grid__item govuk-c-grid__item--one-third">
-
-      </div>
-      <div class="govuk-c-grid__item govuk-c-grid__item--one-third">
-
-      </div>
-    </div>
-
-    <div class="govuk-c-grid ">
-      <div class="govuk-c-grid__item govuk-c-grid__item--two-thirds">
-
-      </div>
-      <div class="govuk-c-grid__item govuk-c-grid__item--one-third">
-
-      </div>
-    </div>
-
-    <div class="govuk-c-grid ">
-      <div class="govuk-c-grid__item govuk-c-grid__item--one-third">
-
-      </div>
-      <div class="govuk-c-grid__item govuk-c-grid__item--two-thirds">
-
-      </div>
-    </div>
-
-    <div class="govuk-c-grid ">
-      <div class="govuk-c-grid__item govuk-c-grid__item--one-quarter">
-
-      </div>
-      <div class="govuk-c-grid__item govuk-c-grid__item--one-quarter">
-
-      </div>
-      <div class="govuk-c-grid__item govuk-c-grid__item--one-quarter">
-
-      </div>
-      <div class="govuk-c-grid__item govuk-c-grid__item--one-quarter">
-
-      </div>
-    </div>
-
 ## If you are using Nunjucks
 
-To use a macro, follow the below code examples:
+To use a macro, follow the below code example:
 
     {% from "grid/macro.njk" import govukGrid %}
 

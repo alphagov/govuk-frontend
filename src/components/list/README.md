@@ -10,6 +10,132 @@ Breadcrumb navigation, showing page hierarchy.
 
 More information about when to use list can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/list "Link to read guidance on the use of list on Gov.uk Design system website")
 
+## Quick start examples
+
+    <ul class="govuk-c-list ">
+
+      <li>
+
+          <a href="/ ">
+            Related link
+          </a>
+
+      </li>
+
+      <li>
+
+          <a href="/ ">
+            Related link
+          </a>
+
+      </li>
+
+      <li>
+
+          <a href="/ ">
+            Related link
+          </a>
+
+      </li>
+
+    </ul>
+
+    <ul class="govuk-c-list govuk-c-list--bullet ">
+
+      <li>
+
+            here is a bulleted list
+
+      </li>
+
+      <li>
+
+            here is the second bulleted list item
+
+      </li>
+
+      <li>
+
+            here is the third bulleted list item
+
+      </li>
+
+    </ul>
+
+    <ol class="govuk-c-list govuk-c-list--number ">
+
+      <li>
+
+            This is a numbered list.
+
+      </li>
+
+      <li>
+
+            This is the second step in a numbered list.
+
+      </li>
+
+      <li>
+
+            The third step is to make sure each item is a full sentence ending with a full stop.
+
+      </li>
+
+    </ol>
+
+    <ol class="govuk-c-list govuk-c-list--icon ">
+
+      <li>
+
+          <span class="govuk-c-list__icon govuk-u-circle ">1</span>
+          Step 1
+
+      </li>
+
+      <li>
+
+          <span class="govuk-c-list__icon govuk-u-circle ">2</span>
+          Step 2
+
+      </li>
+
+      <li>
+
+          <span class="govuk-c-list__icon govuk-u-circle ">3</span>
+          Step 3
+
+      </li>
+
+    </ol>
+
+    <ol class="govuk-c-list govuk-c-list--icon ">
+
+      <li>
+
+          <span class="govuk-c-list__icon govuk-u-circle govuk-c-list__icon--large">1</span>
+          Step 1 Large icon
+
+      </li>
+
+      <li>
+
+          <span class="govuk-c-list__icon govuk-u-circle govuk-c-list__icon--large">2</span>
+          Step 2 Large icon
+
+      </li>
+
+      <li>
+
+          <span class="govuk-c-list__icon govuk-u-circle govuk-c-list__icon--large">3</span>
+          Step 3 Large icon
+
+      </li>
+
+    </ol>
+
+## Variants
+
 ## Dependencies
 
 To consume the list component you must be running npm version 5 or above.
@@ -34,87 +160,9 @@ To show the button image you need to configure your app to show these assets. Be
 
     app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
-## Quick start examples
-
-    <ul class="govuk-c-list ">
-
-      <li>
-    <a href="/ ">        Related link
-    </a>  </li>
-      <li>
-    <a href="/ ">        Related link
-    </a>  </li>
-      <li>
-    <a href="/ ">        Related link
-    </a>  </li>
-
-    </ul>
-
-    <ul class="govuk-c-list govuk-c-list--bullet ">
-
-      <li>
-            here is a bulleted list
-      </li>
-      <li>
-            here is the second bulleted list item
-      </li>
-      <li>
-            here is the third bulleted list item
-      </li>
-
-    </ul>
-
-    <ol class="govuk-c-list govuk-c-list--number ">
-
-      <li>
-            This is a numbered list.
-      </li>
-      <li>
-            This is the second step in a numbered list.
-      </li>
-      <li>
-            The third step is to make sure each item is a full sentence ending with a full stop.
-      </li>
-
-    </ol>
-
-    <ol class="govuk-c-list govuk-c-list--icon ">
-
-      <li>
-          <span class="govuk-c-list__icon govuk-u-circle ">1</span>
-          Step 1
-      </li>
-      <li>
-          <span class="govuk-c-list__icon govuk-u-circle ">2</span>
-          Step 2
-      </li>
-      <li>
-          <span class="govuk-c-list__icon govuk-u-circle ">3</span>
-          Step 3
-      </li>
-
-    </ol>
-
-    <ol class="govuk-c-list govuk-c-list--icon ">
-
-      <li>
-          <span class="govuk-c-list__icon govuk-u-circle govuk-c-list__icon--large">1</span>
-          Step 1 Large icon
-      </li>
-      <li>
-          <span class="govuk-c-list__icon govuk-u-circle govuk-c-list__icon--large">2</span>
-          Step 2 Large icon
-      </li>
-      <li>
-          <span class="govuk-c-list__icon govuk-u-circle govuk-c-list__icon--large">3</span>
-          Step 3 Large icon
-      </li>
-
-    </ol>
-
 ## If you are using Nunjucks
 
-To use a macro, follow the below code examples:
+To use a macro, follow the below code example:
 
     {% from "list/macro.njk" import govukList %}
 

@@ -15,6 +15,18 @@ Link component, with four variants:
 
 More information about when to use link can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/link "Link to read guidance on the use of link on Gov.uk Design system website")
 
+## Quick start examples
+
+    <a href="" class="govuk-c-link govuk-c-link--back">Back</a>
+
+    <a href="" class="govuk-c-link govuk-c-link--muted">Is there anything wrong with this page?</a>
+
+    <a href="" class="govuk-c-link govuk-c-link--download"></a>
+
+    <a href="" class="govuk-c-link govuk-c-link--skip">Skip to main content</a>
+
+## Variants
+
 ## Dependencies
 
 To consume the link component you must be running npm version 5 or above.
@@ -39,19 +51,9 @@ To show the button image you need to configure your app to show these assets. Be
 
     app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
-## Quick start examples
-
-    <a href="" class="govuk-c-link govuk-c-link--back">Back</a>
-
-    <a href="" class="govuk-c-link govuk-c-link--muted">Is there anything wrong with this page?</a>
-
-    <a href="" class="govuk-c-link govuk-c-link--download"></a>
-
-    <a href="" class="govuk-c-link govuk-c-link--skip">Skip to main content</a>
-
 ## If you are using Nunjucks
 
-To use a macro, follow the below code examples:
+To use a macro, follow the below code example:
 
     {% from "link/macro.njk" import govukLink %}
 

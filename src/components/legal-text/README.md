@@ -10,6 +10,18 @@ Use bold text with an exclamation icon if there are legal consequences - for exa
 
 More information about when to use legal-text can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/legal-text "Link to read guidance on the use of legal-text on Gov.uk Design system website")
 
+## Quick start examples
+
+    <div class="govuk-c-legal-text ">
+      <span class="govuk-c-legal-text__icon govuk-u-circle" aria-hidden="true">!</span>
+      <strong class="govuk-c-legal-text__text">
+        <span class="govuk-c-legal-text__assistive">Warning</span>
+        You can be fined up to £5,000 if you don’t register.
+      </strong>
+    </div>
+
+## Variants
+
 ## Dependencies
 
 To consume the legal-text component you must be running npm version 5 or above.
@@ -34,19 +46,9 @@ To show the button image you need to configure your app to show these assets. Be
 
     app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
-## Quick start examples
-
-    <div class="govuk-c-legal-text ">
-      <span class="govuk-c-legal-text__icon govuk-u-circle" aria-hidden="true">!</span>
-      <strong class="govuk-c-legal-text__text">
-        <span class="govuk-c-legal-text__assistive">Warning</span>
-        You can be fined up to £5,000 if you don’t register.
-      </strong>
-    </div>
-
 ## If you are using Nunjucks
 
-To use a macro, follow the below code examples:
+To use a macro, follow the below code example:
 
     {% from "legal-text/macro.njk" import govukLegalText %}
 

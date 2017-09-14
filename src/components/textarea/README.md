@@ -10,6 +10,17 @@ A multi-line text field.
 
 More information about when to use textarea can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/textarea "Link to read guidance on the use of textarea on Gov.uk Design system website")
 
+## Quick start examples
+
+    <label class="govuk-c-label " for="textarea">
+      National Insurance number
+
+    </label>
+
+    <textarea class="govuk-c-textarea  " id="textarea" name="name" rows=" 5 "></textarea>
+
+## Variants
+
 ## Dependencies
 
 To consume the textarea component you must be running npm version 5 or above.
@@ -34,18 +45,9 @@ To show the button image you need to configure your app to show these assets. Be
 
     app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
-## Quick start examples
-
-    <label class="govuk-c-label " for="textarea">
-      National Insurance number
-
-    </label>
-
-    <textarea class="govuk-c-textarea  " id="textarea" name="name" rows=" 5 "></textarea>
-
 ## If you are using Nunjucks
 
-To use a macro, follow the below code examples:
+To use a macro, follow the below code example:
 
     {% from "textarea/macro.njk" import govukTextarea %}
 

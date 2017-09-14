@@ -10,6 +10,17 @@ Use bordered inset text to draw attention to important content on the page.
 
 More information about when to use inset-text can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/inset-text "Link to read guidance on the use of inset-text on Gov.uk Design system website")
 
+## Quick start examples
+
+      <div class="govuk-c-inset-text ">
+      <p>
+        It can take up to 8 weeks to register a lasting power of attorney if<br>
+        there are no mistakes in the application.
+      </p>
+    </div>
+
+## Variants
+
 ## Dependencies
 
 To consume the inset-text component you must be running npm version 5 or above.
@@ -34,18 +45,9 @@ To show the button image you need to configure your app to show these assets. Be
 
     app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
-## Quick start examples
-
-    <div class="govuk-c-inset-text ">
-      <p>
-        It can take up to 8 weeks to register a lasting power of attorney if<br>
-        there are no mistakes in the application.
-      </p>
-    </div>
-
 ## If you are using Nunjucks
 
-To use a macro, follow the below code examples:
+To use a macro, follow the below code example:
 
     {% from "inset-text/macro.njk" import govukInsetText %}
 

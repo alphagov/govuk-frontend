@@ -10,6 +10,26 @@ Component for conditionally revealing content, using the details HTML element.
 
 More information about when to use details can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/details "Link to read guidance on the use of details on Gov.uk Design system website")
 
+## Quick start examples
+
+    <details class="govuk-c-details ">
+      <summary class="govuk-c-details__summary">
+        <span class="govuk-c-details__summary-text">Help with nationality</span>
+      </summary>
+      <div class="govuk-c-border govuk-c-border--left-narrow">
+        <div class="govuk-c-details__text">
+          <p>
+        If you’re not sure about your nationality, try to find out from an official document like a passport or national ID card.
+      </p>
+      <p>
+        We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post.
+      </p>
+        </div>
+      </div>
+    </details>
+
+## Variants
+
 ## Dependencies
 
 To consume the details component you must be running npm version 5 or above.
@@ -34,27 +54,9 @@ To show the button image you need to configure your app to show these assets. Be
 
     app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
-## Quick start examples
-
-    <details class="govuk-c-details ">
-      <summary class="govuk-c-details__summary">
-        <span class="govuk-c-details__summary-text">Help with nationality</span>
-      </summary>
-      <div class="govuk-c-border govuk-c-border--left-narrow">
-        <div class="govuk-c-details__text">
-          <p>
-        If you’re not sure about your nationality, try to find out from an official document like a passport or national ID card.
-      </p>
-      <p>
-        We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post.
-      </p>
-        </div>
-      </div>
-    </details>
-
 ## If you are using Nunjucks
 
-To use a macro, follow the below code examples:
+To use a macro, follow the below code example:
 
     {% from "details/macro.njk" import govukDetails %}
 

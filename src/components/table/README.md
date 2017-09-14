@@ -10,6 +10,98 @@ Table description.
 
 More information about when to use table can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/table "Link to read guidance on the use of table on Gov.uk Design system website")
 
+## Quick start examples
+
+    <table class="govuk-c-table ">
+
+      <caption class="govuk-c-table__caption  small ">Months and rates</caption>
+
+      <tbody class="govuk-c-table__body">
+
+        <tr class="govuk-c-table__row">
+
+          <th class="govuk-c-table__header" scope="row"> January</th>
+
+          <td class="govuk-c-table__cell  govuk-c-table__cell--numeric "  >£85</td>
+
+          <td class="govuk-c-table__cell  govuk-c-table__cell--numeric "  >£95</td>
+
+        </tr>
+
+        <tr class="govuk-c-table__row">
+
+          <th class="govuk-c-table__header" scope="row"> February</th>
+
+          <td class="govuk-c-table__cell  govuk-c-table__cell--numeric "  >£75</td>
+
+          <td class="govuk-c-table__cell  govuk-c-table__cell--numeric "  >£55</td>
+
+        </tr>
+
+        <tr class="govuk-c-table__row">
+
+          <th class="govuk-c-table__header" scope="row"> March</th>
+
+          <td class="govuk-c-table__cell  govuk-c-table__cell--numeric "  >£165</td>
+
+          <td class="govuk-c-table__cell  govuk-c-table__cell--numeric "  >£125</td>
+
+        </tr>
+
+      </tbody>
+    </table>
+
+    <table class="govuk-c-table ">
+
+      <thead class="govuk-c-table__head">
+        <tr class="govuk-c-table__row">
+
+          <th class="govuk-c-table__header "   scope="col">Month you apply</th>
+
+          <th class="govuk-c-table__header  govuk-c-table__header--numeric "   scope="col">Rate for bicycles</th>
+
+          <th class="govuk-c-table__header  govuk-c-table__header--numeric "   scope="col">Rate for vehicles</th>
+
+      </tr>
+      </thead>
+
+      <tbody class="govuk-c-table__body">
+
+        <tr class="govuk-c-table__row">
+
+          <th class="govuk-c-table__header" scope="row"> January</th>
+
+          <td class="govuk-c-table__cell  govuk-c-table__cell--numeric "  >£85</td>
+
+          <td class="govuk-c-table__cell  govuk-c-table__cell--numeric "  >£95</td>
+
+        </tr>
+
+        <tr class="govuk-c-table__row">
+
+          <th class="govuk-c-table__header" scope="row"> February</th>
+
+          <td class="govuk-c-table__cell  govuk-c-table__cell--numeric "  >£75</td>
+
+          <td class="govuk-c-table__cell  govuk-c-table__cell--numeric "  >£55</td>
+
+        </tr>
+
+        <tr class="govuk-c-table__row">
+
+          <th class="govuk-c-table__header" scope="row"> March</th>
+
+          <td class="govuk-c-table__cell  govuk-c-table__cell--numeric "  >£165</td>
+
+          <td class="govuk-c-table__cell  govuk-c-table__cell--numeric "  >£125</td>
+
+        </tr>
+
+      </tbody>
+    </table>
+
+## Variants
+
 ## Dependencies
 
 To consume the table component you must be running npm version 5 or above.
@@ -34,59 +126,9 @@ To show the button image you need to configure your app to show these assets. Be
 
     app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
-## Quick start examples
-
-    <table class="govuk-c-table ">
-      <caption class="govuk-c-table__caption  small ">Months and rates</caption>
-      <tbody class="govuk-c-table__body">
-        <tr class="govuk-c-table__row">
-          <th class="govuk-c-table__header" scope="row"> January</th>
-          <td class="govuk-c-table__cell  govuk-c-table__cell--numeric "  >£85</td>
-          <td class="govuk-c-table__cell  govuk-c-table__cell--numeric "  >£95</td>
-        </tr>
-        <tr class="govuk-c-table__row">
-          <th class="govuk-c-table__header" scope="row"> February</th>
-          <td class="govuk-c-table__cell  govuk-c-table__cell--numeric "  >£75</td>
-          <td class="govuk-c-table__cell  govuk-c-table__cell--numeric "  >£55</td>
-        </tr>
-        <tr class="govuk-c-table__row">
-          <th class="govuk-c-table__header" scope="row"> March</th>
-          <td class="govuk-c-table__cell  govuk-c-table__cell--numeric "  >£165</td>
-          <td class="govuk-c-table__cell  govuk-c-table__cell--numeric "  >£125</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <table class="govuk-c-table ">
-      <thead class="govuk-c-table__head">
-        <tr class="govuk-c-table__row">
-          <th class="govuk-c-table__header "   scope="col">Month you apply</th>
-          <th class="govuk-c-table__header  govuk-c-table__header--numeric "   scope="col">Rate for bicycles</th>
-          <th class="govuk-c-table__header  govuk-c-table__header--numeric "   scope="col">Rate for vehicles</th>
-      </tr>
-      </thead>
-      <tbody class="govuk-c-table__body">
-        <tr class="govuk-c-table__row">
-          <th class="govuk-c-table__header" scope="row"> January</th>
-          <td class="govuk-c-table__cell  govuk-c-table__cell--numeric "  >£85</td>
-          <td class="govuk-c-table__cell  govuk-c-table__cell--numeric "  >£95</td>
-        </tr>
-        <tr class="govuk-c-table__row">
-          <th class="govuk-c-table__header" scope="row"> February</th>
-          <td class="govuk-c-table__cell  govuk-c-table__cell--numeric "  >£75</td>
-          <td class="govuk-c-table__cell  govuk-c-table__cell--numeric "  >£55</td>
-        </tr>
-        <tr class="govuk-c-table__row">
-          <th class="govuk-c-table__header" scope="row"> March</th>
-          <td class="govuk-c-table__cell  govuk-c-table__cell--numeric "  >£165</td>
-          <td class="govuk-c-table__cell  govuk-c-table__cell--numeric "  >£125</td>
-        </tr>
-      </tbody>
-    </table>
-
 ## If you are using Nunjucks
 
-To use a macro, follow the below code examples:
+To use a macro, follow the below code example:
 
     {% from 'table/macro.njk' import govukTable %}
 
