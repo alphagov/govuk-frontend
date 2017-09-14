@@ -2,13 +2,14 @@
 
 const configPath = require('../../config/paths.json')
 const gulp = require('gulp')
-const nunjucksRender = require('gulp-nunjucks-render')
 const rename = require('gulp-rename')
 const data = require('gulp-data')
 const vinylPaths = require('vinyl-paths')
 const path = require('path')
 const fs = require('fs')
 const toMarkdown = require('gulp-to-markdown')
+const gulpNunjucks = require('gulp-nunjucks')
+const nunjucks = require('nunjucks')
 const vinylInfo = {}
 
 function getDataForFile (file) {
@@ -17,11 +18,10 @@ function getDataForFile (file) {
   return finalData
 }
 
-const manageEnvironment = function (environment) {
-  environment.addGlobal('isReadme', 'true')
-  environment.opts.lstripBlocks = true
-  environment.opts.trimBlocks = true
-}
+var environment = new nunjucks.Environment(
+  new nunjucks.FileSystemLoader([configPath.src + 'views', configPath.components])
+)
+environment.addGlobal('isReadme', 'true')
 
 gulp.task('generate:readme', () => {
   return gulp.src(['!' + configPath.components + '_component-example/index.njk', configPath.components + '**/index.njk'])
@@ -32,9 +32,10 @@ gulp.task('generate:readme', () => {
     return Promise.resolve()
   }))
   .pipe(data(getDataForFile))
-  .pipe(nunjucksRender({
-    path: [configPath.src + 'views', configPath.components],
-    manageEnv: manageEnvironment
+  .pipe(gulpNunjucks.compile('', {
+    trimBlocks: true, // automatically remove trailing newlines from a block/tag
+    lstripBlocks: true, // automatically remove leading whitespace from a block/tag
+    env: environment
   }))
   .pipe(toMarkdown({
     gfm: true // github flavoured markdown https://github.com/domchristie/to-markdown#gfm-boolean
