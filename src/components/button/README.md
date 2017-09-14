@@ -22,11 +22,11 @@ Buttons are configured to perform an action and they can have a different look. 
 
 [Preview button--disabled variant.](/components/button/button--disabled/preview)
 
-Markup
+#### Markup
 
-    <input class="govuk-c-button  " value="Save and continue" >
+    <input class="govuk-c-button  govuk-c-button--disabled  " value="Save and continue" disabled="disabled" aria-disabled="true">
 
-Macro
+#### Macro
 
     {% from "button/macro.njk" import govukButton %}
 
@@ -36,11 +36,12 @@ Macro
 
 [Preview button--start variant.](/components/button/button--start/preview)
 
-Markup
+#### Markup
 
-    <input class="govuk-c-button  " value="Save and continue" >
+    <a class="govuk-c-button  govuk-c-button--start  " href="/" role="button">
+    Start now</a>
 
-Macro
+#### Macro
 
     {% from "button/macro.njk" import govukButton %}
 

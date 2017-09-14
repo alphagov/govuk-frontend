@@ -69,17 +69,16 @@
 <h2 class="govuk-u-heading-24">Variants</h2>
 
 {% for variant in variantItems %}
-{% set variantName = variant.name | replace('.njk', '') %}
-{% set variantPreviewPath = "/components/" + componentPath + '/' + variantName +"/preview" %}
+{% set variantPreviewPath = "/components/" + componentPath + '/' + variant.name +"/preview" %}
 
-<h3 class="govuk-u-bold-19">{{ variantName | capitalize }}</h2>
+<h3 class="govuk-u-bold-19">{{ variant.name | capitalize }}</h2>
 {% if not isReadme %}
 <div>
-{% include "../components/"+ componentName +"/"+ variant.name ignore missing %}
+{% include "../components/"+ componentName +"/"+ variant.name + '.njk' ignore missing %}
 </div>
 {% endif %}
 
-<p class="govuk-u-copy-19"><a href="{{variantPreviewPath}}">Preview {{ variantName }} variant.</a></p>
+<p class="govuk-u-copy-19"><a href="{{variantPreviewPath}}">Preview {{ variant.name }} variant.</a></p>
 
 <h4 class="govuk-u-copy-19">Markup</h4>
 <pre><code>
