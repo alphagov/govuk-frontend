@@ -53,6 +53,45 @@
   More information about when to use {{ componentName }} can be found on <a href="{{- componentGuidanceLink -}}" title="Link to read guidance on the use of {{ componentName }} on Gov.uk Design system website">GOV.UK Design System</a>
 </p>
 
+<h2 class="govuk-u-heading-24">Quick start examples</h2>
+<p class="govuk-u-copy-19">{% block componentHtmlUsageWriteup %}{% endblock %}</p>
+
+{% if not isReadme %}
+<pre><code>{%- block componentHtmlUsage %}{{- componentHtmlFile -}}{% endblock -%}</code></pre>
+{% else %}
+<pre><code>
+  {{- htmlMarkup | escape -}}
+</code></pre>
+
+{% endif %}
+
+{% if variantItems %}
+<h2 class="govuk-u-heading-24">Variants</h2>
+
+{% for variant in variantItems %}
+{% set variantName = variant.name | replace('.njk', '') %}
+{% set variantPreviewPath = "/components/" + componentPath + '/' + variantName +"/preview" %}
+
+<h3 class="govuk-u-bold-19">{{ variantName | capitalize }}</h2>
+
+<div>
+{% include "../components/"+ componentName +"/"+ variant.name ignore missing %}
+</div>
+
+<p class="govuk-u-copy-19"><a href="{{variantPreviewPath}}">Preview {{ variantName }} variant.</a></p>
+
+<p class="govuk-u-copy-19">Markup</p>
+<pre><code>
+{{- variant.html | escape -}}
+</code></pre>
+
+<p class="govuk-u-copy-19">Macro</p>
+<pre><code>
+{{- variant.njk | escape -}}
+</code></pre>
+{% endfor %}
+{% endif %}
+
 {% if isReadme %}
 <h2 class="govuk-u-heading-24">Dependencies</h2>
 
@@ -83,21 +122,8 @@ app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 </pre>
 {% endif %}
 
-<h2 class="govuk-u-heading-24">Quick start examples</h2>
-<p class="govuk-u-copy-19">{% block componentHtmlUsageWriteup %}{% endblock %}</p>
-{% if not isReadme %}
-<pre><code>{% block componentHtmlUsage %}{{ componentHtmlFile }}{% endblock %}</code></pre>
-{% else %}
-<pre>
-<code>
-  {{ htmlMarkup | escape }}
-</code>
-</pre>
-
-{% endif %}
-
 <h2 class="govuk-u-heading-24">If you are using Nunjucks</h2>
-<p class="govuk-u-copy-19">To use a macro, follow the below code examples:</p>
+<p class="govuk-u-copy-19">To use a macro, follow the below code example:</p>
 <pre><code>{% block componentNunjucks %}{{ componentNunjucksFile }}{% endblock %}</code></pre>
 
 <p class="govuk-u-copy-19">Where the macros take the following arguments</p>
