@@ -1,5 +1,7 @@
 {% from "label/macro.njk" import govukLabel %}
 
-{{ govukLabel(classes, labelText, hintText, errorMessage, id) }}
+{{- govukLabel(classes, labelText, hintText, errorMessage, id) -}}
 
-<textarea class="govuk-c-textarea {% if errorMessage %}govuk-c-input--error{% endif %} {{ classes }}" id="{{ id }}" name="{{ name }}" rows="{%if rows %} {{ rows }} {% else %} 5 {%endif %}"></textarea>
+<textarea class="govuk-c-textarea
+{%- if errorMessage %}govuk-c-input--error{% endif %}
+{%- if classes %} {{ classes }}{% endif -%}" id="{{ id }}" name="{{ name }}" rows="{%if rows %} {{- rows -}} {% else %}5{%endif %}"></textarea>
