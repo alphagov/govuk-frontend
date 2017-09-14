@@ -20,8 +20,6 @@ Buttons are configured to perform an action and they can have a different look. 
 
 ### Button--disabled
 
-<div><input class="govuk-c-button  govuk-c-button--disabled  " value="Save and continue" disabled="disabled" aria-disabled="true"></div>
-
 [Preview button--disabled variant.](/components/button/button--disabled/preview)
 
 Markup
@@ -35,8 +33,6 @@ Macro
     {{ govukButton(classes='', text='Save and continue', isDisabled='true') }}
 
 ### Button--start
-
-<div>[Start now](/)</div>
 
 [Preview button--start variant.](/components/button/button--start/preview)
 

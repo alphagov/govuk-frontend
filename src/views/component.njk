@@ -73,10 +73,11 @@
 {% set variantPreviewPath = "/components/" + componentPath + '/' + variantName +"/preview" %}
 
 <h3 class="govuk-u-bold-19">{{ variantName | capitalize }}</h2>
-
+{% if not isReadme %}
 <div>
 {% include "../components/"+ componentName +"/"+ variant.name ignore missing %}
 </div>
+{% endif %}
 
 <p class="govuk-u-copy-19"><a href="{{variantPreviewPath}}">Preview {{ variantName }} variant.</a></p>
 
