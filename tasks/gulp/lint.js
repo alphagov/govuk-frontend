@@ -1,14 +1,14 @@
 'use strict'
 
 const gulp = require('gulp')
-const paths = require('../../config/paths.json')
+const configPaths = require('../../config/paths.json')
 const standard = require('gulp-standard')
 const sasslint = require('gulp-sass-lint')
 
 // Javascript lint check -----------------
 // ---------------------------------------
 gulp.task('js:lint', () => {
-  return gulp.src([paths.components + '**/*.js'])
+  return gulp.src([configPaths.components + '**/*.js'])
     .pipe(standard())
     .pipe(standard.reporter('default', {
       breakOnError: true,
@@ -19,9 +19,9 @@ gulp.task('js:lint', () => {
 // Scss lint check -----------------------
 // ---------------------------------------
 gulp.task('scss:lint', () => {
-  return gulp.src(paths.src + '**/*.scss')
+  return gulp.src(configPaths.src + '**/*.scss')
     .pipe(sasslint({
-      configFile: paths.config + '.sass-lint.yml'
+      configFile: configPaths.config + '.sass-lint.yml'
     }))
     .pipe(sasslint.format())
     .pipe(sasslint.failOnError())

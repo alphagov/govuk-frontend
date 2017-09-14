@@ -1,6 +1,6 @@
 'use strict'
 
-const paths = require('../../config/paths.json')
+const configPaths = require('../../config/paths.json')
 const gulp = require('gulp')
 const nunjucks = require('gulp-nunjucks')
 const rename = require('gulp-rename')
@@ -15,10 +15,10 @@ const isPackages = (taskArguments.destination === 'packages') || false
 gulp.task('compile:components', () => {
   return gulp.src(
     [
-      '!' + paths.components + '**/index.njk',
-      '!' + paths.components + '**/macro.njk',
-      '!' + paths.components + '**/template.njk',
-      paths.components + '**/*.njk' // Only compile componentname.njk to html
+      '!' + configPaths.components + '**/index.njk',
+      '!' + configPaths.components + '**/macro.njk',
+      '!' + configPaths.components + '**/template.njk',
+      configPaths.components + '**/*.njk' // Only compile componentname.njk to html
     ])
     .pipe(nunjucks.compile('', {
       trimBlocks: true, // automatically remove trailing newlines from a block/tag
