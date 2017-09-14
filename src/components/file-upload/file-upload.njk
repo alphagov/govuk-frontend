@@ -1,1 +1,30 @@
-<input type="file">
+{% from "file-upload/macro.njk" import govukFileUpload %}
+
+{{ govukFileUpload(
+  classes='',
+  labelText='Upload a file',
+  errorMessage='',
+  id='file-upload-1',
+  name='file-upload-1'
+  )
+}}
+
+{{ govukFileUpload(
+  classes='',
+  labelText='Upload your photo',
+  hintText='Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.',
+  errorMessage='',
+  id='file-upload-2',
+  name='file-upload-2'
+  )
+}}
+
+{{ govukFileUpload(
+  classes='',
+  labelText='Upload a file',
+  hintText='',
+  errorMessage='Error message goes here',
+  id='file-upload-3',
+  name='file-upload-3'
+  )
+}}
