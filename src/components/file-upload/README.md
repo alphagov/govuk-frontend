@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Breadcrumb navigation, showing page hierarchy.
+The HTML `<input>` element with type="file" lets a user pick one or more files, to upload to a server.
 
 [Preview the file-upload component.](http://govuk-frontend-review.herokuapp.com/components/file-upload/preview)
 
@@ -36,15 +36,178 @@ To show the button image you need to configure your app to show these assets. Be
 
 ## Quick start examples
 
+    <label class="govuk-c-label " for="file-upload-1">
+      Upload a file
+    </label>
+
+    <input class="govuk-c-file-upload " id="file-upload-1" name="file-upload-1" type="file">
+
+    <label class="govuk-c-label " for="file-upload-2">
+      Upload your photo
+      <span class="govuk-c-label__hint">
+        Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.
+      </span>
+    </label>
+
+    <input class="govuk-c-file-upload " id="file-upload-2" name="file-upload-2" type="file">
+
+    <label class="govuk-c-label " for="file-upload-3">
+      Upload a file
+      <span class="govuk-c-error-message ">Error message goes here</span>
+    </label>
+
+    <input class="govuk-c-file-upload govuk-c-file-upload--error" id="file-upload-3" name="file-upload-3" type="file">
+
 ## If you are using Nunjucks
 
 To use a macro, follow the below code examples:
+
+    {% from "file-upload/macro.njk" import govukFileUpload %}
+
+    {{ govukFileUpload(
+      classes='',
+      labelText='Upload a file',
+      errorMessage='',
+      id='file-upload-1',
+      name='file-upload-1'
+      )
+    }}
+
+    {{ govukFileUpload(
+      classes='',
+      labelText='Upload your photo',
+      hintText='Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.',
+      errorMessage='',
+      id='file-upload-2',
+      name='file-upload-2'
+      )
+    }}
+
+    {{ govukFileUpload(
+      classes='',
+      labelText='Upload a file',
+      hintText='',
+      errorMessage='Error message goes here',
+      id='file-upload-3',
+      name='file-upload-3'
+      )
+    }}
 
 Where the macros take the following arguments
 
 ## Component arguments
 
-<div>| Name | Type | Default | Required | Description |--- |--- |--- |--- |--- | classes | string | | No | Optional additional classes | breadcrumbs | array | | Yes | Breadcrumbs array with title and url keys | title | string | | Yes | Title of the breadcrumb item | url | string | | Yes | Url of the breadcrumb item</div>
+<div>
+
+<table class="govuk-c-table ">
+
+<thead class="govuk-c-table__head">
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header " scope="col">Name</th>
+
+<th class="govuk-c-table__header " scope="col">Type</th>
+
+<th class="govuk-c-table__header " scope="col">Required</th>
+
+<th class="govuk-c-table__header " scope="col">Description</th>
+
+</tr>
+
+</thead>
+
+<tbody class="govuk-c-table__body">
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">classes</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">Optional additional classes</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">labelText</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">Yes</td>
+
+<td class="govuk-c-table__cell ">The label text</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">hintText</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">Optional hint text</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">errorMessage</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">Optional error message</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">id</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">Yes</td>
+
+<td class="govuk-c-table__cell ">The id of the input</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">name</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">Yes</td>
+
+<td class="govuk-c-table__cell ">The name of the input, which is submitted with the form data</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">value</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">Optional initial value of the input</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
 
 ### Setting up Nunjucks views and paths
 
