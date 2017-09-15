@@ -47,11 +47,11 @@
 <h3 class="govuk-u-bold-19">Component default</h2>
 {% if not isReadme %}
 <div>
-{% block componentExample %}
+{%- block componentExample -%}
 {% include "../components/"+ componentName +"/"+ componentName +".njk" ignore missing %}
-{% endblock %}
+{%- endblock -%}
 </div>
-{% endif %}  
+{% endif %}
 <p class="govuk-u-copy-19">
 {% set componentPreviewPath = "/components/" + componentPath + "/preview" %}
 <a href="{% if isReadme %}http://govuk-frontend-review.herokuapp.com{% endif %}{{ componentPreviewPath }}">Preview the {{ componentName}} component.
@@ -60,11 +60,11 @@
 
 <h4 class="govuk-u-copy-19">Markup</h4>
 <pre><code>
-  {{- componentHtmlFile -}}
+{{- componentHtmlFile -}}
 </code></pre>
 <h4 class="govuk-u-copy-19">Macro</h4>
 <pre><code>
-  {{ componentNunjucksFile }}
+{{- componentNunjucksFile -}}
 </code></pre>
 
 
