@@ -18,9 +18,9 @@ More information about when to use phase-tag can be found on [GOV.UK Design Syst
 
 #### Macro
 
-      {% from "phase-tag/macro.njk" import govukPhaseTag %}
+      {%- from "phase-tag/macro.njk" import govukPhaseTag -%}
 
-    {{ govukPhaseTag(classes='', phaseTagText='Alpha') }}
+    {{- govukPhaseTag(classes='', phaseTagText='Alpha') -}}
 
 ## Variants
 
@@ -54,19 +54,19 @@ If you are using Nunjucks,then macros take the following arguments
 
 <div>
 
-<table class="govuk-c-table ">
+<table class="govuk-c-table">
 
 <thead class="govuk-c-table__head">
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header " scope="col">Name</th>
+<th class="govuk-c-table__header" scope="col">Name</th>
 
-<th class="govuk-c-table__header " scope="col">Type</th>
+<th class="govuk-c-table__header" scope="col">Type</th>
 
-<th class="govuk-c-table__header " scope="col">Required</th>
+<th class="govuk-c-table__header" scope="col">Required</th>
 
-<th class="govuk-c-table__header " scope="col">Description</th>
+<th class="govuk-c-table__header" scope="col">Description</th>
 
 </tr>
 

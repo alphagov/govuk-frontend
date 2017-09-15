@@ -20,7 +20,7 @@ More information about when to use error-summary can be found on [GOV.UK Design 
 
       {% from "error-summary/macro.njk" import govukErrorSummary %}
 
-    {{ govukErrorSummary(
+    {{- govukErrorSummary(
       classes='',
       title='Message to alert the user to a problem goes here',
       description='Optional description of the errors and how to correct them',
@@ -35,7 +35,8 @@ More information about when to use error-summary can be found on [GOV.UK Design 
           url: '#example-error-2'
         }
       ]
-    ) }}
+    )
+    -}}
 
 ## Variants
 
@@ -69,19 +70,19 @@ If you are using Nunjucks,then macros take the following arguments
 
 <div>
 
-<table class="govuk-c-table ">
+<table class="govuk-c-table">
 
 <thead class="govuk-c-table__head">
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header " scope="col">Name</th>
+<th class="govuk-c-table__header" scope="col">Name</th>
 
-<th class="govuk-c-table__header " scope="col">Type</th>
+<th class="govuk-c-table__header" scope="col">Type</th>
 
-<th class="govuk-c-table__header " scope="col">Required</th>
+<th class="govuk-c-table__header" scope="col">Required</th>
 
-<th class="govuk-c-table__header " scope="col">Description</th>
+<th class="govuk-c-table__header" scope="col">Description</th>
 
 </tr>
 

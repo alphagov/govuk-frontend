@@ -30,6 +30,17 @@ More information about when to use textarea can be found on [GOV.UK Design Syste
       )
     }}
 
+    {{ govukTextarea(
+      classes='',
+      labelText='National Insurance number',
+      hintText='',
+      errorMessage='',
+      id='textarea-2',
+      name='name-2',
+      rows='10'
+      )
+    }}
+
 ## Variants
 
 ## Dependencies
@@ -62,19 +73,19 @@ If you are using Nunjucks,then macros take the following arguments
 
 <div>
 
-<table class="govuk-c-table ">
+<table class="govuk-c-table">
 
 <thead class="govuk-c-table__head">
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header " scope="col">Name</th>
+<th class="govuk-c-table__header" scope="col">Name</th>
 
-<th class="govuk-c-table__header " scope="col">Type</th>
+<th class="govuk-c-table__header" scope="col">Type</th>
 
-<th class="govuk-c-table__header " scope="col">Required</th>
+<th class="govuk-c-table__header" scope="col">Required</th>
 
-<th class="govuk-c-table__header " scope="col">Description</th>
+<th class="govuk-c-table__header" scope="col">Description</th>
 
 </tr>
 

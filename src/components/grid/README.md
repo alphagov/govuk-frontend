@@ -20,24 +20,24 @@ More information about when to use grid can be found on [GOV.UK Design System](h
 
       {% from "grid/macro.njk" import govukGrid %}
 
-    {{ govukGrid(
+    {{- govukGrid(
       classes='',
       gridItems=[
         { width: 'full' }
       ]
       )
-    }}
+    -}}
 
-    {{ govukGrid(
+    {{- govukGrid(
       classes='',
       gridItems=[
         { width: 'one-half' },
         { width: 'one-half' }
       ]
       )
-    }}
+    -}}
 
-    {{ govukGrid(
+    {{- govukGrid(
       classes='',
       gridItems=[
         { width: 'one-third' },
@@ -45,27 +45,27 @@ More information about when to use grid can be found on [GOV.UK Design System](h
         { width: 'one-third' }
       ]
       )
-    }}
+    -}}
 
-    {{ govukGrid(
+    {{- govukGrid(
       classes='',
       gridItems=[
         { width: 'two-thirds' },
         { width: 'one-third' }
       ]
       )
-    }}
+    -}}
 
-    {{ govukGrid(
+    {{- govukGrid(
       classes='',
       gridItems=[
         { width: 'one-third' },
         { width: 'two-thirds' }
       ]
       )
-    }}
+    -}}
 
-    {{ govukGrid(
+    {{- govukGrid(
       classes='',
       gridItems=[
         { width: 'one-quarter' },
@@ -74,7 +74,7 @@ More information about when to use grid can be found on [GOV.UK Design System](h
         { width: 'one-quarter' }
       ]
       )
-    }}
+    -}}
 
 ## Variants
 
@@ -108,19 +108,19 @@ If you are using Nunjucks,then macros take the following arguments
 
 <div>
 
-<table class="govuk-c-table ">
+<table class="govuk-c-table">
 
 <thead class="govuk-c-table__head">
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header " scope="col">Name</th>
+<th class="govuk-c-table__header" scope="col">Name</th>
 
-<th class="govuk-c-table__header " scope="col">Type</th>
+<th class="govuk-c-table__header" scope="col">Type</th>
 
-<th class="govuk-c-table__header " scope="col">Required</th>
+<th class="govuk-c-table__header" scope="col">Required</th>
 
-<th class="govuk-c-table__header " scope="col">Description</th>
+<th class="govuk-c-table__header" scope="col">Description</th>
 
 </tr>
 

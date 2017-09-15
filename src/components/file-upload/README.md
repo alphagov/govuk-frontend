@@ -20,34 +20,37 @@ More information about when to use file-upload can be found on [GOV.UK Design Sy
 
       {% from "file-upload/macro.njk" import govukFileUpload %}
 
-    {{ govukFileUpload(
-      classes='',
+    {{- govukFileUpload(
+      labelClasses='',
       labelText='Upload a file',
       errorMessage='',
+      classes='',
       id='file-upload-1',
       name='file-upload-1'
       )
-    }}
+    -}}
 
-    {{ govukFileUpload(
-      classes='',
+    {{- govukFileUpload(
+      labelClasses='',
       labelText='Upload your photo',
       hintText='Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.',
       errorMessage='',
+      classes='',
       id='file-upload-2',
       name='file-upload-2'
       )
-    }}
+    -}}
 
-    {{ govukFileUpload(
-      classes='',
+    {{- govukFileUpload(
+      labelClasses='',
       labelText='Upload a file',
       hintText='',
       errorMessage='Error message goes here',
+      classes='',
       id='file-upload-3',
       name='file-upload-3'
       )
-    }}
+    -}}
 
 ## Variants
 
@@ -81,19 +84,19 @@ If you are using Nunjucks,then macros take the following arguments
 
 <div>
 
-<table class="govuk-c-table ">
+<table class="govuk-c-table">
 
 <thead class="govuk-c-table__head">
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header " scope="col">Name</th>
+<th class="govuk-c-table__header" scope="col">Name</th>
 
-<th class="govuk-c-table__header " scope="col">Type</th>
+<th class="govuk-c-table__header" scope="col">Type</th>
 
-<th class="govuk-c-table__header " scope="col">Required</th>
+<th class="govuk-c-table__header" scope="col">Required</th>
 
-<th class="govuk-c-table__header " scope="col">Description</th>
+<th class="govuk-c-table__header" scope="col">Description</th>
 
 </tr>
 

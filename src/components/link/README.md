@@ -25,29 +25,29 @@ More information about when to use link can be found on [GOV.UK Design System](h
 
       {% from "link/macro.njk" import govukLink %}
 
-    {{ govukLink(
+    {{- govukLink(
       classes='govuk-c-link--back',
       linkHref='',
       linkText='Back')
-    }}
+    -}}
 
-    {{ govukLink(
+    {{- govukLink(
       classes='govuk-c-link--muted',
       linkHref='',
       linkText='Is there anything wrong with this page?')
-    }}
+    -}}
 
-    {{ govukLink(
+    {{- govukLink(
       classes='govuk-c-link--download',
       linkHref='',
-      tagText='Download')
-    }}
+      linkText='Download')
+    -}}
 
-    {{ govukLink(
+    {{- govukLink(
       classes='govuk-c-link--skip',
       linkHref='',
       linkText='Skip to main content')
-    }}
+    -}}
 
 ## Variants
 

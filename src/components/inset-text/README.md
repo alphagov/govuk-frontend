@@ -20,14 +20,14 @@ More information about when to use inset-text can be found on [GOV.UK Design Sys
 
       {% from "inset-text/macro.njk" import govukInsetText %}
 
-    {{ govukInsetText(
+    {{- govukInsetText(
       classes='',
       content='<p>
         It can take up to 8 weeks to register a lasting power of attorney if<br>
         there are no mistakes in the application.
       </p>'
       )
-    }}
+    -}}
 
 ## Variants
 
@@ -61,19 +61,19 @@ If you are using Nunjucks,then macros take the following arguments
 
 <div>
 
-<table class="govuk-c-table ">
+<table class="govuk-c-table">
 
 <thead class="govuk-c-table__head">
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header " scope="col">Name</th>
+<th class="govuk-c-table__header" scope="col">Name</th>
 
-<th class="govuk-c-table__header " scope="col">Type</th>
+<th class="govuk-c-table__header" scope="col">Type</th>
 
-<th class="govuk-c-table__header " scope="col">Required</th>
+<th class="govuk-c-table__header" scope="col">Required</th>
 
-<th class="govuk-c-table__header " scope="col">Description</th>
+<th class="govuk-c-table__header" scope="col">Description</th>
 
 </tr>
 

@@ -20,13 +20,13 @@ More information about when to use panel can be found on [GOV.UK Design System](
 
       {% from "panel/macro.njk" import govukPanel %}
 
-    {{ govukPanel(
+    {{- govukPanel(
       classes='',
       title='Application complete',
       content='Your reference number is',
       reference='HDJ2123F'
       )
-    }}
+    -}}
 
 ## Variants
 
@@ -60,19 +60,19 @@ If you are using Nunjucks,then macros take the following arguments
 
 <div>
 
-<table class="govuk-c-table ">
+<table class="govuk-c-table">
 
 <thead class="govuk-c-table__head">
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header " scope="col">Name</th>
+<th class="govuk-c-table__header" scope="col">Name</th>
 
-<th class="govuk-c-table__header " scope="col">Type</th>
+<th class="govuk-c-table__header" scope="col">Type</th>
 
-<th class="govuk-c-table__header " scope="col">Required</th>
+<th class="govuk-c-table__header" scope="col">Required</th>
 
-<th class="govuk-c-table__header " scope="col">Description</th>
+<th class="govuk-c-table__header" scope="col">Description</th>
 
 </tr>
 

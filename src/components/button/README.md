@@ -32,7 +32,7 @@ Buttons are configured to perform an action and they can have a different look. 
 
 #### Markup
 
-    <input class="govuk-c-button  govuk-c-button--disabled  " value="Save and continue" disabled="disabled" aria-disabled="true">
+    <input class="govuk-c-button govuk-c-button--disabled" value="Save and continue" disabled="disabled" aria-disabled="true">
 
 #### Macro
 
@@ -46,8 +46,7 @@ Buttons are configured to perform an action and they can have a different look. 
 
 #### Markup
 
-    <a class="govuk-c-button  govuk-c-button--start  " href="/" role="button">
-    Start now</a>
+    <a class="govuk-c-button govuk-c-button--start" href="/" role="button">Start now</a>
 
 #### Macro
 
@@ -87,19 +86,19 @@ If you are using Nunjucks,then macros take the following arguments
 
 <div>
 
-<table class="govuk-c-table ">
+<table class="govuk-c-table">
 
 <thead class="govuk-c-table__head">
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header " scope="col">Name</th>
+<th class="govuk-c-table__header" scope="col">Name</th>
 
-<th class="govuk-c-table__header " scope="col">Type</th>
+<th class="govuk-c-table__header" scope="col">Type</th>
 
-<th class="govuk-c-table__header " scope="col">Required</th>
+<th class="govuk-c-table__header" scope="col">Required</th>
 
-<th class="govuk-c-table__header " scope="col">Description</th>
+<th class="govuk-c-table__header" scope="col">Description</th>
 
 </tr>
 

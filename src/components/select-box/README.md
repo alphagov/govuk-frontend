@@ -20,7 +20,7 @@ More information about when to use select-box can be found on [GOV.UK Design Sys
 
       {% from "select-box/macro.njk" import govukSelectBox %}
 
-    {{ govukSelectBox(
+    {{- govukSelectBox(
       classes='',
       id='select-box-1',
       name='select-box-1',
@@ -38,9 +38,10 @@ More information about when to use select-box can be found on [GOV.UK Design Sys
           label: 'GOV.UK frontend option 3'
         }
       ]
-    )}}
+    )
+    -}}
 
-    {{ govukSelectBox(
+    {{- govukSelectBox(
       hasLabelWithText='Label for select box',
       labelClasses='',
       classes='',
@@ -61,7 +62,8 @@ More information about when to use select-box can be found on [GOV.UK Design Sys
           label: 'GOV.UK frontend option c'
         }
       ]
-    )}}
+    )
+    -}}
 
 ## Variants
 
@@ -95,19 +97,19 @@ If you are using Nunjucks,then macros take the following arguments
 
 <div>
 
-<table class="govuk-c-table ">
+<table class="govuk-c-table">
 
 <thead class="govuk-c-table__head">
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header " scope="col">Name</th>
+<th class="govuk-c-table__header" scope="col">Name</th>
 
-<th class="govuk-c-table__header " scope="col">Type</th>
+<th class="govuk-c-table__header" scope="col">Type</th>
 
-<th class="govuk-c-table__header " scope="col">Required</th>
+<th class="govuk-c-table__header" scope="col">Required</th>
 
-<th class="govuk-c-table__header " scope="col">Description</th>
+<th class="govuk-c-table__header" scope="col">Description</th>
 
 </tr>
 
