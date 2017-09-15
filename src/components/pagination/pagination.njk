@@ -1,6 +1,6 @@
-{% from "pagination/macro.njk" import govukPagination %}
+{% from "pagination/macro.njk" import govukPagination -%}
 
-{{ govukPagination(
+{{- govukPagination(
   classes='',
   previousPage=[
    {
@@ -10,9 +10,9 @@
     }
   ]
   )
-}}
+-}}
 
-{{ govukPagination(
+{{- govukPagination(
   classes='',
   nextPage=[
    {
@@ -22,9 +22,9 @@
     }
   ]
   )
-}}
+-}}
 
-{{ govukPagination(
+{{- govukPagination(
   classes='',
   previousPage=[
    {
@@ -41,9 +41,9 @@
     }
   ]
   )
-}}
+-}}
 
-{{ govukPagination(
+{{- govukPagination(
   classes='',
   previousPage=[
    {
@@ -58,4 +58,4 @@
     }
   ]
   )
-}}
+-}}
