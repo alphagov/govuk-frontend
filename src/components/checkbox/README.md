@@ -4,65 +4,21 @@
 
 Breadcrumb navigation, showing page hierarchy.
 
-[Preview the checkbox component.](http://govuk-frontend-review.herokuapp.com/components/checkbox/preview)
-
 ## Guidance
 
 More information about when to use checkbox can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/checkbox "Link to read guidance on the use of checkbox on Gov.uk Design system website")
 
 ## Quick start examples
 
-      <div class="govuk-c-checkbox ">
-        <input class="govuk-c-checkbox__input" id="waste-type-1" name="waste-types" type="checkbox" value="waste-animal"   >
-        <label class="govuk-c-checkbox__label" for="waste-type-1">Waste from animal carcasses</label>
-      </div>
+### Component default
 
-      <div class="govuk-c-checkbox ">
-        <input class="govuk-c-checkbox__input" id="waste-type-2" name="waste-types" type="checkbox" value="waste-mines"   >
-        <label class="govuk-c-checkbox__label" for="waste-type-2">Waste from mines or quarries</label>
-      </div>
+[Preview the checkbox component.](http://govuk-frontend-review.herokuapp.com/components/checkbox/preview)
 
-      <div class="govuk-c-checkbox ">
-        <input class="govuk-c-checkbox__input" id="waste-type-3" name="waste-types" type="checkbox" value="waste-farm"  checked >
-        <label class="govuk-c-checkbox__label" for="waste-type-3">Farm or agricultural waste</label>
-      </div>
+#### Markup
 
-      <div class="govuk-c-checkbox ">
-        <input class="govuk-c-checkbox__input" id="waste-type-4" name="waste-types" type="checkbox" value="waste-disabled"   disabled>
-        <label class="govuk-c-checkbox__label" for="waste-type-4">Disabled checkbox option</label>
-      </div>
+#### Macro
 
-## Variants
-
-## Dependencies
-
-To consume the checkbox component you must be running npm version 5 or above.
-
-## Installation
-
-    npm install --save @govuk-frontend/checkbox
-
-## Requirements
-
-### Build tool configuration
-
-When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
-
-      .pipe(sass({
-          includePaths: 'node_modules/'
-      }))
-
-### Static asset path configuration
-
-To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
-
-    app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
-
-## If you are using Nunjucks
-
-To use a macro, follow the below code example:
-
-    {% from 'checkbox/macro.njk' import govukCheckbox %}
+      {% from 'checkbox/macro.njk' import govukCheckbox %}
 
     {{ govukCheckbox(
       classes='',
@@ -94,9 +50,35 @@ To use a macro, follow the below code example:
       ]
     ) }}
 
-Where the macros take the following arguments
+## Variants
+
+## Dependencies
+
+To consume the checkbox component you must be running npm version 5 or above.
+
+## Installation
+
+    npm install --save @govuk-frontend/checkbox
+
+## Requirements
+
+### Build tool configuration
+
+When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
+
+      .pipe(sass({
+          includePaths: 'node_modules/'
+      }))
+
+### Static asset path configuration
+
+To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
+
+    app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
 ## Component arguments
+
+If you are using Nunjucks,then macros take the following arguments
 
 <div>
 

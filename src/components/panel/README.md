@@ -4,26 +4,29 @@
 
 The confirmation panel has a turquoise background and white text. Used for transaction end pages, and Bank Holidays.
 
-[Preview the panel component.](http://govuk-frontend-review.herokuapp.com/components/panel/preview)
-
 ## Guidance
 
 More information about when to use panel can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/panel "Link to read guidance on the use of panel on Gov.uk Design system website")
 
 ## Quick start examples
 
-    <div class="govuk-c-panel govuk-c-panel--confirmation ">
-      <h2 class="govuk-c-panel__title">
-        Application complete
-      </h2>
-      <div class="govuk-c-panel__body">
-        Your reference number is
+### Component default
 
-        <br>
-        <strong>HDJ2123F</strong>
+[Preview the panel component.](http://govuk-frontend-review.herokuapp.com/components/panel/preview)
 
-      </div>
-    </div>
+#### Markup
+
+#### Macro
+
+      {% from "panel/macro.njk" import govukPanel %}
+
+    {{ govukPanel(
+      classes='',
+      title='Application complete',
+      content='Your reference number is',
+      reference='HDJ2123F'
+      )
+    }}
 
 ## Variants
 
@@ -51,23 +54,9 @@ To show the button image you need to configure your app to show these assets. Be
 
     app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
-## If you are using Nunjucks
-
-To use a macro, follow the below code example:
-
-    {% from "panel/macro.njk" import govukPanel %}
-
-    {{ govukPanel(
-      classes='',
-      title='Application complete',
-      content='Your reference number is',
-      reference='HDJ2123F'
-      )
-    }}
-
-Where the macros take the following arguments
-
 ## Component arguments
+
+If you are using Nunjucks,then macros take the following arguments
 
 <div>
 

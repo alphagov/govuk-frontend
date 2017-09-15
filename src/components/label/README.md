@@ -4,70 +4,21 @@
 
 Use labels for all form fields.
 
-[Preview the label component.](http://govuk-frontend-review.herokuapp.com/components/label/preview)
-
 ## Guidance
 
 More information about when to use label can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/label "Link to read guidance on the use of label on Gov.uk Design system website")
 
 ## Quick start examples
 
-    <label class="govuk-c-label " for="">
-      National Insurance number
-        <span class="govuk-c-label__hint">It’s on your National Insurance card, benefit letter, payslip or P60.
-        For example, ‘QQ 12 34 56 C’.</span>
+### Component default
 
-    </label>
+[Preview the label component.](http://govuk-frontend-review.herokuapp.com/components/label/preview)
 
-    <label class="govuk-c-label  govuk-c-label--bold " for="">
-      National Insurance number
-        <span class="govuk-c-label__hint">It’s on your National Insurance card, benefit letter, payslip or P60.
-        For example, ‘QQ 12 34 56 C’.</span>
+#### Markup
 
-    </label>
+#### Macro
 
-    <label class="govuk-c-label " for="">
-      National Insurance number
-        <span class="govuk-c-label__hint">It’s on your National Insurance card, benefit letter, payslip or P60.
-        For example, ‘QQ 12 34 56 C’.</span>
-
-        <span class="govuk-c-error-message ">
-      Error message goes here
-    </span>
-
-    </label>
-
-## Variants
-
-## Dependencies
-
-To consume the label component you must be running npm version 5 or above.
-
-## Installation
-
-    npm install --save @govuk-frontend/label
-
-## Requirements
-
-### Build tool configuration
-
-When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
-
-      .pipe(sass({
-          includePaths: 'node_modules/'
-      }))
-
-### Static asset path configuration
-
-To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
-
-    app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
-
-## If you are using Nunjucks
-
-To use a macro, follow the below code example:
-
-    {% from "label/macro.njk" import govukLabel %}
+      {% from "label/macro.njk" import govukLabel %}
 
     {{ govukLabel(
       classes='',
@@ -97,9 +48,35 @@ To use a macro, follow the below code example:
       )
     }}
 
-Where the macros take the following arguments
+## Variants
+
+## Dependencies
+
+To consume the label component you must be running npm version 5 or above.
+
+## Installation
+
+    npm install --save @govuk-frontend/label
+
+## Requirements
+
+### Build tool configuration
+
+When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
+
+      .pipe(sass({
+          includePaths: 'node_modules/'
+      }))
+
+### Static asset path configuration
+
+To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
+
+    app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
 ## Component arguments
+
+If you are using Nunjucks,then macros take the following arguments
 
 <div>
 

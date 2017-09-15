@@ -4,125 +4,21 @@
 
 Grid row with grid items.
 
-[Preview the grid component.](http://govuk-frontend-review.herokuapp.com/components/grid/preview)
-
 ## Guidance
 
 More information about when to use grid can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/grid "Link to read guidance on the use of grid on Gov.uk Design system website")
 
 ## Quick start examples
 
-    <div class="govuk-c-grid ">
+### Component default
 
-      <div class="govuk-c-grid__item govuk-c-grid__item--full">
+[Preview the grid component.](http://govuk-frontend-review.herokuapp.com/components/grid/preview)
 
-      </div>
+#### Markup
 
-    </div>
+#### Macro
 
-    <div class="govuk-c-grid ">
-
-      <div class="govuk-c-grid__item govuk-c-grid__item--one-half">
-
-      </div>
-
-      <div class="govuk-c-grid__item govuk-c-grid__item--one-half">
-
-      </div>
-
-    </div>
-
-    <div class="govuk-c-grid ">
-
-      <div class="govuk-c-grid__item govuk-c-grid__item--one-third">
-
-      </div>
-
-      <div class="govuk-c-grid__item govuk-c-grid__item--one-third">
-
-      </div>
-
-      <div class="govuk-c-grid__item govuk-c-grid__item--one-third">
-
-      </div>
-
-    </div>
-
-    <div class="govuk-c-grid ">
-
-      <div class="govuk-c-grid__item govuk-c-grid__item--two-thirds">
-
-      </div>
-
-      <div class="govuk-c-grid__item govuk-c-grid__item--one-third">
-
-      </div>
-
-    </div>
-
-    <div class="govuk-c-grid ">
-
-      <div class="govuk-c-grid__item govuk-c-grid__item--one-third">
-
-      </div>
-
-      <div class="govuk-c-grid__item govuk-c-grid__item--two-thirds">
-
-      </div>
-
-    </div>
-
-    <div class="govuk-c-grid ">
-
-      <div class="govuk-c-grid__item govuk-c-grid__item--one-quarter">
-
-      </div>
-
-      <div class="govuk-c-grid__item govuk-c-grid__item--one-quarter">
-
-      </div>
-
-      <div class="govuk-c-grid__item govuk-c-grid__item--one-quarter">
-
-      </div>
-
-      <div class="govuk-c-grid__item govuk-c-grid__item--one-quarter">
-
-      </div>
-
-    </div>
-
-## Variants
-
-## Dependencies
-
-To consume the grid component you must be running npm version 5 or above.
-
-## Installation
-
-    npm install --save @govuk-frontend/grid
-
-## Requirements
-
-### Build tool configuration
-
-When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
-
-      .pipe(sass({
-          includePaths: 'node_modules/'
-      }))
-
-### Static asset path configuration
-
-To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
-
-    app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
-
-## If you are using Nunjucks
-
-To use a macro, follow the below code example:
-
-    {% from "grid/macro.njk" import govukGrid %}
+      {% from "grid/macro.njk" import govukGrid %}
 
     {{ govukGrid(
       classes='',
@@ -180,9 +76,35 @@ To use a macro, follow the below code example:
       )
     }}
 
-Where the macros take the following arguments
+## Variants
+
+## Dependencies
+
+To consume the grid component you must be running npm version 5 or above.
+
+## Installation
+
+    npm install --save @govuk-frontend/grid
+
+## Requirements
+
+### Build tool configuration
+
+When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
+
+      .pipe(sass({
+          includePaths: 'node_modules/'
+      }))
+
+### Static asset path configuration
+
+To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
+
+    app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
 ## Component arguments
+
+If you are using Nunjucks,then macros take the following arguments
 
 <div>
 

@@ -4,70 +4,21 @@
 
 The HTML `<select>` element represents a control that provides a menu of options.
 
-[Preview the select-box component.](http://govuk-frontend-review.herokuapp.com/components/select-box/preview)
-
 ## Guidance
 
 More information about when to use select-box can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/select-box "Link to read guidance on the use of select-box on Gov.uk Design system website")
 
 ## Quick start examples
 
-    <select class="govuk-c-select-box " id="select-box-1" name="select-box-1">
+### Component default
 
-      <option value="1">GOV.UK frontend option 1</option>
+[Preview the select-box component.](http://govuk-frontend-review.herokuapp.com/components/select-box/preview)
 
-      <option value="2">GOV.UK frontend option 2</option>
+#### Markup
 
-      <option value="3">GOV.UK frontend option 3</option>
+#### Macro
 
-    </select>
-
-    <label class="govuk-c-label " for="select-box-2">
-      Label for select box
-
-    </label>
-
-    <select class="govuk-c-select-box " id="select-box-2" name="select-box-2">
-
-      <option value="a">GOV.UK frontend option a</option>
-
-      <option value="b"selected>GOV.UK frontend option b</option>
-
-      <option value="c">GOV.UK frontend option c</option>
-
-    </select>
-
-## Variants
-
-## Dependencies
-
-To consume the select-box component you must be running npm version 5 or above.
-
-## Installation
-
-    npm install --save @govuk-frontend/select-box
-
-## Requirements
-
-### Build tool configuration
-
-When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
-
-      .pipe(sass({
-          includePaths: 'node_modules/'
-      }))
-
-### Static asset path configuration
-
-To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
-
-    app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
-
-## If you are using Nunjucks
-
-To use a macro, follow the below code example:
-
-    {% from "select-box/macro.njk" import govukSelectBox %}
+      {% from "select-box/macro.njk" import govukSelectBox %}
 
     {{ govukSelectBox(
       classes='',
@@ -112,9 +63,35 @@ To use a macro, follow the below code example:
       ]
     )}}
 
-Where the macros take the following arguments
+## Variants
+
+## Dependencies
+
+To consume the select-box component you must be running npm version 5 or above.
+
+## Installation
+
+    npm install --save @govuk-frontend/select-box
+
+## Requirements
+
+### Build tool configuration
+
+When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
+
+      .pipe(sass({
+          includePaths: 'node_modules/'
+      }))
+
+### Static asset path configuration
+
+To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
+
+    app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
 ## Component arguments
+
+If you are using Nunjucks,then macros take the following arguments
 
 <div>
 

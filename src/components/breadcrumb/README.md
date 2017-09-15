@@ -4,25 +4,29 @@
 
 A breadcrumb is a GOV.UK element that helps users to understand where they are within the site and move between levels.
 
-[Preview the breadcrumb component.](http://govuk-frontend-review.herokuapp.com/components/breadcrumb/preview)
-
 ## Guidance
 
 More information about when to use breadcrumb can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/breadcrumb "Link to read guidance on the use of breadcrumb on Gov.uk Design system website")
 
 ## Quick start examples
 
-    <div class="govuk-c-breadcrumb ">
-      <ol class="govuk-c-breadcrumb__list">
+### Component default
 
-          <li class="govuk-c-breadcrumb__list-item">
-            <a class="govuk-c-breadcrumb__link" href="/">Home</a>
-          </li>
+[Preview the breadcrumb component.](http://govuk-frontend-review.herokuapp.com/components/breadcrumb/preview)
 
-          <li class="govuk-c-breadcrumb__list-item" aria-current="page">Current page</li>
+#### Markup
 
-      </ol>
-    </div>
+#### Macro
+
+      {% from "breadcrumb/macro.njk" import govukBreadcrumb %}
+
+    {{ govukBreadcrumb(
+      classes='',
+      [
+        { title: 'Home', url: '/' },
+        { title: 'Current page' }
+      ]
+    ) }}
 
 ## Variants
 
@@ -52,23 +56,9 @@ To show the button image you need to configure your app to show these assets. Be
 
     app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
-## If you are using Nunjucks
-
-To use a macro, follow the below code example:
-
-    {% from "breadcrumb/macro.njk" import govukBreadcrumb %}
-
-    {{ govukBreadcrumb(
-      classes='',
-      [
-        { title: 'Home', url: '/' },
-        { title: 'Current page' }
-      ]
-    ) }}
-
-Where the macros take the following arguments
-
 ## Component arguments
+
+If you are using Nunjucks,then macros take the following arguments
 
 <div>
 

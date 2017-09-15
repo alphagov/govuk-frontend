@@ -4,23 +4,25 @@
 
 A banner that indicates content is in alpha or beta phase with a description.
 
-[Preview the phase-banner component.](http://govuk-frontend-review.herokuapp.com/components/phase-banner/preview)
-
 ## Guidance
 
 More information about when to use phase-banner can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/phase-banner "Link to read guidance on the use of phase-banner on Gov.uk Design system website")
 
 ## Quick start examples
 
-    <div class="govuk-c-phase-banner ">
-      <p class="govuk-c-phase-banner__content">
-        <strong class="govuk-c-phase-tag "> BETA</strong>
+### Component default
 
-        <span class="govuk-c-phase-banner__text">
-          This is a new service – your <a href="#">feedback</a> will help us to improve it.
-        </span>
-      </p>
-    </div>
+[Preview the phase-banner component.](http://govuk-frontend-review.herokuapp.com/components/phase-banner/preview)
+
+#### Markup
+
+#### Macro
+
+      {% from "phase-banner/macro.njk" import govukPhaseBanner %}
+    {{ govukPhaseBanner(
+      phaseBannerText='This is a new service – your <a href="#">feedback</a> will help us to improve it.',
+      phaseTagText='BETA')
+    }}
 
 ## Variants
 
@@ -48,19 +50,9 @@ To show the button image you need to configure your app to show these assets. Be
 
     app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
-## If you are using Nunjucks
-
-To use a macro, follow the below code example:
-
-    {% from "phase-banner/macro.njk" import govukPhaseBanner %}
-    {{ govukPhaseBanner(
-      phaseBannerText='This is a new service – your <a href="#">feedback</a> will help us to improve it.',
-      phaseTagText='BETA')
-    }}
-
-Where the macros take the following arguments
-
 ## Component arguments
+
+If you are using Nunjucks,then macros take the following arguments
 
 <div>
 

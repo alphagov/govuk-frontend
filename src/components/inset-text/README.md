@@ -4,20 +4,30 @@
 
 Use bordered inset text to draw attention to important content on the page.
 
-[Preview the inset-text component.](http://govuk-frontend-review.herokuapp.com/components/inset-text/preview)
-
 ## Guidance
 
 More information about when to use inset-text can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/inset-text "Link to read guidance on the use of inset-text on Gov.uk Design system website")
 
 ## Quick start examples
 
-      <div class="govuk-c-inset-text ">
-      <p>
+### Component default
+
+[Preview the inset-text component.](http://govuk-frontend-review.herokuapp.com/components/inset-text/preview)
+
+#### Markup
+
+#### Macro
+
+      {% from "inset-text/macro.njk" import govukInsetText %}
+
+    {{ govukInsetText(
+      classes='',
+      content='<p>
         It can take up to 8 weeks to register a lasting power of attorney if<br>
         there are no mistakes in the application.
-      </p>
-    </div>
+      </p>'
+      )
+    }}
 
 ## Variants
 
@@ -45,24 +55,9 @@ To show the button image you need to configure your app to show these assets. Be
 
     app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
-## If you are using Nunjucks
-
-To use a macro, follow the below code example:
-
-    {% from "inset-text/macro.njk" import govukInsetText %}
-
-    {{ govukInsetText(
-      classes='',
-      content='<p>
-        It can take up to 8 weeks to register a lasting power of attorney if<br>
-        there are no mistakes in the application.
-      </p>'
-      )
-    }}
-
-Where the macros take the following arguments
-
 ## Component arguments
+
+If you are using Nunjucks,then macros take the following arguments
 
 <div>
 

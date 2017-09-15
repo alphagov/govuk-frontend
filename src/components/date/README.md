@@ -4,211 +4,21 @@
 
 A component for entering dates, for example - date of birth.
 
-[Preview the date component.](http://govuk-frontend-review.herokuapp.com/components/date/preview)
-
 ## Guidance
 
 More information about when to use date can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/date "Link to read guidance on the use of date on Gov.uk Design system website")
 
 ## Quick start examples
 
-    <fieldset class="govuk-c-fieldset ">
+### Component default
 
-      <legend class="govuk-c-fieldset__legend">
-        What is your date of birth?
+[Preview the date component.](http://govuk-frontend-review.herokuapp.com/components/date/preview)
 
-        <span class="govuk-c-fieldset__hint">For example, 31 3 1980</span>
+#### Markup
 
-      </legend>
+#### Macro
 
-    <div class="govuk-c-date ">
-
-      <div class="govuk-c-date__item govuk-c-date__item--day">
-        <label class="govuk-c-label govuk-c-date__label" for="dob-day">Day</label>
-        <input class="govuk-c-input govuk-c-date__input " id="dob-day" name="dob-day" type="number">
-      </div>
-
-      <div class="govuk-c-date__item govuk-c-date__item--month">
-        <label class="govuk-c-label govuk-c-date__label" for="dob-month">Month</label>
-        <input class="govuk-c-input govuk-c-date__input " id="dob-month" name="dob-month" type="number">
-      </div>
-
-      <div class="govuk-c-date__item govuk-c-date__item--year">
-        <label class="govuk-c-label govuk-c-date__label" for="dob-year">Year</label>
-        <input class="govuk-c-input govuk-c-date__input " id="dob-year" name="dob-year" type="number">
-      </div>
-
-    </div>
-
-    </fieldset>
-
-    <fieldset class="govuk-c-fieldset ">
-
-      <legend class="govuk-c-fieldset__legend">
-        What is your date of birth?
-
-        <span class="govuk-c-fieldset__hint">For example, 31 3 1980</span>
-
-          <span class="govuk-c-error-message ">
-      Error message goes here
-    </span>
-
-      </legend>
-
-    <div class="govuk-c-date ">
-
-      <div class="govuk-c-date__item govuk-c-date__item--day">
-        <label class="govuk-c-label govuk-c-date__label" for="dob-day">Day</label>
-        <input class="govuk-c-input govuk-c-date__input govuk-c-input--error" id="dob-day" name="dob-day" type="number">
-      </div>
-
-      <div class="govuk-c-date__item govuk-c-date__item--month">
-        <label class="govuk-c-label govuk-c-date__label" for="dob-month">Month</label>
-        <input class="govuk-c-input govuk-c-date__input govuk-c-input--error" id="dob-month" name="dob-month" type="number">
-      </div>
-
-      <div class="govuk-c-date__item govuk-c-date__item--year">
-        <label class="govuk-c-label govuk-c-date__label" for="dob-year">Year</label>
-        <input class="govuk-c-input govuk-c-date__input govuk-c-input--error" id="dob-year" name="dob-year" type="number">
-      </div>
-
-    </div>
-
-    </fieldset>
-
-    <fieldset class="govuk-c-fieldset ">
-
-      <legend class="govuk-c-fieldset__legend">
-        What is your date of birth?
-
-        <span class="govuk-c-fieldset__hint">For example, 31 3 1980</span>
-
-          <span class="govuk-c-error-message ">
-      Error message goes here
-    </span>
-
-      </legend>
-
-    <div class="govuk-c-date ">
-
-      <div class="govuk-c-date__item govuk-c-date__item--day">
-        <label class="govuk-c-label govuk-c-date__label" for="dob-day-error-day">Day</label>
-        <input class="govuk-c-input govuk-c-date__input govuk-c-input--error" id="dob-day-error-day" name="dob-day-error-day" type="number">
-      </div>
-
-      <div class="govuk-c-date__item govuk-c-date__item--month">
-        <label class="govuk-c-label govuk-c-date__label" for="dob-day-error-month">Month</label>
-        <input class="govuk-c-input govuk-c-date__input " id="dob-day-error-month" name="dob-day-error-month" type="number">
-      </div>
-
-      <div class="govuk-c-date__item govuk-c-date__item--year">
-        <label class="govuk-c-label govuk-c-date__label" for="dob-day-error-year">Year</label>
-        <input class="govuk-c-input govuk-c-date__input " id="dob-day-error-year" name="dob-day-error-year" type="number">
-      </div>
-
-    </div>
-
-    </fieldset>
-
-    <fieldset class="govuk-c-fieldset ">
-
-      <legend class="govuk-c-fieldset__legend">
-        What is your date of birth?
-
-        <span class="govuk-c-fieldset__hint">For example, 31 3 1980</span>
-
-          <span class="govuk-c-error-message ">
-      Error message goes here
-    </span>
-
-      </legend>
-
-    <div class="govuk-c-date ">
-
-      <div class="govuk-c-date__item govuk-c-date__item--day">
-        <label class="govuk-c-label govuk-c-date__label" for="dob-month-error-day">Day</label>
-        <input class="govuk-c-input govuk-c-date__input " id="dob-month-error-day" name="dob-month-error-day" type="number">
-      </div>
-
-      <div class="govuk-c-date__item govuk-c-date__item--month">
-        <label class="govuk-c-label govuk-c-date__label" for="dob-month-error-month">Month</label>
-        <input class="govuk-c-input govuk-c-date__input govuk-c-input--error" id="dob-month-error-month" name="dob-month-error-month" type="number">
-      </div>
-
-      <div class="govuk-c-date__item govuk-c-date__item--year">
-        <label class="govuk-c-label govuk-c-date__label" for="dob-month-error-year">Year</label>
-        <input class="govuk-c-input govuk-c-date__input " id="dob-month-error-year" name="dob-month-error-year" type="number">
-      </div>
-
-    </div>
-
-    </fieldset>
-
-    <fieldset class="govuk-c-fieldset ">
-
-      <legend class="govuk-c-fieldset__legend">
-        What is your date of birth?
-
-        <span class="govuk-c-fieldset__hint">For example, 31 3 1980</span>
-
-          <span class="govuk-c-error-message ">
-      Error message goes here
-    </span>
-
-      </legend>
-
-    <div class="govuk-c-date ">
-
-      <div class="govuk-c-date__item govuk-c-date__item--day">
-        <label class="govuk-c-label govuk-c-date__label" for="dob-year-error-day">Day</label>
-        <input class="govuk-c-input govuk-c-date__input " id="dob-year-error-day" name="dob-year-error-day" type="number">
-      </div>
-
-      <div class="govuk-c-date__item govuk-c-date__item--month">
-        <label class="govuk-c-label govuk-c-date__label" for="dob-year-error-month">Month</label>
-        <input class="govuk-c-input govuk-c-date__input " id="dob-year-error-month" name="dob-year-error-month" type="number">
-      </div>
-
-      <div class="govuk-c-date__item govuk-c-date__item--year">
-        <label class="govuk-c-label govuk-c-date__label" for="dob-year-error-year">Year</label>
-        <input class="govuk-c-input govuk-c-date__input govuk-c-input--error" id="dob-year-error-year" name="dob-year-error-year" type="number">
-      </div>
-
-    </div>
-
-    </fieldset>
-
-## Variants
-
-## Dependencies
-
-To consume the date component you must be running npm version 5 or above.
-
-## Installation
-
-    npm install --save @govuk-frontend/date
-
-## Requirements
-
-### Build tool configuration
-
-When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
-
-      .pipe(sass({
-          includePaths: 'node_modules/'
-      }))
-
-### Static asset path configuration
-
-To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
-
-    app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
-
-## If you are using Nunjucks
-
-To use a macro, follow the below code example:
-
-    {% from "date/macro.njk" import govukDate %}
+      {% from "date/macro.njk" import govukDate %}
 
     {{ govukDate(
       fieldsetClasses='',
@@ -330,9 +140,35 @@ To use a macro, follow the below code example:
       )
     }}
 
-Where the macros take the following arguments
+## Variants
+
+## Dependencies
+
+To consume the date component you must be running npm version 5 or above.
+
+## Installation
+
+    npm install --save @govuk-frontend/date
+
+## Requirements
+
+### Build tool configuration
+
+When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
+
+      .pipe(sass({
+          includePaths: 'node_modules/'
+      }))
+
+### Static asset path configuration
+
+To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
+
+    app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
 ## Component arguments
+
+If you are using Nunjucks,then macros take the following arguments
 
 <div>
 

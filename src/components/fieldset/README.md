@@ -4,28 +4,29 @@
 
 The fieldset element is used to group several controls within a web form. The legend element represents a caption for the content of its parent fieldset.
 
-[Preview the fieldset component.](http://govuk-frontend-review.herokuapp.com/components/fieldset/preview)
-
 ## Guidance
 
 More information about when to use fieldset can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/fieldset "Link to read guidance on the use of fieldset on Gov.uk Design system website")
 
 ## Quick start examples
 
-    <fieldset class="govuk-c-fieldset ">
+### Component default
 
-      <legend class="govuk-c-fieldset__legend">
-        Legend text goes here
+[Preview the fieldset component.](http://govuk-frontend-review.herokuapp.com/components/fieldset/preview)
 
-        <span class="govuk-c-fieldset__hint">Legend hint text goes here</span>
+#### Markup
 
-          <span class="govuk-c-error-message ">
-      Error message goes here
-    </span>
+#### Macro
 
-      </legend>
+      {% from "fieldset/macro.njk" import govukFieldset %}
 
-    </fieldset>
+    {{ govukFieldset(
+      classes='',
+      text='Legend text goes here',
+      hintText='Legend hint text goes here',
+      errorMessage='Error message goes here'
+      )
+    }}
 
 ## Variants
 
@@ -53,23 +54,9 @@ To show the button image you need to configure your app to show these assets. Be
 
     app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
-## If you are using Nunjucks
-
-To use a macro, follow the below code example:
-
-    {% from "fieldset/macro.njk" import govukFieldset %}
-
-    {{ govukFieldset(
-      classes='',
-      text='Legend text goes here',
-      hintText='Legend hint text goes here',
-      errorMessage='Error message goes here'
-      )
-    }}
-
-Where the macros take the following arguments
-
 ## Component arguments
+
+If you are using Nunjucks,then macros take the following arguments
 
 <div>
 

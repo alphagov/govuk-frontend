@@ -4,49 +4,38 @@
 
 Component to show an error summary box - used at the top of the page, to summarise validation errors.
 
-[Preview the error-summary component.](http://govuk-frontend-review.herokuapp.com/components/error-summary/preview)
-
 ## Guidance
 
 More information about when to use error-summary can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/error-summary "Link to read guidance on the use of error-summary on Gov.uk Design system website")
 
 ## Quick start examples
 
-    <div class="govuk-c-error-summary " aria-labelledby="error-summary-title" role="alert" tabindex="-1">
+### Component default
 
-      <h2 class="govuk-c-error-summary__title" id="error-summary-title">
-        Message to alert the user to a problem goes here
-      </h2>
+[Preview the error-summary component.](http://govuk-frontend-review.herokuapp.com/components/error-summary/preview)
 
-      <div class="govuk-c-error-summary__body">
+#### Markup
 
-        <p>
-          Optional description of the errors and how to correct them
-        </p>
+#### Macro
 
-    <ul class="govuk-c-list  govuk-c-error-summary__list">
+      {% from "error-summary/macro.njk" import govukErrorSummary %}
 
-      <li>
-
-          <a href="#example-error-1 ">
-            Descriptive link to the question with an error
-          </a>
-
-      </li>
-
-      <li>
-
-          <a href="#example-error-2 ">
-            Descriptive link to the question with an error
-          </a>
-
-      </li>
-
-    </ul>
-
-      </div>
-
-    </div>
+    {{ govukErrorSummary(
+      classes='',
+      title='Message to alert the user to a problem goes here',
+      description='Optional description of the errors and how to correct them',
+      listClasses='',
+      listItems=[
+        {
+          text: 'Descriptive link to the question with an error',
+          url: '#example-error-1'
+        },
+        {
+          text: 'Descriptive link to the question with an error',
+          url: '#example-error-2'
+        }
+      ]
+    ) }}
 
 ## Variants
 
@@ -74,32 +63,9 @@ To show the button image you need to configure your app to show these assets. Be
 
     app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
-## If you are using Nunjucks
-
-To use a macro, follow the below code example:
-
-    {% from "error-summary/macro.njk" import govukErrorSummary %}
-
-    {{ govukErrorSummary(
-      classes='',
-      title='Message to alert the user to a problem goes here',
-      description='Optional description of the errors and how to correct them',
-      listClasses='',
-      listItems=[
-        {
-          text: 'Descriptive link to the question with an error',
-          url: '#example-error-1'
-        },
-        {
-          text: 'Descriptive link to the question with an error',
-          url: '#example-error-2'
-        }
-      ]
-    ) }}
-
-Where the macros take the following arguments
-
 ## Component arguments
+
+If you are using Nunjucks,then macros take the following arguments
 
 <div>
 

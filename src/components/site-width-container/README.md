@@ -4,17 +4,23 @@
 
 A container set to the width of the site (960px) and its margins.
 
-[Preview the site-width-container component.](http://govuk-frontend-review.herokuapp.com/components/site-width-container/preview)
-
 ## Guidance
 
 More information about when to use site-width-container can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/site-width-container "Link to read guidance on the use of site-width-container on Gov.uk Design system website")
 
 ## Quick start examples
 
-    <div class="govuk-c-site-width-container ">
+### Component default
 
-    </div>
+[Preview the site-width-container component.](http://govuk-frontend-review.herokuapp.com/components/site-width-container/preview)
+
+#### Markup
+
+#### Macro
+
+      {% from "site-width-container/macro.njk" import govukSiteWidthContainer %}
+
+    {{ govukSiteWidthContainer(classes) }}
 
 ## Variants
 
@@ -42,17 +48,9 @@ To show the button image you need to configure your app to show these assets. Be
 
     app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
-## If you are using Nunjucks
-
-To use a macro, follow the below code example:
-
-    {% from "site-width-container/macro.njk" import govukSiteWidthContainer %}
-
-    {{ govukSiteWidthContainer(classes) }}
-
-Where the macros take the following arguments
-
 ## Component arguments
+
+If you are using Nunjucks,then macros take the following arguments
 
 <div>
 

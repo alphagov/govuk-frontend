@@ -4,167 +4,21 @@
 
 Breadcrumb navigation, showing page hierarchy.
 
-[Preview the list component.](http://govuk-frontend-review.herokuapp.com/components/list/preview)
-
 ## Guidance
 
 More information about when to use list can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/list "Link to read guidance on the use of list on Gov.uk Design system website")
 
 ## Quick start examples
 
-    <ul class="govuk-c-list ">
+### Component default
 
-      <li>
+[Preview the list component.](http://govuk-frontend-review.herokuapp.com/components/list/preview)
 
-          <a href="/ ">
-            Related link
-          </a>
+#### Markup
 
-      </li>
+#### Macro
 
-      <li>
-
-          <a href="/ ">
-            Related link
-          </a>
-
-      </li>
-
-      <li>
-
-          <a href="/ ">
-            Related link
-          </a>
-
-      </li>
-
-    </ul>
-
-    <ul class="govuk-c-list govuk-c-list--bullet ">
-
-      <li>
-
-            here is a bulleted list
-
-      </li>
-
-      <li>
-
-            here is the second bulleted list item
-
-      </li>
-
-      <li>
-
-            here is the third bulleted list item
-
-      </li>
-
-    </ul>
-
-    <ol class="govuk-c-list govuk-c-list--number ">
-
-      <li>
-
-            This is a numbered list.
-
-      </li>
-
-      <li>
-
-            This is the second step in a numbered list.
-
-      </li>
-
-      <li>
-
-            The third step is to make sure each item is a full sentence ending with a full stop.
-
-      </li>
-
-    </ol>
-
-    <ol class="govuk-c-list govuk-c-list--icon ">
-
-      <li>
-
-          <span class="govuk-c-list__icon govuk-u-circle ">1</span>
-          Step 1
-
-      </li>
-
-      <li>
-
-          <span class="govuk-c-list__icon govuk-u-circle ">2</span>
-          Step 2
-
-      </li>
-
-      <li>
-
-          <span class="govuk-c-list__icon govuk-u-circle ">3</span>
-          Step 3
-
-      </li>
-
-    </ol>
-
-    <ol class="govuk-c-list govuk-c-list--icon ">
-
-      <li>
-
-          <span class="govuk-c-list__icon govuk-u-circle govuk-c-list__icon--large">1</span>
-          Step 1 Large icon
-
-      </li>
-
-      <li>
-
-          <span class="govuk-c-list__icon govuk-u-circle govuk-c-list__icon--large">2</span>
-          Step 2 Large icon
-
-      </li>
-
-      <li>
-
-          <span class="govuk-c-list__icon govuk-u-circle govuk-c-list__icon--large">3</span>
-          Step 3 Large icon
-
-      </li>
-
-    </ol>
-
-## Variants
-
-## Dependencies
-
-To consume the list component you must be running npm version 5 or above.
-
-## Installation
-
-    npm install --save @govuk-frontend/list
-
-## Requirements
-
-### Build tool configuration
-
-When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
-
-      .pipe(sass({
-          includePaths: 'node_modules/'
-      }))
-
-### Static asset path configuration
-
-To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
-
-    app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
-
-## If you are using Nunjucks
-
-To use a macro, follow the below code example:
-
-    {% from "list/macro.njk" import govukList %}
+      {% from "list/macro.njk" import govukList %}
 
     {{ govukList(
       classes='',
@@ -256,9 +110,35 @@ To use a macro, follow the below code example:
       }
     ) }}
 
-Where the macros take the following arguments
+## Variants
+
+## Dependencies
+
+To consume the list component you must be running npm version 5 or above.
+
+## Installation
+
+    npm install --save @govuk-frontend/list
+
+## Requirements
+
+### Build tool configuration
+
+When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
+
+      .pipe(sass({
+          includePaths: 'node_modules/'
+      }))
+
+### Static asset path configuration
+
+To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
+
+    app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
 ## Component arguments
+
+If you are using Nunjucks,then macros take the following arguments
 
 <div>
 

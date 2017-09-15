@@ -9,21 +9,45 @@ Link component, with four variants:
 *   download link - with download icon
 *   skip link - skip to the main page content
 
-[Preview the link component.](http://govuk-frontend-review.herokuapp.com/components/link/preview)
-
 ## Guidance
 
 More information about when to use link can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/link "Link to read guidance on the use of link on Gov.uk Design system website")
 
 ## Quick start examples
 
-    <a href="" class="govuk-c-link govuk-c-link--back">Back</a>
+### Component default
 
-    <a href="" class="govuk-c-link govuk-c-link--muted">Is there anything wrong with this page?</a>
+[Preview the link component.](http://govuk-frontend-review.herokuapp.com/components/link/preview)
 
-    <a href="" class="govuk-c-link govuk-c-link--download"></a>
+#### Markup
 
-    <a href="" class="govuk-c-link govuk-c-link--skip">Skip to main content</a>
+#### Macro
+
+      {% from "link/macro.njk" import govukLink %}
+
+    {{ govukLink(
+      classes='govuk-c-link--back',
+      linkHref='',
+      linkText='Back')
+    }}
+
+    {{ govukLink(
+      classes='govuk-c-link--muted',
+      linkHref='',
+      linkText='Is there anything wrong with this page?')
+    }}
+
+    {{ govukLink(
+      classes='govuk-c-link--download',
+      linkHref='',
+      tagText='Download')
+    }}
+
+    {{ govukLink(
+      classes='govuk-c-link--skip',
+      linkHref='',
+      linkText='Skip to main content')
+    }}
 
 ## Variants
 
@@ -51,39 +75,9 @@ To show the button image you need to configure your app to show these assets. Be
 
     app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
-## If you are using Nunjucks
-
-To use a macro, follow the below code example:
-
-    {% from "link/macro.njk" import govukLink %}
-
-    {{ govukLink(
-      classes='govuk-c-link--back',
-      linkHref='',
-      linkText='Back')
-    }}
-
-    {{ govukLink(
-      classes='govuk-c-link--muted',
-      linkHref='',
-      linkText='Is there anything wrong with this page?')
-    }}
-
-    {{ govukLink(
-      classes='govuk-c-link--download',
-      linkHref='',
-      tagText='Download')
-    }}
-
-    {{ govukLink(
-      classes='govuk-c-link--skip',
-      linkHref='',
-      linkText='Skip to main content')
-    }}
-
-Where the macros take the following arguments
-
 ## Component arguments
+
+If you are using Nunjucks,then macros take the following arguments
 
 <div>| Name | Type | Default | Required | Description |--- |--- |--- |--- |--- | linkHref | string | | Yes | The value of the link href attribute | linkText | string | | Yes | The link text | classes | string | | Yes | The modifier required for the link type | --back | --muted | --download | --skip</div>
 

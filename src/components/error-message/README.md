@@ -4,17 +4,27 @@
 
 Component to show a red error message - used for form validation. Use inside a label or legend.
 
-[Preview the error-message component.](http://govuk-frontend-review.herokuapp.com/components/error-message/preview)
-
 ## Guidance
 
 More information about when to use error-message can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/error-message "Link to read guidance on the use of error-message on Gov.uk Design system website")
 
 ## Quick start examples
 
-    <span class="govuk-c-error-message ">
-      Error message goes here
-    </span>
+### Component default
+
+[Preview the error-message component.](http://govuk-frontend-review.herokuapp.com/components/error-message/preview)
+
+#### Markup
+
+#### Macro
+
+      {% from "error-message/macro.njk" import govukErrorMessage %}
+
+    {{ govukErrorMessage(
+      classes='',
+      errorMessage='Error message goes here'
+      )
+    }}
 
 ## Variants
 
@@ -42,21 +52,9 @@ To show the button image you need to configure your app to show these assets. Be
 
     app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
-## If you are using Nunjucks
-
-To use a macro, follow the below code example:
-
-    {% from "error-message/macro.njk" import govukErrorMessage %}
-
-    {{ govukErrorMessage(
-      classes='',
-      errorMessage='Error message goes here'
-      )
-    }}
-
-Where the macros take the following arguments
-
 ## Component arguments
+
+If you are using Nunjucks,then macros take the following arguments
 
 <div>
 

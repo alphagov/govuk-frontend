@@ -4,67 +4,21 @@
 
 A radio button is a GOV.UK element that allows users to answer a question by selecting an option. If you have a question with more than one option you should stack radio buttons.
 
-[Preview the radio component.](http://govuk-frontend-review.herokuapp.com/components/radio/preview)
-
 ## Guidance
 
 More information about when to use radio can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/radio "Link to read guidance on the use of radio on Gov.uk Design system website")
 
 ## Quick start examples
 
-      <div class="govuk-c-radio">
-        <input class="govuk-c-radio__input " id="radio-1" name="radio-group" type="radio" value="Yes"  >
-        <label class="govuk-c-radio__label" for="radio-1">Yes</label>
-      </div>
+### Component default
 
-      <div class="govuk-c-radio">
-        <input class="govuk-c-radio__input " id="radio-2" name="radio-group" type="radio" value="No"  >
-        <label class="govuk-c-radio__label" for="radio-2">No</label>
-      </div>
+[Preview the radio component.](http://govuk-frontend-review.herokuapp.com/components/radio/preview)
 
-      <div class="govuk-c-radio">
-        <input class="govuk-c-radio__input " id="radio-3" name="radio-group" type="radio" value="No" checked >
-        <label class="govuk-c-radio__label" for="radio-3">No</label>
-      </div>
+#### Markup
 
-      <div class="govuk-c-radio">
-        <input class="govuk-c-radio__input " id="radio-4" name="radio-group" type="radio" value="NA"  disabled>
-        <label class="govuk-c-radio__label" for="radio-4">Not applicable</label>
-      </div>
+#### Macro
 
-## Variants
-
-## Dependencies
-
-To consume the radio component you must be running npm version 5 or above.
-
-Please note, this component depends on @govuk-frontend/globals, which will automatically be installed with the package.
-
-## Installation
-
-    npm install --save @govuk-frontend/radio
-
-## Requirements
-
-### Build tool configuration
-
-When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
-
-      .pipe(sass({
-          includePaths: 'node_modules/'
-      }))
-
-### Static asset path configuration
-
-To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
-
-    app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
-
-## If you are using Nunjucks
-
-To use a macro, follow the below code example:
-
-    {% from 'radio/macro.njk' import govukRadio %}
+      {% from 'radio/macro.njk' import govukRadio %}
 
     {{ govukRadio(
       classes='',
@@ -96,9 +50,37 @@ To use a macro, follow the below code example:
       ]
     ) }}
 
-Where the macros take the following arguments
+## Variants
+
+## Dependencies
+
+To consume the radio component you must be running npm version 5 or above.
+
+Please note, this component depends on @govuk-frontend/globals, which will automatically be installed with the package.
+
+## Installation
+
+    npm install --save @govuk-frontend/radio
+
+## Requirements
+
+### Build tool configuration
+
+When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
+
+      .pipe(sass({
+          includePaths: 'node_modules/'
+      }))
+
+### Static asset path configuration
+
+To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
+
+    app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
 ## Component arguments
+
+If you are using Nunjucks,then macros take the following arguments
 
 <div>
 
