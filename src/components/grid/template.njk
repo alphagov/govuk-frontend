@@ -1,9 +1,10 @@
 {% from "grid/macro.njk" import govukGrid %}
 
-<div class="govuk-c-grid {{ classes }}">
+<div class="govuk-c-grid
+  {%- if classes %} {{ classes }}{% endif %}">
   {% for item in gridItems %}
   <div class="govuk-c-grid__item govuk-c-grid__item--{{ item.width }}">
-    {{ caller() if caller }} {# if statement allows usage of `call` to be optional #}
+    {{- caller() if caller -}} {# if statement allows usage of `call` to be optional #}
   </div>
   {% endfor %}
 </div>
