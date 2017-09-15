@@ -1,6 +1,6 @@
 {% from "error-summary/macro.njk" import govukErrorSummary %}
 
-{{ govukErrorSummary(
+{{- govukErrorSummary(
   classes='',
   title='Message to alert the user to a problem goes here',
   description='Optional description of the errors and how to correct them',
@@ -15,4 +15,5 @@
       url: '#example-error-2'
     }
   ]
-) }}
+)
+-}}

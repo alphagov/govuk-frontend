@@ -1,4 +1,5 @@
-<div class="govuk-c-panel govuk-c-panel--confirmation {{ classes }}">
+<div class="govuk-c-panel govuk-c-panel--confirmation
+  {%- if classes %} {{ classes }}{% endif %}">
   <h2 class="govuk-c-panel__title">
     {{ title }}
   </h2>

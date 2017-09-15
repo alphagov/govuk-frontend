@@ -1,4 +1,5 @@
-<details class="govuk-c-details {{ classes }}">
+<details class="govuk-c-details
+  {%- if classes %} {{ classes }}{% endif %}">
   <summary class="govuk-c-details__summary">
     <span class="govuk-c-details__summary-text">{{ detailsSummaryText}}</span>
   </summary>

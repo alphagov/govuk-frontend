@@ -1,3 +1,4 @@
-<div class="govuk-c-inset-text {{ classes }}">
+<div class="govuk-c-inset-text
+  {%- if classes %} {{ classes }}{% endif %}">
   {{ content | safe }}
 </div>

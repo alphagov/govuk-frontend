@@ -1,4 +1,5 @@
-<nav class="govuk-c-pagination {{ classes }}" role="navigation" aria-label="Pagination">
+<nav class="govuk-c-pagination
+  {%- if classes %} {{ classes }}{% endif %}" role="navigation" aria-label="Pagination">
   <ul class="govuk-c-pagination__list">
     {% if previousPage %}
     {% for page in previousPage %}
@@ -11,7 +12,7 @@
           {{ page.title }}
         </span>
         {% if page.label %}
-          <span class="govuk-c-pagination__link-label">{{ page.label }}</span>
+        <span class="govuk-c-pagination__link-label">{{ page.label }}</span>
         {% endif %}
       </a>
     </li>

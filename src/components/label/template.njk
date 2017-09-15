@@ -1,13 +1,14 @@
-{% from "error-message/macro.njk" import govukErrorMessage %}
+{% from "error-message/macro.njk" import govukErrorMessage -%}
 
-<label class="govuk-c-label {% if classes %} {{ classes }} {% endif %}" for="{{ id }}">
+<label class="govuk-c-label
+  {%- if classes %} {{ classes }}{% endif %}" for="{{ id }}">
   {{ labelText }}
-
-  {%- if hintText %}
-    <span class="govuk-c-label__hint">{{ hintText }}</span>
+  {% if hintText %}
+  <span class="govuk-c-label__hint">
+    {{ hintText }}
+  </span>
   {% endif %}
-
   {% if errorMessage %}
-    {{ govukErrorMessage(errorMessage) }}
+  {{ govukErrorMessage(errorMessage) -}}
   {% endif %}
 </label>

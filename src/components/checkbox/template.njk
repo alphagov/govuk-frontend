@@ -1,6 +1,9 @@
 {% for checkbox in checkboxes %}
-  <div class="govuk-c-checkbox {{ classes }}">
-    <input class="govuk-c-checkbox__input" id="{{ id }}-{{ checkbox.id }}" name="{{ name }}" type="checkbox" value="{{ checkbox.value }}"  {% if checkbox.checked %}checked{% endif %} {% if checkbox.disabled %}disabled{% endif %}>
-    <label class="govuk-c-checkbox__label" for="{{ id }}-{{ checkbox.id }}">{{ checkbox.label }}</label>
-  </div>
+<div class="govuk-c-checkbox
+{%- if classes %} {{ classes }}{% endif %}">
+  <input class="govuk-c-checkbox__input" id="{{ id }}-{{ checkbox.id }}" name="{{ name }}" type="checkbox" value="{{ checkbox.value }}"
+  {%- if checkbox.checked %} checked{% endif %}
+  {%- if checkbox.disabled %} disabled{% endif %}>
+  <label class="govuk-c-checkbox__label" for="{{ id }}-{{ checkbox.id }}">{{ checkbox.label }}</label>
+</div>
 {% endfor %}

@@ -1,6 +1,7 @@
-{% from "phase-tag/macro.njk" import govukPhaseTag %}
+{% from "phase-tag/macro.njk" import govukPhaseTag -%}
 
-<div class="govuk-c-phase-banner {{ classes }}">
+<div class="govuk-c-phase-banner
+  {%- if classes %} {{ classes }}{% endif %}">
   <p class="govuk-c-phase-banner__content">
     {{ govukPhaseTag(phaseTagText) }}
     <span class="govuk-c-phase-banner__text">

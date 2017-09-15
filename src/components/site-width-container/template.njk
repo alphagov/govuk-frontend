@@ -1,3 +1,4 @@
-<div class="govuk-c-site-width-container {{ classes }}">
+<div class="govuk-c-site-width-container
+  {% if classes %}{{ classes }}{% endif %}">
   {{ caller() if caller }} {# if statement allows usage of `call` to be optional #}
 </div>
