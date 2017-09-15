@@ -1,3 +1,2 @@
-<span class="govuk-c-error-message {{ classes }}">
-  {{ errorMessage }}
-</span>
+<span class="govuk-c-error-message
+  {%- if classes %} {{ classes }}{% endif %}">{{ errorMessage }}</span>
