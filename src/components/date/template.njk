@@ -1,12 +1,14 @@
 {% from "fieldset/macro.njk" import govukFieldset %}
 
 {% call govukFieldset(fieldsetClasses='', legendText, legendHintText, legendErrorMessage) %}
-<div class="govuk-c-date {{ classes }}">
-  {% for item in dateItems %}
-  <div class="govuk-c-date__item govuk-c-date__item--{{ item.name }}">
-    <label class="govuk-c-label govuk-c-date__label" for="{{ id }}-{{ item.name }}">{{ (item.name) | capitalize }}</label>
-    <input class="govuk-c-input govuk-c-date__input {% if item.error %}govuk-c-input--error{% endif %}" id="{{ id }}-{{ item.name }}" name="{{ name }}-{{ item.name }}" type="number">
+  <div class="govuk-c-date
+    {%- if classes %} {{ classes }}{% endif %}">
+    {% for item in dateItems %}
+    <div class="govuk-c-date__item govuk-c-date__item--{{ item.name }}">
+      <label class="govuk-c-label govuk-c-date__label" for="{{ id }}-{{ item.name }}">{{ (item.name) | capitalize }}</label>
+      <input class="govuk-c-input govuk-c-date__input
+      {%- if item.error %}govuk-c-input--error{% endif %}" id="{{ id }}-{{ item.name }}" name="{{ name }}-{{ item.name }}" type="number">
+    </div>
+    {% endfor %}
   </div>
-  {% endfor %}
-</div>
 {% endcall %}
