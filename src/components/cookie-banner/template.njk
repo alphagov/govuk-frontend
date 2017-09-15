@@ -1,3 +1,4 @@
-<div class="govuk-c-cookie-banner js-cookie-banner {{ classes }}">
+<div class="govuk-c-cookie-banner js-cookie-banner
+{%- if classes %} {{ classes }}{% endif %}">
   <p class="govuk-c-cookie-banner__text">{{ cookieBannerText | safe }}</p>
 </div>
