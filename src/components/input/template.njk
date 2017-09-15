@@ -1,5 +1,8 @@
 {% from "label/macro.njk" import govukLabel %}
 
-{{ govukLabel(classes, labelText, hintText, errorMessage, id) }}
+{{- govukLabel(labelClasses, labelText, hintText, errorMessage, id) -}}
 
-<input class="govuk-c-input {% if errorMessage %}govuk-c-input--error{% endif %}" id="{{ id }}" name="{{ name }}" type="text" {% if value %}value="{{ value}}"{% endif %}>
+<input class="govuk-c-input
+{%- if classes %} {{ classes }}{% endif %}
+{%- if errorMessage %} govuk-c-input--error{% endif %}" id="{{ id }}" name="{{ name }}" type="text"
+{%- if value %} value="{{ value}}"{% endif %}>
