@@ -1,1 +1,2 @@
-<a href="{{ href }}" class="govuk-c-link {{ classes }}">{{ linkText | safe }}</a>
+<a href="{{ href }}" class="govuk-c-link
+  {%- if classes %} {{ classes }}{% endif %}">{{ linkText | safe }}</a>
