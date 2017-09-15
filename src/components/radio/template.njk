@@ -1,6 +1,9 @@
 {% for radio in radios %}
-  <div class="govuk-c-radio">
-    <input class="govuk-c-radio__input {{ classes }}" id="{{ id }}-{{ radio.id }}" name="{{ name }}" type="radio" value="{{ radio.value }}" {% if radio.checked %}checked{% endif %} {% if radio.disabled %}disabled{% endif %}>
-    <label class="govuk-c-radio__label" for="{{ id }}-{{ radio.id }}">{{ radio.label }}</label>
-  </div>
+<div class="govuk-c-radio
+{%- if classes %} {{ classes }}{% endif %}">
+  <input class="govuk-c-radio__input" id="{{ id }}-{{ radio.id }}" name="{{ name }}" type="radio" value="{{ radio.value }}"
+  {%- if radio.checked %} checked{% endif %}
+  {%- if radio.disabled %} disabled{% endif %}>
+  <label class="govuk-c-radio__label" for="{{ id }}-{{ radio.id }}">{{ radio.label }}</label>
+</div>
 {% endfor %}
