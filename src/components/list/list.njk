@@ -1,6 +1,6 @@
-{% from "list/macro.njk" import govukList %}
+{% from "list/macro.njk" import govukList -%}
 
-{{ govukList(
+{{- govukList(
   classes='',
   [
     {
@@ -16,9 +16,10 @@
       url: '/'
     }
   ]
-) }}
+)
+-}}
 
-{{ govukList(
+{{- govukList(
   classes='',
   [
     {
@@ -34,9 +35,10 @@
   options = {
     'isBullet': 'true'
   }
-) }}
+)
+-}}
 
-{{ govukList(
+{{- govukList(
   classes='',
   [
     {
@@ -52,9 +54,10 @@
   options = {
     'isNumber': 'true'
   }
-) }}
+)
+-}}
 
-{{ govukList(
+{{- govukList(
   classes='',
   [
     {
@@ -70,9 +73,10 @@
   options = {
     'isStep': 'true'
   }
-) }}
+)
+-}}
 
-{{ govukList(
+{{- govukList(
   classes='',
   [
     {
@@ -88,4 +92,5 @@
   options = {
     'isStepLarge': 'true'
   }
-) }}
+)
+-}}
