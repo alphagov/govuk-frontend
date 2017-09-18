@@ -2,7 +2,7 @@
   {%- if classes %} {{ classes }}{% endif %}">
   {% if options.caption %}
   <caption class="govuk-c-table__caption
-  {%- if options.captionSize %} {{ options.captionSize }}{% endif %}">{{ options.caption }}</caption>
+  {%- if options.captionSize %} {{ options.captionSize }}{% endif %}">{{ options.caption | safe }}</caption>
   {% endif %}
   {% if data.head %}
   <thead class="govuk-c-table__head">
@@ -11,7 +11,7 @@
       <th class="govuk-c-table__header
       {%- if item.type %} govuk-c-table__header--{{ item.type }}{% endif %}"
       {%- if item.colspan %} colspan="{{ item.colspan }}"{% endif %}
-      {%- if item.rowspan %} rowspan="{{ item.rowspan }}"{% endif %} scope="col">{{ item.text }}</th>
+      {%- if item.rowspan %} rowspan="{{ item.rowspan }}"{% endif %} scope="col">{{ item.text | safe }}</th>
     {% endfor %}
     </tr>
   </thead>
@@ -21,16 +21,16 @@
     <tr class="govuk-c-table__row">
     {% for cell in row %}
       {% if loop.first and options.isFirstCellHeader %}
-      <th class="govuk-c-table__header" scope="row">{{ cell.text }}</th>
+      <th class="govuk-c-table__header" scope="row">{{ cell.text | safe }}</th>
       {% elseif loop.first %}
       <td class="govuk-c-table__cell
       {%- if cell.type %} govuk-c-table__cell--{{ cell.type }}{% endif %}"
       {%- if cell.colspan %} colspan="{{ cell.colspan }}"{% endif %}
-      {%- if cell.rowspan %} rowspan="{{ cell.rowspan }}"{% endif %} scope="row">{{ cell.text }}</td>
+      {%- if cell.rowspan %} rowspan="{{ cell.rowspan }}"{% endif %} scope="row">{{ cell.text | safe }}</td>
       {% else %}
       <td class="govuk-c-table__cell {% if cell.type %}govuk-c-table__cell--{{ cell.type }}{% endif %}"
       {%- if cell.colspan %} colspan="{{ cell.colspan }}"{% endif %}
-      {%- if cell.rowspan %} rowspan="{{ cell.rowspan }}"{% endif %}>{{ cell.text }}</td>
+      {%- if cell.rowspan %} rowspan="{{ cell.rowspan }}"{% endif %}>{{ cell.text | safe }}</td>
       {% endif %}
     {% endfor %}
     </tr>
