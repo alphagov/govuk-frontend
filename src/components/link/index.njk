@@ -37,14 +37,71 @@ Link component, with four variants:
 {# {% set componentGuidanceLink = 'new link here' %} #}
 
 {% block componentArguments %}
-<!-- TODO: Use the table macro here and pass it component argument data -->
-| Name      | Type    | Default | Required  | Description
-|---        |---      |---      |---        |---
-| linkHref  | string  |         | Yes       | The value of the link href attribute
-| linkText  | string  |         | Yes       | The link text
-| classes   | string  |         | Yes       | The modifier required for the link type
-                                            | --back
-                                            | --muted
-                                            | --download
-                                            | --skip
+
+{{ govukTable(
+  classes='',
+  options = {
+    'isFirstCellHeader': 'true'
+  },
+  data = {
+    'head' : [
+      {
+        text: 'Name'
+      },
+      {
+        text: 'Type'
+      },
+      {
+        text: 'Required'
+      },
+      {
+        text: 'Description'
+      }
+    ],
+    'rows' : [
+      [
+        {
+          text: 'linkHref'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text:'Yes'
+        },
+        {
+          text: 'The value of the link href attribute'
+        }
+      ],
+      [
+        {
+          text: 'linkText'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text:'Yes'
+        },
+        {
+          text: 'The link text'
+        }
+      ],
+      [
+        {
+          text: 'classes'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text:'No'
+        },
+        {
+          text: 'The available modifiers for the link type: --back, --muted, --download and --skip'
+        }
+      ]
+    ]
+  }
+)}}
 {% endblock %}
