@@ -2,14 +2,14 @@
 
 <fieldset class="govuk-c-fieldset
   {%- if classes %} {{ classes }}{% endif %}">
-  {% if text %}
+  {% if legendText %}
   <legend class="govuk-c-fieldset__legend">
-    {{ text }}
-    {% if hintText %}
-    <span class="govuk-c-fieldset__hint">{{ hintText }}</span>
+    {{ legendText }}
+    {% if legendHintText %}
+    <span class="govuk-c-fieldset__hint">{{ legendHintText }}</span>
     {% endif %}
-    {% if errorMessage %}
-    {{ govukErrorMessage(errorMessage) -}}
+    {% if legendErrorMessage %}
+    {{ govukErrorMessage(legendErrorMessage) -}}
     {% endif %}
   </legend>
 {%- endif -%}
