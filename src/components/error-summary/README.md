@@ -4,11 +4,41 @@
 
 Component to show an error summary box - used at the top of the page, to summarise validation errors.
 
-[Preview the error-summary component.](http://govuk-frontend-review.herokuapp.com/components/error-summary/preview)
-
 ## Guidance
 
 More information about when to use error-summary can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/error-summary "Link to read guidance on the use of error-summary on Gov.uk Design system website")
+
+## Quick start examples
+
+### Component default
+
+[Preview the error-summary component.](http://govuk-frontend-review.herokuapp.com/components/error-summary/preview)
+
+#### Markup
+
+#### Macro
+
+      {% from "error-summary/macro.njk" import govukErrorSummary %}
+
+    {{- govukErrorSummary(
+      classes='',
+      title='Message to alert the user to a problem goes here',
+      description='Optional description of the errors and how to correct them',
+      listClasses='',
+      listItems=[
+        {
+          text: 'Descriptive link to the question with an error',
+          url: '#example-error-1'
+        },
+        {
+          text: 'Descriptive link to the question with an error',
+          url: '#example-error-2'
+        }
+      ]
+    )
+    -}}
+
+## Variants
 
 ## Dependencies
 
@@ -34,75 +64,25 @@ To show the button image you need to configure your app to show these assets. Be
 
     app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
-## Quick start examples
-
-    <div class="govuk-c-error-summary " aria-labelledby="error-summary-title" role="alert" tabindex="-1">
-
-      <h2 class="govuk-c-error-summary__title" id="error-summary-title">
-        Message to alert the user to a problem goes here
-      </h2>
-
-      <div class="govuk-c-error-summary__body">
-        <p>
-          Optional description of the errors and how to correct them
-        </p>
-        <ul class="govuk-c-list  govuk-c-error-summary__list">
-
-      <li>
-    <a href="#example-error-1 ">        Descriptive link to the question with an error
-    </a>  </li>
-      <li>
-    <a href="#example-error-2 ">        Descriptive link to the question with an error
-    </a>  </li>
-
-    </ul>
-
-      </div>
-
-    </div>
-
-## If you are using Nunjucks
-
-To use a macro, follow the below code examples:
-
-    {% from "error-summary/macro.njk" import govukErrorSummary %}
-
-    {{ govukErrorSummary(
-      classes='',
-      title='Message to alert the user to a problem goes here',
-      description='Optional description of the errors and how to correct them',
-      listClasses='',
-      listItems=[
-        {
-          text: 'Descriptive link to the question with an error',
-          url: '#example-error-1'
-        },
-        {
-          text: 'Descriptive link to the question with an error',
-          url: '#example-error-2'
-        }
-      ]
-    ) }}
-
-Where the macros take the following arguments
-
 ## Component arguments
+
+If you are using Nunjucks,then macros take the following arguments
 
 <div>
 
-<table class="govuk-c-table ">
+<table class="govuk-c-table">
 
 <thead class="govuk-c-table__head">
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header " scope="col">Name</th>
+<th class="govuk-c-table__header" scope="col">Name</th>
 
-<th class="govuk-c-table__header " scope="col">Type</th>
+<th class="govuk-c-table__header" scope="col">Type</th>
 
-<th class="govuk-c-table__header " scope="col">Required</th>
+<th class="govuk-c-table__header" scope="col">Required</th>
 
-<th class="govuk-c-table__header " scope="col">Description</th>
+<th class="govuk-c-table__header" scope="col">Description</th>
 
 </tr>
 

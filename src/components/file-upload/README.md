@@ -4,11 +4,55 @@
 
 The HTML `<input>` element with type="file" lets a user pick one or more files, to upload to a server.
 
-[Preview the file-upload component.](http://govuk-frontend-review.herokuapp.com/components/file-upload/preview)
-
 ## Guidance
 
 More information about when to use file-upload can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/file-upload "Link to read guidance on the use of file-upload on Gov.uk Design system website")
+
+## Quick start examples
+
+### Component default
+
+[Preview the file-upload component.](http://govuk-frontend-review.herokuapp.com/components/file-upload/preview)
+
+#### Markup
+
+#### Macro
+
+      {% from "file-upload/macro.njk" import govukFileUpload %}
+
+    {{- govukFileUpload(
+      labelClasses='',
+      labelText='Upload a file',
+      errorMessage='',
+      classes='',
+      id='file-upload-1',
+      name='file-upload-1'
+      )
+    -}}
+
+    {{- govukFileUpload(
+      labelClasses='',
+      labelText='Upload your photo',
+      hintText='Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.',
+      errorMessage='',
+      classes='',
+      id='file-upload-2',
+      name='file-upload-2'
+      )
+    -}}
+
+    {{- govukFileUpload(
+      labelClasses='',
+      labelText='Upload a file',
+      hintText='',
+      errorMessage='Error message goes here',
+      classes='',
+      id='file-upload-3',
+      name='file-upload-3'
+      )
+    -}}
+
+## Variants
 
 ## Dependencies
 
@@ -34,84 +78,25 @@ To show the button image you need to configure your app to show these assets. Be
 
     app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
-## Quick start examples
-
-    <label class="govuk-c-label " for="file-upload-1">
-      Upload a file
-    </label>
-
-    <input class="govuk-c-file-upload " id="file-upload-1" name="file-upload-1" type="file">
-
-    <label class="govuk-c-label " for="file-upload-2">
-      Upload your photo
-      <span class="govuk-c-label__hint">
-        Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.
-      </span>
-    </label>
-
-    <input class="govuk-c-file-upload " id="file-upload-2" name="file-upload-2" type="file">
-
-    <label class="govuk-c-label " for="file-upload-3">
-      Upload a file
-      <span class="govuk-c-error-message ">Error message goes here</span>
-    </label>
-
-    <input class="govuk-c-file-upload govuk-c-file-upload--error" id="file-upload-3" name="file-upload-3" type="file">
-
-## If you are using Nunjucks
-
-To use a macro, follow the below code examples:
-
-    {% from "file-upload/macro.njk" import govukFileUpload %}
-
-    {{ govukFileUpload(
-      classes='',
-      labelText='Upload a file',
-      errorMessage='',
-      id='file-upload-1',
-      name='file-upload-1'
-      )
-    }}
-
-    {{ govukFileUpload(
-      classes='',
-      labelText='Upload your photo',
-      hintText='Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.',
-      errorMessage='',
-      id='file-upload-2',
-      name='file-upload-2'
-      )
-    }}
-
-    {{ govukFileUpload(
-      classes='',
-      labelText='Upload a file',
-      hintText='',
-      errorMessage='Error message goes here',
-      id='file-upload-3',
-      name='file-upload-3'
-      )
-    }}
-
-Where the macros take the following arguments
-
 ## Component arguments
+
+If you are using Nunjucks,then macros take the following arguments
 
 <div>
 
-<table class="govuk-c-table ">
+<table class="govuk-c-table">
 
 <thead class="govuk-c-table__head">
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header " scope="col">Name</th>
+<th class="govuk-c-table__header" scope="col">Name</th>
 
-<th class="govuk-c-table__header " scope="col">Type</th>
+<th class="govuk-c-table__header" scope="col">Type</th>
 
-<th class="govuk-c-table__header " scope="col">Required</th>
+<th class="govuk-c-table__header" scope="col">Required</th>
 
-<th class="govuk-c-table__header " scope="col">Description</th>
+<th class="govuk-c-table__header" scope="col">Description</th>
 
 </tr>
 

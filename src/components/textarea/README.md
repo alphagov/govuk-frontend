@@ -4,11 +4,44 @@
 
 A multi-line text field.
 
-[Preview the textarea component.](http://govuk-frontend-review.herokuapp.com/components/textarea/preview)
-
 ## Guidance
 
 More information about when to use textarea can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/textarea "Link to read guidance on the use of textarea on Gov.uk Design system website")
+
+## Quick start examples
+
+### Component default
+
+[Preview the textarea component.](http://govuk-frontend-review.herokuapp.com/components/textarea/preview)
+
+#### Markup
+
+#### Macro
+
+      {% from "textarea/macro.njk" import govukTextarea %}
+
+    {{ govukTextarea(
+      classes='',
+      labelText='National Insurance number',
+      hintText='',
+      errorMessage='',
+      id='textarea',
+      name='name'
+      )
+    }}
+
+    {{ govukTextarea(
+      classes='',
+      labelText='National Insurance number',
+      hintText='',
+      errorMessage='',
+      id='textarea-2',
+      name='name-2',
+      rows='10'
+      )
+    }}
+
+## Variants
 
 ## Dependencies
 
@@ -34,50 +67,25 @@ To show the button image you need to configure your app to show these assets. Be
 
     app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
-## Quick start examples
-
-    <label class="govuk-c-label " for="textarea">
-      National Insurance number
-
-    </label>
-
-    <textarea class="govuk-c-textarea  " id="textarea" name="name" rows=" 5 "></textarea>
-
-## If you are using Nunjucks
-
-To use a macro, follow the below code examples:
-
-    {% from "textarea/macro.njk" import govukTextarea %}
-
-    {{ govukTextarea(
-      classes='',
-      labelText='National Insurance number',
-      hintText='',
-      errorMessage='',
-      id='textarea',
-      name='name'
-      )
-    }}
-
-Where the macros take the following arguments
-
 ## Component arguments
+
+If you are using Nunjucks,then macros take the following arguments
 
 <div>
 
-<table class="govuk-c-table ">
+<table class="govuk-c-table">
 
 <thead class="govuk-c-table__head">
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header " scope="col">Name</th>
+<th class="govuk-c-table__header" scope="col">Name</th>
 
-<th class="govuk-c-table__header " scope="col">Type</th>
+<th class="govuk-c-table__header" scope="col">Type</th>
 
-<th class="govuk-c-table__header " scope="col">Required</th>
+<th class="govuk-c-table__header" scope="col">Required</th>
 
-<th class="govuk-c-table__header " scope="col">Description</th>
+<th class="govuk-c-table__header" scope="col">Description</th>
 
 </tr>
 

@@ -4,11 +4,29 @@
 
 GOV.UK cookie message, with link to cookie help page.
 
-[Preview the cookie-banner component.](http://govuk-frontend-review.herokuapp.com/components/cookie-banner/preview)
-
 ## Guidance
 
 More information about when to use cookie-banner can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/cookie-banner "Link to read guidance on the use of cookie-banner on Gov.uk Design system website")
+
+## Quick start examples
+
+### Component default
+
+[Preview the cookie-banner component.](http://govuk-frontend-review.herokuapp.com/components/cookie-banner/preview)
+
+#### Markup
+
+#### Macro
+
+      {% from "cookie-banner/macro.njk" import govukCookieBanner %}
+
+    {{- govukCookieBanner(
+      classes='',
+      cookieBannerText='GOV.UK uses cookies to make the site simpler. <a href="https://www.gov.uk/help/cookies">Find out more about cookies</a>'
+      )
+    -}}
+
+## Variants
 
 ## Dependencies
 
@@ -34,42 +52,25 @@ To show the button image you need to configure your app to show these assets. Be
 
     app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
-## Quick start examples
-
-      <div class="govuk-c-cookie-banner js-cookie-banner ">
-      <p class="govuk-c-cookie-banner__text">GOV.UK uses cookies to make the site simpler. <a href="https://www.gov.uk/help/cookies">Find out more about cookies</a></p>
-    </div>
-
-## If you are using Nunjucks
-
-To use a macro, follow the below code examples:
-
-    {% from "cookie-banner/macro.njk" import govukCookieBanner %}
-    {{ govukCookieBanner(
-      classes='',
-      cookieBannerText='GOV.UK uses cookies to make the site simpler. <a href="https://www.gov.uk/help/cookies">Find out more about cookies</a>'
-      )
-    }}
-
-Where the macros take the following arguments
-
 ## Component arguments
+
+If you are using Nunjucks,then macros take the following arguments
 
 <div>
 
-<table class="govuk-c-table ">
+<table class="govuk-c-table">
 
 <thead class="govuk-c-table__head">
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header " scope="col">Name</th>
+<th class="govuk-c-table__header" scope="col">Name</th>
 
-<th class="govuk-c-table__header " scope="col">Type</th>
+<th class="govuk-c-table__header" scope="col">Type</th>
 
-<th class="govuk-c-table__header " scope="col">Required</th>
+<th class="govuk-c-table__header" scope="col">Required</th>
 
-<th class="govuk-c-table__header " scope="col">Description</th>
+<th class="govuk-c-table__header" scope="col">Description</th>
 
 </tr>
 

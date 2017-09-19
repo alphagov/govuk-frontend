@@ -55,43 +55,54 @@ app.get('/examples*', function (req, res) {
 
 // Components
 app.get('/components*', function (req, res) {
-  var path = (req.params[0]).replace(/\//g, '')
-  // If it isn't the isolated preview, render the component "detail" page
-  if (path.indexOf('preview') === -1) {
-    try {
-      var componentNjk = fs.readFileSync('src/components/' + path + '/' + path + '.njk', 'utf8')
-      var componentHtml = fs.readFileSync('public/components/' + path + '/' + path + '.html', 'utf8')
+  let path = req.params[0].slice(1).split('/') // split path into array items: [0 is base component], [1] will be the variant view
 
-      res.locals.componentPath = path
+  if (path.includes('preview')) {
+    // if this is a variant we need base component and variants for the template
+    if (path[1].includes('--')) {
+      res.locals.variantName = path[1]
+      res.locals.variantBase = path[0]
+      res.locals.componentPath = path.join('/')
+    } else {
+      // Show the isolated component preview
+      res.locals.componentPath = path[0]
+    }
+    res.render('component-preview')
+  } else {
+    // If it isn't the isolated preview, render the component "detail" page
+    try {
+      let componentNjk = fs.readFileSync('src/components/' + path[0] + '/' + path[0] + '.njk', 'utf8')
+      // on npm run start we generate html files in public (which is git ignored) and use that to insert into the template
+      let componentHtml = fs.readFileSync('public/components/' + path[0] + '/' + path[0] + '.html', 'utf8')
+
+      // we want to show all variants' code and macros on the component details page
+      let allFiles = fs.readdirSync('src/components/' + path[0] + '/')
+      let variantItems = []
+
+      allFiles.forEach(file => {
+        if (file.indexOf('.njk') > -1 && file.indexOf('--') > -1) {
+          let fileName = file.split('.')[0]
+          let njk = fs.readFileSync('src/components/' + path[0] + '/' + fileName + '.njk', 'utf8')
+          let html = fs.readFileSync('public/components/' + path[0] + '/' + fileName + '.html', 'utf8')
+          variantItems.push({
+            njk: njk,
+            name: fileName,
+            html: html
+          })
+        }
+      })
+
+      // make variables avaiable to nunjucks template
+      res.locals.componentPath = path[0]
       res.locals.componentNunjucksFile = componentNjk
       res.locals.componentHtmlFile = componentHtml
+      res.locals.variantItems = variantItems
+
+      // component details page in index.njk
+      res.render(path[0] + '/' + 'index')
     } catch (e) {
       console.log('Error:', e.stack)
     }
-
-    res.render(path, {
-      componentPath: res.locals.componentPath,
-      componentNunjucksFile: res.locals.componentNunjucksFile,
-      componentHtmlFile: res.locals.componentHtmlFile
-    },
-    function (err, html) {
-      if (err) {
-        res.render(path + '/' + 'index', function (err2, html) {
-          if (err2) {
-            res.status(404).send(err + '<br>' + err2)
-          } else {
-            res.end(html)
-          }
-        })
-      } else {
-        res.end(html)
-      }
-    })
-  } else {
-    // Show the isolated component preview
-    path = path.replace(/preview/g, '')
-    res.locals.componentPath = path
-    res.render('component-preview')
   }
 })
 

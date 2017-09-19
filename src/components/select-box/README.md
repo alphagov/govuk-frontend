@@ -4,11 +4,68 @@
 
 The HTML `<select>` element represents a control that provides a menu of options.
 
-[Preview the select-box component.](http://govuk-frontend-review.herokuapp.com/components/select-box/preview)
-
 ## Guidance
 
 More information about when to use select-box can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/select-box "Link to read guidance on the use of select-box on Gov.uk Design system website")
+
+## Quick start examples
+
+### Component default
+
+[Preview the select-box component.](http://govuk-frontend-review.herokuapp.com/components/select-box/preview)
+
+#### Markup
+
+#### Macro
+
+      {% from "select-box/macro.njk" import govukSelectBox %}
+
+    {{- govukSelectBox(
+      classes='',
+      id='select-box-1',
+      name='select-box-1',
+      options=[
+        {
+          value: '1',
+          label: 'GOV.UK frontend option 1'
+        },
+        {
+          value: '2',
+          label: 'GOV.UK frontend option 2'
+        },
+        {
+          value: '3',
+          label: 'GOV.UK frontend option 3'
+        }
+      ]
+    )
+    -}}
+
+    {{- govukSelectBox(
+      hasLabelWithText='Label for select box',
+      labelClasses='',
+      classes='',
+      id='select-box-2',
+      name='select-box-2',
+      options=[
+        {
+          value: 'a',
+          label: 'GOV.UK frontend option a'
+        },
+        {
+          value: 'b',
+          label: 'GOV.UK frontend option b',
+          selected: 'true'
+        },
+        {
+          value: 'c',
+          label: 'GOV.UK frontend option c'
+        }
+      ]
+    )
+    -}}
+
+## Variants
 
 ## Dependencies
 
@@ -34,93 +91,25 @@ To show the button image you need to configure your app to show these assets. Be
 
     app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
-## Quick start examples
-
-    <select class="govuk-c-select-box " id="select-box-1" name="select-box-1">
-      <option value="1">GOV.UK frontend option 1</option>
-      <option value="2">GOV.UK frontend option 2</option>
-      <option value="3">GOV.UK frontend option 3</option>
-    </select>
-
-    <label class="govuk-c-label " for="select-box-2">
-      Label for select box
-
-    </label>
-
-    <select class="govuk-c-select-box " id="select-box-2" name="select-box-2">
-      <option value="a">GOV.UK frontend option a</option>
-      <option value="b"selected>GOV.UK frontend option b</option>
-      <option value="c">GOV.UK frontend option c</option>
-    </select>
-
-## If you are using Nunjucks
-
-To use a macro, follow the below code examples:
-
-    {% from "select-box/macro.njk" import govukSelectBox %}
-
-    {{ govukSelectBox(
-      classes='',
-      id='select-box-1',
-      name='select-box-1',
-      options=[
-        {
-          value: '1',
-          label: 'GOV.UK frontend option 1'
-        },
-        {
-          value: '2',
-          label: 'GOV.UK frontend option 2'
-        },
-        {
-          value: '3',
-          label: 'GOV.UK frontend option 3'
-        }
-      ]
-    )}}
-
-    {{ govukSelectBox(
-      hasLabelWithText='Label for select box',
-      labelClasses='',
-      classes='',
-      id='select-box-2',
-      name='select-box-2',
-      options=[
-        {
-          value: 'a',
-          label: 'GOV.UK frontend option a'
-        },
-        {
-          value: 'b',
-          label: 'GOV.UK frontend option b',
-          selected: 'true'
-        },
-        {
-          value: 'c',
-          label: 'GOV.UK frontend option c'
-        }
-      ]
-    )}}
-
-Where the macros take the following arguments
-
 ## Component arguments
+
+If you are using Nunjucks,then macros take the following arguments
 
 <div>
 
-<table class="govuk-c-table ">
+<table class="govuk-c-table">
 
 <thead class="govuk-c-table__head">
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header " scope="col">Name</th>
+<th class="govuk-c-table__header" scope="col">Name</th>
 
-<th class="govuk-c-table__header " scope="col">Type</th>
+<th class="govuk-c-table__header" scope="col">Type</th>
 
-<th class="govuk-c-table__header " scope="col">Required</th>
+<th class="govuk-c-table__header" scope="col">Required</th>
 
-<th class="govuk-c-table__header " scope="col">Description</th>
+<th class="govuk-c-table__header" scope="col">Description</th>
 
 </tr>
 

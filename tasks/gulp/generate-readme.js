@@ -10,11 +10,12 @@ const fs = require('fs')
 const toMarkdown = require('gulp-to-markdown')
 const gulpNunjucks = require('gulp-nunjucks')
 const nunjucks = require('nunjucks')
-const vinylInfo = {}
+const objectData = {}
 
+// data variable to be passed to the nunjucks template
 function getDataForFile (file) {
   let finalData = {}
-  finalData = Object.assign(finalData, vinylInfo)
+  finalData = Object.assign(finalData, objectData)
   return finalData
 }
 
@@ -26,9 +27,26 @@ environment.addGlobal('isReadme', 'true')
 gulp.task('generate:readme', () => {
   return gulp.src(['!' + configPath.components + '_component-example/index.njk', configPath.components + '**/index.njk'])
   .pipe(vinylPaths(paths => {
-    vinylInfo.componentName = paths.split(path.sep).slice(-2, -1)[0]
-    vinylInfo.componentPath = vinylInfo.componentName
-    vinylInfo.componentNunjucksFile = fs.readFileSync(configPath.components + vinylInfo.componentName + '/' + vinylInfo.componentName + '.njk', 'utf8')
+    objectData.componentName = paths.split(path.sep).slice(-2, -1)[0]
+    objectData.componentPath = objectData.componentName
+    objectData.componentNunjucksFile = fs.readFileSync(configPath.components + objectData.componentName + '/' + objectData.componentName + '.njk', 'utf8')
+
+    // we want to show all variants' code and macros on the component details page
+    let allFiles = fs.readdirSync('src/components/' + objectData.componentName + '/')
+    let variantItems = []
+    allFiles.forEach(file => {
+      if (file.indexOf('.njk') > -1 && file.indexOf('--') > -1) {
+        let fileName = file.split('.')[0]
+        let njk = fs.readFileSync('src/components/' + objectData.componentName + '/' + fileName + '.njk', 'utf8')
+        let html = fs.readFileSync('public/components/' + objectData.componentName + '/' + fileName + '.html', 'utf8')
+        variantItems.push({
+          njk: njk,
+          name: fileName,
+          html: html
+        })
+      }
+    })
+    objectData.variantItems = variantItems
     return Promise.resolve()
   }))
   .pipe(data(getDataForFile))
@@ -40,9 +58,9 @@ gulp.task('generate:readme', () => {
   .pipe(toMarkdown({
     gfm: true // github flavoured markdown https://github.com/domchristie/to-markdown#gfm-boolean
   }))
-  .pipe(rename(function (path) {
+  .pipe(rename(path => {
     path.basename = 'README'
     path.extname = '.md'
   }))
-  .pipe(gulp.dest(configPath.src + 'components/'))
+  .pipe(gulp.dest(configPath.components))
 })

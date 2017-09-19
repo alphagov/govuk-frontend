@@ -4,11 +4,30 @@
 
 Use bold text with an exclamation icon if there are legal consequences - for example, a fine or prison sentence.
 
-[Preview the legal-text component.](http://govuk-frontend-review.herokuapp.com/components/legal-text/preview)
-
 ## Guidance
 
 More information about when to use legal-text can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/legal-text "Link to read guidance on the use of legal-text on Gov.uk Design system website")
+
+## Quick start examples
+
+### Component default
+
+[Preview the legal-text component.](http://govuk-frontend-review.herokuapp.com/components/legal-text/preview)
+
+#### Markup
+
+#### Macro
+
+      {% from "legal-text/macro.njk" import govukLegalText %}
+
+    {{- govukLegalText(
+      classes='',
+      iconFallbackText='Warning',
+      legalText='You can be fined up to £5,000 if you don’t register.'
+      )
+    -}}
+
+## Variants
 
 ## Dependencies
 
@@ -34,47 +53,25 @@ To show the button image you need to configure your app to show these assets. Be
 
     app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
-## Quick start examples
-
-    <div class="govuk-c-legal-text ">
-      <span class="govuk-c-legal-text__icon govuk-u-circle" aria-hidden="true">!</span>
-      <strong class="govuk-c-legal-text__text">
-        <span class="govuk-c-legal-text__assistive">Warning</span>
-        You can be fined up to £5,000 if you don’t register.
-      </strong>
-    </div>
-
-## If you are using Nunjucks
-
-To use a macro, follow the below code examples:
-
-    {% from "legal-text/macro.njk" import govukLegalText %}
-
-    {{ govukLegalText(
-      classes='',
-      iconFallbackText='Warning',
-      legalText='You can be fined up to £5,000 if you don’t register.')
-    }}
-
-Where the macros take the following arguments
-
 ## Component arguments
+
+If you are using Nunjucks,then macros take the following arguments
 
 <div>
 
-<table class="govuk-c-table ">
+<table class="govuk-c-table">
 
 <thead class="govuk-c-table__head">
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header " scope="col">Name</th>
+<th class="govuk-c-table__header" scope="col">Name</th>
 
-<th class="govuk-c-table__header " scope="col">Type</th>
+<th class="govuk-c-table__header" scope="col">Type</th>
 
-<th class="govuk-c-table__header " scope="col">Required</th>
+<th class="govuk-c-table__header" scope="col">Required</th>
 
-<th class="govuk-c-table__header " scope="col">Description</th>
+<th class="govuk-c-table__header" scope="col">Description</th>
 
 </tr>
 

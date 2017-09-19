@@ -4,11 +4,25 @@
 
 A container set to the width of the site (960px) and its margins.
 
-[Preview the site-width-container component.](http://govuk-frontend-review.herokuapp.com/components/site-width-container/preview)
-
 ## Guidance
 
 More information about when to use site-width-container can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/site-width-container "Link to read guidance on the use of site-width-container on Gov.uk Design system website")
+
+## Quick start examples
+
+### Component default
+
+[Preview the site-width-container component.](http://govuk-frontend-review.herokuapp.com/components/site-width-container/preview)
+
+#### Markup
+
+#### Macro
+
+      {% from "site-width-container/macro.njk" import govukSiteWidthContainer -%}
+
+    {{ govukSiteWidthContainer(classes) }}
+
+## Variants
 
 ## Dependencies
 
@@ -34,39 +48,25 @@ To show the button image you need to configure your app to show these assets. Be
 
     app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
-## Quick start examples
-
-    <div class="govuk-c-site-width-container ">
-
-    </div>
-
-## If you are using Nunjucks
-
-To use a macro, follow the below code examples:
-
-    {% from "site-width-container/macro.njk" import govukSiteWidthContainer %}
-
-    {{ govukSiteWidthContainer(classes) }}
-
-Where the macros take the following arguments
-
 ## Component arguments
+
+If you are using Nunjucks,then macros take the following arguments
 
 <div>
 
-<table class="govuk-c-table ">
+<table class="govuk-c-table">
 
 <thead class="govuk-c-table__head">
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header " scope="col">Name</th>
+<th class="govuk-c-table__header" scope="col">Name</th>
 
-<th class="govuk-c-table__header " scope="col">Type</th>
+<th class="govuk-c-table__header" scope="col">Type</th>
 
-<th class="govuk-c-table__header " scope="col">Required</th>
+<th class="govuk-c-table__header" scope="col">Required</th>
 
-<th class="govuk-c-table__header " scope="col">Description</th>
+<th class="govuk-c-table__header" scope="col">Description</th>
 
 </tr>
 

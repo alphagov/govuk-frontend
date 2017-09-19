@@ -4,11 +4,79 @@
 
 Grid row with grid items.
 
-[Preview the grid component.](http://govuk-frontend-review.herokuapp.com/components/grid/preview)
-
 ## Guidance
 
 More information about when to use grid can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/grid "Link to read guidance on the use of grid on Gov.uk Design system website")
+
+## Quick start examples
+
+### Component default
+
+[Preview the grid component.](http://govuk-frontend-review.herokuapp.com/components/grid/preview)
+
+#### Markup
+
+#### Macro
+
+      {% from "grid/macro.njk" import govukGrid %}
+
+    {{- govukGrid(
+      classes='',
+      gridItems=[
+        { width: 'full' }
+      ]
+      )
+    -}}
+
+    {{- govukGrid(
+      classes='',
+      gridItems=[
+        { width: 'one-half' },
+        { width: 'one-half' }
+      ]
+      )
+    -}}
+
+    {{- govukGrid(
+      classes='',
+      gridItems=[
+        { width: 'one-third' },
+        { width: 'one-third' },
+        { width: 'one-third' }
+      ]
+      )
+    -}}
+
+    {{- govukGrid(
+      classes='',
+      gridItems=[
+        { width: 'two-thirds' },
+        { width: 'one-third' }
+      ]
+      )
+    -}}
+
+    {{- govukGrid(
+      classes='',
+      gridItems=[
+        { width: 'one-third' },
+        { width: 'two-thirds' }
+      ]
+      )
+    -}}
+
+    {{- govukGrid(
+      classes='',
+      gridItems=[
+        { width: 'one-quarter' },
+        { width: 'one-quarter' },
+        { width: 'one-quarter' },
+        { width: 'one-quarter' }
+      ]
+      )
+    -}}
+
+## Variants
 
 ## Dependencies
 
@@ -34,149 +102,25 @@ To show the button image you need to configure your app to show these assets. Be
 
     app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
-## Quick start examples
-
-    <div class="govuk-c-grid ">
-      <div class="govuk-c-grid__item govuk-c-grid__item--full">
-
-      </div>
-    </div>
-
-    <div class="govuk-c-grid ">
-      <div class="govuk-c-grid__item govuk-c-grid__item--one-half">
-
-      </div>
-      <div class="govuk-c-grid__item govuk-c-grid__item--one-half">
-
-      </div>
-    </div>
-
-    <div class="govuk-c-grid ">
-      <div class="govuk-c-grid__item govuk-c-grid__item--one-third">
-
-      </div>
-      <div class="govuk-c-grid__item govuk-c-grid__item--one-third">
-
-      </div>
-      <div class="govuk-c-grid__item govuk-c-grid__item--one-third">
-
-      </div>
-    </div>
-
-    <div class="govuk-c-grid ">
-      <div class="govuk-c-grid__item govuk-c-grid__item--two-thirds">
-
-      </div>
-      <div class="govuk-c-grid__item govuk-c-grid__item--one-third">
-
-      </div>
-    </div>
-
-    <div class="govuk-c-grid ">
-      <div class="govuk-c-grid__item govuk-c-grid__item--one-third">
-
-      </div>
-      <div class="govuk-c-grid__item govuk-c-grid__item--two-thirds">
-
-      </div>
-    </div>
-
-    <div class="govuk-c-grid ">
-      <div class="govuk-c-grid__item govuk-c-grid__item--one-quarter">
-
-      </div>
-      <div class="govuk-c-grid__item govuk-c-grid__item--one-quarter">
-
-      </div>
-      <div class="govuk-c-grid__item govuk-c-grid__item--one-quarter">
-
-      </div>
-      <div class="govuk-c-grid__item govuk-c-grid__item--one-quarter">
-
-      </div>
-    </div>
-
-## If you are using Nunjucks
-
-To use a macro, follow the below code examples:
-
-    {% from "grid/macro.njk" import govukGrid %}
-
-    {{ govukGrid(
-      classes='',
-      gridItems=[
-        { width: 'full' }
-      ]
-      )
-    }}
-
-    {{ govukGrid(
-      classes='',
-      gridItems=[
-        { width: 'one-half' },
-        { width: 'one-half' }
-      ]
-      )
-    }}
-
-    {{ govukGrid(
-      classes='',
-      gridItems=[
-        { width: 'one-third' },
-        { width: 'one-third' },
-        { width: 'one-third' }
-      ]
-      )
-    }}
-
-    {{ govukGrid(
-      classes='',
-      gridItems=[
-        { width: 'two-thirds' },
-        { width: 'one-third' }
-      ]
-      )
-    }}
-
-    {{ govukGrid(
-      classes='',
-      gridItems=[
-        { width: 'one-third' },
-        { width: 'two-thirds' }
-      ]
-      )
-    }}
-
-    {{ govukGrid(
-      classes='',
-      gridItems=[
-        { width: 'one-quarter' },
-        { width: 'one-quarter' },
-        { width: 'one-quarter' },
-        { width: 'one-quarter' }
-      ]
-      )
-    }}
-
-Where the macros take the following arguments
-
 ## Component arguments
+
+If you are using Nunjucks,then macros take the following arguments
 
 <div>
 
-<table class="govuk-c-table ">
+<table class="govuk-c-table">
 
 <thead class="govuk-c-table__head">
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header " scope="col">Name</th>
+<th class="govuk-c-table__header" scope="col">Name</th>
 
-<th class="govuk-c-table__header " scope="col">Type</th>
+<th class="govuk-c-table__header" scope="col">Type</th>
 
-<th class="govuk-c-table__header " scope="col">Required</th>
+<th class="govuk-c-table__header" scope="col">Required</th>
 
-<th class="govuk-c-table__header " scope="col">Description</th>
+<th class="govuk-c-table__header" scope="col">Description</th>
 
 </tr>
 

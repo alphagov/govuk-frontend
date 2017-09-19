@@ -4,11 +4,57 @@
 
 A single-line text field.
 
-[Preview the input component.](http://govuk-frontend-review.herokuapp.com/components/input/preview)
-
 ## Guidance
 
 More information about when to use input can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/input "Link to read guidance on the use of input on Gov.uk Design system website")
+
+## Quick start examples
+
+### Component default
+
+[Preview the input component.](http://govuk-frontend-review.herokuapp.com/components/input/preview)
+
+#### Markup
+
+#### Macro
+
+      {% from "input/macro.njk" import govukInput %}
+
+    {{- govukInput(
+      labelClasses='',
+      labelText='National Insurance number',
+      hintText='',
+      errorMessage='',
+      classes='',
+      id='input-1',
+      name='test-name'
+      )
+    -}}
+
+    {{- govukInput(
+      labelClasses='',
+      labelText='National Insurance number',
+      hintText='It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’.',
+      errorMessage='',
+      classes='',
+      id='input-2',
+      name='test-name-2'
+      )
+    -}}
+
+    {{- govukInput(
+      labelClasses='',
+      labelText='National Insurance number',
+      hintText='It’s on your National Insurance card, benefit letter, payslip or P60.
+        For example, ‘QQ 12 34 56 C’.',
+      errorMessage='Error message goes here',
+      classes='',
+      id='input-3',
+      name='test-name-3'
+      )
+    -}}
+
+## Variants
 
 ## Dependencies
 
@@ -34,94 +80,25 @@ To show the button image you need to configure your app to show these assets. Be
 
     app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
-## Quick start examples
-
-    <label class="govuk-c-label " for="input-1">
-      National Insurance number
-
-    </label>
-
-    <input class="govuk-c-input " id="input-1" name="test-name" type="text" >
-
-    <label class="govuk-c-label " for="input-2">
-      National Insurance number
-
-        <span class="govuk-c-label__hint">It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’.</span>
-
-    </label>
-
-    <input class="govuk-c-input " id="input-2" name="test-name-2" type="text" >
-
-    <label class="govuk-c-label " for="input-3">
-      National Insurance number
-
-        <span class="govuk-c-label__hint">It’s on your National Insurance card, benefit letter, payslip or P60.
-        For example, ‘QQ 12 34 56 C’.</span>
-
-        <span class="govuk-c-error-message ">
-      Error message goes here
-    </span>
-
-    </label>
-
-    <input class="govuk-c-input govuk-c-input--error" id="input-3" name="test-name-3" type="text" >
-
-## If you are using Nunjucks
-
-To use a macro, follow the below code examples:
-
-    {% from "input/macro.njk" import govukInput %}
-
-    {{ govukInput(
-      classes='',
-      labelText='National Insurance number',
-      hintText='',
-      errorMessage='',
-      id='input-1',
-      name='test-name'
-      )
-    }}
-
-    {{ govukInput(
-      classes='',
-      labelText='National Insurance number',
-      hintText='It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’.',
-      errorMessage='',
-      id='input-2',
-      name='test-name-2'
-      )
-    }}
-
-    {{ govukInput(
-      classes='',
-      labelText='National Insurance number',
-      hintText='It’s on your National Insurance card, benefit letter, payslip or P60.
-        For example, ‘QQ 12 34 56 C’.',
-      errorMessage='Error message goes here',
-      id='input-3',
-      name='test-name-3'
-      )
-    }}
-
-Where the macros take the following arguments
-
 ## Component arguments
+
+If you are using Nunjucks,then macros take the following arguments
 
 <div>
 
-<table class="govuk-c-table ">
+<table class="govuk-c-table">
 
 <thead class="govuk-c-table__head">
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header " scope="col">Name</th>
+<th class="govuk-c-table__header" scope="col">Name</th>
 
-<th class="govuk-c-table__header " scope="col">Type</th>
+<th class="govuk-c-table__header" scope="col">Type</th>
 
-<th class="govuk-c-table__header " scope="col">Required</th>
+<th class="govuk-c-table__header" scope="col">Required</th>
 
-<th class="govuk-c-table__header " scope="col">Description</th>
+<th class="govuk-c-table__header" scope="col">Description</th>
 
 </tr>
 
