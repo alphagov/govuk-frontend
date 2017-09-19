@@ -1,12 +1,24 @@
 {% from 'table/macro.njk' import govukTable %}
 
-{# table with a caption #}
 {{ govukTable(
   classes='',
   options = {
     'isFirstCellHeader': 'true'
   },
   data = {
+    'head' : [
+      {
+        text: 'Month you apply'
+      },
+      {
+        text: 'Rate for bicycles',
+        type: 'numeric'
+      },
+      {
+        text: 'Rate for vehicles',
+        type: 'numeric'
+      }
+    ],
     'rows' : [
       [
         {
