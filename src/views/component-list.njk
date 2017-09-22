@@ -2,11 +2,14 @@
 
 {% block content %}
   <h1 class="govuk-u-heading-36">
-    GOV.UK Frontend
+    GOV.UK Frontend - Components
   </h1>
   <ul class="govuk-c-list">
   {% for componentName, value in componentsDirectory %}
     <li><a href="/components/{{ componentName }}">{{ componentName | replace("-", " ") | capitalize }}</a></li>
   {% endfor %}
   </ul>
+  <h2 class="govuk-u-heading-24">
+    <a href="/examples">View examples</a>
+  </h2>
 {% endblock %}
