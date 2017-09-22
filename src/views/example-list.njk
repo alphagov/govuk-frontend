@@ -1,0 +1,12 @@
+{% extends "layout-debug.njk" %}
+
+{% block content %}
+  <h1 class="govuk-u-heading-36">
+    GOV.UK Frontend - Examples
+  </h1>
+  <ul class="govuk-c-list">
+  {% for exampleName, value in examplesDirectory %}
+    <li><a href="/examples/{{ exampleName }}">{{ exampleName | replace("-", " ") | capitalize }}</a></li>
+  {% endfor %}
+  </ul>
+{% endblock %}
