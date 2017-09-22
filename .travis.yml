@@ -34,7 +34,7 @@ jobs:
       script:
         # Ensure Travis aborts without deploying to Heroku if version hasn't changed
         - set -e
-        - ./scripts/check-demo-version.sh
+        - ./scripts/check-dist-version.sh
       install: skip
       deploy:
         - provider: heroku
