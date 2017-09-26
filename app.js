@@ -43,14 +43,16 @@ dto(path.resolve('./src/components'), (err, res) => {
   app.locals.componentsDirectory = res
 })
 
+// Return an object representing the examples directory
+dto(path.resolve('./src/views/examples'), (err, res) => {
+  if (err) {
+    console.log(err)
+  }
+  app.locals.examplesDirectory = res
+})
 // Index page - render the component list template
 app.get('/', function (req, res) {
   res.render('component-list')
-})
-
-// Examples
-app.get('/examples*', function (req, res) {
-  res.render('index')
 })
 
 // Components
@@ -104,6 +106,17 @@ app.get('/components*', function (req, res) {
       console.log('Error:', e.stack)
     }
   }
+})
+
+// Examples
+app.get('/examples', function (req, res) {
+  res.render('example-list')
+})
+
+app.get('/examples/*', function (req, res) {
+  let path = req.params[0].split('/')
+  // component details page in index.njk
+  res.render('examples/' + path[0] + '/' + 'index')
 })
 
 // Config for Heroku

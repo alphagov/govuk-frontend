@@ -1,29 +1,34 @@
+{% extends "layout.njk" %}
+
+{% block styles %}
 <style>
-.govuk-u-w-full {
-width: 100%;
-}
+  .govuk-u-w-full {
+    width: 100%;
+  }
 
-.govuk-u-w-half {
-width: 50%;
-float: left;
-}
+  .govuk-u-w-half {
+    width: 50%;
+    float: left;
+  }
 
-.govuk-u-w-third {
-width: 33.33333333%;
-float: left;
-}
+  .govuk-u-w-third {
+    width: 33.33333333%;
+    float: left;
+  }
 
-.govuk-u-w-quarter {
-width: 25%;
-float: left;
-}
+  .govuk-u-w-quarter {
+    width: 25%;
+    float: left;
+  }
 
-.govuk-u-w-two-thirds {
-width: 66.66666667%;
-float: left;
-}
+  .govuk-u-w-two-thirds {
+    width: 66.66666667%;
+    float: left;
+  }
 </style>
+{% endblock %}
 
+{% block content %}
 <h1 class="govuk-u-heading-48">Form elements alignment</h1>
 <h2 class="govuk-u-heading-27">Input and button</h2>
 <form action="/" method="post">
@@ -141,3 +146,4 @@ float: left;
 </fieldset>
 <br><br><br><br><br>
 </form>
+{% endblock %}
