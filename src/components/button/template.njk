@@ -1,13 +1,13 @@
-{% if url %}
+{% if params.url %}
 <a class="govuk-c-button
-{%- if isStart %} govuk-c-button--start{% endif %}
-{%- if classes %} {{ classes }}{% endif %}" href="{{ url | safe }}" role="button">
-  {%- if text %}{{ text }}{% endif %}
+{%- if params.isStart %} govuk-c-button--start{% endif %}
+{%- if params.classes %} {{ params.classes }}{% endif %}" href="{{ params.url | safe }}" role="button">
+  {%- if params.text %}{{ params.text }}{% endif %}
 </a>
 {% else %}
 <input class="govuk-c-button
-{%- if isDisabled %} govuk-c-button--disabled{% endif %}
-{%- if classes %} {{ classes }}{% endif %}"
-{%- if text %} value="{{ text }}"{% endif %}
-{%- if isDisabled %} disabled="disabled" aria-disabled="true"{% endif %}>
+{%- if params.isDisabled %} govuk-c-button--disabled{% endif %}
+{%- if params.classes %} {{ params.classes }}{% endif %}"
+{%- if params.text %} value="{{ params.text }}"{% endif %}
+{%- if params.isDisabled %} disabled="disabled" aria-disabled="true"{% endif %}>
 {% endif %}
