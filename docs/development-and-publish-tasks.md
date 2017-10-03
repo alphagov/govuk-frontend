@@ -6,7 +6,7 @@ This application used a number of a number of NPM scripts that run the applicati
 
 There are a few npm scripts in `package.json` that trigger a number of gulp tasks
 
-**`npm start` will trigger `gulp dev` that:**
+**`npm run start` will trigger `gulp dev` that:**
 - cleans the `public` folder
 - compiles component nunjucks files to `public`
 - generates `README.md` files from nunjucks files
@@ -15,18 +15,18 @@ There are a few npm scripts in `package.json` that trigger a number of gulp task
 - starts up the Express server and app
 - starts up `gulp watch` task to watch for changes
 
-**`npm test` will do the following:**
+**`npm run test` will do the following:**
 - compile components to HTML
 - run JS tests
 - run CSS lint checker
 - run accessibility tests on HTML files
 
-**`npm heroku` runs on Heroku build/PR and it:**
+**`npm run heroku` runs on Heroku build/PR and it:**
 - compiles components' HTML
 - compiles CSS & JS
 - starts up Express
 
-**`npm build:packages` will do the following:**
+**`npm run build:packages` will do the following:**
 - compile component nunjucks to HTML
 - copy template, macro and component.njk files for each component
 - copy Sass files, add vendor prefixes and replace path to be node_modules consumption compliant
@@ -34,7 +34,7 @@ There are a few npm scripts in `package.json` that trigger a number of gulp task
 - create an "all" package for Sass
 - generate README markdown files
 
-**`npm build:dist` will do the following:**
+**`npm run build:dist` will do the following:**
 - copy JS
 - copy icons
 - copy SASS and add vendor prefixes
