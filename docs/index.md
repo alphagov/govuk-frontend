@@ -69,3 +69,4 @@ Scss source files.
 Component source files.
 
 [Component documentation](components.md)
+[Npm scripts and gulp taks](development-and-publish-tasks.md)

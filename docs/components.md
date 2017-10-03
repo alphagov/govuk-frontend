@@ -22,10 +22,10 @@ Lerna is a tool that optimizes the workflow around managing multi-package reposi
 
 In a new branch:
 
-- Run the `build:packages` task to ensure any changes to `src/components/component-name` are copied to `packages/component-name`.
+- Run the `npm run build:packages` task to ensure any changes to `src/components/component-name` are copied to `packages/component-name`.
 
 ```
-gulp build:packages
+npm run build:packages
 ```
 
 - Ensure each component has a package.json file listing its dependencies.
@@ -65,23 +65,12 @@ Then in a new branch:
 - Update `dist` folder with the latest versions
 
 ```
-gulp build:dist
+npm run build:dist
 ```
 
 ```
 git add dist/*
 git commit -m "chore(dist): update dist to version x.x.x-alpha"
-```
-
-- Update `demo` folder with latest files and versioned assets
-
-```
-gulp build:demo
-```
-
-```
-git add demo/*
-git commit -m "chore(demo): update demo to version x.x.x-alpha"
 ```
 
 Open a pull request for these changes.
