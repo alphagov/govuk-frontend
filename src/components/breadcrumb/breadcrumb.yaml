@@ -5,7 +5,7 @@ variants:
         url: '/section'
       - title: 'Sub-section'
         url: '/section/sub-section'
-  - name: Single section
+  - name: single-section
     data:
       - title: 'Section 1'
         url: '/section'

@@ -11,6 +11,7 @@ const toMarkdown = require('gulp-to-markdown')
 const gulpNunjucks = require('gulp-nunjucks')
 const nunjucks = require('nunjucks')
 const objectData = {}
+const yaml = require('js-yaml')
 
 // data variable to be passed to the nunjucks template
 function getDataForFile (file) {
@@ -32,21 +33,8 @@ gulp.task('generate:readme', () => {
     objectData.componentNunjucksFile = fs.readFileSync(configPath.components + objectData.componentName + '/' + objectData.componentName + '.njk', 'utf8')
 
     // we want to show all variants' code and macros on the component details page
-    let allFiles = fs.readdirSync('src/components/' + objectData.componentName + '/')
-    let variantItems = []
-    allFiles.forEach(file => {
-      if (file.indexOf('.njk') > -1 && file.indexOf('--') > -1) {
-        let fileName = file.split('.')[0]
-        let njk = fs.readFileSync('src/components/' + objectData.componentName + '/' + fileName + '.njk', 'utf8')
-        let html = fs.readFileSync('public/components/' + objectData.componentName + '/' + fileName + '.html', 'utf8')
-        variantItems.push({
-          njk: njk,
-          name: fileName,
-          html: html
-        })
-      }
-    })
-    objectData.variantItems = variantItems
+    let componentData = yaml.safeLoad(fs.readFileSync(`src/components/${objectData.componentName}/${objectData.componentName}.yaml`, 'utf8'), {json: true})
+    objectData.componentData = componentData
     return Promise.resolve()
   }))
   .pipe(data(getDataForFile))

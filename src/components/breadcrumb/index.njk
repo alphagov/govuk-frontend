@@ -23,12 +23,13 @@ A breadcrumb is a GOV.UK element that helps users to understand where they are w
 
 {% if not isReadme %}
 {{ govukBreadcrumb(classes='', item.data) }}
-{% endif %}
+
 
 <p class="govuk-u-copy-19">
 <a href="{% if isReadme %}http://govuk-frontend-review.herokuapp.com{% endif %}{{ previewLink }}">{{previewText}}
 </a>
 </p>
+{% endif %}
 <h4 class="govuk-u-copy-19">Markup</h4>
 
 {% set componentHtml %}
