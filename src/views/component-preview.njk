@@ -1,7 +1,5 @@
 {% extends "layout.njk" %}
 
 {% block content %}
-{% set componentName = variantName | default(componentPath) %}
-{% set componentBase = variantBase | default(componentPath) %}
-{% include "../components/"+componentBase+"/"+ componentName +".njk" %}
+{{ componentView | safe }}
 {% endblock %}
