@@ -44,56 +44,8 @@
 <p class="govuk-u-copy-19">{% block componentHtmlUsageWriteup %}{% endblock %}</p>
 {% endif %}
 
-<h3 class="govuk-u-bold-19">Component default</h2>
-{% if not isReadme %}
-<div>
-{%- block componentExample -%}
-{% include "../components/"+ componentName +"/"+ componentName +".njk" ignore missing %}
-{%- endblock -%}
-</div>
-{% endif %}
-<p class="govuk-u-copy-19">
-{% set componentPreviewPath = "/components/" + componentPath + "/preview" %}
-<a href="{% if isReadme %}http://govuk-frontend-review.herokuapp.com{% endif %}{{ componentPreviewPath }}">Preview the {{ componentName}} component.
-</a>
-</p>
-
-<h4 class="govuk-u-copy-19">Markup</h4>
-<pre><code>
-{{- componentHtmlFile -}}
-</code></pre>
-<h4 class="govuk-u-copy-19">Macro</h4>
-<pre><code>
-{{- componentNunjucksFile -}}
-</code></pre>
-
-
-{% if variantItems %}
-<h2 class="govuk-u-heading-24">Variants</h2>
-
-{% for variant in variantItems %}
-{% set variantPreviewPath = "/components/" + componentPath + '/' + variant.name +"/preview" %}
-
-<h3 class="govuk-u-bold-19">{{ variant.name | capitalize }}</h2>
-{% if not isReadme %}
-<div>
-{% include "../components/"+ componentName +"/"+ variant.name + '.njk' ignore missing %}
-</div>
-{% endif %}
-
-<p class="govuk-u-copy-19"><a href="{{variantPreviewPath}}">Preview {{ variant.name }} variant.</a></p>
-
-<h4 class="govuk-u-copy-19">Markup</h4>
-<pre><code>
-{{- variant.html | escape -}}
-</code></pre>
-
-<h4 class="govuk-u-copy-19">Macro</h4>
-<pre><code>
-{{- variant.njk | escape -}}
-</code></pre>
-{% endfor %}
-{% endif %}
+{% block defaultAndVariants %}
+{% endblock %}
 
 {% if isReadme %}
 <h2 class="govuk-u-heading-24">Dependencies</h2>
