@@ -41,7 +41,7 @@
 <h4 class="govuk-u-copy-19">Macro</h4>
 <pre><code>
 {% raw %}{{ govukTable({% endraw %}
-{{item.data | dump}}
+{{ item.data | dump(2) }}
 {% raw %}) }}{% endraw %}
 </code></pre>
 {% endfor %}
