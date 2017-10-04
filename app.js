@@ -102,12 +102,6 @@ app.get('/examples/*', function (req, res) {
   res.render('examples/' + path[0] + '/' + 'index')
 })
 
-// Config for Heroku
-
-// If this is the Heroku demo app
-if (herokuApp === 'DEMO') {
-  app.use('/', express.static(path.join(__dirname, 'demo')))
-}
 
 // Disallow search index indexing
 app.use(function (req, res, next) {
