@@ -6,6 +6,7 @@ const path = require('path')
 const port = (process.env.PORT || 3000)
 const herokuApp = process.env.HEROKU_APP
 const dto = require('directory-to-object')
+const yaml = require('js-yaml')
 
 // Set up views
 const appViews = [
@@ -15,7 +16,7 @@ const appViews = [
 ]
 
 // Configure nunjucks
-nunjucks.configure(appViews, {
+let env = nunjucks.configure(appViews, {
   autoescape: true,
   express: app,
   noCache: true,
@@ -56,49 +57,31 @@ app.get('/', function (req, res) {
 })
 
 // Components
-app.get('/components*', function (req, res) {
+app.get('/components*', function (req, res, next) {
   let path = req.params[0].slice(1).split('/') // split path into array items: [0 is base component], [1] will be the variant view
+  let componentData = yaml.safeLoad(fs.readFileSync(`src/components/${path[0]}/${path[0]}.yaml`, 'utf8'), {json: true})
+  res.locals.componentData = componentData  // make it available to the nunjucks template to loop over and display code
 
   if (path.includes('preview')) {
-    // if this is a variant we need base component and variants for the template
-    if (path[1].includes('--')) {
-      res.locals.variantName = path[1]
-      res.locals.variantBase = path[0]
-      res.locals.componentPath = path.join('/')
-    } else {
-      // Show the isolated component preview
-      res.locals.componentPath = path[0]
+    // Show the isolated component preview
+    let componentNameCapitalized = path[0].charAt(0).toUpperCase() + path[0].slice(1)
+    let importStatement = `{% from '${path[0]}/macro.njk' import govuk${componentNameCapitalized} %}` // all our components use the same naming convention
+    let macroParameters
+    for (let [index, item] of componentData.variants.entries()) {
+      let itemData = componentData.variants[index].data
+      if (item.name === 'default') {  // default component name != variant, hence we check for default in yaml
+        macroParameters = JSON.stringify(itemData, null, '\t')
+      } else if (path[1].includes(item.name)) { // associate correct data to variant name
+        macroParameters = JSON.stringify(itemData, null, '\t')
+      }
     }
+    res.locals.componentView = env.renderString(`${importStatement}${`{{ govuk${componentNameCapitalized}(${macroParameters}) }}`}`)
     res.render('component-preview')
   } else {
     // If it isn't the isolated preview, render the component "detail" page
     try {
-      let componentNjk = fs.readFileSync('src/components/' + path[0] + '/' + path[0] + '.njk', 'utf8')
-      // on npm run start we generate html files in public (which is git ignored) and use that to insert into the template
-      let componentHtml = fs.readFileSync('public/components/' + path[0] + '/' + path[0] + '.html', 'utf8')
-
-      // we want to show all variants' code and macros on the component details page
-      let allFiles = fs.readdirSync('src/components/' + path[0] + '/')
-      let variantItems = []
-
-      allFiles.forEach(file => {
-        if (file.indexOf('.njk') > -1 && file.indexOf('--') > -1) {
-          let fileName = file.split('.')[0]
-          let njk = fs.readFileSync('src/components/' + path[0] + '/' + fileName + '.njk', 'utf8')
-          let html = fs.readFileSync('public/components/' + path[0] + '/' + fileName + '.html', 'utf8')
-          variantItems.push({
-            njk: njk,
-            name: fileName,
-            html: html
-          })
-        }
-      })
-
-      // make variables avaiable to nunjucks template
+      // make variables avaliable to nunjucks template
       res.locals.componentPath = path[0]
-      res.locals.componentNunjucksFile = componentNjk
-      res.locals.componentHtmlFile = componentHtml
-      res.locals.variantItems = variantItems
 
       // component details page in index.njk
       res.render(path[0] + '/' + 'index')

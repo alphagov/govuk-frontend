@@ -1,9 +1,14 @@
 {% from "breadcrumb/macro.njk" import govukBreadcrumb %}
 
-{{- govukBreadcrumb(
-  classes='',
-  [
-    { title: 'Home', url: '/' },
-    { title: 'Current page' }
-  ]
-) -}}
+{{ govukBreadcrumb(classes='',
+[
+  {
+    "title": "Section 1",
+    "url": "/section"
+  },
+  {
+    "title": "Sub-section",
+    "url": "/section/sub-section"
+  }
+]
+) }}
