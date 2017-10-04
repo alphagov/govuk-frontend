@@ -1,0 +1,9 @@
+variants:
+  - name: default
+    data:
+      tag: alpha
+      message: This part of GOV.UK Frontend is being built
+  - name: with-html
+    data:
+      tag: beta
+      message: 'This is a new service – your <a href="#">feedback</a> will help us to improve it.'
