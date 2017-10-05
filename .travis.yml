@@ -20,29 +20,6 @@ jobs:
       - set -e
       - ./scripts/check-package-lock.sh
       - npm test
-    - stage: Deploy to the review app
-      script: echo "Deploying to govuk-frontend-review.herokuapp.com ..."
-      install: skip
-      deploy:
-        - provider: heroku
-          app: govuk-frontend-review
-          buildpack: heroku/nodejs
-          api_key:
-            secure: UtPLBkPj3K5Jz07n2ux6DxMK4/kEMRyaltElebhEjqehHemx+/kX3Cqc+zQhyjkJN9rEbZ9IqhLcRN/NHmTYn9BdaBPvsFRO7v5fVntJ7AAUQnme8a1faAPDCMjQNQ/u0IMVV5VincBXtYyUJ1sW8pWKu7TPHQzp0noAO2WtXtNNXQc/TdPQ3daPOMGrLq5JxcK79KJvlcgmzUaDeEog6c1oNCi/uc4HLLbVVVeDoLeujbpQbdpcWrRYp3M/q9DvdElerJDbLFkePVwsLr6MDEzIma2LCn+kLGhHANkZW4JLmENwPWj31kw0n+WC3bTk6SJR5fV725RKtXzfhsiXneEZpXI3h9wmSID9rRDWky0mxT0J7cBLTGnZYyryWI30AglLjMXg4c5f1AoiJvHYedJEFDGpQ4sOXA0o0cwdmh6522FZEvvjI+Loy2FKdXhVf++eAcxIFpKNfm1adkDnZmYx1c9oaAJgaIwBh/xO4/XUCSD+0DnVkzCHokFxH5ia1mgyudMkHvp6y+wwbnTzN5OpdGB5B0FnTjmCILfeRD2mB1squ3DR3zYk1BwG/kfE8kOFqfUFEEKKr+iDOwe9+uEeAAnsDEG/FkWF25Ir0jMWpWE7x4xwj2WqzHWN3miJg14TX0iKGon7yPf3/LCQKmwMkPZ/8hsxvbODdFbLI+Y=
-          on: master
-    - stage: Deploy to production
-      script:
-        # Ensure Travis aborts without deploying to Heroku if version hasn't changed
-        - set -e
-        - ./scripts/check-dist-version.sh
-      install: skip
-      deploy:
-        - provider: heroku
-          app: govuk-frontend
-          buildpack: heroku/nodejs
-          api_key:
-            secure: UtPLBkPj3K5Jz07n2ux6DxMK4/kEMRyaltElebhEjqehHemx+/kX3Cqc+zQhyjkJN9rEbZ9IqhLcRN/NHmTYn9BdaBPvsFRO7v5fVntJ7AAUQnme8a1faAPDCMjQNQ/u0IMVV5VincBXtYyUJ1sW8pWKu7TPHQzp0noAO2WtXtNNXQc/TdPQ3daPOMGrLq5JxcK79KJvlcgmzUaDeEog6c1oNCi/uc4HLLbVVVeDoLeujbpQbdpcWrRYp3M/q9DvdElerJDbLFkePVwsLr6MDEzIma2LCn+kLGhHANkZW4JLmENwPWj31kw0n+WC3bTk6SJR5fV725RKtXzfhsiXneEZpXI3h9wmSID9rRDWky0mxT0J7cBLTGnZYyryWI30AglLjMXg4c5f1AoiJvHYedJEFDGpQ4sOXA0o0cwdmh6522FZEvvjI+Loy2FKdXhVf++eAcxIFpKNfm1adkDnZmYx1c9oaAJgaIwBh/xO4/XUCSD+0DnVkzCHokFxH5ia1mgyudMkHvp6y+wwbnTzN5OpdGB5B0FnTjmCILfeRD2mB1squ3DR3zYk1BwG/kfE8kOFqfUFEEKKr+iDOwe9+uEeAAnsDEG/FkWF25Ir0jMWpWE7x4xwj2WqzHWN3miJg14TX0iKGon7yPf3/LCQKmwMkPZ/8hsxvbODdFbLI+Y=
-          on: master
-
-  allow_failures: # Allow this stage to fail without breaking the build (as we only deploy if demo is changed)
-    - stage: Deploy to production
+    # Heroku is configured to automatically deploy the following branches
+    # once CI passes:
+    # master         -> http://govuk-frontend-review.herokuapp.com/
