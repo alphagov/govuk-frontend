@@ -30,11 +30,13 @@ gulp.task('generate:readme', () => {
   .pipe(vinylPaths(paths => {
     objectData.componentName = paths.split(path.sep).slice(-2, -1)[0]
     objectData.componentPath = objectData.componentName
-    objectData.componentNunjucksFile = fs.readFileSync(configPath.components + objectData.componentName + '/' + objectData.componentName + '.njk', 'utf8')
-
     // we want to show all variants' code and macros on the component details page
-    let componentData = yaml.safeLoad(fs.readFileSync(`src/components/${objectData.componentName}/${objectData.componentName}.yaml`, 'utf8'), {json: true})
-    objectData.componentData = componentData
+    try {
+      let componentData = yaml.safeLoad(fs.readFileSync(`src/components/${objectData.componentName}/${objectData.componentName}.yaml`, 'utf8'), {json: true})
+      objectData.componentData = componentData
+    } catch (e) {
+      console.log('you are missing', paths)
+    }
     return Promise.resolve()
   }))
   .pipe(data(getDataForFile))
