@@ -1,11 +1,11 @@
 {% extends "component.njk" %}
+{% from "list/macro.njk" import govukList %}
+{% from "link/macro.njk" import govukLink %}
 
 {# Commented out blocks below inherit from views/component.njk #}
 
 {# componentName #}
 {% block componentDescription %}
-{% from "list/macro.njk" import govukList %}
-
 Link component, with four variants:
 
 {{ govukList(
@@ -29,9 +29,34 @@ Link component, with four variants:
   }
 ) }}
 {% endblock %}
-{# componentExample #}
-{# componentNunjucks #}
-{# componentHtml #}
+
+{% block defaultAndVariants %}
+{% for item in componentData.variants %}
+{% if item.name == 'default' %}
+{% set itemName = 'Component default' %}
+{% set previewLink = "/components/" + componentName + '/' + "/preview" %}
+{% set previewText = 'Preview the ' + componentName + ' component' %}
+{% else %}
+{% set itemName = componentName + '--' + item.name %}
+{% set previewLink = "/components/" + componentName + '/' + componentName + '--' + item.name  + "/preview" %}
+{% set previewText = 'Preview the ' + itemName + ' variant' %}
+{% endif %}
+<h3 class="govuk-u-bold-19">{{ itemName  | capitalize }}</h3>
+{% if not isReadme %}
+{{ govukLink(item.data) }}
+{% endif %}
+<p class="govuk-u-copy-19">
+  <a href="{% if isReadme %}http://govuk-frontend-review.herokuapp.com{% endif %}{{ previewLink }}">{{previewText}}</a>
+</p>
+<h4 class="govuk-u-copy-19">Markup</h4>
+{% set componentHtml %}
+{{- govukLink(item.data) -}}
+{% endset %}
+<pre><code>{{- componentHtml | e -}}</code></pre>
+<h4 class="govuk-u-copy-19">Macro</h4>
+<pre><code>{% raw %}{{ govukLink({% endraw %}{{ item.data | dump }}{% raw %})}}{% endraw %}</code></pre>
+{% endfor %}
+{% endblock %}
 
 {# override link to design system here if it's different to base url + componentName #}
 {# {% set componentGuidanceLink = 'new link here' %} #}
@@ -61,7 +86,7 @@ Link component, with four variants:
     'rows' : [
       [
         {
-          text: 'linkHref'
+          text: 'href'
         },
         {
           text: 'string'
@@ -75,7 +100,7 @@ Link component, with four variants:
       ],
       [
         {
-          text: 'linkText'
+          text: 'content'
         },
         {
           text: 'string'
