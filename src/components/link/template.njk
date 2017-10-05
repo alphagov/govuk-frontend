@@ -1,2 +1,2 @@
-<a href="{{ href }}" class="govuk-c-link
-  {%- if classes %} {{ classes }}{% endif %}">{{ linkText | safe }}</a>
+<a href="{%- if params.href %}{{ params.href }}{% else %}#{% endif -%}" class="govuk-c-link
+  {%- if params.classes %} {{ params.classes }}{% endif -%}">{{ params.content | safe }}</a>
