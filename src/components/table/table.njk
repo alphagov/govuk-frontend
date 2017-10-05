@@ -1,52 +1,50 @@
 {% from 'table/macro.njk' import govukTable %}
 
-{# table with a caption #}
 {{ govukTable(
-  classes='',
-  options = {
-    'isFirstCellHeader': 'true'
-  },
-  data = {
-    'rows' : [
+{
+  "data": {
+    "classes": "extra-classes",
+    "rows": [
       [
         {
-          text: 'January'
+          "text": "January"
         },
         {
-          text: '£85',
-          type: 'numeric'
+          "text": "£85",
+          "type": "numeric"
         },
         {
-          text: '£95',
-          type: 'numeric'
+          "text": "£95",
+          "type": "numeric"
         }
       ],
       [
         {
-          text: 'February'
+          "text": "February"
         },
         {
-          text: '£75',
-          type: 'numeric'
+          "text": "£75",
+          "type": "numeric"
         },
         {
-          text: '£55',
-          type: 'numeric'
+          "text": "£55",
+          "type": "numeric"
         }
       ],
       [
         {
-          text: 'March'
+          "text": "March"
         },
         {
-          text: '£165',
-          type: 'numeric'
+          "text": "£165",
+          "type": "numeric"
         },
         {
-          text: '£125',
-          type: 'numeric'
+          "text": "£125",
+          "type": "numeric"
         }
       ]
     ]
   }
-)}}
+}
+) }}
