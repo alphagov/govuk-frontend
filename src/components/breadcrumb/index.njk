@@ -22,7 +22,7 @@ A breadcrumb is a GOV.UK element that helps users to understand where they are w
 <h3 class="govuk-u-bold-19">{{ itemName  | capitalize }}</h3>
 
 {% if not isReadme %}
-{{ govukBreadcrumb(classes='', item.data) }}
+{{ govukBreadcrumb(item.data) }}
 
 
 <p class="govuk-u-copy-19">
@@ -33,15 +33,16 @@ A breadcrumb is a GOV.UK element that helps users to understand where they are w
 <h4 class="govuk-u-copy-19">Markup</h4>
 
 {% set componentHtml %}
-{{ govukBreadcrumb(classes='',item.data) }}
+{{ govukBreadcrumb(item.data) }}
 {% endset %}
 <pre><code>
   {{- componentHtml | e -}}
 </code></pre>
 
 <h4 class="govuk-u-copy-19">Macro</h4>
-<pre><code>{% raw %}{{ govukBreadcrumb(classes='',{% endraw %}
-{{ item.data | dump(2) }}
+<pre><code>
+{% raw %}{{ govukBreadcrumb({% endraw %}
+  {{ item.data | dump(2) }}
 {% raw %}) }}{% endraw %}
 </code></pre>
 {% endfor %}

@@ -1,34 +1,52 @@
 variants:
   - name: default
     data:
-      - title: 'Section 1'
-        url: '/section'
-      - title: 'Sub-section'
-        url: '/section/sub-section'
+      classes: extra-dummy-class
+      items:
+        -
+          title: 'Section 1'
+          url: '/section'
+        -
+          title: 'Sub-section'
+          url: '/section/sub-section'
   - name: single-section
     data:
-      - title: 'Section 1'
-        url: '/section'
+      items:
+        -
+          title: 'Section 1'
+          url: '/section'
   - name: many-breadcrumbs
     data:
-      - title: 'Home'
-        url: '/'
-      - title: 'Section 3'
-        url: '/section'
-      - title: 'Sub-section 1'
-        url: '/section/sub-section'
-      - title: 'Sub Sub-section 1'
-        url: '/section/sub-section/sub-sub-section'
+      items:
+        -
+          title: 'Home'
+          url: '/'
+        -
+          title: 'Section 3'
+          url: '/section'
+        -
+          title: 'Sub-section 1'
+          url: '/section/sub-section'
+        -
+          title: 'Sub Sub-section 1'
+          url: '/section/sub-section/sub-sub-section'
   - name: no-home-section
     data:
-      - title: 'Service Manual'
-        url: '/service-manual'
-      - title: 'Agile Delivery'
-        url: '/service-manual/agile-delivery'
+      items:
+        -
+          title: 'Service Manual'
+          url: '/service-manual'
+        -
+          title: 'Agile Delivery'
+          url: '/service-manual/agile-delivery'
   - name: last-breadcrumb-is-current-page
     data:
-      - title: 'Home'
-        url: '/'
-      - title: 'Passports, travel and living abroad'
-        url: '/browse/abroad'
-      - title: 'Travel abroad'
+      items:
+        -
+          title: 'Home'
+          url: '/'
+        -
+          title: 'Passports, travel and living abroad'
+          url: '/browse/abroad'
+        -
+          title: 'Travel abroad'
