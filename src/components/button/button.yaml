@@ -2,7 +2,7 @@ variants:
 - name: default
   data:
     text: Save and continue
-    classes: 'boom'
+    classes: 'example-class'
 - name: disabled
   data:
     text: Disabled button
