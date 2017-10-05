@@ -23,7 +23,7 @@
 <h3 class="govuk-u-bold-19">{{ itemName  | capitalize }}</h3>
 
 {% if not isReadme %}
-{{ govukInput(classes='', item.data) }}
+{{ govukInput(item.data) }}
 
 
 <p class="govuk-u-copy-19">
@@ -41,7 +41,7 @@
 </code></pre>
 
 <h4 class="govuk-u-copy-19">Macro</h4>
-<pre><code>{% raw %}{{ govukInput(classes='',{% endraw %}
+<pre><code>{% raw %}{{ govukInput({% endraw %}
 {{ item.data | dump(2) }}
 {% raw %}) }}{% endraw %}
 </code></pre>
