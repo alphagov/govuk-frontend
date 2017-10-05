@@ -1,4 +1,5 @@
 {% extends "component.njk" %}
+{% from "list/macro.njk" import govukList %}
 {% from "link/macro.njk" import govukLink %}
 
 {# Commented out blocks below inherit from views/component.njk #}
@@ -6,6 +7,27 @@
 {# componentName #}
 {% block componentDescription %}
 Link component, with four variants:
+
+{{ govukList(
+  classes='',
+  [
+    {
+      text: 'back link - a black underlined link with a left pointing arrow'
+    },
+    {
+      text: 'muted link - used for the “anything wrong with this page?” links'
+    },
+    {
+      text: 'download link - with download icon'
+    },
+    {
+      text: 'skip link - skip to the main page content'
+    }
+  ],
+  options = {
+    'isBullet': 'true'
+  }
+) }}
 {% endblock %}
 
 {% block defaultAndVariants %}
