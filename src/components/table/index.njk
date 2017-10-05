@@ -51,13 +51,16 @@
 {# {% set componentGuidanceLink = 'new link here' %} #}
 
 {% block componentArguments %}
+
 {{ govukTable(
-  classes='',
-  options = {
-    'isFirstCellHeader': 'true'
-  },
-  data = {
-    'head' : [
+{
+  "data": {
+    "options": {
+      "caption": "Caption 1 : Months and rates",
+      "captionSize": "small",
+      "isFirstCellHeader": true
+    },
+    "head": [
       {
         text: 'Name'
       },
@@ -71,50 +74,23 @@
         text: 'Description'
       }
     ],
-    'rows' : [
-      [
-        {
-          text: 'classes'
-        },
-        {
-          text: 'string'
-        },
-        {
-          text: 'No'
-        },
-        {
-          text: 'Optional additional classes'
-        }
-      ],
-      [
-        {
-          text: 'data'
-        },
-        {
-          text: 'array'
-        },
-        {
-          text: 'Yes'
-        },
-        {
-          text: 'Data array with text and type keys'
-        }
-      ],
-      [
-        {
-          text: 'options'
-        },
-        {
-          text: 'array'
-        },
-        {
-          text: 'Yes'
-        },
-        {
-          text: 'Options array with caption, captionSize and isFirstCellHeader keys'
-        }
-      ]
+    "rows": [
+    [
+      {
+        text: 'data'
+      },
+      {
+        text: 'object'
+      },
+      {
+        text: 'Yes'
+      },
+      {
+        text: 'Object containing array and object of data and options'
+      }
+    ]
     ]
   }
-)}}
+}
+) }}
 {% endblock %}
