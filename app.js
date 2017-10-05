@@ -17,10 +17,12 @@ const appViews = [
 
 // Configure nunjucks
 let env = nunjucks.configure(appViews, {
-  autoescape: true,
-  express: app,
-  noCache: true,
-  watch: true
+  autoescape: true, // output with dangerous characters are escaped automatically
+  express: app, // the express app that nunjucks should install to
+  noCache: true, // never use a cache and recompile templates each time
+  trimBlocks: true, // automatically remove trailing newlines from a block/tag
+  lstripBlocks: true, // automatically remove leading whitespace from a block/tag
+  watch: true // reload templates when they are changed. needs chokidar dependency to be installed
 })
 
 // components have dashes in names whereas macros have govukPascalCase syntax
