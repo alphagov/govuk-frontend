@@ -2,6 +2,7 @@ variants:
  - name: default
    data:
     data:
+     classes: extra-classes # if needed
      rows:
      -
        - text: January

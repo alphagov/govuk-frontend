@@ -24,7 +24,7 @@
 <h3 class="govuk-u-bold-19">{{ itemName  | capitalize }}</h3>
 
 {% if not isReadme %}
-{{ govukTable(classes='', item.data)}}
+{{ govukTable(item.data)}}
 {% endif %}
 
 <p class="govuk-u-copy-19">
@@ -34,7 +34,7 @@
 <h4 class="govuk-u-copy-19">Markup</h4>
 
 {% set componentHtml %}
-{{- govukTable(classes='',item.data) -}}
+{{- govukTable(item.data) -}}
 {% endset %}
 <pre><code>{{- componentHtml | e -}}</code></pre>
 
