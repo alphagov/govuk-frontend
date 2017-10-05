@@ -35,7 +35,7 @@ gulp.task('generate:readme', () => {
       let componentData = yaml.safeLoad(fs.readFileSync(`src/components/${objectData.componentName}/${objectData.componentName}.yaml`, 'utf8'), {json: true})
       objectData.componentData = componentData
     } catch (e) {
-      console.log('you are missing', paths)
+      console.log('ENOENT: no such file or directory: ', paths)
     }
     return Promise.resolve()
   }))
