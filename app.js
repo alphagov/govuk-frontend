@@ -23,6 +23,15 @@ let env = nunjucks.configure(appViews, {
   watch: true
 })
 
+// components have dashes in names whereas macros have govukPascalCase syntax
+const capitaliseComponentName = string => {
+  string = string.toLowerCase().split('-')
+  for (var i = 0; i < string.length; i++) {
+    string[i] = string[i].charAt(0).toUpperCase() + string[i].slice(1)
+  }
+  return string.join('')
+}
+
 // Set view engine
 app.set('view engine', 'njk')
 
@@ -64,7 +73,7 @@ app.get('/components*', function (req, res, next) {
 
   if (path.includes('preview')) {
     // Show the isolated component preview
-    let componentNameCapitalized = path[0].charAt(0).toUpperCase() + path[0].slice(1)
+    let componentNameCapitalized = capitaliseComponentName(path[0])
     let importStatement = `{% from '${path[0]}/macro.njk' import govuk${componentNameCapitalized} %}` // all our components use the same naming convention
     let macroParameters
     for (let [index, item] of componentData.variants.entries()) {
