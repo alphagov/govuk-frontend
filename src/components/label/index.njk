@@ -54,12 +54,12 @@
 
 {% block componentArguments %}
 {% from "table/macro.njk" import govukTable %}
-{{ govukTable(
-  classes='',
-  options = {
+{{ govukTable({
+  classes: '',
+  options: {
     'isFirstCellHeader': 'true'
   },
-  data = {
+  data: {
     'head' : [
       {
         text: 'Name'
@@ -147,5 +147,5 @@
       ]
     ]
   }
-)}}
+})}}
 {% endblock %}
