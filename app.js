@@ -4,7 +4,6 @@ const nunjucks = require('nunjucks')
 const fs = require('fs')
 const path = require('path')
 const port = (process.env.PORT || 3000)
-const herokuApp = process.env.HEROKU_APP
 const dto = require('directory-to-object')
 const yaml = require('js-yaml')
 
@@ -112,13 +111,6 @@ app.get('/examples/*', function (req, res) {
   // component details page in index.njk
   res.render('examples/' + path[0] + '/' + 'index')
 })
-
-// Config for Heroku
-
-// If this is the Heroku demo app
-if (herokuApp === 'DEMO') {
-  app.use('/', express.static(path.join(__dirname, 'demo')))
-}
 
 // Disallow search index indexing
 app.use(function (req, res, next) {
