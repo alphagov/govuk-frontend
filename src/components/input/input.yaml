@@ -1,0 +1,24 @@
+variants:
+  - name: default
+    data:
+      labelText: National Insurance number
+      id: input-1
+      name: test-name
+
+  - name: with-hint-text
+    data:
+      labelText: National Insurance number
+      hintText: 'It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.'
+      id: input-2,
+      name: test-name-2
+
+  - name: with-error-message
+    data:
+      labelClasses: dummy-extra-class
+      labelText: National Insurance number
+      hintText: 'It’s on your National Insurance card, benefit letter, payslip or P60.
+        For example, ‘QQ 12 34 56 C’.'
+      errorMessage: Error message goes here
+      classes: '' # extra classes if needed
+      id: input-3
+      name: test-name-3
