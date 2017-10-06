@@ -1,6 +1,14 @@
 {% from "label/macro.njk" import govukLabel %}
 
-{{- govukLabel(params.labelClasses, params.labelText, params.hintText, params.errorMessage, params.id) -}}
+{{- govukLabel(
+  {
+    labelClasses: params.labelClasses,
+    labelText: params.labelText,
+    hintText: params.hintText,
+    errorMessage: params.errorMessage,
+    id: params.id
+  }
+) -}}
 
 <input class="govuk-c-input
 {%- if params.classes %} {{ params.classes }}{% endif %}
