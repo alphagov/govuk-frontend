@@ -1,14 +1,40 @@
 {% extends "component.njk" %}
+{% from "list/macro.njk" import govukList %}
 
 {# Commented out blocks below inherit from views/component.njk #}
 
 {# componentName #}
 {% block componentDescription %}
-  Breadcrumb navigation, showing page hierarchy.
+  A list of items, list variants are bulleted or numbered.
 {% endblock %}
-{# componentExample #}
-{# componentNunjucks #}
-{# componentHtml #}
+
+{% block defaultAndVariants %}
+{% for item in componentData.variants %}
+{% if item.name == 'default' %}
+{% set itemName = 'Component default' %}
+{% set previewLink = "/components/" + componentName + '/' + "/preview" %}
+{% set previewText = 'Preview the ' + componentName + ' component' %}
+{% else %}
+{% set itemName = componentName + '--' + item.name %}
+{% set previewLink = "/components/" + componentName + '/' + componentName + '--' + item.name  + "/preview" %}
+{% set previewText = 'Preview the ' + itemName + ' variant' %}
+{% endif %}
+<h3 class="govuk-u-bold-19">{{ itemName  | capitalize }}</h3>
+{% if not isReadme %}
+{{ govukList(item.data) }}
+{% endif %}
+<p class="govuk-u-copy-19">
+  <a href="{% if isReadme %}http://govuk-frontend-review.herokuapp.com{% endif %}{{ previewLink }}">{{previewText}}</a>
+</p>
+<h4 class="govuk-u-copy-19">Markup</h4>
+{% set componentHtml %}
+{{- govukList(item.data) -}}
+{% endset %}
+<pre><code>{{- componentHtml | e -}}</code></pre>
+<h4 class="govuk-u-copy-19">Macro</h4>
+<pre><code>{% raw %}{{ govukList({% endraw %}{{ item.data | dump }}{% raw %})}}{% endraw %}</code></pre>
+{% endfor %}
+{% endblock %}
 
 {# override link to design system here if it's different to base url + componentName #}
 {# {% set componentGuidanceLink = 'new link here' %} #}
@@ -16,11 +42,12 @@
 {% block componentArguments %}
 {% from "table/macro.njk" import govukTable %}
 {{ govukTable(
-  classes='',
-  options = {
+  {
+  classes:'',
+  "options": {
     'isFirstCellHeader': 'true'
   },
-  data = {
+  "data": {
     'head' : [
       {
         text: 'Name'
@@ -52,7 +79,7 @@
       ],
       [
         {
-          text: 'listItems'
+          text: 'items'
         },
         {
           text: 'array'
@@ -61,12 +88,12 @@
           text: 'Yes'
         },
         {
-          text: 'List items array with url and text keys'
+          text: 'List items array with href and content keys'
         }
       ],
       [
         {
-          text: 'url'
+          text: 'href'
         },
         {
           text: 'string'
@@ -80,7 +107,7 @@
       ],
       [
         {
-          text: 'text'
+          text: 'content'
         },
         {
           text: 'string'
@@ -89,29 +116,15 @@
           text: 'Yes'
         },
         {
-          text: 'List item text'
+          text: 'List item content'
         }
       ],
       [
         {
-          text: 'options'
+          text: 'isBullet'
         },
         {
-          text: 'object'
-        },
-        {
-          text: 'No'
-        },
-        {
-          text: 'Options object'
-        }
-      ],
-      [
-        {
-          text: 'options.isBullet'
-        },
-        {
-          text: ''
+          text: 'boolean'
         },
         {
           text: 'No'
@@ -122,10 +135,10 @@
       ],
       [
         {
-          text: 'options.isNumber'
+          text: 'isNumber'
         },
         {
-          text: ''
+          text: 'boolean'
         },
         {
           text: 'No'
@@ -136,24 +149,24 @@
       ],
       [
         {
-          text: 'options.isStep'
+          text: 'isStep'
         },
         {
-          text: ''
+          text: 'boolean'
         },
         {
           text: 'No'
         },
         {
-          text: 'Creates list of steps'
+          text: 'Creates list of steps with normal icons'
         }
       ],
       [
         {
-          text: 'options.isStepLarge'
+          text: 'isStepLarge'
         },
         {
-          text: ''
+          text: 'boolean'
         },
         {
           text: 'No'
@@ -164,5 +177,6 @@
       ]
     ]
   }
+}
 )}}
 {% endblock %}

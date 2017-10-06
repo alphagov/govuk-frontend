@@ -1,0 +1,104 @@
+variants:
+- name: default
+  data:
+    items:
+      -
+        content: Related link
+        href: /
+      -
+        content: Related link
+        href: /
+      -
+        content: Related link
+        href: /
+- name: bulleted-list
+  data:
+    classes: govuk-c-list--bullet
+    isBullet: true
+    items:
+      -
+        content: 'here is a bulleted list'
+      -
+        content: 'vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor'
+      -
+        content: 'vestibulum id ligula porta felis euismod semper'
+      -
+        content: 'integer posuere erat a ante venenatis dapibus posuere velit aliquet'
+- name: numbered-list
+  data:
+    classes: govuk-c-list--number
+    isNumber: true
+    items:
+      -
+        content: 'This is a numbered list.'
+      -
+        content: 'This is the second step in a numbered list.'
+      -
+        content: 'The third step is to make sure each item is a full sentence ending with a full stop.'
+- name: steps-icon-list
+  data:
+    content: Steps icon list
+    classes: govuk-c-list--icon
+    isStep: true
+    items:
+      -
+        content: 'Step'
+      -
+        content: 'Step'
+      -
+        content: 'Step'
+      -
+        content: 'Step'
+      -
+        content: 'Step'
+      -
+        content: 'Step'
+      -
+        content: 'Step'
+      -
+        content: 'Step'
+      -
+        content: 'Step'
+      -
+        content: 'Step'
+      -
+        content: 'Step'
+      -
+        content: 'Step'
+      -
+        content: 'Step'
+      -
+        content: 'Step'
+- name: steps-large-icon-list
+  data:
+    classes: govuk-c-list--icon
+    isStepLarge: true
+    items:
+      -
+        content: 'Step'
+      -
+        content: 'Step'
+      -
+        content: 'Step'
+      -
+        content: 'Step'
+      -
+        content: 'Step'
+      -
+        content: 'Step'
+      -
+        content: 'Step'
+      -
+        content: 'Step'
+      -
+        content: 'Step'
+      -
+        content: 'Step'
+      -
+        content: 'Step'
+      -
+        content: 'Step'
+      -
+        content: 'Step'
+      -
+        content: 'Step'
