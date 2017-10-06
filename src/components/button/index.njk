@@ -56,12 +56,12 @@ Buttons are configured to perform an action and they can have a different look. 
 
 {% block componentArguments %}
 {% from "table/macro.njk" import govukTable %}
-{{ govukTable(
-  classes='',
-  options = {
+{{ govukTable({
+  classes: '',
+  options: {
     'isFirstCellHeader': 'true'
   },
-  data = {
+  data: {
     'head' : [
       {
         text: 'Name'
@@ -149,5 +149,5 @@ Buttons are configured to perform an action and they can have a different look. 
       ]
     ]
   }
-)}}
+})}}
 {% endblock %}
