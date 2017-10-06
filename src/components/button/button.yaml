@@ -1,0 +1,14 @@
+variants:
+- name: default
+  data:
+    text: Save and continue
+    classes: 'example-class'
+- name: disabled
+  data:
+    text: Disabled button
+    isDisabled: true
+- name: start
+  data:
+    text: Start now
+    url: /
+    isStart: true
