@@ -57,13 +57,13 @@ Please note, this component depends on @govuk-frontend/globals and @govuk-fronte
 
 {% block componentArguments %}
 {% from "table/macro.njk" import govukTable %}
-{{ govukTable(
-  classes='',
-  options = {
+{{ govukTable({
+  classes: '',
+  options: {
     'isFirstCellHeader': 'true'
   },
-  data = {
-    'head' : [
+  data: {
+    'head': [
       {
         text: 'Name'
       },
@@ -77,7 +77,7 @@ Please note, this component depends on @govuk-frontend/globals and @govuk-fronte
         text: 'Description'
       }
     ],
-    'rows' : [
+    'rows': [
       [
         {
           text: 'classes'
@@ -136,5 +136,5 @@ Please note, this component depends on @govuk-frontend/globals and @govuk-fronte
       ]
     ]
   }
-)}}
+})}}
 {% endblock %}
