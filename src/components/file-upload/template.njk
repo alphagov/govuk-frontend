@@ -1,7 +1,15 @@
 {% from "label/macro.njk" import govukLabel %}
 
-{{- govukLabel(labelClasses, labelText, hintText, errorMessage, id) -}}
+{{- govukLabel(
+  {
+    labelClasses: params.labelClasses,
+    labelText: params.labelText,
+    hintText: params.hintText,
+    errorMessage: params.errorMessage,
+    id: params.id
+  }
+) -}}
 
 <input class="govuk-c-file-upload
-{%- if classes %} {{ classes }}{% endif %}
-{%- if errorMessage %} govuk-c-file-upload--error{% endif %}" id="{{ id }}" name="{{ name }}" type="file">
+{%- if params.classes %} {{ params.classes }}{% endif %}
+{%- if params.errorMessage %} govuk-c-file-upload--error{% endif %}" id="{{ params.id }}" name="{{ params.name }}" type="file">

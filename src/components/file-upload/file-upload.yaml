@@ -1,0 +1,18 @@
+variants:
+- name: default
+  data:
+    labelText: Upload a file
+    id: file-upload-1
+    name: file-upload-1
+- name: with-hint-text
+  data:
+    labelText: Upload your photo
+    hintText: Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.
+    id: file-upload-2
+    name: file-upload-2
+- name: with-error-message
+  data:
+    labelText: Upload a file
+    errorMessage: Error message goes here
+    id: file-upload-3
+    name: file-upload-3
