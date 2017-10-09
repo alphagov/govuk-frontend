@@ -71,7 +71,7 @@ app.get('/components*', function (req, res, next) {
   let path = req.params[0].slice(1).split('/') // split path into array items: [0 is base component], [1] will be the variant view
   let componentData = yaml.safeLoad(fs.readFileSync(`src/components/${path[0]}/${path[0]}.yaml`, 'utf8'), {json: true})
   res.locals.componentData = componentData  // make it available to the nunjucks template to loop over and display code
-
+  res.locals.importStatement = env.renderString(`{% from '${path[0]}/macro.njk' import govuk${capitaliseComponentName(path[0])} %}`)
   if (path.includes('preview')) {
     // Show the isolated component preview
     let componentNameCapitalized = capitaliseComponentName(path[0])

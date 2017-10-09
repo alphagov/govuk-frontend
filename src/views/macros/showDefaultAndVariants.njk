@@ -1,0 +1,41 @@
+{% from "./loadComponentTemplate.njk" import loadComponentTemplate %}
+
+{% macro showDefaultAndVariants(componentName, componentData) %}
+
+{% for item in componentData.variants %}
+{% if item.name == 'default' %}
+  {% set itemName = 'Component default' %}
+  {% set previewLink = "/components/" + componentName + "/preview" %}
+  {% set previewText = 'Preview the ' + componentName + ' component' %}
+{% else %}
+  {% set itemName = componentName + '--' + item.name %}
+  {% set previewLink = "/components/" + componentName + '/' + componentName + '--' + item.name  + "/preview" %}
+  {% set previewText = 'Preview the ' + itemName + ' variant' %}
+{% endif %}
+
+<h3 class="govuk-u-bold-19">{{ itemName  | capitalize }}</h3>
+
+{% if not isReadme %}
+{{ loadComponentTemplate(componentName, item.data) }}
+{% endif %}
+
+<p class="govuk-u-copy-19">
+  <a href="{% if isReadme %}http://govuk-frontend-review.herokuapp.com{% endif %}{{ previewLink }}">{{previewText}}</a>
+</p>
+
+<h4 class="govuk-u-copy-19">Markup</h4>
+{% set componentHtml %}
+{{ loadComponentTemplate(componentName, item.data) }}
+{% endset %}
+<pre><code>
+  {{- componentHtml | e -}}
+</code></pre>
+
+<h4 class="govuk-u-copy-19">Macro</h4>
+<pre><code>
+{% raw %}{{ loadComponentTemplate(componentName, {% endraw %}
+  {{ item.data | dump(2) }}
+{% raw %}) }}{% endraw %}
+</code></pre>
+{% endfor %}
+{% endmacro %}
