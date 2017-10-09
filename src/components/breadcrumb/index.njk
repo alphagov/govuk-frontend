@@ -1,5 +1,4 @@
 {% extends "component.njk" %}
-
 {% from "macros/showDefaultAndVariants.njk" import showDefaultAndVariants %}
 
 {# Commented out blocks below inherit from views/component.njk #}
@@ -9,8 +8,7 @@ A breadcrumb is a GOV.UK element that helps users to understand where they are w
 {% endblock %}
 
 {% block defaultAndVariants %}
-{# {% from "breadcrumb/macro.njk" import govukBreadcrumb %} #}
-{{ showDefaultAndVariants(importStatement, componentName, componentData) }}
+{{ showDefaultAndVariants(componentName, componentData) }}
 {% endblock %}
 
 {% block componentDependencies %}
