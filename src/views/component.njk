@@ -44,7 +44,9 @@
 <p class="govuk-u-copy-19">{% block componentHtmlUsageWriteup %}{% endblock %}</p>
 {% endif %}
 
+{% from "./macros/showDefaultAndVariants.njk" import showDefaultAndVariants %}
 {% block defaultAndVariants %}
+{{ showDefaultAndVariants(componentName, componentData) }}
 {% endblock %}
 
 {% if isReadme %}

@@ -1,10 +1,10 @@
 {% extends "component.njk" %}
 {% from "list/macro.njk" import govukList %}
-{% from "macros/showDefaultAndVariants.njk" import showDefaultAndVariants %}
 
 {# Commented out blocks below inherit from views/component.njk #}
 
 {# componentName #}
+
 {% block componentDescription %}
 Link component, with four variants:
 
@@ -30,15 +30,12 @@ Link component, with four variants:
 ) }}
 {% endblock %}
 
-{% block defaultAndVariants %}
-{{ showDefaultAndVariants(componentName, componentData) }}
-{% endblock %}
+{# defaultAndVariants #}
 
 {# override link to design system here if it's different to base url + componentName #}
 {# {% set componentGuidanceLink = 'new link here' %} #}
 
 {% block componentArguments %}
-
 {{ govukTable({
   classes: '',
   options: {
