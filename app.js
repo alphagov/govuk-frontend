@@ -69,7 +69,13 @@ app.get('/', function (req, res) {
 // Components
 app.get('/components*', function (req, res, next) {
   let path = req.params[0].slice(1).split('/') // split path into array items: [0 is base component], [1] will be the variant view
-  let componentData = yaml.safeLoad(fs.readFileSync(`src/components/${path[0]}/${path[0]}.yaml`, 'utf8'), {json: true})
+  let yamlPath = `src/components/${path[0]}/${path[0]}.yaml`
+  let componentData
+  try {
+    componentData = yaml.safeLoad(fs.readFileSync(yamlPath, 'utf8'), {json: true})
+  } catch (e) {
+    console.log('ENOENT: no such file or directory: ', yamlPath)
+  }
   res.locals.componentData = componentData  // make it available to the nunjucks template to loop over and display code
   res.locals.importStatement = env.renderString(`{% from '${path[0]}/macro.njk' import govuk${capitaliseComponentName(path[0])} %}`)
   if (path.includes('preview')) {
