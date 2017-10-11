@@ -2,9 +2,9 @@
 
 <fieldset class="govuk-c-fieldset
   {%- if params.classes %} {{ params.classes }}{% endif %}">
-  {% if params.text %}
+  {% if params.legendText %}
   <legend class="govuk-c-fieldset__legend">
-    {{ params.text }}
+    {{ params.legendText }}
     {% if params.hintText %}
     <span class="govuk-c-fieldset__hint">{{ params.hintText }}</span>
     {% endif %}
