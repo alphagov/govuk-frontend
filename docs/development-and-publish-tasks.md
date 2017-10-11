@@ -2,6 +2,10 @@
 
 This application used a number of a number of NPM scripts that run the application and trigger gulp tasks that build files, update packages, copy assets and watch for changes.
 
+## Express app only
+
+To simply run the Express app without gulp tasks being triggered, simply run `node app.js`.
+
 ## NPM script aliases
 
 There are a few npm scripts in `package.json` that trigger a number of gulp tasks
