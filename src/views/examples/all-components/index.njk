@@ -2,7 +2,7 @@
 
 {% block content %}
 
-  {% include "../components/breadcrumb/breadcrumb.njk" %}
+  {# {% include "../components/breadcrumb/breadcrumb.njk" %}
 
   {% include "../components/button/button.njk" %}
 
@@ -24,12 +24,12 @@
 
   {% include "../components/input/input.njk" %}
 
-  {% include "../components/inset-text/inset-text.njk" %}
+  {% include "../components/inset-text/inset-text.njk" %} #}
 
   {# Don't show label component as input component requires it #}
   {# include "../components/label/label.njk" #}
 
-  {% include "../components/legal-text/legal-text.njk" %}
+  {# {% include "../components/legal-text/legal-text.njk" %}
 
   {% include "../components/link/link.njk" %}
 
@@ -45,30 +45,32 @@
 
   {% include "../components/pagination/pagination.njk" %}
 
-  {% include "../components/select-box/select-box.njk" %}
+  {% include "../components/select-box/select-box.njk" %} #}
 
   {# Example of calling site-width-container and nesting a grid row #}
-  {% from "../components/site-width-container/macro.njk" import govukSiteWidthContainer %}
-  {% from "../components/grid/macro.njk" import govukGrid %}
+  {# {% from "../components/site-width-container/macro.njk" import govukSiteWidthContainer %} #}
+  {% from "button/macro.njk" import govukButton %}
+  {% from "grid/macro.njk" import govukGrid %}
 
-  {% call govukSiteWidthContainer() %}
-    {% call govukGrid(
-      classes='',
-      gridItems=[ { width: 'full' } ]
-      )
-    %}
-    Example full width grid column
-    <!-- Insert macros to sit inside grid item here -->
+    {% call govukGrid({
+      "items": [
+        {
+            "width": "one-half",
+            "gridStart": true
+        }
+      ]
+    })%}
+    {{ govukButton({classes: '', text:'Save and continue', url: '', isStart: '', isDisabled: ''}) }}
     {% endcall %}
-
-    {% call govukGrid(
-      classes='',
-      gridItems=[ { width: 'two-thirds' } ]
-      )
-    %}
-    Example two-thirds width grid column
-    <!-- Insert macros to sit inside grid item here -->
+    {% call govukGrid({
+      "items": [
+        {
+        "width": "one-half",
+        "gridEnd": true
+        }
+      ]
+    })%}
+    <p>This is a magical button</p>
     {% endcall %}
-  {% endcall %}
 
 {% endblock %}
