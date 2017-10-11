@@ -1,0 +1,16 @@
+variants:
+- name: default
+  data:
+    classes: ''
+    text: 'Legend text goes here'
+- name: with-hint-text
+  data:
+    classes: ''
+    text: 'Legend text goes here'
+    hintText: 'Legend hint text goes here'
+- name: with-error-message
+  data:
+    classes: ''
+    text: 'Legend text goes here'
+    hintText: 'Legend hint text goes here'
+    errorMessage: 'Error message goes here'
