@@ -7,22 +7,19 @@
   A component for entering dates, for example - date of birth.
 {% endblock %}
 
-{# componentExample #}
-{# componentNunjucks #}
-{# componentHtml #}
+{# defaultAndVariants #}
 
 {# override link to design system here if it's different to base url + componentName #}
 {# {% set componentGuidanceLink = 'new link here' %} #}
 
 {% block componentArguments %}
-{% from "table/macro.njk" import govukTable %}
-{{ govukTable(
-  classes='',
-  options = {
+{{ govukTable({
+  classes: '',
+  options: {
     'isFirstCellHeader': 'true'
   },
-  data = {
-    'head' : [
+  data: {
+    'head': [
       {
         text: 'Name'
       },
@@ -36,7 +33,7 @@
         text: 'Description'
       }
     ],
-    'rows' : [
+    'rows': [
       [
         {
           text: 'fieldsetClasses'
@@ -109,24 +106,10 @@
       ],
       [
         {
-          text: 'Names of date items'
+          text: 'items'
         },
         {
-          text: 'string'
-        },
-        {
-          text: 'No'
-        },
-        {
-          text: 'name of each date input'
-        }
-      ],
-      [
-        {
-          text: 'dateItems'
-        },
-        {
-          text: 'object'
+          text: 'array'
         },
         {
           text: 'Yes'
@@ -137,10 +120,10 @@
       ],
       [
         {
-          text: 'dateItems.name'
+          text: 'name'
         },
         {
-          text: ''
+          text: 'string'
         },
         {
           text: 'Yes'
@@ -151,19 +134,33 @@
       ],
       [
         {
-          text: 'dateItems.error'
+          text: 'error'
         },
         {
-          text: ''
+          text: 'boolean'
         },
         {
-          text: 'Yes'
+          text: 'No'
         },
         {
           text: 'Set error for date item'
         }
+      ],
+      [
+        {
+          text: 'value'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'Value of date item'
+        }
       ]
     ]
   }
-)}}
+})}}
 {% endblock %}
