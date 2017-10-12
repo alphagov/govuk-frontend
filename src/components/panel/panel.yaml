@@ -1,0 +1,11 @@
+variants:
+ - name: default
+   data:
+     title: Application complete
+     content: Your refence number
+     reference: HDJ2123F
+ - name: no-reference-number
+   data:
+     classes: extra-dummy-class
+     title: Application complete
+     content: Thank you for your application
