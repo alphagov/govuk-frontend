@@ -1,10 +1,10 @@
 {% from "legal-text/macro.njk" import govukLegalText -%}
 
 <div class="govuk-c-legal-text
-  {%- if classes %} {{ classes }}{% endif %}">
+  {%- if params.classes %} {{ params.classes }}{% endif %}">
   <span class="govuk-c-legal-text__icon govuk-u-circle" aria-hidden="true">!</span>
   <strong class="govuk-c-legal-text__text">
-    <span class="govuk-c-legal-text__assistive">{{ iconFallbackText }}</span>
-    {{ legalText }}
+    <span class="govuk-c-legal-text__assistive">{{ params.iconFallbackText }}</span>
+    {{ params.legalText }}
   </strong>
 </div>
