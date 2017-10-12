@@ -1,0 +1,13 @@
+variants:
+  - name: default
+    data:
+      titleText: Message to alert the user to a problem goes here
+      descriptionText: Optional description of the errors and how to correct them
+      classes: optional-extra-class
+      errorList:
+        -
+          text: Descriptive link to the question with an error
+          href: '#example-error-1'
+        -
+          html: Descriptive link to the question with an error
+          href: '#example-error-1'

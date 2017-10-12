@@ -14,7 +14,6 @@
 {# {% set componentGuidanceLink = 'new link here' %} #}
 
 {% block componentArguments %}
-{% from "table/macro.njk" import govukTable %}
 {{ govukTable({
   'firstCellIsHeader': 'true',
   'head' : [
@@ -37,7 +36,7 @@
         text: 'classes'
       },
       {
-        text: 'String'
+        text: 'string'
       },
       {
         text: 'No'
@@ -51,7 +50,7 @@
         text: 'titleText'
       },
       {
-        text: 'String'
+        text: 'string'
       },
       {
         text: 'No'
@@ -65,7 +64,7 @@
         text: 'titleHtml'
       },
       {
-        text: 'String'
+        text: 'string'
       },
       {
         text: 'No'
@@ -79,7 +78,7 @@
         text: 'descriptionText'
       },
       {
-        text: 'String'
+        text: 'string'
       },
       {
         text: 'No'
@@ -93,7 +92,7 @@
         text: 'descriptionHtml'
       },
       {
-        text: 'String'
+        text: 'string'
       },
       {
         text: 'No'
@@ -107,7 +106,7 @@
         text: 'errorList'
       },
       {
-        text: 'Object'
+        text: 'object'
       },
       {
         text: 'Yes'
