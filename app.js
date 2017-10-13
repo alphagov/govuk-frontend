@@ -32,6 +32,8 @@ const capitaliseComponentName = string => {
   }
   return string.join('')
 }
+// make the function above available as a filter for all templates
+env.addFilter('capitaliseComponentName', capitaliseComponentName)
 
 // Set view engine
 app.set('view engine', 'njk')
