@@ -1,11 +1,11 @@
 <details class="govuk-c-details
-  {%- if classes %} {{ classes }}{% endif %}">
+  {%- if classes %} {{ params.classes }}{% endif %}">
   <summary class="govuk-c-details__summary">
-    <span class="govuk-c-details__summary-text">{{ detailsSummaryText}}</span>
+    <span class="govuk-c-details__summary-text">{{ params.summary }}</span>
   </summary>
   <div class="govuk-c-border govuk-c-border--left-narrow">
     <div class="govuk-c-details__text">
-      {{ detailsText | safe }}
+      {{ params.text | safe }}
     </div>
   </div>
 </details>
