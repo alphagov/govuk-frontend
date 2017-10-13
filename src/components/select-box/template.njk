@@ -1,13 +1,20 @@
 {% from "label/macro.njk" import govukLabel %}
 
-{% if hasLabelWithText %}
-{% set forAttribute = id %}
-{{ govukLabel(labelClasses, hasLabelWithText, '', '', forAttribute) }}
-{% endif %}
+{%- if params.labelText %}
+{{- govukLabel(
+  {
+    labelClasses: params.labelClasses,
+    labelText: params.labelText,
+    hintText: params.hintText,
+    errorMessage: params.errorMessage,
+    id: params.id
+  }
+) -}}
+{% endif -%}
 <select class="govuk-c-select-box
-  {%- if classes %} {{ classes }}{% endif %}" id="{{ id }}" name="{{ name }}">
-  {% for option in options %}
+  {%- if params.classes %} {{ params.classes }}{% endif %}{%- if params.errorMessage %} govuk-c-input--error{% endif %}" id="{{ params.id }}" name="{{ params.name }}">
+  {% for option in params.options %}
   <option value="{{ option.value }}"
-  {%- if option.selected %} selected{% endif %}>{{ option.label }}</option>
+  {%- if option.selected %} selected{% endif %}>{{ option.text }}</option>
   {% endfor %}
 </select>
