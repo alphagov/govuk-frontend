@@ -1,7 +1,7 @@
 @import "../../globals/scss/import-once";
 @import "../../globals/scss/typography";
 @import "../../globals/scss/vars";
-@import "../site-width-container/site-width-container";
+@import "../../globals/scss/layout/site-width-container";
 
 @include exports("cookie-banner") {
   .govuk-c-cookie-banner {

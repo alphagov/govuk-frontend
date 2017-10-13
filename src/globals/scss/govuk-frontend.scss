@@ -1,5 +1,6 @@
 // Globals
 @import "../../globals/scss/spacing";
+@import "../../globals/scss/layout/grid";
 
 // Components
 @import "../../components/breadcrumb/breadcrumb";
@@ -12,7 +13,6 @@
 @import "../../components/error-summary/error-summary";
 @import "../../components/fieldset/fieldset";
 @import "../../components/file-upload/file-upload";
-@import "../../components/grid/grid";
 @import "../../components/input/input";
 @import "../../components/inset-text/inset-text";
 @import "../../components/label/label";
@@ -24,7 +24,6 @@
 @import "../../components/phase-tag/phase-tag";
 @import "../../components/radio/radio";
 @import "../../components/select-box/select-box";
-@import "../../components/site-width-container/site-width-container";
 @import "../../components/table/table";
 @import "../../components/textarea/textarea";
 @import "../../components/pagination/pagination";
