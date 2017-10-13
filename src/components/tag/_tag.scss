@@ -3,10 +3,9 @@
 @import "../../globals/scss/typography";
 @import "../../globals/scss/vars";
 
-@include exports("phase-tag") {
-  .govuk-c-phase-tag {
+@include exports("tag") {
+  .govuk-c-tag {
     display: inline-block;
-    margin-right: $govuk-spacing-scale-2;
     padding: $govuk-spacing-scale-1 $govuk-spacing-scale-1 0;
 
     color: $govuk-white;
@@ -20,5 +19,9 @@
 
     text-decoration: none;
     text-transform: uppercase;
+  }
+
+  .govuk-c-tag--inactive {
+    background-color: $govuk-grey-1;
   }
 }

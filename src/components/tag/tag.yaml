@@ -1,0 +1,11 @@
+variants:
+ - name: default
+   data:
+    text: alpha
+ - name: with-html
+   data:
+    html: <i>alpha</i>
+ - name: inactive
+   data:
+    text: alpha
+    classes: govuk-c-tag--inactive
