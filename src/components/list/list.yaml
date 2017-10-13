@@ -14,7 +14,7 @@ variants:
 - name: bulleted-list
   data:
     classes: govuk-c-list--bullet
-    isBullet: true
+    type: bullet
     items:
       -
         content: 'here is a bulleted list'
@@ -27,7 +27,7 @@ variants:
 - name: numbered-list
   data:
     classes: govuk-c-list--number
-    isNumber: true
+    type: number
     items:
       -
         content: 'This is a numbered list.'
@@ -39,7 +39,7 @@ variants:
   data:
     content: Steps icon list
     classes: govuk-c-list--icon
-    isStep: true
+    type: step
     items:
       -
         content: 'Step'
@@ -72,7 +72,7 @@ variants:
 - name: steps-large-icon-list
   data:
     classes: govuk-c-list--icon
-    isStepLarge: true
+    type: step--large
     items:
       -
         content: 'Step'

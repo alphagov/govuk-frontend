@@ -1,13 +1,14 @@
-{% if params.isBullet %}
+{% set type = params.type | lower %}
+{% if type == 'bullet' %}
 <ul class="govuk-c-list govuk-c-list--bullet
   {%- if params.classes %} {{ params.classes }}{% endif %}">
-{% elseif params.isNumber %}
+{% elseif type == 'number' %}
 <ol class="govuk-c-list govuk-c-list--number
   {%- if params.classes %} {{ params.classes }}{% endif %}">
-{% elseif params.isStep %}
+{% elseif type == 'step' %}
 <ol class="govuk-c-list govuk-c-list--icon
   {%- if params.classes %} {{ params.classes }}{% endif %}">
-{% elseif params.isStepLarge %}
+{% elseif type == 'step--large' %}
 <ol class="govuk-c-list govuk-c-list--icon
   {%- if params.classes %} {{ params.classes }}{% endif %}">
 {% else %}
@@ -17,8 +18,8 @@
 
 {%- for item in params.items %}
   <li>
-    {% if (params.isStep) or (params.isStepLarge) %}
-    <span class="govuk-c-list__icon govuk-u-circle {% if (params.isStepLarge) %}govuk-c-list__icon--large{% endif %}">{{ loop.index }}</span> {{ item.content }}
+    {% if type == 'step' or type == 'step--large' %}
+    <span class="govuk-c-list__icon govuk-u-circle {% if type == 'step--large' %}govuk-c-list__icon--large{% endif %}">{{ loop.index }}</span> {{ item.content }}
     {% else %}
     {% if item.href %}
     <a href="{{ item.href }}">
@@ -31,7 +32,7 @@
   </li>
 {% endfor -%}
 
-{% if (params.isNumber) or (params.isStep) or (params.isStepLarge) %}
+{% if type == 'number' or type == 'step' or type == 'step--large' %}
 </ol>
 {% else %}
 </ul>
