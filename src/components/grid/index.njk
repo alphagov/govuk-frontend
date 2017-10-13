@@ -1,4 +1,7 @@
 {% extends "component.njk" %}
+{% from "list/macro.njk" import govukList %}
+{% from "button/macro.njk" import govukButton %}
+{% from "grid/macro.njk" import govukGrid %}
 
 {# Commented out blocks below inherit from views/component.njk #}
 
@@ -6,9 +9,64 @@
 {% block componentDescription %}
   Grid row with grid items.
 {% endblock %}
-{# componentExample #}
-{# componentNunjucks #}
-{# componentHtml #}
+
+{% block additionalExampleWriteup %}
+<p class="govuk-u-copy-19">The above example is a macro to render a pure grid. In reality however you'd want to add content and other components inside the grid.</p>
+
+<p class="govuk-u-copy-19">The way to do that is shown in the below example:</p>
+<ul class="govuk-c-list govuk-c-list--bullet">
+  <li>you call the grid macro</li>
+  <li>specify the item width and whether is opens or closes the grid wrapper</li>
+  <li>add content inside the call</li>
+  <li>close the grid macro call</li>
+</ul>
+<pre><code>
+  {% raw %}
+  {% call govukGrid({
+    "items": [
+      {
+          "width": "one-half",
+          "gridStart": true
+      }
+    ]
+  })%}
+  {{ govukButton({classes: '', text:'Save and continue', url: '', isStart: '', isDisabled: ''}) }}
+  {% endcall %}
+  {% call govukGrid({
+    "items": [
+      {
+      "width": "one-half",
+      "gridEnd": true
+      }
+    ]
+  })%}
+  <p>This is a magical button</p>
+  {% endcall %}
+{% endraw %}
+</code></pre>
+<p class="govuk-u-copy-19">above results in</p>
+{% call govukGrid({
+  "items": [
+    {
+        "width": "one-half",
+        "gridStart": true
+    }
+  ]
+})%}
+{{ govukButton({classes: '', text:'Save and continue', url: '', isStart: '', isDisabled: ''}) }}
+{% endcall %}
+{% call govukGrid({
+  "items": [
+    {
+    "width": "one-half",
+    "gridEnd": true
+    }
+  ]
+})%}
+<p>This is a magical button</p>
+{% endcall %}
+
+{% endblock %}
 
 {# override link to design system here if it's different to base url + componentName #}
 {# {% set componentGuidanceLink = 'new link here' %} #}

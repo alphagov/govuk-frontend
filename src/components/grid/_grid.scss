@@ -33,6 +33,13 @@
     width: percentage( 1 / 4);
   }
 
+  // visibly show grid layout
+  .preview-grid .govuk-c-grid__item {
+    background-color: $govuk-light-blue-25;
+    border: 1px dashed $govuk-purple;
+    padding-bottom: $govuk-spacing-scale-3;
+    padding-top: $govuk-spacing-scale-3;
+  }
   // for testing purposes
   $govuk-width-proportions: (
     full: 100%,

@@ -1,0 +1,31 @@
+variants:
+  - name: default
+    data:
+      classes: preview-grid
+      items:
+        -
+          width: 'full'
+          gridStart: true
+        -
+          width: 'one-half'
+        -
+          width: 'one-half'
+        -
+          width: 'one-third'
+        -
+          width: 'one-third'
+        -
+          width: 'one-third'
+        -
+          width: 'two-thirds'
+        -
+          width: 'one-third'
+        -
+          width: 'one-quarter'
+        -
+          width: 'one-quarter'
+        -
+          width: 'one-quarter'
+        -
+          width: 'one-quarter'
+          gridEnd: true
