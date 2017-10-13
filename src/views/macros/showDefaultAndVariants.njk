@@ -27,15 +27,11 @@
 {% set componentHtml %}
 {{ loadComponentTemplate(componentName, item.data) }}
 {% endset %}
-<pre><code>
-  {{- componentHtml | e -}}
-</code></pre>
+<pre><code>{{- componentHtml | e -}}</code></pre>
 
 <h4 class="govuk-u-copy-19">Macro</h4>
-<pre><code>
-{% raw %}{{ loadComponentTemplate(componentName, {% endraw %}
-  {{ item.data | dump(2) }}
-{% raw %}) }}{% endraw %}
-</code></pre>
+<pre><code>{% raw %}{{ {% endraw %}govuk{{ componentName | capitaliseComponentName }}(
+  {{- item.data | dump(2) -}}
+){% raw %} }}{% endraw %}</code></pre>
 {% endfor %}
 {% endmacro %}
