@@ -1,0 +1,25 @@
+variants:
+- name: default
+  data:
+    id: 'radio'
+    inputName: 'radio-group'
+    classes:
+    radios:
+      -
+        id: 1
+        value: 'Yes'
+        label: 'Yes'
+      -
+        id: 2
+        value: 'No'
+        label: 'No'
+      -
+        id: 3
+        value: 'No'
+        label: 'No'
+        checked: true
+      -
+        id: 4
+        value: 'NA'
+        label: 'Not applicable'
+        disabled: true
