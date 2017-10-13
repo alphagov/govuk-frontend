@@ -1,7 +1,8 @@
 {% from "error-message/macro.njk" import govukErrorMessage %}
 
 {{- govukErrorMessage(
-  classes='',
-  errorMessage='Error message goes here'
-  )
+  {
+    "classes": "" ,
+    "errorMessage": "Error message about full name goes here"
+  })
 -}}
