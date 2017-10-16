@@ -1,22 +1,11 @@
 {% from "textarea/macro.njk" import govukTextarea %}
 
-{{ govukTextarea(
-  classes='',
-  labelText='National Insurance number',
-  hintText='',
-  errorMessage='',
-  id='textarea',
-  name='name'
-  )
-}}
-
-{{ govukTextarea(
-  classes='',
-  labelText='National Insurance number',
-  hintText='',
-  errorMessage='',
-  id='textarea-2',
-  name='name-2',
-  rows='10'
-  )
+{{ govukTextarea({
+  "id": "more-detail",
+  "name": "more-detail",
+  "label": {
+    "labelText": "Can you provide more detail?",
+    "hintText": "Don't include personal or financial information, eg your National Insurance number or credit card details."
+  }
+})
 }}
