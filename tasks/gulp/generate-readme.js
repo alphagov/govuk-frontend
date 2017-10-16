@@ -4,7 +4,6 @@ const configPath = require('../../config/paths.json')
 const gulp = require('gulp')
 const rename = require('gulp-rename')
 const data = require('gulp-data')
-const vinylPaths = require('vinyl-paths')
 const path = require('path')
 const fs = require('fs')
 const toMarkdown = require('gulp-to-markdown')
@@ -12,6 +11,7 @@ const gulpNunjucks = require('gulp-nunjucks')
 const nunjucks = require('nunjucks')
 const objectData = {}
 const yaml = require('js-yaml')
+const helperFunctions = require('../../lib/helper-functions.js')
 
 // data variable to be passed to the nunjucks template
 function getDataForFile (file) {
@@ -24,20 +24,21 @@ var environment = new nunjucks.Environment(
   new nunjucks.FileSystemLoader([configPath.src + 'views', configPath.components])
 )
 environment.addGlobal('isReadme', 'true')
+// make the function above available as a filter for all templates
+environment.addFilter('capitaliseComponentName', helperFunctions.capitaliseComponentName)
 
 gulp.task('generate:readme', () => {
   return gulp.src(['!' + configPath.components + '_component-example/index.njk', configPath.components + '**/index.njk'])
-  .pipe(vinylPaths(paths => {
-    objectData.componentName = paths.split(path.sep).slice(-2, -1)[0]
+  .pipe(data(file => {
+    objectData.componentName = path.dirname(file.path).split(path.sep).slice(-1).toString()
     objectData.componentPath = objectData.componentName
-    // we want to show all variants' code and macros on the component details page
     try {
       let componentData = yaml.safeLoad(fs.readFileSync(`src/components/${objectData.componentName}/${objectData.componentName}.yaml`, 'utf8'), {json: true})
       objectData.componentData = componentData
+      return componentData
     } catch (e) {
-      console.log('ENOENT: no such file or directory: ', paths)
+      console.log('ENOENT: no such file or directory: ', file)
     }
-    return Promise.resolve()
   }))
   .pipe(data(getDataForFile))
   .pipe(gulpNunjucks.compile('', {

@@ -6,6 +6,7 @@ const path = require('path')
 const port = (process.env.PORT || 3000)
 const dto = require('directory-to-object')
 const yaml = require('js-yaml')
+const helperFunctions = require('./lib/helper-functions.js')
 
 // Set up views
 const appViews = [
@@ -24,16 +25,8 @@ let env = nunjucks.configure(appViews, {
   watch: true // reload templates when they are changed. needs chokidar dependency to be installed
 })
 
-// components have dashes in names whereas macros have govukPascalCase syntax
-const capitaliseComponentName = string => {
-  string = string.toLowerCase().split('-')
-  for (var i = 0; i < string.length; i++) {
-    string[i] = string[i].charAt(0).toUpperCase() + string[i].slice(1)
-  }
-  return string.join('')
-}
 // make the function above available as a filter for all templates
-env.addFilter('capitaliseComponentName', capitaliseComponentName)
+env.addFilter('capitaliseComponentName', helperFunctions.capitaliseComponentName)
 
 // Set view engine
 app.set('view engine', 'njk')
@@ -79,10 +72,10 @@ app.get('/components*', function (req, res, next) {
     console.log('ENOENT: no such file or directory: ', yamlPath)
   }
   res.locals.componentData = componentData  // make it available to the nunjucks template to loop over and display code
-  res.locals.importStatement = env.renderString(`{% from '${path[0]}/macro.njk' import govuk${capitaliseComponentName(path[0])} %}`)
+  res.locals.importStatement = env.renderString(`{% from '${path[0]}/macro.njk' import govuk${helperFunctions.capitaliseComponentName(path[0])} %}`)
   if (path.includes('preview')) {
     // Show the isolated component preview
-    let componentNameCapitalized = capitaliseComponentName(path[0])
+    let componentNameCapitalized = helperFunctions.capitaliseComponentName(path[0])
     let importStatement = `{% from '${path[0]}/macro.njk' import govuk${componentNameCapitalized} %}` // all our components use the same naming convention
     let macroParameters
     for (let [index, item] of componentData.variants.entries()) {
