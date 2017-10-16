@@ -1,12 +1,27 @@
 {% from "fieldset/macro.njk" import govukFieldset %}
+{% from "input/macro.njk" import govukInput %}
 
-{% call govukFieldset(fieldsetClasses='', legendText, legendHintText, legendErrorMessage) %}
+{% call govukFieldset({legendText: params.legendText, hintText: params.legendHintText, errorMessage: params.legendErrorMessage }) %}
   <div class="govuk-c-date
-    {%- if classes %} {{ classes }}{% endif %}">
-    {% for item in dateItems %}
+    {%- if params.classes %} {{ params.classes }}{% endif %}">
+    {% for item in params.items %}
     <div class="govuk-c-date__item govuk-c-date__item--{{ item.name }}">
-      <label class="govuk-c-label govuk-c-date__label" for="{{ id }}-{{ item.name }}">{{ (item.name) | capitalize }}</label>
-      <input class="govuk-c-input govuk-c-date__input {%- if item.error %} govuk-c-input--error{% endif %}" id="{{ id }}-{{ item.name }}" name="{{ name }}-{{ item.name }}" type="number">
+      {% set labelText = (item.name) | capitalize %}
+      {% set inputId = params.id+"-"+item.name %}
+      {% set inputClass = '' %}
+      {% if item.error %}{% set inputClass = ' govuk-c-input--error'%}{% endif %}
+      {% set inputId = params.id+"-"+item.name %}
+      {% set inputName = params.name+"-"+item.name %}
+      {{ govukInput(
+      {
+        "labelClasses": 'govuk-c-date__label',
+        "labelText": labelText,
+        "id": inputId,
+        "classes": "govuk-c-input govuk-c-date__input "+inputClass,
+        "name": inputName,
+        "value": item.value
+      }
+      ) }}
     </div>
     {% endfor %}
   </div>
