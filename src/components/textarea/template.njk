@@ -10,4 +10,4 @@
 
 <textarea class="govuk-c-textarea
 {%- if params.label.errorMessage %} govuk-c-textarea--error{% endif %}
-{%- if params.classes %} {{ params.classes }}{% endif -%}" id="{{ params.id }}" name="{{ params.name }}" rows="{%if params.rows %} {{- params.rows -}} {% else %}5{%endif %}"></textarea>
+{%- if params.classes %} {{ params.classes }}{% endif -%}" id="{{ params.id }}" name="{{ params.name }}" rows="{%if params.rows %} {{- params.rows -}} {% else %}5{%endif %}">{{ params.value }}</textarea>

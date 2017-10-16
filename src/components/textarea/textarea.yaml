@@ -17,6 +17,17 @@ variants:
         errorMessage:
           errorMessage: You must provide an explanation
 
+  - name: with-value
+    data:
+      id: full-address
+      name: address
+      value: |
+        221B Baker Street
+        London
+        NW1 6XE
+      label:
+        labelText: Full address
+
   - name: specifying-rows
     data:
       id: full-address
