@@ -25,13 +25,13 @@ variants:
     items:
       -
         name: 'day'
-        error: true
+        classes: 'govuk-c-input--error'
       -
         name: 'month'
-        error: true
+        classes: 'govuk-c-input--error'
       -
         name: 'year'
-        error: true
+        classes: 'govuk-c-input--error'
 - name: with-day-error
   data:
     id: 'dob-day-error'
@@ -43,7 +43,7 @@ variants:
     items:
       -
         name: 'day'
-        error: true
+        classes: 'govuk-c-input--error'
       -
         name: 'month'
       -
@@ -61,7 +61,7 @@ variants:
         name: 'day'
       -
         name: 'month'
-        error: true
+        classes: 'govuk-c-input--error'
       -
         name: 'year'
 - name: with-year-error
@@ -79,4 +79,4 @@ variants:
         name: 'month'
       -
         name: 'year'
-        error: true
+        classes: 'govuk-c-input--error'
