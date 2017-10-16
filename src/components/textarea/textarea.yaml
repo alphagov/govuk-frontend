@@ -1,0 +1,26 @@
+variants:
+  - name: default
+    data:
+      name: more-detail
+      id: more-detail
+      label:
+        labelText: Can you provide more detail?
+        hintText: Don't include personal or financial information, eg your
+                  National Insurance number or credit card details.
+
+  - name: error-state
+    data:
+      name: no-ni-reason
+      id: no-ni-reason
+      label:
+        labelText: Why can't you provide a National Insurance number?
+        errorMessage:
+          errorMessage: You must provide an explanation
+
+  - name: specifying-rows
+    data:
+      id: full-address
+      name: address
+      label:
+        labelText: Full address
+      rows: 8

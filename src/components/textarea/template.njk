@@ -1,7 +1,13 @@
 {% from "label/macro.njk" import govukLabel %}
 
-{{- govukLabel(classes, labelText, hintText, errorMessage, id) -}}
+{{- govukLabel({
+  "labelText": params.label.labelText,
+  "hintText": params.label.hintText,
+  "errorMessage": params.label.errorMessage,
+  "classes": params.label.classes,
+  "id": params.id
+}) -}}
 
 <textarea class="govuk-c-textarea
-{%- if errorMessage %}govuk-c-input--error{% endif %}
-{%- if classes %} {{ classes }}{% endif -%}" id="{{ id }}" name="{{ name }}" rows="{%if rows %} {{- rows -}} {% else %}5{%endif %}"></textarea>
+{%- if params.label.errorMessage %} govuk-c-textarea--error{% endif %}
+{%- if params.classes %} {{ params.classes }}{% endif -%}" id="{{ params.id }}" name="{{ params.name }}" rows="{%if params.rows %} {{- params.rows -}} {% else %}5{%endif %}"></textarea>
