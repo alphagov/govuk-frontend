@@ -14,12 +14,12 @@
 
 {% block componentArguments %}
 {% from "table/macro.njk" import govukTable %}
-{{ govukTable(
-  classes='',
-  options = {
+{{ govukTable({
+  classes: '',
+  options: {
     'isFirstCellHeader': 'true'
   },
-  data = {
+  data: {
     'head' : [
       {
         text: 'Name'
@@ -51,19 +51,47 @@
       ],
       [
         {
-          text: 'errorMessage'
+          text: 'text'
         },
         {
           text: 'string'
         },
         {
-          text: 'Yes'
+          text: 'No'
         },
         {
-          text: 'Error message text'
+          text: 'Text to use within the error message'
+        }
+      ],
+      [
+        {
+          text: 'html'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'HTML to use within the error message. If this is provided, the text argument will be ignored.'
+        }
+      ],
+      [
+        {
+          text: 'attributes'
+        },
+        {
+          text: 'object'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'Any extra HTML attributes (for example data attributes) to add to the error message span tag'
         }
       ]
     ]
   }
-)}}
+})}}
 {% endblock %}

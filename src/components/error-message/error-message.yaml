@@ -1,5 +1,4 @@
 variants:
- - name: default
-   data:
-    classes: ''
-    errorMessage: Error message about full name goes here
+- name: default
+  data:
+    text: Error message about full name goes here
