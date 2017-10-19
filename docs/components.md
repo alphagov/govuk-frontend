@@ -12,6 +12,9 @@ All components must follow the conventions described in our [CSS coding standard
 * set internal margins in a single direction
 * not rely on any other selector outside of the component scss file to style its children
 
+## Component template API
+[Read more](component-api.md) about the way we write component templates.
+
 ## Publishing components
 
 We are using [lerna.js](https://lernajs.io/) to manage our packages and publish to npm.
