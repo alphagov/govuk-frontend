@@ -13,8 +13,8 @@
 
 {{ govukBreadcrumb({
   "items": [
-    { title: 'GOV.UK Frontend', url: '/' },
-    { title: componentName | replace("-", " ") | capitalize }
+    { text: 'GOV.UK Frontend', href: '/' },
+    { text: componentName | replace("-", " ") | capitalize }
   ]
 }) }}
 {% endif %}

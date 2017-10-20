@@ -62,26 +62,12 @@ Please note, this component depends on @govuk-frontend/globals and @govuk-fronte
           text: 'Yes'
         },
         {
-          text: 'Breadcrumbs array with title and url keys'
+          text: 'Array of breadcrumb items'
         }
       ],
       [
         {
-          text: 'title'
-        },
-        {
-          text: 'string'
-        },
-        {
-          text: 'Yes'
-        },
-        {
-          text: 'Title of the breadcrumb item'
-        }
-      ],
-      [
-        {
-          text: 'url'
+          text: 'text'
         },
         {
           text: 'string'
@@ -90,7 +76,49 @@ Please note, this component depends on @govuk-frontend/globals and @govuk-fronte
           text: 'No'
         },
         {
-          text: 'Url of the breadcrumb item'
+          text: 'Text to use within the breadcrumb item'
+        }
+      ],
+      [
+        {
+          text: 'html'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'HTML to use within the breadcrumb item. If this is provided, the text argument will be ignored.'
+        }
+      ],
+      [
+        {
+          text: 'href'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'no'
+        },
+        {
+          text: 'Link for the breadcrumb item. If not specified, breadcrumb item is a normal list item'
+        }
+      ],
+      [
+        {
+          text: 'attributes'
+        },
+        {
+          text: 'object'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'Any extra HTML attributes (for example data attributes) to add to the breadcrumb container.'
         }
       ]
     ]

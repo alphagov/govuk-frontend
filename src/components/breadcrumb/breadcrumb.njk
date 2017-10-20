@@ -1,17 +1,14 @@
 {% from "breadcrumb/macro.njk" import govukBreadcrumb %}
 
-{{ govukBreadcrumb(
-  {
-  "classes": "extra-dummy-class",
+{{ govukBreadcrumb({
   "items": [
     {
-      "title": "Section 1",
-      "url": "/section"
+      "text": "Section 1",
+      "href": "/section"
     },
     {
-      "title": "Sub-section",
-      "url": "/section/sub-section"
+      "text": "Sub-section",
+      "href": "/section/sub-section"
     }
   ]
-}
-) }}
+}) }}
