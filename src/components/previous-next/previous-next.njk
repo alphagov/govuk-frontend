@@ -1,0 +1,14 @@
+{% from "previous-next/macro.njk" import govukPreviousNext -%}
+
+{{ govukPreviousNext({
+  "previous": {
+    "href": "/previous-page",
+    "text": "Previous page",
+    "labelText": "1 of 3"
+  },
+  "next": {
+    "href": "/next-page",
+    "text": "Next page",
+    "labelText": "3 of 3"
+  }
+}) }}
