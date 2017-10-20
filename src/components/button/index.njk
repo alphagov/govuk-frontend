@@ -47,6 +47,118 @@ Buttons are configured to perform an action and they can have a different look. 
     'rows' : [
       [
         {
+          text: 'element'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'Yes'
+        },
+        {
+          text: 'Whether to use an `input`, `button` or `a` element to create the button. In most cases you will not need to set this as it will be configured automatically if you use `href` or `html`.'
+        }
+      ],
+      [
+        {
+          text: 'text'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'Yes'
+        },
+        {
+          text: 'Text for the button'
+        }
+      ],
+      [
+        {
+          text: 'html'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'Yes'
+        },
+        {
+          text: 'HTML for the button or link. If this is provided, the `text` argument will be ignored and `element` will be automatically set to `button` unless `href` is also set, or it has already been defined. This argument has no effect if `element` is set to `input`.'
+        }
+      ],
+      [
+        {
+          text: 'name'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'Yes'
+        },
+        {
+          text: 'Name for the `input` or `button`. This has no effect on `a` elements.'
+        }
+      ],
+      [
+        {
+          text: 'type'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'Yes'
+        },
+        {
+          text: 'Type of `input` or `button` – `button`, `submit` or `reset`. Defaults to `submit`. This has no effect on `a` elements.'
+        }
+      ],
+      [
+        {
+          text: 'value'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'Yes'
+        },
+        {
+          text: 'Value for the `button` tag. This has no effect on `a` or `input` elements.'
+        }
+      ],
+      [
+        {
+          text: 'disabled'
+        },
+        {
+          text: 'boolean'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'Whether the button should be disabled. For button and input elements, `disabled` and `aria-disabled` attributes will be set automatically.'
+        }
+      ],
+       [
+        {
+          text: 'href'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'The URL that the button should link to. If this is set, `element` will be automatically set to `a` if it has not already been defined.'
+        }
+      ],
+      [
+        {
           text: 'classes'
         },
         {
@@ -61,58 +173,16 @@ Buttons are configured to perform an action and they can have a different look. 
       ],
       [
         {
-          text: 'text'
+          text: 'attributes'
         },
         {
-          text: 'string'
-        },
-        {
-          text: 'Yes'
-        },
-        {
-          text: 'Button or link text'
-        }
-      ],
-      [
-        {
-          text: 'isStart'
-        },
-        {
-          text: 'boolean'
+          text: 'object'
         },
         {
           text: 'No'
         },
         {
-          text: 'Adds the class govuk-c-button--start for a "Start now" button'
-        }
-      ],
-      [
-        {
-          text: 'isDisabled'
-        },
-        {
-          text: 'boolean'
-        },
-        {
-          text: 'No'
-        },
-        {
-          text: 'Disables the button - adds the class govuk-c-button--disabled and sets disabled="disabled" and aria-disabled="true"'
-        }
-      ],
-       [
-        {
-          text: 'url'
-        },
-        {
-          text: 'string'
-        },
-        {
-          text: 'No'
-        },
-        {
-          text: 'Url that the hyperlink points to'
+          text: 'Any extra HTML attributes (for example data attributes) to add to the error message span tag'
         }
       ]
     ]
