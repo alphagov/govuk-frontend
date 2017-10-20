@@ -6,9 +6,42 @@ variants:
 - name: disabled
   data:
     text: Disabled button
-    isDisabled: true
+    disabled: true
+- name: link
+  data:
+    text: Link button
+    href: '/'
+- name: disabled-link
+  data:
+    text: Disabled link button
+    href: '/'
+    disabled: true
 - name: start
   data:
+    text: Start now button
+    classes: 'govuk-c-button--start'
+- name: start-link
+  data:
+    text: Start now link button
+    href: /
+    classes: 'govuk-c-button--start'
+- name: button-with-html
+  data:
+    name: start-now
+    html: Start <em>now</em>
+- name: explicit-button
+  data:
+    name: start-now
     text: Start now
-    url: /
-    isStart: true
+    element: button
+- name: button-with-value
+  data:
+    name: start-now
+    value: start
+    text: Start now
+    element: button
+- name: non-submit-button
+  data:
+    name: add-another
+    text: Add another
+    type: button
