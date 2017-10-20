@@ -1,0 +1,38 @@
+variants:
+- name: default
+  data:
+    id: select-1
+    name: select-1
+    label:
+      html: Label text goes here
+    items:
+      -
+        value: 1
+        text: GOV.UK frontend option 1
+      -
+        value: 2
+        text: GOV.UK frontend option 2
+        selected: true
+      -
+        value: 3
+        text: GOV.UK frontend option 3
+        disabled: true
+- name: with-hint-text-and-error
+  data:
+    id: select-2
+    name: select-2
+    label:
+      hintHtml: Hint message <i>goes</i> here
+      html: Label text <i>goes</i> here
+    errorMessage:
+      html: <i>Error message goes here</i>
+    items:
+      -
+        value: 1
+        text: GOV.UK frontend option 1
+      -
+        value: 2
+        text: GOV.UK frontend option 2
+      -
+        value: 3
+        text: GOV.UK frontend option 3
