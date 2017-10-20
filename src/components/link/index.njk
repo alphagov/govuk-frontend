@@ -8,9 +8,8 @@
 {% block componentDescription %}
 Link component, with four variants:
 
-{{ govukList(
-  classes='',
-  [
+{{ govukList({
+  items: [
     {
       text: 'back link - a black underlined link with a left pointing arrow'
     },
@@ -24,10 +23,8 @@ Link component, with four variants:
       text: 'skip link - skip to the main page content'
     }
   ],
-  options = {
-    'isBullet': 'true'
-  }
-) }}
+  type: 'bullet'
+}) }}
 {% endblock %}
 
 {# defaultAndVariants #}
@@ -59,6 +56,48 @@ Link component, with four variants:
     'rows' : [
       [
         {
+          text: 'classes'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text:'No'
+        },
+        {
+          text: 'The available classes for the link: govuk-c-link--back, govuk-c-link--download, govuk-c-link--muted and govuk-c-link--skip'
+        }
+      ],
+      [
+        {
+          text: 'text'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text:'No'
+        },
+        {
+          text: 'Text to use within the link'
+        }
+      ],
+      [
+        {
+          text: 'html'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text:'No'
+        },
+        {
+          text: 'HTML to use within the link. If this is provided, the text argument will be ignored.'
+        }
+      ],
+      [
+        {
           text: 'href'
         },
         {
@@ -73,30 +112,16 @@ Link component, with four variants:
       ],
       [
         {
-          text: 'content'
+          text: 'attributes'
         },
         {
-          text: 'string'
+          text: 'object'
         },
         {
-          text:'Yes'
+          text: 'No'
         },
         {
-          text: 'The link text'
-        }
-      ],
-      [
-        {
-          text: 'classes'
-        },
-        {
-          text: 'string'
-        },
-        {
-          text:'No'
-        },
-        {
-          text: 'The available modifiers for the link type: --back, --muted, --download and --skip'
+          text: 'Any extra HTML attributes (for example data attributes) to add to the anchor tag.'
         }
       ]
     ]
