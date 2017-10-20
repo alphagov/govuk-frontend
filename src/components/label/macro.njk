@@ -1,3 +1,6 @@
 {% macro govukLabel(params) %}
+  {% if params|string === params %}
+    {% set params = { text: params } %}
+  {% endif %}
   {%- include "./template.njk" -%}
 {% endmacro %}
