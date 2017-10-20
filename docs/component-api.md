@@ -1,14 +1,14 @@
 
 # Component API definition and use
-We have chosen as Nunjucks as the templating language for GOV.UK Frontend components. We expose those templates as reusable chunks of code: macros. Developers import macros into their application, call them as per documentation and provide data to its parameters.
+We have chosen as Nunjucks as the templating language for GOV.UK Frontend components. We expose those templates as reusable chunks of code: macros. Developers import macros into their application, call them as per documentation and provide data to its arguments.
 
-To provide a level of consistency for developers we have standardised parameter names, their expected input, use and placement. There are expectations, and  if so they are documented accordingly.
+To provide a level of consistency for developers we have standardised argument names, their expected input, use and placement. There are expectations, and  if so they are documented accordingly.
 
 ## Specifying content
-When providing *content* to a macro, say for a label or a button, we accept two parameter options:
+When providing *content* to a macro, say for a label or a button, we accept two argument options:
 
  - `text` accepts a plain string and is the default way of passing content
- - `html` accepts html markup. In the template we will not escape html so it will be rendered. In a scenario where both text and html are set, html parameter will take precedence over text.
+ - `html` accepts html markup. In the template we will not escape html so it will be rendered. In a scenario where both text and html are set, html argument will take precedence over text.
 
 Example:
 
@@ -20,9 +20,9 @@ Example of implementing logic in a component template:
 
 `{{ params.html | safe if params.html else params.text }}`
 
-Example shows that if `html` and `text` parameters are present, then `html` takes precedence over `text` and we are not escaping it.
+Example shows that if `html` and `text` arguments are present, then `html` takes precedence over `text` and we are not escaping it.
 
-## Allow for text argument to be passed as a single parameter
+## Allow for text argument to be passed as a single argument
 When the users don't want to specify extra attributes we should allow them to call a component without having to pass an entire object.
 
 Example:
@@ -69,7 +69,7 @@ Example of a component depending on two other components
 ```
 
 ## Mimic HTML attribute names
-When there is a need to specify html attributes, such as *checked, disabled, id, name*, etc, and they map directly, we use the same parameter name. We use boolean value to check and render the attribute.
+When there is a need to specify html attributes, such as *checked, disabled, id, name*, etc, and they map directly, we use the same argument name. We use boolean value to check and render the attribute.
 
 Example:
 
@@ -80,6 +80,8 @@ Example:
 
 ## Defining additional HTML attributes
 When there is a need to add additional attributes to the component, we accept an ***"attributes"*** object with key : value pairs for each attribute.
+
+You cannot use this to set attributes that are already defined, such as class – use the classes argument instead.
 
 Example:
 ```
@@ -111,7 +113,7 @@ Example:
 }) }}
 ```
 ## Use of classes to specify variants
-When a component has multiple visual presentations, such default button vs start button, we make use of classes parameter to differentiate between them.
+When a component has multiple visual presentations, such default button vs start button, we make use of classes argument to differentiate between them.
 
 Default button example:
 ```
