@@ -1,20 +1,20 @@
 variants:
 - name: default
   data:
-    content: Default link
+    text: Default link
 - name: back
   data:
-    content: Back
+    text: Back
     classes: govuk-c-link--back
 - name: download
   data:
-    content: Download
+    text: Download
     classes: govuk-c-link--download
 - name: muted
   data:
-    content: Is there anything wrong with this page?
+    text: Is there anything wrong with this page?
     classes: govuk-c-link--muted
 - name: skip
   data:
-    content: Skip to main content
+    text: Skip to main content
     classes: govuk-c-link--skip
