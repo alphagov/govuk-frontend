@@ -3,8 +3,8 @@
 @import "../../globals/scss/vars";
 @import "../label/label";
 
-@include exports("select-box") {
-  .govuk-c-select-box {
+@include exports("select") {
+  .govuk-c-select {
     box-sizing: border-box; // should this be global?
     width: 100%;
     height: em(40px, 19px);
@@ -17,14 +17,14 @@
     line-height: 1.25;
   }
 
-  .govuk-c-select-box:focus {
+  .govuk-c-select:focus {
     outline: $govuk-focus-width solid $govuk-focus-colour;
     outline-offset: 0;
   }
 
-  .govuk-c-select-box option:active,
-  .govuk-c-select-box option:checked,
-  .govuk-c-select-box:focus::-ms-value {
+  .govuk-c-select option:active,
+  .govuk-c-select option:checked,
+  .govuk-c-select:focus::-ms-value {
     color: $govuk-white;
     background-color: $govuk-blue;
   }

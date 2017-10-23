@@ -45,7 +45,7 @@ The HTML <code>&lt;select&gt;</code> element represents a control that provides 
           text: 'No'
         },
         {
-          text: 'Optional additional classes'
+          text: 'Optional additional classes.'
         }
       ],
       [
@@ -64,7 +64,7 @@ The HTML <code>&lt;select&gt;</code> element represents a control that provides 
       ],
       [
         {
-          text: 'inputName'
+          text: 'name'
         },
         {
           text: 'string'
@@ -73,12 +73,12 @@ The HTML <code>&lt;select&gt;</code> element represents a control that provides 
           text: 'Yes'
         },
         {
-          text: 'Name for each select box'
+          text: 'Name property for the select.'
         }
       ],
       [
         {
-          text: 'options'
+          text: 'items'
         },
         {
           text: 'array'
@@ -87,7 +87,7 @@ The HTML <code>&lt;select&gt;</code> element represents a control that provides 
           text: 'Yes'
         },
         {
-          text: 'Options array with value, text and selected keys'
+          text: 'Array of option items for the select.'
         }
       ],
       [
@@ -101,7 +101,7 @@ The HTML <code>&lt;select&gt;</code> element represents a control that provides 
           text: 'No'
         },
         {
-          text: 'Option value'
+          text: 'Value for the option item.'
         }
       ],
       [
@@ -115,7 +115,7 @@ The HTML <code>&lt;select&gt;</code> element represents a control that provides 
           text: 'Yes'
         },
         {
-          text: 'Option text'
+          text: 'Text for the option item.'
         }
       ],
       [
@@ -129,21 +129,35 @@ The HTML <code>&lt;select&gt;</code> element represents a control that provides 
           text: 'No'
         },
         {
-          text: 'Sets the option as the default one'
+          text: 'Sets the option as the selected.'
         }
       ],
       [
         {
-          text: 'labelText'
+          text: 'disabled'
         },
         {
-          text: 'string'
+          text: 'boolean'
         },
         {
-          text: 'Yes'
+          text: 'No'
         },
         {
-          text: 'The label text'
+          text: 'Sets the option item as disabled.'
+        }
+      ],
+      [
+        {
+          text: 'label'
+        },
+        {
+          text: 'object'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'Optional label text or HTML by specifying value for either text or html keys. See label component.'
         }
       ],
       [
@@ -157,12 +171,12 @@ The HTML <code>&lt;select&gt;</code> element represents a control that provides 
           text: 'No'
         },
         {
-          text: 'Optional hint text'
+          text: 'Optional text to use as a hint'
         }
       ],
       [
         {
-          text: 'labelClasses'
+          text: 'hintHtml'
         },
         {
           text: 'string'
@@ -171,7 +185,35 @@ The HTML <code>&lt;select&gt;</code> element represents a control that provides 
           text: 'No'
         },
         {
-          text: 'Optional to provide label with custom classes'
+          text: 'Optional HTML to use as a hint. If this is provided, the hintText argument will be ignored.'
+        }
+      ],
+      [
+        {
+          text: 'errorMessage'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'Optional error message. See errorMessage component.'
+        }
+      ],
+      [
+        {
+          text: 'attributes'
+        },
+        {
+          text: 'object'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'Any extra HTML attributes (for example data attributes) to add to the select component.'
         }
       ]
     ]
