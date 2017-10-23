@@ -1,9 +1,9 @@
 {% from "input/macro.njk" import govukInput %}
 
-{{ govukInput(
-{
-  "labelText": "National Insurance number",
-  "id": "input-1",
-  "name": "test-name"
-}
-) }}
+{{ govukInput({
+  label: {
+    "text": "National Insurance Number"
+  },
+  id: "input-1",
+  name: "test-name"
+}) }}
