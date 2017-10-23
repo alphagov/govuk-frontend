@@ -1,11 +1,10 @@
 variants:
- - name: default
-   data:
-     title: Application complete
-     content: Your refence number
-     reference: HDJ2123F
- - name: no-reference-number
-   data:
-     classes: extra-dummy-class
-     title: Application complete
-     content: Thank you for your application
+- name: default
+  data:
+    titleText: Application complete
+    html: Your reference number<br><strong>HDJ2123F</strong>
+- name: no-reference-number
+  data:
+    classes: extra-dummy-class
+    titleText: Application complete
+    text: Thank you for your application

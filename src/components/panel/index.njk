@@ -13,12 +13,11 @@
 
 {% block componentArguments %}
 {% from "table/macro.njk" import govukTable %}
-{{ govukTable(
-  classes='',
-  options = {
+{{ govukTable({
+  options: {
     'isFirstCellHeader': 'true'
   },
-  data = {
+  data: {
     'head' : [
       {
         text: 'Name'
@@ -36,6 +35,62 @@
     'rows' : [
       [
         {
+          text: 'titleText'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'Yes'
+        },
+        {
+          text: 'Text for the panel title'
+        }
+      ],
+      [
+        {
+          text: 'titleHtml'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'Yes'
+        },
+        {
+          text: 'HTML for the panel title. If this is provided, the titleText argument is ignored.'
+        }
+      ],
+      [
+        {
+          text: 'text'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'Text for the panel content'
+        }
+      ],
+      [
+        {
+          text: 'html'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'HTML for the panel content. If this is provided, the text argument is ignored.'
+        }
+      ],
+      [
+        {
           text: 'classes'
         },
         {
@@ -50,47 +105,19 @@
       ],
       [
         {
-          text: 'title'
+          text: 'attributes'
         },
         {
-          text: 'string'
-        },
-        {
-          text: 'Yes'
-        },
-        {
-          text: 'The panel title'
-        }
-      ],
-      [
-        {
-          text: 'content'
-        },
-        {
-          text: 'string'
+          text: 'object'
         },
         {
           text: 'No'
         },
         {
-          text: 'The panel content'
-        }
-      ],
-      [
-        {
-          text: 'reference'
-        },
-        {
-          text: 'string'
-        },
-        {
-          text: 'No'
-        },
-        {
-          text: 'Optional reference number'
+          text: 'Any extra HTML attributes (for example data attributes) to add to the panel container'
         }
       ]
     ]
   }
-)}}
+})}}
 {% endblock %}
