@@ -1,25 +1,21 @@
 variants:
-- name: default
-  data:
-    id: 'radio'
-    inputName: 'radio-group'
-    classes:
-    radios:
-      -
-        id: 1
-        value: 'Yes'
-        label: 'Yes'
-      -
-        id: 2
-        value: 'No'
-        label: 'No'
-      -
-        id: 3
-        value: 'No'
-        label: 'No'
-        checked: true
-      -
-        id: 4
-        value: 'NA'
-        label: 'Not applicable'
-        disabled: true
+  - name: default
+    data:
+      idPrefix: 'radio'
+      name: 'radio-group'
+      items:
+        -
+          value: 'waste-animal'
+          text: 'Waste from animal carcasses'
+        -
+          id: 'custom-id'
+          value: 'waste-mines'
+          text: 'Waste from mines or quarries'
+        -
+          value: 'waste-farm'
+          text: 'Farm or agricultural waste'
+          checked: true
+        -
+          value: 'waste-disabled'
+          text: 'Disabled radio option'
+          disabled: true
