@@ -1,3 +1,18 @@
 {% from "list/macro.njk" import govukList -%}
 
-{{ govukList({classes: 'govuk-c-list', href: '/', content: 'Related link'}) }}
+{{- govukList({
+  items: [
+    {
+      text: 'Related link',
+      href: '#'
+    },
+    {
+      text: 'Related link',
+      href: '#'
+    },
+    {
+      text: 'Not a link'
+    }
+  ]
+})
+-}}

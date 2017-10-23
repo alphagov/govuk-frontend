@@ -37,16 +37,16 @@
     'rows' : [
       [
         {
-          text: 'classes'
+          text: 'type'
         },
         {
-          text: 'string'
+          text: 'String'
         },
         {
           text: 'No'
         },
         {
-          text: 'Optional additional classes'
+          text: 'Type of list to create: "bullet", "number", "step" or "step-large", or omit for an unordered list without bullets.'
         }
       ],
       [
@@ -60,7 +60,7 @@
           text: 'Yes'
         },
         {
-          text: 'List items array with href and content keys'
+          text: 'Items for the list. An array of objects with text or html and optional href attributes'
         }
       ],
       [
@@ -71,38 +71,66 @@
           text: 'string'
         },
         {
-          text: 'Yes'
+          text: 'No'
         },
         {
-          text: 'List item url'
+          text: 'Link target for the list item'
         }
       ],
       [
         {
-          text: 'content'
+          text: 'text'
         },
         {
           text: 'string'
         },
         {
-          text: 'Yes'
+          text: 'No'
         },
         {
-          text: 'List item content'
+          text: 'Text content for the list item'
         }
       ],
       [
         {
-          text: 'type'
+          text: 'html'
         },
         {
-          text: 'String'
+          text: 'string'
         },
         {
           text: 'No'
         },
         {
-          text: 'Type of modifier for the list: options: "bullet", "number", "step" and "step--large"'
+          text: 'HTML content for the list item. If this is specified, the text argument will be ignored.'
+        }
+      ],
+      [
+        {
+          text: 'classes'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'Optional additional classes for the list tag'
+        }
+      ],
+      [
+        {
+          text: 'attributes'
+        },
+        {
+          text: 'object'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'Any extra HTML attributes (for example data attributes) to add to the list tag'
         }
       ]
     ]
