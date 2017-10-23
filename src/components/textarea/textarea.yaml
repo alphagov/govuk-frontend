@@ -4,20 +4,20 @@ variants:
       name: more-detail
       id: more-detail
       label:
-        labelText: Can you provide more detail?
+        text: Can you provide more detail?
         hintText: Don't include personal or financial information, eg your
                   National Insurance number or credit card details.
 
-  - name: error-state
+  - name: with error message
     data:
       name: no-ni-reason
       id: no-ni-reason
       label:
-        labelText: Why can't you provide a National Insurance number?
-        errorMessage:
-          errorMessage: You must provide an explanation
+        text: Why can't you provide a National Insurance number?
+      errorMessage:
+        text: You must provide an explanation
 
-  - name: with-value
+  - name: with default value
     data:
       id: full-address
       name: address
@@ -26,12 +26,12 @@ variants:
         London
         NW1 6XE
       label:
-        labelText: Full address
+        text: Full address
 
-  - name: specifying-rows
+  - name: with custom rows
     data:
       id: full-address
       name: address
       label:
-        labelText: Full address
+        text: Full address
       rows: 8
