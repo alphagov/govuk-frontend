@@ -14,12 +14,11 @@
 
 {% block componentArguments %}
 {% from "table/macro.njk" import govukTable %}
-{{ govukTable(
-  classes='',
-  options = {
+{{ govukTable({
+  options: {
     'isFirstCellHeader': 'true'
   },
-  data = {
+  data: {
     'head' : [
       {
         text: 'Name'
@@ -37,6 +36,62 @@
     'rows' : [
       [
         {
+          text: 'summaryText'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'Yes'
+        },
+        {
+          text: 'Text to use within the summary element (the visible part of the details element)'
+        }
+      ],
+      [
+        {
+          text: 'summaryHtml'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'Yes'
+        },
+        {
+          text: 'HTML to use within the summary element (the visible part of the details element). If this is provided, the summaryText argument will be ignored.'
+        }
+      ],
+      [
+        {
+          text: 'text'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'Yes'
+        },
+        {
+          text: 'Text to use within the disclosed part of the details element.'
+        }
+      ],
+      [
+        {
+          text: 'html'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'Yes'
+        },
+        {
+          text: 'HTML to use within the disclosed part of the details element. If this is provided, the text argument will be ignored.'
+        }
+      ],
+      [
+        {
           text: 'classes'
         },
         {
@@ -51,33 +106,19 @@
       ],
       [
         {
-          text: 'summary'
+          text: 'attributes'
         },
         {
-          text: 'string'
+          text: 'object'
         },
         {
-          text: 'Yes'
+          text: 'No'
         },
         {
-          text: 'Summary element text'
-        }
-      ],
-      [
-        {
-          text: 'text'
-        },
-        {
-          text: 'string'
-        },
-        {
-          text: 'Yes'
-        },
-        {
-          text: 'Revealed details text'
+          text: 'Any extra HTML attributes (for example data attributes) to add to the details element'
         }
       ]
     ]
   }
-)}}
+})}}
 {% endblock %}
