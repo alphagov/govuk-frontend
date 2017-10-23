@@ -1,16 +1,17 @@
 variants:
 - name: default
   data:
-    classes: ''
-    legendText: 'Legend text goes here'
-- name: with-hint-text
-  data:
-    classes: ''
-    legendText: 'Legend text goes here'
-    hintText: 'Legend hint text goes here'
+    legendText: Legend text goes here
+    legendHintText: Legend hint text goes here
 - name: with-error-message
   data:
-    classes: ''
-    legendText: 'Legend text goes here'
-    hintText: 'Legend hint text goes here'
-    errorMessage: 'Error message goes here'
+    legendText: Legend text goes here
+    legendHintText: Legend hint text goes here
+    errorMessage:
+      text: 'Error message goes here'
+- name: with-html-instead-of-text
+  data:
+    legendHtml: Legend text <i>goes</i> here
+    legendHintHtml: Legend hint text <i>goes</i> here
+    errorMessage:
+      html: Error message <i>goes</i>  here
