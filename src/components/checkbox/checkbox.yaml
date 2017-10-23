@@ -1,25 +1,21 @@
 variants:
 - name: default
   data:
-    id: 'waste-types'
-    inputName: 'waste-types'
-    classes:
-    checkboxes:
+    idPrefix: 'waste-types'
+    name: 'waste-types'
+    items:
       -
-        id: 1
         value: 'waste-animal'
-        label: 'Waste from animal carcasses'
+        text: 'Waste from animal carcasses'
       -
-        id: 2
+        id: 'custom-id'
         value: 'waste-mines'
-        label: 'Waste from mines or quarries'
+        text: 'Waste from mines or quarries'
       -
-        id: 3
         value: 'waste-farm'
-        label: 'Farm or agricultural waste'
+        text: 'Farm or agricultural waste'
         checked: true
       -
-        id: 4
         value: 'waste-disabled'
-        label: 'Disabled checkbox option'
+        text: 'Disabled checkbox option'
         disabled: true
