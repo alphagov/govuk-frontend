@@ -20,7 +20,7 @@
     {% for row in params.data.rows %}
     <tr class="govuk-c-table__row">
     {% for cell in row %}
-      {% if loop.first and params.options.isFirstCellHeader %}
+      {% if loop.first and params.data.options.isFirstCellHeader %}
       <th class="govuk-c-table__header" scope="row">{{ cell.text }}</th>
       {% elseif loop.first %}
       <td class="govuk-c-table__cell
