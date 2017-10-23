@@ -2,6 +2,7 @@
 
 const configPaths = require('../../config/paths.json')
 const gulp = require('gulp')
+const debug = require('gulp-debug')
 const nunjucks = require('gulp-nunjucks')
 const rename = require('gulp-rename')
 const taskArguments = require('./task-arguments')
@@ -20,6 +21,7 @@ gulp.task('compile:components', () => {
       '!' + configPaths.components + '**/template.njk',
       configPaths.components + '**/*.njk' // Only compile componentname.njk to html
     ])
+    .pipe(debug())
     .pipe(nunjucks.compile('', {
       trimBlocks: true, // automatically remove trailing newlines from a block/tag
       lstripBlocks: true // automatically remove leading whitespace from a block/tag
