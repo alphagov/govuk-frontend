@@ -15,110 +15,106 @@
 {% block componentArguments %}
 {% from "table/macro.njk" import govukTable %}
 {{ govukTable({
-  options: {
-    'isFirstCellHeader': 'true'
-  },
-  data: {
-    'head' : [
+  'firstCellIsHeader': true,
+  'head' : [
+    {
+      text: 'Name'
+    },
+    {
+      text: 'Type'
+    },
+    {
+      text: 'Required'
+    },
+    {
+      text: 'Description'
+    }
+  ],
+  'rows' : [
+    [
       {
-        text: 'Name'
+        text: 'summaryText'
       },
       {
-        text: 'Type'
+        text: 'string'
       },
       {
-        text: 'Required'
+        text: 'Yes'
       },
       {
-        text: 'Description'
+        text: 'Text to use within the summary element (the visible part of the details element)'
       }
     ],
-    'rows' : [
-      [
-        {
-          text: 'summaryText'
-        },
-        {
-          text: 'string'
-        },
-        {
-          text: 'Yes'
-        },
-        {
-          text: 'Text to use within the summary element (the visible part of the details element)'
-        }
-      ],
-      [
-        {
-          text: 'summaryHtml'
-        },
-        {
-          text: 'string'
-        },
-        {
-          text: 'Yes'
-        },
-        {
-          text: 'HTML to use within the summary element (the visible part of the details element). If this is provided, the summaryText argument will be ignored.'
-        }
-      ],
-      [
-        {
-          text: 'text'
-        },
-        {
-          text: 'string'
-        },
-        {
-          text: 'Yes'
-        },
-        {
-          text: 'Text to use within the disclosed part of the details element.'
-        }
-      ],
-      [
-        {
-          text: 'html'
-        },
-        {
-          text: 'string'
-        },
-        {
-          text: 'Yes'
-        },
-        {
-          text: 'HTML to use within the disclosed part of the details element. If this is provided, the text argument will be ignored.'
-        }
-      ],
-      [
-        {
-          text: 'classes'
-        },
-        {
-          text: 'string'
-        },
-        {
-          text: 'No'
-        },
-        {
-          text: 'Optional additional classes'
-        }
-      ],
-      [
-        {
-          text: 'attributes'
-        },
-        {
-          text: 'object'
-        },
-        {
-          text: 'No'
-        },
-        {
-          text: 'Any extra HTML attributes (for example data attributes) to add to the details element'
-        }
-      ]
+    [
+      {
+        text: 'summaryHtml'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'Yes'
+      },
+      {
+        text: 'HTML to use within the summary element (the visible part of the details element). If this is provided, the summaryText argument will be ignored.'
+      }
+    ],
+    [
+      {
+        text: 'text'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'Yes'
+      },
+      {
+        text: 'Text to use within the disclosed part of the details element.'
+      }
+    ],
+    [
+      {
+        text: 'html'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'Yes'
+      },
+      {
+        text: 'HTML to use within the disclosed part of the details element. If this is provided, the text argument will be ignored.'
+      }
+    ],
+    [
+      {
+        text: 'classes'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Optional additional classes'
+      }
+    ],
+    [
+      {
+        text: 'attributes'
+      },
+      {
+        text: 'object'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Any extra HTML attributes (for example data attributes) to add to the details element'
+      }
     ]
-  }
+  ]
 })}}
 {% endblock %}

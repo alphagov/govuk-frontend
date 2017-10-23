@@ -14,69 +14,64 @@
 {% block componentArguments %}
 {% from "table/macro.njk" import govukTable %}
 {{ govukTable(
-  classes='',
-  options = {
-    'isFirstCellHeader': 'true'
-  },
-  data = {
-    'head' : [
+  'firstCellIsHeader': true,
+  'head' : [
+    {
+      text: 'Name'
+    },
+    {
+      text: 'Type'
+    },
+    {
+      text: 'Required'
+    },
+    {
+      text: 'Description'
+    }
+  ],
+  'rows' : [
+    [
       {
-        text: 'Name'
+        text: 'classes'
       },
       {
-        text: 'Type'
+        text: 'string'
       },
       {
-        text: 'Required'
+        text: 'No'
       },
       {
-        text: 'Description'
+        text: 'Optional additional classes'
       }
     ],
-    'rows' : [
-      [
-        {
-          text: 'classes'
-        },
-        {
-          text: 'string'
-        },
-        {
-          text: 'No'
-        },
-        {
-          text: 'Optional additional classes'
-        }
-      ],
-      [
-        {
-          text: 'iconFallbackText'
-        },
-        {
-          text: 'string'
-        },
-        {
-          text: 'Yes'
-        },
-        {
-          text: 'The fallback text for the icon'
-        }
-      ],
-      [
-        {
-          text: 'legalText'
-        },
-        {
-          text: 'string'
-        },
-        {
-          text: 'Yes'
-        },
-        {
-          text: 'The text next to the icon'
-        }
-      ]
+    [
+      {
+        text: 'iconFallbackText'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'Yes'
+      },
+      {
+        text: 'The fallback text for the icon'
+      }
+    ],
+    [
+      {
+        text: 'legalText'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'Yes'
+      },
+      {
+        text: 'The text next to the icon'
+      }
     ]
-  }
+  ]
 )}}
 {% endblock %}

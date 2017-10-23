@@ -15,125 +15,120 @@
 
 {% block componentArguments %}
 {{ govukTable({
-  classes: '',
-  options: {
-    'isFirstCellHeader': 'true'
-  },
-  data: {
-    'head' : [
+  'firstCellIsHeader': true,
+  'head' : [
+    {
+      text: 'Name'
+    },
+    {
+      text: 'Type'
+    },
+    {
+      text: 'Required'
+    },
+    {
+      text: 'Description'
+    }
+  ],
+  'rows' : [
+    [
       {
-        text: 'Name'
+        text: 'type'
       },
       {
-        text: 'Type'
+        text: 'String'
       },
       {
-        text: 'Required'
+        text: 'No'
       },
       {
-        text: 'Description'
+        text: 'Type of list to create: "bullet", "number", "step" or "step-large", or omit for an unordered list without bullets.'
       }
     ],
-    'rows' : [
-      [
-        {
-          text: 'type'
-        },
-        {
-          text: 'String'
-        },
-        {
-          text: 'No'
-        },
-        {
-          text: 'Type of list to create: "bullet", "number", "step" or "step-large", or omit for an unordered list without bullets.'
-        }
-      ],
-      [
-        {
-          text: 'items'
-        },
-        {
-          text: 'array'
-        },
-        {
-          text: 'Yes'
-        },
-        {
-          text: 'Items for the list. An array of objects with text or html and optional href attributes'
-        }
-      ],
-      [
-        {
-          text: 'href'
-        },
-        {
-          text: 'string'
-        },
-        {
-          text: 'No'
-        },
-        {
-          text: 'Link target for the list item'
-        }
-      ],
-      [
-        {
-          text: 'text'
-        },
-        {
-          text: 'string'
-        },
-        {
-          text: 'No'
-        },
-        {
-          text: 'Text content for the list item'
-        }
-      ],
-      [
-        {
-          text: 'html'
-        },
-        {
-          text: 'string'
-        },
-        {
-          text: 'No'
-        },
-        {
-          text: 'HTML content for the list item. If this is specified, the text argument will be ignored.'
-        }
-      ],
-      [
-        {
-          text: 'classes'
-        },
-        {
-          text: 'string'
-        },
-        {
-          text: 'No'
-        },
-        {
-          text: 'Optional additional classes for the list tag'
-        }
-      ],
-      [
-        {
-          text: 'attributes'
-        },
-        {
-          text: 'object'
-        },
-        {
-          text: 'No'
-        },
-        {
-          text: 'Any extra HTML attributes (for example data attributes) to add to the list tag'
-        }
-      ]
+    [
+      {
+        text: 'items'
+      },
+      {
+        text: 'array'
+      },
+      {
+        text: 'Yes'
+      },
+      {
+        text: 'Items for the list. An array of objects with text or html and optional href attributes'
+      }
+    ],
+    [
+      {
+        text: 'href'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Link target for the list item'
+      }
+    ],
+    [
+      {
+        text: 'text'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Text content for the list item'
+      }
+    ],
+    [
+      {
+        text: 'html'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'HTML content for the list item. If this is specified, the text argument will be ignored.'
+      }
+    ],
+    [
+      {
+        text: 'classes'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Optional additional classes for the list tag'
+      }
+    ],
+    [
+      {
+        text: 'attributes'
+      },
+      {
+        text: 'object'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Any extra HTML attributes (for example data attributes) to add to the list tag'
+      }
     ]
-  }
+  ]
 })}}
 {% endblock %}

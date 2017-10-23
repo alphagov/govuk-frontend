@@ -14,110 +14,106 @@
 {% block componentArguments %}
 {% from "table/macro.njk" import govukTable %}
 {{ govukTable({
-  options: {
-    'isFirstCellHeader': 'true'
-  },
-  data: {
-    'head' : [
+  'firstCellIsHeader': true,
+  'head' : [
+    {
+      text: 'Name'
+    },
+    {
+      text: 'Type'
+    },
+    {
+      text: 'Required'
+    },
+    {
+      text: 'Description'
+    }
+  ],
+  'rows' : [
+    [
       {
-        text: 'Name'
+        text: 'titleText'
       },
       {
-        text: 'Type'
+        text: 'string'
       },
       {
-        text: 'Required'
+        text: 'Yes'
       },
       {
-        text: 'Description'
+        text: 'Text for the panel title'
       }
     ],
-    'rows' : [
-      [
-        {
-          text: 'titleText'
-        },
-        {
-          text: 'string'
-        },
-        {
-          text: 'Yes'
-        },
-        {
-          text: 'Text for the panel title'
-        }
-      ],
-      [
-        {
-          text: 'titleHtml'
-        },
-        {
-          text: 'string'
-        },
-        {
-          text: 'Yes'
-        },
-        {
-          text: 'HTML for the panel title. If this is provided, the titleText argument is ignored.'
-        }
-      ],
-      [
-        {
-          text: 'text'
-        },
-        {
-          text: 'string'
-        },
-        {
-          text: 'No'
-        },
-        {
-          text: 'Text for the panel content'
-        }
-      ],
-      [
-        {
-          text: 'html'
-        },
-        {
-          text: 'string'
-        },
-        {
-          text: 'No'
-        },
-        {
-          text: 'HTML for the panel content. If this is provided, the text argument is ignored.'
-        }
-      ],
-      [
-        {
-          text: 'classes'
-        },
-        {
-          text: 'string'
-        },
-        {
-          text: 'No'
-        },
-        {
-          text: 'Optional additional classes'
-        }
-      ],
-      [
-        {
-          text: 'attributes'
-        },
-        {
-          text: 'object'
-        },
-        {
-          text: 'No'
-        },
-        {
-          text: 'Any extra HTML attributes (for example data attributes) to add to the panel container'
-        }
-      ]
+    [
+      {
+        text: 'titleHtml'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'Yes'
+      },
+      {
+        text: 'HTML for the panel title. If this is provided, the titleText argument is ignored.'
+      }
+    ],
+    [
+      {
+        text: 'text'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Text for the panel content'
+      }
+    ],
+    [
+      {
+        text: 'html'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'HTML for the panel content. If this is provided, the text argument is ignored.'
+      }
+    ],
+    [
+      {
+        text: 'classes'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Optional additional classes'
+      }
+    ],
+    [
+      {
+        text: 'attributes'
+      },
+      {
+        text: 'object'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Any extra HTML attributes (for example data attributes) to add to the panel container'
+      }
     ]
-  }
+  ]
 })}}
 {% endblock %}
