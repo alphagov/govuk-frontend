@@ -2,103 +2,59 @@ variants:
 - name: default
   data:
     items:
-      -
-        content: Related link
-        href: /
-      -
-        content: Related link
-        href: /
-      -
-        content: Related link
-        href: /
+      - text: Related link
+        href: #
+      - text: Related link
+        href: #
+      - html: <strong>Not</strong> a link
 - name: bulleted-list
   data:
-    classes: govuk-c-list--bullet
     type: bullet
     items:
-      -
-        content: 'here is a bulleted list'
-      -
-        content: 'vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor'
-      -
-        content: 'vestibulum id ligula porta felis euismod semper'
-      -
-        content: 'integer posuere erat a ante venenatis dapibus posuere velit aliquet'
+      - text: 'here is a bulleted list'
+      - text: 'vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor'
+      - text: 'vestibulum id ligula porta felis euismod semper'
+      - text: 'integer posuere erat a ante venenatis dapibus posuere velit aliquet'
 - name: numbered-list
   data:
-    classes: govuk-c-list--number
     type: number
     items:
-      -
-        content: 'This is a numbered list.'
-      -
-        content: 'This is the second step in a numbered list.'
-      -
-        content: 'The third step is to make sure each item is a full sentence ending with a full stop.'
+      - text: 'This is a numbered list.'
+      - text: 'This is the second step in a numbered list.'
+      - text: 'The third step is to make sure each item is a full sentence ending with a full stop.'
 - name: steps-icon-list
   data:
-    content: Steps icon list
-    classes: govuk-c-list--icon
     type: step
     items:
-      -
-        content: 'Step'
-      -
-        content: 'Step'
-      -
-        content: 'Step'
-      -
-        content: 'Step'
-      -
-        content: 'Step'
-      -
-        content: 'Step'
-      -
-        content: 'Step'
-      -
-        content: 'Step'
-      -
-        content: 'Step'
-      -
-        content: 'Step'
-      -
-        content: 'Step'
-      -
-        content: 'Step'
-      -
-        content: 'Step'
-      -
-        content: 'Step'
+      - text: 'Step 1'
+      - text: 'Step 2'
+      - text: 'Step 3'
+      - text: 'Step 4'
+      - text: 'Step 5'
+      - text: 'Step 6'
+      - text: 'Step 7'
+      - text: 'Step 8'
+      - text: 'Step 9'
+      - text: 'Step 10'
+      - text: 'Step 11'
+      - text: 'Step 12'
+      - text: 'Step 13'
+      - text: 'Step 14'
 - name: steps-large-icon-list
   data:
-    classes: govuk-c-list--icon
-    type: step--large
+    type: step-large
     items:
-      -
-        content: 'Step'
-      -
-        content: 'Step'
-      -
-        content: 'Step'
-      -
-        content: 'Step'
-      -
-        content: 'Step'
-      -
-        content: 'Step'
-      -
-        content: 'Step'
-      -
-        content: 'Step'
-      -
-        content: 'Step'
-      -
-        content: 'Step'
-      -
-        content: 'Step'
-      -
-        content: 'Step'
-      -
-        content: 'Step'
-      -
-        content: 'Step'
+      - text: 'Step 1'
+      - text: 'Step 2'
+      - text: 'Step 3'
+      - text: 'Step 4'
+      - text: 'Step 5'
+      - text: 'Step 6'
+      - text: 'Step 7'
+      - text: 'Step 8'
+      - text: 'Step 9'
+      - text: 'Step 10'
+      - text: 'Step 11'
+      - text: 'Step 12'
+      - text: 'Step 13'
+      - text: 'Step 14'

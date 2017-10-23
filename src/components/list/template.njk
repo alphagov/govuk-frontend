@@ -1,39 +1,31 @@
-{% set type = params.type | lower %}
-{% if type == 'bullet' %}
-<ul class="govuk-c-list govuk-c-list--bullet
-  {%- if params.classes %} {{ params.classes }}{% endif %}">
-{% elseif type == 'number' %}
-<ol class="govuk-c-list govuk-c-list--number
-  {%- if params.classes %} {{ params.classes }}{% endif %}">
-{% elseif type == 'step' %}
-<ol class="govuk-c-list govuk-c-list--icon
-  {%- if params.classes %} {{ params.classes }}{% endif %}">
-{% elseif type == 'step--large' %}
-<ol class="govuk-c-list govuk-c-list--icon
-  {%- if params.classes %} {{ params.classes }}{% endif %}">
-{% else %}
-<ul class="govuk-c-list
-  {%- if params.classes %} {{ params.classes }}{% endif %}">
-{% endif %}
+{# Default to unordered list unless we redefine it later #}
+{%- set element = 'ul' %}
 
-{%- for item in params.items %}
+{#- Setup classes and element type depending on type argument. #}
+{%- set type = params.type | lower %}
+{%- if type == 'bullet' %}
+  {% set listClass = 'govuk-c-list--bullet' %}
+{% elseif type == 'number' %}
+  {% set element = 'ol' %}
+  {% set listClass = 'govuk-c-list--number' %}
+{% elseif type == 'step' or type == 'step-large' %}
+  {% set element = 'ol' %}
+  {% set listClass = 'govuk-c-list--icon' %}
+{% endif -%}
+
+<{{ element }} class="govuk-c-list {%- if listClass %} {{ listClass }}{% endif %} {%- if params.classes %} {{ params.classes }}{% endif %}" {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+{% for item in params.items %}
   <li>
-    {% if type == 'step' or type == 'step--large' %}
-    <span class="govuk-c-list__icon govuk-u-circle {% if type == 'step--large' %}govuk-c-list__icon--large{% endif %}">{{ loop.index }}</span> {{ item.content }}
-    {% else %}
-    {% if item.href %}
-    <a href="{{ item.href }}">
-    {% endif %}
-    {{ item.content }}
-    {% if item.href %}
-    </a>
-    {% endif %}
-    {% endif %}
+  {% if type == 'step' or type == 'step-large' %}
+    <span class="govuk-c-list__icon {%- if type == 'step-large' %} govuk-c-list__icon--large{% endif %} govuk-u-circle">
+      {{- loop.index -}}
+    </span>
+  {% endif %}
+  {% if item.href %}
+    <a href="{{ item.href }}">{{ item.html | safe if item.html else item.text }}</a>
+  {% else %}
+    {{ item.html | safe if item.html else item.text }}
+  {% endif %}
   </li>
 {% endfor -%}
-
-{% if type == 'number' or type == 'step' or type == 'step--large' %}
-</ol>
-{% else %}
-</ul>
-{% endif %}
+</{{ element }}>
