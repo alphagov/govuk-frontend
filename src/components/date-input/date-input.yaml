@@ -1,0 +1,86 @@
+variants:
+- name: default
+  data:
+    id: 'dob'
+    name: 'dob'
+    fieldset:
+      legendText: 'What is your date of birth?'
+      legendHintText: 'For example, 31 3 1980'
+    errorMessage:
+      text: 'Error message goes here'
+    items:
+      -
+        name: 'day'
+      -
+        name: 'month'
+      -
+        name: 'year'
+- name: with-errors
+  data:
+    id: 'dob-errors'
+    fieldset:
+      legendText: 'What is your date of birth?'
+      legendHintText: 'For example, 31 3 1980'
+    errorMessage:
+      text: 'Error message goes here'
+    items:
+      -
+        name: 'day'
+        classes: 'govuk-c-input--error'
+      -
+        name: 'month'
+        classes: 'govuk-c-input--error'
+      -
+        name: 'year'
+        classes: 'govuk-c-input--error'
+- name: with-day-error
+  data:
+    id: 'dob-day-error'
+    name: 'dob-day-error'
+    fieldset:
+      legendText: 'What is your date of birth?'
+      legendHintText: 'For example, 31 3 1980'
+    errorMessage:
+      text: 'Error message goes here'
+    items:
+      -
+        name: 'day'
+        classes: 'govuk-c-input--error'
+      -
+        name: 'month'
+      -
+        name: 'year'
+- name: with-month-error
+  data:
+    id: 'dob-month-error'
+    name: 'dob-month-error'
+    fieldset:
+      legendText: 'What is your date of birth?'
+      legendHintText: 'For example, 31 3 1980'
+    errorMessage:
+      text: 'Error message goes here'
+    items:
+      -
+        name: 'day'
+      -
+        name: 'month'
+        classes: 'govuk-c-input--error'
+      -
+        name: 'year'
+- name: with-year-error
+  data:
+    id: 'dob-year-error'
+    name: 'dob-year-error'
+    fieldset:
+      legendText: 'What is your date of birth?'
+      legendHintText: 'For example, 31 3 1980'
+    errorMessage:
+      text: 'Error message goes here'
+    items:
+      -
+        name: 'day'
+      -
+        name: 'month'
+      -
+        name: 'year'
+        classes: 'govuk-c-input--error'
