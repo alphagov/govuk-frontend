@@ -1,14 +1,27 @@
 {% from 'checkbox/macro.njk' import govukCheckbox %}
 
-{{- govukCheckbox({
-  classes: '',
-  inputName: 'waste-types',
-  id: 'waste-type',
-  checkboxes: [
-   {
-      id: '1',
-      value: 'waste-animal',
-      label: 'Waste from animal carcasses'
+{{ govukCheckbox({
+  "idPrefix": "waste-types",
+  "name": "waste-types",
+  "items": [
+    {
+      "value": "waste-animal",
+      "text": "Waste from animal carcasses"
+    },
+    {
+      "id": "custom-id",
+      "value": "waste-mines",
+      "text": "Waste from mines or quarries"
+    },
+    {
+      "value": "waste-farm",
+      "text": "Farm or agricultural waste",
+      "checked": true
+    },
+    {
+      "value": "waste-disabled",
+      "text": "Disabled checkbox option",
+      "disabled": true
     }
   ]
-}) -}}
+}) }}
