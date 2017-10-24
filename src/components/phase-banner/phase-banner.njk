@@ -1,12 +1,7 @@
 {% from "phase-banner/macro.njk" import govukPhaseBanner %}
-{{ govukPhaseBanner(classes='',
-  {
-    "tag":
-    {
-      "text": "alpha",
-      "html": "alpha",
-      "classes": "doing-something"
-    },
-    "html" : "This is a new service – your <a href='#''>feedback</a> will help us to improve it."
-  }
-) }}
+{{ govukPhaseBanner({
+  "tag": {
+    "text": "alpha"
+  },
+  "html": 'This is a new service – your <a href="#">feedback</a> will help us to improve it.'
+}) }}

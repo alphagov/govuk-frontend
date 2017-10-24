@@ -3,7 +3,6 @@ variants:
     data:
       tag:
         text: alpha
-        classes: doing-something
       html: This is a new service – your <a href="#">feedback</a> will help us to improve it.
   - name: tag-with-html
     data:
