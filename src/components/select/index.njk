@@ -14,209 +14,204 @@ The HTML <code>&lt;select&gt;</code> element represents a control that provides 
 
 {% block componentArguments %}
 {{ govukTable({
-  classes: '',
-  options: {
-    'isFirstCellHeader': 'true'
-  },
-  data: {
-    'head' : [
+  'firstCellIsHeader': true,
+  'head' : [
+    {
+      text: 'Name'
+    },
+    {
+      text: 'Type'
+    },
+    {
+      text: 'Required'
+    },
+    {
+      text: 'Description'
+    }
+  ],
+  'rows' : [
+    [
       {
-        text: 'Name'
+        text: 'classes'
       },
       {
-        text: 'Type'
+        text: 'string'
       },
       {
-        text: 'Required'
+        text: 'No'
       },
       {
-        text: 'Description'
+        text: 'Optional additional classes.'
       }
     ],
-    'rows' : [
-      [
-        {
-          text: 'classes'
-        },
-        {
-          text: 'string'
-        },
-        {
-          text: 'No'
-        },
-        {
-          text: 'Optional additional classes.'
-        }
-      ],
-      [
-        {
-          text: 'id'
-        },
-        {
-          text: 'string'
-        },
-        {
-          text: 'Yes'
-        },
-        {
-          text: 'Id for each select box'
-        }
-      ],
-      [
-        {
-          text: 'name'
-        },
-        {
-          text: 'string'
-        },
-        {
-          text: 'Yes'
-        },
-        {
-          text: 'Name property for the select.'
-        }
-      ],
-      [
-        {
-          text: 'items'
-        },
-        {
-          text: 'array'
-        },
-        {
-          text: 'Yes'
-        },
-        {
-          text: 'Array of option items for the select.'
-        }
-      ],
-      [
-        {
-          text: 'value'
-        },
-        {
-          text: 'string'
-        },
-        {
-          text: 'No'
-        },
-        {
-          text: 'Value for the option item.'
-        }
-      ],
-      [
-        {
-          text: 'text'
-        },
-        {
-          text: 'string'
-        },
-        {
-          text: 'Yes'
-        },
-        {
-          text: 'Text for the option item.'
-        }
-      ],
-      [
-        {
-          text: 'selected'
-        },
-        {
-          text: 'boolean'
-        },
-        {
-          text: 'No'
-        },
-        {
-          text: 'Sets the option as the selected.'
-        }
-      ],
-      [
-        {
-          text: 'disabled'
-        },
-        {
-          text: 'boolean'
-        },
-        {
-          text: 'No'
-        },
-        {
-          text: 'Sets the option item as disabled.'
-        }
-      ],
-      [
-        {
-          text: 'label'
-        },
-        {
-          text: 'object'
-        },
-        {
-          text: 'No'
-        },
-        {
-          text: 'Optional label text or HTML by specifying value for either text or html keys. See label component.'
-        }
-      ],
-      [
-        {
-          text: 'hintText'
-        },
-        {
-          text: 'string'
-        },
-        {
-          text: 'No'
-        },
-        {
-          text: 'Optional text to use as a hint'
-        }
-      ],
-      [
-        {
-          text: 'hintHtml'
-        },
-        {
-          text: 'string'
-        },
-        {
-          text: 'No'
-        },
-        {
-          text: 'Optional HTML to use as a hint. If this is provided, the hintText argument will be ignored.'
-        }
-      ],
-      [
-        {
-          text: 'errorMessage'
-        },
-        {
-          text: 'string'
-        },
-        {
-          text: 'No'
-        },
-        {
-          text: 'Optional error message. See errorMessage component.'
-        }
-      ],
-      [
-        {
-          text: 'attributes'
-        },
-        {
-          text: 'object'
-        },
-        {
-          text: 'No'
-        },
-        {
-          text: 'Any extra HTML attributes (for example data attributes) to add to the select component.'
-        }
-      ]
+    [
+      {
+        text: 'id'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'Yes'
+      },
+      {
+        text: 'Id for each select box'
+      }
+    ],
+    [
+      {
+        text: 'name'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'Yes'
+      },
+      {
+        text: 'Name property for the select.'
+      }
+    ],
+    [
+      {
+        text: 'items'
+      },
+      {
+        text: 'array'
+      },
+      {
+        text: 'Yes'
+      },
+      {
+        text: 'Array of option items for the select.'
+      }
+    ],
+    [
+      {
+        text: 'value'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Value for the option item.'
+      }
+    ],
+    [
+      {
+        text: 'text'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'Yes'
+      },
+      {
+        text: 'Text for the option item.'
+      }
+    ],
+    [
+      {
+        text: 'selected'
+      },
+      {
+        text: 'boolean'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Sets the option as the selected.'
+      }
+    ],
+    [
+      {
+        text: 'disabled'
+      },
+      {
+        text: 'boolean'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Sets the option item as disabled.'
+      }
+    ],
+    [
+      {
+        text: 'label'
+      },
+      {
+        text: 'object'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Optional label text or HTML by specifying value for either text or html keys. See label component.'
+      }
+    ],
+    [
+      {
+        text: 'hintText'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Optional text to use as a hint'
+      }
+    ],
+    [
+      {
+        text: 'hintHtml'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Optional HTML to use as a hint. If this is provided, the hintText argument will be ignored.'
+      }
+    ],
+    [
+      {
+        text: 'errorMessage'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Optional error message. See errorMessage component.'
+      }
+    ],
+    [
+      {
+        text: 'attributes'
+      },
+      {
+        text: 'object'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Any extra HTML attributes (for example data attributes) to add to the select component.'
+      }
     ]
-  }
+  ]
 })}}
 {% endblock %}

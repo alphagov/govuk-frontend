@@ -14,45 +14,191 @@
 {# {% set componentGuidanceLink = 'new link here' %} #}
 
 {% block componentArguments %}
-{{ govukTable(
-{
-  "data": {
-    "options": {
-      "caption": "Caption 1 : Months and rates",
-      "captionSize": "small",
-      "isFirstCellHeader": true
+{{ govukTable({
+  'firstCellIsHeader': true,
+  'head' : [
+    {
+      text: 'Name'
     },
-    "head": [
-      {
-        text: 'Name'
-      },
-      {
-        text: 'Type'
-      },
-      {
-        text: 'Required'
-      },
-      {
-        text: 'Description'
-      }
-    ],
-    "rows": [
+    {
+      text: 'format'
+    },
+    {
+      text: 'Required'
+    },
+    {
+      text: 'Description'
+    }
+  ],
+  'rows' : [
     [
       {
-        text: 'data'
+        text: 'classes'
       },
       {
-        text: 'object'
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Optional additional classes.'
+      }
+    ],
+    [
+      {
+        text: 'caption'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Optional caption text.'
+      }
+    ],
+    [
+      {
+        text: 'captionSize'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Optional caption text size. Class should correspond to the available heading classes.'
+      }
+    ],
+    [
+      {
+        text: 'firstCellIsHeader'
+      },
+      {
+        text: 'boolean'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'If set to true, first cell in table row will be a TH instead of a TD.'
+      }
+    ],
+    [
+      {
+        text: 'head'
+      },
+      {
+        text: 'array'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Optional array of table head cells'
+      }
+    ],
+    [
+      {
+        text: 'rows'
+      },
+      {
+        text: 'array'
       },
       {
         text: 'Yes'
       },
       {
-        text: 'Object containing array and object of data and options'
+        text: 'Array of table rows and cells.'
+      }
+    ],
+    [
+      {
+        text: 'text'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Text for cells in table head and rows.'
+      }
+    ],
+    [
+      {
+        text: 'html'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'HTML for cells in table head and rows. If this is specified, the text argument will be ignored.'
+      }
+    ],
+    [
+      {
+        text: 'format'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Specify format of any cell. Currently we only use "numeric".'
+      }
+    ],
+    [
+      {
+        text: 'colspan'
+      },
+      {
+        text: 'number'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Specify how many columns the cell extends.'
+      }
+    ],
+    [
+      {
+        text: 'rowspan'
+      },
+      {
+        text: 'number'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Specify how many rows the cell extends.'
+      }
+    ],
+    [
+      {
+        text: 'attributes'
+      },
+      {
+        text: 'object'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Any extra HTML attributes (for example data attributes) to add to the table container.'
       }
     ]
-    ]
-  }
-}
-) }}
+  ]
+}) }}
 {% endblock %}

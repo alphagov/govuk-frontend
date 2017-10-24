@@ -15,126 +15,121 @@
 
 {% block componentArguments %}
 {% from "table/macro.njk" import govukTable %}
-{{ govukTable(
-  classes='',
-  options = {
-    'isFirstCellHeader': 'true'
-  },
-  data = {
-    'head' : [
+{{ govukTable({
+  'firstCellIsHeader': 'true',
+  'head' : [
+    {
+      text: 'Name'
+    },
+    {
+      text: 'Type'
+    },
+    {
+      text: 'Required'
+    },
+    {
+      text: 'Description'
+    }
+  ],
+  'rows' : [
+    [
       {
-        text: 'Name'
+        text: 'classes'
       },
       {
-        text: 'Type'
+        text: 'String'
       },
       {
-        text: 'Required'
+        text: 'No'
       },
       {
-        text: 'Description'
+        text: 'Optional additional classes'
       }
     ],
-    'rows' : [
-      [
-        {
-          text: 'classes'
-        },
-        {
-          text: 'string'
-        },
-        {
-          text: 'No'
-        },
-        {
-          text: 'Optional additional classes'
-        }
-      ],
-      [
-        {
-          text: 'title'
-        },
-        {
-          text: 'string'
-        },
-        {
-          text: 'Yes'
-        },
-        {
-          text: 'Error summary title'
-        }
-      ],
-      [
-        {
-          text: 'description'
-        },
-        {
-          text: 'string'
-        },
-        {
-          text: 'No'
-        },
-        {
-          text: 'Optional error summary description'
-        }
-      ],
-      [
-        {
-          text: 'listItems'
-        },
-        {
-          text: 'array'
-        },
-        {
-          text: 'Yes'
-        },
-        {
-          text: 'List items array with url and text keys'
-        }
-      ],
-      [
-        {
-          text: 'url'
-        },
-        {
-          text: 'string'
-        },
-        {
-          text: 'Yes'
-        },
-        {
-          text: 'List item url'
-        }
-      ],
-      [
-        {
-          text: 'text'
-        },
-        {
-          text: 'string'
-        },
-        {
-          text: 'Yes'
-        },
-        {
-          text: 'List item text'
-        }
-      ],
-      [
-        {
-          text: 'listOptions'
-        },
-        {
-          text: 'object'
-        },
-        {
-          text: 'No'
-        },
-        {
-          text: 'List options'
-        }
-      ]
+    [
+      {
+        text: 'titleText'
+      },
+      {
+        text: 'String'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Text to use for the heading of the error summary block.'
+      }
+    ],
+    [
+      {
+        text: 'titleHtml'
+      },
+      {
+        text: 'String'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'HTML to use for the heading of the error summary block. If this is provided, the titleText argument will be ignored.'
+      }
+    ],
+    [
+      {
+        text: 'descriptionText'
+      },
+      {
+        text: 'String'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Optional text description of the errors.'
+      }
+    ],
+     [
+      {
+        text: 'descriptionHtml'
+      },
+      {
+        text: 'String'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Optional HTML description of the errors.  If this is provided, the descriptionText argument will be ignored.'
+      }
+    ],
+    [
+      {
+        text: 'errorList'
+      },
+      {
+        text: 'Object'
+      },
+      {
+        text: 'Yes'
+      },
+      {
+        text: 'Contains an array of error link items and all their available arguments.'
+      }
+    ],
+    [
+      {
+        text: 'attributes'
+      },
+      {
+        text: 'object'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Any extra HTML attributes (for example data attributes) to add to the error-summary container.'
+      }
     ]
-  }
-)}}
+  ]
+})}}
 {% endblock %}

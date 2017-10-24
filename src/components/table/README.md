@@ -36,11 +36,11 @@ More information about when to use table can be found on [GOV.UK Design System](
             },
             {
               text: '£85',
-              type: 'numeric'
+              format: 'numeric'
             },
             {
               text: '£95',
-              type: 'numeric'
+              format: 'numeric'
             }
           ],
           [
@@ -49,11 +49,11 @@ More information about when to use table can be found on [GOV.UK Design System](
             },
             {
               text: '£75',
-              type: 'numeric'
+              format: 'numeric'
             },
             {
               text: '£55',
-              type: 'numeric'
+              format: 'numeric'
             }
           ],
           [
@@ -62,11 +62,11 @@ More information about when to use table can be found on [GOV.UK Design System](
             },
             {
               text: '£165',
-              type: 'numeric'
+              format: 'numeric'
             },
             {
               text: '£125',
-              type: 'numeric'
+              format: 'numeric'
             }
           ]
         ]
@@ -86,11 +86,11 @@ More information about when to use table can be found on [GOV.UK Design System](
           },
           {
             text: 'Rate for bicycles',
-            type: 'numeric'
+            format: 'numeric'
           },
           {
             text: 'Rate for vehicles',
-            type: 'numeric'
+            format: 'numeric'
           }
         ],
         'rows' : [
@@ -100,11 +100,11 @@ More information about when to use table can be found on [GOV.UK Design System](
             },
             {
               text: '£85',
-              type: 'numeric'
+              format: 'numeric'
             },
             {
               text: '£95',
-              type: 'numeric'
+              format: 'numeric'
             }
           ],
           [
@@ -113,11 +113,11 @@ More information about when to use table can be found on [GOV.UK Design System](
             },
             {
               text: '£75',
-              type: 'numeric'
+              format: 'numeric'
             },
             {
               text: '£55',
-              type: 'numeric'
+              format: 'numeric'
             }
           ],
           [
@@ -126,11 +126,11 @@ More information about when to use table can be found on [GOV.UK Design System](
             },
             {
               text: '£165',
-              type: 'numeric'
+              format: 'numeric'
             },
             {
               text: '£125',
-              type: 'numeric'
+              format: 'numeric'
             }
           ]
         ]
@@ -177,7 +177,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-c-table__header" scope="col">Name</th>
 
-<th class="govuk-c-table__header" scope="col">Type</th>
+<th class="govuk-c-table__header" scope="col">format</th>
 
 <th class="govuk-c-table__header" scope="col">Required</th>
 
@@ -209,7 +209,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-c-table__cell ">Yes</td>
 
-<td class="govuk-c-table__cell ">Data array with text and type keys</td>
+<td class="govuk-c-table__cell ">Data array with text and format keys</td>
 
 </tr>
 

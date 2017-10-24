@@ -14,97 +14,92 @@
 
 {% block componentArguments %}
 {{ govukTable({
-  classes: '',
-  options: {
-    'isFirstCellHeader': 'true'
-  },
-  data: {
-    'head': [
+  'firstCellIsHeader': true,
+  'head': [
+    {
+      text: 'Name'
+    },
+    {
+      text: 'Type'
+    },
+    {
+      text: 'Required'
+    },
+    {
+      text: 'Description'
+    }
+  ],
+  'rows': [
+    [
       {
-        text: 'Name'
+        text: 'fieldset'
       },
       {
-        text: 'Type'
+        text: 'object'
       },
       {
-        text: 'Required'
+        text: 'Yes'
       },
       {
-        text: 'Description'
+        text: 'Arguments for the fieldset component (e.g. legendText, legendHintText, errorMessage). See fieldset component.'
       }
     ],
-    'rows': [
-      [
-        {
-          text: 'fieldset'
-        },
-        {
-          text: 'object'
-        },
-        {
-          text: 'Yes'
-        },
-        {
-          text: 'Arguments for the fieldset component (e.g. legendText, legendHintText, errorMessage). See fieldset component.'
-        }
-      ],
-      [
-        {
-          text: 'errorMessage'
-        },
-        {
-          text: 'object'
-        },
-        {
-          text: 'No'
-        },
-        {
-          text: 'Optional error message. See errorMessage component.'
-        }
-      ],
-      [
-        {
-          text: 'items'
-        },
-        {
-          text: 'array'
-        },
-        {
-          text: 'Yes'
-        },
-        {
-          text: 'An array of input objects with name, value and optional classes'
-        }
-      ],
-      [
-        {
-          text: 'classes'
-        },
-        {
-          text: 'string'
-        },
-        {
-          text: 'No'
-        },
-        {
-          text: 'Optional additional classes'
-        }
-      ],
-      [
-        {
-          text: 'attributes'
-        },
-        {
-          text: 'object'
-        },
-        {
-          text: 'No'
-        },
-        {
-          text: 'Any extra HTML attributes (for example data attributes) to add to the date div tag.'
-        }
-      ]
+    [
+      {
+        text: 'errorMessage'
+      },
+      {
+        text: 'object'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Optional error message. See errorMessage component.'
+      }
+    ],
+    [
+      {
+        text: 'items'
+      },
+      {
+        text: 'array'
+      },
+      {
+        text: 'Yes'
+      },
+      {
+        text: 'An array of input objects with name, value and optional classes'
+      }
+    ],
+    [
+      {
+        text: 'classes'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Optional additional classes'
+      }
+    ],
+    [
+      {
+        text: 'attributes'
+      },
+      {
+        text: 'object'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Any extra HTML attributes (for example data attributes) to add to the date div tag.'
+      }
     ]
-  }
+  ]
 })}}
 {% endblock %}

@@ -19,125 +19,120 @@ The HTML <code>&lt;input&gt;</code> element with type="file" lets a user pick on
 {% block componentArguments %}
 {% from "table/macro.njk" import govukTable %}
 {{ govukTable({
-  classes: '',
-  options: {
-    'isFirstCellHeader': 'true'
-  },
-  data: {
-    'head' : [
+  'firstCellIsHeader': true,
+  'head' : [
+    {
+      text: 'Name'
+    },
+    {
+      text: 'Type'
+    },
+    {
+      text: 'Required'
+    },
+    {
+      text: 'Description'
+    }
+  ],
+  'rows' : [
+    [
       {
-        text: 'Name'
+        text: 'id'
       },
       {
-        text: 'Type'
+        text: 'string'
       },
       {
-        text: 'Required'
+        text: 'Yes'
       },
       {
-        text: 'Description'
+        text: 'The id of the input'
       }
     ],
-    'rows' : [
-      [
-        {
-          text: 'id'
-        },
-        {
-          text: 'string'
-        },
-        {
-          text: 'Yes'
-        },
-        {
-          text: 'The id of the input'
-        }
-      ],
-      [
-        {
-          text: 'name'
-        },
-        {
-          text: 'string'
-        },
-        {
-          text: 'Yes'
-        },
-        {
-          text: 'The name of the input, which is submitted with the form data'
-        }
-      ],
-      [
-        {
-          text: 'value'
-        },
-        {
-          text: 'string'
-        },
-        {
-          text: 'No'
-        },
-        {
-          text: 'Optional initial value of the input'
-        }
-      ],
-      [
-        {
-          text: 'label'
-        },
-        {
-          text: 'object'
-        },
-        {
-          text: 'Yes'
-        },
-        {
-          text: 'Arguments for the label component'
-        }
-      ],
-      [
-        {
-          text: 'errorMessage'
-        },
-        {
-          text: 'object'
-        },
-        {
-          text: 'No'
-        },
-        {
-          text: 'Arguments for the error message component'
-        }
-      ],
-      [
-        {
-          text: 'classes'
-        },
-        {
-          text: 'string'
-        },
-        {
-          text: 'No'
-        },
-        {
-          text: 'Optional additional classes'
-        }
-      ],
-      [
-        {
-          text: 'attributes'
-        },
-        {
-          text: 'object'
-        },
-        {
-          text: 'No'
-        },
-        {
-          text: 'Any extra HTML attributes (for example accept or data attributes) to add to the input tag'
-        }
-      ]
+    [
+      {
+        text: 'name'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'Yes'
+      },
+      {
+        text: 'The name of the input, which is submitted with the form data'
+      }
+    ],
+    [
+      {
+        text: 'value'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Optional initial value of the input'
+      }
+    ],
+    [
+      {
+        text: 'label'
+      },
+      {
+        text: 'object'
+      },
+      {
+        text: 'Yes'
+      },
+      {
+        text: 'Arguments for the label component'
+      }
+    ],
+    [
+      {
+        text: 'errorMessage'
+      },
+      {
+        text: 'object'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Arguments for the error message component'
+      }
+    ],
+    [
+      {
+        text: 'classes'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Optional additional classes'
+      }
+    ],
+    [
+      {
+        text: 'attributes'
+      },
+      {
+        text: 'object'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Any extra HTML attributes (for example accept or data attributes) to add to the input tag'
+      }
     ]
-  }
+  ]
 })}}
 {% endblock %}
