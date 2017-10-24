@@ -3,7 +3,7 @@
 @import "../../globals/scss/helpers-px-to-em";
 @import "../../globals/scss/typography";
 @import "../../globals/scss/vars";
-@import "../phase-tag/phase-tag";
+@import "../tag/tag";
 
 @include exports("phase-banner") {
   .govuk-c-phase-banner {
@@ -22,6 +22,10 @@
   .govuk-c-phase-banner__content {
     display: table;
     margin: 0;
+  }
+
+  .govuk-c-phase-banner__content__tag {
+    margin-right: $govuk-spacing-scale-2;
   }
 
   .govuk-c-phase-banner__text {
