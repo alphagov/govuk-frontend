@@ -23,7 +23,7 @@ Please note, this component depends on @govuk-frontend/globals, which will autom
     'isFirstCellHeader': 'true'
   },
   data: {
-    'head': [
+    'head' : [
       {
         text: 'Name'
       },
@@ -37,7 +37,7 @@ Please note, this component depends on @govuk-frontend/globals, which will autom
         text: 'Description'
       }
     ],
-    'rows': [
+    'rows' : [
       [
         {
           text: 'classes'
@@ -54,7 +54,7 @@ Please note, this component depends on @govuk-frontend/globals, which will autom
       ],
       [
         {
-          text: 'inputName'
+          text: 'idPrefix'
         },
         {
           text: 'string'
@@ -63,12 +63,12 @@ Please note, this component depends on @govuk-frontend/globals, which will autom
           text: 'Yes'
         },
         {
-          text: 'Name of the group of radio buttons'
+          text: 'String to prefix id for each radio item if no id is specified on each item.'
         }
       ],
       [
         {
-          text: 'id'
+          text: 'name'
         },
         {
           text: 'string'
@@ -77,12 +77,12 @@ Please note, this component depends on @govuk-frontend/globals, which will autom
           text: 'Yes'
         },
         {
-          text: 'ID is prefixed to the ID of each radio button'
+          text: 'Name attribute for each radio item.'
         }
       ],
       [
         {
-          text: 'radios'
+          text: 'items'
         },
         {
           text: 'array'
@@ -91,7 +91,91 @@ Please note, this component depends on @govuk-frontend/globals, which will autom
           text: 'Yes'
         },
         {
-          text: 'Radios array with id, value, label, checked and disabled keys'
+          text: 'Array of radio items.'
+        }
+      ],
+      [
+        {
+          text: 'text'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'Text to use within the radio label.'
+        }
+      ],
+      [
+        {
+          text: 'html'
+        },
+        {
+          text: 'string'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'HTML to use within the radio label. If this is provided, the text argument will be ignored.'
+        }
+      ],
+      [
+        {
+          text: 'label'
+        },
+        {
+          text: 'object'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'Provide additional attributes to the radio label.'
+        }
+      ],
+      [
+        {
+          text: 'checked'
+        },
+        {
+          text: 'boolean'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'If true, radio will be checked.'
+        }
+      ],
+      [
+        {
+          text: 'disabled'
+        },
+        {
+          text: 'boolean'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'If true, radio will be disabled.'
+        }
+      ],
+      [
+        {
+          text: 'attributes'
+        },
+        {
+          text: 'object'
+        },
+        {
+          text: 'No'
+        },
+        {
+          text: 'Any extra HTML attributes (for example data attributes) to add to the radio container.'
         }
       ]
     ]
