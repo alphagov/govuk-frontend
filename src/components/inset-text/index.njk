@@ -12,8 +12,7 @@
 {# {% set componentGuidanceLink = 'new link here' %} #}
 
 {% block componentArguments %}
-{% from "table/macro.njk" import govukTable %}
-{{ govukTable(
+{{ govukTable({
   'firstCellIsHeader': true,
   'head' : [
     {
@@ -59,5 +58,5 @@
       }
     ]
   ]
-)}}
+} )}}
 {% endblock %}
