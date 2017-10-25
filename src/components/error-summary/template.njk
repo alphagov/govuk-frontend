@@ -1,16 +1,20 @@
 {% from "list/macro.njk" import govukList -%}
 
 <div class="govuk-c-error-summary
-  {%- if classes %} {{ classes }}{% endif %}" aria-labelledby="error-summary-title" role="alert" tabindex="-1">
+  {%- if params.classes %} {{ params.classes }}{% endif %}" aria-labelledby="error-summary-title" role="alert" tabindex="-1"
+  {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
   <h2 class="govuk-c-error-summary__title" id="error-summary-title">
-    {{ title }}
+    {{ params.titleHtml | safe if params.titleHtml else params.titleText }}
   </h2>
   <div class="govuk-c-error-summary__body">
-    {% if description %}
+    {% if params.descriptionHtml or params.descriptionText %}
     <p>
-      {{ description }}
+      {{ params.descriptionHtml | safe if params.descriptionHtml else params.descriptionText }}
     </p>
     {% endif %}
-    {{ govukList(classes=listClasses + ' govuk-c-error-summary__list', listItems, listOptions) }}
+    {{ govukList({
+      classes: 'govuk-c-error-summary__list',
+      items: params.errorList
+    }) }}
   </div>
 </div>
