@@ -1,0 +1,16 @@
+{% from "label/macro.njk" import govukLabel %}
+{% for item in params.items %}
+<div class="govuk-c-radio
+{%- if params.classes %} {{ params.classes }}{% endif %}"{% for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+  <input class="govuk-c-radio__input" id="{% if item.id %}{{ item.id }}{% else %}{{params.idPrefix}}-{{loop.index}}{% endif %}" name="{{ params.name }}" type="radio" value="{{ item.value }}"
+  {{-" checked" if item.checked }}
+  {{-" disabled" if item.disabled }}>
+  {{- govukLabel({
+    html: item.html,
+    text: item.text,
+    classes: 'govuk-c-radio__label',
+    attributes: item.label.attributes,
+    for: item.id if item.id else params.idPrefix+'-'+loop.index
+  }) -}}
+</div>
+{% endfor %}

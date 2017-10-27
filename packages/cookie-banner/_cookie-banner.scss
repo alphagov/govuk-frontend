@@ -1,8 +1,7 @@
 @import "@govuk-frontend/globals/import-once";
-@import "@govuk-frontend/globals/spacing";
 @import "@govuk-frontend/globals/typography";
 @import "@govuk-frontend/globals/vars";
-@import "@govuk-frontend/site-width-container/site-width-container";
+@import "@govuk-frontend/globals/layout/site-width-container";
 
 @include exports("cookie-banner") {
   .govuk-c-cookie-banner {
@@ -21,7 +20,7 @@
     display: none;
   }
 
-  .govuk-c-cookie-banner__text {
+  .govuk-c-cookie-banner__message {
     @include govuk-site-width-container;
     @include govuk-core-16;
   }

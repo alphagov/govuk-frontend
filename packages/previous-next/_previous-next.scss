@@ -1,0 +1,90 @@
+@import "@govuk-frontend/globals/import-once";
+@import "@govuk-frontend/globals/links";
+@import "@govuk-frontend/globals/media-queries";
+@import "@govuk-frontend/globals/typography";
+@import "@govuk-frontend/globals/utilities/clearfix";
+@import "@govuk-frontend/globals/vars";
+
+@include exports("previous-next") {
+
+  .govuk-c-previous-next {
+    @include font-smoothing;
+    display: block;
+    margin-right: -$govuk-spacing-scale-3;
+    // TODO: Make margins under components consistent
+    margin-bottom: $govuk-spacing-scale-5;
+    margin-left: -$govuk-spacing-scale-3;
+    font-family: $govuk-font-stack;
+  }
+
+  .govuk-c-previous-next__list {
+    @include govuk-u-clearfix;
+    margin: 0;
+    padding: 0;
+  }
+
+  .govuk-c-previous-next__item {
+    @include govuk-core-16;
+    width: 50%;
+    padding: 0;
+    list-style: none;
+    text-align: right;
+  }
+
+  .govuk-c-previous-next__item--previous {
+    @include mq($until: tablet) {
+      width: 100%;
+      float: none;
+    }
+    float: left;
+    text-align: left;
+  }
+
+  .govuk-c-previous-next__item--next {
+    @include mq($until: tablet) {
+      width: 100%;
+      float: none;
+    }
+    float: right;
+    text-align: right;
+  }
+
+  .govuk-c-previous-next__link {
+    display: block;
+    padding: $govuk-spacing-scale-3;
+    text-decoration: none;
+  }
+
+    .govuk-c-previous-next__link:visited {
+      color: $govuk-link-colour;
+    }
+
+    .govuk-c-previous-next__link:hover,
+    .govuk-c-previous-next__link:active {
+      background-color: $govuk-canvas-colour;
+    }
+
+  .govuk-c-previous-next__link-title {
+    @include govuk-core-27;
+    display: block;
+    line-height: (33.75 / 27);
+  }
+
+  .govuk-c-previous-next__link-icon {
+    display: inline-block;
+    width: .63em;
+    height: .482em;
+    margin-bottom: 1px;
+  }
+
+  .govuk-c-previous-next__link-label {
+    display: inline-block;
+    margin-top: .1em;
+    text-decoration: underline;
+  }
+
+    .govuk-c-previous-next__link-label:empty {
+      display: none;
+    }
+
+}

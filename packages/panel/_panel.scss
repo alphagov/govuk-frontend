@@ -1,7 +1,6 @@
 @import "@govuk-frontend/globals/import-once";
 @import "@govuk-frontend/globals/helpers-px-to-em";
 @import "@govuk-frontend/globals/font-face";
-@import "@govuk-frontend/globals/spacing";
 @import "@govuk-frontend/globals/typography";
 @import "@govuk-frontend/globals/vars";
 
@@ -22,11 +21,6 @@
   .govuk-c-panel--confirmation {
     color: $govuk-white;
     background: $govuk-turquoise;
-  }
-
-  .govuk-c-panel--information {
-    color: $govuk-white;
-    background: $govuk-blue;
   }
 
   .govuk-c-panel__title {

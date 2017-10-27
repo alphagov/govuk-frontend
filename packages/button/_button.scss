@@ -2,8 +2,8 @@
 @import "@govuk-frontend/globals/font-face";
 @import "@govuk-frontend/globals/helpers-ie";
 @import "@govuk-frontend/globals/helpers-px-to-em";
+@import "@govuk-frontend/globals/helpers-url";
 @import "@govuk-frontend/globals/media-queries";
-@import "@govuk-frontend/globals/spacing";
 @import "@govuk-frontend/globals/typography";
 @import "@govuk-frontend/globals/vars";
 
@@ -16,10 +16,10 @@
     width: 100%;
     min-height: em(40px, 19px);
     margin-top: 0;
-    padding: 0 em($govuk-spacing-scale-3, 19px) 0 em($govuk-spacing-scale-1, 19px);
-    border-width: 2px;
+    padding: 0 em($govuk-spacing-scale-3, 19px) 0;
+    border-width: $govuk-border-width-form-element;
     border-radius: 0;
-    border-color: transparent  transparent darken($govuk-button-colour, 15%) transparent;
+    border-color: transparent transparent $govuk-button-colour-darken-15 transparent;
     outline: 1px solid transparent; // keep some button appearance when changing colour settings in browsers
     outline-offset: -1px; // fixes bug in Safari that outline width on focus is not overwritten, is reset to 0 on focus in govuk_template
     background-color: $govuk-button-colour;
@@ -35,7 +35,6 @@
     @include mq($from: tablet) {
       width: initial;
     }
-
 
     // Set text colour depending on background colour
     @if lightness($govuk-button-colour) < 50% {
@@ -98,10 +97,10 @@
 
     .govuk-c-button--disabled:active, .govuk-c-button[disabled="disabled"]:active, .govuk-c-button[disabled]:active {
       top: 0;
-      -webkit-box-shadow: 0 2px 0 darken($govuk-button-colour, 15%);
-              box-shadow: 0 2px 0 darken($govuk-button-colour, 15%);
+      -webkit-box-shadow: 0 $govuk-border-width-form-element 0 $govuk-button-colour-darken-15;
+              box-shadow: 0 $govuk-border-width-form-element 0 $govuk-button-colour-darken-15;
       @include ie-lte(8) {
-        border-bottom: 2px solid darken($govuk-button-colour, 15%);
+        border-bottom: $govuk-border-width-form-element solid $govuk-button-colour-darken-15;
       }
     }
 
@@ -112,10 +111,16 @@
   .govuk-c-button--start {
     @include govuk-bold-24;
     // TODO: Check padding values
-    padding: em($govuk-spacing-scale-2, 24px) em($govuk-spacing-scale-6, 24px) em($govuk-spacing-scale-1, 24px) em($govuk-spacing-scale-4, 24px);
+    min-height: auto;
+    padding: em($govuk-spacing-scale-1, 24px) em($govuk-spacing-scale-6, 24px) em($govuk-spacing-scale-1, 24px) em($govuk-spacing-scale-4, 24px);
     background-image: file-url("icon-pointer.png");
     background-repeat: no-repeat;
     background-position: 100% 50%;
+    -webkit-box-shadow: 0 $govuk-border-width-form-element 0 $govuk-button-colour-darken-15;
+            box-shadow: 0 $govuk-border-width-form-element 0 $govuk-button-colour-darken-15;
+    @include ie-lte(8) {
+      border-bottom: $govuk-border-width-form-element solid $govuk-button-colour-darken-15;
+    }
   }
 
   // making the click target bigger than the button

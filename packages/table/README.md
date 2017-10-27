@@ -1,81 +1,266 @@
 # Table
 
-A component for tabular data.
+## Introduction
+
+Table description.
 
 ## Guidance
 
-Guidance and documentation can be found on [GOV.UK Design system](linkgoeshere).
+More information about when to use table can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/table "Link to read guidance on the use of table on Gov.uk Design system website")
 
-## Demo
+## Quick start examples
 
-Table [demo](http://govuk-frontend.herokuapp.com/components/table/index.html).
+### Component default
 
-## Usage
+[Preview the table component.](http://govuk-frontend-review.herokuapp.com/components/table/preview)
 
-Code example(s)
+#### Markup
 
-```
-<table class="govuk-c-table">
-  <thead class="govuk-c-table__head">
-    <tr class="govuk-c-table__row">
-      <th class="govuk-c-table__header" scope="col">Month you apply</th>
-      <th class="govuk-c-table__header govuk-c-table__header--numeric" scope="col">Rate for vehicles</th>
-      <th class="govuk-c-table__header govuk-c-table__header--numeric" scope="col">Rate for bicycles</th>
-    </tr>
-  </thead>
-  <tbody class="govuk-c-table__body">
-    <tr class="govuk-c-table__row">
-      <th class="govuk-c-table__header" scope="row">January</th>
-      <td class="govuk-c-table__cell govuk-c-table__cell--numeric">£165.00</td>
-      <td class="govuk-c-table__cell govuk-c-table__cell--numeric">£85.00</td>
-    </tr>
-    <tr class="govuk-c-table__row">
-      <th class="govuk-c-table__header" scope="row">February</th>
-      <td class="govuk-c-table__cell govuk-c-table__cell--numeric">£165.00</td>
-      <td class="govuk-c-table__cell govuk-c-table__cell--numeric">£85.00</td>
-    </tr>
-    <tr class="govuk-c-table__row">
-      <th class="govuk-c-table__header" scope="row">March</th>
-      <td class="govuk-c-table__cell govuk-c-table__cell--numeric">£151.25</td>
-      <td class="govuk-c-table__cell govuk-c-table__cell--numeric">£77.90</td>
-    </tr>
-    <tr class="govuk-c-table__row">
-      <th class="govuk-c-table__header" scope="row">April</th>
-      <td class="govuk-c-table__cell govuk-c-table__cell--numeric">£136.10</td>
-      <td class="govuk-c-table__cell govuk-c-table__cell--numeric">£70.10</td>
-    </tr>
-  </tbody>
-</table>
+#### Macro
 
-<table class="govuk-c-table">
-  <caption class="govuk-c-table__caption heading-small">Dates and amounts</caption>
-  <tbody class="govuk-c-table__body">
-    <tr class="govuk-c-table__row">
-      <td class="govuk-c-table__cell">First 6 weeks</td>
-      <td class="govuk-c-table__cell">£109.80 per week</td>
-    </tr>
-    <tr class="govuk-c-table__row">
-      <td class="govuk-c-table__cell">Next 33 weeks</td>
-      <td class="govuk-c-table__cell">£109.80 per week</td>
-    </tr>
-    <tr class="govuk-c-table__row">
-      <td class="govuk-c-table__cell">Total estimated pay</td>
-      <td class="govuk-c-table__cell">£4,282.20</td>
-    </tr>
-    <tr class="govuk-c-table__row">
-      <td class="govuk-c-table__cell">Tell the mother’s employer</td>
-      <td class="govuk-c-table__cell">28 days before they want to start maternity pay</td>
-    </tr>
-  </tbody>
-</table>
+      {% from 'table/macro.njk' import govukTable %}
 
-```
+    {# table with a caption #}
+    {{ govukTable(
+      classes='',
+      options = {
+        'caption': 'Months and rates',
+        'captionSize': 'small',
+        'isFirstCellHeader': 'true'
+      },
+      data = {
+        'rows' : [
+          [
+            {
+              text: 'January'
+            },
+            {
+              text: '£85',
+              format: 'numeric'
+            },
+            {
+              text: '£95',
+              format: 'numeric'
+            }
+          ],
+          [
+            {
+              text: 'February'
+            },
+            {
+              text: '£75',
+              format: 'numeric'
+            },
+            {
+              text: '£55',
+              format: 'numeric'
+            }
+          ],
+          [
+            {
+              text: 'March'
+            },
+            {
+              text: '£165',
+              format: 'numeric'
+            },
+            {
+              text: '£125',
+              format: 'numeric'
+            }
+          ]
+        ]
+      }
+    )}}
 
+    {# table with a head #}
+    {{ govukTable(
+      classes='',
+      options = {
+        'isFirstCellHeader': 'true'
+      },
+      data = {
+        'head' : [
+          {
+            text: 'Month you apply'
+          },
+          {
+            text: 'Rate for bicycles',
+            format: 'numeric'
+          },
+          {
+            text: 'Rate for vehicles',
+            format: 'numeric'
+          }
+        ],
+        'rows' : [
+          [
+            {
+              text: 'January'
+            },
+            {
+              text: '£85',
+              format: 'numeric'
+            },
+            {
+              text: '£95',
+              format: 'numeric'
+            }
+          ],
+          [
+            {
+              text: 'February'
+            },
+            {
+              text: '£75',
+              format: 'numeric'
+            },
+            {
+              text: '£55',
+              format: 'numeric'
+            }
+          ],
+          [
+            {
+              text: 'March'
+            },
+            {
+              text: '£165',
+              format: 'numeric'
+            },
+            {
+              text: '£125',
+              format: 'numeric'
+            }
+          ]
+        ]
+      }
+    )}}
 
+## Variants
+
+## Dependencies
+
+To consume the table component you must be running npm version 5 or above.
 
 ## Installation
 
-```
-npm install --save @govuk-frontend/table
-```
+    npm install --save @govuk-frontend/table
 
+## Requirements
+
+### Build tool configuration
+
+When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
+
+      .pipe(sass({
+          includePaths: 'node_modules/'
+      }))
+
+### Static asset path configuration
+
+To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
+
+    app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
+
+## Component arguments
+
+If you are using Nunjucks,then macros take the following arguments
+
+<div>
+
+<table class="govuk-c-table">
+
+<thead class="govuk-c-table__head">
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="col">Name</th>
+
+<th class="govuk-c-table__header" scope="col">format</th>
+
+<th class="govuk-c-table__header" scope="col">Required</th>
+
+<th class="govuk-c-table__header" scope="col">Description</th>
+
+</tr>
+
+</thead>
+
+<tbody class="govuk-c-table__body">
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">classes</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">Optional additional classes</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">data</th>
+
+<td class="govuk-c-table__cell ">array</td>
+
+<td class="govuk-c-table__cell ">Yes</td>
+
+<td class="govuk-c-table__cell ">Data array with text and format keys</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">options</th>
+
+<td class="govuk-c-table__cell ">array</td>
+
+<td class="govuk-c-table__cell ">Yes</td>
+
+<td class="govuk-c-table__cell ">Options array with caption, captionSize and isFirstCellHeader keys</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+### Setting up Nunjucks views and paths
+
+Below is an example setup using express configure views:
+
+    nunjucks.configure('node_modules/@govuk-frontend`, {
+      autoescape: true,
+      cache: false,
+      express: app
+    })
+
+## Getting updates
+
+To check whether you have the latest version of the button run:
+
+    npm outdated @govuk-frontend/table
+
+To update the latest version run:
+
+    npm update @govuk-frontend/table
+
+## Contribution
+
+Guidelines can be found at [on our Github repository.](https://github.com/alphagov/govuk-frontend/blob/master/CONTRIBUTING.md "link to contributing guidelines on our github repository")
+
+## Acknowledgements/credits
+
+*   GDS developers
+*   Jani Kraner
+*   Gemma Leigh
+
+## License
+
+MIT
