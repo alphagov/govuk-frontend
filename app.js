@@ -39,9 +39,8 @@ app.listen(port, () => {
   console.log('Listening on port ' + port + '   url: http://localhost:' + port)
 })
 
-// Routes
-
-// Return an object representing the components directory
+// Create a componentDirectory object representing the components directory
+// which we can use to iterate the component list on the homepage
 dto(path.resolve('./src/components'), (err, res) => {
   if (err) {
     console.log(err)
@@ -49,13 +48,17 @@ dto(path.resolve('./src/components'), (err, res) => {
   app.locals.componentsDirectory = res
 })
 
-// Return an object representing the examples directory
+// Create an examplesDirectory object representing the examples directory
+// which we can use to iterate the list of examples on the examples page
 dto(path.resolve('./src/views/examples'), (err, res) => {
   if (err) {
     console.log(err)
   }
   app.locals.examplesDirectory = res
 })
+
+// Define routes
+
 // Index page - render the component list template
 app.get('/', function (req, res) {
   res.render('component-list')
