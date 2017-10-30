@@ -1,0 +1,5 @@
+variants:
+- name: default
+  data:
+    text: Skip to main content
+    href: '#content'
