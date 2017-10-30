@@ -64,47 +64,59 @@ app.get('/', function (req, res) {
   res.render('component-list')
 })
 
-// Components
-app.get('/components*', function (req, res, next) {
-  let path = req.params[0].slice(1).split('/') // split path into array items: [0 is base component], [1] will be the variant view
-  let yamlPath = `src/components/${path[0]}/${path[0]}.yaml`
-  let componentData
-  try {
-    componentData = yaml.safeLoad(fs.readFileSync(yamlPath, 'utf8'), {json: true})
-  } catch (e) {
-    console.log('ENOENT: no such file or directory: ', yamlPath)
-    next(e)
-    return
-  }
-  res.locals.componentData = componentData  // make it available to the nunjucks template to loop over and display code
-  res.locals.importStatement = env.renderString(`{% from '${path[0]}/macro.njk' import govuk${helperFunctions.capitaliseComponentName(path[0])} %}`)
-  if (path.includes('preview')) {
-    // Show the isolated component preview
-    let componentNameCapitalized = helperFunctions.capitaliseComponentName(path[0])
-    let importStatement = `{% from '${path[0]}/macro.njk' import govuk${componentNameCapitalized} %}` // all our components use the same naming convention
-    let macroParameters
-    for (let [index, item] of componentData.variants.entries()) {
-      let itemData = componentData.variants[index].data
-      if (item.name === 'default') {  // default component name != variant, hence we check for default in yaml
-        macroParameters = JSON.stringify(itemData, null, '\t')
-      } else if (path[1].includes(item.name)) { // associate correct data to variant name
-        macroParameters = JSON.stringify(itemData, null, '\t')
-      }
-    }
-    res.locals.componentView = env.renderString(`${importStatement}${`{{ govuk${componentNameCapitalized}(${macroParameters}) }}`}`)
-    res.render('component-preview')
-  } else {
-    // If it isn't the isolated preview, render the component "detail" page
-    try {
-      // make variables avaliable to nunjucks template
-      res.locals.componentPath = path[0]
+// Whenever the route includes a :component parameter, read the component data
+// from its YAML file
+app.param('component', function (req, res, next, componentName) {
+  let yamlPath = `src/components/${componentName}/${componentName}.yaml`
 
-      // component details page in index.njk
-      res.render(path[0] + '/' + 'index')
-    } catch (e) {
-      console.log('Error:', e.stack)
-    }
+  try {
+    res.locals.componentData = yaml.safeLoad(
+      fs.readFileSync(yamlPath, 'utf8'), { json: true }
+    )
+    next()
+  } catch (e) {
+    next(new Error('failed to load component YAML file'))
   }
+})
+
+// Component 'README' page
+app.get('/components/:component', function (req, res, next) {
+  // make variables available to nunjucks template
+  res.locals.componentPath = req.params.component
+
+  res.render(`${req.params.component}/index`, function (error, html) {
+    if (error) {
+      next()
+    } else {
+      res.send(html)
+    }
+  })
+})
+
+// Component variant preview
+app.get('/components/:component/:variant*?/preview', function (req, res, next) {
+  // Find the data for the specified variant (or the default variant)
+  let requestedVariantName = req.params.variant || 'default'
+  let variantConfig = res.locals.componentData.variants.find(
+    variant => variant.name === requestedVariantName
+  )
+
+  if (!variantConfig) {
+    next()
+  }
+
+  let macroParameters = JSON.stringify(variantConfig.data, null, '\t')
+
+  // Construct and evaluate the component with the data for this variant
+  let componentNameCapitalized = helperFunctions.capitaliseComponentName(
+    req.params.component
+  )
+  let importStatement = `{% from '${req.params.component}/macro.njk' import govuk${componentNameCapitalized} %}`
+  res.locals.componentView = env.renderString(
+    `${importStatement}${`{{ govuk${componentNameCapitalized}(${macroParameters}) }}`}`
+  )
+
+  res.render('component-preview')
 })
 
 // Example list
