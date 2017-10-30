@@ -11,8 +11,7 @@ const helperFunctions = require('./lib/helper-functions.js')
 // Set up views
 const appViews = [
   path.join(__dirname, '/src/views/'),
-  path.join(__dirname, '/src/components/'),
-  path.join(__dirname, '/src/examples/')
+  path.join(__dirname, '/src/components/')
 ]
 
 // Configure nunjucks
