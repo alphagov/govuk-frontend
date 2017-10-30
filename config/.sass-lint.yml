@@ -479,7 +479,7 @@ rules:
 
   # Rule space-between-parens will enforce whether or not a space should be included before the first item and after the last item inside parenthesis (()).
   # https://github.com/sasstools/sass-lint/blob/master/docs/rules/space-between-parens.md
-  space-between-parens: 0
+  space-between-parens: 2
 
   # Rule trailing-semicolon will enforce whether the last declaration in a block should include a semicolon (;) or not.
   # https://github.com/sasstools/sass-lint/blob/master/docs/rules/trailing-semicolon.md

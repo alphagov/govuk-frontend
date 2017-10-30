@@ -394,6 +394,24 @@ $bar: 2 - 1;
 }
 ```
 
+### Avoid whitespace between parentheses and the arguments
+
+Bad:
+
+```
+@function foo( $bar, $baz ) {
+  @return $bar + $baz;
+}
+```
+
+Good:
+
+```
+@function foo($bar, $baz) {
+  @return $bar + $baz;
+}
+```
+
 ### Functions, mixins, variables, and placeholders should be declared with all lowercase letters and hyphens instead of underscores
 
 Bad:
