@@ -107,15 +107,20 @@ app.get('/components*', function (req, res, next) {
   }
 })
 
-// Examples
+// Example list
 app.get('/examples', function (req, res) {
   res.render('example-list')
 })
 
-app.get('/examples/*', function (req, res) {
-  let path = req.params[0].split('/')
-  // component details page in index.njk
-  res.render('examples/' + path[0] + '/' + 'index')
+// Example view
+app.get('/examples/:example', function (req, res, next) {
+  res.render(`examples/${req.params.example}/index`, function (error, html) {
+    if (error) {
+      next()
+    } else {
+      res.send(html)
+    }
+  })
 })
 
 // Disallow search index indexing
