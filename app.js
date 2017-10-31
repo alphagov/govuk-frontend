@@ -25,7 +25,7 @@ let env = nunjucks.configure(appViews, {
 })
 
 // make the function above available as a filter for all templates
-env.addFilter('capitaliseComponentName', helperFunctions.capitaliseComponentName)
+env.addFilter('componentNameToMacroName', helperFunctions.componentNameToMacroName)
 
 // Set view engine
 app.set('view engine', 'njk')
@@ -95,7 +95,9 @@ app.get('/components/:component', function (req, res, next) {
 // Component variant preview
 app.get('/components/:component/:variant*?/preview', function (req, res, next) {
   // Find the data for the specified variant (or the default variant)
+  let componentName = req.params.component
   let requestedVariantName = req.params.variant || 'default'
+
   let variantConfig = res.locals.componentData.variants.find(
     variant => variant.name === requestedVariantName
   )
@@ -104,15 +106,13 @@ app.get('/components/:component/:variant*?/preview', function (req, res, next) {
     next()
   }
 
+  // Construct and evaluate the component with the data for this variant
+  let macroName = helperFunctions.componentNameToMacroName(componentName)
   let macroParameters = JSON.stringify(variantConfig.data, null, '\t')
 
-  // Construct and evaluate the component with the data for this variant
-  let componentNameCapitalized = helperFunctions.capitaliseComponentName(
-    req.params.component
-  )
-  let importStatement = `{% from '${req.params.component}/macro.njk' import govuk${componentNameCapitalized} %}`
   res.locals.componentView = env.renderString(
-    `${importStatement}${`{{ govuk${componentNameCapitalized}(${macroParameters}) }}`}`
+    `{% from '${componentName}/macro.njk' import ${macroName} %}
+    {{ ${macroName}(${macroParameters}) }}`
   )
 
   res.render('component-preview')
