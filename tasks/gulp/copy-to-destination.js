@@ -49,7 +49,7 @@ gulp.task('copy-files', () => {
   .pipe(icons.restore)
   .pipe(globals)  // replace import in scss files and bring globals/ up one level
   .pipe(gulpif(isPackages, replace('../../components', '@govuk-frontend')))
-  .pipe(gulpif(isPackages, replace('../../globals', '@govuk-frontend')))
+  .pipe(gulpif(isPackages, replace('../../globals/scss', '@govuk-frontend/globals')))
   .pipe(gulpif(isPackages, replace('./node_modules/', '')))
   .pipe(flatten({
     subPath: [2, 3],
