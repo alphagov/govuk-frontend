@@ -1,9 +1,10 @@
 @import "@govuk-frontend/globals/import-once";
 @import "@govuk-frontend/globals/vars";
-@import "utilities/clearfix";
+@import "@govuk-frontend/globals/utilities/clearfix";
 
 @include exports("fieldset") {
   .govuk-c-fieldset {
+    margin: 0;
     padding: 0;
     border: 0;
     @include govuk-u-clearfix;
@@ -20,6 +21,23 @@
     padding: 0;
     // Hack to let legends or elements within legends have margins in webkit browsers
     overflow: hidden;
+
+    color: $govuk-text-colour;
+    font-family: $govuk-font-stack;
     white-space: normal;    // 1
+    @include font-smoothing;
+    @include govuk-core-19;
   }
+
+  .govuk-c-fieldset__legend--bold {
+    font-weight: 700;
+  }
+
+  // Hint text sits inside a legend, to be read by AT
+  .govuk-c-fieldset__hint {
+    display: block;
+    color: $govuk-secondary-text-colour;
+    font-weight: 400;
+  }
+
 }

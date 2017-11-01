@@ -1,10 +1,9 @@
 @import "@govuk-frontend/globals/import-once";
 @import "@govuk-frontend/globals/font-face";
 @import "@govuk-frontend/globals/helpers-px-to-em";
-@import "@govuk-frontend/globals/spacing";
 @import "@govuk-frontend/globals/typography";
 @import "@govuk-frontend/globals/vars";
-@import "@govuk-frontend/phase-tag/phase-tag";
+@import "@govuk-frontend/tag/tag";
 
 @include exports("phase-banner") {
   .govuk-c-phase-banner {
@@ -23,6 +22,10 @@
   .govuk-c-phase-banner__content {
     display: table;
     margin: 0;
+  }
+
+  .govuk-c-phase-banner__content__tag {
+    margin-right: $govuk-spacing-scale-2;
   }
 
   .govuk-c-phase-banner__text {

@@ -11,10 +11,10 @@ For static use, the path is set to `/icons`. You need to copy images from `/node
 See `dist` folder for an example.
 
 
-
+<!--
 ## Installation
 
 ```
 npm install --save @govuk-frontend/icons
 ```
-
+-->

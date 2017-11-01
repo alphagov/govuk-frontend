@@ -1,0 +1,14 @@
+{% from "breadcrumb/macro.njk" import govukBreadcrumb %}
+
+{{ govukBreadcrumb({
+  "items": [
+    {
+      "text": "Section 1",
+      "href": "/section"
+    },
+    {
+      "text": "Sub-section",
+      "href": "/section/sub-section"
+    }
+  ]
+}) }}

@@ -1,0 +1,18 @@
+{% from "list/macro.njk" import govukList -%}
+
+{{- govukList({
+  items: [
+    {
+      text: 'Related link',
+      href: '#'
+    },
+    {
+      text: 'Related link',
+      href: '#'
+    },
+    {
+      text: 'Not a link'
+    }
+  ]
+})
+-}}

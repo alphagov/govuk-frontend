@@ -60,6 +60,7 @@ $govuk-link-active-colour: $govuk-light-blue;
 $govuk-link-hover-colour: $govuk-light-blue;
 $govuk-link-visited-colour: #4c2c92;
 $govuk-button-colour: #00823b;
+$govuk-button-colour-darken-15: darken($govuk-button-colour, 15%);
 $govuk-focus-colour: $govuk-yellow;
 $govuk-text-colour: $govuk-black;             // Standard text colour
 $govuk-secondary-text-colour: $govuk-grey-1;  // Section headers, help text etc.

@@ -1,7 +1,0 @@
-{
-  "name": "@govuk-frontend/pagination",
-  "version": "0.0.11-alpha",
-  "dependencies": {
-    "@govuk-frontend/globals": "^0.0.11-alpha"
-  }
-}

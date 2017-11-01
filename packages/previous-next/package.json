@@ -1,0 +1,7 @@
+{
+  "name": "@govuk-frontend/previous-next",
+  "version": "0.0.18-alpha",
+  "dependencies": {
+    "@govuk-frontend/globals": "^0.0.18-alpha"
+  }
+}

@@ -2,7 +2,6 @@
 @import "@govuk-frontend/globals/font-face";
 @import "@govuk-frontend/globals/helpers-url";
 @import "@govuk-frontend/globals/links";
-@import "@govuk-frontend/globals/spacing";
 @import "@govuk-frontend/globals/typography";
 @import "@govuk-frontend/globals/vars";
 
@@ -76,21 +75,5 @@
 
   .govuk-c-link--download a:focus {
     color: $govuk-black;
-  }
-
-  .govuk-c-link--skip {
-    position: absolute;
-    left: -9999em;
-  }
-
-  // Default link colour doesn't have enough contrast against $govuk-focus-colour
-  .govuk-c-link--skip:focus,
-  .govuk-c-link--skip:visited {
-    color: $govuk-text-colour;
-  }
-
-  .govuk-c-link--skip:focus {
-    z-index: 1;
-    left: 0;
   }
 }

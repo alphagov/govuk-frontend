@@ -1,0 +1,27 @@
+@import "@govuk-frontend/globals/import-once";
+@import "@govuk-frontend/globals/font-face";
+@import "@govuk-frontend/globals/typography";
+@import "@govuk-frontend/globals/vars";
+
+@include exports("tag") {
+  .govuk-c-tag {
+    display: inline-block;
+    padding: $govuk-spacing-scale-1 $govuk-spacing-scale-1 0;
+
+    color: $govuk-white;
+    background-color: $govuk-blue;
+
+    font-family: $govuk-font-stack;
+    @include font-smoothing;
+    @include govuk-bold-16;
+    letter-spacing: 1px;
+    line-height: 1.25;
+
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .govuk-c-tag--inactive {
+    background-color: $govuk-grey-1;
+  }
+}
