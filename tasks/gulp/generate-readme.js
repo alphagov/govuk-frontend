@@ -25,7 +25,7 @@ var environment = new nunjucks.Environment(
 )
 environment.addGlobal('isReadme', 'true')
 // make the function above available as a filter for all templates
-environment.addFilter('capitaliseComponentName', helperFunctions.capitaliseComponentName)
+environment.addFilter('componentNameToMacroName', helperFunctions.componentNameToMacroName)
 
 gulp.task('generate:readme', () => {
   return gulp.src(['!' + configPath.components + '_component-example/index.njk', configPath.components + '**/index.njk'])
