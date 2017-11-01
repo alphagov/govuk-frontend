@@ -12,6 +12,9 @@ const nunjucks = require('nunjucks')
 const objectData = {}
 const yaml = require('js-yaml')
 const helperFunctions = require('../../lib/helper-functions.js')
+const taskArguments = require('./task-arguments')
+const gulpif = require('gulp-if')
+const isPackages = (taskArguments.destination === 'packages') || false
 
 // data variable to be passed to the nunjucks template
 function getDataForFile (file) {
@@ -53,5 +56,5 @@ gulp.task('generate:readme', () => {
     path.basename = 'README'
     path.extname = '.md'
   }))
-  .pipe(gulp.dest(configPath.components))
+  .pipe(gulp.dest(gulpif(isPackages, taskArguments.destination, taskArguments.destination + '/components/')))
 })
