@@ -18,7 +18,6 @@
     padding-left: 14px;
     border-bottom: 1px solid $govuk-black;
     color: $govuk-black;
-    background: file-url("icon-arrow-left.png") no-repeat 0 4px;
     text-decoration: none;
 
     &:link,
@@ -29,7 +28,7 @@
     }
 
     // Back arrow - left pointing black arrow
-    &::before {
+    &:before {
       content: "";
       display: block;
 
