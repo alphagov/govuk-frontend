@@ -18,18 +18,26 @@
   }
 
   .govuk-o-grid__item--one-half {
-    width: percentage(1 / 2);
+    @include mq($from: tablet) {
+      width: percentage(1 / 2);
+    }
   }
 
   .govuk-o-grid__item--one-third {
-    width: percentage(1 / 3);
+    @include mq($from: tablet) {
+      width: percentage(1 / 3);
+    }
   }
 
   .govuk-o-grid__item--two-thirds {
-    width: percentage(2 / 3);
+    @include mq($from: tablet) {
+      width: percentage(2 / 3);
+    }
   }
 
   .govuk-o-grid__item--one-quarter {
-    width: percentage(1 / 4);
+    @include mq($from: tablet) {
+      width: percentage(1 / 4);
+    }
   }
 }
