@@ -10,7 +10,9 @@ const del = require('del')
 
 // Gulp sub-tasks
 require('./tasks/gulp/lint.js')
-require('./tasks/gulp/test.js')
+require('./tasks/gulp/test-app.js')
+require('./tasks/gulp/test-components.js')
+require('./tasks/gulp/test-tasks.js')
 require('./tasks/gulp/compile-assets.js')
 require('./tasks/gulp/compile-components.js')
 require('./tasks/gulp/generate-readme.js')

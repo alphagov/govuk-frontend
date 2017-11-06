@@ -57,7 +57,17 @@ This task will:
 **`gulp test`**
 
 This task will:
-- will run accessibility test (tenon and axe)
+- run accessibility test (tenon and axe)
+
+**`gulp test:app`**
+
+This task will:
+- test the node server
+
+**`gulp test:tasks`**
+
+This task will:
+- test the gulp tasks
 
 **`gulp watch`**
 
