@@ -4,9 +4,9 @@ const nunjucks = require('nunjucks')
 const fs = require('fs')
 const path = require('path')
 const port = (process.env.PORT || 3000)
-const dto = require('directory-to-object')
 const yaml = require('js-yaml')
 const helperFunctions = require('./lib/helper-functions.js')
+const dto = require('./lib/dto-helper.js')
 
 // Set up views
 const appViews = [
@@ -38,29 +38,16 @@ app.listen(port, () => {
   console.log('Listening on port ' + port + '   url: http://localhost:' + port)
 })
 
-// Create a componentDirectory object representing the components directory
-// which we can use to iterate the component list on the homepage
-dto(path.resolve('./src/components'), (err, res) => {
-  if (err) {
-    console.log(err)
-  }
-  app.locals.componentsDirectory = res
-})
-
-// Create an examplesDirectory object representing the examples directory
-// which we can use to iterate the list of examples on the examples page
-dto(path.resolve('./src/views/examples'), (err, res) => {
-  if (err) {
-    console.log(err)
-  }
-  app.locals.examplesDirectory = res
-})
-
 // Define routes
 
 // Index page - render the component list template
 app.get('/', function (req, res) {
-  res.render('component-list')
+  // Creates a componentsDirectory object representing the components in the src directory
+  // which is then passed to the view to list the components
+  dto.directoryToObject(path.resolve('./src/components'))
+    .then((data) => {
+      res.render('component-list', {componentsDirectory: data})
+    })
 })
 
 // Whenever the route includes a :component parameter, read the component data
@@ -120,7 +107,12 @@ app.get('/components/:component/:variant*?/preview', function (req, res, next) {
 
 // Example list
 app.get('/examples', function (req, res) {
-  res.render('example-list')
+  // Create an examplesDirectory object representing the examples
+  // which is then passed to the view to list the examples
+  dto.directoryToObject(path.resolve('./src/views/examples'))
+    .then((data) => {
+      res.render('example-list', {examplesDirectory: data})
+    })
 })
 
 // Example view
