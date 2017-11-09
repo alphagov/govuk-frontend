@@ -7,9 +7,12 @@
 @include exports("panel") {
 
   .govuk-c-panel {
-    // TODO: Make margins under components consistent
+    @include mq($until: tablet) {
+      padding: $govuk-spacing-scale-5;
+    }
+
     margin-bottom: $govuk-spacing-scale-3;
-    padding: $govuk-spacing-scale-5 $govuk-spacing-scale-3;
+    padding: $govuk-spacing-scale-6;
 
     font-family: $govuk-font-stack;
     @include font-smoothing;
@@ -24,17 +27,13 @@
   }
 
   .govuk-c-panel__title {
-    margin-top: em($govuk-spacing-scale-6, 48px);
-    margin-bottom: em($govuk-spacing-scale-5, 48px);
+    margin-top: 0;
+    margin-bottom: $govuk-spacing-scale-5;
 
     @include govuk-bold-48;
   }
 
   .govuk-c-panel__body {
-    // TODO: Fix margin values
-    margin-top: em($govuk-spacing-scale-2, 48px);
-    margin-bottom: em($govuk-spacing-scale-5, 48px); //use to be 37.895px
-
     @include govuk-core-36;
   }
 
