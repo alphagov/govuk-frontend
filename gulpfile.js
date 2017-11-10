@@ -105,7 +105,7 @@ gulp.task('build:packages', cb => {
               cb)
 })
 gulp.task('build:dist', cb => {
-  runsequence(
+  runsequence('clean',
               'copy-assets',
               'compile:components',
               'copy-files',
