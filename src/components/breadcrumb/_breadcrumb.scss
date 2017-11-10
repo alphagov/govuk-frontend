@@ -3,6 +3,7 @@
 @import "../../globals/scss/typography";
 @import "../../globals/scss/utilities/clearfix";
 @import "../../globals/scss/vars";
+@import "../../globals/scss/device-pixels";
 
 
 @include exports("breadcrumb") {
@@ -28,6 +29,12 @@
     padding-left: $govuk-spacing-scale-3;
     float: left;
     background-image: file-url("separator.png");
+
+    @include device-pixel-ratio() {
+      background-image: file-url("separator-2x.png");
+      background-size: 6px 11px;
+    }
+
     background-repeat: no-repeat;
     background-position: 0% 50%;
   }
