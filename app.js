@@ -34,7 +34,7 @@ app.set('view engine', 'njk')
 app.use('/public', express.static(path.join(__dirname, '/public')))
 app.use('/icons', express.static(path.join(__dirname, '/public/icons')))
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log('Listening on port ' + port + '   url: http://localhost:' + port)
 })
 
@@ -163,3 +163,5 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500)
   res.render('http-error', { error: 'Internal server error', message: err })
 })
+
+module.exports = server
