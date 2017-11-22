@@ -8,9 +8,7 @@
 @include exports("list") {
   .govuk-c-list {
     @include font-smoothing;
-    @include govuk-core-19;
-    // TODO: Make margins under components consistent
-    margin-bottom: $govuk-spacing-scale-4;
+    margin: 0;
     padding-left: 0;
     list-style-type: none;
     font-family: $govuk-font-stack;
