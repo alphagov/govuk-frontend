@@ -3,7 +3,7 @@
 //
 // This means that every component has access to all things within the settings,
 // tools and helpers layers
-  
+
 // Settings
 @import "settings/colours-palette";
 @import "settings/colours-organisations";
@@ -11,6 +11,8 @@
 @import "settings/spacing";
 @import "settings/measurements";
 @import "settings/font-stack";
+@import "settings/media-queries";
+
 
 // TODO: Move these files into sensible places
 // These are settings and so this file should be gone soon
@@ -22,12 +24,14 @@
 @import "tools/legacy-ie";
 @import "tools/px-to-em";
 
-// These are helpers
-@import "device-pixels";
-@import "media-queries";
-@import "utilities/borders";
-@import "utilities/clearfix";
-@import "utilities/visually-hidden";
+// Vendor libraries
+@import "./node_modules/sass-mq/mq"; // We use sass-mq module for media queries
+
+// Helpers
+@import "helpers/device-pixels";
+@import "helpers/borders";
+@import "helpers/clearfix";
+@import "helpers/visually-hidden";
 
 // Core
 @import "links";
