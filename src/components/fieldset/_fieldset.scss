@@ -1,6 +1,4 @@
-@import "../../globals/scss/import-once";
-@import "../../globals/scss/vars";
-@import "../../globals/scss/utilities/clearfix";
+@import "../../globals/scss/common";
 
 @include exports("fieldset") {
   .govuk-c-fieldset {

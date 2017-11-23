@@ -1,10 +1,4 @@
-@import "../../globals/scss/import-once";
-@import "../../globals/scss/helpers-url";
-@import "../../globals/scss/typography";
-@import "../../globals/scss/utilities/clearfix";
-@import "../../globals/scss/vars";
-@import "../../globals/scss/device-pixels";
-
+@import "../../globals/scss/common";
 
 @include exports("breadcrumb") {
   .govuk-c-breadcrumb {

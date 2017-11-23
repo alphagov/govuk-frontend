@@ -1,11 +1,4 @@
-@import "../../globals/scss/import-once";
-@import "../../globals/scss/font-face";
-@import "../../globals/scss/helpers-ie";
-@import "../../globals/scss/helpers-px-to-em";
-@import "../../globals/scss/helpers-url";
-@import "../../globals/scss/media-queries";
-@import "../../globals/scss/typography";
-@import "../../globals/scss/vars";
+@import "../../globals/scss/common";
 
 @include exports("button") {
   .govuk-c-button {

@@ -1,14 +1,5 @@
 // Settings
-@import "settings/colours-palette";
-@import "settings/colours-organisations";
-@import "settings/colours-applied";
-@import "settings/spacing";
-@import "settings/measurements";
-@import "settings/font-stack";
-
-// Globals
-@import "../../globals/scss/spacing";
-@import "../../globals/scss/layout/grid";
+@import "common";
 
 // Components
 @import "../../components/breadcrumb/breadcrumb";

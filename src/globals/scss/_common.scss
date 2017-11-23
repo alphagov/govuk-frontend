@@ -1,0 +1,39 @@
+// This file is included by each individual component as well as the
+// govuk-frontend file itself.
+//
+// This means that every component has access to all things within the settings,
+// tools and helpers layers
+  
+// Settings
+@import "settings/colours-palette";
+@import "settings/colours-organisations";
+@import "settings/colours-applied";
+@import "settings/spacing";
+@import "settings/measurements";
+@import "settings/font-stack";
+
+// TODO: Move these files into sensible places
+// These are settings and so this file should be gone soon
+@import "vars";
+
+// These are tools
+@import "helpers-ie";
+@import "helpers-px-to-em";
+@import "helpers-url";
+@import "import-once";
+
+@import "device-pixels";
+@import "media-queries";
+
+// These are helpers
+@import "utilities/borders";
+@import "utilities/clearfix";
+@import "utilities/visually-hidden";
+
+// Core
+@import "links";
+@import "typography";
+
+// Objects
+@import "utilities/shapes";
+@import "layout/site-width-container";

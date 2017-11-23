@@ -1,8 +1,4 @@
-@import "../../globals/scss/import-once";
-@import "../../globals/scss/helpers-px-to-em";
-@import "../../globals/scss/typography";
-@import "../../globals/scss/utilities/borders";
-@import "../../globals/scss/vars";
+@import "../../globals/scss/common";
 
 @include exports("details") {
   .govuk-c-details {
