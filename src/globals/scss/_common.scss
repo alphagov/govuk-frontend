@@ -12,11 +12,7 @@
 @import "settings/measurements";
 @import "settings/font-stack";
 @import "settings/media-queries";
-
-
-// TODO: Move these files into sensible places
-// These are settings and so this file should be gone soon
-@import "vars";
+@import "settings/paths";
 
 // Tools
 @import "tools/exports";
