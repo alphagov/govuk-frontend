@@ -1,9 +1,0 @@
-@import "grid-layout";
-
-@include exports("site-width-container") {
-
-  .govuk-o-site-width-container {
-    @include govuk-site-width-container;
-  }
-
-}
