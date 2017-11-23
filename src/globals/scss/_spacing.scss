@@ -28,8 +28,6 @@ $govuk-spacing-scale: (
   8: $govuk-spacing-scale-8
 );
 
-@import "import-once";
-
 @include exports("spacing") {
   // Create spacing utility classes
   @each $spacing-property-key, $spacing-property-value in $spacing-properties {

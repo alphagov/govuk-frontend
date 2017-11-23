@@ -1,6 +1,3 @@
-@import "../vars";
-@import "../import-once";
-
 @include exports("shapes") {
   .govuk-u-circle {
     display: inline-block;
