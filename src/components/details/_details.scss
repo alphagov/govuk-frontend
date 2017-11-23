@@ -43,7 +43,7 @@
     // TODO: Make margins underneath components consistent
     margin-bottom: em($govuk-spacing-scale-3, 19px);
     padding: em($govuk-spacing-scale-3, 19px);
-    @include govuk-u-border-left($govuk-border-width, $govuk-border-colour);
+    border-left: $govuk-border-width solid $govuk-border-colour;
   }
 
   .govuk-c-details__text p {

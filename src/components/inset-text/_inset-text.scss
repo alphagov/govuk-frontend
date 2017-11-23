@@ -6,10 +6,11 @@
 
     clear: both;
 
+    border-left: $govuk-border-width-wide solid $govuk-border-colour;
+
     font-family: $govuk-font-stack;
     @include govuk-core-19;
     @include font-smoothing;
-    @include govuk-u-border-left($govuk-border-width-wide, $govuk-border-colour);
 
     :first-child {
       margin-top: 0;
