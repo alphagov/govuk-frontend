@@ -10,7 +10,7 @@
   }
 
   .govuk-c-breadcrumb__list {
-    @include govuk-u-clearfix;
+    @include govuk-h-clearfix;
     margin: 0;
     padding: 0;
     list-style-type: none;
@@ -24,7 +24,7 @@
     float: left;
     background-image: file-url("separator.png");
 
-    @include device-pixel-ratio() {
+    @include govuk-h-device-pixel-ratio() {
       background-image: file-url("separator-2x.png");
       background-size: 6px 11px;
     }

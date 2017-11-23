@@ -5,7 +5,7 @@
 
 @include exports("date-input") {
   .govuk-c-date-input {
-    @include govuk-u-clearfix;
+    @include govuk-h-clearfix;
   }
 
   .govuk-c-date-input__item {

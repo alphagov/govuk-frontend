@@ -105,7 +105,7 @@
     padding: em($govuk-spacing-scale-1, 24px) em($govuk-spacing-scale-6, 24px) em($govuk-spacing-scale-1, 24px) em($govuk-spacing-scale-4, 24px);
     background-image: file-url("icon-pointer.png");
 
-    @include device-pixel-ratio() {
+    @include govuk-h-device-pixel-ratio() {
       background-image: file-url("icon-pointer-2x.png");
       background-size: 30px 19px;
     }

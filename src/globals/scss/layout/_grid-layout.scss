@@ -22,7 +22,7 @@
 }
 
 @mixin govuk-grid {
-  @include govuk-u-clearfix;
+  @include govuk-h-clearfix;
   margin-right: - ($govuk-spacing-scale-3);
   margin-left: - ($govuk-spacing-scale-3);
 }
