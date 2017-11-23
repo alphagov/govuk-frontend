@@ -16,16 +16,15 @@
 // These are settings and so this file should be gone soon
 @import "vars";
 
-// These are tools
-@import "helpers-ie";
-@import "helpers-px-to-em";
-@import "helpers-url";
-@import "import-once";
-
-@import "device-pixels";
-@import "media-queries";
+// Tools
+@import "tools/exports";
+@import "tools/file-url";
+@import "tools/legacy-ie";
+@import "tools/px-to-em";
 
 // These are helpers
+@import "device-pixels";
+@import "media-queries";
 @import "utilities/borders";
 @import "utilities/clearfix";
 @import "utilities/visually-hidden";
