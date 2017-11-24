@@ -1,0 +1,12 @@
+@import "../font-face";
+
+// Fonts
+
+// New Transport Light font family
+$govuk-nta-light: "nta", Arial, sans-serif;
+$govuk-nta-light-tabular: "ntatabularnumbers", $govuk-nta-light;
+// These adjust the fallback font to match NTA. These can be tested by adding a
+// font-size-adjust to gov.uk and adjusting the property until no difference is
+// seen when it’s toggled.
+$govuk-nta-light-adjust-regular: .5;
+$govuk-nta-light-adjust-bold: .525;
