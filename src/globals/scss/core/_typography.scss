@@ -1,435 +1,90 @@
-// $govuk-typography-scale-1: 14;
-// $govuk-typography-scale-2: 16;
-// $govuk-typography-scale-3: 19;
-// $govuk-typography-scale-4: 24;
-// $govuk-typography-scale-5: 27;
-// $govuk-typography-scale-6: 36;
-// $govuk-typography-scale-7: 48;
-// $govuk-typography-scale-8: 80;
+// Heading classes
 
-@mixin font-smoothing {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-$is-print: false !default;
-
-@mixin _core-font-generator(
-  $font-size: 19px,
-  $font-size-640: 16px,
-  $font-size-print: 14pt,
-  $line-height: (25 / 19),
-  $line-height-640: (20 / 16),
-  $tabular-numbers: false,
-  $font-weight: 400
-  ) {
-  @if $tabular-numbers == true {
-    font-family: $govuk-font-stack-tabular;
-  } @else if $is-print {
-    font-family: $govuk-font-stack-print;
-  } @else {
-    font-family: $govuk-font-stack;
-    @if $govuk-font-stack == "$nta-light" {
-      @if $font-weight > 400 {
-        font-size-adjust: .525;
-      } @else {
-        font-size-adjust: .5;
-      }
-    }
-  }
-  font-weight: $font-weight;
-  text-transform: none;
-
-  @if $is-print {
-    font-size: $font-size-print;
-    line-height: $line-height;
-
-  } @else {
-    font-size: $font-size-640;
-    line-height: $line-height-640;
-
-    @include mq($from: tablet) {
-      font-size: $font-size;
-      line-height: $line-height;
-    }
-  }
-}
-
-@mixin govuk-core-80($line-height: (80 / 80), $line-height-640: (55 / 53), $tabular-numbers: false, $font-weight: 400) {
-  $font-size: 80px;
-  $font-size-640: 53px;
-  $font-size-print: 28pt;
-  @include _core-font-generator($font-size, $font-size-640, $font-size-print, $line-height, $line-height-640, $tabular-numbers, $font-weight);
-}
-
-@mixin govuk-core-48($line-height: (50 / 48), $line-height-640: (35 / 32), $tabular-numbers: false, $font-weight: 400) {
-  $font-size: 48px;
-  $font-size-640: 32px;
-  $font-size-print: 18pt;
-  @include _core-font-generator($font-size, $font-size-640, $font-size-print, $line-height, $line-height-640, $tabular-numbers, $font-weight);
-}
-
-@mixin govuk-core-36($line-height: (40 / 36), $line-height-640: (25 / 24), $tabular-numbers: false, $font-weight: 400) {
-  $font-size: 36px;
-  $font-size-640: 24px;
-  $font-size-print: 18pt;
-  @include _core-font-generator($font-size, $font-size-640, $font-size-print, $line-height, $line-height-640, $tabular-numbers, $font-weight);
-}
-
-@mixin govuk-core-27($line-height: (30 / 27), $line-height-640: (20 / 18), $tabular-numbers: false, $font-weight: 400) {
-  $font-size: 27px;
-  $font-size-640: 20px;
-  $font-size-print: 16pt;
-  @include _core-font-generator($font-size, $font-size-640, $font-size-print, $line-height, $line-height-640, $tabular-numbers, $font-weight);
-}
-
-@mixin govuk-core-24($line-height: (30 / 24), $line-height-640: (24 / 20), $tabular-numbers: false, $font-weight: 400) {
-  $font-size: 24px;
-  $font-size-640: 18px;
-  $font-size-print: 16pt;
-  @include _core-font-generator($font-size, $font-size-640, $font-size-print, $line-height, $line-height-640, $tabular-numbers, $font-weight);
-}
-
-@mixin govuk-core-19($line-height: (25 / 19), $line-height-640: (20 / 16), $tabular-numbers: false, $font-weight: 400) {
-  $font-size: 19px;
-  $font-size-640: 16px;
-  $font-size-print: 14pt;
-  @include _core-font-generator($font-size, $font-size-640, $font-size-print, $line-height, $line-height-640, $tabular-numbers, $font-weight);
-}
-
-@mixin govuk-core-16($line-height: (20 / 16), $line-height-640: (16 / 14), $tabular-numbers: false, $font-weight: 400) {
-  $font-size: 16px;
-  $font-size-640: 14px;
-  $font-size-print: 12pt;
-  @include _core-font-generator($font-size, $font-size-640, $font-size-print, $line-height, $line-height-640, $tabular-numbers, $font-weight);
-}
-
-@mixin govuk-core-14($line-height: (20 / 14), $line-height-640: (15 / 12), $tabular-numbers: false, $font-weight: 400) {
-  $font-size: 14px;
-  $font-size-640: 12px;
-  $font-size-print: 11pt;
-  @include _core-font-generator($font-size, $font-size-640, $font-size-print, $line-height, $line-height-640, $tabular-numbers, $font-weight);
-}
-
-@mixin govuk-bold-80($line-height: (80 / 80), $line-height-640: (55 / 53), $tabular-numbers: false) {
-  @include govuk-core-80($line-height, $line-height-640, $tabular-numbers: $tabular-numbers, $font-weight: 700);
-}
-
-@mixin govuk-bold-48($line-height: (50 / 48), $line-height-640: (35 / 32), $tabular-numbers: false) {
-  @include govuk-core-48($line-height, $line-height-640, $tabular-numbers: $tabular-numbers, $font-weight: 700);
-}
-
-@mixin govuk-bold-36($line-height: (40 / 36), $line-height-640: (25 / 24), $tabular-numbers: false) {
-  @include govuk-core-36($line-height, $line-height-640, $tabular-numbers: $tabular-numbers, $font-weight: 700);
-}
-
-@mixin govuk-bold-27($line-height: (30 / 27), $line-height-640: (20 / 18), $tabular-numbers: false) {
-  @include govuk-core-27($line-height, $line-height-640, $tabular-numbers: $tabular-numbers, $font-weight: 700);
-}
-
-@mixin govuk-bold-24($line-height: (30 / 24), $line-height-640: (24 / 20), $tabular-numbers: false) {
-  @include govuk-core-24($line-height, $line-height-640, $tabular-numbers: $tabular-numbers, $font-weight: 700);
-}
-
-@mixin govuk-bold-19($line-height: (25 / 19), $line-height-640: (20 / 16), $tabular-numbers: false) {
-  @include govuk-core-19($line-height, $line-height-640, $tabular-numbers: $tabular-numbers, $font-weight: 700);
-}
-
-@mixin govuk-bold-16($line-height: (20 / 16), $line-height-640: (16 / 14), $tabular-numbers: false) {
-  @include govuk-core-16($line-height, $line-height-640, $tabular-numbers: $tabular-numbers, $font-weight: 700);
-}
-
-@mixin govuk-bold-14($line-height: (20 / 14), $line-height-640: (15 / 12), $tabular-numbers: false) {
-  @include govuk-core-14($line-height, $line-height-640, $tabular-numbers: $tabular-numbers, $font-weight: 700);
-}
-
-@mixin heading-80($tabular-numbers: false) {
-  @include govuk-core-80($tabular-numbers: $tabular-numbers);
+.govuk-heading-xl {
+  @include govuk-font-bold-48;
 
   display: block;
 
-  padding-top: 8px;
-  padding-bottom: 7px;
+  margin-bottom: $govuk-spacing-scale-5;
 
   @include mq($from: tablet) {
-    padding-top: 6px;
-    padding-bottom: 14px;
+    margin-bottom: $govuk-spacing-scale-7;
   }
 }
 
-@mixin govuk-heading-48($tabular-numbers: false) {
-  @include govuk-core-48($tabular-numbers: $tabular-numbers);
+.govuk-heading-l {
+  @include govuk-font-bold-36;
 
   display: block;
 
-  padding-top: $govuk-spacing-scale-2;
-  padding-bottom: $govuk-spacing-scale-2;
+  margin-bottom: $govuk-spacing-scale-4;
 
   @include mq($from: tablet) {
-    padding-top: 7px;
-    padding-bottom: 13px;
+    margin-bottom: $govuk-spacing-scale-5;
   }
 }
 
-@mixin govuk-heading-36($tabular-numbers: false) {
-  @include govuk-core-36($tabular-numbers: $tabular-numbers);
+.govuk-heading-m {
+  @include govuk-font-bold-24;
 
   display: block;
 
-  padding-top: 8px;
-  padding-bottom: 7px;
+  margin-bottom: $govuk-spacing-scale-3;
 
   @include mq($from: tablet) {
-    padding-top: 6px;
-    padding-bottom: 9px;
+    margin-bottom: $govuk-spacing-scale-4;
   }
 }
 
-@mixin govuk-heading-27($tabular-numbers: false) {
-  @include govuk-core-27($tabular-numbers: $tabular-numbers);
+.govuk-heading-s {
+  @include govuk-font-bold-19;
 
-  display: block;
-
-  padding-top: 8px;
-  padding-bottom: 7px;
+  margin-bottom: $govuk-spacing-scale-3;
 
   @include mq($from: tablet) {
-    padding-top: 4px;
-    padding-bottom: 6px;
+    margin-bottom: $govuk-spacing-scale-4;
   }
 }
 
-@mixin govuk-heading-24($tabular-numbers: false) {
-  @include govuk-core-24($tabular-numbers: $tabular-numbers);
+// Body classes
 
-  display: block;
+.govuk-body-l {
+  @include govuk-font-regular-24;
 
-  padding-top: 9px;
-  padding-bottom: 6px;
+  margin-bottom: $govuk-spacing-scale-4;
 
   @include mq($from: tablet) {
-    padding-top: 6px;
-    padding-bottom: 4px;
+    margin-bottom: $govuk-spacing-scale-5;
   }
 }
 
-@mixin govuk-copy-19($tabular-numbers: false) {
-  @include govuk-core-19($tabular-numbers: $tabular-numbers);
+.govuk-body,
+.govuk-body-m {
+  @include govuk-font-regular-19;
 
-  padding-top: 2px;
-  padding-bottom: 8px;
+  margin-bottom: $govuk-spacing-scale-3;
 
   @include mq($from: tablet) {
-    padding-top: 0;
-    padding-bottom: $govuk-spacing-scale-1;
+    margin-bottom: $govuk-spacing-scale-4;
   }
 }
 
-@mixin govuk-copy-16($tabular-numbers: false) {
-  @include govuk-core-16($tabular-numbers: $tabular-numbers);
+.govuk-body-s {
+  @include govuk-font-regular-16;
 
-  padding-top: 8px;
-  padding-bottom: 7px;
+  margin-bottom: $govuk-spacing-scale-3;
 
   @include mq($from: tablet) {
-    padding-top: $govuk-spacing-scale-1;
-    padding-bottom: $govuk-spacing-scale-1;
+    margin-bottom: $govuk-spacing-scale-4;
   }
 }
 
-@mixin govuk-copy-14($tabular-numbers: false) {
-  @include govuk-core-14($tabular-numbers: $tabular-numbers);
+.govuk-body-xs {
+  @include govuk-font-regular-14;
 
-  padding-top: 8px;
-  padding-bottom: 7px;
+  margin-bottom: $govuk-spacing-scale-3;
 
   @include mq($from: tablet) {
-    padding-top: $govuk-spacing-scale-1;
-    padding-bottom: $govuk-spacing-scale-1;
+    margin-bottom: $govuk-spacing-scale-4;
   }
-}
-
-@mixin govuk-bold {
-  font-weight: 700;
-}
-
-@include exports("typography") {
-
-  .govuk-u-core-14 {
-    @include govuk-core-14;
-  }
-
-  .govuk-u-core-16 {
-    @include govuk-core-16;
-  }
-
-  .govuk-u-core-19 {
-    @include govuk-core-19;
-  }
-
-  .govuk-u-core-24 {
-    @include govuk-core-24;
-  }
-
-  .govuk-u-core-27 {
-    @include govuk-core-24;
-  }
-
-  .govuk-u-core-36 {
-    @include govuk-core-36;
-  }
-
-  .govuk-u-core-48 {
-    @include govuk-core-48;
-  }
-
-  .govuk-u-core-80 {
-    @include govuk-core-80;
-  }
-
-
-  .govuk-u-bold-14 {
-    @include govuk-bold-14;
-  }
-
-  .govuk-u-bold-16 {
-    @include govuk-bold-16;
-  }
-
-  .govuk-u-bold-19 {
-    @include govuk-bold-19;
-  }
-
-  .govuk-u-bold-24 {
-    @include govuk-bold-24;
-  }
-
-  .govuk-u-bold-27 {
-    @include govuk-bold-27;
-  }
-
-  .govuk-u-bold-36 {
-    @include govuk-bold-36;
-  }
-
-  .govuk-u-bold-48 {
-    @include govuk-bold-48;
-  }
-
-  .govuk-u-bold-80 {
-    @include govuk-bold-80;
-  }
-
-  .govuk-u-heading-24 {
-    @include govuk-heading-24;
-  }
-
-  .govuk-u-heading-27 {
-    @include govuk-heading-24;
-  }
-
-  .govuk-u-heading-36 {
-    @include govuk-heading-36;
-  }
-
-  .govuk-u-heading-48 {
-    @include govuk-heading-48;
-  }
-
-  .govuk-u-copy-14 {
-    @include govuk-copy-14;
-  }
-
-  .govuk-u-copy-16 {
-    @include govuk-copy-16;
-  }
-
-  .govuk-u-copy-19 {
-    @include govuk-copy-19;
-  }
-
-  // Copy headings with extra margins from GOV.UK elements
-  .heading-xlarge {
-    @include govuk-bold-48;
-
-    margin-top: em($govuk-spacing-scale-3, 32);
-    margin-bottom: em($govuk-spacing-scale-5, 32);
-
-    @include mq($from: tablet) {
-      margin-top: em($govuk-spacing-scale-5, 48);
-      margin-bottom: em($govuk-spacing-scale-6, 48);
-    }
-
-    .heading-secondary {
-      @include govuk-heading-27;
-
-      display: block;
-      color: $govuk-secondary-text-colour;
-    }
-
-  }
-
-  .heading-large {
-    @include govuk-bold-36;
-
-    margin-top: em(25, 24);
-    margin-bottom: em($govuk-spacing-scale-2, 24);
-
-    @include mq($from: tablet) {
-      margin-top: em(45, 36);
-      margin-bottom: em($govuk-spacing-scale-4, 36);
-    }
-
-    .heading-secondary {
-      @include govuk-heading-24;
-
-      display: block;
-      color: $govuk-secondary-text-colour;
-    }
-
-  }
-
-  .heading-medium {
-    @include govuk-bold-24;
-
-    margin-top: em(25, 20);
-    margin-bottom: em($govuk-spacing-scale-2, 20);
-
-    @include mq($from: tablet) {
-      margin-top: em(45, 24);
-      margin-bottom: em($govuk-spacing-scale-4, 24);
-    }
-
-  }
-
-  .heading-small {
-    @include govuk-bold-19;
-
-    margin-top: em($govuk-spacing-scale-2, 16);
-    margin-bottom: em($govuk-spacing-scale-1, 16);
-
-    @include mq($from: tablet) {
-      margin-top: em($govuk-spacing-scale-4, 19);
-    }
-  }
-
-  .body-text {
-    @include govuk-core-19;
-    margin-top: em($govuk-spacing-scale-1, 16);
-    margin-bottom: em($govuk-spacing-scale-4, 16);
-
-    @include mq($from: tablet) {
-      margin-top: em($govuk-spacing-scale-1, 19);
-      margin-bottom: em($govuk-spacing-scale-4, 19);
-    }
-  }
-
-  .govuk-text-align-button {
-    @include govuk-core-19;
-    @include font-smoothing;
-    display: inline-block;
-    padding-top: em(8, 19);
-    padding-left: em($govuk-spacing-scale-1, 19px);
-  }
-
 }
