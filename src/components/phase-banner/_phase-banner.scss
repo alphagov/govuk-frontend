@@ -12,7 +12,6 @@
     border-bottom: 1px solid $govuk-border-colour;
 
     font-family: $govuk-font-stack;
-    @include font-smoothing;
   }
 
   .govuk-c-phase-banner__content {

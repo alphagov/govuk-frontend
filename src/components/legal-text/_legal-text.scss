@@ -7,7 +7,6 @@
     padding: $govuk-spacing-scale-1 0;
 
     font-family: $govuk-font-stack;
-    @include font-smoothing;
     @include govuk-font-regular-19;
   }
 

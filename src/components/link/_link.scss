@@ -4,7 +4,6 @@
 
   .govuk-c-link {
     font-family: $govuk-font-stack;
-    @include font-smoothing;
     @include govuk-font-regular-16;
     line-height: 1.25;
 

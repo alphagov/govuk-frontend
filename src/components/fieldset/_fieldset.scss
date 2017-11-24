@@ -22,7 +22,6 @@
     color: $govuk-text-colour;
     font-family: $govuk-font-stack;
     white-space: normal;    // 1
-    @include font-smoothing;
     @include govuk-font-regular-19;
   }
 

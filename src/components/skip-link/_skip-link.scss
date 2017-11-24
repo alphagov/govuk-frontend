@@ -6,7 +6,6 @@
     left: -9999em;
     padding: $govuk-spacing-scale-1 $govuk-spacing-scale-3;
     font-family: $govuk-font-stack;
-    @include font-smoothing;
     @include govuk-font-regular-16;
     line-height: 1.5;
     @include mq($from: tablet) {

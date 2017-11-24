@@ -5,7 +5,6 @@
     display: block;
     clear: both;
     font-family: $govuk-font-stack;
-    @include font-smoothing;
     @include govuk-font-regular-19;
   }
 

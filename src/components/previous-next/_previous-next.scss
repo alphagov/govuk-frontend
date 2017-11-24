@@ -3,7 +3,6 @@
 @include exports("previous-next") {
 
   .govuk-c-previous-next {
-    @include font-smoothing;
     display: block;
     margin-right: -$govuk-spacing-scale-3;
     // TODO: Make margins under components consistent

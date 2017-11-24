@@ -6,7 +6,6 @@
     border-spacing: 0;
     border-collapse: collapse;
     font-family: $govuk-font-stack;
-    @include font-smoothing;
   }
 
   .govuk-c-table__header {

@@ -10,7 +10,6 @@
 
     font-family: $govuk-font-stack;
     @include govuk-font-regular-19;
-    @include font-smoothing;
 
     :first-child {
       margin-top: 0;

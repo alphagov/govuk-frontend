@@ -10,7 +10,6 @@
     border: $govuk-border-width-mobile solid $govuk-error-colour;
 
     font-family: $govuk-font-stack;
-    @include font-smoothing;
 
     @include mq($from: tablet) {
 
@@ -38,7 +37,6 @@
     }
 
     font-family: $govuk-font-stack;
-    @include font-smoothing;
     @include govuk-font-bold-24;
   }
 

@@ -17,7 +17,6 @@
     background-color: $govuk-button-colour;
     font-family: $govuk-font-stack;
     text-align: center;
-    @include font-smoothing;
     @include govuk-font-regular-19;
     text-decoration: none;
     vertical-align: top;

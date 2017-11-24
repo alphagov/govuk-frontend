@@ -10,7 +10,6 @@
     background-color: $govuk-light-blue-25;
 
     font-family: $govuk-font-stack;
-    @include font-smoothing;
   }
 
   .js-enabled .govuk-c-cookie-banner {
