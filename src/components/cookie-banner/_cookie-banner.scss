@@ -19,7 +19,7 @@
 
   .govuk-c-cookie-banner__message {
     @include govuk-site-width-container;
-    @include govuk-core-16;
+    @include govuk-font-regular-16;
   }
 
   @include mq($media-type: print) {

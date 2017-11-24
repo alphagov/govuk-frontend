@@ -6,7 +6,7 @@
     color: $govuk-text-colour;
     font-family: $govuk-font-stack;
     @include font-smoothing;
-    @include govuk-core-19;
+    @include govuk-font-regular-19;
   }
 
   .govuk-c-label--bold {

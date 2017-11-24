@@ -18,7 +18,7 @@
     font-family: $govuk-font-stack;
     text-align: center;
     @include font-smoothing;
-    @include govuk-core-19;
+    @include govuk-font-regular-19;
     text-decoration: none;
     vertical-align: top;
     cursor: pointer;
@@ -99,7 +99,7 @@
   }
 
   .govuk-c-button--start {
-    @include govuk-bold-24;
+    @include govuk-font-bold-24;
     // TODO: Check padding values
     min-height: auto;
     padding: em($govuk-spacing-scale-1, 24px) em($govuk-spacing-scale-6, 24px) em($govuk-spacing-scale-1, 24px) em($govuk-spacing-scale-4, 24px);

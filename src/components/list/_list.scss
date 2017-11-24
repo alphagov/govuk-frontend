@@ -3,7 +3,7 @@
 @include exports("list") {
   .govuk-c-list {
     @include font-smoothing;
-    @include govuk-core-19;
+    @include govuk-font-regular-19;
     // TODO: Make margins under components consistent
     margin-bottom: $govuk-spacing-scale-4;
     padding-left: 0;
@@ -55,7 +55,7 @@
   }
 
   .govuk-c-list__icon {
-    @include govuk-bold-14($line-height: (24 / 14), $line-height-640: (24 / 12));
+    @include govuk-font-bold-14;
     min-width: 24px;
     min-height: 24px;
     margin-right: $govuk-spacing-scale-3;
@@ -64,7 +64,7 @@
   }
 
   .govuk-c-list__icon--large {
-    @include govuk-bold-19($line-height: (38 / 19), $line-height-640: (38 / 16));
+    @include govuk-font-bold-19;
     min-width: 38px;
     min-height: 38px;
     line-height: 38px;
