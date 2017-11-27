@@ -12,14 +12,14 @@
 
   .govuk-c-link--back {
     display: inline-block;
-
     position: relative;
-
+    margin-top: $govuk-spacing-scale-3;
+    margin-bottom: $govuk-spacing-scale-3;
     padding-left: 14px;
-
     border-bottom: 1px solid $govuk-black;
     color: $govuk-black;
     background: file-url("icon-arrow-left.png") no-repeat 0 4px;
+    background-repeat: no-repeat;
     text-decoration: none;
 
     &:link,

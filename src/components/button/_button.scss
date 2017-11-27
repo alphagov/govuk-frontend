@@ -8,6 +8,10 @@
     width: 100%;
     min-height: em(40px, 19px);
     margin-top: 0;
+    margin-bottom: $govuk-spacing-scale-4;
+    @include mq($from: tablet) {
+      margin-bottom: $govuk-spacing-scale-5;
+    }
     padding: 0 em($govuk-spacing-scale-3, 19px) 0;
     border-width: $govuk-border-width-form-element;
     border-radius: 0;
