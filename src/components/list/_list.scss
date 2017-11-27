@@ -54,11 +54,10 @@
   }
 
   .govuk-c-list__icon {
-    @include govuk-font-bold-14;
+    @include govuk-font-bold-tabular-14;
     min-width: 24px;
     min-height: 24px;
     margin-right: $govuk-spacing-scale-3;
-    font-family: $govuk-font-stack-tabular;
     line-height: 24px;
   }
 

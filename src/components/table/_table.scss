@@ -24,7 +24,7 @@
   }
 
   .govuk-c-table__cell--numeric {
-    font-family: $govuk-font-stack-tabular;
+    @include govuk-font-regular-tabular;
   }
 
   .govuk-c-table__header--numeric,
