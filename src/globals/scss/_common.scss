@@ -20,13 +20,11 @@
 @import "tools/legacy-ie";
 @import "tools/px-to-em";
 
-// Vendor libraries
-@import "./node_modules/sass-mq/mq"; // We use sass-mq module for media queries
-
 // Helpers
 @import "helpers/device-pixels";
 @import "helpers/clearfix";
 @import "helpers/visually-hidden";
+@import "helpers/media-queries";
 
 // Core
 @import "core/links";
