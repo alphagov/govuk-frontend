@@ -5,7 +5,7 @@
 
   .govuk-c-error-summary {
 
-    padding: $govuk-spacing-scale-3 $govuk-spacing-scale-2;
+    padding: $govuk-spacing-scale-3;
 
     border: $govuk-border-width-mobile solid $govuk-error-colour;
 
@@ -14,7 +14,7 @@
 
     @include mq($from: tablet) {
 
-      padding: $govuk-spacing-scale-4 $govuk-spacing-scale-3 $govuk-spacing-scale-3;
+      padding: $govuk-spacing-scale-4;
 
       border: $govuk-border-width-tablet solid $govuk-error-colour;
     }
@@ -31,7 +31,7 @@
 
   .govuk-c-error-summary__title {
     margin-top: 0;
-    margin-bottom: $govuk-spacing-scale-2;
+    margin-bottom: $govuk-spacing-scale-3;
 
     @include mq($from: tablet) {
       margin-bottom: $govuk-spacing-scale-4;
@@ -45,10 +45,13 @@
   .govuk-c-error-summary__body {
     @include govuk-core-19;
 
-    // TODO: consistent paragraph margins
     p {
-      margin-top: 6px;
-      margin-bottom: 10px;
+      margin-top: 0;
+      margin-bottom: $govuk-spacing-scale-3;
+
+      @include mq($from: tablet) {
+        margin-bottom: $govuk-spacing-scale-4;
+      }
     }
   }
 
