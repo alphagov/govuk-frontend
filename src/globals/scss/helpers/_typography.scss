@@ -10,26 +10,10 @@
 
 @mixin govuk-typography-weight-regular($important: false) {
   font-weight: $govuk-font-weight-regular;
-
-  // This adjusts the aspect value of fallback fonts to match New Transport, for
-  // example making foreign characters that are not in the font display with
-  // matching metrics.
-  // https://www.w3.org/TR/css-fonts-3/#font-size-adjust-prop
-  @include mq($media-type: screen) {
-    font-size-adjust: $govuk-font-size-adjust-regular;
-  }
 }
 
 @mixin govuk-typography-weight-bold {
   font-weight: $govuk-font-weight-bold;
-
-  // This adjusts the aspect value of fallback fonts to match New Transport, for
-  // example making foreign characters that are not in the font display with
-  // matching metrics.
-  // https://www.w3.org/TR/css-fonts-3/#font-size-adjust-prop
-  @include mq($media-type: screen) {
-    font-size-adjust: $govuk-font-size-adjust-bold;
-  }
 }
 
 @mixin govuk-typography-responsive($font-map) {
