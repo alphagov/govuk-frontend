@@ -1,6 +1,6 @@
 @include exports("typography") {
 
-  // Heading classes
+  // Headings
 
   .govuk-heading-xl {
     @include govuk-font-bold-48;
@@ -48,7 +48,7 @@
     }
   }
 
-  // Body classes
+  // Body (paragraphs)
 
   .govuk-body-l {
     @include govuk-font-regular-24;
@@ -88,6 +88,47 @@
 
     @include mq($from: tablet) {
       margin-bottom: $govuk-spacing-scale-4;
+    }
+  }
+
+  // Contextual adjustments
+
+  // Add a negative top margin to headings that appear directly after other
+  // headings
+
+  .govuk-heading-l + .govuk-heading-m {
+    margin-top: -$govuk-spacing-scale-1;
+  }
+
+  .govuk-heading-m + .govuk-heading-s {
+    margin-top: -$govuk-spacing-scale-2;
+  }
+
+  // Add top padding to headings that appear directly after paragraphs
+
+  .govuk-body-l  + .govuk-heading-l {
+    padding-top: $govuk-spacing-scale-1;
+
+    @include mq($from: tablet) {
+      padding-top: $govuk-spacing-scale-2;
+    }
+  }
+
+  .govuk-body-m  + .govuk-heading-l,
+  .govuk-body-s  + .govuk-heading-l {
+    padding-top: $govuk-spacing-scale-3;
+
+    @include mq($from: tablet) {
+      padding-top: $govuk-spacing-scale-4;
+    }
+  }
+
+  .govuk-body-m + .govuk-heading-m,
+  .govuk-body-s + .govuk-heading-m {
+    padding-top: $govuk-spacing-scale-1;
+
+    @include mq($from: tablet) {
+      padding-top: $govuk-spacing-scale-2;
     }
   }
 
