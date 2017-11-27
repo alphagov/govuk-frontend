@@ -2,34 +2,34 @@
   font-family: $font-family;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
+
   @include mq($media-type: print) {
     font-family: $govuk-font-stack-print;
   }
 }
 
 @mixin govuk-typography-weight-regular($important: false) {
-  font-weight: $govuk-font-weight-regular;
+  font-weight: $govuk-font-weight-regular iff($important, !important);
 }
 
-@mixin govuk-typography-weight-bold {
-  font-weight: $govuk-font-weight-bold;
+@mixin govuk-typography-weight-bold($important: false) {
+  font-weight: $govuk-font-weight-bold iff($important, !important);
 }
 
-@mixin govuk-typography-responsive($font-map) {
+@mixin govuk-typography-responsive($font-map, $important: false) {
   @each $breakpoint, $breakpoint-map in $font-map {
     @if $breakpoint == null {
-      font-size: map-get($breakpoint-map, "font-size");
-      line-height: map-get($breakpoint-map, "line-height");
+      font-size: map-get($breakpoint-map, "font-size") iff($important, !important);
+      line-height: map-get($breakpoint-map, "line-height") iff($important, !important);
     } @elseif $breakpoint == "print" {
       @include mq($media-type: print) {
-        font-size: map-get($breakpoint-map, "font-size");
-        line-height: map-get($breakpoint-map, "line-height");
+        font-size: map-get($breakpoint-map, "font-size") iff($important, !important);
+        line-height: map-get($breakpoint-map, "line-height") iff($important, !important);
       }
     } @else {
       @include mq($from: $breakpoint) {
-        font-size: map-get($breakpoint-map, "font-size");
-        line-height: map-get($breakpoint-map, "line-height");
+        font-size: map-get($breakpoint-map, "font-size") iff($important, !important);
+        line-height: map-get($breakpoint-map, "line-height") iff($important, !important);
       }
     }
   }

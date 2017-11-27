@@ -5,17 +5,17 @@
   // typography scale eg .govuk-\!-f-80
   @each $size, $font-map in $govuk-typography-scale {
     .govuk-\!-f-#{$size} {
-      @include govuk-typography-responsive($font-map);
+      @include govuk-typography-responsive($font-map, $important: true);
     }
   }
 
   // Weights
 
   .govuk-\!-w-regular {
-    @include govuk-typography-weight-regular;
+    @include govuk-typography-weight-regular($important: true);
   }
 
   .govuk-\!-w-bold {
-    @include govuk-typography-weight-bold;
+    @include govuk-typography-weight-bold($important: true);
   }
 }
