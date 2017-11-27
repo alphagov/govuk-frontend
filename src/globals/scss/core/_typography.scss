@@ -1,90 +1,94 @@
-// Heading classes
+@include exports("typography") {
 
-.govuk-heading-xl {
-  @include govuk-font-bold-48;
+  // Heading classes
 
-  display: block;
+  .govuk-heading-xl {
+    @include govuk-font-bold-48;
 
-  margin-bottom: $govuk-spacing-scale-5;
+    display: block;
 
-  @include mq($from: tablet) {
-    margin-bottom: $govuk-spacing-scale-7;
-  }
-}
-
-.govuk-heading-l {
-  @include govuk-font-bold-36;
-
-  display: block;
-
-  margin-bottom: $govuk-spacing-scale-4;
-
-  @include mq($from: tablet) {
     margin-bottom: $govuk-spacing-scale-5;
+
+    @include mq($from: tablet) {
+      margin-bottom: $govuk-spacing-scale-7;
+    }
   }
-}
 
-.govuk-heading-m {
-  @include govuk-font-bold-24;
+  .govuk-heading-l {
+    @include govuk-font-bold-36;
 
-  display: block;
+    display: block;
 
-  margin-bottom: $govuk-spacing-scale-3;
-
-  @include mq($from: tablet) {
     margin-bottom: $govuk-spacing-scale-4;
+
+    @include mq($from: tablet) {
+      margin-bottom: $govuk-spacing-scale-5;
+    }
   }
-}
 
-.govuk-heading-s {
-  @include govuk-font-bold-19;
+  .govuk-heading-m {
+    @include govuk-font-bold-24;
 
-  margin-bottom: $govuk-spacing-scale-3;
+    display: block;
 
-  @include mq($from: tablet) {
+    margin-bottom: $govuk-spacing-scale-3;
+
+    @include mq($from: tablet) {
+      margin-bottom: $govuk-spacing-scale-4;
+    }
+  }
+
+  .govuk-heading-s {
+    @include govuk-font-bold-19;
+
+    margin-bottom: $govuk-spacing-scale-3;
+
+    @include mq($from: tablet) {
+      margin-bottom: $govuk-spacing-scale-4;
+    }
+  }
+
+  // Body classes
+
+  .govuk-body-l {
+    @include govuk-font-regular-24;
+
     margin-bottom: $govuk-spacing-scale-4;
+
+    @include mq($from: tablet) {
+      margin-bottom: $govuk-spacing-scale-5;
+    }
   }
-}
 
-// Body classes
+  .govuk-body,
+  .govuk-body-m {
+    @include govuk-font-regular-19;
 
-.govuk-body-l {
-  @include govuk-font-regular-24;
+    margin-bottom: $govuk-spacing-scale-3;
 
-  margin-bottom: $govuk-spacing-scale-4;
-
-  @include mq($from: tablet) {
-    margin-bottom: $govuk-spacing-scale-5;
+    @include mq($from: tablet) {
+      margin-bottom: $govuk-spacing-scale-4;
+    }
   }
-}
 
-.govuk-body,
-.govuk-body-m {
-  @include govuk-font-regular-19;
+  .govuk-body-s {
+    @include govuk-font-regular-16;
 
-  margin-bottom: $govuk-spacing-scale-3;
+    margin-bottom: $govuk-spacing-scale-3;
 
-  @include mq($from: tablet) {
-    margin-bottom: $govuk-spacing-scale-4;
+    @include mq($from: tablet) {
+      margin-bottom: $govuk-spacing-scale-4;
+    }
   }
-}
 
-.govuk-body-s {
-  @include govuk-font-regular-16;
+  .govuk-body-xs {
+    @include govuk-font-regular-14;
 
-  margin-bottom: $govuk-spacing-scale-3;
+    margin-bottom: $govuk-spacing-scale-3;
 
-  @include mq($from: tablet) {
-    margin-bottom: $govuk-spacing-scale-4;
+    @include mq($from: tablet) {
+      margin-bottom: $govuk-spacing-scale-4;
+    }
   }
-}
 
-.govuk-body-xs {
-  @include govuk-font-regular-14;
-
-  margin-bottom: $govuk-spacing-scale-3;
-
-  @include mq($from: tablet) {
-    margin-bottom: $govuk-spacing-scale-4;
-  }
 }
