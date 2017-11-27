@@ -48,6 +48,35 @@
     }
   }
 
+  // Captions to be used inside headings
+
+  .govuk-caption-xl {
+    @include govuk-font-regular-27;
+
+    display: block;
+    margin-bottom: $govuk-spacing-scale-1;
+    color: $govuk-secondary-text-colour;
+  }
+
+  .govuk-caption-l {
+    @include govuk-font-regular-24;
+
+    display: block;
+    margin-bottom: $govuk-spacing-scale-1;
+    color: $govuk-secondary-text-colour;
+
+    @include mq($from: tablet) {
+      margin-bottom: 0;
+    }
+  }
+
+  .govuk-caption-m {
+    @include govuk-font-regular-19;
+
+    display: block;
+    color: $govuk-secondary-text-colour;
+  }
+
   // Body (paragraphs)
 
   .govuk-body-lede,
