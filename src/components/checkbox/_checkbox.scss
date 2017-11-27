@@ -1,9 +1,4 @@
-@import "../../globals/scss/import-once";
-@import "../../globals/scss/font-face";
-@import "../../globals/scss/helpers-ie";
-@import "../../globals/scss/media-queries";
-@import "../../globals/scss/typography";
-@import "../../globals/scss/vars";
+@import "../../globals/scss/common";
 
 @include exports("checkbox") {
   .govuk-c-checkbox {
@@ -11,7 +6,7 @@
     position: relative;
 
 
-    margin-bottom: $gutter-one-third;
+    margin-bottom: $govuk-spacing-scale-2;
     padding: 0 0 0 em(40px, 19px);
 
     clear: left;

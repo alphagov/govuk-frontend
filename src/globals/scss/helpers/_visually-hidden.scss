@@ -1,6 +1,4 @@
-@import "../import-once";
-
-@mixin govuk-u-visually-hidden {
+@mixin govuk-h-visually-hidden {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -12,7 +10,7 @@
 }
 
 @include exports("visually-hidden") {
-  .govuk-u-visually-hidden {
-    @include govuk-u-visually-hidden;
+  .govuk-h-visually-hidden {
+    @include govuk-h-visually-hidden;
   }
 }

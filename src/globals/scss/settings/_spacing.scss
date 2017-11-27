@@ -1,0 +1,23 @@
+// Spacing scale
+$govuk-spacing-scale-0: 0;
+$govuk-spacing-scale-1: 5px;
+$govuk-spacing-scale-2: 10px;
+$govuk-spacing-scale-3: 15px;
+$govuk-spacing-scale-4: 20px;
+$govuk-spacing-scale-5: 30px;
+$govuk-spacing-scale-6: 40px;
+$govuk-spacing-scale-7: 50px;
+$govuk-spacing-scale-8: 60px;
+
+// Create a list of all spacing points we can iterate over elsewhere
+$govuk-spacing-scale: (
+  0: $govuk-spacing-scale-0,
+  1: $govuk-spacing-scale-1,
+  2: $govuk-spacing-scale-2,
+  3: $govuk-spacing-scale-3,
+  4: $govuk-spacing-scale-4,
+  5: $govuk-spacing-scale-5,
+  6: $govuk-spacing-scale-6,
+  7: $govuk-spacing-scale-7,
+  8: $govuk-spacing-scale-8
+);

@@ -1,8 +1,4 @@
-@import "../../globals/scss/import-once";
-@import "../../globals/scss/helpers-px-to-em";
-@import "../../globals/scss/typography";
-@import "../../globals/scss/utilities/borders";
-@import "../../globals/scss/vars";
+@import "../../globals/scss/common";
 
 @include exports("inset-text") {
   .govuk-c-inset-text {
@@ -10,10 +6,11 @@
 
     clear: both;
 
+    border-left: $govuk-border-width-wide solid $govuk-border-colour;
+
     font-family: $govuk-font-stack;
     @include govuk-core-19;
     @include font-smoothing;
-    @include govuk-u-border-left($govuk-border-width-wide, $govuk-border-colour);
 
     :first-child {
       margin-top: 0;

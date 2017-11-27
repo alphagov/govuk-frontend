@@ -1,8 +1,5 @@
-@import "../helpers-ie";
-@import "../import-once";
-
 // Mixin to clear floats
-@mixin govuk-u-clearfix {
+@mixin govuk-h-clearfix {
   &:after {
     content: "";
     display: block;
@@ -14,7 +11,7 @@
 }
 
 @include exports("clearfix") {
-  .govuk-u-clearfix {
-    @include govuk-u-clearfix;
+  .govuk-h-clearfix {
+    @include govuk-h-clearfix;
   }
 }

@@ -1,0 +1,44 @@
+// Spacing directions
+$spacing-directions: (
+  "top": "t",
+  "right": "r",
+  "bottom": "b",
+  "left": "l"
+) !default;
+
+// Generate spacing override classes for the given property (e.g. margin)
+// for each point in the spacing scale.
+//
+// Example output:
+//
+// .govuk-\!-m-0 {
+//   margin: 0;
+// }
+// 
+// [..]
+// 
+// .govuk-\!-mt-1 {
+//   margin-top: [whatever spacing point 1 is...]
+// }
+
+@mixin generate-spacing-overrides($property, $property-shorthand) {
+  // For each point in the spacing scale (defined in settings), create an
+  // override that affects all directions...
+  @each $scale-point, $scale-value in $govuk-spacing-scale {
+    .govuk-\!-#{$property-shorthand}-#{$scale-point} {
+      #{$property}: $scale-value;
+    }
+
+    // ... and then an override for each individual direction
+    @each $direction-name, $direction-shorthand in $spacing-directions {
+      .govuk-\!-#{$property-shorthand}#{$direction-shorthand}-#{$scale-point} {
+        #{$property}-#{$direction-name}: $scale-value;
+      }
+    }
+  }
+}
+
+@include exports("spacing-overrides") {
+  @include generate-spacing-overrides("margin", "m");
+  @include generate-spacing-overrides("padding", "p");
+}

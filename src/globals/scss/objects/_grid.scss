@@ -1,7 +1,18 @@
-@import "../import-once";
-@import "../vars";
-@import "grid-layout";
-@import "site-width-container";
+// Gutters
+$govuk-gutter: $govuk-spacing-scale-5;
+$govuk-gutter-half: $govuk-gutter / 2;
+
+@mixin govuk-grid {
+  @include govuk-h-clearfix;
+  margin-right: - ($govuk-gutter-half);
+  margin-left: - ($govuk-gutter-half);
+}
+
+@mixin govuk-grid-item {
+  box-sizing: border-box;
+  padding: 0 $govuk-gutter-half;
+  float: left;
+}
 
 @include exports("grid") {
 

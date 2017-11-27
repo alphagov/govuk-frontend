@@ -1,7 +1,3 @@
-@import "vars";
-@import "media-queries";
-@import "import-once";
-
 @include exports("links") {
   a:link {
     color: $govuk-link-colour;

@@ -1,4 +1,5 @@
-// Old IE Helpers
+// You can use these mixins to output CSS for specific versions of legacy
+// Internet Explorer.
 $is-ie: false !default;
 
 @mixin ie-lte($version) {

@@ -1,7 +1,4 @@
-@import "../../globals/scss/import-once";
-@import "../../globals/scss/font-face";
-@import "../../globals/scss/typography";
-@import "../../globals/scss/vars";
+@import "../../globals/scss/common";
 
 @include exports("error-message") {
   .govuk-c-error-message {

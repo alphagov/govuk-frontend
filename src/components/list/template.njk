@@ -17,7 +17,7 @@
 {% for item in params.items %}
   <li>
   {% if type == 'step' or type == 'step-large' %}
-    <span class="govuk-c-list__icon {%- if type == 'step-large' %} govuk-c-list__icon--large{% endif %} govuk-u-circle">
+    <span class="govuk-c-list__icon {%- if type == 'step-large' %} govuk-c-list__icon--large{% endif %} govuk-o-circle">
       {{- loop.index -}}
     </span>
   {% endif %}

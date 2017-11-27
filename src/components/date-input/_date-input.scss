@@ -1,14 +1,11 @@
-@import "../../globals/scss/import-once";
-@import "../../globals/scss/typography";
-@import "../../globals/scss/utilities/clearfix";
-@import "../../globals/scss/vars";
+@import "../../globals/scss/common";
 @import "../label/label";
 @import "../input/input";
 @import "../error-message/error-message";
 
 @include exports("date-input") {
   .govuk-c-date-input {
-    @include govuk-u-clearfix;
+    @include govuk-h-clearfix;
   }
 
   .govuk-c-date-input__item {

@@ -1,13 +1,11 @@
-@import "../../globals/scss/import-once";
-@import "../../globals/scss/vars";
-@import "../../globals/scss/utilities/clearfix";
+@import "../../globals/scss/common";
 
 @include exports("fieldset") {
   .govuk-c-fieldset {
     margin: 0;
     padding: 0;
     border: 0;
-    @include govuk-u-clearfix;
+    @include govuk-h-clearfix;
   }
 
   .govuk-c-fieldset__legend {

@@ -1,9 +1,4 @@
-@import "../../globals/scss/import-once";
-@import "../../globals/scss/links";
-@import "../../globals/scss/media-queries";
-@import "../../globals/scss/typography";
-@import "../../globals/scss/utilities/clearfix";
-@import "../../globals/scss/vars";
+@import "../../globals/scss/common";
 
 @include exports("previous-next") {
 
@@ -18,7 +13,7 @@
   }
 
   .govuk-c-previous-next__list {
-    @include govuk-u-clearfix;
+    @include govuk-h-clearfix;
     margin: 0;
     padding: 0;
   }

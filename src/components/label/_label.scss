@@ -1,6 +1,4 @@
-@import "../../globals/scss/import-once";
-@import "../../globals/scss/typography";
-@import "../../globals/scss/vars";
+@import "../../globals/scss/common";
 
 @include exports("label") {
   .govuk-c-label {
