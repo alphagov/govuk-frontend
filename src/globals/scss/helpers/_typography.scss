@@ -2,6 +2,10 @@
   font-family: $govuk-font-stack;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
+  @include mq($media-type: print) {
+    font-family: $govuk-font-stack-print;
+  }
 }
 
 @mixin govuk-typography-weight-regular($important: false) {
@@ -11,7 +15,9 @@
   // example making foreign characters that are not in the font display with
   // matching metrics.
   // https://www.w3.org/TR/css-fonts-3/#font-size-adjust-prop
-  font-size-adjust: $govuk-font-size-adjust-regular;
+  @include mq($media-type: screen) {
+    font-size-adjust: $govuk-font-size-adjust-regular;
+  }
 }
 
 @mixin govuk-typography-weight-bold {
@@ -21,7 +27,9 @@
   // example making foreign characters that are not in the font display with
   // matching metrics.
   // https://www.w3.org/TR/css-fonts-3/#font-size-adjust-prop
-  font-size-adjust: $govuk-font-size-adjust-bold;
+  @include mq($media-type: screen) {
+    font-size-adjust: $govuk-font-size-adjust-bold;
+  }
 }
 
 @mixin govuk-typography-responsive($font-map) {
@@ -29,6 +37,11 @@
     @if $breakpoint == null {
       font-size: map-get($breakpoint-map, "font-size");
       line-height: map-get($breakpoint-map, "line-height");
+    } @elseif $breakpoint == "print" {
+      @include mq($media-type: print) {
+        font-size: map-get($breakpoint-map, "font-size");
+        line-height: map-get($breakpoint-map, "line-height");
+      }
     } @else {
       @include mq($from: $breakpoint) {
         font-size: map-get($breakpoint-map, "font-size");

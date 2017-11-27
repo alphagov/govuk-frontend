@@ -6,6 +6,8 @@
 // Font size and font weight can be defined for each breakpoint. You can define
 // different behaviour on tablet and desktop. The 'null' breakpoint is for
 // mobile.
+//
+// You can also specify a separate font size and line height for print media.
 
 $govuk-font-80: (
   null: (
@@ -15,6 +17,10 @@ $govuk-font-80: (
   tablet: (
     font-size: 80px,
     line-height: 80px
+  ),
+  print: (
+    font-size: 28pt,
+    line-height: 1
   )
 );
 
@@ -26,6 +32,10 @@ $govuk-font-48: (
   tablet: (
     font-size: 48px,
     line-height: 50px
+  ),
+  print: (
+    font-size: 18pt,
+    line-height: 1
   )
 );
 
@@ -37,6 +47,10 @@ $govuk-font-36: (
   tablet: (
     font-size: 36px,
     line-height: 40px
+  ),
+  print: (
+    font-size: 18pt,
+    line-height: 1
   )
 );
 
@@ -48,6 +62,10 @@ $govuk-font-27: (
   tablet: (
     font-size: 27px,
     line-height: 30px
+  ),
+  print: (
+    font-size: 16pt,
+    line-height: 1
   )
 );
 
@@ -59,6 +77,10 @@ $govuk-font-24: (
   tablet: (
     font-size: 24px,
     line-height: 30px
+  ),
+  print: (
+    font-size: 16pt,
+    line-height: 1
   )
 );
 
@@ -70,6 +92,10 @@ $govuk-font-19: (
   tablet: (
     font-size: 19px,
     line-height: 25px
+  ),
+  print: (
+    font-size: 14pt,
+    line-height: 1
   )
 );
 
@@ -81,6 +107,10 @@ $govuk-font-16: (
   tablet: (
     font-size: 16px,
     line-height: 20px
+  ),
+  print: (
+    font-size: 12pt,
+    line-height: 1
   )
 );
 
@@ -92,6 +122,10 @@ $govuk-font-14: (
   tablet: (
     font-size: 14px,
     line-height: 20px
+  ),
+  print: (
+    font-size: 11pt,
+    line-height: 1
   )
 );
 
