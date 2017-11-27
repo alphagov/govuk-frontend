@@ -13,23 +13,23 @@
   {% set previewText = 'Preview the ' + itemName + ' variant' %}
 {% endif %}
 
-<h3 class="govuk-u-bold-19">{{ itemName  | capitalize }}</h3>
+<h3 class="govuk-heading-m">{{ itemName  | capitalize }}</h3>
 
 {% if not isReadme %}
 {{ loadComponentTemplate(componentName, item.data) }}
 {% endif %}
 
-<p class="govuk-u-copy-19">
+<p class="govuk-body">
   <a href="{% if isReadme %}http://govuk-frontend-review.herokuapp.com{% endif %}{{ previewLink }}">{{previewText}}</a>
 </p>
 
-<h4 class="govuk-u-copy-19">Markup</h4>
+<h4 class="govuk-heading-s">Markup</h4>
 {% set componentHtml %}
 {{ loadComponentTemplate(componentName, item.data) }}
 {% endset %}
 <pre><code>{{- componentHtml | e -}}</code></pre>
 
-<h4 class="govuk-u-copy-19">Macro</h4>
+<h4 class="govuk-heading-s">Macro</h4>
 <pre><code>{% raw %}{{ {% endraw %}{{ componentName | componentNameToMacroName }}(
   {{- item.data | dump(2) -}}
 ){% raw %} }}{% endraw %}</code></pre>
