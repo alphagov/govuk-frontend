@@ -26,13 +26,13 @@ $spacing-directions: (
   // override that affects all directions...
   @each $scale-point, $scale-value in $govuk-spacing-scale {
     .govuk-\!-#{$property-shorthand}-#{$scale-point} {
-      #{$property}: $scale-value;
+      #{$property}: $scale-value !important;
     }
 
     // ... and then an override for each individual direction
     @each $direction-name, $direction-shorthand in $spacing-directions {
       .govuk-\!-#{$property-shorthand}#{$direction-shorthand}-#{$scale-point} {
-        #{$property}-#{$direction-name}: $scale-value;
+        #{$property}-#{$direction-name}: $scale-value !important;
       }
     }
   }
