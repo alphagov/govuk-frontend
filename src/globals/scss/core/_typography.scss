@@ -7,6 +7,7 @@
 
     display: block;
 
+    margin-top: 0;
     margin-bottom: $govuk-spacing-scale-5;
 
     @include mq($from: tablet) {
@@ -19,6 +20,7 @@
 
     display: block;
 
+    margin-top: 0;
     margin-bottom: $govuk-spacing-scale-4;
 
     @include mq($from: tablet) {
@@ -31,6 +33,7 @@
 
     display: block;
 
+    margin-top: 0;
     margin-bottom: $govuk-spacing-scale-3;
 
     @include mq($from: tablet) {
@@ -41,6 +44,7 @@
   .govuk-heading-s {
     @include govuk-font-bold-19;
 
+    margin-top: 0;
     margin-bottom: $govuk-spacing-scale-3;
 
     @include mq($from: tablet) {
@@ -83,6 +87,7 @@
   .govuk-body-l {
     @include govuk-font-regular-24;
 
+    margin-top: 0;
     margin-bottom: $govuk-spacing-scale-4;
 
     @include mq($from: tablet) {
@@ -94,6 +99,7 @@
   .govuk-body-m {
     @include govuk-font-regular-19;
 
+    margin-top: 0;
     margin-bottom: $govuk-spacing-scale-3;
 
     @include mq($from: tablet) {
@@ -104,6 +110,7 @@
   .govuk-body-s {
     @include govuk-font-regular-16;
 
+    margin-top: 0;
     margin-bottom: $govuk-spacing-scale-3;
 
     @include mq($from: tablet) {
@@ -114,6 +121,7 @@
   .govuk-body-xs {
     @include govuk-font-regular-14;
 
+    margin-top: 0;
     margin-bottom: $govuk-spacing-scale-3;
 
     @include mq($from: tablet) {
