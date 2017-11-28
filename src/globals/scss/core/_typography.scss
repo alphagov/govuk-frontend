@@ -83,7 +83,6 @@
 
   // Body (paragraphs)
 
-  .govuk-body-lede,
   .govuk-body-l {
     @include govuk-font-regular-24;
 
@@ -95,7 +94,6 @@
     }
   }
 
-  .govuk-body,
   .govuk-body-m {
     @include govuk-font-regular-19;
 
@@ -127,6 +125,19 @@
     @include mq($from: tablet) {
       margin-bottom: $govuk-spacing-scale-4;
     }
+  }
+
+  // Usage aliases
+
+  // Using extend to alias means we also inherit any contextual adjustments that
+  // refer to the 'original' class name
+
+  .govuk-body-lede {
+    @extend .govuk-body-l;
+  }
+
+  .govuk-body {
+    @extend .govuk-body-m;
   }
 
   // Contextual adjustments

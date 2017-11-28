@@ -179,7 +179,7 @@ rules:
 
   # Rule no-extends will enforce that @extend is not allowed to be used.
   # https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-extends.md
-  no-extends: 2
+  no-extends: 0
 
   # Rule no-ids will enforce that ID selectors are not allowed to be used.
   # https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-ids.md
@@ -235,7 +235,7 @@ rules:
 
   # Rule placeholder-in-extend will enforce whether extends should only include placeholder selectors.
   # https://github.com/sasstools/sass-lint/blob/master/docs/rules/placeholder-in-extend.md
-  placeholder-in-extend: 2
+  placeholder-in-extend: 0
 
   # Rule placeholder-name-format will enforce a convention for placeholder names.
   # https://github.com/sasstools/sass-lint/blob/master/docs/rules/placeholder-name-format.md
