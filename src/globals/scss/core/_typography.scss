@@ -173,7 +173,9 @@
   }
 
   .govuk-body-m + .govuk-heading-m,
-  .govuk-body-s + .govuk-heading-m {
+  .govuk-body-s + .govuk-heading-m,
+  .govuk-body-m + .govuk-heading-s,
+  .govuk-body-s + .govuk-heading-s {
     padding-top: $govuk-spacing-scale-1;
 
     @include mq($from: tablet) {
