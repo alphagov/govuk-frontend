@@ -1,112 +1,227 @@
 {% extends "layout.njk" %}
 
 {% block content %}
-<!-- This is missing from GOV.UK elements -->
-<!-- Services should not be using text this small -->
-<div class="govuk-u-core-14">
-  GOV.UK frontend toolkit 14px core text
-</div>
-<!-- In GOV.UK elements, this is .font-xsmall -->
-<div class="govuk-u-core-16">
-  GOV.UK frontend toolkit + GOV.UK elements 16px core text
-</div>
-<!-- In GOV.UK elements, this is .font-small -->
-<div class="govuk-u-core-19">
-  GOV.UK frontend toolkit + GOV.UK elements 19px core text
-</div>
-<!-- In GOV.UK elements, this is .lede -->
-<!-- In GOV.UK elements, this is .font-medium -->
-<div class="govuk-u-core-24">
-  GOV.UK frontend toolkit + GOV.UK elements 24px core text
-</div>
-<!-- This is missing from GOV.UK elements -->
-<div class="govuk-u-core-27">
-  GOV.UK frontend toolkit 27px core text
-</div>
-<!-- In GOV.UK elements, this is .font-large -->
-<div class="govuk-u-core-36">
-  GOV.UK frontend toolkit + GOV.UK elements 36px core text
-</div>
-<!-- In GOV.UK elements, this is .font-xlarge -->
-<div class="govuk-u-core-48">
-  GOV.UK frontend toolkit + GOV.UK elements 48px core text
-</div>
-<!-- In GOV.UK elements, this is .font-xxlarge -->
-<div class="govuk-u-core-80">
-  GOV.UK frontend toolkit + GOV.UK elements 80px core text
-</div>
 
-<!-- This is missing from GOV.UK elements -->
-<div class="govuk-u-bold-14">
-  GOV.UK frontend toolkit 14px bold heading
-</div>
-<!-- In GOV.UK elements, this is .bold-xsmall -->
-<div class="govuk-u-bold-16">
-  GOV.UK frontend toolkit + GOV.UK elements 16px bold heading
-</div>
-<!-- In GOV.UK elements, this is .bold-small -->
-<div class="govuk-u-bold-19">
-  GOV.UK frontend toolkit + GOV.UK elements 19px bold heading
-</div>
-<!-- In GOV.UK elements, this is .bold-medium -->
-<div class="govuk-u-bold-24">
-  GOV.UK frontend toolkit + GOV.UK elements 24px bold heading
-</div>
-<!-- This is missing from GOV.UK elements -->
-<div class="govuk-u-bold-27">
-  GOV.UK frontend toolkit 27px bold heading
-</div>
-<!-- In GOV.UK elements, this is .bold-large -->
-<div class="govuk-u-bold-36">
-  GOV.UK frontend toolkit + GOV.UK elements 36px bold heading
-</div>
-<!-- In GOV.UK elements, this is .bold-xlarge -->
-<div class="govuk-u-bold-48">
-  GOV.UK frontend toolkit + GOV.UK elements 48px bold heading
-</div>
-<!-- In GOV.UK elements, this is .bold-xxlarge -->
-<div class="govuk-u-bold-80">
-  GOV.UK frontend toolkit + GOV.UK elements 80px bold heading
-</div>
+<div class="govuk-o-grid govuk-!-mt-8">
+  <div class="govuk-o-grid__item govuk-o-grid__item--two-thirds">
 
-<div class="govuk-u-heading-24">
-  GOV.UK frontend toolkit 24px heading
-</div>
-<div class="govuk-u-heading-27">
-  GOV.UK frontend toolkit 27px heading
-</div>
-<div class="govuk-u-heading-36">
-  GOV.UK frontend toolkit 36px heading
-</div>
-<div class="govuk-u-heading-48">
-  GOV.UK frontend toolkit 48px heading
-</div>
+    <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">Typography</span>
+      GOV.UK Frontend
+    </h1>
 
-<div class="heading-xlarge">
-  GOV.UK elements heading-xlarge heading
-</div>
-<div class="heading-large">
-  GOV.UK elements heading-large heading
-</div>
-<div class="heading-medium">
-  GOV.UK elements heading-medium heading
-</div>
-<div class="heading-small">
-  GOV.UK elements heading-small heading
-</div>
+    <!-- Headings -->
 
-<div class="govuk-u-copy-14">
-  GOV.UK frontend toolkit 14px copy
-</div>
-<div class="govuk-u-copy-16">
-  GOV.UK frontend toolkit 16px copy
-</div>
-<div class="govuk-u-copy-19">
-  GOV.UK frontend toolkit 19px copy
-</div>
+    <section>
+      <h2 class="govuk-heading-l govuk-!-pb-2" style="border-bottom: 4px solid;">Headings</h2>
 
-<div class="body-text">
-  GOV.UK elements body text
+      <h1 class="govuk-heading-xl">govuk-heading-xl</h1>
+      <h2 class="govuk-heading-l">govuk-heading-l</h2>
+      <h3 class="govuk-heading-m">govuk-heading-m</h3>
+      <h4 class="govuk-heading-s">govuk-heading-s</h4>
+    </section>
+
+    <!-- Headings with captions -->
+
+    <section class="govuk-!-mt-7">
+      <h2 class="govuk-heading-l govuk-!-pb-2" style="border-bottom: 4px solid;">Headings with captions</h2>
+
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">govuk-caption-xl</span>
+        govuk-heading-xl
+      </h1>
+
+      <h2 class="govuk-heading-l">
+        <span class="govuk-caption-l">govuk-caption-l</span>
+        govuk-heading-l
+      </h2>
+
+      <h3 class="govuk-heading-m">
+        <span class="govuk-caption-m">govuk-caption-m</span>
+        govuk-heading-m
+      </h3>
+    </section>
+
+    <!-- Body text -->
+
+    <section class="govuk-!-mt-7">
+      <h2 class="govuk-heading-l govuk-!-pb-2" style="border-bottom: 4px solid;">Body text</h2>
+
+      <p class="govuk-body-l">govuk-body-l</p>
+      <p class="govuk-body-m">govuk-body / govuk-body-m</p>
+      <p class="govuk-body-s">govuk-body-s</p>
+      <p class="govuk-body-xs">govuk-body-xs</p>
+    </section>
+
+    <!-- Overrides -->
+
+    <section class="govuk-!-mt-7">
+      <h2 class="govuk-heading-l govuk-!-pb-2" style="border-bottom: 4px solid;">Overrides</h2>
+
+      <h3 class="govuk-heading-m">Override font-size and line-height</h3>
+
+      <!-- We have to add govuk-body to get new transport, but then we get
+        margins, so we have to remove them -->
+
+      <p class="govuk-body govuk-!-m-0 govuk-!-f-80">govuk-!-f-80</p>
+      <p class="govuk-body govuk-!-m-0 govuk-!-f-48">govuk-!-f-48</p>
+      <p class="govuk-body govuk-!-m-0 govuk-!-f-36">govuk-!-f-36</p>
+      <p class="govuk-body govuk-!-m-0 govuk-!-f-27">govuk-!-f-27</p>
+      <p class="govuk-body govuk-!-m-0 govuk-!-f-24">govuk-!-f-24</p>
+      <p class="govuk-body govuk-!-m-0 govuk-!-f-19">govuk-!-f-19</p>
+      <p class="govuk-body govuk-!-m-0 govuk-!-f-16">govuk-!-f-16</p>
+      <p class="govuk-body govuk-!-m-0 govuk-!-f-14">govuk-!-f-14</p>
+
+
+      <h3 class="govuk-heading-m govuk-!-mt-8">Override font weight.</h3>
+
+      <p class="govuk-body govuk-!-m-0 govuk-!-w-regular">govuk-!-w-regular</p>
+      <p class="govuk-body govuk-!-m-0 govuk-!-w-bold">govuk-!-w-bold</p>
+
+
+      <h3 class="govuk-heading-m govuk-!-mt-8">Override both by combining classes</h3>
+
+      <p class="govuk-body govuk-!-m-0 govuk-!-f-48 govuk-!-w-bold">govuk-!-f-48 + govuk-!-w-bold</p>
+
+      <h3 class="govuk-heading-m govuk-!-mt-8">Override typography classes</h3>
+
+      <h1 class="govuk-heading-xl govuk-!-f-80">govuk-heading-xl + govuk-!-f-80</h1>
+
+      <h2 class="govuk-heading-xl govuk-!-w-regular">govuk-heading-xl + govuk-!-w-regular</h2>
+
+      <p class="govuk-body-l govuk-!-w-bold">govuk-body-l + govuk-!-w-bold</p>
+
+    </section>
+
+    <section class="govuk-!-mt-7">
+      <h2 class="govuk-heading-l govuk-!-pb-2" style="border-bottom: 4px solid;">Example content 1</h2>
+
+      <h1 class="govuk-heading-xl">Request information about a vehicle or its registered keeper from DVLA</h1>
+
+      <p class="govuk-body-l">You can ask DVLA for information about your vehicle or another vehicle and its registered keeper if you have a ‘reasonable cause’.</p>
+
+      <h2 class="govuk-heading-l">Information about another vehicle or its registered keeper</h2>
+
+      <p class="govuk-body-m">You can ask for details of another vehicle’s registered keeper. You’ll need a ‘reasonable cause’, for example:</p>
+
+      <ul class="govuk-c-list govuk-c-list--bullet">
+        <li>finding out who was responsible for an accident</li>
+        <li>tracing the registered keeper of an abandoned vehicle</li>
+        <li>tracing the registered keeper of a vehicle parked on private land</li>
+        <li>giving out parking tickets</li>
+        <li>giving out trespass charge notices</li>
+        <li>tracing people responsible for driving off without paying for goods and services</li>
+        <li>tracing people suspected of insurance fraud</li>
+      </ul>
+
+      <p class="govuk-body-m">Private car parking management companies that give out parking tickets or trespass charge notices can only request information from <abbr title="Driver and Vehicle Licensing Agency">DVLA</abbr> if they’re members of the <a rel="external" href="http://www.britishparking.co.uk">British Parking Association</a> or the <a rel="external" href="http://www.theipc.info">International Parking Community.</a></p>
+
+
+      <h3 class="govuk-heading-s">How to make a request</h3>
+      <p class="govuk-body-m">Fill in a form and apply by post. The form you need to use depends on who is making the request and why.</p>
+
+      <p class="govuk-body-m">Details of how to pay and where to send your application are on each form.</p>
+
+      <table class="govuk-c-table govuk-!-f-16">
+        <thead class="govuk-c-table__head">
+          <tr class="govuk-c-table__row">
+            <th class="govuk-c-table__header" scope="col">Who is making the request</th>
+            <th class="govuk-c-table__header" scope="col">Form</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-c-table__body">
+          <tr class="govuk-c-table__row">
+            <td class="govuk-c-table__cell">An individual</td>
+            <td class="govuk-c-table__cell"><a href="/government/publications/v888-request-by-an-individual-for-information-about-a-vehicle">Form V888</a></td>
+          </tr>
+          <tr class="govuk-c-table__row">
+            <td class="govuk-c-table__cell">A company</td>
+            <td class="govuk-c-table__cell"><a href="/government/publications/v8882-request-by-a-company-for-information-about-a-vehicle">Form V8882</a></td>
+          </tr>
+          <tr class="govuk-c-table__row">
+            <td class="govuk-c-table__cell">A company that issues parking or trespass charge notices</td>
+            <td class="govuk-c-table__cell"><a href="/government/publications/v8883-request-for-information-for-those-who-issue-a-parking-charge-notice">Form V8883</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="govuk-body-m">You can download further information on <a href="/government/publications/giving-people-information-from-our-vehicle-record">requesting information from <abbr title="Driver and Vehicle Licensing Agency">DVLA</abbr></a>.</p>
+
+      <h3 class="govuk-heading-m">Information about you or your vehicle</h3>
+      <p class="govuk-body-m">You can ask for information about your current vehicle or a vehicle that used to be registered in your name.</p>
+
+      <p class="govuk-body-m">It doesn’t cost anything.</p>
+
+      <p class="govuk-body-m">You’ll need to include:</p>
+
+      <ul class="govuk-c-list govuk-c-list--bullet">
+        <li>your full name</li>
+        <li>your current address and the address on your log book (V5C)</li>
+        <li>the registration number of the vehicle you’re asking about</li>
+        <li>what information you need, for example when the vehicle was first registered or the date you bought it</li>
+      </ul>
+
+      <p class="govuk-body-m">You can send your request to DVLA by email or post.</p>
+
+      <p class="govuk-body-m"><strong><abbr title="Driver and Vehicle Licensing Agency">DVLA</abbr> SAR Enquiries</strong><br><a href="mailto:SubjectAccess.Requests@dvla.gsi.gov.uk">SubjectAccess.Requests@dvla.gsi.gov.uk</a></p>
+
+      <p class="govuk-body-m">
+        SAR Enquiries
+        <br>DVRE
+        <br><abbr title="Driver and Vehicle Licensing Agency">DVLA</abbr>
+        <br>Swansea
+        <br>SA99 1ZZ
+        <br>
+      </p>
+
+      <p class="govuk-body-m">Don’t use these details for general enquiries - contact DVLA instead.</p>
+    </section>
+
+    <section class="govuk-!-mt-7">
+      <h2 class="govuk-heading-l govuk-!-pb-2" style="border-bottom: 4px solid;">Example content 2</h2>
+
+      <h1 class="govuk-heading-xl">Apply for a Women’s Land Army or Women’s Timber Corps veterans badge</h1>
+
+      <p class="govuk-body-l">You can get the veterans badge if you are a veteran of either the Women’s Land Army (<abbr title="Women's Land Army">WLA</abbr>) or the Women’s Timber Corps (<abbr title="Women's Timber Corps">WTC</abbr>).</p>
+
+      <h2 class="govuk-heading-l">Eligibility</h2>
+
+      <p class="govuk-body-m">You’ll get the badge if you served during World War 1 or World War 2, or at any time up until the corps were disbanded in 1950.</p>
+
+      <p class="govuk-body-m">You can apply for a badge if you are the spouse or family member of a deceased veteran, but only if they died after 6 December 2007 (when the badge was issued).</p>
+
+      <h2 class="govuk-heading-l">How to apply</h2>
+
+      <p class="govuk-body-m">Fill in the <a href="/government/publications/women-s-land-army-and-timber-corps-veterans-badge-application-form"><abbr title="Women's Land Army">WLA</abbr> and <abbr title="Women's Timber Corps">WTC</abbr> veterans badge application form.</a></p>
+
+      <p class="govuk-body-m">You’ll need to give your date of birth, approximate dates of service in the <abbr title="Women's Land Army">WLA</abbr> or <abbr title="Women's Timber Corps">WTC</abbr>, and the location at which you (or your family member or spouse) were stationed.</p>
+
+      <p class="govuk-body-m">Send your form by email or post to Department for Environment, Food and Rural Affairs (<abbr title="Department for Environment, Food and Rural Affairs">Defra</abbr>).</p>
+
+
+      <p class="govuk-body-m"><strong><abbr title="Department for Environment, Food and Rural Affairs">Defra</abbr></strong>
+      <a href="mailto:womenslandarmy@defra.gsi.gov.uk">womenslandarmy@defra.gsi.gov.uk</a><br>
+      Telephone: 0208 026 3078<br>
+      <a href="/call-charges">Find out about call charges</a></p>
+
+
+      <p class="govuk-body-m">
+
+      Women’s Land Army Team
+      <br>Department for Environment, Food and Rural Affairs
+      <br>Area 1A
+      <br>Nobel House
+      <br>17 Smith Square
+      <br>London
+      <br>SW1P 3JR
+      <br>
+      </p>
+
+      <h2 class="govuk-heading-l" >After you’ve applied</h2>
+
+      <p class="govuk-body-m">You’ll receive your badge within 4 weeks or you’ll be contacted if you need to provide more information.</p>
+    </section>
+  </div>
 </div>
 
 {% endblock %}
