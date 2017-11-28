@@ -24,7 +24,7 @@
     float: left;
     background-image: file-url("separator.png");
 
-    @include govuk-h-device-pixel-ratio() {
+    @include govuk-h-device-pixel-ratio {
       background-image: file-url("separator-2x.png");
       background-size: 6px 11px;
     }
