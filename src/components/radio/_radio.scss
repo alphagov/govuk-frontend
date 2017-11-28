@@ -84,6 +84,7 @@
     border: em($govuk-spacing-scale-2, 19px) solid;
     border-radius: 50%;
     opacity: 0;
+    background: currentColor;
   }
 
   // Focused state
