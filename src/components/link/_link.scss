@@ -4,8 +4,7 @@
 
   .govuk-c-link {
     font-family: $govuk-font-stack;
-    @include font-smoothing;
-    @include govuk-core-16;
+    @include govuk-font-regular-16;
     line-height: 1.25;
 
     text-decoration: underline;
@@ -64,11 +63,11 @@
   }
 
   .govuk-c-link--download {
+    @include govuk-font-bold;
     display: block;
     min-height: 40px;
     padding: 0 0 0 40px;
     background: file-url("icon-file-download.png") no-repeat scroll 0 0;
-    font-weight: 700; // Replace with @include govuk-bold;
   }
 
   .govuk-c-link--download a:focus {

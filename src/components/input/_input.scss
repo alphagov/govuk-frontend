@@ -14,9 +14,7 @@
     border: $govuk-border-width-form-element solid $govuk-text-colour;
     border-radius: 0;
     font-family: $govuk-font-stack;
-
-    @include font-smoothing;
-    @include govuk-core-19;
+    @include govuk-font-regular-19;
 
     // Disable inner shadow and remove rounded corners
     appearance: none;

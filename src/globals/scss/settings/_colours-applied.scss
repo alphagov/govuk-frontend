@@ -7,6 +7,7 @@ $govuk-button-colour: #00823b;
 $govuk-button-colour-darken-15: darken($govuk-button-colour, 15%);
 $govuk-focus-colour: $govuk-yellow;
 $govuk-text-colour: $govuk-black;             // Standard text colour
+$govuk-print-text-colour: #000000;            // Text colour when printing
 $govuk-secondary-text-colour: $govuk-grey-1;  // Section headers, help text etc.
 $govuk-border-colour: $govuk-grey-2;          // Borders, seperators, rules, keylines etc.
 $govuk-panel-colour: $govuk-grey-3;           // Related links panel, page footer etc.
@@ -17,7 +18,6 @@ $govuk-discovery-colour: $govuk-fuschia;      // Discovery badges and banners
 $govuk-alpha-colour: $govuk-pink;             // Alpha badges and banners
 $govuk-beta-colour: $govuk-orange;            // Beta badges and banners
 $govuk-live-colour: $govuk-grass-green;       // Live badges and banners
-$govuk-banner-text-colour: #000000;        // Text colour for Alpha & Beta banners
 $govuk-error-colour: $govuk-red;              // Error text and border colour
 $govuk-error-background: #fef7f7;       // Error background colour
 

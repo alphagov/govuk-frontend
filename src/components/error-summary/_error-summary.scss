@@ -10,7 +10,6 @@
     border: $govuk-border-width-mobile solid $govuk-error-colour;
 
     font-family: $govuk-font-stack;
-    @include font-smoothing;
 
     @include mq($from: tablet) {
 
@@ -38,12 +37,11 @@
     }
 
     font-family: $govuk-font-stack;
-    @include font-smoothing;
-    @include govuk-bold-24;
+    @include govuk-font-bold-24;
   }
 
   .govuk-c-error-summary__body {
-    @include govuk-core-19;
+    @include govuk-font-regular-19;
 
     p {
       margin-top: 0;

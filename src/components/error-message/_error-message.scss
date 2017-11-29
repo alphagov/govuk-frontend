@@ -13,7 +13,6 @@
     color: $govuk-error-colour;
 
     font-family: $govuk-font-stack;
-    @include font-smoothing;
-    @include govuk-bold-19;
+    @include govuk-font-bold-19;
   }
 }

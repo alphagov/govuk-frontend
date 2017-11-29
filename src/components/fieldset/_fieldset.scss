@@ -22,8 +22,7 @@
     color: $govuk-text-colour;
     font-family: $govuk-font-stack;
     white-space: normal;    // 1
-    @include font-smoothing;
-    @include govuk-core-19;
+    @include govuk-font-regular-19;
   }
 
   .govuk-c-fieldset__legend--bold {

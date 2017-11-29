@@ -10,8 +10,7 @@
     border: $govuk-border-width-form-element solid $govuk-text-colour;
 
     font-family: $govuk-font-stack;
-    @include font-smoothing;
-    @include govuk-core-19;
+    @include govuk-font-regular-19;
     line-height: 1.25;
   }
 

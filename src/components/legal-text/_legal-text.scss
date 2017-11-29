@@ -7,8 +7,7 @@
     padding: $govuk-spacing-scale-1 0;
 
     font-family: $govuk-font-stack;
-    @include font-smoothing;
-    @include govuk-core-19;
+    @include govuk-font-regular-19;
   }
 
   .govuk-c-legal-text__assistive {
@@ -28,7 +27,7 @@
     padding-top: 3px;
 
     font-size: 1.6em;
-    @include govuk-bold;
+    @include govuk-font-bold;
     line-height: 35px;
   }
 

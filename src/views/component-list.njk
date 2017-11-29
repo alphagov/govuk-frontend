@@ -1,7 +1,7 @@
 {% extends "layout-debug.njk" %}
 
 {% block content %}
-  <h1 class="govuk-u-heading-36">
+  <h1 class="govuk-heading-l">
     GOV.UK Frontend - Components
   </h1>
   <ul class="govuk-c-list">
@@ -9,7 +9,7 @@
     <li><a href="/components/{{ componentName }}">{{ componentName | replace("-", " ") | capitalize }}</a></li>
   {% endfor %}
   </ul>
-  <h2 class="govuk-u-heading-24">
+  <h2 class="govuk-heading-m">
     <a href="/examples">View examples</a>
   </h2>
 {% endblock %}

@@ -9,8 +9,7 @@
     border-left: $govuk-border-width-wide solid $govuk-border-colour;
 
     font-family: $govuk-font-stack;
-    @include govuk-core-19;
-    @include font-smoothing;
+    @include govuk-font-regular-19;
 
     :first-child {
       margin-top: 0;

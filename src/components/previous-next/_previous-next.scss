@@ -3,7 +3,6 @@
 @include exports("previous-next") {
 
   .govuk-c-previous-next {
-    @include font-smoothing;
     display: block;
     margin-right: -$govuk-spacing-scale-3;
     // TODO: Make margins under components consistent
@@ -19,7 +18,7 @@
   }
 
   .govuk-c-previous-next__item {
-    @include govuk-core-16;
+    @include govuk-font-regular-16;
     width: 50%;
     padding: 0;
     list-style: none;
@@ -60,7 +59,7 @@
   }
 
   .govuk-c-previous-next__link-title {
-    @include govuk-core-27;
+    @include govuk-font-regular-27;
     display: block;
     line-height: (33.75 / 27);
   }

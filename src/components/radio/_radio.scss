@@ -12,8 +12,7 @@
     clear: left;
 
     font-family: $govuk-font-stack;
-    @include font-smoothing;
-    @include govuk-core-19;
+    @include govuk-font-regular-19;
   }
 
   .govuk-c-radio:last-child,

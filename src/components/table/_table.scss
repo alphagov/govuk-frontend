@@ -6,26 +6,25 @@
     border-spacing: 0;
     border-collapse: collapse;
     font-family: $govuk-font-stack;
-    @include font-smoothing;
   }
 
   .govuk-c-table__header {
     padding: em($govuk-spacing-scale-2, 19px) em($govuk-spacing-scale-4, 19px) em($govuk-spacing-scale-2, 19px) 0;
-    @include govuk-core-19;
+    @include govuk-font-regular-19;
     border-bottom: 1px solid $govuk-border-colour;
     font-weight: 700;
     text-align: left;
   }
 
   .govuk-c-table__cell {
-    @include govuk-core-19;
+    @include govuk-font-regular-19;
     padding: em($govuk-spacing-scale-2, 19px) em($govuk-spacing-scale-4, 19px) em($govuk-spacing-scale-2, 19px) 0;
     border-bottom: 1px solid $govuk-border-colour;
     text-align: left;
   }
 
   .govuk-c-table__cell--numeric {
-    font-family: $govuk-font-stack-tabular;
+    @include govuk-font-regular-tabular;
   }
 
   .govuk-c-table__header--numeric,
@@ -40,6 +39,6 @@
 
   .govuk-c-table__caption {
     text-align: left;
-    @include govuk-bold-19;
+    @include govuk-font-bold-19;
   }
 }
