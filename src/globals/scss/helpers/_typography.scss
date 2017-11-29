@@ -1,9 +1,13 @@
 @mixin govuk-typography-common($font-family: $govuk-font-stack) {
+  color: $govuk-text-colour;
+
   font-family: $font-family;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
   @include mq($media-type: print) {
+    color: $govuk-print-text-colour;
+
     font-family: $govuk-font-stack-print;
   }
 }

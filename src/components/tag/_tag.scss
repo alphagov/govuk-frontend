@@ -2,14 +2,13 @@
 
 @include exports("tag") {
   .govuk-c-tag {
+    @include govuk-font-bold-16;
+
     display: inline-block;
     padding: $govuk-spacing-scale-1 $govuk-spacing-scale-1 0;
 
     color: $govuk-white;
     background-color: $govuk-blue;
-
-    font-family: $govuk-font-stack;
-    @include govuk-font-bold-16;
     letter-spacing: 1px;
     line-height: 1.25;
 

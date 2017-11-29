@@ -24,9 +24,8 @@
   }
 
   .govuk-c-phase-banner__text {
-    display: table-cell;
-    color: $govuk-banner-text-colour;
-    vertical-align: baseline;
     @include govuk-font-regular-16;
+    display: table-cell;
+    vertical-align: baseline;
   }
 }
