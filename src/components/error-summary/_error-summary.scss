@@ -4,7 +4,7 @@
 @include exports("error-summary") {
 
   .govuk-c-error-summary {
-
+    @include govuk-text-colour;
     padding: $govuk-spacing-scale-3;
 
     border: $govuk-border-width-mobile solid $govuk-error-colour;

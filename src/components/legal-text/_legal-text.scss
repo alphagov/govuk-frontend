@@ -3,6 +3,7 @@
 @include exports("legal-text") {
 
   .govuk-c-legal-text {
+    @include govuk-text-colour;
     position: relative;
     padding: $govuk-spacing-scale-1 0;
 

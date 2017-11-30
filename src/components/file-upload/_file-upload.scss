@@ -8,6 +8,7 @@
     }
     font-family: $govuk-font-stack;
     @include govuk-font-regular-19;
+    @include govuk-text-colour;
   }
 
   .govuk-c-file-upload:focus {
