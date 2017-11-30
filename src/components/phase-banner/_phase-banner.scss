@@ -3,6 +3,7 @@
 
 @include exports("phase-banner") {
   .govuk-c-phase-banner {
+    @include govuk-text-colour;
     padding-top: $govuk-spacing-scale-2;
     padding-bottom: $govuk-spacing-scale-2;
     border-bottom: 1px solid $govuk-border-colour;

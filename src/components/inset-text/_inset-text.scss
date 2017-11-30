@@ -2,6 +2,7 @@
 
 @include exports("inset-text") {
   .govuk-c-inset-text {
+    @include govuk-text-colour;
     padding: em($govuk-spacing-scale-3, 19px);
 
     clear: both;

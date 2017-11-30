@@ -42,6 +42,15 @@ you can also apply .govuk-c-debug-grid class to a specific container
 .govuk-c-debug-grid--full-page.is-visible {
   display: block;
 }
+
+/*
+Make it clear when we're not applying the text colour to a component - our
+text colour is too visually similar to #000 so making the body red makes it
+obvious
+ */
+body {
+  color: red;
+}
 </style>
 {% endblock %}
 {% endif %}

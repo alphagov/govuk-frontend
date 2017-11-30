@@ -2,6 +2,7 @@
 
 @include exports("breadcrumb") {
   .govuk-c-breadcrumb {
+    @include govuk-text-colour;
     margin-top: $govuk-spacing-scale-3;
     margin-bottom: $govuk-spacing-scale-2;
     font-family: $govuk-font-stack;

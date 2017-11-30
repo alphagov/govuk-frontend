@@ -2,6 +2,7 @@
 
 @include exports("table") {
   .govuk-c-table {
+    @include govuk-text-colour;
     width: 100%;
     margin-bottom: $govuk-spacing-scale-4;
     @include mq($from: tablet) {
