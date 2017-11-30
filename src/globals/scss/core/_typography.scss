@@ -1,8 +1,7 @@
 @include exports("typography") {
 
-  // Headings
-
   .govuk-heading-xl {
+    @include govuk-text-colour;
     @include govuk-font-bold-48;
 
     display: block;
@@ -16,6 +15,7 @@
   }
 
   .govuk-heading-l {
+    @include govuk-text-colour;
     @include govuk-font-bold-36;
 
     display: block;
@@ -29,6 +29,7 @@
   }
 
   .govuk-heading-m {
+    @include govuk-text-colour;
     @include govuk-font-bold-24;
 
     display: block;
@@ -42,6 +43,7 @@
   }
 
   .govuk-heading-s {
+    @include govuk-text-colour;
     @include govuk-font-bold-19;
 
     margin-top: 0;
@@ -55,6 +57,7 @@
   // Captions to be used inside headings
 
   .govuk-caption-xl {
+    @include govuk-text-colour;
     @include govuk-font-regular-27;
 
     display: block;
@@ -63,6 +66,7 @@
   }
 
   .govuk-caption-l {
+    @include govuk-text-colour;
     @include govuk-font-regular-24;
 
     display: block;
@@ -75,6 +79,7 @@
   }
 
   .govuk-caption-m {
+    @include govuk-text-colour;
     @include govuk-font-regular-19;
 
     display: block;
@@ -84,6 +89,7 @@
   // Body (paragraphs)
 
   .govuk-body-l {
+    @include govuk-text-colour;
     @include govuk-font-regular-24;
 
     margin-top: 0;
@@ -95,6 +101,7 @@
   }
 
   .govuk-body-m {
+    @include govuk-text-colour;
     @include govuk-font-regular-19;
 
     margin-top: 0;
@@ -106,6 +113,7 @@
   }
 
   .govuk-body-s {
+    @include govuk-text-colour;
     @include govuk-font-regular-16;
 
     margin-top: 0;
@@ -117,6 +125,7 @@
   }
 
   .govuk-body-xs {
+    @include govuk-text-colour;
     @include govuk-font-regular-14;
 
     margin-top: 0;
