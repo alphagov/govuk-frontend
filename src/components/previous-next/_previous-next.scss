@@ -6,7 +6,10 @@
     display: block;
     margin-right: -$govuk-spacing-scale-3;
     // TODO: Make margins under components consistent
-    margin-bottom: $govuk-spacing-scale-5;
+    margin-bottom: $govuk-spacing-scale-4;
+    @include mq($from: tablet) {
+      margin-bottom: $govuk-spacing-scale-5;
+    }
     margin-left: -$govuk-spacing-scale-3;
     font-family: $govuk-font-stack;
   }

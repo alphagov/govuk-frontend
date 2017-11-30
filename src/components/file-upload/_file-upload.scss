@@ -2,6 +2,10 @@
 
 @include exports("file-upload") {
   .govuk-c-file-upload {
+    margin-bottom: $govuk-spacing-scale-4;
+    @include mq($from: tablet) {
+      margin-bottom: $govuk-spacing-scale-5;
+    }
     font-family: $govuk-font-stack;
     @include govuk-font-regular-19;
   }

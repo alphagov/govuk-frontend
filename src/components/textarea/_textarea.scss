@@ -6,9 +6,11 @@
   .govuk-c-textarea {
     box-sizing: border-box; // should this be global?
     display: block;
-
     width: 100%;
-
+    margin-bottom: $govuk-spacing-scale-4;
+    @include mq($from: tablet) {
+      margin-bottom: $govuk-spacing-scale-5;
+    }
     border: $govuk-border-width-form-element solid $govuk-text-colour;
     border-radius: 0;
 

@@ -2,7 +2,10 @@
 
 @include exports("fieldset") {
   .govuk-c-fieldset {
-    margin: 0;
+    margin: 0 0 $govuk-spacing-scale-4;
+    @include mq($from: tablet) {
+      margin-bottom: $govuk-spacing-scale-5;
+    }
     padding: 0;
     border: 0;
     @include govuk-h-clearfix;
