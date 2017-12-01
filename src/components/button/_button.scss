@@ -8,19 +8,23 @@
     display: inline-block;
     position: relative;
     width: 100%;
-    min-height: em(40px, 19px);
     margin-top: 0;
     margin-bottom: $govuk-spacing-scale-4;
     @include mq($from: tablet) {
       margin-bottom: $govuk-spacing-scale-5;
     }
-    padding: 0 em($govuk-spacing-scale-3, 19px) 0;
+    padding: ($govuk-spacing-scale-2 - $govuk-border-width-form-element) $govuk-spacing-scale-2;
     border-width: $govuk-border-width-form-element;
+    border-style: solid;
     border-radius: 0;
-    border-color: transparent transparent $govuk-button-colour-darken-15 transparent;
+    border-color: transparent;
     outline: 1px solid transparent; // keep some button appearance when changing colour settings in browsers
     outline-offset: -1px; // fixes bug in Safari that outline width on focus is not overwritten, is reset to 0 on focus in govuk_template
     background-color: $govuk-button-colour;
+    box-shadow: 0 2px 0 $govuk-button-colour-darken-15;
+    font-family: $govuk-font-stack;
+    // Had to use important because th linter won't let me put this under the font-size include
+    line-height: 1 !important;
     text-align: center;
     text-decoration: none;
     vertical-align: top;
@@ -62,7 +66,7 @@
     }
 
     &:active {
-      top: 2px;
+      top: $govuk-border-width-form-element;
       box-shadow: 0 0 0 $govuk-button-colour;
     }
 
@@ -103,9 +107,11 @@
 
   .govuk-c-button--start {
     @include govuk-font-bold-24;
-    // TODO: Check padding values
     min-height: auto;
-    padding: em($govuk-spacing-scale-1, 24px) em($govuk-spacing-scale-6, 24px) em($govuk-spacing-scale-1, 24px) em($govuk-spacing-scale-4, 24px);
+    padding-top: $govuk-spacing-scale-2 - $govuk-border-width-form-element;
+    padding-right: $govuk-spacing-scale-6;
+    padding-bottom: $govuk-spacing-scale-2 - $govuk-border-width-form-element;
+    padding-left: $govuk-spacing-scale-3;
     background-image: file-url("icon-pointer.png");
 
     @include govuk-h-device-pixel-ratio {
@@ -119,6 +125,7 @@
     @include ie-lte(8) {
       border-bottom: $govuk-border-width-form-element solid $govuk-button-colour-darken-15;
     }
+    line-height: 1 !important;
   }
 
   // making the click target bigger than the button
@@ -129,7 +136,6 @@
     position: absolute;
     top: 0;
     left: 0;
-
     width: 100%;
     height: 110%;
     background: transparent;
@@ -159,4 +165,21 @@
       filter: none;
     }
   }
+
+  // Begin adjustments for font baseline offset
+  // These should be removed when the font is updated with the correct baseline
+  // For the 1px addition please see https://github.com/alphagov/govuk-frontend/pull/365#discussion_r154349428
+
+  $offset: 2;
+
+  .govuk-c-button {
+    padding-top: ($govuk-spacing-scale-2 - $govuk-border-width-form-element + $offset);
+    padding-bottom: ($govuk-spacing-scale-2 - $govuk-border-width-form-element - $offset + 1);
+  }
+
+  .govuk-c-button--start {
+    padding-top: ($govuk-spacing-scale-2 - $govuk-border-width-form-element + $offset);
+    padding-bottom: ($govuk-spacing-scale-2 - $govuk-border-width-form-element - $offset + 1);
+  }
+
 }
