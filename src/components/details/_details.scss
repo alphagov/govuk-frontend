@@ -7,7 +7,7 @@
     display: block;
     margin-bottom: $govuk-spacing-scale-4;
     @include mq($from: tablet) {
-      margin-bottom: $govuk-spacing-scale-5;
+      margin-bottom: $govuk-spacing-scale-6;
     }
     clear: both;
   }

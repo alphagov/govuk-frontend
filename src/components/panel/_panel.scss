@@ -6,11 +6,11 @@
     @include govuk-font-regular-19;
 
     @include mq($until: tablet) {
-      padding: $govuk-spacing-scale-5;
+      padding: $govuk-spacing-scale-6;
     }
 
     margin-bottom: $govuk-spacing-scale-3;
-    padding: $govuk-spacing-scale-6;
+    padding: $govuk-spacing-scale-7;
 
     text-align: center;
   }
@@ -22,7 +22,7 @@
 
   .govuk-c-panel__title {
     margin-top: 0;
-    margin-bottom: $govuk-spacing-scale-5;
+    margin-bottom: $govuk-spacing-scale-6;
 
     @include govuk-font-bold-48;
   }
