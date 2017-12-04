@@ -5,10 +5,8 @@
     @include govuk-font-regular-19;
 
     display: block;
-    margin-bottom: $govuk-spacing-scale-4;
-    @include mq($from: tablet) {
-      margin-bottom: $govuk-spacing-scale-6;
-    }
+    @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom");
+
     clear: both;
   }
 
@@ -52,7 +50,7 @@
   .govuk-c-details__text p {
     // TODO: Make margins on paragraphs consistent
     margin-top: 0;
-    margin-bottom: em(20px, 19px);
+    margin-bottom: em($govuk-spacing-scale-4, 19px);
   }
 
   .govuk-c-details__text p:last-child {

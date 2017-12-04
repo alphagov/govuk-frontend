@@ -7,11 +7,7 @@
     display: block;
 
     margin-top: 0;
-    margin-bottom: $govuk-spacing-scale-6;
-
-    @include mq($from: tablet) {
-      margin-bottom: $govuk-spacing-scale-8;
-    }
+    @include govuk-responsive-margin($govuk-spacing-responsive-8, "bottom");
   }
 
   .govuk-heading-l {
@@ -21,11 +17,8 @@
     display: block;
 
     margin-top: 0;
-    margin-bottom: $govuk-spacing-scale-4;
+    @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom");
 
-    @include mq($from: tablet) {
-      margin-bottom: $govuk-spacing-scale-6;
-    }
   }
 
   .govuk-heading-m {
@@ -35,11 +28,7 @@
     display: block;
 
     margin-top: 0;
-    margin-bottom: $govuk-spacing-scale-3;
-
-    @include mq($from: tablet) {
-      margin-bottom: $govuk-spacing-scale-4;
-    }
+    @include govuk-responsive-margin($govuk-spacing-responsive-4, "bottom");
   }
 
   .govuk-heading-s {
@@ -47,11 +36,7 @@
     @include govuk-font-bold-19;
 
     margin-top: 0;
-    margin-bottom: $govuk-spacing-scale-3;
-
-    @include mq($from: tablet) {
-      margin-bottom: $govuk-spacing-scale-4;
-    }
+    @include govuk-responsive-margin($govuk-spacing-responsive-4, "bottom");
   }
 
   // Captions to be used inside headings
@@ -93,11 +78,7 @@
     @include govuk-font-regular-24;
 
     margin-top: 0;
-    margin-bottom: $govuk-spacing-scale-4;
-
-    @include mq($from: tablet) {
-      margin-bottom: $govuk-spacing-scale-6;
-    }
+    @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom");
   }
 
   .govuk-body-m {
@@ -105,11 +86,7 @@
     @include govuk-font-regular-19;
 
     margin-top: 0;
-    margin-bottom: $govuk-spacing-scale-3;
-
-    @include mq($from: tablet) {
-      margin-bottom: $govuk-spacing-scale-4;
-    }
+    @include govuk-responsive-margin($govuk-spacing-responsive-4, "bottom");
   }
 
   .govuk-body-s {
@@ -117,11 +94,7 @@
     @include govuk-font-regular-16;
 
     margin-top: 0;
-    margin-bottom: $govuk-spacing-scale-3;
-
-    @include mq($from: tablet) {
-      margin-bottom: $govuk-spacing-scale-4;
-    }
+    @include govuk-responsive-margin($govuk-spacing-responsive-4, "bottom");
   }
 
   .govuk-body-xs {
@@ -129,11 +102,7 @@
     @include govuk-font-regular-14;
 
     margin-top: 0;
-    margin-bottom: $govuk-spacing-scale-3;
-
-    @include mq($from: tablet) {
-      margin-bottom: $govuk-spacing-scale-4;
-    }
+    @include govuk-responsive-margin($govuk-spacing-responsive-4, "bottom");
   }
 
   // Usage aliases
@@ -149,21 +118,6 @@
     @extend .govuk-body-m;
   }
 
-  // Contextual adjustments
-
-  // Add a negative top margin to headings that appear directly after other
-  // headings
-
-  .govuk-heading-l + .govuk-heading-m {
-    margin-top: -$govuk-spacing-scale-1;
-  }
-
-  .govuk-heading-m + .govuk-heading-s {
-    margin-top: -$govuk-spacing-scale-2;
-  }
-
-  // Add top padding to headings that appear directly after paragraphs
-
   .govuk-body-l  + .govuk-heading-l {
     padding-top: $govuk-spacing-scale-1;
 
@@ -174,11 +128,7 @@
 
   .govuk-body-m  + .govuk-heading-l,
   .govuk-body-s  + .govuk-heading-l {
-    padding-top: $govuk-spacing-scale-3;
-
-    @include mq($from: tablet) {
-      padding-top: $govuk-spacing-scale-4;
-    }
+    @include govuk-responsive-padding($govuk-spacing-responsive-4, "top");
   }
 
   .govuk-body-m + .govuk-heading-m,

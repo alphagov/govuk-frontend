@@ -4,12 +4,8 @@
   .govuk-c-list {
     @include govuk-font-regular-19;
     @include govuk-text-colour;
-
-    margin-top: $govuk-spacing-scale-0;
-    margin-bottom: $govuk-spacing-scale-3;
-    @include mq($from: tablet) {
-      margin-bottom: $govuk-spacing-scale-4;
-    }
+    margin-top: 0;
+    @include govuk-responsive-margin($govuk-spacing-responsive-4, "bottom");
     padding-left: 0;
     list-style-type: none;
   }

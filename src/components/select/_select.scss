@@ -8,10 +8,8 @@
     box-sizing: border-box; // should this be global?
     width: 100%;
     height: em(40px, 19px);
-    margin-bottom: $govuk-spacing-scale-4;
-    @include mq($from: tablet) {
-      margin-bottom: $govuk-spacing-scale-6;
-    }
+    @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom");
+
     padding: $govuk-spacing-scale-1; // was 5px 4px 4px - size of it should be adjusted to match other form elements
     border: $govuk-border-width-form-element solid $govuk-text-colour;
 

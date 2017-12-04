@@ -5,10 +5,7 @@
     @include govuk-font-regular-19;
     @include govuk-text-colour;
 
-    margin-bottom: $govuk-spacing-scale-4;
-    @include mq($from: tablet) {
-      margin-bottom: $govuk-spacing-scale-6;
-    }
+    @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom");
   }
 
   .govuk-c-file-upload:focus {

@@ -5,12 +5,8 @@
   .govuk-c-previous-next {
     display: block;
     margin-right: -$govuk-spacing-scale-3;
-    // TODO: Make margins under components consistent
-    margin-bottom: $govuk-spacing-scale-4;
-    @include mq($from: tablet) {
-      margin-bottom: $govuk-spacing-scale-6;
-    }
     margin-left: -$govuk-spacing-scale-3;
+    @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom");
   }
 
   .govuk-c-previous-next__list {
