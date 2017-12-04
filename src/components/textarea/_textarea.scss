@@ -11,6 +11,7 @@
     @include mq($from: tablet) {
       margin-bottom: $govuk-spacing-scale-5;
     }
+    padding: $govuk-spacing-scale-1;
     border: $govuk-border-width-form-element solid $govuk-text-colour;
     border-radius: 0;
 

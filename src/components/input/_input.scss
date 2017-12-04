@@ -12,7 +12,7 @@
     @include mq($from: tablet) {
       margin-bottom: $govuk-spacing-scale-5;
     }
-    padding: 0 em($govuk-spacing-scale-3, 19px) 0 em($govuk-spacing-scale-1, 19px);
+    padding: $govuk-spacing-scale-1;
     // setting any background-color makes text invisible when changing colours to dark backgrounds in Firefox (https://bugzilla.mozilla.org/show_bug.cgi?id=1335476)
     // as background-color and color need to always be set together, color should not be set either
     border: $govuk-border-width-form-element solid $govuk-text-colour;
