@@ -3,14 +3,11 @@
 @include exports("skip-link") {
   .govuk-c-skip-link {
     position: absolute;
-    left: -9999em;
     padding: $govuk-spacing-scale-1 $govuk-spacing-scale-3;
+    clip: rect(0 0 0 0);
     font-family: $govuk-font-stack;
     @include govuk-font-regular-16;
     line-height: 1.5;
-    @include mq($from: tablet) {
-      padding: $govuk-spacing-scale-1 $govuk-spacing-scale-5;
-    }
   }
 
   // Default link colour doesn't have enough contrast against $govuk-focus-colour
