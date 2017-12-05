@@ -43,9 +43,8 @@
   }
 
   .govuk-c-details__text {
-    // TODO: Make margins underneath components consistent
-    margin-bottom: em($govuk-spacing-scale-3, 19px);
-    padding: em($govuk-spacing-scale-3, 19px);
+    margin-left: 3px;
+    padding: $govuk-spacing-scale-3;
     border-left: $govuk-border-width solid $govuk-border-colour;
     color: $govuk-black;
   }
