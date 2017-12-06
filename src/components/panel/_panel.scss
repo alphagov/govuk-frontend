@@ -3,15 +3,14 @@
 @include exports("panel") {
 
   .govuk-c-panel {
+    @include govuk-font-regular-19;
+
     @include mq($until: tablet) {
       padding: $govuk-spacing-scale-5;
     }
 
     margin-bottom: $govuk-spacing-scale-3;
     padding: $govuk-spacing-scale-6;
-
-    font-family: $govuk-font-stack;
-    @include govuk-font-regular-19;
 
     text-align: center;
   }

@@ -3,8 +3,8 @@
 @include exports("link") {
 
   .govuk-c-link {
-    font-family: $govuk-font-stack;
     @include govuk-font-regular-16;
+
     line-height: 1.25;
 
     text-decoration: underline;

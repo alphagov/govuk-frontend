@@ -11,7 +11,6 @@
       margin-bottom: $govuk-spacing-scale-5;
     }
     margin-left: -$govuk-spacing-scale-3;
-    font-family: $govuk-font-stack;
   }
 
   .govuk-c-previous-next__list {
@@ -22,6 +21,7 @@
 
   .govuk-c-previous-next__item {
     @include govuk-font-regular-16;
+
     width: 50%;
     padding: 0;
     list-style: none;

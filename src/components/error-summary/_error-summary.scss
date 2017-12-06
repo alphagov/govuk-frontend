@@ -5,16 +5,12 @@
 
   .govuk-c-error-summary {
     @include govuk-text-colour;
-    padding: $govuk-spacing-scale-3;
 
+    padding: $govuk-spacing-scale-3;
     border: $govuk-border-width-mobile solid $govuk-error-colour;
 
-    font-family: $govuk-font-stack;
-
     @include mq($from: tablet) {
-
       padding: $govuk-spacing-scale-4;
-
       border: $govuk-border-width-tablet solid $govuk-error-colour;
     }
 
@@ -29,15 +25,14 @@
   }
 
   .govuk-c-error-summary__title {
+    @include govuk-font-bold-24;
+
     margin-top: 0;
     margin-bottom: $govuk-spacing-scale-3;
 
     @include mq($from: tablet) {
       margin-bottom: $govuk-spacing-scale-4;
     }
-
-    font-family: $govuk-font-stack;
-    @include govuk-font-bold-24;
   }
 
   .govuk-c-error-summary__body {
@@ -64,8 +59,9 @@
     &:visited,
     &:hover,
     &:active {
+      @include govuk-typography-weight-bold;
+
       color: $govuk-error-colour;
-      font-weight: bold;
       text-decoration: underline;
     }
   }

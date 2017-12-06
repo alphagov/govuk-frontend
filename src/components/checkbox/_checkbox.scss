@@ -2,17 +2,15 @@
 
 @include exports("checkbox") {
   .govuk-c-checkbox {
+    @include govuk-font-regular-19;
+
     display: block;
     position: relative;
-
 
     margin-bottom: $govuk-spacing-scale-2;
     padding: 0 0 0 em(40px, 19px);
 
     clear: left;
-
-    font-family: $govuk-font-stack;
-    @include govuk-font-regular-19;
   }
 
   .govuk-c-checkbox:last-child,

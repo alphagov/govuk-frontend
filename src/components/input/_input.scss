@@ -4,6 +4,8 @@
 
 @include exports("input") {
   .govuk-c-input {
+    @include govuk-font-regular-19;
+
     box-sizing: border-box;
     width: 100%;
     height: em(40px, 19px);
@@ -17,8 +19,6 @@
     // as background-color and color need to always be set together, color should not be set either
     border: $govuk-border-width-form-element solid $govuk-text-colour;
     border-radius: 0;
-    font-family: $govuk-font-stack;
-    @include govuk-font-regular-19;
 
     // Disable inner shadow and remove rounded corners
     appearance: none;

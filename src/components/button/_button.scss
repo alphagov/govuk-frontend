@@ -2,6 +2,8 @@
 
 @include exports("button") {
   .govuk-c-button {
+    @include govuk-font-regular-19;
+
     box-sizing: border-box;
     display: inline-block;
     position: relative;
@@ -19,9 +21,7 @@
     outline: 1px solid transparent; // keep some button appearance when changing colour settings in browsers
     outline-offset: -1px; // fixes bug in Safari that outline width on focus is not overwritten, is reset to 0 on focus in govuk_template
     background-color: $govuk-button-colour;
-    font-family: $govuk-font-stack;
     text-align: center;
-    @include govuk-font-regular-19;
     text-decoration: none;
     vertical-align: top;
     cursor: pointer;
