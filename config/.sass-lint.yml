@@ -290,6 +290,7 @@ rules:
         - 'overflow-y'
         -
         - 'clip'
+        - 'clip-path'
         - 'zoom'
         -
         - 'columns'
