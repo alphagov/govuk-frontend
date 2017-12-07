@@ -1,0 +1,43 @@
+@import "../../globals/scss/common";
+
+@include exports("back-link") {
+
+  .govuk-c-back-link {
+    display: inline-block;
+    position: relative;
+    margin-top: $govuk-spacing-scale-3;
+    margin-bottom: $govuk-spacing-scale-3;
+    padding-left: 14px;
+    border-bottom: 1px solid $govuk-black;
+    color: $govuk-black;
+    @include govuk-font-regular-16;
+    line-height: 1.25;
+    text-decoration: none;
+
+    &:link,
+    &:visited,
+    &:hover,
+    &:active {
+      color: $govuk-black;
+    }
+
+    // Back arrow - left pointing black arrow
+    &:before {
+      content: "";
+      display: block;
+
+      position: absolute;
+      top: 50%;
+      left: 0;
+
+      width: 0;
+      height: 0;
+
+      margin-top: -6px;
+
+      border-top: $govuk-spacing-scale-1 solid transparent;
+      border-right: 6px solid $govuk-black;
+      border-bottom: $govuk-spacing-scale-1 solid transparent;
+    }
+  }
+}
