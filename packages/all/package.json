@@ -14,7 +14,6 @@
     "@govuk-frontend/file-upload": "^0.0.18-alpha",
     "@govuk-frontend/icons": "^0.0.17-alpha",
     "@govuk-frontend/input": "^0.0.18-alpha",
-    "@govuk-frontend/inset-text": "^0.0.18-alpha",
     "@govuk-frontend/label": "^0.0.18-alpha",
     "@govuk-frontend/legal-text": "^0.0.18-alpha",
     "@govuk-frontend/link": "^0.0.18-alpha",
