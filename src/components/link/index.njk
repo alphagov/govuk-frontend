@@ -6,13 +6,10 @@
 {# componentName #}
 
 {% block componentDescription %}
-Link component, with four variants:
+Link component, with 2 variants:
 
 {{ govukList({
   items: [
-    {
-      text: 'back link - a black underlined link with a left pointing arrow'
-    },
     {
       text: 'muted link - used for the “anything wrong with this page?” links'
     },
@@ -58,7 +55,7 @@ Link component, with four variants:
         text:'No'
       },
       {
-        text: 'The available classes for the link: govuk-c-link--back, govuk-c-link--download, govuk-c-link--muted'
+        text: 'The available classes for the link: govuk-c-link--download, govuk-c-link--muted'
       }
     ],
     [

@@ -2,12 +2,10 @@
 
 ## Introduction
 
-Link component, with four variants:
+Link component, with 2 variants:
 
-*   back link - a black underlined link with a left pointing arrow
 *   muted link - used for the “anything wrong with this page?” links
 *   download link - with download icon
-*   skip link - skip to the main page content
 
 ## Guidance
 
@@ -17,39 +15,47 @@ More information about when to use link can be found on [GOV.UK Design System](h
 
 ### Component default
 
-[Preview the link component.](http://govuk-frontend-review.herokuapp.com/components/link/preview)
+[Preview the link component](http://govuk-frontend-review.herokuapp.com/components/link/preview)
 
 #### Markup
 
+    <a href="#" class="govuk-c-link">Default link</a>
+
 #### Macro
 
-      {% from "link/macro.njk" import govukLink %}
+    {{ govukLink({
+      "text": "Default link"
+    }) }}
 
-    {{- govukLink(
-      classes='govuk-c-link--back',
-      linkHref='',
-      linkText='Back')
-    -}}
+### Link--download
 
-    {{- govukLink(
-      classes='govuk-c-link--muted',
-      linkHref='',
-      linkText='Is there anything wrong with this page?')
-    -}}
+[Preview the link--download variant](http://govuk-frontend-review.herokuapp.com/components/link/download/preview)
 
-    {{- govukLink(
-      classes='govuk-c-link--download',
-      linkHref='',
-      linkText='Download')
-    -}}
+#### Markup
 
-    {{- govukLink(
-      classes='govuk-c-link--skip',
-      linkHref='',
-      linkText='Skip to main content')
-    -}}
+    <a href="#" class="govuk-c-link govuk-c-link--download">Download</a>
 
-## Variants
+#### Macro
+
+    {{ govukLink({
+      "text": "Download",
+      "classes": "govuk-c-link--download"
+    }) }}
+
+### Link--muted
+
+[Preview the link--muted variant](http://govuk-frontend-review.herokuapp.com/components/link/muted/preview)
+
+#### Markup
+
+    <a href="#" class="govuk-c-link govuk-c-link--muted">Is there anything wrong with this page?</a>
+
+#### Macro
+
+    {{ govukLink({
+      "text": "Is there anything wrong with this page?",
+      "classes": "govuk-c-link--muted"
+    }) }}
 
 ## Dependencies
 
@@ -79,7 +85,93 @@ To show the button image you need to configure your app to show these assets. Be
 
 If you are using Nunjucks,then macros take the following arguments
 
-<div>| Name | Type | Default | Required | Description |--- |--- |--- |--- |--- | linkHref | string | | Yes | The value of the link href attribute | linkText | string | | Yes | The link text | classes | string | | Yes | The modifier required for the link type | --back | --muted | --download | --skip</div>
+<div>
+
+<table class="govuk-c-table">
+
+<thead class="govuk-c-table__head">
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="col">Name</th>
+
+<th class="govuk-c-table__header" scope="col">Type</th>
+
+<th class="govuk-c-table__header" scope="col">Required</th>
+
+<th class="govuk-c-table__header" scope="col">Description</th>
+
+</tr>
+
+</thead>
+
+<tbody class="govuk-c-table__body">
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">classes</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">The available classes for the link: govuk-c-link--download, govuk-c-link--muted</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">text</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">Text to use within the link</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">html</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">HTML to use within the link. If this is provided, the text argument will be ignored.</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">href</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">Yes</td>
+
+<td class="govuk-c-table__cell ">The value of the link href attribute</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">attributes</th>
+
+<td class="govuk-c-table__cell ">object</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">Any extra HTML attributes (for example data attributes) to add to the anchor tag.</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
 
 ### Setting up Nunjucks views and paths
 
@@ -106,10 +198,6 @@ To update the latest version run:
 Guidelines can be found at [on our Github repository.](https://github.com/alphagov/govuk-frontend/blob/master/CONTRIBUTING.md "link to contributing guidelines on our github repository")
 
 ## Acknowledgements/credits
-
-*   GDS developers
-*   Jani Kraner
-*   Gemma Leigh
 
 ## License
 
