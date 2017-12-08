@@ -1,21 +1,42 @@
 variants:
-  - name: default
-    data:
-      idPrefix: 'radio'
-      name: 'radio-group'
-      items:
-        -
-          value: 'waste-animal'
-          text: 'Waste from animal carcasses'
-        -
-          id: 'custom-id'
-          value: 'waste-mines'
-          text: 'Waste from mines or quarries'
-        -
-          value: 'waste-farm'
-          text: 'Farm or agricultural waste'
-          checked: true
-        -
-          value: 'waste-disabled'
-          text: 'Disabled radio option'
-          disabled: true
+- name: default
+  data:
+    idPrefix: 'example'
+    name: 'example'
+    fieldset:
+      legendText: Have you changed your name?
+      legendHintText:
+        This includes changing your last name or spelling your name differently.
+    items:
+      - value: yes
+        text: Yes
+      - value: no
+        text: No
+        checked: true
+
+- name: with-html
+  data:
+    idPrefix: 'housing-act'
+    name: 'housing-act'
+    fieldset:
+      legendHtml: <h1 class="govuk-heading-l">Which part of the Housing Act was your licence issued under?</h1>
+      legendHintText: Select one of the options below.
+    items:
+      - value: 'part-2'
+        html:
+          <span class="govuk-heading-s govuk-!-mb-1">Part 2 of the Housing Act 2004</span>
+          For properties that are 3 or more stories high and occupied by 5 or more people
+      - value: 'part-3'
+        html:
+          <span class="govuk-heading-s govuk-!-mb-1">Part 3 of the Housing Act 2004</span>
+          For properties that are within a geographical area defined by a local council
+
+- name: without-fieldset
+  data:
+    items:
+      - value: "red"
+        text: 'Red'
+      - value: "green"
+        text: 'Green'
+      - value: "blue"
+        text: "Blue"
