@@ -3,11 +3,13 @@
 
 @include exports("phase-banner") {
   .govuk-c-phase-banner {
+    @include govuk-font-regular-16;
     @include govuk-text-colour;
+
     padding-top: $govuk-spacing-scale-2;
     padding-bottom: $govuk-spacing-scale-2;
+
     border-bottom: 1px solid $govuk-border-colour;
-    font-family: $govuk-font-stack;
   }
 
   .govuk-c-phase-banner__content {
@@ -20,7 +22,6 @@
   }
 
   .govuk-c-phase-banner__text {
-    @include govuk-font-regular-16;
     display: table-cell;
     vertical-align: baseline;
   }

@@ -4,6 +4,7 @@
   .govuk-c-list {
     @include govuk-font-regular-19;
     @include govuk-text-colour;
+
     margin-top: $govuk-spacing-scale-0;
     margin-bottom: $govuk-spacing-scale-3;
     @include mq($from: tablet) {
@@ -11,7 +12,6 @@
     }
     padding-left: 0;
     list-style-type: none;
-    font-family: $govuk-font-stack;
   }
 
   .govuk-c-list > li {

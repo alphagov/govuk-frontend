@@ -2,14 +2,14 @@
 
 @include exports("details") {
   .govuk-c-details {
+    @include govuk-font-regular-19;
+
     display: block;
     margin-bottom: $govuk-spacing-scale-4;
     @include mq($from: tablet) {
       margin-bottom: $govuk-spacing-scale-5;
     }
     clear: both;
-    font-family: $govuk-font-stack;
-    @include govuk-font-regular-19;
   }
 
   .govuk-c-details__summary {

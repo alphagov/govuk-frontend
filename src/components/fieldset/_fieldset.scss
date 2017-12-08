@@ -12,6 +12,8 @@
   }
 
   .govuk-c-fieldset__legend {
+    @include govuk-font-regular-19;
+
     // Fix legend text wrapping in Edge and IE
     // 1. IE9-11 & Edge 12-13
     // 2. IE8-11
@@ -23,20 +25,19 @@
     overflow: hidden;
 
     color: $govuk-text-colour;
-    font-family: $govuk-font-stack;
     white-space: normal;    // 1
-    @include govuk-font-regular-19;
   }
 
   .govuk-c-fieldset__legend--bold {
-    font-weight: 700;
+    @include govuk-typography-weight-bold;
   }
 
   // Hint text sits inside a legend, to be read by AT
   .govuk-c-fieldset__hint {
+    @include govuk-typography-weight-regular;
+
     display: block;
     color: $govuk-secondary-text-colour;
-    font-weight: 400;
   }
 
 }

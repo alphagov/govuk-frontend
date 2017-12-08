@@ -2,15 +2,15 @@
 
 @include exports("cookie-banner") {
   .govuk-c-cookie-banner {
+    @include govuk-font-regular-16;
     @include govuk-text-colour;
+
     width: 100%;
 
     padding-top: $govuk-spacing-scale-2;
     padding-bottom: $govuk-spacing-scale-2;
 
     background-color: $govuk-light-blue-25;
-
-    font-family: $govuk-font-stack;
   }
 
   .js-enabled .govuk-c-cookie-banner {
@@ -19,7 +19,6 @@
 
   .govuk-c-cookie-banner__message {
     @include govuk-site-width-container;
-    @include govuk-font-regular-16;
   }
 
   @include mq($media-type: print) {
