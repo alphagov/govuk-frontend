@@ -12,11 +12,13 @@
   {% block styles %}
   {% endblock %}
 </head>
-<body class="{% block bodyClasses %}{% endblock %} govuk-o-site-width-container">
+<body class="{% block bodyClasses %}{% endblock %}">
   <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
 {% endif %}
+<div class="govuk-o-wrapper">
   {% block content %}
   {% endblock %}
+</div>
 {% if not isReadme %}
   <script src="/public/js/govuk-frontend.js"></script>
   {% block scripts %}

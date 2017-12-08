@@ -19,6 +19,8 @@
 }) }}
 {% endif %}
 
+<div class="govuk-o-content">
+
 <h1 class="govuk-heading-xl">
 {% block componentName %}
 {{ componentName | replace("-", " ") | capitalize }}
@@ -144,6 +146,9 @@ nunjucks.configure('node_modules/@govuk-frontend`, {
     View the {{ componentName }} README on GitHub
   </a>
 </p>
+
+</div>
+
 {% endif %}
 
 {% endblock %}
