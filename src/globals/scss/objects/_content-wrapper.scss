@@ -1,10 +1,6 @@
-@include exports("wrappers") {
+@include exports("content-wrapper") {
 
-  // These wrappers will usually be used together. govuk-o-wrapper sets the site width
-  // and should contain components that site between the header and the main content area.
-  // govuk-o-content wraps the main content and applies padding top and bottom
-
-  // For example
+  // Example usage
 
   // <div class="govuk-o-wrapper">
   //   Breadcrumbs, Phase banners, Back links are placed in here.
@@ -14,10 +10,6 @@
   //   </div>
 
   // </div>
-
-  .govuk-o-wrapper {
-    @include govuk-site-width-container;
-  }
 
   .govuk-o-content {
     padding: $govuk-spacing-scale-3 0;

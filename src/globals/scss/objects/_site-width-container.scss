@@ -20,7 +20,8 @@ $govuk-site-width: 960px;
 
 @include exports("site-width-container") {
 
-  .govuk-o-site-width-container {
+  .govuk-o-site-width-container,
+  .govuk-o-wrapper {
     @include govuk-site-width-container;
   }
 
