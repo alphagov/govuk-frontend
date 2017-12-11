@@ -65,7 +65,7 @@
     @include govuk-font-bold;
     display: block;
     min-height: 40px;
-    padding: 0 0 0 40px;
+    padding: 0 0 0 $govuk-spacing-scale-7;
     background: file-url("icon-file-download.png") no-repeat scroll 0 0;
   }
 

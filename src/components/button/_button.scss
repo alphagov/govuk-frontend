@@ -9,10 +9,7 @@
     position: relative;
     width: 100%;
     margin-top: 0;
-    margin-bottom: $govuk-spacing-scale-4;
-    @include mq($from: tablet) {
-      margin-bottom: $govuk-spacing-scale-5;
-    }
+    @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom");
     padding: ($govuk-spacing-scale-2 - $govuk-border-width-form-element) $govuk-spacing-scale-2;
     border-width: $govuk-border-width-form-element;
     border-style: solid;
@@ -109,9 +106,10 @@
     @include govuk-font-bold-24;
     min-height: auto;
     padding-top: $govuk-spacing-scale-2 - $govuk-border-width-form-element;
-    padding-right: $govuk-spacing-scale-6;
+    padding-right: $govuk-spacing-scale-7;
     padding-bottom: $govuk-spacing-scale-2 - $govuk-border-width-form-element;
     padding-left: $govuk-spacing-scale-3;
+
     background-image: file-url("icon-pointer.png");
 
     @include govuk-h-device-pixel-ratio {

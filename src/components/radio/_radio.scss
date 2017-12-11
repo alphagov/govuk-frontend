@@ -9,7 +9,7 @@
     position: relative;
 
     margin-bottom: $govuk-spacing-scale-2;
-    padding: 0 0 0 em(40px, 19px);
+    padding: 0 0 0 em($govuk-spacing-scale-7, 19px);
 
     clear: left;
   }
@@ -32,8 +32,8 @@
     top: 0;
     left: 0;
 
-    width: em(40px, 19px);
-    height: em(40px, 19px);
+    width: em($govuk-spacing-scale-7, 19px);
+    height: em($govuk-spacing-scale-7, 19px);
 
     cursor: pointer;
 
@@ -61,8 +61,8 @@
     top: 0;
     left: 0;
 
-    width: em(40px, 19px);
-    height: em(40px, 19px);
+    width: em($govuk-spacing-scale-7, 19px);
+    height: em($govuk-spacing-scale-7, 19px);
 
     border: $govuk-border-width-form-element solid;
     border-radius: 50%;

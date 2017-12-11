@@ -4,10 +4,8 @@
   .govuk-c-table {
     @include govuk-text-colour;
     width: 100%;
-    margin-bottom: $govuk-spacing-scale-4;
-    @include mq($from: tablet) {
-      margin-bottom: $govuk-spacing-scale-5;
-    }
+    @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom");
+
     border-spacing: 0;
     border-collapse: collapse;
   }
