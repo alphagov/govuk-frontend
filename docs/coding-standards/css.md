@@ -72,7 +72,8 @@ Classes that override all other layers - for example to override the spacing or
 font size / line height on an element.
 
 - forms part of the @govuk-frontend/global package.
-- uses the prefix `govuk-!-` for its classes.
+- uses the prefix `govuk-!-` for its classes, eg. `govuk-!-mt-r8`; `r` indicates the class is responsive and `8` is the scale point; these are set in settings/spacing
+
 
 # Class naming convention
 
