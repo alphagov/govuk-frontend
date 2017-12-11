@@ -1,69 +1,36 @@
-# Link
+# Back link
 
 ## Introduction
 
-Link component, with 2 variants:
-
-*   muted link - used for the “anything wrong with this page?” links
-*   download link - with download icon
+Link back component, to go back a page.
 
 ## Guidance
 
-More information about when to use link can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/link "Link to read guidance on the use of link on Gov.uk Design system website")
+More information about when to use back-link can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/back-link "Link to read guidance on the use of back-link on Gov.uk Design system website")
 
 ## Quick start examples
 
 ### Component default
 
-[Preview the link component](http://govuk-frontend-review.herokuapp.com/components/link/preview)
+[Preview the back-link component](http://govuk-frontend-review.herokuapp.com/components/back-link/preview)
 
 #### Markup
 
-    <a href="#" class="govuk-c-link">Default link</a>
+    <a href="#" class="govuk-c-back-link">Back</a>
 
 #### Macro
 
-    {{ govukLink({
-      "text": "Default link"
-    }) }}
-
-### Link--download
-
-[Preview the link--download variant](http://govuk-frontend-review.herokuapp.com/components/link/download/preview)
-
-#### Markup
-
-    <a href="#" class="govuk-c-link govuk-c-link--download">Download</a>
-
-#### Macro
-
-    {{ govukLink({
-      "text": "Download",
-      "classes": "govuk-c-link--download"
-    }) }}
-
-### Link--muted
-
-[Preview the link--muted variant](http://govuk-frontend-review.herokuapp.com/components/link/muted/preview)
-
-#### Markup
-
-    <a href="#" class="govuk-c-link govuk-c-link--muted">Is there anything wrong with this page?</a>
-
-#### Macro
-
-    {{ govukLink({
-      "text": "Is there anything wrong with this page?",
-      "classes": "govuk-c-link--muted"
+    {{ govukBackLink({
+      "text": "Back"
     }) }}
 
 ## Dependencies
 
-To consume the link component you must be running npm version 5 or above.
+To consume the back-link component you must be running npm version 5 or above.
 
 ## Installation
 
-    npm install --save @govuk-frontend/link
+    npm install --save @govuk-frontend/back-link
 
 ## Requirements
 
@@ -115,7 +82,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-c-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">The available classes for the link: govuk-c-link--download, govuk-c-link--muted</td>
+<td class="govuk-c-table__cell ">Optional additional classes for the back-link component.</td>
 
 </tr>
 
@@ -127,7 +94,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-c-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Text to use within the link</td>
+<td class="govuk-c-table__cell ">Text to use within the back link component.</td>
 
 </tr>
 
@@ -139,7 +106,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-c-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">HTML to use within the link. If this is provided, the text argument will be ignored.</td>
+<td class="govuk-c-table__cell ">HTML to use within the back link. If this is provided, the text argument will be ignored.</td>
 
 </tr>
 
@@ -187,11 +154,11 @@ Below is an example setup using express configure views:
 
 To check whether you have the latest version of the button run:
 
-    npm outdated @govuk-frontend/link
+    npm outdated @govuk-frontend/back-link
 
 To update the latest version run:
 
-    npm update @govuk-frontend/link
+    npm update @govuk-frontend/back-link
 
 ## Contribution
 

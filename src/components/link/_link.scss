@@ -10,44 +10,6 @@
     text-decoration: underline;
   }
 
-  .govuk-c-link--back {
-    display: inline-block;
-    position: relative;
-    margin-top: $govuk-spacing-scale-3;
-    margin-bottom: $govuk-spacing-scale-3;
-    padding-left: 14px;
-    border-bottom: 1px solid $govuk-black;
-    color: $govuk-black;
-    background: file-url("icon-arrow-left.png") no-repeat 0 4px;
-    text-decoration: none;
-
-    &:link,
-    &:visited,
-    &:hover,
-    &:active {
-      color: $govuk-black;
-    }
-
-    // Back arrow - left pointing black arrow
-    &::before {
-      content: "";
-      display: block;
-
-      position: absolute;
-      top: 50%;
-      left: 0;
-
-      width: 0;
-      height: 0;
-
-      margin-top: -6px;
-
-      border-top: $govuk-spacing-scale-1 solid transparent;
-      border-right: 6px solid $govuk-black;
-      border-bottom: $govuk-spacing-scale-1 solid transparent;
-    }
-  }
-
   .govuk-c-link--muted {
     &:link,
     &:visited,

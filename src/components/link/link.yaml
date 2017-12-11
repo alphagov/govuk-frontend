@@ -2,10 +2,6 @@ variants:
 - name: default
   data:
     text: Default link
-- name: back
-  data:
-    text: Back
-    classes: govuk-c-link--back
 - name: download
   data:
     text: Download

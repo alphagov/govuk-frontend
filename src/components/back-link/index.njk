@@ -1,24 +1,11 @@
 {% extends "component.njk" %}
-{% from "list/macro.njk" import govukList %}
 
 {# Commented out blocks below inherit from views/component.njk #}
 
 {# componentName #}
 
 {% block componentDescription %}
-Link component, with 2 variants:
-
-{{ govukList({
-  items: [
-    {
-      text: 'muted link - used for the “anything wrong with this page?” links'
-    },
-    {
-      text: 'download link - with download icon'
-    }
-  ],
-  type: 'bullet'
-}) }}
+Link back component, to go back a page.
 {% endblock %}
 
 {# defaultAndVariants #}
@@ -55,7 +42,7 @@ Link component, with 2 variants:
         text:'No'
       },
       {
-        text: 'The available classes for the link: govuk-c-link--download, govuk-c-link--muted'
+        text: 'Optional additional classes for the back-link component.'
       }
     ],
     [
@@ -69,7 +56,7 @@ Link component, with 2 variants:
         text:'No'
       },
       {
-        text: 'Text to use within the link'
+        text: 'Text to use within the back link component.'
       }
     ],
     [
@@ -83,7 +70,7 @@ Link component, with 2 variants:
         text:'No'
       },
       {
-        text: 'HTML to use within the link. If this is provided, the text argument will be ignored.'
+        text: 'HTML to use within the back link. If this is provided, the text argument will be ignored.'
       }
     ],
     [
