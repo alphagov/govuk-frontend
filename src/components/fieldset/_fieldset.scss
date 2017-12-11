@@ -20,12 +20,29 @@
     box-sizing: border-box; // 1
     display: table;         // 2
     max-width: 100%;        // 1
+    margin-bottom: $govuk-spacing-scale-4;
     padding: 0;
     // Hack to let legends or elements within legends have margins in webkit browsers
     overflow: hidden;
 
     color: $govuk-text-colour;
     white-space: normal;    // 1
+
+    .govuk-heading-s {
+      margin-bottom: 0;
+    }
+
+    .govuk-heading-m {
+      margin-bottom: $govuk-spacing-scale-1;
+    }
+
+    .govuk-heading-l {
+      margin-bottom: $govuk-spacing-scale-2;
+    }
+
+    .govuk-heading-xl {
+      margin-bottom: $govuk-spacing-scale-3;
+    }
   }
 
   .govuk-c-fieldset__legend--bold {

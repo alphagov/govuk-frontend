@@ -46,6 +46,8 @@
     @include govuk-text-colour;
     @include govuk-font-bold-19;
 
+    display: block;
+
     margin-top: 0;
     margin-bottom: $govuk-spacing-scale-3;
 
@@ -61,7 +63,9 @@
     @include govuk-font-regular-27;
 
     display: block;
+
     margin-bottom: $govuk-spacing-scale-1;
+
     color: $govuk-secondary-text-colour;
   }
 
@@ -70,6 +74,7 @@
     @include govuk-font-regular-24;
 
     display: block;
+
     margin-bottom: $govuk-spacing-scale-1;
     color: $govuk-secondary-text-colour;
 
@@ -83,6 +88,7 @@
     @include govuk-font-regular-19;
 
     display: block;
+
     color: $govuk-secondary-text-colour;
   }
 
