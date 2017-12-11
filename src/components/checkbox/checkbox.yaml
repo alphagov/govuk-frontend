@@ -30,6 +30,7 @@ variants:
 
 - name: without-fieldset
   data:
+    name: colours
     items:
       - value: "red"
         text: 'Red'
@@ -40,6 +41,7 @@ variants:
 
 - name: disabled
   data:
+    name: disabled-example
     items:
       - value: disabled
         text: Disabled option

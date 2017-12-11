@@ -33,6 +33,7 @@ variants:
 
 - name: without-fieldset
   data:
+    name: colours
     items:
       - value: "red"
         text: 'Red'
