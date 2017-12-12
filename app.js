@@ -42,12 +42,17 @@ const server = app.listen(port, () => {
 
 // Index page - render the component list template
 app.get('/', function (req, res) {
-  // Creates a componentsDirectory object representing the components in the src directory
-  // which is then passed to the view to list the components
-  dto.directoryToObject(path.resolve('./src/components'))
-    .then((data) => {
-      res.render('component-list', {componentsDirectory: data})
+  Promise.all([
+    dto.directoryToObject(path.resolve('./src/components')),
+    dto.directoryToObject(path.resolve('./src/views/examples'))
+  ]).then(result => {
+    const [components, examples] = result
+
+    res.render('index', {
+      componentsDirectory: components,
+      examplesDirectory: examples
     })
+  })
 })
 
 // Whenever the route includes a :component parameter, read the component data
@@ -103,16 +108,6 @@ app.get('/components/:component/:variant*?/preview', function (req, res, next) {
   )
 
   res.render('component-preview')
-})
-
-// Example list
-app.get('/examples', function (req, res) {
-  // Create an examplesDirectory object representing the examples
-  // which is then passed to the view to list the examples
-  dto.directoryToObject(path.resolve('./src/views/examples'))
-    .then((data) => {
-      res.render('example-list', {examplesDirectory: data})
-    })
 })
 
 // Example view
