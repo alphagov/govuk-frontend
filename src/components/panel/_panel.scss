@@ -5,14 +5,18 @@
   .govuk-c-panel {
     @include govuk-font-regular-19;
 
-    @include mq($until: tablet) {
-      padding: $govuk-spacing-scale-6;
-    }
+    box-sizing: border-box;
 
     margin-bottom: $govuk-spacing-scale-3;
-    padding: $govuk-spacing-scale-7;
+    padding: $govuk-spacing-scale-7 - $govuk-border-width;
+
+    border: $govuk-border-width solid transparent;
 
     text-align: center;
+
+    @include mq($until: tablet) {
+      padding: $govuk-spacing-scale-6 - $govuk-border-width;
+    }
   }
 
   .govuk-c-panel--confirmation {
