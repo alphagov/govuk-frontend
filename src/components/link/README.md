@@ -199,6 +199,10 @@ Guidelines can be found at [on our Github repository.](https://github.com/alphag
 
 ## Acknowledgements/credits
 
+*   GDS developers
+*   Jani Kraner
+*   Gemma Leigh
+
 ## License
 
 MIT

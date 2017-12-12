@@ -116,23 +116,13 @@
   </p>
 
   <h2 class="govuk-heading-l">Acknowledgements/credits</h2>
-  {% from "list/macro.njk" import govukList %}
 
-  {{ govukList(
-    classes='',
-    [
-      {
-        text: 'GDS developers'
-      },
-      {
-        text: 'Jani Kraner'
-      },
-      {
-        text: 'Gemma Leigh'
-      }
-    ]
-  ) }}
-
+  <ul class="govuk-list">
+    <li>GDS developers</li>
+    <li>Jani Kraner</li>
+    <li>Gemma Leigh</li>
+  </ul>
+  
   <h2 class="govuk-heading-l">License</h2>
   <p class="govuk-body">MIT</p>
   {% endif %}

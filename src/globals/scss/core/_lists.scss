@@ -1,7 +1,6 @@
-@import "../../globals/scss/common";
+@include exports("lists") {
 
-@include exports("list") {
-  .govuk-c-list {
+  .govuk-list {
     @include govuk-font-regular-19;
     @include govuk-text-colour;
     margin-top: 0;
@@ -10,13 +9,13 @@
     list-style-type: none;
   }
 
-  .govuk-c-list > li {
+  .govuk-list > li {
     @include mq($from: tablet) {
       margin-bottom: $govuk-spacing-scale-1;
     }
   }
 
-  .govuk-c-list a {
+  .govuk-list a {
     &:link {
       color: $govuk-link-colour;
     }
@@ -34,37 +33,18 @@
     }
   }
 
-  .govuk-c-list--bullet {
+  .govuk-list--bullet {
     padding-left: $govuk-spacing-scale-4;
 
     list-style-type: disc;
   }
 
-  .govuk-c-list--number {
+  .govuk-list--number {
     // TODO: Fix IE < 8
     @include ie-lte(7) {
       padding-left: $govuk-spacing-scale-6; //used to be 28
     }
     padding-left: $govuk-spacing-scale-4;
     list-style-type: decimal;
-  }
-
-  .govuk-c-list--icon > li {
-    margin-bottom: $govuk-spacing-scale-3;
-  }
-
-  .govuk-c-list__icon {
-    @include govuk-font-bold-tabular-14;
-    min-width: 24px;
-    min-height: 24px;
-    margin-right: $govuk-spacing-scale-3;
-    line-height: 24px;
-  }
-
-  .govuk-c-list__icon--large {
-    @include govuk-font-bold-19;
-    min-width: 38px;
-    min-height: 38px;
-    line-height: 38px;
   }
 }

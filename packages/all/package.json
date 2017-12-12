@@ -17,7 +17,6 @@
     "@govuk-frontend/label": "^0.0.18-alpha",
     "@govuk-frontend/legal-text": "^0.0.18-alpha",
     "@govuk-frontend/link": "^0.0.18-alpha",
-    "@govuk-frontend/list": "^0.0.18-alpha",
     "@govuk-frontend/panel": "^0.0.18-alpha",
     "@govuk-frontend/phase-banner": "^0.0.18-alpha",
     "@govuk-frontend/previous-next": "^0.0.18-alpha",
