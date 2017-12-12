@@ -15,7 +15,7 @@
 <body class="{% block bodyClasses %}{% endblock %}">
   <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
 {% endif %}
-<div class="govuk-o-wrapper">
+<div class="govuk-o-width-container">
   {% block content %}
   {% endblock %}
 </div>
