@@ -1,21 +1,48 @@
 variants:
 - name: default
   data:
-    idPrefix: 'waste-types'
-    name: 'waste-types'
+    idPrefix: 'nationality'
+    name: 'nationality'
+    fieldset:
+      legendText: What is your nationality?
+      legendHintText: If you have dual nationality, select all options that are relevant to you.
     items:
-      -
-        value: 'waste-animal'
-        text: 'Waste from animal carcasses'
-      -
-        id: 'custom-id'
-        value: 'waste-mines'
-        text: 'Waste from mines or quarries'
-      -
-        value: 'waste-farm'
-        text: 'Farm or agricultural waste'
-        checked: true
-      -
-        value: 'waste-disabled'
-        text: 'Disabled checkbox option'
+      - value: 'british'
+        text: 'British'
+      - value: 'irish'
+        text: 'Irish'
+      - value: 'other'
+        text: 'Citizen of another country'
+
+- name: with-html
+  data:
+    fieldset:
+      legendHtml:
+        <h3 class="govuk-heading-m">Which types of waste do you transport regularly?</h3>
+      legendHintText: Select all that apply
+    items:
+      - value: animal
+        text: Waste from animal carcasses
+      - value: mines
+        text: Waste from mines or quarries
+      - value: farm
+        text: Farm or agricultural waste
+
+- name: without-fieldset
+  data:
+    name: colours
+    items:
+      - value: "red"
+        text: 'Red'
+      - value: "green"
+        text: 'Green'
+      - value: "blue"
+        text: "Blue"
+
+- name: disabled
+  data:
+    name: disabled-example
+    items:
+      - value: disabled
+        text: Disabled option
         disabled: true
