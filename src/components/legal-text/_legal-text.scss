@@ -7,7 +7,8 @@
     @include govuk-text-colour;
 
     position: relative;
-    padding: $govuk-spacing-scale-1 0;
+    @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom");
+    padding: $govuk-spacing-scale-2 0;
   }
 
   .govuk-c-legal-text__assistive {
