@@ -24,35 +24,41 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
         <span class="govuk-c-fieldset__hint">For example, 31 3 1980</span>
 
         <span class="govuk-c-error-message">
-       Error message goes here
-    </span>
+           Error message goes here
+        </span>
 
       </legend>
+
       <div class="govuk-c-date-input" id="dob">
 
         <div class="govuk-c-date-input__item govuk-c-date-input__item--day">
-          <label class="govuk-c-label">
+          <label class="govuk-c-label govuk-c-date-input__label" for="dob-day">
+            Day
 
-    </label>
-    <input class="govuk-c-input govuk-c-date-input__input undefined" id="dob-day" name="dob-day" type="text">
-    </div>
+          </label>
+          <input class="govuk-c-input govuk-c-date-input__input undefined" id="dob-day" name="dob-day" type="text">
+
+        </div>
 
         <div class="govuk-c-date-input__item govuk-c-date-input__item--month">
-          <label class="govuk-c-label">
+          <label class="govuk-c-label govuk-c-date-input__label" for="dob-month">
+            Month
 
-    </label>
-    <input class="govuk-c-input govuk-c-date-input__input undefined" id="dob-month" name="dob-month" type="text">
-    </div>
+          </label>
+          <input class="govuk-c-input govuk-c-date-input__input undefined" id="dob-month" name="dob-month" type="text">
+
+        </div>
 
         <div class="govuk-c-date-input__item govuk-c-date-input__item--year">
-          <label class="govuk-c-label">
+          <label class="govuk-c-label govuk-c-date-input__label" for="dob-year">
+            Year
 
-    </label>
-    <input class="govuk-c-input govuk-c-date-input__input undefined" id="dob-year" name="dob-year" type="text">
-    </div>
+          </label>
+          <input class="govuk-c-input govuk-c-date-input__input undefined" id="dob-year" name="dob-year" type="text">
+
+        </div>
 
       </div>
-
     </fieldset>
 
 #### Macro
@@ -82,7 +88,7 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
 
 ### Date-input--with-errors
 
-[Preview the date-input--with-errors variant](http://govuk-frontend-review.herokuapp.com/components/date-input/date-input--with-errors/preview)
+[Preview the date-input--with-errors variant](http://govuk-frontend-review.herokuapp.com/components/date-input/with-errors/preview)
 
 #### Markup
 
@@ -94,35 +100,41 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
         <span class="govuk-c-fieldset__hint">For example, 31 3 1980</span>
 
         <span class="govuk-c-error-message">
-       Error message goes here
-    </span>
+           Error message goes here
+        </span>
 
       </legend>
+
       <div class="govuk-c-date-input" id="dob-errors">
 
         <div class="govuk-c-date-input__item govuk-c-date-input__item--day">
-          <label class="govuk-c-label">
+          <label class="govuk-c-label govuk-c-date-input__label" for="dob-errors-day">
+            Day
 
-    </label>
-    <input class="govuk-c-input govuk-c-date-input__input govuk-c-input--error" id="dob-errors-day" name="undefined-day" type="text">
-    </div>
+          </label>
+          <input class="govuk-c-input govuk-c-date-input__input govuk-c-input--error" id="dob-errors-day" name="undefined-day" type="text">
+
+        </div>
 
         <div class="govuk-c-date-input__item govuk-c-date-input__item--month">
-          <label class="govuk-c-label">
+          <label class="govuk-c-label govuk-c-date-input__label" for="dob-errors-month">
+            Month
 
-    </label>
-    <input class="govuk-c-input govuk-c-date-input__input govuk-c-input--error" id="dob-errors-month" name="undefined-month" type="text">
-    </div>
+          </label>
+          <input class="govuk-c-input govuk-c-date-input__input govuk-c-input--error" id="dob-errors-month" name="undefined-month" type="text">
+
+        </div>
 
         <div class="govuk-c-date-input__item govuk-c-date-input__item--year">
-          <label class="govuk-c-label">
+          <label class="govuk-c-label govuk-c-date-input__label" for="dob-errors-year">
+            Year
 
-    </label>
-    <input class="govuk-c-input govuk-c-date-input__input govuk-c-input--error" id="dob-errors-year" name="undefined-year" type="text">
-    </div>
+          </label>
+          <input class="govuk-c-input govuk-c-date-input__input govuk-c-input--error" id="dob-errors-year" name="undefined-year" type="text">
+
+        </div>
 
       </div>
-
     </fieldset>
 
 #### Macro
@@ -154,7 +166,7 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
 
 ### Date-input--with-day-error
 
-[Preview the date-input--with-day-error variant](http://govuk-frontend-review.herokuapp.com/components/date-input/date-input--with-day-error/preview)
+[Preview the date-input--with-day-error variant](http://govuk-frontend-review.herokuapp.com/components/date-input/with-day-error/preview)
 
 #### Markup
 
@@ -166,35 +178,41 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
         <span class="govuk-c-fieldset__hint">For example, 31 3 1980</span>
 
         <span class="govuk-c-error-message">
-       Error message goes here
-    </span>
+           Error message goes here
+        </span>
 
       </legend>
+
       <div class="govuk-c-date-input" id="dob-day-error">
 
         <div class="govuk-c-date-input__item govuk-c-date-input__item--day">
-          <label class="govuk-c-label">
+          <label class="govuk-c-label govuk-c-date-input__label" for="dob-day-error-day">
+            Day
 
-    </label>
-    <input class="govuk-c-input govuk-c-date-input__input govuk-c-input--error" id="dob-day-error-day" name="dob-day-error-day" type="text">
-    </div>
+          </label>
+          <input class="govuk-c-input govuk-c-date-input__input govuk-c-input--error" id="dob-day-error-day" name="dob-day-error-day" type="text">
+
+        </div>
 
         <div class="govuk-c-date-input__item govuk-c-date-input__item--month">
-          <label class="govuk-c-label">
+          <label class="govuk-c-label govuk-c-date-input__label" for="dob-day-error-month">
+            Month
 
-    </label>
-    <input class="govuk-c-input govuk-c-date-input__input undefined" id="dob-day-error-month" name="dob-day-error-month" type="text">
-    </div>
+          </label>
+          <input class="govuk-c-input govuk-c-date-input__input undefined" id="dob-day-error-month" name="dob-day-error-month" type="text">
+
+        </div>
 
         <div class="govuk-c-date-input__item govuk-c-date-input__item--year">
-          <label class="govuk-c-label">
+          <label class="govuk-c-label govuk-c-date-input__label" for="dob-day-error-year">
+            Year
 
-    </label>
-    <input class="govuk-c-input govuk-c-date-input__input undefined" id="dob-day-error-year" name="dob-day-error-year" type="text">
-    </div>
+          </label>
+          <input class="govuk-c-input govuk-c-date-input__input undefined" id="dob-day-error-year" name="dob-day-error-year" type="text">
+
+        </div>
 
       </div>
-
     </fieldset>
 
 #### Macro
@@ -225,7 +243,7 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
 
 ### Date-input--with-month-error
 
-[Preview the date-input--with-month-error variant](http://govuk-frontend-review.herokuapp.com/components/date-input/date-input--with-month-error/preview)
+[Preview the date-input--with-month-error variant](http://govuk-frontend-review.herokuapp.com/components/date-input/with-month-error/preview)
 
 #### Markup
 
@@ -237,35 +255,41 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
         <span class="govuk-c-fieldset__hint">For example, 31 3 1980</span>
 
         <span class="govuk-c-error-message">
-       Error message goes here
-    </span>
+           Error message goes here
+        </span>
 
       </legend>
+
       <div class="govuk-c-date-input" id="dob-month-error">
 
         <div class="govuk-c-date-input__item govuk-c-date-input__item--day">
-          <label class="govuk-c-label">
+          <label class="govuk-c-label govuk-c-date-input__label" for="dob-month-error-day">
+            Day
 
-    </label>
-    <input class="govuk-c-input govuk-c-date-input__input undefined" id="dob-month-error-day" name="dob-month-error-day" type="text">
-    </div>
+          </label>
+          <input class="govuk-c-input govuk-c-date-input__input undefined" id="dob-month-error-day" name="dob-month-error-day" type="text">
+
+        </div>
 
         <div class="govuk-c-date-input__item govuk-c-date-input__item--month">
-          <label class="govuk-c-label">
+          <label class="govuk-c-label govuk-c-date-input__label" for="dob-month-error-month">
+            Month
 
-    </label>
-    <input class="govuk-c-input govuk-c-date-input__input govuk-c-input--error" id="dob-month-error-month" name="dob-month-error-month" type="text">
-    </div>
+          </label>
+          <input class="govuk-c-input govuk-c-date-input__input govuk-c-input--error" id="dob-month-error-month" name="dob-month-error-month" type="text">
+
+        </div>
 
         <div class="govuk-c-date-input__item govuk-c-date-input__item--year">
-          <label class="govuk-c-label">
+          <label class="govuk-c-label govuk-c-date-input__label" for="dob-month-error-year">
+            Year
 
-    </label>
-    <input class="govuk-c-input govuk-c-date-input__input undefined" id="dob-month-error-year" name="dob-month-error-year" type="text">
-    </div>
+          </label>
+          <input class="govuk-c-input govuk-c-date-input__input undefined" id="dob-month-error-year" name="dob-month-error-year" type="text">
+
+        </div>
 
       </div>
-
     </fieldset>
 
 #### Macro
@@ -296,7 +320,7 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
 
 ### Date-input--with-year-error
 
-[Preview the date-input--with-year-error variant](http://govuk-frontend-review.herokuapp.com/components/date-input/date-input--with-year-error/preview)
+[Preview the date-input--with-year-error variant](http://govuk-frontend-review.herokuapp.com/components/date-input/with-year-error/preview)
 
 #### Markup
 
@@ -308,35 +332,41 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
         <span class="govuk-c-fieldset__hint">For example, 31 3 1980</span>
 
         <span class="govuk-c-error-message">
-       Error message goes here
-    </span>
+           Error message goes here
+        </span>
 
       </legend>
+
       <div class="govuk-c-date-input" id="dob-year-error">
 
         <div class="govuk-c-date-input__item govuk-c-date-input__item--day">
-          <label class="govuk-c-label">
+          <label class="govuk-c-label govuk-c-date-input__label" for="dob-year-error-day">
+            Day
 
-    </label>
-    <input class="govuk-c-input govuk-c-date-input__input undefined" id="dob-year-error-day" name="dob-year-error-day" type="text">
-    </div>
+          </label>
+          <input class="govuk-c-input govuk-c-date-input__input undefined" id="dob-year-error-day" name="dob-year-error-day" type="text">
+
+        </div>
 
         <div class="govuk-c-date-input__item govuk-c-date-input__item--month">
-          <label class="govuk-c-label">
+          <label class="govuk-c-label govuk-c-date-input__label" for="dob-year-error-month">
+            Month
 
-    </label>
-    <input class="govuk-c-input govuk-c-date-input__input undefined" id="dob-year-error-month" name="dob-year-error-month" type="text">
-    </div>
+          </label>
+          <input class="govuk-c-input govuk-c-date-input__input undefined" id="dob-year-error-month" name="dob-year-error-month" type="text">
+
+        </div>
 
         <div class="govuk-c-date-input__item govuk-c-date-input__item--year">
-          <label class="govuk-c-label">
+          <label class="govuk-c-label govuk-c-date-input__label" for="dob-year-error-year">
+            Year
 
-    </label>
-    <input class="govuk-c-input govuk-c-date-input__input govuk-c-input--error" id="dob-year-error-year" name="dob-year-error-year" type="text">
-    </div>
+          </label>
+          <input class="govuk-c-input govuk-c-date-input__input govuk-c-input--error" id="dob-year-error-year" name="dob-year-error-year" type="text">
+
+        </div>
 
       </div>
-
     </fieldset>
 
 #### Macro
@@ -421,7 +451,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-c-table__cell ">object</td>
 
-<td class="govuk-c-table__cell ">Yes</td>
+<td class="govuk-c-table__cell ">No</td>
 
 <td class="govuk-c-table__cell ">Arguments for the fieldset component (e.g. legendText, legendHintText, errorMessage). See fieldset component.</td>
 

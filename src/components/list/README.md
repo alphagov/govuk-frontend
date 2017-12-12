@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Breadcrumb navigation, showing page hierarchy.
+A list of items, list variants are bulleted or numbered.
 
 ## Guidance
 
@@ -12,110 +12,487 @@ More information about when to use list can be found on [GOV.UK Design System](h
 
 ### Component default
 
-[Preview the list component.](http://govuk-frontend-review.herokuapp.com/components/list/preview)
+[Preview the list component](http://govuk-frontend-review.herokuapp.com/components/list/preview)
 
 #### Markup
 
+    <ul class="govuk-c-list">
+
+      <li>
+
+        Related link
+
+      </li>
+
+      <li>
+
+        Related link
+
+      </li>
+
+      <li>
+
+        <strong>Not</strong> a link
+
+      </li>
+    </ul>
+
 #### Macro
 
-      {% from "list/macro.njk" import govukList -%}
-
-    {{- govukList(
-      classes='',
-      [
+    {{ govukList({
+      "items": [
         {
-          text: 'Related link',
-          url: '/'
+          "text": "Related link",
+          "href": null
         },
         {
-          text: 'Related link',
-          url: '/'
+          "text": "Related link",
+          "href": null
         },
         {
-          text: 'Related link',
-          url: '/'
+          "html": "<strong>Not</strong> a link"
         }
       ]
-    )
-    -}}
+    }) }}
 
-    {{- govukList(
-      classes='',
-      [
+### List--bulleted-list
+
+[Preview the list--bulleted-list variant](http://govuk-frontend-review.herokuapp.com/components/list/bulleted-list/preview)
+
+#### Markup
+
+    <ul class="govuk-c-list govuk-c-list--bullet">
+
+      <li>
+
+        here is a bulleted list
+
+      </li>
+
+      <li>
+
+        vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor
+
+      </li>
+
+      <li>
+
+        vestibulum id ligula porta felis euismod semper
+
+      </li>
+
+      <li>
+
+        integer posuere erat a ante venenatis dapibus posuere velit aliquet
+
+      </li>
+    </ul>
+
+#### Macro
+
+    {{ govukList({
+      "type": "bullet",
+      "items": [
         {
-          text: 'here is a bulleted list'
+          "text": "here is a bulleted list"
         },
         {
-          text: 'here is the second bulleted list item'
+          "text": "vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor"
         },
         {
-          text: 'here is the third bulleted list item'
+          "text": "vestibulum id ligula porta felis euismod semper"
+        },
+        {
+          "text": "integer posuere erat a ante venenatis dapibus posuere velit aliquet"
         }
-      ],
-      options = {
-        'isBullet': 'true'
-      }
-    )
-    -}}
+      ]
+    }) }}
 
-    {{- govukList(
-      classes='',
-      [
+### List--numbered-list
+
+[Preview the list--numbered-list variant](http://govuk-frontend-review.herokuapp.com/components/list/numbered-list/preview)
+
+#### Markup
+
+    <ol class="govuk-c-list govuk-c-list--number">
+
+      <li>
+
+        This is a numbered list.
+
+      </li>
+
+      <li>
+
+        This is the second step in a numbered list.
+
+      </li>
+
+      <li>
+
+        The third step is to make sure each item is a full sentence ending with a full stop.
+
+      </li>
+    </ol>
+
+#### Macro
+
+    {{ govukList({
+      "type": "number",
+      "items": [
         {
-          text: 'This is a numbered list.'
+          "text": "This is a numbered list."
         },
         {
-          text: 'This is the second step in a numbered list.'
+          "text": "This is the second step in a numbered list."
         },
         {
-          text: 'The third step is to make sure each item is a full sentence ending with a full stop.'
+          "text": "The third step is to make sure each item is a full sentence ending with a full stop."
         }
-      ],
-      options = {
-        'isNumber': 'true'
-      }
-    )
-    -}}
+      ]
+    }) }}
 
-    {{- govukList(
-      classes='',
-      [
+### List--steps-icon-list
+
+[Preview the list--steps-icon-list variant](http://govuk-frontend-review.herokuapp.com/components/list/steps-icon-list/preview)
+
+#### Markup
+
+    <ol class="govuk-c-list govuk-c-list--icon">
+
+      <li>
+
+        <span class="govuk-c-list__icon govuk-o-circle">1</span>
+
+        Step 1
+
+      </li>
+
+      <li>
+
+        <span class="govuk-c-list__icon govuk-o-circle">2</span>
+
+        Step 2
+
+      </li>
+
+      <li>
+
+        <span class="govuk-c-list__icon govuk-o-circle">3</span>
+
+        Step 3
+
+      </li>
+
+      <li>
+
+        <span class="govuk-c-list__icon govuk-o-circle">4</span>
+
+        Step 4
+
+      </li>
+
+      <li>
+
+        <span class="govuk-c-list__icon govuk-o-circle">5</span>
+
+        Step 5
+
+      </li>
+
+      <li>
+
+        <span class="govuk-c-list__icon govuk-o-circle">6</span>
+
+        Step 6
+
+      </li>
+
+      <li>
+
+        <span class="govuk-c-list__icon govuk-o-circle">7</span>
+
+        Step 7
+
+      </li>
+
+      <li>
+
+        <span class="govuk-c-list__icon govuk-o-circle">8</span>
+
+        Step 8
+
+      </li>
+
+      <li>
+
+        <span class="govuk-c-list__icon govuk-o-circle">9</span>
+
+        Step 9
+
+      </li>
+
+      <li>
+
+        <span class="govuk-c-list__icon govuk-o-circle">10</span>
+
+        Step 10
+
+      </li>
+
+      <li>
+
+        <span class="govuk-c-list__icon govuk-o-circle">11</span>
+
+        Step 11
+
+      </li>
+
+      <li>
+
+        <span class="govuk-c-list__icon govuk-o-circle">12</span>
+
+        Step 12
+
+      </li>
+
+      <li>
+
+        <span class="govuk-c-list__icon govuk-o-circle">13</span>
+
+        Step 13
+
+      </li>
+
+      <li>
+
+        <span class="govuk-c-list__icon govuk-o-circle">14</span>
+
+        Step 14
+
+      </li>
+    </ol>
+
+#### Macro
+
+    {{ govukList({
+      "type": "step",
+      "items": [
         {
-          text: 'Step 1'
+          "text": "Step 1"
         },
         {
-          text: 'Step 2'
+          "text": "Step 2"
         },
         {
-          text: 'Step 3'
+          "text": "Step 3"
+        },
+        {
+          "text": "Step 4"
+        },
+        {
+          "text": "Step 5"
+        },
+        {
+          "text": "Step 6"
+        },
+        {
+          "text": "Step 7"
+        },
+        {
+          "text": "Step 8"
+        },
+        {
+          "text": "Step 9"
+        },
+        {
+          "text": "Step 10"
+        },
+        {
+          "text": "Step 11"
+        },
+        {
+          "text": "Step 12"
+        },
+        {
+          "text": "Step 13"
+        },
+        {
+          "text": "Step 14"
         }
-      ],
-      options = {
-        'isStep': 'true'
-      }
-    )
-    -}}
+      ]
+    }) }}
 
-    {{- govukList(
-      classes='',
-      [
+### List--steps-large-icon-list
+
+[Preview the list--steps-large-icon-list variant](http://govuk-frontend-review.herokuapp.com/components/list/steps-large-icon-list/preview)
+
+#### Markup
+
+    <ol class="govuk-c-list govuk-c-list--icon">
+
+      <li>
+
+        <span class="govuk-c-list__icon govuk-c-list__icon--large govuk-o-circle">1</span>
+
+        Step 1
+
+      </li>
+
+      <li>
+
+        <span class="govuk-c-list__icon govuk-c-list__icon--large govuk-o-circle">2</span>
+
+        Step 2
+
+      </li>
+
+      <li>
+
+        <span class="govuk-c-list__icon govuk-c-list__icon--large govuk-o-circle">3</span>
+
+        Step 3
+
+      </li>
+
+      <li>
+
+        <span class="govuk-c-list__icon govuk-c-list__icon--large govuk-o-circle">4</span>
+
+        Step 4
+
+      </li>
+
+      <li>
+
+        <span class="govuk-c-list__icon govuk-c-list__icon--large govuk-o-circle">5</span>
+
+        Step 5
+
+      </li>
+
+      <li>
+
+        <span class="govuk-c-list__icon govuk-c-list__icon--large govuk-o-circle">6</span>
+
+        Step 6
+
+      </li>
+
+      <li>
+
+        <span class="govuk-c-list__icon govuk-c-list__icon--large govuk-o-circle">7</span>
+
+        Step 7
+
+      </li>
+
+      <li>
+
+        <span class="govuk-c-list__icon govuk-c-list__icon--large govuk-o-circle">8</span>
+
+        Step 8
+
+      </li>
+
+      <li>
+
+        <span class="govuk-c-list__icon govuk-c-list__icon--large govuk-o-circle">9</span>
+
+        Step 9
+
+      </li>
+
+      <li>
+
+        <span class="govuk-c-list__icon govuk-c-list__icon--large govuk-o-circle">10</span>
+
+        Step 10
+
+      </li>
+
+      <li>
+
+        <span class="govuk-c-list__icon govuk-c-list__icon--large govuk-o-circle">11</span>
+
+        Step 11
+
+      </li>
+
+      <li>
+
+        <span class="govuk-c-list__icon govuk-c-list__icon--large govuk-o-circle">12</span>
+
+        Step 12
+
+      </li>
+
+      <li>
+
+        <span class="govuk-c-list__icon govuk-c-list__icon--large govuk-o-circle">13</span>
+
+        Step 13
+
+      </li>
+
+      <li>
+
+        <span class="govuk-c-list__icon govuk-c-list__icon--large govuk-o-circle">14</span>
+
+        Step 14
+
+      </li>
+    </ol>
+
+#### Macro
+
+    {{ govukList({
+      "type": "step-large",
+      "items": [
         {
-          text: 'Step 1 Large icon'
+          "text": "Step 1"
         },
         {
-          text: 'Step 2 Large icon'
+          "text": "Step 2"
         },
         {
-          text: 'Step 3 Large icon'
+          "text": "Step 3"
+        },
+        {
+          "text": "Step 4"
+        },
+        {
+          "text": "Step 5"
+        },
+        {
+          "text": "Step 6"
+        },
+        {
+          "text": "Step 7"
+        },
+        {
+          "text": "Step 8"
+        },
+        {
+          "text": "Step 9"
+        },
+        {
+          "text": "Step 10"
+        },
+        {
+          "text": "Step 11"
+        },
+        {
+          "text": "Step 12"
+        },
+        {
+          "text": "Step 13"
+        },
+        {
+          "text": "Step 14"
         }
-      ],
-      options = {
-        'isStepLarge': 'true'
-      }
-    )
-    -}}
-
-## Variants
+      ]
+    }) }}
 
 ## Dependencies
 
@@ -169,37 +546,37 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header" scope="row">classes</th>
+<th class="govuk-c-table__header" scope="row">type</th>
 
-<td class="govuk-c-table__cell ">string</td>
+<td class="govuk-c-table__cell ">String</td>
 
 <td class="govuk-c-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Optional additional classes</td>
+<td class="govuk-c-table__cell ">Type of list to create: "bullet", "number", "step" or "step-large", or omit for an unordered list without bullets.</td>
 
 </tr>
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header" scope="row">listItems</th>
+<th class="govuk-c-table__header" scope="row">items</th>
 
 <td class="govuk-c-table__cell ">array</td>
 
 <td class="govuk-c-table__cell ">Yes</td>
 
-<td class="govuk-c-table__cell ">List items array with url and text keys</td>
+<td class="govuk-c-table__cell ">Items for the list. An array of objects with text or html and optional href attributes</td>
 
 </tr>
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header" scope="row">url</th>
+<th class="govuk-c-table__header" scope="row">href</th>
 
 <td class="govuk-c-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">Yes</td>
+<td class="govuk-c-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">List item url</td>
+<td class="govuk-c-table__cell ">Link target for the list item</td>
 
 </tr>
 
@@ -209,69 +586,45 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-c-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">Yes</td>
+<td class="govuk-c-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">List item text</td>
+<td class="govuk-c-table__cell ">Text content for the list item</td>
 
 </tr>
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header" scope="row">options</th>
+<th class="govuk-c-table__header" scope="row">html</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">HTML content for the list item. If this is specified, the text argument will be ignored.</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">classes</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">Optional additional classes for the list tag</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">attributes</th>
 
 <td class="govuk-c-table__cell ">object</td>
 
 <td class="govuk-c-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Options object</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">options.isBullet</th>
-
-<td class="govuk-c-table__cell "></td>
-
-<td class="govuk-c-table__cell ">No</td>
-
-<td class="govuk-c-table__cell ">Creates bulleted list</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">options.isNumber</th>
-
-<td class="govuk-c-table__cell "></td>
-
-<td class="govuk-c-table__cell ">No</td>
-
-<td class="govuk-c-table__cell ">Creates numbered list</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">options.isStep</th>
-
-<td class="govuk-c-table__cell "></td>
-
-<td class="govuk-c-table__cell ">No</td>
-
-<td class="govuk-c-table__cell ">Creates list of steps</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">options.isStepLarge</th>
-
-<td class="govuk-c-table__cell "></td>
-
-<td class="govuk-c-table__cell ">No</td>
-
-<td class="govuk-c-table__cell ">Creates list of steps with large icons</td>
+<td class="govuk-c-table__cell ">Any extra HTML attributes (for example data attributes) to add to the list tag</td>
 
 </tr>
 
@@ -306,10 +659,6 @@ To update the latest version run:
 Guidelines can be found at [on our Github repository.](https://github.com/alphagov/govuk-frontend/blob/master/CONTRIBUTING.md "link to contributing guidelines on our github repository")
 
 ## Acknowledgements/credits
-
-*   GDS developers
-*   Jani Kraner
-*   Gemma Leigh
 
 ## License
 

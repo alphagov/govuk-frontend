@@ -12,49 +12,86 @@ More information about when to use input can be found on [GOV.UK Design System](
 
 ### Component default
 
-[Preview the input component.](http://govuk-frontend-review.herokuapp.com/components/input/preview)
+[Preview the input component](http://govuk-frontend-review.herokuapp.com/components/input/preview)
 
 #### Markup
 
+    <label class="govuk-c-label" for="input-1">
+      National Insurance number
+
+    </label>
+    <input class="govuk-c-input" id="input-1" name="test-name" type="text">
+
 #### Macro
 
-      {% from "input/macro.njk" import govukInput %}
+    {{ govukInput({
+      "label": {
+        "text": "National Insurance number"
+      },
+      "id": "input-1",
+      "name": "test-name"
+    }) }}
 
-    {{- govukInput(
-      labelClasses='',
-      labelText='National Insurance number',
-      hintText='',
-      errorMessage='',
-      classes='',
-      id='input-1',
-      name='test-name'
-      )
-    -}}
+### Input--with-hint-text
 
-    {{- govukInput(
-      labelClasses='',
-      labelText='National Insurance number',
-      hintText='It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’.',
-      errorMessage='',
-      classes='',
-      id='input-2',
-      name='test-name-2'
-      )
-    -}}
+[Preview the input--with-hint-text variant](http://govuk-frontend-review.herokuapp.com/components/input/with-hint-text/preview)
 
-    {{- govukInput(
-      labelClasses='',
-      labelText='National Insurance number',
-      hintText='It’s on your National Insurance card, benefit letter, payslip or P60.
-        For example, ‘QQ 12 34 56 C’.',
-      errorMessage='Error message goes here',
-      classes='',
-      id='input-3',
-      name='test-name-3'
-      )
-    -}}
+#### Markup
 
-## Variants
+    <label class="govuk-c-label" for="input-2">
+      National insurance number
+
+      <span class="govuk-c-label__hint">
+        It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’.
+      </span>
+
+    </label>
+    <input class="govuk-c-input" id="input-2" name="test-name-2" type="text">
+
+#### Macro
+
+    {{ govukInput({
+      "label": {
+        "text": "National insurance number",
+        "hintText": "It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’."
+      },
+      "id": "input-2",
+      "name": "test-name-2"
+    }) }}
+
+### Input--with-error-message
+
+[Preview the input--with-error-message variant](http://govuk-frontend-review.herokuapp.com/components/input/with-error-message/preview)
+
+#### Markup
+
+    <label class="govuk-c-label" for="input-3">
+      National Insurance number
+
+      <span class="govuk-c-label__hint">
+        It’s on your <i>National Insurance card</i>, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’.
+      </span>
+
+      <span class="govuk-c-error-message">
+       Error message goes here
+    </span>
+
+    </label>
+    <input class="govuk-c-input govuk-c-input--error" id="input-3" name="test-name-3" type="text">
+
+#### Macro
+
+    {{ govukInput({
+      "label": {
+        "text": "National Insurance number",
+        "hintHtml": "It’s on your <i>National Insurance card</i>, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’."
+      },
+      "id": "input-3",
+      "name": "test-name-3",
+      "errorMessage": {
+        "text": "Error message goes here"
+      }
+    }) }}
 
 ## Dependencies
 
@@ -120,42 +157,6 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header" scope="row">labelText</th>
-
-<td class="govuk-c-table__cell ">string</td>
-
-<td class="govuk-c-table__cell ">Yes</td>
-
-<td class="govuk-c-table__cell ">The label text</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">hintText</th>
-
-<td class="govuk-c-table__cell ">string</td>
-
-<td class="govuk-c-table__cell ">No</td>
-
-<td class="govuk-c-table__cell ">Optional hint text</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">errorMessage</th>
-
-<td class="govuk-c-table__cell ">string</td>
-
-<td class="govuk-c-table__cell ">No</td>
-
-<td class="govuk-c-table__cell ">Optional error message</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
 <th class="govuk-c-table__header" scope="row">id</th>
 
 <td class="govuk-c-table__cell ">string</td>
@@ -175,6 +176,42 @@ If you are using Nunjucks,then macros take the following arguments
 <td class="govuk-c-table__cell ">Yes</td>
 
 <td class="govuk-c-table__cell ">The name of the input, which is submitted with the form data</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">label</th>
+
+<td class="govuk-c-table__cell ">object</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">Arguments for the label component. See label component.</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">errorMessage</th>
+
+<td class="govuk-c-table__cell ">object</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">Optional error message</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">attributes</th>
+
+<td class="govuk-c-table__cell ">object</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">Any extra HTML attributes (for example data attributes) to add to the input component.</td>
 
 </tr>
 
@@ -221,10 +258,6 @@ To update the latest version run:
 Guidelines can be found at [on our Github repository.](https://github.com/alphagov/govuk-frontend/blob/master/CONTRIBUTING.md "link to contributing guidelines on our github repository")
 
 ## Acknowledgements/credits
-
-*   GDS developers
-*   Jani Kraner
-*   Gemma Leigh
 
 ## License
 

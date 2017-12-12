@@ -1,38 +1,71 @@
-# Error message
+# Tag
 
 ## Introduction
 
-Component to show a red error message - used for form validation. Use inside a label or legend.
+Phase tags are mostly used inside phase banners as an indication of the state of a project. It’s possible to use them outside phase banners, for example as part of a service header.
 
 ## Guidance
 
-More information about when to use error-message can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/error-message "Link to read guidance on the use of error-message on Gov.uk Design system website")
+More information about when to use tag can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/tag "Link to read guidance on the use of tag on Gov.uk Design system website")
 
 ## Quick start examples
 
 ### Component default
 
-[Preview the error-message component](http://govuk-frontend-review.herokuapp.com/components/error-message/preview)
+[Preview the tag component](http://govuk-frontend-review.herokuapp.com/components/tag/preview)
 
 #### Markup
 
-    <span class="govuk-c-error-message">
-       Error message about full name goes here
-    </span>
+    <strong class="govuk-c-tag">
+      alpha
+    </strong>
 
 #### Macro
 
-    {{ govukErrorMessage({
-      "text": "Error message about full name goes here"
+    {{ govukTag({
+      "text": "alpha"
+    }) }}
+
+### Tag--with-html
+
+[Preview the tag--with-html variant](http://govuk-frontend-review.herokuapp.com/components/tag/with-html/preview)
+
+#### Markup
+
+    <strong class="govuk-c-tag">
+      <i>alpha</i>
+    </strong>
+
+#### Macro
+
+    {{ govukTag({
+      "html": "<i>alpha</i>"
+    }) }}
+
+### Tag--inactive
+
+[Preview the tag--inactive variant](http://govuk-frontend-review.herokuapp.com/components/tag/inactive/preview)
+
+#### Markup
+
+    <strong class="govuk-c-tag govuk-c-tag--inactive">
+      alpha
+    </strong>
+
+#### Macro
+
+    {{ govukTag({
+      "text": "alpha",
+      "classes": "govuk-c-tag--inactive"
     }) }}
 
 ## Dependencies
 
-To consume the error-message component you must be running npm version 5 or above.
+To consume the tag component you must be running npm version 5 or above.
 
 ## Installation
 
-    npm install --save @govuk-frontend/error-message
+    npm install --save @govuk-frontend/tag
 
 ## Requirements
 
@@ -96,7 +129,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-c-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Text to use within the error message</td>
+<td class="govuk-c-table__cell ">Text for the tag component.</td>
 
 </tr>
 
@@ -108,7 +141,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-c-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">HTML to use within the error message. If this is provided, the text argument will be ignored.</td>
+<td class="govuk-c-table__cell ">HTML to use within for the tag component. If this is provided, the text argument will be ignored.</td>
 
 </tr>
 
@@ -120,7 +153,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-c-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Any extra HTML attributes (for example data attributes) to add to the error message span tag</td>
+<td class="govuk-c-table__cell ">Any extra HTML attributes (for example data attributes) to add to the tag container.</td>
 
 </tr>
 
@@ -144,11 +177,11 @@ Below is an example setup using express configure views:
 
 To check whether you have the latest version of the button run:
 
-    npm outdated @govuk-frontend/error-message
+    npm outdated @govuk-frontend/tag
 
 To update the latest version run:
 
-    npm update @govuk-frontend/error-message
+    npm update @govuk-frontend/tag
 
 ## Contribution
 

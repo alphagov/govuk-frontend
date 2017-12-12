@@ -12,33 +12,55 @@ More information about when to use error-summary can be found on [GOV.UK Design 
 
 ### Component default
 
-[Preview the error-summary component.](http://govuk-frontend-review.herokuapp.com/components/error-summary/preview)
+[Preview the error-summary component](http://govuk-frontend-review.herokuapp.com/components/error-summary/preview)
 
 #### Markup
 
+    <div class="govuk-c-error-summary optional-extra-class" aria-labelledby="error-summary-title" role="alert" tabindex="-1">
+      <h2 class="govuk-c-error-summary__title" id="error-summary-title">
+        Message to alert the user to a problem goes here
+      </h2>
+      <div class="govuk-c-error-summary__body">
+
+        <p>
+          Optional description of the errors and how to correct them
+        </p>
+
+        <ul class="govuk-c-list govuk-c-error-summary__list">
+
+      <li>
+
+        <a href="#example-error-1">Descriptive link to the question with an error</a>
+
+      </li>
+
+      <li>
+
+        <a href="#example-error-1">Descriptive link to the question with an error</a>
+
+      </li>
+    </ul>
+
+      </div>
+    </div>
+
 #### Macro
 
-      {% from "error-summary/macro.njk" import govukErrorSummary %}
-
-    {{- govukErrorSummary(
-      classes='',
-      title='Message to alert the user to a problem goes here',
-      description='Optional description of the errors and how to correct them',
-      listClasses='',
-      listItems=[
+    {{ govukErrorSummary({
+      "titleText": "Message to alert the user to a problem goes here",
+      "descriptionText": "Optional description of the errors and how to correct them",
+      "classes": "optional-extra-class",
+      "errorList": [
         {
-          text: 'Descriptive link to the question with an error',
-          url: '#example-error-1'
+          "text": "Descriptive link to the question with an error",
+          "href": "#example-error-1"
         },
         {
-          text: 'Descriptive link to the question with an error',
-          url: '#example-error-2'
+          "html": "Descriptive link to the question with an error",
+          "href": "#example-error-1"
         }
       ]
-    )
-    -}}
-
-## Variants
+    }) }}
 
 ## Dependencies
 
@@ -104,73 +126,73 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header" scope="row">title</th>
-
-<td class="govuk-c-table__cell ">string</td>
-
-<td class="govuk-c-table__cell ">Yes</td>
-
-<td class="govuk-c-table__cell ">Error summary title</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">description</th>
+<th class="govuk-c-table__header" scope="row">titleText</th>
 
 <td class="govuk-c-table__cell ">string</td>
 
 <td class="govuk-c-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Optional error summary description</td>
+<td class="govuk-c-table__cell ">Text to use for the heading of the error summary block.</td>
 
 </tr>
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header" scope="row">listItems</th>
-
-<td class="govuk-c-table__cell ">array</td>
-
-<td class="govuk-c-table__cell ">Yes</td>
-
-<td class="govuk-c-table__cell ">List items array with url and text keys</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">url</th>
+<th class="govuk-c-table__header" scope="row">titleHtml</th>
 
 <td class="govuk-c-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">Yes</td>
+<td class="govuk-c-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">List item url</td>
+<td class="govuk-c-table__cell ">HTML to use for the heading of the error summary block. If this is provided, the titleText argument will be ignored.</td>
 
 </tr>
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header" scope="row">text</th>
+<th class="govuk-c-table__header" scope="row">descriptionText</th>
 
 <td class="govuk-c-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">Yes</td>
+<td class="govuk-c-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">List item text</td>
+<td class="govuk-c-table__cell ">Optional text description of the errors.</td>
 
 </tr>
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header" scope="row">listOptions</th>
+<th class="govuk-c-table__header" scope="row">descriptionHtml</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">Optional HTML description of the errors. If this is provided, the descriptionText argument will be ignored.</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">errorList</th>
+
+<td class="govuk-c-table__cell ">object</td>
+
+<td class="govuk-c-table__cell ">Yes</td>
+
+<td class="govuk-c-table__cell ">Contains an array of error link items and all their available arguments.</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">attributes</th>
 
 <td class="govuk-c-table__cell ">object</td>
 
 <td class="govuk-c-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">List options</td>
+<td class="govuk-c-table__cell ">Any extra HTML attributes (for example data attributes) to add to the error-summary container.</td>
 
 </tr>
 
@@ -205,10 +227,6 @@ To update the latest version run:
 Guidelines can be found at [on our Github repository.](https://github.com/alphagov/govuk-frontend/blob/master/CONTRIBUTING.md "link to contributing guidelines on our github repository")
 
 ## Acknowledgements/credits
-
-*   GDS developers
-*   Jani Kraner
-*   Gemma Leigh
 
 ## License
 

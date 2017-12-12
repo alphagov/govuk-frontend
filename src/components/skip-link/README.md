@@ -1,38 +1,37 @@
-# Error message
+# Skip link
 
 ## Introduction
 
-Component to show a red error message - used for form validation. Use inside a label or legend.
+Skip link component. Make skip links visible when they are tabbed to. You'll need to add correct id to your main content area, to ensure the skip link will work.
 
 ## Guidance
 
-More information about when to use error-message can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/error-message "Link to read guidance on the use of error-message on Gov.uk Design system website")
+More information about when to use skip-link can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/skip-link "Link to read guidance on the use of skip-link on Gov.uk Design system website")
 
 ## Quick start examples
 
 ### Component default
 
-[Preview the error-message component](http://govuk-frontend-review.herokuapp.com/components/error-message/preview)
+[Preview the skip-link component](http://govuk-frontend-review.herokuapp.com/components/skip-link/preview)
 
 #### Markup
 
-    <span class="govuk-c-error-message">
-       Error message about full name goes here
-    </span>
+    <a href="#content" class="govuk-c-skip-link">Skip to main content</a>
 
 #### Macro
 
-    {{ govukErrorMessage({
-      "text": "Error message about full name goes here"
+    {{ govukSkipLink({
+      "text": "Skip to main content",
+      "href": "#content"
     }) }}
 
 ## Dependencies
 
-To consume the error-message component you must be running npm version 5 or above.
+To consume the skip-link component you must be running npm version 5 or above.
 
 ## Installation
 
-    npm install --save @govuk-frontend/error-message
+    npm install --save @govuk-frontend/skip-link
 
 ## Requirements
 
@@ -78,13 +77,13 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header" scope="row">classes</th>
+<th class="govuk-c-table__header" scope="row">href</th>
 
 <td class="govuk-c-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">No</td>
+<td class="govuk-c-table__cell ">Yes</td>
 
-<td class="govuk-c-table__cell ">Optional additional classes</td>
+<td class="govuk-c-table__cell ">The value of the skip link href attribute. Defaults to #content</td>
 
 </tr>
 
@@ -96,7 +95,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-c-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Text to use within the error message</td>
+<td class="govuk-c-table__cell ">Text to use within the skip link.</td>
 
 </tr>
 
@@ -108,7 +107,19 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-c-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">HTML to use within the error message. If this is provided, the text argument will be ignored.</td>
+<td class="govuk-c-table__cell ">HTML to use within the skip link. If this is provided, the text argument will be ignored.</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">classes</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">Optional additional classes for the skip link.</td>
 
 </tr>
 
@@ -120,7 +131,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-c-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Any extra HTML attributes (for example data attributes) to add to the error message span tag</td>
+<td class="govuk-c-table__cell ">Any extra HTML attributes (for example data attributes) to add to the skip link.</td>
 
 </tr>
 
@@ -144,11 +155,11 @@ Below is an example setup using express configure views:
 
 To check whether you have the latest version of the button run:
 
-    npm outdated @govuk-frontend/error-message
+    npm outdated @govuk-frontend/skip-link
 
 To update the latest version run:
 
-    npm update @govuk-frontend/error-message
+    npm update @govuk-frontend/skip-link
 
 ## Contribution
 

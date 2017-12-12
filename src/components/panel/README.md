@@ -12,23 +12,48 @@ More information about when to use panel can be found on [GOV.UK Design System](
 
 ### Component default
 
-[Preview the panel component.](http://govuk-frontend-review.herokuapp.com/components/panel/preview)
+[Preview the panel component](http://govuk-frontend-review.herokuapp.com/components/panel/preview)
 
 #### Markup
 
+    <div class="govuk-c-panel govuk-c-panel--confirmation">
+      <h2 class="govuk-c-panel__title">
+        Application complete
+      </h2>
+      <div class="govuk-c-panel__body">
+        Your reference number<br><strong>HDJ2123F</strong>
+      </div>
+    </div>
+
 #### Macro
 
-      {% from "panel/macro.njk" import govukPanel %}
+    {{ govukPanel({
+      "titleText": "Application complete",
+      "html": "Your reference number<br><strong>HDJ2123F</strong>"
+    }) }}
 
-    {{- govukPanel(
-      classes='',
-      title='Application complete',
-      content='Your reference number is',
-      reference='HDJ2123F'
-      )
-    -}}
+### Panel--no-reference-number
 
-## Variants
+[Preview the panel--no-reference-number variant](http://govuk-frontend-review.herokuapp.com/components/panel/no-reference-number/preview)
+
+#### Markup
+
+    <div class="govuk-c-panel govuk-c-panel--confirmation extra-dummy-class">
+      <h2 class="govuk-c-panel__title">
+        Application complete
+      </h2>
+      <div class="govuk-c-panel__body">
+        Thank you for your application
+      </div>
+    </div>
+
+#### Macro
+
+    {{ govukPanel({
+      "classes": "extra-dummy-class",
+      "titleText": "Application complete",
+      "text": "Thank you for your application"
+    }) }}
 
 ## Dependencies
 
@@ -82,6 +107,54 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-c-table__row">
 
+<th class="govuk-c-table__header" scope="row">titleText</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">Yes</td>
+
+<td class="govuk-c-table__cell ">Text for the panel title</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">titleHtml</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">Yes</td>
+
+<td class="govuk-c-table__cell ">HTML for the panel title. If this is provided, the titleText argument is ignored.</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">text</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">Text for the panel content</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">html</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">HTML for the panel content. If this is provided, the text argument is ignored.</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
 <th class="govuk-c-table__header" scope="row">classes</th>
 
 <td class="govuk-c-table__cell ">string</td>
@@ -94,37 +167,13 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header" scope="row">title</th>
+<th class="govuk-c-table__header" scope="row">attributes</th>
 
-<td class="govuk-c-table__cell ">string</td>
-
-<td class="govuk-c-table__cell ">Yes</td>
-
-<td class="govuk-c-table__cell ">The panel title</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">content</th>
-
-<td class="govuk-c-table__cell ">string</td>
+<td class="govuk-c-table__cell ">object</td>
 
 <td class="govuk-c-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">The panel content</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">reference</th>
-
-<td class="govuk-c-table__cell ">string</td>
-
-<td class="govuk-c-table__cell ">No</td>
-
-<td class="govuk-c-table__cell ">Optional reference number</td>
+<td class="govuk-c-table__cell ">Any extra HTML attributes (for example data attributes) to add to the panel container</td>
 
 </tr>
 
@@ -159,10 +208,6 @@ To update the latest version run:
 Guidelines can be found at [on our Github repository.](https://github.com/alphagov/govuk-frontend/blob/master/CONTRIBUTING.md "link to contributing guidelines on our github repository")
 
 ## Acknowledgements/credits
-
-*   GDS developers
-*   Jani Kraner
-*   Gemma Leigh
 
 ## License
 
