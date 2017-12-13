@@ -31,7 +31,7 @@ For more detail, see our [coding standards for JavaScript](/docs/coding-standard
 
 Find components in `src/components`.
 
-Component folder and files should be **singular, not plural**.
+Component folder and files should be singular, except in cases where they are more commonly used in groups, for example, radios, breadcrumbs and checkboxes.
 
 An example component exists in `src/components/component-example`.
 
