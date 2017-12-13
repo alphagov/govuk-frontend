@@ -1,7 +1,7 @@
 @import "../../globals/scss/common";
 
-@include exports("breadcrumb") {
-  .govuk-c-breadcrumb {
+@include exports("breadcrumbs") {
+  .govuk-c-breadcrumbs {
     @include govuk-font-regular-16;
     @include govuk-text-colour;
 
@@ -9,7 +9,7 @@
     margin-bottom: $govuk-spacing-scale-2;
   }
 
-  .govuk-c-breadcrumb__list {
+  .govuk-c-breadcrumbs__list {
     @include govuk-h-clearfix;
 
     margin: 0;
@@ -17,7 +17,7 @@
     list-style-type: none;
   }
 
-  .govuk-c-breadcrumb__list-item {
+  .govuk-c-breadcrumbs__list-item {
     margin-bottom: $govuk-spacing-scale-1;
     margin-left: $govuk-spacing-scale-2;
     padding-left: $govuk-spacing-scale-3;
@@ -33,13 +33,13 @@
     background-position: 0% 50%;
   }
 
-  .govuk-c-breadcrumb__list-item:first-child {
+  .govuk-c-breadcrumbs__list-item:first-child {
     margin-left: 0;
     padding-left: 0;
     background-image: none;
   }
 
-  .govuk-c-breadcrumb__link {
+  .govuk-c-breadcrumbs__link {
     &:link,
     &:visited,
     &:hover,

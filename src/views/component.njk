@@ -9,9 +9,9 @@
 {% endset %}
 
 {% if not isReadme %}
-{% from "breadcrumb/macro.njk" import govukBreadcrumb %}
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
 
-{{ govukBreadcrumb({
+{{ govukBreadcrumbs({
   "items": [
     { text: 'GOV.UK Frontend', href: '/' },
     { text: componentName | replace("-", " ") | capitalize }
