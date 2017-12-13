@@ -1,7 +1,3 @@
-// Gutters
-$govuk-gutter: $govuk-spacing-scale-6;
-$govuk-gutter-half: $govuk-gutter / 2;
-
 @mixin govuk-grid {
   @include govuk-h-clearfix;
   margin-right: - ($govuk-gutter-half);

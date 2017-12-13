@@ -19,131 +19,134 @@
 }) }}
 {% endif %}
 
-<h1 class="govuk-heading-xl">
-{% block componentName %}
-{{ componentName | replace("-", " ") | capitalize }}
-{% endblock %}
-</h1>
+<div class="govuk-o-main-wrapper">
+  <h1 class="govuk-heading-xl">
+  {% block componentName %}
+  {{ componentName | replace("-", " ") | capitalize }}
+  {% endblock %}
+  </h1>
 
-{% if isReadme %}
-<h2 class="govuk-heading-l">Introduction</h2>
-{% endif %}
-<p class="govuk-body-lede">
-{% block componentDescription %}
-{% endblock %}
-</p>
+  {% if isReadme %}
+  <h2 class="govuk-heading-l">Introduction</h2>
+  {% endif %}
+  <p class="govuk-body-lede">
+  {% block componentDescription %}
+  {% endblock %}
+  </p>
 
-<h2 class="govuk-heading-l">Guidance</h2>
-<p class="govuk-body">
-  More information about when to use {{ componentName }} can be found on <a href="{{- componentGuidanceLink -}}" title="Link to read guidance on the use of {{ componentName }} on Gov.uk Design system website">GOV.UK Design System</a>
-</p>
+  <h2 class="govuk-heading-l">Guidance</h2>
+  <p class="govuk-body">
+    More information about when to use {{ componentName }} can be found on <a href="{{- componentGuidanceLink -}}" title="Link to read guidance on the use of {{ componentName }} on Gov.uk Design system website">GOV.UK Design System</a>
+  </p>
 
+  {% if isReadme %}
+  <h2 class="govuk-heading-l">Quick start examples</h2>
+  <p class="govuk-body">{% block componentHtmlUsageWriteup %}{% endblock %}</p>
+  {% endif %}
 
-{% if isReadme %}
-<h2 class="govuk-heading-l">Quick start examples</h2>
-<p class="govuk-body">{% block componentHtmlUsageWriteup %}{% endblock %}</p>
-{% endif %}
+  {% from "./macros/showDefaultAndVariants.njk" import showDefaultAndVariants %}
+  {% block defaultAndVariants %}
+  {{ showDefaultAndVariants(componentName, componentData) }}
+  {% endblock %}
 
-{% from "./macros/showDefaultAndVariants.njk" import showDefaultAndVariants %}
-{% block defaultAndVariants %}
-{{ showDefaultAndVariants(componentName, componentData) }}
-{% endblock %}
+  {% if isReadme %}
+  <h2 class="govuk-heading-l">Dependencies</h2>
 
-{% if isReadme %}
-<h2 class="govuk-heading-l">Dependencies</h2>
+  <p class="govuk-body">To consume the {{ componentName }} component you must be running npm version 5 or above. </p>
 
-<p class="govuk-body">To consume the {{ componentName }} component you must be running npm version 5 or above. </p>
+  <p class="govuk-body">{% block componentDependencies %}{% endblock %}</p>
 
-<p class="govuk-body">{% block componentDependencies %}{% endblock %}</p>
+  <h2 class="govuk-heading-l">Installation</h2>
+  <pre><code>npm install --save @govuk-frontend/{{ componentName }}</code></pre>
 
-<h2 class="govuk-heading-l">Installation</h2>
-<pre><code>npm install --save @govuk-frontend/{{ componentName }}</code></pre>
+  <h2 class="govuk-heading-l">Requirements</h2>
+  <h3 class="govuk-heading-m">Build tool configuration</h3>
+  <p class="govuk-body">When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp</p>
+  <pre>
+  <code>
+    .pipe(sass({
+        includePaths: 'node_modules/'
+    }))
+  </code>
+  </pre>
 
-<h2 class="govuk-heading-l">Requirements</h2>
-<h3 class="govuk-heading-m">Build tool configuration</h3>
-<p class="govuk-body">When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp</p>
-<pre>
-<code>
-  .pipe(sass({
-      includePaths: 'node_modules/'
-  }))
-</code>
-</pre>
+  <h3 class="govuk-heading-m">Static asset path configuration</h3>
+  <p class="govuk-body">To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:</p>
+  <pre>
+  <code>
+  app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
+  </code>
+  </pre>
+  {% endif %}
 
-<h3 class="govuk-heading-m">Static asset path configuration</h3>
-<p class="govuk-body">To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:</p>
-<pre>
-<code>
-app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
-</code>
-</pre>
-{% endif %}
+  <h2 class="govuk-heading-l">Component arguments</h2>
+  <p class="govuk-body">If you are using Nunjucks,then macros take the following arguments</p>
+  <div>
+  {% from "table/macro.njk" import govukTable %}
+  {% block componentArguments %}
+  {% endblock %}
+  </div>
 
-<h2 class="govuk-heading-l">Component arguments</h2>
-<p class="govuk-body">If you are using Nunjucks,then macros take the following arguments</p>
-<div>
-{% from "table/macro.njk" import govukTable %}
-{% block componentArguments %}
-{% endblock %}
+  {% if isReadme %}
+  <h3 class="govuk-heading-m">Setting up Nunjucks views and paths</h3>
+  <p class="govuk-body">Below is an example setup using express configure views:</p>
+  <pre>
+  <code>
+  nunjucks.configure('node_modules/@govuk-frontend`, {
+    autoescape: true,
+    cache: false,
+    express: app
+  })
+  </code>
+  </pre>
+
+  <h2 class="govuk-heading-l">Getting updates</h2>
+
+  <p class="govuk-body">To check whether you have the latest version of the button run:</p>
+
+  <pre><code>npm outdated @govuk-frontend/{{ componentName }}</code></pre>
+
+  <p class="govuk-body">To update the latest version run:</p>
+
+  <pre><code>npm update @govuk-frontend/{{ componentName }}</code></pre>
+
+  <h2 class="govuk-heading-l">Contribution</h2>
+  <p class="govuk-body">
+    Guidelines can be found at <a href="https://github.com/alphagov/govuk-frontend/blob/master/CONTRIBUTING.md" title="link to contributing guidelines on our github repository">on our Github repository.</a>
+  </p>
+
+  <h2 class="govuk-heading-l">Acknowledgements/credits</h2>
+  {% from "list/macro.njk" import govukList %}
+
+  {{ govukList(
+    classes='',
+    [
+      {
+        text: 'GDS developers'
+      },
+      {
+        text: 'Jani Kraner'
+      },
+      {
+        text: 'Gemma Leigh'
+      }
+    ]
+  ) }}
+
+  <h2 class="govuk-heading-l">License</h2>
+  <p class="govuk-body">MIT</p>
+  {% endif %}
+
+  {% if not isReadme %}
+  <h2 class="govuk-heading-l">Installation and setup</h2>
+  <p class="govuk-body">
+    <a href="https://github.com/alphagov/govuk-frontend/tree/master/src/components/{{ componentName}}">
+      View the {{ componentName }} README on GitHub
+    </a>
+  </p>
+
 </div>
 
-{% if isReadme %}
-<h3 class="govuk-heading-m">Setting up Nunjucks views and paths</h3>
-<p class="govuk-body">Below is an example setup using express configure views:</p>
-<pre>
-<code>
-nunjucks.configure('node_modules/@govuk-frontend`, {
-  autoescape: true,
-  cache: false,
-  express: app
-})
-</code>
-</pre>
-
-<h2 class="govuk-heading-l">Getting updates</h2>
-
-<p class="govuk-body">To check whether you have the latest version of the button run:</p>
-
-<pre><code>npm outdated @govuk-frontend/{{ componentName }}</code></pre>
-
-<p class="govuk-body">To update the latest version run:</p>
-
-<pre><code>npm update @govuk-frontend/{{ componentName }}</code></pre>
-
-<h2 class="govuk-heading-l">Contribution</h2>
-<p class="govuk-body">
-  Guidelines can be found at <a href="https://github.com/alphagov/govuk-frontend/blob/master/CONTRIBUTING.md" title="link to contributing guidelines on our github repository">on our Github repository.</a>
-</p>
-
-<h2 class="govuk-heading-l">Acknowledgements/credits</h2>
-{% from "list/macro.njk" import govukList %}
-
-{{ govukList(
-  classes='',
-  [
-    {
-      text: 'GDS developers'
-    },
-    {
-      text: 'Jani Kraner'
-    },
-    {
-      text: 'Gemma Leigh'
-    }
-  ]
-) }}
-
-<h2 class="govuk-heading-l">License</h2>
-<p class="govuk-body">MIT</p>
-{% endif %}
-
-{% if not isReadme %}
-<h2 class="govuk-heading-l">Installation and setup</h2>
-<p class="govuk-body">
-  <a href="https://github.com/alphagov/govuk-frontend/tree/master/src/components/{{ componentName}}">
-    View the {{ componentName }} README on GitHub
-  </a>
-</p>
 {% endif %}
 
 {% endblock %}

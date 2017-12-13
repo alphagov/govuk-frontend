@@ -1,6 +1,7 @@
 {% extends "layout-debug.njk" %}
 
 {% block content %}
+<div class="govuk-o-main-wrapper">
   <h1 class="govuk-heading-l">
     GOV.UK Frontend - Examples
   </h1>
@@ -9,4 +10,5 @@
     <li><a href="/examples/{{ exampleName }}">{{ exampleName | replace("-", " ") | capitalize }}</a></li>
   {% endfor %}
   </ul>
+</div>
 {% endblock %}

@@ -1,6 +1,8 @@
 {% extends "layout-debug.njk" %}
 
 {% block content %}
-  <h1 class="govuk-heading-l">{{ error }}</h1>
-  <p class="govuk-body">{{ message }}</p>
+  <div class="govuk-o-content">
+    <h1 class="govuk-heading-l">{{ error }}</h1>
+    <p class="govuk-body">{{ message }}</p>
+  </div>
 {% endblock %}
