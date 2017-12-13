@@ -29,7 +29,7 @@
     -webkit-appearance: none;
 
     @include mq($from: tablet) {
-      width: initial;
+      width: auto;
     }
 
     // Set text colour depending on background colour
