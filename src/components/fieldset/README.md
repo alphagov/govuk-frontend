@@ -12,23 +12,89 @@ More information about when to use fieldset can be found on [GOV.UK Design Syste
 
 ### Component default
 
-[Preview the fieldset component.](http://govuk-frontend-review.herokuapp.com/components/fieldset/preview)
+[Preview the fieldset component](http://govuk-frontend-review.herokuapp.com/components/fieldset/preview)
 
 #### Markup
 
+    <fieldset class="govuk-c-fieldset">
+
+      <legend class="govuk-c-fieldset__legend">
+        Legend text goes here
+
+        <span class="govuk-c-fieldset__hint">Legend hint text goes here</span>
+
+      </legend>
+
+      </fieldset>
+
 #### Macro
 
-      {% from "fieldset/macro.njk" import govukFieldset %}
+    {{ govukFieldset({
+      "legendText": "Legend text goes here",
+      "legendHintText": "Legend hint text goes here"
+    }) }}
 
-    {{- govukFieldset(
-      classes='',
-      text='Legend text goes here',
-      hintText='Legend hint text goes here',
-      errorMessage='Error message goes here'
-      )
-    -}}
+### Fieldset--with-error-message
 
-## Variants
+[Preview the fieldset--with-error-message variant](http://govuk-frontend-review.herokuapp.com/components/fieldset/with-error-message/preview)
+
+#### Markup
+
+    <fieldset class="govuk-c-fieldset">
+
+      <legend class="govuk-c-fieldset__legend">
+        Legend text goes here
+
+        <span class="govuk-c-fieldset__hint">Legend hint text goes here</span>
+
+        <span class="govuk-c-error-message">
+           Error message goes here
+        </span>
+
+      </legend>
+
+      </fieldset>
+
+#### Macro
+
+    {{ govukFieldset({
+      "legendText": "Legend text goes here",
+      "legendHintText": "Legend hint text goes here",
+      "errorMessage": {
+        "text": "Error message goes here"
+      }
+    }) }}
+
+### Fieldset--with-html-instead-of-text
+
+[Preview the fieldset--with-html-instead-of-text variant](http://govuk-frontend-review.herokuapp.com/components/fieldset/with-html-instead-of-text/preview)
+
+#### Markup
+
+    <fieldset class="govuk-c-fieldset">
+
+      <legend class="govuk-c-fieldset__legend">
+        Legend text <i>goes</i> here
+
+        <span class="govuk-c-fieldset__hint">Legend hint text <i>goes</i> here</span>
+
+        <span class="govuk-c-error-message">
+           Error message <i>goes</i>  here
+        </span>
+
+      </legend>
+
+      </fieldset>
+
+#### Macro
+
+    {{ govukFieldset({
+      "legendHtml": "Legend text <i>goes</i> here",
+      "legendHintHtml": "Legend hint text <i>goes</i> here",
+      "errorMessage": {
+        "html": "Error message <i>goes</i>  here"
+      }
+    }) }}
 
 ## Dependencies
 
@@ -104,6 +170,66 @@ If you are using Nunjucks,then macros take the following arguments
 
 </tr>
 
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">legendHtml</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">Legend text</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">legendHintText</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">HTML to use within the legend element. If this is used, the legendText argument will be ignored.</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">legendHintHtml</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">HTML to use within the legend hint element. If this is used, the hintText argument will be ignored.</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">errorMessage</th>
+
+<td class="govuk-c-table__cell ">object</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">Provide text or html key with values. See errorMessage component for more details.</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">attributes</th>
+
+<td class="govuk-c-table__cell ">object</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">Any extra HTML attributes (for example data attributes) to add to the fieldset container.</td>
+
+</tr>
+
 </tbody>
 
 </table>
@@ -135,10 +261,6 @@ To update the latest version run:
 Guidelines can be found at [on our Github repository.](https://github.com/alphagov/govuk-frontend/blob/master/CONTRIBUTING.md "link to contributing guidelines on our github repository")
 
 ## Acknowledgements/credits
-
-*   GDS developers
-*   Jani Kraner
-*   Gemma Leigh
 
 ## License
 

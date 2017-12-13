@@ -12,22 +12,25 @@ More information about when to use legal-text can be found on [GOV.UK Design Sys
 
 ### Component default
 
-[Preview the legal-text component.](http://govuk-frontend-review.herokuapp.com/components/legal-text/preview)
+[Preview the legal-text component](http://govuk-frontend-review.herokuapp.com/components/legal-text/preview)
 
 #### Markup
 
+    <div class="govuk-c-legal-text">
+      <span class="govuk-c-legal-text__icon govuk-o-circle" aria-hidden="true">!</span>
+      <strong class="govuk-c-legal-text__text">
+        <span class="govuk-c-legal-text__assistive">Warning</span>
+        You can be fined up to £5,000 if you don’t register.
+      </strong>
+    </div>
+
 #### Macro
 
-      {% from "legal-text/macro.njk" import govukLegalText %}
-
-    {{- govukLegalText(
-      classes='',
-      iconFallbackText='Warning',
-      legalText='You can be fined up to £5,000 if you don’t register.'
-      )
-    -}}
-
-## Variants
+    {{ govukLegalText({
+      "classes": null,
+      "legalText": "You can be fined up to £5,000 if you don’t register.",
+      "iconFallbackText": "Warning"
+    }) }}
 
 ## Dependencies
 
@@ -146,10 +149,6 @@ To update the latest version run:
 Guidelines can be found at [on our Github repository.](https://github.com/alphagov/govuk-frontend/blob/master/CONTRIBUTING.md "link to contributing guidelines on our github repository")
 
 ## Acknowledgements/credits
-
-*   GDS developers
-*   Jani Kraner
-*   Gemma Leigh
 
 ## License
 

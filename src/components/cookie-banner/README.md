@@ -12,21 +12,19 @@ More information about when to use cookie-banner can be found on [GOV.UK Design 
 
 ### Component default
 
-[Preview the cookie-banner component.](http://govuk-frontend-review.herokuapp.com/components/cookie-banner/preview)
+[Preview the cookie-banner component](http://govuk-frontend-review.herokuapp.com/components/cookie-banner/preview)
 
 #### Markup
 
+    <div class="govuk-c-cookie-banner js-cookie-banner">
+      <p class="govuk-c-cookie-banner__message">GOV.UK uses cookies to make the site simpler. <a href="https://www.gov.uk/help/cookies">Find out more about cookies</a></p>
+    </div>
+
 #### Macro
 
-      {% from "cookie-banner/macro.njk" import govukCookieBanner %}
-
-    {{- govukCookieBanner(
-      classes='',
-      cookieBannerText='GOV.UK uses cookies to make the site simpler. <a href="https://www.gov.uk/help/cookies">Find out more about cookies</a>'
-      )
-    -}}
-
-## Variants
+    {{ govukCookieBanner({
+      "html": "GOV.UK uses cookies to make the site simpler. <a href=\"https://www.gov.uk/help/cookies\">Find out more about cookies</a>"
+    }) }}
 
 ## Dependencies
 
@@ -92,13 +90,37 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header" scope="row">cookieBannerText</th>
+<th class="govuk-c-table__header" scope="row">text</th>
 
 <td class="govuk-c-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">Yes</td>
+<td class="govuk-c-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Cookie banner text</td>
+<td class="govuk-c-table__cell ">Text to use for the cookie-banner message</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">html</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">HTML to use for the cookie-banner message. If this is provided, the text argument will be ignored.</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">attributes</th>
+
+<td class="govuk-c-table__cell ">object</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">Any extra HTML attributes (for example data attributes) to add to the cookie-banner container.</td>
 
 </tr>
 
@@ -133,10 +155,6 @@ To update the latest version run:
 Guidelines can be found at [on our Github repository.](https://github.com/alphagov/govuk-frontend/blob/master/CONTRIBUTING.md "link to contributing guidelines on our github repository")
 
 ## Acknowledgements/credits
-
-*   GDS developers
-*   Jani Kraner
-*   Gemma Leigh
 
 ## License
 
