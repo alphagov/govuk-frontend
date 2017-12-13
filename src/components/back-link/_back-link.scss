@@ -35,6 +35,11 @@
 
       margin-top: -6px;
 
+      // Ensure marker is rendered correctly if browser colours are overridden –
+      // without it the transparent borders become visible which results in a
+      // square.
+      clip-path: polygon(0% 50%, 100% 100%, 100% 0%);
+
       border-top: $govuk-spacing-scale-1 solid transparent;
       border-right: 6px solid $govuk-black;
       border-bottom: $govuk-spacing-scale-1 solid transparent;
