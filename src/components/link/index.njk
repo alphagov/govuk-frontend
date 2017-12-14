@@ -1,5 +1,4 @@
 {% extends "component.njk" %}
-{% from "list/macro.njk" import govukList %}
 
 {# Commented out blocks below inherit from views/component.njk #}
 
@@ -8,17 +7,10 @@
 {% block componentDescription %}
 Link component, with 2 variants:
 
-{{ govukList({
-  items: [
-    {
-      text: 'muted link - used for the “anything wrong with this page?” links'
-    },
-    {
-      text: 'download link - with download icon'
-    }
-  ],
-  type: 'bullet'
-}) }}
+<ul class="govuk-list govuk-list--bullet">
+  <li>muted link - used for the “anything wrong with this page?” links</li>
+  <li>download link - with download icon</li>
+</ul>
 {% endblock %}
 
 {# defaultAndVariants #}
