@@ -1,7 +1,7 @@
 @import "../../globals/scss/common";
 
 @include exports("checkboxes") {
-  .govuk-c-checkboxes {
+  .govuk-c-checkboxes__item {
     @include govuk-font-regular-19;
 
     display: block;
@@ -13,8 +13,8 @@
     clear: left;
   }
 
-  .govuk-c-checkboxes:last-child,
-  .govuk-c-checkboxes:last-of-type {
+  .govuk-c-checkboxes__item:last-child,
+  .govuk-c-checkboxes__item:last-of-type {
     margin-bottom: 0;
   }
 

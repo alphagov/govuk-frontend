@@ -20,39 +20,43 @@ More information about when to use checkboxes can be found on [GOV.UK Design Sys
 
 #### Markup
 
-    <fieldset class="govuk-c-fieldset">
+    <div class="govuk-c-checkboxes">
 
-      <legend class="govuk-c-fieldset__legend">
-        What is your nationality?
+      <fieldset class="govuk-c-fieldset">
 
-        <span class="govuk-c-fieldset__hint">If you have dual nationality, select all options that are relevant to you.</span>
+        <legend class="govuk-c-fieldset__legend">
+          What is your nationality?
 
-      </legend>
+          <span class="govuk-c-fieldset__hint">If you have dual nationality, select all options that are relevant to you.</span>
 
-      <div class="govuk-c-checkboxes">
-        <input class="govuk-c-checkboxes__input" id="nationality-1" name="nationality" type="checkbox" value="british">
-        <label class="govuk-c-label govuk-c-checkboxes__label" for="nationality-1">
-          British
+        </legend>
 
-        </label>
-      </div>
+        <div class="govuk-c-checkboxes__item">
+            <input class="govuk-c-checkboxes__input" id="nationality-1" name="nationality" type="checkbox" value="british">
+            <label class="govuk-c-label govuk-c-checkboxes__label" for="nationality-1">
+              British
 
-      <div class="govuk-c-checkboxes">
-        <input class="govuk-c-checkboxes__input" id="nationality-2" name="nationality" type="checkbox" value="irish">
-        <label class="govuk-c-label govuk-c-checkboxes__label" for="nationality-2">
-          Irish
+            </label>
+          </div>
 
-        </label>
-      </div>
+          <div class="govuk-c-checkboxes__item">
+            <input class="govuk-c-checkboxes__input" id="nationality-2" name="nationality" type="checkbox" value="irish">
+            <label class="govuk-c-label govuk-c-checkboxes__label" for="nationality-2">
+              Irish
 
-      <div class="govuk-c-checkboxes">
-        <input class="govuk-c-checkboxes__input" id="nationality-3" name="nationality" type="checkbox" value="other">
-        <label class="govuk-c-label govuk-c-checkboxes__label" for="nationality-3">
-          Citizen of another country
+            </label>
+          </div>
 
-        </label>
-      </div>
-    </fieldset>
+          <div class="govuk-c-checkboxes__item">
+            <input class="govuk-c-checkboxes__input" id="nationality-3" name="nationality" type="checkbox" value="other">
+            <label class="govuk-c-label govuk-c-checkboxes__label" for="nationality-3">
+              Citizen of another country
+
+            </label>
+          </div>
+      </fieldset>
+
+    </div>
 
 #### Macro
 
@@ -85,39 +89,43 @@ More information about when to use checkboxes can be found on [GOV.UK Design Sys
 
 #### Markup
 
-    <fieldset class="govuk-c-fieldset">
+    <div class="govuk-c-checkboxes">
 
-      <legend class="govuk-c-fieldset__legend">
-        <h3 class="govuk-heading-m">Which types of waste do you transport regularly?</h3>
+      <fieldset class="govuk-c-fieldset">
 
-        <span class="govuk-c-fieldset__hint">Select all that apply</span>
+        <legend class="govuk-c-fieldset__legend">
+          <h3 class="govuk-heading-m">Which types of waste do you transport regularly?</h3>
 
-      </legend>
+          <span class="govuk-c-fieldset__hint">Select all that apply</span>
 
-      <div class="govuk-c-checkboxes">
-        <input class="govuk-c-checkboxes__input" id="undefined-1" name="" type="checkbox" value="animal">
-        <label class="govuk-c-label govuk-c-checkboxes__label" for="undefined-1">
-          Waste from animal carcasses
+        </legend>
 
-        </label>
-      </div>
+        <div class="govuk-c-checkboxes__item">
+            <input class="govuk-c-checkboxes__input" id="undefined-1" name="" type="checkbox" value="animal">
+            <label class="govuk-c-label govuk-c-checkboxes__label" for="undefined-1">
+              Waste from animal carcasses
 
-      <div class="govuk-c-checkboxes">
-        <input class="govuk-c-checkboxes__input" id="undefined-2" name="" type="checkbox" value="mines">
-        <label class="govuk-c-label govuk-c-checkboxes__label" for="undefined-2">
-          Waste from mines or quarries
+            </label>
+          </div>
 
-        </label>
-      </div>
+          <div class="govuk-c-checkboxes__item">
+            <input class="govuk-c-checkboxes__input" id="undefined-2" name="" type="checkbox" value="mines">
+            <label class="govuk-c-label govuk-c-checkboxes__label" for="undefined-2">
+              Waste from mines or quarries
 
-      <div class="govuk-c-checkboxes">
-        <input class="govuk-c-checkboxes__input" id="undefined-3" name="" type="checkbox" value="farm">
-        <label class="govuk-c-label govuk-c-checkboxes__label" for="undefined-3">
-          Farm or agricultural waste
+            </label>
+          </div>
 
-        </label>
-      </div>
-    </fieldset>
+          <div class="govuk-c-checkboxes__item">
+            <input class="govuk-c-checkboxes__input" id="undefined-3" name="" type="checkbox" value="farm">
+            <label class="govuk-c-label govuk-c-checkboxes__label" for="undefined-3">
+              Farm or agricultural waste
+
+            </label>
+          </div>
+      </fieldset>
+
+    </div>
 
 #### Macro
 
@@ -149,27 +157,31 @@ More information about when to use checkboxes can be found on [GOV.UK Design Sys
 #### Markup
 
     <div class="govuk-c-checkboxes">
-      <input class="govuk-c-checkboxes__input" id="colours-1" name="colours" type="checkbox" value="red">
-      <label class="govuk-c-label govuk-c-checkboxes__label" for="colours-1">
-        Red
 
-      </label>
-    </div>
+      <div class="govuk-c-checkboxes__item">
+        <input class="govuk-c-checkboxes__input" id="colours-1" name="colours" type="checkbox" value="red">
+        <label class="govuk-c-label govuk-c-checkboxes__label" for="colours-1">
+          Red
 
-    <div class="govuk-c-checkboxes">
-      <input class="govuk-c-checkboxes__input" id="colours-2" name="colours" type="checkbox" value="green">
-      <label class="govuk-c-label govuk-c-checkboxes__label" for="colours-2">
-        Green
+        </label>
+      </div>
 
-      </label>
-    </div>
+      <div class="govuk-c-checkboxes__item">
+        <input class="govuk-c-checkboxes__input" id="colours-2" name="colours" type="checkbox" value="green">
+        <label class="govuk-c-label govuk-c-checkboxes__label" for="colours-2">
+          Green
 
-    <div class="govuk-c-checkboxes">
-      <input class="govuk-c-checkboxes__input" id="colours-3" name="colours" type="checkbox" value="blue">
-      <label class="govuk-c-label govuk-c-checkboxes__label" for="colours-3">
-        Blue
+        </label>
+      </div>
 
-      </label>
+      <div class="govuk-c-checkboxes__item">
+        <input class="govuk-c-checkboxes__input" id="colours-3" name="colours" type="checkbox" value="blue">
+        <label class="govuk-c-label govuk-c-checkboxes__label" for="colours-3">
+          Blue
+
+        </label>
+      </div>
+
     </div>
 
 #### Macro
@@ -199,11 +211,15 @@ More information about when to use checkboxes can be found on [GOV.UK Design Sys
 #### Markup
 
     <div class="govuk-c-checkboxes">
-      <input class="govuk-c-checkboxes__input" id="disabled-example-1" name="disabled-example" type="checkbox" value="disabled" disabled>
-      <label class="govuk-c-label govuk-c-checkboxes__label" for="disabled-example-1">
-        Disabled option
 
-      </label>
+      <div class="govuk-c-checkboxes__item">
+        <input class="govuk-c-checkboxes__input" id="disabled-example-1" name="disabled-example" type="checkbox" value="disabled" disabled>
+        <label class="govuk-c-label govuk-c-checkboxes__label" for="disabled-example-1">
+          Disabled option
+
+        </label>
+      </div>
+
     </div>
 
 #### Macro
@@ -435,6 +451,10 @@ To update the latest version run:
 Guidelines can be found at [on our Github repository.](https://github.com/alphagov/govuk-frontend/blob/master/CONTRIBUTING.md "link to contributing guidelines on our github repository")
 
 ## Acknowledgements/credits
+
+*   GDS developers
+*   Jani Kraner
+*   Gemma Leigh
 
 ## License
 
