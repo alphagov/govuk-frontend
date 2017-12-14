@@ -3,9 +3,11 @@
 @include exports("link") {
 
   .govuk-c-link {
-    @include govuk-font-regular-16;
-
-    line-height: 1.25;
+    @include govuk-font-regular;
+    @include govuk-typography-responsive(
+      $govuk-font-16,
+      $override-line-height: 1.25
+    );
 
     text-decoration: underline;
   }

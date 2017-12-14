@@ -4,7 +4,11 @@
 
 @include exports("textarea") {
   .govuk-c-textarea {
-    @include govuk-font-regular-19;
+    @include govuk-font-regular;
+    @include govuk-typography-responsive(
+      $govuk-font-19,
+      $override-line-height: 1.25
+    );
 
     box-sizing: border-box; // should this be global?
     display: block;
@@ -14,8 +18,6 @@
 
     border: $govuk-border-width-form-element solid $govuk-text-colour;
     border-radius: 0;
-
-    line-height: 1.25;
 
     -webkit-appearance: none;
   }
