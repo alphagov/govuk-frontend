@@ -19,10 +19,8 @@
     width: 100%;
     margin-top: 0;
     padding: ($govuk-spacing-scale-2 - $govuk-border-width-form-element - ($button-shadow-size / 2)) $govuk-spacing-scale-2;
-    border-width: $govuk-border-width-form-element;
-    border-style: solid;
+    border: $govuk-border-width-form-element solid transparent;
     border-radius: 0;
-    border-color: transparent;
     color: $govuk-button-text-colour;
     background-color: $govuk-button-colour;
     box-shadow: 0 $button-shadow-size 0 $button-shadow-colour;
