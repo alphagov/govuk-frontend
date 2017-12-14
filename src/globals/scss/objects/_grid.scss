@@ -7,7 +7,10 @@
 @mixin govuk-grid-item {
   box-sizing: border-box;
   padding: 0 $govuk-gutter-half;
-  float: left;
+
+  @include mq($from: tablet) {
+    float: left;
+  }
 }
 
 @include exports("grid") {
