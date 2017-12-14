@@ -66,13 +66,21 @@
 // );
 //
 // @param {Map} $font-map - Font map
+// @param {Number} $override-line-height - Non responsive custom line height.
+//        Omit to use the line height from the font map.
 // @param {Boolean} $important - Whether to mark declarations as important.
 //        Generally Used to create override classes.
 
-@mixin govuk-typography-responsive($font-map, $important: false) {
+@mixin govuk-typography-responsive($font-map, $override-line-height: false, $important: false) {
   @each $breakpoint, $breakpoint-map in $font-map {
     $font-size: map-get($breakpoint-map, "font-size") iff($important, !important);
     $line-height: map-get($breakpoint-map, "line-height") iff($important, !important);
+
+    // Sometimes we need to use a custom non-responsive line height for
+    // a component.
+    @if $override-line-height {
+      $line-height: $override-line-height iff($important, !important);
+    }
 
     @if $breakpoint == null {
       font-size: $font-size;
