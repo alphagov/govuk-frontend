@@ -2,14 +2,18 @@
 
 @include exports("button") {
   .govuk-c-button {
-    @include govuk-font-regular-19;
+    @include govuk-font-regular;
+    @include govuk-typography-responsive(
+      $govuk-font-19,
+      $override-line-height: 1
+    );
+    @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom");
 
     box-sizing: border-box;
     display: inline-block;
     position: relative;
     width: 100%;
     margin-top: 0;
-    @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom");
     padding: ($govuk-spacing-scale-2 - $govuk-border-width-form-element) $govuk-spacing-scale-2;
     border-width: $govuk-border-width-form-element;
     border-style: solid;
@@ -19,9 +23,6 @@
     outline-offset: -1px; // fixes bug in Safari that outline width on focus is not overwritten, is reset to 0 on focus in govuk_template
     background-color: $govuk-button-colour;
     box-shadow: 0 2px 0 $govuk-button-colour-darken-15;
-    font-family: $govuk-font-stack;
-    // Had to use important because th linter won't let me put this under the font-size include
-    line-height: 1 !important;
     text-align: center;
     text-decoration: none;
     vertical-align: top;
@@ -103,7 +104,12 @@
   }
 
   .govuk-c-button--start {
-    @include govuk-font-bold-24;
+    @include govuk-typography-weight-bold;
+    @include govuk-typography-responsive(
+      $govuk-font-24,
+      $override-line-height: 1
+    );
+
     min-height: auto;
     padding-top: $govuk-spacing-scale-2 - $govuk-border-width-form-element;
     padding-right: $govuk-spacing-scale-7;
@@ -123,7 +129,6 @@
     @include ie-lte(8) {
       border-bottom: $govuk-border-width-form-element solid $govuk-button-colour-darken-15;
     }
-    line-height: 1 !important;
   }
 
   // making the click target bigger than the button
