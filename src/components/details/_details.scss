@@ -51,15 +51,6 @@
 
   // Append our own open / closed marker using a pseudo-element
   .govuk-c-details__summary::before {
-    // Marker ('arrow') definition
-    $marker-size: 14px;
-    $marker-perpendicular: $marker-size / 2;
-
-    // Needs to be manually calculated when $marker-size changes to produce an
-    // equilateral triangle:
-    // sqrt(($marker-size * $marker-size) - ($marker-size / 2) * ($marker-size / 2))
-    $marker-longest-side: 12.1244px;
-
     content: "";
     position: absolute;
 
@@ -67,26 +58,12 @@
     bottom: 0;
     left: 0;
 
-    height: 0;
-
     margin: auto;
 
-    // Ensure marker is rendered correctly if browser colours are overridden –
-    // without it the transparent borders become visible which results in a
-    // square.
-    clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
-
-    border-width: $marker-perpendicular 0 $marker-perpendicular $marker-longest-side;
-    border-style: solid;
-    border-color: transparent;
-    border-left-color: currentColor;
+    @include arrow($direction: right, $base: 14px);
 
     .govuk-c-details[open] > & {
-      clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
-
-      border-width: $marker-longest-side $marker-perpendicular 0 $marker-perpendicular;
-      border-color: transparent;
-      border-top-color: currentColor;
+      @include arrow($direction: down, $base: 14px);
     }
   }
 
