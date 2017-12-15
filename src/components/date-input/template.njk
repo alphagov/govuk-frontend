@@ -17,14 +17,14 @@
       "classes": "govuk-c-date-input__input " + item.classes,
       "name": params.name + "-" + item.name,
       "value": item.value
-    }) | trim | indent(4) }}
+    }) | indent(4) | trim }}
   </div>
   {% endfor %}
 </div>
-{%- endset -%}
+{% endset %}
 
-{%- if params.fieldset -%}
-  {%- call govukFieldset({
+{%- if params.fieldset %}
+  {% call govukFieldset({
     classes: params.fieldset.classes,
     attributes: params.fieldset.attributes,
     legendText: params.fieldset.legendText,
@@ -32,9 +32,9 @@
     legendHintText: params.fieldset.legendHintText,
     legendHintHtml: params.fieldset.legendHintHtml,
     errorMessage: params.errorMessage
-  }) -%}
-    {{- innerHtml | safe -}}
-  {%- endcall -%}
-{%- else -%}
-  {{- innerHtml | trim | safe -}}
-{%- endif -%}
+  }) %}
+  {{ innerHtml | indent(2) | trim | safe }}
+  {% endcall %}
+{% else %}
+  {{ innerHtml | trim | safe }}
+{% endif %}
