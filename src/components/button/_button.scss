@@ -128,17 +128,12 @@
     padding-left: $govuk-spacing-scale-3;
 
     background-image: file-url("icon-pointer.png");
+    background-repeat: no-repeat;
+    background-position: 100% 50%;
 
     @include govuk-h-device-pixel-ratio {
       background-image: file-url("icon-pointer-2x.png");
       background-size: 30px 19px;
-    }
-
-    background-repeat: no-repeat;
-    background-position: 100% 50%;
-    box-shadow: 0 $button-shadow-size 0 $button-shadow-colour;
-    @include ie-lte(8) {
-      border-bottom: $button-shadow-size solid $button-shadow-colour;
     }
   }
 
