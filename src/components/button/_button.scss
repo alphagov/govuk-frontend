@@ -64,6 +64,30 @@
     &:focus {
       outline: $govuk-focus-width solid $govuk-focus-colour;
     }
+
+    // These adjustments do not work for <input type="button"> as non-container
+    // elements cannot include pseudo elements.
+
+    // Expand the click target to cover the shadow as well, in case users try
+    // to click it.
+    &::before {
+      content: "";
+      display: block;
+
+      position: absolute;
+      top: -$govuk-border-width-form-element;
+      right: -$govuk-border-width-form-element;
+      bottom: -($govuk-border-width-form-element + $button-shadow-size);
+      left: -$govuk-border-width-form-element;
+
+      background: transparent;
+    }
+
+    // If the user clicks the very top of the button, ensure the click target
+    // continues to cover the place that they clicked
+    &:active::before {
+      top: -($govuk-border-width-form-element + $button-shadow-size);
+    }
   }
 
   .govuk-c-button--disabled,
@@ -115,31 +139,6 @@
     box-shadow: 0 $button-shadow-size 0 $button-shadow-colour;
     @include ie-lte(8) {
       border-bottom: $button-shadow-size solid $button-shadow-colour;
-    }
-  }
-
-  // making the click target bigger than the button
-  // (and fill the space made when the button moves)
-  .govuk-c-button:before {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 110%;
-    background: transparent;
-  }
-
-  .govuk-c-button:active:before {
-    top: -10%;
-    height: 120%;
-
-    // IE6 ignores the :before psuedo-class but applies the block to :active
-    // It therefore needs to be reset
-    @include ie(6) {
-      top: auto;
-      height: 100%;
     }
   }
 
