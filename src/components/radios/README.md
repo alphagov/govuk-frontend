@@ -20,16 +20,11 @@ More information about when to use radios can be found on [GOV.UK Design System]
 
 #### Markup
 
-    <fieldset class="govuk-c-fieldset">
+    <div class="govuk-c-radios">
 
-      <legend class="govuk-c-fieldset__legend">
-        Have you changed your name?
+      <fieldset class="govuk-c-fieldset">
 
-        <span class="govuk-c-fieldset__hint">This includes changing your last name or spelling your name differently.</span>
-
-      </legend>
-
-      <div class="govuk-c-radios">
+      <div class="govuk-c-radios__item">
         <input class="govuk-c-radios__input" id="example-1" name="example" type="radio" value="yes">
         <label class="govuk-c-label govuk-c-radios__label" for="example-1">
           Yes
@@ -37,14 +32,16 @@ More information about when to use radios can be found on [GOV.UK Design System]
         </label>
       </div>
 
-      <div class="govuk-c-radios">
+      <div class="govuk-c-radios__item">
         <input class="govuk-c-radios__input" id="example-2" name="example" type="radio" value="no" checked>
         <label class="govuk-c-label govuk-c-radios__label" for="example-2">
           No
 
         </label>
       </div>
-    </fieldset>
+
+      </fieldset>
+    </div>
 
 #### Macro
 
@@ -74,16 +71,11 @@ More information about when to use radios can be found on [GOV.UK Design System]
 
 #### Markup
 
-    <fieldset class="govuk-c-fieldset">
+    <div class="govuk-c-radios">
 
-      <legend class="govuk-c-fieldset__legend">
-        <h1 class="govuk-heading-l">Which part of the Housing Act was your licence issued under?</h1>
+      <fieldset class="govuk-c-fieldset">
 
-        <span class="govuk-c-fieldset__hint">Select one of the options below.</span>
-
-      </legend>
-
-      <div class="govuk-c-radios">
+      <div class="govuk-c-radios__item">
         <input class="govuk-c-radios__input" id="housing-act-1" name="housing-act" type="radio" value="part-2">
         <label class="govuk-c-label govuk-c-radios__label" for="housing-act-1">
           <span class="govuk-heading-s govuk-!-mb-1">Part 2 of the Housing Act 2004</span> For properties that are 3 or more stories high and occupied by 5 or more people
@@ -91,14 +83,16 @@ More information about when to use radios can be found on [GOV.UK Design System]
         </label>
       </div>
 
-      <div class="govuk-c-radios">
+      <div class="govuk-c-radios__item">
         <input class="govuk-c-radios__input" id="housing-act-2" name="housing-act" type="radio" value="part-3">
         <label class="govuk-c-label govuk-c-radios__label" for="housing-act-2">
           <span class="govuk-heading-s govuk-!-mb-1">Part 3 of the Housing Act 2004</span> For properties that are within a geographical area defined by a local council
 
         </label>
       </div>
-    </fieldset>
+
+      </fieldset>
+    </div>
 
 #### Macro
 
@@ -128,28 +122,32 @@ More information about when to use radios can be found on [GOV.UK Design System]
 #### Markup
 
     <div class="govuk-c-radios">
-      <input class="govuk-c-radios__input" id="colours-1" name="colours" type="radio" value="red">
-      <label class="govuk-c-label govuk-c-radios__label" for="colours-1">
-        Red
 
-      </label>
-    </div>
+      <div class="govuk-c-radios__item">
+        <input class="govuk-c-radios__input" id="colours-1" name="colours" type="radio" value="red">
+        <label class="govuk-c-label govuk-c-radios__label" for="colours-1">
+          Red
 
-    <div class="govuk-c-radios">
-      <input class="govuk-c-radios__input" id="colours-2" name="colours" type="radio" value="green">
-      <label class="govuk-c-label govuk-c-radios__label" for="colours-2">
-        Green
+        </label>
+      </div>
 
-      </label>
-    </div>
+      <div class="govuk-c-radios__item">
+        <input class="govuk-c-radios__input" id="colours-2" name="colours" type="radio" value="green">
+        <label class="govuk-c-label govuk-c-radios__label" for="colours-2">
+          Green
 
-    <div class="govuk-c-radios">
-      <input class="govuk-c-radios__input" id="colours-3" name="colours" type="radio" value="blue">
-      <label class="govuk-c-label govuk-c-radios__label" for="colours-3">
-        Blue
+        </label>
+      </div>
 
-      </label>
-    </div>
+      <div class="govuk-c-radios__item">
+        <input class="govuk-c-radios__input" id="colours-3" name="colours" type="radio" value="blue">
+        <label class="govuk-c-label govuk-c-radios__label" for="colours-3">
+          Blue
+
+        </label>
+      </div>
+
+      </div>
 
 #### Macro
 

@@ -1,7 +1,7 @@
 @import "../../globals/scss/common";
 
 @include exports("radios") {
-  .govuk-c-radios {
+  .govuk-c-radios__item {
     @include govuk-font-regular-19;
 
     display: block;
@@ -14,12 +14,12 @@
     clear: left;
   }
 
-  .govuk-c-radios:last-child,
-  .govuk-c-radios:last-of-type {
+  .govuk-c-radios__item :last-child,
+  .govuk-c-radios__item :last-of-type {
     margin-bottom: 0;
   }
 
-  .govuk-c-radios--inline {
+  .govuk-c-radios__item--inline {
     margin-right: $govuk-spacing-scale-4;
     float: left;
     clear: none;
