@@ -41,10 +41,6 @@
       color: $govuk-button-text-colour;
     }
 
-    &:visited {
-      background-color: $govuk-button-colour;
-    }
-
     &:hover,
     &:focus {
       background-color: darken($govuk-button-colour, 5%);
