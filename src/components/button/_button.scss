@@ -2,6 +2,9 @@
 
 @include exports("button") {
 
+  // Because the shadow (s0) is visually 'part of' the button, we need to reduce
+  // the height of the button to compensate by adjusting its padding (s1) and
+  // increase the bottom margin to include it (s2).
   $button-shadow-size: $govuk-border-width-form-element;
   $button-shadow-colour: darken($govuk-button-colour, 15%);
 
@@ -11,19 +14,19 @@
       $govuk-font-19,
       $override-line-height: 1
     );
-    @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom");
+    @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom", $adjustment: $button-shadow-size); // s2
 
     box-sizing: border-box;
     display: inline-block;
     position: relative;
     width: 100%;
     margin-top: 0;
-    padding: ($govuk-spacing-scale-2 - $govuk-border-width-form-element - ($button-shadow-size / 2)) $govuk-spacing-scale-2;
+    padding: ($govuk-spacing-scale-2 - $govuk-border-width-form-element - ($button-shadow-size / 2)) $govuk-spacing-scale-2; // s1
     border: $govuk-border-width-form-element solid transparent;
     border-radius: 0;
     color: $govuk-button-text-colour;
     background-color: $govuk-button-colour;
-    box-shadow: 0 $button-shadow-size 0 $button-shadow-colour;
+    box-shadow: 0 $button-shadow-size 0 $button-shadow-colour; // s0
     text-align: center;
     text-decoration: none;
     vertical-align: top;
@@ -38,7 +41,7 @@
     @include ie-lte(8) {
       // Substitute shadow for border in IE8
       padding: ($govuk-spacing-scale-2 - $govuk-border-width-form-element) $govuk-spacing-scale-2;
-      border-bottom: $button-shadow-size solid $button-shadow-colour;
+      border-bottom: $button-shadow-size solid $button-shadow-colour; // s0
 
       // Fixes a bug where IE8 puts a black border around certain elements
       // sass-lint:disable no-color-literals
@@ -160,8 +163,8 @@
   $offset: 2;
 
   .govuk-c-button {
-    padding-top: ($govuk-spacing-scale-2 - $govuk-border-width-form-element - ($button-shadow-size / 2) + $offset);
-    padding-bottom: ($govuk-spacing-scale-2 - $govuk-border-width-form-element - ($button-shadow-size / 2) - $offset + 1);
+    padding-top: ($govuk-spacing-scale-2 - $govuk-border-width-form-element - ($button-shadow-size / 2) + $offset); // s1
+    padding-bottom: ($govuk-spacing-scale-2 - $govuk-border-width-form-element - ($button-shadow-size / 2) - $offset + 1); // s1
 
     @include ie-lte(8) {
       padding-top: ($govuk-spacing-scale-2 - $govuk-border-width-form-element + $offset);
@@ -170,8 +173,8 @@
   }
 
   .govuk-c-button--start {
-    padding-top: ($govuk-spacing-scale-2 - $govuk-border-width-form-element - ($button-shadow-size / 2) + $offset);
-    padding-bottom: ($govuk-spacing-scale-2 - $govuk-border-width-form-element - ($button-shadow-size / 2) - $offset + 1);
+    padding-top: ($govuk-spacing-scale-2 - $govuk-border-width-form-element - ($button-shadow-size / 2) + $offset); // s1
+    padding-bottom: ($govuk-spacing-scale-2 - $govuk-border-width-form-element - ($button-shadow-size / 2) - $offset + 1); // s1
   }
 
 }
