@@ -27,11 +27,33 @@
     text-align: center;
     text-decoration: none;
     vertical-align: top;
+
     cursor: pointer;
     -webkit-appearance: none;
 
     @include mq($from: tablet) {
       width: auto;
+    }
+
+    @include ie-lte(8) {
+      // Substitute shadow for border in IE8
+      padding: ($govuk-spacing-scale-2 - $govuk-border-width-form-element) $govuk-spacing-scale-2;
+      border-bottom: $button-shadow-size solid $button-shadow-colour;
+
+      // Fixes a bug where IE8 puts a black border around certain elements
+      // sass-lint:disable no-color-literals
+      &[type="submit"],
+      &[type="reset"],
+      &[type="button"] {
+        filter: chroma(color = #000000);
+      }
+      // sass-line:enable no-color-literals
+    }
+
+    // Fix unwanted button padding in Firefox
+    &:-moz-focus-inner {
+      padding: 0;
+      border: 0;
     }
 
     &:link,
@@ -46,19 +68,15 @@
       background-color: darken($govuk-button-colour, 5%);
     }
 
+    &:focus {
+      outline: $govuk-focus-width solid $govuk-focus-colour;
+    }
+
+    // 'Depress' the button when clicked by removing the shadow and shifting
+    // the button down by the shadow width
     &:active {
       top: $button-shadow-size;
       box-shadow: none;
-    }
-
-    // Fix unwanted button padding in Firefox
-    &:-moz-focus-inner {
-      padding: 0;
-      border: 0;
-    }
-
-    &:focus {
-      outline: $govuk-focus-width solid $govuk-focus-colour;
     }
 
     // These adjustments do not work for <input type="button"> as non-container
@@ -97,6 +115,10 @@
       cursor: default;
     }
 
+    &:focus {
+      outline: none;
+    }
+
     &:active {
       top: 0;
       box-shadow: 0 $button-shadow-size 0 $button-shadow-colour;
@@ -104,10 +126,6 @@
         border-bottom: $button-shadow-size solid $button-shadow-colour;
       }
     }
-  }
-
-  .govuk-c-button--disabled:focus {
-    outline: none;
   }
 
   .govuk-c-button--start {
@@ -118,9 +136,11 @@
     );
 
     min-height: auto;
-    padding-top: $govuk-spacing-scale-2 - $govuk-border-width-form-element;
+
+    // Allow extra space for pointer
     padding-right: $govuk-spacing-scale-7;
-    padding-bottom: $govuk-spacing-scale-2 - $govuk-border-width-form-element;
+
+    // Extra padding on the left hand side for balance
     padding-left: $govuk-spacing-scale-3;
 
     background-image: file-url("icon-pointer.png");
@@ -133,19 +153,6 @@
     }
   }
 
-  // Fixes a bug where IE puts a black border around certain elements
-  @include ie-lte(8) {
-    .govuk-c-button[type="submit"],
-    .govuk-c-button[type="reset"],
-    .govuk-c-button[type="button"] {
-      filter: chroma(color = $govuk-black);
-    }
-
-    .govuk-c-button[type="submit"].button {
-      filter: none;
-    }
-  }
-
   // Begin adjustments for font baseline offset
   // These should be removed when the font is updated with the correct baseline
   // For the 1px addition please see https://github.com/alphagov/govuk-frontend/pull/365#discussion_r154349428
@@ -155,6 +162,11 @@
   .govuk-c-button {
     padding-top: ($govuk-spacing-scale-2 - $govuk-border-width-form-element - ($button-shadow-size / 2) + $offset);
     padding-bottom: ($govuk-spacing-scale-2 - $govuk-border-width-form-element - ($button-shadow-size / 2) - $offset + 1);
+
+    @include ie-lte(8) {
+      padding-top: ($govuk-spacing-scale-2 - $govuk-border-width-form-element + $offset);
+      padding-bottom: ($govuk-spacing-scale-2 - $govuk-border-width-form-element - $offset + 1);
+    }
   }
 
   .govuk-c-button--start {
