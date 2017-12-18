@@ -4,22 +4,26 @@
 // Create responsive margins
 // Arguments:
 // $value = top \ right \ bottom \ left \ all
-@mixin govuk-responsive-margin($scale-map, $value: "all", $important: false) {
-  @include govuk-responsive-spacing($scale-map, "margin", $value, $important);
+@mixin govuk-responsive-margin($scale-map, $value: "all", $important: false, $adjustment: false) {
+  @include govuk-responsive-spacing($scale-map, "margin", $value, $important, $adjustment);
 }
 
 // // Create responsive padding
 // // Arguments:
 // // $value = top \ right \ bottom \ left \ all
-@mixin govuk-responsive-padding($scale-map, $value: "all", $important: false) {
-  @include govuk-responsive-spacing($scale-map, "padding", $value, $important);
+@mixin govuk-responsive-padding($scale-map, $value: "all", $important: false, $adjustment: false) {
+  @include govuk-responsive-spacing($scale-map, "padding", $value, $important, $adjustment);
 }
 
 //  Base mixin, also used by 'generate-spacing-overrides' mixin
-@mixin govuk-responsive-spacing($scale-map, $property, $value: "all", $important: false) {
+@mixin govuk-responsive-spacing($scale-map, $property, $value: "all", $important: false, $adjustment: false) {
 
   // Loop through each breakpoint
   @each $breakpoint, $breakpoint-value in $scale-map {
+
+    @if ($adjustment) {
+      $breakpoint-value: $breakpoint-value + $adjustment;
+    }
 
     // The 'null' breakpoint is for mobile.
     @if $breakpoint == null {
