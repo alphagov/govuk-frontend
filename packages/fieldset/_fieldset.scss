@@ -1,16 +1,19 @@
-@import "@govuk-frontend/globals/import-once";
-@import "@govuk-frontend/globals/vars";
-@import "@govuk-frontend/globals/utilities/clearfix";
+@import "@govuk-frontend/globals/common";
 
 @include exports("fieldset") {
   .govuk-c-fieldset {
-    margin: 0;
+    margin: 0 0 $govuk-spacing-scale-4;
+    @include mq($from: tablet) {
+      margin-bottom: $govuk-spacing-scale-6;
+    }
     padding: 0;
     border: 0;
-    @include govuk-u-clearfix;
+    @include govuk-h-clearfix;
   }
 
   .govuk-c-fieldset__legend {
+    @include govuk-font-regular-19;
+
     // Fix legend text wrapping in Edge and IE
     // 1. IE9-11 & Edge 12-13
     // 2. IE8-11
@@ -18,26 +21,38 @@
             box-sizing: border-box; // 1
     display: table;         // 2
     max-width: 100%;        // 1
+    margin-bottom: $govuk-spacing-scale-4;
     padding: 0;
     // Hack to let legends or elements within legends have margins in webkit browsers
     overflow: hidden;
 
     color: $govuk-text-colour;
-    font-family: $govuk-font-stack;
-    white-space: normal;    // 1
-    @include font-smoothing;
-    @include govuk-core-19;
-  }
+    white-space: normal;
+  }    // 1
+
+    .govuk-c-fieldset__legend .govuk-heading-s {
+      margin-bottom: 0;
+    }
+
+    .govuk-c-fieldset__legend .govuk-heading-m {
+      margin-bottom: $govuk-spacing-scale-1;
+    }
+
+    .govuk-c-fieldset__legend .govuk-heading-l,
+    .govuk-c-fieldset__legend .govuk-heading-xl {
+      margin-bottom: $govuk-spacing-scale-3;
+    }
 
   .govuk-c-fieldset__legend--bold {
-    font-weight: 700;
+    @include govuk-typography-weight-bold;
   }
 
   // Hint text sits inside a legend, to be read by AT
   .govuk-c-fieldset__hint {
+    @include govuk-typography-weight-regular;
+
     display: block;
     color: $govuk-secondary-text-colour;
-    font-weight: 400;
   }
 
 }

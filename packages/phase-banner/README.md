@@ -1,3 +1,7 @@
+<div class="govuk-o-width-container">
+
+<div class="govuk-o-main-wrapper">
+
 # Phase banner
 
 ## Introduction
@@ -12,19 +16,53 @@ More information about when to use phase-banner can be found on [GOV.UK Design S
 
 ### Component default
 
-[Preview the phase-banner component.](http://govuk-frontend-review.herokuapp.com/components/phase-banner/preview)
+[Preview the phase-banner component](http://govuk-frontend-review.herokuapp.com/components/phase-banner/preview)
 
 #### Markup
 
+    <div class="govuk-c-phase-banner">
+      <p class="govuk-c-phase-banner__content"><strong class="govuk-c-tag govuk-c-phase-banner__content__tag ">
+      alpha
+    </strong>
+    <span class="govuk-c-phase-banner__text">
+          This is a new service – your <a href="#">feedback</a> will help us to improve it.
+        </span>
+      </p>
+    </div>
+
 #### Macro
 
-      {% from "phase-banner/macro.njk" import govukPhaseBanner %}
-    {{- govukPhaseBanner(
-      phaseBannerText='This is a new service – your <a href="#">feedback</a> will help us to improve it.',
-      phaseTagText='BETA')
-    -}}
+    {{ govukPhaseBanner({
+      "tag": {
+        "text": "alpha"
+      },
+      "html": "This is a new service – your <a href=\"#\">feedback</a> will help us to improve it."
+    }) }}
 
-## Variants
+### Phase-banner--tag-with-html
+
+[Preview the phase-banner--tag-with-html variant](http://govuk-frontend-review.herokuapp.com/components/phase-banner/tag-with-html/preview)
+
+#### Markup
+
+    <div class="govuk-c-phase-banner">
+      <p class="govuk-c-phase-banner__content"><strong class="govuk-c-tag govuk-c-phase-banner__content__tag ">
+      <i>alpha</i>
+    </strong>
+    <span class="govuk-c-phase-banner__text">
+          This is a new service – your <a href="#">feedback</a> will help us to improve it.
+        </span>
+      </p>
+    </div>
+
+#### Macro
+
+    {{ govukPhaseBanner({
+      "tag": {
+        "html": "<i>alpha</i>"
+      },
+      "html": "This is a new service – your <a href=\"#\">feedback</a> will help us to improve it."
+    }) }}
 
 ## Dependencies
 
@@ -40,15 +78,17 @@ To consume the phase-banner component you must be running npm version 5 or above
 
 When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
 
-      .pipe(sass({
-          includePaths: 'node_modules/'
-      }))
+<pre>  `.pipe(sass({
+        includePaths: 'node_modules/'
+    }))` 
+  </pre>
 
 ### Static asset path configuration
 
 To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
 
-    app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
+<pre>  `app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))` 
+  </pre>
 
 ## Component arguments
 
@@ -90,25 +130,49 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header" scope="row">phaseTagText</th>
+<th class="govuk-c-table__header" scope="row">text</th>
 
 <td class="govuk-c-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">Yes</td>
+<td class="govuk-c-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Tag text</td>
+<td class="govuk-c-table__cell ">Text for teh phase-banner message.</td>
 
 </tr>
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header" scope="row">phaseBannerText</th>
+<th class="govuk-c-table__header" scope="row">html</th>
 
 <td class="govuk-c-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">Yes</td>
+<td class="govuk-c-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Banner copy</td>
+<td class="govuk-c-table__cell ">HTML to use for the phase-banner message. If this is provided, the text argument will be ignored.</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">tag</th>
+
+<td class="govuk-c-table__cell ">object</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">Arguments for the tag object. Can contain text or html.</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">attributes</th>
+
+<td class="govuk-c-table__cell ">object</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">Any extra HTML attributes (for example data attributes) to add to the phase banner container.</td>
 
 </tr>
 
@@ -122,11 +186,12 @@ If you are using Nunjucks,then macros take the following arguments
 
 Below is an example setup using express configure views:
 
-    nunjucks.configure('node_modules/@govuk-frontend`, {
-      autoescape: true,
-      cache: false,
-      express: app
-    })
+<pre>  `nunjucks.configure('node_modules/@govuk-frontend`, {
+    autoescape: true,
+    cache: false,
+    express: app
+  })` 
+  </pre>
 
 ## Getting updates
 
@@ -151,3 +216,7 @@ Guidelines can be found at [on our Github repository.](https://github.com/alphag
 ## License
 
 MIT
+
+</div>
+
+</div>

@@ -1,3 +1,7 @@
+<div class="govuk-o-width-container">
+
+<div class="govuk-o-main-wrapper">
+
 # File upload
 
 ## Introduction
@@ -12,47 +16,112 @@ More information about when to use file-upload can be found on [GOV.UK Design Sy
 
 ### Component default
 
-[Preview the file-upload component.](http://govuk-frontend-review.herokuapp.com/components/file-upload/preview)
+[Preview the file-upload component](http://govuk-frontend-review.herokuapp.com/components/file-upload/preview)
 
 #### Markup
 
+    <label class="govuk-c-label" for="file-upload-1">
+      Upload a file
+
+    </label>
+    <input type="file" id="file-upload-1" name="file-upload-1" class="govuk-c-file-upload">
+
 #### Macro
 
-      {% from "file-upload/macro.njk" import govukFileUpload %}
+    {{ govukFileUpload({
+      "id": "file-upload-1",
+      "name": "file-upload-1",
+      "label": {
+        "text": "Upload a file"
+      }
+    }) }}
 
-    {{- govukFileUpload(
-      labelClasses='',
-      labelText='Upload a file',
-      errorMessage='',
-      classes='',
-      id='file-upload-1',
-      name='file-upload-1'
-      )
-    -}}
+### File-upload--with-hint-text
 
-    {{- govukFileUpload(
-      labelClasses='',
-      labelText='Upload your photo',
-      hintText='Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.',
-      errorMessage='',
-      classes='',
-      id='file-upload-2',
-      name='file-upload-2'
-      )
-    -}}
+[Preview the file-upload--with-hint-text variant](http://govuk-frontend-review.herokuapp.com/components/file-upload/with-hint-text/preview)
 
-    {{- govukFileUpload(
-      labelClasses='',
-      labelText='Upload a file',
-      hintText='',
-      errorMessage='Error message goes here',
-      classes='',
-      id='file-upload-3',
-      name='file-upload-3'
-      )
-    -}}
+#### Markup
 
-## Variants
+    <label class="govuk-c-label" for="file-upload-2">
+      Upload your photo
+
+      <span class="govuk-c-label__hint">
+        Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.
+      </span>
+
+    </label>
+    <input type="file" id="file-upload-2" name="file-upload-2" class="govuk-c-file-upload">
+
+#### Macro
+
+    {{ govukFileUpload({
+      "id": "file-upload-2",
+      "name": "file-upload-2",
+      "label": {
+        "text": "Upload your photo",
+        "hintText": "Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto."
+      }
+    }) }}
+
+### File-upload--with-error-message
+
+[Preview the file-upload--with-error-message variant](http://govuk-frontend-review.herokuapp.com/components/file-upload/with-error-message/preview)
+
+#### Markup
+
+    <label class="govuk-c-label" for="file-upload-3">
+      Upload a file
+
+      <span class="govuk-c-label__hint">
+        Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.
+      </span>
+
+      <span class="govuk-c-error-message">
+       Error message goes here
+    </span>
+
+    </label>
+    <input type="file" id="file-upload-3" name="file-upload-3" class="govuk-c-file-upload govuk-c-file-upload--error">
+
+#### Macro
+
+    {{ govukFileUpload({
+      "id": "file-upload-3",
+      "name": "file-upload-3",
+      "label": {
+        "text": "Upload a file",
+        "hintText": "Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto."
+      },
+      "errorMessage": {
+        "text": "Error message goes here"
+      }
+    }) }}
+
+### File-upload--with-value-and-attributes
+
+[Preview the file-upload--with-value-and-attributes variant](http://govuk-frontend-review.herokuapp.com/components/file-upload/with-value-and-attributes/preview)
+
+#### Markup
+
+    <label class="govuk-c-label" for="file-upload-4">
+      Upload a photo
+
+    </label>
+    <input type="file" id="file-upload-4" name="file-upload-4" value="C:\fakepath\myphoto.jpg" class="govuk-c-file-upload" accept=".jpg, .jpeg, .png">
+
+#### Macro
+
+    {{ govukFileUpload({
+      "id": "file-upload-4",
+      "name": "file-upload-4",
+      "value": "C:\\fakepath\\myphoto.jpg",
+      "label": {
+        "text": "Upload a photo"
+      },
+      "attributes": {
+        "accept": ".jpg, .jpeg, .png"
+      }
+    }) }}
 
 ## Dependencies
 
@@ -68,15 +137,17 @@ To consume the file-upload component you must be running npm version 5 or above.
 
 When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
 
-      .pipe(sass({
-          includePaths: 'node_modules/'
-      }))
+<pre>  `.pipe(sass({
+        includePaths: 'node_modules/'
+    }))` 
+  </pre>
 
 ### Static asset path configuration
 
 To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
 
-    app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
+<pre>  `app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))` 
+  </pre>
 
 ## Component arguments
 
@@ -103,54 +174,6 @@ If you are using Nunjucks,then macros take the following arguments
 </thead>
 
 <tbody class="govuk-c-table__body">
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">classes</th>
-
-<td class="govuk-c-table__cell ">string</td>
-
-<td class="govuk-c-table__cell ">No</td>
-
-<td class="govuk-c-table__cell ">Optional additional classes</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">labelText</th>
-
-<td class="govuk-c-table__cell ">string</td>
-
-<td class="govuk-c-table__cell ">Yes</td>
-
-<td class="govuk-c-table__cell ">The label text</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">hintText</th>
-
-<td class="govuk-c-table__cell ">string</td>
-
-<td class="govuk-c-table__cell ">No</td>
-
-<td class="govuk-c-table__cell ">Optional hint text</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">errorMessage</th>
-
-<td class="govuk-c-table__cell ">string</td>
-
-<td class="govuk-c-table__cell ">No</td>
-
-<td class="govuk-c-table__cell ">Optional error message</td>
-
-</tr>
 
 <tr class="govuk-c-table__row">
 
@@ -188,6 +211,54 @@ If you are using Nunjucks,then macros take the following arguments
 
 </tr>
 
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">label</th>
+
+<td class="govuk-c-table__cell ">object</td>
+
+<td class="govuk-c-table__cell ">Yes</td>
+
+<td class="govuk-c-table__cell ">Arguments for the label component</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">errorMessage</th>
+
+<td class="govuk-c-table__cell ">object</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">Arguments for the error message component</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">classes</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">Optional additional classes</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">attributes</th>
+
+<td class="govuk-c-table__cell ">object</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">Any extra HTML attributes (for example accept or data attributes) to add to the input tag</td>
+
+</tr>
+
 </tbody>
 
 </table>
@@ -198,11 +269,12 @@ If you are using Nunjucks,then macros take the following arguments
 
 Below is an example setup using express configure views:
 
-    nunjucks.configure('node_modules/@govuk-frontend`, {
-      autoescape: true,
-      cache: false,
-      express: app
-    })
+<pre>  `nunjucks.configure('node_modules/@govuk-frontend`, {
+    autoescape: true,
+    cache: false,
+    express: app
+  })` 
+  </pre>
 
 ## Getting updates
 
@@ -227,3 +299,7 @@ Guidelines can be found at [on our Github repository.](https://github.com/alphag
 ## License
 
 MIT
+
+</div>
+
+</div>

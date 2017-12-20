@@ -1,3 +1,7 @@
+<div class="govuk-o-width-container">
+
+<div class="govuk-o-main-wrapper">
+
 # Details
 
 ## Introduction
@@ -12,27 +16,63 @@ More information about when to use details can be found on [GOV.UK Design System
 
 ### Component default
 
-[Preview the details component.](http://govuk-frontend-review.herokuapp.com/components/details/preview)
+[Preview the details component](http://govuk-frontend-review.herokuapp.com/components/details/preview)
 
 #### Markup
 
+    <details class="govuk-c-details">
+      <summary class="govuk-c-details__summary">
+        <span class="govuk-c-details__summary-text">
+          Help with nationality
+        </span>
+      </summary>
+      <div class="govuk-c-border govuk-c-border--left-narrow">
+        <div class="govuk-c-details__text">
+          We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post.
+        </div>
+      </div>
+    </details>
+
 #### Macro
 
-      {% from "details/macro.njk" import govukDetails %}
+    {{ govukDetails({
+      "summaryText": "Help with nationality",
+      "text": "We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post."
+    }) }}
 
-    {{- govukDetails(
-      classes='',
-      detailsSummaryText='Help with nationality',
-      detailsText='<p>
-        If you’re not sure about your nationality, try to find out from an official document like a passport or national ID card.
-      </p>
-      <p>
-        We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post.
-      </p>'
-      )
-    -}}
+### Details--with-html
 
-## Variants
+[Preview the details--with-html variant](http://govuk-frontend-review.herokuapp.com/components/details/with-html/preview)
+
+#### Markup
+
+    <details class="govuk-c-details">
+      <summary class="govuk-c-details__summary">
+        <span class="govuk-c-details__summary-text">
+          Where to find your National Insurance Number
+        </span>
+      </summary>
+      <div class="govuk-c-border govuk-c-border--left-narrow">
+        <div class="govuk-c-details__text">
+          Your National Insurance number can be found on
+    <ul>
+      <li>your National Insurance card</li>
+      <li>your payslip</li>
+      <li>P60</li>
+      <li>benefits information</li>
+      <li>tax return</li>
+    </ul>
+
+        </div>
+      </div>
+    </details>
+
+#### Macro
+
+    {{ govukDetails({
+      "summaryText": "Where to find your National Insurance Number",
+      "html": "Your National Insurance number can be found on\n<ul>\n  <li>your National Insurance card</li>\n  <li>your payslip</li>\n  <li>P60</li>\n  <li>benefits information</li>\n  <li>tax return</li>\n</ul>\n"
+    }) }}
 
 ## Dependencies
 
@@ -48,15 +88,17 @@ To consume the details component you must be running npm version 5 or above.
 
 When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
 
-      .pipe(sass({
-          includePaths: 'node_modules/'
-      }))
+<pre>  `.pipe(sass({
+        includePaths: 'node_modules/'
+    }))` 
+  </pre>
 
 ### Static asset path configuration
 
 To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
 
-    app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
+<pre>  `app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))` 
+  </pre>
 
 ## Component arguments
 
@@ -86,6 +128,54 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-c-table__row">
 
+<th class="govuk-c-table__header" scope="row">summaryText</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">Yes</td>
+
+<td class="govuk-c-table__cell ">Text to use within the summary element (the visible part of the details element)</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">summaryHtml</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">Yes</td>
+
+<td class="govuk-c-table__cell ">HTML to use within the summary element (the visible part of the details element). If this is provided, the summaryText argument will be ignored.</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">text</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">Yes</td>
+
+<td class="govuk-c-table__cell ">Text to use within the disclosed part of the details element.</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">html</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">Yes</td>
+
+<td class="govuk-c-table__cell ">HTML to use within the disclosed part of the details element. If this is provided, the text argument will be ignored.</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
 <th class="govuk-c-table__header" scope="row">classes</th>
 
 <td class="govuk-c-table__cell ">string</td>
@@ -98,25 +188,13 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header" scope="row">detailsSummaryText</th>
+<th class="govuk-c-table__header" scope="row">attributes</th>
 
-<td class="govuk-c-table__cell ">string</td>
+<td class="govuk-c-table__cell ">object</td>
 
-<td class="govuk-c-table__cell ">Yes</td>
+<td class="govuk-c-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Summary element text</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">detailsText</th>
-
-<td class="govuk-c-table__cell ">string</td>
-
-<td class="govuk-c-table__cell ">Yes</td>
-
-<td class="govuk-c-table__cell ">Revealed details text</td>
+<td class="govuk-c-table__cell ">Any extra HTML attributes (for example data attributes) to add to the details element</td>
 
 </tr>
 
@@ -130,11 +208,12 @@ If you are using Nunjucks,then macros take the following arguments
 
 Below is an example setup using express configure views:
 
-    nunjucks.configure('node_modules/@govuk-frontend`, {
-      autoescape: true,
-      cache: false,
-      express: app
-    })
+<pre>  `nunjucks.configure('node_modules/@govuk-frontend`, {
+    autoescape: true,
+    cache: false,
+    express: app
+  })` 
+  </pre>
 
 ## Getting updates
 
@@ -159,3 +238,7 @@ Guidelines can be found at [on our Github repository.](https://github.com/alphag
 ## License
 
 MIT
+
+</div>
+
+</div>

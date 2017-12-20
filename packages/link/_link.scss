@@ -1,59 +1,14 @@
-@import "@govuk-frontend/globals/import-once";
-@import "@govuk-frontend/globals/font-face";
-@import "@govuk-frontend/globals/helpers-url";
-@import "@govuk-frontend/globals/links";
-@import "@govuk-frontend/globals/typography";
-@import "@govuk-frontend/globals/vars";
+@import "@govuk-frontend/globals/common";
 
 @include exports("link") {
 
   .govuk-c-link {
-    font-family: $govuk-font-stack;
-    @include font-smoothing;
-    @include govuk-core-16;
+    @include govuk-font-regular-16;
+
     line-height: 1.25;
 
     text-decoration: underline;
   }
-
-  .govuk-c-link--back {
-    display: inline-block;
-
-    position: relative;
-
-    padding-left: 14px;
-
-    border-bottom: 1px solid $govuk-black;
-    color: $govuk-black;
-    background: file-url("icon-arrow-left.png") no-repeat 0 4px;
-    text-decoration: none;
-  }
-
-    .govuk-c-link--back:link,
-    .govuk-c-link--back:visited,
-    .govuk-c-link--back:hover,
-    .govuk-c-link--back:active {
-      color: $govuk-black;
-    }
-
-    // Back arrow - left pointing black arrow
-    .govuk-c-link--back::before {
-      content: "";
-      display: block;
-
-      position: absolute;
-      top: 50%;
-      left: 0;
-
-      width: 0;
-      height: 0;
-
-      margin-top: -6px;
-
-      border-top: $govuk-spacing-scale-1 solid transparent;
-      border-right: 6px solid $govuk-black;
-      border-bottom: $govuk-spacing-scale-1 solid transparent;
-    }
     .govuk-c-link--muted:link,
     .govuk-c-link--muted:visited,
     .govuk-c-link--muted:hover,
@@ -66,11 +21,11 @@
     }
 
   .govuk-c-link--download {
+    @include govuk-font-bold;
     display: block;
     min-height: 40px;
-    padding: 0 0 0 40px;
+    padding: 0 0 0 $govuk-spacing-scale-7;
     background: file-url("icon-file-download.png") no-repeat scroll 0 0;
-    font-weight: 700; // Replace with @include govuk-bold;
   }
 
   .govuk-c-link--download a:focus {

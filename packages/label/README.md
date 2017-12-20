@@ -1,3 +1,7 @@
+<div class="govuk-o-width-container">
+
+<div class="govuk-o-main-wrapper">
+
 # Label
 
 ## Introduction
@@ -12,43 +16,77 @@ More information about when to use label can be found on [GOV.UK Design System](
 
 ### Component default
 
-[Preview the label component.](http://govuk-frontend-review.herokuapp.com/components/label/preview)
+[Preview the label component](http://govuk-frontend-review.herokuapp.com/components/label/preview)
 
 #### Markup
 
+    <label class="govuk-c-label">
+      National Insurance number
+
+      <span class="govuk-c-label__hint">
+        It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’.
+      </span>
+
+    </label>
+
 #### Macro
 
-      {% from "label/macro.njk" import govukLabel %}
+    {{ govukLabel({
+      "text": "National Insurance number",
+      "hintText": "It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’."
+    }) }}
 
-    {{- govukLabel(
-      classes='',
-      labelText='National Insurance number',
-      hintText='It’s on your National Insurance card, benefit letter, payslip or P60.
-        For example, ‘QQ 12 34 56 C’.',
-      id=''
-      )
-    -}}
+### Label--with bold text
 
-    {{- govukLabel(
-      classes='govuk-c-label--bold',
-      labelText='National Insurance number',
-      hintText='It’s on your National Insurance card, benefit letter, payslip or P60.
-        For example, ‘QQ 12 34 56 C’.',
-      id=''
-      )
-    -}}
+[Preview the label--with bold text variant](http://govuk-frontend-review.herokuapp.com/components/label/with bold text/preview)
 
-    {{- govukLabel(
-      classes='',
-      labelText='National Insurance number',
-      hintText='It’s on your National Insurance card, benefit letter, payslip or P60.
-        For example, ‘QQ 12 34 56 C’.',
-      errorMessage='Error message goes here',
-      id=''
-      )
-    -}}
+#### Markup
 
-## Variants
+    <label class="govuk-c-label govuk-c-label--bold">
+      National Insurance number
+
+      <span class="govuk-c-label__hint">
+        It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’.
+      </span>
+
+    </label>
+
+#### Macro
+
+    {{ govukLabel({
+      "classes": "govuk-c-label--bold",
+      "text": "National Insurance number",
+      "hintText": "It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’."
+    }) }}
+
+### Label--with error message
+
+[Preview the label--with error message variant](http://govuk-frontend-review.herokuapp.com/components/label/with error message/preview)
+
+#### Markup
+
+    <label class="govuk-c-label">
+      National Insurance number
+
+      <span class="govuk-c-label__hint">
+        It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’.
+      </span>
+
+      <span class="govuk-c-error-message">
+       Error message goes here
+    </span>
+
+    </label>
+
+#### Macro
+
+    {{ govukLabel({
+      "text": "National Insurance number",
+      "hintText": "It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’.",
+      "errorMessage": {
+        "text": "Error message goes here"
+      }
+    }) }}
 
 ## Dependencies
 
@@ -64,15 +102,17 @@ To consume the label component you must be running npm version 5 or above.
 
 When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
 
-      .pipe(sass({
-          includePaths: 'node_modules/'
-      }))
+<pre>  `.pipe(sass({
+        includePaths: 'node_modules/'
+    }))` 
+  </pre>
 
 ### Static asset path configuration
 
 To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
 
-    app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
+<pre>  `app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))` 
+  </pre>
 
 ## Component arguments
 
@@ -114,13 +154,37 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header" scope="row">labelText</th>
+<th class="govuk-c-table__header" scope="row">text</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">Text to use within the label</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">html</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">HTML to use within the label. If this is provided, the text argument will be ignored.</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">for</th>
 
 <td class="govuk-c-table__cell ">string</td>
 
 <td class="govuk-c-table__cell ">Yes</td>
 
-<td class="govuk-c-table__cell ">The label text</td>
+<td class="govuk-c-table__cell ">The value of the for attribute, the id of the input the label is associated with</td>
 
 </tr>
 
@@ -132,7 +196,19 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-c-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Optional hint text</td>
+<td class="govuk-c-table__cell ">Optional text to use as a hint</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">hintHtml</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">Optional HTML to use as a hint. If this is provided, the hintText argument will be ignored.</td>
 
 </tr>
 
@@ -140,23 +216,23 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-c-table__header" scope="row">errorMessage</th>
 
-<td class="govuk-c-table__cell ">string</td>
+<td class="govuk-c-table__cell ">object</td>
 
 <td class="govuk-c-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Optional error message</td>
+<td class="govuk-c-table__cell ">Optional error message. See errorMessage component.</td>
 
 </tr>
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header" scope="row">id</th>
+<th class="govuk-c-table__header" scope="row">attributes</th>
 
-<td class="govuk-c-table__cell ">string</td>
+<td class="govuk-c-table__cell ">object</td>
 
-<td class="govuk-c-table__cell ">Yes</td>
+<td class="govuk-c-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">The value of the for attribute, the id input the label is associated with</td>
+<td class="govuk-c-table__cell ">Any extra HTML attributes (for example data attributes) to add to the error message span tag.</td>
 
 </tr>
 
@@ -170,11 +246,12 @@ If you are using Nunjucks,then macros take the following arguments
 
 Below is an example setup using express configure views:
 
-    nunjucks.configure('node_modules/@govuk-frontend`, {
-      autoescape: true,
-      cache: false,
-      express: app
-    })
+<pre>  `nunjucks.configure('node_modules/@govuk-frontend`, {
+    autoescape: true,
+    cache: false,
+    express: app
+  })` 
+  </pre>
 
 ## Getting updates
 
@@ -199,3 +276,7 @@ Guidelines can be found at [on our Github repository.](https://github.com/alphag
 ## License
 
 MIT
+
+</div>
+
+</div>
