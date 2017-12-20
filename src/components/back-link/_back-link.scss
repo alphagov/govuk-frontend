@@ -48,12 +48,10 @@
   // Begin adjustments for font baseline offset
   // These should be removed when the font is updated with the correct baseline
 
-  .govuk-c-back-link {
+  .govuk-c-back-link:before {
     $offset: 1px;
 
-    &:before {
-      top: $offset * -1;
-      bottom: $offset;
-    }
+    top: $offset * -1;
+    bottom: $offset;
   }
 }
