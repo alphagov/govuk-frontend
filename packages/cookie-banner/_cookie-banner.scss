@@ -1,19 +1,16 @@
-@import "@govuk-frontend/globals/import-once";
-@import "@govuk-frontend/globals/typography";
-@import "@govuk-frontend/globals/vars";
-@import "@govuk-frontend/globals/layout/site-width-container";
+@import "@govuk-frontend/globals/common";
 
 @include exports("cookie-banner") {
   .govuk-c-cookie-banner {
+    @include govuk-font-regular-16;
+    @include govuk-text-colour;
+
     width: 100%;
 
     padding-top: $govuk-spacing-scale-2;
     padding-bottom: $govuk-spacing-scale-2;
 
     background-color: $govuk-light-blue-25;
-
-    font-family: $govuk-font-stack;
-    @include font-smoothing;
   }
 
   .js-enabled .govuk-c-cookie-banner {
@@ -21,8 +18,7 @@
   }
 
   .govuk-c-cookie-banner__message {
-    @include govuk-site-width-container;
-    @include govuk-core-16;
+    @include govuk-width-container;
   }
 
   @include mq($media-type: print) {

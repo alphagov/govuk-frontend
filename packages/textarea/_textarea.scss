@@ -1,28 +1,25 @@
-@import "@govuk-frontend/globals/import-once";
-@import "@govuk-frontend/globals/font-face";
-@import "@govuk-frontend/globals/typography";
-@import "@govuk-frontend/globals/vars";
+@import "@govuk-frontend/globals/common";
 @import "@govuk-frontend/label/label";
 @import "@govuk-frontend/error-message/error-message";
 
 @include exports("textarea") {
   .govuk-c-textarea {
+    @include govuk-font-regular-19;
+
     -webkit-box-sizing: border-box;
+
             box-sizing: border-box; // should this be global?
     display: block;
-
     width: 100%;
+    @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom");
+    padding: $govuk-spacing-scale-1;
 
     border: $govuk-border-width-form-element solid $govuk-text-colour;
     border-radius: 0;
 
-    font-family: $govuk-font-stack;
-    @include font-smoothing;
-    @include govuk-core-19;
     line-height: 1.25;
 
     -webkit-appearance: none;
-
   }
 
   .govuk-c-textarea:focus {

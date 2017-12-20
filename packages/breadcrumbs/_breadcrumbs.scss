@@ -1,0 +1,47 @@
+@import "@govuk-frontend/globals/common";
+
+@include exports("breadcrumbs") {
+  .govuk-c-breadcrumbs {
+    @include govuk-font-regular-16;
+    @include govuk-text-colour;
+
+    margin-top: $govuk-spacing-scale-3;
+    margin-bottom: $govuk-spacing-scale-2;
+  }
+
+  .govuk-c-breadcrumbs__list {
+    @include govuk-h-clearfix;
+
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  .govuk-c-breadcrumbs__list-item {
+    margin-bottom: $govuk-spacing-scale-1;
+    margin-left: $govuk-spacing-scale-2;
+    padding-left: $govuk-spacing-scale-3;
+    float: left;
+    background-image: file-url("separator.png");
+
+    @include govuk-h-device-pixel-ratio {
+      background-image: file-url("separator-2x.png");
+      background-size: 6px 11px;
+    }
+
+    background-repeat: no-repeat;
+    background-position: 0% 50%;
+  }
+
+  .govuk-c-breadcrumbs__list-item:first-child {
+    margin-left: 0;
+    padding-left: 0;
+    background-image: none;
+  }
+    .govuk-c-breadcrumbs__link:link,
+    .govuk-c-breadcrumbs__link:visited,
+    .govuk-c-breadcrumbs__link:hover,
+    .govuk-c-breadcrumbs__link:active {
+      color: $govuk-text-colour;
+    }
+}

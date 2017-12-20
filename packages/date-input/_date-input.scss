@@ -1,14 +1,11 @@
-@import "@govuk-frontend/globals/import-once";
-@import "@govuk-frontend/globals/typography";
-@import "@govuk-frontend/globals/utilities/clearfix";
-@import "@govuk-frontend/globals/vars";
+@import "@govuk-frontend/globals/common";
 @import "@govuk-frontend/label/label";
 @import "@govuk-frontend/input/input";
 @import "@govuk-frontend/error-message/error-message";
 
 @include exports("date-input") {
   .govuk-c-date-input {
-    @include govuk-u-clearfix;
+    @include govuk-h-clearfix;
   }
 
   .govuk-c-date-input__item {

@@ -1,26 +1,24 @@
-@import "@govuk-frontend/globals/import-once";
-@import "@govuk-frontend/globals/helpers-px-to-em";
-@import "@govuk-frontend/globals/typography";
-@import "@govuk-frontend/globals/vars";
+@import "@govuk-frontend/globals/common";
 @import "@govuk-frontend/label/label";
 @import "@govuk-frontend/error-message/error-message";
 
 @include exports("input") {
   .govuk-c-input {
+    @include govuk-font-regular-19;
+
     -webkit-box-sizing: border-box;
+
             box-sizing: border-box;
     width: 100%;
     height: em(40px, 19px);
     margin-top: 0;
-    padding: 0 em($govuk-spacing-scale-3, 19px) 0 em($govuk-spacing-scale-1, 19px);
+    @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom");
+
+    padding: $govuk-spacing-scale-1;
     // setting any background-color makes text invisible when changing colours to dark backgrounds in Firefox (https://bugzilla.mozilla.org/show_bug.cgi?id=1335476)
     // as background-color and color need to always be set together, color should not be set either
     border: $govuk-border-width-form-element solid $govuk-text-colour;
     border-radius: 0;
-    font-family: $govuk-font-stack;
-
-    @include font-smoothing;
-    @include govuk-core-19;
 
     // Disable inner shadow and remove rounded corners
     -webkit-appearance: none;

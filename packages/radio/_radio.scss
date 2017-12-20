@@ -1,25 +1,17 @@
-@import "@govuk-frontend/globals/import-once";
-@import "@govuk-frontend/globals/font-face";
-@import "@govuk-frontend/globals/helpers-ie";
-@import "@govuk-frontend/globals/helpers-px-to-em";
-@import "@govuk-frontend/globals/media-queries";
-@import "@govuk-frontend/globals/typography";
-@import "@govuk-frontend/globals/vars";
+@import "@govuk-frontend/globals/common";
 
 @include exports("radio") {
   .govuk-c-radio {
+    @include govuk-font-regular-19;
+
     display: block;
 
     position: relative;
 
     margin-bottom: $govuk-spacing-scale-2;
-    padding: 0 0 0 em(40px, 19px);
+    padding: 0 0 0 em($govuk-spacing-scale-7, 19px);
 
     clear: left;
-
-    font-family: $govuk-font-stack;
-    @include font-smoothing;
-    @include govuk-core-19;
   }
 
   .govuk-c-radio:last-child,
@@ -40,8 +32,8 @@
     top: 0;
     left: 0;
 
-    width: em(40px, 19px);
-    height: em(40px, 19px);
+    width: em($govuk-spacing-scale-7, 19px);
+    height: em($govuk-spacing-scale-7, 19px);
 
     cursor: pointer;
 
@@ -55,7 +47,6 @@
   .govuk-c-radio__label {
     display: block;
     padding: em(8px, 19px) em($govuk-spacing-scale-3, 19px) em($govuk-spacing-scale-1, 19px);
-    border: 2px solid transparent;
     cursor: pointer;
     // remove 300ms pause on mobile
     -ms-touch-action: manipulation;
@@ -70,8 +61,8 @@
     top: 0;
     left: 0;
 
-    width: em(40px, 19px);
-    height: em(40px, 19px);
+    width: em($govuk-spacing-scale-7, 19px);
+    height: em($govuk-spacing-scale-7, 19px);
 
     border: $govuk-border-width-form-element solid;
     border-radius: 50%;
@@ -91,6 +82,7 @@
     border: em($govuk-spacing-scale-2, 19px) solid;
     border-radius: 50%;
     opacity: 0;
+    background: currentColor;
   }
 
   // Focused state

@@ -1,5 +1,5 @@
 {
-  "name": "@govuk-frontend/breadcrumb",
+  "name": "@govuk-frontend/breadcrumbs",
   "version": "0.0.18-alpha",
   "dependencies": {
     "@govuk-frontend/globals": "^0.0.18-alpha",

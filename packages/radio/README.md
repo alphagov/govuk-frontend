@@ -1,3 +1,7 @@
+<div class="govuk-o-width-container">
+
+<div class="govuk-o-main-wrapper">
+
 # Radio
 
 ## Introduction
@@ -12,45 +16,160 @@ More information about when to use radio can be found on [GOV.UK Design System](
 
 ### Component default
 
-[Preview the radio component.](http://govuk-frontend-review.herokuapp.com/components/radio/preview)
+[Preview the radio component](http://govuk-frontend-review.herokuapp.com/components/radio/preview)
 
 #### Markup
 
+    <fieldset class="govuk-c-fieldset">
+
+      <legend class="govuk-c-fieldset__legend">
+        Have you changed your name?
+
+        <span class="govuk-c-fieldset__hint">This includes changing your last name or spelling your name differently.</span>
+
+      </legend>
+
+      <div class="govuk-c-radio">
+        <input class="govuk-c-radio__input" id="example-1" name="example" type="radio" value="yes">
+        <label class="govuk-c-label govuk-c-radio__label" for="example-1">
+          Yes
+
+        </label>
+      </div>
+
+      <div class="govuk-c-radio">
+        <input class="govuk-c-radio__input" id="example-2" name="example" type="radio" value="no" checked>
+        <label class="govuk-c-label govuk-c-radio__label" for="example-2">
+          No
+
+        </label>
+      </div>
+    </fieldset>
+
 #### Macro
 
-      {% from 'radio/macro.njk' import govukRadio %}
-
-    {{- govukRadio(
-      classes='',
-      name='radio-group',
-      id='radio',
-      radios=[
-       {
-          id: '1',
-          value: 'Yes',
-          label: 'Yes'
+    {{ govukRadio({
+      "idPrefix": "example",
+      "name": "example",
+      "fieldset": {
+        "legendText": "Have you changed your name?",
+        "legendHintText": "This includes changing your last name or spelling your name differently."
+      },
+      "items": [
+        {
+          "value": "yes",
+          "text": "Yes"
         },
         {
-          id: '2',
-          value: 'No',
-          label: 'No'
-        },
-        {
-          id: '3',
-          value: 'No',
-          label: 'No',
-          checked: 'true'
-        },
-        {
-          id: '4',
-          value: 'NA',
-          label: 'Not applicable',
-          disabled: 'true'
+          "value": "no",
+          "text": "No",
+          "checked": true
         }
       ]
-    ) -}}
+    }) }}
 
-## Variants
+### Radio--with-html
+
+[Preview the radio--with-html variant](http://govuk-frontend-review.herokuapp.com/components/radio/with-html/preview)
+
+#### Markup
+
+    <fieldset class="govuk-c-fieldset">
+
+      <legend class="govuk-c-fieldset__legend">
+        <h1 class="govuk-heading-l">Which part of the Housing Act was your licence issued under?</h1>
+
+        <span class="govuk-c-fieldset__hint">Select one of the options below.</span>
+
+      </legend>
+
+      <div class="govuk-c-radio">
+        <input class="govuk-c-radio__input" id="housing-act-1" name="housing-act" type="radio" value="part-2">
+        <label class="govuk-c-label govuk-c-radio__label" for="housing-act-1">
+          <span class="govuk-heading-s govuk-!-mb-1">Part 2 of the Housing Act 2004</span> For properties that are 3 or more stories high and occupied by 5 or more people
+
+        </label>
+      </div>
+
+      <div class="govuk-c-radio">
+        <input class="govuk-c-radio__input" id="housing-act-2" name="housing-act" type="radio" value="part-3">
+        <label class="govuk-c-label govuk-c-radio__label" for="housing-act-2">
+          <span class="govuk-heading-s govuk-!-mb-1">Part 3 of the Housing Act 2004</span> For properties that are within a geographical area defined by a local council
+
+        </label>
+      </div>
+    </fieldset>
+
+#### Macro
+
+    {{ govukRadio({
+      "idPrefix": "housing-act",
+      "name": "housing-act",
+      "fieldset": {
+        "legendHtml": "<h1 class=\"govuk-heading-l\">Which part of the Housing Act was your licence issued under?</h1>",
+        "legendHintText": "Select one of the options below."
+      },
+      "items": [
+        {
+          "value": "part-2",
+          "html": "<span class=\"govuk-heading-s govuk-!-mb-1\">Part 2 of the Housing Act 2004</span> For properties that are 3 or more stories high and occupied by 5 or more people"
+        },
+        {
+          "value": "part-3",
+          "html": "<span class=\"govuk-heading-s govuk-!-mb-1\">Part 3 of the Housing Act 2004</span> For properties that are within a geographical area defined by a local council"
+        }
+      ]
+    }) }}
+
+### Radio--without-fieldset
+
+[Preview the radio--without-fieldset variant](http://govuk-frontend-review.herokuapp.com/components/radio/without-fieldset/preview)
+
+#### Markup
+
+    <div class="govuk-c-radio">
+      <input class="govuk-c-radio__input" id="colours-1" name="colours" type="radio" value="red">
+      <label class="govuk-c-label govuk-c-radio__label" for="colours-1">
+        Red
+
+      </label>
+    </div>
+
+    <div class="govuk-c-radio">
+      <input class="govuk-c-radio__input" id="colours-2" name="colours" type="radio" value="green">
+      <label class="govuk-c-label govuk-c-radio__label" for="colours-2">
+        Green
+
+      </label>
+    </div>
+
+    <div class="govuk-c-radio">
+      <input class="govuk-c-radio__input" id="colours-3" name="colours" type="radio" value="blue">
+      <label class="govuk-c-label govuk-c-radio__label" for="colours-3">
+        Blue
+
+      </label>
+    </div>
+
+#### Macro
+
+    {{ govukRadio({
+      "name": "colours",
+      "items": [
+        {
+          "value": "red",
+          "text": "Red"
+        },
+        {
+          "value": "green",
+          "text": "Green"
+        },
+        {
+          "value": "blue",
+          "text": "Blue"
+        }
+      ]
+    }) }}
 
 ## Dependencies
 
@@ -68,15 +187,17 @@ Please note, this component depends on @govuk-frontend/globals, which will autom
 
 When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
 
-      .pipe(sass({
-          includePaths: 'node_modules/'
-      }))
+<pre>  `.pipe(sass({
+        includePaths: 'node_modules/'
+    }))` 
+  </pre>
 
 ### Static asset path configuration
 
 To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
 
-    app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
+<pre>  `app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))` 
+  </pre>
 
 ## Component arguments
 
@@ -106,6 +227,18 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-c-table__row">
 
+<th class="govuk-c-table__header" scope="row">fieldset</th>
+
+<td class="govuk-c-table__cell ">object</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">Arguments for the fieldset component (e.g. legendText, legendHintText, errorMessage). See fieldset component.</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
 <th class="govuk-c-table__header" scope="row">classes</th>
 
 <td class="govuk-c-table__cell ">string</td>
@@ -118,37 +251,109 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-c-table__row">
 
+<th class="govuk-c-table__header" scope="row">idPrefix</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">String to prefix id for each radio item if no id is specified on each item.</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
 <th class="govuk-c-table__header" scope="row">name</th>
 
 <td class="govuk-c-table__cell ">string</td>
 
 <td class="govuk-c-table__cell ">Yes</td>
 
-<td class="govuk-c-table__cell ">Name of the group of radio buttons</td>
+<td class="govuk-c-table__cell ">Name attribute for each radio item.</td>
 
 </tr>
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header" scope="row">id</th>
-
-<td class="govuk-c-table__cell ">string</td>
-
-<td class="govuk-c-table__cell ">Yes</td>
-
-<td class="govuk-c-table__cell ">ID is prefixed to the ID of each radio button</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">radios</th>
+<th class="govuk-c-table__header" scope="row">items</th>
 
 <td class="govuk-c-table__cell ">array</td>
 
 <td class="govuk-c-table__cell ">Yes</td>
 
-<td class="govuk-c-table__cell ">Radios array with id, value, label, checked and disabled keys</td>
+<td class="govuk-c-table__cell ">Array of radio items.</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">text</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">Text to use within the radio label.</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">html</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">HTML to use within the radio label. If this is provided, the text argument will be ignored.</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">label</th>
+
+<td class="govuk-c-table__cell ">object</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">Provide additional attributes to the radio label.</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">checked</th>
+
+<td class="govuk-c-table__cell ">boolean</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">If true, radio will be checked.</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">disabled</th>
+
+<td class="govuk-c-table__cell ">boolean</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">If true, radio will be disabled.</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">attributes</th>
+
+<td class="govuk-c-table__cell ">object</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">Any extra HTML attributes (for example data attributes) to add to the radio container.</td>
 
 </tr>
 
@@ -162,11 +367,12 @@ If you are using Nunjucks,then macros take the following arguments
 
 Below is an example setup using express configure views:
 
-    nunjucks.configure('node_modules/@govuk-frontend`, {
-      autoescape: true,
-      cache: false,
-      express: app
-    })
+<pre>  `nunjucks.configure('node_modules/@govuk-frontend`, {
+    autoescape: true,
+    cache: false,
+    express: app
+  })` 
+  </pre>
 
 ## Getting updates
 
@@ -191,3 +397,7 @@ Guidelines can be found at [on our Github repository.](https://github.com/alphag
 ## License
 
 MIT
+
+</div>
+
+</div>

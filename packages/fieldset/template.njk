@@ -9,9 +9,9 @@
     <span class="govuk-c-fieldset__hint">{{ params.legendHintHtml | safe if params.legendHintHtml else params.legendHintText }}</span>
     {% endif %}
     {% if params.errorMessage %}
-    {{ govukErrorMessage(params.errorMessage) -}}
+    {{ govukErrorMessage(params.errorMessage) | trim | indent(4) -}}
     {% endif %}
   </legend>
-{%- endif -%}
-{{ caller() if caller }} {# if statement allows usage of `call` to be optional #}
+{% endif %}
+  {{ caller() | trim | indent(2) if caller }} {#- if statement allows usage of `call` to be optional -#}
 </fieldset>

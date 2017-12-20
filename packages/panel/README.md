@@ -1,3 +1,7 @@
+<div class="govuk-o-width-container">
+
+<div class="govuk-o-main-wrapper">
+
 # Panel
 
 ## Introduction
@@ -12,23 +16,48 @@ More information about when to use panel can be found on [GOV.UK Design System](
 
 ### Component default
 
-[Preview the panel component.](http://govuk-frontend-review.herokuapp.com/components/panel/preview)
+[Preview the panel component](http://govuk-frontend-review.herokuapp.com/components/panel/preview)
 
 #### Markup
 
+    <div class="govuk-c-panel govuk-c-panel--confirmation">
+      <h2 class="govuk-c-panel__title">
+        Application complete
+      </h2>
+      <div class="govuk-c-panel__body">
+        Your reference number<br><strong>HDJ2123F</strong>
+      </div>
+    </div>
+
 #### Macro
 
-      {% from "panel/macro.njk" import govukPanel %}
+    {{ govukPanel({
+      "titleText": "Application complete",
+      "html": "Your reference number<br><strong>HDJ2123F</strong>"
+    }) }}
 
-    {{- govukPanel(
-      classes='',
-      title='Application complete',
-      content='Your reference number is',
-      reference='HDJ2123F'
-      )
-    -}}
+### Panel--no-reference-number
 
-## Variants
+[Preview the panel--no-reference-number variant](http://govuk-frontend-review.herokuapp.com/components/panel/no-reference-number/preview)
+
+#### Markup
+
+    <div class="govuk-c-panel govuk-c-panel--confirmation extra-dummy-class">
+      <h2 class="govuk-c-panel__title">
+        Application complete
+      </h2>
+      <div class="govuk-c-panel__body">
+        Thank you for your application
+      </div>
+    </div>
+
+#### Macro
+
+    {{ govukPanel({
+      "classes": "extra-dummy-class",
+      "titleText": "Application complete",
+      "text": "Thank you for your application"
+    }) }}
 
 ## Dependencies
 
@@ -44,15 +73,17 @@ To consume the panel component you must be running npm version 5 or above.
 
 When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
 
-      .pipe(sass({
-          includePaths: 'node_modules/'
-      }))
+<pre>  `.pipe(sass({
+        includePaths: 'node_modules/'
+    }))` 
+  </pre>
 
 ### Static asset path configuration
 
 To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
 
-    app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
+<pre>  `app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))` 
+  </pre>
 
 ## Component arguments
 
@@ -82,6 +113,54 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-c-table__row">
 
+<th class="govuk-c-table__header" scope="row">titleText</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">Yes</td>
+
+<td class="govuk-c-table__cell ">Text for the panel title</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">titleHtml</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">Yes</td>
+
+<td class="govuk-c-table__cell ">HTML for the panel title. If this is provided, the titleText argument is ignored.</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">text</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">Text for the panel content</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">html</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">HTML for the panel content. If this is provided, the text argument is ignored.</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
 <th class="govuk-c-table__header" scope="row">classes</th>
 
 <td class="govuk-c-table__cell ">string</td>
@@ -94,37 +173,13 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header" scope="row">title</th>
+<th class="govuk-c-table__header" scope="row">attributes</th>
 
-<td class="govuk-c-table__cell ">string</td>
-
-<td class="govuk-c-table__cell ">Yes</td>
-
-<td class="govuk-c-table__cell ">The panel title</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">content</th>
-
-<td class="govuk-c-table__cell ">string</td>
+<td class="govuk-c-table__cell ">object</td>
 
 <td class="govuk-c-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">The panel content</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">reference</th>
-
-<td class="govuk-c-table__cell ">string</td>
-
-<td class="govuk-c-table__cell ">No</td>
-
-<td class="govuk-c-table__cell ">Optional reference number</td>
+<td class="govuk-c-table__cell ">Any extra HTML attributes (for example data attributes) to add to the panel container</td>
 
 </tr>
 
@@ -138,11 +193,12 @@ If you are using Nunjucks,then macros take the following arguments
 
 Below is an example setup using express configure views:
 
-    nunjucks.configure('node_modules/@govuk-frontend`, {
-      autoescape: true,
-      cache: false,
-      express: app
-    })
+<pre>  `nunjucks.configure('node_modules/@govuk-frontend`, {
+    autoescape: true,
+    cache: false,
+    express: app
+  })` 
+  </pre>
 
 ## Getting updates
 
@@ -167,3 +223,7 @@ Guidelines can be found at [on our Github repository.](https://github.com/alphag
 ## License
 
 MIT
+
+</div>
+
+</div>

@@ -1,8 +1,8 @@
-// Globals
-@import "@govuk-frontend/globals/spacing";
-@import "@govuk-frontend/globals/layout/grid";
+// Settings
+@import "@govuk-frontend/globals/common";
 
 // Components
+@import "@govuk-frontend/back-link/back-link";
 @import "@govuk-frontend/breadcrumbs/breadcrumbs";
 @import "@govuk-frontend/button/button";
 @import "@govuk-frontend/checkbox/checkbox";

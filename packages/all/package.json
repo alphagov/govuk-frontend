@@ -2,7 +2,8 @@
   "name": "@govuk-frontend/all",
   "version": "0.0.18-alpha",
   "dependencies": {
-    "@govuk-frontend/breadcrumb": "^0.0.18-alpha",
+    "@govuk-frontend/back-link": "^0.0.18-alpha",
+    "@govuk-frontend/breadcrumbs": "^0.0.18-alpha",
     "@govuk-frontend/button": "^0.0.18-alpha",
     "@govuk-frontend/checkbox": "^0.0.18-alpha",
     "@govuk-frontend/cookie-banner": "^0.0.18-alpha",

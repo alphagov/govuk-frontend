@@ -1,26 +1,23 @@
-@import "@govuk-frontend/globals/import-once";
-@import "@govuk-frontend/globals/font-face";
-@import "@govuk-frontend/globals/media-queries";
-@import "@govuk-frontend/globals/typography";
-@import "@govuk-frontend/globals/utilities/shapes";
-@import "@govuk-frontend/globals/utilities/visually-hidden";
+@import "@govuk-frontend/globals/common";
 
 @include exports("legal-text") {
 
   .govuk-c-legal-text {
-    position: relative;
-    padding: $govuk-spacing-scale-1 0;
+    @include govuk-font-regular-19;
+    @include govuk-text-colour;
 
-    font-family: $govuk-font-stack;
-    @include font-smoothing;
-    @include govuk-core-19;
+    position: relative;
+    @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom");
+    padding: $govuk-spacing-scale-2 0;
   }
 
   .govuk-c-legal-text__assistive {
-    @include govuk-u-visually-hidden;
+    @include govuk-h-visually-hidden;
   }
 
   .govuk-c-legal-text__icon {
+    @include govuk-font-bold;
+
     display: inline-block;
 
     position: absolute;
@@ -33,7 +30,6 @@
     padding-top: 3px;
 
     font-size: 1.6em;
-    @include govuk-bold;
     line-height: 35px;
   }
 

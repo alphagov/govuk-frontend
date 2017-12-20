@@ -1,20 +1,20 @@
-@import "@govuk-frontend/globals/import-once";
-@import "@govuk-frontend/globals/typography";
-@import "@govuk-frontend/globals/vars";
+@import "@govuk-frontend/globals/common";
 @import "@govuk-frontend/label/label";
 
 @include exports("select") {
   .govuk-c-select {
+    @include govuk-font-regular-19;
+
     -webkit-box-sizing: border-box;
+
             box-sizing: border-box; // should this be global?
     width: 100%;
     height: em(40px, 19px);
+    @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom");
+
     padding: $govuk-spacing-scale-1; // was 5px 4px 4px - size of it should be adjusted to match other form elements
     border: $govuk-border-width-form-element solid $govuk-text-colour;
 
-    font-family: $govuk-font-stack;
-    @include font-smoothing;
-    @include govuk-core-19;
     line-height: 1.25;
   }
 

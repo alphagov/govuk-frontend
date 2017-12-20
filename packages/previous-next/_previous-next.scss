@@ -1,30 +1,23 @@
-@import "@govuk-frontend/globals/import-once";
-@import "@govuk-frontend/globals/links";
-@import "@govuk-frontend/globals/media-queries";
-@import "@govuk-frontend/globals/typography";
-@import "@govuk-frontend/globals/utilities/clearfix";
-@import "@govuk-frontend/globals/vars";
+@import "@govuk-frontend/globals/common";
 
 @include exports("previous-next") {
 
   .govuk-c-previous-next {
-    @include font-smoothing;
     display: block;
     margin-right: -$govuk-spacing-scale-3;
-    // TODO: Make margins under components consistent
-    margin-bottom: $govuk-spacing-scale-5;
     margin-left: -$govuk-spacing-scale-3;
-    font-family: $govuk-font-stack;
+    @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom");
   }
 
   .govuk-c-previous-next__list {
-    @include govuk-u-clearfix;
+    @include govuk-h-clearfix;
     margin: 0;
     padding: 0;
   }
 
   .govuk-c-previous-next__item {
-    @include govuk-core-16;
+    @include govuk-font-regular-16;
+
     width: 50%;
     padding: 0;
     list-style: none;
@@ -65,7 +58,7 @@
     }
 
   .govuk-c-previous-next__link-title {
-    @include govuk-core-27;
+    @include govuk-font-regular-27;
     display: block;
     line-height: (33.75 / 27);
   }

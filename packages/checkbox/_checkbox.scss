@@ -1,24 +1,16 @@
-@import "@govuk-frontend/globals/import-once";
-@import "@govuk-frontend/globals/font-face";
-@import "@govuk-frontend/globals/helpers-ie";
-@import "@govuk-frontend/globals/media-queries";
-@import "@govuk-frontend/globals/typography";
-@import "@govuk-frontend/globals/vars";
+@import "@govuk-frontend/globals/common";
 
 @include exports("checkbox") {
   .govuk-c-checkbox {
+    @include govuk-font-regular-19;
+
     display: block;
     position: relative;
 
-
-    margin-bottom: $gutter-one-third;
+    margin-bottom: $govuk-spacing-scale-2;
     padding: 0 0 0 em(40px, 19px);
 
     clear: left;
-
-    font-family: $govuk-font-stack;
-    @include font-smoothing;
-    @include govuk-core-19;
   }
 
   .govuk-c-checkbox:last-child,
@@ -48,7 +40,6 @@
   .govuk-c-checkbox__label {
     display: block;
     padding: em(8px, 19px) em($govuk-spacing-scale-3, 19px) em($govuk-spacing-scale-1, 19px);
-    border: 2px solid transparent;
     cursor: pointer;
     // remove 300ms pause on mobile
     -ms-touch-action: manipulation;
