@@ -1,0 +1,33 @@
+@import "../../globals/scss/common";
+@import "../label/label";
+
+@include exports("select") {
+  .govuk-c-select {
+    @include govuk-font-regular-19;
+
+    -webkit-box-sizing: border-box;
+
+            box-sizing: border-box; // should this be global?
+    width: 100%;
+    height: em(40px, 19px);
+    @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom");
+
+    padding: $govuk-spacing-scale-1; // was 5px 4px 4px - size of it should be adjusted to match other form elements
+    border: $govuk-border-width-form-element solid $govuk-text-colour;
+
+    line-height: 1.25;
+  }
+
+  .govuk-c-select:focus {
+    outline: $govuk-focus-width solid $govuk-focus-colour;
+    outline-offset: 0;
+  }
+
+  .govuk-c-select option:active,
+  .govuk-c-select option:checked,
+  .govuk-c-select:focus::-ms-value {
+    color: $govuk-white;
+    background-color: $govuk-blue;
+  }
+
+}

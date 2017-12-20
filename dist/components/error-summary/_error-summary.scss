@@ -1,25 +1,14 @@
-@import "../../globals/scss/import-once";
-@import "../../globals/scss/font-face";
-@import "../../globals/scss/spacing";
-@import "../../globals/scss/typography";
-@import "../../globals/scss/vars";
-@import "../list/list";
+@import "../../globals/scss/common";
 
 @include exports("error-summary") {
 
   .govuk-c-error-summary {
+    @include govuk-text-colour;
 
-    padding: $govuk-spacing-scale-3 $govuk-spacing-scale-2;
-
+    @include govuk-responsive-padding($govuk-spacing-responsive-4);
     border: $govuk-border-width-mobile solid $govuk-error-colour;
 
-    font-family: $govuk-font-stack;
-    @include font-smoothing;
-
     @include mq($from: tablet) {
-
-      padding: $govuk-spacing-scale-4 $govuk-spacing-scale-3 $govuk-spacing-scale-3;
-
       border: $govuk-border-width-tablet solid $govuk-error-colour;
     }
 
@@ -34,26 +23,19 @@
   }
 
   .govuk-c-error-summary__title {
+    @include govuk-font-bold-24;
+
     margin-top: 0;
-    margin-bottom: $govuk-spacing-scale-2;
-
-    @include mq($from: tablet) {
-      margin-bottom: $govuk-spacing-scale-4;
-    }
-
-    font-family: $govuk-font-stack;
-    @include font-smoothing;
-    @include govuk-bold-24;
+    @include govuk-responsive-margin($govuk-spacing-responsive-4, "bottom");
   }
 
   .govuk-c-error-summary__body {
-    @include govuk-core-19;
+    @include govuk-font-regular-19;
   }
 
-    // TODO: consistent paragraph margins
     .govuk-c-error-summary__body p {
-      margin-top: 6px;
-      margin-bottom: 10px;
+      margin-top: 0;
+      @include govuk-responsive-margin($govuk-spacing-responsive-4, "bottom");
     }
 
   // Cross-component class - adjusts styling of list component
@@ -65,8 +47,9 @@
     .govuk-c-error-summary__list a:visited,
     .govuk-c-error-summary__list a:hover,
     .govuk-c-error-summary__list a:active {
+      @include govuk-typography-weight-bold;
+
       color: $govuk-error-colour;
-      font-weight: bold;
       text-decoration: underline;
     }
 

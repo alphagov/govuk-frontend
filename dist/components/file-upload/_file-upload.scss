@@ -1,13 +1,11 @@
-@import "../../globals/scss/import-once";
-@import "../../globals/scss/font-face";
-@import "../../globals/scss/typography";
-@import "../../globals/scss/vars";
+@import "../../globals/scss/common";
 
 @include exports("file-upload") {
   .govuk-c-file-upload {
-    font-family: $govuk-font-stack;
-    @include font-smoothing;
-    @include govuk-core-19;
+    @include govuk-font-regular-19;
+    @include govuk-text-colour;
+
+    @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom");
   }
 
   .govuk-c-file-upload:focus {
