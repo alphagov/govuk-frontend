@@ -1,7 +1,7 @@
 {
   "name": "@govuk-frontend/fieldset",
-  "version": "0.0.18-alpha",
+  "version": "0.0.19-alpha",
   "dependencies": {
-    "@govuk-frontend/globals": "^0.0.18-alpha"
+    "@govuk-frontend/globals": "^0.0.19-alpha"
   }
 }

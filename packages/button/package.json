@@ -1,8 +1,8 @@
 {
   "name": "@govuk-frontend/button",
-  "version": "0.0.18-alpha",
+  "version": "0.0.19-alpha",
   "dependencies": {
-    "@govuk-frontend/globals": "^0.0.18-alpha",
-    "@govuk-frontend/icons": "^0.0.17-alpha"
+    "@govuk-frontend/globals": "^0.0.19-alpha",
+    "@govuk-frontend/icons": "^0.0.19-alpha"
   }
 }
