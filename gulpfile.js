@@ -6,9 +6,9 @@ const taskListing = require('gulp-task-listing')
 const runsequence = require('run-sequence')
 const taskArguments = require('./tasks/gulp/task-arguments')
 const nodemon = require('nodemon')
-const del = require('del')
 
 // Gulp sub-tasks
+require('./tasks/gulp/clean.js')
 require('./tasks/gulp/lint.js')
 require('./tasks/gulp/test-app.js')
 require('./tasks/gulp/test-components.js')
@@ -33,13 +33,6 @@ gulp.task('scripts', cb => {
 // --------------------------------------
 gulp.task('styles', cb => {
   runsequence('scss:lint', 'scss:compile', cb)
-})
-
-// Clean task for a specified folder ----
-// Removes all old files
-// --------------------------------------
-gulp.task('clean', function () {
-  return del([taskArguments.destination + '/**/*'])
 })
 
 // Copy icons task ----------------------
@@ -101,6 +94,7 @@ gulp.task('serve', ['watch'], () => {
 // -------------------------------------
 gulp.task('build:packages', cb => {
   runsequence(
+              'clean',
               'compile:components',
               'copy-files',
               'generate:readme',
