@@ -1,5 +1,7 @@
 @include exports("typography") {
 
+  // Headings
+
   .govuk-heading-xl {
     @include govuk-text-colour;
     @include govuk-font-bold-48;
@@ -123,6 +125,10 @@
   .govuk-body {
     @extend .govuk-body-m;
   }
+
+  // Contextual adjustments
+
+  // Add top padding to headings that appear directly after paragraphs
 
   .govuk-body-l  + .govuk-heading-l {
     padding-top: $govuk-spacing-scale-1;
