@@ -17,9 +17,8 @@
     { text: componentName | replace("-", " ") | capitalize }
   ]
 }) }}
-{% endif %}
-
 <div class="govuk-o-main-wrapper">
+{% endif %}
   <h1 class="govuk-heading-xl">
   {% block componentName %}
   {{ componentName | replace("-", " ") | capitalize }}
@@ -57,71 +56,66 @@
   <p class="govuk-body">{% block componentDependencies %}{% endblock %}</p>
 
   <h2 class="govuk-heading-l">Installation</h2>
-  <pre><code>npm install --save @govuk-frontend/{{ componentName }}</code></pre>
+
+  <pre><code>
+  npm install --save @govuk-frontend/{{ componentName }}
+  </code></pre>
 
   <h2 class="govuk-heading-l">Requirements</h2>
   <h3 class="govuk-heading-m">Build tool configuration</h3>
   <p class="govuk-body">When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp</p>
-  <pre>
-  <code>
-    .pipe(sass({
-        includePaths: 'node_modules/'
-    }))
-  </code>
-  </pre>
+  <pre><code>
+  .pipe(sass({
+    includePaths: 'node_modules/'
+  }))
+  </code></pre>
+
 
   <h3 class="govuk-heading-m">Static asset path configuration</h3>
   <p class="govuk-body">To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:</p>
-  <pre>
-  <code>
+
+  <pre><code>
   app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
-  </code>
-  </pre>
+  </code></pre>
   {% endif %}
 
   <h2 class="govuk-heading-l">Component arguments</h2>
   <p class="govuk-body">If you are using Nunjucks,then macros take the following arguments</p>
-  <div>
+
   {% from "table/macro.njk" import govukTable %}
   {% block componentArguments %}
   {% endblock %}
-  </div>
 
   {% if isReadme %}
   <h3 class="govuk-heading-m">Setting up Nunjucks views and paths</h3>
   <p class="govuk-body">Below is an example setup using express configure views:</p>
-  <pre>
-  <code>
-  nunjucks.configure('node_modules/@govuk-frontend`, {
+
+  <pre><code>
+  nunjucks.configure('node_modules/@govuk-frontend', {
     autoescape: true,
     cache: false,
     express: app
   })
-  </code>
-  </pre>
+  </code></pre>
 
   <h2 class="govuk-heading-l">Getting updates</h2>
 
   <p class="govuk-body">To check whether you have the latest version of the button run:</p>
 
-  <pre><code>npm outdated @govuk-frontend/{{ componentName }}</code></pre>
+  <pre><code>
+  npm outdated @govuk-frontend/{{ componentName }}
+  </code></pre>
 
   <p class="govuk-body">To update the latest version run:</p>
 
-  <pre><code>npm update @govuk-frontend/{{ componentName }}</code></pre>
+  <pre><code>
+  npm update @govuk-frontend/{{ componentName }}
+  </code></pre>
 
   <h2 class="govuk-heading-l">Contribution</h2>
   <p class="govuk-body">
     Guidelines can be found at <a href="https://github.com/alphagov/govuk-frontend/blob/master/CONTRIBUTING.md" title="link to contributing guidelines on our github repository">on our Github repository.</a>
   </p>
-
-  <h2 class="govuk-heading-l">Acknowledgements/credits</h2>
-
-  <ul class="govuk-list">
-    <li>GDS developers</li>
-    <li>Jani Kraner</li>
-    <li>Gemma Leigh</li>
-  </ul>
 
   <h2 class="govuk-heading-l">License</h2>
   <p class="govuk-body">MIT</p>
