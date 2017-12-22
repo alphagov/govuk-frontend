@@ -1,7 +1,7 @@
 @import "../../globals/scss/common";
 
-@include exports("checkbox") {
-  .govuk-c-checkbox {
+@include exports("checkboxes") {
+  .govuk-c-checkboxes__item {
     @include govuk-font-regular-19;
 
     display: block;
@@ -13,12 +13,12 @@
     clear: left;
   }
 
-  .govuk-c-checkbox:last-child,
-  .govuk-c-checkbox:last-of-type {
+  .govuk-c-checkboxes__item:last-child,
+  .govuk-c-checkboxes__item:last-of-type {
     margin-bottom: 0;
   }
 
-  .govuk-c-checkbox__input {
+  .govuk-c-checkboxes__input {
     position: absolute;
 
     z-index: 1;
@@ -37,7 +37,7 @@
     }
   }
 
-  .govuk-c-checkbox__label {
+  .govuk-c-checkboxes__label {
     display: block;
     padding: em(8px, 19px) em($govuk-spacing-scale-3, 19px) em($govuk-spacing-scale-1, 19px);
     cursor: pointer;
@@ -46,7 +46,7 @@
     touch-action: manipulation;
   }
 
-  .govuk-c-checkbox__input + .govuk-c-checkbox__label::before {
+  .govuk-c-checkboxes__input + .govuk-c-checkboxes__label::before {
     content: "";
     box-sizing: border-box;
     position: absolute;
@@ -60,7 +60,7 @@
     // padding-bottom: 1px;
   }
 
-  .govuk-c-checkbox__input + .govuk-c-checkbox__label::after {
+  .govuk-c-checkboxes__input + .govuk-c-checkboxes__label::after {
     content: "";
 
     position: absolute;
@@ -82,22 +82,22 @@
   }
 
   // Focused state
-  .govuk-c-checkbox__input:focus + .govuk-c-checkbox__label::before {
+  .govuk-c-checkboxes__input:focus + .govuk-c-checkboxes__label::before {
     box-shadow: 0 0 0 $govuk-focus-width $govuk-focus-colour;
   }
 
   // Selected state
-  .govuk-c-checkbox__input:checked + .govuk-c-checkbox__label::after {
+  .govuk-c-checkboxes__input:checked + .govuk-c-checkboxes__label::after {
     opacity: 1;
   }
 
   // Disabled state
-  .govuk-c-checkbox__input:disabled,
-  .govuk-c-checkbox__input:disabled + .govuk-c-checkbox__label {
+  .govuk-c-checkboxes__input:disabled,
+  .govuk-c-checkboxes__input:disabled + .govuk-c-checkboxes__label {
     cursor: default;
   }
 
-  .govuk-c-checkbox__input:disabled + .govuk-c-checkbox__label {
+  .govuk-c-checkboxes__input:disabled + .govuk-c-checkboxes__label {
     opacity: .5;
   }
 }
