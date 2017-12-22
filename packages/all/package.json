@@ -21,7 +21,7 @@
     "@govuk-frontend/panel": "^0.0.19-alpha",
     "@govuk-frontend/phase-banner": "^0.0.19-alpha",
     "@govuk-frontend/previous-next": "^0.0.19-alpha",
-    "@govuk-frontend/radio": "^0.0.19-alpha",
+    "@govuk-frontend/radios": "^0.0.19-alpha",
     "@govuk-frontend/select": "^0.0.19-alpha",
     "@govuk-frontend/skip-link": "^0.0.19-alpha",
     "@govuk-frontend/table": "^0.0.19-alpha",
