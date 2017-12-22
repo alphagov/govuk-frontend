@@ -1,4 +1,0 @@
-// Convert pixels to em
-@function em($px, $govuk-context-font-size) {
-  @return #{$px / $govuk-context-font-size}em;
-}

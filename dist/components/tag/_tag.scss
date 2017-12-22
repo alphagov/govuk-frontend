@@ -1,0 +1,22 @@
+@import "../../globals/scss/common";
+
+@include exports("tag") {
+  .govuk-c-tag {
+    @include govuk-font-bold-16;
+
+    display: inline-block;
+    padding: $govuk-spacing-scale-1 $govuk-spacing-scale-1 0;
+
+    color: $govuk-white;
+    background-color: $govuk-blue;
+    letter-spacing: 1px;
+    line-height: 1.25;
+
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .govuk-c-tag--inactive {
+    background-color: $govuk-grey-1;
+  }
+}

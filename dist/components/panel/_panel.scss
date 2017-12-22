@@ -1,22 +1,24 @@
-@import "../../globals/scss/import-once";
-@import "../../globals/scss/helpers-px-to-em";
-@import "../../globals/scss/font-face";
-@import "../../globals/scss/spacing";
-@import "../../globals/scss/typography";
-@import "../../globals/scss/vars";
+@import "../../globals/scss/common";
 
 @include exports("panel") {
 
   .govuk-c-panel {
-    // TODO: Make margins under components consistent
-    margin-bottom: $govuk-spacing-scale-3;
-    padding: $govuk-spacing-scale-5 $govuk-spacing-scale-3;
+    @include govuk-font-regular-19;
 
-    font-family: $govuk-font-stack;
-    @include font-smoothing;
-    @include govuk-core-19;
+    -webkit-box-sizing: border-box;
+
+            box-sizing: border-box;
+
+    margin-bottom: $govuk-spacing-scale-3;
+    padding: $govuk-spacing-scale-7 - $govuk-border-width;
+
+    border: $govuk-border-width solid transparent;
 
     text-align: center;
+
+    @include mq($until: tablet) {
+      padding: $govuk-spacing-scale-6 - $govuk-border-width;
+    }
   }
 
   .govuk-c-panel--confirmation {
@@ -24,24 +26,15 @@
     background: $govuk-turquoise;
   }
 
-  .govuk-c-panel--information {
-    color: $govuk-white;
-    background: $govuk-blue;
-  }
-
   .govuk-c-panel__title {
-    margin-top: em($govuk-spacing-scale-6, 48px);
-    margin-bottom: em($govuk-spacing-scale-5, 48px);
+    margin-top: 0;
+    margin-bottom: $govuk-spacing-scale-6;
 
-    @include govuk-bold-48;
+    @include govuk-font-bold-48;
   }
 
   .govuk-c-panel__body {
-    // TODO: Fix margin values
-    margin-top: em($govuk-spacing-scale-2, 48px);
-    margin-bottom: em($govuk-spacing-scale-5, 48px); //use to be 37.895px
-
-    @include govuk-core-36;
+    @include govuk-font-regular-36;
   }
 
 }

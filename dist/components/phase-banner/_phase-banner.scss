@@ -1,23 +1,15 @@
-@import "../../globals/scss/import-once";
-@import "../../globals/scss/font-face";
-@import "../../globals/scss/helpers-px-to-em";
-@import "../../globals/scss/spacing";
-@import "../../globals/scss/typography";
-@import "../../globals/scss/vars";
-@import "../phase-tag/phase-tag";
+@import "../../globals/scss/common";
+@import "../tag/tag";
 
 @include exports("phase-banner") {
   .govuk-c-phase-banner {
-    padding-top: em($govuk-spacing-scale-2, 16px);
-    padding-bottom: em($govuk-spacing-scale-2, 16px); //use to be 8
-    // Apply styling to tablet and upwards
-    // @include mq($from:tablet) {
-    //  padding-bottom: em(10px, 16px);
-    // }
-    border-bottom: 1px solid $govuk-border-colour;
+    @include govuk-font-regular-16;
+    @include govuk-text-colour;
 
-    font-family: $govuk-font-stack;
-    @include font-smoothing;
+    padding-top: $govuk-spacing-scale-2;
+    padding-bottom: $govuk-spacing-scale-2;
+
+    border-bottom: 1px solid $govuk-border-colour;
   }
 
   .govuk-c-phase-banner__content {
@@ -25,10 +17,12 @@
     margin: 0;
   }
 
+  .govuk-c-phase-banner__content__tag {
+    margin-right: $govuk-spacing-scale-2;
+  }
+
   .govuk-c-phase-banner__text {
     display: table-cell;
-    color: $govuk-banner-text-colour;
     vertical-align: baseline;
-    @include govuk-core-16;
   }
 }
