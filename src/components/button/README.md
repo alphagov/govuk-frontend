@@ -14,45 +14,171 @@ Buttons are configured to perform an action and they can have a different look. 
 
 ### Component default
 
-[Preview the button component.](http://govuk-frontend-review.herokuapp.com/components/button/preview)
+[Preview the button component](http://govuk-frontend-review.herokuapp.com/components/button/preview)
 
 #### Markup
 
+    <input value="Save and continue" type="submit" class="govuk-c-button example-class">
+
 #### Macro
 
-      {% from "button/macro.njk" import govukButton %}
-
-    {{ govukButton(classes='', text='Save and continue') }}
-
-## Variants
+    {{ govukButton({
+      "text": "Save and continue",
+      "classes": "example-class"
+    }) }}
 
 ### Button--disabled
 
-[Preview button--disabled variant.](/components/button/button--disabled/preview)
+[Preview the button--disabled variant](http://govuk-frontend-review.herokuapp.com/components/button/disabled/preview)
 
 #### Markup
 
-    <input class="govuk-c-button govuk-c-button--disabled" value="Save and continue" disabled="disabled" aria-disabled="true">
+    <input value="Disabled button" type="submit" disabled="disabled" aria-disabled="true" class="govuk-c-button govuk-c-button--disabled">
 
 #### Macro
 
-    {% from "button/macro.njk" import govukButton %}
+    {{ govukButton({
+      "text": "Disabled button",
+      "disabled": true
+    }) }}
 
-    {{ govukButton(classes='', text='Save and continue', isDisabled='true') }}
+### Button--link
+
+[Preview the button--link variant](http://govuk-frontend-review.herokuapp.com/components/button/link/preview)
+
+#### Markup
+
+    <a href="/" role="button" class="govuk-c-button">
+      Link button
+    </a>
+
+#### Macro
+
+    {{ govukButton({
+      "text": "Link button",
+      "href": "/"
+    }) }}
+
+### Button--disabled-link
+
+[Preview the button--disabled-link variant](http://govuk-frontend-review.herokuapp.com/components/button/disabled-link/preview)
+
+#### Markup
+
+    <a href="/" role="button" class="govuk-c-button govuk-c-button--disabled">
+      Disabled link button
+    </a>
+
+#### Macro
+
+    {{ govukButton({
+      "text": "Disabled link button",
+      "href": "/",
+      "disabled": true
+    }) }}
 
 ### Button--start
 
-[Preview button--start variant.](/components/button/button--start/preview)
+[Preview the button--start variant](http://govuk-frontend-review.herokuapp.com/components/button/start/preview)
 
 #### Markup
 
-    <a class="govuk-c-button govuk-c-button--start" href="/" role="button">Start now</a>
+    <input value="Start now button" type="submit" class="govuk-c-button govuk-c-button--start">
 
 #### Macro
 
-    {% from "button/macro.njk" import govukButton %}
+    {{ govukButton({
+      "text": "Start now button",
+      "classes": "govuk-c-button--start"
+    }) }}
 
-    {{ govukButton(classes='', text='Start now', url='/', isStart='true') }}
+### Button--start-link
+
+[Preview the button--start-link variant](http://govuk-frontend-review.herokuapp.com/components/button/start-link/preview)
+
+#### Markup
+
+    <a href="/" role="button" class="govuk-c-button govuk-c-button--start">
+      Start now link button
+    </a>
+
+#### Macro
+
+    {{ govukButton({
+      "text": "Start now link button",
+      "href": "/",
+      "classes": "govuk-c-button--start"
+    }) }}
+
+### Button--button-with-html
+
+[Preview the button--button-with-html variant](http://govuk-frontend-review.herokuapp.com/components/button/button-with-html/preview)
+
+#### Markup
+
+    <button name="start-now" type="submit" class="govuk-c-button">
+      Start <em>now</em>
+    </button>
+
+#### Macro
+
+    {{ govukButton({
+      "name": "start-now",
+      "html": "Start <em>now</em>"
+    }) }}
+
+### Button--explicit-button
+
+[Preview the button--explicit-button variant](http://govuk-frontend-review.herokuapp.com/components/button/explicit-button/preview)
+
+#### Markup
+
+    <button name="start-now" type="submit" class="govuk-c-button">
+      Start now
+    </button>
+
+#### Macro
+
+    {{ govukButton({
+      "name": "start-now",
+      "text": "Start now",
+      "element": "button"
+    }) }}
+
+### Button--button-with-value
+
+[Preview the button--button-with-value variant](http://govuk-frontend-review.herokuapp.com/components/button/button-with-value/preview)
+
+#### Markup
+
+    <button value="start" name="start-now" type="submit" class="govuk-c-button">
+      Start now
+    </button>
+
+#### Macro
+
+    {{ govukButton({
+      "name": "start-now",
+      "value": "start",
+      "text": "Start now",
+      "element": "button"
+    }) }}
+
+### Button--non-submit-button
+
+[Preview the button--non-submit-button variant](http://govuk-frontend-review.herokuapp.com/components/button/non-submit-button/preview)
+
+#### Markup
+
+    <input value="Add another" name="add-another" type="button" class="govuk-c-button">
+
+#### Macro
+
+    {{ govukButton({
+      "name": "add-another",
+      "text": "Add another",
+      "type": "button"
+    }) }}
 
 ## Dependencies
 
@@ -62,7 +188,7 @@ Please note, this component depends on @govuk-frontend/globals and @govuk-fronte
 
 ## Installation
 
-    npm install --save @govuk-frontend/button
+      npm install --save @govuk-frontend/button
 
 ## Requirements
 
@@ -71,20 +197,18 @@ Please note, this component depends on @govuk-frontend/globals and @govuk-fronte
 When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
 
       .pipe(sass({
-          includePaths: 'node_modules/'
+        includePaths: 'node_modules/'
       }))
 
 ### Static asset path configuration
 
 To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
 
-    app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
+      app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
 ## Component arguments
 
 If you are using Nunjucks,then macros take the following arguments
-
-<div>
 
 <table class="govuk-c-table">
 
@@ -108,6 +232,102 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-c-table__row">
 
+<th class="govuk-c-table__header" scope="row">element</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">Yes</td>
+
+<td class="govuk-c-table__cell ">Whether to use an `input`, `button` or `a` element to create the button. In most cases you will not need to set this as it will be configured automatically if you use `href` or `html`.</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">text</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">Yes</td>
+
+<td class="govuk-c-table__cell ">Text for the button</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">html</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">Yes</td>
+
+<td class="govuk-c-table__cell ">HTML for the button or link. If this is provided, the `text` argument will be ignored and `element` will be automatically set to `button` unless `href` is also set, or it has already been defined. This argument has no effect if `element` is set to `input`.</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">name</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">Yes</td>
+
+<td class="govuk-c-table__cell ">Name for the `input` or `button`. This has no effect on `a` elements.</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">type</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">Yes</td>
+
+<td class="govuk-c-table__cell ">Type of `input` or `button` – `button`, `submit` or `reset`. Defaults to `submit`. This has no effect on `a` elements.</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">value</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">Yes</td>
+
+<td class="govuk-c-table__cell ">Value for the `button` tag. This has no effect on `a` or `input` elements.</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">disabled</th>
+
+<td class="govuk-c-table__cell ">boolean</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">Whether the button should be disabled. For button and input elements, `disabled` and `aria-disabled` attributes will be set automatically.</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">href</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">The URL that the button should link to. If this is set, `element` will be automatically set to `a` if it has not already been defined.</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
 <th class="govuk-c-table__header" scope="row">classes</th>
 
 <td class="govuk-c-table__cell ">string</td>
@@ -120,49 +340,13 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header" scope="row">text</th>
+<th class="govuk-c-table__header" scope="row">attributes</th>
 
-<td class="govuk-c-table__cell ">string</td>
-
-<td class="govuk-c-table__cell ">Yes</td>
-
-<td class="govuk-c-table__cell ">Button or link text</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">isStart</th>
-
-<td class="govuk-c-table__cell ">boolean</td>
+<td class="govuk-c-table__cell ">object</td>
 
 <td class="govuk-c-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Adds the class govuk-c-button--start for a "Start now" button</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">isDisabled</th>
-
-<td class="govuk-c-table__cell ">boolean</td>
-
-<td class="govuk-c-table__cell ">No</td>
-
-<td class="govuk-c-table__cell ">Disables the button - adds the class govuk-c-button--disabled and sets disabled="disabled" and aria-disabled="true"</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">url</th>
-
-<td class="govuk-c-table__cell ">string</td>
-
-<td class="govuk-c-table__cell ">No</td>
-
-<td class="govuk-c-table__cell ">Url that the hyperlink points to</td>
+<td class="govuk-c-table__cell ">Any extra HTML attributes (for example data attributes) to add to the error message span tag</td>
 
 </tr>
 
@@ -170,37 +354,29 @@ If you are using Nunjucks,then macros take the following arguments
 
 </table>
 
-</div>
-
 ### Setting up Nunjucks views and paths
 
 Below is an example setup using express configure views:
 
-    nunjucks.configure('node_modules/@govuk-frontend`, {
-      autoescape: true,
-      cache: false,
-      express: app
-    })
+      nunjucks.configure('node_modules/@govuk-frontend', {
+        autoescape: true,
+        cache: false,
+        express: app
+      })
 
 ## Getting updates
 
 To check whether you have the latest version of the button run:
 
-    npm outdated @govuk-frontend/button
+      npm outdated @govuk-frontend/button
 
 To update the latest version run:
 
-    npm update @govuk-frontend/button
+      npm update @govuk-frontend/button
 
 ## Contribution
 
 Guidelines can be found at [on our Github repository.](https://github.com/alphagov/govuk-frontend/blob/master/CONTRIBUTING.md "link to contributing guidelines on our github repository")
-
-## Acknowledgements/credits
-
-*   GDS developers
-*   Jani Kraner
-*   Gemma Leigh
 
 ## License
 
