@@ -118,7 +118,7 @@
   // Using extend to alias means we also inherit any contextual adjustments that
   // refer to the 'original' class name
 
-  .govuk-body-lede {
+  .govuk-body-lead {
     @extend .govuk-body-l;
   }
 
