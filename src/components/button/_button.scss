@@ -67,7 +67,7 @@
 
     &:hover,
     &:focus {
-      background-color: darken($govuk-button-colour, 5%);
+      background-color: $govuk-button-hover-colour;
     }
 
     &:active {
