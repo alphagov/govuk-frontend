@@ -139,14 +139,17 @@
   }
 
   .govuk-body-m  + .govuk-heading-l,
-  .govuk-body-s  + .govuk-heading-l {
+  .govuk-body-s  + .govuk-heading-l,
+  .govuk-list + .govuk-heading-l {
     @include govuk-responsive-padding($govuk-spacing-responsive-4, "top");
   }
 
   .govuk-body-m + .govuk-heading-m,
   .govuk-body-s + .govuk-heading-m,
+  .govuk-list + .govuk-heading-m,
   .govuk-body-m + .govuk-heading-s,
-  .govuk-body-s + .govuk-heading-s {
+  .govuk-body-s + .govuk-heading-s,
+  .govuk-list + .govuk-heading-s {
     padding-top: $govuk-spacing-scale-1;
 
     @include mq($from: tablet) {
