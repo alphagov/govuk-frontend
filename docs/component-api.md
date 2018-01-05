@@ -22,24 +22,6 @@ Example of implementing logic in a component template:
 
 Example shows that if `html` and `text` arguments are present, then `html` takes precedence over `text` and we are not escaping it.
 
-## Allow for text argument to be passed as a single argument
-When the users don't want to specify extra attributes we should allow them to call a component without having to pass an entire object.
-
-Example:
-
-`govukErrorMessage("Full name must be provided")`
-
-This is possible for components that rely only on `text` and `html` attributes.
-
-We do this in the macro so that if in the future we transpile the templates we do not have to worry about mimicking this functionality in other languages.
-
-Example of implementing this logic in a component macro:
-```
-{% if params|string === params %}
-  {% set params = { text: params } %}
-{% endif %}
-```
-
 ## Naming attributes
 We should use **camelCase** for naming attributes.
 
