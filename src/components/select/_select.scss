@@ -8,6 +8,7 @@
       $govuk-font-19,
       $override-line-height: 1.25
     );
+    @include govuk-focusable;
 
     box-sizing: border-box; // should this be global?
     width: 100%;
@@ -16,11 +17,6 @@
 
     padding: $govuk-spacing-scale-1; // was 5px 4px 4px - size of it should be adjusted to match other form elements
     border: $govuk-border-width-form-element solid $govuk-text-colour;
-  }
-
-  .govuk-c-select:focus {
-    outline: $govuk-focus-width solid $govuk-focus-colour;
-    outline-offset: 0;
   }
 
   .govuk-c-select option:active,
