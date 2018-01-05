@@ -14,7 +14,7 @@
         "classes": 'govuk-c-date-input__label'
       },
       "id": params.id + "-" + item.name,
-      "classes": "govuk-c-date-input__input " + item.classes,
+      "classes": "govuk-c-date-input__input" + (" " + item.classes if item.classes),
       "name": params.name + "-" + item.name,
       "value": item.value
     }) | indent(4) | trim }}
