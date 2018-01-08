@@ -9,6 +9,7 @@
       $govuk-font-19,
       $override-line-height: 1.25
     );
+    @include govuk-focusable;
 
     box-sizing: border-box; // should this be global?
     display: block;
@@ -20,10 +21,6 @@
     border-radius: 0;
 
     -webkit-appearance: none;
-  }
-
-  .govuk-c-textarea:focus {
-    outline: $govuk-focus-width solid $govuk-focus-colour;
   }
 
   .govuk-c-textarea--error {
