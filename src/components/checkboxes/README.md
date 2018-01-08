@@ -1,7 +1,3 @@
-<div class="govuk-o-width-container">
-
-<div class="govuk-o-main-wrapper">
-
 # Checkboxes
 
 ## Introduction
@@ -32,29 +28,29 @@ More information about when to use checkboxes can be found on [GOV.UK Design Sys
         </legend>
 
         <div class="govuk-c-checkboxes__item">
-            <input class="govuk-c-checkboxes__input" id="nationality-1" name="nationality" type="checkbox" value="british">
-            <label class="govuk-c-label govuk-c-checkboxes__label" for="nationality-1">
-              British
+          <input class="govuk-c-checkboxes__input" id="nationality-1" name="nationality" type="checkbox" value="british">
+          <label class="govuk-c-label govuk-c-checkboxes__label" for="nationality-1">
+            British
 
-            </label>
-          </div>
+          </label>
+        </div>
 
-          <div class="govuk-c-checkboxes__item">
-            <input class="govuk-c-checkboxes__input" id="nationality-2" name="nationality" type="checkbox" value="irish">
-            <label class="govuk-c-label govuk-c-checkboxes__label" for="nationality-2">
-              Irish
+        <div class="govuk-c-checkboxes__item">
+          <input class="govuk-c-checkboxes__input" id="nationality-2" name="nationality" type="checkbox" value="irish">
+          <label class="govuk-c-label govuk-c-checkboxes__label" for="nationality-2">
+            Irish
 
-            </label>
-          </div>
+          </label>
+        </div>
 
-          <div class="govuk-c-checkboxes__item">
-            <input class="govuk-c-checkboxes__input" id="nationality-3" name="nationality" type="checkbox" value="other">
-            <label class="govuk-c-label govuk-c-checkboxes__label" for="nationality-3">
-              Citizen of another country
+        <div class="govuk-c-checkboxes__item">
+          <input class="govuk-c-checkboxes__input" id="nationality-3" name="nationality" type="checkbox" value="other">
+          <label class="govuk-c-label govuk-c-checkboxes__label" for="nationality-3">
+            Citizen of another country
 
-            </label>
-          </div>
-      </fieldset>
+          </label>
+        </div>
+        </fieldset>
 
     </div>
 
@@ -101,29 +97,29 @@ More information about when to use checkboxes can be found on [GOV.UK Design Sys
         </legend>
 
         <div class="govuk-c-checkboxes__item">
-            <input class="govuk-c-checkboxes__input" id="undefined-1" name="" type="checkbox" value="animal">
-            <label class="govuk-c-label govuk-c-checkboxes__label" for="undefined-1">
-              Waste from animal carcasses
+          <input class="govuk-c-checkboxes__input" id="undefined-1" name="" type="checkbox" value="animal">
+          <label class="govuk-c-label govuk-c-checkboxes__label" for="undefined-1">
+            Waste from animal carcasses
 
-            </label>
-          </div>
+          </label>
+        </div>
 
-          <div class="govuk-c-checkboxes__item">
-            <input class="govuk-c-checkboxes__input" id="undefined-2" name="" type="checkbox" value="mines">
-            <label class="govuk-c-label govuk-c-checkboxes__label" for="undefined-2">
-              Waste from mines or quarries
+        <div class="govuk-c-checkboxes__item">
+          <input class="govuk-c-checkboxes__input" id="undefined-2" name="" type="checkbox" value="mines">
+          <label class="govuk-c-label govuk-c-checkboxes__label" for="undefined-2">
+            Waste from mines or quarries
 
-            </label>
-          </div>
+          </label>
+        </div>
 
-          <div class="govuk-c-checkboxes__item">
-            <input class="govuk-c-checkboxes__input" id="undefined-3" name="" type="checkbox" value="farm">
-            <label class="govuk-c-label govuk-c-checkboxes__label" for="undefined-3">
-              Farm or agricultural waste
+        <div class="govuk-c-checkboxes__item">
+          <input class="govuk-c-checkboxes__input" id="undefined-3" name="" type="checkbox" value="farm">
+          <label class="govuk-c-label govuk-c-checkboxes__label" for="undefined-3">
+            Farm or agricultural waste
 
-            </label>
-          </div>
-      </fieldset>
+          </label>
+        </div>
+        </fieldset>
 
     </div>
 
@@ -241,7 +237,7 @@ To consume the checkboxes component you must be running npm version 5 or above.
 
 ## Installation
 
-    npm install --save @govuk-frontend/checkboxes
+      npm install --save @govuk-frontend/checkboxes
 
 ## Requirements
 
@@ -249,23 +245,19 @@ To consume the checkboxes component you must be running npm version 5 or above.
 
 When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
 
-<pre>  `.pipe(sass({
+      .pipe(sass({
         includePaths: 'node_modules/'
-    }))` 
-  </pre>
+      }))
 
 ### Static asset path configuration
 
 To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
 
-<pre>  `app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))` 
-  </pre>
+      app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
 ## Component arguments
 
 If you are using Nunjucks,then macros take the following arguments
-
-<div>
 
 <table class="govuk-c-table">
 
@@ -423,43 +415,30 @@ If you are using Nunjucks,then macros take the following arguments
 
 </table>
 
-</div>
-
 ### Setting up Nunjucks views and paths
 
 Below is an example setup using express configure views:
 
-<pre>  `nunjucks.configure('node_modules/@govuk-frontend`, {
-    autoescape: true,
-    cache: false,
-    express: app
-  })` 
-  </pre>
+      nunjucks.configure('node_modules/@govuk-frontend', {
+        autoescape: true,
+        cache: false,
+        express: app
+      })
 
 ## Getting updates
 
 To check whether you have the latest version of the button run:
 
-    npm outdated @govuk-frontend/checkboxes
+      npm outdated @govuk-frontend/checkboxes
 
 To update the latest version run:
 
-    npm update @govuk-frontend/checkboxes
+      npm update @govuk-frontend/checkboxes
 
 ## Contribution
 
 Guidelines can be found at [on our Github repository.](https://github.com/alphagov/govuk-frontend/blob/master/CONTRIBUTING.md "link to contributing guidelines on our github repository")
 
-## Acknowledgements/credits
-
-*   GDS developers
-*   Jani Kraner
-*   Gemma Leigh
-
 ## License
 
 MIT
-
-</div>
-
-</div>

@@ -1,32 +1,32 @@
 {% extends "layout-debug.njk" %}
 
 {% block content %}
-<div class="govuk-o-main-wrapper">
-  <h1 class="govuk-heading-l">
-    GOV.UK Frontend
-  </h1>
+  <div class="govuk-o-main-wrapper">
+    <h1 class="govuk-heading-l">
+      GOV.UK Frontend
+    </h1>
 
-  <div class="govuk-o-grid">
+    <div class="govuk-o-grid">
 
-    <div class="govuk-o-grid__item govuk-o-grid__item--one-half">
-      <h2 class="govuk-heading-m">Components</h2>
+      <div class="govuk-o-grid__item govuk-o-grid__item--one-half">
+        <h2 class="govuk-heading-m">Components</h2>
 
-      <ul class="govuk-list">
-      {% for componentName, value in componentsDirectory | dictsort %}
-        <li><a href="/components/{{ componentName }}">{{ componentName | replace("-", " ") | capitalize }}</a></li>
-      {% endfor %}
-      </ul>
-    </div>
+        <ul class="govuk-list">
+        {% for componentName, value in componentsDirectory | dictsort %}
+          <li><a href="/components/{{ componentName }}">{{ componentName | replace("-", " ") | capitalize }}</a></li>
+        {% endfor %}
+        </ul>
+      </div>
 
-    <div class="govuk-o-grid__item govuk-o-grid__item--one-half">
-      <h2 class="govuk-heading-m">Examples</h2>
+      <div class="govuk-o-grid__item govuk-o-grid__item--one-half">
+        <h2 class="govuk-heading-m">Examples</h2>
 
-      <ul class="govuk-list">
-      {% for exampleName, value in examplesDirectory | dictsort %}
-        <li><a href="/examples/{{ exampleName }}">{{ exampleName | replace("-", " ") | capitalize }}</a></li>
-      {% endfor %}
-      </ul>
+        <ul class="govuk-list">
+        {% for exampleName, value in examplesDirectory | dictsort %}
+          <li><a href="/examples/{{ exampleName }}">{{ exampleName | replace("-", " ") | capitalize }}</a></li>
+        {% endfor %}
+        </ul>
+      </div>
     </div>
   </div>
-</div>
 {% endblock %}

@@ -1,7 +1,3 @@
-<div class="govuk-o-width-container">
-
-<div class="govuk-o-main-wrapper">
-
 # Radios
 
 ## Introduction
@@ -24,23 +20,30 @@ More information about when to use radios can be found on [GOV.UK Design System]
 
       <fieldset class="govuk-c-fieldset">
 
-      <div class="govuk-c-radios__item">
-        <input class="govuk-c-radios__input" id="example-1" name="example" type="radio" value="yes">
-        <label class="govuk-c-label govuk-c-radios__label" for="example-1">
-          Yes
+        <legend class="govuk-c-fieldset__legend">
+          Have you changed your name?
 
-        </label>
-      </div>
+          <span class="govuk-c-fieldset__hint">This includes changing your last name or spelling your name differently.</span>
 
-      <div class="govuk-c-radios__item">
-        <input class="govuk-c-radios__input" id="example-2" name="example" type="radio" value="no" checked>
-        <label class="govuk-c-label govuk-c-radios__label" for="example-2">
-          No
+        </legend>
 
-        </label>
-      </div>
+        <div class="govuk-c-radios__item">
+          <input class="govuk-c-radios__input" id="example-1" name="example" type="radio" value="yes">
+          <label class="govuk-c-label govuk-c-radios__label" for="example-1">
+            Yes
 
-      </fieldset>
+          </label>
+        </div>
+
+        <div class="govuk-c-radios__item">
+          <input class="govuk-c-radios__input" id="example-2" name="example" type="radio" value="no" checked>
+          <label class="govuk-c-label govuk-c-radios__label" for="example-2">
+            No
+
+          </label>
+        </div>
+        </fieldset>
+
     </div>
 
 #### Macro
@@ -75,23 +78,30 @@ More information about when to use radios can be found on [GOV.UK Design System]
 
       <fieldset class="govuk-c-fieldset">
 
-      <div class="govuk-c-radios__item">
-        <input class="govuk-c-radios__input" id="housing-act-1" name="housing-act" type="radio" value="part-2">
-        <label class="govuk-c-label govuk-c-radios__label" for="housing-act-1">
-          <span class="govuk-heading-s govuk-!-mb-1">Part 2 of the Housing Act 2004</span> For properties that are 3 or more stories high and occupied by 5 or more people
+        <legend class="govuk-c-fieldset__legend">
+          <h1 class="govuk-heading-l">Which part of the Housing Act was your licence issued under?</h1>
 
-        </label>
-      </div>
+          <span class="govuk-c-fieldset__hint">Select one of the options below.</span>
 
-      <div class="govuk-c-radios__item">
-        <input class="govuk-c-radios__input" id="housing-act-2" name="housing-act" type="radio" value="part-3">
-        <label class="govuk-c-label govuk-c-radios__label" for="housing-act-2">
-          <span class="govuk-heading-s govuk-!-mb-1">Part 3 of the Housing Act 2004</span> For properties that are within a geographical area defined by a local council
+        </legend>
 
-        </label>
-      </div>
+        <div class="govuk-c-radios__item">
+          <input class="govuk-c-radios__input" id="housing-act-1" name="housing-act" type="radio" value="part-2">
+          <label class="govuk-c-label govuk-c-radios__label" for="housing-act-1">
+            <span class="govuk-heading-s govuk-!-mb-1">Part 2 of the Housing Act 2004</span> For properties that are 3 or more stories high and occupied by 5 or more people
 
-      </fieldset>
+          </label>
+        </div>
+
+        <div class="govuk-c-radios__item">
+          <input class="govuk-c-radios__input" id="housing-act-2" name="housing-act" type="radio" value="part-3">
+          <label class="govuk-c-label govuk-c-radios__label" for="housing-act-2">
+            <span class="govuk-heading-s govuk-!-mb-1">Part 3 of the Housing Act 2004</span> For properties that are within a geographical area defined by a local council
+
+          </label>
+        </div>
+        </fieldset>
+
     </div>
 
 #### Macro
@@ -147,7 +157,7 @@ More information about when to use radios can be found on [GOV.UK Design System]
         </label>
       </div>
 
-      </div>
+    </div>
 
 #### Macro
 
@@ -177,7 +187,7 @@ Please note, this component depends on @govuk-frontend/globals, which will autom
 
 ## Installation
 
-    npm install --save @govuk-frontend/radios
+      npm install --save @govuk-frontend/radios
 
 ## Requirements
 
@@ -185,23 +195,19 @@ Please note, this component depends on @govuk-frontend/globals, which will autom
 
 When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
 
-<pre>  `.pipe(sass({
+      .pipe(sass({
         includePaths: 'node_modules/'
-    }))` 
-  </pre>
+      }))
 
 ### Static asset path configuration
 
 To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
 
-<pre>  `app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))` 
-  </pre>
+      app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
 ## Component arguments
 
 If you are using Nunjucks,then macros take the following arguments
-
-<div>
 
 <table class="govuk-c-table">
 
@@ -359,39 +365,30 @@ If you are using Nunjucks,then macros take the following arguments
 
 </table>
 
-</div>
-
 ### Setting up Nunjucks views and paths
 
 Below is an example setup using express configure views:
 
-<pre>  `nunjucks.configure('node_modules/@govuk-frontend`, {
-    autoescape: true,
-    cache: false,
-    express: app
-  })` 
-  </pre>
+      nunjucks.configure('node_modules/@govuk-frontend', {
+        autoescape: true,
+        cache: false,
+        express: app
+      })
 
 ## Getting updates
 
 To check whether you have the latest version of the button run:
 
-    npm outdated @govuk-frontend/radios
+      npm outdated @govuk-frontend/radios
 
 To update the latest version run:
 
-    npm update @govuk-frontend/radios
+      npm update @govuk-frontend/radios
 
 ## Contribution
 
 Guidelines can be found at [on our Github repository.](https://github.com/alphagov/govuk-frontend/blob/master/CONTRIBUTING.md "link to contributing guidelines on our github repository")
 
-## Acknowledgements/credits
-
 ## License
 
 MIT
-
-</div>
-
-</div>
