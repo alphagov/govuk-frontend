@@ -1,11 +1,17 @@
 @import "../../globals/scss/common";
 
 @include exports("button") {
+
+  // Because the shadow (s0) is visually 'part of' the button, we need to reduce
+  // the height of the button to compensate by adjusting its padding (s1) and
+  // increase the bottom margin to include it (s2).
+  $button-shadow-size: $govuk-border-width-form-element;
+
   .govuk-c-button {
     @include govuk-font-regular;
     @include govuk-typography-responsive(
       $govuk-font-19,
-      $override-line-height: 1
+      $override-line-height: 19px
     );
 
     box-sizing: border-box;
@@ -13,8 +19,8 @@
     position: relative;
     width: 100%;
     margin-top: 0;
-    @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom");
-    padding: ($govuk-spacing-scale-2 - $govuk-border-width-form-element) $govuk-spacing-scale-2;
+    @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom", $adjustment: $button-shadow-size); // s2
+    padding: ($govuk-spacing-scale-2 - $govuk-border-width-form-element - ($button-shadow-size / 2)) $govuk-spacing-scale-2; // s1
     border-width: $govuk-border-width-form-element;
     border-style: solid;
     border-radius: 0;
@@ -22,7 +28,7 @@
     outline: 1px solid transparent; // keep some button appearance when changing colour settings in browsers
     outline-offset: -1px; // fixes bug in Safari that outline width on focus is not overwritten, is reset to 0 on focus in govuk_template
     background-color: $govuk-button-colour;
-    box-shadow: 0 2px 0 $govuk-button-colour-darken-15;
+    box-shadow: 0 $button-shadow-size 0 $govuk-button-colour-darken-15; // s0
     font-family: $govuk-font-stack;
     text-align: center;
     text-decoration: none;
@@ -65,8 +71,8 @@
     }
 
     &:active {
-      top: $govuk-border-width-form-element;
-      box-shadow: 0 0 0 $govuk-button-colour;
+      top: $button-shadow-size;
+      box-shadow: none;
     }
 
     // Fix unwanted button padding in Firefox
@@ -93,9 +99,9 @@
 
     &:active {
       top: 0;
-      box-shadow: 0 $govuk-border-width-form-element 0 $govuk-button-colour-darken-15;
+      box-shadow: 0 $button-shadow-size 0 $govuk-button-colour-darken-15; // s0
       @include ie-lte(8) {
-        border-bottom: $govuk-border-width-form-element solid $govuk-button-colour-darken-15;
+        border-bottom: $button-shadow-size solid $govuk-button-colour-darken-15; // s0
       }
     }
   }
@@ -126,9 +132,9 @@
 
     background-repeat: no-repeat;
     background-position: 100% 50%;
-    box-shadow: 0 $govuk-border-width-form-element 0 $govuk-button-colour-darken-15;
+    box-shadow: 0 $button-shadow-size 0 $govuk-button-colour-darken-15;
     @include ie-lte(8) {
-      border-bottom: $govuk-border-width-form-element solid $govuk-button-colour-darken-15;
+      border-bottom: $button-shadow-size solid $govuk-button-colour-darken-15;
     }
   }
 
@@ -177,13 +183,13 @@
   $offset: 2;
 
   .govuk-c-button {
-    padding-top: ($govuk-spacing-scale-2 - $govuk-border-width-form-element + $offset);
-    padding-bottom: ($govuk-spacing-scale-2 - $govuk-border-width-form-element - $offset + 1);
+    padding-top: ($govuk-spacing-scale-2 - $govuk-border-width-form-element - ($button-shadow-size / 2) + $offset); // s1
+    padding-bottom: ($govuk-spacing-scale-2 - $govuk-border-width-form-element - ($button-shadow-size / 2) - $offset + 1); // s1
   }
 
   .govuk-c-button--start {
-    padding-top: ($govuk-spacing-scale-2 - $govuk-border-width-form-element + $offset);
-    padding-bottom: ($govuk-spacing-scale-2 - $govuk-border-width-form-element - $offset + 1);
+    padding-top: ($govuk-spacing-scale-2 - $govuk-border-width-form-element - ($button-shadow-size / 2) + $offset); // s1
+    padding-bottom: ($govuk-spacing-scale-2 - $govuk-border-width-form-element - ($button-shadow-size / 2) - $offset + 1); // s1
   }
 
 }
