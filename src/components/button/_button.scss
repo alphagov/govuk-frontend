@@ -11,7 +11,7 @@
     @include govuk-font-regular;
     @include govuk-typography-responsive(
       $govuk-font-19,
-      $override-line-height: 1
+      $override-line-height: 19px
     );
 
     box-sizing: border-box;
