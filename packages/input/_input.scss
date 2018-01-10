@@ -5,6 +5,7 @@
 @include exports("input") {
   .govuk-c-input {
     @include govuk-font-regular-19;
+    @include govuk-focusable;
 
     -webkit-box-sizing: border-box;
 
@@ -34,10 +35,6 @@
 
   .govuk-c-input[type="number"] {
     -moz-appearance: textfield;
-  }
-
-  .govuk-c-input:focus {
-    outline: $govuk-focus-width solid $govuk-focus-colour;
   }
 
   .govuk-c-input--error {
