@@ -102,7 +102,7 @@
   }
 
   .govuk-c-checkboxes__conditional {
-    margin-left: 15px;
+    margin-left: $govuk-spacing-scale-3;
     @include govuk-responsive-margin($govuk-spacing-responsive-4, "bottom");
     padding-left: 28px;
     border-left: $govuk-border-width-mobile solid $govuk-border-colour;
@@ -112,7 +112,7 @@
       padding-left: 33px;
     }
 
-    & [class^="govuk-c-"]:last-child {
+    & > [class^="govuk-c-"]:last-child {
       margin-bottom: 0;
     }
   }
