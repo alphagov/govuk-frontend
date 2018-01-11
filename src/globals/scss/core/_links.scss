@@ -46,13 +46,6 @@
           word-wrap: break-word;
         }
       }
-
-      a[href^="javascript:"],
-      a[href^="#"] {
-        &::after {
-          content: "";
-        }
-      }
     }
   }
 }
