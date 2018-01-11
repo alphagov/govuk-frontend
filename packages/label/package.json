@@ -1,7 +1,7 @@
 {
   "name": "@govuk-frontend/label",
-  "version": "0.0.19-alpha",
+  "version": "0.0.20-alpha",
   "dependencies": {
-    "@govuk-frontend/globals": "^0.0.19-alpha"
+    "@govuk-frontend/globals": "^0.0.20-alpha"
   }
 }
