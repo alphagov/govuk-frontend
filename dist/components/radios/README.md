@@ -1,54 +1,54 @@
-<div class="govuk-o-width-container">
-
-<div class="govuk-o-main-wrapper">
-
-# Radio
+# Radios
 
 ## Introduction
 
-A radio button is a GOV.UK element that allows users to answer a question by selecting an option. If you have a question with more than one option you should stack radio buttons.
+Let users select a single option from a list.
 
 ## Guidance
 
-More information about when to use radio can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/radio "Link to read guidance on the use of radio on Gov.uk Design system website")
+More information about when to use radios can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/radios "Link to read guidance on the use of radios on Gov.uk Design system website")
 
 ## Quick start examples
 
 ### Component default
 
-[Preview the radio component](http://govuk-frontend-review.herokuapp.com/components/radio/preview)
+[Preview the radios component](http://govuk-frontend-review.herokuapp.com/components/radios/preview)
 
 #### Markup
 
-    <fieldset class="govuk-c-fieldset">
+    <div class="govuk-c-radios">
 
-      <legend class="govuk-c-fieldset__legend">
-        Have you changed your name?
+      <fieldset class="govuk-c-fieldset">
 
-        <span class="govuk-c-fieldset__hint">This includes changing your last name or spelling your name differently.</span>
+        <legend class="govuk-c-fieldset__legend">
+          Have you changed your name?
 
-      </legend>
+          <span class="govuk-c-fieldset__hint">This includes changing your last name or spelling your name differently.</span>
 
-      <div class="govuk-c-radio">
-        <input class="govuk-c-radio__input" id="example-1" name="example" type="radio" value="yes">
-        <label class="govuk-c-label govuk-c-radio__label" for="example-1">
-          Yes
+        </legend>
 
-        </label>
-      </div>
+        <div class="govuk-c-radios__item">
+          <input class="govuk-c-radios__input" id="example-1" name="example" type="radio" value="yes">
+          <label class="govuk-c-label govuk-c-radios__label" for="example-1">
+            Yes
 
-      <div class="govuk-c-radio">
-        <input class="govuk-c-radio__input" id="example-2" name="example" type="radio" value="no" checked>
-        <label class="govuk-c-label govuk-c-radio__label" for="example-2">
-          No
+          </label>
+        </div>
 
-        </label>
-      </div>
-    </fieldset>
+        <div class="govuk-c-radios__item">
+          <input class="govuk-c-radios__input" id="example-2" name="example" type="radio" value="no" checked>
+          <label class="govuk-c-label govuk-c-radios__label" for="example-2">
+            No
+
+          </label>
+        </div>
+        </fieldset>
+
+    </div>
 
 #### Macro
 
-    {{ govukRadio({
+    {{ govukRadios({
       "idPrefix": "example",
       "name": "example",
       "fieldset": {
@@ -68,41 +68,45 @@ More information about when to use radio can be found on [GOV.UK Design System](
       ]
     }) }}
 
-### Radio--with-html
+### Radios--with-html
 
-[Preview the radio--with-html variant](http://govuk-frontend-review.herokuapp.com/components/radio/with-html/preview)
+[Preview the radios--with-html variant](http://govuk-frontend-review.herokuapp.com/components/radios/with-html/preview)
 
 #### Markup
 
-    <fieldset class="govuk-c-fieldset">
+    <div class="govuk-c-radios">
 
-      <legend class="govuk-c-fieldset__legend">
-        <h1 class="govuk-heading-l">Which part of the Housing Act was your licence issued under?</h1>
+      <fieldset class="govuk-c-fieldset">
 
-        <span class="govuk-c-fieldset__hint">Select one of the options below.</span>
+        <legend class="govuk-c-fieldset__legend">
+          <h1 class="govuk-heading-l">Which part of the Housing Act was your licence issued under?</h1>
 
-      </legend>
+          <span class="govuk-c-fieldset__hint">Select one of the options below.</span>
 
-      <div class="govuk-c-radio">
-        <input class="govuk-c-radio__input" id="housing-act-1" name="housing-act" type="radio" value="part-2">
-        <label class="govuk-c-label govuk-c-radio__label" for="housing-act-1">
-          <span class="govuk-heading-s govuk-!-mb-1">Part 2 of the Housing Act 2004</span> For properties that are 3 or more stories high and occupied by 5 or more people
+        </legend>
 
-        </label>
-      </div>
+        <div class="govuk-c-radios__item">
+          <input class="govuk-c-radios__input" id="housing-act-1" name="housing-act" type="radio" value="part-2">
+          <label class="govuk-c-label govuk-c-radios__label" for="housing-act-1">
+            <span class="govuk-heading-s govuk-!-mb-1">Part 2 of the Housing Act 2004</span> For properties that are 3 or more stories high and occupied by 5 or more people
 
-      <div class="govuk-c-radio">
-        <input class="govuk-c-radio__input" id="housing-act-2" name="housing-act" type="radio" value="part-3">
-        <label class="govuk-c-label govuk-c-radio__label" for="housing-act-2">
-          <span class="govuk-heading-s govuk-!-mb-1">Part 3 of the Housing Act 2004</span> For properties that are within a geographical area defined by a local council
+          </label>
+        </div>
 
-        </label>
-      </div>
-    </fieldset>
+        <div class="govuk-c-radios__item">
+          <input class="govuk-c-radios__input" id="housing-act-2" name="housing-act" type="radio" value="part-3">
+          <label class="govuk-c-label govuk-c-radios__label" for="housing-act-2">
+            <span class="govuk-heading-s govuk-!-mb-1">Part 3 of the Housing Act 2004</span> For properties that are within a geographical area defined by a local council
+
+          </label>
+        </div>
+        </fieldset>
+
+    </div>
 
 #### Macro
 
-    {{ govukRadio({
+    {{ govukRadios({
       "idPrefix": "housing-act",
       "name": "housing-act",
       "fieldset": {
@@ -121,39 +125,43 @@ More information about when to use radio can be found on [GOV.UK Design System](
       ]
     }) }}
 
-### Radio--without-fieldset
+### Radios--without-fieldset
 
-[Preview the radio--without-fieldset variant](http://govuk-frontend-review.herokuapp.com/components/radio/without-fieldset/preview)
+[Preview the radios--without-fieldset variant](http://govuk-frontend-review.herokuapp.com/components/radios/without-fieldset/preview)
 
 #### Markup
 
-    <div class="govuk-c-radio">
-      <input class="govuk-c-radio__input" id="colours-1" name="colours" type="radio" value="red">
-      <label class="govuk-c-label govuk-c-radio__label" for="colours-1">
-        Red
+    <div class="govuk-c-radios">
 
-      </label>
-    </div>
+      <div class="govuk-c-radios__item">
+        <input class="govuk-c-radios__input" id="colours-1" name="colours" type="radio" value="red">
+        <label class="govuk-c-label govuk-c-radios__label" for="colours-1">
+          Red
 
-    <div class="govuk-c-radio">
-      <input class="govuk-c-radio__input" id="colours-2" name="colours" type="radio" value="green">
-      <label class="govuk-c-label govuk-c-radio__label" for="colours-2">
-        Green
+        </label>
+      </div>
 
-      </label>
-    </div>
+      <div class="govuk-c-radios__item">
+        <input class="govuk-c-radios__input" id="colours-2" name="colours" type="radio" value="green">
+        <label class="govuk-c-label govuk-c-radios__label" for="colours-2">
+          Green
 
-    <div class="govuk-c-radio">
-      <input class="govuk-c-radio__input" id="colours-3" name="colours" type="radio" value="blue">
-      <label class="govuk-c-label govuk-c-radio__label" for="colours-3">
-        Blue
+        </label>
+      </div>
 
-      </label>
+      <div class="govuk-c-radios__item">
+        <input class="govuk-c-radios__input" id="colours-3" name="colours" type="radio" value="blue">
+        <label class="govuk-c-label govuk-c-radios__label" for="colours-3">
+          Blue
+
+        </label>
+      </div>
+
     </div>
 
 #### Macro
 
-    {{ govukRadio({
+    {{ govukRadios({
       "name": "colours",
       "items": [
         {
@@ -173,13 +181,13 @@ More information about when to use radio can be found on [GOV.UK Design System](
 
 ## Dependencies
 
-To consume the radio component you must be running npm version 5 or above.
+To consume the radios component you must be running npm version 5 or above.
 
 Please note, this component depends on @govuk-frontend/globals, which will automatically be installed with the package.
 
 ## Installation
 
-    npm install --save @govuk-frontend/radio
+      npm install --save @govuk-frontend/radios
 
 ## Requirements
 
@@ -187,23 +195,19 @@ Please note, this component depends on @govuk-frontend/globals, which will autom
 
 When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
 
-<pre>  `.pipe(sass({
+      .pipe(sass({
         includePaths: 'node_modules/'
-    }))` 
-  </pre>
+      }))
 
 ### Static asset path configuration
 
 To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
 
-<pre>  `app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))` 
-  </pre>
+      app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
 ## Component arguments
 
 If you are using Nunjucks,then macros take the following arguments
-
-<div>
 
 <table class="govuk-c-table">
 
@@ -361,43 +365,30 @@ If you are using Nunjucks,then macros take the following arguments
 
 </table>
 
-</div>
-
 ### Setting up Nunjucks views and paths
 
 Below is an example setup using express configure views:
 
-<pre>  `nunjucks.configure('node_modules/@govuk-frontend`, {
-    autoescape: true,
-    cache: false,
-    express: app
-  })` 
-  </pre>
+      nunjucks.configure('node_modules/@govuk-frontend', {
+        autoescape: true,
+        cache: false,
+        express: app
+      })
 
 ## Getting updates
 
 To check whether you have the latest version of the button run:
 
-    npm outdated @govuk-frontend/radio
+      npm outdated @govuk-frontend/radios
 
 To update the latest version run:
 
-    npm update @govuk-frontend/radio
+      npm update @govuk-frontend/radios
 
 ## Contribution
 
 Guidelines can be found at [on our Github repository.](https://github.com/alphagov/govuk-frontend/blob/master/CONTRIBUTING.md "link to contributing guidelines on our github repository")
 
-## Acknowledgements/credits
-
-*   GDS developers
-*   Jani Kraner
-*   Gemma Leigh
-
 ## License
 
 MIT
-
-</div>
-
-</div>

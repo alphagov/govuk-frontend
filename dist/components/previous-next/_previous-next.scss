@@ -58,9 +58,12 @@
     }
 
   .govuk-c-previous-next__link-title {
-    @include govuk-font-regular-27;
+    @include govuk-font-regular;
+    @include govuk-typography-responsive(
+      $govuk-font-27,
+      $override-line-height: (33.75 / 27)
+    );
     display: block;
-    line-height: (33.75 / 27);
   }
 
   .govuk-c-previous-next__link-icon {

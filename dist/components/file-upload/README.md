@@ -1,7 +1,3 @@
-<div class="govuk-o-width-container">
-
-<div class="govuk-o-main-wrapper">
-
 # File upload
 
 ## Introduction
@@ -129,7 +125,7 @@ To consume the file-upload component you must be running npm version 5 or above.
 
 ## Installation
 
-    npm install --save @govuk-frontend/file-upload
+      npm install --save @govuk-frontend/file-upload
 
 ## Requirements
 
@@ -137,23 +133,19 @@ To consume the file-upload component you must be running npm version 5 or above.
 
 When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
 
-<pre>  `.pipe(sass({
+      .pipe(sass({
         includePaths: 'node_modules/'
-    }))` 
-  </pre>
+      }))
 
 ### Static asset path configuration
 
 To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
 
-<pre>  `app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))` 
-  </pre>
+      app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
 ## Component arguments
 
 If you are using Nunjucks,then macros take the following arguments
-
-<div>
 
 <table class="govuk-c-table">
 
@@ -263,43 +255,30 @@ If you are using Nunjucks,then macros take the following arguments
 
 </table>
 
-</div>
-
 ### Setting up Nunjucks views and paths
 
 Below is an example setup using express configure views:
 
-<pre>  `nunjucks.configure('node_modules/@govuk-frontend`, {
-    autoescape: true,
-    cache: false,
-    express: app
-  })` 
-  </pre>
+      nunjucks.configure('node_modules/@govuk-frontend', {
+        autoescape: true,
+        cache: false,
+        express: app
+      })
 
 ## Getting updates
 
 To check whether you have the latest version of the button run:
 
-    npm outdated @govuk-frontend/file-upload
+      npm outdated @govuk-frontend/file-upload
 
 To update the latest version run:
 
-    npm update @govuk-frontend/file-upload
+      npm update @govuk-frontend/file-upload
 
 ## Contribution
 
 Guidelines can be found at [on our Github repository.](https://github.com/alphagov/govuk-frontend/blob/master/CONTRIBUTING.md "link to contributing guidelines on our github repository")
 
-## Acknowledgements/credits
-
-*   GDS developers
-*   Jani Kraner
-*   Gemma Leigh
-
 ## License
 
 MIT
-
-</div>
-
-</div>

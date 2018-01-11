@@ -12,6 +12,6 @@
     {{ govukErrorMessage(params.errorMessage) | trim | indent(4) -}}
     {% endif %}
   </legend>
-{% endif %}
-  {{ caller() | trim | indent(2) if caller }} {#- if statement allows usage of `call` to be optional -#}
+  {% endif %}
+{{ caller() if caller }} {#- if statement allows usage of `call` to be optional -#}
 </fieldset>
