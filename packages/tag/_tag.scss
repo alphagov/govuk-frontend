@@ -2,15 +2,18 @@
 
 @include exports("tag") {
   .govuk-c-tag {
-    @include govuk-font-bold-16;
+    @include govuk-font-bold;
+    @include govuk-typography-responsive(
+      $govuk-font-16,
+      $override-line-height: 1.25
+    );
 
     display: inline-block;
-    padding: $govuk-spacing-scale-1 $govuk-spacing-scale-1 0;
+    padding: $govuk-spacing-scale-1 8px 0;
 
     color: $govuk-white;
     background-color: $govuk-blue;
     letter-spacing: 1px;
-    line-height: 1.25;
 
     text-decoration: none;
     text-transform: uppercase;

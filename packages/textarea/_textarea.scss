@@ -4,7 +4,12 @@
 
 @include exports("textarea") {
   .govuk-c-textarea {
-    @include govuk-font-regular-19;
+    @include govuk-font-regular;
+    @include govuk-typography-responsive(
+      $govuk-font-19,
+      $override-line-height: 1.25
+    );
+    @include govuk-focusable;
 
     -webkit-box-sizing: border-box;
 
@@ -17,13 +22,7 @@
     border: $govuk-border-width-form-element solid $govuk-text-colour;
     border-radius: 0;
 
-    line-height: 1.25;
-
     -webkit-appearance: none;
-  }
-
-  .govuk-c-textarea:focus {
-    outline: $govuk-focus-width solid $govuk-focus-colour;
   }
 
   .govuk-c-textarea--error {

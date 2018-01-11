@@ -3,7 +3,12 @@
 
 @include exports("select") {
   .govuk-c-select {
-    @include govuk-font-regular-19;
+    @include govuk-font-regular;
+    @include govuk-typography-responsive(
+      $govuk-font-19,
+      $override-line-height: 1.25
+    );
+    @include govuk-focusable;
 
     -webkit-box-sizing: border-box;
 
@@ -14,13 +19,6 @@
 
     padding: $govuk-spacing-scale-1; // was 5px 4px 4px - size of it should be adjusted to match other form elements
     border: $govuk-border-width-form-element solid $govuk-text-colour;
-
-    line-height: 1.25;
-  }
-
-  .govuk-c-select:focus {
-    outline: $govuk-focus-width solid $govuk-focus-colour;
-    outline-offset: 0;
   }
 
   .govuk-c-select option:active,

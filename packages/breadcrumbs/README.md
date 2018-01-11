@@ -1,7 +1,3 @@
-<div class="govuk-o-width-container">
-
-<div class="govuk-o-main-wrapper">
-
 # Breadcrumbs
 
 ## Introduction
@@ -210,7 +206,7 @@ Please note, this component depends on @govuk-frontend/globals and @govuk-fronte
 
 ## Installation
 
-    npm install --save @govuk-frontend/breadcrumbs
+      npm install --save @govuk-frontend/breadcrumbs
 
 ## Requirements
 
@@ -218,23 +214,19 @@ Please note, this component depends on @govuk-frontend/globals and @govuk-fronte
 
 When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
 
-<pre>  `.pipe(sass({
+      .pipe(sass({
         includePaths: 'node_modules/'
-    }))` 
-  </pre>
+      }))
 
 ### Static asset path configuration
 
 To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
 
-<pre>  `app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))` 
-  </pre>
+      app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
 ## Component arguments
 
 If you are using Nunjucks,then macros take the following arguments
-
-<div>
 
 <table class="govuk-c-table">
 
@@ -332,43 +324,30 @@ If you are using Nunjucks,then macros take the following arguments
 
 </table>
 
-</div>
-
 ### Setting up Nunjucks views and paths
 
 Below is an example setup using express configure views:
 
-<pre>  `nunjucks.configure('node_modules/@govuk-frontend`, {
-    autoescape: true,
-    cache: false,
-    express: app
-  })` 
-  </pre>
+      nunjucks.configure('node_modules/@govuk-frontend', {
+        autoescape: true,
+        cache: false,
+        express: app
+      })
 
 ## Getting updates
 
 To check whether you have the latest version of the button run:
 
-    npm outdated @govuk-frontend/breadcrumbs
+      npm outdated @govuk-frontend/breadcrumbs
 
 To update the latest version run:
 
-    npm update @govuk-frontend/breadcrumbs
+      npm update @govuk-frontend/breadcrumbs
 
 ## Contribution
 
 Guidelines can be found at [on our Github repository.](https://github.com/alphagov/govuk-frontend/blob/master/CONTRIBUTING.md "link to contributing guidelines on our github repository")
 
-## Acknowledgements/credits
-
-*   GDS developers
-*   Jani Kraner
-*   Gemma Leigh
-
 ## License
 
 MIT
-
-</div>
-
-</div>
