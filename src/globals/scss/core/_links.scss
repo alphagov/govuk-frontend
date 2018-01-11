@@ -48,4 +48,23 @@
       }
     }
   }
+
+  // Muted link variant
+  //
+  // Used for secondary links on a page - the link will appear in muted colours
+  // regardless of visited state.
+  .govuk-link--muted {
+    &:link,
+    &:visited,
+    &:hover,
+    &:active {
+      color: $govuk-grey-1;
+    }
+
+    // When focussed, the text colour needs to be darker to ensure that colour
+    // contrast is still acceptable
+    &:focus {
+      color: $govuk-black;
+    }
+  }
 }
