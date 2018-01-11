@@ -1,45 +1,58 @@
 @include exports("links") {
-  a:link {
-    color: $govuk-link-colour;
-  }
 
-  a:visited {
-    color: $govuk-link-visited-colour;
-  }
+  .govuk-link {
+    @include govuk-font-regular;
 
-  a:hover {
-    color: $govuk-link-hover-colour;
-  }
-
-  a:active {
-    color: $govuk-link-active-colour;
-  }
-
-  a {
+    // Override the tap highlight colour (the color of the highlight that
+    // appears when a link is tapped on some mobile devices). This is
+    // ever-so-slightly darker than the default.
     -webkit-tap-highlight-color: rgba($govuk-black, .3);
-  }
 
-  a:focus {
-    outline: $govuk-focus-width solid $govuk-focus-colour;
-    background-color: $govuk-focus-colour;
-  }
-
-  @include mq($media-type: print) {
-    a,
-    a:visited {
-      word-wrap: break-word;
+    &:link {
+      color: $govuk-link-colour;
     }
 
-    a[href^="/"]:after,
-    a[href^="http://"]:after,
-    a[href^="https://"]:after {
-      content: " (" attr(href) ")";
-      font-size: 90%;
+    &:visited {
+      color: $govuk-link-visited-colour;
     }
 
-    a[href^="javascript:"]:after,
-    a[href^="#"]:after {
-      content: "";
+    &:hover {
+      color: $govuk-link-hover-colour;
+    }
+
+    &:active {
+      color: $govuk-link-active-colour;
+    }
+
+    &:focus {
+      outline: $govuk-focus-width solid $govuk-focus-colour;
+      background-color: $govuk-focus-colour;
+    }
+
+    @include mq($media-type: print) {
+
+      // When printing, append the the destination URL to the link text, as long
+      // as the URL starts with either `/`, `http://` or `https://`.
+      &[href^="/"],
+      &[href^="http://"],
+      &[href^="https://"] {
+        &::after {
+          content: " (" attr(href) ")";
+          font-size: 90%;
+
+          // Because the URLs may be very long, ensure that they may be broken
+          // at arbitrary points if there are no otherwise acceptable break
+          // points in the line
+          word-wrap: break-word;
+        }
+      }
+
+      a[href^="javascript:"],
+      a[href^="#"] {
+        &::after {
+          content: "";
+        }
+      }
     }
   }
 }
