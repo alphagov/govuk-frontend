@@ -1,62 +1,62 @@
-<div class="govuk-o-width-container">
-
-<div class="govuk-o-main-wrapper">
-
-# Checkbox
+# Checkboxes
 
 ## Introduction
 
-Checkbox description goes here
+Let users select one or more options.
 
 ## Guidance
 
-More information about when to use checkbox can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/checkbox "Link to read guidance on the use of checkbox on Gov.uk Design system website")
+More information about when to use checkboxes can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/checkboxes "Link to read guidance on the use of checkboxes on Gov.uk Design system website")
 
 ## Quick start examples
 
 ### Component default
 
-[Preview the checkbox component](http://govuk-frontend-review.herokuapp.com/components/checkbox/preview)
+[Preview the checkboxes component](http://govuk-frontend-review.herokuapp.com/components/checkboxes/preview)
 
 #### Markup
 
-    <fieldset class="govuk-c-fieldset">
+    <div class="govuk-c-checkboxes">
 
-      <legend class="govuk-c-fieldset__legend">
-        What is your nationality?
+      <fieldset class="govuk-c-fieldset">
 
-        <span class="govuk-c-fieldset__hint">If you have dual nationality, select all options that are relevant to you.</span>
+        <legend class="govuk-c-fieldset__legend">
+          What is your nationality?
 
-      </legend>
+          <span class="govuk-c-fieldset__hint">If you have dual nationality, select all options that are relevant to you.</span>
 
-      <div class="govuk-c-checkbox">
-        <input class="govuk-c-checkbox__input" id="nationality-1" name="nationality" type="checkbox" value="british">
-        <label class="govuk-c-label govuk-c-checkbox__label" for="nationality-1">
-          British
+        </legend>
 
-        </label>
-      </div>
+        <div class="govuk-c-checkboxes__item">
+          <input class="govuk-c-checkboxes__input" id="nationality-1" name="nationality" type="checkbox" value="british">
+          <label class="govuk-c-label govuk-c-checkboxes__label" for="nationality-1">
+            British
 
-      <div class="govuk-c-checkbox">
-        <input class="govuk-c-checkbox__input" id="nationality-2" name="nationality" type="checkbox" value="irish">
-        <label class="govuk-c-label govuk-c-checkbox__label" for="nationality-2">
-          Irish
+          </label>
+        </div>
 
-        </label>
-      </div>
+        <div class="govuk-c-checkboxes__item">
+          <input class="govuk-c-checkboxes__input" id="nationality-2" name="nationality" type="checkbox" value="irish">
+          <label class="govuk-c-label govuk-c-checkboxes__label" for="nationality-2">
+            Irish
 
-      <div class="govuk-c-checkbox">
-        <input class="govuk-c-checkbox__input" id="nationality-3" name="nationality" type="checkbox" value="other">
-        <label class="govuk-c-label govuk-c-checkbox__label" for="nationality-3">
-          Citizen of another country
+          </label>
+        </div>
 
-        </label>
-      </div>
-    </fieldset>
+        <div class="govuk-c-checkboxes__item">
+          <input class="govuk-c-checkboxes__input" id="nationality-3" name="nationality" type="checkbox" value="other">
+          <label class="govuk-c-label govuk-c-checkboxes__label" for="nationality-3">
+            Citizen of another country
+
+          </label>
+        </div>
+        </fieldset>
+
+    </div>
 
 #### Macro
 
-    {{ govukCheckbox({
+    {{ govukCheckboxes({
       "idPrefix": "nationality",
       "name": "nationality",
       "fieldset": {
@@ -79,49 +79,53 @@ More information about when to use checkbox can be found on [GOV.UK Design Syste
       ]
     }) }}
 
-### Checkbox--with-html
+### Checkboxes--with-html
 
-[Preview the checkbox--with-html variant](http://govuk-frontend-review.herokuapp.com/components/checkbox/with-html/preview)
+[Preview the checkboxes--with-html variant](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-html/preview)
 
 #### Markup
 
-    <fieldset class="govuk-c-fieldset">
+    <div class="govuk-c-checkboxes">
 
-      <legend class="govuk-c-fieldset__legend">
-        <h3 class="govuk-heading-m">Which types of waste do you transport regularly?</h3>
+      <fieldset class="govuk-c-fieldset">
 
-        <span class="govuk-c-fieldset__hint">Select all that apply</span>
+        <legend class="govuk-c-fieldset__legend">
+          <h3 class="govuk-heading-m">Which types of waste do you transport regularly?</h3>
 
-      </legend>
+          <span class="govuk-c-fieldset__hint">Select all that apply</span>
 
-      <div class="govuk-c-checkbox">
-        <input class="govuk-c-checkbox__input" id="undefined-1" name="" type="checkbox" value="animal">
-        <label class="govuk-c-label govuk-c-checkbox__label" for="undefined-1">
-          Waste from animal carcasses
+        </legend>
 
-        </label>
-      </div>
+        <div class="govuk-c-checkboxes__item">
+          <input class="govuk-c-checkboxes__input" id="undefined-1" name="" type="checkbox" value="animal">
+          <label class="govuk-c-label govuk-c-checkboxes__label" for="undefined-1">
+            Waste from animal carcasses
 
-      <div class="govuk-c-checkbox">
-        <input class="govuk-c-checkbox__input" id="undefined-2" name="" type="checkbox" value="mines">
-        <label class="govuk-c-label govuk-c-checkbox__label" for="undefined-2">
-          Waste from mines or quarries
+          </label>
+        </div>
 
-        </label>
-      </div>
+        <div class="govuk-c-checkboxes__item">
+          <input class="govuk-c-checkboxes__input" id="undefined-2" name="" type="checkbox" value="mines">
+          <label class="govuk-c-label govuk-c-checkboxes__label" for="undefined-2">
+            Waste from mines or quarries
 
-      <div class="govuk-c-checkbox">
-        <input class="govuk-c-checkbox__input" id="undefined-3" name="" type="checkbox" value="farm">
-        <label class="govuk-c-label govuk-c-checkbox__label" for="undefined-3">
-          Farm or agricultural waste
+          </label>
+        </div>
 
-        </label>
-      </div>
-    </fieldset>
+        <div class="govuk-c-checkboxes__item">
+          <input class="govuk-c-checkboxes__input" id="undefined-3" name="" type="checkbox" value="farm">
+          <label class="govuk-c-label govuk-c-checkboxes__label" for="undefined-3">
+            Farm or agricultural waste
+
+          </label>
+        </div>
+        </fieldset>
+
+    </div>
 
 #### Macro
 
-    {{ govukCheckbox({
+    {{ govukCheckboxes({
       "fieldset": {
         "legendHtml": "<h3 class=\"govuk-heading-m\">Which types of waste do you transport regularly?</h3>",
         "legendHintText": "Select all that apply"
@@ -142,39 +146,43 @@ More information about when to use checkbox can be found on [GOV.UK Design Syste
       ]
     }) }}
 
-### Checkbox--without-fieldset
+### Checkboxes--without-fieldset
 
-[Preview the checkbox--without-fieldset variant](http://govuk-frontend-review.herokuapp.com/components/checkbox/without-fieldset/preview)
+[Preview the checkboxes--without-fieldset variant](http://govuk-frontend-review.herokuapp.com/components/checkboxes/without-fieldset/preview)
 
 #### Markup
 
-    <div class="govuk-c-checkbox">
-      <input class="govuk-c-checkbox__input" id="colours-1" name="colours" type="checkbox" value="red">
-      <label class="govuk-c-label govuk-c-checkbox__label" for="colours-1">
-        Red
+    <div class="govuk-c-checkboxes">
 
-      </label>
-    </div>
+      <div class="govuk-c-checkboxes__item">
+        <input class="govuk-c-checkboxes__input" id="colours-1" name="colours" type="checkbox" value="red">
+        <label class="govuk-c-label govuk-c-checkboxes__label" for="colours-1">
+          Red
 
-    <div class="govuk-c-checkbox">
-      <input class="govuk-c-checkbox__input" id="colours-2" name="colours" type="checkbox" value="green">
-      <label class="govuk-c-label govuk-c-checkbox__label" for="colours-2">
-        Green
+        </label>
+      </div>
 
-      </label>
-    </div>
+      <div class="govuk-c-checkboxes__item">
+        <input class="govuk-c-checkboxes__input" id="colours-2" name="colours" type="checkbox" value="green">
+        <label class="govuk-c-label govuk-c-checkboxes__label" for="colours-2">
+          Green
 
-    <div class="govuk-c-checkbox">
-      <input class="govuk-c-checkbox__input" id="colours-3" name="colours" type="checkbox" value="blue">
-      <label class="govuk-c-label govuk-c-checkbox__label" for="colours-3">
-        Blue
+        </label>
+      </div>
 
-      </label>
+      <div class="govuk-c-checkboxes__item">
+        <input class="govuk-c-checkboxes__input" id="colours-3" name="colours" type="checkbox" value="blue">
+        <label class="govuk-c-label govuk-c-checkboxes__label" for="colours-3">
+          Blue
+
+        </label>
+      </div>
+
     </div>
 
 #### Macro
 
-    {{ govukCheckbox({
+    {{ govukCheckboxes({
       "name": "colours",
       "items": [
         {
@@ -192,23 +200,27 @@ More information about when to use checkbox can be found on [GOV.UK Design Syste
       ]
     }) }}
 
-### Checkbox--disabled
+### Checkboxes--disabled
 
-[Preview the checkbox--disabled variant](http://govuk-frontend-review.herokuapp.com/components/checkbox/disabled/preview)
+[Preview the checkboxes--disabled variant](http://govuk-frontend-review.herokuapp.com/components/checkboxes/disabled/preview)
 
 #### Markup
 
-    <div class="govuk-c-checkbox">
-      <input class="govuk-c-checkbox__input" id="disabled-example-1" name="disabled-example" type="checkbox" value="disabled" disabled>
-      <label class="govuk-c-label govuk-c-checkbox__label" for="disabled-example-1">
-        Disabled option
+    <div class="govuk-c-checkboxes">
 
-      </label>
+      <div class="govuk-c-checkboxes__item">
+        <input class="govuk-c-checkboxes__input" id="disabled-example-1" name="disabled-example" type="checkbox" value="disabled" disabled>
+        <label class="govuk-c-label govuk-c-checkboxes__label" for="disabled-example-1">
+          Disabled option
+
+        </label>
+      </div>
+
     </div>
 
 #### Macro
 
-    {{ govukCheckbox({
+    {{ govukCheckboxes({
       "name": "disabled-example",
       "items": [
         {
@@ -221,11 +233,11 @@ More information about when to use checkbox can be found on [GOV.UK Design Syste
 
 ## Dependencies
 
-To consume the checkbox component you must be running npm version 5 or above.
+To consume the checkboxes component you must be running npm version 5 or above.
 
 ## Installation
 
-    npm install --save @govuk-frontend/checkbox
+      npm install --save @govuk-frontend/checkboxes
 
 ## Requirements
 
@@ -233,23 +245,19 @@ To consume the checkbox component you must be running npm version 5 or above.
 
 When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
 
-<pre>  `.pipe(sass({
+      .pipe(sass({
         includePaths: 'node_modules/'
-    }))` 
-  </pre>
+      }))
 
 ### Static asset path configuration
 
 To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
 
-<pre>  `app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))` 
-  </pre>
+      app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
 ## Component arguments
 
 If you are using Nunjucks,then macros take the following arguments
-
-<div>
 
 <table class="govuk-c-table">
 
@@ -339,7 +347,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-c-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Text to use within the checkbox label.</td>
+<td class="govuk-c-table__cell ">Text to use within each checkbox item label.</td>
 
 </tr>
 
@@ -351,7 +359,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-c-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">HTML to use within the checkbox label. If this is provided, the text argument will be ignored.</td>
+<td class="govuk-c-table__cell ">HTML to use within each checkbox item label. If this is provided, the text argument will be ignored.</td>
 
 </tr>
 
@@ -363,7 +371,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-c-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Provide additional attributes to the checkbox label.</td>
+<td class="govuk-c-table__cell ">Provide additional attributes to each checkbox item label.</td>
 
 </tr>
 
@@ -399,7 +407,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-c-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Any extra HTML attributes (for example data attributes) to add to the checkbox container.</td>
+<td class="govuk-c-table__cell ">Any extra HTML attributes (for example data attributes) to add to the checkboxes container.</td>
 
 </tr>
 
@@ -407,43 +415,30 @@ If you are using Nunjucks,then macros take the following arguments
 
 </table>
 
-</div>
-
 ### Setting up Nunjucks views and paths
 
 Below is an example setup using express configure views:
 
-<pre>  `nunjucks.configure('node_modules/@govuk-frontend`, {
-    autoescape: true,
-    cache: false,
-    express: app
-  })` 
-  </pre>
+      nunjucks.configure('node_modules/@govuk-frontend', {
+        autoescape: true,
+        cache: false,
+        express: app
+      })
 
 ## Getting updates
 
 To check whether you have the latest version of the button run:
 
-    npm outdated @govuk-frontend/checkbox
+      npm outdated @govuk-frontend/checkboxes
 
 To update the latest version run:
 
-    npm update @govuk-frontend/checkbox
+      npm update @govuk-frontend/checkboxes
 
 ## Contribution
 
 Guidelines can be found at [on our Github repository.](https://github.com/alphagov/govuk-frontend/blob/master/CONTRIBUTING.md "link to contributing guidelines on our github repository")
 
-## Acknowledgements/credits
-
-*   GDS developers
-*   Jani Kraner
-*   Gemma Leigh
-
 ## License
 
 MIT
-
-</div>
-
-</div>

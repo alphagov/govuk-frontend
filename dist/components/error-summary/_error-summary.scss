@@ -4,8 +4,9 @@
 
   .govuk-c-error-summary {
     @include govuk-text-colour;
-
     @include govuk-responsive-padding($govuk-spacing-responsive-4);
+    @include govuk-focusable;
+
     border: $govuk-border-width-mobile solid $govuk-error-colour;
 
     @include mq($from: tablet) {
@@ -16,10 +17,6 @@
     @include ie-lte(6) {
       zoom: 1;
     }
-  }
-
-  .govuk-c-error-summary:focus {
-    outline: $govuk-focus-width solid $govuk-focus-colour;
   }
 
   .govuk-c-error-summary__title {

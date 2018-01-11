@@ -1,7 +1,3 @@
-<div class="govuk-o-width-container">
-
-<div class="govuk-o-main-wrapper">
-
 # Date input
 
 ## Introduction
@@ -20,7 +16,7 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
 
 #### Markup
 
-    <fieldset class="govuk-c-fieldset">
+      <fieldset class="govuk-c-fieldset">
 
       <legend class="govuk-c-fieldset__legend">
         What is your date of birth?
@@ -40,8 +36,7 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
             Day
 
           </label>
-          <input class="govuk-c-input govuk-c-date-input__input undefined" id="dob-day" name="dob-day" type="text">
-
+          <input class="govuk-c-input govuk-c-date-input__input" id="dob-day" name="dob-day" type="text">
         </div>
 
         <div class="govuk-c-date-input__item govuk-c-date-input__item--month">
@@ -49,8 +44,7 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
             Month
 
           </label>
-          <input class="govuk-c-input govuk-c-date-input__input undefined" id="dob-month" name="dob-month" type="text">
-
+          <input class="govuk-c-input govuk-c-date-input__input" id="dob-month" name="dob-month" type="text">
         </div>
 
         <div class="govuk-c-date-input__item govuk-c-date-input__item--year">
@@ -58,12 +52,11 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
             Year
 
           </label>
-          <input class="govuk-c-input govuk-c-date-input__input undefined" id="dob-year" name="dob-year" type="text">
-
+          <input class="govuk-c-input govuk-c-date-input__input" id="dob-year" name="dob-year" type="text">
         </div>
 
       </div>
-    </fieldset>
+      </fieldset>
 
 #### Macro
 
@@ -96,7 +89,7 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
 
 #### Markup
 
-    <fieldset class="govuk-c-fieldset">
+      <fieldset class="govuk-c-fieldset">
 
       <legend class="govuk-c-fieldset__legend">
         What is your date of birth?
@@ -117,7 +110,6 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
 
           </label>
           <input class="govuk-c-input govuk-c-date-input__input govuk-c-input--error" id="dob-errors-day" name="undefined-day" type="text">
-
         </div>
 
         <div class="govuk-c-date-input__item govuk-c-date-input__item--month">
@@ -126,7 +118,6 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
 
           </label>
           <input class="govuk-c-input govuk-c-date-input__input govuk-c-input--error" id="dob-errors-month" name="undefined-month" type="text">
-
         </div>
 
         <div class="govuk-c-date-input__item govuk-c-date-input__item--year">
@@ -135,11 +126,10 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
 
           </label>
           <input class="govuk-c-input govuk-c-date-input__input govuk-c-input--error" id="dob-errors-year" name="undefined-year" type="text">
-
         </div>
 
       </div>
-    </fieldset>
+      </fieldset>
 
 #### Macro
 
@@ -174,7 +164,7 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
 
 #### Markup
 
-    <fieldset class="govuk-c-fieldset">
+      <fieldset class="govuk-c-fieldset">
 
       <legend class="govuk-c-fieldset__legend">
         What is your date of birth?
@@ -195,7 +185,6 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
 
           </label>
           <input class="govuk-c-input govuk-c-date-input__input govuk-c-input--error" id="dob-day-error-day" name="dob-day-error-day" type="text">
-
         </div>
 
         <div class="govuk-c-date-input__item govuk-c-date-input__item--month">
@@ -203,8 +192,7 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
             Month
 
           </label>
-          <input class="govuk-c-input govuk-c-date-input__input undefined" id="dob-day-error-month" name="dob-day-error-month" type="text">
-
+          <input class="govuk-c-input govuk-c-date-input__input" id="dob-day-error-month" name="dob-day-error-month" type="text">
         </div>
 
         <div class="govuk-c-date-input__item govuk-c-date-input__item--year">
@@ -212,12 +200,11 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
             Year
 
           </label>
-          <input class="govuk-c-input govuk-c-date-input__input undefined" id="dob-day-error-year" name="dob-day-error-year" type="text">
-
+          <input class="govuk-c-input govuk-c-date-input__input" id="dob-day-error-year" name="dob-day-error-year" type="text">
         </div>
 
       </div>
-    </fieldset>
+      </fieldset>
 
 #### Macro
 
@@ -251,7 +238,7 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
 
 #### Markup
 
-    <fieldset class="govuk-c-fieldset">
+      <fieldset class="govuk-c-fieldset">
 
       <legend class="govuk-c-fieldset__legend">
         What is your date of birth?
@@ -271,8 +258,7 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
             Day
 
           </label>
-          <input class="govuk-c-input govuk-c-date-input__input undefined" id="dob-month-error-day" name="dob-month-error-day" type="text">
-
+          <input class="govuk-c-input govuk-c-date-input__input" id="dob-month-error-day" name="dob-month-error-day" type="text">
         </div>
 
         <div class="govuk-c-date-input__item govuk-c-date-input__item--month">
@@ -281,7 +267,6 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
 
           </label>
           <input class="govuk-c-input govuk-c-date-input__input govuk-c-input--error" id="dob-month-error-month" name="dob-month-error-month" type="text">
-
         </div>
 
         <div class="govuk-c-date-input__item govuk-c-date-input__item--year">
@@ -289,12 +274,11 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
             Year
 
           </label>
-          <input class="govuk-c-input govuk-c-date-input__input undefined" id="dob-month-error-year" name="dob-month-error-year" type="text">
-
+          <input class="govuk-c-input govuk-c-date-input__input" id="dob-month-error-year" name="dob-month-error-year" type="text">
         </div>
 
       </div>
-    </fieldset>
+      </fieldset>
 
 #### Macro
 
@@ -328,7 +312,7 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
 
 #### Markup
 
-    <fieldset class="govuk-c-fieldset">
+      <fieldset class="govuk-c-fieldset">
 
       <legend class="govuk-c-fieldset__legend">
         What is your date of birth?
@@ -348,8 +332,7 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
             Day
 
           </label>
-          <input class="govuk-c-input govuk-c-date-input__input undefined" id="dob-year-error-day" name="dob-year-error-day" type="text">
-
+          <input class="govuk-c-input govuk-c-date-input__input" id="dob-year-error-day" name="dob-year-error-day" type="text">
         </div>
 
         <div class="govuk-c-date-input__item govuk-c-date-input__item--month">
@@ -357,8 +340,7 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
             Month
 
           </label>
-          <input class="govuk-c-input govuk-c-date-input__input undefined" id="dob-year-error-month" name="dob-year-error-month" type="text">
-
+          <input class="govuk-c-input govuk-c-date-input__input" id="dob-year-error-month" name="dob-year-error-month" type="text">
         </div>
 
         <div class="govuk-c-date-input__item govuk-c-date-input__item--year">
@@ -367,11 +349,10 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
 
           </label>
           <input class="govuk-c-input govuk-c-date-input__input govuk-c-input--error" id="dob-year-error-year" name="dob-year-error-year" type="text">
-
         </div>
 
       </div>
-    </fieldset>
+      </fieldset>
 
 #### Macro
 
@@ -405,7 +386,7 @@ To consume the date-input component you must be running npm version 5 or above.
 
 ## Installation
 
-    npm install --save @govuk-frontend/date-input
+      npm install --save @govuk-frontend/date-input
 
 ## Requirements
 
@@ -413,23 +394,19 @@ To consume the date-input component you must be running npm version 5 or above.
 
 When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
 
-<pre>  `.pipe(sass({
+      .pipe(sass({
         includePaths: 'node_modules/'
-    }))` 
-  </pre>
+      }))
 
 ### Static asset path configuration
 
 To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
 
-<pre>  `app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))` 
-  </pre>
+      app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
 ## Component arguments
 
 If you are using Nunjucks,then macros take the following arguments
-
-<div>
 
 <table class="govuk-c-table">
 
@@ -515,43 +492,30 @@ If you are using Nunjucks,then macros take the following arguments
 
 </table>
 
-</div>
-
 ### Setting up Nunjucks views and paths
 
 Below is an example setup using express configure views:
 
-<pre>  `nunjucks.configure('node_modules/@govuk-frontend`, {
-    autoescape: true,
-    cache: false,
-    express: app
-  })` 
-  </pre>
+      nunjucks.configure('node_modules/@govuk-frontend', {
+        autoescape: true,
+        cache: false,
+        express: app
+      })
 
 ## Getting updates
 
 To check whether you have the latest version of the button run:
 
-    npm outdated @govuk-frontend/date-input
+      npm outdated @govuk-frontend/date-input
 
 To update the latest version run:
 
-    npm update @govuk-frontend/date-input
+      npm update @govuk-frontend/date-input
 
 ## Contribution
 
 Guidelines can be found at [on our Github repository.](https://github.com/alphagov/govuk-frontend/blob/master/CONTRIBUTING.md "link to contributing guidelines on our github repository")
 
-## Acknowledgements/credits
-
-*   GDS developers
-*   Jani Kraner
-*   Gemma Leigh
-
 ## License
 
 MIT
-
-</div>
-
-</div>
