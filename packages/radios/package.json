@@ -2,7 +2,7 @@
   "name": "@govuk-frontend/radios",
   "version": "0.0.20-alpha",
   "dependencies": {
-    "@govuk-frontend/globals": "^0.0.20-alpha",
-    "@govuk-frontend/label": "^0.0.20-alpha"
+    "@govuk-frontend/globals": "^0.0.19-alpha",
+    "@govuk-frontend/label": "^0.0.19-alpha"
   }
 }
