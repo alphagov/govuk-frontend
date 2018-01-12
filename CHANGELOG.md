@@ -4,7 +4,8 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 
 ## Unreleased
 
-## 0.0.20-alpha (Breaking release)
+## 0.0.21-alpha (Breaking release)
+Skipped 0.0.20-alpha due to difficulties with publishing.
 
 Breaking changes:
 
@@ -18,6 +19,7 @@ New features:
 specific to form control in Elements. (PR [#413](https://github.com/alphagov/govuk-frontend/pull/413))
 
 Fixes:
+
 - Make buttons 40px high including box shadow (PR [#416](https://github.com/alphagov/govuk-frontend/pull/416))
 - Fix focus outline style in Chrome and Safari (PR [#414](https://github.com/alphagov/govuk-frontend/pull/414))
 - Remove contributors list from template, fix template markup and update README files (PR [#403](https://github.com/alphagov/govuk-frontend/pull/403))

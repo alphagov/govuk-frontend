@@ -1,7 +1,7 @@
 {
   "name": "@govuk-frontend/legal-text",
-  "version": "0.0.20-alpha",
+  "version": "0.0.21-alpha",
   "dependencies": {
-    "@govuk-frontend/globals": "^0.0.20-alpha"
+    "@govuk-frontend/globals": "^0.0.21-alpha"
   }
 }
