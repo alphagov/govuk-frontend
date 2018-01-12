@@ -13,7 +13,7 @@
 
         <ul class="govuk-list">
         {% for componentName, value in componentsDirectory | dictsort %}
-          <li><a href="/components/{{ componentName }}">{{ componentName | replace("-", " ") | capitalize }}</a></li>
+          <li><a href="/components/{{ componentName }}" class="govuk-link">{{ componentName | replace("-", " ") | capitalize }}</a></li>
         {% endfor %}
         </ul>
       </div>
@@ -23,7 +23,7 @@
 
         <ul class="govuk-list">
         {% for exampleName, value in examplesDirectory | dictsort %}
-          <li><a href="/examples/{{ exampleName }}">{{ exampleName | replace("-", " ") | capitalize }}</a></li>
+          <li><a href="/examples/{{ exampleName }}" class="govuk-link">{{ exampleName | replace("-", " ") | capitalize }}</a></li>
         {% endfor %}
         </ul>
       </div>
