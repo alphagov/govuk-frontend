@@ -4,6 +4,21 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 
 ## Unreleased
 
+Breaking changes:
+
+- The link styles in the core layer no longer style `a` elements directly, but
+  instead provide a `govuk-link` class which you will need to apply to links
+  individually. (PR [#427](https://github.com/alphagov/govuk-frontend/pull/427))
+
+New features:
+
+- The prose scope has been extended to style links, which means links within the
+  scope do not need the `govuk-link` class applied.
+  (PR [#427](https://github.com/alphagov/govuk-frontend/pull/427))
+- The muted link variant from the link component is now available as a core
+  class (`govuk-link--muted`).
+  (PR [#427](https://github.com/alphagov/govuk-frontend/pull/427))
+
 Fixes:
 
 - The error summary component allows users to pass HTML for an entry in the list
@@ -11,6 +26,15 @@ Fixes:
 - Error list entries in the error summary component no longer get wrapped in
   links when no `href` is provided.
   (PR [#428](https://github.com/alphagov/govuk-frontend/pull/428))
+- Remove redundant 'resets' for link print styles
+  (PR [#427](https://github.com/alphagov/govuk-frontend/pull/427))
+- The back link, breadcrumbs, error summary, previous / next and skip link
+  components have been updated to include explicit link styling, as they
+  previously relied on the global link styles.
+  (PR [#427](https://github.com/alphagov/govuk-frontend/pull/427))
+- Links within the review app and the examples have been updated to use the
+  `govuk-link` class.
+  (PR [#427](https://github.com/alphagov/govuk-frontend/pull/427))
 
 ## 0.0.21-alpha (Breaking release)
 Skipped 0.0.20-alpha due to difficulties with publishing.
