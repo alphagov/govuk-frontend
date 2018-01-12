@@ -1,0 +1,69 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+
+<div class="govuk-o-grid govuk-!-mt-r9">
+  <div class="govuk-o-grid__item govuk-o-grid__item--two-thirds">
+
+    <div class="govuk-prose-scope">
+
+      <h1>H1 heading</h1>
+
+      <p>
+        A paragraph. This includes even more text to give a good representation
+        of a more average length paragraph. That way you can see more than one
+        line wrapping.
+      </p>
+
+      <p>
+        This paragraph contains <a href="#">a link with surrounding text</a>
+        which shows the link in more context.
+      </p>
+
+      <p><a href="#">This is a link without any surrounding text</a></p>
+
+      <h2>H2 heading with a <a href="#">link in it</a></h2>
+
+      <h3>H3 heading immediately after an H2</h3>
+
+      <p>
+        A paragraph. This includes even more text to give a good representation
+        of a more average length paragraph. That way you can see more than one
+        line wrapping.
+      </p>
+
+      <p>
+        Our guidance says to avoid using <strong>bold text</strong> in body
+        copy, but we still need to see what it looks like if people do.
+      </p>
+
+      <p>Unordered list (ul):</p>
+      <ul>
+        <li>apples</li>
+        <li>oranges</li>
+        <li>pears</li>
+        <li><a href="#">more fruit</a></li>
+      </ul>
+
+      <h3>Another H3 heading after a list</h3>
+
+      <h4>An H4 heading</h4>
+
+      <p>Ordered list (ol):</p>
+
+      <ol>
+        <li>This is the first list item in the ordered list.</li>
+        <li>
+          This is the second list item in the ordered list which
+          <a href="#">contains a link</a> and is very long so it spans multiple
+          lines.
+        </li>
+        <li>This is the third and final item in the ordered list.</li>
+      </ol>
+
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
