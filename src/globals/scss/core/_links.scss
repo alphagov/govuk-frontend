@@ -2,6 +2,7 @@
 
   .govuk-link {
     @include govuk-font-regular;
+    @include govuk-focusable-fill;
 
     // Override the tap highlight colour (the color of the highlight that
     // appears when a link is tapped on some mobile devices). This is
@@ -22,11 +23,6 @@
 
     &:active {
       color: $govuk-link-active-colour;
-    }
-
-    &:focus {
-      outline: $govuk-focus-width solid $govuk-focus-colour;
-      background-color: $govuk-focus-colour;
     }
 
     @include mq($media-type: print) {
