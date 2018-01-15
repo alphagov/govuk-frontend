@@ -17,13 +17,13 @@ More information about when to use cookie-banner can be found on [GOV.UK Design 
 #### Markup
 
     <div class="govuk-c-cookie-banner js-cookie-banner">
-      <p class="govuk-c-cookie-banner__message">GOV.UK uses cookies to make the site simpler. <a href="https://www.gov.uk/help/cookies">Find out more about cookies</a></p>
+      <p class="govuk-c-cookie-banner__message">GOV.UK uses cookies to make the site simpler. <a href="https://www.gov.uk/help/cookies" class="govuk-link">Find out more about cookies</a></p>
     </div>
 
 #### Macro
 
     {{ govukCookieBanner({
-      "html": "GOV.UK uses cookies to make the site simpler. <a href=\"https://www.gov.uk/help/cookies\">Find out more about cookies</a>"
+      "html": "GOV.UK uses cookies to make the site simpler. <a href=\"https://www.gov.uk/help/cookies\" class=\"govuk-link\">Find out more about cookies</a>"
     }) }}
 
 ## Dependencies
