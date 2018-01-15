@@ -4,6 +4,14 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 
 ## Unreleased
 
+Fixes:
+
+- The error summary component allows users to pass HTML for an entry in the list
+  again. (PR [#428](https://github.com/alphagov/govuk-frontend/pull/428))
+- Error list entries in the error summary component no longer get wrapped in
+  links when no `href` is provided.
+  (PR [#428](https://github.com/alphagov/govuk-frontend/pull/428))
+
 ## 0.0.21-alpha (Breaking release)
 Skipped 0.0.20-alpha due to difficulties with publishing.
 
