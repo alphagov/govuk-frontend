@@ -9,6 +9,9 @@ Breaking changes:
 - The link styles in the core layer no longer style `a` elements directly, but
   instead provide a `govuk-link` class which you will need to apply to links
   individually. (PR [#427](https://github.com/alphagov/govuk-frontend/pull/427))
+- The link component has been removed from Frontend as the link styles have
+  been moved to the core
+  (PR [#431](https://github.com/alphagov/govuk-frontend/pull/431))
 
 New features:
 
