@@ -5,6 +5,6 @@
   <span class="govuk-c-warning-text__icon govuk-o-circle" aria-hidden="true">!</span>
   <strong class="govuk-c-warning-text__text">
     <span class="govuk-c-warning-text__assistive">{{ params.iconFallbackText }}</span>
-    {{ params.warningText }}
+    {{ params.html | safe if params.html else params.text }}
   </strong>
 </div>
