@@ -3,6 +3,7 @@
 @include exports("skip-link") {
   .govuk-c-skip-link {
     @include govuk-h-visually-hidden-focusable;
+    @include govuk-focusable-fill;
     @include govuk-font-regular-16;
 
     display: block;

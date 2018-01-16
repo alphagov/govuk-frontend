@@ -44,5 +44,9 @@
     ul {
       @extend .govuk-list--bullet;
     }
+
+    a {
+      @extend .govuk-link;
+    }
   }
 }

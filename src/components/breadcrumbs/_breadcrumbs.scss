@@ -103,6 +103,8 @@
   }
 
   .govuk-c-breadcrumbs__link {
+    @include govuk-focusable-fill;
+
     &:link,
     &:visited,
     &:hover,

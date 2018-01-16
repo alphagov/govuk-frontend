@@ -43,9 +43,15 @@
   }
 
   .govuk-c-previous-next__link {
+    @include govuk-focusable-fill;
+
     display: block;
     padding: $govuk-spacing-scale-3;
     text-decoration: none;
+
+    &:link {
+      color: $govuk-link-colour;
+    }
 
     &:visited {
       color: $govuk-link-colour;
