@@ -1,0 +1,10 @@
+{% from "warning-text/macro.njk" import govukWarningText -%}
+
+<div class="govuk-c-warning-text
+  {%- if params.classes %} {{ params.classes }}{% endif %}">
+  <span class="govuk-c-warning-text__icon govuk-o-circle" aria-hidden="true">!</span>
+  <strong class="govuk-c-warning-text__text">
+    <span class="govuk-c-warning-text__assistive">{{ params.iconFallbackText }}</span>
+    {{ params.warningText }}
+  </strong>
+</div>
