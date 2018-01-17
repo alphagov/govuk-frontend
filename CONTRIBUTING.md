@@ -45,14 +45,26 @@ The folder structure should be:
       - component-name.js
       - README.md
 
+# Updating Changelog
+
+If you open a GitHub pull request on this repo, please update `CHANGELOG` to reflect your contribution.
+
+Add your entry under `Unreleased` as `Breaking change`, `New feature`, `Fix` or `Internal`.
+
+Please include a description of the work done and a link to the PR (see current `CHANGELOG` for the format).
+
+Include the modified `CHANGELOG` in the PR.
+
 
 # Versioning
 
-We use [Semantic Versioning](http://semver.org/).
+We are not using semantic versioning yet, we are going to talk about this soon.
+
+See `CHANGELOG` for more information.
 
 ## To release a new version
 
-To follow.
+See `docs/publishing`
 
 # Commit hygiene
 

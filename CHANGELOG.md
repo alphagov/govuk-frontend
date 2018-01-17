@@ -38,9 +38,13 @@ Fixes:
   previously relied on the global link styles.
   (PR [#427](https://github.com/alphagov/govuk-frontend/pull/427))
 - Adjust `warning-text` icon by 1px for New Transport
+
+Internal:
+
 - Links within the review app and the examples have been updated to use the
   `govuk-link` class.
   (PR [#427](https://github.com/alphagov/govuk-frontend/pull/427))
+- Improve documentation around contributing (PR [#433](https://github.com/alphagov/govuk-frontend/pull/433))
 
 ## 0.0.21-alpha (Breaking release)
 Skipped 0.0.20-alpha due to difficulties with publishing.
