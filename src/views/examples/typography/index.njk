@@ -2,6 +2,8 @@
 
 {% block content %}
 
+{% from 'table/macro.njk' import govukTable %}
+
 <div class="govuk-o-grid govuk-!-mt-r9">
   <div class="govuk-o-grid__item govuk-o-grid__item--two-thirds">
 
@@ -187,28 +189,43 @@
 
       <p class="govuk-body-m">Details of how to pay and where to send your application are on each form.</p>
 
-      <table class="govuk-c-table govuk-!-f-16">
-        <thead class="govuk-c-table__head">
-          <tr class="govuk-c-table__row">
-            <th class="govuk-c-table__header" scope="col">Who is making the request</th>
-            <th class="govuk-c-table__header" scope="col">Form</th>
-          </tr>
-        </thead>
-        <tbody class="govuk-c-table__body">
-          <tr class="govuk-c-table__row">
-            <td class="govuk-c-table__cell">An individual</td>
-            <td class="govuk-c-table__cell"><a href="/government/publications/v888-request-by-an-individual-for-information-about-a-vehicle" class="govuk-link">Form V888</a></td>
-          </tr>
-          <tr class="govuk-c-table__row">
-            <td class="govuk-c-table__cell">A company</td>
-            <td class="govuk-c-table__cell"><a href="/government/publications/v8882-request-by-a-company-for-information-about-a-vehicle" class="govuk-link">Form V8882</a></td>
-          </tr>
-          <tr class="govuk-c-table__row">
-            <td class="govuk-c-table__cell">A company that issues parking or trespass charge notices</td>
-            <td class="govuk-c-table__cell"><a href="/government/publications/v8883-request-for-information-for-those-who-issue-a-parking-charge-notice" class="govuk-link">Form V8883</a></td>
-          </tr>
-        </tbody>
-      </table>
+      {{ govukTable({
+        "classes": "govuk-!-f-16",
+        "head": [
+          {
+            "text": "Who is making the request"
+          },
+          {
+            "text": "Form"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "text": "An individual"
+            },
+            {
+              "html": "<a href=\"/government/publications/v888-request-by-an-individual-for-information-about-a-vehicle\" class=\"govuk-link\">Form V888</a>"
+            }
+          ],
+          [
+            {
+              "text": "A company"
+            },
+            {
+              "html": "<a href=\"/government/publications/v8882-request-by-a-company-for-information-about-a-vehicle\" class=\"govuk-link\">Form V8882</a>"
+            }
+          ],
+          [
+            {
+              "text": "A company that issues parking or trespass charge notices"
+            },
+            {
+              "html": "<a href=\"/government/publications/v8883-request-for-information-for-those-who-issue-a-parking-charge-notice\" class=\"govuk-link\">Form V8883</a>"
+            }
+          ]
+        ]
+      }) }}
 
       <p class="govuk-body-m">You can download further information on <a href="/government/publications/giving-people-information-from-our-vehicle-record" class="govuk-link">requesting information from <abbr title="Driver and Vehicle Licensing Agency">DVLA</abbr></a>.</p>
 
