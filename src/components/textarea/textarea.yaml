@@ -1,4 +1,4 @@
-variants:
+examples:
   - name: default
     data:
       name: more-detail

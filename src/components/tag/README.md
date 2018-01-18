@@ -28,7 +28,7 @@ More information about when to use tag can be found on [GOV.UK Design System](ht
 
 ### Tag--with-html
 
-[Preview the tag--with-html variant](http://govuk-frontend-review.herokuapp.com/components/tag/with-html/preview)
+[Preview the tag--with-html example](http://govuk-frontend-review.herokuapp.com/components/tag/with-html/preview)
 
 #### Markup
 
@@ -44,7 +44,7 @@ More information about when to use tag can be found on [GOV.UK Design System](ht
 
 ### Tag--inactive
 
-[Preview the tag--inactive variant](http://govuk-frontend-review.herokuapp.com/components/tag/inactive/preview)
+[Preview the tag--inactive example](http://govuk-frontend-review.herokuapp.com/components/tag/inactive/preview)
 
 #### Markup
 

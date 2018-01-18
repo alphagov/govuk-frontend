@@ -1,4 +1,4 @@
-variants:
+examples:
 - name: default
   data:
     text: Skip to main content

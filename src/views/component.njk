@@ -43,9 +43,9 @@
   <p class="govuk-body">{% block componentHtmlUsageWriteup %}{% endblock %}</p>
   {% endif %}
 
-  {% from "./macros/showDefaultAndVariants.njk" import showDefaultAndVariants %}
-  {% block defaultAndVariants %}
-  {{ showDefaultAndVariants(componentName, componentData) }}
+  {% from "./macros/showExamples.njk" import showExamples %}
+  {% block examples %}
+  {{ showExamples(componentName, componentData) }}
   {% endblock %}
 
   {% if isReadme %}

@@ -1,5 +1,4 @@
 {% extends "component.njk" %}
-{% from "macros/showDefaultAndVariants.njk" import showDefaultAndVariants %}
 
 {# Commented out blocks below inherit from views/component.njk #}
 
@@ -7,10 +6,6 @@
 
 {% block componentDescription %}
 The HTML <code>&lt;input&gt;</code> element with type="file" lets a user pick one or more files, to upload to a server.
-{% endblock %}
-
-{% block defaultAndVariants %}
-{{ showDefaultAndVariants(componentName, componentData) }}
 {% endblock %}
 
 {# override link to design system here if it's different to base url + componentName #}

@@ -36,7 +36,7 @@ More information about when to use fieldset can be found on [GOV.UK Design Syste
 
 ### Fieldset--with-error-message
 
-[Preview the fieldset--with-error-message variant](http://govuk-frontend-review.herokuapp.com/components/fieldset/with-error-message/preview)
+[Preview the fieldset--with-error-message example](http://govuk-frontend-review.herokuapp.com/components/fieldset/with-error-message/preview)
 
 #### Markup
 
@@ -67,7 +67,7 @@ More information about when to use fieldset can be found on [GOV.UK Design Syste
 
 ### Fieldset--with-html-instead-of-text
 
-[Preview the fieldset--with-html-instead-of-text variant](http://govuk-frontend-review.herokuapp.com/components/fieldset/with-html-instead-of-text/preview)
+[Preview the fieldset--with-html-instead-of-text example](http://govuk-frontend-review.herokuapp.com/components/fieldset/with-html-instead-of-text/preview)
 
 #### Markup
 

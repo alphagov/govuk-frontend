@@ -47,7 +47,7 @@ More information about when to use breadcrumbs can be found on [GOV.UK Design Sy
 
 ### Breadcrumbs--single-section
 
-[Preview the breadcrumbs--single-section variant](http://govuk-frontend-review.herokuapp.com/components/breadcrumbs/single-section/preview)
+[Preview the breadcrumbs--single-section example](http://govuk-frontend-review.herokuapp.com/components/breadcrumbs/single-section/preview)
 
 #### Markup
 
@@ -74,7 +74,7 @@ More information about when to use breadcrumbs can be found on [GOV.UK Design Sy
 
 ### Breadcrumbs--many-breadcrumbs
 
-[Preview the breadcrumbs--many-breadcrumbs variant](http://govuk-frontend-review.herokuapp.com/components/breadcrumbs/many-breadcrumbs/preview)
+[Preview the breadcrumbs--many-breadcrumbs example](http://govuk-frontend-review.herokuapp.com/components/breadcrumbs/many-breadcrumbs/preview)
 
 #### Markup
 
@@ -125,7 +125,7 @@ More information about when to use breadcrumbs can be found on [GOV.UK Design Sy
 
 ### Breadcrumbs--no-home-section
 
-[Preview the breadcrumbs--no-home-section variant](http://govuk-frontend-review.herokuapp.com/components/breadcrumbs/no-home-section/preview)
+[Preview the breadcrumbs--no-home-section example](http://govuk-frontend-review.herokuapp.com/components/breadcrumbs/no-home-section/preview)
 
 #### Markup
 
@@ -160,7 +160,7 @@ More information about when to use breadcrumbs can be found on [GOV.UK Design Sy
 
 ### Breadcrumbs--last-breadcrumb-is-current-page
 
-[Preview the breadcrumbs--last-breadcrumb-is-current-page variant](http://govuk-frontend-review.herokuapp.com/components/breadcrumbs/last-breadcrumb-is-current-page/preview)
+[Preview the breadcrumbs--last-breadcrumb-is-current-page example](http://govuk-frontend-review.herokuapp.com/components/breadcrumbs/last-breadcrumb-is-current-page/preview)
 
 #### Markup
 

@@ -84,23 +84,23 @@ app.get('/components/:component', function (req, res, next) {
   })
 })
 
-// Component variant preview
-app.get('/components/:component/:variant*?/preview', function (req, res, next) {
-  // Find the data for the specified variant (or the default variant)
+// Component example preview
+app.get('/components/:component/:example*?/preview', function (req, res, next) {
+  // Find the data for the specified example (or the default example)
   let componentName = req.params.component
-  let requestedVariantName = req.params.variant || 'default'
+  let requestedExampleName = req.params.example || 'default'
 
-  let variantConfig = res.locals.componentData.variants.find(
-    variant => variant.name === requestedVariantName
+  let exampleConfig = res.locals.componentData.examples.find(
+    example => example.name === requestedExampleName
   )
 
-  if (!variantConfig) {
+  if (!exampleConfig) {
     next()
   }
 
-  // Construct and evaluate the component with the data for this variant
+  // Construct and evaluate the component with the data for this example
   let macroName = helperFunctions.componentNameToMacroName(componentName)
-  let macroParameters = JSON.stringify(variantConfig.data, null, '\t')
+  let macroParameters = JSON.stringify(exampleConfig.data, null, '\t')
 
   res.locals.componentView = env.renderString(
     `{% from '${componentName}/macro.njk' import ${macroName} %}

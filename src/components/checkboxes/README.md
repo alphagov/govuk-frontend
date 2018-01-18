@@ -81,7 +81,7 @@ More information about when to use checkboxes can be found on [GOV.UK Design Sys
 
 ### Checkboxes--with-html
 
-[Preview the checkboxes--with-html variant](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-html/preview)
+[Preview the checkboxes--with-html example](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-html/preview)
 
 #### Markup
 
@@ -148,7 +148,7 @@ More information about when to use checkboxes can be found on [GOV.UK Design Sys
 
 ### Checkboxes--without-fieldset
 
-[Preview the checkboxes--without-fieldset variant](http://govuk-frontend-review.herokuapp.com/components/checkboxes/without-fieldset/preview)
+[Preview the checkboxes--without-fieldset example](http://govuk-frontend-review.herokuapp.com/components/checkboxes/without-fieldset/preview)
 
 #### Markup
 
@@ -202,7 +202,7 @@ More information about when to use checkboxes can be found on [GOV.UK Design Sys
 
 ### Checkboxes--disabled
 
-[Preview the checkboxes--disabled variant](http://govuk-frontend-review.herokuapp.com/components/checkboxes/disabled/preview)
+[Preview the checkboxes--disabled example](http://govuk-frontend-review.herokuapp.com/components/checkboxes/disabled/preview)
 
 #### Markup
 

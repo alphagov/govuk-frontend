@@ -101,7 +101,7 @@ More information about when to use table can be found on [GOV.UK Design System](
 
 ### Table--table-with-head
 
-[Preview the table--table-with-head variant](http://govuk-frontend-review.herokuapp.com/components/table/table-with-head/preview)
+[Preview the table--table-with-head example](http://govuk-frontend-review.herokuapp.com/components/table/table-with-head/preview)
 
 #### Markup
 
@@ -215,7 +215,7 @@ More information about when to use table can be found on [GOV.UK Design System](
 
 ### Table--table-with-caption-and-head
 
-[Preview the table--table-with-caption-and-head variant](http://govuk-frontend-review.herokuapp.com/components/table/table-with-caption-and-head/preview)
+[Preview the table--table-with-caption-and-head example](http://govuk-frontend-review.herokuapp.com/components/table/table-with-caption-and-head/preview)
 
 #### Markup
 

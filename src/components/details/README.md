@@ -38,7 +38,7 @@ More information about when to use details can be found on [GOV.UK Design System
 
 ### Details--with-html
 
-[Preview the details--with-html variant](http://govuk-frontend-review.herokuapp.com/components/details/with-html/preview)
+[Preview the details--with-html example](http://govuk-frontend-review.herokuapp.com/components/details/with-html/preview)
 
 #### Markup
 

@@ -39,7 +39,7 @@ More information about when to use textarea can be found on [GOV.UK Design Syste
 
 ### Textarea--with error message
 
-[Preview the textarea--with error message variant](http://govuk-frontend-review.herokuapp.com/components/textarea/with error message/preview)
+[Preview the textarea--with error message example](http://govuk-frontend-review.herokuapp.com/components/textarea/with error message/preview)
 
 #### Markup
 
@@ -68,7 +68,7 @@ More information about when to use textarea can be found on [GOV.UK Design Syste
 
 ### Textarea--with default value
 
-[Preview the textarea--with default value variant](http://govuk-frontend-review.herokuapp.com/components/textarea/with default value/preview)
+[Preview the textarea--with default value example](http://govuk-frontend-review.herokuapp.com/components/textarea/with default value/preview)
 
 #### Markup
 
@@ -94,7 +94,7 @@ More information about when to use textarea can be found on [GOV.UK Design Syste
 
 ### Textarea--with custom rows
 
-[Preview the textarea--with custom rows variant](http://govuk-frontend-review.herokuapp.com/components/textarea/with custom rows/preview)
+[Preview the textarea--with custom rows example](http://govuk-frontend-review.herokuapp.com/components/textarea/with custom rows/preview)
 
 #### Markup
 

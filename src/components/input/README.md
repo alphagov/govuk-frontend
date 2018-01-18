@@ -34,7 +34,7 @@ More information about when to use input can be found on [GOV.UK Design System](
 
 ### Input--with-hint-text
 
-[Preview the input--with-hint-text variant](http://govuk-frontend-review.herokuapp.com/components/input/with-hint-text/preview)
+[Preview the input--with-hint-text example](http://govuk-frontend-review.herokuapp.com/components/input/with-hint-text/preview)
 
 #### Markup
 
@@ -61,7 +61,7 @@ More information about when to use input can be found on [GOV.UK Design System](
 
 ### Input--with-error-message
 
-[Preview the input--with-error-message variant](http://govuk-frontend-review.herokuapp.com/components/input/with-error-message/preview)
+[Preview the input--with-error-message example](http://govuk-frontend-review.herokuapp.com/components/input/with-error-message/preview)
 
 #### Markup
 

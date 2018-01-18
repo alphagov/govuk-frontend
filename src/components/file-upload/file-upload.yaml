@@ -1,4 +1,4 @@
-variants:
+examples:
 - name: default
   data:
     id: file-upload-1
