@@ -107,7 +107,12 @@ app.get('/components/:component/:example*?/preview', function (req, res, next) {
     {{ ${macroName}(${macroParameters}) }}`
   )
 
-  res.render('component-preview')
+  let bodyClasses = ''
+  if (req.query.iframe) {
+    bodyClasses = 'app-iframe-in-component-preview'
+  }
+
+  res.render('component-preview', { bodyClasses })
 })
 
 // Example view

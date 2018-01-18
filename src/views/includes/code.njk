@@ -1,0 +1,8 @@
+<h4 class="govuk-heading-s">Markup</h4>
+{% set componentHtml %}{{ loadComponentTemplate(componentName, item.data) }}{% endset %}
+<pre><code class="govuk-!-f-16">{{- componentHtml | e -}}</code></pre>
+
+<h4 class="govuk-heading-s">Macro</h4>
+<pre class="govuk-!-mb-r0 govuk-!-f-16"><code>{% raw %}{{ {% endraw %}{{ componentName | componentNameToMacroName }}(
+  {{- item.data | dump(2) -}}
+  ){% raw %} }}{% endraw %}</code></pre>

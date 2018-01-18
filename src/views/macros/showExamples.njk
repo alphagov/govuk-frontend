@@ -1,4 +1,5 @@
 {% from "./loadComponentTemplate.njk" import loadComponentTemplate %}
+{% from "details/macro.njk" import govukDetails %}
 
 {% macro showExamples(componentName, componentData) %}
 
@@ -17,27 +18,33 @@
       {% set previewText = 'Preview the ' + itemName + ' example' %}
     {% endif %}
 
-    <h3 class="govuk-heading-m">{{ itemName  | capitalize }}</h3>
+    {% if isReadme %}
+      <h3>{{ itemName  | capitalize }}</h3>
+      <a href="http://govuk-frontend-review.herokuapp.com{{ previewLink }}">{{ previewText }}</a>
+      {% include "../includes/code.njk" %}
+    {% else %}
+      <section aria-labelledby="heading-{{ itemName}}">
+        <div class="govuk-heading-m">
+          <h3 id="heading-{{ itemName}}" class="app-!-di">{{ itemName  | capitalize }}</h3>
+          <a href="{{ previewLink }}" class="govuk-link govuk-!-ml-r1 govuk-!-f-16">
+            (open in a new window)
+          </a>
+        </div>
 
-    {% if not isReadme %}
-    {{ loadComponentTemplate(componentName, item.data) }}
+        <div class="app-c-component-preview govuk-!-mb-r4">
+          <iframe
+          class="js-component-preview app-c-component-preview__iframe"
+          src="{{ previewLink }}?iframe=true"
+          frameBorder="0"
+          allowTransparency="true"
+          scrolling="auto"
+          ></iframe>
+        </div>
+
+        {% set detailsHtml %}{% include "../includes/code.njk" %}{% endset %}
+        {{- govukDetails({ summaryText: "Code", html: detailsHtml }) -}}
+      </section>
     {% endif %}
-
-    <p class="govuk-body">
-      <a href="{% if isReadme %}http://govuk-frontend-review.herokuapp.com{% endif %}{{ previewLink }}" class="govuk-link">{{ previewText }}</a>
-    </p>
-
-    <h4 class="govuk-heading-s">Markup</h4>
-    {% set componentHtml %}
-    {{- loadComponentTemplate(componentName, item.data) }}
-    {% endset %}
-    <pre><code>{{- componentHtml | e -}}</code></pre>
-
-    <h4 class="govuk-heading-s">Macro</h4>
-    <pre><code>{% raw %}{{ {% endraw %}{{ componentName | componentNameToMacroName }}(
-      {{- item.data | dump(2) -}}
-    ){% raw %} }}{% endraw %}</code></pre>
-
-    {% endif %}
+  {% endif %}
 {% endfor %}
 {% endmacro %}
