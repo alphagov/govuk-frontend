@@ -23,6 +23,7 @@ New features:
 - The muted link variant from the link component is now available as a core
   class (`govuk-link--muted`).
   (PR [#427](https://github.com/alphagov/govuk-frontend/pull/427))
+- Button hover colour now has a semantic Sass name: $govuk-button-hover-colour (PR [#406](https://github.com/alphagov/govuk-frontend/pull/406))
 
 Fixes:
 
