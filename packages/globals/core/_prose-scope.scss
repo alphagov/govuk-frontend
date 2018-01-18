@@ -43,4 +43,8 @@
     .govuk-prose-scope ul {
       @extend .govuk-list--bullet;
     }
+
+    .govuk-prose-scope a {
+      @extend .govuk-link;
+    }
 }

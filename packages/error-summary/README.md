@@ -29,11 +29,15 @@ More information about when to use error-summary can be found on [GOV.UK Design 
         <ul class="govuk-list govuk-c-error-summary__list">
 
           <li>
+
             <a href="#example-error-1">Descriptive link to the question with an error</a>
+
           </li>
 
           <li>
-            <a href="#example-error-1"></a>
+
+            <a href="#example-error-1">Descriptive link to the question with an error</a>
+
           </li>
 
         </ul>

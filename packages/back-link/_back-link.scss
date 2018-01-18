@@ -4,6 +4,7 @@
 
   .govuk-c-back-link {
     @include govuk-font-regular-16;
+    @include govuk-focusable-fill;
 
     display: inline-block;
     position: relative;

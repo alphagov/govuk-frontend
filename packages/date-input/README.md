@@ -36,7 +36,7 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
             Day
 
           </label>
-          <input class="govuk-c-input govuk-c-date-input__input undefined" id="dob-day" name="dob-day" type="text">
+          <input class="govuk-c-input govuk-c-date-input__input" id="dob-day" name="dob-day" type="text">
         </div>
 
         <div class="govuk-c-date-input__item govuk-c-date-input__item--month">
@@ -44,7 +44,7 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
             Month
 
           </label>
-          <input class="govuk-c-input govuk-c-date-input__input undefined" id="dob-month" name="dob-month" type="text">
+          <input class="govuk-c-input govuk-c-date-input__input" id="dob-month" name="dob-month" type="text">
         </div>
 
         <div class="govuk-c-date-input__item govuk-c-date-input__item--year">
@@ -52,7 +52,7 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
             Year
 
           </label>
-          <input class="govuk-c-input govuk-c-date-input__input undefined" id="dob-year" name="dob-year" type="text">
+          <input class="govuk-c-input govuk-c-date-input__input" id="dob-year" name="dob-year" type="text">
         </div>
 
       </div>
@@ -192,7 +192,7 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
             Month
 
           </label>
-          <input class="govuk-c-input govuk-c-date-input__input undefined" id="dob-day-error-month" name="dob-day-error-month" type="text">
+          <input class="govuk-c-input govuk-c-date-input__input" id="dob-day-error-month" name="dob-day-error-month" type="text">
         </div>
 
         <div class="govuk-c-date-input__item govuk-c-date-input__item--year">
@@ -200,7 +200,7 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
             Year
 
           </label>
-          <input class="govuk-c-input govuk-c-date-input__input undefined" id="dob-day-error-year" name="dob-day-error-year" type="text">
+          <input class="govuk-c-input govuk-c-date-input__input" id="dob-day-error-year" name="dob-day-error-year" type="text">
         </div>
 
       </div>
@@ -258,7 +258,7 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
             Day
 
           </label>
-          <input class="govuk-c-input govuk-c-date-input__input undefined" id="dob-month-error-day" name="dob-month-error-day" type="text">
+          <input class="govuk-c-input govuk-c-date-input__input" id="dob-month-error-day" name="dob-month-error-day" type="text">
         </div>
 
         <div class="govuk-c-date-input__item govuk-c-date-input__item--month">
@@ -274,7 +274,7 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
             Year
 
           </label>
-          <input class="govuk-c-input govuk-c-date-input__input undefined" id="dob-month-error-year" name="dob-month-error-year" type="text">
+          <input class="govuk-c-input govuk-c-date-input__input" id="dob-month-error-year" name="dob-month-error-year" type="text">
         </div>
 
       </div>
@@ -332,7 +332,7 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
             Day
 
           </label>
-          <input class="govuk-c-input govuk-c-date-input__input undefined" id="dob-year-error-day" name="dob-year-error-day" type="text">
+          <input class="govuk-c-input govuk-c-date-input__input" id="dob-year-error-day" name="dob-year-error-day" type="text">
         </div>
 
         <div class="govuk-c-date-input__item govuk-c-date-input__item--month">
@@ -340,7 +340,7 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
             Month
 
           </label>
-          <input class="govuk-c-input govuk-c-date-input__input undefined" id="dob-year-error-month" name="dob-year-error-month" type="text">
+          <input class="govuk-c-input govuk-c-date-input__input" id="dob-year-error-month" name="dob-year-error-month" type="text">
         </div>
 
         <div class="govuk-c-date-input__item govuk-c-date-input__item--year">
