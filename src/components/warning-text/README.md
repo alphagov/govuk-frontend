@@ -1,8 +1,8 @@
-#  Warning text
+# Warning text
 
 ## Introduction
 
-Use bold text with an exclamation icon if there are  consequences - for example, a fine or prison sentence.
+Use bold text with an exclamation icon if there are consequences - for example, a fine or prison sentence.
 
 ## Guidance
 
@@ -26,9 +26,9 @@ More information about when to use warning-text can be found on [GOV.UK Design S
 
 #### Macro
 
-    {{ govukwarningText({
+    {{ govukWarningText({
       "classes": null,
-      "warningText": "You can be fined up to £5,000 if you don’t register.",
+      "text": "You can be fined up to £5,000 if you don’t register.",
       "iconFallbackText": "Warning"
     }) }}
 
@@ -106,7 +106,19 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header" scope="row">warningText</th>
+<th class="govuk-c-table__header" scope="row">text</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">Yes</td>
+
+<td class="govuk-c-table__cell ">The text next to the icon</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">html</th>
 
 <td class="govuk-c-table__cell ">string</td>
 
