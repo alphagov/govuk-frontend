@@ -27,7 +27,6 @@ More information about when to use warning-text can be found on [GOV.UK Design S
 #### Macro
 
     {{ govukWarningText({
-      "classes": null,
       "text": "You can be fined up to £5,000 if you don’t register.",
       "iconFallbackText": "Warning"
     }) }}
