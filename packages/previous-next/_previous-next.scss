@@ -43,10 +43,16 @@
   }
 
   .govuk-c-previous-next__link {
+    @include govuk-focusable-fill;
+
     display: block;
     padding: $govuk-spacing-scale-3;
     text-decoration: none;
   }
+
+    .govuk-c-previous-next__link:link {
+      color: $govuk-link-colour;
+    }
 
     .govuk-c-previous-next__link:visited {
       color: $govuk-link-colour;

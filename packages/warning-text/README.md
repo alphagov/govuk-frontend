@@ -1,44 +1,44 @@
-# Legal text
+#  Warning text
 
 ## Introduction
 
-Use bold text with an exclamation icon if there are legal consequences - for example, a fine or prison sentence.
+Use bold text with an exclamation icon if there are  consequences - for example, a fine or prison sentence.
 
 ## Guidance
 
-More information about when to use legal-text can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/legal-text "Link to read guidance on the use of legal-text on Gov.uk Design system website")
+More information about when to use warning-text can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/warning-text "Link to read guidance on the use of warning-text on Gov.uk Design system website")
 
 ## Quick start examples
 
 ### Component default
 
-[Preview the legal-text component](http://govuk-frontend-review.herokuapp.com/components/legal-text/preview)
+[Preview the warning-text component](http://govuk-frontend-review.herokuapp.com/components/warning-text/preview)
 
 #### Markup
 
-    <div class="govuk-c-legal-text">
-      <span class="govuk-c-legal-text__icon govuk-o-circle" aria-hidden="true">!</span>
-      <strong class="govuk-c-legal-text__text">
-        <span class="govuk-c-legal-text__assistive">Warning</span>
+    <div class="govuk-c-warning-text">
+      <span class="govuk-c-warning-text__icon govuk-o-circle" aria-hidden="true">!</span>
+      <strong class="govuk-c-warning-text__text">
+        <span class="govuk-c-warning-text__assistive">Warning</span>
         You can be fined up to £5,000 if you don’t register.
       </strong>
     </div>
 
 #### Macro
 
-    {{ govukLegalText({
+    {{ govukwarningText({
       "classes": null,
-      "legalText": "You can be fined up to £5,000 if you don’t register.",
+      "warningText": "You can be fined up to £5,000 if you don’t register.",
       "iconFallbackText": "Warning"
     }) }}
 
 ## Dependencies
 
-To consume the legal-text component you must be running npm version 5 or above.
+To consume the warning-text component you must be running npm version 5 or above.
 
 ## Installation
 
-      npm install --save @govuk-frontend/legal-text
+      npm install --save @govuk-frontend/warning-text
 
 ## Requirements
 
@@ -106,7 +106,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header" scope="row">legalText</th>
+<th class="govuk-c-table__header" scope="row">warningText</th>
 
 <td class="govuk-c-table__cell ">string</td>
 
@@ -134,11 +134,11 @@ Below is an example setup using express configure views:
 
 To check whether you have the latest version of the button run:
 
-      npm outdated @govuk-frontend/legal-text
+      npm outdated @govuk-frontend/warning-text
 
 To update the latest version run:
 
-      npm update @govuk-frontend/legal-text
+      npm update @govuk-frontend/warning-text
 
 ## Contribution
 
