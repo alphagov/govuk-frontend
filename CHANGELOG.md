@@ -12,6 +12,8 @@ Breaking changes:
 - The link component has been removed from Frontend as the link styles have
   been moved to the core
   (PR [#431](https://github.com/alphagov/govuk-frontend/pull/431))
+- Rename `legal-text` argument accepted by `legal-text` component to `text` (PR [#431](https://github.com/alphagov/govuk-frontend/pull/432))
+- Rename `legal-text` component to `warning-text` (PR [#431](https://github.com/alphagov/govuk-frontend/pull/432))
 
 New features:
 
@@ -35,6 +37,7 @@ Fixes:
   components have been updated to include explicit link styling, as they
   previously relied on the global link styles.
   (PR [#427](https://github.com/alphagov/govuk-frontend/pull/427))
+- Adjust `warning-text` icon by 1px for New Transport
 - Links within the review app and the examples have been updated to use the
   `govuk-link` class.
   (PR [#427](https://github.com/alphagov/govuk-frontend/pull/427))
