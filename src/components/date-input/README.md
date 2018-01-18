@@ -85,7 +85,7 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
 
 ### Date-input--with-errors
 
-[Preview the date-input--with-errors variant](http://govuk-frontend-review.herokuapp.com/components/date-input/with-errors/preview)
+[Preview the date-input--with-errors example](http://govuk-frontend-review.herokuapp.com/components/date-input/with-errors/preview)
 
 #### Markup
 
@@ -160,7 +160,7 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
 
 ### Date-input--with-day-error
 
-[Preview the date-input--with-day-error variant](http://govuk-frontend-review.herokuapp.com/components/date-input/with-day-error/preview)
+[Preview the date-input--with-day-error example](http://govuk-frontend-review.herokuapp.com/components/date-input/with-day-error/preview)
 
 #### Markup
 
@@ -234,7 +234,7 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
 
 ### Date-input--with-month-error
 
-[Preview the date-input--with-month-error variant](http://govuk-frontend-review.herokuapp.com/components/date-input/with-month-error/preview)
+[Preview the date-input--with-month-error example](http://govuk-frontend-review.herokuapp.com/components/date-input/with-month-error/preview)
 
 #### Markup
 
@@ -308,7 +308,7 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
 
 ### Date-input--with-year-error
 
-[Preview the date-input--with-year-error variant](http://govuk-frontend-review.herokuapp.com/components/date-input/with-year-error/preview)
+[Preview the date-input--with-year-error example](http://govuk-frontend-review.herokuapp.com/components/date-input/with-year-error/preview)
 
 #### Markup
 

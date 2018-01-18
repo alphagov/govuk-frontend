@@ -67,7 +67,7 @@ More information about when to use previous-next can be found on [GOV.UK Design 
 
 ### Previous-next--no-next-page
 
-[Preview the previous-next--no-next-page variant](http://govuk-frontend-review.herokuapp.com/components/previous-next/no-next-page/preview)
+[Preview the previous-next--no-next-page example](http://govuk-frontend-review.herokuapp.com/components/previous-next/no-next-page/preview)
 
 #### Markup
 

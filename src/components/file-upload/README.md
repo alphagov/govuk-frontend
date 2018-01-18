@@ -34,7 +34,7 @@ More information about when to use file-upload can be found on [GOV.UK Design Sy
 
 ### File-upload--with-hint-text
 
-[Preview the file-upload--with-hint-text variant](http://govuk-frontend-review.herokuapp.com/components/file-upload/with-hint-text/preview)
+[Preview the file-upload--with-hint-text example](http://govuk-frontend-review.herokuapp.com/components/file-upload/with-hint-text/preview)
 
 #### Markup
 
@@ -61,7 +61,7 @@ More information about when to use file-upload can be found on [GOV.UK Design Sy
 
 ### File-upload--with-error-message
 
-[Preview the file-upload--with-error-message variant](http://govuk-frontend-review.herokuapp.com/components/file-upload/with-error-message/preview)
+[Preview the file-upload--with-error-message example](http://govuk-frontend-review.herokuapp.com/components/file-upload/with-error-message/preview)
 
 #### Markup
 
@@ -95,7 +95,7 @@ More information about when to use file-upload can be found on [GOV.UK Design Sy
 
 ### File-upload--with-value-and-attributes
 
-[Preview the file-upload--with-value-and-attributes variant](http://govuk-frontend-review.herokuapp.com/components/file-upload/with-value-and-attributes/preview)
+[Preview the file-upload--with-value-and-attributes example](http://govuk-frontend-review.herokuapp.com/components/file-upload/with-value-and-attributes/preview)
 
 #### Markup
 

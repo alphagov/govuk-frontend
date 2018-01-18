@@ -34,7 +34,7 @@ More information about when to use label can be found on [GOV.UK Design System](
 
 ### Label--with bold text
 
-[Preview the label--with bold text variant](http://govuk-frontend-review.herokuapp.com/components/label/with bold text/preview)
+[Preview the label--with bold text example](http://govuk-frontend-review.herokuapp.com/components/label/with bold text/preview)
 
 #### Markup
 
@@ -57,7 +57,7 @@ More information about when to use label can be found on [GOV.UK Design System](
 
 ### Label--with error message
 
-[Preview the label--with error message variant](http://govuk-frontend-review.herokuapp.com/components/label/with error message/preview)
+[Preview the label--with error message example](http://govuk-frontend-review.herokuapp.com/components/label/with error message/preview)
 
 #### Markup
 

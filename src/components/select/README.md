@@ -58,7 +58,7 @@ More information about when to use select can be found on [GOV.UK Design System]
 
 ### Select--with-hint-text-and-error
 
-[Preview the select--with-hint-text-and-error variant](http://govuk-frontend-review.herokuapp.com/components/select/with-hint-text-and-error/preview)
+[Preview the select--with-hint-text-and-error example](http://govuk-frontend-review.herokuapp.com/components/select/with-hint-text-and-error/preview)
 
 #### Markup
 

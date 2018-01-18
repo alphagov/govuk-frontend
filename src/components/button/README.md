@@ -29,7 +29,7 @@ Buttons are configured to perform an action and they can have a different look. 
 
 ### Button--disabled
 
-[Preview the button--disabled variant](http://govuk-frontend-review.herokuapp.com/components/button/disabled/preview)
+[Preview the button--disabled example](http://govuk-frontend-review.herokuapp.com/components/button/disabled/preview)
 
 #### Markup
 
@@ -44,7 +44,7 @@ Buttons are configured to perform an action and they can have a different look. 
 
 ### Button--link
 
-[Preview the button--link variant](http://govuk-frontend-review.herokuapp.com/components/button/link/preview)
+[Preview the button--link example](http://govuk-frontend-review.herokuapp.com/components/button/link/preview)
 
 #### Markup
 
@@ -61,7 +61,7 @@ Buttons are configured to perform an action and they can have a different look. 
 
 ### Button--disabled-link
 
-[Preview the button--disabled-link variant](http://govuk-frontend-review.herokuapp.com/components/button/disabled-link/preview)
+[Preview the button--disabled-link example](http://govuk-frontend-review.herokuapp.com/components/button/disabled-link/preview)
 
 #### Markup
 
@@ -79,7 +79,7 @@ Buttons are configured to perform an action and they can have a different look. 
 
 ### Button--start
 
-[Preview the button--start variant](http://govuk-frontend-review.herokuapp.com/components/button/start/preview)
+[Preview the button--start example](http://govuk-frontend-review.herokuapp.com/components/button/start/preview)
 
 #### Markup
 
@@ -94,7 +94,7 @@ Buttons are configured to perform an action and they can have a different look. 
 
 ### Button--start-link
 
-[Preview the button--start-link variant](http://govuk-frontend-review.herokuapp.com/components/button/start-link/preview)
+[Preview the button--start-link example](http://govuk-frontend-review.herokuapp.com/components/button/start-link/preview)
 
 #### Markup
 
@@ -112,7 +112,7 @@ Buttons are configured to perform an action and they can have a different look. 
 
 ### Button--button-with-html
 
-[Preview the button--button-with-html variant](http://govuk-frontend-review.herokuapp.com/components/button/button-with-html/preview)
+[Preview the button--button-with-html example](http://govuk-frontend-review.herokuapp.com/components/button/button-with-html/preview)
 
 #### Markup
 
@@ -129,7 +129,7 @@ Buttons are configured to perform an action and they can have a different look. 
 
 ### Button--explicit-button
 
-[Preview the button--explicit-button variant](http://govuk-frontend-review.herokuapp.com/components/button/explicit-button/preview)
+[Preview the button--explicit-button example](http://govuk-frontend-review.herokuapp.com/components/button/explicit-button/preview)
 
 #### Markup
 
@@ -147,7 +147,7 @@ Buttons are configured to perform an action and they can have a different look. 
 
 ### Button--button-with-value
 
-[Preview the button--button-with-value variant](http://govuk-frontend-review.herokuapp.com/components/button/button-with-value/preview)
+[Preview the button--button-with-value example](http://govuk-frontend-review.herokuapp.com/components/button/button-with-value/preview)
 
 #### Markup
 
@@ -166,7 +166,7 @@ Buttons are configured to perform an action and they can have a different look. 
 
 ### Button--non-submit-button
 
-[Preview the button--non-submit-button variant](http://govuk-frontend-review.herokuapp.com/components/button/non-submit-button/preview)
+[Preview the button--non-submit-button example](http://govuk-frontend-review.herokuapp.com/components/button/non-submit-button/preview)
 
 #### Markup
 

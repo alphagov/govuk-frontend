@@ -37,7 +37,7 @@ More information about when to use phase-banner can be found on [GOV.UK Design S
 
 ### Phase-banner--tag-with-html
 
-[Preview the phase-banner--tag-with-html variant](http://govuk-frontend-review.herokuapp.com/components/phase-banner/tag-with-html/preview)
+[Preview the phase-banner--tag-with-html example](http://govuk-frontend-review.herokuapp.com/components/phase-banner/tag-with-html/preview)
 
 #### Markup
 

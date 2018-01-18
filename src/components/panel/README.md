@@ -34,7 +34,7 @@ More information about when to use panel can be found on [GOV.UK Design System](
 
 ### Panel--no-reference-number
 
-[Preview the panel--no-reference-number variant](http://govuk-frontend-review.herokuapp.com/components/panel/no-reference-number/preview)
+[Preview the panel--no-reference-number example](http://govuk-frontend-review.herokuapp.com/components/panel/no-reference-number/preview)
 
 #### Markup
 

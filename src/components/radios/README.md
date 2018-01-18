@@ -70,7 +70,7 @@ More information about when to use radios can be found on [GOV.UK Design System]
 
 ### Radios--with-html
 
-[Preview the radios--with-html variant](http://govuk-frontend-review.herokuapp.com/components/radios/with-html/preview)
+[Preview the radios--with-html example](http://govuk-frontend-review.herokuapp.com/components/radios/with-html/preview)
 
 #### Markup
 
@@ -127,7 +127,7 @@ More information about when to use radios can be found on [GOV.UK Design System]
 
 ### Radios--without-fieldset
 
-[Preview the radios--without-fieldset variant](http://govuk-frontend-review.herokuapp.com/components/radios/without-fieldset/preview)
+[Preview the radios--without-fieldset example](http://govuk-frontend-review.herokuapp.com/components/radios/without-fieldset/preview)
 
 #### Markup
 
