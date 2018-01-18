@@ -1,6 +1,6 @@
 {% from "./loadComponentTemplate.njk" import loadComponentTemplate %}
 
-{% macro showDefaultAndVariants(componentName, componentData) %}
+{% macro showExamples(componentName, componentData) %}
 
 {% for item in componentData.variants %}
 {% if item.name == 'default' %}
