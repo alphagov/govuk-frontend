@@ -1,4 +1,4 @@
-variants:
+examples:
 - name: default
   data:
     html: 'GOV.UK uses cookies to make the site simpler. <a href="https://www.gov.uk/help/cookies" class="govuk-link">Find out more about cookies</a>'

@@ -1,4 +1,4 @@
-variants:
+examples:
   - name: default
     data:
       titleText: Message to alert the user to a problem goes here

@@ -2,7 +2,7 @@
 
 {% macro showExamples(componentName, componentData) %}
 
-{% for item in componentData.variants %}
+{% for item in componentData.examples %}
 {% if item.name == 'default' %}
   {% set itemName = 'Component default' %}
   {% set previewLink = "/components/" + componentName + "/preview" %}
