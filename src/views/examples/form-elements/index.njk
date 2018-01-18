@@ -51,93 +51,88 @@
     }) }}
   {% endcall %}
 
-  {% call govukFieldset({
-    legendHtml: "<h2 class=\"govuk-heading-l\">How do you want to be contacted?</h2>"
-  }) %}
-    <span id="radio-stacked"></span>
-    {{ govukRadios({
-      "idPrefix": "radio-stacked",
-      "name": "radio-stacked",
-      "items": [
-        {
-          "value": "email",
-          "text": "Email"
-        },
-        {
-          "value": "phone",
-          "text": "Phone"
-        },
-        {
-          "value": "text",
-          "text": "Text message"
-        }
-      ]
-    }) }}
-  {% endcall %}
-
-  {% call govukFieldset() %}
-    <span id="radio-inline"></span>
-    {{ govukRadios({
-      "classes": "govuk-c-radio--inline",
-      "idPrefix": "radio-inline",
-      "name": "radio-inline",
-      "items": [
-        {
-          "value": "yes",
-          "text": "Yes"
-        },
-        {
-          "value": "no",
-          "text": "No"
-        }
-      ]
-    }) }}
-  {% endcall %}
-
-  {% call govukFieldset() %}
-    <span id="checkboxes-stacked"></span>
-    {{ govukRadios({
-      "idPrefix": "checkboxes-stacked",
-      "name": "checkboxes-stacked",
-      "items": [
-        {
-          "value": "waste-animal",
-          "text": "Waste from animal carcasses"
-        },
-        {
-          "value": "waste-mines",
-          "text": "Waste from mines or quarries"
-        },
-        {
-          "value": "waste-other",
-          "text": "Waste from other"
-        }
-      ]
-    }) }}
-  {% endcall %}
-
-  {% call govukFieldset() %}
-    <span id="date"></span>
-    {{- govukDateInput({
-      fieldset: {
-        legendText: 'What is your date of birth?',
-        legendHintText: 'For example, 31 3 1980'
+  <span id="radio-stacked"></span>
+  {{ govukRadios({
+    "fieldset": {
+      "legendHtml": "<h2 class=\"govuk-heading-l\">How do you want to be contacted?</h2>"
+    },
+    "idPrefix": "radio-stacked",
+    "name": "radio-stacked",
+    "items": [
+      {
+        "value": "email",
+        "text": "Email"
       },
-      id: 'dob',
-      name: 'dob',
-      items:[
-        {
-          name: 'day'
-        },
-        {
-          name: 'month'
-        },
-        {
-          name: 'year'
-        }
-      ]
-    }) -}}
-  {% endcall %}
+      {
+        "value": "phone",
+        "text": "Phone"
+      },
+      {
+        "value": "text",
+        "text": "Text message"
+      }
+    ]
+  }) }}
+
+  <span id="radio-inline"></span>
+  {{ govukRadios({
+    "fieldset": {},
+    "classes": "govuk-c-radio--inline",
+    "idPrefix": "radio-inline",
+    "name": "radio-inline",
+    "items": [
+      {
+        "value": "yes",
+        "text": "Yes"
+      },
+      {
+        "value": "no",
+        "text": "No"
+      }
+    ]
+  }) }}
+
+  <span id="checkboxes-stacked"></span>
+  {{ govukCheckboxes({
+    "fieldset": {},
+    "idPrefix": "checkboxes-stacked",
+    "name": "checkboxes-stacked",
+    "items": [
+      {
+        "value": "waste-animal",
+        "text": "Waste from animal carcasses"
+      },
+      {
+        "value": "waste-mines",
+        "text": "Waste from mines or quarries"
+      },
+      {
+        "value": "waste-other",
+        "text": "Waste from other"
+      }
+    ]
+  }) }}
+
+  <span id="date"></span>
+  {{- govukDateInput({
+    fieldset: {
+      legendText: 'What is your date of birth?',
+      legendHintText: 'For example, 31 3 1980'
+    },
+    id: 'dob',
+    name: 'dob',
+    items:[
+      {
+        name: 'day'
+      },
+      {
+        name: 'month'
+      },
+      {
+        name: 'year'
+      }
+    ]
+  }) -}}
 
   {% call govukFieldset() %}
     <span id="select"></span>
