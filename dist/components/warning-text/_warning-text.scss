@@ -1,8 +1,8 @@
 @import "../../globals/scss/common";
 
-@include exports("legal-text") {
+@include exports("warning-text") {
 
-  .govuk-c-legal-text {
+  .govuk-c-warning-text {
     @include govuk-font-regular-19;
     @include govuk-text-colour;
 
@@ -11,11 +11,11 @@
     padding: $govuk-spacing-scale-2 0;
   }
 
-  .govuk-c-legal-text__assistive {
+  .govuk-c-warning-text__assistive {
     @include govuk-h-visually-hidden;
   }
 
-  .govuk-c-legal-text__icon {
+  .govuk-c-warning-text__icon {
     @include govuk-font-bold;
 
     display: inline-block;
@@ -26,14 +26,14 @@
 
     min-width: 38px;
     min-height: 35px;
-    margin-top: -19px; // Half the height of the 38px circle
+    margin-top: -20px; // Half the height of the 38px circle (adjusted for NTA)
     padding-top: 3px;
 
     font-size: 1.6em;
     line-height: 35px;
   }
 
-  .govuk-c-legal-text__text {
+  .govuk-c-warning-text__text {
     display: block;
     margin-left: -$govuk-gutter-half;
     padding-left: 65px;

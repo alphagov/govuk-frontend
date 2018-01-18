@@ -40,6 +40,11 @@
     margin-top: 0;
     margin-bottom: 0;
   }
+
+  .govuk-c-error-summary__list a {
+    @include govuk-focusable-fill;
+  }
+
     .govuk-c-error-summary__list a:link,
     .govuk-c-error-summary__list a:visited,
     .govuk-c-error-summary__list a:hover,

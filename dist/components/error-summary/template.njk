@@ -13,7 +13,11 @@
     <ul class="govuk-list govuk-c-error-summary__list">
     {% for item in params.errorList %}
       <li>
-        <a href="{{item.href}}">{{item.text}}</a>
+      {% if item.href %}
+        <a href="{{ item.href }}">{{ item.html | safe if item.html else item.text }}</a>
+      {% else %}
+        {{ item.html | safe if item.html else item.text }}
+      {% endif %}
       </li>
     {% endfor %}
     </ul>

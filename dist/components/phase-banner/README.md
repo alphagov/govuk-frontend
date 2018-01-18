@@ -21,7 +21,7 @@ More information about when to use phase-banner can be found on [GOV.UK Design S
       alpha
     </strong>
     <span class="govuk-c-phase-banner__text">
-          This is a new service – your <a href="#">feedback</a> will help us to improve it.
+          This is a new service – your <a href="#" class="govuk-link">feedback</a> will help us to improve it.
         </span>
       </p>
     </div>
@@ -32,7 +32,7 @@ More information about when to use phase-banner can be found on [GOV.UK Design S
       "tag": {
         "text": "alpha"
       },
-      "html": "This is a new service – your <a href=\"#\">feedback</a> will help us to improve it."
+      "html": "This is a new service – your <a href=\"#\" class=\"govuk-link\">feedback</a> will help us to improve it."
     }) }}
 
 ### Phase-banner--tag-with-html
@@ -46,7 +46,7 @@ More information about when to use phase-banner can be found on [GOV.UK Design S
       <i>alpha</i>
     </strong>
     <span class="govuk-c-phase-banner__text">
-          This is a new service – your <a href="#">feedback</a> will help us to improve it.
+          This is a new service – your <a href="#" class="govuk-link">feedback</a> will help us to improve it.
         </span>
       </p>
     </div>
@@ -57,7 +57,7 @@ More information about when to use phase-banner can be found on [GOV.UK Design S
       "tag": {
         "html": "<i>alpha</i>"
       },
-      "html": "This is a new service – your <a href=\"#\">feedback</a> will help us to improve it."
+      "html": "This is a new service – your <a href=\"#\" class=\"govuk-link\">feedback</a> will help us to improve it."
     }) }}
 
 ## Dependencies

@@ -86,7 +86,7 @@
 
     .govuk-c-button:hover,
     .govuk-c-button:focus {
-      background-color: darken($govuk-button-colour, 5%);
+      background-color: $govuk-button-hover-colour;
     }
 
     .govuk-c-button:active {

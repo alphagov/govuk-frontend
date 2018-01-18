@@ -105,6 +105,11 @@
         content: none;
         display: none;
       }
+
+  .govuk-c-breadcrumbs__link {
+    @include govuk-focusable-fill;
+  }
+
     .govuk-c-breadcrumbs__link:link,
     .govuk-c-breadcrumbs__link:visited,
     .govuk-c-breadcrumbs__link:hover,
