@@ -3,35 +3,41 @@
 {% macro showExamples(componentName, componentData) %}
 
 {% for item in componentData.examples %}
-{% if item.name == 'default' %}
-  {% set itemName = 'Component default' %}
-  {% set previewLink = "/components/" + componentName + "/preview" %}
-  {% set previewText = 'Preview the ' + componentName + ' component' %}
-{% else %}
-  {% set itemName = componentName + '--' + item.name %}
-  {% set previewLink = "/components/" + componentName + '/' + item.name  + "/preview" %}
-  {% set previewText = 'Preview the ' + itemName + ' example' %}
-{% endif %}
 
-<h3 class="govuk-heading-m">{{ itemName  | capitalize }}</h3>
+  {# If generating the readme, skip any examples with readme: false #}
+  {% if not isReadme or item.readme !== false %}
 
-{% if not isReadme %}
-{{ loadComponentTemplate(componentName, item.data) }}
-{% endif %}
+    {% if item.name == 'default' %}
+      {% set itemName = 'Component default' %}
+      {% set previewLink = "/components/" + componentName + "/preview" %}
+      {% set previewText = 'Preview the ' + componentName + ' component' %}
+    {% else %}
+      {% set itemName = componentName + '--' + item.name %}
+      {% set previewLink = "/components/" + componentName + '/' + item.name  + "/preview" %}
+      {% set previewText = 'Preview the ' + itemName + ' example' %}
+    {% endif %}
 
-<p class="govuk-body">
-  <a href="{% if isReadme %}http://govuk-frontend-review.herokuapp.com{% endif %}{{ previewLink }}" class="govuk-link">{{previewText}}</a>
-</p>
+    <h3 class="govuk-heading-m">{{ itemName  | capitalize }}</h3>
 
-<h4 class="govuk-heading-s">Markup</h4>
-{% set componentHtml %}
-{{ loadComponentTemplate(componentName, item.data) }}
-{% endset %}
-<pre><code>{{- componentHtml | e -}}</code></pre>
+    {% if not isReadme %}
+    {{ loadComponentTemplate(componentName, item.data) }}
+    {% endif %}
 
-<h4 class="govuk-heading-s">Macro</h4>
-<pre><code>{% raw %}{{ {% endraw %}{{ componentName | componentNameToMacroName }}(
-  {{- item.data | dump(2) -}}
-){% raw %} }}{% endraw %}</code></pre>
+    <p class="govuk-body">
+      <a href="{% if isReadme %}http://govuk-frontend-review.herokuapp.com{% endif %}{{ previewLink }}" class="govuk-link">{{ previewText }}</a>
+    </p>
+
+    <h4 class="govuk-heading-s">Markup</h4>
+    {% set componentHtml %}
+    {{- loadComponentTemplate(componentName, item.data) }}
+    {% endset %}
+    <pre><code>{{- componentHtml | e -}}</code></pre>
+
+    <h4 class="govuk-heading-s">Macro</h4>
+    <pre><code>{% raw %}{{ {% endraw %}{{ componentName | componentNameToMacroName }}(
+      {{- item.data | dump(2) -}}
+    ){% raw %} }}{% endraw %}</code></pre>
+
+    {% endif %}
 {% endfor %}
 {% endmacro %}
