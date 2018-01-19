@@ -1,111 +1,175 @@
 {% extends "layout.njk" %}
 
 {% block content %}
-<h1 class="govuk-u-bold-48">Form elements</h1>
-<ul>
+
+{% from "fieldset/macro.njk" import govukFieldset %}
+{% from "input/macro.njk" import govukInput %}
+{% from "button/macro.njk" import govukButton %}
+{% from 'radios/macro.njk' import govukRadios %}
+{% from 'checkboxes/macro.njk' import govukCheckboxes %}
+{% from "date-input/macro.njk" import govukDateInput %}
+{% from "select/macro.njk" import govukSelect %}
+{% from "file-upload/macro.njk" import govukFileUpload %}
+
+<h1 class="govuk-heading-xl">Form elements</h1>
+
+<ul class="govuk-list govuk-list--bullet">
   <li><a href="#input" class="govuk-link">Label and text input</a></li>
   <li><a href="#textarea" class="govuk-link">Label and textarea</a></li>
   <li><a href="#radio-stacked" class="govuk-link">Fieldset, legend and radio buttons (stacked)</a></li>
   <li><a href="#radio-inline" class="govuk-link">Fieldset, legend and radio buttons (inline - yes or no)</a></li>
-  <li><a href="#checkbox-stacked" class="govuk-link">Fieldset, legend and checkboxes (stacked)</a></li>
+  <li><a href="#checkboxes-stacked" class="govuk-link">Fieldset, legend and checkboxes (stacked)</a></li>
   <li><a href="#date" class="govuk-link">Date pattern</a></li>
   <li><a href="#select" class="govuk-link">Select box</a></li>
   <li><a href="#file" class="govuk-link">File upload</a></li>
 </ul>
 
 <form action="/" method="post">
+  {% call govukFieldset() %}
+    <span id="input"></span>
+    {{ govukInput({
+      id: "govuk-c-input-a",
+      label: {
+        text: "National Insurance number"
+      }
+    }) }}
+    {{ govukButton({
+      "text": "Save and continue"
+    }) }}
+  {% endcall %}
 
-  <fieldset class="govuk-c-fieldset" id="input">
-    <label class="govuk-c-label" for="govuk-c-input-a">
-      National Insurance number
-    </label>
-    <input class="govuk-c-input" id="govuk-c-input-a" type="text">
-    <input class="govuk-c-button" type="submit" value="Save and continue">
-  </fieldset>
+  {% call govukFieldset() %}
+    <span id="textarea"></span>
+    {% from "textarea/macro.njk" import govukTextarea %}
+    {{ govukTextarea({
+      id: "govuk-c-textarea-a",
+      name: "govuk-c-textarea-a",
+      rows: "5",
+      label: {
+        text: "Why can't you provide a National Insurance number?"
+      }
+    }) }}
+  {% endcall %}
 
-  <fieldset class="govuk-c-fieldset" id="textarea">
-    <label class="govuk-c-label" for="govuk-c-textarea-a">
-      Why can't you provide a National Insurance number?
-    </label>
-    <textarea class="govuk-c-textarea" name="govuk-c-textarea-a" id="govuk-c-textarea-a" rows="5"></textarea>
-  </fieldset>
+  <span id="radio-stacked"></span>
+  {{ govukRadios({
+    "fieldset": {
+      "legendHtml": "<h2 class=\"govuk-heading-l\">How do you want to be contacted?</h2>"
+    },
+    "idPrefix": "radio-stacked",
+    "name": "radio-stacked",
+    "items": [
+      {
+        "value": "email",
+        "text": "Email"
+      },
+      {
+        "value": "phone",
+        "text": "Phone"
+      },
+      {
+        "value": "text",
+        "text": "Text message"
+      }
+    ]
+  }) }}
 
-  <fieldset class="govuk-c-fieldset" id="radio-stacked">
-    <legend class="govuk-c-fieldset__legend">
-      <h2 class="govuk-u-bold-24">How do you want to be contacted?</h2>
-    </legend>
-    <div class="govuk-c-radio">
-      <input class="govuk-c-radio__input" id="radio-stacked-1" type="radio" name="radio-stacked-group" value="Email">
-      <label class="govuk-c-radio__label" for="radio-stacked-1">Email</label>
-    </div>
-    <div class="govuk-c-radio">
-      <input class="govuk-c-radio__input" id="radio-stacked-2" type="radio" name="radio-stacked-group" value="Phone">
-      <label class="govuk-c-radio__label" for="radio-stacked-2">Phone</label>
-    </div>
-    <div class="govuk-c-radio">
-      <input class="govuk-c-radio__input" id="radio-stacked-3" type="radio" name="radio-stacked-group" value="Text">
-      <label class="govuk-c-radio__label" for="radio-stacked-3">Text message</label>
-    </div>
-  </fieldset>
+  <span id="radio-inline"></span>
+  {{ govukRadios({
+    "fieldset": {},
+    "classes": "govuk-c-radio--inline",
+    "idPrefix": "radio-inline",
+    "name": "radio-inline",
+    "items": [
+      {
+        "value": "yes",
+        "text": "Yes"
+      },
+      {
+        "value": "no",
+        "text": "No"
+      }
+    ]
+  }) }}
 
-  <fieldset class="govuk-c-fieldset" id="radio-inline">
-    <div class="govuk-c-radio govuk-c-radio--inline">
-      <input class="govuk-c-radio__input" id="radio-1" type="radio" name="radio-group" value="Yes">
-      <label class="govuk-c-radio__label" for="radio-1">Yes</label>
-    </div>
-    <div class="govuk-c-radio govuk-c-radio--inline">
-      <input class="govuk-c-radio__input" id="radio-2" type="radio" name="radio-group" value="No">
-      <label class="govuk-c-radio__label" for="radio-2">No</label>
-    </div>
-  </fieldset>
+  <span id="checkboxes-stacked"></span>
+  {{ govukCheckboxes({
+    "fieldset": {},
+    "idPrefix": "checkboxes-stacked",
+    "name": "checkboxes-stacked",
+    "items": [
+      {
+        "value": "waste-animal",
+        "text": "Waste from animal carcasses"
+      },
+      {
+        "value": "waste-mines",
+        "text": "Waste from mines or quarries"
+      },
+      {
+        "value": "waste-other",
+        "text": "Waste from other"
+      }
+    ]
+  }) }}
 
-  <fieldset class="govuk-c-fieldset" id="checkbox-stacked">
-    <div class="govuk-c-checkbox">
-      <input class="govuk-c-checkbox__input" id="waste-type-1" name="waste-types" type="checkbox" value="waste-animal">
-      <label class="govuk-c-checkbox__label" for="waste-type-1">Waste from animal carcasses</label>
-    </div>
-    <div class="govuk-c-checkbox">
-      <input class="govuk-c-checkbox__input" id="waste-type-2" name="waste-types" type="checkbox" value="waste-mines">
-      <label class="govuk-c-checkbox__label" for="waste-type-2">Waste from mines or quarries</label>
-    </div>
-    <div class="govuk-c-checkbox">
-      <input class="govuk-c-checkbox__input" id="waste-type-3" name="waste-types" type="checkbox" disabled="disabled" value="waste-animal">
-      <label class="govuk-c-checkbox__label" for="waste-type-3">Waste from animal carcasses</label>
-    </div>
-  </fieldset>
+  <span id="date"></span>
+  {{- govukDateInput({
+    fieldset: {
+      legendText: 'What is your date of birth?',
+      legendHintText: 'For example, 31 3 1980'
+    },
+    id: 'dob',
+    name: 'dob',
+    items:[
+      {
+        name: 'day'
+      },
+      {
+        name: 'month'
+      },
+      {
+        name: 'year'
+      }
+    ]
+  }) -}}
 
-  <fieldset class="govuk-c-fieldset" id="date">
-    <div class="govuk-c-date">
-      <div class="govuk-c-date__item govuk-c-date__item--day">
-        <label class="govuk-c-label govuk-c-date__label" for="dob-day">Day</label>
-        <input class="govuk-c-input govuk-c-date__input" id="dob-day" name="dob-day" type="number">
-      </div>
-      <div class="govuk-c-date__item govuk-c-date__item--month">
-        <label class="govuk-c-label govuk-c-date__label" for="dob-month">Month</label>
-        <input class="govuk-c-input govuk-c-date__input" id="dob-month" name="dob-month" type="number">
-      </div>
-      <div class="govuk-c-date__item govuk-c-date__item--year">
-        <label class="govuk-c-label govuk-c-date__label" for="dob-year">Year</label>
-        <input class="govuk-c-input govuk-c-date__input" id="dob-year" name="dob-year" type="number">
-      </div>
-    </div>
-  </fieldset>
+  {% call govukFieldset() %}
+    <span id="select"></span>
+    {{ govukSelect({
+      "id": "select-1",
+      "name": "select-1",
+      "label": {
+        "html": "Label text goes here"
+      },
+      "items": [
+        {
+          "value": 1,
+          "text": "GOV.UK frontend option 1"
+        },
+        {
+          "value": 2,
+          "text": "GOV.UK frontend option 2",
+          "selected": true
+        },
+        {
+          "value": 3,
+          "text": "GOV.UK frontend option 3"
+        }
+      ]
+    }) }}
+  {% endcall %}
 
-  <fieldset class="govuk-c-fieldset" id="select">
-    <label class="govuk-c-label" for="select-box">This is the label text</label>
-    <select class="govuk-c-select-box" id="select-box" name="select-box">
-      <option>GOV.UK elements option 1</option>
-      <option>GOV.UK elements option 2</option>
-      <option>GOV.UK elements option 3</option>
-    </select>
-  </fieldset>
-
-  <fieldset class="govuk-c-fieldset" id="file">
-    <label class="govuk-c-label" for="file-upload-a">
-      Upload a file
-    </label>
-    <input class="govuk-c-file-upload" type="file" id="file-upload-a">
-  </fieldset>
+  {% call govukFieldset() %}
+    <span id="file"></span>
+    {{- govukFileUpload({
+      id: 'file-upload-1',
+      name: 'file-upload-1',
+      label: {
+        text: 'Upload a file'
+      }
+    }) -}}
+  {% endcall %}
 
 </form>
 {% endblock %}

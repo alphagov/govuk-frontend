@@ -1,70 +1,27 @@
 {% extends "layout.njk" %}
 
 {% block content %}
-
-  {% include "../components/breadcrumb/breadcrumb.njk" %}
-
-  {% include "../components/button/button.njk" %}
-
-  {% include "../components/checkbox/checkbox.njk" %}
-
-  {% include "../components/cookie-banner/cookie-banner.njk" %}
-
-  {% include "../components/date/date.njk" %}
-
-  {% include "../components/details/details.njk" %}
-
-  {% include "../components/error-message/error-message.njk" %}
-
-  {% include "../components/error-summary/error-summary.njk" %}
-
-  {% include "../components/fieldset/fieldset.njk" %}
-
-  {% include "../components/grid/grid.njk" %}
-
-  {% include "../components/input/input.njk" %}
-
-  {% include "../components/inset-text/inset-text.njk" %}
-
-  {# Don't show label component as input component requires it #}
-  {# include "../components/label/label.njk" #}
-
-  {% include "../components/legal-text/legal-text.njk" %}
-
-  {% include "../components/panel/panel.njk" %}
-
-  {% include "../components/phase-banner/phase-banner.njk" %}
-
-  {% include "../components/radio/radio.njk" %}
-
-  {% include "../components/textarea/textarea.njk" %}
-
-  {% include "../components/pagination/pagination.njk" %}
-
-  {% include "../components/select-box/select-box.njk" %}
-
-  {# Example of calling site-width-container and nesting a grid row #}
-  {% from "../components/site-width-container/macro.njk" import govukSiteWidthContainer %}
-  {% from "../components/grid/macro.njk" import govukGrid %}
-
-  {% call govukSiteWidthContainer() %}
-    {% call govukGrid(
-      classes='',
-      gridItems=[ { width: 'full' } ]
-      )
-    %}
-    Example full width grid column
-    <!-- Insert macros to sit inside grid item here -->
-    {% endcall %}
-
-    {% call govukGrid(
-      classes='',
-      gridItems=[ { width: 'two-thirds' } ]
-      )
-    %}
-    Example two-thirds width grid column
-    <!-- Insert macros to sit inside grid item here -->
-    {% endcall %}
-  {% endcall %}
-
+  {% include "back-link/back-link.njk" %}
+  {% include "breadcrumbs/breadcrumbs.njk" %}
+  {% include "button/button.njk" %}
+  {% include "checkboxes/checkboxes.njk" %}
+  {% include "cookie-banner/cookie-banner.njk" %}
+  {% include "date-input/date-input.njk" %}
+  {% include "details/details.njk" %}
+  {% include "error-message/error-message.njk" %}
+  {% include "error-summary/error-summary.njk" %}
+  {% include "fieldset/fieldset.njk" %}
+  {% include "file-upload/file-upload.njk" %}
+  {% include "input/input.njk" %}
+  {% include "label/label.njk" %}
+  {% include "panel/panel.njk" %}
+  {% include "phase-banner/phase-banner.njk" %}
+  {% include "previous-next/previous-next.njk" %}
+  {% include "radios/radios.njk" %}
+  {% include "select/select.njk" %}
+  {% include "skip-link/skip-link.njk" %}
+  {% include "table/table.njk" %}
+  {% include "tag/tag.njk" %}
+  {% include "textarea/textarea.njk" %}
+  {% include "warning-text/warning-text.njk" %}
 {% endblock %}

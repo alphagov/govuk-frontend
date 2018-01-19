@@ -77,7 +77,7 @@ app.get('/components/:component', function (req, res, next) {
 
   res.render(`${req.params.component}/index`, function (error, html) {
     if (error) {
-      next()
+      next(error)
     } else {
       res.send(html)
     }
@@ -114,7 +114,7 @@ app.get('/components/:component/:example*?/preview', function (req, res, next) {
 app.get('/examples/:example', function (req, res, next) {
   res.render(`examples/${req.params.example}/index`, function (error, html) {
     if (error) {
-      next()
+      next(error)
     } else {
       res.send(html)
     }

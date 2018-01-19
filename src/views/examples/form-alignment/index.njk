@@ -2,26 +2,26 @@
 
 {% block styles %}
 <style>
-  .govuk-u-w-full {
+  .app-u-w-full {
     width: 100%;
   }
 
-  .govuk-u-w-half {
+  .app-u-w-half {
     width: 50%;
     float: left;
   }
 
-  .govuk-u-w-third {
+  .app-u-w-third {
     width: 33.33333333%;
     float: left;
   }
 
-  .govuk-u-w-quarter {
+  .app-u-w-quarter {
     width: 25%;
     float: left;
   }
 
-  .govuk-u-w-two-thirds {
+  .app-u-w-two-thirds {
     width: 66.66666667%;
     float: left;
   }
@@ -29,143 +29,241 @@
 {% endblock %}
 
 {% block content %}
+
+{% from "fieldset/macro.njk" import govukFieldset %}
+{% from "label/macro.njk" import govukLabel %}
+{% from "input/macro.njk" import govukInput %}
+{% from "button/macro.njk" import govukButton %}
+{% from "select/macro.njk" import govukSelect %}
+{% from 'checkboxes/macro.njk' import govukCheckboxes %}
+{% from 'radios/macro.njk' import govukRadios %}
+
 <h1 class="govuk-heading-xl">Form elements alignment</h1>
 <h2 class="govuk-heading-m">Input and button</h2>
+
 <form action="/" method="post">
-  <fieldset class="govuk-c-fieldset">
-  <label class="govuk-c-label" for="govuk-c-input-a">
-    National Insurance number
-  </label>
-  <div class="govuk-u-w-half">
-    <input class="govuk-c-input" id="govuk-c-input-a" type="text">
-  </div>
-  <div class="govuk-u-w-half">
-    <input class="govuk-c-button" type="submit" value="Save and continue">
-  </div>
-</fieldset>
+  {% call govukFieldset() %}
+    {{ govukLabel({
+      "text": "National Insurance number",
+      "for": "govuk-c-input-a"
+    }) }}
+    <div class="app-u-w-half">
+      {{ govukInput({
+        id: "govuk-c-input-a",
+        name: "national-insurance-number"
+      }) }}
+    </div>
+    <div class="app-u-w-half">
+      {{ govukButton({
+        "text": "Save and continue"
+      }) }}
+    </div>
+  {%- endcall %}
 </form>
 
 <h2 class="govuk-heading-m">Select and button</h2>
+
 <form action="/" method="post">
-  <fieldset class="govuk-c-fieldset">
-  <label class="govuk-c-label" for="select-box">This is the label text</label>
-  <div class="govuk-u-w-half">
-    <select class="govuk-c-select" id="select-box" name="select-box">
-      <option>GOV.UK elements option 1</option>
-      <option>GOV.UK elements option 2</option>
-      <option>GOV.UK elements option 3</option>
-    </select>
-  </div>
-  <div class="govuk-u-w-half">
-    <input class="govuk-c-button" type="submit" value="Save and continue">
-  </div>
-</fieldset>
+  {% call govukFieldset() %}
+    {{ govukLabel({
+      "text": "This is the label text",
+      "for": "select-box"
+    }) }}
+    <div class="app-u-w-half">
+      {{ govukSelect({
+        "id": "select-box",
+        "name": "select-box",
+        "items": [
+          {
+            "value": 1,
+            "text": "GOV.UK elements option 1"
+          },
+          {
+            "value": 2,
+            "text": "GOV.UK elements option 2"
+          },
+          {
+            "value": 3,
+            "text": "GOV.UK elements option 3"
+          }
+        ]
+      }) }}
+    </div>
+    <div class="app-u-w-half">
+      {{ govukButton({
+        "text": "Save and continue"
+      }) }}
+    </div>
+  {%- endcall %}
 </form>
 
 <h2 class="govuk-heading-m">Input and select</h2>
+
 <form action="/" method="post">
-  <fieldset class="govuk-c-fieldset">
-  <div class="govuk-u-w-half">
-    <label class="govuk-c-label" for="govuk-c-input-a">
-      NIC
-    </label>
-    <input class="govuk-c-input" id="govuk-c-input-a" type="text">
-  </div>
-  <div class="govuk-u-w-half">
-    <label class="govuk-c-label" for="select-box">Select class</label>
-    <select class="govuk-c-select" id="select-box" name="select-box">
-      <option>NIC 1</option>
-      <option>NIC 2</option>
-      <option>NIC 3</option>
-    </select>
-  </div>
-</fieldset>
+  {% call govukFieldset() %}
+    <div class="app-u-w-half">
+        {{ govukInput({
+          id: "input-and-select__text-input",
+          label: {
+            "text": "NIC"
+          }
+        }) }}
+    </div>
+    <div class="app-u-w-half">
+      {{ govukSelect({
+        "label": {
+          "text": "Select class"
+        },
+        "id": "select-input-and-select",
+        "name": "select-input-and-select",
+        "items": [
+          {
+            "value": 1,
+            "text": "NIC 1"
+          },
+          {
+            "value": 2,
+            "text": "NIC 2"
+          },
+          {
+            "value": 3,
+            "text": "NIC 3"
+          }
+        ]
+      }) }}
+    </div>
+  {%- endcall %}
 </form>
 
-<h2 class="govuk-heading-m">Input and checkbox</h2>
+<h2 class="govuk-heading-m">Input and checkboxes</h2>
+
 <form action="/" method="post">
-  <fieldset class="govuk-c-fieldset">
-  <label class="govuk-c-label" for="govuk-c-input-a">
-    NIC
-  </label>
-  <div class="govuk-u-w-half">
-    <input class="govuk-c-input" id="govuk-c-input-a" type="text">
-  </div>
-  <div class="govuk-u-w-half">
-    <div class="govuk-c-checkbox">
-      <input class="govuk-c-checkbox__input" id="waste-type-1" name="waste-types" type="checkbox" value="waste-animal">
-      <label class="govuk-c-checkbox__label" for="waste-type-1">2017 / 2018</label>
+  {% call govukFieldset() %}
+    {{ govukLabel({
+      "text": "NIC",
+      "for": "input-and-checkboxes__text-input"
+    }) }}
+    <div class="app-u-w-half">
+        {{ govukInput({
+          id: "input-and-checkboxes__text-input"
+        }) }}
     </div>
-  </div>
-</fieldset>
+    <div class="app-u-w-half">
+      {{ govukCheckboxes({
+        "idPrefix": "checkboxes-year",
+        "name": "checkboxes-year",
+        "items": [
+          {
+            "value": "2017-2018",
+            "text": "2017 / 2018"
+          }
+        ]
+      }) }}
+    </div>
+  {%- endcall %}
 </form>
 
-<h2 class="govuk-heading-m">Input and radio</h2>
+<h2 class="govuk-heading-m">Input and radios</h2>
+
 <form action="/" method="post">
-  <fieldset class="govuk-c-fieldset">
-  <label class="govuk-c-label" for="govuk-c-input-a">
-    NIC
-  </label>
-  <div class="govuk-u-w-half">
-    <input class="govuk-c-input" id="govuk-c-input-a" type="text">
-  </div>
-  <div class="govuk-u-w-half">
-    <div class="govuk-c-radio">
-      <input class="govuk-c-radio__input" id="radio-3" type="radio" name="radio-group" checked="checked" value="NA">
-      <label class="govuk-c-radio__label" for="radio-3">Not applicable</label>
+  {% call govukFieldset() %}
+    {{ govukLabel({
+      "text": "NIC",
+      "for": "input-and-radios__text-input"
+    }) }}
+    <div class="app-u-w-half">
+        {{ govukInput({
+          id: "input-and-radios__text-input"
+        }) }}
     </div>
-  </div>
-</fieldset>
+    <div class="app-u-w-half">
+      {{ govukRadios({
+        "idPrefix": "radio",
+        "name": "radio-group",
+        "items": [
+          {
+            "value": "na",
+            "text": "Not applicable"
+          }
+        ]
+      }) }}
+    </div>
+  {%- endcall %}
 </form>
 
-<h2 class="govuk-heading-m">Radio, checkbox and button</h2>
+<h2 class="govuk-heading-m">Radios, checkboxes and button</h2>
 <form action="/" method="post">
-  <fieldset class="govuk-c-fieldset">
-  <div class="govuk-u-w-quarter">
-    <div class="govuk-c-radio">
-      <input class="govuk-c-radio__input" id="radio-1" type="radio" name="radio-group" value="NA">
-      <label class="govuk-c-radio__label" for="radio-1">Not applicable</label>
+  {% call govukFieldset() %}
+    <div class="app-u-w-quarter">
+      {{ govukCheckboxes({
+        "idPrefix": "radio-checkboxes-button__checkboxes",
+        "name": "radio-checkboxes-button__checkboxes",
+        "items": [
+          {
+            "value": "2017-2018",
+            "text": "2017 / 2018"
+          }
+        ]
+      }) }}
     </div>
-  </div>
-  <div class="govuk-u-w-quarter">
-    <div class="govuk-c-radio">
-      <input class="govuk-c-radio__input" id="radio-2" type="radio" name="radio-group" value="NA">
-      <label class="govuk-c-radio__label" for="radio-2">Not applicable</label>
+    <div class="app-u-w-quarter">
+      {{ govukRadios({
+        "idPrefix": "radio-checkboxes-button__radios",
+        "name": "radio-group",
+        "items": [
+          {
+            "value": "na",
+            "text": "Not applicable"
+          }
+        ]
+      }) }}
     </div>
-  </div>
-  <div class="govuk-u-w-half">
-    <input class="govuk-c-button" type="submit" value="Save and continue">
-  </div>
-</fieldset>
+    <div class="app-u-w-half">
+      {{ govukButton({
+        "text": "Save and continue"
+      }) }}
+    </div>
+  {%- endcall %}
 </form>
 
 <h2 class="govuk-heading-m">Input with govuk-!-width</h2>
-<fieldset class="govuk-c-fieldset">
 
-  <label class="govuk-c-label" for="govuk-!-width-one-quarter">
-    Input with govuk-!-width-one-quarter (25% width)
-  </label>
-  <input class="govuk-c-input govuk-!-width-one-quarter" id="govuk-!-width-one-quarter" type="text">
-
-  <label class="govuk-c-label" for="govuk-!-width-one-third">
-    Input with govuk-!-width-one-third (33% width)
-  </label>
-  <input class="govuk-c-input govuk-!-width-one-third" id="govuk-!-width-one-third" type="text">
-
-  <label class="govuk-c-label" for="govuk-!-width-one-half">
-    Input with govuk-!-width-one-half (50% width)
-  </label>
-  <input class="govuk-c-input govuk-!-width-one-half" id="govuk-!-width-one-half" type="text">
-
-  <label class="govuk-c-label" for="govuk-!-width-two-thirds">
-    Input with govuk-!-width-two-thirds (66% width)
-  </label>
-  <input class="govuk-c-input govuk-!-width-two-thirds" id="govuk-!-width-two-thirds" type="text">
-
-  <label class="govuk-c-label" for="govuk-!-width-three-quarters">
-    Input with govuk-!-width-width-three-quarters (75% width)
-  </label>
-  <input class="govuk-c-input govuk-!-width-three-quarters" id="govuk-!-width-three-quarters" type="text">
-</fielset>
+{% call govukFieldset() %}
+  {{ govukInput({
+    id: "govuk-!-width-one-quarter",
+    classes: "govuk-!-width-one-quarter",
+    label: {
+      text: "Input with govuk-!-width-one-quarter (25% width)"
+    }
+  }) }}
+  {{ govukInput({
+    id: "govuk-!-width-one-third",
+    classes: "govuk-!-width-one-third",
+    label: {
+      text: "Input with govuk-!-width-one-third (33% width)"
+    }
+  }) }}
+  {{ govukInput({
+    id: "govuk-!-width-one-half",
+    classes: "govuk-!-width-one-half",
+    label: {
+      text: "Input with govuk-!-width-one-half (50% width)"
+    }
+  }) }}
+  {{ govukInput({
+    id: "govuk-!-width-two-thirds",
+    classes: "govuk-!-width-two-thirds",
+    label: {
+      text: "Input with govuk-!-width-two-thirds (66% width)"
+    }
+  }) }}
+  {{ govukInput({
+    id: "govuk-!-width-three-quarters",
+    classes: "govuk-!-width-three-quarters",
+    label: {
+      text: "Input with govuk-!-width-width-three-quarters (75% width)"
+    }
+  }) }}
+{%- endcall %}
 
 {% endblock %}
