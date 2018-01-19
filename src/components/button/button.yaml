@@ -45,3 +45,21 @@ examples:
     name: add-another
     text: Add another
     type: button
+- name: button-active-state
+  readme: false
+  data:
+    name: focus
+    text: Hovered
+    classes: :active
+- name: button-hover-state
+  readme: false
+  data:
+    name: focus
+    text: Hovered
+    classes: :hover
+- name: button-focus-state
+  readme: false
+  data:
+    name: focus
+    text: Focussed
+    classes: :focus

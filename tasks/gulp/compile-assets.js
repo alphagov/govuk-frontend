@@ -14,6 +14,7 @@ const eol = require('gulp-eol')
 const rename = require('gulp-rename')
 const cssnano = require('cssnano')
 const postcssnormalize = require('postcss-normalize')
+const postcsspseudoclasses = require('postcss-pseudo-classes')
 
 // Compile CSS and JS task --------------
 // --------------------------------------
@@ -29,7 +30,10 @@ gulp.task('scss:compile', () => {
       postcssnormalize
     ])))
     .pipe(gulpif(!isProduction, postcss([
-      autoprefixer
+      autoprefixer,
+      // Auto-generate 'companion' classes for pseudo-selector states - e.g. a
+      // :hover class you can use to simulate the hover state in the review app
+      postcsspseudoclasses
     ])))
     .pipe(gulpif(isProduction,
       rename({
