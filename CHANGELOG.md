@@ -13,6 +13,9 @@ New features:
 - A new link variant has been added which removes the visited state, for cases
   where distinguishing between visited and unvisited links is not helpful
   (PR [#446](https://github.com/alphagov/govuk-frontend/pull/446))
+- The responsive spacing and typography mixins will now throw an error if you
+  try to use them with anything other than a spacing or font map respectively.
+  (PR [#447](https://github.com/alphagov/govuk-frontend/pull/447))
 
 Fixes:
 
