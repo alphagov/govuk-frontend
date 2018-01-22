@@ -16,6 +16,9 @@ New features:
 
 Fixes:
 
+- Remove double margin from Date input component
+  (PR [#451](https://github.com/alphagov/govuk-frontend/pull/451))
+
 Internal:
 
 ## 0.0.22-alpha (Breaking release)
@@ -61,7 +64,7 @@ Internal:
 - Links within the review app and the examples have been updated to use the
   `govuk-link` class.
   (PR [#427](https://github.com/alphagov/govuk-frontend/pull/427))
-- Improve documentation around publishing (PR [#430](https://github.com/alphagov/govuk-frontend/pull/430))  
+- Improve documentation around publishing (PR [#430](https://github.com/alphagov/govuk-frontend/pull/430))
 - Improve documentation around contributing (PR [#433](https://github.com/alphagov/govuk-frontend/pull/433))
 
 ## 0.0.21-alpha (Breaking release)
