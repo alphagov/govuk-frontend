@@ -18,6 +18,16 @@
 //  Base mixin, also used by 'generate-spacing-overrides' mixin
 @mixin govuk-responsive-spacing($scale-map, $property, $value: "all", $important: false, $adjustment: false) {
 
+  // Ensure that $scale-map is actually a map - it's really easy to accidentally
+  // pass in a point from the non-responsive scale, in which case this mixin
+  // would otherwise no-op silently.
+  $actual-input-type: type-of($scale-map);
+  @if $actual-input-type != "map" {
+    @error "Expected a map of breakpoints from the responsive scale, but got a "
+    + "#{$actual-input-type}. Make sure you are using a point from the "
+    + "responsive spacing scale.";
+  }
+
   // Loop through each breakpoint
   @each $breakpoint, $breakpoint-value in $scale-map {
 
