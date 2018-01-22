@@ -3,11 +3,76 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>GOV.UK Frontend</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="/public/css/govuk-frontend.css">
   <!--[if IE 8]>
   <link rel="stylesheet" href="/css/govuk-frontend-oldie.css">
+  <![endif]-->
+  <style>
+    body {
+      margin: 15px;
+    }
+    /* Injected into the preview page, that is then put in an iframe */
+    .app-iframe-in-component-preview {}
+
+    /* Removes the breakpoint sass-mq debug display */
+    .app-iframe-in-component-preview:before {
+      display: none;
+    }
+
+    /* TODO: Should this object have a clearfix all the time? */
+    .app-iframe-in-component-preview .govuk-o-width-container:before,
+    .app-iframe-in-component-preview .govuk-o-width-container:after {
+      content: " ";
+      display: table;
+      clear: both;
+    }
+
+    .app-\!-di {
+      display: inline;
+    }
+
+
+    .app-c-component-preview {
+      position: relative;
+      margin-top: -15px;
+      margin-bottom: -15px;
+    }
+
+    .app-c-component-preview:after {
+      pointer-events: none;
+      z-index: 10;
+      content: ' ';
+      position: absolute;
+      top: 15px;
+      bottom: 15px;
+      right: 0;
+      left: 0;
+      box-shadow: 0 0 0 5px #e4f2ff;
+    }
+
+    .app-c-component-preview__iframe {
+      z-index: 20;
+      display: block;
+      position: relative;
+      width: 100%;
+      width: 100vw;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      border: none;
+    }
+  </style>
+  <!--[if IE 8]>
+    <style>
+      .app-c-component-preview__iframe {
+        left: auto;
+        right: auto;
+      }
+    </style>
   <![endif]-->
   {% block styles %}
   {% endblock %}
@@ -21,6 +86,14 @@
 {% if not isReadme %}
   </div>
   <script src="/public/js/govuk-frontend.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.15/iframeResizer.min.js"></script>
+  <!--[if lte IE 8]>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.15/ie8.polyfils.min.js"></script>
+  <![endif]-->
+  <script type="text/javascript">
+    var domReady = function(a,b,c){b=document,c='addEventListener';b[c]?b[c]('DOMContentLoaded',a):window.attachEvent('onload',a)}
+    domReady(iFrameResize({}, '.js-component-preview'))
+  </script>
   {% block scripts %}
   {% endblock %}
 </body>

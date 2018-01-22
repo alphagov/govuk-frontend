@@ -1,5 +1,10 @@
 {% extends "layout.njk" %}
 
+{% block bodyClasses %}
+ {{ bodyClasses }}
+{% endblock %}
+
 {% block content %}
-{{ componentView | safe }}
+  {{ componentView | safe }}
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.15/iframeResizer.contentWindow.min.js"></script>
 {% endblock %}
