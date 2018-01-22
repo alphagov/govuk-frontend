@@ -123,7 +123,19 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-c-table__cell ">Yes</td>
 
-<td class="govuk-c-table__cell ">The text next to the icon</td>
+<td class="govuk-c-table__cell ">HTML for the warning text content. If this is provided, the text argument is ignored.</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">attributes</th>
+
+<td class="govuk-c-table__cell ">object</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">Any extra HTML attributes (for example data attributes) to add to the textarea tag</td>
 
 </tr>
 
