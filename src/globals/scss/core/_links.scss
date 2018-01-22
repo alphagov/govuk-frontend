@@ -63,4 +63,18 @@
       color: $govuk-black;
     }
   }
+
+  // 'No visited state' link variant
+  //
+  // Used in cases where it is not helpful to distinguish between visited and
+  // non-visited links.
+  //
+  // For example, navigation links to pages with dynamic content like admin
+  // dashboards. The content on the page is changing all the time, so the fact
+  // that you’ve visited it before is not important.
+  .govuk-link--no-visited-state {
+    &:visited {
+      color: $govuk-link-colour;
+    }
+  }
 }

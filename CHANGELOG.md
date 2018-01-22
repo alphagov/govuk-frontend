@@ -8,7 +8,11 @@ Breaking changes:
 
 New features:
 
-- Button hover colour now has a semantic Sass name: $govuk-button-hover-colour (PR [#406](https://github.com/alphagov/govuk-frontend/pull/406))
+- Button hover colour now has a semantic Sass name: $govuk-button-hover-colour
+  (PR [#406](https://github.com/alphagov/govuk-frontend/pull/406))
+- A new link variant has been added which removes the visited state, for cases
+  where distinguishing between visited and unvisited links is not helpful
+  (PR [#446](https://github.com/alphagov/govuk-frontend/pull/446))
 
 Fixes:
 
