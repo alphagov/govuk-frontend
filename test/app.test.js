@@ -1,5 +1,5 @@
-/* eslint-env mocha */
-const expect = require('chai').expect
+/* globals describe, it, expect, beforeEach, afterEach */
+
 const request = require('request')
 const cheerio = require('cheerio')
 
@@ -13,7 +13,7 @@ const requestParams = {
   }
 }
 
-describe('frontend app', (done) => {
+describe('frontend app', () => {
   let server
 
   beforeEach(done => {
@@ -28,14 +28,14 @@ describe('frontend app', (done) => {
 
   it('should resolve with a http status code of 200', done => {
     request.get(requestParams, (err, res) => {
-      expect(res).to.have.property('statusCode').to.equal(200)
+      expect(res.statusCode).toEqual(200)
       done(err)
     })
   })
 
   it('should resolve with a ‘Content-Type’ header of "text/html"', done => {
     request.get(requestParams, (err, res) => {
-      expect(res.headers).to.have.property('content-type').to.include('text/html')
+      expect(res.headers['content-type']).toContain('text/html')
       done(err)
     })
   })
@@ -43,8 +43,8 @@ describe('frontend app', (done) => {
   it('should display the list of components', done => {
     request.get(requestParams, (err, res) => {
       let $ = cheerio.load(res.body)
-      let componentsList = $('li').get()
-      expect(componentsList.length).to.be.equal(lib.SrcComponentList.length)
+      let componentsList = $('li a[href^="/components/"]').get()
+      expect(componentsList.length).toEqual(lib.SrcComponentList.length)
       done(err)
     })
   })
