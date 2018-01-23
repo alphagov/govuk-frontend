@@ -6,9 +6,9 @@ const path = require('path')
 const port = (process.env.PORT || 3000)
 const yaml = require('js-yaml')
 
-const helperFunctions = require('./lib/helper-functions.js')  // misc helpers
-const dto = require('./lib/dto-helper.js')                    // directoryToObject helper
-const configPaths = require('./config/paths.json')            // specify paths to main working directories
+const helperFunctions = require('./lib/helper-functions.js')
+const directoryToObject = require('./lib/directory-to-object.js')
+const configPaths = require('./config/paths.json')
 
 // Set up views
 const appViews = [
@@ -46,8 +46,8 @@ const server = app.listen(port, () => {
 // Index page - render the component list template
 app.get('/', function (req, res) {
   Promise.all([
-    dto.directoryToObject(path.resolve(configPaths.components)),
-    dto.directoryToObject(path.resolve(configPaths.examples))
+    directoryToObject.directoryToObject(path.resolve(configPaths.components)),
+    directoryToObject.directoryToObject(path.resolve(configPaths.examples))
   ]).then(result => {
     const [components, examples] = result
 
