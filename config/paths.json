@@ -1,11 +1,14 @@
 {
+  "app": "app/",
+    "examples": "app/examples/",
+    "partials": "app/partials/",
+    "layouts": "app/layouts/",
   "config": "config/",
-  "src": "src/",
-  "components": "src/components/",
-  "globalScss": "src/globals/scss/",
   "dist": "dist/",
-  "distComponents": "dist/components/",
+    "distComponents": "dist/components/",
   "packages": "packages/",
   "public": "public/",
-  "demo" : "demo/"
+  "src": "src/",
+    "components": "src/components/",
+    "globalScss": "src/globals/scss/"
 }
