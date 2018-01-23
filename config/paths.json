@@ -8,6 +8,7 @@
     "distComponents": "dist/components/",
   "packages": "packages/",
   "public": "public/",
+    "publicComponents": "public/components/",
   "src": "src/",
     "components": "src/components/",
     "globalScss": "src/globals/scss/"
