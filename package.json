@@ -19,7 +19,7 @@
     "build:packages": "gulp build:packages --destination 'packages' && npm run test:build:packages",
     "build:dist": "gulp build:dist --destination 'dist' --production && npm run test:build:dist",
     "test": "standard && gulp compile:components --destination 'public' && gulp test && npm run test:app && npm run test:components",
-    "test:app": "jest test/",
+    "test:app": "jest test/ --forceExit # express server fails to end process",
     "test:components": "jest src/components/",
     "test:build:packages": "jest tasks/gulp/__tests__/after-build-packages.test.js",
     "test:build:dist": "jest tasks/gulp/__tests__/after-build-dist.test.js"

@@ -1,4 +1,4 @@
-/* globals describe, it, expect, beforeEach, afterEach */
+/* globals describe, it, expect, beforeAll, afterAll */
 
 const request = require('request')
 const cheerio = require('cheerio')
@@ -16,14 +16,12 @@ const requestParams = {
 describe('frontend app', () => {
   let server
 
-  beforeEach(done => {
-    server = app.listen(3000)
-    done()
+  beforeAll(done => {
+    server = app.listen(3000, done)
   })
 
-  afterEach(done => {
-    server.close()
-    done()
+  afterAll(done => {
+    server.close(done)
   })
 
   it('should resolve with a http status code of 200', done => {
