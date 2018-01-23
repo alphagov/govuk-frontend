@@ -43,7 +43,7 @@
   <p class="govuk-body">{% block componentHtmlUsageWriteup %}{% endblock %}</p>
   {% endif %}
 
-  {% from "./macros/showExamples.njk" import showExamples %}
+  {% from "showExamples.njk" import showExamples %}
   {% block examples %}
   {{ showExamples(componentName, componentData) }}
   {% endblock %}
