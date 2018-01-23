@@ -83,7 +83,7 @@ gulp.task('dev', cb => {
 
 gulp.task('serve', ['watch'], () => {
   return nodemon({
-    script: 'app.js'
+    script: 'app/app.js'
   })
 })
 
