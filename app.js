@@ -5,13 +5,16 @@ const fs = require('fs')
 const path = require('path')
 const port = (process.env.PORT || 3000)
 const yaml = require('js-yaml')
-const helperFunctions = require('./lib/helper-functions.js')
-const dto = require('./lib/dto-helper.js')
+
+const helperFunctions = require('./lib/helper-functions.js')  // misc helpers
+const dto = require('./lib/dto-helper.js')                    // directoryToObject helper
+const configPaths = require('./config/paths.json')            // specify paths to main working directories
 
 // Set up views
 const appViews = [
-  path.join(__dirname, '/src/views/'),
-  path.join(__dirname, '/src/components/')
+  path.join(__dirname, configPaths.app),
+  path.join(__dirname, configPaths.partials),
+  path.join(__dirname, configPaths.components)
 ]
 
 // Configure nunjucks
@@ -24,15 +27,15 @@ let env = nunjucks.configure(appViews, {
   watch: true // reload templates when they are changed. needs chokidar dependency to be installed
 })
 
-// make the function above available as a filter for all templates
+// make the function available as a filter for all templates
 env.addFilter('componentNameToMacroName', helperFunctions.componentNameToMacroName)
 
 // Set view engine
 app.set('view engine', 'njk')
 
 // Set up middleware to serve static assets
-app.use('/public', express.static(path.join(__dirname, '/public')))
-app.use('/icons', express.static(path.join(__dirname, '/public/icons')))
+app.use('/public', express.static(path.join(__dirname, configPaths.public)))
+app.use('/icons', express.static(path.join(__dirname, configPaths.public, 'icons')))
 
 const server = app.listen(port, () => {
   console.log('Listening on port ' + port + '   url: http://localhost:' + port)
@@ -43,8 +46,8 @@ const server = app.listen(port, () => {
 // Index page - render the component list template
 app.get('/', function (req, res) {
   Promise.all([
-    dto.directoryToObject(path.resolve('./src/components')),
-    dto.directoryToObject(path.resolve('./src/views/examples'))
+    dto.directoryToObject(path.resolve(configPaths.components)),
+    dto.directoryToObject(path.resolve(configPaths.examples))
   ]).then(result => {
     const [components, examples] = result
 
@@ -58,7 +61,7 @@ app.get('/', function (req, res) {
 // Whenever the route includes a :component parameter, read the component data
 // from its YAML file
 app.param('component', function (req, res, next, componentName) {
-  let yamlPath = `src/components/${componentName}/${componentName}.yaml`
+  let yamlPath = configPaths.components + `${componentName}/${componentName}.yaml`
 
   try {
     res.locals.componentData = yaml.safeLoad(
@@ -75,7 +78,7 @@ app.get('/components/:component', function (req, res, next) {
   // make variables available to nunjucks template
   res.locals.componentPath = req.params.component
 
-  res.render(`${req.params.component}/index`, function (error, html) {
+  res.render('../../' + configPaths.components + `${req.params.component}/index`, function (error, html) {
     if (error) {
       next(error)
     } else {
@@ -117,7 +120,7 @@ app.get('/components/:component/:example*?/preview', function (req, res, next) {
 
 // Example view
 app.get('/examples/:example', function (req, res, next) {
-  res.render(`examples/${req.params.example}/index`, function (error, html) {
+  res.render('../' + configPaths.examples + `${req.params.example}/index`, function (error, html) {
     if (error) {
       next(error)
     } else {
