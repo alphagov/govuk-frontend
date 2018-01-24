@@ -27,6 +27,15 @@ To check the whole codebase, run:
 
 For more detail, see our [coding standards for JavaScript](/docs/coding-standards/js.md).
 
+### Testing components on their own
+You can run a subset of the test suite that only tests components by running:
+
+    npm run test:components
+
+Note: There's a watch mode that keeps a testing session open waiting for changes that can be used with:
+
+    npm run test:components -- --watch
+
 ## Folder structure and naming
 
 Find components in `src/components`.
