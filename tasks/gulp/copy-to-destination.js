@@ -26,11 +26,7 @@ gulp.task('copy-files', () => {
     '!' + configPaths.src + 'globals/icons',
     '!' + configPaths.src + 'globals/scss',
     '!' + configPaths.src + 'globals',
-    '!' + configPaths.src + 'views',
     '!' + configPaths.src + 'components',
-    '!' + configPaths.src + 'views/**',
-    '!' + configPaths.src + 'examples',
-    '!' + configPaths.src + 'examples/**',
     '!' + configPaths.src + 'globals/scss/govuk-frontend-oldie.scss',
     '!' + configPaths.src + 'components/**/index.njk',
     '!' + configPaths.src + 'components/**/*.{yml,yaml}'

@@ -3,7 +3,7 @@
 const request = require('request')
 const cheerio = require('cheerio')
 
-const app = require('../app.js')
+const app = require('../app/app.js')
 const lib = require('../lib/file-helper')
 
 const requestParams = {

@@ -2,11 +2,12 @@
 const gulp = require('gulp')
 const gtenon = require('gulp-tenon-client')
 const axe = require('gulp-axe-webdriver')
+const configPaths = require('../../config/paths.json')
 
 // Check HTML using Tenon ----------------
 // ---------------------------------------
 gulp.task('html:tenon', function () {
-  return gulp.src('public/components/**/*.html', {read: false})
+  return gulp.src(configPaths.publicComponents + '**/*.html', {read: false})
   .pipe(gtenon({
     config: 'config/tenon.json',
     snippet: true, // include errorSnippet in the console output
@@ -25,7 +26,7 @@ gulp.task('html:axe', (done) => {
   let options = {
     browser: 'phantomjs',
     saveOutputIn: 'axeReport.json',
-    urls: ['public/components/**/*.html'],
+    urls: [configPaths.publicComponents + '**/*.html'],
     // https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md
     a11yCheckOptions: {
       'rules': {

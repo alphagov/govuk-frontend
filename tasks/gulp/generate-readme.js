@@ -21,7 +21,7 @@ function getDataForFile (file) {
 }
 
 var environment = new nunjucks.Environment(
-  new nunjucks.FileSystemLoader([configPath.src + 'views', configPath.components])
+  new nunjucks.FileSystemLoader([configPath.partials, configPath.layouts, configPath.components])
 )
 environment.addGlobal('isReadme', 'true')
 // make the function above available as a filter for all templates
@@ -33,7 +33,8 @@ gulp.task('generate:readme', () => {
     objectData.componentName = path.dirname(file.path).split(path.sep).slice(-1).toString()
     objectData.componentPath = objectData.componentName
     try {
-      let componentData = yaml.safeLoad(fs.readFileSync(`src/components/${objectData.componentName}/${objectData.componentName}.yaml`, 'utf8'), {json: true})
+      let componentPath = path.join(configPath.components, objectData.componentName, `${objectData.componentName}.yaml`)
+      let componentData = yaml.safeLoad(fs.readFileSync(componentPath, 'utf8'), {json: true})
       objectData.componentData = componentData
       return componentData
     } catch (e) {

@@ -1,4 +1,4 @@
-{% from "./loadComponentTemplate.njk" import loadComponentTemplate %}
+{% from "loadComponentTemplate.njk" import loadComponentTemplate %}
 {% from "details/macro.njk" import govukDetails %}
 
 {% macro showExamples(componentName, componentData) %}
@@ -21,7 +21,7 @@
     {% if isReadme %}
       <h3>{{ itemName  | capitalize }}</h3>
       <a href="http://govuk-frontend-review.herokuapp.com{{ previewLink }}">{{ previewText }}</a>
-      {% include "../includes/code.njk" %}
+      {% include "code.njk" %}
     {% else %}
       <section aria-labelledby="heading-{{ itemName}}">
         <div class="govuk-heading-m">
@@ -41,7 +41,7 @@
           ></iframe>
         </div>
 
-        {% set detailsHtml %}{% include "../includes/code.njk" %}{% endset %}
+        {% set detailsHtml %}{% include "code.njk" %}{% endset %}
         {{- govukDetails({ summaryText: "Code", html: detailsHtml }) -}}
       </section>
     {% endif %}

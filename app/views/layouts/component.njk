@@ -5,7 +5,7 @@
 {% set componentName = componentPath %}
 {% set componentGuidanceLink = componentGuidanceLink | default('http://www.linktodesignsystem.com/' + componentName)%}
 {% set htmlMarkup %}
-  {% include "../components/"+ componentName +"/"+ componentName +".njk" ignore missing %}
+  {% include componentName +"/"+ componentName +".njk" ignore missing %}
 {% endset %}
 
 {% if not isReadme %}
@@ -43,7 +43,7 @@
   <p class="govuk-body">{% block componentHtmlUsageWriteup %}{% endblock %}</p>
   {% endif %}
 
-  {% from "./macros/showExamples.njk" import showExamples %}
+  {% from "showExamples.njk" import showExamples %}
   {% block examples %}
   {{ showExamples(componentName, componentData) }}
   {% endblock %}
