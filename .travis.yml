@@ -16,7 +16,7 @@ jobs:
       script:
       # Ensure Travis aborts without running tests if the package-lock.json file needs updating
       - set -e
-      - ./scripts/check-package-lock.sh
+      - ./bin/check-package-lock.sh
       - npm test
     # Heroku is configured to automatically deploy the following branches
     # once CI passes:
