@@ -2,7 +2,6 @@ examples:
 - name: default
   data:
     text: Save and continue
-    classes: 'example-class'
 - name: disabled
   data:
     text: Disabled button
@@ -16,35 +15,21 @@ examples:
     text: Disabled link button
     href: '/'
     disabled: true
-- name: start
-  data:
-    text: Start now button
-    classes: 'govuk-c-button--start'
 - name: start-link
   data:
     text: Start now link button
     href: /
     classes: 'govuk-c-button--start'
-- name: button-with-html
-  data:
-    name: start-now
-    html: Start <em>now</em>
 - name: explicit-button
   data:
+    element: button
     name: start-now
     text: Start now
-    element: button
-- name: button-with-value
+- name: explicit-button-disabled
   data:
-    name: start-now
-    value: start
-    text: Start now
     element: button
-- name: non-submit-button
-  data:
-    name: add-another
-    text: Add another
-    type: button
+    text: Explicit button disabled
+    disabled: true
 - name: button-active-state
   readme: false
   data:
