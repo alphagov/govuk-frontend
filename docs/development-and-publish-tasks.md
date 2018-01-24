@@ -24,6 +24,7 @@ There are a few npm scripts in `package.json` that trigger a number of gulp task
 - run JS tests
 - run CSS lint checker
 - run accessibility tests on HTML files
+- run tests on the review application
 
 **`npm run heroku` runs on Heroku build/PR and it:**
 - compiles components' HTML
@@ -37,6 +38,7 @@ There are a few npm scripts in `package.json` that trigger a number of gulp task
 - split icons out from globals/icons into a separate package (packages/icons)
 - create an "all" package for Sass
 - generate README markdown files
+- runs `npm run test:build:packages` (which will test the output is correct)
 
 **`npm run build:dist` will do the following:**
 - copy JS
@@ -45,7 +47,7 @@ There are a few npm scripts in `package.json` that trigger a number of gulp task
 - compile component nujucks files to HTML
 - generate README markdown files
 - take version from 'all/package.json' and append it to compiled & minified JS and CSS files
-
+- runs `npm run test:dist:packages` (which will test the output is correct)
 
 ## Gulp tasks
 
@@ -58,16 +60,6 @@ This task will:
 
 This task will:
 - run accessibility test (tenon and axe)
-
-**`gulp test:app`**
-
-This task will:
-- test the node server
-
-**`gulp test:tasks`**
-
-This task will:
-- test the gulp tasks
 
 **`gulp watch`**
 

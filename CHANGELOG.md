@@ -24,6 +24,12 @@ Fixes:
 
 Internal:
 
+- Replace Mocha/Chai with Jest, re-enable task tests, add back-link component.
+  Special thanks to [@htmlandbacon](https://github.com/htmlandbacon) and [@tyom](https://github.com/tyom) for sharing their approaches.
+  (PR [#455](https://github.com/alphagov/govuk-frontend/pull/455))
+
+
+
 ## 0.0.22-alpha (Breaking release)
 
 Breaking changes:
