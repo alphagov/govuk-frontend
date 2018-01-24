@@ -1,8 +1,9 @@
 {
   "app": "app/",
-    "examples": "app/examples/",
-    "partials": "app/partials/",
-    "layouts": "app/layouts/",
+    "views": "app/views/",
+      "examples": "app/views/examples/",
+      "partials": "app/views/partials/",
+      "layouts": "app/views/layouts/",
   "config": "config/",
   "dist": "dist/",
     "distComponents": "dist/components/",

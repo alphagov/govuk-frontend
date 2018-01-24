@@ -6,15 +6,16 @@ const path = require('path')
 const port = (process.env.PORT || 3000)
 const yaml = require('js-yaml')
 
-const helperFunctions = require('./lib/helper-functions.js')
-const directoryToObject = require('./lib/directory-to-object.js')
-const configPaths = require('./config/paths.json')
+const helperFunctions = require('../lib/helper-functions.js')
+const directoryToObject = require('../lib/directory-to-object.js')
+const configPaths = require('../config/paths.json')
 
 // Set up views
 const appViews = [
-  path.join(__dirname, configPaths.app),
-  path.join(__dirname, configPaths.partials),
-  path.join(__dirname, configPaths.components)
+  configPaths.layouts,
+  configPaths.partials,
+  configPaths.examples,
+  configPaths.components
 ]
 
 // Configure nunjucks
@@ -34,8 +35,8 @@ env.addFilter('componentNameToMacroName', helperFunctions.componentNameToMacroNa
 app.set('view engine', 'njk')
 
 // Set up middleware to serve static assets
-app.use('/public', express.static(path.join(__dirname, configPaths.public)))
-app.use('/icons', express.static(path.join(__dirname, configPaths.public, 'icons')))
+app.use('/public', express.static(configPaths.public))
+app.use('/icons', express.static(path.join(configPaths.public, 'icons')))
 
 const server = app.listen(port, () => {
   console.log('Listening on port ' + port + '   url: http://localhost:' + port)
@@ -78,7 +79,7 @@ app.get('/components/:component', function (req, res, next) {
   // make variables available to nunjucks template
   res.locals.componentPath = req.params.component
 
-  res.render('../../' + configPaths.components + `${req.params.component}/index`, function (error, html) {
+  res.render(`${req.params.component}/index`, function (error, html) {
     if (error) {
       next(error)
     } else {
@@ -120,7 +121,7 @@ app.get('/components/:component/:example*?/preview', function (req, res, next) {
 
 // Example view
 app.get('/examples/:example', function (req, res, next) {
-  res.render('../' + configPaths.examples + `${req.params.example}/index`, function (error, html) {
+  res.render(`${req.params.example}/index`, function (error, html) {
     if (error) {
       next(error)
     } else {
