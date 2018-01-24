@@ -100,4 +100,20 @@
   .govuk-c-checkboxes__input:disabled + .govuk-c-checkboxes__label {
     opacity: .5;
   }
+
+  .govuk-c-checkboxes__conditional {
+    margin-left: $govuk-spacing-scale-3;
+    @include govuk-responsive-margin($govuk-spacing-responsive-4, "bottom");
+    padding-left: 28px;
+    border-left: $govuk-border-width-mobile solid $govuk-border-colour;
+
+    @include mq($from: tablet) {
+      margin-left: 18px;
+      padding-left: 33px;
+    }
+
+    & > [class^="govuk-c-"]:last-child {
+      margin-bottom: 0;
+    }
+  }
 }
