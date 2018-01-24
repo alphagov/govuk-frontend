@@ -9,15 +9,36 @@ A single package containing everything needed to start building a GOV.UK service
 
 :rotating_light: **This project is in development and these instructions are likely to change.** :rotating_light:
 
-Guidance for building a GOV.UK service - [GOV.UK Design System](TODO: Insert link to GOV.UK Design System).
+Guidance for building a GOV.UK service - [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/).
 
-## Quick start
+## Requirements
 
-:rotating_light: **This will not work until packages are published to npm.** :rotating_light:
+1) [NodeJS](https://nodejs.org/en/) installed
+2) [package.json](https://docs.npmjs.com/files/package.json) file
+
+This file is needed to install a GOV.UK Frontend NPM package in your application. Most often it resides in the root of your application. You can create this file interactively using a `npm init` command.
+
+
+## Install all components
 
 ```
 npm install --save @govuk-frontend/all
 ```
+
+## Install individual components
+
+Install a button component
+
+```
+npm install --save @govuk-frontend/button
+```
+
+All components can be found in the packages directory.
+Each component has a README with installation and usage instructions.
+
+## Quick start (using all components)
+
+:rotating_light: **This will not work until packages are published to npm.** :rotating_light:
 
 Include the CSS and JavaScript
 
@@ -36,25 +57,6 @@ Include the CSS and JavaScript
   </body>
 </html>
 ```
-
-## Installation
-
-## Install all components
-
-```
-npm install --save @govuk-frontend/all
-```
-
-## Install individual components
-
-Install a button component
-
-```
-npm install --save @govuk-frontend/button
-```
-
-All components can be found in the packages directory.
-Each component has a README with installation and usage instructions.
 
 ## Usage
 
