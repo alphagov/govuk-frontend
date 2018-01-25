@@ -7,6 +7,10 @@
     @include govuk-responsive-margin($govuk-spacing-responsive-4, "bottom");
     padding-left: 0;
     list-style-type: none;
+
+    .govuk-list { // Margin for nested lists
+      margin-top: $govuk-spacing-scale-2;
+    }
   }
 
   .govuk-list > li {

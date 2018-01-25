@@ -21,14 +21,15 @@ Fixes:
 
 - Remove double margin from Date input component
   (PR [#451](https://github.com/alphagov/govuk-frontend/pull/451))
+- Add top margin for nested lists (PR [#464](https://github.com/alphagov/govuk-frontend/pull/464))
+
 
 Internal:
 
 - Replace Mocha/Chai with Jest, re-enable task tests, add back-link component.
   Special thanks to [@htmlandbacon](https://github.com/htmlandbacon) and [@tyom](https://github.com/tyom) for sharing their approaches.
   (PR [#455](https://github.com/alphagov/govuk-frontend/pull/455))
-
-
+- Add example of nested lists to typography and prose scope in review app (PR [#464](https://github.com/alphagov/govuk-frontend/pull/464))
 
 ## 0.0.22-alpha (Breaking release)
 
