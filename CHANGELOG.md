@@ -22,6 +22,7 @@ Fixes:
 - Remove double margin from Date input component
   (PR [#451](https://github.com/alphagov/govuk-frontend/pull/451))
 - Add top margin for nested lists (PR [#464](https://github.com/alphagov/govuk-frontend/pull/464))
+- Remove regular font weight from link styles (PR [#469](https://github.com/alphagov/govuk-frontend/pull/469))
 
 
 Internal:
