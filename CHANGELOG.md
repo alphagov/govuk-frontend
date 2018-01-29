@@ -40,6 +40,7 @@ Internal:
 - Add tests for warning text component (PR [#479](https://github.com/alphagov/govuk-frontend/pull/479))
 - Add tests for error-summary component (PR [#489](https://github.com/alphagov/govuk-frontend/pull/489))
 - Add tests for radios component (PR [#476](https://github.com/alphagov/govuk-frontend/pull/476))
+- Add tests for input component (PR [#478](https://github.com/alphagov/govuk-frontend/pull/478))
 
 ## 0.0.22-alpha (Breaking release)
 
