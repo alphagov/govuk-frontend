@@ -1,7 +1,7 @@
 @include exports("links") {
 
   .govuk-link {
-    @include govuk-font-regular;
+    @include govuk-typography-common;
     @include govuk-focusable-fill;
 
     // Override the tap highlight colour (the color of the highlight that
