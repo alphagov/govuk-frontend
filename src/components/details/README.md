@@ -22,10 +22,8 @@ More information about when to use details can be found on [GOV.UK Design System
           Help with nationality
         </span>
       </summary>
-      <div class="govuk-c-border govuk-c-border--left-narrow">
-        <div class="govuk-c-details__text">
-          We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post.
-        </div>
+      <div class="govuk-c-details__text">
+        We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post.
       </div>
     </details>
 
@@ -48,9 +46,8 @@ More information about when to use details can be found on [GOV.UK Design System
           Where to find your National Insurance Number
         </span>
       </summary>
-      <div class="govuk-c-border govuk-c-border--left-narrow">
-        <div class="govuk-c-details__text">
-          Your National Insurance number can be found on
+      <div class="govuk-c-details__text">
+        Your National Insurance number can be found on
     <ul>
       <li>your National Insurance card</li>
       <li>your payslip</li>
@@ -59,7 +56,6 @@ More information about when to use details can be found on [GOV.UK Design System
       <li>tax return</li>
     </ul>
 
-        </div>
       </div>
     </details>
 
