@@ -2,9 +2,6 @@ examples:
  - name: default
    data:
     text: alpha
- - name: with-html
-   data:
-    html: <i>alpha</i>
  - name: inactive
    data:
     text: alpha
