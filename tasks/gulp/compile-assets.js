@@ -79,7 +79,10 @@ gulp.task('scss:compile', () => {
 // Compile js task for preview ----------
 // --------------------------------------
 gulp.task('js:compile', () => {
-  return gulp.src([configPaths.src + '**/*.js'])
+  return gulp.src([
+    '!' + configPaths.src + '**/*.test.js',
+    configPaths.src + '**/*.js'
+  ])
     .pipe(concat('govuk-frontend.js'))
     .pipe(gulpif(isProduction, uglify()))
     .pipe(gulpif(isProduction,
