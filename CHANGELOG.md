@@ -35,6 +35,7 @@ Internal:
 - Add example of nested lists to typography and prose scope in review app (PR [#464](https://github.com/alphagov/govuk-frontend/pull/464))
 - Add tests for tag component (PR [#457](https://github.com/alphagov/govuk-frontend/pull/457))
 - Add tests for button component (PR [#461](https://github.com/alphagov/govuk-frontend/pull/461))
+- Add tests for breadcrumbs component (PR [#461](https://github.com/alphagov/govuk-frontend/pull/461))
 
 
 ## 0.0.22-alpha (Breaking release)
