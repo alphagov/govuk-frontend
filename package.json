@@ -15,7 +15,7 @@
   "homepage": "https://github.com/alphagov/govuk-frontend#readme",
   "scripts": {
     "start": "gulp dev --destination 'public'",
-    "heroku": "gulp compile:components --destination 'public' && gulp copy-assets --destination 'public' && node app.js",
+    "heroku": "gulp compile:components --destination 'public' && gulp copy-assets --destination 'public' && node app/app.js",
     "build:packages": "gulp build:packages --destination 'packages' && npm run test:build:packages",
     "build:dist": "gulp build:dist --destination 'dist' --production && npm run test:build:dist",
     "test": "standard && gulp compile:components --destination 'public' && gulp test && npm run test:app && npm run test:components",
