@@ -18,6 +18,8 @@ In a new branch that is up to date with the master branch:
 
 2. Run the `npm run build:packages` task. This copies any changes from
 `src/components/component-name` to `packages/component-name`.
+Note: The command also runs tests to ensure the contents of `packages` match `src`.
+These tests live in `after-build-packages.test.js`.
 
 3. In Frontend, for any new components inside `/packages`, add a `package.json`
 inside `packages/component-name`:
@@ -50,47 +52,27 @@ git add packages/* -f
 git commit -m "chore(packages): copy changes to packages"
 ```
 
-6. Ensure that the new packages work correctly by doing the following in the
-Design System:
-  - Delete `node_modules/@govuk-frontend`
-  - Run `ln -s ~/[Your code folder]/govuk-frontend/packages @govuk-frontend`
-  inside `node_modules` to temporarily link the package styles.
-  - Run `npm start` and verify the site is rendering correctly with the new
-  packages. Note: You might need to fix issues caused by breaking changes in the
-  new packages before you can run `npm start`.
-  - To undo the linking, in `node_modules` run:
-```
-unlink @govuk-frontend
-```
-and reset `package-lock.json` (if it changed as result of linking to the new
-packages) and then run `npm install`.
-  - ** Important ** : Don't run `npm install` in the Design System before you
-  have unlinked the symlink; linking the directories effectively permits changes
-  made in the Design System to take effect in `govuk-frontend`.
-  - Note: * This process only verifies that the current packages work, it doesn't
-  mean that all of the changes have been copied. *
+6. At this point, run `git status` to make sure no changes have been introduced
+since the commit in the previous step. (Any contents of the `packages` folder
+will get pushed to npm in step 11.)
 
-7. At this point, run `git status` to make sure no changes have been introduced
-since the commit in step 5. (Any contents of the `packages` folder will get
-pushed to npm in step 11.)
-
-8. In the console, log in to npm as user who has permission to publish to the
+7. In the console, log in to npm as user who has permission to publish to the
 `govuk-frontend` scope. You can use `npm whoami` to check your current user.
 
-9. Run
+8. Run
 ```
 lerna bootstrap
 ```
 You should see `lerna success Bootstrapped [number of] packages`. This will
 install all package dependencies and link any cross-dependencies.
 
-10. Run
+9. Run
 ```
 lerna updated
 ```
 This will display the packages that have changed.
 
-11. Run
+10. Run
 ```
 lerna publish -m "chore(release): update packages and publish"
 ```
@@ -101,11 +83,11 @@ manually for each package (see below). Also see step 3 regarding the versioning
 of new components:
 ![Select version in Lerna](./img/lerna-select-version.png)
 
-12. Once you have updated all the package versions, confirm you want to publish
+11. Once you have updated all the package versions, confirm you want to publish
 the changes (see below).
 ![Confirm publishing of changes in Lerna](./img/lerna-confirm-publish.png)
 
-13. If your changes included new packages, you need to grant npm test user
+12. If your changes included new packages, you need to grant npm test user
 access to them:
 ```
 npm access grant read-only govuk-frontend:test @govuk-frontend/warning-text
@@ -113,14 +95,14 @@ npm access grant read-only govuk-frontend:test @govuk-frontend/warning-text
 Note: If you rename a package as part of the release, npm will consider it to be
 a new package. You will need to grant test user access to the new package.
 
-14. OPTIONAL: Login at `https://www.npmjs/login` as the test user to check which
+13. OPTIONAL: Login at `https://www.npmjs/login` as the test user to check which
 packages the user has now access to.
 
-15. To test the packages have published correctly, in console login as the test
+14. To test the packages have published correctly, in console login as the test
 user. In the Design System, run `npm install` and then `npm start`. Check that
 the changes have taken effect.
 
-16. Update `dist` folder with the latest versions
+15. Update `dist` folder with the latest versions
 ```
 npm run build:dist
 ```
@@ -130,8 +112,10 @@ git commit -m "chore(dist): update dist to version x.x.x-alpha"
 git push --tags
 ```
 Note: Specifying `--tags` here will push the release tags to origin.
+Note: The command also runs tests to ensure the contents of `dist` match `src`.  
+These tests live in `after-build-dist.test.js`.
 
-12. Open a PR for these changes.
+16. Open a PR for these changes.
 
 ## Updating other repos that consume `govuk-frontend`
 
