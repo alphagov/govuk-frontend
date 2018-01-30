@@ -36,9 +36,8 @@ Internal:
 - Add tests for tag component (PR [#457](https://github.com/alphagov/govuk-frontend/pull/457))
 - Add tests for button component (PR [#461](https://github.com/alphagov/govuk-frontend/pull/461))
 - Add tests for breadcrumbs component (PR [#461](https://github.com/alphagov/govuk-frontend/pull/461))
-- Add tests for details component
-  (PR [#480](https://github.com/alphagov/govuk-frontend/pull/480))
-
+- Add tests for details component (PR [#480](https://github.com/alphagov/govuk-frontend/pull/480))
+- Add tests for warning text component (PR [#479](https://github.com/alphagov/govuk-frontend/pull/479))
 
 ## 0.0.22-alpha (Breaking release)
 
