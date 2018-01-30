@@ -41,6 +41,7 @@ Internal:
 - Add tests for breadcrumbs component (PR [#461](https://github.com/alphagov/govuk-frontend/pull/461))
 - Add tests for details component (PR [#480](https://github.com/alphagov/govuk-frontend/pull/480))
 - Add tests for warning text component (PR [#479](https://github.com/alphagov/govuk-frontend/pull/479))
+- Add tests for table component (PR [#472](https://github.com/alphagov/govuk-frontend/pull/472))
 - Add tests for error-summary component (PR [#489](https://github.com/alphagov/govuk-frontend/pull/489))
 - Add tests for radios component (PR [#476](https://github.com/alphagov/govuk-frontend/pull/476))
 
