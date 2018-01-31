@@ -6,7 +6,6 @@
     "@govuk-frontend/breadcrumbs": "^0.0.22-alpha",
     "@govuk-frontend/button": "^0.0.22-alpha",
     "@govuk-frontend/checkboxes": "^0.0.22-alpha",
-    "@govuk-frontend/cookie-banner": "^0.0.22-alpha",
     "@govuk-frontend/date-input": "^0.0.22-alpha",
     "@govuk-frontend/details": "^0.0.22-alpha",
     "@govuk-frontend/error-message": "^0.0.22-alpha",
