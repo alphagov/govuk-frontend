@@ -18,7 +18,6 @@
     "@govuk-frontend/label": "^0.0.22-alpha",
     "@govuk-frontend/panel": "^0.0.22-alpha",
     "@govuk-frontend/phase-banner": "^0.0.22-alpha",
-    "@govuk-frontend/previous-next": "^0.0.22-alpha",
     "@govuk-frontend/radios": "^0.0.22-alpha",
     "@govuk-frontend/select": "^0.0.22-alpha",
     "@govuk-frontend/skip-link": "^0.0.22-alpha",
