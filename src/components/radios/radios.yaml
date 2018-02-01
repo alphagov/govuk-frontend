@@ -14,6 +14,22 @@ examples:
         text: No
         checked: true
 
+- name: with-disabled
+  data:
+    idPrefix: 'example-disabled'
+    name: 'example-disabled'
+    fieldset:
+      legendText: Have you changed your name?
+      legendHintText:
+        This includes changing your last name or spelling your name differently.
+    items:
+      - value: yes
+        text: Yes
+        disabled: true
+      - value: no
+        text: No
+        disabled: true
+
 - name: with-html
   data:
     idPrefix: 'housing-act'
@@ -41,3 +57,24 @@ examples:
         text: 'Green'
       - value: "blue"
         text: "Blue"
+
+- name: with-extreme-fieldset
+  data:
+    idPrefix: 'example'
+    name: 'example'
+    errorMessage:
+      text: 'Please select an option'
+    fieldset:
+      classes: 'app-c-fieldset--custom-modifier'
+      attributes:
+        'data-attribute': 'value'
+        'data-second-attribute': 'second-value'
+      legendText: Have you changed your name?
+      legendHintText:
+        This includes changing your last name or spelling your name differently.
+    items:
+      - value: yes
+        text: Yes
+      - value: no
+        text: No
+        checked: true

@@ -16,7 +16,7 @@ describe('back-link component', () => {
   })
 
   it('renders the default example with an anchor, href and text correctly', () => {
-    const { $ } = render('back-link', examples.default)
+    const $ = render('back-link', examples.default)
 
     const $component = $('.govuk-c-back-link')
     expect($component.get(0).tagName).toEqual('a')
@@ -25,7 +25,7 @@ describe('back-link component', () => {
   })
 
   it('renders classes correctly', () => {
-    const { $ } = render('back-link', {
+    const $ = render('back-link', {
       classes: 'app-c-back-link--custom-class',
       href: '#',
       html: '<b>Back</b>'
@@ -36,7 +36,7 @@ describe('back-link component', () => {
   })
 
   it('renders custom text correctly', () => {
-    const { $ } = render('back-link', {
+    const $ = render('back-link', {
       href: '#',
       text: 'Home'
     })
@@ -46,7 +46,7 @@ describe('back-link component', () => {
   })
 
   it('renders escaped html when passed to text', () => {
-    const { $ } = render('back-link', {
+    const $ = render('back-link', {
       href: '#',
       text: '<b>Home</b>'
     })
@@ -56,7 +56,7 @@ describe('back-link component', () => {
   })
 
   it('renders html correctly', () => {
-    const { $ } = render('back-link', {
+    const $ = render('back-link', {
       href: '#',
       html: '<b>Back</b>'
     })
@@ -66,7 +66,7 @@ describe('back-link component', () => {
   })
 
   it('renders attributes correctly', () => {
-    const { $ } = render('back-link', {
+    const $ = render('back-link', {
       attributes: {
         'data-test': 'attribute',
         'aria-label': 'Back to home'

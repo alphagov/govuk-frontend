@@ -6,7 +6,7 @@ const examples = getExamples('tag')
 
 describe('Tag', () => {
   it('renders the default example with strong element and text', () => {
-    const { $ } = render('tag', examples.default)
+    const $ = render('tag', examples.default)
 
     const $component = $('.govuk-c-tag')
     expect($component.get(0).tagName).toEqual('strong')
@@ -14,7 +14,7 @@ describe('Tag', () => {
   })
 
   it('renders classes', () => {
-    const { $ } = render('tag', {
+    const $ = render('tag', {
       classes: 'govuk-c-tag--inactive',
       text: 'alpha'
     })
@@ -24,7 +24,7 @@ describe('Tag', () => {
   })
 
   it('renders custom text', () => {
-    const { $ } = render('tag', {
+    const $ = render('tag', {
       text: 'some-custom-text'
     })
 
@@ -33,7 +33,7 @@ describe('Tag', () => {
   })
 
   it('renders escaped html when passed to text', () => {
-    const { $ } = render('tag', {
+    const $ = render('tag', {
       text: '<span>alpha</span>'
     })
 
@@ -42,7 +42,7 @@ describe('Tag', () => {
   })
 
   it('renders html', () => {
-    const { $ } = render('tag', {
+    const $ = render('tag', {
       html: '<span>alpha</span>'
     })
 
@@ -51,7 +51,7 @@ describe('Tag', () => {
   })
 
   it('renders attributes', () => {
-    const { $ } = render('tag', {
+    const $ = render('tag', {
       attributes: {
         'data-test': 'attribute',
         'id': 'my-tag'
