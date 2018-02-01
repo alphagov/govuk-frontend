@@ -18,13 +18,12 @@ Buttons are configured to perform an action and they can have a different look. 
 
 #### Markup
 
-    <input value="Save and continue" type="submit" class="govuk-c-button example-class">
+    <input value="Save and continue" type="submit" class="govuk-c-button">
 
 #### Macro
 
     {{ govukButton({
-      "text": "Save and continue",
-      "classes": "example-class"
+      "text": "Save and continue"
     }) }}
 
 ### Button--disabled
@@ -77,21 +76,6 @@ Buttons are configured to perform an action and they can have a different look. 
       "disabled": true
     }) }}
 
-### Button--start
-
-[Preview the button--start example](http://govuk-frontend-review.herokuapp.com/components/button/start/preview)
-
-#### Markup
-
-    <input value="Start now button" type="submit" class="govuk-c-button govuk-c-button--start">
-
-#### Macro
-
-    {{ govukButton({
-      "text": "Start now button",
-      "classes": "govuk-c-button--start"
-    }) }}
-
 ### Button--start-link
 
 [Preview the button--start-link example](http://govuk-frontend-review.herokuapp.com/components/button/start-link/preview)
@@ -110,23 +94,6 @@ Buttons are configured to perform an action and they can have a different look. 
       "classes": "govuk-c-button--start"
     }) }}
 
-### Button--button-with-html
-
-[Preview the button--button-with-html example](http://govuk-frontend-review.herokuapp.com/components/button/button-with-html/preview)
-
-#### Markup
-
-    <button name="start-now" type="submit" class="govuk-c-button">
-      Start <em>now</em>
-    </button>
-
-#### Macro
-
-    {{ govukButton({
-      "name": "start-now",
-      "html": "Start <em>now</em>"
-    }) }}
-
 ### Button--explicit-button
 
 [Preview the button--explicit-button example](http://govuk-frontend-review.herokuapp.com/components/button/explicit-button/preview)
@@ -140,44 +107,27 @@ Buttons are configured to perform an action and they can have a different look. 
 #### Macro
 
     {{ govukButton({
+      "element": "button",
       "name": "start-now",
-      "text": "Start now",
-      "element": "button"
+      "text": "Start now"
     }) }}
 
-### Button--button-with-value
+### Button--explicit-button-disabled
 
-[Preview the button--button-with-value example](http://govuk-frontend-review.herokuapp.com/components/button/button-with-value/preview)
+[Preview the button--explicit-button-disabled example](http://govuk-frontend-review.herokuapp.com/components/button/explicit-button-disabled/preview)
 
 #### Markup
 
-    <button value="start" name="start-now" type="submit" class="govuk-c-button">
-      Start now
+    <button type="submit" disabled="disabled" aria-disabled="true" class="govuk-c-button govuk-c-button--disabled">
+      Explicit button disabled
     </button>
 
 #### Macro
 
     {{ govukButton({
-      "name": "start-now",
-      "value": "start",
-      "text": "Start now",
-      "element": "button"
-    }) }}
-
-### Button--non-submit-button
-
-[Preview the button--non-submit-button example](http://govuk-frontend-review.herokuapp.com/components/button/non-submit-button/preview)
-
-#### Markup
-
-    <input value="Add another" name="add-another" type="button" class="govuk-c-button">
-
-#### Macro
-
-    {{ govukButton({
-      "name": "add-another",
-      "text": "Add another",
-      "type": "button"
+      "element": "button",
+      "text": "Explicit button disabled",
+      "disabled": true
     }) }}
 
 ## Dependencies
