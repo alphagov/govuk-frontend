@@ -51,6 +51,7 @@
     "gulp-to-markdown": "^1.0.0",
     "gulp-uglify": "^3.0.0",
     "jest": "^22.1.4",
+    "jest-serializer-html": "^5.0.0",
     "js-yaml": "^3.10.0",
     "lerna": "^2.3.1",
     "merge-stream": "^1.0.1",
@@ -78,5 +79,8 @@
     "ie 8",
     "ie 9",
     "iOS 9"
-  ]
+  ],
+  "jest": {
+    "snapshotSerializers": ["jest-serializer-html"]
+  }
 }

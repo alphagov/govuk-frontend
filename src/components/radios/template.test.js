@@ -1,6 +1,8 @@
 /* globals describe, it, expect */
 
-const { render } = require('../../../lib/jest-helpers')
+const { render, getExamples, htmlWithClassName } = require('../../../lib/jest-helpers')
+
+const examples = getExamples('radios')
 
 describe('Radios', () => {
   it('render example with minimum required name and items', () => {
@@ -182,6 +184,62 @@ describe('Radios', () => {
       const $component = $('.govuk-c-radios')
       const $lastInput = $component.find('.govuk-c-radios__item:last-child input')
       expect($lastInput.attr('checked')).toEqual('checked')
+    })
+  })
+
+  describe('nested dependant components', () => {
+    it('passes through label params without breaking', () => {
+      const { $ } = render('radios', {
+        name: 'example-name',
+        items: [
+          {
+            value: 'yes',
+            html: '<b>Yes</b>',
+            label: {
+              attributes: {
+                'data-attribute': 'value',
+                'data-second-attribute': 'second-value'
+              }
+            }
+          },
+          {
+            value: 'no',
+            text: '<b>No</b>',
+            checked: true
+          }
+        ]
+      })
+
+      expect(htmlWithClassName($, '.govuk-c-radios__label')).toMatchSnapshot()
+    })
+
+    it('passes through fieldset params without breaking', () => {
+      const { $ } = render('radios', examples['with-extreme-fieldset'])
+
+      expect(htmlWithClassName($, '.govuk-c-error-message')).toMatchSnapshot()
+      expect(htmlWithClassName($, '.govuk-c-fieldset')).toMatchSnapshot()
+    })
+
+    it('passes through html fieldset params without breaking', () => {
+      const { $ } = render('radios', {
+        name: 'example-name',
+        items: [
+          {
+            value: 'yes',
+            text: 'Yes'
+          },
+          {
+            value: 'no',
+            text: 'No'
+          }
+        ],
+        fieldset: {
+          legendText: 'Have <b>you</b> changed your name?',
+          legendHintHtml: 'This <b>includes</b> changing your last name or spelling your name differently.'
+        }
+      })
+
+      expect(htmlWithClassName($, '.govuk-c-fieldset')).toMatchSnapshot()
     })
   })
 })
