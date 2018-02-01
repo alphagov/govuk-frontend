@@ -12,7 +12,7 @@
 
     box-sizing: border-box; // should this be global?
     width: 100%;
-    height: em(40px, 19px);
+    height: 40px;
     @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom");
 
     padding: $govuk-spacing-scale-1; // was 5px 4px 4px - size of it should be adjusted to match other form elements

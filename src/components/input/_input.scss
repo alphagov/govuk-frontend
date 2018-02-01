@@ -9,7 +9,7 @@
 
     box-sizing: border-box;
     width: 100%;
-    height: em(40px, 19px);
+    height: 40px;
     margin-top: 0;
     @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom");
 
