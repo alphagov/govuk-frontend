@@ -6,7 +6,7 @@ const examples = getExamples('radios')
 
 describe('Radios', () => {
   it('render example with minimum required name and items', () => {
-    const { $ } = render('radios', {
+    const $ = render('radios', {
       name: 'example-name',
       items: [
         {
@@ -36,7 +36,7 @@ describe('Radios', () => {
   })
 
   it('render classes', () => {
-    const { $ } = render('radios', {
+    const $ = render('radios', {
       name: 'example-name',
       items: [
         {
@@ -57,7 +57,7 @@ describe('Radios', () => {
   })
 
   it('render attributes', () => {
-    const { $ } = render('radios', {
+    const $ = render('radios', {
       name: 'example-name',
       items: [
         {
@@ -83,7 +83,7 @@ describe('Radios', () => {
 
   describe('items', () => {
     it('render a matching label and input using name by default', () => {
-      const { $ } = render('radios', {
+      const $ = render('radios', {
         name: 'example-name',
         items: [
           {
@@ -111,7 +111,7 @@ describe('Radios', () => {
     })
 
     it('render a matching label and input using custom idPrefix', () => {
-      const { $ } = render('radios', {
+      const $ = render('radios', {
         idPrefix: 'custom',
         name: 'example-name',
         items: [
@@ -140,7 +140,7 @@ describe('Radios', () => {
     })
 
     it('render disabled', () => {
-      const { $ } = render('radios', {
+      const $ = render('radios', {
         name: 'example-name',
         items: [
           {
@@ -166,7 +166,7 @@ describe('Radios', () => {
     })
 
     it('render checked', () => {
-      const { $ } = render('radios', {
+      const $ = render('radios', {
         name: 'example-name',
         items: [
           {
@@ -189,7 +189,7 @@ describe('Radios', () => {
 
   describe('nested dependant components', () => {
     it('passes through label params without breaking', () => {
-      const { $ } = render('radios', {
+      const $ = render('radios', {
         name: 'example-name',
         items: [
           {
@@ -214,14 +214,14 @@ describe('Radios', () => {
     })
 
     it('passes through fieldset params without breaking', () => {
-      const { $ } = render('radios', examples['with-extreme-fieldset'])
+      const $ = render('radios', examples['with-extreme-fieldset'])
 
       expect(htmlWithClassName($, '.govuk-c-error-message')).toMatchSnapshot()
       expect(htmlWithClassName($, '.govuk-c-fieldset')).toMatchSnapshot()
     })
 
     it('passes through html fieldset params without breaking', () => {
-      const { $ } = render('radios', {
+      const $ = render('radios', {
         name: 'example-name',
         items: [
           {

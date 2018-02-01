@@ -7,7 +7,7 @@ const examples = getExamples('button')
 describe('Button', () => {
   describe('input[type=submit]', () => {
     it('renders the default example', () => {
-      const { $ } = render('button', examples.default)
+      const $ = render('button', examples.default)
 
       const $component = $('.govuk-c-button')
       expect($component.get(0).tagName).toEqual('input')
@@ -16,7 +16,7 @@ describe('Button', () => {
     })
 
     it('renders with attributes', () => {
-      const { $ } = render('button', {
+      const $ = render('button', {
         element: 'input',
         attributes: {
           'aria-controls': 'example-id',
@@ -30,7 +30,7 @@ describe('Button', () => {
     })
 
     it('renders with classes', () => {
-      const { $ } = render('button', {
+      const $ = render('button', {
         element: 'input',
         classes: 'app-c-button--custom-modifier'
       })
@@ -40,7 +40,7 @@ describe('Button', () => {
     })
 
     it('renders with disabled', () => {
-      const { $ } = render('button', examples.disabled)
+      const $ = render('button', examples.disabled)
 
       const $component = $('.govuk-c-button')
       expect($component.attr('aria-disabled')).toEqual('true')
@@ -49,7 +49,7 @@ describe('Button', () => {
     })
 
     it('renders with name', () => {
-      const { $ } = render('button', {
+      const $ = render('button', {
         element: 'input',
         name: 'start-now'
       })
@@ -59,7 +59,7 @@ describe('Button', () => {
     })
 
     it('renders with type', () => {
-      const { $ } = render('button', {
+      const $ = render('button', {
         element: 'input',
         type: 'button'
       })
@@ -71,7 +71,7 @@ describe('Button', () => {
 
   describe('link', () => {
     it('renders with anchor, href and an accessible role of button', () => {
-      const { $ } = render('button', {
+      const $ = render('button', {
         element: 'a',
         href: '/',
         text: 'Continue'
@@ -85,7 +85,7 @@ describe('Button', () => {
     })
 
     it('renders with hash href if no href passed', () => {
-      const { $ } = render('button', {
+      const $ = render('button', {
         element: 'a'
       })
 
@@ -94,7 +94,7 @@ describe('Button', () => {
     })
 
     it('renders with attributes', () => {
-      const { $ } = render('button', {
+      const $ = render('button', {
         element: 'a',
         attributes: {
           'aria-controls': 'example-id',
@@ -108,7 +108,7 @@ describe('Button', () => {
     })
 
     it('renders with classes', () => {
-      const { $ } = render('button', {
+      const $ = render('button', {
         element: 'a',
         classes: 'app-c-button--custom-modifier'
       })
@@ -118,7 +118,7 @@ describe('Button', () => {
     })
 
     it('renders with disabled', () => {
-      const { $ } = render('button', examples['disabled-link'])
+      const $ = render('button', examples['disabled-link'])
 
       const $component = $('.govuk-c-button')
       expect($component.hasClass('govuk-c-button--disabled')).toBeTruthy()
@@ -127,7 +127,7 @@ describe('Button', () => {
 
   describe('with explicit button set by "element"', () => {
     it('renders with anchor, href and an accessible role of button', () => {
-      const { $ } = render('button', examples['explicit-button'])
+      const $ = render('button', examples['explicit-button'])
 
       const $component = $('.govuk-c-button')
       expect($component.get(0).tagName).toEqual('button')
@@ -135,7 +135,7 @@ describe('Button', () => {
     })
 
     it('renders with attributes', () => {
-      const { $ } = render('button', {
+      const $ = render('button', {
         element: 'button',
         attributes: {
           'aria-controls': 'example-id',
@@ -149,7 +149,7 @@ describe('Button', () => {
     })
 
     it('renders with classes', () => {
-      const { $ } = render('button', {
+      const $ = render('button', {
         element: 'button',
         classes: 'app-c-button--custom-modifier'
       })
@@ -159,7 +159,7 @@ describe('Button', () => {
     })
 
     it('renders with disabled', () => {
-      const { $ } = render('button', {
+      const $ = render('button', {
         element: 'button',
         disabled: true
       })
@@ -171,7 +171,7 @@ describe('Button', () => {
     })
 
     it('renders with name', () => {
-      const { $ } = render('button', {
+      const $ = render('button', {
         element: 'button',
         name: 'start-now'
       })
@@ -181,7 +181,7 @@ describe('Button', () => {
     })
 
     it('renders with value', () => {
-      const { $ } = render('button', {
+      const $ = render('button', {
         element: 'button',
         value: 'start'
       })
@@ -191,7 +191,7 @@ describe('Button', () => {
     })
 
     it('renders with html', () => {
-      const { $ } = render('button', {
+      const $ = render('button', {
         element: 'button',
         html: 'Start <em>now</em>'
       })
@@ -201,7 +201,7 @@ describe('Button', () => {
     })
 
     it('renders with type', () => {
-      const { $ } = render('button', {
+      const $ = render('button', {
         element: 'button',
         type: 'button',
         text: 'Start now'
@@ -214,7 +214,7 @@ describe('Button', () => {
 
   describe('implicitly as no "element" param is set', () => {
     it('renders a link if you pass an href', () => {
-      const { $ } = render('button', {
+      const $ = render('button', {
         href: '/'
       })
 
@@ -223,7 +223,7 @@ describe('Button', () => {
     })
 
     it('renders a button if you pass html', () => {
-      const { $ } = render('button', {
+      const $ = render('button', {
         html: 'Start <em>now</em>'
       })
 
@@ -232,7 +232,7 @@ describe('Button', () => {
     })
 
     it('renders an input[type=submit] if you don\'t pass anything', () => {
-      const { $ } = render('button')
+      const $ = render('button')
 
       const $component = $('.govuk-c-button')
       expect($component.get(0).tagName).toEqual('input')

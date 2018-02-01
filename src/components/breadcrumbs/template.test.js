@@ -7,7 +7,7 @@ const examples = getExamples('breadcrumbs')
 describe('Breadcrumbs', () => {
   describe('by default', () => {
     it('renders with classes', () => {
-      const { $ } = render('breadcrumbs', {
+      const $ = render('breadcrumbs', {
         classes: 'app-c-breadcrumbs--custom-modifier'
       })
 
@@ -16,7 +16,7 @@ describe('Breadcrumbs', () => {
     })
 
     it('renders with attributes', () => {
-      const { $ } = render('breadcrumbs', {
+      const $ = render('breadcrumbs', {
         attributes: {
           'id': 'my-navigation',
           'role': 'navigation'
@@ -29,7 +29,7 @@ describe('Breadcrumbs', () => {
     })
 
     it('renders with items', () => {
-      const { $ } = render('breadcrumbs', {
+      const $ = render('breadcrumbs', {
         items: [
           {
             'text': 'Section 1'
@@ -45,7 +45,7 @@ describe('Breadcrumbs', () => {
     })
 
     it('renders item with text', () => {
-      const { $ } = render('breadcrumbs', {
+      const $ = render('breadcrumbs', {
         items: [
           {
             'text': 'Section 1'
@@ -58,7 +58,7 @@ describe('Breadcrumbs', () => {
     })
 
     it('renders item with escaped entities in text', () => {
-      const { $ } = render('breadcrumbs', {
+      const $ = render('breadcrumbs', {
         items: [
           {
             'text': '<span>Section 1</span>'
@@ -71,7 +71,7 @@ describe('Breadcrumbs', () => {
     })
 
     it('renders item with html', () => {
-      const { $ } = render('breadcrumbs', {
+      const $ = render('breadcrumbs', {
         items: [
           {
             'html': '<em>Section 1</em>'
@@ -84,7 +84,7 @@ describe('Breadcrumbs', () => {
     })
 
     it('renders item with anchor', () => {
-      const { $ } = render('breadcrumbs', {
+      const $ = render('breadcrumbs', {
         items: [
           {
             'text': 'Section 1',
@@ -101,7 +101,7 @@ describe('Breadcrumbs', () => {
     })
 
     it('renders item with html inside anchor', () => {
-      const { $ } = render('breadcrumbs', {
+      const $ = render('breadcrumbs', {
         items: [
           {
             'html': '<em>Section 1</em>',
@@ -117,7 +117,7 @@ describe('Breadcrumbs', () => {
 
   describe('default example', () => {
     it('renders 2 items', () => {
-      const { $ } = render('breadcrumbs', examples.default)
+      const $ = render('breadcrumbs', examples.default)
       const $items = $('.govuk-c-breadcrumbs__list-item')
       expect($items.length).toEqual(2)
     })

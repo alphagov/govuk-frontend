@@ -6,14 +6,14 @@ const examples = getExamples('details')
 
 describe('Details', () => {
   it('renders a details element', () => {
-    const { $ } = render('details', examples.default)
+    const $ = render('details', examples.default)
 
     const $component = $('.govuk-c-details')
     expect($component.get(0).tagName).toEqual('details')
   })
 
   it('includes a nested summary', () => {
-    const { $ } = render('details', examples.default)
+    const $ = render('details', examples.default)
 
     // Look for the summary element _within_ the details element
     const $summary = $('.govuk-c-details .govuk-c-details__summary')
@@ -21,7 +21,7 @@ describe('Details', () => {
   })
 
   it('allows text to be passed whilst escaping HTML entities', () => {
-    const { $ } = render('details', {
+    const $ = render('details', {
       text: 'More about the greater than symbol (>)'
     })
 
@@ -30,7 +30,7 @@ describe('Details', () => {
   })
 
   it('allows HTML to be passed un-escaped', () => {
-    const { $ } = render('details', {
+    const $ = render('details', {
       html: 'More about <b>bold text</b>'
     })
 
@@ -39,7 +39,7 @@ describe('Details', () => {
   })
 
   it('allows summary text to be passed whilst escaping HTML entities', () => {
-    const { $ } = render('details', {
+    const $ = render('details', {
       summaryText: 'The greater than symbol (>) is the best'
     })
 
@@ -48,7 +48,7 @@ describe('Details', () => {
   })
 
   it('allows summary HTML to be passed un-escaped', () => {
-    const { $ } = render('details', {
+    const $ = render('details', {
       summaryHtml: 'Use <b>bold text</b> sparingly'
     })
 
@@ -57,7 +57,7 @@ describe('Details', () => {
   })
 
   it('allows additional classes to be added to the details element', () => {
-    const { $ } = render('details', {
+    const $ = render('details', {
       classes: 'some-additional-class'
     })
 
@@ -66,7 +66,7 @@ describe('Details', () => {
   })
 
   it('allows additional attributes to be added to the details element', () => {
-    const { $ } = render('details', {
+    const $ = render('details', {
       attributes: {
         'data-some-data-attribute': 'i-love-data',
         'another-attribute': 'true'
