@@ -68,6 +68,65 @@ More information about when to use radios can be found on [GOV.UK Design System]
       ]
     }) }}
 
+### Radios--with-disabled
+
+[Preview the radios--with-disabled example](http://govuk-frontend-review.herokuapp.com/components/radios/with-disabled/preview)
+
+#### Markup
+
+    <div class="govuk-c-radios">
+
+      <fieldset class="govuk-c-fieldset">
+
+        <legend class="govuk-c-fieldset__legend">
+          Have you changed your name?
+
+          <span class="govuk-c-fieldset__hint">This includes changing your last name or spelling your name differently.</span>
+
+        </legend>
+
+        <div class="govuk-c-radios__item">
+          <input class="govuk-c-radios__input" id="example-disabled-1" name="example-disabled" type="radio" value="yes" disabled>
+          <label class="govuk-c-label govuk-c-radios__label" for="example-disabled-1">
+            Yes
+
+          </label>
+        </div>
+
+        <div class="govuk-c-radios__item">
+          <input class="govuk-c-radios__input" id="example-disabled-2" name="example-disabled" type="radio" value="no" disabled>
+          <label class="govuk-c-label govuk-c-radios__label" for="example-disabled-2">
+            No
+
+          </label>
+        </div>
+        </fieldset>
+
+    </div>
+
+#### Macro
+
+    {{ govukRadios({
+      "idPrefix": "example-disabled",
+      "name": "example-disabled",
+      "fieldset": {
+        "legendText": "Have you changed your name?",
+        "legendHintText": "This includes changing your last name or spelling your name differently."
+      },
+      "items": [
+        {
+          "value": "yes",
+          "text": "Yes",
+          "disabled": true
+        },
+        {
+          "value": "no",
+          "text": "No",
+          "disabled": true
+        }
+      ]
+    }) }}
+
 ### Radios--with-html
 
 [Preview the radios--with-html example](http://govuk-frontend-review.herokuapp.com/components/radios/with-html/preview)
@@ -175,6 +234,76 @@ More information about when to use radios can be found on [GOV.UK Design System]
         {
           "value": "blue",
           "text": "Blue"
+        }
+      ]
+    }) }}
+
+### Radios--with-extreme-fieldset
+
+[Preview the radios--with-extreme-fieldset example](http://govuk-frontend-review.herokuapp.com/components/radios/with-extreme-fieldset/preview)
+
+#### Markup
+
+    <div class="govuk-c-radios">
+
+      <fieldset class="govuk-c-fieldset app-c-fieldset--custom-modifier" data-attribute="value" data-second-attribute="second-value">
+
+        <legend class="govuk-c-fieldset__legend">
+          Have you changed your name?
+
+          <span class="govuk-c-fieldset__hint">This includes changing your last name or spelling your name differently.</span>
+
+          <span class="govuk-c-error-message">
+             Please select an option
+          </span>
+
+        </legend>
+
+        <div class="govuk-c-radios__item">
+          <input class="govuk-c-radios__input" id="example-1" name="example" type="radio" value="yes">
+          <label class="govuk-c-label govuk-c-radios__label" for="example-1">
+            Yes
+
+          </label>
+        </div>
+
+        <div class="govuk-c-radios__item">
+          <input class="govuk-c-radios__input" id="example-2" name="example" type="radio" value="no" checked>
+          <label class="govuk-c-label govuk-c-radios__label" for="example-2">
+            No
+
+          </label>
+        </div>
+        </fieldset>
+
+    </div>
+
+#### Macro
+
+    {{ govukRadios({
+      "idPrefix": "example",
+      "name": "example",
+      "errorMessage": {
+        "text": "Please select an option"
+      },
+      "fieldset": {
+        "classes": "app-c-fieldset--custom-modifier",
+        "attributes": {
+          "data-attribute": "value",
+          "data-second-attribute": "second-value"
+        },
+        "legendText": "Have you changed your name?",
+        "legendHintText": "This includes changing your last name or spelling your name differently."
+      },
+      "items": [
+        {
+          "value": "yes",
+          "text": "Yes"
+        },
+        {
+          "value": "no",
+          "text": "No",
+          "checked": true
         }
       ]
     }) }}
