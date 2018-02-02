@@ -430,25 +430,49 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header" scope="row">fieldset</th>
+<th class="govuk-c-table__header" scope="row">classes</th>
 
-<td class="govuk-c-table__cell ">object</td>
+<td class="govuk-c-table__cell ">string</td>
 
 <td class="govuk-c-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Arguments for the fieldset component (e.g. legendText, legendHintText, errorMessage). See fieldset component.</td>
+<td class="govuk-c-table__cell ">Optional additional classes</td>
 
 </tr>
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header" scope="row">errorMessage</th>
+<th class="govuk-c-table__header" scope="row">id</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">Optional id. This is used for the main component and to compose the items' ids.</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">name</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">Optional name. This is used to compose the items' names.</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">attributes</th>
 
 <td class="govuk-c-table__cell ">object</td>
 
 <td class="govuk-c-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Optional error message. See errorMessage component.</td>
+<td class="govuk-c-table__cell ">Any extra HTML attributes (for example data attributes) to add to the date div tag.</td>
 
 </tr>
 
@@ -466,25 +490,25 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header" scope="row">classes</th>
-
-<td class="govuk-c-table__cell ">string</td>
-
-<td class="govuk-c-table__cell ">No</td>
-
-<td class="govuk-c-table__cell ">Optional additional classes</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">attributes</th>
+<th class="govuk-c-table__header" scope="row">errorMessage</th>
 
 <td class="govuk-c-table__cell ">object</td>
 
 <td class="govuk-c-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Any extra HTML attributes (for example data attributes) to add to the date div tag.</td>
+<td class="govuk-c-table__cell ">Optional error message. See errorMessage component.</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">fieldset</th>
+
+<td class="govuk-c-table__cell ">object</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">Arguments for the fieldset component (e.g. legendText, legendHintText, errorMessage). See fieldset component.</td>
 
 </tr>
 
