@@ -62,8 +62,6 @@ examples:
   data:
     idPrefix: 'example'
     name: 'example'
-    errorMessage:
-      text: 'Please select an option'
     fieldset:
       classes: 'app-c-fieldset--custom-modifier'
       attributes:
@@ -72,6 +70,9 @@ examples:
       legendText: Have you changed your name?
       legendHintText:
         This includes changing your last name or spelling your name differently.
+      error:
+        active: true
+        text: 'Please select an option'
     items:
       - value: yes
         text: Yes

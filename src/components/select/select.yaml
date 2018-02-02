@@ -24,8 +24,10 @@ examples:
     label:
       hintHtml: Hint message <i>goes</i> here
       html: Label text <i>goes</i> here
-    errorMessage:
-      html: <i>Error message goes here</i>
+    error:
+      active: true
+      message:
+        html: <i>Error message goes here</i>
     items:
       -
         value: 1

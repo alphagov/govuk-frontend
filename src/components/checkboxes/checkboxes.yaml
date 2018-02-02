@@ -46,3 +46,21 @@ examples:
       - value: disabled
         text: Disabled option
         disabled: true
+
+- name: errors
+  data:
+    idPrefix: 'nationality'
+    name: 'nationality'
+    fieldset:
+      legendText: What is your nationality?
+      legendHintText: If you have dual nationality, select all options that are relevant to you.
+      error:
+        active: true
+        text: Error message goes here
+    items:
+      - value: 'british'
+        text: 'British'
+      - value: 'irish'
+        text: 'Irish'
+      - value: 'other'
+        text: 'Citizen of another country'
