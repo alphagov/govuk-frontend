@@ -9,7 +9,7 @@
     {{ params.hintHtml | safe if params.hintHtml else params.hintText }}
   </span>
   {% endif %}
-  {% if params.errorMessage %}
-  {{ govukErrorMessage(params.errorMessage) -}}
+  {% if params.error.active %}
+  {{ govukErrorMessage(params.error.message) -}}
   {% endif %}
 </label>
