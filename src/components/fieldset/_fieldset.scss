@@ -11,6 +11,11 @@
     @include govuk-h-clearfix;
   }
 
+  .govuk-c-fieldset--error {
+    padding-left: 15px;
+    border-left: 5px solid $govuk-red;
+  }
+
   .govuk-c-fieldset__legend {
     @include govuk-font-regular-19;
 
