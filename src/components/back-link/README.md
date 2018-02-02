@@ -16,11 +16,12 @@ More information about when to use back-link can be found on [GOV.UK Design Syst
 
 #### Markup
 
-    <a href="#" class="govuk-c-back-link">Back</a>
+    <a href="https://gov.uk" class="govuk-c-back-link">Back</a>
 
 #### Macro
 
     {{ govukBackLink({
+      "href": "https://gov.uk",
       "text": "Back"
     }) }}
 
