@@ -6,6 +6,9 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 
 Breaking changes:
 
+- Remove Cookie-banner and Previous-next components
+  (PR [#488](https://github.com/alphagov/govuk-frontend/pull/488))
+
 New features:
 
 - Button hover colour now has a semantic Sass name: $govuk-button-hover-colour
