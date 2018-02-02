@@ -3,7 +3,7 @@
   "description": "govuk-frontend",
   "version": "0.0.1",
   "engines": {
-    "node": "6.11.1"
+    "node": "8.9.4"
   },
   "private": "true",
   "repository": "alphagov/govuk-frontend",
@@ -14,10 +14,12 @@
   "author": "Government Digital Service developers (https://gds.blog.gov.uk/)",
   "homepage": "https://github.com/alphagov/govuk-frontend#readme",
   "scripts": {
+    "preinstall": "node bin/check-nvmrc.js",
+    "prestart": "node bin/check-nvmrc.js",
     "start": "gulp dev --destination 'public'",
     "heroku": "gulp compile:components --destination 'public' && gulp copy-assets --destination 'public' && node app/app.js",
-    "build:packages": "gulp build:packages --destination 'packages' && npm run test:build:packages",
-    "build:dist": "gulp build:dist --destination 'dist' --production && npm run test:build:dist",
+    "build:packages": "node bin/check-nvmrc.js && gulp build:packages --destination 'packages' && npm run test:build:packages",
+    "build:dist": "node bin/check-nvmrc.js && gulp build:dist --destination 'dist' --production && npm run test:build:dist",
     "test": "standard && gulp compile:components --destination 'public' && gulp test && npm run test:app && npm run test:components",
     "test:app": "jest test/ --forceExit # express server fails to end process",
     "test:components": "jest src/components/",
