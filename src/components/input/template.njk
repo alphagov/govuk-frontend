@@ -1,16 +1,20 @@
 {% from "label/macro.njk" import govukLabel %}
 
-{{- govukLabel({
-  html: params.label.html,
-  text: params.label.text,
-  hintText: params.label.hintText,
-  hintHtml: params.label.hintHtml,
-  classes: params.label.classes,
-  attributes: params.label.attributes,
-  errorMessage: params.errorMessage,
-  for: params.id
-}) -}}
-
-<input class="govuk-c-input {%- if params.classes %} {{ params.classes }}{% endif %} {%- if params.errorMessage %} govuk-c-input--error{% endif %}" id="{{ params.id }}" name="{{ params.name }}" type="text"
-{%- if params.value %} value="{{ params.value}}"{% endif %}
-{%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor -%}>
+<div class="govuk-form-group {%- if params.error.active %} govuk-form-group--error{% endif %}">
+  {{- govukLabel({
+    html: params.label.html,
+    text: params.label.text,
+    hintText: params.label.hintText,
+    hintHtml: params.label.hintHtml,
+    classes: params.label.classes,
+    attributes: params.label.attributes,
+    for: params.id,
+    error: {
+      active: params.error.active,
+      message: params.error.message
+    }
+  }) -}}
+  <input class="govuk-c-input {%- if params.classes %} {{ params.classes }}{% endif %} {%- if params.error.active %} govuk-c-input--error{% endif %}" id="{{ params.id }}" name="{{ params.name }}" type="text"
+  {%- if params.value %} value="{{ params.value}}"{% endif %}
+  {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor -%}>
+</div>
