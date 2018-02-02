@@ -157,4 +157,10 @@
     }
   }
 
+  // Form group error style
+  .govuk-form-group--error {
+    padding-left: 15px;
+    border-left: 5px solid $govuk-red;
+  }
+
 }
