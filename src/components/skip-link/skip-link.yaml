@@ -3,3 +3,10 @@ examples:
   data:
     text: Skip to main content
     href: '#content'
+
+- name: with-focus
+  data:
+    classes: :focus
+    text: Skip to main content
+    href: '#content'
+
