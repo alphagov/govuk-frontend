@@ -21,7 +21,7 @@ More information about when to use panel can be found on [GOV.UK Design System](
         Application complete
       </h2>
       <div class="govuk-c-panel__body">
-        Your reference number<br><strong>HDJ2123F</strong>
+        Your reference number: HDJ2123F
       </div>
     </div>
 
@@ -29,30 +29,7 @@ More information about when to use panel can be found on [GOV.UK Design System](
 
     {{ govukPanel({
       "titleText": "Application complete",
-      "html": "Your reference number<br><strong>HDJ2123F</strong>"
-    }) }}
-
-### Panel--no-reference-number
-
-[Preview the panel--no-reference-number example](http://govuk-frontend-review.herokuapp.com/components/panel/no-reference-number/preview)
-
-#### Markup
-
-    <div class="govuk-c-panel govuk-c-panel--confirmation extra-dummy-class">
-      <h2 class="govuk-c-panel__title">
-        Application complete
-      </h2>
-      <div class="govuk-c-panel__body">
-        Thank you for your application
-      </div>
-    </div>
-
-#### Macro
-
-    {{ govukPanel({
-      "classes": "extra-dummy-class",
-      "titleText": "Application complete",
-      "text": "Thank you for your application"
+      "text": "Your reference number: HDJ2123F"
     }) }}
 
 ## Dependencies
