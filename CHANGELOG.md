@@ -47,6 +47,7 @@ Internal:
 - Add tests for input component (PR [#478](https://github.com/alphagov/govuk-frontend/pull/478))
 - Add tests for date-input component (PR [#495](https://github.com/alphagov/govuk-frontend/pull/495))
 - Add tests for textarea component (PR [#497](https://github.com/alphagov/govuk-frontend/pull/497))
+- Add tests for panel component (PR [#500](https://github.com/alphagov/govuk-frontend/pull/500))
 
 ## 0.0.22-alpha (Breaking release)
 
