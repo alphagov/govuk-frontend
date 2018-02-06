@@ -270,30 +270,6 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header" scope="row">hintText</th>
-
-<td class="govuk-c-table__cell ">string</td>
-
-<td class="govuk-c-table__cell ">No</td>
-
-<td class="govuk-c-table__cell ">Optional text to use as a hint</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">hintHtml</th>
-
-<td class="govuk-c-table__cell ">string</td>
-
-<td class="govuk-c-table__cell ">No</td>
-
-<td class="govuk-c-table__cell ">Optional HTML to use as a hint. If this is provided, the hintText argument will be ignored.</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
 <th class="govuk-c-table__header" scope="row">errorMessage</th>
 
 <td class="govuk-c-table__cell ">string</td>
