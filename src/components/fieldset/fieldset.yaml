@@ -1,17 +1,11 @@
 examples:
 - name: default
   data:
-    legendText: Legend text goes here
-    legendHintText: Legend hint text goes here
+    legendText: What is your address?
+    legendHintText: For example, 10 Downing Street
 - name: with-error-message
   data:
-    legendText: Legend text goes here
-    legendHintText: Legend hint text goes here
+    legendText: What is your address?
+    legendHintText: For example, 10 Downing Street
     errorMessage:
-      text: 'Error message goes here'
-- name: with-html-instead-of-text
-  data:
-    legendHtml: Legend text <i>goes</i> here
-    legendHintHtml: Legend hint text <i>goes</i> here
-    errorMessage:
-      html: Error message <i>goes</i>  here
+      text: 'Please fill in the street input'
