@@ -53,6 +53,7 @@ Internal:
 - Add tests for error-message component (PR [#507](https://github.com/alphagov/govuk-frontend/pull/507))
 - Add tests for phase-banner component (PR [#505](https://github.com/alphagov/govuk-frontend/pull/505))
 - Add tests for label component component (PR [#508](https://github.com/alphagov/govuk-frontend/pull/508))
+- Add tests for fieldset component (PR [#509](https://github.com/alphagov/govuk-frontend/pull/509))
 
 ## 0.0.22-alpha (Breaking release)
 
