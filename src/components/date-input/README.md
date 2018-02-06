@@ -24,7 +24,7 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
         <span class="govuk-c-fieldset__hint">For example, 31 3 1980</span>
 
         <span class="govuk-c-error-message">
-           Error message goes here
+          Error message goes here
         </span>
 
       </legend>
@@ -97,7 +97,7 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
         <span class="govuk-c-fieldset__hint">For example, 31 3 1980</span>
 
         <span class="govuk-c-error-message">
-           Error message goes here
+          Error message goes here
         </span>
 
       </legend>
@@ -172,7 +172,7 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
         <span class="govuk-c-fieldset__hint">For example, 31 3 1980</span>
 
         <span class="govuk-c-error-message">
-           Error message goes here
+          Error message goes here
         </span>
 
       </legend>
@@ -246,7 +246,7 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
         <span class="govuk-c-fieldset__hint">For example, 31 3 1980</span>
 
         <span class="govuk-c-error-message">
-           Error message goes here
+          Error message goes here
         </span>
 
       </legend>
@@ -320,7 +320,7 @@ More information about when to use date-input can be found on [GOV.UK Design Sys
         <span class="govuk-c-fieldset__hint">For example, 31 3 1980</span>
 
         <span class="govuk-c-error-message">
-           Error message goes here
+          Error message goes here
         </span>
 
       </legend>

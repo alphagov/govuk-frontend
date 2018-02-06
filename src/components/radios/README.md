@@ -254,7 +254,7 @@ More information about when to use radios can be found on [GOV.UK Design System]
           <span class="govuk-c-fieldset__hint">This includes changing your last name or spelling your name differently.</span>
 
           <span class="govuk-c-error-message">
-             Please select an option
+            Please select an option
           </span>
 
         </legend>

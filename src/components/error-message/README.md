@@ -17,7 +17,7 @@ More information about when to use error-message can be found on [GOV.UK Design 
 #### Markup
 
     <span class="govuk-c-error-message">
-       Error message about full name goes here
+      Error message about full name goes here
     </span>
 
 #### Macro

@@ -47,7 +47,7 @@ More information about when to use textarea can be found on [GOV.UK Design Syste
       Why can&#39;t you provide a National Insurance number?
 
       <span class="govuk-c-error-message">
-       You must provide an explanation
+      You must provide an explanation
     </span>
 
     </label>

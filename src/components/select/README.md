@@ -70,7 +70,7 @@ More information about when to use select can be found on [GOV.UK Design System]
       </span>
 
       <span class="govuk-c-error-message">
-       <i>Error message goes here</i>
+      <i>Error message goes here</i>
     </span>
 
     </label>
