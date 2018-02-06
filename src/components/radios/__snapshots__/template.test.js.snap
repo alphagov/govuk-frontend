@@ -10,7 +10,7 @@ exports[`Radios nested dependant components passes through fieldset params witho
 
 exports[`Radios nested dependant components passes through fieldset params without breaking 2`] = `
 
-<fieldset class="govuk-c-fieldset app-c-fieldset--custom-modifier"
+<fieldset class="govuk-c-fieldset govuk-c-fieldset--error app-c-fieldset--custom-modifier"
           data-attribute="value"
           data-second-attribute="second-value"
 >

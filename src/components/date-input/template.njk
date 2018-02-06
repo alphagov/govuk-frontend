@@ -31,6 +31,10 @@
     legendHtml: params.fieldset.legendHtml,
     legendHintText: params.fieldset.legendHintText,
     legendHintHtml: params.fieldset.legendHintHtml,
+    error: {
+      active: params.fieldset.error.active,
+      text: params.fieldset.error.text
+    },
     errorMessage: params.errorMessage
   }) %}
   {{ innerHtml | indent(2) | trim | safe }}
