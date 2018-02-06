@@ -22,10 +22,10 @@ examples:
     id: select-2
     name: select-2
     label:
-      hintHtml: Hint message <i>goes</i> here
-      html: Label text <i>goes</i> here
+      hintText: Hint text goes here
+      text: Label text goes here
     errorMessage:
-      html: <i>Error message goes here</i>
+      text: Error message goes here
     items:
       -
         value: 1
