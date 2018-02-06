@@ -19,9 +19,9 @@ More information about when to use fieldset can be found on [GOV.UK Design Syste
     <fieldset class="govuk-c-fieldset">
 
       <legend class="govuk-c-fieldset__legend">
-        Legend text goes here
+        What is your address?
 
-        <span class="govuk-c-fieldset__hint">Legend hint text goes here</span>
+        <span class="govuk-c-fieldset__hint">For example, 10 Downing Street</span>
 
       </legend>
 
@@ -30,8 +30,8 @@ More information about when to use fieldset can be found on [GOV.UK Design Syste
 #### Macro
 
     {{ govukFieldset({
-      "legendText": "Legend text goes here",
-      "legendHintText": "Legend hint text goes here"
+      "legendText": "What is your address?",
+      "legendHintText": "For example, 10 Downing Street"
     }) }}
 
 ### Fieldset--with-error-message
@@ -43,12 +43,12 @@ More information about when to use fieldset can be found on [GOV.UK Design Syste
     <fieldset class="govuk-c-fieldset">
 
       <legend class="govuk-c-fieldset__legend">
-        Legend text goes here
+        What is your address?
 
-        <span class="govuk-c-fieldset__hint">Legend hint text goes here</span>
+        <span class="govuk-c-fieldset__hint">For example, 10 Downing Street</span>
 
         <span class="govuk-c-error-message">
-          Error message goes here
+          Please fill in the street input
         </span>
 
       </legend>
@@ -58,41 +58,10 @@ More information about when to use fieldset can be found on [GOV.UK Design Syste
 #### Macro
 
     {{ govukFieldset({
-      "legendText": "Legend text goes here",
-      "legendHintText": "Legend hint text goes here",
+      "legendText": "What is your address?",
+      "legendHintText": "For example, 10 Downing Street",
       "errorMessage": {
-        "text": "Error message goes here"
-      }
-    }) }}
-
-### Fieldset--with-html-instead-of-text
-
-[Preview the fieldset--with-html-instead-of-text example](http://govuk-frontend-review.herokuapp.com/components/fieldset/with-html-instead-of-text/preview)
-
-#### Markup
-
-    <fieldset class="govuk-c-fieldset">
-
-      <legend class="govuk-c-fieldset__legend">
-        Legend text <i>goes</i> here
-
-        <span class="govuk-c-fieldset__hint">Legend hint text <i>goes</i> here</span>
-
-        <span class="govuk-c-error-message">
-          Error message <i>goes</i>  here
-        </span>
-
-      </legend>
-
-    </fieldset>
-
-#### Macro
-
-    {{ govukFieldset({
-      "legendHtml": "Legend text <i>goes</i> here",
-      "legendHintHtml": "Legend hint text <i>goes</i> here",
-      "errorMessage": {
-        "html": "Error message <i>goes</i>  here"
+        "text": "Please fill in the street input"
       }
     }) }}
 
