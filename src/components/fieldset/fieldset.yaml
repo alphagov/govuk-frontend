@@ -15,3 +15,21 @@ examples:
     legendHintHtml: Legend hint text <i>goes</i> here
     errorMessage:
       html: Error message <i>goes</i>  here
+- name: with-nested-children
+  data:
+    legendHtml: Legend text <i>goes</i> here
+    legendHintHtml: Legend hint text <i>goes</i> here
+    errorMessage:
+      html: Error message <i>goes</i>  here
+  children: |
+    <label for="house-number">
+      House number
+    </label>
+    <br>
+    <input id="house-number" name="house-number" type="text">
+    <br>
+    <label for="postcode">
+      Postcode
+    </label>
+    <br>
+    <input id="postcode" name="postcode" type="text">

@@ -96,6 +96,37 @@ More information about when to use fieldset can be found on [GOV.UK Design Syste
       }
     }) }}
 
+### Fieldset--with-nested-children
+
+[Preview the fieldset--with-nested-children example](http://govuk-frontend-review.herokuapp.com/components/fieldset/with-nested-children/preview)
+
+#### Markup
+
+    <fieldset class="govuk-c-fieldset">
+
+      <legend class="govuk-c-fieldset__legend">
+        Legend text <i>goes</i> here
+
+        <span class="govuk-c-fieldset__hint">Legend hint text <i>goes</i> here</span>
+
+        <span class="govuk-c-error-message">
+           Error message <i>goes</i>  here
+        </span>
+
+      </legend>
+
+    </fieldset>
+
+#### Macro
+
+    {{ govukFieldset({
+      "legendHtml": "Legend text <i>goes</i> here",
+      "legendHintHtml": "Legend hint text <i>goes</i> here",
+      "errorMessage": {
+        "html": "Error message <i>goes</i>  here"
+      }
+    }) }}
+
 ## Dependencies
 
 To consume the fieldset component you must be running npm version 5 or above.

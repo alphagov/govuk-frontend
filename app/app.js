@@ -105,10 +105,22 @@ app.get('/components/:component/:example*?/preview', function (req, res, next) {
   // Construct and evaluate the component with the data for this example
   let macroName = helperFunctions.componentNameToMacroName(componentName)
   let macroParameters = JSON.stringify(exampleConfig.data, null, '\t')
+  let macroChildren = JSON.stringify(exampleConfig.children, null, '\t')
 
   res.locals.componentView = env.renderString(
     `{% from '${componentName}/macro.njk' import ${macroName} %}
-    {{ ${macroName}(${macroParameters}) }}`
+
+    {% set componentHtml %}
+      {% if ${macroChildren} %}
+        {% call ${macroName}(${macroParameters}) %}
+      {{ ${macroChildren} | safe | trim | indent(2) -}}
+        {% endcall %}
+      {% else %}
+        {{- ${macroName}(${macroParameters}) -}}
+      {% endif %}
+    {% endset %}
+
+    {{ componentHtml | safe }}`
   )
 
   let bodyClasses = ''

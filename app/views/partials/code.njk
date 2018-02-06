@@ -1,5 +1,13 @@
 <h4 class="govuk-heading-s">Markup</h4>
-{% set componentHtml %}{{ loadComponentTemplate(componentName, item.data) }}{% endset %}
+{% set componentHtml %}
+  {% if item.children %}
+    {% call loadComponentTemplate(componentName, item.data) %}
+  {{ item.children | safe | trim | indent(2) -}}
+    {% endcall %}
+  {% else %}
+    {{- loadComponentTemplate(componentName, item.data) -}}
+  {% endif %}
+{% endset %}
 <pre><code class="govuk-!-f-16">{{- componentHtml | e -}}</code></pre>
 
 <h4 class="govuk-heading-s">Macro</h4>

@@ -42,7 +42,7 @@
         </div>
 
         {% set detailsHtml %}{% include "code.njk" %}{% endset %}
-        {{- govukDetails({ summaryText: "Code", html: detailsHtml }) -}}
+        {{- govukDetails({ summaryText: "Code", html: detailsHtml, attributes: { open: true } }) -}}
       </section>
     {% endif %}
   {% endif %}
