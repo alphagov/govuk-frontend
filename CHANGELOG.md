@@ -28,7 +28,8 @@ Fixes:
 - Remove regular font weight from link styles (PR [#469](https://github.com/alphagov/govuk-frontend/pull/469))
 - Remove redundant 'govuk-c-border' div from the details component
   (PR [#481](https://github.com/alphagov/govuk-frontend/pull/481))
-
+- Add `govuk-c-select--error` modifier class to the select component instead of relying on `govuk-c-input--error` (PR [#506](https://github.com/alphagov/govuk-frontend/pull/506))
+- Allow error message and hint text to be passed to a select component without requiring a label parameter (PR [#506](https://github.com/alphagov/govuk-frontend/pull/506))
 
 Internal:
 
@@ -54,6 +55,7 @@ Internal:
 - Add tests for phase-banner component (PR [#505](https://github.com/alphagov/govuk-frontend/pull/505))
 - Add tests for label component component (PR [#508](https://github.com/alphagov/govuk-frontend/pull/508))
 - Add tests for fieldset component (PR [#509](https://github.com/alphagov/govuk-frontend/pull/509))
+- Add tests for select component (PR [#506](https://github.com/alphagov/govuk-frontend/pull/506))
 
 ## 0.0.22-alpha (Breaking release)
 
