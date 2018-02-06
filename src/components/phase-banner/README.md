@@ -21,7 +21,7 @@ More information about when to use phase-banner can be found on [GOV.UK Design S
       alpha
     </strong>
     <span class="govuk-c-phase-banner__text">
-          This is a new service – your <a href="#" class="govuk-link">feedback</a> will help us to improve it.
+          This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.
         </span>
       </p>
     </div>
@@ -32,32 +32,7 @@ More information about when to use phase-banner can be found on [GOV.UK Design S
       "tag": {
         "text": "alpha"
       },
-      "html": "This is a new service – your <a href=\"#\" class=\"govuk-link\">feedback</a> will help us to improve it."
-    }) }}
-
-### Phase-banner--tag-with-html
-
-[Preview the phase-banner--tag-with-html example](http://govuk-frontend-review.herokuapp.com/components/phase-banner/tag-with-html/preview)
-
-#### Markup
-
-    <div class="govuk-c-phase-banner">
-      <p class="govuk-c-phase-banner__content"><strong class="govuk-c-tag govuk-c-phase-banner__content__tag ">
-      <i>alpha</i>
-    </strong>
-    <span class="govuk-c-phase-banner__text">
-          This is a new service – your <a href="#" class="govuk-link">feedback</a> will help us to improve it.
-        </span>
-      </p>
-    </div>
-
-#### Macro
-
-    {{ govukPhaseBanner({
-      "tag": {
-        "html": "<i>alpha</i>"
-      },
-      "html": "This is a new service – your <a href=\"#\" class=\"govuk-link\">feedback</a> will help us to improve it."
+      "html": "This is a new service - your <a href=\"#\" class=\"govuk-link\">feedback</a> will help us to improve it."
     }) }}
 
 ## Dependencies
