@@ -74,7 +74,7 @@ More information about when to use select can be found on [GOV.UK Design System]
     </span>
 
     </label>
-    <select class="govuk-c-select govuk-c-input--error" id="select-2" name="select-2">
+    <select class="govuk-c-select govuk-c-select--error" id="select-2" name="select-2">
 
       <option value="1">GOV.UK frontend option 1</option>
 

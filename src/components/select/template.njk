@@ -13,7 +13,7 @@
 {% endif -%}
 
 <select class="govuk-c-select
-  {%- if params.classes %} {{ params.classes }}{% endif %}{%- if params.errorMessage %} govuk-c-input--error{% endif %}" id="{{ params.id }}" name="{{ params.name }}"{% for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+  {%- if params.classes %} {{ params.classes }}{% endif %}{%- if params.errorMessage %} govuk-c-select--error{% endif %}" id="{{ params.id }}" name="{{ params.name }}"{% for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
 {% for item in params.items %}
   <option value="{{ item.value }}"{{" selected" if item.selected}}{{" disabled" if item.disabled}}>{{ item.text }}</option>
 {% endfor %}
