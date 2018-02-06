@@ -1,5 +1,5 @@
 {% from "label/macro.njk" import govukLabel %}
-{%- if params.label %}
+
 {{- govukLabel({
   html: params.label.html,
   text: params.label.text,
@@ -10,7 +10,6 @@
   errorMessage: params.errorMessage,
   for: params.id
 }) -}}
-{% endif -%}
 
 <select class="govuk-c-select
   {%- if params.classes %} {{ params.classes }}{% endif %}{%- if params.errorMessage %} govuk-c-select--error{% endif %}" id="{{ params.id }}" name="{{ params.name }}"{% for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
