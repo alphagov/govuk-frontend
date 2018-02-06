@@ -71,6 +71,14 @@ Note: There's a watch mode that keeps a testing session open waiting for changes
 
     npm run test:components -- --watch
 
+#### Updating component snapshots
+
+If a snapshot test fails, review the difference in the console. If the change is the correct change to make, run:
+
+`npm run test:components -- -u`
+
+This will update the snapshot file. Commit this file separately with a commit message that explains you're updating the snapshot file and an explanation of what caused the change.
+
 ## Folder structure and naming
 
 Find components in `src/components`.
