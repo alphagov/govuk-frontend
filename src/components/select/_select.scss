@@ -26,4 +26,8 @@
     background-color: $govuk-blue;
   }
 
+  .govuk-c-select--error {
+    border: $govuk-border-width-error solid $govuk-error-colour;
+  }
+
 }

@@ -74,7 +74,7 @@ More information about when to use select can be found on [GOV.UK Design System]
     </span>
 
     </label>
-    <select class="govuk-c-select govuk-c-input--error" id="select-2" name="select-2">
+    <select class="govuk-c-select govuk-c-select--error" id="select-2" name="select-2">
 
       <option value="1">GOV.UK frontend option 1</option>
 
@@ -265,30 +265,6 @@ If you are using Nunjucks,then macros take the following arguments
 <td class="govuk-c-table__cell ">No</td>
 
 <td class="govuk-c-table__cell ">Optional label text or HTML by specifying value for either text or html keys. See label component.</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">hintText</th>
-
-<td class="govuk-c-table__cell ">string</td>
-
-<td class="govuk-c-table__cell ">No</td>
-
-<td class="govuk-c-table__cell ">Optional text to use as a hint</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">hintHtml</th>
-
-<td class="govuk-c-table__cell ">string</td>
-
-<td class="govuk-c-table__cell ">No</td>
-
-<td class="govuk-c-table__cell ">Optional HTML to use as a hint. If this is provided, the hintText argument will be ignored.</td>
 
 </tr>
 
