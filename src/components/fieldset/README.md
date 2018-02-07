@@ -48,7 +48,7 @@ More information about when to use fieldset can be found on [GOV.UK Design Syste
         <span class="govuk-c-fieldset__hint">Legend hint text goes here</span>
 
         <span class="govuk-c-error-message">
-           Error message goes here
+          Error message goes here
         </span>
 
       </legend>
@@ -79,7 +79,7 @@ More information about when to use fieldset can be found on [GOV.UK Design Syste
         <span class="govuk-c-fieldset__hint">Legend hint text <i>goes</i> here</span>
 
         <span class="govuk-c-error-message">
-           Error message <i>goes</i>  here
+          Error message <i>goes</i>  here
         </span>
 
       </legend>

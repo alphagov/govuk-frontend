@@ -73,7 +73,7 @@ More information about when to use file-upload can be found on [GOV.UK Design Sy
       </span>
 
       <span class="govuk-c-error-message">
-       Error message goes here
+      Error message goes here
     </span>
 
     </label>

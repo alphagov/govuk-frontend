@@ -63,14 +63,14 @@ More information about when to use select can be found on [GOV.UK Design System]
 #### Markup
 
     <label class="govuk-c-label" for="select-2">
-      Label text <i>goes</i> here
+      Label text goes here
 
       <span class="govuk-c-label__hint">
-        Hint message <i>goes</i> here
+        Hint text goes here
       </span>
 
       <span class="govuk-c-error-message">
-       <i>Error message goes here</i>
+      Error message goes here
     </span>
 
     </label>
@@ -90,11 +90,11 @@ More information about when to use select can be found on [GOV.UK Design System]
       "id": "select-2",
       "name": "select-2",
       "label": {
-        "hintHtml": "Hint message <i>goes</i> here",
-        "html": "Label text <i>goes</i> here"
+        "hintText": "Hint text goes here",
+        "text": "Label text goes here"
       },
       "errorMessage": {
-        "html": "<i>Error message goes here</i>"
+        "text": "Error message goes here"
       },
       "items": [
         {

@@ -73,7 +73,7 @@ More information about when to use input can be found on [GOV.UK Design System](
       </span>
 
       <span class="govuk-c-error-message">
-       Error message goes here
+      Error message goes here
     </span>
 
     </label>
