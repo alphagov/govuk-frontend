@@ -51,6 +51,7 @@ Internal:
 - Add tests for skip-link component (PR [#498](https://github.com/alphagov/govuk-frontend/pull/498))
 - Add tests for file-upload component (PR [#504](https://github.com/alphagov/govuk-frontend/pull/504))
 - Add tests for error-message component (PR [#507](https://github.com/alphagov/govuk-frontend/pull/507))
+- Add tests for phase-banner component (PR [#505](https://github.com/alphagov/govuk-frontend/pull/505))
 
 ## 0.0.22-alpha (Breaking release)
 
