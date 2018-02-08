@@ -75,7 +75,7 @@
 
   .govuk-c-details__text p {
     margin-top: 0;
-    margin-bottom: em($govuk-spacing-scale-4, 19px);
+    margin-bottom: $govuk-spacing-scale-4;
   }
 
   .govuk-c-details__text p:last-child {
