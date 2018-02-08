@@ -14,6 +14,18 @@ examples:
       - value: 'other'
         text: 'Citizen of another country'
 
+- name: with-disabled
+  data:
+    name: colours
+    items:
+      - value: "red"
+        text: 'Red'
+      - value: "green"
+        text: 'Green'
+      - value: "blue"
+        text: "Blue"
+        disabled: true
+
 - name: with-html
   data:
     fieldset:
@@ -39,10 +51,24 @@ examples:
       - value: "blue"
         text: "Blue"
 
-- name: disabled
+- name: with-extreme-fieldset
   data:
-    name: disabled-example
+    idPrefix: 'example'
+    name: 'example'
+    errorMessage:
+      text: 'Please select an option'
+    fieldset:
+      classes: 'app-c-fieldset--custom-modifier'
+      attributes:
+        'data-attribute': 'value'
+        'data-second-attribute': 'second-value'
+      legendText: What is your nationality?
+      legendHintText:
+        If you have dual nationality, select all options that are relevant to you.
     items:
-      - value: disabled
-        text: Disabled option
-        disabled: true
+      - value: 'british'
+        text: 'British'
+      - value: 'irish'
+        text: 'Irish'
+      - value: 'other'
+        text: 'Citizen of another country'
