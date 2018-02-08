@@ -63,7 +63,7 @@ gulp.task('copy-files', () => {
   .pipe(components) // replace import in scss files and flatten folder (e.g remove components/)
   .pipe(gulpif(isPackages, replace('../../globals/scss', '@govuk-frontend/globals')))
   .pipe(gulpif(isPackages, replace('../', '@govuk-frontend/')))
-  .pipe(gulpif(!isProduction, flatten({includeParents: -1})))
+  .pipe(gulpif(!isProduction, flatten({subPath: [1, 3]})))
   .pipe(components.restore)
   .pipe(gulp.dest(taskArguments.destination + '/'))
 })
