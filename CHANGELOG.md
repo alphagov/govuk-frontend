@@ -56,6 +56,7 @@ Internal:
 - Add tests for label component component (PR [#508](https://github.com/alphagov/govuk-frontend/pull/508))
 - Add tests for fieldset component (PR [#509](https://github.com/alphagov/govuk-frontend/pull/509))
 - Add tests for select component (PR [#506](https://github.com/alphagov/govuk-frontend/pull/506))
+- Add tests for checkboxes component (PR [#513](https://github.com/alphagov/govuk-frontend/pull/513))
 
 ## 0.0.22-alpha (Breaking release)
 

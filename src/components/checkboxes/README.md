@@ -79,6 +79,61 @@ More information about when to use checkboxes can be found on [GOV.UK Design Sys
       ]
     }) }}
 
+### Checkboxes--with-disabled
+
+[Preview the checkboxes--with-disabled example](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-disabled/preview)
+
+#### Markup
+
+    <div class="govuk-c-checkboxes">
+
+      <div class="govuk-c-checkboxes__item">
+        <input class="govuk-c-checkboxes__input" id="colours-1" name="colours" type="checkbox" value="red">
+        <label class="govuk-c-label govuk-c-checkboxes__label" for="colours-1">
+          Red
+
+        </label>
+      </div>
+
+      <div class="govuk-c-checkboxes__item">
+        <input class="govuk-c-checkboxes__input" id="colours-2" name="colours" type="checkbox" value="green">
+        <label class="govuk-c-label govuk-c-checkboxes__label" for="colours-2">
+          Green
+
+        </label>
+      </div>
+
+      <div class="govuk-c-checkboxes__item">
+        <input class="govuk-c-checkboxes__input" id="colours-3" name="colours" type="checkbox" value="blue" disabled>
+        <label class="govuk-c-label govuk-c-checkboxes__label" for="colours-3">
+          Blue
+
+        </label>
+      </div>
+
+    </div>
+
+#### Macro
+
+    {{ govukCheckboxes({
+      "name": "colours",
+      "items": [
+        {
+          "value": "red",
+          "text": "Red"
+        },
+        {
+          "value": "green",
+          "text": "Green"
+        },
+        {
+          "value": "blue",
+          "text": "Blue",
+          "disabled": true
+        }
+      ]
+    }) }}
+
 ### Checkboxes--with-html
 
 [Preview the checkboxes--with-html example](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-html/preview)
@@ -200,33 +255,83 @@ More information about when to use checkboxes can be found on [GOV.UK Design Sys
       ]
     }) }}
 
-### Checkboxes--disabled
+### Checkboxes--with-extreme-fieldset
 
-[Preview the checkboxes--disabled example](http://govuk-frontend-review.herokuapp.com/components/checkboxes/disabled/preview)
+[Preview the checkboxes--with-extreme-fieldset example](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-extreme-fieldset/preview)
 
 #### Markup
 
     <div class="govuk-c-checkboxes">
 
-      <div class="govuk-c-checkboxes__item">
-        <input class="govuk-c-checkboxes__input" id="disabled-example-1" name="disabled-example" type="checkbox" value="disabled" disabled>
-        <label class="govuk-c-label govuk-c-checkboxes__label" for="disabled-example-1">
-          Disabled option
+      <fieldset class="govuk-c-fieldset app-c-fieldset--custom-modifier" data-attribute="value" data-second-attribute="second-value">
 
-        </label>
-      </div>
+        <legend class="govuk-c-fieldset__legend">
+          What is your nationality?
+
+          <span class="govuk-c-fieldset__hint">If you have dual nationality, select all options that are relevant to you.</span>
+
+          <span class="govuk-c-error-message">
+            Please select an option
+          </span>
+
+        </legend>
+
+        <div class="govuk-c-checkboxes__item">
+          <input class="govuk-c-checkboxes__input" id="example-1" name="example" type="checkbox" value="british">
+          <label class="govuk-c-label govuk-c-checkboxes__label" for="example-1">
+            British
+
+          </label>
+        </div>
+
+        <div class="govuk-c-checkboxes__item">
+          <input class="govuk-c-checkboxes__input" id="example-2" name="example" type="checkbox" value="irish">
+          <label class="govuk-c-label govuk-c-checkboxes__label" for="example-2">
+            Irish
+
+          </label>
+        </div>
+
+        <div class="govuk-c-checkboxes__item">
+          <input class="govuk-c-checkboxes__input" id="example-3" name="example" type="checkbox" value="other">
+          <label class="govuk-c-label govuk-c-checkboxes__label" for="example-3">
+            Citizen of another country
+
+          </label>
+        </div>
+        </fieldset>
 
     </div>
 
 #### Macro
 
     {{ govukCheckboxes({
-      "name": "disabled-example",
+      "idPrefix": "example",
+      "name": "example",
+      "errorMessage": {
+        "text": "Please select an option"
+      },
+      "fieldset": {
+        "classes": "app-c-fieldset--custom-modifier",
+        "attributes": {
+          "data-attribute": "value",
+          "data-second-attribute": "second-value"
+        },
+        "legendText": "What is your nationality?",
+        "legendHintText": "If you have dual nationality, select all options that are relevant to you."
+      },
       "items": [
         {
-          "value": "disabled",
-          "text": "Disabled option",
-          "disabled": true
+          "value": "british",
+          "text": "British"
+        },
+        {
+          "value": "irish",
+          "text": "Irish"
+        },
+        {
+          "value": "other",
+          "text": "Citizen of another country"
         }
       ]
     }) }}
