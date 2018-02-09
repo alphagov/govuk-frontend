@@ -6,7 +6,8 @@ We're not ready for contributions yet, this document exists as a guide for those
 
 You'll need [Git](https://help.github.com/articles/set-up-git/) and [Node.js](https://nodejs.org/en/) installed to get this project running.
 
-Note: You will need the [active LTS (Long-term support)](https://github.com/nodejs/Release#release-schedule) Node.js version for this project (as specified in [.nvmrc](./.nvmrc))
+Note: You will need the Node.js version specified in the [.nvmrc](./.nvmrc) file.
+This should reflect the most current [active LTS (Long-term support)](https://github.com/nodejs/Release#release-schedule).
 
 ### Fork repository (optional)
 If you're an external contributor make sure to [fork this project first](https://help.github.com/articles/fork-a-repo/)
