@@ -10,7 +10,7 @@
 
   .govuk-o-form-group--error {
     padding-left: $govuk-spacing-scale-3;
-    border-left: $govuk-border-width solid $govuk-red;
+    border-left: $govuk-border-width-form-group-error solid $govuk-error-colour;
 
     .govuk-o-form-group {
       // Reset error styles in nested form groups that might have error class
