@@ -28,6 +28,7 @@ To enable this we use [nvm (Node Version Manager)](https://github.com/creationix
 2. Run `nvm install` in the project directory (this will use [.nvmrc](./.nvmrc))
 
 ### Install npm dependencies
+We use [npm](https://docs.npmjs.com/getting-started/what-is-npm) to manage the dependencies in development.
 ```
 npm install
 ```
