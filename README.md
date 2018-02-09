@@ -11,6 +11,8 @@ A single package containing everything needed to start building a GOV.UK service
 
 Guidance for building a GOV.UK service - [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/).
 
+Want to help us build GOV.UK Frontend? See [contributing](#contributing)
+
 ## Requirements
 
 1) [NodeJS](https://nodejs.org/en/) installed
