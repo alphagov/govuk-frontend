@@ -1,0 +1,248 @@
+{% extends "layout.njk" %}
+
+{% block styles %}
+<style>
+  .app-u-w-full {
+    width: 100%;
+  }
+
+  .app-u-w-half {
+    width: 50%;
+    float: left;
+  }
+
+  .app-u-w-third {
+    width: 33.33333333%;
+    float: left;
+  }
+
+  .app-u-w-quarter {
+    width: 25%;
+    float: left;
+  }
+
+  .app-u-w-two-thirds {
+    width: 66.66666667%;
+    float: left;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+
+{% from "fieldset/macro.njk" import govukFieldset %}
+{% from "label/macro.njk" import govukLabel %}
+{% from "input/macro.njk" import govukInput %}
+{% from "date-input/macro.njk" import govukDateInput %}
+{% from "button/macro.njk" import govukButton %}
+{% from "select/macro.njk" import govukSelect %}
+{% from 'checkboxes/macro.njk' import govukCheckboxes %}
+{% from 'radios/macro.njk' import govukRadios %}
+{% from 'textarea/macro.njk' import govukTextarea %}
+
+<h1 class="govuk-heading-xl">Error messages</h1>
+
+
+<form action="/" method="post">
+  <h2 class="govuk-heading-m">Simple input</h2>
+
+  {{ govukInput({
+    label: {
+      text: "National Insurance Number",
+      hintText: "It’s on your National Insurance card, benefit letter,
+      payslip or P60. For example, ‘QQ 12 34 56 C’."
+    },
+    id: "input-1",
+    name: "test-name",
+    errorMessage: {
+      text: "National Insurance Number"
+    }
+  }) }}
+
+  <h2 class="govuk-heading-m">Multiple inputs</h2>
+
+  {# Use fieldset to wrap around components and render collective error #}
+  {% call govukFieldset({
+    legendText: "User address"
+  }) %}
+    {# Passing below to fieldset to render #}
+    {{ govukInput({
+      label: {
+        "text": "Street"
+      },
+      id: "input-2",
+      name: "test-name",
+      errorMessage: {
+        text: "Enter valid street name"
+      }
+    }) }}
+    {{ govukInput({
+      label: {
+        "text": "Town"
+      },
+      id: "input-3",
+      name: "test-name"
+    }) }}
+    {{ govukInput({
+      label: {
+        "text": "City"
+      },
+      id: "input-4",
+      name: "test-name"
+    }) }}
+  {# end fieldset render #}
+  {% endcall %}
+
+  <h2 class="govuk-heading-m">Radios with error message</h2>
+
+  {{ govukRadios({
+    fieldset: {
+      legendHtml: "<h3 class=\"govuk-heading-m\">How do you want to be contacted?</h3>"
+    },
+    errorMessage: {
+      text: "Please select an option"
+    },
+    idPrefix: "radio-stacked",
+    name: "radio-stacked",
+    items: [
+      {
+        value: "email",
+        text: "Email"
+      },
+      {
+        value: "phone",
+        text: "Phone"
+      },
+      {
+        value: "text",
+        text: "Text message"
+      }
+    ]
+  }) }}
+
+  <h2 class="govuk-heading-m">Checkboxes with error message</h2>
+
+  {{ govukCheckboxes({
+    fieldset: {
+      legendHtml: "<h3 class=\"govuk-heading-m\">What type of waste do you want to dispose of?</h3>"
+    },
+    errorMessage: {
+      text: "Please select an option"
+    },
+    idPrefix: "checkboxes-stacked",
+    name: "checkboxes-stacked",
+    items: [
+      {
+        value: "waste-animal",
+        text: "Waste from animal carcasses"
+      },
+      {
+        value: "waste-mines",
+        text: "Waste from mines or quarries"
+      },
+      {
+        value: "waste-other",
+        text: "Waste from other"
+      }
+    ]
+  }) }}
+
+  <h2 class="govuk-heading-m">Date input with shared error message</h2>
+
+  {{- govukDateInput({
+    fieldset: {
+      legendText: 'What is your date of birth?',
+      legendHintText: 'For example, 31 3 1980'
+    },
+    errorMessage: {
+      text: 'Error message goes here'
+    },
+    id: 'dob',
+    name: 'dob',
+    items:[
+      {
+        name: 'day'
+      },
+      {
+        name: 'month'
+      },
+      {
+        name: 'year'
+      }
+    ]
+    })
+  -}}
+
+  <h2 class="govuk-heading-m">Date input with single error message</h2>
+
+  {{- govukDateInput({
+    fieldset: {
+      legendText: 'What is your date of birth?',
+      legendHintText: 'For example, 31 3 1980'
+    },
+    errorMessage: {
+      text: 'Day not valid'
+    },
+    id: 'dob',
+    name: 'dob',
+    items:[
+      {
+        name: 'day',
+        classes: 'govuk-c-input--error'
+      },
+      {
+        name: 'month'
+      },
+      {
+        name: 'year'
+      }
+    ]
+    })
+  -}}
+
+  <h2 class="govuk-heading-m">Select with error message</h2>
+
+  {{ govukSelect({
+    "id": "select-1",
+    "name": "select-1",
+    "label": {
+      "html": "Label text goes here"
+    },
+    "errorMessage": {
+      text: "Error message goes here"
+    },
+    "items": [
+      {
+        "value": 1,
+        "text": "GOV.UK frontend option 1"
+      },
+      {
+        "value": 2,
+        "text": "GOV.UK frontend option 2",
+        "selected": true
+      },
+      {
+        "value": 3,
+        "text": "GOV.UK frontend option 3"
+      }
+    ]
+    }) }}
+
+  <h2 class="govuk-heading-m">Textarea with error message</h2>
+
+  {{ govukTextarea({
+    id: "more-detail",
+    name: "more-detail",
+    label: {
+      text: "Can you provide more detail?",
+      hintText: "Don't include personal or financial information, eg your National Insurance number or credit card details."
+    },
+    "errorMessage": {
+      text: "Error message goes here"
+    }
+    })
+  }}
+
+</form>
+
+{% endblock %}
