@@ -34,14 +34,14 @@ examples:
   description: Simulate triggering the :active CSS pseudo-class, not available in the production build.
   readme: false
   data:
-    name: focus
-    text: Hovered
+    name: active
+    text: Active
     classes: :active
 - name: button-hover-state
   description: Simulate triggering the :hover CSS pseudo-class, not available in the production build.
   readme: false
   data:
-    name: focus
+    name: hover
     text: Hovered
     classes: :hover
 - name: button-focus-state
