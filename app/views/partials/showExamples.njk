@@ -31,6 +31,12 @@
           </a>
         </div>
 
+        {% if item.description %}
+          <p class="govuk-body">
+            {{ item.description }}
+          </p>
+        {% endif %}
+
         <div class="app-c-component-preview govuk-!-mb-r4">
           <iframe
           class="js-component-preview app-c-component-preview__iframe"

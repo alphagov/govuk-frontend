@@ -25,22 +25,6 @@ More information about when to use skip-link can be found on [GOV.UK Design Syst
       "href": "#content"
     }) }}
 
-### Skip-link--with-focus
-
-[Preview the skip-link--with-focus example](http://govuk-frontend-review.herokuapp.com/components/skip-link/with-focus/preview)
-
-#### Markup
-
-    <a href="#content" class="govuk-c-skip-link :focus">Skip to main content</a>
-
-#### Macro
-
-    {{ govukSkipLink({
-      "classes": ":focus",
-      "text": "Skip to main content",
-      "href": "#content"
-    }) }}
-
 ## Dependencies
 
 To consume the skip-link component you must be running npm version 5 or above.
