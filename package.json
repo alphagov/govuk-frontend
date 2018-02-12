@@ -34,7 +34,6 @@
     "directory-to-object": "^1.1.1",
     "express": "^4.16.1",
     "gulp": "^3.9.1",
-    "gulp-axe-webdriver": "^1.4.0",
     "gulp-changed": "^3.1.0",
     "gulp-concat": "^2.6.1",
     "gulp-data": "^1.2.1",

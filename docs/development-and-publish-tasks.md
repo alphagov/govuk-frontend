@@ -59,7 +59,7 @@ This task will:
 **`gulp test`**
 
 This task will:
-- run accessibility test (tenon and axe)
+- run accessibility test (tenon)
 
 **`gulp watch`**
 
