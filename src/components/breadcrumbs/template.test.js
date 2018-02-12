@@ -1,4 +1,4 @@
-/* globals describe, it, expect */
+/* eslint-env jest */
 
 const { render, getExamples } = require('../../../lib/jest-helpers')
 

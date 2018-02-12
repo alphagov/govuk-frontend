@@ -1,4 +1,4 @@
-/* globals describe, it, expect */
+/* eslint-env jest */
 
 const lib = require('../../../lib/file-helper')
 
