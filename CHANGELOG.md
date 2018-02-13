@@ -19,6 +19,9 @@ New features:
 - The responsive spacing and typography mixins will now throw an error if you
   try to use them with anything other than a spacing or font map respectively.
   (PR [#447](https://github.com/alphagov/govuk-frontend/pull/447))
+- Add thematic break to typography and prose scope. This class is added to an
+  `<hr>`, adds margin (xl, l and m). There is also an option to make the `<hr>` 
+  border visible or invisible. (PR [#483](https://github.com/alphagov/govuk-frontend/pull/483))
 
 Fixes:
 
