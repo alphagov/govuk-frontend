@@ -62,6 +62,8 @@ Internal:
 - Add tests for select component (PR [#506](https://github.com/alphagov/govuk-frontend/pull/506))
 - Add tests for checkboxes component (PR [#513](https://github.com/alphagov/govuk-frontend/pull/513))
 - Add tests to make sure the examples pages render without errors [#523](https://github.com/alphagov/govuk-frontend/pull/523)
+- Add correct links to the guidance in the Design System in component READMEs
+  (PR [#528](https://github.com/alphagov/govuk-frontend/pull/528))
 
 ## 0.0.22-alpha (Breaking release)
 
