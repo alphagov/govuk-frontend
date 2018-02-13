@@ -6,7 +6,7 @@ Table description.
 
 ## Guidance
 
-More information about when to use table can be found on [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/table "Link to read guidance on the use of table on Gov.uk Design system website")
+More information about when to use table can be found on [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/table "Guidance on the use of Table on GOV.UK Design System").
 
 ## Quick start examples
 
