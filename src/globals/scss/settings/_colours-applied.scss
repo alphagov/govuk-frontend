@@ -11,27 +11,4 @@ $govuk-text-colour: $govuk-black;             // Standard text colour
 $govuk-print-text-colour: #000000;            // Text colour when printing
 $govuk-secondary-text-colour: $govuk-grey-1;  // Section headers, help text etc.
 $govuk-border-colour: $govuk-grey-2;          // Borders, seperators, rules, keylines etc.
-$govuk-panel-colour: $govuk-grey-3;           // Related links panel, page footer etc.
-$govuk-canvas-colour: $govuk-grey-4;          // Page background
-$govuk-highlight-colour: $govuk-grey-4;       // Table stripes etc.
-$govuk-page-colour: $govuk-white;             // The page
-$govuk-discovery-colour: $govuk-fuschia;      // Discovery badges and banners
-$govuk-alpha-colour: $govuk-pink;             // Alpha badges and banners
-$govuk-beta-colour: $govuk-orange;            // Beta badges and banners
-$govuk-live-colour: $govuk-grass-green;       // Live badges and banners
 $govuk-error-colour: $govuk-red;              // Error text and border colour
-$govuk-error-background: #fef7f7;       // Error background colour
-
-// https://github.com/alphagov/govuk_template/blob/master/source/assets/stylesheets/styleguide/_colours.scss#L3
-// GOV.UK template colours
-
-$govuk-proposition-border: #2e3133;
-// Based on GOV.UK brand blue but slightly lighter so it hits contrast on the
-// black header bar when used as copy colour.
-$govuk-proposition-active-nav: #1d8feb;
-
-$govuk-footer-background: $govuk-grey-3;
-$govuk-footer-border-top: #a1acb2;
-$govuk-footer-link: #454a4c;
-$govuk-footer-link-hover: #171819;
-$govuk-footer-text: $govuk-footer-link;
