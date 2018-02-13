@@ -1,10 +1,19 @@
 /* eslint-env jest */
 
+const { axe } = require('jest-axe')
+
 const { render, getExamples, htmlWithClassName } = require('../../../lib/jest-helpers')
 
 const examples = getExamples('date-input')
 
 describe('Date input', () => {
+  it('default example passes accessibility tests', async () => {
+    const $ = render('date-input', examples.default)
+
+    const results = await axe($.html())
+    expect(results).toHaveNoViolations()
+  })
+
   describe('by default', () => {
     it('renders with classes', () => {
       const $ = render('date-input', {

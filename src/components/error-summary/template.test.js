@@ -1,10 +1,19 @@
 /* eslint-env jest */
 
+const { axe } = require('jest-axe')
+
 const { render, getExamples } = require('../../../lib/jest-helpers')
 
 const examples = getExamples('error-summary')
 
 describe('Error-summary', () => {
+  it('default example passes accessibility tests', async () => {
+    const $ = render('error-summary', examples.default)
+
+    const results = await axe($.html())
+    expect(results).toHaveNoViolations()
+  })
+
   it('aria-labelledby attribute matches the title id', () => {
     const $ = render('error-summary', examples.default)
     const ariaAttr = $('.govuk-c-error-summary').attr('aria-labelledby')

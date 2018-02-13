@@ -1,9 +1,20 @@
 /* eslint-env jest */
 
-const { render, htmlWithClassName } = require('../../../lib/jest-helpers')
+const { axe } = require('jest-axe')
+
+const { render, getExamples, htmlWithClassName } = require('../../../lib/jest-helpers')
+
+const examples = getExamples('file-upload')
 
 describe('File upload', () => {
   describe('by default', () => {
+    it('passes accessibility tests', async () => {
+      const $ = render('file-upload', examples.default)
+
+      const results = await axe($.html())
+      expect(results).toHaveNoViolations()
+    })
+
     it('renders with classes', () => {
       const $ = render('file-upload', {
         classes: 'app-c-file-upload--custom-modifier'

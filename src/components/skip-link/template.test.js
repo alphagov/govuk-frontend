@@ -1,8 +1,19 @@
 /* eslint-env jest */
 
-const { render } = require('../../../lib/jest-helpers')
+const { axe } = require('jest-axe')
 
-describe('skip-link', () => {
+const { render, getExamples } = require('../../../lib/jest-helpers')
+
+const examples = getExamples('skip-link')
+
+describe('Skip link', () => {
+  it('default example passes accessibility tests', async () => {
+    const $ = render('skip-link', examples.default)
+
+    const results = await axe($.html())
+    expect(results).toHaveNoViolations()
+  })
+
   it('renders href', () => {
     const $ = render('skip-link', {
       href: '#custom'

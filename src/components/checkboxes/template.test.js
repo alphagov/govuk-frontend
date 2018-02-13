@@ -1,10 +1,19 @@
 /* eslint-env jest */
 
+const { axe } = require('jest-axe')
+
 const { render, getExamples, htmlWithClassName } = require('../../../lib/jest-helpers')
 
 const examples = getExamples('checkboxes')
 
 describe('Checkboxes', () => {
+  it('default example passes accessibility tests', async () => {
+    const $ = render('checkboxes', examples.default)
+
+    const results = await axe($.html())
+    expect(results).toHaveNoViolations()
+  })
+
   it('render example with minimum required name and items', () => {
     const $ = render('checkboxes', {
       name: 'example-name',

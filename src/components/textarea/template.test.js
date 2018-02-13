@@ -1,9 +1,20 @@
 /* eslint-env jest */
 
-const { render, htmlWithClassName } = require('../../../lib/jest-helpers')
+const { axe } = require('jest-axe')
+
+const { render, getExamples, htmlWithClassName } = require('../../../lib/jest-helpers')
+
+const examples = getExamples('textarea')
 
 describe('Textarea', () => {
   describe('by default', () => {
+    it('passes accessibility tests', async () => {
+      const $ = render('textarea', examples.default)
+
+      const results = await axe($.html())
+      expect(results).toHaveNoViolations()
+    })
+
     it('renders with classes', () => {
       const $ = render('textarea', {
         classes: 'app-c-textarea--custom-modifier'

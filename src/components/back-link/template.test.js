@@ -1,10 +1,19 @@
 /* eslint-env jest */
 
+const { axe } = require('jest-axe')
+
 const { render, getExamples } = require('../../../lib/jest-helpers')
 
 const examples = getExamples('back-link')
 
 describe('back-link component', () => {
+  it('default example passes accessibility tests', async () => {
+    const $ = render('back-link', examples.default)
+
+    const results = await axe($.html())
+    expect(results).toHaveNoViolations()
+  })
+
   it.skip('fails to render if the required fields are not included', () => {
     // TODO: href is a required field but the component does not error,
     // when it is not passed

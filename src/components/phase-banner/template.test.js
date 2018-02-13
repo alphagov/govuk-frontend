@@ -1,11 +1,20 @@
 /* eslint-env jest */
 
+const { axe } = require('jest-axe')
+
 const { render, getExamples, htmlWithClassName } = require('../../../lib/jest-helpers')
 
 const examples = getExamples('phase-banner')
 
 describe('Phase banner', () => {
   describe('by default', () => {
+    it('passes accessibility tests', async () => {
+      const $ = render('phase-banner', examples.default)
+
+      const results = await axe($.html())
+      expect(results).toHaveNoViolations()
+    })
+
     it('allows additional classes to be added to the component', () => {
       const $ = render('phase-banner', {
         classes: 'extra-class one-more-class'

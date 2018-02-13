@@ -1,10 +1,19 @@
 /* eslint-env jest */
 
+const { axe } = require('jest-axe')
+
 const { render, getExamples } = require('../../../lib/jest-helpers')
 
 const examples = getExamples('panel')
 
 describe('Panel', () => {
+  it('default example passes accessibility tests', async () => {
+    const $ = render('panel', examples.default)
+
+    const results = await axe($.html())
+    expect(results).toHaveNoViolations()
+  })
+
   it('renders title text', () => {
     const $ = render('panel', examples.default)
     const panelTitle = $('.govuk-c-panel__title').text().trim()
