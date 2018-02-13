@@ -3,7 +3,7 @@
 {% block content %}
 
 {% set componentName = componentPath %}
-{% set componentGuidanceLink = componentGuidanceLink | default('http://www.linktodesignsystem.com/' + componentName)%}
+{% set componentGuidanceLink = componentGuidanceLink | default('https://govuk-design-system-production.cloudapps.digital/components/' + componentName)%}
 {% set htmlMarkup %}
   {% include componentName +"/"+ componentName +".njk" ignore missing %}
 {% endset %}

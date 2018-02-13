@@ -6,7 +6,7 @@ The HTML `<select>` element represents a control that provides a menu of options
 
 ## Guidance
 
-More information about when to use select can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/select "Link to read guidance on the use of select on Gov.uk Design system website")
+More information about when to use select can be found on [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/select "Link to read guidance on the use of select on Gov.uk Design system website")
 
 ## Quick start examples
 
