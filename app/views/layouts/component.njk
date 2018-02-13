@@ -33,10 +33,12 @@
   {% endblock %}
   </p>
 
+  {% if componentGuidanceLink %}
   <h2 class="govuk-heading-l">Guidance</h2>
   <p class="govuk-body">
     More information about when to use {{ componentName }} can be found on <a href="{{- componentGuidanceLink -}}" title="Link to read guidance on the use of {{ componentName }} on Gov.uk Design system website" class="govuk-link">GOV.UK Design System</a>
   </p>
+  {% endif %}
 
   {% if isReadme %}
   <h2 class="govuk-heading-l">Quick start examples</h2>

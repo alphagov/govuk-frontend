@@ -4,10 +4,6 @@
 
 Use labels for all form fields.
 
-## Guidance
-
-More information about when to use label can be found on [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/label "Link to read guidance on the use of label on Gov.uk Design system website")
-
 ## Quick start examples
 
 ### Component default
