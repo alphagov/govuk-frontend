@@ -26,7 +26,7 @@
       <td class="govuk-c-table__cell
       {%- if cell.format %} govuk-c-table__cell--{{ cell.format }}{% endif %}"
       {%- if cell.colspan %} colspan="{{ cell.colspan }}"{% endif %}
-      {%- if cell.rowspan %} rowspan="{{ cell.rowspan }}"{% endif %} scope="row">{{ cell.html | safe if cell.html else cell.text }}</td>
+      {%- if cell.rowspan %} rowspan="{{ cell.rowspan }}"{% endif %}>{{ cell.html | safe if cell.html else cell.text }}</td>
       {% else %}
       <td class="govuk-c-table__cell {% if cell.format %}govuk-c-table__cell--{{ cell.format }}{% endif %}"
       {%- if cell.colspan %} colspan="{{ cell.colspan }}"{% endif %}
