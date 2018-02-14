@@ -7,7 +7,7 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 Breaking changes:
 
 - Remove Cookie-banner and Previous-next components
-  (PR [#488](https://github.com/alphagov/govuk-frontend/pull/488))
+  (PR [#488](https://github.com/alphagov/govuk-frontend/pull/488), PR [#523](https://github.com/alphagov/govuk-frontend/pull/523))
 
 New features:
 
@@ -20,7 +20,7 @@ New features:
   try to use them with anything other than a spacing or font map respectively.
   (PR [#447](https://github.com/alphagov/govuk-frontend/pull/447))
 - Add thematic break to typography and prose scope. This class is added to an
-  `<hr>`, adds margin (xl, l and m). There is also an option to make the `<hr>` 
+  `<hr>`, adds margin (xl, l and m). There is also an option to make the `<hr>`
   border visible or invisible. (PR [#483](https://github.com/alphagov/govuk-frontend/pull/483))
 
 Fixes:
@@ -61,6 +61,7 @@ Internal:
 - Add tests for fieldset component (PR [#509](https://github.com/alphagov/govuk-frontend/pull/509))
 - Add tests for select component (PR [#506](https://github.com/alphagov/govuk-frontend/pull/506))
 - Add tests for checkboxes component (PR [#513](https://github.com/alphagov/govuk-frontend/pull/513))
+- Add tests to make sure the examples pages render without errors [#523](https://github.com/alphagov/govuk-frontend/pull/523)
 
 ## 0.0.22-alpha (Breaking release)
 
