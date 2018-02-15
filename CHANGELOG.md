@@ -132,6 +132,7 @@ Internal:
   (PR [#427](https://github.com/alphagov/govuk-frontend/pull/427))
 - Improve documentation around publishing (PR [#430](https://github.com/alphagov/govuk-frontend/pull/430))
 - Improve documentation around contributing (PR [#433](https://github.com/alphagov/govuk-frontend/pull/433))
+- Remove readme content from review app (PR [#482](https://github.com/alphagov/govuk-frontend/pull/482))
 
 ## 0.0.21-alpha (Breaking release)
 Skipped 0.0.20-alpha due to difficulties with publishing.

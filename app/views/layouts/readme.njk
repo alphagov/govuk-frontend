@@ -1,0 +1,96 @@
+{% set componentName = componentPath %}
+{% set componentNameHuman = componentName | replace("-", " ") | capitalize %}
+{% set componentGuidanceLink = componentGuidanceLink | default('https://govuk-design-system-production.cloudapps.digital/components/' + componentName)%}
+<h1>
+{% block componentName %}
+{{ componentNameHuman }}
+{% endblock %}
+</h1>
+
+<h2>Introduction</h2>
+{% block componentDescription %}
+{% endblock %}
+
+{% if componentGuidanceLink %}
+<h2>Guidance</h2>
+<p>
+  Find out when to use the {{ componentNameHuman }} component in your service in the <a href="{{- componentGuidanceLink -}}" class="govuk-link">GOV.UK Design System</a>.
+</p>
+{% endif %}
+
+<h2>Quick start examples</h2>
+<p>{% block componentHtmlUsageWriteup %}{% endblock %}</p>
+
+{% from "showExamples.njk" import showExamples %}
+{% block examples %}
+{{ showExamples(componentName, componentData) }}
+{% endblock %}
+
+<h2>Dependencies</h2>
+
+<p>To consume the {{ componentName }} component you must be running npm version 5 or above. </p>
+
+<p>{% block componentDependencies %}{% endblock %}</p>
+
+<h2>Installation</h2>
+
+<pre><code>
+npm install --save @govuk-frontend/{{ componentName }}
+</code></pre>
+
+<h2>Requirements</h2>
+<h3>Build tool configuration</h3>
+<p>When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp</p>
+<pre><code>
+.pipe(sass({
+  includePaths: 'node_modules/'
+}))
+</code></pre>
+
+
+<h3>Static asset path configuration</h3>
+<p>To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:</p>
+
+<pre><code>
+app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
+</code></pre>
+
+<h2>Component arguments</h2>
+<p>If you are using Nunjucks,then macros take the following arguments</p>
+
+{% from "table/macro.njk" import govukTable %}
+{% block componentArguments %}
+{% endblock %}
+
+<h3>Setting up Nunjucks views and paths</h3>
+<p>Below is an example setup using express configure views:</p>
+
+<pre><code>
+nunjucks.configure('node_modules/@govuk-frontend', {
+  autoescape: true,
+  cache: false,
+  express: app
+})
+</code></pre>
+
+<h2>Getting updates</h2>
+
+<p>To check whether you have the latest version of the button run:</p>
+
+<pre><code>
+npm outdated @govuk-frontend/{{ componentName }}
+</code></pre>
+
+<p>To update the latest version run:</p>
+
+<pre><code>
+npm update @govuk-frontend/{{ componentName }}
+</code></pre>
+
+<h2>Contribution</h2>
+<p>
+  Guidelines can be found at <a href="https://github.com/alphagov/govuk-frontend/blob/master/CONTRIBUTING.md" title="link to contributing guidelines on our github repository" class="govuk-link">on our Github repository.</a>
+</p>
+
+<h2>License</h2>
+<p>MIT</p>

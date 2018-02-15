@@ -1,4 +1,10 @@
-{% extends "component.njk" %}
+{% if isReadme %}
+  {% set parentTemplate = "readme.njk"  %}
+{% else %}
+  {% set parentTemplate = "component.njk"  %}
+{% endif %}
+
+{% extends parentTemplate %}
 
 {# Commented out blocks below inherit from views/component.njk #}
 
