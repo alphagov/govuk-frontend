@@ -1,10 +1,19 @@
-/* globals describe, it, expect */
+/* eslint-env jest */
+
+const { axe } = require('jest-axe')
 
 const { render, getExamples } = require('../../../lib/jest-helpers')
 
 const examples = getExamples('details')
 
 describe('Details', () => {
+  it('default example passes accessibility tests', async () => {
+    const $ = render('details', examples.default)
+
+    const results = await axe($.html())
+    expect(results).toHaveNoViolations()
+  })
+
   it('renders a details element', () => {
     const $ = render('details', examples.default)
 

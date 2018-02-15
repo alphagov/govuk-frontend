@@ -1,4 +1,6 @@
-/* globals describe, it, expect */
+/* eslint-env jest */
+
+const { axe } = require('jest-axe')
 
 const { render, getExamples, htmlWithClassName } = require('../../../lib/jest-helpers')
 
@@ -6,6 +8,13 @@ const examples = getExamples('label')
 
 describe('Label', () => {
   describe('by default', () => {
+    it('passes accessibility tests', async () => {
+      const $ = render('label', examples.default)
+
+      const results = await axe($.html())
+      expect(results).toHaveNoViolations()
+    })
+
     it('renders a label element', () => {
       const $ = render('label', examples.default)
 

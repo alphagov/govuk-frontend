@@ -1,4 +1,6 @@
-/* globals describe, it, expect */
+/* eslint-env jest */
+
+const { axe } = require('jest-axe')
 
 const { render, getExamples } = require('../../../lib/jest-helpers')
 
@@ -6,6 +8,13 @@ const examples = getExamples('breadcrumbs')
 
 describe('Breadcrumbs', () => {
   describe('by default', () => {
+    it('passes accessibility tests', async () => {
+      const $ = render('breadcrumbs', examples.default)
+
+      const results = await axe($.html())
+      expect(results).toHaveNoViolations()
+    })
+
     it('renders with classes', () => {
       const $ = render('breadcrumbs', {
         classes: 'app-c-breadcrumbs--custom-modifier'

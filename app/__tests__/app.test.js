@@ -1,4 +1,4 @@
-/* globals describe, it, expect, beforeAll, afterAll */
+/* eslint-env jest */
 
 const request = require('request')
 const cheerio = require('cheerio')

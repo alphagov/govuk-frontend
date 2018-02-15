@@ -1,10 +1,19 @@
-/* globals describe, it, expect */
+/* eslint-env jest */
+
+const { axe } = require('jest-axe')
 
 const { render, getExamples, htmlWithClassName } = require('../../../lib/jest-helpers')
 
 const examples = getExamples('radios')
 
 describe('Radios', () => {
+  it('default example passes accessibility tests', async () => {
+    const $ = render('radios', examples.default)
+
+    const results = await axe($.html())
+    expect(results).toHaveNoViolations()
+  })
+
   it('render example with minimum required name and items', () => {
     const $ = render('radios', {
       name: 'example-name',

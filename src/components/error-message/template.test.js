@@ -1,8 +1,19 @@
-/* globals describe, it, expect */
+/* eslint-env jest */
 
-const { render } = require('../../../lib/jest-helpers')
+const { axe } = require('jest-axe')
+
+const { render, getExamples } = require('../../../lib/jest-helpers')
+
+const examples = getExamples('error-message')
 
 describe('Error message', () => {
+  it('default example passes accessibility tests', async () => {
+    const $ = render('error-message', examples.default)
+
+    const results = await axe($.html())
+    expect(results).toHaveNoViolations()
+  })
+
   it('allows additional classes to specified', () => {
     const $ = render('error-message', {
       classes: 'custom-class'

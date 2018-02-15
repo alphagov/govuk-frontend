@@ -1,9 +1,20 @@
-/* globals describe, it, expect */
+/* eslint-env jest */
 
-const { render, htmlWithClassName } = require('../../../lib/jest-helpers')
+const { axe } = require('jest-axe')
+
+const { render, getExamples, htmlWithClassName } = require('../../../lib/jest-helpers')
+
+const examples = getExamples('input')
 
 describe('Input', () => {
   describe('by default', () => {
+    it('passes accessibility tests', async () => {
+      const $ = render('input', examples.default)
+
+      const results = await axe($.html())
+      expect(results).toHaveNoViolations()
+    })
+
     it('renders with classes', () => {
       const $ = render('input', {
         classes: 'app-c-input--custom-modifier'

@@ -1,9 +1,19 @@
-/* globals describe, it, expect */
+/* eslint-env jest */
+
+const { axe } = require('jest-axe')
 
 const { render, getExamples } = require('../../../lib/jest-helpers')
 
 const examples = getExamples('table')
+
 describe('Table', () => {
+  it.skip('default example passes accessibility tests', async () => {
+    const $ = render('table', examples.default)
+
+    const results = await axe($.html())
+    expect(results).toHaveNoViolations()
+  })
+
   it('renders with classes', () => {
     const $ = render('table', {
       'classes': 'custom-class-goes-here',

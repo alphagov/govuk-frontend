@@ -1,10 +1,19 @@
-/* globals describe, it, expect */
+/* eslint-env jest */
+
+const { axe } = require('jest-axe')
 
 const { render, getExamples, htmlWithClassName } = require('../../../lib/jest-helpers')
 
 const examples = getExamples('fieldset')
 
 describe('fieldset', () => {
+  it('default example passes accessibility tests', async () => {
+    const $ = render('fieldset', examples.default)
+
+    const results = await axe($.html())
+    expect(results).toHaveNoViolations()
+  })
+
   it('renders a legend element inside a fieldset element for accessibility reasons', () => {
     const $ = render('fieldset', {
       legendText: 'What is your address?'
