@@ -6,7 +6,7 @@ Component to show an error summary box - used at the top of the page, to summari
 
 ## Guidance
 
-More information about when to use error-summary can be found on [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/error-summary "Guidance on the use of Error summary on GOV.UK Design System").
+Find out when to use the Error summary component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/error-summary).
 
 ## Quick start examples
 

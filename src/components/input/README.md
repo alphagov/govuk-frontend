@@ -6,7 +6,7 @@ A single-line text field.
 
 ## Guidance
 
-More information about when to use input can be found on [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/text-input "Guidance on the use of Input on GOV.UK Design System").
+Find out when to use the Input component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/text-input).
 
 ## Quick start examples
 

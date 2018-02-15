@@ -6,7 +6,7 @@ Let users select one or more options.
 
 ## Guidance
 
-More information about when to use checkboxes can be found on [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/checkboxes "Guidance on the use of Checkboxes on GOV.UK Design System").
+Find out when to use the Checkboxes component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/checkboxes).
 
 ## Quick start examples
 

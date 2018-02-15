@@ -6,7 +6,7 @@ Component to show a red error message - used for form validation. Use inside a l
 
 ## Guidance
 
-More information about when to use error-message can be found on [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/error-message "Guidance on the use of Error message on GOV.UK Design System").
+Find out when to use the Error message component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/error-message).
 
 ## Quick start examples
 

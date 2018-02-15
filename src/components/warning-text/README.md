@@ -6,7 +6,7 @@ Use bold text with an exclamation icon if there are consequences - for example, 
 
 ## Guidance
 
-More information about when to use warning-text can be found on [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/warning-text "Guidance on the use of Warning text on GOV.UK Design System").
+Find out when to use the Warning text component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/warning-text).
 
 ## Quick start examples
 

@@ -3,6 +3,7 @@
 {% block content %}
 
 {% set componentName = componentPath %}
+{% set componentNameHuman = componentName | replace("-", " ") | capitalize %}
 {% set componentGuidanceLink = componentGuidanceLink | default('https://govuk-design-system-production.cloudapps.digital/components/' + componentName)%}
 {% set htmlMarkup %}
   {% include componentName +"/"+ componentName +".njk" ignore missing %}
@@ -14,7 +15,7 @@
 {{ govukBreadcrumbs({
   "items": [
     { text: 'GOV.UK Frontend', href: '/' },
-    { text: componentName | replace("-", " ") | capitalize }
+    { text: componentNameHuman }
   ]
 }) }}
 <div class="govuk-o-main-wrapper">
@@ -36,7 +37,7 @@
   {% if componentGuidanceLink %}
   <h2 class="govuk-heading-l">Guidance</h2>
   <p class="govuk-body">
-    More information about when to use {{ componentName }} can be found on <a href="{{- componentGuidanceLink -}}" title="Guidance on the use of {{ componentName | replace("-", " ") | capitalize }} on GOV.UK Design System" class="govuk-link">GOV.UK Design System</a>.
+    Find out when to use the {{ componentNameHuman }} component in your service in the <a href="{{- componentGuidanceLink -}}" class="govuk-link">GOV.UK Design System</a>.
   </p>
   {% endif %}
 
