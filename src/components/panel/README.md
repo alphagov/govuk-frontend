@@ -6,7 +6,7 @@ The confirmation panel has a turquoise background and white text. Used for trans
 
 ## Guidance
 
-More information about when to use panel can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/panel "Link to read guidance on the use of panel on Gov.uk Design system website")
+Find out when to use the Panel component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/panel).
 
 ## Quick start examples
 

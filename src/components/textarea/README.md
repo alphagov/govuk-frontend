@@ -6,7 +6,7 @@ A multi-line text field.
 
 ## Guidance
 
-More information about when to use textarea can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/textarea "Link to read guidance on the use of textarea on Gov.uk Design system website")
+Find out when to use the Textarea component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/textarea).
 
 ## Quick start examples
 

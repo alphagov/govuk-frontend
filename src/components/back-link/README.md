@@ -6,7 +6,7 @@ Link back component, to go back a page.
 
 ## Guidance
 
-More information about when to use back-link can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/back-link "Link to read guidance on the use of back-link on Gov.uk Design system website")
+Find out when to use the Back link component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/back-link).
 
 ## Quick start examples
 

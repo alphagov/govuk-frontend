@@ -6,7 +6,7 @@ Let users select a single option from a list.
 
 ## Guidance
 
-More information about when to use radios can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/radios "Link to read guidance on the use of radios on Gov.uk Design system website")
+Find out when to use the Radios component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/radios).
 
 ## Quick start examples
 

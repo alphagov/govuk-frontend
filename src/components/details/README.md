@@ -6,7 +6,7 @@ Component for conditionally revealing content, using the details HTML element.
 
 ## Guidance
 
-More information about when to use details can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/details "Link to read guidance on the use of details on Gov.uk Design system website")
+Find out when to use the Details component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/details).
 
 ## Quick start examples
 
