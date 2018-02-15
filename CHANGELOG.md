@@ -8,6 +8,27 @@ Breaking changes:
 
 - Remove Cookie-banner and Previous-next components
   (PR [#488](https://github.com/alphagov/govuk-frontend/pull/488), PR [#523](https://github.com/alphagov/govuk-frontend/pull/523))
+- Remove unused colours from the 'applied' colour palette:
+  (PR [#525](https://github.com/alphagov/govuk-frontend/pull/525))
+  - `$govuk-panel-colour`
+  - `$govuk-canvas-colour`
+  - `$govuk-highlight-colour`
+  - `$govuk-page-colour`
+  - `$govuk-discovery-colour`
+  - `$govuk-alpha-colour`
+  - `$govuk-beta-colour`
+  - `$govuk-live-colour`
+  - `$govuk-error-background`
+  - `$govuk-proposition-border`
+  - `$govuk-proposition-active-nav`
+  - `$govuk-footer-background`
+  - `$govuk-footer-border-top`
+  - `$govuk-footer-link`
+  - `$govuk-footer-link-hover`
+  - `$govuk-footer-text`
+- Rename `$govuk-button-colour-darken-15` to `$govuk-button-shadow-colour` to
+  avoid tying it to a particular colour.
+  (PR [#525](https://github.com/alphagov/govuk-frontend/pull/525))
 
 New features:
 
