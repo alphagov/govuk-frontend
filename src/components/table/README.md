@@ -22,7 +22,7 @@ Find out when to use the Table component in your service in the [GOV.UK Design S
 
         <tr class="govuk-c-table__row">
 
-          <td class="govuk-c-table__cell" scope="row">January</td>
+          <td class="govuk-c-table__cell">January</td>
 
           <td class="govuk-c-table__cell govuk-c-table__cell--numeric">£85</td>
 
@@ -32,7 +32,7 @@ Find out when to use the Table component in your service in the [GOV.UK Design S
 
         <tr class="govuk-c-table__row">
 
-          <td class="govuk-c-table__cell" scope="row">February</td>
+          <td class="govuk-c-table__cell">February</td>
 
           <td class="govuk-c-table__cell govuk-c-table__cell--numeric">£75</td>
 
@@ -42,7 +42,7 @@ Find out when to use the Table component in your service in the [GOV.UK Design S
 
         <tr class="govuk-c-table__row">
 
-          <td class="govuk-c-table__cell" scope="row">March</td>
+          <td class="govuk-c-table__cell">March</td>
 
           <td class="govuk-c-table__cell govuk-c-table__cell--numeric">£165</td>
 
@@ -123,7 +123,7 @@ Find out when to use the Table component in your service in the [GOV.UK Design S
 
         <tr class="govuk-c-table__row">
 
-          <td class="govuk-c-table__cell" scope="row">January</td>
+          <td class="govuk-c-table__cell">January</td>
 
           <td class="govuk-c-table__cell govuk-c-table__cell--numeric">£85</td>
 
@@ -133,7 +133,7 @@ Find out when to use the Table component in your service in the [GOV.UK Design S
 
         <tr class="govuk-c-table__row">
 
-          <td class="govuk-c-table__cell" scope="row">February</td>
+          <td class="govuk-c-table__cell">February</td>
 
           <td class="govuk-c-table__cell govuk-c-table__cell--numeric">£75</td>
 
@@ -143,7 +143,7 @@ Find out when to use the Table component in your service in the [GOV.UK Design S
 
         <tr class="govuk-c-table__row">
 
-          <td class="govuk-c-table__cell" scope="row">March</td>
+          <td class="govuk-c-table__cell">March</td>
 
           <td class="govuk-c-table__cell govuk-c-table__cell--numeric">£165</td>
 
