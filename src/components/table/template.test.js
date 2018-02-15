@@ -7,7 +7,7 @@ const { render, getExamples } = require('../../../lib/jest-helpers')
 const examples = getExamples('table')
 
 describe('Table', () => {
-  it.skip('default example passes accessibility tests', async () => {
+  it('default example passes accessibility tests', async () => {
     const $ = render('table', examples.default)
 
     const results = await axe($.html())
