@@ -72,3 +72,18 @@ examples:
         text: 'Irish'
       - value: 'other'
         text: 'Citizen of another country'
+
+- name: with-error
+  data:
+    errorMessage:
+      text: 'Please select an option'
+    fieldset:
+      legendHtml:
+        <h3 class="govuk-heading-m">Which types of waste do you transport regularly?</h3>
+    items:
+      - value: animal
+        text: Waste from animal carcasses
+      - value: mines
+        text: Waste from mines or quarries
+      - value: farm
+        text: Farm or agricultural waste
