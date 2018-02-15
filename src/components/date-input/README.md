@@ -16,47 +16,52 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
 
 #### Markup
 
+      <div class="govuk-o-form-group govuk-o-form-group--error">
       <fieldset class="govuk-c-fieldset">
 
-      <legend class="govuk-c-fieldset__legend">
-        What is your date of birth?
+        <legend class="govuk-c-fieldset__legend">
+          What is your date of birth?
 
-        <span class="govuk-c-fieldset__hint">For example, 31 3 1980</span>
+          <span class="govuk-c-fieldset__hint">For example, 31 3 1980</span>
 
-        <span class="govuk-c-error-message">
+          <span class="govuk-c-error-message">
           Error message goes here
         </span>
 
-      </legend>
+        </legend>
 
       <div class="govuk-c-date-input" id="dob">
 
-        <div class="govuk-c-date-input__item govuk-c-date-input__item--day">
-          <label class="govuk-c-label govuk-c-date-input__label" for="dob-day">
+          <div class="govuk-c-date-input__item govuk-c-date-input__item--day">
+            <div class="govuk-o-form-group"><label class="govuk-c-label govuk-c-date-input__label" for="dob-day">
             Day
 
           </label>
           <input class="govuk-c-input govuk-c-date-input__input" id="dob-day" name="dob-day" type="text">
-        </div>
+          </div>
+          </div>
 
-        <div class="govuk-c-date-input__item govuk-c-date-input__item--month">
-          <label class="govuk-c-label govuk-c-date-input__label" for="dob-month">
+          <div class="govuk-c-date-input__item govuk-c-date-input__item--month">
+            <div class="govuk-o-form-group"><label class="govuk-c-label govuk-c-date-input__label" for="dob-month">
             Month
 
           </label>
           <input class="govuk-c-input govuk-c-date-input__input" id="dob-month" name="dob-month" type="text">
-        </div>
+          </div>
+          </div>
 
-        <div class="govuk-c-date-input__item govuk-c-date-input__item--year">
-          <label class="govuk-c-label govuk-c-date-input__label" for="dob-year">
+          <div class="govuk-c-date-input__item govuk-c-date-input__item--year">
+            <div class="govuk-o-form-group"><label class="govuk-c-label govuk-c-date-input__label" for="dob-year">
             Year
 
           </label>
           <input class="govuk-c-input govuk-c-date-input__input" id="dob-year" name="dob-year" type="text">
-        </div>
+          </div>
+          </div>
 
-      </div>
+        </div>
       </fieldset>
+    </div>
 
 #### Macro
 
@@ -89,47 +94,52 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
 
 #### Markup
 
+      <div class="govuk-o-form-group govuk-o-form-group--error">
       <fieldset class="govuk-c-fieldset">
 
-      <legend class="govuk-c-fieldset__legend">
-        What is your date of birth?
+        <legend class="govuk-c-fieldset__legend">
+          What is your date of birth?
 
-        <span class="govuk-c-fieldset__hint">For example, 31 3 1980</span>
+          <span class="govuk-c-fieldset__hint">For example, 31 3 1980</span>
 
-        <span class="govuk-c-error-message">
+          <span class="govuk-c-error-message">
           Error message goes here
         </span>
 
-      </legend>
+        </legend>
 
       <div class="govuk-c-date-input" id="dob-errors">
 
-        <div class="govuk-c-date-input__item govuk-c-date-input__item--day">
-          <label class="govuk-c-label govuk-c-date-input__label" for="dob-errors-day">
+          <div class="govuk-c-date-input__item govuk-c-date-input__item--day">
+            <div class="govuk-o-form-group"><label class="govuk-c-label govuk-c-date-input__label" for="dob-errors-day">
             Day
 
           </label>
           <input class="govuk-c-input govuk-c-date-input__input govuk-c-input--error" id="dob-errors-day" name="undefined-day" type="text">
-        </div>
+          </div>
+          </div>
 
-        <div class="govuk-c-date-input__item govuk-c-date-input__item--month">
-          <label class="govuk-c-label govuk-c-date-input__label" for="dob-errors-month">
+          <div class="govuk-c-date-input__item govuk-c-date-input__item--month">
+            <div class="govuk-o-form-group"><label class="govuk-c-label govuk-c-date-input__label" for="dob-errors-month">
             Month
 
           </label>
           <input class="govuk-c-input govuk-c-date-input__input govuk-c-input--error" id="dob-errors-month" name="undefined-month" type="text">
-        </div>
+          </div>
+          </div>
 
-        <div class="govuk-c-date-input__item govuk-c-date-input__item--year">
-          <label class="govuk-c-label govuk-c-date-input__label" for="dob-errors-year">
+          <div class="govuk-c-date-input__item govuk-c-date-input__item--year">
+            <div class="govuk-o-form-group"><label class="govuk-c-label govuk-c-date-input__label" for="dob-errors-year">
             Year
 
           </label>
           <input class="govuk-c-input govuk-c-date-input__input govuk-c-input--error" id="dob-errors-year" name="undefined-year" type="text">
-        </div>
+          </div>
+          </div>
 
-      </div>
+        </div>
       </fieldset>
+    </div>
 
 #### Macro
 
@@ -164,47 +174,52 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
 
 #### Markup
 
+      <div class="govuk-o-form-group govuk-o-form-group--error">
       <fieldset class="govuk-c-fieldset">
 
-      <legend class="govuk-c-fieldset__legend">
-        What is your date of birth?
+        <legend class="govuk-c-fieldset__legend">
+          What is your date of birth?
 
-        <span class="govuk-c-fieldset__hint">For example, 31 3 1980</span>
+          <span class="govuk-c-fieldset__hint">For example, 31 3 1980</span>
 
-        <span class="govuk-c-error-message">
+          <span class="govuk-c-error-message">
           Error message goes here
         </span>
 
-      </legend>
+        </legend>
 
       <div class="govuk-c-date-input" id="dob-day-error">
 
-        <div class="govuk-c-date-input__item govuk-c-date-input__item--day">
-          <label class="govuk-c-label govuk-c-date-input__label" for="dob-day-error-day">
+          <div class="govuk-c-date-input__item govuk-c-date-input__item--day">
+            <div class="govuk-o-form-group"><label class="govuk-c-label govuk-c-date-input__label" for="dob-day-error-day">
             Day
 
           </label>
           <input class="govuk-c-input govuk-c-date-input__input govuk-c-input--error" id="dob-day-error-day" name="dob-day-error-day" type="text">
-        </div>
+          </div>
+          </div>
 
-        <div class="govuk-c-date-input__item govuk-c-date-input__item--month">
-          <label class="govuk-c-label govuk-c-date-input__label" for="dob-day-error-month">
+          <div class="govuk-c-date-input__item govuk-c-date-input__item--month">
+            <div class="govuk-o-form-group"><label class="govuk-c-label govuk-c-date-input__label" for="dob-day-error-month">
             Month
 
           </label>
           <input class="govuk-c-input govuk-c-date-input__input" id="dob-day-error-month" name="dob-day-error-month" type="text">
-        </div>
+          </div>
+          </div>
 
-        <div class="govuk-c-date-input__item govuk-c-date-input__item--year">
-          <label class="govuk-c-label govuk-c-date-input__label" for="dob-day-error-year">
+          <div class="govuk-c-date-input__item govuk-c-date-input__item--year">
+            <div class="govuk-o-form-group"><label class="govuk-c-label govuk-c-date-input__label" for="dob-day-error-year">
             Year
 
           </label>
           <input class="govuk-c-input govuk-c-date-input__input" id="dob-day-error-year" name="dob-day-error-year" type="text">
-        </div>
+          </div>
+          </div>
 
-      </div>
+        </div>
       </fieldset>
+    </div>
 
 #### Macro
 
@@ -238,47 +253,52 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
 
 #### Markup
 
+      <div class="govuk-o-form-group govuk-o-form-group--error">
       <fieldset class="govuk-c-fieldset">
 
-      <legend class="govuk-c-fieldset__legend">
-        What is your date of birth?
+        <legend class="govuk-c-fieldset__legend">
+          What is your date of birth?
 
-        <span class="govuk-c-fieldset__hint">For example, 31 3 1980</span>
+          <span class="govuk-c-fieldset__hint">For example, 31 3 1980</span>
 
-        <span class="govuk-c-error-message">
+          <span class="govuk-c-error-message">
           Error message goes here
         </span>
 
-      </legend>
+        </legend>
 
       <div class="govuk-c-date-input" id="dob-month-error">
 
-        <div class="govuk-c-date-input__item govuk-c-date-input__item--day">
-          <label class="govuk-c-label govuk-c-date-input__label" for="dob-month-error-day">
+          <div class="govuk-c-date-input__item govuk-c-date-input__item--day">
+            <div class="govuk-o-form-group"><label class="govuk-c-label govuk-c-date-input__label" for="dob-month-error-day">
             Day
 
           </label>
           <input class="govuk-c-input govuk-c-date-input__input" id="dob-month-error-day" name="dob-month-error-day" type="text">
-        </div>
+          </div>
+          </div>
 
-        <div class="govuk-c-date-input__item govuk-c-date-input__item--month">
-          <label class="govuk-c-label govuk-c-date-input__label" for="dob-month-error-month">
+          <div class="govuk-c-date-input__item govuk-c-date-input__item--month">
+            <div class="govuk-o-form-group"><label class="govuk-c-label govuk-c-date-input__label" for="dob-month-error-month">
             Month
 
           </label>
           <input class="govuk-c-input govuk-c-date-input__input govuk-c-input--error" id="dob-month-error-month" name="dob-month-error-month" type="text">
-        </div>
+          </div>
+          </div>
 
-        <div class="govuk-c-date-input__item govuk-c-date-input__item--year">
-          <label class="govuk-c-label govuk-c-date-input__label" for="dob-month-error-year">
+          <div class="govuk-c-date-input__item govuk-c-date-input__item--year">
+            <div class="govuk-o-form-group"><label class="govuk-c-label govuk-c-date-input__label" for="dob-month-error-year">
             Year
 
           </label>
           <input class="govuk-c-input govuk-c-date-input__input" id="dob-month-error-year" name="dob-month-error-year" type="text">
-        </div>
+          </div>
+          </div>
 
-      </div>
+        </div>
       </fieldset>
+    </div>
 
 #### Macro
 
@@ -312,47 +332,52 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
 
 #### Markup
 
+      <div class="govuk-o-form-group govuk-o-form-group--error">
       <fieldset class="govuk-c-fieldset">
 
-      <legend class="govuk-c-fieldset__legend">
-        What is your date of birth?
+        <legend class="govuk-c-fieldset__legend">
+          What is your date of birth?
 
-        <span class="govuk-c-fieldset__hint">For example, 31 3 1980</span>
+          <span class="govuk-c-fieldset__hint">For example, 31 3 1980</span>
 
-        <span class="govuk-c-error-message">
+          <span class="govuk-c-error-message">
           Error message goes here
         </span>
 
-      </legend>
+        </legend>
 
       <div class="govuk-c-date-input" id="dob-year-error">
 
-        <div class="govuk-c-date-input__item govuk-c-date-input__item--day">
-          <label class="govuk-c-label govuk-c-date-input__label" for="dob-year-error-day">
+          <div class="govuk-c-date-input__item govuk-c-date-input__item--day">
+            <div class="govuk-o-form-group"><label class="govuk-c-label govuk-c-date-input__label" for="dob-year-error-day">
             Day
 
           </label>
           <input class="govuk-c-input govuk-c-date-input__input" id="dob-year-error-day" name="dob-year-error-day" type="text">
-        </div>
+          </div>
+          </div>
 
-        <div class="govuk-c-date-input__item govuk-c-date-input__item--month">
-          <label class="govuk-c-label govuk-c-date-input__label" for="dob-year-error-month">
+          <div class="govuk-c-date-input__item govuk-c-date-input__item--month">
+            <div class="govuk-o-form-group"><label class="govuk-c-label govuk-c-date-input__label" for="dob-year-error-month">
             Month
 
           </label>
           <input class="govuk-c-input govuk-c-date-input__input" id="dob-year-error-month" name="dob-year-error-month" type="text">
-        </div>
+          </div>
+          </div>
 
-        <div class="govuk-c-date-input__item govuk-c-date-input__item--year">
-          <label class="govuk-c-label govuk-c-date-input__label" for="dob-year-error-year">
+          <div class="govuk-c-date-input__item govuk-c-date-input__item--year">
+            <div class="govuk-o-form-group"><label class="govuk-c-label govuk-c-date-input__label" for="dob-year-error-year">
             Year
 
           </label>
           <input class="govuk-c-input govuk-c-date-input__input govuk-c-input--error" id="dob-year-error-year" name="dob-year-error-year" type="text">
-        </div>
+          </div>
+          </div>
 
-      </div>
+        </div>
       </fieldset>
+    </div>
 
 #### Macro
 

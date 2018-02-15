@@ -18,14 +18,15 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 
     <div class="govuk-c-radios">
 
-      <fieldset class="govuk-c-fieldset">
+      <div class="govuk-o-form-group">
+        <fieldset class="govuk-c-fieldset">
 
-        <legend class="govuk-c-fieldset__legend">
-          Have you changed your name?
+          <legend class="govuk-c-fieldset__legend">
+            Have you changed your name?
 
-          <span class="govuk-c-fieldset__hint">This includes changing your last name or spelling your name differently.</span>
+            <span class="govuk-c-fieldset__hint">This includes changing your last name or spelling your name differently.</span>
 
-        </legend>
+          </legend>
 
         <div class="govuk-c-radios__item">
           <input class="govuk-c-radios__input" id="example-1" name="example" type="radio" value="yes">
@@ -43,6 +44,7 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
           </label>
         </div>
         </fieldset>
+      </div>
 
     </div>
 
@@ -76,14 +78,15 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 
     <div class="govuk-c-radios">
 
-      <fieldset class="govuk-c-fieldset">
+      <div class="govuk-o-form-group">
+        <fieldset class="govuk-c-fieldset">
 
-        <legend class="govuk-c-fieldset__legend">
-          Have you changed your name?
+          <legend class="govuk-c-fieldset__legend">
+            Have you changed your name?
 
-          <span class="govuk-c-fieldset__hint">This includes changing your last name or spelling your name differently.</span>
+            <span class="govuk-c-fieldset__hint">This includes changing your last name or spelling your name differently.</span>
 
-        </legend>
+          </legend>
 
         <div class="govuk-c-radios__item">
           <input class="govuk-c-radios__input" id="example-disabled-1" name="example-disabled" type="radio" value="yes" disabled>
@@ -101,6 +104,7 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
           </label>
         </div>
         </fieldset>
+      </div>
 
     </div>
 
@@ -135,14 +139,15 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 
     <div class="govuk-c-radios">
 
-      <fieldset class="govuk-c-fieldset">
+      <div class="govuk-o-form-group">
+        <fieldset class="govuk-c-fieldset">
 
-        <legend class="govuk-c-fieldset__legend">
-          <h1 class="govuk-heading-l">Which part of the Housing Act was your licence issued under?</h1>
+          <legend class="govuk-c-fieldset__legend">
+            <h1 class="govuk-heading-l">Which part of the Housing Act was your licence issued under?</h1>
 
-          <span class="govuk-c-fieldset__hint">Select one of the options below.</span>
+            <span class="govuk-c-fieldset__hint">Select one of the options below.</span>
 
-        </legend>
+          </legend>
 
         <div class="govuk-c-radios__item">
           <input class="govuk-c-radios__input" id="housing-act-1" name="housing-act" type="radio" value="part-2">
@@ -160,6 +165,7 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
           </label>
         </div>
         </fieldset>
+      </div>
 
     </div>
 
@@ -246,18 +252,19 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 
     <div class="govuk-c-radios">
 
-      <fieldset class="govuk-c-fieldset app-c-fieldset--custom-modifier" data-attribute="value" data-second-attribute="second-value">
+      <div class="govuk-o-form-group govuk-o-form-group--error">
+        <fieldset class="govuk-c-fieldset app-c-fieldset--custom-modifier" data-attribute="value" data-second-attribute="second-value">
 
-        <legend class="govuk-c-fieldset__legend">
-          Have you changed your name?
+          <legend class="govuk-c-fieldset__legend">
+            Have you changed your name?
 
-          <span class="govuk-c-fieldset__hint">This includes changing your last name or spelling your name differently.</span>
+            <span class="govuk-c-fieldset__hint">This includes changing your last name or spelling your name differently.</span>
 
-          <span class="govuk-c-error-message">
+            <span class="govuk-c-error-message">
             Please select an option
           </span>
 
-        </legend>
+          </legend>
 
         <div class="govuk-c-radios__item">
           <input class="govuk-c-radios__input" id="example-1" name="example" type="radio" value="yes">
@@ -275,6 +282,7 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
           </label>
         </div>
         </fieldset>
+      </div>
 
     </div>
 

@@ -16,11 +16,12 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
 
 #### Markup
 
-    <label class="govuk-c-label" for="input-1">
+    <div class="govuk-o-form-group"><label class="govuk-c-label" for="input-1">
       National Insurance number
 
     </label>
     <input class="govuk-c-input" id="input-1" name="test-name" type="text">
+    </div>
 
 #### Macro
 
@@ -38,7 +39,7 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
 
 #### Markup
 
-    <label class="govuk-c-label" for="input-2">
+    <div class="govuk-o-form-group"><label class="govuk-c-label" for="input-2">
       National insurance number
 
       <span class="govuk-c-label__hint">
@@ -47,6 +48,7 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
 
     </label>
     <input class="govuk-c-input" id="input-2" name="test-name-2" type="text">
+    </div>
 
 #### Macro
 
@@ -65,7 +67,7 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
 
 #### Markup
 
-    <label class="govuk-c-label" for="input-3">
+    <div class="govuk-o-form-group govuk-o-form-group--error"><label class="govuk-c-label" for="input-3">
       National Insurance number
 
       <span class="govuk-c-label__hint">
@@ -78,6 +80,7 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
 
     </label>
     <input class="govuk-c-input govuk-c-input--error" id="input-3" name="test-name-3" type="text">
+    </div>
 
 #### Macro
 

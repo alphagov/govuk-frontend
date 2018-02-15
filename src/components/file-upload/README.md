@@ -16,11 +16,12 @@ Find out when to use the File upload component in your service in the [GOV.UK De
 
 #### Markup
 
-    <label class="govuk-c-label" for="file-upload-1">
+    <div class="govuk-o-form-group"><label class="govuk-c-label" for="file-upload-1">
       Upload a file
 
     </label>
     <input type="file" id="file-upload-1" name="file-upload-1" class="govuk-c-file-upload">
+    </div>
 
 #### Macro
 
@@ -38,7 +39,7 @@ Find out when to use the File upload component in your service in the [GOV.UK De
 
 #### Markup
 
-    <label class="govuk-c-label" for="file-upload-2">
+    <div class="govuk-o-form-group"><label class="govuk-c-label" for="file-upload-2">
       Upload your photo
 
       <span class="govuk-c-label__hint">
@@ -47,6 +48,7 @@ Find out when to use the File upload component in your service in the [GOV.UK De
 
     </label>
     <input type="file" id="file-upload-2" name="file-upload-2" class="govuk-c-file-upload">
+    </div>
 
 #### Macro
 
@@ -65,7 +67,7 @@ Find out when to use the File upload component in your service in the [GOV.UK De
 
 #### Markup
 
-    <label class="govuk-c-label" for="file-upload-3">
+    <div class="govuk-o-form-group govuk-o-form-group--error"><label class="govuk-c-label" for="file-upload-3">
       Upload a file
 
       <span class="govuk-c-label__hint">
@@ -78,6 +80,7 @@ Find out when to use the File upload component in your service in the [GOV.UK De
 
     </label>
     <input type="file" id="file-upload-3" name="file-upload-3" class="govuk-c-file-upload govuk-c-file-upload--error">
+    </div>
 
 #### Macro
 
@@ -99,11 +102,12 @@ Find out when to use the File upload component in your service in the [GOV.UK De
 
 #### Markup
 
-    <label class="govuk-c-label" for="file-upload-4">
+    <div class="govuk-o-form-group"><label class="govuk-c-label" for="file-upload-4">
       Upload a photo
 
     </label>
     <input type="file" id="file-upload-4" name="file-upload-4" value="C:\fakepath\myphoto.jpg" class="govuk-c-file-upload" accept=".jpg, .jpeg, .png">
+    </div>
 
 #### Macro
 

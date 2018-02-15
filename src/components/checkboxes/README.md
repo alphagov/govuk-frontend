@@ -18,14 +18,15 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
     <div class="govuk-c-checkboxes">
 
-      <fieldset class="govuk-c-fieldset">
+      <div class="govuk-o-form-group">
+        <fieldset class="govuk-c-fieldset">
 
-        <legend class="govuk-c-fieldset__legend">
-          What is your nationality?
+          <legend class="govuk-c-fieldset__legend">
+            What is your nationality?
 
-          <span class="govuk-c-fieldset__hint">If you have dual nationality, select all options that are relevant to you.</span>
+            <span class="govuk-c-fieldset__hint">If you have dual nationality, select all options that are relevant to you.</span>
 
-        </legend>
+          </legend>
 
         <div class="govuk-c-checkboxes__item">
           <input class="govuk-c-checkboxes__input" id="nationality-1" name="nationality" type="checkbox" value="british">
@@ -51,6 +52,7 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
           </label>
         </div>
         </fieldset>
+      </div>
 
     </div>
 
@@ -142,14 +144,15 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
     <div class="govuk-c-checkboxes">
 
-      <fieldset class="govuk-c-fieldset">
+      <div class="govuk-o-form-group">
+        <fieldset class="govuk-c-fieldset">
 
-        <legend class="govuk-c-fieldset__legend">
-          <h3 class="govuk-heading-m">Which types of waste do you transport regularly?</h3>
+          <legend class="govuk-c-fieldset__legend">
+            <h3 class="govuk-heading-m">Which types of waste do you transport regularly?</h3>
 
-          <span class="govuk-c-fieldset__hint">Select all that apply</span>
+            <span class="govuk-c-fieldset__hint">Select all that apply</span>
 
-        </legend>
+          </legend>
 
         <div class="govuk-c-checkboxes__item">
           <input class="govuk-c-checkboxes__input" id="undefined-1" name="" type="checkbox" value="animal">
@@ -175,6 +178,7 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
           </label>
         </div>
         </fieldset>
+      </div>
 
     </div>
 
@@ -263,18 +267,19 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
     <div class="govuk-c-checkboxes">
 
-      <fieldset class="govuk-c-fieldset app-c-fieldset--custom-modifier" data-attribute="value" data-second-attribute="second-value">
+      <div class="govuk-o-form-group govuk-o-form-group--error">
+        <fieldset class="govuk-c-fieldset app-c-fieldset--custom-modifier" data-attribute="value" data-second-attribute="second-value">
 
-        <legend class="govuk-c-fieldset__legend">
-          What is your nationality?
+          <legend class="govuk-c-fieldset__legend">
+            What is your nationality?
 
-          <span class="govuk-c-fieldset__hint">If you have dual nationality, select all options that are relevant to you.</span>
+            <span class="govuk-c-fieldset__hint">If you have dual nationality, select all options that are relevant to you.</span>
 
-          <span class="govuk-c-error-message">
+            <span class="govuk-c-error-message">
             Please select an option
           </span>
 
-        </legend>
+          </legend>
 
         <div class="govuk-c-checkboxes__item">
           <input class="govuk-c-checkboxes__input" id="example-1" name="example" type="checkbox" value="british">
@@ -300,6 +305,7 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
           </label>
         </div>
         </fieldset>
+      </div>
 
     </div>
 
@@ -332,6 +338,79 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
         {
           "value": "other",
           "text": "Citizen of another country"
+        }
+      ]
+    }) }}
+
+### Checkboxes--with-error
+
+[Preview the checkboxes--with-error example](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-error/preview)
+
+#### Markup
+
+    <div class="govuk-c-checkboxes">
+
+      <div class="govuk-o-form-group govuk-o-form-group--error">
+        <fieldset class="govuk-c-fieldset">
+
+          <legend class="govuk-c-fieldset__legend">
+            <h3 class="govuk-heading-m">Which types of waste do you transport regularly?</h3>
+
+            <span class="govuk-c-error-message">
+            Please select an option
+          </span>
+
+          </legend>
+
+        <div class="govuk-c-checkboxes__item">
+          <input class="govuk-c-checkboxes__input" id="undefined-1" name="" type="checkbox" value="animal">
+          <label class="govuk-c-label govuk-c-checkboxes__label" for="undefined-1">
+            Waste from animal carcasses
+
+          </label>
+        </div>
+
+        <div class="govuk-c-checkboxes__item">
+          <input class="govuk-c-checkboxes__input" id="undefined-2" name="" type="checkbox" value="mines">
+          <label class="govuk-c-label govuk-c-checkboxes__label" for="undefined-2">
+            Waste from mines or quarries
+
+          </label>
+        </div>
+
+        <div class="govuk-c-checkboxes__item">
+          <input class="govuk-c-checkboxes__input" id="undefined-3" name="" type="checkbox" value="farm">
+          <label class="govuk-c-label govuk-c-checkboxes__label" for="undefined-3">
+            Farm or agricultural waste
+
+          </label>
+        </div>
+        </fieldset>
+      </div>
+
+    </div>
+
+#### Macro
+
+    {{ govukCheckboxes({
+      "errorMessage": {
+        "text": "Please select an option"
+      },
+      "fieldset": {
+        "legendHtml": "<h3 class=\"govuk-heading-m\">Which types of waste do you transport regularly?</h3>"
+      },
+      "items": [
+        {
+          "value": "animal",
+          "text": "Waste from animal carcasses"
+        },
+        {
+          "value": "mines",
+          "text": "Waste from mines or quarries"
+        },
+        {
+          "value": "farm",
+          "text": "Farm or agricultural waste"
         }
       ]
     }) }}
