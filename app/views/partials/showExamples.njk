@@ -10,11 +10,11 @@
 
     {% if item.name == 'default' %}
       {% set itemName = 'Component default' %}
-      {% set previewLink = "/components/" + componentName + "/preview" %}
+      {% set previewLink = "/@govuk-frontend/" + componentName + "/preview" %}
       {% set previewText = 'Preview the ' + componentName + ' component' %}
     {% else %}
       {% set itemName = componentName + '--' + item.name %}
-      {% set previewLink = "/components/" + componentName + '/' + item.name  + "/preview" %}
+      {% set previewLink = "/@govuk-frontend/" + componentName + '/' + item.name  + "/preview" %}
       {% set previewText = 'Preview the ' + itemName + ' example' %}
     {% endif %}
 

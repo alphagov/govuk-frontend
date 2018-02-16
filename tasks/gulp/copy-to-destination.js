@@ -9,7 +9,7 @@ const taskArguments = require('./task-arguments')
 const filter = require('gulp-filter')
 const replace = require('gulp-replace')
 
-let scssFiles = filter([configPaths.govukFrontend + '**/*.scss'], {restore: true})
+let scssFiles = filter([path.join(configPaths.govukFrontend, '**/*.scss')], {restore: true})
 gulp.task('copy-files', () => {
   return gulp.src([
     path.join(configPaths.govukFrontend, '**/*'),
@@ -19,9 +19,8 @@ gulp.task('copy-files', () => {
   .pipe(replace('//start:devonly', '/*start:devonly'))
   .pipe(replace('//end:devonly', 'end:devonly*/'))
   .pipe(postcss([
-    autoprefixer,
-    require('postcss-nested')
+    autoprefixer
   ], {syntax: require('postcss-scss')}))
   .pipe(scssFiles.restore)
-  .pipe(gulp.dest(taskArguments.destination + '/components/'))
+  .pipe(gulp.dest(taskArguments.destination))
 })

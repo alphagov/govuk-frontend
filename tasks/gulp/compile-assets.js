@@ -1,6 +1,7 @@
 'use strict'
 
 const gulp = require('gulp')
+const path = require('path')
 const configPaths = require('../../config/paths.json')
 const sass = require('gulp-sass')
 const postcss = require('gulp-postcss')
@@ -22,13 +23,10 @@ const postcsspseudoclasses = require('postcss-pseudo-classes')
 const isProduction = taskArguments.isProduction
 
 gulp.task('scss:compile', () => {
-  let compile = gulp.src(configPaths.globalScss + 'govuk-frontend.scss')
-    .pipe(sass().on('error', sass.logError))
-    .pipe(gulpif(isProduction, postcss([
-      autoprefixer,
-      cssnano,
-      postcssnormalize
-    ])))
+  let compile = gulp.src(path.join(configPaths.govukFrontend, 'all/all.scss'))
+    .pipe(sass({
+      includePaths: configPaths.packages
+    }).on('error', sass.logError))
     .pipe(gulpif(!isProduction, postcss([
       autoprefixer,
       // Auto-generate 'companion' classes for pseudo-selector states - e.g. a
@@ -42,8 +40,10 @@ gulp.task('scss:compile', () => {
     ))
     .pipe(gulp.dest(taskArguments.destination + '/css/'))
 
-  let compileOldIe = gulp.src(configPaths.globalScss + 'govuk-frontend-oldie.scss')
-    .pipe(sass().on('error', sass.logError))
+  let compileOldIe = gulp.src(path.join(configPaths.govukFrontend, 'all/all-oldie.scss'))
+    .pipe(sass({
+      includePaths: configPaths.packages
+    }).on('error', sass.logError))
     .pipe(gulpif(isProduction, postcss([
       autoprefixer,
       cssnano,
@@ -80,10 +80,10 @@ gulp.task('scss:compile', () => {
 // --------------------------------------
 gulp.task('js:compile', () => {
   return gulp.src([
-    '!' + configPaths.src + '**/*.test.js',
-    configPaths.src + '**/*.js'
+    '!' + configPaths.govukFrontend + '**/*.test.js',
+    configPaths.govukFrontend + '**/*.js'
   ])
-    .pipe(concat('govuk-frontend.js'))
+    .pipe(concat('all.js'))
     .pipe(gulpif(isProduction, uglify()))
     .pipe(gulpif(isProduction,
       rename({

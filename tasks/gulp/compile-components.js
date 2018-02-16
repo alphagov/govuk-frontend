@@ -16,10 +16,10 @@ const isPackages = (taskArguments.destination === 'packages') || false
 gulp.task('compile:components', () => {
   return gulp.src(
     [
-      '!' + configPaths.components + '**/index.njk',
-      '!' + configPaths.components + '**/macro.njk',
-      '!' + configPaths.components + '**/template.njk',
-      configPaths.components + '**/*.njk' // Only compile componentname.njk to html
+      '!' + configPaths.govukFrontend + '**/index.njk',
+      '!' + configPaths.govukFrontend + '**/macro.njk',
+      '!' + configPaths.govukFrontend + '**/template.njk',
+      configPaths.govukFrontend + '**/*.njk' // Only compile componentname.njk to html
     ])
     .pipe(debug())
     .pipe(nunjucks.compile('', {

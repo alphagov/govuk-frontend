@@ -16,8 +16,8 @@
   "scripts": {
     "preinstall": "node bin/check-nvmrc.js",
     "prestart": "node bin/check-nvmrc.js",
-    "start": "gulp dev --destination 'public'",
-    "heroku": "gulp compile:components --destination 'public' && gulp copy-assets --destination 'public' && node app/app.js",
+    "start": "gulp dev",
+    "heroku": "gulp review:scss:compile && review:js:compile && node app/app.js",
     "build:packages": "node bin/check-nvmrc.js && gulp build:packages --destination 'packages' && npm run test:build:packages",
     "build:dist": "node bin/check-nvmrc.js && gulp build:dist --destination 'dist' --production && npm run test:build:dist",
     "test": "standard && gulp compile:components --destination 'public' && gulp test && npm run test:app && npm run test:components && npm run test:generate:readme",
@@ -59,7 +59,6 @@
     "merge-stream": "^1.0.1",
     "nodemon": "^1.12.1",
     "oldie": "^1.3.0",
-    "postcss-normalize": "^3.0.0",
     "postcss-pseudo-classes": "^0.2.0",
     "request": "^2.83.0",
     "run-sequence": "^2.2.0",
@@ -69,7 +68,6 @@
   },
   "dependencies": {
     "gulp-if": "^2.0.2",
-    "postcss-nested": "^2.0.2",
     "postcss-scss": "^1.0.0",
     "sass-mq": "^3.3.2"
   },

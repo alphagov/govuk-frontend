@@ -15,7 +15,7 @@ const appViews = [
   configPaths.layouts,
   configPaths.partials,
   configPaths.examples,
-  configPaths.components
+  configPaths.govukFrontend
 ]
 
 // Configure nunjucks
@@ -47,13 +47,15 @@ const server = app.listen(port, () => {
 // Index page - render the component list template
 app.get('/', function (req, res) {
   Promise.all([
-    directoryToObject(path.resolve(configPaths.components)),
+    directoryToObject(path.resolve(configPaths.govukFrontend)),
     directoryToObject(path.resolve(configPaths.examples))
   ]).then(result => {
     const [components, examples] = result
 
+    // filter out globals and all
+    const {globals, all, ...filteredComponents} = components
     res.render('index', {
-      componentsDirectory: components,
+      componentsDirectory: filteredComponents,
       examplesDirectory: examples
     })
   })
@@ -62,7 +64,7 @@ app.get('/', function (req, res) {
 // Whenever the route includes a :component parameter, read the component data
 // from its YAML file
 app.param('component', function (req, res, next, componentName) {
-  let yamlPath = configPaths.components + `${componentName}/${componentName}.yaml`
+  let yamlPath = configPaths.govukFrontend + `${componentName}/${componentName}.yaml`
 
   try {
     res.locals.componentData = yaml.safeLoad(
@@ -75,7 +77,7 @@ app.param('component', function (req, res, next, componentName) {
 })
 
 // Component 'README' page
-app.get('/components/:component', function (req, res, next) {
+app.get('/@govuk-frontend/:component', function (req, res, next) {
   // make variables available to nunjucks template
   res.locals.componentPath = req.params.component
 
@@ -89,7 +91,7 @@ app.get('/components/:component', function (req, res, next) {
 })
 
 // Component example preview
-app.get('/components/:component/:example*?/preview', function (req, res, next) {
+app.get('/@govuk-frontend/:component/:example*?/preview', function (req, res, next) {
   // Find the data for the specified example (or the default example)
   let componentName = req.params.component
   let requestedExampleName = req.params.example || 'default'

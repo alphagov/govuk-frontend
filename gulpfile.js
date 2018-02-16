@@ -1,10 +1,8 @@
 'use strict'
 
-const paths = require('./config/paths.json')
 const gulp = require('gulp')
 const taskListing = require('gulp-task-listing')
 const runsequence = require('run-sequence')
-const taskArguments = require('./tasks/gulp/task-arguments')
 const nodemon = require('nodemon')
 
 // Gulp sub-tasks
@@ -32,14 +30,6 @@ gulp.task('styles', cb => {
   runsequence('scss:lint', 'scss:compile', cb)
 })
 
-// Copy icons task ----------------------
-// Copies icons to /public
-// --------------------------------------
-gulp.task('copy:icons', () => {
-  return gulp.src(paths.src + 'globals/icons/**/*.{png,svg,gif,jpg}')
-    .pipe(gulp.dest(taskArguments.destination + '/icons/'))
-})
-
 // All test combined --------------------
 // Runs js, scss and accessibility tests
 // --------------------------------------
@@ -57,7 +47,6 @@ gulp.task('test', cb => {
 gulp.task('copy-assets', cb => {
   runsequence('styles',
               'scripts',
-              'copy:icons',
             cb)
 })
 
@@ -68,6 +57,7 @@ gulp.task('dev', cb => {
   runsequence('clean',
               'compile:components',
               'generate:readme',
+              'copy-files',
               'copy-assets',
               'serve',
               cb)
@@ -82,27 +72,6 @@ gulp.task('serve', ['watch'], () => {
   return nodemon({
     script: 'app/app.js'
   })
-})
-
-// Build packages task -----------------
-// Prepare package folder for publishing
-// -------------------------------------
-gulp.task('build:packages', cb => {
-  runsequence(
-              'clean',
-              'compile:components',
-              'copy-files',
-              'generate:readme',
-              cb)
-})
-gulp.task('build:dist', cb => {
-  runsequence('clean',
-              'copy-assets',
-              'compile:components',
-              'copy-files',
-              'generate:readme',
-              'update-assets-version',
-              cb)
 })
 
 // Default task -------------------------
