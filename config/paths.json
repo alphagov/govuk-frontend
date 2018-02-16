@@ -8,6 +8,7 @@
   "dist": "dist/",
     "distComponents": "dist/components/",
   "packages": "packages/",
+    "govukFrontend": "packages/@govuk-frontend/",
   "public": "public/",
     "publicComponents": "public/components/",
   "src": "src/",
