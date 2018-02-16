@@ -1,6 +1,6 @@
-@import "../../globals/scss/common";
-@import "../label/label";
-@import "../error-message/error-message";
+@import "@govuk-frontend/globals/common";
+@import "@govuk-frontend/label/label";
+@import "@govuk-frontend/error-message/error-message";
 
 @include exports("textarea") {
   .govuk-c-textarea {

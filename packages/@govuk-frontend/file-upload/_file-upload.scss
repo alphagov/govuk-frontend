@@ -1,4 +1,4 @@
-@import "../../globals/scss/common";
+@import "@govuk-frontend/globals/common";
 
 @include exports("file-upload") {
   .govuk-c-file-upload {

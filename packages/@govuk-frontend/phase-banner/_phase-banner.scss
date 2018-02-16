@@ -1,5 +1,5 @@
-@import "../../globals/scss/common";
-@import "../tag/tag";
+@import "@govuk-frontend/globals/common";
+@import "@govuk-frontend/tag/tag";
 
 @include exports("phase-banner") {
   .govuk-c-phase-banner {
