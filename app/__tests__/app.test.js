@@ -92,7 +92,7 @@ describe('frontend app', () => {
       request.get(requestParamsHomepage, (err, res) => {
         let $ = cheerio.load(res.body)
         let componentsList = $('li a[href^="/@govuk-frontend/"]').get()
-        expect(componentsList.length).toEqual(lib.SrcComponentList.length)
+        expect(componentsList.length).toEqual(lib.PackagesCount.length)
         done(err)
       })
     })
