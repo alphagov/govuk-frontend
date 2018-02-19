@@ -16,7 +16,7 @@ Find out when to use the Textarea component in your service in the [GOV.UK Desig
 
 #### Markup
 
-    <label class="govuk-c-label" for="more-detail">
+    <div class="govuk-o-form-group"><label class="govuk-c-label" for="more-detail">
       Can you provide more detail?
 
       <span class="govuk-c-label__hint">
@@ -25,6 +25,8 @@ Find out when to use the Textarea component in your service in the [GOV.UK Desig
 
     </label>
     <textarea id="more-detail" name="more-detail" rows="5" class="govuk-c-textarea"></textarea>
+
+    </div>
 
 #### Macro
 
@@ -43,7 +45,7 @@ Find out when to use the Textarea component in your service in the [GOV.UK Desig
 
 #### Markup
 
-    <label class="govuk-c-label" for="no-ni-reason">
+    <div class="govuk-o-form-group govuk-o-form-group--error"><label class="govuk-c-label" for="no-ni-reason">
       Why can&#39;t you provide a National Insurance number?
 
       <span class="govuk-c-error-message">
@@ -52,6 +54,8 @@ Find out when to use the Textarea component in your service in the [GOV.UK Desig
 
     </label>
     <textarea id="no-ni-reason" name="no-ni-reason" rows="5" class="govuk-c-textarea govuk-c-textarea--error"></textarea>
+
+    </div>
 
 #### Macro
 
@@ -72,7 +76,7 @@ Find out when to use the Textarea component in your service in the [GOV.UK Desig
 
 #### Markup
 
-    <label class="govuk-c-label" for="full-address">
+    <div class="govuk-o-form-group"><label class="govuk-c-label" for="full-address">
       Full address
 
     </label>
@@ -80,6 +84,8 @@ Find out when to use the Textarea component in your service in the [GOV.UK Desig
     London
     NW1 6XE
     </textarea>
+
+    </div>
 
 #### Macro
 
@@ -98,11 +104,13 @@ Find out when to use the Textarea component in your service in the [GOV.UK Desig
 
 #### Markup
 
-    <label class="govuk-c-label" for="full-address">
+    <div class="govuk-o-form-group"><label class="govuk-c-label" for="full-address">
       Full address
 
     </label>
     <textarea id="full-address" name="address" rows="8" class="govuk-c-textarea"></textarea>
+
+    </div>
 
 #### Macro
 

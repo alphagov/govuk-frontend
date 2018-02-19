@@ -55,7 +55,10 @@ Fixes:
 - Add `govuk-c-select--error` modifier class to the select component instead of relying on `govuk-c-input--error` (PR [#506](https://github.com/alphagov/govuk-frontend/pull/506))
 - Allow error message and hint text to be passed to a select component without requiring a label parameter (PR [#506](https://github.com/alphagov/govuk-frontend/pull/506))
 - Define size of inputs etc in `px` rather than `em`. (PR [#491](https://github.com/alphagov/govuk-frontend/pull/491))
-- Remove scope=row attribute from non-th elements (PR [527](https://github.com/alphagov/govuk-frontend/pull/527)) 
+- Remove scope=row attribute from non-th elements (PR [527](https://github.com/alphagov/govuk-frontend/pull/527))
+- Form components and fieldset now include `govuk-o-form-group` that sets left
+border for errors and a bottom margin. Add example of form errors to preview app
+(PR [#591](https://github.com/alphagov/govuk-frontend/pull/591))
 
 Internal:
 

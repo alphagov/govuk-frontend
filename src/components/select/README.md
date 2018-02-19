@@ -16,19 +16,20 @@ Find out when to use the Select component in your service in the [GOV.UK Design 
 
 #### Markup
 
-    <label class="govuk-c-label" for="select-1">
+    <div class="govuk-o-form-group"><label class="govuk-c-label" for="select-1">
       Label text goes here
 
     </label>
     <select class="govuk-c-select" id="select-1" name="select-1">
 
-      <option value="1">GOV.UK frontend option 1</option>
+        <option value="1">GOV.UK frontend option 1</option>
 
-      <option value="2" selected>GOV.UK frontend option 2</option>
+        <option value="2" selected>GOV.UK frontend option 2</option>
 
-      <option value="3" disabled>GOV.UK frontend option 3</option>
+        <option value="3" disabled>GOV.UK frontend option 3</option>
 
-    </select>
+      </select>
+    </div>
 
 #### Macro
 
@@ -62,7 +63,7 @@ Find out when to use the Select component in your service in the [GOV.UK Design 
 
 #### Markup
 
-    <label class="govuk-c-label" for="select-2">
+    <div class="govuk-o-form-group govuk-o-form-group--error"><label class="govuk-c-label" for="select-2">
       Label text goes here
 
       <span class="govuk-c-label__hint">
@@ -76,13 +77,14 @@ Find out when to use the Select component in your service in the [GOV.UK Design 
     </label>
     <select class="govuk-c-select govuk-c-select--error" id="select-2" name="select-2">
 
-      <option value="1">GOV.UK frontend option 1</option>
+        <option value="1">GOV.UK frontend option 1</option>
 
-      <option value="2">GOV.UK frontend option 2</option>
+        <option value="2">GOV.UK frontend option 2</option>
 
-      <option value="3">GOV.UK frontend option 3</option>
+        <option value="3">GOV.UK frontend option 3</option>
 
-    </select>
+      </select>
+    </div>
 
 #### Macro
 

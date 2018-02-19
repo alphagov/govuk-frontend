@@ -7,6 +7,8 @@
     display: block;
     position: relative;
 
+    min-height: $govuk-spacing-scale-7;
+
     margin-bottom: $govuk-spacing-scale-2;
     padding: 0 0 0 40px;
 
@@ -25,8 +27,8 @@
     top: 0;
     left: 0;
 
-    width: 40px;
-    height: 40px;
+    width: $govuk-spacing-scale-7;
+    height: $govuk-spacing-scale-7;
 
     cursor: pointer;
 
@@ -52,8 +54,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 40px;
-    height: 40px;
+    width: $govuk-spacing-scale-7;
+    height: $govuk-spacing-scale-7;
     border: $govuk-border-width-form-element solid $govuk-text-colour;
     background: transparent;
 

@@ -8,14 +8,16 @@
 
     position: relative;
 
+    min-height: $govuk-spacing-scale-7;
+
     margin-bottom: $govuk-spacing-scale-2;
     padding: 0 0 0 $govuk-spacing-scale-7;
 
     clear: left;
   }
 
-  .govuk-c-radios__item :last-child,
-  .govuk-c-radios__item :last-of-type {
+  .govuk-c-radios__item:last-child,
+  .govuk-c-radios__item:last-of-type {
     margin-bottom: 0;
   }
 
