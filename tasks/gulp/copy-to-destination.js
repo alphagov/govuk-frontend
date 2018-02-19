@@ -9,11 +9,11 @@ const taskArguments = require('./task-arguments')
 const filter = require('gulp-filter')
 const replace = require('gulp-replace')
 
-let scssFiles = filter([path.join(configPaths.govukFrontend, '**/*.scss')], {restore: true})
+let scssFiles = filter([path.join(configPaths.components, '**/*.scss')], {restore: true})
 gulp.task('copy-files', () => {
   return gulp.src([
-    path.join(configPaths.govukFrontend, '**/*'),
-    path.join('!', configPaths.govukFrontend, 'all{,/**/*}')
+    path.join(configPaths.components, '**/*'),
+    path.join('!', configPaths.components, 'all{,/**/*}')
   ])
   .pipe(scssFiles)
   .pipe(replace('//start:devonly', '/*start:devonly'))

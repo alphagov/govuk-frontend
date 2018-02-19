@@ -8,7 +8,7 @@ const sasslint = require('gulp-sass-lint')
 // Javascript lint check -----------------
 // ---------------------------------------
 gulp.task('js:lint', () => {
-  return gulp.src([configPaths.govukFrontend + '**/*.js'])
+  return gulp.src([configPaths.components + '**/*.js'])
     .pipe(standard())
     .pipe(standard.reporter('default', {
       breakOnError: true,
@@ -19,7 +19,7 @@ gulp.task('js:lint', () => {
 // Scss lint check -----------------------
 // ---------------------------------------
 gulp.task('scss:lint', () => {
-  return gulp.src(configPaths.govukFrontend + '**/*.scss')
+  return gulp.src(configPaths.components + '**/*.scss')
     .pipe(sasslint({
       configFile: configPaths.config + '.sass-lint.yml'
     }))

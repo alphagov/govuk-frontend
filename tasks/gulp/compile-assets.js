@@ -22,7 +22,7 @@ const postcsspseudoclasses = require('postcss-pseudo-classes')
 const isProduction = taskArguments.isProduction
 
 gulp.task('scss:compile', () => {
-  let compile = gulp.src(path.join(configPaths.govukFrontend, 'all/all.scss'))
+  let compile = gulp.src(path.join(configPaths.components, 'all/all.scss'))
     .pipe(sass({
       includePaths: configPaths.packages
     }).on('error', sass.logError))
@@ -39,7 +39,7 @@ gulp.task('scss:compile', () => {
     ))
     .pipe(gulp.dest(taskArguments.destination + '/css/'))
 
-  let compileOldIe = gulp.src(path.join(configPaths.govukFrontend, 'all/all-oldie.scss'))
+  let compileOldIe = gulp.src(path.join(configPaths.components, 'all/all-oldie.scss'))
     .pipe(sass({
       includePaths: configPaths.packages
     }).on('error', sass.logError))
@@ -78,8 +78,8 @@ gulp.task('scss:compile', () => {
 // --------------------------------------
 gulp.task('js:compile', () => {
   return gulp.src([
-    '!' + configPaths.govukFrontend + '**/*.test.js',
-    configPaths.govukFrontend + '**/*.js'
+    '!' + configPaths.components + '**/*.test.js',
+    configPaths.components + '**/*.js'
   ])
     .pipe(concat('all.js'))
     .pipe(gulpif(isProduction, uglify()))

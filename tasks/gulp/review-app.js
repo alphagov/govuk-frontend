@@ -51,8 +51,8 @@ gulp.task('review:scss:compile', () => {
 // --------------------------------------
 gulp.task('review:js:compile', () => {
   return gulp.src([
-    '!' + configPaths.govukFrontend + '**/*.test.js',
-    configPaths.govukFrontend + '**/*.js'
+    '!' + configPaths.components + '**/*.test.js',
+    configPaths.components + '**/*.js'
   ])
     .pipe(concat('app.js'))
     .pipe(eol())

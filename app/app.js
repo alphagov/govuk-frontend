@@ -15,7 +15,7 @@ const appViews = [
   configPaths.layouts,
   configPaths.partials,
   configPaths.examples,
-  configPaths.govukFrontend
+  configPaths.components
 ]
 
 // Configure nunjucks
@@ -36,7 +36,7 @@ app.set('view engine', 'njk')
 
 // Set up middleware to serve static assets
 app.use('/public', express.static(configPaths.public))
-app.use('/@govuk-frontend/icons', express.static(path.join(configPaths.govukFrontend, '/icons/')))
+app.use('/@govuk-frontend/icons', express.static(path.join(configPaths.components, '/icons/')))
 
 const server = app.listen(port, () => {
   console.log('Listening on port ' + port + '   url: http://localhost:' + port)
@@ -47,7 +47,7 @@ const server = app.listen(port, () => {
 // Index page - render the component list template
 app.get('/', function (req, res) {
   Promise.all([
-    directoryToObject(path.resolve(configPaths.govukFrontend)),
+    directoryToObject(path.resolve(configPaths.components)),
     directoryToObject(path.resolve(configPaths.examples))
   ]).then(result => {
     const [components, examples] = result
@@ -64,7 +64,7 @@ app.get('/', function (req, res) {
 // Whenever the route includes a :component parameter, read the component data
 // from its YAML file
 app.param('component', function (req, res, next, componentName) {
-  let yamlPath = configPaths.govukFrontend + `${componentName}/${componentName}.yaml`
+  let yamlPath = configPaths.components + `${componentName}/${componentName}.yaml`
 
   try {
     res.locals.componentData = yaml.safeLoad(
