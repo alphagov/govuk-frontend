@@ -344,7 +344,7 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
 ### Checkboxes--with-error
 
-[Preview the checkboxes--with-error example](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-error/preview)
+[Preview the checkboxes--with-error example](http://govuk-frontend-review.herokuapp.com/@govuk-frontend/checkboxes/with-error/preview)
 
 #### Markup
 
