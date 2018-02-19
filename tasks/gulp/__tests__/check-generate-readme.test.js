@@ -25,11 +25,11 @@ require('../generate-readme.js')
 
 describe('Generating READMEs', () => {
   it('should have no dirty changes since they should be committed into source', done => {
-    const componentNames = lib.SrcComponentList.slice()
+    const componentNames = lib.PackagesCount.slice()
 
     const getReadmeContents = () => {
       return componentNames.map(name => {
-        const filePath = path.join(configPaths.components, name, 'README.md')
+        const filePath = path.join(configPaths.govukFrontend, name, 'README.md')
         return readFile(filePath, 'utf8')
           .then(data => {
             return { name, data }
