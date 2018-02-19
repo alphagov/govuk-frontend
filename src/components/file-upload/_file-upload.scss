@@ -5,7 +5,6 @@
     @include govuk-font-regular-19;
     @include govuk-text-colour;
     @include govuk-focusable;
-    @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom");
   }
 
   .govuk-c-file-upload--error {
