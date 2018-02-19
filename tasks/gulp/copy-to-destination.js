@@ -22,5 +22,5 @@ gulp.task('copy-files', () => {
     autoprefixer
   ], {syntax: require('postcss-scss')}))
   .pipe(scssFiles.restore)
-  .pipe(gulp.dest(taskArguments.destination))
+  .pipe(gulp.dest(path.join(taskArguments.destination, '/@govuk-frontend/')))
 })

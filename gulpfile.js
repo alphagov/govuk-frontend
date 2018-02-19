@@ -16,6 +16,8 @@ require('./tasks/gulp/watch.js')
 require('./tasks/gulp/copy-to-destination.js')
 require('./tasks/gulp/asset-version.js')
 
+require('./tasks/gulp/review-app.js')
+
 // Umbrella scripts tasks for preview ---
 // Runs js lint and compilation
 // --------------------------------------
@@ -40,25 +42,14 @@ gulp.task('test', cb => {
               cb)
 })
 
-// Copy assets task for local & heroku --
-// Copies files to
-// taskArguments.destination (public)
-// --------------------------------------
-gulp.task('copy-assets', cb => {
-  runsequence('styles',
-              'scripts',
-            cb)
-})
-
 // Dev task -----------------------------
 // Runs a sequence of task on start
 // --------------------------------------
 gulp.task('dev', cb => {
   runsequence('clean',
-              'compile:components',
               'generate:readme',
-              'copy-files',
-              'copy-assets',
+              'review:scss:compile',
+              'review:js:compile',
               'serve',
               cb)
 })

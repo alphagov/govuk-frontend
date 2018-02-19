@@ -36,7 +36,7 @@ app.set('view engine', 'njk')
 
 // Set up middleware to serve static assets
 app.use('/public', express.static(configPaths.public))
-app.use('/icons', express.static(path.join(configPaths.public, 'icons')))
+app.use('/@govuk-frontend/icons', express.static(path.join(configPaths.govukFrontend, '/icons/')))
 
 const server = app.listen(port, () => {
   console.log('Listening on port ' + port + '   url: http://localhost:' + port)
@@ -53,7 +53,7 @@ app.get('/', function (req, res) {
     const [components, examples] = result
 
     // filter out globals and all
-    const {globals, all, ...filteredComponents} = components
+    const {globals, all, icons, ...filteredComponents} = components
     res.render('index', {
       componentsDirectory: filteredComponents,
       examplesDirectory: examples

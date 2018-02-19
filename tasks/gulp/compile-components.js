@@ -27,5 +27,5 @@ gulp.task('compile:components', () => {
       lstripBlocks: true // automatically remove leading whitespace from a block/tag
     }))
     .pipe(rename({ extname: '.html' }))
-    .pipe(gulp.dest(gulpif(isPackages, taskArguments.destination, taskArguments.destination + '/components/')))
+    .pipe(gulp.dest(gulpif(isPackages, taskArguments.destination, taskArguments.destination + '/@govuk-frontend/')))
 })
