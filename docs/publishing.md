@@ -117,6 +117,9 @@ These tests live in `after-build-dist.test.js`.
 
 16. Open a PR for these changes.
 
+17. Run `lerna clean` to remove `node_modules` directory created in each package. 
+As documented in [Lerna docs](https://github.com/lerna/lerna/#clean)
+
 ## Updating other repos that consume `govuk-frontend`
 
 If you need to update `govuk-frontend` to the latest release on another repo
