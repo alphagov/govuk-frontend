@@ -27,7 +27,7 @@ There are 2 ways to use GOV.UK Frontend:
 To use GOV.UK Frontend with NPM you must:
 
 1. Install the long-term support (LTS) version of [Node.js](https://nodejs.org/en/), which includes NPM.
-2. Create a [package.json file](https://docs.npmjs.com/files/package.json) if you don’t already have one. You can create a default package.json file by running `npm init` from the root of your application.
+2. Create a [package.json file](https://docs.npmjs.com/files/package.json) if you don’t already have one. You can create a default `package.json` file by running `npm init` from the root of your application.
 
 ## Installation
 GOV.UK Frontend is currently in private beta. You will need to log in to NPM using credentials provided by the Design System team.
