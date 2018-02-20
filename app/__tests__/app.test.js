@@ -91,8 +91,8 @@ describe('frontend app', () => {
     it('should display the list of components', done => {
       request.get(requestParamsHomepage, (err, res) => {
         let $ = cheerio.load(res.body)
-        let componentsList = $('li a[href^="/@govuk-frontend/"]').get()
-        expect(componentsList.length).toEqual(lib.PackagesCount.length)
+        let componentsList = $('li a[href^="/components/"]').get()
+        expect(componentsList.length).toEqual(lib.PackagesComponentList.length)
         done(err)
       })
     })

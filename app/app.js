@@ -77,7 +77,7 @@ app.param('component', function (req, res, next, componentName) {
 })
 
 // Component 'README' page
-app.get('/@govuk-frontend/:component', function (req, res, next) {
+app.get('/components/:component', function (req, res, next) {
   // make variables available to nunjucks template
   res.locals.componentPath = req.params.component
 
@@ -91,7 +91,7 @@ app.get('/@govuk-frontend/:component', function (req, res, next) {
 })
 
 // Component example preview
-app.get('/@govuk-frontend/:component/:example*?/preview', function (req, res, next) {
+app.get('/components/:component/:example*?/preview', function (req, res, next) {
   // Find the data for the specified example (or the default example)
   let componentName = req.params.component
   let requestedExampleName = req.params.example || 'default'
