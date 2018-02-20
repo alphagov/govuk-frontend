@@ -1,7 +1,7 @@
 {
   "name": "@govuk-frontend/file-upload",
-  "version": "0.0.22-alpha",
+  "version": "0.0.23-alpha",
   "dependencies": {
-    "@govuk-frontend/globals": "^0.0.22-alpha"
+    "@govuk-frontend/globals": "^0.0.23-alpha"
   }
 }

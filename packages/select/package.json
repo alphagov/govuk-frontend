@@ -1,8 +1,8 @@
 {
   "name": "@govuk-frontend/select",
-  "version": "0.0.22-alpha",
+  "version": "0.0.23-alpha",
   "dependencies": {
-    "@govuk-frontend/globals": "^0.0.22-alpha",
-    "@govuk-frontend/label": "^0.0.22-alpha"
+    "@govuk-frontend/globals": "^0.0.23-alpha",
+    "@govuk-frontend/label": "^0.0.23-alpha"
   }
 }
