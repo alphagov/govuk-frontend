@@ -118,6 +118,7 @@ Add the CSS and JavaScript code to your HTML template:
     <button class="govuk-c-button">This is a button component</button>
     <script src="assets/govuk-frontend-[latest version].min.js"></script>
   </body>
+</html>
 ```
 
 ## Usage 
