@@ -33,47 +33,60 @@ To use GOV.UK Frontend with NPM you must:
 GOV.UK Frontend is currently in private beta. You will need to log in to NPM using credentials provided by the Design System team.
 
 Run the following command to log in:
-`npm login`
+```
+npm login
+```
 
 Enter the username, password and email address you were provided with, when prompted. 
 
 You can install all components or one or more individual components depending on your needs.
 
 To install all components, run:
-`npm install --save @govuk-frontend/all`
+```
+npm install --save @govuk-frontend/all
+```
 
 
 To install individual components (for example, a button), run:
-`npm install --save @govuk-frontend/button`
-
+```
+npm install --save @govuk-frontend/button
+```
 You can find a list of all components in the [packages directory](https://github.com/alphagov/govuk-frontend/tree/master/packages). Each component has a README with installation and usage instructions.
 
-After you have installed GOV.UK Frontend the @govuk-frontend package will appear in your node_modules folder.
+After you have installed GOV.UK Frontend the `@govuk-frontend` package will appear in your `node_modules` folder.
 
 ## Import assets
 
 Import styles into your main Sass file.
 
 To import all components, add the line:
-`@import "@govuk-frontend/all/all";`
+```CSS
+@import "@govuk-frontend/all/all";
+```
 
 To import an individual component (for example, a button), add the line:
-`@import "@govuk-frontend/button/button";`
+```CSS
+@import "@govuk-frontend/button/button";
+```
 
 
-To resolve your @import declarations you should add `node_modules` to your [Sass include paths](https://github.com/sass/node-sass#includepaths) or [load paths](url here) in Ruby.
+To resolve your `@import` declarations you should add `node_modules` to your [Sass include paths](https://github.com/sass/node-sass#includepaths) or [load paths](url here) in Ruby.
 
 Below is a code sample you can add to your gulp configuration file using the gulp-sass package:
-`.pipe(sass({ includePaths: 'node_modules/' }))`
+```JS
+.pipe(sass({ includePaths: 'node_modules/' }))
+```
 
 To import images, configure your application to reference or copy the icons assets.
 
 Below is a code sample you can add to your [express.js](https://expressjs.com/) configuration:
-`app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))`
+```JS
+app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
+```
 
 ## Usage
 
-Copy and paste code from the examples in the GOV.UK [Design System](https://govuk-design-system-production.cloudapps.digital/)  to use GOV.UK Frontend in your service.
+Copy and paste code from the examples in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/) to use GOV.UK Frontend in your service.
 
 <a id="option2"></a> 
 
@@ -91,31 +104,30 @@ Download the latest versions of the following assets and include them in your pr
 
 Add the CSS and JavaScript code to your HTML template:
 
-~~~
+```html
 <!DOCTYPE html>
-<html>
   <head>
     <title>Example</title>
-    <link rel="stylesheet" href="assets/govuk-frontend-[latest version]-alpha.min.css">
+    <link rel="stylesheet" href="assets/govuk-frontend-[latest version]-.min.css">
     <!--[if IE 8]>
-      <link rel="stylesheet" href="assets/govuk-frontend-oldie-[latest version]-alpha.min.css">
+      <link rel="stylesheet" href="assets/govuk-frontend-oldie-[latest version]-.min.css">
     <![endif]-->
   </head>
   <body>
     <!-- Copy and paste component HTML-->
     <button class="govuk-c-button">This is a button component</button>
-    <script src="assets/govuk-frontend-[latest version]-alpha.min.js"></script>
+    <script src="assets/govuk-frontend-[latest version]-.min.js"></script>
   </body>
-</html>
-~~~
+```
+
 ## Usage 
 
-Copy and paste code from the examples in the GOV.UK [Design System](https://govuk-design-system-production.cloudapps.digital/)  to use GOV.UK Frontend in your service.
+Copy and paste code from the examples in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/) to use GOV.UK Frontend in your service.
 
 
 ## Licence
 
-This project is licensed under the [MIT License](https://github.com/angular/angular.js/blob/master/LICENSE).
+This project is licensed under the [MIT License](https://github.com/TechPunk316/govuk-frontend/blob/master/LICENSE.txt).
 
 ## Contribution
 
