@@ -4,9 +4,7 @@
       {{ params.summaryHtml | safe if params.summaryHtml else params.summaryText }}
     </span>
   </summary>
-  <div class="govuk-c-border govuk-c-border--left-narrow">
-    <div class="govuk-c-details__text">
-      {{ params.html | safe if params.html else params.text }}
-    </div>
+  <div class="govuk-c-details__text">
+    {{ params.html | safe if params.html else params.text }}
   </div>
 </details>

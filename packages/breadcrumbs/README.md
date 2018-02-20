@@ -6,7 +6,7 @@ The Breadcrumbs component helps users to understand where they are within a webs
 
 ## Guidance
 
-More information about when to use breadcrumbs can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/breadcrumbs "Link to read guidance on the use of breadcrumbs on Gov.uk Design system website")
+Find out when to use the Breadcrumbs component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/breadcrumbs).
 
 ## Quick start examples
 
@@ -47,7 +47,7 @@ More information about when to use breadcrumbs can be found on [GOV.UK Design Sy
 
 ### Breadcrumbs--single-section
 
-[Preview the breadcrumbs--single-section variant](http://govuk-frontend-review.herokuapp.com/components/breadcrumbs/single-section/preview)
+[Preview the breadcrumbs--single-section example](http://govuk-frontend-review.herokuapp.com/components/breadcrumbs/single-section/preview)
 
 #### Markup
 
@@ -74,7 +74,7 @@ More information about when to use breadcrumbs can be found on [GOV.UK Design Sy
 
 ### Breadcrumbs--many-breadcrumbs
 
-[Preview the breadcrumbs--many-breadcrumbs variant](http://govuk-frontend-review.herokuapp.com/components/breadcrumbs/many-breadcrumbs/preview)
+[Preview the breadcrumbs--many-breadcrumbs example](http://govuk-frontend-review.herokuapp.com/components/breadcrumbs/many-breadcrumbs/preview)
 
 #### Markup
 
@@ -125,7 +125,7 @@ More information about when to use breadcrumbs can be found on [GOV.UK Design Sy
 
 ### Breadcrumbs--no-home-section
 
-[Preview the breadcrumbs--no-home-section variant](http://govuk-frontend-review.herokuapp.com/components/breadcrumbs/no-home-section/preview)
+[Preview the breadcrumbs--no-home-section example](http://govuk-frontend-review.herokuapp.com/components/breadcrumbs/no-home-section/preview)
 
 #### Markup
 
@@ -160,7 +160,7 @@ More information about when to use breadcrumbs can be found on [GOV.UK Design Sy
 
 ### Breadcrumbs--last-breadcrumb-is-current-page
 
-[Preview the breadcrumbs--last-breadcrumb-is-current-page variant](http://govuk-frontend-review.herokuapp.com/components/breadcrumbs/last-breadcrumb-is-current-page/preview)
+[Preview the breadcrumbs--last-breadcrumb-is-current-page example](http://govuk-frontend-review.herokuapp.com/components/breadcrumbs/last-breadcrumb-is-current-page/preview)
 
 #### Markup
 
@@ -206,7 +206,7 @@ Please note, this component depends on @govuk-frontend/globals and @govuk-fronte
 
 ## Installation
 
-      npm install --save @govuk-frontend/breadcrumbs
+    npm install --save @govuk-frontend/breadcrumbs
 
 ## Requirements
 
@@ -214,15 +214,15 @@ Please note, this component depends on @govuk-frontend/globals and @govuk-fronte
 
 When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
 
-      .pipe(sass({
-        includePaths: 'node_modules/'
-      }))
+    .pipe(sass({
+      includePaths: 'node_modules/'
+    }))
 
 ### Static asset path configuration
 
 To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
 
-      app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
+    app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
 ## Component arguments
 
@@ -328,21 +328,21 @@ If you are using Nunjucks,then macros take the following arguments
 
 Below is an example setup using express configure views:
 
-      nunjucks.configure('node_modules/@govuk-frontend', {
-        autoescape: true,
-        cache: false,
-        express: app
-      })
+    nunjucks.configure('node_modules/@govuk-frontend', {
+      autoescape: true,
+      cache: false,
+      express: app
+    })
 
 ## Getting updates
 
 To check whether you have the latest version of the button run:
 
-      npm outdated @govuk-frontend/breadcrumbs
+    npm outdated @govuk-frontend/breadcrumbs
 
 To update the latest version run:
 
-      npm update @govuk-frontend/breadcrumbs
+    npm update @govuk-frontend/breadcrumbs
 
 ## Contribution
 

@@ -1,36 +1,47 @@
-// Semantic colour names
+// Text colour
+
+$govuk-text-colour: $govuk-black;
+
+// Text colour for print media
+//
+// Use 'true black' to avoid printers using colour ink to print body text
+
+$govuk-print-text-colour: #000000;
+
+// Secondary text colour
+//
+// Used for 'muted' text, help text, etc.
+
+$govuk-secondary-text-colour: $govuk-grey-1;
+
+// Links
+
 $govuk-link-colour: $govuk-blue;
-$govuk-link-active-colour: $govuk-light-blue;
-$govuk-link-hover-colour: $govuk-light-blue;
 $govuk-link-visited-colour: #4c2c92;
-$govuk-button-colour: #00823b;
-$govuk-button-colour-darken-15: darken($govuk-button-colour, 15%);
+$govuk-link-hover-colour: $govuk-light-blue;
+$govuk-link-active-colour: $govuk-light-blue;
+
+// Focus colour
+//
+// Used for outline (and background, where appropriate) when interactive
+// elements (links, form controls) have keyboard focus.
+
 $govuk-focus-colour: $govuk-yellow;
-$govuk-text-colour: $govuk-black;             // Standard text colour
-$govuk-print-text-colour: #000000;            // Text colour when printing
-$govuk-secondary-text-colour: $govuk-grey-1;  // Section headers, help text etc.
-$govuk-border-colour: $govuk-grey-2;          // Borders, seperators, rules, keylines etc.
-$govuk-panel-colour: $govuk-grey-3;           // Related links panel, page footer etc.
-$govuk-canvas-colour: $govuk-grey-4;          // Page background
-$govuk-highlight-colour: $govuk-grey-4;       // Table stripes etc.
-$govuk-page-colour: $govuk-white;             // The page
-$govuk-discovery-colour: $govuk-fuschia;      // Discovery badges and banners
-$govuk-alpha-colour: $govuk-pink;             // Alpha badges and banners
-$govuk-beta-colour: $govuk-orange;            // Beta badges and banners
-$govuk-live-colour: $govuk-grass-green;       // Live badges and banners
-$govuk-error-colour: $govuk-red;              // Error text and border colour
-$govuk-error-background: #fef7f7;       // Error background colour
 
-// https://github.com/alphagov/govuk_template/blob/master/source/assets/stylesheets/styleguide/_colours.scss#L3
-// GOV.UK template colours
+// Error colour
+//
+// Used to highlight error messages and form controls in an error state
 
-$govuk-proposition-border: #2e3133;
-// Based on GOV.UK brand blue but slightly lighter so it hits contrast on the
-// black header bar when used as copy colour.
-$govuk-proposition-active-nav: #1d8feb;
+$govuk-error-colour: $govuk-red;
 
-$govuk-footer-background: $govuk-grey-3;
-$govuk-footer-border-top: #a1acb2;
-$govuk-footer-link: #454a4c;
-$govuk-footer-link-hover: #171819;
-$govuk-footer-text: $govuk-footer-link;
+// Border colour
+//
+// Used for borders, separators, rules, keylines etc.
+
+$govuk-border-colour: $govuk-grey-2;
+
+// Buttons
+
+$govuk-button-colour: #00823b;
+$govuk-button-hover-colour: darken($govuk-button-colour, 5%);
+$govuk-button-shadow-colour: darken($govuk-button-colour, 15%);

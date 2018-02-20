@@ -1,12 +1,12 @@
-#  Warning text
+# Warning text
 
 ## Introduction
 
-Use bold text with an exclamation icon if there are  consequences - for example, a fine or prison sentence.
+Use bold text with an exclamation icon if there are consequences - for example, a fine or prison sentence.
 
 ## Guidance
 
-More information about when to use warning-text can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/warning-text "Link to read guidance on the use of warning-text on Gov.uk Design system website")
+Find out when to use the Warning text component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/warning-text).
 
 ## Quick start examples
 
@@ -26,9 +26,8 @@ More information about when to use warning-text can be found on [GOV.UK Design S
 
 #### Macro
 
-    {{ govukwarningText({
-      "classes": null,
-      "warningText": "You can be fined up to £5,000 if you don’t register.",
+    {{ govukWarningText({
+      "text": "You can be fined up to £5,000 if you don’t register.",
       "iconFallbackText": "Warning"
     }) }}
 
@@ -38,7 +37,7 @@ To consume the warning-text component you must be running npm version 5 or above
 
 ## Installation
 
-      npm install --save @govuk-frontend/warning-text
+    npm install --save @govuk-frontend/warning-text
 
 ## Requirements
 
@@ -46,15 +45,15 @@ To consume the warning-text component you must be running npm version 5 or above
 
 When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
 
-      .pipe(sass({
-        includePaths: 'node_modules/'
-      }))
+    .pipe(sass({
+      includePaths: 'node_modules/'
+    }))
 
 ### Static asset path configuration
 
 To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
 
-      app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
+    app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
 ## Component arguments
 
@@ -106,13 +105,37 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header" scope="row">warningText</th>
+<th class="govuk-c-table__header" scope="row">text</th>
 
 <td class="govuk-c-table__cell ">string</td>
 
 <td class="govuk-c-table__cell ">Yes</td>
 
 <td class="govuk-c-table__cell ">The text next to the icon</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">html</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">Yes</td>
+
+<td class="govuk-c-table__cell ">HTML for the warning text content. If this is provided, the text argument is ignored.</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">attributes</th>
+
+<td class="govuk-c-table__cell ">object</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">Any extra HTML attributes (for example data attributes) to add to the textarea tag</td>
 
 </tr>
 
@@ -124,21 +147,21 @@ If you are using Nunjucks,then macros take the following arguments
 
 Below is an example setup using express configure views:
 
-      nunjucks.configure('node_modules/@govuk-frontend', {
-        autoescape: true,
-        cache: false,
-        express: app
-      })
+    nunjucks.configure('node_modules/@govuk-frontend', {
+      autoescape: true,
+      cache: false,
+      express: app
+    })
 
 ## Getting updates
 
 To check whether you have the latest version of the button run:
 
-      npm outdated @govuk-frontend/warning-text
+    npm outdated @govuk-frontend/warning-text
 
 To update the latest version run:
 
-      npm update @govuk-frontend/warning-text
+    npm update @govuk-frontend/warning-text
 
 ## Contribution
 

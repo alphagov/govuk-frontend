@@ -72,6 +72,14 @@
 //        Generally Used to create override classes.
 
 @mixin govuk-typography-responsive($font-map, $override-line-height: false, $important: false) {
+
+  // Ensure that $font-map is actually a map
+  $actual-input-type: type-of($font-map);
+  @if $actual-input-type != "map" {
+    @error "Expected a map of breakpoints and font sizes, but got a "
+    + "#{$actual-input-type}. Make sure you are passing a font map.";
+  }
+
   @each $breakpoint, $breakpoint-map in $font-map {
     $font-size: map-get($breakpoint-map, "font-size") iff($important, !important);
     $line-height: map-get($breakpoint-map, "line-height") iff($important, !important);

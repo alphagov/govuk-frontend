@@ -6,7 +6,7 @@ A multi-line text field.
 
 ## Guidance
 
-More information about when to use textarea can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/textarea "Link to read guidance on the use of textarea on Gov.uk Design system website")
+Find out when to use the Textarea component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/textarea).
 
 ## Quick start examples
 
@@ -16,7 +16,7 @@ More information about when to use textarea can be found on [GOV.UK Design Syste
 
 #### Markup
 
-    <label class="govuk-c-label" for="more-detail">
+    <div class="govuk-o-form-group"><label class="govuk-c-label" for="more-detail">
       Can you provide more detail?
 
       <span class="govuk-c-label__hint">
@@ -25,6 +25,8 @@ More information about when to use textarea can be found on [GOV.UK Design Syste
 
     </label>
     <textarea id="more-detail" name="more-detail" rows="5" class="govuk-c-textarea"></textarea>
+
+    </div>
 
 #### Macro
 
@@ -39,19 +41,21 @@ More information about when to use textarea can be found on [GOV.UK Design Syste
 
 ### Textarea--with error message
 
-[Preview the textarea--with error message variant](http://govuk-frontend-review.herokuapp.com/components/textarea/with error message/preview)
+[Preview the textarea--with error message example](http://govuk-frontend-review.herokuapp.com/components/textarea/with error message/preview)
 
 #### Markup
 
-    <label class="govuk-c-label" for="no-ni-reason">
+    <div class="govuk-o-form-group govuk-o-form-group--error"><label class="govuk-c-label" for="no-ni-reason">
       Why can&#39;t you provide a National Insurance number?
 
       <span class="govuk-c-error-message">
-       You must provide an explanation
+      You must provide an explanation
     </span>
 
     </label>
     <textarea id="no-ni-reason" name="no-ni-reason" rows="5" class="govuk-c-textarea govuk-c-textarea--error"></textarea>
+
+    </div>
 
 #### Macro
 
@@ -68,11 +72,11 @@ More information about when to use textarea can be found on [GOV.UK Design Syste
 
 ### Textarea--with default value
 
-[Preview the textarea--with default value variant](http://govuk-frontend-review.herokuapp.com/components/textarea/with default value/preview)
+[Preview the textarea--with default value example](http://govuk-frontend-review.herokuapp.com/components/textarea/with default value/preview)
 
 #### Markup
 
-    <label class="govuk-c-label" for="full-address">
+    <div class="govuk-o-form-group"><label class="govuk-c-label" for="full-address">
       Full address
 
     </label>
@@ -80,6 +84,8 @@ More information about when to use textarea can be found on [GOV.UK Design Syste
     London
     NW1 6XE
     </textarea>
+
+    </div>
 
 #### Macro
 
@@ -94,15 +100,17 @@ More information about when to use textarea can be found on [GOV.UK Design Syste
 
 ### Textarea--with custom rows
 
-[Preview the textarea--with custom rows variant](http://govuk-frontend-review.herokuapp.com/components/textarea/with custom rows/preview)
+[Preview the textarea--with custom rows example](http://govuk-frontend-review.herokuapp.com/components/textarea/with custom rows/preview)
 
 #### Markup
 
-    <label class="govuk-c-label" for="full-address">
+    <div class="govuk-o-form-group"><label class="govuk-c-label" for="full-address">
       Full address
 
     </label>
     <textarea id="full-address" name="address" rows="8" class="govuk-c-textarea"></textarea>
+
+    </div>
 
 #### Macro
 
@@ -121,7 +129,7 @@ To consume the textarea component you must be running npm version 5 or above.
 
 ## Installation
 
-      npm install --save @govuk-frontend/textarea
+    npm install --save @govuk-frontend/textarea
 
 ## Requirements
 
@@ -129,15 +137,15 @@ To consume the textarea component you must be running npm version 5 or above.
 
 When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
 
-      .pipe(sass({
-        includePaths: 'node_modules/'
-      }))
+    .pipe(sass({
+      includePaths: 'node_modules/'
+    }))
 
 ### Static asset path configuration
 
 To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
 
-      app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
+    app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
 ## Component arguments
 
@@ -267,21 +275,21 @@ If you are using Nunjucks,then macros take the following arguments
 
 Below is an example setup using express configure views:
 
-      nunjucks.configure('node_modules/@govuk-frontend', {
-        autoescape: true,
-        cache: false,
-        express: app
-      })
+    nunjucks.configure('node_modules/@govuk-frontend', {
+      autoescape: true,
+      cache: false,
+      express: app
+    })
 
 ## Getting updates
 
 To check whether you have the latest version of the button run:
 
-      npm outdated @govuk-frontend/textarea
+    npm outdated @govuk-frontend/textarea
 
 To update the latest version run:
 
-      npm update @govuk-frontend/textarea
+    npm update @govuk-frontend/textarea
 
 ## Contribution
 

@@ -8,14 +8,16 @@
 
     position: relative;
 
+    min-height: $govuk-spacing-scale-7;
+
     margin-bottom: $govuk-spacing-scale-2;
-    padding: 0 0 0 em($govuk-spacing-scale-7, 19px);
+    padding: 0 0 0 $govuk-spacing-scale-7;
 
     clear: left;
   }
 
-  .govuk-c-radios__item :last-child,
-  .govuk-c-radios__item :last-of-type {
+  .govuk-c-radios__item:last-child,
+  .govuk-c-radios__item:last-of-type {
     margin-bottom: 0;
   }
 
@@ -32,8 +34,8 @@
     top: 0;
     left: 0;
 
-    width: em($govuk-spacing-scale-7, 19px);
-    height: em($govuk-spacing-scale-7, 19px);
+    width: $govuk-spacing-scale-7;
+    height: $govuk-spacing-scale-7;
 
     cursor: pointer;
 
@@ -46,7 +48,7 @@
 
   .govuk-c-radios__label {
     display: block;
-    padding: em(8px, 19px) em($govuk-spacing-scale-3, 19px) em($govuk-spacing-scale-1, 19px);
+    padding: 8px $govuk-spacing-scale-3 $govuk-spacing-scale-1;
     cursor: pointer;
     // remove 300ms pause on mobile
     -ms-touch-action: manipulation;
@@ -61,8 +63,8 @@
     top: 0;
     left: 0;
 
-    width: em($govuk-spacing-scale-7, 19px);
-    height: em($govuk-spacing-scale-7, 19px);
+    width: $govuk-spacing-scale-7;
+    height: $govuk-spacing-scale-7;
 
     border: $govuk-border-width-form-element solid;
     border-radius: 50%;
@@ -73,13 +75,13 @@
     content: "";
 
     position: absolute;
-    top: em($govuk-spacing-scale-2, 19px);
-    left: em($govuk-spacing-scale-2, 19px);
+    top: $govuk-spacing-scale-2;
+    left: $govuk-spacing-scale-2;
 
     width: 0;
     height: 0;
 
-    border: em($govuk-spacing-scale-2, 19px) solid;
+    border: $govuk-spacing-scale-2 solid;
     border-radius: 50%;
     opacity: 0;
     background: currentColor;
