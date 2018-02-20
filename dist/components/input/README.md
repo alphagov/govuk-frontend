@@ -6,7 +6,7 @@ A single-line text field.
 
 ## Guidance
 
-More information about when to use input can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/input "Link to read guidance on the use of input on Gov.uk Design system website")
+Find out when to use the Input component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/text-input).
 
 ## Quick start examples
 
@@ -16,11 +16,12 @@ More information about when to use input can be found on [GOV.UK Design System](
 
 #### Markup
 
-    <label class="govuk-c-label" for="input-1">
+    <div class="govuk-o-form-group"><label class="govuk-c-label" for="input-1">
       National Insurance number
 
     </label>
     <input class="govuk-c-input" id="input-1" name="test-name" type="text">
+    </div>
 
 #### Macro
 
@@ -34,11 +35,11 @@ More information about when to use input can be found on [GOV.UK Design System](
 
 ### Input--with-hint-text
 
-[Preview the input--with-hint-text variant](http://govuk-frontend-review.herokuapp.com/components/input/with-hint-text/preview)
+[Preview the input--with-hint-text example](http://govuk-frontend-review.herokuapp.com/components/input/with-hint-text/preview)
 
 #### Markup
 
-    <label class="govuk-c-label" for="input-2">
+    <div class="govuk-o-form-group"><label class="govuk-c-label" for="input-2">
       National insurance number
 
       <span class="govuk-c-label__hint">
@@ -47,6 +48,7 @@ More information about when to use input can be found on [GOV.UK Design System](
 
     </label>
     <input class="govuk-c-input" id="input-2" name="test-name-2" type="text">
+    </div>
 
 #### Macro
 
@@ -61,11 +63,11 @@ More information about when to use input can be found on [GOV.UK Design System](
 
 ### Input--with-error-message
 
-[Preview the input--with-error-message variant](http://govuk-frontend-review.herokuapp.com/components/input/with-error-message/preview)
+[Preview the input--with-error-message example](http://govuk-frontend-review.herokuapp.com/components/input/with-error-message/preview)
 
 #### Markup
 
-    <label class="govuk-c-label" for="input-3">
+    <div class="govuk-o-form-group govuk-o-form-group--error"><label class="govuk-c-label" for="input-3">
       National Insurance number
 
       <span class="govuk-c-label__hint">
@@ -73,11 +75,12 @@ More information about when to use input can be found on [GOV.UK Design System](
       </span>
 
       <span class="govuk-c-error-message">
-       Error message goes here
+      Error message goes here
     </span>
 
     </label>
     <input class="govuk-c-input govuk-c-input--error" id="input-3" name="test-name-3" type="text">
+    </div>
 
 #### Macro
 
@@ -99,7 +102,7 @@ To consume the input component you must be running npm version 5 or above.
 
 ## Installation
 
-      npm install --save @govuk-frontend/input
+    npm install --save @govuk-frontend/input
 
 ## Requirements
 
@@ -107,15 +110,15 @@ To consume the input component you must be running npm version 5 or above.
 
 When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
 
-      .pipe(sass({
-        includePaths: 'node_modules/'
-      }))
+    .pipe(sass({
+      includePaths: 'node_modules/'
+    }))
 
 ### Static asset path configuration
 
 To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
 
-      app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
+    app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
 ## Component arguments
 
@@ -233,21 +236,21 @@ If you are using Nunjucks,then macros take the following arguments
 
 Below is an example setup using express configure views:
 
-      nunjucks.configure('node_modules/@govuk-frontend', {
-        autoescape: true,
-        cache: false,
-        express: app
-      })
+    nunjucks.configure('node_modules/@govuk-frontend', {
+      autoescape: true,
+      cache: false,
+      express: app
+    })
 
 ## Getting updates
 
 To check whether you have the latest version of the button run:
 
-      npm outdated @govuk-frontend/input
+    npm outdated @govuk-frontend/input
 
 To update the latest version run:
 
-      npm update @govuk-frontend/input
+    npm update @govuk-frontend/input
 
 ## Contribution
 

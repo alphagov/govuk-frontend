@@ -1,38 +1,43 @@
-# Cookie banner
+# Warning text
 
 ## Introduction
 
-GOV.UK cookie message, with link to cookie help page.
+Use bold text with an exclamation icon if there are consequences - for example, a fine or prison sentence.
 
 ## Guidance
 
-More information about when to use cookie-banner can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/cookie-banner "Link to read guidance on the use of cookie-banner on Gov.uk Design system website")
+Find out when to use the Warning text component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/warning-text).
 
 ## Quick start examples
 
 ### Component default
 
-[Preview the cookie-banner component](http://govuk-frontend-review.herokuapp.com/components/cookie-banner/preview)
+[Preview the warning-text component](http://govuk-frontend-review.herokuapp.com/components/warning-text/preview)
 
 #### Markup
 
-    <div class="govuk-c-cookie-banner js-cookie-banner">
-      <p class="govuk-c-cookie-banner__message">GOV.UK uses cookies to make the site simpler. <a href="https://www.gov.uk/help/cookies" class="govuk-link">Find out more about cookies</a></p>
+    <div class="govuk-c-warning-text">
+      <span class="govuk-c-warning-text__icon govuk-o-circle" aria-hidden="true">!</span>
+      <strong class="govuk-c-warning-text__text">
+        <span class="govuk-c-warning-text__assistive">Warning</span>
+        You can be fined up to £5,000 if you don’t register.
+      </strong>
     </div>
 
 #### Macro
 
-    {{ govukCookieBanner({
-      "html": "GOV.UK uses cookies to make the site simpler. <a href=\"https://www.gov.uk/help/cookies\" class=\"govuk-link\">Find out more about cookies</a>"
+    {{ govukWarningText({
+      "text": "You can be fined up to £5,000 if you don’t register.",
+      "iconFallbackText": "Warning"
     }) }}
 
 ## Dependencies
 
-To consume the cookie-banner component you must be running npm version 5 or above.
+To consume the warning-text component you must be running npm version 5 or above.
 
 ## Installation
 
-      npm install --save @govuk-frontend/cookie-banner
+    npm install --save @govuk-frontend/warning-text
 
 ## Requirements
 
@@ -40,15 +45,15 @@ To consume the cookie-banner component you must be running npm version 5 or abov
 
 When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
 
-      .pipe(sass({
-        includePaths: 'node_modules/'
-      }))
+    .pipe(sass({
+      includePaths: 'node_modules/'
+    }))
 
 ### Static asset path configuration
 
 To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
 
-      app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
+    app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
 ## Component arguments
 
@@ -88,13 +93,25 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-c-table__row">
 
+<th class="govuk-c-table__header" scope="row">iconFallbackText</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">Yes</td>
+
+<td class="govuk-c-table__cell ">The fallback text for the icon</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
 <th class="govuk-c-table__header" scope="row">text</th>
 
 <td class="govuk-c-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">No</td>
+<td class="govuk-c-table__cell ">Yes</td>
 
-<td class="govuk-c-table__cell ">Text to use for the cookie-banner message</td>
+<td class="govuk-c-table__cell ">The text next to the icon</td>
 
 </tr>
 
@@ -104,9 +121,9 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-c-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">No</td>
+<td class="govuk-c-table__cell ">Yes</td>
 
-<td class="govuk-c-table__cell ">HTML to use for the cookie-banner message. If this is provided, the text argument will be ignored.</td>
+<td class="govuk-c-table__cell ">HTML for the warning text content. If this is provided, the text argument is ignored.</td>
 
 </tr>
 
@@ -118,7 +135,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-c-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Any extra HTML attributes (for example data attributes) to add to the cookie-banner container.</td>
+<td class="govuk-c-table__cell ">Any extra HTML attributes (for example data attributes) to add to the textarea tag</td>
 
 </tr>
 
@@ -130,21 +147,21 @@ If you are using Nunjucks,then macros take the following arguments
 
 Below is an example setup using express configure views:
 
-      nunjucks.configure('node_modules/@govuk-frontend', {
-        autoescape: true,
-        cache: false,
-        express: app
-      })
+    nunjucks.configure('node_modules/@govuk-frontend', {
+      autoescape: true,
+      cache: false,
+      express: app
+    })
 
 ## Getting updates
 
 To check whether you have the latest version of the button run:
 
-      npm outdated @govuk-frontend/cookie-banner
+    npm outdated @govuk-frontend/warning-text
 
 To update the latest version run:
 
-      npm update @govuk-frontend/cookie-banner
+    npm update @govuk-frontend/warning-text
 
 ## Contribution
 
