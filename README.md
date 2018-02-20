@@ -108,15 +108,15 @@ Add the CSS and JavaScript code to your HTML template:
 <!DOCTYPE html>
   <head>
     <title>Example</title>
-    <link rel="stylesheet" href="assets/govuk-frontend-[latest version]-.min.css">
+    <link rel="stylesheet" href="assets/govuk-frontend-[latest version].min.css">
     <!--[if IE 8]>
-      <link rel="stylesheet" href="assets/govuk-frontend-oldie-[latest version]-.min.css">
+      <link rel="stylesheet" href="assets/govuk-frontend-oldie-[latest version].min.css">
     <![endif]-->
   </head>
   <body>
     <!-- Copy and paste component HTML-->
     <button class="govuk-c-button">This is a button component</button>
-    <script src="assets/govuk-frontend-[latest version]-.min.js"></script>
+    <script src="assets/govuk-frontend-[latest version].min.js"></script>
   </body>
 ```
 
