@@ -70,7 +70,7 @@ To import an individual component (for example, a button), add the line:
 ```
 
 
-To resolve your `@import` declarations you should add `node_modules` to your [Sass include paths](https://github.com/sass/node-sass#includepaths) or [load paths](url here) in Ruby.
+To resolve your `@import` declarations you should add `node_modules` to your [Sass include paths](https://github.com/sass/node-sass#includepaths) or [assets paths](http://guides.rubyonrails.org/asset_pipeline.html#search-paths) in Ruby.
 
 Below is a code sample you can add to your gulp configuration file using the gulp-sass package:
 ```JS
