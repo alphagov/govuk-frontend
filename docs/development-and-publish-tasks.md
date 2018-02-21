@@ -59,7 +59,7 @@ This task will:
 **`gulp test`**
 
 This task will:
-- run accessibility test (tenon)
+- Run scss:lint and js:lint
 
 **`gulp watch`**
 

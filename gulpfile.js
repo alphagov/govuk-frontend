@@ -10,7 +10,6 @@ const nodemon = require('nodemon')
 // Gulp sub-tasks
 require('./tasks/gulp/clean.js')
 require('./tasks/gulp/lint.js')
-require('./tasks/gulp/test-components.js')
 require('./tasks/gulp/compile-assets.js')
 require('./tasks/gulp/compile-components.js')
 require('./tasks/gulp/generate-readme.js')
@@ -48,7 +47,6 @@ gulp.task('test', cb => {
   runsequence(
               'js:lint',
               'scss:lint',
-              'html:tenon',
               cb)
 })
 

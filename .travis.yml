@@ -5,7 +5,6 @@ sudo: false
 before_install:
   - if [[ `npm -v | cut -d. -f1` -lt 5 ]]; then npm i -g npm@latest; fi
   - npm --version
-  - openssl aes-256-cbc -K $encrypted_ca4a154c2e6b_key -iv $encrypted_ca4a154c2e6b_iv -in config/tenon.json.enc -out config/tenon.json -d
 install:
   - npm install --no-optional
 before_deploy:
