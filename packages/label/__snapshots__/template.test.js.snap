@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Label with dependant components renders the error message text 1`] = `
-
-<span class="govuk-c-error-message">
-  Error message goes here
-</span>
-
-`;
