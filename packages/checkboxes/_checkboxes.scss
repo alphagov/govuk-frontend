@@ -7,8 +7,10 @@
     display: block;
     position: relative;
 
+    min-height: $govuk-spacing-scale-7;
+
     margin-bottom: $govuk-spacing-scale-2;
-    padding: 0 0 0 em(40px, 19px);
+    padding: 0 0 0 40px;
 
     clear: left;
   }
@@ -25,8 +27,8 @@
     top: 0;
     left: 0;
 
-    width: 40px;
-    height: 40px;
+    width: $govuk-spacing-scale-7;
+    height: $govuk-spacing-scale-7;
 
     cursor: pointer;
 
@@ -39,7 +41,7 @@
 
   .govuk-c-checkboxes__label {
     display: block;
-    padding: em(8px, 19px) em($govuk-spacing-scale-3, 19px) em($govuk-spacing-scale-1, 19px);
+    padding: 8px $govuk-spacing-scale-3 $govuk-spacing-scale-1;
     cursor: pointer;
     // remove 300ms pause on mobile
     -ms-touch-action: manipulation;
@@ -53,8 +55,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: em(40px, 19px);
-    height: em(40px, 19px);
+    width: $govuk-spacing-scale-7;
+    height: $govuk-spacing-scale-7;
     border: $govuk-border-width-form-element solid $govuk-text-colour;
     background: transparent;
 
@@ -65,10 +67,10 @@
     content: "";
 
     position: absolute;
-    top: em(11px, 19px);
-    left: em(9px, 19px);
-    width: em(18px, 19px);
-    height: em(7px, 19px);
+    top: 11px;
+    left: 9px;
+    width: 18px;
+    height: 7px;
 
     -webkit-transform: rotate(-45deg);
 

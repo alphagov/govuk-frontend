@@ -6,7 +6,7 @@ Component to show an error summary box - used at the top of the page, to summari
 
 ## Guidance
 
-More information about when to use error-summary can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/error-summary "Link to read guidance on the use of error-summary on Gov.uk Design system website")
+Find out when to use the Error summary component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/error-summary).
 
 ## Quick start examples
 
@@ -68,7 +68,7 @@ To consume the error-summary component you must be running npm version 5 or abov
 
 ## Installation
 
-      npm install --save @govuk-frontend/error-summary
+    npm install --save @govuk-frontend/error-summary
 
 ## Requirements
 
@@ -76,15 +76,15 @@ To consume the error-summary component you must be running npm version 5 or abov
 
 When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
 
-      .pipe(sass({
-        includePaths: 'node_modules/'
-      }))
+    .pipe(sass({
+      includePaths: 'node_modules/'
+    }))
 
 ### Static asset path configuration
 
 To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
 
-      app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
+    app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
 ## Component arguments
 
@@ -202,21 +202,21 @@ If you are using Nunjucks,then macros take the following arguments
 
 Below is an example setup using express configure views:
 
-      nunjucks.configure('node_modules/@govuk-frontend', {
-        autoescape: true,
-        cache: false,
-        express: app
-      })
+    nunjucks.configure('node_modules/@govuk-frontend', {
+      autoescape: true,
+      cache: false,
+      express: app
+    })
 
 ## Getting updates
 
 To check whether you have the latest version of the button run:
 
-      npm outdated @govuk-frontend/error-summary
+    npm outdated @govuk-frontend/error-summary
 
 To update the latest version run:
 
-      npm update @govuk-frontend/error-summary
+    npm update @govuk-frontend/error-summary
 
 ## Contribution
 

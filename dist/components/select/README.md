@@ -6,7 +6,7 @@ The HTML `<select>` element represents a control that provides a menu of options
 
 ## Guidance
 
-More information about when to use select can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/select "Link to read guidance on the use of select on Gov.uk Design system website")
+Find out when to use the Select component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/select).
 
 ## Quick start examples
 
@@ -16,19 +16,20 @@ More information about when to use select can be found on [GOV.UK Design System]
 
 #### Markup
 
-    <label class="govuk-c-label" for="select-1">
+    <div class="govuk-o-form-group"><label class="govuk-c-label" for="select-1">
       Label text goes here
 
     </label>
     <select class="govuk-c-select" id="select-1" name="select-1">
 
-      <option value="1">GOV.UK frontend option 1</option>
+        <option value="1">GOV.UK frontend option 1</option>
 
-      <option value="2" selected>GOV.UK frontend option 2</option>
+        <option value="2" selected>GOV.UK frontend option 2</option>
 
-      <option value="3" disabled>GOV.UK frontend option 3</option>
+        <option value="3" disabled>GOV.UK frontend option 3</option>
 
-    </select>
+      </select>
+    </div>
 
 #### Macro
 
@@ -58,31 +59,32 @@ More information about when to use select can be found on [GOV.UK Design System]
 
 ### Select--with-hint-text-and-error
 
-[Preview the select--with-hint-text-and-error variant](http://govuk-frontend-review.herokuapp.com/components/select/with-hint-text-and-error/preview)
+[Preview the select--with-hint-text-and-error example](http://govuk-frontend-review.herokuapp.com/components/select/with-hint-text-and-error/preview)
 
 #### Markup
 
-    <label class="govuk-c-label" for="select-2">
-      Label text <i>goes</i> here
+    <div class="govuk-o-form-group govuk-o-form-group--error"><label class="govuk-c-label" for="select-2">
+      Label text goes here
 
       <span class="govuk-c-label__hint">
-        Hint message <i>goes</i> here
+        Hint text goes here
       </span>
 
       <span class="govuk-c-error-message">
-       <i>Error message goes here</i>
+      Error message goes here
     </span>
 
     </label>
-    <select class="govuk-c-select govuk-c-input--error" id="select-2" name="select-2">
+    <select class="govuk-c-select govuk-c-select--error" id="select-2" name="select-2">
 
-      <option value="1">GOV.UK frontend option 1</option>
+        <option value="1">GOV.UK frontend option 1</option>
 
-      <option value="2">GOV.UK frontend option 2</option>
+        <option value="2">GOV.UK frontend option 2</option>
 
-      <option value="3">GOV.UK frontend option 3</option>
+        <option value="3">GOV.UK frontend option 3</option>
 
-    </select>
+      </select>
+    </div>
 
 #### Macro
 
@@ -90,11 +92,11 @@ More information about when to use select can be found on [GOV.UK Design System]
       "id": "select-2",
       "name": "select-2",
       "label": {
-        "hintHtml": "Hint message <i>goes</i> here",
-        "html": "Label text <i>goes</i> here"
+        "hintText": "Hint text goes here",
+        "text": "Label text goes here"
       },
       "errorMessage": {
-        "html": "<i>Error message goes here</i>"
+        "text": "Error message goes here"
       },
       "items": [
         {
@@ -118,7 +120,7 @@ To consume the select component you must be running npm version 5 or above.
 
 ## Installation
 
-      npm install --save @govuk-frontend/select
+    npm install --save @govuk-frontend/select
 
 ## Requirements
 
@@ -126,15 +128,15 @@ To consume the select component you must be running npm version 5 or above.
 
 When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
 
-      .pipe(sass({
-        includePaths: 'node_modules/'
-      }))
+    .pipe(sass({
+      includePaths: 'node_modules/'
+    }))
 
 ### Static asset path configuration
 
 To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
 
-      app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
+    app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
 ## Component arguments
 
@@ -270,30 +272,6 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header" scope="row">hintText</th>
-
-<td class="govuk-c-table__cell ">string</td>
-
-<td class="govuk-c-table__cell ">No</td>
-
-<td class="govuk-c-table__cell ">Optional text to use as a hint</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">hintHtml</th>
-
-<td class="govuk-c-table__cell ">string</td>
-
-<td class="govuk-c-table__cell ">No</td>
-
-<td class="govuk-c-table__cell ">Optional HTML to use as a hint. If this is provided, the hintText argument will be ignored.</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
 <th class="govuk-c-table__header" scope="row">errorMessage</th>
 
 <td class="govuk-c-table__cell ">string</td>
@@ -324,21 +302,21 @@ If you are using Nunjucks,then macros take the following arguments
 
 Below is an example setup using express configure views:
 
-      nunjucks.configure('node_modules/@govuk-frontend', {
-        autoescape: true,
-        cache: false,
-        express: app
-      })
+    nunjucks.configure('node_modules/@govuk-frontend', {
+      autoescape: true,
+      cache: false,
+      express: app
+    })
 
 ## Getting updates
 
 To check whether you have the latest version of the button run:
 
-      npm outdated @govuk-frontend/select
+    npm outdated @govuk-frontend/select
 
 To update the latest version run:
 
-      npm update @govuk-frontend/select
+    npm update @govuk-frontend/select
 
 ## Contribution
 

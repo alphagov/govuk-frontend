@@ -9,6 +9,10 @@
     list-style-type: none;
   }
 
+    .govuk-list .govuk-list { // Margin for nested lists
+      margin-top: $govuk-spacing-scale-2;
+    }
+
   .govuk-list > li {
     @include mq($from: tablet) {
       margin-bottom: $govuk-spacing-scale-1;

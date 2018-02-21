@@ -6,7 +6,7 @@ The HTML `<input>` element with type="file" lets a user pick one or more files, 
 
 ## Guidance
 
-More information about when to use file-upload can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/file-upload "Link to read guidance on the use of file-upload on Gov.uk Design system website")
+Find out when to use the File upload component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/file-upload).
 
 ## Quick start examples
 
@@ -16,11 +16,12 @@ More information about when to use file-upload can be found on [GOV.UK Design Sy
 
 #### Markup
 
-    <label class="govuk-c-label" for="file-upload-1">
+    <div class="govuk-o-form-group"><label class="govuk-c-label" for="file-upload-1">
       Upload a file
 
     </label>
     <input type="file" id="file-upload-1" name="file-upload-1" class="govuk-c-file-upload">
+    </div>
 
 #### Macro
 
@@ -34,11 +35,11 @@ More information about when to use file-upload can be found on [GOV.UK Design Sy
 
 ### File-upload--with-hint-text
 
-[Preview the file-upload--with-hint-text variant](http://govuk-frontend-review.herokuapp.com/components/file-upload/with-hint-text/preview)
+[Preview the file-upload--with-hint-text example](http://govuk-frontend-review.herokuapp.com/components/file-upload/with-hint-text/preview)
 
 #### Markup
 
-    <label class="govuk-c-label" for="file-upload-2">
+    <div class="govuk-o-form-group"><label class="govuk-c-label" for="file-upload-2">
       Upload your photo
 
       <span class="govuk-c-label__hint">
@@ -47,6 +48,7 @@ More information about when to use file-upload can be found on [GOV.UK Design Sy
 
     </label>
     <input type="file" id="file-upload-2" name="file-upload-2" class="govuk-c-file-upload">
+    </div>
 
 #### Macro
 
@@ -61,11 +63,11 @@ More information about when to use file-upload can be found on [GOV.UK Design Sy
 
 ### File-upload--with-error-message
 
-[Preview the file-upload--with-error-message variant](http://govuk-frontend-review.herokuapp.com/components/file-upload/with-error-message/preview)
+[Preview the file-upload--with-error-message example](http://govuk-frontend-review.herokuapp.com/components/file-upload/with-error-message/preview)
 
 #### Markup
 
-    <label class="govuk-c-label" for="file-upload-3">
+    <div class="govuk-o-form-group govuk-o-form-group--error"><label class="govuk-c-label" for="file-upload-3">
       Upload a file
 
       <span class="govuk-c-label__hint">
@@ -73,11 +75,12 @@ More information about when to use file-upload can be found on [GOV.UK Design Sy
       </span>
 
       <span class="govuk-c-error-message">
-       Error message goes here
+      Error message goes here
     </span>
 
     </label>
     <input type="file" id="file-upload-3" name="file-upload-3" class="govuk-c-file-upload govuk-c-file-upload--error">
+    </div>
 
 #### Macro
 
@@ -95,15 +98,16 @@ More information about when to use file-upload can be found on [GOV.UK Design Sy
 
 ### File-upload--with-value-and-attributes
 
-[Preview the file-upload--with-value-and-attributes variant](http://govuk-frontend-review.herokuapp.com/components/file-upload/with-value-and-attributes/preview)
+[Preview the file-upload--with-value-and-attributes example](http://govuk-frontend-review.herokuapp.com/components/file-upload/with-value-and-attributes/preview)
 
 #### Markup
 
-    <label class="govuk-c-label" for="file-upload-4">
+    <div class="govuk-o-form-group"><label class="govuk-c-label" for="file-upload-4">
       Upload a photo
 
     </label>
     <input type="file" id="file-upload-4" name="file-upload-4" value="C:\fakepath\myphoto.jpg" class="govuk-c-file-upload" accept=".jpg, .jpeg, .png">
+    </div>
 
 #### Macro
 
@@ -125,7 +129,7 @@ To consume the file-upload component you must be running npm version 5 or above.
 
 ## Installation
 
-      npm install --save @govuk-frontend/file-upload
+    npm install --save @govuk-frontend/file-upload
 
 ## Requirements
 
@@ -133,15 +137,15 @@ To consume the file-upload component you must be running npm version 5 or above.
 
 When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
 
-      .pipe(sass({
-        includePaths: 'node_modules/'
-      }))
+    .pipe(sass({
+      includePaths: 'node_modules/'
+    }))
 
 ### Static asset path configuration
 
 To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
 
-      app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
+    app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
 ## Component arguments
 
@@ -259,21 +263,21 @@ If you are using Nunjucks,then macros take the following arguments
 
 Below is an example setup using express configure views:
 
-      nunjucks.configure('node_modules/@govuk-frontend', {
-        autoescape: true,
-        cache: false,
-        express: app
-      })
+    nunjucks.configure('node_modules/@govuk-frontend', {
+      autoescape: true,
+      cache: false,
+      express: app
+    })
 
 ## Getting updates
 
 To check whether you have the latest version of the button run:
 
-      npm outdated @govuk-frontend/file-upload
+    npm outdated @govuk-frontend/file-upload
 
 To update the latest version run:
 
-      npm update @govuk-frontend/file-upload
+    npm update @govuk-frontend/file-upload
 
 ## Contribution
 

@@ -6,7 +6,7 @@ The confirmation panel has a turquoise background and white text. Used for trans
 
 ## Guidance
 
-More information about when to use panel can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/panel "Link to read guidance on the use of panel on Gov.uk Design system website")
+Find out when to use the Panel component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/panel).
 
 ## Quick start examples
 
@@ -21,7 +21,7 @@ More information about when to use panel can be found on [GOV.UK Design System](
         Application complete
       </h2>
       <div class="govuk-c-panel__body">
-        Your reference number<br><strong>HDJ2123F</strong>
+        Your reference number: HDJ2123F
       </div>
     </div>
 
@@ -29,30 +29,7 @@ More information about when to use panel can be found on [GOV.UK Design System](
 
     {{ govukPanel({
       "titleText": "Application complete",
-      "html": "Your reference number<br><strong>HDJ2123F</strong>"
-    }) }}
-
-### Panel--no-reference-number
-
-[Preview the panel--no-reference-number variant](http://govuk-frontend-review.herokuapp.com/components/panel/no-reference-number/preview)
-
-#### Markup
-
-    <div class="govuk-c-panel govuk-c-panel--confirmation extra-dummy-class">
-      <h2 class="govuk-c-panel__title">
-        Application complete
-      </h2>
-      <div class="govuk-c-panel__body">
-        Thank you for your application
-      </div>
-    </div>
-
-#### Macro
-
-    {{ govukPanel({
-      "classes": "extra-dummy-class",
-      "titleText": "Application complete",
-      "text": "Thank you for your application"
+      "text": "Your reference number: HDJ2123F"
     }) }}
 
 ## Dependencies
@@ -61,7 +38,7 @@ To consume the panel component you must be running npm version 5 or above.
 
 ## Installation
 
-      npm install --save @govuk-frontend/panel
+    npm install --save @govuk-frontend/panel
 
 ## Requirements
 
@@ -69,15 +46,15 @@ To consume the panel component you must be running npm version 5 or above.
 
 When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
 
-      .pipe(sass({
-        includePaths: 'node_modules/'
-      }))
+    .pipe(sass({
+      includePaths: 'node_modules/'
+    }))
 
 ### Static asset path configuration
 
 To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
 
-      app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
+    app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
 ## Component arguments
 
@@ -183,21 +160,21 @@ If you are using Nunjucks,then macros take the following arguments
 
 Below is an example setup using express configure views:
 
-      nunjucks.configure('node_modules/@govuk-frontend', {
-        autoescape: true,
-        cache: false,
-        express: app
-      })
+    nunjucks.configure('node_modules/@govuk-frontend', {
+      autoescape: true,
+      cache: false,
+      express: app
+    })
 
 ## Getting updates
 
 To check whether you have the latest version of the button run:
 
-      npm outdated @govuk-frontend/panel
+    npm outdated @govuk-frontend/panel
 
 To update the latest version run:
 
-      npm update @govuk-frontend/panel
+    npm update @govuk-frontend/panel
 
 ## Contribution
 

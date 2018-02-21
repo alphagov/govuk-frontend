@@ -6,7 +6,7 @@ A banner that indicates content is in alpha or beta phase with a description.
 
 ## Guidance
 
-More information about when to use phase-banner can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/phase-banner "Link to read guidance on the use of phase-banner on Gov.uk Design system website")
+Find out when to use the Phase banner component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/phase-banner).
 
 ## Quick start examples
 
@@ -21,7 +21,7 @@ More information about when to use phase-banner can be found on [GOV.UK Design S
       alpha
     </strong>
     <span class="govuk-c-phase-banner__text">
-          This is a new service – your <a href="#" class="govuk-link">feedback</a> will help us to improve it.
+          This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.
         </span>
       </p>
     </div>
@@ -32,32 +32,7 @@ More information about when to use phase-banner can be found on [GOV.UK Design S
       "tag": {
         "text": "alpha"
       },
-      "html": "This is a new service – your <a href=\"#\" class=\"govuk-link\">feedback</a> will help us to improve it."
-    }) }}
-
-### Phase-banner--tag-with-html
-
-[Preview the phase-banner--tag-with-html variant](http://govuk-frontend-review.herokuapp.com/components/phase-banner/tag-with-html/preview)
-
-#### Markup
-
-    <div class="govuk-c-phase-banner">
-      <p class="govuk-c-phase-banner__content"><strong class="govuk-c-tag govuk-c-phase-banner__content__tag ">
-      <i>alpha</i>
-    </strong>
-    <span class="govuk-c-phase-banner__text">
-          This is a new service – your <a href="#" class="govuk-link">feedback</a> will help us to improve it.
-        </span>
-      </p>
-    </div>
-
-#### Macro
-
-    {{ govukPhaseBanner({
-      "tag": {
-        "html": "<i>alpha</i>"
-      },
-      "html": "This is a new service – your <a href=\"#\" class=\"govuk-link\">feedback</a> will help us to improve it."
+      "html": "This is a new service - your <a href=\"#\" class=\"govuk-link\">feedback</a> will help us to improve it."
     }) }}
 
 ## Dependencies
@@ -66,7 +41,7 @@ To consume the phase-banner component you must be running npm version 5 or above
 
 ## Installation
 
-      npm install --save @govuk-frontend/phase-banner
+    npm install --save @govuk-frontend/phase-banner
 
 ## Requirements
 
@@ -74,15 +49,15 @@ To consume the phase-banner component you must be running npm version 5 or above
 
 When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
 
-      .pipe(sass({
-        includePaths: 'node_modules/'
-      }))
+    .pipe(sass({
+      includePaths: 'node_modules/'
+    }))
 
 ### Static asset path configuration
 
 To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
 
-      app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
+    app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
 ## Component arguments
 
@@ -176,21 +151,21 @@ If you are using Nunjucks,then macros take the following arguments
 
 Below is an example setup using express configure views:
 
-      nunjucks.configure('node_modules/@govuk-frontend', {
-        autoescape: true,
-        cache: false,
-        express: app
-      })
+    nunjucks.configure('node_modules/@govuk-frontend', {
+      autoescape: true,
+      cache: false,
+      express: app
+    })
 
 ## Getting updates
 
 To check whether you have the latest version of the button run:
 
-      npm outdated @govuk-frontend/phase-banner
+    npm outdated @govuk-frontend/phase-banner
 
 To update the latest version run:
 
-      npm update @govuk-frontend/phase-banner
+    npm update @govuk-frontend/phase-banner
 
 ## Contribution
 

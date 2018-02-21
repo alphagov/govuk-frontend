@@ -6,7 +6,7 @@ Phase tags are mostly used inside phase banners as an indication of the state of
 
 ## Guidance
 
-More information about when to use tag can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/tag "Link to read guidance on the use of tag on Gov.uk Design system website")
+Find out when to use the Tag component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/tag).
 
 ## Quick start examples
 
@@ -26,25 +26,9 @@ More information about when to use tag can be found on [GOV.UK Design System](ht
       "text": "alpha"
     }) }}
 
-### Tag--with-html
-
-[Preview the tag--with-html variant](http://govuk-frontend-review.herokuapp.com/components/tag/with-html/preview)
-
-#### Markup
-
-    <strong class="govuk-c-tag">
-      <i>alpha</i>
-    </strong>
-
-#### Macro
-
-    {{ govukTag({
-      "html": "<i>alpha</i>"
-    }) }}
-
 ### Tag--inactive
 
-[Preview the tag--inactive variant](http://govuk-frontend-review.herokuapp.com/components/tag/inactive/preview)
+[Preview the tag--inactive example](http://govuk-frontend-review.herokuapp.com/components/tag/inactive/preview)
 
 #### Markup
 
@@ -65,7 +49,7 @@ To consume the tag component you must be running npm version 5 or above.
 
 ## Installation
 
-      npm install --save @govuk-frontend/tag
+    npm install --save @govuk-frontend/tag
 
 ## Requirements
 
@@ -73,15 +57,15 @@ To consume the tag component you must be running npm version 5 or above.
 
 When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
 
-      .pipe(sass({
-        includePaths: 'node_modules/'
-      }))
+    .pipe(sass({
+      includePaths: 'node_modules/'
+    }))
 
 ### Static asset path configuration
 
 To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
 
-      app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
+    app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
 ## Component arguments
 
@@ -163,21 +147,21 @@ If you are using Nunjucks,then macros take the following arguments
 
 Below is an example setup using express configure views:
 
-      nunjucks.configure('node_modules/@govuk-frontend', {
-        autoescape: true,
-        cache: false,
-        express: app
-      })
+    nunjucks.configure('node_modules/@govuk-frontend', {
+      autoescape: true,
+      cache: false,
+      express: app
+    })
 
 ## Getting updates
 
 To check whether you have the latest version of the button run:
 
-      npm outdated @govuk-frontend/tag
+    npm outdated @govuk-frontend/tag
 
 To update the latest version run:
 
-      npm update @govuk-frontend/tag
+    npm update @govuk-frontend/tag
 
 ## Contribution
 

@@ -47,4 +47,9 @@
     .govuk-prose-scope a {
       @extend .govuk-link;
     }
+
+    .govuk-prose-scope hr {
+      @extend .govuk-section-break__visible;
+      @extend .govuk-section-break--xl;
+    }
 }

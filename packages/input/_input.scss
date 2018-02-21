@@ -11,9 +11,8 @@
 
             box-sizing: border-box;
     width: 100%;
-    height: em(40px, 19px);
+    height: 40px;
     margin-top: 0;
-    @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom");
 
     padding: $govuk-spacing-scale-1;
     // setting any background-color makes text invisible when changing colours to dark backgrounds in Firefox (https://bugzilla.mozilla.org/show_bug.cgi?id=1335476)
@@ -38,7 +37,7 @@
   }
 
   .govuk-c-input--error {
-    border: $govuk-border-width-error solid $govuk-error-colour;
+    border: $govuk-border-width-form-element-error solid $govuk-error-colour;
   }
 
 }

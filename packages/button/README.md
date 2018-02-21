@@ -6,7 +6,7 @@ A button is an element that allows users to carry out an action on a GOV.UK page
 
 ## Guidance
 
-More information about when to use button can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/button "Link to read guidance on the use of button on Gov.uk Design system website")
+Find out when to use the Button component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/button).
 
 ## Quick start examples
 
@@ -18,18 +18,17 @@ Buttons are configured to perform an action and they can have a different look. 
 
 #### Markup
 
-    <input value="Save and continue" type="submit" class="govuk-c-button example-class">
+    <input value="Save and continue" type="submit" class="govuk-c-button">
 
 #### Macro
 
     {{ govukButton({
-      "text": "Save and continue",
-      "classes": "example-class"
+      "text": "Save and continue"
     }) }}
 
 ### Button--disabled
 
-[Preview the button--disabled variant](http://govuk-frontend-review.herokuapp.com/components/button/disabled/preview)
+[Preview the button--disabled example](http://govuk-frontend-review.herokuapp.com/components/button/disabled/preview)
 
 #### Markup
 
@@ -44,7 +43,7 @@ Buttons are configured to perform an action and they can have a different look. 
 
 ### Button--link
 
-[Preview the button--link variant](http://govuk-frontend-review.herokuapp.com/components/button/link/preview)
+[Preview the button--link example](http://govuk-frontend-review.herokuapp.com/components/button/link/preview)
 
 #### Markup
 
@@ -61,7 +60,7 @@ Buttons are configured to perform an action and they can have a different look. 
 
 ### Button--disabled-link
 
-[Preview the button--disabled-link variant](http://govuk-frontend-review.herokuapp.com/components/button/disabled-link/preview)
+[Preview the button--disabled-link example](http://govuk-frontend-review.herokuapp.com/components/button/disabled-link/preview)
 
 #### Markup
 
@@ -77,24 +76,9 @@ Buttons are configured to perform an action and they can have a different look. 
       "disabled": true
     }) }}
 
-### Button--start
-
-[Preview the button--start variant](http://govuk-frontend-review.herokuapp.com/components/button/start/preview)
-
-#### Markup
-
-    <input value="Start now button" type="submit" class="govuk-c-button govuk-c-button--start">
-
-#### Macro
-
-    {{ govukButton({
-      "text": "Start now button",
-      "classes": "govuk-c-button--start"
-    }) }}
-
 ### Button--start-link
 
-[Preview the button--start-link variant](http://govuk-frontend-review.herokuapp.com/components/button/start-link/preview)
+[Preview the button--start-link example](http://govuk-frontend-review.herokuapp.com/components/button/start-link/preview)
 
 #### Markup
 
@@ -110,26 +94,9 @@ Buttons are configured to perform an action and they can have a different look. 
       "classes": "govuk-c-button--start"
     }) }}
 
-### Button--button-with-html
-
-[Preview the button--button-with-html variant](http://govuk-frontend-review.herokuapp.com/components/button/button-with-html/preview)
-
-#### Markup
-
-    <button name="start-now" type="submit" class="govuk-c-button">
-      Start <em>now</em>
-    </button>
-
-#### Macro
-
-    {{ govukButton({
-      "name": "start-now",
-      "html": "Start <em>now</em>"
-    }) }}
-
 ### Button--explicit-button
 
-[Preview the button--explicit-button variant](http://govuk-frontend-review.herokuapp.com/components/button/explicit-button/preview)
+[Preview the button--explicit-button example](http://govuk-frontend-review.herokuapp.com/components/button/explicit-button/preview)
 
 #### Markup
 
@@ -140,44 +107,27 @@ Buttons are configured to perform an action and they can have a different look. 
 #### Macro
 
     {{ govukButton({
+      "element": "button",
       "name": "start-now",
-      "text": "Start now",
-      "element": "button"
+      "text": "Start now"
     }) }}
 
-### Button--button-with-value
+### Button--explicit-button-disabled
 
-[Preview the button--button-with-value variant](http://govuk-frontend-review.herokuapp.com/components/button/button-with-value/preview)
+[Preview the button--explicit-button-disabled example](http://govuk-frontend-review.herokuapp.com/components/button/explicit-button-disabled/preview)
 
 #### Markup
 
-    <button value="start" name="start-now" type="submit" class="govuk-c-button">
-      Start now
+    <button type="submit" disabled="disabled" aria-disabled="true" class="govuk-c-button govuk-c-button--disabled">
+      Explicit button disabled
     </button>
 
 #### Macro
 
     {{ govukButton({
-      "name": "start-now",
-      "value": "start",
-      "text": "Start now",
-      "element": "button"
-    }) }}
-
-### Button--non-submit-button
-
-[Preview the button--non-submit-button variant](http://govuk-frontend-review.herokuapp.com/components/button/non-submit-button/preview)
-
-#### Markup
-
-    <input value="Add another" name="add-another" type="button" class="govuk-c-button">
-
-#### Macro
-
-    {{ govukButton({
-      "name": "add-another",
-      "text": "Add another",
-      "type": "button"
+      "element": "button",
+      "text": "Explicit button disabled",
+      "disabled": true
     }) }}
 
 ## Dependencies
@@ -188,7 +138,7 @@ Please note, this component depends on @govuk-frontend/globals and @govuk-fronte
 
 ## Installation
 
-      npm install --save @govuk-frontend/button
+    npm install --save @govuk-frontend/button
 
 ## Requirements
 
@@ -196,15 +146,15 @@ Please note, this component depends on @govuk-frontend/globals and @govuk-fronte
 
 When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
 
-      .pipe(sass({
-        includePaths: 'node_modules/'
-      }))
+    .pipe(sass({
+      includePaths: 'node_modules/'
+    }))
 
 ### Static asset path configuration
 
 To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
 
-      app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
+    app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
 ## Component arguments
 
@@ -358,21 +308,21 @@ If you are using Nunjucks,then macros take the following arguments
 
 Below is an example setup using express configure views:
 
-      nunjucks.configure('node_modules/@govuk-frontend', {
-        autoescape: true,
-        cache: false,
-        express: app
-      })
+    nunjucks.configure('node_modules/@govuk-frontend', {
+      autoescape: true,
+      cache: false,
+      express: app
+    })
 
 ## Getting updates
 
 To check whether you have the latest version of the button run:
 
-      npm outdated @govuk-frontend/button
+    npm outdated @govuk-frontend/button
 
 To update the latest version run:
 
-      npm update @govuk-frontend/button
+    npm update @govuk-frontend/button
 
 ## Contribution
 

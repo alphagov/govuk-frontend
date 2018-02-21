@@ -6,7 +6,7 @@ Component for conditionally revealing content, using the details HTML element.
 
 ## Guidance
 
-More information about when to use details can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/details "Link to read guidance on the use of details on Gov.uk Design system website")
+Find out when to use the Details component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/details).
 
 ## Quick start examples
 
@@ -22,10 +22,8 @@ More information about when to use details can be found on [GOV.UK Design System
           Help with nationality
         </span>
       </summary>
-      <div class="govuk-c-border govuk-c-border--left-narrow">
-        <div class="govuk-c-details__text">
-          We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post.
-        </div>
+      <div class="govuk-c-details__text">
+        We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post.
       </div>
     </details>
 
@@ -38,7 +36,7 @@ More information about when to use details can be found on [GOV.UK Design System
 
 ### Details--with-html
 
-[Preview the details--with-html variant](http://govuk-frontend-review.herokuapp.com/components/details/with-html/preview)
+[Preview the details--with-html example](http://govuk-frontend-review.herokuapp.com/components/details/with-html/preview)
 
 #### Markup
 
@@ -48,9 +46,8 @@ More information about when to use details can be found on [GOV.UK Design System
           Where to find your National Insurance Number
         </span>
       </summary>
-      <div class="govuk-c-border govuk-c-border--left-narrow">
-        <div class="govuk-c-details__text">
-          Your National Insurance number can be found on
+      <div class="govuk-c-details__text">
+        Your National Insurance number can be found on
     <ul>
       <li>your National Insurance card</li>
       <li>your payslip</li>
@@ -59,7 +56,6 @@ More information about when to use details can be found on [GOV.UK Design System
       <li>tax return</li>
     </ul>
 
-        </div>
       </div>
     </details>
 
@@ -76,7 +72,7 @@ To consume the details component you must be running npm version 5 or above.
 
 ## Installation
 
-      npm install --save @govuk-frontend/details
+    npm install --save @govuk-frontend/details
 
 ## Requirements
 
@@ -84,15 +80,15 @@ To consume the details component you must be running npm version 5 or above.
 
 When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
 
-      .pipe(sass({
-        includePaths: 'node_modules/'
-      }))
+    .pipe(sass({
+      includePaths: 'node_modules/'
+    }))
 
 ### Static asset path configuration
 
 To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
 
-      app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
+    app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
 ## Component arguments
 
@@ -198,21 +194,21 @@ If you are using Nunjucks,then macros take the following arguments
 
 Below is an example setup using express configure views:
 
-      nunjucks.configure('node_modules/@govuk-frontend', {
-        autoescape: true,
-        cache: false,
-        express: app
-      })
+    nunjucks.configure('node_modules/@govuk-frontend', {
+      autoescape: true,
+      cache: false,
+      express: app
+    })
 
 ## Getting updates
 
 To check whether you have the latest version of the button run:
 
-      npm outdated @govuk-frontend/details
+    npm outdated @govuk-frontend/details
 
 To update the latest version run:
 
-      npm update @govuk-frontend/details
+    npm update @govuk-frontend/details
 
 ## Contribution
 

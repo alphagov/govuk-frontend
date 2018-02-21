@@ -6,7 +6,7 @@ Component to show a red error message - used for form validation. Use inside a l
 
 ## Guidance
 
-More information about when to use error-message can be found on [GOV.UK Design System](http://www.linktodesignsystem.com/error-message "Link to read guidance on the use of error-message on Gov.uk Design system website")
+Find out when to use the Error message component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/error-message).
 
 ## Quick start examples
 
@@ -17,7 +17,7 @@ More information about when to use error-message can be found on [GOV.UK Design 
 #### Markup
 
     <span class="govuk-c-error-message">
-       Error message about full name goes here
+      Error message about full name goes here
     </span>
 
 #### Macro
@@ -32,7 +32,7 @@ To consume the error-message component you must be running npm version 5 or abov
 
 ## Installation
 
-      npm install --save @govuk-frontend/error-message
+    npm install --save @govuk-frontend/error-message
 
 ## Requirements
 
@@ -40,15 +40,15 @@ To consume the error-message component you must be running npm version 5 or abov
 
 When compiling the Sass files you'll need to define includePaths to reference the node_modules directory. Below is a sample configuration using gulp
 
-      .pipe(sass({
-        includePaths: 'node_modules/'
-      }))
+    .pipe(sass({
+      includePaths: 'node_modules/'
+    }))
 
 ### Static asset path configuration
 
 To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
 
-      app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
+    app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
 
 ## Component arguments
 
@@ -130,21 +130,21 @@ If you are using Nunjucks,then macros take the following arguments
 
 Below is an example setup using express configure views:
 
-      nunjucks.configure('node_modules/@govuk-frontend', {
-        autoescape: true,
-        cache: false,
-        express: app
-      })
+    nunjucks.configure('node_modules/@govuk-frontend', {
+      autoescape: true,
+      cache: false,
+      express: app
+    })
 
 ## Getting updates
 
 To check whether you have the latest version of the button run:
 
-      npm outdated @govuk-frontend/error-message
+    npm outdated @govuk-frontend/error-message
 
 To update the latest version run:
 
-      npm update @govuk-frontend/error-message
+    npm update @govuk-frontend/error-message
 
 ## Contribution
 

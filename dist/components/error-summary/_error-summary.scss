@@ -10,7 +10,7 @@
     border: $govuk-border-width-mobile solid $govuk-error-colour;
 
     @include mq($from: tablet) {
-      border: $govuk-border-width-tablet solid $govuk-error-colour;
+      border: $govuk-border-width solid $govuk-error-colour;
     }
 
     // TODO: Fix IE < 8
