@@ -124,7 +124,7 @@ Copy and paste code from the examples in the [GOV.UK Design System](https://govu
 
 ## Licence
 
-This project is licensed under the [MIT License](https://github.com/TechPunk316/govuk-frontend/blob/master/LICENSE.txt).
+This project is licensed under the [MIT License](LICENSE.txt).
 
 ## Contribution
 
