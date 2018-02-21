@@ -6,11 +6,8 @@
       "layouts": "app/views/layouts/",
   "config": "config/",
   "dist": "dist/",
-    "distComponents": "dist/components/",
   "packages": "packages/",
+    "components": "packages/@govuk-frontend/",
   "public": "public/",
-    "publicComponents": "public/components/",
-  "src": "src/",
-    "components": "src/components/",
-    "globalScss": "src/globals/scss/"
+    "publicComponents": "public/@govuk-frontend/"
 }

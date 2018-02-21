@@ -19,7 +19,7 @@ gulp.task('js:lint', () => {
 // Scss lint check -----------------------
 // ---------------------------------------
 gulp.task('scss:lint', () => {
-  return gulp.src(configPaths.src + '**/*.scss')
+  return gulp.src(configPaths.components + '**/*.scss')
     .pipe(sasslint({
       configFile: configPaths.config + '.sass-lint.yml'
     }))

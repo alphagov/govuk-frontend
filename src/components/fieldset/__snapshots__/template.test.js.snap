@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`fieldset dependant components passes through errorMessage params without breaking 1`] = `
-
-<span class="govuk-c-error-message">
-  Please fill in the street input
-</span>
-
-`;

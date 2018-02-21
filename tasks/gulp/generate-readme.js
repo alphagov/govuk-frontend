@@ -28,7 +28,9 @@ environment.addGlobal('isReadme', 'true')
 environment.addFilter('componentNameToMacroName', helperFunctions.componentNameToMacroName)
 
 gulp.task('generate:readme', () => {
-  return gulp.src(['!' + configPath.components + '_component-example/index.njk', configPath.components + '**/index.njk'])
+  return gulp.src([
+    configPath.components + '**/index.njk'
+  ])
   .pipe(data(file => {
     objectData.componentName = path.dirname(file.path).split(path.sep).slice(-1).toString()
     objectData.componentPath = objectData.componentName

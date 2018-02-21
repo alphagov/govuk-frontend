@@ -25,7 +25,7 @@ require('../generate-readme.js')
 
 describe('Generating READMEs', () => {
   it('should have no dirty changes since they should be committed into source', done => {
-    const componentNames = lib.SrcComponentList.slice()
+    const componentNames = lib.PackagesComponentList.slice()
 
     const getReadmeContents = () => {
       return componentNames.map(name => {

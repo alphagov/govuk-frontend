@@ -1,0 +1,18 @@
+@import "@govuk-frontend/globals/common";
+
+@include exports("skip-link") {
+  .govuk-c-skip-link {
+    @include govuk-h-visually-hidden-focusable;
+    @include govuk-focusable-fill;
+    @include govuk-font-regular-16;
+
+    display: block;
+    padding: $govuk-spacing-scale-2 $govuk-spacing-scale-3;
+
+    // Default link colour doesn't have enough contrast against the focus colour
+    &:focus,
+    &:visited {
+      color: $govuk-text-colour;
+    }
+  }
+}

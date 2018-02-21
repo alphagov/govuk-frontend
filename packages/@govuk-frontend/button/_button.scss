@@ -1,0 +1,203 @@
+@import "@govuk-frontend/globals/common";
+
+@include exports("button") {
+
+  // Because the shadow (s0) is visually 'part of' the button, we need to reduce
+  // the height of the button to compensate by adjusting its padding (s1) and
+  // increase the bottom margin to include it (s2).
+  $button-shadow-size: $govuk-border-width-form-element;
+
+  .govuk-c-button {
+    @include govuk-font-regular;
+    @include govuk-typography-responsive(
+      $govuk-font-19,
+      $override-line-height: 19px
+    );
+
+    box-sizing: border-box;
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    margin-top: 0;
+    @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom", $adjustment: $button-shadow-size); // s2
+    padding: ($govuk-spacing-scale-2 - $govuk-border-width-form-element - ($button-shadow-size / 2)) $govuk-spacing-scale-2; // s1
+    border-width: $govuk-border-width-form-element;
+    border-style: solid;
+    border-radius: 0;
+    border-color: transparent;
+    outline: 1px solid transparent; // keep some button appearance when changing colour settings in browsers
+    outline-offset: -1px; // fixes bug in Safari that outline width on focus is not overwritten, is reset to 0 on focus in govuk_template
+    background-color: $govuk-button-colour;
+    box-shadow: 0 $button-shadow-size 0 $govuk-button-shadow-colour; // s0
+    font-family: $govuk-font-stack;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: top;
+    cursor: pointer;
+    -webkit-appearance: none;
+
+    @include mq($from: tablet) {
+      width: auto;
+    }
+
+    // Set text colour depending on background colour
+    @if lightness($govuk-button-colour) < 50% {
+      color: $govuk-white;
+
+      &:link,
+      &:hover,
+      &:focus,
+      &:visited {
+        color: $govuk-white;
+      }
+    } @else {
+      color: $govuk-text-colour;
+
+      &:link,
+      &:hover,
+      &:focus,
+      &:visited {
+        color: $govuk-text-colour;
+      }
+    }
+
+    &:visited {
+      background-color: $govuk-button-colour;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: $govuk-button-hover-colour;
+    }
+
+    &:active {
+      top: $button-shadow-size;
+      box-shadow: none;
+    }
+
+    // Fix unwanted button padding in Firefox
+    &:-moz-focus-inner {
+      padding: 0;
+      border: 0;
+    }
+
+    &:focus {
+      outline: $govuk-focus-width solid $govuk-focus-colour;
+    }
+
+    // The following adjustments do not work for <input type="button"> as
+    // non-container elements cannot include pseudo elements (i.e. ::before).
+
+    // Use a pseudo element to expand the click target area to include the
+    // button's shadow as well, in case users try to click it.
+    &::before {
+      content: "";
+      display: block;
+
+      position: absolute;
+
+      top: -$govuk-border-width-form-element;
+      right: -$govuk-border-width-form-element;
+      bottom: -($govuk-border-width-form-element + $button-shadow-size);
+      left: -$govuk-border-width-form-element;
+
+      background: transparent;
+    }
+
+    // When the button is active it is shifted down by $button-shadow-size to
+    // denote a 'pressed' state. If the user happened to click at the very top
+    // of the button, their mouse is no longer over the button (because it has
+    // 'moved beneath them') and so the click event is not fired.
+    //
+    // This corrects that by shifting the top of the pseudo element so that it
+    // continues to cover the area that the user originally clicked, which means
+    // the click event is still fired.
+    //
+    // 🎉
+    &:active::before {
+      top: -($govuk-border-width-form-element + $button-shadow-size);
+    }
+  }
+
+  .govuk-c-button--disabled,
+  .govuk-c-button[disabled="disabled"],
+  .govuk-c-button[disabled] {
+    opacity: (.5);
+    background: $govuk-button-colour;
+
+    &:hover {
+      background-color: $govuk-button-colour;
+      cursor: default;
+    }
+
+    &:active {
+      top: 0;
+      box-shadow: 0 $button-shadow-size 0 $govuk-button-shadow-colour; // s0
+      @include ie-lte(8) {
+        border-bottom: $button-shadow-size solid $govuk-button-shadow-colour; // s0
+      }
+    }
+  }
+
+  .govuk-c-button--disabled:focus {
+    outline: none;
+  }
+
+  .govuk-c-button--start {
+    @include govuk-typography-weight-bold;
+    @include govuk-typography-responsive(
+      $govuk-font-24,
+      $override-line-height: 1
+    );
+
+    min-height: auto;
+    padding-top: $govuk-spacing-scale-2 - $govuk-border-width-form-element;
+    padding-right: $govuk-spacing-scale-7;
+    padding-bottom: $govuk-spacing-scale-2 - $govuk-border-width-form-element;
+    padding-left: $govuk-spacing-scale-3;
+
+    background-image: file-url("icon-pointer.png");
+
+    @include govuk-h-device-pixel-ratio {
+      background-image: file-url("icon-pointer-2x.png");
+      background-size: 30px 19px;
+    }
+
+    background-repeat: no-repeat;
+    background-position: 100% 50%;
+    box-shadow: 0 $button-shadow-size 0 $govuk-button-shadow-colour;
+    @include ie-lte(8) {
+      border-bottom: $button-shadow-size solid $govuk-button-shadow-colour;
+    }
+  }
+
+  // Fixes a bug where IE puts a black border around certain elements
+  @include ie-lte(8) {
+    .govuk-c-button[type="submit"],
+    .govuk-c-button[type="reset"],
+    .govuk-c-button[type="button"] {
+      filter: chroma(color = $govuk-black);
+    }
+
+    .govuk-c-button[type="submit"].button {
+      filter: none;
+    }
+  }
+
+  // Begin adjustments for font baseline offset
+  // These should be removed when the font is updated with the correct baseline
+  // For the 1px addition please see https://github.com/alphagov/govuk-frontend/pull/365#discussion_r154349428
+
+  $offset: 2;
+
+  .govuk-c-button {
+    padding-top: ($govuk-spacing-scale-2 - $govuk-border-width-form-element - ($button-shadow-size / 2) + $offset); // s1
+    padding-bottom: ($govuk-spacing-scale-2 - $govuk-border-width-form-element - ($button-shadow-size / 2) - $offset + 1); // s1
+  }
+
+  .govuk-c-button--start {
+    padding-top: ($govuk-spacing-scale-2 - $govuk-border-width-form-element - ($button-shadow-size / 2) + $offset); // s1
+    padding-bottom: ($govuk-spacing-scale-2 - $govuk-border-width-form-element - ($button-shadow-size / 2) - $offset + 1); // s1
+  }
+
+}

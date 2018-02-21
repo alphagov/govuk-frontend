@@ -1,0 +1,38 @@
+@import "@govuk-frontend/globals/common";
+
+@include exports("panel") {
+
+  .govuk-c-panel {
+    @include govuk-font-regular-19;
+
+    box-sizing: border-box;
+
+    margin-bottom: $govuk-spacing-scale-3;
+    padding: $govuk-spacing-scale-7 - $govuk-border-width;
+
+    border: $govuk-border-width solid transparent;
+
+    text-align: center;
+
+    @include mq($until: tablet) {
+      padding: $govuk-spacing-scale-6 - $govuk-border-width;
+    }
+  }
+
+  .govuk-c-panel--confirmation {
+    color: $govuk-white;
+    background: $govuk-turquoise;
+  }
+
+  .govuk-c-panel__title {
+    margin-top: 0;
+    margin-bottom: $govuk-spacing-scale-6;
+
+    @include govuk-font-bold-48;
+  }
+
+  .govuk-c-panel__body {
+    @include govuk-font-regular-36;
+  }
+
+}

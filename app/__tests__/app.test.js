@@ -92,7 +92,7 @@ describe('frontend app', () => {
       request.get(requestParamsHomepage, (err, res) => {
         let $ = cheerio.load(res.body)
         let componentsList = $('li a[href^="/components/"]').get()
-        expect(componentsList.length).toEqual(lib.SrcComponentList.length)
+        expect(componentsList.length).toEqual(lib.PackagesComponentList.length)
         done(err)
       })
     })
