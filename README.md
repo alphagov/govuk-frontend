@@ -98,7 +98,7 @@ Download the latest versions of the following assets and include them in your pr
 
 - [govuk-frontend/tree/master/dist/css](https://github.com/alphagov/govuk-frontend/tree/master/dist/css)
 - [govuk-frontend/tree/master/dist/js](https://github.com/alphagov/govuk-frontend/tree/master/dist/js)
-- [icons](https://github.com/alphagov/govuk-frontend/tree/master/dist/icons)
+- [govuk-frontend/tree/master/dist/icons](https://github.com/alphagov/govuk-frontend/tree/master/dist/icons)
 
 ## Include assets
 
