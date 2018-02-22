@@ -32,7 +32,7 @@ const errorHandler = function (error) {
 }
 
 gulp.task('scss:compile', () => {
-  let compile = gulp.src(path.join(configPaths.src, 'globals/govuk-frontend.scss'))
+  let compile = gulp.src(path.join(configPaths.app, 'assets/scss/govuk-frontend.scss'))
     .pipe(sass({
       includePaths: configPaths.src
     }).on('error', sass.logError))
@@ -54,7 +54,7 @@ gulp.task('scss:compile', () => {
     ))
     .pipe(gulp.dest(taskArguments.destination + '/css/'))
 
-  let compileOldIe = gulp.src(configPaths.src + 'globals/govuk-frontend-oldie.scss')
+  let compileOldIe = gulp.src(configPaths.app + 'assets/scss/govuk-frontend-old-ie.scss')
     .pipe(sass({
       includePaths: configPaths.src
     }).on('error', sass.logError))
