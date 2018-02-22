@@ -16,20 +16,16 @@ let icons = filter([configPaths.src + 'globals/icons/*'], {restore: true})
 let components = filter([configPaths.src + 'components/**/*'], {restore: true})
 let globals = filter([configPaths.src + 'globals/scss/**/*'], {restore: true})
 
-const isProduction = taskArguments.isProduction
-const isPackages = (taskArguments.destination === 'packages') || false
+let scssFiles = filter([configPaths.src + '**/*.scss'], {restore: true})
+
+// check for the flag passed by the task
+const isDist = taskArguments.destination === 'dist' || false
 
 gulp.task('copy-files', () => {
   return gulp.src([
-    configPaths.src + '**/*',
-    '!' + configPaths.src + 'components/_component-example/**/*',
-    '!' + configPaths.src + 'globals/icons',
-    '!' + configPaths.src + 'globals/scss',
-    '!' + configPaths.src + 'globals',
-    '!' + configPaths.src + 'components',
-    '!' + configPaths.src + 'globals/scss/govuk-frontend-oldie.scss',
-    '!' + configPaths.src + 'components/**/index.njk',
-    '!' + configPaths.src + 'components/**/*.{yml,yaml}'
+    path.join(configPaths.src, '**/*'),
+    path.join('!', configPaths.src, '**/index.njk'),
+    path.join('!', configPaths.src, '**/*.{yml,yaml}')
   ])
   .pipe(scssFiles)
   .pipe(replace('//start:devonly', '/*start:devonly'))

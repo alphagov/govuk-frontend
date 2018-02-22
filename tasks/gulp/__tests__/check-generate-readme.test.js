@@ -29,7 +29,7 @@ describe('Generating READMEs', () => {
 
     const getReadmeContents = () => {
       return componentNames.map(name => {
-        const filePath = path.join(configPaths.components, name, 'README.md')
+        const filePath = path.join(configPaths.src, name, 'README.md')
         return readFile(filePath, 'utf8')
           .then(data => {
             return { name, data }
