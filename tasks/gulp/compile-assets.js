@@ -20,7 +20,7 @@ const postcsspseudoclasses = require('postcss-pseudo-classes')
 // Compile CSS and JS task --------------
 // --------------------------------------
 
-const isProduction = taskArguments.isProduction
+const isDist = taskArguments.destination === 'dist' || false
 
 const errorHandler = function (error) {
   // Log the error to the console
@@ -32,31 +32,33 @@ const errorHandler = function (error) {
 }
 
 gulp.task('scss:compile', () => {
-  let compile = gulp.src(configPaths.globalScss + 'govuk-frontend.scss')
-    .pipe(plumber(errorHandler))
-    .pipe(sass())
-    .pipe(gulpif(isProduction, postcss([
+  let compile = gulp.src(path.join(configPaths.srcFrontend, 'globals/govuk-frontend.scss'))
+    .pipe(sass({
+      includePaths: configPaths.src
+    }).on('error', sass.logError))
+    .pipe(gulpif(isDist, postcss([
       autoprefixer,
       cssnano,
       postcssnormalize
     ])))
-    .pipe(gulpif(!isProduction, postcss([
+    .pipe(gulpif(!isDist, postcss([
       autoprefixer,
       // Auto-generate 'companion' classes for pseudo-selector states - e.g. a
       // :hover class you can use to simulate the hover state in the review app
       postcsspseudoclasses
     ])))
-    .pipe(gulpif(isProduction,
+    .pipe(gulpif(isDist,
       rename({
         extname: '.min.css'
       })
     ))
     .pipe(gulp.dest(taskArguments.destination + '/css/'))
 
-  let compileOldIe = gulp.src(configPaths.globalScss + 'govuk-frontend-oldie.scss')
-    .pipe(plumber(errorHandler))
-    .pipe(sass())
-    .pipe(gulpif(isProduction, postcss([
+  let compileOldIe = gulp.src(configPaths.srcFrontend + 'globals/govuk-frontend-oldie.scss')
+    .pipe(sass({
+      includePaths: configPaths.src
+    }).on('error', sass.logError))
+    .pipe(gulpif(isDist, postcss([
       autoprefixer,
       cssnano,
       postcssnormalize,
@@ -68,7 +70,7 @@ gulp.task('scss:compile', () => {
         // more rules go here
       })
     ])))
-    .pipe(gulpif(!isProduction, postcss([
+    .pipe(gulpif(!isDist, postcss([
       autoprefixer,
       require('oldie')({
         rgba: {filter: true},
@@ -78,7 +80,7 @@ gulp.task('scss:compile', () => {
         // more rules go here
       })
     ])))
-    .pipe(gulpif(isProduction,
+    .pipe(gulpif(isDist,
       rename({
         extname: '.min.css'
       })
@@ -96,8 +98,8 @@ gulp.task('js:compile', () => {
     configPaths.src + '**/*.js'
   ])
     .pipe(concat('govuk-frontend.js'))
-    .pipe(gulpif(isProduction, uglify()))
-    .pipe(gulpif(isProduction,
+    .pipe(gulpif(isDist, uglify()))
+    .pipe(gulpif(isDist,
       rename({
         extname: '.min.js'
       })
