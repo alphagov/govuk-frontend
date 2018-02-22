@@ -11,7 +11,6 @@ const nodemon = require('nodemon')
 require('./tasks/gulp/clean.js')
 require('./tasks/gulp/lint.js')
 require('./tasks/gulp/compile-assets.js')
-require('./tasks/gulp/compile-components.js')
 require('./tasks/gulp/generate-readme.js')
 require('./tasks/gulp/watch.js')
 // new tasks
@@ -58,7 +57,6 @@ gulp.task('test', cb => {
 gulp.task('copy-assets', cb => {
   runsequence('styles',
               'scripts',
-              'copy:icons',
             cb)
 })
 
@@ -67,7 +65,6 @@ gulp.task('copy-assets', cb => {
 // --------------------------------------
 gulp.task('dev', cb => {
   runsequence('clean',
-              'compile:components',
               'generate:readme',
               'copy-assets',
               'serve',
@@ -91,7 +88,6 @@ gulp.task('serve', ['watch'], () => {
 gulp.task('build:packages', cb => {
   runsequence(
               'clean',
-              'compile:components',
               'copy-files',
               'generate:readme',
               cb)
@@ -99,7 +95,6 @@ gulp.task('build:packages', cb => {
 gulp.task('build:dist', cb => {
   runsequence('clean',
               'copy-assets',
-              'compile:components',
               'copy-files',
               'generate:readme',
               'update-assets-version',
