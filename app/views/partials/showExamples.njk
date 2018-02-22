@@ -20,7 +20,7 @@
 
     {% if isReadme %}
       <h3>{{ itemName  | capitalize }}</h3>
-      <a href="http://govuk-frontend-review.herokuapp.com/{{ previewLink }}">{{ previewText }}</a>
+      <a href="http://govuk-frontend-review.herokuapp.com/components/{{ previewLink }}">{{ previewText }}</a>
       {% include "code.njk" %}
     {% else %}
       <section aria-labelledby="heading-{{ itemName}}">
