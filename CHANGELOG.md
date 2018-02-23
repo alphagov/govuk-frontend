@@ -10,6 +10,8 @@ Breaking changes:
 - The class `.govuk-section-break__visible` has been renamed to
   `.govuk-section-break--visible` as it is a modifier, not an element.
   (PR [#547](https://github.com/alphagov/govuk-frontend/pull/547)
+- Simplify `src/` folder structure, remove tree and string manipulations from
+gulp tasks (PR [#545](https://github.com/alphagov/govuk-frontend/pull/545))
 
 New features:
 
