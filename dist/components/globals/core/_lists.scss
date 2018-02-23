@@ -7,32 +7,35 @@
     @include govuk-responsive-margin($govuk-spacing-responsive-4, "bottom");
     padding-left: 0;
     list-style-type: none;
-  }
 
-    .govuk-list .govuk-list { // Margin for nested lists
+    .govuk-list { // Margin for nested lists
       margin-top: $govuk-spacing-scale-2;
     }
+  }
 
   .govuk-list > li {
     @include mq($from: tablet) {
       margin-bottom: $govuk-spacing-scale-1;
     }
   }
-    .govuk-list a:link {
+
+  .govuk-list a {
+    &:link {
       color: $govuk-link-colour;
     }
 
-    .govuk-list a:visited {
+    &:visited {
       color: $govuk-link-visited-colour;
     }
 
-    .govuk-list a:hover {
+    &:hover {
       color: $govuk-link-hover-colour;
     }
 
-    .govuk-list a:active {
+    &:active {
       color: $govuk-link-active-colour;
     }
+  }
 
   .govuk-list--bullet {
     padding-left: $govuk-spacing-scale-4;
