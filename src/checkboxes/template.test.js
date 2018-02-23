@@ -200,6 +200,13 @@ describe('Checkboxes', () => {
   })
 
   describe('nested dependant components', () => {
+    it('have correct nesting order', () => {
+      const $ = render('checkboxes', examples['with-extreme-fieldset'])
+
+      const $component = $('.govuk-o-form-group > .govuk-c-fieldset > .govuk-c-checkboxes')
+      expect($component.length).toBeTruthy()
+    })
+
     it('passes through label params without breaking', () => {
       const $ = render('checkboxes', {
         name: 'example-name',
