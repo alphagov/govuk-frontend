@@ -3,6 +3,7 @@
 const gulp = require('gulp')
 const configPaths = require('../../config/paths.json')
 const sass = require('gulp-sass')
+const plumber = require('gulp-plumber')
 const postcss = require('gulp-postcss')
 const autoprefixer = require('autoprefixer')
 const merge = require('merge-stream')
@@ -21,9 +22,19 @@ const postcsspseudoclasses = require('postcss-pseudo-classes')
 
 const isProduction = taskArguments.isProduction
 
+const errorHandler = function (error) {
+  // Log the error to the console
+  console.error(error.message)
+
+  // Ensure the task we're running exits with an error code
+  this.once('finish', () => process.exit(1))
+  this.emit('end')
+}
+
 gulp.task('scss:compile', () => {
   let compile = gulp.src(configPaths.globalScss + 'govuk-frontend.scss')
-    .pipe(sass().on('error', sass.logError))
+    .pipe(plumber(errorHandler))
+    .pipe(sass())
     .pipe(gulpif(isProduction, postcss([
       autoprefixer,
       cssnano,
@@ -43,7 +54,8 @@ gulp.task('scss:compile', () => {
     .pipe(gulp.dest(taskArguments.destination + '/css/'))
 
   let compileOldIe = gulp.src(configPaths.globalScss + 'govuk-frontend-oldie.scss')
-    .pipe(sass().on('error', sass.logError))
+    .pipe(plumber(errorHandler))
+    .pipe(sass())
     .pipe(gulpif(isProduction, postcss([
       autoprefixer,
       cssnano,
