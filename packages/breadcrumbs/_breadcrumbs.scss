@@ -1,4 +1,4 @@
-@import "@govuk-frontend/globals/common";
+@import "../globals/common";
 
 @include exports("breadcrumbs") {
 
@@ -46,10 +46,9 @@
     padding-left: $govuk-spacing-scale-2 + $chevron-altitude-calculated;
 
     float: left;
-  }
 
     // Create a chevron using a box with borders on two sides, rotated 45deg.
-    .govuk-c-breadcrumbs__list-item:before {
+    &:before {
       content: "";
       display: block;
 
@@ -96,24 +95,25 @@
       }
     }
 
-    .govuk-c-breadcrumbs__list-item:first-child {
+    &:first-child {
       margin-left: 0;
       padding-left: 0;
-    }
 
-      .govuk-c-breadcrumbs__list-item:first-child:before {
+      &:before {
         content: none;
         display: none;
       }
+    }
+  }
 
   .govuk-c-breadcrumbs__link {
     @include govuk-focusable-fill;
-  }
 
-    .govuk-c-breadcrumbs__link:link,
-    .govuk-c-breadcrumbs__link:visited,
-    .govuk-c-breadcrumbs__link:hover,
-    .govuk-c-breadcrumbs__link:active {
+    &:link,
+    &:visited,
+    &:hover,
+    &:active {
       color: $govuk-text-colour;
     }
+  }
 }

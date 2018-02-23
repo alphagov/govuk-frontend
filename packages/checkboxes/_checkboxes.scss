@@ -1,4 +1,4 @@
-@import "@govuk-frontend/globals/common";
+@import "../globals/common";
 
 @include exports("checkboxes") {
   .govuk-c-checkboxes__item {

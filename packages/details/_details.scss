@@ -1,4 +1,4 @@
-@import "@govuk-frontend/globals/common";
+@import "../globals/common";
 
 @include exports("details") {
 
@@ -61,11 +61,11 @@
     margin: auto;
 
     @include arrow($direction: right, $base: 14px);
-  }
 
-    .govuk-c-details[open] > .govuk-c-details__summary::before {
+    .govuk-c-details[open] > & {
       @include arrow($direction: down, $base: 14px);
     }
+  }
 
   .govuk-c-details__text {
     padding: $govuk-spacing-scale-3;

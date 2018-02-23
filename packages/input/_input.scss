@@ -1,6 +1,6 @@
-@import "@govuk-frontend/globals/common";
-@import "@govuk-frontend/label/label";
-@import "@govuk-frontend/error-message/error-message";
+@import "../globals/common";
+@import "../label/label";
+@import "../error-message/error-message";
 
 @include exports("input") {
   .govuk-c-input {

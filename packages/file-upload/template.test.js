@@ -2,7 +2,7 @@
 
 const { axe } = require('jest-axe')
 
-const { render, getExamples, htmlWithClassName } = require('@govuk-frontend/@govuk-frontend/@govuk-frontend/lib/jest-helpers')
+const { render, getExamples, htmlWithClassName } = require('../../lib/jest-helpers')
 
 const examples = getExamples('file-upload')
 

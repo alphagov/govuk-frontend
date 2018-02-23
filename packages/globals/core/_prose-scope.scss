@@ -1,55 +1,57 @@
 
 @include exports("prose-scope") {
-    // through the use of @extend
-
-    .govuk-prose-scope h1 {
-      @extend .govuk-heading-xl;
-    }
-
-    // Contextual heading and paragraph combinations are inherited
-
-    .govuk-prose-scope h2 {
-      @extend .govuk-heading-l;
-    }
+  .govuk-prose-scope {
 
     // @extend inheritance
 
-    .govuk-prose-scope h3 {
+    // Contextual heading and paragraph combinations are inherited
+    // through the use of @extend
+
+    h1 {
+      @extend .govuk-heading-xl;
+    }
+
+    h2 {
+      @extend .govuk-heading-l;
+    }
+
+    h3 {
       @extend .govuk-heading-m;
     }
 
-    .govuk-prose-scope h4 {
+    h4 {
       @extend .govuk-heading-s;
     }
 
-    .govuk-prose-scope p {
+    p {
       @extend .govuk-body;
     }
 
-    .govuk-prose-scope strong,
-    .govuk-prose-scope b {
+    strong,
+    b {
       @include govuk-typography-weight-bold;
     }
 
-    .govuk-prose-scope ul,
-    .govuk-prose-scope ol {
+    ul,
+    ol {
       @extend .govuk-list;
     }
 
-    .govuk-prose-scope ol {
+    ol {
       @extend .govuk-list--number;
     }
 
-    .govuk-prose-scope ul {
+    ul {
       @extend .govuk-list--bullet;
     }
 
-    .govuk-prose-scope a {
+    a {
       @extend .govuk-link;
     }
 
-    .govuk-prose-scope hr {
+    hr {
       @extend .govuk-section-break__visible;
       @extend .govuk-section-break--xl;
     }
+  }
 }

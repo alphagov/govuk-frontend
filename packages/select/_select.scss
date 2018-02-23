@@ -1,5 +1,5 @@
-@import "@govuk-frontend/globals/common";
-@import "@govuk-frontend/label/label";
+@import "../globals/common";
+@import "../label/label";
 
 @include exports("select") {
   .govuk-c-select {
