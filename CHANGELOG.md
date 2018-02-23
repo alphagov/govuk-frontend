@@ -2,6 +2,13 @@
 
 Note: We're not following semantic versioning yet, we are going to talk about this soon.
 
+## Unreleased
+
+Fixes:
+
+- Fieldset legends now correctly use 'full black' text colour when printed
+  (PR [#544](https://github.com/alphagov/govuk-frontend/pull/544)
+
 ## 0.0.23-alpha (Breaking release)
 
 Breaking changes:
