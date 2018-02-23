@@ -47,6 +47,7 @@ gulp.task('test', cb => {
   runsequence(
               'js:lint',
               'scss:lint',
+              'scss:compile',
               cb)
 })
 
