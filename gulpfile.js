@@ -35,7 +35,7 @@ gulp.task('styles', cb => {
 // Copies icons to /public
 // --------------------------------------
 gulp.task('copy:icons', () => {
-  return gulp.src(paths.src + 'globals/icons/**/*.{png,svg,gif,jpg}')
+  return gulp.src(paths.src + 'icons/**/*.{png,svg,gif,jpg}')
     .pipe(gulp.dest(taskArguments.destination + '/icons/'))
 })
 
@@ -96,6 +96,7 @@ gulp.task('build:dist', cb => {
   runsequence('clean',
               'copy-assets',
               'copy-files',
+              'copy:icons',
               'generate:readme',
               'update-assets-version',
               cb)
