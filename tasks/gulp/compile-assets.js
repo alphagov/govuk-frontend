@@ -20,6 +20,7 @@ const postcsspseudoclasses = require('postcss-pseudo-classes')
 // Compile CSS and JS task --------------
 // --------------------------------------
 
+// check if destination flag is dist
 const isDist = taskArguments.destination === 'dist' || false
 
 const errorHandler = function (error) {
@@ -32,10 +33,10 @@ const errorHandler = function (error) {
 }
 
 gulp.task('scss:compile', () => {
-  let compile = gulp.src(path.join(configPaths.app, 'assets/scss/govuk-frontend.scss'))
-    .pipe(sass({
-      includePaths: configPaths.src
-    }).on('error', sass.logError))
+  let compile = gulp.src(configPaths.app + 'assets/scss/govuk-frontend.scss')
+    .pipe(plumber(errorHandler))
+    .pipe(sass())
+    // minify css add vendor prefixes and normalize to compiled css
     .pipe(gulpif(isDist, postcss([
       autoprefixer,
       cssnano,
@@ -55,13 +56,14 @@ gulp.task('scss:compile', () => {
     .pipe(gulp.dest(taskArguments.destination + '/css/'))
 
   let compileOldIe = gulp.src(configPaths.app + 'assets/scss/govuk-frontend-old-ie.scss')
-    .pipe(sass({
-      includePaths: configPaths.src
-    }).on('error', sass.logError))
+    .pipe(plumber(errorHandler))
+    .pipe(sass())
+    // minify css add vendor prefixes and normalize to compiled css
     .pipe(gulpif(isDist, postcss([
       autoprefixer,
       cssnano,
       postcssnormalize,
+      // transpile css for ie https://github.com/jonathantneal/oldie
       require('oldie')({
         rgba: {filter: true},
         rem: {disable: true},
