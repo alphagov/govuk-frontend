@@ -13,6 +13,7 @@
       $govuk-font-19,
       $override-line-height: 19px
     );
+    @include govuk-focusable;
 
     box-sizing: border-box;
     display: inline-block;
@@ -51,10 +52,6 @@
     &:-moz-focus-inner {
       padding: 0;
       border: 0;
-    }
-
-    &:focus {
-      outline: $govuk-focus-width solid $govuk-focus-colour;
     }
 
     // The following adjustments do not work for <input type="button"> as
