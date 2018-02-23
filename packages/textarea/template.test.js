@@ -52,7 +52,7 @@ describe('Textarea', () => {
     })
 
     it('renders with default number of rows', () => {
-      const $ = render('textarea')
+      const $ = render('textarea', {})
 
       const $component = $('.govuk-c-textarea')
       expect($component.attr('rows')).toEqual('5')
