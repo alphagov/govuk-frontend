@@ -20,7 +20,7 @@
     @include govuk-responsive-margin($govuk-spacing-responsive-4, "bottom");
   }
 
-  .govuk-section-break__visible {
+  .govuk-section-break--visible {
     border: 1px solid $govuk-border-colour;
   }
 
