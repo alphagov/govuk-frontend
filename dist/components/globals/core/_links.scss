@@ -1,0 +1,78 @@
+@include exports("links") {
+
+  .govuk-link {
+    @include govuk-typography-common;
+    @include govuk-focusable-fill;
+
+    // Override the tap highlight colour (the color of the highlight that
+    // appears when a link is tapped on some mobile devices). This is
+    // ever-so-slightly darker than the default.
+    -webkit-tap-highlight-color: rgba($govuk-black, .3);
+
+    @include mq($media-type: print) {
+
+      // When printing, append the the destination URL to the link text, as long
+      // as the URL starts with either `/`, `http://` or `https://`.
+      &[href^="/"],
+      &[href^="http://"],
+      &[href^="https://"] {
+        &::after {
+          content: " (" attr(href) ")";
+          font-size: 90%;
+
+          // Because the URLs may be very long, ensure that they may be broken
+          // at arbitrary points if there are no otherwise acceptable break
+          // points in the line
+          word-wrap: break-word;
+        }
+      }
+    }
+  }
+
+    .govuk-link:link {
+      color: $govuk-link-colour;
+    }
+
+    .govuk-link:visited {
+      color: $govuk-link-visited-colour;
+    }
+
+    .govuk-link:hover {
+      color: $govuk-link-hover-colour;
+    }
+
+    .govuk-link:active {
+      color: $govuk-link-active-colour;
+    }
+
+  // Muted link variant
+  //
+  // Used for secondary links on a page - the link will appear in muted colours
+  // regardless of visited state.
+  .govuk-link--muted {
+
+    // When focussed, the text colour needs to be darker to ensure that colour
+  }
+    .govuk-link--muted:link,
+    .govuk-link--muted:visited,
+    .govuk-link--muted:hover,
+    .govuk-link--muted:active {
+      color: $govuk-grey-1;
+    }
+    // contrast is still acceptable
+    .govuk-link--muted:focus {
+      color: $govuk-black;
+    }
+
+  // 'No visited state' link variant
+  //
+  // Used in cases where it is not helpful to distinguish between visited and
+  // non-visited links.
+  //
+  // For example, navigation links to pages with dynamic content like admin
+  // dashboards. The content on the page is changing all the time, so the fact
+  // that you’ve visited it before is not important.
+    .govuk-link--no-visited-state:visited {
+      color: $govuk-link-colour;
+    }
+}

@@ -1,0 +1,27 @@
+@include exports("section-break") {
+
+  .govuk-section-break {
+    margin: 0;
+    border: 0;
+  }
+
+  .govuk-section-break--xl {
+    @include govuk-responsive-margin($govuk-spacing-responsive-8, "top");
+    @include govuk-responsive-margin($govuk-spacing-responsive-8, "bottom");
+  }
+
+  .govuk-section-break--l {
+    @include govuk-responsive-margin($govuk-spacing-responsive-6, "top");
+    @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom");
+  }
+
+  .govuk-section-break--m {
+    @include govuk-responsive-margin($govuk-spacing-responsive-4, "top");
+    @include govuk-responsive-margin($govuk-spacing-responsive-4, "bottom");
+  }
+
+  .govuk-section-break__visible {
+    border: 1px solid $govuk-border-colour;
+  }
+
+}
