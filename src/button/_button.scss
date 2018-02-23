@@ -135,19 +135,6 @@
     }
   }
 
-  // Fixes a bug where IE puts a black border around certain elements
-  @include govuk-ie-lte(8) {
-    .govuk-c-button[type="submit"],
-    .govuk-c-button[type="reset"],
-    .govuk-c-button[type="button"] {
-      filter: chroma(color = $govuk-black);
-    }
-
-    .govuk-c-button[type="submit"].button {
-      filter: none;
-    }
-  }
-
   // Begin adjustments for font baseline offset
   // These should be removed when the font is updated with the correct baseline
   // For the 1px addition please see https://github.com/alphagov/govuk-frontend/pull/365#discussion_r154349428
