@@ -64,6 +64,17 @@ describe('File upload', () => {
   })
 
   describe('with dependant components', () => {
+    it('have correct nesting order', () => {
+      const $ = render('file-upload', {
+        errorMessage: {
+          'text': 'Error message'
+        }
+      })
+
+      const $component = $('.govuk-o-form-group > .govuk-c-file-upload')
+      expect($component.length).toBeTruthy()
+    })
+
     it('renders with label', () => {
       const $ = render('file-upload', {
         id: 'my-file-upload',
