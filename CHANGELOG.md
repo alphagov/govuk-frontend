@@ -4,6 +4,12 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 
 ## Unreleased
 
+Breaking changes:
+
+- The class `.govuk-section-break__visible` has been renamed to
+  `.govuk-section-break--visible` as it is a modifier, not an element.
+  (PR [#547](https://github.com/alphagov/govuk-frontend/pull/547)
+
 Fixes:
 
 - Fieldset legends now correctly use 'full black' text colour when printed
