@@ -50,7 +50,7 @@
     }
 
     hr {
-      @extend .govuk-section-break__visible;
+      @extend .govuk-section-break--visible;
       @extend .govuk-section-break--xl;
     }
   }
