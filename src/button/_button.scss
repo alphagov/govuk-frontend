@@ -37,10 +37,6 @@
       width: auto;
     }
 
-    &:visited {
-      background-color: $govuk-button-colour;
-    }
-
     &:hover,
     &:focus {
       background-color: $govuk-button-hover-colour;
