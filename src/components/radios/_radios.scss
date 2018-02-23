@@ -65,7 +65,7 @@
     width: $govuk-spacing-scale-7;
     height: $govuk-spacing-scale-7;
 
-    border: $govuk-border-width-form-element solid;
+    border: $govuk-border-width-form-element solid currentColor;
     border-radius: 50%;
     background: transparent;
   }
@@ -80,7 +80,7 @@
     width: 0;
     height: 0;
 
-    border: $govuk-spacing-scale-2 solid;
+    border: $govuk-spacing-scale-2 solid currentColor;
     border-radius: 50%;
     opacity: 0;
     background: currentColor;
