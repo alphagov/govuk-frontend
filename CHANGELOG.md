@@ -10,10 +10,20 @@ Breaking changes:
   `.govuk-section-break--visible` as it is a modifier, not an element.
   (PR [#547](https://github.com/alphagov/govuk-frontend/pull/547)
 
+New features:
+
+- A new variable `$govuk-input-border-colour` has been introduced to define the
+  border colour for inputs. The Input, Select and Textarea components have been
+  updated to use it.
+  (PR [#551](https://github.com/alphagov/govuk-frontend/pull/551)
+
 Fixes:
 
 - Fieldset legends now correctly use 'full black' text colour when printed
   (PR [#544](https://github.com/alphagov/govuk-frontend/pull/544)
+- Radio and Checkbox components now explicitly use currentColor for their
+  borders, rather than relying on inheriting it
+  (PR [#551](https://github.com/alphagov/govuk-frontend/pull/551)
 
 ## 0.0.23-alpha (Breaking release)
 
