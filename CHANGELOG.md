@@ -25,6 +25,17 @@ Fixes:
   borders, rather than relying on inheriting it
   (PR [#551](https://github.com/alphagov/govuk-frontend/pull/551)
 
+Internal:
+
+- The 'prose scope' has been updated to extend only placeholder classes. The
+  corresponding classes the prose scope extends have been updated to provide a
+  placeholder class and separately create the concrete class. This allows us
+  to be specific about which occurrences of the class are meant to be extended.
+  (PR [#550](https://github.com/alphagov/govuk-frontend/pull/550)
+- The sass-lint config has been updated to prevent the use of `@extend` with
+  concrete classes.
+  (PR [#550](https://github.com/alphagov/govuk-frontend/pull/550)
+
 ## 0.0.23-alpha (Breaking release)
 
 Breaking changes:
