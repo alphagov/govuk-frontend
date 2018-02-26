@@ -20,9 +20,9 @@ lerna exec -- $(PWD)/bin/npm-publish.sh
 # Extract tag version from all/package.json
 ALL_PACKAGE_VERSION=$(node -p "require('./packages/all/package.json').version")
 TAG="v$ALL_PACKAGE_VERSION"
-LATEST_PUBLISHED_TAG=$(git describe)
+LATEST_PUBLISHED_TAG=$(git describe --abbrev=0 --tags)
 
-if [ $LATEST_PUBLISHED_TAG = $TAG ]; then
+if [ $LATEST_PUBLISHED_TAG == $TAG ]; then
     echo "⚠️ Tag $TAG already exists"
     exit 1
 else

@@ -1,8 +1,7 @@
 #!/bin/sh
 set -e
 
-ALL_PACKAGE_VERSION=$(node -p "require('./packages/all/package.json').version")
-TAG="v$ALL_PACKAGE_VERSION"
+LATEST_PUBLISHED_TAG=$(git describe --abbrev=0 --tags)
 
 npm run build:packages &&
 lerna publish --skip-git --skip-npm &&
@@ -18,9 +17,9 @@ if [ $ERROR_CODE != 0 ]; then
     echo "⚠️ Error with lerna publish. Please try again."
     exit $ERROR_CODE;
 else
-    # if you cancel lerna publish it still exists with 0. If there is nothing to commit,
-    # then exit. Otherwise commit changes.
-    if [ -z "$(git status --porcelain)" ]; then
+    # if you cancel lerna publish, it exists with 0 and it doesnt update package.json files so
+    # we exit because package.json file hasn't changed. Otherwise commit changes.
+   if [ $LATEST_PUBLISHED_TAG == $TAG ]; then
         echo "⚠️ Nothing to commit. Run lerna publish again."
         exit 1;
     else
