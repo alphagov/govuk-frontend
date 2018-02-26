@@ -1,6 +1,10 @@
 @include exports("lists") {
 
-  .govuk-list {
+  // We use a placeholder class here so that we can @extend from the prose scope
+  // without also applying every other occurrence of the .govuk-list selector to
+  // the prose scope.
+
+  %govuk-list {
     @include govuk-font-regular-19;
     @include govuk-text-colour;
     margin-top: 0;
@@ -8,18 +12,19 @@
     padding-left: 0;
     list-style-type: none;
 
-    .govuk-list { // Margin for nested lists
+    // Add a top margin for nested lists
+    %govuk-list {
       margin-top: $govuk-spacing-scale-2;
     }
   }
 
-  .govuk-list > li {
+  %govuk-list > li {
     @include mq($from: tablet) {
       margin-bottom: $govuk-spacing-scale-1;
     }
   }
 
-  .govuk-list a {
+  %govuk-list a {
     &:link {
       color: $govuk-link-colour;
     }
@@ -37,18 +42,30 @@
     }
   }
 
-  .govuk-list--bullet {
+  .govuk-list {
+    @extend %govuk-list;
+  }
+
+  %govuk-list--bullet {
     padding-left: $govuk-spacing-scale-4;
 
     list-style-type: disc;
   }
 
-  .govuk-list--number {
+  .govuk-list--bullet {
+    @extend %govuk-list--bullet;
+  }
+
+  %govuk-list--number {
     // TODO: Fix IE < 8
     @include ie-lte(7) {
       padding-left: $govuk-spacing-scale-6; //used to be 28
     }
     padding-left: $govuk-spacing-scale-4;
     list-style-type: decimal;
+  }
+
+  .govuk-list--number {
+    @extend %govuk-list--number;
   }
 }

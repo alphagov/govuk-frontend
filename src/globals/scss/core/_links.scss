@@ -1,6 +1,10 @@
 @include exports("links") {
 
-  .govuk-link {
+  // We use placeholder classes here so that we can @extend from the prose scope
+  // without also applying every other occurrence of the .govuk-link selector to
+  // the prose scope.
+
+  %govuk-link {
     @include govuk-typography-common;
     @include govuk-focusable-fill;
 
@@ -43,6 +47,10 @@
         }
       }
     }
+  }
+
+  .govuk-link {
+    @extend %govuk-link;
   }
 
   // Muted link variant
