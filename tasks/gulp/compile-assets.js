@@ -16,6 +16,7 @@ const rename = require('gulp-rename')
 const cssnano = require('cssnano')
 const postcssnormalize = require('postcss-normalize')
 const postcsspseudoclasses = require('postcss-pseudo-classes')
+const replace = require('gulp-replace')
 
 // Compile CSS and JS task --------------
 // --------------------------------------
@@ -34,6 +35,8 @@ const errorHandler = function (error) {
 gulp.task('scss:compile', () => {
   let compile = gulp.src(configPaths.globalScss + 'govuk-frontend.scss')
     .pipe(plumber(errorHandler))
+    .pipe(gulpif(isProduction, replace('// start:devonly', '/*start:devonly')))
+    .pipe(gulpif(isProduction, replace('// end:devonly', 'end:devonly*/')))
     .pipe(sass())
     .pipe(gulpif(isProduction, postcss([
       autoprefixer,
