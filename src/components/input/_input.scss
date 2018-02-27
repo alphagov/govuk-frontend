@@ -2,7 +2,7 @@
 @import "../label/label";
 @import "../error-message/error-message";
 
-@include exports("input") {
+@include govuk-exports("input") {
   .govuk-c-input {
     @include govuk-font-regular-19;
     @include govuk-focusable;

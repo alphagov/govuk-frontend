@@ -59,7 +59,7 @@
   }
 }
 
-@include exports("visually-hidden") {
+@include govuk-exports("visually-hidden") {
   .govuk-h-visually-hidden {
     @include govuk-h-visually-hidden;
   }

@@ -1,6 +1,6 @@
 @import "../../globals/scss/common";
 
-@include exports("button") {
+@include govuk-exports("button") {
 
   // Because the shadow (s0) is visually 'part of' the button, we need to reduce
   // the height of the button to compensate by adjusting its padding (s1) and
@@ -133,7 +133,7 @@
     &:active {
       top: 0;
       box-shadow: 0 $button-shadow-size 0 $govuk-button-shadow-colour; // s0
-      @include ie-lte(8) {
+      @include govuk-ie-lte(8) {
         border-bottom: $button-shadow-size solid $govuk-button-shadow-colour; // s0
       }
     }
@@ -156,23 +156,23 @@
     padding-bottom: $govuk-spacing-scale-2 - $govuk-border-width-form-element;
     padding-left: $govuk-spacing-scale-3;
 
-    background-image: file-url("icon-pointer.png");
+    background-image: govuk-file-url("icon-pointer.png");
 
     @include govuk-h-device-pixel-ratio {
-      background-image: file-url("icon-pointer-2x.png");
+      background-image: govuk-file-url("icon-pointer-2x.png");
       background-size: 30px 19px;
     }
 
     background-repeat: no-repeat;
     background-position: 100% 50%;
     box-shadow: 0 $button-shadow-size 0 $govuk-button-shadow-colour;
-    @include ie-lte(8) {
+    @include govuk-ie-lte(8) {
       border-bottom: $button-shadow-size solid $govuk-button-shadow-colour;
     }
   }
 
   // Fixes a bug where IE puts a black border around certain elements
-  @include ie-lte(8) {
+  @include govuk-ie-lte(8) {
     .govuk-c-button[type="submit"],
     .govuk-c-button[type="reset"],
     .govuk-c-button[type="button"] {

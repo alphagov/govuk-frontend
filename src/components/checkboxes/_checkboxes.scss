@@ -1,6 +1,6 @@
 @import "../../globals/scss/common";
 
-@include exports("checkboxes") {
+@include govuk-exports("checkboxes") {
   .govuk-c-checkboxes__item {
     @include govuk-font-regular-19;
 
@@ -33,7 +33,7 @@
     cursor: pointer;
 
     // IE8 doesn’t support pseudoelements, so we don’t want to hide native elements there.
-    @if ($is-ie == false) or ($ie-version == 9) {
+    @if ($govuk-is-ie == false) or ($govuk-ie-version == 9) {
       margin: 0;
       opacity: 0;
     }

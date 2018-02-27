@@ -1,6 +1,6 @@
 @import "../../globals/scss/common";
 
-@include exports("radios") {
+@include govuk-exports("radios") {
   .govuk-c-radios__item {
     @include govuk-font-regular-19;
 
@@ -40,7 +40,7 @@
     cursor: pointer;
 
     // IE8 doesn’t support pseudoelements, so we don’t want to hide native elements there. Double colons get ommited by IE8.
-    @if ($is-ie == false) or ($ie-version == 9) {
+    @if ($govuk-is-ie == false) or ($govuk-ie-version == 9) {
       margin: 0;
       opacity: 0;
     }

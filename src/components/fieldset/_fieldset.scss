@@ -1,6 +1,6 @@
 @import "../../globals/scss/common";
 
-@include exports("fieldset") {
+@include govuk-exports("fieldset") {
   .govuk-c-fieldset {
     margin: 0;
     padding: 0;

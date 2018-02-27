@@ -1,7 +1,7 @@
 @import "../../globals/scss/common";
 @import "../label/label";
 
-@include exports("select") {
+@include govuk-exports("select") {
   .govuk-c-select {
     @include govuk-font-regular;
     @include govuk-typography-responsive(

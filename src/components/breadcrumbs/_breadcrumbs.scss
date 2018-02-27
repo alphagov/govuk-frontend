@@ -1,6 +1,6 @@
 @import "../../globals/scss/common";
 
-@include exports("breadcrumbs") {
+@include govuk-exports("breadcrumbs") {
 
   // Size of chevron (excluding border)
   $chevron-size: 7px;
@@ -82,7 +82,7 @@
       border-color: $chevron-border-colour;
 
       // Fall back to a greater than sign for IE8
-      @include ie(8) {
+      @include govuk-ie(8) {
         content: "\003e"; // Greater than sign (>)
         width: auto;
         height: auto;

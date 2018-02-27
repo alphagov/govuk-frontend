@@ -1,6 +1,6 @@
 @import "../../globals/scss/common";
 
-@include exports("label") {
+@include govuk-exports("label") {
   .govuk-c-label {
     @include govuk-font-regular-19;
     @include govuk-text-colour;

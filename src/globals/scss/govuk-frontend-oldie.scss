@@ -6,7 +6,7 @@ $mq-responsive: false;
 
 // Set is-ie to true to output IE specific styles
 // uses the IE helpers in globals/_helpers.scss
-$is-ie: true;
-$ie-version: 8;
+$govuk-is-ie: true;
+$govuk-ie-version: 8;
 
 @import "govuk-frontend";
