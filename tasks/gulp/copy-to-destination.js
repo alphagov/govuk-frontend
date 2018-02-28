@@ -5,7 +5,6 @@ const configPaths = require('../../config/paths.json')
 const postcss = require('gulp-postcss')
 const autoprefixer = require('autoprefixer')
 const taskArguments = require('./task-arguments')
-const replace = require('gulp-replace')
 const filter = require('gulp-filter')
 const gulpif = require('gulp-if')
 
