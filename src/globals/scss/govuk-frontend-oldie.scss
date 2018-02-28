@@ -8,5 +8,5 @@ $mq-responsive: false;
 // uses the IE helpers in globals/_helpers.scss
 $is-ie: true;
 $ie-version: 8;
-
+$mq-show-breakpoints: ();
 @import "govuk-frontend";
