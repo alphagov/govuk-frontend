@@ -1,6 +1,7 @@
 /* eslint-env jest */
-
+const path = require('path')
 const lib = require('../../../lib/file-helper')
+const configPaths = require('../../../config/paths.json')
 
 describe('building dist/', () => {
   describe('when running copy-to-destination', () => {
@@ -23,5 +24,17 @@ describe('building dist/', () => {
 
   lib.SrcComponentList.forEach((componentName) => {
     defineTestsForComponent(componentName)
+  })
+  describe('when compiling css to dist', () => {
+    let version = require(path.join('../../../', configPaths.packages, 'all/package.json')).version
+    const FrontendCssFile = lib.readFileContents(path.join(configPaths.dist, 'css/', `govuk-frontend-${version}.min.css`))
+    const FrontendCssOldIeFile = lib.readFileContents(path.join(configPaths.dist, 'css/', `govuk-frontend-old-ie-${version}.min.css`))
+
+    it('standard css file should not contain current media query displayed on body element', () => {
+      expect(FrontendCssFile).not.toMatch(/body:before{content:/)
+    })
+    it('legacy css file should not contain current media query displayed on body element', () => {
+      expect(FrontendCssOldIeFile).not.toMatch(/body:before{content:/)
+    })
   })
 })
