@@ -21,9 +21,6 @@ gulp.task('copy-files', () => {
     '!' + configPaths.src + '**/*.{yml,yaml}'
   ])
   .pipe(scssFiles)
-  // in dev mq show current media query. in production we block-comment it
-  .pipe(replace('//start:devonly', '/*start:devonly'))
-  .pipe(replace('//end:devonly', 'end:devonly*/'))
   .pipe(postcss([
     autoprefixer
   ], {syntax: require('postcss-scss')}))
