@@ -3,7 +3,7 @@
 @import "../input/input";
 @import "../error-message/error-message";
 
-@include exports("date-input") {
+@include govuk-exports("date-input") {
   .govuk-c-date-input {
     @include govuk-h-clearfix;
   }

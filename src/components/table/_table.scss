@@ -1,6 +1,6 @@
 @import "../../globals/scss/common";
 
-@include exports("table") {
+@include govuk-exports("table") {
   .govuk-c-table {
     @include govuk-text-colour;
     width: 100%;
@@ -13,7 +13,7 @@
   .govuk-c-table__header {
     @include govuk-font-bold-19;
 
-    padding: em($govuk-spacing-scale-2, 19px) em($govuk-spacing-scale-4, 19px) em($govuk-spacing-scale-2, 19px) 0;
+    padding: govuk-em($govuk-spacing-scale-2, 19px) govuk-em($govuk-spacing-scale-4, 19px) govuk-em($govuk-spacing-scale-2, 19px) 0;
     border-bottom: 1px solid $govuk-border-colour;
     text-align: left;
   }
@@ -21,7 +21,7 @@
   .govuk-c-table__cell {
     @include govuk-font-regular-19;
 
-    padding: em($govuk-spacing-scale-2, 19px) em($govuk-spacing-scale-4, 19px) em($govuk-spacing-scale-2, 19px) 0;
+    padding: govuk-em($govuk-spacing-scale-2, 19px) govuk-em($govuk-spacing-scale-4, 19px) govuk-em($govuk-spacing-scale-2, 19px) 0;
     border-bottom: 1px solid $govuk-border-colour;
     text-align: left;
   }

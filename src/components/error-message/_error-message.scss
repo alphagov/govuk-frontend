@@ -1,6 +1,6 @@
 @import "../../globals/scss/common";
 
-@include exports("error-message") {
+@include govuk-exports("error-message") {
   .govuk-c-error-message {
     @include govuk-font-bold-19;
 

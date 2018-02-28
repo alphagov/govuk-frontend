@@ -6,6 +6,7 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 
 Breaking changes:
 
+- Namespace existing mixins and functions ( PR [#557](https://github.com/alphagov/govuk-frontend/pull/557))
 - The class `.govuk-section-break__visible` has been renamed to
   `.govuk-section-break--visible` as it is a modifier, not an element.
   (PR [#547](https://github.com/alphagov/govuk-frontend/pull/547)

@@ -1,6 +1,6 @@
 @import "../../globals/scss/common";
 
-@include exports("error-summary") {
+@include govuk-exports("error-summary") {
 
   .govuk-c-error-summary {
     @include govuk-text-colour;
@@ -14,7 +14,7 @@
     }
 
     // TODO: Fix IE < 8
-    @include ie-lte(6) {
+    @include govuk-ie-lte(6) {
       zoom: 1;
     }
   }

@@ -1,7 +1,7 @@
 @import "../../globals/scss/common";
 @import "../tag/tag";
 
-@include exports("phase-banner") {
+@include govuk-exports("phase-banner") {
   .govuk-c-phase-banner {
     @include govuk-font-regular-16;
     @include govuk-text-colour;

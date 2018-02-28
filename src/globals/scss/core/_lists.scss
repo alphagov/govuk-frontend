@@ -1,4 +1,4 @@
-@include exports("lists") {
+@include govuk-exports("lists") {
 
   // We use a placeholder class here so that we can @extend from the prose scope
   // without also applying every other occurrence of the .govuk-list selector to
@@ -58,7 +58,7 @@
 
   %govuk-list--number {
     // TODO: Fix IE < 8
-    @include ie-lte(7) {
+    @include govuk-ie-lte(7) {
       padding-left: $govuk-spacing-scale-6; //used to be 28
     }
     padding-left: $govuk-spacing-scale-4;

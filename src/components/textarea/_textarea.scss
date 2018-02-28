@@ -2,7 +2,7 @@
 @import "../label/label";
 @import "../error-message/error-message";
 
-@include exports("textarea") {
+@include govuk-exports("textarea") {
   .govuk-c-textarea {
     @include govuk-font-regular;
     @include govuk-typography-responsive(

@@ -1,4 +1,4 @@
-@include exports("links") {
+@include govuk-exports("links") {
 
   // We use placeholder classes here so that we can @extend from the prose scope
   // without also applying every other occurrence of the .govuk-link selector to

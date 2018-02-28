@@ -2,7 +2,7 @@
 //
 // Multiplying half the length of the base of an equilateral triangle by the
 // square root of three gives us its height. We use 1.732 as an approximation.
-@function equilateral-height($base) {
+@function govuk-equilateral-height($base) {
   $square-root-of-three: 1.732;
 
   @return ($base / 2) * $square-root-of-three;
@@ -10,7 +10,7 @@
 
 // Arrow mixin
 //
-// Generate arrows (triangles) by using a mix of transparent (1) and coloured
+// Generate Arrows (triangles) by using a mix of transparent (1) and coloured
 // borders. The coloured borders inherit the text colour of the element (2).
 //
 // Ensure the arrow is rendered correctly if browser colours are overridden by
@@ -22,7 +22,7 @@
 // @param {Direction} $direction - Direction for arrow: up, right, down, left.
 // @param {Base} $base - Length of the triangle 'base' side
 // @param {Height} $height - Height of triangle. Omit for equilateral.
-@mixin arrow($direction, $base, $height: null) {
+@mixin govuk-shape-arrow($direction, $base, $height: null) {
   display: block;
 
   width: 0;
@@ -34,7 +34,7 @@
   $perpendicular: $base / 2;
 
   @if ($height == null) {
-    $height: equilateral-height($base);
+    $height: govuk-equilateral-height($base);
   }
 
   @if $direction == "up" {

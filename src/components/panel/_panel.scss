@@ -1,6 +1,6 @@
 @import "../../globals/scss/common";
 
-@include exports("panel") {
+@include govuk-exports("panel") {
 
   .govuk-c-panel {
     @include govuk-font-regular-19;
