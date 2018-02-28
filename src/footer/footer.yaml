@@ -1,0 +1,4 @@
+examples:
+- name: default
+  data:
+    {}
