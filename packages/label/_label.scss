@@ -1,4 +1,4 @@
-@import "@govuk-frontend/globals/common";
+@import "../globals/common";
 
 @include exports("label") {
   .govuk-c-label {

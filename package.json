@@ -16,13 +16,13 @@
   "scripts": {
     "preinstall": "node bin/check-nvmrc.js",
     "prestart": "node bin/check-nvmrc.js",
-    "start": "gulp dev --destination 'public'",
-    "heroku": "gulp compile:components --destination 'public' && gulp copy-assets --destination 'public' && node app/app.js",
+    "start": "gulp dev",
+    "heroku": "gulp copy-assets && node app/app.js",
     "build:packages": "node bin/check-nvmrc.js && gulp build:packages --destination 'packages' && npm run test:build:packages",
-    "build:dist": "node bin/check-nvmrc.js && gulp build:dist --destination 'dist' --production && npm run test:build:dist",
-    "test": "standard && gulp compile:components --destination 'public' && gulp test && npm run test:app && npm run test:components && npm run test:generate:readme",
+    "build:dist": "node bin/check-nvmrc.js && gulp build:dist --destination 'dist' && npm run test:build:dist",
+    "test": "standard && gulp test && npm run test:app && npm run test:components && npm run test:generate:readme",
     "test:app": "jest app/__tests__/app.test.js --forceExit # express server fails to end process",
-    "test:components": "jest src/components/",
+    "test:components": "jest src/",
     "test:generate:readme": "jest tasks/gulp/__tests__/check-generate-readme.test.js",
     "test:build:packages": "jest tasks/gulp/__tests__/after-build-packages.test.js",
     "test:build:dist": "jest tasks/gulp/__tests__/after-build-dist.test.js"
@@ -40,7 +40,6 @@
     "gulp-debug": "^3.1.0",
     "gulp-eol": "^0.1.2",
     "gulp-filter": "^5.0.0",
-    "gulp-flatten": "^0.3.1",
     "gulp-nunjucks": "^3.0.0",
     "gulp-plumber": "^1.2.0",
     "gulp-postcss": "^7.0.0",
@@ -70,7 +69,6 @@
   },
   "dependencies": {
     "gulp-if": "^2.0.2",
-    "postcss-nested": "^2.0.2",
     "postcss-scss": "^1.0.0",
     "sass-mq": "^3.3.2"
   },

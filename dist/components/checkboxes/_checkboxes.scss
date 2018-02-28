@@ -1,4 +1,4 @@
-@import "../../globals/scss/common";
+@import "../globals/common";
 
 @include exports("checkboxes") {
   .govuk-c-checkboxes__item {

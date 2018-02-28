@@ -21,19 +21,19 @@ function getDataForFile (file) {
 }
 
 var environment = new nunjucks.Environment(
-  new nunjucks.FileSystemLoader([configPath.partials, configPath.layouts, configPath.components])
+  new nunjucks.FileSystemLoader([configPath.partials, configPath.layouts, configPath.src])
 )
 environment.addGlobal('isReadme', 'true')
 // make the function above available as a filter for all templates
 environment.addFilter('componentNameToMacroName', helperFunctions.componentNameToMacroName)
 
 gulp.task('generate:readme', () => {
-  return gulp.src(['!' + configPath.components + '_component-example/index.njk', configPath.components + '**/index.njk'])
+  return gulp.src([configPath.src + '**/index.njk'])
   .pipe(data(file => {
     objectData.componentName = path.dirname(file.path).split(path.sep).slice(-1).toString()
     objectData.componentPath = objectData.componentName
     try {
-      let componentPath = path.join(configPath.components, objectData.componentName, `${objectData.componentName}.yaml`)
+      let componentPath = path.join(configPath.src, objectData.componentName, `${objectData.componentName}.yaml`)
       let componentData = yaml.safeLoad(fs.readFileSync(componentPath, 'utf8'), {json: true})
       objectData.componentData = componentData
       return componentData
@@ -54,5 +54,5 @@ gulp.task('generate:readme', () => {
     path.basename = 'README'
     path.extname = '.md'
   }))
-  .pipe(gulp.dest(configPath.components))
+  .pipe(gulp.dest(configPath.src))
 })

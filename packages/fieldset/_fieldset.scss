@@ -1,4 +1,4 @@
-@import "@govuk-frontend/globals/common";
+@import "../globals/common";
 
 @include exports("fieldset") {
   .govuk-c-fieldset {
@@ -24,21 +24,21 @@
     overflow: hidden;
 
     color: $govuk-text-colour;
-    white-space: normal;
-  }    // 1
+    white-space: normal;    // 1
 
-    .govuk-c-fieldset__legend .govuk-heading-s {
+    .govuk-heading-s {
       margin-bottom: 0;
     }
 
-    .govuk-c-fieldset__legend .govuk-heading-m {
+    .govuk-heading-m {
       margin-bottom: $govuk-spacing-scale-1;
     }
 
-    .govuk-c-fieldset__legend .govuk-heading-l,
-    .govuk-c-fieldset__legend .govuk-heading-xl {
+    .govuk-heading-l,
+    .govuk-heading-xl {
       margin-bottom: $govuk-spacing-scale-3;
     }
+  }
 
   .govuk-c-fieldset__legend--bold {
     @include govuk-typography-weight-bold;

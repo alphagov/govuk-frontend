@@ -1,4 +1,4 @@
-@import "../../globals/scss/common";
+@import "../globals/common";
 
 @include exports("button") {
 
@@ -64,48 +64,37 @@
       }
     }
 
-    // The following adjustments do not work for <input type="button"> as
-    // non-container elements cannot include pseudo elements (i.e. ::before).
-
-    // Use a pseudo element to expand the click target area to include the
-
-    // When the button is active it is shifted down by $button-shadow-size to
-    // denote a 'pressed' state. If the user happened to click at the very top
-    // of the button, their mouse is no longer over the button (because it has
-    // 'moved beneath them') and so the click event is not fired.
-    //
-    // This corrects that by shifting the top of the pseudo element so that it
-    // continues to cover the area that the user originally clicked, which means
-    // the click event is still fired.
-    //
-  }
-
-    .govuk-c-button:visited {
+    &:visited {
       background-color: $govuk-button-colour;
     }
 
-    .govuk-c-button:hover,
-    .govuk-c-button:focus {
+    &:hover,
+    &:focus {
       background-color: $govuk-button-hover-colour;
     }
 
-    .govuk-c-button:active {
+    &:active {
       top: $button-shadow-size;
       -webkit-box-shadow: none;
               box-shadow: none;
     }
 
     // Fix unwanted button padding in Firefox
-    .govuk-c-button:-moz-focus-inner {
+    &:-moz-focus-inner {
       padding: 0;
       border: 0;
     }
 
-    .govuk-c-button:focus {
+    &:focus {
       outline: $govuk-focus-width solid $govuk-focus-colour;
     }
+
+    // The following adjustments do not work for <input type="button"> as
+    // non-container elements cannot include pseudo elements (i.e. ::before).
+
+    // Use a pseudo element to expand the click target area to include the
     // button's shadow as well, in case users try to click it.
-    .govuk-c-button::before {
+    &::before {
       content: "";
       display: block;
 
@@ -118,24 +107,34 @@
 
       background: transparent;
     }
+
+    // When the button is active it is shifted down by $button-shadow-size to
+    // denote a 'pressed' state. If the user happened to click at the very top
+    // of the button, their mouse is no longer over the button (because it has
+    // 'moved beneath them') and so the click event is not fired.
+    //
+    // This corrects that by shifting the top of the pseudo element so that it
+    // continues to cover the area that the user originally clicked, which means
+    // the click event is still fired.
+    //
     // 🎉
-    .govuk-c-button:active::before {
+    &:active::before {
       top: -($govuk-border-width-form-element + $button-shadow-size);
     }
+  }
 
   .govuk-c-button--disabled,
   .govuk-c-button[disabled="disabled"],
   .govuk-c-button[disabled] {
     opacity: (.5);
     background: $govuk-button-colour;
-  }
 
-    .govuk-c-button--disabled:hover, .govuk-c-button[disabled="disabled"]:hover, .govuk-c-button[disabled]:hover {
+    &:hover {
       background-color: $govuk-button-colour;
       cursor: default;
     }
 
-    .govuk-c-button--disabled:active, .govuk-c-button[disabled="disabled"]:active, .govuk-c-button[disabled]:active {
+    &:active {
       top: 0;
       -webkit-box-shadow: 0 $button-shadow-size 0 $govuk-button-shadow-colour;
               box-shadow: 0 $button-shadow-size 0 $govuk-button-shadow-colour; // s0
@@ -143,6 +142,7 @@
         border-bottom: $button-shadow-size solid $govuk-button-shadow-colour; // s0
       }
     }
+  }
 
   .govuk-c-button--disabled:focus {
     outline: none;

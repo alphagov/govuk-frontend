@@ -1,7 +1,7 @@
-@import "@govuk-frontend/globals/common";
-@import "@govuk-frontend/label/label";
-@import "@govuk-frontend/input/input";
-@import "@govuk-frontend/error-message/error-message";
+@import "../globals/common";
+@import "../label/label";
+@import "../input/input";
+@import "../error-message/error-message";
 
 @include exports("date-input") {
   .govuk-c-date-input {

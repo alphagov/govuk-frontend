@@ -1,8 +1,6 @@
 'use strict'
 
 const argv = require('yargs').argv
-const destination = argv.destination ? argv.destination : 'tmp'
-const isProduction = argv.production || false
+const destination = argv.destination ? argv.destination : 'public'
 
 exports.destination = destination
-exports.isProduction = isProduction

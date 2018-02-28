@@ -1,4 +1,4 @@
-@import "@govuk-frontend/globals/common";
+@import "../globals/common";
 
 @include exports("back-link") {
 
@@ -21,17 +21,16 @@
 
     // Underline is provided by a bottom border
     text-decoration: none;
-  }
 
-    .govuk-c-back-link:link,
-    .govuk-c-back-link:visited,
-    .govuk-c-back-link:hover,
-    .govuk-c-back-link:active {
+    &:link,
+    &:visited,
+    &:hover,
+    &:active {
       @include govuk-text-colour;
     }
 
     // Prepend left pointing arrow
-    .govuk-c-back-link:before {
+    &:before {
       @include arrow($direction: left, $base: 10px, $height: 6px);
 
       content: "";
@@ -45,6 +44,7 @@
 
       margin: auto;
     }
+  }
 
   // Begin adjustments for font baseline offset
   // These should be removed when the font is updated with the correct baseline
