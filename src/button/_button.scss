@@ -29,13 +29,21 @@
     box-shadow: 0 $button-shadow-size 0 $govuk-button-shadow-colour; // s0
     font-family: $govuk-font-stack;
     text-align: center;
-    text-decoration: none;
     vertical-align: top;
     cursor: pointer;
     -webkit-appearance: none;
 
     @include mq($from: tablet) {
       width: auto;
+    }
+
+    // Ensure that any global link styles are overridden
+    &:link,
+    &:visited,
+    &:active,
+    &:hover {
+      color: $govuk-button-text-colour;
+      text-decoration: none;
     }
 
     // Fix unwanted button padding in Firefox
