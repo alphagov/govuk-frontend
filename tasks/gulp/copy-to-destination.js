@@ -32,8 +32,8 @@ gulp.task('copy-files', () => {
     '!' + configPaths.src + 'components/**/*.{yml,yaml}'
   ])
   .pipe(scssFiles)
-  .pipe(replace('//start:devonly', '/*start:devonly'))
-  .pipe(replace('//end:devonly', 'end:devonly*/'))
+  .pipe(replace('// start:devonly', '/*start:devonly'))
+  .pipe(replace('// end:devonly', 'end:devonly*/'))
   .pipe(postcss([
     // postcssnormalize,
     autoprefixer,
