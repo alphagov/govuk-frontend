@@ -2,3 +2,16 @@ examples:
 - name: default
   data:
     {}
+
+- name: with-meta
+  readme: false
+  description: Secondary navigation to meta information relating to the site
+  data:
+    meta:
+      items:
+        - href: '#1'
+          text: 'Item 1'
+        - href: '#2'
+          text: 'Item 2'
+        - href: '#3'
+          text: 'Item 3'

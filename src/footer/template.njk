@@ -2,6 +2,18 @@
   <div class="govuk-o-width-container">
     <div class="govuk-c-footer__meta">
       <div class="govuk-c-footer__meta-item govuk-c-footer__meta-item--grow">
+        {% if params.meta and params.meta.items %}
+          <h2 class="govuk-h-visually-hidden">Support links</h2>
+          <ul class="govuk-c-footer__inline-list">
+            {% for item in params.meta.items %}
+              <li class="govuk-c-footer__inline-list-item">
+                <a class="govuk-c-footer__link" href="{{ item.href }}">
+                  {{ item.text }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
         <svg
           role="presentation"
           class="govuk-c-footer__licence-logo"
