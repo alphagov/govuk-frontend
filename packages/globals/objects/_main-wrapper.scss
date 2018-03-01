@@ -15,7 +15,7 @@
   }
 }
 
-@include exports("main-wrapper") {
+@include govuk-exports("main-wrapper") {
   .govuk-o-main-wrapper {
     @include govuk-main-wrapper;
   }

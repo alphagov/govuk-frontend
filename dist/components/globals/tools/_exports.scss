@@ -5,7 +5,7 @@
 // List of modules which have already been exported
 $imported-modules: () !default;
 
-@mixin exports($name, $warn: true) {
+@mixin govuk-exports($name, $warn: true) {
   // If the mixin is not in the list of modules already exported...
   @if (index($imported-modules, $name) == null) {
     // ... then add it to the list
