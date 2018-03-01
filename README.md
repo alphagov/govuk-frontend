@@ -68,19 +68,13 @@ To import an individual component (for example, a button), add the line:
 ```
 
 
-To resolve your `@import` declarations you should add `node_modules` to your [Sass include paths](https://github.com/sass/node-sass#includepaths) or [assets paths](http://guides.rubyonrails.org/asset_pipeline.html#search-paths) in Ruby.
+To resolve your `@import` declarations you should add `node_modules` to your [Sass include paths](https://github.com/sass/node-sass#includepaths) or [assets paths](http://guides.rubyonrails.org/asset_pipeline.html#search-paths) in Ruby if you don't have it set up already.
 
-Below is a code sample you can add to your gulp configuration file using the gulp-sass package:
-```JS
-.pipe(sass({ includePaths: 'node_modules/' }))
-```
+If the component depends on image assets, there are 2 ways to reference them.
 
-To import images, configure your application to reference or copy the icons assets.
+For prototyping, you can reference the `icons` package in `node_modules` directly. The path for that would be `/node_modules/@govuk-frontend/icons`.
 
-Below is a code sample you can add to your [express.js](https://expressjs.com/) configuration:
-```JS
-app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
-```
+Otherwise, you can copy them from `/node_modules/@govuk-frontend/icons` into your app. Our CSS files expect the assets to be located in `/icons` folder.
 
 ## Usage
 
