@@ -2,6 +2,13 @@
 
 Note: We're not following semantic versioning yet, we are going to talk about this soon.
 
+## Unreleased
+
+Internal:
+
+- Update general README wording in 'import assets' section
+(PR [#563](https://github.com/alphagov/govuk-frontend/pull/563))
+
 ## 0.0.24-alpha (Breaking release)
 
 Breaking changes:
