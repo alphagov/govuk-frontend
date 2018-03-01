@@ -1,6 +1,6 @@
 @import "../globals/common";
 
-@include exports("tag") {
+@include govuk-exports("tag") {
   .govuk-c-tag {
     @include govuk-font-bold;
     @include govuk-typography-responsive(

@@ -1,6 +1,6 @@
 @import "../globals/common";
 
-@include exports("fieldset") {
+@include govuk-exports("fieldset") {
   .govuk-c-fieldset {
     margin: 0;
     padding: 0;
@@ -10,6 +10,7 @@
 
   .govuk-c-fieldset__legend {
     @include govuk-font-regular-19;
+    @include govuk-text-colour;
 
     // Fix legend text wrapping in Edge and IE
     // 1. IE9-11 & Edge 12-13
@@ -23,7 +24,6 @@
     // Hack to let legends or elements within legends have margins in webkit browsers
     overflow: hidden;
 
-    color: $govuk-text-colour;
     white-space: normal;    // 1
 
     .govuk-heading-s {

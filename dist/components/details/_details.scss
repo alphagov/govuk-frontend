@@ -1,6 +1,6 @@
 @import "../globals/common";
 
-@include exports("details") {
+@include govuk-exports("details") {
 
   .govuk-c-details {
     @include govuk-font-regular-19;
@@ -60,10 +60,10 @@
 
     margin: auto;
 
-    @include arrow($direction: right, $base: 14px);
+    @include govuk-shape-arrow($direction: right, $base: 14px);
 
     .govuk-c-details[open] > & {
-      @include arrow($direction: down, $base: 14px);
+      @include govuk-shape-arrow($direction: down, $base: 14px);
     }
   }
 

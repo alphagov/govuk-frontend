@@ -2,14 +2,14 @@
 
 Note: We're not following semantic versioning yet, we are going to talk about this soon.
 
-## Unreleased
+## 0.0.24-alpha (Breaking release)
 
 Breaking changes:
 
 - Namespace existing mixins and functions ( PR [#557](https://github.com/alphagov/govuk-frontend/pull/557))
 - The class `.govuk-section-break__visible` has been renamed to
   `.govuk-section-break--visible` as it is a modifier, not an element.
-  (PR [#547](https://github.com/alphagov/govuk-frontend/pull/547)
+  (PR [#547](https://github.com/alphagov/govuk-frontend/pull/547))
 - Simplify `src/` folder structure, remove tree and string manipulations from
 gulp tasks (PR [#545](https://github.com/alphagov/govuk-frontend/pull/545))
 
@@ -18,17 +18,17 @@ New features:
 - A new variable `$govuk-input-border-colour` has been introduced to define the
   border colour for inputs. The Input, Select and Textarea components have been
   updated to use it.
-  (PR [#551](https://github.com/alphagov/govuk-frontend/pull/551)
+  (PR [#551](https://github.com/alphagov/govuk-frontend/pull/551))
 
 Fixes:
 - Removes media query display on body from compiled CSS
-  (PR [#560](https://github.com/alphagov/govuk-frontend/pull/560)
+  (PR [#560](https://github.com/alphagov/govuk-frontend/pull/560))
 
 - Fieldset legends now correctly use 'full black' text colour when printed
-  (PR [#544](https://github.com/alphagov/govuk-frontend/pull/544)
+  (PR [#544](https://github.com/alphagov/govuk-frontend/pull/544))
 - Radio and Checkbox components now explicitly use currentColor for their
   borders, rather than relying on inheriting it
-  (PR [#551](https://github.com/alphagov/govuk-frontend/pull/551)
+  (PR [#551](https://github.com/alphagov/govuk-frontend/pull/551))
 
 Internal:
 
@@ -36,10 +36,14 @@ Internal:
   corresponding classes the prose scope extends have been updated to provide a
   placeholder class and separately create the concrete class. This allows us
   to be specific about which occurrences of the class are meant to be extended.
-  (PR [#550](https://github.com/alphagov/govuk-frontend/pull/550)
+  (PR [#550](https://github.com/alphagov/govuk-frontend/pull/550))
 - The sass-lint config has been updated to prevent the use of `@extend` with
   concrete classes.
-  (PR [#550](https://github.com/alphagov/govuk-frontend/pull/550)
+  (PR [#550](https://github.com/alphagov/govuk-frontend/pull/550))
+- Release process has been streamlined with fewer steps
+  (PR [#553](https://github.com/alphagov/govuk-frontend/pull/553))
+- Update `govuk-section-break__visible` new class name `govuk-section-break--visible` in the     review app's Typography page. 
+  (PR [#566](https://github.com/alphagov/govuk-frontend/pull/566))
 
 ## 0.0.23-alpha (Breaking release)
 

@@ -44,7 +44,7 @@ $spacing-directions: (
   }
 }
 
-@include exports("spacing-overrides") {
+@include govuk-exports("spacing-overrides") {
   @include generate-spacing-overrides("margin", "m");
   @include generate-spacing-overrides("padding", "p");
 }
