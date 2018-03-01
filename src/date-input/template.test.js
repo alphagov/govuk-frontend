@@ -82,6 +82,19 @@ describe('Date input', () => {
       expect($firstItems.text().trim()).toEqual('Day')
     })
 
+    it('renders inputs with type="number"', () => {
+      const $ = render('date-input', {
+        items: [
+          {
+            'name': 'day'
+          }
+        ]
+      })
+
+      const $firstInput = $('.govuk-c-date-input__item:first-child input')
+      expect($firstInput.attr('type')).toEqual('number')
+    })
+
     it('renders item with implicit class for label', () => {
       const $ = render('date-input', {
         items: [
