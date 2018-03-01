@@ -21,6 +21,8 @@ New features:
   (PR [#551](https://github.com/alphagov/govuk-frontend/pull/551)
 
 Fixes:
+- Removes media query display on body from compiled CSS
+  (PR [#560](https://github.com/alphagov/govuk-frontend/pull/560)
 
 - Fieldset legends now correctly use 'full black' text colour when printed
   (PR [#544](https://github.com/alphagov/govuk-frontend/pull/544)

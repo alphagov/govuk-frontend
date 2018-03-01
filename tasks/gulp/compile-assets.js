@@ -31,9 +31,12 @@ const errorHandler = function (error) {
   this.once('finish', () => process.exit(1))
   this.emit('end')
 }
+// different entry points for both streams below and depending on destination flag
+const compileStyleshet = isDist ? configPaths.app + 'assets/scss/govuk-frontend.scss' : configPaths.app + 'assets/scss/app.scss'
+const compileOldIeStyleshet = isDist ? configPaths.app + 'assets/scss/govuk-frontend-old-ie.scss' : configPaths.app + 'assets/scss/app-old-ie.scss'
 
 gulp.task('scss:compile', () => {
-  let compile = gulp.src(configPaths.app + 'assets/scss/govuk-frontend.scss')
+  let compile = gulp.src(compileStyleshet)
     .pipe(plumber(errorHandler))
     .pipe(sass())
     // minify css add vendor prefixes and normalize to compiled css
@@ -55,7 +58,7 @@ gulp.task('scss:compile', () => {
     ))
     .pipe(gulp.dest(taskArguments.destination + '/css/'))
 
-  let compileOldIe = gulp.src(configPaths.app + 'assets/scss/govuk-frontend-old-ie.scss')
+  let compileOldIe = gulp.src(compileOldIeStyleshet)
     .pipe(plumber(errorHandler))
     .pipe(sass())
     // minify css add vendor prefixes and normalize to compiled css
