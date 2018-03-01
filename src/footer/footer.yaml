@@ -15,3 +15,31 @@ examples:
           text: 'Item 2'
         - href: '#3'
           text: 'Item 3'
+
+- name: with-navigation
+  readme: false
+  data:
+    navigation:
+      - title: Two column list
+        columns: 2
+        items:
+          - href: '#1'
+            text: 'Navigation item 1'
+          - href: '#2'
+            text: 'Navigation item 2'
+          - href: '#3'
+            text: 'Navigation item 3'
+          - href: '#4'
+            text: 'Navigation item 4'
+          - href: '#5'
+            text: 'Navigation item 5'
+          - href: '#6'
+            text: 'Navigation item 6'
+      - title: Single column list
+        items:
+          - href: '#1'
+            text: 'Navigation item 1'
+          - href: '#2'
+            text: 'Navigation item 2'
+          - href: '#3'
+            text: 'Navigation item 3'

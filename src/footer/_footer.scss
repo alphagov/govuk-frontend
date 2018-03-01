@@ -100,4 +100,68 @@
     margin-right: $govuk-spacing-scale-3;
     margin-bottom: $govuk-spacing-scale-1;
   }
+
+  .govuk-c-footer__heading {
+    @include govuk-responsive-margin($govuk-spacing-responsive-7, "bottom");
+    padding-bottom: $govuk-spacing-scale-4;
+    @include mq ($until: tablet) {
+      padding-bottom: $govuk-spacing-scale-2;
+    }
+    border-bottom: 1px solid $govuk-grey-2;
+  }
+
+  .govuk-c-footer__navigation {
+    display: flex; // Support: Flexbox
+    margin-right: -$govuk-gutter-half;
+    margin-left: -$govuk-gutter-half;
+    flex-wrap: wrap; // Support: Flexbox
+  }
+
+  .govuk-c-footer__section {
+    display: inline-block;
+    margin-right: $govuk-gutter-half;
+    margin-bottom: $govuk-gutter;
+    margin-left: $govuk-gutter-half;
+    vertical-align: top;
+    // Ensure columns take up equal width (typically one-half:one-half)
+    flex-grow: 1; // Support: Flexbox
+    flex-shrink: 1; // Support: Flexbox
+    @include mq ($until: desktop) {
+      // Make sure columns do not drop below 200px in width
+      // Will typically result in wrapping, and end up in a single column on smaller screens.
+      flex-basis: 200px; // Support: Flexbox
+    }
+  }
+
+  // Sections two-third:one-third on desktop
+  @include mq ($from: desktop) {
+    .govuk-c-footer__section:first-child {
+      flex-grow: 2; // Support: Flexbox
+    }
+  }
+
+  .govuk-c-footer__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    column-gap: $govuk-gutter; // Support: Columns
+  }
+
+  @include mq ($from: desktop) {
+    .govuk-c-footer__list--columns-2 {
+      column-count: 2; // Support: Columns
+    }
+
+    .govuk-c-footer__list--columns-3 {
+      column-count: 3; // Support: Columns
+    }
+  }
+
+  .govuk-c-footer__list-item {
+    @include govuk-responsive-margin($govuk-spacing-responsive-4, "bottom");
+  }
+
+  .govuk-c-footer__list-item:last-child {
+    margin-bottom: 0;
+  }
 }

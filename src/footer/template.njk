@@ -1,5 +1,32 @@
 <footer class="govuk-c-footer">
   <div class="govuk-o-width-container">
+    {% if params.navigation %}
+      <div class="govuk-c-footer__navigation">
+        {% for item in params.navigation %}
+          <div class="govuk-c-footer__section">
+            <h2 class="govuk-c-footer__heading govuk-heading-m">{{ item.title }}</h2>
+            {% if item.items %}
+              {% set listClasses %}
+                {% if item.columns %}
+                  govuk-c-footer__list--columns-{{ item.columns }}
+                {% endif %}
+              {% endset %}
+              <ul class="govuk-c-footer__list {{ listClasses | trim }}">
+                {% for item in item.items %}
+                  {% if item.href and item.text %}
+                    <li class="govuk-c-footer__list-item">
+                      <a class="govuk-c-footer__link" href="{{ item.href }}">
+                        {{ item.text }}
+                      </a>
+                    </li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
     <div class="govuk-c-footer__meta">
       <div class="govuk-c-footer__meta-item govuk-c-footer__meta-item--grow">
         {% if params.meta and params.meta.items %}

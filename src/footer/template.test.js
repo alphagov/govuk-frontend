@@ -42,4 +42,45 @@ describe('footer', () => {
       expect($firstItem.text()).toContain('Item 1')
     })
   })
+
+  describe('navigation', () => {
+    it('passes accessibility tests', async () => {
+      const $ = render('footer', examples['with-navigation'])
+
+      const results = await axe($.html())
+      expect(results).toHaveNoViolations()
+    })
+
+    it('renders headings', () => {
+      const $ = render('footer', examples['with-navigation'])
+
+      const $component = $('.govuk-c-footer')
+      const $firstSection = $component.find('.govuk-c-footer__section:first-child')
+      const $lastSection = $component.find('.govuk-c-footer__section:last-child')
+      const $firstHeading = $firstSection.find('h2.govuk-c-footer__heading')
+      const $lastHeading = $lastSection.find('h2.govuk-c-footer__heading')
+      expect($firstHeading.text()).toEqual('Two column list')
+      expect($lastHeading.text()).toEqual('Single column list')
+    })
+
+    it('renders lists of links', () => {
+      const $ = render('footer', examples['with-navigation'])
+
+      const $component = $('.govuk-c-footer')
+      const $list = $component.find('ul.govuk-c-footer__list')
+      const $items = $list.find('li.govuk-c-footer__list-item')
+      const $firstItem = $items.find('a.govuk-c-footer__link:first-child')
+      expect($items.length).toEqual(9)
+      expect($firstItem.attr('href')).toEqual('#1')
+      expect($firstItem.text()).toContain('Navigation item 1')
+    })
+
+    it('renders lists in columns', () => {
+      const $ = render('footer', examples['with-navigation'])
+
+      const $component = $('.govuk-c-footer')
+      const $list = $component.find('ul.govuk-c-footer__list')
+      expect($list.hasClass('govuk-c-footer__list--columns-2')).toBeTruthy()
+    })
+  })
 })
