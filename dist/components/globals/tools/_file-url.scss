@@ -1,5 +1,5 @@
 // Prefixes a given filename with the defined images path
 
-@function file-url($file) {
+@function govuk-file-url($file) {
   @return url($global-images + $file);
 }

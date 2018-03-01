@@ -14,7 +14,7 @@
   }
 }
 
-@include exports("grid") {
+@include govuk-exports("grid") {
 
   .govuk-o-grid {
     @include govuk-grid;

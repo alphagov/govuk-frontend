@@ -1,4 +1,4 @@
-@include exports("form-group") {
+@include govuk-exports("form-group") {
 
   .govuk-o-form-group {
     @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom");

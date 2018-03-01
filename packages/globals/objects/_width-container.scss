@@ -2,7 +2,7 @@
   // Limit the width of the container to the page width
   max-width: $govuk-page-width;
 
-  @include ie-lte(8) {
+  @include govuk-ie-lte(8) {
     width: $govuk-page-width;
   }
 
@@ -21,7 +21,7 @@
   }
 }
 
-@include exports("width-container") {
+@include govuk-exports("width-container") {
   .govuk-o-width-container {
     @include govuk-width-container;
   }

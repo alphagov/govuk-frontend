@@ -1,6 +1,6 @@
 @import "../globals/common";
 
-@include exports("warning-text") {
+@include govuk-exports("warning-text") {
 
   .govuk-c-warning-text {
     @include govuk-font-regular-19;

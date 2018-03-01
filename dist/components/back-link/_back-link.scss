@@ -1,6 +1,6 @@
 @import "../globals/common";
 
-@include exports("back-link") {
+@include govuk-exports("back-link") {
 
   .govuk-c-back-link {
     @include govuk-font-regular-16;
@@ -31,7 +31,7 @@
 
     // Prepend left pointing arrow
     &:before {
-      @include arrow($direction: left, $base: 10px, $height: 6px);
+      @include govuk-shape-arrow($direction: left, $base: 10px, $height: 6px);
 
       content: "";
 

@@ -1,6 +1,6 @@
 @import "../globals/common";
 
-@include exports("file-upload") {
+@include govuk-exports("file-upload") {
   .govuk-c-file-upload {
     @include govuk-font-regular-19;
     @include govuk-text-colour;
