@@ -5,12 +5,12 @@
     display: block;
     clear: both;
   }
-  @include ie-lte(7) {
+  @include govuk-ie-lte(7) {
     zoom: 1;
   }
 }
 
-@include exports("clearfix") {
+@include govuk-exports("clearfix") {
   .govuk-h-clearfix {
     @include govuk-h-clearfix;
   }

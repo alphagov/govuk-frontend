@@ -1,6 +1,6 @@
 @import "../globals/common";
 
-@include exports("skip-link") {
+@include govuk-exports("skip-link") {
   .govuk-c-skip-link {
     @include govuk-h-visually-hidden-focusable;
     @include govuk-focusable-fill;

@@ -2,7 +2,7 @@
 @import "../label/label";
 @import "../error-message/error-message";
 
-@include exports("input") {
+@include govuk-exports("input") {
   .govuk-c-input {
     @include govuk-font-regular-19;
     @include govuk-focusable;
@@ -17,7 +17,7 @@
     padding: $govuk-spacing-scale-1;
     // setting any background-color makes text invisible when changing colours to dark backgrounds in Firefox (https://bugzilla.mozilla.org/show_bug.cgi?id=1335476)
     // as background-color and color need to always be set together, color should not be set either
-    border: $govuk-border-width-form-element solid $govuk-text-colour;
+    border: $govuk-border-width-form-element solid $govuk-input-border-colour;
     border-radius: 0;
 
     // Disable inner shadow and remove rounded corners
