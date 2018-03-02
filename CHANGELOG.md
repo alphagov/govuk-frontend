@@ -2,6 +2,29 @@
 
 Note: We're not following semantic versioning yet, we are going to talk about this soon.
 
+## Unreleased
+
+Fixes:
+- The transparent outline has been removed from the button, as it already has
+  a transparent border which is visible when overriding colours in the browser
+  (PR [#552](https://github.com/alphagov/govuk-frontend/pull/552))
+- Redundant duplication on the start button variant has been removed as it is
+  inherited from the main .govuk-c-button class
+  (PR [#552](https://github.com/alphagov/govuk-frontend/pull/552))
+- A fix to remove a black border from buttons in IE7 has been removed as we are
+  not targeting IE7 for GOV.UK Frontend
+  (PR [#552](https://github.com/alphagov/govuk-frontend/pull/552))
+
+Internal:
+- The logic to determine button text colour automatically has been removed and
+  replaced with a new variable $govuk-button-text-colour
+  (PR [#552](https://github.com/alphagov/govuk-frontend/pull/552))
+- The button component now uses the focusable mixin
+  (PR [#552](https://github.com/alphagov/govuk-frontend/pull/552))
+- The button component Sass has been restructured so that e.g. pseudo-selectors
+  are consistently nested within their parents
+  (PR [#552](https://github.com/alphagov/govuk-frontend/pull/552))
+
 ## 0.0.24-alpha (Breaking release)
 
 Breaking changes:
