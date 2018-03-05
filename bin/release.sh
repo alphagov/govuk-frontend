@@ -7,7 +7,7 @@ set -e
 # ! npm team ls developers | grep -q $NPM_USER
 
 NPM_USER=$(npm whoami)
-if ! [ "govuk-patterns-and-tools" = $NPM_USER ]; then
+if ! [ "govuk-patterns-and-tools" == "$NPM_USER" ]; then
   echo "⚠️ FAILURE: You are not logged in with the correct user."
   exit 1
 fi
@@ -22,7 +22,7 @@ ALL_PACKAGE_VERSION=$(node -p "require('./packages/all/package.json').version")
 TAG="v$ALL_PACKAGE_VERSION"
 LATEST_PUBLISHED_TAG=$(git describe --abbrev=0 --tags)
 
-if [ $LATEST_PUBLISHED_TAG == $TAG ]; then
+if [ "$LATEST_PUBLISHED_TAG" == "$TAG" ]; then
     echo "⚠️ Tag $TAG already exists"
     exit 1
 else

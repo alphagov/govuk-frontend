@@ -19,8 +19,8 @@ if [ $ERROR_CODE != 0 ]; then
 else
     # if you cancel lerna publish, it exists with 0 and it doesnt update package.json files so
     # we exit because package.json file hasn't changed. Otherwise commit changes.
-   if [ $LATEST_PUBLISHED_TAG == $TAG ]; then
-        echo "⚠️ Nothing to commit. Run lerna publish again."
+   if [ "$LATEST_PUBLISHED_TAG" == "$TAG" ]; then
+        echo "⚠️ Nothing to commit. Rerun the step."
         exit 1;
     else
         git add . &&

@@ -24,6 +24,8 @@ Internal:
 - The button component Sass has been restructured so that e.g. pseudo-selectors
   are consistently nested within their parents
   (PR [#552](https://github.com/alphagov/govuk-frontend/pull/552))
+- Fixes for the release process
+(PR [#567](https://github.com/alphagov/govuk-frontend/pull/567))
 
 ## 0.0.24-alpha (Breaking release)
 

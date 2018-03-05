@@ -22,7 +22,7 @@ scripts in the current directory.*
 
 2. Update `CHANGELOG` version heading with the next version number.
 
-3. Run `npm run prerelease` task.
+3. Run `npm run pre-release` task.
   This will:
   - run `npm build:packages` that copies any changes from`src/component-name` to `packages/component-name` and runs `after-build-packages.test.js` test 
   to ensure the contents of `packages` matches `src`.
@@ -47,11 +47,12 @@ scripts in the current directory.*
 4. Create a pull request for these changes. When reviewing the PR check version of compile assets and check release notes for the changes made.
 
 5. Once the pull request is approved, merge to **master** and run `npm run release` in **master**. 
+
   This will:
   - check if you're logged in to NPM as the correct user. If not, it will abort.
   - run `npm publish` for each package if the package hasn't been published yet
-    (the currect version matches the version on NPM)
-  - `git tag v<version>` if current git tag doesn't match latest published tag 
+    (check that the currect version matches the version on NPM)
+  - run `git tag v<version>` to create a new tag if current git tag doesn't match latest published tag 
   - push the tag to remote with `git push --tags`
   - create a zip file of the `dist` directory with
     `git archive -o ./release-<version>.zip HEAD:dist`
