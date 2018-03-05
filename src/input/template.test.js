@@ -42,11 +42,20 @@ describe('Input', () => {
       expect($component.attr('name')).toEqual('my-input-name')
     })
 
-    it('renders with type="text"', () => {
+    it('renders with type="text" by default', () => {
       const $ = render('input')
 
       const $component = $('.govuk-c-input')
       expect($component.attr('type')).toEqual('text')
+    })
+
+    it('allows you to override the type', () => {
+      const $ = render('input', {
+        type: 'number'
+      })
+
+      const $component = $('.govuk-c-input')
+      expect($component.attr('type')).toEqual('number')
     })
 
     it('renders with value', () => {
