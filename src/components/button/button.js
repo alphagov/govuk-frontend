@@ -6,29 +6,37 @@
 // See https://github.com/alphagov/govuk_elements/pull/272#issuecomment-233028270
 //
 // Usage instructions:
-// GOVUK.shimLinksWithButtonRole.init();
+// the 'shim' will be automatically initialised
 ;(function (global) {
   'use strict'
 
-  var $ = global.jQuery
-  var GOVUK = global.GOVUK || {}
+  var GOVUK_FRONTEND = global.GOVUK_FRONTEND || {}
 
-  GOVUK.shimLinksWithButtonRole = {
+  GOVUK_FRONTEND.shimLinksWithButtonRole = {
+
+    eventHandler: function eventHandler (event) {
+      // if the keyCode (which) is 32 it's a space, let's simulate a click.
+      if (event.which === 32) {
+        event.preventDefault()
+        // trigger the target's click event
+        event.target.click()
+      }
+    },
 
     init: function init () {
-      // listen to 'document' for keydown event on the any elements that should be buttons.
-      $(document).on('keydown', '[role="button"]', function (event) {
-        // if the keyCode (which) is 32 it's a space, let's simulate a click.
-        if (event.which === 32) {
-          event.preventDefault()
-          // trigger the target's click event
-          event.target.click()
-        }
+      let buttons = document.querySelectorAll('[role="button"]')
+
+      buttons.forEach(function (element, index) {
+        // listen to `[role="button"]` elements for `keydown` event
+        element.addEventListener('keydown', GOVUK_FRONTEND.shimLinksWithButtonRole.eventHandler)
       })
     }
 
   }
 
   // hand back to global
-  global.GOVUK = GOVUK
+  global.GOVUK_FRONTEND = GOVUK_FRONTEND
+
+  // initialise
+  GOVUK_FRONTEND.shimLinksWithButtonRole.init()
 })(window)
