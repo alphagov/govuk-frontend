@@ -16,8 +16,6 @@ version bumped.
 Run `chmod u+x **/*.sh` which will give the permission to all shell
 scripts in the current directory.*
 
-**If you have a new component to add, follow [these](#adding-a-new-component) steps**
-
 1. Create a new branch that's up to date with master and:
 
 2. Update `CHANGELOG` version heading with the next version number.
@@ -26,6 +24,16 @@ scripts in the current directory.*
   This will:
   - run `npm build:packages` that copies any changes from`src/component-name` to `packages/component-name` and runs `after-build-packages.test.js` test 
   to ensure the contents of `packages` matches `src`.
+
+
+If you have a new component was added to `src` and copied over to `packages` in the above task, then then script will detect those components, notify the developer, create a sample `package.json` file for each.
+
+It will reminnd the developer to check the version number, dependencies and add new components to `all/package.json` dependencies.
+
+It will also prompt the develoeper to signal to the scipt once changes have been made, so that the rest of the `npm run pre-release` tasks can run.**
+![New component added](./img/new-component-prompt.png)
+
+
   - run `lerna publish --skip-git --skip-npm` which will check for updated packages and
   suggest a version for each as seen below.
   Lerna will prompt you to select the new version for each package. If you
@@ -60,31 +68,9 @@ scripts in the current directory.*
 6. Create a release in Github interface, ddd release notes to and attach the ZIP. 
 
 7. Add Trello cards to "This Sprint" column for
-  - updating GOV.UK Design System to use the latest release
+  - updating GOV.UK Design System to use the latest releasex
   - updating the Prototype Kit to use the latest release 
 
-#### Adding a new component
-
-1. In Frontend, for any new components inside `/packages`, add a `package.json`
-inside `packages/component-name`:
-```
-{
-    "name": "@govuk-frontend/component-name",
-    "version": "0.0.21-alpha",
-    "dependencies": {
-      "@govuk-frontend/globals": "version-number"
-    }
-}
-```
-
-2. Include new components in `packages/all/package.json` with blank version
-numbers. Do not update the version numbers of existing packages manually here,
-Lerna will do this as part of `lerna publish`.
-
-3. Commit changes made so far
-```
-git add packages/* -f
-git commit -m "chore(packages): <component-name> added to packages"
 ```
 #### Test published packages
 
