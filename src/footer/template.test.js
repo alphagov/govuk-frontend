@@ -14,6 +14,19 @@ describe('footer', () => {
     expect(results).toHaveNoViolations()
   })
 
+  it('renders attributes correctly', () => {
+    const $ = render('footer', {
+      attributes: {
+        'data-test-attribute': 'value',
+        'data-test-attribute-2': 'value-2'
+      }
+    })
+
+    const $component = $('.govuk-c-footer')
+    expect($component.attr('data-test-attribute')).toEqual('value')
+    expect($component.attr('data-test-attribute-2')).toEqual('value-2')
+  })
+
   it('renders classes', () => {
     const $ = render('footer', {
       classes: 'app-o-footer--custom-modifier'
