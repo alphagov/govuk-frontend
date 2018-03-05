@@ -12,20 +12,24 @@
   'use strict'
 
   var GOVUK_FRONTEND = global.GOVUK_FRONTEND || {}
+  var KEY_SPACE = 32
 
   GOVUK_FRONTEND.buttons = {
+
     /**
-    * Add event construct for modern browsers or IE
+    * Add event construct for modern browsers or IE8
     * which fires the callback with a pre-converted target reference
     * @param {object} node element
     * @param {string} type event type (e.g. click, load, or error)
-    * @returns {function} callback function
+    * @param {function} callback function
     */
     addEvent: function (node, type, callback) {
+      // Support: IE9+ and other browsers
       if (node.addEventListener) {
         node.addEventListener(type, function (e) {
           callback(e, e.target)
         }, false)
+      // Support: IE8
       } else if (node.attachEvent) {
         node.attachEvent('on' + type, function (e) {
           callback(e, e.srcElement)
@@ -33,36 +37,52 @@
       }
     },
 
-    // Cross-browser character code / key pressed
+    /**
+    * Cross-browser character code / key pressed
+    * @param {object} e event
+    * @returns {number} character code
+    */
     charCode: function (e) {
       return (typeof e.which === 'number') ? e.which : e.keyCode
     },
 
-    // Cross-browser preventing default action
+    /**
+    * Cross-browser preventing default action
+    * @param {object} e event
+    */
     preventDefault: function (e) {
+      // Support: IE9+ and other browsers
       if (e.preventDefault) {
         e.preventDefault()
+      // Support: IE8
       } else {
         e.returnValue = false
       }
     },
 
-    eventHandler: function (event) {
-      // if the keyCode (which) is 32 it's a space, let's simulate a click.
-      if (GOVUK_FRONTEND.buttons.charCode(event) === 32) {
-        GOVUK_FRONTEND.buttons.preventDefault(event)
+    /**
+    * Add event handler
+    * if the event target element has a role='button' and the event is key space pressed
+    * then it prevents the default event and triggers a click event
+    * @param {object} e event
+    */
+    eventHandler: function (e) {
+      // get the target element
+      var target = e.target || e.srcElement
+      // if the element has a role='button' and the pressed key is a space, we'll simulate a click
+      if (target.getAttribute('role') === 'button' && GOVUK_FRONTEND.buttons.charCode(e) === KEY_SPACE) {
+        GOVUK_FRONTEND.buttons.preventDefault(e)
         // trigger the target's click event
-        event.target.click()
+        target.click()
       }
     },
 
+    /**
+    * Initialise an event listener for keydown at document level
+    * this will help listening for later inserted elements with a role="button"
+    */
     init: function () {
-      var buttons = document.querySelectorAll('[role="button"]')
-
-      // listen to `[role="button"]` elements for `keydown` event
-      for (var i = 0; i < buttons.length; i++) {
-        GOVUK_FRONTEND.buttons.addEvent(buttons[i], 'keydown', GOVUK_FRONTEND.buttons.eventHandler)
-      }
+      GOVUK_FRONTEND.buttons.addEvent(document, 'keydown', GOVUK_FRONTEND.buttons.eventHandler)
     }
 
   }
