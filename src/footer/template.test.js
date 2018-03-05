@@ -14,6 +14,17 @@ describe('footer', () => {
     expect(results).toHaveNoViolations()
   })
 
+  it('renders custom container classes', () => {
+    const $ = render('footer', {
+      containerClasses: 'app-o-width-container'
+    })
+
+    const $component = $('.govuk-c-footer')
+    const $container = $component.find('.govuk-o-width-container')
+
+    expect($container.hasClass('app-o-width-container')).toBeTruthy()
+  })
+
   describe('meta', () => {
     it('passes accessibility tests', async () => {
       const $ = render('footer', examples['with-meta'])

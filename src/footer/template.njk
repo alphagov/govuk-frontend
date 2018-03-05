@@ -1,5 +1,5 @@
 <footer class="govuk-c-footer">
-  <div class="govuk-o-width-container">
+  <div class="govuk-o-width-container {{ params.containerClasses if params.containerClasses }}">
     {% if params.navigation %}
       <div class="govuk-c-footer__navigation">
         {% for item in params.navigation %}
