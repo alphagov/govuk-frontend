@@ -4,6 +4,13 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 
 ## Unreleased
 
+Breaking changes:
+
+- The colour variable `$govuk-fuschia` has been replaced with a new variable
+  with the correct spelling (`$govuk-fuchsia`) – thanks to
+  [@charlesrt](https://github.com/charlesrt) for reporting.
+  (PR [#571](https://github.com/alphagov/govuk-frontend/pull/571))
+
 Fixes:
 - The transparent outline has been removed from the button, as it already has
   a transparent border which is visible when overriding colours in the browser
