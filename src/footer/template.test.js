@@ -14,6 +14,15 @@ describe('footer', () => {
     expect(results).toHaveNoViolations()
   })
 
+  it('renders classes', () => {
+    const $ = render('footer', {
+      classes: 'app-o-footer--custom-modifier'
+    })
+
+    const $component = $('.govuk-c-footer')
+    expect($component.hasClass('app-o-footer--custom-modifier')).toBeTruthy()
+  })
+
   it('renders custom container classes', () => {
     const $ = render('footer', {
       containerClasses: 'app-o-width-container'
