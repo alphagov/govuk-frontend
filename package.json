@@ -50,6 +50,7 @@
     "gulp-task-listing": "^1.0.1",
     "gulp-to-markdown": "^1.0.0",
     "gulp-uglify": "^3.0.0",
+    "html5shiv": "^3.7.3",
     "jest": "^22.1.4",
     "jest-axe": "^2.1.1",
     "jest-serializer-html": "^5.0.0",

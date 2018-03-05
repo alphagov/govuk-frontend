@@ -33,6 +33,8 @@ Internal:
   (PR [#552](https://github.com/alphagov/govuk-frontend/pull/552))
 - Fixes for the release process
 (PR [#567](https://github.com/alphagov/govuk-frontend/pull/567))
+- Add HTML5-shiv to review app
+(PR [#575](https://github.com/alphagov/govuk-frontend/pull/575))
 
 ## 0.0.24-alpha (Breaking release)
 
