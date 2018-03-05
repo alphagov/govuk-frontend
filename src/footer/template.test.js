@@ -116,4 +116,22 @@ describe('footer', () => {
       expect($list.hasClass('govuk-c-footer__list--columns-2')).toBeTruthy()
     })
   })
+
+  describe('section break', () => {
+    it('renders when there is a navigation', () => {
+      const $ = render('footer', examples['with-navigation'])
+
+      const $component = $('.govuk-c-footer')
+      const $sectionBreak = $component.find('hr.govuk-c-footer__section-break')
+      expect($sectionBreak.length).toBeTruthy()
+    })
+
+    it('renders nothing when there is only meta', () => {
+      const $ = render('footer', examples['with-meta'])
+
+      const $component = $('.govuk-c-footer')
+      const $sectionBreak = $component.find('hr.govuk-c-footer__section-break')
+      expect($sectionBreak.length).toBeFalsy()
+    })
+  })
 })

@@ -2,6 +2,7 @@
 
   $govuk-footer-background: $govuk-grey-3;
   $govuk-footer-border-top: #a1acb2;
+  $govuk-footer-border: $govuk-grey-2;
   $govuk-footer-text: #454a4c;
   $govuk-footer-link: $govuk-footer-text;
   $govuk-footer-link-hover: #171819;
@@ -36,6 +37,13 @@
     &:active {
       color: $govuk-footer-link-hover;
     }
+  }
+
+  .govuk-c-footer__section-break {
+    margin: 0; // Reset `<hr>` default margins
+    @include govuk-responsive-margin($govuk-spacing-responsive-8, "bottom");
+    border: 0; // Reset `<hr>` default borders
+    border-bottom: 1px solid $govuk-footer-border;
   }
 
   .govuk-c-footer__meta {
@@ -107,7 +115,7 @@
     @include mq ($until: tablet) {
       padding-bottom: $govuk-spacing-scale-2;
     }
-    border-bottom: 1px solid $govuk-grey-2;
+    border-bottom: 1px solid $govuk-footer-border;
   }
 
   .govuk-c-footer__navigation {
