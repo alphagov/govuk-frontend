@@ -2,6 +2,13 @@
 
 Note: We're not following semantic versioning yet, we are going to talk about this soon.
 
+## Unreleased
+
+Internal:
+
+- Update pre-release step to check for new components
+(PR [#574](https://github.com/alphagov/govuk-frontend/pull/574))
+
 ## 0.0.25-alpha (Breaking release)
 
 Breaking changes:
