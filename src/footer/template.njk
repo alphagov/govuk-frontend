@@ -1,4 +1,4 @@
-<footer class="govuk-c-footer {{ params.classes if params.classes }}"
+<footer class="govuk-c-footer {{ params.classes if params.classes }}" role="contentinfo"
         {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
   <div class="govuk-o-width-container {{ params.containerClasses if params.containerClasses }}">
     {% if params.navigation %}
