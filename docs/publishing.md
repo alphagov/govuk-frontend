@@ -59,6 +59,10 @@ scripts in the current directory.*
 
 6. Create a release in Github interface, ddd release notes to and attach the ZIP. 
 
+7. Add Trello cards to "This Sprint" column for
+  - updating GOV.UK Design System to use the latest release
+  - updating the Prototype Kit to use the latest release 
+
 #### Adding a new component
 
 1. In Frontend, for any new components inside `/packages`, add a `package.json`
