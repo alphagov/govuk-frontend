@@ -5,6 +5,15 @@
 {% endblock %}
 
 {% block content %}
+  <button role="button" class="js-toggle-component-width govuk-!-mb-r4">Full width (on / off)</button>
   {{ componentView | safe }}
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.15/iframeResizer.contentWindow.min.js"></script>
+  <script type="text/javascript">
+    var el = document.querySelector('.js-toggle-component-width'), 
+        target = document.querySelector('.govuk-o-width-container');
+
+    el.onclick = function() {
+      target.classList.toggle('govuk-o-width-container');
+    }
+  </script>
 {% endblock %}
