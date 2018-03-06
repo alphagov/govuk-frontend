@@ -11,6 +11,11 @@ Breaking changes:
   [@charlesrt](https://github.com/charlesrt) for reporting.
   (PR [#571](https://github.com/alphagov/govuk-frontend/pull/571))
 
+New features:
+
+- The input macro now accepts a `type` which allows you to override the default
+  type="text" (PR [#568](https://github.com/alphagov/govuk-frontend/pull/568))
+
 Fixes:
 - The transparent outline has been removed from the button, as it already has
   a transparent border which is visible when overriding colours in the browser
@@ -21,6 +26,9 @@ Fixes:
 - A fix to remove a black border from buttons in IE7 has been removed as we are
   not targeting IE7 for GOV.UK Frontend
   (PR [#552](https://github.com/alphagov/govuk-frontend/pull/552))
+- The date input component now sets `type="number"` and `pattern="[0-9]*"` to
+  match the previous implementation in Elements
+  (PR [#568](https://github.com/alphagov/govuk-frontend/pull/568))
 
 Internal:
 - The logic to determine button text colour automatically has been removed and
