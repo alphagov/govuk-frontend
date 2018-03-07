@@ -12,24 +12,24 @@
         return node.addEventListener(event, fn, false)
       }
     },
-    hasClass: function (el, className) {
-      if (el.classList) {
-        return el.classList.contains(className)
+    hasClass: function (node, className) {
+      if (node.classList) {
+        return node.classList.contains(className)
       } else {
-        return !!el.className.match(new RegExp('(\\s|^)' + className + '(\\s|$)'))
+        return !!node.className.match(new RegExp('(\\s|^)' + className + '(\\s|$)'))
       }
     },
-    addClass: function (el, className) {
-      if (el.classList) {
-        el.classList.add(className)
-      } else if (!APP.helpers.hasClass(el, className)) el.className += ' ' + className
+    addClass: function (node, className) {
+      if (node.classList) {
+        node.classList.add(className)
+      } else if (!APP.helpers.hasClass(node, className)) node.className += ' ' + className
     },
-    removeClass: function (el, className) {
-      if (el.classList) {
-        el.classList.remove(className)
-      } else if (APP.helpers.hasClass(el, className)) {
+    removeClass: function (node, className) {
+      if (node.classList) {
+        node.classList.remove(className)
+      } else if (APP.helpers.hasClass(node, className)) {
         var reg = new RegExp('(\\s|^)' + className + '(\\s|$)')
-        el.className = el.className.replace(reg, ' ')
+        node.className = node.className.replace(reg, ' ')
       }
     }
   }
