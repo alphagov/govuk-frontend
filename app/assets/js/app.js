@@ -38,16 +38,36 @@
     toggleContainerWidth: function () {
       var el = document.querySelector('.js-toggle-component-width')
       var container = document.querySelector('.govuk-o-width-container')
-      APP.helpers.addEvent(el, 'click', function () {
-        if (APP.helpers.hasClass(container, 'govuk-o-width-container')) {
-          APP.helpers.removeClass(container, 'govuk-o-width-container')
-        } else {
-          APP.helpers.addClass(container, 'govuk-o-width-container')
-        }
-      })
+      if (el) {
+        APP.helpers.addEvent(el, 'click', function () {
+          if (APP.helpers.hasClass(container, 'govuk-o-width-container')) {
+            APP.helpers.removeClass(container, 'govuk-o-width-container')
+          } else {
+            APP.helpers.addClass(container, 'govuk-o-width-container')
+          }
+        })
+      }
+    },
+    gridToggler: function () {
+      var toggler = document.querySelector('.govuk-c-debug-grid__toggler')
+      var gridElement = document.querySelector('.govuk-c-debug-grid govuk-c-debug-grid--full-page')
+      if (toggler && gridElement) {
+        APP.helpers.addEvent(toggler, 'click', function () {
+          if (APP.helpers.hasClass(gridElement, 'is-visible')) {
+            APP.helpers.removeClass('is-visible')
+            toggler.innerHTML = 'Show page debug grid'
+          } else {
+            APP.helpers.addClass('is-visible')
+            toggler.innerHTML = 'Hide page debug grid'
+          }
+        })
+      }
     },
     init: function () {
-      APP.functions.toggleContainerWidth()
+      document.addEventListener('DOMContentLoaded', function (e) {
+        APP.functions.toggleContainerWidth()
+        APP.functions.gridToggler()
+      })
     }
   }
 
