@@ -3,7 +3,6 @@
 const request = require('request')
 const cheerio = require('cheerio')
 
-const app = require('../app.js')
 const lib = require('../../lib/file-helper')
 
 const requestParamsHomepage = {
@@ -63,16 +62,6 @@ const requestParamsExampleTypography = {
 }
 
 describe('frontend app', () => {
-  let server
-
-  beforeAll(done => {
-    server = app.listen(3000, done)
-  })
-
-  afterAll(done => {
-    server.close(done)
-  })
-
   describe('homepage', () => {
     it('should resolve with a http status code of 200', done => {
       request.get(requestParamsHomepage, (err, res) => {
