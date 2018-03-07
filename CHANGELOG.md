@@ -4,6 +4,11 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 
 ## Unreleased
 
+Breaking changes:
+
+- The error summary component now has a default bottom margin
+  (PR [#583](https://github.com/alphagov/govuk-frontend/pull/583))
+
 Internal:
 
 - Update pre-release step to check for new components
