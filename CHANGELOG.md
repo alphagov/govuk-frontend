@@ -8,6 +8,11 @@ Breaking changes:
 
 - The error summary component now has a default bottom margin
   (PR [#583](https://github.com/alphagov/govuk-frontend/pull/583))
+  
+Fixes:
+
+- Make section break line 1px instead of 2px
+(PR [#585](https://github.com/alphagov/govuk-frontend/pull/585))
 
 Internal:
 
@@ -96,7 +101,7 @@ Internal:
   (PR [#550](https://github.com/alphagov/govuk-frontend/pull/550))
 - Release process has been streamlined with fewer steps
   (PR [#553](https://github.com/alphagov/govuk-frontend/pull/553))
-- Update `govuk-section-break__visible` new class name `govuk-section-break--visible` in the     review app's Typography page. 
+- Update `govuk-section-break__visible` new class name `govuk-section-break--visible` in the     review app's Typography page.
   (PR [#566](https://github.com/alphagov/govuk-frontend/pull/566))
 
 ## 0.0.23-alpha (Breaking release)
