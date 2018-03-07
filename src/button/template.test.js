@@ -241,7 +241,7 @@ describe('Button', () => {
     })
 
     it('renders an input[type=submit] if you don\'t pass anything', () => {
-      const $ = render('button')
+      const $ = render('button', {})
 
       const $component = $('.govuk-c-button')
       expect($component.get(0).tagName).toEqual('input')

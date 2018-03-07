@@ -111,6 +111,13 @@ describe('fieldset', () => {
   })
 
   describe('dependant components', () => {
+    it('have correct nesting order', () => {
+      const $ = render('fieldset', examples['with-error-message'])
+
+      const $component = $('.govuk-o-form-group .govuk-c-fieldset')
+      expect($component.length).toBeTruthy()
+    })
+
     it('passes through errorMessage params without breaking', () => {
       const $ = render('fieldset', examples['with-error-message'])
 
