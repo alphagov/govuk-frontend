@@ -1,0 +1,79 @@
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "button/macro.njk" import govukButton %}
+{% from "date-input/macro.njk" import govukDateInput %}
+{% from "error-summary/macro.njk" import govukErrorSummary %}
+{% from "input/macro.njk" import govukInput %}
+
+{% extends "layout.njk" %}
+
+{% block content %}
+
+{{ govukBackLink({
+  "href": "/",
+  "text": "Back"
+}) }}
+
+<main class="govuk-o-main-wrapper">
+
+<form action="/" method="post">
+
+  {{ govukErrorSummary({
+    "titleText": "Message to alert the user to a problem goes here",
+    "descriptionText": "Optional description of the errors and how to correct them",
+    "classes": "optional-extra-class",
+    "errorList": [
+      {
+        "text": "Descriptive link to the question with an error",
+        "href": "#example-error-1"
+      },
+      {
+        "text": "Descriptive link to the question with an error",
+        "href": "#example-error-1"
+      }
+    ]
+  }) }}
+
+  <h1 class="govuk-heading-xl">Passport details</h1>
+
+  {{ govukInput({
+    label: {
+      "html": '<h3 class="govuk-heading-m govuk-!-mb-r1">Passport number</h3>',
+      "hintText": "For example, 502135326"
+    },
+    id: "passport-number",
+    name: "passport-number",
+    errorMessage: {
+      "text": "You must provide your passport number"
+    }
+  }) }}
+
+  {{ govukDateInput({
+    fieldset: {
+      legendHtml: '<h3 class="govuk-heading-m">Expiry date</h3>',
+      legendHintText: 'For example, 08 2014'
+    },
+    id: 'expiry',
+    name: 'expiry',
+    items:[
+      {
+        name: 'month'
+      },
+      {
+        name: 'year'
+      }
+    ],
+    errorMessage: {
+      "text": "You must provide your expiry date"
+    }
+    })
+  }}
+
+  {{ govukButton({
+    "text": "Continue"
+  }) }}
+
+</form>
+
+</main>
+
+{% endblock %}
