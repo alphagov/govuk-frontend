@@ -14,6 +14,10 @@ Fixes:
 - Make section break line 1px instead of 2px
 (PR [#585](https://github.com/alphagov/govuk-frontend/pull/585))
 
+New features:
+
+- Add footer component (PR [#569](https://github.com/alphagov/govuk-frontend/pull/569))
+
 Internal:
 
 - Update pre-release step to check for new components
