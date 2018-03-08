@@ -1,0 +1,67 @@
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "button/macro.njk" import govukButton %}
+{% from "date-input/macro.njk" import govukDateInput %}
+{% from "error-summary/macro.njk" import govukErrorSummary %}
+
+{% extends "layout.njk" %}
+
+{% block content %}
+
+{{ govukBackLink({
+  "href": "/",
+  "text": "Back"
+}) }}
+
+<main class="govuk-o-main-wrapper">
+
+<form action="/" method="post">
+
+  {{ govukErrorSummary({
+    "titleText": "Message to alert the user to a problem goes here",
+    "descriptionText": "Optional description of the errors and how to correct them",
+    "classes": "optional-extra-class",
+    "errorList": [
+      {
+        "text": "Descriptive link to the question with an error",
+        "href": "#example-error-1"
+      },
+      {
+        "text": "Descriptive link to the question with an error",
+        "href": "#example-error-1"
+      }
+    ]
+  }) }}
+
+  {{ govukDateInput({
+      fieldset: {
+      legendHtml: '<h1 class="govuk-heading-xl">What is your date of birth?</h1>',
+      legendHintText: 'For example, 31 3 1980'
+    },
+    id: 'dob',
+    name: 'dob',
+    items:[
+      {
+        name: 'day'
+      },
+      {
+        name: 'month'
+      },
+      {
+        name: 'year'
+      }
+    ],
+    errorMessage: {
+      text: "You must provide your date of birth"
+    }
+    })
+  }}
+
+  {{ govukButton({
+    "text": "Continue"
+  }) }}
+
+</form>
+
+</main>
+
+{% endblock %}
