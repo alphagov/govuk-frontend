@@ -16,44 +16,44 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
 #### Markup
 
-    <div class="govuk-c-checkboxes">
-
       <div class="govuk-o-form-group">
-        <fieldset class="govuk-c-fieldset">
+      <fieldset class="govuk-c-fieldset">
 
-          <legend class="govuk-c-fieldset__legend">
-            What is your nationality?
+        <legend class="govuk-c-fieldset__legend">
+          What is your nationality?
 
-            <span class="govuk-c-fieldset__hint">If you have dual nationality, select all options that are relevant to you.</span>
+          <span class="govuk-c-fieldset__hint">If you have dual nationality, select all options that are relevant to you.</span>
 
-          </legend>
+        </legend>
 
-        <div class="govuk-c-checkboxes__item">
-          <input class="govuk-c-checkboxes__input" id="nationality-1" name="nationality" type="checkbox" value="british">
-          <label class="govuk-c-label govuk-c-checkboxes__label" for="nationality-1">
+      <div class="govuk-c-checkboxes">
+
+          <div class="govuk-c-checkboxes__item">
+            <input class="govuk-c-checkboxes__input" id="nationality-1" name="nationality" type="checkbox" value="british">
+            <label class="govuk-c-label govuk-c-checkboxes__label" for="nationality-1">
             British
 
           </label>
-        </div>
+          </div>
 
-        <div class="govuk-c-checkboxes__item">
-          <input class="govuk-c-checkboxes__input" id="nationality-2" name="nationality" type="checkbox" value="irish">
-          <label class="govuk-c-label govuk-c-checkboxes__label" for="nationality-2">
+          <div class="govuk-c-checkboxes__item">
+            <input class="govuk-c-checkboxes__input" id="nationality-2" name="nationality" type="checkbox" value="irish">
+            <label class="govuk-c-label govuk-c-checkboxes__label" for="nationality-2">
             Irish
 
           </label>
-        </div>
+          </div>
 
-        <div class="govuk-c-checkboxes__item">
-          <input class="govuk-c-checkboxes__input" id="nationality-3" name="nationality" type="checkbox" value="other">
-          <label class="govuk-c-label govuk-c-checkboxes__label" for="nationality-3">
+          <div class="govuk-c-checkboxes__item">
+            <input class="govuk-c-checkboxes__input" id="nationality-3" name="nationality" type="checkbox" value="other">
+            <label class="govuk-c-label govuk-c-checkboxes__label" for="nationality-3">
             Citizen of another country
 
           </label>
-        </div>
-        </fieldset>
-      </div>
+          </div>
 
+        </div>
+      </fieldset>
     </div>
 
 #### Macro
@@ -87,33 +87,33 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
 #### Markup
 
-    <div class="govuk-c-checkboxes">
+      <div class="govuk-c-checkboxes">
 
-      <div class="govuk-c-checkboxes__item">
-        <input class="govuk-c-checkboxes__input" id="colours-1" name="colours" type="checkbox" value="red">
-        <label class="govuk-c-label govuk-c-checkboxes__label" for="colours-1">
+        <div class="govuk-c-checkboxes__item">
+          <input class="govuk-c-checkboxes__input" id="colours-1" name="colours" type="checkbox" value="red">
+          <label class="govuk-c-label govuk-c-checkboxes__label" for="colours-1">
           Red
 
         </label>
-      </div>
+        </div>
 
-      <div class="govuk-c-checkboxes__item">
-        <input class="govuk-c-checkboxes__input" id="colours-2" name="colours" type="checkbox" value="green">
-        <label class="govuk-c-label govuk-c-checkboxes__label" for="colours-2">
+        <div class="govuk-c-checkboxes__item">
+          <input class="govuk-c-checkboxes__input" id="colours-2" name="colours" type="checkbox" value="green">
+          <label class="govuk-c-label govuk-c-checkboxes__label" for="colours-2">
           Green
 
         </label>
-      </div>
+        </div>
 
-      <div class="govuk-c-checkboxes__item">
-        <input class="govuk-c-checkboxes__input" id="colours-3" name="colours" type="checkbox" value="blue" disabled>
-        <label class="govuk-c-label govuk-c-checkboxes__label" for="colours-3">
+        <div class="govuk-c-checkboxes__item">
+          <input class="govuk-c-checkboxes__input" id="colours-3" name="colours" type="checkbox" value="blue" disabled>
+          <label class="govuk-c-label govuk-c-checkboxes__label" for="colours-3">
           Blue
 
         </label>
-      </div>
+        </div>
 
-    </div>
+      </div>
 
 #### Macro
 
@@ -142,44 +142,44 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
 #### Markup
 
-    <div class="govuk-c-checkboxes">
-
       <div class="govuk-o-form-group">
-        <fieldset class="govuk-c-fieldset">
+      <fieldset class="govuk-c-fieldset">
 
-          <legend class="govuk-c-fieldset__legend">
-            <h3 class="govuk-heading-m">Which types of waste do you transport regularly?</h3>
+        <legend class="govuk-c-fieldset__legend">
+          <h3 class="govuk-heading-m">Which types of waste do you transport regularly?</h3>
 
-            <span class="govuk-c-fieldset__hint">Select all that apply</span>
+          <span class="govuk-c-fieldset__hint">Select all that apply</span>
 
-          </legend>
+        </legend>
 
-        <div class="govuk-c-checkboxes__item">
-          <input class="govuk-c-checkboxes__input" id="undefined-1" name="" type="checkbox" value="animal">
-          <label class="govuk-c-label govuk-c-checkboxes__label" for="undefined-1">
+      <div class="govuk-c-checkboxes">
+
+          <div class="govuk-c-checkboxes__item">
+            <input class="govuk-c-checkboxes__input" id="undefined-1" name="" type="checkbox" value="animal">
+            <label class="govuk-c-label govuk-c-checkboxes__label" for="undefined-1">
             Waste from animal carcasses
 
           </label>
-        </div>
+          </div>
 
-        <div class="govuk-c-checkboxes__item">
-          <input class="govuk-c-checkboxes__input" id="undefined-2" name="" type="checkbox" value="mines">
-          <label class="govuk-c-label govuk-c-checkboxes__label" for="undefined-2">
+          <div class="govuk-c-checkboxes__item">
+            <input class="govuk-c-checkboxes__input" id="undefined-2" name="" type="checkbox" value="mines">
+            <label class="govuk-c-label govuk-c-checkboxes__label" for="undefined-2">
             Waste from mines or quarries
 
           </label>
-        </div>
+          </div>
 
-        <div class="govuk-c-checkboxes__item">
-          <input class="govuk-c-checkboxes__input" id="undefined-3" name="" type="checkbox" value="farm">
-          <label class="govuk-c-label govuk-c-checkboxes__label" for="undefined-3">
+          <div class="govuk-c-checkboxes__item">
+            <input class="govuk-c-checkboxes__input" id="undefined-3" name="" type="checkbox" value="farm">
+            <label class="govuk-c-label govuk-c-checkboxes__label" for="undefined-3">
             Farm or agricultural waste
 
           </label>
-        </div>
-        </fieldset>
-      </div>
+          </div>
 
+        </div>
+      </fieldset>
     </div>
 
 #### Macro
@@ -211,33 +211,33 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
 #### Markup
 
-    <div class="govuk-c-checkboxes">
+      <div class="govuk-c-checkboxes">
 
-      <div class="govuk-c-checkboxes__item">
-        <input class="govuk-c-checkboxes__input" id="colours-1" name="colours" type="checkbox" value="red">
-        <label class="govuk-c-label govuk-c-checkboxes__label" for="colours-1">
+        <div class="govuk-c-checkboxes__item">
+          <input class="govuk-c-checkboxes__input" id="colours-1" name="colours" type="checkbox" value="red">
+          <label class="govuk-c-label govuk-c-checkboxes__label" for="colours-1">
           Red
 
         </label>
-      </div>
+        </div>
 
-      <div class="govuk-c-checkboxes__item">
-        <input class="govuk-c-checkboxes__input" id="colours-2" name="colours" type="checkbox" value="green">
-        <label class="govuk-c-label govuk-c-checkboxes__label" for="colours-2">
+        <div class="govuk-c-checkboxes__item">
+          <input class="govuk-c-checkboxes__input" id="colours-2" name="colours" type="checkbox" value="green">
+          <label class="govuk-c-label govuk-c-checkboxes__label" for="colours-2">
           Green
 
         </label>
-      </div>
+        </div>
 
-      <div class="govuk-c-checkboxes__item">
-        <input class="govuk-c-checkboxes__input" id="colours-3" name="colours" type="checkbox" value="blue">
-        <label class="govuk-c-label govuk-c-checkboxes__label" for="colours-3">
+        <div class="govuk-c-checkboxes__item">
+          <input class="govuk-c-checkboxes__input" id="colours-3" name="colours" type="checkbox" value="blue">
+          <label class="govuk-c-label govuk-c-checkboxes__label" for="colours-3">
           Blue
 
         </label>
-      </div>
+        </div>
 
-    </div>
+      </div>
 
 #### Macro
 
@@ -265,48 +265,48 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
 #### Markup
 
-    <div class="govuk-c-checkboxes">
-
       <div class="govuk-o-form-group govuk-o-form-group--error">
-        <fieldset class="govuk-c-fieldset app-c-fieldset--custom-modifier" data-attribute="value" data-second-attribute="second-value">
+      <fieldset class="govuk-c-fieldset app-c-fieldset--custom-modifier" data-attribute="value" data-second-attribute="second-value">
 
-          <legend class="govuk-c-fieldset__legend">
-            What is your nationality?
+        <legend class="govuk-c-fieldset__legend">
+          What is your nationality?
 
-            <span class="govuk-c-fieldset__hint">If you have dual nationality, select all options that are relevant to you.</span>
+          <span class="govuk-c-fieldset__hint">If you have dual nationality, select all options that are relevant to you.</span>
 
-            <span class="govuk-c-error-message">
-            Please select an option
-          </span>
+          <span class="govuk-c-error-message">
+          Please select an option
+        </span>
 
-          </legend>
+        </legend>
 
-        <div class="govuk-c-checkboxes__item">
-          <input class="govuk-c-checkboxes__input" id="example-1" name="example" type="checkbox" value="british">
-          <label class="govuk-c-label govuk-c-checkboxes__label" for="example-1">
+      <div class="govuk-c-checkboxes">
+
+          <div class="govuk-c-checkboxes__item">
+            <input class="govuk-c-checkboxes__input" id="example-1" name="example" type="checkbox" value="british">
+            <label class="govuk-c-label govuk-c-checkboxes__label" for="example-1">
             British
 
           </label>
-        </div>
+          </div>
 
-        <div class="govuk-c-checkboxes__item">
-          <input class="govuk-c-checkboxes__input" id="example-2" name="example" type="checkbox" value="irish">
-          <label class="govuk-c-label govuk-c-checkboxes__label" for="example-2">
+          <div class="govuk-c-checkboxes__item">
+            <input class="govuk-c-checkboxes__input" id="example-2" name="example" type="checkbox" value="irish">
+            <label class="govuk-c-label govuk-c-checkboxes__label" for="example-2">
             Irish
 
           </label>
-        </div>
+          </div>
 
-        <div class="govuk-c-checkboxes__item">
-          <input class="govuk-c-checkboxes__input" id="example-3" name="example" type="checkbox" value="other">
-          <label class="govuk-c-label govuk-c-checkboxes__label" for="example-3">
+          <div class="govuk-c-checkboxes__item">
+            <input class="govuk-c-checkboxes__input" id="example-3" name="example" type="checkbox" value="other">
+            <label class="govuk-c-label govuk-c-checkboxes__label" for="example-3">
             Citizen of another country
 
           </label>
-        </div>
-        </fieldset>
-      </div>
+          </div>
 
+        </div>
+      </fieldset>
     </div>
 
 #### Macro
@@ -348,46 +348,46 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
 #### Markup
 
-    <div class="govuk-c-checkboxes">
-
       <div class="govuk-o-form-group govuk-o-form-group--error">
-        <fieldset class="govuk-c-fieldset">
+      <fieldset class="govuk-c-fieldset">
 
-          <legend class="govuk-c-fieldset__legend">
-            <h3 class="govuk-heading-m">Which types of waste do you transport regularly?</h3>
+        <legend class="govuk-c-fieldset__legend">
+          <h3 class="govuk-heading-m">Which types of waste do you transport regularly?</h3>
 
-            <span class="govuk-c-error-message">
-            Please select an option
-          </span>
+          <span class="govuk-c-error-message">
+          Please select an option
+        </span>
 
-          </legend>
+        </legend>
 
-        <div class="govuk-c-checkboxes__item">
-          <input class="govuk-c-checkboxes__input" id="undefined-1" name="" type="checkbox" value="animal">
-          <label class="govuk-c-label govuk-c-checkboxes__label" for="undefined-1">
+      <div class="govuk-c-checkboxes">
+
+          <div class="govuk-c-checkboxes__item">
+            <input class="govuk-c-checkboxes__input" id="undefined-1" name="" type="checkbox" value="animal">
+            <label class="govuk-c-label govuk-c-checkboxes__label" for="undefined-1">
             Waste from animal carcasses
 
           </label>
-        </div>
+          </div>
 
-        <div class="govuk-c-checkboxes__item">
-          <input class="govuk-c-checkboxes__input" id="undefined-2" name="" type="checkbox" value="mines">
-          <label class="govuk-c-label govuk-c-checkboxes__label" for="undefined-2">
+          <div class="govuk-c-checkboxes__item">
+            <input class="govuk-c-checkboxes__input" id="undefined-2" name="" type="checkbox" value="mines">
+            <label class="govuk-c-label govuk-c-checkboxes__label" for="undefined-2">
             Waste from mines or quarries
 
           </label>
-        </div>
+          </div>
 
-        <div class="govuk-c-checkboxes__item">
-          <input class="govuk-c-checkboxes__input" id="undefined-3" name="" type="checkbox" value="farm">
-          <label class="govuk-c-label govuk-c-checkboxes__label" for="undefined-3">
+          <div class="govuk-c-checkboxes__item">
+            <input class="govuk-c-checkboxes__input" id="undefined-3" name="" type="checkbox" value="farm">
+            <label class="govuk-c-label govuk-c-checkboxes__label" for="undefined-3">
             Farm or agricultural waste
 
           </label>
-        </div>
-        </fieldset>
-      </div>
+          </div>
 
+        </div>
+      </fieldset>
     </div>
 
 #### Macro
