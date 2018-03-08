@@ -24,6 +24,8 @@ Internal:
 
 - Update pre-release step to check for new components
 (PR [#574](https://github.com/alphagov/govuk-frontend/pull/574))
+- Ensure render function does not have undefined object
+  (PR [#587](https://github.com/alphagov/govuk-frontend/pull/587))
 
 ## 0.0.25-alpha (Breaking release)
 
