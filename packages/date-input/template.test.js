@@ -188,6 +188,13 @@ describe('Date input', () => {
   })
 
   describe('nested dependant components', () => {
+    it('have correct nesting order', () => {
+      const $ = render('date-input', examples['default'])
+
+      const $component = $('.govuk-o-form-group > .govuk-c-fieldset > .govuk-c-date-input')
+      expect($component.length).toBeTruthy()
+    })
+
     it('passes through label params without breaking', () => {
       const $ = render('date-input', examples['default'])
 

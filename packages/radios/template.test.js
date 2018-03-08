@@ -197,6 +197,13 @@ describe('Radios', () => {
   })
 
   describe('nested dependant components', () => {
+    it('have correct nesting order', () => {
+      const $ = render('radios', examples['with-extreme-fieldset'])
+
+      const $component = $('.govuk-o-form-group > .govuk-c-fieldset > .govuk-c-radios')
+      expect($component.length).toBeTruthy()
+    })
+
     it('passes through label params without breaking', () => {
       const $ = render('radios', {
         name: 'example-name',

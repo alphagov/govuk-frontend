@@ -43,7 +43,7 @@ describe('Input', () => {
     })
 
     it('renders with type="text" by default', () => {
-      const $ = render('input')
+      const $ = render('input', {})
 
       const $component = $('.govuk-c-input')
       expect($component.attr('type')).toEqual('text')
@@ -80,6 +80,18 @@ describe('Input', () => {
   })
 
   describe('with dependant components', () => {
+    it('have correct nesting order', () => {
+      const $ = render('input', {
+        id: 'my-input',
+        label: {
+          'text': 'National Insurance number'
+        }
+      })
+
+      const $component = $('.govuk-o-form-group > .govuk-c-input')
+      expect($component.length).toBeTruthy()
+    })
+
     it('renders with label', () => {
       const $ = render('input', {
         id: 'my-input',

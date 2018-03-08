@@ -142,6 +142,21 @@ describe('Select', () => {
   })
 
   describe('with dependant components', () => {
+    it('have correct nesting order', () => {
+      const $ = render('select', {
+        id: 'nesting-order',
+        label: {
+          'text': 'National Insurance number'
+        },
+        errorMessage: {
+          'text': 'Error message'
+        }
+      })
+
+      const $component = $('.govuk-o-form-group > .govuk-c-select')
+      expect($component.length).toBeTruthy()
+    })
+
     it('renders with label', () => {
       const $ = render('select', {
         id: 'my-select',

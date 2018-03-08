@@ -1,0 +1,8 @@
+{
+  "name": "@govuk-frontend/footer",
+  "version": "0.0.26-alpha",
+  "dependencies": {
+    "@govuk-frontend/globals": "^0.0.26-alpha",
+    "@govuk-frontend/icons": "^0.0.26-alpha"
+  }
+}
