@@ -3,11 +3,11 @@ set -e
 
 PACKAGE=$(node -p "require('./package.json').name")
 VERSION=$(node -p "require('./package.json').version")
-PUBLISHED=$(npm info $PACKAGE@$VERSION version)
 
-if [ "$VERSION" == "$PUBLISHED" ]; then
-  echo "⚠️ $PACKAGE@$VERSION is already published!"
-else
-  echo "📦 Publishing: $PACKAGE@$VERSION"
+# check if package exists or if the current version of the package is already published
+if [ -z "$(npm info ${PACKAGE} 2> /dev/null)" ] || [ "$(npm info $PACKAGE@$VERSION version)" != "$VERSION" ]; then
   npm publish $@
+  echo "🗒 Package published!" 
+else
+  echo "⚠️ $PACKAGE@$VERSION is already published!"
 fi
