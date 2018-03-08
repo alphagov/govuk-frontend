@@ -57,21 +57,9 @@ body {
 {% endif %}
 {% if not isReadme %}
 {% block scripts %}
+<script type="text/javascript" src="/js/app/app.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
 <span class="govuk-c-debug-grid__toggler">Show page debug grid</span>
 <div class="govuk-c-debug-grid govuk-c-debug-grid--full-page"></div>
-<script>
-   var toggler = document.querySelectorAll(".govuk-c-debug-grid__toggler")[0];
-      toggler.addEventListener("click",function(event){
-      event.preventDefault();
-      if (new RegExp('(^| )is-visible( |$)', 'gi').test(this.nextElementSibling.className)) {
-        this.nextElementSibling.className = 'govuk-c-debug-grid govuk-c-debug-grid--full-page';
-        toggler.innerHTML = "Show page debug grid";
-      } else {
-        this.nextElementSibling.className = 'govuk-c-debug-grid govuk-c-debug-grid--full-page is-visible';
-        toggler.innerHTML = "Hide page debug grid";
-      }
-  },false);
-</script>
 {% endblock %}
 {% endif %}

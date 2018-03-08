@@ -41,6 +41,9 @@ app.use('/public', express.static(configPaths.public))
 app.use('/vendor/html5-shiv/', express.static('node_modules/html5shiv/dist/'))
 app.use('/icons', express.static(path.join(configPaths.src, 'icons')))
 
+// serve app specific javascript from assets folder
+app.use('/js/app/', express.static(path.join(configPaths.app, 'assets/js/')))
+
 const server = app.listen(port, () => {
   console.log('Listening on port ' + port + '   url: http://localhost:' + port)
 })
