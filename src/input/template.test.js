@@ -43,7 +43,7 @@ describe('Input', () => {
     })
 
     it('renders with type="text" by default', () => {
-      const $ = render('input')
+      const $ = render('input', {})
 
       const $component = $('.govuk-c-input')
       expect($component.attr('type')).toEqual('text')
