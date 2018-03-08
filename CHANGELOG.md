@@ -9,6 +9,10 @@ Breaking changes:
 - The error summary component now has a default bottom margin
   (PR [#583](https://github.com/alphagov/govuk-frontend/pull/583))
 
+New features:
+
+- Add footer component (PR [#569](https://github.com/alphagov/govuk-frontend/pull/569))
+
 Internal:
 
 - Update pre-release step to check for new components
@@ -96,7 +100,7 @@ Internal:
   (PR [#550](https://github.com/alphagov/govuk-frontend/pull/550))
 - Release process has been streamlined with fewer steps
   (PR [#553](https://github.com/alphagov/govuk-frontend/pull/553))
-- Update `govuk-section-break__visible` new class name `govuk-section-break--visible` in the     review app's Typography page. 
+- Update `govuk-section-break__visible` new class name `govuk-section-break--visible` in the     review app's Typography page.
   (PR [#566](https://github.com/alphagov/govuk-frontend/pull/566))
 
 ## 0.0.23-alpha (Breaking release)
