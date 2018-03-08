@@ -8,7 +8,9 @@ Breaking changes:
 
 - The error summary component now has a default bottom margin
   (PR [#583](https://github.com/alphagov/govuk-frontend/pull/583))
-  
+- Nest components correctly
+  (PR [#584](https://github.com/alphagov/govuk-frontend/pull/584))
+
 Fixes:
 
 - Make section break line 1px instead of 2px
