@@ -8,17 +8,18 @@ ALL_PACKAGE_JSON_FILES_PRESENT=true;
 
 # function to create a sample package.json
 # and add latest published version of globals as dependency (as it's most common)
+# we're currently matching the version number with other compoments
+# we need to decide what the initial version for new components is
 create_package_json()
 {
-  GLOBALS_PACKAGE_VERSION=$(node -p "require('./packages/globals/package.json').version")
-  PACKAGE_JSON='
-  {
-    "name": "@govuk-frontend/'${D##*/}'",
-    "version": "0.0.0",
-    "dependencies": {
-      "@govuk-frontend/globals": "'$GLOBALS_PACKAGE_VERSION'"
-    }
-  }'
+GLOBALS_PACKAGE_VERSION=$(node -p "require('./packages/globals/package.json').version")
+PACKAGE_JSON='{
+  "name": "@govuk-frontend/'${D##*/}'",
+  "version": "'$GLOBALS_PACKAGE_VERSION'",
+  "dependencies": {
+    "@govuk-frontend/globals": "^'$GLOBALS_PACKAGE_VERSION'"
+  }
+}'
 
   # create a package.json file
   echo "$PACKAGE_JSON" >> "${D}/package.json"
@@ -35,7 +36,7 @@ for D in $PACKAGES_DIR*; do
           # ${D##*/} strips everything before /
           COMPONENT_NAME=${D##*/}
           echo "⚠️ 🆕  $COMPONENT_NAME 🆕  component is missing a package.json file.\n"
-          echo "⚠️ I've created a sample package.json file. Please amended it with correct data.\n"
+          echo "⚠️ I've created a sample package.json file. Please specify all required dependencies and save the changes. No need to commit.\n"
 
           create_package_json ${D}
 
