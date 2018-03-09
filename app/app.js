@@ -150,28 +150,4 @@ app.get('/robots.txt', function (req, res) {
   res.send('User-agent: *\nDisallow: /')
 })
 
-// Since this is the last non-error-handling middleware, we assume 404, as nothing else responded.
-app.use(function (req, res, next) {
-  res.status(404)
-  res.format({
-    html: function () {
-      res.render('http-error', { error: 'Page not found', message: 'If you entered a web address please check it was correct.', url: req.url })
-    },
-    json: function () {
-      res.json({ error: 'Not found' })
-    },
-    default: function () {
-      res.type('txt').send('Not found')
-    }
-  })
-  next()
-})
-
-// Error-handling middleware, take the same form require an arity of 4.
-// When connect has an error, it will invoke ONLY error-handling middleware
-app.use(function (err, req, res, next) {
-  res.status(err.status || 500)
-  res.render('http-error', { error: 'Internal server error', message: err })
-})
-
 module.exports = server
