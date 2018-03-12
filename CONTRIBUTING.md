@@ -2,6 +2,9 @@
 
 We're not ready for contributions yet, this document exists as a guide for those working on govuk-frontend.
 
+## Code of Conduct
+Please read [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) before contributing.
+
 ## Running locally
 
 You'll need [Git](https://help.github.com/articles/set-up-git/) and [Node.js](https://nodejs.org/en/) installed to get this project running.
