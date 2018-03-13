@@ -1,90 +1,103 @@
 {% extends "layout.njk" %}
 
+{% from "back-link/macro.njk" import govukBackLink %}
+
 {% block content %}
 
-<div class="govuk-o-grid govuk-!-mt-r9">
-  <div class="govuk-o-grid__item govuk-o-grid__item--two-thirds">
+{{ govukBackLink({
+  "href": "/",
+  "text": "Back"
+}) }}
 
-    <div class="govuk-prose-scope">
+<main class="govuk-o-main-wrapper">
 
-      <h1>H1 heading</h1>
+  <div class="govuk-o-grid">
+    <div class="govuk-o-grid__item govuk-o-grid__item--two-thirds">
+      <h1 class="govuk-heading-xl">
+        Prose scope
+      </h1>
+      <div class="govuk-prose-scope">
 
-      <p>
-        A paragraph. This includes even more text to give a good representation
-        of a more average length paragraph. That way you can see more than one
-        line wrapping.
-      </p>
+        <h1>H1 heading</h1>
 
-      <p>
-        This paragraph contains <a href="#">a link with surrounding text</a>
-        which shows the link in more context.
-      </p>
+        <p>
+          A paragraph. This includes even more text to give a good representation
+          of a more average length paragraph. That way you can see more than one
+          line wrapping.
+        </p>
 
-      <p><a href="#">This is a link without any surrounding text</a></p>
+        <p>
+          This paragraph contains <a href="#">a link with surrounding text</a>
+          which shows the link in more context.
+        </p>
 
-      <h2>H2 heading with a <a href="#">link in it</a></h2>
+        <p><a href="#">This is a link without any surrounding text</a></p>
 
-      <h3>H3 heading immediately after an H2</h3>
+        <h2>H2 heading with a <a href="#">link in it</a></h2>
 
-      <p>
-        A paragraph. This includes even more text to give a good representation
-        of a more average length paragraph. That way you can see more than one
-        line wrapping.
-      </p>
+        <h3>H3 heading immediately after an H2</h3>
 
-      <p>
-        Our guidance says to avoid using <strong>bold text</strong> in body
-        copy, but we still need to see what it looks like if people do.
-      </p>
+        <p>
+          A paragraph. This includes even more text to give a good representation
+          of a more average length paragraph. That way you can see more than one
+          line wrapping.
+        </p>
 
-      <p>Unordered list (ul):</p>
-      <ul>
-        <li>apples</li>
-        <li>oranges</li>
-        <li>pears</li>
-        <li><a href="#">more fruit</a></li>
-      </ul>
+        <p>
+          Our guidance says to avoid using <strong>bold text</strong> in body
+          copy, but we still need to see what it looks like if people do.
+        </p>
 
-      <p>Nested lists (ul with ol):</p>
-      <ul>
-        <li>apples
-          <ol>
-            <li>Granny Smith</li>
-            <li>Gala</li>
-          </ol>
-        </li>
-        <li>oranges</li>
-      </ul>
+        <p>Unordered list (ul):</p>
+        <ul>
+          <li>apples</li>
+          <li>oranges</li>
+          <li>pears</li>
+          <li><a href="#">more fruit</a></li>
+        </ul>
 
-      <h3>Another H3 heading after a list</h3>
+        <p>Nested lists (ul with ol):</p>
+        <ul>
+          <li>apples
+            <ol>
+              <li>Granny Smith</li>
+              <li>Gala</li>
+            </ol>
+          </li>
+          <li>oranges</li>
+        </ul>
 
-      <h4>An H4 heading</h4>
+        <h3>Another H3 heading after a list</h3>
 
-      <p>Ordered list (ol):</p>
+        <h4>An H4 heading</h4>
 
-      <ol>
-        <li>This is the first list item in the ordered list.</li>
-        <li>
-          This is the second list item in the ordered list which
-          <a href="#">contains a link</a> and is very long so it spans multiple
-          lines.
-        </li>
-        <li>This is the third and final item in the ordered list.</li>
-      </ol>
+        <p>Ordered list (ol):</p>
 
-      <hr>
+        <ol>
+          <li>This is the first list item in the ordered list.</li>
+          <li>
+            This is the second list item in the ordered list which
+            <a href="#">contains a link</a> and is very long so it spans multiple
+            lines.
+          </li>
+          <li>This is the third and final item in the ordered list.</li>
+        </ol>
 
-      <h2>An H2 after a thematic break</h2>
+        <hr>
 
-      <p>
-        A paragraph. This includes even more text to give a good representation
-        of a more average length paragraph. That way you can see more than one
-        line wrapping.
-      </p>
+        <h2>An H2 after a thematic break</h2>
+
+        <p>
+          A paragraph. This includes even more text to give a good representation
+          of a more average length paragraph. That way you can see more than one
+          line wrapping.
+        </p>
+
+      </div>
 
     </div>
-
   </div>
-</div>
+
+</main>
 
 {% endblock %}

@@ -1,25 +1,34 @@
 {% extends "layout.njk" %}
 
+{% from "back-link/macro.njk" import govukBackLink %}
+
 {% block content %}
-  {% include "back-link/back-link.njk" %}
-  {% include "breadcrumbs/breadcrumbs.njk" %}
-  {% include "button/button.njk" %}
-  {% include "checkboxes/checkboxes.njk" %}
-  {% include "date-input/date-input.njk" %}
-  {% include "details/details.njk" %}
-  {% include "error-message/error-message.njk" %}
-  {% include "error-summary/error-summary.njk" %}
-  {% include "fieldset/fieldset.njk" %}
-  {% include "file-upload/file-upload.njk" %}
-  {% include "input/input.njk" %}
-  {% include "label/label.njk" %}
-  {% include "panel/panel.njk" %}
-  {% include "phase-banner/phase-banner.njk" %}
-  {% include "radios/radios.njk" %}
-  {% include "select/select.njk" %}
-  {% include "skip-link/skip-link.njk" %}
-  {% include "table/table.njk" %}
-  {% include "tag/tag.njk" %}
-  {% include "textarea/textarea.njk" %}
-  {% include "warning-text/warning-text.njk" %}
+  {{ govukBackLink({
+  "href": "/",
+  "text": "Back"
+}) }}
+
+  <main class="govuk-o-main-wrapper">
+    {% include "back-link/back-link.njk" %}
+    {% include "breadcrumbs/breadcrumbs.njk" %}
+    {% include "button/button.njk" %}
+    {% include "checkboxes/checkboxes.njk" %}
+    {% include "date-input/date-input.njk" %}
+    {% include "details/details.njk" %}
+    {% include "error-message/error-message.njk" %}
+    {% include "error-summary/error-summary.njk" %}
+    {% include "fieldset/fieldset.njk" %}
+    {% include "file-upload/file-upload.njk" %}
+    {% include "input/input.njk" %}
+    {% include "label/label.njk" %}
+    {% include "panel/panel.njk" %}
+    {% include "phase-banner/phase-banner.njk" %}
+    {% include "radios/radios.njk" %}
+    {% include "select/select.njk" %}
+    {% include "skip-link/skip-link.njk" %}
+    {% include "table/table.njk" %}
+    {% include "tag/tag.njk" %}
+    {% include "textarea/textarea.njk" %}
+    {% include "warning-text/warning-text.njk" %}
+  </main>
 {% endblock %}
