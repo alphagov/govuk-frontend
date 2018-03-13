@@ -3,3 +3,7 @@
 // to this list, ordered by width, e.g. (mobile, tablet, desktop).
 $mq-show-breakpoints: (mobile, tablet, desktop);
 @import "../../../src/all/all";
+
+body {
+  margin: 0;
+}
