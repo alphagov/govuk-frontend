@@ -38,22 +38,26 @@
   }
 
   @if $direction == "up" {
-    clip-path: polygon(50% 0%, 0% 100%, 100% 100%); // 3
+    -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%); // 3
 
     border-width: 0 $perpendicular $height $perpendicular;
     border-bottom-color: currentColor; // 2
   } @else if $direction == "right" {
-    clip-path: polygon(0% 0%, 100% 50%, 0% 100%); // 3
+    -webkit-clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+            clip-path: polygon(0% 0%, 100% 50%, 0% 100%); // 3
 
     border-width: $perpendicular 0 $perpendicular $height;
     border-left-color: currentColor; // 2
   } @else if $direction == "down" {
-    clip-path: polygon(0% 0%, 50% 100%, 100% 0%); // 3
+    -webkit-clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
+            clip-path: polygon(0% 0%, 50% 100%, 100% 0%); // 3
 
     border-width: $height $perpendicular 0 $perpendicular;
     border-top-color: currentColor; // 2
   } @else if $direction == "left" {
-    clip-path: polygon(0% 50%, 100% 100%, 100% 0%); // 3
+    -webkit-clip-path: polygon(0% 50%, 100% 100%, 100% 0%);
+            clip-path: polygon(0% 50%, 100% 100%, 100% 0%); // 3
 
     border-width: $perpendicular $height $perpendicular 0;
     border-right-color: currentColor; // 2
