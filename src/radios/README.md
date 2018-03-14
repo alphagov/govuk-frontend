@@ -377,6 +377,72 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
       ]
     }) }}
 
+### Radios--small
+
+[Preview the radios--small example](http://govuk-frontend-review.herokuapp.com/components/radios/small/preview)
+
+#### Markup
+
+      <div class="govuk-o-form-group">
+      <fieldset class="govuk-c-fieldset app-c-fieldset--custom-modifier" data-attribute="value" data-second-attribute="second-value">
+
+        <legend class="govuk-c-fieldset__legend">
+          Have you changed your name?
+
+          <span class="govuk-c-fieldset__hint">This includes changing your last name or spelling your name differently.</span>
+
+        </legend>
+
+      <div class="govuk-c-radios govuk-c-radios--small">
+
+          <div class="govuk-c-radios__item">
+            <input class="govuk-c-radios__input" id="example-1" name="example" type="radio" value="yes">
+            <label class="govuk-c-label govuk-c-radios__label" for="example-1">
+            Yes
+
+          </label>
+          </div>
+
+          <div class="govuk-c-radios__item">
+            <input class="govuk-c-radios__input" id="example-2" name="example" type="radio" value="no" checked>
+            <label class="govuk-c-label govuk-c-radios__label" for="example-2">
+            No
+
+          </label>
+          </div>
+
+        </div>
+      </fieldset>
+    </div>
+
+#### Macro
+
+    {{ govukRadios({
+      "idPrefix": "example",
+      "name": "example",
+      "classes": "govuk-c-radios--small",
+      "fieldset": {
+        "classes": "app-c-fieldset--custom-modifier",
+        "attributes": {
+          "data-attribute": "value",
+          "data-second-attribute": "second-value"
+        },
+        "legendText": "Have you changed your name?",
+        "legendHintText": "This includes changing your last name or spelling your name differently."
+      },
+      "items": [
+        {
+          "value": "yes",
+          "text": "Yes"
+        },
+        {
+          "value": "no",
+          "text": "No",
+          "checked": true
+        }
+      ]
+    }) }}
+
 ## Dependencies
 
 To consume the radios component you must be running npm version 5 or above.

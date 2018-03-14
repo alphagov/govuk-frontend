@@ -80,6 +80,82 @@
     background: currentColor;
   }
 
+  // Small radios
+
+  .govuk-c-radios--small .govuk-c-radios__item {
+    @include govuk-font-regular-19;
+
+    display: block;
+
+    position: relative;
+
+    min-height: 0;
+
+    margin-bottom: $govuk-spacing-scale-1;
+    padding: 0 0 0 $govuk-spacing-scale-6;
+
+    clear: left;
+  }
+
+  .govuk-c-radios--small .govuk-c-radios__input {
+    position: absolute;
+
+    z-index: 1;
+    top: 5px;
+    left: 0;
+
+    width: 26px;
+    height: 26px;
+
+    cursor: pointer;
+
+    // IE8 doesn’t support pseudoelements, so we don’t want to hide native elements there. Double colons get ommited by IE8.
+    @if ($govuk-is-ie == false) or ($govuk-ie-version == 9) {
+      margin: 0;
+      opacity: 0;
+    }
+  }
+
+  .govuk-c-radios--small .govuk-c-radios__label {
+    display: block;
+    padding: 8px 5px 2px;
+    cursor: pointer;
+    // remove 300ms pause on mobile
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+  }
+
+  .govuk-c-radios--small .govuk-c-radios__input + .govuk-c-radios__label::before {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    top: 5px;
+    left: 0;
+
+    width: 26px;
+    height: 26px;
+
+    border: $govuk-border-width-form-element solid currentColor;
+    border-radius: 50%;
+    background: transparent;
+  }
+
+  .govuk-c-radios--small .govuk-c-radios__input + .govuk-c-radios__label::after {
+    content: "";
+
+    position: absolute;
+    top: 11px;
+    left: 6px;
+
+    width: 0;
+    height: 0;
+
+    border: 7px solid currentColor;
+    border-radius: 50%;
+    opacity: 0;
+    background: currentColor;
+  }
+
   // Focused state
   .govuk-c-radios__input:focus + .govuk-c-radios__label::before {
     box-shadow: 0 0 0 4px $govuk-focus-colour;
