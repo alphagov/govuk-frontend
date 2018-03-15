@@ -2,6 +2,13 @@
 
 Note: We're not following semantic versioning yet, we are going to talk about this soon.
 
+## Unreleased
+
+Internal:
+
+- Add pull request template
+  (PR [#594](https://github.com/alphagov/govuk-frontend/pull/594))
+
 ## 0.0.26-alpha (Breaking release)
 
 Breaking changes:
