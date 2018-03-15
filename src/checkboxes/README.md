@@ -429,7 +429,7 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
         </legend>
 
-      <div class="govuk-c-checkboxes">
+      <div class="govuk-c-checkboxes govuk-c-checkboxes--small">
 
           <div class="govuk-c-checkboxes__item">
             <input class="govuk-c-checkboxes__input" id="undefined-1" name="" type="checkbox" value="animal">
@@ -462,6 +462,7 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 #### Macro
 
     {{ govukCheckboxes({
+      "classes": "govuk-c-checkboxes--small",
       "fieldset": {
         "legendHtml": "<h3 class=\"govuk-heading-m\">Which types of waste do you transport regularly?</h3>"
       },
