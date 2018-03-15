@@ -87,3 +87,17 @@ examples:
         text: Waste from mines or quarries
       - value: farm
         text: Farm or agricultural waste
+
+- name: small
+  data:
+    classes: govuk-c-checkboxes--small
+    fieldset:
+      legendHtml:
+        <h3 class="govuk-heading-m">Which types of waste do you transport regularly?</h3>
+    items:
+      - value: animal
+        text: Waste from animal carcasses
+      - value: mines
+        text: Waste from mines or quarries
+      - value: farm
+        text: Farm or agricultural waste

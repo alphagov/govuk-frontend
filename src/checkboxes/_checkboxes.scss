@@ -83,6 +83,48 @@
     background: transparent;
   }
 
+  // Small
+
+  .govuk-c-checkboxes--small .govuk-c-checkboxes__item {
+    min-height: 26px;
+
+    margin-bottom: $govuk-spacing-scale-2;
+    padding: 0 0 0 $govuk-spacing-scale-6;
+  }
+
+  .govuk-c-checkboxes--small .govuk-c-checkboxes__item:last-child,
+  .govuk-c-checkboxes--small .govuk-c-checkboxes__item:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .govuk-c-checkboxes--small .govuk-c-checkboxes__input {
+    top: 5px;
+    left: 0;
+
+    width: 26px;
+    height: 26px;
+  }
+
+  .govuk-c-checkboxes--small .govuk-c-checkboxes__label {
+    padding: 8px 5px 2px;
+  }
+
+  .govuk-c-checkboxes--small .govuk-c-checkboxes__input + .govuk-c-checkboxes__label::before {
+    top: 5px;
+
+    width: 26px;
+    height: 26px;
+  }
+
+  .govuk-c-checkboxes--small .govuk-c-checkboxes__input + .govuk-c-checkboxes__label::after {
+    top: 12px;
+    left: 5px;
+    width: 12px;
+    height: 5px;
+
+    border-width: 0 0 4px 4px;
+  }
+
   // Focused state
   .govuk-c-checkboxes__input:focus + .govuk-c-checkboxes__label::before {
     box-shadow: 0 0 0 $govuk-focus-width $govuk-focus-colour;
