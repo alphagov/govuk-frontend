@@ -102,12 +102,14 @@
 
   // Inline variant
   .govuk-c-radios--inline {
-    @include govuk-h-clearfix;
+    @include mq ($from: tablet) {
+      @include govuk-h-clearfix;
 
-    .govuk-c-radios__item {
-      margin-right: $govuk-spacing-scale-4;
-      float: left;
-      clear: none;
+      .govuk-c-radios__item {
+        margin-right: $govuk-spacing-scale-4;
+        float: left;
+        clear: none;
+      }
     }
   }
 }
