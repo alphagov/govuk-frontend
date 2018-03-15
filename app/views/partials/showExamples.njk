@@ -10,17 +10,17 @@
 
     {% if item.name == 'default' %}
       {% set itemName = 'Component default' %}
-      {% set previewLink = componentName + "/preview" %}
+      {% set previewLink = '/components/' + componentName + "/preview" %}
       {% set previewText = 'Preview the ' + componentName + ' component' %}
     {% else %}
       {% set itemName = componentName + '--' + item.name %}
-      {% set previewLink = componentName + '/' + item.name  + "/preview" %}
+      {% set previewLink = '/components/' + componentName + '/' + item.name  + "/preview" %}
       {% set previewText = 'Preview the ' + itemName + ' example' %}
     {% endif %}
 
     {% if isReadme %}
       <h3>{{ itemName  | capitalize }}</h3>
-      <a href="http://govuk-frontend-review.herokuapp.com/components/{{ previewLink }}">{{ previewText }}</a>
+      <a href="http://govuk-frontend-review.herokuapp.com{{ previewLink }}">{{ previewText }}</a>
       {% include "code.njk" %}
     {% else %}
       <section aria-labelledby="heading-{{ itemName}}">
