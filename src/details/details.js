@@ -213,23 +213,6 @@
         // Create a circular reference from the summary back to its
         // parent details element, for convenience in the click handler
         details.__summary.__details = details
-
-        // If this is not a native implementation, create an arrow
-        // inside the summary
-        if (!GOVUK_FRONTEND.details.NATIVE_DETAILS) {
-          var twisty = document.createElement('i')
-
-          if (openAttr === true) {
-            twisty.className = 'arrow arrow-open'
-            twisty.appendChild(document.createTextNode('\u25bc'))
-          } else {
-            twisty.className = 'arrow arrow-closed'
-            twisty.appendChild(document.createTextNode('\u25ba'))
-          }
-
-          details.__summary.__twisty = details.__summary.insertBefore(twisty, details.__summary.firstChild)
-          details.__summary.__twisty.setAttribute('aria-hidden', 'true')
-        }
       }
 
       // Bind an event to handle summary elements
@@ -262,12 +245,6 @@
           summary.__details.removeAttribute('open')
         }
       }
-
-      if (summary.__twisty) {
-        summary.__twisty.firstChild.nodeValue = (expanded ? '\u25ba' : '\u25bc')
-        summary.__twisty.setAttribute('class', (expanded ? 'arrow arrow-closed' : 'arrow arrow-open'))
-      }
-
       return true
     },
 
