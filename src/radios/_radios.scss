@@ -21,12 +21,6 @@
     margin-bottom: 0;
   }
 
-  .govuk-c-radios__item--inline {
-    margin-right: $govuk-spacing-scale-4;
-    float: left;
-    clear: none;
-  }
-
   .govuk-c-radios__input {
     position: absolute;
 
@@ -104,5 +98,18 @@
 
   .govuk-c-radios__input:disabled + .govuk-c-radios__label {
     opacity: .5;
+  }
+
+  // Inline variant
+  .govuk-c-radios--inline {
+    @include mq ($from: tablet) {
+      @include govuk-h-clearfix;
+
+      .govuk-c-radios__item {
+        margin-right: $govuk-spacing-scale-4;
+        float: left;
+        clear: none;
+      }
+    }
   }
 }

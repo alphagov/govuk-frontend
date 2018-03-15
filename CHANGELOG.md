@@ -2,6 +2,16 @@
 
 Note: We're not following semantic versioning yet, we are going to talk about this soon.
 
+## Unreleased
+
+Breaking changes:
+
+- Removed an (undocumented) modifier `govuk-c-radio__item--inline` which made
+  radio buttons inline, in favour of a new block-level modifier
+  `govuk-c-radios--inline` which will automatically make all the radio buttons
+  within that block inline.
+  (PR [#607](https://github.com/alphagov/govuk-frontend/pull/607))
+
 ## 0.0.26-alpha (Breaking release)
 
 Breaking changes:

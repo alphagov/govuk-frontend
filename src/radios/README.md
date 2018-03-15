@@ -70,6 +70,67 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
       ]
     }) }}
 
+### Radios--inline
+
+[Preview the radios--inline example](http://govuk-frontend-review.herokuapp.com/components/radios/inline/preview)
+
+#### Markup
+
+      <div class="govuk-o-form-group">
+      <fieldset class="govuk-c-fieldset">
+
+        <legend class="govuk-c-fieldset__legend">
+          Have you changed your name?
+
+          <span class="govuk-c-fieldset__hint">This includes changing your last name or spelling your name differently.</span>
+
+        </legend>
+
+      <div class="govuk-c-radios govuk-c-radios--inline">
+
+          <div class="govuk-c-radios__item">
+            <input class="govuk-c-radios__input" id="example-1" name="example" type="radio" value="yes">
+            <label class="govuk-c-label govuk-c-radios__label" for="example-1">
+            Yes
+
+          </label>
+          </div>
+
+          <div class="govuk-c-radios__item">
+            <input class="govuk-c-radios__input" id="example-2" name="example" type="radio" value="no" checked>
+            <label class="govuk-c-label govuk-c-radios__label" for="example-2">
+            No
+
+          </label>
+          </div>
+
+        </div>
+      </fieldset>
+    </div>
+
+#### Macro
+
+    {{ govukRadios({
+      "idPrefix": "example",
+      "classes": "govuk-c-radios--inline",
+      "name": "example",
+      "fieldset": {
+        "legendText": "Have you changed your name?",
+        "legendHintText": "This includes changing your last name or spelling your name differently."
+      },
+      "items": [
+        {
+          "value": "yes",
+          "text": "Yes"
+        },
+        {
+          "value": "no",
+          "text": "No",
+          "checked": true
+        }
+      ]
+    }) }}
+
 ### Radios--with-disabled
 
 [Preview the radios--with-disabled example](http://govuk-frontend-review.herokuapp.com/components/radios/with-disabled/preview)

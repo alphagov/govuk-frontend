@@ -14,6 +14,22 @@ examples:
         text: No
         checked: true
 
+- name: inline
+  data:
+    idPrefix: 'example'
+    classes: 'govuk-c-radios--inline'
+    name: 'example'
+    fieldset:
+      legendText: Have you changed your name?
+      legendHintText:
+        This includes changing your last name or spelling your name differently.
+    items:
+      - value: yes
+        text: Yes
+      - value: no
+        text: No
+        checked: true
+
 - name: with-disabled
   data:
     idPrefix: 'example-disabled'
