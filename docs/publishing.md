@@ -12,76 +12,68 @@ version bumped.
 
 ### Publishing components manually (while in Alpha/Private beta)
 
-*First time only: Shell scripts will require permission to run.
-Run `chmod u+x **/*.sh` which will give the permission to all shell
-scripts in the current directory.*
+1. Checkout **master** and pull latest changes.
 
-1. Create a new branch that's up to date with master and:
+2. Create and checkout a new branch (`release-[version-number]`).
 
-2. Update `CHANGELOG` version heading with the next version number.
+3. Update [`CHANGELOG.md`](../CHANGELOG.md) "Unreleased" heading with the new version number.
+   This should be incremented based on [Semantic versioning](https://semver.org/) from the unreleased changes listed.
 
-3. Run `npm run pre-release` task.
-  This will:
-  - run `npm build:packages` that copies any changes from`src/component-name` to `packages/component-name` and runs `after-build-packages.test.js` test 
-  to ensure the contents of `packages` matches `src`.
+4. Save the changes. Do not commit.
 
+5. Run `npm run pre-release`.
 
-If you have a new component was added to `src` and copied over to `packages` in the above task, then then script will detect those components, notify the developer, create a sample `package.json` file for each.
+This will:
+  - copy components from `src/` to `packages/` and run tests
+  - add [vendor prefixes](https://github.com/postcss/autoprefixer) to CSS in `packages/`
+  - build "all" Sass and JavaScript files into `dist/`
+  - copy components from `src/` to `dist/components/` and run tests
 
-It will reminnd the developer to check the version number, dependencies and add new components to `all/package.json` dependencies.
+Note: If a previously unreleased component is found, then you will be prompted to make changes before continuing.
 
-It will also prompt the develoeper to signal to the scipt once changes have been made, so that the rest of the `npm run pre-release` tasks can run.**
-![New component added](./img/new-component-prompt.png)
-
-
-  - run `lerna publish --skip-git --skip-npm` which will check for updated packages and
-  suggest a version for each as seen below.
-  Lerna will prompt you to select the new version for each package. If you
-  select `minor`/`major` etc., Lerna will complete the version number for you. In
-  private beta, we have selected `custom` and specified the new version number
-  manually for each package (see below). Also see step 3 regarding the versioning
-  of new components:
+6. For each package specify a new version number, based on changelog updates (Step 3.).
   ![Select version in Lerna](./img/lerna-select-version.png)
-  Once you confirm changes, all files are automatically added and commited with 
-  the commit message `Release <version number>` and pushed to origin.
+
+7. Review proposed version number updates.
   ![Confirm publishing of changes in Lerna](./img/lerna-confirm-publish.png)
 
-  - run `npm build:dist` that copies any changes from`src/component-name` to `dist/components/component-name` and runs `after-build-dist.test.js` test 
-    to ensure the contents of `dist/componenents` matches `src`. 
-    It compiles and minifies CSS and JavaScript and applies version number 
-    (taken from `all/package.json` file), e.g `govuk-frontend-<version>-alpha.min`.
-    Finally it copies all icons from the `src/icons`.
+  Once you publish changes, all files are automatically pushed to the remote origin branch.
 
-4. Create a pull request for these changes. When reviewing the PR check version of compile assets and check release notes for the changes made.
+8. Create a pull request and copy the changelog text. 
+   When reviewing the PR, check that the version numbers have been updated and that the compiled assets use this verson number.
 
-5. Once the pull request is approved, merge to **master** and run `npm run release` in **master**. 
+9. Once the pull request is approved, merge to **master**. 
+
+10. Checkout **master** and pull the latest changes.
+
+11. Log into npm, using team [credentials](https://github.com/alphagov/design-system-team-credentials/tree/master/npm/govuk-patterns-and-tools).
+
+12. Run `npm run release`.
 
   This will:
-  - check if you're logged in to NPM as the correct user. If not, it will abort.
-  - run `npm publish` for each package if the package hasn't been published yet
-    (check that the currect version matches the version on NPM)
-  - run `git tag v<version>` to create a new tag if current git tag doesn't match latest published tag 
-  - push the tag to remote with `git push --tags`
-  - create a zip file of the `dist` directory with
-    `git archive -o ./release-<version>.zip HEAD:dist`
+  - check that you're logged in to npm as the correct user.
+  - publish each package if the package has not been published yet
+  - create a new tag if the current git tag does not match the latest published tag 
+  - push the tag to remote origin
+  - create a zip file of the `dist` directory
 
-6. Create a release in Github interface, ddd release notes to and attach the ZIP. 
+13. Create a release in the [Github interface](https://github.com/alphagov/govuk-frontend/releases/new)
+  - select the latest tag version
+  - set "GOV.UK Frontend release v[version-number]" as the title
+  - add release notes from changelog
+  - attach the generated ZIP that is located at the root of the project 
+  - publish release
 
-7. Add Trello cards to "This Sprint" column for
-  - updating GOV.UK Design System to use the latest releasex
-  - updating the Prototype Kit to use the latest release 
-
+14. (Required for private beta) Grant "test" user access to any newly published package(s).
+```bash
+npm access grant read-only govuk-frontend:test @govuk-frontend/[component-name]
 ```
-#### Test published packages
+15. Log out from npm
+```bash
+npm logout
+```
 
-1. To test the packages have published correctly, in console login as the test
-user. In the Design System, run `npm install` and then `npm start`. Check that
-the changes have taken effect.
-
-## Updating other repos that consume `govuk-frontend`
-
-If you need to update `govuk-frontend` to the latest release on another repo
-that consumes it, make sure you are logged in as the npm test user to ensure that
-the permissions of `govuk-frontend` packages have been correctly set.
-
-You can use `npm whoami` to check your current user.
+16. Add Trello cards to "This Sprint" column for
+  - Update the GOV.UK Design System to use the latest release
+  - Update the GOV.UK Prototype Kit to use the latest release 
+  
