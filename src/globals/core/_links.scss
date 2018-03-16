@@ -67,7 +67,13 @@
 
     // When focussed, the text colour needs to be darker to ensure that colour
     // contrast is still acceptable
-    &:focus {
+    //
+    // GOV.UK Template includes a specific a:link:focus selector designed to
+    // make unvisited links a slightly darker blue when focussed, so we need to
+    // override the text colour for that combination of selectors so so that
+    // muted links does not end up with dark blue text when focussed. (1)
+    &:focus,
+    &:link:focus { //1
       color: $govuk-black;
     }
   }
