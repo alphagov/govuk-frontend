@@ -2,9 +2,9 @@
 
 @include govuk-exports("footer") {
 
-  $govuk-footer-background: $govuk-grey-3;
-  $govuk-footer-border-top: #a1acb2;
-  $govuk-footer-border: $govuk-grey-2;
+  $govuk-footer-background: $govuk-light-grey;
+  $govuk-footer-border-top: $govuk-dark-grey;
+  $govuk-footer-border: $govuk-border-colour;
   $govuk-footer-text: #454a4c;
   $govuk-footer-link: $govuk-footer-text;
   $govuk-footer-link-hover: #171819;

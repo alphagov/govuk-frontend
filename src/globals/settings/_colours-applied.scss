@@ -1,3 +1,7 @@
+// Brand
+
+$govuk-mainstream-brand: $govuk-blue;
+
 // Text colour
 
 $govuk-text-colour: $govuk-black;
@@ -17,8 +21,8 @@ $govuk-secondary-text-colour: $govuk-dark-grey;
 // Links
 
 $govuk-link-colour: $govuk-blue;
-$govuk-link-visited-colour: $govuk-purple;
-$govuk-link-hover-colour: $govuk-light-blue;
+$govuk-link-visited-colour: $govuk-dark-blue;
+$govuk-link-hover-colour: $govuk-dark-blue;
 $govuk-link-active-colour: $govuk-black;
 
 // Focus colour
@@ -38,7 +42,7 @@ $govuk-error-colour: $govuk-red;
 //
 // Used for borders, separators, rules, keylines etc.
 
-$govuk-border-colour: darken($govuk-light-grey, 25%);
+$govuk-border-colour: $govuk-mid-grey;
 
 // Used for form inputs and controls
 

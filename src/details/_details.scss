@@ -40,6 +40,7 @@
     // -1px offset fixes gap between background and outline in Firefox
     outline: ($govuk-focus-width + 1px) solid $govuk-focus-colour;
     outline-offset: -1px;
+    color: $govuk-black;
     background: $govuk-focus-colour;
   }
 
