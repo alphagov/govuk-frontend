@@ -44,13 +44,20 @@
 
   .govuk-c-error-summary__list a {
     @include govuk-focusable-fill;
+    @include govuk-typography-weight-bold;
 
+    // Override default link styling to use error colour
+    //
+    // GOV.UK Template includes a specific a:link:focus selector designed to
+    // make unvisited links a slightly darker blue when focussed, so we need to
+    // override the text colour for that combination of selectors so so that
+    // the links do not end up with dark blue text when focussed. (1)
     &:link,
     &:visited,
     &:hover,
-    &:active {
-      @include govuk-typography-weight-bold;
-
+    &:active,
+    &:focus,
+    &:link:focus // 1 {
       color: $govuk-error-colour;
       text-decoration: underline;
     }

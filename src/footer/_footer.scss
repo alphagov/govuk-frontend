@@ -39,6 +39,17 @@
     &:active {
       color: $govuk-footer-link-hover;
     }
+
+    // Use text colour when focussed
+    //
+    // GOV.UK Template includes a specific a:link:focus selector designed to
+    // make unvisited links a slightly darker blue when focussed, so we need to
+    // override the text colour for that combination of selectors so so that
+    // unvisited footer links do not end up with dark blue text when focussed.
+    &:focus,
+    &:link:focus {
+      color: $govuk-text-colour;
+    }
   }
 
   .govuk-c-footer__section-break {
