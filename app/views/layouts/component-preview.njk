@@ -1,10 +1,17 @@
-{% extends "layout.njk" %}
-
-{% block bodyClasses %}
- {{ bodyClasses }}
-{% endblock %}
-
-{% block content %}
-  {{ componentView | safe }}
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.15/iframeResizer.contentWindow.min.js"></script>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>GOV.UK Frontend {{componentPath}} component</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/src/{{componentPath}}/_{{componentPath}}.scss">
+  </head>
+  <body class="{{ bodyClasses }}">
+    <div class="govuk-o-width-container">
+      {{ componentView | safe }}
+    </div>
+    <script src="/public/js/govuk-frontend.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.15/iframeResizer.contentWindow.min.js"></script> 
+  </body>
+</html>
