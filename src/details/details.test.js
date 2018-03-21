@@ -91,4 +91,56 @@ describe('/components/details', () => {
       })
     })
   })
+
+  describe('/components/details/expanded/preview', () => {
+    it('should indicate the expanded state of the summary using aria-expanded', async () => {
+      await page.goto(baseUrl + '/components/details/expanded/preview', { waitUntil: 'load' })
+
+      const summaryAriaExpanded = await page.evaluate(() => document.body.getElementsByTagName('summary')[0].getAttribute('aria-expanded'))
+      expect(summaryAriaExpanded).toBe('true')
+    })
+
+    it('should indicate the visible state of the content using aria-hidden', async () => {
+      await page.goto(baseUrl + '/components/details/expanded/preview', { waitUntil: 'load' })
+
+      const hiddenContainerAriaHidden = await page.evaluate(() => document.body.getElementsByTagName('details')[0].querySelectorAll('div')[0].getAttribute('aria-hidden'))
+      expect(hiddenContainerAriaHidden).toBe('false')
+    })
+
+    it('should indicate the open state of the content', async () => {
+      await page.goto(baseUrl + '/components/details/expanded/preview', { waitUntil: 'load' })
+
+      const detailsOpen = await page.evaluate(() => document.body.getElementsByTagName('details')[0].getAttribute('open'))
+      expect(detailsOpen).not.toBeNull()
+    })
+
+    describe('when details is triggered', () => {
+      it('should indicate the expanded state of the summary using aria-expanded', async () => {
+        await page.goto(baseUrl + '/components/details/expanded/preview', { waitUntil: 'load' })
+
+        await page.click('summary')
+
+        const summaryAriaExpanded = await page.evaluate(() => document.body.getElementsByTagName('summary')[0].getAttribute('aria-expanded'))
+        expect(summaryAriaExpanded).toBe('false')
+      })
+
+      it('should indicate the visible state of the content using aria-hidden', async () => {
+        await page.goto(baseUrl + '/components/details/expanded/preview', { waitUntil: 'load' })
+
+        await page.click('summary')
+
+        const hiddenContainerAriaHidden = await page.evaluate(() => document.body.getElementsByTagName('details')[0].querySelectorAll('div')[0].getAttribute('aria-hidden'))
+        expect(hiddenContainerAriaHidden).toBe('true')
+      })
+
+      it('should indicate the open state of the content', async () => {
+        await page.goto(baseUrl + '/components/details/expanded/preview', { waitUntil: 'load' })
+
+        await page.click('summary')
+
+        const detailsOpen = await page.evaluate(() => document.body.getElementsByTagName('details')[0].getAttribute('open'))
+        expect(detailsOpen).toBeNull()
+      })
+    })
+  })
 })
