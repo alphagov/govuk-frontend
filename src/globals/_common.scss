@@ -8,6 +8,7 @@
 @import "settings/colours-palette";
 @import "settings/colours-organisations";
 @import "settings/colours-applied";
+@import "settings/compatibility";
 @import "settings/spacing";
 @import "settings/measurements";
 @import "settings/typography-font-stacks";
@@ -17,6 +18,7 @@
 @import "settings/paths";
 
 // Tools
+@import "tools/compatibility";
 @import "tools/exports";
 @import "tools/file-url";
 @import "tools/iff";
