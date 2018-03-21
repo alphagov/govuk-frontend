@@ -5,6 +5,8 @@ const fs = require('fs')
 const path = require('path')
 const port = (process.env.PORT || 3000)
 const yaml = require('js-yaml')
+const compileSass = require('express-compile-sass')
+const root = process.cwd()
 
 const helperFunctions = require('../lib/helper-functions')
 const directoryToObject = require('../lib/directory-to-object')
@@ -33,6 +35,15 @@ env.addFilter('componentNameToMacroName', helperFunctions.componentNameToMacroNa
 
 // Set view engine
 app.set('view engine', 'njk')
+
+// middleware to compile component scss on request
+app.use(compileSass({
+  root: root,
+  sourceMap: true, // Includes Base64 encoded source maps in output css
+  sourceComments: true, // Includes source comments in output css
+  watchFiles: true, // Watches sass files and updates mtime on main files for each change
+  logToConsole: false // If true, will log to console.error on errors
+}))
 
 // Set up middleware to serve static assets
 app.use('/public', express.static(configPaths.public))
@@ -121,6 +132,8 @@ app.get('/components/:component/:example*?/preview', function (req, res, next) {
   if (req.query.iframe) {
     bodyClasses = 'app-iframe-in-component-preview'
   }
+  // make variable available to nunjucks template
+  res.locals.componentPath = req.params.component
 
   res.render('component-preview', { bodyClasses })
 })
