@@ -57,7 +57,7 @@
     &:hover,
     &:active,
     &:focus,
-    &:link:focus // 1 {
+    &:link:focus { // 1
       color: $govuk-error-colour;
       text-decoration: underline;
     }
