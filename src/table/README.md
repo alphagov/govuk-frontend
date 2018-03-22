@@ -55,6 +55,8 @@ Find out when to use the Table component in your service in the [GOV.UK Design S
 
 #### Macro
 
+    {% from 'table/macro.njk' import govukTable %}
+
     {{ govukTable({
       "rows": [
         [
@@ -155,6 +157,8 @@ Find out when to use the Table component in your service in the [GOV.UK Design S
     </table>
 
 #### Macro
+
+    {% from 'table/macro.njk' import govukTable %}
 
     {{ govukTable({
       "head": [
@@ -271,6 +275,8 @@ Find out when to use the Table component in your service in the [GOV.UK Design S
     </table>
 
 #### Macro
+
+    {% from 'table/macro.njk' import govukTable %}
 
     {{ govukTable({
       "caption": "Caption 1 : Months and rates",

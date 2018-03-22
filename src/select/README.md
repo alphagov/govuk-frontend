@@ -33,6 +33,8 @@ Find out when to use the Select component in your service in the [GOV.UK Design 
 
 #### Macro
 
+    {% from 'select/macro.njk' import govukSelect %}
+
     {{ govukSelect({
       "id": "select-1",
       "name": "select-1",
@@ -87,6 +89,8 @@ Find out when to use the Select component in your service in the [GOV.UK Design 
     </div>
 
 #### Macro
+
+    {% from 'select/macro.njk' import govukSelect %}
 
     {{ govukSelect({
       "id": "select-2",

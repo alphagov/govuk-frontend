@@ -22,6 +22,8 @@ Find out when to use the Error message component in your service in the [GOV.UK 
 
 #### Macro
 
+    {% from 'error-message/macro.njk' import govukErrorMessage %}
+
     {{ govukErrorMessage({
       "text": "Error message about full name goes here"
     }) }}

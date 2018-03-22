@@ -32,6 +32,8 @@ Find out when to use the Breadcrumbs component in your service in the [GOV.UK De
 
 #### Macro
 
+    {% from 'breadcrumbs/macro.njk' import govukBreadcrumbs %}
+
     {{ govukBreadcrumbs({
       "items": [
         {
@@ -62,6 +64,8 @@ Find out when to use the Breadcrumbs component in your service in the [GOV.UK De
     </div>
 
 #### Macro
+
+    {% from 'breadcrumbs/macro.njk' import govukBreadcrumbs %}
 
     {{ govukBreadcrumbs({
       "items": [
@@ -101,6 +105,8 @@ Find out when to use the Breadcrumbs component in your service in the [GOV.UK De
     </div>
 
 #### Macro
+
+    {% from 'breadcrumbs/macro.njk' import govukBreadcrumbs %}
 
     {{ govukBreadcrumbs({
       "items": [
@@ -145,6 +151,8 @@ Find out when to use the Breadcrumbs component in your service in the [GOV.UK De
 
 #### Macro
 
+    {% from 'breadcrumbs/macro.njk' import govukBreadcrumbs %}
+
     {{ govukBreadcrumbs({
       "items": [
         {
@@ -181,6 +189,8 @@ Find out when to use the Breadcrumbs component in your service in the [GOV.UK De
     </div>
 
 #### Macro
+
+    {% from 'breadcrumbs/macro.njk' import govukBreadcrumbs %}
 
     {{ govukBreadcrumbs({
       "items": [
