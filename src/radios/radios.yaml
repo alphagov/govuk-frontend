@@ -1,3 +1,13 @@
+accessibilityCriteria: |
+  ## Conditional reveals
+  Must:
+  - be visible as static content if JavaScript is unavailable or fails
+  - be hidden if JavaScript is available and is collapsed
+  - indicate if content is expanded or collapsed
+  - indicate that there is collapsed content to interact with
+
+  Note that we have known issues against this criteria: https://github.com/alphagov/govuk_elements/issues/575
+
 examples:
 - name: default
   data:
@@ -94,3 +104,60 @@ examples:
       - value: no
         text: No
         checked: true
+
+- name: with-conditional
+  readme: false
+  data:
+    idPrefix: 'how-contacted'
+    name: 'how-contacted'
+    fieldset:
+      legendHtml:
+        <h3 class="govuk-heading-m">How do you want to be contacted?</h3>
+    items:
+      - value: email
+        text: Email
+        conditional:
+          html: |
+            <label class="govuk-label" for="context-email">Mobile phone number</label>
+            <input class="govuk-input govuk-!-width-one-third" name="context-email" type="text" id="context-email">
+      - value: phone
+        text: Phone
+        conditional:
+          html: |
+            <label class="govuk-label" for="contact-phone">Phone number</label>
+            <input class="govuk-input govuk-!-width-one-third" name="contact-phone" type="text" id="contact-phone">
+      - value: text
+        text: Text message
+        conditional:
+          html: |
+            <label class="govuk-label" for="contact-text-message">Mobile phone number</label>
+            <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
+
+- name: with-conditional-checked
+  readme: false
+  data:
+    idPrefix: 'how-contacted-checked'
+    name: 'how-contacted-checked'
+    fieldset:
+      legendHtml:
+        <h3 class="govuk-heading-m">How do you want to be contacted?</h3>
+    items:
+    - value: email
+      text: Email
+      conditional:
+        html: |
+          <label class="govuk-label" for="context-email">Mobile phone number</label>
+          <input class="govuk-input govuk-!-width-one-third" name="context-email" type="text" id="context-email">
+    - value: phone
+      text: Phone
+      checked: true
+      conditional:
+        html: |
+          <label class="govuk-label" for="contact-phone">Phone number</label>
+          <input class="govuk-input govuk-!-width-one-third" name="contact-phone" type="text" id="contact-phone">
+    - value: text
+      text: Text message
+      conditional:
+        html: |
+          <label class="govuk-label" for="contact-text-message">Mobile phone number</label>
+          <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
