@@ -1,4 +1,7 @@
-@import "../globals/common";
+@import "../globals/tools/exports";
+
+@import "../fieldset/fieldset";
+@import "../label/label";
 
 @include govuk-exports("radios") {
   .govuk-c-radios__item {
