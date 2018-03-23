@@ -7,11 +7,8 @@ const plumber = require('gulp-plumber')
 const postcss = require('gulp-postcss')
 const autoprefixer = require('autoprefixer')
 const merge = require('merge-stream')
-const concat = require('gulp-concat')
 const taskArguments = require('./task-arguments')
 const gulpif = require('gulp-if')
-const uglify = require('gulp-uglify')
-const eol = require('gulp-eol')
 const rename = require('gulp-rename')
 const cssnano = require('cssnano')
 const postcssnormalize = require('postcss-normalize')
@@ -97,18 +94,21 @@ gulp.task('scss:compile', () => {
 
 // Compile js task for preview ----------
 // --------------------------------------
-gulp.task('js:compile', () => {
-  return gulp.src([
-    '!' + configPaths.src + '**/*.test.js',
-    configPaths.src + '**/*.js'
-  ])
-    .pipe(concat('govuk-frontend.js'))
-    .pipe(gulpif(isDist, uglify()))
-    .pipe(gulpif(isDist,
-      rename({
-        extname: '.min.js'
-      })
-    ))
-    .pipe(eol())
-    .pipe(gulp.dest(taskArguments.destination + '/js/'))
+gulp.task('js:compile', (callback) => {
+  const { exec } = require('child_process')
+  const output = taskArguments.destination
+  const outputEnvironment = output ? `OUTPUT=${output} ` : ''
+
+  // Note: We're executing Webpack directly rather than using a Gulp plugin since we intend
+  // to use Webpack to compile the other aspects of govuk-frontend.
+  exec(`${outputEnvironment} node_modules/.bin/webpack --config config/webpack.config.js`, (err, stdout, stderr) => {
+    if (stderr) {
+      return callback(stderr)
+    }
+    if (err) {
+      return callback(stdout)
+    }
+    console.log(stdout)
+    callback(err)
+  })
 })
