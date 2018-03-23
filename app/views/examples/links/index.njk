@@ -12,6 +12,7 @@
 {% set variants = {
   'Link': '',
   'Link with no visited state': 'govuk-link--no-visited-state',
+  'Text link': 'govuk-link--text-colour',
   'Muted link': 'govuk-link--muted'
 } %}
 
@@ -42,7 +43,7 @@
 
       {% for state_description, state_class in states %}
         <p class="govuk-body">
-          <a href="#" class="govuk-link {{ variant_class }} {{ state_class }}">
+          <a href="/" class="govuk-link {{ variant_class }} {{ state_class }}">
             {{ state_description}}
           </a>
         </p>
