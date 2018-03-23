@@ -4,7 +4,8 @@
 
   .govuk-c-back-link {
     @include govuk-font-regular-16;
-    @include govuk-focusable-fill;
+    @include govuk-link-common;
+    @include govuk-link-style-text;
 
     display: inline-block;
     position: relative;
@@ -21,21 +22,6 @@
 
     // Underline is provided by a bottom border
     text-decoration: none;
-
-    // Override link colour to use text colour
-    //
-    // GOV.UK Template includes a specific a:link:focus selector designed to
-    // make unvisited links a slightly darker blue when focussed, so we need to
-    // override the text colour for that combination of selectors so so that
-    // the skip link does not end up with dark blue text when focussed. (1)
-    &:link,
-    &:visited,
-    &:hover,
-    &:active,
-    &:focus,
-    &:link:focus {
-      @include govuk-text-colour;
-    }
 
     // Prepend left pointing arrow
     &:before {
