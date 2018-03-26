@@ -54,6 +54,11 @@
       color: $govuk-error-colour;
       text-decoration: underline;
     }
+
+    &:active,
+    &:focus {
+      color: $govuk-text-colour;
+    }
   }
 
 }
