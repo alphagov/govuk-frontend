@@ -66,7 +66,7 @@ gulp.task('copy-assets', cb => {
 gulp.task('dev', cb => {
   runsequence('clean',
               'generate:readme',
-              'copy-assets',
+              'scripts',
               'serve',
               cb)
 })

@@ -5,10 +5,14 @@ const fs = require('fs')
 const path = require('path')
 const port = (process.env.PORT || 3000)
 const yaml = require('js-yaml')
+const root = process.cwd()
+const sassMiddleware = require('node-sass-middleware')
+const postcssMiddleware = require('postcss-middleware')
+const configPaths = require('../config/paths.json')
 
 const helperFunctions = require('../lib/helper-functions')
 const directoryToObject = require('../lib/directory-to-object')
-const configPaths = require('../config/paths.json')
+const pluginConfig = require('../lib/plugins')
 
 // Set up views
 const appViews = [
@@ -33,6 +37,31 @@ env.addFilter('componentNameToMacroName', helperFunctions.componentNameToMacroNa
 
 // Set view engine
 app.set('view engine', 'njk')
+
+// middleware to compile component scss on request
+const destPath = configPaths.public
+app.use(sassMiddleware({
+  src: root,
+  response: false,
+  dest: destPath,
+  outputStyle: 'extended'
+}))
+
+// get the above request and tranform css
+app.use(postcssMiddleware({
+  plugins: [
+    pluginConfig.plugins.autoprefixer,
+    pluginConfig.plugins.postcsspseudoclasses
+  ],
+  src: function (req) {
+    // on entry page only return app.css
+    if (req.path === '/') {
+      return '/app/assets/scss/app.css'
+    } else {
+      return path.join(destPath, req.path)
+    }
+  }
+}))
 
 // Set up middleware to serve static assets
 app.use('/public', express.static(configPaths.public))
@@ -121,6 +150,8 @@ app.get('/components/:component/:example*?/preview', function (req, res, next) {
   if (req.query.iframe) {
     bodyClasses = 'app-iframe-in-component-preview'
   }
+  // make variables available to nunjucks template
+  res.locals.componentPath = req.params.component
 
   res.render('component-preview', { bodyClasses })
 })

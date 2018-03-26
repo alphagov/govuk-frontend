@@ -4,6 +4,55 @@
 $mq-show-breakpoints: (mobile, tablet, desktop);
 @import "../../../src/all/all";
 
+// sass-lint:disable no-duplicate-properties, no-color-literals, property-units
+
 body {
   margin: 0;
+}
+
+.app-iframe-in-component-preview {
+  margin: 15px;
+}
+
+// Removes the breakpoint sass-mq debug display
+.app-iframe-in-component-preview:before {
+  display: none;
+}
+
+// TODO: Should this object have a clearfix all the time?
+.app-iframe-in-component-preview .govuk-o-width-container:before,
+.app-iframe-in-component-preview .govuk-o-width-container:after {
+  content: " ";
+  display: table;
+  clear: both;
+}
+
+.app-\!-di {
+  display: inline;
+}
+
+.app-c-component-preview {
+  position: relative;
+}
+
+.app-c-component-preview:after {
+  content: " ";
+  position: absolute;
+  z-index: 10;
+  top: 15px;
+  right: 0;
+  bottom: 15px;
+  left: 0;
+  box-shadow: 0 0 0 5px #e4f2ff;
+  pointer-events: none;
+}
+
+.app-c-component-preview__iframe {
+  display: block;
+  position: relative;
+  z-index: 20;
+  width: 100%;
+  border: 0;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
