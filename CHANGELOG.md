@@ -11,10 +11,13 @@ Breaking changes:
   `govuk-c-radios--inline` which will automatically make all the radio buttons
   within that block inline.
   (PR [#607](https://github.com/alphagov/govuk-frontend/pull/607))
-  
+
+New features:
+- Add `govuk-main-wrapper--l` a variant of the main page wrapper to use when a design does not include back links, breadcrumbs or phase banners (PR [#602](https://github.com/alphagov/govuk-frontend/pull/602))
+
 Internal:
 - Update check script for new components and tweak docs
-  (PR [#589](https://github.com/alphagov/govuk-frontend/pull/589)) 
+  (PR [#589](https://github.com/alphagov/govuk-frontend/pull/589))
 
 ## 0.0.26-alpha (Breaking release)
 
