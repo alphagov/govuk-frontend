@@ -5,7 +5,7 @@ const configPaths = require('../../config/paths.json')
 const sass = require('gulp-sass')
 const plumber = require('gulp-plumber')
 const postcss = require('gulp-postcss')
-const autoprefixer = require('autoprefixer')
+
 const merge = require('merge-stream')
 const concat = require('gulp-concat')
 const taskArguments = require('./task-arguments')
@@ -13,9 +13,8 @@ const gulpif = require('gulp-if')
 const uglify = require('gulp-uglify')
 const eol = require('gulp-eol')
 const rename = require('gulp-rename')
-const cssnano = require('cssnano')
-const postcssnormalize = require('postcss-normalize')
-const postcsspseudoclasses = require('postcss-pseudo-classes')
+
+const pluginConfig = require('../../lib/plugins')
 
 // Compile CSS and JS task --------------
 // --------------------------------------
@@ -41,15 +40,15 @@ gulp.task('scss:compile', () => {
     .pipe(sass())
     // minify css add vendor prefixes and normalize to compiled css
     .pipe(gulpif(isDist, postcss([
-      autoprefixer,
-      cssnano,
-      postcssnormalize
+      pluginConfig.plugins.autoprefixer,
+      pluginConfig.plugins.cssnano,
+      pluginConfig.plugins.postcssnormalize
     ])))
     .pipe(gulpif(!isDist, postcss([
-      autoprefixer,
+      pluginConfig.plugins.autoprefixer,
       // Auto-generate 'companion' classes for pseudo-selector states - e.g. a
       // :hover class you can use to simulate the hover state in the review app
-      postcsspseudoclasses
+      pluginConfig.plugins.postcsspseudoclasses
     ])))
     .pipe(gulpif(isDist,
       rename({
@@ -63,27 +62,16 @@ gulp.task('scss:compile', () => {
     .pipe(sass())
     // minify css add vendor prefixes and normalize to compiled css
     .pipe(gulpif(isDist, postcss([
-      autoprefixer,
-      cssnano,
-      postcssnormalize,
+      pluginConfig.plugins.autoprefixer,
+      pluginConfig.plugins.cssnano,
+      pluginConfig.plugins.postcssnormalize
       // transpile css for ie https://github.com/jonathantneal/oldie
-      require('oldie')({
-        rgba: {filter: true},
-        rem: {disable: true},
-        unmq: {disable: true},
-        pseudo: {disable: true}
-        // more rules go here
-      })
+
     ])))
     .pipe(gulpif(!isDist, postcss([
-      autoprefixer,
-      require('oldie')({
-        rgba: {filter: true},
-        rem: {disable: true},
-        unmq: {disable: true},
-        pseudo: {disable: true}
-        // more rules go here
-      })
+      pluginConfig.plugins.autoprefixer,
+      // this plugin needs to be required and configurated inline
+      pluginConfig.plugins.postcssoldie
     ])))
     .pipe(gulpif(isDist,
       rename({
