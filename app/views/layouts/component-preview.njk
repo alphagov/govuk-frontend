@@ -6,11 +6,14 @@
     <title>GOV.UK Frontend {{componentPath}} component</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="/src/{{componentPath}}/_{{componentPath}}.css">
+    <style>
+      body {
+        margin: 0;
+      }
+    </style>
   </head>
   <body class="{{ bodyClasses }}">
-    <div class="govuk-o-width-container">
       {{ componentView | safe }}
-    </div>
     <script src="/public/js/govuk-frontend.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.15/iframeResizer.contentWindow.min.js"></script> 
   </body>

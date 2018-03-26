@@ -33,8 +33,6 @@ body {
 
 .app-c-component-preview {
   position: relative;
-  margin-top: -15px;
-  margin-bottom: -15px;
 }
 
 .app-c-component-preview:after {
@@ -53,11 +51,8 @@ body {
   display: block;
   position: relative;
   z-index: 20;
-  right: 50%;
-  left: 50%;
   width: 100%;
-  width: 100vw;
-  margin-right: -50vw;
-  margin-left: -50vw;
   border: 0;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
