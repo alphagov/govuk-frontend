@@ -50,7 +50,7 @@
   }
 
   // Append our own open / closed marker using a pseudo-element
-  .govuk-c-details__summary::before {
+  .govuk-c-details__summary:before {
     content: "";
     position: absolute;
 
