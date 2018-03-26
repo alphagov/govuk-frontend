@@ -29,6 +29,9 @@ Internal:
 - Explain npm link
 (PR [#624](https://github.com/alphagov/govuk-frontend/pull/624))
 
+- Make Sass imports less broad
+  (PR [#617](https://github.com/alphagov/govuk-frontend/pull/617))
+
 ## 0.0.26-alpha (Breaking release)
 
 Breaking changes:
