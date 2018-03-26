@@ -8,12 +8,11 @@ const yaml = require('js-yaml')
 const root = process.cwd()
 const sassMiddleware = require('node-sass-middleware')
 const postcssMiddleware = require('postcss-middleware')
-const postcsspseudoclasses = require('postcss-pseudo-classes')
-const autoprefixer = require('autoprefixer')
+const configPaths = require('../config/paths.json')
 
 const helperFunctions = require('../lib/helper-functions')
 const directoryToObject = require('../lib/directory-to-object')
-const configPaths = require('../config/paths.json')
+const pluginConfig = require('../lib/plugins')
 
 // Set up views
 const appViews = [
@@ -51,8 +50,8 @@ app.use(sassMiddleware({
 // get the above request and tranform css
 app.use(postcssMiddleware({
   plugins: [
-    autoprefixer,
-    postcsspseudoclasses
+    pluginConfig.plugins.autoprefixer,
+    pluginConfig.plugins.postcsspseudoclasses
   ],
   src: function (req) {
     // on entry page only return app.css
