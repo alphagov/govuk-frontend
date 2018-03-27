@@ -3,9 +3,8 @@ const app = express()
 const nunjucks = require('nunjucks')
 const fs = require('fs')
 const path = require('path')
-const port = (process.env.PORT || 3000)
 const yaml = require('js-yaml')
-
+const port = (process.env.PORT || 0) // heroku needs to set the port
 const helperFunctions = require('../lib/helper-functions')
 const directoryToObject = require('../lib/directory-to-object')
 const configPaths = require('../config/paths.json')
@@ -42,6 +41,9 @@ app.use('/vendor/html5-shiv/', express.static('node_modules/html5shiv/dist/'))
 app.use('/icons', express.static(path.join(configPaths.src, 'icons')))
 
 const server = app.listen(port, () => {
+  // if you run app.listen() to start listening without specifying port,
+  // Express will choose a random port
+  const port = server.address().port
   console.log('Listening on port ' + port + '   url: http://localhost:' + port)
 })
 
