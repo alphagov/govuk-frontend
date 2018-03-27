@@ -19,6 +19,9 @@ Internal:
 - Update check script for new components and tweak docs
   (PR [#589](https://github.com/alphagov/govuk-frontend/pull/589))
 
+- Serve app on random port
+  (PR [#620](https://github.com/alphagov/govuk-frontend/pull/620))
+
 ## 0.0.26-alpha (Breaking release)
 
 Breaking changes:
