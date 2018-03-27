@@ -5,57 +5,60 @@ const cheerio = require('cheerio')
 
 const lib = require('../../lib/file-helper')
 
+const configPaths = require('../../config/paths.json')
+const PORT = configPaths.ports.test
+
 const requestParamsHomepage = {
-  url: 'http://localhost:3000/',
+  url: `http://localhost:${PORT}/`,
   headers: {
     'Content-Type': 'text/plain'
   }
 }
 
 const requestParamsExampleAllComponents = {
-  url: 'http://localhost:3000/examples/all-components',
+  url: `http://localhost:${PORT}/examples/all-components`,
   headers: {
     'Content-Type': 'text/plain'
   }
 }
 
 const requestParamsExampleFormAlignment = {
-  url: 'http://localhost:3000/examples/form-alignment',
+  url: `http://localhost:${PORT}/examples/form-alignment`,
   headers: {
     'Content-Type': 'text/plain'
   }
 }
 
 const requestParamsExampleFormElements = {
-  url: 'http://localhost:3000/examples/form-elements',
+  url: `http://localhost:${PORT}/examples/form-elements`,
   headers: {
     'Content-Type': 'text/plain'
   }
 }
 
 const requestParamsExampleGrid = {
-  url: 'http://localhost:3000/examples/grid',
+  url: `http://localhost:${PORT}/examples/grid`,
   headers: {
     'Content-Type': 'text/plain'
   }
 }
 
 const requestParamsExampleLinks = {
-  url: 'http://localhost:3000/examples/links',
+  url: `http://localhost:${PORT}/examples/links`,
   headers: {
     'Content-Type': 'text/plain'
   }
 }
 
 const requestParamsExampleProseScope = {
-  url: 'http://localhost:3000/examples/prose-scope',
+  url: `http://localhost:${PORT}/examples/prose-scope`,
   headers: {
     'Content-Type': 'text/plain'
   }
 }
 
 const requestParamsExampleTypography = {
-  url: 'http://localhost:3000/examples/typography',
+  url: `http://localhost:${PORT}/examples/typography`,
   headers: {
     'Content-Type': 'text/plain'
   }

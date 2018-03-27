@@ -8,5 +8,9 @@
   "dist": "dist/",
   "packages": "packages/",
   "public": "public/",
-  "src": "src/"
+  "src": "src/",
+  "ports": {
+    "app": 3000,
+    "test": 8888
+  }
 }
