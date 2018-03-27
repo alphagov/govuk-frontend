@@ -19,6 +19,10 @@ Internal:
 - Update check script for new components and tweak docs
   (PR [#589](https://github.com/alphagov/govuk-frontend/pull/589))
 
+- Expose more meaningful errors in dev
+  (PR [#621](https://github.com/alphagov/govuk-frontend/pull/621))
+  
+
 ## 0.0.26-alpha (Breaking release)
 
 Breaking changes:
