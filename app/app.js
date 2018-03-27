@@ -20,6 +20,8 @@ const appViews = [
 
 // Configure nunjucks
 let env = nunjucks.configure(appViews, {
+  dev: true, // returns the full trace from the error point
+  throwOnUndefined: true, // makes the system throw errors if trying to output a null or undefined value
   autoescape: true, // output with dangerous characters are escaped automatically
   express: app, // the express app that nunjucks should install to
   noCache: true, // never use a cache and recompile templates each time
@@ -149,5 +151,16 @@ app.get('/robots.txt', function (req, res) {
   res.type('text/plain')
   res.send('User-agent: *\nDisallow: /')
 })
+
+// expose the error in combination with nunjucks env options
+// next() fires before res.send() so in order to catch the error
+// it needs to be wrapped in setTimeout
+if (process.env.NODE_ENV !== 'production') {
+  process.once('uncaughtException', () => {
+    setTimeout(() => {
+      process.exit(1)
+    }, 100)
+  })
+}
 
 module.exports = server
