@@ -15,18 +15,27 @@
 
     &:link {
       color: $govuk-link-colour;
+      text-decoration-color: $govuk-light-blue;
     }
 
     &:visited {
       color: $govuk-link-visited-colour;
+      text-decoration-color: $govuk-link-visited-colour;
     }
 
     &:hover {
       color: $govuk-link-hover-colour;
+      text-decoration-color: $govuk-link-hover-colour;
     }
 
     &:active {
       color: $govuk-link-active-colour;
+      text-decoration-color: $govuk-link-active-colour;
+    }
+
+    &:focus {
+      color: $govuk-black;
+      text-decoration-color: $govuk-black;
     }
 
     @include mq($media-type: print) {
@@ -62,13 +71,15 @@
     &:visited,
     &:hover,
     &:active {
-      color: $govuk-grey-1;
+      color: $govuk-dark-grey;
+      text-decoration-color: $govuk-border-colour;
     }
 
     // When focussed, the text colour needs to be darker to ensure that colour
     // contrast is still acceptable
     &:focus {
       color: $govuk-black;
+      text-decoration-color: $govuk-black;
     }
   }
 
@@ -83,6 +94,12 @@
   .govuk-link--no-visited-state {
     &:visited {
       color: $govuk-link-colour;
+      text-decoration-color: $govuk-light-blue;
+    }
+
+    &:focus {
+      color: $govuk-black;
+      text-decoration-color: $govuk-black;
     }
   }
 }
