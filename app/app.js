@@ -3,7 +3,6 @@ const app = express()
 const nunjucks = require('nunjucks')
 const fs = require('fs')
 const path = require('path')
-const port = (process.env.PORT || 3000)
 const yaml = require('js-yaml')
 
 const helperFunctions = require('../lib/helper-functions')
@@ -18,136 +17,137 @@ const appViews = [
   configPaths.src
 ]
 
-// Configure nunjucks
-let env = nunjucks.configure(appViews, {
-  autoescape: true, // output with dangerous characters are escaped automatically
-  express: app, // the express app that nunjucks should install to
-  noCache: true, // never use a cache and recompile templates each time
-  trimBlocks: true, // automatically remove trailing newlines from a block/tag
-  lstripBlocks: true, // automatically remove leading whitespace from a block/tag
-  watch: true // reload templates when they are changed. needs chokidar dependency to be installed
-})
+module.exports = (options) => {
+  const nunjucksOptions = options ? options.nunjucks : {}
 
-// make the function available as a filter for all templates
-env.addFilter('componentNameToMacroName', helperFunctions.componentNameToMacroName)
+  // Configure nunjucks
+  let env = nunjucks.configure(appViews, {
+    autoescape: true, // output with dangerous characters are escaped automatically
+    express: app, // the express app that nunjucks should install to
+    noCache: true, // never use a cache and recompile templates each time
+    trimBlocks: true, // automatically remove trailing newlines from a block/tag
+    lstripBlocks: true, // automatically remove leading whitespace from a block/tag
+    watch: true, // reload templates when they are changed. needs chokidar dependency to be installed
+    ...nunjucksOptions // merge any additional options and overwrite defaults above.
+  })
 
-// Set view engine
-app.set('view engine', 'njk')
+  // make the function available as a filter for all templates
+  env.addFilter('componentNameToMacroName', helperFunctions.componentNameToMacroName)
 
-// Set up middleware to serve static assets
-app.use('/public', express.static(configPaths.public))
+  // Set view engine
+  app.set('view engine', 'njk')
 
-// serve html5-shiv from node modules
-app.use('/vendor/html5-shiv/', express.static('node_modules/html5shiv/dist/'))
-app.use('/icons', express.static(path.join(configPaths.src, 'icons')))
+  // Set up middleware to serve static assets
+  app.use('/public', express.static(configPaths.public))
 
-const server = app.listen(port, () => {
-  console.log('Listening on port ' + port + '   url: http://localhost:' + port)
-})
+  // serve html5-shiv from node modules
+  app.use('/vendor/html5-shiv/', express.static('node_modules/html5shiv/dist/'))
+  app.use('/icons', express.static(path.join(configPaths.src, 'icons')))
 
-// Define routes
+  // Define routes
 
-// Index page - render the component list template
-app.get('/', function (req, res) {
-  Promise.all([
-    directoryToObject(path.resolve(configPaths.src)),
-    directoryToObject(path.resolve(configPaths.examples))
-  ]).then(result => {
-    const [components, examples] = result
+  // Index page - render the component list template
+  app.get('/', function (req, res) {
+    Promise.all([
+      directoryToObject(path.resolve(configPaths.src)),
+      directoryToObject(path.resolve(configPaths.examples))
+    ]).then(result => {
+      const [components, examples] = result
 
-    // filter out globals, all and icons package
-    const {globals, all, icons, ...filteredComponents} = components
+      // filter out globals, all and icons package
+      const {globals, all, icons, ...filteredComponents} = components
 
-    res.render('index', {
-      componentsDirectory: filteredComponents,
-      examplesDirectory: examples
+      res.render('index', {
+        componentsDirectory: filteredComponents,
+        examplesDirectory: examples
+      })
     })
   })
-})
 
-// Whenever the route includes a :component parameter, read the component data
-// from its YAML file
-app.param('component', function (req, res, next, componentName) {
-  let yamlPath = configPaths.src + `${componentName}/${componentName}.yaml`
+  // Whenever the route includes a :component parameter, read the component data
+  // from its YAML file
+  app.param('component', function (req, res, next, componentName) {
+    let yamlPath = configPaths.src + `${componentName}/${componentName}.yaml`
 
-  try {
-    res.locals.componentData = yaml.safeLoad(
-      fs.readFileSync(yamlPath, 'utf8'), { json: true }
+    try {
+      res.locals.componentData = yaml.safeLoad(
+        fs.readFileSync(yamlPath, 'utf8'), { json: true }
+      )
+      next()
+    } catch (e) {
+      next(new Error('failed to load component YAML file'))
+    }
+  })
+
+  // Component 'README' page
+  app.get('/components/:component', function (req, res, next) {
+    // make variables available to nunjucks template
+    res.locals.componentPath = req.params.component
+
+    res.render(`${req.params.component}/index`, function (error, html) {
+      if (error) {
+        next(error)
+      } else {
+        res.send(html)
+      }
+    })
+  })
+
+  // Component example preview
+  app.get('/components/:component/:example*?/preview', function (req, res, next) {
+    // Find the data for the specified example (or the default example)
+    let componentName = req.params.component
+    let requestedExampleName = req.params.example || 'default'
+
+    let exampleConfig = res.locals.componentData.examples.find(
+      example => example.name === requestedExampleName
     )
-    next()
-  } catch (e) {
-    next(new Error('failed to load component YAML file'))
-  }
-})
 
-// Component 'README' page
-app.get('/components/:component', function (req, res, next) {
-  // make variables available to nunjucks template
-  res.locals.componentPath = req.params.component
-
-  res.render(`${req.params.component}/index`, function (error, html) {
-    if (error) {
-      next(error)
-    } else {
-      res.send(html)
+    if (!exampleConfig) {
+      next()
     }
-  })
-})
 
-// Component example preview
-app.get('/components/:component/:example*?/preview', function (req, res, next) {
-  // Find the data for the specified example (or the default example)
-  let componentName = req.params.component
-  let requestedExampleName = req.params.example || 'default'
+    // Construct and evaluate the component with the data for this example
+    let macroName = helperFunctions.componentNameToMacroName(componentName)
+    let macroParameters = JSON.stringify(exampleConfig.data, null, '\t')
 
-  let exampleConfig = res.locals.componentData.examples.find(
-    example => example.name === requestedExampleName
-  )
+    res.locals.componentView = env.renderString(
+      `{% from '${componentName}/macro.njk' import ${macroName} %}
+      {{ ${macroName}(${macroParameters}) }}`
+    )
 
-  if (!exampleConfig) {
-    next()
-  }
-
-  // Construct and evaluate the component with the data for this example
-  let macroName = helperFunctions.componentNameToMacroName(componentName)
-  let macroParameters = JSON.stringify(exampleConfig.data, null, '\t')
-
-  res.locals.componentView = env.renderString(
-    `{% from '${componentName}/macro.njk' import ${macroName} %}
-    {{ ${macroName}(${macroParameters}) }}`
-  )
-
-  let bodyClasses = ''
-  if (req.query.iframe) {
-    bodyClasses = 'app-iframe-in-component-preview'
-  }
-
-  res.render('component-preview', { bodyClasses })
-})
-
-// Example view
-app.get('/examples/:example', function (req, res, next) {
-  res.render(`${req.params.example}/index`, function (error, html) {
-    if (error) {
-      next(error)
-    } else {
-      res.send(html)
+    let bodyClasses = ''
+    if (req.query.iframe) {
+      bodyClasses = 'app-iframe-in-component-preview'
     }
+
+    res.render('component-preview', { bodyClasses })
   })
-})
 
-// Disallow search index indexing
-app.use(function (req, res, next) {
-  // none - Equivalent to noindex, nofollow
-  // noindex - Do not show this page in search results and do not show a "Cached" link in search results.
-  // nofollow - Do not follow the links on this page
-  res.setHeader('X-Robots-Tag', 'none')
-  next()
-})
+  // Example view
+  app.get('/examples/:example', function (req, res, next) {
+    res.render(`${req.params.example}/index`, function (error, html) {
+      if (error) {
+        next(error)
+      } else {
+        res.send(html)
+      }
+    })
+  })
 
-app.get('/robots.txt', function (req, res) {
-  res.type('text/plain')
-  res.send('User-agent: *\nDisallow: /')
-})
+  // Disallow search index indexing
+  app.use(function (req, res, next) {
+    // none - Equivalent to noindex, nofollow
+    // noindex - Do not show this page in search results and do not show a "Cached" link in search results.
+    // nofollow - Do not follow the links on this page
+    res.setHeader('X-Robots-Tag', 'none')
+    next()
+  })
 
-module.exports = server
+  app.get('/robots.txt', function (req, res) {
+    res.type('text/plain')
+    res.send('User-agent: *\nDisallow: /')
+  })
+
+  return app
+}

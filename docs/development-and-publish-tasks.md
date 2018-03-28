@@ -4,7 +4,7 @@ This application used a number of a number of NPM scripts that run the applicati
 
 ## Express app only
 
-To simply run the Express app without gulp tasks being triggered, simply run `node app.js`.
+To simply run the Express app without gulp tasks being triggered, simply run `node app/start.js`.
 
 ## NPM script aliases
 

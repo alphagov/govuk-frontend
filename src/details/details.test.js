@@ -3,9 +3,12 @@
  */
 /* eslint-env jest */
 
+const configPaths = require('../../config/paths.json')
+const PORT = configPaths.ports.test
+
 let browser
 let page
-let baseUrl = 'http://localhost:3000'
+let baseUrl = 'http://localhost:' + PORT
 
 beforeAll(async (done) => {
   browser = global.__BROWSER__
