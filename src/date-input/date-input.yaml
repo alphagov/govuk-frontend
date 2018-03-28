@@ -6,8 +6,6 @@ examples:
     fieldset:
       legendText: 'What is your date of birth?'
       legendHintText: 'For example, 31 3 1980'
-    errorMessage:
-      text: 'Error message goes here'
     items:
       -
         name: 'day'

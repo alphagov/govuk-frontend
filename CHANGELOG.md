@@ -19,6 +19,9 @@ Internal:
 - Update check script for new components and tweak docs
   (PR [#589](https://github.com/alphagov/govuk-frontend/pull/589))
 
+- Fix date-input default example
+(PR [#623](https://github.com/alphagov/govuk-frontend/pull/623))
+
 ## 0.0.26-alpha (Breaking release)
 
 Breaking changes:
