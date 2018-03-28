@@ -18,6 +18,8 @@ New features:
 Internal:
 - Update check script for new components and tweak docs
   (PR [#589](https://github.com/alphagov/govuk-frontend/pull/589))
+- Listen for development server on different port for tests
+  (PR [#622](https://github.com/alphagov/govuk-frontend/pull/622))
 
 ## 0.0.26-alpha (Breaking release)
 
