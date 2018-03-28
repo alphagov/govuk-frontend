@@ -24,6 +24,9 @@ Internal:
 - Fix date-input default example
 (PR [#623](https://github.com/alphagov/govuk-frontend/pull/623))
 
+- Explain npm link
+(PR [#624](https://github.com/alphagov/govuk-frontend/pull/624))
+
 ## 0.0.26-alpha (Breaking release)
 
 Breaking changes:
