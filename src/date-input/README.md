@@ -16,17 +16,13 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
 
 #### Markup
 
-      <div class="govuk-o-form-group govuk-o-form-group--error">
+      <div class="govuk-o-form-group">
       <fieldset class="govuk-c-fieldset">
 
         <legend class="govuk-c-fieldset__legend">
           What is your date of birth?
 
           <span class="govuk-c-fieldset__hint">For example, 31 3 1980</span>
-
-          <span class="govuk-c-error-message">
-          Error message goes here
-        </span>
 
         </legend>
 
@@ -71,9 +67,6 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
       "fieldset": {
         "legendText": "What is your date of birth?",
         "legendHintText": "For example, 31 3 1980"
-      },
-      "errorMessage": {
-        "text": "Error message goes here"
       },
       "items": [
         {
