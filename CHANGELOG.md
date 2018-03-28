@@ -23,6 +23,8 @@ Internal:
 
 - Fix date-input default example
 (PR [#623](https://github.com/alphagov/govuk-frontend/pull/623))
+- Ensure we're testing error-messages in date-input
+(PR [#625](https://github.com/alphagov/govuk-frontend/pull/625))
 
 - Explain npm link
 (PR [#624](https://github.com/alphagov/govuk-frontend/pull/624))

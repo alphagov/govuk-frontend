@@ -232,6 +232,7 @@ describe('Date input', () => {
       ]
     })
 
+    expect(htmlWithClassName($, '.govuk-c-error-message')).toMatchSnapshot()
     expect(htmlWithClassName($, '.govuk-c-fieldset')).toMatchSnapshot()
   })
 })
