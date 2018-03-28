@@ -4,7 +4,8 @@
 
   .govuk-c-back-link {
     @include govuk-font-regular-16;
-    @include govuk-focusable-fill;
+    @include govuk-link-common;
+    @include govuk-link-style-text;
 
     display: inline-block;
     position: relative;
@@ -21,13 +22,6 @@
 
     // Underline is provided by a bottom border
     text-decoration: none;
-
-    &:link,
-    &:visited,
-    &:hover,
-    &:active {
-      @include govuk-text-colour;
-    }
 
     // Prepend left pointing arrow
     &:before {

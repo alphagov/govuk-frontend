@@ -103,13 +103,7 @@
   }
 
   .govuk-c-breadcrumbs__link {
-    @include govuk-focusable-fill;
-
-    &:link,
-    &:visited,
-    &:hover,
-    &:active {
-      color: $govuk-text-colour;
-    }
+    @include govuk-link-common;
+    @include govuk-link-style-text;
   }
 }
