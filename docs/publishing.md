@@ -39,41 +39,55 @@ Note: If a previously unreleased component is found, then you will be prompted t
 
   Once you publish changes, all files are automatically pushed to the remote origin branch.
 
-8. Create a pull request and copy the changelog text. 
-   When reviewing the PR, check that the version numbers have been updated and that the compiled assets use this verson number.
+8. (Optional) Test in [GOV.UK Design System](git@github.com:alphagov/govuk-design-system.git)
 
-9. Once the pull request is approved, merge to **master**. 
+  If you want to test your changes work correctly when used in the GOV.UK Design System you can use [npm link](https://docs.npmjs.com/cli/link) to test before publishing.
 
-10. Checkout **master** and pull the latest changes.
+  ```bash
+  cd ../govuk-design-system
+  npm link ../govuk-frontend/packages/all
+  ```
 
-11. Log into npm, using team [credentials](https://github.com/alphagov/design-system-team-credentials/tree/master/npm/govuk-patterns-and-tools).
+  When you have finished you need to unlink the package
 
-12. Run `npm run release`.
+  ```bash
+  npm unlink ../govuk-frontend/packages/all
+  ```
+
+9. Create a pull request and copy the changelog text.
+   When reviewing the PR, check that the version numbers have been updated and that the compiled assets use this version number.
+
+10. Once the pull request is approved, merge to **master**.
+
+11. Checkout **master** and pull the latest changes.
+
+12. Log into npm, using team [credentials](https://github.com/alphagov/design-system-team-credentials/tree/master/npm/govuk-patterns-and-tools).
+
+13. Run `npm run release`.
 
   This will:
   - check that you're logged in to npm as the correct user.
   - publish each package if the package has not been published yet
-  - create a new tag if the current git tag does not match the latest published tag 
+  - create a new tag if the current git tag does not match the latest published tag
   - push the tag to remote origin
   - create a zip file of the `dist` directory
 
-13. Create a release in the [Github interface](https://github.com/alphagov/govuk-frontend/releases/new)
+14. Create a release in the [Github interface](https://github.com/alphagov/govuk-frontend/releases/new)
   - select the latest tag version
   - set "GOV.UK Frontend release v[version-number]" as the title
   - add release notes from changelog
-  - attach the generated ZIP that is located at the root of the project 
+  - attach the generated ZIP that is located at the root of the project
   - publish release
 
-14. (Required for private beta) Grant "test" user access to any newly published package(s).
+15. (Required for private beta) Grant "test" user access to any newly published package(s).
 ```bash
 npm access grant read-only govuk-frontend:test @govuk-frontend/[component-name]
 ```
-15. Log out from npm
+16. Log out from npm
 ```bash
 npm logout
 ```
 
-16. Add Trello cards to "This Sprint" column for
+17. Add Trello cards to "This Sprint" column for
   - Update the GOV.UK Design System to use the latest release
-  - Update the GOV.UK Prototype Kit to use the latest release 
-  
+  - Update the GOV.UK Prototype Kit to use the latest release
