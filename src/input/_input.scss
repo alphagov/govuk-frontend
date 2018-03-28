@@ -1,6 +1,9 @@
-@import "../globals/common";
+@import "../globals/tools/exports";
+@import "../fieldset/fieldset";
 @import "../label/label";
 @import "../error-message/error-message";
+
+@import "../globals/helpers/focusable";
 
 @include govuk-exports("input") {
   .govuk-c-input {

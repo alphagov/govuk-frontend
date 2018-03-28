@@ -1,6 +1,16 @@
-@import "../globals/common";
+@import "../globals/tools/exports";
+@import "../globals/tools/iff";
+
 @import "../label/label";
-@import "../error-message/error-message";
+
+@import "../globals/settings/spacing";
+@import "../globals/settings/measurements";
+
+@import "../globals/helpers/focusable";
+@import "../globals/helpers/spacing";
+
+@import "../globals/objects/form-group";
+
 
 @include govuk-exports("textarea") {
   .govuk-c-textarea {

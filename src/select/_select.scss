@@ -1,5 +1,14 @@
-@import "../globals/common";
+@import "../globals/tools/exports";
+
 @import "../label/label";
+
+@import "../globals/settings/spacing";
+@import "../globals/settings/measurements";
+
+@import "../globals/helpers/focusable";
+@import "../globals/helpers/spacing";
+
+@import "../globals/objects/form-group";
 
 @include govuk-exports("select") {
   .govuk-c-select {

@@ -1,4 +1,23 @@
-@import "../globals/common";
+@import "../globals/tools/exports";
+@import "../globals/tools/compatibility";
+@import "../globals/tools/iff";
+
+@import "../globals/settings/colours-palette";
+@import "../globals/settings/colours-applied";
+@import "../globals/settings/compatibility";
+@import "../globals/settings/spacing";
+@import "../globals/settings/measurements";
+
+@import "../globals/helpers/focusable";
+@import "../globals/helpers/visually-hidden";
+@import "../globals/helpers/media-queries";
+
+@import "../globals/helpers/typography";
+@import "../globals/settings/typography-font-stacks";
+@import "../globals/settings/typography-font";
+@import "../globals/settings/typography-responsive";
+
+@import "../globals/core/links";
 
 @include govuk-exports("skip-link") {
   .govuk-c-skip-link {
