@@ -11,6 +11,7 @@ Breaking changes:
   `govuk-c-radios--inline` which will automatically make all the radio buttons
   within that block inline.
   (PR [#607](https://github.com/alphagov/govuk-frontend/pull/607))
+- Prefix `$global-images` variable (PR [#617](https://github.com/alphagov/govuk-frontend/pull/615))
 
 New features:
 - Add `govuk-main-wrapper--l` a variant of the main page wrapper to use when a design does not include back links, breadcrumbs or phase banners (PR [#602](https://github.com/alphagov/govuk-frontend/pull/602))
@@ -31,6 +32,12 @@ Internal:
 
 - Make Sass imports less broad
   (PR [#617](https://github.com/alphagov/govuk-frontend/pull/617))
+
+- Update project README with user research findings (PR [#617](https://github.com/alphagov/govuk-frontend/pull/615))
+
+- Update component READMEs to use `import` statement (PR [#617](https://github.com/alphagov/govuk-frontend/pull/615))
+
+- Update component READMEs to use `import` statement (PR [#617](https://github.com/alphagov/govuk-frontend/pull/615))
 
 ## 0.0.26-alpha (Breaking release)
 
