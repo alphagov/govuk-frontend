@@ -12,8 +12,30 @@ Breaking changes:
   within that block inline.
   (PR [#607](https://github.com/alphagov/govuk-frontend/pull/607))
 
+Fixes:
+- Link styles, as well as links within the  back-link, breadcrumbs, button,
+  error summary, footer and skip link components defend against the
+  `a:link:focus` selector in GOV.UK Template, which was overriding focussed
+  links to always use the dark blue link colour for text.
+  (PR [#609](https://github.com/alphagov/govuk-frontend/pull/609))
+
 New features:
-- Add `govuk-main-wrapper--l` a variant of the main page wrapper to use when a design does not include back links, breadcrumbs or phase banners (PR [#602](https://github.com/alphagov/govuk-frontend/pull/602))
+- Add `govuk-main-wrapper--l` a variant of the main page wrapper to use when a
+  design does not include back links, breadcrumbs or phase banners
+  (PR [#602](https://github.com/alphagov/govuk-frontend/pull/602))
+- Added a new `.govuk-link--text-colour` modifier to make links use the same
+  colour as the text.
+  (PR [#609](https://github.com/alphagov/govuk-frontend/pull/609))
+- Introduce new mixins for link styles (muted links, text links) and update
+  the existing link classes to use them
+  (PR [#609](https://github.com/alphagov/govuk-frontend/pull/609))
+- Introduce a new 'compatibility' mixin and settings to allow us to selectively
+  include styles that 'counter' styles from the existing products
+  (e.g. GOV.UK Template)
+  (PR [#609](https://github.com/alphagov/govuk-frontend/pull/609))
+- The back link, breadcrumbs and skip link have been updated to use the
+  text style link mixin
+  (PR [#609](https://github.com/alphagov/govuk-frontend/pull/609))
 
 Internal:
 - Update check script for new components and tweak docs
