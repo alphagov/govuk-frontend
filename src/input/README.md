@@ -25,6 +25,8 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
 
 #### Macro
 
+    {% from 'input/macro.njk' import govukInput %}
+
     {{ govukInput({
       "label": {
         "text": "National Insurance number"
@@ -51,6 +53,8 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
     </div>
 
 #### Macro
+
+    {% from 'input/macro.njk' import govukInput %}
 
     {{ govukInput({
       "label": {
@@ -83,6 +87,8 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
     </div>
 
 #### Macro
+
+    {% from 'input/macro.njk' import govukInput %}
 
     {{ govukInput({
       "label": {

@@ -22,6 +22,8 @@ Buttons are configured to perform an action and they can have a different look. 
 
 #### Macro
 
+    {% from 'button/macro.njk' import govukButton %}
+
     {{ govukButton({
       "text": "Save and continue"
     }) }}
@@ -35,6 +37,8 @@ Buttons are configured to perform an action and they can have a different look. 
     <input value="Disabled button" type="submit" disabled="disabled" aria-disabled="true" class="govuk-c-button govuk-c-button--disabled">
 
 #### Macro
+
+    {% from 'button/macro.njk' import govukButton %}
 
     {{ govukButton({
       "text": "Disabled button",
@@ -53,6 +57,8 @@ Buttons are configured to perform an action and they can have a different look. 
 
 #### Macro
 
+    {% from 'button/macro.njk' import govukButton %}
+
     {{ govukButton({
       "text": "Link button",
       "href": "/"
@@ -69,6 +75,8 @@ Buttons are configured to perform an action and they can have a different look. 
     </a>
 
 #### Macro
+
+    {% from 'button/macro.njk' import govukButton %}
 
     {{ govukButton({
       "text": "Disabled link button",
@@ -88,6 +96,8 @@ Buttons are configured to perform an action and they can have a different look. 
 
 #### Macro
 
+    {% from 'button/macro.njk' import govukButton %}
+
     {{ govukButton({
       "text": "Start now link button",
       "href": "/",
@@ -106,6 +116,8 @@ Buttons are configured to perform an action and they can have a different look. 
 
 #### Macro
 
+    {% from 'button/macro.njk' import govukButton %}
+
     {{ govukButton({
       "element": "button",
       "name": "start-now",
@@ -123,6 +135,8 @@ Buttons are configured to perform an action and they can have a different look. 
     </button>
 
 #### Macro
+
+    {% from 'button/macro.njk' import govukButton %}
 
     {{ govukButton({
       "element": "button",

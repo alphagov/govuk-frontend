@@ -3,6 +3,8 @@
 <pre><code class="govuk-!-f-16">{{- componentHtml | e -}}</code></pre>
 
 <h4 class="govuk-heading-s">Macro</h4>
-<pre class="govuk-!-mb-r0 govuk-!-f-16"><code>{% raw %}{{ {% endraw %}{{ componentName | componentNameToMacroName }}(
+<pre class="govuk-!-mb-r0 govuk-!-f-16"><code>{% raw %}{%{% endraw %} from '{{ componentName }}/macro.njk' import {{ componentName | componentNameToMacroName }} {% raw %}%}{% endraw %}
+
+{% raw %}{{ {% endraw %}{{ componentName | componentNameToMacroName }}(
   {{- item.data | dump(2) -}}
   ){% raw %} }}{% endraw %}</code></pre>

@@ -50,6 +50,8 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 
 #### Macro
 
+    {% from 'radios/macro.njk' import govukRadios %}
+
     {{ govukRadios({
       "idPrefix": "example",
       "name": "example",
@@ -109,6 +111,8 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
     </div>
 
 #### Macro
+
+    {% from 'radios/macro.njk' import govukRadios %}
 
     {{ govukRadios({
       "idPrefix": "example",
@@ -171,6 +175,8 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 
 #### Macro
 
+    {% from 'radios/macro.njk' import govukRadios %}
+
     {{ govukRadios({
       "idPrefix": "example-disabled",
       "name": "example-disabled",
@@ -232,6 +238,8 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 
 #### Macro
 
+    {% from 'radios/macro.njk' import govukRadios %}
+
     {{ govukRadios({
       "idPrefix": "housing-act",
       "name": "housing-act",
@@ -286,6 +294,8 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
       </div>
 
 #### Macro
+
+    {% from 'radios/macro.njk' import govukRadios %}
 
     {{ govukRadios({
       "name": "colours",
@@ -348,6 +358,8 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
     </div>
 
 #### Macro
+
+    {% from 'radios/macro.njk' import govukRadios %}
 
     {{ govukRadios({
       "idPrefix": "example",

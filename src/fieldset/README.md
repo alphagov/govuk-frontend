@@ -31,6 +31,8 @@ Find out when to use the Fieldset component in your service in the [GOV.UK Desig
 
 #### Macro
 
+    {% from 'fieldset/macro.njk' import govukFieldset %}
+
     {{ govukFieldset({
       "legendText": "What is your address?",
       "legendHintText": "For example, 10 Downing Street"
@@ -60,6 +62,8 @@ Find out when to use the Fieldset component in your service in the [GOV.UK Desig
     </div>
 
 #### Macro
+
+    {% from 'fieldset/macro.njk' import govukFieldset %}
 
     {{ govukFieldset({
       "legendText": "What is your address?",

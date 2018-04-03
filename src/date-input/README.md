@@ -61,6 +61,8 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
 
 #### Macro
 
+    {% from 'date-input/macro.njk' import govukDateInput %}
+
     {{ govukDateInput({
       "id": "dob",
       "name": "dob",
@@ -135,6 +137,8 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
     </div>
 
 #### Macro
+
+    {% from 'date-input/macro.njk' import govukDateInput %}
 
     {{ govukDateInput({
       "id": "dob-errors",
@@ -216,6 +220,8 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
 
 #### Macro
 
+    {% from 'date-input/macro.njk' import govukDateInput %}
+
     {{ govukDateInput({
       "id": "dob-day-error",
       "name": "dob-day-error",
@@ -295,6 +301,8 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
 
 #### Macro
 
+    {% from 'date-input/macro.njk' import govukDateInput %}
+
     {{ govukDateInput({
       "id": "dob-month-error",
       "name": "dob-month-error",
@@ -373,6 +381,8 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
     </div>
 
 #### Macro
+
+    {% from 'date-input/macro.njk' import govukDateInput %}
 
     {{ govukDateInput({
       "id": "dob-year-error",

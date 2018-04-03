@@ -29,6 +29,8 @@ Find out when to use the Details component in your service in the [GOV.UK Design
 
 #### Macro
 
+    {% from 'details/macro.njk' import govukDetails %}
+
     {{ govukDetails({
       "summaryText": "Help with nationality",
       "text": "We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post."
@@ -52,6 +54,8 @@ Find out when to use the Details component in your service in the [GOV.UK Design
     </details>
 
 #### Macro
+
+    {% from 'details/macro.njk' import govukDetails %}
 
     {{ govukDetails({
       "id": "help-with-nationality",
@@ -86,6 +90,8 @@ Find out when to use the Details component in your service in the [GOV.UK Design
     </details>
 
 #### Macro
+
+    {% from 'details/macro.njk' import govukDetails %}
 
     {{ govukDetails({
       "summaryText": "Where to find your National Insurance Number",
