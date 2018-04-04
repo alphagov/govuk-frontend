@@ -156,13 +156,12 @@ module.exports = (options) => {
     if (typeof selectedComponents === 'string') {
       selectedComponents = selectedComponents.split()
     }
-    console.log(selectedComponents)
+
     const customCSS = `
     ${selectedComponents.join(0).split(0).map(component => `
       @import "${path.join(configPaths.src, component, component)}";
     `
     ).join('')}`
-    console.log(customCSS)
     sass.render({
       data: customCSS,
       ...sassConfig
