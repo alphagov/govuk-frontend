@@ -4,16 +4,21 @@ const nunjucks = require('nunjucks')
 const fs = require('fs')
 const path = require('path')
 const yaml = require('js-yaml')
+const bodyParser = require('body-parser')
+
+const sass = require('node-sass')
 
 const helperFunctions = require('../lib/helper-functions')
 const directoryToObject = require('../lib/directory-to-object')
 const configPaths = require('../config/paths.json')
+const fileHelper = require('../lib/file-helper')
 
 // Set up views
 const appViews = [
   configPaths.layouts,
   configPaths.partials,
   configPaths.examples,
+  configPaths.builder,
   configPaths.src
 ]
 
@@ -122,6 +127,52 @@ module.exports = (options) => {
     }
 
     res.render('component-preview', { bodyClasses })
+  })
+
+  // Builder view
+  app.get('/builder', function (req, res, next) {
+    const srcList = fileHelper.SrcFilteredComponentList
+    const items = []
+    for (const key of srcList) {
+      const item = {
+        text: key,
+        value: key,
+        name: key
+      }
+      items.push(item)
+    }
+    res.render('builder-layout', {items})
+  })
+
+  app.use(bodyParser.urlencoded({ extended: true }))
+  app.post('/builder/output', function (req, res) {
+    let selectedComponents = req.body.component
+
+    const sassConfig = {
+      includePaths: [ configPaths.src ],
+      outputStyle: 'nested'
+    }
+
+    if (typeof selectedComponents === 'string') {
+      selectedComponents = selectedComponents.split()
+    }
+    let customCSS = `
+    ${selectedComponents.map(component =>
+      `@import "${path.join(configPaths.src, component, component)}";`
+    )}`
+
+    sass.render({
+      data: customCSS,
+      ...sassConfig
+    }, function (err, result) {
+      if (err) {
+        return err
+      }
+      fs.writeFile('public/css/custom.css', result.css, 'utf8', (err) => {
+        if (err) throw err
+      })
+    })
+    res.render('builder-output', {selectedComponents})
   })
 
   // Example view
