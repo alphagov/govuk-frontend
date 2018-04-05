@@ -19,6 +19,8 @@ Fixes:
   `a:link:focus` selector in GOV.UK Template, which was overriding focussed
   links to always use the dark blue link colour for text.
   (PR [#609](https://github.com/alphagov/govuk-frontend/pull/609))
+- Fix table captions to allow heading classes
+  (PR [#633](https://github.com/alphagov/govuk-frontend/pull/633))
 
 New features:
 - Add `govuk-main-wrapper--l` a variant of the main page wrapper to use when a
