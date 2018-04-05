@@ -1,6 +1,6 @@
 @import "../globals/tools/exports";
 @import "../globals/tools/compatibility";
-@import "../globals/tools/legacy-ie";
+@import "../globals/tools/ie8";
 @import "../globals/tools/iff";
 
 @import "../globals/settings/colours-palette";
@@ -146,7 +146,7 @@
     &:active {
       top: 0;
       box-shadow: 0 $button-shadow-size 0 $govuk-button-shadow-colour; // s0
-      @include govuk-ie-lte(8) {
+      @include govuk-if-ie8 {
         border-bottom: $button-shadow-size solid $govuk-button-shadow-colour; // s0
       }
     }
