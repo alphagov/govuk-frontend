@@ -33,11 +33,6 @@
     @include mq($from: tablet) {
       border: $govuk-border-width solid $govuk-error-colour;
     }
-
-    // TODO: Fix IE < 8
-    @include govuk-ie-lte(6) {
-      zoom: 1;
-    }
   }
 
   .govuk-c-error-summary__title {
