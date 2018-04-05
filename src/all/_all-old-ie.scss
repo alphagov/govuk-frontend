@@ -4,9 +4,8 @@
 // meaning @media queries will be rasterized, relying on the cascade itself
 $mq-responsive: false;
 
-// Set is-ie to true to output IE specific styles
-// uses the IE helpers in globals/_helpers.scss
-$govuk-is-ie: true;
-$govuk-ie-version: 8;
+// By setting $govuk-is-ie8 to true, we create a version of the stylesheet that
+// targets IE8 – e.g. conditionally including or excluding styles.
+$govuk-is-ie8: true;
 
 @import "all";

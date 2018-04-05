@@ -1,19 +1,24 @@
-// You can use these mixins to output CSS for specific versions of legacy
-// Internet Explorer.
-$govuk-is-ie: false !default;
+/// Whether the stylesheet being compiled is targeting IE8
+/// @type bool
+$govuk-is-ie8: false !default;
 
-@mixin govuk-ie-lte($version) {
-  @if $govuk-is-ie {
-    @if $govuk-ie-version <= $version {
-      @content;
-    }
-  }
-}
-
-@mixin govuk-ie($version) {
-  @if $govuk-is-ie {
-    @if $govuk-ie-version == $version {
-      @content;
-    }
+/// Conditionally include rules only for IE8
+///
+/// Only output the CSS passed to the mixin if the $govuk-is-ie8 variable is
+/// set to true, which means the rules should only be outputted if compiling an
+/// IE8 specific stylesheet.
+///
+/// @example scss - Usage
+///
+///   .foo {
+///     min-width: 100px;
+///     // Specify width for IE8 only
+///     @include govuk-is-ie8 {
+///       width: 100px;
+///     }
+///   }
+@mixin govuk-if-ie8 {
+  @if $govuk-is-ie8 {
+    @content;
   }
 }

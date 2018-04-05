@@ -146,7 +146,7 @@
     &:active {
       top: 0;
       box-shadow: 0 $button-shadow-size 0 $govuk-button-shadow-colour; // s0
-      @include govuk-ie-lte(8) {
+      @include govuk-if-ie8 {
         border-bottom: $button-shadow-size solid $govuk-button-shadow-colour; // s0
       }
     }
