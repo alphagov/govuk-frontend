@@ -143,7 +143,7 @@ Add the CSS and JavaScript code to your HTML template:
       <link rel="stylesheet" href="assets/govuk-frontend-[latest version].min.css">
     <!--<![endif]-->
     <!--[if IE 8]>
-      <link rel="stylesheet" href="assets/govuk-frontend-oldie-[latest version].min.css">
+      <link rel="stylesheet" href="assets/govuk-frontend-old-ie-[latest version].min.css">
     <![endif]-->
   </head>
   <body>
@@ -164,8 +164,7 @@ For instance, if your application Sass lives in `app.scss`, you might create an 
 
 ```SCSS
 // Target IE8
-$govuk-is-ie: true;
-$govuk-ie-version: 8;
+$govuk-is-ie8: true;
 
 @import "app";
 ```
