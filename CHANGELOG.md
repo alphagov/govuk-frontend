@@ -11,7 +11,20 @@ Breaking changes:
   `govuk-c-radios--inline` which will automatically make all the radio buttons
   within that block inline.
   (PR [#607](https://github.com/alphagov/govuk-frontend/pull/607))
-- Prefix `$global-images` variable (PR [#617](https://github.com/alphagov/govuk-frontend/pull/615))
+- Prefix `$global-images` variable
+  (PR [#617](https://github.com/alphagov/govuk-frontend/pull/615))
+- Simplified how we build stylesheets that target old versions of IE:
+  - Removed styles that target IE6 and IE7
+  - Replaced IE mixins with a simpler version for targeting IE8 specifically
+    without having to specify versions
+  - Add a new tool mixin to easily exclude styles when targeting IE8
+  - Automatically set $mq-responsive based on the value of the $govuk-is-ie8
+    variable.
+  
+  If you are building an IE8 stylesheet for your application you'll need to
+  update it to reference the new variable $govuk-is-ie8 – see the README for
+  details.
+  (PR [#631](https://github.com/alphagov/govuk-frontend/pull/631))
 
 Fixes:
 - Link styles, as well as links within the  back-link, breadcrumbs, button,
