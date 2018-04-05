@@ -225,7 +225,7 @@ Find out when to use the Table component in your service in the [GOV.UK Design S
 
     <table class="govuk-c-table">
 
-      <caption class="govuk-c-table__caption small">Caption 1 : Months and rates</caption>
+      <caption class="govuk-c-table__caption govuk-heading-l">Caption 1 : Months and rates</caption>
 
       <thead class="govuk-c-table__head">
         <tr class="govuk-c-table__row">
@@ -280,7 +280,7 @@ Find out when to use the Table component in your service in the [GOV.UK Design S
 
     {{ govukTable({
       "caption": "Caption 1 : Months and rates",
-      "captionSize": "small",
+      "captionSize": "govuk-heading-l",
       "firstCellIsHeader": true,
       "head": [
         {
