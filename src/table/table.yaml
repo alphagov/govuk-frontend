@@ -50,7 +50,7 @@ examples:
  - name: table-with-caption-and-head
    data:
      caption: "Caption 1 : Months and rates"
-     captionSize: small
+     captionSize: govuk-heading-l
      firstCellIsHeader: true
      head:
        - text: Month you apply
