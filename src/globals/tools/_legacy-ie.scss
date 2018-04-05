@@ -22,3 +22,26 @@ $govuk-is-ie8: false !default;
     @content;
   }
 }
+
+/// Conditionally exclude rules for IE8
+///
+/// Only output the CSS passed to the mixin if the $govuk-is-ie8 variable is
+/// not set to true, which means the rules should be excluded when compiling
+/// an IE8 specific stylesheet.
+///
+/// @example scss - Usage
+///
+///   .foo {
+///     font-weight: bold;
+///
+///     // Enhance foo only for modern browsers (not IE8)
+///     @include govuk-not-ie8 {
+///       font-family: "Comic Sans MS", "Curlz MT" cursive, sans-serif;
+///       color: #FF69B4;
+///     }
+///   }
+@mixin govuk-not-ie8 {
+  @if not $govuk-is-ie8 {
+    @content;
+  }
+}
