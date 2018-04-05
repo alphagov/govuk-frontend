@@ -59,12 +59,8 @@ describe('@mixin govuk-compatibility', () => {
         }
       }`
 
-    expect.assertions(1)
-
-    return sassRender({ data: sass, ...sassConfig }).catch(e => {
-      expect(e.message).toEqual(
-        'Non existent compatibility product \'non_existent_app\''
-      )
-    })
+    await expect(sassRender({ data: sass, ...sassConfig }))
+      .rejects
+      .toThrow('Non existent compatibility product \'non_existent_app\'')
   })
 })

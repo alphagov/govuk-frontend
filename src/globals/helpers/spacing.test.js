@@ -72,15 +72,13 @@ describe('@mixin govuk-responsive-spacing', () => {
         @include govuk-responsive-spacing(14px, 'margin')
       }`
 
-    expect.assertions(1)
-
-    return sassRender({ data: sass, ...sassConfig }).catch(e => {
-      expect(e.message).toEqual(
+    await expect(sassRender({ data: sass, ...sassConfig }))
+      .rejects
+      .toThrow(
         'Expected a map of breakpoints from the responsive scale, but got a ' +
         'number. Make sure you are using a point from the responsive spacing ' +
         'scale.'
       )
-    })
   })
 
   describe('when $important is set to true', () => {

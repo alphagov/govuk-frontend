@@ -93,14 +93,12 @@ describe('@mixin govuk-typography-responsive', () => {
         @include govuk-typography-responsive(14px)
       }`
 
-    expect.assertions(1)
-
-    return sassRender({ data: sass, ...sassConfig }).catch(e => {
-      expect(e.message).toEqual(
+    await expect(sassRender({ data: sass, ...sassConfig }))
+      .rejects
+      .toThrow(
         'Expected a map of breakpoints and font sizes, but got a number. ' +
         'Make sure you are passing a font map.'
       )
-    })
   })
 
   describe('when $important is set to true', () => {
