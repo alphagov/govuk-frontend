@@ -1,7 +1,3 @@
-/// Whether the stylesheet being compiled is targeting IE8
-/// @type bool
-$govuk-is-ie8: false !default;
-
 /// Conditionally include rules only for IE8
 ///
 /// Only output the CSS passed to the mixin if the $govuk-is-ie8 variable is

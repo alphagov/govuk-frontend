@@ -1,11 +1,6 @@
-// To enable support for browsers that do not support @media queries,
-// (IE <= 8, Firefox <= 3, Opera <= 9) set $mq-responsive to false
-// Create a separate stylesheet served exclusively to these browsers,
-// meaning @media queries will be rasterized, relying on the cascade itself
-$mq-responsive: false;
-
 // By setting $govuk-is-ie8 to true, we create a version of the stylesheet that
-// targets IE8 – e.g. conditionally including or excluding styles.
+// targets IE8 – e.g. conditionally including or excluding styles, and
+// rasterizing media queries.
 $govuk-is-ie8: true;
 
 @import "all";
