@@ -55,7 +55,6 @@ body {
 </style>
 {% endblock %}
 {% endif %}
-{% if not isReadme %}
 {% block scripts %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
 <span class="govuk-c-debug-grid__toggler">Show page debug grid</span>
@@ -74,4 +73,3 @@ body {
   },false);
 </script>
 {% endblock %}
-{% endif %}

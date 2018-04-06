@@ -1,4 +1,3 @@
-{% if not isReadme %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -83,10 +82,8 @@
 <body class="{% block bodyClasses %}{% endblock %}">
   <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
   <div class="govuk-o-width-container">
-{% endif %}
   {% block content %}
   {% endblock %}
-{% if not isReadme %}
   </div>
   <script src="/public/js/govuk-frontend.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.15/iframeResizer.min.js"></script>
@@ -101,4 +98,3 @@
   {% endblock %}
 </body>
 </html>
-{% endif %}
