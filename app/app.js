@@ -99,6 +99,8 @@ module.exports = (options) => {
     let componentName = req.params.component
     let requestedExampleName = req.params.example || 'default'
 
+    let previewLayout = res.locals.componentData.previewLayout || 'layout'
+
     let exampleConfig = res.locals.componentData.examples.find(
       example => example.name === requestedExampleName
     )
@@ -121,7 +123,7 @@ module.exports = (options) => {
       bodyClasses = 'app-iframe-in-component-preview'
     }
 
-    res.render('component-preview', { bodyClasses })
+    res.render('component-preview', { bodyClasses, previewLayout })
   })
 
   // Example view

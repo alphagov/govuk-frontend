@@ -23,21 +23,22 @@
       <a href="http://govuk-frontend-review.herokuapp.com{{ previewLink }}">{{ previewText }}</a>
       {% include "code.njk" %}
     {% else %}
-      <section aria-labelledby="heading-{{ itemName}}">
-        <div class="govuk-heading-m">
-          <h3 id="heading-{{ itemName}}" class="app-!-di">{{ itemName  | capitalize }}</h3>
-          <a href="{{ previewLink }}" class="govuk-link govuk-!-ml-r1 govuk-!-f-16">
-            (open in a new window)
-          </a>
-        </div>
+      <section aria-labelledby="heading-{{ itemName}}" class="govuk-!-mb-r9">
+        <div class="govuk-o-width-container">
+          <div class="govuk-heading-m">
+            <h3 id="heading-{{ itemName}}" class="app-!-di">{{ itemName  | capitalize }}</h3>
+            <a href="{{ previewLink }}" class="govuk-link govuk-!-ml-r1 govuk-!-f-16">
+              (open in a new window)
+            </a>
+          </div>
 
         {% if item.description %}
           <p class="govuk-body">
             {{ item.description }}
           </p>
         {% endif %}
-
-        <div class="app-c-component-preview govuk-!-mb-r4">
+        </div>
+        <div class="app-c-component-preview">
           <iframe
           class="js-component-preview app-c-component-preview__iframe"
           src="{{ previewLink }}?iframe=true"
@@ -47,8 +48,10 @@
           ></iframe>
         </div>
 
-        {% set detailsHtml %}{% include "code.njk" %}{% endset %}
-        {{- govukDetails({ summaryText: "Code", html: detailsHtml }) -}}
+        <div class="govuk-o-width-container">
+          {% set detailsHtml %}{% include "code.njk" %}{% endset %}
+          {{- govukDetails({ summaryText: "Code", html: detailsHtml }) -}}
+        </div>
       </section>
     {% endif %}
   {% endif %}

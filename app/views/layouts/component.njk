@@ -1,5 +1,5 @@
 {% set componentName = componentPath %}
-{% extends "layout-debug.njk" %}
+{% extends "full-width.njk" %}
 
 {% block content %}
 
@@ -11,19 +11,24 @@
 {% endset %}
 
 {% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
-
+<div class="govuk-o-width-container">
 {{ govukBreadcrumbs({
   "items": [
     { text: 'GOV.UK Frontend', href: '/' },
     { text: componentNameHuman }
   ]
 }) }}
+</div>
+
 <div class="govuk-o-main-wrapper">
-  <h1 class="govuk-heading-xl">
-  {% block componentName %}
-  {{ componentNameHuman }}
-  {% endblock %}
-  </h1>
+  <div class="govuk-o-width-container">
+    <h1 class="govuk-heading-xl">
+    {% block componentName %}
+    {{ componentNameHuman }}
+    {% endblock %}
+    </h1>
+  </div>
+</div>
 
   {% from "showExamples.njk" import showExamples %}
   {% block examples %}

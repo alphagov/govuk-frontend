@@ -1,0 +1,51 @@
+body {
+  margin: 0;
+}
+
+.app-iframe-in-component-preview {
+  margin: 15px 0;
+}
+/* Injected into the preview page, that is then put in an iframe */
+.app-iframe-in-component-preview {}
+
+/* Removes the breakpoint sass-mq debug display */
+.app-iframe-in-component-preview:before {
+  display: none;
+}
+
+.app-\!-di {
+  display: inline;
+}
+
+.app-c-component-preview {
+  position: relative;
+  margin-top: -15px;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.app-c-component-preview__iframe {
+  z-index: 20;
+  display: block;
+  position: relative;
+  border: none;
+  width: 100%;
+}
+
+// Highlight the whitespace around a component, so you can see without having to
+// inspect it.
+.app-iframe-in-component-preview {
+  .app-c-whitespace-highlight {
+    @include govuk-h-clearfix;
+
+    content: " ";
+    display: table;
+    clear: both;
+    width: 100%;
+    box-shadow: 0 0 0 5px #e4f2ff;
+
+    @include govuk-if-ie8 {
+      outline: 5px solid #e4f2ff;
+    }
+  }
+}
