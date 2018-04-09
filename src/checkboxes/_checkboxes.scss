@@ -44,7 +44,7 @@
   }
 
   .govuk-c-checkboxes__label {
-    display: block;
+    display: inline-block;
     padding: 8px $govuk-spacing-scale-3 $govuk-spacing-scale-1;
     cursor: pointer;
     // remove 300ms pause on mobile
