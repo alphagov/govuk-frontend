@@ -26,6 +26,7 @@ Breaking changes:
   details.
   (PR [#631](https://github.com/alphagov/govuk-frontend/pull/631))
 - Rename captionSize table argument to captionClasses ([PR #643](https://github.com/alphagov/govuk-frontend/pull/643))
+- Update SassMQ import path (PR [#637](https://github.com/alphagov/govuk-frontend/pull/637))
 
 Fixes:
 - Link styles, as well as links within the  back-link, breadcrumbs, button,
