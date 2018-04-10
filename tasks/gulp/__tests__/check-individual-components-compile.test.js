@@ -1,22 +1,13 @@
 /* eslint-env jest */
 
 const path = require('path')
+const util = require('util')
 
 const sass = require('node-sass')
+const sassRender = util.promisify(sass.render)
 
 const lib = require('../../../lib/file-helper')
 const configPaths = require('../../../config/paths.json')
-
-const sassRender = (options) => {
-  return new Promise((resolve, reject) => {
-    sass.render(options, (error, result) => {
-      if (error) {
-        return reject(error)
-      }
-      return resolve(result)
-    })
-  })
-}
 
 describe('Individual components', () => {
   it('should compile individual scss files without throwing exceptions', done => {
