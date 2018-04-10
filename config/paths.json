@@ -2,6 +2,7 @@
   "app": "app/",
     "views": "app/views/",
       "examples": "app/views/examples/",
+      "builder": "app/views/builder/",
       "partials": "app/views/partials/",
       "layouts": "app/views/layouts/",
   "config": "config/",

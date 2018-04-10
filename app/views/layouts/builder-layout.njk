@@ -1,0 +1,32 @@
+{% extends "layout.njk" %}
+{% from 'checkboxes/macro.njk' import govukCheckboxes %}
+{% from "button/macro.njk" import govukButton %}
+
+{% block content %}
+  <div class="govuk-o-main-wrapper">
+    <h1 class="govuk-heading-xl">
+      GOV.UK Frontend custom CSS build
+    </h1>
+
+    <div class="govuk-o-grid">
+
+      <div class="govuk-o-grid__item govuk-o-grid__item--one-half">
+        <form action="/builder/output" method="post">
+          <div class="govuk-o-form-group">
+            <fieldset class="govuk-c-fieldset">
+              <legend class="govuk-c-fieldset__legend">
+                Select desired components
+              </legend>
+                {{ govukCheckboxes({
+                "idPrefix": "component",
+                "name": "component",
+                "items": items
+              }) }}
+            </fieldset>
+          </div>
+          {{ govukButton({ text:'Build' }) }}
+        </form>
+       
+      </div>
+  </div>
+{% endblock %}

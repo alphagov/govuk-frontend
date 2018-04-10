@@ -1,0 +1,29 @@
+{% extends "layout.njk" %}
+{% from 'checkboxes/macro.njk' import govukCheckboxes %}
+{% from "button/macro.njk" import govukButton %}
+{% from "back-link/macro.njk" import govukBackLink %}
+
+
+{% block content %}
+  {{ govukBackLink({
+    "href": "/builder",
+    "text": "Back"
+  }) }}
+  <div class="govuk-o-main-wrapper">
+    <h1 class="govuk-heading-xl">
+      Your custom GOV.UK Frontend CSS build
+    </h1>
+    <div class="govuk-o-grid">
+      <div class="govuk-o-grid__item govuk-o-grid__item--one-half">
+        <h2 class="govuk-heading-m">You have selected the following:</h2>
+        <p class="govuk-body-l">
+        {% for component in selectedComponents %}
+          {{ component }}
+          {%- if not loop.last %},{% endif %}
+        {% endfor %}
+        </p>
+        <a class="govuk-c-button" href="/public/css/custom.css" download="govuk-frontend-custom.css">Download your custom css</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}
