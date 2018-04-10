@@ -55,7 +55,8 @@ New features:
 - Add basic <dl> styling
   (PR [#638](https://github.com/alphagov/govuk-frontend/pull/638))
 - Add limited width inputs
-  (PR [#626](https://github.com/alphagov/govuk-frontend/pull/626))
+- Add Webpack as js bundler
+  (PR [#619](https://github.com/alphagov/govuk-frontend/pull/619))
 
 Internal:
 - Update check script for new components and tweak docs
