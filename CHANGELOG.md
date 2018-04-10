@@ -12,7 +12,7 @@ Breaking changes:
   within that block inline.
   (PR [#607](https://github.com/alphagov/govuk-frontend/pull/607))
 - Prefix `$global-images` variable
-  (PR [#617](https://github.com/alphagov/govuk-frontend/pull/615))
+  (PR [#615](https://github.com/alphagov/govuk-frontend/pull/615))
 - Simplified how we build stylesheets that target old versions of IE:
   - Removed styles that target IE6 and IE7
   - Replaced IE mixins with a simpler version for targeting IE8 specifically
@@ -76,9 +76,9 @@ Internal:
 
 - Update project README with user research findings (PR [#617](https://github.com/alphagov/govuk-frontend/pull/615))
 
-- Update component READMEs to use `import` statement (PR [#617](https://github.com/alphagov/govuk-frontend/pull/615))
+- Update component READMEs to use `import` statement (PR [#615](https://github.com/alphagov/govuk-frontend/pull/615))
 
-- Update component READMEs to use `import` statement (PR [#617](https://github.com/alphagov/govuk-frontend/pull/615))
+- Use promisify util instead of manual method (PR [#639](https://github.com/alphagov/govuk-frontend/pull/639))
 
 ## 0.0.26-alpha (Breaking release)
 
