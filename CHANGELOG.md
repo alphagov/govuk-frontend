@@ -20,7 +20,7 @@ Breaking changes:
   - Add a new tool mixin to easily exclude styles when targeting IE8
   - Automatically set $mq-responsive based on the value of the $govuk-is-ie8
     variable.
-  
+
   If you are building an IE8 stylesheet for your application you'll need to
   update it to reference the new variable $govuk-is-ie8 – see the README for
   details.
@@ -52,6 +52,8 @@ New features:
 - The back link, breadcrumbs and skip link have been updated to use the
   text style link mixin
   (PR [#609](https://github.com/alphagov/govuk-frontend/pull/609))
+- Add basic <dl> styling
+  (PR [#638](https://github.com/alphagov/govuk-frontend/pull/638))
 
 Internal:
 - Update check script for new components and tweak docs
