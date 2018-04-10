@@ -409,7 +409,8 @@ rules:
         'pt',
         'px',
         'rem',
-        'vh'
+        'vh',
+        'ex'
       ]
 
   # Rule pseudo-element will enforce that:

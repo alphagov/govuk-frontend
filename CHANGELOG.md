@@ -54,6 +54,8 @@ New features:
   (PR [#609](https://github.com/alphagov/govuk-frontend/pull/609))
 - Add basic <dl> styling
   (PR [#638](https://github.com/alphagov/govuk-frontend/pull/638))
+- Add limited width inputs
+  (PR [#626](https://github.com/alphagov/govuk-frontend/pull/626))
 
 Internal:
 - Update check script for new components and tweak docs
