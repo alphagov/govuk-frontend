@@ -11,7 +11,7 @@
 {% endset %}
 
 {% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
-<div class="govuk-o-width-container">
+<div class="govuk-width-container">
 {{ govukBreadcrumbs({
   "items": [
     { text: 'GOV.UK Frontend', href: '/' },
@@ -20,8 +20,8 @@
 }) }}
 </div>
 
-<div class="govuk-o-main-wrapper">
-  <div class="govuk-o-width-container">
+<div class="govuk-main-wrapper">
+  <div class="govuk-width-container">
     <h1 class="govuk-heading-xl">
     {% block componentName %}
     {{ componentNameHuman }}

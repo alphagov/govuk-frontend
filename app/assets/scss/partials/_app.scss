@@ -17,14 +17,14 @@ body {
   display: inline;
 }
 
-.app-c-component-preview {
+.app-component-preview {
   position: relative;
   margin-top: -15px;
   margin-bottom: 15px;
   width: 100%;
 }
 
-.app-c-component-preview__iframe {
+.app-component-preview__iframe {
   z-index: 20;
   display: block;
   position: relative;
@@ -35,8 +35,8 @@ body {
 // Highlight the whitespace around a component, so you can see without having to
 // inspect it.
 .app-iframe-in-component-preview {
-  .app-c-whitespace-highlight {
-    @include govuk-h-clearfix;
+  .app-whitespace-highlight {
+    @include govuk-clearfix;
 
     content: " ";
     display: table;

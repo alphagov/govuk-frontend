@@ -9,7 +9,7 @@
   "text": "Back"
 }) }}
 
-<main class="govuk-o-main-wrapper">
+<main class="govuk-main-wrapper">
 
   {% from "fieldset/macro.njk" import govukFieldset %}
   {% from "input/macro.njk" import govukInput %}
@@ -37,7 +37,7 @@
     {% call govukFieldset() %}
       <span id="input"></span>
       {{ govukInput({
-        id: "govuk-c-input-a",
+        id: "govuk-input-a",
         label: {
           text: "National Insurance number"
         }
@@ -51,8 +51,8 @@
       <span id="textarea"></span>
       {% from "textarea/macro.njk" import govukTextarea %}
       {{ govukTextarea({
-        id: "govuk-c-textarea-a",
-        name: "govuk-c-textarea-a",
+        id: "govuk-textarea-a",
+        name: "govuk-textarea-a",
         rows: "5",
         label: {
           text: "Why can't you provide a National Insurance number?"
@@ -86,7 +86,7 @@
     <span id="radio-inline"></span>
     {{ govukRadios({
       "fieldset": {},
-      "classes": "govuk-c-radio--inline",
+      "classes": "govuk-radio--inline",
       "idPrefix": "radio-inline",
       "name": "radio-inline",
       "items": [
