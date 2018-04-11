@@ -17,6 +17,13 @@ require('./tasks/gulp/watch.js')
 require('./tasks/gulp/copy-to-destination.js')
 require('./tasks/gulp/asset-version.js')
 
+// Umbrella scripts tasks for preview ---
+// Runs js lint and compilation
+// --------------------------------------
+gulp.task('scripts', cb => {
+  runsequence('js:lint', 'js:compile', cb)
+})
+
 // Umbrella styles tasks for preview ----
 // Runs js lint and compilation
 // --------------------------------------
@@ -36,7 +43,9 @@ gulp.task('copy:icons', () => {
 // Runs js, scss and accessibility tests
 // --------------------------------------
 gulp.task('test', cb => {
-  runsequence('scss:lint',
+  runsequence(
+              'js:lint',
+              'scss:lint',
               'scss:compile',
               cb)
 })
@@ -46,7 +55,9 @@ gulp.task('test', cb => {
 // taskArguments.destination (public)
 // --------------------------------------
 gulp.task('copy-assets', cb => {
-  runsequence('styles', 'js:compile', cb)
+  runsequence('styles',
+              'scripts',
+            cb)
 })
 
 // Dev task -----------------------------
@@ -75,9 +86,9 @@ gulp.task('serve', ['watch'], () => {
 // Prepare package folder for publishing
 // -------------------------------------
 gulp.task('build:packages', cb => {
-  runsequence('clean',
+  runsequence(
+              'clean',
               'copy-files',
-              'js:compile',
               'generate:readme',
               cb)
 })
@@ -85,7 +96,6 @@ gulp.task('build:dist', cb => {
   runsequence('clean',
               'copy-assets',
               'copy-files',
-              'js:compile',
               'copy:icons',
               'generate:readme',
               'update-assets-version',

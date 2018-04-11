@@ -35,8 +35,10 @@
     "express": "^4.16.1",
     "gulp": "^3.9.1",
     "gulp-changed": "^3.1.0",
+    "gulp-concat": "^2.6.1",
     "gulp-data": "^1.2.1",
     "gulp-debug": "^3.1.0",
+    "gulp-eol": "^0.1.2",
     "gulp-filter": "^5.0.0",
     "gulp-nunjucks": "^3.0.0",
     "gulp-plumber": "^1.2.0",
@@ -44,8 +46,10 @@
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.1.0",
     "gulp-sass-lint": "^1.3.4",
+    "gulp-standard": "^10.0.0",
     "gulp-task-listing": "^1.0.1",
     "gulp-to-markdown": "^1.0.0",
+    "gulp-uglify": "^3.0.0",
     "html5shiv": "^3.7.3",
     "jest": "^22.1.4",
     "jest-axe": "^2.1.1",
@@ -63,8 +67,6 @@
     "run-sequence": "^2.2.0",
     "standard": "^10.0.2",
     "vinyl-paths": "^2.1.0",
-    "webpack": "^4.2.0",
-    "webpack-cli": "^2.0.12",
     "yargs": "^8.0.2"
   },
   "dependencies": {
@@ -82,12 +84,6 @@
     "ie 9",
     "iOS 9"
   ],
-  "standard": {
-    "ignore": [
-      "/dist/**/*.js",
-      "/packages/**/*.js"
-    ]
-  },
   "jest": {
     "setupTestFrameworkScriptFile": "./config/jest-setup.js",
     "snapshotSerializers": [

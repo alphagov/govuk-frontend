@@ -2,7 +2,19 @@
 
 const gulp = require('gulp')
 const configPaths = require('../../config/paths.json')
+const standard = require('gulp-standard')
 const sasslint = require('gulp-sass-lint')
+
+// Javascript lint check -----------------
+// ---------------------------------------
+gulp.task('js:lint', () => {
+  return gulp.src([configPaths.src + '**/*.js'])
+    .pipe(standard())
+    .pipe(standard.reporter('default', {
+      breakOnError: true,
+      quiet: true
+    }))
+})
 
 // Scss lint check -----------------------
 // ---------------------------------------
