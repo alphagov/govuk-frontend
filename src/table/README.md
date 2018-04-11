@@ -225,7 +225,7 @@ Find out when to use the Table component in your service in the [GOV.UK Design S
 
     <table class="govuk-c-table">
 
-      <caption class="govuk-c-table__caption govuk-heading-l">Caption 1 : Months and rates</caption>
+      <caption class="govuk-c-table__caption govuk-heading-m">Caption 1 : Months and rates</caption>
 
       <thead class="govuk-c-table__head">
         <tr class="govuk-c-table__row">
@@ -280,7 +280,7 @@ Find out when to use the Table component in your service in the [GOV.UK Design S
 
     {{ govukTable({
       "caption": "Caption 1 : Months and rates",
-      "captionSize": "govuk-heading-l",
+      "captionClasses": "govuk-heading-m",
       "firstCellIsHeader": true,
       "head": [
         {
@@ -412,13 +412,13 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-c-table__row">
 
-<th class="govuk-c-table__header" scope="row">captionSize</th>
+<th class="govuk-c-table__header" scope="row">captionClasses</th>
 
 <td class="govuk-c-table__cell ">string</td>
 
 <td class="govuk-c-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Optional caption text size. Class should correspond to the available heading classes.</td>
+<td class="govuk-c-table__cell ">Optional classes for caption text size. Class should correspond to the available typography heading classes.</td>
 
 </tr>
 
