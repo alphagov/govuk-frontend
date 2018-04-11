@@ -52,8 +52,6 @@ New features:
 - The back link, breadcrumbs and skip link have been updated to use the
   text style link mixin
   (PR [#609](https://github.com/alphagov/govuk-frontend/pull/609))
-- Add basic <dl> styling
-  (PR [#638](https://github.com/alphagov/govuk-frontend/pull/638))
 - Add limited width inputs
 - Add Webpack as js bundler
   (PR [#619](https://github.com/alphagov/govuk-frontend/pull/619))

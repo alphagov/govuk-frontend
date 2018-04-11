@@ -64,25 +64,4 @@
   .govuk-list--number {
     @extend %govuk-list--number;
   }
-
-  %govuk-list--description > dt {
-    @include govuk-font-bold;
-  }
-
-  %govuk-list--description > dt {
-    // margin-top is applied to the dt as the last dd in each dt cannot be targeted.
-    @include govuk-responsive-margin($govuk-spacing-responsive-4, "top");
-  }
-
-  %govuk-list--description > dt:first-child {
-    margin-top: 0;
-  }
-
-  %govuk-list--description > dd {
-    margin-left: 0;
-  }
-
-  .govuk-list--description {
-    @extend %govuk-list--description;
-  }
 }
