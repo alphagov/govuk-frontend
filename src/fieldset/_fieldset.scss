@@ -21,7 +21,7 @@
     margin: 0;
     padding: 0;
     border: 0;
-    @include govuk-h-clearfix;
+    @include govuk-clearfix;
   }
 
   .govuk-fieldset__legend {

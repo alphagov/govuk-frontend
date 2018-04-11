@@ -107,7 +107,7 @@
   // Inline variant
   .govuk-radios--inline {
     @include mq ($from: tablet) {
-      @include govuk-h-clearfix;
+      @include govuk-clearfix;
 
       .govuk-radios__item {
         margin-right: $govuk-spacing-scale-4;

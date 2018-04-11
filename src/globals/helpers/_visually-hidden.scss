@@ -7,7 +7,7 @@
 //    causes content to wrap 1 word per line:
 //    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
 
-@mixin govuk-h-visually-hidden {
+@mixin govuk-visually-hidden {
   position: absolute;
 
   width: 1px;
@@ -30,7 +30,7 @@
 // Slightly less opinionated about borders and padding to make it easier to
 // style the focussable element.
 
-@mixin govuk-h-visually-hidden-focusable {
+@mixin govuk-visually-hidden-focusable {
   position: absolute;
 
   width: 1px;
@@ -60,11 +60,11 @@
 }
 
 @include govuk-exports("visually-hidden") {
-  .govuk-h-visually-hidden {
-    @include govuk-h-visually-hidden;
+  .govuk-visually-hidden {
+    @include govuk-visually-hidden;
   }
 
-  .govuk-h-visually-hidden-focussable {
-    @include govuk-h-visually-hidden-focusable;
+  .govuk-visually-hidden-focussable {
+    @include govuk-visually-hidden-focusable;
   }
 }

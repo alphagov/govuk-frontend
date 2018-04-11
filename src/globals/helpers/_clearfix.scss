@@ -1,5 +1,5 @@
 // Mixin to clear floats
-@mixin govuk-h-clearfix {
+@mixin govuk-clearfix {
   &:after {
     content: "";
     display: block;
@@ -8,7 +8,7 @@
 }
 
 @include govuk-exports("clearfix") {
-  .govuk-h-clearfix {
-    @include govuk-h-clearfix;
+  .govuk-clearfix {
+    @include govuk-clearfix;
   }
 }

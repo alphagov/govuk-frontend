@@ -21,7 +21,7 @@
 
 @include govuk-exports("skip-link") {
   .govuk-skip-link {
-    @include govuk-h-visually-hidden-focusable;
+    @include govuk-visually-hidden-focusable;
     @include govuk-link-common;
     @include govuk-link-style-text;
     @include govuk-font-regular-16;

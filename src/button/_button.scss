@@ -168,7 +168,7 @@
     background-repeat: no-repeat;
     background-position: 100% 50%;
 
-    @include govuk-h-device-pixel-ratio {
+    @include govuk-device-pixel-ratio {
       background-image: govuk-file-url("icon-pointer-2x.png");
       background-size: 30px 19px;
     }

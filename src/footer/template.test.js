@@ -66,7 +66,7 @@ describe('footer', () => {
       const $ = render('footer', examples['with-meta'])
 
       const $component = $('.govuk-footer')
-      const $heading = $component.find('h2.govuk-h-visually-hidden')
+      const $heading = $component.find('h2.govuk-visually-hidden')
       expect($heading.text()).toEqual('Support links')
     })
 

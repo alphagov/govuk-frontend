@@ -1,5 +1,5 @@
 @mixin govuk-grid {
-  @include govuk-h-clearfix;
+  @include govuk-clearfix;
   margin-right: - ($govuk-gutter-half);
   margin-left: - ($govuk-gutter-half);
 }

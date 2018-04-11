@@ -120,7 +120,7 @@
     min-width: $govuk-footer-crest-image-width;
     padding-top: ($govuk-footer-crest-image-height + $govuk-spacing-scale-2);
     background-image: govuk-file-url("govuk-crest.png");
-    @include govuk-h-device-pixel-ratio {
+    @include govuk-device-pixel-ratio {
       background-image: govuk-file-url("govuk-crest-2x.png");
     }
     background-repeat: no-repeat;

@@ -29,7 +29,7 @@
   }
 
   .govuk-warning-text__assistive {
-    @include govuk-h-visually-hidden;
+    @include govuk-visually-hidden;
   }
 
   .govuk-warning-text__icon {
