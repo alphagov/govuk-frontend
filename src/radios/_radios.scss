@@ -5,7 +5,7 @@
 @import "../label/label";
 
 @include govuk-exports("radios") {
-  .govuk-c-radios__item {
+  .govuk-radios__item {
     @include govuk-font-regular-19;
 
     display: block;
@@ -20,12 +20,12 @@
     clear: left;
   }
 
-  .govuk-c-radios__item:last-child,
-  .govuk-c-radios__item:last-of-type {
+  .govuk-radios__item:last-child,
+  .govuk-radios__item:last-of-type {
     margin-bottom: 0;
   }
 
-  .govuk-c-radios__input {
+  .govuk-radios__input {
     position: absolute;
 
     z-index: 1;
@@ -44,7 +44,7 @@
     }
   }
 
-  .govuk-c-radios__label {
+  .govuk-radios__label {
     display: inline-block;
     padding: 8px $govuk-spacing-scale-3 $govuk-spacing-scale-1;
     cursor: pointer;
@@ -53,7 +53,7 @@
     touch-action: manipulation;
   }
 
-  .govuk-c-radios__input + .govuk-c-radios__label::before {
+  .govuk-radios__input + .govuk-radios__label::before {
     content: "";
     box-sizing: border-box;
     position: absolute;
@@ -68,7 +68,7 @@
     background: transparent;
   }
 
-  .govuk-c-radios__input + .govuk-c-radios__label::after {
+  .govuk-radios__input + .govuk-radios__label::after {
     content: "";
 
     position: absolute;
@@ -85,31 +85,31 @@
   }
 
   // Focused state
-  .govuk-c-radios__input:focus + .govuk-c-radios__label::before {
+  .govuk-radios__input:focus + .govuk-radios__label::before {
     box-shadow: 0 0 0 4px $govuk-focus-colour;
   }
 
   // Selected state
-  .govuk-c-radios__input:checked + .govuk-c-radios__label::after {
+  .govuk-radios__input:checked + .govuk-radios__label::after {
     opacity: 1;
   }
 
   // Disabled state
-  .govuk-c-radios__input:disabled,
-  .govuk-c-radios__input:disabled + .govuk-c-radios__label {
+  .govuk-radios__input:disabled,
+  .govuk-radios__input:disabled + .govuk-radios__label {
     cursor: default;
   }
 
-  .govuk-c-radios__input:disabled + .govuk-c-radios__label {
+  .govuk-radios__input:disabled + .govuk-radios__label {
     opacity: .5;
   }
 
   // Inline variant
-  .govuk-c-radios--inline {
+  .govuk-radios--inline {
     @include mq ($from: tablet) {
       @include govuk-h-clearfix;
 
-      .govuk-c-radios__item {
+      .govuk-radios__item {
         margin-right: $govuk-spacing-scale-4;
         float: left;
         clear: none;

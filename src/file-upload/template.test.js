@@ -17,11 +17,11 @@ describe('File upload', () => {
 
     it('renders with classes', () => {
       const $ = render('file-upload', {
-        classes: 'app-c-file-upload--custom-modifier'
+        classes: 'app-file-upload--custom-modifier'
       })
 
-      const $component = $('.govuk-c-file-upload')
-      expect($component.hasClass('app-c-file-upload--custom-modifier')).toBeTruthy()
+      const $component = $('.govuk-file-upload')
+      expect($component.hasClass('app-file-upload--custom-modifier')).toBeTruthy()
     })
 
     it('renders with id', () => {
@@ -29,7 +29,7 @@ describe('File upload', () => {
         id: 'my-file-upload'
       })
 
-      const $component = $('.govuk-c-file-upload')
+      const $component = $('.govuk-file-upload')
       expect($component.attr('id')).toEqual('my-file-upload')
     })
 
@@ -38,7 +38,7 @@ describe('File upload', () => {
         name: 'my-file-upload-name'
       })
 
-      const $component = $('.govuk-c-file-upload')
+      const $component = $('.govuk-file-upload')
       expect($component.attr('name')).toEqual('my-file-upload-name')
     })
 
@@ -47,7 +47,7 @@ describe('File upload', () => {
         value: 'C:/fakepath'
       })
 
-      const $component = $('.govuk-c-file-upload')
+      const $component = $('.govuk-file-upload')
       expect($component.val()).toEqual('C:/fakepath')
     })
 
@@ -58,7 +58,7 @@ describe('File upload', () => {
         }
       })
 
-      const $component = $('.govuk-c-file-upload')
+      const $component = $('.govuk-file-upload')
       expect($component.attr('data-attribute')).toEqual('my data value')
     })
   })
@@ -71,7 +71,7 @@ describe('File upload', () => {
         }
       })
 
-      const $component = $('.govuk-o-form-group > .govuk-c-file-upload')
+      const $component = $('.govuk-o-form-group > .govuk-file-upload')
       expect($component.length).toBeTruthy()
     })
 
@@ -83,7 +83,7 @@ describe('File upload', () => {
         }
       })
 
-      expect(htmlWithClassName($, '.govuk-c-label')).toMatchSnapshot()
+      expect(htmlWithClassName($, '.govuk-label')).toMatchSnapshot()
     })
 
     it('renders label with "for" attribute reffering the file-upload "id"', () => {
@@ -94,7 +94,7 @@ describe('File upload', () => {
         }
       })
 
-      const $label = $('.govuk-c-label')
+      const $label = $('.govuk-label')
       expect($label.attr('for')).toEqual('my-file-upload')
     })
 
@@ -105,7 +105,7 @@ describe('File upload', () => {
         }
       })
 
-      expect(htmlWithClassName($, '.govuk-c-error-message')).toMatchSnapshot()
+      expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
     })
 
     it('has error class when rendered with error message', () => {
@@ -115,8 +115,8 @@ describe('File upload', () => {
         }
       })
 
-      const $component = $('.govuk-c-file-upload')
-      expect($component.hasClass('govuk-c-file-upload--error')).toBeTruthy()
+      const $component = $('.govuk-file-upload')
+      expect($component.hasClass('govuk-file-upload--error')).toBeTruthy()
     })
   })
 })

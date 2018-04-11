@@ -20,7 +20,7 @@
 @import "../globals/core/links";
 
 @include govuk-exports("skip-link") {
-  .govuk-c-skip-link {
+  .govuk-skip-link {
     @include govuk-h-visually-hidden-focusable;
     @include govuk-link-common;
     @include govuk-link-style-text;

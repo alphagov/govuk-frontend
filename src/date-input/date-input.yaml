@@ -24,13 +24,13 @@ examples:
     items:
       -
         name: 'day'
-        classes: 'govuk-c-input--error'
+        classes: 'govuk-input--error'
       -
         name: 'month'
-        classes: 'govuk-c-input--error'
+        classes: 'govuk-input--error'
       -
         name: 'year'
-        classes: 'govuk-c-input--error'
+        classes: 'govuk-input--error'
 - name: with-day-error
   data:
     id: 'dob-day-error'
@@ -43,7 +43,7 @@ examples:
     items:
       -
         name: 'day'
-        classes: 'govuk-c-input--error'
+        classes: 'govuk-input--error'
       -
         name: 'month'
       -
@@ -62,7 +62,7 @@ examples:
         name: 'day'
       -
         name: 'month'
-        classes: 'govuk-c-input--error'
+        classes: 'govuk-input--error'
       -
         name: 'year'
 - name: with-year-error
@@ -81,4 +81,4 @@ examples:
         name: 'month'
       -
         name: 'year'
-        classes: 'govuk-c-input--error'
+        classes: 'govuk-input--error'

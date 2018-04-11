@@ -6,7 +6,7 @@ examples:
         For example, ‘QQ 12 34 56 C’.'
   - name: with bold text
     data:
-      classes: govuk-c-label--bold
+      classes: govuk-label--bold
       text: National Insurance number
       hintText: 'It’s on your National Insurance card, benefit letter, payslip or P60.
         For example, ‘QQ 12 34 56 C’.'

@@ -29,16 +29,16 @@ describe('Radios', () => {
       ]
     })
 
-    const $component = $('.govuk-c-radios')
+    const $component = $('.govuk-radios')
 
-    const $firstInput = $component.find('.govuk-c-radios__item:first-child input')
-    const $firstLabel = $component.find('.govuk-c-radios__item:first-child label')
+    const $firstInput = $component.find('.govuk-radios__item:first-child input')
+    const $firstLabel = $component.find('.govuk-radios__item:first-child label')
     expect($firstInput.attr('name')).toEqual('example-name')
     expect($firstInput.val()).toEqual('yes')
     expect($firstLabel.text()).toContain('Yes')
 
-    const $lastInput = $component.find('.govuk-c-radios__item:last-child input')
-    const $lastLabel = $component.find('.govuk-c-radios__item:last-child label')
+    const $lastInput = $component.find('.govuk-radios__item:last-child input')
+    const $lastLabel = $component.find('.govuk-radios__item:last-child label')
     expect($lastInput.attr('name')).toEqual('example-name')
     expect($lastInput.val()).toEqual('no')
     expect($lastLabel.text()).toContain('No')
@@ -57,12 +57,12 @@ describe('Radios', () => {
           text: 'No'
         }
       ],
-      classes: 'app-c-radios--custom-modifier'
+      classes: 'app-radios--custom-modifier'
     })
 
-    const $component = $('.govuk-c-radios')
+    const $component = $('.govuk-radios')
 
-    expect($component.hasClass('app-c-radios--custom-modifier')).toBeTruthy()
+    expect($component.hasClass('app-radios--custom-modifier')).toBeTruthy()
   })
 
   it('render attributes', () => {
@@ -84,7 +84,7 @@ describe('Radios', () => {
       }
     })
 
-    const $component = $('.govuk-c-radios')
+    const $component = $('.govuk-radios')
 
     expect($component.attr('data-attribute')).toEqual('value')
     expect($component.attr('data-second-attribute')).toEqual('second-value')
@@ -106,15 +106,15 @@ describe('Radios', () => {
         ]
       })
 
-      const $component = $('.govuk-c-radios')
+      const $component = $('.govuk-radios')
 
-      const $firstInput = $component.find('.govuk-c-radios__item:first-child input')
-      const $firstLabel = $component.find('.govuk-c-radios__item:first-child label')
+      const $firstInput = $component.find('.govuk-radios__item:first-child input')
+      const $firstLabel = $component.find('.govuk-radios__item:first-child label')
       expect($firstInput.attr('id')).toEqual('example-name-1')
       expect($firstLabel.attr('for')).toEqual('example-name-1')
 
-      const $lastInput = $component.find('.govuk-c-radios__item:last-child input')
-      const $lastLabel = $component.find('.govuk-c-radios__item:last-child label')
+      const $lastInput = $component.find('.govuk-radios__item:last-child input')
+      const $lastLabel = $component.find('.govuk-radios__item:last-child label')
       expect($lastInput.attr('id')).toEqual('example-name-2')
       expect($lastLabel.attr('for')).toEqual('example-name-2')
     })
@@ -135,15 +135,15 @@ describe('Radios', () => {
         ]
       })
 
-      const $component = $('.govuk-c-radios')
+      const $component = $('.govuk-radios')
 
-      const $firstInput = $component.find('.govuk-c-radios__item:first-child input')
-      const $firstLabel = $component.find('.govuk-c-radios__item:first-child label')
+      const $firstInput = $component.find('.govuk-radios__item:first-child input')
+      const $firstLabel = $component.find('.govuk-radios__item:first-child label')
       expect($firstInput.attr('id')).toEqual('custom-1')
       expect($firstLabel.attr('for')).toEqual('custom-1')
 
-      const $lastInput = $component.find('.govuk-c-radios__item:last-child input')
-      const $lastLabel = $component.find('.govuk-c-radios__item:last-child label')
+      const $lastInput = $component.find('.govuk-radios__item:last-child input')
+      const $lastLabel = $component.find('.govuk-radios__item:last-child label')
       expect($lastInput.attr('id')).toEqual('custom-2')
       expect($lastLabel.attr('for')).toEqual('custom-2')
     })
@@ -165,12 +165,12 @@ describe('Radios', () => {
         ]
       })
 
-      const $component = $('.govuk-c-radios')
+      const $component = $('.govuk-radios')
 
-      const $firstInput = $component.find('.govuk-c-radios__item:first-child input')
+      const $firstInput = $component.find('.govuk-radios__item:first-child input')
       expect($firstInput.attr('disabled')).toEqual('disabled')
 
-      const $lastInput = $component.find('.govuk-c-radios__item:last-child input')
+      const $lastInput = $component.find('.govuk-radios__item:last-child input')
       expect($lastInput.attr('disabled')).toEqual('disabled')
     })
 
@@ -190,8 +190,8 @@ describe('Radios', () => {
         ]
       })
 
-      const $component = $('.govuk-c-radios')
-      const $lastInput = $component.find('.govuk-c-radios__item:last-child input')
+      const $component = $('.govuk-radios')
+      const $lastInput = $component.find('.govuk-radios__item:last-child input')
       expect($lastInput.attr('checked')).toEqual('checked')
     })
   })
@@ -200,7 +200,7 @@ describe('Radios', () => {
     it('have correct nesting order', () => {
       const $ = render('radios', examples['with-extreme-fieldset'])
 
-      const $component = $('.govuk-o-form-group > .govuk-c-fieldset > .govuk-c-radios')
+      const $component = $('.govuk-o-form-group > .govuk-fieldset > .govuk-radios')
       expect($component.length).toBeTruthy()
     })
 
@@ -226,14 +226,14 @@ describe('Radios', () => {
         ]
       })
 
-      expect(htmlWithClassName($, '.govuk-c-radios__label')).toMatchSnapshot()
+      expect(htmlWithClassName($, '.govuk-radios__label')).toMatchSnapshot()
     })
 
     it('passes through fieldset params without breaking', () => {
       const $ = render('radios', examples['with-extreme-fieldset'])
 
-      expect(htmlWithClassName($, '.govuk-c-error-message')).toMatchSnapshot()
-      expect(htmlWithClassName($, '.govuk-c-fieldset')).toMatchSnapshot()
+      expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
+      expect(htmlWithClassName($, '.govuk-fieldset')).toMatchSnapshot()
     })
 
     it('passes through html fieldset params without breaking', () => {
@@ -255,7 +255,7 @@ describe('Radios', () => {
         }
       })
 
-      expect(htmlWithClassName($, '.govuk-c-fieldset')).toMatchSnapshot()
+      expect(htmlWithClassName($, '.govuk-fieldset')).toMatchSnapshot()
     })
   })
 })

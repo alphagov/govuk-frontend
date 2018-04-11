@@ -58,7 +58,7 @@ examples:
     errorMessage:
       text: 'Please select an option'
     fieldset:
-      classes: 'app-c-fieldset--custom-modifier'
+      classes: 'app-fieldset--custom-modifier'
       attributes:
         'data-attribute': 'value'
         'data-second-attribute': 'second-value'

@@ -2,7 +2,7 @@
 
 exports[`Label with dependant components renders the error message text 1`] = `
 
-<span class="govuk-c-error-message">
+<span class="govuk-error-message">
   Error message goes here
 </span>
 

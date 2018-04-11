@@ -15,7 +15,7 @@
 
 @include govuk-exports("panel") {
 
-  .govuk-c-panel {
+  .govuk-panel {
     @include govuk-font-regular-19;
 
     box-sizing: border-box;
@@ -32,19 +32,19 @@
     }
   }
 
-  .govuk-c-panel--confirmation {
+  .govuk-panel--confirmation {
     color: $govuk-white;
     background: $govuk-turquoise;
   }
 
-  .govuk-c-panel__title {
+  .govuk-panel__title {
     margin-top: 0;
     margin-bottom: $govuk-spacing-scale-6;
 
     @include govuk-font-bold-48;
   }
 
-  .govuk-c-panel__body {
+  .govuk-panel__body {
     @include govuk-font-regular-36;
   }
 

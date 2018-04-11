@@ -17,11 +17,11 @@ describe('Select', () => {
 
     it('renders with classes', () => {
       const $ = render('select', {
-        classes: 'app-c-select--custom-modifier'
+        classes: 'app-select--custom-modifier'
       })
 
-      const $component = $('.govuk-c-select')
-      expect($component.hasClass('app-c-select--custom-modifier')).toBeTruthy()
+      const $component = $('.govuk-select')
+      expect($component.hasClass('app-select--custom-modifier')).toBeTruthy()
     })
 
     it('renders with id', () => {
@@ -29,7 +29,7 @@ describe('Select', () => {
         id: 'my-select'
       })
 
-      const $component = $('.govuk-c-select')
+      const $component = $('.govuk-select')
       expect($component.attr('id')).toEqual('my-select')
     })
 
@@ -38,7 +38,7 @@ describe('Select', () => {
         name: 'my-select-name'
       })
 
-      const $component = $('.govuk-c-select')
+      const $component = $('.govuk-select')
       expect($component.attr('name')).toEqual('my-select-name')
     })
 
@@ -53,7 +53,7 @@ describe('Select', () => {
           }
         ]
       })
-      const $items = $('.govuk-c-select option')
+      const $items = $('.govuk-select option')
       expect($items.length).toEqual(2)
     })
 
@@ -72,7 +72,7 @@ describe('Select', () => {
         ]
       })
 
-      const $firstItem = $('.govuk-c-select option:first-child')
+      const $firstItem = $('.govuk-select option:first-child')
       expect($firstItem.attr('value')).toEqual('1')
     })
 
@@ -89,7 +89,7 @@ describe('Select', () => {
         ]
       })
 
-      const $firstItem = $('.govuk-c-select option:first-child')
+      const $firstItem = $('.govuk-select option:first-child')
       expect($firstItem.text()).toEqual('Option 1')
     })
 
@@ -107,7 +107,7 @@ describe('Select', () => {
         ]
       })
 
-      const $firstItem = $('.govuk-c-select option:first-child')
+      const $firstItem = $('.govuk-select option:first-child')
       expect($firstItem.attr('selected')).toBeTruthy()
     })
 
@@ -125,7 +125,7 @@ describe('Select', () => {
         ]
       })
 
-      const $firstItem = $('.govuk-c-select option:first-child')
+      const $firstItem = $('.govuk-select option:first-child')
       expect($firstItem.attr('disabled')).toBeTruthy()
     })
 
@@ -136,7 +136,7 @@ describe('Select', () => {
         }
       })
 
-      const $component = $('.govuk-c-select')
+      const $component = $('.govuk-select')
       expect($component.attr('data-attribute')).toEqual('my data value')
     })
   })
@@ -153,7 +153,7 @@ describe('Select', () => {
         }
       })
 
-      const $component = $('.govuk-o-form-group > .govuk-c-select')
+      const $component = $('.govuk-o-form-group > .govuk-select')
       expect($component.length).toBeTruthy()
     })
 
@@ -165,7 +165,7 @@ describe('Select', () => {
         }
       })
 
-      expect(htmlWithClassName($, '.govuk-c-label')).toMatchSnapshot()
+      expect(htmlWithClassName($, '.govuk-label')).toMatchSnapshot()
     })
 
     it('renders label with "for" attribute reffering the select "id"', () => {
@@ -176,7 +176,7 @@ describe('Select', () => {
         }
       })
 
-      const $label = $('.govuk-c-label')
+      const $label = $('.govuk-label')
       expect($label.attr('for')).toEqual('my-select')
     })
 
@@ -187,7 +187,7 @@ describe('Select', () => {
         }
       })
 
-      expect(htmlWithClassName($, '.govuk-c-error-message')).toMatchSnapshot()
+      expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
     })
 
     it('has error class when rendered with error message', () => {
@@ -197,8 +197,8 @@ describe('Select', () => {
         }
       })
 
-      const $component = $('.govuk-c-select')
-      expect($component.hasClass('govuk-c-select--error')).toBeTruthy()
+      const $component = $('.govuk-select')
+      expect($component.hasClass('govuk-select--error')).toBeTruthy()
     })
   })
 })

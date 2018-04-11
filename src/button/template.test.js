@@ -18,7 +18,7 @@ describe('Button', () => {
     it('renders the default example', () => {
       const $ = render('button', examples.default)
 
-      const $component = $('.govuk-c-button')
+      const $component = $('.govuk-button')
       expect($component.get(0).tagName).toEqual('input')
       expect($component.attr('type')).toEqual('submit')
       expect($component.val()).toEqual('Save and continue')
@@ -33,7 +33,7 @@ describe('Button', () => {
         }
       })
 
-      const $component = $('.govuk-c-button')
+      const $component = $('.govuk-button')
       expect($component.attr('aria-controls')).toEqual('example-id')
       expect($component.attr('data-tracking-dimension')).toEqual('123')
     })
@@ -41,20 +41,20 @@ describe('Button', () => {
     it('renders with classes', () => {
       const $ = render('button', {
         element: 'input',
-        classes: 'app-c-button--custom-modifier'
+        classes: 'app-button--custom-modifier'
       })
 
-      const $component = $('.govuk-c-button')
-      expect($component.hasClass('app-c-button--custom-modifier')).toBeTruthy()
+      const $component = $('.govuk-button')
+      expect($component.hasClass('app-button--custom-modifier')).toBeTruthy()
     })
 
     it('renders with disabled', () => {
       const $ = render('button', examples.disabled)
 
-      const $component = $('.govuk-c-button')
+      const $component = $('.govuk-button')
       expect($component.attr('aria-disabled')).toEqual('true')
       expect($component.attr('disabled')).toEqual('disabled')
-      expect($component.hasClass('govuk-c-button--disabled')).toBeTruthy()
+      expect($component.hasClass('govuk-button--disabled')).toBeTruthy()
     })
 
     it('renders with name', () => {
@@ -63,7 +63,7 @@ describe('Button', () => {
         name: 'start-now'
       })
 
-      const $component = $('.govuk-c-button')
+      const $component = $('.govuk-button')
       expect($component.attr('name')).toEqual('start-now')
     })
 
@@ -73,7 +73,7 @@ describe('Button', () => {
         type: 'button'
       })
 
-      const $component = $('.govuk-c-button')
+      const $component = $('.govuk-button')
       expect($component.attr('type')).toEqual('button')
     })
   })
@@ -86,7 +86,7 @@ describe('Button', () => {
         text: 'Continue'
       })
 
-      const $component = $('.govuk-c-button')
+      const $component = $('.govuk-button')
       expect($component.get(0).tagName).toEqual('a')
       expect($component.attr('href')).toEqual('/')
       expect($component.attr('role')).toEqual('button')
@@ -98,7 +98,7 @@ describe('Button', () => {
         element: 'a'
       })
 
-      const $component = $('.govuk-c-button')
+      const $component = $('.govuk-button')
       expect($component.attr('href')).toEqual('#')
     })
 
@@ -111,7 +111,7 @@ describe('Button', () => {
         }
       })
 
-      const $component = $('.govuk-c-button')
+      const $component = $('.govuk-button')
       expect($component.attr('aria-controls')).toEqual('example-id')
       expect($component.attr('data-tracking-dimension')).toEqual('123')
     })
@@ -119,18 +119,18 @@ describe('Button', () => {
     it('renders with classes', () => {
       const $ = render('button', {
         element: 'a',
-        classes: 'app-c-button--custom-modifier'
+        classes: 'app-button--custom-modifier'
       })
 
-      const $component = $('.govuk-c-button')
-      expect($component.hasClass('app-c-button--custom-modifier')).toBeTruthy()
+      const $component = $('.govuk-button')
+      expect($component.hasClass('app-button--custom-modifier')).toBeTruthy()
     })
 
     it('renders with disabled', () => {
       const $ = render('button', examples['disabled-link'])
 
-      const $component = $('.govuk-c-button')
-      expect($component.hasClass('govuk-c-button--disabled')).toBeTruthy()
+      const $component = $('.govuk-button')
+      expect($component.hasClass('govuk-button--disabled')).toBeTruthy()
     })
   })
 
@@ -138,7 +138,7 @@ describe('Button', () => {
     it('renders with anchor, href and an accessible role of button', () => {
       const $ = render('button', examples['explicit-button'])
 
-      const $component = $('.govuk-c-button')
+      const $component = $('.govuk-button')
       expect($component.get(0).tagName).toEqual('button')
       expect($component.attr('type')).toEqual('submit')
     })
@@ -152,7 +152,7 @@ describe('Button', () => {
         }
       })
 
-      const $component = $('.govuk-c-button')
+      const $component = $('.govuk-button')
       expect($component.attr('aria-controls')).toEqual('example-id')
       expect($component.attr('data-tracking-dimension')).toEqual('123')
     })
@@ -160,11 +160,11 @@ describe('Button', () => {
     it('renders with classes', () => {
       const $ = render('button', {
         element: 'button',
-        classes: 'app-c-button--custom-modifier'
+        classes: 'app-button--custom-modifier'
       })
 
-      const $component = $('.govuk-c-button')
-      expect($component.hasClass('app-c-button--custom-modifier')).toBeTruthy()
+      const $component = $('.govuk-button')
+      expect($component.hasClass('app-button--custom-modifier')).toBeTruthy()
     })
 
     it('renders with disabled', () => {
@@ -173,10 +173,10 @@ describe('Button', () => {
         disabled: true
       })
 
-      const $component = $('.govuk-c-button')
+      const $component = $('.govuk-button')
       expect($component.attr('aria-disabled')).toEqual('true')
       expect($component.attr('disabled')).toEqual('disabled')
-      expect($component.hasClass('govuk-c-button--disabled')).toBeTruthy()
+      expect($component.hasClass('govuk-button--disabled')).toBeTruthy()
     })
 
     it('renders with name', () => {
@@ -185,7 +185,7 @@ describe('Button', () => {
         name: 'start-now'
       })
 
-      const $component = $('.govuk-c-button')
+      const $component = $('.govuk-button')
       expect($component.attr('name')).toEqual('start-now')
     })
 
@@ -195,7 +195,7 @@ describe('Button', () => {
         value: 'start'
       })
 
-      const $component = $('.govuk-c-button')
+      const $component = $('.govuk-button')
       expect($component.attr('value')).toEqual('start')
     })
 
@@ -205,7 +205,7 @@ describe('Button', () => {
         html: 'Start <em>now</em>'
       })
 
-      const $component = $('.govuk-c-button')
+      const $component = $('.govuk-button')
       expect($component.html()).toContain('Start <em>now</em>')
     })
 
@@ -216,7 +216,7 @@ describe('Button', () => {
         text: 'Start now'
       })
 
-      const $component = $('.govuk-c-button')
+      const $component = $('.govuk-button')
       expect($component.attr('type')).toEqual('button')
     })
   })
@@ -227,7 +227,7 @@ describe('Button', () => {
         href: '/'
       })
 
-      const $component = $('.govuk-c-button')
+      const $component = $('.govuk-button')
       expect($component.get(0).tagName).toEqual('a')
     })
 
@@ -236,14 +236,14 @@ describe('Button', () => {
         html: 'Start <em>now</em>'
       })
 
-      const $component = $('.govuk-c-button')
+      const $component = $('.govuk-button')
       expect($component.get(0).tagName).toEqual('button')
     })
 
     it('renders an input[type=submit] if you don\'t pass anything', () => {
       const $ = render('button', {})
 
-      const $component = $('.govuk-c-button')
+      const $component = $('.govuk-button')
       expect($component.get(0).tagName).toEqual('input')
       expect($component.attr('type')).toEqual('submit')
     })

@@ -28,7 +28,7 @@
   // increase the bottom margin to include it (s2).
   $button-shadow-size: $govuk-border-width-form-element;
 
-  .govuk-c-button {
+  .govuk-button {
     @include govuk-font-regular;
     @include govuk-typography-responsive(
       $govuk-font-19,
@@ -127,9 +127,9 @@
     }
   }
 
-  .govuk-c-button--disabled,
-  .govuk-c-button[disabled="disabled"],
-  .govuk-c-button[disabled] {
+  .govuk-button--disabled,
+  .govuk-button[disabled="disabled"],
+  .govuk-button[disabled] {
     opacity: (.5);
     background: $govuk-button-colour;
 
@@ -151,7 +151,7 @@
     }
   }
 
-  .govuk-c-button--start {
+  .govuk-button--start {
     @include govuk-typography-weight-bold;
     @include govuk-typography-responsive(
       $govuk-font-24,
@@ -180,12 +180,12 @@
 
   $offset: 2;
 
-  .govuk-c-button {
+  .govuk-button {
     padding-top: ($govuk-spacing-scale-2 - $govuk-border-width-form-element - ($button-shadow-size / 2) + $offset); // s1
     padding-bottom: ($govuk-spacing-scale-2 - $govuk-border-width-form-element - ($button-shadow-size / 2) - $offset + 1); // s1
   }
 
-  .govuk-c-button--start {
+  .govuk-button--start {
     padding-top: ($govuk-spacing-scale-2 - $govuk-border-width-form-element - ($button-shadow-size / 2) + $offset); // s1
     padding-bottom: ($govuk-spacing-scale-2 - $govuk-border-width-form-element - ($button-shadow-size / 2) - $offset + 1); // s1
   }

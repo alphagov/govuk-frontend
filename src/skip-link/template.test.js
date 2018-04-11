@@ -19,14 +19,14 @@ describe('Skip link', () => {
       href: '#custom'
     })
 
-    const $component = $('.govuk-c-skip-link')
+    const $component = $('.govuk-skip-link')
     expect($component.attr('href')).toEqual('#custom')
   })
 
   it('renders default href', () => {
     const $ = render('skip-link', {})
 
-    const $component = $('.govuk-c-skip-link')
+    const $component = $('.govuk-skip-link')
     expect($component.attr('href')).toEqual('#content')
   })
 
@@ -35,7 +35,7 @@ describe('Skip link', () => {
       text: 'skip'
     })
 
-    const $component = $('.govuk-c-skip-link')
+    const $component = $('.govuk-skip-link')
     expect($component.html()).toEqual('skip')
   })
 
@@ -44,7 +44,7 @@ describe('Skip link', () => {
       text: '<p>skip</p>'
     })
 
-    const $component = $('.govuk-c-skip-link')
+    const $component = $('.govuk-skip-link')
     expect($component.html()).toEqual('&lt;p&gt;skip&lt;/p&gt;')
   })
 
@@ -53,17 +53,17 @@ describe('Skip link', () => {
       html: '<p>skip</p>'
     })
 
-    const $component = $('.govuk-c-skip-link')
+    const $component = $('.govuk-skip-link')
     expect($component.html()).toEqual('<p>skip</p>')
   })
 
   it('renders classes', () => {
     const $ = render('skip-link', {
-      classes: 'app-c-skip-link--custom-class'
+      classes: 'app-skip-link--custom-class'
     })
 
-    const $component = $('.govuk-c-skip-link')
-    expect($component.hasClass('app-c-skip-link--custom-class')).toBeTruthy()
+    const $component = $('.govuk-skip-link')
+    expect($component.hasClass('app-skip-link--custom-class')).toBeTruthy()
   })
 
   it('renders attributes', () => {
@@ -74,7 +74,7 @@ describe('Skip link', () => {
       }
     })
 
-    const $component = $('.govuk-c-skip-link')
+    const $component = $('.govuk-skip-link')
     expect($component.attr('data-test')).toEqual('attribute')
     expect($component.attr('aria-label')).toEqual('Skip to content')
   })

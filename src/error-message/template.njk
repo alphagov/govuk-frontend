@@ -1,3 +1,3 @@
-<span class="govuk-c-error-message{%- if params.classes %} {{ params.classes }}{% endif %}"{% for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+<span class="govuk-error-message{%- if params.classes %} {{ params.classes }}{% endif %}"{% for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
   {{ params.html | safe if params.html else params.text }}
 </span>

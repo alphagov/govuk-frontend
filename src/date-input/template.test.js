@@ -17,11 +17,11 @@ describe('Date input', () => {
   describe('by default', () => {
     it('renders with classes', () => {
       const $ = render('date-input', {
-        classes: 'app-c-date-input--custom-modifier'
+        classes: 'app-date-input--custom-modifier'
       })
 
-      const $component = $('.govuk-c-date-input')
-      expect($component.hasClass('app-c-date-input--custom-modifier')).toBeTruthy()
+      const $component = $('.govuk-date-input')
+      expect($component.hasClass('app-date-input--custom-modifier')).toBeTruthy()
     })
 
     it('renders with id', () => {
@@ -29,7 +29,7 @@ describe('Date input', () => {
         id: 'my-date-input'
       })
 
-      const $component = $('.govuk-c-date-input')
+      const $component = $('.govuk-date-input')
       expect($component.attr('id')).toEqual('my-date-input')
     })
 
@@ -40,7 +40,7 @@ describe('Date input', () => {
         }
       })
 
-      const $component = $('.govuk-c-date-input')
+      const $component = $('.govuk-date-input')
       expect($component.attr('data-attribute')).toEqual('my data value')
     })
 
@@ -59,7 +59,7 @@ describe('Date input', () => {
         ]
       })
 
-      const $items = $('.govuk-c-date-input__item')
+      const $items = $('.govuk-date-input__item')
       expect($items.length).toEqual(3)
     })
 
@@ -78,7 +78,7 @@ describe('Date input', () => {
         ]
       })
 
-      const $firstItems = $('.govuk-c-date-input__item:first-child')
+      const $firstItems = $('.govuk-date-input__item:first-child')
       expect($firstItems.text().trim()).toEqual('Day')
     })
 
@@ -91,7 +91,7 @@ describe('Date input', () => {
         ]
       })
 
-      const $firstInput = $('.govuk-c-date-input__item:first-child input')
+      const $firstInput = $('.govuk-date-input__item:first-child input')
       expect($firstInput.attr('type')).toEqual('number')
     })
 
@@ -104,7 +104,7 @@ describe('Date input', () => {
         ]
       })
 
-      const $firstInput = $('.govuk-c-date-input__item:first-child input')
+      const $firstInput = $('.govuk-date-input__item:first-child input')
       expect($firstInput.attr('pattern')).toEqual('[0-9]*')
     })
 
@@ -123,8 +123,8 @@ describe('Date input', () => {
         ]
       })
 
-      const $firstItems = $('.govuk-c-date-input__item:first-child label')
-      expect($firstItems.hasClass('govuk-c-date-input__label')).toBeTruthy()
+      const $firstItems = $('.govuk-date-input__item:first-child label')
+      expect($firstItems.hasClass('govuk-date-input__label')).toBeTruthy()
     })
 
     it('renders item with implicit class for input', () => {
@@ -142,8 +142,8 @@ describe('Date input', () => {
         ]
       })
 
-      const $firstItems = $('.govuk-c-date-input__item:first-child input')
-      expect($firstItems.hasClass('govuk-c-date-input__input')).toBeTruthy()
+      const $firstItems = $('.govuk-date-input__item:first-child input')
+      expect($firstItems.hasClass('govuk-date-input__input')).toBeTruthy()
     })
 
     it('renders item with suffixed name for input', () => {
@@ -162,7 +162,7 @@ describe('Date input', () => {
         ]
       })
 
-      const $firstItems = $('.govuk-c-date-input__item:first-child input')
+      const $firstItems = $('.govuk-date-input__item:first-child input')
       expect($firstItems.attr('name')).toEqual('my-date-input-day')
     })
 
@@ -182,7 +182,7 @@ describe('Date input', () => {
         ]
       })
 
-      const $firstItems = $('.govuk-c-date-input__item:first-child input')
+      const $firstItems = $('.govuk-date-input__item:first-child input')
       expect($firstItems.attr('id')).toEqual('my-date-input-day')
     })
   })
@@ -191,21 +191,21 @@ describe('Date input', () => {
     it('have correct nesting order', () => {
       const $ = render('date-input', examples['default'])
 
-      const $component = $('.govuk-o-form-group > .govuk-c-fieldset > .govuk-c-date-input')
+      const $component = $('.govuk-o-form-group > .govuk-fieldset > .govuk-date-input')
       expect($component.length).toBeTruthy()
     })
 
     it('passes through label params without breaking', () => {
       const $ = render('date-input', examples['default'])
 
-      expect(htmlWithClassName($, '.govuk-c-date-input__label')).toMatchSnapshot()
+      expect(htmlWithClassName($, '.govuk-date-input__label')).toMatchSnapshot()
     })
   })
 
   it('passes through fieldset params without breaking', () => {
     const $ = render('date-input', examples['default'])
 
-    expect(htmlWithClassName($, '.govuk-c-fieldset')).toMatchSnapshot()
+    expect(htmlWithClassName($, '.govuk-fieldset')).toMatchSnapshot()
   })
 
   it('passes through html fieldset params without breaking', () => {
@@ -232,7 +232,7 @@ describe('Date input', () => {
       ]
     })
 
-    expect(htmlWithClassName($, '.govuk-c-error-message')).toMatchSnapshot()
-    expect(htmlWithClassName($, '.govuk-c-fieldset')).toMatchSnapshot()
+    expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
+    expect(htmlWithClassName($, '.govuk-fieldset')).toMatchSnapshot()
   })
 })

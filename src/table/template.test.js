@@ -38,26 +38,26 @@ describe('Table', () => {
         ]
       ]
     })
-    const $component = $('.govuk-c-table')
+    const $component = $('.govuk-table')
 
     expect($component.hasClass('custom-class-goes-here')).toBeTruthy()
   })
 
   it('renders with caption text', () => {
     const $ = render('table', examples['table-with-caption-and-head'])
-    const $caption = $('.govuk-c-table__caption')
+    const $caption = $('.govuk-table__caption')
 
     expect($caption.text()).toBe('Caption 1 : Months and rates')
   })
 
   it('renders the caption size class', () => {
     const $ = render('table', examples['table-with-caption-and-head'])
-    const $caption = $('.govuk-c-table__caption')
+    const $caption = $('.govuk-table__caption')
 
     expect($caption.hasClass('govuk-heading-m')).toBeTruthy()
   })
 
-  it('renders first cell in every row as a <th> element with correct `govuk-c-table__header` class and `scope=row` attribute', () => {
+  it('renders first cell in every row as a <th> element with correct `govuk-table__header` class and `scope=row` attribute', () => {
     const $ = render('table', {
       'firstCellIsHeader': true,
       'rows': [
@@ -89,31 +89,31 @@ describe('Table', () => {
         ]
       ]
     })
-    const $component = $('.govuk-c-table')
-    const $tableBody = $component.find('.govuk-c-table .govuk-c-table__body')
-    const $firstTableRow = $tableBody.find('.govuk-c-table__row:first-child')
-    const $firstTableHeader = $firstTableRow.find('.govuk-c-table__header:first-child')
+    const $component = $('.govuk-table')
+    const $tableBody = $component.find('.govuk-table .govuk-table__body')
+    const $firstTableRow = $tableBody.find('.govuk-table__row:first-child')
+    const $firstTableHeader = $firstTableRow.find('.govuk-table__header:first-child')
 
     expect($firstTableHeader.get(0).tagName).toEqual('th')
     expect($firstTableHeader.attr('scope')).toEqual('row')
-    expect($firstTableHeader.hasClass('govuk-c-table__header')).toBeTruthy()
+    expect($firstTableHeader.hasClass('govuk-table__header')).toBeTruthy()
 
-    const $lastTableRow = $tableBody.find('.govuk-c-table__row:last-child')
-    const $lastTableHeader = $lastTableRow.find('.govuk-c-table__header:first-child')
+    const $lastTableRow = $tableBody.find('.govuk-table__row:last-child')
+    const $lastTableHeader = $lastTableRow.find('.govuk-table__header:first-child')
 
     expect($lastTableHeader.get(0).tagName).toEqual('th')
     expect($lastTableHeader.attr('scope')).toEqual('row')
-    expect($lastTableHeader.hasClass('govuk-c-table__header')).toBeTruthy()
+    expect($lastTableHeader.hasClass('govuk-table__header')).toBeTruthy()
   })
 
   it('renders with thead', () => {
     const args = examples['table-with-head']
     const $ = render('table', args)
 
-    const $component = $('.govuk-c-table')
-    const $tableHead = $component.find('.govuk-c-table__head')
-    const $tableHeadRow = $tableHead.find('.govuk-c-table__row')
-    const $tableHeadCell = $tableHeadRow.find('.govuk-c-table__header')
+    const $component = $('.govuk-table')
+    const $tableHead = $component.find('.govuk-table__head')
+    const $tableHeadRow = $tableHead.find('.govuk-table__row')
+    const $tableHeadCell = $tableHeadRow.find('.govuk-table__header')
 
     expect($tableHead).toHaveLength(1)
     expect($tableHeadRow).toHaveLength(1)
@@ -157,18 +157,18 @@ describe('Table', () => {
       ]
     })
 
-    const $component = $('.govuk-c-table')
-    const $tableHeadCell = $component.find('.govuk-c-table__head .govuk-c-table__header')
+    const $component = $('.govuk-table')
+    const $tableHeadCell = $component.find('.govuk-table__head .govuk-table__header')
 
-    expect($tableHeadCell.eq(1).attr('class')).toMatch('govuk-c-table__header--numeric')
+    expect($tableHeadCell.eq(1).attr('class')).toMatch('govuk-table__header--numeric')
   })
 
   describe('rows and cells', () => {
     const $ = render('table', examples.default)
-    const $component = $('.govuk-c-table')
-    const $tableBody = $component.find('.govuk-c-table__body')
-    const $tableRow = $component.find('.govuk-c-table__row')
-    const $tableCell = $component.find('.govuk-c-table__cell')
+    const $component = $('.govuk-table')
+    const $tableBody = $component.find('.govuk-table__body')
+    const $tableRow = $component.find('.govuk-table__row')
+    const $tableCell = $component.find('.govuk-table__cell')
 
     it('renders one tbody element', () => {
       expect($tableBody).toHaveLength(1)
@@ -222,10 +222,10 @@ describe('Table', () => {
       ]
     })
 
-    const $component = $('.govuk-c-table')
-    const $tableBody = $component.find('.govuk-c-table__body')
-    const $tableRow = $tableBody.find('.govuk-c-table__row')
-    const $tableCell = $tableRow.find('.govuk-c-table__cell')
+    const $component = $('.govuk-table')
+    const $tableBody = $component.find('.govuk-table__body')
+    const $tableRow = $tableBody.find('.govuk-table__row')
+    const $tableCell = $tableRow.find('.govuk-table__cell')
 
     expect($tableCell.eq(1).html()).toEqual('<em>85</em>')
   })
@@ -248,10 +248,10 @@ describe('Table', () => {
         ]
       ]
     })
-    const $component = $('.govuk-c-table')
-    const $tableBody = $component.find('.govuk-c-table__body')
-    const $tableRow = $tableBody.find('.govuk-c-table__row')
-    const $tableCell = $tableRow.find('.govuk-c-table__cell')
+    const $component = $('.govuk-table')
+    const $tableBody = $component.find('.govuk-table__body')
+    const $tableRow = $tableBody.find('.govuk-table__row')
+    const $tableCell = $tableRow.find('.govuk-table__cell')
 
     expect($tableCell.eq(1).html()).toEqual('&lt;em&gt;85&lt;/em&gt;')
   })
@@ -279,10 +279,10 @@ describe('Table', () => {
         ]
       ]
     })
-    const $component = $('.govuk-c-table')
-    const $tableCell = $component.find('.govuk-c-table__body .govuk-c-table__cell')
+    const $component = $('.govuk-table')
+    const $tableCell = $component.find('.govuk-table__body .govuk-table__cell')
 
-    expect($tableCell.eq(1).attr('class')).toMatch('govuk-c-table__cell--numeric')
+    expect($tableCell.eq(1).attr('class')).toMatch('govuk-table__cell--numeric')
   })
 
   it('renders cell `colspan` attribute correctly', () => {
@@ -309,8 +309,8 @@ describe('Table', () => {
         ]
       ]
     })
-    const $component = $('.govuk-c-table')
-    const $tableCell = $component.find('.govuk-c-table__body .govuk-c-table__row .govuk-c-table__cell')
+    const $component = $('.govuk-table')
+    const $tableCell = $component.find('.govuk-table__body .govuk-table__row .govuk-table__cell')
 
     expect($tableCell.eq(1).attr('colspan')).toEqual('2')
   })
@@ -339,8 +339,8 @@ describe('Table', () => {
         ]
       ]
     })
-    const $component = $('.govuk-c-table')
-    const $tableCell = $component.find('.govuk-c-table__body .govuk-c-table__row .govuk-c-table__cell')
+    const $component = $('.govuk-table')
+    const $tableCell = $component.find('.govuk-table__body .govuk-table__row .govuk-table__cell')
 
     expect($tableCell.eq(1).attr('rowspan')).toEqual('2')
   })
@@ -373,7 +373,7 @@ describe('Table', () => {
       ]
     })
 
-    const $component = $('.govuk-c-table')
+    const $component = $('.govuk-table')
 
     expect($component.attr('attribute-1')).toEqual('yes')
     expect($component.attr('attribute-2')).toEqual('no')

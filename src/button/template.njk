@@ -14,7 +14,7 @@
 
 {#- Define common attributes that we can use across all element types #}
 
-{%- set commonAttributes %} class="govuk-c-button{% if params.classes %} {{ params.classes }}{% endif %}{% if params.disabled %} govuk-c-button--disabled{% endif %}"{% for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}{% endset %}
+{%- set commonAttributes %} class="govuk-button{% if params.classes %} {{ params.classes }}{% endif %}{% if params.disabled %} govuk-button--disabled{% endif %}"{% for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}{% endset %}
 
 {#- Define common attributes we can use for both button and input types #}
 

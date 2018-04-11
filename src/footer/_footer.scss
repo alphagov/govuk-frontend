@@ -34,7 +34,7 @@
   $govuk-footer-crest-image-width: ($govuk-footer-crest-image-width-2x / 2);
   $govuk-footer-crest-image-height: ($govuk-footer-crest-image-height-2x / 2);
 
-  .govuk-c-footer {
+  .govuk-footer {
     @include govuk-font-regular;
     @include govuk-typography-responsive($govuk-font-16);
     @include govuk-responsive-padding($govuk-spacing-responsive-7, "top");
@@ -45,7 +45,7 @@
     background: $govuk-footer-background;
   }
 
-  .govuk-c-footer__link {
+  .govuk-footer__link {
     @include govuk-focusable-fill;
 
     &:link,
@@ -73,14 +73,14 @@
     }
   }
 
-  .govuk-c-footer__section-break {
+  .govuk-footer__section-break {
     margin: 0; // Reset `<hr>` default margins
     @include govuk-responsive-margin($govuk-spacing-responsive-8, "bottom");
     border: 0; // Reset `<hr>` default borders
     border-bottom: 1px solid $govuk-footer-border;
   }
 
-  .govuk-c-footer__meta {
+  .govuk-footer__meta {
     display: flex; // Support: Flexbox
     margin-right: -$govuk-gutter-half;
     margin-left: -$govuk-gutter-half;
@@ -89,20 +89,20 @@
     justify-content: center; // Support: Flexbox
   }
 
-  .govuk-c-footer__meta-item {
+  .govuk-footer__meta-item {
     margin-right: $govuk-gutter-half;
     margin-bottom: $govuk-spacing-scale-5;
     margin-left: $govuk-gutter-half;
   }
 
-  .govuk-c-footer__meta-item--grow {
+  .govuk-footer__meta-item--grow {
     flex: 1; // Support: Flexbox
     @include mq ($until: tablet) {
       flex-basis: 320px; // Support: Flexbox
     }
   }
 
-  .govuk-c-footer__licence-logo {
+  .govuk-footer__licence-logo {
     display: inline-block;
     margin-right: $govuk-spacing-scale-2;
     @include mq ($until: desktop) {
@@ -111,11 +111,11 @@
     vertical-align: top;
   }
 
-  .govuk-c-footer__licence-description {
+  .govuk-footer__licence-description {
     display: inline-block;
   }
 
-  .govuk-c-footer__copyright-logo {
+  .govuk-footer__copyright-logo {
     display: inline-block;
     min-width: $govuk-footer-crest-image-width;
     padding-top: ($govuk-footer-crest-image-height + $govuk-spacing-scale-2);
@@ -131,19 +131,19 @@
     white-space: nowrap;
   }
 
-  .govuk-c-footer__inline-list {
+  .govuk-footer__inline-list {
     margin-top: 0;
     margin-bottom: $govuk-spacing-scale-3;
     padding: 0;
   }
 
-  .govuk-c-footer__inline-list-item {
+  .govuk-footer__inline-list-item {
     display: inline-block;
     margin-right: $govuk-spacing-scale-3;
     margin-bottom: $govuk-spacing-scale-1;
   }
 
-  .govuk-c-footer__heading {
+  .govuk-footer__heading {
     @include govuk-responsive-margin($govuk-spacing-responsive-7, "bottom");
     padding-bottom: $govuk-spacing-scale-4;
     @include mq ($until: tablet) {
@@ -152,14 +152,14 @@
     border-bottom: 1px solid $govuk-footer-border;
   }
 
-  .govuk-c-footer__navigation {
+  .govuk-footer__navigation {
     display: flex; // Support: Flexbox
     margin-right: -$govuk-gutter-half;
     margin-left: -$govuk-gutter-half;
     flex-wrap: wrap; // Support: Flexbox
   }
 
-  .govuk-c-footer__section {
+  .govuk-footer__section {
     display: inline-block;
     margin-right: $govuk-gutter-half;
     margin-bottom: $govuk-gutter;
@@ -177,12 +177,12 @@
 
   // Sections two-third:one-third on desktop
   @include mq ($from: desktop) {
-    .govuk-c-footer__section:first-child {
+    .govuk-footer__section:first-child {
       flex-grow: 2; // Support: Flexbox
     }
   }
 
-  .govuk-c-footer__list {
+  .govuk-footer__list {
     margin: 0;
     padding: 0;
     list-style: none;
@@ -190,20 +190,20 @@
   }
 
   @include mq ($from: desktop) {
-    .govuk-c-footer__list--columns-2 {
+    .govuk-footer__list--columns-2 {
       column-count: 2; // Support: Columns
     }
 
-    .govuk-c-footer__list--columns-3 {
+    .govuk-footer__list--columns-3 {
       column-count: 3; // Support: Columns
     }
   }
 
-  .govuk-c-footer__list-item {
+  .govuk-footer__list-item {
     @include govuk-responsive-margin($govuk-spacing-responsive-4, "bottom");
   }
 
-  .govuk-c-footer__list-item:last-child {
+  .govuk-footer__list-item:last-child {
     margin-bottom: 0;
   }
 }

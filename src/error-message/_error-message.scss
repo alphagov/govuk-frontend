@@ -12,7 +12,7 @@
 @import "../globals/settings/typography-responsive";
 
 @include govuk-exports("error-message") {
-  .govuk-c-error-message {
+  .govuk-error-message {
     @include govuk-font-bold-19;
 
     display: block;

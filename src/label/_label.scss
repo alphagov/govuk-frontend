@@ -3,19 +3,19 @@
 @import "../error-message/error-message";
 
 @include govuk-exports("label") {
-  .govuk-c-label {
+  .govuk-label {
     @include govuk-font-regular-19;
     @include govuk-text-colour;
 
     display: block;
   }
 
-  .govuk-c-label--bold {
+  .govuk-label--bold {
     @include govuk-typography-weight-bold;
   }
 
   // Hint text sits inside a label, to be read by AT
-  .govuk-c-label__hint {
+  .govuk-label__hint {
     @include govuk-typography-weight-regular;
 
     display: block;

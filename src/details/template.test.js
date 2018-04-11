@@ -17,7 +17,7 @@ describe('Details', () => {
   it('renders a details element', () => {
     const $ = render('details', examples.default)
 
-    const $component = $('.govuk-c-details')
+    const $component = $('.govuk-details')
     expect($component.get(0).tagName).toEqual('details')
   })
 
@@ -25,7 +25,7 @@ describe('Details', () => {
     const $ = render('details', examples.default)
 
     // Look for the summary element _within_ the details element
-    const $summary = $('.govuk-c-details .govuk-c-details__summary')
+    const $summary = $('.govuk-details .govuk-details__summary')
     expect($summary.get(0).tagName).toEqual('summary')
   })
 
@@ -34,7 +34,7 @@ describe('Details', () => {
       text: 'More about the greater than symbol (>)'
     })
 
-    const detailsText = $('.govuk-c-details__text').html().trim()
+    const detailsText = $('.govuk-details__text').html().trim()
     expect(detailsText).toEqual('More about the greater than symbol (&gt;)')
   })
 
@@ -43,7 +43,7 @@ describe('Details', () => {
       html: 'More about <b>bold text</b>'
     })
 
-    const detailsText = $('.govuk-c-details__text').html().trim()
+    const detailsText = $('.govuk-details__text').html().trim()
     expect(detailsText).toEqual('More about <b>bold text</b>')
   })
 
@@ -52,7 +52,7 @@ describe('Details', () => {
       summaryText: 'The greater than symbol (>) is the best'
     })
 
-    const detailsText = $('.govuk-c-details__summary-text').html().trim()
+    const detailsText = $('.govuk-details__summary-text').html().trim()
     expect(detailsText).toEqual('The greater than symbol (&gt;) is the best')
   })
 
@@ -61,7 +61,7 @@ describe('Details', () => {
       summaryHtml: 'Use <b>bold text</b> sparingly'
     })
 
-    const detailsText = $('.govuk-c-details__summary-text').html().trim()
+    const detailsText = $('.govuk-details__summary-text').html().trim()
     expect(detailsText).toEqual('Use <b>bold text</b> sparingly')
   })
 
@@ -70,7 +70,7 @@ describe('Details', () => {
       classes: 'some-additional-class'
     })
 
-    const $component = $('.govuk-c-details')
+    const $component = $('.govuk-details')
     expect($component.hasClass('some-additional-class')).toBeTruthy()
   })
 
@@ -82,7 +82,7 @@ describe('Details', () => {
       }
     })
 
-    const $component = $('.govuk-c-details')
+    const $component = $('.govuk-details')
     expect($component.attr('data-some-data-attribute')).toEqual('i-love-data')
     expect($component.attr('another-attribute')).toEqual('true')
   })

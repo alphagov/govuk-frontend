@@ -17,11 +17,11 @@ describe('Input', () => {
 
     it('renders with classes', () => {
       const $ = render('input', {
-        classes: 'app-c-input--custom-modifier'
+        classes: 'app-input--custom-modifier'
       })
 
-      const $component = $('.govuk-c-input')
-      expect($component.hasClass('app-c-input--custom-modifier')).toBeTruthy()
+      const $component = $('.govuk-input')
+      expect($component.hasClass('app-input--custom-modifier')).toBeTruthy()
     })
 
     it('renders with id', () => {
@@ -29,7 +29,7 @@ describe('Input', () => {
         id: 'my-input'
       })
 
-      const $component = $('.govuk-c-input')
+      const $component = $('.govuk-input')
       expect($component.attr('id')).toEqual('my-input')
     })
 
@@ -38,14 +38,14 @@ describe('Input', () => {
         name: 'my-input-name'
       })
 
-      const $component = $('.govuk-c-input')
+      const $component = $('.govuk-input')
       expect($component.attr('name')).toEqual('my-input-name')
     })
 
     it('renders with type="text" by default', () => {
       const $ = render('input', {})
 
-      const $component = $('.govuk-c-input')
+      const $component = $('.govuk-input')
       expect($component.attr('type')).toEqual('text')
     })
 
@@ -54,7 +54,7 @@ describe('Input', () => {
         type: 'number'
       })
 
-      const $component = $('.govuk-c-input')
+      const $component = $('.govuk-input')
       expect($component.attr('type')).toEqual('number')
     })
 
@@ -63,7 +63,7 @@ describe('Input', () => {
         value: 'QQ 12 34 56 C'
       })
 
-      const $component = $('.govuk-c-input')
+      const $component = $('.govuk-input')
       expect($component.val()).toEqual('QQ 12 34 56 C')
     })
 
@@ -74,7 +74,7 @@ describe('Input', () => {
         }
       })
 
-      const $component = $('.govuk-c-input')
+      const $component = $('.govuk-input')
       expect($component.attr('data-attribute')).toEqual('my data value')
     })
   })
@@ -88,7 +88,7 @@ describe('Input', () => {
         }
       })
 
-      const $component = $('.govuk-o-form-group > .govuk-c-input')
+      const $component = $('.govuk-o-form-group > .govuk-input')
       expect($component.length).toBeTruthy()
     })
 
@@ -100,7 +100,7 @@ describe('Input', () => {
         }
       })
 
-      expect(htmlWithClassName($, '.govuk-c-label')).toMatchSnapshot()
+      expect(htmlWithClassName($, '.govuk-label')).toMatchSnapshot()
     })
 
     it('renders label with "for" attribute reffering the input "id"', () => {
@@ -111,7 +111,7 @@ describe('Input', () => {
         }
       })
 
-      const $label = $('.govuk-c-label')
+      const $label = $('.govuk-label')
       expect($label.attr('for')).toEqual('my-input')
     })
 
@@ -122,7 +122,7 @@ describe('Input', () => {
         }
       })
 
-      expect(htmlWithClassName($, '.govuk-c-error-message')).toMatchSnapshot()
+      expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
     })
 
     it('has error class when rendered with error message', () => {
@@ -132,8 +132,8 @@ describe('Input', () => {
         }
       })
 
-      const $component = $('.govuk-c-input')
-      expect($component.hasClass('govuk-c-input--error')).toBeTruthy()
+      const $component = $('.govuk-input')
+      expect($component.hasClass('govuk-input--error')).toBeTruthy()
     })
   })
 })

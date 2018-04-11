@@ -19,7 +19,7 @@ describe('Error message', () => {
       classes: 'custom-class'
     })
 
-    const $component = $('.govuk-c-error-message')
+    const $component = $('.govuk-error-message')
     expect($component.hasClass('custom-class')).toBeTruthy()
   })
 
@@ -28,7 +28,7 @@ describe('Error message', () => {
       text: 'Unexpected > in body'
     })
 
-    const content = $('.govuk-c-error-message').html().trim()
+    const content = $('.govuk-error-message').html().trim()
     expect(content).toEqual('Unexpected &gt; in body')
   })
 
@@ -37,7 +37,7 @@ describe('Error message', () => {
       html: 'Unexpected <b>bold text</b> in body copy'
     })
 
-    const content = $('.govuk-c-error-message').html().trim()
+    const content = $('.govuk-error-message').html().trim()
     expect(content).toEqual('Unexpected <b>bold text</b> in body copy')
   })
 
@@ -49,7 +49,7 @@ describe('Error message', () => {
       }
     })
 
-    const $component = $('.govuk-c-error-message')
+    const $component = $('.govuk-error-message')
     expect($component.attr('data-test')).toEqual('attribute')
     expect($component.attr('id')).toEqual('my-error-message')
   })
