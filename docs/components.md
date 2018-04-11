@@ -1,8 +1,8 @@
 # Components
 
-All components must use the `.govuk-` namespace and the `c` prefix.
+All components must use the `.govuk-` namespace.
 
-For example, `.govuk-c-button`.
+For example, `.govuk-button`.
 
 All components must follow the conventions described in our [CSS coding standards](coding-standards/css.md).
 
