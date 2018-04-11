@@ -17,10 +17,7 @@ gulp.task('copy-files', () => {
   return gulp.src([
     configPaths.src + '**/*',
     '!' + configPaths.src + '**/index.njk',
-    '!' + configPaths.src + '**/*.{yml,yaml}',
-    '!' + configPaths.src + '**/__snapshots__/',
-    '!' + configPaths.src + '**/*.snap',
-    '!' + configPaths.src + '**/*.js'
+    '!' + configPaths.src + '**/*.{yml,yaml}'
   ])
   .pipe(scssFiles)
   .pipe(postcss([

@@ -12,19 +12,5 @@
   "ports": {
     "app": 3000,
     "test": 8888
-  },
-  "entry": {
-    "js": {
-      "all": "./src/all/all.js",
-      "button": "./src/button/button.js",
-      "details": "./src/details/details.js"
-    }
-  },
-  "output": {
-    "js": {
-      "dist": "dist/components/",
-      "packages": "packages/",
-      "public": "public/js/"
-    }
   }
 }
