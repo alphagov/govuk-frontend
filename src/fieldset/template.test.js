@@ -114,7 +114,7 @@ describe('fieldset', () => {
     it('have correct nesting order', () => {
       const $ = render('fieldset', examples['with-error-message'])
 
-      const $component = $('.govuk-o-form-group > .govuk-fieldset')
+      const $component = $('.govuk-form-group > .govuk-fieldset')
       expect($component.length).toBeTruthy()
     })
 

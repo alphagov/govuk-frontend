@@ -16,7 +16,7 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
 #### Markup
 
-      <div class="govuk-o-form-group">
+      <div class="govuk-form-group">
       <fieldset class="govuk-fieldset">
 
         <legend class="govuk-fieldset__legend">
@@ -146,7 +146,7 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
 #### Markup
 
-      <div class="govuk-o-form-group">
+      <div class="govuk-form-group">
       <fieldset class="govuk-fieldset">
 
         <legend class="govuk-fieldset__legend">
@@ -273,7 +273,7 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
 #### Markup
 
-      <div class="govuk-o-form-group govuk-o-form-group--error">
+      <div class="govuk-form-group govuk-form-group--error">
       <fieldset class="govuk-fieldset app-fieldset--custom-modifier" data-attribute="value" data-second-attribute="second-value">
 
         <legend class="govuk-fieldset__legend">
@@ -358,7 +358,7 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
 #### Markup
 
-      <div class="govuk-o-form-group govuk-o-form-group--error">
+      <div class="govuk-form-group govuk-form-group--error">
       <fieldset class="govuk-fieldset">
 
         <legend class="govuk-fieldset__legend">

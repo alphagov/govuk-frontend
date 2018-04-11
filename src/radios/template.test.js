@@ -200,7 +200,7 @@ describe('Radios', () => {
     it('have correct nesting order', () => {
       const $ = render('radios', examples['with-extreme-fieldset'])
 
-      const $component = $('.govuk-o-form-group > .govuk-fieldset > .govuk-radios')
+      const $component = $('.govuk-form-group > .govuk-fieldset > .govuk-radios')
       expect($component.length).toBeTruthy()
     })
 

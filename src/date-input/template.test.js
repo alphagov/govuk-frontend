@@ -191,7 +191,7 @@ describe('Date input', () => {
     it('have correct nesting order', () => {
       const $ = render('date-input', examples['default'])
 
-      const $component = $('.govuk-o-form-group > .govuk-fieldset > .govuk-date-input')
+      const $component = $('.govuk-form-group > .govuk-fieldset > .govuk-date-input')
       expect($component.length).toBeTruthy()
     })
 

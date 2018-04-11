@@ -1,7 +1,7 @@
 {% from "label/macro.njk" import govukLabel %}
 
 {#- Include label passing all label parameters, merging in `for` and `errorMessage` #}
-<div class="govuk-o-form-group {%- if params.errorMessage %} govuk-o-form-group--error{% endif %}">
+<div class="govuk-form-group {%- if params.errorMessage %} govuk-form-group--error{% endif %}">
 
   {{- govukLabel({
     html: params.label.html,

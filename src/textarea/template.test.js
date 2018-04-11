@@ -91,7 +91,7 @@ describe('Textarea', () => {
         }
       })
 
-      const $component = $('.govuk-o-form-group > .govuk-textarea')
+      const $component = $('.govuk-form-group > .govuk-textarea')
       expect($component.length).toBeTruthy()
     })
 

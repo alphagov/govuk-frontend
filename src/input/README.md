@@ -16,7 +16,7 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
 
 #### Markup
 
-    <div class="govuk-o-form-group"><label class="govuk-label" for="input-1">
+    <div class="govuk-form-group"><label class="govuk-label" for="input-1">
       National Insurance number
 
     </label>
@@ -41,7 +41,7 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
 
 #### Markup
 
-    <div class="govuk-o-form-group"><label class="govuk-label" for="input-2">
+    <div class="govuk-form-group"><label class="govuk-label" for="input-2">
       National insurance number
 
       <span class="govuk-label__hint">
@@ -71,7 +71,7 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
 
 #### Markup
 
-    <div class="govuk-o-form-group govuk-o-form-group--error"><label class="govuk-label" for="input-3">
+    <div class="govuk-form-group govuk-form-group--error"><label class="govuk-label" for="input-3">
       National Insurance number
 
       <span class="govuk-label__hint">
@@ -108,7 +108,7 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
 
 #### Markup
 
-    <div class="govuk-o-form-group"><label class="govuk-label" for="input-2">
+    <div class="govuk-form-group"><label class="govuk-label" for="input-2">
       National insurance number
 
       <span class="govuk-label__hint">
@@ -139,7 +139,7 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
 
 #### Markup
 
-    <div class="govuk-o-form-group"><label class="govuk-label" for="input-2">
+    <div class="govuk-form-group"><label class="govuk-label" for="input-2">
       National insurance number
 
       <span class="govuk-label__hint">
@@ -170,7 +170,7 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
 
 #### Markup
 
-    <div class="govuk-o-form-group"><label class="govuk-label" for="input-2">
+    <div class="govuk-form-group"><label class="govuk-label" for="input-2">
       National insurance number
 
       <span class="govuk-label__hint">

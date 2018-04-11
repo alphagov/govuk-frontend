@@ -88,7 +88,7 @@ describe('Input', () => {
         }
       })
 
-      const $component = $('.govuk-o-form-group > .govuk-input')
+      const $component = $('.govuk-form-group > .govuk-input')
       expect($component.length).toBeTruthy()
     })
 

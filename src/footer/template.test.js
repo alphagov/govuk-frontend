@@ -36,22 +36,22 @@ describe('footer', () => {
 
   it('renders classes', () => {
     const $ = render('footer', {
-      classes: 'app-o-footer--custom-modifier'
+      classes: 'app-footer--custom-modifier'
     })
 
     const $component = $('.govuk-footer')
-    expect($component.hasClass('app-o-footer--custom-modifier')).toBeTruthy()
+    expect($component.hasClass('app-footer--custom-modifier')).toBeTruthy()
   })
 
   it('renders custom container classes', () => {
     const $ = render('footer', {
-      containerClasses: 'app-o-width-container'
+      containerClasses: 'app-width-container'
     })
 
     const $component = $('.govuk-footer')
-    const $container = $component.find('.govuk-o-width-container')
+    const $container = $component.find('.govuk-width-container')
 
-    expect($container.hasClass('app-o-width-container')).toBeTruthy()
+    expect($container.hasClass('app-width-container')).toBeTruthy()
   })
 
   describe('meta', () => {

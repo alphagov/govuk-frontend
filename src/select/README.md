@@ -16,7 +16,7 @@ Find out when to use the Select component in your service in the [GOV.UK Design 
 
 #### Markup
 
-    <div class="govuk-o-form-group"><label class="govuk-label" for="select-1">
+    <div class="govuk-form-group"><label class="govuk-label" for="select-1">
       Label text goes here
 
     </label>
@@ -65,7 +65,7 @@ Find out when to use the Select component in your service in the [GOV.UK Design 
 
 #### Markup
 
-    <div class="govuk-o-form-group govuk-o-form-group--error"><label class="govuk-label" for="select-2">
+    <div class="govuk-form-group govuk-form-group--error"><label class="govuk-label" for="select-2">
       Label text goes here
 
       <span class="govuk-label__hint">

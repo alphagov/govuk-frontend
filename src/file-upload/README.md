@@ -16,7 +16,7 @@ Find out when to use the File upload component in your service in the [GOV.UK De
 
 #### Markup
 
-    <div class="govuk-o-form-group"><label class="govuk-label" for="file-upload-1">
+    <div class="govuk-form-group"><label class="govuk-label" for="file-upload-1">
       Upload a file
 
     </label>
@@ -41,7 +41,7 @@ Find out when to use the File upload component in your service in the [GOV.UK De
 
 #### Markup
 
-    <div class="govuk-o-form-group"><label class="govuk-label" for="file-upload-2">
+    <div class="govuk-form-group"><label class="govuk-label" for="file-upload-2">
       Upload your photo
 
       <span class="govuk-label__hint">
@@ -71,7 +71,7 @@ Find out when to use the File upload component in your service in the [GOV.UK De
 
 #### Markup
 
-    <div class="govuk-o-form-group govuk-o-form-group--error"><label class="govuk-label" for="file-upload-3">
+    <div class="govuk-form-group govuk-form-group--error"><label class="govuk-label" for="file-upload-3">
       Upload a file
 
       <span class="govuk-label__hint">
@@ -108,7 +108,7 @@ Find out when to use the File upload component in your service in the [GOV.UK De
 
 #### Markup
 
-    <div class="govuk-o-form-group"><label class="govuk-label" for="file-upload-4">
+    <div class="govuk-form-group"><label class="govuk-label" for="file-upload-4">
       Upload a photo
 
     </label>

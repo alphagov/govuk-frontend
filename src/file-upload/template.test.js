@@ -71,7 +71,7 @@ describe('File upload', () => {
         }
       })
 
-      const $component = $('.govuk-o-form-group > .govuk-file-upload')
+      const $component = $('.govuk-form-group > .govuk-file-upload')
       expect($component.length).toBeTruthy()
     })
 

@@ -153,7 +153,7 @@ describe('Select', () => {
         }
       })
 
-      const $component = $('.govuk-o-form-group > .govuk-select')
+      const $component = $('.govuk-form-group > .govuk-select')
       expect($component.length).toBeTruthy()
     })
 

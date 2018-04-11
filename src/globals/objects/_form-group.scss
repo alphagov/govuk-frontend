@@ -1,18 +1,18 @@
 @include govuk-exports("form-group") {
 
-  .govuk-o-form-group {
+  .govuk-form-group {
     @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom");
 
-    .govuk-o-form-group:last-of-type {
+    .govuk-form-group:last-of-type {
       margin-bottom: 0; // Remove margin from last item in nested groups
     }
   }
 
-  .govuk-o-form-group--error {
+  .govuk-form-group--error {
     padding-left: $govuk-spacing-scale-3;
     border-left: $govuk-border-width-form-group-error solid $govuk-error-colour;
 
-    .govuk-o-form-group {
+    .govuk-form-group {
       // Reset error styles in nested form groups that might have error class
       padding: 0;
       border: 0;

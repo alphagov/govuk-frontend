@@ -17,7 +17,7 @@ Find out when to use the Footer component in your service in the [GOV.UK Design 
 #### Markup
 
     <footer class="govuk-footer " role="contentinfo">
-      <div class="govuk-o-width-container ">
+      <div class="govuk-width-container ">
 
         <div class="govuk-footer__meta">
           <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">

@@ -16,7 +16,7 @@ Find out when to use the Textarea component in your service in the [GOV.UK Desig
 
 #### Markup
 
-    <div class="govuk-o-form-group"><label class="govuk-label" for="more-detail">
+    <div class="govuk-form-group"><label class="govuk-label" for="more-detail">
       Can you provide more detail?
 
       <span class="govuk-label__hint">
@@ -47,7 +47,7 @@ Find out when to use the Textarea component in your service in the [GOV.UK Desig
 
 #### Markup
 
-    <div class="govuk-o-form-group govuk-o-form-group--error"><label class="govuk-label" for="no-ni-reason">
+    <div class="govuk-form-group govuk-form-group--error"><label class="govuk-label" for="no-ni-reason">
       Why can&#39;t you provide a National Insurance number?
 
       <span class="govuk-error-message">
@@ -80,7 +80,7 @@ Find out when to use the Textarea component in your service in the [GOV.UK Desig
 
 #### Markup
 
-    <div class="govuk-o-form-group"><label class="govuk-label" for="full-address">
+    <div class="govuk-form-group"><label class="govuk-label" for="full-address">
       Full address
 
     </label>
@@ -110,7 +110,7 @@ Find out when to use the Textarea component in your service in the [GOV.UK Desig
 
 #### Markup
 
-    <div class="govuk-o-form-group"><label class="govuk-label" for="full-address">
+    <div class="govuk-form-group"><label class="govuk-label" for="full-address">
       Full address
 
     </label>

@@ -16,7 +16,7 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
 
 #### Markup
 
-      <div class="govuk-o-form-group">
+      <div class="govuk-form-group">
       <fieldset class="govuk-fieldset">
 
         <legend class="govuk-fieldset__legend">
@@ -29,7 +29,7 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
       <div class="govuk-date-input" id="dob">
 
           <div class="govuk-date-input__item govuk-date-input__item--day">
-            <div class="govuk-o-form-group"><label class="govuk-label govuk-date-input__label" for="dob-day">
+            <div class="govuk-form-group"><label class="govuk-label govuk-date-input__label" for="dob-day">
             Day
 
           </label>
@@ -38,7 +38,7 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
           </div>
 
           <div class="govuk-date-input__item govuk-date-input__item--month">
-            <div class="govuk-o-form-group"><label class="govuk-label govuk-date-input__label" for="dob-month">
+            <div class="govuk-form-group"><label class="govuk-label govuk-date-input__label" for="dob-month">
             Month
 
           </label>
@@ -47,7 +47,7 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
           </div>
 
           <div class="govuk-date-input__item govuk-date-input__item--year">
-            <div class="govuk-o-form-group"><label class="govuk-label govuk-date-input__label" for="dob-year">
+            <div class="govuk-form-group"><label class="govuk-label govuk-date-input__label" for="dob-year">
             Year
 
           </label>
@@ -89,7 +89,7 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
 
 #### Markup
 
-      <div class="govuk-o-form-group govuk-o-form-group--error">
+      <div class="govuk-form-group govuk-form-group--error">
       <fieldset class="govuk-fieldset">
 
         <legend class="govuk-fieldset__legend">
@@ -106,7 +106,7 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
       <div class="govuk-date-input" id="dob-errors">
 
           <div class="govuk-date-input__item govuk-date-input__item--day">
-            <div class="govuk-o-form-group"><label class="govuk-label govuk-date-input__label" for="dob-errors-day">
+            <div class="govuk-form-group"><label class="govuk-label govuk-date-input__label" for="dob-errors-day">
             Day
 
           </label>
@@ -115,7 +115,7 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
           </div>
 
           <div class="govuk-date-input__item govuk-date-input__item--month">
-            <div class="govuk-o-form-group"><label class="govuk-label govuk-date-input__label" for="dob-errors-month">
+            <div class="govuk-form-group"><label class="govuk-label govuk-date-input__label" for="dob-errors-month">
             Month
 
           </label>
@@ -124,7 +124,7 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
           </div>
 
           <div class="govuk-date-input__item govuk-date-input__item--year">
-            <div class="govuk-o-form-group"><label class="govuk-label govuk-date-input__label" for="dob-errors-year">
+            <div class="govuk-form-group"><label class="govuk-label govuk-date-input__label" for="dob-errors-year">
             Year
 
           </label>
@@ -171,7 +171,7 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
 
 #### Markup
 
-      <div class="govuk-o-form-group govuk-o-form-group--error">
+      <div class="govuk-form-group govuk-form-group--error">
       <fieldset class="govuk-fieldset">
 
         <legend class="govuk-fieldset__legend">
@@ -188,7 +188,7 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
       <div class="govuk-date-input" id="dob-day-error">
 
           <div class="govuk-date-input__item govuk-date-input__item--day">
-            <div class="govuk-o-form-group"><label class="govuk-label govuk-date-input__label" for="dob-day-error-day">
+            <div class="govuk-form-group"><label class="govuk-label govuk-date-input__label" for="dob-day-error-day">
             Day
 
           </label>
@@ -197,7 +197,7 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
           </div>
 
           <div class="govuk-date-input__item govuk-date-input__item--month">
-            <div class="govuk-o-form-group"><label class="govuk-label govuk-date-input__label" for="dob-day-error-month">
+            <div class="govuk-form-group"><label class="govuk-label govuk-date-input__label" for="dob-day-error-month">
             Month
 
           </label>
@@ -206,7 +206,7 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
           </div>
 
           <div class="govuk-date-input__item govuk-date-input__item--year">
-            <div class="govuk-o-form-group"><label class="govuk-label govuk-date-input__label" for="dob-day-error-year">
+            <div class="govuk-form-group"><label class="govuk-label govuk-date-input__label" for="dob-day-error-year">
             Year
 
           </label>
@@ -252,7 +252,7 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
 
 #### Markup
 
-      <div class="govuk-o-form-group govuk-o-form-group--error">
+      <div class="govuk-form-group govuk-form-group--error">
       <fieldset class="govuk-fieldset">
 
         <legend class="govuk-fieldset__legend">
@@ -269,7 +269,7 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
       <div class="govuk-date-input" id="dob-month-error">
 
           <div class="govuk-date-input__item govuk-date-input__item--day">
-            <div class="govuk-o-form-group"><label class="govuk-label govuk-date-input__label" for="dob-month-error-day">
+            <div class="govuk-form-group"><label class="govuk-label govuk-date-input__label" for="dob-month-error-day">
             Day
 
           </label>
@@ -278,7 +278,7 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
           </div>
 
           <div class="govuk-date-input__item govuk-date-input__item--month">
-            <div class="govuk-o-form-group"><label class="govuk-label govuk-date-input__label" for="dob-month-error-month">
+            <div class="govuk-form-group"><label class="govuk-label govuk-date-input__label" for="dob-month-error-month">
             Month
 
           </label>
@@ -287,7 +287,7 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
           </div>
 
           <div class="govuk-date-input__item govuk-date-input__item--year">
-            <div class="govuk-o-form-group"><label class="govuk-label govuk-date-input__label" for="dob-month-error-year">
+            <div class="govuk-form-group"><label class="govuk-label govuk-date-input__label" for="dob-month-error-year">
             Year
 
           </label>
@@ -333,7 +333,7 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
 
 #### Markup
 
-      <div class="govuk-o-form-group govuk-o-form-group--error">
+      <div class="govuk-form-group govuk-form-group--error">
       <fieldset class="govuk-fieldset">
 
         <legend class="govuk-fieldset__legend">
@@ -350,7 +350,7 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
       <div class="govuk-date-input" id="dob-year-error">
 
           <div class="govuk-date-input__item govuk-date-input__item--day">
-            <div class="govuk-o-form-group"><label class="govuk-label govuk-date-input__label" for="dob-year-error-day">
+            <div class="govuk-form-group"><label class="govuk-label govuk-date-input__label" for="dob-year-error-day">
             Day
 
           </label>
@@ -359,7 +359,7 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
           </div>
 
           <div class="govuk-date-input__item govuk-date-input__item--month">
-            <div class="govuk-o-form-group"><label class="govuk-label govuk-date-input__label" for="dob-year-error-month">
+            <div class="govuk-form-group"><label class="govuk-label govuk-date-input__label" for="dob-year-error-month">
             Month
 
           </label>
@@ -368,7 +368,7 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
           </div>
 
           <div class="govuk-date-input__item govuk-date-input__item--year">
-            <div class="govuk-o-form-group"><label class="govuk-label govuk-date-input__label" for="dob-year-error-year">
+            <div class="govuk-form-group"><label class="govuk-label govuk-date-input__label" for="dob-year-error-year">
             Year
 
           </label>

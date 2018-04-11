@@ -203,7 +203,7 @@ describe('Checkboxes', () => {
     it('have correct nesting order', () => {
       const $ = render('checkboxes', examples['with-extreme-fieldset'])
 
-      const $component = $('.govuk-o-form-group > .govuk-fieldset > .govuk-checkboxes')
+      const $component = $('.govuk-form-group > .govuk-fieldset > .govuk-checkboxes')
       expect($component.length).toBeTruthy()
     })
 
