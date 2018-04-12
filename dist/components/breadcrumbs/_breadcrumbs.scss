@@ -1,4 +1,24 @@
-@import "../globals/common";
+@import "../globals/tools/exports";
+@import "../globals/tools/compatibility";
+
+@import "../globals/settings/colours-palette";
+@import "../globals/settings/colours-applied";
+@import "../globals/settings/compatibility";
+@import "../globals/settings/spacing";
+@import "../globals/settings/measurements";
+
+@import "../globals/tools/ie8";
+
+@import "../globals/helpers/clearfix";
+@import "../globals/helpers/media-queries";
+@import "../globals/helpers/focusable";
+
+@import "../globals/helpers/typography";
+@import "../globals/settings/typography-font-stacks";
+@import "../globals/settings/typography-font";
+@import "../globals/settings/typography-responsive";
+
+@import "../globals/core/links";
 
 @include govuk-exports("breadcrumbs") {
 
@@ -86,7 +106,7 @@
       border-color: $chevron-border-colour;
 
       // Fall back to a greater than sign for IE8
-      @include govuk-ie(8) {
+      @include govuk-if-ie8 {
         content: "\003e"; // Greater than sign (>)
         width: auto;
         height: auto;
@@ -107,13 +127,7 @@
   }
 
   .govuk-c-breadcrumbs__link {
-    @include govuk-focusable-fill;
-
-    &:link,
-    &:visited,
-    &:hover,
-    &:active {
-      color: $govuk-text-colour;
-    }
+    @include govuk-link-common;
+    @include govuk-link-style-text;
   }
 }

@@ -54,7 +54,7 @@ describe('Table', () => {
     const $ = render('table', examples['table-with-caption-and-head'])
     const $caption = $('.govuk-c-table__caption')
 
-    expect($caption.hasClass('small')).toBeTruthy()
+    expect($caption.hasClass('govuk-heading-m')).toBeTruthy()
   })
 
   it('renders first cell in every row as a <th> element with correct `govuk-c-table__header` class and `scope=row` attribute', () => {

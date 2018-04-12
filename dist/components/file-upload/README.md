@@ -25,6 +25,8 @@ Find out when to use the File upload component in your service in the [GOV.UK De
 
 #### Macro
 
+    {% from 'file-upload/macro.njk' import govukFileUpload %}
+
     {{ govukFileUpload({
       "id": "file-upload-1",
       "name": "file-upload-1",
@@ -51,6 +53,8 @@ Find out when to use the File upload component in your service in the [GOV.UK De
     </div>
 
 #### Macro
+
+    {% from 'file-upload/macro.njk' import govukFileUpload %}
 
     {{ govukFileUpload({
       "id": "file-upload-2",
@@ -84,6 +88,8 @@ Find out when to use the File upload component in your service in the [GOV.UK De
 
 #### Macro
 
+    {% from 'file-upload/macro.njk' import govukFileUpload %}
+
     {{ govukFileUpload({
       "id": "file-upload-3",
       "name": "file-upload-3",
@@ -110,6 +116,8 @@ Find out when to use the File upload component in your service in the [GOV.UK De
     </div>
 
 #### Macro
+
+    {% from 'file-upload/macro.njk' import govukFileUpload %}
 
     {{ govukFileUpload({
       "id": "file-upload-4",

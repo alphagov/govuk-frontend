@@ -29,9 +29,39 @@ Find out when to use the Details component in your service in the [GOV.UK Design
 
 #### Macro
 
+    {% from 'details/macro.njk' import govukDetails %}
+
     {{ govukDetails({
       "summaryText": "Help with nationality",
       "text": "We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post."
+    }) }}
+
+### Details--expanded
+
+[Preview the details--expanded example](http://govuk-frontend-review.herokuapp.com/components/details/expanded/preview)
+
+#### Markup
+
+    <details id="help-with-nationality" class="govuk-c-details" open>
+      <summary class="govuk-c-details__summary">
+        <span class="govuk-c-details__summary-text">
+          Help with nationality
+        </span>
+      </summary>
+      <div class="govuk-c-details__text">
+        We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post.
+      </div>
+    </details>
+
+#### Macro
+
+    {% from 'details/macro.njk' import govukDetails %}
+
+    {{ govukDetails({
+      "id": "help-with-nationality",
+      "summaryText": "Help with nationality",
+      "text": "We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post.",
+      "open": true
     }) }}
 
 ### Details--with-html
@@ -60,6 +90,8 @@ Find out when to use the Details component in your service in the [GOV.UK Design
     </details>
 
 #### Macro
+
+    {% from 'details/macro.njk' import govukDetails %}
 
     {{ govukDetails({
       "summaryText": "Where to find your National Insurance Number",
@@ -164,6 +196,18 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-c-table__row">
 
+<th class="govuk-c-table__header" scope="row">id</th>
+
+<td class="govuk-c-table__cell ">string</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">Optional id</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
 <th class="govuk-c-table__header" scope="row">classes</th>
 
 <td class="govuk-c-table__cell ">string</td>
@@ -171,6 +215,18 @@ If you are using Nunjucks,then macros take the following arguments
 <td class="govuk-c-table__cell ">No</td>
 
 <td class="govuk-c-table__cell ">Optional additional classes</td>
+
+</tr>
+
+<tr class="govuk-c-table__row">
+
+<th class="govuk-c-table__header" scope="row">open</th>
+
+<td class="govuk-c-table__cell ">boolean</td>
+
+<td class="govuk-c-table__cell ">No</td>
+
+<td class="govuk-c-table__cell ">If true, details will be expanded.</td>
 
 </tr>
 

@@ -4,23 +4,31 @@
 // This means that every component has access to all things within the settings,
 // tools and helpers layers
 
-// Settings
+// Settings - order is important as some settings files rely on others
+@import "settings/paths";
+
+@import "settings/compatibility";
+@import "settings/ie8";
+
+@import "settings/media-queries";
+
 @import "settings/colours-palette";
 @import "settings/colours-organisations";
 @import "settings/colours-applied";
+
 @import "settings/spacing";
 @import "settings/measurements";
+
 @import "settings/typography-font-stacks";
 @import "settings/typography-font";
 @import "settings/typography-responsive";
-@import "settings/media-queries";
-@import "settings/paths";
 
 // Tools
+@import "tools/compatibility";
 @import "tools/exports";
 @import "tools/file-url";
+@import "tools/ie8";
 @import "tools/iff";
-@import "tools/legacy-ie";
 @import "tools/px-to-em";
 
 // Helpers

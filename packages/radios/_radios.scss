@@ -1,4 +1,8 @@
-@import "../globals/common";
+@import "../globals/tools/exports";
+@import "../globals/tools/ie8";
+
+@import "../fieldset/fieldset";
+@import "../label/label";
 
 @include govuk-exports("radios") {
   .govuk-c-radios__item {
@@ -21,12 +25,6 @@
     margin-bottom: 0;
   }
 
-  .govuk-c-radios__item--inline {
-    margin-right: $govuk-spacing-scale-4;
-    float: left;
-    clear: none;
-  }
-
   .govuk-c-radios__input {
     position: absolute;
 
@@ -40,14 +38,14 @@
     cursor: pointer;
 
     // IE8 doesn’t support pseudoelements, so we don’t want to hide native elements there. Double colons get ommited by IE8.
-    @if ($govuk-is-ie == false) or ($govuk-ie-version == 9) {
+    @include govuk-not-ie8 {
       margin: 0;
       opacity: 0;
     }
   }
 
   .govuk-c-radios__label {
-    display: block;
+    display: inline-block;
     padding: 8px $govuk-spacing-scale-3 $govuk-spacing-scale-1;
     cursor: pointer;
     // remove 300ms pause on mobile
@@ -106,5 +104,18 @@
 
   .govuk-c-radios__input:disabled + .govuk-c-radios__label {
     opacity: .5;
+  }
+
+  // Inline variant
+  .govuk-c-radios--inline {
+    @include mq ($from: tablet) {
+      @include govuk-h-clearfix;
+
+      .govuk-c-radios__item {
+        margin-right: $govuk-spacing-scale-4;
+        float: left;
+        clear: none;
+      }
+    }
   }
 }

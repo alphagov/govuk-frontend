@@ -1,4 +1,11 @@
-@import "../globals/common";
+@import "../globals/tools/exports";
+
+@import "../label/label";
+
+@import "../globals/settings/spacing";
+@import "../globals/settings/measurements";
+
+@import "../globals/helpers/focusable";
 
 @include govuk-exports("file-upload") {
   .govuk-c-file-upload {

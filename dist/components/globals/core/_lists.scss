@@ -57,10 +57,6 @@
   }
 
   %govuk-list--number {
-    // TODO: Fix IE < 8
-    @include govuk-ie-lte(7) {
-      padding-left: $govuk-spacing-scale-6; //used to be 28
-    }
     padding-left: $govuk-spacing-scale-4;
     list-style-type: decimal;
   }

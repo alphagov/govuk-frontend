@@ -23,6 +23,8 @@ Use labels for all form fields.
 
 #### Macro
 
+    {% from 'label/macro.njk' import govukLabel %}
+
     {{ govukLabel({
       "text": "National Insurance number",
       "hintText": "It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’."
@@ -44,6 +46,8 @@ Use labels for all form fields.
     </label>
 
 #### Macro
+
+    {% from 'label/macro.njk' import govukLabel %}
 
     {{ govukLabel({
       "classes": "govuk-c-label--bold",
@@ -71,6 +75,8 @@ Use labels for all form fields.
     </label>
 
 #### Macro
+
+    {% from 'label/macro.njk' import govukLabel %}
 
     {{ govukLabel({
       "text": "National Insurance number",

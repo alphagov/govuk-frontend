@@ -25,6 +25,8 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
 
 #### Macro
 
+    {% from 'input/macro.njk' import govukInput %}
+
     {{ govukInput({
       "label": {
         "text": "National Insurance number"
@@ -51,6 +53,8 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
     </div>
 
 #### Macro
+
+    {% from 'input/macro.njk' import govukInput %}
 
     {{ govukInput({
       "label": {
@@ -84,6 +88,8 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
 
 #### Macro
 
+    {% from 'input/macro.njk' import govukInput %}
+
     {{ govukInput({
       "label": {
         "text": "National Insurance number",
@@ -94,6 +100,99 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
       "errorMessage": {
         "text": "Error message goes here"
       }
+    }) }}
+
+### Input--width-10
+
+[Preview the input--width-10 example](http://govuk-frontend-review.herokuapp.com/components/input/width-10/preview)
+
+#### Markup
+
+    <div class="govuk-o-form-group"><label class="govuk-c-label" for="input-2">
+      National insurance number
+
+      <span class="govuk-c-label__hint">
+        It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’.
+      </span>
+
+    </label>
+    <input class="govuk-c-input govuk-c-input--width-10" id="input-2" name="test-name-4" type="text">
+    </div>
+
+#### Macro
+
+    {% from 'input/macro.njk' import govukInput %}
+
+    {{ govukInput({
+      "label": {
+        "text": "National insurance number",
+        "hintText": "It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’."
+      },
+      "id": "input-2",
+      "name": "test-name-4",
+      "classes": "govuk-c-input--width-10"
+    }) }}
+
+### Input--width-20
+
+[Preview the input--width-20 example](http://govuk-frontend-review.herokuapp.com/components/input/width-20/preview)
+
+#### Markup
+
+    <div class="govuk-o-form-group"><label class="govuk-c-label" for="input-2">
+      National insurance number
+
+      <span class="govuk-c-label__hint">
+        It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’.
+      </span>
+
+    </label>
+    <input class="govuk-c-input govuk-c-input--width-20" id="input-2" name="test-name-5" type="text">
+    </div>
+
+#### Macro
+
+    {% from 'input/macro.njk' import govukInput %}
+
+    {{ govukInput({
+      "label": {
+        "text": "National insurance number",
+        "hintText": "It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’."
+      },
+      "id": "input-2",
+      "name": "test-name-5",
+      "classes": "govuk-c-input--width-20"
+    }) }}
+
+### Input--width-30
+
+[Preview the input--width-30 example](http://govuk-frontend-review.herokuapp.com/components/input/width-30/preview)
+
+#### Markup
+
+    <div class="govuk-o-form-group"><label class="govuk-c-label" for="input-2">
+      National insurance number
+
+      <span class="govuk-c-label__hint">
+        It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’.
+      </span>
+
+    </label>
+    <input class="govuk-c-input govuk-c-input--width-30" id="input-2" name="test-name-6" type="text">
+    </div>
+
+#### Macro
+
+    {% from 'input/macro.njk' import govukInput %}
+
+    {{ govukInput({
+      "label": {
+        "text": "National insurance number",
+        "hintText": "It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’."
+      },
+      "id": "input-2",
+      "name": "test-name-6",
+      "classes": "govuk-c-input--width-30"
     }) }}
 
 ## Dependencies

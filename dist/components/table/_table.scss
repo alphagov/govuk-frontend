@@ -1,7 +1,23 @@
-@import "../globals/common";
+@import "../globals/tools/exports";
+@import "../globals/tools/iff";
+@import "../globals/tools/px-to-em";
+
+@import "../globals/settings/colours-palette";
+@import "../globals/settings/colours-applied";
+@import "../globals/settings/spacing";
+@import "../globals/settings/measurements";
+
+@import "../globals/helpers/media-queries";
+@import "../globals/helpers/spacing";
+
+@import "../globals/helpers/typography";
+@import "../globals/settings/typography-font-stacks";
+@import "../globals/settings/typography-font";
+@import "../globals/settings/typography-responsive";
 
 @include govuk-exports("table") {
   .govuk-c-table {
+    @include govuk-font-regular-19;
     @include govuk-text-colour;
     width: 100%;
     @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom");
@@ -11,7 +27,7 @@
   }
 
   .govuk-c-table__header {
-    @include govuk-font-bold-19;
+    @include govuk-typography-weight-bold;
 
     padding: govuk-em($govuk-spacing-scale-2, 19px) govuk-em($govuk-spacing-scale-4, 19px) govuk-em($govuk-spacing-scale-2, 19px) 0;
     border-bottom: 1px solid $govuk-border-colour;
@@ -19,8 +35,6 @@
   }
 
   .govuk-c-table__cell {
-    @include govuk-font-regular-19;
-
     padding: govuk-em($govuk-spacing-scale-2, 19px) govuk-em($govuk-spacing-scale-4, 19px) govuk-em($govuk-spacing-scale-2, 19px) 0;
     border-bottom: 1px solid $govuk-border-colour;
     text-align: left;
@@ -41,7 +55,9 @@
   }
 
   .govuk-c-table__caption {
+    @include govuk-typography-weight-bold;
+
+    display: table-caption;
     text-align: left;
-    @include govuk-font-bold-19;
   }
 }

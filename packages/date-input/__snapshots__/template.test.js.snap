@@ -22,14 +22,6 @@ exports[`Date input nested dependant components passes through label params with
 
 exports[`Date input passes through fieldset params without breaking 1`] = `
 
-<span class="govuk-c-error-message">
-  Error message goes here
-</span>
-
-`;
-
-exports[`Date input passes through fieldset params without breaking 2`] = `
-
 <fieldset class="govuk-c-fieldset">
   <legend class="govuk-c-fieldset__legend">
     What is your date of birth?
@@ -42,6 +34,14 @@ exports[`Date input passes through fieldset params without breaking 2`] = `
 `;
 
 exports[`Date input passes through html fieldset params without breaking 1`] = `
+
+<span class="govuk-c-error-message">
+  Error message goes here
+</span>
+
+`;
+
+exports[`Date input passes through html fieldset params without breaking 2`] = `
 
 <fieldset class="govuk-c-fieldset">
   <legend class="govuk-c-fieldset__legend">

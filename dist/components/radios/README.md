@@ -50,8 +50,73 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 
 #### Macro
 
+    {% from 'radios/macro.njk' import govukRadios %}
+
     {{ govukRadios({
       "idPrefix": "example",
+      "name": "example",
+      "fieldset": {
+        "legendText": "Have you changed your name?",
+        "legendHintText": "This includes changing your last name or spelling your name differently."
+      },
+      "items": [
+        {
+          "value": "yes",
+          "text": "Yes"
+        },
+        {
+          "value": "no",
+          "text": "No",
+          "checked": true
+        }
+      ]
+    }) }}
+
+### Radios--inline
+
+[Preview the radios--inline example](http://govuk-frontend-review.herokuapp.com/components/radios/inline/preview)
+
+#### Markup
+
+      <div class="govuk-o-form-group">
+      <fieldset class="govuk-c-fieldset">
+
+        <legend class="govuk-c-fieldset__legend">
+          Have you changed your name?
+
+          <span class="govuk-c-fieldset__hint">This includes changing your last name or spelling your name differently.</span>
+
+        </legend>
+
+      <div class="govuk-c-radios govuk-c-radios--inline">
+
+          <div class="govuk-c-radios__item">
+            <input class="govuk-c-radios__input" id="example-1" name="example" type="radio" value="yes">
+            <label class="govuk-c-label govuk-c-radios__label" for="example-1">
+            Yes
+
+          </label>
+          </div>
+
+          <div class="govuk-c-radios__item">
+            <input class="govuk-c-radios__input" id="example-2" name="example" type="radio" value="no" checked>
+            <label class="govuk-c-label govuk-c-radios__label" for="example-2">
+            No
+
+          </label>
+          </div>
+
+        </div>
+      </fieldset>
+    </div>
+
+#### Macro
+
+    {% from 'radios/macro.njk' import govukRadios %}
+
+    {{ govukRadios({
+      "idPrefix": "example",
+      "classes": "govuk-c-radios--inline",
       "name": "example",
       "fieldset": {
         "legendText": "Have you changed your name?",
@@ -110,6 +175,8 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 
 #### Macro
 
+    {% from 'radios/macro.njk' import govukRadios %}
+
     {{ govukRadios({
       "idPrefix": "example-disabled",
       "name": "example-disabled",
@@ -152,7 +219,7 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
           <div class="govuk-c-radios__item">
             <input class="govuk-c-radios__input" id="housing-act-1" name="housing-act" type="radio" value="part-2">
             <label class="govuk-c-label govuk-c-radios__label" for="housing-act-1">
-            <span class="govuk-heading-s govuk-!-mb-1">Part 2 of the Housing Act 2004</span> For properties that are 3 or more stories high and occupied by 5 or more people
+            <span class="govuk-heading-s govuk-!-mb-r1">Part 2 of the Housing Act 2004</span> For properties that are 3 or more stories high and occupied by 5 or more people
 
           </label>
           </div>
@@ -160,7 +227,7 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
           <div class="govuk-c-radios__item">
             <input class="govuk-c-radios__input" id="housing-act-2" name="housing-act" type="radio" value="part-3">
             <label class="govuk-c-label govuk-c-radios__label" for="housing-act-2">
-            <span class="govuk-heading-s govuk-!-mb-1">Part 3 of the Housing Act 2004</span> For properties that are within a geographical area defined by a local council
+            <span class="govuk-heading-s govuk-!-mb-r1">Part 3 of the Housing Act 2004</span> For properties that are within a geographical area defined by a local council
 
           </label>
           </div>
@@ -170,6 +237,8 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
     </div>
 
 #### Macro
+
+    {% from 'radios/macro.njk' import govukRadios %}
 
     {{ govukRadios({
       "idPrefix": "housing-act",
@@ -181,11 +250,11 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
       "items": [
         {
           "value": "part-2",
-          "html": "<span class=\"govuk-heading-s govuk-!-mb-1\">Part 2 of the Housing Act 2004</span> For properties that are 3 or more stories high and occupied by 5 or more people"
+          "html": "<span class=\"govuk-heading-s govuk-!-mb-r1\">Part 2 of the Housing Act 2004</span> For properties that are 3 or more stories high and occupied by 5 or more people"
         },
         {
           "value": "part-3",
-          "html": "<span class=\"govuk-heading-s govuk-!-mb-1\">Part 3 of the Housing Act 2004</span> For properties that are within a geographical area defined by a local council"
+          "html": "<span class=\"govuk-heading-s govuk-!-mb-r1\">Part 3 of the Housing Act 2004</span> For properties that are within a geographical area defined by a local council"
         }
       ]
     }) }}
@@ -225,6 +294,8 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
       </div>
 
 #### Macro
+
+    {% from 'radios/macro.njk' import govukRadios %}
 
     {{ govukRadios({
       "name": "colours",
@@ -287,6 +358,8 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
     </div>
 
 #### Macro
+
+    {% from 'radios/macro.njk' import govukRadios %}
 
     {{ govukRadios({
       "idPrefix": "example",
