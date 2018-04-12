@@ -4,6 +4,19 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 
 ## Unreleased
 
+Breaking change:
+
+- Remove -c -o -h layer prefixes 
+  ([PR #644](https://github.com/alphagov/govuk-frontend/pull/644))
+  In user research and in feedback from Private Beta partners we 
+  learned that users didn't really understand what -o, -c and -h prefixes 
+  stand for or why they're useful.
+
+  They also introduced additional cognitive load when composing classes, 
+  having to remember which suffix the classname contains.
+
+  As a result of this, we're removing these prefixes from our codebase.
+
 Fixes:
 
 - Remove redundant font-family declaration from the button component – this will
@@ -11,10 +24,11 @@ Fixes:
   falling back to the print stack as expected.
   (PR [#650](https://github.com/alphagov/govuk-frontend/pull/650))
 
+Internal:
 
-Internal
 - Update publishing docs (PR [#651](https://github.com/alphagov/govuk-frontend/pull/651)) 
 - Wrap `app.css` in conditional comments in review app layout (PR [#653](https://github.com/alphagov/govuk-frontend/pull/653))
+
 
 ## 0.0.27-alpha (Breaking release)
 
