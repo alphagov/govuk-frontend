@@ -31,7 +31,7 @@ This will:
 
 Note: If a previously unreleased component is found, then you will be prompted to make changes before continuing.
 
-6. For each package specify a new version number, based on changelog updates (Step 3.).
+6. For each package select `Custom` and specify a new version number, based on changelog updates (Step 3.).
   ![Select version in Lerna](./img/lerna-select-version.png)
 
 7. Review proposed version number updates.
@@ -87,7 +87,8 @@ npm access grant read-only govuk-frontend:test @govuk-frontend/[component-name]
 ```bash
 npm logout
 ```
+17. Move Trello cards from "Next Frontend release" column to "Done".
 
-17. Add Trello cards to "This Sprint" column for
+18. Add Trello cards to "This Sprint" column for
   - Update the GOV.UK Design System to use the latest release
   - Update the GOV.UK Prototype Kit to use the latest release
