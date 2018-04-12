@@ -4,6 +4,14 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 
 ## Unreleased
 
+Fixes:
+
+- Remove redundant font-family declaration from the button component – this will
+  also fix an issue where the button uses New Transport when printed instead of
+  falling back to the print stack as expected.
+  (PR [#650](https://github.com/alphagov/govuk-frontend/pull/650))
+
+
 Internal
 - Update publishing docs (PR [#651](https://github.com/alphagov/govuk-frontend/pull/651)) 
 
