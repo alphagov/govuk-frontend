@@ -34,8 +34,8 @@
     "directory-to-object": "^1.1.1",
     "express": "^4.16.1",
     "gulp": "^3.9.1",
+    "gulp-better-rollup": "^3.1.0",
     "gulp-changed": "^3.1.0",
-    "gulp-concat": "^2.6.1",
     "gulp-data": "^1.2.1",
     "gulp-debug": "^3.1.0",
     "gulp-eol": "^0.1.2",
@@ -84,6 +84,12 @@
     "ie 9",
     "iOS 9"
   ],
+  "standard": {
+    "ignore": [
+      "/dist/**/*.js",
+      "/packages/**/*.js"
+    ]
+  },
   "jest": {
     "setupTestFrameworkScriptFile": "./config/jest-setup.js",
     "snapshotSerializers": [

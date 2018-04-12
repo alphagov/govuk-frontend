@@ -89,6 +89,7 @@ gulp.task('build:packages', cb => {
   runsequence(
               'clean',
               'copy-files',
+              'js:compile',
               'generate:readme',
               cb)
 })

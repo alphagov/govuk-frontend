@@ -7,7 +7,7 @@ const plumber = require('gulp-plumber')
 const postcss = require('gulp-postcss')
 const autoprefixer = require('autoprefixer')
 const merge = require('merge-stream')
-const concat = require('gulp-concat')
+const rollup = require('gulp-better-rollup')
 const taskArguments = require('./task-arguments')
 const gulpif = require('gulp-if')
 const uglify = require('gulp-uglify')
@@ -102,7 +102,12 @@ gulp.task('js:compile', () => {
     '!' + configPaths.src + '**/*.test.js',
     configPaths.src + '**/*.js'
   ])
-    .pipe(concat('govuk-frontend.js'))
+    .pipe(rollup({
+      // Legacy mode is required for IE8 support
+      legacy: true,
+      // UMD allows the published bundle to work in CommonJS and in the browser.
+      format: 'umd'
+    }))
     .pipe(gulpif(isDist, uglify()))
     .pipe(gulpif(isDist,
       rename({
@@ -110,5 +115,12 @@ gulp.task('js:compile', () => {
       })
     ))
     .pipe(eol())
-    .pipe(gulp.dest(taskArguments.destination + '/js/'))
+    .pipe(gulp.dest(
+      // output files to dist/components if destination is dist, otherwise copy to packages/
+      gulpif(
+        isDist,
+        taskArguments.destination + '/components/',
+        taskArguments.destination + '/'
+      ))
+    )
 })
