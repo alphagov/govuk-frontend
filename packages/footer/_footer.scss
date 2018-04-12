@@ -1,4 +1,22 @@
-@import "../globals/common";
+@import "../globals/tools/exports";
+@import "../globals/tools/compatibility";
+@import "../globals/tools/iff";
+
+@import "../globals/settings/colours-palette";
+@import "../globals/settings/colours-applied";
+@import "../globals/settings/compatibility";
+@import "../globals/settings/spacing";
+@import "../globals/settings/measurements";
+
+@import "../globals/helpers/media-queries";
+@import "../globals/helpers/focusable";
+@import "../globals/helpers/spacing";
+@import "../globals/helpers/device-pixels";
+
+@import "../globals/helpers/typography";
+@import "../globals/settings/typography-font-stacks";
+@import "../globals/settings/typography-font";
+@import "../globals/settings/typography-responsive";
 
 @include govuk-exports("footer") {
 
@@ -38,6 +56,20 @@
     &:hover,
     &:active {
       color: $govuk-footer-link-hover;
+    }
+
+    // Use text colour when focussed
+    &:focus {
+      color: $govuk-text-colour;
+    }
+
+    // alphagov/govuk_template includes a specific a:link:focus selector
+    // designed to make unvisited links a slightly darker blue when focussed, so
+    // we need to override the text colour for that combination of selectors.
+    @include govuk-compatibility(govuk_template) {
+      &:link:focus {
+        @include govuk-text-colour;
+      }
     }
   }
 

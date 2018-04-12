@@ -26,6 +26,8 @@ Find out when to use the Warning text component in your service in the [GOV.UK D
 
 #### Macro
 
+    {% from 'warning-text/macro.njk' import govukWarningText %}
+
     {{ govukWarningText({
       "text": "You can be fined up to £5,000 if you don’t register.",
       "iconFallbackText": "Warning"

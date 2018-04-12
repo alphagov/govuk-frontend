@@ -37,7 +37,11 @@
 // (IE <= 8, Firefox <= 3, Opera <= 9) set $mq-responsive to false
 // Create a separate stylesheet served exclusively to these browsers,
 // meaning @media queries will be rasterized, relying on the cascade itself
-$mq-responsive: true;
+@if ($govuk-is-ie8) {
+  $mq-responsive: false;
+} @else {
+  $mq-responsive: true;
+}
 
 // Name your breakpoints in a way that creates a ubiquitous language
 // across team members. It will improve communication between

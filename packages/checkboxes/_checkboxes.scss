@@ -1,4 +1,8 @@
-@import "../globals/common";
+@import "../globals/tools/exports";
+@import "../globals/tools/ie8";
+
+@import "../fieldset/fieldset";
+@import "../label/label";
 
 @include govuk-exports("checkboxes") {
   .govuk-c-checkboxes__item {
@@ -33,14 +37,14 @@
     cursor: pointer;
 
     // IE8 doesn’t support pseudoelements, so we don’t want to hide native elements there.
-    @if ($govuk-is-ie == false) or ($govuk-ie-version == 9) {
+    @include govuk-not-ie8 {
       margin: 0;
       opacity: 0;
     }
   }
 
   .govuk-c-checkboxes__label {
-    display: block;
+    display: inline-block;
     padding: 8px $govuk-spacing-scale-3 $govuk-spacing-scale-1;
     cursor: pointer;
     // remove 300ms pause on mobile

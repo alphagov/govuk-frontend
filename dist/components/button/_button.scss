@@ -1,4 +1,25 @@
-@import "../globals/common";
+@import "../globals/tools/exports";
+@import "../globals/tools/compatibility";
+@import "../globals/tools/ie8";
+@import "../globals/tools/iff";
+
+@import "../globals/settings/colours-palette";
+@import "../globals/settings/colours-applied";
+@import "../globals/settings/compatibility";
+@import "../globals/settings/spacing";
+@import "../globals/settings/measurements";
+
+@import "../globals/helpers/media-queries";
+@import "../globals/helpers/focusable";
+@import "../globals/helpers/spacing";
+@import "../globals/helpers/device-pixels";
+
+@import "../globals/helpers/typography";
+@import "../globals/settings/typography-font-stacks";
+@import "../globals/settings/typography-font";
+@import "../globals/settings/typography-responsive";
+
+@import "../globals/core/links";
 
 @include govuk-exports("button") {
 
@@ -47,6 +68,17 @@
     &:hover {
       color: $govuk-button-text-colour;
       text-decoration: none;
+    }
+
+    // alphagov/govuk_template includes a specific a:link:focus selector
+    // designed to make unvisited links a slightly darker blue when focussed, so
+    // we need to override the text colour for that combination of selectors so
+    // so that unvisited links styled as buttons do not end up with dark blue
+    // text when focussed.
+    @include govuk-compatibility(govuk_template) {
+      &:link:focus {
+        color: $govuk-button-text-colour;
+      }
     }
 
     // Fix unwanted button padding in Firefox
@@ -119,7 +151,7 @@
       top: 0;
       -webkit-box-shadow: 0 $button-shadow-size 0 $govuk-button-shadow-colour;
               box-shadow: 0 $button-shadow-size 0 $govuk-button-shadow-colour; // s0
-      @include govuk-ie-lte(8) {
+      @include govuk-if-ie8 {
         border-bottom: $button-shadow-size solid $govuk-button-shadow-colour; // s0
       }
     }

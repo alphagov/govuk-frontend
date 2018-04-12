@@ -20,6 +20,8 @@ Find out when to use the Back link component in your service in the [GOV.UK Desi
 
 #### Macro
 
+    {% from 'back-link/macro.njk' import govukBackLink %}
+
     {{ govukBackLink({
       "href": "https://gov.uk",
       "text": "Back"

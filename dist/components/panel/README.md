@@ -27,6 +27,8 @@ Find out when to use the Panel component in your service in the [GOV.UK Design S
 
 #### Macro
 
+    {% from 'panel/macro.njk' import govukPanel %}
+
     {{ govukPanel({
       "titleText": "Application complete",
       "text": "Your reference number: HDJ2123F"

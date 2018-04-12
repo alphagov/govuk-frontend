@@ -1,4 +1,23 @@
-@import "../globals/common";
+@import "../globals/tools/exports";
+@import "../globals/tools/compatibility";
+@import "../globals/tools/iff";
+
+@import "../globals/settings/colours-palette";
+@import "../globals/settings/colours-applied";
+@import "../globals/settings/compatibility";
+@import "../globals/settings/spacing";
+@import "../globals/settings/measurements";
+
+@import "../globals/helpers/media-queries";
+@import "../globals/helpers/spacing";
+@import "../globals/helpers/focusable";
+
+@import "../globals/helpers/typography";
+@import "../globals/settings/typography-font-stacks";
+@import "../globals/settings/typography-font";
+@import "../globals/settings/typography-responsive";
+
+@import "../globals/core/lists";
 
 @include govuk-exports("error-summary") {
 
@@ -12,11 +31,6 @@
 
     @include mq($from: tablet) {
       border: $govuk-border-width solid $govuk-error-colour;
-    }
-
-    // TODO: Fix IE < 8
-    @include govuk-ie-lte(6) {
-      zoom: 1;
     }
   }
 
@@ -44,15 +58,25 @@
 
   .govuk-c-error-summary__list a {
     @include govuk-focusable-fill;
+    @include govuk-typography-weight-bold;
 
+    // Override default link styling to use error colour
     &:link,
     &:visited,
     &:hover,
-    &:active {
-      @include govuk-typography-weight-bold;
-
+    &:active,
+    &:focus {
       color: $govuk-error-colour;
       text-decoration: underline;
+    }
+
+    // alphagov/govuk_template includes a specific a:link:focus selector
+    // designed to make unvisited links a slightly darker blue when focussed, so
+    // we need to override the text colour for that combination of selectors.
+    @include govuk-compatibility(govuk_template) {
+      &:link:focus {
+        color: $govuk-error-colour;
+      }
     }
   }
 

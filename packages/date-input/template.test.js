@@ -205,7 +205,6 @@ describe('Date input', () => {
   it('passes through fieldset params without breaking', () => {
     const $ = render('date-input', examples['default'])
 
-    expect(htmlWithClassName($, '.govuk-c-error-message')).toMatchSnapshot()
     expect(htmlWithClassName($, '.govuk-c-fieldset')).toMatchSnapshot()
   })
 
@@ -233,6 +232,7 @@ describe('Date input', () => {
       ]
     })
 
+    expect(htmlWithClassName($, '.govuk-c-error-message')).toMatchSnapshot()
     expect(htmlWithClassName($, '.govuk-c-fieldset')).toMatchSnapshot()
   })
 })

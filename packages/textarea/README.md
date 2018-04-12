@@ -30,6 +30,8 @@ Find out when to use the Textarea component in your service in the [GOV.UK Desig
 
 #### Macro
 
+    {% from 'textarea/macro.njk' import govukTextarea %}
+
     {{ govukTextarea({
       "name": "more-detail",
       "id": "more-detail",
@@ -58,6 +60,8 @@ Find out when to use the Textarea component in your service in the [GOV.UK Desig
     </div>
 
 #### Macro
+
+    {% from 'textarea/macro.njk' import govukTextarea %}
 
     {{ govukTextarea({
       "name": "no-ni-reason",
@@ -89,6 +93,8 @@ Find out when to use the Textarea component in your service in the [GOV.UK Desig
 
 #### Macro
 
+    {% from 'textarea/macro.njk' import govukTextarea %}
+
     {{ govukTextarea({
       "id": "full-address",
       "name": "address",
@@ -113,6 +119,8 @@ Find out when to use the Textarea component in your service in the [GOV.UK Desig
     </div>
 
 #### Macro
+
+    {% from 'textarea/macro.njk' import govukTextarea %}
 
     {{ govukTextarea({
       "id": "full-address",

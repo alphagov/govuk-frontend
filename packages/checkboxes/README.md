@@ -58,6 +58,8 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
 #### Macro
 
+    {% from 'checkboxes/macro.njk' import govukCheckboxes %}
+
     {{ govukCheckboxes({
       "idPrefix": "nationality",
       "name": "nationality",
@@ -116,6 +118,8 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
       </div>
 
 #### Macro
+
+    {% from 'checkboxes/macro.njk' import govukCheckboxes %}
 
     {{ govukCheckboxes({
       "name": "colours",
@@ -184,6 +188,8 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
 #### Macro
 
+    {% from 'checkboxes/macro.njk' import govukCheckboxes %}
+
     {{ govukCheckboxes({
       "fieldset": {
         "legendHtml": "<h3 class=\"govuk-heading-m\">Which types of waste do you transport regularly?</h3>",
@@ -240,6 +246,8 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
       </div>
 
 #### Macro
+
+    {% from 'checkboxes/macro.njk' import govukCheckboxes %}
 
     {{ govukCheckboxes({
       "name": "colours",
@@ -310,6 +318,8 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
     </div>
 
 #### Macro
+
+    {% from 'checkboxes/macro.njk' import govukCheckboxes %}
 
     {{ govukCheckboxes({
       "idPrefix": "example",
@@ -391,6 +401,8 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
     </div>
 
 #### Macro
+
+    {% from 'checkboxes/macro.njk' import govukCheckboxes %}
 
     {{ govukCheckboxes({
       "errorMessage": {

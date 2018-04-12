@@ -22,6 +22,8 @@ Find out when to use the Tag component in your service in the [GOV.UK Design Sys
 
 #### Macro
 
+    {% from 'tag/macro.njk' import govukTag %}
+
     {{ govukTag({
       "text": "alpha"
     }) }}
@@ -37,6 +39,8 @@ Find out when to use the Tag component in your service in the [GOV.UK Design Sys
     </strong>
 
 #### Macro
+
+    {% from 'tag/macro.njk' import govukTag %}
 
     {{ govukTag({
       "text": "alpha",
