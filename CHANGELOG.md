@@ -55,6 +55,10 @@ New features:
   (PR [#609](https://github.com/alphagov/govuk-frontend/pull/609))
 - Add limited width inputs
   (PR [#626](https://github.com/alphagov/govuk-frontend/pull/626))
+- Add details polyfill. This is automatically initialised in the main JS. (PR [#610](https://github.com/alphagov/govuk-frontend/pull/610))
+- Add button polyfill. This is automatically initialised in the main JS. [#572](https://github.com/alphagov/govuk-frontend/pull/572))
+
+ Note: Our JavaScript work is ongoing. In the next release of GOV.UK Frontend both of our script will be modularised and split into common functions. This will allow you to use the polyfills in your bundler/build pipeline. For this reason, you might want to wait until the next release before adding these polyfill scripts into your project.
 
 Internal:
 - Update check script for new components and tweak docs
