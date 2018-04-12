@@ -1,12 +1,14 @@
 const express = require('express')
 const app = express()
 const nunjucks = require('nunjucks')
+const util = require('util')
 const fs = require('fs')
 const path = require('path')
 const yaml = require('js-yaml')
 
+const readdir = util.promisify(fs.readdir)
+
 const helperFunctions = require('../lib/helper-functions')
-const directoryToObject = require('../lib/directory-to-object')
 const configPaths = require('../config/paths.json')
 
 // Set up views
@@ -47,20 +49,20 @@ module.exports = (options) => {
   // Define routes
 
   // Index page - render the component list template
-  app.get('/', function (req, res) {
-    Promise.all([
-      directoryToObject(path.resolve(configPaths.src)),
-      directoryToObject(path.resolve(configPaths.examples))
-    ]).then(result => {
-      const [components, examples] = result
+  app.get('/', async function (req, res) {
+    const components = await readdir(path.resolve(configPaths.src))
+    const examples = await readdir(path.resolve(configPaths.examples))
 
-      // filter out globals, all and icons package
-      const {globals, all, icons, ...filteredComponents} = components
+    // Filter out globals, all and icons package
+    const filteredComponents = components.filter(component => (
+      component !== 'globals' &&
+      component !== 'all' &&
+      component !== 'icons'
+    ))
 
-      res.render('index', {
-        componentsDirectory: filteredComponents,
-        examplesDirectory: examples
-      })
+    res.render('index', {
+      componentsDirectory: filteredComponents,
+      examplesDirectory: examples
     })
   })
 

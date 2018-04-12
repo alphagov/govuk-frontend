@@ -31,7 +31,6 @@
     "autoprefixer": "^7.1.1",
     "cheerio": "^1.0.0-rc.2",
     "cssnano": "^3.10.0",
-    "directory-to-object": "^1.1.1",
     "express": "^4.16.1",
     "gulp": "^3.9.1",
     "gulp-better-rollup": "^3.1.0",
