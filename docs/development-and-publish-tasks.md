@@ -59,7 +59,7 @@ This task will:
 **`gulp test`**
 
 This task will:
-- Run scss:lint and js:lint
+- Run scss:lint
 
 **`gulp watch`**
 
@@ -75,7 +75,6 @@ This task will:
 **`gulp scripts`**
 
  This task will:
- - run js lint task (`gulp js:lint`)
  - concatenate and uglify javascript (`gulp js:compile`) to a destination folder that can be specified via a --destination flag
 
 **`gulp generate:readme`**
@@ -92,7 +91,7 @@ This task will:
 **`gulp lint`**
 
   Is an umbrella task that will run:
-  - `gulp js:lint` and `gulp scss:lint`
+  - `gulp scss:lint`
 
 
 All Gulp tasks are defined in `gulpfile.js` and .`/tasks/gulp/` folder.
