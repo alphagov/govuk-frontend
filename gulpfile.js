@@ -21,7 +21,7 @@ require('./tasks/gulp/asset-version.js')
 // Runs js lint and compilation
 // --------------------------------------
 gulp.task('scripts', cb => {
-  runsequence('js:lint', 'js:compile', cb)
+  runsequence('js:compile', cb)
 })
 
 // Umbrella styles tasks for preview ----
@@ -44,7 +44,6 @@ gulp.task('copy:icons', () => {
 // --------------------------------------
 gulp.task('test', cb => {
   runsequence(
-              'js:lint',
               'scss:lint',
               'scss:compile',
               cb)
@@ -89,6 +88,7 @@ gulp.task('build:packages', cb => {
   runsequence(
               'clean',
               'copy-files',
+              'js:compile',
               'generate:readme',
               cb)
 })

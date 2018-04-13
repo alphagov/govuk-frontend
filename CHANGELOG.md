@@ -6,13 +6,13 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 
 Breaking change:
 
-- Remove -c -o -h layer prefixes 
+- Remove -c -o -h layer prefixes
   ([PR #644](https://github.com/alphagov/govuk-frontend/pull/644))
-  In user research and in feedback from Private Beta partners we 
-  learned that users didn't really understand what -o, -c and -h prefixes 
+  In user research and in feedback from Private Beta partners we
+  learned that users didn't really understand what -o, -c and -h prefixes
   stand for or why they're useful.
 
-  They also introduced additional cognitive load when composing classes, 
+  They also introduced additional cognitive load when composing classes,
   having to remember which suffix the classname contains.
 
   As a result of this, we're removing these prefixes from our codebase.
@@ -24,9 +24,13 @@ Fixes:
   falling back to the print stack as expected.
   (PR [#650](https://github.com/alphagov/govuk-frontend/pull/650))
 
+New features:
+
+- We're now using ES6 Modules and [rollup](https://rollupjs.org/guide/en) to distribute our JavaScript. (PR [#652](https://github.com/alphagov/govuk-frontend/pull/652))
+
 Internal:
 
-- Update publishing docs (PR [#651](https://github.com/alphagov/govuk-frontend/pull/651)) 
+- Update publishing docs (PR [#651](https://github.com/alphagov/govuk-frontend/pull/651))
 - Wrap `app.css` in conditional comments in review app layout (PR [#653](https://github.com/alphagov/govuk-frontend/pull/653))
 
 
