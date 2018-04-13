@@ -14,6 +14,7 @@ Fixes:
 
 Internal
 - Update publishing docs (PR [#651](https://github.com/alphagov/govuk-frontend/pull/651)) 
+- Wrap `app.css` in conditional comments in review app layout (PR [#653](https://github.com/alphagov/govuk-frontend/pull/653))
 
 ## 0.0.27-alpha (Breaking release)
 
