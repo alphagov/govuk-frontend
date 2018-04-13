@@ -27,7 +27,7 @@ describe('back-link component', () => {
   it('renders the default example with an anchor, href and text correctly', () => {
     const $ = render('back-link', examples.default)
 
-    const $component = $('.govuk-c-back-link')
+    const $component = $('.govuk-back-link')
     expect($component.get(0).tagName).toEqual('a')
     expect($component.attr('href')).toEqual('https://gov.uk')
     expect($component.text()).toEqual('Back')
@@ -35,13 +35,13 @@ describe('back-link component', () => {
 
   it('renders classes correctly', () => {
     const $ = render('back-link', {
-      classes: 'app-c-back-link--custom-class',
+      classes: 'app-back-link--custom-class',
       href: '#',
       html: '<b>Back</b>'
     })
 
-    const $component = $('.govuk-c-back-link')
-    expect($component.hasClass('app-c-back-link--custom-class')).toBeTruthy()
+    const $component = $('.govuk-back-link')
+    expect($component.hasClass('app-back-link--custom-class')).toBeTruthy()
   })
 
   it('renders custom text correctly', () => {
@@ -50,7 +50,7 @@ describe('back-link component', () => {
       text: 'Home'
     })
 
-    const $component = $('.govuk-c-back-link')
+    const $component = $('.govuk-back-link')
     expect($component.html()).toEqual('Home')
   })
 
@@ -60,7 +60,7 @@ describe('back-link component', () => {
       text: '<b>Home</b>'
     })
 
-    const $component = $('.govuk-c-back-link')
+    const $component = $('.govuk-back-link')
     expect($component.html()).toEqual('&lt;b&gt;Home&lt;/b&gt;')
   })
 
@@ -70,7 +70,7 @@ describe('back-link component', () => {
       html: '<b>Back</b>'
     })
 
-    const $component = $('.govuk-c-back-link')
+    const $component = $('.govuk-back-link')
     expect($component.html()).toEqual('<b>Back</b>')
   })
 
@@ -84,7 +84,7 @@ describe('back-link component', () => {
       html: 'Back'
     })
 
-    const $component = $('.govuk-c-back-link')
+    const $component = $('.govuk-back-link')
     expect($component.attr('data-test')).toEqual('attribute')
     expect($component.attr('aria-label')).toEqual('Back to home')
   })

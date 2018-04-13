@@ -19,7 +19,7 @@ examples:
   data:
     text: Start now link button
     href: /
-    classes: 'govuk-c-button--start'
+    classes: 'govuk-button--start'
 - name: explicit-button
   data:
     element: button

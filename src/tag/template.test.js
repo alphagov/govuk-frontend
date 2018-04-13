@@ -17,19 +17,19 @@ describe('Tag', () => {
   it('renders the default example with strong element and text', () => {
     const $ = render('tag', examples.default)
 
-    const $component = $('.govuk-c-tag')
+    const $component = $('.govuk-tag')
     expect($component.get(0).tagName).toEqual('strong')
     expect($component.text()).toContain('alpha')
   })
 
   it('renders classes', () => {
     const $ = render('tag', {
-      classes: 'govuk-c-tag--inactive',
+      classes: 'govuk-tag--inactive',
       text: 'alpha'
     })
 
-    const $component = $('.govuk-c-tag')
-    expect($component.hasClass('govuk-c-tag--inactive')).toBeTruthy()
+    const $component = $('.govuk-tag')
+    expect($component.hasClass('govuk-tag--inactive')).toBeTruthy()
   })
 
   it('renders custom text', () => {
@@ -37,7 +37,7 @@ describe('Tag', () => {
       text: 'some-custom-text'
     })
 
-    const $component = $('.govuk-c-tag')
+    const $component = $('.govuk-tag')
     expect($component.html()).toContain('some-custom-text')
   })
 
@@ -46,7 +46,7 @@ describe('Tag', () => {
       text: '<span>alpha</span>'
     })
 
-    const $component = $('.govuk-c-tag')
+    const $component = $('.govuk-tag')
     expect($component.html()).toContain('&lt;span&gt;alpha&lt;/span&gt;')
   })
 
@@ -55,7 +55,7 @@ describe('Tag', () => {
       html: '<span>alpha</span>'
     })
 
-    const $component = $('.govuk-c-tag')
+    const $component = $('.govuk-tag')
     expect($component.html()).toContain('<span>alpha</span>')
   })
 
@@ -68,7 +68,7 @@ describe('Tag', () => {
       html: '<span>alpha</span>'
     })
 
-    const $component = $('.govuk-c-tag')
+    const $component = $('.govuk-tag')
     expect($component.attr('data-test')).toEqual('attribute')
     expect($component.attr('id')).toEqual('my-tag')
   })

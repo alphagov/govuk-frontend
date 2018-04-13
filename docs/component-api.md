@@ -107,6 +107,6 @@ Start button example:
 ```
 {{ govukButton({
 	"text" : "Start",
-	"classes" : "govuk-c-button--start"
+	"classes" : "govuk-button--start"
 }) }}
 ```

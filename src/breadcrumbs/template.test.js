@@ -17,11 +17,11 @@ describe('Breadcrumbs', () => {
 
     it('renders with classes', () => {
       const $ = render('breadcrumbs', {
-        classes: 'app-c-breadcrumbs--custom-modifier'
+        classes: 'app-breadcrumbs--custom-modifier'
       })
 
-      const $component = $('.govuk-c-breadcrumbs')
-      expect($component.hasClass('app-c-breadcrumbs--custom-modifier')).toBeTruthy()
+      const $component = $('.govuk-breadcrumbs')
+      expect($component.hasClass('app-breadcrumbs--custom-modifier')).toBeTruthy()
     })
 
     it('renders with attributes', () => {
@@ -32,7 +32,7 @@ describe('Breadcrumbs', () => {
         }
       })
 
-      const $component = $('.govuk-c-breadcrumbs')
+      const $component = $('.govuk-breadcrumbs')
       expect($component.attr('id')).toEqual('my-navigation')
       expect($component.attr('role')).toEqual('navigation')
     })
@@ -49,7 +49,7 @@ describe('Breadcrumbs', () => {
         ]
       })
 
-      const $items = $('.govuk-c-breadcrumbs__list-item')
+      const $items = $('.govuk-breadcrumbs__list-item')
       expect($items.length).toEqual(2)
     })
 
@@ -62,7 +62,7 @@ describe('Breadcrumbs', () => {
         ]
       })
 
-      const $item = $('.govuk-c-breadcrumbs__list-item')
+      const $item = $('.govuk-breadcrumbs__list-item')
       expect($item.text()).toEqual('Section 1')
     })
 
@@ -75,7 +75,7 @@ describe('Breadcrumbs', () => {
         ]
       })
 
-      const $item = $('.govuk-c-breadcrumbs__list-item')
+      const $item = $('.govuk-breadcrumbs__list-item')
       expect($item.html()).toEqual('&lt;span&gt;Section 1&lt;/span&gt;')
     })
 
@@ -88,7 +88,7 @@ describe('Breadcrumbs', () => {
         ]
       })
 
-      const $item = $('.govuk-c-breadcrumbs__list-item')
+      const $item = $('.govuk-breadcrumbs__list-item')
       expect($item.html()).toEqual('<em>Section 1</em>')
     })
 
@@ -102,9 +102,9 @@ describe('Breadcrumbs', () => {
         ]
       })
 
-      const $anchor = $('.govuk-c-breadcrumbs__list-item a')
+      const $anchor = $('.govuk-breadcrumbs__list-item a')
       expect($anchor.get(0).tagName).toEqual('a')
-      expect($anchor.attr('class')).toEqual('govuk-c-breadcrumbs__link')
+      expect($anchor.attr('class')).toEqual('govuk-breadcrumbs__link')
       expect($anchor.attr('href')).toEqual('/section')
       expect($anchor.text()).toEqual('Section 1')
     })
@@ -119,7 +119,7 @@ describe('Breadcrumbs', () => {
         ]
       })
 
-      const $anchor = $('.govuk-c-breadcrumbs__list-item a')
+      const $anchor = $('.govuk-breadcrumbs__list-item a')
       expect($anchor.html()).toEqual('<em>Section 1</em>')
     })
   })
@@ -127,7 +127,7 @@ describe('Breadcrumbs', () => {
   describe('default example', () => {
     it('renders 2 items', () => {
       const $ = render('breadcrumbs', examples.default)
-      const $items = $('.govuk-c-breadcrumbs__list-item')
+      const $items = $('.govuk-breadcrumbs__list-item')
       expect($items.length).toEqual(2)
     })
   })

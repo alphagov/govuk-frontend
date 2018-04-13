@@ -17,7 +17,7 @@
 
 @include govuk-exports("details") {
 
-  .govuk-c-details {
+  .govuk-details {
     @include govuk-font-regular-19;
     @include govuk-text-colour;
     @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom");
@@ -25,7 +25,7 @@
     display: block;
   }
 
-  .govuk-c-details__summary {
+  .govuk-details__summary {
     // Make the focus outline shrink-wrap the text content of the summary
     display: inline-block;
 
@@ -43,15 +43,15 @@
   }
 
   // ...but only underline the text, not the arrow
-  .govuk-c-details__summary-text {
+  .govuk-details__summary-text {
     text-decoration: underline;
   }
 
-  .govuk-c-details__summary:hover {
+  .govuk-details__summary:hover {
     color: $govuk-link-hover-colour;
   }
 
-  .govuk-c-details__summary:focus {
+  .govuk-details__summary:focus {
     // -1px offset fixes gap between background and outline in Firefox
     outline: ($govuk-focus-width + 1px) solid $govuk-focus-colour;
     outline-offset: -1px;
@@ -60,12 +60,12 @@
 
   // Remove the default details marker so we can style our own consistently and
   // ensure it displays in Firefox (see implementation.md for details)
-  .govuk-c-details__summary::-webkit-details-marker {
+  .govuk-details__summary::-webkit-details-marker {
     display: none;
   }
 
   // Append our own open / closed marker using a pseudo-element
-  .govuk-c-details__summary:before {
+  .govuk-details__summary:before {
     content: "";
     position: absolute;
 
@@ -77,23 +77,23 @@
 
     @include govuk-shape-arrow($direction: right, $base: 14px);
 
-    .govuk-c-details[open] > & {
+    .govuk-details[open] > & {
       @include govuk-shape-arrow($direction: down, $base: 14px);
     }
   }
 
-  .govuk-c-details__text {
+  .govuk-details__text {
     padding: $govuk-spacing-scale-3;
     padding-left: $govuk-spacing-scale-4;
     border-left: $govuk-border-width solid $govuk-border-colour;
   }
 
-  .govuk-c-details__text p {
+  .govuk-details__text p {
     margin-top: 0;
     margin-bottom: $govuk-spacing-scale-4;
   }
 
-  .govuk-c-details__text p:last-child {
+  .govuk-details__text p:last-child {
     margin-bottom: 0;
   }
 }

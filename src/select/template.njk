@@ -1,7 +1,7 @@
 {% from "label/macro.njk" import govukLabel %}
 
 
-<div class="govuk-o-form-group {%- if params.errorMessage %} govuk-o-form-group--error{% endif %}">
+<div class="govuk-form-group {%- if params.errorMessage %} govuk-form-group--error{% endif %}">
 
   {{- govukLabel({
     html: params.label.html,
@@ -14,8 +14,8 @@
     for: params.id
   }) -}}
 
-  <select class="govuk-c-select
-    {%- if params.classes %} {{ params.classes }}{% endif %}{%- if params.errorMessage %} govuk-c-select--error{% endif %}" id="{{ params.id }}" name="{{ params.name }}"{% for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+  <select class="govuk-select
+    {%- if params.classes %} {{ params.classes }}{% endif %}{%- if params.errorMessage %} govuk-select--error{% endif %}" id="{{ params.id }}" name="{{ params.name }}"{% for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
   {% for item in params.items %}
     <option value="{{ item.value }}"{{" selected" if item.selected}}{{" disabled" if item.disabled}}>{{ item.text }}</option>
   {% endfor %}

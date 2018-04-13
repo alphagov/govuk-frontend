@@ -38,7 +38,7 @@
   "text": "Back"
 }) }}
 
-<main class="govuk-o-main-wrapper">
+<main class="govuk-main-wrapper">
 
   {% from "fieldset/macro.njk" import govukFieldset %}
   {% from "label/macro.njk" import govukLabel %}
@@ -55,11 +55,11 @@
     {% call govukFieldset() %}
       {{ govukLabel({
         "text": "National Insurance number",
-        "for": "govuk-c-input-a"
+        "for": "govuk-input-a"
       }) }}
       <div class="app-u-w-half">
         {{ govukInput({
-          id: "govuk-c-input-a",
+          id: "govuk-input-a",
           name: "national-insurance-number"
         }) }}
       </div>

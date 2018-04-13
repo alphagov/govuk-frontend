@@ -20,7 +20,7 @@ describe('Phase banner', () => {
         classes: 'extra-class one-more-class'
       })
 
-      const $component = $('.govuk-c-phase-banner')
+      const $component = $('.govuk-phase-banner')
       expect($component.hasClass('extra-class one-more-class')).toBeTruthy()
     })
 
@@ -28,7 +28,7 @@ describe('Phase banner', () => {
       const $ = render('phase-banner', {
         text: 'This is a new service – your feedback will help us to improve it.'
       })
-      const phaseBannerText = $('.govuk-c-phase-banner__text').text().trim()
+      const phaseBannerText = $('.govuk-phase-banner__text').text().trim()
 
       expect(phaseBannerText).toEqual('This is a new service – your feedback will help us to improve it.')
     })
@@ -38,14 +38,14 @@ describe('Phase banner', () => {
         text: 'This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.'
       })
 
-      const phaseBannerText = $('.govuk-c-phase-banner__text').html().trim()
+      const phaseBannerText = $('.govuk-phase-banner__text').html().trim()
       expect(phaseBannerText).toEqual('This is a new service - your &lt;a href=&quot;#&quot; class=&quot;govuk-link&quot;&gt;feedback&lt;/a&gt; will help us to improve it.')
     })
 
     it('allows body HTML to be passed un-escaped', () => {
       const $ = render('phase-banner', examples.default)
 
-      const phaseBannerText = $('.govuk-c-phase-banner__text').html().trim()
+      const phaseBannerText = $('.govuk-phase-banner__text').html().trim()
       expect(phaseBannerText).toEqual('This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.')
     })
 
@@ -57,7 +57,7 @@ describe('Phase banner', () => {
         }
       })
 
-      const $component = $('.govuk-c-phase-banner')
+      const $component = $('.govuk-phase-banner')
       expect($component.attr('first-attribute')).toEqual('true')
       expect($component.attr('second-attribute')).toEqual('false')
     })
@@ -66,7 +66,7 @@ describe('Phase banner', () => {
     it('renders the tag component text', () => {
       const $ = render('phase-banner', examples.default)
 
-      expect(htmlWithClassName($, '.govuk-c-phase-banner__content__tag')).toMatchSnapshot()
+      expect(htmlWithClassName($, '.govuk-phase-banner__content__tag')).toMatchSnapshot()
     })
 
     it('renders the tag component html', () => {
@@ -76,18 +76,18 @@ describe('Phase banner', () => {
         }
       })
 
-      expect(htmlWithClassName($, '.govuk-c-phase-banner__content__tag')).toMatchSnapshot()
+      expect(htmlWithClassName($, '.govuk-phase-banner__content__tag')).toMatchSnapshot()
     })
 
     it('renders the tag component classes', () => {
       const $ = render('phase-banner', {
         'tag': {
           'text': 'alpha',
-          'classes': 'govuk-c-tag--inactive'
+          'classes': 'govuk-tag--inactive'
         }
       })
 
-      expect(htmlWithClassName($, '.govuk-c-phase-banner__content__tag')).toMatchSnapshot()
+      expect(htmlWithClassName($, '.govuk-phase-banner__content__tag')).toMatchSnapshot()
     })
   })
 })

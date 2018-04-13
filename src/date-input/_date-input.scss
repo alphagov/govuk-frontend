@@ -6,11 +6,11 @@
 @import "../error-message/error-message";
 
 @include govuk-exports("date-input") {
-  .govuk-c-date-input {
-    @include govuk-h-clearfix;
+  .govuk-date-input {
+    @include govuk-clearfix;
   }
 
-  .govuk-c-date-input__item {
+  .govuk-date-input__item {
     width: 50px;
     margin-right: $govuk-spacing-scale-4;
     margin-bottom: 0;
@@ -18,16 +18,16 @@
     clear: none;
   }
 
-  .govuk-c-date-input__label {
+  .govuk-date-input__label {
     display: block;
     padding-bottom: 2px;
   }
 
-  .govuk-c-date-input__input {
+  .govuk-date-input__input {
     margin-bottom: 0;
   }
 
-  .govuk-c-date-input__item--year {
+  .govuk-date-input__item--year {
     width: 70px;
   }
 }

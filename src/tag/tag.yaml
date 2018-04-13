@@ -5,4 +5,4 @@ examples:
  - name: inactive
    data:
     text: alpha
-    classes: govuk-c-tag--inactive
+    classes: govuk-tag--inactive

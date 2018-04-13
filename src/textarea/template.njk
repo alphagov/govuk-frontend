@@ -1,7 +1,7 @@
 {% from "label/macro.njk" import govukLabel %}
 
 
-<div class="govuk-o-form-group {%- if params.errorMessage %} govuk-o-form-group--error{% endif %}">
+<div class="govuk-form-group {%- if params.errorMessage %} govuk-form-group--error{% endif %}">
 
   {#- Include label passing all label parameters, merging in `for` and `errorMessage` #}
 
@@ -16,6 +16,6 @@
     for: params.id
   }) -}}
 
-  <textarea id="{{ params.id }}" name="{{ params.name }}" rows="{%if params.rows %} {{- params.rows -}} {% else %}5{%endif %}" class="govuk-c-textarea {{- ' govuk-c-textarea--error' if params.errorMessage }} {{- ' ' + params.classes if params.classes}}" {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>{{ params.value }}</textarea>
+  <textarea id="{{ params.id }}" name="{{ params.name }}" rows="{%if params.rows %} {{- params.rows -}} {% else %}5{%endif %}" class="govuk-textarea {{- ' govuk-textarea--error' if params.errorMessage }} {{- ' ' + params.classes if params.classes}}" {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>{{ params.value }}</textarea>
 
 </div>

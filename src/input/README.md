@@ -16,11 +16,11 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
 
 #### Markup
 
-    <div class="govuk-o-form-group"><label class="govuk-c-label" for="input-1">
+    <div class="govuk-form-group"><label class="govuk-label" for="input-1">
       National Insurance number
 
     </label>
-    <input class="govuk-c-input" id="input-1" name="test-name" type="text">
+    <input class="govuk-input" id="input-1" name="test-name" type="text">
     </div>
 
 #### Macro
@@ -41,15 +41,15 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
 
 #### Markup
 
-    <div class="govuk-o-form-group"><label class="govuk-c-label" for="input-2">
+    <div class="govuk-form-group"><label class="govuk-label" for="input-2">
       National insurance number
 
-      <span class="govuk-c-label__hint">
+      <span class="govuk-label__hint">
         It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’.
       </span>
 
     </label>
-    <input class="govuk-c-input" id="input-2" name="test-name-2" type="text">
+    <input class="govuk-input" id="input-2" name="test-name-2" type="text">
     </div>
 
 #### Macro
@@ -71,19 +71,19 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
 
 #### Markup
 
-    <div class="govuk-o-form-group govuk-o-form-group--error"><label class="govuk-c-label" for="input-3">
+    <div class="govuk-form-group govuk-form-group--error"><label class="govuk-label" for="input-3">
       National Insurance number
 
-      <span class="govuk-c-label__hint">
+      <span class="govuk-label__hint">
         It’s on your <i>National Insurance card</i>, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’.
       </span>
 
-      <span class="govuk-c-error-message">
+      <span class="govuk-error-message">
       Error message goes here
     </span>
 
     </label>
-    <input class="govuk-c-input govuk-c-input--error" id="input-3" name="test-name-3" type="text">
+    <input class="govuk-input govuk-input--error" id="input-3" name="test-name-3" type="text">
     </div>
 
 #### Macro
@@ -108,15 +108,15 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
 
 #### Markup
 
-    <div class="govuk-o-form-group"><label class="govuk-c-label" for="input-2">
+    <div class="govuk-form-group"><label class="govuk-label" for="input-2">
       National insurance number
 
-      <span class="govuk-c-label__hint">
+      <span class="govuk-label__hint">
         It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’.
       </span>
 
     </label>
-    <input class="govuk-c-input govuk-c-input--width-10" id="input-2" name="test-name-4" type="text">
+    <input class="govuk-input govuk-input--width-10" id="input-2" name="test-name-4" type="text">
     </div>
 
 #### Macro
@@ -130,7 +130,7 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
       },
       "id": "input-2",
       "name": "test-name-4",
-      "classes": "govuk-c-input--width-10"
+      "classes": "govuk-input--width-10"
     }) }}
 
 ### Input--width-20
@@ -139,15 +139,15 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
 
 #### Markup
 
-    <div class="govuk-o-form-group"><label class="govuk-c-label" for="input-2">
+    <div class="govuk-form-group"><label class="govuk-label" for="input-2">
       National insurance number
 
-      <span class="govuk-c-label__hint">
+      <span class="govuk-label__hint">
         It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’.
       </span>
 
     </label>
-    <input class="govuk-c-input govuk-c-input--width-20" id="input-2" name="test-name-5" type="text">
+    <input class="govuk-input govuk-input--width-20" id="input-2" name="test-name-5" type="text">
     </div>
 
 #### Macro
@@ -161,7 +161,7 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
       },
       "id": "input-2",
       "name": "test-name-5",
-      "classes": "govuk-c-input--width-20"
+      "classes": "govuk-input--width-20"
     }) }}
 
 ### Input--width-30
@@ -170,15 +170,15 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
 
 #### Markup
 
-    <div class="govuk-o-form-group"><label class="govuk-c-label" for="input-2">
+    <div class="govuk-form-group"><label class="govuk-label" for="input-2">
       National insurance number
 
-      <span class="govuk-c-label__hint">
+      <span class="govuk-label__hint">
         It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’.
       </span>
 
     </label>
-    <input class="govuk-c-input govuk-c-input--width-30" id="input-2" name="test-name-6" type="text">
+    <input class="govuk-input govuk-input--width-30" id="input-2" name="test-name-6" type="text">
     </div>
 
 #### Macro
@@ -192,7 +192,7 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
       },
       "id": "input-2",
       "name": "test-name-6",
-      "classes": "govuk-c-input--width-30"
+      "classes": "govuk-input--width-30"
     }) }}
 
 ## Dependencies
@@ -223,119 +223,119 @@ To show the button image you need to configure your app to show these assets. Be
 
 If you are using Nunjucks,then macros take the following arguments
 
-<table class="govuk-c-table">
+<table class="govuk-table">
 
-<thead class="govuk-c-table__head">
+<thead class="govuk-table__head">
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="col">Name</th>
+<th class="govuk-table__header" scope="col">Name</th>
 
-<th class="govuk-c-table__header" scope="col">Type</th>
+<th class="govuk-table__header" scope="col">Type</th>
 
-<th class="govuk-c-table__header" scope="col">Required</th>
+<th class="govuk-table__header" scope="col">Required</th>
 
-<th class="govuk-c-table__header" scope="col">Description</th>
+<th class="govuk-table__header" scope="col">Description</th>
 
 </tr>
 
 </thead>
 
-<tbody class="govuk-c-table__body">
+<tbody class="govuk-table__body">
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">classes</th>
+<th class="govuk-table__header" scope="row">classes</th>
 
-<td class="govuk-c-table__cell ">string</td>
+<td class="govuk-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">No</td>
+<td class="govuk-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Optional additional classes</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">id</th>
-
-<td class="govuk-c-table__cell ">string</td>
-
-<td class="govuk-c-table__cell ">Yes</td>
-
-<td class="govuk-c-table__cell ">The id of the input</td>
+<td class="govuk-table__cell ">Optional additional classes</td>
 
 </tr>
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">name</th>
+<th class="govuk-table__header" scope="row">id</th>
 
-<td class="govuk-c-table__cell ">string</td>
+<td class="govuk-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">Yes</td>
+<td class="govuk-table__cell ">Yes</td>
 
-<td class="govuk-c-table__cell ">The name of the input, which is submitted with the form data</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">type</th>
-
-<td class="govuk-c-table__cell ">string</td>
-
-<td class="govuk-c-table__cell ">No</td>
-
-<td class="govuk-c-table__cell ">Type of input control to render. Defaults to "text"</td>
+<td class="govuk-table__cell ">The id of the input</td>
 
 </tr>
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">label</th>
+<th class="govuk-table__header" scope="row">name</th>
 
-<td class="govuk-c-table__cell ">object</td>
+<td class="govuk-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">No</td>
+<td class="govuk-table__cell ">Yes</td>
 
-<td class="govuk-c-table__cell ">Arguments for the label component. See label component.</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">errorMessage</th>
-
-<td class="govuk-c-table__cell ">object</td>
-
-<td class="govuk-c-table__cell ">No</td>
-
-<td class="govuk-c-table__cell ">Optional error message</td>
+<td class="govuk-table__cell ">The name of the input, which is submitted with the form data</td>
 
 </tr>
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">attributes</th>
+<th class="govuk-table__header" scope="row">type</th>
 
-<td class="govuk-c-table__cell ">object</td>
+<td class="govuk-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">No</td>
+<td class="govuk-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Any extra HTML attributes (for example data attributes) to add to the input component.</td>
+<td class="govuk-table__cell ">Type of input control to render. Defaults to "text"</td>
 
 </tr>
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">value</th>
+<th class="govuk-table__header" scope="row">label</th>
 
-<td class="govuk-c-table__cell ">string</td>
+<td class="govuk-table__cell ">object</td>
 
-<td class="govuk-c-table__cell ">No</td>
+<td class="govuk-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Optional initial value of the input</td>
+<td class="govuk-table__cell ">Arguments for the label component. See label component.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">errorMessage</th>
+
+<td class="govuk-table__cell ">object</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Optional error message</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">attributes</th>
+
+<td class="govuk-table__cell ">object</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the input component.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">value</th>
+
+<td class="govuk-table__cell ">string</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Optional initial value of the input</td>
 
 </tr>
 

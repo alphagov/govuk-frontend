@@ -16,15 +16,15 @@ Find out when to use the Breadcrumbs component in your service in the [GOV.UK De
 
 #### Markup
 
-    <div class="govuk-c-breadcrumbs">
-      <ol class="govuk-c-breadcrumbs__list">
+    <div class="govuk-breadcrumbs">
+      <ol class="govuk-breadcrumbs__list">
 
-        <li class="govuk-c-breadcrumbs__list-item">
-          <a class="govuk-c-breadcrumbs__link" href="/section">Section 1</a>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="/section">Section 1</a>
         </li>
 
-        <li class="govuk-c-breadcrumbs__list-item">
-          <a class="govuk-c-breadcrumbs__link" href="/section/sub-section">Sub-section</a>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="/section/sub-section">Sub-section</a>
         </li>
 
       </ol>
@@ -53,11 +53,11 @@ Find out when to use the Breadcrumbs component in your service in the [GOV.UK De
 
 #### Markup
 
-    <div class="govuk-c-breadcrumbs">
-      <ol class="govuk-c-breadcrumbs__list">
+    <div class="govuk-breadcrumbs">
+      <ol class="govuk-breadcrumbs__list">
 
-        <li class="govuk-c-breadcrumbs__list-item">
-          <a class="govuk-c-breadcrumbs__link" href="/section">Section 1</a>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="/section">Section 1</a>
         </li>
 
       </ol>
@@ -82,23 +82,23 @@ Find out when to use the Breadcrumbs component in your service in the [GOV.UK De
 
 #### Markup
 
-    <div class="govuk-c-breadcrumbs">
-      <ol class="govuk-c-breadcrumbs__list">
+    <div class="govuk-breadcrumbs">
+      <ol class="govuk-breadcrumbs__list">
 
-        <li class="govuk-c-breadcrumbs__list-item">
-          <a class="govuk-c-breadcrumbs__link" href="/">Home</a>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="/">Home</a>
         </li>
 
-        <li class="govuk-c-breadcrumbs__list-item">
-          <a class="govuk-c-breadcrumbs__link" href="/section">Section 3</a>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="/section">Section 3</a>
         </li>
 
-        <li class="govuk-c-breadcrumbs__list-item">
-          <a class="govuk-c-breadcrumbs__link" href="/section/sub-section">Sub-section 1</a>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="/section/sub-section">Sub-section 1</a>
         </li>
 
-        <li class="govuk-c-breadcrumbs__list-item">
-          <a class="govuk-c-breadcrumbs__link" href="/section/sub-section/sub-sub-section">Sub Sub-section 1</a>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="/section/sub-section/sub-sub-section">Sub Sub-section 1</a>
         </li>
 
       </ol>
@@ -135,15 +135,15 @@ Find out when to use the Breadcrumbs component in your service in the [GOV.UK De
 
 #### Markup
 
-    <div class="govuk-c-breadcrumbs">
-      <ol class="govuk-c-breadcrumbs__list">
+    <div class="govuk-breadcrumbs">
+      <ol class="govuk-breadcrumbs__list">
 
-        <li class="govuk-c-breadcrumbs__list-item">
-          <a class="govuk-c-breadcrumbs__link" href="/service-manual">Service Manual</a>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="/service-manual">Service Manual</a>
         </li>
 
-        <li class="govuk-c-breadcrumbs__list-item">
-          <a class="govuk-c-breadcrumbs__link" href="/service-manual/agile-delivery">Agile Delivery</a>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="/service-manual/agile-delivery">Agile Delivery</a>
         </li>
 
       </ol>
@@ -172,18 +172,18 @@ Find out when to use the Breadcrumbs component in your service in the [GOV.UK De
 
 #### Markup
 
-    <div class="govuk-c-breadcrumbs">
-      <ol class="govuk-c-breadcrumbs__list">
+    <div class="govuk-breadcrumbs">
+      <ol class="govuk-breadcrumbs__list">
 
-        <li class="govuk-c-breadcrumbs__list-item">
-          <a class="govuk-c-breadcrumbs__link" href="/">Home</a>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="/">Home</a>
         </li>
 
-        <li class="govuk-c-breadcrumbs__list-item">
-          <a class="govuk-c-breadcrumbs__link" href="/browse/abroad">Passports, travel and living abroad</a>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="/browse/abroad">Passports, travel and living abroad</a>
         </li>
 
-        <li class="govuk-c-breadcrumbs__list-item" aria-current="page">Travel abroad</li>
+        <li class="govuk-breadcrumbs__list-item" aria-current="page">Travel abroad</li>
 
       </ol>
     </div>
@@ -238,95 +238,95 @@ To show the button image you need to configure your app to show these assets. Be
 
 If you are using Nunjucks,then macros take the following arguments
 
-<table class="govuk-c-table">
+<table class="govuk-table">
 
-<thead class="govuk-c-table__head">
+<thead class="govuk-table__head">
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="col">Name</th>
+<th class="govuk-table__header" scope="col">Name</th>
 
-<th class="govuk-c-table__header" scope="col">Type</th>
+<th class="govuk-table__header" scope="col">Type</th>
 
-<th class="govuk-c-table__header" scope="col">Required</th>
+<th class="govuk-table__header" scope="col">Required</th>
 
-<th class="govuk-c-table__header" scope="col">Description</th>
+<th class="govuk-table__header" scope="col">Description</th>
 
 </tr>
 
 </thead>
 
-<tbody class="govuk-c-table__body">
+<tbody class="govuk-table__body">
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">classes</th>
+<th class="govuk-table__header" scope="row">classes</th>
 
-<td class="govuk-c-table__cell ">string</td>
+<td class="govuk-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">No</td>
+<td class="govuk-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Optional additional classes</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">items</th>
-
-<td class="govuk-c-table__cell ">array</td>
-
-<td class="govuk-c-table__cell ">Yes</td>
-
-<td class="govuk-c-table__cell ">Array of breadcrumbs items</td>
+<td class="govuk-table__cell ">Optional additional classes</td>
 
 </tr>
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">text</th>
+<th class="govuk-table__header" scope="row">items</th>
 
-<td class="govuk-c-table__cell ">string</td>
+<td class="govuk-table__cell ">array</td>
 
-<td class="govuk-c-table__cell ">No</td>
+<td class="govuk-table__cell ">Yes</td>
 
-<td class="govuk-c-table__cell ">Text to use within the breadcrumbs item</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">html</th>
-
-<td class="govuk-c-table__cell ">string</td>
-
-<td class="govuk-c-table__cell ">No</td>
-
-<td class="govuk-c-table__cell ">HTML to use within the breadcrumbs item. If this is provided, the text argument will be ignored.</td>
+<td class="govuk-table__cell ">Array of breadcrumbs items</td>
 
 </tr>
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">href</th>
+<th class="govuk-table__header" scope="row">text</th>
 
-<td class="govuk-c-table__cell ">string</td>
+<td class="govuk-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">no</td>
+<td class="govuk-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Link for the breadcrumbs item. If not specified, breadcrumbs item is a normal list item</td>
+<td class="govuk-table__cell ">Text to use within the breadcrumbs item</td>
 
 </tr>
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">attributes</th>
+<th class="govuk-table__header" scope="row">html</th>
 
-<td class="govuk-c-table__cell ">object</td>
+<td class="govuk-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">No</td>
+<td class="govuk-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Any extra HTML attributes (for example data attributes) to add to the breadcrumbs container.</td>
+<td class="govuk-table__cell ">HTML to use within the breadcrumbs item. If this is provided, the text argument will be ignored.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">href</th>
+
+<td class="govuk-table__cell ">string</td>
+
+<td class="govuk-table__cell ">no</td>
+
+<td class="govuk-table__cell ">Link for the breadcrumbs item. If not specified, breadcrumbs item is a normal list item</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">attributes</th>
+
+<td class="govuk-table__cell ">object</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the breadcrumbs container.</td>
 
 </tr>
 

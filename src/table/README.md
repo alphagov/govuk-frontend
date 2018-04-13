@@ -16,37 +16,37 @@ Find out when to use the Table component in your service in the [GOV.UK Design S
 
 #### Markup
 
-    <table class="govuk-c-table">
+    <table class="govuk-table">
 
-      <tbody class="govuk-c-table__body">
+      <tbody class="govuk-table__body">
 
-        <tr class="govuk-c-table__row">
+        <tr class="govuk-table__row">
 
-          <td class="govuk-c-table__cell">January</td>
+          <td class="govuk-table__cell">January</td>
 
-          <td class="govuk-c-table__cell govuk-c-table__cell--numeric">£85</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£85</td>
 
-          <td class="govuk-c-table__cell govuk-c-table__cell--numeric">£95</td>
-
-        </tr>
-
-        <tr class="govuk-c-table__row">
-
-          <td class="govuk-c-table__cell">February</td>
-
-          <td class="govuk-c-table__cell govuk-c-table__cell--numeric">£75</td>
-
-          <td class="govuk-c-table__cell govuk-c-table__cell--numeric">£55</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£95</td>
 
         </tr>
 
-        <tr class="govuk-c-table__row">
+        <tr class="govuk-table__row">
 
-          <td class="govuk-c-table__cell">March</td>
+          <td class="govuk-table__cell">February</td>
 
-          <td class="govuk-c-table__cell govuk-c-table__cell--numeric">£165</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£75</td>
 
-          <td class="govuk-c-table__cell govuk-c-table__cell--numeric">£125</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£55</td>
+
+        </tr>
+
+        <tr class="govuk-table__row">
+
+          <td class="govuk-table__cell">March</td>
+
+          <td class="govuk-table__cell govuk-table__cell--numeric">£165</td>
+
+          <td class="govuk-table__cell govuk-table__cell--numeric">£125</td>
 
         </tr>
 
@@ -107,49 +107,49 @@ Find out when to use the Table component in your service in the [GOV.UK Design S
 
 #### Markup
 
-    <table class="govuk-c-table">
+    <table class="govuk-table">
 
-      <thead class="govuk-c-table__head">
-        <tr class="govuk-c-table__row">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
 
-          <th class="govuk-c-table__header" scope="col">Month you apply</th>
+          <th class="govuk-table__header" scope="col">Month you apply</th>
 
-          <th class="govuk-c-table__header govuk-c-table__header--numeric" scope="col">Rate for bicycles</th>
+          <th class="govuk-table__header govuk-table__header--numeric" scope="col">Rate for bicycles</th>
 
-          <th class="govuk-c-table__header govuk-c-table__header--numeric" scope="col">Rate for vehicles</th>
+          <th class="govuk-table__header govuk-table__header--numeric" scope="col">Rate for vehicles</th>
 
         </tr>
       </thead>
 
-      <tbody class="govuk-c-table__body">
+      <tbody class="govuk-table__body">
 
-        <tr class="govuk-c-table__row">
+        <tr class="govuk-table__row">
 
-          <td class="govuk-c-table__cell">January</td>
+          <td class="govuk-table__cell">January</td>
 
-          <td class="govuk-c-table__cell govuk-c-table__cell--numeric">£85</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£85</td>
 
-          <td class="govuk-c-table__cell govuk-c-table__cell--numeric">£95</td>
-
-        </tr>
-
-        <tr class="govuk-c-table__row">
-
-          <td class="govuk-c-table__cell">February</td>
-
-          <td class="govuk-c-table__cell govuk-c-table__cell--numeric">£75</td>
-
-          <td class="govuk-c-table__cell govuk-c-table__cell--numeric">£55</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£95</td>
 
         </tr>
 
-        <tr class="govuk-c-table__row">
+        <tr class="govuk-table__row">
 
-          <td class="govuk-c-table__cell">March</td>
+          <td class="govuk-table__cell">February</td>
 
-          <td class="govuk-c-table__cell govuk-c-table__cell--numeric">£165</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£75</td>
 
-          <td class="govuk-c-table__cell govuk-c-table__cell--numeric">£125</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£55</td>
+
+        </tr>
+
+        <tr class="govuk-table__row">
+
+          <td class="govuk-table__cell">March</td>
+
+          <td class="govuk-table__cell govuk-table__cell--numeric">£165</td>
+
+          <td class="govuk-table__cell govuk-table__cell--numeric">£125</td>
 
         </tr>
 
@@ -223,51 +223,51 @@ Find out when to use the Table component in your service in the [GOV.UK Design S
 
 #### Markup
 
-    <table class="govuk-c-table">
+    <table class="govuk-table">
 
-      <caption class="govuk-c-table__caption govuk-heading-m">Caption 1 : Months and rates</caption>
+      <caption class="govuk-table__caption govuk-heading-m">Caption 1 : Months and rates</caption>
 
-      <thead class="govuk-c-table__head">
-        <tr class="govuk-c-table__row">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
 
-          <th class="govuk-c-table__header" scope="col">Month you apply</th>
+          <th class="govuk-table__header" scope="col">Month you apply</th>
 
-          <th class="govuk-c-table__header govuk-c-table__header--numeric" scope="col">Rate for bicycles</th>
+          <th class="govuk-table__header govuk-table__header--numeric" scope="col">Rate for bicycles</th>
 
-          <th class="govuk-c-table__header govuk-c-table__header--numeric" scope="col">Rate for vehicles</th>
+          <th class="govuk-table__header govuk-table__header--numeric" scope="col">Rate for vehicles</th>
 
         </tr>
       </thead>
 
-      <tbody class="govuk-c-table__body">
+      <tbody class="govuk-table__body">
 
-        <tr class="govuk-c-table__row">
+        <tr class="govuk-table__row">
 
-          <th class="govuk-c-table__header" scope="row">January</th>
+          <th class="govuk-table__header" scope="row">January</th>
 
-          <td class="govuk-c-table__cell govuk-c-table__cell--numeric">£85</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£85</td>
 
-          <td class="govuk-c-table__cell govuk-c-table__cell--numeric">£95</td>
-
-        </tr>
-
-        <tr class="govuk-c-table__row">
-
-          <th class="govuk-c-table__header" scope="row">February</th>
-
-          <td class="govuk-c-table__cell govuk-c-table__cell--numeric">£75</td>
-
-          <td class="govuk-c-table__cell govuk-c-table__cell--numeric">£55</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£95</td>
 
         </tr>
 
-        <tr class="govuk-c-table__row">
+        <tr class="govuk-table__row">
 
-          <th class="govuk-c-table__header" scope="row">March</th>
+          <th class="govuk-table__header" scope="row">February</th>
 
-          <td class="govuk-c-table__cell govuk-c-table__cell--numeric">£165</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£75</td>
 
-          <td class="govuk-c-table__cell govuk-c-table__cell--numeric">£125</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£55</td>
+
+        </tr>
+
+        <tr class="govuk-table__row">
+
+          <th class="govuk-table__header" scope="row">March</th>
+
+          <td class="govuk-table__cell govuk-table__cell--numeric">£165</td>
+
+          <td class="govuk-table__cell govuk-table__cell--numeric">£125</td>
 
         </tr>
 
@@ -366,167 +366,167 @@ To show the button image you need to configure your app to show these assets. Be
 
 If you are using Nunjucks,then macros take the following arguments
 
-<table class="govuk-c-table">
+<table class="govuk-table">
 
-<thead class="govuk-c-table__head">
+<thead class="govuk-table__head">
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="col">Name</th>
+<th class="govuk-table__header" scope="col">Name</th>
 
-<th class="govuk-c-table__header" scope="col">format</th>
+<th class="govuk-table__header" scope="col">format</th>
 
-<th class="govuk-c-table__header" scope="col">Required</th>
+<th class="govuk-table__header" scope="col">Required</th>
 
-<th class="govuk-c-table__header" scope="col">Description</th>
+<th class="govuk-table__header" scope="col">Description</th>
 
 </tr>
 
 </thead>
 
-<tbody class="govuk-c-table__body">
+<tbody class="govuk-table__body">
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">classes</th>
+<th class="govuk-table__header" scope="row">classes</th>
 
-<td class="govuk-c-table__cell ">string</td>
+<td class="govuk-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">No</td>
+<td class="govuk-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Optional additional classes.</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">caption</th>
-
-<td class="govuk-c-table__cell ">string</td>
-
-<td class="govuk-c-table__cell ">No</td>
-
-<td class="govuk-c-table__cell ">Optional caption text.</td>
+<td class="govuk-table__cell ">Optional additional classes.</td>
 
 </tr>
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">captionClasses</th>
+<th class="govuk-table__header" scope="row">caption</th>
 
-<td class="govuk-c-table__cell ">string</td>
+<td class="govuk-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">No</td>
+<td class="govuk-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Optional classes for caption text size. Class should correspond to the available typography heading classes.</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">firstCellIsHeader</th>
-
-<td class="govuk-c-table__cell ">boolean</td>
-
-<td class="govuk-c-table__cell ">No</td>
-
-<td class="govuk-c-table__cell ">If set to true, first cell in table row will be a TH instead of a TD.</td>
+<td class="govuk-table__cell ">Optional caption text.</td>
 
 </tr>
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">head</th>
+<th class="govuk-table__header" scope="row">captionClasses</th>
 
-<td class="govuk-c-table__cell ">array</td>
+<td class="govuk-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">No</td>
+<td class="govuk-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Optional array of table head cells</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">rows</th>
-
-<td class="govuk-c-table__cell ">array</td>
-
-<td class="govuk-c-table__cell ">Yes</td>
-
-<td class="govuk-c-table__cell ">Array of table rows and cells.</td>
+<td class="govuk-table__cell ">Optional classes for caption text size. Class should correspond to the available typography heading classes.</td>
 
 </tr>
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">text</th>
+<th class="govuk-table__header" scope="row">firstCellIsHeader</th>
 
-<td class="govuk-c-table__cell ">string</td>
+<td class="govuk-table__cell ">boolean</td>
 
-<td class="govuk-c-table__cell ">No</td>
+<td class="govuk-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Text for cells in table head and rows.</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">html</th>
-
-<td class="govuk-c-table__cell ">string</td>
-
-<td class="govuk-c-table__cell ">No</td>
-
-<td class="govuk-c-table__cell ">HTML for cells in table head and rows. If this is specified, the text argument will be ignored.</td>
+<td class="govuk-table__cell ">If set to true, first cell in table row will be a TH instead of a TD.</td>
 
 </tr>
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">format</th>
+<th class="govuk-table__header" scope="row">head</th>
 
-<td class="govuk-c-table__cell ">string</td>
+<td class="govuk-table__cell ">array</td>
 
-<td class="govuk-c-table__cell ">No</td>
+<td class="govuk-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Specify format of any cell. Currently we only use "numeric".</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">colspan</th>
-
-<td class="govuk-c-table__cell ">number</td>
-
-<td class="govuk-c-table__cell ">No</td>
-
-<td class="govuk-c-table__cell ">Specify how many columns the cell extends.</td>
+<td class="govuk-table__cell ">Optional array of table head cells</td>
 
 </tr>
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">rowspan</th>
+<th class="govuk-table__header" scope="row">rows</th>
 
-<td class="govuk-c-table__cell ">number</td>
+<td class="govuk-table__cell ">array</td>
 
-<td class="govuk-c-table__cell ">No</td>
+<td class="govuk-table__cell ">Yes</td>
 
-<td class="govuk-c-table__cell ">Specify how many rows the cell extends.</td>
+<td class="govuk-table__cell ">Array of table rows and cells.</td>
 
 </tr>
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">attributes</th>
+<th class="govuk-table__header" scope="row">text</th>
 
-<td class="govuk-c-table__cell ">object</td>
+<td class="govuk-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">No</td>
+<td class="govuk-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Any extra HTML attributes (for example data attributes) to add to the table container.</td>
+<td class="govuk-table__cell ">Text for cells in table head and rows.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">html</th>
+
+<td class="govuk-table__cell ">string</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">HTML for cells in table head and rows. If this is specified, the text argument will be ignored.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">format</th>
+
+<td class="govuk-table__cell ">string</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Specify format of any cell. Currently we only use "numeric".</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">colspan</th>
+
+<td class="govuk-table__cell ">number</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Specify how many columns the cell extends.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">rowspan</th>
+
+<td class="govuk-table__cell ">number</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Specify how many rows the cell extends.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">attributes</th>
+
+<td class="govuk-table__cell ">object</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the table container.</td>
 
 </tr>
 

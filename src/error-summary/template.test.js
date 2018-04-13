@@ -16,28 +16,28 @@ describe('Error-summary', () => {
 
   it('aria-labelledby attribute matches the title id', () => {
     const $ = render('error-summary', examples.default)
-    const ariaAttr = $('.govuk-c-error-summary').attr('aria-labelledby')
+    const ariaAttr = $('.govuk-error-summary').attr('aria-labelledby')
 
     expect(ariaAttr).toEqual('error-summary-title')
   })
 
   it('has role=alert attribute', () => {
     const $ = render('error-summary', examples.default)
-    const roleAttr = $('.govuk-c-error-summary').attr('role')
+    const roleAttr = $('.govuk-error-summary').attr('role')
 
     expect(roleAttr).toEqual('alert')
   })
 
   it('has the correct tabindex attribute to be focussed', () => {
     const $ = render('error-summary', examples.default)
-    const tabindexAttr = $('.govuk-c-error-summary').attr('tabindex')
+    const tabindexAttr = $('.govuk-error-summary').attr('tabindex')
 
     expect(tabindexAttr).toEqual('-1')
   })
 
   it('renders title text', () => {
     const $ = render('error-summary', examples.default)
-    const summaryTitle = $('.govuk-c-error-summary__title').text().trim()
+    const summaryTitle = $('.govuk-error-summary__title').text().trim()
 
     expect(summaryTitle).toEqual('Message to alert the user to a problem goes here')
   })
@@ -47,7 +47,7 @@ describe('Error-summary', () => {
       titleText: 'Alert, <em>alert</em>'
     })
 
-    const summaryTitle = $('.govuk-c-error-summary__title').html().trim()
+    const summaryTitle = $('.govuk-error-summary__title').html().trim()
     expect(summaryTitle).toEqual('Alert, &lt;em&gt;alert&lt;/em&gt;')
   })
 
@@ -56,13 +56,13 @@ describe('Error-summary', () => {
       titleHtml: 'Alert, <em>alert</em>'
     })
 
-    const summaryTitle = $('.govuk-c-error-summary__title').html().trim()
+    const summaryTitle = $('.govuk-error-summary__title').html().trim()
     expect(summaryTitle).toEqual('Alert, <em>alert</em>')
   })
 
   it('renders description text', () => {
     const $ = render('error-summary', examples.default)
-    const summaryDescription = $('.govuk-c-error-summary__body p').text().trim()
+    const summaryDescription = $('.govuk-error-summary__body p').text().trim()
 
     expect(summaryDescription).toEqual('Optional description of the errors and how to correct them')
   })
@@ -72,7 +72,7 @@ describe('Error-summary', () => {
       descriptionText: 'See errors below (▼)'
     })
 
-    const summaryDescription = $('.govuk-c-error-summary__body p').html().trim()
+    const summaryDescription = $('.govuk-error-summary__body p').html().trim()
     expect(summaryDescription).toEqual('See errors below (&#x25BC;)')
   })
 
@@ -81,7 +81,7 @@ describe('Error-summary', () => {
       descriptionHtml: 'See <span>errors</span> below'
     })
 
-    const summaryDescription = $('.govuk-c-error-summary__body p').html().trim()
+    const summaryDescription = $('.govuk-error-summary__body p').html().trim()
     expect(summaryDescription).toEqual('See <span>errors</span> below')
   })
 
@@ -90,7 +90,7 @@ describe('Error-summary', () => {
       classes: 'extra-class one-more-class'
     })
 
-    const $component = $('.govuk-c-error-summary')
+    const $component = $('.govuk-error-summary')
     expect($component.hasClass('extra-class one-more-class')).toBeTruthy()
   })
 
@@ -102,14 +102,14 @@ describe('Error-summary', () => {
       }
     })
 
-    const $component = $('.govuk-c-error-summary')
+    const $component = $('.govuk-error-summary')
     expect($component.attr('first-attribute')).toEqual('true')
     expect($component.attr('second-attribute')).toEqual('false')
   })
 
   it('number of error items matches the number of items specified', () => {
     const $ = render('error-summary', examples.default)
-    const errorList = $('.govuk-c-error-summary .govuk-c-error-summary__list li')
+    const errorList = $('.govuk-error-summary .govuk-error-summary__list li')
 
     expect(errorList).toHaveLength(2)
   })
@@ -117,20 +117,20 @@ describe('Error-summary', () => {
   it('error list item is an anchor tag if href attribute is specified', () => {
     const $ = render('error-summary', examples.default)
 
-    const errorItem = $('.govuk-c-error-summary .govuk-c-error-summary__list li:first-child')
+    const errorItem = $('.govuk-error-summary .govuk-error-summary__list li:first-child')
     expect(errorItem.children().get(0).tagName).toEqual('a')
   })
 
   it('render anchor tag href attribute is correctly', () => {
     const $ = render('error-summary', examples.default)
 
-    const errorItem = $('.govuk-c-error-summary .govuk-c-error-summary__list li:first-child a')
+    const errorItem = $('.govuk-error-summary .govuk-error-summary__list li:first-child a')
     expect(errorItem.attr('href')).toEqual('#example-error-1')
   })
 
   it('renders error item text', () => {
     const $ = render('error-summary', examples.default)
-    const errorItemText = $('.govuk-c-error-summary .govuk-c-error-summary__list li:first-child').text().trim()
+    const errorItemText = $('.govuk-error-summary .govuk-error-summary__list li:first-child').text().trim()
 
     expect(errorItemText).toEqual('Descriptive link to the question with an error')
   })
@@ -144,7 +144,7 @@ describe('Error-summary', () => {
       ]
     })
 
-    const errorItemText = $('.govuk-c-error-summary .govuk-c-error-summary__list li').html().trim()
+    const errorItemText = $('.govuk-error-summary .govuk-error-summary__list li').html().trim()
 
     expect(errorItemText).toEqual('Descriptive link to the <b>question</b> with an error')
   })
@@ -158,7 +158,7 @@ describe('Error-summary', () => {
       ]
     })
 
-    const errorItemText = $('.govuk-c-error-summary .govuk-c-error-summary__list li').html().trim()
+    const errorItemText = $('.govuk-error-summary .govuk-error-summary__list li').html().trim()
 
     expect(errorItemText).toEqual('Descriptive link to the &lt;b&gt;question&lt;/b&gt; with an error')
   })
@@ -173,7 +173,7 @@ describe('Error-summary', () => {
       ]
     })
 
-    const errorItemText = $('.govuk-c-error-summary .govuk-c-error-summary__list li a').html().trim()
+    const errorItemText = $('.govuk-error-summary .govuk-error-summary__list li a').html().trim()
 
     expect(errorItemText).toEqual('Descriptive link to the <b>question</b> with an error')
   })
@@ -188,7 +188,7 @@ describe('Error-summary', () => {
       ]
     })
 
-    const errorItemText = $('.govuk-c-error-summary .govuk-c-error-summary__list li a').html().trim()
+    const errorItemText = $('.govuk-error-summary .govuk-error-summary__list li a').html().trim()
 
     expect(errorItemText).toEqual('Descriptive link to the &lt;b&gt;question&lt;/b&gt; with an error')
   })

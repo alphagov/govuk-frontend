@@ -16,15 +16,15 @@ Find out when to use the Textarea component in your service in the [GOV.UK Desig
 
 #### Markup
 
-    <div class="govuk-o-form-group"><label class="govuk-c-label" for="more-detail">
+    <div class="govuk-form-group"><label class="govuk-label" for="more-detail">
       Can you provide more detail?
 
-      <span class="govuk-c-label__hint">
+      <span class="govuk-label__hint">
         Don&#39;t include personal or financial information, eg your National Insurance number or credit card details.
       </span>
 
     </label>
-    <textarea id="more-detail" name="more-detail" rows="5" class="govuk-c-textarea"></textarea>
+    <textarea id="more-detail" name="more-detail" rows="5" class="govuk-textarea"></textarea>
 
     </div>
 
@@ -47,15 +47,15 @@ Find out when to use the Textarea component in your service in the [GOV.UK Desig
 
 #### Markup
 
-    <div class="govuk-o-form-group govuk-o-form-group--error"><label class="govuk-c-label" for="no-ni-reason">
+    <div class="govuk-form-group govuk-form-group--error"><label class="govuk-label" for="no-ni-reason">
       Why can&#39;t you provide a National Insurance number?
 
-      <span class="govuk-c-error-message">
+      <span class="govuk-error-message">
       You must provide an explanation
     </span>
 
     </label>
-    <textarea id="no-ni-reason" name="no-ni-reason" rows="5" class="govuk-c-textarea govuk-c-textarea--error"></textarea>
+    <textarea id="no-ni-reason" name="no-ni-reason" rows="5" class="govuk-textarea govuk-textarea--error"></textarea>
 
     </div>
 
@@ -80,11 +80,11 @@ Find out when to use the Textarea component in your service in the [GOV.UK Desig
 
 #### Markup
 
-    <div class="govuk-o-form-group"><label class="govuk-c-label" for="full-address">
+    <div class="govuk-form-group"><label class="govuk-label" for="full-address">
       Full address
 
     </label>
-    <textarea id="full-address" name="address" rows="5" class="govuk-c-textarea">221B Baker Street
+    <textarea id="full-address" name="address" rows="5" class="govuk-textarea">221B Baker Street
     London
     NW1 6XE
     </textarea>
@@ -110,11 +110,11 @@ Find out when to use the Textarea component in your service in the [GOV.UK Desig
 
 #### Markup
 
-    <div class="govuk-o-form-group"><label class="govuk-c-label" for="full-address">
+    <div class="govuk-form-group"><label class="govuk-label" for="full-address">
       Full address
 
     </label>
-    <textarea id="full-address" name="address" rows="8" class="govuk-c-textarea"></textarea>
+    <textarea id="full-address" name="address" rows="8" class="govuk-textarea"></textarea>
 
     </div>
 
@@ -159,119 +159,119 @@ To show the button image you need to configure your app to show these assets. Be
 
 If you are using Nunjucks,then macros take the following arguments
 
-<table class="govuk-c-table">
+<table class="govuk-table">
 
-<thead class="govuk-c-table__head">
+<thead class="govuk-table__head">
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="col">Name</th>
+<th class="govuk-table__header" scope="col">Name</th>
 
-<th class="govuk-c-table__header" scope="col">Type</th>
+<th class="govuk-table__header" scope="col">Type</th>
 
-<th class="govuk-c-table__header" scope="col">Required</th>
+<th class="govuk-table__header" scope="col">Required</th>
 
-<th class="govuk-c-table__header" scope="col">Description</th>
+<th class="govuk-table__header" scope="col">Description</th>
 
 </tr>
 
 </thead>
 
-<tbody class="govuk-c-table__body">
+<tbody class="govuk-table__body">
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">classes</th>
+<th class="govuk-table__header" scope="row">classes</th>
 
-<td class="govuk-c-table__cell ">string</td>
+<td class="govuk-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">No</td>
+<td class="govuk-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Optional additional classes</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">id</th>
-
-<td class="govuk-c-table__cell ">string</td>
-
-<td class="govuk-c-table__cell ">Yes</td>
-
-<td class="govuk-c-table__cell ">The id of the textarea</td>
+<td class="govuk-table__cell ">Optional additional classes</td>
 
 </tr>
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">name</th>
+<th class="govuk-table__header" scope="row">id</th>
 
-<td class="govuk-c-table__cell ">string</td>
+<td class="govuk-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">Yes</td>
+<td class="govuk-table__cell ">Yes</td>
 
-<td class="govuk-c-table__cell ">The name of the textarea, which is submitted with the form data</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">rows</th>
-
-<td class="govuk-c-table__cell ">string</td>
-
-<td class="govuk-c-table__cell ">No</td>
-
-<td class="govuk-c-table__cell ">Optional number of textarea rows (default is 5 rows)</td>
+<td class="govuk-table__cell ">The id of the textarea</td>
 
 </tr>
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">value</th>
+<th class="govuk-table__header" scope="row">name</th>
 
-<td class="govuk-c-table__cell ">string</td>
+<td class="govuk-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">No</td>
+<td class="govuk-table__cell ">Yes</td>
 
-<td class="govuk-c-table__cell ">Optional initial value of the textarea</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">label</th>
-
-<td class="govuk-c-table__cell ">object</td>
-
-<td class="govuk-c-table__cell ">Yes</td>
-
-<td class="govuk-c-table__cell ">Arguments for the label component</td>
+<td class="govuk-table__cell ">The name of the textarea, which is submitted with the form data</td>
 
 </tr>
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">errorMessage</th>
+<th class="govuk-table__header" scope="row">rows</th>
 
-<td class="govuk-c-table__cell ">object</td>
+<td class="govuk-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">No</td>
+<td class="govuk-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Arguments for the error message component</td>
+<td class="govuk-table__cell ">Optional number of textarea rows (default is 5 rows)</td>
 
 </tr>
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">attributes</th>
+<th class="govuk-table__header" scope="row">value</th>
 
-<td class="govuk-c-table__cell ">object</td>
+<td class="govuk-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">No</td>
+<td class="govuk-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Any extra HTML attributes (for example data attributes) to add to the textarea tag</td>
+<td class="govuk-table__cell ">Optional initial value of the textarea</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">label</th>
+
+<td class="govuk-table__cell ">object</td>
+
+<td class="govuk-table__cell ">Yes</td>
+
+<td class="govuk-table__cell ">Arguments for the label component</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">errorMessage</th>
+
+<td class="govuk-table__cell ">object</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Arguments for the error message component</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">attributes</th>
+
+<td class="govuk-table__cell ">object</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the textarea tag</td>
 
 </tr>
 

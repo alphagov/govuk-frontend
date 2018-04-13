@@ -16,7 +16,7 @@ describe('Panel', () => {
 
   it('renders title text', () => {
     const $ = render('panel', examples.default)
-    const panelTitle = $('.govuk-c-panel__title').text().trim()
+    const panelTitle = $('.govuk-panel__title').text().trim()
 
     expect(panelTitle).toEqual('Application complete')
   })
@@ -26,7 +26,7 @@ describe('Panel', () => {
       titleText: 'Application <strong>not</strong> complete'
     })
 
-    const panelTitle = $('.govuk-c-panel__title').html().trim()
+    const panelTitle = $('.govuk-panel__title').html().trim()
     expect(panelTitle).toEqual('Application &lt;strong&gt;not&lt;/strong&gt; complete')
   })
 
@@ -35,13 +35,13 @@ describe('Panel', () => {
       titleHtml: 'Application <strong>not</strong> complete'
     })
 
-    const panelTitle = $('.govuk-c-panel__title').html().trim()
+    const panelTitle = $('.govuk-panel__title').html().trim()
     expect(panelTitle).toEqual('Application <strong>not</strong> complete')
   })
 
   it('renders body text', () => {
     const $ = render('panel', examples.default)
-    const panelBodyText = $('.govuk-c-panel__body').text().trim()
+    const panelBodyText = $('.govuk-panel__body').text().trim()
 
     expect(panelBodyText).toEqual('Your reference number: HDJ2123F')
   })
@@ -51,7 +51,7 @@ describe('Panel', () => {
       text: 'Your reference number<br><strong>HDJ2123F</strong>'
     })
 
-    const panelBodyText = $('.govuk-c-panel__body').html().trim()
+    const panelBodyText = $('.govuk-panel__body').html().trim()
     expect(panelBodyText).toEqual('Your reference number&lt;br&gt;&lt;strong&gt;HDJ2123F&lt;/strong&gt;')
   })
 
@@ -60,7 +60,7 @@ describe('Panel', () => {
       html: 'Your reference number<br><strong>HDJ2123F</strong>'
     })
 
-    const panelBodyText = $('.govuk-c-panel__body').html().trim()
+    const panelBodyText = $('.govuk-panel__body').html().trim()
     expect(panelBodyText).toEqual('Your reference number<br><strong>HDJ2123F</strong>')
   })
 
@@ -69,7 +69,7 @@ describe('Panel', () => {
       classes: 'extra-class one-more-class'
     })
 
-    const $component = $('.govuk-c-panel')
+    const $component = $('.govuk-panel')
     expect($component.hasClass('extra-class one-more-class')).toBeTruthy()
   })
 
@@ -81,7 +81,7 @@ describe('Panel', () => {
       }
     })
 
-    const $component = $('.govuk-c-panel')
+    const $component = $('.govuk-panel')
     expect($component.attr('first-attribute')).toEqual('true')
     expect($component.attr('second-attribute')).toEqual('false')
   })

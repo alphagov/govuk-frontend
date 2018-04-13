@@ -1,6 +1,6 @@
 {% from "label/macro.njk" import govukLabel %}
 
-<div class="govuk-o-form-group {%- if params.errorMessage %} govuk-o-form-group--error{% endif %}">
+<div class="govuk-form-group {%- if params.errorMessage %} govuk-form-group--error{% endif %}">
 
   {{- govukLabel({
     html: params.label.html,
@@ -13,7 +13,7 @@
     for: params.id
   }) -}}
 
-  <input class="govuk-c-input {%- if params.classes %} {{ params.classes }}{% endif %} {%- if params.errorMessage %} govuk-c-input--error{% endif %}" id="{{ params.id }}" name="{{ params.name }}" type="{{ params.type | default('text') }}"
+  <input class="govuk-input {%- if params.classes %} {{ params.classes }}{% endif %} {%- if params.errorMessage %} govuk-input--error{% endif %}" id="{{ params.id }}" name="{{ params.name }}" type="{{ params.type | default('text') }}"
   {%- if params.value %} value="{{ params.value}}"{% endif %}
   {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor -%}>
 </div>

@@ -1,11 +1,11 @@
 {% from "warning-text/macro.njk" import govukWarningText -%}
 
-<div class="govuk-c-warning-text {{- ' ' + params.classes if params.classes}}"
+<div class="govuk-warning-text {{- ' ' + params.classes if params.classes}}"
   {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor -%}
   >
-  <span class="govuk-c-warning-text__icon govuk-o-circle" aria-hidden="true">!</span>
-  <strong class="govuk-c-warning-text__text">
-    <span class="govuk-c-warning-text__assistive">{{ params.iconFallbackText }}</span>
+  <span class="govuk-warning-text__icon govuk-circle" aria-hidden="true">!</span>
+  <strong class="govuk-warning-text__text">
+    <span class="govuk-warning-text__assistive">{{ params.iconFallbackText }}</span>
     {{ params.html | safe if params.html else params.text }}
   </strong>
 </div>

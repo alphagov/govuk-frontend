@@ -1,16 +1,16 @@
-<div class="govuk-c-error-summary
+<div class="govuk-error-summary
   {%- if params.classes %} {{ params.classes }}{% endif %}" aria-labelledby="error-summary-title" role="alert" tabindex="-1"
   {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
-  <h2 class="govuk-c-error-summary__title" id="error-summary-title">
+  <h2 class="govuk-error-summary__title" id="error-summary-title">
     {{ params.titleHtml | safe if params.titleHtml else params.titleText }}
   </h2>
-  <div class="govuk-c-error-summary__body">
+  <div class="govuk-error-summary__body">
     {% if params.descriptionHtml or params.descriptionText %}
     <p>
       {{ params.descriptionHtml | safe if params.descriptionHtml else params.descriptionText }}
     </p>
     {% endif %}
-    <ul class="govuk-list govuk-c-error-summary__list">
+    <ul class="govuk-list govuk-error-summary__list">
     {% for item in params.errorList %}
       <li>
       {% if item.href %}

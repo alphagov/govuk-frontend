@@ -17,11 +17,11 @@ describe('Textarea', () => {
 
     it('renders with classes', () => {
       const $ = render('textarea', {
-        classes: 'app-c-textarea--custom-modifier'
+        classes: 'app-textarea--custom-modifier'
       })
 
-      const $component = $('.govuk-c-textarea')
-      expect($component.hasClass('app-c-textarea--custom-modifier')).toBeTruthy()
+      const $component = $('.govuk-textarea')
+      expect($component.hasClass('app-textarea--custom-modifier')).toBeTruthy()
     })
 
     it('renders with id', () => {
@@ -29,7 +29,7 @@ describe('Textarea', () => {
         id: 'my-textarea'
       })
 
-      const $component = $('.govuk-c-textarea')
+      const $component = $('.govuk-textarea')
       expect($component.attr('id')).toEqual('my-textarea')
     })
 
@@ -38,7 +38,7 @@ describe('Textarea', () => {
         name: 'my-textarea-name'
       })
 
-      const $component = $('.govuk-c-textarea')
+      const $component = $('.govuk-textarea')
       expect($component.attr('name')).toEqual('my-textarea-name')
     })
 
@@ -47,14 +47,14 @@ describe('Textarea', () => {
         rows: '4'
       })
 
-      const $component = $('.govuk-c-textarea')
+      const $component = $('.govuk-textarea')
       expect($component.attr('rows')).toEqual('4')
     })
 
     it('renders with default number of rows', () => {
       const $ = render('textarea', {})
 
-      const $component = $('.govuk-c-textarea')
+      const $component = $('.govuk-textarea')
       expect($component.attr('rows')).toEqual('5')
     })
 
@@ -63,7 +63,7 @@ describe('Textarea', () => {
         value: '221B Baker Street\nLondon\nNW1 6XE\n'
       })
 
-      const $component = $('.govuk-c-textarea')
+      const $component = $('.govuk-textarea')
       expect($component.text()).toEqual('221B Baker Street\nLondon\nNW1 6XE\n')
     })
 
@@ -74,7 +74,7 @@ describe('Textarea', () => {
         }
       })
 
-      const $component = $('.govuk-c-textarea')
+      const $component = $('.govuk-textarea')
       expect($component.attr('data-attribute')).toEqual('my data value')
     })
   })
@@ -91,7 +91,7 @@ describe('Textarea', () => {
         }
       })
 
-      const $component = $('.govuk-o-form-group > .govuk-c-textarea')
+      const $component = $('.govuk-form-group > .govuk-textarea')
       expect($component.length).toBeTruthy()
     })
 
@@ -103,7 +103,7 @@ describe('Textarea', () => {
         }
       })
 
-      expect(htmlWithClassName($, '.govuk-c-label')).toMatchSnapshot()
+      expect(htmlWithClassName($, '.govuk-label')).toMatchSnapshot()
     })
 
     it('renders label with "for" attribute reffering the textarea "id"', () => {
@@ -114,7 +114,7 @@ describe('Textarea', () => {
         }
       })
 
-      const $label = $('.govuk-c-label')
+      const $label = $('.govuk-label')
       expect($label.attr('for')).toEqual('my-textarea')
     })
 
@@ -125,7 +125,7 @@ describe('Textarea', () => {
         }
       })
 
-      expect(htmlWithClassName($, '.govuk-c-error-message')).toMatchSnapshot()
+      expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
     })
 
     it('has error class when rendered with error message', () => {
@@ -135,8 +135,8 @@ describe('Textarea', () => {
         }
       })
 
-      const $component = $('.govuk-c-textarea')
-      expect($component.hasClass('govuk-c-textarea--error')).toBeTruthy()
+      const $component = $('.govuk-textarea')
+      expect($component.hasClass('govuk-textarea--error')).toBeTruthy()
     })
   })
 })

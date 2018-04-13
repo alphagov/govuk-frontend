@@ -16,42 +16,42 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
 
 #### Markup
 
-      <div class="govuk-o-form-group">
-      <fieldset class="govuk-c-fieldset">
+      <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset">
 
-        <legend class="govuk-c-fieldset__legend">
+        <legend class="govuk-fieldset__legend">
           What is your date of birth?
 
-          <span class="govuk-c-fieldset__hint">For example, 31 3 1980</span>
+          <span class="govuk-fieldset__hint">For example, 31 3 1980</span>
 
         </legend>
 
-      <div class="govuk-c-date-input" id="dob">
+      <div class="govuk-date-input" id="dob">
 
-          <div class="govuk-c-date-input__item govuk-c-date-input__item--day">
-            <div class="govuk-o-form-group"><label class="govuk-c-label govuk-c-date-input__label" for="dob-day">
+          <div class="govuk-date-input__item govuk-date-input__item--day">
+            <div class="govuk-form-group"><label class="govuk-label govuk-date-input__label" for="dob-day">
             Day
 
           </label>
-          <input class="govuk-c-input govuk-c-date-input__input" id="dob-day" name="dob-day" type="number" pattern="[0-9]*">
+          <input class="govuk-input govuk-date-input__input" id="dob-day" name="dob-day" type="number" pattern="[0-9]*">
           </div>
           </div>
 
-          <div class="govuk-c-date-input__item govuk-c-date-input__item--month">
-            <div class="govuk-o-form-group"><label class="govuk-c-label govuk-c-date-input__label" for="dob-month">
+          <div class="govuk-date-input__item govuk-date-input__item--month">
+            <div class="govuk-form-group"><label class="govuk-label govuk-date-input__label" for="dob-month">
             Month
 
           </label>
-          <input class="govuk-c-input govuk-c-date-input__input" id="dob-month" name="dob-month" type="number" pattern="[0-9]*">
+          <input class="govuk-input govuk-date-input__input" id="dob-month" name="dob-month" type="number" pattern="[0-9]*">
           </div>
           </div>
 
-          <div class="govuk-c-date-input__item govuk-c-date-input__item--year">
-            <div class="govuk-o-form-group"><label class="govuk-c-label govuk-c-date-input__label" for="dob-year">
+          <div class="govuk-date-input__item govuk-date-input__item--year">
+            <div class="govuk-form-group"><label class="govuk-label govuk-date-input__label" for="dob-year">
             Year
 
           </label>
-          <input class="govuk-c-input govuk-c-date-input__input" id="dob-year" name="dob-year" type="number" pattern="[0-9]*">
+          <input class="govuk-input govuk-date-input__input" id="dob-year" name="dob-year" type="number" pattern="[0-9]*">
           </div>
           </div>
 
@@ -89,46 +89,46 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
 
 #### Markup
 
-      <div class="govuk-o-form-group govuk-o-form-group--error">
-      <fieldset class="govuk-c-fieldset">
+      <div class="govuk-form-group govuk-form-group--error">
+      <fieldset class="govuk-fieldset">
 
-        <legend class="govuk-c-fieldset__legend">
+        <legend class="govuk-fieldset__legend">
           What is your date of birth?
 
-          <span class="govuk-c-fieldset__hint">For example, 31 3 1980</span>
+          <span class="govuk-fieldset__hint">For example, 31 3 1980</span>
 
-          <span class="govuk-c-error-message">
+          <span class="govuk-error-message">
           Error message goes here
         </span>
 
         </legend>
 
-      <div class="govuk-c-date-input" id="dob-errors">
+      <div class="govuk-date-input" id="dob-errors">
 
-          <div class="govuk-c-date-input__item govuk-c-date-input__item--day">
-            <div class="govuk-o-form-group"><label class="govuk-c-label govuk-c-date-input__label" for="dob-errors-day">
+          <div class="govuk-date-input__item govuk-date-input__item--day">
+            <div class="govuk-form-group"><label class="govuk-label govuk-date-input__label" for="dob-errors-day">
             Day
 
           </label>
-          <input class="govuk-c-input govuk-c-date-input__input govuk-c-input--error" id="dob-errors-day" name="undefined-day" type="number" pattern="[0-9]*">
+          <input class="govuk-input govuk-date-input__input govuk-input--error" id="dob-errors-day" name="undefined-day" type="number" pattern="[0-9]*">
           </div>
           </div>
 
-          <div class="govuk-c-date-input__item govuk-c-date-input__item--month">
-            <div class="govuk-o-form-group"><label class="govuk-c-label govuk-c-date-input__label" for="dob-errors-month">
+          <div class="govuk-date-input__item govuk-date-input__item--month">
+            <div class="govuk-form-group"><label class="govuk-label govuk-date-input__label" for="dob-errors-month">
             Month
 
           </label>
-          <input class="govuk-c-input govuk-c-date-input__input govuk-c-input--error" id="dob-errors-month" name="undefined-month" type="number" pattern="[0-9]*">
+          <input class="govuk-input govuk-date-input__input govuk-input--error" id="dob-errors-month" name="undefined-month" type="number" pattern="[0-9]*">
           </div>
           </div>
 
-          <div class="govuk-c-date-input__item govuk-c-date-input__item--year">
-            <div class="govuk-o-form-group"><label class="govuk-c-label govuk-c-date-input__label" for="dob-errors-year">
+          <div class="govuk-date-input__item govuk-date-input__item--year">
+            <div class="govuk-form-group"><label class="govuk-label govuk-date-input__label" for="dob-errors-year">
             Year
 
           </label>
-          <input class="govuk-c-input govuk-c-date-input__input govuk-c-input--error" id="dob-errors-year" name="undefined-year" type="number" pattern="[0-9]*">
+          <input class="govuk-input govuk-date-input__input govuk-input--error" id="dob-errors-year" name="undefined-year" type="number" pattern="[0-9]*">
           </div>
           </div>
 
@@ -152,15 +152,15 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
       "items": [
         {
           "name": "day",
-          "classes": "govuk-c-input--error"
+          "classes": "govuk-input--error"
         },
         {
           "name": "month",
-          "classes": "govuk-c-input--error"
+          "classes": "govuk-input--error"
         },
         {
           "name": "year",
-          "classes": "govuk-c-input--error"
+          "classes": "govuk-input--error"
         }
       ]
     }) }}
@@ -171,46 +171,46 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
 
 #### Markup
 
-      <div class="govuk-o-form-group govuk-o-form-group--error">
-      <fieldset class="govuk-c-fieldset">
+      <div class="govuk-form-group govuk-form-group--error">
+      <fieldset class="govuk-fieldset">
 
-        <legend class="govuk-c-fieldset__legend">
+        <legend class="govuk-fieldset__legend">
           What is your date of birth?
 
-          <span class="govuk-c-fieldset__hint">For example, 31 3 1980</span>
+          <span class="govuk-fieldset__hint">For example, 31 3 1980</span>
 
-          <span class="govuk-c-error-message">
+          <span class="govuk-error-message">
           Error message goes here
         </span>
 
         </legend>
 
-      <div class="govuk-c-date-input" id="dob-day-error">
+      <div class="govuk-date-input" id="dob-day-error">
 
-          <div class="govuk-c-date-input__item govuk-c-date-input__item--day">
-            <div class="govuk-o-form-group"><label class="govuk-c-label govuk-c-date-input__label" for="dob-day-error-day">
+          <div class="govuk-date-input__item govuk-date-input__item--day">
+            <div class="govuk-form-group"><label class="govuk-label govuk-date-input__label" for="dob-day-error-day">
             Day
 
           </label>
-          <input class="govuk-c-input govuk-c-date-input__input govuk-c-input--error" id="dob-day-error-day" name="dob-day-error-day" type="number" pattern="[0-9]*">
+          <input class="govuk-input govuk-date-input__input govuk-input--error" id="dob-day-error-day" name="dob-day-error-day" type="number" pattern="[0-9]*">
           </div>
           </div>
 
-          <div class="govuk-c-date-input__item govuk-c-date-input__item--month">
-            <div class="govuk-o-form-group"><label class="govuk-c-label govuk-c-date-input__label" for="dob-day-error-month">
+          <div class="govuk-date-input__item govuk-date-input__item--month">
+            <div class="govuk-form-group"><label class="govuk-label govuk-date-input__label" for="dob-day-error-month">
             Month
 
           </label>
-          <input class="govuk-c-input govuk-c-date-input__input" id="dob-day-error-month" name="dob-day-error-month" type="number" pattern="[0-9]*">
+          <input class="govuk-input govuk-date-input__input" id="dob-day-error-month" name="dob-day-error-month" type="number" pattern="[0-9]*">
           </div>
           </div>
 
-          <div class="govuk-c-date-input__item govuk-c-date-input__item--year">
-            <div class="govuk-o-form-group"><label class="govuk-c-label govuk-c-date-input__label" for="dob-day-error-year">
+          <div class="govuk-date-input__item govuk-date-input__item--year">
+            <div class="govuk-form-group"><label class="govuk-label govuk-date-input__label" for="dob-day-error-year">
             Year
 
           </label>
-          <input class="govuk-c-input govuk-c-date-input__input" id="dob-day-error-year" name="dob-day-error-year" type="number" pattern="[0-9]*">
+          <input class="govuk-input govuk-date-input__input" id="dob-day-error-year" name="dob-day-error-year" type="number" pattern="[0-9]*">
           </div>
           </div>
 
@@ -235,7 +235,7 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
       "items": [
         {
           "name": "day",
-          "classes": "govuk-c-input--error"
+          "classes": "govuk-input--error"
         },
         {
           "name": "month"
@@ -252,46 +252,46 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
 
 #### Markup
 
-      <div class="govuk-o-form-group govuk-o-form-group--error">
-      <fieldset class="govuk-c-fieldset">
+      <div class="govuk-form-group govuk-form-group--error">
+      <fieldset class="govuk-fieldset">
 
-        <legend class="govuk-c-fieldset__legend">
+        <legend class="govuk-fieldset__legend">
           What is your date of birth?
 
-          <span class="govuk-c-fieldset__hint">For example, 31 3 1980</span>
+          <span class="govuk-fieldset__hint">For example, 31 3 1980</span>
 
-          <span class="govuk-c-error-message">
+          <span class="govuk-error-message">
           Error message goes here
         </span>
 
         </legend>
 
-      <div class="govuk-c-date-input" id="dob-month-error">
+      <div class="govuk-date-input" id="dob-month-error">
 
-          <div class="govuk-c-date-input__item govuk-c-date-input__item--day">
-            <div class="govuk-o-form-group"><label class="govuk-c-label govuk-c-date-input__label" for="dob-month-error-day">
+          <div class="govuk-date-input__item govuk-date-input__item--day">
+            <div class="govuk-form-group"><label class="govuk-label govuk-date-input__label" for="dob-month-error-day">
             Day
 
           </label>
-          <input class="govuk-c-input govuk-c-date-input__input" id="dob-month-error-day" name="dob-month-error-day" type="number" pattern="[0-9]*">
+          <input class="govuk-input govuk-date-input__input" id="dob-month-error-day" name="dob-month-error-day" type="number" pattern="[0-9]*">
           </div>
           </div>
 
-          <div class="govuk-c-date-input__item govuk-c-date-input__item--month">
-            <div class="govuk-o-form-group"><label class="govuk-c-label govuk-c-date-input__label" for="dob-month-error-month">
+          <div class="govuk-date-input__item govuk-date-input__item--month">
+            <div class="govuk-form-group"><label class="govuk-label govuk-date-input__label" for="dob-month-error-month">
             Month
 
           </label>
-          <input class="govuk-c-input govuk-c-date-input__input govuk-c-input--error" id="dob-month-error-month" name="dob-month-error-month" type="number" pattern="[0-9]*">
+          <input class="govuk-input govuk-date-input__input govuk-input--error" id="dob-month-error-month" name="dob-month-error-month" type="number" pattern="[0-9]*">
           </div>
           </div>
 
-          <div class="govuk-c-date-input__item govuk-c-date-input__item--year">
-            <div class="govuk-o-form-group"><label class="govuk-c-label govuk-c-date-input__label" for="dob-month-error-year">
+          <div class="govuk-date-input__item govuk-date-input__item--year">
+            <div class="govuk-form-group"><label class="govuk-label govuk-date-input__label" for="dob-month-error-year">
             Year
 
           </label>
-          <input class="govuk-c-input govuk-c-date-input__input" id="dob-month-error-year" name="dob-month-error-year" type="number" pattern="[0-9]*">
+          <input class="govuk-input govuk-date-input__input" id="dob-month-error-year" name="dob-month-error-year" type="number" pattern="[0-9]*">
           </div>
           </div>
 
@@ -319,7 +319,7 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
         },
         {
           "name": "month",
-          "classes": "govuk-c-input--error"
+          "classes": "govuk-input--error"
         },
         {
           "name": "year"
@@ -333,46 +333,46 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
 
 #### Markup
 
-      <div class="govuk-o-form-group govuk-o-form-group--error">
-      <fieldset class="govuk-c-fieldset">
+      <div class="govuk-form-group govuk-form-group--error">
+      <fieldset class="govuk-fieldset">
 
-        <legend class="govuk-c-fieldset__legend">
+        <legend class="govuk-fieldset__legend">
           What is your date of birth?
 
-          <span class="govuk-c-fieldset__hint">For example, 31 3 1980</span>
+          <span class="govuk-fieldset__hint">For example, 31 3 1980</span>
 
-          <span class="govuk-c-error-message">
+          <span class="govuk-error-message">
           Error message goes here
         </span>
 
         </legend>
 
-      <div class="govuk-c-date-input" id="dob-year-error">
+      <div class="govuk-date-input" id="dob-year-error">
 
-          <div class="govuk-c-date-input__item govuk-c-date-input__item--day">
-            <div class="govuk-o-form-group"><label class="govuk-c-label govuk-c-date-input__label" for="dob-year-error-day">
+          <div class="govuk-date-input__item govuk-date-input__item--day">
+            <div class="govuk-form-group"><label class="govuk-label govuk-date-input__label" for="dob-year-error-day">
             Day
 
           </label>
-          <input class="govuk-c-input govuk-c-date-input__input" id="dob-year-error-day" name="dob-year-error-day" type="number" pattern="[0-9]*">
+          <input class="govuk-input govuk-date-input__input" id="dob-year-error-day" name="dob-year-error-day" type="number" pattern="[0-9]*">
           </div>
           </div>
 
-          <div class="govuk-c-date-input__item govuk-c-date-input__item--month">
-            <div class="govuk-o-form-group"><label class="govuk-c-label govuk-c-date-input__label" for="dob-year-error-month">
+          <div class="govuk-date-input__item govuk-date-input__item--month">
+            <div class="govuk-form-group"><label class="govuk-label govuk-date-input__label" for="dob-year-error-month">
             Month
 
           </label>
-          <input class="govuk-c-input govuk-c-date-input__input" id="dob-year-error-month" name="dob-year-error-month" type="number" pattern="[0-9]*">
+          <input class="govuk-input govuk-date-input__input" id="dob-year-error-month" name="dob-year-error-month" type="number" pattern="[0-9]*">
           </div>
           </div>
 
-          <div class="govuk-c-date-input__item govuk-c-date-input__item--year">
-            <div class="govuk-o-form-group"><label class="govuk-c-label govuk-c-date-input__label" for="dob-year-error-year">
+          <div class="govuk-date-input__item govuk-date-input__item--year">
+            <div class="govuk-form-group"><label class="govuk-label govuk-date-input__label" for="dob-year-error-year">
             Year
 
           </label>
-          <input class="govuk-c-input govuk-c-date-input__input govuk-c-input--error" id="dob-year-error-year" name="dob-year-error-year" type="number" pattern="[0-9]*">
+          <input class="govuk-input govuk-date-input__input govuk-input--error" id="dob-year-error-year" name="dob-year-error-year" type="number" pattern="[0-9]*">
           </div>
           </div>
 
@@ -403,7 +403,7 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
         },
         {
           "name": "year",
-          "classes": "govuk-c-input--error"
+          "classes": "govuk-input--error"
         }
       ]
     }) }}
@@ -436,107 +436,107 @@ To show the button image you need to configure your app to show these assets. Be
 
 If you are using Nunjucks,then macros take the following arguments
 
-<table class="govuk-c-table">
+<table class="govuk-table">
 
-<thead class="govuk-c-table__head">
+<thead class="govuk-table__head">
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="col">Name</th>
+<th class="govuk-table__header" scope="col">Name</th>
 
-<th class="govuk-c-table__header" scope="col">Type</th>
+<th class="govuk-table__header" scope="col">Type</th>
 
-<th class="govuk-c-table__header" scope="col">Required</th>
+<th class="govuk-table__header" scope="col">Required</th>
 
-<th class="govuk-c-table__header" scope="col">Description</th>
+<th class="govuk-table__header" scope="col">Description</th>
 
 </tr>
 
 </thead>
 
-<tbody class="govuk-c-table__body">
+<tbody class="govuk-table__body">
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">classes</th>
+<th class="govuk-table__header" scope="row">classes</th>
 
-<td class="govuk-c-table__cell ">string</td>
+<td class="govuk-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">No</td>
+<td class="govuk-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Optional additional classes</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">id</th>
-
-<td class="govuk-c-table__cell ">string</td>
-
-<td class="govuk-c-table__cell ">No</td>
-
-<td class="govuk-c-table__cell ">Optional id. This is used for the main component and to compose the items' ids.</td>
+<td class="govuk-table__cell ">Optional additional classes</td>
 
 </tr>
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">name</th>
+<th class="govuk-table__header" scope="row">id</th>
 
-<td class="govuk-c-table__cell ">string</td>
+<td class="govuk-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">No</td>
+<td class="govuk-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Optional name. This is used to compose the items' names.</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">attributes</th>
-
-<td class="govuk-c-table__cell ">object</td>
-
-<td class="govuk-c-table__cell ">No</td>
-
-<td class="govuk-c-table__cell ">Any extra HTML attributes (for example data attributes) to add to the date div tag.</td>
+<td class="govuk-table__cell ">Optional id. This is used for the main component and to compose the items' ids.</td>
 
 </tr>
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">items</th>
+<th class="govuk-table__header" scope="row">name</th>
 
-<td class="govuk-c-table__cell ">array</td>
+<td class="govuk-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">Yes</td>
+<td class="govuk-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">An array of input objects with name, value and optional classes</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">errorMessage</th>
-
-<td class="govuk-c-table__cell ">object</td>
-
-<td class="govuk-c-table__cell ">No</td>
-
-<td class="govuk-c-table__cell ">Optional error message. See errorMessage component.</td>
+<td class="govuk-table__cell ">Optional name. This is used to compose the items' names.</td>
 
 </tr>
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">fieldset</th>
+<th class="govuk-table__header" scope="row">attributes</th>
 
-<td class="govuk-c-table__cell ">object</td>
+<td class="govuk-table__cell ">object</td>
 
-<td class="govuk-c-table__cell ">No</td>
+<td class="govuk-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Arguments for the fieldset component (e.g. legendText, legendHintText, errorMessage). See fieldset component.</td>
+<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the date div tag.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">items</th>
+
+<td class="govuk-table__cell ">array</td>
+
+<td class="govuk-table__cell ">Yes</td>
+
+<td class="govuk-table__cell ">An array of input objects with name, value and optional classes</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">errorMessage</th>
+
+<td class="govuk-table__cell ">object</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Optional error message. See errorMessage component.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">fieldset</th>
+
+<td class="govuk-table__cell ">object</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Arguments for the fieldset component (e.g. legendText, legendHintText, errorMessage). See fieldset component.</td>
 
 </tr>
 

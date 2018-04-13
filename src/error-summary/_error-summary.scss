@@ -21,7 +21,7 @@
 
 @include govuk-exports("error-summary") {
 
-  .govuk-c-error-summary {
+  .govuk-error-summary {
     @include govuk-text-colour;
     @include govuk-responsive-padding($govuk-spacing-responsive-4);
     @include govuk-responsive-margin($govuk-spacing-responsive-8, "bottom");
@@ -34,14 +34,14 @@
     }
   }
 
-  .govuk-c-error-summary__title {
+  .govuk-error-summary__title {
     @include govuk-font-bold-24;
 
     margin-top: 0;
     @include govuk-responsive-margin($govuk-spacing-responsive-4, "bottom");
   }
 
-  .govuk-c-error-summary__body {
+  .govuk-error-summary__body {
     @include govuk-font-regular-19;
 
     p {
@@ -51,12 +51,12 @@
   }
 
   // Cross-component class - adjusts styling of list component
-  .govuk-c-error-summary__list {
+  .govuk-error-summary__list {
     margin-top: 0;
     margin-bottom: 0;
   }
 
-  .govuk-c-error-summary__list a {
+  .govuk-error-summary__list a {
     @include govuk-focusable-fill;
     @include govuk-typography-weight-bold;
 

@@ -20,7 +20,7 @@
 
 @include govuk-exports("back-link") {
 
-  .govuk-c-back-link {
+  .govuk-back-link {
     @include govuk-font-regular-16;
     @include govuk-link-common;
     @include govuk-link-style-text;
@@ -61,7 +61,7 @@
   // Begin adjustments for font baseline offset
   // These should be removed when the font is updated with the correct baseline
 
-  .govuk-c-back-link:before {
+  .govuk-back-link:before {
     $offset: 1px;
 
     top: $offset * -1;

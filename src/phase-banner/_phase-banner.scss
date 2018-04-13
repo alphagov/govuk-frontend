@@ -2,7 +2,7 @@
 @import "../tag/tag";
 
 @include govuk-exports("phase-banner") {
-  .govuk-c-phase-banner {
+  .govuk-phase-banner {
     @include govuk-font-regular-16;
     @include govuk-text-colour;
 
@@ -12,16 +12,16 @@
     border-bottom: 1px solid $govuk-border-colour;
   }
 
-  .govuk-c-phase-banner__content {
+  .govuk-phase-banner__content {
     display: table;
     margin: 0;
   }
 
-  .govuk-c-phase-banner__content__tag {
+  .govuk-phase-banner__content__tag {
     margin-right: $govuk-spacing-scale-2;
   }
 
-  .govuk-c-phase-banner__text {
+  .govuk-phase-banner__text {
     display: table-cell;
     vertical-align: baseline;
   }

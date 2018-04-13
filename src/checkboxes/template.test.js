@@ -29,16 +29,16 @@ describe('Checkboxes', () => {
       ]
     })
 
-    const $component = $('.govuk-c-checkboxes')
+    const $component = $('.govuk-checkboxes')
 
-    const $firstInput = $component.find('.govuk-c-checkboxes__item:first-child input')
-    const $firstLabel = $component.find('.govuk-c-checkboxes__item:first-child label')
+    const $firstInput = $component.find('.govuk-checkboxes__item:first-child input')
+    const $firstLabel = $component.find('.govuk-checkboxes__item:first-child label')
     expect($firstInput.attr('name')).toEqual('example-name')
     expect($firstInput.val()).toEqual('1')
     expect($firstLabel.text()).toContain('Option 1')
 
-    const $lastInput = $component.find('.govuk-c-checkboxes__item:last-child input')
-    const $lastLabel = $component.find('.govuk-c-checkboxes__item:last-child label')
+    const $lastInput = $component.find('.govuk-checkboxes__item:last-child input')
+    const $lastLabel = $component.find('.govuk-checkboxes__item:last-child label')
     expect($lastInput.attr('name')).toEqual('example-name')
     expect($lastInput.val()).toEqual('2')
     expect($lastLabel.text()).toContain('Option 2')
@@ -57,12 +57,12 @@ describe('Checkboxes', () => {
           text: 'Option 2'
         }
       ],
-      classes: 'app-c-checkboxes--custom-modifier'
+      classes: 'app-checkboxes--custom-modifier'
     })
 
-    const $component = $('.govuk-c-checkboxes')
+    const $component = $('.govuk-checkboxes')
 
-    expect($component.hasClass('app-c-checkboxes--custom-modifier')).toBeTruthy()
+    expect($component.hasClass('app-checkboxes--custom-modifier')).toBeTruthy()
   })
 
   it('render attributes', () => {
@@ -84,7 +84,7 @@ describe('Checkboxes', () => {
       }
     })
 
-    const $component = $('.govuk-c-checkboxes')
+    const $component = $('.govuk-checkboxes')
 
     expect($component.attr('data-attribute')).toEqual('value')
     expect($component.attr('data-second-attribute')).toEqual('second-value')
@@ -106,15 +106,15 @@ describe('Checkboxes', () => {
         ]
       })
 
-      const $component = $('.govuk-c-checkboxes')
+      const $component = $('.govuk-checkboxes')
 
-      const $firstInput = $component.find('.govuk-c-checkboxes__item:first-child input')
-      const $firstLabel = $component.find('.govuk-c-checkboxes__item:first-child label')
+      const $firstInput = $component.find('.govuk-checkboxes__item:first-child input')
+      const $firstLabel = $component.find('.govuk-checkboxes__item:first-child label')
       expect($firstInput.attr('id')).toEqual('example-name-1')
       expect($firstLabel.attr('for')).toEqual('example-name-1')
 
-      const $lastInput = $component.find('.govuk-c-checkboxes__item:last-child input')
-      const $lastLabel = $component.find('.govuk-c-checkboxes__item:last-child label')
+      const $lastInput = $component.find('.govuk-checkboxes__item:last-child input')
+      const $lastLabel = $component.find('.govuk-checkboxes__item:last-child label')
       expect($lastInput.attr('id')).toEqual('example-name-2')
       expect($lastLabel.attr('for')).toEqual('example-name-2')
     })
@@ -135,15 +135,15 @@ describe('Checkboxes', () => {
         ]
       })
 
-      const $component = $('.govuk-c-checkboxes')
+      const $component = $('.govuk-checkboxes')
 
-      const $firstInput = $component.find('.govuk-c-checkboxes__item:first-child input')
-      const $firstLabel = $component.find('.govuk-c-checkboxes__item:first-child label')
+      const $firstInput = $component.find('.govuk-checkboxes__item:first-child input')
+      const $firstLabel = $component.find('.govuk-checkboxes__item:first-child label')
       expect($firstInput.attr('id')).toEqual('custom-1')
       expect($firstLabel.attr('for')).toEqual('custom-1')
 
-      const $lastInput = $component.find('.govuk-c-checkboxes__item:last-child input')
-      const $lastLabel = $component.find('.govuk-c-checkboxes__item:last-child label')
+      const $lastInput = $component.find('.govuk-checkboxes__item:last-child input')
+      const $lastLabel = $component.find('.govuk-checkboxes__item:last-child label')
       expect($lastInput.attr('id')).toEqual('custom-2')
       expect($lastLabel.attr('for')).toEqual('custom-2')
     })
@@ -164,9 +164,9 @@ describe('Checkboxes', () => {
         ]
       })
 
-      const $component = $('.govuk-c-checkboxes')
+      const $component = $('.govuk-checkboxes')
 
-      const $firstInput = $component.find('.govuk-c-checkboxes__item:first-child input')
+      const $firstInput = $component.find('.govuk-checkboxes__item:first-child input')
       expect($firstInput.attr('disabled')).toEqual('disabled')
     })
 
@@ -191,9 +191,9 @@ describe('Checkboxes', () => {
         ]
       })
 
-      const $component = $('.govuk-c-checkboxes')
-      const $secondInput = $component.find('.govuk-c-checkboxes__item:nth-child(2) input')
-      const $lastInput = $component.find('.govuk-c-checkboxes__item:last-child input')
+      const $component = $('.govuk-checkboxes')
+      const $secondInput = $component.find('.govuk-checkboxes__item:nth-child(2) input')
+      const $lastInput = $component.find('.govuk-checkboxes__item:last-child input')
       expect($secondInput.attr('checked')).toEqual('checked')
       expect($lastInput.attr('checked')).toEqual('checked')
     })
@@ -203,7 +203,7 @@ describe('Checkboxes', () => {
     it('have correct nesting order', () => {
       const $ = render('checkboxes', examples['with-extreme-fieldset'])
 
-      const $component = $('.govuk-o-form-group > .govuk-c-fieldset > .govuk-c-checkboxes')
+      const $component = $('.govuk-form-group > .govuk-fieldset > .govuk-checkboxes')
       expect($component.length).toBeTruthy()
     })
 
@@ -229,14 +229,14 @@ describe('Checkboxes', () => {
         ]
       })
 
-      expect(htmlWithClassName($, '.govuk-c-checkboxes__label')).toMatchSnapshot()
+      expect(htmlWithClassName($, '.govuk-checkboxes__label')).toMatchSnapshot()
     })
 
     it('passes through fieldset params without breaking', () => {
       const $ = render('checkboxes', examples['with-extreme-fieldset'])
 
-      expect(htmlWithClassName($, '.govuk-c-error-message')).toMatchSnapshot()
-      expect(htmlWithClassName($, '.govuk-c-fieldset')).toMatchSnapshot()
+      expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
+      expect(htmlWithClassName($, '.govuk-fieldset')).toMatchSnapshot()
     })
 
     it('passes through html fieldset params without breaking', () => {
@@ -258,7 +258,7 @@ describe('Checkboxes', () => {
         }
       })
 
-      expect(htmlWithClassName($, '.govuk-c-fieldset')).toMatchSnapshot()
+      expect(htmlWithClassName($, '.govuk-fieldset')).toMatchSnapshot()
     })
   })
 })

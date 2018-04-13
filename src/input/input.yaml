@@ -28,7 +28,7 @@ examples:
         hintText: It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
       id: input-2
       name: test-name-4
-      classes: govuk-c-input--width-10
+      classes: govuk-input--width-10
   - name: width-20
     data:
       label:
@@ -36,7 +36,7 @@ examples:
         hintText: It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
       id: input-2
       name: test-name-5
-      classes: govuk-c-input--width-20
+      classes: govuk-input--width-20
   - name: width-30
     data:
       label:
@@ -44,4 +44,4 @@ examples:
         hintText: It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
       id: input-2
       name: test-name-6
-      classes: govuk-c-input--width-30
+      classes: govuk-input--width-30

@@ -17,14 +17,14 @@
 
 
 @include govuk-exports("fieldset") {
-  .govuk-c-fieldset {
+  .govuk-fieldset {
     margin: 0;
     padding: 0;
     border: 0;
-    @include govuk-h-clearfix;
+    @include govuk-clearfix;
   }
 
-  .govuk-c-fieldset__legend {
+  .govuk-fieldset__legend {
     @include govuk-font-regular-19;
     @include govuk-text-colour;
 
@@ -55,12 +55,12 @@
     }
   }
 
-  .govuk-c-fieldset__legend--bold {
+  .govuk-fieldset__legend--bold {
     @include govuk-typography-weight-bold;
   }
 
   // Hint text sits inside a legend, to be read by AT
-  .govuk-c-fieldset__hint {
+  .govuk-fieldset__hint {
     @include govuk-typography-weight-regular;
 
     display: block;

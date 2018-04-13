@@ -16,11 +16,11 @@ Find out when to use the File upload component in your service in the [GOV.UK De
 
 #### Markup
 
-    <div class="govuk-o-form-group"><label class="govuk-c-label" for="file-upload-1">
+    <div class="govuk-form-group"><label class="govuk-label" for="file-upload-1">
       Upload a file
 
     </label>
-    <input type="file" id="file-upload-1" name="file-upload-1" class="govuk-c-file-upload">
+    <input type="file" id="file-upload-1" name="file-upload-1" class="govuk-file-upload">
     </div>
 
 #### Macro
@@ -41,15 +41,15 @@ Find out when to use the File upload component in your service in the [GOV.UK De
 
 #### Markup
 
-    <div class="govuk-o-form-group"><label class="govuk-c-label" for="file-upload-2">
+    <div class="govuk-form-group"><label class="govuk-label" for="file-upload-2">
       Upload your photo
 
-      <span class="govuk-c-label__hint">
+      <span class="govuk-label__hint">
         Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.
       </span>
 
     </label>
-    <input type="file" id="file-upload-2" name="file-upload-2" class="govuk-c-file-upload">
+    <input type="file" id="file-upload-2" name="file-upload-2" class="govuk-file-upload">
     </div>
 
 #### Macro
@@ -71,19 +71,19 @@ Find out when to use the File upload component in your service in the [GOV.UK De
 
 #### Markup
 
-    <div class="govuk-o-form-group govuk-o-form-group--error"><label class="govuk-c-label" for="file-upload-3">
+    <div class="govuk-form-group govuk-form-group--error"><label class="govuk-label" for="file-upload-3">
       Upload a file
 
-      <span class="govuk-c-label__hint">
+      <span class="govuk-label__hint">
         Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.
       </span>
 
-      <span class="govuk-c-error-message">
+      <span class="govuk-error-message">
       Error message goes here
     </span>
 
     </label>
-    <input type="file" id="file-upload-3" name="file-upload-3" class="govuk-c-file-upload govuk-c-file-upload--error">
+    <input type="file" id="file-upload-3" name="file-upload-3" class="govuk-file-upload govuk-file-upload--error">
     </div>
 
 #### Macro
@@ -108,11 +108,11 @@ Find out when to use the File upload component in your service in the [GOV.UK De
 
 #### Markup
 
-    <div class="govuk-o-form-group"><label class="govuk-c-label" for="file-upload-4">
+    <div class="govuk-form-group"><label class="govuk-label" for="file-upload-4">
       Upload a photo
 
     </label>
-    <input type="file" id="file-upload-4" name="file-upload-4" value="C:\fakepath\myphoto.jpg" class="govuk-c-file-upload" accept=".jpg, .jpeg, .png">
+    <input type="file" id="file-upload-4" name="file-upload-4" value="C:\fakepath\myphoto.jpg" class="govuk-file-upload" accept=".jpg, .jpeg, .png">
     </div>
 
 #### Macro
@@ -159,107 +159,107 @@ To show the button image you need to configure your app to show these assets. Be
 
 If you are using Nunjucks,then macros take the following arguments
 
-<table class="govuk-c-table">
+<table class="govuk-table">
 
-<thead class="govuk-c-table__head">
+<thead class="govuk-table__head">
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="col">Name</th>
+<th class="govuk-table__header" scope="col">Name</th>
 
-<th class="govuk-c-table__header" scope="col">Type</th>
+<th class="govuk-table__header" scope="col">Type</th>
 
-<th class="govuk-c-table__header" scope="col">Required</th>
+<th class="govuk-table__header" scope="col">Required</th>
 
-<th class="govuk-c-table__header" scope="col">Description</th>
+<th class="govuk-table__header" scope="col">Description</th>
 
 </tr>
 
 </thead>
 
-<tbody class="govuk-c-table__body">
+<tbody class="govuk-table__body">
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">id</th>
+<th class="govuk-table__header" scope="row">id</th>
 
-<td class="govuk-c-table__cell ">string</td>
+<td class="govuk-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">Yes</td>
+<td class="govuk-table__cell ">Yes</td>
 
-<td class="govuk-c-table__cell ">The id of the input</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">name</th>
-
-<td class="govuk-c-table__cell ">string</td>
-
-<td class="govuk-c-table__cell ">Yes</td>
-
-<td class="govuk-c-table__cell ">The name of the input, which is submitted with the form data</td>
+<td class="govuk-table__cell ">The id of the input</td>
 
 </tr>
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">value</th>
+<th class="govuk-table__header" scope="row">name</th>
 
-<td class="govuk-c-table__cell ">string</td>
+<td class="govuk-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">No</td>
+<td class="govuk-table__cell ">Yes</td>
 
-<td class="govuk-c-table__cell ">Optional initial value of the input</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">label</th>
-
-<td class="govuk-c-table__cell ">object</td>
-
-<td class="govuk-c-table__cell ">Yes</td>
-
-<td class="govuk-c-table__cell ">Arguments for the label component</td>
+<td class="govuk-table__cell ">The name of the input, which is submitted with the form data</td>
 
 </tr>
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">errorMessage</th>
+<th class="govuk-table__header" scope="row">value</th>
 
-<td class="govuk-c-table__cell ">object</td>
+<td class="govuk-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">No</td>
+<td class="govuk-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Arguments for the error message component</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">classes</th>
-
-<td class="govuk-c-table__cell ">string</td>
-
-<td class="govuk-c-table__cell ">No</td>
-
-<td class="govuk-c-table__cell ">Optional additional classes</td>
+<td class="govuk-table__cell ">Optional initial value of the input</td>
 
 </tr>
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">attributes</th>
+<th class="govuk-table__header" scope="row">label</th>
 
-<td class="govuk-c-table__cell ">object</td>
+<td class="govuk-table__cell ">object</td>
 
-<td class="govuk-c-table__cell ">No</td>
+<td class="govuk-table__cell ">Yes</td>
 
-<td class="govuk-c-table__cell ">Any extra HTML attributes (for example accept or data attributes) to add to the input tag</td>
+<td class="govuk-table__cell ">Arguments for the label component</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">errorMessage</th>
+
+<td class="govuk-table__cell ">object</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Arguments for the error message component</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">classes</th>
+
+<td class="govuk-table__cell ">string</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Optional additional classes</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">attributes</th>
+
+<td class="govuk-table__cell ">object</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Any extra HTML attributes (for example accept or data attributes) to add to the input tag</td>
 
 </tr>
 

@@ -1,15 +1,15 @@
 // Example usage with Breadcrumbs, phase banners, back links:
-// <div class="govuk-o-width-container">
+// <div class="govuk-width-container">
 //   <!-- Breadcrumbs, phase banners, back links are placed in here. -->
-//   <div class="govuk-o-main-wrapper">
+//   <div class="govuk-main-wrapper">
 //       <!-- Wrapper for the main content of your page which applies padding
 //            to the top / bottom -->
 //   </div>
 // </div>
 //
 // Example usage without Breadcrumbs, phase banners, back links:
-// <div class="govuk-o-width-container">
-//   <div class="govuk-main-wrapper govuk-o-main-wrapper--l">
+// <div class="govuk-width-container">
+//   <div class="govuk-main-wrapper govuk-main-wrapper--l">
 //       <!-- Wrapper for the main content of your page which applies padding
 //            to the top / bottom -->
 //   </div>
@@ -27,11 +27,11 @@
 }
 
 @include govuk-exports("main-wrapper") {
-  .govuk-o-main-wrapper {
+  .govuk-main-wrapper {
     @include govuk-main-wrapper;
   }
 
-  .govuk-o-main-wrapper--l {
+  .govuk-main-wrapper--l {
     @include govuk-main-wrapper--l;
   }
 }

@@ -19,7 +19,7 @@
 
 @include govuk-exports("warning-text") {
 
-  .govuk-c-warning-text {
+  .govuk-warning-text {
     @include govuk-font-regular-19;
     @include govuk-text-colour;
 
@@ -28,11 +28,11 @@
     padding: $govuk-spacing-scale-2 0;
   }
 
-  .govuk-c-warning-text__assistive {
-    @include govuk-h-visually-hidden;
+  .govuk-warning-text__assistive {
+    @include govuk-visually-hidden;
   }
 
-  .govuk-c-warning-text__icon {
+  .govuk-warning-text__icon {
     @include govuk-font-bold;
 
     display: inline-block;
@@ -50,7 +50,7 @@
     line-height: 35px;
   }
 
-  .govuk-c-warning-text__text {
+  .govuk-warning-text__text {
     display: block;
     margin-left: -$govuk-gutter-half;
     padding-left: 65px;

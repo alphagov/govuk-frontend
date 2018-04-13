@@ -1,10 +1,10 @@
-<div class="govuk-c-panel govuk-c-panel--confirmation
+<div class="govuk-panel govuk-panel--confirmation
   {%- if params.classes %} {{ params.classes }}{% endif %}"
   {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
-  <h2 class="govuk-c-panel__title">
+  <h2 class="govuk-panel__title">
     {{ params.titleHtml | safe if params.titleHtml else params.titleText }}
   </h2>
-  <div class="govuk-c-panel__body">
+  <div class="govuk-panel__body">
     {{ params.html | safe if params.html else params.text }}
   </div>
 </div>

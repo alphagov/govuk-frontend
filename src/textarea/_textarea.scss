@@ -13,7 +13,7 @@
 
 
 @include govuk-exports("textarea") {
-  .govuk-c-textarea {
+  .govuk-textarea {
     @include govuk-font-regular;
     @include govuk-typography-responsive(
       $govuk-font-19,
@@ -33,7 +33,7 @@
     -webkit-appearance: none;
   }
 
-  .govuk-c-textarea--error {
+  .govuk-textarea--error {
     border: $govuk-border-width-form-element-error solid $govuk-error-colour;
   }
 }

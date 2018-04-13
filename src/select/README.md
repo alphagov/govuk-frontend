@@ -16,11 +16,11 @@ Find out when to use the Select component in your service in the [GOV.UK Design 
 
 #### Markup
 
-    <div class="govuk-o-form-group"><label class="govuk-c-label" for="select-1">
+    <div class="govuk-form-group"><label class="govuk-label" for="select-1">
       Label text goes here
 
     </label>
-    <select class="govuk-c-select" id="select-1" name="select-1">
+    <select class="govuk-select" id="select-1" name="select-1">
 
         <option value="1">GOV.UK frontend option 1</option>
 
@@ -65,19 +65,19 @@ Find out when to use the Select component in your service in the [GOV.UK Design 
 
 #### Markup
 
-    <div class="govuk-o-form-group govuk-o-form-group--error"><label class="govuk-c-label" for="select-2">
+    <div class="govuk-form-group govuk-form-group--error"><label class="govuk-label" for="select-2">
       Label text goes here
 
-      <span class="govuk-c-label__hint">
+      <span class="govuk-label__hint">
         Hint text goes here
       </span>
 
-      <span class="govuk-c-error-message">
+      <span class="govuk-error-message">
       Error message goes here
     </span>
 
     </label>
-    <select class="govuk-c-select govuk-c-select--error" id="select-2" name="select-2">
+    <select class="govuk-select govuk-select--error" id="select-2" name="select-2">
 
         <option value="1">GOV.UK frontend option 1</option>
 
@@ -146,155 +146,155 @@ To show the button image you need to configure your app to show these assets. Be
 
 If you are using Nunjucks,then macros take the following arguments
 
-<table class="govuk-c-table">
+<table class="govuk-table">
 
-<thead class="govuk-c-table__head">
+<thead class="govuk-table__head">
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="col">Name</th>
+<th class="govuk-table__header" scope="col">Name</th>
 
-<th class="govuk-c-table__header" scope="col">Type</th>
+<th class="govuk-table__header" scope="col">Type</th>
 
-<th class="govuk-c-table__header" scope="col">Required</th>
+<th class="govuk-table__header" scope="col">Required</th>
 
-<th class="govuk-c-table__header" scope="col">Description</th>
+<th class="govuk-table__header" scope="col">Description</th>
 
 </tr>
 
 </thead>
 
-<tbody class="govuk-c-table__body">
+<tbody class="govuk-table__body">
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">classes</th>
+<th class="govuk-table__header" scope="row">classes</th>
 
-<td class="govuk-c-table__cell ">string</td>
+<td class="govuk-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">No</td>
+<td class="govuk-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Optional additional classes.</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">id</th>
-
-<td class="govuk-c-table__cell ">string</td>
-
-<td class="govuk-c-table__cell ">Yes</td>
-
-<td class="govuk-c-table__cell ">Id for each select box</td>
+<td class="govuk-table__cell ">Optional additional classes.</td>
 
 </tr>
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">name</th>
+<th class="govuk-table__header" scope="row">id</th>
 
-<td class="govuk-c-table__cell ">string</td>
+<td class="govuk-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">Yes</td>
+<td class="govuk-table__cell ">Yes</td>
 
-<td class="govuk-c-table__cell ">Name property for the select.</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">items</th>
-
-<td class="govuk-c-table__cell ">array</td>
-
-<td class="govuk-c-table__cell ">Yes</td>
-
-<td class="govuk-c-table__cell ">Array of option items for the select.</td>
+<td class="govuk-table__cell ">Id for each select box</td>
 
 </tr>
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">value</th>
+<th class="govuk-table__header" scope="row">name</th>
 
-<td class="govuk-c-table__cell ">string</td>
+<td class="govuk-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">No</td>
+<td class="govuk-table__cell ">Yes</td>
 
-<td class="govuk-c-table__cell ">Value for the option item.</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">text</th>
-
-<td class="govuk-c-table__cell ">string</td>
-
-<td class="govuk-c-table__cell ">Yes</td>
-
-<td class="govuk-c-table__cell ">Text for the option item.</td>
+<td class="govuk-table__cell ">Name property for the select.</td>
 
 </tr>
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">selected</th>
+<th class="govuk-table__header" scope="row">items</th>
 
-<td class="govuk-c-table__cell ">boolean</td>
+<td class="govuk-table__cell ">array</td>
 
-<td class="govuk-c-table__cell ">No</td>
+<td class="govuk-table__cell ">Yes</td>
 
-<td class="govuk-c-table__cell ">Sets the option as the selected.</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">disabled</th>
-
-<td class="govuk-c-table__cell ">boolean</td>
-
-<td class="govuk-c-table__cell ">No</td>
-
-<td class="govuk-c-table__cell ">Sets the option item as disabled.</td>
+<td class="govuk-table__cell ">Array of option items for the select.</td>
 
 </tr>
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">label</th>
+<th class="govuk-table__header" scope="row">value</th>
 
-<td class="govuk-c-table__cell ">object</td>
+<td class="govuk-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">No</td>
+<td class="govuk-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Optional label text or HTML by specifying value for either text or html keys. See label component.</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">errorMessage</th>
-
-<td class="govuk-c-table__cell ">string</td>
-
-<td class="govuk-c-table__cell ">No</td>
-
-<td class="govuk-c-table__cell ">Optional error message. See errorMessage component.</td>
+<td class="govuk-table__cell ">Value for the option item.</td>
 
 </tr>
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">attributes</th>
+<th class="govuk-table__header" scope="row">text</th>
 
-<td class="govuk-c-table__cell ">object</td>
+<td class="govuk-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">No</td>
+<td class="govuk-table__cell ">Yes</td>
 
-<td class="govuk-c-table__cell ">Any extra HTML attributes (for example data attributes) to add to the select component.</td>
+<td class="govuk-table__cell ">Text for the option item.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">selected</th>
+
+<td class="govuk-table__cell ">boolean</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Sets the option as the selected.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">disabled</th>
+
+<td class="govuk-table__cell ">boolean</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Sets the option item as disabled.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">label</th>
+
+<td class="govuk-table__cell ">object</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Optional label text or HTML by specifying value for either text or html keys. See label component.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">errorMessage</th>
+
+<td class="govuk-table__cell ">string</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Optional error message. See errorMessage component.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">attributes</th>
+
+<td class="govuk-table__cell ">object</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the select component.</td>
 
 </tr>
 

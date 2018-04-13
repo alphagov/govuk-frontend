@@ -13,7 +13,7 @@
 @import "../globals/settings/typography-responsive";
 
 @include govuk-exports("tag") {
-  .govuk-c-tag {
+  .govuk-tag {
     @include govuk-font-bold;
     @include govuk-typography-responsive(
       $govuk-font-16,
@@ -31,7 +31,7 @@
     text-transform: uppercase;
   }
 
-  .govuk-c-tag--inactive {
+  .govuk-tag--inactive {
     background-color: $govuk-grey-1;
   }
 }

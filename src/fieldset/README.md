@@ -16,13 +16,13 @@ Find out when to use the Fieldset component in your service in the [GOV.UK Desig
 
 #### Markup
 
-    <div class="govuk-o-form-group">
-      <fieldset class="govuk-c-fieldset">
+    <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset">
 
-        <legend class="govuk-c-fieldset__legend">
+        <legend class="govuk-fieldset__legend">
           What is your address?
 
-          <span class="govuk-c-fieldset__hint">For example, 10 Downing Street</span>
+          <span class="govuk-fieldset__hint">For example, 10 Downing Street</span>
 
         </legend>
 
@@ -44,15 +44,15 @@ Find out when to use the Fieldset component in your service in the [GOV.UK Desig
 
 #### Markup
 
-    <div class="govuk-o-form-group govuk-o-form-group--error">
-      <fieldset class="govuk-c-fieldset">
+    <div class="govuk-form-group govuk-form-group--error">
+      <fieldset class="govuk-fieldset">
 
-        <legend class="govuk-c-fieldset__legend">
+        <legend class="govuk-fieldset__legend">
           What is your address?
 
-          <span class="govuk-c-fieldset__hint">For example, 10 Downing Street</span>
+          <span class="govuk-fieldset__hint">For example, 10 Downing Street</span>
 
-          <span class="govuk-c-error-message">
+          <span class="govuk-error-message">
           Please fill in the street input
         </span>
 
@@ -101,107 +101,107 @@ To show the button image you need to configure your app to show these assets. Be
 
 If you are using Nunjucks,then macros take the following arguments
 
-<table class="govuk-c-table">
+<table class="govuk-table">
 
-<thead class="govuk-c-table__head">
+<thead class="govuk-table__head">
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="col">Name</th>
+<th class="govuk-table__header" scope="col">Name</th>
 
-<th class="govuk-c-table__header" scope="col">Type</th>
+<th class="govuk-table__header" scope="col">Type</th>
 
-<th class="govuk-c-table__header" scope="col">Required</th>
+<th class="govuk-table__header" scope="col">Required</th>
 
-<th class="govuk-c-table__header" scope="col">Description</th>
+<th class="govuk-table__header" scope="col">Description</th>
 
 </tr>
 
 </thead>
 
-<tbody class="govuk-c-table__body">
+<tbody class="govuk-table__body">
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">classes</th>
+<th class="govuk-table__header" scope="row">classes</th>
 
-<td class="govuk-c-table__cell ">string</td>
+<td class="govuk-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">No</td>
+<td class="govuk-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Optional additional classes</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">legendText</th>
-
-<td class="govuk-c-table__cell ">string</td>
-
-<td class="govuk-c-table__cell ">No</td>
-
-<td class="govuk-c-table__cell ">Legend text</td>
+<td class="govuk-table__cell ">Optional additional classes</td>
 
 </tr>
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">legendHtml</th>
+<th class="govuk-table__header" scope="row">legendText</th>
 
-<td class="govuk-c-table__cell ">string</td>
+<td class="govuk-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">No</td>
+<td class="govuk-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Legend text</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">legendHintText</th>
-
-<td class="govuk-c-table__cell ">string</td>
-
-<td class="govuk-c-table__cell ">No</td>
-
-<td class="govuk-c-table__cell ">HTML to use within the legend element. If this is used, the legendText argument will be ignored.</td>
+<td class="govuk-table__cell ">Legend text</td>
 
 </tr>
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">legendHintHtml</th>
+<th class="govuk-table__header" scope="row">legendHtml</th>
 
-<td class="govuk-c-table__cell ">string</td>
+<td class="govuk-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">No</td>
+<td class="govuk-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">HTML to use within the legend hint element. If this is used, the hintText argument will be ignored.</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">errorMessage</th>
-
-<td class="govuk-c-table__cell ">object</td>
-
-<td class="govuk-c-table__cell ">No</td>
-
-<td class="govuk-c-table__cell ">Provide text or html key with values. See errorMessage component for more details.</td>
+<td class="govuk-table__cell ">Legend text</td>
 
 </tr>
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">attributes</th>
+<th class="govuk-table__header" scope="row">legendHintText</th>
 
-<td class="govuk-c-table__cell ">object</td>
+<td class="govuk-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">No</td>
+<td class="govuk-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Any extra HTML attributes (for example data attributes) to add to the fieldset container.</td>
+<td class="govuk-table__cell ">HTML to use within the legend element. If this is used, the legendText argument will be ignored.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">legendHintHtml</th>
+
+<td class="govuk-table__cell ">string</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">HTML to use within the legend hint element. If this is used, the hintText argument will be ignored.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">errorMessage</th>
+
+<td class="govuk-table__cell ">object</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Provide text or html key with values. See errorMessage component for more details.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">attributes</th>
+
+<td class="govuk-table__cell ">object</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the fieldset container.</td>
 
 </tr>
 

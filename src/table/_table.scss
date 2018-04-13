@@ -16,7 +16,7 @@
 @import "../globals/settings/typography-responsive";
 
 @include govuk-exports("table") {
-  .govuk-c-table {
+  .govuk-table {
     @include govuk-font-regular-19;
     @include govuk-text-colour;
     width: 100%;
@@ -26,7 +26,7 @@
     border-collapse: collapse;
   }
 
-  .govuk-c-table__header {
+  .govuk-table__header {
     @include govuk-typography-weight-bold;
 
     padding: govuk-em($govuk-spacing-scale-2, 19px) govuk-em($govuk-spacing-scale-4, 19px) govuk-em($govuk-spacing-scale-2, 19px) 0;
@@ -34,27 +34,27 @@
     text-align: left;
   }
 
-  .govuk-c-table__cell {
+  .govuk-table__cell {
     padding: govuk-em($govuk-spacing-scale-2, 19px) govuk-em($govuk-spacing-scale-4, 19px) govuk-em($govuk-spacing-scale-2, 19px) 0;
     border-bottom: 1px solid $govuk-border-colour;
     text-align: left;
   }
 
-  .govuk-c-table__cell--numeric {
+  .govuk-table__cell--numeric {
     @include govuk-font-regular-tabular;
   }
 
-  .govuk-c-table__header--numeric,
-  .govuk-c-table__cell--numeric {
+  .govuk-table__header--numeric,
+  .govuk-table__cell--numeric {
     text-align: right;
   }
 
-  .govuk-c-table__header:last-child,
-  .govuk-c-table__cell:last-child {
+  .govuk-table__header:last-child,
+  .govuk-table__cell:last-child {
     padding-right: 0;
   }
 
-  .govuk-c-table__caption {
+  .govuk-table__caption {
     @include govuk-typography-weight-bold;
 
     display: table-caption;

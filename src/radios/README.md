@@ -16,29 +16,29 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 
 #### Markup
 
-      <div class="govuk-o-form-group">
-      <fieldset class="govuk-c-fieldset">
+      <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset">
 
-        <legend class="govuk-c-fieldset__legend">
+        <legend class="govuk-fieldset__legend">
           Have you changed your name?
 
-          <span class="govuk-c-fieldset__hint">This includes changing your last name or spelling your name differently.</span>
+          <span class="govuk-fieldset__hint">This includes changing your last name or spelling your name differently.</span>
 
         </legend>
 
-      <div class="govuk-c-radios">
+      <div class="govuk-radios">
 
-          <div class="govuk-c-radios__item">
-            <input class="govuk-c-radios__input" id="example-1" name="example" type="radio" value="yes">
-            <label class="govuk-c-label govuk-c-radios__label" for="example-1">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="example-1" name="example" type="radio" value="yes">
+            <label class="govuk-label govuk-radios__label" for="example-1">
             Yes
 
           </label>
           </div>
 
-          <div class="govuk-c-radios__item">
-            <input class="govuk-c-radios__input" id="example-2" name="example" type="radio" value="no" checked>
-            <label class="govuk-c-label govuk-c-radios__label" for="example-2">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="example-2" name="example" type="radio" value="no" checked>
+            <label class="govuk-label govuk-radios__label" for="example-2">
             No
 
           </label>
@@ -78,29 +78,29 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 
 #### Markup
 
-      <div class="govuk-o-form-group">
-      <fieldset class="govuk-c-fieldset">
+      <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset">
 
-        <legend class="govuk-c-fieldset__legend">
+        <legend class="govuk-fieldset__legend">
           Have you changed your name?
 
-          <span class="govuk-c-fieldset__hint">This includes changing your last name or spelling your name differently.</span>
+          <span class="govuk-fieldset__hint">This includes changing your last name or spelling your name differently.</span>
 
         </legend>
 
-      <div class="govuk-c-radios govuk-c-radios--inline">
+      <div class="govuk-radios govuk-radios--inline">
 
-          <div class="govuk-c-radios__item">
-            <input class="govuk-c-radios__input" id="example-1" name="example" type="radio" value="yes">
-            <label class="govuk-c-label govuk-c-radios__label" for="example-1">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="example-1" name="example" type="radio" value="yes">
+            <label class="govuk-label govuk-radios__label" for="example-1">
             Yes
 
           </label>
           </div>
 
-          <div class="govuk-c-radios__item">
-            <input class="govuk-c-radios__input" id="example-2" name="example" type="radio" value="no" checked>
-            <label class="govuk-c-label govuk-c-radios__label" for="example-2">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="example-2" name="example" type="radio" value="no" checked>
+            <label class="govuk-label govuk-radios__label" for="example-2">
             No
 
           </label>
@@ -116,7 +116,7 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 
     {{ govukRadios({
       "idPrefix": "example",
-      "classes": "govuk-c-radios--inline",
+      "classes": "govuk-radios--inline",
       "name": "example",
       "fieldset": {
         "legendText": "Have you changed your name?",
@@ -141,29 +141,29 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 
 #### Markup
 
-      <div class="govuk-o-form-group">
-      <fieldset class="govuk-c-fieldset">
+      <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset">
 
-        <legend class="govuk-c-fieldset__legend">
+        <legend class="govuk-fieldset__legend">
           Have you changed your name?
 
-          <span class="govuk-c-fieldset__hint">This includes changing your last name or spelling your name differently.</span>
+          <span class="govuk-fieldset__hint">This includes changing your last name or spelling your name differently.</span>
 
         </legend>
 
-      <div class="govuk-c-radios">
+      <div class="govuk-radios">
 
-          <div class="govuk-c-radios__item">
-            <input class="govuk-c-radios__input" id="example-disabled-1" name="example-disabled" type="radio" value="yes" disabled>
-            <label class="govuk-c-label govuk-c-radios__label" for="example-disabled-1">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="example-disabled-1" name="example-disabled" type="radio" value="yes" disabled>
+            <label class="govuk-label govuk-radios__label" for="example-disabled-1">
             Yes
 
           </label>
           </div>
 
-          <div class="govuk-c-radios__item">
-            <input class="govuk-c-radios__input" id="example-disabled-2" name="example-disabled" type="radio" value="no" disabled>
-            <label class="govuk-c-label govuk-c-radios__label" for="example-disabled-2">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="example-disabled-2" name="example-disabled" type="radio" value="no" disabled>
+            <label class="govuk-label govuk-radios__label" for="example-disabled-2">
             No
 
           </label>
@@ -204,29 +204,29 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 
 #### Markup
 
-      <div class="govuk-o-form-group">
-      <fieldset class="govuk-c-fieldset">
+      <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset">
 
-        <legend class="govuk-c-fieldset__legend">
+        <legend class="govuk-fieldset__legend">
           <h1 class="govuk-heading-l">Which part of the Housing Act was your licence issued under?</h1>
 
-          <span class="govuk-c-fieldset__hint">Select one of the options below.</span>
+          <span class="govuk-fieldset__hint">Select one of the options below.</span>
 
         </legend>
 
-      <div class="govuk-c-radios">
+      <div class="govuk-radios">
 
-          <div class="govuk-c-radios__item">
-            <input class="govuk-c-radios__input" id="housing-act-1" name="housing-act" type="radio" value="part-2">
-            <label class="govuk-c-label govuk-c-radios__label" for="housing-act-1">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="housing-act-1" name="housing-act" type="radio" value="part-2">
+            <label class="govuk-label govuk-radios__label" for="housing-act-1">
             <span class="govuk-heading-s govuk-!-mb-r1">Part 2 of the Housing Act 2004</span> For properties that are 3 or more stories high and occupied by 5 or more people
 
           </label>
           </div>
 
-          <div class="govuk-c-radios__item">
-            <input class="govuk-c-radios__input" id="housing-act-2" name="housing-act" type="radio" value="part-3">
-            <label class="govuk-c-label govuk-c-radios__label" for="housing-act-2">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="housing-act-2" name="housing-act" type="radio" value="part-3">
+            <label class="govuk-label govuk-radios__label" for="housing-act-2">
             <span class="govuk-heading-s govuk-!-mb-r1">Part 3 of the Housing Act 2004</span> For properties that are within a geographical area defined by a local council
 
           </label>
@@ -265,27 +265,27 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 
 #### Markup
 
-      <div class="govuk-c-radios">
+      <div class="govuk-radios">
 
-        <div class="govuk-c-radios__item">
-          <input class="govuk-c-radios__input" id="colours-1" name="colours" type="radio" value="red">
-          <label class="govuk-c-label govuk-c-radios__label" for="colours-1">
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="colours-1" name="colours" type="radio" value="red">
+          <label class="govuk-label govuk-radios__label" for="colours-1">
           Red
 
         </label>
         </div>
 
-        <div class="govuk-c-radios__item">
-          <input class="govuk-c-radios__input" id="colours-2" name="colours" type="radio" value="green">
-          <label class="govuk-c-label govuk-c-radios__label" for="colours-2">
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="colours-2" name="colours" type="radio" value="green">
+          <label class="govuk-label govuk-radios__label" for="colours-2">
           Green
 
         </label>
         </div>
 
-        <div class="govuk-c-radios__item">
-          <input class="govuk-c-radios__input" id="colours-3" name="colours" type="radio" value="blue">
-          <label class="govuk-c-label govuk-c-radios__label" for="colours-3">
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="colours-3" name="colours" type="radio" value="blue">
+          <label class="govuk-label govuk-radios__label" for="colours-3">
           Blue
 
         </label>
@@ -321,33 +321,33 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 
 #### Markup
 
-      <div class="govuk-o-form-group govuk-o-form-group--error">
-      <fieldset class="govuk-c-fieldset app-c-fieldset--custom-modifier" data-attribute="value" data-second-attribute="second-value">
+      <div class="govuk-form-group govuk-form-group--error">
+      <fieldset class="govuk-fieldset app-fieldset--custom-modifier" data-attribute="value" data-second-attribute="second-value">
 
-        <legend class="govuk-c-fieldset__legend">
+        <legend class="govuk-fieldset__legend">
           Have you changed your name?
 
-          <span class="govuk-c-fieldset__hint">This includes changing your last name or spelling your name differently.</span>
+          <span class="govuk-fieldset__hint">This includes changing your last name or spelling your name differently.</span>
 
-          <span class="govuk-c-error-message">
+          <span class="govuk-error-message">
           Please select an option
         </span>
 
         </legend>
 
-      <div class="govuk-c-radios">
+      <div class="govuk-radios">
 
-          <div class="govuk-c-radios__item">
-            <input class="govuk-c-radios__input" id="example-1" name="example" type="radio" value="yes">
-            <label class="govuk-c-label govuk-c-radios__label" for="example-1">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="example-1" name="example" type="radio" value="yes">
+            <label class="govuk-label govuk-radios__label" for="example-1">
             Yes
 
           </label>
           </div>
 
-          <div class="govuk-c-radios__item">
-            <input class="govuk-c-radios__input" id="example-2" name="example" type="radio" value="no" checked>
-            <label class="govuk-c-label govuk-c-radios__label" for="example-2">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="example-2" name="example" type="radio" value="no" checked>
+            <label class="govuk-label govuk-radios__label" for="example-2">
             No
 
           </label>
@@ -368,7 +368,7 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
         "text": "Please select an option"
       },
       "fieldset": {
-        "classes": "app-c-fieldset--custom-modifier",
+        "classes": "app-fieldset--custom-modifier",
         "attributes": {
           "data-attribute": "value",
           "data-second-attribute": "second-value"
@@ -419,155 +419,155 @@ To show the button image you need to configure your app to show these assets. Be
 
 If you are using Nunjucks,then macros take the following arguments
 
-<table class="govuk-c-table">
+<table class="govuk-table">
 
-<thead class="govuk-c-table__head">
+<thead class="govuk-table__head">
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="col">Name</th>
+<th class="govuk-table__header" scope="col">Name</th>
 
-<th class="govuk-c-table__header" scope="col">Type</th>
+<th class="govuk-table__header" scope="col">Type</th>
 
-<th class="govuk-c-table__header" scope="col">Required</th>
+<th class="govuk-table__header" scope="col">Required</th>
 
-<th class="govuk-c-table__header" scope="col">Description</th>
+<th class="govuk-table__header" scope="col">Description</th>
 
 </tr>
 
 </thead>
 
-<tbody class="govuk-c-table__body">
+<tbody class="govuk-table__body">
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">fieldset</th>
+<th class="govuk-table__header" scope="row">fieldset</th>
 
-<td class="govuk-c-table__cell ">object</td>
+<td class="govuk-table__cell ">object</td>
 
-<td class="govuk-c-table__cell ">No</td>
+<td class="govuk-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Arguments for the fieldset component (e.g. legendText, legendHintText, errorMessage). See fieldset component.</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">classes</th>
-
-<td class="govuk-c-table__cell ">string</td>
-
-<td class="govuk-c-table__cell ">No</td>
-
-<td class="govuk-c-table__cell ">Optional additional classes</td>
+<td class="govuk-table__cell ">Arguments for the fieldset component (e.g. legendText, legendHintText, errorMessage). See fieldset component.</td>
 
 </tr>
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">idPrefix</th>
+<th class="govuk-table__header" scope="row">classes</th>
 
-<td class="govuk-c-table__cell ">string</td>
+<td class="govuk-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">No</td>
+<td class="govuk-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">String to prefix id for each radio item if no id is specified on each item.</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">name</th>
-
-<td class="govuk-c-table__cell ">string</td>
-
-<td class="govuk-c-table__cell ">Yes</td>
-
-<td class="govuk-c-table__cell ">Name attribute for each radio item.</td>
+<td class="govuk-table__cell ">Optional additional classes</td>
 
 </tr>
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">items</th>
+<th class="govuk-table__header" scope="row">idPrefix</th>
 
-<td class="govuk-c-table__cell ">array</td>
+<td class="govuk-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">Yes</td>
+<td class="govuk-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Array of radio items.</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">text</th>
-
-<td class="govuk-c-table__cell ">string</td>
-
-<td class="govuk-c-table__cell ">No</td>
-
-<td class="govuk-c-table__cell ">Text to use within the radio label.</td>
+<td class="govuk-table__cell ">String to prefix id for each radio item if no id is specified on each item.</td>
 
 </tr>
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">html</th>
+<th class="govuk-table__header" scope="row">name</th>
 
-<td class="govuk-c-table__cell ">string</td>
+<td class="govuk-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">No</td>
+<td class="govuk-table__cell ">Yes</td>
 
-<td class="govuk-c-table__cell ">HTML to use within the radio label. If this is provided, the text argument will be ignored.</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">label</th>
-
-<td class="govuk-c-table__cell ">object</td>
-
-<td class="govuk-c-table__cell ">No</td>
-
-<td class="govuk-c-table__cell ">Provide additional attributes to the radio label.</td>
+<td class="govuk-table__cell ">Name attribute for each radio item.</td>
 
 </tr>
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">checked</th>
+<th class="govuk-table__header" scope="row">items</th>
 
-<td class="govuk-c-table__cell ">boolean</td>
+<td class="govuk-table__cell ">array</td>
 
-<td class="govuk-c-table__cell ">No</td>
+<td class="govuk-table__cell ">Yes</td>
 
-<td class="govuk-c-table__cell ">If true, radio will be checked.</td>
-
-</tr>
-
-<tr class="govuk-c-table__row">
-
-<th class="govuk-c-table__header" scope="row">disabled</th>
-
-<td class="govuk-c-table__cell ">boolean</td>
-
-<td class="govuk-c-table__cell ">No</td>
-
-<td class="govuk-c-table__cell ">If true, radio will be disabled.</td>
+<td class="govuk-table__cell ">Array of radio items.</td>
 
 </tr>
 
-<tr class="govuk-c-table__row">
+<tr class="govuk-table__row">
 
-<th class="govuk-c-table__header" scope="row">attributes</th>
+<th class="govuk-table__header" scope="row">text</th>
 
-<td class="govuk-c-table__cell ">object</td>
+<td class="govuk-table__cell ">string</td>
 
-<td class="govuk-c-table__cell ">No</td>
+<td class="govuk-table__cell ">No</td>
 
-<td class="govuk-c-table__cell ">Any extra HTML attributes (for example data attributes) to add to the radio container.</td>
+<td class="govuk-table__cell ">Text to use within the radio label.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">html</th>
+
+<td class="govuk-table__cell ">string</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">HTML to use within the radio label. If this is provided, the text argument will be ignored.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">label</th>
+
+<td class="govuk-table__cell ">object</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Provide additional attributes to the radio label.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">checked</th>
+
+<td class="govuk-table__cell ">boolean</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">If true, radio will be checked.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">disabled</th>
+
+<td class="govuk-table__cell ">boolean</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">If true, radio will be disabled.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">attributes</th>
+
+<td class="govuk-table__cell ">object</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the radio container.</td>
 
 </tr>
 

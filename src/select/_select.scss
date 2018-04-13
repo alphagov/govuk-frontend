@@ -11,7 +11,7 @@
 @import "../globals/objects/form-group";
 
 @include govuk-exports("select") {
-  .govuk-c-select {
+  .govuk-select {
     @include govuk-font-regular;
     @include govuk-typography-responsive(
       $govuk-font-19,
@@ -27,14 +27,14 @@
     border: $govuk-border-width-form-element solid $govuk-input-border-colour;
   }
 
-  .govuk-c-select option:active,
-  .govuk-c-select option:checked,
-  .govuk-c-select:focus::-ms-value {
+  .govuk-select option:active,
+  .govuk-select option:checked,
+  .govuk-select:focus::-ms-value {
     color: $govuk-white;
     background-color: $govuk-blue;
   }
 
-  .govuk-c-select--error {
+  .govuk-select--error {
     border: $govuk-border-width-form-element-error solid $govuk-error-colour;
   }
 

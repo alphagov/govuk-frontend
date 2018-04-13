@@ -1,13 +1,13 @@
 {% from "error-message/macro.njk" import govukErrorMessage -%}
 
-<div class="govuk-o-form-group {%- if params.errorMessage %} govuk-o-form-group--error{% endif %}">
-  <fieldset class="govuk-c-fieldset
+<div class="govuk-form-group {%- if params.errorMessage %} govuk-form-group--error{% endif %}">
+  <fieldset class="govuk-fieldset
     {%- if params.classes %} {{ params.classes }}{% endif %}"{% for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
     {% if params.legendHtml or params.legendText %}
-    <legend class="govuk-c-fieldset__legend">
+    <legend class="govuk-fieldset__legend">
       {{ params.legendHtml | safe if params.legendHtml else params.legendText }}
       {% if params.legendHintText or params.legendHintHtml %}
-      <span class="govuk-c-fieldset__hint">{{ params.legendHintHtml | safe if params.legendHintHtml else params.legendHintText }}</span>
+      <span class="govuk-fieldset__hint">{{ params.legendHintHtml | safe if params.legendHintHtml else params.legendHintText }}</span>
       {% endif %}
       {% if params.errorMessage %}
       {{ govukErrorMessage(params.errorMessage) | trim | indent(4) -}}

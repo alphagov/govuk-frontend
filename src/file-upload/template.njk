@@ -1,7 +1,7 @@
 {% from "label/macro.njk" import govukLabel %}
 
 {#- Include label passing all label parameters, merging in `for` and `errorMessage` #}
-<div class="govuk-o-form-group {%- if params.errorMessage %} govuk-o-form-group--error{% endif %}">
+<div class="govuk-form-group {%- if params.errorMessage %} govuk-form-group--error{% endif %}">
 
   {{- govukLabel({
     html: params.label.html,
@@ -14,5 +14,5 @@
     for: params.id
   }) -}}
 
-  <input type="file" id="{{ params.id }}" name="{{ params.name }}" {%- if params.value %} value="{{ params.value }}"{% endif %} class="govuk-c-file-upload {{- ' govuk-c-file-upload--error' if params.errorMessage }} {{- ' ' + params.classes if params.classes}}" {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+  <input type="file" id="{{ params.id }}" name="{{ params.name }}" {%- if params.value %} value="{{ params.value }}"{% endif %} class="govuk-file-upload {{- ' govuk-file-upload--error' if params.errorMessage }} {{- ' ' + params.classes if params.classes}}" {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
 </div>

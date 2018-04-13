@@ -19,7 +19,7 @@
 /// govuk-link-common mixin in order to get the focus state.
 ///
 /// @example scss
-///   .govuk-c-component__link {
+///   .govuk-component__link {
 ///     @include govuk-link-common;
 ///     @include govuk-link-style-muted;
 ///   }
@@ -50,7 +50,7 @@
 /// govuk-link-common mixin in order to get the focus state.
 ///
 /// @example scss
-///   .govuk-c-component__link {
+///   .govuk-component__link {
 ///     @include govuk-link-common;
 ///     @include govuk-link-style-muted;
 ///   }
@@ -87,7 +87,7 @@
 /// govuk-link-common mixin in order to get the focus state.
 ///
 /// @example scss
-///   .govuk-c-component__link {
+///   .govuk-component__link {
 ///     @include govuk-link-common;
 ///     @include govuk-link-style-text;
 ///   }

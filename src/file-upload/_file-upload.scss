@@ -8,13 +8,13 @@
 @import "../globals/helpers/focusable";
 
 @include govuk-exports("file-upload") {
-  .govuk-c-file-upload {
+  .govuk-file-upload {
     @include govuk-font-regular-19;
     @include govuk-text-colour;
     @include govuk-focusable;
   }
 
-  .govuk-c-file-upload--error {
+  .govuk-file-upload--error {
     border: $govuk-border-width-form-element-error solid $govuk-error-colour;
   }
 }

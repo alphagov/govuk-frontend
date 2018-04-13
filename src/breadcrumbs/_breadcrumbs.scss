@@ -37,7 +37,7 @@
   // √(8² + 8²) * 0.5 ≅ 5.655
   $chevron-altitude-calculated: 5.655px;
 
-  .govuk-c-breadcrumbs {
+  .govuk-breadcrumbs {
     @include govuk-font-regular-16;
     @include govuk-text-colour;
 
@@ -45,15 +45,15 @@
     margin-bottom: $govuk-spacing-scale-2;
   }
 
-  .govuk-c-breadcrumbs__list {
-    @include govuk-h-clearfix;
+  .govuk-breadcrumbs__list {
+    @include govuk-clearfix;
 
     margin: 0;
     padding: 0;
     list-style-type: none;
   }
 
-  .govuk-c-breadcrumbs__list-item {
+  .govuk-breadcrumbs__list-item {
 
     display: inline-block;
     position: relative;
@@ -122,7 +122,7 @@
     }
   }
 
-  .govuk-c-breadcrumbs__link {
+  .govuk-breadcrumbs__link {
     @include govuk-link-common;
     @include govuk-link-style-text;
   }
