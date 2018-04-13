@@ -33,6 +33,14 @@ Internal:
 - Update publishing docs (PR [#651](https://github.com/alphagov/govuk-frontend/pull/651))
 - Wrap `app.css` in conditional comments in review app layout (PR [#653](https://github.com/alphagov/govuk-frontend/pull/653))
 
+## 0.0.28-alpha (Breaking release)
+
+Fixes incomplete release from `packages/` and `dist/` in 0.0.27-alpha release.
+Missing files were:
+- globals/tools/_compatibility.scss
+- globals/tools/_ie8.scss
+- globals/settings/_compatibility.scss
+- globals/settings/_ie8.scss
 
 ## 0.0.27-alpha (Breaking release)
 
