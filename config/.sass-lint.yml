@@ -233,6 +233,10 @@ rules:
   # https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-vendor-prefixes.md
   no-vendor-prefixes: 0
 
+  # Rule no-warn will enforce that @warn statements are not allowed to be used.
+  # https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-warn.md
+  no-warn: 0
+
   # Rule placeholder-in-extend will enforce whether extends should only include placeholder selectors.
   # https://github.com/sasstools/sass-lint/blob/master/docs/rules/placeholder-in-extend.md
   placeholder-in-extend: 2
