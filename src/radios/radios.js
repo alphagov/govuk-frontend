@@ -1,3 +1,6 @@
+import '../globals/polyfills/Function/prototype/bind'
+import '../globals/polyfills/Event' // addEventListener and event.target normaliziation
+
 // TODO: Ideally this would be a NodeList.prototype.forEach polyfill
 // This seems to fail in IE8, requires more investigation.
 // See: https://github.com/imagitama/nodelist-foreach-polyfill
