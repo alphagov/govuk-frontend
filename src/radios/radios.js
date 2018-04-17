@@ -1,17 +1,6 @@
 import '../globals/polyfills/Function/prototype/bind'
 import '../globals/polyfills/Event' // addEventListener and event.target normaliziation
-
-// TODO: Ideally this would be a NodeList.prototype.forEach polyfill
-// This seems to fail in IE8, requires more investigation.
-// See: https://github.com/imagitama/nodelist-foreach-polyfill
-var NodeListForEach = function (nodes, callback) {
-  if (window.NodeList.prototype.forEach) {
-    return nodes.forEach(callback)
-  }
-  for (var i = 0; i < nodes.length; i++) {
-    callback.call(window, nodes[i], i, nodes)
-  }
-}
+import { nodeListForEach } from '../globals/common'
 
 function Radios ($module) {
   this.$module = $module
@@ -27,7 +16,7 @@ Radios.prototype.init = function () {
   * Check if they have a matching conditional reveal
   * If they do, assign attributes.
   **/
-  NodeListForEach($inputs, function ($input) {
+  nodeListForEach($inputs, function ($input) {
     var controls = $input.getAttribute('data-aria-controls')
 
     // Check if input controls anything
@@ -55,7 +44,7 @@ Radios.prototype.setAttributes = function ($input) {
 }
 
 Radios.prototype.handleClick = function (event) {
-  NodeListForEach(this.$inputs, function ($input) {
+  nodeListForEach(this.$inputs, function ($input) {
     // If a radio with aria-controls, handle click
     var isRadio = $input.getAttribute('type') === 'radio'
     var hasAriaControls = $input.getAttribute('aria-controls')
