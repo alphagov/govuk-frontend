@@ -179,6 +179,42 @@ Add the CSS and JavaScript code to your HTML template:
 
 Copy and paste code from the examples in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/) to use GOV.UK Frontend in your service.
 
+## Browser support
+
+As a minimum, GOV.UK Frontend will allow you to build services that
+comply with the [guidance in the service manual](https://www.gov.uk/service-
+manual/technology designing-for-different-browsers-and-devices#browsers-to-test-
+in).
+
+At the minute, GOV.UK Frontend officially supports the following browsers:
+
+| Operating system | Browser                                | Support     |
+|----------------- |----------------------------------------|-------------|
+| Windows          | Internet Explorer 8                    | functional  |
+| Windows          | Internet Explorer 9-11                 | compliant   |
+| Windows          | Edge (latest 2 versions)               | compliant   |
+| Windows          | Google Chrome (latest 2 versions)      | compliant   |
+| Windows          | Mozilla Firefox (latest 2 versions)    | compliant   |
+| macOS            | Safari 9+                              | compliant   |
+| macOS            | Google Chrome (latest 2 versions)      | compliant   |
+| macOS            | Mozilla Firefox (latest 2 versions)    | compliant   |
+| iOS              | Safari for iOS 9.3+                    | compliant   |
+| iOS              | Google Chrome (latest 2 versions)      | compliant   |
+| Android          | Google Chrome (latest 2 versions)      | compliant   |
+| Android          | Samsung Internet (latest 2 versions)   | compliant   |
+| Windows Phone    | Internet Explorer (latest 2 versions)  | compliant   |
+
+‘Compliant’ means that the components must look as good and function as well as
+it does in other modern browsers.
+
+'Functional' means the components may not look perfect in the given browser, but
+must still be usable without errors and without 'looking broken'.
+
+If you are including GOV.UK Frontend as part of a stylesheet you are generating
+in your application's build pipeline, you will need to [generate and include a
+separate stylesheet in order to support Internet Explorer
+8](docs/supporting-internet-explorer-8.md).
+
 
 ## Licence
 
