@@ -117,6 +117,27 @@ app.use('/icons', express.static(path.join(__dirname, '/node_modules/@govuk-fron
 
 Manually copy the images from `/node_modules/@govuk-frontend/icons` into a public facing directory in your project. Ideally copying the files to your project should be an automated task or part of your build pipeline to ensure that the GOV.UK Frontend images and icons stay up-to-date.
 
+## Include assets
+
+Add the CSS and JavaScript code to your HTML template:
+
+```html
+<!DOCTYPE html>
+  <head>
+    <title>Example</title>
+    <link rel="stylesheet" href="assets/application.css">
+  </head>
+  <body>
+    <!-- Copy and paste component HTML-->
+    <button class="govuk-button">This is a button component</button>
+    <script src="assets/application.js"></script>
+  </body>
+</html>
+```
+
+If your service supports Internet Explorer 8, you will need to [generate and
+include a separate stylesheet](docs/supporting-internet-explorer-8.md) as well.
+
 ## Usage
 
 Copy and paste code from the examples in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/) to use GOV.UK Frontend in your service.
@@ -153,25 +174,6 @@ Add the CSS and JavaScript code to your HTML template:
   </body>
 </html>
 ```
-
-## Supporting Internet Explorer 8
-
-### Option 1: Add GOV.UK Frontend in your Sass build
-
-In order to support Internet Explorer 8, you should build a version of your application's stylesheet that targets IE8, and include it using conditional comments as shown in [Include assets](#include-assets).
-
-For instance, if your application Sass lives in `app.scss`, you might create an `app-ie8.scss` with the following:
-
-```SCSS
-// Target IE8
-$govuk-is-ie8: true;
-
-@import "app";
-```
-
-### Option 2: Use the CSS files provided in `dist`
-
-If you're not including GOV.UK Frontend styles in your Sass build but are using the generated files from `dist`, you should include both  `govuk-frontend.min.css` and `govuk-frontend-old-ie.min.css` in your project layout using conditional comments. The latter stylesheet adds support for IE8. See [Include assets](#include-assets) for an example.
 
 ## Usage
 
