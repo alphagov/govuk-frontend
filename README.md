@@ -17,9 +17,9 @@ There are 2 ways to use GOV.UK Frontend:
 * we recommend using <a href="#option-1-use-npm">option 1</a>, which requires using node package manager (NPM)
 * you can also use <a href="#option-2-add-assets-manually">option 2</a>, which requires you to download the assets (CSS, JavaScript) from GitHub
 
-# Option 1: Use NPM
+## Option 1: Use NPM
 
-## Requirements
+### Requirements
 To use GOV.UK Frontend with NPM you must:
 
 1. Install the long-term support (LTS) version of [Node.js](https://nodejs.org/en/), which includes NPM. The minimum version of Node required is 8.6.0. (We recommend using [`nvm`](https://github.com/creationix/nvm) for managing versions of Node.)
@@ -30,7 +30,7 @@ To use GOV.UK Frontend with NPM you must:
 npm install nunjucks --save
 ```
 
-## Installation
+### Installation
 GOV.UK Frontend is currently in private beta. You will need to log in to NPM using credentials provided by the Design System team.
 
 Run the following command to log in:
@@ -54,8 +54,6 @@ npm install --save @govuk-frontend/button
 You can find a list of all components in the [packages directory](https://github.com/alphagov/govuk-frontend/tree/master/packages). Each component has a README with installation and usage instructions.
 
 After you have installed GOV.UK Frontend the `@govuk-frontend` package will appear in your `node_modules` folder.
-
-## Import assets
 
 ### Import styles
 
@@ -117,7 +115,7 @@ app.use('/icons', express.static(path.join(__dirname, '/node_modules/@govuk-fron
 
 Manually copy the images from `/node_modules/@govuk-frontend/icons` into a public facing directory in your project. Ideally copying the files to your project should be an automated task or part of your build pipeline to ensure that the GOV.UK Frontend images and icons stay up-to-date.
 
-## Include assets
+### Include assets
 
 Add the CSS and JavaScript code to your HTML template:
 
@@ -138,13 +136,13 @@ Add the CSS and JavaScript code to your HTML template:
 If your service supports Internet Explorer 8, you will need to [generate and
 include a separate stylesheet](docs/supporting-internet-explorer-8.md) as well.
 
-## Usage
+### Usage
 
 Copy and paste code from the examples in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/) to use GOV.UK Frontend in your service.
 
-# Option 2: Add assets manually
+## Option 2: Add assets manually
 
-## Download assets
+### Download assets
 
 Download the latest versions of the following assets and include them in your project:
 
@@ -152,7 +150,7 @@ Download the latest versions of the following assets and include them in your pr
 - [dist/js](https://github.com/alphagov/govuk-frontend/tree/master/dist/js)
 - [dist/icons](https://github.com/alphagov/govuk-frontend/tree/master/dist/icons)
 
-## Include assets
+### Include assets
 
 Add the CSS and JavaScript code to your HTML template:
 
@@ -175,7 +173,7 @@ Add the CSS and JavaScript code to your HTML template:
 </html>
 ```
 
-## Usage
+### Usage
 
 Copy and paste code from the examples in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/) to use GOV.UK Frontend in your service.
 
