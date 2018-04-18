@@ -175,7 +175,9 @@ Add the CSS and JavaScript code to your HTML template:
 
 ### Usage
 
-Copy and paste code from the examples in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/) to use GOV.UK Frontend in your service.
+Copy and paste HTML code from the examples in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/) to use GOV.UK Frontend in your service.
+
+Nunjucks templates are only available when installing GOV.UK Frontend using npm.
 
 ## Browser support
 
