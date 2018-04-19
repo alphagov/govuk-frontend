@@ -16,9 +16,10 @@ const isDist = taskArguments.destination === 'dist' || false
 gulp.task('copy-files', () => {
   return gulp.src([
     configPaths.src + '**/*',
-    '!' + configPaths.src + '**/*.js',
+    '!' + configPaths.src + '**/*.{test,js}',
     '!' + configPaths.src + '**/index.njk',
-    '!' + configPaths.src + '**/*.{yml,yaml}'
+    '!' + configPaths.src + '**/*.{yml,yaml}',
+    '!' + configPaths.src + '**/__snapshots__/**'
   ])
   .pipe(scssFiles)
   .pipe(postcss([
