@@ -1,53 +1,10 @@
-@mixin govuk-grid {
-  @include govuk-clearfix;
-  margin-right: - ($govuk-gutter-half);
-  margin-left: - ($govuk-gutter-half);
-}
-
-@mixin govuk-grid-item {
-  box-sizing: border-box;
-  padding: 0 $govuk-gutter-half;
-
-  @include mq($from: tablet) {
-    float: left;
-  }
-}
-
-@include govuk-exports("grid") {
-
-  .govuk-grid {
-    @include govuk-grid;
-  }
-
-  .govuk-grid__item {
-    @include govuk-grid-item;
-  }
-
-  .govuk-grid__item--full {
-    width: 100%;
-  }
-
-  .govuk-grid__item--one-half {
-    @include mq($from: tablet) {
-      width: percentage(1 / 2);
-    }
-  }
-
-  .govuk-grid__item--one-third {
-    @include mq($from: tablet) {
-      width: percentage(1 / 3);
-    }
-  }
-
-  .govuk-grid__item--two-thirds {
-    @include mq($from: tablet) {
-      width: percentage(2 / 3);
-    }
-  }
-
-  .govuk-grid__item--one-quarter {
-    @include mq($from: tablet) {
-      width: percentage(1 / 4);
-    }
-  }
+@include govuk-exports("govuk-grid") {
+  //most common usage
+  @include govuk-grid-row;
+  @include govuk-grid-column(one-quarter);
+  @include govuk-grid-column(one-third);
+  @include govuk-grid-column(one-half);
+  @include govuk-grid-column(two-thirds);
+  @include govuk-grid-column(three-quarters);
+  @include govuk-grid-column(full);
 }
