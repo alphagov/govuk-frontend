@@ -28,6 +28,9 @@ New features:
 
 - We're now using ES6 Modules and [rollup](https://rollupjs.org/guide/en) to distribute our JavaScript. (PR [#652](https://github.com/alphagov/govuk-frontend/pull/652))
 
+- Vendor-in SassMQ functionality, write tests and remove external dependency 
+  (PR [#657](https://github.com/alphagov/govuk-frontend/pull/657))
+
 Internal:
 
 - Update publishing docs (PR [#651](https://github.com/alphagov/govuk-frontend/pull/651))
