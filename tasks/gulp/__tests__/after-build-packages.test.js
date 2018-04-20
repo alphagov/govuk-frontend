@@ -1,6 +1,13 @@
 /* eslint-env jest */
 
+const path = require('path')
+const util = require('util')
+const sass = require('node-sass')
+
 const lib = require('../../../lib/file-helper')
+const configPaths = require('../../../config/paths.json')
+
+const sassRender = util.promisify(sass.render)
 
 describe('building packages/', () => {
   describe('when running copy-to-destination', () => {
@@ -25,5 +32,12 @@ describe('building packages/', () => {
 
   lib.SrcComponentList.forEach((componentName) => {
     defineTestsForComponent(componentName)
+  })
+
+  describe('after running copy-to-destination', () => {
+    it('scss files should compile without throwing an exeption', async () => {
+      const allScssFile = path.join(configPaths.packages, 'all', '_all.scss')
+      await sassRender({ file: allScssFile })
+    })
   })
 })
