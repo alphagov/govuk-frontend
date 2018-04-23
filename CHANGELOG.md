@@ -39,6 +39,8 @@ Internal:
 (PR [#663](https://github.com/alphagov/govuk-frontend/pull/663))
 - Exclude test related files from `dist/` and `packages/` copy task 
 (PR [#662](https://github.com/alphagov/govuk-frontend/pull/662))
+- Add test to check if Sass in packages compiles correctly after the `build:packages` task
+(PR [#669](https://github.com/alphagov/govuk-frontend/pull/669))
 
 ## 0.0.28-alpha (Breaking release)
 
