@@ -95,6 +95,64 @@ After resolving the import paths you can import GOV.UK Frontend by using:
 @import "@govuk-frontend/button/button";
 ```
 
+### Import JavaScript
+
+You need to import the GOV.UK Frontend scripts into the main JavaScript file in your project.
+
+To import and initialise all components that require JavaScript, add the below to your main JavaScript file:
+```JS
+import All from '@govuk-frontend/all/all'
+```
+
+To import an individual component (for example a button), add the below to your main JavaScript file:
+```JS
+import Button from '@govuk-frontend/button/button'
+```
+
+Use the following to initialise the button component:
+
+```JS
+new Button().init()
+```
+
+Note: The import syntax you should use depends on the JavaScript module format used by your bundler. For example, if it is using `CommonJS`, use
+
+```JS
+require('@govuk-frontend/all/all')
+```
+
+#### Polyfills
+A JavaScript polyfill provides functionality on older browsers or assistive technology that do not natively support it.
+
+The polyfills provided with GOV.UK Frontend aim to fix usability and accessibility issues. If there is a JavaScript included in the component directory, it is important to import and initialise it in your project to ensure that all users can properly use the component (see [Import Javscript](#import-javascript)).  
+
+Examples of GOV.UK Frontend polyfills:
+1. Links styled to look like buttons lack button behaviour. The polyfill script will allow them to be triggered with a space key after they’ve been focused, to match standard buttons.
+2. Details component polyfill includes accessibility enhancements to ensure that the user is given appropriate information about the state (collapsed/expanded) of the component. The polyfill also makes the component behave correctly on IE8.
+
+#### Bundling JavaScript
+The JavaScript included in GOV.UK Frontend components are in [UMD (Universal Module Definition)](https://github.com/umdjs/umd) format which makes it compatible with AMD (Asynchronous module definition) and CommonJS.
+
+##### Include with Webpack 4
+Here's an example of setting up [`webpack.config.js`](examples/webpack/webpack.config.js) in your project
+
+##### Include with Gulp and Rollup
+You can configure Gulp and Rollup as part of your build process using the [gulp-better-rollup](https://www.npmjs.com/package/gulp-better-rollup) plugin. Below is an example:
+
+```JS
+gulp.task('compile', () => {
+  return gulp.src('./js/*.js')
+    .pipe(rollup({
+      // Legacy mode is required for IE8 support
+      legacy: true
+    }))
+    .pipe(uglify())
+    .pipe(gulp.dest('./js'));
+})
+
+```
+(If you compile JavaScript in your project, your build tasks will already include something similar to the above task - in that case, you will just need to pipe `rollup` to it.)
+
 ### Import images and icons
 
 In order to import GOV.UK Frontend images and icons to your project, you should configure your application to reference or copy the relevant GOV.UK Frontend assets.
@@ -133,7 +191,7 @@ Download the latest versions of the following assets and include them in your pr
 
 ## Include assets
 
-Add the CSS and JavaScript code to your HTML template:
+Add the CSS and JavaScript code to your HTML template (this assumes you've copied the files to `/assets` in your project):
 
 ```html
 <!DOCTYPE html>

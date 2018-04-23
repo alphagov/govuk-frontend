@@ -2,71 +2,161 @@
 
 ## Coding standards
 
-Coding standards for [CSS](coding-standards/css.md) and [JavaScript](coding-standards/js.md).
+- [Component API](component-api.md)
+- [Components](components.md)
+- [CSS](coding-standards/css.md)
+- [IE8 support](legacy-ie.md)
+- [JavaScript](coding-standards/js.md)
 
-Support for [older versions of IE](legacy-ie.md).
+## Installing
 
-## Directory structure
+Clone the repository
 
-## /config
+```
+git clone git@github.com:alphagov/govuk-frontend.git
+```
 
-Config files for scss lint and for the govuk-frontend application.
+Install dependencies
 
-## /dist
+```
+npm install
+```
 
-Standalone builds of govuk-frontend. Provides a way to consume govuk-frontend without having to use npm.
+## Running
 
-## /docs
+```
+npm start
+```
+By default the app runs on port 3000, so the app will be available at: http://localhost:3000
 
-Project documentation.
+See [development and publishing tasks](development-and-publish-tasks.md) for more information about the npm scripts.
 
-## /packages
+## Application architecture
 
-npm packages of globals and components.
+- `app/`
 
-## /packages/all  
+  [Express](https://github.com/expressjs/express) application to preview components; also referred to as _preview app_.
 
-Consume all of govuk-frontend through a single package.
+  - `assets/`
 
-## /packages/globals
+    App-specific assets.
 
-All packages depend on this package, it contains shared dependencies of all components - colours, font-face, media queries, typography and vars.
+  - `views/`
 
-## /packages/<package-name>
+    [Nunjucks](https://github.com/mozilla/nunjucks) template files.
 
-Individual packages - these depend on each other (dependencies are listed in package.json) and also the globals package.
+    - `examples/`
 
-### /packages/<package-name>/CHANGELOG.md 
+      Examples of components usage in various contexts. You can access these examples from the home page of the preview app.
 
-Changes made to a package listed per version.
+    - `layouts/`
 
-### /packages/<package-name>/LICENSE
+      Generic layout templates used to render preview app pages.
 
-Package license.
+    - `partials/`
 
-### /packages/<package-name>/README.md
+      Reusable blocks of template code.
 
-Package README showing the basic API and usage instructions.
+- `bin/`
 
-### /packages/<package-name>/package.json 
+  Binary/executable files (i.e. bash scripts) mainly used in the [publishing process]((publishing.md)).
 
-npm package definition for a package.
-States package dependencies.
-Package version is managed by Lerna.js
+- `config/`
 
-## /src
+  Configuration files for the preview app, [sass-lint](https://github.com/sasstools/sass-lint) and [Jest](https://github.com/facebook/jest).
 
-The development area for govuk-frontend.
 
-### /src/globals
+- `dist/` **contains auto-generated files**
 
-Images
+  Standalone builds of govuk-frontend. Provides a way to consume govuk-frontend without using npm.
 
-Scss source files.
+- `docs/`
 
-### /src/components
+  Documentation files.
 
-Component source files.
+- `lib/`
 
-[Component documentation](components.md)
-[Npm scripts and gulp taks](development-and-publish-tasks.md)
+  Application modules and helpers.
+
+- `packages/` **contains auto-generated files**
+
+  packages published on npm.
+
+  - `all/`
+
+    Consume all of govuk-frontend through a single package.
+
+  - `globals/`
+
+    All packages depend on this package, it contains shared dependencies of all components (e.g. colours, font-face, media queries, typography and vars).
+
+  - `[component-name]/`
+
+    Individual packages - these depend on each other (dependencies are listed in package.json) and also the globals package.
+
+    - `CHANGELOG.md`
+
+      Changes made to a package listed per version.
+
+    - `LICENSE`
+
+      Package license.
+
+    - `README.md`
+
+      Package README showing the basic API and usage instructions.
+
+    - `package.json`
+
+      npm definition for a package; states package dependencies.
+
+- `src/`
+
+  Source files.
+
+  - `all/`
+
+    Import all scripts and styles.
+
+  - `globals/`
+
+    Generic scripts, style definitions and mixins.
+
+  - `icons/`
+
+    Image assets.
+
+  - `[component-name]/`
+
+    Component-specific source files.
+
+- `tasks/`
+
+  Application modules and helpers.
+
+
+### Auto-generated directories  
+
+- `aXeReports/`
+
+  Output of [aXe](https://github.com/dequelabs/axe-core) tests.
+
+- `public/`
+
+  Assets built for the preview app.
+
+## Testing and linting
+
+```
+npm test
+```
+
+Running all tests will trigger [standard](https://github.com/standard/standard) and [sass-lint](https://github.com/sasstools/sass-lint) for lint and [Jest](https://github.com/facebook/jest) for unit and functional tests.
+
+## Deploying
+You can [run the preview app locally](#running) or deploy it straight to a Heroku instance.
+
+An existing Heroku instance can be found at: [http://govuk-frontend-review.herokuapp.com/](http://govuk-frontend-review.herokuapp.com/)
+
+## Publishing
+You need npm credentials to publish a new release. For the detailed publishing process see the [publishing  documentation](publishing.md).
