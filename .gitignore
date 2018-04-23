@@ -7,4 +7,5 @@ lerna-debug.log
 axeReports/
 public/
 packages/**/package-lock.json
+examples/**/package-lock.json
 *.zip
