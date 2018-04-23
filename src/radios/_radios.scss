@@ -84,6 +84,45 @@
     background: currentColor;
   }
 
+  // Small radios
+
+  .govuk-c-radios--small .govuk-c-radios__item {
+    min-height: 26px;
+
+    margin-bottom: $govuk-spacing-scale-2;
+    padding: 0 0 0 $govuk-spacing-scale-6;
+  }
+
+  .govuk-c-radios--small .govuk-c-radios__input {
+    top: 5px;
+    left: 0;
+
+    width: 26px;
+    height: 26px;
+  }
+
+  .govuk-c-radios--small .govuk-c-radios__label {
+    padding: 8px 5px 2px;
+  }
+
+  .govuk-c-radios--small .govuk-c-radios__input + .govuk-c-radios__label::before {
+    top: 5px;
+    left: 0;
+
+    width: 26px;
+    height: 26px;
+  }
+
+  .govuk-c-radios--small .govuk-c-radios__input + .govuk-c-radios__label::after {
+    top: 11px;
+    left: 6px;
+
+    width: 0;
+    height: 0;
+
+    border: 7px solid currentColor;
+  }
+
   // Focused state
   .govuk-radios__input:focus + .govuk-radios__label::before {
     box-shadow: 0 0 0 4px $govuk-focus-colour;

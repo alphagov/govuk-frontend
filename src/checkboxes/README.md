@@ -427,6 +427,73 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
       ]
     }) }}
 
+### Checkboxes--small
+
+[Preview the checkboxes--small example](http://govuk-frontend-review.herokuapp.com/components/checkboxes/small/preview)
+
+#### Markup
+
+      <div class="govuk-o-form-group">
+      <fieldset class="govuk-c-fieldset">
+
+        <legend class="govuk-c-fieldset__legend">
+          <h3 class="govuk-heading-m">Which types of waste do you transport regularly?</h3>
+
+        </legend>
+
+      <div class="govuk-c-checkboxes govuk-c-checkboxes--small">
+
+          <div class="govuk-c-checkboxes__item">
+            <input class="govuk-c-checkboxes__input" id="undefined-1" name="" type="checkbox" value="animal">
+            <label class="govuk-c-label govuk-c-checkboxes__label" for="undefined-1">
+            Waste from animal carcasses
+
+          </label>
+          </div>
+
+          <div class="govuk-c-checkboxes__item">
+            <input class="govuk-c-checkboxes__input" id="undefined-2" name="" type="checkbox" value="mines">
+            <label class="govuk-c-label govuk-c-checkboxes__label" for="undefined-2">
+            Waste from mines or quarries
+
+          </label>
+          </div>
+
+          <div class="govuk-c-checkboxes__item">
+            <input class="govuk-c-checkboxes__input" id="undefined-3" name="" type="checkbox" value="farm">
+            <label class="govuk-c-label govuk-c-checkboxes__label" for="undefined-3">
+            Farm or agricultural waste
+
+          </label>
+          </div>
+
+        </div>
+      </fieldset>
+    </div>
+
+#### Macro
+
+    {{ govukCheckboxes({
+      "classes": "govuk-c-checkboxes--small",
+      "fieldset": {
+        "legendHtml": "<h3 class=\"govuk-heading-m\">Which types of waste do you transport regularly?</h3>"
+      },
+      "items": [
+        {
+          "value": "animal",
+          "text": "Waste from animal carcasses"
+        },
+        {
+          "value": "mines",
+          "text": "Waste from mines or quarries"
+        },
+        {
+          "value": "farm",
+          "text": "Farm or agricultural waste"
+        }
+      ]
+    }) }}
+
 ## Dependencies
 
 To consume the checkboxes component you must be running npm version 5 or above.

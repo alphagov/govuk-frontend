@@ -94,3 +94,23 @@ examples:
       - value: no
         text: No
         checked: true
+- name: small
+  data:
+    idPrefix: 'example'
+    name: 'example'
+    classes: 'govuk-c-radios--small'
+    fieldset:
+      classes: 'app-c-fieldset--custom-modifier'
+      attributes:
+        'data-attribute': 'value'
+        'data-second-attribute': 'second-value'
+      legendText: Have you changed your name?
+      legendHintText:
+        This includes changing your last name or spelling your name differently.
+    items:
+      - value: yes
+        text: Yes
+      - value: no
+        text: No
+        checked: true
+
