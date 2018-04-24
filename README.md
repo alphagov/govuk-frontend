@@ -239,14 +239,15 @@ Copy and paste HTML code from the examples in the
 [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/)
 to use GOV.UK Frontend in your service.
 
-Nunjucks templates are only available when installing GOV.UK Frontend using npm.
+You will only be able to use Nunjucks templates if you install GOV.UK Frontend
+using npm.
 
 ## Browser support
 
-As a minimum, GOV.UK Frontend will allow you to build services that
-comply with the [guidance in the service manual][service-manual-browsers].
+GOV.UK Frontend will allow you to build services that comply with the [guidance
+in the Service Manual][service-manual-browsers].
 
-At the minute, GOV.UK Frontend officially supports the following browsers:
+Currently, GOV.UK Frontend officially supports the following browsers:
 
 | Operating system | Browser                                | Support     |
 |----------------- |----------------------------------------|-------------|
@@ -265,14 +266,14 @@ At the minute, GOV.UK Frontend officially supports the following browsers:
 | Windows Phone    | Internet Explorer (latest 2 versions)  | compliant   |
 
 ‘Compliant’ means that the components must look as good and function as well as
-it does in other modern browsers.
+they do in other modern browsers.
 
 'Functional' means the components may not look perfect in the given browser, but
 must still be usable without errors and without 'looking broken'.
 
-If you are including GOV.UK Frontend as part of a stylesheet you are generating
-in your application's build pipeline, you will need to [generate and include a
-separate stylesheet in order to support Internet Explorer
+If you are including GOV.UK Frontend as part of a stylesheet that you are
+generating in your application's build pipeline, you will need to [generate and
+include a separate stylesheet in order to support Internet Explorer
 8](docs/supporting-internet-explorer-8.md).
 
 [service-manual-browsers]: https://www.gov.uk/service-manual/technology/designing-for-different-browsers-and-devices#browsers-to-test-in
