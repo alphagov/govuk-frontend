@@ -17,6 +17,12 @@ Breaking change:
 
   As a result of this, we're removing these prefixes from our codebase.
 
+- Simplify grid syntax and introduce grid-row and column mixins.
+  ([PR #665](https://github.com/alphagov/govuk-frontend/pull/665))
+  Based on user research feedback we have simplified the grid classes
+  to a more consise naming structure. We have also introduced two mixins
+  to help generate additional or custom grid styles and widths.
+
 Fixes:
 
 - Remove redundant font-family declaration from the button component – this will
