@@ -42,6 +42,13 @@
       margin: 0;
       opacity: 0;
     }
+
+    // add focus outline to input element for IE8
+    @include govuk-if-ie8 {
+      &:focus {
+        outline: $govuk-focus-width solid $govuk-focus-colour;
+      }
+    }
   }
 
   .govuk-radios__label {
