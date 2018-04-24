@@ -27,6 +27,8 @@ Fixes:
 New features:
 
 - We're now using ES6 Modules and [rollup](https://rollupjs.org/guide/en) to distribute our JavaScript. (PR [#652](https://github.com/alphagov/govuk-frontend/pull/652))
+- Checkboxes and Radios conditional reveal
+(PR [#616](https://github.com/alphagov/govuk-frontend/pull/616))
 
 Internal:
 
