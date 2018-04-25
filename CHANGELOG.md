@@ -45,6 +45,17 @@ New features:
 - Focus Error Summary on window load
     (PR [#671](https://github.com/alphagov/govuk-frontend/pull/671))
 
+- Opt-in Global `<a>` and `<p>` styles
+  (PR [#658](https://github.com/alphagov/govuk-frontend/pull/658))
+
+  Global styles are not included by default.
+
+  This is to avoid the risk of these globals conflicting with any pre-existing globals, for example in GOV.UK Elements or GOV.UK Template.
+
+  Hovever, we do include them in the [GOV.UK Prototype Kit](https://github.com/alphagov/govuk-prototype-kit-private-beta) to speed up prototyping.
+
+  To include global styles, you can set `$govuk-global-styles` variable to `true`.
+
 Internal:
 
 - Update publishing docs (PR [#651](https://github.com/alphagov/govuk-frontend/pull/651))
