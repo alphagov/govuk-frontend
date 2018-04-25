@@ -6,6 +6,8 @@ const { render, getExamples, htmlWithClassName } = require('../../lib/jest-helpe
 
 const examples = getExamples('select')
 
+const WORD_BOUNDARY = '\\b'
+
 describe('Select', () => {
   describe('by default', () => {
     it('passes accessibility tests', async () => {
@@ -46,10 +48,10 @@ describe('Select', () => {
       const $ = render('select', {
         items: [
           {
-            'text': 'Option 1'
+            text: 'Option 1'
           },
           {
-            'text': 'Options 2'
+            text: 'Options 2'
           }
         ]
       })
@@ -63,11 +65,11 @@ describe('Select', () => {
         items: [
           {
             'value': '1',
-            'text': 'Option 1'
+            text: 'Option 1'
           },
           {
             'value': '2',
-            'text': 'Options 2'
+            text: 'Options 2'
           }
         ]
       })
@@ -81,10 +83,10 @@ describe('Select', () => {
         value: '2',
         items: [
           {
-            'text': 'Option 1'
+            text: 'Option 1'
           },
           {
-            'text': 'Options 2'
+            text: 'Options 2'
           }
         ]
       })
@@ -98,11 +100,11 @@ describe('Select', () => {
         value: '2',
         items: [
           {
-            'text': 'Option 1',
+            text: 'Option 1',
             'selected': true
           },
           {
-            'text': 'Options 2'
+            text: 'Options 2'
           }
         ]
       })
@@ -146,10 +148,10 @@ describe('Select', () => {
       const $ = render('select', {
         id: 'nesting-order',
         label: {
-          'text': 'National Insurance number'
+          text: 'National Insurance number'
         },
         errorMessage: {
-          'text': 'Error message'
+          text: 'Error message'
         }
       })
 
@@ -161,7 +163,7 @@ describe('Select', () => {
       const $ = render('select', {
         id: 'my-select',
         label: {
-          'text': 'National Insurance number'
+          text: 'National Insurance number'
         }
       })
 
@@ -172,7 +174,7 @@ describe('Select', () => {
       const $ = render('select', {
         id: 'my-select',
         label: {
-          'text': 'Label text'
+          text: 'Label text'
         }
       })
 
@@ -182,18 +184,38 @@ describe('Select', () => {
 
     it('renders with error message', () => {
       const $ = render('select', {
+        id: 'select-with-error',
         errorMessage: {
-          'text': 'Error message'
+          text: 'Error message'
         }
       })
 
       expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
     })
 
+    it('associates the select as "described by" the error message', () => {
+      const $ = render('select', {
+        id: 'select-with-error',
+        errorMessage: {
+          text: 'Error message'
+        }
+      })
+
+      const $input = $('.govuk-select')
+      const $errorMessage = $('.govuk-error-message')
+
+      const errorMessageId = new RegExp(
+        WORD_BOUNDARY + $errorMessage.attr('id') + WORD_BOUNDARY
+      )
+
+      expect($input.attr('aria-describedby'))
+        .toMatch(errorMessageId)
+    })
+
     it('has error class when rendered with error message', () => {
       const $ = render('select', {
         errorMessage: {
-          'text': 'Error message'
+          text: 'Error message'
         }
       })
 

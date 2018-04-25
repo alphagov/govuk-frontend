@@ -20,7 +20,8 @@ Find out when to use the Select component in your service in the [GOV.UK Design 
       Label text goes here
 
     </label>
-    <select class="govuk-select" id="select-1" name="select-1">
+
+      <select class="govuk-select" id="select-1" name="select-1">
 
         <option value="1">GOV.UK frontend option 1</option>
 
@@ -72,12 +73,13 @@ Find out when to use the Select component in your service in the [GOV.UK Design 
         Hint text goes here
       </span>
 
-      <span class="govuk-error-message">
+    </label>
+
+        <span id="select-2-error" class="govuk-error-message">
       Error message goes here
     </span>
 
-    </label>
-    <select class="govuk-select govuk-select--error" id="select-2" name="select-2">
+      <select class="govuk-select govuk-select--error" id="select-2" name="select-2" aria-describedby="select-2-error">
 
         <option value="1">GOV.UK frontend option 1</option>
 
