@@ -1,0 +1,21 @@
+@import "../tools/exports";
+@import "links";
+@import "typography";
+@import "../settings/global-styles";
+
+@mixin govuk-global-styles {
+  a {
+    @extend %govuk-link;
+  }
+
+  p {
+    @extend %govuk-body-m;
+  }
+}
+
+@include govuk-exports("govuk-global-styles") {
+
+  @if $govuk-global-styles == true {
+    @include govuk-global-styles;
+  }
+}
