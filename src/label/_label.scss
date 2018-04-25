@@ -1,7 +1,5 @@
 @import "../globals/tools/exports";
 
-@import "../error-message/error-message";
-
 @include govuk-exports("label") {
   .govuk-label {
     @include govuk-font-regular-19;

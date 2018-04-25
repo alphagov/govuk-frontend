@@ -2,7 +2,7 @@
 
 const { axe } = require('jest-axe')
 
-const { render, getExamples, htmlWithClassName } = require('../../lib/jest-helpers')
+const { render, getExamples } = require('../../lib/jest-helpers')
 
 const examples = getExamples('label')
 
@@ -103,14 +103,6 @@ describe('Label', () => {
       const $component = $('.govuk-label')
       expect($component.attr('first-attribute')).toEqual('true')
       expect($component.attr('second-attribute')).toEqual('false')
-    })
-  })
-  describe('with dependant components', () => {
-    it('renders the error message text', () => {
-      const $ = render('error-message', {
-        text: 'Error message goes here'
-      })
-      expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
     })
   })
 })

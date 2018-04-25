@@ -55,37 +55,6 @@ Use labels for all form fields.
       "hintText": "It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’."
     }) }}
 
-### Label--with error message
-
-[Preview the label--with error message example](http://govuk-frontend-review.herokuapp.com/components/label/with error message/preview)
-
-#### Markup
-
-    <label class="govuk-label">
-      National Insurance number
-
-      <span class="govuk-label__hint">
-        It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’.
-      </span>
-
-      <span class="govuk-error-message">
-      Error message goes here
-    </span>
-
-    </label>
-
-#### Macro
-
-    {% from 'label/macro.njk' import govukLabel %}
-
-    {{ govukLabel({
-      "text": "National Insurance number",
-      "hintText": "It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’.",
-      "errorMessage": {
-        "text": "Error message goes here"
-      }
-    }) }}
-
 ## Dependencies
 
 To consume the label component you must be running npm version 5 or above.
