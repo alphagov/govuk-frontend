@@ -24,7 +24,8 @@ Find out when to use the Textarea component in your service in the [GOV.UK Desig
       </span>
 
     </label>
-    <textarea id="more-detail" name="more-detail" rows="5" class="govuk-textarea"></textarea>
+
+      <textarea id="more-detail" name="more-detail" rows="5" class="govuk-textarea"></textarea>
 
     </div>
 
@@ -50,12 +51,13 @@ Find out when to use the Textarea component in your service in the [GOV.UK Desig
     <div class="govuk-form-group govuk-form-group--error"><label class="govuk-label" for="no-ni-reason">
       Why can&#39;t you provide a National Insurance number?
 
-      <span class="govuk-error-message">
+    </label>
+
+        <span id="no-ni-reason-error" class="govuk-error-message">
       You must provide an explanation
     </span>
 
-    </label>
-    <textarea id="no-ni-reason" name="no-ni-reason" rows="5" class="govuk-textarea govuk-textarea--error"></textarea>
+      <textarea id="no-ni-reason" name="no-ni-reason" rows="5" class="govuk-textarea govuk-textarea--error" aria-describedby="no-ni-reason-error"></textarea>
 
     </div>
 
@@ -84,7 +86,8 @@ Find out when to use the Textarea component in your service in the [GOV.UK Desig
       Full address
 
     </label>
-    <textarea id="full-address" name="address" rows="5" class="govuk-textarea">221B Baker Street
+
+      <textarea id="full-address" name="address" rows="5" class="govuk-textarea">221B Baker Street
     London
     NW1 6XE
     </textarea>
@@ -114,7 +117,8 @@ Find out when to use the Textarea component in your service in the [GOV.UK Desig
       Full address
 
     </label>
-    <textarea id="full-address" name="address" rows="8" class="govuk-textarea"></textarea>
+
+      <textarea id="full-address" name="address" rows="8" class="govuk-textarea"></textarea>
 
     </div>
 

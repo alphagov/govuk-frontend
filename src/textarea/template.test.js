@@ -6,6 +6,8 @@ const { render, getExamples, htmlWithClassName } = require('../../lib/jest-helpe
 
 const examples = getExamples('textarea')
 
+const WORD_BOUNDARY = '\\b'
+
 describe('Textarea', () => {
   describe('by default', () => {
     it('passes accessibility tests', async () => {
@@ -120,12 +122,32 @@ describe('Textarea', () => {
 
     it('renders with error message', () => {
       const $ = render('textarea', {
+        id: 'textarea-with-error',
+        errorMessage: {
+          text: 'Error message'
+        }
+      })
+
+      expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
+    })
+
+    it('associates the textarea as "described by" the error message', () => {
+      const $ = render('textarea', {
+        id: 'input-with-error',
         errorMessage: {
           'text': 'Error message'
         }
       })
 
-      expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
+      const $component = $('.govuk-textarea')
+      const $errorMessage = $('.govuk-error-message')
+
+      const errorMessageId = new RegExp(
+        WORD_BOUNDARY + $errorMessage.attr('id') + WORD_BOUNDARY
+      )
+
+      expect($component.attr('aria-describedby'))
+        .toMatch(errorMessageId)
     })
 
     it('has error class when rendered with error message', () => {
