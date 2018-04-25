@@ -194,6 +194,33 @@ describe('Radios', () => {
       const $lastInput = $component.find('.govuk-radios__item:last-child input')
       expect($lastInput.attr('checked')).toEqual('checked')
     })
+
+    it('render conditional', () => {
+      const $ = render('radios', {
+        name: 'example-conditional',
+        items: [
+          {
+            value: 'yes',
+            text: 'Yes'
+          },
+          {
+            value: 'no',
+            text: 'No',
+            checked: true,
+            conditional: {
+              html: 'Conditional content'
+            }
+          }
+        ]
+      })
+
+      const $component = $('.govuk-radios')
+      const $lastInput = $component.find('.govuk-radios__input').last()
+      expect($lastInput.attr('data-aria-controls')).toBe('conditional-example-conditional-2')
+      const $lastConditional = $component.find('.govuk-radios__conditional').last()
+      expect($lastConditional.attr('id')).toBe('conditional-example-conditional-2')
+      expect($lastConditional.html()).toContain('Conditional content')
+    })
   })
 
   describe('nested dependant components', () => {

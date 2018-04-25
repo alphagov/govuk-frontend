@@ -199,6 +199,33 @@ describe('Checkboxes', () => {
     })
   })
 
+  it('render conditional', () => {
+    const $ = render('checkboxes', {
+      name: 'example-conditional',
+      items: [
+        {
+          value: 'yes',
+          text: 'Yes'
+        },
+        {
+          value: 'no',
+          text: 'No',
+          checked: true,
+          conditional: {
+            html: 'Conditional content'
+          }
+        }
+      ]
+    })
+
+    const $component = $('.govuk-checkboxes')
+    const $lastInput = $component.find('.govuk-checkboxes__input').last()
+    expect($lastInput.attr('data-aria-controls')).toBe('conditional-example-conditional-2')
+    const $lastConditional = $component.find('.govuk-checkboxes__conditional').last()
+    expect($lastConditional.attr('id')).toBe('conditional-example-conditional-2')
+    expect($lastConditional.html()).toContain('Conditional content')
+  })
+
   describe('nested dependant components', () => {
     it('have correct nesting order', () => {
       const $ = render('checkboxes', examples['with-extreme-fieldset'])

@@ -5,16 +5,19 @@
 @import "../label/label";
 
 @include govuk-exports("checkboxes") {
+  $govuk-checkboxes-size: $govuk-spacing-scale-7;
+  $govuk-checkboxes-label-padding-left-right: $govuk-spacing-scale-3;
+
   .govuk-checkboxes__item {
     @include govuk-font-regular-19;
 
     display: block;
     position: relative;
 
-    min-height: $govuk-spacing-scale-7;
+    min-height: $govuk-checkboxes-size;
 
     margin-bottom: $govuk-spacing-scale-2;
-    padding: 0 0 0 40px;
+    padding: 0 0 0 $govuk-checkboxes-size;
 
     clear: left;
   }
@@ -31,8 +34,8 @@
     top: 0;
     left: 0;
 
-    width: $govuk-spacing-scale-7;
-    height: $govuk-spacing-scale-7;
+    width: $govuk-checkboxes-size;
+    height: $govuk-checkboxes-size;
 
     cursor: pointer;
 
@@ -51,8 +54,8 @@
   }
 
   .govuk-checkboxes__label {
-    display: inline-block;
-    padding: 8px $govuk-spacing-scale-3 $govuk-spacing-scale-1;
+    display: block;
+    padding: 8px $govuk-checkboxes-label-padding-left-right $govuk-spacing-scale-1;
     cursor: pointer;
     // remove 300ms pause on mobile
     -ms-touch-action: manipulation;
@@ -65,8 +68,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: $govuk-spacing-scale-7;
-    height: $govuk-spacing-scale-7;
+    width: $govuk-checkboxes-size;
+    height: $govuk-checkboxes-size;
     border: $govuk-border-width-form-element solid currentColor;
     background: transparent;
 
@@ -112,5 +115,28 @@
 
   .govuk-checkboxes__input:disabled + .govuk-checkboxes__label {
     opacity: .5;
+  }
+
+  $conditional-border-width: $govuk-border-width-mobile;
+  // Calculate the amount of padding needed to keep the border centered against the checkbox.
+  $conditional-border-padding: ($govuk-checkboxes-size / 2) - ($conditional-border-width / 2);
+  // Move the border centered with the checkbox
+  $conditional-margin-left: $conditional-border-padding;
+  // Move the contents of the conditional inline with the label
+  $conditional-padding-left: $conditional-border-padding + $govuk-checkboxes-label-padding-left-right;
+
+  .govuk-checkboxes__conditional {
+    @include govuk-responsive-margin($govuk-spacing-responsive-4, "bottom");
+    margin-left: $conditional-margin-left;
+    padding-left: $conditional-padding-left;
+    border-left: $conditional-border-width solid $govuk-border-colour;
+
+    &[aria-hidden="true"] {
+      display: none;
+    }
+
+    & > :last-child {
+      margin-bottom: 0;
+    }
   }
 }

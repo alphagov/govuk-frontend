@@ -5,6 +5,9 @@
 @import "../label/label";
 
 @include govuk-exports("radios") {
+  $govuk-radios-size: $govuk-spacing-scale-7;
+  $govuk-radios-label-padding-left-right: $govuk-spacing-scale-3;
+
   .govuk-radios__item {
     @include govuk-font-regular-19;
 
@@ -12,10 +15,10 @@
 
     position: relative;
 
-    min-height: $govuk-spacing-scale-7;
+    min-height: $govuk-radios-size;
 
     margin-bottom: $govuk-spacing-scale-2;
-    padding: 0 0 0 $govuk-spacing-scale-7;
+    padding: 0 0 0 $govuk-radios-size;
 
     clear: left;
   }
@@ -32,8 +35,8 @@
     top: 0;
     left: 0;
 
-    width: $govuk-spacing-scale-7;
-    height: $govuk-spacing-scale-7;
+    width: $govuk-radios-size;
+    height: $govuk-radios-size;
 
     cursor: pointer;
 
@@ -52,8 +55,8 @@
   }
 
   .govuk-radios__label {
-    display: inline-block;
-    padding: 8px $govuk-spacing-scale-3 $govuk-spacing-scale-1;
+    display: block;
+    padding: 8px $govuk-radios-label-padding-left-right $govuk-spacing-scale-1;
     cursor: pointer;
     // remove 300ms pause on mobile
     -ms-touch-action: manipulation;
@@ -67,8 +70,8 @@
     top: 0;
     left: 0;
 
-    width: $govuk-spacing-scale-7;
-    height: $govuk-spacing-scale-7;
+    width: $govuk-radios-size;
+    height: $govuk-radios-size;
 
     border: $govuk-border-width-form-element solid currentColor;
     border-radius: 50%;
@@ -121,6 +124,29 @@
         float: left;
         clear: none;
       }
+    }
+  }
+
+  $conditional-border-width: $govuk-border-width-mobile;
+  // Calculate the amount of padding needed to keep the border centered against the radios.
+  $conditional-border-padding: ($govuk-radios-size / 2) - ($conditional-border-width / 2);
+  // Move the border centered with the radios
+  $conditional-margin-left: $conditional-border-padding;
+  // Move the contents of the conditional inline with the label
+  $conditional-padding-left: $conditional-border-padding + $govuk-radios-label-padding-left-right;
+
+  .govuk-radios__conditional {
+    @include govuk-responsive-margin($govuk-spacing-responsive-4, "bottom");
+    margin-left: $conditional-margin-left;
+    padding-left: $conditional-padding-left;
+    border-left: $conditional-border-width solid $govuk-border-colour;
+
+    &[aria-hidden="true"] {
+      display: none;
+    }
+
+    & > :last-child {
+      margin-bottom: 0;
     }
   }
 }
