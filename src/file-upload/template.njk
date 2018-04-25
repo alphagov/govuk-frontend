@@ -1,4 +1,9 @@
+{% from "error-message/macro.njk" import govukErrorMessage -%}
 {% from "label/macro.njk" import govukLabel %}
+
+{# a record of other elements that we need to associate with the input using 
+   aria-describedby – for example hints or error messages #}
+{% set describedBy = "" %}
 
 {#- Include label passing all label parameters, merging in `for` and `errorMessage` #}
 <div class="govuk-form-group {%- if params.errorMessage %} govuk-form-group--error{% endif %}">
@@ -10,9 +15,19 @@
     hintHtml: params.label.hintHtml,
     classes: params.label.classes,
     attributes: params.label.attributes,
-    errorMessage: params.errorMessage,
     for: params.id
   }) -}}
 
-  <input type="file" id="{{ params.id }}" name="{{ params.name }}" {%- if params.value %} value="{{ params.value }}"{% endif %} class="govuk-file-upload {{- ' govuk-file-upload--error' if params.errorMessage }} {{- ' ' + params.classes if params.classes}}" {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+  {% if params.errorMessage %}
+    {% set errorId = params.id + '-error' %}
+    {% set describedBy = describedBy + ' ' + errorId if describedBy else errorId %}
+    {{ govukErrorMessage({
+      id: errorId,
+      classes: params.errorMessage.classes,
+      html: params.errorMessage.html,
+      text: params.errorMessage.text
+    }) -}}
+  {% endif %}
+
+  <input type="file" id="{{ params.id }}" name="{{ params.name }}" {%- if params.value %} value="{{ params.value }}"{% endif %} class="govuk-file-upload {{- ' govuk-file-upload--error' if params.errorMessage }} {{- ' ' + params.classes if params.classes}}" {%- if describedBy %} aria-describedby="{{ describedBy }}"{% endif %} {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
 </div>

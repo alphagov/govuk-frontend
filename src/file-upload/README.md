@@ -20,7 +20,8 @@ Find out when to use the File upload component in your service in the [GOV.UK De
       Upload a file
 
     </label>
-    <input type="file" id="file-upload-1" name="file-upload-1" class="govuk-file-upload">
+
+      <input type="file" id="file-upload-1" name="file-upload-1" class="govuk-file-upload">
     </div>
 
 #### Macro
@@ -49,7 +50,8 @@ Find out when to use the File upload component in your service in the [GOV.UK De
       </span>
 
     </label>
-    <input type="file" id="file-upload-2" name="file-upload-2" class="govuk-file-upload">
+
+      <input type="file" id="file-upload-2" name="file-upload-2" class="govuk-file-upload">
     </div>
 
 #### Macro
@@ -78,12 +80,13 @@ Find out when to use the File upload component in your service in the [GOV.UK De
         Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.
       </span>
 
-      <span class="govuk-error-message">
+    </label>
+
+        <span id="file-upload-3-error" class="govuk-error-message">
       Error message goes here
     </span>
 
-    </label>
-    <input type="file" id="file-upload-3" name="file-upload-3" class="govuk-file-upload govuk-file-upload--error">
+      <input type="file" id="file-upload-3" name="file-upload-3" class="govuk-file-upload govuk-file-upload--error" aria-describedby="file-upload-3-error">
     </div>
 
 #### Macro
@@ -112,7 +115,8 @@ Find out when to use the File upload component in your service in the [GOV.UK De
       Upload a photo
 
     </label>
-    <input type="file" id="file-upload-4" name="file-upload-4" value="C:\fakepath\myphoto.jpg" class="govuk-file-upload" accept=".jpg, .jpeg, .png">
+
+      <input type="file" id="file-upload-4" name="file-upload-4" value="C:\fakepath\myphoto.jpg" class="govuk-file-upload" accept=".jpg, .jpeg, .png">
     </div>
 
 #### Macro

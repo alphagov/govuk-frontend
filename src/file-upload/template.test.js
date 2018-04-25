@@ -6,6 +6,8 @@ const { render, getExamples, htmlWithClassName } = require('../../lib/jest-helpe
 
 const examples = getExamples('file-upload')
 
+const WORD_BOUNDARY = '\\b'
+
 describe('File upload', () => {
   describe('by default', () => {
     it('passes accessibility tests', async () => {
@@ -67,7 +69,7 @@ describe('File upload', () => {
     it('have correct nesting order', () => {
       const $ = render('file-upload', {
         errorMessage: {
-          'text': 'Error message'
+          text: 'Error message'
         }
       })
 
@@ -79,7 +81,7 @@ describe('File upload', () => {
       const $ = render('file-upload', {
         id: 'my-file-upload',
         label: {
-          'text': 'Full address'
+          text: 'Full address'
         }
       })
 
@@ -90,7 +92,7 @@ describe('File upload', () => {
       const $ = render('file-upload', {
         id: 'my-file-upload',
         label: {
-          'text': 'Full address'
+          text: 'Full address'
         }
       })
 
@@ -100,12 +102,32 @@ describe('File upload', () => {
 
     it('renders with error message', () => {
       const $ = render('file-upload', {
+        id: 'file-upload-with-error',
+        errorMessage: {
+          text: 'Error message'
+        }
+      })
+
+      expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
+    })
+
+    it('associates the input as "described by" the error message', () => {
+      const $ = render('file-upload', {
+        id: 'input-with-error',
         errorMessage: {
           'text': 'Error message'
         }
       })
 
-      expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
+      const $component = $('.govuk-file-upload')
+      const $errorMessage = $('.govuk-error-message')
+
+      const errorMessageId = new RegExp(
+        WORD_BOUNDARY + $errorMessage.attr('id') + WORD_BOUNDARY
+      )
+
+      expect($component.attr('aria-describedby'))
+        .toMatch(errorMessageId)
     })
 
     it('has error class when rendered with error message', () => {
