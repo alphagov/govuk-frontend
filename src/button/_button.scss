@@ -50,7 +50,6 @@
     box-shadow: 0 $button-shadow-size 0 $govuk-button-shadow-colour; // s0
     text-align: center;
     vertical-align: top;
-    cursor: pointer;
     -webkit-appearance: none;
 
     @include mq($from: tablet) {
