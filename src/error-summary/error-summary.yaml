@@ -1,3 +1,6 @@
+accessibilityCriteria: |
+  - Must be focused when the page loads
+
 examples:
   - name: default
     data:
