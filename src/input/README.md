@@ -20,7 +20,8 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
       National Insurance number
 
     </label>
-    <input class="govuk-input" id="input-1" name="test-name" type="text">
+
+      <input class="govuk-input" id="input-1" name="test-name" type="text">
     </div>
 
 #### Macro
@@ -49,7 +50,8 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
       </span>
 
     </label>
-    <input class="govuk-input" id="input-2" name="test-name-2" type="text">
+
+      <input class="govuk-input" id="input-2" name="test-name-2" type="text">
     </div>
 
 #### Macro
@@ -78,12 +80,13 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
         It’s on your <i>National Insurance card</i>, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’.
       </span>
 
-      <span class="govuk-error-message">
+    </label>
+
+        <span id="input-3-error" class="govuk-error-message">
       Error message goes here
     </span>
 
-    </label>
-    <input class="govuk-input govuk-input--error" id="input-3" name="test-name-3" type="text">
+      <input class="govuk-input govuk-input--error" id="input-3" name="test-name-3" type="text" aria-describedby="input-3-error">
     </div>
 
 #### Macro
@@ -116,7 +119,8 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
       </span>
 
     </label>
-    <input class="govuk-input govuk-input--width-10" id="input-2" name="test-name-4" type="text">
+
+      <input class="govuk-input govuk-input--width-10" id="input-2" name="test-name-4" type="text">
     </div>
 
 #### Macro
@@ -147,7 +151,8 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
       </span>
 
     </label>
-    <input class="govuk-input govuk-input--width-20" id="input-2" name="test-name-5" type="text">
+
+      <input class="govuk-input govuk-input--width-20" id="input-2" name="test-name-5" type="text">
     </div>
 
 #### Macro
@@ -178,7 +183,8 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
       </span>
 
     </label>
-    <input class="govuk-input govuk-input--width-30" id="input-2" name="test-name-6" type="text">
+
+      <input class="govuk-input govuk-input--width-30" id="input-2" name="test-name-6" type="text">
     </div>
 
 #### Macro

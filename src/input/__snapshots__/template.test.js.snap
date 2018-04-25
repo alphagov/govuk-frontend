@@ -2,7 +2,9 @@
 
 exports[`Input with dependant components renders with error message 1`] = `
 
-<span class="govuk-error-message">
+<span id="input-with-error-error"
+      class="govuk-error-message"
+>
   Error message
 </span>
 

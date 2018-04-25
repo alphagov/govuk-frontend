@@ -1,9 +1,8 @@
 @import "../globals/tools/exports";
-@import "../fieldset/fieldset";
-@import "../label/label";
-@import "../error-message/error-message";
-
 @import "../globals/helpers/focusable";
+
+@import "../error-message/error-message";
+@import "../label/label";
 
 @include govuk-exports("input") {
   .govuk-input {

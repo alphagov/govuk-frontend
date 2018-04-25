@@ -1,4 +1,9 @@
+{% from "error-message/macro.njk" import govukErrorMessage -%}
 {% from "label/macro.njk" import govukLabel %}
+
+{# a record of other elements that we need to associate with the input using 
+   aria-describedby – for example hints or error messages #}
+{% set describedBy = "" %}
 
 <div class="govuk-form-group {%- if params.errorMessage %} govuk-form-group--error{% endif %}">
 
@@ -9,11 +14,22 @@
     hintHtml: params.label.hintHtml,
     classes: params.label.classes,
     attributes: params.label.attributes,
-    errorMessage: params.errorMessage,
     for: params.id
   }) -}}
 
+  {% if params.errorMessage %}
+    {% set errorId = params.id + '-error' %}
+    {% set describedBy = describedBy + ' ' + errorId if describedBy else errorId %}
+    {{ govukErrorMessage({
+      id: errorId,
+      classes: params.errorMessage.classes,
+      html: params.errorMessage.html,
+      text: params.errorMessage.text
+    }) -}}
+  {% endif %}
+
   <input class="govuk-input {%- if params.classes %} {{ params.classes }}{% endif %} {%- if params.errorMessage %} govuk-input--error{% endif %}" id="{{ params.id }}" name="{{ params.name }}" type="{{ params.type | default('text') }}"
   {%- if params.value %} value="{{ params.value}}"{% endif %}
+  {%- if describedBy %} aria-describedby="{{ describedBy }}"{% endif %}
   {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor -%}>
 </div>

@@ -6,6 +6,8 @@ const { render, getExamples, htmlWithClassName } = require('../../lib/jest-helpe
 
 const examples = getExamples('input')
 
+const WORD_BOUNDARY = '\\b'
+
 describe('Input', () => {
   describe('by default', () => {
     it('passes accessibility tests', async () => {
@@ -117,12 +119,32 @@ describe('Input', () => {
 
     it('renders with error message', () => {
       const $ = render('input', {
+        id: 'input-with-error',
         errorMessage: {
           'text': 'Error message'
         }
       })
 
       expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
+    })
+
+    it('associates the input as "described by" the error message', () => {
+      const $ = render('input', {
+        id: 'input-with-error',
+        errorMessage: {
+          'text': 'Error message'
+        }
+      })
+
+      const $input = $('.govuk-input')
+      const $errorMessage = $('.govuk-error-message')
+
+      const errorMessageId = new RegExp(
+        WORD_BOUNDARY + $errorMessage.attr('id') + WORD_BOUNDARY
+      )
+
+      expect($input.attr('aria-describedby'))
+        .toMatch(errorMessageId)
     })
 
     it('has error class when rendered with error message', () => {
