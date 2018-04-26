@@ -110,9 +110,11 @@ gulp.task('scss:compile', () => {
 // Compile js task for preview ----------
 // --------------------------------------
 gulp.task('js:compile', () => {
+  // for dist/ folder we only want compiled 'all.js' file
+  let srcFiles = isDist ? configPaths.src + 'all/*.js' : configPaths.src + '**/*.js'
   return gulp.src([
     '!' + configPaths.src + '**/*.test.js',
-    configPaths.src + '**/*.js'
+    srcFiles
   ])
     .pipe(rollup({
       // Legacy mode is required for IE8 support
@@ -123,16 +125,10 @@ gulp.task('js:compile', () => {
     .pipe(gulpif(isDist, uglify()))
     .pipe(gulpif(isDist,
       rename({
+        basename: 'govuk-frontend',
         extname: '.min.js'
       })
     ))
     .pipe(eol())
-    .pipe(gulp.dest(
-      // output files to dist/components if destination is dist, otherwise copy to packages/
-      gulpif(
-        isDist,
-        taskArguments.destination + '/components/',
-        taskArguments.destination + '/'
-      ))
-    )
+    .pipe(gulp.dest(taskArguments.destination + '/'))
 })
