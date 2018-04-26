@@ -56,7 +56,13 @@ gulp.task('scss:compile', () => {
         extname: '.min.css'
       })
     ))
-    .pipe(gulp.dest(taskArguments.destination + '/css/'))
+    .pipe(gulp.dest(
+      gulpif(
+        isDist,
+        taskArguments.destination + '/',
+        taskArguments.destination + '/css/'
+      )
+    ))
 
   let compileOldIe = gulp.src(compileOldIeStyleshet)
     .pipe(plumber(errorHandler))
@@ -90,7 +96,13 @@ gulp.task('scss:compile', () => {
         extname: '.min.css'
       })
     ))
-    .pipe(gulp.dest(taskArguments.destination + '/css/'))
+    .pipe(gulp.dest(
+      gulpif(
+        isDist,
+        taskArguments.destination + '/',
+        taskArguments.destination + '/css/'
+      )
+    ))
 
   return merge(compile, compileOldIe)
 })
