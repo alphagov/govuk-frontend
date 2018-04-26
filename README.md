@@ -264,9 +264,8 @@ to use GOV.UK Frontend in your service.
 Download the latest versions of the following assets and include them in your
 project:
 
-- [dist/css](https://github.com/alphagov/govuk-frontend/tree/master/dist/css)
-- [dist/js](https://github.com/alphagov/govuk-frontend/tree/master/dist/js)
-- [dist/icons](https://github.com/alphagov/govuk-frontend/tree/master/dist/icons)
+- [css and javascript](https://github.com/alphagov/govuk-frontend/tree/master/dist)
+- [icons](https://github.com/alphagov/govuk-frontend/tree/master/dist/icons)
 
 ### Include assets
 
