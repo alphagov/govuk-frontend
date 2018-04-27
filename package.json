@@ -1,0 +1,21 @@
+{
+  "name": "@govuk-frontend/govuk-frontend-placeholder",
+  "description": "GOV.UK Frontend contains the code you need to start building a user interface for government platforms and services.",
+  "version": "0.0.30-alpha",
+  "main": "all.js",
+  "engines": {
+    "node": ">=6.0"
+  },
+  "author": {
+    "name": "GOV.UK Design System Team (Government Digital Service)",
+    "email": "design-system-developers@digital.cabinet-office.gov.uk"
+  },
+  "sass": "all.scss",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alphagov/govuk-frontend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/alphagov/govuk-frontend/issues"
+  }
+}
