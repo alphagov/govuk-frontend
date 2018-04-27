@@ -52,6 +52,8 @@ Internal:
 (PR [#662](https://github.com/alphagov/govuk-frontend/pull/662))
 - Add test to check if Sass in packages compiles correctly after the `build:packages` task
 (PR [#669](https://github.com/alphagov/govuk-frontend/pull/669))
+- Disable code syntax highlighting in IE8
+(PR [#675](https://github.com/alphagov/govuk-frontend/pull/675))
 
 ## 0.0.28-alpha (Breaking release)
 
