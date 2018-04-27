@@ -56,7 +56,8 @@ module.exports = (options) => {
     // Filter out globals, all and icons package
     const filteredComponents = components.filter(component => (
       component !== 'globals' &&
-      component !== 'icons'
+      component !== 'icons' &&
+      !component.startsWith('all')
     ))
 
     res.render('index', {
