@@ -12,7 +12,7 @@ To consume all components you must be running npm version 5 or above.
 
 ## Installation
 
-    npm install --save @govuk-frontend/all
+    npm install --save @govuk-frontend/govuk-frontend-placeholder
 
 ## Requirements
 
@@ -44,11 +44,11 @@ Below is an example setup using express configure views:
 
 To check whether you have the latest version of the button run:
 
-    npm outdated @govuk-frontend/all
+    npm outdated @govuk-frontend/govuk-frontend-placeholder
 
 To update the latest version run:
 
-    npm update @govuk-frontend/all
+    npm update @govuk-frontend/govuk-frontend-placeholder
 
 
 ## Contribution
