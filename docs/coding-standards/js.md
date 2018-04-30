@@ -115,7 +115,7 @@ This approach ensures that multiple polyfills can be sourced from this service w
 
 The Polyfill service does not do runtime detection in browsers and instead opts to do this on the server via user-agent sniffing. It only ships the code needed for that browser, which means newer browsers don’t have to run anything. We may investigate lazy-loading in the future, but for now we’re using a bundled approach based on the lowest common denominator.
 
-We are vendoring these polyfills to avoid any [single point of failure](https://en.wikipedia.org/wiki/Single_point_of_failure) issues that could arise from relying on a CDN. By doing this we can detect if polyfills are needed at runtime, which results in all browsers getting the same polyfill bundle.
+We are including these polyfills in our codebase to avoid any [single point of failure](https://en.wikipedia.org/wiki/Single_point_of_failure) issues that could arise from relying on a CDN. By doing this we can detect if polyfills are needed at runtime, which results in all browsers getting the same polyfill bundle.
 
 We hope that our approach can be automated or moved into a reusable npm package, based on the Financial Times [npm package](https://github.com/Financial-Times/polyfill-service#library).
 ### Example: Polyfilling ‘addEventListener’ usage
@@ -162,5 +162,3 @@ GOV.UK Frontend uses [standardjs](http://standardjs.com/), an opinionated JavaSc
 The standard docs have a [complete list of rules and some reasoning behind them](http://standardjs.com/rules.html).
 
 Read more about [running standard manually or in your editor](https://github.com/alphagov/styleguides/blob/master/js.md#linting).
-
-
