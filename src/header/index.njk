@@ -1,0 +1,167 @@
+{% if isReadme %}
+  {% set parentTemplate = "readme.njk"  %}
+{% else %}
+  {% set parentTemplate = "component.njk"  %}
+{% endif %}
+
+{% extends parentTemplate %}
+
+{# Commented out blocks below inherit from views/component.njk #}
+
+{# componentName #}
+{% block componentDescription %}
+  The header component is used at the top of every GOV.UK page, to help users navigate.
+{% endblock %}
+{# examples #}
+
+{# override link to design system here if it's different to base url + componentName #}
+{# {% set componentGuidanceLink = 'new link here' %} #}
+
+{% block componentArguments %}
+{% from "table/macro.njk" import govukTable %}
+{{ govukTable({
+  'firstCellIsHeader': true,
+  'head' : [
+    {
+      text: 'Name'
+    },
+    {
+      text: 'Type'
+    },
+    {
+      text: 'Required'
+    },
+    {
+      text: 'Description'
+    }
+  ],
+  'rows' : [
+    [
+      {
+        text: 'meta'
+      },
+      {
+        text: 'object'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Object containing parameters for the meta navigation'
+      }
+    ],
+    [
+      {
+        text: 'meta.items[]'
+      },
+      {
+        text: 'array'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Array of items for use in the meta section of the footer'
+      }
+    ],
+    [
+      {
+        text: 'navigation'
+      },
+      {
+        text: 'array'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Array of items for use in the navigation section of the footer'
+      }
+    ],
+    [
+      {
+        text: 'navigation[].title'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Title for a section'
+      }
+    ],
+    [
+      {
+        text: 'navigation[].columns'
+      },
+      {
+        text: 'integer'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Amount of columns to display items in'
+      }
+    ],
+    [
+      {
+        text: 'navigation[].items'
+      },
+      {
+        text: 'array'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Array of items to display in the list'
+      }
+    ],
+    [
+      {
+        text: 'attributes'
+      },
+      {
+        text: 'object'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Will add attributes to the footer component root'
+      }
+    ],
+    [
+      {
+        text: 'classes'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Will add classes to the footer component root'
+      }
+    ],
+    [
+      {
+        text: 'containerClasses'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Classes that can be added to the container, useful if you want to make the footer full width.'
+      }
+    ]
+  ]
+})}}
+{% endblock %}
