@@ -24,7 +24,7 @@ export default Checkboxes
 ```
 ## Comments
 
-Use `/** ... */` for multi-line comments. Include a description, specify types and values for all parameters and return values.
+Use `/** ... */` for multi-line comments. Include a description, and specify types and values for all parameters and return values.
 
 ```js
 /**
@@ -40,7 +40,7 @@ function (node, match) {
 }
 ```
 
-Use `//` for single line comments. Place single line comments on a newline above the subject of the comment.
+Use `//` for single-line comments. Place single-line comments on a new line above the subject of the comment.
 
 Use `// FIXME:` to annotate problems.
 
@@ -50,7 +50,7 @@ Use `// TODO:` to annotate solutions to problems.
 
 Use the prototype design pattern to structure your code.
 
-Create a constructor and define any variables that the object needs
+Create a constructor and define any variables that the object needs.
 
 ```
 function Checkboxes ($module) {
@@ -95,31 +95,29 @@ export default Checkboxes
 
 Avoid using wildcard (`import * as nodeListForEach`) imports.
 
-Prefer default export over named export.
+Use default export over named export.
 
 ## Polyfilling
 
-If you’re new to polyfilling make sure to read https://remysharp.com/2010/10/08/what-is-a-polyfill
+If you’re new to polyfilling, start by reading [this explanation](https://remysharp.com/2010/10/08/what-is-a-polyfill).
 
-Before GOV.UK Frontend our projects used jQuery for a few main things: DOM interactions, events and data manipulation.
+Before GOV.UK Frontend, our projects used jQuery for: DOM interactions, events and data manipulation.
 
 We’re taking a step back from jQuery due to its lack of support for the browsers we support, its large file size, lack of security updates and from conversations with the community.
 
-We’re instead opting to write standard ES5 JavaScript, that we polyfill where necessary.
+We’re now writing standard ES5 JavaScript instead, that we polyfill where necessary.
 
-This means places where we would use [`$.each`](http://api.jquery.com/jquery.each/) we’re instead using [`.forEach`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) and polyfill the missing gaps.
+This means that in places where we would have previously used [`$.each`](http://api.jquery.com/jquery.each/) we’re using [`.forEach`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) instead and polyfilling the missing gaps.
 
 We use polyfills provided by the Financial Times' [Polyfill service](https://polyfill.io).
 
-This approach ensures that multiple polyfills can be sourced from this service with more confidence they’ll work without conflicting with each other.
+This approach ensures that multiple polyfills can be sourced from this service with greater confidence that they’ll work without conflicting with each other.
 
-The Polyfill service does not do runtime detection in browsers and instead opts to do this on the server via user-agent sniffing, it ships only the code needed for that browser which means newer browsers don’t have to run anything. We could investigate lazy-loading in the future, but for now we’re doing a bundled approach based on the lowest common denominator.
+The Polyfill service does not do runtime detection in browsers and instead opts to do this on the server via user-agent sniffing. It only ships the code needed for that browser, which means newer browsers don’t have to run anything. We may investigate lazy-loading in the future, but for now we’re using a bundled approach based on the lowest common denominator.
 
-We are vendoring these polyfills to avoid any [single point of failure](https://en.wikipedia.org/wiki/Single_point_of_failure) issues that could arise from relying on a CDN.
+We are vendoring these polyfills to avoid any [single point of failure](https://en.wikipedia.org/wiki/Single_point_of_failure) issues that could arise from relying on a CDN. By doing this we can detect if polyfills are needed at runtime, which results in all browsers getting the same polyfill bundle.
 
-So we detect if polyfills are needed at runtime, which results in all browsers getting the same polyfill bundle.
-
-We hope that our approach can be automated or moved into a reusable npm package, based on their [npm package](https://github.com/Financial-Times/polyfill-service#library).
+We hope that our approach can be automated or moved into a reusable npm package, based on the Financial Times [npm package](https://github.com/Financial-Times/polyfill-service#library).
 ### Example: Polyfilling ‘addEventListener’ usage
 
 1. Determine if the feature needs to be polyfilled
@@ -137,7 +135,7 @@ Then save this in the same structure that is used in the main project (https://g
 
 We need to make sure we only run the polyfills if they’re needed.
 
-So we can grab the associated detection code from
+We can take the associated detection code from
 https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Event/detect.js
 
 4. Put everything together
