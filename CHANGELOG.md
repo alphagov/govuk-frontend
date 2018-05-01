@@ -54,6 +54,8 @@ Internal:
 (PR [#669](https://github.com/alphagov/govuk-frontend/pull/669))
 - Disable code syntax highlighting in IE8
 (PR [#675](https://github.com/alphagov/govuk-frontend/pull/675))
+- Simplify contents of the `dist/` folder
+  (PR [#673](https://github.com/alphagov/govuk-frontend/pull/673))
 
 ## 0.0.28-alpha (Breaking release)
 

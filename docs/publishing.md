@@ -27,7 +27,6 @@ This will:
   - copy components from `src/` to `packages/` and run tests
   - add [vendor prefixes](https://github.com/postcss/autoprefixer) to CSS in `packages/`
   - build "all" Sass and JavaScript files into `dist/`
-  - copy components from `src/` to `dist/components/` and run tests
 
 Note: If a previously unreleased component is found, then you will be prompted to make changes before continuing.
 

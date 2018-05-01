@@ -95,7 +95,6 @@ gulp.task('build:packages', cb => {
 gulp.task('build:dist', cb => {
   runsequence('clean',
               'copy-assets',
-              'copy-files',
               'copy:icons',
               'generate:readme',
               'update-assets-version',
