@@ -35,15 +35,9 @@ exports[`Date input passes through fieldset params without breaking 1`] = `
 
 exports[`Date input passes through html fieldset params without breaking 1`] = `
 
-<span class="govuk-error-message">
-  Error message goes here
-</span>
-
-`;
-
-exports[`Date input passes through html fieldset params without breaking 2`] = `
-
-<fieldset class="govuk-fieldset">
+<fieldset class="govuk-fieldset"
+          aria-describedby="dob-error"
+>
   <legend class="govuk-fieldset__legend">
     What is your
     <b>
@@ -58,5 +52,15 @@ exports[`Date input passes through html fieldset params without breaking 2`] = `
     </span>
   </legend>
 </fieldset>
+
+`;
+
+exports[`Date input renders the error message 1`] = `
+
+<span id="dob-errors-error"
+      class="govuk-error-message"
+>
+  Error message goes here
+</span>
 
 `;

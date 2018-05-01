@@ -16,24 +16,25 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
 
 #### Markup
 
-      <div class="govuk-form-group">
-      <fieldset class="govuk-fieldset">
+    <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
 
-        <legend class="govuk-fieldset__legend">
-          What is your date of birth?
+      <legend class="govuk-fieldset__legend">
+        What is your date of birth?
 
-          <span class="govuk-fieldset__hint">For example, 31 3 1980</span>
+        <span class="govuk-fieldset__hint">For example, 31 3 1980</span>
 
-        </legend>
+      </legend>
 
-      <div class="govuk-date-input" id="dob">
+    <div class="govuk-date-input" id="dob">
 
           <div class="govuk-date-input__item govuk-date-input__item--day">
             <div class="govuk-form-group"><label class="govuk-label govuk-date-input__label" for="dob-day">
             Day
 
           </label>
-          <input class="govuk-input govuk-date-input__input" id="dob-day" name="dob-day" type="number" pattern="[0-9]*">
+
+            <input class="govuk-input govuk-date-input__input" id="dob-day" name="dob-day" type="number" pattern="[0-9]*">
           </div>
           </div>
 
@@ -42,7 +43,8 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
             Month
 
           </label>
-          <input class="govuk-input govuk-date-input__input" id="dob-month" name="dob-month" type="number" pattern="[0-9]*">
+
+            <input class="govuk-input govuk-date-input__input" id="dob-month" name="dob-month" type="number" pattern="[0-9]*">
           </div>
           </div>
 
@@ -51,12 +53,14 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
             Year
 
           </label>
-          <input class="govuk-input govuk-date-input__input" id="dob-year" name="dob-year" type="number" pattern="[0-9]*">
+
+            <input class="govuk-input govuk-date-input__input" id="dob-year" name="dob-year" type="number" pattern="[0-9]*">
           </div>
           </div>
 
         </div>
-      </fieldset>
+        </fieldset>
+
     </div>
 
 #### Macro
@@ -89,28 +93,29 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
 
 #### Markup
 
-      <div class="govuk-form-group govuk-form-group--error">
-      <fieldset class="govuk-fieldset">
+    <div class="govuk-form-group govuk-form-group--error">
+        <fieldset class="govuk-fieldset" aria-describedby="dob-errors-error">
 
-        <legend class="govuk-fieldset__legend">
-          What is your date of birth?
+      <legend class="govuk-fieldset__legend">
+        What is your date of birth?
 
-          <span class="govuk-fieldset__hint">For example, 31 3 1980</span>
+        <span class="govuk-fieldset__hint">For example, 31 3 1980</span>
 
-          <span class="govuk-error-message">
-          Error message goes here
-        </span>
+      </legend>
 
-        </legend>
+    <span id="dob-errors-error" class="govuk-error-message">
+        Error message goes here
+      </span>
 
-      <div class="govuk-date-input" id="dob-errors">
+        <div class="govuk-date-input" id="dob-errors">
 
           <div class="govuk-date-input__item govuk-date-input__item--day">
             <div class="govuk-form-group"><label class="govuk-label govuk-date-input__label" for="dob-errors-day">
             Day
 
           </label>
-          <input class="govuk-input govuk-date-input__input govuk-input--error" id="dob-errors-day" name="undefined-day" type="number" pattern="[0-9]*">
+
+            <input class="govuk-input govuk-date-input__input govuk-input--error" id="dob-errors-day" name="undefined-day" type="number" pattern="[0-9]*">
           </div>
           </div>
 
@@ -119,7 +124,8 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
             Month
 
           </label>
-          <input class="govuk-input govuk-date-input__input govuk-input--error" id="dob-errors-month" name="undefined-month" type="number" pattern="[0-9]*">
+
+            <input class="govuk-input govuk-date-input__input govuk-input--error" id="dob-errors-month" name="undefined-month" type="number" pattern="[0-9]*">
           </div>
           </div>
 
@@ -128,12 +134,14 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
             Year
 
           </label>
-          <input class="govuk-input govuk-date-input__input govuk-input--error" id="dob-errors-year" name="undefined-year" type="number" pattern="[0-9]*">
+
+            <input class="govuk-input govuk-date-input__input govuk-input--error" id="dob-errors-year" name="undefined-year" type="number" pattern="[0-9]*">
           </div>
           </div>
 
         </div>
-      </fieldset>
+        </fieldset>
+
     </div>
 
 #### Macro
@@ -171,28 +179,29 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
 
 #### Markup
 
-      <div class="govuk-form-group govuk-form-group--error">
-      <fieldset class="govuk-fieldset">
+    <div class="govuk-form-group govuk-form-group--error">
+        <fieldset class="govuk-fieldset" aria-describedby="dob-day-error-error">
 
-        <legend class="govuk-fieldset__legend">
-          What is your date of birth?
+      <legend class="govuk-fieldset__legend">
+        What is your date of birth?
 
-          <span class="govuk-fieldset__hint">For example, 31 3 1980</span>
+        <span class="govuk-fieldset__hint">For example, 31 3 1980</span>
 
-          <span class="govuk-error-message">
-          Error message goes here
-        </span>
+      </legend>
 
-        </legend>
+    <span id="dob-day-error-error" class="govuk-error-message">
+        Error message goes here
+      </span>
 
-      <div class="govuk-date-input" id="dob-day-error">
+        <div class="govuk-date-input" id="dob-day-error">
 
           <div class="govuk-date-input__item govuk-date-input__item--day">
             <div class="govuk-form-group"><label class="govuk-label govuk-date-input__label" for="dob-day-error-day">
             Day
 
           </label>
-          <input class="govuk-input govuk-date-input__input govuk-input--error" id="dob-day-error-day" name="dob-day-error-day" type="number" pattern="[0-9]*">
+
+            <input class="govuk-input govuk-date-input__input govuk-input--error" id="dob-day-error-day" name="dob-day-error-day" type="number" pattern="[0-9]*">
           </div>
           </div>
 
@@ -201,7 +210,8 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
             Month
 
           </label>
-          <input class="govuk-input govuk-date-input__input" id="dob-day-error-month" name="dob-day-error-month" type="number" pattern="[0-9]*">
+
+            <input class="govuk-input govuk-date-input__input" id="dob-day-error-month" name="dob-day-error-month" type="number" pattern="[0-9]*">
           </div>
           </div>
 
@@ -210,12 +220,14 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
             Year
 
           </label>
-          <input class="govuk-input govuk-date-input__input" id="dob-day-error-year" name="dob-day-error-year" type="number" pattern="[0-9]*">
+
+            <input class="govuk-input govuk-date-input__input" id="dob-day-error-year" name="dob-day-error-year" type="number" pattern="[0-9]*">
           </div>
           </div>
 
         </div>
-      </fieldset>
+        </fieldset>
+
     </div>
 
 #### Macro
@@ -252,28 +264,29 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
 
 #### Markup
 
-      <div class="govuk-form-group govuk-form-group--error">
-      <fieldset class="govuk-fieldset">
+    <div class="govuk-form-group govuk-form-group--error">
+        <fieldset class="govuk-fieldset" aria-describedby="dob-month-error-error">
 
-        <legend class="govuk-fieldset__legend">
-          What is your date of birth?
+      <legend class="govuk-fieldset__legend">
+        What is your date of birth?
 
-          <span class="govuk-fieldset__hint">For example, 31 3 1980</span>
+        <span class="govuk-fieldset__hint">For example, 31 3 1980</span>
 
-          <span class="govuk-error-message">
-          Error message goes here
-        </span>
+      </legend>
 
-        </legend>
+    <span id="dob-month-error-error" class="govuk-error-message">
+        Error message goes here
+      </span>
 
-      <div class="govuk-date-input" id="dob-month-error">
+        <div class="govuk-date-input" id="dob-month-error">
 
           <div class="govuk-date-input__item govuk-date-input__item--day">
             <div class="govuk-form-group"><label class="govuk-label govuk-date-input__label" for="dob-month-error-day">
             Day
 
           </label>
-          <input class="govuk-input govuk-date-input__input" id="dob-month-error-day" name="dob-month-error-day" type="number" pattern="[0-9]*">
+
+            <input class="govuk-input govuk-date-input__input" id="dob-month-error-day" name="dob-month-error-day" type="number" pattern="[0-9]*">
           </div>
           </div>
 
@@ -282,7 +295,8 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
             Month
 
           </label>
-          <input class="govuk-input govuk-date-input__input govuk-input--error" id="dob-month-error-month" name="dob-month-error-month" type="number" pattern="[0-9]*">
+
+            <input class="govuk-input govuk-date-input__input govuk-input--error" id="dob-month-error-month" name="dob-month-error-month" type="number" pattern="[0-9]*">
           </div>
           </div>
 
@@ -291,12 +305,14 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
             Year
 
           </label>
-          <input class="govuk-input govuk-date-input__input" id="dob-month-error-year" name="dob-month-error-year" type="number" pattern="[0-9]*">
+
+            <input class="govuk-input govuk-date-input__input" id="dob-month-error-year" name="dob-month-error-year" type="number" pattern="[0-9]*">
           </div>
           </div>
 
         </div>
-      </fieldset>
+        </fieldset>
+
     </div>
 
 #### Macro
@@ -333,28 +349,29 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
 
 #### Markup
 
-      <div class="govuk-form-group govuk-form-group--error">
-      <fieldset class="govuk-fieldset">
+    <div class="govuk-form-group govuk-form-group--error">
+        <fieldset class="govuk-fieldset" aria-describedby="dob-year-error-error">
 
-        <legend class="govuk-fieldset__legend">
-          What is your date of birth?
+      <legend class="govuk-fieldset__legend">
+        What is your date of birth?
 
-          <span class="govuk-fieldset__hint">For example, 31 3 1980</span>
+        <span class="govuk-fieldset__hint">For example, 31 3 1980</span>
 
-          <span class="govuk-error-message">
-          Error message goes here
-        </span>
+      </legend>
 
-        </legend>
+    <span id="dob-year-error-error" class="govuk-error-message">
+        Error message goes here
+      </span>
 
-      <div class="govuk-date-input" id="dob-year-error">
+        <div class="govuk-date-input" id="dob-year-error">
 
           <div class="govuk-date-input__item govuk-date-input__item--day">
             <div class="govuk-form-group"><label class="govuk-label govuk-date-input__label" for="dob-year-error-day">
             Day
 
           </label>
-          <input class="govuk-input govuk-date-input__input" id="dob-year-error-day" name="dob-year-error-day" type="number" pattern="[0-9]*">
+
+            <input class="govuk-input govuk-date-input__input" id="dob-year-error-day" name="dob-year-error-day" type="number" pattern="[0-9]*">
           </div>
           </div>
 
@@ -363,7 +380,8 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
             Month
 
           </label>
-          <input class="govuk-input govuk-date-input__input" id="dob-year-error-month" name="dob-year-error-month" type="number" pattern="[0-9]*">
+
+            <input class="govuk-input govuk-date-input__input" id="dob-year-error-month" name="dob-year-error-month" type="number" pattern="[0-9]*">
           </div>
           </div>
 
@@ -372,12 +390,14 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
             Year
 
           </label>
-          <input class="govuk-input govuk-date-input__input govuk-input--error" id="dob-year-error-year" name="dob-year-error-year" type="number" pattern="[0-9]*">
+
+            <input class="govuk-input govuk-date-input__input govuk-input--error" id="dob-year-error-year" name="dob-year-error-year" type="number" pattern="[0-9]*">
           </div>
           </div>
 
         </div>
-      </fieldset>
+        </fieldset>
+
     </div>
 
 #### Macro

@@ -1,9 +1,9 @@
 @import "../globals/tools/exports";
 @import "../globals/tools/iff";
 
-@import "../label/label";
-@import "../input/input";
 @import "../error-message/error-message";
+@import "../input/input";
+@import "../label/label";
 
 @include govuk-exports("date-input") {
   .govuk-date-input {

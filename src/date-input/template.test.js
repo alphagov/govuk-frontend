@@ -6,6 +6,8 @@ const { render, getExamples, htmlWithClassName } = require('../../lib/jest-helpe
 
 const examples = getExamples('date-input')
 
+const WORD_BOUNDARY = '\\b'
+
 describe('Date input', () => {
   it('default example passes accessibility tests', async () => {
     const $ = render('date-input', examples.default)
@@ -202,6 +204,33 @@ describe('Date input', () => {
     })
   })
 
+  it('renders the error message', () => {
+    const $ = render('date-input', examples['with-errors'])
+    expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
+  })
+
+  it('uses the id as a prefix for the error message id', () => {
+    const $ = render('date-input', examples['with-errors'])
+
+    const $errorMessage = $('.govuk-error-message')
+
+    expect($errorMessage.attr('id')).toEqual('dob-errors-error')
+  })
+
+  it('associates the fieldset as "described by" the error message', () => {
+    const $ = render('date-input', examples['with-errors'])
+
+    const $fieldset = $('.govuk-fieldset')
+    const $errorMessage = $('.govuk-error-message')
+
+    const errorMessageId = new RegExp(
+      WORD_BOUNDARY + $errorMessage.attr('id') + WORD_BOUNDARY
+    )
+
+    expect($fieldset.attr('aria-describedby'))
+      .toMatch(errorMessageId)
+  })
+
   it('passes through fieldset params without breaking', () => {
     const $ = render('date-input', examples['default'])
 
@@ -232,7 +261,6 @@ describe('Date input', () => {
       ]
     })
 
-    expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
     expect(htmlWithClassName($, '.govuk-fieldset')).toMatchSnapshot()
   })
 })
