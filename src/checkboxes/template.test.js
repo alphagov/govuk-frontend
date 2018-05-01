@@ -6,6 +6,8 @@ const { render, getExamples, htmlWithClassName } = require('../../lib/jest-helpe
 
 const examples = getExamples('checkboxes')
 
+const WORD_BOUNDARY = '\\b'
+
 describe('Checkboxes', () => {
   it('default example passes accessibility tests', async () => {
     const $ = render('checkboxes', examples.default)
@@ -259,10 +261,68 @@ describe('Checkboxes', () => {
       expect(htmlWithClassName($, '.govuk-checkboxes__label')).toMatchSnapshot()
     })
 
-    it('passes through fieldset params without breaking', () => {
+    it('renders the error message', () => {
       const $ = render('checkboxes', examples['with-extreme-fieldset'])
 
       expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
+    })
+
+    it('uses the idPrefix for the error message id if provided', () => {
+      const $ = render('checkboxes', {
+        name: 'name-of-checkboxes',
+        errorMessage: {
+          text: 'Please select an option'
+        },
+        idPrefix: 'id-prefix',
+        items: [
+          {
+            value: 'animal',
+            text: 'Waste from animal carcasses'
+          }
+        ]
+      })
+
+      const $errorMessage = $('.govuk-error-message')
+
+      expect($errorMessage.attr('id')).toEqual('id-prefix-error')
+    })
+
+    it('falls back to using the name for the error message id', () => {
+      const $ = render('checkboxes', {
+        name: 'name-of-checkboxes',
+        errorMessage: {
+          text: 'Please select an option'
+        },
+        items: [
+          {
+            value: 'animal',
+            text: 'Waste from animal carcasses'
+          }
+        ]
+      })
+
+      const $errorMessage = $('.govuk-error-message')
+
+      expect($errorMessage.attr('id')).toEqual('name-of-checkboxes-error')
+    })
+
+    it('associates the fieldset as "described by" the error message', () => {
+      const $ = render('checkboxes', examples['with-extreme-fieldset'])
+
+      const $fieldset = $('.govuk-fieldset')
+      const $errorMessage = $('.govuk-error-message')
+
+      const errorMessageId = new RegExp(
+        WORD_BOUNDARY + $errorMessage.attr('id') + WORD_BOUNDARY
+      )
+
+      expect($fieldset.attr('aria-describedby'))
+        .toMatch(errorMessageId)
+    })
+
+    it('passes through fieldset params without breaking', () => {
+      const $ = render('checkboxes', examples['with-extreme-fieldset'])
+
       expect(htmlWithClassName($, '.govuk-fieldset')).toMatchSnapshot()
     })
 

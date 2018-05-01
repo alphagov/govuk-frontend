@@ -16,18 +16,16 @@ Find out when to use the Fieldset component in your service in the [GOV.UK Desig
 
 #### Markup
 
-    <div class="govuk-form-group">
-      <fieldset class="govuk-fieldset">
+    <fieldset class="govuk-fieldset">
 
-        <legend class="govuk-fieldset__legend">
-          What is your address?
+      <legend class="govuk-fieldset__legend">
+        What is your address?
 
-          <span class="govuk-fieldset__hint">For example, 10 Downing Street</span>
+        <span class="govuk-fieldset__hint">For example, 10 Downing Street</span>
 
-        </legend>
+      </legend>
 
-      </fieldset>
-    </div>
+    </fieldset>
 
 #### Macro
 
@@ -44,22 +42,16 @@ Find out when to use the Fieldset component in your service in the [GOV.UK Desig
 
 #### Markup
 
-    <div class="govuk-form-group govuk-form-group--error">
-      <fieldset class="govuk-fieldset">
+    <fieldset class="govuk-fieldset">
 
-        <legend class="govuk-fieldset__legend">
-          What is your address?
+      <legend class="govuk-fieldset__legend">
+        What is your address?
 
-          <span class="govuk-fieldset__hint">For example, 10 Downing Street</span>
+        <span class="govuk-fieldset__hint">For example, 10 Downing Street</span>
 
-          <span class="govuk-error-message">
-          Please fill in the street input
-        </span>
+      </legend>
 
-        </legend>
-
-      </fieldset>
-    </div>
+    </fieldset>
 
 #### Macro
 

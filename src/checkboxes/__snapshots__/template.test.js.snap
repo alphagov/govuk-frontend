@@ -2,15 +2,8 @@
 
 exports[`Checkboxes nested dependant components passes through fieldset params without breaking 1`] = `
 
-<span class="govuk-error-message">
-  Please select an option
-</span>
-
-`;
-
-exports[`Checkboxes nested dependant components passes through fieldset params without breaking 2`] = `
-
 <fieldset class="govuk-fieldset app-fieldset--custom-modifier"
+          aria-describedby="example-error"
           data-attribute="value"
           data-second-attribute="second-value"
 >
@@ -57,5 +50,15 @@ exports[`Checkboxes nested dependant components passes through label params with
 >
   &lt;b&gt;Option 2&lt;/b&gt;
 </label>
+
+`;
+
+exports[`Checkboxes nested dependant components renders the error message 1`] = `
+
+<span id="example-error"
+      class="govuk-error-message"
+>
+  Please select an option
+</span>
 
 `;

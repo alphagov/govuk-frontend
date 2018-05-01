@@ -16,17 +16,17 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
 #### Markup
 
-      <div class="govuk-form-group">
-      <fieldset class="govuk-fieldset">
+    <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
 
-        <legend class="govuk-fieldset__legend">
-          What is your nationality?
+      <legend class="govuk-fieldset__legend">
+        What is your nationality?
 
-          <span class="govuk-fieldset__hint">If you have dual nationality, select all options that are relevant to you.</span>
+        <span class="govuk-fieldset__hint">If you have dual nationality, select all options that are relevant to you.</span>
 
-        </legend>
+      </legend>
 
-      <div class="govuk-checkboxes">
+    <div class="govuk-checkboxes">
 
           <div class="govuk-checkboxes__item">
             <input class="govuk-checkboxes__input" id="nationality-1" name="nationality" type="checkbox" value="british">
@@ -53,7 +53,8 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
           </div>
 
         </div>
-      </fieldset>
+        </fieldset>
+
     </div>
 
 #### Macro
@@ -89,7 +90,8 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
 #### Markup
 
-      <div class="govuk-checkboxes">
+    <div class="govuk-form-group">
+        <div class="govuk-checkboxes">
 
         <div class="govuk-checkboxes__item">
           <input class="govuk-checkboxes__input" id="colours-1" name="colours" type="checkbox" value="red">
@@ -116,6 +118,8 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
         </div>
 
       </div>
+
+    </div>
 
 #### Macro
 
@@ -146,17 +150,17 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
 #### Markup
 
-      <div class="govuk-form-group">
-      <fieldset class="govuk-fieldset">
+    <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
 
-        <legend class="govuk-fieldset__legend">
-          <h3 class="govuk-heading-m">Which types of waste do you transport regularly?</h3>
+      <legend class="govuk-fieldset__legend">
+        <h3 class="govuk-heading-m">Which types of waste do you transport regularly?</h3>
 
-          <span class="govuk-fieldset__hint">Select all that apply</span>
+        <span class="govuk-fieldset__hint">Select all that apply</span>
 
-        </legend>
+      </legend>
 
-      <div class="govuk-checkboxes">
+    <div class="govuk-checkboxes">
 
           <div class="govuk-checkboxes__item">
             <input class="govuk-checkboxes__input" id="undefined-1" name="" type="checkbox" value="animal">
@@ -183,7 +187,8 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
           </div>
 
         </div>
-      </fieldset>
+        </fieldset>
+
     </div>
 
 #### Macro
@@ -217,7 +222,8 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
 #### Markup
 
-      <div class="govuk-checkboxes">
+    <div class="govuk-form-group">
+        <div class="govuk-checkboxes">
 
         <div class="govuk-checkboxes__item">
           <input class="govuk-checkboxes__input" id="colours-1" name="colours" type="checkbox" value="red">
@@ -244,6 +250,8 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
         </div>
 
       </div>
+
+    </div>
 
 #### Macro
 
@@ -273,21 +281,21 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
 #### Markup
 
-      <div class="govuk-form-group govuk-form-group--error">
-      <fieldset class="govuk-fieldset app-fieldset--custom-modifier" data-attribute="value" data-second-attribute="second-value">
+    <div class="govuk-form-group govuk-form-group--error">
+        <fieldset class="govuk-fieldset app-fieldset--custom-modifier" aria-describedby="example-error" data-attribute="value" data-second-attribute="second-value">
 
-        <legend class="govuk-fieldset__legend">
-          What is your nationality?
+      <legend class="govuk-fieldset__legend">
+        What is your nationality?
 
-          <span class="govuk-fieldset__hint">If you have dual nationality, select all options that are relevant to you.</span>
+        <span class="govuk-fieldset__hint">If you have dual nationality, select all options that are relevant to you.</span>
 
-          <span class="govuk-error-message">
-          Please select an option
-        </span>
+      </legend>
 
-        </legend>
+    <span id="example-error" class="govuk-error-message">
+        Please select an option
+      </span>
 
-      <div class="govuk-checkboxes">
+        <div class="govuk-checkboxes">
 
           <div class="govuk-checkboxes__item">
             <input class="govuk-checkboxes__input" id="example-1" name="example" type="checkbox" value="british">
@@ -314,7 +322,8 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
           </div>
 
         </div>
-      </fieldset>
+        </fieldset>
+
     </div>
 
 #### Macro
@@ -358,19 +367,19 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
 #### Markup
 
-      <div class="govuk-form-group govuk-form-group--error">
-      <fieldset class="govuk-fieldset">
+    <div class="govuk-form-group govuk-form-group--error">
+        <fieldset class="govuk-fieldset" aria-describedby="undefined-error">
 
-        <legend class="govuk-fieldset__legend">
-          <h3 class="govuk-heading-m">Which types of waste do you transport regularly?</h3>
+      <legend class="govuk-fieldset__legend">
+        <h3 class="govuk-heading-m">Which types of waste do you transport regularly?</h3>
 
-          <span class="govuk-error-message">
-          Please select an option
-        </span>
+      </legend>
 
-        </legend>
+    <span id="undefined-error" class="govuk-error-message">
+        Please select an option
+      </span>
 
-      <div class="govuk-checkboxes">
+        <div class="govuk-checkboxes">
 
           <div class="govuk-checkboxes__item">
             <input class="govuk-checkboxes__input" id="undefined-1" name="" type="checkbox" value="animal">
@@ -397,7 +406,8 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
           </div>
 
         </div>
-      </fieldset>
+        </fieldset>
+
     </div>
 
 #### Macro
