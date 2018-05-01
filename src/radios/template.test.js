@@ -6,6 +6,8 @@ const { render, getExamples, htmlWithClassName } = require('../../lib/jest-helpe
 
 const examples = getExamples('radios')
 
+const WORD_BOUNDARY = '\\b'
+
 describe('Radios', () => {
   it('default example passes accessibility tests', async () => {
     const $ = render('radios', examples.default)
@@ -256,10 +258,67 @@ describe('Radios', () => {
       expect(htmlWithClassName($, '.govuk-radios__label')).toMatchSnapshot()
     })
 
+    it('renders the error message', () => {
+      const $ = render('radios', examples['with-extreme-fieldset'])
+      expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
+    })
+
+    it('uses the idPrefix for the error message id if provided', () => {
+      const $ = render('radios', {
+        name: 'name-of-radios',
+        errorMessage: {
+          text: 'Have you changed your name?'
+        },
+        idPrefix: 'id-prefix',
+        items: [
+          {
+            value: 'yes',
+            text: 'Yes'
+          }
+        ]
+      })
+
+      const $errorMessage = $('.govuk-error-message')
+
+      expect($errorMessage.attr('id')).toEqual('id-prefix-error')
+    })
+
+    it('falls back to using the name for the error message id', () => {
+      const $ = render('radios', {
+        name: 'name-of-radios',
+        errorMessage: {
+          text: 'Have you changed your name?'
+        },
+        items: [
+          {
+            value: 'yes',
+            text: 'Yes'
+          }
+        ]
+      })
+
+      const $errorMessage = $('.govuk-error-message')
+
+      expect($errorMessage.attr('id')).toEqual('name-of-radios-error')
+    })
+
+    it('associates the fieldset as "described by" the error message', () => {
+      const $ = render('radios', examples['with-extreme-fieldset'])
+
+      const $fieldset = $('.govuk-fieldset')
+      const $errorMessage = $('.govuk-error-message')
+
+      const errorMessageId = new RegExp(
+        WORD_BOUNDARY + $errorMessage.attr('id') + WORD_BOUNDARY
+      )
+
+      expect($fieldset.attr('aria-describedby'))
+        .toMatch(errorMessageId)
+    })
+
     it('passes through fieldset params without breaking', () => {
       const $ = render('radios', examples['with-extreme-fieldset'])
 
-      expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
       expect(htmlWithClassName($, '.govuk-fieldset')).toMatchSnapshot()
     })
 
