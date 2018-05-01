@@ -1,8 +1,6 @@
 @import "../globals/tools/exports";
 @import "../globals/tools/iff";
 
-@import "../error-message/error-message";
-
 @import "../globals/settings/spacing";
 @import "../globals/settings/measurements";
 
@@ -11,10 +9,6 @@
 @import "../globals/helpers/media-queries";
 
 @import "../globals/objects/form-group";
-
-
-
-
 
 @include govuk-exports("fieldset") {
   .govuk-fieldset {
