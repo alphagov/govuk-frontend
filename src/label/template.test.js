@@ -58,13 +58,6 @@ describe('Label', () => {
       expect(labelText).toEqual('National Insurance number <em>NINO</em>')
     })
 
-    it('renders label hint text', () => {
-      const $ = render('label', examples.default)
-      const labelHintText = $('.govuk-label__hint').text().trim()
-
-      expect(labelHintText).toEqual('It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.')
-    })
-
     it('renders for attribute if specified', () => {
       const $ = render('label', {
         for: '#dummy-input'
@@ -72,24 +65,6 @@ describe('Label', () => {
 
       const labelForAttr = $('.govuk-label').attr('for')
       expect(labelForAttr).toEqual('#dummy-input')
-    })
-
-    it('allows label hint text to be passed whilst escaping HTML entities', () => {
-      const $ = render('label', {
-        hintText: 'It’s on your National Insurance card, benefit letter, payslip or P60. For example, <strong>QQ 12 34 56 C</strong>.'
-      })
-
-      const labelHintText = $('.govuk-label__hint').html().trim()
-      expect(labelHintText).toEqual('It&#x2019;s on your National Insurance card, benefit letter, payslip or P60. For example, &lt;strong&gt;QQ 12 34 56 C&lt;/strong&gt;.')
-    })
-
-    it('allows label hint HTML to be passed un-escaped', () => {
-      const $ = render('label', {
-        hintHtml: 'It is on your National Insurance card, benefit letter, payslip or P60. For example, <strong>QQ 12 34 56 C</strong>.'
-      })
-
-      const labelHintText = $('.govuk-label__hint').html().trim()
-      expect(labelHintText).toEqual('It is on your National Insurance card, benefit letter, payslip or P60. For example, <strong>QQ 12 34 56 C</strong>.')
     })
 
     it('allows additional attributes to be added to the component', () => {

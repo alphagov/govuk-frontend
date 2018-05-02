@@ -1,3 +1,12 @@
+@import "../globals/helpers/typography";
+@import "../globals/helpers/media-queries";
+
+@import "../globals/settings/colours-palette";
+@import "../globals/settings/colours-applied";
+@import "../globals/settings/typography-font-stacks";
+@import "../globals/settings/typography-font";
+@import "../globals/settings/typography-responsive";
+
 @import "../globals/tools/exports";
 
 @include govuk-exports("label") {
@@ -10,13 +19,5 @@
 
   .govuk-label--bold {
     @include govuk-typography-weight-bold;
-  }
-
-  // Hint text sits inside a label, to be read by AT
-  .govuk-label__hint {
-    @include govuk-typography-weight-regular;
-
-    display: block;
-    color: $govuk-secondary-text-colour;
   }
 }

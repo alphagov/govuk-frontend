@@ -2,9 +2,4 @@
   {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}
   {%- if params.for %} for="{{ params.for }}"{% endif %}>
   {{ params.html | safe if params.html else params.text }}
-  {% if params.hintText or params.hintHtml %}
-  <span class="govuk-label__hint">
-    {{ params.hintHtml | safe if params.hintHtml else params.hintText }}
-  </span>
-  {% endif %}
 </label>
