@@ -182,6 +182,36 @@ describe('Select', () => {
       expect($label.attr('for')).toEqual('my-select')
     })
 
+    it('renders with hint', () => {
+      const $ = render('select', {
+        id: 'select-with-hint',
+        hint: {
+          'text': 'Hint text goes here'
+        }
+      })
+
+      expect(htmlWithClassName($, '.govuk-hint')).toMatchSnapshot()
+    })
+
+    it('associates the select as "described by" the hint', () => {
+      const $ = render('select', {
+        id: 'select-with-hint',
+        hint: {
+          'text': 'Hint text goes here'
+        }
+      })
+
+      const $select = $('.govuk-select')
+      const $hint = $('.govuk-hint')
+
+      const hintId = new RegExp(
+        WORD_BOUNDARY + $hint.attr('id') + WORD_BOUNDARY
+      )
+
+      expect($select.attr('aria-describedby'))
+        .toMatch(hintId)
+    })
+
     it('renders with error message', () => {
       const $ = render('select', {
         id: 'select-with-error',

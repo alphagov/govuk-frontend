@@ -1,14 +1,13 @@
+@import "../globals/helpers/focusable";
 @import "../globals/tools/exports";
-
-@import "../label/label";
-
+@import "../globals/settings/colours-palette";
+@import "../globals/settings/colours-applied";
 @import "../globals/settings/spacing";
 @import "../globals/settings/measurements";
 
-@import "../globals/helpers/focusable";
-@import "../globals/helpers/spacing";
-
-@import "../globals/objects/form-group";
+@import "../error-message/error-message";
+@import "../hint/hint";
+@import "../label/label";
 
 @include govuk-exports("select") {
   .govuk-select {
