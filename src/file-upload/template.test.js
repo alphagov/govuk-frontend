@@ -100,6 +100,36 @@ describe('File upload', () => {
       expect($label.attr('for')).toEqual('my-file-upload')
     })
 
+    it('renders with hint', () => {
+      const $ = render('file-upload', {
+        id: 'file-upload-with-hint',
+        errorMessage: {
+          text: 'Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.'
+        }
+      })
+
+      expect(htmlWithClassName($, '.govuk-hint')).toMatchSnapshot()
+    })
+
+    it('associates the input as "described by" the hint', () => {
+      const $ = render('file-upload', {
+        id: 'file-upload-with-hint',
+        hint: {
+          text: 'Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.'
+        }
+      })
+
+      const $component = $('.govuk-file-upload')
+      const $hint = $('.govuk-hint')
+
+      const hintId = new RegExp(
+        WORD_BOUNDARY + $hint.attr('id') + WORD_BOUNDARY
+      )
+
+      expect($component.attr('aria-describedby'))
+        .toMatch(hintId)
+    })
+
     it('renders with error message', () => {
       const $ = render('file-upload', {
         id: 'file-upload-with-error',

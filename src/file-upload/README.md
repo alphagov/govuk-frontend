@@ -16,12 +16,12 @@ Find out when to use the File upload component in your service in the [GOV.UK De
 
 #### Markup
 
-    <div class="govuk-form-group"><label class="govuk-label" for="file-upload-1">
-      Upload a file
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="file-upload-1">
+        Upload a file
+      </label>
 
-    </label>
-
-      <input type="file" id="file-upload-1" name="file-upload-1" class="govuk-file-upload">
+      <input class="govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file">
     </div>
 
 #### Macro
@@ -42,16 +42,16 @@ Find out when to use the File upload component in your service in the [GOV.UK De
 
 #### Markup
 
-    <div class="govuk-form-group"><label class="govuk-label" for="file-upload-2">
-      Upload your photo
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="file-upload-2">
+        Upload your photo
+      </label>
 
-      <span class="govuk-label__hint">
+      <span id="file-upload-2-hint" class="govuk-hint">
         Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.
       </span>
 
-    </label>
-
-      <input type="file" id="file-upload-2" name="file-upload-2" class="govuk-file-upload">
+      <input class="govuk-file-upload" id="file-upload-2" name="file-upload-2" type="file" aria-describedby="file-upload-2-hint">
     </div>
 
 #### Macro
@@ -62,8 +62,10 @@ Find out when to use the File upload component in your service in the [GOV.UK De
       "id": "file-upload-2",
       "name": "file-upload-2",
       "label": {
-        "text": "Upload your photo",
-        "hintText": "Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto."
+        "text": "Upload your photo"
+      },
+      "hint": {
+        "text": "Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto."
       }
     }) }}
 
@@ -73,20 +75,20 @@ Find out when to use the File upload component in your service in the [GOV.UK De
 
 #### Markup
 
-    <div class="govuk-form-group govuk-form-group--error"><label class="govuk-label" for="file-upload-3">
-      Upload a file
+    <div class="govuk-form-group govuk-form-group--error">
+      <label class="govuk-label" for="file-upload-3">
+        Upload a file
+      </label>
 
-      <span class="govuk-label__hint">
+      <span id="file-upload-3-hint" class="govuk-hint">
         Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.
       </span>
 
-    </label>
+      <span id="file-upload-3-error" class="govuk-error-message">
+        Error message goes here
+      </span>
 
-        <span id="file-upload-3-error" class="govuk-error-message">
-      Error message goes here
-    </span>
-
-      <input type="file" id="file-upload-3" name="file-upload-3" class="govuk-file-upload govuk-file-upload--error" aria-describedby="file-upload-3-error">
+      <input class="govuk-file-upload govuk-file-upload--error" id="file-upload-3" name="file-upload-3" type="file" aria-describedby="file-upload-3-hint file-upload-3-error">
     </div>
 
 #### Macro
@@ -97,8 +99,10 @@ Find out when to use the File upload component in your service in the [GOV.UK De
       "id": "file-upload-3",
       "name": "file-upload-3",
       "label": {
-        "text": "Upload a file",
-        "hintText": "Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto."
+        "text": "Upload a file"
+      },
+      "hint": {
+        "text": "Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto."
       },
       "errorMessage": {
         "text": "Error message goes here"
@@ -111,12 +115,12 @@ Find out when to use the File upload component in your service in the [GOV.UK De
 
 #### Markup
 
-    <div class="govuk-form-group"><label class="govuk-label" for="file-upload-4">
-      Upload a photo
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="file-upload-4">
+        Upload a photo
+      </label>
 
-    </label>
-
-      <input type="file" id="file-upload-4" name="file-upload-4" value="C:\fakepath\myphoto.jpg" class="govuk-file-upload" accept=".jpg, .jpeg, .png">
+      <input class="govuk-file-upload" id="file-upload-4" name="file-upload-4" type="file" value="C:\fakepath\myphoto.jpg" accept=".jpg, .jpeg, .png">
     </div>
 
 #### Macro
@@ -233,13 +237,25 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
+<th class="govuk-table__header" scope="row">hint</th>
+
+<td class="govuk-table__cell ">object</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Arguments for the hint component (e.g. text). See hint component.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
 <th class="govuk-table__header" scope="row">errorMessage</th>
 
 <td class="govuk-table__cell ">object</td>
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Arguments for the error message component</td>
+<td class="govuk-table__cell ">Arguments for the errorMessage component (e.g. text). See errorMessage component.</td>
 
 </tr>
 
