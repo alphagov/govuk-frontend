@@ -117,6 +117,36 @@ describe('Input', () => {
       expect($label.attr('for')).toEqual('my-input')
     })
 
+    it('renders with hint', () => {
+      const $ = render('input', {
+        id: 'input-with-hint',
+        hint: {
+          'text': 'It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.'
+        }
+      })
+
+      expect(htmlWithClassName($, '.govuk-hint')).toMatchSnapshot()
+    })
+
+    it('associates the input as "described by" the hint', () => {
+      const $ = render('input', {
+        id: 'input-with-hint',
+        hint: {
+          'text': 'It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.'
+        }
+      })
+
+      const $input = $('.govuk-input')
+      const $hint = $('.govuk-hint')
+
+      const hintId = new RegExp(
+        WORD_BOUNDARY + $hint.attr('id') + WORD_BOUNDARY
+      )
+
+      expect($input.attr('aria-describedby'))
+        .toMatch(hintId)
+    })
+
     it('renders with error message', () => {
       const $ = render('input', {
         id: 'input-with-error',

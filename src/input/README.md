@@ -16,10 +16,10 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
 
 #### Markup
 
-    <div class="govuk-form-group"><label class="govuk-label" for="input-1">
-      National Insurance number
-
-    </label>
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="input-1">
+        National Insurance number
+      </label>
 
       <input class="govuk-input" id="input-1" name="test-name" type="text">
     </div>
@@ -42,16 +42,16 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
 
 #### Markup
 
-    <div class="govuk-form-group"><label class="govuk-label" for="input-2">
-      National insurance number
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="input-2">
+        National insurance number
+      </label>
 
-      <span class="govuk-label__hint">
+      <span id="input-2-hint" class="govuk-hint">
         It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’.
       </span>
 
-    </label>
-
-      <input class="govuk-input" id="input-2" name="test-name-2" type="text">
+      <input class="govuk-input" id="input-2" name="test-name-2" type="text" aria-describedby="input-2-hint">
     </div>
 
 #### Macro
@@ -60,8 +60,10 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
 
     {{ govukInput({
       "label": {
-        "text": "National insurance number",
-        "hintText": "It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’."
+        "text": "National insurance number"
+      },
+      "hint": {
+        "text": "It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’."
       },
       "id": "input-2",
       "name": "test-name-2"
@@ -73,20 +75,20 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
 
 #### Markup
 
-    <div class="govuk-form-group govuk-form-group--error"><label class="govuk-label" for="input-3">
-      National Insurance number
+    <div class="govuk-form-group govuk-form-group--error">
+      <label class="govuk-label" for="input-3">
+        National Insurance number
+      </label>
 
-      <span class="govuk-label__hint">
+      <span id="input-3-hint" class="govuk-hint">
         It’s on your <i>National Insurance card</i>, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’.
       </span>
 
-    </label>
+      <span id="input-3-error" class="govuk-error-message">
+        Error message goes here
+      </span>
 
-        <span id="input-3-error" class="govuk-error-message">
-      Error message goes here
-    </span>
-
-      <input class="govuk-input govuk-input--error" id="input-3" name="test-name-3" type="text" aria-describedby="input-3-error">
+      <input class="govuk-input govuk-input--error" id="input-3" name="test-name-3" type="text" aria-describedby="input-3-hint input-3-error">
     </div>
 
 #### Macro
@@ -95,8 +97,10 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
 
     {{ govukInput({
       "label": {
-        "text": "National Insurance number",
-        "hintHtml": "It’s on your <i>National Insurance card</i>, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’."
+        "text": "National Insurance number"
+      },
+      "hint": {
+        "html": "It’s on your <i>National Insurance card</i>, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’."
       },
       "id": "input-3",
       "name": "test-name-3",
@@ -111,16 +115,16 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
 
 #### Markup
 
-    <div class="govuk-form-group"><label class="govuk-label" for="input-2">
-      National insurance number
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="input-2">
+        National insurance number
+      </label>
 
-      <span class="govuk-label__hint">
+      <span id="input-2-hint" class="govuk-hint">
         It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’.
       </span>
 
-    </label>
-
-      <input class="govuk-input govuk-input--width-10" id="input-2" name="test-name-4" type="text">
+      <input class="govuk-input govuk-input--width-10" id="input-2" name="test-name-4" type="text" aria-describedby="input-2-hint">
     </div>
 
 #### Macro
@@ -129,8 +133,10 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
 
     {{ govukInput({
       "label": {
-        "text": "National insurance number",
-        "hintText": "It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’."
+        "text": "National insurance number"
+      },
+      "hint": {
+        "text": "It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’."
       },
       "id": "input-2",
       "name": "test-name-4",
@@ -143,16 +149,16 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
 
 #### Markup
 
-    <div class="govuk-form-group"><label class="govuk-label" for="input-2">
-      National insurance number
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="input-2">
+        National insurance number
+      </label>
 
-      <span class="govuk-label__hint">
+      <span id="input-2-hint" class="govuk-hint">
         It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’.
       </span>
 
-    </label>
-
-      <input class="govuk-input govuk-input--width-20" id="input-2" name="test-name-5" type="text">
+      <input class="govuk-input govuk-input--width-20" id="input-2" name="test-name-5" type="text" aria-describedby="input-2-hint">
     </div>
 
 #### Macro
@@ -161,8 +167,10 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
 
     {{ govukInput({
       "label": {
-        "text": "National insurance number",
-        "hintText": "It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’."
+        "text": "National insurance number"
+      },
+      "hint": {
+        "text": "It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’."
       },
       "id": "input-2",
       "name": "test-name-5",
@@ -175,16 +183,16 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
 
 #### Markup
 
-    <div class="govuk-form-group"><label class="govuk-label" for="input-2">
-      National insurance number
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="input-2">
+        National insurance number
+      </label>
 
-      <span class="govuk-label__hint">
+      <span id="input-2-hint" class="govuk-hint">
         It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’.
       </span>
 
-    </label>
-
-      <input class="govuk-input govuk-input--width-30" id="input-2" name="test-name-6" type="text">
+      <input class="govuk-input govuk-input--width-30" id="input-2" name="test-name-6" type="text" aria-describedby="input-2-hint">
     </div>
 
 #### Macro
@@ -193,8 +201,10 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
 
     {{ govukInput({
       "label": {
-        "text": "National insurance number",
-        "hintText": "It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’."
+        "text": "National insurance number"
+      },
+      "hint": {
+        "text": "It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’."
       },
       "id": "input-2",
       "name": "test-name-6",
@@ -311,13 +321,25 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
+<th class="govuk-table__header" scope="row">hint</th>
+
+<td class="govuk-table__cell ">object</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Arguments for the hint component (e.g. text). See hint component.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
 <th class="govuk-table__header" scope="row">errorMessage</th>
 
 <td class="govuk-table__cell ">object</td>
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Optional error message</td>
+<td class="govuk-table__cell ">Arguments for the errorMessage component (e.g. text). See errorMessage component.</td>
 
 </tr>
 
