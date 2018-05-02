@@ -3,15 +3,12 @@
 exports[`Radios nested dependant components passes through fieldset params without breaking 1`] = `
 
 <fieldset class="govuk-fieldset app-fieldset--custom-modifier"
-          aria-describedby="example-error"
+          aria-describedby="example-hint example-error"
           data-attribute="value"
           data-second-attribute="second-value"
 >
   <legend class="govuk-fieldset__legend">
     Have you changed your name?
-    <span class="govuk-fieldset__hint">
-      This includes changing your last name or spelling your name differently.
-    </span>
   </legend>
 </fieldset>
 
@@ -21,14 +18,11 @@ exports[`Radios nested dependant components passes through html fieldset params 
 
 <fieldset class="govuk-fieldset">
   <legend class="govuk-fieldset__legend">
-    Have &lt;b&gt;you&lt;/b&gt; changed your name?
-    <span class="govuk-fieldset__hint">
-      This
-      <b>
-        includes
-      </b>
-      changing your last name or spelling your name differently.
-    </span>
+    Have
+    <b>
+      you
+    </b>
+    changed your name?
   </legend>
 </fieldset>
 
@@ -59,6 +53,16 @@ exports[`Radios nested dependant components renders the error message 1`] = `
       class="govuk-error-message"
 >
   Please select an option
+</span>
+
+`;
+
+exports[`Radios nested dependant components renders the hint 1`] = `
+
+<span id="example-hint"
+      class="govuk-hint"
+>
+  This includes changing your last name or spelling your name differently.
 </span>
 
 `;

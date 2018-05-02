@@ -17,35 +17,35 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 #### Markup
 
     <div class="govuk-form-group">
-        <fieldset class="govuk-fieldset">
+
+      <fieldset class="govuk-fieldset" aria-describedby="example-hint">
 
       <legend class="govuk-fieldset__legend">
         Have you changed your name?
-
-        <span class="govuk-fieldset__hint">This includes changing your last name or spelling your name differently.</span>
-
       </legend>
 
-    <div class="govuk-radios">
+      <span id="example-hint" class="govuk-hint">
+        This includes changing your last name or spelling your name differently.
+      </span>
 
-          <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="example-1" name="example" type="radio" value="yes">
-            <label class="govuk-label govuk-radios__label" for="example-1">
+      <div class="govuk-radios">
+
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="example-1" name="example" type="radio" value="yes">
+          <label class="govuk-label govuk-radios__label" for="example-1">
             Yes
-
           </label>
-          </div>
-
-          <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="example-2" name="example" type="radio" value="no" checked>
-            <label class="govuk-label govuk-radios__label" for="example-2">
-            No
-
-          </label>
-          </div>
-
         </div>
-        </fieldset>
+
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="example-2" name="example" type="radio" value="no" checked>
+          <label class="govuk-label govuk-radios__label" for="example-2">
+            No
+          </label>
+        </div>
+
+      </div>
+      </fieldset>
 
     </div>
 
@@ -57,8 +57,10 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
       "idPrefix": "example",
       "name": "example",
       "fieldset": {
-        "legendText": "Have you changed your name?",
-        "legendHintText": "This includes changing your last name or spelling your name differently."
+        "legendText": "Have you changed your name?"
+      },
+      "hint": {
+        "text": "This includes changing your last name or spelling your name differently."
       },
       "items": [
         {
@@ -80,35 +82,35 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 #### Markup
 
     <div class="govuk-form-group">
-        <fieldset class="govuk-fieldset">
+
+      <fieldset class="govuk-fieldset" aria-describedby="example-hint">
 
       <legend class="govuk-fieldset__legend">
         Have you changed your name?
-
-        <span class="govuk-fieldset__hint">This includes changing your last name or spelling your name differently.</span>
-
       </legend>
 
-    <div class="govuk-radios govuk-radios--inline">
+      <span id="example-hint" class="govuk-hint">
+        This includes changing your last name or spelling your name differently.
+      </span>
 
-          <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="example-1" name="example" type="radio" value="yes">
-            <label class="govuk-label govuk-radios__label" for="example-1">
+      <div class="govuk-radios govuk-radios--inline">
+
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="example-1" name="example" type="radio" value="yes">
+          <label class="govuk-label govuk-radios__label" for="example-1">
             Yes
-
           </label>
-          </div>
-
-          <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="example-2" name="example" type="radio" value="no" checked>
-            <label class="govuk-label govuk-radios__label" for="example-2">
-            No
-
-          </label>
-          </div>
-
         </div>
-        </fieldset>
+
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="example-2" name="example" type="radio" value="no" checked>
+          <label class="govuk-label govuk-radios__label" for="example-2">
+            No
+          </label>
+        </div>
+
+      </div>
+      </fieldset>
 
     </div>
 
@@ -121,8 +123,10 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
       "classes": "govuk-radios--inline",
       "name": "example",
       "fieldset": {
-        "legendText": "Have you changed your name?",
-        "legendHintText": "This includes changing your last name or spelling your name differently."
+        "legendText": "Have you changed your name?"
+      },
+      "hint": {
+        "text": "This includes changing your last name or spelling your name differently."
       },
       "items": [
         {
@@ -144,35 +148,35 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 #### Markup
 
     <div class="govuk-form-group">
-        <fieldset class="govuk-fieldset">
+
+      <fieldset class="govuk-fieldset" aria-describedby="example-disabled-hint">
 
       <legend class="govuk-fieldset__legend">
         Have you changed your name?
-
-        <span class="govuk-fieldset__hint">This includes changing your last name or spelling your name differently.</span>
-
       </legend>
 
-    <div class="govuk-radios">
+      <span id="example-disabled-hint" class="govuk-hint">
+        This includes changing your last name or spelling your name differently.
+      </span>
 
-          <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="example-disabled-1" name="example-disabled" type="radio" value="yes" disabled>
-            <label class="govuk-label govuk-radios__label" for="example-disabled-1">
+      <div class="govuk-radios">
+
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="example-disabled-1" name="example-disabled" type="radio" value="yes" disabled>
+          <label class="govuk-label govuk-radios__label" for="example-disabled-1">
             Yes
-
           </label>
-          </div>
-
-          <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="example-disabled-2" name="example-disabled" type="radio" value="no" disabled>
-            <label class="govuk-label govuk-radios__label" for="example-disabled-2">
-            No
-
-          </label>
-          </div>
-
         </div>
-        </fieldset>
+
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="example-disabled-2" name="example-disabled" type="radio" value="no" disabled>
+          <label class="govuk-label govuk-radios__label" for="example-disabled-2">
+            No
+          </label>
+        </div>
+
+      </div>
+      </fieldset>
 
     </div>
 
@@ -184,8 +188,10 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
       "idPrefix": "example-disabled",
       "name": "example-disabled",
       "fieldset": {
-        "legendText": "Have you changed your name?",
-        "legendHintText": "This includes changing your last name or spelling your name differently."
+        "legendText": "Have you changed your name?"
+      },
+      "hint": {
+        "text": "This includes changing your last name or spelling your name differently."
       },
       "items": [
         {
@@ -208,35 +214,35 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 #### Markup
 
     <div class="govuk-form-group">
-        <fieldset class="govuk-fieldset">
+
+      <fieldset class="govuk-fieldset" aria-describedby="housing-act-hint">
 
       <legend class="govuk-fieldset__legend">
         <h1 class="govuk-heading-l">Which part of the Housing Act was your licence issued under?</h1>
-
-        <span class="govuk-fieldset__hint">Select one of the options below.</span>
-
       </legend>
 
-    <div class="govuk-radios">
+      <span id="housing-act-hint" class="govuk-hint">
+        Select one of the options below.
+      </span>
 
-          <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="housing-act-1" name="housing-act" type="radio" value="part-2">
-            <label class="govuk-label govuk-radios__label" for="housing-act-1">
+      <div class="govuk-radios">
+
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="housing-act-1" name="housing-act" type="radio" value="part-2">
+          <label class="govuk-label govuk-radios__label" for="housing-act-1">
             <span class="govuk-heading-s govuk-!-mb-r1">Part 2 of the Housing Act 2004</span> For properties that are 3 or more stories high and occupied by 5 or more people
-
           </label>
-          </div>
-
-          <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="housing-act-2" name="housing-act" type="radio" value="part-3">
-            <label class="govuk-label govuk-radios__label" for="housing-act-2">
-            <span class="govuk-heading-s govuk-!-mb-r1">Part 3 of the Housing Act 2004</span> For properties that are within a geographical area defined by a local council
-
-          </label>
-          </div>
-
         </div>
-        </fieldset>
+
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="housing-act-2" name="housing-act" type="radio" value="part-3">
+          <label class="govuk-label govuk-radios__label" for="housing-act-2">
+            <span class="govuk-heading-s govuk-!-mb-r1">Part 3 of the Housing Act 2004</span> For properties that are within a geographical area defined by a local council
+          </label>
+        </div>
+
+      </div>
+      </fieldset>
 
     </div>
 
@@ -248,8 +254,10 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
       "idPrefix": "housing-act",
       "name": "housing-act",
       "fieldset": {
-        "legendHtml": "<h1 class=\"govuk-heading-l\">Which part of the Housing Act was your licence issued under?</h1>",
-        "legendHintText": "Select one of the options below."
+        "legendHtml": "<h1 class=\"govuk-heading-l\">Which part of the Housing Act was your licence issued under?</h1>"
+      },
+      "hint": {
+        "text": "Select one of the options below."
       },
       "items": [
         {
@@ -270,30 +278,28 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 #### Markup
 
     <div class="govuk-form-group">
-        <div class="govuk-radios">
+
+      <div class="govuk-radios">
 
         <div class="govuk-radios__item">
           <input class="govuk-radios__input" id="colours-1" name="colours" type="radio" value="red">
           <label class="govuk-label govuk-radios__label" for="colours-1">
-          Red
-
-        </label>
+            Red
+          </label>
         </div>
 
         <div class="govuk-radios__item">
           <input class="govuk-radios__input" id="colours-2" name="colours" type="radio" value="green">
           <label class="govuk-label govuk-radios__label" for="colours-2">
-          Green
-
-        </label>
+            Green
+          </label>
         </div>
 
         <div class="govuk-radios__item">
           <input class="govuk-radios__input" id="colours-3" name="colours" type="radio" value="blue">
           <label class="govuk-label govuk-radios__label" for="colours-3">
-          Blue
-
-        </label>
+            Blue
+          </label>
         </div>
 
       </div>
@@ -329,39 +335,39 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 #### Markup
 
     <div class="govuk-form-group govuk-form-group--error">
-        <fieldset class="govuk-fieldset app-fieldset--custom-modifier" aria-describedby="example-error" data-attribute="value" data-second-attribute="second-value">
+
+      <fieldset class="govuk-fieldset app-fieldset--custom-modifier" aria-describedby="example-hint example-error" data-attribute="value" data-second-attribute="second-value">
 
       <legend class="govuk-fieldset__legend">
         Have you changed your name?
-
-        <span class="govuk-fieldset__hint">This includes changing your last name or spelling your name differently.</span>
-
       </legend>
 
-    <span id="example-error" class="govuk-error-message">
+      <span id="example-hint" class="govuk-hint">
+        This includes changing your last name or spelling your name differently.
+      </span>
+
+      <span id="example-error" class="govuk-error-message">
         Please select an option
       </span>
 
-        <div class="govuk-radios">
+      <div class="govuk-radios">
 
-          <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="example-1" name="example" type="radio" value="yes">
-            <label class="govuk-label govuk-radios__label" for="example-1">
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="example-1" name="example" type="radio" value="yes">
+          <label class="govuk-label govuk-radios__label" for="example-1">
             Yes
-
           </label>
-          </div>
-
-          <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="example-2" name="example" type="radio" value="no" checked>
-            <label class="govuk-label govuk-radios__label" for="example-2">
-            No
-
-          </label>
-          </div>
-
         </div>
-        </fieldset>
+
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="example-2" name="example" type="radio" value="no" checked>
+          <label class="govuk-label govuk-radios__label" for="example-2">
+            No
+          </label>
+        </div>
+
+      </div>
+      </fieldset>
 
     </div>
 
@@ -381,8 +387,10 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
           "data-attribute": "value",
           "data-second-attribute": "second-value"
         },
-        "legendText": "Have you changed your name?",
-        "legendHintText": "This includes changing your last name or spelling your name differently."
+        "legendText": "Have you changed your name?"
+      },
+      "hint": {
+        "text": "This includes changing your last name or spelling your name differently."
       },
       "items": [
         {
@@ -455,7 +463,31 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Arguments for the fieldset component (e.g. legendText, legendHintText, errorMessage). See fieldset component.</td>
+<td class="govuk-table__cell ">Arguments for the fieldset component (e.g. legendText). See fieldset component.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">hint</th>
+
+<td class="govuk-table__cell ">object</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Arguments for the hint component (e.g. text). See hint component.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">errorMessage</th>
+
+<td class="govuk-table__cell ">object</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Arguments for the errorMessage component (e.g. text). See errorMessage component.</td>
 
 </tr>
 

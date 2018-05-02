@@ -15,8 +15,8 @@ examples:
     name: 'example'
     fieldset:
       legendText: Have you changed your name?
-      legendHintText:
-        This includes changing your last name or spelling your name differently.
+    hint:
+      text: This includes changing your last name or spelling your name differently.
     items:
       - value: yes
         text: Yes
@@ -31,8 +31,8 @@ examples:
     name: 'example'
     fieldset:
       legendText: Have you changed your name?
-      legendHintText:
-        This includes changing your last name or spelling your name differently.
+    hint:
+      text: This includes changing your last name or spelling your name differently.
     items:
       - value: yes
         text: Yes
@@ -46,8 +46,8 @@ examples:
     name: 'example-disabled'
     fieldset:
       legendText: Have you changed your name?
-      legendHintText:
-        This includes changing your last name or spelling your name differently.
+    hint:
+      text: This includes changing your last name or spelling your name differently.
     items:
       - value: yes
         text: Yes
@@ -62,7 +62,8 @@ examples:
     name: 'housing-act'
     fieldset:
       legendHtml: <h1 class="govuk-heading-l">Which part of the Housing Act was your licence issued under?</h1>
-      legendHintText: Select one of the options below.
+    hint:
+      text: Select one of the options below.
     items:
       - value: 'part-2'
         html:
@@ -96,8 +97,8 @@ examples:
         'data-attribute': 'value'
         'data-second-attribute': 'second-value'
       legendText: Have you changed your name?
-      legendHintText:
-        This includes changing your last name or spelling your name differently.
+    hint:
+      text: This includes changing your last name or spelling your name differently.
     items:
       - value: yes
         text: Yes

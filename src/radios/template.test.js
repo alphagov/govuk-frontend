@@ -258,6 +258,25 @@ describe('Radios', () => {
       expect(htmlWithClassName($, '.govuk-radios__label')).toMatchSnapshot()
     })
 
+    it('renders the hint', () => {
+      const $ = render('radios', examples['with-extreme-fieldset'])
+
+      expect(htmlWithClassName($, '.govuk-hint')).toMatchSnapshot()
+    })
+
+    it('associates the fieldset as "described by" the hint', () => {
+      const $ = render('radios', examples['with-extreme-fieldset'])
+
+      const $fieldset = $('.govuk-fieldset')
+      const $hint = $('.govuk-hint')
+
+      const hintId = new RegExp(
+        WORD_BOUNDARY + $hint.attr('id') + WORD_BOUNDARY
+      )
+
+      expect($fieldset.attr('aria-describedby')).toMatch(hintId)
+    })
+
     it('renders the error message', () => {
       const $ = render('radios', examples['with-extreme-fieldset'])
       expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
@@ -336,8 +355,7 @@ describe('Radios', () => {
           }
         ],
         fieldset: {
-          legendText: 'Have <b>you</b> changed your name?',
-          legendHintHtml: 'This <b>includes</b> changing your last name or spelling your name differently.'
+          legendHtml: 'Have <b>you</b> changed your name?'
         }
       })
 
