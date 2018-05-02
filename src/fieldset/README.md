@@ -20,9 +20,6 @@ Find out when to use the Fieldset component in your service in the [GOV.UK Desig
 
       <legend class="govuk-fieldset__legend">
         What is your address?
-
-        <span class="govuk-fieldset__hint">For example, 10 Downing Street</span>
-
       </legend>
 
     </fieldset>
@@ -32,37 +29,7 @@ Find out when to use the Fieldset component in your service in the [GOV.UK Desig
     {% from 'fieldset/macro.njk' import govukFieldset %}
 
     {{ govukFieldset({
-      "legendText": "What is your address?",
-      "legendHintText": "For example, 10 Downing Street"
-    }) }}
-
-### Fieldset--with-error-message
-
-[Preview the fieldset--with-error-message example](http://govuk-frontend-review.herokuapp.com/components/fieldset/with-error-message/preview)
-
-#### Markup
-
-    <fieldset class="govuk-fieldset">
-
-      <legend class="govuk-fieldset__legend">
-        What is your address?
-
-        <span class="govuk-fieldset__hint">For example, 10 Downing Street</span>
-
-      </legend>
-
-    </fieldset>
-
-#### Macro
-
-    {% from 'fieldset/macro.njk' import govukFieldset %}
-
-    {{ govukFieldset({
-      "legendText": "What is your address?",
-      "legendHintText": "For example, 10 Downing Street",
-      "errorMessage": {
-        "text": "Please fill in the street input"
-      }
+      "legendText": "What is your address?"
     }) }}
 
 ## Dependencies
@@ -146,42 +113,6 @@ If you are using Nunjucks,then macros take the following arguments
 <td class="govuk-table__cell ">No</td>
 
 <td class="govuk-table__cell ">Legend text</td>
-
-</tr>
-
-<tr class="govuk-table__row">
-
-<th class="govuk-table__header" scope="row">legendHintText</th>
-
-<td class="govuk-table__cell ">string</td>
-
-<td class="govuk-table__cell ">No</td>
-
-<td class="govuk-table__cell ">HTML to use within the legend element. If this is used, the legendText argument will be ignored.</td>
-
-</tr>
-
-<tr class="govuk-table__row">
-
-<th class="govuk-table__header" scope="row">legendHintHtml</th>
-
-<td class="govuk-table__cell ">string</td>
-
-<td class="govuk-table__cell ">No</td>
-
-<td class="govuk-table__cell ">HTML to use within the legend hint element. If this is used, the hintText argument will be ignored.</td>
-
-</tr>
-
-<tr class="govuk-table__row">
-
-<th class="govuk-table__header" scope="row">errorMessage</th>
-
-<td class="govuk-table__cell ">object</td>
-
-<td class="govuk-table__cell ">No</td>
-
-<td class="govuk-table__cell ">Provide text or html key with values. See errorMessage component for more details.</td>
 
 </tr>
 

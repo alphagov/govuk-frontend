@@ -5,9 +5,6 @@
   {% if params.legendHtml or params.legendText %}
   <legend class="govuk-fieldset__legend">
     {{ params.legendHtml | safe if params.legendHtml else params.legendText }}
-    {% if params.legendHintText or params.legendHintHtml %}
-    <span class="govuk-fieldset__hint">{{ params.legendHintHtml | safe if params.legendHintHtml else params.legendHintText }}</span>
-    {% endif %}
   </legend>
   {% endif %}
 {{ caller() if caller }} {#- if statement allows usage of `call` to be optional -#}

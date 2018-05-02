@@ -2,10 +2,3 @@ examples:
 - name: default
   data:
     legendText: What is your address?
-    legendHintText: For example, 10 Downing Street
-- name: with-error-message
-  data:
-    legendText: What is your address?
-    legendHintText: For example, 10 Downing Street
-    errorMessage:
-      text: 'Please fill in the street input'

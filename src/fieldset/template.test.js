@@ -2,7 +2,7 @@
 
 const { axe } = require('jest-axe')
 
-const { render, getExamples, htmlWithClassName } = require('../../lib/jest-helpers')
+const { render, getExamples } = require('../../lib/jest-helpers')
 
 const examples = getExamples('fieldset')
 
@@ -64,39 +64,6 @@ describe('fieldset', () => {
     expect($legend.html()).toContain('What is <b>your</b> address?')
   })
 
-  it('renders legendHintText using markup that is semantic', () => {
-    const $ = render('fieldset', {
-      legendText: 'What is your address?',
-      legendHintText: 'For example, 10 Downing Street'
-    })
-
-    const $component = $('.govuk-fieldset')
-    const $hint = $component.find('.govuk-fieldset__hint')
-    expect($hint.html()).toEqual('For example, 10 Downing Street')
-  })
-
-  it('renders escaped legendHintText when passing html', () => {
-    const $ = render('fieldset', {
-      legendText: 'What is your address?',
-      legendHintText: 'For example, <b>10 Downing Street</b>'
-    })
-
-    const $component = $('.govuk-fieldset')
-    const $hint = $component.find('.govuk-fieldset__hint')
-    expect($hint.html()).toEqual('For example, &lt;b&gt;10 Downing Street&lt;/b&gt;')
-  })
-
-  it('renders legendHintHtml', () => {
-    const $ = render('fieldset', {
-      legendText: 'What is your address?',
-      legendHintHtml: 'For example, <b>10 Downing Street</b>'
-    })
-
-    const $component = $('.govuk-fieldset')
-    const $hint = $component.find('.govuk-fieldset__hint')
-    expect($hint.html()).toEqual('For example, <b>10 Downing Street</b>')
-  })
-
   it('renders attributes', () => {
     const $ = render('fieldset', {
       attributes: {
@@ -108,20 +75,5 @@ describe('fieldset', () => {
     const $component = $('.govuk-fieldset')
     expect($component.attr('data-attribute')).toEqual('value')
     expect($component.attr('data-another-attribute')).toEqual('another-value')
-  })
-
-  describe('dependant components', () => {
-    it('have correct nesting order', () => {
-      const $ = render('fieldset', examples['with-error-message'])
-
-      const $component = $('.govuk-form-group > .govuk-fieldset')
-      expect($component.length).toBeTruthy()
-    })
-
-    it('passes through errorMessage params without breaking', () => {
-      const $ = render('fieldset', examples['with-error-message'])
-
-      expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
-    })
   })
 })
