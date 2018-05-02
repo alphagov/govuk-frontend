@@ -120,6 +120,36 @@ describe('Textarea', () => {
       expect($label.attr('for')).toEqual('my-textarea')
     })
 
+    it('renders with hint', () => {
+      const $ = render('textarea', {
+        id: 'textarea-with-error',
+        hint: {
+          'text': 'It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.'
+        }
+      })
+
+      expect(htmlWithClassName($, '.govuk-hint')).toMatchSnapshot()
+    })
+
+    it('associates the textarea as "described by" the hint', () => {
+      const $ = render('textarea', {
+        id: 'textarea-with-error',
+        hint: {
+          'text': 'It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.'
+        }
+      })
+
+      const $textarea = $('.govuk-textarea')
+      const $hint = $('.govuk-hint')
+
+      const hintId = new RegExp(
+        WORD_BOUNDARY + $hint.attr('id') + WORD_BOUNDARY
+      )
+
+      expect($textarea.attr('aria-describedby'))
+        .toMatch(hintId)
+    })
+
     it('renders with error message', () => {
       const $ = render('textarea', {
         id: 'textarea-with-error',
@@ -133,7 +163,7 @@ describe('Textarea', () => {
 
     it('associates the textarea as "described by" the error message', () => {
       const $ = render('textarea', {
-        id: 'input-with-error',
+        id: 'textarea-with-error',
         errorMessage: {
           'text': 'Error message'
         }

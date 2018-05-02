@@ -10,6 +10,16 @@ exports[`Textarea with dependant components renders with error message 1`] = `
 
 `;
 
+exports[`Textarea with dependant components renders with hint 1`] = `
+
+<span id="textarea-with-error-hint"
+      class="govuk-hint"
+>
+  It&#x2019;s on your National Insurance card, benefit letter, payslip or P60. For example, &#x2018;QQ 12 34 56 C&#x2019;.
+</span>
+
+`;
+
 exports[`Textarea with dependant components renders with label 1`] = `
 
 <label class="govuk-label"
