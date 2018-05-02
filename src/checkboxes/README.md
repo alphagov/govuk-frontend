@@ -17,43 +17,42 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 #### Markup
 
     <div class="govuk-form-group">
-        <fieldset class="govuk-fieldset">
+
+      <fieldset class="govuk-fieldset" aria-describedby="nationality-hint">
 
       <legend class="govuk-fieldset__legend">
         What is your nationality?
-
-        <span class="govuk-fieldset__hint">If you have dual nationality, select all options that are relevant to you.</span>
-
       </legend>
 
-    <div class="govuk-checkboxes">
+      <span id="nationality-hint" class="govuk-hint">
+        If you have dual nationality, select all options that are relevant to you.
+      </span>
 
-          <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="nationality-1" name="nationality" type="checkbox" value="british">
-            <label class="govuk-label govuk-checkboxes__label" for="nationality-1">
+      <div class="govuk-checkboxes">
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="nationality-1" name="nationality" type="checkbox" value="british">
+          <label class="govuk-label govuk-checkboxes__label" for="nationality-1">
             British
-
           </label>
-          </div>
-
-          <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="nationality-2" name="nationality" type="checkbox" value="irish">
-            <label class="govuk-label govuk-checkboxes__label" for="nationality-2">
-            Irish
-
-          </label>
-          </div>
-
-          <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="nationality-3" name="nationality" type="checkbox" value="other">
-            <label class="govuk-label govuk-checkboxes__label" for="nationality-3">
-            Citizen of another country
-
-          </label>
-          </div>
-
         </div>
-        </fieldset>
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="nationality-2" name="nationality" type="checkbox" value="irish">
+          <label class="govuk-label govuk-checkboxes__label" for="nationality-2">
+            Irish
+          </label>
+        </div>
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="nationality-3" name="nationality" type="checkbox" value="other">
+          <label class="govuk-label govuk-checkboxes__label" for="nationality-3">
+            Citizen of another country
+          </label>
+        </div>
+
+      </div>
+      </fieldset>
 
     </div>
 
@@ -65,8 +64,10 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
       "idPrefix": "nationality",
       "name": "nationality",
       "fieldset": {
-        "legendText": "What is your nationality?",
-        "legendHintText": "If you have dual nationality, select all options that are relevant to you."
+        "legendText": "What is your nationality?"
+      },
+      "hint": {
+        "text": "If you have dual nationality, select all options that are relevant to you."
       },
       "items": [
         {
@@ -91,30 +92,28 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 #### Markup
 
     <div class="govuk-form-group">
-        <div class="govuk-checkboxes">
+
+      <div class="govuk-checkboxes">
 
         <div class="govuk-checkboxes__item">
           <input class="govuk-checkboxes__input" id="colours-1" name="colours" type="checkbox" value="red">
           <label class="govuk-label govuk-checkboxes__label" for="colours-1">
-          Red
-
-        </label>
+            Red
+          </label>
         </div>
 
         <div class="govuk-checkboxes__item">
           <input class="govuk-checkboxes__input" id="colours-2" name="colours" type="checkbox" value="green">
           <label class="govuk-label govuk-checkboxes__label" for="colours-2">
-          Green
-
-        </label>
+            Green
+          </label>
         </div>
 
         <div class="govuk-checkboxes__item">
           <input class="govuk-checkboxes__input" id="colours-3" name="colours" type="checkbox" value="blue" disabled>
           <label class="govuk-label govuk-checkboxes__label" for="colours-3">
-          Blue
-
-        </label>
+            Blue
+          </label>
         </div>
 
       </div>
@@ -151,43 +150,42 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 #### Markup
 
     <div class="govuk-form-group">
-        <fieldset class="govuk-fieldset">
+
+      <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
 
       <legend class="govuk-fieldset__legend">
         <h3 class="govuk-heading-m">Which types of waste do you transport regularly?</h3>
-
-        <span class="govuk-fieldset__hint">Select all that apply</span>
-
       </legend>
 
-    <div class="govuk-checkboxes">
+      <span id="waste-hint" class="govuk-hint">
+        Select all that apply
+      </span>
 
-          <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="undefined-1" name="" type="checkbox" value="animal">
-            <label class="govuk-label govuk-checkboxes__label" for="undefined-1">
+      <div class="govuk-checkboxes">
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="waste-1" name="waste" type="checkbox" value="animal">
+          <label class="govuk-label govuk-checkboxes__label" for="waste-1">
             Waste from animal carcasses
-
           </label>
-          </div>
-
-          <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="undefined-2" name="" type="checkbox" value="mines">
-            <label class="govuk-label govuk-checkboxes__label" for="undefined-2">
-            Waste from mines or quarries
-
-          </label>
-          </div>
-
-          <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="undefined-3" name="" type="checkbox" value="farm">
-            <label class="govuk-label govuk-checkboxes__label" for="undefined-3">
-            Farm or agricultural waste
-
-          </label>
-          </div>
-
         </div>
-        </fieldset>
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="waste-2" name="waste" type="checkbox" value="mines">
+          <label class="govuk-label govuk-checkboxes__label" for="waste-2">
+            Waste from mines or quarries
+          </label>
+        </div>
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+          <label class="govuk-label govuk-checkboxes__label" for="waste-3">
+            Farm or agricultural waste
+          </label>
+        </div>
+
+      </div>
+      </fieldset>
 
     </div>
 
@@ -196,9 +194,12 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
     {% from 'checkboxes/macro.njk' import govukCheckboxes %}
 
     {{ govukCheckboxes({
+      "name": "waste",
       "fieldset": {
-        "legendHtml": "<h3 class=\"govuk-heading-m\">Which types of waste do you transport regularly?</h3>",
-        "legendHintText": "Select all that apply"
+        "legendHtml": "<h3 class=\"govuk-heading-m\">Which types of waste do you transport regularly?</h3>"
+      },
+      "hint": {
+        "text": "Select all that apply"
       },
       "items": [
         {
@@ -223,30 +224,28 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 #### Markup
 
     <div class="govuk-form-group">
-        <div class="govuk-checkboxes">
+
+      <div class="govuk-checkboxes">
 
         <div class="govuk-checkboxes__item">
           <input class="govuk-checkboxes__input" id="colours-1" name="colours" type="checkbox" value="red">
           <label class="govuk-label govuk-checkboxes__label" for="colours-1">
-          Red
-
-        </label>
+            Red
+          </label>
         </div>
 
         <div class="govuk-checkboxes__item">
           <input class="govuk-checkboxes__input" id="colours-2" name="colours" type="checkbox" value="green">
           <label class="govuk-label govuk-checkboxes__label" for="colours-2">
-          Green
-
-        </label>
+            Green
+          </label>
         </div>
 
         <div class="govuk-checkboxes__item">
           <input class="govuk-checkboxes__input" id="colours-3" name="colours" type="checkbox" value="blue">
           <label class="govuk-label govuk-checkboxes__label" for="colours-3">
-          Blue
-
-        </label>
+            Blue
+          </label>
         </div>
 
       </div>
@@ -282,47 +281,46 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 #### Markup
 
     <div class="govuk-form-group govuk-form-group--error">
-        <fieldset class="govuk-fieldset app-fieldset--custom-modifier" aria-describedby="example-error" data-attribute="value" data-second-attribute="second-value">
+
+      <fieldset class="govuk-fieldset app-fieldset--custom-modifier" aria-describedby="example-hint example-error" data-attribute="value" data-second-attribute="second-value">
 
       <legend class="govuk-fieldset__legend">
         What is your nationality?
-
-        <span class="govuk-fieldset__hint">If you have dual nationality, select all options that are relevant to you.</span>
-
       </legend>
 
-    <span id="example-error" class="govuk-error-message">
+      <span id="example-hint" class="govuk-hint">
+        If you have dual nationality, select all options that are relevant to you.
+      </span>
+
+      <span id="example-error" class="govuk-error-message">
         Please select an option
       </span>
 
-        <div class="govuk-checkboxes">
+      <div class="govuk-checkboxes">
 
-          <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="example-1" name="example" type="checkbox" value="british">
-            <label class="govuk-label govuk-checkboxes__label" for="example-1">
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="example-1" name="example" type="checkbox" value="british">
+          <label class="govuk-label govuk-checkboxes__label" for="example-1">
             British
-
           </label>
-          </div>
-
-          <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="example-2" name="example" type="checkbox" value="irish">
-            <label class="govuk-label govuk-checkboxes__label" for="example-2">
-            Irish
-
-          </label>
-          </div>
-
-          <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="example-3" name="example" type="checkbox" value="other">
-            <label class="govuk-label govuk-checkboxes__label" for="example-3">
-            Citizen of another country
-
-          </label>
-          </div>
-
         </div>
-        </fieldset>
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="example-2" name="example" type="checkbox" value="irish">
+          <label class="govuk-label govuk-checkboxes__label" for="example-2">
+            Irish
+          </label>
+        </div>
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="example-3" name="example" type="checkbox" value="other">
+          <label class="govuk-label govuk-checkboxes__label" for="example-3">
+            Citizen of another country
+          </label>
+        </div>
+
+      </div>
+      </fieldset>
 
     </div>
 
@@ -333,17 +331,19 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
     {{ govukCheckboxes({
       "idPrefix": "example",
       "name": "example",
-      "errorMessage": {
-        "text": "Please select an option"
-      },
       "fieldset": {
         "classes": "app-fieldset--custom-modifier",
         "attributes": {
           "data-attribute": "value",
           "data-second-attribute": "second-value"
         },
-        "legendText": "What is your nationality?",
-        "legendHintText": "If you have dual nationality, select all options that are relevant to you."
+        "legendText": "What is your nationality?"
+      },
+      "hint": {
+        "text": "If you have dual nationality, select all options that are relevant to you."
+      },
+      "errorMessage": {
+        "text": "Please select an option"
       },
       "items": [
         {
@@ -368,45 +368,42 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 #### Markup
 
     <div class="govuk-form-group govuk-form-group--error">
-        <fieldset class="govuk-fieldset" aria-describedby="undefined-error">
+
+      <fieldset class="govuk-fieldset" aria-describedby="waste-error">
 
       <legend class="govuk-fieldset__legend">
         <h3 class="govuk-heading-m">Which types of waste do you transport regularly?</h3>
-
       </legend>
 
-    <span id="undefined-error" class="govuk-error-message">
+      <span id="waste-error" class="govuk-error-message">
         Please select an option
       </span>
 
-        <div class="govuk-checkboxes">
+      <div class="govuk-checkboxes">
 
-          <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="undefined-1" name="" type="checkbox" value="animal">
-            <label class="govuk-label govuk-checkboxes__label" for="undefined-1">
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="waste-1" name="waste" type="checkbox" value="animal">
+          <label class="govuk-label govuk-checkboxes__label" for="waste-1">
             Waste from animal carcasses
-
           </label>
-          </div>
-
-          <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="undefined-2" name="" type="checkbox" value="mines">
-            <label class="govuk-label govuk-checkboxes__label" for="undefined-2">
-            Waste from mines or quarries
-
-          </label>
-          </div>
-
-          <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="undefined-3" name="" type="checkbox" value="farm">
-            <label class="govuk-label govuk-checkboxes__label" for="undefined-3">
-            Farm or agricultural waste
-
-          </label>
-          </div>
-
         </div>
-        </fieldset>
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="waste-2" name="waste" type="checkbox" value="mines">
+          <label class="govuk-label govuk-checkboxes__label" for="waste-2">
+            Waste from mines or quarries
+          </label>
+        </div>
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+          <label class="govuk-label govuk-checkboxes__label" for="waste-3">
+            Farm or agricultural waste
+          </label>
+        </div>
+
+      </div>
+      </fieldset>
 
     </div>
 
@@ -415,6 +412,7 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
     {% from 'checkboxes/macro.njk' import govukCheckboxes %}
 
     {{ govukCheckboxes({
+      "name": "waste",
       "errorMessage": {
         "text": "Please select an option"
       },
@@ -493,7 +491,31 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Arguments for the fieldset component (e.g. legendText, legendHintText, errorMessage). See fieldset component.</td>
+<td class="govuk-table__cell ">Arguments for the fieldset component (e.g. legendText). See fieldset component.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">hint</th>
+
+<td class="govuk-table__cell ">object</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Arguments for the hint component (e.g. text). See hint component.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">errorMessage</th>
+
+<td class="govuk-table__cell ">object</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Arguments for the errorMessage component (e.g. text). See errorMessage component.</td>
 
 </tr>
 

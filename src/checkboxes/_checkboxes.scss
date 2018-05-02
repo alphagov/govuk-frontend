@@ -1,8 +1,10 @@
 @import "../globals/tools/exports";
 @import "../globals/tools/ie8";
+@import "../globals/settings/measurements";
 
 @import "../error-message/error-message";
 @import "../fieldset/fieldset";
+@import "../hint/hint";
 @import "../label/label";
 
 @include govuk-exports("checkboxes") {

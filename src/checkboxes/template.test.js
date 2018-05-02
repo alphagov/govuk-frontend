@@ -261,6 +261,25 @@ describe('Checkboxes', () => {
       expect(htmlWithClassName($, '.govuk-checkboxes__label')).toMatchSnapshot()
     })
 
+    it('renders the hint', () => {
+      const $ = render('checkboxes', examples['with-extreme-fieldset'])
+
+      expect(htmlWithClassName($, '.govuk-hint')).toMatchSnapshot()
+    })
+
+    it('associates the fieldset as "described by" the hint', () => {
+      const $ = render('checkboxes', examples['with-extreme-fieldset'])
+
+      const $fieldset = $('.govuk-fieldset')
+      const $hint = $('.govuk-hint')
+
+      const hintId = new RegExp(
+        WORD_BOUNDARY + $hint.attr('id') + WORD_BOUNDARY
+      )
+
+      expect($fieldset.attr('aria-describedby')).toMatch(hintId)
+    })
+
     it('renders the error message', () => {
       const $ = render('checkboxes', examples['with-extreme-fieldset'])
 
@@ -340,8 +359,7 @@ describe('Checkboxes', () => {
           }
         ],
         fieldset: {
-          legendText: 'What is your <b>nationality</b>?',
-          legendHintHtml: 'If you have dual nationality, <b>select all options</b> that are relevant to you.'
+          legendHtml: 'What is your <b>nationality</b>?'
         }
       })
 

@@ -15,7 +15,8 @@ examples:
     name: 'nationality'
     fieldset:
       legendText: What is your nationality?
-      legendHintText: If you have dual nationality, select all options that are relevant to you.
+    hint:
+      text: If you have dual nationality, select all options that are relevant to you.
     items:
       - value: 'british'
         text: 'British'
@@ -38,10 +39,12 @@ examples:
 
 - name: with-html
   data:
+    name: waste
     fieldset:
       legendHtml:
         <h3 class="govuk-heading-m">Which types of waste do you transport regularly?</h3>
-      legendHintText: Select all that apply
+    hint:
+      text: Select all that apply
     items:
       - value: animal
         text: Waste from animal carcasses
@@ -65,16 +68,16 @@ examples:
   data:
     idPrefix: 'example'
     name: 'example'
-    errorMessage:
-      text: 'Please select an option'
     fieldset:
       classes: 'app-fieldset--custom-modifier'
       attributes:
         'data-attribute': 'value'
         'data-second-attribute': 'second-value'
       legendText: What is your nationality?
-      legendHintText:
-        If you have dual nationality, select all options that are relevant to you.
+    hint:
+      text: If you have dual nationality, select all options that are relevant to you.
+    errorMessage:
+      text: 'Please select an option'
     items:
       - value: 'british'
         text: 'British'
@@ -85,6 +88,7 @@ examples:
 
 - name: with-error
   data:
+    name: waste
     errorMessage:
       text: 'Please select an option'
     fieldset:
