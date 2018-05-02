@@ -204,6 +204,25 @@ describe('Date input', () => {
     })
   })
 
+  it('renders the hint', () => {
+    const $ = render('date-input', examples['with-errors'])
+    expect(htmlWithClassName($, '.govuk-hint')).toMatchSnapshot()
+  })
+
+  it('associates the fieldset as "described by" the hint', () => {
+    const $ = render('date-input', examples['with-errors'])
+
+    const $fieldset = $('.govuk-fieldset')
+    const $hint = $('.govuk-hint')
+
+    const hintId = new RegExp(
+      WORD_BOUNDARY + $hint.attr('id') + WORD_BOUNDARY
+    )
+
+    expect($fieldset.attr('aria-describedby'))
+      .toMatch(hintId)
+  })
+
   it('renders the error message', () => {
     const $ = render('date-input', examples['with-errors'])
     expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()

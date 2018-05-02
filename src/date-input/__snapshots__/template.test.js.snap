@@ -22,12 +22,11 @@ exports[`Date input nested dependant components passes through label params with
 
 exports[`Date input passes through fieldset params without breaking 1`] = `
 
-<fieldset class="govuk-fieldset">
+<fieldset class="govuk-fieldset"
+          aria-describedby="dob-hint"
+>
   <legend class="govuk-fieldset__legend">
     What is your date of birth?
-    <span class="govuk-fieldset__hint">
-      For example, 31 3 1980
-    </span>
   </legend>
 </fieldset>
 
@@ -44,12 +43,6 @@ exports[`Date input passes through html fieldset params without breaking 1`] = `
       date of birth
     </b>
     ?
-    <span class="govuk-fieldset__hint">
-      For example,
-      <b>
-        31 3 1980
-      </b>
-    </span>
   </legend>
 </fieldset>
 
@@ -61,6 +54,16 @@ exports[`Date input renders the error message 1`] = `
       class="govuk-error-message"
 >
   Error message goes here
+</span>
+
+`;
+
+exports[`Date input renders the hint 1`] = `
+
+<span id="dob-errors-hint"
+      class="govuk-hint"
+>
+  For example, 31 3 1980
 </span>
 
 `;
