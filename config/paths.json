@@ -6,7 +6,7 @@
       "layouts": "app/views/layouts/",
   "config": "config/",
   "dist": "dist/",
-  "packages": "packages/",
+  "package": "package/",
   "public": "public/",
   "src": "src/",
   "ports": {
