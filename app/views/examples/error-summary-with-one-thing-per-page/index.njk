@@ -33,12 +33,21 @@
   }) }}
 
   {{ govukDateInput({
-      fieldset: {
-      legendHtml: '<h1 class="govuk-heading-xl">What is your date of birth?</h1>',
-      legendHintText: 'For example, 31 3 1980'
-    },
     id: 'dob',
     name: 'dob',
+    fieldset: {
+      legend: {
+        text: 'What is your date of birth?',
+        isPageHeading: true,
+        classes: 'govuk-fieldset__legend--xl'
+      }
+    },
+    hint: {
+      text: 'For example 5 12 1987'
+    },
+    errorMessage: {
+      text: "You must provide your date of birth"
+    },
     items:[
       {
         name: 'day'
@@ -49,10 +58,7 @@
       {
         name: 'year'
       }
-    ],
-    errorMessage: {
-      text: "You must provide your date of birth"
-    }
+    ]
     })
   }}
 
