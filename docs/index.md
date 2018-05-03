@@ -78,45 +78,14 @@ See [development and publishing tasks](development-and-publish-tasks.md) for mor
 
   Application modules and helpers.
 
-- `packages/` **contains auto-generated files**
+- `package/` **contains auto-generated files**
 
-  packages published on npm.
-
-  - `all/`
-
-    Consume all of govuk-frontend through a single package.
-
-  - `globals/`
-
-    All packages depend on this package, it contains shared dependencies of all components (e.g. colours, font-face, media queries, typography and vars).
-
-  - `[component-name]/`
-
-    Individual packages - these depend on each other (dependencies are listed in package.json) and also the globals package.
-
-    - `CHANGELOG.md`
-
-      Changes made to a package listed per version.
-
-    - `LICENSE`
-
-      Package license.
-
-    - `README.md`
-
-      Package README showing the basic API and usage instructions.
-
-    - `package.json`
-
-      npm definition for a package; states package dependencies.
+  package published on npm.
+  Consume all of govuk-frontend through a single package.
 
 - `src/`
 
   Source files.
-
-  - `all/`
-
-    Import all scripts and styles.
 
   - `globals/`
 
@@ -129,6 +98,34 @@ See [development and publishing tasks](development-and-publish-tasks.md) for mor
   - `[component-name]/`
 
     Component-specific source files.
+  
+  - `CHANGELOG.md`
+
+    Changes made to a package listed per release version.
+
+  - `LICENSE`
+
+    Package license.
+
+  - `README.md`
+
+    Package README showing the basic API and usage instructions.
+
+  - `package.json`
+
+    npm definition for a package; states package dependencies.
+
+  - `govuk-frontend.scss`
+
+    Main Sass file that imports all partials
+
+  - `govuk-frontend-ie8.scss`
+
+    Internet Explorer 8 specific Sass file that imports `govuk-frontend.scss`
+
+   - `govuk-frontend.js`
+
+    Main Javascript file that imports all component specific .js files
 
 - `tasks/`
 
