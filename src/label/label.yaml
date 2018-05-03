@@ -6,3 +6,7 @@ examples:
     data:
       classes: govuk-label--bold
       text: National Insurance number
+  - name: as page heading
+    data:
+      text: National Insurance number
+      isPageHeading: true

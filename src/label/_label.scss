@@ -20,4 +20,14 @@
   .govuk-label--bold {
     @include govuk-typography-weight-bold;
   }
+
+  // When the label is nested inside a heading, override the heading so that it
+  // does not have a margin. Effectively we want to be able to treat the heading
+  // as if it is not there.
+  //
+  // This breaks BEM conventions because it exists as a parent of the 'block',
+  // so we can't really consider an element.
+  .govuk-label-wrapper {
+    margin: 0;
+  }
 }

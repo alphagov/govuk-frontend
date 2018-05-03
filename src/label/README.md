@@ -43,6 +43,28 @@ Use labels for all form fields.
       "text": "National Insurance number"
     }) }}
 
+### Label--as page heading
+
+[Preview the label--as page heading example](http://govuk-frontend-review.herokuapp.com/components/label/as page heading/preview)
+
+#### Markup
+
+    <h1 class="govuk-label-wrapper">
+      <label class="govuk-label">
+        National Insurance number
+      </label>
+
+    </h1>
+
+#### Macro
+
+    {% from 'label/macro.njk' import govukLabel %}
+
+    {{ govukLabel({
+      "text": "National Insurance number",
+      "isPageHeading": true
+    }) }}
+
 ## Dependencies
 
 To consume the label component you must be running npm version 5 or above.
@@ -136,6 +158,18 @@ If you are using Nunjucks,then macros take the following arguments
 <td class="govuk-table__cell ">Yes</td>
 
 <td class="govuk-table__cell ">The value of the for attribute, the id of the input the label is associated with</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">isPageHeading</th>
+
+<td class="govuk-table__cell ">boolean</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Whether the label also acts as the heading for the page.</td>
 
 </tr>
 
