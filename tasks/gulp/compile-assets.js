@@ -32,8 +32,8 @@ const errorHandler = function (error) {
   this.emit('end')
 }
 // different entry points for both streams below and depending on destination flag
-const compileStyleshet = isDist ? configPaths.app + 'assets/scss/govuk-frontend.scss' : configPaths.app + 'assets/scss/app.scss'
-const compileOldIeStyleshet = isDist ? configPaths.app + 'assets/scss/govuk-frontend-old-ie.scss' : configPaths.app + 'assets/scss/app-old-ie.scss'
+const compileStyleshet = isDist ? configPaths.src + 'all.scss' : configPaths.app + 'assets/scss/app.scss'
+const compileOldIeStyleshet = isDist ? configPaths.src + 'all-ie8.scss' : configPaths.app + 'assets/scss/app-old-ie.scss'
 
 gulp.task('scss:compile', () => {
   let compile = gulp.src(compileStyleshet)
@@ -53,16 +53,11 @@ gulp.task('scss:compile', () => {
     ])))
     .pipe(gulpif(isDist,
       rename({
+        basename: 'govuk-frontend',
         extname: '.min.css'
       })
     ))
-    .pipe(gulp.dest(
-      gulpif(
-        isDist,
-        taskArguments.destination + '/',
-        taskArguments.destination + '/css/'
-      )
-    ))
+    .pipe(gulp.dest(taskArguments.destination + '/'))
 
   let compileOldIe = gulp.src(compileOldIeStyleshet)
     .pipe(plumber(errorHandler))
@@ -93,16 +88,11 @@ gulp.task('scss:compile', () => {
     ])))
     .pipe(gulpif(isDist,
       rename({
+        basename: 'govuk-frontend-ie8',
         extname: '.min.css'
       })
     ))
-    .pipe(gulp.dest(
-      gulpif(
-        isDist,
-        taskArguments.destination + '/',
-        taskArguments.destination + '/css/'
-      )
-    ))
+    .pipe(gulp.dest(taskArguments.destination + '/'))
 
   return merge(compile, compileOldIe)
 })
@@ -111,7 +101,7 @@ gulp.task('scss:compile', () => {
 // --------------------------------------
 gulp.task('js:compile', () => {
   // for dist/ folder we only want compiled 'all.js' file
-  let srcFiles = isDist ? configPaths.src + 'all/*.js' : configPaths.src + '**/*.js'
+  let srcFiles = isDist ? configPaths.src + 'all.js' : configPaths.src + '**/*.js'
   return gulp.src([
     '!' + configPaths.src + '**/*.test.js',
     srcFiles
