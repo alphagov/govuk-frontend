@@ -14,7 +14,8 @@ examples:
     idPrefix: 'nationality'
     name: 'nationality'
     fieldset:
-      legendText: What is your nationality?
+      legend:
+        text: What is your nationality?
     hint:
       text: If you have dual nationality, select all options that are relevant to you.
     items:
@@ -41,8 +42,8 @@ examples:
   data:
     name: waste
     fieldset:
-      legendHtml:
-        <h3 class="govuk-heading-m">Which types of waste do you transport regularly?</h3>
+      legend:
+        html: <h3 class="govuk-heading-m">Which types of waste do you transport regularly?</h3>
     hint:
       text: Select all that apply
     items:
@@ -73,7 +74,8 @@ examples:
       attributes:
         'data-attribute': 'value'
         'data-second-attribute': 'second-value'
-      legendText: What is your nationality?
+      legend:
+        text: What is your nationality?
     hint:
       text: If you have dual nationality, select all options that are relevant to you.
     errorMessage:
@@ -92,8 +94,8 @@ examples:
     errorMessage:
       text: 'Please select an option'
     fieldset:
-      legendHtml:
-        <h3 class="govuk-heading-m">Which types of waste do you transport regularly?</h3>
+      legend:
+        html: <h3 class="govuk-heading-m">Which types of waste do you transport regularly?</h3>
     items:
       - value: animal
         text: Waste from animal carcasses
@@ -107,8 +109,8 @@ examples:
   data:
     idPrefix: 'how-contacted'
     fieldset:
-      legendHtml:
-        <h3 class="govuk-heading-m">How do you want to be contacted?</h3>
+      legend:
+        html: <h3 class="govuk-heading-m">How do you want to be contacted?</h3>
     items:
       - value: email
         text: Email
@@ -134,8 +136,8 @@ examples:
   data:
     idPrefix: 'how-contacted-checked'
     fieldset:
-      legendHtml:
-        <h3 class="govuk-heading-m">How do you want to be contacted?</h3>
+      legend:
+        html: <h3 class="govuk-heading-m">How do you want to be contacted?</h3>
     items:
     - value: email
       text: Email

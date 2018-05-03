@@ -291,8 +291,9 @@ describe('Date input', () => {
       id: 'dob',
       name: 'dob',
       fieldset: {
-        legendHtml: 'What is your <b>date of birth</b>?',
-        legendHintHtml: 'For example, <b>31 3 1980</b>'
+        legend: {
+          html: 'What is your <b>date of birth</b>?'
+        }
       },
       errorMessage: {
         text: 'Error message goes here'

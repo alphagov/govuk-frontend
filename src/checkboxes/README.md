@@ -64,7 +64,9 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
       "idPrefix": "nationality",
       "name": "nationality",
       "fieldset": {
-        "legendText": "What is your nationality?"
+        "legend": {
+          "text": "What is your nationality?"
+        }
       },
       "hint": {
         "text": "If you have dual nationality, select all options that are relevant to you."
@@ -196,7 +198,9 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
     {{ govukCheckboxes({
       "name": "waste",
       "fieldset": {
-        "legendHtml": "<h3 class=\"govuk-heading-m\">Which types of waste do you transport regularly?</h3>"
+        "legend": {
+          "html": "<h3 class=\"govuk-heading-m\">Which types of waste do you transport regularly?</h3>"
+        }
       },
       "hint": {
         "text": "Select all that apply"
@@ -337,7 +341,9 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
           "data-attribute": "value",
           "data-second-attribute": "second-value"
         },
-        "legendText": "What is your nationality?"
+        "legend": {
+          "text": "What is your nationality?"
+        }
       },
       "hint": {
         "text": "If you have dual nationality, select all options that are relevant to you."
@@ -417,7 +423,9 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
         "text": "Please select an option"
       },
       "fieldset": {
-        "legendHtml": "<h3 class=\"govuk-heading-m\">Which types of waste do you transport regularly?</h3>"
+        "legend": {
+          "html": "<h3 class=\"govuk-heading-m\">Which types of waste do you transport regularly?</h3>"
+        }
       },
       "items": [
         {
@@ -491,7 +499,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Arguments for the fieldset component (e.g. legendText). See fieldset component.</td>
+<td class="govuk-table__cell ">Arguments for the fieldset component (e.g. legend). See fieldset component.</td>
 
 </tr>
 
