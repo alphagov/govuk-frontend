@@ -81,10 +81,10 @@ gulp.task('serve', ['watch'], () => {
   })
 })
 
-// Build packages task -----------------
+// Build package task -----------------
 // Prepare package folder for publishing
 // -------------------------------------
-gulp.task('build:packages', cb => {
+gulp.task('build:package', cb => {
   runsequence(
               'clean',
               'copy-files',
