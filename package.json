@@ -18,13 +18,13 @@
     "heroku": "gulp copy-assets && node app/start.js",
     "pre-release": "node bin/check-nvmrc.js && ./bin/pre-release.sh",
     "release": "node bin/check-nvmrc.js && ./bin/release.sh",
-    "build:packages": "node bin/check-nvmrc.js && gulp build:packages --destination 'packages' && ./bin/check-and-create-package-json.sh && npm run test:build:packages",
+    "build:package": "node bin/check-nvmrc.js && gulp build:package --destination 'package' && ./bin/check-and-create-package-json.sh && npm run test:build:package",
     "build:dist": "node bin/check-nvmrc.js && gulp build:dist --destination 'dist' && npm run test:build:dist",
     "test": "standard && gulp test && npm run test:app && npm run test:components && npm run test:generate:readme",
     "test:app": "jest app/__tests__/app.test.js",
     "test:components": "gulp copy-assets && jest src/ && jest tasks/gulp/__tests__/check-individual-components-compile.test.js",
     "test:generate:readme": "jest tasks/gulp/__tests__/check-generate-readme.test.js",
-    "test:build:packages": "jest tasks/gulp/__tests__/after-build-packages.test.js",
+    "test:build:package": "jest tasks/gulp/__tests__/after-build-package.test.js",
     "test:build:dist": "jest tasks/gulp/__tests__/after-build-dist.test.js"
   },
   "devDependencies": {
@@ -83,7 +83,7 @@
   "standard": {
     "ignore": [
       "/dist/**/*.js",
-      "/packages/**/*.js",
+      "/package/**/*.js",
       "/src/globals/polyfills/**/*.js"
     ]
   },
