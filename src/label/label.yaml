@@ -9,4 +9,5 @@ examples:
   - name: as page heading
     data:
       text: National Insurance number
+      classes: govuk-label--xl
       isPageHeading: true

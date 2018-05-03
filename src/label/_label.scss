@@ -17,8 +17,25 @@
     display: block;
   }
 
-  .govuk-label--bold {
-    @include govuk-typography-weight-bold;
+  // Modifiers that make labels look more like their equivalent headings
+
+  .govuk-label--xl {
+    @include govuk-font-bold-48;
+    margin-bottom: $govuk-spacing-scale-3;
+  }
+
+  .govuk-label--l {
+    @include govuk-font-bold-36;
+    margin-bottom: $govuk-spacing-scale-3;
+  }
+
+  .govuk-label--m {
+    @include govuk-font-bold-24;
+    margin-bottom: $govuk-spacing-scale-1;
+  }
+
+  .govuk-label--s {
+    @include govuk-font-bold-19;
   }
 
   // When the label is nested inside a heading, override the heading so that it
