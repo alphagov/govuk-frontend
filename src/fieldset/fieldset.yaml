@@ -1,8 +1,10 @@
 examples:
 - name: default
   data:
-    legendText: What is your address?
+    legend:
+      text: What is your address?
 - name: as page heading
   data:
-    legendText: What is your address?
-    legendIsPageHeading: true
+    legend:
+      text: What is your address?
+      isPageHeading: true

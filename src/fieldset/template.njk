@@ -2,14 +2,14 @@
   {%- if params.classes %} {{ params.classes }}{% endif %}"
   {%- if params.describedBy %} aria-describedby="{{ params.describedBy }}"{% endif %}
   {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
-  {% if params.legendHtml or params.legendText %}
+  {% if params.legend.html or params.legend.text %}
   <legend class="govuk-fieldset__legend">
-  {%- if params.legendIsPageHeading %}
+  {%- if params.legend.isPageHeading %}
     <h1 class="govuk-fieldset__heading">
-      {{ params.legendHtml | safe if params.legendHtml else params.legendText }}
+      {{ params.legend.html | safe if params.legend.html else params.legend.text }}
     </h1>
   {% else %}
-    {{ params.legendHtml | safe if params.legendHtml else params.legendText }}
+    {{ params.legend.html | safe if params.legend.html else params.legend.text }}
   {% endif -%}
   </legend>
   {% endif %}

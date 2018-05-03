@@ -29,7 +29,9 @@ Find out when to use the Fieldset component in your service in the [GOV.UK Desig
     {% from 'fieldset/macro.njk' import govukFieldset %}
 
     {{ govukFieldset({
-      "legendText": "What is your address?"
+      "legend": {
+        "text": "What is your address?"
+      }
     }) }}
 
 ### Fieldset--as page heading
@@ -53,8 +55,10 @@ Find out when to use the Fieldset component in your service in the [GOV.UK Desig
     {% from 'fieldset/macro.njk' import govukFieldset %}
 
     {{ govukFieldset({
-      "legendText": "What is your address?",
-      "legendIsPageHeading": true
+      "legend": {
+        "text": "What is your address?",
+        "isPageHeading": true
+      }
     }) }}
 
 ## Dependencies
@@ -119,7 +123,19 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">legendText</th>
+<th class="govuk-table__header" scope="row">legend</th>
+
+<td class="govuk-table__cell ">object</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Arguments for the legend</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">legend.text</th>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -131,7 +147,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">legendHtml</th>
+<th class="govuk-table__header" scope="row">legend.html</th>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -143,7 +159,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">legendIsPageHeading</th>
+<th class="govuk-table__header" scope="row">legend.isPageHeading</th>
 
 <td class="govuk-table__cell ">boolean</td>
 
