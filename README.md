@@ -138,6 +138,23 @@ After resolving the import paths you can import GOV.UK Frontend by using:
 @import "@govuk-frontend/button/button";
 ```
 
+#### Global Styles
+
+[Global styles](src/globals/core/_global-styles.scss) are not included by default.
+
+This is to avoid the risk of these globals conflicting with any pre-existing globals, for example in GOV.UK Elements or GOV.UK Template.
+
+Hovever, we do include them in the [GOV.UK Prototype Kit](https://github.com/alphagov/govuk-prototype-kit-private-beta) to speed up prototyping.
+
+To include global styles, you can set `$govuk-global-styles` variable to `true`.
+```
+// application.scss
+
+$govuk-global-styles: true;
+
+@import "govuk-frontend/all/all";
+```
+
 ### Import JavaScript
 
 You need to import the GOV.UK Frontend scripts into the main JavaScript file in your project.

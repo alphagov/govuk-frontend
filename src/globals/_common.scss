@@ -8,6 +8,7 @@
 @import "settings/paths";
 
 @import "settings/compatibility";
+@import "settings/global-styles";
 @import "settings/ie8";
 
 @import "settings/media-queries";
@@ -48,6 +49,7 @@
 @import "core/typography";
 @import "core/prose-scope";
 @import "core/section-break";
+@import "core/global-styles";
 
 // Objects
 @import "objects/form-group";
