@@ -32,6 +32,31 @@ Find out when to use the Fieldset component in your service in the [GOV.UK Desig
       "legendText": "What is your address?"
     }) }}
 
+### Fieldset--as page heading
+
+[Preview the fieldset--as page heading example](http://govuk-frontend-review.herokuapp.com/components/fieldset/as page heading/preview)
+
+#### Markup
+
+    <fieldset class="govuk-fieldset">
+
+      <legend class="govuk-fieldset__legend">
+        <h1 class="govuk-fieldset__heading">
+          What is your address?
+        </h1>
+      </legend>
+
+    </fieldset>
+
+#### Macro
+
+    {% from 'fieldset/macro.njk' import govukFieldset %}
+
+    {{ govukFieldset({
+      "legendText": "What is your address?",
+      "legendIsPageHeading": true
+    }) }}
+
 ## Dependencies
 
 To consume the fieldset component you must be running npm version 5 or above.
@@ -113,6 +138,18 @@ If you are using Nunjucks,then macros take the following arguments
 <td class="govuk-table__cell ">No</td>
 
 <td class="govuk-table__cell ">Legend text</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">legendIsPageHeading</th>
+
+<td class="govuk-table__cell ">boolean</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Whether the legend also acts as the heading for the page.</td>
 
 </tr>
 

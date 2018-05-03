@@ -56,6 +56,15 @@
     }
   }
 
+  // When the legend contains an H1, we want the H1 to inherit all styles from
+  // the legend. Effectively we want to be able to treat the heading as if it is
+  // not there.
+  .govuk-fieldset__heading {
+    margin: 0;
+    font-size: inherit;
+    font-weight: inherit;
+  }
+
   .govuk-fieldset__legend--bold {
     @include govuk-typography-weight-bold;
   }

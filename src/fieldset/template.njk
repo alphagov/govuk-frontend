@@ -4,7 +4,13 @@
   {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
   {% if params.legendHtml or params.legendText %}
   <legend class="govuk-fieldset__legend">
+  {%- if params.legendIsPageHeading %}
+    <h1 class="govuk-fieldset__heading">
+      {{ params.legendHtml | safe if params.legendHtml else params.legendText }}
+    </h1>
+  {% else %}
     {{ params.legendHtml | safe if params.legendHtml else params.legendText }}
+  {% endif -%}
   </legend>
   {% endif %}
 {{ caller() if caller }} {#- if statement allows usage of `call` to be optional -#}

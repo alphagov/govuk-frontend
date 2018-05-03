@@ -64,6 +64,16 @@ describe('fieldset', () => {
     expect($legend.html()).toContain('What is <b>your</b> address?')
   })
 
+  it('can nest the contents of the legend in an H1 if using legendIsPageHeading', () => {
+    const $ = render('fieldset', {
+      legendText: 'What is your address?',
+      legendIsPageHeading: true
+    })
+
+    const $headingInsideLegend = $('.govuk-fieldset__legend > h1')
+    expect($headingInsideLegend.text().trim()).toBe('What is your address?')
+  })
+
   it('renders attributes', () => {
     const $ = render('fieldset', {
       attributes: {
