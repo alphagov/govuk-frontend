@@ -7,4 +7,5 @@ examples:
   data:
     legend:
       text: What is your address?
+      classes: govuk-fieldset__legend--xl
       isPageHeading: true

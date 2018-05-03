@@ -41,19 +41,27 @@
     overflow: hidden;
 
     white-space: normal;    // 1
+  }
 
-    .govuk-heading-s {
-      margin-bottom: 0;
-    }
+  // Modifiers that make legends look more like their equivalent headings
 
-    .govuk-heading-m {
-      margin-bottom: $govuk-spacing-scale-1;
-    }
+  .govuk-fieldset__legend--xl {
+    @include govuk-font-bold-48;
+    margin-bottom: $govuk-spacing-scale-3;
+  }
 
-    .govuk-heading-l,
-    .govuk-heading-xl {
-      margin-bottom: $govuk-spacing-scale-3;
-    }
+  .govuk-fieldset__legend--l {
+    @include govuk-font-bold-36;
+    margin-bottom: $govuk-spacing-scale-3;
+  }
+
+  .govuk-fieldset__legend--m {
+    @include govuk-font-bold-24;
+    margin-bottom: $govuk-spacing-scale-1;
+  }
+
+  .govuk-fieldset__legend--s {
+    @include govuk-font-bold-19;
   }
 
   // When the legend contains an H1, we want the H1 to inherit all styles from
@@ -63,9 +71,5 @@
     margin: 0;
     font-size: inherit;
     font-weight: inherit;
-  }
-
-  .govuk-fieldset__legend--bold {
-    @include govuk-typography-weight-bold;
   }
 }
