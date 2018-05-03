@@ -37,3 +37,22 @@ examples:
       -
         value: 3
         text: GOV.UK frontend option 3
+- name: with-label-as-page-heading
+  data:
+    id: select-3
+    name: select-3
+    label:
+      html: Label text goes here
+      isPageHeading: true
+    items:
+      -
+        value: 1
+        text: GOV.UK frontend option 1
+      -
+        value: 2
+        text: GOV.UK frontend option 2
+        selected: true
+      -
+        value: 3
+        text: GOV.UK frontend option 3
+        disabled: true
