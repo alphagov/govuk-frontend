@@ -13,11 +13,11 @@ checkboxes
 import { nodeListForEach } from '../globals/common'
 
 function Checkboxes ($module) {
-  ...
+  // code goes here
 }
 
 Checkboxes.prototype.init = function () {
-  ...
+  // code goes here
 }
 
 export default Checkboxes
@@ -35,7 +35,7 @@ Use `/** ... */` for multi-line comments. Include a description, and specify typ
 */
 
 function (node, match) {
-  ...
+  // code goes here
   return ancestor
 }
 ```
@@ -52,9 +52,9 @@ Use the prototype design pattern to structure your code.
 
 Create a constructor and define any variables that the object needs.
 
-```
+```js
 function Checkboxes ($module) {
-  ...
+  // code goes here
 }
 ```
 
@@ -64,13 +64,13 @@ Assign methods to the prototype object. Do not overwrite the prototype with a ne
 // bad
 Checkboxes.prototype = {
   init: function () {
-    ...
+    // code goes here
   }
 }
 
 // good
 Checkboxes.prototype.init = function () {
-  ...
+  // code goes here
 }
 ```
 
@@ -89,7 +89,7 @@ Use ES6 modules (`import`/`export`) over a non-standard module system. You can a
 
 ```js
 import { nodeListForEach } from '../globals/common'
-...
+// code goes here
 export default Checkboxes
 ```
 
@@ -101,9 +101,9 @@ Use default export over named export.
 
 If you’re new to polyfilling, start by reading [this explanation](https://remysharp.com/2010/10/08/what-is-a-polyfill).
 
-Before GOV.UK Frontend, our projects used jQuery for: DOM interactions, events and data manipulation.
+Before GOV.UK Frontend, our projects used jQuery for DOM interactions, events and data manipulation.
 
-We’re taking a step back from jQuery due to its lack of support for the browsers we support, its large file size, lack of security updates and from conversations with the community.
+We’re taking a step back from jQuery due to its large file size, lack of security updates and support for version 1.x (which is needed for supporting Internet Explorer 8) and from conversations with the community.
 
 We’re now writing standard ES5 JavaScript instead, that we polyfill where necessary.
 
@@ -145,13 +145,13 @@ https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfil
 
     // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Event/detect.js
     var detect = (
-      // code goes here ...
+      // code goes here
     )
 
     if (detect) return
 
     // Polyfill from https://cdn.polyfill.io/v2/polyfill.js?features=Event&flags=always
-    // code goes here ...
+    // code goes here
 
 }).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 ```
