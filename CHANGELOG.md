@@ -6,6 +6,22 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 
 Breaking changes:
 
+- Restructure project to enable it to be published as a single package
+  ([PR #680](https://github.com/alphagov/govuk-frontend/pull/680))
+  This is ground work to enable the project to be published as a single package by:
+  - removing components' package.json files
+  - moving "all" files into root
+  - renaming "packages" folder to "package"
+  - removing Lerna
+  - updating release scripts
+  - creating a new package.json
+  - updating documentation
+  - update any tests and build pipelines to support this
+  
+  The single package will be published under a new name. 
+  There are more changes to be done to folder structure to ensure
+  entry points are more understandable.
+
 - Error messages have been moved out of the label and fieldset components and
   are now called from every component that uses them - they are no longer nested
   within the label or legend. They are associated with the input or with the
@@ -133,7 +149,6 @@ Breaking changes:
   `.govuk-heading-xl`)
 
   ([PR #684](https://github.com/alphagov/govuk-frontend/pull/684))
-
 
 - Remove -c -o -h layer prefixes
   ([PR #644](https://github.com/alphagov/govuk-frontend/pull/644))
