@@ -42,7 +42,7 @@ Find out when to use the Fieldset component in your service in the [GOV.UK Desig
 
     <fieldset class="govuk-fieldset">
 
-      <legend class="govuk-fieldset__legend">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
         <h1 class="govuk-fieldset__heading">
           What is your address?
         </h1>
@@ -57,6 +57,7 @@ Find out when to use the Fieldset component in your service in the [GOV.UK Desig
     {{ govukFieldset({
       "legend": {
         "text": "What is your address?",
+        "classes": "govuk-fieldset__legend--xl",
         "isPageHeading": true
       }
     }) }}

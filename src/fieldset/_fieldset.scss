@@ -35,7 +35,7 @@
     box-sizing: border-box; // 1
     display: table;         // 2
     max-width: 100%;        // 1
-    margin-bottom: $govuk-spacing-scale-4;
+    margin-bottom: $govuk-spacing-scale-3;
     padding: 0;
     // Hack to let legends or elements within legends have margins in webkit browsers
     overflow: hidden;
@@ -47,17 +47,14 @@
 
   .govuk-fieldset__legend--xl {
     @include govuk-font-bold-48;
-    margin-bottom: $govuk-spacing-scale-3;
   }
 
   .govuk-fieldset__legend--l {
     @include govuk-font-bold-36;
-    margin-bottom: $govuk-spacing-scale-3;
   }
 
   .govuk-fieldset__legend--m {
     @include govuk-font-bold-24;
-    margin-bottom: $govuk-spacing-scale-1;
   }
 
   .govuk-fieldset__legend--s {

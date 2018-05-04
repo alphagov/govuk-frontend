@@ -50,7 +50,7 @@ Use labels for all form fields.
 #### Markup
 
     <h1 class="govuk-label-wrapper">
-      <label class="govuk-label">
+      <label class="govuk-label govuk-label--xl">
         National Insurance number
       </label>
 
@@ -62,6 +62,7 @@ Use labels for all form fields.
 
     {{ govukLabel({
       "text": "National Insurance number",
+      "classes": "govuk-label--xl",
       "isPageHeading": true
     }) }}
 

@@ -15,11 +15,9 @@
   .govuk-error-message {
     @include govuk-font-bold-19;
 
-    display: block;
+    margin-bottom: $govuk-spacing-scale-3;
 
-    margin: 0;
-    // TODO: use a var for padding
-    padding: 2px 0;
+    display: block;
 
     clear: both;
 

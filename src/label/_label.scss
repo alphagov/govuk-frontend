@@ -15,6 +15,8 @@
     @include govuk-text-colour;
 
     display: block;
+
+    margin-bottom: $govuk-spacing-scale-1;
   }
 
   // Modifiers that make labels look more like their equivalent headings
@@ -31,7 +33,7 @@
 
   .govuk-label--m {
     @include govuk-font-bold-24;
-    margin-bottom: $govuk-spacing-scale-1;
+    margin-bottom: $govuk-spacing-scale-2;
   }
 
   .govuk-label--s {
