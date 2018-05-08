@@ -23,6 +23,10 @@ Breaking change:
   to a more consise naming structure. We have also introduced two mixins
   to help generate additional or custom grid styles and widths.
 
+- Make `button` element the default instead of `input` for button macro
+  ([PR #683](https://github.com/alphagov/govuk-frontend/pull/683))
+  We are making `button` the default, however since the `button` element is buggy in IE6 / IE7, we are allowing input to be used if required.
+
 Fixes:
 
 - Remove redundant font-family declaration from the button component – this will
