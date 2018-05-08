@@ -5,10 +5,8 @@
 {% else %}
   {% if params.href %}
     {% set element = 'a' %}
-  {% elseif params.html %}
-    {% set element = 'button' %}
   {% else %}
-    {% set element = 'input' %}
+    {% set element = 'button' %}
   {% endif %}
 {% endif %}
 
