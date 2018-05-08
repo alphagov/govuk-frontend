@@ -33,6 +33,9 @@ Fixes:
 - Reinstate focus outline for radios and checkboxes on IE8
   (PR [#670](https://github.com/alphagov/govuk-frontend/pull/670))
 
+- Fix section break styles when used with GOV.UK Elements
+  ([PR #682](https://github.com/alphagov/govuk-frontend/pull/682))
+
 New features:
 
 - We're now using ES6 Modules and [rollup](https://rollupjs.org/guide/en) to distribute our JavaScript. (PR [#652](https://github.com/alphagov/govuk-frontend/pull/652))

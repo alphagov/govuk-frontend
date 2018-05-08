@@ -5,6 +5,12 @@
   %govuk-section-break {
     margin: 0;
     border: 0;
+
+    // fix double-width section break and forced visible section break
+    // when combined with styles from alphagov/elements
+    @include govuk-compatibility(govuk_elements) {
+      height: 0;
+    }
   }
 
   .govuk-section-break {
