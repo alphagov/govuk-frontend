@@ -17,8 +17,7 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
 #### Markup
 
     <div class="govuk-form-group">
-
-      <fieldset class="govuk-fieldset" aria-describedby="dob-hint">
+    <fieldset class="govuk-fieldset" aria-describedby="dob-hint" role="group">
 
       <legend class="govuk-fieldset__legend">
         What is your date of birth?
@@ -98,8 +97,7 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
 #### Markup
 
     <div class="govuk-form-group govuk-form-group--error">
-
-      <fieldset class="govuk-fieldset" aria-describedby="dob-errors-hint dob-errors-error">
+    <fieldset class="govuk-fieldset" aria-describedby="dob-errors-hint dob-errors-error" role="group">
 
       <legend class="govuk-fieldset__legend">
         What is your date of birth?
@@ -188,8 +186,7 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
 #### Markup
 
     <div class="govuk-form-group govuk-form-group--error">
-
-      <fieldset class="govuk-fieldset" aria-describedby="dob-day-error-hint dob-day-error-error">
+    <fieldset class="govuk-fieldset" aria-describedby="dob-day-error-hint dob-day-error-error" role="group">
 
       <legend class="govuk-fieldset__legend">
         What is your date of birth?
@@ -277,8 +274,7 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
 #### Markup
 
     <div class="govuk-form-group govuk-form-group--error">
-
-      <fieldset class="govuk-fieldset" aria-describedby="dob-month-error-hint dob-month-error-error">
+    <fieldset class="govuk-fieldset" aria-describedby="dob-month-error-hint dob-month-error-error" role="group">
 
       <legend class="govuk-fieldset__legend">
         What is your date of birth?
@@ -366,8 +362,7 @@ Find out when to use the Date input component in your service in the [GOV.UK Des
 #### Markup
 
     <div class="govuk-form-group govuk-form-group--error">
-
-      <fieldset class="govuk-fieldset" aria-describedby="dob-year-error-hint dob-year-error-error">
+    <fieldset class="govuk-fieldset" aria-describedby="dob-year-error-hint dob-year-error-error" role="group">
 
       <legend class="govuk-fieldset__legend">
         What is your date of birth?

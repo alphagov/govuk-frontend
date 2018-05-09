@@ -56,10 +56,16 @@
 
 <div class="govuk-form-group {%- if params.errorMessage %} govuk-form-group--error{% endif %}">
 {% if params.fieldset %}
+{#- We override the fieldset's role to 'group' because otherwise JAWS does not
+    announce the description for a fieldset comprised of text inputs, but
+    adding the role to the fieldset always makes the output overly verbose for
+    radio buttons or checkboxes. -#}
   {% call govukFieldset({
     describedBy: describedBy,
     classes: params.fieldset.classes,
-    attributes: params.fieldset.attributes,
+    attributes: {
+      role: 'group'
+    },
     legendText: params.fieldset.legendText,
     legendHtml: params.fieldset.legendHtml
   }) %}

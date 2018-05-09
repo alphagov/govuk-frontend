@@ -24,6 +24,7 @@ exports[`Date input passes through fieldset params without breaking 1`] = `
 
 <fieldset class="govuk-fieldset"
           aria-describedby="dob-hint"
+          role="group"
 >
   <legend class="govuk-fieldset__legend">
     What is your date of birth?
@@ -36,6 +37,7 @@ exports[`Date input passes through html fieldset params without breaking 1`] = `
 
 <fieldset class="govuk-fieldset"
           aria-describedby="dob-error"
+          role="group"
 >
   <legend class="govuk-fieldset__legend">
     What is your
