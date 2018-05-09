@@ -1,5 +1,7 @@
 # JavaScript style guide
+
 ## Files
+
 JavaScript files have the same name as the component's folder name. Test files have a `.test` suffix placed before the file extension.
 
 ```
@@ -7,6 +9,7 @@ checkboxes
 ├── checkboxes.js
 └── checkboxes.test.js
 ```
+
 ## Skeleton
 
 ```js
@@ -22,6 +25,7 @@ Checkboxes.prototype.init = function () {
 
 export default Checkboxes
 ```
+
 ## Comments
 
 Use `/** ... */` for multi-line comments. Include a description, and specify types and values for all parameters and return values.
@@ -83,6 +87,7 @@ var myCheckbox = Checkbox().init()
 // good
 var myCheckbox = new Checkbox().init()
 ```
+
 ## Modules
 
 Use ES6 modules (`import`/`export`) over a non-standard module system. You can always transpile to your preferred module system.
@@ -99,62 +104,16 @@ Use default export over named export.
 
 ## Polyfilling
 
-If you’re new to polyfilling, start by reading [this explanation](https://remysharp.com/2010/10/08/what-is-a-polyfill).
+If you need to support older browsers, import the necessary [polyfills](/src/globals/polyfills) and they will be added to the environment when the feature is not supported.
 
-Before GOV.UK Frontend, our projects used jQuery for DOM interactions, events and data manipulation.
-
-We’re taking a step back from jQuery due to its large file size, lack of security updates and support for version 1.x (which is needed for supporting Internet Explorer 8) and from conversations with the community.
-
-We’re now writing standard ES5 JavaScript instead, that we polyfill where necessary.
-
-This means that in places where we would have previously used [`$.each`](http://api.jquery.com/jquery.each/) we’re using [`.forEach`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) instead and polyfilling the missing gaps.
-
-We use polyfills provided by the Financial Times' [Polyfill service](https://polyfill.io).
-
-This approach ensures that multiple polyfills can be sourced from this service with greater confidence that they’ll work without conflicting with each other.
-
-The Polyfill service does not do runtime detection in browsers and instead opts to do this on the server via user-agent sniffing. It only ships the code needed for that browser, which means newer browsers don’t have to run anything. We may investigate lazy-loading in the future, but for now we’re using a bundled approach based on the lowest common denominator.
-
-We are including these polyfills in our codebase to avoid any [single point of failure](https://en.wikipedia.org/wiki/Single_point_of_failure) issues that could arise from relying on a CDN. By doing this we can detect if polyfills are needed at runtime, which results in all browsers getting the same polyfill bundle.
-
-We hope that our approach can be automated or moved into a reusable npm package, based on the Financial Times [npm package](https://github.com/Financial-Times/polyfill-service#library).
-### Example: Polyfilling ‘addEventListener’ usage
-
-1. Determine if the feature needs to be polyfilled
-
-You can use resources such as [caniuse.com](https://caniuse.com/) and [developer.mozilla.org](https://developer.mozilla.org/en-US/) to check feature support.
-
-In this example we’ve looked at [caniuse addEventListener](https://caniuse.com/#search=addEventListener) and seen that it’s not supported in IE8.
-
-2. Use polyfill.io service to generate the polyfill required
-You can [use the library](https://github.com/Financial-Times/polyfill-service#getpolyfillsoptions-method) to do this or [use their CDN](https://cdn.polyfill.io/v2/polyfill.js?features=Event&flags=always) directly: `https://cdn.polyfill.io/v2/polyfill.js?features=Event&flags=always`
-
-Then save this in the same structure that is used in the main project (https://github.com/Financial-Times/polyfill-service/tree/master/packages/polyfill-library/polyfills)
-
-3. Use polyfill.io service to get detection script
-
-We need to make sure we only run the polyfills if they’re needed.
-
-We can take the associated detection code from
-https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Event/detect.js
-
-4. Put everything together
+For example, if you want to polyfill `addEventListener` for IE8, import the Event polyfills.
 
 ```js
-(function(undefined) {
-
-    // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Event/detect.js
-    var detect = (
-      // code goes here
-    )
-
-    if (detect) return
-
-    // Polyfill from https://cdn.polyfill.io/v2/polyfill.js?features=Event&flags=always
-    // code goes here
-
-}).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
+import '../globals/polyfills/Event'
 ```
+
+If you need polyfills for features that are not yet included in this project, please see the following guide on [how to add polyfills](/docs/polyfilling.md).
+
 ## Formatting
 
 GOV.UK Frontend uses [standardjs](http://standardjs.com/), an opinionated JavaScript linter. All JavaScript files follow its conventions, and it runs on CI to ensure that new pull requests are in line with them.
