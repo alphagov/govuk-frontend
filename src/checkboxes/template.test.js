@@ -7,6 +7,7 @@ const { render, getExamples, htmlWithClassName } = require('../../lib/jest-helpe
 const examples = getExamples('checkboxes')
 
 const WORD_BOUNDARY = '\\b'
+const WHITESPACE = '\\s'
 
 describe('Checkboxes', () => {
   it('default example passes accessibility tests', async () => {
@@ -228,58 +229,7 @@ describe('Checkboxes', () => {
     expect($lastConditional.html()).toContain('Conditional content')
   })
 
-  describe('nested dependant components', () => {
-    it('have correct nesting order', () => {
-      const $ = render('checkboxes', examples['with-extreme-fieldset'])
-
-      const $component = $('.govuk-form-group > .govuk-fieldset > .govuk-checkboxes')
-      expect($component.length).toBeTruthy()
-    })
-
-    it('passes through label params without breaking', () => {
-      const $ = render('checkboxes', {
-        name: 'example-name',
-        items: [
-          {
-            value: '1',
-            html: '<b>Option 1</b>',
-            label: {
-              attributes: {
-                'data-attribute': 'value',
-                'data-second-attribute': 'second-value'
-              }
-            }
-          },
-          {
-            value: '2',
-            text: '<b>Option 2</b>',
-            checked: true
-          }
-        ]
-      })
-
-      expect(htmlWithClassName($, '.govuk-checkboxes__label')).toMatchSnapshot()
-    })
-
-    it('renders the hint', () => {
-      const $ = render('checkboxes', examples['with-extreme-fieldset'])
-
-      expect(htmlWithClassName($, '.govuk-hint')).toMatchSnapshot()
-    })
-
-    it('associates the fieldset as "described by" the hint', () => {
-      const $ = render('checkboxes', examples['with-extreme-fieldset'])
-
-      const $fieldset = $('.govuk-fieldset')
-      const $hint = $('.govuk-hint')
-
-      const hintId = new RegExp(
-        WORD_BOUNDARY + $hint.attr('id') + WORD_BOUNDARY
-      )
-
-      expect($fieldset.attr('aria-describedby')).toMatch(hintId)
-    })
-
+  describe('when they include an error message', () => {
     it('renders the error message', () => {
       const $ = render('checkboxes', examples['with-extreme-fieldset'])
 
@@ -337,6 +287,78 @@ describe('Checkboxes', () => {
 
       expect($fieldset.attr('aria-describedby'))
         .toMatch(errorMessageId)
+    })
+  })
+
+  describe('when they include a hint', () => {
+    it('renders the hint', () => {
+      const $ = render('checkboxes', examples['with-extreme-fieldset'])
+
+      expect(htmlWithClassName($, '.govuk-hint')).toMatchSnapshot()
+    })
+
+    it('associates the fieldset as "described by" the hint', () => {
+      const $ = render('checkboxes', examples['with-extreme-fieldset'])
+
+      const $fieldset = $('.govuk-fieldset')
+      const $hint = $('.govuk-hint')
+
+      const hintId = new RegExp(
+        WORD_BOUNDARY + $hint.attr('id') + WORD_BOUNDARY
+      )
+
+      expect($fieldset.attr('aria-describedby')).toMatch(hintId)
+    })
+  })
+
+  describe('when they include both a hint and an error message', () => {
+    it('associates the fieldset as described by both the hint and the error message', () => {
+      const $ = render('checkboxes', examples['with-extreme-fieldset'])
+
+      const $fieldset = $('.govuk-fieldset')
+      const $errorMessageId = $('.govuk-error-message').attr('id')
+      const $hintId = $('.govuk-hint').attr('id')
+
+      const combinedIds = new RegExp(
+        WORD_BOUNDARY + $hintId + WHITESPACE + $errorMessageId + WORD_BOUNDARY
+      )
+
+      expect($fieldset.attr('aria-describedby'))
+        .toMatch(combinedIds)
+    })
+  })
+
+  describe('nested dependant components', () => {
+    it('have correct nesting order', () => {
+      const $ = render('checkboxes', examples['with-extreme-fieldset'])
+
+      const $component = $('.govuk-form-group > .govuk-fieldset > .govuk-checkboxes')
+      expect($component.length).toBeTruthy()
+    })
+
+    it('passes through label params without breaking', () => {
+      const $ = render('checkboxes', {
+        name: 'example-name',
+        items: [
+          {
+            value: '1',
+            html: '<b>Option 1</b>',
+            label: {
+              attributes: {
+                'data-attribute': 'value',
+                'data-second-attribute': 'second-value'
+              }
+            }
+          },
+          {
+            value: '2',
+            text: '<b>Option 2</b>',
+            checked: true
+          }
+        ]
+      })
+
+      expect(htmlWithClassName($, '.govuk-checkboxes__label')).toMatchSnapshot()
     })
 
     it('passes through fieldset params without breaking', () => {

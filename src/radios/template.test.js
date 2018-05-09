@@ -7,6 +7,7 @@ const { render, getExamples, htmlWithClassName } = require('../../lib/jest-helpe
 const examples = getExamples('radios')
 
 const WORD_BOUNDARY = '\\b'
+const WHITESPACE = '\\s'
 
 describe('Radios', () => {
   it('default example passes accessibility tests', async () => {
@@ -225,39 +226,7 @@ describe('Radios', () => {
     })
   })
 
-  describe('nested dependant components', () => {
-    it('have correct nesting order', () => {
-      const $ = render('radios', examples['with-extreme-fieldset'])
-
-      const $component = $('.govuk-form-group > .govuk-fieldset > .govuk-radios')
-      expect($component.length).toBeTruthy()
-    })
-
-    it('passes through label params without breaking', () => {
-      const $ = render('radios', {
-        name: 'example-name',
-        items: [
-          {
-            value: 'yes',
-            html: '<b>Yes</b>',
-            label: {
-              attributes: {
-                'data-attribute': 'value',
-                'data-second-attribute': 'second-value'
-              }
-            }
-          },
-          {
-            value: 'no',
-            text: '<b>No</b>',
-            checked: true
-          }
-        ]
-      })
-
-      expect(htmlWithClassName($, '.govuk-radios__label')).toMatchSnapshot()
-    })
-
+  describe('when they include a hint', () => {
     it('renders the hint', () => {
       const $ = render('radios', examples['with-extreme-fieldset'])
 
@@ -276,7 +245,9 @@ describe('Radios', () => {
 
       expect($fieldset.attr('aria-describedby')).toMatch(hintId)
     })
+  })
 
+  describe('when they include an error message', () => {
     it('renders the error message', () => {
       const $ = render('radios', examples['with-extreme-fieldset'])
       expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
@@ -333,6 +304,57 @@ describe('Radios', () => {
 
       expect($fieldset.attr('aria-describedby'))
         .toMatch(errorMessageId)
+    })
+  })
+
+  describe('when they include both a hint and an error message', () => {
+    it('associates the fieldset as described by both the hint and the error message', () => {
+      const $ = render('radios', examples['with-extreme-fieldset'])
+
+      const $fieldset = $('.govuk-fieldset')
+      const $errorMessageId = $('.govuk-error-message').attr('id')
+      const $hintId = $('.govuk-hint').attr('id')
+
+      const combinedIds = new RegExp(
+        WORD_BOUNDARY + $hintId + WHITESPACE + $errorMessageId + WORD_BOUNDARY
+      )
+
+      expect($fieldset.attr('aria-describedby'))
+        .toMatch(combinedIds)
+    })
+  })
+
+  describe('nested dependant components', () => {
+    it('have correct nesting order', () => {
+      const $ = render('radios', examples['with-extreme-fieldset'])
+
+      const $component = $('.govuk-form-group > .govuk-fieldset > .govuk-radios')
+      expect($component.length).toBeTruthy()
+    })
+
+    it('passes through label params without breaking', () => {
+      const $ = render('radios', {
+        name: 'example-name',
+        items: [
+          {
+            value: 'yes',
+            html: '<b>Yes</b>',
+            label: {
+              attributes: {
+                'data-attribute': 'value',
+                'data-second-attribute': 'second-value'
+              }
+            }
+          },
+          {
+            value: 'no',
+            text: '<b>No</b>',
+            checked: true
+          }
+        ]
+      })
+
+      expect(htmlWithClassName($, '.govuk-radios__label')).toMatchSnapshot()
     })
 
     it('passes through fieldset params without breaking', () => {

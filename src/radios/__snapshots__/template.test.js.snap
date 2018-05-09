@@ -47,22 +47,22 @@ exports[`Radios nested dependant components passes through label params without 
 
 `;
 
-exports[`Radios nested dependant components renders the error message 1`] = `
-
-<span id="example-error"
-      class="govuk-error-message"
->
-  Please select an option
-</span>
-
-`;
-
-exports[`Radios nested dependant components renders the hint 1`] = `
+exports[`Radios when they include a hint renders the hint 1`] = `
 
 <span id="example-hint"
       class="govuk-hint"
 >
   This includes changing your last name or spelling your name differently.
+</span>
+
+`;
+
+exports[`Radios when they include an error message renders the error message 1`] = `
+
+<span id="example-error"
+      class="govuk-error-message"
+>
+  Please select an option
 </span>
 
 `;

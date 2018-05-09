@@ -47,22 +47,22 @@ exports[`Checkboxes nested dependant components passes through label params with
 
 `;
 
-exports[`Checkboxes nested dependant components renders the error message 1`] = `
-
-<span id="example-error"
-      class="govuk-error-message"
->
-  Please select an option
-</span>
-
-`;
-
-exports[`Checkboxes nested dependant components renders the hint 1`] = `
+exports[`Checkboxes when they include a hint renders the hint 1`] = `
 
 <span id="example-hint"
       class="govuk-hint"
 >
   If you have dual nationality, select all options that are relevant to you.
+</span>
+
+`;
+
+exports[`Checkboxes when they include an error message renders the error message 1`] = `
+
+<span id="example-error"
+      class="govuk-error-message"
+>
+  Please select an option
 </span>
 
 `;
