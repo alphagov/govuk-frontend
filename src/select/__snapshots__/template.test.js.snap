@@ -1,21 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Select with dependant components renders with error message 1`] = `
-
-<span id="select-with-error-error"
-      class="govuk-error-message"
->
-  Error message
-</span>
-
-`;
-
-exports[`Select with dependant components renders with hint 1`] = `
+exports[`Select when it includes a hint renders the hint 1`] = `
 
 <span id="select-with-hint-hint"
       class="govuk-hint"
 >
   Hint text goes here
+</span>
+
+`;
+
+exports[`Select when it includes an error message renders with error message 1`] = `
+
+<span id="select-with-error-error"
+      class="govuk-error-message"
+>
+  Error message
 </span>
 
 `;

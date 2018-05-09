@@ -7,6 +7,7 @@ const { render, getExamples, htmlWithClassName } = require('../../lib/jest-helpe
 const examples = getExamples('textarea')
 
 const WORD_BOUNDARY = '\\b'
+const WHITESPACE = '\\s'
 
 describe('Textarea', () => {
   describe('by default', () => {
@@ -81,6 +82,105 @@ describe('Textarea', () => {
     })
   })
 
+  describe('when it includes a hint', () => {
+    it('renders with hint', () => {
+      const $ = render('textarea', {
+        id: 'textarea-with-error',
+        hint: {
+          'text': 'It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.'
+        }
+      })
+
+      expect(htmlWithClassName($, '.govuk-hint')).toMatchSnapshot()
+    })
+
+    it('associates the textarea as "described by" the hint', () => {
+      const $ = render('textarea', {
+        id: 'textarea-with-error',
+        hint: {
+          'text': 'It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.'
+        }
+      })
+
+      const $textarea = $('.govuk-textarea')
+      const $hint = $('.govuk-hint')
+
+      const hintId = new RegExp(
+        WORD_BOUNDARY + $hint.attr('id') + WORD_BOUNDARY
+      )
+
+      expect($textarea.attr('aria-describedby'))
+        .toMatch(hintId)
+    })
+  })
+
+  describe('when it includes an error message', () => {
+    it('renders with error message', () => {
+      const $ = render('textarea', {
+        id: 'textarea-with-error',
+        errorMessage: {
+          text: 'Error message'
+        }
+      })
+
+      expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
+    })
+
+    it('associates the textarea as "described by" the error message', () => {
+      const $ = render('textarea', {
+        id: 'textarea-with-error',
+        errorMessage: {
+          'text': 'Error message'
+        }
+      })
+
+      const $component = $('.govuk-textarea')
+      const $errorMessage = $('.govuk-error-message')
+
+      const errorMessageId = new RegExp(
+        WORD_BOUNDARY + $errorMessage.attr('id') + WORD_BOUNDARY
+      )
+
+      expect($component.attr('aria-describedby'))
+        .toMatch(errorMessageId)
+    })
+
+    it('adds the error class to the textarea', () => {
+      const $ = render('textarea', {
+        errorMessage: {
+          'text': 'Error message'
+        }
+      })
+
+      const $component = $('.govuk-textarea')
+      expect($component.hasClass('govuk-textarea--error')).toBeTruthy()
+    })
+  })
+
+  describe('when it includes both a hint and an error message', () => {
+    it('associates the textarea as described by both the hint and the error message', () => {
+      const $ = render('textarea', {
+        errorMessage: {
+          'text': 'Error message'
+        },
+        hint: {
+          'text': 'Hint'
+        }
+      })
+
+      const $component = $('.govuk-textarea')
+      const $errorMessageId = $('.govuk-error-message').attr('id')
+      const $hintId = $('.govuk-hint').attr('id')
+
+      const combinedIds = new RegExp(
+        WORD_BOUNDARY + $hintId + WHITESPACE + $errorMessageId + WORD_BOUNDARY
+      )
+
+      expect($component.attr('aria-describedby'))
+        .toMatch(combinedIds)
+    })
+  })
+
   describe('with dependant components', () => {
     it('have correct nesting order', () => {
       const $ = render('textarea', {
@@ -118,77 +218,6 @@ describe('Textarea', () => {
 
       const $label = $('.govuk-label')
       expect($label.attr('for')).toEqual('my-textarea')
-    })
-
-    it('renders with hint', () => {
-      const $ = render('textarea', {
-        id: 'textarea-with-error',
-        hint: {
-          'text': 'It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.'
-        }
-      })
-
-      expect(htmlWithClassName($, '.govuk-hint')).toMatchSnapshot()
-    })
-
-    it('associates the textarea as "described by" the hint', () => {
-      const $ = render('textarea', {
-        id: 'textarea-with-error',
-        hint: {
-          'text': 'It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.'
-        }
-      })
-
-      const $textarea = $('.govuk-textarea')
-      const $hint = $('.govuk-hint')
-
-      const hintId = new RegExp(
-        WORD_BOUNDARY + $hint.attr('id') + WORD_BOUNDARY
-      )
-
-      expect($textarea.attr('aria-describedby'))
-        .toMatch(hintId)
-    })
-
-    it('renders with error message', () => {
-      const $ = render('textarea', {
-        id: 'textarea-with-error',
-        errorMessage: {
-          text: 'Error message'
-        }
-      })
-
-      expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
-    })
-
-    it('associates the textarea as "described by" the error message', () => {
-      const $ = render('textarea', {
-        id: 'textarea-with-error',
-        errorMessage: {
-          'text': 'Error message'
-        }
-      })
-
-      const $component = $('.govuk-textarea')
-      const $errorMessage = $('.govuk-error-message')
-
-      const errorMessageId = new RegExp(
-        WORD_BOUNDARY + $errorMessage.attr('id') + WORD_BOUNDARY
-      )
-
-      expect($component.attr('aria-describedby'))
-        .toMatch(errorMessageId)
-    })
-
-    it('has error class when rendered with error message', () => {
-      const $ = render('textarea', {
-        errorMessage: {
-          'text': 'Error message'
-        }
-      })
-
-      const $component = $('.govuk-textarea')
-      expect($component.hasClass('govuk-textarea--error')).toBeTruthy()
     })
   })
 })

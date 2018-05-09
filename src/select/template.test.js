@@ -7,6 +7,7 @@ const { render, getExamples, htmlWithClassName } = require('../../lib/jest-helpe
 const examples = getExamples('select')
 
 const WORD_BOUNDARY = '\\b'
+const WHITESPACE = '\\s'
 
 describe('Select', () => {
   describe('by default', () => {
@@ -143,6 +144,105 @@ describe('Select', () => {
     })
   })
 
+  describe('when it includes a hint', () => {
+    it('renders the hint', () => {
+      const $ = render('select', {
+        id: 'select-with-hint',
+        hint: {
+          'text': 'Hint text goes here'
+        }
+      })
+
+      expect(htmlWithClassName($, '.govuk-hint')).toMatchSnapshot()
+    })
+
+    it('associates the select as "described by" the hint', () => {
+      const $ = render('select', {
+        id: 'select-with-hint',
+        hint: {
+          'text': 'Hint text goes here'
+        }
+      })
+
+      const $select = $('.govuk-select')
+      const $hint = $('.govuk-hint')
+
+      const hintId = new RegExp(
+        WORD_BOUNDARY + $hint.attr('id') + WORD_BOUNDARY
+      )
+
+      expect($select.attr('aria-describedby'))
+        .toMatch(hintId)
+    })
+  })
+
+  describe('when it includes an error message', () => {
+    it('renders with error message', () => {
+      const $ = render('select', {
+        id: 'select-with-error',
+        errorMessage: {
+          text: 'Error message'
+        }
+      })
+
+      expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
+    })
+
+    it('associates the select as "described by" the error message', () => {
+      const $ = render('select', {
+        id: 'select-with-error',
+        errorMessage: {
+          text: 'Error message'
+        }
+      })
+
+      const $input = $('.govuk-select')
+      const $errorMessage = $('.govuk-error-message')
+
+      const errorMessageId = new RegExp(
+        WORD_BOUNDARY + $errorMessage.attr('id') + WORD_BOUNDARY
+      )
+
+      expect($input.attr('aria-describedby'))
+        .toMatch(errorMessageId)
+    })
+
+    it('adds the error class to the select', () => {
+      const $ = render('select', {
+        errorMessage: {
+          text: 'Error message'
+        }
+      })
+
+      const $component = $('.govuk-select')
+      expect($component.hasClass('govuk-select--error')).toBeTruthy()
+    })
+  })
+
+  describe('when it includes both a hint and an error message', () => {
+    it('associates the select as described by both the hint and the error message', () => {
+      const $ = render('select', {
+        errorMessage: {
+          text: 'Error message'
+        },
+        hint: {
+          text: 'Hint'
+        }
+      })
+
+      const $component = $('.govuk-select')
+      const $errorMessageId = $('.govuk-error-message').attr('id')
+      const $hintId = $('.govuk-hint').attr('id')
+
+      const combinedIds = new RegExp(
+        WORD_BOUNDARY + $hintId + WHITESPACE + $errorMessageId + WORD_BOUNDARY
+      )
+
+      expect($component.attr('aria-describedby'))
+        .toMatch(combinedIds)
+    })
+  })
+
   describe('with dependant components', () => {
     it('have correct nesting order', () => {
       const $ = render('select', {
@@ -180,77 +280,6 @@ describe('Select', () => {
 
       const $label = $('.govuk-label')
       expect($label.attr('for')).toEqual('my-select')
-    })
-
-    it('renders with hint', () => {
-      const $ = render('select', {
-        id: 'select-with-hint',
-        hint: {
-          'text': 'Hint text goes here'
-        }
-      })
-
-      expect(htmlWithClassName($, '.govuk-hint')).toMatchSnapshot()
-    })
-
-    it('associates the select as "described by" the hint', () => {
-      const $ = render('select', {
-        id: 'select-with-hint',
-        hint: {
-          'text': 'Hint text goes here'
-        }
-      })
-
-      const $select = $('.govuk-select')
-      const $hint = $('.govuk-hint')
-
-      const hintId = new RegExp(
-        WORD_BOUNDARY + $hint.attr('id') + WORD_BOUNDARY
-      )
-
-      expect($select.attr('aria-describedby'))
-        .toMatch(hintId)
-    })
-
-    it('renders with error message', () => {
-      const $ = render('select', {
-        id: 'select-with-error',
-        errorMessage: {
-          text: 'Error message'
-        }
-      })
-
-      expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
-    })
-
-    it('associates the select as "described by" the error message', () => {
-      const $ = render('select', {
-        id: 'select-with-error',
-        errorMessage: {
-          text: 'Error message'
-        }
-      })
-
-      const $input = $('.govuk-select')
-      const $errorMessage = $('.govuk-error-message')
-
-      const errorMessageId = new RegExp(
-        WORD_BOUNDARY + $errorMessage.attr('id') + WORD_BOUNDARY
-      )
-
-      expect($input.attr('aria-describedby'))
-        .toMatch(errorMessageId)
-    })
-
-    it('has error class when rendered with error message', () => {
-      const $ = render('select', {
-        errorMessage: {
-          text: 'Error message'
-        }
-      })
-
-      const $component = $('.govuk-select')
-      expect($component.hasClass('govuk-select--error')).toBeTruthy()
     })
   })
 })

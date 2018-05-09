@@ -1,6 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`File upload with dependant components renders with error message 1`] = `
+exports[`File upload when it includes a hint renders with hint 1`] = `""`;
+
+exports[`File upload when it includes an error message renders with error message 1`] = `
 
 <span id="file-upload-with-error-error"
       class="govuk-error-message"
@@ -9,8 +11,6 @@ exports[`File upload with dependant components renders with error message 1`] = 
 </span>
 
 `;
-
-exports[`File upload with dependant components renders with hint 1`] = `""`;
 
 exports[`File upload with dependant components renders with label 1`] = `
 
