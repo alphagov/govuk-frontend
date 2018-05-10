@@ -188,6 +188,14 @@ describe('Date input', () => {
       const $firstItems = $('.govuk-date-input__item:first-child input')
       expect($firstItems.attr('id')).toEqual('my-date-input-day')
     })
+
+    it('sets the `group` role on the fieldset to force JAWS18 to announce the hint and error message', () => {
+      const $ = render('date-input', examples['with-errors'])
+
+      const $fieldset = $('.govuk-fieldset')
+
+      expect($fieldset.attr('role')).toEqual('group')
+    })
   })
 
   describe('when it includes a hint', () => {
