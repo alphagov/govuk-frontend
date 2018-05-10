@@ -18,7 +18,9 @@ Buttons are configured to perform an action and they can have a different look. 
 
 #### Markup
 
-    <input value="Save and continue" type="submit" class="govuk-button">
+    <button type="submit" class="govuk-button">
+      Save and continue
+    </button>
 
 #### Macro
 
@@ -34,7 +36,9 @@ Buttons are configured to perform an action and they can have a different look. 
 
 #### Markup
 
-    <input value="Disabled button" type="submit" disabled="disabled" aria-disabled="true" class="govuk-button govuk-button--disabled">
+    <button type="submit" disabled="disabled" aria-disabled="true" class="govuk-button govuk-button--disabled">
+      Disabled button
+    </button>
 
 #### Macro
 
@@ -104,43 +108,39 @@ Buttons are configured to perform an action and they can have a different look. 
       "classes": "govuk-button--start"
     }) }}
 
-### Button--explicit-button
+### Button--explicit-input-button
 
-[Preview the button--explicit-button example](http://govuk-frontend-review.herokuapp.com/components/button/explicit-button/preview)
+[Preview the button--explicit-input-button example](http://govuk-frontend-review.herokuapp.com/components/button/explicit-input-button/preview)
 
 #### Markup
 
-    <button name="start-now" type="submit" class="govuk-button">
-      Start now
-    </button>
+    <input value="Start now" name="start-now" type="submit" class="govuk-button">
 
 #### Macro
 
     {% from 'button/macro.njk' import govukButton %}
 
     {{ govukButton({
-      "element": "button",
+      "element": "input",
       "name": "start-now",
       "text": "Start now"
     }) }}
 
-### Button--explicit-button-disabled
+### Button--explicit-input-button-disabled
 
-[Preview the button--explicit-button-disabled example](http://govuk-frontend-review.herokuapp.com/components/button/explicit-button-disabled/preview)
+[Preview the button--explicit-input-button-disabled example](http://govuk-frontend-review.herokuapp.com/components/button/explicit-input-button-disabled/preview)
 
 #### Markup
 
-    <button type="submit" disabled="disabled" aria-disabled="true" class="govuk-button govuk-button--disabled">
-      Explicit button disabled
-    </button>
+    <input value="Explicit input button disabled" type="submit" disabled="disabled" aria-disabled="true" class="govuk-button govuk-button--disabled">
 
 #### Macro
 
     {% from 'button/macro.njk' import govukButton %}
 
     {{ govukButton({
-      "element": "button",
-      "text": "Explicit button disabled",
+      "element": "input",
+      "text": "Explicit input button disabled",
       "disabled": true
     }) }}
 

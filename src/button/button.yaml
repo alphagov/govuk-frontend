@@ -20,15 +20,15 @@ examples:
     text: Start now link button
     href: /
     classes: 'govuk-button--start'
-- name: explicit-button
+- name: explicit-input-button
   data:
-    element: button
+    element: input
     name: start-now
     text: Start now
-- name: explicit-button-disabled
+- name: explicit-input-button-disabled
   data:
-    element: button
-    text: Explicit button disabled
+    element: input
+    text: Explicit input button disabled
     disabled: true
 - name: button-active-state
   description: Simulate triggering the :active CSS pseudo-class, not available in the production build.

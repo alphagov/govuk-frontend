@@ -14,19 +14,18 @@ describe('Button', () => {
     expect(results).toHaveNoViolations()
   })
 
-  describe('input[type=submit]', () => {
+  describe('button element', () => {
     it('renders the default example', () => {
       const $ = render('button', examples.default)
 
       const $component = $('.govuk-button')
-      expect($component.get(0).tagName).toEqual('input')
-      expect($component.attr('type')).toEqual('submit')
-      expect($component.val()).toEqual('Save and continue')
+      expect($component.get(0).tagName).toEqual('button')
+      expect($component.text()).toContain('Save and continue')
     })
 
     it('renders with attributes', () => {
       const $ = render('button', {
-        element: 'input',
+        element: 'button',
         attributes: {
           'aria-controls': 'example-id',
           'data-tracking-dimension': '123'
@@ -40,7 +39,7 @@ describe('Button', () => {
 
     it('renders with classes', () => {
       const $ = render('button', {
-        element: 'input',
+        element: 'button',
         classes: 'app-button--custom-modifier'
       })
 
@@ -59,7 +58,7 @@ describe('Button', () => {
 
     it('renders with name', () => {
       const $ = render('button', {
-        element: 'input',
+        element: 'button',
         name: 'start-now'
       })
 
@@ -69,7 +68,7 @@ describe('Button', () => {
 
     it('renders with type', () => {
       const $ = render('button', {
-        element: 'input',
+        element: 'button',
         type: 'button'
       })
 
@@ -100,6 +99,26 @@ describe('Button', () => {
 
       const $component = $('.govuk-button')
       expect($component.attr('href')).toEqual('#')
+    })
+
+    it('renders with value', () => {
+      const $ = render('button', {
+        element: 'button',
+        value: 'start'
+      })
+
+      const $component = $('.govuk-button')
+      expect($component.attr('value')).toEqual('start')
+    })
+
+    it('renders with html', () => {
+      const $ = render('button', {
+        element: 'button',
+        html: 'Start <em>now</em>'
+      })
+
+      const $component = $('.govuk-button')
+      expect($component.html()).toContain('Start <em>now</em>')
     })
 
     it('renders with attributes', () => {
@@ -134,18 +153,18 @@ describe('Button', () => {
     })
   })
 
-  describe('with explicit button set by "element"', () => {
+  describe('with explicit input button set by "element"', () => {
     it('renders with anchor, href and an accessible role of button', () => {
-      const $ = render('button', examples['explicit-button'])
+      const $ = render('button', examples['explicit-input-button'])
 
       const $component = $('.govuk-button')
-      expect($component.get(0).tagName).toEqual('button')
+      expect($component.get(0).tagName).toEqual('input')
       expect($component.attr('type')).toEqual('submit')
     })
 
     it('renders with attributes', () => {
       const $ = render('button', {
-        element: 'button',
+        element: 'input',
         attributes: {
           'aria-controls': 'example-id',
           'data-tracking-dimension': '123'
@@ -159,7 +178,7 @@ describe('Button', () => {
 
     it('renders with classes', () => {
       const $ = render('button', {
-        element: 'button',
+        element: 'input',
         classes: 'app-button--custom-modifier'
       })
 
@@ -169,7 +188,7 @@ describe('Button', () => {
 
     it('renders with disabled', () => {
       const $ = render('button', {
-        element: 'button',
+        element: 'input',
         disabled: true
       })
 
@@ -181,7 +200,7 @@ describe('Button', () => {
 
     it('renders with name', () => {
       const $ = render('button', {
-        element: 'button',
+        element: 'input',
         name: 'start-now'
       })
 
@@ -189,29 +208,9 @@ describe('Button', () => {
       expect($component.attr('name')).toEqual('start-now')
     })
 
-    it('renders with value', () => {
-      const $ = render('button', {
-        element: 'button',
-        value: 'start'
-      })
-
-      const $component = $('.govuk-button')
-      expect($component.attr('value')).toEqual('start')
-    })
-
-    it('renders with html', () => {
-      const $ = render('button', {
-        element: 'button',
-        html: 'Start <em>now</em>'
-      })
-
-      const $component = $('.govuk-button')
-      expect($component.html()).toContain('Start <em>now</em>')
-    })
-
     it('renders with type', () => {
       const $ = render('button', {
-        element: 'button',
+        element: 'input',
         type: 'button',
         text: 'Start now'
       })
@@ -240,11 +239,11 @@ describe('Button', () => {
       expect($component.get(0).tagName).toEqual('button')
     })
 
-    it('renders an input[type=submit] if you don\'t pass anything', () => {
+    it('renders a button if you don\'t pass anything', () => {
       const $ = render('button', {})
 
       const $component = $('.govuk-button')
-      expect($component.get(0).tagName).toEqual('input')
+      expect($component.get(0).tagName).toEqual('button')
       expect($component.attr('type')).toEqual('submit')
     })
   })
