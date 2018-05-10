@@ -12,13 +12,16 @@ if ! [ "govuk-patterns-and-tools" == "$NPM_USER" ]; then
   exit 1
 fi
 
-echo "📦  Publishing packages..."
+echo "📦  Publishing package..."
 
 # Try publishing
-lerna exec -- $(PWD)/bin/npm-publish.sh
+cd package
+npm publish
+echo "🗒 Package published!" 
+cd ..
 
-# Extract tag version from all/package.json
-ALL_PACKAGE_VERSION=$(node -p "require('./packages/all/package.json').version")
+# Extract tag version from ./package/package.json
+ALL_PACKAGE_VERSION=$(node -p "require('./package/package.json').version")
 TAG="v$ALL_PACKAGE_VERSION"
 LATEST_PUBLISHED_TAG=$(git describe --abbrev=0 --tags)
 

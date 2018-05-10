@@ -44,4 +44,4 @@ issue fixed
 - chore (updating gulp tasks etc; no production code change)
 
 ### scope:
-thing being changed - e.g. component name, packages, gulp
+thing being changed - e.g. component name, package, gulp

@@ -73,16 +73,6 @@ To install all components, run:
 npm install --save @govuk-frontend/all
 ```
 
-To install individual components (for example, a button), run:
-
-```
-npm install --save @govuk-frontend/button
-```
-
-You can find a list of all components in the [packages
-directory](https://github.com/alphagov/govuk-frontend/tree/master/packages).
-Each component has a README with installation and usage instructions.
-
 After you have installed GOV.UK Frontend the `@govuk-frontend` package will
 appear in your `node_modules` folder.
 

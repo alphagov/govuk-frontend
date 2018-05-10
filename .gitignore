@@ -3,9 +3,8 @@ npm-debug.log
 .DS_Store
 preview/
 tmp/
-lerna-debug.log
 axeReports/
 public/
-packages/**/package-lock.json
+package/package-lock.json
 examples/**/package-lock.json
 *.zip

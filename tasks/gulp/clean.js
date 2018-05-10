@@ -12,13 +12,12 @@ const del = require('del')
 gulp.task('clean', () => {
   let destination = taskArguments.destination
 
-  if (destination === 'packages') {
+  if (destination === 'package') {
     return del.sync([
       `${destination}/**`,
       `!${destination}`,
-      `!${destination}/*`,
-      `!${destination}/**/package.json`,
-      `!${destination}/all/README.md`
+      `!${destination}/package.json`,
+      `!${destination}/README.md`
     ])
   } else {
     return del.sync([

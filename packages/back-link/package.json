@@ -1,7 +1,0 @@
-{
-  "name": "@govuk-frontend/back-link",
-  "version": "0.0.28-alpha",
-  "dependencies": {
-    "@govuk-frontend/globals": "^0.0.28-alpha"
-  }
-}
