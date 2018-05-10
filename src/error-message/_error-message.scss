@@ -15,10 +15,8 @@
   .govuk-error-message {
     @include govuk-font-bold-19;
 
-    margin-bottom: $govuk-spacing-scale-3;
-
     display: block;
-
+    margin-bottom: $govuk-spacing-scale-3;
     clear: both;
 
     color: $govuk-error-colour;
