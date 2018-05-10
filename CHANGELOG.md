@@ -24,8 +24,37 @@ Breaking changes:
 
   The label macro no longer accepts `hintText` or `hintHtml` - these parameters
   are now passed to the hint component which accepts `text` or `html`. The
-  file-input, input, select and textarea components have been updated to use the
+  file-upload, input, select and textarea components have been updated to use the
   new Hint component.
+
+  For example, this example macro call for a File Upload component:
+
+  ```njk
+  {{ govukFileUpload({
+    "id": "file-upload",
+    "name": "photo",
+    "label": {
+      "text": "Upload your photo",
+      "hintText": "Your photo may be in your Pictures, Photos, Downloads or Desktop folder."
+    }
+  }) }}
+  ```
+
+  would now be:
+
+  ```njk
+  {{ govukFileUpload({
+    "id": "file-upload",
+    "name": "photo",
+    "label": {
+      "text": "Upload your photo"
+    },
+    "hint": {
+      "text": "Your photo may be in your Pictures, Photos, Downloads or Desktop folder."
+    }
+  }) }}
+  ```
+
   ([PR #681](https://github.com/alphagov/govuk-frontend/pull/681))
 
 - The date-input component now sets an explicit `group` role on the fieldset
