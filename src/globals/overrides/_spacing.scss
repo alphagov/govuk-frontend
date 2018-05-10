@@ -14,13 +14,13 @@ $spacing-directions: (
 //
 // Example output:
 //
-// .govuk-\!-m-r0 {
+// .govuk-\!-m-0 {
 //   margin: 0;
 // }
 //
 // [..]
 //
-// .govuk-\!-mt-r1 {
+// .govuk-\!-mt-1 {
 //   margin-top: [whatever spacing point 1 is...]
 // }
 
@@ -29,7 +29,7 @@ $spacing-directions: (
   // override that affects all directions...
   @each $scale-point, $scale-map in $govuk-spacing-responsive-scale {
 
-    .govuk-\!-#{$property-shorthand}-r#{$scale-point} {
+    .govuk-\!-#{$property-shorthand}-#{$scale-point} {
 
       @include govuk-responsive-spacing($scale-map, $property, "all", true);
     }
@@ -37,7 +37,7 @@ $spacing-directions: (
     // ... and then an override for each individual direction
     @each $direction-name, $direction-shorthand in $spacing-directions {
 
-      .govuk-\!-#{$property-shorthand}#{$direction-shorthand}-r#{$scale-point} {
+      .govuk-\!-#{$property-shorthand}#{$direction-shorthand}-#{$scale-point} {
         @include govuk-responsive-spacing($scale-map, $property, $direction-name, true);
       }
     }
