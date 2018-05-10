@@ -133,6 +133,36 @@ Find out when to use the Textarea component in your service in the [GOV.UK Desig
       "rows": 8
     }) }}
 
+### Textarea--with label as page heading
+
+[Preview the textarea--with label as page heading example](http://govuk-frontend-review.herokuapp.com/components/textarea/with label as page heading/preview)
+
+#### Markup
+
+    <div class="govuk-form-group">
+      <h1 class="govuk-label-wrapper">
+        <label class="govuk-label" for="textarea-with-page-heading">
+          Full address
+        </label>
+
+      </h1>
+
+      <textarea class="govuk-textarea" id="textarea-with-page-heading" name="address" rows="5"></textarea>
+    </div>
+
+#### Macro
+
+    {% from 'textarea/macro.njk' import govukTextarea %}
+
+    {{ govukTextarea({
+      "id": "textarea-with-page-heading",
+      "name": "address",
+      "label": {
+        "text": "Full address",
+        "isPageHeading": true
+      }
+    }) }}
+
 ## Dependencies
 
 To consume the textarea component you must be running npm version 5 or above.

@@ -14,7 +14,8 @@ examples:
     idPrefix: 'example'
     name: 'example'
     fieldset:
-      legendText: Have you changed your name?
+      legend:
+        text: Have you changed your name?
     hint:
       text: This includes changing your last name or spelling your name differently.
     items:
@@ -30,7 +31,8 @@ examples:
     classes: 'govuk-radios--inline'
     name: 'example'
     fieldset:
-      legendText: Have you changed your name?
+      legend:
+        text: Have you changed your name?
     hint:
       text: This includes changing your last name or spelling your name differently.
     items:
@@ -45,7 +47,8 @@ examples:
     idPrefix: 'example-disabled'
     name: 'example-disabled'
     fieldset:
-      legendText: Have you changed your name?
+      legend:
+        text: Have you changed your name?
     hint:
       text: This includes changing your last name or spelling your name differently.
     items:
@@ -61,7 +64,8 @@ examples:
     idPrefix: 'housing-act'
     name: 'housing-act'
     fieldset:
-      legendHtml: <h1 class="govuk-heading-l">Which part of the Housing Act was your licence issued under?</h1>
+      legend:
+        html: <h1 class="govuk-heading-l">Which part of the Housing Act was your licence issued under?</h1>
     hint:
       text: Select one of the options below.
     items:
@@ -96,7 +100,8 @@ examples:
       attributes:
         'data-attribute': 'value'
         'data-second-attribute': 'second-value'
-      legendText: Have you changed your name?
+      legend:
+        text: Have you changed your name?
     hint:
       text: This includes changing your last name or spelling your name differently.
     items:
@@ -112,8 +117,8 @@ examples:
     idPrefix: 'how-contacted'
     name: 'how-contacted'
     fieldset:
-      legendHtml:
-        <h3 class="govuk-heading-m">How do you want to be contacted?</h3>
+      legend:
+        html: <h3 class="govuk-heading-m">How do you want to be contacted?</h3>
     items:
       - value: email
         text: Email
@@ -140,8 +145,8 @@ examples:
     idPrefix: 'how-contacted-checked'
     name: 'how-contacted-checked'
     fieldset:
-      legendHtml:
-        <h3 class="govuk-heading-m">How do you want to be contacted?</h3>
+      legend:
+        html: <h3 class="govuk-heading-m">How do you want to be contacted?</h3>
     items:
     - value: email
       text: Email

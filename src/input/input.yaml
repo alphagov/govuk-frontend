@@ -3,7 +3,7 @@ examples:
     data:
       label:
         text: National Insurance number
-      id: input-1
+      id: input-example
       name: test-name
   - name: with-hint-text
     data:
@@ -11,7 +11,7 @@ examples:
         text: National insurance number
       hint:
         text: It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
-      id: input-2
+      id: input-with-hint-text
       name: test-name-2
   - name: with-error-message
     data:
@@ -19,7 +19,7 @@ examples:
         text: National Insurance number
       hint:
         html: It’s on your <i>National Insurance card</i>, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
-      id: input-3
+      id: input-with-error-message
       name: test-name-3
       errorMessage:
         text: Error message goes here
@@ -29,7 +29,7 @@ examples:
         text: National insurance number
       hint:
         text: It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
-      id: input-2
+      id: input-width-10
       name: test-name-4
       classes: govuk-input--width-10
   - name: width-20
@@ -38,7 +38,7 @@ examples:
         text: National insurance number
       hint:
         text: It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
-      id: input-2
+      id: input-width-20
       name: test-name-5
       classes: govuk-input--width-20
   - name: width-30
@@ -47,6 +47,13 @@ examples:
         text: National insurance number
       hint:
         text: It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
-      id: input-2
+      id: input-width-30
       name: test-name-6
       classes: govuk-input--width-30
+  - name: with-label-as-page-heading
+    data:
+      label:
+        text: National Insurance number
+        isPageHeading: true
+      id: input-with-page-heading
+      name: test-name

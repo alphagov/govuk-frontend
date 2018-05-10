@@ -139,6 +139,36 @@ Find out when to use the File upload component in your service in the [GOV.UK De
       }
     }) }}
 
+### File-upload--with-label-as-page-heading
+
+[Preview the file-upload--with-label-as-page-heading example](http://govuk-frontend-review.herokuapp.com/components/file-upload/with-label-as-page-heading/preview)
+
+#### Markup
+
+    <div class="govuk-form-group">
+      <h1 class="govuk-label-wrapper">
+        <label class="govuk-label" for="file-upload-1">
+          Upload a file
+        </label>
+
+      </h1>
+
+      <input class="govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file">
+    </div>
+
+#### Macro
+
+    {% from 'file-upload/macro.njk' import govukFileUpload %}
+
+    {{ govukFileUpload({
+      "id": "file-upload-1",
+      "name": "file-upload-1",
+      "label": {
+        "text": "Upload a file",
+        "isPageHeading": true
+      }
+    }) }}
+
 ## Dependencies
 
 To consume the file-upload component you must be running npm version 5 or above.

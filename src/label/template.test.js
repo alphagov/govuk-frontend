@@ -67,6 +67,16 @@ describe('Label', () => {
       expect(labelForAttr).toEqual('#dummy-input')
     })
 
+    it('can be nested inside an H1 using isPageHeading', () => {
+      const $ = render('label', {
+        text: 'National Insurance number',
+        isPageHeading: true
+      })
+
+      const $selector = $('h1 > .govuk-label')
+      expect($selector.length).toBeTruthy()
+    })
+
     it('allows additional attributes to be added to the component', () => {
       const $ = render('label', {
         attributes: {

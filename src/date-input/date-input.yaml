@@ -4,7 +4,8 @@ examples:
     id: 'dob'
     name: 'dob'
     fieldset:
-      legendText: 'What is your date of birth?'
+      legend:
+        text: 'What is your date of birth?'
     hint:
       text: 'For example, 31 3 1980'
     items:
@@ -18,7 +19,8 @@ examples:
   data:
     id: 'dob-errors'
     fieldset:
-      legendText: 'What is your date of birth?'
+      legend:
+        text: 'What is your date of birth?'
     hint:
       text: 'For example, 31 3 1980'
     errorMessage:
@@ -38,7 +40,8 @@ examples:
     id: 'dob-day-error'
     name: 'dob-day-error'
     fieldset:
-      legendText: 'What is your date of birth?'
+      legend:
+        text: 'What is your date of birth?'
     hint:
       text: 'For example, 31 3 1980'
     errorMessage:
@@ -56,7 +59,8 @@ examples:
     id: 'dob-month-error'
     name: 'dob-month-error'
     fieldset:
-      legendText: 'What is your date of birth?'
+      legend:
+        text: 'What is your date of birth?'
     hint:
       text: 'For example, 31 3 1980'
     errorMessage:
@@ -74,7 +78,8 @@ examples:
     id: 'dob-year-error'
     name: 'dob-year-error'
     fieldset:
-      legendText: 'What is your date of birth?'
+      legend:
+        text: 'What is your date of birth?'
     hint:
       text: 'For example, 31 3 1980'
     errorMessage:

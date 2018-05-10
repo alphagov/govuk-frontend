@@ -57,7 +57,9 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
       "idPrefix": "example",
       "name": "example",
       "fieldset": {
-        "legendText": "Have you changed your name?"
+        "legend": {
+          "text": "Have you changed your name?"
+        }
       },
       "hint": {
         "text": "This includes changing your last name or spelling your name differently."
@@ -123,7 +125,9 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
       "classes": "govuk-radios--inline",
       "name": "example",
       "fieldset": {
-        "legendText": "Have you changed your name?"
+        "legend": {
+          "text": "Have you changed your name?"
+        }
       },
       "hint": {
         "text": "This includes changing your last name or spelling your name differently."
@@ -188,7 +192,9 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
       "idPrefix": "example-disabled",
       "name": "example-disabled",
       "fieldset": {
-        "legendText": "Have you changed your name?"
+        "legend": {
+          "text": "Have you changed your name?"
+        }
       },
       "hint": {
         "text": "This includes changing your last name or spelling your name differently."
@@ -254,7 +260,9 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
       "idPrefix": "housing-act",
       "name": "housing-act",
       "fieldset": {
-        "legendHtml": "<h1 class=\"govuk-heading-l\">Which part of the Housing Act was your licence issued under?</h1>"
+        "legend": {
+          "html": "<h1 class=\"govuk-heading-l\">Which part of the Housing Act was your licence issued under?</h1>"
+        }
       },
       "hint": {
         "text": "Select one of the options below."
@@ -387,7 +395,9 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
           "data-attribute": "value",
           "data-second-attribute": "second-value"
         },
-        "legendText": "Have you changed your name?"
+        "legend": {
+          "text": "Have you changed your name?"
+        }
       },
       "hint": {
         "text": "This includes changing your last name or spelling your name differently."
@@ -463,7 +473,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Arguments for the fieldset component (e.g. legendText). See fieldset component.</td>
+<td class="govuk-table__cell ">Arguments for the fieldset component (e.g. legend). See fieldset component.</td>
 
 </tr>
 

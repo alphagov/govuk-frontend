@@ -36,3 +36,11 @@ examples:
       label:
         text: Full address
       rows: 8
+
+  - name: with label as page heading
+    data:
+      id: textarea-with-page-heading
+      name: address
+      label:
+        text: Full address
+        isPageHeading: true

@@ -61,6 +61,80 @@ Breaking changes:
   to force JAWS 18 to announce the error message and hint.
   ([PR #681](https://github.com/alphagov/govuk-frontend/pull/681))
 
+- The label component now accepts an `isPageHeading` argument which determines
+  whether the label itself should be wrapped in an h1:
+
+  ```html
+  <h1 class="govuk-label-wrapper">
+    <label class="govuk-label">What is your National Insurance number?</label>
+  </h1>
+  ```
+
+  The `.govuk-label-wrapper` removes the margins from the heading so that the
+  presence of the `h1` has no effect on the styling of the label.
+
+  ([PR #684](https://github.com/alphagov/govuk-frontend/pull/684))
+
+
+- Added new modifier classes for labels to allow you to create a label that
+  visually corresponds to the equivalent heading class (for example, a
+  `.govuk-label--xl` will have the same font size and weight as a
+  `.govuk-heading-xl`)
+
+  ([PR #684](https://github.com/alphagov/govuk-frontend/pull/684))
+
+
+- The arguments for a fieldset's legend have been rolled up into an object. For
+  example, the following macro call:
+
+  ```
+  {{ govukFieldset({
+    legendText: "What is your date of birth?"
+  }) }}
+  ```
+
+  would now be:
+
+  ```
+  {{ govukFieldset({
+    legend: {
+      text: "What is your date of birth?"
+    }
+  }) }}
+  ```
+
+  The `legend` object can also accept new `classes` and `arguments` 
+
+  Components that use the fieldset component have been updated to reflect these
+  changes.
+
+  ([PR #684](https://github.com/alphagov/govuk-frontend/pull/684))
+
+
+- The fieldset component has a new parameter legend.isPageHeading, which defines
+  whether the legend text should be wrapped in an h1:
+
+  ```html
+  <legend class="govuk-fieldset__legend">
+    <h1 class="govuk-fieldset__heading">Have you changed your name?</h1>
+  </legend>
+  ```
+
+  The `.govuk-fieldset__heading` class ensures that the `<h1>` inherits its
+  properties from the legend, so that the presence of the `h1` has no effect on
+  its styling.
+
+  ([PR #684](https://github.com/alphagov/govuk-frontend/pull/684))
+
+
+- Added new modifier classes for legends to allow you to create a legend that
+  visually corresponds to the equivalent heading class (for example, a
+  `.govuk-fieldset__legend--xl` will have the same font size and weight as a
+  `.govuk-heading-xl`)
+
+  ([PR #684](https://github.com/alphagov/govuk-frontend/pull/684))
+
+
 - Remove -c -o -h layer prefixes
   ([PR #644](https://github.com/alphagov/govuk-frontend/pull/644))
   In user research and in feedback from Private Beta partners we

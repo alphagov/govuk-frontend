@@ -1,4 +1,11 @@
 examples:
 - name: default
   data:
-    legendText: What is your address?
+    legend:
+      text: What is your address?
+- name: as page heading
+  data:
+    legend:
+      text: What is your address?
+      classes: govuk-fieldset__legend--xl
+      isPageHeading: true

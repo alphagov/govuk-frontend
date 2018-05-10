@@ -122,6 +122,60 @@ Find out when to use the Select component in your service in the [GOV.UK Design 
       ]
     }) }}
 
+### Select--with-label-as-page-heading
+
+[Preview the select--with-label-as-page-heading example](http://govuk-frontend-review.herokuapp.com/components/select/with-label-as-page-heading/preview)
+
+#### Markup
+
+    <div class="govuk-form-group">
+      <h1 class="govuk-label-wrapper">
+        <label class="govuk-label" for="select-3">
+          Label text goes here
+        </label>
+
+      </h1>
+
+      <select class="govuk-select" id="select-3" name="select-3">
+
+        <option value="1">GOV.UK frontend option 1</option>
+
+        <option value="2" selected>GOV.UK frontend option 2</option>
+
+        <option value="3" disabled>GOV.UK frontend option 3</option>
+
+      </select>
+    </div>
+
+#### Macro
+
+    {% from 'select/macro.njk' import govukSelect %}
+
+    {{ govukSelect({
+      "id": "select-3",
+      "name": "select-3",
+      "label": {
+        "html": "Label text goes here",
+        "isPageHeading": true
+      },
+      "items": [
+        {
+          "value": 1,
+          "text": "GOV.UK frontend option 1"
+        },
+        {
+          "value": 2,
+          "text": "GOV.UK frontend option 2",
+          "selected": true
+        },
+        {
+          "value": 3,
+          "text": "GOV.UK frontend option 3",
+          "disabled": true
+        }
+      ]
+    }) }}
+
 ## Dependencies
 
 To consume the select component you must be running npm version 5 or above.
