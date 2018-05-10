@@ -67,11 +67,11 @@ examples:
     items:
       - value: 'part-2'
         html:
-          <span class="govuk-heading-s govuk-!-mb-r1">Part 2 of the Housing Act 2004</span>
+          <span class="govuk-heading-s govuk-!-mb-1">Part 2 of the Housing Act 2004</span>
           For properties that are 3 or more stories high and occupied by 5 or more people
       - value: 'part-3'
         html:
-          <span class="govuk-heading-s govuk-!-mb-r1">Part 3 of the Housing Act 2004</span>
+          <span class="govuk-heading-s govuk-!-mb-1">Part 3 of the Housing Act 2004</span>
           For properties that are within a geographical area defined by a local council
 
 - name: without-fieldset

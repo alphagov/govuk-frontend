@@ -230,14 +230,14 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
         <div class="govuk-radios__item">
           <input class="govuk-radios__input" id="housing-act-1" name="housing-act" type="radio" value="part-2">
           <label class="govuk-label govuk-radios__label" for="housing-act-1">
-            <span class="govuk-heading-s govuk-!-mb-r1">Part 2 of the Housing Act 2004</span> For properties that are 3 or more stories high and occupied by 5 or more people
+            <span class="govuk-heading-s govuk-!-mb-1">Part 2 of the Housing Act 2004</span> For properties that are 3 or more stories high and occupied by 5 or more people
           </label>
         </div>
 
         <div class="govuk-radios__item">
           <input class="govuk-radios__input" id="housing-act-2" name="housing-act" type="radio" value="part-3">
           <label class="govuk-label govuk-radios__label" for="housing-act-2">
-            <span class="govuk-heading-s govuk-!-mb-r1">Part 3 of the Housing Act 2004</span> For properties that are within a geographical area defined by a local council
+            <span class="govuk-heading-s govuk-!-mb-1">Part 3 of the Housing Act 2004</span> For properties that are within a geographical area defined by a local council
           </label>
         </div>
 
@@ -262,11 +262,11 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
       "items": [
         {
           "value": "part-2",
-          "html": "<span class=\"govuk-heading-s govuk-!-mb-r1\">Part 2 of the Housing Act 2004</span> For properties that are 3 or more stories high and occupied by 5 or more people"
+          "html": "<span class=\"govuk-heading-s govuk-!-mb-1\">Part 2 of the Housing Act 2004</span> For properties that are 3 or more stories high and occupied by 5 or more people"
         },
         {
           "value": "part-3",
-          "html": "<span class=\"govuk-heading-s govuk-!-mb-r1\">Part 3 of the Housing Act 2004</span> For properties that are within a geographical area defined by a local council"
+          "html": "<span class=\"govuk-heading-s govuk-!-mb-1\">Part 3 of the Housing Act 2004</span> For properties that are within a geographical area defined by a local council"
         }
       ]
     }) }}
