@@ -4,7 +4,33 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 
 ## Unreleased
 
-Breaking change:
+Breaking changes:
+
+- Error messages have been moved out of the label and fieldset components and
+  are now called from every component that uses them - they are no longer nested
+  within the label or legend. They are associated with the input or with the
+  fieldset using aria-describedby.
+  ([PR #681](https://github.com/alphagov/govuk-frontend/pull/681))
+
+- Hints have been moved out label and fieldset components and into a new 'hint'
+  component, which is called from every component that uses them - they are no
+  longer nested within the label or legend. They are associated with the input
+  or with the fieldset using aria-describedby.
+
+  The fieldset macro no longer accepts `legendHintText` or `legendHintHtml` -
+  these parameters are now passed to the hint component which accepts `text` or
+  `html`. The date-input, checkboxes and radios components have been updated to
+  use the new Hint component.
+
+  The label macro no longer accepts `hintText` or `hintHtml` - these parameters
+  are now passed to the hint component which accepts `text` or `html`. The
+  file-input, input, select and textarea components have been updated to use the
+  new Hint component.
+  ([PR #681](https://github.com/alphagov/govuk-frontend/pull/681))
+
+- The date-input component now sets an explicit `group` role on the fieldset
+  to force JAWS 18 to announce the error message and hint.
+  ([PR #681](https://github.com/alphagov/govuk-frontend/pull/681))
 
 - Remove -c -o -h layer prefixes
   ([PR #644](https://github.com/alphagov/govuk-frontend/pull/644))
@@ -22,10 +48,6 @@ Breaking change:
   Based on user research feedback we have simplified the grid classes
   to a more consise naming structure. We have also introduced two mixins
   to help generate additional or custom grid styles and widths.
-
-- Make `button` element the default instead of `input` for button macro
-  ([PR #683](https://github.com/alphagov/govuk-frontend/pull/683))
-  We are making `button` the default, however since the `button` element is buggy in IE6 / IE7, we are allowing input to be used if required.
 
 Fixes:
 
