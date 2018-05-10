@@ -11,7 +11,7 @@
 {# componentName #}
 
 {% block componentDescription %}
-  Use labels for all form fields.
+  Use hint text for supporting contextual help
 {% endblock %}
 
 {# examples #}
@@ -53,6 +53,20 @@
     ],
     [
       {
+        text: 'id'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'Yes'
+      },
+      {
+        text: 'The id of the hint'
+      }
+    ],
+    [
+      {
         text: 'text'
       },
       {
@@ -62,7 +76,7 @@
         text: 'No'
       },
       {
-        text: 'Text to use within the label'
+        text: 'Text to use within the hint'
       }
     ],
     [
@@ -76,21 +90,7 @@
         text: 'No'
       },
       {
-        text: 'HTML to use within the label. If this is provided, the text argument will be ignored.'
-      }
-    ],
-    [
-      {
-        text: 'for'
-      },
-      {
-        text: 'string'
-      },
-      {
-        text: 'Yes'
-      },
-      {
-        text: 'The value of the for attribute, the id of the input the label is associated with'
+        text: 'HTML to use within the hint. If this is provided, the text argument will be ignored.'
       }
     ],
     [
@@ -104,7 +104,7 @@
         text: 'No'
       },
       {
-        text: 'Any extra HTML attributes (for example data attributes) to add to the error message span tag.'
+        text: 'Any extra HTML attributes (for example data attributes) to add to the hint span tag.'
       }
     ]
   ]

@@ -1,18 +1,23 @@
 accessibilityCriteria: |
-  When used with a single input, the error message MUST:
+  When used with a single input, the hint MUST:
   - be announced by screen readers when the input is focussed
 
   When used with a group of multiple inputs (such as within a fieldset), the
-  error message MUST:
+  hint MUST:
   - be announced by screen readers when focussing the first input within the
     group (first in this case refers to the focus order, not the DOM - if the
     user is traversing backwards through the page then this would be the last
     input within the group in the DOM)
 
-  When used with a group of multiple inputs, the error message SHOULD NOT:
+  When used with a group of multiple inputs, the hint SHOULD NOT:
   - be announced every time for each individual input
 
 examples:
-- name: default
-  data:
-    text: Error message about full name goes here
+  - name: default
+    data:
+      text: 'It’s on your National Insurance card, benefit letter, payslip or P60.
+        For example, ‘QQ 12 34 56 C’.'
+  - name: with html
+    data:
+      html: 'It’s on your National Insurance card, benefit letter, payslip or <a class="govuk-link" href="#">P60</a>.
+        For example, ‘QQ 12 34 56 C’.'

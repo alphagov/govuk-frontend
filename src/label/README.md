@@ -14,11 +14,6 @@ Use labels for all form fields.
 
     <label class="govuk-label">
       National Insurance number
-
-      <span class="govuk-label__hint">
-        It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’.
-      </span>
-
     </label>
 
 #### Macro
@@ -26,8 +21,7 @@ Use labels for all form fields.
     {% from 'label/macro.njk' import govukLabel %}
 
     {{ govukLabel({
-      "text": "National Insurance number",
-      "hintText": "It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’."
+      "text": "National Insurance number"
     }) }}
 
 ### Label--with bold text
@@ -38,11 +32,6 @@ Use labels for all form fields.
 
     <label class="govuk-label govuk-label--bold">
       National Insurance number
-
-      <span class="govuk-label__hint">
-        It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’.
-      </span>
-
     </label>
 
 #### Macro
@@ -51,39 +40,7 @@ Use labels for all form fields.
 
     {{ govukLabel({
       "classes": "govuk-label--bold",
-      "text": "National Insurance number",
-      "hintText": "It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’."
-    }) }}
-
-### Label--with error message
-
-[Preview the label--with error message example](http://govuk-frontend-review.herokuapp.com/components/label/with error message/preview)
-
-#### Markup
-
-    <label class="govuk-label">
-      National Insurance number
-
-      <span class="govuk-label__hint">
-        It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’.
-      </span>
-
-      <span class="govuk-error-message">
-      Error message goes here
-    </span>
-
-    </label>
-
-#### Macro
-
-    {% from 'label/macro.njk' import govukLabel %}
-
-    {{ govukLabel({
-      "text": "National Insurance number",
-      "hintText": "It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’.",
-      "errorMessage": {
-        "text": "Error message goes here"
-      }
+      "text": "National Insurance number"
     }) }}
 
 ## Dependencies
@@ -179,42 +136,6 @@ If you are using Nunjucks,then macros take the following arguments
 <td class="govuk-table__cell ">Yes</td>
 
 <td class="govuk-table__cell ">The value of the for attribute, the id of the input the label is associated with</td>
-
-</tr>
-
-<tr class="govuk-table__row">
-
-<th class="govuk-table__header" scope="row">hintText</th>
-
-<td class="govuk-table__cell ">string</td>
-
-<td class="govuk-table__cell ">No</td>
-
-<td class="govuk-table__cell ">Optional text to use as a hint</td>
-
-</tr>
-
-<tr class="govuk-table__row">
-
-<th class="govuk-table__header" scope="row">hintHtml</th>
-
-<td class="govuk-table__cell ">string</td>
-
-<td class="govuk-table__cell ">No</td>
-
-<td class="govuk-table__cell ">Optional HTML to use as a hint. If this is provided, the hintText argument will be ignored.</td>
-
-</tr>
-
-<tr class="govuk-table__row">
-
-<th class="govuk-table__header" scope="row">errorMessage</th>
-
-<td class="govuk-table__cell ">object</td>
-
-<td class="govuk-table__cell ">No</td>
-
-<td class="govuk-table__cell ">Optional error message. See errorMessage component.</td>
 
 </tr>
 

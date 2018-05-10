@@ -11,14 +11,16 @@ examples:
     name: file-upload-2
     label:
       text: Upload your photo
-      hintText: Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.
+    hint:
+      text: Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.
 - name: with-error-message
   data:
     id: file-upload-3
     name: file-upload-3
     label:
       text: Upload a file
-      hintText: Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.
+    hint:
+      text: Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.
     errorMessage:
       text: Error message goes here
 - name: with-value-and-attributes

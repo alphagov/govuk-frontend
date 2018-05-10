@@ -16,16 +16,16 @@ Find out when to use the Textarea component in your service in the [GOV.UK Desig
 
 #### Markup
 
-    <div class="govuk-form-group"><label class="govuk-label" for="more-detail">
-      Can you provide more detail?
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="more-detail">
+        Can you provide more detail?
+      </label>
 
-      <span class="govuk-label__hint">
+      <span id="more-detail-hint" class="govuk-hint">
         Don&#39;t include personal or financial information, eg your National Insurance number or credit card details.
       </span>
 
-    </label>
-    <textarea id="more-detail" name="more-detail" rows="5" class="govuk-textarea"></textarea>
-
+      <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
     </div>
 
 #### Macro
@@ -36,8 +36,10 @@ Find out when to use the Textarea component in your service in the [GOV.UK Desig
       "name": "more-detail",
       "id": "more-detail",
       "label": {
-        "text": "Can you provide more detail?",
-        "hintText": "Don't include personal or financial information, eg your National Insurance number or credit card details."
+        "text": "Can you provide more detail?"
+      },
+      "hint": {
+        "text": "Don't include personal or financial information, eg your National Insurance number or credit card details."
       }
     }) }}
 
@@ -47,16 +49,16 @@ Find out when to use the Textarea component in your service in the [GOV.UK Desig
 
 #### Markup
 
-    <div class="govuk-form-group govuk-form-group--error"><label class="govuk-label" for="no-ni-reason">
-      Why can&#39;t you provide a National Insurance number?
+    <div class="govuk-form-group govuk-form-group--error">
+      <label class="govuk-label" for="no-ni-reason">
+        Why can&#39;t you provide a National Insurance number?
+      </label>
 
-      <span class="govuk-error-message">
-      You must provide an explanation
-    </span>
+      <span id="no-ni-reason-error" class="govuk-error-message">
+        You must provide an explanation
+      </span>
 
-    </label>
-    <textarea id="no-ni-reason" name="no-ni-reason" rows="5" class="govuk-textarea govuk-textarea--error"></textarea>
-
+      <textarea class="govuk-textarea govuk-textarea--error" id="no-ni-reason" name="no-ni-reason" rows="5" aria-describedby="no-ni-reason-error"></textarea>
     </div>
 
 #### Macro
@@ -80,15 +82,15 @@ Find out when to use the Textarea component in your service in the [GOV.UK Desig
 
 #### Markup
 
-    <div class="govuk-form-group"><label class="govuk-label" for="full-address">
-      Full address
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="full-address">
+        Full address
+      </label>
 
-    </label>
-    <textarea id="full-address" name="address" rows="5" class="govuk-textarea">221B Baker Street
+      <textarea class="govuk-textarea" id="full-address" name="address" rows="5">221B Baker Street
     London
     NW1 6XE
     </textarea>
-
     </div>
 
 #### Macro
@@ -110,12 +112,12 @@ Find out when to use the Textarea component in your service in the [GOV.UK Desig
 
 #### Markup
 
-    <div class="govuk-form-group"><label class="govuk-label" for="full-address">
-      Full address
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="full-address">
+        Full address
+      </label>
 
-    </label>
-    <textarea id="full-address" name="address" rows="8" class="govuk-textarea"></textarea>
-
+      <textarea class="govuk-textarea" id="full-address" name="address" rows="8"></textarea>
     </div>
 
 #### Macro
@@ -253,13 +255,25 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
+<th class="govuk-table__header" scope="row">hint</th>
+
+<td class="govuk-table__cell ">object</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Arguments for the hint component (e.g. text). See hint component.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
 <th class="govuk-table__header" scope="row">errorMessage</th>
 
 <td class="govuk-table__cell ">object</td>
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Arguments for the error message component</td>
+<td class="govuk-table__cell ">Arguments for the errorMessage component (e.g. text). See errorMessage component.</td>
 
 </tr>
 

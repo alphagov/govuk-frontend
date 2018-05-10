@@ -16,11 +16,12 @@ Find out when to use the Select component in your service in the [GOV.UK Design 
 
 #### Markup
 
-    <div class="govuk-form-group"><label class="govuk-label" for="select-1">
-      Label text goes here
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="select-1">
+        Label text goes here
+      </label>
 
-    </label>
-    <select class="govuk-select" id="select-1" name="select-1">
+      <select class="govuk-select" id="select-1" name="select-1">
 
         <option value="1">GOV.UK frontend option 1</option>
 
@@ -65,19 +66,20 @@ Find out when to use the Select component in your service in the [GOV.UK Design 
 
 #### Markup
 
-    <div class="govuk-form-group govuk-form-group--error"><label class="govuk-label" for="select-2">
-      Label text goes here
+    <div class="govuk-form-group govuk-form-group--error">
+      <label class="govuk-label" for="select-2">
+        Label text goes here
+      </label>
 
-      <span class="govuk-label__hint">
+      <span id="select-2-hint" class="govuk-hint">
         Hint text goes here
       </span>
 
-      <span class="govuk-error-message">
-      Error message goes here
-    </span>
+      <span id="select-2-error" class="govuk-error-message">
+        Error message goes here
+      </span>
 
-    </label>
-    <select class="govuk-select govuk-select--error" id="select-2" name="select-2">
+      <select class="govuk-select govuk-select--error" id="select-2" name="select-2" aria-describedby="select-2-hint select-2-error">
 
         <option value="1">GOV.UK frontend option 1</option>
 
@@ -96,8 +98,10 @@ Find out when to use the Select component in your service in the [GOV.UK Design 
       "id": "select-2",
       "name": "select-2",
       "label": {
-        "hintText": "Hint text goes here",
         "text": "Label text goes here"
+      },
+      "hint": {
+        "text": "Hint text goes here"
       },
       "errorMessage": {
         "text": "Error message goes here"
@@ -276,13 +280,25 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">errorMessage</th>
+<th class="govuk-table__header" scope="row">hint</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell ">object</td>
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Optional error message. See errorMessage component.</td>
+<td class="govuk-table__cell ">Arguments for the hint component (e.g. text). See hint component.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">errorMessage</th>
+
+<td class="govuk-table__cell ">object</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Arguments for the errorMessage component (e.g. text). See errorMessage component.</td>
 
 </tr>
 

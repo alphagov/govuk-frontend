@@ -1,8 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Textarea with dependant components renders with error message 1`] = `
+exports[`Textarea when it includes a hint renders with hint 1`] = `
 
-<span class="govuk-error-message">
+<span id="textarea-with-error-hint"
+      class="govuk-hint"
+>
+  It&#x2019;s on your National Insurance card, benefit letter, payslip or P60. For example, &#x2018;QQ 12 34 56 C&#x2019;.
+</span>
+
+`;
+
+exports[`Textarea when it includes an error message renders with error message 1`] = `
+
+<span id="textarea-with-error-error"
+      class="govuk-error-message"
+>
   Error message
 </span>
 

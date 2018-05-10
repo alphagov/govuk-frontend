@@ -1,44 +1,54 @@
-# Fieldset
+# Hint
 
 ## Introduction
 
-The fieldset element is used to group several controls within a web form. The legend element represents a caption for the content of its parent fieldset.
-
-## Guidance
-
-Find out when to use the Fieldset component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/fieldset).
+Use hint text for supporting contextual help
 
 ## Quick start examples
 
 ### Component default
 
-[Preview the fieldset component](http://govuk-frontend-review.herokuapp.com/components/fieldset/preview)
+[Preview the hint component](http://govuk-frontend-review.herokuapp.com/components/hint/preview)
 
 #### Markup
 
-    <fieldset class="govuk-fieldset">
-
-      <legend class="govuk-fieldset__legend">
-        What is your address?
-      </legend>
-
-    </fieldset>
+    <span class="govuk-hint">
+      It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’.
+    </span>
 
 #### Macro
 
-    {% from 'fieldset/macro.njk' import govukFieldset %}
+    {% from 'hint/macro.njk' import govukHint %}
 
-    {{ govukFieldset({
-      "legendText": "What is your address?"
+    {{ govukHint({
+      "text": "It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’."
+    }) }}
+
+### Hint--with html
+
+[Preview the hint--with html example](http://govuk-frontend-review.herokuapp.com/components/hint/with html/preview)
+
+#### Markup
+
+    <span class="govuk-hint">
+      It’s on your National Insurance card, benefit letter, payslip or <a class="govuk-link" href="#">P60</a>. For example, ‘QQ 12 34 56 C’.
+    </span>
+
+#### Macro
+
+    {% from 'hint/macro.njk' import govukHint %}
+
+    {{ govukHint({
+      "html": "It’s on your National Insurance card, benefit letter, payslip or <a class=\"govuk-link\" href=\"#\">P60</a>. For example, ‘QQ 12 34 56 C’."
     }) }}
 
 ## Dependencies
 
-To consume the fieldset component you must be running npm version 5 or above.
+To consume the hint component you must be running npm version 5 or above.
 
 ## Installation
 
-    npm install --save @govuk-frontend/fieldset
+    npm install --save @govuk-frontend/hint
 
 ## Requirements
 
@@ -94,25 +104,37 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">legendText</th>
+<th class="govuk-table__header" scope="row">id</th>
 
 <td class="govuk-table__cell ">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell ">Yes</td>
 
-<td class="govuk-table__cell ">Legend text</td>
+<td class="govuk-table__cell ">The id of the hint</td>
 
 </tr>
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">legendHtml</th>
+<th class="govuk-table__header" scope="row">text</th>
 
 <td class="govuk-table__cell ">string</td>
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Legend text</td>
+<td class="govuk-table__cell ">Text to use within the hint</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">html</th>
+
+<td class="govuk-table__cell ">string</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">HTML to use within the hint. If this is provided, the text argument will be ignored.</td>
 
 </tr>
 
@@ -124,7 +146,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the fieldset container.</td>
+<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the hint span tag.</td>
 
 </tr>
 
@@ -146,11 +168,11 @@ Below is an example setup using express configure views:
 
 To check whether you have the latest version of the button run:
 
-    npm outdated @govuk-frontend/fieldset
+    npm outdated @govuk-frontend/hint
 
 To update the latest version run:
 
-    npm update @govuk-frontend/fieldset
+    npm update @govuk-frontend/hint
 
 ## Contribution
 

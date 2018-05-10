@@ -2,23 +2,13 @@
 
 exports[`Checkboxes nested dependant components passes through fieldset params without breaking 1`] = `
 
-<span class="govuk-error-message">
-  Please select an option
-</span>
-
-`;
-
-exports[`Checkboxes nested dependant components passes through fieldset params without breaking 2`] = `
-
 <fieldset class="govuk-fieldset app-fieldset--custom-modifier"
+          aria-describedby="example-hint example-error"
           data-attribute="value"
           data-second-attribute="second-value"
 >
   <legend class="govuk-fieldset__legend">
     What is your nationality?
-    <span class="govuk-fieldset__hint">
-      If you have dual nationality, select all options that are relevant to you.
-    </span>
   </legend>
 </fieldset>
 
@@ -28,14 +18,11 @@ exports[`Checkboxes nested dependant components passes through html fieldset par
 
 <fieldset class="govuk-fieldset">
   <legend class="govuk-fieldset__legend">
-    What is your &lt;b&gt;nationality&lt;/b&gt;?
-    <span class="govuk-fieldset__hint">
-      If you have dual nationality,
-      <b>
-        select all options
-      </b>
-      that are relevant to you.
-    </span>
+    What is your
+    <b>
+      nationality
+    </b>
+    ?
   </legend>
 </fieldset>
 
@@ -57,5 +44,25 @@ exports[`Checkboxes nested dependant components passes through label params with
 >
   &lt;b&gt;Option 2&lt;/b&gt;
 </label>
+
+`;
+
+exports[`Checkboxes when they include a hint renders the hint 1`] = `
+
+<span id="example-hint"
+      class="govuk-hint"
+>
+  If you have dual nationality, select all options that are relevant to you.
+</span>
+
+`;
+
+exports[`Checkboxes when they include an error message renders the error message 1`] = `
+
+<span id="example-error"
+      class="govuk-error-message"
+>
+  Please select an option
+</span>
 
 `;

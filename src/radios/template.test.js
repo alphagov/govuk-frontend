@@ -6,6 +6,9 @@ const { render, getExamples, htmlWithClassName } = require('../../lib/jest-helpe
 
 const examples = getExamples('radios')
 
+const WORD_BOUNDARY = '\\b'
+const WHITESPACE = '\\s'
+
 describe('Radios', () => {
   it('default example passes accessibility tests', async () => {
     const $ = render('radios', examples.default)
@@ -223,6 +226,104 @@ describe('Radios', () => {
     })
   })
 
+  describe('when they include a hint', () => {
+    it('renders the hint', () => {
+      const $ = render('radios', examples['with-extreme-fieldset'])
+
+      expect(htmlWithClassName($, '.govuk-hint')).toMatchSnapshot()
+    })
+
+    it('associates the fieldset as "described by" the hint', () => {
+      const $ = render('radios', examples['with-extreme-fieldset'])
+
+      const $fieldset = $('.govuk-fieldset')
+      const $hint = $('.govuk-hint')
+
+      const hintId = new RegExp(
+        WORD_BOUNDARY + $hint.attr('id') + WORD_BOUNDARY
+      )
+
+      expect($fieldset.attr('aria-describedby')).toMatch(hintId)
+    })
+  })
+
+  describe('when they include an error message', () => {
+    it('renders the error message', () => {
+      const $ = render('radios', examples['with-extreme-fieldset'])
+      expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
+    })
+
+    it('uses the idPrefix for the error message id if provided', () => {
+      const $ = render('radios', {
+        name: 'name-of-radios',
+        errorMessage: {
+          text: 'Have you changed your name?'
+        },
+        idPrefix: 'id-prefix',
+        items: [
+          {
+            value: 'yes',
+            text: 'Yes'
+          }
+        ]
+      })
+
+      const $errorMessage = $('.govuk-error-message')
+
+      expect($errorMessage.attr('id')).toEqual('id-prefix-error')
+    })
+
+    it('falls back to using the name for the error message id', () => {
+      const $ = render('radios', {
+        name: 'name-of-radios',
+        errorMessage: {
+          text: 'Have you changed your name?'
+        },
+        items: [
+          {
+            value: 'yes',
+            text: 'Yes'
+          }
+        ]
+      })
+
+      const $errorMessage = $('.govuk-error-message')
+
+      expect($errorMessage.attr('id')).toEqual('name-of-radios-error')
+    })
+
+    it('associates the fieldset as "described by" the error message', () => {
+      const $ = render('radios', examples['with-extreme-fieldset'])
+
+      const $fieldset = $('.govuk-fieldset')
+      const $errorMessage = $('.govuk-error-message')
+
+      const errorMessageId = new RegExp(
+        WORD_BOUNDARY + $errorMessage.attr('id') + WORD_BOUNDARY
+      )
+
+      expect($fieldset.attr('aria-describedby'))
+        .toMatch(errorMessageId)
+    })
+  })
+
+  describe('when they include both a hint and an error message', () => {
+    it('associates the fieldset as described by both the hint and the error message', () => {
+      const $ = render('radios', examples['with-extreme-fieldset'])
+
+      const $fieldset = $('.govuk-fieldset')
+      const $errorMessageId = $('.govuk-error-message').attr('id')
+      const $hintId = $('.govuk-hint').attr('id')
+
+      const combinedIds = new RegExp(
+        WORD_BOUNDARY + $hintId + WHITESPACE + $errorMessageId + WORD_BOUNDARY
+      )
+
+      expect($fieldset.attr('aria-describedby'))
+        .toMatch(combinedIds)
+    })
+  })
+
   describe('nested dependant components', () => {
     it('have correct nesting order', () => {
       const $ = render('radios', examples['with-extreme-fieldset'])
@@ -259,7 +360,6 @@ describe('Radios', () => {
     it('passes through fieldset params without breaking', () => {
       const $ = render('radios', examples['with-extreme-fieldset'])
 
-      expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
       expect(htmlWithClassName($, '.govuk-fieldset')).toMatchSnapshot()
     })
 
@@ -277,8 +377,7 @@ describe('Radios', () => {
           }
         ],
         fieldset: {
-          legendText: 'Have <b>you</b> changed your name?',
-          legendHintHtml: 'This <b>includes</b> changing your last name or spelling your name differently.'
+          legendHtml: 'Have <b>you</b> changed your name?'
         }
       })
 

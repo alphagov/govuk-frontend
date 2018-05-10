@@ -22,8 +22,9 @@ examples:
     id: select-2
     name: select-2
     label:
-      hintText: Hint text goes here
       text: Label text goes here
+    hint:
+      text: Hint text goes here
     errorMessage:
       text: Error message goes here
     items:

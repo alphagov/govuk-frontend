@@ -1,9 +1,14 @@
+@import "../globals/helpers/clearfix";
 @import "../globals/tools/exports";
 @import "../globals/tools/iff";
+@import "../globals/settings/colours-palette";
+@import "../globals/settings/colours-applied";
+@import "../globals/settings/spacing";
 
-@import "../label/label";
-@import "../input/input";
 @import "../error-message/error-message";
+@import "../input/input";
+@import "../hint/hint";
+@import "../label/label";
 
 @include govuk-exports("date-input") {
   .govuk-date-input {

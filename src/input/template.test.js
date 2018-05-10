@@ -6,6 +6,9 @@ const { render, getExamples, htmlWithClassName } = require('../../lib/jest-helpe
 
 const examples = getExamples('input')
 
+const WORD_BOUNDARY = '\\b'
+const WHITESPACE = '\\s'
+
 describe('Input', () => {
   describe('by default', () => {
     it('passes accessibility tests', async () => {
@@ -79,6 +82,105 @@ describe('Input', () => {
     })
   })
 
+  describe('when it includes a hint', () => {
+    it('renders the hint', () => {
+      const $ = render('input', {
+        id: 'input-with-hint',
+        hint: {
+          text: 'It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.'
+        }
+      })
+
+      expect(htmlWithClassName($, '.govuk-hint')).toMatchSnapshot()
+    })
+
+    it('associates the input as "described by" the hint', () => {
+      const $ = render('input', {
+        id: 'input-with-hint',
+        hint: {
+          text: 'It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.'
+        }
+      })
+
+      const $input = $('.govuk-input')
+      const $hint = $('.govuk-hint')
+
+      const hintId = new RegExp(
+        WORD_BOUNDARY + $hint.attr('id') + WORD_BOUNDARY
+      )
+
+      expect($input.attr('aria-describedby'))
+        .toMatch(hintId)
+    })
+  })
+
+  describe('when it includes an error message', () => {
+    it('renders the error message', () => {
+      const $ = render('input', {
+        id: 'input-with-error',
+        errorMessage: {
+          text: 'Error message'
+        }
+      })
+
+      expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
+    })
+
+    it('associates the input as "described by" the error message', () => {
+      const $ = render('input', {
+        id: 'input-with-error',
+        errorMessage: {
+          text: 'Error message'
+        }
+      })
+
+      const $input = $('.govuk-input')
+      const $errorMessage = $('.govuk-error-message')
+
+      const errorMessageId = new RegExp(
+        WORD_BOUNDARY + $errorMessage.attr('id') + WORD_BOUNDARY
+      )
+
+      expect($input.attr('aria-describedby'))
+        .toMatch(errorMessageId)
+    })
+
+    it('includes the error class on the input', () => {
+      const $ = render('input', {
+        errorMessage: {
+          text: 'Error message'
+        }
+      })
+
+      const $component = $('.govuk-input')
+      expect($component.hasClass('govuk-input--error')).toBeTruthy()
+    })
+  })
+
+  describe('when it includes both a hint and an error message', () => {
+    it('associates the input as described by both the hint and the error message', () => {
+      const $ = render('input', {
+        errorMessage: {
+          text: 'Error message'
+        },
+        hint: {
+          text: 'Hint'
+        }
+      })
+
+      const $component = $('.govuk-input')
+      const $errorMessageId = $('.govuk-error-message').attr('id')
+      const $hintId = $('.govuk-hint').attr('id')
+
+      const combinedIds = new RegExp(
+        WORD_BOUNDARY + $hintId + WHITESPACE + $errorMessageId + WORD_BOUNDARY
+      )
+
+      expect($component.attr('aria-describedby'))
+        .toMatch(combinedIds)
+    })
+  })
+
   describe('with dependant components', () => {
     it('have correct nesting order', () => {
       const $ = render('input', {
@@ -113,27 +215,6 @@ describe('Input', () => {
 
       const $label = $('.govuk-label')
       expect($label.attr('for')).toEqual('my-input')
-    })
-
-    it('renders with error message', () => {
-      const $ = render('input', {
-        errorMessage: {
-          'text': 'Error message'
-        }
-      })
-
-      expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
-    })
-
-    it('has error class when rendered with error message', () => {
-      const $ = render('input', {
-        errorMessage: {
-          'text': 'Error message'
-        }
-      })
-
-      const $component = $('.govuk-input')
-      expect($component.hasClass('govuk-input--error')).toBeTruthy()
     })
   })
 })

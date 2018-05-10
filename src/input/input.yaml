@@ -9,14 +9,16 @@ examples:
     data:
       label:
         text: National insurance number
-        hintText: It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
+      hint:
+        text: It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
       id: input-2
       name: test-name-2
   - name: with-error-message
     data:
       label:
         text: National Insurance number
-        hintHtml: It’s on your <i>National Insurance card</i>, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
+      hint:
+        html: It’s on your <i>National Insurance card</i>, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
       id: input-3
       name: test-name-3
       errorMessage:
@@ -25,7 +27,8 @@ examples:
     data:
       label:
         text: National insurance number
-        hintText: It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
+      hint:
+        text: It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
       id: input-2
       name: test-name-4
       classes: govuk-input--width-10
@@ -33,7 +36,8 @@ examples:
     data:
       label:
         text: National insurance number
-        hintText: It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
+      hint:
+        text: It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
       id: input-2
       name: test-name-5
       classes: govuk-input--width-20
@@ -41,7 +45,8 @@ examples:
     data:
       label:
         text: National insurance number
-        hintText: It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
+      hint:
+        text: It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
       id: input-2
       name: test-name-6
       classes: govuk-input--width-30
