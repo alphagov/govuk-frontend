@@ -16,7 +16,7 @@ const appViews = [
   configPaths.layouts,
   configPaths.partials,
   configPaths.examples,
-  configPaths.src
+  configPaths.components
 ]
 
 module.exports = (options) => {
@@ -50,18 +50,11 @@ module.exports = (options) => {
 
   // Index page - render the component list template
   app.get('/', async function (req, res) {
-    const components = await readdir(path.resolve(configPaths.src))
+    const components = await readdir(path.resolve(configPaths.components))
     const examples = await readdir(path.resolve(configPaths.examples))
 
-    // Filter out globals, all and icons package
-    const filteredComponents = components.filter(component => (
-      component !== 'globals' &&
-      component !== 'icons' &&
-      !component.startsWith('all')
-    ))
-
     res.render('index', {
-      componentsDirectory: filteredComponents,
+      componentsDirectory: components,
       examplesDirectory: examples
     })
   })
@@ -69,7 +62,7 @@ module.exports = (options) => {
   // Whenever the route includes a :component parameter, read the component data
   // from its YAML file
   app.param('component', function (req, res, next, componentName) {
-    let yamlPath = configPaths.src + `${componentName}/${componentName}.yaml`
+    let yamlPath = path.join(configPaths.components, componentName, `${componentName}.yaml`)
 
     try {
       res.locals.componentData = yaml.safeLoad(
