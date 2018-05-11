@@ -437,9 +437,9 @@ When compiling the Sass files you'll need to define includePaths to reference th
 
 ### Static asset path configuration
 
-To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
+In order to include the images used in the components, you need to configure your app to show these assets. Below is a sample configuration using Express js:
 
-    app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
+    app.use('/assets', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/assets')))
 
 ## Component arguments
 

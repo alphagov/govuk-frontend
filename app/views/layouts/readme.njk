@@ -49,10 +49,11 @@ npm install --save @govuk-frontend/{{ componentName }}
 
 
 <h3>Static asset path configuration</h3>
-<p>To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:</p>
+<p>In order to include the images used in the components, you need to configure
+your app to show these assets. Below is a sample configuration using Express js:</p>
 
 <pre><code>
-app.use('/public', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
+app.use('/assets', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/assets')))
 </code></pre>
 
 <h2>Component arguments</h2>

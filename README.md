@@ -203,11 +203,10 @@ gulp.task('compile', () => {
 ```
 (If you compile JavaScript in your project, your build tasks will already include something similar to the above task - in that case, you will just need to pipe `rollup` to it.)
 
-### Import images and icons
+### Import images
 
-In order to import GOV.UK Frontend images and icons to your project, you should
-configure your application to reference or copy the relevant GOV.UK Frontend
-assets.
+In order to import GOV.UK Frontend images to your project, you should configure
+your application to reference or copy the relevant GOV.UK Frontend assets.
 
 1. Follow either [Recommended solution](#recommended-solution) or [Alternative
    solution](#alternative-solution).
@@ -220,22 +219,22 @@ assets.
 
 #### Recommended solution:
 
-Make `/node_modules/@govuk-frontend/icons` available to your project by routing
-requests for your images folder there.
+Make `/node_modules/@govuk-frontend/assets` available to your project by routing
+requests for your assets folder there.
 
 For example, if your project uses [express.js](https://expressjs.com/), below is
 a code sample you could add to your configuration:
 
 ```JS
-app.use('/icons', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
+app.use('/assets', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/assets')))
 ```
 
 #### Alternative solution:
 
-Manually copy the images from `/node_modules/@govuk-frontend/icons` into a
+Manually copy the images from `/node_modules/@govuk-frontend/assets` into a
 public facing directory in your project. Ideally copying the files to your
 project should be an automated task or part of your build pipeline to ensure
-that the GOV.UK Frontend images and icons stay up-to-date.
+that the GOV.UK Frontend images stay up-to-date.
 
 ### Include assets
 
@@ -272,7 +271,7 @@ Download the latest versions of the following assets and include them in your
 project:
 
 - [css and javascript](https://github.com/alphagov/govuk-frontend/tree/master/dist)
-- [icons](https://github.com/alphagov/govuk-frontend/tree/master/dist/icons)
+- [assets](https://github.com/alphagov/govuk-frontend/tree/master/dist/assets)
 
 ### Include assets
 
