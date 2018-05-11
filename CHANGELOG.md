@@ -205,6 +205,8 @@ New features:
 
 Internal:
 
+- Remove unused step in travis.yml file
+  (PR [#690](https://github.com/alphagov/govuk-frontend/pull/690))
 - Update publishing docs (PR [#651](https://github.com/alphagov/govuk-frontend/pull/651))
 - Wrap `app.css` in conditional comments in review app layout (PR [#653](https://github.com/alphagov/govuk-frontend/pull/653))
 - Fix missing code highlight and remove duplicate layout
