@@ -41,7 +41,7 @@ const sassBootstrap = `
   );
 
   @import "globals/helpers/media-queries";
-  @import "globals/tools/iff";
+  @import "tools/iff";
   @import "globals/helpers/typography";`
 
 describe('@mixin govuk-typography-responsive', () => {

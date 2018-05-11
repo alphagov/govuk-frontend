@@ -4,15 +4,6 @@
 // This means that every component has access to all things within the settings,
 // tools and helpers layers
 
-
-// Tools
-@import "tools/compatibility";
-@import "tools/exports";
-@import "tools/file-url";
-@import "tools/ie8";
-@import "tools/iff";
-@import "tools/px-to-em";
-
 // Helpers
 @import "helpers/shape-arrow";
 @import "helpers/clearfix";

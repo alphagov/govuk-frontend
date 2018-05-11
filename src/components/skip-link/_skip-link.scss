@@ -1,8 +1,5 @@
 @import "../../settings/all";
-
-@import "../../globals/tools/exports";
-@import "../../globals/tools/compatibility";
-@import "../../globals/tools/iff";
+@import "../../tools/all";
 
 @import "../../globals/helpers/focusable";
 @import "../../globals/helpers/visually-hidden";

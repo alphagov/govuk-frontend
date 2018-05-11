@@ -2,7 +2,7 @@
 
 const util = require('util')
 
-const configPaths = require('../../../config/paths.json')
+const configPaths = require('../../config/paths.json')
 
 const sass = require('node-sass')
 const sassRender = util.promisify(sass.render)
@@ -17,7 +17,7 @@ describe('@mixin govuk-compatibility', () => {
     const sass = `
       $govuk-compatibility: (existing_app: false);
 
-      @import "globals/tools/compatibility";
+      @import "tools/compatibility";
 
       @include govuk-compatibility(existing_app) {
         .foo {
@@ -34,7 +34,7 @@ describe('@mixin govuk-compatibility', () => {
     const sass = `
       $govuk-compatibility: (existing_app: true);
 
-      @import "globals/tools/compatibility";
+      @import "tools/compatibility";
 
       @include govuk-compatibility(existing_app) {
         .foo {
@@ -51,7 +51,7 @@ describe('@mixin govuk-compatibility', () => {
     const sass = `
       $govuk-compatibility: (existing_app: true);
 
-      @import "globals/tools/compatibility";
+      @import "tools/compatibility";
 
       @include govuk-compatibility(non_existent_app) {
         .foo {

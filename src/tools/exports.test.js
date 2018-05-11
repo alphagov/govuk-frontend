@@ -2,7 +2,7 @@
 
 const util = require('util')
 
-const configPaths = require('../../../config/paths.json')
+const configPaths = require('../../config/paths.json')
 
 const sass = require('node-sass')
 const sassRender = util.promisify(sass.render)
@@ -15,7 +15,7 @@ const sassConfig = {
 describe('@mixin govuk-exports', () => {
   it('will only output a named section once', async () => {
     const sass = `
-      @import "globals/tools/exports";
+      @import "tools/exports";
 
       @include govuk-exports(foo) {
         .foo {
@@ -36,7 +36,7 @@ describe('@mixin govuk-exports', () => {
 
   it('will export differently named sections', async () => {
     const sass = `
-      @import "globals/tools/exports";
+      @import "tools/exports";
 
       @include govuk-exports(foo) {
         .foo {

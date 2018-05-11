@@ -1,6 +1,6 @@
 @import "../../settings/all";
+@import "../../tools/all";
 
-@import "../../globals/tools/exports";
 @import "../tag/tag";
 
 @include govuk-exports("phase-banner") {

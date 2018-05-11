@@ -24,7 +24,7 @@ const sassBootstrap = `
   );
 
   @import "globals/helpers/media-queries";
-  @import "globals/tools/iff";
+  @import "tools/iff";
   @import "globals/helpers/spacing";`
 
 describe('@mixin govuk-responsive-spacing', () => {
