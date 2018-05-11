@@ -419,8 +419,6 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 
 To consume the radios component you must be running npm version 5 or above.
 
-Please note, this component depends on @govuk-frontend/globals, which will automatically be installed with the package.
-
 ## Installation
 
     npm install --save @govuk-frontend/radios

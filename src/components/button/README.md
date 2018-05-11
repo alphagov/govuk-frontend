@@ -148,8 +148,6 @@ Buttons are configured to perform an action and they can have a different look. 
 
 To consume the button component you must be running npm version 5 or above.
 
-Please note, this component depends on @govuk-frontend/globals and @govuk-frontend/icons, which will automatically be installed with the package.
-
 ## Installation
 
     npm install --save @govuk-frontend/button

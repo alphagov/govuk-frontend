@@ -212,8 +212,6 @@ Find out when to use the Breadcrumbs component in your service in the [GOV.UK De
 
 To consume the breadcrumbs component you must be running npm version 5 or above.
 
-Please note, this component depends on @govuk-frontend/globals and @govuk-frontend/icons, which will automatically be installed with the package.
-
 ## Installation
 
     npm install --save @govuk-frontend/breadcrumbs
