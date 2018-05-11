@@ -2,7 +2,7 @@
 
 const { axe } = require('jest-axe')
 
-const { render, getExamples } = require('../../lib/jest-helpers')
+const { render, getExamples } = require('../../../lib/jest-helpers')
 
 const examples = getExamples('tag')
 
