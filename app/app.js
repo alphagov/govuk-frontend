@@ -9,6 +9,7 @@ const yaml = require('js-yaml')
 const readdir = util.promisify(fs.readdir)
 
 const helperFunctions = require('../lib/helper-functions')
+const fileHelper = require('../lib/file-helper')
 const configPaths = require('../config/paths.json')
 
 // Set up views
@@ -50,7 +51,7 @@ module.exports = (options) => {
 
   // Index page - render the component list template
   app.get('/', async function (req, res) {
-    const components = await readdir(path.resolve(configPaths.components))
+    const components = fileHelper.allComponents
     const examples = await readdir(path.resolve(configPaths.examples))
 
     res.render('index', {
