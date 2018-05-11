@@ -1,4 +1,4 @@
-import '../globals/polyfills/Event' // addEventListener
+import '../../globals/polyfills/Event' // addEventListener
 
 function ErrorSummary ($module) {
   this.$module = $module

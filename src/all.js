@@ -1,9 +1,9 @@
 import { nodeListForEach } from './globals/common'
-import Button from './button/button'
-import Details from './details/details'
-import Checkboxes from './checkboxes/checkboxes'
-import ErrorSummary from './error-summary/error-summary'
-import Radios from './radios/radios'
+import Button from './components/button/button'
+import Details from './components/details/details'
+import Checkboxes from './components/checkboxes/checkboxes'
+import ErrorSummary from './components/error-summary/error-summary'
+import Radios from './components/radios/radios'
 
 export function initAll () {
   new Button().init()

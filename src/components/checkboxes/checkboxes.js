@@ -1,6 +1,6 @@
-import '../globals/polyfills/Function/prototype/bind'
-import '../globals/polyfills/Event' // addEventListener and event.target normaliziation
-import { nodeListForEach } from '../globals/common'
+import '../../globals/polyfills/Function/prototype/bind'
+import '../../globals/polyfills/Event' // addEventListener and event.target normaliziation
+import { nodeListForEach } from '../../globals/common'
 
 function Checkboxes ($module) {
   this.$module = $module
