@@ -4,17 +4,6 @@
 // This means that every component has access to all things within the settings,
 // tools and helpers layers
 
-// Helpers
-@import "helpers/shape-arrow";
-@import "helpers/clearfix";
-@import "helpers/device-pixels";
-@import "helpers/focusable";
-@import "helpers/media-queries";
-@import "helpers/typography";
-@import "helpers/spacing";
-@import "helpers/visually-hidden";
-@import "helpers/grid";
-
 // Core
 @import "core/links";
 @import "core/lists";

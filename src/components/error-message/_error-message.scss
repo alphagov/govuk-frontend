@@ -1,9 +1,6 @@
 @import "../../settings/all";
 @import "../../tools/all";
-
-@import "../../globals/helpers/media-queries";
-
-@import "../../globals/helpers/typography";
+@import "../../helpers/all";
 
 @include govuk-exports("error-message") {
   .govuk-error-message {

@@ -2,7 +2,7 @@
 
 const util = require('util')
 
-const configPaths = require('../../../config/paths.json')
+const configPaths = require('../../config/paths.json')
 
 const outdent = require('outdent')
 const sass = require('node-sass')
@@ -23,9 +23,9 @@ const sassBootstrap = `
     my_breakpoint: 25px
   );
 
-  @import "globals/helpers/media-queries";
+  @import "helpers/media-queries";
   @import "tools/iff";
-  @import "globals/helpers/spacing";`
+  @import "helpers/spacing";`
 
 describe('@mixin govuk-responsive-spacing', () => {
   it('outputs CSS for a property based on the given spacing map', async () => {

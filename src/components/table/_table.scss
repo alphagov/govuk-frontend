@@ -1,10 +1,6 @@
 @import "../../settings/all";
 @import "../../tools/all";
-
-@import "../../globals/helpers/media-queries";
-@import "../../globals/helpers/spacing";
-
-@import "../../globals/helpers/typography";
+@import "../../helpers/all";
 
 @include govuk-exports("table") {
   .govuk-table {

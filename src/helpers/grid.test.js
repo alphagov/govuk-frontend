@@ -3,7 +3,7 @@
 const util = require('util')
 const outdent = require('outdent')
 
-const configPaths = require('../../../config/paths.json')
+const configPaths = require('../../config/paths.json')
 
 const sass = require('node-sass')
 const sassRender = util.promisify(sass.render)
@@ -17,13 +17,13 @@ describe('grid system', () => {
     @import "tools/exports";
     @import "settings/spacing";
     @import "settings/measurements";
-    @import "globals/helpers/grid";
-    @import "globals/helpers/media-queries";
+    @import "helpers/grid";
+    @import "helpers/media-queries";
   `
   describe('grid-width function', () => {
     it('outputs the specified key value from the map of widths', async () => {
       const sass = `
-        @import "globals/helpers/grid";
+        @import "helpers/grid";
 
         .foo {
           content: grid-width(one-quarter);
@@ -38,7 +38,7 @@ describe('grid system', () => {
 
     it('throws an error that the specified key does not exist in the map of widths', async () => {
       const sass = `
-        @import "globals/helpers/grid";
+        @import "helpers/grid";
 
         $value: grid-width(seven-fiths);
         `
@@ -53,7 +53,7 @@ describe('grid system', () => {
     it('outputs default defined styles for .govuk-grid-row class', async () => {
       const sass = `
         ${sassImports}
-        @import "globals/helpers/clearfix";
+        @import "helpers/clearfix";
 
         @include govuk-grid-row();
         `
@@ -80,7 +80,7 @@ describe('grid system', () => {
     it('outputs styles for the specified class', async () => {
       const sass = `
         ${sassImports}
-        @import "globals/helpers/clearfix";
+        @import "helpers/clearfix";
 
         @include govuk-grid-row('app-grid-row');
         `

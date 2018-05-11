@@ -2,7 +2,7 @@
 
 const util = require('util')
 
-const configPaths = require('../../../config/paths.json')
+const configPaths = require('../../config/paths.json')
 
 const sass = require('node-sass')
 const sassRender = util.promisify(sass.render)
@@ -16,7 +16,7 @@ describe('sass-mq', () => {
   describe('mq-px2em function', () => {
     it('converts px value to em', async () => {
       const sass = `
-        @import "globals/helpers/media-queries";
+        @import "helpers/media-queries";
 
         .foo {
           width: mq-px2em(320px);
@@ -29,7 +29,7 @@ describe('sass-mq', () => {
 
     it('assumes unitless value is px and converts it to em', async () => {
       const sass = `
-        @import "globals/helpers/media-queries";
+        @import "helpers/media-queries";
 
         .foo {
           width: mq-px2em(640);
@@ -42,7 +42,7 @@ describe('sass-mq', () => {
 
     it('accepts em value and outputs the same em value', async () => {
       const sass = `
-        @import "globals/helpers/media-queries";
+        @import "helpers/media-queries";
 
         .foo {
           width: mq-px2em(40em);
@@ -56,7 +56,7 @@ describe('sass-mq', () => {
     it('$mq-base-font-size change results in updated calculation', async () => {
       const sass = `
         $mq-base-font-size: 19px;
-        @import "globals/helpers/media-queries";
+        @import "helpers/media-queries";
 
         .foo {
           width: mq-px2em(320px);
@@ -76,7 +76,7 @@ describe('sass-mq', () => {
           tablet:  641px,
           desktop: 769px
         );
-        @import "globals/helpers/media-queries";
+        @import "helpers/media-queries";
 
         .foo {
           @media (min-width: mq-get-breakpoint-width('desktop', $my-breakpoints)) {
@@ -97,7 +97,7 @@ describe('sass-mq', () => {
           desktop: 769px
         );
 
-        @import "globals/helpers/media-queries";
+        @import "helpers/media-queries";
 
         $value: mq-get-breakpoint-width('massive', $my-breakpoints);
         `
@@ -110,7 +110,7 @@ describe('sass-mq', () => {
   describe('@mq-add-breakpoint mixin', () => {
     it('outputs a custom defined breakpoint', async () => {
       const sass = `
-        @import "globals/helpers/media-queries";
+        @import "helpers/media-queries";
 
         @include mq-add-breakpoint(tvscreen, 1920px);
 
@@ -129,7 +129,7 @@ describe('sass-mq', () => {
   describe('@mq-show-breakpoints mixin', () => {
     it('outputs all the specified breakpoints', async () => {
       const sass = `
-        @import "globals/helpers/media-queries";
+        @import "helpers/media-queries";
         @include mq-show-breakpoints((L, XL), (L: 800px, XL: 1200px));
         `
       const sassConfig = {
@@ -166,7 +166,7 @@ describe('sass-mq', () => {
   describe('@mq mixin', () => {
     it('outputs "min-width" media query', async() => {
       const sass = `
-        @import "globals/helpers/media-queries";
+        @import "helpers/media-queries";
 
         .foo {
           @include mq($from: 20em) {
@@ -181,7 +181,7 @@ describe('sass-mq', () => {
 
     it('outputs "max-width" media query', async() => {
       const sass = `
-        @import "globals/helpers/media-queries";
+        @import "helpers/media-queries";
 
         .foo {
           @include mq($until: 20em) {
@@ -196,7 +196,7 @@ describe('sass-mq', () => {
 
     it('outputs "min-width" and max-width" media queries', async() => {
       const sass = `
-        @import "globals/helpers/media-queries";
+        @import "helpers/media-queries";
 
         .foo {
           @include mq(20em,40em) {
@@ -211,7 +211,7 @@ describe('sass-mq', () => {
 
     it('outputs additional custom directives', async() => {
       const sass = `
-        @import "globals/helpers/media-queries";
+        @import "helpers/media-queries";
 
         .foo {
           @include mq($until:40em, $and:'(orientation: landscape)') {
@@ -226,7 +226,7 @@ describe('sass-mq', () => {
 
     it('outputs the correct media type', async() => {
       const sass = `
-        @import "globals/helpers/media-queries";
+        @import "helpers/media-queries";
 
         .foo {
           @include mq($until:40em, $media-type: 'aural') {
@@ -251,7 +251,7 @@ describe('sass-mq', () => {
         $mq-responsive: false;
         $mq-static-breakpoint: desktop;
 
-        @import "globals/helpers/media-queries";
+        @import "helpers/media-queries";
 
         .foo {
           @include mq($until: tablet) {

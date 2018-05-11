@@ -1,12 +1,8 @@
 @import "../../settings/all";
 @import "../../tools/all";
+@import "../../helpers/all";
 
-@import "../../globals/helpers/media-queries";
-@import "../../globals/helpers/focusable";
-@import "../../globals/helpers/spacing";
-@import "../../globals/helpers/device-pixels";
-
-@import "../../globals/helpers/typography";
+@import "../../helpers/typography";
 
 @include govuk-exports("footer") {
 

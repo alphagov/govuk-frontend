@@ -2,7 +2,7 @@
 
 const util = require('util')
 
-const configPaths = require('../../../config/paths.json')
+const configPaths = require('../../config/paths.json')
 
 const outdent = require('outdent')
 const sass = require('node-sass')
@@ -40,9 +40,9 @@ const sassBootstrap = `
     )
   );
 
-  @import "globals/helpers/media-queries";
+  @import "helpers/media-queries";
   @import "tools/iff";
-  @import "globals/helpers/typography";`
+  @import "helpers/typography";`
 
 describe('@mixin govuk-typography-responsive', () => {
   it('outputs CSS with suitable media queries', async () => {

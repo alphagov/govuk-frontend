@@ -1,13 +1,8 @@
 @import "../../settings/all";
 @import "../../tools/all";
-
-@import "../../globals/helpers/media-queries";
-@import "../../globals/helpers/spacing";
-@import "../../globals/helpers/visually-hidden";
+@import "../../helpers/all";
 
 @import "../../globals/objects/shapes";
-
-@import "../../globals/helpers/typography";
 
 @include govuk-exports("warning-text") {
 

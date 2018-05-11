@@ -1,8 +1,6 @@
 @import "../../settings/all";
 @import "../../tools/all";
-
-@import "../../globals/helpers/typography";
-@import "../../globals/helpers/media-queries";
+@import "../../helpers/all";
 
 @include govuk-exports("label") {
   .govuk-label {
