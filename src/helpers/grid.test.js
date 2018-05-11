@@ -64,11 +64,6 @@ describe('grid system', () => {
         .toString()
         .trim())
         .toBe(outdent`
-        .govuk-clearfix:after {
-          content: \"\";
-          display: block;
-          clear: both; }
-
         .govuk-grid-row {
           margin-right: -15px;
           margin-left: -15px; }
@@ -91,11 +86,6 @@ describe('grid system', () => {
         .toString()
         .trim())
         .toBe(outdent`
-        .govuk-clearfix:after {
-          content: \"\";
-          display: block;
-          clear: both; }
-
         .app-grid-row {
           margin-right: -15px;
           margin-left: -15px; }
