@@ -12,11 +12,12 @@ let scssFiles = filter([configPaths.src + '**/*.scss'], {restore: true})
 gulp.task('copy-files', () => {
   return gulp.src([
     configPaths.src + '**/*',
-    '!' + configPaths.src + '**/*.{test,js}',
-    '!' + configPaths.src + '**/index.njk',
-    '!' + configPaths.src + '**/*.{yml,yaml}',
-    '!' + configPaths.src + '**/__snapshots__/**',
-    '!' + configPaths.src + '**/__snapshots__/'
+    '!**/.DS_Store',
+    '!**/*.test.js',
+    '!' + configPaths.components + '**/index.njk',
+    '!' + configPaths.components + '**/*.{yml,yaml}',
+    '!' + configPaths.components + '**/__snapshots__/**',
+    '!' + configPaths.components + '**/__snapshots__/'
   ])
   .pipe(scssFiles)
   .pipe(postcss([
