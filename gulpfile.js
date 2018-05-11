@@ -31,12 +31,12 @@ gulp.task('styles', cb => {
   runsequence('scss:lint', 'scss:compile', cb)
 })
 
-// Copy icons task ----------------------
-// Copies icons to /public
+// Copy assets task ----------------------
+// Copies assets to taskArguments.destination (public)
 // --------------------------------------
-gulp.task('copy:icons', () => {
-  return gulp.src(paths.src + 'icons/**/*.{png,svg,gif,jpg}')
-    .pipe(gulp.dest(taskArguments.destination + '/icons/'))
+gulp.task('copy:assets', () => {
+  return gulp.src(paths.src + 'assets/**/*')
+    .pipe(gulp.dest(taskArguments.destination + '/assets/'))
 })
 
 // All test combined --------------------
@@ -95,7 +95,7 @@ gulp.task('build:package', cb => {
 gulp.task('build:dist', cb => {
   runsequence('clean',
               'copy-assets',
-              'copy:icons',
+              'copy:assets',
               'generate:readme',
               'update-assets-version',
               cb)

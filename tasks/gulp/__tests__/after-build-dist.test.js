@@ -2,27 +2,76 @@
 const path = require('path')
 const lib = require('../../../lib/file-helper')
 const configPaths = require('../../../config/paths.json')
+const recursive = require('recursive-readdir')
 
-describe('building dist/', () => {
+describe('dist/', () => {
   let version = require(path.join('../../../', configPaths.package, 'package.json')).version
 
-  describe('when compiling css to dist', () => {
-    const FrontendCssFile = lib.readFileContents(path.join(configPaths.dist, `govuk-frontend-${version}.min.css`))
-    const FrontendCssOldIeFile = lib.readFileContents(path.join(configPaths.dist, `govuk-frontend-ie8-${version}.min.css`))
+  describe('assets/', () => {
+    it('should include the same files as in src/assets', () => {
+      // Build an array of the assets that are present in the src directory.
+      const expectedDistAssets = () => {
+        return recursive(path.join(configPaths.src, 'assets')).then(
+          files => {
+            return files
+              // Remove /package prefix from filenames
+              .map(file => file.replace(/^src\/assets\//, ''))
+              // Sort to make comparison easier
+              .sort()
+          },
+          error => {
+            console.error('Unable to get asset files from src', error)
+          }
+        )
+      }
 
-    it('standard css file should not contain current media query displayed on body element', () => {
-      expect(FrontendCssFile).not.toMatch(/body:before{content:/)
-    })
-    it('legacy css file should not contain current media query displayed on body element', () => {
-      expect(FrontendCssOldIeFile).not.toMatch(/body:before{content:/)
+      const actualDistAssets = () => {
+        return recursive(path.join(configPaths.dist, 'assets')).then(
+          files => {
+            return files
+              // Remove /package prefix from filenames
+              .map(file => file.replace(/^dist\/assets\//, ''))
+              // Sort to make comparison easier
+              .sort()
+          },
+          error => {
+            console.error('Unable to get asset files from dist', error)
+          }
+        )
+      }
+
+      // Compare the expected directory listing with the files we expect
+      // to be present
+      Promise.all([actualDistAssets(), expectedDistAssets()])
+        .then(results => {
+          const [actualDistAssets, expectedDistAssets] = results
+
+          expect(actualDistAssets).toEqual(expectedDistAssets)
+        })
     })
   })
 
-  describe('when compiling Javascipt to dist', () => {
-    const FrontendJsFile = lib.readFileContents(path.join(configPaths.dist, `govuk-frontend-${version}.min.js`))
+  describe(`govuk-frontend-${version}.min.css`, () => {
+    const stylesheet = lib.readFileContents(path.join(configPaths.dist, `govuk-frontend-${version}.min.css`))
 
-    it('javascript file has the correct version name', () => {
-      expect(FrontendJsFile).toBeTruthy()
+    it('should not contain current media query displayed on body element', () => {
+      expect(stylesheet).not.toMatch(/body:before{content:/)
+    })
+  })
+
+  describe(`govuk-frontend-ie8-${version}.min.css`, () => {
+    const stylesheet = lib.readFileContents(path.join(configPaths.dist, `govuk-frontend-ie8-${version}.min.css`))
+
+    it('should not contain current media query displayed on body element', () => {
+      expect(stylesheet).not.toMatch(/body:before{content:/)
+    })
+  })
+
+  describe(`govuk-frontend-${version}.min.js`, () => {
+    const javascript = lib.readFileContents(path.join(configPaths.dist, `govuk-frontend-${version}.min.js`))
+
+    it('should have the correct version name', () => {
+      expect(javascript).toBeTruthy()
     })
   })
 })
