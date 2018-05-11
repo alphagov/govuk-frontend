@@ -1,11 +1,7 @@
+@import "../../settings/all";
+
 @import "../../globals/tools/exports";
 @import "../../globals/tools/compatibility";
-
-@import "../../globals/settings/colours-palette";
-@import "../../globals/settings/colours-applied";
-@import "../../globals/settings/compatibility";
-@import "../../globals/settings/spacing";
-@import "../../globals/settings/measurements";
 
 @import "../../globals/tools/ie8";
 
@@ -14,9 +10,6 @@
 @import "../../globals/helpers/focusable";
 
 @import "../../globals/helpers/typography";
-@import "../../globals/settings/typography-font-stacks";
-@import "../../globals/settings/typography-font";
-@import "../../globals/settings/typography-responsive";
 
 @import "../../globals/core/links";
 

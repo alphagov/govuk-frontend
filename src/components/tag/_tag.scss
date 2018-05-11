@@ -1,16 +1,11 @@
+@import "../../settings/all";
+
 @import "../../globals/tools/exports";
 @import "../../globals/tools/iff";
-
-@import "../../globals/settings/colours-palette";
-@import "../../globals/settings/colours-applied";
-@import "../../globals/settings/spacing";
 
 @import "../../globals/helpers/media-queries";
 
 @import "../../globals/helpers/typography";
-@import "../../globals/settings/typography-font-stacks";
-@import "../../globals/settings/typography-font";
-@import "../../globals/settings/typography-responsive";
 
 @include govuk-exports("tag") {
   .govuk-tag {

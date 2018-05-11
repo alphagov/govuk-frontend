@@ -15,8 +15,8 @@ const sassConfig = {
 describe('grid system', () => {
   const sassImports = `
     @import "globals/tools/exports";
-    @import "globals/settings/spacing";
-    @import "globals/settings/measurements";
+    @import "settings/spacing";
+    @import "settings/measurements";
     @import "globals/helpers/grid";
     @import "globals/helpers/media-queries";
   `

@@ -1,19 +1,13 @@
+@import "../../settings/all";
+
 @import "../../globals/tools/exports";
 @import "../../globals/tools/iff";
-
-@import "../../globals/settings/colours-palette";
-@import "../../globals/settings/colours-applied";
-@import "../../globals/settings/spacing";
-@import "../../globals/settings/measurements";
 
 @import "../../globals/helpers/media-queries";
 @import "../../globals/helpers/spacing";
 @import "../../globals/helpers/shape-arrow";
 
 @import "../../globals/helpers/typography";
-@import "../../globals/settings/typography-font-stacks";
-@import "../../globals/settings/typography-font";
-@import "../../globals/settings/typography-responsive";
 
 @include govuk-exports("details") {
 

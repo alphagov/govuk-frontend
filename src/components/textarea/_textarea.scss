@@ -1,10 +1,8 @@
+@import "../../settings/all";
+
 @import "../../globals/helpers/focusable";
 @import "../../globals/helpers/spacing";
 @import "../../globals/tools/exports";
-@import "../../globals/settings/colours-palette";
-@import "../../globals/settings/colours-applied";
-@import "../../globals/settings/spacing";
-@import "../../globals/settings/measurements";
 
 @import "../error-message/error-message";
 @import "../hint/hint";
