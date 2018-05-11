@@ -45,7 +45,7 @@ module.exports = (options) => {
 
   // serve html5-shiv from node modules
   app.use('/vendor/html5-shiv/', express.static('node_modules/html5shiv/dist/'))
-  app.use('/icons', express.static(path.join(configPaths.src, 'icons')))
+  app.use('/assets', express.static(path.join(configPaths.src, 'assets')))
 
   // Define routes
 
