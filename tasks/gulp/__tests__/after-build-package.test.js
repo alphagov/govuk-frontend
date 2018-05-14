@@ -1,13 +1,16 @@
 /* eslint-env jest */
 
+const fs = require('fs')
 const path = require('path')
 const util = require('util')
+
 const sass = require('node-sass')
 const recursive = require('recursive-readdir')
 
 const configPaths = require('../../../config/paths.json')
 
 const sassRender = util.promisify(sass.render)
+const readFile = util.promisify(fs.readFile)
 
 describe('package/', () => {
   it('should contain the expected files', () => {
@@ -39,8 +42,7 @@ describe('package/', () => {
       ]
 
       const additionalFilesNotInSrc = [
-        'package.json',
-        'README.md'
+        'package.json'
       ]
 
       return recursive(configPaths.src, filesToIgnore).then(
@@ -67,6 +69,18 @@ describe('package/', () => {
 
         expect(actualPackageFiles).toEqual(expectedPackageFiles)
       })
+  })
+
+  describe('README.md', () => {
+    it('is not overwritten', () => {
+      return readFile(path.join(configPaths.package, 'README.md'), 'utf8')
+        .then(contents => {
+          // Look for H1 matching 'GOV.UK Frontend' from existing README
+          expect(contents).toMatch(/^# GOV.UK Frontend/)
+        }).catch(error => {
+          throw error
+        })
+    })
   })
 
   describe('all.scss', () => {
