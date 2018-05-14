@@ -85,7 +85,7 @@
     "ignore": [
       "/dist/**/*.js",
       "/package/**/*.js",
-      "/src/globals/polyfills/**/*.js"
+      "/src/vendor/polyfills/**/*.js"
     ]
   },
   "jest": {
