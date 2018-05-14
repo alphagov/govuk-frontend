@@ -2,9 +2,6 @@ language: node_js
 notifications:
   email: false
 sudo: false
-before_install:
-  - if [[ `npm -v | cut -d. -f1` -lt 5 ]]; then npm i -g npm@latest; fi
-  - npm --version
 install:
   - npm install --no-optional
 before_deploy:
