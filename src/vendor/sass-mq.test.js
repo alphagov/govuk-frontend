@@ -16,7 +16,7 @@ describe('sass-mq', () => {
   describe('mq-px2em function', () => {
     it('converts px value to em', async () => {
       const sass = `
-        @import "helpers/media-queries";
+        @import "vendor/sass-mq";
 
         .foo {
           width: mq-px2em(320px);
@@ -29,7 +29,7 @@ describe('sass-mq', () => {
 
     it('assumes unitless value is px and converts it to em', async () => {
       const sass = `
-        @import "helpers/media-queries";
+        @import "vendor/sass-mq";
 
         .foo {
           width: mq-px2em(640);
@@ -42,7 +42,7 @@ describe('sass-mq', () => {
 
     it('accepts em value and outputs the same em value', async () => {
       const sass = `
-        @import "helpers/media-queries";
+        @import "vendor/sass-mq";
 
         .foo {
           width: mq-px2em(40em);
@@ -56,7 +56,7 @@ describe('sass-mq', () => {
     it('$mq-base-font-size change results in updated calculation', async () => {
       const sass = `
         $mq-base-font-size: 19px;
-        @import "helpers/media-queries";
+        @import "vendor/sass-mq";
 
         .foo {
           width: mq-px2em(320px);
@@ -76,7 +76,7 @@ describe('sass-mq', () => {
           tablet:  641px,
           desktop: 769px
         );
-        @import "helpers/media-queries";
+        @import "vendor/sass-mq";
 
         .foo {
           @media (min-width: mq-get-breakpoint-width('desktop', $my-breakpoints)) {
@@ -90,27 +90,42 @@ describe('sass-mq', () => {
     })
 
     it('errors if the specified breakpoint does not exists in the map', async () => {
-      const sass = `
+      const data = `
         $my-breakpoints: (
           mobile:  320px,
           tablet:  641px,
           desktop: 769px
         );
 
-        @import "helpers/media-queries";
+        @import "vendor/sass-mq";
 
         $value: mq-get-breakpoint-width('massive', $my-breakpoints);
         `
-      await expect(sassRender({ data: sass, ...sassConfig }))
-        .rejects
-        .toThrow("Breakpoint massive wasn't found in $breakpoints.")
+
+      // Stub out the @warn function so that we can assert on warnings that are
+      // thrown during compilation
+      const warnings = []
+
+      const customFuncs = {
+        '@warn': (warning) => {
+          warnings.push(warning.getValue())
+
+          return sass.NULL
+        }
+      }
+
+      // Lost far too much time trying to make this test work with Promises,
+      // but couldn't get it to work. So we're doing it old school.
+      sass.render({ data: data, functions: customFuncs, ...sassConfig }, () => {
+        expect(warnings).toContain('Breakpoint massive wasn\'t found in $breakpoints.')
+      })
     })
   })
 
   describe('@mq-add-breakpoint mixin', () => {
     it('outputs a custom defined breakpoint', async () => {
       const sass = `
-        @import "helpers/media-queries";
+        @import "vendor/sass-mq";
 
         @include mq-add-breakpoint(tvscreen, 1920px);
 
@@ -129,7 +144,7 @@ describe('sass-mq', () => {
   describe('@mq-show-breakpoints mixin', () => {
     it('outputs all the specified breakpoints', async () => {
       const sass = `
-        @import "helpers/media-queries";
+        @import "vendor/sass-mq";
         @include mq-show-breakpoints((L, XL), (L: 800px, XL: 1200px));
         `
       const sassConfig = {
@@ -143,17 +158,17 @@ describe('sass-mq', () => {
         .toBe(outdent`
     @charset \"UTF-8\";
     body:before {
-      position: fixed;
-      z-index: 100;
-      top: 0;
-      right: 0;
-      padding: 5px;
-      border-bottom: 1px solid #ffbf47;
-      border-left: 1px solid #ffbf47;
-      color: #0b0c0c;
-      background-color: #ffdf94;
+      background-color: #FCF8E3;
+      border-bottom: 1px solid #FBEED5;
+      border-left: 1px solid #FBEED5;
+      color: #C09853;
       font: small-caption;
-      pointer-events: none; }
+      padding: 3px 6px;
+      pointer-events: none;
+      position: fixed;
+      right: 0;
+      top: 0;
+      z-index: 100; }
       @media (min-width: 50em) {
         body:before {
           content: \"L ≥ 800px (50em)\"; } }
@@ -166,7 +181,7 @@ describe('sass-mq', () => {
   describe('@mq mixin', () => {
     it('outputs "min-width" media query', async() => {
       const sass = `
-        @import "helpers/media-queries";
+        @import "vendor/sass-mq";
 
         .foo {
           @include mq($from: 20em) {
@@ -181,7 +196,7 @@ describe('sass-mq', () => {
 
     it('outputs "max-width" media query', async() => {
       const sass = `
-        @import "helpers/media-queries";
+        @import "vendor/sass-mq";
 
         .foo {
           @include mq($until: 20em) {
@@ -196,7 +211,7 @@ describe('sass-mq', () => {
 
     it('outputs "min-width" and max-width" media queries', async() => {
       const sass = `
-        @import "helpers/media-queries";
+        @import "vendor/sass-mq";
 
         .foo {
           @include mq(20em,40em) {
@@ -211,7 +226,7 @@ describe('sass-mq', () => {
 
     it('outputs additional custom directives', async() => {
       const sass = `
-        @import "helpers/media-queries";
+        @import "vendor/sass-mq";
 
         .foo {
           @include mq($until:40em, $and:'(orientation: landscape)') {
@@ -226,7 +241,7 @@ describe('sass-mq', () => {
 
     it('outputs the correct media type', async() => {
       const sass = `
-        @import "helpers/media-queries";
+        @import "vendor/sass-mq";
 
         .foo {
           @include mq($until:40em, $media-type: 'aural') {
@@ -251,7 +266,7 @@ describe('sass-mq', () => {
         $mq-responsive: false;
         $mq-static-breakpoint: desktop;
 
-        @import "helpers/media-queries";
+        @import "vendor/sass-mq";
 
         .foo {
           @include mq($until: tablet) {
