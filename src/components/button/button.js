@@ -8,7 +8,7 @@
  * Usage instructions:
  * the 'shim' will be automatically initialised
  */
-import { addEvent, charCode, preventDefault } from '../../globals/common'
+import { addEvent, charCode, preventDefault } from '../../common'
 
 var KEY_SPACE = 32
 

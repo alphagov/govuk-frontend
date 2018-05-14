@@ -8,7 +8,7 @@
  * the 'polyfill' will be automatically initialised
  */
 import '../../vendor/polyfills/Function/prototype/bind'
-import { addEvent, removeEvent, charCode, preventDefault } from '../../globals/common'
+import { addEvent, removeEvent, charCode, preventDefault } from '../../common'
 
 var KEY_ENTER = 13
 var KEY_SPACE = 32

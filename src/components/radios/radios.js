@@ -1,6 +1,6 @@
 import '../../vendor/polyfills/Function/prototype/bind'
 import '../../vendor/polyfills/Event' // addEventListener and event.target normaliziation
-import { nodeListForEach } from '../../globals/common'
+import { nodeListForEach } from '../../common'
 
 function Radios ($module) {
   this.$module = $module

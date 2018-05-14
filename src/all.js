@@ -1,4 +1,4 @@
-import { nodeListForEach } from './globals/common'
+import { nodeListForEach } from './common'
 import Button from './components/button/button'
 import Details from './components/details/details'
 import Checkboxes from './components/checkboxes/checkboxes'
