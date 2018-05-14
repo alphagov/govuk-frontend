@@ -8,6 +8,11 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+  // If using NTA, include the font-face definition
+  @if ($govuk-font-stack == $govuk-nta-light) {
+    @include govuk-font-face-nta;
+  }
+
   @include mq($media-type: print) {
     font-family: $govuk-font-stack-print;
   }
