@@ -1,5 +1,3 @@
-// Settings
-
 @import "settings/all";
 @import "tools/all";
 @import "helpers/all";
@@ -7,30 +5,7 @@
 @import "core/all";
 @import "objects/all";
 
-// Components
-@import "components/back-link/back-link";
-@import "components/breadcrumbs/breadcrumbs";
-@import "components/button/button";
-@import "components/checkboxes/checkboxes";
-@import "components/date-input/date-input";
-@import "components/details/details";
-@import "components/error-message/error-message";
-@import "components/error-summary/error-summary";
-@import "components/fieldset/fieldset";
-@import "components/file-upload/file-upload";
-@import "components/footer/footer";
-@import "components/hint/hint";
-@import "components/input/input";
-@import "components/label/label";
-@import "components/panel/panel";
-@import "components/phase-banner/phase-banner";
-@import "components/tag/tag";
-@import "components/radios/radios";
-@import "components/select/select";
-@import "components/skip-link/skip-link";
-@import "components/table/table";
-@import "components/textarea/textarea";
-@import "components/warning-text/warning-text";
+@import "components/all";
 
 @import "utilities/all";
 @import "overrides/all";
