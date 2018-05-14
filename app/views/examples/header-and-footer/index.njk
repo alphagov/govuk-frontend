@@ -1,0 +1,48 @@
+{% extends "full-width.njk" %}
+
+{% from "skip-link/macro.njk" import govukSkipLink %}
+{% from "header/macro.njk" import govukHeader %}
+{% from "phase-banner/macro.njk" import govukPhaseBanner %}
+{% from "footer/macro.njk" import govukFooter %}
+
+{% block content %}
+
+{{ govukSkipLink({
+  href: '#content',
+  text: 'Skip to main content'
+}) }}
+
+{{ govukHeader({
+  homepageUrl: "/",
+  containerClasses: "govuk-width-container",
+  serviceName: "Service Name",
+  navigation: [
+    {
+      href: '#1',
+      text: 'Navigation item 1',
+      active: true
+    },
+    {
+      href: '#2',
+      text: 'Navigation item 2'
+    },
+    {
+      href: '#3',
+      text: 'Navigation item 3'
+    }
+  ]
+}) }}
+
+{{ govukPhaseBanner({
+  classes: "govuk-width-container",
+  tag: {
+    text: "alpha"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+
+{{ govukFooter({
+
+}) }}
+
+{% endblock %}
