@@ -7,8 +7,6 @@
 @import "core/all";
 @import "objects/all";
 
-@import "globals/common";
-
 // Components
 @import "components/back-link/back-link";
 @import "components/breadcrumbs/breadcrumbs";
@@ -35,3 +33,4 @@
 @import "components/warning-text/warning-text";
 
 @import "utilities/all";
+@import "overrides/all";
