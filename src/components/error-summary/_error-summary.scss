@@ -2,7 +2,7 @@
 @import "../../tools/all";
 @import "../../helpers/all";
 
-@import "../../globals/core/lists";
+@import "../../core/lists";
 
 @include govuk-exports("error-summary") {
 
