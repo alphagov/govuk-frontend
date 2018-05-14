@@ -2,8 +2,6 @@
 @import "../../tools/all";
 @import "../../helpers/all";
 
-@import "../../core/links";
-
 @include govuk-exports("button") {
 
   // Because the shadow (s0) is visually 'part of' the button, we need to reduce

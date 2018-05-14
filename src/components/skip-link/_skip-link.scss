@@ -2,8 +2,6 @@
 @import "../../tools/all";
 @import "../../helpers/all";
 
-@import "../../core/links";
-
 @include govuk-exports("skip-link") {
   .govuk-skip-link {
     @include govuk-visually-hidden-focusable;

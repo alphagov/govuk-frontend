@@ -2,8 +2,6 @@
 @import "../../tools/all";
 @import "../../helpers/all";
 
-@import "../../core/links";
-
 @include govuk-exports("back-link") {
 
   .govuk-back-link {
