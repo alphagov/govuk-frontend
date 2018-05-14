@@ -35,8 +35,6 @@ There are a few npm scripts in `package.json` that trigger a number of gulp task
 - compile component nunjucks to HTML
 - copy template, macro and component.njk files for each component
 - copy Sass files, add vendor prefixes and replace path to be node_modules consumption compliant
-- split icons out from globals/icons into a separate package (package/icons)
-- create an "all" package for Sass
 - generate README markdown files
 - runs `npm run test:build:package` (which will test the output is correct)
 

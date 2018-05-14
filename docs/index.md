@@ -85,47 +85,7 @@ See [development and publishing tasks](development-and-publish-tasks.md) for mor
 
 - `src/`
 
-  Source files.
-
-  - `globals/`
-
-    Generic scripts, style definitions and mixins.
-
-  - `icons/`
-
-    Image assets.
-
-  - `[component-name]/`
-
-    Component-specific source files.
-  
-  - `CHANGELOG.md`
-
-    Changes made to a package listed per release version.
-
-  - `LICENSE`
-
-    Package license.
-
-  - `README.md`
-
-    Package README showing the basic API and usage instructions.
-
-  - `package.json`
-
-    npm definition for a package; states package dependencies.
-
-  - `govuk-frontend.scss`
-
-    Main Sass file that imports all partials
-
-  - `govuk-frontend-ie8.scss`
-
-    Internet Explorer 8 specific Sass file that imports `govuk-frontend.scss`
-
-   - `govuk-frontend.js`
-
-    Main Javascript file that imports all component specific .js files
+  Source files. See README.md in the src directory for details.
 
 - `tasks/`
 

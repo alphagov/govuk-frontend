@@ -130,7 +130,7 @@ After resolving the import paths you can import GOV.UK Frontend by using:
 
 #### Global Styles
 
-[Global styles](src/globals/core/_global-styles.scss) are not included by default.
+[Global styles](src/core/_global-styles.scss) are not included by default.
 
 This is to avoid the risk of these globals conflicting with any pre-existing globals, for example in GOV.UK Elements or GOV.UK Template.
 
