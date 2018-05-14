@@ -2,8 +2,6 @@
 @import "../../tools/all";
 @import "../../helpers/all";
 
-@import "../../globals/objects/form-group";
-
 @include govuk-exports("fieldset") {
   .govuk-fieldset {
     margin: 0;
