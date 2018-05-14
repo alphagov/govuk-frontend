@@ -33,7 +33,7 @@ const errorHandler = function (error) {
 }
 // different entry points for both streams below and depending on destination flag
 const compileStyleshet = isDist ? configPaths.src + 'all.scss' : configPaths.app + 'assets/scss/app.scss'
-const compileOldIeStyleshet = isDist ? configPaths.src + 'all-ie8.scss' : configPaths.app + 'assets/scss/app-old-ie.scss'
+const compileOldIeStyleshet = isDist ? configPaths.src + 'all-ie8.scss' : configPaths.app + 'assets/scss/app-ie8.scss'
 
 gulp.task('scss:compile', () => {
   let compile = gulp.src(compileStyleshet)
