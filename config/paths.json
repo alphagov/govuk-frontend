@@ -9,6 +9,7 @@
   "package": "package/",
   "public": "public/",
   "src": "src/",
+    "components": "src/components/",
   "ports": {
     "app": 3000,
     "test": 8888

@@ -1,0 +1,40 @@
+@import "../../settings/all";
+@import "../../tools/all";
+@import "../../helpers/all";
+
+@include govuk-exports("panel") {
+
+  .govuk-panel {
+    @include govuk-font-regular-19;
+
+    box-sizing: border-box;
+
+    margin-bottom: $govuk-spacing-scale-3;
+    padding: $govuk-spacing-scale-7 - $govuk-border-width;
+
+    border: $govuk-border-width solid transparent;
+
+    text-align: center;
+
+    @include mq($until: tablet) {
+      padding: $govuk-spacing-scale-6 - $govuk-border-width;
+    }
+  }
+
+  .govuk-panel--confirmation {
+    color: $govuk-white;
+    background: $govuk-turquoise;
+  }
+
+  .govuk-panel__title {
+    margin-top: 0;
+    margin-bottom: $govuk-spacing-scale-6;
+
+    @include govuk-font-bold-48;
+  }
+
+  .govuk-panel__body {
+    @include govuk-font-regular-36;
+  }
+
+}

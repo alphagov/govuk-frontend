@@ -1,0 +1,124 @@
+{% if isReadme %}
+  {% set parentTemplate = "readme.njk"  %}
+{% else %}
+  {% set parentTemplate = "component.njk"  %}
+{% endif %}
+
+{% extends parentTemplate %}
+
+{# Commented out blocks below inherit from views/component.njk #}
+
+{% block componentDescription %}
+The Breadcrumbs component helps users to understand where they are within a website’s structure and move between levels.
+{% endblock %}
+
+{# examples #}
+
+{# override link to design system here if it's different to base url + componentName #}
+{# {% set componentGuidanceLink = 'new link here' %} #}
+
+{% block componentArguments %}
+{{ govukTable({
+  'firstCellIsHeader': true,
+  'head': [
+    {
+      text: 'Name'
+    },
+    {
+      text: 'Type'
+    },
+    {
+      text: 'Required'
+    },
+    {
+      text: 'Description'
+    }
+  ],
+  'rows': [
+    [
+      {
+        text: 'classes'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Optional additional classes'
+      }
+    ],
+    [
+      {
+        text: 'items'
+      },
+      {
+        text: 'array'
+      },
+      {
+        text: 'Yes'
+      },
+      {
+        text: 'Array of breadcrumbs items'
+      }
+    ],
+    [
+      {
+        text: 'text'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Text to use within the breadcrumbs item'
+      }
+    ],
+    [
+      {
+        text: 'html'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'HTML to use within the breadcrumbs item. If this is provided, the text argument will be ignored.'
+      }
+    ],
+    [
+      {
+        text: 'href'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'no'
+      },
+      {
+        text: 'Link for the breadcrumbs item. If not specified, breadcrumbs item is a normal list item'
+      }
+    ],
+    [
+      {
+        text: 'attributes'
+      },
+      {
+        text: 'object'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Any extra HTML attributes (for example data attributes) to add to the breadcrumbs container.'
+      }
+    ]
+  ]
+})}}
+{% endblock %}

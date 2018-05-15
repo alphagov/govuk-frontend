@@ -11,11 +11,11 @@ const configPaths = require('../../../config/paths.json')
 
 describe('Individual components', () => {
   it('should compile individual scss files without throwing exceptions', done => {
-    const componentNames = lib.SrcFilteredComponentList.slice()
+    const componentNames = lib.allComponents.slice()
 
     const getSassRenders = () => {
       return componentNames.map(name => {
-        const filePath = path.join(configPaths.src, name, `_${name}.scss`)
+        const filePath = path.join(configPaths.components, name, `_${name}.scss`)
         return sassRender({ file: filePath })
       })
     }

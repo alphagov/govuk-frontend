@@ -1,0 +1,15 @@
+@import "../../settings/all";
+@import "../../tools/all";
+@import "../../helpers/all";
+
+@include govuk-exports("skip-link") {
+  .govuk-skip-link {
+    @include govuk-visually-hidden-focusable;
+    @include govuk-link-common;
+    @include govuk-link-style-text;
+    @include govuk-font-regular-16;
+
+    display: block;
+    padding: $govuk-spacing-scale-2 $govuk-spacing-scale-3;
+  }
+}

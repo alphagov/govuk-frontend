@@ -9,6 +9,7 @@ const yaml = require('js-yaml')
 const readdir = util.promisify(fs.readdir)
 
 const helperFunctions = require('../lib/helper-functions')
+const fileHelper = require('../lib/file-helper')
 const configPaths = require('../config/paths.json')
 
 // Set up views
@@ -16,7 +17,7 @@ const appViews = [
   configPaths.layouts,
   configPaths.partials,
   configPaths.examples,
-  configPaths.src
+  configPaths.components
 ]
 
 module.exports = (options) => {
@@ -44,24 +45,17 @@ module.exports = (options) => {
 
   // serve html5-shiv from node modules
   app.use('/vendor/html5-shiv/', express.static('node_modules/html5shiv/dist/'))
-  app.use('/icons', express.static(path.join(configPaths.src, 'icons')))
+  app.use('/assets', express.static(path.join(configPaths.src, 'assets')))
 
   // Define routes
 
   // Index page - render the component list template
   app.get('/', async function (req, res) {
-    const components = await readdir(path.resolve(configPaths.src))
+    const components = fileHelper.allComponents
     const examples = await readdir(path.resolve(configPaths.examples))
 
-    // Filter out globals, all and icons package
-    const filteredComponents = components.filter(component => (
-      component !== 'globals' &&
-      component !== 'icons' &&
-      !component.startsWith('all')
-    ))
-
     res.render('index', {
-      componentsDirectory: filteredComponents,
+      componentsDirectory: components,
       examplesDirectory: examples
     })
   })
@@ -69,7 +63,7 @@ module.exports = (options) => {
   // Whenever the route includes a :component parameter, read the component data
   // from its YAML file
   app.param('component', function (req, res, next, componentName) {
-    let yamlPath = configPaths.src + `${componentName}/${componentName}.yaml`
+    let yamlPath = path.join(configPaths.components, componentName, `${componentName}.yaml`)
 
     try {
       res.locals.componentData = yaml.safeLoad(

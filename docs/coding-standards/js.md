@@ -13,7 +13,7 @@ checkboxes
 ## Skeleton
 
 ```js
-import { nodeListForEach } from '../globals/common'
+import { nodeListForEach } from '../vendor/common'
 
 function Checkboxes ($module) {
   // code goes here
@@ -93,7 +93,7 @@ var myCheckbox = new Checkbox().init()
 Use ES6 modules (`import`/`export`) over a non-standard module system. You can always transpile to your preferred module system.
 
 ```js
-import { nodeListForEach } from '../globals/common'
+import { nodeListForEach } from '../vendor/common'
 // code goes here
 export default Checkboxes
 ```
@@ -104,12 +104,12 @@ Use default export over named export.
 
 ## Polyfilling
 
-If you need to support older browsers, import the necessary [polyfills](/src/globals/polyfills) and they will be added to the environment when the feature is not supported.
+If you need to support older browsers, import the necessary [polyfills](/src/vendor/polyfills) and they will be added to the environment when the feature is not supported.
 
 For example, if you want to polyfill `addEventListener` for IE8, import the Event polyfills.
 
 ```js
-import '../globals/polyfills/Event'
+import '../vendor/polyfills/Event'
 ```
 
 If you need polyfills for features that are not yet included in this project, please see the following guide on [how to add polyfills](/docs/polyfilling.md).

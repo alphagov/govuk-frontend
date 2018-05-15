@@ -60,6 +60,7 @@
     "postcss-normalize": "^3.0.0",
     "postcss-pseudo-classes": "^0.2.0",
     "puppeteer": "^1.1.1",
+    "recursive-readdir": "^2.2.2",
     "request": "^2.83.0",
     "run-sequence": "^2.2.0",
     "standard": "^10.0.2",
@@ -84,7 +85,7 @@
     "ignore": [
       "/dist/**/*.js",
       "/package/**/*.js",
-      "/src/globals/polyfills/**/*.js"
+      "/src/vendor/polyfills/**/*.js"
     ]
   },
   "jest": {

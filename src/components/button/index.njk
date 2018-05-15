@@ -1,0 +1,188 @@
+{% if isReadme %}
+  {% set parentTemplate = "readme.njk"  %}
+{% else %}
+  {% set parentTemplate = "component.njk"  %}
+{% endif %}
+
+{% extends parentTemplate %}
+
+{# Commented out blocks below inherit from views/component.njk #}
+
+{# componentName #}
+
+{% block componentDescription %}
+A button is an element that allows users to carry out an action on a GOV.UK page. Common use cases include allowing a user to <b>Start</b> an application or <b>Save and continue</b> their progress.
+
+A button should have a short text snippet that describes what it will do.
+{% endblock %}
+
+{% block componentHtmlUsageWriteup %}
+Buttons are configured to perform an action and they can have a different look. For example, they can be disabled until a valid action has been performed by the user.
+{% endblock %}
+
+{# examples #}
+
+{# override link to design system here if it's different to base url + componentName #}
+{# {% set componentGuidanceLink = 'new link here' %} #}
+
+{% block componentArguments %}
+{{ govukTable({
+  'firstCellIsHeader': true,
+  'head' : [
+    {
+      text: 'Name'
+    },
+    {
+      text: 'Type'
+    },
+    {
+      text: 'Required'
+    },
+    {
+      text: 'Description'
+    }
+  ],
+  'rows' : [
+    [
+      {
+        text: 'element'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'Yes'
+      },
+      {
+        text: 'Whether to use an `input`, `button` or `a` element to create the button. In most cases you will not need to set this as it will be configured automatically if you use `href` or `html`.'
+      }
+    ],
+    [
+      {
+        text: 'text'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'Yes'
+      },
+      {
+        text: 'Text for the button'
+      }
+    ],
+    [
+      {
+        text: 'html'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'Yes'
+      },
+      {
+        text: 'HTML for the button or link. If this is provided, the `text` argument will be ignored and `element` will be automatically set to `button` unless `href` is also set, or it has already been defined. This argument has no effect if `element` is set to `input`.'
+      }
+    ],
+    [
+      {
+        text: 'name'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'Yes'
+      },
+      {
+        text: 'Name for the `input` or `button`. This has no effect on `a` elements.'
+      }
+    ],
+    [
+      {
+        text: 'type'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'Yes'
+      },
+      {
+        text: 'Type of `input` or `button` – `button`, `submit` or `reset`. Defaults to `submit`. This has no effect on `a` elements.'
+      }
+    ],
+    [
+      {
+        text: 'value'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'Yes'
+      },
+      {
+        text: 'Value for the `button` tag. This has no effect on `a` or `input` elements.'
+      }
+    ],
+    [
+      {
+        text: 'disabled'
+      },
+      {
+        text: 'boolean'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Whether the button should be disabled. For button and input elements, `disabled` and `aria-disabled` attributes will be set automatically.'
+      }
+    ],
+     [
+      {
+        text: 'href'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'The URL that the button should link to. If this is set, `element` will be automatically set to `a` if it has not already been defined.'
+      }
+    ],
+    [
+      {
+        text: 'classes'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Optional additional classes'
+      }
+    ],
+    [
+      {
+        text: 'attributes'
+      },
+      {
+        text: 'object'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Any extra HTML attributes (for example data attributes) to add to the error message span tag'
+      }
+    ]
+  ]
+})}}
+{% endblock %}

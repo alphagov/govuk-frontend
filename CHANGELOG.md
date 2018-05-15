@@ -18,9 +18,17 @@ Breaking changes:
   - updating documentation
   - update any tests and build pipelines to support this
   
-  The single package will be published under a new name. 
-  There are more changes to be done to folder structure to ensure
-  entry points are more understandable.
+  The single package will be published under a new name.
+
+- The structure of the src directory (and thus the package directory, once
+  published) has been updated now that we are not confined by the constraints
+  of publishing multiple packages.
+
+  The intention was to make the structure of Frontend clearer and to simplify
+  the imports that we do within components.
+
+  If you are importing select parts of the codebase, you will need to update
+  your imports to reference the new structure.
 
 - Error messages have been moved out of the label and fieldset components and
   are now called from every component that uses them - they are no longer nested
@@ -219,6 +227,8 @@ Internal:
 (PR [#675](https://github.com/alphagov/govuk-frontend/pull/675))
 - Simplify contents of the `dist/` folder
   (PR [#673](https://github.com/alphagov/govuk-frontend/pull/673))
+- Added tests to ensure that the settings, helpers and tools layers do not
+  output CSS.
 
 ## 0.0.28-alpha (Breaking release)
 

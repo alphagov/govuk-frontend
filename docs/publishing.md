@@ -17,7 +17,7 @@ This should be incremented based on [Semantic versioning](https://semver.org/) f
 6. Run `npm run pre-release`.
 
 This will:
-  - copy components from `src/` to `package/` and run tests
+  - copy files from `src/` to `package/` and run tests
   - add [vendor prefixes](https://github.com/postcss/autoprefixer) to CSS in `package/`
   - build "govuk-frontend" Sass and JavaScript files into `dist/`
   - commit all changes and push the branch to remote
