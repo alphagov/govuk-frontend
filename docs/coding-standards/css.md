@@ -14,8 +14,8 @@ use a different prefix, for example `.app-` or the initials of your department.
 ## Block Element Modifier (BEM)
 
 GOV.UK Frontend uses the Block Element Modifier (BEM) methodology when naming
-CSS classes. This is designed to help developers how the different classes
-relate to each other.
+CSS classes. This is designed to help developers understand how the different
+classes relate to each other.
 
 The naming convention follows this pattern:
 
