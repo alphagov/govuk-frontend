@@ -17,7 +17,7 @@ Breaking changes:
   - creating a new package.json
   - updating documentation
   - update any tests and build pipelines to support this
-  
+
   The single package will be published under a new name.
 
 - The structure of the src directory (and thus the package directory, once
@@ -127,7 +127,7 @@ Breaking changes:
   }) }}
   ```
 
-  The `legend` object can also accept new `classes` and `arguments` 
+  The `legend` object can also accept new `classes` and `arguments`
 
   Components that use the fieldset component have been updated to reflect these
   changes.
@@ -189,6 +189,9 @@ Fixes:
   ([PR #682](https://github.com/alphagov/govuk-frontend/pull/682))
 
 - Remove `-webkit-tap-highlight-color` from links (PR [#692](https://github.com/alphagov/govuk-frontend/pull/692))
+
+- Remove normalize from /dist builds
+(PR [#699](https://github.com/alphagov/govuk-frontend/pull/699))
 
 New features:
 
