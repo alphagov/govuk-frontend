@@ -188,6 +188,8 @@ Fixes:
 - Fix section break styles when used with GOV.UK Elements
   ([PR #682](https://github.com/alphagov/govuk-frontend/pull/682))
 
+- Remove `-webkit-tap-highlight-color` from links (PR [#692](https://github.com/alphagov/govuk-frontend/pull/692))
+
 New features:
 
 - We're now using ES6 Modules and [rollup](https://rollupjs.org/guide/en) to distribute our JavaScript. (PR [#652](https://github.com/alphagov/govuk-frontend/pull/652))
