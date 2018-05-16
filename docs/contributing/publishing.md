@@ -8,10 +8,10 @@
 
 4. Create and checkout a new branch (`release-[version-number]`).
 
-5. Update [`CHANGELOG.md`](../CHANGELOG.md) "Unreleased" heading with the new version number.
+5. Update [`CHANGELOG.md`](../../CHANGELOG.md) "Unreleased" heading with the new version number.
    This should be incremented based on [Semantic versioning](https://semver.org/) from the unreleased changes listed.
 
-6. Update [`package/package.json`](../package/package.json) version with the new version number.
+6. Update [`package/package.json`](../../package/package.json) version with the new version number.
 This should be incremented based on [Semantic versioning](https://semver.org/) from the unreleased changes listed.
 
 7. Save the changes. Do not commit.
