@@ -8,8 +8,20 @@
 @import "../label/label";
 
 @include govuk-exports("checkboxes") {
-  $govuk-checkboxes-size: $govuk-spacing-scale-7;
-  $govuk-checkboxes-label-padding-left-right: $govuk-spacing-scale-3;
+  $checkboxes-size: $govuk-spacing-scale-7 !default;
+  $checkboxes-label-padding-left-right: $govuk-spacing-scale-3 !default;
+  $checkboxes-focus-colour: $govuk-focus-colour !default;
+  $checkboxes-focus-width: $govuk-focus-width !default;
+  $checkboxes-border-width: $govuk-border-width !default;
+  $checkboxes-element-border-width: $govuk-border-width-form-element !default;
+  $conditional-border-width: $govuk-border-width-mobile !default;
+  // Calculate the amount of padding needed to keep the border centered against the checkbox.
+  $conditional-border-padding: ($checkboxes-size / 2) - ($conditional-border-width / 2) !default;
+  // Move the border centered with the checkbox
+  $conditional-margin-left: $conditional-border-padding !default;
+  // Move the contents of the conditional inline with the label
+  $conditional-padding-left: $conditional-border-padding + $checkboxes-label-padding-left-right !default;
+  $conditional-border-colour: $govuk-border-colour !default;
 
   .govuk-checkboxes__item {
     @include govuk-font-regular-19;
@@ -17,10 +29,10 @@
     display: block;
     position: relative;
 
-    min-height: $govuk-checkboxes-size;
+    min-height: $checkboxes-size;
 
     margin-bottom: $govuk-spacing-scale-2;
-    padding: 0 0 0 $govuk-checkboxes-size;
+    padding: 0 0 0 $checkboxes-size;
 
     clear: left;
   }
@@ -37,8 +49,8 @@
     top: 0;
     left: 0;
 
-    width: $govuk-checkboxes-size;
-    height: $govuk-checkboxes-size;
+    width: $checkboxes-size;
+    height: $checkboxes-size;
 
     cursor: pointer;
 
@@ -51,14 +63,14 @@
     // add focus outline to input element for IE8
     @include govuk-if-ie8 {
       &:focus {
-        outline: $govuk-focus-width solid $govuk-focus-colour;
+        outline: $checkboxes-focus-width solid $checkboxes-focus-colour;
       }
     }
   }
 
   .govuk-checkboxes__label {
     display: block;
-    padding: 8px $govuk-checkboxes-label-padding-left-right $govuk-spacing-scale-1;
+    padding: 8px $checkboxes-label-padding-left-right $govuk-spacing-scale-1;
     cursor: pointer;
     // remove 300ms pause on mobile
     -ms-touch-action: manipulation;
@@ -71,9 +83,9 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: $govuk-checkboxes-size;
-    height: $govuk-checkboxes-size;
-    border: $govuk-border-width-form-element solid currentColor;
+    width: $checkboxes-size;
+    height: $checkboxes-size;
+    border: $checkboxes-element-border-width solid currentColor;
     background: transparent;
 
     // padding-bottom: 1px;
@@ -90,7 +102,7 @@
 
     transform: rotate(-45deg);
     border: solid;
-    border-width: 0 0 $govuk-border-width $govuk-border-width;
+    border-width: 0 0 $checkboxes-border-width $checkboxes-border-width;
     // Fix bug in IE11 caused by transform rotate (-45deg).
     // See: alphagov/govuk_elements/issues/518
     border-top-color: transparent;
@@ -102,7 +114,7 @@
 
   // Focused state
   .govuk-checkboxes__input:focus + .govuk-checkboxes__label::before {
-    box-shadow: 0 0 0 $govuk-focus-width $govuk-focus-colour;
+    box-shadow: 0 0 0 $checkboxes-focus-width $checkboxes-focus-colour;
   }
 
   // Selected state
@@ -120,19 +132,11 @@
     opacity: .5;
   }
 
-  $conditional-border-width: $govuk-border-width-mobile;
-  // Calculate the amount of padding needed to keep the border centered against the checkbox.
-  $conditional-border-padding: ($govuk-checkboxes-size / 2) - ($conditional-border-width / 2);
-  // Move the border centered with the checkbox
-  $conditional-margin-left: $conditional-border-padding;
-  // Move the contents of the conditional inline with the label
-  $conditional-padding-left: $conditional-border-padding + $govuk-checkboxes-label-padding-left-right;
-
   .govuk-checkboxes__conditional {
     @include govuk-responsive-margin($govuk-spacing-responsive-4, "bottom");
     margin-left: $conditional-margin-left;
     padding-left: $conditional-padding-left;
-    border-left: $conditional-border-width solid $govuk-border-colour;
+    border-left: $conditional-border-width solid $conditional-border-colour;
 
     &[aria-hidden="true"] {
       display: none;

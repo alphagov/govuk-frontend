@@ -3,6 +3,8 @@
 @import "../../helpers/all";
 
 @include govuk-exports("hint") {
+  $hint-text-colour: $govuk-secondary-text-colour !default;
+
   .govuk-hint {
     @include govuk-font-regular-19;
 
@@ -10,6 +12,6 @@
 
     margin-bottom: $govuk-spacing-scale-3;
 
-    color: $govuk-secondary-text-colour;
+    color: $hint-text-colour;
   }
 }
