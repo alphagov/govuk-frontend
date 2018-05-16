@@ -4,6 +4,8 @@
 
 @include govuk-exports("back-link") {
 
+  $backlink-border-colour: $govuk-black !default;
+
   .govuk-back-link {
     @include govuk-font-regular-16;
     @include govuk-link-common;
@@ -20,7 +22,7 @@
 
     // Use border-bottom rather than text-decoration so that the arrow is
     // underlined as well.
-    border-bottom: 1px solid $govuk-black;
+    border-bottom: 1px solid $backlink-border-colour;
 
     // Underline is provided by a bottom border
     text-decoration: none;
