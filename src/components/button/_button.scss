@@ -7,7 +7,12 @@
   // Because the shadow (s0) is visually 'part of' the button, we need to reduce
   // the height of the button to compensate by adjusting its padding (s1) and
   // increase the bottom margin to include it (s2).
-  $button-shadow-size: $govuk-border-width-form-element;
+  $button-shadow-size: $govuk-border-width-form-element !default;
+
+  $button-text-colour: $govuk-button-text-colour !default;
+  $button-colour: $govuk-button-colour !default;
+  $button-shadow-colour: $govuk-button-shadow-colour !default;
+  $button-element-border-width: $govuk-border-width-form-element !default;
 
   .govuk-button {
     @include govuk-font-regular;
@@ -23,12 +28,12 @@
     width: 100%;
     margin-top: 0;
     @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom", $adjustment: $button-shadow-size); // s2
-    padding: ($govuk-spacing-scale-2 - $govuk-border-width-form-element - ($button-shadow-size / 2)) $govuk-spacing-scale-2; // s1
-    border: $govuk-border-width-form-element solid transparent;
+    padding: ($govuk-spacing-scale-2 - $button-element-border-width - ($button-shadow-size / 2)) $govuk-spacing-scale-2; // s1
+    border: $button-element-border-width solid transparent;
     border-radius: 0;
-    color: $govuk-button-text-colour;
-    background-color: $govuk-button-colour;
-    box-shadow: 0 $button-shadow-size 0 $govuk-button-shadow-colour; // s0
+    color: $button-text-colour;
+    background-color: $button-colour;
+    box-shadow: 0 $button-shadow-size 0 $button-shadow-colour; // s0
     text-align: center;
     vertical-align: top;
     cursor: pointer;
@@ -43,7 +48,7 @@
     &:visited,
     &:active,
     &:hover {
-      color: $govuk-button-text-colour;
+      color: $button-text-colour;
       text-decoration: none;
     }
 
@@ -54,7 +59,7 @@
     // text when focussed.
     @include govuk-compatibility(govuk_template) {
       &:link:focus {
-        color: $govuk-button-text-colour;
+        color: $button-text-colour;
       }
     }
 
@@ -85,10 +90,10 @@
 
       position: absolute;
 
-      top: -$govuk-border-width-form-element;
-      right: -$govuk-border-width-form-element;
-      bottom: -($govuk-border-width-form-element + $button-shadow-size);
-      left: -$govuk-border-width-form-element;
+      top: -$button-element-border-width;
+      right: -$button-element-border-width;
+      bottom: -($button-element-border-width + $button-shadow-size);
+      left: -$button-element-border-width;
 
       background: transparent;
     }
@@ -104,7 +109,7 @@
     //
     // 🎉
     &:active::before {
-      top: -($govuk-border-width-form-element + $button-shadow-size);
+      top: -($button-element-border-width + $button-shadow-size);
     }
   }
 
@@ -112,10 +117,10 @@
   .govuk-button[disabled="disabled"],
   .govuk-button[disabled] {
     opacity: (.5);
-    background: $govuk-button-colour;
+    background: $button-colour;
 
     &:hover {
-      background-color: $govuk-button-colour;
+      background-color: $button-colour;
       cursor: default;
     }
 
@@ -125,9 +130,9 @@
 
     &:active {
       top: 0;
-      box-shadow: 0 $button-shadow-size 0 $govuk-button-shadow-colour; // s0
+      box-shadow: 0 $button-shadow-size 0 $button-shadow-colour; // s0
       @include govuk-if-ie8 {
-        border-bottom: $button-shadow-size solid $govuk-button-shadow-colour; // s0
+        border-bottom: $button-shadow-size solid $button-shadow-colour; // s0
       }
     }
   }
@@ -140,9 +145,9 @@
     );
 
     min-height: auto;
-    padding-top: $govuk-spacing-scale-2 - $govuk-border-width-form-element;
+    padding-top: $govuk-spacing-scale-2 - $button-element-border-width;
     padding-right: $govuk-spacing-scale-7;
-    padding-bottom: $govuk-spacing-scale-2 - $govuk-border-width-form-element;
+    padding-bottom: $govuk-spacing-scale-2 - $button-element-border-width;
     padding-left: $govuk-spacing-scale-3;
 
     background-image: govuk-file-url("icon-pointer.png");
@@ -162,13 +167,13 @@
   $offset: 2;
 
   .govuk-button {
-    padding-top: ($govuk-spacing-scale-2 - $govuk-border-width-form-element - ($button-shadow-size / 2) + $offset); // s1
-    padding-bottom: ($govuk-spacing-scale-2 - $govuk-border-width-form-element - ($button-shadow-size / 2) - $offset + 1); // s1
+    padding-top: ($govuk-spacing-scale-2 - $button-element-border-width - ($button-shadow-size / 2) + $offset); // s1
+    padding-bottom: ($govuk-spacing-scale-2 - $button-element-border-width - ($button-shadow-size / 2) - $offset + 1); // s1
   }
 
   .govuk-button--start {
-    padding-top: ($govuk-spacing-scale-2 - $govuk-border-width-form-element - ($button-shadow-size / 2) + $offset); // s1
-    padding-bottom: ($govuk-spacing-scale-2 - $govuk-border-width-form-element - ($button-shadow-size / 2) - $offset + 1); // s1
+    padding-top: ($govuk-spacing-scale-2 - $button-element-border-width - ($button-shadow-size / 2) + $offset); // s1
+    padding-bottom: ($govuk-spacing-scale-2 - $button-element-border-width - ($button-shadow-size / 2) - $offset + 1); // s1
   }
 
 }
