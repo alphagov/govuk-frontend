@@ -190,4 +190,34 @@
     padding-bottom: ($govuk-spacing-scale-2 - $govuk-border-width-form-element - ($button-shadow-size / 2) - $offset + 1); // s1
   }
 
+
+
+
+  $govuk-button-inverted-background-colour: $govuk-white;
+  $govuk-button-inverted-foreground-colour: $govuk-blue;
+  $govuk-button-inverted-shadow-colour: shade($govuk-button-inverted-foreground-colour, 30%);
+  $govuk-button-inverted-icon-image: "icon-pointer--blue.png";
+  $govuk-button-inverted-icon-image-2x: "icon-pointer--blue-2x.png";
+
+
+  .govuk-button--inverted {
+    color: $govuk-button-inverted-foreground-colour;
+    background-color: $govuk-button-inverted-background-colour;
+    box-shadow: 0 $button-shadow-size 0 $govuk-button-inverted-shadow-colour;
+  }
+
+  .govuk-button--inverted:hover,
+  .govuk-button--inverted:focus {
+    color: $govuk-button-inverted-foreground-colour;
+    background-color: tint($govuk-button-inverted-foreground-colour, 90%);
+  }
+
+  .govuk-button--start.govuk-button--inverted {
+    background-image: govuk-file-url($govuk-button-inverted-icon-image);
+
+    @include govuk-device-pixel-ratio {
+      background-image: govuk-file-url($govuk-button-inverted-icon-image-2x);
+    }
+  }
+
 }
