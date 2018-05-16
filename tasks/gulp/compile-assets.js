@@ -14,7 +14,6 @@ const uglify = require('gulp-uglify')
 const eol = require('gulp-eol')
 const rename = require('gulp-rename')
 const cssnano = require('cssnano')
-const postcssnormalize = require('postcss-normalize')
 const postcsspseudoclasses = require('postcss-pseudo-classes')
 
 // Compile CSS and JS task --------------
@@ -42,8 +41,7 @@ gulp.task('scss:compile', () => {
     // minify css add vendor prefixes and normalize to compiled css
     .pipe(gulpif(isDist, postcss([
       autoprefixer,
-      cssnano,
-      postcssnormalize
+      cssnano
     ])))
     .pipe(gulpif(!isDist, postcss([
       autoprefixer,
@@ -66,7 +64,6 @@ gulp.task('scss:compile', () => {
     .pipe(gulpif(isDist, postcss([
       autoprefixer,
       cssnano,
-      postcssnormalize,
       // transpile css for ie https://github.com/jonathantneal/oldie
       require('oldie')({
         rgba: {filter: true},
