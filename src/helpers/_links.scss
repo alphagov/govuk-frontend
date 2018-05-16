@@ -4,11 +4,6 @@
 @mixin govuk-link-common {
   @include govuk-typography-common;
   @include govuk-focusable-fill;
-
-  // Override the tap highlight colour (the color of the highlight that
-  // appears when a link is tapped on some mobile devices). This is
-  // ever-so-slightly darker than the default.
-  -webkit-tap-highlight-color: rgba($govuk-black, .3);
 }
 
 /// Default link style mixin
