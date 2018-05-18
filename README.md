@@ -12,7 +12,7 @@ To consume all components you must be running npm version 5 or above.
 
 ## Installation
 
-    npm install --save @govuk-frontend/govuk-frontend-placeholder
+    npm install --save @govuk-frontend/frontend
 
 ## Requirements
 
@@ -28,13 +28,13 @@ When compiling the Sass files you'll need to define includePaths to reference th
 
 To show the button image you need to configure your app to show these assets. Below is a sample configuration using Express js:
 
-    app.use('/icons', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/icons')))
+    app.use('/assets', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/frontend/assets')))
 
 ### Setting up Nunjucks views and paths
 
 Below is an example setup using express configure views:
 
-    nunjucks.configure('node_modules/@govuk-frontend', {
+    nunjucks.configure('node_modules/@govuk-frontend/frontend/components/', {
       autoescape: true,
       cache: false,
       express: app
@@ -44,11 +44,11 @@ Below is an example setup using express configure views:
 
 To check whether you have the latest version of the button run:
 
-    npm outdated @govuk-frontend/govuk-frontend-placeholder
+    npm outdated @govuk-frontend/frontend
 
 To update the latest version run:
 
-    npm update @govuk-frontend/govuk-frontend-placeholder
+    npm update @govuk-frontend/frontend
 
 
 ## Contribution

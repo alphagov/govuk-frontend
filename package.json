@@ -1,7 +1,7 @@
 {
-  "name": "@govuk-frontend/govuk-frontend-placeholder",
+  "name": "@govuk-frontend/frontend",
   "description": "GOV.UK Frontend contains the code you need to start building a user interface for government platforms and services.",
-  "version": "0.0.30-alpha",
+  "version": "0.0.29-alpha",
   "main": "all.js",
   "engines": {
     "node": ">=6.0"

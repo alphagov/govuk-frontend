@@ -1,0 +1,10 @@
+@include govuk-exports("govuk-grid") {
+  //most common usage
+  @include govuk-grid-row;
+  @include govuk-grid-column(one-quarter);
+  @include govuk-grid-column(one-third);
+  @include govuk-grid-column(one-half);
+  @include govuk-grid-column(two-thirds);
+  @include govuk-grid-column(three-quarters);
+  @include govuk-grid-column(full);
+}

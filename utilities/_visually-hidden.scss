@@ -1,0 +1,9 @@
+@include govuk-exports("visually-hidden") {
+  .govuk-visually-hidden {
+    @include govuk-visually-hidden;
+  }
+
+  .govuk-visually-hidden-focussable {
+    @include govuk-visually-hidden-focusable;
+  }
+}

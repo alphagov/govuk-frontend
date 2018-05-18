@@ -1,0 +1,35 @@
+@import "../../settings/all";
+@import "../../tools/all";
+@import "../../helpers/all";
+
+@import "../error-message/error-message";
+@import "../input/input";
+@import "../hint/hint";
+@import "../label/label";
+
+@include govuk-exports("date-input") {
+  .govuk-date-input {
+    @include govuk-clearfix;
+  }
+
+  .govuk-date-input__item {
+    width: 50px;
+    margin-right: $govuk-spacing-scale-4;
+    margin-bottom: 0;
+    float: left;
+    clear: none;
+  }
+
+  .govuk-date-input__label {
+    display: block;
+    padding-bottom: 2px;
+  }
+
+  .govuk-date-input__input {
+    margin-bottom: 0;
+  }
+
+  .govuk-date-input__item--year {
+    width: 70px;
+  }
+}
