@@ -1,6 +1,0 @@
-// By setting $govuk-is-ie8 to true, we create a version of the stylesheet that
-// targets IE8 – e.g. conditionally including or excluding styles, and
-// rasterizing media queries.
-$govuk-is-ie8: true;
-
-@import "all";

@@ -1,0 +1,27 @@
+@import "../../settings/all";
+@import "../../tools/all";
+@import "../../helpers/all";
+
+@include govuk-exports("tag") {
+  .govuk-tag {
+    @include govuk-font-bold;
+    @include govuk-typography-responsive(
+      $govuk-font-16,
+      $override-line-height: 1.25
+    );
+
+    display: inline-block;
+    padding: $govuk-spacing-scale-1 8px 0;
+
+    color: $govuk-white;
+    background-color: $govuk-blue;
+    letter-spacing: 1px;
+
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .govuk-tag--inactive {
+    background-color: $govuk-grey-1;
+  }
+}

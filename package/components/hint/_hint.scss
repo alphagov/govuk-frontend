@@ -1,0 +1,15 @@
+@import "../../settings/all";
+@import "../../tools/all";
+@import "../../helpers/all";
+
+@include govuk-exports("hint") {
+  .govuk-hint {
+    @include govuk-font-regular-19;
+
+    display: block;
+
+    margin-bottom: $govuk-spacing-scale-3;
+
+    color: $govuk-secondary-text-colour;
+  }
+}

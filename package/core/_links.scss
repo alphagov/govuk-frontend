@@ -1,0 +1,44 @@
+@include govuk-exports("links") {
+
+  // We use a placeholder class here so that we can @extend from the prose scope
+  // without also applying every other occurrence of the .govuk-link selector to
+  // the prose scope.
+
+  %govuk-link {
+    @include govuk-link-common;
+    @include govuk-link-style-default;
+    @include govuk-link-print-friendly;
+  }
+
+  .govuk-link {
+    @extend %govuk-link;
+  }
+
+  // Variant classes should always be used in conjunction with the .govuk-link
+  // class, so we do not need the common link styles as they will be inherited.
+
+  .govuk-link--muted {
+    @include govuk-link-style-muted;
+  }
+
+  .govuk-link--text-colour {
+    @include govuk-link-style-text;
+  }
+
+  // 'No visited state' link mixin
+  //
+  // Used in cases where it is not helpful to distinguish between visited and
+  // non-visited links.
+  //
+  // For example, navigation links to pages with dynamic content like admin
+  // dashboards. The content on the page is changing all the time, so the fact
+  // that you’ve visited it before is not important.
+  //
+  // This is not abstracted as a mixin because it does not provide states for
+  // all pseudo-selectors so it does not make sense to use it in composition.
+  .govuk-link--no-visited-state {
+    &:visited {
+      color: $govuk-link-colour;
+    }
+  }
+}
