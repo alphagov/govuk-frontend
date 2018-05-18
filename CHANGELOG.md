@@ -2,44 +2,74 @@
 
 Note: We're not following semantic versioning yet, we are going to talk about this soon.
 
-## Unreleased
+## 0.0.29-alpha (Breaking release)
 
 Breaking changes:
 
 - Restructure project to enable it to be published as a single package
+
+  The [new project structure]((./src/README.md)) matches our ITCSS inspired layers and is published as a single package as `@govuk-frontend/frontend`.
+
+  You will need to:
+
+  - Update your npm dependencies to use `@govuk-frontend/frontend`
+  - Update your SCSS import paths to match the new package name and folder structure.
+
+  If you're importing everything at once:
+
+  ```CSS
+  @import "node_modules/@govuk-frontend/frontend/all";
+  ```
+
+  If you're importing individual components:
+
+  ```CSS
+  @import "node_modules/@govuk-frontend/frontend/components/button/button";
+  ```
+
+  See the [main README](./README.md) for up-to-date installation instructions.
+
   ([PR #680](https://github.com/alphagov/govuk-frontend/pull/680))
-  This is ground work to enable the project to be published as a single package by:
-  - removing components' package.json files
-  - moving "all" files into root
-  - renaming "packages" folder to "package"
-  - removing Lerna
-  - updating release scripts
-  - creating a new package.json
-  - updating documentation
-  - update any tests and build pipelines to support this
 
-  The single package will be published under a new name.
+- Error Messages and Hints have been moved out Label and Fieldset components.
 
-- The structure of the src directory (and thus the package directory, once
-  published) has been updated now that we are not confined by the constraints
-  of publishing multiple packages.
+  They are no longer nested within the label or legend.
+  They are associated with the input or with the fieldset using aria-describedby.
 
-  The intention was to make the structure of Frontend clearer and to simplify
-  the imports that we do within components.
+  Hint has been made into a new component similar to Error Message.
 
-  If you are importing select parts of the codebase, you will need to update
-  your imports to reference the new structure.
+  If you're using markup, you will need to update the old markup:
+  - 
 
-- Error messages have been moved out of the label and fieldset components and
-  are now called from every component that uses them - they are no longer nested
-  within the label or legend. They are associated with the input or with the
-  fieldset using aria-describedby.
-  ([PR #681](https://github.com/alphagov/govuk-frontend/pull/681))
+  ```HTML
+  <label class="govuk-c-label" for="national-insurance-number">
+    National Insurance number
+    <span class="govuk-c-label__hint">
+      It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
+    </span>
+    <span class="govuk-c-error-message">
+      Error message goes here
+    </span>
+  </label>
+  <input class="govuk-c-input govuk-c-input--error" id="national-insurance-number" name="national-insurance-number" type="text">
+  ```
 
-- Hints have been moved out label and fieldset components and into a new 'hint'
-  component, which is called from every component that uses them - they are no
-  longer nested within the label or legend. They are associated with the input
-  or with the fieldset using aria-describedby.
+  With the new markup:
+
+  ```HTML
+  <label class="govuk-label" for="national-insurance-number">
+    National Insurance number
+  </label>
+  <span id="national-insurance-number-hint" class="govuk-hint">
+    It’s on your <i>National Insurance card</i>, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
+  </span>
+  <span id="national-insurance-number-error" class="govuk-error-message">
+    Error message goes here
+  </span>
+  <input class="govuk-input govuk-input--error" id="national-insurance-number" name="test-name-3" type="text" aria-describedby="national-insurance-number-hint national-insurance-number-error">
+  ```
+  
+  If you're using macros:
 
   The fieldset macro no longer accepts `legendHintText` or `legendHintHtml` -
   these parameters are now passed to the hint component which accepts `text` or
@@ -79,13 +109,15 @@ Breaking changes:
   }) }}
   ```
 
+  For more examples of the new markup and Nunjucks macros see the GOV.UK Design System [Question Pages pattern](https://govuk-design-system-production.cloudapps.digital/patterns/question-pages/)
+
   ([PR #681](https://github.com/alphagov/govuk-frontend/pull/681))
 
 - The date-input component now sets an explicit `group` role on the fieldset
   to force JAWS 18 to announce the error message and hint.
   ([PR #681](https://github.com/alphagov/govuk-frontend/pull/681))
 
-- The label component now accepts an `isPageHeading` argument which determines
+- The label component macro now accepts an `isPageHeading` argument which determines
   whether the label itself should be wrapped in an h1:
 
   ```html
@@ -167,13 +199,59 @@ Breaking changes:
   They also introduced additional cognitive load when composing classes,
   having to remember which suffix the classname contains.
 
-  As a result of this, we're removing these prefixes from our codebase.
+  If you're using markup, you will need to:
+  - Remove -o, -c and -h prefixes from class names in your markup
+
+  For example, change:
+  ```HTML
+  <button class="govuk-c-button">Save and continue</button>
+  ```
+
+  Into:
+
+  ```HTML
+  <button class="govuk-button">Save and continue</button>
+  ```
 
 - Simplify grid syntax and introduce grid-row and column mixins.
-  ([PR #665](https://github.com/alphagov/govuk-frontend/pull/665))
+
   Based on user research feedback we have simplified the grid classes
-  to a more consise naming structure. We have also introduced two mixins
-  to help generate additional or custom grid styles and widths.
+  to a more consise naming structure. 
+
+  You will need to:
+  - Change grid class names in your markup
+
+  For example, change:
+  ```HTML
+  <div class="govuk-o-grid">
+    <div class="govuk-o-grid__item govuk-o-grid__item--two-thirds">
+      <!-- content -->
+    </div>
+    <div class="govuk-o-grid__item govuk-o-grid__item--one-third">
+      <!-- content -->
+    </div>
+  </div>
+  ```
+
+  Into:
+
+  ```HTML
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <!-- content -->
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <!-- content -->
+    </div>
+  </div>
+  ```
+
+  We have also introduced two mixins
+  to help generate additional or custom grid styles and widths,
+  see original pull request for usage.
+  
+  ([PR #665](https://github.com/alphagov/govuk-frontend/pull/665))
+
 
 Fixes:
 

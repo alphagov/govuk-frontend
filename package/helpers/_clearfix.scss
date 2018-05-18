@@ -1,0 +1,11 @@
+@import "../tools/exports";
+
+// Mixin to clear floats
+@mixin govuk-clearfix {
+  &:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+

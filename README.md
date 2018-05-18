@@ -70,7 +70,7 @@ your needs.
 To install all components, run:
 
 ```
-npm install --save @govuk-frontend/all
+npm install --save @govuk-frontend/frontend
 ```
 
 After you have installed GOV.UK Frontend the `@govuk-frontend` package will
@@ -85,14 +85,14 @@ imports) if you want to override GOV.UK Frontend with your own styles.
 1. To import all components, add the below to your Sass file:
 
   ```CSS
-  @import "node_modules/@govuk-frontend/all/all";
+  @import "node_modules/@govuk-frontend/frontend/all";
   ```
 
 2. To import an individual component (for example a button), add the below to
 your Sass file:
 
   ```CSS
-  @import "node_modules/@govuk-frontend/button/button";
+  @import "node_modules/@govuk-frontend/frontend/components/button/button";
   ```
 
 #### Optional: Resolve import paths
@@ -125,7 +125,7 @@ to include add `includePaths` to it.)
 After resolving the import paths you can import GOV.UK Frontend by using:
 
 ```CSS
-@import "@govuk-frontend/button/button";
+@import "@govuk-frontend/frontend/components/button/button";
 ```
 
 #### Global Styles
@@ -142,7 +142,7 @@ To include global styles, you can set `$govuk-global-styles` variable to `true`.
 
 $govuk-global-styles: true;
 
-@import "govuk-frontend/all/all";
+@import "govuk-frontend/frontend/all";
 ```
 
 ### Import JavaScript
@@ -151,12 +151,12 @@ You need to import the GOV.UK Frontend scripts into the main JavaScript file in 
 
 To import and initialise all components that require JavaScript, add the below to your main JavaScript file:
 ```JS
-import All from '@govuk-frontend/all/all'
+import All from '@govuk-frontend/frontend/all'
 ```
 
 To import an individual component (for example a button), add the below to your main JavaScript file:
 ```JS
-import Button from '@govuk-frontend/button/button'
+import Button from '@govuk-frontend/frontend/components/button/button'
 ```
 
 Use the following to initialise the button component:
@@ -168,7 +168,7 @@ new Button().init()
 Note: The import syntax you should use depends on the JavaScript module format used by your bundler. For example, if it is using `CommonJS`, use
 
 ```JS
-require('@govuk-frontend/all/all')
+require('@govuk-frontend/frontend/all')
 ```
 
 #### Polyfills
@@ -215,23 +215,23 @@ your application to reference or copy the relevant GOV.UK Frontend assets.
    images folder in your project. Make sure you do this in Sass before importing
   `@govuk-frontend` into your project - see [Import styles](#import-styles).
   (`$govuk-global-images` is defined by default in
-  `/node_modules/frontend/global/settings/_paths.scss`.)
+  `/node_modules/@govuk-frontend/frontend/settings/_paths.scss`.)
 
 #### Recommended solution:
 
-Make `/node_modules/@govuk-frontend/assets` available to your project by routing
+Make `/node_modules/@govuk-frontend/frontend/assets` available to your project by routing
 requests for your assets folder there.
 
 For example, if your project uses [express.js](https://expressjs.com/), below is
 a code sample you could add to your configuration:
 
 ```JS
-app.use('/assets', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/assets')))
+app.use('/assets', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/frontend/assets')))
 ```
 
 #### Alternative solution:
 
-Manually copy the images from `/node_modules/@govuk-frontend/assets` into a
+Manually copy the images from `/node_modules/@govuk-frontend/frontend/assets` into a
 public facing directory in your project. Ideally copying the files to your
 project should be an automated task or part of your build pipeline to ensure
 that the GOV.UK Frontend images stay up-to-date.

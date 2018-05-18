@@ -1,0 +1,58 @@
+@import "../../settings/all";
+@import "../../tools/all";
+@import "../../helpers/all";
+
+@include govuk-exports("fieldset") {
+  .govuk-fieldset {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    @include govuk-clearfix;
+  }
+
+  .govuk-fieldset__legend {
+    @include govuk-font-regular-19;
+    @include govuk-text-colour;
+
+    // Fix legend text wrapping in Edge and IE
+    // 1. IE9-11 & Edge 12-13
+    // 2. IE8-11
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box; // 1
+    display: table;         // 2
+    max-width: 100%;        // 1
+    margin-bottom: $govuk-spacing-scale-3;
+    padding: 0;
+    // Hack to let legends or elements within legends have margins in webkit browsers
+    overflow: hidden;
+
+    white-space: normal;    // 1
+  }
+
+  // Modifiers that make legends look more like their equivalent headings
+
+  .govuk-fieldset__legend--xl {
+    @include govuk-font-bold-48;
+  }
+
+  .govuk-fieldset__legend--l {
+    @include govuk-font-bold-36;
+  }
+
+  .govuk-fieldset__legend--m {
+    @include govuk-font-bold-24;
+  }
+
+  .govuk-fieldset__legend--s {
+    @include govuk-font-bold-19;
+  }
+
+  // When the legend contains an H1, we want the H1 to inherit all styles from
+  // the legend. Effectively we want to be able to treat the heading as if it is
+  // not there.
+  .govuk-fieldset__heading {
+    margin: 0;
+    font-size: inherit;
+    font-weight: inherit;
+  }
+}

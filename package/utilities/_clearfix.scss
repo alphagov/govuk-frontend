@@ -1,0 +1,5 @@
+@include govuk-exports("clearfix") {
+  .govuk-clearfix {
+    @include govuk-clearfix;
+  }
+}
