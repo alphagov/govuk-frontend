@@ -22,8 +22,9 @@
 // @param {Direction} $direction - Direction for arrow: up, right, down, left.
 // @param {Base} $base - Length of the triangle 'base' side
 // @param {Height} $height - Height of triangle. Omit for equilateral.
-@mixin govuk-shape-arrow($direction, $base, $height: null) {
-  display: block;
+// @param {Display} $display - CSS display property of the arrow: block as default
+@mixin govuk-shape-arrow($direction, $base, $height: null, $display: block) {
+  display: $display;
 
   width: 0;
   height: 0;

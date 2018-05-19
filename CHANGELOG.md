@@ -9,6 +9,10 @@ Fixes:
 - Update component readme files content
   ([PR #704](https://github.com/alphagov/govuk-frontend/pull/704))
   
+New features:
+
+- Add option to set CSS display property for govuk-shape-arrow mixin
+  ([PR #701](https://github.com/alphagov/govuk-frontend/pull/701))
 
 ## 0.0.29-alpha (Breaking release)
 
