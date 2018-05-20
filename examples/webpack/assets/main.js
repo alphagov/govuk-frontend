@@ -1,3 +1,3 @@
-import Button from '@govuk-frontend/button/button'
+import Button from '@govuk-frontend/frontend/components/button/button'
 
 new Button().init()
