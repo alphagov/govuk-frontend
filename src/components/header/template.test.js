@@ -64,13 +64,13 @@ describe('header', () => {
     expect($homepageLink.attr('href')).toEqual('/')
   })
 
-  describe('with title', () => {
-    it('renders title', () => {
+  describe('with product name', () => {
+    it('renders product name', () => {
       const $ = render('header', examples['full-width'])
 
       const $component = $('.govuk-header')
-      const $title = $component.find('.govuk-header__title')
-      expect($title.text().trim()).toEqual('Product Name')
+      const $productName = $component.find('.govuk-header__product-name')
+      expect($productName.text().trim()).toEqual('Product Name')
     })
   })
 
