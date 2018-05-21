@@ -9,6 +9,9 @@ Fixes:
 - Update component readme files content
   ([PR #704](https://github.com/alphagov/govuk-frontend/pull/704))
 
+- Fix body element rendering with no text
+  ([PR #707](https://github.com/alphagov/govuk-frontend/pull/707))
+
 New features:
 
 - Add override classes to set `display` property to `block`, `inline` and `inline-block` (PR [#694](https://github.com/alphagov/govuk-frontend/pull/654))
