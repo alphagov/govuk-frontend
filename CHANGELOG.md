@@ -18,6 +18,11 @@ New features:
 
 - Add header component (PR [#695](https://github.com/alphagov/govuk-frontend/pull/695))
 
+Internal:
+
+- Run tests in pre-release
+  ([PR #706](https://github.com/alphagov/govuk-frontend/pull/706))
+
 ## 0.0.29-alpha (Breaking release)
 
 Breaking changes:
