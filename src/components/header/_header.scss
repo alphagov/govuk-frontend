@@ -53,7 +53,7 @@
     vertical-align: middle;
   }
 
-  .govuk-header__title {
+  .govuk-header__product-name {
     @include govuk-font-regular-24;
   }
 
@@ -126,7 +126,7 @@
     }
   }
 
-  .govuk-header__proposition {
+  .govuk-header__content {
     @include mq ($from: desktop) {
       display: inline-block;
       width: 66.66%;
@@ -135,6 +135,7 @@
 
   .govuk-header__menu-button {
     @include govuk-font-regular-16;
+    display: none;
     position: absolute;
     top: $govuk-spacing-scale-4;
     right: 0;
@@ -149,9 +150,8 @@
     }
 
     &::after {
-      @include govuk-shape-arrow($direction: down, $base: 10px);
+      @include govuk-shape-arrow($direction: down, $base: 10px, $display: inline-block);
       content: "";
-      display: inline-block;
       margin-left: $govuk-spacing-scale-1;
     }
 
@@ -160,36 +160,41 @@
     @include mq ($from: tablet) {
       top: $govuk-spacing-scale-3;
     }
-
-    @include mq ($from: desktop) {
-      display: none;
-    }
   }
 
   .govuk-header__menu-button--open {
     &::after {
-      @include govuk-shape-arrow($direction: up, $base: 10px);
-      display: inline-block;
+      @include govuk-shape-arrow($direction: up, $base: 10px, $display: inline-block);
     }
   }
 
   .govuk-header__navigation {
     @include govuk-responsive-margin($govuk-spacing-responsive-2, "bottom");
-    display: none;
+    display: block;
     margin: 0;
     padding: 0;
     list-style: none;
+  }
 
+  .js-enabled .govuk-header__menu-button {
+    display: block;
+    @include mq ($from: desktop) {
+      display: none;
+    }
+  }
+
+  .js-enabled .govuk-header__navigation {
+    display: none;
     @include mq ($from: desktop) {
       display: block;
     }
   }
 
-  .govuk-header__navigation--open {
+  .js-enabled .govuk-header__navigation--open {
     display: block;
   }
 
-  .govuk-header__navigation--right {
+  .govuk-header__navigation--end {
     @include mq ($from: desktop) {
       margin: 0;
       padding: $govuk-spacing-scale-1 0;
@@ -233,18 +238,18 @@
   }
 
   @include mq($media-type: print) {
-    .app-header {
+    .govuk-header {
       border-bottom-width: 0;
       color: $govuk-black;
       background: transparent;
     }
 
     // Hide the inverted crown when printing in browsers that don't support SVG.
-    .app-header__logotype-crown-fallback-image {
+    .govuk-header__logotype-crown-fallback-image {
       display: none;
     }
 
-    .app-header__link {
+    .govuk-header__link {
       &:link,
       &:visited {
         color: $govuk-black;

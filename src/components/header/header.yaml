@@ -112,16 +112,16 @@ examples:
   data:
     homepageUrl: /
     classes: govuk-header--full-width
-    navigationClasses: govuk-header__navigation--right
-    title: Product Name
+    navigationClasses: govuk-header__navigation--end
+    productName: Product Name
 
 - name: full-width-with-navigation
   readme: false
   data:
     homepageUrl: /
     classes: govuk-header--full-width
-    navigationClasses: govuk-header__navigation--right
-    title: Product Name
+    navigationClasses: govuk-header__navigation--end
+    productName: Product Name
     navigation:
       - href: '#1'
         text: 'Navigation item 1'

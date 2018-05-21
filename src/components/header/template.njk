@@ -1,5 +1,3 @@
-{% from "phase-banner/macro.njk" import govukPhaseBanner %}
-
 <header class="govuk-header {{ params.classes if params.classes }}" role="banner" data-module="header"
         {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
   <div class="govuk-header__container {{ params.containerClasses if params.containerClasses }}">
@@ -43,13 +41,13 @@
             GOV.UK
           </span>
         </span>
-        {% if (params.title) %}
-        <span class="govuk-header__title">
-          {{ params.title }}
+        {% if (params.productName) %}
+        <span class="govuk-header__product-name">
+          {{ params.productName }}
         </span>
         {% endif %}
       </a>
-    </div><div class="govuk-header__proposition">
+    </div><div class="govuk-header__content">
 
     {% if (params.serviceName) %}
     <a href="{{ params.serviceUrl }}" class="govuk-header__link govuk-header__link--service-name">

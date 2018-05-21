@@ -28,10 +28,10 @@ Header.prototype.init = function () {
 * @param {string} className to toggle
 */
 Header.prototype.toggleClass = function (node, className) {
-  if (node.classList.contains(className)) {
-    node.classList.remove(className)
+  if (node.className.indexOf(className) > 0) {
+    node.className = node.className.replace(' ' + className, '')
   } else {
-    node.classList.add(className)
+    node.className += ' ' + className
   }
 }
 
