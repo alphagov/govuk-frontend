@@ -85,4 +85,13 @@ describe('Panel', () => {
     expect($component.attr('first-attribute')).toEqual('true')
     expect($component.attr('second-attribute')).toEqual('false')
   })
+
+  it('doesnt render panel body if no body text is passed', () => {
+    const $ = render('panel', {
+      titleText: 'Application complete'
+    })
+    const panelBody = $('.govuk-panel__body').length
+
+    expect(panelBody).toBeFalsy()
+  })
 })
