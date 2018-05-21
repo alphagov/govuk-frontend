@@ -2,6 +2,14 @@
 
 Note: We're not following semantic versioning yet, we are going to talk about this soon.
 
+## Unreleased
+
+Fixes:
+
+- Update component readme files content
+  ([PR #704](https://github.com/alphagov/govuk-frontend/pull/704))
+  
+
 ## 0.0.29-alpha (Breaking release)
 
 Breaking changes:

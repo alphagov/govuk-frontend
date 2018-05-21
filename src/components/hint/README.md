@@ -42,14 +42,6 @@ Use hint text for supporting contextual help
       "html": "It’s on your National Insurance card, benefit letter, payslip or <a class=\"govuk-link\" href=\"#\">P60</a>. For example, ‘QQ 12 34 56 C’."
     }) }}
 
-## Dependencies
-
-To consume the hint component you must be running npm version 5 or above.
-
-## Installation
-
-    npm install --save @govuk-frontend/hint
-
 ## Requirements
 
 ### Build tool configuration
@@ -64,7 +56,7 @@ When compiling the Sass files you'll need to define includePaths to reference th
 
 In order to include the images used in the components, you need to configure your app to show these assets. Below is a sample configuration using Express js:
 
-    app.use('/assets', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/assets')))
+    app.use('/assets', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/frontend/assets')))
 
 ## Component arguments
 
@@ -158,21 +150,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 Below is an example setup using express configure views:
 
-    nunjucks.configure('node_modules/@govuk-frontend', {
+    nunjucks.configure('node_modules/@govuk-frontend/frontend/components', {
       autoescape: true,
       cache: false,
       express: app
     })
-
-## Getting updates
-
-To check whether you have the latest version of the button run:
-
-    npm outdated @govuk-frontend/hint
-
-To update the latest version run:
-
-    npm update @govuk-frontend/hint
 
 ## Contribution
 
