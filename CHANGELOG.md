@@ -8,7 +8,12 @@ Fixes:
 
 - Update component readme files content
   ([PR #704](https://github.com/alphagov/govuk-frontend/pull/704))
-  
+
+Internal:
+
+- Bump jest timeout to 10s
+  ([PR #708](https://github.com/alphagov/govuk-frontend/pull/708))
+
 
 ## 0.0.29-alpha (Breaking release)
 
@@ -47,7 +52,7 @@ Breaking changes:
   Hint has been made into a new component similar to Error Message.
 
   If you're using markup, you will need to update the old markup:
-  - 
+  -
 
   ```HTML
   <label class="govuk-c-label" for="national-insurance-number">
@@ -76,7 +81,7 @@ Breaking changes:
   </span>
   <input class="govuk-input govuk-input--error" id="national-insurance-number" name="test-name-3" type="text" aria-describedby="national-insurance-number-hint national-insurance-number-error">
   ```
-  
+
   If you're using macros:
 
   The fieldset macro no longer accepts `legendHintText` or `legendHintHtml` -
@@ -224,7 +229,7 @@ Breaking changes:
 - Simplify grid syntax and introduce grid-row and column mixins.
 
   Based on user research feedback we have simplified the grid classes
-  to a more consise naming structure. 
+  to a more consise naming structure.
 
   You will need to:
   - Change grid class names in your markup
@@ -257,7 +262,7 @@ Breaking changes:
   We have also introduced two mixins
   to help generate additional or custom grid styles and widths,
   see original pull request for usage.
-  
+
   ([PR #665](https://github.com/alphagov/govuk-frontend/pull/665))
 
 
