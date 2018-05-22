@@ -3,6 +3,7 @@ set -e
 
 LATEST_PUBLISHED_TAG=$(git describe --abbrev=0 --tags)
 
+npm run test
 npm run build:package
 npm run build:dist
 
