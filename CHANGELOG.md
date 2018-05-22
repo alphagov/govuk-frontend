@@ -16,6 +16,8 @@ New features:
 - Add option to set CSS display property for govuk-shape-arrow mixin
   ([PR #701](https://github.com/alphagov/govuk-frontend/pull/701))
 
+- Add header component (PR [#695](https://github.com/alphagov/govuk-frontend/pull/695))
+
 ## 0.0.29-alpha (Breaking release)
 
 Breaking changes:
@@ -53,7 +55,6 @@ Breaking changes:
   Hint has been made into a new component similar to Error Message.
 
   If you're using markup, you will need to update the old markup:
-  - 
 
   ```HTML
   <label class="govuk-c-label" for="national-insurance-number">
@@ -82,7 +83,7 @@ Breaking changes:
   </span>
   <input class="govuk-input govuk-input--error" id="national-insurance-number" name="test-name-3" type="text" aria-describedby="national-insurance-number-hint national-insurance-number-error">
   ```
-  
+
   If you're using macros:
 
   The fieldset macro no longer accepts `legendHintText` or `legendHintHtml` -
@@ -230,7 +231,7 @@ Breaking changes:
 - Simplify grid syntax and introduce grid-row and column mixins.
 
   Based on user research feedback we have simplified the grid classes
-  to a more consise naming structure. 
+  to a more concise naming structure.
 
   You will need to:
   - Change grid class names in your markup
@@ -263,7 +264,7 @@ Breaking changes:
   We have also introduced two mixins
   to help generate additional or custom grid styles and widths,
   see original pull request for usage.
-  
+
   ([PR #665](https://github.com/alphagov/govuk-frontend/pull/665))
 
 
@@ -331,10 +332,10 @@ Internal:
 
 Fixes incomplete release from `packages/` and `dist/` in 0.0.27-alpha release.
 Missing files were:
-- globals/tools/_compatibility.scss
-- globals/tools/_ie8.scss
-- globals/settings/_compatibility.scss
-- globals/settings/_ie8.scss
+- `globals/tools/_compatibility.scss`
+- `globals/tools/_ie8.scss`
+- `globals/settings/_compatibility.scss`
+- `globals/settings/_ie8.scss`
 
 ## 0.0.27-alpha (Breaking release)
 

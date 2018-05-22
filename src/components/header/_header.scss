@@ -1,0 +1,279 @@
+@import "../../settings/all";
+@import "../../tools/all";
+@import "../../helpers/all";
+
+@import "../../helpers/typography";
+
+@include govuk-exports("header") {
+
+  $govuk-header-background: $govuk-black;
+  $govuk-header-border-color: $govuk-blue;
+  $govuk-header-border-width: $govuk-spacing-scale-2;
+  $govuk-header-text: $govuk-white;
+  $govuk-header-link: $govuk-white;
+  $govuk-header-link-hover: $govuk-white;
+  $govuk-header-link-active: #1d8feb;
+  $govuk-header-nav-item-border-color: #2e3133;
+
+  .govuk-header {
+    @include govuk-font-regular-16;
+
+    border-bottom: $govuk-spacing-scale-2 solid $govuk-white;
+    color: $govuk-header-text;
+    background: $govuk-header-background;
+
+  }
+
+  .govuk-header--full-width {
+    padding: 0 $govuk-spacing-scale-3;
+    border-color: $govuk-header-border-color;
+  }
+
+  .govuk-header__container {
+    position: relative;
+    margin-bottom: -$govuk-header-border-width;
+    padding-top: $govuk-spacing-scale-2;
+    border-bottom: $govuk-header-border-width solid $govuk-header-border-color;
+  }
+
+  .govuk-header__logotype {
+    margin-right: $govuk-spacing-scale-1;
+  }
+
+  .govuk-header__logotype-crown {
+    margin-right: 1px;
+    fill: currentColor;
+    vertical-align: middle;
+  }
+
+  .govuk-header__logotype-crown-fallback-image {
+    width: 36px;
+    height: 32px;
+    border: 0;
+    vertical-align: middle;
+  }
+
+  .govuk-header__product-name {
+    @include govuk-font-regular-24;
+  }
+
+  .govuk-header__link {
+    @include govuk-focusable-fill;
+
+    text-decoration: none;
+
+    &:link,
+    &:visited {
+      color: $govuk-header-link;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:focus {
+      color: $govuk-black;
+    }
+
+    // alphagov/govuk_template includes a specific a:link:focus selector
+    // designed to make unvisited links a slightly darker blue when focussed, so
+    // we need to override the text colour for that combination of selectors.
+    @include govuk-compatibility(govuk_template) {
+      &:link:focus {
+        @include govuk-text-colour;
+      }
+    }
+  }
+
+  .govuk-header__link--homepage {
+    // Font size needs to be set on the link so that the box sizing is correct
+    // in Firefox
+    @include govuk-typography-common;
+    @include govuk-typography-weight-bold;
+
+    display: inline-block;
+    font-size: 30px; // We don't have a mixin that produces 30px font size
+    line-height: 30px;
+
+    &:link,
+    &:visited {
+      margin-bottom: -1px; // Negate transparent bottom border
+      border-bottom: 1px solid transparent;
+      text-decoration: none;
+    }
+
+    &:hover,
+    &:active {
+      border-bottom-color: currentColor;
+    }
+  }
+
+  .govuk-header__link--service-name {
+    display: inline-block;
+    margin-bottom: $govuk-spacing-scale-2;
+    @include govuk-font-bold-24;
+  }
+
+  .govuk-header__logo {
+    @include govuk-responsive-margin($govuk-spacing-responsive-2, "bottom");
+    padding-right: $govuk-spacing-scale-8;
+
+    @include mq ($from: desktop) {
+      display: inline-block;
+      width: 33.33%;
+      padding-right: 0;
+      vertical-align: top;
+    }
+  }
+
+  .govuk-header__content {
+    @include mq ($from: desktop) {
+      display: inline-block;
+      width: 66.66%;
+    }
+  }
+
+  .govuk-header__menu-button {
+    @include govuk-font-regular-16;
+    display: none;
+    position: absolute;
+    top: $govuk-spacing-scale-4;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    color: $govuk-header-link;
+    background: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &::after {
+      @include govuk-shape-arrow($direction: down, $base: 10px, $display: inline-block);
+      content: "";
+      margin-left: $govuk-spacing-scale-1;
+    }
+
+    @include govuk-focusable;
+
+    @include mq ($from: tablet) {
+      top: $govuk-spacing-scale-3;
+    }
+  }
+
+  .govuk-header__menu-button--open {
+    &::after {
+      @include govuk-shape-arrow($direction: up, $base: 10px, $display: inline-block);
+    }
+  }
+
+  .govuk-header__navigation {
+    @include govuk-responsive-margin($govuk-spacing-responsive-2, "bottom");
+    display: block;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .js-enabled .govuk-header__menu-button {
+    display: block;
+    @include mq ($from: desktop) {
+      display: none;
+    }
+  }
+
+  .js-enabled .govuk-header__navigation {
+    display: none;
+    @include mq ($from: desktop) {
+      display: block;
+    }
+  }
+
+  .js-enabled .govuk-header__navigation--open {
+    display: block;
+  }
+
+  .govuk-header__navigation--end {
+    @include mq ($from: desktop) {
+      margin: 0;
+      padding: $govuk-spacing-scale-1 0;
+      text-align: right;
+    }
+  }
+
+  .govuk-header__navigation--no-service-name {
+    padding-top: $govuk-spacing-scale-7;
+  }
+
+  .govuk-header__navigation-item {
+    padding: $govuk-spacing-scale-2 0;
+    border-bottom: 1px solid $govuk-header-nav-item-border-color;
+
+    @include mq ($from: desktop) {
+      display: inline-block;
+      margin-right: $govuk-spacing-scale-3;
+      padding: $govuk-spacing-scale-1 0;
+      border: 0;
+    }
+
+    a {
+      @include govuk-font-bold-16;
+      white-space: nowrap;
+    }
+  }
+
+  .govuk-header__navigation-item--active {
+    a {
+      &:link,
+      &:hover,
+      &:visited {
+        color: $govuk-header-link-active;
+      }
+    }
+  }
+
+  .govuk-header__navigation-item:last-child {
+    margin-right: 0;
+  }
+
+  @include mq($media-type: print) {
+    .govuk-header {
+      border-bottom-width: 0;
+      color: $govuk-black;
+      background: transparent;
+    }
+
+    // Hide the inverted crown when printing in browsers that don't support SVG.
+    .govuk-header__logotype-crown-fallback-image {
+      display: none;
+    }
+
+    .govuk-header__link {
+      &:link,
+      &:visited {
+        color: $govuk-black;
+      }
+
+      // Do not append link href to GOV.UK link when printing (e.g. '(/)')
+      &:after {
+        display: none;
+      }
+    }
+  }
+
+  // Begin adjustments for font baseline offset
+  // These should be removed when the font is updated with the correct baseline
+  .govuk-header__logotype-crown,
+  .govuk-header__logotype-crown-fallback-image {
+    position: relative;
+    top: -4px;
+  }
+
+  .govuk-header {
+    $offset: 3px;
+    padding-top: $offset;
+  }
+  // End adjustments
+
+}
