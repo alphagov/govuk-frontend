@@ -1,6 +1,7 @@
 {% extends "layout.njk" %}
 
 {% from "back-link/macro.njk" import govukBackLink %}
+{% from "panel/macro.njk" import govukPanel %}
 
 {% block styles %}
 <style>
@@ -275,6 +276,45 @@
       }
     }) }}
   {%- endcall %}
+
+  <h2 class="govuk-heading-m">Display with govuk-!-display</h2>
+
+  <h3 class="govuk-heading-s govuk-!-w-regular">govuk-!-display-block</h2>
+
+  {{ govukButton({
+    classes: 'govuk-!-display-block',
+    text:'Save and continue',
+    element: 'input',
+    href: '/'
+  }) }}
+
+  {{ govukButton({
+    classes: 'govuk-!-display-block',
+    text:'Save and continue',
+    element: 'input',
+    href: '/'
+  }) }}
+
+  <h3 class="govuk-heading-s govuk-!-w-regular">govuk-!-display-inline-block</h2>
+
+    {{ govukPanel({
+      classes: 'govuk-!-display-inline-block',
+      titleText: 'Application complete',
+      html: 'Your reference number<br><strong>HDJ2123F</strong>'
+    }) }}
+
+
+    {{ govukButton({
+      classes: 'govuk-!-display-inline-block',
+      text:'Save and continue',
+      element: 'input',
+      href: '/' })
+    }}
+
+  <h3 class="govuk-heading-s govuk-!-w-regular">govuk-!-display-inline</h2>
+
+  <a class="govuk-!-display-inline govuk-link" href="#">Apples</a>
+  <a class="govuk-!-display-inline govuk-link" href="#">Oranges</a>
 
 </main>
 
