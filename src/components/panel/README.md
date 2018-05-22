@@ -20,9 +20,11 @@ Find out when to use the Panel component in your service in the [GOV.UK Design S
       <h2 class="govuk-panel__title">
         Application complete
       </h2>
+
       <div class="govuk-panel__body">
         Your reference number: HDJ2123F
       </div>
+
     </div>
 
 #### Macro
