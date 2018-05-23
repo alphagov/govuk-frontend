@@ -21,6 +21,8 @@ New features:
 
 - Add header component (PR [#695](https://github.com/alphagov/govuk-frontend/pull/695))
 
+- Add inset text component (PR [#709](https://github.com/alphagov/govuk-frontend/pull/709))
+
 Internal:
 
 - Run tests in pre-release

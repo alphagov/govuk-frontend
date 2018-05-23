@@ -1,0 +1,112 @@
+{% if isReadme %}
+  {% set parentTemplate = "readme.njk"  %}
+{% else %}
+  {% set parentTemplate = "component.njk"  %}
+{% endif %}
+
+{% extends parentTemplate %}
+
+{# Commented out blocks below inherit from views/component.njk #}
+
+{# componentName #}
+
+{% block componentDescription %}
+  Use bordered inset text to draw attention to important content on the page.
+{% endblock %}
+
+{# examples #}
+
+{# override link to design system here if it's different to base url + componentName #}
+{% set componentGuidanceLink = false %}
+
+{% block componentArguments %}
+{{ govukTable({
+  'firstCellIsHeader': true,
+  'head' : [
+    {
+      text: 'Name'
+    },
+    {
+      text: 'Type'
+    },
+    {
+      text: 'Required'
+    },
+    {
+      text: 'Description'
+    }
+  ],
+  'rows' : [
+    [
+      {
+        text: 'classes'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Optional additional classes'
+      }
+    ],
+    [
+      {
+        text: 'id'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'Yes'
+      },
+      {
+        text: 'The id of the inset text'
+      }
+    ],
+    [
+      {
+        text: 'text'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Text to use within the inset text'
+      }
+    ],
+    [
+      {
+        text: 'html'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'HTML to use within the inset text. If this is provided, the text argument will be ignored.'
+      }
+    ],
+    [
+      {
+        text: 'attributes'
+      },
+      {
+        text: 'object'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Any extra HTML attributes (for example data attributes) to add to the inset text div tag.'
+      }
+    ]
+  ]
+} )}}
+{% endblock %}
