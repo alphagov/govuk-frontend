@@ -28,6 +28,9 @@ Internal:
 - Run tests in pre-release
   ([PR #706](https://github.com/alphagov/govuk-frontend/pull/706))
 
+- Fix CI timeouts: run Jest single thread in TravisCI
+  ([PR #712](https://github.com/alphagov/govuk-frontend/pull/712))
+
 ## 0.0.29-alpha (Breaking release)
 
 Breaking changes:
