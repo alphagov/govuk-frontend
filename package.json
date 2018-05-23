@@ -20,10 +20,7 @@
     "release": "node bin/check-nvmrc.js && ./bin/release.sh",
     "build:package": "node bin/check-nvmrc.js && gulp build:package --destination 'package' && npm run test:build:package",
     "build:dist": "node bin/check-nvmrc.js && gulp build:dist --destination 'dist' && npm run test:build:dist",
-    "test": "standard && gulp test && npm run test:app && npm run test:components && npm run test:generate:readme",
-    "test:app": "jest app/__tests__/app.test.js",
-    "test:components": "gulp copy-assets && jest src/ && jest tasks/gulp/__tests__/check-individual-components-compile.test.js",
-    "test:generate:readme": "jest tasks/gulp/__tests__/check-generate-readme.test.js",
+    "test": "standard && gulp test && gulp copy-assets && jest",
     "test:build:package": "jest tasks/gulp/__tests__/after-build-package.test.js",
     "test:build:dist": "jest tasks/gulp/__tests__/after-build-dist.test.js"
   },
@@ -88,6 +85,10 @@
     ]
   },
   "jest": {
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "after-*"
+    ],
     "setupTestFrameworkScriptFile": "./config/jest-setup.js",
     "snapshotSerializers": [
       "jest-serializer-html"
