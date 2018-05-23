@@ -13,7 +13,10 @@ jobs:
       # Ensure Travis aborts without running tests if the package-lock.json file needs updating
       - set -e
       - ./bin/check-package-lock.sh
-      - npm test
+      # TravisCI is slower than our local machines, so results in intermittent timeouts
+      # using the `--runInBand` flag we can force it to without requiring as much
+      # resources (https://facebook.github.io/jest/docs/en/troubleshooting.html#tests-are-extremely-slow-on-docker-and-or-continuous-integration-ci-server)
+      - npm test -- --runInBand
     # Heroku is configured to automatically deploy the following branches
     # once CI passes:
     # master         -> http://govuk-frontend-review.herokuapp.com/
