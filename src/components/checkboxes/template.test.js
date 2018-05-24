@@ -151,6 +151,59 @@ describe('Checkboxes', () => {
       expect($lastLabel.attr('for')).toEqual('custom-2')
     })
 
+    it('render explicitly passed item ids', () => {
+      const $ = render('checkboxes', {
+        name: 'example-name',
+        items: [
+          {
+            value: '1',
+            text: 'Option 1'
+          },
+          {
+            id: 'custom_item_id',
+            value: '2',
+            text: 'Option 2'
+          }
+        ]
+      })
+
+      const $component = $('.govuk-checkboxes')
+
+      const $firstInput = $component.find('.govuk-checkboxes__item:first-child input')
+      expect($firstInput.attr('id')).toBe('example-name-1')
+
+      const $lastInput = $component.find('.govuk-checkboxes__item:last-child input')
+      const $lastLabel = $component.find('.govuk-checkboxes__item:last-child label')
+      expect($lastInput.attr('id')).toBe('custom_item_id')
+      expect($lastLabel.attr('for')).toEqual('custom_item_id')
+    })
+
+    it('render explicitly passed item names', () => {
+      const $ = render('checkboxes', {
+        name: 'example-name',
+        items: [
+          {
+            value: '1',
+            text: 'Option 1',
+            name: 'custom-item-name-1'
+          },
+          {
+            value: '2',
+            text: 'Option 2',
+            name: 'custom-item-name-2'
+          }
+        ]
+      })
+
+      const $component = $('.govuk-checkboxes')
+
+      const $firstInput = $component.find('.govuk-checkboxes__item:first-child input')
+      expect($firstInput.attr('name')).toBe('custom-item-name-1')
+
+      const $lastInput = $component.find('.govuk-checkboxes__item:last-child input')
+      expect($lastInput.attr('name')).toBe('custom-item-name-2')
+    })
+
     it('render disabled', () => {
       const $ = render('checkboxes', {
         name: 'example-name',
