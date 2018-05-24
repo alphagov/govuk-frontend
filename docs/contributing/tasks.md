@@ -1,14 +1,12 @@
 # NPM and Gulp tasks
 
-This application used a number of a number of NPM scripts that run the application and trigger gulp tasks that build files, update the package, copy assets and watch for changes.
+This document describes the NPM scripts that run the application, and the gulp tasks they trigger to build files, update the package, copy assets and watch for changes.
 
-## Express app only
-
-To simply run the Express app without gulp tasks being triggered, simply run `node app/start.js`.
+To run the application without any tasks being triggered, see [Express app only](#express-app-only).
 
 ## NPM script aliases
 
-There are a few npm scripts in `package.json` that trigger a number of gulp tasks
+NPM scripts are defined in `package.json`. These trigger a number of gulp tasks.
 
 **`npm run start` will trigger `gulp dev` that:**
 - cleans the `public` folder
@@ -48,6 +46,8 @@ There are a few npm scripts in `package.json` that trigger a number of gulp task
 - runs `npm run test:dist:package` (which will test the output is correct)
 
 ## Gulp tasks
+
+Gulp tasks are defined in `gulpfile.js` and .`/tasks/gulp/` folder.
 
 **`gulp default` or just `gulp`**
 
@@ -91,5 +91,6 @@ This task will:
   Is an umbrella task that will run:
   - `gulp scss:lint`
 
+## Express app only
 
-All Gulp tasks are defined in `gulpfile.js` and .`/tasks/gulp/` folder.
+To simply run the Express app without gulp tasks being triggered, simply run `node app/start.js`.
