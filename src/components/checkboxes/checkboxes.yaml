@@ -26,6 +26,23 @@ examples:
       - value: 'other'
         text: 'Citizen of another country'
 
+- name: with-id-plus-name
+  data:
+    fieldset:
+      legend:
+        text: What is your nationality?
+    hint:
+      text: If you have dual nationality, select all options that are relevant to you.
+    items:
+      - name: 'british'
+        id: 'item_british'
+        value: 'yes'
+        text: 'British'
+      - name: 'irish'
+        id: 'item_irish'
+        value: 'irish'
+        text: 'Irish'
+
 - name: with-disabled
   data:
     name: colours

@@ -87,6 +87,74 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
       ]
     }) }}
 
+### Checkboxes--with-id-plus-name
+
+[Preview the checkboxes--with-id-plus-name example](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-id-plus-name/preview)
+
+#### Markup
+
+    <div class="govuk-form-group">
+
+      <fieldset class="govuk-fieldset" aria-describedby="undefined-hint">
+
+      <legend class="govuk-fieldset__legend">
+        What is your nationality?
+      </legend>
+
+      <span id="undefined-hint" class="govuk-hint">
+        If you have dual nationality, select all options that are relevant to you.
+      </span>
+
+      <div class="govuk-checkboxes">
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="item_british" name="british" type="checkbox" value="yes">
+          <label class="govuk-label govuk-checkboxes__label" for="item_british">
+            British
+          </label>
+        </div>
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="item_irish" name="irish" type="checkbox" value="irish">
+          <label class="govuk-label govuk-checkboxes__label" for="item_irish">
+            Irish
+          </label>
+        </div>
+
+      </div>
+      </fieldset>
+
+    </div>
+
+#### Macro
+
+    {% from 'checkboxes/macro.njk' import govukCheckboxes %}
+
+    {{ govukCheckboxes({
+      "fieldset": {
+        "legend": {
+          "text": "What is your nationality?"
+        }
+      },
+      "hint": {
+        "text": "If you have dual nationality, select all options that are relevant to you."
+      },
+      "items": [
+        {
+          "name": "british",
+          "id": "item_british",
+          "value": "yes",
+          "text": "British"
+        },
+        {
+          "name": "irish",
+          "id": "item_irish",
+          "value": "irish",
+          "text": "Irish"
+        }
+      ]
+    }) }}
+
 ### Checkboxes--with-disabled
 
 [Preview the checkboxes--with-disabled example](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-disabled/preview)

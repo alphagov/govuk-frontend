@@ -23,6 +23,8 @@ New features:
 
 - Add inset text component (PR [#709](https://github.com/alphagov/govuk-frontend/pull/709))
 
+- Add ability to pass explicit name value to checkbox items (PR [#719](https://github.com/alphagov/govuk-frontend/pull/719))
+
 Internal:
 
 - Run tests in pre-release
