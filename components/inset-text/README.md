@@ -1,45 +1,45 @@
-# Hint
+# Inset text
 
 ## Introduction
 
-Use hint text for supporting contextual help
+Use bordered inset text to draw attention to important content on the page.
 
 ## Quick start examples
 
 ### Component default
 
-[Preview the hint component](http://govuk-frontend-review.herokuapp.com/components/hint/preview)
+[Preview the inset-text component](http://govuk-frontend-review.herokuapp.com/components/inset-text/preview)
 
 #### Markup
 
-    <span class="govuk-hint">
-      It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’.
-    </span>
+    <div class="govuk-inset-text">
+      It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application.
+    </div>
 
 #### Macro
 
-    {% from 'hint/macro.njk' import govukHint %}
+    {% from 'inset-text/macro.njk' import govukInsetText %}
 
-    {{ govukHint({
-      "text": "It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’."
+    {{ govukInsetText({
+      "text": "It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application."
     }) }}
 
-### Hint--with html
+### Inset-text--with html
 
-[Preview the hint--with html example](http://govuk-frontend-review.herokuapp.com/components/hint/with html/preview)
+[Preview the inset-text--with html example](http://govuk-frontend-review.herokuapp.com/components/inset-text/with html/preview)
 
 #### Markup
 
-    <span class="govuk-hint">
-      It’s on your National Insurance card, benefit letter, payslip or <a class="govuk-link" href="#">P60</a>. For example, ‘QQ 12 34 56 C’.
-    </span>
+    <div class="govuk-inset-text">
+      It can take up to 8 weeks to register a <a class="govuk-link" href="#">lasting power of attorney</a> if there are no mistakes in the application.
+    </div>
 
 #### Macro
 
-    {% from 'hint/macro.njk' import govukHint %}
+    {% from 'inset-text/macro.njk' import govukInsetText %}
 
-    {{ govukHint({
-      "html": "It’s on your National Insurance card, benefit letter, payslip or <a class=\"govuk-link\" href=\"#\">P60</a>. For example, ‘QQ 12 34 56 C’."
+    {{ govukInsetText({
+      "html": "It can take up to 8 weeks to register a <a class=\"govuk-link\" href=\"#\">lasting power of attorney</a> if there are no mistakes in the application."
     }) }}
 
 ## Requirements
@@ -102,7 +102,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-table__cell ">Yes</td>
 
-<td class="govuk-table__cell ">The id of the hint</td>
+<td class="govuk-table__cell ">The id of the inset text</td>
 
 </tr>
 
@@ -114,7 +114,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Text to use within the hint</td>
+<td class="govuk-table__cell ">Text to use within the inset text</td>
 
 </tr>
 
@@ -126,7 +126,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">HTML to use within the hint. If this is provided, the text argument will be ignored.</td>
+<td class="govuk-table__cell ">HTML to use within the inset text. If this is provided, the text argument will be ignored.</td>
 
 </tr>
 
@@ -138,7 +138,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the hint span tag.</td>
+<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the inset text div tag.</td>
 
 </tr>
 

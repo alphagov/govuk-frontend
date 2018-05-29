@@ -46,9 +46,10 @@
     {%- if isConditional %} data-module="checkboxes"{% endif -%}>
     {% for item in params.items %}
     {% set id = item.id if item.id else idPrefix + "-" + loop.index %}
+    {% set name = item.name if item.name else params.name %}
     {% set conditionalId = "conditional-" + id %}
     <div class="govuk-checkboxes__item">
-      <input class="govuk-checkboxes__input" id="{{ id }}" name="{{ params.name }}" type="checkbox" value="{{ item.value }}"
+      <input class="govuk-checkboxes__input" id="{{ id }}" name="{{ name }}" type="checkbox" value="{{ item.value }}"
       {{-" checked" if item.checked }}
       {{-" disabled" if item.disabled }}
       {%- if item.conditional %} data-aria-controls="{{ conditionalId }}"{% endif -%}>
