@@ -254,7 +254,7 @@ describe('sass-mq', () => {
       expect(results.css.toString().trim()).toBe('@media aural and (max-width: 40em){.foo{color:red}}')
     })
 
-    it('only outputs static breapoint styles', async() => {
+    it('only outputs static breakpoint styles', async() => {
       const sass = `
         $mq-breakpoints: (
           mobile:  320px,
@@ -280,6 +280,24 @@ describe('sass-mq', () => {
       const results = await sassRender({ data: sass, ...sassConfig })
 
       expect(results.css.toString().trim()).toBe('.foo{color:forestgreen}')
+    })
+
+    it('does not rasterize print queries', async() => {
+      const sass = `
+        $mq-responsive: false;
+
+        @import "vendor/sass-mq";
+
+        .foo {
+          color: blue;
+          @include mq($media-type: 'print') {
+            color: red;
+          }
+        }`
+
+      const results = await sassRender({ data: sass, ...sassConfig })
+
+      expect(results.css.toString().trim()).toBe('.foo{color:blue}')
     })
   })
 })
