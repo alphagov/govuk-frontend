@@ -4,6 +4,39 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 
 ## Unreleased
 
+💥 Breaking changes:
+
+- The `govuk-file-url` helper has been renamed to to `govuk-image-url`. If you
+  are using this function in your own styles you will need to update calls to
+  it. ([PR #726](https://github.com/alphagov/govuk-frontend/pull/726))
+
+- The `$govuk-global-images` variable has been renamed to to
+  `$govuk-images-path`. If you are overriding this variable or using it in your
+  own styles you will need to update your code to use the new variable name.
+  ([PR #726](https://github.com/alphagov/govuk-frontend/pull/726))
+
+
+🔧 Fixes:
+
+- Fixes a bug whereby print styles were being 'rasterized' into the screen
+  styles when generating the IE8 stylesheet (this is a bug in sass-mq, and has
+  also been raised upstream – https://github.com/sass-mq/sass-mq/pull/111).
+  ([PR #726](https://github.com/alphagov/govuk-frontend/pull/726))
+
+
+🆕 New features:
+
+- Change font delivery method from Base64 encoded strings to serving WOFF2, WOFF
+  and EOT files as separate HTTP requests. You will need to ensure that you are
+  serving the fonts from the assets folder as part of your application.
+  ([PR #726](https://github.com/alphagov/govuk-frontend/pull/726))
+
+- The font-face is now using `font-display: fallback`. This means that the
+  fallback font (Arial) will be used if NTA doesn't download within 100ms. The
+  browser will then swap to NTA as long as it loads within the short swap period.
+  ([PR #726](https://github.com/alphagov/govuk-frontend/pull/726))
+
+
 🏠 Internal:
 
 - Improve release steps, based on doing a release
