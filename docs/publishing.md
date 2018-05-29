@@ -64,16 +64,12 @@ This will:
   - attach the generated ZIP that is located at the root of the project
   - publish release
 
-15. (Required for private beta) Grant "test" user access to any newly published package(s).
-```bash
-npm access grant read-only govuk-frontend:test @govuk-frontend/[component-name]
-```
-16. Log out from npm
+15. Log out from npm
 ```bash
 npm logout
 ```
-17. Move Trello cards from "Next Frontend release" column to "Done".
+16. Move Trello cards from "Next Frontend release" column to "Done".
 
-18. Add Trello cards to "This Sprint" column for
+17. Add Trello cards to "This Sprint" column for
   - Update the GOV.UK Design System to use the latest release
   - Update the GOV.UK Prototype Kit to use the latest release
