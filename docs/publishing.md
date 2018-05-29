@@ -1,6 +1,4 @@
-# Publishing components
-
-### Publishing components manually (while in Alpha/Private beta)
+# Publishing GOV.UK Frontend
 
 1. Checkout **master** and pull latest changes.
 
