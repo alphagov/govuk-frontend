@@ -68,7 +68,6 @@
   // placeholder classes.
 
   .govuk-caption-xl {
-    @include govuk-text-colour;
     @include govuk-font-regular-27;
 
     display: block;
@@ -79,7 +78,6 @@
   }
 
   .govuk-caption-l {
-    @include govuk-text-colour;
     @include govuk-font-regular-24;
 
     display: block;
@@ -93,7 +91,6 @@
   }
 
   .govuk-caption-m {
-    @include govuk-text-colour;
     @include govuk-font-regular-19;
 
     display: block;

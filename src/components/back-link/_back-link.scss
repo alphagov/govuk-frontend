@@ -5,7 +5,7 @@
 @include govuk-exports("back-link") {
 
   .govuk-back-link {
-    @include govuk-font-regular-16;
+    @include govuk-typography-responsive($govuk-font-16);
     @include govuk-link-common;
     @include govuk-link-style-text;
 
