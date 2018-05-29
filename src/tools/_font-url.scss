@@ -1,0 +1,7 @@
+/// Font URL
+///
+/// Returns a URL for the given font filename
+
+@function govuk-font-url($filename) {
+  @return url($govuk-fonts-path + $filename);
+}
