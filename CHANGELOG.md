@@ -4,9 +4,14 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 
 ## Unreleased
 
+🏠 Internal:
+
+- Improve release steps, based on doing a release
+  ([PR #725](https://github.com/alphagov/govuk-frontend/pull/725))
+
 ## 0.0.30-alpha (Minor release)
 
-Fixes:
+🔧 Fixes:
 
 - Update component readme files content
   ([PR #704](https://github.com/alphagov/govuk-frontend/pull/704))
@@ -14,7 +19,7 @@ Fixes:
 - Fix panel body element rendering with no text
   ([PR #707](https://github.com/alphagov/govuk-frontend/pull/707))
 
-New features:
+🆕 New features:
 
 - Add override classes to set `display` property to `block`, `inline` and `inline-block` (PR [#694](https://github.com/alphagov/govuk-frontend/pull/654))
 
@@ -27,7 +32,7 @@ New features:
 
 - Add ability to pass explicit name value to checkbox items (PR [#719](https://github.com/alphagov/govuk-frontend/pull/719))
 
-Internal:
+🏠 Internal:
 
 - Run tests in pre-release
   ([PR #706](https://github.com/alphagov/govuk-frontend/pull/706))
@@ -40,7 +45,7 @@ Internal:
 
 ## 0.0.29-alpha (Breaking release)
 
-Breaking changes:
+💥 Breaking changes:
 
 - Restructure project to enable it to be published as a single package
 
@@ -288,7 +293,7 @@ Breaking changes:
   ([PR #665](https://github.com/alphagov/govuk-frontend/pull/665))
 
 
-Fixes:
+🔧 Fixes:
 
 - Remove redundant font-family declaration from the button component – this will
   also fix an issue where the button uses New Transport when printed instead of
@@ -306,7 +311,7 @@ Fixes:
 - Remove normalize from /dist builds
 (PR [#699](https://github.com/alphagov/govuk-frontend/pull/699))
 
-New features:
+🆕 New features:
 
 - We're now using ES6 Modules and [rollup](https://rollupjs.org/guide/en) to distribute our JavaScript. (PR [#652](https://github.com/alphagov/govuk-frontend/pull/652))
 - Checkboxes and Radios conditional reveal
@@ -329,7 +334,7 @@ New features:
 
   To include global styles, you can set `$govuk-global-styles` variable to `true`.
 
-Internal:
+🏠 Internal:
 
 - Remove unused step in travis.yml file
   (PR [#690](https://github.com/alphagov/govuk-frontend/pull/690))
@@ -359,7 +364,7 @@ Missing files were:
 
 ## 0.0.27-alpha (Breaking release)
 
-Breaking changes:
+💥 Breaking changes:
 
 - Removed an (undocumented) modifier `govuk-c-radio__item--inline` which made
   radio buttons inline, in favour of a new block-level modifier
@@ -382,7 +387,7 @@ Breaking changes:
   (PR [#631](https://github.com/alphagov/govuk-frontend/pull/631))
 - Rename captionSize table argument to captionClasses ([PR #643](https://github.com/alphagov/govuk-frontend/pull/643))
 
-Fixes:
+🔧 Fixes:
 - Link styles, as well as links within the  back-link, breadcrumbs, button,
   error summary, footer and skip link components defend against the
   `a:link:focus` selector in GOV.UK Template, which was overriding focussed
@@ -391,7 +396,7 @@ Fixes:
 - Fix table captions to allow heading classes
   (PR [#633](https://github.com/alphagov/govuk-frontend/pull/633))
 
-New features:
+🆕 New features:
 - Add `govuk-main-wrapper--l` a variant of the main page wrapper to use when a
   design does not include back links, breadcrumbs or phase banners
   (PR [#602](https://github.com/alphagov/govuk-frontend/pull/602))
@@ -415,7 +420,7 @@ New features:
 
  Note: Our JavaScript work is ongoing. In the next release of GOV.UK Frontend both of our script will be modularised and split into common functions. This will allow you to use the polyfills in your bundler/build pipeline. For this reason, you might want to wait until the next release before adding these polyfill scripts into your project.
 
-Internal:
+🏠 Internal:
 - Update check script for new components and tweak docs
   (PR [#589](https://github.com/alphagov/govuk-frontend/pull/589))
 - Listen for development server on different port for tests
@@ -440,23 +445,23 @@ Internal:
 
 ## 0.0.26-alpha (Breaking release)
 
-Breaking changes:
+💥 Breaking changes:
 
 - The error summary component now has a default bottom margin
   (PR [#583](https://github.com/alphagov/govuk-frontend/pull/583))
 - Nest components correctly
   (PR [#584](https://github.com/alphagov/govuk-frontend/pull/584))
 
-Fixes:
+🔧 Fixes:
 
 - Make section break line 1px instead of 2px
 (PR [#585](https://github.com/alphagov/govuk-frontend/pull/585))
 
-New features:
+🆕 New features:
 
 - Add footer component (PR [#569](https://github.com/alphagov/govuk-frontend/pull/569))
 
-Internal:
+🏠 Internal:
 
 - Update pre-release step to check for new components
 (PR [#574](https://github.com/alphagov/govuk-frontend/pull/574))
@@ -467,19 +472,19 @@ Internal:
 
 ## 0.0.25-alpha (Breaking release)
 
-Breaking changes:
+💥 Breaking changes:
 
 - The colour variable `$govuk-fuschia` has been replaced with a new variable
   with the correct spelling (`$govuk-fuchsia`) – thanks to
   [@charlesrt](https://github.com/charlesrt) for reporting.
   (PR [#571](https://github.com/alphagov/govuk-frontend/pull/571))
 
-New features:
+🆕 New features:
 
 - The input macro now accepts a `type` which allows you to override the default
   type="text" (PR [#568](https://github.com/alphagov/govuk-frontend/pull/568))
 
-Fixes:
+🔧 Fixes:
 - The transparent outline has been removed from the button, as it already has
   a transparent border which is visible when overriding colours in the browser
   (PR [#552](https://github.com/alphagov/govuk-frontend/pull/552))
@@ -493,7 +498,7 @@ Fixes:
   match the previous implementation in Elements
   (PR [#568](https://github.com/alphagov/govuk-frontend/pull/568))
 
-Internal:
+🏠 Internal:
 - The logic to determine button text colour automatically has been removed and
   replaced with a new variable $govuk-button-text-colour
   (PR [#552](https://github.com/alphagov/govuk-frontend/pull/552))
@@ -509,7 +514,7 @@ Internal:
 
 ## 0.0.24-alpha (Breaking release)
 
-Breaking changes:
+💥 Breaking changes:
 
 - Namespace existing mixins and functions ( PR [#557](https://github.com/alphagov/govuk-frontend/pull/557))
 - The class `.govuk-section-break__visible` has been renamed to
@@ -518,14 +523,14 @@ Breaking changes:
 - Simplify `src/` folder structure, remove tree and string manipulations from
 gulp tasks (PR [#545](https://github.com/alphagov/govuk-frontend/pull/545))
 
-New features:
+🆕 New features:
 
 - A new variable `$govuk-input-border-colour` has been introduced to define the
   border colour for inputs. The Input, Select and Textarea components have been
   updated to use it.
   (PR [#551](https://github.com/alphagov/govuk-frontend/pull/551))
 
-Fixes:
+🔧 Fixes:
 - Removes media query display on body from compiled CSS
   (PR [#560](https://github.com/alphagov/govuk-frontend/pull/560))
 
@@ -535,7 +540,7 @@ Fixes:
   borders, rather than relying on inheriting it
   (PR [#551](https://github.com/alphagov/govuk-frontend/pull/551))
 
-Internal:
+🏠 Internal:
 
 - The 'prose scope' has been updated to extend only placeholder classes. The
   corresponding classes the prose scope extends have been updated to provide a
@@ -552,7 +557,7 @@ Internal:
 
 ## 0.0.23-alpha (Breaking release)
 
-Breaking changes:
+💥 Breaking changes:
 
 - Remove Cookie-banner and Previous-next components
   (PR [#488](https://github.com/alphagov/govuk-frontend/pull/488), PR [#523](https://github.com/alphagov/govuk-frontend/pull/523))
@@ -578,7 +583,7 @@ Breaking changes:
   avoid tying it to a particular colour.
   (PR [#525](https://github.com/alphagov/govuk-frontend/pull/525))
 
-New features:
+🆕 New features:
 
 - Button hover colour now has a semantic Sass name: $govuk-button-hover-colour
   (PR [#406](https://github.com/alphagov/govuk-frontend/pull/406))
@@ -592,7 +597,7 @@ New features:
   `<hr>`, adds margin (xl, l and m). There is also an option to make the `<hr>`
   border visible or invisible. (PR [#483](https://github.com/alphagov/govuk-frontend/pull/483))
 
-Fixes:
+🔧 Fixes:
 
 - Remove double margin from Date input component
   (PR [#451](https://github.com/alphagov/govuk-frontend/pull/451))
@@ -608,7 +613,7 @@ Fixes:
 border for errors and a bottom margin. Add example of form errors to preview app
 (PR [#591](https://github.com/alphagov/govuk-frontend/pull/591))
 
-Internal:
+🏠 Internal:
 
 - Replace Mocha/Chai with Jest, re-enable task tests, add back-link component.
   Special thanks to [@htmlandbacon](https://github.com/htmlandbacon) and [@tyom](https://github.com/tyom) for sharing their approaches.
@@ -640,7 +645,7 @@ Internal:
 
 ## 0.0.22-alpha (Breaking release)
 
-Breaking changes:
+💥 Breaking changes:
 
 - The link styles in the core layer no longer style `a` elements directly, but
   instead provide a `govuk-link` class which you will need to apply to links
@@ -651,7 +656,7 @@ Breaking changes:
 - Rename `legal-text` argument accepted by `legal-text` component to `text` (PR [#431](https://github.com/alphagov/govuk-frontend/pull/432))
 - Rename `legal-text` component to `warning-text` (PR [#431](https://github.com/alphagov/govuk-frontend/pull/432))
 
-New features:
+🆕 New features:
 
 - The prose scope has been extended to style links, which means links within the
   scope do not need the `govuk-link` class applied.
@@ -660,7 +665,7 @@ New features:
   class (`govuk-link--muted`).
   (PR [#427](https://github.com/alphagov/govuk-frontend/pull/427))
 
-Fixes:
+🔧 Fixes:
 
 - The error summary component allows users to pass HTML for an entry in the list
   again. (PR [#428](https://github.com/alphagov/govuk-frontend/pull/428))
@@ -675,7 +680,7 @@ Fixes:
   (PR [#427](https://github.com/alphagov/govuk-frontend/pull/427))
 - Adjust `warning-text` icon by 1px for New Transport
 
-Internal:
+🏠 Internal:
 
 - Add prose scope example (PR [#429](https://github.com/alphagov/govuk-frontend/pull/429))
 - Links within the review app and the examples have been updated to use the
@@ -688,18 +693,18 @@ Internal:
 ## 0.0.21-alpha (Breaking release)
 Skipped 0.0.20-alpha due to difficulties with publishing.
 
-Breaking changes:
+💥 Breaking changes:
 
 - Rename ‘govuk-body-lede’ to ‘govuk-body-lead’. (PR [#405](https://github.com/alphagov/govuk-frontend/pull/405))
 - Pluralise radio component (PR [#388](https://github.com/alphagov/govuk-frontend/pull/388))
 - Pluralise checkbox component (PR [#384](https://github.com/alphagov/govuk-frontend/pull/384))
 
-New features:
+🆕 New features:
 
 - Add `width` classes, which were based on `form-control` classes that were
 specific to form control in Elements. (PR [#413](https://github.com/alphagov/govuk-frontend/pull/413))
 
-Fixes:
+🔧 Fixes:
 
 - Make buttons 40px high including box shadow (PR [#416](https://github.com/alphagov/govuk-frontend/pull/416))
 - Fix focus outline style in Chrome and Safari (PR [#414](https://github.com/alphagov/govuk-frontend/pull/414))
