@@ -28,6 +28,8 @@ This will:
 
   ```bash
   cd ../govuk-design-system
+  git checkout master
+  npm install # note running `npm install` after `npm link` will destroy the link.
   npm link ../govuk-frontend/package/
   ```
 
