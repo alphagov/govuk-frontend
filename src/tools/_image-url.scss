@@ -1,0 +1,7 @@
+/// Image URL
+///
+/// Returns a URL for the given image filename
+
+@function govuk-image-url($filename) {
+  @return url($govuk-images-path + $filename);
+}

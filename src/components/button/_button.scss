@@ -145,12 +145,12 @@
     padding-bottom: $govuk-spacing-scale-2 - $govuk-border-width-form-element;
     padding-left: $govuk-spacing-scale-3;
 
-    background-image: govuk-file-url("icon-pointer.png");
+    background-image: govuk-image-url("icon-pointer.png");
     background-repeat: no-repeat;
     background-position: 100% 50%;
 
     @include govuk-device-pixel-ratio {
-      background-image: govuk-file-url("icon-pointer-2x.png");
+      background-image: govuk-image-url("icon-pointer-2x.png");
       background-size: 30px 19px;
     }
   }

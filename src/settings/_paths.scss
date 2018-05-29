@@ -1,2 +1,9 @@
-// Set the path to your images folder
-$govuk-global-images: "/assets/images/" !default;
+/// Path to the assets directory, with trailing slash.
+///
+/// This is the directory where the images and fonts subdirectories live. You
+/// will need to make this directory available via your application – see the
+/// README for details.
+$govuk-assets-path: "/assets/" !default;
+
+// Path to the images folder, with trailing slash.
+$govuk-images-path: "#{$govuk-assets-path}images/" !default;
