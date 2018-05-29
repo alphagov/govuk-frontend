@@ -7,3 +7,6 @@ $govuk-assets-path: "/assets/" !default;
 
 // Path to the images folder, with trailing slash.
 $govuk-images-path: "#{$govuk-assets-path}images/" !default;
+
+// Path to the fonts folder, with trailing slash.
+$govuk-fonts-path: "#{$govuk-assets-path}fonts/" !default;
