@@ -1,0 +1,30 @@
+@import "../../settings/all";
+@import "../../tools/all";
+@import "../../helpers/all";
+
+@include govuk-exports("inset-text") {
+  .govuk-inset-text {
+    @include govuk-font-regular-19;
+    @include govuk-text-colour;
+    padding: $govuk-spacing-scale-3;
+    // Margin top intended to collapse
+    // This adds an additional 10px to the paragraph above
+    @include govuk-responsive-margin($govuk-spacing-responsive-6, "top");
+    @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom");
+
+    clear: both;
+
+    border-left: $govuk-border-width-wide solid $govuk-border-colour;
+
+    font-family: $govuk-font-stack;
+
+    :first-child {
+      margin-top: 0;
+    }
+
+    :only-child,
+    :last-child {
+      margin-bottom: 0;
+    }
+  }
+}

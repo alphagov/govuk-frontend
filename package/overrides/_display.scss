@@ -1,0 +1,14 @@
+@include govuk-exports("display-overrides") {
+
+  .govuk-\!-display-inline {
+    display: inline !important;
+  }
+
+  .govuk-\!-display-inline-block {
+    display: inline-block !important;
+  }
+
+  .govuk-\!-display-block {
+    display: block !important;
+  }
+}

@@ -4,12 +4,14 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 
 ## Unreleased
 
+## 0.0.30-alpha (Minor release)
+
 Fixes:
 
 - Update component readme files content
   ([PR #704](https://github.com/alphagov/govuk-frontend/pull/704))
 
-- Fix body element rendering with no text
+- Fix panel body element rendering with no text
   ([PR #707](https://github.com/alphagov/govuk-frontend/pull/707))
 
 New features:
