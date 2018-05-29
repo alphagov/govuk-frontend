@@ -31,6 +31,9 @@ Internal:
 - Fix CI timeouts: run Jest single thread in TravisCI
   ([PR #712](https://github.com/alphagov/govuk-frontend/pull/712))
 
+- Ensure 'after' tests are not ignored
+  ([PR #720](https://github.com/alphagov/govuk-frontend/pull/720))
+
 ## 0.0.29-alpha (Breaking release)
 
 Breaking changes:
