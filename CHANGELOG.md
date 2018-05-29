@@ -4,6 +4,8 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 
 ## Unreleased
 
+## 0.0.30-alpha (Minor release)
+
 Fixes:
 
 - Update component readme files content

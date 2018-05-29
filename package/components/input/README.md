@@ -241,14 +241,6 @@ Find out when to use the Input component in your service in the [GOV.UK Design S
       "name": "test-name"
     }) }}
 
-## Dependencies
-
-To consume the input component you must be running npm version 5 or above.
-
-## Installation
-
-    npm install --save @govuk-frontend/input
-
 ## Requirements
 
 ### Build tool configuration
@@ -263,7 +255,7 @@ When compiling the Sass files you'll need to define includePaths to reference th
 
 In order to include the images used in the components, you need to configure your app to show these assets. Below is a sample configuration using Express js:
 
-    app.use('/assets', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/assets')))
+    app.use('/assets', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/frontend/assets')))
 
 ## Component arguments
 
@@ -405,21 +397,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 Below is an example setup using express configure views:
 
-    nunjucks.configure('node_modules/@govuk-frontend', {
+    nunjucks.configure('node_modules/@govuk-frontend/frontend/components', {
       autoescape: true,
       cache: false,
       express: app
     })
-
-## Getting updates
-
-To check whether you have the latest version of the button run:
-
-    npm outdated @govuk-frontend/input
-
-To update the latest version run:
-
-    npm update @govuk-frontend/input
 
 ## Contribution
 
