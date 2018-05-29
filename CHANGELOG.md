@@ -23,6 +23,9 @@ Note: We're not following semantic versioning yet, we are going to talk about th
   also been raised upstream – https://github.com/sass-mq/sass-mq/pull/111).
   ([PR #726](https://github.com/alphagov/govuk-frontend/pull/726))
 
+- Removed some duplicated CSS rules from the outputted CSS
+  ([PR #727](https://github.com/alphagov/govuk-frontend/pull/727))
+
 
 🆕 New features:
 
