@@ -31,8 +31,8 @@ $govuk-fonts-path: "#{$govuk-assets-path}fonts/" !default;
 ///
 /// @type String
 ///
-/// @example scss - Ruby asset handling
-///   $govuk-image-url-function: 'asset-url';
+/// @example scss - Rails asset handling
+///   $govuk-image-url-function: 'image-url';
 ///
 /// @example scss - Custom asset handling
 ///
@@ -55,8 +55,8 @@ $govuk-image-url-function: false !default;
 ///
 /// @type String
 ///
-/// @example scss - Ruby asset handling
-///   $govuk-font-url-function: 'asset-url';
+/// @example scss - Rails asset handling
+///   $govuk-font-url-function: 'font-url';
 ///
 /// @example scss - Custom asset handling
 ///
