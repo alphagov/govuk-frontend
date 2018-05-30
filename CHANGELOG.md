@@ -39,6 +39,12 @@ Note: We're not following semantic versioning yet, we are going to talk about th
   browser will then swap to NTA as long as it loads within the short swap period.
   ([PR #726](https://github.com/alphagov/govuk-frontend/pull/726))
 
+- You can now override the helpers used to generate image and font urls, for
+  example if you are using sass-rails' asset-pipeline functionality.
+  You can do this by setting `$govuk-image-url-function` and
+  `$govuk-font-url-function` to the name of the function(s) you wish to use.
+  See `src/settings/_assets.scss` for more information and examples.
+  ([PR #733](https://github.com/alphagov/govuk-frontend/pull/733))
 
 🏠 Internal:
 
