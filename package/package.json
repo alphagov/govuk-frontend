@@ -17,5 +17,6 @@
   },
   "bugs": {
     "url": "https://github.com/alphagov/govuk-frontend/issues"
-  }
+  },
+  "license": "MIT"
 }
