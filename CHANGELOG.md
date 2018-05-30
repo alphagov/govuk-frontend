@@ -51,6 +51,9 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 - Improve release steps, based on doing a release
   ([PR #725](https://github.com/alphagov/govuk-frontend/pull/725))
 
+- Fix majority of vulnerabilities flagged by `npm audit`
+  ([PR #712](https://github.com/alphagov/govuk-frontend/pull/712))
+
 ## 0.0.30-alpha (Minor release)
 
 🔧 Fixes:
