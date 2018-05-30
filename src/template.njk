@@ -4,7 +4,7 @@
 
 {% block pageStart %}{% endblock %}
 <!DOCTYPE html>
-<html lang="{{ htmlLang | default('en') }}">
+<html lang="{{ htmlLang | default('en') }}" class="govuk-template">
   <head>
     <meta charset="utf-8" />
     <title>{% block pageTitle %}GOV.UK - The best place to find government services and information{% endblock %}</title>
@@ -25,7 +25,7 @@
     {# The default og:image is added below head so that scrapers see any custom metatags first, and this is just a fallback #}
     <meta property="og:image" content="{{ assetPath | default('assets/') }}images/govuk-opengraph-image.png">
   </head>
-  <body class="{{ bodyClasses }}">
+  <body class="govuk-template__body {{ bodyClasses }}">
     <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
     {% block bodyStart %}{% endblock %}
 
