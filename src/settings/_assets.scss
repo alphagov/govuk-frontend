@@ -1,0 +1,69 @@
+/// Path to the assets directory, with trailing slash.
+///
+/// This is the directory where the images and fonts subdirectories live. You
+/// will need to make this directory available via your application – see the
+/// README for details.
+///
+/// @type String
+
+$govuk-assets-path: "/assets/" !default;
+
+/// Path to the images folder, with trailing slash.
+///
+/// @type String
+
+$govuk-images-path: "#{$govuk-assets-path}images/" !default;
+
+/// Path to the fonts folder, with trailing slash.
+///
+/// @type String
+
+$govuk-fonts-path: "#{$govuk-assets-path}fonts/" !default;
+
+/// Custom image URL function
+///
+/// If the built-in image URL helper does not meet your needs, you can specify
+/// the name of a custom handler – either built in or by writing your own
+/// function.
+///
+/// If you are writing your own handler, ensure that it returns a string wrapped
+/// with `url()`
+///
+/// @type String
+///
+/// @example scss - Ruby asset handling
+///   $govuk-image-url-function: 'asset-url';
+///
+/// @example scss - Custom asset handling
+///
+///   @function my-url-handler($filename) {
+///     @return ''; // Some custom URL handling
+///   }
+///
+///   $govuk-image-url-function: 'my-url-handler';
+
+$govuk-image-url-function: false !default;
+
+/// Custom font URL function
+///
+/// If the built-in font URL helper does not meet your needs, you can specify
+/// the name of a custom handler – either built in or by writing your own
+/// function.
+///
+/// If you are writing your own handler, ensure that it returns a string wrapped
+/// with `url()`
+///
+/// @type String
+///
+/// @example scss - Ruby asset handling
+///   $govuk-font-url-function: 'asset-url';
+///
+/// @example scss - Custom asset handling
+///
+///   @function my-url-handler($filename) {
+///     @return ''; // Some custom URL handling
+///   }
+///
+///   $govuk-font-url-function: 'my-url-handler';
+
+$govuk-font-url-function: false !default;

@@ -1,7 +1,23 @@
+// Disable indentation linting in this file only
+// sass-lint:disable indentation
+
 /// Image URL
 ///
-/// Returns a URL for the given image filename
+/// If a custom image-url handler is defined ($govuk-image-url-function) then
+/// it will be called, otherwise a url will be returned with the filename
+/// appended to the image path.
+///
+/// @param {String} Filename for the image to load
+/// @return {String} URL for the filename, wrapped in `url()`
 
 @function govuk-image-url($filename) {
-  @return url($govuk-images-path + $filename);
+  $use-custom-function: variable-exists("govuk-image-url-function")
+    and $govuk-image-url-function
+    and function-exists($govuk-image-url-function);
+
+  @if ($use-custom-function) {
+    @return call($govuk-image-url-function, $filename);
+  } @else {
+    @return url($govuk-images-path + $filename);
+  }
 }
