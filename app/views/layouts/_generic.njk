@@ -1,29 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
+{% extends "template.njk" %}
+
+{% block pageTitle %}GOV.UK Frontend{% endblock %}
+
+{% block head %}
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>GOV.UK Frontend</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <!--[if !IE 8]><!-->
     <link rel="stylesheet" href="/public/app.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
   <!--<![endif]-->
-  <!--[if lt IE 9]>
-  <script src="/vendor/html5-shiv/html5shiv.js"></script>
-  <![endif]-->
   <!--[if IE 8]>
-  <link rel="stylesheet" href="/public/app-ie8.css">
+    <link rel="stylesheet" href="/public/app-ie8.css">
   <![endif]-->
-  {% block styles %}
-  {% endblock %}
-</head>
-<body class="{% block bodyClasses %}{% endblock %}">
-  <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
-  {% block body %}
-    {% block content %}{% endblock %}
-  {% endblock %}
+
+  {% block styles %}{% endblock %}
+{% endblock %}
+
+{# Turn the header and footer off #}
+{% block header %}{% endblock %}
+{% block footer %}{% endblock %}
+
+{% block bodyEnd %}
   <script src="/public/all.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.15/iframeResizer.min.js"></script>
   <!--[if lte IE 8]>
@@ -33,7 +31,5 @@
     var domReady = function(a,b,c){b=document,c='addEventListener';b[c]?b[c]('DOMContentLoaded',a):window.attachEvent('onload',a)}
     domReady(iFrameResize({}, '.js-component-preview'))
   </script>
-  {% block scripts %}
-  {% endblock %}
-</body>
-</html>
+  {% block scripts %}{% endblock %}
+{% endblock %}

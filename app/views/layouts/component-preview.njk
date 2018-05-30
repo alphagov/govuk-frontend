@@ -1,12 +1,17 @@
 {% extends previewLayout + ".njk" %}
 
-{% block bodyClasses %}
+{% set bodyClasses %}
  {{ bodyClasses }}
-{% endblock %}
+{% endset %}
+
+{% block skipLink %}{% endblock %}
 
 {% block content %}
   <div class="app-whitespace-highlight">
     {{ componentView | safe }}
   </div>
+{% endblock %}
+
+{% block scripts %}
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.15/iframeResizer.contentWindow.min.js"></script>
 {% endblock %}
