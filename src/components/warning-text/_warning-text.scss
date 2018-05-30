@@ -4,7 +4,7 @@
 
 @import "../../objects/shapes";
 
-@include govuk-exports("warning-text") {
+@include govuk-exports("govuk/component/warning-text") {
 
   .govuk-warning-text {
     @include govuk-font-regular-19;

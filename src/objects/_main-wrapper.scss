@@ -26,7 +26,7 @@
   @include govuk-responsive-padding($govuk-spacing-responsive-8, "top");
 }
 
-@include govuk-exports("main-wrapper") {
+@include govuk-exports("govuk/objects/main-wrapper") {
   .govuk-main-wrapper {
     @include govuk-main-wrapper;
   }

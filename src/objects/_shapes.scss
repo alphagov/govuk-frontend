@@ -1,4 +1,4 @@
-@include govuk-exports("shapes") {
+@include govuk-exports("govuk/objects/shapes") {
   .govuk-circle {
     display: inline-block;
     border-radius: 50%;

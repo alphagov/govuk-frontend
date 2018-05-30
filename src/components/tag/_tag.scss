@@ -2,7 +2,7 @@
 @import "../../tools/all";
 @import "../../helpers/all";
 
-@include govuk-exports("tag") {
+@include govuk-exports("govuk/component/tag") {
   .govuk-tag {
     @include govuk-font-bold;
     @include govuk-typography-responsive(

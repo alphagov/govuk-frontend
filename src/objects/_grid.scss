@@ -1,4 +1,4 @@
-@include govuk-exports("govuk-grid") {
+@include govuk-exports("govuk/objects/grid") {
   //most common usage
   @include govuk-grid-row;
   @include govuk-grid-column(one-quarter);

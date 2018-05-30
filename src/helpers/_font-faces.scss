@@ -4,7 +4,7 @@
 // sass-lint:disable no-css-comments, no-duplicate-properties, property-sort-order, indentation
 
 @mixin govuk-font-face-nta {
-  @include govuk-exports("font-face") {
+  @include govuk-exports("govuk/helpers/font-face") {
     @at-root {
       /*! Copyright (c) 2011 by Margaret Calvert & Henrik Kubel. All rights reserved. The font has been customised for exclusive use on gov.uk. This cut is not commercially available. */
 
