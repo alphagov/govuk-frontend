@@ -90,6 +90,10 @@
         height: auto;
         border: 0;
         color: $chevron-border-colour;
+
+        // IE8 doesn't seem to like rendering pseudo-elements using @font-faces,
+        // so fall back to using another sans-serif font to render the chevron.
+        font-family: Arial, sans-serif;
       }
     }
 
