@@ -299,6 +299,15 @@ describe('frontend app', () => {
           done(err)
         })
       })
+      it('should have set `mainClasses`', done => {
+        request.get(requestParamsExampleTemplateCustom, (err, res) => {
+          let $ = cheerio.load(res.body)
+          const $main = $('main')
+
+          expect($main.attr('class')).toBe('govuk-main-wrapper app-main-class')
+          done(err)
+        })
+      })
     })
   })
 
