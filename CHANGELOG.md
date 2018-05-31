@@ -2,6 +2,15 @@
 
 Note: We're not following semantic versioning yet, we are going to talk about this soon.
 
+## Unreleased
+
+🔧 Fixes:
+
+- The `<label>` element will now be omitted for form controls where no label
+  text or html is provided. If you call the label component directly whilst
+  passing neither text nor html, no HTML will be outputted.
+  ([PR #740])(https://github.com/alphagov/govuk-frontend/pull/740)
+
 ## 0.0.31-alpha (Breaking release)
 
 💥 Breaking changes:
