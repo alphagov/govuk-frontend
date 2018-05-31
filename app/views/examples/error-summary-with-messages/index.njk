@@ -6,15 +6,14 @@
 
 {% extends "layout.njk" %}
 
+{% block beforeContent %}
+  {{ govukBackLink({
+    "href": "/",
+    "text": "Back"
+  }) }}
+{% endblock %}
+
 {% block content %}
-
-{{ govukBackLink({
-  "href": "/",
-  "text": "Back"
-}) }}
-
-<main class="govuk-main-wrapper">
-
 <form action="/" method="post">
 
   {{ govukErrorSummary({
@@ -73,7 +72,4 @@
   }) }}
 
 </form>
-
-</main>
-
 {% endblock %}

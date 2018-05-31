@@ -1,15 +1,15 @@
-{% extends "layout.njk" %}
-
 {% from "back-link/macro.njk" import govukBackLink %}
 
+{% extends "layout.njk" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    "href": "/",
+    "text": "Back"
+  }) }}
+{% endblock %}
+
 {% block content %}
-
-{{ govukBackLink({
-  "href": "/",
-  "text": "Back"
-}) }}
-
-<main class="govuk-main-wrapper">
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">

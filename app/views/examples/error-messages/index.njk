@@ -1,6 +1,15 @@
-{% extends "layout.njk" %}
-
 {% from "back-link/macro.njk" import govukBackLink %}
+{% from "fieldset/macro.njk" import govukFieldset %}
+{% from "label/macro.njk" import govukLabel %}
+{% from "input/macro.njk" import govukInput %}
+{% from "date-input/macro.njk" import govukDateInput %}
+{% from "button/macro.njk" import govukButton %}
+{% from "select/macro.njk" import govukSelect %}
+{% from 'checkboxes/macro.njk' import govukCheckboxes %}
+{% from 'radios/macro.njk' import govukRadios %}
+{% from 'textarea/macro.njk' import govukTextarea %}
+
+{% extends "layout.njk" %}
 
 {% block styles %}
 <style>
@@ -30,25 +39,14 @@
 </style>
 {% endblock %}
 
+{% block beforeContent %}
+  {{ govukBackLink({
+    "href": "/",
+    "text": "Back"
+  }) }}
+{% endblock %}
+
 {% block content %}
-
-{{ govukBackLink({
-  "href": "/",
-  "text": "Back"
-}) }}
-
-<main class="govuk-main-wrapper">
-
-{% from "fieldset/macro.njk" import govukFieldset %}
-{% from "label/macro.njk" import govukLabel %}
-{% from "input/macro.njk" import govukInput %}
-{% from "date-input/macro.njk" import govukDateInput %}
-{% from "button/macro.njk" import govukButton %}
-{% from "select/macro.njk" import govukSelect %}
-{% from 'checkboxes/macro.njk' import govukCheckboxes %}
-{% from 'radios/macro.njk' import govukRadios %}
-{% from 'textarea/macro.njk' import govukTextarea %}
-
   <h1 class="govuk-heading-xl">Error messages</h1>
 
 
@@ -253,5 +251,4 @@
     }}
 
   </form>
-</main>
 {% endblock %}

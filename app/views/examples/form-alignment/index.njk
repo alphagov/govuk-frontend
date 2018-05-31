@@ -1,7 +1,14 @@
-{% extends "layout.njk" %}
-
 {% from "back-link/macro.njk" import govukBackLink %}
 {% from "panel/macro.njk" import govukPanel %}
+{% from "fieldset/macro.njk" import govukFieldset %}
+{% from "label/macro.njk" import govukLabel %}
+{% from "input/macro.njk" import govukInput %}
+{% from "button/macro.njk" import govukButton %}
+{% from "select/macro.njk" import govukSelect %}
+{% from "checkboxes/macro.njk" import govukCheckboxes %}
+{% from "radios/macro.njk" import govukRadios %}
+
+{% extends "layout.njk" %}
 
 {% block styles %}
 <style>
@@ -31,24 +38,14 @@
 </style>
 {% endblock %}
 
+{% block beforeContent %}
+  {{ govukBackLink({
+    "href": "/",
+    "text": "Back"
+  }) }}
+{% endblock %}
+
 {% block content %}
-
-
-{{ govukBackLink({
-  "href": "/",
-  "text": "Back"
-}) }}
-
-<main class="govuk-main-wrapper">
-
-  {% from "fieldset/macro.njk" import govukFieldset %}
-  {% from "label/macro.njk" import govukLabel %}
-  {% from "input/macro.njk" import govukInput %}
-  {% from "button/macro.njk" import govukButton %}
-  {% from "select/macro.njk" import govukSelect %}
-  {% from 'checkboxes/macro.njk' import govukCheckboxes %}
-  {% from 'radios/macro.njk' import govukRadios %}
-
   <h1 class="govuk-heading-xl">Form elements alignment</h1>
   <h2 class="govuk-heading-m">Input and button</h2>
 
@@ -315,7 +312,4 @@
 
   <a class="govuk-!-display-inline govuk-link" href="#">Apples</a>
   <a class="govuk-!-display-inline govuk-link" href="#">Oranges</a>
-
-</main>
-
 {% endblock %}

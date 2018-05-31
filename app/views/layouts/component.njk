@@ -1,9 +1,11 @@
-{% set componentName = componentPath %}
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "showExamples.njk" import showExamples %}
+
 {% extends "full-width.njk" %}
-{% block bodyClasses %}
-language-markup
-{% endblock %}
-{% block content %}
+
+{% set bodyClasses %}
+  language-markup
+{% endset %}
 
 {% set componentName = componentPath %}
 {% set componentNameHuman = componentName | replace("-", " ") | capitalize %}
@@ -12,29 +14,25 @@ language-markup
   {% include componentName +"/"+ componentName +".njk" ignore missing %}
 {% endset %}
 
-{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
-<div class="govuk-width-container">
-{{ govukBreadcrumbs({
-  "items": [
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    "items": [
     { text: 'GOV.UK Frontend', href: '/' },
     { text: componentNameHuman }
-  ]
-}) }}
-</div>
+    ]
+  }) }}
+{% endblock %}
 
-<div class="govuk-main-wrapper">
+{% block content %}
   <div class="govuk-width-container">
     <h1 class="govuk-heading-xl">
-    {% block componentName %}
-    {{ componentNameHuman }}
-    {% endblock %}
+      {% block componentName %}
+        {{ componentNameHuman }}
+      {% endblock %}
     </h1>
   </div>
-</div>
 
-  {% from "showExamples.njk" import showExamples %}
   {% block examples %}
-  {{ showExamples(componentName, componentData) }}
+    {{ showExamples(componentName, componentData) }}
   {% endblock %}
-
 {% endblock %}

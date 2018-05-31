@@ -1,13 +1,15 @@
-{% extends "layout.njk" %}
-
 {% from "back-link/macro.njk" import govukBackLink %}
 
-{% block content %}
+{% extends "layout.njk" %}
 
-{{ govukBackLink({
-  "href": "/",
-  "text": "Back"
-}) }}
+{% block beforeContent %}
+  {{ govukBackLink({
+    "href": "/",
+    "text": "Back"
+  }) }}
+{% endblock %}
+
+{% block content %}
 
 {% set variants = {
   'Link': '',
@@ -26,8 +28,6 @@
   'Focussed hovered link': ':focus :hover',
   'Focussed active link': ':focus :active'
 } %}
-
-<main class="govuk-main-wrapper">
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
@@ -53,7 +53,4 @@
 
     </div>
   </div>
-
-</main>
-
 {% endblock %}
