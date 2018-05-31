@@ -2,7 +2,7 @@
 @import "../../tools/all";
 @import "../../helpers/all";
 
-@include govuk-exports("hint") {
+@include govuk-exports("govuk/component/hint") {
   .govuk-hint {
     @include govuk-font-regular-19;
 

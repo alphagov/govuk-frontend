@@ -2,6 +2,13 @@
 
 $govuk-text-colour: $govuk-black;
 
+// Canvas background colour
+// Used by the footer component and template to give the illusion of a long footer.
+$govuk-canvas-background-colour: $govuk-grey-3;
+
+// Body background colour
+$govuk-body-background-colour: $govuk-white;
+
 // Text colour for print media
 //
 // Use 'true black' to avoid printers using colour ink to print body text

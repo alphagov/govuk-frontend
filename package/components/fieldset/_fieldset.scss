@@ -2,7 +2,7 @@
 @import "../../tools/all";
 @import "../../helpers/all";
 
-@include govuk-exports("fieldset") {
+@include govuk-exports("govuk/component/fieldset") {
   .govuk-fieldset {
     margin: 0;
     padding: 0;

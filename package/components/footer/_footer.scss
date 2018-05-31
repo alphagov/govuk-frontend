@@ -4,16 +4,16 @@
 
 @import "../../helpers/typography";
 
-@include govuk-exports("footer") {
+@include govuk-exports("govuk/component/footer") {
 
-  $govuk-footer-background: $govuk-grey-3;
+  $govuk-footer-background: $govuk-canvas-background-colour;
   $govuk-footer-border-top: #a1acb2;
   $govuk-footer-border: $govuk-grey-2;
   $govuk-footer-text: #454a4c;
   $govuk-footer-link: $govuk-footer-text;
   $govuk-footer-link-hover: #171819;
 
-  // Based on the `govuk-file-url("govuk-crest-2x.png");` image dimensions.
+  // Based on the govuk-crest-2x.png image dimensions.
   $govuk-footer-crest-image-width-2x: 250px;
   $govuk-footer-crest-image-height-2x: 204px;
   // Half the 2x image so that it fits the regular 1x size.
@@ -115,9 +115,9 @@
     display: inline-block;
     min-width: $govuk-footer-crest-image-width;
     padding-top: ($govuk-footer-crest-image-height + $govuk-spacing-scale-2);
-    background-image: govuk-file-url("govuk-crest.png");
+    background-image: govuk-image-url("govuk-crest.png");
     @include govuk-device-pixel-ratio {
-      background-image: govuk-file-url("govuk-crest-2x.png");
+      background-image: govuk-image-url("govuk-crest-2x.png");
     }
     background-repeat: no-repeat;
     background-position: 50% 0%;

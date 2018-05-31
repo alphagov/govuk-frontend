@@ -6,7 +6,7 @@
 @import "../hint/hint";
 @import "../label/label";
 
-@include govuk-exports("input") {
+@include govuk-exports("govuk/component/input") {
   .govuk-input {
     @include govuk-font-regular-19;
     @include govuk-focusable;

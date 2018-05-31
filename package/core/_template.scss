@@ -1,0 +1,16 @@
+@import "../settings/all";
+
+@include govuk-exports("govuk/core/template") {
+  // Set the overall page background color to the same colour
+  // as used by the footer to give the illusion of a long footer.
+  .govuk-template {
+    background-color: $govuk-canvas-background-colour;
+  }
+
+  .govuk-template__body {
+    // The default margins set by user-agents are not required since we have our own containers.
+    margin: 0;
+    // Set the overall body of the page back to the typical background colour.
+    background-color: $govuk-body-background-colour;
+  }
+}

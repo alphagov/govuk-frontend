@@ -6,7 +6,7 @@
 @import "../hint/hint";
 @import "../label/label";
 
-@include govuk-exports("textarea") {
+@include govuk-exports("govuk/component/textarea") {
   .govuk-textarea {
     @include govuk-font-regular;
     @include govuk-typography-responsive(

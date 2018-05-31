@@ -6,7 +6,7 @@
 @import "../hint/hint";
 @import "../label/label";
 
-@include govuk-exports("file-upload") {
+@include govuk-exports("govuk/component/file-upload") {
   .govuk-file-upload {
     @include govuk-font-regular-19;
     @include govuk-text-colour;

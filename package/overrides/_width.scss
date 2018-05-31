@@ -1,4 +1,4 @@
-@include govuk-exports("width-overrides") {
+@include govuk-exports("govuk/overrides/width") {
   .govuk-\!-width-three-quarters {
     width: 100% !important;
 

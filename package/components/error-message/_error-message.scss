@@ -2,7 +2,7 @@
 @import "../../tools/all";
 @import "../../helpers/all";
 
-@include govuk-exports("error-message") {
+@include govuk-exports("govuk/component/error-message") {
   .govuk-error-message {
     @include govuk-font-bold-19;
 

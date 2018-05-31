@@ -2,7 +2,7 @@
 @import "../../tools/all";
 @import "../../helpers/all";
 
-@include govuk-exports("panel") {
+@include govuk-exports("govuk/component/panel") {
 
   .govuk-panel {
     @include govuk-font-regular-19;
