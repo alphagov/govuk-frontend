@@ -63,7 +63,9 @@ This will:
   - select the latest tag version
   - set "GOV.UK Frontend release v[version-number]" as the title
   - add release notes from changelog
-  - attach the generated ZIP that is located at the root of the project
+  - add a summary of highlights (this will be used when sending comms out)
+  - attach the generated ZIP that has been generated at the root of the project
+  - mark the release as a pre-release
   - publish release
 
 15. Log out from npm
