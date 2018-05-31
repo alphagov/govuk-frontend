@@ -26,6 +26,11 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 - Removed some duplicated CSS rules from the outputted CSS
   ([PR #727](https://github.com/alphagov/govuk-frontend/pull/727))
 
+- Fixes a bug in IE8 where the button component did not have a shadow, by
+  rendering the shadow using a border for IE8 specifically – IE8 does not
+  support box-shadow
+  ([PR #737])(https://github.com/alphagov/govuk-frontend/pull/737)
+
 
 🆕 New features:
 
