@@ -1,0 +1,124 @@
+{# Example that changes every setting in the template #}
+
+{% from "skip-link/macro.njk" import govukSkipLink %}
+{% from "header/macro.njk" import govukHeader %}
+{% from "phase-banner/macro.njk" import govukPhaseBanner %}
+{% from "footer/macro.njk" import govukFooter %}
+
+{% extends "template.njk" %}
+
+{% block pageStart %}
+  <!-- block:pageStart -->
+{% endblock %}
+
+{% set htmlClasses = 'app-html-class' %}
+{% set htmlLang = 'fr' %}
+{% set assetPath = '' %}
+{% set themeColor = 'blue' %}
+{% set bodyClasses = 'app-body-class' %}
+
+{% block pageTitle %}GOV.UK - Le meilleur endroit pour trouver des services gouvernementaux et de l'information{% endblock %}
+
+{% block headIcons %}
+  <!-- block:headIcons -->
+    {{ super() }}
+  <!-- endblock:headIcons -->
+{% endblock %}
+
+{% block head %}
+  <!-- block:head -->
+  <!--[if !IE 8]><!-->
+    <link rel="stylesheet" href="/public/app.css">
+  <!--<![endif]-->
+  <!--[if IE 8]>
+    <link rel="stylesheet" href="/public/app-ie8.css">
+  <![endif]-->
+  <!-- endblock:head -->
+{% endblock %}
+
+{% block bodyStart %}
+  <!-- block:bodyStart -->
+  <!-- endblock:bodyStart -->
+{% endblock %}
+
+{% block skipLink %}
+  <!-- block:skipLink -->
+  {{ govukSkipLink({
+    href: '#main-content',
+    text: 'Passer au contenu principal'
+  }) }}
+  <!-- endblock:skipLink -->
+{% endblock %}
+
+{% block header %}
+  <!-- block:header -->
+  {{ govukHeader({
+    homepageUrl: "/",
+    containerClasses: "govuk-width-container",
+    serviceName: "Nom du service",
+    navigation: [
+      {
+        href: '#1',
+        text: 'Élément de navigation 1',
+        active: true
+      },
+      {
+        href: '#2',
+        text: 'Élément de navigation 2'
+      },
+      {
+        href: '#3',
+        text: 'Élément de navigation 3'
+      }
+    ]
+  }) }}
+  <!-- endblock:header -->
+{% endblock %}
+
+{% block main %}
+  <!-- block:main -->
+  {{ govukPhaseBanner({
+    classes: "govuk-width-container",
+    tag: {
+      text: "alpha"
+    },
+    html: 'C\'est un nouveau service - vos <a class="govuk-link" href="#">commentaires</a> nous aideront à l\'améliorer.'
+  }) }}
+  {{ super() }}
+  <!-- endblock:main -->
+{% endblock %}
+
+{% block content %}
+  <!-- block:content -->
+  {{ super() }}
+  <!-- endblock:content -->
+{% endblock %}
+
+{% block footer %}
+  <!-- block:footer -->
+  {{ govukFooter({
+    "meta": {
+      "items": [
+        {
+          "href": "#1",
+          "text": "Aidez-moi"
+        },
+        {
+          "href": "#2",
+          "text": "Politique de confidentialité"
+        },
+        {
+          "href": "#3",
+          "text": "Contactez-nous"
+        }
+      ]
+    }
+  }) }}
+  <!-- endblock:footer -->
+{% endblock %}
+
+{% block bodyEnd %}
+  <!-- block:bodyEnd -->
+  <script src="/public/all.js"></script>
+  <!-- endblock:bodyEnd -->
+{% endblock %}

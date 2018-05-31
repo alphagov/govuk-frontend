@@ -17,7 +17,8 @@ const appViews = [
   configPaths.layouts,
   configPaths.partials,
   configPaths.examples,
-  configPaths.components
+  configPaths.components,
+  configPaths.src
 ]
 
 module.exports = (options) => {

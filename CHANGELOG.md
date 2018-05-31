@@ -50,6 +50,9 @@ Note: We're not following semantic versioning yet, we are going to talk about th
   See `src/settings/_assets.scss` for more information and examples.
   ([PR #733](https://github.com/alphagov/govuk-frontend/pull/733))
 
+- Add boilerplate template, which is a Nunjucks replacement for [GOV.UK Template](https://github.com/alphagov/govuk_template).
+  ([PR #731](https://github.com/alphagov/govuk-frontend/pull/731))
+
 🏠 Internal:
 
 - Improve release steps, based on doing a release

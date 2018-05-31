@@ -1,0 +1,139 @@
+{% extends "template.njk" %}
+
+{% block head -%}
+  <!--[if !IE 8]><!-->
+    <link rel="stylesheet" href="/public/app.css">
+  <!--<![endif]-->
+  <!--[if IE 8]>
+    <link rel="stylesheet" href="/public/app-ie8.css">
+  <![endif]-->
+  <style>
+    [data-block] {
+      position: relative;
+      outline: 2px dashed #6f777b;
+      padding: 15px;
+      padding-top: 3em;
+      margin: 30px;
+    }
+
+    [data-block]::before {
+      content: 'block: ' attr(data-block);
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: .25em .5em;
+      background: white;
+      border-bottom: 2px dashed #6f777b;
+      border-right: 2px dashed #6f777b;
+      font-family: 'nta', sans-serif;
+    }
+
+    [data-block] > .govuk-body:last-child {
+      margin-bottom: 0;
+    }
+
+    [data-block] > .govuk-body {
+      line-height: 1.5;
+    }
+
+    .block-break {
+      margin-top: 30px;
+      margin-bottom: 30px;
+      border: 0;
+      height: 0;
+      border-bottom: 2px dashed #6f777b;
+    }
+  </style>
+{%- endblock %}
+
+{% block bodyStart -%}
+  {# Since we can't show the blocks in the `<head>`, we pretend by creating a section in `bodyStart` #}
+  <div data-block="pageTop">
+    <p class="govuk-body">
+      Set this block for comments above the <code>&lt;!DOCTYPE html&gt;</code>, useful if you want to set a comment.
+      <br>
+      For example: <code>&lt;!-- Hello, World. --&gt;</code>
+    </p>
+  </div>
+  <div data-block="headIcons">
+    <p class="govuk-body">
+      Set this block to override the default icons used for GOV.UK branded pages.
+      <br>
+      For example: <code>&lt;link rel="shortcut icon" href="favicon.ico" type="image/x-icon" /&gt;</code>
+    </p>
+  </div>
+  <div data-block="head">
+    <p class="govuk-body">
+      Set this block to add additional items to the <code>&lt;head&gt;</code>.
+      <br>
+      For example: <code>&lt;meta name="description" content="My page description"&gt;</code>
+    </p>
+  </div>
+  <hr class="block-break">
+  <div data-block="bodyStart">
+    {{- super() -}}
+    <p class="govuk-body">
+      Set this block to add content just after just after the opening <code>&lt;body&gt;</code> element
+    </p>
+  </div>
+{%- endblock %}
+
+{% block skipLink -%}
+  <div data-block="skipLink">
+    <p class="govuk-body">
+      Set this block to override the default <a href="/components/skip-link/">Skip link</a> component.
+    </p>
+    {% from 'skip-link/macro.njk' import govukSkipLink %}
+
+    {{ govukSkipLink({
+      "classes": ":focus",
+      "text": "Skip to main content (forced :focus for demonstration)",
+      "href": "#content"
+    }) }}
+  </div>
+{%- endblock %}
+
+{% block header -%}
+  <div data-block="header">
+    <p class="govuk-body">
+      Set this block to override the default <a href="/components/header/">Header</a> component.
+    </p>
+    {{- super() -}}
+  </div>
+{%- endblock %}
+
+{% block main -%}
+  <div data-block="main">
+    <p class="govuk-body">
+      Set this block to override the default <code>&lt;main&gt;</code> element.
+    </p>
+    {{- super() -}}
+  </div>
+{%- endblock %}
+
+{% block content -%}
+  <div data-block="content">
+    {{- super() -}}
+    <p class="govuk-body">
+      Set this block to add content that you want to appear centered in the <code>&lt;main&gt;</code> element.
+    </p>
+  </div>
+{%- endblock %}
+
+{% block footer -%}
+  <div data-block="footer">
+    <p class="govuk-body">
+      Set this block to override the default <a href="/components/footer/">Footer</a> component.
+    </p>
+    {{- super() -}}
+  </div>
+{%- endblock %}
+
+{% block bodyEnd -%}
+  <div data-block="bodyEnd">
+    {{- super() -}}
+    <p class="govuk-body">
+      Set this block to add content just after just before the closing <code>&lt;/body&gt;</code> element
+    </p>
+  </div>
+{%- endblock %}
