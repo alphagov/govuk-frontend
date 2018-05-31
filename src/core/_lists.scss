@@ -1,4 +1,4 @@
-@include govuk-exports("lists") {
+@include govuk-exports("govuk/core/lists") {
 
   // We use a placeholder class here so that we can @extend from the prose scope
   // without also applying every other occurrence of the .govuk-list selector to

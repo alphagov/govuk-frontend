@@ -7,7 +7,7 @@
 @import "../hint/hint";
 @import "../label/label";
 
-@include govuk-exports("date-input") {
+@include govuk-exports("govuk/component/date-input") {
   .govuk-date-input {
     @include govuk-clearfix;
   }

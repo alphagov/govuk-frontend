@@ -4,7 +4,7 @@
 
 @import "../../core/lists";
 
-@include govuk-exports("error-summary") {
+@include govuk-exports("govuk/component/error-summary") {
 
   .govuk-error-summary {
     @include govuk-text-colour;

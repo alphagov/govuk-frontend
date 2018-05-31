@@ -2,7 +2,7 @@
 @import "../../tools/all";
 @import "../../helpers/all";
 
-@include govuk-exports("back-link") {
+@include govuk-exports("govuk/component/back-link") {
 
   .govuk-back-link {
     @include govuk-typography-responsive($govuk-font-16);

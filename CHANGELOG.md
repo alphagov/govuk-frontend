@@ -18,6 +18,10 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 
 🔧 Fixes:
 
+- Namespacing SCSS exports with 'govuk' prefix to avoid clashes with
+  exports in applications consuming GOV.UK Frontend
+  ([PR #732](https://github.com/alphagov/govuk-frontend/pull/732))
+
 - Fixes a bug whereby print styles were being 'rasterized' into the screen
   styles when generating the IE8 stylesheet (this is a bug in sass-mq, and has
   also been raised upstream – https://github.com/sass-mq/sass-mq/pull/111).
