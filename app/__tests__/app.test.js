@@ -189,6 +189,15 @@ describe('frontend app', () => {
           })
         })
       })
+      it('should have additional `htmlClasses`', done => {
+        request.get(requestParamsExampleTemplateCustom, (err, res) => {
+          let $ = cheerio.load(res.body)
+          const $html = $('html')
+
+          expect($html.attr('class')).toBe('govuk-template app-html-class')
+          done(err)
+        })
+      })
       it('should have assets overriden', done => {
         request.get(requestParamsExampleTemplateCustom, (err, res) => {
           let $ = cheerio.load(res.body)

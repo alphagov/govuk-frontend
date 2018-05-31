@@ -4,7 +4,7 @@
 
 {% block pageStart %}{% endblock %}
 <!DOCTYPE html>
-<html lang="{{ htmlLang | default('en') }}" class="govuk-template">
+<html lang="{{ htmlLang | default('en') }}" class="govuk-template {{ htmlClasses }}">
   <head>
     <meta charset="utf-8" />
     <title>{% block pageTitle %}GOV.UK - The best place to find government services and information{% endblock %}</title>
