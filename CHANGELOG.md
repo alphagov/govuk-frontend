@@ -11,6 +11,20 @@ Note: We're not following semantic versioning yet, we are going to talk about th
   passing neither text nor html, no HTML will be outputted.
   ([PR #740])(https://github.com/alphagov/govuk-frontend/pull/740)
 
+- Add `govuk-main-wrapper` to `<main>` element by default.
+  ([PR #740])(https://github.com/alphagov/govuk-frontend/pull/740)
+
+🆕 New features:
+
+- Add `beforeContent` block to the template, for content that does not belong inside `<main>` element.
+  For example: Back links.
+  ([PR #740])(https://github.com/alphagov/govuk-frontend/pull/740)
+
+🏠 Internal:
+
+- Fix review application templates to give them the correct HTML structure.
+  ([PR #740])(https://github.com/alphagov/govuk-frontend/pull/740)
+
 ## 0.0.31-alpha (Breaking release)
 
 💥 Breaking changes:

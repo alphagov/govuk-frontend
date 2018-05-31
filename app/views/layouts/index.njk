@@ -1,32 +1,30 @@
 {% extends "layout.njk" %}
 
 {% block content %}
-  <div class="govuk-main-wrapper">
-    <h1 class="govuk-heading-xl">
-      GOV.UK Frontend
-    </h1>
+  <h1 class="govuk-heading-xl">
+    GOV.UK Frontend
+  </h1>
 
-    <div class="govuk-grid-row">
+  <div class="govuk-grid-row">
 
-      <div class="govuk-grid-column-one-half">
-        <h2 class="govuk-heading-m">Components</h2>
+    <div class="govuk-grid-column-one-half">
+      <h2 class="govuk-heading-m">Components</h2>
 
-        <ul class="govuk-list">
-        {% for componentName in componentsDirectory | sort %}
-          <li><a href="/components/{{ componentName }}" class="govuk-link">{{ componentName | replace("-", " ") | capitalize }}</a></li>
-        {% endfor %}
-        </ul>
-      </div>
+      <ul class="govuk-list">
+      {% for componentName in componentsDirectory | sort %}
+        <li><a href="/components/{{ componentName }}" class="govuk-link">{{ componentName | replace("-", " ") | capitalize }}</a></li>
+      {% endfor %}
+      </ul>
+    </div>
 
-      <div class="govuk-grid-column-one-half">
-        <h2 class="govuk-heading-m">Examples</h2>
+    <div class="govuk-grid-column-one-half">
+      <h2 class="govuk-heading-m">Examples</h2>
 
-        <ul class="govuk-list">
-        {% for exampleName in examplesDirectory | sort %}
-          <li><a href="/examples/{{ exampleName }}" class="govuk-link">{{ exampleName | replace("-", " ") | capitalize }}</a></li>
-        {% endfor %}
-        </ul>
-      </div>
+      <ul class="govuk-list">
+      {% for exampleName in examplesDirectory | sort %}
+        <li><a href="/examples/{{ exampleName }}" class="govuk-link">{{ exampleName | replace("-", " ") | capitalize }}</a></li>
+      {% endfor %}
+      </ul>
     </div>
   </div>
 {% endblock %}

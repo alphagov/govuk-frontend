@@ -8,15 +8,14 @@
 
 {% extends "layout.njk" %}
 
+{% block beforeContent %}
+  {{ govukBackLink({
+    "href": "/",
+    "text": "Back"
+  }) }}
+{% endblock %}
+
 {% block content %}
-
-{{ govukBackLink({
-  "href": "/",
-  "text": "Back"
-}) }}
-
-<main class="govuk-main-wrapper">
-
   <h1 class="govuk-heading-xl">Labels, legends and headings</h1>
 
   <h2 class="govuk-heading-l">Text input</h2>
@@ -3262,7 +3261,4 @@
     ]
     })
   }}
-
-</main>
-
 {% endblock %}
