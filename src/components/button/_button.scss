@@ -34,6 +34,10 @@
     cursor: pointer;
     -webkit-appearance: none;
 
+    @include govuk-if-ie8 {
+      border-bottom: $button-shadow-size solid $govuk-button-shadow-colour;
+    }
+
     @include mq($from: tablet) {
       width: auto;
     }
@@ -72,6 +76,10 @@
     &:active {
       top: $button-shadow-size;
       box-shadow: none;
+
+      @include govuk-if-ie8 {
+        border-bottom-width: 0;
+      }
     }
 
     // The following adjustments do not work for <input type="button"> as
