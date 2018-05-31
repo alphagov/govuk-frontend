@@ -2,6 +2,8 @@
 
 1. Checkout **master** and pull latest changes.
 
+2. Run `nvm use` to ensure you are using the right version of Node.js and npm.
+
 2. Run `npm install` to ensure you have the latest dependencies installed.
 
 3. Create and checkout a new branch (`release-[version-number]`).
