@@ -7,7 +7,7 @@
 @import "../hint/hint";
 @import "../label/label";
 
-@include govuk-exports("radios") {
+@include govuk-exports("govuk/component/radios") {
   $govuk-radios-size: $govuk-spacing-scale-7;
   $govuk-radios-label-padding-left-right: $govuk-spacing-scale-3;
 

@@ -2,7 +2,7 @@
 @import "../../tools/all";
 @import "../../helpers/all";
 
-@include govuk-exports("inset-text") {
+@include govuk-exports("govuk/component/inset-text") {
   .govuk-inset-text {
     @include govuk-font-regular-19;
     @include govuk-text-colour;
@@ -15,8 +15,6 @@
     clear: both;
 
     border-left: $govuk-border-width-wide solid $govuk-border-colour;
-
-    font-family: $govuk-font-stack;
 
     :first-child {
       margin-top: 0;

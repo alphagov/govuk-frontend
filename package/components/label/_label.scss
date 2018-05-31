@@ -2,7 +2,7 @@
 @import "../../tools/all";
 @import "../../helpers/all";
 
-@include govuk-exports("label") {
+@include govuk-exports("govuk/component/label") {
   .govuk-label {
     @include govuk-font-regular-19;
     @include govuk-text-colour;

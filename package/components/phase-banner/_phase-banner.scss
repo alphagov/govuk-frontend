@@ -4,7 +4,7 @@
 
 @import "../tag/tag";
 
-@include govuk-exports("phase-banner") {
+@include govuk-exports("govuk/component/phase-banner") {
   .govuk-phase-banner {
     @include govuk-font-regular-16;
     @include govuk-text-colour;

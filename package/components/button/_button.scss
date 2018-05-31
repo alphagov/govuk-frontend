@@ -2,7 +2,7 @@
 @import "../../tools/all";
 @import "../../helpers/all";
 
-@include govuk-exports("button") {
+@include govuk-exports("govuk/component/button") {
 
   // Because the shadow (s0) is visually 'part of' the button, we need to reduce
   // the height of the button to compensate by adjusting its padding (s1) and
@@ -36,6 +36,10 @@
     vertical-align: top;
     cursor: pointer;
     -webkit-appearance: none;
+
+    @include govuk-if-ie8 {
+      border-bottom: $button-shadow-size solid $govuk-button-shadow-colour;
+    }
 
     @include mq($from: tablet) {
       width: auto;
@@ -76,6 +80,10 @@
       top: $button-shadow-size;
       -webkit-box-shadow: none;
               box-shadow: none;
+
+      @include govuk-if-ie8 {
+        border-bottom-width: 0;
+      }
     }
 
     // The following adjustments do not work for <input type="button"> as
@@ -150,12 +158,12 @@
     padding-bottom: $govuk-spacing-scale-2 - $govuk-border-width-form-element;
     padding-left: $govuk-spacing-scale-3;
 
-    background-image: govuk-file-url("icon-pointer.png");
+    background-image: govuk-image-url("icon-pointer.png");
     background-repeat: no-repeat;
     background-position: 100% 50%;
 
     @include govuk-device-pixel-ratio {
-      background-image: govuk-file-url("icon-pointer-2x.png");
+      background-image: govuk-image-url("icon-pointer-2x.png");
       background-size: 30px 19px;
     }
   }
