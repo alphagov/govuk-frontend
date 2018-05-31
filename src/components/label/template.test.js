@@ -22,8 +22,17 @@ describe('Label', () => {
       expect($component.get(0).tagName).toEqual('label')
     })
 
+    it('does not output anything if no html or text is provided', () => {
+      const $ = render('label', {})
+
+      const $component = $('.govuk-label')
+
+      expect($component.length).toEqual(0)
+    })
+
     it('allows additional classes to be added to the component', () => {
       const $ = render('label', {
+        text: 'National Insurance number',
         classes: 'extra-class one-more-class'
       })
 
@@ -60,6 +69,7 @@ describe('Label', () => {
 
     it('renders for attribute if specified', () => {
       const $ = render('label', {
+        text: 'National Insurance number',
         for: '#dummy-input'
       })
 
@@ -79,6 +89,7 @@ describe('Label', () => {
 
     it('allows additional attributes to be added to the component', () => {
       const $ = render('label', {
+        text: 'National Insurance number',
         attributes: {
           'first-attribute': 'true',
           'second-attribute': 'false'
