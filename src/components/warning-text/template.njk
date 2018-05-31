@@ -1,5 +1,3 @@
-{% from "warning-text/macro.njk" import govukWarningText -%}
-
 <div class="govuk-warning-text {{- ' ' + params.classes if params.classes}}"
   {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor -%}
   >
