@@ -61,10 +61,6 @@
 
 ### Auto-generated directories  
 
-- `aXeReports/`
-
-  Output of [aXe](https://github.com/dequelabs/axe-core) tests.
-
 - `public/`
 
   Assets built for the preview app.
