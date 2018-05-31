@@ -9,21 +9,26 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 - The `<label>` element will now be omitted for form controls where no label
   text or html is provided. If you call the label component directly whilst
   passing neither text nor html, no HTML will be outputted.
-  ([PR #740])(https://github.com/alphagov/govuk-frontend/pull/740)
+  ([PR #740](https://github.com/alphagov/govuk-frontend/pull/740))
 
 - Add `govuk-main-wrapper` to `<main>` element by default.
-  ([PR #740])(https://github.com/alphagov/govuk-frontend/pull/740)
+  ([PR #742](https://github.com/alphagov/govuk-frontend/pull/742))
+
+- Use relative imports whenever a component imports another component, to allow
+  for cases where users don't want to add the components folder itself to their
+  nunjucks paths.
+  ([PR #743](https://github.com/alphagov/govuk-frontend/pull/743))
 
 🆕 New features:
 
 - Add `beforeContent` block to the template, for content that does not belong inside `<main>` element.
   For example: Back links.
-  ([PR #740])(https://github.com/alphagov/govuk-frontend/pull/740)
+  ([PR #742](https://github.com/alphagov/govuk-frontend/pull/742))
 
 🏠 Internal:
 
 - Fix review application templates to give them the correct HTML structure.
-  ([PR #740])(https://github.com/alphagov/govuk-frontend/pull/740)
+  ([PR #742](https://github.com/alphagov/govuk-frontend/pull/742))
 
 ## 0.0.31-alpha (Breaking release)
 
