@@ -41,6 +41,9 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 - Reintroduce mistakenly deleted HTML5Shiv required for IE8
   ([PR #749](https://github.com/alphagov/govuk-frontend/pull/749))
 
+- Fix issues with canvas colour bleeding into main review page
+  ([PR #741](https://github.com/alphagov/govuk-frontend/pull/741))
+
 ## 0.0.31-alpha (Breaking release)
 
 💥 Breaking changes:
