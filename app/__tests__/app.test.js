@@ -278,6 +278,27 @@ describe('frontend app', () => {
           done(err)
         })
       })
+      it('should have `content` within the main section of the page', done => {
+        request.get(requestParamsExampleTemplateCustom, (err, res) => {
+          let $ = cheerio.load(res.body)
+          const $main = $('main')
+
+          expect($main.html()).toContain('<!-- block:content -->')
+          done(err)
+        })
+      })
+      it('should have `beforeContent` outside the main section of the page', done => {
+        request.get(requestParamsExampleTemplateCustom, (err, res) => {
+          let $ = cheerio.load(res.body)
+          const $container = $('.govuk-width-container')
+          const $phaseBanner = $container.find('> .govuk-phase-banner')
+          const $backLink = $container.find('> .govuk-back-link')
+
+          expect($phaseBanner.length).toBe(1)
+          expect($backLink.length).toBe(1)
+          done(err)
+        })
+      })
     })
   })
 

@@ -1,5 +1,6 @@
 {# Example that changes every setting in the template #}
 
+{% from "back-link/macro.njk" import govukBackLink %}
 {% from "skip-link/macro.njk" import govukSkipLink %}
 {% from "header/macro.njk" import govukHeader %}
 {% from "phase-banner/macro.njk" import govukPhaseBanner %}
@@ -77,15 +78,23 @@
 
 {% block main %}
   <!-- block:main -->
+  {{ super() }}
+  <!-- endblock:main -->
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- block:beforeContent -->
   {{ govukPhaseBanner({
-    classes: "govuk-width-container",
     tag: {
       text: "alpha"
     },
     html: 'C\'est un nouveau service - vos <a class="govuk-link" href="#">commentaires</a> nous aideront à l\'améliorer.'
   }) }}
-  {{ super() }}
-  <!-- endblock:main -->
+  {{ govukBackLink({
+    "href": "/",
+    "text": "Back"
+  }) }}
+  <!-- endblock:beforeContent -->
 {% endblock %}
 
 {% block content %}

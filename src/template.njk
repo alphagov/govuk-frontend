@@ -43,11 +43,12 @@
     {% endblock %}
 
     {% block main %}
-      <main id="main-content" role="main">
-        <div class="govuk-width-container">
+      <div class="govuk-width-container">
+        {% block beforeContent %}{% endblock %}
+        <main id="main-content" role="main">
           {% block content %}{% endblock %}
-        </div>
-      </main>
+        </main>
+      </div>
     {% endblock %}
 
     {% block footer %}

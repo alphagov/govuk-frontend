@@ -105,9 +105,26 @@
 {% block main -%}
   <div data-block="main">
     <p class="govuk-body">
-      Set this block to override the default <code>&lt;main&gt;</code> element.
+      Set this block to override the default <code>&lt;main&gt;</code> section.
     </p>
     {{- super() -}}
+  </div>
+{%- endblock %}
+
+{% block beforeContent -%}
+  <div data-block="beforeContent">
+    {{- super() -}}
+    <p class="govuk-body">
+      Set this block to add content before to appear outside <code>&lt;main&gt;</code> element.
+      <br>
+      For example: The Back link component, Phase banner component.
+    </p>
+    {% from 'back-link/macro.njk' import govukBackLink %}
+
+    {{ govukBackLink({
+      "href": "/",
+      "text": "Back"
+    }) }}
   </div>
 {%- endblock %}
 
