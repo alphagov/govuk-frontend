@@ -1,4 +1,4 @@
-@include govuk-exports("typography-overrides") {
+@include govuk-exports("govuk/overrides/typography") {
   // Font size and line height
 
   // Generate typography override classes for each responsive font map in the

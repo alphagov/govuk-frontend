@@ -2,7 +2,7 @@
 @import "../../tools/all";
 @import "../../helpers/all";
 
-@include govuk-exports("breadcrumbs") {
+@include govuk-exports("govuk/component/breadcrumbs") {
 
   // Size of chevron (excluding border)
   $chevron-size: 7px;
@@ -94,6 +94,10 @@
         height: auto;
         border: 0;
         color: $chevron-border-colour;
+
+        // IE8 doesn't seem to like rendering pseudo-elements using @font-faces,
+        // so fall back to using another sans-serif font to render the chevron.
+        font-family: Arial, sans-serif;
       }
     }
 

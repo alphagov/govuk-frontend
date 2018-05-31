@@ -21,7 +21,7 @@
   }
 }
 
-@include govuk-exports("width-container") {
+@include govuk-exports("govuk/objects/width-container") {
   .govuk-width-container {
     @include govuk-width-container;
   }
