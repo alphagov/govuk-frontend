@@ -3,18 +3,18 @@
 // Sets the font family and associated properties, such as font smoothing. Also
 // overrides the font for print.
 
-@mixin govuk-typography-common($font-family: $govuk-font-stack) {
+@mixin govuk-typography-common($font-family: $govuk-font-family) {
   font-family: $font-family;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
   // If using NTA, include the font-face definition
-  @if ($govuk-font-stack == $govuk-nta-light) {
+  @if ($govuk-font-family == $govuk-font-family-nta) {
     @include govuk-font-face-nta;
   }
 
   @include mq($media-type: print) {
-    font-family: $govuk-font-stack-print;
+    font-family: $govuk-font-family-print;
   }
 }
 
@@ -215,7 +215,7 @@
 // Regular weights, tabular numbers
 
 @mixin govuk-font-regular-tabular {
-  @include govuk-typography-common($font-family: $govuk-nta-light-tabular);
+  @include govuk-typography-common($font-family: $govuk-font-family-tabular);
   @include govuk-typography-weight-regular;
 }
 
@@ -262,7 +262,7 @@
 // Bold weights, tabular numbers
 
 @mixin govuk-font-bold-tabular {
-  @include govuk-typography-common($font-family: $govuk-nta-light-tabular);
+  @include govuk-typography-common($font-family: $govuk-font-family-tabular);
   @include govuk-typography-weight-bold;
 }
 

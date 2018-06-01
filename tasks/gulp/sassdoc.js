@@ -9,6 +9,7 @@ gulp.task('sassdoc', function () {
     .pipe(sassdoc({
       dest: paths.sassdoc,
       groups: {
+        settings: 'Settings',
         tools: 'Tools',
         helpers: 'Helpers',
         overrides: 'Overrides'

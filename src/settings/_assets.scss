@@ -1,3 +1,7 @@
+////
+/// @group settings
+////
+
 /// Path to the assets directory, with trailing slash.
 ///
 /// This is the directory where the images and fonts subdirectories live. You
@@ -5,18 +9,21 @@
 /// README for details.
 ///
 /// @type String
+/// @access public
 
 $govuk-assets-path: "/assets/" !default;
 
 /// Path to the images folder, with trailing slash.
 ///
 /// @type String
+/// @access public
 
 $govuk-images-path: "#{$govuk-assets-path}images/" !default;
 
 /// Path to the fonts folder, with trailing slash.
 ///
 /// @type String
+/// @access public
 
 $govuk-fonts-path: "#{$govuk-assets-path}fonts/" !default;
 
@@ -37,10 +44,13 @@ $govuk-fonts-path: "#{$govuk-assets-path}fonts/" !default;
 /// @example scss - Custom asset handling
 ///
 ///   @function my-url-handler($filename) {
-///     @return ''; // Some custom URL handling
+///     // Some custom URL handling
+///     @return url('example.jpg');
 ///   }
 ///
 ///   $govuk-image-url-function: 'my-url-handler';
+///
+/// @access public
 
 $govuk-image-url-function: false !default;
 
@@ -61,9 +71,12 @@ $govuk-image-url-function: false !default;
 /// @example scss - Custom asset handling
 ///
 ///   @function my-url-handler($filename) {
-///     @return ''; // Some custom URL handling
+///     // Some custom URL handling
+///     @return url('example.woff');
 ///   }
 ///
 ///   $govuk-font-url-function: 'my-url-handler';
+///
+/// @access public
 
 $govuk-font-url-function: false !default;

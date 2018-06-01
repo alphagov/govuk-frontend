@@ -20,8 +20,8 @@
 /// @throw If product name is not recognised
 
 @mixin govuk-compatibility($product) {
-  @if map-has-key($govuk-compatibility, $product) {
-    @if map-get($govuk-compatibility, $product) == true {
+  @if map-has-key($_govuk-compatibility, $product) {
+    @if map-get($_govuk-compatibility, $product) == true {
       @content;
     }
   } @else {
