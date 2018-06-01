@@ -19,6 +19,11 @@ Note: We're not following semantic versioning yet, we are going to talk about th
   nunjucks paths.
   ([PR #743](https://github.com/alphagov/govuk-frontend/pull/743))
 
+- Update JavaScript global namespace from 'all' to 'GOVUKFrontend',
+  we intend to allow users to initialize components from this namespace.
+  ([PR #747](https://github.com/alphagov/govuk-frontend/pull/747))
+
+
 🆕 New features:
 
 - Add `beforeContent` block to the template, for content that does not belong inside `<main>` element.
