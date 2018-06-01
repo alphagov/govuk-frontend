@@ -15,7 +15,7 @@
   "homepage": "https://github.com/alphagov/govuk-frontend#readme",
   "scripts": {
     "start": "gulp dev",
-    "heroku": "gulp copy-assets && node app/start.js",
+    "heroku": "gulp copy-assets && gulp sassdoc && node app/start.js",
     "pre-release": "node bin/check-nvmrc.js && ./bin/pre-release.sh",
     "release": "node bin/check-nvmrc.js && ./bin/release.sh",
     "build:package": "node bin/check-nvmrc.js && gulp build:package --destination 'package' && npm run test:build:package",
@@ -66,7 +66,8 @@
   "dependencies": {
     "gulp-if": "^2.0.2",
     "outdent": "^0.5.0",
-    "postcss-scss": "^1.0.0"
+    "postcss-scss": "^1.0.0",
+    "sassdoc": "^2.5.0"
   },
   "optionalDependencies": {
     "fsevents": "*"

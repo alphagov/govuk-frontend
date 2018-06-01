@@ -44,6 +44,8 @@ module.exports = (options) => {
   // Set up middleware to serve static assets
   app.use('/public', express.static(configPaths.public))
 
+  app.use('/docs', express.static(configPaths.sassdoc))
+
   // serve html5-shiv from node modules
   app.use('/vendor/html5-shiv/', express.static('node_modules/html5shiv/dist/'))
   app.use('/assets', express.static(path.join(configPaths.src, 'assets')))

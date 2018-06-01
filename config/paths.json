@@ -8,6 +8,7 @@
   "dist": "dist/",
   "package": "package/",
   "public": "public/",
+  "sassdoc": "sassdoc/",
   "src": "src/",
     "components": "src/components/",
   "ports": {
