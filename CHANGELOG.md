@@ -38,6 +38,9 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 - Improve release steps
   ([PR #745](https://github.com/alphagov/govuk-frontend/pull/745))
 
+- Reintroduce mistakenly deleted HTML5Shiv required for IE8
+  ([PR #749](https://github.com/alphagov/govuk-frontend/pull/749))
+
 ## 0.0.31-alpha (Breaking release)
 
 💥 Breaking changes:
