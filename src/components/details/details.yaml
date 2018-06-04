@@ -2,7 +2,8 @@ examples:
 
 - name: default
   data:
-    summaryText: Help with nationality
+    summary:
+      text: Help with nationality
     text:
       We need to know your nationality so we can work out which elections
       you’re entitled to vote in. If you can’t provide your nationality,
@@ -10,7 +11,8 @@ examples:
 - name: expanded
   data:
     id: help-with-nationality
-    summaryText: Help with nationality
+    summary:
+      text: Help with nationality
     text:
       We need to know your nationality so we can work out which elections
       you’re entitled to vote in. If you can’t provide your nationality,
@@ -18,8 +20,9 @@ examples:
     open: true
 - name: with-html
   data:
-    summaryText: Where to find your National Insurance Number
-    html: |
+    summary:
+      text: Where to find your National Insurance Number
+    text: |
       Your National Insurance number can be found on
       <ul>
         <li>your National Insurance card</li>
@@ -28,3 +31,11 @@ examples:
         <li>benefits information</li>
         <li>tax return</li>
       </ul>
+    safe: true
+- name: simpleSummary
+  data:
+    summary: Help with nationality
+    text:
+      We need to know your nationality so we can work out which elections
+      you’re entitled to vote in. If you can’t provide your nationality,
+      you’ll have to send copies of identity documents through the post.

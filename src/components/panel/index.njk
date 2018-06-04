@@ -38,7 +38,21 @@
   'rows' : [
     [
       {
-        text: 'titleText'
+        text: 'title'
+      },
+      {
+        text: 'object'
+      },
+      {
+        text: 'Yes'
+      },
+      {
+        text: 'If passed as a string, title.text will use that value.'
+      }
+    ],
+    [
+      {
+        text: 'title.text'
       },
       {
         text: 'string'
@@ -52,16 +66,16 @@
     ],
     [
       {
-        text: 'titleHtml'
+        text: 'title.safe'
       },
       {
-        text: 'string'
+        text: 'boolean'
       },
       {
-        text: 'Yes'
+        text: 'No'
       },
       {
-        text: 'HTML for the panel title. If this is provided, the titleText argument is ignored.'
+        text: 'Whether title text can be considered safe. If not safe, it will be escaped.'
       }
     ],
     [
@@ -80,16 +94,16 @@
     ],
     [
       {
-        text: 'html'
+        text: 'safe'
       },
       {
-        text: 'string'
+        text: 'boolean'
       },
       {
         text: 'No'
       },
       {
-        text: 'HTML for the panel content. If this is provided, the text argument is ignored.'
+        text: 'Whether text argument can be considered safe. If not safe, it will be escaped.'
       }
     ],
     [

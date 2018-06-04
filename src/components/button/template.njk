@@ -22,12 +22,12 @@
 
 {%- if element == 'a' %}
 <a href="{{ params.href if params.href else '#' }}" role="button" {{- commonAttributes | safe }}>
-  {{ params.html | safe if params.html else params.text }}
+  {{ params.text | safe if params.safe else params.text }}
 </a>
 
 {%- elseif element == 'button' %}
 <button {%- if params.value %} value="{{ params.value }}"{% endif %} {{- buttonAttributes | safe }} {{- commonAttributes | safe }}>
-  {{ params.html | safe if params.html else params.text }}
+  {{ params.text | safe if params.safe else params.text }}
 </button>
 
 {%- elseif element == 'input' %}

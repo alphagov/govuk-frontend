@@ -8,19 +8,17 @@ To provide a level of consistency for developers we have standardised argument n
 When providing *content* to a macro, say for a label or a button, we accept two argument options:
 
  - `text` accepts a plain string and is the default way of passing content
- - `html` accepts html markup. In the template we will not escape html so it will be rendered. In a scenario where both text and html are set, html argument will take precedence over text.
+ - `safe` signifies that `text` contains safe html markup. In the template we will not escape html so it will be rendered.
 
 Example:
 
-`{{ govukButton({"text": "Button text"}) }}`
+`{{ govukButton({text: "Button text"}) }}`
 
-`{{ govukButton({"html": "Button <span class='bold'>text</span>"}) }}`
+`{{ govukButton({text: "Button <span class='bold'>text</span>", safe: true}) }}`
 
 Example of implementing logic in a component template:
 
-`{{ params.html | safe if params.html else params.text }}`
-
-Example shows that if `html` and `text` arguments are present, then `html` takes precedence over `text` and we are not escaping it.
+`{{ params.text | safe if params.safe else params.text }}`
 
 ## Naming attributes
 We should use **camelCase** for naming attributes.

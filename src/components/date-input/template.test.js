@@ -2,7 +2,7 @@
 
 const { axe } = require('jest-axe')
 
-const { render, getExamples, htmlWithClassName } = require('../../../lib/jest-helpers')
+const { render, renderMacro, getExamples, htmlWithClassName } = require('../../../lib/jest-helpers')
 
 const examples = getExamples('date-input')
 
@@ -292,7 +292,8 @@ describe('Date input', () => {
       name: 'dob',
       fieldset: {
         legend: {
-          html: 'What is your <b>date of birth</b>?'
+          text: 'What is your <b>date of birth</b>?',
+          safe: true
         }
       },
       errorMessage: {
@@ -312,5 +313,189 @@ describe('Date input', () => {
     })
 
     expect(htmlWithClassName($, '.govuk-fieldset')).toMatchSnapshot()
+  })
+
+  describe('with keyword arguments', () => {
+    it('allows date-input params to be passed as keyword arguments', () => {
+      const $ = renderMacro('date-input', null, {
+        id: 'id',
+        name: 'name',
+        fieldset: {
+          legend: {
+            text: 'legend text'
+          }
+        },
+        hint: {
+          text: 'hint text'
+        },
+        items: [
+          {
+            name: 'day'
+          }
+        ],
+        errorMessage: {
+          text: 'error text'
+        },
+        classes: 'extraClasses',
+        attributes: {
+          'data-test': 'attribute'
+        }
+      })
+
+      const $component = $('.govuk-date-input')
+      expect($component.attr('id')).toEqual('id')
+      expect($component.attr('data-test')).toEqual('attribute')
+      expect($component.attr('class')).toContain('extraClasses')
+      // expect($component.attr('class')).toContain('govuk-date-input--error')
+
+      const $input = $('input')
+      expect($input.length).toEqual(1)
+      expect($input.attr('name')).toEqual('name-day')
+
+      const $legend = $('.govuk-fieldset__legend')
+      expect($legend.html()).toContain('legend text')
+
+      const $hint = $('.govuk-hint')
+      expect($hint.html()).toContain('hint text')
+
+      const $error = $('.govuk-error-message')
+      expect($error.html()).toContain('error text')
+
+      const $group = $('.govuk-form-group')
+      expect($group.attr('class')).toContain('govuk-form-group--error')
+    })
+
+    it('uses fieldset keyword argument before params.fieldset', () => {
+      const $ = renderMacro('date-input', {
+        fieldset: {
+          legend: {
+            text: 'params text'
+          }
+        }
+      }, {
+        fieldset: {
+          legend: {
+            text: 'keyword text'
+          }
+        }
+      })
+
+      const $legend = $('.govuk-fieldset__legend')
+      expect($legend.html()).toContain('keyword text')
+    })
+
+    it('uses hint keyword argument before params.hint', () => {
+      const $ = renderMacro('date-input', {
+        hint: {
+          text: 'params text'
+        }
+      }, {
+        hint: {
+          text: 'keyword text'
+        }
+      })
+
+      const $hint = $('.govuk-hint')
+      expect($hint.html()).toContain('keyword text')
+    })
+
+    it('uses error keyword argument before params.error', () => {
+      const $ = renderMacro('date-input', {
+        errorMessage: {
+          text: 'params text'
+        }
+      }, {
+        errorMessage: {
+          text: 'keyword text'
+        }
+      })
+
+      const $error = $('.govuk-error-message')
+      expect($error.html()).toContain('keyword text')
+    })
+
+    it('uses id keyword argument before params.id', () => {
+      const $ = renderMacro('date-input', {
+        id: 'paramsId'
+      }, {
+        id: 'keywordId'
+      })
+
+      const $component = $('.govuk-date-input')
+      expect($component.attr('id')).toEqual('keywordId')
+    })
+
+    it('uses name keyword argument before params.name', () => {
+      const $ = renderMacro('date-input', {
+        items: [
+          {
+            name: 'day'
+          }
+        ],
+        name: 'paramsName'
+      }, {
+        name: 'keywordName'
+      })
+
+      const $component = $('input')
+      expect($component.attr('name')).toContain('keywordName-day')
+    })
+
+    it('uses items keyword argument before params.items', () => {
+      const $ = renderMacro('date-input', {
+        items: [
+          {
+            name: 'month'
+          }
+        ]
+      }, {
+        items: [
+          {
+            name: 'year'
+          }
+        ]
+      })
+
+      const $input = $('input')
+      expect($input.attr('name')).toContain('year')
+    })
+
+    it('uses classes keyword argument before before params.classes', () => {
+      const $ = renderMacro('date-input', {
+        text: 'params text',
+        classes: 'paramsClass'
+      }, {
+        classes: 'keywordClass'
+      })
+      const $component = $('.govuk-date-input')
+      expect($component.attr('class')).toContain('keywordClass')
+    })
+
+    it('uses attributes keyword argument before before params.attributes', () => {
+      const $ = renderMacro('date-input', {
+        text: 'params text',
+        attributes: {
+          'data-test': 'paramsAttribute'
+        }
+      }, {
+        attributes: {
+          'data-test': 'keywordAttribute'
+        }
+      })
+      const $component = $('.govuk-date-input')
+      expect($component.attr('data-test')).toEqual('keywordAttribute')
+    })
+  })
+
+  describe('when using deprecated features', () => {
+    it('warns when using params.items[]html', () => {
+      const $ = renderMacro('date-input', {
+        items: [{
+          html: '<b>params text</b>'
+        }]
+      })
+
+      expect($.html()).toContain('<strong class="deprecated">params.items[]html is deprecated in govukDateInput</strong>')
+    })
   })
 })

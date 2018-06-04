@@ -2,7 +2,7 @@
 
 const { axe } = require('jest-axe')
 
-const { render, getExamples } = require('../../../lib/jest-helpers')
+const { render, renderMacro, getExamples } = require('../../../lib/jest-helpers')
 
 const examples = getExamples('breadcrumbs')
 
@@ -41,10 +41,10 @@ describe('Breadcrumbs', () => {
       const $ = render('breadcrumbs', {
         items: [
           {
-            'text': 'Section 1'
+            text: 'Section 1'
           },
           {
-            'text': 'Sub-section'
+            text: 'Sub-section'
           }
         ]
       })
@@ -57,7 +57,7 @@ describe('Breadcrumbs', () => {
       const $ = render('breadcrumbs', {
         items: [
           {
-            'text': 'Section 1'
+            text: 'Section 1'
           }
         ]
       })
@@ -70,7 +70,7 @@ describe('Breadcrumbs', () => {
       const $ = render('breadcrumbs', {
         items: [
           {
-            'text': '<span>Section 1</span>'
+            text: '<span>Section 1</span>'
           }
         ]
       })
@@ -83,7 +83,8 @@ describe('Breadcrumbs', () => {
       const $ = render('breadcrumbs', {
         items: [
           {
-            'html': '<em>Section 1</em>'
+            text: '<em>Section 1</em>',
+            safe: true
           }
         ]
       })
@@ -96,8 +97,8 @@ describe('Breadcrumbs', () => {
       const $ = render('breadcrumbs', {
         items: [
           {
-            'text': 'Section 1',
-            'href': '/section'
+            text: 'Section 1',
+            href: '/section'
           }
         ]
       })
@@ -113,8 +114,9 @@ describe('Breadcrumbs', () => {
       const $ = render('breadcrumbs', {
         items: [
           {
-            'html': '<em>Section 1</em>',
-            'href': '/section'
+            text: '<em>Section 1</em>',
+            safe: true,
+            href: '/section'
           }
         ]
       })
@@ -129,6 +131,113 @@ describe('Breadcrumbs', () => {
       const $ = render('breadcrumbs', examples.default)
       const $items = $('.govuk-breadcrumbs__list-item')
       expect($items.length).toEqual(2)
+    })
+  })
+
+  describe('with keyword arguments', () => {
+    it('allows breadcrumbs to be passed as array of items', () => {
+      const $ = renderMacro('breadcrumbs', [{
+        text: 'breadcrumb array text',
+        href: '/breadcrumbArrayUrl'
+      }])
+
+      const $component = $('.govuk-breadcrumbs__link')
+      expect($component.text()).toContain('breadcrumb array text')
+      expect($component.attr('href')).toEqual('/breadcrumbArrayUrl')
+    })
+
+    it('allows breadcrumbs params to be passed as keyword arguments', () => {
+      const $ = renderMacro('breadcrumbs', null, {
+        items: [{
+          text: 'breadcrumb text',
+          href: '/breadcrumbUrl'
+        }],
+        classes: 'extraClasses',
+        attributes: {
+          'data-test': 'attribute'
+        }
+      })
+
+      const $component = $('.govuk-breadcrumbs')
+      expect($component.attr('data-test')).toEqual('attribute')
+      expect($component.attr('class')).toContain('extraClasses')
+
+      const $breadcumbLink = $('.govuk-breadcrumbs__link')
+      expect($breadcumbLink.text()).toContain('breadcrumb text')
+      expect($breadcumbLink.attr('href')).toEqual('/breadcrumbUrl')
+    })
+
+    it('uses items keyword argument before params as array of items', () => {
+      const $ = renderMacro('breadcrumbs', [{
+        text: 'breadcrumb array text',
+        href: '/breadcrumbArrayUrl'
+      }], {
+        items: [{
+          text: 'breadcrumb keyword text',
+          href: '/breadcrumbKeywordUrl'
+        }]
+      })
+
+      const $breadcumbLink = $('.govuk-breadcrumbs__link')
+      expect($breadcumbLink.text()).toContain('breadcrumb keyword text')
+      expect($breadcumbLink.attr('href')).toEqual('/breadcrumbKeywordUrl')
+    })
+
+    it('uses items keyword argument before params.items', () => {
+      const $ = renderMacro('breadcrumbs', {
+        items: [{
+          text: 'breadcrumb params text',
+          href: '/breadcrumbParamsUrl'
+        }]
+      }, {
+        items: [{
+          text: 'breadcrumb keyword text',
+          href: '/breadcrumbKeywordUrl'
+        }]
+      })
+
+      const $breadcumbLink = $('.govuk-breadcrumbs__link')
+      expect($breadcumbLink.text()).toContain('breadcrumb keyword text')
+      expect($breadcumbLink.attr('href')).toEqual('/breadcrumbKeywordUrl')
+    })
+
+    it('uses classes keyword argument before before params.classes', () => {
+      const $ = renderMacro('breadcrumbs', {
+        text: 'params text',
+        classes: 'paramsClass'
+      }, {
+        classes: 'keywordClass'
+      })
+      const $component = $('.govuk-breadcrumbs')
+      expect($component.attr('class')).toContain('keywordClass')
+    })
+
+    it('uses attributes keyword argument before before params.attributes', () => {
+      const $ = renderMacro('breadcrumbs', {
+        text: 'params text',
+        attributes: {
+          'data-test': 'paramsAttribute'
+        }
+      }, {
+        attributes: {
+          'data-test': 'keywordAttribute'
+        }
+      })
+      const $component = $('.govuk-breadcrumbs')
+      expect($component.attr('data-test')).toEqual('keywordAttribute')
+    })
+  })
+
+  describe('when using deprecated features', () => {
+    it('warns when using params.items[]html', () => {
+      const $ = renderMacro('breadcrumbs', {
+        items: [{
+          text: '<b>params text</b>',
+          safe: true
+        }]
+      })
+
+      expect($.html()).toContain('<strong class="deprecated">params.items[]html is deprecated in govukBreadcrumbs</strong>')
     })
   })
 })

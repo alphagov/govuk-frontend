@@ -30,6 +30,22 @@ Buttons are configured to perform an action and they can have a different look. 
       "text": "Save and continue"
     }) }}
 
+### Button--string
+
+[Preview the button--string example](http://govuk-frontend-review.herokuapp.com/components/button/string/preview)
+
+#### Markup
+
+    <button type="submit" class="govuk-button">
+
+    </button>
+
+#### Macro
+
+    {% from 'button/macro.njk' import govukButton %}
+
+    {{ govukButton("Save and continue") }}
+
 ### Button--disabled
 
 [Preview the button--disabled example](http://govuk-frontend-review.herokuapp.com/components/button/disabled/preview)
@@ -186,7 +202,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">element</th>
+<td class="govuk-table__cell">element</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -198,7 +214,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">text</th>
+<td class="govuk-table__cell">text</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -210,19 +226,19 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">html</th>
+<td class="govuk-table__cell">safe</td>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell ">boolean</td>
 
-<td class="govuk-table__cell ">Yes</td>
+<td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">HTML for the button or link. If this is provided, the `text` argument will be ignored and `element` will be automatically set to `button` unless `href` is also set, or it has already been defined. This argument has no effect if `element` is set to `input`.</td>
+<td class="govuk-table__cell ">Whether text argument can be considered safe and not automatically escaped.</td>
 
 </tr>
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">name</th>
+<td class="govuk-table__cell">name</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -234,7 +250,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">type</th>
+<td class="govuk-table__cell">type</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -246,7 +262,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">value</th>
+<td class="govuk-table__cell">value</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -258,7 +274,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">disabled</th>
+<td class="govuk-table__cell">disabled</td>
 
 <td class="govuk-table__cell ">boolean</td>
 
@@ -270,7 +286,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">href</th>
+<td class="govuk-table__cell">href</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -282,7 +298,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">classes</th>
+<td class="govuk-table__cell">classes</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -294,7 +310,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">attributes</th>
+<td class="govuk-table__cell">attributes</td>
 
 <td class="govuk-table__cell ">object</td>
 

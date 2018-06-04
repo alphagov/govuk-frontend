@@ -50,7 +50,7 @@
 
         <div class="govuk-width-container">
           {% set detailsHtml %}{% include "code.njk" %}{% endset %}
-          {{- govukDetails({ summaryText: "Code", html: detailsHtml }) -}}
+          {{- govukDetails({ summary: "Code", text: detailsHtml, safe: true }) -}}
         </div>
       </section>
     {% endif %}

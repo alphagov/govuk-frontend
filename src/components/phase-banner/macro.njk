@@ -1,3 +1,25 @@
-{% macro govukPhaseBanner(params) %}
+{% macro govukPhaseBanner(
+  params,
+  text,
+  safe,
+  tag,
+  classes,
+  attributes
+) %}
+  {% if params.html and not hideDeprecated %}
+    <strong class="deprecated">params.html is deprecated in govukPhaseBanner</strong>
+  {% endif %}
+  {% if text === undefined %}{% set text = params.text if params.text else params %}{% endif %}
+  {% if safe === undefined %}{% set safe = params.safe %}{% endif %}
+  {% set tag = tag if tag else params.tag %}
+  {% set classes = classes if classes else params.classes %}
+  {% set attributes = attributes if attributes else params.attributes %}
+  {% set params = {
+    text: text,
+    safe: safe,
+    tag: tag,
+    classes: classes,
+    attributes: attributes
+  } %}
   {%- include "./template.njk" -%}
 {% endmacro %}

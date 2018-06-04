@@ -2,7 +2,7 @@
 
 const { axe } = require('jest-axe')
 
-const { render, getExamples } = require('../../../lib/jest-helpers')
+const { render, renderMacro, getExamples } = require('../../../lib/jest-helpers')
 
 const examples = getExamples('footer')
 
@@ -139,6 +139,45 @@ describe('footer', () => {
       const $component = $('.govuk-footer')
       const $sectionBreak = $component.find('hr.govuk-footer__section-break')
       expect($sectionBreak.length).toBeFalsy()
+    })
+  })
+
+  describe('with keyword arguments', () => {
+    it('allows footer params to be passed as keyword arguments', () => {
+      const $ = renderMacro('footer', examples['GOV.UK'], {
+        containerClasses: 'extraContainerClass',
+        meta: {
+          items: [
+            { href: '/keywordMetaLink', text: 'keyword meta item' }
+          ]
+        },
+        navigation: [
+          {
+            items: [
+              { href: '/keywordNavLink', text: 'keyword navigation item' }
+            ]
+          }
+        ],
+        classes: 'extraClasses',
+        attributes: {
+          'data-test': 'attribute'
+        }
+      })
+
+      const $container = $('.govuk-width-container')
+      expect($container.attr('class')).toContain('extraContainerClass')
+
+      const $navigationLink = $('.govuk-footer__navigation a')
+      expect($navigationLink.attr('href')).toEqual('/keywordNavLink')
+      expect($navigationLink.html()).toContain('keyword navigation item')
+
+      const $metaLink = $('.govuk-footer__meta-item a').eq(0)
+      expect($metaLink.attr('href')).toEqual('/keywordMetaLink')
+      expect($metaLink.html()).toContain('keyword meta item')
+
+      const $component = $('.govuk-footer')
+      expect($component.attr('data-test')).toEqual('attribute')
+      expect($component.attr('class')).toContain('extraClasses')
     })
   })
 })

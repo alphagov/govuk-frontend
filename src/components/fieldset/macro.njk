@@ -1,3 +1,22 @@
-{% macro govukFieldset(params) %}
+{% macro govukFieldset(
+  params,
+  legend,
+  describedBy,
+  role,
+  classes,
+  attributes
+) %}
+  {% set legend = legend if legend else params.legend %}
+  {% set describedBy = describedBy if describedBy else params.describedBy %}
+  {% set role = role if role else params.role %}
+  {% set classes = classes if classes else params.classes %}
+  {% set attributes = attributes if attributes else params.attributes %}
+  {% set params = {
+    legend: legend,
+    describedBy: describedBy,
+    role: role,
+    classes: classes,
+    attributes: attributes
+  } %}
   {%- include "./template.njk" -%}
 {% endmacro %}

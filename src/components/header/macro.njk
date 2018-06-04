@@ -1,3 +1,37 @@
-{% macro govukHeader(params) %}
+{% macro govukHeader(
+  params,
+  assetsPath,
+  containerClasses,
+  homepageUrl,
+  navigation,
+  navigationClasses,
+  productName,
+  serviceUrl,
+  serviceName,
+  classes,
+  attributes
+) %}
+  {% set assetsPath = assetsPath if assetsPath else params.assetsPath %}
+  {% set containerClasses = containerClasses if containerClasses else params.containerClasses %}
+  {% set homepageUrl = homepageUrl if homepageUrl else params.homepageUrl %}
+  {% set navigation = navigation if navigation else params.navigation %}
+  {% set navigationClasses = navigationClasses if navigationClasses else params.navigationClasses %}
+  {% set productName = productName if productName else params.productName %}
+  {% set serviceUrl = serviceUrl if serviceUrl else params.serviceUrl %}
+  {% set serviceName = serviceName if serviceName else params.serviceName %}
+  {% set classes = classes if classes else params.classes %}
+  {% set attributes = attributes if attributes else params.attributes %}
+  {% set params = {
+    assetsPath: assetsPath,
+    containerClasses: containerClasses,
+    homepageUrl: homepageUrl,
+    navigation: navigation,
+    navigationClasses: navigationClasses,
+    productName: productName,
+    serviceUrl: serviceUrl,
+    serviceName: serviceName,
+    classes: classes,
+    attributes: attributes
+  } %}
   {%- include "./template.njk" -%}
 {% endmacro %}

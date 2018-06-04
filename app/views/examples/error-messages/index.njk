@@ -104,7 +104,10 @@
 
     {{ govukRadios({
       fieldset: {
-        legendHtml: "<h3 class=\"govuk-heading-m\">How do you want to be contacted?</h3>"
+        legend: {
+          text: "<h3 class=\"govuk-heading-m\">How do you want to be contacted?</h3>",
+          safe: true
+        }
       },
       errorMessage: {
         text: "Please select an option"
@@ -131,7 +134,10 @@
 
     {{ govukCheckboxes({
       fieldset: {
-        legendHtml: "<h3 class=\"govuk-heading-m\">What type of waste do you want to dispose of?</h3>"
+        legend: {
+          text: "<h3 class=\"govuk-heading-m\">What type of waste do you want to dispose of?</h3>",
+          safe: true
+        }
       },
       errorMessage: {
         text: "Please select an option"
@@ -213,7 +219,7 @@
       "id": "select-1",
       "name": "select-1",
       "label": {
-        "html": "Label text goes here"
+        "text": "Label text goes here"
       },
       "errorMessage": {
         text: "Error message goes here"

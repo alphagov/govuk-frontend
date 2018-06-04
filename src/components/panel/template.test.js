@@ -2,7 +2,7 @@
 
 const { axe } = require('jest-axe')
 
-const { render, getExamples } = require('../../../lib/jest-helpers')
+const { render, renderMacro, getExamples } = require('../../../lib/jest-helpers')
 
 const examples = getExamples('panel')
 
@@ -23,7 +23,9 @@ describe('Panel', () => {
 
   it('allows title text to be passed whilst escaping HTML entities', () => {
     const $ = render('panel', {
-      titleText: 'Application <strong>not</strong> complete'
+      title: {
+        text: 'Application <strong>not</strong> complete'
+      }
     })
 
     const panelTitle = $('.govuk-panel__title').html().trim()
@@ -32,7 +34,10 @@ describe('Panel', () => {
 
   it('allows title HTML to be passed un-escaped', () => {
     const $ = render('panel', {
-      titleHtml: 'Application <strong>not</strong> complete'
+      title: {
+        text: 'Application <strong>not</strong> complete',
+        safe: true
+      }
     })
 
     const panelTitle = $('.govuk-panel__title').html().trim()
@@ -57,7 +62,8 @@ describe('Panel', () => {
 
   it('allows body HTML to be passed un-escaped', () => {
     const $ = render('panel', {
-      html: 'Your reference number<br><strong>HDJ2123F</strong>'
+      text: 'Your reference number<br><strong>HDJ2123F</strong>',
+      safe: true
     })
 
     const panelBodyText = $('.govuk-panel__body').html().trim()
@@ -88,10 +94,128 @@ describe('Panel', () => {
 
   it('doesnt render panel body if no body text is passed', () => {
     const $ = render('panel', {
-      titleText: 'Application complete'
+      title: {
+        text: 'Application complete'
+      }
     })
     const panelBody = $('.govuk-panel__body').length
 
     expect(panelBody).toBeFalsy()
+  })
+
+  describe('with keyword arguments', () => {
+    it('should not allow panel to be passed as string', () => {
+      const $ = renderMacro('panel', 'text as string')
+
+      const $component = $('.govuk-panel')
+      expect($component.text()).not.toContain('text as string')
+    })
+
+    it('allows panel params to be passed as keyword arguments', () => {
+      const $ = renderMacro('panel', null, {
+        text: '<span>Hello</span>',
+        safe: true,
+        title: {
+          text: 'title text'
+        },
+        classes: 'extraClasses',
+        attributes: {
+          'data-test': 'attribute'
+        }
+      })
+
+      const $component = $('.govuk-panel')
+      expect($component.html()).toContain('<span>Hello</span>')
+      expect($component.html()).toContain('title text')
+      expect($component.attr('data-test')).toEqual('attribute')
+      expect($component.attr('class')).toContain('extraClasses')
+    })
+
+    it('uses text keyword argument before params as string', () => {
+      const $ = renderMacro('panel', 'text as string', {
+        text: 'keyword text'
+      })
+
+      const $component = $('.govuk-panel')
+      expect($component.text()).toContain('keyword text')
+    })
+
+    it('uses text keyword argument before params.text', () => {
+      const $ = renderMacro('panel', {
+        text: 'params text'
+      }, {
+        text: 'keyword text'
+      })
+
+      const $component = $('.govuk-panel')
+      expect($component.text()).toContain('keyword text')
+    })
+
+    it('uses safe keyword argument before before params.safe', () => {
+      const $ = renderMacro('panel', {
+        text: '<b>params text</b>',
+        safe: true
+      }, {
+        safe: false
+      })
+
+      const $component = $('.govuk-panel')
+      expect($component.html()).toContain('&lt;b&gt;params text&lt;/b&gt;')
+    })
+
+    it('uses title keyword argument before params.title', () => {
+      const $ = renderMacro('panel', {
+        title: {
+          text: 'params text'
+        }
+      }, {
+        title: {
+          text: 'keywords text'
+        }
+      })
+
+      const $component = $('.govuk-panel')
+      expect($component.html()).toContain('keywords text')
+    })
+
+    it('uses classes keyword argument before before params.classes', () => {
+      const $ = renderMacro('panel', {
+        text: 'params text',
+        classes: 'paramsClass'
+      }, {
+        classes: 'keywordClass'
+      })
+      const $component = $('.govuk-panel')
+      expect($component.attr('class')).toContain('keywordClass')
+    })
+
+    it('uses attributes keyword argument before before params.attributes', () => {
+      const $ = renderMacro('panel', {
+        text: 'params text',
+        attributes: {
+          'data-test': 'paramsAttribute'
+        }
+      }, {
+        attributes: {
+          'data-test': 'keywordAttribute'
+        }
+      })
+      const $component = $('.govuk-panel')
+      expect($component.attr('data-test')).toEqual('keywordAttribute')
+    })
+  })
+
+  describe('when using deprecated features', () => {
+    it('warns when using params.html', () => {
+      const $ = renderMacro('panel', {
+        html: '<b>params text</b>',
+        title: {
+          html: '<b>params text</b>'
+        }
+      })
+
+      expect($.html()).toContain('<strong class="deprecated">params.html is deprecated in govukPanel</strong>')
+      expect($.html()).toContain('<strong class="deprecated">params.title.html is deprecated in govukPanel</strong>')
+    })
   })
 })

@@ -2,7 +2,7 @@
 
 const { axe } = require('jest-axe')
 
-const { render, getExamples, htmlWithClassName } = require('../../../lib/jest-helpers')
+const { render, renderMacro, getExamples, htmlWithClassName } = require('../../../lib/jest-helpers')
 
 const examples = getExamples('select')
 
@@ -280,6 +280,180 @@ describe('Select', () => {
 
       const $label = $('.govuk-label')
       expect($label.attr('for')).toEqual('my-select')
+    })
+  })
+
+  describe('with keyword arguments', () => {
+    it('allows select params to be passed as keyword arguments', () => {
+      const $ = renderMacro('select', null, {
+        id: 'id',
+        name: 'name',
+        label: {
+          text: 'label text'
+        },
+        hint: {
+          text: 'hint text'
+        },
+        items: [
+          {
+            text: 'option text'
+          }
+        ],
+        errorMessage: {
+          text: 'error text'
+        },
+        classes: 'extraClasses',
+        attributes: {
+          'data-test': 'attribute'
+        }
+      })
+
+      const $component = $('.govuk-select')
+      expect($component.attr('id')).toEqual('id')
+      expect($component.attr('name')).toEqual('name')
+      expect($component.attr('data-test')).toEqual('attribute')
+      expect($component.attr('class')).toContain('extraClasses')
+      expect($component.attr('class')).toContain('govuk-select--error')
+
+      const $option = $('option')
+      expect($option.length).toEqual(1)
+      expect($option.text().trim()).toEqual('option text')
+
+      const $label = $('.govuk-label')
+      expect($label.html()).toContain('label text')
+
+      const $hint = $('.govuk-hint')
+      expect($hint.html()).toContain('hint text')
+
+      const $error = $('.govuk-error-message')
+      expect($error.html()).toContain('error text')
+
+      const $group = $('.govuk-form-group')
+      expect($group.attr('class')).toContain('govuk-form-group--error')
+    })
+
+    it('uses label keyword argument before params.label', () => {
+      const $ = renderMacro('select', {
+        label: {
+          text: 'params text'
+        }
+      }, {
+        label: {
+          text: 'keyword text'
+        }
+      })
+
+      const $label = $('.govuk-label')
+      expect($label.html()).toContain('keyword text')
+    })
+
+    it('uses hint keyword argument before params.hint', () => {
+      const $ = renderMacro('select', {
+        hint: {
+          text: 'params text'
+        }
+      }, {
+        hint: {
+          text: 'keyword text'
+        }
+      })
+
+      const $hint = $('.govuk-hint')
+      expect($hint.html()).toContain('keyword text')
+    })
+
+    it('uses error keyword argument before params.error', () => {
+      const $ = renderMacro('select', {
+        errorMessage: {
+          text: 'params text'
+        }
+      }, {
+        errorMessage: {
+          text: 'keyword text'
+        }
+      })
+
+      const $error = $('.govuk-error-message')
+      expect($error.html()).toContain('keyword text')
+    })
+
+    it('uses id keyword argument before params.id', () => {
+      const $ = renderMacro('select', {
+        id: 'paramsId'
+      }, {
+        id: 'keywordId'
+      })
+
+      const $component = $('.govuk-select')
+      expect($component.attr('id')).toContain('keywordId')
+    })
+
+    it('uses name keyword argument before params.name', () => {
+      const $ = renderMacro('select', {
+        name: 'paramsName'
+      }, {
+        name: 'keywordName'
+      })
+
+      const $component = $('.govuk-select')
+      expect($component.attr('name')).toContain('keywordName')
+    })
+
+    it('uses items keyword argument before params.items', () => {
+      const $ = renderMacro('select', {
+        items: [
+          {
+            text: 'params text'
+          }
+        ]
+      }, {
+        items: [
+          {
+            text: 'keyword text'
+          }
+        ]
+      })
+
+      const $component = $('option')
+      expect($component.text().trim()).toEqual('keyword text')
+    })
+
+    it('uses classes keyword argument before before params.classes', () => {
+      const $ = renderMacro('select', {
+        text: 'params text',
+        classes: 'paramsClass'
+      }, {
+        classes: 'keywordClass'
+      })
+      const $component = $('.govuk-select')
+      expect($component.attr('class')).toContain('keywordClass')
+    })
+
+    it('uses attributes keyword argument before before params.attributes', () => {
+      const $ = renderMacro('select', {
+        text: 'params text',
+        attributes: {
+          'data-test': 'paramsAttribute'
+        }
+      }, {
+        attributes: {
+          'data-test': 'keywordAttribute'
+        }
+      })
+      const $component = $('.govuk-select')
+      expect($component.attr('data-test')).toEqual('keywordAttribute')
+    })
+  })
+
+  describe('when using deprecated features', () => {
+    it('warns when using params.items[]html', () => {
+      const $ = renderMacro('select', {
+        items: [{
+          html: '<b>params text</b>'
+        }]
+      })
+
+      expect($.html()).toContain('<strong class="deprecated">params.items[]html is deprecated in govukSelect</strong>')
     })
   })
 })

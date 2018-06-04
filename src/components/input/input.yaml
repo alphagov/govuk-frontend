@@ -18,7 +18,8 @@ examples:
       label:
         text: National Insurance number
       hint:
-        html: It’s on your <i>National Insurance card</i>, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
+        text: It’s on your <i>National Insurance card</i>, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
+        safe: true
       id: input-with-error-message
       name: test-name-3
       errorMessage:

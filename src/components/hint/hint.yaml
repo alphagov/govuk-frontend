@@ -19,5 +19,6 @@ examples:
         For example, ‘QQ 12 34 56 C’.'
   - name: with html
     data:
-      html: 'It’s on your National Insurance card, benefit letter, payslip or <a class="govuk-link" href="#">P60</a>.
+      text: 'It’s on your National Insurance card, benefit letter, payslip or <a class="govuk-link" href="#">P60</a>.
         For example, ‘QQ 12 34 56 C’.'
+      safe: true

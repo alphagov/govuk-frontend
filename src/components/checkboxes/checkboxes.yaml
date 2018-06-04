@@ -60,7 +60,8 @@ examples:
     name: waste
     fieldset:
       legend:
-        html: <h3 class="govuk-heading-m">Which types of waste do you transport regularly?</h3>
+        text: <h3 class="govuk-heading-m">Which types of waste do you transport regularly?</h3>
+        safe: true
     hint:
       text: Select all that apply
     items:
@@ -112,7 +113,8 @@ examples:
       text: 'Please select an option'
     fieldset:
       legend:
-        html: <h3 class="govuk-heading-m">Which types of waste do you transport regularly?</h3>
+        text: <h3 class="govuk-heading-m">Which types of waste do you transport regularly?</h3>
+        safe: true
     items:
       - value: animal
         text: Waste from animal carcasses
@@ -127,7 +129,8 @@ examples:
     idPrefix: 'how-contacted'
     fieldset:
       legend:
-        html: <h3 class="govuk-heading-m">How do you want to be contacted?</h3>
+        text: <h3 class="govuk-heading-m">How do you want to be contacted?</h3>
+        safe: true
     items:
       - value: email
         text: Email
@@ -154,7 +157,8 @@ examples:
     idPrefix: 'how-contacted-checked'
     fieldset:
       legend:
-        html: <h3 class="govuk-heading-m">How do you want to be contacted?</h3>
+        text: <h3 class="govuk-heading-m">How do you want to be contacted?</h3>
+        safe: true
     items:
     - value: email
       text: Email

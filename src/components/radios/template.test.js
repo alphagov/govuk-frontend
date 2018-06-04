@@ -2,7 +2,7 @@
 
 const { axe } = require('jest-axe')
 
-const { render, getExamples, htmlWithClassName } = require('../../../lib/jest-helpers')
+const { render, renderMacro, getExamples, htmlWithClassName } = require('../../../lib/jest-helpers')
 
 const examples = getExamples('radios')
 
@@ -204,7 +204,8 @@ describe('Radios', () => {
         items: [
           {
             value: 'yes',
-            text: 'Yes'
+            text: 'Yes',
+            conditional: '<b>Conditional content</b>'
           },
           {
             value: 'no',
@@ -223,6 +224,9 @@ describe('Radios', () => {
       const $lastConditional = $component.find('.govuk-radios__conditional').last()
       expect($lastConditional.attr('id')).toBe('conditional-example-conditional-2')
       expect($lastConditional.html()).toContain('Conditional content')
+      const $stringConditional = $component.find('.govuk-radios__conditional').first()
+      expect($stringConditional.attr('id')).toBe('conditional-example-conditional-1')
+      expect($stringConditional.html()).toContain('<b>Conditional content</b>')
     })
   })
 
@@ -338,7 +342,8 @@ describe('Radios', () => {
         items: [
           {
             value: 'yes',
-            html: '<b>Yes</b>',
+            text: '<b>Yes</b>',
+            safe: true,
             label: {
               attributes: {
                 'data-attribute': 'value',
@@ -378,12 +383,205 @@ describe('Radios', () => {
         ],
         fieldset: {
           legend: {
-            html: 'Have <b>you</b> changed your name?'
+            text: 'Have <b>you</b> changed your name?',
+            safe: true
           }
         }
       })
 
       expect(htmlWithClassName($, '.govuk-fieldset')).toMatchSnapshot()
+    })
+  })
+
+  describe('with keyword arguments', () => {
+    it('allows radios params to be passed as keyword arguments', () => {
+      const $ = renderMacro('radios', null, {
+        idPrefix: 'idPrefix',
+        name: 'optionName',
+        fieldset: {
+          legend: {
+            text: 'legend text'
+          }
+        },
+        hint: {
+          text: 'hint text'
+        },
+        items: [
+          {
+            text: 'option text'
+          }
+        ],
+        errorMessage: {
+          text: 'error text'
+        },
+        classes: 'extraClasses',
+        attributes: {
+          'data-test': 'attribute'
+        }
+      })
+
+      const $component = $('.govuk-radios')
+      expect($component.attr('data-test')).toEqual('attribute')
+      expect($component.attr('class')).toContain('extraClasses')
+      // expect($component.attr('class')).toContain('govuk-radios--error')
+
+      const $input = $('input')
+      expect($input.length).toEqual(1)
+      expect($input.attr('id')).toEqual('idPrefix-1')
+      expect($input.attr('name')).toEqual('optionName')
+
+      const $legend = $('.govuk-fieldset__legend')
+      expect($legend.html()).toContain('legend text')
+
+      const $label = $('.govuk-label')
+      expect($label.html()).toContain('option text')
+
+      const $hint = $('.govuk-hint')
+      expect($hint.html()).toContain('hint text')
+
+      const $error = $('.govuk-error-message')
+      expect($error.html()).toContain('error text')
+
+      const $group = $('.govuk-form-group')
+      expect($group.attr('class')).toContain('govuk-form-group--error')
+    })
+
+    it('uses fieldset keyword argument before params.fieldset', () => {
+      const $ = renderMacro('radios', {
+        fieldset: {
+          legend: {
+            text: 'params text'
+          }
+        }
+      }, {
+        fieldset: {
+          legend: {
+            text: 'keyword text'
+          }
+        }
+      })
+
+      const $legend = $('.govuk-fieldset__legend')
+      expect($legend.html()).toContain('keyword text')
+    })
+
+    it('uses hint keyword argument before params.hint', () => {
+      const $ = renderMacro('radios', {
+        hint: {
+          text: 'params text'
+        }
+      }, {
+        hint: {
+          text: 'keyword text'
+        }
+      })
+
+      const $hint = $('.govuk-hint')
+      expect($hint.html()).toContain('keyword text')
+    })
+
+    it('uses error keyword argument before params.error', () => {
+      const $ = renderMacro('radios', {
+        errorMessage: {
+          text: 'params text'
+        }
+      }, {
+        errorMessage: {
+          text: 'keyword text'
+        }
+      })
+
+      const $error = $('.govuk-error-message')
+      expect($error.html()).toContain('keyword text')
+    })
+
+    it('uses idPrefix keyword argument before params.idPrefix', () => {
+      const $ = renderMacro('radios', {
+        items: [
+          {
+            text: 'option text'
+          }
+        ],
+        idPrefix: 'paramsIdPrefix'
+      }, {
+        idPrefix: 'keywordIdPrefix'
+      })
+
+      const $component = $('input')
+      expect($component.attr('id')).toEqual('keywordIdPrefix-1')
+    })
+
+    it('uses name keyword argument before params.name', () => {
+      const $ = renderMacro('radios', {
+        items: [
+          {
+            text: 'option text'
+          }
+        ],
+        name: 'paramsName'
+      }, {
+        name: 'keywordName'
+      })
+
+      const $component = $('input')
+      expect($component.attr('name')).toContain('keywordName')
+    })
+
+    it('uses items keyword argument before params.items', () => {
+      const $ = renderMacro('radios', {
+        items: [
+          {
+            value: 'params value'
+          }
+        ]
+      }, {
+        items: [
+          {
+            value: 'keyword value'
+          }
+        ]
+      })
+
+      const $input = $('input')
+      expect($input.attr('value')).toEqual('keyword value')
+    })
+
+    it('uses classes keyword argument before before params.classes', () => {
+      const $ = renderMacro('radios', {
+        text: 'params text',
+        classes: 'paramsClass'
+      }, {
+        classes: 'keywordClass'
+      })
+      const $component = $('.govuk-radios')
+      expect($component.attr('class')).toContain('keywordClass')
+    })
+
+    it('uses attributes keyword argument before before params.attributes', () => {
+      const $ = renderMacro('radios', {
+        text: 'params text',
+        attributes: {
+          'data-test': 'paramsAttribute'
+        }
+      }, {
+        attributes: {
+          'data-test': 'keywordAttribute'
+        }
+      })
+      const $component = $('.govuk-radios')
+      expect($component.attr('data-test')).toEqual('keywordAttribute')
+    })
+  })
+
+  describe('when using deprecated features', () => {
+    it('warns when using params.items[]html', () => {
+      const $ = renderMacro('radios', {
+        items: [{
+          html: '<b>params text</b>'
+        }]
+      })
+
+      expect($.html()).toContain('<strong class="deprecated">params.items[]html is deprecated in govukRadios</strong>')
     })
   })
 })

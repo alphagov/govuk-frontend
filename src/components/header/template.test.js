@@ -2,7 +2,7 @@
 
 const { axe } = require('jest-axe')
 
-const { render, getExamples } = require('../../../lib/jest-helpers')
+const { render, renderMacro, getExamples } = require('../../../lib/jest-helpers')
 
 const examples = getExamples('header')
 
@@ -102,6 +102,51 @@ describe('header', () => {
       expect($items.length).toEqual(4)
       expect($firstItem.attr('href')).toEqual('#1')
       expect($firstItem.text()).toContain('Navigation item 1')
+    })
+  })
+
+  describe('with keyword arguments', () => {
+    it('allows header params to be passed as keyword arguments', () => {
+      const $ = renderMacro('header', examples['with-navigation'], {
+        assetsPath: 'keywordAssetPath',
+        containerClasses: 'extraContainerClass',
+        homepageUrl: '/keywordHomepageUrl',
+        navigation: [
+          { href: '/keywordNavLink', text: 'keyword navigation item' }
+        ],
+        navigationClasses: 'extraNavigationClass',
+        productName: 'keyword product name',
+        serviceUrl: '/keywordServiceUrl',
+        serviceName: 'keyword service name',
+        classes: 'extraClasses',
+        attributes: {
+          'data-test': 'attribute'
+        }
+      })
+
+      const $assetsPath = $('[src^="keywordAssetPath/"]')
+      expect($assetsPath.length).toBeGreaterThanOrEqual(1)
+
+      const $container = $('.govuk-header__container')
+      expect($container.attr('class')).toContain('extraContainerClass')
+
+      const $homepageLink = $('.govuk-header__link--homepage')
+      expect($homepageLink.attr('href')).toEqual('/keywordHomepageUrl')
+
+      const $navigationLink = $('.govuk-header__navigation-item a')
+      expect($navigationLink.attr('href')).toEqual('/keywordNavLink')
+      expect($navigationLink.html()).toContain('keyword navigation item')
+
+      const $productName = $('.govuk-header__product-name')
+      expect($productName.html()).toContain('keyword product name')
+
+      const $servicepageLink = $('.govuk-header__link--service-name')
+      expect($servicepageLink.attr('href')).toEqual('/keywordServiceUrl')
+      expect($servicepageLink.html()).toContain('keyword service name')
+
+      const $component = $('.govuk-header')
+      expect($component.attr('data-test')).toEqual('attribute')
+      expect($component.attr('class')).toContain('extraClasses')
     })
   })
 })

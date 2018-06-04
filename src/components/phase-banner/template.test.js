@@ -2,7 +2,7 @@
 
 const { axe } = require('jest-axe')
 
-const { render, getExamples, htmlWithClassName } = require('../../../lib/jest-helpers')
+const { render, renderMacro, getExamples, htmlWithClassName } = require('../../../lib/jest-helpers')
 
 const examples = getExamples('phase-banner')
 
@@ -72,7 +72,8 @@ describe('Phase banner', () => {
     it('renders the tag component html', () => {
       const $ = render('phase-banner', {
         'tag': {
-          'html': '<em>alpha</em>'
+          'text': '<em>alpha</em>',
+          'safe': true
         }
       })
 
@@ -88,6 +89,118 @@ describe('Phase banner', () => {
       })
 
       expect(htmlWithClassName($, '.govuk-phase-banner__content__tag')).toMatchSnapshot()
+    })
+  })
+
+  describe('with keyword arguments', () => {
+    it('allows phase banner to be passed as string', () => {
+      const $ = renderMacro('phase-banner', 'text as string')
+
+      const $component = $('.govuk-phase-banner')
+      expect($component.text()).toContain('text as string')
+    })
+
+    it('allows phase banner params to be passed as keyword arguments', () => {
+      const $ = renderMacro('phase-banner', null, {
+        text: '<span>Hello</span>',
+        safe: true,
+        tag: {
+          text: 'tag text'
+        },
+        classes: 'extraClasses',
+        attributes: {
+          'data-test': 'attribute'
+        }
+      })
+
+      const $component = $('.govuk-phase-banner')
+      expect($component.html()).toContain('<span>Hello</span>')
+      expect($component.html()).toContain('tag text')
+      expect($component.attr('data-test')).toEqual('attribute')
+      expect($component.attr('class')).toContain('extraClasses')
+    })
+
+    it('uses text keyword argument before params as string', () => {
+      const $ = renderMacro('phase-banner', 'text as string', {
+        text: 'keyword text'
+      })
+
+      const $component = $('.govuk-phase-banner')
+      expect($component.text()).toContain('keyword text')
+    })
+
+    it('uses text keyword argument before params.text', () => {
+      const $ = renderMacro('phase-banner', {
+        text: 'params text'
+      }, {
+        text: 'keyword text'
+      })
+
+      const $component = $('.govuk-phase-banner')
+      expect($component.text()).toContain('keyword text')
+    })
+
+    it('uses safe keyword argument before before params.safe', () => {
+      const $ = renderMacro('phase-banner', {
+        text: '<b>params text</b>',
+        safe: true
+      }, {
+        safe: false
+      })
+
+      const $component = $('.govuk-phase-banner')
+      expect($component.html()).toContain('&lt;b&gt;params text&lt;/b&gt;')
+    })
+
+    it('uses tag keyword argument before params.tag', () => {
+      const $ = renderMacro('phase-banner', {
+        tag: {
+          text: 'params text'
+        }
+      }, {
+        tag: {
+          text: 'keywords text'
+        }
+      })
+
+      const $component = $('.govuk-phase-banner')
+      expect($component.html()).toContain('keywords text')
+    })
+
+    it('uses classes keyword argument before before params.classes', () => {
+      const $ = renderMacro('phase-banner', {
+        text: 'params text',
+        classes: 'paramsClass'
+      }, {
+        classes: 'keywordClass'
+      })
+      const $component = $('.govuk-phase-banner')
+      expect($component.attr('class')).toContain('keywordClass')
+    })
+
+    it('uses attributes keyword argument before before params.attributes', () => {
+      const $ = renderMacro('phase-banner', {
+        text: 'params text',
+        attributes: {
+          'data-test': 'paramsAttribute'
+        }
+      }, {
+        attributes: {
+          'data-test': 'keywordAttribute'
+        }
+      })
+      const $component = $('.govuk-phase-banner')
+      expect($component.attr('data-test')).toEqual('keywordAttribute')
+    })
+  })
+
+  describe('when using deprecated features', () => {
+    it('warns when using params.html', () => {
+      const $ = renderMacro('phase-banner', {
+        html: '<b>params text</b>'
+      })
+
+      expect($.html()).toContain('<strong class="deprecated">params.html is deprecated in govukPhaseBanner</strong>')
     })
   })
 })

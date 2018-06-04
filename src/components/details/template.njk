@@ -1,10 +1,11 @@
 <details {%- if params.id %} id="{{params.id}}"{% endif %} class="govuk-details {%- if params.classes %} {{ params.classes }}{% endif %}" {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %} {{- " open" if params.open }}>
+{%- set summary = params.summary if params.summary.text else {text: params.summary} %}
   <summary class="govuk-details__summary">
     <span class="govuk-details__summary-text">
-      {{ params.summaryHtml | safe if params.summaryHtml else params.summaryText }}
+      {{ summary.text | safe if summary.safe else summary.text }}
     </span>
   </summary>
   <div class="govuk-details__text">
-    {{ params.html | safe if params.html else params.text }}
+    {{ params.text | safe if params.safe else params.text }}
   </div>
 </details>

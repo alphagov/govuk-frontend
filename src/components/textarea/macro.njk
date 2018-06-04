@@ -1,3 +1,31 @@
-{% macro govukTextarea(params) %}
+{% macro govukTextarea(
+  params,
+  id,
+  name,
+  label,
+  hint,
+  rows,
+  errorMessage,
+  classes,
+  attributes
+) %}
+  {% set id = id if id else params.id %}
+  {% set name = name if name else params.name %}
+  {% set label = label if label else params.label %}
+  {% set hint = hint if hint else params.hint %}
+  {% set rows = rows if rows else params.rows %}
+  {% set errorMessage = errorMessage if errorMessage else params.errorMessage %}
+  {% set classes = classes if classes else params.classes %}
+  {% set attributes = attributes if attributes else params.attributes %}
+  {% set params = {
+    id: id,
+    name: name,
+    label: label,
+    hint: hint,
+    rows: rows,
+    errorMessage: errorMessage,
+    classes: classes,
+    attributes: attributes
+  } %}
   {%- include "./template.njk" -%}
 {% endmacro %}

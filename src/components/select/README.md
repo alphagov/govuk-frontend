@@ -40,7 +40,8 @@ Find out when to use the Select component in your service in the [GOV.UK Design 
       "id": "select-1",
       "name": "select-1",
       "label": {
-        "html": "Label text goes here"
+        "text": "Label text goes here",
+        "safe": true
       },
       "items": [
         {
@@ -155,7 +156,8 @@ Find out when to use the Select component in your service in the [GOV.UK Design 
       "id": "select-3",
       "name": "select-3",
       "label": {
-        "html": "Label text goes here",
+        "text": "Label text goes here",
+        "safe": true,
         "isPageHeading": true
       },
       "items": [
@@ -218,7 +220,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">classes</th>
+<td class="govuk-table__cell">classes</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -230,7 +232,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">id</th>
+<td class="govuk-table__cell">id</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -242,7 +244,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">name</th>
+<td class="govuk-table__cell">name</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -254,7 +256,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">items</th>
+<td class="govuk-table__cell">items</td>
 
 <td class="govuk-table__cell ">array</td>
 
@@ -266,7 +268,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">value</th>
+<td class="govuk-table__cell">items[]value</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -278,7 +280,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">text</th>
+<td class="govuk-table__cell">items[]text</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -290,7 +292,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">selected</th>
+<td class="govuk-table__cell">items[]selected</td>
 
 <td class="govuk-table__cell ">boolean</td>
 
@@ -302,7 +304,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">disabled</th>
+<td class="govuk-table__cell">items[]disabled</td>
 
 <td class="govuk-table__cell ">boolean</td>
 
@@ -314,9 +316,9 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">label</th>
+<td class="govuk-table__cell">label</td>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell ">object or string</td>
 
 <td class="govuk-table__cell ">No</td>
 
@@ -326,9 +328,9 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">hint</th>
+<td class="govuk-table__cell">hint</td>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell ">object or string</td>
 
 <td class="govuk-table__cell ">No</td>
 
@@ -338,9 +340,9 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">errorMessage</th>
+<td class="govuk-table__cell">errorMessage</td>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell ">object or string</td>
 
 <td class="govuk-table__cell ">No</td>
 
@@ -350,7 +352,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">attributes</th>
+<td class="govuk-table__cell">attributes</td>
 
 <td class="govuk-table__cell ">object</td>
 

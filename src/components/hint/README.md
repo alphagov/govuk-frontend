@@ -39,7 +39,8 @@ Use hint text for supporting contextual help
     {% from 'hint/macro.njk' import govukHint %}
 
     {{ govukHint({
-      "html": "It’s on your National Insurance card, benefit letter, payslip or <a class=\"govuk-link\" href=\"#\">P60</a>. For example, ‘QQ 12 34 56 C’."
+      "text": "It’s on your National Insurance card, benefit letter, payslip or <a class=\"govuk-link\" href=\"#\">P60</a>. For example, ‘QQ 12 34 56 C’.",
+      "safe": true
     }) }}
 
 ## Requirements
@@ -84,7 +85,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">classes</th>
+<td class="govuk-table__cell">classes</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -96,7 +97,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">id</th>
+<td class="govuk-table__cell">id</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -108,7 +109,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">text</th>
+<td class="govuk-table__cell">text</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -120,19 +121,19 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">html</th>
+<td class="govuk-table__cell">safe</td>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell ">boolean</td>
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">HTML to use within the hint. If this is provided, the text argument will be ignored.</td>
+<td class="govuk-table__cell ">Whether text argument can be considered safe. If not safe, it will be escaped.</td>
 
 </tr>
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">attributes</th>
+<td class="govuk-table__cell">attributes</td>
 
 <td class="govuk-table__cell ">object</td>
 

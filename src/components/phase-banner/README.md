@@ -17,7 +17,9 @@ Find out when to use the Phase banner component in your service in the [GOV.UK D
 #### Markup
 
     <div class="govuk-phase-banner">
-      <p class="govuk-phase-banner__content"><strong class="govuk-tag govuk-phase-banner__content__tag ">
+      <p class="govuk-phase-banner__content">
+
+      <strong class="govuk-tag govuk-phase-banner__content__tag ">
       alpha
     </strong>
     <span class="govuk-phase-banner__text">
@@ -34,7 +36,8 @@ Find out when to use the Phase banner component in your service in the [GOV.UK D
       "tag": {
         "text": "alpha"
       },
-      "html": "This is a new service - your <a href=\"#\" class=\"govuk-link\">feedback</a> will help us to improve it."
+      "text": "This is a new service - your <a href=\"#\" class=\"govuk-link\">feedback</a> will help us to improve it.",
+      "safe": true
     }) }}
 
 ## Requirements
@@ -79,7 +82,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">classes</th>
+<td class="govuk-table__cell">classes</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -91,7 +94,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">text</th>
+<td class="govuk-table__cell">text</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -103,31 +106,31 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">html</th>
+<td class="govuk-table__cell">safe</td>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell ">boolean</td>
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">HTML to use for the phase-banner message. If this is provided, the text argument will be ignored.</td>
+<td class="govuk-table__cell ">Whether title text can be considered safe. If not safe, it will be escaped.</td>
 
 </tr>
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">tag</th>
+<td class="govuk-table__cell">tag</td>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell ">object or string</td>
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Arguments for the tag object. Can contain text or html.</td>
+<td class="govuk-table__cell ">Arguments for the tag. See tag component.</td>
 
 </tr>
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">attributes</th>
+<td class="govuk-table__cell">attributes</td>
 
 <td class="govuk-table__cell ">object</td>
 

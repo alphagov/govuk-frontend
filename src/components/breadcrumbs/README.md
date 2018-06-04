@@ -250,7 +250,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">classes</th>
+<td class="govuk-table__cell">classes</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -262,7 +262,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">items</th>
+<td class="govuk-table__cell">items</td>
 
 <td class="govuk-table__cell ">array</td>
 
@@ -274,7 +274,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">text</th>
+<td class="govuk-table__cell">items[]text</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -286,19 +286,19 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">html</th>
+<td class="govuk-table__cell">items[]safe</td>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell ">boolean</td>
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">HTML to use within the breadcrumbs item. If this is provided, the text argument will be ignored.</td>
+<td class="govuk-table__cell ">Whether item text can be considered safe. If not safe, it will be escaped.</td>
 
 </tr>
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">href</th>
+<td class="govuk-table__cell">items[]href</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -310,7 +310,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">attributes</th>
+<td class="govuk-table__cell">attributes</td>
 
 <td class="govuk-table__cell ">object</td>
 

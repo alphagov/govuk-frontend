@@ -53,7 +53,21 @@
     ],
     [
       {
-        text: 'titleText'
+        text: 'title'
+      },
+      {
+        text: 'object or string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'If passed as a string, title.text will use that value.'
+      }
+    ],
+     [
+      {
+        text: 'title.text'
       },
       {
         text: 'string'
@@ -67,21 +81,35 @@
     ],
     [
       {
-        text: 'titleHtml'
+        text: 'title.safe'
       },
       {
-        text: 'string'
+        text: 'boolean'
       },
       {
         text: 'No'
       },
       {
-        text: 'HTML to use for the heading of the error summary block. If this is provided, the titleText argument will be ignored.'
+        text: 'Whether title text argument can be considered safe. If not safe, it will be escaped.'
       }
     ],
     [
       {
-        text: 'descriptionText'
+        text: 'description'
+      },
+      {
+        text: 'object or string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'If passed as a string, legend.text will use that value.'
+      }
+    ],
+     [
+      {
+        text: 'description.text'
       },
       {
         text: 'string'
@@ -95,16 +123,16 @@
     ],
      [
       {
-        text: 'descriptionHtml'
+        text: 'description.safe'
       },
       {
-        text: 'string'
+        text: 'boolean'
       },
       {
         text: 'No'
       },
       {
-        text: 'Optional HTML description of the errors.  If this is provided, the descriptionText argument will be ignored.'
+        text: 'Whether description text argument can be considered safe. If not safe, it will be escaped.'
       }
     ],
     [
@@ -112,7 +140,7 @@
         text: 'errorList'
       },
       {
-        text: 'object'
+        text: 'array'
       },
       {
         text: 'Yes'

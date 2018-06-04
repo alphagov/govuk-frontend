@@ -18,7 +18,8 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 
     <div class="govuk-form-group">
 
-      <fieldset class="govuk-fieldset" aria-describedby="example-hint">
+      <fieldset class="govuk-fieldset" aria-describedby="example-hint"
+      >
 
       <legend class="govuk-fieldset__legend">
         Have you changed your name?
@@ -32,6 +33,7 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 
         <div class="govuk-radios__item">
           <input class="govuk-radios__input" id="example-1" name="example" type="radio" value="yes">
+
           <label class="govuk-label govuk-radios__label" for="example-1">
             Yes
           </label>
@@ -39,6 +41,7 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 
         <div class="govuk-radios__item">
           <input class="govuk-radios__input" id="example-2" name="example" type="radio" value="no" checked>
+
           <label class="govuk-label govuk-radios__label" for="example-2">
             No
           </label>
@@ -85,7 +88,8 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 
     <div class="govuk-form-group">
 
-      <fieldset class="govuk-fieldset" aria-describedby="example-hint">
+      <fieldset class="govuk-fieldset" aria-describedby="example-hint"
+      >
 
       <legend class="govuk-fieldset__legend">
         Have you changed your name?
@@ -99,6 +103,7 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 
         <div class="govuk-radios__item">
           <input class="govuk-radios__input" id="example-1" name="example" type="radio" value="yes">
+
           <label class="govuk-label govuk-radios__label" for="example-1">
             Yes
           </label>
@@ -106,6 +111,7 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 
         <div class="govuk-radios__item">
           <input class="govuk-radios__input" id="example-2" name="example" type="radio" value="no" checked>
+
           <label class="govuk-label govuk-radios__label" for="example-2">
             No
           </label>
@@ -153,7 +159,8 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 
     <div class="govuk-form-group">
 
-      <fieldset class="govuk-fieldset" aria-describedby="example-disabled-hint">
+      <fieldset class="govuk-fieldset" aria-describedby="example-disabled-hint"
+      >
 
       <legend class="govuk-fieldset__legend">
         Have you changed your name?
@@ -167,6 +174,7 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 
         <div class="govuk-radios__item">
           <input class="govuk-radios__input" id="example-disabled-1" name="example-disabled" type="radio" value="yes" disabled>
+
           <label class="govuk-label govuk-radios__label" for="example-disabled-1">
             Yes
           </label>
@@ -174,6 +182,7 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 
         <div class="govuk-radios__item">
           <input class="govuk-radios__input" id="example-disabled-2" name="example-disabled" type="radio" value="no" disabled>
+
           <label class="govuk-label govuk-radios__label" for="example-disabled-2">
             No
           </label>
@@ -221,7 +230,8 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 
     <div class="govuk-form-group">
 
-      <fieldset class="govuk-fieldset" aria-describedby="housing-act-hint">
+      <fieldset class="govuk-fieldset" aria-describedby="housing-act-hint"
+      >
 
       <legend class="govuk-fieldset__legend">
         <h1 class="govuk-heading-l">Which part of the Housing Act was your licence issued under?</h1>
@@ -235,6 +245,7 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 
         <div class="govuk-radios__item">
           <input class="govuk-radios__input" id="housing-act-1" name="housing-act" type="radio" value="part-2">
+
           <label class="govuk-label govuk-radios__label" for="housing-act-1">
             <span class="govuk-heading-s govuk-!-mb-r1">Part 2 of the Housing Act 2004</span> For properties that are 3 or more stories high and occupied by 5 or more people
           </label>
@@ -242,6 +253,7 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 
         <div class="govuk-radios__item">
           <input class="govuk-radios__input" id="housing-act-2" name="housing-act" type="radio" value="part-3">
+
           <label class="govuk-label govuk-radios__label" for="housing-act-2">
             <span class="govuk-heading-s govuk-!-mb-r1">Part 3 of the Housing Act 2004</span> For properties that are within a geographical area defined by a local council
           </label>
@@ -261,7 +273,8 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
       "name": "housing-act",
       "fieldset": {
         "legend": {
-          "html": "<h1 class=\"govuk-heading-l\">Which part of the Housing Act was your licence issued under?</h1>"
+          "text": "<h1 class=\"govuk-heading-l\">Which part of the Housing Act was your licence issued under?</h1>",
+          "safe": true
         }
       },
       "hint": {
@@ -270,11 +283,13 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
       "items": [
         {
           "value": "part-2",
-          "html": "<span class=\"govuk-heading-s govuk-!-mb-r1\">Part 2 of the Housing Act 2004</span> For properties that are 3 or more stories high and occupied by 5 or more people"
+          "text": "<span class=\"govuk-heading-s govuk-!-mb-r1\">Part 2 of the Housing Act 2004</span> For properties that are 3 or more stories high and occupied by 5 or more people",
+          "safe": true
         },
         {
           "value": "part-3",
-          "html": "<span class=\"govuk-heading-s govuk-!-mb-r1\">Part 3 of the Housing Act 2004</span> For properties that are within a geographical area defined by a local council"
+          "text": "<span class=\"govuk-heading-s govuk-!-mb-r1\">Part 3 of the Housing Act 2004</span> For properties that are within a geographical area defined by a local council",
+          "safe": true
         }
       ]
     }) }}
@@ -291,6 +306,7 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 
         <div class="govuk-radios__item">
           <input class="govuk-radios__input" id="colours-1" name="colours" type="radio" value="red">
+
           <label class="govuk-label govuk-radios__label" for="colours-1">
             Red
           </label>
@@ -298,6 +314,7 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 
         <div class="govuk-radios__item">
           <input class="govuk-radios__input" id="colours-2" name="colours" type="radio" value="green">
+
           <label class="govuk-label govuk-radios__label" for="colours-2">
             Green
           </label>
@@ -305,6 +322,7 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 
         <div class="govuk-radios__item">
           <input class="govuk-radios__input" id="colours-3" name="colours" type="radio" value="blue">
+
           <label class="govuk-label govuk-radios__label" for="colours-3">
             Blue
           </label>
@@ -344,7 +362,8 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 
     <div class="govuk-form-group govuk-form-group--error">
 
-      <fieldset class="govuk-fieldset app-fieldset--custom-modifier" aria-describedby="example-hint example-error" data-attribute="value" data-second-attribute="second-value">
+      <fieldset class="govuk-fieldset app-fieldset--custom-modifier" aria-describedby="example-hint example-error"
+       data-attribute="value" data-second-attribute="second-value">
 
       <legend class="govuk-fieldset__legend">
         Have you changed your name?
@@ -362,6 +381,7 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 
         <div class="govuk-radios__item">
           <input class="govuk-radios__input" id="example-1" name="example" type="radio" value="yes">
+
           <label class="govuk-label govuk-radios__label" for="example-1">
             Yes
           </label>
@@ -369,6 +389,7 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 
         <div class="govuk-radios__item">
           <input class="govuk-radios__input" id="example-2" name="example" type="radio" value="no" checked>
+
           <label class="govuk-label govuk-radios__label" for="example-2">
             No
           </label>
@@ -457,7 +478,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">fieldset</th>
+<td class="govuk-table__cell">fieldset</td>
 
 <td class="govuk-table__cell ">object</td>
 
@@ -469,9 +490,9 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">hint</th>
+<td class="govuk-table__cell">hint</td>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell ">object or string</td>
 
 <td class="govuk-table__cell ">No</td>
 
@@ -481,9 +502,9 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">errorMessage</th>
+<td class="govuk-table__cell">errorMessage</td>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell ">object or string</td>
 
 <td class="govuk-table__cell ">No</td>
 
@@ -493,7 +514,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">classes</th>
+<td class="govuk-table__cell">classes</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -505,7 +526,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">idPrefix</th>
+<td class="govuk-table__cell">idPrefix</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -517,7 +538,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">name</th>
+<td class="govuk-table__cell">name</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -529,7 +550,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">items</th>
+<td class="govuk-table__cell">items</td>
 
 <td class="govuk-table__cell ">array</td>
 
@@ -541,7 +562,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">text</th>
+<td class="govuk-table__cell">items[]text</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -553,19 +574,19 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">html</th>
+<td class="govuk-table__cell">items[]safe</td>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell ">boolean</td>
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">HTML to use within the radio label. If this is provided, the text argument will be ignored.</td>
+<td class="govuk-table__cell ">Whether item text can be considered safe. If not safe, it will be escaped.</td>
 
 </tr>
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">label</th>
+<td class="govuk-table__cell">items[]label</td>
 
 <td class="govuk-table__cell ">object</td>
 
@@ -577,7 +598,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">checked</th>
+<td class="govuk-table__cell">items[]checked</td>
 
 <td class="govuk-table__cell ">boolean</td>
 
@@ -589,7 +610,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">disabled</th>
+<td class="govuk-table__cell">items[]disabled</td>
 
 <td class="govuk-table__cell ">boolean</td>
 
@@ -601,7 +622,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">attributes</th>
+<td class="govuk-table__cell">attributes</td>
 
 <td class="govuk-table__cell ">object</td>
 

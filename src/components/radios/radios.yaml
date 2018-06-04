@@ -65,18 +65,21 @@ examples:
     name: 'housing-act'
     fieldset:
       legend:
-        html: <h1 class="govuk-heading-l">Which part of the Housing Act was your licence issued under?</h1>
+        text: <h1 class="govuk-heading-l">Which part of the Housing Act was your licence issued under?</h1>
+        safe: true
     hint:
       text: Select one of the options below.
     items:
       - value: 'part-2'
-        html:
+        text:
           <span class="govuk-heading-s govuk-!-mb-r1">Part 2 of the Housing Act 2004</span>
           For properties that are 3 or more stories high and occupied by 5 or more people
+        safe: true
       - value: 'part-3'
-        html:
+        text:
           <span class="govuk-heading-s govuk-!-mb-r1">Part 3 of the Housing Act 2004</span>
           For properties that are within a geographical area defined by a local council
+        safe: true
 
 - name: without-fieldset
   data:
@@ -118,7 +121,8 @@ examples:
     name: 'how-contacted'
     fieldset:
       legend:
-        html: <h3 class="govuk-heading-m">How do you want to be contacted?</h3>
+        text: <h3 class="govuk-heading-m">How do you want to be contacted?</h3>
+        safe: true
     items:
       - value: email
         text: Email
@@ -146,7 +150,8 @@ examples:
     name: 'how-contacted-checked'
     fieldset:
       legend:
-        html: <h3 class="govuk-heading-m">How do you want to be contacted?</h3>
+        text: <h3 class="govuk-heading-m">How do you want to be contacted?</h3>
+        safe: true
     items:
     - value: email
       text: Email

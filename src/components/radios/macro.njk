@@ -1,3 +1,38 @@
-{% macro govukRadios(params) %}
+{% macro govukRadios(
+  params,
+  idPrefix,
+  name,
+  fieldset,
+  hint,
+  items,
+  errorMessage,
+  classes,
+  attributes
+) %}
+  {% if params.items and not hideDeprecated %}
+    {% for item in params.items %}
+      {% if item.html %}
+      <strong class="deprecated">params.items[]html is deprecated in govukRadios</strong>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+  {% set idPrefix = idPrefix if idPrefix else params.idPrefix %}
+  {% set name = name if name else params.name %}
+  {% set fieldset = fieldset if fieldset else params.fieldset %}
+  {% set hint = hint if hint else params.hint %}
+  {% set items = items if items else params.items %}
+  {% set errorMessage = errorMessage if errorMessage else params.errorMessage %}
+  {% set classes = classes if classes else params.classes %}
+  {% set attributes = attributes if attributes else params.attributes %}
+  {% set params = {
+    idPrefix: idPrefix,
+    name: name,
+    fieldset: fieldset,
+    hint: hint,
+    items: items,
+    errorMessage: errorMessage,
+    classes: classes,
+    attributes: attributes
+  } %}
   {%- include "./template.njk" -%}
 {% endmacro %}
