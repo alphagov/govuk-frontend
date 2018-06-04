@@ -7,7 +7,7 @@ import Header from './components/header/header'
 import Radios from './components/radios/radios'
 
 function initAll () {
-  new Button().init()
+  new Button(document).init()
 
   var $details = document.querySelectorAll('details')
   nodeListForEach($details, function ($detail) {
