@@ -1,0 +1,33 @@
+@import "../../settings/all";
+@import "../../tools/all";
+@import "../../helpers/all";
+
+@import "../../objects/width-container";
+
+@include govuk-exports("govuk/component/cookie-banner") {
+  .govuk-cookie-banner {
+    width: 100%;
+
+    padding-top: $govuk-spacing-scale-2;
+    padding-bottom: $govuk-spacing-scale-2;
+
+    background-color: $govuk-light-blue-25;
+
+    @include govuk-typography-common;
+  }
+
+  .js-enabled .govuk-cookie-banner {
+    display: none;
+  }
+
+  .govuk-cookie-banner__message {
+    @include govuk-width-container;
+    @include govuk-font-regular-16;
+  }
+
+  @include mq($media-type: print) {
+    .govuk-cookie-banner {
+      display: none !important;
+    }
+  }
+}

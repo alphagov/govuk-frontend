@@ -2,6 +2,7 @@ import { nodeListForEach } from './common'
 import Button from './components/button/button'
 import Details from './components/details/details'
 import Checkboxes from './components/checkboxes/checkboxes'
+import CookieBanner from './components/cookie-banner/cookie-banner'
 import ErrorSummary from './components/error-summary/error-summary'
 import Header from './components/header/header'
 import Radios from './components/radios/radios'
@@ -14,6 +15,10 @@ function initAll () {
   nodeListForEach($checkboxes, function ($checkbox) {
     new Checkboxes($checkbox).init()
   })
+
+  // Find first Cookie Banner module to enhance.
+  var $cookieBanner = document.querySelector('[data-module="cookie-banner"]')
+  new CookieBanner($cookieBanner).init()
 
   // Find first Error Summary module to enhance.
   var $errorSummary = document.querySelector('[data-module="error-summary"]')
