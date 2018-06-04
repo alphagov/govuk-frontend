@@ -17,9 +17,6 @@ var KEY_SPACE = 32
 var NATIVE_DETAILS = typeof document.createElement('details').open === 'boolean'
 
 function Details () {
-  // Create a flag so we can prevent the initialisation
-  // function firing from both DOMContentLoaded and window.onload
-  this.INITIALISED = false
 }
 
 /**
@@ -84,14 +81,9 @@ Details.prototype.getAncestor = function (node, match) {
 * @param {object} list of details elements
 * @param {string} container where to look for details elements
 */
-Details.prototype.initDetails = function (list, container) {
+Details.prototype.init = function (list, container) {
   container = container || document.body
-  // If this has already happened, just return
-  // else set the flag so it doesn't happen again
-  if (this.INITIALISED) {
-    return
-  }
-  this.INITIALISED = true
+
   // Get the collection of details elements, but if that's empty
   // then we don't need to bother with the rest of the scripting
   if ((list = container.getElementsByTagName('details')).length === 0) {
@@ -193,18 +185,6 @@ Details.prototype.destroy = function (node) {
   node.removeEventListener('keypress')
   node.removeEventListener('keyup')
   node.removeEventListener('click')
-}
-
-/**
-* Initialise an event listener for DOMContentLoaded at document level
-* and load at window level
-*
-* If the first one fires it will set a flag to block the second one
-* but if it's not supported then the second one will fire
-*/
-Details.prototype.init = function () {
-  document.addEventListener('DOMContentLoaded', this.initDetails.bind(this))
-  window.addEventListener('load', this.initDetails.bind(this))
 }
 
 export default Details
