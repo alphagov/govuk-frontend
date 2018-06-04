@@ -1,3 +1,28 @@
-{% macro govukLabel(params) %}
+{% macro govukLabel(
+  params,
+  text,
+  safe,
+  for,
+  isPageHeading,
+  classes,
+  attributes
+) %}
+  {% if params.html and not hideDeprecated %}
+    <strong class="deprecated">params.html is deprecated in govukLabel</strong>
+  {% endif %}
+  {% if text === undefined %}{% set text = params.text if params.text else params %}{% endif %}
+  {% if safe === undefined %}{% set safe = params.safe %}{% endif %}
+  {% set for = for if for else params.for %}
+  {% if isPageHeading === undefined %}{% set isPageHeading = params.isPageHeading %}{% endif %}
+  {% set classes = classes if classes else params.classes %}
+  {% set attributes = attributes if attributes else params.attributes %}
+  {% set params = {
+    text: text,
+    safe: safe,
+    for: for,
+    isPageHeading: isPageHeading,
+    classes: classes,
+    attributes: attributes
+  } %}
   {%- include "./template.njk" -%}
 {% endmacro %}

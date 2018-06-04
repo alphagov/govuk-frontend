@@ -2,7 +2,7 @@
 
 const { axe } = require('jest-axe')
 
-const { render, getExamples } = require('../../../lib/jest-helpers')
+const { render, renderMacro, getExamples } = require('../../../lib/jest-helpers')
 
 const examples = getExamples('label')
 
@@ -60,7 +60,8 @@ describe('Label', () => {
 
     it('allows label HTML to be passed un-escaped', () => {
       const $ = render('label', {
-        html: 'National Insurance number <em>NINO</em>'
+        text: 'National Insurance number <em>NINO</em>',
+        safe: true
       })
 
       const labelText = $('.govuk-label').html().trim()
@@ -99,6 +100,130 @@ describe('Label', () => {
       const $component = $('.govuk-label')
       expect($component.attr('first-attribute')).toEqual('true')
       expect($component.attr('second-attribute')).toEqual('false')
+    })
+  })
+
+  describe('with keyword arguments', () => {
+    it('allows label to be passed as string', () => {
+      const $ = renderMacro('label', 'text as string')
+
+      const $component = $('.govuk-label')
+      expect($component.text()).toContain('text as string')
+    })
+
+    it('allows label params to be passed as keyword arguments', () => {
+      const $ = renderMacro('label', null, {
+        text: '<span>Hello</span>',
+        safe: true,
+        for: 'forId',
+        isPageHeading: true,
+        classes: 'extraClasses',
+        attributes: {
+          'data-test': 'attribute'
+        }
+      })
+
+      const $component = $('.govuk-label')
+      expect($component.html()).toContain('<span>Hello</span>')
+      expect($component.attr('data-test')).toEqual('attribute')
+      expect($component.attr('class')).toContain('extraClasses')
+
+      const $heading = $('.govuk-label-wrapper')
+      expect($heading.length).toEqual(1)
+    })
+
+    it('uses text keyword argument before params as string', () => {
+      const $ = renderMacro('label', 'text as string', {
+        text: 'keyword text'
+      })
+
+      const $component = $('.govuk-label')
+      expect($component.text()).toContain('keyword text')
+    })
+
+    it('uses text keyword argument before params.text', () => {
+      const $ = renderMacro('label', {
+        text: 'params text'
+      }, {
+        text: 'keyword text'
+      })
+
+      const $component = $('.govuk-label')
+      expect($component.text()).toContain('keyword text')
+    })
+
+    it('uses safe keyword argument before before params.safe', () => {
+      const $ = renderMacro('label', {
+        text: '<b>params text</b>',
+        safe: true
+      }, {
+        safe: false
+      })
+
+      const $component = $('.govuk-label')
+      expect($component.html()).toContain('&lt;b&gt;params text&lt;/b&gt;')
+    })
+
+    it('uses for keyword argument before params.for', () => {
+      const $ = renderMacro('label', {
+        for: 'paramsFor'
+      }, {
+        for: 'keywordsFor'
+      })
+
+      const $component = $('.govuk-label')
+      expect($component.attr('for')).toEqual('keywordsFor')
+    })
+
+    it('uses isPageHeading keyword argument before params.isPageHeading', () => {
+      const $ = renderMacro('label', {
+        text: 'label text',
+        isPageHeading: true
+      }, {
+        isPageHeading: false
+      })
+
+      const $component = $('.govuk-label')
+      expect($component.length).toEqual(1)
+
+      const $heading = $('.govuk-label-wrapper')
+      expect($heading.length).toEqual(0)
+    })
+
+    it('uses classes keyword argument before before params.classes', () => {
+      const $ = renderMacro('label', {
+        text: 'params text',
+        classes: 'paramsClass'
+      }, {
+        classes: 'keywordClass'
+      })
+      const $component = $('.govuk-label')
+      expect($component.attr('class')).toContain('keywordClass')
+    })
+
+    it('uses attributes keyword argument before before params.attributes', () => {
+      const $ = renderMacro('label', {
+        text: 'params text',
+        attributes: {
+          'data-test': 'paramsAttribute'
+        }
+      }, {
+        attributes: {
+          'data-test': 'keywordAttribute'
+        }
+      })
+      const $component = $('.govuk-label')
+      expect($component.attr('data-test')).toEqual('keywordAttribute')
+    })
+  })
+
+  describe('when using deprecated features', () => {
+    it('warns when using params.html', () => {
+      const $ = renderMacro('label', {
+        html: '<b>params text</b>'
+      })
+
+      expect($.html()).toContain('<strong class="deprecated">params.html is deprecated in govukLabel</strong>')
     })
   })
 })

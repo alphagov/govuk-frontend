@@ -1,3 +1,34 @@
-{% macro govukInput(params) %}
+{% macro govukInput(
+  params,
+  id,
+  name,
+  label,
+  hint,
+  type,
+  value,
+  errorMessage,
+  classes,
+  attributes
+) %}
+  {% set id = id if id else params.id %}
+  {% set name = name if name else params.name %}
+  {% set label = label if label else params.label %}
+  {% set hint = hint if hint else params.hint %}
+  {% set type = type if type else params.type %}
+  {% set value = value if value else params.value %}
+  {% set errorMessage = errorMessage if errorMessage else params.errorMessage %}
+  {% set classes = classes if classes else params.classes %}
+  {% set attributes = attributes if attributes else params.attributes %}
+  {% set params = {
+    id: id,
+    name: name,
+    label: label,
+    hint: hint,
+    type: type,
+    value: value,
+    errorMessage: errorMessage,
+    classes: classes,
+    attributes: attributes
+  } %}
   {%- include "./template.njk" -%}
 {% endmacro %}

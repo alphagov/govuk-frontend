@@ -2,7 +2,7 @@
 
 const { axe } = require('jest-axe')
 
-const { render, getExamples } = require('../../../lib/jest-helpers')
+const { render, renderMacro, getExamples } = require('../../../lib/jest-helpers')
 
 const examples = getExamples('table')
 
@@ -16,24 +16,24 @@ describe('Table', () => {
 
   it('renders with classes', () => {
     const $ = render('table', {
-      'classes': 'custom-class-goes-here',
-      'rows': [
+      classes: 'custom-class-goes-here',
+      rows: [
         [
           {
-            'text': 'January'
+            text: 'January'
           },
           {
-            'text': '£85',
-            'format': 'numeric'
+            text: '£85',
+            format: 'numeric'
           }
         ],
         [
           {
-            'text': 'February'
+            text: 'February'
           },
           {
-            'text': '£165',
-            'format': 'numeric'
+            text: '£165',
+            format: 'numeric'
           }
         ]
       ]
@@ -59,32 +59,32 @@ describe('Table', () => {
 
   it('renders first cell in every row as a <th> element with correct `govuk-table__header` class and `scope=row` attribute', () => {
     const $ = render('table', {
-      'firstCellIsHeader': true,
-      'rows': [
+      firstCellIsHeader: true,
+      rows: [
         [
           {
-            'text': 'January'
+            text: 'January'
           },
           {
-            'text': '£85',
-            'format': 'numeric'
+            text: '£85',
+            format: 'numeric'
           },
           {
-            'text': '£95',
-            'format': 'numeric'
+            text: '£95',
+            format: 'numeric'
           }
         ],
         [
           {
-            'text': 'February'
+            text: 'February'
           },
           {
-            'text': '£75',
-            'format': 'numeric'
+            text: '£75',
+            format: 'numeric'
           },
           {
-            'text': '£55',
-            'format': 'numeric'
+            text: '£55',
+            format: 'numeric'
           }
         ]
       ]
@@ -122,36 +122,36 @@ describe('Table', () => {
 
   it('renders table header cell `format` attribute correctly', () => {
     const $ = render('table', {
-      'head': [
+      head: [
         {
-          'text': 'Month you apply'
+          text: 'Month you apply'
         },
         {
-          'text': 'Rate for bicycles',
-          'format': 'numeric'
+          text: 'Rate for bicycles',
+          format: 'numeric'
         },
         {
-          'text': 'Rate for vehicles',
-          'format': 'numeric'
+          text: 'Rate for vehicles',
+          format: 'numeric'
         }
       ],
-      'rows': [
+      rows: [
         [
           {
-            'text': 'January'
+            text: 'January'
           },
           {
-            'text': '£85',
-            'format': 'numeric'
+            text: '£85',
+            format: 'numeric'
           }
         ],
         [
           {
-            'text': 'February'
+            text: 'February'
           },
           {
-            'text': '£165',
-            'format': 'numeric'
+            text: '£165',
+            format: 'numeric'
           }
         ]
       ]
@@ -205,18 +205,19 @@ describe('Table', () => {
 
   it('renders cell with html', () => {
     const $ = render('table', {
-      'rows': [
+      rows: [
         [
           {
-            'text': 'January'
+            text: 'January'
           },
           {
-            'html': '<em>85</em>',
-            'format': 'numeric'
+            text: '<em>85</em>',
+            safe: true,
+            format: 'numeric'
           },
           {
-            'text': '£165',
-            'format': 'numeric'
+            text: '£165',
+            format: 'numeric'
           }
         ]
       ]
@@ -232,18 +233,18 @@ describe('Table', () => {
 
   it('renders cell escaped html in text', () => {
     const $ = render('table', {
-      'rows': [
+      rows: [
         [
           {
-            'text': 'January'
+            text: 'January'
           },
           {
-            'text': '<em>85</em>',
-            'format': 'numeric'
+            text: '<em>85</em>',
+            format: 'numeric'
           },
           {
-            'text': '£165',
-            'format': 'numeric'
+            text: '£165',
+            format: 'numeric'
           }
         ]
       ]
@@ -258,23 +259,23 @@ describe('Table', () => {
 
   it('renders cell `format` attribute correctly', () => {
     const $ = render('table', {
-      'rows': [
+      rows: [
         [
           {
-            'text': 'January'
+            text: 'January'
           },
           {
-            'text': '£85',
-            'format': 'numeric'
+            text: '£85',
+            format: 'numeric'
           }
         ],
         [
           {
-            'text': 'February'
+            text: 'February'
           },
           {
-            'text': '£165',
-            'format': 'numeric'
+            text: '£165',
+            format: 'numeric'
           }
         ]
       ]
@@ -287,24 +288,24 @@ describe('Table', () => {
 
   it('renders cell `colspan` attribute correctly', () => {
     const $ = render('table', {
-      'rows': [
+      rows: [
         [
           {
-            'text': 'January'
+            text: 'January'
           },
           {
-            'text': '£85',
-            'format': 'numeric',
-            'colspan': 2
+            text: '£85',
+            format: 'numeric',
+            colspan: 2
           }
         ],
         [
           {
-            'text': 'February'
+            text: 'February'
           },
           {
-            'text': '£165',
-            'format': 'numeric'
+            text: '£165',
+            format: 'numeric'
           }
         ]
       ]
@@ -317,24 +318,24 @@ describe('Table', () => {
 
   it('renders cell `rowspan` attribute correctly', () => {
     const $ = render('table', {
-      'rows': [
+      rows: [
         [
           {
-            'text': 'January'
+            text: 'January'
           },
           {
-            'text': '£85',
-            'format': 'numeric',
-            'rowspan': 2
+            text: '£85',
+            format: 'numeric',
+            rowspan: 2
           }
         ],
         [
           {
-            'text': 'February'
+            text: 'February'
           },
           {
-            'text': '£165',
-            'format': 'numeric'
+            text: '£165',
+            format: 'numeric'
           }
         ]
       ]
@@ -347,27 +348,27 @@ describe('Table', () => {
 
   it('renders with attributes', () => {
     const $ = render('table', {
-      'attributes': {
+      attributes: {
         'attribute-1': 'yes',
         'attribute-2': 'no'
       },
-      'rows': [
+      rows: [
         [
           {
-            'text': 'January'
+            text: 'January'
           },
           {
-            'text': '£85',
-            'format': 'numeric'
+            text: '£85',
+            format: 'numeric'
           }
         ],
         [
           {
-            'text': 'February'
+            text: 'February'
           },
           {
-            'text': '£165',
-            'format': 'numeric'
+            text: '£165',
+            format: 'numeric'
           }
         ]
       ]
@@ -377,5 +378,139 @@ describe('Table', () => {
 
     expect($component.attr('attribute-1')).toEqual('yes')
     expect($component.attr('attribute-2')).toEqual('no')
+  })
+
+  describe('with keyword arguments', () => {
+    it('allows table params to be passed as keyword arguments', () => {
+      const $ = renderMacro('table', null, {
+        caption: 'caption text',
+        captionClasses: 'captionClass',
+        head: [
+          {
+            text: 'head text'
+          }
+        ],
+        rows: [
+          [
+            {
+              text: 'row text'
+            }
+          ]
+        ],
+        classes: 'extraClasses',
+        attributes: {
+          'data-test': 'attribute'
+        }
+      })
+
+      const $component = $('.govuk-table')
+      expect($component.attr('data-test')).toEqual('attribute')
+      expect($component.attr('class')).toContain('extraClasses')
+
+      const $caption = $('.govuk-table__caption')
+      expect($caption.html()).toContain('caption text')
+      expect($caption.attr('class')).toContain('captionClass')
+
+      const $head = $('.govuk-table__header')
+      expect($head.html()).toContain('head text')
+
+      const $rows = $('.govuk-table__cell')
+      expect($rows.html()).toContain('row text')
+    })
+
+    it('uses caption keyword argument before params.caption', () => {
+      const $ = renderMacro('table', {
+        caption: 'params caption'
+      }, {
+        caption: 'keyword caption'
+      })
+
+      const $component = $('.govuk-table__caption')
+      expect($component.html()).toContain('keyword caption')
+    })
+
+    it('uses captionClass keyword argument before params.caption', () => {
+      const $ = renderMacro('table', {
+        caption: 'params caption',
+        captionClasses: 'paramsClass'
+      }, {
+        captionClasses: 'keywordClass'
+      })
+
+      const $component = $('.govuk-table__caption')
+      expect($component.attr('class')).toContain('keywordClass')
+    })
+
+    it('uses head keyword argument before params.head', () => {
+      const $ = renderMacro('table', {
+        head: [{
+          text: 'params text'
+        }]
+      }, {
+        head: [{
+          text: 'keyword text'
+        }]
+      })
+
+      const $head = $('.govuk-table__header')
+      expect($head.html()).toContain('keyword text')
+    })
+
+    it('uses rows keyword argument before params.rows', () => {
+      const $ = renderMacro('table', {
+        rows: [[{
+          text: 'params text'
+        }]]
+      }, {
+        rows: [[{
+          text: 'keyword text'
+        }]]
+      })
+
+      const $head = $('.govuk-table__cell')
+      expect($head.html()).toContain('keyword text')
+    })
+
+    it('uses classes keyword argument before before params.classes', () => {
+      const $ = renderMacro('table', {
+        text: 'params text',
+        classes: 'paramsClass'
+      }, {
+        classes: 'keywordClass'
+      })
+      const $component = $('.govuk-table')
+      expect($component.attr('class')).toContain('keywordClass')
+    })
+
+    it('uses attributes keyword argument before before params.attributes', () => {
+      const $ = renderMacro('table', {
+        text: 'params text',
+        attributes: {
+          'data-test': 'paramsAttribute'
+        }
+      }, {
+        attributes: {
+          'data-test': 'keywordAttribute'
+        }
+      })
+      const $component = $('.govuk-table')
+      expect($component.attr('data-test')).toEqual('keywordAttribute')
+    })
+  })
+
+  describe('when using deprecated features', () => {
+    it('warns when using params.items[]html', () => {
+      const $ = renderMacro('table', {
+        head: [{
+          html: '<b>head text</b>'
+        }],
+        rows: [[{
+          html: '<b>rows text</b>'
+        }]]
+      })
+
+      expect($.html()).toContain('<strong class="deprecated">params.head[]html is deprecated in govukTable</strong>')
+      expect($.html()).toContain('<strong class="deprecated">params.rows[][]html is deprecated in govukTable</strong>')
+    })
   })
 })

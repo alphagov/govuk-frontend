@@ -108,7 +108,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">classes</th>
+<td class="govuk-table__cell">classes</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -120,7 +120,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">text</th>
+<td class="govuk-table__cell">text</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -132,19 +132,19 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">html</th>
+<td class="govuk-table__cell">safe</td>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell ">boolean</td>
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">HTML to use within the label. If this is provided, the text argument will be ignored.</td>
+<td class="govuk-table__cell ">Whether text argument can be considered safe. If not safe, it will be escaped.</td>
 
 </tr>
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">for</th>
+<td class="govuk-table__cell">for</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -156,7 +156,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">isPageHeading</th>
+<td class="govuk-table__cell">isPageHeading</td>
 
 <td class="govuk-table__cell ">boolean</td>
 
@@ -168,7 +168,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">attributes</th>
+<td class="govuk-table__cell">attributes</td>
 
 <td class="govuk-table__cell ">object</td>
 

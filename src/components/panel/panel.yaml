@@ -1,5 +1,10 @@
 examples:
 - name: default
   data:
-    titleText: Application complete
+    title:
+      text: Application complete
+    text: 'Your reference number: HDJ2123F'
+- name: simpleTitle
+  data:
+    title: Application complete
     text: 'Your reference number: HDJ2123F'

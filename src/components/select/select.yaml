@@ -4,7 +4,8 @@ examples:
     id: select-1
     name: select-1
     label:
-      html: Label text goes here
+      text: Label text goes here
+      safe: true
     items:
       -
         value: 1
@@ -42,7 +43,8 @@ examples:
     id: select-3
     name: select-3
     label:
-      html: Label text goes here
+      text: Label text goes here
+      safe: true
       isPageHeading: true
     items:
       -

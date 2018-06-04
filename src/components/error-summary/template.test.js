@@ -2,7 +2,7 @@
 
 const { axe } = require('jest-axe')
 
-const { render, getExamples } = require('../../../lib/jest-helpers')
+const { render, renderMacro, getExamples } = require('../../../lib/jest-helpers')
 
 const examples = getExamples('error-summary')
 
@@ -44,7 +44,9 @@ describe('Error-summary', () => {
 
   it('allows title text to be passed whilst escaping HTML entities', () => {
     const $ = render('error-summary', {
-      titleText: 'Alert, <em>alert</em>'
+      title: {
+        text: 'Alert, <em>alert</em>'
+      }
     })
 
     const summaryTitle = $('.govuk-error-summary__title').html().trim()
@@ -53,7 +55,10 @@ describe('Error-summary', () => {
 
   it('allows title HTML to be passed un-escaped', () => {
     const $ = render('error-summary', {
-      titleHtml: 'Alert, <em>alert</em>'
+      title: {
+        text: 'Alert, <em>alert</em>',
+        safe: true
+      }
     })
 
     const summaryTitle = $('.govuk-error-summary__title').html().trim()
@@ -69,7 +74,9 @@ describe('Error-summary', () => {
 
   it('allows description text to be passed whilst escaping HTML entities', () => {
     const $ = render('error-summary', {
-      descriptionText: 'See errors below (▼)'
+      description: {
+        text: 'See errors below (▼)'
+      }
     })
 
     const summaryDescription = $('.govuk-error-summary__body p').html().trim()
@@ -78,7 +85,10 @@ describe('Error-summary', () => {
 
   it('allows description HTML to be passed un-escaped', () => {
     const $ = render('error-summary', {
-      descriptionHtml: 'See <span>errors</span> below'
+      description: {
+        text: 'See <span>errors</span> below',
+        safe: true
+      }
     })
 
     const summaryDescription = $('.govuk-error-summary__body p').html().trim()
@@ -137,9 +147,10 @@ describe('Error-summary', () => {
 
   it('allows error item HTML to be passed un-escaped', () => {
     const $ = render('error-summary', {
-      'errorList': [
+      errorList: [
         {
-          'html': 'Descriptive link to the <b>question</b> with an error'
+          text: 'Descriptive link to the <b>question</b> with an error',
+          safe: true
         }
       ]
     })
@@ -151,9 +162,9 @@ describe('Error-summary', () => {
 
   it('allows error item text to be passed whilst escaping HTML entities', () => {
     const $ = render('error-summary', {
-      'errorList': [
+      errorList: [
         {
-          'text': 'Descriptive link to the <b>question</b> with an error'
+          text: 'Descriptive link to the <b>question</b> with an error'
         }
       ]
     })
@@ -165,10 +176,11 @@ describe('Error-summary', () => {
 
   it('allows error item HTML inside "a" tag to be passed un-escaped', () => {
     const $ = render('error-summary', {
-      'errorList': [
+      errorList: [
         {
-          'html': 'Descriptive link to the <b>question</b> with an error',
-          'href': '#error-1'
+          text: 'Descriptive link to the <b>question</b> with an error',
+          safe: true,
+          href: '#error-1'
         }
       ]
     })
@@ -180,10 +192,10 @@ describe('Error-summary', () => {
 
   it('allows error item text inside "a" tag to be passed whilst escaping HTML entities', () => {
     const $ = render('error-summary', {
-      'errorList': [
+      errorList: [
         {
-          'text': 'Descriptive link to the <b>question</b> with an error',
-          'href': '#error-1'
+          text: 'Descriptive link to the <b>question</b> with an error',
+          href: '#error-1'
         }
       ]
     })
@@ -191,5 +203,139 @@ describe('Error-summary', () => {
     const errorItemText = $('.govuk-error-summary .govuk-error-summary__list li a').html().trim()
 
     expect(errorItemText).toEqual('Descriptive link to the &lt;b&gt;question&lt;/b&gt; with an error')
+  })
+
+  it('allows title and description to be passed as strings', () => {
+    const $ = render('error-summary', examples.strings)
+
+    const summaryTitle = $('.govuk-error-summary__title').text().trim()
+    expect(summaryTitle).toEqual('Message to alert the user to a problem goes here')
+
+    const summaryDescription = $('.govuk-error-summary__body p').text().trim()
+    expect(summaryDescription).toEqual('Optional description of the errors and how to correct them')
+  })
+
+  describe('with keyword arguments', () => {
+    it('allows error-summary params to be passed as keyword arguments', () => {
+      const $ = renderMacro('error-summary', null, {
+        title: {
+          text: '<b>title text</b>',
+          safe: true
+        },
+        description: {
+          text: '<b>description text</b>',
+          safe: true
+        },
+        errorList: [
+          {
+            text: 'error text'
+          }
+        ],
+        classes: 'extraClasses',
+        attributes: {
+          'data-test': 'attribute'
+        }
+      })
+
+      const $component = $('.govuk-error-summary')
+      expect($component.attr('data-test')).toEqual('attribute')
+      expect($component.attr('class')).toContain('extraClasses')
+
+      expect($('.govuk-error-summary__title').html()).toContain('<b>title text</b>')
+      expect($('.govuk-error-summary__body').html()).toContain('<b>description text</b>')
+
+      expect($('.govuk-error-summary__list li').html()).toContain('error text')
+    })
+
+    it('uses title keyword argument before params.title', () => {
+      const $ = renderMacro('error-summary', {
+        title: {
+          text: 'params text'
+        }
+      }, {
+        title: {
+          text: 'keyword text'
+        }
+      })
+
+      const $title = $('.govuk-error-summary__title')
+      expect($title.html()).toContain('keyword text')
+    })
+
+    it('uses description keyword argument before params.description', () => {
+      const $ = renderMacro('error-summary', {
+        description: {
+          text: 'params text'
+        }
+      }, {
+        description: {
+          text: 'keyword text'
+        }
+      })
+
+      const $title = $('.govuk-error-summary__body')
+      expect($title.html()).toContain('keyword text')
+    })
+
+    it('uses errorList keyword argument before params.errorList', () => {
+      const $ = renderMacro('error-summary', {
+        errorList: [
+          {
+            text: 'params text'
+          }
+        ]
+      }, {
+        errorList: [
+          {
+            text: 'keyword text'
+          }
+        ]
+      })
+
+      const $component = $('.govuk-error-summary__list li')
+      expect($component.html()).toContain('keyword text')
+    })
+
+    it('uses classes keyword argument before before params.classes', () => {
+      const $ = renderMacro('error-summary', {
+        text: 'params text',
+        classes: 'paramsClass'
+      }, {
+        classes: 'keywordClass'
+      })
+      const $component = $('.govuk-error-summary')
+      expect($component.attr('class')).toContain('keywordClass')
+    })
+
+    it('uses attributes keyword argument before before params.attributes', () => {
+      const $ = renderMacro('error-summary', {
+        text: 'params text',
+        attributes: {
+          'data-test': 'paramsAttribute'
+        }
+      }, {
+        attributes: {
+          'data-test': 'keywordAttribute'
+        }
+      })
+      const $component = $('.govuk-error-summary')
+      expect($component.attr('data-test')).toEqual('keywordAttribute')
+    })
+  })
+
+  describe('when using deprecated features', () => {
+    it('warns when using params.html', () => {
+      const $ = renderMacro('error-summary', {
+        titleText: 'title text',
+        titleHTML: '<b>title html</b>',
+        descriptionText: 'description text',
+        descriptionHTML: '<b>description html</b>'
+      })
+
+      expect($.html()).toContain('<strong class="deprecated">params.titleText is deprecated in govukErrorSummary</strong>')
+      expect($.html()).toContain('<strong class="deprecated">params.titleHTML is deprecated in govukErrorSummary</strong>')
+      expect($.html()).toContain('<strong class="deprecated">params.descriptionText is deprecated in govukErrorSummary</strong>')
+      expect($.html()).toContain('<strong class="deprecated">params.descriptionHTML is deprecated in govukErrorSummary</strong>')
+    })
   })
 })

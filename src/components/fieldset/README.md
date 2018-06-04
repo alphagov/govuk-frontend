@@ -16,7 +16,8 @@ Find out when to use the Fieldset component in your service in the [GOV.UK Desig
 
 #### Markup
 
-    <fieldset class="govuk-fieldset">
+    <fieldset class="govuk-fieldset"
+      >
 
       <legend class="govuk-fieldset__legend">
         What is your address?
@@ -29,9 +30,7 @@ Find out when to use the Fieldset component in your service in the [GOV.UK Desig
     {% from 'fieldset/macro.njk' import govukFieldset %}
 
     {{ govukFieldset({
-      "legend": {
-        "text": "What is your address?"
-      }
+      "legend": "What is your address?"
     }) }}
 
 ### Fieldset--as page heading
@@ -40,7 +39,8 @@ Find out when to use the Fieldset component in your service in the [GOV.UK Desig
 
 #### Markup
 
-    <fieldset class="govuk-fieldset">
+    <fieldset class="govuk-fieldset"
+      >
 
       <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
         <h1 class="govuk-fieldset__heading">
@@ -104,7 +104,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">classes</th>
+<td class="govuk-table__cell">classes</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -116,19 +116,19 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">legend</th>
+<td class="govuk-table__cell">legend</td>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell ">object or string</td>
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Arguments for the legend</td>
+<td class="govuk-table__cell ">Arguments for the legend. If passed as a string, legend.text will use that value.</td>
 
 </tr>
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">legend.text</th>
+<td class="govuk-table__cell">legend.text</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -140,19 +140,19 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">legend.html</th>
+<td class="govuk-table__cell">legend.safe</td>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell ">boolean</td>
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Legend text</td>
+<td class="govuk-table__cell ">Whether legend text can be considered safe. If not safe, it will be escaped.</td>
 
 </tr>
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">legend.isPageHeading</th>
+<td class="govuk-table__cell">legend.isPageHeading</td>
 
 <td class="govuk-table__cell ">boolean</td>
 
@@ -164,7 +164,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">attributes</th>
+<td class="govuk-table__cell">attributes</td>
 
 <td class="govuk-table__cell ">object</td>
 

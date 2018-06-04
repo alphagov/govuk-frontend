@@ -32,7 +32,35 @@ Find out when to use the Panel component in your service in the [GOV.UK Design S
     {% from 'panel/macro.njk' import govukPanel %}
 
     {{ govukPanel({
-      "titleText": "Application complete",
+      "title": {
+        "text": "Application complete"
+      },
+      "text": "Your reference number: HDJ2123F"
+    }) }}
+
+### Panel--simpletitle
+
+[Preview the panel--simpleTitle example](http://govuk-frontend-review.herokuapp.com/components/panel/simpleTitle/preview)
+
+#### Markup
+
+    <div class="govuk-panel govuk-panel--confirmation">
+      <h2 class="govuk-panel__title">
+        Application complete
+      </h2>
+
+      <div class="govuk-panel__body">
+        Your reference number: HDJ2123F
+      </div>
+
+    </div>
+
+#### Macro
+
+    {% from 'panel/macro.njk' import govukPanel %}
+
+    {{ govukPanel({
+      "title": "Application complete",
       "text": "Your reference number: HDJ2123F"
     }) }}
 
@@ -78,7 +106,19 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">titleText</th>
+<td class="govuk-table__cell">title</td>
+
+<td class="govuk-table__cell ">object</td>
+
+<td class="govuk-table__cell ">Yes</td>
+
+<td class="govuk-table__cell ">If passed as a string, title.text will use that value.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<td class="govuk-table__cell">title.text</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -90,19 +130,19 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">titleHtml</th>
+<td class="govuk-table__cell">title.safe</td>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell ">boolean</td>
 
-<td class="govuk-table__cell ">Yes</td>
+<td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">HTML for the panel title. If this is provided, the titleText argument is ignored.</td>
+<td class="govuk-table__cell ">Whether title text can be considered safe. If not safe, it will be escaped.</td>
 
 </tr>
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">text</th>
+<td class="govuk-table__cell">text</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -114,19 +154,19 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">html</th>
+<td class="govuk-table__cell">safe</td>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell ">boolean</td>
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">HTML for the panel content. If this is provided, the text argument is ignored.</td>
+<td class="govuk-table__cell ">Whether text argument can be considered safe. If not safe, it will be escaped.</td>
 
 </tr>
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">classes</th>
+<td class="govuk-table__cell">classes</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -138,7 +178,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">attributes</th>
+<td class="govuk-table__cell">attributes</td>
 
 <td class="govuk-table__cell ">object</td>
 

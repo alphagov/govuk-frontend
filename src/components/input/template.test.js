@@ -2,7 +2,7 @@
 
 const { axe } = require('jest-axe')
 
-const { render, getExamples, htmlWithClassName } = require('../../../lib/jest-helpers')
+const { render, renderMacro, getExamples, htmlWithClassName } = require('../../../lib/jest-helpers')
 
 const examples = getExamples('input')
 
@@ -215,6 +215,166 @@ describe('Input', () => {
 
       const $label = $('.govuk-label')
       expect($label.attr('for')).toEqual('my-input')
+    })
+  })
+
+  describe('with keyword arguments', () => {
+    it('allows input params to be passed as keyword arguments', () => {
+      const $ = renderMacro('input', null, {
+        id: 'id',
+        name: 'name',
+        label: {
+          text: 'label text'
+        },
+        hint: {
+          text: 'hint text'
+        },
+        type: 'password',
+        value: 'input value',
+        errorMessage: {
+          text: 'error text'
+        },
+        classes: 'extraClasses',
+        attributes: {
+          'data-test': 'attribute'
+        }
+      })
+
+      const $component = $('.govuk-input')
+      expect($component.attr('id')).toEqual('id')
+      expect($component.attr('name')).toEqual('name')
+      expect($component.attr('type')).toEqual('password')
+      expect($component.attr('value')).toEqual('input value')
+      expect($component.attr('data-test')).toEqual('attribute')
+      expect($component.attr('class')).toContain('extraClasses')
+      expect($component.attr('class')).toContain('govuk-input--error')
+
+      const $label = $('.govuk-label')
+      expect($label.html()).toContain('label text')
+
+      const $hint = $('.govuk-hint')
+      expect($hint.html()).toContain('hint text')
+
+      const $error = $('.govuk-error-message')
+      expect($error.html()).toContain('error text')
+
+      const $group = $('.govuk-form-group')
+      expect($group.attr('class')).toContain('govuk-form-group--error')
+    })
+
+    it('uses label keyword argument before params.label', () => {
+      const $ = renderMacro('input', {
+        label: {
+          text: 'params text'
+        }
+      }, {
+        label: {
+          text: 'keyword text'
+        }
+      })
+
+      const $label = $('.govuk-label')
+      expect($label.html()).toContain('keyword text')
+    })
+
+    it('uses hint keyword argument before params.hint', () => {
+      const $ = renderMacro('input', {
+        hint: {
+          text: 'params text'
+        }
+      }, {
+        hint: {
+          text: 'keyword text'
+        }
+      })
+
+      const $hint = $('.govuk-hint')
+      expect($hint.html()).toContain('keyword text')
+    })
+
+    it('uses error keyword argument before params.error', () => {
+      const $ = renderMacro('input', {
+        errorMessage: {
+          text: 'params text'
+        }
+      }, {
+        errorMessage: {
+          text: 'keyword text'
+        }
+      })
+
+      const $error = $('.govuk-error-message')
+      expect($error.html()).toContain('keyword text')
+    })
+
+    it('uses id keyword argument before params.id', () => {
+      const $ = renderMacro('input', {
+        id: 'paramsId'
+      }, {
+        id: 'keywordId'
+      })
+
+      const $component = $('.govuk-input')
+      expect($component.attr('id')).toContain('keywordId')
+    })
+
+    it('uses name keyword argument before params.name', () => {
+      const $ = renderMacro('input', {
+        name: 'paramsName'
+      }, {
+        name: 'keywordName'
+      })
+
+      const $component = $('.govuk-input')
+      expect($component.attr('name')).toContain('keywordName')
+    })
+
+    it('uses type keyword argument before params.type', () => {
+      const $ = renderMacro('input', {
+        type: 'password'
+      }, {
+        type: 'number'
+      })
+
+      const $component = $('.govuk-input')
+      expect($component.attr('type')).toEqual('number')
+    })
+
+    it('uses value keyword argument before params.value', () => {
+      const $ = renderMacro('input', {
+        value: 'params value'
+      }, {
+        value: 'keyword value'
+      })
+
+      const $component = $('.govuk-input')
+      expect($component.attr('value')).toEqual('keyword value')
+    })
+
+    it('uses classes keyword argument before before params.classes', () => {
+      const $ = renderMacro('input', {
+        text: 'params text',
+        classes: 'paramsClass'
+      }, {
+        classes: 'keywordClass'
+      })
+      const $component = $('.govuk-input')
+      expect($component.attr('class')).toContain('keywordClass')
+    })
+
+    it('uses attributes keyword argument before before params.attributes', () => {
+      const $ = renderMacro('input', {
+        text: 'params text',
+        attributes: {
+          'data-test': 'paramsAttribute'
+        }
+      }, {
+        attributes: {
+          'data-test': 'keywordAttribute'
+        }
+      })
+      const $component = $('.govuk-input')
+      expect($component.attr('data-test')).toEqual('keywordAttribute')
     })
   })
 })

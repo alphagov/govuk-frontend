@@ -4,13 +4,28 @@ accessibilityCriteria: |
 examples:
   - name: default
     data:
-      titleText: Message to alert the user to a problem goes here
-      descriptionText: Optional description of the errors and how to correct them
+      title:
+        text: Message to alert the user to a problem goes here
+      description:
+        text: Optional description of the errors and how to correct them
       classes: optional-extra-class
       errorList:
         -
           text: Descriptive link to the question with an error
           href: '#example-error-1'
         -
-          html: Descriptive link to the question with an error
+          text: Descriptive link to the question with an error
+          safe: true
+          href: '#example-error-1'
+  - name: strings
+    data:
+      title: Message to alert the user to a problem goes here
+      description: Optional description of the errors and how to correct them
+      errorList:
+        -
+          text: Descriptive link to the question with an error
+          href: '#example-error-1'
+        -
+          text: Descriptive link to the question with an error
+          safe: true
           href: '#example-error-1'

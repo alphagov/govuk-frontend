@@ -2,7 +2,7 @@
 
 const { axe } = require('jest-axe')
 
-const { render, getExamples } = require('../../../lib/jest-helpers')
+const { render, renderMacro, getExamples } = require('../../../lib/jest-helpers')
 
 const examples = getExamples('warning-text')
 
@@ -72,7 +72,8 @@ describe('Warning text', () => {
 
   it('renders html', () => {
     const $ = render('warning-text', {
-      html: '<span>Some custom warning text</span>'
+      text: '<span>Some custom warning text</span>',
+      safe: true
     })
 
     const $component = $('.govuk-warning-text')
@@ -90,5 +91,111 @@ describe('Warning text', () => {
     const $component = $('.govuk-warning-text')
     expect($component.attr('data-test')).toEqual('attribute')
     expect($component.attr('id')).toEqual('my-warning-text')
+  })
+
+  describe('with keyword arguments', () => {
+    it('allows warning to be passed as string', () => {
+      const $ = renderMacro('warning-text', 'text as string')
+
+      const $component = $('.govuk-warning-text__text')
+      expect($component.text()).toContain('text as string')
+    })
+
+    it('allows warning params to be passed as keyword arguments', () => {
+      const $ = renderMacro('warning-text', null, {
+        text: '<span>Hello</span>',
+        safe: true,
+        classes: 'extraClasses',
+        attributes: {
+          'data-test': 'attribute'
+        },
+        iconFallbackText: 'fallback text'
+      })
+
+      const $component = $('.govuk-warning-text')
+      expect($component.html()).toContain('<span>Hello</span>')
+      expect($component.attr('data-test')).toEqual('attribute')
+      expect($component.attr('class')).toContain('extraClasses')
+      expect($component.html()).toContain('fallback text')
+    })
+
+    it('uses text keyword argument before params as string', () => {
+      const $ = renderMacro('warning-text', 'text as string', {
+        text: 'args text'
+      })
+
+      const $component = $('.govuk-warning-text')
+      expect($component.text()).toContain('args text')
+    })
+
+    it('uses text keyword argument before params.text', () => {
+      const $ = renderMacro('warning-text', {
+        text: 'text as object'
+      }, {
+        text: 'args text'
+      })
+
+      const $component = $('.govuk-warning-text')
+      expect($component.text()).toContain('args text')
+    })
+
+    it('uses safe keyword argument before before params.safe', () => {
+      const $ = renderMacro('warning-text', {
+        text: '<b>text as object</b>',
+        safe: true
+      }, {
+        safe: false
+      })
+
+      const $component = $('.govuk-warning-text')
+      expect($component.html()).toContain('&lt;b&gt;text as object&lt;/b&gt;')
+    })
+
+    it('uses classes keyword argument before before params.classes', () => {
+      const $ = renderMacro('warning-text', {
+        text: 'params text',
+        classes: 'paramsClass'
+      }, {
+        classes: 'keywordClass'
+      })
+      const $component = $('.govuk-warning-text')
+      expect($component.attr('class')).toContain('keywordClass')
+    })
+
+    it('uses attributes keyword argument before before params.attributes', () => {
+      const $ = renderMacro('warning-text', {
+        text: 'params text',
+        attributes: {
+          'data-test': 'paramsAttribute'
+        }
+      }, {
+        attributes: {
+          'data-test': 'keywordAttribute'
+        }
+      })
+      const $component = $('.govuk-warning-text')
+      expect($component.attr('data-test')).toEqual('keywordAttribute')
+    })
+
+    it('uses iconFallbackText keyword argument before before params.iconFallbackText', () => {
+      const $ = renderMacro('warning-text', {
+        text: 'params text',
+        iconFallbackText: 'paramsIconText'
+      }, {
+        iconFallbackText: 'keywordIconText'
+      })
+      const $component = $('.govuk-warning-text__assistive')
+      expect($component.text()).toContain('keywordIconText')
+    })
+  })
+
+  describe('when using deprecated features', () => {
+    it('warns when using params.html', () => {
+      const $ = renderMacro('warning-text', {
+        html: '<b>params text</b>'
+      })
+
+      expect($.html()).toContain('<strong class="deprecated">params.html is deprecated in govukWarningText</strong>')
+    })
   })
 })

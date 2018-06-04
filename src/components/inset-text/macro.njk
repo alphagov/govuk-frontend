@@ -1,3 +1,25 @@
-{% macro govukInsetText(params) %}
+{% macro govukInsetText(
+  params,
+  text,
+  safe,
+  id,
+  classes,
+  attributes
+) %}
+  {% if params.html and not hideDeprecated %}
+    <strong class="deprecated">params.html is deprecated in govukInsetText</strong>
+  {% endif %}
+  {% if text === undefined %}{% set text = params.text if params.text else params %}{% endif %}
+  {% if safe === undefined %}{% set safe = params.safe %}{% endif %}
+  {% set id = id if id else params.id %}
+  {% set classes = classes if classes else params.classes %}
+  {% set attributes = attributes if attributes else params.attributes %}
+  {% set params = {
+    text: text,
+    safe: safe,
+    id: id,
+    classes: classes,
+    attributes: attributes
+  } %}
   {%- include './template.njk' -%}
 {% endmacro %}

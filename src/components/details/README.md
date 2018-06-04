@@ -32,7 +32,9 @@ Find out when to use the Details component in your service in the [GOV.UK Design
     {% from 'details/macro.njk' import govukDetails %}
 
     {{ govukDetails({
-      "summaryText": "Help with nationality",
+      "summary": {
+        "text": "Help with nationality"
+      },
       "text": "We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post."
     }) }}
 
@@ -59,7 +61,9 @@ Find out when to use the Details component in your service in the [GOV.UK Design
 
     {{ govukDetails({
       "id": "help-with-nationality",
-      "summaryText": "Help with nationality",
+      "summary": {
+        "text": "Help with nationality"
+      },
       "text": "We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post.",
       "open": true
     }) }}
@@ -94,8 +98,37 @@ Find out when to use the Details component in your service in the [GOV.UK Design
     {% from 'details/macro.njk' import govukDetails %}
 
     {{ govukDetails({
-      "summaryText": "Where to find your National Insurance Number",
-      "html": "Your National Insurance number can be found on\n<ul>\n  <li>your National Insurance card</li>\n  <li>your payslip</li>\n  <li>P60</li>\n  <li>benefits information</li>\n  <li>tax return</li>\n</ul>\n"
+      "summary": {
+        "text": "Where to find your National Insurance Number"
+      },
+      "text": "Your National Insurance number can be found on\n<ul>\n  <li>your National Insurance card</li>\n  <li>your payslip</li>\n  <li>P60</li>\n  <li>benefits information</li>\n  <li>tax return</li>\n</ul>\n",
+      "safe": true
+    }) }}
+
+### Details--simplesummary
+
+[Preview the details--simpleSummary example](http://govuk-frontend-review.herokuapp.com/components/details/simpleSummary/preview)
+
+#### Markup
+
+    <details class="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          Help with nationality
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post.
+      </div>
+    </details>
+
+#### Macro
+
+    {% from 'details/macro.njk' import govukDetails %}
+
+    {{ govukDetails({
+      "summary": "Help with nationality",
+      "text": "We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post."
     }) }}
 
 ## Requirements
@@ -140,31 +173,43 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">summaryText</th>
+<td class="govuk-table__cell">summary</td>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell ">object or string</td>
 
 <td class="govuk-table__cell ">Yes</td>
 
-<td class="govuk-table__cell ">Text to use within the summary element (the visible part of the details element)</td>
+<td class="govuk-table__cell ">If passed as a string, title.text will use that value.</td>
 
 </tr>
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">summaryHtml</th>
+<td class="govuk-table__cell">summary.text</td>
 
 <td class="govuk-table__cell ">string</td>
 
 <td class="govuk-table__cell ">Yes</td>
 
-<td class="govuk-table__cell ">HTML to use within the summary element (the visible part of the details element). If this is provided, the summaryText argument will be ignored.</td>
+<td class="govuk-table__cell ">Text to use within the summary element (the visible part of the details element).</td>
 
 </tr>
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">text</th>
+<td class="govuk-table__cell">summary.safe</td>
+
+<td class="govuk-table__cell ">boolean</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Whether summary.text argument can be considered safe. If not safe, it will be escaped.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<td class="govuk-table__cell">text</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -176,19 +221,19 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">html</th>
+<td class="govuk-table__cell">safe</td>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell ">boolean</td>
 
-<td class="govuk-table__cell ">Yes</td>
+<td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">HTML to use within the disclosed part of the details element. If this is provided, the text argument will be ignored.</td>
+<td class="govuk-table__cell ">Whether text argument can be considered safe. If not safe, it will be escaped</td>
 
 </tr>
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">id</th>
+<td class="govuk-table__cell">id</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -200,7 +245,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">classes</th>
+<td class="govuk-table__cell">classes</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -212,7 +257,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">open</th>
+<td class="govuk-table__cell">open</td>
 
 <td class="govuk-table__cell ">boolean</td>
 
@@ -224,7 +269,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">attributes</th>
+<td class="govuk-table__cell">attributes</td>
 
 <td class="govuk-table__cell ">object</td>
 

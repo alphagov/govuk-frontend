@@ -1,3 +1,34 @@
-{% macro govukErrorSummary(params) %}
+{% macro govukErrorSummary(
+  params,
+  title,
+  description,
+  errorList,
+  classes,
+  attributes
+) %}
+  {% if params.titleText and not hideDeprecated %}
+    <strong class="deprecated">params.titleText is deprecated in govukErrorSummary</strong>
+  {% endif %}
+  {% if params.titleHTML and not hideDeprecated %}
+    <strong class="deprecated">params.titleHTML is deprecated in govukErrorSummary</strong>
+  {% endif %}
+  {% if params.descriptionText and not hideDeprecated %}
+    <strong class="deprecated">params.descriptionText is deprecated in govukErrorSummary</strong>
+  {% endif %}
+  {% if params.descriptionHTML and not hideDeprecated %}
+    <strong class="deprecated">params.descriptionHTML is deprecated in govukErrorSummary</strong>
+  {% endif %}
+  {% set title = title if title else params.title %}
+  {% set description = description if description else params.description %}
+  {% set errorList = errorList if errorList else params.errorList %}
+  {% set classes = classes if classes else params.classes %}
+  {% set attributes = attributes if attributes else params.attributes %}
+  {% set params = {
+    title: title,
+    description: description,
+    errorList: errorList,
+    classes: classes,
+    attributes: attributes
+  } %}
   {%- include "./template.njk" -%}
 {% endmacro %}

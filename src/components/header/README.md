@@ -255,7 +255,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">classes</th>
+<td class="govuk-table__cell">classes</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -267,7 +267,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">containerClasses</th>
+<td class="govuk-table__cell">containerClasses</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -279,7 +279,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">attributes</th>
+<td class="govuk-table__cell">attributes</td>
 
 <td class="govuk-table__cell ">object</td>
 
@@ -291,7 +291,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">homepageUrl</th>
+<td class="govuk-table__cell">homepageUrl</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -303,7 +303,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">assetsPath</th>
+<td class="govuk-table__cell">assetsPath</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -315,7 +315,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">title</th>
+<td class="govuk-table__cell">title</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -327,7 +327,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">serviceName</th>
+<td class="govuk-table__cell">serviceName</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -339,7 +339,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">navigation</th>
+<td class="govuk-table__cell">navigation</td>
 
 <td class="govuk-table__cell ">array</td>
 
@@ -351,7 +351,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">navigationClasses</th>
+<td class="govuk-table__cell">navigationClasses</td>
 
 <td class="govuk-table__cell ">string</td>
 

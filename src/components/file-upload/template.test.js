@@ -2,7 +2,7 @@
 
 const { axe } = require('jest-axe')
 
-const { render, getExamples, htmlWithClassName } = require('../../../lib/jest-helpers')
+const { render, renderMacro, getExamples, htmlWithClassName } = require('../../../lib/jest-helpers')
 
 const examples = getExamples('file-upload')
 
@@ -199,6 +199,153 @@ describe('File upload', () => {
 
       const $label = $('.govuk-label')
       expect($label.attr('for')).toEqual('my-file-upload')
+    })
+  })
+
+  describe('with keyword arguments', () => {
+    it('allows file-upload params to be passed as keyword arguments', () => {
+      const $ = renderMacro('file-upload', null, {
+        id: 'id',
+        name: 'name',
+        label: {
+          text: 'label text'
+        },
+        hint: {
+          text: 'hint text'
+        },
+        value: 'file-upload value',
+        errorMessage: {
+          text: 'error text'
+        },
+        classes: 'extraClasses',
+        attributes: {
+          'data-test': 'attribute'
+        }
+      })
+
+      const $component = $('.govuk-file-upload')
+      expect($component.attr('id')).toEqual('id')
+      expect($component.attr('name')).toEqual('name')
+      expect($component.attr('value')).toEqual('file-upload value')
+      expect($component.attr('data-test')).toEqual('attribute')
+      expect($component.attr('class')).toContain('extraClasses')
+      expect($component.attr('class')).toContain('govuk-file-upload--error')
+
+      const $label = $('.govuk-label')
+      expect($label.html()).toContain('label text')
+
+      const $hint = $('.govuk-hint')
+      expect($hint.html()).toContain('hint text')
+
+      const $error = $('.govuk-error-message')
+      expect($error.html()).toContain('error text')
+
+      const $group = $('.govuk-form-group')
+      expect($group.attr('class')).toContain('govuk-form-group--error')
+    })
+
+    it('uses label keyword argument before params.label', () => {
+      const $ = renderMacro('file-upload', {
+        label: {
+          text: 'params text'
+        }
+      }, {
+        label: {
+          text: 'keyword text'
+        }
+      })
+
+      const $label = $('.govuk-label')
+      expect($label.html()).toContain('keyword text')
+    })
+
+    it('uses hint keyword argument before params.hint', () => {
+      const $ = renderMacro('file-upload', {
+        hint: {
+          text: 'params text'
+        }
+      }, {
+        hint: {
+          text: 'keyword text'
+        }
+      })
+
+      const $hint = $('.govuk-hint')
+      expect($hint.html()).toContain('keyword text')
+    })
+
+    it('uses error keyword argument before params.error', () => {
+      const $ = renderMacro('file-upload', {
+        errorMessage: {
+          text: 'params text'
+        }
+      }, {
+        errorMessage: {
+          text: 'keyword text'
+        }
+      })
+
+      const $error = $('.govuk-error-message')
+      expect($error.html()).toContain('keyword text')
+    })
+
+    it('uses id keyword argument before params.id', () => {
+      const $ = renderMacro('file-upload', {
+        id: 'paramsId'
+      }, {
+        id: 'keywordId'
+      })
+
+      const $component = $('.govuk-file-upload')
+      expect($component.attr('id')).toContain('keywordId')
+    })
+
+    it('uses name keyword argument before params.name', () => {
+      const $ = renderMacro('file-upload', {
+        name: 'paramsName'
+      }, {
+        name: 'keywordName'
+      })
+
+      const $component = $('.govuk-file-upload')
+      expect($component.attr('name')).toContain('keywordName')
+    })
+
+    it('uses value keyword argument before params.value', () => {
+      const $ = renderMacro('file-upload', {
+        value: 'params value'
+      }, {
+        value: 'keyword value'
+      })
+
+      const $component = $('.govuk-file-upload')
+      expect($component.attr('value')).toEqual('keyword value')
+    })
+
+    it('uses classes keyword argument before before params.classes', () => {
+      const $ = renderMacro('file-upload', {
+        text: 'params text',
+        classes: 'paramsClass'
+      }, {
+        classes: 'keywordClass'
+      })
+      const $component = $('.govuk-file-upload')
+      expect($component.attr('class')).toContain('keywordClass')
+    })
+
+    it('uses attributes keyword argument before before params.attributes', () => {
+      const $ = renderMacro('file-upload', {
+        text: 'params text',
+        attributes: {
+          'data-test': 'paramsAttribute'
+        }
+      }, {
+        attributes: {
+          'data-test': 'keywordAttribute'
+        }
+      })
+      const $component = $('.govuk-file-upload')
+      expect($component.attr('data-test')).toEqual('keywordAttribute')
     })
   })
 })

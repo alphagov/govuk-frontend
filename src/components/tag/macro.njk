@@ -1,3 +1,22 @@
-{% macro govukTag(params) %}
+{% macro govukTag(
+  params,
+  text,
+  safe,
+  classes,
+  attributes
+) %}
+  {% if params.html and not hideDeprecated %}
+    <strong class="deprecated">params.html is deprecated in govukTag</strong>
+  {% endif %}
+  {% if text === undefined %}{% set text = params.text if params.text else params %}{% endif %}
+  {% if safe === undefined %}{% set safe = params.safe %}{% endif %}
+  {% set classes = classes if classes else params.classes %}
+  {% set attributes = attributes if attributes else params.attributes %}
+  {% set params = {
+    text: text,
+    safe: safe,
+    classes: classes,
+    attributes: attributes
+  } %}
   {%- include "./template.njk" -%}
 {% endmacro %}

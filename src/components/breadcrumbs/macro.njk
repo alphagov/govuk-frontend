@@ -1,3 +1,23 @@
-{% macro govukBreadcrumbs(params) %}
+{% macro govukBreadcrumbs(
+  params,
+  items,
+  classes,
+  attributes
+) %}
+  {% if params.items and not hideDeprecated %}
+    {% for item in params.items %}
+      {% if item.html %}
+      <strong class="deprecated">params.items[]html is deprecated in govukBreadcrumbs</strong>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+  {% if items === undefined %}{% set items = params.items if params.items else params %}{% endif %}
+  {% set classes = classes if classes else params.classes %}
+  {% set attributes = attributes if attributes else params.attributes %}
+  {% set params = {
+    items: items,
+    classes: classes,
+    attributes: attributes
+  } %}
   {%- include "./template.njk" -%}
 {% endmacro %}

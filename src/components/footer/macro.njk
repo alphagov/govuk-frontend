@@ -1,3 +1,22 @@
-{% macro govukFooter(params) %}
+{% macro govukFooter(
+  params,
+  containerClasses,
+  meta,
+  navigation,
+  classes,
+  attributes
+) %}
+  {% set containerClasses = containerClasses if containerClasses else params.containerClasses %}
+  {% set meta = meta if meta else params.meta %}
+  {% set navigation = navigation if navigation else params.navigation %}
+  {% set classes = classes if classes else params.classes %}
+  {% set attributes = attributes if attributes else params.attributes %}
+  {% set params = {
+    containerClasses: containerClasses,
+    meta: meta,
+    navigation: navigation,
+    classes: classes,
+    attributes: attributes
+  } %}
   {%- include "./template.njk" -%}
 {% endmacro %}

@@ -5,5 +5,6 @@ examples:
         It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application.
   - name: with html
     data:
-      html:
+      text:
         It can take up to 8 weeks to register a <a class="govuk-link" href="#">lasting power of attorney</a> if there are no mistakes in the application.
+      safe: true

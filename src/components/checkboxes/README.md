@@ -18,7 +18,8 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
     <div class="govuk-form-group">
 
-      <fieldset class="govuk-fieldset" aria-describedby="nationality-hint">
+      <fieldset class="govuk-fieldset" aria-describedby="nationality-hint"
+      >
 
       <legend class="govuk-fieldset__legend">
         What is your nationality?
@@ -32,6 +33,7 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
         <div class="govuk-checkboxes__item">
           <input class="govuk-checkboxes__input" id="nationality-1" name="nationality" type="checkbox" value="british">
+
           <label class="govuk-label govuk-checkboxes__label" for="nationality-1">
             British
           </label>
@@ -39,6 +41,7 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
         <div class="govuk-checkboxes__item">
           <input class="govuk-checkboxes__input" id="nationality-2" name="nationality" type="checkbox" value="irish">
+
           <label class="govuk-label govuk-checkboxes__label" for="nationality-2">
             Irish
           </label>
@@ -46,6 +49,7 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
         <div class="govuk-checkboxes__item">
           <input class="govuk-checkboxes__input" id="nationality-3" name="nationality" type="checkbox" value="other">
+
           <label class="govuk-label govuk-checkboxes__label" for="nationality-3">
             Citizen of another country
           </label>
@@ -95,7 +99,8 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
     <div class="govuk-form-group">
 
-      <fieldset class="govuk-fieldset" aria-describedby="undefined-hint">
+      <fieldset class="govuk-fieldset" aria-describedby="undefined-hint"
+      >
 
       <legend class="govuk-fieldset__legend">
         What is your nationality?
@@ -109,6 +114,7 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
         <div class="govuk-checkboxes__item">
           <input class="govuk-checkboxes__input" id="item_british" name="british" type="checkbox" value="yes">
+
           <label class="govuk-label govuk-checkboxes__label" for="item_british">
             British
           </label>
@@ -116,6 +122,7 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
         <div class="govuk-checkboxes__item">
           <input class="govuk-checkboxes__input" id="item_irish" name="irish" type="checkbox" value="irish">
+
           <label class="govuk-label govuk-checkboxes__label" for="item_irish">
             Irish
           </label>
@@ -167,6 +174,7 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
         <div class="govuk-checkboxes__item">
           <input class="govuk-checkboxes__input" id="colours-1" name="colours" type="checkbox" value="red">
+
           <label class="govuk-label govuk-checkboxes__label" for="colours-1">
             Red
           </label>
@@ -174,6 +182,7 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
         <div class="govuk-checkboxes__item">
           <input class="govuk-checkboxes__input" id="colours-2" name="colours" type="checkbox" value="green">
+
           <label class="govuk-label govuk-checkboxes__label" for="colours-2">
             Green
           </label>
@@ -181,6 +190,7 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
         <div class="govuk-checkboxes__item">
           <input class="govuk-checkboxes__input" id="colours-3" name="colours" type="checkbox" value="blue" disabled>
+
           <label class="govuk-label govuk-checkboxes__label" for="colours-3">
             Blue
           </label>
@@ -221,7 +231,8 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
     <div class="govuk-form-group">
 
-      <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+      <fieldset class="govuk-fieldset" aria-describedby="waste-hint"
+      >
 
       <legend class="govuk-fieldset__legend">
         <h3 class="govuk-heading-m">Which types of waste do you transport regularly?</h3>
@@ -235,6 +246,7 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
         <div class="govuk-checkboxes__item">
           <input class="govuk-checkboxes__input" id="waste-1" name="waste" type="checkbox" value="animal">
+
           <label class="govuk-label govuk-checkboxes__label" for="waste-1">
             Waste from animal carcasses
           </label>
@@ -242,6 +254,7 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
         <div class="govuk-checkboxes__item">
           <input class="govuk-checkboxes__input" id="waste-2" name="waste" type="checkbox" value="mines">
+
           <label class="govuk-label govuk-checkboxes__label" for="waste-2">
             Waste from mines or quarries
           </label>
@@ -249,6 +262,7 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
         <div class="govuk-checkboxes__item">
           <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+
           <label class="govuk-label govuk-checkboxes__label" for="waste-3">
             Farm or agricultural waste
           </label>
@@ -267,7 +281,8 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
       "name": "waste",
       "fieldset": {
         "legend": {
-          "html": "<h3 class=\"govuk-heading-m\">Which types of waste do you transport regularly?</h3>"
+          "text": "<h3 class=\"govuk-heading-m\">Which types of waste do you transport regularly?</h3>",
+          "safe": true
         }
       },
       "hint": {
@@ -301,6 +316,7 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
         <div class="govuk-checkboxes__item">
           <input class="govuk-checkboxes__input" id="colours-1" name="colours" type="checkbox" value="red">
+
           <label class="govuk-label govuk-checkboxes__label" for="colours-1">
             Red
           </label>
@@ -308,6 +324,7 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
         <div class="govuk-checkboxes__item">
           <input class="govuk-checkboxes__input" id="colours-2" name="colours" type="checkbox" value="green">
+
           <label class="govuk-label govuk-checkboxes__label" for="colours-2">
             Green
           </label>
@@ -315,6 +332,7 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
         <div class="govuk-checkboxes__item">
           <input class="govuk-checkboxes__input" id="colours-3" name="colours" type="checkbox" value="blue">
+
           <label class="govuk-label govuk-checkboxes__label" for="colours-3">
             Blue
           </label>
@@ -354,7 +372,8 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
     <div class="govuk-form-group govuk-form-group--error">
 
-      <fieldset class="govuk-fieldset app-fieldset--custom-modifier" aria-describedby="example-hint example-error" data-attribute="value" data-second-attribute="second-value">
+      <fieldset class="govuk-fieldset app-fieldset--custom-modifier" aria-describedby="example-hint example-error"
+       data-attribute="value" data-second-attribute="second-value">
 
       <legend class="govuk-fieldset__legend">
         What is your nationality?
@@ -372,6 +391,7 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
         <div class="govuk-checkboxes__item">
           <input class="govuk-checkboxes__input" id="example-1" name="example" type="checkbox" value="british">
+
           <label class="govuk-label govuk-checkboxes__label" for="example-1">
             British
           </label>
@@ -379,6 +399,7 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
         <div class="govuk-checkboxes__item">
           <input class="govuk-checkboxes__input" id="example-2" name="example" type="checkbox" value="irish">
+
           <label class="govuk-label govuk-checkboxes__label" for="example-2">
             Irish
           </label>
@@ -386,6 +407,7 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
         <div class="govuk-checkboxes__item">
           <input class="govuk-checkboxes__input" id="example-3" name="example" type="checkbox" value="other">
+
           <label class="govuk-label govuk-checkboxes__label" for="example-3">
             Citizen of another country
           </label>
@@ -443,7 +465,8 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
     <div class="govuk-form-group govuk-form-group--error">
 
-      <fieldset class="govuk-fieldset" aria-describedby="waste-error">
+      <fieldset class="govuk-fieldset" aria-describedby="waste-error"
+      >
 
       <legend class="govuk-fieldset__legend">
         <h3 class="govuk-heading-m">Which types of waste do you transport regularly?</h3>
@@ -457,6 +480,7 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
         <div class="govuk-checkboxes__item">
           <input class="govuk-checkboxes__input" id="waste-1" name="waste" type="checkbox" value="animal">
+
           <label class="govuk-label govuk-checkboxes__label" for="waste-1">
             Waste from animal carcasses
           </label>
@@ -464,6 +488,7 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
         <div class="govuk-checkboxes__item">
           <input class="govuk-checkboxes__input" id="waste-2" name="waste" type="checkbox" value="mines">
+
           <label class="govuk-label govuk-checkboxes__label" for="waste-2">
             Waste from mines or quarries
           </label>
@@ -471,6 +496,7 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
         <div class="govuk-checkboxes__item">
           <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+
           <label class="govuk-label govuk-checkboxes__label" for="waste-3">
             Farm or agricultural waste
           </label>
@@ -492,7 +518,8 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
       },
       "fieldset": {
         "legend": {
-          "html": "<h3 class=\"govuk-heading-m\">Which types of waste do you transport regularly?</h3>"
+          "text": "<h3 class=\"govuk-heading-m\">Which types of waste do you transport regularly?</h3>",
+          "safe": true
         }
       },
       "items": [
@@ -553,7 +580,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">fieldset</th>
+<td class="govuk-table__cell">fieldset</td>
 
 <td class="govuk-table__cell ">object</td>
 
@@ -565,9 +592,9 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">hint</th>
+<td class="govuk-table__cell">hint</td>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell ">object or string</td>
 
 <td class="govuk-table__cell ">No</td>
 
@@ -577,9 +604,9 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">errorMessage</th>
+<td class="govuk-table__cell">errorMessage</td>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell ">object or string</td>
 
 <td class="govuk-table__cell ">No</td>
 
@@ -589,7 +616,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">classes</th>
+<td class="govuk-table__cell">classes</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -601,7 +628,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">idPrefix</th>
+<td class="govuk-table__cell">idPrefix</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -613,7 +640,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">name</th>
+<td class="govuk-table__cell">name</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -625,7 +652,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">items</th>
+<td class="govuk-table__cell">items</td>
 
 <td class="govuk-table__cell ">array</td>
 
@@ -637,7 +664,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">text</th>
+<td class="govuk-table__cell">items[]text</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -649,19 +676,31 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">html</th>
+<td class="govuk-table__cell">items[]safe</td>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell ">boolean</td>
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">HTML to use within each checkbox item label. If this is provided, the text argument will be ignored.</td>
+<td class="govuk-table__cell ">Whether item text can be considered safe. If not safe, it will be escaped.</td>
 
 </tr>
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">label</th>
+<td class="govuk-table__cell">items[]name</td>
+
+<td class="govuk-table__cell ">string</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Provide explicit name for checkbox item.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<td class="govuk-table__cell">items[]label</td>
 
 <td class="govuk-table__cell ">object</td>
 
@@ -673,7 +712,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">checked</th>
+<td class="govuk-table__cell">items[]checked</td>
 
 <td class="govuk-table__cell ">boolean</td>
 
@@ -685,7 +724,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">disabled</th>
+<td class="govuk-table__cell">items[]disabled</td>
 
 <td class="govuk-table__cell ">boolean</td>
 
@@ -697,7 +736,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">attributes</th>
+<td class="govuk-table__cell">attributes</td>
 
 <td class="govuk-table__cell ">object</td>
 

@@ -49,8 +49,12 @@ Find out when to use the Error summary component in your service in the [GOV.UK 
     {% from 'error-summary/macro.njk' import govukErrorSummary %}
 
     {{ govukErrorSummary({
-      "titleText": "Message to alert the user to a problem goes here",
-      "descriptionText": "Optional description of the errors and how to correct them",
+      "title": {
+        "text": "Message to alert the user to a problem goes here"
+      },
+      "description": {
+        "text": "Optional description of the errors and how to correct them"
+      },
       "classes": "optional-extra-class",
       "errorList": [
         {
@@ -58,7 +62,62 @@ Find out when to use the Error summary component in your service in the [GOV.UK 
           "href": "#example-error-1"
         },
         {
-          "html": "Descriptive link to the question with an error",
+          "text": "Descriptive link to the question with an error",
+          "safe": true,
+          "href": "#example-error-1"
+        }
+      ]
+    }) }}
+
+### Error-summary--strings
+
+[Preview the error-summary--strings example](http://govuk-frontend-review.herokuapp.com/components/error-summary/strings/preview)
+
+#### Markup
+
+    <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="error-summary">
+      <h2 class="govuk-error-summary__title" id="error-summary-title">
+        Message to alert the user to a problem goes here
+      </h2>
+      <div class="govuk-error-summary__body">
+
+        <p>
+          Optional description of the errors and how to correct them
+        </p>
+
+        <ul class="govuk-list govuk-error-summary__list">
+
+          <li>
+
+            <a href="#example-error-1">Descriptive link to the question with an error</a>
+
+          </li>
+
+          <li>
+
+            <a href="#example-error-1">Descriptive link to the question with an error</a>
+
+          </li>
+
+        </ul>
+      </div>
+    </div>
+
+#### Macro
+
+    {% from 'error-summary/macro.njk' import govukErrorSummary %}
+
+    {{ govukErrorSummary({
+      "title": "Message to alert the user to a problem goes here",
+      "description": "Optional description of the errors and how to correct them",
+      "errorList": [
+        {
+          "text": "Descriptive link to the question with an error",
+          "href": "#example-error-1"
+        },
+        {
+          "text": "Descriptive link to the question with an error",
+          "safe": true,
           "href": "#example-error-1"
         }
       ]
@@ -106,7 +165,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">classes</th>
+<td class="govuk-table__cell">classes</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -118,7 +177,19 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">titleText</th>
+<td class="govuk-table__cell">title</td>
+
+<td class="govuk-table__cell ">object or string</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">If passed as a string, title.text will use that value.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<td class="govuk-table__cell">title.text</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -130,19 +201,31 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">titleHtml</th>
+<td class="govuk-table__cell">title.safe</td>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell ">boolean</td>
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">HTML to use for the heading of the error summary block. If this is provided, the titleText argument will be ignored.</td>
+<td class="govuk-table__cell ">Whether title text argument can be considered safe. If not safe, it will be escaped.</td>
 
 </tr>
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">descriptionText</th>
+<td class="govuk-table__cell">description</td>
+
+<td class="govuk-table__cell ">object or string</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">If passed as a string, legend.text will use that value.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<td class="govuk-table__cell">description.text</td>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -154,21 +237,21 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">descriptionHtml</th>
+<td class="govuk-table__cell">description.safe</td>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell ">boolean</td>
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Optional HTML description of the errors. If this is provided, the descriptionText argument will be ignored.</td>
+<td class="govuk-table__cell ">Whether description text argument can be considered safe. If not safe, it will be escaped.</td>
 
 </tr>
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">errorList</th>
+<td class="govuk-table__cell">errorList</td>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell ">array</td>
 
 <td class="govuk-table__cell ">Yes</td>
 
@@ -178,7 +261,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">attributes</th>
+<td class="govuk-table__cell">attributes</td>
 
 <td class="govuk-table__cell ">object</td>
 

@@ -1,3 +1,37 @@
-{% macro govukButton(params) %}
+{% macro govukButton(
+  params,
+  text,
+  safe,
+  value,
+  href,
+  element,
+  type,
+  disabled,
+  classes,
+  attributes
+) %}
+  {% if params.html and not hideDeprecated %}
+    <strong class="deprecated">params.html is deprecated in govukButton</strong>
+  {% endif %}
+  {% if text === undefined %}{% set text = params.text if params.text else params %}{% endif %}
+  {% if safe === undefined %}{% set safe = params.safe %}{% endif %}
+  {% set value = value if value else params.value %}
+  {% set href = href if href else params.href %}
+  {% set element = element if element else params.element %}
+  {% set type = type if type else params.type %}
+  {% if disabled === undefined %}{% set disabled = params.disabled %}{% endif %}
+  {% set classes = classes if classes else params.classes %}
+  {% set attributes = attributes if attributes else params.attributes %}
+  {% set params = {
+    text: text,
+    safe: safe,
+    value: value,
+    href: href,
+    element: element,
+    type: type,
+    disabled: disabled,
+    classes: classes,
+    attributes: attributes
+  } %}
   {%- include "./template.njk" -%}
 {% endmacro %}

@@ -41,6 +41,9 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 - Reintroduce mistakenly deleted HTML5Shiv required for IE8
   ([PR #749](https://github.com/alphagov/govuk-frontend/pull/749))
 
+- Add keyword arguments to all macros
+  ([PR #752](https://github.com/alphagov/govuk-frontend/pull/752))
+
 ## 0.0.31-alpha (Breaking release)
 
 💥 Breaking changes:
@@ -53,6 +56,9 @@ Note: We're not following semantic versioning yet, we are going to talk about th
   `$govuk-images-path`. If you are overriding this variable or using it in your
   own styles you will need to update your code to use the new variable name.
   ([PR #726](https://github.com/alphagov/govuk-frontend/pull/726))
+
+- The `html` property has been removed from all the components and objects that used it as the safe equivalent of `text`. It’s functionality has been replaced by the use of the `safe` property.
+  ([PR #752](https://github.com/alphagov/govuk-frontend/pull/752))
 
 
 🔧 Fixes:

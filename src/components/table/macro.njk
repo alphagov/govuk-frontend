@@ -1,3 +1,41 @@
-{% macro govukTable(params) %}
+{% macro govukTable(
+  params,
+  caption,
+  captionClasses,
+  head,
+  rows,
+  classes,
+  attributes
+  ) %}
+  {% if params.head and not hideDeprecated %}
+    {% for headCell in params.head %}
+      {% if headCell.html %}
+      <strong class="deprecated">params.head[]html is deprecated in govukTable</strong>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+  {% if params.rows and not hideDeprecated %}
+    {% for row in params.rows %}
+      {% for cell in row %}
+        {% if cell.html %}
+        <strong class="deprecated">params.rows[][]html is deprecated in govukTable</strong>
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+  {% endif %}
+  {% set caption = caption if caption else params.caption %}
+  {% set captionClasses = captionClasses if captionClasses else params.captionClasses %}
+  {% set head = head if head else params.head %}
+  {% set rows = rows if rows else params.rows %}
+  {% set classes = classes if classes else params.classes %}
+  {% set attributes = attributes if attributes else params.attributes %}
+  {% set params = {
+    caption: caption,
+    captionClasses: captionClasses,
+    head: head,
+    rows: rows,
+    classes: classes,
+    attributes: attributes
+  } %}
   {%- include "./template.njk" -%}
 {% endmacro %}

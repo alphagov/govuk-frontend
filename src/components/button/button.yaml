@@ -2,6 +2,8 @@ examples:
 - name: default
   data:
     text: Save and continue
+- name: string
+  data: Save and continue
 - name: disabled
   data:
     text: Disabled button

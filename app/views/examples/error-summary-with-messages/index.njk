@@ -17,8 +17,8 @@
 <form action="/" method="post">
 
   {{ govukErrorSummary({
-    "titleText": "Message to alert the user to a problem goes here",
-    "descriptionText": "Optional description of the errors and how to correct them",
+    "title": "Message to alert the user to a problem goes here",
+    "description": "Optional description of the errors and how to correct them",
     "classes": "optional-extra-class",
     "errorList": [
       {
@@ -36,9 +36,10 @@
 
   {{ govukInput({
     label: {
-      "html": '<h3 class="govuk-heading-m govuk-!-mb-r1">Passport number</h3>',
-      "hintText": "For example, 502135326"
+      text: '<h3 class="govuk-heading-m govuk-!-mb-r1">Passport number</h3>',
+      safe: true
     },
+    hint: "For example, 502135326",
     id: "passport-number",
     name: "passport-number",
     errorMessage: {
@@ -48,9 +49,12 @@
 
   {{ govukDateInput({
     fieldset: {
-      legendHtml: '<h3 class="govuk-heading-m">Expiry date</h3>',
-      legendHintText: 'For example, 08 2014'
+      legend: {
+        text: '<h3 class="govuk-heading-m">Expiry date</h3>',
+        safe: true
+      }
     },
+    hint: 'For example, 08 2014',
     id: 'expiry',
     name: 'expiry',
     items:[

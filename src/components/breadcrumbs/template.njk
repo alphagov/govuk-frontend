@@ -3,10 +3,10 @@
   {% for item in params.items %}
     {% if item.href %}
     <li class="govuk-breadcrumbs__list-item">
-      <a class="govuk-breadcrumbs__link" href="{{ item.href }}">{{ item.html | safe if item.html else item.text }}</a>
+      <a class="govuk-breadcrumbs__link" href="{{ item.href }}">{{ item.text | safe if item.safe else item.text }}</a>
     </li>
     {% else %}
-    <li class="govuk-breadcrumbs__list-item" aria-current="page">{{ item.html | safe if item.html else item.text }}</li>
+    <li class="govuk-breadcrumbs__list-item" aria-current="page">{{ item.text | safe if item.safe else item.text }}</li>
     {% endif %}
   {% endfor %}
   </ol>

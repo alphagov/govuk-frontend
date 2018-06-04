@@ -2,7 +2,7 @@
 
 const { axe } = require('jest-axe')
 
-const { render, getExamples } = require('../../../lib/jest-helpers')
+const { render, renderMacro, getExamples } = require('../../../lib/jest-helpers')
 
 const examples = getExamples('fieldset')
 
@@ -48,6 +48,16 @@ describe('fieldset', () => {
     expect($legend.html()).toContain('What is your address?')
   })
 
+  it('renders legend text when legend is passed as a string', () => {
+    const $ = render('fieldset', {
+      legend: 'What is your address?'
+    })
+
+    const $component = $('fieldset.govuk-fieldset')
+    const $legend = $component.find('legend.govuk-fieldset__legend')
+    expect($legend.html()).toContain('What is your address?')
+  })
+
   it('renders escaped legend text when passing html', () => {
     const $ = render('fieldset', {
       legend: {
@@ -63,7 +73,8 @@ describe('fieldset', () => {
   it('renders legend HTML', () => {
     const $ = render('fieldset', {
       legend: {
-        html: 'What is <b>your</b> address?'
+        text: 'What is <b>your</b> address?',
+        safe: true
       }
     })
 
@@ -107,5 +118,79 @@ describe('fieldset', () => {
     const $component = $('.govuk-fieldset')
     expect($component.attr('data-attribute')).toEqual('value')
     expect($component.attr('data-another-attribute')).toEqual('another-value')
+  })
+
+  describe('with keyword arguments', () => {
+    it('allows fieldset params to be passed as keyword arguments', () => {
+      const $ = renderMacro('fieldset', null, {
+        legend: {
+          text: '<b>legend text</b>',
+          safe: true
+        },
+        describedBy: 'describedById',
+        classes: 'extraClasses',
+        attributes: {
+          'data-test': 'attribute'
+        }
+      })
+
+      const $component = $('.govuk-fieldset')
+      expect($component.html()).toContain('<b>legend text</b>')
+      expect($component.attr('aria-describedby')).toEqual('describedById')
+      expect($component.attr('data-test')).toEqual('attribute')
+      expect($component.attr('class')).toContain('extraClasses')
+    })
+
+    it('uses legend keyword argument before params.legend', () => {
+      const $ = renderMacro('fieldset', {
+        legend: {
+          text: 'params text'
+        }
+      }, {
+        legend: {
+          text: 'keyword text'
+        }
+      })
+
+      const $legend = $('.govuk-fieldset__legend')
+      expect($legend.html()).toContain('keyword text')
+    })
+
+    it('uses describedBy keyword argument before params.describedBy', () => {
+      const $ = renderMacro('fieldset', {
+        describedBy: 'paramsId'
+      }, {
+        describedBy: 'keywordId'
+      })
+
+      const $component = $('.govuk-fieldset')
+      expect($component.attr('aria-describedby')).toContain('keywordId')
+    })
+
+    it('uses classes keyword argument before before params.classes', () => {
+      const $ = renderMacro('fieldset', {
+        text: 'params text',
+        classes: 'paramsClass'
+      }, {
+        classes: 'keywordClass'
+      })
+      const $component = $('.govuk-fieldset')
+      expect($component.attr('class')).toContain('keywordClass')
+    })
+
+    it('uses attributes keyword argument before before params.attributes', () => {
+      const $ = renderMacro('fieldset', {
+        text: 'params text',
+        attributes: {
+          'data-test': 'paramsAttribute'
+        }
+      }, {
+        attributes: {
+          'data-test': 'keywordAttribute'
+        }
+      })
+      const $component = $('.govuk-fieldset')
+      expect($component.attr('data-test')).toEqual('keywordAttribute')
+    })
   })
 })
