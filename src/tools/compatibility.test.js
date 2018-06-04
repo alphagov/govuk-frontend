@@ -15,7 +15,7 @@ const sassConfig = {
 describe('@mixin govuk-compatibility', () => {
   it('does not output if the app is not marked as included', async () => {
     const sass = `
-      $govuk-compatibility: (existing_app: false);
+      $_govuk-compatibility: (existing_app: false);
 
       @import "tools/compatibility";
 
@@ -32,7 +32,7 @@ describe('@mixin govuk-compatibility', () => {
 
   it('outputs if the app is not marked as included', async () => {
     const sass = `
-      $govuk-compatibility: (existing_app: true);
+      $_govuk-compatibility: (existing_app: true);
 
       @import "tools/compatibility";
 
@@ -49,7 +49,7 @@ describe('@mixin govuk-compatibility', () => {
 
   it('throws an exception if the app is not recognised', async () => {
     const sass = `
-      $govuk-compatibility: (existing_app: true);
+      $_govuk-compatibility: (existing_app: true);
 
       @import "tools/compatibility";
 

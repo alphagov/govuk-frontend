@@ -14,7 +14,10 @@ const sassConfig = {
 }
 
 const sassBootstrap = `
-  $mq-breakpoints: (
+  @import "settings/media-queries";
+  @import "settings/ie8";
+
+  $govuk-breakpoints: (
     my_breakpoint: 30em
   );
 

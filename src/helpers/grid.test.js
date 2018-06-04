@@ -14,11 +14,15 @@ const sassConfig = {
 }
 describe('grid system', () => {
   const sassImports = `
-    @import "tools/exports";
+    @import "settings/ie8";
+    @import "settings/media-queries";
     @import "settings/spacing";
     @import "settings/measurements";
+
     @import "helpers/grid";
     @import "helpers/media-queries";
+
+    @import "tools/exports";
   `
   describe('grid-width function', () => {
     it('outputs the specified key value from the map of widths', async () => {
@@ -115,7 +119,7 @@ describe('grid system', () => {
           box-sizing: border-box;
           width: 100%;
           padding: 0 15px; }
-          @media (min-width: 46.25em) {
+          @media (min-width: 40.0625em) {
             .govuk-grid-column-full {
               width: 100%;
               float: left; } }`)
@@ -137,7 +141,7 @@ describe('grid system', () => {
           box-sizing: border-box;
           width: 100%;
           padding: 0 15px; }
-          @media (min-width: 46.25em) {
+          @media (min-width: 40.0625em) {
             .govuk-grid-column-two-thirds {
               width: 66.6666%;
               float: left; } }
@@ -148,7 +152,7 @@ describe('grid system', () => {
       const sass = `
         ${sassImports}
 
-        @include govuk-grid-column(three-quarters, $class:'large-columnumn');
+        @include govuk-grid-column(three-quarters, $class:'large-column');
       `
       const results = await sassRender({ data: sass, ...sassConfig })
 
@@ -156,12 +160,12 @@ describe('grid system', () => {
         .toString()
         .trim())
         .toBe(outdent`
-        .large-columnumn-three-quarters {
+        .large-column-three-quarters {
           box-sizing: border-box;
           width: 100%;
           padding: 0 15px; }
-          @media (min-width: 46.25em) {
-            .large-columnumn-three-quarters {
+          @media (min-width: 40.0625em) {
+            .large-column-three-quarters {
               width: 75%;
               float: left; } }
         `)
@@ -182,7 +186,7 @@ describe('grid system', () => {
         .govuk-grid-column-one-quarter {
           box-sizing: border-box;
           padding: 0 15px; }
-          @media (min-width: 61.25em) {
+          @media (min-width: 48.0625em) {
             .govuk-grid-column-one-quarter {
               width: 25%;
               float: left; } }
@@ -227,7 +231,7 @@ describe('grid system', () => {
           box-sizing: border-box;
           width: 100%;
           padding: 0 15px; }
-          @media (min-width: 46.25em) {
+          @media (min-width: 40.0625em) {
             .govuk-grid-column-one-half {
               width: 50%;
               float: right; } }
