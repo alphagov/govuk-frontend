@@ -401,8 +401,7 @@ describe('Button', () => {
   describe('when using deprecated features', () => {
     it('warns when using params.html', () => {
       const $ = renderMacro('button', {
-        text: '<b>params text</b>',
-        safe: true
+        html: '<b>params text</b>'
       })
 
       expect($.html()).toContain('<strong class="deprecated">params.html is deprecated in govukButton</strong>')

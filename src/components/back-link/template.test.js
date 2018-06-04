@@ -190,8 +190,7 @@ describe('back-link component', () => {
   describe('when using deprecated features', () => {
     it('warns when using params.html', () => {
       const $ = renderMacro('back-link', {
-        text: '<b>params text</b>',
-        safe: true
+        html: '<b>params text</b>'
       })
 
       expect($.html()).toContain('<strong class="deprecated">params.html is deprecated in govukBackLink</strong>')

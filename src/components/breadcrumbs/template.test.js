@@ -232,8 +232,7 @@ describe('Breadcrumbs', () => {
     it('warns when using params.items[]html', () => {
       const $ = renderMacro('breadcrumbs', {
         items: [{
-          text: '<b>params text</b>',
-          safe: true
+          html: '<b>params text</b>'
         }]
       })
 
