@@ -8,7 +8,7 @@
  * the 'polyfill' will be automatically initialised
  */
 import '../../vendor/polyfills/Function/prototype/bind'
-import { addEvent, removeEvent, charCode, preventDefault } from '../../common'
+import '../../vendor/polyfills/Event' // addEventListener and event.target normaliziation
 
 var KEY_ENTER = 13
 var KEY_SPACE = 32
@@ -28,13 +28,14 @@ function Details () {
 * @param {function} callback function
 */
 Details.prototype.handleKeyDown = function (node, callback) {
-  addEvent(node, 'keypress', function (event, target) {
+  node.addEventListener('keypress', function (event) {
+    var target = event.target
     // When the key gets pressed - check if it is enter or space
-    if (charCode(event) === KEY_ENTER || charCode(event) === KEY_SPACE) {
+    if (event.keyCode === KEY_ENTER || event.keyCode === KEY_SPACE) {
       if (target.nodeName.toLowerCase() === 'summary') {
         // Prevent space from scrolling the page
         // and enter from submitting a form
-        preventDefault(event)
+        event.preventDefault()
         // Click to let the click event do all the necessary action
         if (target.click) {
           target.click()
@@ -47,15 +48,17 @@ Details.prototype.handleKeyDown = function (node, callback) {
   })
 
   // Prevent keyup to prevent clicking twice in Firefox when using space key
-  addEvent(node, 'keyup', function (event, target) {
-    if (charCode(event) === KEY_SPACE) {
+  node.addEventListener('keyup', function (event) {
+    var target = event.target
+    if (event.keyCode === KEY_SPACE) {
       if (target.nodeName.toLowerCase() === 'summary') {
-        preventDefault(event)
+        event.preventDefault()
       }
     }
   })
 
-  addEvent(node, 'click', function (event, target) {
+  node.addEventListener('click', function (event) {
+    var target = event.target
     callback(event, target)
   })
 }
@@ -187,7 +190,7 @@ Details.prototype.stateChange = function (summary) {
 * @param {object} node element
 */
 Details.prototype.destroy = function (node) {
-  removeEvent(node, 'click')
+  node.removeEventListener('click')
 }
 
 /**
@@ -198,8 +201,8 @@ Details.prototype.destroy = function (node) {
 * but if it's not supported then the second one will fire
 */
 Details.prototype.init = function () {
-  addEvent(document, 'DOMContentLoaded', this.initDetails.bind(this))
-  addEvent(window, 'load', this.initDetails.bind(this))
+  document.addEventListener('DOMContentLoaded', this.initDetails.bind(this))
+  window.addEventListener('load', this.initDetails.bind(this))
 }
 
 export default Details
