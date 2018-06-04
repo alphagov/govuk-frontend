@@ -6,6 +6,33 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 
 💥 Breaking changes:
 
+- The default build of the GOV.UK Frontend JavaScript now does not initialize all components automatically.
+
+  This allows you to initialize only the components you need, and gives you finer control over when the JavaScript for GOV.UK Frontend runs.
+
+  To migrate your project you need to change
+  ```html
+    <script src="{path-to-govuk-frontend}/all.js"></script>
+  ```
+  to
+  ```html
+    <script src="{path-to-govuk-frontend}/all.js"></script>
+    <script>window.GOVUKFrontend.initAll()</script>
+  ```
+
+  Now, if you only want to initialize a specific component you can now do so by:
+  ```html
+    <script src="{path-to-govuk-frontend}/all.js"></script>
+    <script>
+      var Button = window.GOVUKFrontend.Button
+      new Button(document).init()
+    </script>
+  ```
+
+  Note: If you are importing JavaScript with a bundler, this is not likely to change anything for you.
+  ([PR #759](https://github.com/alphagov/govuk-frontend/pull/759))
+
+
 - All sass-mq settings have now been made private. We are now exposing new
   settings to allow you to customise breakpoints and responsive behaviour:
 
@@ -20,13 +47,12 @@ Note: We're not following semantic versioning yet, we are going to talk about th
   ([PR #748](https://github.com/alphagov/govuk-frontend/pull/748))
 
 - Font settings have been renamed:
-  
+
   - `$govuk-font-stack` has been renamed to `$govuk-font-family`
   - `$govuk-font-stack-tabular` has been renamed to `$govuk-font-family-tabular`
   - `$govuk-font-stack-print` has been renamed to `$govuk-font-family-print`
 
   ([PR #748](https://github.com/alphagov/govuk-frontend/pull/748))
-
 🔧 Fixes:
 
 - The `<label>` element will now be omitted for form controls where no label
@@ -51,6 +77,16 @@ Note: We're not following semantic versioning yet, we are going to talk about th
   ([PR #748](https://github.com/alphagov/govuk-frontend/pull/748))
 
 🆕 New features:
+
+- Components are now available to use from the `GOVUKFrontend` global.
+You can now initialize individual components like so:
+```html
+  <script>
+    var Radios = window.GOVUKFrontend.Radios
+    new Radios(document).init()
+  </script>
+```
+([PR #759](https://github.com/alphagov/govuk-frontend/pull/759))
 
 - Add `beforeContent` block to the template, for content that does not belong inside `<main>` element.
   For example: Back links.
