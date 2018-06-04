@@ -22,6 +22,14 @@ let baseUrl = 'http://localhost:' + PORT
 beforeAll(async (done) => {
   browser = global.__BROWSER__
   page = await browser.newPage()
+
+  // Capture JavaScript errors.
+  page.on('pageerror', error => {
+    // If the stack trace includes 'all.js' then we want to fail these tests.
+    if (error.stack.includes('all.js')) {
+      throw error
+    }
+  })
   done()
 })
 
@@ -38,6 +46,46 @@ describe('GOV.UK Frontend', () => {
       const GOVUKFrontendGlobal = await page.evaluate(() => window.GOVUKFrontend)
 
       expect(typeof GOVUKFrontendGlobal).toBe('object')
+    })
+    it('exports `initAll` function', async () => {
+      await page.goto(baseUrl + '/', { waitUntil: 'load' })
+
+      const typeofInitAll = await page.evaluate(() => typeof window.GOVUKFrontend.initAll)
+
+      expect(typeofInitAll).toEqual('function')
+    })
+    it('exports Components', async () => {
+      await page.goto(baseUrl + '/', { waitUntil: 'load' })
+
+      const GOVUKFrontendGlobal = await page.evaluate(() => window.GOVUKFrontend)
+
+      var components = Object.keys(GOVUKFrontendGlobal).filter(method => method !== 'initAll')
+
+      // Ensure GOV.UK Frontend exports the expected components
+      expect(components).toEqual([
+        'Button',
+        'Details',
+        'Checkboxes',
+        'ErrorSummary',
+        'Header',
+        'Radios'
+      ])
+    })
+    it('exported Components can be initialised', async () => {
+      await page.goto(baseUrl + '/', { waitUntil: 'load' })
+
+      const GOVUKFrontendGlobal = await page.evaluate(() => window.GOVUKFrontend)
+
+      var components = Object.keys(GOVUKFrontendGlobal).filter(method => method !== 'initAll')
+
+      // Check that all the components on the GOV.UK Frontend global can be initialised
+      components.forEach(component => {
+        page.evaluate(component => {
+          const Component = window.GOVUKFrontend[component]
+          const $module = document
+          new Component($module).init()
+        }, component)
+      })
     })
   })
   describe('global styles', async() => {

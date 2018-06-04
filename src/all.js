@@ -6,7 +6,7 @@ import ErrorSummary from './components/error-summary/error-summary'
 import Header from './components/header/header'
 import Radios from './components/radios/radios'
 
-export function initAll () {
+function initAll () {
   new Button().init()
   new Details().init()
 
@@ -29,4 +29,12 @@ export function initAll () {
   })
 }
 
-(initAll())
+export {
+  initAll,
+  Button,
+  Details,
+  Checkboxes,
+  ErrorSummary,
+  Header,
+  Radios
+}

@@ -292,6 +292,7 @@ Add the CSS and JavaScript code to your HTML template (this assumes you've copie
     <!-- Copy and paste component HTML-->
     <button class="govuk-button">This is a button component</button>
     <script src="assets/govuk-frontend-[latest version].min.js"></script>
+    <script>window.GOVUKFrontend.initAll()</script>
   </body>
 </html>
 ```
