@@ -111,14 +111,14 @@ Details.prototype.init = function () {
   }
 
   // Bind an event to handle summary elements
-  this.handleInputs($module, this.stateChange.bind(this))
+  this.handleInputs($module, this.setAttributes.bind(this))
 }
 
 /**
 * Define a statechange function that updates aria-expanded and style.display
 * @param {object} summary element
 */
-Details.prototype.stateChange = function () {
+Details.prototype.setAttributes = function () {
   var $module = this.$module
   var $summary = this.$summary
   var $content = this.$content
