@@ -26,7 +26,7 @@ function Details ($module) {
 * @param {object} node element
 * @param {function} callback function
 */
-Details.prototype.handleKeyDown = function (node, callback) {
+Details.prototype.handleInputs = function (node, callback) {
   node.addEventListener('keypress', function (event) {
     var target = event.target
     // When the key gets pressed - check if it is enter or space
@@ -40,7 +40,7 @@ Details.prototype.handleKeyDown = function (node, callback) {
           target.click()
         } else {
           // except Safari 5.1 and under don't support .click() here
-          callback(event, target)
+          callback(event)
         }
       }
     }
@@ -56,26 +56,7 @@ Details.prototype.handleKeyDown = function (node, callback) {
     }
   })
 
-  node.addEventListener('click', function (event) {
-    var target = event.target
-    callback(event, target)
-  })
-}
-
-/**
-* Get the nearest ancestor element of a node that matches a given tag name
-* @param {object} node element
-* @param {string} match tag name (e.g. div)
-*/
-Details.prototype.getAncestor = function (node, match) {
-  do {
-    if (!node || node.nodeName.toLowerCase() === match) {
-      break
-    }
-    node = node.parentNode
-  } while (node)
-
-  return node
+  node.addEventListener('click', callback)
 }
 
 Details.prototype.init = function () {
@@ -85,84 +66,77 @@ Details.prototype.init = function () {
     return
   }
 
-  var details = $module
-
   // Save shortcuts to the inner summary and content elements
-  $module.__summary = $module.getElementsByTagName('summary').item(0)
-  $module.__content = $module.getElementsByTagName('div').item(0)
+  var $summary = this.$summary = $module.getElementsByTagName('summary').item(0)
+  var $content = this.$content = $module.getElementsByTagName('div').item(0)
 
   // If <details> doesn't have a <summary> and a <div> representing the content
   // it means the required HTML structure is not met so the script will stop
-  if (!$module.__summary || !$module.__content) {
+  if (!$summary || !$content) {
     return
   }
 
   // If the content doesn't have an ID, assign it one now
   // which we'll need for the summary's aria-controls assignment
-  if (!$module.__content.id) {
-    $module.__content.id = 'details-content-' + generateUniqueID()
+  if (!$content.id) {
+    $content.id = 'details-content-' + generateUniqueID()
   }
 
   // Add ARIA role="group" to details
   $module.setAttribute('role', 'group')
 
   // Add role=button to summary
-  $module.__summary.setAttribute('role', 'button')
+  $summary.setAttribute('role', 'button')
 
   // Add aria-controls
-  $module.__summary.setAttribute('aria-controls', $module.__content.id)
+  $summary.setAttribute('aria-controls', $content.id)
 
   // Set tabIndex so the summary is keyboard accessible for non-native elements
   // http://www.saliences.com/browserBugs/tabIndex.html
   if (!NATIVE_DETAILS) {
-    $module.__summary.tabIndex = 0
+    $summary.tabIndex = 0
   }
 
   // Detect initial open state
   var openAttr = $module.getAttribute('open') !== null
   if (openAttr === true) {
-    $module.__summary.setAttribute('aria-expanded', 'true')
-    $module.__content.setAttribute('aria-hidden', 'false')
+    $summary.setAttribute('aria-expanded', 'true')
+    $content.setAttribute('aria-hidden', 'false')
   } else {
-    $module.__summary.setAttribute('aria-expanded', 'false')
-    $module.__content.setAttribute('aria-hidden', 'true')
+    $summary.setAttribute('aria-expanded', 'false')
+    $content.setAttribute('aria-hidden', 'true')
     if (!NATIVE_DETAILS) {
-      $module.__content.style.display = 'none'
+      $content.style.display = 'none'
     }
   }
 
-  // Create a circular reference from the summary back to its
-  // parent details element, for convenience in the click handler
-  $module.__summary.__details = details
-
   // Bind an event to handle summary elements
-  this.handleKeyDown($module, function (event, summary) {
-    if (!(summary = this.getAncestor(summary, 'summary'))) {
-      return true
-    }
-    return this.stateChange(summary)
-  }.bind(this))
+  this.handleInputs($module, this.stateChange.bind(this))
 }
 
 /**
 * Define a statechange function that updates aria-expanded and style.display
 * @param {object} summary element
 */
-Details.prototype.stateChange = function (summary) {
-  var expanded = summary.__details.__summary.getAttribute('aria-expanded') === 'true'
-  var hidden = summary.__details.__content.getAttribute('aria-hidden') === 'true'
+Details.prototype.stateChange = function () {
+  var $module = this.$module
+  var $summary = this.$summary
+  var $content = this.$content
 
-  summary.__details.__summary.setAttribute('aria-expanded', (expanded ? 'false' : 'true'))
-  summary.__details.__content.setAttribute('aria-hidden', (hidden ? 'false' : 'true'))
+  var expanded = $summary.getAttribute('aria-expanded') === 'true'
+  var hidden = $content.getAttribute('aria-hidden') === 'true'
+
+  $summary.setAttribute('aria-expanded', (expanded ? 'false' : 'true'))
+  $content.setAttribute('aria-hidden', (hidden ? 'false' : 'true'))
 
   if (!NATIVE_DETAILS) {
-    summary.__details.__content.style.display = (expanded ? 'none' : '')
+    $content.style.display = (expanded ? 'none' : '')
 
-    var hasOpenAttr = summary.__details.getAttribute('open') !== null
+    var hasOpenAttr = $module.getAttribute('open') !== null
     if (!hasOpenAttr) {
-      summary.__details.setAttribute('open', 'open')
+      $module.setAttribute('open', 'open')
     } else {
-      summary.__details.removeAttribute('open')
+      $module.removeAttribute('open')
     }
   }
   return true
