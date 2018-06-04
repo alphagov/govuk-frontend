@@ -4,6 +4,29 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 
 ## Unreleased
 
+💥 Breaking changes:
+
+- All sass-mq settings have now been made private. We are now exposing new
+  settings to allow you to customise breakpoints and responsive behaviour:
+
+  - `$govuk-breakpoints` - Map of breakpoint definitions
+  - `$govuk-show-breakpoints` - Whether to show the current breakpoint in the
+    top right corner
+  - `$govuk-ie8-breakpoint` - Breakpoint to rasterize to for IE8
+
+  If you are overriding any settings prefixed with `$mq-` in your application
+  you will need to update to the use the new `$govuk-` prefixed settings.
+
+  ([PR #748](https://github.com/alphagov/govuk-frontend/pull/748))
+
+- Font settings have been renamed:
+  
+  - `$govuk-font-stack` has been renamed to `$govuk-font-family`
+  - `$govuk-font-stack-tabular` has been renamed to `$govuk-font-family-tabular`
+  - `$govuk-font-stack-print` has been renamed to `$govuk-font-family-print`
+
+  ([PR #748](https://github.com/alphagov/govuk-frontend/pull/748))
+
 🔧 Fixes:
 
 - The `<label>` element will now be omitted for form controls where no label
@@ -23,12 +46,23 @@ Note: We're not following semantic versioning yet, we are going to talk about th
   we intend to allow users to initialize components from this namespace.
   ([PR #747](https://github.com/alphagov/govuk-frontend/pull/747))
 
+- Tabular numbers will now correctly use the `$govuk-font-family-tabular`
+  setting rather than being hardcoded to use NTA tabular.
+  ([PR #748](https://github.com/alphagov/govuk-frontend/pull/748))
 
 🆕 New features:
 
 - Add `beforeContent` block to the template, for content that does not belong inside `<main>` element.
   For example: Back links.
   ([PR #742](https://github.com/alphagov/govuk-frontend/pull/742))
+
+- Most of the settings layer is now documented using Sassdoc, with variables
+  being marked as private or public.
+  ([PR #748](https://github.com/alphagov/govuk-frontend/pull/748))
+
+- Most of the settings can now be overridden in your application (they are now
+  marked as !default)
+  ([PR #748](https://github.com/alphagov/govuk-frontend/pull/748))
 
 🏠 Internal:
 
