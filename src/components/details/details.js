@@ -190,6 +190,8 @@ Details.prototype.stateChange = function (summary) {
 * @param {object} node element
 */
 Details.prototype.destroy = function (node) {
+  node.removeEventListener('keypress')
+  node.removeEventListener('keyup')
   node.removeEventListener('click')
 }
 
