@@ -8,7 +8,11 @@ import Radios from './components/radios/radios'
 
 function initAll () {
   new Button().init()
-  new Details().init()
+
+  var $details = document.querySelectorAll('details')
+  nodeListForEach($details, function ($detail) {
+    new Details($detail).init()
+  })
 
   var $checkboxes = document.querySelectorAll('[data-module="checkboxes"]')
   nodeListForEach($checkboxes, function ($checkbox) {

@@ -34,7 +34,8 @@ describe('/components/details', () => {
       await page.goto(baseUrl + '/components/details/preview', { waitUntil: 'load' })
 
       const summaryAriaControls = await page.evaluate(() => document.body.getElementsByTagName('summary')[0].getAttribute('aria-controls'))
-      expect(summaryAriaControls).toBe('details-content-0')
+      const controlledContainerId = await page.evaluate(() => document.body.getElementsByTagName('details')[0].querySelectorAll('div')[0].getAttribute('id'))
+      expect(summaryAriaControls).toBe(controlledContainerId)
     })
 
     it('should set the expanded state of the summary to false using aria-expanded', async () => {
@@ -42,13 +43,6 @@ describe('/components/details', () => {
 
       const summaryAriaExpanded = await page.evaluate(() => document.body.getElementsByTagName('summary')[0].getAttribute('aria-expanded'))
       expect(summaryAriaExpanded).toBe('false')
-    })
-
-    it('should add a unique id to the hidden content in order to be controlled by the summary', async () => {
-      await page.goto(baseUrl + '/components/details/preview', { waitUntil: 'load' })
-
-      const hiddenContainerId = await page.evaluate(() => document.body.getElementsByTagName('details')[0].querySelectorAll('div')[0].getAttribute('id'))
-      expect(hiddenContainerId).toBe('details-content-0')
     })
 
     it('should present the content as hidden using aria-hidden', async () => {
