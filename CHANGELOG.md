@@ -32,6 +32,27 @@ Note: We're not following semantic versioning yet, we are going to talk about th
   Note: If you are importing JavaScript with a bundler, this is not likely to change anything for you.
   ([PR #759](https://github.com/alphagov/govuk-frontend/pull/759))
 
+- Consistently structure the Details and Button component, so that they can be instantiated the same as the other components.
+
+  If you're using `GOVUKFrontend.initAll()` you do not need to make any changes, otherwise you need to change
+  ```html
+    <script>
+      new Button().init()
+      new Details().init()
+    </script>
+  ```
+  to
+  ```html
+    <script>
+      new Button(document).init()
+
+      var $details = document.querySelectorAll('details')
+      nodeListForEach($details, function ($detail) {
+        new Details($detail).init()
+      })
+    </script>
+  ```
+  ([PR #761](https://github.com/alphagov/govuk-frontend/pull/761))
 
 - All sass-mq settings have now been made private. We are now exposing new
   settings to allow you to customise breakpoints and responsive behaviour:
