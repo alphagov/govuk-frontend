@@ -20,7 +20,7 @@
     @include _govuk-font-face-nta;
   }
 
-  @include mq($media-type: print) {
+  @include govuk-media-query($media-type: print) {
     font-family: $govuk-font-family-print;
   }
 }
@@ -34,7 +34,7 @@
 @mixin govuk-text-colour {
   color: $govuk-text-colour;
 
-  @include mq($media-type: print) {
+  @include govuk-media-query($media-type: print) {
     color: $govuk-print-text-colour;
   }
 }
@@ -112,12 +112,12 @@
       font-size: $font-size;
       line-height: $line-height;
     } @elseif $breakpoint == "print" {
-      @include mq($media-type: print) {
+      @include govuk-media-query($media-type: print) {
         font-size: $font-size;
         line-height: $line-height;
       }
     } @else {
-      @include mq($from: $breakpoint) {
+      @include govuk-media-query($from: $breakpoint) {
         font-size: $font-size;
         line-height: $line-height;
       }

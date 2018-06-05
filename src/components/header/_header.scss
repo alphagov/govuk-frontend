@@ -237,7 +237,7 @@
     margin-right: 0;
   }
 
-  @include mq($media-type: print) {
+  @include govuk-media-query($media-type: print) {
     .govuk-header {
       border-bottom-width: 0;
       color: $govuk-black;

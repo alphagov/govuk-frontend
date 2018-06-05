@@ -19,7 +19,7 @@
   }
 
   %govuk-list > li {
-    @include mq($from: tablet) {
+    @include govuk-media-query($from: tablet) {
       margin-bottom: $govuk-spacing-scale-1;
     }
   }

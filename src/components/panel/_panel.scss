@@ -16,7 +16,7 @@
 
     text-align: center;
 
-    @include mq($until: tablet) {
+    @include govuk-media-query($until: tablet) {
       padding: $govuk-spacing-scale-6 - $govuk-border-width;
     }
   }
