@@ -174,7 +174,6 @@ describe('frontend app', () => {
         })
       })
       ;[
-        'pageStart',
         'headIcons',
         'bodyStart',
         'main',

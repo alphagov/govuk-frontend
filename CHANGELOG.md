@@ -75,6 +75,8 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 
   ([PR #748](https://github.com/alphagov/govuk-frontend/pull/748))
 
+- Remove `pageStart` block from template, as could result in rendering issues in older IE.
+  ([PR #765](https://github.com/alphagov/govuk-frontend/pull/765))
 
 🔧 Fixes:
 
