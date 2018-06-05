@@ -1,7 +1,14 @@
-// 'Common typography' helper
-//
-// Sets the font family and associated properties, such as font smoothing. Also
-// overrides the font for print.
+////
+/// @group helpers
+////
+
+/// 'Common typography' helper
+///
+/// Sets the font family and associated properties, such as font smoothing. Also
+/// overrides the font for print.
+///
+/// @param {List} $font-family [$govuk-font-family] Font family to use
+/// @access public
 
 @mixin govuk-typography-common($font-family: $govuk-font-family) {
   font-family: $font-family;
@@ -10,7 +17,7 @@
 
   // If using NTA, include the font-face definition
   @if ($govuk-font-family == $govuk-font-family-nta) {
-    @include govuk-font-face-nta;
+    @include _govuk-font-face-nta;
   }
 
   @include mq($media-type: print) {
@@ -18,9 +25,11 @@
   }
 }
 
-// Text colour helper
-//
-// Sets the text colour, including a suitable override for print.
+/// Text colour helper
+///
+/// Sets the text colour, including a suitable override for print.
+///
+/// @access public
 
 @mixin govuk-text-colour {
   color: $govuk-text-colour;
@@ -30,51 +39,55 @@
   }
 }
 
-// Regular font weight helper
-//
-// @param {Boolean} $important - Whether to mark declarations as important.
-//        Generally Used to create override classes.
+/// Regular font weight helper
+///
+/// @param {Boolean} $important [false] - Whether to mark declarations as
+///   `!important`. Generally Used to create override classes.
+/// @access public
 
 @mixin govuk-typography-weight-regular($important: false) {
   font-weight: $govuk-font-weight-regular iff($important, !important);
 }
 
-// Bold font weight helper
-//
-// @param {Boolean} $important - Whether to mark declarations as important.
-//        Generally Used to create override classes.
+/// Bold font weight helper
+///
+/// @param {Boolean} $important [false] - Whether to mark declarations as
+///   `!important`. Generally Used to create override classes.
+/// @access public
 
 @mixin govuk-typography-weight-bold($important: false) {
   font-weight: $govuk-font-weight-bold iff($important, !important);
 }
 
-// Responsive typography helper
-//
-// Takes a 'font map' as an argument and uses it to create font-size and
-// line-height declarations for different breakpoints, and for print.
-//
-// Example font map:
-//
-// $my-font-map: (
-//   null: (
-//     font-size: 16px,
-//     line-height: 20px
-//   ),
-//   tablet: (
-//     font-size: 19px,
-//     line-height: 25px
-//   ),
-//   print: (
-//     font-size: 14pt,
-//     line-height: 1.15
-//   )
-// );
-//
-// @param {Map} $font-map - Font map
-// @param {Number} $override-line-height - Non responsive custom line height.
-//        Omit to use the line height from the font map.
-// @param {Boolean} $important - Whether to mark declarations as important.
-//        Generally Used to create override classes.
+/// Responsive typography helper
+///
+/// Takes a 'font map' as an argument and uses it to create font-size and
+/// line-height declarations for different breakpoints, and for print.
+///
+/// Example font map:
+///
+/// $my-font-map: (
+///   null: (
+///     font-size: 16px,
+///     line-height: 20px
+///   ),
+///   tablet: (
+///     font-size: 19px,
+///     line-height: 25px
+///   ),
+///   print: (
+///     font-size: 14pt,
+///     line-height: 1.15
+///   )
+/// );
+///
+/// @param {Map} $font-map - Font map
+/// @param {Number} $override-line-height [false] - Non responsive custom line
+///   height. Omit to use the line height from the font map.
+/// @param {Boolean} $important [false] - Whether to mark declarations as
+///   `!important`.
+///
+/// @access public
 
 @mixin govuk-typography-responsive($font-map, $override-line-height: false, $important: false) {
 

@@ -44,12 +44,12 @@ describe('grid system', () => {
       const sass = `
         @import "helpers/grid";
 
-        $value: grid-width(seven-fiths);
+        $value: grid-width(seven-fifths);
         `
 
       await expect(sassRender({ data: sass, ...sassConfig }))
        .rejects
-       .toThrow('Unknown `seven-fiths` in $grid-width.')
+       .toThrow('Unknown grid width `seven-fifths`')
     })
   })
 

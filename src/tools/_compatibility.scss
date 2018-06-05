@@ -1,3 +1,7 @@
+////
+/// @group tools
+////
+
 /// Conditional Compatibility Mixin
 ///
 /// Selectively output a block (available to the mixin as @content) if a given
@@ -15,9 +19,11 @@
 ///     }
 ///   }
 ///
-/// @param String Name of product that we are defending against.
-///
-/// @throw If product name is not recognised
+/// @param {String} $product - Name of product that we are 'defending' against.
+/// @content Passed content is outputted only if Frontend is being used with
+///   this product
+/// @throw Errors if product name is not recognised
+/// @access public
 
 @mixin govuk-compatibility($product) {
   @if map-has-key($_govuk-compatibility, $product) {
@@ -25,6 +31,6 @@
       @content;
     }
   } @else {
-    @error "Non existent compatibility product '#{$product}'";
+    @error "Non existent product '#{$product}'";
   }
 }
