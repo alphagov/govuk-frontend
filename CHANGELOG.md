@@ -53,6 +53,8 @@ Note: We're not following semantic versioning yet, we are going to talk about th
   - `$govuk-font-stack-print` has been renamed to `$govuk-font-family-print`
 
   ([PR #748](https://github.com/alphagov/govuk-frontend/pull/748))
+
+
 🔧 Fixes:
 
 - The `<label>` element will now be omitted for form controls where no label
@@ -76,6 +78,7 @@ Note: We're not following semantic versioning yet, we are going to talk about th
   setting rather than being hardcoded to use NTA tabular.
   ([PR #748](https://github.com/alphagov/govuk-frontend/pull/748))
 
+
 🆕 New features:
 
 - Components are now available to use from the `GOVUKFrontend` global.
@@ -92,13 +95,16 @@ You can now initialize individual components like so:
   For example: Back links.
   ([PR #742](https://github.com/alphagov/govuk-frontend/pull/742))
 
-- Most of the settings layer is now documented using Sassdoc, with variables
-  being marked as private or public.
+- Most of the settings, helpers and tools layers is now documented using
+  Sassdoc, with variables, functions and mixins being marked as private or
+  public.
   ([PR #748](https://github.com/alphagov/govuk-frontend/pull/748))
+  ([PR #762](https://github.com/alphagov/govuk-frontend/pull/762))
 
 - Most of the settings can now be overridden in your application (they are now
   marked as !default)
   ([PR #748](https://github.com/alphagov/govuk-frontend/pull/748))
+
 
 🏠 Internal:
 
