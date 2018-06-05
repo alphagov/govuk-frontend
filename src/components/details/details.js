@@ -8,7 +8,8 @@
  * the 'polyfill' will be automatically initialised
  */
 import '../../vendor/polyfills/Function/prototype/bind'
-import { addEvent, removeEvent, charCode, preventDefault } from '../../common'
+import '../../vendor/polyfills/Event' // addEventListener and event.target normaliziation
+import { generateUniqueID } from '../../common.js'
 
 var KEY_ENTER = 13
 var KEY_SPACE = 32
@@ -16,10 +17,8 @@ var KEY_SPACE = 32
 // Create a flag to know if the browser supports navtive details
 var NATIVE_DETAILS = typeof document.createElement('details').open === 'boolean'
 
-function Details () {
-  // Create a flag so we can prevent the initialisation
-  // function firing from both DOMContentLoaded and window.onload
-  this.INITIALISED = false
+function Details ($module) {
+  this.$module = $module
 }
 
 /**
@@ -27,156 +26,117 @@ function Details () {
 * @param {object} node element
 * @param {function} callback function
 */
-Details.prototype.handleKeyDown = function (node, callback) {
-  addEvent(node, 'keypress', function (event, target) {
+Details.prototype.handleInputs = function (node, callback) {
+  node.addEventListener('keypress', function (event) {
+    var target = event.target
     // When the key gets pressed - check if it is enter or space
-    if (charCode(event) === KEY_ENTER || charCode(event) === KEY_SPACE) {
+    if (event.keyCode === KEY_ENTER || event.keyCode === KEY_SPACE) {
       if (target.nodeName.toLowerCase() === 'summary') {
         // Prevent space from scrolling the page
         // and enter from submitting a form
-        preventDefault(event)
+        event.preventDefault()
         // Click to let the click event do all the necessary action
         if (target.click) {
           target.click()
         } else {
           // except Safari 5.1 and under don't support .click() here
-          callback(event, target)
+          callback(event)
         }
       }
     }
   })
 
   // Prevent keyup to prevent clicking twice in Firefox when using space key
-  addEvent(node, 'keyup', function (event, target) {
-    if (charCode(event) === KEY_SPACE) {
+  node.addEventListener('keyup', function (event) {
+    var target = event.target
+    if (event.keyCode === KEY_SPACE) {
       if (target.nodeName.toLowerCase() === 'summary') {
-        preventDefault(event)
+        event.preventDefault()
       }
     }
   })
 
-  addEvent(node, 'click', function (event, target) {
-    callback(event, target)
-  })
+  node.addEventListener('click', callback)
 }
 
-/**
-* Get the nearest ancestor element of a node that matches a given tag name
-* @param {object} node element
-* @param {string} match tag name (e.g. div)
-*/
-Details.prototype.getAncestor = function (node, match) {
-  do {
-    if (!node || node.nodeName.toLowerCase() === match) {
-      break
-    }
-    node = node.parentNode
-  } while (node)
+Details.prototype.init = function () {
+  var $module = this.$module
 
-  return node
-}
-
-/**
-* Initialise the script on a list of details elements in a container
-* @param {object} list of details elements
-* @param {string} container where to look for details elements
-*/
-Details.prototype.initDetails = function (list, container) {
-  container = container || document.body
-  // If this has already happened, just return
-  // else set the flag so it doesn't happen again
-  if (this.INITIALISED) {
+  if (!$module) {
     return
   }
-  this.INITIALISED = true
-  // Get the collection of details elements, but if that's empty
-  // then we don't need to bother with the rest of the scripting
-  if ((list = container.getElementsByTagName('details')).length === 0) {
+
+  // Save shortcuts to the inner summary and content elements
+  var $summary = this.$summary = $module.getElementsByTagName('summary').item(0)
+  var $content = this.$content = $module.getElementsByTagName('div').item(0)
+
+  // If <details> doesn't have a <summary> and a <div> representing the content
+  // it means the required HTML structure is not met so the script will stop
+  if (!$summary || !$content) {
     return
   }
-  // else iterate through them to apply their initial state
-  var n = list.length
-  var i = 0
-  for (i; i < n; i++) {
-    var details = list[i]
 
-    // Save shortcuts to the inner summary and content elements
-    details.__summary = details.getElementsByTagName('summary').item(0)
-    details.__content = details.getElementsByTagName('div').item(0)
+  // If the content doesn't have an ID, assign it one now
+  // which we'll need for the summary's aria-controls assignment
+  if (!$content.id) {
+    $content.id = 'details-content-' + generateUniqueID()
+  }
 
-    // If <details> doesn't have a <summary> and a <div> representing the content
-    // it means the required HTML structure is not met so the script will stop
-    if (!details.__summary || !details.__content) {
-      return
-    }
+  // Add ARIA role="group" to details
+  $module.setAttribute('role', 'group')
 
-    // If the content doesn't have an ID, assign it one now
-    // which we'll need for the summary's aria-controls assignment
-    if (!details.__content.id) {
-      details.__content.id = 'details-content-' + i
-    }
+  // Add role=button to summary
+  $summary.setAttribute('role', 'button')
 
-    // Add ARIA role="group" to details
-    details.setAttribute('role', 'group')
+  // Add aria-controls
+  $summary.setAttribute('aria-controls', $content.id)
 
-    // Add role=button to summary
-    details.__summary.setAttribute('role', 'button')
+  // Set tabIndex so the summary is keyboard accessible for non-native elements
+  // http://www.saliences.com/browserBugs/tabIndex.html
+  if (!NATIVE_DETAILS) {
+    $summary.tabIndex = 0
+  }
 
-    // Add aria-controls
-    details.__summary.setAttribute('aria-controls', details.__content.id)
-
-    // Set tabIndex so the summary is keyboard accessible for non-native elements
-    // http://www.saliences.com/browserBugs/tabIndex.html
+  // Detect initial open state
+  var openAttr = $module.getAttribute('open') !== null
+  if (openAttr === true) {
+    $summary.setAttribute('aria-expanded', 'true')
+    $content.setAttribute('aria-hidden', 'false')
+  } else {
+    $summary.setAttribute('aria-expanded', 'false')
+    $content.setAttribute('aria-hidden', 'true')
     if (!NATIVE_DETAILS) {
-      details.__summary.tabIndex = 0
+      $content.style.display = 'none'
     }
-
-    // Detect initial open state
-    var openAttr = details.getAttribute('open') !== null
-    if (openAttr === true) {
-      details.__summary.setAttribute('aria-expanded', 'true')
-      details.__content.setAttribute('aria-hidden', 'false')
-    } else {
-      details.__summary.setAttribute('aria-expanded', 'false')
-      details.__content.setAttribute('aria-hidden', 'true')
-      if (!NATIVE_DETAILS) {
-        details.__content.style.display = 'none'
-      }
-    }
-
-    // Create a circular reference from the summary back to its
-    // parent details element, for convenience in the click handler
-    details.__summary.__details = details
   }
 
   // Bind an event to handle summary elements
-  this.handleKeyDown(container, function (event, summary) {
-    if (!(summary = this.getAncestor(summary, 'summary'))) {
-      return true
-    }
-    return this.stateChange(summary)
-  }.bind(this))
+  this.handleInputs($module, this.setAttributes.bind(this))
 }
 
 /**
 * Define a statechange function that updates aria-expanded and style.display
 * @param {object} summary element
 */
-Details.prototype.stateChange = function (summary) {
-  var expanded = summary.__details.__summary.getAttribute('aria-expanded') === 'true'
-  var hidden = summary.__details.__content.getAttribute('aria-hidden') === 'true'
+Details.prototype.setAttributes = function () {
+  var $module = this.$module
+  var $summary = this.$summary
+  var $content = this.$content
 
-  summary.__details.__summary.setAttribute('aria-expanded', (expanded ? 'false' : 'true'))
-  summary.__details.__content.setAttribute('aria-hidden', (hidden ? 'false' : 'true'))
+  var expanded = $summary.getAttribute('aria-expanded') === 'true'
+  var hidden = $content.getAttribute('aria-hidden') === 'true'
+
+  $summary.setAttribute('aria-expanded', (expanded ? 'false' : 'true'))
+  $content.setAttribute('aria-hidden', (hidden ? 'false' : 'true'))
 
   if (!NATIVE_DETAILS) {
-    summary.__details.__content.style.display = (expanded ? 'none' : '')
+    $content.style.display = (expanded ? 'none' : '')
 
-    var hasOpenAttr = summary.__details.getAttribute('open') !== null
+    var hasOpenAttr = $module.getAttribute('open') !== null
     if (!hasOpenAttr) {
-      summary.__details.setAttribute('open', 'open')
+      $module.setAttribute('open', 'open')
     } else {
-      summary.__details.removeAttribute('open')
+      $module.removeAttribute('open')
     }
   }
   return true
@@ -187,19 +147,9 @@ Details.prototype.stateChange = function (summary) {
 * @param {object} node element
 */
 Details.prototype.destroy = function (node) {
-  removeEvent(node, 'click')
-}
-
-/**
-* Initialise an event listener for DOMContentLoaded at document level
-* and load at window level
-*
-* If the first one fires it will set a flag to block the second one
-* but if it's not supported then the second one will fire
-*/
-Details.prototype.init = function () {
-  addEvent(document, 'DOMContentLoaded', this.initDetails.bind(this))
-  addEvent(window, 'load', this.initDetails.bind(this))
+  node.removeEventListener('keypress')
+  node.removeEventListener('keyup')
+  node.removeEventListener('click')
 }
 
 export default Details

@@ -7,8 +7,12 @@ import Header from './components/header/header'
 import Radios from './components/radios/radios'
 
 function initAll () {
-  new Button().init()
-  new Details().init()
+  new Button(document).init()
+
+  var $details = document.querySelectorAll('details')
+  nodeListForEach($details, function ($detail) {
+    new Details($detail).init()
+  })
 
   var $checkboxes = document.querySelectorAll('[data-module="checkboxes"]')
   nodeListForEach($checkboxes, function ($checkbox) {
