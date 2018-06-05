@@ -1,8 +1,11 @@
+////
+/// @group tools
+////
+
 /// Conditionally include rules only for IE8
 ///
-/// Only output the CSS passed to the mixin if the $govuk-is-ie8 variable is
-/// set to true, which means the rules should only be outputted if compiling an
-/// IE8 specific stylesheet.
+/// @content Passed content is only outputted if we're compiling a stylesheet
+///   that targets IE8 (if `$govuk-is-ie8` is true)
 ///
 /// @example scss - Usage
 ///
@@ -13,6 +16,9 @@
 ///       width: 100px;
 ///     }
 ///   }
+///
+/// @access public
+
 @mixin govuk-if-ie8 {
   @if $govuk-is-ie8 {
     @content;
@@ -21,9 +27,8 @@
 
 /// Conditionally exclude rules for IE8
 ///
-/// Only output the CSS passed to the mixin if the $govuk-is-ie8 variable is
-/// not set to true, which means the rules should be excluded when compiling
-/// an IE8 specific stylesheet.
+/// @content Passed content is only outputted if we're not compiling a
+///   stylesheet that targets IE8 (if `$govuk-is-ie8` is false)
 ///
 /// @example scss - Usage
 ///
@@ -36,6 +41,9 @@
 ///       color: #FF69B4;
 ///     }
 ///   }
+///
+/// @access public
+
 @mixin govuk-not-ie8 {
   @if not $govuk-is-ie8 {
     @content;

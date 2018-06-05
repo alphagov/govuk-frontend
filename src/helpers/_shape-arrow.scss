@@ -1,28 +1,40 @@
-// Calculate the height of an equilateral triangle
-//
-// Multiplying half the length of the base of an equilateral triangle by the
-// square root of three gives us its height. We use 1.732 as an approximation.
-@function govuk-equilateral-height($base) {
+////
+/// @group helpers
+////
+
+/// Calculate the height of an equilateral triangle
+///
+/// Multiplying half the length of the base of an equilateral triangle by the
+/// square root of three gives us its height. We use 1.732 as an approximation.
+///
+/// @param {Number} $base - Length of the base of the triangle
+/// @return {Number} Calculated height of the triangle
+/// @access private
+
+@function _govuk-equilateral-height($base) {
   $square-root-of-three: 1.732;
 
   @return ($base / 2) * $square-root-of-three;
 }
 
-// Arrow mixin
-//
-// Generate Arrows (triangles) by using a mix of transparent (1) and coloured
-// borders. The coloured borders inherit the text colour of the element (2).
-//
-// Ensure the arrow is rendered correctly if browser colours are overridden by
-// providing a clip path (3). Without this the transparent borders are
-// overridden to become visible which results in a square.
-//
-// We need both because older browsers do not support clip-path.
-//
-// @param {Direction} $direction - Direction for arrow: up, right, down, left.
-// @param {Base} $base - Length of the triangle 'base' side
-// @param {Height} $height - Height of triangle. Omit for equilateral.
-// @param {Display} $display - CSS display property of the arrow: block as default
+/// Arrow mixin
+///
+/// Generate Arrows (triangles) by using a mix of transparent (1) and coloured
+/// borders. The coloured borders inherit the text colour of the element (2).
+///
+/// Ensure the arrow is rendered correctly if browser colours are overridden by
+/// providing a clip path (3). Without this the transparent borders are
+/// overridden to become visible which results in a square.
+///
+/// We need both because older browsers do not support clip-path.
+///
+/// @param {String} $direction - Direction for arrow: up, right, down, left.
+/// @param {Number} $base - Length of the triangle 'base' side
+/// @param {Number} $height [null] - Height of triangle. Omit for equilateral.
+/// @param {String} $display [block] - CSS display property of the arrow
+///
+/// @access public
+
 @mixin govuk-shape-arrow($direction, $base, $height: null, $display: block) {
   display: $display;
 

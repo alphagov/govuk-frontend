@@ -1,22 +1,23 @@
-// Create responsive spacing, with media query for each breakpoint as set
-// in settings/spacing,
+////
+/// @group helpers
+////
 
-// Create responsive margins
-// Arguments:
-// $value = top \ right \ bottom \ left \ all
-@mixin govuk-responsive-margin($scale-map, $value: "all", $important: false, $adjustment: false) {
-  @include govuk-responsive-spacing($scale-map, "margin", $value, $important, $adjustment);
-}
+/// Responsive spacing
+///
+/// Adds responsive spacing (either padding or margin, depending on `$property`)
+/// using a 'spacing map', which defines different spacing values at different
+/// breakpoints.
+///
+/// @param {Map} $scale-map - Map of breakpoints and spacing values
+/// @param {String} $property - Property to add spacing to (e.g. 'margin')
+/// @param {String} $direction [all] - Direction to add spacing to
+///   (`top`, `right`, `bottom`, `left`, `all`)
+/// @param {Boolean} $important [false] - Whether to mark as `!important`
+/// @param {Number} $adjustment [false] - Offset to adjust spacing by
+///
+/// @access public
 
-// // Create responsive padding
-// // Arguments:
-// // $value = top \ right \ bottom \ left \ all
-@mixin govuk-responsive-padding($scale-map, $value: "all", $important: false, $adjustment: false) {
-  @include govuk-responsive-spacing($scale-map, "padding", $value, $important, $adjustment);
-}
-
-//  Base mixin, also used by 'generate-spacing-overrides' mixin
-@mixin govuk-responsive-spacing($scale-map, $property, $value: "all", $important: false, $adjustment: false) {
+@mixin govuk-responsive-spacing($scale-map, $property, $direction: "all", $important: false, $adjustment: false) {
 
   // Ensure that $scale-map is actually a map - it's really easy to accidentally
   // pass in a point from the non-responsive scale, in which case this mixin
@@ -38,19 +39,59 @@
     // The 'null' breakpoint is for mobile.
     @if $breakpoint == null {
 
-      @if $value == all {
+      @if $direction == all {
         #{$property}: $breakpoint-value iff($important, !important);
       } @else {
-        #{$property}-#{$value}: $breakpoint-value iff($important, !important);
+        #{$property}-#{$direction}: $breakpoint-value iff($important, !important);
       }
     } @else {
       @include mq($from: $breakpoint) {
-        @if $value == all {
+        @if $direction == all {
           #{$property}: $breakpoint-value iff($important, !important);
         } @else {
-          #{$property}-#{$value}: $breakpoint-value iff($important, !important);
+          #{$property}-#{$direction}: $breakpoint-value iff($important, !important);
         }
       }
     }
   }
+}
+
+/// Responsive margin
+///
+/// Adds responsive margin using a 'spacing map', which defines different
+/// spacing values at different breakpoints. Wrapper for the
+/// `govuk-responsive-spacing` mixin.
+///
+/// @see {mixin} govuk-responsive-spacing
+///
+/// @param {Map} $scale-map - Map of breakpoints and spacing values
+/// @param {String} $direction [all] - Direction to add spacing to
+///   (`top`, `right`, `bottom`, `left`, `all`)
+/// @param {Boolean} $important [false] - Whether to mark as `!important`
+/// @param {Number} $adjustment [false] - Offset to adjust spacing by
+///
+/// @access public
+
+@mixin govuk-responsive-margin($scale-map, $direction: "all", $important: false, $adjustment: false) {
+  @include govuk-responsive-spacing($scale-map, "margin", $direction, $important, $adjustment);
+}
+
+/// Responsive padding
+///
+/// Adds responsive padding using a 'spacing map', which defines different
+/// spacing values at different breakpoints. Wrapper for the
+/// `govuk-responsive-spacing` mixin.
+///
+/// @see {mixin} govuk-responsive-spacing
+///
+/// @param {Map} $scale-map - Map of breakpoints and spacing values
+/// @param {String} $direction [all] - Direction to add spacing to
+///   (`top`, `right`, `bottom`, `left`, `all`)
+/// @param {Boolean} $important [false] - Whether to mark as `!important`
+/// @param {Number} $adjustment [false] - Offset to adjust spacing by
+///
+/// @access public
+
+@mixin govuk-responsive-padding($scale-map, $direction: "all", $important: false, $adjustment: false) {
+  @include govuk-responsive-spacing($scale-map, "padding", $direction, $important, $adjustment);
 }

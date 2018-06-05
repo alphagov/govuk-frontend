@@ -1,9 +1,20 @@
-@import "../tools/exports";
+////
+/// @group helpers
+////
 
 // Disables linting for this file only
 // sass-lint:disable no-css-comments, no-duplicate-properties, property-sort-order, indentation
 
-@mixin govuk-font-face-nta {
+@import "../tools/exports";
+
+/// Font Face - NTA
+///
+/// Outputs the font-face declaration for NTA at the root of the CSS document
+/// the first time it is called.
+///
+/// @access private
+
+@mixin _govuk-font-face-nta {
   @include govuk-exports("govuk/helpers/font-face") {
     @at-root {
       /*! Copyright (c) 2011 by Margaret Calvert & Henrik Kubel. All rights reserved. The font has been customised for exclusive use on gov.uk. This cut is not commercially available. */

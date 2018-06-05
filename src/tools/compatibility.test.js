@@ -61,6 +61,6 @@ describe('@mixin govuk-compatibility', () => {
 
     await expect(sassRender({ data: sass, ...sassConfig }))
       .rejects
-      .toThrow('Non existent compatibility product \'non_existent_app\'')
+      .toThrow('Non existent product \'non_existent_app\'')
   })
 })
