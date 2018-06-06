@@ -80,6 +80,9 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 
 🔧 Fixes:
 
+- Fix govuk-equilateral-height function usage in shape-arrow helper
+  ([PR ##766](https://github.com/alphagov/govuk-frontend/pull/766))
+
 - The `<label>` element will now be omitted for form controls where no label
   text or html is provided. If you call the label component directly whilst
   passing neither text nor html, no HTML will be outputted.
