@@ -39,7 +39,7 @@
   'rows' : [
     [
       {
-        text: 'summaryText'
+        text: 'summaryText (or) summaryHtml'
       },
       {
         text: 'string'
@@ -48,12 +48,12 @@
         text: 'Yes'
       },
       {
-        text: 'Text to use within the summary element (the visible part of the details element)'
+        text: 'Text or HTML to use within the summary element (the visible part of the details element). If `summaryHtml` is provided, the `summaryText` argument will be ignored.'
       }
     ],
     [
       {
-        text: 'summaryHtml'
+        text: 'text (or) html'
       },
       {
         text: 'string'
@@ -62,35 +62,7 @@
         text: 'Yes'
       },
       {
-        text: 'HTML to use within the summary element (the visible part of the details element). If this is provided, the summaryText argument will be ignored.'
-      }
-    ],
-    [
-      {
-        text: 'text'
-      },
-      {
-        text: 'string'
-      },
-      {
-        text: 'Yes'
-      },
-      {
-        text: 'Text to use within the disclosed part of the details element.'
-      }
-    ],
-    [
-      {
-        text: 'html'
-      },
-      {
-        text: 'string'
-      },
-      {
-        text: 'Yes'
-      },
-      {
-        text: 'HTML to use within the disclosed part of the details element. If this is provided, the text argument will be ignored.'
+        text: 'Text or HTML to use within the disclosed part of the details element. If `html` is provided, the `text` argument will be ignored.'
       }
     ],
     [
@@ -104,21 +76,7 @@
         text: 'No'
       },
       {
-        text: 'Optional id'
-      }
-    ],
-    [
-      {
-        text: 'classes'
-      },
-      {
-        text: 'string'
-      },
-      {
-        text: 'No'
-      },
-      {
-        text: 'Optional additional classes'
+        text: 'Optional id to add to the details element.'
       }
     ],
     [
@@ -132,7 +90,21 @@
         text: 'No'
       },
       {
-        text: 'If true, details will be expanded.'
+        text: 'If true, details element will be expanded.'
+      }
+    ],
+    [
+      {
+        text: 'classes'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Optional additional classes to add to the details element.'
       }
     ],
     [
@@ -146,7 +118,7 @@
         text: 'No'
       },
       {
-        text: 'Any extra HTML attributes (for example data attributes) to add to the details element'
+        text: 'Any extra HTML attributes (for example data attributes) to add to the details element.'
       }
     ]
   ]
