@@ -81,20 +81,6 @@
     ],
     [
       {
-        text: 'classes'
-      },
-      {
-        text: 'string'
-      },
-      {
-        text: 'No'
-      },
-      {
-        text: 'Optional additional classes'
-      }
-    ],
-    [
-      {
         text: 'idPrefix'
       },
       {
@@ -104,7 +90,7 @@
         text: 'No'
       },
       {
-        text: 'String to prefix id for each checkbox item if no id is specified on each item.'
+        text: 'String to prefix id for each checkbox item if no id is specified on each item. If`idPrefix` is not passed, fallback to using the name attribute instead.'
       }
     ],
     [
@@ -132,12 +118,26 @@
         text: 'Yes'
       },
       {
-        text: 'Array of checkbox items.'
+        text: 'Array of checkbox items objects.'
       }
     ],
     [
       {
-        text: 'text'
+        text: 'items.{}.text (or) items.{}.html'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'Yes'
+      },
+      {
+        text: 'Text or HTML to use within each checkbox item label. If `html` is provided, the `text` argument will be ignored.'
+      }
+    ],
+    [
+      {
+        text: 'items.{}.id'
       },
       {
         text: 'string'
@@ -146,26 +146,40 @@
         text: 'No'
       },
       {
-        text: 'Text to use within each checkbox item label.'
+        text: 'Specific id attribute for the checkbox item. If ommited, then `idPrefix` string will be applied.'
       }
     ],
     [
       {
-        text: 'html'
+        text: 'items.{}.name'
       },
       {
         text: 'string'
       },
       {
-        text: 'No'
+        text: 'Yes'
       },
       {
-        text: 'HTML to use within each checkbox item label. If this is provided, the text argument will be ignored.'
+        text: 'Specific name for the checkbox item. If ommited, then component global `name` string will be applied.'
       }
     ],
     [
       {
-        text: 'label'
+        text: 'items.{}.value'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'Yes'
+      },
+      {
+        text: 'Value for the checkbox input.'
+      }
+    ],
+    [
+      {
+        text: 'items.{}.label'
       },
       {
         text: 'object'
@@ -174,12 +188,12 @@
         text: 'No'
       },
       {
-        text: 'Provide additional attributes to each checkbox item label.'
+        html: 'Provide additional attributes to each checkbox item label. See `label` component for more details.'
       }
     ],
     [
       {
-        text: 'checked'
+        text: 'items.{}.checked'
       },
       {
         text: 'boolean'
@@ -188,12 +202,12 @@
         text: 'No'
       },
       {
-        text: 'If true, checkbox will be checked'
+        text: 'If true, checkbox will be checked.'
       }
     ],
     [
       {
-        text: 'disabled'
+        text: 'items.{}.conditional'
       },
       {
         text: 'boolean'
@@ -202,7 +216,49 @@
         text: 'No'
       },
       {
-        text: 'If true, checkbox will be disabled'
+        text: 'If true, content provided will be revealed when the item is checked.'
+      }
+    ],
+    [
+      {
+        text: 'items.{}.conditional.html'
+      },
+      {
+        text: 'boolean'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Provide content for the conditional reveal.'
+      }
+    ],
+    [
+      {
+        text: 'items.{}.disabled'
+      },
+      {
+        text: 'boolean'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'If true, checkbox will be disabled.'
+      }
+    ],
+    [
+      {
+        text: 'classes'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Optional additional classes to add to the checkboxes container.'
       }
     ],
     [
