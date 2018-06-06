@@ -9,7 +9,6 @@ Frontend, please get in touch with the [Design System
 team](mailto:govuk-design-system-support@digital.cabinet-office.gov.uk) at
 GDS.** :rotating_light:
 
-
 ## What is GOV.UK Frontend?
 
 GOV.UK Frontend contains the code you need to start building a user interface
@@ -19,6 +18,10 @@ See live examples of GOV.UK Frontend components, and guidance on when to use
 them in your service, in the [GOV.UK Design
 System](https://govuk-design-system-production.cloudapps.digital/).
 
+## Contact the team
+
+GOV.UK Frontend is maintained by a team at Government Digital Service. If you want to know more about GOV.UK Frontend, please email the [Design System
+team](mailto:govuk-design-system-support@digital.cabinet-office.gov.uk) or get in touch with them on [Slack](https://ukgovernmentdigital.slack.com/messages/govuk-design-system).
 
 ## Quick start
 
