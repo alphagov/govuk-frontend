@@ -28,7 +28,7 @@
   }
 
   .govuk-table__cell--numeric {
-    @include govuk-font-regular-tabular;
+    @include govuk-font($size: false, $tabular: true);
   }
 
   .govuk-table__header--numeric,
