@@ -24,6 +24,7 @@ Find out when to use the Footer component in your service in the [GOV.UK Design 
 
             <svg
               role="presentation"
+              focusable="false"
               class="govuk-footer__licence-logo"
               xmlns="http://www.w3.org/2000/svg"
               viewbox="0 0 483.2 195.7"

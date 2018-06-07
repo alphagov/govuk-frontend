@@ -110,6 +110,10 @@ Note: We're not following semantic versioning yet, we are going to talk about th
   setting rather than being hardcoded to use NTA tabular.
   ([PR #748](https://github.com/alphagov/govuk-frontend/pull/748))
 
+- Prevents focus from being lost to the inline SVGs in the header (the crown)
+  and footer (the OGL logo) by marking them as non-focusable elements
+  ([PR #774](https://github.com/alphagov/govuk-frontend/pull/774))
+
 
 🆕 New features:
 
