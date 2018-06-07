@@ -111,7 +111,7 @@
   .govuk-header__link--service-name {
     display: inline-block;
     margin-bottom: $govuk-spacing-scale-2;
-    @include govuk-font-bold-24;
+    @include govuk-font($size: 24, $weight: bold);
   }
 
   .govuk-header__logo {
@@ -218,7 +218,7 @@
     }
 
     a {
-      @include govuk-font-bold-16;
+      @include govuk-font($size: 16, $weight: bold);
       white-space: nowrap;
     }
   }

@@ -30,7 +30,7 @@
     margin-top: 0;
     margin-bottom: $govuk-spacing-scale-6;
 
-    @include govuk-font-bold-48;
+    @include govuk-font($size: 48, $weight: bold);
   }
 
   .govuk-panel__body {
