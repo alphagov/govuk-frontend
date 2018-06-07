@@ -7,7 +7,7 @@
 @include govuk-exports("govuk/component/warning-text") {
 
   .govuk-warning-text {
-    @include govuk-font-regular-19;
+    @include govuk-font($size: 19);
     @include govuk-text-colour;
 
     position: relative;

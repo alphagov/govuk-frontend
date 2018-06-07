@@ -8,7 +8,7 @@
 
 @include govuk-exports("govuk/component/input") {
   .govuk-input {
-    @include govuk-font-regular-19;
+    @include govuk-font($size: 19);
     @include govuk-focusable;
 
     box-sizing: border-box;

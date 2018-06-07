@@ -16,7 +16,7 @@
   $govuk-header-nav-item-border-color: #2e3133;
 
   .govuk-header {
-    @include govuk-font-regular-16;
+    @include govuk-font($size: 16);
 
     border-bottom: $govuk-spacing-scale-2 solid $govuk-white;
     color: $govuk-header-text;
@@ -54,7 +54,7 @@
   }
 
   .govuk-header__product-name {
-    @include govuk-font-regular-24;
+    @include govuk-font($size: 24);
   }
 
   .govuk-header__link {
@@ -134,7 +134,7 @@
   }
 
   .govuk-header__menu-button {
-    @include govuk-font-regular-16;
+    @include govuk-font($size: 16);
     display: none;
     position: absolute;
     top: $govuk-spacing-scale-4;

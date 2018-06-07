@@ -6,7 +6,7 @@
 
 @include govuk-exports("govuk/component/phase-banner") {
   .govuk-phase-banner {
-    @include govuk-font-regular-16;
+    @include govuk-font($size: 16);
     @include govuk-text-colour;
 
     padding-top: $govuk-spacing-scale-2;

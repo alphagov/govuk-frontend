@@ -4,7 +4,7 @@
 
 @include govuk-exports("govuk/component/hint") {
   .govuk-hint {
-    @include govuk-font-regular-19;
+    @include govuk-font($size: 19);
 
     display: block;
 

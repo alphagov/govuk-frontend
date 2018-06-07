@@ -12,7 +12,7 @@
   $govuk-radios-label-padding-left-right: $govuk-spacing-scale-3;
 
   .govuk-radios__item {
-    @include govuk-font-regular-19;
+    @include govuk-font($size: 19);
 
     display: block;
 

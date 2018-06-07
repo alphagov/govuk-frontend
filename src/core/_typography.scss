@@ -68,7 +68,7 @@
   // placeholder classes.
 
   .govuk-caption-xl {
-    @include govuk-font-regular-27;
+    @include govuk-font($size: 27);
 
     display: block;
 
@@ -78,7 +78,7 @@
   }
 
   .govuk-caption-l {
-    @include govuk-font-regular-24;
+    @include govuk-font($size: 24);
 
     display: block;
 
@@ -91,7 +91,7 @@
   }
 
   .govuk-caption-m {
-    @include govuk-font-regular-19;
+    @include govuk-font($size: 19);
 
     display: block;
 
@@ -102,7 +102,7 @@
 
   %govuk-body-l {
     @include govuk-text-colour;
-    @include govuk-font-regular-24;
+    @include govuk-font($size: 24);
 
     margin-top: 0;
     @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom");
@@ -114,7 +114,7 @@
 
   %govuk-body-m {
     @include govuk-text-colour;
-    @include govuk-font-regular-19;
+    @include govuk-font($size: 19);
 
     margin-top: 0;
     @include govuk-responsive-margin($govuk-spacing-responsive-4, "bottom");
@@ -126,7 +126,7 @@
 
   %govuk-body-s {
     @include govuk-text-colour;
-    @include govuk-font-regular-16;
+    @include govuk-font($size: 16);
 
     margin-top: 0;
     @include govuk-responsive-margin($govuk-spacing-responsive-4, "bottom");
@@ -138,7 +138,7 @@
 
   %govuk-body-xs {
     @include govuk-text-colour;
-    @include govuk-font-regular-14;
+    @include govuk-font($size: 14);
 
     margin-top: 0;
     @include govuk-responsive-margin($govuk-spacing-responsive-4, "bottom");

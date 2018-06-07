@@ -11,7 +11,7 @@
   }
 
   .govuk-fieldset__legend {
-    @include govuk-font-regular-19;
+    @include govuk-font($size: 19);
     @include govuk-text-colour;
 
     // Fix legend text wrapping in Edge and IE
