@@ -78,6 +78,12 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 - Remove `pageStart` block from template, as could result in rendering issues in older IE.
   ([PR #765](https://github.com/alphagov/govuk-frontend/pull/765))
 
+- You should no longer call the `mq` mixin directly - you should replace any
+  calls to it from your own code with `govuk-media-query` which accepts the same
+  arguments. All mixins and settings that start with `mq-` should be considered
+  private – they could be removed in the future without notice.
+  ([PR #763](https://github.com/alphagov/govuk-frontend/pull/763))
+
 🔧 Fixes:
 
 - Fix govuk-equilateral-height function usage in shape-arrow helper
