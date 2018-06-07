@@ -143,10 +143,7 @@
 
   .govuk-button--start {
     @include govuk-typography-weight-bold;
-    @include govuk-typography-responsive(
-      $govuk-font-24,
-      $override-line-height: 1
-    );
+    @include govuk-typography-responsive($size: 24, $override-line-height: 1);
 
     min-height: auto;
     padding-top: $govuk-spacing-scale-2 - $govuk-border-width-form-element;
