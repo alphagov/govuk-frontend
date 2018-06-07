@@ -70,37 +70,37 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
+<th class="govuk-table__header" scope="row">text (or) html</th>
+
+<td class="govuk-table__cell ">string</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Text to use within the error message. If `html` is provided, the `text` argument will be ignored.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">id</th>
+
+<td class="govuk-table__cell ">string</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Optional id attribute to add to the error message span tag.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
 <th class="govuk-table__header" scope="row">classes</th>
 
 <td class="govuk-table__cell ">string</td>
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Optional additional classes</td>
-
-</tr>
-
-<tr class="govuk-table__row">
-
-<th class="govuk-table__header" scope="row">text</th>
-
-<td class="govuk-table__cell ">string</td>
-
-<td class="govuk-table__cell ">No</td>
-
-<td class="govuk-table__cell ">Text to use within the error message</td>
-
-</tr>
-
-<tr class="govuk-table__row">
-
-<th class="govuk-table__header" scope="row">html</th>
-
-<td class="govuk-table__cell ">string</td>
-
-<td class="govuk-table__cell ">No</td>
-
-<td class="govuk-table__cell ">HTML to use within the error message. If this is provided, the text argument will be ignored.</td>
+<td class="govuk-table__cell ">Optional additional classes to add to the error message span tag.</td>
 
 </tr>
 
