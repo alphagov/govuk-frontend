@@ -15,11 +15,7 @@
   $button-shadow-size: $govuk-border-width-form-element;
 
   .govuk-button {
-    @include govuk-font-regular;
-    @include govuk-typography-responsive(
-      $govuk-font-19,
-      $override-line-height: 19px
-    );
+    @include govuk-font($size: 19, $line-height: 19px);
     @include govuk-focusable;
 
     box-sizing: border-box;

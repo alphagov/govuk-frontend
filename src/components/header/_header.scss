@@ -88,8 +88,7 @@
   .govuk-header__link--homepage {
     // Font size needs to be set on the link so that the box sizing is correct
     // in Firefox
-    @include govuk-typography-common;
-    @include govuk-typography-weight-bold;
+    @include govuk-font($size: false, $weight: bold);
 
     display: inline-block;
     font-size: 30px; // We don't have a mixin that produces 30px font size

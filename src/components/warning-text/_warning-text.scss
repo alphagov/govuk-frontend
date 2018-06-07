@@ -20,7 +20,7 @@
   }
 
   .govuk-warning-text__icon {
-    @include govuk-font-bold;
+    @include govuk-font($size: false, $weight: bold);
 
     display: inline-block;
 
