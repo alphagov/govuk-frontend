@@ -5,12 +5,15 @@
 /// Get the colour for a government organisation
 ///
 /// @param {String} $organisation - Organisation name, lowercase, hyphenated
-/// @param {Boolean} $websafe - Set this to true if the colour will be used for
-///   text, to ensure that the colour returned will meet contrast requirements.
+/// @param {Boolean} $websafe [true] - By default a 'websafe' version of the
+///   colour will be returned which meets contrast requirements . If you want to
+///   use the non-websafe version you can set this to `false` but your should
+///   ensure that you still meets contrast requirements for accessibility - for
+///   example, don't use the non-websafe version for text.
 ///
 /// @access public
 
-@function govuk-organisation-colour($organisation, $websafe: false) {
+@function govuk-organisation-colour($organisation, $websafe: true) {
   @if not map-has-key($govuk-colours-organisations, $organisation) {
     @error "Unknown organisation `#{$organisation}`";
   }

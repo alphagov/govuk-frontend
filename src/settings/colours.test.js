@@ -13,7 +13,7 @@ const sassConfig = {
 }
 
 describe('Organisation colours', () => {
-  it('should have websafe colours that meet contrast requirements', async () => {
+  it('should define websafe colours that meet contrast requirements', async () => {
     const sass = `
       @import "settings/colours-palette";
       @import "settings/colours-organisations";
@@ -26,7 +26,7 @@ describe('Organisation colours', () => {
 
       @each $organisation in map-keys($govuk-colours-organisations) {
 
-        $colour: govuk-organisation-colour($organisation, $websafe: true);
+        $colour: govuk-organisation-colour($organisation);
         $contrast: ch-color-contrast($govuk-body-background-colour, $colour);
 
         @if ($contrast < $minimum-contrast) {
