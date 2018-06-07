@@ -54,7 +54,7 @@ describe('@mixin govuk-typography-responsive', () => {
       ${sassBootstrap}
 
       .foo {
-        @include govuk-typography-responsive(map-get($govuk-typography-scale, 14))
+        @include govuk-typography-responsive($size: 14)
       }`
 
     const results = await sassRender({ data: sass, ...sassConfig })
@@ -74,7 +74,7 @@ describe('@mixin govuk-typography-responsive', () => {
       ${sassBootstrap}
 
       .foo {
-        @include govuk-typography-responsive(12)
+        @include govuk-typography-responsive($size: 12)
       }`
 
     const results = await sassRender({ data: sass, ...sassConfig })
@@ -89,19 +89,18 @@ describe('@mixin govuk-typography-responsive', () => {
             line-height: 20pt; } }`)
   })
 
-  it('throws an exception when passed anything other than a font map', async () => {
+  it('throws an exception when passed a size that is not in the scale', async () => {
     const sass = `
       ${sassBootstrap}
 
       .foo {
-        @include govuk-typography-responsive(14px)
+        @include govuk-typography-responsive(3.14159265359)
       }`
 
     await expect(sassRender({ data: sass, ...sassConfig }))
       .rejects
       .toThrow(
-        'Expected a map of breakpoints and font sizes, but got a null. ' +
-        'Make sure you are passing a font map.'
+        'Unknown font size `3.14159` - expected a point from the typography scale.'
       )
   })
 
@@ -111,7 +110,7 @@ describe('@mixin govuk-typography-responsive', () => {
         ${sassBootstrap}
 
         .foo {
-          @include govuk-typography-responsive(14, $important: true);
+          @include govuk-typography-responsive($size: 14, $important: true);
         }`
 
       const results = await sassRender({ data: sass, ...sassConfig })
@@ -131,7 +130,7 @@ describe('@mixin govuk-typography-responsive', () => {
         ${sassBootstrap}
 
         .foo {
-          @include govuk-typography-responsive(12, $important: true);
+          @include govuk-typography-responsive($size: 12, $important: true);
         }`
 
       const results = await sassRender({ data: sass, ...sassConfig })
@@ -153,7 +152,7 @@ describe('@mixin govuk-typography-responsive', () => {
         ${sassBootstrap}
 
         .foo {
-          @include govuk-typography-responsive(14, $override-line-height: 30px);
+          @include govuk-typography-responsive($size: 14, $override-line-height: 30px);
         }`
 
       const results = await sassRender({ data: sass, ...sassConfig })

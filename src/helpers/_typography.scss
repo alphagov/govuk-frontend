@@ -91,22 +91,11 @@
 
 @mixin govuk-typography-responsive($size, $override-line-height: false, $important: false) {
 
-  $font-map: null;
-
-  @if (type-of($size) == "map") {
-    $font-map: $size;
-  } @else {
-    @if (map-has-key($govuk-typography-scale, $size)) {
-      $font-map: map-get($govuk-typography-scale, $size);
-    }
+  @if not map-has-key($govuk-typography-scale, $size) {
+    @error "Unknown font size `#{$size}` - expected a point from the typography scale.";
   }
 
-  // Ensure that $font-map is actually a map
-  $actual-input-type: type-of($font-map);
-  @if $actual-input-type != "map" {
-    @error "Expected a map of breakpoints and font sizes, but got a "
-    + "#{$actual-input-type}. Make sure you are passing a font map.";
-  }
+  $font-map: map-get($govuk-typography-scale, $size);
 
   @each $breakpoint, $breakpoint-map in $font-map {
     $font-size: map-get($breakpoint-map, "font-size") iff($important, !important);
