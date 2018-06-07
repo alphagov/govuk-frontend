@@ -18,28 +18,29 @@ const sassBootstrap = `
   @import "settings/ie8";
 
   $govuk-breakpoints: (
-    my_breakpoint: 30em
+    desktop: 30em
   );
 
-  $font-map: (
-    null: (
-      font-size: 12px,
-      line-height: 15px
+  $govuk-typography-scale: (
+    12: (
+      null: (
+        font-size: 12px,
+        line-height: 15px
+      ),
+      print: (
+        font-size: 14pt,
+        line-height: 20pt
+      )
     ),
-    my_breakpoint: (
-      font-size: 14px,
-      line-height: 20px
-    )
-  );
-
-  $font-map-print: (
-    null: (
-      font-size: 12px,
-      line-height: 15px
-    ),
-    print: (
-      font-size: 14pt,
-      line-height: 20pt
+    14: (
+      null: (
+        font-size: 12px,
+        line-height: 15px
+      ),
+      desktop: (
+        font-size: 14px,
+        line-height: 20px
+      )
     )
   );
 
@@ -53,7 +54,7 @@ describe('@mixin govuk-typography-responsive', () => {
       ${sassBootstrap}
 
       .foo {
-        @include govuk-typography-responsive($font-map)
+        @include govuk-typography-responsive(map-get($govuk-typography-scale, 14))
       }`
 
     const results = await sassRender({ data: sass, ...sassConfig })
@@ -73,7 +74,7 @@ describe('@mixin govuk-typography-responsive', () => {
       ${sassBootstrap}
 
       .foo {
-        @include govuk-typography-responsive($font-map-print)
+        @include govuk-typography-responsive(12)
       }`
 
     const results = await sassRender({ data: sass, ...sassConfig })
@@ -99,7 +100,7 @@ describe('@mixin govuk-typography-responsive', () => {
     await expect(sassRender({ data: sass, ...sassConfig }))
       .rejects
       .toThrow(
-        'Expected a map of breakpoints and font sizes, but got a number. ' +
+        'Expected a map of breakpoints and font sizes, but got a null. ' +
         'Make sure you are passing a font map.'
       )
   })
@@ -110,7 +111,7 @@ describe('@mixin govuk-typography-responsive', () => {
         ${sassBootstrap}
 
         .foo {
-          @include govuk-typography-responsive($font-map, $important: true)
+          @include govuk-typography-responsive(14, $important: true);
         }`
 
       const results = await sassRender({ data: sass, ...sassConfig })
@@ -130,10 +131,7 @@ describe('@mixin govuk-typography-responsive', () => {
         ${sassBootstrap}
 
         .foo {
-          @include govuk-typography-responsive(
-            $font-map-print,
-            $important: true
-          )
+          @include govuk-typography-responsive(12, $important: true);
         }`
 
       const results = await sassRender({ data: sass, ...sassConfig })
@@ -155,10 +153,7 @@ describe('@mixin govuk-typography-responsive', () => {
         ${sassBootstrap}
 
         .foo {
-          @include govuk-typography-responsive(
-            $font-map,
-            $override-line-height: 30px
-          )
+          @include govuk-typography-responsive(14, $override-line-height: 30px);
         }`
 
       const results = await sassRender({ data: sass, ...sassConfig })

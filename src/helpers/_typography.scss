@@ -89,7 +89,17 @@
 ///
 /// @access public
 
-@mixin govuk-typography-responsive($font-map, $override-line-height: false, $important: false) {
+@mixin govuk-typography-responsive($size, $override-line-height: false, $important: false) {
+
+  $font-map: null;
+
+  @if (type-of($size) == "map") {
+    $font-map: $size;
+  } @else {
+    @if (map-has-key($govuk-typography-scale, $size)) {
+      $font-map: map-get($govuk-typography-scale, $size);
+    }
+  }
 
   // Ensure that $font-map is actually a map
   $actual-input-type: type-of($font-map);
