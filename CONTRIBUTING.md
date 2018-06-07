@@ -2,107 +2,71 @@
 
 We're not ready for contributions yet, this document exists as a guide for those working on govuk-frontend.
 
+## Contents of this file
+
+### For contributors
+- [Code of conduct](#code-of-conduct)
+- [Application architecture](#application-architecture)
+- [Running locally](#running-locally)
+- [Conventions to follow](#conventions-to-follow)
+  - [Indentation and whitespace](#indentation-and-whitespace)
+  - [CSS](#css)
+  - [JavaScript](#javascript)
+  - [Components and Nunjucks API](#components-and-nunjucks-api)
+- [Testing and linting](#testing-and-linting)
+- [Supported browsers](#supported-browsers)
+- [Commit hygiene](#commit-hygiene)
+- [Updating Changelog](#updating-changelog)
+
+### For maintainers
+- [Application tasks](#running-application-tasks)
+- [Deploying](#deploying)
+- [Versioning](#versioning)
+- [Releasing a new version](#releasing-a-new-version)
+
+
 ## Code of Conduct
 Please read [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) before contributing.
 
+## Application architecture
+
+See [application architecture](/docs/contributing/application-architecture.md) for an overview of the directories in this repository.
+
 ## Running locally
 
-You'll need [Git](https://help.github.com/articles/set-up-git/) and [Node.js](https://nodejs.org/en/) installed to get this project running.
+See [running locally](/docs/contributing/running-locally.md).
 
-Note: You will need the Node.js version specified in the [.nvmrc](./.nvmrc) file.
-This should reflect the most current [active LTS (Long-term support)](https://github.com/nodejs/Release#release-schedule).
+## Conventions to follow
 
-### Fork repository (optional)
-If you're an external contributor make sure to [fork this project first](https://help.github.com/articles/fork-a-repo/)
-
-### Clone repository
-```
-git clone git@github.com:alphagov/govuk-frontend.git # or clone your own fork
-
-cd govuk-frontend
-```
-
-### Using nvm (optional)
-If you work across multiple Node.js projects there's a good chance they require different Node.js and npm versions.
-
-To enable this we use [nvm (Node Version Manager)](https://github.com/creationix/nvm) to switch between versions easily.
-
-1. [install nvm](https://github.com/creationix/nvm#installation)
-2. Run `nvm install` in the project directory (this will use [.nvmrc](./.nvmrc))
-
-### Install npm dependencies
-We use [npm](https://docs.npmjs.com/getting-started/what-is-npm) to manage the dependencies in development.
-```
-npm install
-```
-
-### Start a local server
-This will build sources, serve pages and watch for changes.
-```
-npm start
-```
-
-# Conventions to follow
-
-## Indentation and whitespace
+### Indentation and whitespace
 
 2-space, soft-tabs only. No trailing whitespace.
 
-## CSS
+### CSS
 
-Prefix all classes with `.govuk-`.
+See our [coding standards for CSS](/docs/contributing/coding-standards/css.md) and [testing and linting](/docs/contributing/testing-and-linting.md).
 
-Use the BEM naming convention.
+### JavaScript
 
-For more detail, see our [coding standards for CSS](/docs/coding-standards/css.md).
+See our [coding standards for JavaScript](/docs/contributing/coding-standards/js.md) and [testing and linting](/docs/contributing/testing-and-linting.md).
 
-## JavaScript
+### Components and Nunjucks API
 
-`govuk-frontend` uses [standardjs](http://standardjs.com/), an opinionated JavaScript linter.
-All JavaScript files follow its conventions, and it runs on CI to ensure that new pull requests are in line with them.
+See our [coding standards for components](/docs/contributing/coding-standards/components.md), [coding standards for Nunjucks macros](/docs/contributing/coding-standards/nunjucks-api.md) and [testing and linting](/docs/contributing/testing-and-linting.md).
 
-To check the whole codebase, run:
+## Testing and linting
 
-    npm test
+See [testing and linting](/docs/contributing/testing-and-linting.md).
 
-For more detail, see our [coding standards for JavaScript](/docs/coding-standards/js.md).
+## Supported browsers
+Your contribution needs to work with certain browsers as set out in [README](README.md). See also [supporting Internet Explorer 8](/docs/installation/supporting-internet-explorer-8.md).
 
-### Testing components on their own
-You can run a subset of the test suite that only tests components by running:
+## Commit hygiene
 
-    npm test -- src/components/button
+Please see our [git style guide](https://github.com/alphagov/styleguides/blob/master/git.md)
+which describes how we prefer git history and commit messages to read.
 
-Note: There's a watch mode that keeps a testing session open waiting for changes that can be used with:
-
-    npm test -- --watch src/components/button
-
-#### Updating component snapshots
-
-If a snapshot test fails, review the difference in the console. If the change is the correct change to make, run:
-
-    npm test -- -u src/components/button
-
-This will update the snapshot file. Commit this file separately with a commit message that explains you're updating the snapshot file and an explanation of what caused the change.
-
-## Folder structure and naming
-
-Find components in `src/components`.
-
-Component folder and files should be singular, except in cases where they are more commonly used in groups, for example, radios, breadcrumbs and checkboxes.
-
-An example component exists in `src/components/component-example`.
-
-Use this as the basis for creating new components.
-
-The folder structure should be:
-
-    component-name
-      - _component-name.scss
-      - component-name.html
-      - component-name.js
-      - README.md
-
-# Updating Changelog
+## Updating Changelog
 
 If you open a GitHub pull request on this repo, please update `CHANGELOG` to reflect your contribution.
 
@@ -112,18 +76,20 @@ Please include a description of the work done and a link to the PR (see current 
 
 Include the modified `CHANGELOG` in the PR.
 
+## Application tasks
 
-# Versioning
+See [tasks](/docs/contributing/tasks.md).
+
+## Deploying
+
+See [deploying](/docs/contributing/deploying.md).
+
+## Versioning
 
 We are not using semantic versioning yet, we are going to talk about this soon.
 
 See `CHANGELOG` for more information.
 
-## To release a new version
+## Releasing a new version
 
-See `docs/publishing`
-
-# Commit hygiene
-
-Please see our [git style guide](https://github.com/alphagov/styleguides/blob/master/git.md)
-which describes how we prefer git history and commit messages to read.
+See [publishing](/docs/contributing/publishing.md).
