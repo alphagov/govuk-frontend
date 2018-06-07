@@ -18,28 +18,29 @@ const sassBootstrap = `
   @import "settings/ie8";
 
   $govuk-breakpoints: (
-    my_breakpoint: 30em
+    desktop: 30em
   );
 
-  $font-map: (
-    null: (
-      font-size: 12px,
-      line-height: 15px
+  $govuk-typography-scale: (
+    12: (
+      null: (
+        font-size: 12px,
+        line-height: 15px
+      ),
+      print: (
+        font-size: 14pt,
+        line-height: 20pt
+      )
     ),
-    my_breakpoint: (
-      font-size: 14px,
-      line-height: 20px
-    )
-  );
-
-  $font-map-print: (
-    null: (
-      font-size: 12px,
-      line-height: 15px
-    ),
-    print: (
-      font-size: 14pt,
-      line-height: 20pt
+    14: (
+      null: (
+        font-size: 12px,
+        line-height: 15px
+      ),
+      desktop: (
+        font-size: 14px,
+        line-height: 20px
+      )
     )
   );
 
@@ -53,7 +54,7 @@ describe('@mixin govuk-typography-responsive', () => {
       ${sassBootstrap}
 
       .foo {
-        @include govuk-typography-responsive($font-map)
+        @include govuk-typography-responsive($size: 14)
       }`
 
     const results = await sassRender({ data: sass, ...sassConfig })
@@ -73,7 +74,7 @@ describe('@mixin govuk-typography-responsive', () => {
       ${sassBootstrap}
 
       .foo {
-        @include govuk-typography-responsive($font-map-print)
+        @include govuk-typography-responsive($size: 12)
       }`
 
     const results = await sassRender({ data: sass, ...sassConfig })
@@ -88,19 +89,18 @@ describe('@mixin govuk-typography-responsive', () => {
             line-height: 20pt; } }`)
   })
 
-  it('throws an exception when passed anything other than a font map', async () => {
+  it('throws an exception when passed a size that is not in the scale', async () => {
     const sass = `
       ${sassBootstrap}
 
       .foo {
-        @include govuk-typography-responsive(14px)
+        @include govuk-typography-responsive(3.14159265359)
       }`
 
     await expect(sassRender({ data: sass, ...sassConfig }))
       .rejects
       .toThrow(
-        'Expected a map of breakpoints and font sizes, but got a number. ' +
-        'Make sure you are passing a font map.'
+        'Unknown font size `3.14159` - expected a point from the typography scale.'
       )
   })
 
@@ -110,7 +110,7 @@ describe('@mixin govuk-typography-responsive', () => {
         ${sassBootstrap}
 
         .foo {
-          @include govuk-typography-responsive($font-map, $important: true)
+          @include govuk-typography-responsive($size: 14, $important: true);
         }`
 
       const results = await sassRender({ data: sass, ...sassConfig })
@@ -130,10 +130,7 @@ describe('@mixin govuk-typography-responsive', () => {
         ${sassBootstrap}
 
         .foo {
-          @include govuk-typography-responsive(
-            $font-map-print,
-            $important: true
-          )
+          @include govuk-typography-responsive($size: 12, $important: true);
         }`
 
       const results = await sassRender({ data: sass, ...sassConfig })
@@ -155,10 +152,7 @@ describe('@mixin govuk-typography-responsive', () => {
         ${sassBootstrap}
 
         .foo {
-          @include govuk-typography-responsive(
-            $font-map,
-            $override-line-height: 30px
-          )
+          @include govuk-typography-responsive($size: 14, $override-line-height: 30px);
         }`
 
       const results = await sassRender({ data: sass, ...sassConfig })

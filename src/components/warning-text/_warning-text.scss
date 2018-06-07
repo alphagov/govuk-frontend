@@ -7,7 +7,7 @@
 @include govuk-exports("govuk/component/warning-text") {
 
   .govuk-warning-text {
-    @include govuk-font-regular-19;
+    @include govuk-font($size: 19);
     @include govuk-text-colour;
 
     position: relative;
@@ -20,7 +20,7 @@
   }
 
   .govuk-warning-text__icon {
-    @include govuk-font-bold;
+    @include govuk-font($size: false, $weight: bold);
 
     display: inline-block;
 

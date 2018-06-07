@@ -4,11 +4,7 @@
 
 @include govuk-exports("govuk/component/tag") {
   .govuk-tag {
-    @include govuk-font-bold;
-    @include govuk-typography-responsive(
-      $govuk-font-16,
-      $override-line-height: 1.25
-    );
+    @include govuk-font($size: 16, $weight: bold, $line-height: 1.25);
 
     display: inline-block;
     padding: $govuk-spacing-scale-1 8px 0;

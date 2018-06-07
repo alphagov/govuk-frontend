@@ -84,6 +84,22 @@ Note: We're not following semantic versioning yet, we are going to talk about th
   private – they could be removed in the future without notice.
   ([PR #763](https://github.com/alphagov/govuk-frontend/pull/763))
 
+- All of the shorthand 'font' mixins (e.g. `govuk-font-bold-80`,
+  `govuk-font-regular-tabular-19`), have been removed and replaced with calls to
+  a new mixin `govuk-font`. If you are using these mixins in your application
+  you will need to update your code to call `govuk-font` instead.
+  
+  ([PR #772](https://github.com/alphagov/govuk-frontend/pull/772))
+
+- The font maps are no longer as individual variables (e.g. `$govuk-font-80`) -
+  they are all now part of one single `$govuk-typography-scale` map. Instead of
+  passing font maps to `govuk-typography-responsive` you should now pass the
+  desktop font size (e.g. `govuk-typography-responsive(80)` or
+  `govuk-typography-responsive($size: 80)`.
+
+  ([PR #772](https://github.com/alphagov/govuk-frontend/pull/772))
+
+
 🔧 Fixes:
 
 - Fix govuk-equilateral-height function usage in shape-arrow helper

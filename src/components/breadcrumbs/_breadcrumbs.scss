@@ -20,7 +20,7 @@
   $chevron-altitude-calculated: 5.655px;
 
   .govuk-breadcrumbs {
-    @include govuk-font-regular-16;
+    @include govuk-font($size: 16);
     @include govuk-text-colour;
 
     margin-top: $govuk-spacing-scale-3;

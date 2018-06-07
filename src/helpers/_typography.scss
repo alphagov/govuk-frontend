@@ -89,14 +89,13 @@
 ///
 /// @access public
 
-@mixin govuk-typography-responsive($font-map, $override-line-height: false, $important: false) {
+@mixin govuk-typography-responsive($size, $override-line-height: false, $important: false) {
 
-  // Ensure that $font-map is actually a map
-  $actual-input-type: type-of($font-map);
-  @if $actual-input-type != "map" {
-    @error "Expected a map of breakpoints and font sizes, but got a "
-    + "#{$actual-input-type}. Make sure you are passing a font map.";
+  @if not map-has-key($govuk-typography-scale, $size) {
+    @error "Unknown font size `#{$size}` - expected a point from the typography scale.";
   }
+
+  $font-map: map-get($govuk-typography-scale, $size);
 
   @each $breakpoint, $breakpoint-map in $font-map {
     $font-size: map-get($breakpoint-map, "font-size") iff($important, !important);
@@ -125,196 +124,30 @@
   }
 }
 
-// The following helpers are 'syntactic sugar' for common typography
-// combinations and are not documented individually.
-//
-// Frustratingly, you can't generate mixins programmatically so we have to
-// define these 'by hand'.
+/// Font helper
+///
+/// @param {Number} $size - Size of the font as it would appear on desktop -
+///   uses the responsive font size map
+/// @param {String} $weight [regular] - Weight: `bold` or `regular`
+/// @param {Boolean} $tabular [false] - Whether to use tabular numbers or not
+/// @param {Number} $line-height [false] - Line-height, if overriding the default
+///
+/// @access public
 
-// Regular weights
+@mixin govuk-font($size, $weight: regular, $tabular: false, $line-height: false) {
+  @if $tabular {
+    @include govuk-typography-common($font-family: $govuk-font-family-tabular);
+  } @else {
+    @include govuk-typography-common;
+  }
 
-@mixin govuk-font-regular {
-  @include govuk-typography-common;
-  @include govuk-typography-weight-regular;
-}
+  @if $weight == regular {
+    @include govuk-typography-weight-regular;
+  } @else if $weight == bold {
+    @include govuk-typography-weight-bold;
+  }
 
-@mixin govuk-font-regular-80 {
-  @include govuk-font-regular;
-  @include govuk-typography-responsive($govuk-font-80);
-}
-
-@mixin govuk-font-regular-48 {
-  @include govuk-font-regular;
-  @include govuk-typography-responsive($govuk-font-48);
-}
-
-@mixin govuk-font-regular-36 {
-  @include govuk-font-regular;
-  @include govuk-typography-responsive($govuk-font-36);
-}
-
-@mixin govuk-font-regular-27 {
-  @include govuk-font-regular;
-  @include govuk-typography-responsive($govuk-font-27);
-}
-
-@mixin govuk-font-regular-24 {
-  @include govuk-font-regular;
-  @include govuk-typography-responsive($govuk-font-24);
-}
-
-@mixin govuk-font-regular-19 {
-  @include govuk-font-regular;
-  @include govuk-typography-responsive($govuk-font-19);
-}
-
-@mixin govuk-font-regular-16 {
-  @include govuk-font-regular;
-  @include govuk-typography-responsive($govuk-font-16);
-}
-
-@mixin govuk-font-regular-14 {
-  @include govuk-font-regular;
-  @include govuk-typography-responsive($govuk-font-14);
-}
-
-// Bold weights
-
-@mixin govuk-font-bold {
-  @include govuk-typography-common;
-  @include govuk-typography-weight-bold;
-}
-
-@mixin govuk-font-bold-80 {
-  @include govuk-font-bold;
-  @include govuk-typography-responsive($govuk-font-80);
-}
-
-@mixin govuk-font-bold-48 {
-  @include govuk-font-bold;
-  @include govuk-typography-responsive($govuk-font-48);
-}
-
-@mixin govuk-font-bold-36 {
-  @include govuk-font-bold;
-  @include govuk-typography-responsive($govuk-font-36);
-}
-
-@mixin govuk-font-bold-27 {
-  @include govuk-font-bold;
-  @include govuk-typography-responsive($govuk-font-27);
-}
-
-@mixin govuk-font-bold-24 {
-  @include govuk-font-bold;
-  @include govuk-typography-responsive($govuk-font-24);
-}
-
-@mixin govuk-font-bold-19 {
-  @include govuk-font-bold;
-  @include govuk-typography-responsive($govuk-font-19);
-}
-
-@mixin govuk-font-bold-16 {
-  @include govuk-font-bold;
-  @include govuk-typography-responsive($govuk-font-16);
-}
-
-@mixin govuk-font-bold-14 {
-  @include govuk-font-bold;
-  @include govuk-typography-responsive($govuk-font-14);
-}
-
-// Regular weights, tabular numbers
-
-@mixin govuk-font-regular-tabular {
-  @include govuk-typography-common($font-family: $govuk-font-family-tabular);
-  @include govuk-typography-weight-regular;
-}
-
-@mixin govuk-font-regular-tabular-80 {
-  @include govuk-font-regular-tabular;
-  @include govuk-typography-responsive($govuk-font-80);
-}
-
-@mixin govuk-font-regular-tabular-48 {
-  @include govuk-font-regular-tabular;
-  @include govuk-typography-responsive($govuk-font-48);
-}
-
-@mixin govuk-font-regular-tabular-36 {
-  @include govuk-font-regular-tabular;
-  @include govuk-typography-responsive($govuk-font-36);
-}
-
-@mixin govuk-font-regular-tabular-27 {
-  @include govuk-font-regular-tabular;
-  @include govuk-typography-responsive($govuk-font-27);
-}
-
-@mixin govuk-font-regular-tabular-24 {
-  @include govuk-font-regular-tabular;
-  @include govuk-typography-responsive($govuk-font-24);
-}
-
-@mixin govuk-font-regular-tabular-19 {
-  @include govuk-font-regular-tabular;
-  @include govuk-typography-responsive($govuk-font-19);
-}
-
-@mixin govuk-font-regular-tabular-16 {
-  @include govuk-font-regular-tabular;
-  @include govuk-typography-responsive($govuk-font-16);
-}
-
-@mixin govuk-font-regular-tabular-14 {
-  @include govuk-font-regular-tabular;
-  @include govuk-typography-responsive($govuk-font-14);
-}
-
-// Bold weights, tabular numbers
-
-@mixin govuk-font-bold-tabular {
-  @include govuk-typography-common($font-family: $govuk-font-family-tabular);
-  @include govuk-typography-weight-bold;
-}
-
-@mixin govuk-font-bold-tabular-80 {
-  @include govuk-font-bold-tabular;
-  @include govuk-typography-responsive($govuk-font-80);
-}
-
-@mixin govuk-font-bold-tabular-48 {
-  @include govuk-font-bold-tabular;
-  @include govuk-typography-responsive($govuk-font-48);
-}
-
-@mixin govuk-font-bold-tabular-36 {
-  @include govuk-font-bold-tabular;
-  @include govuk-typography-responsive($govuk-font-36);
-}
-
-@mixin govuk-font-bold-tabular-27 {
-  @include govuk-font-bold-tabular;
-  @include govuk-typography-responsive($govuk-font-27);
-}
-
-@mixin govuk-font-bold-tabular-24 {
-  @include govuk-font-bold-tabular;
-  @include govuk-typography-responsive($govuk-font-24);
-}
-
-@mixin govuk-font-bold-tabular-19 {
-  @include govuk-font-bold-tabular;
-  @include govuk-typography-responsive($govuk-font-19);
-}
-
-@mixin govuk-font-bold-tabular-16 {
-  @include govuk-font-bold-tabular;
-  @include govuk-typography-responsive($govuk-font-16);
-}
-
-@mixin govuk-font-bold-tabular-14 {
-  @include govuk-font-bold-tabular;
-  @include govuk-typography-responsive($govuk-font-14);
+  @if $size {
+    @include govuk-typography-responsive($size, $override-line-height: $line-height);
+  }
 }

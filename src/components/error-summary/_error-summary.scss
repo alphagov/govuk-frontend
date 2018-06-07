@@ -20,14 +20,14 @@
   }
 
   .govuk-error-summary__title {
-    @include govuk-font-bold-24;
+    @include govuk-font($size: 24, $weight: bold);
 
     margin-top: 0;
     @include govuk-responsive-margin($govuk-spacing-responsive-4, "bottom");
   }
 
   .govuk-error-summary__body {
-    @include govuk-font-regular-19;
+    @include govuk-font($size: 19);
 
     p {
       margin-top: 0;

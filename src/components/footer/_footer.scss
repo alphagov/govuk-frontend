@@ -21,8 +21,7 @@
   $govuk-footer-crest-image-height: ($govuk-footer-crest-image-height-2x / 2);
 
   .govuk-footer {
-    @include govuk-font-regular;
-    @include govuk-typography-responsive($govuk-font-16);
+    @include govuk-font($size: 16);
     @include govuk-responsive-padding($govuk-spacing-responsive-7, "top");
     @include govuk-responsive-padding($govuk-spacing-responsive-5, "bottom");
 

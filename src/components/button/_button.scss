@@ -15,11 +15,7 @@
   $button-shadow-size: $govuk-border-width-form-element;
 
   .govuk-button {
-    @include govuk-font-regular;
-    @include govuk-typography-responsive(
-      $govuk-font-19,
-      $override-line-height: 19px
-    );
+    @include govuk-font($size: 19, $line-height: 19px);
     @include govuk-focusable;
 
     box-sizing: border-box;
@@ -147,10 +143,7 @@
 
   .govuk-button--start {
     @include govuk-typography-weight-bold;
-    @include govuk-typography-responsive(
-      $govuk-font-24,
-      $override-line-height: 1
-    );
+    @include govuk-typography-responsive($size: 24, $override-line-height: 1);
 
     min-height: auto;
     padding-top: $govuk-spacing-scale-2 - $govuk-border-width-form-element;

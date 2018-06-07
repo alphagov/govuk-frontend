@@ -5,7 +5,7 @@
 @include govuk-exports("govuk/component/panel") {
 
   .govuk-panel {
-    @include govuk-font-regular-19;
+    @include govuk-font($size: 19);
 
     box-sizing: border-box;
 
@@ -30,11 +30,11 @@
     margin-top: 0;
     margin-bottom: $govuk-spacing-scale-6;
 
-    @include govuk-font-bold-48;
+    @include govuk-font($size: 48, $weight: bold);
   }
 
   .govuk-panel__body {
-    @include govuk-font-regular-36;
+    @include govuk-font($size: 36);
   }
 
 }

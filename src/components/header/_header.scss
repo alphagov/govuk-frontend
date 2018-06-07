@@ -16,7 +16,7 @@
   $govuk-header-nav-item-border-color: #2e3133;
 
   .govuk-header {
-    @include govuk-font-regular-16;
+    @include govuk-font($size: 16);
 
     border-bottom: $govuk-spacing-scale-2 solid $govuk-white;
     color: $govuk-header-text;
@@ -54,7 +54,7 @@
   }
 
   .govuk-header__product-name {
-    @include govuk-font-regular-24;
+    @include govuk-font($size: 24);
   }
 
   .govuk-header__link {
@@ -88,8 +88,7 @@
   .govuk-header__link--homepage {
     // Font size needs to be set on the link so that the box sizing is correct
     // in Firefox
-    @include govuk-typography-common;
-    @include govuk-typography-weight-bold;
+    @include govuk-font($size: false, $weight: bold);
 
     display: inline-block;
     font-size: 30px; // We don't have a mixin that produces 30px font size
@@ -111,7 +110,7 @@
   .govuk-header__link--service-name {
     display: inline-block;
     margin-bottom: $govuk-spacing-scale-2;
-    @include govuk-font-bold-24;
+    @include govuk-font($size: 24, $weight: bold);
   }
 
   .govuk-header__logo {
@@ -134,7 +133,7 @@
   }
 
   .govuk-header__menu-button {
-    @include govuk-font-regular-16;
+    @include govuk-font($size: 16);
     display: none;
     position: absolute;
     top: $govuk-spacing-scale-4;
@@ -218,7 +217,7 @@
     }
 
     a {
-      @include govuk-font-bold-16;
+      @include govuk-font($size: 16, $weight: bold);
       white-space: nowrap;
     }
   }

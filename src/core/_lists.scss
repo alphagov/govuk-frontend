@@ -5,7 +5,7 @@
   // the prose scope.
 
   %govuk-list {
-    @include govuk-font-regular-19;
+    @include govuk-font($size: 19);
     @include govuk-text-colour;
     margin-top: 0;
     @include govuk-responsive-margin($govuk-spacing-responsive-4, "bottom");
