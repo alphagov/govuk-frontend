@@ -1,5 +1,7 @@
 # Components
 
+Find components in `src/components`.
+
 Components must use the `.govuk-` namespace.
 
 For example, `.govuk-button`.

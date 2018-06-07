@@ -112,12 +112,14 @@ For example, if you want to polyfill `addEventListener` for IE8, import the Even
 import '../vendor/polyfills/Event'
 ```
 
-If you need polyfills for features that are not yet included in this project, please see the following guide on [how to add polyfills](/docs/polyfilling.md).
+If you need polyfills for features that are not yet included in this project, please see the following guide on [how to add polyfills](../polyfilling.md).
 
-## Formatting
+## Formatting and linting
 
 GOV.UK Frontend uses [standardjs](http://standardjs.com/), an opinionated JavaScript linter. All JavaScript files follow its conventions, and it runs on CI to ensure that new pull requests are in line with them.
 
 The standard docs have a [complete list of rules and some reasoning behind them](http://standardjs.com/rules.html).
 
 Read more about [running standard manually or in your editor](https://github.com/alphagov/styleguides/blob/master/js.md#linting).
+
+See also [testing and linting](../testing-and-linting.md).
