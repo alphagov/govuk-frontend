@@ -57,7 +57,7 @@ $sass-mq-already-included: true;
 /// @param {String | Boolean} $and [false] - Additional media query parameters
 /// @param {String} $media-type [all] - Media type: screen, print…
 ///
-/// @ignore Undocumented API, for advanced use only:
+/// @ignore Undocumented mq API, for advanced use only:
 /// @ignore @param {Map} $breakpoints [$govuk-breakpoints]
 /// @ignore @param {String} $static-breakpoint [$govuk-ie8-breakpoint]
 /// @ignore @param {Boolean} $responsive [$govuk-is-ie8]
@@ -82,12 +82,6 @@ $sass-mq-already-included: true;
 ///      color: hotpink;
 ///    }
 ///    @include govuk-media-query(tablet, $media-type: screen) {
-///      color: hotpink;
-///    }
-///
-/// @example scss Advanced use:
-///    $my-breakpoints: (L: 900px, XL: 1200px);
-///    @include govuk-media-query(L, $breakpoints: $my-breakpoints, $static-breakpoint: L) {
 ///      color: hotpink;
 ///    }
 ///  }
