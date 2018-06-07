@@ -99,6 +99,19 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 
   ([PR #772](https://github.com/alphagov/govuk-frontend/pull/772))
 
+- All organisation variables (e.g. `$govuk-cabinet-office`) have been moved into
+  a single `$govuk-colours-organisations` map. If you need to use an
+  organisation colour in your own code, you should use the new
+  `govuk-organisation-colour` function:
+
+  ```scss
+  .element {
+    color: govuk-organisation-colour(cabinet-office);
+  }
+  ```
+
+  Note that this function will return 'web-safe' colours by default. You can
+  pass $websafe: false to get the non-websafe colour.
 
 🔧 Fixes:
 
