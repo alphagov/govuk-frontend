@@ -25,6 +25,7 @@ Find out when to use the Header component in your service in the [GOV.UK Design 
 
               <svg
                 role="presentation"
+                focusable="false"
                 class="govuk-header__logotype-crown"
                 xmlns="http://www.w3.org/2000/svg"
                 viewbox="0 0 132 97"
@@ -74,6 +75,7 @@ Find out when to use the Header component in your service in the [GOV.UK Design 
 
               <svg
                 role="presentation"
+                focusable="false"
                 class="govuk-header__logotype-crown"
                 xmlns="http://www.w3.org/2000/svg"
                 viewbox="0 0 132 97"
@@ -129,6 +131,7 @@ Find out when to use the Header component in your service in the [GOV.UK Design 
 
               <svg
                 role="presentation"
+                focusable="false"
                 class="govuk-header__logotype-crown"
                 xmlns="http://www.w3.org/2000/svg"
                 viewbox="0 0 132 97"

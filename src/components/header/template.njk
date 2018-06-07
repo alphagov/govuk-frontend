@@ -12,9 +12,14 @@
 
           We use currentColour so that we can easily invert it when printing and
           when the focus state is applied. This also benefits users who override
-          colours in their browser as they will still see the crown. #}
+          colours in their browser as they will still see the crown.
+
+          The SVG needs `focusable="false"` so that Internet Explorer does not
+          treat it as an interactive element - without this it will be
+          'focusable' when using the keyboard to navigate. #}
           <svg
             role="presentation"
+            focusable="false"
             class="govuk-header__logotype-crown"
             xmlns="http://www.w3.org/2000/svg"
             viewbox="0 0 132 97"
