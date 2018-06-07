@@ -43,7 +43,7 @@
       border-bottom: $button-shadow-size solid $govuk-button-shadow-colour;
     }
 
-    @include mq($from: tablet) {
+    @include govuk-media-query($from: tablet) {
       width: auto;
     }
 

@@ -10,13 +10,13 @@
   margin: 0 $govuk-gutter-half;
 
   // On tablet, add full width gutters
-  @include mq($from: tablet) {
+  @include govuk-media-query($from: tablet) {
     margin: 0 $govuk-gutter;
   }
 
   // As soon as the viewport is greater than the width of the page plus the
   // gutters, just centre the content instead of adding gutters.
-  @include mq($and: "(min-width: #{($govuk-page-width + $govuk-gutter * 2)})") {
+  @include govuk-media-query($and: "(min-width: #{($govuk-page-width + $govuk-gutter * 2)})") {
     margin: 0 auto;
   }
 }

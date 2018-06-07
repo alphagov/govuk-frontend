@@ -130,7 +130,7 @@
 /// @access public
 
 @mixin govuk-link-print-friendly {
-  @include mq($media-type: print) {
+  @include govuk-media-query($media-type: print) {
 
     &[href^="/"],
     &[href^="http://"],

@@ -45,7 +45,7 @@
         #{$property}-#{$direction}: $breakpoint-value iff($important, !important);
       }
     } @else {
-      @include mq($from: $breakpoint) {
+      @include govuk-media-query($from: $breakpoint) {
         @if $direction == all {
           #{$property}: $breakpoint-value iff($important, !important);
         } @else {

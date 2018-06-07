@@ -14,7 +14,7 @@
 
     border: $govuk-border-width-mobile solid $govuk-error-colour;
 
-    @include mq($from: tablet) {
+    @include govuk-media-query($from: tablet) {
       border: $govuk-border-width solid $govuk-error-colour;
     }
   }

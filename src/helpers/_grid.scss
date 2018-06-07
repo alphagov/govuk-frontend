@@ -91,7 +91,7 @@ $_govuk-grid-widths: (
       width: 100%;
     }
     padding: 0 $govuk-gutter-half;
-    @include mq($from: $at) {
+    @include govuk-media-query($from: $at) {
       width: grid-width($width);
       float: $float;
     }
