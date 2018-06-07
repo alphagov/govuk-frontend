@@ -59,6 +59,7 @@
     "recursive-readdir": "^2.2.2",
     "request": "^2.87.0",
     "run-sequence": "^2.2.0",
+    "sass-color-helpers": "^2.1.1",
     "standard": "^10.0.2",
     "vinyl-paths": "^2.1.0",
     "yargs": "^8.0.2"
