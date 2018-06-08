@@ -17,26 +17,69 @@ const sassBootstrap = `
   @import "settings/media-queries";
   @import "settings/ie8";
 
+  $spacing-point: 2;
+
+  // Emulates data from _settings/media-queries.scss
   $govuk-breakpoints: (
     my_breakpoint: 30em
   );
 
-  $spacing-map: (
-    null: 15px,
-    my_breakpoint: 25px
+  // Emulates data from _settings/spacing.scss
+  $govuk-spacing-points: (
+    2: 15px
+  );
+
+  // Emulates data from _settings/spacing.scss
+  $govuk-spacing-responsive-scale: (
+    2: (
+      null: 15px,
+      my_breakpoint: 25px
+    )
   );
 
   @import "helpers/media-queries";
   @import "tools/iff";
   @import "helpers/spacing";`
 
-describe('@mixin govuk-responsive-spacing', () => {
+describe('@function govuk-spacing', () => {
+  it('returns CSS for a property based on the given spacing point', async () => {
+    const sass = `
+      ${sassBootstrap}
+
+      .foo {
+        top: govuk-spacing($spacing-point)
+      }`
+
+    const results = await sassRender({ data: sass, ...sassConfig })
+
+    expect(results.css.toString().trim()).toBe(outdent`
+      .foo {
+        top: 15px; }`)
+  })
+
+  it('throws an exception when passed anything other than a number', async () => {
+    const sass = `
+      ${sassBootstrap}
+
+      .foo {
+        top: govuk-spacing('margin')
+      }`
+
+    await expect(sassRender({ data: sass, ...sassConfig }))
+      .rejects
+      .toThrow(
+        'Expected a number (integer), but got a string.'
+      )
+  })
+})
+
+describe('@mixin _govuk-responsive-spacing', () => {
   it('outputs CSS for a property based on the given spacing map', async () => {
     const sass = `
       ${sassBootstrap}
 
       .foo {
-        @include govuk-responsive-spacing($spacing-map, 'margin')
+        @include _govuk-responsive-spacing($spacing-point, 'margin')
       }`
 
     const results = await sassRender({ data: sass, ...sassConfig })
@@ -54,7 +97,7 @@ describe('@mixin govuk-responsive-spacing', () => {
       ${sassBootstrap}
 
       .foo {
-        @include govuk-responsive-spacing($spacing-map, 'padding', 'top');
+        @include _govuk-responsive-spacing($spacing-point, 'padding', 'top');
       }`
 
     const results = await sassRender({ data: sass, ...sassConfig })
@@ -67,20 +110,18 @@ describe('@mixin govuk-responsive-spacing', () => {
             padding-top: 25px; } }`)
   })
 
-  it('throws an exception when passed anything other than a map', async () => {
+  it('throws an exception when passed a non-existent point', async () => {
     const sass = `
       ${sassBootstrap}
 
       .foo {
-        @include govuk-responsive-spacing(14px, 'margin')
+        @include _govuk-responsive-spacing(14px, 'margin')
       }`
 
     await expect(sassRender({ data: sass, ...sassConfig }))
       .rejects
       .toThrow(
-        'Expected a map of breakpoints from the responsive scale, but got a ' +
-        'number. Make sure you are using a point from the responsive spacing ' +
-        'scale.'
+        'Unknown spacing point `14px`. Make sure you are using a point from the responsive spacing scale in `_settings/spacing.scss`.'
       )
   })
 
@@ -90,8 +131,8 @@ describe('@mixin govuk-responsive-spacing', () => {
         ${sassBootstrap}
 
         .foo {
-          @include govuk-responsive-spacing(
-            $spacing-map,
+          @include _govuk-responsive-spacing(
+            $spacing-point,
             'margin',
             $important: true
           )
@@ -112,8 +153,8 @@ describe('@mixin govuk-responsive-spacing', () => {
         ${sassBootstrap}
 
         .foo {
-          @include govuk-responsive-spacing(
-            $spacing-map,
+          @include _govuk-responsive-spacing(
+            $spacing-point,
             'margin',
             'top',
             $important: true
@@ -137,8 +178,8 @@ describe('@mixin govuk-responsive-spacing', () => {
         ${sassBootstrap}
 
         .foo {
-          @include govuk-responsive-spacing(
-            $spacing-map,
+          @include _govuk-responsive-spacing(
+            $spacing-point,
             'margin',
             $adjustment: 2px
           )
@@ -159,8 +200,8 @@ describe('@mixin govuk-responsive-spacing', () => {
         ${sassBootstrap}
 
         .foo {
-          @include govuk-responsive-spacing(
-            $spacing-map,
+          @include _govuk-responsive-spacing(
+            $spacing-point,
             'margin',
             'top',
             $adjustment: 2px
@@ -185,7 +226,7 @@ describe('@mixin govuk-responsive-margin', () => {
         ${sassBootstrap}
 
         .foo {
-          @include govuk-responsive-margin($spacing-map)
+          @include govuk-responsive-margin($spacing-point)
         }`
 
     const results = await sassRender({ data: sass, ...sassConfig })
@@ -204,7 +245,7 @@ describe('@mixin govuk-responsive-margin', () => {
 
         .foo {
           @include govuk-responsive-margin(
-            $spacing-map,
+            $spacing-point,
             'top',
             $important: true,
             $adjustment: 2px
@@ -228,7 +269,7 @@ describe('@mixin govuk-responsive-padding', () => {
         ${sassBootstrap}
 
         .foo {
-          @include govuk-responsive-padding($spacing-map)
+          @include govuk-responsive-padding($spacing-point)
         }`
 
     const results = await sassRender({ data: sass, ...sassConfig })
@@ -247,7 +288,7 @@ describe('@mixin govuk-responsive-padding', () => {
 
         .foo {
           @include govuk-responsive-padding(
-            $spacing-map,
+            $spacing-point,
             'top',
             $important: true,
             $adjustment: 2px
