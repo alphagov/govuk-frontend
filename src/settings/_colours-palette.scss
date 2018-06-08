@@ -23,30 +23,3 @@ $govuk-colours: (
   "grey-4": #f8f8f8,
   "white": #ffffff
 );
-
-// Legacy
-
-// Standard palette, colours
-$govuk-purple: map-get($govuk-colours, "purple");
-$govuk-mauve: map-get($govuk-colours, "mauve");
-$govuk-fuchsia: map-get($govuk-colours, "fuchsia");;
-$govuk-pink: map-get($govuk-colours, "pink");
-$govuk-baby-pink: map-get($govuk-colours, "baby-pink");
-$govuk-red: map-get($govuk-colours, "red");
-$govuk-mellow-red: map-get($govuk-colours, "mellow-red");
-$govuk-orange: map-get($govuk-colours, "orange");
-$govuk-brown: map-get($govuk-colours, "brown");
-$govuk-yellow: map-get($govuk-colours, "yellow");
-$govuk-grass-green: map-get($govuk-colours, "grass-green");
-$govuk-green: map-get($govuk-colours, "green");
-$govuk-turquoise: map-get($govuk-colours, "turquoise");
-$govuk-blue: map-get($govuk-colours, "blue");
-$govuk-light-blue: map-get($govuk-colours, "light-blue");
-
-// Standard palette, greys
-$govuk-black: map-get($govuk-colours, "black");
-$govuk-grey-1: map-get($govuk-colours, "grey-1");
-$govuk-grey-2: map-get($govuk-colours, "grey-2");
-$govuk-grey-3: map-get($govuk-colours, "grey-3");
-$govuk-grey-4: map-get($govuk-colours, "grey-4");
-$govuk-white: map-get($govuk-colours, "white");
