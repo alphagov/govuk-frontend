@@ -47,12 +47,12 @@
         text: 'No'
       },
       {
-        text: 'Object containing parameters for the meta navigation'
+        text: 'Object containing parameters for the meta navigation.'
       }
     ],
     [
       {
-        text: 'meta.items[]'
+        text: 'meta.items'
       },
       {
         text: 'array'
@@ -61,7 +61,35 @@
         text: 'No'
       },
       {
-        text: 'Array of items for use in the meta section of the footer'
+        text: 'Array of items for use in the meta section of the footer.'
+      }
+    ],
+    [
+      {
+        text: 'meta.items.{}.text'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'List item text in the meta section of the footer.'
+      }
+    ],
+    [
+      {
+        text: 'meta.items.{}.href'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'List item href attribute in the meta section of the footer.'
       }
     ],
     [
@@ -75,12 +103,12 @@
         text: 'No'
       },
       {
-        text: 'Array of items for use in the navigation section of the footer'
+        text: 'Array of items for use in the navigation section of the footer.'
       }
     ],
     [
       {
-        text: 'navigation[].title'
+        text: 'navigation.{}.title'
       },
       {
         text: 'string'
@@ -94,7 +122,7 @@
     ],
     [
       {
-        text: 'navigation[].columns'
+        text: 'navigation.{}.columns'
       },
       {
         text: 'integer'
@@ -103,12 +131,12 @@
         text: 'No'
       },
       {
-        text: 'Amount of columns to display items in'
+        text: 'Amount of columns to display items in navigation section of the footer.'
       }
     ],
     [
       {
-        text: 'navigation[].items'
+        text: 'navigation.items'
       },
       {
         text: 'array'
@@ -117,26 +145,12 @@
         text: 'No'
       },
       {
-        text: 'Array of items to display in the list'
+        text: 'Array of items to display in the list in navigation section of the footer.'
       }
     ],
     [
       {
-        text: 'attributes'
-      },
-      {
-        text: 'object'
-      },
-      {
-        text: 'No'
-      },
-      {
-        text: 'Will add attributes to the footer component root'
-      }
-    ],
-    [
-      {
-        text: 'classes'
+        text: 'navigation.items.{}.text'
       },
       {
         text: 'string'
@@ -145,7 +159,21 @@
         text: 'No'
       },
       {
-        text: 'Will add classes to the footer component root'
+        text: 'List item text in the navigation section of the footer.'
+      }
+    ],
+    [
+      {
+        text: 'navigation.items.{}.href'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'List item href attribute in the navigation section of the footer. Both `text` and `href` attributes need to be present to create a link.'
       }
     ],
     [
@@ -159,7 +187,35 @@
         text: 'No'
       },
       {
-        text: 'Classes that can be added to the container, useful if you want to make the footer full width.'
+        text: 'Classes that can be added to the inner container, useful if you want to make the footer full width.'
+      }
+    ],
+    [
+      {
+        text: 'classes'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Optional additional classes to add to the footer component container.'
+      }
+    ],
+    [
+      {
+        text: 'attributes'
+      },
+      {
+        text: 'object'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Any extra HTML attributes (for example data attributes) to add to the footer component container.'
       }
     ]
   ]
