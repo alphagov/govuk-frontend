@@ -1,7 +1,5 @@
 @include govuk-exports("govuk/core/section-break") {
 
-  // We use placeholder classes here so that we can @extend from the prose scope
-
   %govuk-section-break {
     margin: 0;
     border: 0;
