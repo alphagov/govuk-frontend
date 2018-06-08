@@ -12,21 +12,74 @@ const sassConfig = {
   outputStyle: 'compact'
 }
 
-const sassBootstrap = `
-  $govuk-colours-organisations: (
-    'floo-network-authority': (
-      colour: #EC22FF,
-      colour-websafe: #9A00A8
-    ),
-    'broom-regulatory-control': (
-      colour: #A81223
-    )
-  );
+describe('@function govuk-colour', () => {
+  const sassBootstrap = `
+    $govuk-colours: (
+      "red": #ff0000,
+      "green": #00ff00,
+      "blue": #0000ff
+    );
 
-  @import "helpers/colour";
-`
+    @import "helpers/colour";
+  `
+
+  it('returns a colour from the colour palette', async () => {
+    const sass = `
+      ${sassBootstrap}
+
+      .foo {
+        color: govuk-colour('red');
+      }`
+
+    const results = await sassRender({ data: sass, ...sassConfig })
+
+    expect(results.css.toString().trim()).toBe('.foo { color: #ff0000; }')
+  })
+
+  it('works with unquoted strings', async () => {
+    const sass = `
+      ${sassBootstrap}
+
+      .foo {
+        color: govuk-colour(red);
+      }`
+
+    const results = await sassRender({ data: sass, ...sassConfig })
+
+    expect(results.css.toString().trim()).toBe('.foo { color: #ff0000; }')
+  })
+
+  it('throws an error if a non-existent colour is requested', async () => {
+    const sass = `
+      ${sassBootstrap}
+
+      .foo {
+        color: govuk-colour('hooloovoo');
+      }`
+
+    await expect(sassRender({ data: sass, ...sassConfig }))
+      .rejects
+      .toThrow(
+        'Unknown colour `hooloovoo`'
+      )
+  })
+})
 
 describe('@function govuk-organisation-colour', () => {
+  const sassBootstrap = `
+    $govuk-colours-organisations: (
+      'floo-network-authority': (
+        colour: #EC22FF,
+        colour-websafe: #9A00A8
+      ),
+      'broom-regulatory-control': (
+        colour: #A81223
+      )
+    );
+
+    @import "helpers/colour";
+  `
+
   it('returns the websafe colour for a given organisation by default', async () => {
     const sass = `
       ${sassBootstrap}

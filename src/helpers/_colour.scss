@@ -2,6 +2,24 @@
 /// @group helpers/colour
 ////
 
+/// Get colour
+///
+/// @param {String} $colour - Name of colour from the colour palette
+///   (`$govuk-colours`)
+/// @return {Colour} Representation of named colour
+/// @throw if `$colour` is not a colour from the colour palette
+/// @access public
+
+@function govuk-colour($colour) {
+  $colour: quote($colour);
+
+  @if not map-has-key($govuk-colours, $colour) {
+    @error "Unknown colour `#{$colour}`";
+  }
+
+  @return map-get($govuk-colours, $colour);
+}
+
 /// Get the colour for a government organisation
 ///
 /// @param {String} $organisation - Organisation name, lowercase, hyphenated
