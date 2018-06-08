@@ -75,13 +75,13 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">classes</th>
+<th class="govuk-table__header" scope="row">text (or) html</th>
 
 <td class="govuk-table__cell ">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell ">Yes</td>
 
-<td class="govuk-table__cell ">Optional additional classes</td>
+<td class="govuk-table__cell ">Text or HTML for the warning text content. If `html` is provided, the `text` argument is ignored.</td>
 
 </tr>
 
@@ -99,25 +99,13 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">text</th>
+<th class="govuk-table__header" scope="row">classes</th>
 
 <td class="govuk-table__cell ">string</td>
 
-<td class="govuk-table__cell ">Yes</td>
+<td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">The text next to the icon</td>
-
-</tr>
-
-<tr class="govuk-table__row">
-
-<th class="govuk-table__header" scope="row">html</th>
-
-<td class="govuk-table__cell ">string</td>
-
-<td class="govuk-table__cell ">Yes</td>
-
-<td class="govuk-table__cell ">HTML for the warning text content. If this is provided, the text argument is ignored.</td>
+<td class="govuk-table__cell ">Optional additional classes to add to the warning-text container.</td>
 
 </tr>
 
@@ -129,7 +117,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the textarea tag</td>
+<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the warning-text container.</td>
 
 </tr>
 
