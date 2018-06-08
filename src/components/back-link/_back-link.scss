@@ -20,7 +20,7 @@
 
     // Use border-bottom rather than text-decoration so that the arrow is
     // underlined as well.
-    border-bottom: 1px solid $govuk-black;
+    border-bottom: 1px solid govuk-colour("black");
 
     // Underline is provided by a bottom border
     text-decoration: none;

@@ -6,19 +6,19 @@
 
 @include govuk-exports("govuk/component/header") {
 
-  $govuk-header-background: $govuk-black;
+  $govuk-header-background: govuk-colour("black");
   $govuk-header-border-color: $govuk-brand-colour;
   $govuk-header-border-width: $govuk-spacing-scale-2;
-  $govuk-header-text: $govuk-white;
-  $govuk-header-link: $govuk-white;
-  $govuk-header-link-hover: $govuk-white;
+  $govuk-header-text: govuk-colour("white");
+  $govuk-header-link: govuk-colour("white");
+  $govuk-header-link-hover: govuk-colour("white");
   $govuk-header-link-active: #1d8feb;
   $govuk-header-nav-item-border-color: #2e3133;
 
   .govuk-header {
     @include govuk-font($size: 16);
 
-    border-bottom: $govuk-spacing-scale-2 solid $govuk-white;
+    border-bottom: $govuk-spacing-scale-2 solid govuk-colour("white");
     color: $govuk-header-text;
     background: $govuk-header-background;
 
@@ -72,7 +72,7 @@
     }
 
     &:focus {
-      color: $govuk-black;
+      color: govuk-colour("black");
     }
 
     // alphagov/govuk_template includes a specific a:link:focus selector
@@ -239,7 +239,7 @@
   @include govuk-media-query($media-type: print) {
     .govuk-header {
       border-bottom-width: 0;
-      color: $govuk-black;
+      color: govuk-colour("black");
       background: transparent;
     }
 
@@ -251,7 +251,7 @@
     .govuk-header__link {
       &:link,
       &:visited {
-        color: $govuk-black;
+        color: govuk-colour("black");
       }
 
       // Do not append link href to GOV.UK link when printing (e.g. '(/)')
