@@ -139,6 +139,19 @@ Note: We're not following semantic versioning yet, we are going to talk about th
   has been updated to make it circular without the need for another class.
 
   ([PR #782](https://github.com/alphagov/govuk-frontend/pull/782))
+- Removal of `govuk-prose-scope`
+  We don't have confidence that the prose scope is well understood – 
+  without further research / better documentation it's safer to remove it for now.
+  
+  If you are currently using prose-scope, you should revert to applying classes to 
+  individual headings, lists and hr elements.
+  In version [0.0.29-alpha](https://github.com/alphagov/govuk-frontend/releases/tag/v0.0.29-alpha) 
+  release we have added the option to enable global link and paragraph styles. 
+  
+  If you're using a recent version of the Private Beta Prototype kit, 
+  this is enabled by default.
+
+  ([PR #778](https://github.com/alphagov/govuk-frontend/pull/778))
 
 🔧 Fixes:
 
