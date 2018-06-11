@@ -50,7 +50,6 @@ examples:
 
 - name: with-service-name-and-navigation
   description: If you need to include basic navigation, contact or account management links.
-  readme: false
   data:
     homepageUrl: /
     serviceName: Service Name
