@@ -13,7 +13,7 @@
     display: block;
 
     margin-top: 0;
-    @include govuk-responsive-margin($govuk-spacing-responsive-8, "bottom");
+    @include govuk-responsive-margin(8, "bottom");
   }
 
   .govuk-heading-xl {
@@ -27,7 +27,7 @@
     display: block;
 
     margin-top: 0;
-    @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom");
+    @include govuk-responsive-margin(6, "bottom");
   }
 
   .govuk-heading-l {
@@ -41,7 +41,7 @@
     display: block;
 
     margin-top: 0;
-    @include govuk-responsive-margin($govuk-spacing-responsive-4, "bottom");
+    @include govuk-responsive-margin(4, "bottom");
   }
 
   .govuk-heading-m {
@@ -55,7 +55,7 @@
     display: block;
 
     margin-top: 0;
-    @include govuk-responsive-margin($govuk-spacing-responsive-4, "bottom");
+    @include govuk-responsive-margin(4, "bottom");
   }
 
   .govuk-heading-s {
@@ -105,7 +105,7 @@
     @include govuk-font($size: 24);
 
     margin-top: 0;
-    @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom");
+    @include govuk-responsive-margin(6, "bottom");
   }
 
   .govuk-body-l {
@@ -117,7 +117,7 @@
     @include govuk-font($size: 19);
 
     margin-top: 0;
-    @include govuk-responsive-margin($govuk-spacing-responsive-4, "bottom");
+    @include govuk-responsive-margin(4, "bottom");
   }
 
   .govuk-body-m {
@@ -129,7 +129,7 @@
     @include govuk-font($size: 16);
 
     margin-top: 0;
-    @include govuk-responsive-margin($govuk-spacing-responsive-4, "bottom");
+    @include govuk-responsive-margin(4, "bottom");
   }
 
   .govuk-body-s {
@@ -141,7 +141,7 @@
     @include govuk-font($size: 14);
 
     margin-top: 0;
-    @include govuk-responsive-margin($govuk-spacing-responsive-4, "bottom");
+    @include govuk-responsive-margin(4, "bottom");
   }
 
   .govuk-body-xs {
@@ -179,7 +179,7 @@
   %govuk-body-m  + %govuk-heading-l,
   %govuk-body-s  + %govuk-heading-l,
   %govuk-list + %govuk-heading-l {
-    @include govuk-responsive-padding($govuk-spacing-responsive-4, "top");
+    @include govuk-responsive-padding(4, "top");
   }
 
   %govuk-body-m + %govuk-heading-m,

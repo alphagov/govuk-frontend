@@ -22,8 +22,8 @@
 
   .govuk-footer {
     @include govuk-font($size: 16);
-    @include govuk-responsive-padding($govuk-spacing-responsive-7, "top");
-    @include govuk-responsive-padding($govuk-spacing-responsive-5, "bottom");
+    @include govuk-responsive-padding(7, "top");
+    @include govuk-responsive-padding(5, "bottom");
 
     border-top: 1px solid $govuk-footer-border-top;
     color: $govuk-footer-text;
@@ -60,7 +60,7 @@
 
   .govuk-footer__section-break {
     margin: 0; // Reset `<hr>` default margins
-    @include govuk-responsive-margin($govuk-spacing-responsive-8, "bottom");
+    @include govuk-responsive-margin(8, "bottom");
     border: 0; // Reset `<hr>` default borders
     border-bottom: 1px solid $govuk-footer-border;
   }
@@ -129,7 +129,7 @@
   }
 
   .govuk-footer__heading {
-    @include govuk-responsive-margin($govuk-spacing-responsive-7, "bottom");
+    @include govuk-responsive-margin(7, "bottom");
     padding-bottom: govuk-spacing(4);
     @include mq ($until: tablet) {
       padding-bottom: govuk-spacing(2);
@@ -185,7 +185,7 @@
   }
 
   .govuk-footer__list-item {
-    @include govuk-responsive-margin($govuk-spacing-responsive-4, "bottom");
+    @include govuk-responsive-margin(4, "bottom");
   }
 
   .govuk-footer__list-item:last-child {

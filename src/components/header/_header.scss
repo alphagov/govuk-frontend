@@ -114,7 +114,7 @@
   }
 
   .govuk-header__logo {
-    @include govuk-responsive-new-margin(2, "bottom");
+    @include govuk-responsive-margin(2, "bottom");
     padding-right: govuk-spacing(8);
 
     @include mq ($from: desktop) {
@@ -168,7 +168,7 @@
   }
 
   .govuk-header__navigation {
-    @include govuk-responsive-margin($govuk-spacing-responsive-2, "bottom");
+    @include govuk-responsive-margin(2, "bottom");
     display: block;
     margin: 0;
     padding: 0;

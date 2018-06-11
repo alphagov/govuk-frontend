@@ -20,8 +20,8 @@
   // Sizes
 
   %govuk-section-break--xl {
-    @include govuk-responsive-margin($govuk-spacing-responsive-8, "top");
-    @include govuk-responsive-margin($govuk-spacing-responsive-8, "bottom");
+    @include govuk-responsive-margin(8, "top");
+    @include govuk-responsive-margin(8, "bottom");
   }
 
   .govuk-section-break--xl {
@@ -29,8 +29,8 @@
   }
 
   %govuk-section-break--l {
-    @include govuk-responsive-margin($govuk-spacing-responsive-6, "top");
-    @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom");
+    @include govuk-responsive-margin(6, "top");
+    @include govuk-responsive-margin(6, "bottom");
   }
 
   .govuk-section-break--l {
@@ -38,8 +38,8 @@
   }
 
   %govuk-section-break--m {
-    @include govuk-responsive-margin($govuk-spacing-responsive-4, "top");
-    @include govuk-responsive-margin($govuk-spacing-responsive-4, "bottom");
+    @include govuk-responsive-margin(4, "top");
+    @include govuk-responsive-margin(4, "bottom");
   }
 
   .govuk-section-break--m {

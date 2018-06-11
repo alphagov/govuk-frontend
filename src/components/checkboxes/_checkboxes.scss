@@ -129,7 +129,7 @@
   $conditional-padding-left: $conditional-border-padding + $govuk-checkboxes-label-padding-left-right;
 
   .govuk-checkboxes__conditional {
-    @include govuk-responsive-margin($govuk-spacing-responsive-4, "bottom");
+    @include govuk-responsive-margin(4, "bottom");
     margin-left: $conditional-margin-left;
     padding-left: $conditional-padding-left;
     border-left: $conditional-border-width solid $govuk-border-colour;

@@ -7,7 +7,7 @@
   .govuk-details {
     @include govuk-font($size: 19);
     @include govuk-text-colour;
-    @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom");
+    @include govuk-responsive-margin(6, "bottom");
 
     display: block;
   }

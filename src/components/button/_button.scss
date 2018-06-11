@@ -23,7 +23,7 @@
     position: relative;
     width: 100%;
     margin-top: 0;
-    @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom", $adjustment: $button-shadow-size); // s2
+    @include govuk-responsive-margin(6, "bottom", $adjustment: $button-shadow-size); // s2
     padding: (govuk-spacing(2) - $govuk-border-width-form-element - ($button-shadow-size / 2)) govuk-spacing(2); // s1
     border: $govuk-border-width-form-element solid transparent;
     border-radius: 0;

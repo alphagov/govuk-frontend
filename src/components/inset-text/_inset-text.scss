@@ -9,8 +9,8 @@
     padding: govuk-spacing(3);
     // Margin top intended to collapse
     // This adds an additional 10px to the paragraph above
-    @include govuk-responsive-margin($govuk-spacing-responsive-6, "top");
-    @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom");
+    @include govuk-responsive-margin(6, "top");
+    @include govuk-responsive-margin(6, "bottom");
 
     clear: both;
 
