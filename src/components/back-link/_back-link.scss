@@ -12,8 +12,8 @@
     display: inline-block;
     position: relative;
 
-    margin-top: $govuk-spacing-scale-3;
-    margin-bottom: $govuk-spacing-scale-3;
+    margin-top: govuk-spacing(3);
+    margin-bottom: govuk-spacing(3);
 
     // Allow space for the arrow
     padding-left: 14px;

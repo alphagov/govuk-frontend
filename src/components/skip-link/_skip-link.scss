@@ -10,6 +10,6 @@
     @include govuk-typography-responsive($size: 16);
 
     display: block;
-    padding: $govuk-spacing-scale-2 $govuk-spacing-scale-3;
+    padding: govuk-spacing(2) govuk-spacing(3);
   }
 }

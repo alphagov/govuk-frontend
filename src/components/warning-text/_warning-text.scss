@@ -12,7 +12,7 @@
 
     position: relative;
     @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom");
-    padding: $govuk-spacing-scale-2 0;
+    padding: govuk-spacing(2) 0;
   }
 
   .govuk-warning-text__assistive {

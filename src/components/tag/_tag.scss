@@ -7,7 +7,7 @@
     @include govuk-font($size: 16, $weight: bold, $line-height: 1.25);
 
     display: inline-block;
-    padding: $govuk-spacing-scale-1 8px 0;
+    padding: govuk-spacing(1) 8px 0;
 
     color: govuk-colour("white");
     background-color: govuk-colour("blue");

@@ -72,7 +72,7 @@
 
     display: block;
 
-    margin-bottom: $govuk-spacing-scale-1;
+    margin-bottom: govuk-spacing(1);
 
     color: $govuk-secondary-text-colour;
   }
@@ -82,7 +82,7 @@
 
     display: block;
 
-    margin-bottom: $govuk-spacing-scale-1;
+    margin-bottom: govuk-spacing(1);
     color: $govuk-secondary-text-colour;
 
     @include govuk-media-query($from: tablet) {
@@ -169,10 +169,10 @@
   // Add top padding to headings that appear directly after paragraphs.
 
   %govuk-body-l  + %govuk-heading-l {
-    padding-top: $govuk-spacing-scale-1;
+    padding-top: govuk-spacing(1);
 
     @include govuk-media-query($from: tablet) {
-      padding-top: $govuk-spacing-scale-2;
+      padding-top: govuk-spacing(2);
     }
   }
 
@@ -188,10 +188,10 @@
   %govuk-body-m + %govuk-heading-s,
   %govuk-body-s + %govuk-heading-s,
   %govuk-list + %govuk-heading-s {
-    padding-top: $govuk-spacing-scale-1;
+    padding-top: govuk-spacing(1);
 
     @include govuk-media-query($from: tablet) {
-      padding-top: $govuk-spacing-scale-2;
+      padding-top: govuk-spacing(2);
     }
   }
 }

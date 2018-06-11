@@ -9,7 +9,7 @@
   }
 
   .govuk-form-group--error {
-    padding-left: $govuk-spacing-scale-3;
+    padding-left: govuk-spacing(3);
     border-left: $govuk-border-width-form-group-error solid $govuk-error-colour;
 
     .govuk-form-group {

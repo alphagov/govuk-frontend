@@ -8,7 +8,7 @@
 
   $govuk-header-background: govuk-colour("black");
   $govuk-header-border-color: $govuk-brand-colour;
-  $govuk-header-border-width: $govuk-spacing-scale-2;
+  $govuk-header-border-width: govuk-spacing(2);
   $govuk-header-text: govuk-colour("white");
   $govuk-header-link: govuk-colour("white");
   $govuk-header-link-hover: govuk-colour("white");
@@ -18,26 +18,26 @@
   .govuk-header {
     @include govuk-font($size: 16);
 
-    border-bottom: $govuk-spacing-scale-2 solid govuk-colour("white");
+    border-bottom: govuk-spacing(2) solid govuk-colour("white");
     color: $govuk-header-text;
     background: $govuk-header-background;
 
   }
 
   .govuk-header--full-width {
-    padding: 0 $govuk-spacing-scale-3;
+    padding: 0 govuk-spacing(3);
     border-color: $govuk-header-border-color;
   }
 
   .govuk-header__container {
     position: relative;
     margin-bottom: -$govuk-header-border-width;
-    padding-top: $govuk-spacing-scale-2;
+    padding-top: govuk-spacing(2);
     border-bottom: $govuk-header-border-width solid $govuk-header-border-color;
   }
 
   .govuk-header__logotype {
-    margin-right: $govuk-spacing-scale-1;
+    margin-right: govuk-spacing(1);
   }
 
   .govuk-header__logotype-crown {
@@ -109,13 +109,13 @@
 
   .govuk-header__link--service-name {
     display: inline-block;
-    margin-bottom: $govuk-spacing-scale-2;
+    margin-bottom: govuk-spacing(2);
     @include govuk-font($size: 24, $weight: bold);
   }
 
   .govuk-header__logo {
-    @include govuk-responsive-margin($govuk-spacing-responsive-2, "bottom");
-    padding-right: $govuk-spacing-scale-8;
+    @include govuk-responsive-new-margin(2, "bottom");
+    padding-right: govuk-spacing(8);
 
     @include mq ($from: desktop) {
       display: inline-block;
@@ -136,7 +136,7 @@
     @include govuk-font($size: 16);
     display: none;
     position: absolute;
-    top: $govuk-spacing-scale-4;
+    top: govuk-spacing(4);
     right: 0;
     margin: 0;
     padding: 0;
@@ -151,13 +151,13 @@
     &::after {
       @include govuk-shape-arrow($direction: down, $base: 10px, $display: inline-block);
       content: "";
-      margin-left: $govuk-spacing-scale-1;
+      margin-left: govuk-spacing(1);
     }
 
     @include govuk-focusable;
 
     @include mq ($from: tablet) {
-      top: $govuk-spacing-scale-3;
+      top: govuk-spacing(3);
     }
   }
 
@@ -196,23 +196,23 @@
   .govuk-header__navigation--end {
     @include mq ($from: desktop) {
       margin: 0;
-      padding: $govuk-spacing-scale-1 0;
+      padding: govuk-spacing(1) 0;
       text-align: right;
     }
   }
 
   .govuk-header__navigation--no-service-name {
-    padding-top: $govuk-spacing-scale-7;
+    padding-top: govuk-spacing(7);
   }
 
   .govuk-header__navigation-item {
-    padding: $govuk-spacing-scale-2 0;
+    padding: govuk-spacing(2) 0;
     border-bottom: 1px solid $govuk-header-nav-item-border-color;
 
     @include mq ($from: desktop) {
       display: inline-block;
-      margin-right: $govuk-spacing-scale-3;
-      padding: $govuk-spacing-scale-1 0;
+      margin-right: govuk-spacing(3);
+      padding: govuk-spacing(1) 0;
       border: 0;
     }
 

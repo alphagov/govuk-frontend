@@ -8,8 +8,8 @@
 @import "../label/label";
 
 @include govuk-exports("govuk/component/checkboxes") {
-  $govuk-checkboxes-size: $govuk-spacing-scale-7;
-  $govuk-checkboxes-label-padding-left-right: $govuk-spacing-scale-3;
+  $govuk-checkboxes-size: govuk-spacing(7);
+  $govuk-checkboxes-label-padding-left-right: govuk-spacing(3);
 
   .govuk-checkboxes__item {
     @include govuk-font($size: 19);
@@ -19,7 +19,7 @@
 
     min-height: $govuk-checkboxes-size;
 
-    margin-bottom: $govuk-spacing-scale-2;
+    margin-bottom: govuk-spacing(2);
     padding: 0 0 0 $govuk-checkboxes-size;
 
     clear: left;
@@ -58,7 +58,7 @@
 
   .govuk-checkboxes__label {
     display: block;
-    padding: 8px $govuk-checkboxes-label-padding-left-right $govuk-spacing-scale-1;
+    padding: 8px $govuk-checkboxes-label-padding-left-right govuk-spacing(1);
     cursor: pointer;
     // remove 300ms pause on mobile
     -ms-touch-action: manipulation;

@@ -9,24 +9,24 @@
 
     display: block;
 
-    margin-bottom: $govuk-spacing-scale-1;
+    margin-bottom: govuk-spacing(1);
   }
 
   // Modifiers that make labels look more like their equivalent headings
 
   .govuk-label--xl {
     @include govuk-font($size: 48, $weight: bold);
-    margin-bottom: $govuk-spacing-scale-3;
+    margin-bottom: govuk-spacing(3);
   }
 
   .govuk-label--l {
     @include govuk-font($size: 36, $weight: bold);
-    margin-bottom: $govuk-spacing-scale-3;
+    margin-bottom: govuk-spacing(3);
   }
 
   .govuk-label--m {
     @include govuk-font($size: 24, $weight: bold);
-    margin-bottom: $govuk-spacing-scale-2;
+    margin-bottom: govuk-spacing(2);
   }
 
   .govuk-label--s {
