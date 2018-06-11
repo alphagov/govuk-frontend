@@ -38,7 +38,7 @@
   'rows' : [
     [
       {
-        text: 'titleText'
+        text: 'titleText (or) titleHtml'
       },
       {
         text: 'string'
@@ -47,26 +47,12 @@
         text: 'Yes'
       },
       {
-        text: 'Text for the panel title'
+        text: 'Text or HTML for the panel title. If `titleHtml` is provided, the `titleText` argument is ignored.'
       }
     ],
     [
       {
-        text: 'titleHtml'
-      },
-      {
-        text: 'string'
-      },
-      {
-        text: 'Yes'
-      },
-      {
-        text: 'HTML for the panel title. If this is provided, the titleText argument is ignored.'
-      }
-    ],
-    [
-      {
-        text: 'text'
+        text: 'text (or) html'
       },
       {
         text: 'string'
@@ -75,21 +61,7 @@
         text: 'No'
       },
       {
-        text: 'Text for the panel content'
-      }
-    ],
-    [
-      {
-        text: 'html'
-      },
-      {
-        text: 'string'
-      },
-      {
-        text: 'No'
-      },
-      {
-        text: 'HTML for the panel content. If this is provided, the text argument is ignored.'
+        text: 'Text or HTML for the panel content. If `html` is provided, the `text` argument is ignored.'
       }
     ],
     [
@@ -103,7 +75,7 @@
         text: 'No'
       },
       {
-        text: 'Optional additional classes'
+        text: 'Optional additional classes to add to the panel container.'
       }
     ],
     [
@@ -117,7 +89,7 @@
         text: 'No'
       },
       {
-        text: 'Any extra HTML attributes (for example data attributes) to add to the panel container'
+        text: 'Any extra HTML attributes (for example data attributes) to add to the panel container.'
       }
     ]
   ]
