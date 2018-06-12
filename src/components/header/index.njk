@@ -38,58 +38,16 @@
   'rows' : [
     [
       {
-        text: 'classes'
-      },
-      {
-        text: 'string'
-      },
-      {
-        text: 'No'
-      },
-      {
-        text: 'Will add classes to the header component root'
-      }
-    ],
-    [
-      {
-        text: 'containerClasses'
-      },
-      {
-        text: 'string'
-      },
-      {
-        text: 'No'
-      },
-      {
-        text: 'Classes that can be added to the container, useful if you want to make the header fixed width.'
-      }
-    ],
-    [
-      {
-        text: 'attributes'
-      },
-      {
-        text: 'object'
-      },
-      {
-        text: 'No'
-      },
-      {
-        text: 'Will add attributes to the footer component root'
-      }
-    ],
-    [
-      {
         text: 'homepageUrl'
       },
       {
         text: 'string'
       },
       {
-        text: 'Yes'
+        text: 'No'
       },
       {
-        text: 'The url of the hompeage. Defaults to /'
+        text: 'The url of the homepage. Defaults to /'
       }
     ],
     [
@@ -100,7 +58,7 @@
         text: 'string'
       },
       {
-        text: 'Yes'
+        text: 'No'
       },
       {
         text: 'The public path for the assets folder. If not provided it defaults to /assets/images'
@@ -108,7 +66,7 @@
     ],
     [
       {
-        text: 'title'
+        text: 'productName'
       },
       {
         text: 'string'
@@ -136,6 +94,20 @@
     ],
     [
       {
+        text: 'serviceUrl'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Url for the service name anchor.'
+      }
+    ],
+    [
+      {
         text: 'navigation'
       },
       {
@@ -145,7 +117,35 @@
         text: 'No'
       },
       {
-        text: 'Navigation items'
+        text: 'An array of navigation item objects.'
+      }
+    ],
+    [
+      {
+        text: 'navigation.{}.text'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Text of the navigation item.'
+      }
+    ],
+    [
+      {
+        text: 'navigation.{}.href'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Url of the navigation item anchor. Both `href` and `text` attributes for navigation items need to be provided to create an item.'
       }
     ],
     [
@@ -159,7 +159,49 @@
         text: 'No'
       },
       {
-        text: 'Classes that can be added to the navigation.'
+        text: 'Optional classes that can be added to the navigation section of the header.'
+      }
+    ],
+    [
+      {
+        text: 'containerClasses'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Optional classes that can be added to the container, useful if you want to make the header fixed width.'
+      }
+    ],
+    [
+      {
+        text: 'classes'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Optional additional classes to add to the header container.'
+      }
+    ],
+    [
+      {
+        text: 'attributes'
+      },
+      {
+        text: 'object'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Any extra HTML attributes (for example data attributes) to add to the header container.'
       }
     ]
   ]
