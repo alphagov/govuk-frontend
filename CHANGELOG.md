@@ -165,6 +165,10 @@ Note: We're not following semantic versioning yet, we are going to talk about th
   and footer (the OGL logo) by marking them as non-focusable elements
   ([PR #774](https://github.com/alphagov/govuk-frontend/pull/774))
 
+- Use the correct class name in bold label example 
+  (govuk-label--s rather than govuk-label--bold)
+  ([PR #784](https://github.com/alphagov/govuk-frontend/pull/784))
+
 
 🆕 New features:
 
