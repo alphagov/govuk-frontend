@@ -75,6 +75,36 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 
   ([PR #748](https://github.com/alphagov/govuk-frontend/pull/748))
 
+- Spacing has been refactored. You will need to update Sass that currently uses GOV.UK Frontend spacing:
+
+  - Instead of
+  ``` css
+  $govuk-spacing-scale-*
+  ```
+  use
+  ``` css
+  govuk-spacing(*)
+  ```
+  where `*` is the number on the spacing scale. The scale itself has remained the same so that `$govuk-spacing-scale-3` corresponds to `govuk-spacing(3)`. This change allows us to control the error messaging when incorrect values are used and to deprecate variables. The values of spacing variables can also be overridden by consumers.
+
+  - Instead of:
+  ``` css
+  @include govuk-responsive-margin($govuk-spacing-responsive-2, "bottom");
+  @include govuk-responsive-padding($govuk-spacing-responsive-2, "bottom");
+  ```
+  use
+  ``` css
+  @include govuk-responsive-margin(2, "bottom");
+  @include govuk-responsive-padding(2, "bottom");
+  ```
+  This change, again, allows us to control the error messaging since spacing variables are not exposed directly. Also, the spacing scale itself has not changed so that `$govuk-spacing-responsive-2` corresponds to `2` when passed to the padding and margin mixins.
+
+  This PR also updates tests and sass-docs of spacing variables and helpers.
+
+  Additionally, this PR hardcodes the value of `$govuk-gutter`, see PR for more details.
+
+  ([PR #779](https://github.com/alphagov/govuk-frontend/pull/779))
+
 - Remove `pageStart` block from template, as could result in rendering issues in older IE.
   ([PR #765](https://github.com/alphagov/govuk-frontend/pull/765))
 
