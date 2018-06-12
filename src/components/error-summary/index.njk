@@ -39,21 +39,21 @@
   'rows' : [
     [
       {
-        text: 'classes'
+        text: 'titleText (or) titleHtml'
       },
       {
         text: 'string'
       },
       {
-        text: 'No'
+        text: 'Yes'
       },
       {
-        text: 'Optional additional classes'
+        text: 'Text or HTML to use for the heading of the error summary block. If `titleHtml` is provided, the `titleText` argument will be ignored.'
       }
     ],
     [
       {
-        text: 'titleText'
+        text: 'descriptionText (or) descriptionHtml'
       },
       {
         text: 'string'
@@ -62,49 +62,7 @@
         text: 'No'
       },
       {
-        text: 'Text to use for the heading of the error summary block.'
-      }
-    ],
-    [
-      {
-        text: 'titleHtml'
-      },
-      {
-        text: 'string'
-      },
-      {
-        text: 'No'
-      },
-      {
-        text: 'HTML to use for the heading of the error summary block. If this is provided, the titleText argument will be ignored.'
-      }
-    ],
-    [
-      {
-        text: 'descriptionText'
-      },
-      {
-        text: 'string'
-      },
-      {
-        text: 'No'
-      },
-      {
-        text: 'Optional text description of the errors.'
-      }
-    ],
-     [
-      {
-        text: 'descriptionHtml'
-      },
-      {
-        text: 'string'
-      },
-      {
-        text: 'No'
-      },
-      {
-        text: 'Optional HTML description of the errors.  If this is provided, the descriptionText argument will be ignored.'
+        text: 'Optional text or HTML description of the errors.  If `descriptionhtml` is provided, the `descriptionText` argument will be ignored.'
       }
     ],
     [
@@ -119,6 +77,48 @@
       },
       {
         text: 'Contains an array of error link items and all their available arguments.'
+      }
+    ],
+    [
+      {
+        text: 'errorList.{}.href'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Href attribute for the error link item. If provided item will be an anchor.'
+      }
+    ],
+    [
+      {
+        text: 'errorList.{}.text (or) errorList.{}.html'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'Yes'
+      },
+      {
+        text: 'Text or HTML for the error link item. If `html` is provided, the `text` argument will be ignored.'
+      }
+    ],
+    [
+      {
+        text: 'classes'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Optional additional classes to add to the error-summary container.'
       }
     ],
     [
