@@ -22,8 +22,8 @@
   }
 
   .govuk-panel--confirmation {
-    color: $govuk-white;
-    background: $govuk-turquoise;
+    color: govuk-colour("white");
+    background: govuk-colour("turquoise");
   }
 
   .govuk-panel__title {

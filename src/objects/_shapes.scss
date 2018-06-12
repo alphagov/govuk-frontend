@@ -2,8 +2,8 @@
   .govuk-circle {
     display: inline-block;
     border-radius: 50%;
-    color: $govuk-white;
-    background: $govuk-black;
+    color: govuk-colour("white");
+    background: govuk-colour("black");
     text-align: center;
   }
 }

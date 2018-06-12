@@ -9,8 +9,8 @@
     display: inline-block;
     padding: $govuk-spacing-scale-1 8px 0;
 
-    color: $govuk-white;
-    background-color: $govuk-blue;
+    color: govuk-colour("white");
+    background-color: govuk-colour("blue");
     letter-spacing: 1px;
 
     text-decoration: none;
@@ -18,6 +18,6 @@
   }
 
   .govuk-tag--inactive {
-    background-color: $govuk-grey-1;
+    background-color: govuk-colour("grey-1");
   }
 }

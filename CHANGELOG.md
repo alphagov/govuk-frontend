@@ -113,6 +113,28 @@ Note: We're not following semantic versioning yet, we are going to talk about th
   Note that this function will return 'web-safe' colours by default. You can
   pass $websafe: false to get the non-websafe colour.
 
+- The colour palette variables (e.g. `$govuk-green`) have been moved into a
+  new single `$govuk-colours` map. If you need to reference a colour within your
+  application you should use the new `govuk-colour` function:
+
+  ```scss
+  .element {
+    color: govuk-colour("green");
+  }
+  ```
+
+  Tints (`$govuk-green-50`, `$govuk-green-25`) have been removed from the colour
+  palette.
+
+- A number of the colours have been renamed to use more neutral names:
+
+  - `mauve` → `light-purple`
+  - `fuchsia` → `bright-purple`
+  - `baby-pink` → `light-pink`
+  - `mellow-red` → `bright-red`
+  - `grass-green` → `light-green`
+
+
 🔧 Fixes:
 
 - Fix govuk-equilateral-height function usage in shape-arrow helper

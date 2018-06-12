@@ -7,7 +7,7 @@
   $govuk-button-colour: #00823b;
   $govuk-button-hover-colour: darken($govuk-button-colour, 5%);
   $govuk-button-shadow-colour: darken($govuk-button-colour, 15%);
-  $govuk-button-text-colour: $govuk-white;
+  $govuk-button-text-colour: govuk-colour("white");
 
   // Because the shadow (s0) is visually 'part of' the button, we need to reduce
   // the height of the button to compensate by adjusting its padding (s1) and

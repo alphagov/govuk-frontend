@@ -22,8 +22,8 @@
   .govuk-select option:active,
   .govuk-select option:checked,
   .govuk-select:focus::-ms-value {
-    color: $govuk-white;
-    background-color: $govuk-blue;
+    color: govuk-colour("white");
+    background-color: govuk-colour("blue");
   }
 
   .govuk-select--error {

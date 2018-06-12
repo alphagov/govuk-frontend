@@ -2,18 +2,27 @@
 /// @group settings/colours
 ////
 
+@import "../helpers/colour";
+
 
 
 // =========================================================
 // Generic
 // =========================================================
 
+/// Brand colour
+///
+/// @type Colour
+/// @access public
+
+$govuk-brand-colour: govuk-colour("blue") !default;
+
 /// Text colour
 ///
 /// @type Colour
 /// @access public
 
-$govuk-text-colour: $govuk-black !default;
+$govuk-text-colour: govuk-colour("black") !default;
 
 /// Canvas background colour
 ///
@@ -22,14 +31,14 @@ $govuk-text-colour: $govuk-black !default;
 /// @type Colour
 /// @access public
 
-$govuk-canvas-background-colour: $govuk-grey-3 !default;
+$govuk-canvas-background-colour: govuk-colour("grey-3") !default;
 
 /// Body background colour
 ///
 /// @type Colour
 /// @access public
 
-$govuk-body-background-colour: $govuk-white !default;
+$govuk-body-background-colour: govuk-colour("white") !default;
 
 /// Text colour for print media
 ///
@@ -47,7 +56,7 @@ $govuk-print-text-colour: #000000 !default;
 /// @type Colour
 /// @access public
 
-$govuk-secondary-text-colour: $govuk-grey-1 !default;
+$govuk-secondary-text-colour: govuk-colour("grey-1") !default;
 
 /// Focus colour
 ///
@@ -57,7 +66,7 @@ $govuk-secondary-text-colour: $govuk-grey-1 !default;
 /// @type Colour
 /// @access public
 
-$govuk-focus-colour: $govuk-yellow !default;
+$govuk-focus-colour: govuk-colour("yellow") !default;
 
 /// Error colour
 ///
@@ -65,7 +74,8 @@ $govuk-focus-colour: $govuk-yellow !default;
 ///
 /// @type Colour
 /// @access public
-$govuk-error-colour: $govuk-red !default;
+
+$govuk-error-colour: govuk-colour("red") !default;
 
 /// Border colour
 ///
@@ -74,7 +84,7 @@ $govuk-error-colour: $govuk-red !default;
 /// @type Colour
 /// @access public
 
-$govuk-border-colour: $govuk-grey-2 !default;
+$govuk-border-colour: govuk-colour("grey-2") !default;
 
 /// Input border colour
 ///
@@ -83,7 +93,7 @@ $govuk-border-colour: $govuk-grey-2 !default;
 /// @type Colour
 /// @access public
 
-$govuk-input-border-colour: $govuk-black !default;
+$govuk-input-border-colour: govuk-colour("black") !default;
 
 
 
@@ -96,7 +106,7 @@ $govuk-input-border-colour: $govuk-black !default;
 /// @type Colour
 /// @access public
 
-$govuk-link-colour: $govuk-blue !default;
+$govuk-link-colour: govuk-colour("blue") !default;
 
 /// Visited link colour
 ///
@@ -110,11 +120,11 @@ $govuk-link-visited-colour: #4c2c92 !default;
 /// @type Colour
 /// @access public
 
-$govuk-link-hover-colour: $govuk-light-blue !default;
+$govuk-link-hover-colour: govuk-colour("light-blue") !default;
 
 /// Active link colour
 ///
 /// @type Colour
 /// @access public
 
-$govuk-link-active-colour: $govuk-light-blue !default;
+$govuk-link-active-colour: govuk-colour("light-blue") !default;
