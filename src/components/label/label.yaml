@@ -4,7 +4,7 @@ examples:
       text: National Insurance number
   - name: with bold text
     data:
-      classes: govuk-label--bold
+      classes: govuk-label--s
       text: National Insurance number
   - name: as page heading
     data:
