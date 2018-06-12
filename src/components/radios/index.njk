@@ -80,20 +80,6 @@ Let users select a single option from a list.
     ],
     [
       {
-        text: 'classes'
-      },
-      {
-        text: 'string'
-      },
-      {
-        text: 'No'
-      },
-      {
-        text: 'Optional additional classes'
-      }
-    ],
-    [
-      {
         text: 'idPrefix'
       },
       {
@@ -103,7 +89,7 @@ Let users select a single option from a list.
         text: 'No'
       },
       {
-        text: 'String to prefix id for each radio item if no id is specified on each item.'
+        text: 'String to prefix id for each radio item if no id is specified on each item. If`idPrefix` is not passed, fallback to using the name attribute instead.'
       }
     ],
     [
@@ -131,12 +117,26 @@ Let users select a single option from a list.
         text: 'Yes'
       },
       {
-        text: 'Array of radio items.'
+        text: 'Array of checkbox items objects.'
       }
     ],
     [
       {
-        text: 'text'
+        text: 'items.{}.text (or) items.{}.html'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'Yes'
+      },
+      {
+        text: 'Text or HTML to use within each radio item label. If `html` is provided, the `text` argument will be ignored.'
+      }
+    ],
+    [
+      {
+        text: 'items.{}.id'
       },
       {
         text: 'string'
@@ -145,26 +145,40 @@ Let users select a single option from a list.
         text: 'No'
       },
       {
-        text: 'Text to use within the radio label.'
+        text: 'Specific id attribute for the radio item. If ommited, then `idPrefix` string will be applied.'
       }
     ],
     [
       {
-        text: 'html'
+        text: 'items.{}.name'
       },
       {
         text: 'string'
       },
       {
-        text: 'No'
+        text: 'Yes'
       },
       {
-        text: 'HTML to use within the radio label. If this is provided, the text argument will be ignored.'
+        text: 'Specific name for the radio item. If ommited, then component global `name` string will be applied.'
       }
     ],
     [
       {
-        text: 'label'
+        text: 'items.{}.value'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'Yes'
+      },
+      {
+        text: 'Value for the radio input.'
+      }
+    ],
+    [
+      {
+        text: 'items.{}.label'
       },
       {
         text: 'object'
@@ -173,12 +187,12 @@ Let users select a single option from a list.
         text: 'No'
       },
       {
-        text: 'Provide additional attributes to the radio label.'
+        html: 'Provide additional attributes to each radio item label. See `label` component for more details.'
       }
     ],
     [
       {
-        text: 'checked'
+        text: 'items.{}.checked'
       },
       {
         text: 'boolean'
@@ -192,7 +206,35 @@ Let users select a single option from a list.
     ],
     [
       {
-        text: 'disabled'
+        text: 'items.{}.conditional'
+      },
+      {
+        text: 'boolean'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'If true, content provided will be revealed when the item is checked.'
+      }
+    ],
+    [
+      {
+        text: 'items.{}.conditional.html'
+      },
+      {
+        text: 'boolean'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Provide content for the conditional reveal.'
+      }
+    ],
+    [
+      {
+        text: 'items.{}.disabled'
       },
       {
         text: 'boolean'
@@ -206,6 +248,20 @@ Let users select a single option from a list.
     ],
     [
       {
+        text: 'classes'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Optional additional classes to add to the radios container.'
+      }
+    ],
+    [
+      {
         text: 'attributes'
       },
       {
@@ -215,7 +271,7 @@ Let users select a single option from a list.
         text: 'No'
       },
       {
-        text: 'Any extra HTML attributes (for example data attributes) to add to the radio container.'
+        text: 'Any extra HTML attributes (for example data attributes) to add to the radios container.'
       }
     ]
   ]
