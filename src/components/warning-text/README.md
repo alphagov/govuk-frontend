@@ -17,7 +17,7 @@ Find out when to use the Warning text component in your service in the [GOV.UK D
 #### Markup
 
     <div class="govuk-warning-text">
-      <span class="govuk-warning-text__icon govuk-circle" aria-hidden="true">!</span>
+      <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
       <strong class="govuk-warning-text__text">
         <span class="govuk-warning-text__assistive">Warning</span>
         You can be fined up to £5,000 if you don’t register.
