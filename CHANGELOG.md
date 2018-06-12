@@ -207,6 +207,8 @@ You can now initialize individual components like so:
 - Fix issues with canvas colour bleeding into main review page
   ([PR #741](https://github.com/alphagov/govuk-frontend/pull/741))
 
+- Add header with service name and navigation variant to header README ([PR #781](https://github.com/alphagov/govuk-frontend/pull/781))
+
 ## 0.0.31-alpha (Breaking release)
 
 💥 Breaking changes:
