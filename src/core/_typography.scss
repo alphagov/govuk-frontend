@@ -1,9 +1,5 @@
 @include govuk-exports("govuk/core/typography") {
 
-  // We use placeholder classes here so that we can @extend from the prose scope
-  // without also applying every other occurrence of the typography selectors to
-  // the prose scope.
-
   // Headings
 
   %govuk-heading-xl {
@@ -63,9 +59,6 @@
   }
 
   // Captions to be used inside headings
-  //
-  // As these are not used in the prose scope, there is no need to use
-  // placeholder classes.
 
   .govuk-caption-xl {
     @include govuk-font($size: 27);
@@ -162,10 +155,6 @@
   }
 
   // Contextual adjustments
-  //
-  // Because these adjustments are made to the placeholder classes, they will
-  // be inherited by the prose scope as well.
-
   // Add top padding to headings that appear directly after paragraphs.
 
   %govuk-body-l  + %govuk-heading-l {

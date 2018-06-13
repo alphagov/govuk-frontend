@@ -50,13 +50,6 @@ const requestParamsExampleLinks = {
   }
 }
 
-const requestParamsExampleProseScope = {
-  url: `http://localhost:${PORT}/examples/prose-scope`,
-  headers: {
-    'Content-Type': 'text/plain'
-  }
-}
-
 const requestParamsExampleTypography = {
   url: `http://localhost:${PORT}/examples/typography`,
   headers: {
@@ -142,15 +135,6 @@ describe('frontend app', () => {
   describe('links examples', () => {
     it('should resolve with a http status code of 200', done => {
       request.get(requestParamsExampleLinks, (err, res) => {
-        expect(res.statusCode).toEqual(200)
-        done(err)
-      })
-    })
-  })
-
-  describe('prose scope examples', () => {
-    it('should resolve with a http status code of 200', done => {
-      request.get(requestParamsExampleProseScope, (err, res) => {
         expect(res.statusCode).toEqual(200)
         done(err)
       })
