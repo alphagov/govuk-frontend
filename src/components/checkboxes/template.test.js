@@ -255,31 +255,82 @@ describe('Checkboxes', () => {
     })
   })
 
-  it('render conditional', () => {
-    const $ = render('checkboxes', {
-      name: 'example-conditional',
-      items: [
-        {
-          value: 'yes',
-          text: 'Yes'
-        },
-        {
-          value: 'no',
-          text: 'No',
-          checked: true,
-          conditional: {
-            html: 'Conditional content'
+  describe('render conditionals', () => {
+    it('hidden by default when not checked', () => {
+      const $ = render('checkboxes', {
+        name: 'example-conditional',
+        items: [
+          {
+            value: 'yes',
+            text: 'Yes',
+            conditional: {
+              html: 'Conditional content that should be hidden'
+            }
+          },
+          {
+            value: 'no',
+            text: 'No'
           }
-        }
-      ]
-    })
+        ]
+      })
 
-    const $component = $('.govuk-checkboxes')
-    const $lastInput = $component.find('.govuk-checkboxes__input').last()
-    expect($lastInput.attr('data-aria-controls')).toBe('conditional-example-conditional-2')
-    const $lastConditional = $component.find('.govuk-checkboxes__conditional').last()
-    expect($lastConditional.attr('id')).toBe('conditional-example-conditional-2')
-    expect($lastConditional.html()).toContain('Conditional content')
+      const $component = $('.govuk-checkboxes')
+
+      const $firstConditional = $component.find('.govuk-checkboxes__conditional').first()
+      expect($firstConditional.html()).toContain('Conditional content that should be hidden')
+      expect($firstConditional.hasClass('govuk-checkboxes__conditional--hidden')).toBeTruthy()
+    })
+    it('visible by default when checked', () => {
+      const $ = render('checkboxes', {
+        name: 'example-conditional',
+        items: [
+          {
+            value: 'yes',
+            text: 'Yes',
+            checked: true,
+            conditional: {
+              html: 'Conditional content that should be visible'
+            }
+          },
+          {
+            value: 'no',
+            text: 'No'
+          }
+        ]
+      })
+
+      const $component = $('.govuk-checkboxes')
+
+      const $firstConditional = $component.find('.govuk-checkboxes__conditional').first()
+      expect($firstConditional.html()).toContain('Conditional content that should be visible')
+      expect($firstConditional.hasClass('govuk-checkboxes__conditional--hidden')).toBeFalsy()
+    })
+    it('with association to the input they are controlled by', () => {
+      const $ = render('checkboxes', {
+        name: 'example-conditional',
+        items: [
+          {
+            value: 'yes',
+            text: 'Yes',
+            conditional: {
+              html: 'Conditional content that should be hidden'
+            }
+          },
+          {
+            value: 'no',
+            text: 'No'
+          }
+        ]
+      })
+
+      const $component = $('.govuk-checkboxes')
+
+      const $firstInput = $component.find('.govuk-checkboxes__input').first()
+      const $firstConditional = $component.find('.govuk-checkboxes__conditional').first()
+
+      expect($firstInput.attr('data-aria-controls')).toBe('conditional-example-conditional-1')
+      expect($firstConditional.attr('id')).toBe('conditional-example-conditional-1')
+    })
   })
 
   describe('when they include an error message', () => {
