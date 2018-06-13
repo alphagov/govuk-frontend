@@ -17,13 +17,13 @@
 
 
 @mixin govuk-main-wrapper {
-  @include govuk-responsive-padding($govuk-spacing-responsive-6, "top");
-  @include govuk-responsive-padding($govuk-spacing-responsive-6, "bottom");
+  @include govuk-responsive-padding(6, "top");
+  @include govuk-responsive-padding(6, "bottom");
 }
 
 // Use govuk-main-wrapper--l when you page does not have Breadcrumbs, phase banners or back links
 @mixin govuk-main-wrapper--l {
-  @include govuk-responsive-padding($govuk-spacing-responsive-8, "top");
+  @include govuk-responsive-padding(8, "top");
 }
 
 @include govuk-exports("govuk/objects/main-wrapper") {

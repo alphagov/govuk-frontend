@@ -4,19 +4,19 @@
     @include govuk-font($size: 19);
     @include govuk-text-colour;
     margin-top: 0;
-    @include govuk-responsive-margin($govuk-spacing-responsive-4, "bottom");
+    @include govuk-responsive-margin(4, "bottom");
     padding-left: 0;
     list-style-type: none;
 
     // Add a top margin for nested lists
     %govuk-list {
-      margin-top: $govuk-spacing-scale-2;
+      margin-top: govuk-spacing(2);
     }
   }
 
   %govuk-list > li {
     @include govuk-media-query($from: tablet) {
-      margin-bottom: $govuk-spacing-scale-1;
+      margin-bottom: govuk-spacing(1);
     }
   }
 
@@ -43,7 +43,7 @@
   }
 
   %govuk-list--bullet {
-    padding-left: $govuk-spacing-scale-4;
+    padding-left: govuk-spacing(4);
 
     list-style-type: disc;
   }
@@ -53,7 +53,7 @@
   }
 
   %govuk-list--number {
-    padding-left: $govuk-spacing-scale-4;
+    padding-left: govuk-spacing(4);
     list-style-type: decimal;
   }
 

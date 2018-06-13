@@ -20,7 +20,7 @@
     box-sizing: border-box; // 1
     display: table;         // 2
     max-width: 100%;        // 1
-    margin-bottom: $govuk-spacing-scale-3;
+    margin-bottom: govuk-spacing(3);
     padding: 0;
     // Hack to let legends or elements within legends have margins in webkit browsers
     overflow: hidden;
