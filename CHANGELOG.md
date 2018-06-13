@@ -216,6 +216,9 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 - Use the correct class name in bold label example 
   (govuk-label--s rather than govuk-label--bold)
   ([PR #784](https://github.com/alphagov/govuk-frontend/pull/784))
+  
+- Update table of arguments for each component to ensure they're accurate.
+  ([PR #769](https://github.com/alphagov/govuk-frontend/pull/769))
 
 
 🆕 New features:

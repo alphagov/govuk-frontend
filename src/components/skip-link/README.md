@@ -69,6 +69,18 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
+<th class="govuk-table__header" scope="row">text (or) html</th>
+
+<td class="govuk-table__cell ">string</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Text or HTML to use within the skip link. If `html` is provided, the `text` argument will be ignored.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
 <th class="govuk-table__header" scope="row">href</th>
 
 <td class="govuk-table__cell ">string</td>
@@ -81,37 +93,13 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">text</th>
-
-<td class="govuk-table__cell ">string</td>
-
-<td class="govuk-table__cell ">No</td>
-
-<td class="govuk-table__cell ">Text to use within the skip link.</td>
-
-</tr>
-
-<tr class="govuk-table__row">
-
-<th class="govuk-table__header" scope="row">html</th>
-
-<td class="govuk-table__cell ">string</td>
-
-<td class="govuk-table__cell ">No</td>
-
-<td class="govuk-table__cell ">HTML to use within the skip link. If this is provided, the text argument will be ignored.</td>
-
-</tr>
-
-<tr class="govuk-table__row">
-
 <th class="govuk-table__header" scope="row">classes</th>
 
 <td class="govuk-table__cell ">string</td>
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Optional additional classes for the skip link.</td>
+<td class="govuk-table__cell ">Optional additional classes to add to the skip link.</td>
 
 </tr>
 

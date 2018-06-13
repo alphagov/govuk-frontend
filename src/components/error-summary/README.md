@@ -106,61 +106,25 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">classes</th>
+<th class="govuk-table__header" scope="row">titleText (or) titleHtml</th>
 
 <td class="govuk-table__cell ">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell ">Yes</td>
 
-<td class="govuk-table__cell ">Optional additional classes</td>
+<td class="govuk-table__cell ">Text or HTML to use for the heading of the error summary block. If `titleHtml` is provided, the `titleText` argument will be ignored.</td>
 
 </tr>
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">titleText</th>
+<th class="govuk-table__header" scope="row">descriptionText (or) descriptionHtml</th>
 
 <td class="govuk-table__cell ">string</td>
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Text to use for the heading of the error summary block.</td>
-
-</tr>
-
-<tr class="govuk-table__row">
-
-<th class="govuk-table__header" scope="row">titleHtml</th>
-
-<td class="govuk-table__cell ">string</td>
-
-<td class="govuk-table__cell ">No</td>
-
-<td class="govuk-table__cell ">HTML to use for the heading of the error summary block. If this is provided, the titleText argument will be ignored.</td>
-
-</tr>
-
-<tr class="govuk-table__row">
-
-<th class="govuk-table__header" scope="row">descriptionText</th>
-
-<td class="govuk-table__cell ">string</td>
-
-<td class="govuk-table__cell ">No</td>
-
-<td class="govuk-table__cell ">Optional text description of the errors.</td>
-
-</tr>
-
-<tr class="govuk-table__row">
-
-<th class="govuk-table__header" scope="row">descriptionHtml</th>
-
-<td class="govuk-table__cell ">string</td>
-
-<td class="govuk-table__cell ">No</td>
-
-<td class="govuk-table__cell ">Optional HTML description of the errors. If this is provided, the descriptionText argument will be ignored.</td>
+<td class="govuk-table__cell ">Optional text or HTML description of the errors. If `descriptionhtml` is provided, the `descriptionText` argument will be ignored.</td>
 
 </tr>
 
@@ -173,6 +137,42 @@ If you are using Nunjucks,then macros take the following arguments
 <td class="govuk-table__cell ">Yes</td>
 
 <td class="govuk-table__cell ">Contains an array of error link items and all their available arguments.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">errorList.{}.href</th>
+
+<td class="govuk-table__cell ">string</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Href attribute for the error link item. If provided item will be an anchor.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">errorList.{}.text (or) errorList.{}.html</th>
+
+<td class="govuk-table__cell ">string</td>
+
+<td class="govuk-table__cell ">Yes</td>
+
+<td class="govuk-table__cell ">Text or HTML for the error link item. If `html` is provided, the `text` argument will be ignored.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">classes</th>
+
+<td class="govuk-table__cell ">string</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Optional additional classes to add to the error-summary container.</td>
 
 </tr>
 

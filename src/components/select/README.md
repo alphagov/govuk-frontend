@@ -218,18 +218,6 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">classes</th>
-
-<td class="govuk-table__cell ">string</td>
-
-<td class="govuk-table__cell ">No</td>
-
-<td class="govuk-table__cell ">Optional additional classes.</td>
-
-</tr>
-
-<tr class="govuk-table__row">
-
 <th class="govuk-table__header" scope="row">id</th>
 
 <td class="govuk-table__cell ">string</td>
@@ -266,7 +254,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">value</th>
+<th class="govuk-table__header" scope="row">item.value</th>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -278,7 +266,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">text</th>
+<th class="govuk-table__header" scope="row">item.text</th>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -290,7 +278,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">selected</th>
+<th class="govuk-table__header" scope="row">item.selected</th>
 
 <td class="govuk-table__cell ">boolean</td>
 
@@ -302,7 +290,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">disabled</th>
+<th class="govuk-table__header" scope="row">item.disabled</th>
 
 <td class="govuk-table__cell ">boolean</td>
 
@@ -345,6 +333,18 @@ If you are using Nunjucks,then macros take the following arguments
 <td class="govuk-table__cell ">No</td>
 
 <td class="govuk-table__cell ">Arguments for the errorMessage component (e.g. text). See errorMessage component.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">classes</th>
+
+<td class="govuk-table__cell ">string</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Optional additional classes to add to the select component.</td>
 
 </tr>
 

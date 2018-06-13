@@ -39,7 +39,7 @@
   'rows': [
     [
       {
-        text: 'classes'
+        text: 'describedBy'
       },
       {
         text: 'string'
@@ -48,7 +48,7 @@
         text: 'No'
       },
       {
-        text: 'Optional additional classes'
+        text: 'Text or element id to add to the `aria-describedby` attribute to provide description of the group of fields for screenreader users.'
       }
     ],
     [
@@ -67,7 +67,7 @@
     ],
     [
       {
-        text: 'legend.text'
+        text: 'legend.{}.text (or) legend.{}.html'
       },
       {
         text: 'string'
@@ -76,12 +76,12 @@
         text: 'No'
       },
       {
-        text: 'Legend text'
+        text: 'Legend text or HTML. If `html` is provided, the `text` argument will be ignored.'
       }
     ],
     [
       {
-        text: 'legend.html'
+        text: 'legend.{}.classes'
       },
       {
         text: 'string'
@@ -90,12 +90,12 @@
         text: 'No'
       },
       {
-        text: 'Legend text'
+        text: 'Optional additional classes to add to the legend container.'
       }
     ],
     [
       {
-        text: 'legend.isPageHeading'
+        text: 'legend.{}.isPageHeading'
       },
       {
         text: 'boolean'
@@ -105,6 +105,20 @@
       },
       {
         text: 'Whether the legend also acts as the heading for the page.'
+      }
+    ],
+    [
+      {
+        text: 'classes'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Optional additional classes to add to the fieldset container.'
       }
     ],
     [

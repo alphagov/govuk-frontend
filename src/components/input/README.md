@@ -283,25 +283,13 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">classes</th>
-
-<td class="govuk-table__cell ">string</td>
-
-<td class="govuk-table__cell ">No</td>
-
-<td class="govuk-table__cell ">Optional additional classes</td>
-
-</tr>
-
-<tr class="govuk-table__row">
-
 <th class="govuk-table__header" scope="row">id</th>
 
 <td class="govuk-table__cell ">string</td>
 
 <td class="govuk-table__cell ">Yes</td>
 
-<td class="govuk-table__cell ">The id of the input</td>
+<td class="govuk-table__cell ">The id of the input.</td>
 
 </tr>
 
@@ -313,7 +301,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-table__cell ">Yes</td>
 
-<td class="govuk-table__cell ">The name of the input, which is submitted with the form data</td>
+<td class="govuk-table__cell ">The name of the input, which is submitted with the form data.</td>
 
 </tr>
 
@@ -325,7 +313,19 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Type of input control to render. Defaults to "text"</td>
+<td class="govuk-table__cell ">Type of input control to render. Defaults to "text".</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">value</th>
+
+<td class="govuk-table__cell ">string</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Optional initial value of the input.</td>
 
 </tr>
 
@@ -367,6 +367,18 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
+<th class="govuk-table__header" scope="row">classes</th>
+
+<td class="govuk-table__cell ">string</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Optional additional classes add to the input component.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
 <th class="govuk-table__header" scope="row">attributes</th>
 
 <td class="govuk-table__cell ">object</td>
@@ -374,18 +386,6 @@ If you are using Nunjucks,then macros take the following arguments
 <td class="govuk-table__cell ">No</td>
 
 <td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the input component.</td>
-
-</tr>
-
-<tr class="govuk-table__row">
-
-<th class="govuk-table__header" scope="row">value</th>
-
-<td class="govuk-table__cell ">string</td>
-
-<td class="govuk-table__cell ">No</td>
-
-<td class="govuk-table__cell ">Optional initial value of the input</td>
 
 </tr>
 

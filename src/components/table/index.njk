@@ -39,7 +39,35 @@
   'rows' : [
     [
       {
-        text: 'classes'
+        text: 'rows'
+      },
+      {
+        text: 'array'
+      },
+      {
+        text: 'Yes'
+      },
+      {
+        text: 'Array of table rows and cells.'
+      }
+    ],
+    [
+      {
+        text: 'rows.[].text (or) rows.[].html'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'Yes'
+      },
+      {
+        text: 'Text or HTML for cells in table rows. If `html` is specified, the `text` argument will be ignored.'
+      }
+    ],
+    [
+      {
+        text: 'rows.[].format'
       },
       {
         text: 'string'
@@ -48,7 +76,105 @@
         text: 'No'
       },
       {
-        text: 'Optional additional classes.'
+        text: 'Specify format of a cell. Currently we only use "numeric".'
+      }
+    ],
+    [
+      {
+        text: 'rows.[].colspan'
+      },
+      {
+        text: 'number'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Specify how many columns a cell extends.'
+      }
+    ],
+    [
+      {
+        text: 'rows.[].rowspan'
+      },
+      {
+        text: 'number'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Specify how many rows a cell extends.'
+      }
+    ],
+    [
+      {
+        text: 'head'
+      },
+      {
+        text: 'array'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Optional array of table head cells.'
+      }
+    ],
+    [
+      {
+        text: 'head.[].text or head.[].html'
+      },
+      {
+        text: 'array'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Optional array of table head cells. If `html` is specified, the `text` argument will be ignored.'
+      }
+    ],
+    [
+      {
+        text: 'head.[].colspan'
+      },
+      {
+        text: 'number'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Specify how many columns a cell extends.'
+      }
+    ],
+    [
+      {
+        text: 'head.[].rowspan'
+      },
+      {
+        text: 'number'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Specify how many rows a cell extends.'
+      }
+    ],
+    [
+      {
+        text: 'head.[].format'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Specify format of a cell. Currently we only use "numeric".'
       }
     ],
     [
@@ -95,35 +221,7 @@
     ],
     [
       {
-        text: 'head'
-      },
-      {
-        text: 'array'
-      },
-      {
-        text: 'No'
-      },
-      {
-        text: 'Optional array of table head cells'
-      }
-    ],
-    [
-      {
-        text: 'rows'
-      },
-      {
-        text: 'array'
-      },
-      {
-        text: 'Yes'
-      },
-      {
-        text: 'Array of table rows and cells.'
-      }
-    ],
-    [
-      {
-        text: 'text'
+        text: 'classes'
       },
       {
         text: 'string'
@@ -132,63 +230,7 @@
         text: 'No'
       },
       {
-        text: 'Text for cells in table head and rows.'
-      }
-    ],
-    [
-      {
-        text: 'html'
-      },
-      {
-        text: 'string'
-      },
-      {
-        text: 'No'
-      },
-      {
-        text: 'HTML for cells in table head and rows. If this is specified, the text argument will be ignored.'
-      }
-    ],
-    [
-      {
-        text: 'format'
-      },
-      {
-        text: 'string'
-      },
-      {
-        text: 'No'
-      },
-      {
-        text: 'Specify format of any cell. Currently we only use "numeric".'
-      }
-    ],
-    [
-      {
-        text: 'colspan'
-      },
-      {
-        text: 'number'
-      },
-      {
-        text: 'No'
-      },
-      {
-        text: 'Specify how many columns the cell extends.'
-      }
-    ],
-    [
-      {
-        text: 'rowspan'
-      },
-      {
-        text: 'number'
-      },
-      {
-        text: 'No'
-      },
-      {
-        text: 'Specify how many rows the cell extends.'
+        text: 'Optional additional classes to add to the table container.'
       }
     ],
     [

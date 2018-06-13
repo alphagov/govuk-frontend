@@ -140,49 +140,25 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">summaryText</th>
+<th class="govuk-table__header" scope="row">summaryText (or) summaryHtml</th>
 
 <td class="govuk-table__cell ">string</td>
 
 <td class="govuk-table__cell ">Yes</td>
 
-<td class="govuk-table__cell ">Text to use within the summary element (the visible part of the details element)</td>
+<td class="govuk-table__cell ">Text or HTML to use within the summary element (the visible part of the details element). If `summaryHtml` is provided, the `summaryText` argument will be ignored.</td>
 
 </tr>
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">summaryHtml</th>
+<th class="govuk-table__header" scope="row">text (or) html</th>
 
 <td class="govuk-table__cell ">string</td>
 
 <td class="govuk-table__cell ">Yes</td>
 
-<td class="govuk-table__cell ">HTML to use within the summary element (the visible part of the details element). If this is provided, the summaryText argument will be ignored.</td>
-
-</tr>
-
-<tr class="govuk-table__row">
-
-<th class="govuk-table__header" scope="row">text</th>
-
-<td class="govuk-table__cell ">string</td>
-
-<td class="govuk-table__cell ">Yes</td>
-
-<td class="govuk-table__cell ">Text to use within the disclosed part of the details element.</td>
-
-</tr>
-
-<tr class="govuk-table__row">
-
-<th class="govuk-table__header" scope="row">html</th>
-
-<td class="govuk-table__cell ">string</td>
-
-<td class="govuk-table__cell ">Yes</td>
-
-<td class="govuk-table__cell ">HTML to use within the disclosed part of the details element. If this is provided, the text argument will be ignored.</td>
+<td class="govuk-table__cell ">Text or HTML to use within the disclosed part of the details element. If `html` is provided, the `text` argument will be ignored.</td>
 
 </tr>
 
@@ -194,19 +170,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Optional id</td>
-
-</tr>
-
-<tr class="govuk-table__row">
-
-<th class="govuk-table__header" scope="row">classes</th>
-
-<td class="govuk-table__cell ">string</td>
-
-<td class="govuk-table__cell ">No</td>
-
-<td class="govuk-table__cell ">Optional additional classes</td>
+<td class="govuk-table__cell ">Optional id to add to the details element.</td>
 
 </tr>
 
@@ -218,7 +182,19 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">If true, details will be expanded.</td>
+<td class="govuk-table__cell ">If true, details element will be expanded.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">classes</th>
+
+<td class="govuk-table__cell ">string</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Optional additional classes to add to the details element.</td>
 
 </tr>
 
@@ -230,7 +206,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the details element</td>
+<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the details element.</td>
 
 </tr>
 

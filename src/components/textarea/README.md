@@ -205,18 +205,6 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">classes</th>
-
-<td class="govuk-table__cell ">string</td>
-
-<td class="govuk-table__cell ">No</td>
-
-<td class="govuk-table__cell ">Optional additional classes</td>
-
-</tr>
-
-<tr class="govuk-table__row">
-
 <th class="govuk-table__header" scope="row">id</th>
 
 <td class="govuk-table__cell ">string</td>
@@ -229,13 +217,25 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
+<th class="govuk-table__header" scope="row">describedBy</th>
+
+<td class="govuk-table__cell ">string</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Text or element id to add to the `aria-describedby` attribute to provide description for screenreader users.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
 <th class="govuk-table__header" scope="row">name</th>
 
 <td class="govuk-table__cell ">string</td>
 
 <td class="govuk-table__cell ">Yes</td>
 
-<td class="govuk-table__cell ">The name of the textarea, which is submitted with the form data</td>
+<td class="govuk-table__cell ">The name of the textarea, which is submitted with the form data.</td>
 
 </tr>
 
@@ -247,7 +247,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Optional number of textarea rows (default is 5 rows)</td>
+<td class="govuk-table__cell ">Optional number of textarea rows (default is 5 rows).</td>
 
 </tr>
 
@@ -259,7 +259,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Optional initial value of the textarea</td>
+<td class="govuk-table__cell ">Optional initial value of the textarea.</td>
 
 </tr>
 
@@ -271,7 +271,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-table__cell ">Yes</td>
 
-<td class="govuk-table__cell ">Arguments for the label component</td>
+<td class="govuk-table__cell ">Arguments for the label component. See label component.</td>
 
 </tr>
 
@@ -301,13 +301,25 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
+<th class="govuk-table__header" scope="row">classes</th>
+
+<td class="govuk-table__cell ">string</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Optional additional classes to add to the textarea tag.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
 <th class="govuk-table__header" scope="row">attributes</th>
 
 <td class="govuk-table__cell ">object</td>
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the textarea tag</td>
+<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the textarea tag.</td>
 
 </tr>
 
