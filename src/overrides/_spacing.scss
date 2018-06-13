@@ -8,10 +8,10 @@
 /// @access private
 
 $_spacing-directions: (
-  "top": "t",
-  "right": "r",
-  "bottom": "b",
-  "left": "l"
+  "top",
+  "right",
+  "bottom",
+  "left"
 ) !default;
 
 /// Spacing override classes
@@ -19,44 +19,40 @@ $_spacing-directions: (
 /// Generate spacing override classes for the given property (e.g. margin)
 /// for each point in the spacing scale.
 ///
-/// These override classes are responsive - the 'r' before the scale point
-/// indicates that. We might want to add non-responsive ones later.
-///
 /// @param {String} $property - Property to add spacing to (e.g. 'margin')
-/// @param {String} $property-shorthand - Shorthand representation of property, eg. "m" for "margin"
 ///
 /// @example scss
-///   .govuk-\!-m-r0 {
+///   .govuk-\!-margin-0 {
 ///      margin: 0;
 ///   }
 ///
-///  .govuk-\!-mt-r1 {
+///  .govuk-\!-margin-top-1 {
 ///     margin-top: [whatever spacing point 1 is...]
 ///   }
 ///
 /// @access private
 
-@mixin _govuk-generate-spacing-overrides($property, $property-shorthand) {
+@mixin _govuk-generate-spacing-overrides($property) {
   // For each point in the spacing scale (defined in settings), create an
   // override that affects all directions...
   @each $scale-point, $scale-map in $govuk-spacing-responsive-scale {
 
-    .govuk-\!-#{$property-shorthand}-r#{$scale-point} {
+    .govuk-\!-#{$property}-#{$scale-point} {
 
       @include _govuk-responsive-spacing($scale-point, $property, "all", true);
     }
 
     // ... and then an override for each individual direction
-    @each $direction-name, $direction-shorthand in $_spacing-directions {
+    @each $direction in $_spacing-directions {
 
-      .govuk-\!-#{$property-shorthand}#{$direction-shorthand}-r#{$scale-point} {
-        @include _govuk-responsive-spacing($scale-point, $property, $direction-name, true);
+      .govuk-\!-#{$property}-#{$direction}-#{$scale-point} {
+        @include _govuk-responsive-spacing($scale-point, $property, $direction, true);
       }
     }
   }
 }
 
 @include govuk-exports("govuk/overrides/spacing") {
-  @include _govuk-generate-spacing-overrides("margin", "m");
-  @include _govuk-generate-spacing-overrides("padding", "p");
+  @include _govuk-generate-spacing-overrides("margin");
+  @include _govuk-generate-spacing-overrides("padding");
 }
