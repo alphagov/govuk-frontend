@@ -2,8 +2,6 @@
 @import "../../tools/all";
 @import "../../helpers/all";
 
-@import "../../objects/shapes";
-
 @include govuk-exports("govuk/component/warning-text") {
 
   .govuk-warning-text {
@@ -33,8 +31,15 @@
     margin-top: -20px; // Half the height of the 38px circle (adjusted for NTA)
     padding-top: 3px;
 
+    border-radius: 50%;
+
+    color: govuk-colour("white");
+    background: govuk-colour("black");
+
     font-size: 1.6em;
     line-height: 35px;
+
+    text-align: center;
   }
 
   .govuk-warning-text__text {

@@ -134,6 +134,11 @@ Note: We're not following semantic versioning yet, we are going to talk about th
   - `mellow-red` → `bright-red`
   - `grass-green` → `light-green`
 
+- The 'circle shape' object (`.govuk-circle`) which was used by the warning text
+  component's '!' icon has been removed and the `govuk-warning-text__icon` class
+  has been updated to make it circular without the need for another class.
+
+  ([PR #782](https://github.com/alphagov/govuk-frontend/pull/782))
 
 🔧 Fixes:
 

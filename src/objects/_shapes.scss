@@ -1,9 +1,0 @@
-@include govuk-exports("govuk/objects/shapes") {
-  .govuk-circle {
-    display: inline-block;
-    border-radius: 50%;
-    color: govuk-colour("white");
-    background: govuk-colour("black");
-    text-align: center;
-  }
-}
