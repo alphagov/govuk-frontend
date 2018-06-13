@@ -183,6 +183,27 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 
   ([PR #778](https://github.com/alphagov/govuk-frontend/pull/778))
 
+- Make override classes consistently verbose
+  Based on [feedback from the community](https://gist.github.com/nickcolley/f135e89ed4b679355b0ab47135b38ee8)
+  we have made the override classes consistent where previously some where verbose and some where shorthand.
+
+  We've made the decision to remove the 'r' for responsive, this was hard to remember and users found this confusing.
+
+  To migrate you will need to replace any instances of:
+
+  - `.govuk-!-f-{size}` with `.govuk-!-font-size-{size}`
+  - `.govuk-!-w-{weight}` with `.govuk-!-font-weight-{weight}`
+  - `.govuk-!-m{direction}-r{scale}` with `.govuk-!-margin-{direction}-{scale}`
+  - `.govuk-!-p{direction}-r{scale}` with `.govuk-!-padding-{direction}-{scale}`
+
+  For example if you were using:
+  - `.govuk-!-mb-r5` you would need to change this to `.govuk-!-margin-bottom-5`
+  - `.govuk-!-f-24` you would need to change this to `.govuk-!-font-size-24`
+
+  See the original Pull Request for the full list of classes before and after.
+
+  ([PR #786](https://github.com/alphagov/govuk-frontend/pull/786))
+
 🔧 Fixes:
 
 - Fix govuk-equilateral-height function usage in shape-arrow helper
