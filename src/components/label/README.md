@@ -30,7 +30,7 @@ Use labels for all form fields.
 
 #### Markup
 
-    <label class="govuk-label govuk-label--bold">
+    <label class="govuk-label govuk-label--s">
       National Insurance number
     </label>
 
@@ -39,7 +39,7 @@ Use labels for all form fields.
     {% from 'label/macro.njk' import govukLabel %}
 
     {{ govukLabel({
-      "classes": "govuk-label--bold",
+      "classes": "govuk-label--s",
       "text": "National Insurance number"
     }) }}
 
