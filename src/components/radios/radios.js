@@ -40,7 +40,7 @@ Radios.prototype.setAttributes = function ($input) {
   $input.setAttribute('aria-expanded', inputIsChecked)
 
   var $content = document.querySelector('#' + $input.getAttribute('aria-controls'))
-  $content.setAttribute('aria-hidden', !inputIsChecked)
+  $content.classList.toggle('govuk-radios__conditional--hidden', !inputIsChecked)
 }
 
 Radios.prototype.handleClick = function (event) {
