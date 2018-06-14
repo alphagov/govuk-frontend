@@ -41,7 +41,7 @@
 your app to show these assets. Below is a sample configuration using Express js:</p>
 
 <pre><code>
-app.use('/assets', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/frontend/assets')))
+app.use('/assets', express.static(path.join(__dirname, '/node_modules/govuk-frontend/assets')))
 </code></pre>
 
 <h2>Component arguments</h2>
@@ -55,7 +55,7 @@ app.use('/assets', express.static(path.join(__dirname, '/node_modules/@govuk-fro
 <p>Below is an example setup using express configure views:</p>
 
 <pre><code>
-nunjucks.configure('node_modules/@govuk-frontend/frontend/components', {
+nunjucks.configure('node_modules/govuk-frontend/components', {
   autoescape: true,
   cache: false,
   express: app
