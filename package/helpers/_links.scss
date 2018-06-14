@@ -1,6 +1,13 @@
+////
+/// @group helpers
+////
+
 /// Common link mixin
 ///
 /// Provides the typography and focus state, regardless of link style.
+///
+/// @access public
+
 @mixin govuk-link-common {
   @include govuk-typography-common;
   @include govuk-focusable-fill;
@@ -18,6 +25,9 @@
 ///     @include govuk-link-common;
 ///     @include govuk-link-style-muted;
 ///   }
+///
+/// @access public
+
 @mixin govuk-link-style-default {
   &:link {
     color: $govuk-link-colour;
@@ -49,12 +59,15 @@
 ///     @include govuk-link-common;
 ///     @include govuk-link-style-muted;
 ///   }
+///
+/// @access public
+
 @mixin govuk-link-style-muted {
   &:link,
   &:visited,
   &:hover,
   &:active {
-    color: $govuk-grey-1;
+    color: $govuk-secondary-text-colour;
   }
 
   // When focussed, the text colour needs to be darker to ensure that colour
@@ -86,7 +99,10 @@
 ///     @include govuk-link-common;
 ///     @include govuk-link-style-text;
 ///   }
-@mixin govuk-link-style-text($include-common-styles: true) {
+///
+/// @access public
+
+@mixin govuk-link-style-text {
   // Override link colour to use text colour
   &:link,
   &:visited,
@@ -110,8 +126,11 @@
 ///
 /// When printing, append the the destination URL to the link text, as long
 /// as the URL starts with either `/`, `http://` or `https://`.
+///
+/// @access public
+
 @mixin govuk-link-print-friendly {
-  @include mq($media-type: print) {
+  @include govuk-media-query($media-type: print) {
 
     &[href^="/"],
     &[href^="http://"],

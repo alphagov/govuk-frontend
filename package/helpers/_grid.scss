@@ -1,5 +1,13 @@
-// default map of available grid column widths
-$grid-widths: (
+////
+/// @group helpers
+////
+
+/// Map of grid column widths
+///
+/// @type Map
+/// @access private
+
+$_govuk-grid-widths: (
   one-quarter: 25%,
   one-third: 33.3333%,
   one-half: 50%,
@@ -8,27 +16,36 @@ $grid-widths: (
   full: 100%
 ) !default;
 
-// helper funtion to get the value from map
+/// Grid width percentage
+///
+/// @param {String} $key - Name of grid width (e.g. two-thirds)
+/// @return {Number} Percentage width
+/// @throw if `$key` is not a valid grid width
+/// @access public
+
 @function grid-width($key) {
-  @if map-has-key($grid-widths, $key) {
-    @return map-get($grid-widths, $key);
+  @if map-has-key($_govuk-grid-widths, $key) {
+    @return map-get($_govuk-grid-widths, $key);
   }
 
-  @error "Unknown `#{$key}` in $grid-width.";
+  @error "Unknown grid width `#{$key}`";
 }
 
-// Mixin to generate grid row styles
-// Creates a grid row class with a standardised margin.
-// Usage:
-// Default:
-// @include govuk-grid-row;
-//
-// Optional: Provide a custom grid row class:
-// @include govuk-grid-row("app-grid");
+/// Generate grid row styles
+///
+/// Creates a grid row class with a standardised margin.
+///
+/// @param {String} $class [govuk-grid-row] CSS class name
+///
+/// @example scss - Default
+///   @include govuk-grid-row;
+///
+/// @example scss - Customising the class name
+///   @include govuk-grid-row("app-grid");
+///
+/// @access public
 
-@mixin govuk-grid-row($class: null) {
-  $class: "govuk-grid-row" !default;
-
+@mixin govuk-grid-row($class: "govuk-grid-row") {
   .#{$class} {
     @include govuk-clearfix;
     margin-right: - ($govuk-gutter-half);
@@ -36,44 +53,37 @@ $grid-widths: (
   }
 }
 
-// A mixin to generate grid column styles
-// Creates a cross browser grid column with a class of '.govuk-grid-column' by default
-// and a standardised gutter between the columns.
-// Common widths are predefined above as keywords in the `$grid-widths` map.
-// By default their width chnages from 100% to specified width at 'tablet' breakpoint,
-// but that can be configured to be any other breapoint by using the `$at` argument.
-//
-// Arguments:
-// @param $class: "govuk-grid-column" (default) 
-// @param $width: one-quarter | one-third | one-half | two-third | three-quarters | full (default)
-// @param $float: left (default) | right 
-// @param $at: mobile | tablet (default) | desktop | any custom breapoint in px or em
-//
-// Usage:
-// Default:
-// @include govuk-grid-column(two-thirds)
-//
-// Custom class:
-// @include govuk-grid-column(one-half, $class: "test-column");
-//
-// Change breakpoint where width percentage is applied:
-// @include govuk-grid-column(one-half, $at: desktop);
-//
-// Change float direction:
-// @include govuk-grid-column(one-half, $float: right);
+/// Generate grid column styles
+///
+/// Creates a cross browser grid column with a class of '.govuk-grid-column' by
+/// default, and a standardised gutter between the columns.
+///
+/// Common widths are predefined above as keywords in the `$grid-widths` map.
+///
+/// By default their width changes from 100% to specified width at the 'tablet'
+/// breakpoint, but that can be configured to be any other breakpoint by using
+/// the `$at` parameter.
+///
+/// @param {String} $class [govuk-grid-column] CSS class name
+/// @param {String} $width [full] one-quarter | one-third | one-half | two-third | three-quarters | full
+/// @param {String} $float [left] left | right
+/// @param {String} $at [tablet] - mobile | tablet | desktop | any custom breakpoint in px or em
+///
+/// @example scss - Default
+///   @include govuk-grid-column(two-thirds)
+///
+/// @example scss - Customising the class name
+///   @include govuk-grid-column(one-half, $class: "test-column");
+///
+/// @example scss - Customising the breakpoint where width percentage is applied
+///   @include govuk-grid-column(one-half, $at: desktop);
+///
+/// @example scss - Customising the float direction
+///   @include govuk-grid-column(one-half, $float: right);
+///
+/// @access public
 
-@mixin govuk-grid-column(
-  $width: null,
-  $float: null,
-  $at: null,
-  $class: null) {
-
-  $class: "govuk-grid-column" !default;
-
-  $width: if($width != null, $width, full);
-  $float: if($float != null, $float, left) !default;
-  $at: if($at != null, $at, tablet) !default;
-
+@mixin govuk-grid-column($width: full, $float: left, $at: tablet, $class: "govuk-grid-column") {
 
   .#{$class}-#{$width} {
     -webkit-box-sizing: border-box;
@@ -82,7 +92,7 @@ $grid-widths: (
       width: 100%;
     }
     padding: 0 $govuk-gutter-half;
-    @include mq($from: $at) {
+    @include govuk-media-query($from: $at) {
       width: grid-width($width);
       float: $float;
     }

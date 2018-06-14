@@ -4,13 +4,13 @@
 
 @include govuk-exports("govuk/component/inset-text") {
   .govuk-inset-text {
-    @include govuk-font-regular-19;
+    @include govuk-font($size: 19);
     @include govuk-text-colour;
-    padding: $govuk-spacing-scale-3;
+    padding: govuk-spacing(3);
     // Margin top intended to collapse
     // This adds an additional 10px to the paragraph above
-    @include govuk-responsive-margin($govuk-spacing-responsive-6, "top");
-    @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom");
+    @include govuk-responsive-margin(6, "top");
+    @include govuk-responsive-margin(6, "bottom");
 
     clear: both;
 

@@ -1,3 +1,7 @@
+////
+/// @group tools
+////
+
 // Disable indentation linting in this file only
 // sass-lint:disable indentation
 
@@ -9,6 +13,7 @@
 ///
 /// @param {String} Filename for the image to load
 /// @return {String} URL for the filename, wrapped in `url()`
+/// @access public
 
 @function govuk-image-url($filename) {
   $use-custom-function: variable-exists("govuk-image-url-function")

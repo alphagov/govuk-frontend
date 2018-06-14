@@ -222,7 +222,7 @@ When compiling the Sass files you'll need to define includePaths to reference th
 
 In order to include the images used in the components, you need to configure your app to show these assets. Below is a sample configuration using Express js:
 
-    app.use('/assets', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/frontend/assets')))
+    app.use('/assets', express.static(path.join(__dirname, '/node_modules/govuk-frontend/assets')))
 
 ## Component arguments
 
@@ -250,61 +250,49 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">classes</th>
-
-<td class="govuk-table__cell ">string</td>
-
-<td class="govuk-table__cell ">No</td>
-
-<td class="govuk-table__cell ">Optional additional classes</td>
-
-</tr>
-
-<tr class="govuk-table__row">
-
 <th class="govuk-table__header" scope="row">items</th>
 
 <td class="govuk-table__cell ">array</td>
 
 <td class="govuk-table__cell ">Yes</td>
 
-<td class="govuk-table__cell ">Array of breadcrumbs items</td>
+<td class="govuk-table__cell ">Array of breadcrumbs item objects.</td>
 
 </tr>
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">text</th>
+<th class="govuk-table__header" scope="row">items.{}.text (or) items.{}.html</th>
 
 <td class="govuk-table__cell ">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell ">Yes</td>
 
-<td class="govuk-table__cell ">Text to use within the breadcrumbs item</td>
-
-</tr>
-
-<tr class="govuk-table__row">
-
-<th class="govuk-table__header" scope="row">html</th>
-
-<td class="govuk-table__cell ">string</td>
-
-<td class="govuk-table__cell ">No</td>
-
-<td class="govuk-table__cell ">HTML to use within the breadcrumbs item. If this is provided, the text argument will be ignored.</td>
+<td class="govuk-table__cell ">Text or HTML to use within the breadcrumbs item. If `html` is provided, the `text` argument will be ignored.</td>
 
 </tr>
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">href</th>
+<th class="govuk-table__header" scope="row">items.{}.href</th>
 
 <td class="govuk-table__cell ">string</td>
 
 <td class="govuk-table__cell ">no</td>
 
 <td class="govuk-table__cell ">Link for the breadcrumbs item. If not specified, breadcrumbs item is a normal list item</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">classes</th>
+
+<td class="govuk-table__cell ">string</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Optional additional classes to add to the breadcrumbs container.</td>
 
 </tr>
 
@@ -328,7 +316,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 Below is an example setup using express configure views:
 
-    nunjucks.configure('node_modules/@govuk-frontend/frontend/components', {
+    nunjucks.configure('node_modules/govuk-frontend/components', {
       autoescape: true,
       cache: false,
       express: app

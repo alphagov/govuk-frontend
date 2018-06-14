@@ -5,9 +5,9 @@
 @include govuk-exports("govuk/component/details") {
 
   .govuk-details {
-    @include govuk-font-regular-19;
+    @include govuk-font($size: 19);
     @include govuk-text-colour;
-    @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom");
+    @include govuk-responsive-margin(6, "bottom");
 
     display: block;
   }
@@ -19,10 +19,10 @@
     // Absolutely position the marker against this element
     position: relative;
 
-    margin-bottom: $govuk-spacing-scale-1;
+    margin-bottom: govuk-spacing(1);
 
     // Allow for absolutely positioned marker and align with disclosed text
-    padding-left: $govuk-spacing-scale-4 + $govuk-border-width;
+    padding-left: govuk-spacing(4) + $govuk-border-width;
 
     // Style the summary to look like a link...
     color: $govuk-link-colour;
@@ -70,14 +70,14 @@
   }
 
   .govuk-details__text {
-    padding: $govuk-spacing-scale-3;
-    padding-left: $govuk-spacing-scale-4;
+    padding: govuk-spacing(3);
+    padding-left: govuk-spacing(4);
     border-left: $govuk-border-width solid $govuk-border-colour;
   }
 
   .govuk-details__text p {
     margin-top: 0;
-    margin-bottom: $govuk-spacing-scale-4;
+    margin-bottom: govuk-spacing(4);
   }
 
   .govuk-details__text p:last-child {

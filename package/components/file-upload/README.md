@@ -183,7 +183,7 @@ When compiling the Sass files you'll need to define includePaths to reference th
 
 In order to include the images used in the components, you need to configure your app to show these assets. Below is a sample configuration using Express js:
 
-    app.use('/assets', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/frontend/assets')))
+    app.use('/assets', express.static(path.join(__dirname, '/node_modules/govuk-frontend/assets')))
 
 ## Component arguments
 
@@ -211,6 +211,18 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
+<th class="govuk-table__header" scope="row">name</th>
+
+<td class="govuk-table__cell ">string</td>
+
+<td class="govuk-table__cell ">Yes</td>
+
+<td class="govuk-table__cell ">The name of the input, which is submitted with the form data.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
 <th class="govuk-table__header" scope="row">id</th>
 
 <td class="govuk-table__cell ">string</td>
@@ -218,18 +230,6 @@ If you are using Nunjucks,then macros take the following arguments
 <td class="govuk-table__cell ">Yes</td>
 
 <td class="govuk-table__cell ">The id of the input</td>
-
-</tr>
-
-<tr class="govuk-table__row">
-
-<th class="govuk-table__header" scope="row">name</th>
-
-<td class="govuk-table__cell ">string</td>
-
-<td class="govuk-table__cell ">Yes</td>
-
-<td class="govuk-table__cell ">The name of the input, which is submitted with the form data</td>
 
 </tr>
 
@@ -253,7 +253,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-table__cell ">Yes</td>
 
-<td class="govuk-table__cell ">Arguments for the label component</td>
+<td class="govuk-table__cell ">Arguments for the label component. See label component.</td>
 
 </tr>
 
@@ -289,7 +289,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Optional additional classes</td>
+<td class="govuk-table__cell ">Optional additional classes to add to the input tag.</td>
 
 </tr>
 
@@ -301,7 +301,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Any extra HTML attributes (for example accept or data attributes) to add to the input tag</td>
+<td class="govuk-table__cell ">Any extra HTML attributes (for example accept or data attributes) to add to the input tag.</td>
 
 </tr>
 
@@ -313,7 +313,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 Below is an example setup using express configure views:
 
-    nunjucks.configure('node_modules/@govuk-frontend/frontend/components', {
+    nunjucks.configure('node_modules/govuk-frontend/components', {
       autoescape: true,
       cache: false,
       express: app

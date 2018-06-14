@@ -190,7 +190,7 @@ When compiling the Sass files you'll need to define includePaths to reference th
 
 In order to include the images used in the components, you need to configure your app to show these assets. Below is a sample configuration using Express js:
 
-    app.use('/assets', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/frontend/assets')))
+    app.use('/assets', express.static(path.join(__dirname, '/node_modules/govuk-frontend/assets')))
 
 ## Component arguments
 
@@ -215,18 +215,6 @@ If you are using Nunjucks,then macros take the following arguments
 </thead>
 
 <tbody class="govuk-table__body">
-
-<tr class="govuk-table__row">
-
-<th class="govuk-table__header" scope="row">classes</th>
-
-<td class="govuk-table__cell ">string</td>
-
-<td class="govuk-table__cell ">No</td>
-
-<td class="govuk-table__cell ">Optional additional classes.</td>
-
-</tr>
 
 <tr class="govuk-table__row">
 
@@ -266,7 +254,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">value</th>
+<th class="govuk-table__header" scope="row">item.value</th>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -278,7 +266,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">text</th>
+<th class="govuk-table__header" scope="row">item.text</th>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -290,7 +278,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">selected</th>
+<th class="govuk-table__header" scope="row">item.selected</th>
 
 <td class="govuk-table__cell ">boolean</td>
 
@@ -302,7 +290,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">disabled</th>
+<th class="govuk-table__header" scope="row">item.disabled</th>
 
 <td class="govuk-table__cell ">boolean</td>
 
@@ -350,6 +338,18 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
+<th class="govuk-table__header" scope="row">classes</th>
+
+<td class="govuk-table__cell ">string</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Optional additional classes to add to the select component.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
 <th class="govuk-table__header" scope="row">attributes</th>
 
 <td class="govuk-table__cell ">object</td>
@@ -368,7 +368,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 Below is an example setup using express configure views:
 
-    nunjucks.configure('node_modules/@govuk-frontend/frontend/components', {
+    nunjucks.configure('node_modules/govuk-frontend/components', {
       autoescape: true,
       cache: false,
       express: app

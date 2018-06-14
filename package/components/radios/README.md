@@ -236,14 +236,14 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
         <div class="govuk-radios__item">
           <input class="govuk-radios__input" id="housing-act-1" name="housing-act" type="radio" value="part-2">
           <label class="govuk-label govuk-radios__label" for="housing-act-1">
-            <span class="govuk-heading-s govuk-!-mb-r1">Part 2 of the Housing Act 2004</span> For properties that are 3 or more stories high and occupied by 5 or more people
+            <span class="govuk-heading-s govuk-!-margin-bottom-1">Part 2 of the Housing Act 2004</span> For properties that are 3 or more stories high and occupied by 5 or more people
           </label>
         </div>
 
         <div class="govuk-radios__item">
           <input class="govuk-radios__input" id="housing-act-2" name="housing-act" type="radio" value="part-3">
           <label class="govuk-label govuk-radios__label" for="housing-act-2">
-            <span class="govuk-heading-s govuk-!-mb-r1">Part 3 of the Housing Act 2004</span> For properties that are within a geographical area defined by a local council
+            <span class="govuk-heading-s govuk-!-margin-bottom-1">Part 3 of the Housing Act 2004</span> For properties that are within a geographical area defined by a local council
           </label>
         </div>
 
@@ -270,11 +270,11 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
       "items": [
         {
           "value": "part-2",
-          "html": "<span class=\"govuk-heading-s govuk-!-mb-r1\">Part 2 of the Housing Act 2004</span> For properties that are 3 or more stories high and occupied by 5 or more people"
+          "html": "<span class=\"govuk-heading-s govuk-!-margin-bottom-1\">Part 2 of the Housing Act 2004</span> For properties that are 3 or more stories high and occupied by 5 or more people"
         },
         {
           "value": "part-3",
-          "html": "<span class=\"govuk-heading-s govuk-!-mb-r1\">Part 3 of the Housing Act 2004</span> For properties that are within a geographical area defined by a local council"
+          "html": "<span class=\"govuk-heading-s govuk-!-margin-bottom-1\">Part 3 of the Housing Act 2004</span> For properties that are within a geographical area defined by a local council"
         }
       ]
     }) }}
@@ -429,7 +429,7 @@ When compiling the Sass files you'll need to define includePaths to reference th
 
 In order to include the images used in the components, you need to configure your app to show these assets. Below is a sample configuration using Express js:
 
-    app.use('/assets', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/frontend/assets')))
+    app.use('/assets', express.static(path.join(__dirname, '/node_modules/govuk-frontend/assets')))
 
 ## Component arguments
 
@@ -493,25 +493,13 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">classes</th>
-
-<td class="govuk-table__cell ">string</td>
-
-<td class="govuk-table__cell ">No</td>
-
-<td class="govuk-table__cell ">Optional additional classes</td>
-
-</tr>
-
-<tr class="govuk-table__row">
-
 <th class="govuk-table__header" scope="row">idPrefix</th>
 
 <td class="govuk-table__cell ">string</td>
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">String to prefix id for each radio item if no id is specified on each item.</td>
+<td class="govuk-table__cell ">String to prefix id for each radio item if no id is specified on each item. If`idPrefix` is not passed, fallback to using the name attribute instead.</td>
 
 </tr>
 
@@ -535,49 +523,73 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-table__cell ">Yes</td>
 
-<td class="govuk-table__cell ">Array of radio items.</td>
+<td class="govuk-table__cell ">Array of checkbox items objects.</td>
 
 </tr>
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">text</th>
+<th class="govuk-table__header" scope="row">items.{}.text (or) items.{}.html</th>
+
+<td class="govuk-table__cell ">string</td>
+
+<td class="govuk-table__cell ">Yes</td>
+
+<td class="govuk-table__cell ">Text or HTML to use within each radio item label. If `html` is provided, the `text` argument will be ignored.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">items.{}.id</th>
 
 <td class="govuk-table__cell ">string</td>
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Text to use within the radio label.</td>
+<td class="govuk-table__cell ">Specific id attribute for the radio item. If ommited, then `idPrefix` string will be applied.</td>
 
 </tr>
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">html</th>
+<th class="govuk-table__header" scope="row">items.{}.name</th>
 
 <td class="govuk-table__cell ">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell ">Yes</td>
 
-<td class="govuk-table__cell ">HTML to use within the radio label. If this is provided, the text argument will be ignored.</td>
+<td class="govuk-table__cell ">Specific name for the radio item. If ommited, then component global `name` string will be applied.</td>
 
 </tr>
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">label</th>
+<th class="govuk-table__header" scope="row">items.{}.value</th>
+
+<td class="govuk-table__cell ">string</td>
+
+<td class="govuk-table__cell ">Yes</td>
+
+<td class="govuk-table__cell ">Value for the radio input.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">items.{}.label</th>
 
 <td class="govuk-table__cell ">object</td>
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Provide additional attributes to the radio label.</td>
+<td class="govuk-table__cell ">Provide additional attributes to each radio item label. See `label` component for more details.</td>
 
 </tr>
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">checked</th>
+<th class="govuk-table__header" scope="row">items.{}.checked</th>
 
 <td class="govuk-table__cell ">boolean</td>
 
@@ -589,7 +601,31 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">disabled</th>
+<th class="govuk-table__header" scope="row">items.{}.conditional</th>
+
+<td class="govuk-table__cell ">boolean</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">If true, content provided will be revealed when the item is checked.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">items.{}.conditional.html</th>
+
+<td class="govuk-table__cell ">boolean</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Provide content for the conditional reveal.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">items.{}.disabled</th>
 
 <td class="govuk-table__cell ">boolean</td>
 
@@ -601,13 +637,25 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
+<th class="govuk-table__header" scope="row">classes</th>
+
+<td class="govuk-table__cell ">string</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Optional additional classes to add to the radios container.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
 <th class="govuk-table__header" scope="row">attributes</th>
 
 <td class="govuk-table__cell ">object</td>
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the radio container.</td>
+<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the radios container.</td>
 
 </tr>
 
@@ -619,7 +667,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 Below is an example setup using express configure views:
 
-    nunjucks.configure('node_modules/@govuk-frontend/frontend/components', {
+    nunjucks.configure('node_modules/govuk-frontend/components', {
       autoescape: true,
       cache: false,
       express: app
