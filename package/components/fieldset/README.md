@@ -76,7 +76,7 @@ When compiling the Sass files you'll need to define includePaths to reference th
 
 In order to include the images used in the components, you need to configure your app to show these assets. Below is a sample configuration using Express js:
 
-    app.use('/assets', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/frontend/assets')))
+    app.use('/assets', express.static(path.join(__dirname, '/node_modules/govuk-frontend/assets')))
 
 ## Component arguments
 
@@ -104,13 +104,13 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">classes</th>
+<th class="govuk-table__header" scope="row">describedBy</th>
 
 <td class="govuk-table__cell ">string</td>
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Optional additional classes</td>
+<td class="govuk-table__cell ">Text or element id to add to the `aria-describedby` attribute to provide description of the group of fields for screenreader users.</td>
 
 </tr>
 
@@ -128,37 +128,49 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">legend.text</th>
+<th class="govuk-table__header" scope="row">legend.{}.text (or) legend.{}.html</th>
 
 <td class="govuk-table__cell ">string</td>
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Legend text</td>
+<td class="govuk-table__cell ">Legend text or HTML. If `html` is provided, the `text` argument will be ignored.</td>
 
 </tr>
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">legend.html</th>
+<th class="govuk-table__header" scope="row">legend.{}.classes</th>
 
 <td class="govuk-table__cell ">string</td>
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Legend text</td>
+<td class="govuk-table__cell ">Optional additional classes to add to the legend container.</td>
 
 </tr>
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">legend.isPageHeading</th>
+<th class="govuk-table__header" scope="row">legend.{}.isPageHeading</th>
 
 <td class="govuk-table__cell ">boolean</td>
 
 <td class="govuk-table__cell ">No</td>
 
 <td class="govuk-table__cell ">Whether the legend also acts as the heading for the page.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">classes</th>
+
+<td class="govuk-table__cell ">string</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Optional additional classes to add to the fieldset container.</td>
 
 </tr>
 
@@ -182,7 +194,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 Below is an example setup using express configure views:
 
-    nunjucks.configure('node_modules/@govuk-frontend/frontend/components', {
+    nunjucks.configure('node_modules/govuk-frontend/components', {
       autoescape: true,
       cache: false,
       express: app

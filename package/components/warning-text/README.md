@@ -17,7 +17,7 @@ Find out when to use the Warning text component in your service in the [GOV.UK D
 #### Markup
 
     <div class="govuk-warning-text">
-      <span class="govuk-warning-text__icon govuk-circle" aria-hidden="true">!</span>
+      <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
       <strong class="govuk-warning-text__text">
         <span class="govuk-warning-text__assistive">Warning</span>
         You can be fined up to £5,000 if you don’t register.
@@ -47,7 +47,7 @@ When compiling the Sass files you'll need to define includePaths to reference th
 
 In order to include the images used in the components, you need to configure your app to show these assets. Below is a sample configuration using Express js:
 
-    app.use('/assets', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/frontend/assets')))
+    app.use('/assets', express.static(path.join(__dirname, '/node_modules/govuk-frontend/assets')))
 
 ## Component arguments
 
@@ -75,13 +75,13 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">classes</th>
+<th class="govuk-table__header" scope="row">text (or) html</th>
 
 <td class="govuk-table__cell ">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell ">Yes</td>
 
-<td class="govuk-table__cell ">Optional additional classes</td>
+<td class="govuk-table__cell ">Text or HTML for the warning text content. If `html` is provided, the `text` argument is ignored.</td>
 
 </tr>
 
@@ -99,25 +99,13 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">text</th>
+<th class="govuk-table__header" scope="row">classes</th>
 
 <td class="govuk-table__cell ">string</td>
 
-<td class="govuk-table__cell ">Yes</td>
+<td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">The text next to the icon</td>
-
-</tr>
-
-<tr class="govuk-table__row">
-
-<th class="govuk-table__header" scope="row">html</th>
-
-<td class="govuk-table__cell ">string</td>
-
-<td class="govuk-table__cell ">Yes</td>
-
-<td class="govuk-table__cell ">HTML for the warning text content. If this is provided, the text argument is ignored.</td>
+<td class="govuk-table__cell ">Optional additional classes to add to the warning-text container.</td>
 
 </tr>
 
@@ -129,7 +117,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the textarea tag</td>
+<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the warning-text container.</td>
 
 </tr>
 
@@ -141,7 +129,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 Below is an example setup using express configure views:
 
-    nunjucks.configure('node_modules/@govuk-frontend/frontend/components', {
+    nunjucks.configure('node_modules/govuk-frontend/components', {
       autoescape: true,
       cache: false,
       express: app

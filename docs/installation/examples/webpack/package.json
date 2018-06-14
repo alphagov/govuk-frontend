@@ -6,7 +6,7 @@
     "build": "webpack -p --progress --mode production --config webpack.config.js"
   },
   "dependencies": {
-    "@govuk-frontend/frontend": "*"
+    "govuk-frontend": "*"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

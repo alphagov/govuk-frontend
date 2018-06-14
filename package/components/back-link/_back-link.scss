@@ -5,22 +5,22 @@
 @include govuk-exports("govuk/component/back-link") {
 
   .govuk-back-link {
-    @include govuk-typography-responsive($govuk-font-16);
+    @include govuk-typography-responsive($size: 16);
     @include govuk-link-common;
     @include govuk-link-style-text;
 
     display: inline-block;
     position: relative;
 
-    margin-top: $govuk-spacing-scale-3;
-    margin-bottom: $govuk-spacing-scale-3;
+    margin-top: govuk-spacing(3);
+    margin-bottom: govuk-spacing(3);
 
     // Allow space for the arrow
     padding-left: 14px;
 
     // Use border-bottom rather than text-decoration so that the arrow is
     // underlined as well.
-    border-bottom: 1px solid $govuk-black;
+    border-bottom: 1px solid govuk-colour("black");
 
     // Underline is provided by a bottom border
     text-decoration: none;

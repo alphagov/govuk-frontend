@@ -1,3 +1,7 @@
+////
+/// @group tools
+////
+
 // Disable indentation linting in this file only
 // sass-lint:disable indentation
 
@@ -7,8 +11,9 @@
 /// it will be called, otherwise a url will be returned with the filename
 /// appended to the font path.
 ///
-/// @param {String} Font filename
+/// @param {String} $filename - Font filename
 /// @return {String} URL for the filename, wrapped in `url()`
+/// @access public
 
 @function govuk-font-url($filename) {
   $use-custom-function: variable-exists("govuk-font-url-function")

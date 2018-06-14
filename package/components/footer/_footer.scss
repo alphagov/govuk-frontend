@@ -8,7 +8,7 @@
 
   $govuk-footer-background: $govuk-canvas-background-colour;
   $govuk-footer-border-top: #a1acb2;
-  $govuk-footer-border: $govuk-grey-2;
+  $govuk-footer-border: govuk-colour("grey-2");
   $govuk-footer-text: #454a4c;
   $govuk-footer-link: $govuk-footer-text;
   $govuk-footer-link-hover: #171819;
@@ -21,10 +21,9 @@
   $govuk-footer-crest-image-height: ($govuk-footer-crest-image-height-2x / 2);
 
   .govuk-footer {
-    @include govuk-font-regular;
-    @include govuk-typography-responsive($govuk-font-16);
-    @include govuk-responsive-padding($govuk-spacing-responsive-7, "top");
-    @include govuk-responsive-padding($govuk-spacing-responsive-5, "bottom");
+    @include govuk-font($size: 16);
+    @include govuk-responsive-padding(7, "top");
+    @include govuk-responsive-padding(5, "bottom");
 
     border-top: 1px solid $govuk-footer-border-top;
     color: $govuk-footer-text;
@@ -61,7 +60,7 @@
 
   .govuk-footer__section-break {
     margin: 0; // Reset `<hr>` default margins
-    @include govuk-responsive-margin($govuk-spacing-responsive-8, "bottom");
+    @include govuk-responsive-margin(8, "bottom");
     border: 0; // Reset `<hr>` default borders
     border-bottom: 1px solid $govuk-footer-border;
   }
@@ -84,7 +83,7 @@
 
   .govuk-footer__meta-item {
     margin-right: $govuk-gutter-half;
-    margin-bottom: $govuk-spacing-scale-5;
+    margin-bottom: govuk-spacing(5);
     margin-left: $govuk-gutter-half;
   }
 
@@ -100,9 +99,9 @@
 
   .govuk-footer__licence-logo {
     display: inline-block;
-    margin-right: $govuk-spacing-scale-2;
+    margin-right: govuk-spacing(2);
     @include mq ($until: desktop) {
-      margin-bottom: $govuk-spacing-scale-3;
+      margin-bottom: govuk-spacing(3);
     }
     vertical-align: top;
   }
@@ -114,7 +113,7 @@
   .govuk-footer__copyright-logo {
     display: inline-block;
     min-width: $govuk-footer-crest-image-width;
-    padding-top: ($govuk-footer-crest-image-height + $govuk-spacing-scale-2);
+    padding-top: ($govuk-footer-crest-image-height + govuk-spacing(2));
     background-image: govuk-image-url("govuk-crest.png");
     @include govuk-device-pixel-ratio {
       background-image: govuk-image-url("govuk-crest-2x.png");
@@ -129,21 +128,21 @@
 
   .govuk-footer__inline-list {
     margin-top: 0;
-    margin-bottom: $govuk-spacing-scale-3;
+    margin-bottom: govuk-spacing(3);
     padding: 0;
   }
 
   .govuk-footer__inline-list-item {
     display: inline-block;
-    margin-right: $govuk-spacing-scale-3;
-    margin-bottom: $govuk-spacing-scale-1;
+    margin-right: govuk-spacing(3);
+    margin-bottom: govuk-spacing(1);
   }
 
   .govuk-footer__heading {
-    @include govuk-responsive-margin($govuk-spacing-responsive-7, "bottom");
-    padding-bottom: $govuk-spacing-scale-4;
+    @include govuk-responsive-margin(7, "bottom");
+    padding-bottom: govuk-spacing(4);
     @include mq ($until: tablet) {
-      padding-bottom: $govuk-spacing-scale-2;
+      padding-bottom: govuk-spacing(2);
     }
     border-bottom: 1px solid $govuk-footer-border;
   }
@@ -208,7 +207,7 @@
   }
 
   .govuk-footer__list-item {
-    @include govuk-responsive-margin($govuk-spacing-responsive-4, "bottom");
+    @include govuk-responsive-margin(4, "bottom");
   }
 
   .govuk-footer__list-item:last-child {

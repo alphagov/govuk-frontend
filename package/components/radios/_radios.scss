@@ -8,11 +8,11 @@
 @import "../label/label";
 
 @include govuk-exports("govuk/component/radios") {
-  $govuk-radios-size: $govuk-spacing-scale-7;
-  $govuk-radios-label-padding-left-right: $govuk-spacing-scale-3;
+  $govuk-radios-size: govuk-spacing(7);
+  $govuk-radios-label-padding-left-right: govuk-spacing(3);
 
   .govuk-radios__item {
-    @include govuk-font-regular-19;
+    @include govuk-font($size: 19);
 
     display: block;
 
@@ -20,7 +20,7 @@
 
     min-height: $govuk-radios-size;
 
-    margin-bottom: $govuk-spacing-scale-2;
+    margin-bottom: govuk-spacing(2);
     padding: 0 0 0 $govuk-radios-size;
 
     clear: left;
@@ -59,7 +59,7 @@
 
   .govuk-radios__label {
     display: block;
-    padding: 8px $govuk-radios-label-padding-left-right $govuk-spacing-scale-1;
+    padding: 8px $govuk-radios-label-padding-left-right govuk-spacing(1);
     cursor: pointer;
     // remove 300ms pause on mobile
     -ms-touch-action: manipulation;
@@ -86,13 +86,13 @@
     content: "";
 
     position: absolute;
-    top: $govuk-spacing-scale-2;
-    left: $govuk-spacing-scale-2;
+    top: govuk-spacing(2);
+    left: govuk-spacing(2);
 
     width: 0;
     height: 0;
 
-    border: $govuk-spacing-scale-2 solid currentColor;
+    border: govuk-spacing(2) solid currentColor;
     border-radius: 50%;
     opacity: 0;
     background: currentColor;
@@ -125,7 +125,7 @@
       @include govuk-clearfix;
 
       .govuk-radios__item {
-        margin-right: $govuk-spacing-scale-4;
+        margin-right: govuk-spacing(4);
         float: left;
         clear: none;
       }
@@ -141,7 +141,7 @@
   $conditional-padding-left: $conditional-border-padding + $govuk-radios-label-padding-left-right;
 
   .govuk-radios__conditional {
-    @include govuk-responsive-margin($govuk-spacing-responsive-4, "bottom");
+    @include govuk-responsive-margin(4, "bottom");
     margin-left: $conditional-margin-left;
     padding-left: $conditional-padding-left;
     border-left: $conditional-border-width solid $govuk-border-colour;

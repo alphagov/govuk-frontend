@@ -1,6 +1,11 @@
-@import "../tools/exports";
+////
+/// @group helpers
+////
 
-// Mixin to clear floats
+/// Clear floated content within a container using a pseudo element
+///
+/// @access public
+
 @mixin govuk-clearfix {
   &:after {
     content: "";
@@ -8,4 +13,3 @@
     clear: both;
   }
 }
-

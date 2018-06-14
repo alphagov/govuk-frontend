@@ -24,6 +24,7 @@ Find out when to use the Footer component in your service in the [GOV.UK Design 
 
             <svg
               role="presentation"
+              focusable="false"
               class="govuk-footer__licence-logo"
               xmlns="http://www.w3.org/2000/svg"
               viewbox="0 0 483.2 195.7"
@@ -74,7 +75,7 @@ When compiling the Sass files you'll need to define includePaths to reference th
 
 In order to include the images used in the components, you need to configure your app to show these assets. Below is a sample configuration using Express js:
 
-    app.use('/assets', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/frontend/assets')))
+    app.use('/assets', express.static(path.join(__dirname, '/node_modules/govuk-frontend/assets')))
 
 ## Component arguments
 
@@ -108,19 +109,43 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Object containing parameters for the meta navigation</td>
+<td class="govuk-table__cell ">Object containing parameters for the meta navigation.</td>
 
 </tr>
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">meta.items[]</th>
+<th class="govuk-table__header" scope="row">meta.items</th>
 
 <td class="govuk-table__cell ">array</td>
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Array of items for use in the meta section of the footer</td>
+<td class="govuk-table__cell ">Array of items for use in the meta section of the footer.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">meta.items.{}.text</th>
+
+<td class="govuk-table__cell ">string</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">List item text in the meta section of the footer.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">meta.items.{}.href</th>
+
+<td class="govuk-table__cell ">string</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">List item href attribute in the meta section of the footer.</td>
 
 </tr>
 
@@ -132,13 +157,13 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Array of items for use in the navigation section of the footer</td>
+<td class="govuk-table__cell ">Array of items for use in the navigation section of the footer.</td>
 
 </tr>
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">navigation[].title</th>
+<th class="govuk-table__header" scope="row">navigation.{}.title</th>
 
 <td class="govuk-table__cell ">string</td>
 
@@ -150,49 +175,49 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">navigation[].columns</th>
+<th class="govuk-table__header" scope="row">navigation.{}.columns</th>
 
 <td class="govuk-table__cell ">integer</td>
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Amount of columns to display items in</td>
+<td class="govuk-table__cell ">Amount of columns to display items in navigation section of the footer.</td>
 
 </tr>
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">navigation[].items</th>
+<th class="govuk-table__header" scope="row">navigation.items</th>
 
 <td class="govuk-table__cell ">array</td>
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Array of items to display in the list</td>
+<td class="govuk-table__cell ">Array of items to display in the list in navigation section of the footer.</td>
 
 </tr>
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">attributes</th>
-
-<td class="govuk-table__cell ">object</td>
-
-<td class="govuk-table__cell ">No</td>
-
-<td class="govuk-table__cell ">Will add attributes to the footer component root</td>
-
-</tr>
-
-<tr class="govuk-table__row">
-
-<th class="govuk-table__header" scope="row">classes</th>
+<th class="govuk-table__header" scope="row">navigation.items.{}.text</th>
 
 <td class="govuk-table__cell ">string</td>
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Will add classes to the footer component root</td>
+<td class="govuk-table__cell ">List item text in the navigation section of the footer.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">navigation.items.{}.href</th>
+
+<td class="govuk-table__cell ">string</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">List item href attribute in the navigation section of the footer. Both `text` and `href` attributes need to be present to create a link.</td>
 
 </tr>
 
@@ -204,7 +229,31 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Classes that can be added to the container, useful if you want to make the footer full width.</td>
+<td class="govuk-table__cell ">Classes that can be added to the inner container, useful if you want to make the footer full width.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">classes</th>
+
+<td class="govuk-table__cell ">string</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Optional additional classes to add to the footer component container.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">attributes</th>
+
+<td class="govuk-table__cell ">object</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the footer component container.</td>
 
 </tr>
 
@@ -216,7 +265,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 Below is an example setup using express configure views:
 
-    nunjucks.configure('node_modules/@govuk-frontend/frontend/components', {
+    nunjucks.configure('node_modules/govuk-frontend/components', {
       autoescape: true,
       cache: false,
       express: app

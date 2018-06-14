@@ -6,11 +6,11 @@
 
 @include govuk-exports("govuk/component/phase-banner") {
   .govuk-phase-banner {
-    @include govuk-font-regular-16;
+    @include govuk-font($size: 16);
     @include govuk-text-colour;
 
-    padding-top: $govuk-spacing-scale-2;
-    padding-bottom: $govuk-spacing-scale-2;
+    padding-top: govuk-spacing(2);
+    padding-bottom: govuk-spacing(2);
 
     border-bottom: 1px solid $govuk-border-colour;
   }
@@ -21,7 +21,7 @@
   }
 
   .govuk-phase-banner__content__tag {
-    margin-right: $govuk-spacing-scale-2;
+    margin-right: govuk-spacing(2);
   }
 
   .govuk-phase-banner__text {
