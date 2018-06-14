@@ -8,11 +8,7 @@
 
 @include govuk-exports("govuk/component/textarea") {
   .govuk-textarea {
-    @include govuk-font-regular;
-    @include govuk-typography-responsive(
-      $govuk-font-19,
-      $override-line-height: 1.25
-    );
+    @include govuk-font($size: 19, $line-height: 1.25);
     @include govuk-focusable;
 
     -webkit-box-sizing: border-box;
@@ -20,8 +16,8 @@
             box-sizing: border-box; // should this be global?
     display: block;
     width: 100%;
-    @include govuk-responsive-margin($govuk-spacing-responsive-6, "bottom");
-    padding: $govuk-spacing-scale-1;
+    @include govuk-responsive-margin(6, "bottom");
+    padding: govuk-spacing(1);
 
     border: $govuk-border-width-form-element solid $govuk-input-border-colour;
     border-radius: 0;

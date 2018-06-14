@@ -8,30 +8,30 @@
 
   .govuk-error-summary {
     @include govuk-text-colour;
-    @include govuk-responsive-padding($govuk-spacing-responsive-4);
-    @include govuk-responsive-margin($govuk-spacing-responsive-8, "bottom");
+    @include govuk-responsive-padding(4);
+    @include govuk-responsive-margin(8, "bottom");
     @include govuk-focusable;
 
     border: $govuk-border-width-mobile solid $govuk-error-colour;
 
-    @include mq($from: tablet) {
+    @include govuk-media-query($from: tablet) {
       border: $govuk-border-width solid $govuk-error-colour;
     }
   }
 
   .govuk-error-summary__title {
-    @include govuk-font-bold-24;
+    @include govuk-font($size: 24, $weight: bold);
 
     margin-top: 0;
-    @include govuk-responsive-margin($govuk-spacing-responsive-4, "bottom");
+    @include govuk-responsive-margin(4, "bottom");
   }
 
   .govuk-error-summary__body {
-    @include govuk-font-regular-19;
+    @include govuk-font($size: 19);
 
     p {
       margin-top: 0;
-      @include govuk-responsive-margin($govuk-spacing-responsive-4, "bottom");
+      @include govuk-responsive-margin(4, "bottom");
     }
   }
 

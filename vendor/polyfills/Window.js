@@ -1,6 +1,6 @@
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? factory() :
-	typeof define === 'function' && define.amd ? define('all', factory) :
+	typeof define === 'function' && define.amd ? define('GOVUKFrontend', factory) :
 	(factory());
 }(this, (function () { 'use strict';
 

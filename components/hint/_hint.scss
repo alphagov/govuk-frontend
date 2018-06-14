@@ -4,11 +4,11 @@
 
 @include govuk-exports("govuk/component/hint") {
   .govuk-hint {
-    @include govuk-font-regular-19;
+    @include govuk-font($size: 19);
 
     display: block;
 
-    margin-bottom: $govuk-spacing-scale-3;
+    margin-bottom: govuk-spacing(3);
 
     color: $govuk-secondary-text-colour;
   }

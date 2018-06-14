@@ -1,88 +1,80 @@
-// Single points on spacing scale
-$govuk-spacing-scale-1: 5px;
-$govuk-spacing-scale-2: 10px;
-$govuk-spacing-scale-3: 15px;
-$govuk-spacing-scale-4: 20px;
-$govuk-spacing-scale-5: 25px;
-$govuk-spacing-scale-6: 30px;
-$govuk-spacing-scale-7: 40px;
-$govuk-spacing-scale-8: 50px;
-$govuk-spacing-scale-9: 60px;
+////
+/// @group settings/spacing
+////
 
-// Responsive spacing maps
-//
-// These definitions are used to generate responsive spacing that adapts
-// according to the breakpoints (see 'helpers/spacing'). These maps should be
-// used wherever possible to standardise responsive spacing.
+/// Single point spacing variables. Access using `govuk-spacing()`
+/// (see `helpers/spacing`).
+///
+/// @type Map
+/// @access private
 
-// You can define different behaviour on tablet and desktop. The 'null'
-// breakpoint is for mobile.
+$govuk-spacing-points: (
+  0: 0,
+  1: 5px,
+  2: 10px,
+  3: 15px,
+  4: 20px,
+  5: 25px,
+  6: 30px,
+  7: 40px,
+  8: 50px,
+  9: 60px
+) !default;
 
-// To use the responsive spacing maps, combine them with
-// 'govuk-responsive-margin' or 'govuk-responsive-padding' mixins
-// (see 'helpers/spacing').
+/// Responsive spacing maps
+///
+/// These definitions are used to generate responsive spacing that adapts
+/// according to the breakpoints (see 'helpers/spacing'). These maps should be
+/// used wherever possible to standardise responsive spacing.
+///
+/// You can define different behaviour on tablet and desktop. The 'null'
+/// breakpoint is for mobile.
+///
+/// Access responsive spacing with `govuk-responsive-margin` or
+/// `govuk-responsive-padding` mixins (see `helpers/spacing`).
+///
+/// @type Map
+/// @access private
 
-
-$govuk-spacing-responsive-0: (
-  null: 0,
-  tablet: 0
-);
-
-$govuk-spacing-responsive-1: (
-  null: 5px,
-  tablet: 5px
-);
-
-$govuk-spacing-responsive-2: (
-  null: 10px,
-  tablet: 10px
-);
-
-$govuk-spacing-responsive-3: (
-  null: 15px,
-  tablet: 15px
-);
-
-$govuk-spacing-responsive-4: (
-  null: 15px,
-  tablet: 20px
-);
-
-$govuk-spacing-responsive-5: (
-  null: 15px,
-  tablet: 25px
-);
-
-$govuk-spacing-responsive-6: (
-  null: 20px,
-  tablet: 30px
-);
-
-$govuk-spacing-responsive-7: (
-  null: 25px,
-  tablet: 40px
-);
-
-$govuk-spacing-responsive-8: (
-  null: 30px,
-  tablet: 50px
-);
-
-$govuk-spacing-responsive-9: (
-  null: 40px,
-  tablet: 60px
-);
-
-// Create a list of all spacing points we can iterate over elsewhere
 $govuk-spacing-responsive-scale: (
-  0: $govuk-spacing-responsive-0,
-  1: $govuk-spacing-responsive-1,
-  2: $govuk-spacing-responsive-2,
-  3: $govuk-spacing-responsive-3,
-  4: $govuk-spacing-responsive-4,
-  5: $govuk-spacing-responsive-5,
-  6: $govuk-spacing-responsive-6,
-  7: $govuk-spacing-responsive-7,
-  8: $govuk-spacing-responsive-8,
-  9: $govuk-spacing-responsive-9
-);
+  0: (
+    null: 0,
+    tablet: 0
+  ),
+  1: (
+    null: 5px,
+    tablet: 5px
+  ),
+  2: (
+    null: 10px,
+    tablet: 10px
+  ),
+  3: (
+    null: 15px,
+    tablet: 15px
+  ),
+  4: (
+    null: 15px,
+    tablet: 20px
+  ),
+  5: (
+    null: 15px,
+    tablet: 25px
+  ),
+  6: (
+    null: 20px,
+    tablet: 30px
+  ),
+  7: (
+    null: 25px,
+    tablet: 40px
+  ),
+  8: (
+    null: 30px,
+    tablet: 50px
+  ),
+  9: (
+    null: 40px,
+    tablet: 60px
+  )
+) !default;

@@ -8,7 +8,7 @@
 
 @include govuk-exports("govuk/component/input") {
   .govuk-input {
-    @include govuk-font-regular-19;
+    @include govuk-font($size: 19);
     @include govuk-focusable;
 
     -webkit-box-sizing: border-box;
@@ -18,7 +18,7 @@
     height: 40px;
     margin-top: 0;
 
-    padding: $govuk-spacing-scale-1;
+    padding: govuk-spacing(1);
     // setting any background-color makes text invisible when changing colours to dark backgrounds in Firefox (https://bugzilla.mozilla.org/show_bug.cgi?id=1335476)
     // as background-color and color need to always be set together, color should not be set either
     border: $govuk-border-width-form-element solid $govuk-input-border-colour;

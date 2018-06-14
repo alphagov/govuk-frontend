@@ -1,7 +1,7 @@
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-	typeof define === 'function' && define.amd ? define('all', factory) :
-	(global.all = factory());
+	typeof define === 'function' && define.amd ? define('GOVUKFrontend', factory) :
+	(global.GOVUKFrontend = factory());
 }(this, (function () { 'use strict';
 
 (function(undefined) {
@@ -658,14 +658,6 @@ if (detect) return
 
 })
 .call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
-
-/**
-* Add event construct for modern browsers or IE8
-* which fires the callback with a pre-converted target reference
-* @param {object} node element
-* @param {string} type event type (e.g. click, load, or error)
-* @param {function} callback function
-*/
 
 /**
  * TODO: Ideally this would be a NodeList.prototype.forEach polyfill

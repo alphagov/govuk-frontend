@@ -41,7 +41,7 @@ When compiling the Sass files you'll need to define includePaths to reference th
 
 In order to include the images used in the components, you need to configure your app to show these assets. Below is a sample configuration using Express js:
 
-    app.use('/assets', express.static(path.join(__dirname, '/node_modules/@govuk-frontend/frontend/assets')))
+    app.use('/assets', express.static(path.join(__dirname, '/node_modules/govuk-frontend/assets')))
 
 ## Component arguments
 
@@ -69,37 +69,13 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">classes</th>
+<th class="govuk-table__header" scope="row">text (or) html</th>
 
 <td class="govuk-table__cell ">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell ">Yes</td>
 
-<td class="govuk-table__cell ">Optional additional classes for the back-link component.</td>
-
-</tr>
-
-<tr class="govuk-table__row">
-
-<th class="govuk-table__header" scope="row">text</th>
-
-<td class="govuk-table__cell ">string</td>
-
-<td class="govuk-table__cell ">No</td>
-
-<td class="govuk-table__cell ">Text to use within the back link component.</td>
-
-</tr>
-
-<tr class="govuk-table__row">
-
-<th class="govuk-table__header" scope="row">html</th>
-
-<td class="govuk-table__cell ">string</td>
-
-<td class="govuk-table__cell ">No</td>
-
-<td class="govuk-table__cell ">HTML to use within the back link. If this is provided, the text argument will be ignored.</td>
+<td class="govuk-table__cell ">Text or HTML to use within the back link component. If `html` is provided, the `text` argument will be ignored.</td>
 
 </tr>
 
@@ -112,6 +88,18 @@ If you are using Nunjucks,then macros take the following arguments
 <td class="govuk-table__cell ">Yes</td>
 
 <td class="govuk-table__cell ">The value of the link href attribute</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">classes</th>
+
+<td class="govuk-table__cell ">string</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Optional additional classes to add to the anchor tag.</td>
 
 </tr>
 
@@ -135,7 +123,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 Below is an example setup using express configure views:
 
-    nunjucks.configure('node_modules/@govuk-frontend/frontend/components', {
+    nunjucks.configure('node_modules/govuk-frontend/components', {
       autoescape: true,
       cache: false,
       express: app

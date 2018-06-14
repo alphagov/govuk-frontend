@@ -1,7 +1,7 @@
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-	typeof define === 'function' && define.amd ? define('all', factory) :
-	(global.all = factory());
+	typeof define === 'function' && define.amd ? define('GOVUKFrontend', factory) :
+	(global.GOVUKFrontend = factory());
 }(this, (function () { 'use strict';
 
 (function(undefined) {

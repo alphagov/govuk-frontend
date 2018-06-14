@@ -7,9 +7,9 @@
     @include govuk-visually-hidden-focusable;
     @include govuk-link-common;
     @include govuk-link-style-text;
-    @include govuk-typography-responsive($govuk-font-16);
+    @include govuk-typography-responsive($size: 16);
 
     display: block;
-    padding: $govuk-spacing-scale-2 $govuk-spacing-scale-3;
+    padding: govuk-spacing(2) govuk-spacing(3);
   }
 }
