@@ -1,3 +1,4 @@
+{% set nunjucksHtmlUsageMessage = '**If you’re using Nunjucks macros in production be aware that using  `html` arguments, or ones ending with `Html` can be a [security risk](https://en.wikipedia.org/wiki/Cross-site_scripting). More about it in the [Nunjucks documentation](https://mozilla.github.io/nunjucks/api.html#user-defined-templates-warning).**' %}
 {% set componentName = componentPath %}
 {% set componentNameHuman = componentName | replace("-", " ") | capitalize %}
 {% set componentGuidanceLink = componentGuidanceLink | default('https://govuk-design-system-production.cloudapps.digital/components/' + componentName)%}
@@ -48,8 +49,11 @@ app.use('/assets', express.static(path.join(__dirname, '/node_modules/govuk-fron
 <p>If you are using Nunjucks,then macros take the following arguments</p>
 
 {% from "table/macro.njk" import govukTable %}
+
+{{ nunjucksHtmlUsageMessage }}
 {% block componentArguments %}
 {% endblock %}
+{{ nunjucksHtmlUsageMessage }}
 
 <h3>Setting up Nunjucks views and paths</h3>
 <p>Below is an example setup using express configure views:</p>
