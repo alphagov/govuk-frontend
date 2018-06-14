@@ -241,6 +241,8 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 - Update table of arguments for each component to ensure they're accurate.
   ([PR #769](https://github.com/alphagov/govuk-frontend/pull/769))
 
+- Add explicit dependency on colour maps
+  ([PR #790](https://github.com/alphagov/govuk-frontend/pull/790))
 
 🆕 New features:
 
