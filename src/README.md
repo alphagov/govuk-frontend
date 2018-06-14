@@ -68,7 +68,7 @@ and override all other layers. Rules in this layer will generally be marked as
 !important.
 
 Class names within this layer use an additional prefix `-!-`, for example
-`.govuk-!-w-regular`.
+`.govuk-!-font-width-regular`.
 
 
 
