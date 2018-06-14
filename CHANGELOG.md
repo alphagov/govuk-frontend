@@ -4,6 +4,11 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 
 ## Unreleased
 
+🆕 New features:
+
+- Add default text for back-link component
+  ([PR #793](https://github.com/alphagov/govuk-frontend/pull/793))
+
 🏠 Internal:
 
 - Remove instructions to login with npm, which is no longer required
@@ -127,7 +132,7 @@ Note: We're not following semantic versioning yet, we are going to talk about th
   `govuk-font-regular-tabular-19`), have been removed and replaced with calls to
   a new mixin `govuk-font`. If you are using these mixins in your application
   you will need to update your code to call `govuk-font` instead.
-  
+
   ([PR #772](https://github.com/alphagov/govuk-frontend/pull/772))
 
 - The font maps are no longer as individual variables (e.g. `$govuk-font-80`) -
@@ -179,15 +184,15 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 
   ([PR #782](https://github.com/alphagov/govuk-frontend/pull/782))
 - Removal of `govuk-prose-scope`
-  We don't have confidence that the prose scope is well understood – 
+  We don't have confidence that the prose scope is well understood –
   without further research / better documentation it's safer to remove it for now.
-  
-  If you are currently using prose-scope, you should revert to applying classes to 
+
+  If you are currently using prose-scope, you should revert to applying classes to
   individual headings, lists and hr elements.
-  In version [0.0.29-alpha](https://github.com/alphagov/govuk-frontend/releases/tag/v0.0.29-alpha) 
-  release we have added the option to enable global link and paragraph styles. 
-  
-  If you're using a recent version of the Private Beta Prototype kit, 
+  In version [0.0.29-alpha](https://github.com/alphagov/govuk-frontend/releases/tag/v0.0.29-alpha)
+  release we have added the option to enable global link and paragraph styles.
+
+  If you're using a recent version of the Private Beta Prototype kit,
   this is enabled by default.
 
   ([PR #778](https://github.com/alphagov/govuk-frontend/pull/778))
@@ -243,10 +248,10 @@ Note: We're not following semantic versioning yet, we are going to talk about th
   and footer (the OGL logo) by marking them as non-focusable elements
   ([PR #774](https://github.com/alphagov/govuk-frontend/pull/774))
 
-- Use the correct class name in bold label example 
+- Use the correct class name in bold label example
   (govuk-label--s rather than govuk-label--bold)
   ([PR #784](https://github.com/alphagov/govuk-frontend/pull/784))
-  
+
 - Update table of arguments for each component to ensure they're accurate.
   ([PR #769](https://github.com/alphagov/govuk-frontend/pull/769))
 
