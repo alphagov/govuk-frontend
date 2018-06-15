@@ -77,6 +77,37 @@ include a separate stylesheet in order to support Internet Explorer
 
 [service-manual-browsers]: https://www.gov.uk/service-manual/technology/designing-for-different-browsers-and-devices#browsers-to-test-in
 
+## Assistive technology support
+
+GOV.UK Frontend will allow you to build services that comply with the [guidance
+in the Service Manual][service-manual-assistive-technologies].
+
+Currently, GOV.UK Frontend officially supports the following assistive technologies:
+
+| Software                 | Version        | Type               | Browser                   |
+|--------------------------|----------------|--------------------|---------------------------|
+| JAWS                     | 15 or later    | screen reader      | Internet Explorer 11      |
+| ZoomText                 | 10.11 or later | screen magnifier   | Internet Explorer 11      |
+| Dragon NaturallySpeaking | 11 or later    | speech recognition | Internet Explorer 11      |
+| NVDA                     | 2016 or later  | screen reader      | Firefox (latest versions) |
+| VoiceOver                | 7.0 or later   | screen reader      | Safari on iOS10 and OS X  |
+
+In addition, we test that all content is accessible with keyboard only.
+
+We aim to support [users who adjust or override the colours of websites they visit][how-users-change-colours-on-websites]. We test this by [changing colours in Firefox][changing-colours-in-firefox], by [enabling 'High Contrast' mode in Windows][enabling-high-contrast-mode-in-windows] and by using the [High Contrast plugin for Chrome][high-contrast-plugin-for-chrome].
+
+[service-manual-assistive-technologies]: https://www.gov.uk/service-manual/technology/testing-with-assistive-technologies#what-to-test
+
+[changing-colours-in-firefox]:
+https://support.mozilla.org/en-US/kb/change-fonts-and-colors-websites-use
+
+[enabling-high-contrast-mode-in-windows]:
+https://support.microsoft.com/en-gb/help/13862/windows-use-high-contrast-mode
+
+[high-contrast-plugin-for-chrome]: https://chrome.google.com/webstore/detail/high-contrast/djcfdncoelnlbldjfhinnjlhdjlikmph?hl=en-US
+
+[how-users-change-colours-on-websites]:
+https://accessibility.blog.gov.uk/2017/03/27/how-users-change-colours-on-websites/
 
 ## Licence
 

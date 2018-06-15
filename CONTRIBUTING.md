@@ -59,7 +59,10 @@ See our [coding standards for components](/docs/contributing/coding-standards/co
 See [testing and linting](/docs/contributing/testing-and-linting.md).
 
 ## Supported browsers
-Your contribution needs to work with certain browsers as set out in [README](README.md). See also [supporting Internet Explorer 8](/docs/installation/supporting-internet-explorer-8.md).
+Your contribution needs to work with certain browsers as set out in [README](README.md#browser-support). See also [supporting Internet Explorer 8](/docs/installation/supporting-internet-explorer-8.md).
+
+## Supported assistive technology
+Your contribution needs to work with certain assistive technology as set out in [README](README.md#assistive-technology-support).
 
 ## Commit hygiene
 
