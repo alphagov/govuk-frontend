@@ -76,7 +76,7 @@ describe('package/', () => {
       return readFile(path.join(configPaths.package, 'README.md'), 'utf8')
         .then(contents => {
           // Look for H1 matching 'GOV.UK Frontend' from existing README
-          expect(contents).toMatch(/^# GOV.UK Frontend/)
+          expect(contents).toMatch(/^GOV.UK Frontend/)
         }).catch(error => {
           throw error
         })
