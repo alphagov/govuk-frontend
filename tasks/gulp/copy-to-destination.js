@@ -11,6 +11,7 @@ let scssFiles = filter([configPaths.src + '**/*.scss'], {restore: true})
 
 gulp.task('copy-files', () => {
   return gulp.src([
+    './README.md', // Publish the main README to npm.
     configPaths.src + '**/*',
     '!**/.DS_Store',
     '!**/*.test.js',
