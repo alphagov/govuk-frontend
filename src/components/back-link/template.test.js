@@ -74,6 +74,15 @@ describe('back-link component', () => {
     expect($component.html()).toEqual('<b>Back</b>')
   })
 
+  it('renders default text correctly', () => {
+    const $ = render('back-link', {
+      href: '#'
+    })
+
+    const $component = $('.govuk-back-link')
+    expect($component.html()).toEqual('Back')
+  })
+
   it('renders attributes correctly', () => {
     const $ = render('back-link', {
       attributes: {
