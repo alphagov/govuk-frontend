@@ -24,17 +24,6 @@ npm install nunjucks --save
 
 ### Installation
 
-GOV.UK Frontend is currently in private beta. You will need to log in to NPM
-using credentials provided by the Design System team.
-
-Run the following command to log in:
-```
-npm login
-```
-
-Enter the username, password and email address you were provided with, when
-prompted.
-
 You can install all components or one or more individual components depending on
 your needs.
 
