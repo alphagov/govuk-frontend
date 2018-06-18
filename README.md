@@ -50,8 +50,8 @@ Currently, GOV.UK Frontend officially supports the following browsers:
 
 | Operating system | Browser                                | Support     |
 |----------------- |----------------------------------------|-------------|
-| Windows          | Internet Explorer 8                    | functional  |
-| Windows          | Internet Explorer 9-11                 | compliant   |
+| Windows          | Internet Explorer 8-10                 | functional  |
+| Windows          | Internet Explorer 11                   | compliant   |
 | Windows          | Edge (latest 2 versions)               | compliant   |
 | Windows          | Google Chrome (latest 2 versions)      | compliant   |
 | Windows          | Mozilla Firefox (latest 2 versions)    | compliant   |
@@ -62,7 +62,6 @@ Currently, GOV.UK Frontend officially supports the following browsers:
 | iOS              | Google Chrome (latest 2 versions)      | compliant   |
 | Android          | Google Chrome (latest 2 versions)      | compliant   |
 | Android          | Samsung Internet (latest 2 versions)   | compliant   |
-| Windows Phone    | Internet Explorer (latest 2 versions)  | compliant   |
 
 ‘Compliant’ means that the components must look as good and function as well as
 they do in other modern browsers.

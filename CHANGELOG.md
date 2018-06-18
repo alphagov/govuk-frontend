@@ -16,7 +16,12 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 
 - Update docs with the assistive technology we support ([PR #800](https://github.com/alphagov/govuk-frontend/pull/800))
 
-- Update docs about installing fonts ([PR #802](https://github.com/alphagov/govuk-frontend/pull/802))
+- Update docs about installing fonts ([PR #802]     (https://github.com/alphagov/govuk-frontend/pull/802))
+
+- Update browser support matrix
+  Remove Windows Phone
+  Update IE 8-10 to functional and IE 11 to compliant
+  ([PR #803](https://github.com/alphagov/govuk-frontend/pull/803)
 
 - Add notice about the use of `html` arguments in Nunjucks macros for production
   ([PR #785](https://github.com/alphagov/govuk-frontend/pull/785))
