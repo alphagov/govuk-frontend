@@ -92,7 +92,7 @@ describe('header', () => {
       expect(results).toHaveNoViolations()
     })
 
-    it('renders havigation', () => {
+    it('renders navigation', () => {
       const $ = render('header', examples['with-navigation'])
 
       const $component = $('.govuk-header')
