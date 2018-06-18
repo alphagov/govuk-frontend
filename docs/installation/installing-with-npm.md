@@ -183,21 +183,13 @@ If you compile JavaScript in your project, your build tasks will already include
 something similar to the above task - in that case, you will just need to pipe
 `rollup` to it.
 
-### Import images
+### Import assets
 
-In order to import GOV.UK Frontend images to your project, you should configure
-your application to reference or copy the relevant GOV.UK Frontend assets.
+In order to import GOV.UK Frontend images and fonts to your project, you should configure your application to reference or copy the relevant GOV.UK Frontend assets.
 
-1. Follow either [Recommended solution](#recommended-solution) or [Alternative
-   solution](#alternative-solution).
+Follow either [Recommended solution](#recommended-solution) or [Alternative solution](#alternative-solution).
 
-2. Set `$govuk-global-images` variable in your project Sass file to point to the
-   images folder in your project. Make sure you do this in Sass before importing
-  `govuk-frontend` into your project - see [Importing styles](#importing-styles).
-  (`$govuk-global-images` is defined by default in
-  `/node_modules/govuk-frontend/settings/_paths.scss`.)
-
-#### Recommended solution:
+#### Recommended solution
 
 Make `/node_modules/govuk-frontend/assets` available to your project by routing
 requests for your assets folder there.
@@ -208,15 +200,38 @@ a code sample you could add to your configuration:
 ```JS
 app.use('/assets', express.static(path.join(__dirname, '/node_modules/govuk-frontend/assets')))
 ```
+#### Alternative solution
 
-#### Alternative solution:
+Manually copy the images and fonts from `/node_modules/govuk-frontend/assets` into a public facing directory in your project. Ideally copying the files to your project should be an automated task or part of your build pipeline to ensure that the GOV.UK Frontend assets stay up-to-date.
 
-Manually copy the images from `/node_modules/govuk-frontend/assets` into a
-public facing directory in your project. Ideally copying the files to your
-project should be an automated task or part of your build pipeline to ensure
-that the GOV.UK Frontend images stay up-to-date.
+The default paths used for assets are `assets/images` and `assets/fonts`. **If your asset folders follow this structure, you will not need to complete the following steps.**
 
-### Include assets
+To use different asset paths, also complete the below step(s).
+
+1. Set `$govuk-assets-path`, `$govuk-images-path` and `$govuk-fonts-path` in your project Sass file to point to the relevant directories in your project (this will override the defaults set in `/node_modules/govuk-frontend/settings/_assets.scss`). Make sure you do this in Sass before importing `govuk-frontend` into your project - see [Importing styles](#importing-styles).
+
+  Example 1:
+
+  ``` SCSS
+  // Include images from /application/assets/images and fonts from /application/assets/fonts
+  $govuk-assets-path: ‘/application/assets’;
+
+  @import “govuk-frontend/all”;
+  ```
+
+  Example 2:
+
+  ``` SCSS
+  // Include images from /images/govuk-frontend and fonts from /fonts
+  $govuk-images-path: “/images/govuk-frontend”;
+  $govuk-fonts-path: “/fonts”;
+
+  @import “govuk-frontend/all”;
+  ```
+
+2. Optional: You can also override the helpers used to generate the asset urls, for example if you are using sass-rails' asset-pipeline functionality. You can do this by setting `$govuk-image-url-function` to the name of the function(s) you wish to use. See `src/settings/_assets.scss` for more information and examples.
+
+### Include CSS and JavaScript
 
 Add the CSS and JavaScript code to your HTML template:
 
