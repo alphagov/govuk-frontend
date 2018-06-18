@@ -16,6 +16,8 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 
 - Update docs with the assistive technology we support ([PR #800](https://github.com/alphagov/govuk-frontend/pull/800))
 
+- Update docs about installing fonts ([PR #802](https://github.com/alphagov/govuk-frontend/pull/802))
+
 ## 0.0.32 (Breaking release)
 
 **This release changes the name of package.** It's now published as `govuk-frontend` on `npm`.
