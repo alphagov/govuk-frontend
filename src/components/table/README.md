@@ -358,6 +358,8 @@ In order to include the images used in the components, you need to configure you
 
 If you are using Nunjucks,then macros take the following arguments
 
+**If you’re using Nunjucks macros in production be aware that using `html` arguments, or ones ending with `Html` can be a [security risk](https://en.wikipedia.org/wiki/Cross-site_scripting). More about it in the [Nunjucks documentation](https://mozilla.github.io/nunjucks/api.html#user-defined-templates-warning).**
+
 <table class="govuk-table">
 
 <thead class="govuk-table__head">
@@ -561,6 +563,8 @@ If you are using Nunjucks,then macros take the following arguments
 </tbody>
 
 </table>
+
+**If you’re using Nunjucks macros in production be aware that using `html` arguments, or ones ending with `Html` can be a [security risk](https://en.wikipedia.org/wiki/Cross-site_scripting). More about it in the [Nunjucks documentation](https://mozilla.github.io/nunjucks/api.html#user-defined-templates-warning).**
 
 ### Setting up Nunjucks views and paths
 
