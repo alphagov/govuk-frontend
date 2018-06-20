@@ -5,6 +5,7 @@ import Checkboxes from './components/checkboxes/checkboxes'
 import ErrorSummary from './components/error-summary/error-summary'
 import Header from './components/header/header'
 import Radios from './components/radios/radios'
+import Tabs from './components/tabs/tabs'
 
 function initAll () {
   new Button(document).init()
@@ -31,6 +32,11 @@ function initAll () {
   nodeListForEach($radios, function ($radio) {
     new Radios($radio).init()
   })
+
+  var $tabs = document.querySelectorAll('[data-module="tabs"]')
+  nodeListForEach($tabs, function ($tabs) {
+    new Tabs($tabs).init()
+  })
 }
 
 export {
@@ -40,5 +46,6 @@ export {
   Checkboxes,
   ErrorSummary,
   Header,
-  Radios
+  Radios,
+  Tabs
 }
