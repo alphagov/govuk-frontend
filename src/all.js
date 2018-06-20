@@ -8,8 +8,10 @@ import Radios from './components/radios/radios'
 import Tabs from './components/tabs/tabs'
 
 function initAll () {
+  // Find all buttons with [role=button] on the document to enhance.
   new Button(document).init()
 
+  // Find all global details elements to enhance.
   var $details = document.querySelectorAll('details')
   nodeListForEach($details, function ($detail) {
     new Details($detail).init()
@@ -20,7 +22,7 @@ function initAll () {
     new Checkboxes($checkbox).init()
   })
 
-  // Find first Error Summary module to enhance.
+  // Find first error summary module to enhance.
   var $errorSummary = document.querySelector('[data-module="error-summary"]')
   new ErrorSummary($errorSummary).init()
 
