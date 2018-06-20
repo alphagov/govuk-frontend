@@ -18,8 +18,12 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 
 - Add default text for back-link component
   ([PR #793](https://github.com/alphagov/govuk-frontend/pull/793))
+
 - Add default container class to the header component
   ([PR #807](https://github.com/alphagov/govuk-frontend/pull/807))
+
+- Add tabs component – thanks to [@adamsilver](https://github.com/adamsilver) and [@trevorsaint](https://github.com/trevorsaint) for contributing
+  ([PR #776](https://github.com/alphagov/govuk-frontend/pull/776))
 
 🔧 Fixes:
 
