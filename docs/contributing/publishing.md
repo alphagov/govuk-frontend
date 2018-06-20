@@ -11,6 +11,8 @@
 5. Update [`CHANGELOG.md`](../../CHANGELOG.md) "Unreleased" heading with the new version number.
    This should be incremented based on [Semantic versioning](https://semver.org/) from the unreleased changes listed.
 
+  Copy the [`CHANGELOG_TEMPLATE.md`](./CHANGELOG_TEMPLATE.md), above the new release to make it easy for new contributors.
+
 6. Update [`package/package.json`](../../package/package.json) version with the new version number.
 This should be incremented based on [Semantic versioning](https://semver.org/) from the unreleased changes listed.
 

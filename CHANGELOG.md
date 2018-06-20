@@ -4,12 +4,30 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 
 ## Unreleased
 
+💥 Breaking changes:
+
+- Pull Request Title goes here
+
+  Description goes here (optional)
+
+  To migrate you need to change: X
+
+  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+
 🆕 New features:
 
 - Add default text for back-link component
   ([PR #793](https://github.com/alphagov/govuk-frontend/pull/793))
 - Add default container class to the header component
   ([PR #807](https://github.com/alphagov/govuk-frontend/pull/807))
+
+🔧 Fixes:
+
+- Pull Request Title goes here
+
+  Description goes here (optional)
+
+  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
 🏠 Internal:
 
@@ -28,6 +46,8 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 - Add notice about the use of `html` arguments in Nunjucks macros for production
   ([PR #785](https://github.com/alphagov/govuk-frontend/pull/785))
 
+- Add CHANGELOG_TEMPLATE to make changelogs easier for new contributors
+  ([PR #798](https://github.com/alphagov/govuk-frontend/pull/798))
 
 ## 0.0.32 (Breaking release)
 
