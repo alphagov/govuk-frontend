@@ -36,7 +36,7 @@ in your service.
 We recommend [installing GOV.UK Frontend using node package manager
 (npm)](docs/installation/installing-with-npm.md).
 
-### 2. Install by using built files
+### 2. Install by using compiled files
 
 You can also [download the compiled and minified assets (CSS, JavaScript) from
 GitHub](docs/installation/installing-from-dist.md).

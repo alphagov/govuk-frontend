@@ -53,6 +53,9 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 - Add CHANGELOG_TEMPLATE to make changelogs easier for new contributors
   ([PR #798](https://github.com/alphagov/govuk-frontend/pull/798))
 
+- Update package `README`
+  ([PR #804](https://github.com/alphagov/govuk-frontend/pull/804))
+
 ## 0.0.32 (Breaking release)
 
 **This release changes the name of package.** It's now published as `govuk-frontend` on `npm`.

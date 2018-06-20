@@ -6,7 +6,7 @@ To use GOV.UK Frontend with NPM you must:
 
 1. Install the long-term support (LTS) version of
    [Node.js](https://nodejs.org/en/), which includes NPM. The minimum version of
-   Node required is 8.6.0.
+   Node required is 4.2.0.
 
    (We recommend using [`nvm`](https://github.com/creationix/nvm) for managing
    versions of Node.)
@@ -110,8 +110,7 @@ $govuk-global-styles: true;
 
 Some of the JavaScript included in GOV.UK Frontend improves the usability and
 accessibility of the components. You should make sure that you are importing and
-initialising it in your application to ensure that all users can properly use it
-successfully.
+initialising Javascript in your application to ensure that all users can use it successfully.
 
 For example, the JavaScript will:
 
@@ -183,7 +182,7 @@ If you compile JavaScript in your project, your build tasks will already include
 something similar to the above task - in that case, you will just need to pipe
 `rollup` to it.
 
-### Import assets
+### Importing assets
 
 In order to import GOV.UK Frontend images and fonts to your project, you should configure your application to reference or copy the relevant GOV.UK Frontend assets.
 
