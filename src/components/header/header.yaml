@@ -22,21 +22,16 @@ examples:
 - name: default
   description: The standard header as used on information pages on GOV.UK
   data:
-    homepageUrl: /
-    containerClasses: govuk-width-container
+    {}
 
 - name: with-service-name
   description: If your service is more than a few pages long, you can help users understand where they are by adding the service name.
   data:
-    homepageUrl: /
     serviceName: Service Name
     serviceUrl: /components/header
-    containerClasses: govuk-width-container
 
 - name: with-navigation
   data:
-    homepageUrl: /
-    containerClasses: govuk-width-container
     navigation:
       - href: '#1'
         text: 'Navigation item 1'
@@ -51,10 +46,8 @@ examples:
 - name: with-service-name-and-navigation
   description: If you need to include basic navigation, contact or account management links.
   data:
-    homepageUrl: /
     serviceName: Service Name
     serviceUrl: /components/header
-    containerClasses: govuk-width-container
     navigation:
       - href: '#1'
         text: 'Navigation item 1'
@@ -70,8 +63,6 @@ examples:
   readme: false
   description: An edge case example with a large number of navitation items with long names used to test wrapping
   data:
-    homepageUrl: /
-    containerClasses: govuk-width-container
     navigation:
       - href: '/browse/benefits'
         text: 'Benefits'
@@ -109,16 +100,14 @@ examples:
 - name: full-width
   readme: false
   data:
-    homepageUrl: /
-    classes: govuk-header--full-width
+    containerClasses: govuk-header__container--full-width
     navigationClasses: govuk-header__navigation--end
     productName: Product Name
 
 - name: full-width-with-navigation
   readme: false
   data:
-    homepageUrl: /
-    classes: govuk-header--full-width
+    containerClasses: govuk-header__container--full-width
     navigationClasses: govuk-header__navigation--end
     productName: Product Name
     navigation:

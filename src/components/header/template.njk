@@ -1,6 +1,6 @@
 <header class="govuk-header {{ params.classes if params.classes }}" role="banner" data-module="header"
         {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
-  <div class="govuk-header__container {{ params.containerClasses if params.containerClasses }}">
+  <div class="govuk-header__container {{ params.containerClasses | default('govuk-width-container') }}">
 
     <div class="govuk-header__logo">
       <a href="{{ params.homepageUrl | default('/') }}" class="govuk-header__link govuk-header__link--homepage">
