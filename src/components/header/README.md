@@ -55,10 +55,7 @@ Find out when to use the Header component in your service in the [GOV.UK Design 
 
     {% from 'header/macro.njk' import govukHeader %}
 
-    {{ govukHeader({
-      "homepageUrl": "/",
-      "containerClasses": "govuk-width-container"
-    }) }}
+    {{ govukHeader({}) }}
 
 ### Header--with-service-name
 
@@ -110,10 +107,8 @@ Find out when to use the Header component in your service in the [GOV.UK Design 
     {% from 'header/macro.njk' import govukHeader %}
 
     {{ govukHeader({
-      "homepageUrl": "/",
       "serviceName": "Service Name",
-      "serviceUrl": "/components/header",
-      "containerClasses": "govuk-width-container"
+      "serviceUrl": "/components/header"
     }) }}
 
 ### Header--with-navigation
@@ -193,8 +188,6 @@ Find out when to use the Header component in your service in the [GOV.UK Design 
     {% from 'header/macro.njk' import govukHeader %}
 
     {{ govukHeader({
-      "homepageUrl": "/",
-      "containerClasses": "govuk-width-container",
       "navigation": [
         {
           "href": "#1",
@@ -297,10 +290,8 @@ Find out when to use the Header component in your service in the [GOV.UK Design 
     {% from 'header/macro.njk' import govukHeader %}
 
     {{ govukHeader({
-      "homepageUrl": "/",
       "serviceName": "Service Name",
       "serviceUrl": "/components/header",
-      "containerClasses": "govuk-width-container",
       "navigation": [
         {
           "href": "#1",
