@@ -55,10 +55,7 @@ Find out when to use the Header component in your service in the [GOV.UK Design 
 
     {% from 'header/macro.njk' import govukHeader %}
 
-    {{ govukHeader({
-      "homepageUrl": "/",
-      "containerClasses": "govuk-width-container"
-    }) }}
+    {{ govukHeader({}) }}
 
 ### Header--with-service-name
 
@@ -110,10 +107,8 @@ Find out when to use the Header component in your service in the [GOV.UK Design 
     {% from 'header/macro.njk' import govukHeader %}
 
     {{ govukHeader({
-      "homepageUrl": "/",
       "serviceName": "Service Name",
-      "serviceUrl": "/components/header",
-      "containerClasses": "govuk-width-container"
+      "serviceUrl": "/components/header"
     }) }}
 
 ### Header--with-navigation
@@ -193,8 +188,6 @@ Find out when to use the Header component in your service in the [GOV.UK Design 
     {% from 'header/macro.njk' import govukHeader %}
 
     {{ govukHeader({
-      "homepageUrl": "/",
-      "containerClasses": "govuk-width-container",
       "navigation": [
         {
           "href": "#1",
@@ -297,10 +290,8 @@ Find out when to use the Header component in your service in the [GOV.UK Design 
     {% from 'header/macro.njk' import govukHeader %}
 
     {{ govukHeader({
-      "homepageUrl": "/",
       "serviceName": "Service Name",
       "serviceUrl": "/components/header",
-      "containerClasses": "govuk-width-container",
       "navigation": [
         {
           "href": "#1",
@@ -341,6 +332,8 @@ In order to include the images used in the components, you need to configure you
 ## Component arguments
 
 If you are using Nunjucks,then macros take the following arguments
+
+**If you’re using Nunjucks macros in production be aware that using `html` arguments, or ones ending with `Html` can be a [security risk](https://en.wikipedia.org/wiki/Cross-site_scripting). More about it in the [Nunjucks documentation](https://mozilla.github.io/nunjucks/api.html#user-defined-templates-warning).**
 
 <table class="govuk-table">
 
@@ -509,6 +502,8 @@ If you are using Nunjucks,then macros take the following arguments
 </tbody>
 
 </table>
+
+**If you’re using Nunjucks macros in production be aware that using `html` arguments, or ones ending with `Html` can be a [security risk](https://en.wikipedia.org/wiki/Cross-site_scripting). More about it in the [Nunjucks documentation](https://mozilla.github.io/nunjucks/api.html#user-defined-templates-warning).**
 
 ### Setting up Nunjucks views and paths
 

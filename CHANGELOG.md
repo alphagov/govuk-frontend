@@ -1,7 +1,5 @@
 # Changelog
 
-Note: We're not following semantic versioning yet, we are going to talk about this soon.
-
 ## Unreleased
 
 💥 Breaking changes:
@@ -16,6 +14,32 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 
 🆕 New features:
 
+- Pull Request Title goes here
+
+  Description goes here (optional)
+
+  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+
+🔧 Fixes:
+
+- Pull Request Title goes here
+
+  Description goes here (optional)
+
+  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+
+🏠 Internal:
+
+- Pull Request Title goes here
+
+  Description goes here (optional)
+
+  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+
+## 1.0 (Major release)
+
+🆕 New features:
+
 - Add default text for back-link component
   ([PR #793](https://github.com/alphagov/govuk-frontend/pull/793))
 
@@ -25,13 +49,6 @@ Note: We're not following semantic versioning yet, we are going to talk about th
 - Add tabs component – thanks to [@adamsilver](https://github.com/adamsilver) and [@trevorsaint](https://github.com/trevorsaint) for contributing
   ([PR #776](https://github.com/alphagov/govuk-frontend/pull/776))
 
-🔧 Fixes:
-
-- Pull Request Title goes here
-
-  Description goes here (optional)
-
-  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
 🏠 Internal:
 
