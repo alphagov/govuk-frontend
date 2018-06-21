@@ -29,7 +29,7 @@ npm start
 ```
 By default the app runs on port 3000, so the app will be available at: http://localhost:3000
 
-See [development and publishing tasks](development-and-publish-tasks.md) for more information about the npm scripts.
+See [development tasks](contributing/tasks.md) for more information about the npm scripts.
 
 ## Application architecture
 
@@ -59,7 +59,7 @@ See [development and publishing tasks](development-and-publish-tasks.md) for mor
 
 - `bin/`
 
-  Binary/executable files (i.e. bash scripts) mainly used in the [publishing process]((publishing.md)).
+  Binary/executable files (i.e. bash scripts) mainly used in the [publishing process](contributing/publishing.md).
 
 - `config/`
 
@@ -116,4 +116,4 @@ You can [run the preview app locally](#running) or deploy it straight to a Herok
 An existing Heroku instance can be found at: [http://govuk-frontend-review.herokuapp.com/](http://govuk-frontend-review.herokuapp.com/)
 
 ## Publishing
-You need npm credentials to publish a new release. For the detailed publishing process see the [publishing  documentation](publishing.md).
+You need npm credentials to publish a new release. For the detailed publishing process see the [publishing documentation](contributing/publishing.md).
