@@ -1052,6 +1052,630 @@ Radios.prototype.handleClick = function (event) {
   }.bind(this));
 };
 
+(function(undefined) {
+
+    // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-service/master/packages/polyfill-library/polyfills/DOMTokenList/detect.js
+    var detect = (
+      'DOMTokenList' in this && (function (x) {
+        return 'classList' in x ? !x.classList.toggle('x', false) && !x.className : true;
+      })(document.createElement('x'))
+    );
+
+    if (detect) return
+
+    // Polyfill from https://raw.githubusercontent.com/Financial-Times/polyfill-service/master/packages/polyfill-library/polyfills/DOMTokenList/polyfill.js
+    (function (global) {
+      var nativeImpl = "DOMTokenList" in global && global.DOMTokenList;
+
+      if (
+          !nativeImpl ||
+          (
+            !!document.createElementNS &&
+            !!document.createElementNS('http://www.w3.org/2000/svg', 'svg') &&
+            !(document.createElementNS("http://www.w3.org/2000/svg", "svg").classList instanceof DOMTokenList)
+          )
+        ) {
+        global.DOMTokenList = (function() { // eslint-disable-line no-unused-vars
+          var dpSupport = true;
+          var defineGetter = function (object, name, fn, configurable) {
+            if (Object.defineProperty)
+              Object.defineProperty(object, name, {
+                configurable: false === dpSupport ? true : !!configurable,
+                get: fn
+              });
+
+            else object.__defineGetter__(name, fn);
+          };
+
+          /** Ensure the browser allows Object.defineProperty to be used on native JavaScript objects. */
+          try {
+            defineGetter({}, "support");
+          }
+          catch (e) {
+            dpSupport = false;
+          }
+
+
+          var _DOMTokenList = function (el, prop) {
+            var that = this;
+            var tokens = [];
+            var tokenMap = {};
+            var length = 0;
+            var maxLength = 0;
+            var addIndexGetter = function (i) {
+              defineGetter(that, i, function () {
+                preop();
+                return tokens[i];
+              }, false);
+
+            };
+            var reindex = function () {
+
+              /** Define getter functions for array-like access to the tokenList's contents. */
+              if (length >= maxLength)
+                for (; maxLength < length; ++maxLength) {
+                  addIndexGetter(maxLength);
+                }
+            };
+
+            /** Helper function called at the start of each class method. Internal use only. */
+            var preop = function () {
+              var error;
+              var i;
+              var args = arguments;
+              var rSpace = /\s+/;
+
+              /** Validate the token/s passed to an instance method, if any. */
+              if (args.length)
+                for (i = 0; i < args.length; ++i)
+                  if (rSpace.test(args[i])) {
+                    error = new SyntaxError('String "' + args[i] + '" ' + "contains" + ' an invalid character');
+                    error.code = 5;
+                    error.name = "InvalidCharacterError";
+                    throw error;
+                  }
+
+
+              /** Split the new value apart by whitespace*/
+              if (typeof el[prop] === "object") {
+                tokens = ("" + el[prop].baseVal).replace(/^\s+|\s+$/g, "").split(rSpace);
+              } else {
+                tokens = ("" + el[prop]).replace(/^\s+|\s+$/g, "").split(rSpace);
+              }
+
+              /** Avoid treating blank strings as single-item token lists */
+              if ("" === tokens[0]) tokens = [];
+
+              /** Repopulate the internal token lists */
+              tokenMap = {};
+              for (i = 0; i < tokens.length; ++i)
+                tokenMap[tokens[i]] = true;
+              length = tokens.length;
+              reindex();
+            };
+
+            /** Populate our internal token list if the targeted attribute of the subject element isn't empty. */
+            preop();
+
+            /** Return the number of tokens in the underlying string. Read-only. */
+            defineGetter(that, "length", function () {
+              preop();
+              return length;
+            });
+
+            /** Override the default toString/toLocaleString methods to return a space-delimited list of tokens when typecast. */
+            that.toLocaleString =
+              that.toString = function () {
+                preop();
+                return tokens.join(" ");
+              };
+
+            that.item = function (idx) {
+              preop();
+              return tokens[idx];
+            };
+
+            that.contains = function (token) {
+              preop();
+              return !!tokenMap[token];
+            };
+
+            that.add = function () {
+              preop.apply(that, args = arguments);
+
+              for (var args, token, i = 0, l = args.length; i < l; ++i) {
+                token = args[i];
+                if (!tokenMap[token]) {
+                  tokens.push(token);
+                  tokenMap[token] = true;
+                }
+              }
+
+              /** Update the targeted attribute of the attached element if the token list's changed. */
+              if (length !== tokens.length) {
+                length = tokens.length >>> 0;
+                if (typeof el[prop] === "object") {
+                  el[prop].baseVal = tokens.join(" ");
+                } else {
+                  el[prop] = tokens.join(" ");
+                }
+                reindex();
+              }
+            };
+
+            that.remove = function () {
+              preop.apply(that, args = arguments);
+
+              /** Build a hash of token names to compare against when recollecting our token list. */
+              for (var args, ignore = {}, i = 0, t = []; i < args.length; ++i) {
+                ignore[args[i]] = true;
+                delete tokenMap[args[i]];
+              }
+
+              /** Run through our tokens list and reassign only those that aren't defined in the hash declared above. */
+              for (i = 0; i < tokens.length; ++i)
+                if (!ignore[tokens[i]]) t.push(tokens[i]);
+
+              tokens = t;
+              length = t.length >>> 0;
+
+              /** Update the targeted attribute of the attached element. */
+              if (typeof el[prop] === "object") {
+                el[prop].baseVal = tokens.join(" ");
+              } else {
+                el[prop] = tokens.join(" ");
+              }
+              reindex();
+            };
+
+            that.toggle = function (token, force) {
+              preop.apply(that, [token]);
+
+              /** Token state's being forced. */
+              if (undefined !== force) {
+                if (force) {
+                  that.add(token);
+                  return true;
+                } else {
+                  that.remove(token);
+                  return false;
+                }
+              }
+
+              /** Token already exists in tokenList. Remove it, and return FALSE. */
+              if (tokenMap[token]) {
+                that.remove(token);
+                return false;
+              }
+
+              /** Otherwise, add the token and return TRUE. */
+              that.add(token);
+              return true;
+            };
+
+            return that;
+          };
+
+          return _DOMTokenList;
+        }());
+      }
+
+      // Add second argument to native DOMTokenList.toggle() if necessary
+      (function () {
+        var e = document.createElement('span');
+        if (!('classList' in e)) return;
+        e.classList.toggle('x', false);
+        if (!e.classList.contains('x')) return;
+        e.classList.constructor.prototype.toggle = function toggle(token /*, force*/) {
+          var force = arguments[1];
+          if (force === undefined) {
+            var add = !this.contains(token);
+            this[add ? 'add' : 'remove'](token);
+            return add;
+          }
+          force = !!force;
+          this[force ? 'add' : 'remove'](token);
+          return force;
+        };
+      }());
+
+      // Add multiple arguments to native DOMTokenList.add() if necessary
+      (function () {
+        var e = document.createElement('span');
+        if (!('classList' in e)) return;
+        e.classList.add('a', 'b');
+        if (e.classList.contains('b')) return;
+        var native = e.classList.constructor.prototype.add;
+        e.classList.constructor.prototype.add = function () {
+          var args = arguments;
+          var l = arguments.length;
+          for (var i = 0; i < l; i++) {
+            native.call(this, args[i]);
+          }
+        };
+      }());
+
+      // Add multiple arguments to native DOMTokenList.remove() if necessary
+      (function () {
+        var e = document.createElement('span');
+        if (!('classList' in e)) return;
+        e.classList.add('a');
+        e.classList.add('b');
+        e.classList.remove('a', 'b');
+        if (!e.classList.contains('b')) return;
+        var native = e.classList.constructor.prototype.remove;
+        e.classList.constructor.prototype.remove = function () {
+          var args = arguments;
+          var l = arguments.length;
+          for (var i = 0; i < l; i++) {
+            native.call(this, args[i]);
+          }
+        };
+      }());
+
+    }(this));
+
+}).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
+
+(function(undefined) {
+
+    // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-service/8717a9e04ac7aff99b4980fbedead98036b0929a/packages/polyfill-library/polyfills/Element/prototype/classList/detect.js
+    var detect = (
+      'document' in this && "classList" in document.documentElement && 'Element' in this && 'classList' in Element.prototype && (function () {
+        var e = document.createElement('span');
+        e.classList.add('a', 'b');
+        return e.classList.contains('b');
+      }())
+    );
+
+    if (detect) return
+
+    // Polyfill from https://raw.githubusercontent.com/Financial-Times/polyfill-service/8717a9e04ac7aff99b4980fbedead98036b0929a/packages/polyfill-library/polyfills/Element/prototype/classList/polyfill.js
+    (function (global) {
+      var dpSupport = true;
+      var defineGetter = function (object, name, fn, configurable) {
+        if (Object.defineProperty)
+          Object.defineProperty(object, name, {
+            configurable: false === dpSupport ? true : !!configurable,
+            get: fn
+          });
+
+        else object.__defineGetter__(name, fn);
+      };
+      /** Ensure the browser allows Object.defineProperty to be used on native JavaScript objects. */
+      try {
+        defineGetter({}, "support");
+      }
+      catch (e) {
+        dpSupport = false;
+      }
+      /** Polyfills a property with a DOMTokenList */
+      var addProp = function (o, name, attr) {
+
+        defineGetter(o.prototype, name, function () {
+          var tokenList;
+
+          var THIS = this,
+
+          /** Prevent this from firing twice for some reason. What the hell, IE. */
+          gibberishProperty = "__defineGetter__" + "DEFINE_PROPERTY" + name;
+          if(THIS[gibberishProperty]) return tokenList;
+          THIS[gibberishProperty] = true;
+
+          /**
+           * IE8 can't define properties on native JavaScript objects, so we'll use a dumb hack instead.
+           *
+           * What this is doing is creating a dummy element ("reflection") inside a detached phantom node ("mirror")
+           * that serves as the target of Object.defineProperty instead. While we could simply use the subject HTML
+           * element instead, this would conflict with element types which use indexed properties (such as forms and
+           * select lists).
+           */
+          if (false === dpSupport) {
+
+            var visage;
+            var mirror = addProp.mirror || document.createElement("div");
+            var reflections = mirror.childNodes;
+            var l = reflections.length;
+
+            for (var i = 0; i < l; ++i)
+              if (reflections[i]._R === THIS) {
+                visage = reflections[i];
+                break;
+              }
+
+            /** Couldn't find an element's reflection inside the mirror. Materialise one. */
+            visage || (visage = mirror.appendChild(document.createElement("div")));
+
+            tokenList = DOMTokenList.call(visage, THIS, attr);
+          } else tokenList = new DOMTokenList(THIS, attr);
+
+          defineGetter(THIS, name, function () {
+            return tokenList;
+          });
+          delete THIS[gibberishProperty];
+
+          return tokenList;
+        }, true);
+      };
+
+      addProp(global.Element, "classList", "className");
+      addProp(global.HTMLElement, "classList", "className");
+      addProp(global.HTMLLinkElement, "relList", "rel");
+      addProp(global.HTMLAnchorElement, "relList", "rel");
+      addProp(global.HTMLAreaElement, "relList", "rel");
+    }(this));
+
+}).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
+
+function Tabs ($module) {
+  this.$module = $module;
+  this.$tabs = $module.querySelectorAll('.govuk-tabs__tab');
+
+  this.keys = { left: 37, right: 39, up: 38, down: 40 };
+  this.jsHiddenClass = 'js-hidden';
+}
+
+Tabs.prototype.init = function () {
+  if (typeof window.matchMedia === 'function') {
+    this.setupResponsiveChecks();
+  } else {
+    this.setup();
+  }
+};
+
+Tabs.prototype.setupResponsiveChecks = function () {
+  this.mql = window.matchMedia('(min-width: 40.0625em)');
+  this.mql.addListener(this.checkMode.bind(this));
+  this.checkMode();
+};
+
+Tabs.prototype.checkMode = function () {
+  if (this.mql.matches) {
+    this.setup();
+  } else {
+    this.teardown();
+  }
+};
+
+Tabs.prototype.setup = function () {
+  var $module = this.$module;
+  var $tabs = this.$tabs;
+  var $tabList = $module.querySelector('.govuk-tabs__list');
+  var $tabListItems = $module.querySelectorAll('.govuk-tabs__list-item');
+
+  if (!$tabs || !$tabList || !$tabListItems) {
+    return
+  }
+
+  $tabList.setAttribute('role', 'tablist');
+
+  nodeListForEach($tabListItems, function ($item) {
+    $item.setAttribute('role', 'presentation');
+  });
+
+  nodeListForEach($tabs, function ($tab) {
+    // Set HTML attributes
+    this.setAttributes($tab);
+
+    // Save bounded functions to use when removing event listeners during teardown
+    $tab.boundTabClick = this.onTabClick.bind(this);
+    $tab.boundTabKeydown = this.onTabKeydown.bind(this);
+
+    // Handle events
+    $tab.addEventListener('click', $tab.boundTabClick, true);
+    $tab.addEventListener('keydown', $tab.boundTabKeydown, true);
+
+    // Remove old active panels
+    this.hideTab($tab);
+  }.bind(this));
+
+  // Show either the active tab according to the URL's hash or the first tab
+  var $activeTab = this.getTab(window.location.hash) || this.$tabs[0];
+  this.showTab($activeTab);
+
+  // Handle hashchange events
+  $module.boundOnHashChange = this.onHashChange.bind(this);
+  window.addEventListener('hashchange', $module.boundOnHashChange, true);
+};
+
+Tabs.prototype.teardown = function () {
+  var $module = this.$module;
+  var $tabs = this.$tabs;
+  var $tabList = $module.querySelector('.govuk-tabs__list');
+  var $tabListItems = $module.querySelectorAll('.govuk-tabs__list-item');
+
+  if (!$tabs || !$tabList || !$tabListItems) {
+    return
+  }
+
+  $tabList.removeAttribute('role');
+
+  nodeListForEach($tabListItems, function ($item) {
+    $item.removeAttribute('role', 'presentation');
+  });
+
+  nodeListForEach($tabs, function ($tab) {
+    // Remove events
+    $tab.removeEventListener('click', $tab.boundTabClick, true);
+    $tab.removeEventListener('keydown', $tab.boundTabKeydown, true);
+
+    // Unset HTML attributes
+    this.unsetAttributes($tab);
+  }.bind(this));
+
+  // Remove hashchange event handler
+  window.removeEventListener('hashchange', $module.boundOnHashChange, true);
+};
+
+Tabs.prototype.onHashChange = function (e) {
+  var hash = window.location.hash;
+  if (!this.hasTab(hash)) {
+    return
+  }
+  // Prevent changing the hash
+  if (this.changingHash) {
+    this.changingHash = false;
+    return
+  }
+
+  // Show either the active tab according to the URL's hash or the first tab
+  var $previousTab = this.getCurrentTab();
+  var $activeTab = this.getTab(hash) || this.$tabs[0];
+
+  this.hideTab($previousTab);
+  this.showTab($activeTab);
+  $activeTab.focus();
+};
+
+Tabs.prototype.hasTab = function (hash) {
+  return this.$module.querySelector(hash)
+};
+
+Tabs.prototype.hideTab = function ($tab) {
+  this.unhighlightTab($tab);
+  this.hidePanel($tab);
+};
+
+Tabs.prototype.showTab = function ($tab) {
+  this.highlightTab($tab);
+  this.showPanel($tab);
+};
+
+Tabs.prototype.getTab = function (hash) {
+  return this.$module.querySelector('a[role="tab"][href="' + hash + '"]')
+};
+
+Tabs.prototype.setAttributes = function ($tab) {
+  // set tab attributes
+  var panelId = this.getHref($tab).slice(1);
+  $tab.setAttribute('id', 'tab_' + panelId);
+  $tab.setAttribute('role', 'tab');
+  $tab.setAttribute('aria-controls', panelId);
+  $tab.setAttribute('tabindex', '-1');
+
+  // set panel attributes
+  var $panel = this.getPanel($tab);
+  $panel.setAttribute('role', 'tabpanel');
+  $panel.setAttribute('aria-labelledby', $tab.id);
+  $panel.classList.add(this.jsHiddenClass);
+};
+
+Tabs.prototype.unsetAttributes = function ($tab) {
+  // unset tab attributes
+  $tab.removeAttribute('id');
+  $tab.removeAttribute('role');
+  $tab.removeAttribute('aria-controls');
+  $tab.removeAttribute('tabindex');
+
+  // unset panel attributes
+  var $panel = this.getPanel($tab);
+  $panel.removeAttribute('role');
+  $panel.removeAttribute('aria-labelledby');
+  $panel.classList.remove(this.jsHiddenClass);
+};
+
+Tabs.prototype.onTabClick = function (e) {
+  e.preventDefault();
+  var $newTab = e.target;
+  var $currentTab = this.getCurrentTab();
+  this.hideTab($currentTab);
+  this.showTab($newTab);
+  this.createHistoryEntry($newTab);
+};
+
+Tabs.prototype.createHistoryEntry = function ($tab) {
+  var $panel = this.getPanel($tab);
+
+  // Save and restore the id
+  // so the page doesn't jump when a user clicks a tab (which changes the hash)
+  var id = $panel.id;
+  $panel.id = '';
+  this.changingHash = true;
+  window.location.hash = this.getHref($tab).slice(1);
+  $panel.id = id;
+};
+
+Tabs.prototype.onTabKeydown = function (e) {
+  switch (e.keyCode) {
+    case this.keys.left:
+    case this.keys.up:
+      this.activatePreviousTab();
+      e.preventDefault();
+      break
+    case this.keys.right:
+    case this.keys.down:
+      this.activateNextTab();
+      e.preventDefault();
+      break
+  }
+};
+
+Tabs.prototype.activateNextTab = function () {
+  var currentTab = this.getCurrentTab();
+  var nextTabListItem = currentTab.parentNode.nextElementSibling;
+  if (nextTabListItem) {
+    var nextTab = nextTabListItem.firstElementChild;
+  }
+  if (nextTab) {
+    this.hideTab(currentTab);
+    this.showTab(nextTab);
+    nextTab.focus();
+    this.createHistoryEntry(nextTab);
+  }
+};
+
+Tabs.prototype.activatePreviousTab = function () {
+  var currentTab = this.getCurrentTab();
+  var previousTabListItem = currentTab.parentNode.previousElementSibling;
+  if (previousTabListItem) {
+    var previousTab = previousTabListItem.firstElementChild;
+  }
+  if (previousTab) {
+    this.hideTab(currentTab);
+    this.showTab(previousTab);
+    previousTab.focus();
+    this.createHistoryEntry(previousTab);
+  }
+};
+
+Tabs.prototype.getPanel = function ($tab) {
+  var $panel = this.$module.querySelector(this.getHref($tab));
+  return $panel
+};
+
+Tabs.prototype.showPanel = function ($tab) {
+  var $panel = this.getPanel($tab);
+  $panel.classList.remove(this.jsHiddenClass);
+};
+
+Tabs.prototype.hidePanel = function (tab) {
+  var $panel = this.getPanel(tab);
+  $panel.classList.add(this.jsHiddenClass);
+};
+
+Tabs.prototype.unhighlightTab = function ($tab) {
+  $tab.setAttribute('aria-selected', 'false');
+  $tab.setAttribute('tabindex', '-1');
+};
+
+Tabs.prototype.highlightTab = function ($tab) {
+  $tab.setAttribute('aria-selected', 'true');
+  $tab.setAttribute('tabindex', '0');
+};
+
+Tabs.prototype.getCurrentTab = function () {
+  return this.$module.querySelector('[role=tab][aria-selected=true]')
+};
+
+// this is because IE doesn't always return the actual value but a relative full path
+// should be a utility function most prob
+// http://labs.thesedays.com/blog/2010/01/08/getting-the-href-value-with-jquery-in-ie/
+Tabs.prototype.getHref = function ($tab) {
+  var href = $tab.getAttribute('href');
+  var hash = href.slice(href.indexOf('#'), href.length);
+  return hash
+};
+
 function initAll () {
   new Button(document).init();
 
@@ -1077,6 +1701,11 @@ function initAll () {
   nodeListForEach($radios, function ($radio) {
     new Radios($radio).init();
   });
+
+  var $tabs = document.querySelectorAll('[data-module="tabs"]');
+  nodeListForEach($tabs, function ($tabs) {
+    new Tabs($tabs).init();
+  });
 }
 
 exports.initAll = initAll;
@@ -1086,5 +1715,6 @@ exports.Checkboxes = Checkboxes;
 exports.ErrorSummary = ErrorSummary;
 exports.Header = Header;
 exports.Radios = Radios;
+exports.Tabs = Tabs;
 
 })));
