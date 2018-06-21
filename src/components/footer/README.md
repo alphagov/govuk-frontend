@@ -6,7 +6,7 @@ The footer component is used at the bottom of every GOV.UK page, to help users n
 
 ## Guidance
 
-Find out when to use the Footer component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/footer).
+Find out when to use the Footer component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/footer).
 
 ## Quick start examples
 

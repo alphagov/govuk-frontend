@@ -6,7 +6,7 @@ Table description.
 
 ## Guidance
 
-Find out when to use the Table component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/table).
+Find out when to use the Table component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/table).
 
 ## Quick start examples
 
