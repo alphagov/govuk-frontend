@@ -3,14 +3,6 @@ GOV.UK Frontend ·
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 =====================
 
-:rotating_light: **GOV.UK Frontend is in private beta and these instructions are
-subject to change. If you want to know more about how you can use GOV.UK
-Frontend, please get in touch with the [Design System
-team](mailto:govuk-design-system-support@digital.cabinet-office.gov.uk) at
-GDS.** :rotating_light:
-
-## What is GOV.UK Frontend?
-
 GOV.UK Frontend contains the code you need to start building a user interface
 for government platforms and services.
 
