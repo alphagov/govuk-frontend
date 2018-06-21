@@ -77,6 +77,9 @@
 - Update package `README`
   ([PR #804](https://github.com/alphagov/govuk-frontend/pull/804))
 
+- Update JavaScript installation instructions
+  ([PR #808](https://github.com/alphagov/govuk-frontend/pull/808))
+
 ## 0.0.32 (Breaking release)
 
 **This release changes the name of package.** It's now published as `govuk-frontend` on `npm`.

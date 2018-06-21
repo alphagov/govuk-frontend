@@ -22,12 +22,9 @@ To use GOV.UK Frontend with NPM you must:
 npm install nunjucks --save
 ```
 
-### Installation
+## Installation
 
-You can install all components or one or more individual components depending on
-your needs.
-
-To install all components, run:
+To install, run:
 
 ```
 npm install --save govuk-frontend
@@ -36,7 +33,7 @@ npm install --save govuk-frontend
 After you have installed GOV.UK Frontend the `govuk-frontend` package will
 appear in your `node_modules` folder.
 
-### Importing styles
+## Importing styles
 
 You need to import the GOV.UK Frontend styles into the main Sass file in your
 project. You should place the below code before your own Sass rules (or Sass
@@ -55,7 +52,7 @@ your Sass file:
   @import "node_modules/govuk-frontend/components/button/button";
   ```
 
-#### Optional: Resolving import paths
+### Optional: Resolving SCSS import paths
 
 If you wish to resolve the above `@import` paths in your build (in order to
 avoid prefixing paths with `node_modules`), you should add `node_modules` to
@@ -88,7 +85,7 @@ After resolving the import paths you can import GOV.UK Frontend by using:
 @import "govuk-frontend/components/button/button";
 ```
 
-#### Global Styles
+### Global Styles
 
 GOV.UK Frontend avoids applying styles globally on HTML elements such as `body`; instead, styles are are applied using classes.
 
@@ -106,89 +103,123 @@ $govuk-global-styles: true;
 @import "govuk-frontend/frontend/all";
 ```
 
-### Importing JavaScript
+## Using JavaScript
 
 Some of the JavaScript included in GOV.UK Frontend improves the usability and
-accessibility of the components. You should make sure that you are importing and
-initialising Javascript in your application to ensure that all users can use it successfully.
+accessibility of the components.
 
 For example, the JavaScript will:
 
 - allow links styled as buttons to be triggered with the space bar when focused,
   which matches the behaviour of native buttons and the way the button is
   described when using assistive technologies.
-- enhance the Details component to help users of assistive technologies
+- enhance the details component to help users of assistive technologies
   understand whether it is expanded or collapsed, and to make the component
   behave correctly for users of Internet Explorer 8.
 
-You can include and initialise the Javascript for all components by adding an import statement to your application's main JavaScript file:
+You should [include](#option-1-include-javascript) or [import](#option-2-import-javascript) GOV.UK Frontend JavaScript, and then initialise the script in your application to ensure that all users can use it successfully.
 
-```js
-import All from 'govuk-frontend/all'
+Note that GOV.UK Frontend does not initialise any scripts by default; all scripts **must** be initialised in order for them to work.
+
+### Option 1: Include JavaScript
+
+Include the `node_modules/govuk-frontend/all.js` script on your page. You might wish to copy the file into your project or reference it from `node_modules`.
+
+To initialise all components, use the `initAll` function.
+
+```html
+<script src="path-to-assets/govuk-frontend/all.js"></script>
+<script>window.GOVUKFrontend.initAll()</script>
 ```
 
-Alternatively, you can import and initialise individual components, such as the
-Button component:
+#### Initialise individual included components
+
+GOV.UK Frontend components with JavaScript behaviour have the `data-module` attribute set in their markup.
+
+You can use this attribute to initialise the component manually. This may be useful if you are adding markup to a page after it has loaded.
+
+To initialise the first radio component on a page, use:
 
 ```js
-import Button from 'govuk-frontend/components/button/button'
-
-new Button().init()
+var Radios = window.GOVUKFrontend.Radios
+var $radio = document.querySelector('[data-module="radios"]')
+if ($radio) {
+  new Radios($radio).init()
+}
 ```
 
-The import syntax you should use depends on the JavaScript module format
-used by your bundler. For example, if you are using `CommonJS`, you would
-instead use:
+Some components such as the details or button components are initialised globally. If you want to see how these are initialised by default, see the [all.js](../../src/all.js) file.
+
+### Option 2: Import JavaScript
+
+If you're using a bundler such as [Webpack](https://webpack.js.org/), use the `import` syntax to import all components. To initialise them, use the `initAll` function:
+
+```JS
+import { initAll } from 'govuk-frontend'
+
+initAll()
+```
+
+If you're using a bundler such as [Browserify](http://browserify.org/), you may need to use the CommonJS `require`:
+
+```JS
+const GOVUKFrontend = require('govuk-frontend')
+
+GOVUKFrontend.initAll()
+```
+
+#### Import individual components
+
+If you're using a bundler such as Webpack, use the `import` syntax to import a component:
+
+```JS
+import { Radios } from 'govuk-frontend'
+```
+
+If you're using a bundler such as [Browserify](http://browserify.org/), you may need to use the CommonJS `require`:
+
+
+```JS
+const GOVUKFrontend = require('govuk-frontend')
+
+const Radios = GOVUKFrontend.Radios
+```
+
+GOV.UK Frontend components with JavaScript behaviour have the `data-module` attribute set in their markup.
+
+You can use this attribute to initialise the component manually, this may be useful if you are adding markup to a page after it has loaded.
+
+To initialise the first radio component on a page, use:
 
 ```js
-require('govuk-frontend/all')
+var $radio = document.querySelector('[data-module="radios"]')
+if ($radio) {
+  new Radios($radio).init()
+}
 ```
 
-#### Polyfills
+Some components such as the details or button components are initialised globally. If you want to see how these are initialised by default, see the [all.js](../../src/all.js) file.
+
+### Polyfills
 A JavaScript polyfill provides functionality on older browsers or assistive technology that do not natively support it.
 
 The polyfills provided with GOV.UK Frontend aim to fix usability and accessibility issues. If there is a JavaScript included in the component directory, it is important to import and initialise it in your project to ensure that all users can properly use the component (see [Polyfilling](/docs/contributing/polyfilling.md)).  
 
-Examples of GOV.UK Frontend polyfills:
-1. Links styled to look like buttons lack button behaviour. The polyfill script will allow them to be triggered with a space key after they’ve been focused, to match standard buttons.
-2. Details component polyfill includes accessibility enhancements to ensure that the user is given appropriate information about the state (collapsed/expanded) of the component. The polyfill also makes the component behave correctly on IE8.
-
-#### Bundling JavaScript
+### How GOV.UK Frontend is bundled
 The JavaScript included in GOV.UK Frontend components are in [UMD (Universal Module Definition)](https://github.com/umdjs/umd) format which makes it compatible with AMD (Asynchronous module definition) and CommonJS.
 
 See [JavaScript Coding Standards](/docs/contributing/coding-standards/js.md) for more details of how JavaScript is used in the project.
 
-#### Include JavaScript with Webpack 4
+#### Using GOV.UK Frontend with Webpack 4
 Here's an example of setting up [`webpack.config.js`](examples/webpack/webpack.config.js) in your project
 
-#### Include JavaScript with Gulp and Rollup
-You can configure Gulp and Rollup as part of your build process using the
-[gulp-better-rollup](https://www.npmjs.com/package/gulp-better-rollup) plugin:
-
-```js
-gulp.task('compile', () => {
-  return gulp.src('./js/*.js')
-    .pipe(rollup({
-      // Legacy mode is required for IE8 support
-      legacy: true
-    }))
-    .pipe(uglify())
-    .pipe(gulp.dest('./js'));
-})
-
-```
-
-If you compile JavaScript in your project, your build tasks will already include
-something similar to the above task - in that case, you will just need to pipe
-`rollup` to it.
-
-### Importing assets
+## Importing assets
 
 In order to import GOV.UK Frontend images and fonts to your project, you should configure your application to reference or copy the relevant GOV.UK Frontend assets.
 
 Follow either [Recommended solution](#recommended-solution) or [Alternative solution](#alternative-solution).
 
-#### Recommended solution
+### Recommended solution
 
 Make `/node_modules/govuk-frontend/assets` available to your project by routing
 requests for your assets folder there.
@@ -199,7 +230,7 @@ a code sample you could add to your configuration:
 ```JS
 app.use('/assets', express.static(path.join(__dirname, '/node_modules/govuk-frontend/assets')))
 ```
-#### Alternative solution
+### Alternative solution
 
 Manually copy the images and fonts from `/node_modules/govuk-frontend/assets` into a public facing directory in your project. Ideally copying the files to your project should be an automated task or part of your build pipeline to ensure that the GOV.UK Frontend assets stay up-to-date.
 
@@ -230,7 +261,7 @@ To use different asset paths, also complete the below step(s).
 
 2. Optional: You can also override the helpers used to generate the asset urls, for example if you are using sass-rails' asset-pipeline functionality. You can do this by setting `$govuk-image-url-function` to the name of the function(s) you wish to use. See `src/settings/_assets.scss` for more information and examples.
 
-### Include CSS and JavaScript
+## Include CSS and JavaScript
 
 Add the CSS and JavaScript code to your HTML template:
 
