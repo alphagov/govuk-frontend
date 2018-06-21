@@ -30,11 +30,8 @@
 
 🏠 Internal:
 
-- Pull Request Title goes here
-
-  Description goes here (optional)
-
-  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+- Fix Design System url in package READMEs and review app
+  ([PR #812](https://github.com/alphagov/govuk-frontend/pull/812))
 
 ## 1.0.0 (Major release)
 
