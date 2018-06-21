@@ -6,7 +6,7 @@ A button is an element that allows users to carry out an action on a GOV.UK page
 
 ## Guidance
 
-Find out when to use the Button component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/button).
+Find out when to use the Button component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/button).
 
 ## Quick start examples
 

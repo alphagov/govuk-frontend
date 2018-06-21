@@ -6,7 +6,7 @@ The Breadcrumbs component helps users to understand where they are within a webs
 
 ## Guidance
 
-Find out when to use the Breadcrumbs component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/breadcrumbs).
+Find out when to use the Breadcrumbs component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/breadcrumbs).
 
 ## Quick start examples
 

@@ -6,7 +6,7 @@ The HTML `<input>` element with type="file" lets a user pick one or more files, 
 
 ## Guidance
 
-Find out when to use the File upload component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/file-upload).
+Find out when to use the File upload component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/file-upload).
 
 ## Quick start examples
 
