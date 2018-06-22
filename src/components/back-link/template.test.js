@@ -29,7 +29,7 @@ describe('back-link component', () => {
 
     const $component = $('.govuk-back-link')
     expect($component.get(0).tagName).toEqual('a')
-    expect($component.attr('href')).toEqual('https://gov.uk')
+    expect($component.attr('href')).toEqual('#')
     expect($component.text()).toEqual('Back')
   })
 

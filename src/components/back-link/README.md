@@ -16,15 +16,31 @@ Find out when to use the Back link component in your service in the [GOV.UK Desi
 
 #### Markup
 
-    <a href="https://gov.uk" class="govuk-back-link">Back</a>
+    <a href="#" class="govuk-back-link">Back</a>
 
 #### Macro
 
     {% from 'back-link/macro.njk' import govukBackLink %}
 
     {{ govukBackLink({
-      "href": "https://gov.uk",
-      "text": "Back"
+      "href": "#"
+    }) }}
+
+### Back-link--with custom text
+
+[Preview the back-link--with custom text example](http://govuk-frontend-review.herokuapp.com/components/back-link/with custom text/preview)
+
+#### Markup
+
+    <a href="#" class="govuk-back-link">Back to home</a>
+
+#### Macro
+
+    {% from 'back-link/macro.njk' import govukBackLink %}
+
+    {{ govukBackLink({
+      "href": "#",
+      "text": "Back to home"
     }) }}
 
 ## Requirements
