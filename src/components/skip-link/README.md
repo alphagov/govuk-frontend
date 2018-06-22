@@ -6,7 +6,7 @@ Skip link component. Make skip links visible when they are tabbed to. You'll nee
 
 ## Guidance
 
-Find out when to use the Skip link component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/skip-link).
+Find out when to use the skip link component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/skip-link).
 
 ## Quick start examples
 

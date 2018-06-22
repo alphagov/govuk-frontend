@@ -6,7 +6,7 @@ A banner that indicates content is in alpha or beta phase with a description.
 
 ## Guidance
 
-Find out when to use the Phase banner component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/phase-banner).
+Find out when to use the phase banner component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/phase-banner).
 
 ## Quick start examples
 

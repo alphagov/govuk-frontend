@@ -6,7 +6,7 @@ Component for conditionally revealing content, using tabs and tabs panels.
 
 ## Guidance
 
-Find out when to use the Tabs component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/tabs).
+Find out when to use the tabs component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/tabs).
 
 ## Quick start examples
 

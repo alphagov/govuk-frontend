@@ -6,7 +6,7 @@ Phase tags are mostly used inside phase banners as an indication of the state of
 
 ## Guidance
 
-Find out when to use the Tag component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/tag).
+Find out when to use the tag component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/tag).
 
 ## Quick start examples
 
