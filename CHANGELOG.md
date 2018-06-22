@@ -22,11 +22,12 @@
 
 🔧 Fixes:
 
-- Pull Request Title goes here
+- Update Crown copyright link
 
-  Description goes here (optional)
+  Update the Crown copyright link on the National Archives so
+  we don't send users on an unnecessary redirect.
 
-  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+  ([PR 824](https://github.com/alphagov/govuk-frontend/pull/824))
 
 🏠 Internal:
 
