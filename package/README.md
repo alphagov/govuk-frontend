@@ -16,7 +16,7 @@ team](mailto:govuk-design-system-support@digital.cabinet-office.gov.uk) or get i
 There are 2 ways to start using GOV.UK Frontend in your app.
 
 Once installed, you will be able to use the code from the examples in the
-[GOV.UK Design System](https://www.gov.uk/design-system in your service.
+[GOV.UK Design System](https://www.gov.uk/design-system) in your service.
 
 ### 1. Install with npm (recommended)
 
