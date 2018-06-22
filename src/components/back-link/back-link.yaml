@@ -1,5 +1,8 @@
 examples:
 - name: default
   data:
-    href: 'https://gov.uk'
-    text: Back
+    href: '#'
+- name: with custom text
+  data:
+    href: '#'
+    text: Back to home
