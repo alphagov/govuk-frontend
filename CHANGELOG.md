@@ -23,11 +23,12 @@
 🔧 Fixes:
 
 - Update Crown copyright link
-
   Update the Crown copyright link on the National Archives so
   we don't send users on an unnecessary redirect.
-
   ([PR 824](https://github.com/alphagov/govuk-frontend/pull/824))
+
+- Fixes radio and checkbox labels extending full width of page
+  ([PR #821](https://github.com/alphagov/govuk-frontend/pull/821))
 
 🏠 Internal:
 
