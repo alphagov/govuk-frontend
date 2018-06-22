@@ -33,6 +33,10 @@
 - Fix Design System url in package READMEs and review app
   ([PR #812](https://github.com/alphagov/govuk-frontend/pull/812))
 
+- Update back-link example to show default usage doesn't need
+  `text` parameter
+  ([PR #819](https://github.com/alphagov/govuk-frontend/pull/819))
+
 ## 1.0.0 (Major release)
 
 🆕 New features:
