@@ -37,6 +37,9 @@
   `text` parameter
   ([PR #819](https://github.com/alphagov/govuk-frontend/pull/819))
 
+- Tidy up some package.json fields to help contributors and users
+  ([PR #827](https://github.com/alphagov/govuk-frontend/pull/827))
+
 ## 1.0.0 (Major release)
 
 🆕 New features:
