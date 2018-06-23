@@ -14,10 +14,7 @@
 
 🆕 New features:
 
-- Pull Request Title goes here
-
-  Description goes here (optional)
-
+- Add support for specific input field names to date-input component
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
 🔧 Fixes:
@@ -53,7 +50,7 @@
 🔧 Fixes:
 
 - Reduce margin-bottom on the hint when following a default or small labe
-  This reduces the margin-bottom of the hint by 5px after a default 
+  This reduces the margin-bottom of the hint by 5px after a default
   `<label>` or `<label class="govuk-label--s">`.
   ([PR #806](https://github.com/alphagov/govuk-frontend/pull/806))
 
