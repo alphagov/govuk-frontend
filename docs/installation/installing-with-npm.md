@@ -100,7 +100,7 @@ These [global styles](src/core/_global-styles.scss) are are not included by defa
 
 $govuk-global-styles: true;
 
-@import "govuk-frontend/frontend/all";
+@import "govuk-frontend/all";
 ```
 
 ## Using JavaScript
