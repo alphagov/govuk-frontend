@@ -10,58 +10,6 @@ Find out when to use the fieldset component in your service in the [GOV.UK Desig
 
 ## Quick start examples
 
-### Component default
-
-[Preview the fieldset component](http://govuk-frontend-review.herokuapp.com/components/fieldset/preview)
-
-#### Markup
-
-    <fieldset class="govuk-fieldset">
-
-      <legend class="govuk-fieldset__legend">
-        What is your address?
-      </legend>
-
-    </fieldset>
-
-#### Macro
-
-    {% from 'fieldset/macro.njk' import govukFieldset %}
-
-    {{ govukFieldset({
-      "legend": {
-        "text": "What is your address?"
-      }
-    }) }}
-
-### Fieldset--as page heading
-
-[Preview the fieldset--as page heading example](http://govuk-frontend-review.herokuapp.com/components/fieldset/as page heading/preview)
-
-#### Markup
-
-    <fieldset class="govuk-fieldset">
-
-      <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
-        <h1 class="govuk-fieldset__heading">
-          What is your address?
-        </h1>
-      </legend>
-
-    </fieldset>
-
-#### Macro
-
-    {% from 'fieldset/macro.njk' import govukFieldset %}
-
-    {{ govukFieldset({
-      "legend": {
-        "text": "What is your address?",
-        "classes": "govuk-fieldset__legend--xl",
-        "isPageHeading": true
-      }
-    }) }}
-
 ## Requirements
 
 ### Build tool configuration

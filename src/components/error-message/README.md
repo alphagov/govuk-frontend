@@ -10,24 +10,6 @@ Find out when to use the error message component in your service in the [GOV.UK 
 
 ## Quick start examples
 
-### Component default
-
-[Preview the error-message component](http://govuk-frontend-review.herokuapp.com/components/error-message/preview)
-
-#### Markup
-
-    <span class="govuk-error-message">
-      Error message about full name goes here
-    </span>
-
-#### Macro
-
-    {% from 'error-message/macro.njk' import govukErrorMessage %}
-
-    {{ govukErrorMessage({
-      "text": "Error message about full name goes here"
-    }) }}
-
 ## Requirements
 
 ### Build tool configuration
