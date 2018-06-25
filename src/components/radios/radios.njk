@@ -1,27 +1,27 @@
-{% from 'radios/macro.njk' import govukRadios %}
+{% from "radios/macro.njk" import govukRadios %}
 
 {{ govukRadios({
-  "idPrefix": "radio",
-  "name": "radio-group",
-  "items": [
+  idPrefix: "radio",
+  name: "radio-group",
+  items: [
     {
-      "value": "waste-animal",
-      "text": "Waste from animal carcasses"
+      value: "waste-animal",
+      text: "Waste from animal carcasses"
     },
     {
-      "id": "custom-id",
-      "value": "waste-mines",
-      "text": "Waste from mines or quarries"
+      id: "custom-id",
+      value: "waste-mines",
+      text: "Waste from mines or quarries"
     },
     {
-      "value": "waste-farm",
-      "text": "Farm or agricultural waste",
-      "checked": true
+      value: "waste-farm",
+      text: "Farm or agricultural waste",
+      checked: true
     },
     {
-      "value": "waste-disabled",
-      "text": "Disabled radio option",
-      "disabled": true
+      value: "waste-disabled",
+      text: "Disabled radio option",
+      disabled: true
     }
   ]
 }) }}
