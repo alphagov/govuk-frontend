@@ -37,6 +37,9 @@
 - Update back-link example to show default usage doesn't need
   `text` parameter
   ([PR #819](https://github.com/alphagov/govuk-frontend/pull/819))
+  
+- Lowercase component names
+  ([PR #822](https://github.com/alphagov/govuk-frontend/pull/822))
 
 - Tidy up some package.json fields to help contributors and users
   ([PR #827](https://github.com/alphagov/govuk-frontend/pull/827))

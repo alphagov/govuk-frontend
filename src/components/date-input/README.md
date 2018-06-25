@@ -6,7 +6,7 @@ A component for entering dates, for example - date of birth.
 
 ## Guidance
 
-Find out when to use the Date input component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/date-input).
+Find out when to use the date input component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/date-input).
 
 ## Quick start examples
 

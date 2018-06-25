@@ -8,7 +8,7 @@
 {% endset %}
 
 {% set componentName = componentPath %}
-{% set componentNameHuman = componentName | replace("-", " ") | capitalize %}
+{% set componentNameHuman = componentName | replace("-", " ") %}
 {% set componentGuidanceLink = componentGuidanceLink | default('https://design-system.service.gov.uk/components/' + componentName)%}
 {% set htmlMarkup %}
   {% include componentName +"/"+ componentName +".njk" ignore missing %}
@@ -27,7 +27,7 @@
   <div class="govuk-width-container">
     <h1 class="govuk-heading-xl">
       {% block componentName %}
-        {{ componentNameHuman }}
+        {{ componentNameHuman | capitalize }}
       {% endblock %}
     </h1>
   </div>

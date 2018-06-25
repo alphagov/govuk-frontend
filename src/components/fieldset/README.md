@@ -6,7 +6,7 @@ The fieldset element is used to group several controls within a web form. The le
 
 ## Guidance
 
-Find out when to use the Fieldset component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/fieldset).
+Find out when to use the fieldset component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/fieldset).
 
 ## Quick start examples
 

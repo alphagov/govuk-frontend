@@ -6,7 +6,7 @@ A multi-line text field.
 
 ## Guidance
 
-Find out when to use the Textarea component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/textarea).
+Find out when to use the textarea component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/textarea).
 
 ## Quick start examples
 

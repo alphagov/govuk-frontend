@@ -6,7 +6,7 @@ The header component is used at the top of every GOV.UK page, to help users navi
 
 ## Guidance
 
-Find out when to use the Header component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/header).
+Find out when to use the header component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/header).
 
 ## Quick start examples
 
