@@ -48,7 +48,7 @@ Find out when to use the Footer component in your service in the [GOV.UK Design 
           <div class="govuk-footer__meta-item">
             <a
               class="govuk-footer__link govuk-footer__copyright-logo"
-              href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/"
+              href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/"
             >© Crown copyright</a>
           </div>
         </div>
