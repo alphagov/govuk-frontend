@@ -1,7 +1,5 @@
 # Contributing
 
-We're not ready for contributions yet, this document exists as a guide for those working on govuk-frontend.
-
 ## Contents of this file
 
 ### For contributors
