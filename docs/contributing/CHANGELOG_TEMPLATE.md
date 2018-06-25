@@ -27,11 +27,3 @@
   Description goes here (optional)
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
-
-🏠 Internal:
-
-- Pull Request Title goes here
-
-  Description goes here (optional)
-
-  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
