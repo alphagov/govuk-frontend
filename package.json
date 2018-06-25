@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Used only for the development of GOV.UK Frontend, see `package/package.json` for the published `package.json`",
   "engines": {
-    "node": ">= 8.9.4"
+    "node": "8.9.4"
   },
   "license": "MIT",
   "scripts": {
