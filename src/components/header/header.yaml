@@ -24,87 +24,87 @@ examples:
   data:
     {}
 
-- name: with-service-name
+- name: with service name
   description: If your service is more than a few pages long, you can help users understand where they are by adding the service name.
   data:
     serviceName: Service Name
-    serviceUrl: /components/header
+    serviceUrl: '/components/header'
 
-- name: with-navigation
+- name: with navigation
   data:
     navigation:
       - href: '#1'
-        text: 'Navigation item 1'
+        text: Navigation item 1
         active: true
       - href: '#2'
-        text: 'Navigation item 2'
+        text: Navigation item 2
       - href: '#3'
-        text: 'Navigation item 3'
+        text: Navigation item 3
       - href: '#4'
-        text: 'Navigation item 4'
+        text: Navigation item 4
 
-- name: with-service-name-and-navigation
+- name: with service name and navigation
   description: If you need to include basic navigation, contact or account management links.
   data:
     serviceName: Service Name
-    serviceUrl: /components/header
+    serviceUrl: '/components/header'
     navigation:
       - href: '#1'
-        text: 'Navigation item 1'
+        text: Navigation item 1
         active: true
       - href: '#2'
-        text: 'Navigation item 2'
+        text: Navigation item 2
       - href: '#3'
-        text: 'Navigation item 3'
+        text: Navigation item 3
       - href: '#4'
-        text: 'Navigation item 4'
+        text: Navigation item 4
 
-- name: with-large-navigation
+- name: with large navigation
   readme: false
   description: An edge case example with a large number of navitation items with long names used to test wrapping
   data:
     navigation:
       - href: '/browse/benefits'
-        text: 'Benefits'
+        text: Benefits
       - href: '/browse/births-deaths-marriages'
-        text: 'Births, deaths, marriages and care'
+        text: Births, deaths, marriages and care
       - href: '/browse/business'
-        text: 'Business and self-employed'
+        text: Business and self-employed
       - href: '/browse/childcare-parenting'
-        text: 'Childcare and parenting'
+        text: Childcare and parenting
       - href: '/browse/citizenship'
-        text: 'Citizenship and living in the UK'
+        text: Citizenship and living in the UK
       - href: '/browse/justice'
-        text: 'Crime, justice and the law'
+        text: Crime, justice and the law
       - href: '/browse/disabilities'
-        text: 'Disabled people'
+        text: Disabled people
       - href: '/browse/driving'
-        text: 'Driving and transport'
+        text: Driving and transport
       - href: '/browse/education'
-        text: 'Education and learning'
+        text: Education and learning
       - href: '/browse/employing-people'
-        text: 'Employing people'
+        text: Employing people
       - href: '/browse/environment-countryside'
-        text: 'Environment and countryside'
+        text: Environment and countryside
       - href: '/browse/housing-local-services'
-        text: 'Housing and local services'
+        text: Housing and local services
       - href: '/browse/tax'
-        text: 'Money and tax'
+        text: Money and tax
       - href: '/browse/abroad'
-        text: 'Passports, travel and living abroad'
+        text: Passports, travel and living abroad
       - href: '/browse/visas-immigration'
-        text: 'Visas and immigration'
+        text: Visas and immigration
       - href: '/browse/working'
-        text: 'Working, jobs and pensions'
+        text: Working, jobs and pensions
 
-- name: full-width
+- name: full width
   readme: false
   data:
     containerClasses: govuk-header__container--full-width
     navigationClasses: govuk-header__navigation--end
     productName: Product Name
 
-- name: full-width-with-navigation
+- name: full width with navigation
   readme: false
   data:
     containerClasses: govuk-header__container--full-width
@@ -112,9 +112,9 @@ examples:
     productName: Product Name
     navigation:
       - href: '#1'
-        text: 'Navigation item 1'
+        text: Navigation item 1
         active: true
       - href: '#2'
-        text: 'Navigation item 2'
+        text: Navigation item 2
       - href: '#3'
-        text: 'Navigation item 3'
+        text: Navigation item 3

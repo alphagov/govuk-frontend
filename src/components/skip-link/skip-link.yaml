@@ -4,7 +4,7 @@ examples:
     text: Skip to main content
     href: '#content'
 
-- name: with-focus
+- name: with focus
   description: Simulate triggering the :focus CSS pseudo-class, not available in the production build.
   readme: false
   data:

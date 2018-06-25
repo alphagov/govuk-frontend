@@ -11,22 +11,22 @@ accessibilityCriteria: |
 examples:
 - name: default
   data:
-    idPrefix: 'nationality'
-    name: 'nationality'
+    idPrefix: nationality
+    name: nationality
     fieldset:
       legend:
         text: What is your nationality?
     hint:
       text: If you have dual nationality, select all options that are relevant to you.
     items:
-      - value: 'british'
-        text: 'British'
-      - value: 'irish'
-        text: 'Irish'
-      - value: 'other'
-        text: 'Citizen of another country'
+      - value: british
+        text: British
+      - value: irish
+        text: Irish
+      - value: other
+        text: Citizen of another country
 
-- name: with-id-plus-name
+- name: with id and name
   data:
     fieldset:
       legend:
@@ -34,28 +34,28 @@ examples:
     hint:
       text: If you have dual nationality, select all options that are relevant to you.
     items:
-      - name: 'british'
-        id: 'item_british'
-        value: 'yes'
-        text: 'British'
-      - name: 'irish'
-        id: 'item_irish'
-        value: 'irish'
-        text: 'Irish'
+      - name: british
+        id: item_british
+        value: yes
+        text: British
+      - name: irish
+        id: item_irish
+        value: irish
+        text: Irish
 
-- name: with-disabled
+- name: with disabled item
   data:
     name: colours
     items:
-      - value: "red"
-        text: 'Red'
-      - value: "green"
-        text: 'Green'
-      - value: "blue"
-        text: "Blue"
+      - value: red
+        text: Red
+      - value: green
+        text: Green
+      - value: blue
+        text: Blue
         disabled: true
 
-- name: with-html
+- name: with html in legend
   data:
     name: waste
     fieldset:
@@ -71,45 +71,45 @@ examples:
       - value: farm
         text: Farm or agricultural waste
 
-- name: without-fieldset
+- name: without fieldset
   data:
     name: colours
     items:
-      - value: "red"
-        text: 'Red'
-      - value: "green"
-        text: 'Green'
-      - value: "blue"
-        text: "Blue"
+      - value: red
+        text: Red
+      - value: green
+        text: Green
+      - value: blue
+        text: Blue
 
-- name: with-extreme-fieldset
+- name: with all fieldset attributes
   data:
-    idPrefix: 'example'
-    name: 'example'
+    idPrefix: example
+    name: example
     fieldset:
-      classes: 'app-fieldset--custom-modifier'
+      classes: app-fieldset--custom-modifier
       attributes:
-        'data-attribute': 'value'
-        'data-second-attribute': 'second-value'
+        data-attribute: value
+        data-second-attribute: second-value
       legend:
         text: What is your nationality?
     hint:
       text: If you have dual nationality, select all options that are relevant to you.
     errorMessage:
-      text: 'Please select an option'
+      text: Please select an option
     items:
-      - value: 'british'
-        text: 'British'
-      - value: 'irish'
-        text: 'Irish'
-      - value: 'other'
-        text: 'Citizen of another country'
+      - value: british
+        text: British
+      - value: irish
+        text: Irish
+      - value: other
+        text: Citizen of another country
 
-- name: with-error
+- name: with error message
   data:
     name: waste
     errorMessage:
-      text: 'Please select an option'
+      text: Please select an option
     fieldset:
       legend:
         html: <h3 class="govuk-heading-m">Which types of waste do you transport regularly?</h3>
@@ -121,10 +121,10 @@ examples:
       - value: farm
         text: Farm or agricultural waste
 
-- name: with-conditional
+- name: with conditional items
   readme: false
   data:
-    idPrefix: 'how-contacted'
+    idPrefix: how-contacted
     fieldset:
       legend:
         html: <h3 class="govuk-heading-m">How do you want to be contacted?</h3>
@@ -148,10 +148,10 @@ examples:
             <label class="govuk-label" for="contact-text-message">Mobile phone number</label>
             <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
 
-- name: with-conditional-checked
+- name: with conditional item checked
   readme: false
   data:
-    idPrefix: 'how-contacted-checked'
+    idPrefix: how-contacted-checked
     fieldset:
       legend:
         html: <h3 class="govuk-heading-m">How do you want to be contacted?</h3>

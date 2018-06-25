@@ -13,11 +13,13 @@ accessibilityCriteria: |
   - be announced every time for each individual input
 
 examples:
-  - name: default
-    data:
-      text: 'It’s on your National Insurance card, benefit letter, payslip or P60.
-        For example, ‘QQ 12 34 56 C’.'
-  - name: with html
-    data:
-      html: 'It’s on your National Insurance card, benefit letter, payslip or <a class="govuk-link" href="#">P60</a>.
-        For example, ‘QQ 12 34 56 C’.'
+- name: default
+  data:
+    text: |
+      It’s on your National Insurance card, benefit letter, payslip or P60.
+      For example, ‘QQ 12 34 56 C’.
+- name: with html
+  data:
+    html: |
+      It’s on your National Insurance card, benefit letter, payslip or <a class="govuk-link" href="#">P60</a>.
+      For example, ‘QQ 12 34 56 C’.

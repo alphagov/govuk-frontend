@@ -17,7 +17,7 @@ examples:
         value: 3
         text: GOV.UK frontend option 3
         disabled: true
-- name: with-hint-text-and-error
+- name: with hint text and error message
   data:
     id: select-2
     name: select-2
@@ -37,7 +37,7 @@ examples:
       -
         value: 3
         text: GOV.UK frontend option 3
-- name: with-label-as-page-heading
+- name: with label as page heading
   data:
     id: select-3
     name: select-3

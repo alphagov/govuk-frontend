@@ -1,94 +1,94 @@
 examples:
 - name: default
   data:
-    id: 'dob'
-    name: 'dob'
+    id: dob
+    name: dob
     fieldset:
       legend:
-        text: 'What is your date of birth?'
+        text: What is your date of birth?
     hint:
-      text: 'For example, 31 3 1980'
+      text: For example, 31 3 1980
     items:
       -
-        name: 'day'
+        name: day
       -
-        name: 'month'
+        name: month
       -
-        name: 'year'
-- name: with-errors
+        name: year
+- name: with errors
   data:
-    id: 'dob-errors'
+    id: dob-errors
     fieldset:
       legend:
-        text: 'What is your date of birth?'
+        text: What is your date of birth?
     hint:
-      text: 'For example, 31 3 1980'
+      text: For example, 31 3 1980
     errorMessage:
-      text: 'Error message goes here'
+      text: Error message goes here
     items:
       -
-        name: 'day'
-        classes: 'govuk-input--error'
+        name: day
+        classes: govuk-input--error
       -
-        name: 'month'
-        classes: 'govuk-input--error'
+        name: month
+        classes: govuk-input--error
       -
-        name: 'year'
-        classes: 'govuk-input--error'
-- name: with-day-error
+        name: year
+        classes: govuk-input--error
+- name: with error on day input
   data:
-    id: 'dob-day-error'
-    name: 'dob-day-error'
+    id: dob-day-error
+    name: dob-day-error
     fieldset:
       legend:
-        text: 'What is your date of birth?'
+        text: What is your date of birth?
     hint:
-      text: 'For example, 31 3 1980'
+      text: For example, 31 3 1980
     errorMessage:
-      text: 'Error message goes here'
+      text: Error message goes here
     items:
       -
-        name: 'day'
-        classes: 'govuk-input--error'
+        name: day
+        classes: govuk-input--error
       -
-        name: 'month'
+        name: month
       -
-        name: 'year'
-- name: with-month-error
+        name: year
+- name: with error on month input
   data:
-    id: 'dob-month-error'
-    name: 'dob-month-error'
+    id: dob-month-error
+    name: dob-month-error
     fieldset:
       legend:
-        text: 'What is your date of birth?'
+        text: What is your date of birth?
     hint:
-      text: 'For example, 31 3 1980'
+      text: For example, 31 3 1980
     errorMessage:
-      text: 'Error message goes here'
+      text: Error message goes here
     items:
       -
-        name: 'day'
+        name: day
       -
-        name: 'month'
-        classes: 'govuk-input--error'
+        name: month
+        classes: govuk-input--error
       -
-        name: 'year'
-- name: with-year-error
+        name: year
+- name: with error on year input
   data:
-    id: 'dob-year-error'
-    name: 'dob-year-error'
+    id: dob-year-error
+    name: dob-year-error
     fieldset:
       legend:
-        text: 'What is your date of birth?'
+        text: What is your date of birth?
     hint:
-      text: 'For example, 31 3 1980'
+      text: For example, 31 3 1980
     errorMessage:
-      text: 'Error message goes here'
+      text: Error message goes here
     items:
       -
-        name: 'day'
+        name: day
       -
-        name: 'month'
+        name: month
       -
-        name: 'year'
-        classes: 'govuk-input--error'
+        name: year
+        classes: govuk-input--error

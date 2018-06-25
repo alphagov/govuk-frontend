@@ -5,7 +5,7 @@ examples:
         text: National Insurance number
       id: input-example
       name: test-name
-  - name: with-hint-text
+  - name: with hint text
     data:
       label:
         text: National insurance number
@@ -13,7 +13,7 @@ examples:
         text: It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
       id: input-with-hint-text
       name: test-name-2
-  - name: with-error-message
+  - name: with error message
     data:
       label:
         text: National Insurance number
@@ -23,7 +23,7 @@ examples:
       name: test-name-3
       errorMessage:
         text: Error message goes here
-  - name: width-10
+  - name: with width-10 class
     data:
       label:
         text: National insurance number
@@ -32,7 +32,7 @@ examples:
       id: input-width-10
       name: test-name-4
       classes: govuk-input--width-10
-  - name: width-20
+  - name: with width-20 class
     data:
       label:
         text: National insurance number
@@ -41,7 +41,7 @@ examples:
       id: input-width-20
       name: test-name-5
       classes: govuk-input--width-20
-  - name: width-30
+  - name: with width-30 class
     data:
       label:
         text: National insurance number
@@ -50,7 +50,7 @@ examples:
       id: input-width-30
       name: test-name-6
       classes: govuk-input--width-30
-  - name: with-label-as-page-heading
+  - name: with label as page heading
     data:
       label:
         text: National Insurance number

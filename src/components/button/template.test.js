@@ -146,7 +146,7 @@ describe('Button', () => {
     })
 
     it('renders with disabled', () => {
-      const $ = render('button', examples['disabled-link'])
+      const $ = render('button', examples['link disabled'])
 
       const $component = $('.govuk-button')
       expect($component.hasClass('govuk-button--disabled')).toBeTruthy()
@@ -155,7 +155,7 @@ describe('Button', () => {
 
   describe('with explicit input button set by "element"', () => {
     it('renders with anchor, href and an accessible role of button', () => {
-      const $ = render('button', examples['explicit-input-button'])
+      const $ = render('button', examples['input'])
 
       const $component = $('.govuk-button')
       expect($component.get(0).tagName).toEqual('input')

@@ -190,7 +190,7 @@ describe('Date input', () => {
     })
 
     it('sets the `group` role on the fieldset to force JAWS18 to announce the hint and error message', () => {
-      const $ = render('date-input', examples['with-errors'])
+      const $ = render('date-input', examples['with errors'])
 
       const $fieldset = $('.govuk-fieldset')
 
@@ -200,12 +200,12 @@ describe('Date input', () => {
 
   describe('when it includes a hint', () => {
     it('renders the hint', () => {
-      const $ = render('date-input', examples['with-errors'])
+      const $ = render('date-input', examples['with errors'])
       expect(htmlWithClassName($, '.govuk-hint')).toMatchSnapshot()
     })
 
     it('associates the fieldset as "described by" the hint', () => {
-      const $ = render('date-input', examples['with-errors'])
+      const $ = render('date-input', examples['with errors'])
 
       const $fieldset = $('.govuk-fieldset')
       const $hint = $('.govuk-hint')
@@ -221,12 +221,12 @@ describe('Date input', () => {
 
   describe('when it includes an error message', () => {
     it('renders the error message', () => {
-      const $ = render('date-input', examples['with-errors'])
+      const $ = render('date-input', examples['with errors'])
       expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
     })
 
     it('uses the id as a prefix for the error message id', () => {
-      const $ = render('date-input', examples['with-errors'])
+      const $ = render('date-input', examples['with errors'])
 
       const $errorMessage = $('.govuk-error-message')
 
@@ -234,7 +234,7 @@ describe('Date input', () => {
     })
 
     it('associates the fieldset as "described by" the error message', () => {
-      const $ = render('date-input', examples['with-errors'])
+      const $ = render('date-input', examples['with errors'])
 
       const $fieldset = $('.govuk-fieldset')
       const $errorMessage = $('.govuk-error-message')
@@ -250,7 +250,7 @@ describe('Date input', () => {
 
   describe('when they include both a hint and an error message', () => {
     it('associates the fieldset as described by both the hint and the error message', () => {
-      const $ = render('date-input', examples['with-errors'])
+      const $ = render('date-input', examples['with errors'])
 
       const $fieldset = $('.govuk-fieldset')
       const $errorMessageId = $('.govuk-error-message').attr('id')

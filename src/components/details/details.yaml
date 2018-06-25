@@ -1,5 +1,4 @@
 examples:
-
 - name: default
   data:
     summaryText: Help with nationality
@@ -16,7 +15,7 @@ examples:
       you’re entitled to vote in. If you can’t provide your nationality,
       you’ll have to send copies of identity documents through the post.
     open: true
-- name: with-html
+- name: with html
   data:
     summaryText: Where to find your National Insurance Number
     html: |

@@ -20,7 +20,7 @@ examples:
          format: numeric
        - text: £125
          format: numeric
- - name: table-with-head
+ - name: table with head
    data:
      head:
        - text: Month you apply
@@ -47,9 +47,9 @@ examples:
          format: numeric
        - text: £125
          format: numeric
- - name: table-with-caption-and-head
+ - name: table with head and caption
    data:
-     caption: "Caption 1 : Months and rates"
+     caption: 'Caption 1: Months and rates'
      captionClasses: govuk-heading-m
      firstCellIsHeader: true
      head:

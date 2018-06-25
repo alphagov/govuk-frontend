@@ -228,13 +228,13 @@ describe('Radios', () => {
 
   describe('when they include a hint', () => {
     it('renders the hint', () => {
-      const $ = render('radios', examples['with-extreme-fieldset'])
+      const $ = render('radios', examples['with all fieldset attributes'])
 
       expect(htmlWithClassName($, '.govuk-hint')).toMatchSnapshot()
     })
 
     it('associates the fieldset as "described by" the hint', () => {
-      const $ = render('radios', examples['with-extreme-fieldset'])
+      const $ = render('radios', examples['with all fieldset attributes'])
 
       const $fieldset = $('.govuk-fieldset')
       const $hint = $('.govuk-hint')
@@ -249,7 +249,7 @@ describe('Radios', () => {
 
   describe('when they include an error message', () => {
     it('renders the error message', () => {
-      const $ = render('radios', examples['with-extreme-fieldset'])
+      const $ = render('radios', examples['with all fieldset attributes'])
       expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
     })
 
@@ -293,7 +293,7 @@ describe('Radios', () => {
     })
 
     it('associates the fieldset as "described by" the error message', () => {
-      const $ = render('radios', examples['with-extreme-fieldset'])
+      const $ = render('radios', examples['with all fieldset attributes'])
 
       const $fieldset = $('.govuk-fieldset')
       const $errorMessage = $('.govuk-error-message')
@@ -309,7 +309,7 @@ describe('Radios', () => {
 
   describe('when they include both a hint and an error message', () => {
     it('associates the fieldset as described by both the hint and the error message', () => {
-      const $ = render('radios', examples['with-extreme-fieldset'])
+      const $ = render('radios', examples['with all fieldset attributes'])
 
       const $fieldset = $('.govuk-fieldset')
       const $errorMessageId = $('.govuk-error-message').attr('id')
@@ -326,7 +326,7 @@ describe('Radios', () => {
 
   describe('nested dependant components', () => {
     it('have correct nesting order', () => {
-      const $ = render('radios', examples['with-extreme-fieldset'])
+      const $ = render('radios', examples['with all fieldset attributes'])
 
       const $component = $('.govuk-form-group > .govuk-fieldset > .govuk-radios')
       expect($component.length).toBeTruthy()
@@ -358,7 +358,7 @@ describe('Radios', () => {
     })
 
     it('passes through fieldset params without breaking', () => {
-      const $ = render('radios', examples['with-extreme-fieldset'])
+      const $ = render('radios', examples['with all fieldset attributes'])
 
       expect(htmlWithClassName($, '.govuk-fieldset')).toMatchSnapshot()
     })

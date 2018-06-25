@@ -5,7 +5,7 @@ examples:
     name: file-upload-1
     label:
       text: Upload a file
-- name: with-hint-text
+- name: with hint text
   data:
     id: file-upload-2
     name: file-upload-2
@@ -13,7 +13,7 @@ examples:
       text: Upload your photo
     hint:
       text: Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.
-- name: with-error-message
+- name: with error message
   data:
     id: file-upload-3
     name: file-upload-3
@@ -23,7 +23,7 @@ examples:
       text: Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.
     errorMessage:
       text: Error message goes here
-- name: with-value-and-attributes
+- name: with value and attributes
   data:
     id: file-upload-4
     name: file-upload-4
@@ -32,7 +32,7 @@ examples:
       text: Upload a photo
     attributes:
       accept: .jpg, .jpeg, .png
-- name: with-label-as-page-heading
+- name: with label as page heading
   data:
     id: file-upload-1
     name: file-upload-1
