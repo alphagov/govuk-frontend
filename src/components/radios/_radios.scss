@@ -58,7 +58,7 @@
   }
 
   .govuk-radios__label {
-    display: block;
+    display: inline-block;
     padding: 8px $govuk-radios-label-padding-left-right govuk-spacing(1);
     cursor: pointer;
     // remove 300ms pause on mobile
