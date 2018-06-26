@@ -101,7 +101,7 @@ module.exports = (options) => {
     let previewLayout = res.locals.componentData.previewLayout || 'layout'
 
     let exampleConfig = res.locals.componentData.examples.find(
-      example => example.name === requestedExampleName
+      example => example.name.replace(/ /g, '-') === requestedExampleName
     )
 
     if (!exampleConfig) {

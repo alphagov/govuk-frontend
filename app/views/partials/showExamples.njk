@@ -1,32 +1,35 @@
 {% from "loadComponentTemplate.njk" import loadComponentTemplate %}
 {% from "details/macro.njk" import govukDetails %}
 
-{% macro showExamples(componentName, componentData) %}
+{% macro showExamples(componentNameUrl, componentNameText, componentData) %}
 
 {% for item in componentData.examples %}
 
   {# If generating the readme, skip any examples with readme: false #}
   {% if not isReadme or item.readme !== false %}
 
-    {% if item.name == 'default' %}
-      {% set itemName = 'Component default' %}
-      {% set previewLink = '/components/' + componentName + "/preview" %}
-      {% set previewText = 'Preview the ' + componentName + ' component' %}
+    {% set itemNameText = item.name %}
+    {% set itemNameUrl = (item.name | replace(" ", "-")) %}
+
+    {% if itemNameText == 'default' %}
+      {% set itemNameText = 'Component default' %}
+      {% set previewLink = '/components/' + componentNameUrl + "/preview" %}
+      {% set previewText = 'Preview the ' + componentNameText + ' component' %}
     {% else %}
-      {% set itemName = (componentName + ' ' + item.name) | replace("-", " ") %}
-      {% set previewLink = '/components/' + componentName + '/' + item.name  + "/preview" %}
-      {% set previewText = 'Preview the ' + itemName + ' example' %}
+      {% set itemNameText = (componentNameText | capitalize) + ' ' + itemNameText %}
+      {% set previewLink = '/components/' + componentNameUrl + '/' + itemNameUrl + "/preview" %}
+      {% set previewText = 'Preview the ' + itemNameText + ' example' %}
     {% endif %}
 
     {% if isReadme %}
-      <h3>{{ itemName | capitalize }}</h3>
+      <h3>{{ itemNameText }}</h3>
       <a href="http://govuk-frontend-review.herokuapp.com{{ previewLink }}">{{ previewText }}</a>
       {% include "code.njk" %}
     {% else %}
-      <section aria-labelledby="heading-{{ itemName}}" class="govuk-!-margin-bottom-9">
+      <section aria-labelledby="heading-{{ itemNameUrl }}" class="govuk-!-margin-bottom-9">
         <div class="govuk-width-container">
           <div class="govuk-heading-m">
-            <h3 id="heading-{{ itemName}}" class="app-!-di">{{ itemName  | capitalize }}</h3>
+            <h3 id="heading-{{ itemNameUrl }}" class="app-!-di">{{ itemNameText }}</h3>
             <a href="{{ previewLink }}" class="govuk-link govuk-!-margin-left-1 govuk-!-font-size-16">
               (open in a new window)
             </a>
