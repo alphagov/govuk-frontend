@@ -45,6 +45,10 @@
 - Tidy up some package.json fields to help contributors and users
   ([PR #827](https://github.com/alphagov/govuk-frontend/pull/827))
 
+- Fix failing Heroku app with Node 10.5.0
+  Revert to pinning node version in package json
+  ([PR #833](https://github.com/alphagov/govuk-frontend/pull/833))
+
 ## 1.0.0 (Major release)
 
 🆕 New features:
