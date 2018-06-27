@@ -10,23 +10,6 @@ Find out when to use the skip link component in your service in the [GOV.UK Desi
 
 ## Quick start examples
 
-### Component default
-
-[Preview the skip-link component](http://govuk-frontend-review.herokuapp.com/components/skip-link/preview)
-
-#### Markup
-
-    <a href="#content" class="govuk-skip-link">Skip to main content</a>
-
-#### Macro
-
-    {% from 'skip-link/macro.njk' import govukSkipLink %}
-
-    {{ govukSkipLink({
-      "text": "Skip to main content",
-      "href": "#content"
-    }) }}
-
 ## Requirements
 
 ### Build tool configuration

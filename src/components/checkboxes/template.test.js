@@ -284,7 +284,7 @@ describe('Checkboxes', () => {
 
   describe('when they include an error message', () => {
     it('renders the error message', () => {
-      const $ = render('checkboxes', examples['with-extreme-fieldset'])
+      const $ = render('checkboxes', examples['with all fieldset attributes'])
 
       expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
     })
@@ -329,7 +329,7 @@ describe('Checkboxes', () => {
     })
 
     it('associates the fieldset as "described by" the error message', () => {
-      const $ = render('checkboxes', examples['with-extreme-fieldset'])
+      const $ = render('checkboxes', examples['with all fieldset attributes'])
 
       const $fieldset = $('.govuk-fieldset')
       const $errorMessage = $('.govuk-error-message')
@@ -345,13 +345,13 @@ describe('Checkboxes', () => {
 
   describe('when they include a hint', () => {
     it('renders the hint', () => {
-      const $ = render('checkboxes', examples['with-extreme-fieldset'])
+      const $ = render('checkboxes', examples['with all fieldset attributes'])
 
       expect(htmlWithClassName($, '.govuk-hint')).toMatchSnapshot()
     })
 
     it('associates the fieldset as "described by" the hint', () => {
-      const $ = render('checkboxes', examples['with-extreme-fieldset'])
+      const $ = render('checkboxes', examples['with all fieldset attributes'])
 
       const $fieldset = $('.govuk-fieldset')
       const $hint = $('.govuk-hint')
@@ -366,7 +366,7 @@ describe('Checkboxes', () => {
 
   describe('when they include both a hint and an error message', () => {
     it('associates the fieldset as described by both the hint and the error message', () => {
-      const $ = render('checkboxes', examples['with-extreme-fieldset'])
+      const $ = render('checkboxes', examples['with all fieldset attributes'])
 
       const $fieldset = $('.govuk-fieldset')
       const $errorMessageId = $('.govuk-error-message').attr('id')
@@ -383,7 +383,7 @@ describe('Checkboxes', () => {
 
   describe('nested dependant components', () => {
     it('have correct nesting order', () => {
-      const $ = render('checkboxes', examples['with-extreme-fieldset'])
+      const $ = render('checkboxes', examples['with all fieldset attributes'])
 
       const $component = $('.govuk-form-group > .govuk-fieldset > .govuk-checkboxes')
       expect($component.length).toBeTruthy()
@@ -415,7 +415,7 @@ describe('Checkboxes', () => {
     })
 
     it('passes through fieldset params without breaking', () => {
-      const $ = render('checkboxes', examples['with-extreme-fieldset'])
+      const $ = render('checkboxes', examples['with all fieldset attributes'])
 
       expect(htmlWithClassName($, '.govuk-fieldset')).toMatchSnapshot()
     })

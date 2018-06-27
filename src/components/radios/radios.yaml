@@ -11,8 +11,8 @@ accessibilityCriteria: |
 examples:
 - name: default
   data:
-    idPrefix: 'example'
-    name: 'example'
+    idPrefix: example
+    name: example
     fieldset:
       legend:
         text: Have you changed your name?
@@ -27,9 +27,9 @@ examples:
 
 - name: inline
   data:
-    idPrefix: 'example'
-    classes: 'govuk-radios--inline'
-    name: 'example'
+    idPrefix: example'
+    classes: govuk-radios--inline
+    name: example
     fieldset:
       legend:
         text: Have you changed your name?
@@ -42,10 +42,10 @@ examples:
         text: No
         checked: true
 
-- name: with-disabled
+- name: with disabled
   data:
-    idPrefix: 'example-disabled'
-    name: 'example-disabled'
+    idPrefix: example-disabled
+    name: example-disabled
     fieldset:
       legend:
         text: Have you changed your name?
@@ -59,47 +59,47 @@ examples:
         text: No
         disabled: true
 
-- name: with-html
+- name: with html
   data:
-    idPrefix: 'housing-act'
-    name: 'housing-act'
+    idPrefix: housing-act
+    name: housing-act
     fieldset:
       legend:
         html: <h1 class="govuk-heading-l">Which part of the Housing Act was your licence issued under?</h1>
     hint:
       text: Select one of the options below.
     items:
-      - value: 'part-2'
+      - value: part-2
         html:
           <span class="govuk-heading-s govuk-!-margin-bottom-1">Part 2 of the Housing Act 2004</span>
           For properties that are 3 or more stories high and occupied by 5 or more people
-      - value: 'part-3'
+      - value: part-3
         html:
           <span class="govuk-heading-s govuk-!-margin-bottom-1">Part 3 of the Housing Act 2004</span>
           For properties that are within a geographical area defined by a local council
 
-- name: without-fieldset
+- name: without fieldset
   data:
     name: colours
     items:
-      - value: "red"
-        text: 'Red'
-      - value: "green"
-        text: 'Green'
-      - value: "blue"
-        text: "Blue"
+      - value: red
+        text: Red
+      - value: green
+        text: Green
+      - value: blue
+        text: Blue
 
-- name: with-extreme-fieldset
+- name: with all fieldset attributes
   data:
-    idPrefix: 'example'
-    name: 'example'
+    idPrefix: example
+    name: example
     errorMessage:
-      text: 'Please select an option'
+      text: Please select an option
     fieldset:
-      classes: 'app-fieldset--custom-modifier'
+      classes: app-fieldset--custom-modifier
       attributes:
-        'data-attribute': 'value'
-        'data-second-attribute': 'second-value'
+        data-attribute: value
+        data-second-attribute: second-value
       legend:
         text: Have you changed your name?
     hint:
@@ -111,11 +111,11 @@ examples:
         text: No
         checked: true
 
-- name: with-conditional
+- name: with conditional items
   readme: false
   data:
-    idPrefix: 'how-contacted'
-    name: 'how-contacted'
+    idPrefix: how-contacted
+    name: how-contacted
     fieldset:
       legend:
         html: <h3 class="govuk-heading-m">How do you want to be contacted?</h3>
@@ -139,7 +139,7 @@ examples:
             <label class="govuk-label" for="contact-text-message">Mobile phone number</label>
             <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
 
-- name: with-conditional-checked
+- name: with conditional item checked
   readme: false
   data:
     idPrefix: 'how-contacted-checked'

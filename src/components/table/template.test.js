@@ -44,14 +44,14 @@ describe('Table', () => {
   })
 
   it('renders with caption text', () => {
-    const $ = render('table', examples['table-with-caption-and-head'])
+    const $ = render('table', examples['table with head and caption'])
     const $caption = $('.govuk-table__caption')
 
-    expect($caption.text()).toBe('Caption 1 : Months and rates')
+    expect($caption.text()).toBe('Caption 1: Months and rates')
   })
 
   it('renders the caption size class', () => {
-    const $ = render('table', examples['table-with-caption-and-head'])
+    const $ = render('table', examples['table with head and caption'])
     const $caption = $('.govuk-table__caption')
 
     expect($caption.hasClass('govuk-heading-m')).toBeTruthy()
@@ -107,7 +107,7 @@ describe('Table', () => {
   })
 
   it('renders with thead', () => {
-    const args = examples['table-with-head']
+    const args = examples['table with head']
     const $ = render('table', args)
 
     const $component = $('.govuk-table')

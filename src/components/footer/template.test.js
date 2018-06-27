@@ -56,14 +56,14 @@ describe('footer', () => {
 
   describe('meta', () => {
     it('passes accessibility tests', async () => {
-      const $ = render('footer', examples['with-meta'])
+      const $ = render('footer', examples['with meta'])
 
       const results = await axe($.html())
       expect(results).toHaveNoViolations()
     })
 
     it('renders heading', () => {
-      const $ = render('footer', examples['with-meta'])
+      const $ = render('footer', examples['with meta'])
 
       const $component = $('.govuk-footer')
       const $heading = $component.find('h2.govuk-visually-hidden')
@@ -71,7 +71,7 @@ describe('footer', () => {
     })
 
     it('renders links', () => {
-      const $ = render('footer', examples['with-meta'])
+      const $ = render('footer', examples['with meta'])
 
       const $component = $('.govuk-footer')
       const $list = $component.find('ul.govuk-footer__inline-list')
@@ -85,14 +85,14 @@ describe('footer', () => {
 
   describe('navigation', () => {
     it('passes accessibility tests', async () => {
-      const $ = render('footer', examples['with-navigation'])
+      const $ = render('footer', examples['with navigation'])
 
       const results = await axe($.html())
       expect(results).toHaveNoViolations()
     })
 
     it('renders headings', () => {
-      const $ = render('footer', examples['with-navigation'])
+      const $ = render('footer', examples['with navigation'])
 
       const $component = $('.govuk-footer')
       const $firstSection = $component.find('.govuk-footer__section:first-child')
@@ -104,7 +104,7 @@ describe('footer', () => {
     })
 
     it('renders lists of links', () => {
-      const $ = render('footer', examples['with-navigation'])
+      const $ = render('footer', examples['with navigation'])
 
       const $component = $('.govuk-footer')
       const $list = $component.find('ul.govuk-footer__list')
@@ -116,7 +116,7 @@ describe('footer', () => {
     })
 
     it('renders lists in columns', () => {
-      const $ = render('footer', examples['with-navigation'])
+      const $ = render('footer', examples['with navigation'])
 
       const $component = $('.govuk-footer')
       const $list = $component.find('ul.govuk-footer__list')
@@ -126,7 +126,7 @@ describe('footer', () => {
 
   describe('section break', () => {
     it('renders when there is a navigation', () => {
-      const $ = render('footer', examples['with-navigation'])
+      const $ = render('footer', examples['with navigation'])
 
       const $component = $('.govuk-footer')
       const $sectionBreak = $component.find('hr.govuk-footer__section-break')
@@ -134,7 +134,7 @@ describe('footer', () => {
     })
 
     it('renders nothing when there is only meta', () => {
-      const $ = render('footer', examples['with-meta'])
+      const $ = render('footer', examples['with meta'])
 
       const $component = $('.govuk-footer')
       const $sectionBreak = $component.find('hr.govuk-footer__section-break')

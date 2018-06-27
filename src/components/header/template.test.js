@@ -66,7 +66,7 @@ describe('header', () => {
 
   describe('with product name', () => {
     it('renders product name', () => {
-      const $ = render('header', examples['full-width'])
+      const $ = render('header', examples['full width'])
 
       const $component = $('.govuk-header')
       const $productName = $component.find('.govuk-header__product-name')
@@ -76,7 +76,7 @@ describe('header', () => {
 
   describe('with service name', () => {
     it('renders service name', () => {
-      const $ = render('header', examples['with-service-name'])
+      const $ = render('header', examples['with service name'])
 
       const $component = $('.govuk-header')
       const $serviceName = $component.find('.govuk-header__link--service-name')
@@ -86,14 +86,14 @@ describe('header', () => {
 
   describe('with navigation', () => {
     it('passes accessibility tests', async () => {
-      const $ = render('header', examples['with-navigation'])
+      const $ = render('header', examples['with navigation'])
 
       const results = await axe($.html())
       expect(results).toHaveNoViolations()
     })
 
     it('renders navigation', () => {
-      const $ = render('header', examples['with-navigation'])
+      const $ = render('header', examples['with navigation'])
 
       const $component = $('.govuk-header')
       const $list = $component.find('ul.govuk-header__navigation')

@@ -10,43 +10,6 @@ Find out when to use the tag component in your service in the [GOV.UK Design Sys
 
 ## Quick start examples
 
-### Component default
-
-[Preview the tag component](http://govuk-frontend-review.herokuapp.com/components/tag/preview)
-
-#### Markup
-
-    <strong class="govuk-tag">
-      alpha
-    </strong>
-
-#### Macro
-
-    {% from 'tag/macro.njk' import govukTag %}
-
-    {{ govukTag({
-      "text": "alpha"
-    }) }}
-
-### Tag--inactive
-
-[Preview the tag--inactive example](http://govuk-frontend-review.herokuapp.com/components/tag/inactive/preview)
-
-#### Markup
-
-    <strong class="govuk-tag govuk-tag--inactive">
-      alpha
-    </strong>
-
-#### Macro
-
-    {% from 'tag/macro.njk' import govukTag %}
-
-    {{ govukTag({
-      "text": "alpha",
-      "classes": "govuk-tag--inactive"
-    }) }}
-
 ## Requirements
 
 ### Build tool configuration

@@ -35,20 +35,20 @@ examples:
   data:
     {}
 
-- name: with-meta
+- name: with meta
   readme: false
   description: Secondary navigation to meta information relating to the site
   data:
     meta:
       items:
         - href: '#1'
-          text: 'Item 1'
+          text: Item 1
         - href: '#2'
-          text: 'Item 2'
+          text: Item 2
         - href: '#3'
-          text: 'Item 3'
+          text: Item 3
 
-- name: with-navigation
+- name: with navigation
   readme: false
   data:
     navigation:
@@ -56,80 +56,80 @@ examples:
         columns: 2
         items:
           - href: '#1'
-            text: 'Navigation item 1'
+            text: Navigation item 1
           - href: '#2'
-            text: 'Navigation item 2'
+            text: Navigation item 2
           - href: '#3'
-            text: 'Navigation item 3'
+            text: Navigation item 3
           - href: '#4'
-            text: 'Navigation item 4'
+            text: Navigation item 4
           - href: '#5'
-            text: 'Navigation item 5'
+            text: Navigation item 5
           - href: '#6'
-            text: 'Navigation item 6'
+            text: Navigation item 6
       - title: Single column list
         items:
           - href: '#1'
-            text: 'Navigation item 1'
+            text: Navigation item 1
           - href: '#2'
-            text: 'Navigation item 2'
+            text: Navigation item 2
           - href: '#3'
-            text: 'Navigation item 3'
+            text: Navigation item 3
 
 - name: GOV.UK
   readme: false
-  description: a full example based on GOV.UK's current footer
+  description: A full example based on GOV.UK's current footer
   data:
     navigation:
       - title: Services and information
         columns: 2
         items:
           - href: '/browse/benefits'
-            text: 'Benefits'
+            text: Benefits
           - href: '/browse/births-deaths-marriages'
-            text: 'Births, deaths, marriages and care'
+            text: Births, deaths, marriages and care
           - href: '/browse/business'
-            text: 'Business and self-employed'
+            text: Business and self-employed
           - href: '/browse/childcare-parenting'
-            text: 'Childcare and parenting'
+            text: Childcare and parenting
           - href: '/browse/citizenship'
-            text: 'Citizenship and living in the UK'
+            text: Citizenship and living in the UK
           - href: '/browse/justice'
-            text: 'Crime, justice and the law'
+            text: Crime, justice and the law
           - href: '/browse/disabilities'
-            text: 'Disabled people'
+            text: Disabled people
           - href: '/browse/driving'
-            text: 'Driving and transport'
+            text: Driving and transport
           - href: '/browse/education'
-            text: 'Education and learning'
+            text: Education and learning
           - href: '/browse/employing-people'
-            text: 'Employing people'
+            text: Employing people
           - href: '/browse/environment-countryside'
-            text: 'Environment and countryside'
+            text: Environment and countryside
           - href: '/browse/housing-local-services'
-            text: 'Housing and local services'
+            text: Housing and local services
           - href: '/browse/tax'
-            text: 'Money and tax'
+            text: Money and tax
           - href: '/browse/abroad'
-            text: 'Passports, travel and living abroad'
+            text: Passports, travel and living abroad
           - href: '/browse/visas-immigration'
-            text: 'Visas and immigration'
+            text: Visas and immigration
           - href: '/browse/working'
-            text: 'Working, jobs and pensions'
+            text: Working, jobs and pensions
       - title: Departments and policy
         items:
           - href: '/government/how-government-works'
-            text: 'How government works'
+            text: How government works
           - href: '/government/organisations'
-            text: 'Departments'
+            text: Departments
           - href: '/world'
-            text: 'Worldwide'
+            text: Worldwide
           - href: '/government/policies'
-            text: 'Policies'
+            text: Policies
           - href: '/government/publications'
-            text: 'Publications'
+            text: Publications
           - href: '/government/announcements'
-            text: 'Announcements'
+            text: Announcements
     meta:
       items:
         - href: '/help'

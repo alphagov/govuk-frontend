@@ -10,41 +10,41 @@ examples:
   data:
     text: Link button
     href: '/'
-- name: disabled-link
+- name: link disabled
   data:
     text: Disabled link button
     href: '/'
     disabled: true
-- name: start-link
+- name: start link
   data:
     text: Start now link button
-    href: /
+    href: '/'
     classes: 'govuk-button--start'
-- name: explicit-input-button
+- name: input
   data:
     element: input
     name: start-now
     text: Start now
-- name: explicit-input-button-disabled
+- name: input disabled
   data:
     element: input
     text: Explicit input button disabled
     disabled: true
-- name: button-active-state
+- name: with active state
   description: Simulate triggering the :active CSS pseudo-class, not available in the production build.
   readme: false
   data:
     name: active
     text: Active
     classes: :active
-- name: button-hover-state
+- name: with hover state
   description: Simulate triggering the :hover CSS pseudo-class, not available in the production build.
   readme: false
   data:
     name: hover
     text: Hovered
     classes: :hover
-- name: button-focus-state
+- name: with focus state
   description: Simulate triggering the :focus CSS pseudo-class, not available in the production build.
   readme: false
   data:

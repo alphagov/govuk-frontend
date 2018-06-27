@@ -1,51 +1,51 @@
 examples:
-  - name: default
-    data:
-      items:
-        -
-          text: 'Section 1'
-          href: '/section'
-        -
-          text: 'Sub-section'
-          href: '/section/sub-section'
-  - name: single-section
-    data:
-      items:
-        -
-          text: 'Section 1'
-          href: '/section'
-  - name: many-breadcrumbs
-    data:
-      items:
-        -
-          text: 'Home'
-          href: '/'
-        -
-          text: 'Section 3'
-          href: '/section'
-        -
-          text: 'Sub-section 1'
-          href: '/section/sub-section'
-        -
-          text: 'Sub Sub-section 1'
-          href: '/section/sub-section/sub-sub-section'
-  - name: no-home-section
-    data:
-      items:
-        -
-          text: 'Service Manual'
-          href: '/service-manual'
-        -
-          text: 'Agile Delivery'
-          href: '/service-manual/agile-delivery'
-  - name: last-breadcrumb-is-current-page
-    data:
-      items:
-        -
-          text: 'Home'
-          href: '/'
-        -
-          text: 'Passports, travel and living abroad'
-          href: '/browse/abroad'
-        -
-          text: 'Travel abroad'
+- name: default
+  data:
+    items:
+      -
+        text: Section
+        href: '/section'
+      -
+        text: Sub-section
+        href: '/section/sub-section'
+- name: with one level
+  data:
+    items:
+      -
+        text: Section
+        href: '/section'
+- name: with multiple levels
+  data:
+    items:
+      -
+        text: Home
+        href: '/'
+      -
+        text: Section
+        href: '/section'
+      -
+        text: Sub-section
+        href: '/section/sub-section'
+      -
+        text: Sub Sub-section
+        href: '/section/sub-section/sub-sub-section'
+- name: without the home section
+  data:
+    items:
+      -
+        text: Service Manual
+        href: '/service-manual'
+      -
+        text: Agile Delivery
+        href: '/service-manual/agile-delivery'
+- name: with last breadcrumb as current page
+  data:
+    items:
+      -
+        text: Home
+        href: '/'
+      -
+        text: Passports, travel and living abroad
+        href: '/browse/abroad'
+      -
+        text: Travel abroad

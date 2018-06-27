@@ -25,7 +25,7 @@
 - Update Crown copyright link
   Update the Crown copyright link on the National Archives so
   we don't send users on an unnecessary redirect.
-  ([PR 824](https://github.com/alphagov/govuk-frontend/pull/824))
+  ([PR #824](https://github.com/alphagov/govuk-frontend/pull/824))
 
 - Fixes radio and checkbox labels extending full width of page
   ([PR #821](https://github.com/alphagov/govuk-frontend/pull/821))
@@ -38,7 +38,7 @@
 - Update back-link example to show default usage doesn't need
   `text` parameter
   ([PR #819](https://github.com/alphagov/govuk-frontend/pull/819))
-  
+
 - Lowercase component names
   ([PR #822](https://github.com/alphagov/govuk-frontend/pull/822))
 
@@ -48,6 +48,9 @@
 - Fix failing Heroku app with Node 10.5.0
   Revert to pinning node version in package json
   ([PR #833](https://github.com/alphagov/govuk-frontend/pull/833))
+
+- Format YAML and Nunjucks consistently
+  ([PR #830](https://github.com/alphagov/govuk-frontend/pull/830))
 
 ## 1.0.0 (Major release)
 
@@ -65,7 +68,7 @@
 🔧 Fixes:
 
 - Reduce margin-bottom on the hint when following a default or small labe
-  This reduces the margin-bottom of the hint by 5px after a default 
+  This reduces the margin-bottom of the hint by 5px after a default
   `<label>` or `<label class="govuk-label--s">`.
   ([PR #806](https://github.com/alphagov/govuk-frontend/pull/806))
 
