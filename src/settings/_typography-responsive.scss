@@ -26,10 +26,12 @@ $govuk-typography-scale: (
   80: (
     null: (
       font-size: 53px,
+      font-size-rem: 3.3125rem, // 53/16
       line-height: 1.0377358491 // 55px
     ),
     tablet: (
       font-size: 80px,
+      font-size-rem: 5rem, // 80/16
       line-height: 1 // 80px
     ),
     print: (
@@ -40,10 +42,12 @@ $govuk-typography-scale: (
   48: (
     null: (
       font-size: 32px,
+      font-size-rem: 2rem, // 32/16
       line-height: 1.09375 // 35px
     ),
     tablet: (
       font-size: 48px,
+      font-size-rem: 3rem, // 48/16
       line-height: 1.0416666667 // 50px
     ),
     print: (
@@ -54,10 +58,12 @@ $govuk-typography-scale: (
   36: (
     null: (
       font-size: 24px,
+      font-size-rem: 1.5rem, // 24/16
       line-height: 1.0416666667 // 25px
     ),
     tablet: (
       font-size: 36px,
+      font-size-rem: 2.25rem, // 36/16
       line-height: 1.1111111111 // 40px
     ),
     print: (
@@ -68,10 +74,12 @@ $govuk-typography-scale: (
   27: (
     null: (
       font-size: 18px,
+      font-size-rem: 1.125rem, // 18/16
       line-height: 1.1111111111 // 20px
     ),
     tablet: (
       font-size: 27px,
+      font-size-rem: 1.6875rem, // 27/16
       line-height: 1.1111111111 // 30px
     ),
     print: (
@@ -82,10 +90,12 @@ $govuk-typography-scale: (
   24: (
     null: (
       font-size: 18px,
+      font-size-rem: 1.125rem, // 18/16
       line-height: 1.1111111111 // 20px
     ),
     tablet: (
       font-size: 24px,
+      font-size-rem: 1.5rem, // 24/16
       line-height: 1.25 // 30px
     ),
     print: (
@@ -96,10 +106,12 @@ $govuk-typography-scale: (
   19: (
     null: (
       font-size: 16px,
+      font-size-rem: 1rem, // 16/16
       line-height: 1.3333333333 // 20px
     ),
     tablet: (
       font-size: 19px,
+      font-size-rem: 1.1875rem, // 19/16
       line-height: 1.3157894737 // 25px
     ),
     print: (
@@ -110,10 +122,12 @@ $govuk-typography-scale: (
   16: (
     null: (
       font-size: 14px,
+      font-size-rem: .875rem, // 14/16
       line-height: 1.1428571429 // 16px
     ),
     tablet: (
       font-size: 16px,
+      font-size-rem: 1rem, // 16/16
       line-height: 1.3333333333 // 20px
     ),
     print: (
@@ -124,10 +138,12 @@ $govuk-typography-scale: (
   14: (
     null: (
       font-size: 12px,
+      font-size-rem: .75rem, // 12/16
       line-height: 1.25 // 15px
     ),
     tablet: (
       font-size: 14px,
+      font-size-rem: .875rem, // 14/16
       line-height: 1.4285714286 // 20px
     ),
     print: (
