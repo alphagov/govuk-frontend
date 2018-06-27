@@ -1,0 +1,80 @@
+examples:
+  - name: default
+    data:
+      name: more-detail
+      id: more-detail
+      maxlength: 10
+      label:
+        text: Can you provide more detail?
+      hint:
+        text: You have 10 characters remaining
+
+  - name: with highlight
+    data:
+      id: with-highlight
+      name: highlight
+      maxlength: 10
+      label:
+        text: Can you provide more detail?
+      hint:
+        text: You have 10 characters remaining
+      attributes:
+        data-highlight: true
+
+  - name: with default value
+    data:
+      id: with-default-value
+      name: default-value
+      maxlength: 100
+      value: |
+        221B Baker Street
+        London
+        NW1 6XE
+      label:
+        text: Full address
+      hint:
+        text: You have 67 characters remaining
+
+  - name: with default value exceeding limit
+    data:
+      id: exceeding-characters
+      name: exceeding
+      maxlength: 10
+      value: |
+        221B Baker Street
+        London
+        NW1 6XE
+      label:
+        text: Full address
+      errorMessage:
+        text: You have 23 characters too many
+      attributes:
+        data-highlight: true
+
+  - name: with custom rows
+    data:
+      id: custom-rows
+      name: custom
+      maxlength: 10
+      label:
+        text: Full address
+      rows: 8
+
+  - name: with label as page heading
+    data:
+      id: textarea-with-page-heading
+      name: address
+      maxlength: 10
+      label:
+        text: Full address
+        isPageHeading: true
+
+  - name: with word count
+    data:
+      id: word-count
+      name: word-count
+      maxlength: 10
+      label:
+        text: Full address
+      attributes:
+        data-maxwords: 10
