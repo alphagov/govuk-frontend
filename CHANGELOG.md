@@ -68,6 +68,16 @@
   global styles are enabled
   ([PR #877}])https://github.com/alphagov/govuk-frontend/pull/877
 
+- Define size of table in `px` rather than `em`
+
+  This brings the styling of tables inline with rest of GOV.UK Frontend which no longer uses `em` for measurements.
+
+  This change very slightly increases the padding of table cells on mobile viewport as the use of `em` meant the font size set in the table was used to calculate padding. `padding-top` and `padding-bottom` of cells increase by 1.5px respectively which very slightly increases the height of the table on mobile.
+
+  In the unlikely case that your UI has a dependency on tables being a certain fixed height of mobile viewport, this change might affect you.
+
+  ([PR #845](https://github.com/alphagov/govuk-frontend/pull/845))
+
 🏠 Internal:
 
 - Fix Design System url in package READMEs and review app
