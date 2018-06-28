@@ -255,6 +255,60 @@ describe('Checkboxes', () => {
     })
   })
 
+  describe('when they include a hint', () => {
+    it('it renders the hint text', () => {
+      const $ = render('checkboxes', {
+        name: 'gov',
+        items: [
+          {
+            value: 'value',
+            text: 'This is text',
+            hint: {
+              text: 'This is a hint'
+            }
+          }
+        ]
+      })
+      expect($('.govuk-checkboxes__hint').text()).toContain('This is a hint')
+    })
+
+    it('it renders the correct id attribute for the hint', () => {
+      const $ = render('checkboxes', {
+        name: 'gov',
+        items: [
+          {
+            value: 'value',
+            text: 'This is text',
+            id: 'item-id',
+            hint: {
+              text: 'This is a hint'
+            }
+          }
+        ]
+      })
+
+      expect($('.govuk-checkboxes__hint').attr('id')).toBe('item-id-item-hint')
+    })
+
+    it('the input describedBy attribute matches the item hint id', () => {
+      const $ = render('checkboxes', {
+        name: 'gov',
+        items: [
+          {
+            value: 'value',
+            text: 'This is text',
+            id: 'item-id',
+            hint: {
+              text: 'This is a hint'
+            }
+          }
+        ]
+      })
+
+      expect($('.govuk-checkboxes__input').attr('aria-describedby')).toBe('item-id-item-hint')
+    })
+  })
+
   describe('render conditionals', () => {
     it('hidden by default when not checked', () => {
       const $ = render('checkboxes', {
