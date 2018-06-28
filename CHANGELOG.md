@@ -23,9 +23,14 @@
 
 🔧 Fixes:
 
-- Use relative line-height  
-  Update typography styles to use relative, unitless line-height  
+- Use relative line-height
+  Update typography styles to use relative, unitless line-height
   ([PR #837](https://github.com/alphagov/govuk-frontend/pull/837))
+
+- Add bottom margin to Tabs component
+  All components (or outer layer components) have a bottom margin
+  applied to them so spacing feels automatic.
+  ([PR #841](https://github.com/alphagov/govuk-frontend/pull/841))
 
 - Update Crown copyright link
   Update the Crown copyright link on the National Archives so
