@@ -99,6 +99,7 @@
 
   @each $breakpoint, $breakpoint-map in $font-map {
     $font-size: map-get($breakpoint-map, "font-size") iff($important, !important);
+    $font-size-rem: map-get($breakpoint-map, "font-size-rem") iff($important, !important);
     $line-height: map-get($breakpoint-map, "line-height") iff($important, !important);
 
     // Sometimes we need to use a custom non-responsive line height for
@@ -109,6 +110,8 @@
 
     @if $breakpoint == null {
       font-size: $font-size;
+      // sass-lint:disable no-duplicate-properties
+      font-size: $font-size-rem;
       line-height: $line-height;
     } @elseif $breakpoint == "print" {
       @include govuk-media-query($media-type: print) {
@@ -118,6 +121,8 @@
     } @else {
       @include govuk-media-query($from: $breakpoint) {
         font-size: $font-size;
+        // sass-lint:disable no-duplicate-properties
+        font-size: $font-size-rem;
         line-height: $line-height;
       }
     }
