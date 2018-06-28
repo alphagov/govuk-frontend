@@ -203,7 +203,7 @@ Some components such as the details or button components are initialised globall
 ### Polyfills
 A JavaScript polyfill provides functionality on older browsers or assistive technology that do not natively support it.
 
-The polyfills provided with GOV.UK Frontend aim to fix usability and accessibility issues. If there is a JavaScript included in the component directory, it is important to import and initialise it in your project to ensure that all users can properly use the component (see [Polyfilling](/docs/contributing/polyfilling.md)).  
+The polyfills provided with GOV.UK Frontend aim to fix usability and accessibility issues. If there is a JavaScript included in the component directory, it is important to import and initialise it in your project to ensure that all users can properly use the component (see [Polyfilling](/docs/contributing/polyfilling.md)).
 
 ### How GOV.UK Frontend is bundled
 The JavaScript included in GOV.UK Frontend components are in [UMD (Universal Module Definition)](https://github.com/umdjs/umd) format which makes it compatible with AMD (Asynchronous module definition) and CommonJS.
@@ -228,8 +228,17 @@ For example, if your project uses [express.js](https://expressjs.com/), below is
 a code sample you could add to your configuration:
 
 ```JS
-app.use('/assets', express.static(path.join(__dirname, '/node_modules/govuk-frontend/assets')))
+app.use('/govuk-frontend/assets', express.static(path.join(__dirname, '/node_modules/govuk-frontend/assets')))
+
 ```
+and then set the `$govuk-assets-path` variable in your project Sass file.
+
+``` SCSS
+$govuk-assets-path: "/govuk-frontend/assets/";
+
+@import “govuk-frontend/all”;
+```
+
 ### Alternative solution
 
 Manually copy the images and fonts from `/node_modules/govuk-frontend/assets` into a public facing directory in your project. Ideally copying the files to your project should be an automated task or part of your build pipeline to ensure that the GOV.UK Frontend assets stay up-to-date.
