@@ -20,7 +20,12 @@
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
+
 🔧 Fixes:
+
+- Use relative line-height  
+  Update typography styles to use relative, unitless line-height  
+  ([PR #837](https://github.com/alphagov/govuk-frontend/pull/837))
 
 - Update Crown copyright link
   Update the Crown copyright link on the National Archives so
@@ -38,7 +43,7 @@
 - Update back-link example to show default usage doesn't need
   `text` parameter
   ([PR #819](https://github.com/alphagov/govuk-frontend/pull/819))
-  
+
 - Lowercase component names
   ([PR #822](https://github.com/alphagov/govuk-frontend/pull/822))
 
@@ -65,7 +70,7 @@
 🔧 Fixes:
 
 - Reduce margin-bottom on the hint when following a default or small labe
-  This reduces the margin-bottom of the hint by 5px after a default 
+  This reduces the margin-bottom of the hint by 5px after a default
   `<label>` or `<label class="govuk-label--s">`.
   ([PR #806](https://github.com/alphagov/govuk-frontend/pull/806))
 
