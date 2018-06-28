@@ -20,7 +20,12 @@
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
+
 🔧 Fixes:
+
+- Use relative line-height  
+  Update typography styles to use relative, unitless line-height  
+  ([PR #837](https://github.com/alphagov/govuk-frontend/pull/837))
 
 - Update Crown copyright link
   Update the Crown copyright link on the National Archives so
