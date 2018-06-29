@@ -203,7 +203,7 @@ Some components such as the details or button components are initialised globall
 ### Polyfills
 A JavaScript polyfill provides functionality on older browsers or assistive technology that do not natively support it.
 
-The polyfills provided with GOV.UK Frontend aim to fix usability and accessibility issues. If there is a JavaScript included in the component directory, it is important to import and initialise it in your project to ensure that all users can properly use the component (see [Polyfilling](/docs/contributing/polyfilling.md)).  
+The polyfills provided with GOV.UK Frontend aim to fix usability and accessibility issues. If there is a JavaScript included in the component directory, it is important to import and initialise it in your project to ensure that all users can properly use the component (see [Polyfilling](/docs/contributing/polyfilling.md)).
 
 ### How GOV.UK Frontend is bundled
 The JavaScript included in GOV.UK Frontend components are in [UMD (Universal Module Definition)](https://github.com/umdjs/umd) format which makes it compatible with AMD (Asynchronous module definition) and CommonJS.
@@ -253,8 +253,8 @@ To use different asset paths, also complete the below step(s).
 
   ``` SCSS
   // Include images from /images/govuk-frontend and fonts from /fonts
-  $govuk-images-path: “/images/govuk-frontend”;
-  $govuk-fonts-path: “/fonts”;
+  $govuk-images-path: “/images/govuk-frontend/”;
+  $govuk-fonts-path: “/fonts/”;
 
   @import “govuk-frontend/all”;
   ```
