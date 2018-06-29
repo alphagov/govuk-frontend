@@ -29,7 +29,7 @@ const sassBootstrap = `
       ),
       print: (
         font-size: 14pt,
-        line-height: 20pt
+        line-height: 1.5
       )
     ),
     14: (
@@ -62,11 +62,11 @@ describe('@mixin govuk-typography-responsive', () => {
     expect(results.css.toString().trim()).toBe(outdent`
       .foo {
         font-size: 12px;
-        line-height: 15px; }
+        line-height: 1.25; }
         @media (min-width: 30em) {
           .foo {
             font-size: 14px;
-            line-height: 20px; } }`)
+            line-height: 1.42857; } }`)
   })
 
   it('outputs CSS with suitable media queries for print', async () => {
@@ -82,11 +82,11 @@ describe('@mixin govuk-typography-responsive', () => {
     expect(results.css.toString().trim()).toBe(outdent`
       .foo {
         font-size: 12px;
-        line-height: 15px; }
+        line-height: 1.25; }
         @media print {
           .foo {
             font-size: 14pt;
-            line-height: 20pt; } }`)
+            line-height: 1.5; } }`)
   })
 
   it('throws an exception when passed a size that is not in the scale', async () => {
@@ -118,11 +118,11 @@ describe('@mixin govuk-typography-responsive', () => {
       expect(results.css.toString().trim()).toBe(outdent`
         .foo {
           font-size: 12px !important;
-          line-height: 15px !important; }
+          line-height: 1.25 !important; }
           @media (min-width: 30em) {
             .foo {
               font-size: 14px !important;
-              line-height: 20px !important; } }`)
+              line-height: 1.42857 !important; } }`)
     })
 
     it('marks font-size and line-height as important for print media', async () => {
@@ -138,11 +138,11 @@ describe('@mixin govuk-typography-responsive', () => {
       expect(results.css.toString().trim()).toBe(outdent`
         .foo {
           font-size: 12px !important;
-          line-height: 15px !important; }
+          line-height: 1.25 !important; }
           @media print {
             .foo {
               font-size: 14pt !important;
-              line-height: 20pt !important; } }`)
+              line-height: 1.5 !important; } }`)
     })
   })
 

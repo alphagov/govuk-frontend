@@ -98,14 +98,26 @@
   $font-map: map-get($govuk-typography-scale, $size);
 
   @each $breakpoint, $breakpoint-map in $font-map {
-    $font-size: map-get($breakpoint-map, "font-size") iff($important, !important);
-    $line-height: map-get($breakpoint-map, "line-height") iff($important, !important);
+    $font-size: map-get($breakpoint-map, "font-size");
+    $line-height: map-get($breakpoint-map, "line-height");
+
+    // Convert line-heights specified in pixels into a relative value, unless
+    // they are already unit-less (and thus already treated as relative values)
+    @if not unitless($line-height) {
+      $line-height: $line-height / $font-size;
+    }
 
     // Sometimes we need to use a custom non-responsive line height for
     // a component.
     @if $override-line-height {
       $line-height: $override-line-height iff($important, !important);
     }
+
+    // Mark rules as !important if $important is true - this will result in
+    // these variables becoming strings, so this needs to happen *after* they
+    // are used in calculations
+    $font-size: $font-size iff($important, !important);
+    $line-height: $line-height iff($important, !important);
 
     @if $breakpoint == null {
       font-size: $font-size;
