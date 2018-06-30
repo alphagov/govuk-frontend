@@ -139,6 +139,14 @@
     }
   }
 
+  .govuk-radios__divider {
+    $govuk-divider-size: $govuk-radios-size !default;
+    @include govuk-font($size: 19);
+    width: $govuk-divider-size;
+    margin-bottom: govuk-spacing(2);
+    text-align: center;
+  }
+
   $conditional-border-width: $govuk-border-width-mobile;
   // Calculate the amount of padding needed to keep the border centered against the radios.
   $conditional-border-padding: ($govuk-radios-size / 2) - ($conditional-border-width / 2);

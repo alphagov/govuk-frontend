@@ -47,6 +47,9 @@
     {% for item in params.items %}
     {% set id = item.id if item.id else idPrefix + "-" + loop.index %}
     {% set conditionalId = "conditional-" + id %}
+    {%- if item.divider %}
+    <div class="govuk-radios__divider">{{ item.divider }}</div>
+    {%- else %}
     <div class="govuk-radios__item">
       <input class="govuk-radios__input" id="{{ id }}" name="{{ params.name }}" type="radio" value="{{ item.value }}"
       {{-" checked" if item.checked }}
@@ -64,6 +67,7 @@
       <div class="govuk-radios__conditional" id="{{ conditionalId }}">
         {{ item.conditional.html | safe }}
       </div>
+    {% endif %}
     {% endif %}
     {% endfor %}
   </div>

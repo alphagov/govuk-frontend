@@ -100,6 +100,22 @@ examples:
           <span class="govuk-heading-s govuk-!-margin-bottom-1">Part 3 of the Housing Act 2004</span>
           For properties that are within a geographical area defined by a local council
 
+- name: with a divider
+  data:
+    idPrefix: example-divider
+    name: example
+    fieldset:
+      legend:
+        text: How do you want to sign in?
+    items:
+      - value: governement-gateway
+        text: Use Government Gateway
+      - value: govuk-verify
+        text: Use GOV.UK Verify
+      - divider: or
+      - value: create-account
+        text: Create an account
+
 - name: without fieldset
   data:
     name: colours
