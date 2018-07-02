@@ -20,11 +20,11 @@
 
   ([PR #859](https://github.com/alphagov/govuk-frontend/pull/859))
 
-- Pull Request Title goes here
+- Allow panel component title heading to be customisable.
 
-  Description goes here (optional)
-
-  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+  You can now specify a heading level by providing
+  `headingLevel: <number>` parameter. Default is `2`.
+  ([PR #853](https://github.com/alphagov/govuk-frontend/pull/853))
 
 
 🔧 Fixes:
