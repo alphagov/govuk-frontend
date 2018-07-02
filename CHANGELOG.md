@@ -40,6 +40,12 @@
 - Fixes radio and checkbox labels extending full width of page
   ([PR #821](https://github.com/alphagov/govuk-frontend/pull/821))
 
+- Prevent the exclamation mark in the warning text component from being
+  selectable, which also excludes it when it is copied as part of a wider body
+  of text
+  ([PR #856](https://github.com/alphagov/govuk-frontend/pull/856))
+
+
 🏠 Internal:
 
 - Fix Design System url in package READMEs and review app
