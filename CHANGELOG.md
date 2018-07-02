@@ -34,6 +34,12 @@
   colours in their browser, rather than it appearing underlined all the time
   ([PR #926](https://github.com/alphagov/govuk-frontend/pull/926))
 
+- Allow for optional hint for each radio and checkbox item
+
+  You can now pass a hint object (or add in html) to each radio
+  and checkbox item to display the hint
+  ([PR #846](https://github.com/alphagov/govuk-frontend/pull/846))
+
 🔧 Fixes:
 
 - Replace conflicting `js-hidden` class used within the tabs component with a new modifier class.
