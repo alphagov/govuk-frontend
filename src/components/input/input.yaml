@@ -23,6 +23,42 @@ examples:
       name: test-name-3
       errorMessage:
         text: Error message goes here
+  - name: with width-2 class
+    data:
+      label:
+        text: National insurance number
+      hint:
+        text: It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
+      id: input-width-2
+      name: test-width-2
+      classes: govuk-input--width-2
+  - name: with width-3 class
+    data:
+      label:
+        text: National insurance number
+      hint:
+        text: It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
+      id: input-width-3
+      name: test-width-3
+      classes: govuk-input--width-3
+  - name: with width-4 class
+    data:
+      label:
+        text: National insurance number
+      hint:
+        text: It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
+      id: input-width-4
+      name: test-width-4
+      classes: govuk-input--width-4
+  - name: with width-5 class
+    data:
+      label:
+        text: National insurance number
+      hint:
+        text: It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
+      id: input-width-5
+      name: test-width-5
+      classes: govuk-input--width-5
   - name: with width-10 class
     data:
       label:
@@ -30,7 +66,7 @@ examples:
       hint:
         text: It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
       id: input-width-10
-      name: test-name-4
+      name: test-width-10
       classes: govuk-input--width-10
   - name: with width-20 class
     data:
@@ -39,7 +75,7 @@ examples:
       hint:
         text: It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
       id: input-width-20
-      name: test-name-5
+      name: test-width-20
       classes: govuk-input--width-20
   - name: with width-30 class
     data:
@@ -48,7 +84,7 @@ examples:
       hint:
         text: It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
       id: input-width-30
-      name: test-name-6
+      name: test-width-30
       classes: govuk-input--width-30
   - name: with label as page heading
     data:
