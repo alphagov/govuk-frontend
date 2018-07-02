@@ -23,9 +23,10 @@
 
 🔧 Fixes:
 
-- Use relative line-height
-  Update typography styles to use relative, unitless line-height
-  ([PR #837](https://github.com/alphagov/govuk-frontend/pull/837))
+- Line-heights are now converted from pixels to relative 'unit-less' values
+  in order to prevent issues when resizing text in the browser.
+  ([PR #837](https://github.com/alphagov/govuk-frontend/pull/837) and
+   [PR #848](https://github.com/alphagov/govuk-frontend/pull/848))
 
 - Add bottom margin to Tabs component
   All components (or outer layer components) have a bottom margin
