@@ -103,7 +103,8 @@
 
     // Convert line-heights specified in pixels into a relative value, unless
     // they are already unit-less (and thus already treated as relative values)
-    @if not unitless($line-height) {
+    // or the units do not match the units used for the font size.
+    @if not unitless($line-height) and unit($line-height) == unit($font-size) {
       $line-height: $line-height / $font-size;
     }
 
