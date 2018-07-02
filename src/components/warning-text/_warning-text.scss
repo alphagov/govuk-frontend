@@ -26,18 +26,21 @@
     top: 50%;
     left: 0;
 
-    min-width: 38px;
-    min-height: 35px;
-    margin-top: -20px; // Half the height of the 38px circle (adjusted for NTA)
+    min-width: 32px;
+    min-height: 29px;
+    margin-top: -20px; // Half the height of the circle (adjusted for NTA)
     padding-top: 3px;
 
+    // When a user customises their colours the background colour will often be removed.
+    // Adding a border to the component keeps it's shape as a circle.
+    border: 3px solid govuk-colour("black");
     border-radius: 50%;
 
     color: govuk-colour("white");
     background: govuk-colour("black");
 
     font-size: 1.6em;
-    line-height: 35px;
+    line-height: 29px;
 
     text-align: center;
 
