@@ -40,6 +40,10 @@
     line-height: 35px;
 
     text-align: center;
+
+    // Prevent the exclamation mark from being included when the warning text
+    // is copied, for example.
+    user-select: none;
   }
 
   .govuk-warning-text__text {
