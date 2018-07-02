@@ -6,6 +6,46 @@ Use hint text for supporting contextual help
 
 ## Quick start examples
 
+### Component default
+
+[Preview the hint component](http://govuk-frontend-review.herokuapp.com/components/hint/preview)
+
+#### Markup
+
+    <span class="govuk-hint">
+      It’s on your National Insurance card, benefit letter, payslip or P60.
+    For example, ‘QQ 12 34 56 C’.
+
+    </span>
+
+#### Macro
+
+    {% from "hint/macro.njk" import govukHint %}
+
+    {{ govukHint({
+      "text": "It’s on your National Insurance card, benefit letter, payslip or P60.\nFor example, ‘QQ 12 34 56 C’.\n"
+    }) }}
+
+### Hint with html
+
+[Preview the Hint with html example](http://govuk-frontend-review.herokuapp.com/components/hint/with-html/preview)
+
+#### Markup
+
+    <span class="govuk-hint">
+      It’s on your National Insurance card, benefit letter, payslip or <a class="govuk-link" href="#">P60</a>.
+    For example, ‘QQ 12 34 56 C’.
+
+    </span>
+
+#### Macro
+
+    {% from "hint/macro.njk" import govukHint %}
+
+    {{ govukHint({
+      "html": "It’s on your National Insurance card, benefit letter, payslip or <a class=\"govuk-link\" href=\"#\">P60</a>.\nFor example, ‘QQ 12 34 56 C’.\n"
+    }) }}
+
 ## Requirements
 
 ### Build tool configuration

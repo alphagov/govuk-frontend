@@ -10,6 +10,32 @@ Find out when to use the panel component in your service in the [GOV.UK Design S
 
 ## Quick start examples
 
+### Component default
+
+[Preview the panel component](http://govuk-frontend-review.herokuapp.com/components/panel/preview)
+
+#### Markup
+
+    <div class="govuk-panel govuk-panel--confirmation">
+      <h2 class="govuk-panel__title">
+        Application complete
+      </h2>
+
+      <div class="govuk-panel__body">
+        Your reference number: HDJ2123F
+      </div>
+
+    </div>
+
+#### Macro
+
+    {% from "panel/macro.njk" import govukPanel %}
+
+    {{ govukPanel({
+      "titleText": "Application complete",
+      "text": "Your reference number: HDJ2123F"
+    }) }}
+
 ## Requirements
 
 ### Build tool configuration

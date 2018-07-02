@@ -10,6 +10,33 @@ Find out when to use the phase banner component in your service in the [GOV.UK D
 
 ## Quick start examples
 
+### Component default
+
+[Preview the phase banner component](http://govuk-frontend-review.herokuapp.com/components/phase-banner/preview)
+
+#### Markup
+
+    <div class="govuk-phase-banner">
+      <p class="govuk-phase-banner__content"><strong class="govuk-tag govuk-phase-banner__content__tag ">
+      alpha
+    </strong>
+    <span class="govuk-phase-banner__text">
+          This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.
+        </span>
+      </p>
+    </div>
+
+#### Macro
+
+    {% from "phase-banner/macro.njk" import govukPhaseBanner %}
+
+    {{ govukPhaseBanner({
+      "tag": {
+        "text": "alpha"
+      },
+      "html": "This is a new service - your <a href=\"#\" class=\"govuk-link\">feedback</a> will help us to improve it."
+    }) }}
+
 ## Requirements
 
 ### Build tool configuration

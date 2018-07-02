@@ -10,6 +10,29 @@ Find out when to use the warning text component in your service in the [GOV.UK D
 
 ## Quick start examples
 
+### Component default
+
+[Preview the warning text component](http://govuk-frontend-review.herokuapp.com/components/warning-text/preview)
+
+#### Markup
+
+    <div class="govuk-warning-text">
+      <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+      <strong class="govuk-warning-text__text">
+        <span class="govuk-warning-text__assistive">Warning</span>
+        You can be fined up to £5,000 if you don’t register.
+      </strong>
+    </div>
+
+#### Macro
+
+    {% from "warning-text/macro.njk" import govukWarningText %}
+
+    {{ govukWarningText({
+      "text": "You can be fined up to £5,000 if you don’t register.",
+      "iconFallbackText": "Warning"
+    }) }}
+
 ## Requirements
 
 ### Build tool configuration

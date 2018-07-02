@@ -10,6 +10,507 @@ Find out when to use the checkboxes component in your service in the [GOV.UK Des
 
 ## Quick start examples
 
+### Component default
+
+[Preview the checkboxes component](http://govuk-frontend-review.herokuapp.com/components/checkboxes/preview)
+
+#### Markup
+
+    <div class="govuk-form-group">
+
+      <fieldset class="govuk-fieldset" aria-describedby="nationality-hint">
+
+      <legend class="govuk-fieldset__legend">
+        What is your nationality?
+      </legend>
+
+      <span id="nationality-hint" class="govuk-hint">
+        If you have dual nationality, select all options that are relevant to you.
+      </span>
+
+      <div class="govuk-checkboxes">
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="nationality-1" name="nationality" type="checkbox" value="british">
+          <label class="govuk-label govuk-checkboxes__label" for="nationality-1">
+            British
+          </label>
+        </div>
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="nationality-2" name="nationality" type="checkbox" value="irish">
+          <label class="govuk-label govuk-checkboxes__label" for="nationality-2">
+            Irish
+          </label>
+        </div>
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="nationality-3" name="nationality" type="checkbox" value="other">
+          <label class="govuk-label govuk-checkboxes__label" for="nationality-3">
+            Citizen of another country
+          </label>
+        </div>
+
+      </div>
+      </fieldset>
+
+    </div>
+
+#### Macro
+
+    {% from "checkboxes/macro.njk" import govukCheckboxes %}
+
+    {{ govukCheckboxes({
+      "idPrefix": "nationality",
+      "name": "nationality",
+      "fieldset": {
+        "legend": {
+          "text": "What is your nationality?"
+        }
+      },
+      "hint": {
+        "text": "If you have dual nationality, select all options that are relevant to you."
+      },
+      "items": [
+        {
+          "value": "british",
+          "text": "British"
+        },
+        {
+          "value": "irish",
+          "text": "Irish"
+        },
+        {
+          "value": "other",
+          "text": "Citizen of another country"
+        }
+      ]
+    }) }}
+
+### Checkboxes with id and name
+
+[Preview the Checkboxes with id and name example](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-id-and-name/preview)
+
+#### Markup
+
+    <div class="govuk-form-group">
+
+      <fieldset class="govuk-fieldset" aria-describedby="undefined-hint">
+
+      <legend class="govuk-fieldset__legend">
+        What is your nationality?
+      </legend>
+
+      <span id="undefined-hint" class="govuk-hint">
+        If you have dual nationality, select all options that are relevant to you.
+      </span>
+
+      <div class="govuk-checkboxes">
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="item_british" name="british" type="checkbox" value="yes">
+          <label class="govuk-label govuk-checkboxes__label" for="item_british">
+            British
+          </label>
+        </div>
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="item_irish" name="irish" type="checkbox" value="irish">
+          <label class="govuk-label govuk-checkboxes__label" for="item_irish">
+            Irish
+          </label>
+        </div>
+
+      </div>
+      </fieldset>
+
+    </div>
+
+#### Macro
+
+    {% from "checkboxes/macro.njk" import govukCheckboxes %}
+
+    {{ govukCheckboxes({
+      "fieldset": {
+        "legend": {
+          "text": "What is your nationality?"
+        }
+      },
+      "hint": {
+        "text": "If you have dual nationality, select all options that are relevant to you."
+      },
+      "items": [
+        {
+          "name": "british",
+          "id": "item_british",
+          "value": "yes",
+          "text": "British"
+        },
+        {
+          "name": "irish",
+          "id": "item_irish",
+          "value": "irish",
+          "text": "Irish"
+        }
+      ]
+    }) }}
+
+### Checkboxes with disabled item
+
+[Preview the Checkboxes with disabled item example](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-disabled-item/preview)
+
+#### Markup
+
+    <div class="govuk-form-group">
+
+      <div class="govuk-checkboxes">
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="colours-1" name="colours" type="checkbox" value="red">
+          <label class="govuk-label govuk-checkboxes__label" for="colours-1">
+            Red
+          </label>
+        </div>
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="colours-2" name="colours" type="checkbox" value="green">
+          <label class="govuk-label govuk-checkboxes__label" for="colours-2">
+            Green
+          </label>
+        </div>
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="colours-3" name="colours" type="checkbox" value="blue" disabled>
+          <label class="govuk-label govuk-checkboxes__label" for="colours-3">
+            Blue
+          </label>
+        </div>
+
+      </div>
+
+    </div>
+
+#### Macro
+
+    {% from "checkboxes/macro.njk" import govukCheckboxes %}
+
+    {{ govukCheckboxes({
+      "name": "colours",
+      "items": [
+        {
+          "value": "red",
+          "text": "Red"
+        },
+        {
+          "value": "green",
+          "text": "Green"
+        },
+        {
+          "value": "blue",
+          "text": "Blue",
+          "disabled": true
+        }
+      ]
+    }) }}
+
+### Checkboxes with html in legend
+
+[Preview the Checkboxes with html in legend example](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-html-in-legend/preview)
+
+#### Markup
+
+    <div class="govuk-form-group">
+
+      <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+
+      <legend class="govuk-fieldset__legend">
+        <h3 class="govuk-heading-m">Which types of waste do you transport regularly?</h3>
+      </legend>
+
+      <span id="waste-hint" class="govuk-hint">
+        Select all that apply
+      </span>
+
+      <div class="govuk-checkboxes">
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="waste-1" name="waste" type="checkbox" value="animal">
+          <label class="govuk-label govuk-checkboxes__label" for="waste-1">
+            Waste from animal carcasses
+          </label>
+        </div>
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="waste-2" name="waste" type="checkbox" value="mines">
+          <label class="govuk-label govuk-checkboxes__label" for="waste-2">
+            Waste from mines or quarries
+          </label>
+        </div>
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+          <label class="govuk-label govuk-checkboxes__label" for="waste-3">
+            Farm or agricultural waste
+          </label>
+        </div>
+
+      </div>
+      </fieldset>
+
+    </div>
+
+#### Macro
+
+    {% from "checkboxes/macro.njk" import govukCheckboxes %}
+
+    {{ govukCheckboxes({
+      "name": "waste",
+      "fieldset": {
+        "legend": {
+          "html": "<h3 class=\"govuk-heading-m\">Which types of waste do you transport regularly?</h3>"
+        }
+      },
+      "hint": {
+        "text": "Select all that apply"
+      },
+      "items": [
+        {
+          "value": "animal",
+          "text": "Waste from animal carcasses"
+        },
+        {
+          "value": "mines",
+          "text": "Waste from mines or quarries"
+        },
+        {
+          "value": "farm",
+          "text": "Farm or agricultural waste"
+        }
+      ]
+    }) }}
+
+### Checkboxes without fieldset
+
+[Preview the Checkboxes without fieldset example](http://govuk-frontend-review.herokuapp.com/components/checkboxes/without-fieldset/preview)
+
+#### Markup
+
+    <div class="govuk-form-group">
+
+      <div class="govuk-checkboxes">
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="colours-1" name="colours" type="checkbox" value="red">
+          <label class="govuk-label govuk-checkboxes__label" for="colours-1">
+            Red
+          </label>
+        </div>
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="colours-2" name="colours" type="checkbox" value="green">
+          <label class="govuk-label govuk-checkboxes__label" for="colours-2">
+            Green
+          </label>
+        </div>
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="colours-3" name="colours" type="checkbox" value="blue">
+          <label class="govuk-label govuk-checkboxes__label" for="colours-3">
+            Blue
+          </label>
+        </div>
+
+      </div>
+
+    </div>
+
+#### Macro
+
+    {% from "checkboxes/macro.njk" import govukCheckboxes %}
+
+    {{ govukCheckboxes({
+      "name": "colours",
+      "items": [
+        {
+          "value": "red",
+          "text": "Red"
+        },
+        {
+          "value": "green",
+          "text": "Green"
+        },
+        {
+          "value": "blue",
+          "text": "Blue"
+        }
+      ]
+    }) }}
+
+### Checkboxes with all fieldset attributes
+
+[Preview the Checkboxes with all fieldset attributes example](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-all-fieldset-attributes/preview)
+
+#### Markup
+
+    <div class="govuk-form-group govuk-form-group--error">
+
+      <fieldset class="govuk-fieldset app-fieldset--custom-modifier" aria-describedby="example-hint example-error" data-attribute="value" data-second-attribute="second-value">
+
+      <legend class="govuk-fieldset__legend">
+        What is your nationality?
+      </legend>
+
+      <span id="example-hint" class="govuk-hint">
+        If you have dual nationality, select all options that are relevant to you.
+      </span>
+
+      <span id="example-error" class="govuk-error-message">
+        Please select an option
+      </span>
+
+      <div class="govuk-checkboxes">
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="example-1" name="example" type="checkbox" value="british">
+          <label class="govuk-label govuk-checkboxes__label" for="example-1">
+            British
+          </label>
+        </div>
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="example-2" name="example" type="checkbox" value="irish">
+          <label class="govuk-label govuk-checkboxes__label" for="example-2">
+            Irish
+          </label>
+        </div>
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="example-3" name="example" type="checkbox" value="other">
+          <label class="govuk-label govuk-checkboxes__label" for="example-3">
+            Citizen of another country
+          </label>
+        </div>
+
+      </div>
+      </fieldset>
+
+    </div>
+
+#### Macro
+
+    {% from "checkboxes/macro.njk" import govukCheckboxes %}
+
+    {{ govukCheckboxes({
+      "idPrefix": "example",
+      "name": "example",
+      "fieldset": {
+        "classes": "app-fieldset--custom-modifier",
+        "attributes": {
+          "data-attribute": "value",
+          "data-second-attribute": "second-value"
+        },
+        "legend": {
+          "text": "What is your nationality?"
+        }
+      },
+      "hint": {
+        "text": "If you have dual nationality, select all options that are relevant to you."
+      },
+      "errorMessage": {
+        "text": "Please select an option"
+      },
+      "items": [
+        {
+          "value": "british",
+          "text": "British"
+        },
+        {
+          "value": "irish",
+          "text": "Irish"
+        },
+        {
+          "value": "other",
+          "text": "Citizen of another country"
+        }
+      ]
+    }) }}
+
+### Checkboxes with error message
+
+[Preview the Checkboxes with error message example](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-error-message/preview)
+
+#### Markup
+
+    <div class="govuk-form-group govuk-form-group--error">
+
+      <fieldset class="govuk-fieldset" aria-describedby="waste-error">
+
+      <legend class="govuk-fieldset__legend">
+        <h3 class="govuk-heading-m">Which types of waste do you transport regularly?</h3>
+      </legend>
+
+      <span id="waste-error" class="govuk-error-message">
+        Please select an option
+      </span>
+
+      <div class="govuk-checkboxes">
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="waste-1" name="waste" type="checkbox" value="animal">
+          <label class="govuk-label govuk-checkboxes__label" for="waste-1">
+            Waste from animal carcasses
+          </label>
+        </div>
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="waste-2" name="waste" type="checkbox" value="mines">
+          <label class="govuk-label govuk-checkboxes__label" for="waste-2">
+            Waste from mines or quarries
+          </label>
+        </div>
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+          <label class="govuk-label govuk-checkboxes__label" for="waste-3">
+            Farm or agricultural waste
+          </label>
+        </div>
+
+      </div>
+      </fieldset>
+
+    </div>
+
+#### Macro
+
+    {% from "checkboxes/macro.njk" import govukCheckboxes %}
+
+    {{ govukCheckboxes({
+      "name": "waste",
+      "errorMessage": {
+        "text": "Please select an option"
+      },
+      "fieldset": {
+        "legend": {
+          "html": "<h3 class=\"govuk-heading-m\">Which types of waste do you transport regularly?</h3>"
+        }
+      },
+      "items": [
+        {
+          "value": "animal",
+          "text": "Waste from animal carcasses"
+        },
+        {
+          "value": "mines",
+          "text": "Waste from mines or quarries"
+        },
+        {
+          "value": "farm",
+          "text": "Farm or agricultural waste"
+        }
+      ]
+    }) }}
+
 ## Requirements
 
 ### Build tool configuration

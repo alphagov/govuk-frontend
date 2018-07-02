@@ -10,6 +10,94 @@ Find out when to use the details component in your service in the [GOV.UK Design
 
 ## Quick start examples
 
+### Component default
+
+[Preview the details component](http://govuk-frontend-review.herokuapp.com/components/details/preview)
+
+#### Markup
+
+    <details class="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          Help with nationality
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post.
+      </div>
+    </details>
+
+#### Macro
+
+    {% from "details/macro.njk" import govukDetails %}
+
+    {{ govukDetails({
+      "summaryText": "Help with nationality",
+      "text": "We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post."
+    }) }}
+
+### Details expanded
+
+[Preview the Details expanded example](http://govuk-frontend-review.herokuapp.com/components/details/expanded/preview)
+
+#### Markup
+
+    <details id="help-with-nationality" class="govuk-details" open>
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          Help with nationality
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post.
+      </div>
+    </details>
+
+#### Macro
+
+    {% from "details/macro.njk" import govukDetails %}
+
+    {{ govukDetails({
+      "id": "help-with-nationality",
+      "summaryText": "Help with nationality",
+      "text": "We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post.",
+      "open": true
+    }) }}
+
+### Details with html
+
+[Preview the Details with html example](http://govuk-frontend-review.herokuapp.com/components/details/with-html/preview)
+
+#### Markup
+
+    <details class="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          Where to find your National Insurance Number
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        Your National Insurance number can be found on
+    <ul>
+      <li>your National Insurance card</li>
+      <li>your payslip</li>
+      <li>P60</li>
+      <li>benefits information</li>
+      <li>tax return</li>
+    </ul>
+
+      </div>
+    </details>
+
+#### Macro
+
+    {% from "details/macro.njk" import govukDetails %}
+
+    {{ govukDetails({
+      "summaryText": "Where to find your National Insurance Number",
+      "html": "Your National Insurance number can be found on\n<ul>\n  <li>your National Insurance card</li>\n  <li>your payslip</li>\n  <li>P60</li>\n  <li>benefits information</li>\n  <li>tax return</li>\n</ul>\n"
+    }) }}
+
 ## Requirements
 
 ### Build tool configuration
