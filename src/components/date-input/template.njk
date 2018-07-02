@@ -10,8 +10,8 @@
 {#- Capture the HTML so we can optionally nest it in a fieldset -#}
 {% set innerHtml %}
 {% if params.hint %}
-  {% set hintId = params.id + '-hint' %}
-  {% set describedBy = describedBy + ' ' + hintId if describedBy else hintId %}
+  {% set hintId = params.id + "-hint" %}
+  {% set describedBy = describedBy + " " + hintId if describedBy else hintId %}
   {{ govukHint({
     id: hintId,
     classes: params.hint.classes,
@@ -21,8 +21,8 @@
   }) | indent(2) | trim }}
 {% endif %}
 {% if params.errorMessage %}
-  {% set errorId = params.id + '-error' %}
-  {% set describedBy = describedBy + ' ' + errorId if describedBy else errorId %}
+  {% set errorId = params.id + "-error" %}
+  {% set describedBy = describedBy + " " + errorId if describedBy else errorId %}
   {{ govukErrorMessage({
     id: errorId,
     classes: params.errorMessage.classes,
@@ -34,19 +34,19 @@
     {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}
     {%- if params.id %} id="{{ params.id }}"{% endif %}>
     {% for item in params.items %}
-    <div class="govuk-date-input__item govuk-date-input__item--{{ item.name }}">
+    <div class="govuk-date-input__item">
       {{ govukInput({
-        "label":{
-          "text": item.name | capitalize,
-          "classes": 'govuk-date-input__label'
+        label: {
+          text: item.label if item.label else item.name | capitalize,
+          classes: "govuk-date-input__label"
         },
-        "id": params.id + "-" + item.name,
-        "classes": "govuk-date-input__input" + (" " + item.classes if item.classes),
-        "name": params.name + "-" + item.name,
-        "value": item.value,
-        "type": "number",
-        "attributes": {
-          "pattern": "[0-9]*"
+        id: item.id if item.id else (params.id + "-" + item.name),
+        classes: "govuk-date-input__input " + item.classes,
+        name: (params.name + "-" + item.name) if params.name else item.name,
+        value: item.value,
+        type: "number",
+        attributes: {
+          pattern: "[0-9]*"
         }
       }) | indent(6) | trim }}
     </div>
@@ -64,7 +64,7 @@
     describedBy: describedBy,
     classes: params.fieldset.classes,
     attributes: {
-      role: 'group'
+      role: "group"
     },
     legend: params.fieldset.legend
   }) %}
