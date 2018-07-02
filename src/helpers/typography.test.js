@@ -48,6 +48,53 @@ const sassBootstrap = `
   @import "tools/iff";
   @import "helpers/typography";`
 
+describe('@function _govuk-line-height', () => {
+  it('preserves line-height if already unitless', async () => {
+    const sass = `
+      @import "helpers/typography";
+
+      .foo {
+        line-height: _govuk-line-height($line-height: 3.141, $font-size: 20px);
+      }`
+
+    const results = await sassRender({ data: sass, ...sassConfig })
+
+    expect(results.css.toString().trim()).toBe(outdent`
+      .foo {
+        line-height: 3.141; }`)
+  })
+
+  it('preserves line-height if using different units', async () => {
+    const sass = `
+      @import "helpers/typography";
+
+      .foo {
+        line-height: _govuk-line-height($line-height: 2em, $font-size: 20px);
+      }`
+
+    const results = await sassRender({ data: sass, ...sassConfig })
+
+    expect(results.css.toString().trim()).toBe(outdent`
+      .foo {
+        line-height: 2em; }`)
+  })
+
+  it('converts line-height to a relative number', async () => {
+    const sass = `
+      @import "helpers/typography";
+
+      .foo {
+        line-height: _govuk-line-height($line-height: 30px, $font-size: 20px);
+      }`
+
+    const results = await sassRender({ data: sass, ...sassConfig })
+
+    expect(results.css.toString().trim()).toBe(outdent`
+      .foo {
+        line-height: 1.5; }`)
+  })
+})
+
 describe('@mixin govuk-typography-responsive', () => {
   it('outputs CSS with suitable media queries', async () => {
     const sass = `
@@ -152,7 +199,7 @@ describe('@mixin govuk-typography-responsive', () => {
         ${sassBootstrap}
 
         .foo {
-          @include govuk-typography-responsive($size: 14, $override-line-height: 30px);
+          @include govuk-typography-responsive($size: 14, $override-line-height: 21px);
         }`
 
       const results = await sassRender({ data: sass, ...sassConfig })
@@ -160,11 +207,11 @@ describe('@mixin govuk-typography-responsive', () => {
       expect(results.css.toString().trim()).toBe(outdent`
         .foo {
           font-size: 12px;
-          line-height: 30px; }
+          line-height: 1.75; }
           @media (min-width: 30em) {
             .foo {
               font-size: 14px;
-              line-height: 30px; } }`)
+              line-height: 1.5; } }`)
     })
   })
 })
