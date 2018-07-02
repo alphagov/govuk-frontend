@@ -17,6 +17,8 @@ const sassBootstrap = `
   @import "settings/media-queries";
   @import "settings/ie8";
 
+  $govuk-root-font-size: 16px;
+
   $govuk-breakpoints: (
     desktop: 30em
   );
@@ -109,10 +111,12 @@ describe('@mixin govuk-typography-responsive', () => {
     expect(results.css.toString().trim()).toBe(outdent`
       .foo {
         font-size: 12px;
+        font-size: 0.75rem;
         line-height: 1.25; }
         @media (min-width: 30em) {
           .foo {
             font-size: 14px;
+            font-size: 0.875rem;
             line-height: 1.42857; } }`)
   })
 
@@ -129,6 +133,7 @@ describe('@mixin govuk-typography-responsive', () => {
     expect(results.css.toString().trim()).toBe(outdent`
       .foo {
         font-size: 12px;
+        font-size: 0.75rem;
         line-height: 1.25; }
         @media print {
           .foo {
@@ -165,10 +170,12 @@ describe('@mixin govuk-typography-responsive', () => {
       expect(results.css.toString().trim()).toBe(outdent`
         .foo {
           font-size: 12px !important;
+          font-size: 0.75rem !important;
           line-height: 1.25 !important; }
           @media (min-width: 30em) {
             .foo {
               font-size: 14px !important;
+              font-size: 0.875rem !important;
               line-height: 1.42857 !important; } }`)
     })
 
@@ -185,6 +192,7 @@ describe('@mixin govuk-typography-responsive', () => {
       expect(results.css.toString().trim()).toBe(outdent`
         .foo {
           font-size: 12px !important;
+          font-size: 0.75rem !important;
           line-height: 1.25 !important; }
           @media print {
             .foo {
@@ -207,10 +215,12 @@ describe('@mixin govuk-typography-responsive', () => {
       expect(results.css.toString().trim()).toBe(outdent`
         .foo {
           font-size: 12px;
+          font-size: 0.75rem;
           line-height: 1.75; }
           @media (min-width: 30em) {
             .foo {
               font-size: 14px;
+              font-size: 0.875rem;
               line-height: 1.5; } }`)
     })
   })

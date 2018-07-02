@@ -2,6 +2,8 @@
 /// @group helpers
 ////
 
+@import "../tools/px-to-rem";
+
 /// 'Common typography' helper
 ///
 /// Sets the font family and associated properties, such as font smoothing. Also
@@ -116,6 +118,8 @@
 
   @each $breakpoint, $breakpoint-map in $font-map {
     $font-size: map-get($breakpoint-map, "font-size");
+    $font-size-rem: govuk-px-to-rem($font-size);
+
     $line-height: _govuk-line-height(
       $line-height: if($override-line-height,
         $override-line-height,
@@ -128,10 +132,12 @@
     // these variables becoming strings, so this needs to happen *after* they
     // are used in calculations
     $font-size: $font-size iff($important, !important);
+    $font-size-rem: $font-size-rem iff($important, !important);
     $line-height: $line-height iff($important, !important);
 
     @if $breakpoint == null {
-      font-size: $font-size;
+      font-size: $font-size; // sass-lint:disable no-duplicate-properties
+      font-size: $font-size-rem; // sass-lint:disable no-duplicate-properties
       line-height: $line-height;
     } @elseif $breakpoint == "print" {
       @include govuk-media-query($media-type: print) {
@@ -140,7 +146,8 @@
       }
     } @else {
       @include govuk-media-query($from: $breakpoint) {
-        font-size: $font-size;
+        font-size: $font-size; // sass-lint:disable no-duplicate-properties
+        font-size: $font-size-rem; // sass-lint:disable no-duplicate-properties
         line-height: $line-height;
       }
     }

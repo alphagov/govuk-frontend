@@ -2,6 +2,17 @@
 /// @group settings/typography
 ////
 
+/// Root font size
+///
+/// This should match the font-size of your html element. If you are integrating
+/// into a project that uses alphagov/govuk_template then you should set this to
+/// 10px.
+///
+/// @type Number
+/// @access public
+
+$govuk-root-font-size: 16px !default;
+
 /// Responsive typography font map
 ///
 /// This is used to generate responsive typography that adapts according to the
