@@ -14,10 +14,7 @@
 
 🆕 New features:
 
-- Pull Request Title goes here
-
-  Description goes here (optional)
-
+- Add support for specific input field names to date-input component
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
 

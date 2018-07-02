@@ -265,6 +265,23 @@ describe('Date input', () => {
     })
   })
 
+  describe('when items include a fieldName attribute', () => {
+    it('renders item with specific field name', () => {
+      const $ = render('date-input', {
+        name: 'my-date-input',
+        items: [
+          {
+            'name': 'day',
+            'fieldName': 'my-date[dd]'
+          }
+        ]
+      })
+
+      const $firstItems = $('.govuk-date-input__item:first-child input')
+      expect($firstItems.attr('name')).toEqual('my-date[dd]')
+    })
+  })
+
   describe('nested dependant components', () => {
     it('have correct nesting order', () => {
       const $ = render('date-input', examples['default'])

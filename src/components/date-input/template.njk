@@ -42,7 +42,7 @@
         },
         "id": params.id + "-" + item.name,
         "classes": "govuk-date-input__input" + (" " + item.classes if item.classes),
-        "name": params.name + "-" + item.name,
+        "name": item.fieldName or (params.name + "-" + item.name),
         "value": item.value,
         "type": "number",
         "attributes": {
