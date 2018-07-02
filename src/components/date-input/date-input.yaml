@@ -101,3 +101,12 @@ examples:
       -
         name: year
         classes: govuk-input--width-4 govuk-input--error
+- name: with default items
+  data:
+    id: dob
+    name: dob
+    fieldset:
+      legend:
+        text: What is your date of birth?
+    hint:
+      text: For example, 31 3 1980
