@@ -20,6 +20,11 @@
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
+- Allow for optional divider between radio items
+
+  You can now provide a divider item (e.g "or") to separate items
+  ([PR #849](https://github.com/alphagov/govuk-frontend/pull/849))
+
 🔧 Fixes:
 
 - Replace conflicting `js-hidden` class used within the tabs component with a new modifier class.
