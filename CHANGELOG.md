@@ -23,6 +23,12 @@
 
 🔧 Fixes:
 
+- Apply `display:block` to `.govuk-main-wrapper`
+
+  In IE11 `main` element is set to `display:inline` so padding
+  and margins aren't applied.
+  ([PR #863](https://github.com/alphagov/govuk-frontend/pull/863)))
+
 - Line-heights are now converted from pixels to relative 'unit-less' values
   in order to prevent issues when resizing text in the browser.
   ([PR #837](https://github.com/alphagov/govuk-frontend/pull/837) and
