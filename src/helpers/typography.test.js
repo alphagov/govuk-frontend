@@ -242,6 +242,30 @@ describe('@mixin govuk-typography-responsive', () => {
               line-height: 1.42857; } }`)
     })
 
+    it('adjusts rem values based on root font size', async () => {
+      const sass = `
+        ${sassBootstrap}
+        $govuk-typography-use-rem: true;
+        $govuk-root-font-size: 10px;
+
+        .foo {
+          @include govuk-typography-responsive($size: 14)
+        }`
+
+      const results = await sassRender({ data: sass, ...sassConfig })
+
+      expect(results.css.toString().trim()).toBe(outdent`
+        .foo {
+          font-size: 12px;
+          font-size: 1.2rem;
+          line-height: 1.25; }
+          @media (min-width: 30em) {
+            .foo {
+              font-size: 14px;
+              font-size: 1.4rem;
+              line-height: 1.42857; } }`)
+    })
+
     describe('and $important is set to true', () => {
       it('marks font size and line height as important', async () => {
         const sass = `
