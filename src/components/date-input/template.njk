@@ -53,6 +53,10 @@
     {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}
     {%- if params.id %} id="{{ params.id }}"{% endif %}>
     {% for item in dateInputItems %}
+
+    {# @todo Remove this definition and any mentions of it on the next breaking release #}
+    {% set inputWidthClass = 'govuk-input--width-4 ' if item.name == 'year' else 'govuk-input--width-2 ' %}
+
     <div class="govuk-date-input__item">
       {{ govukInput({
         label: {
@@ -60,7 +64,7 @@
           classes: "govuk-date-input__label"
         },
         id: item.id if item.id else (params.id + "-" + item.name),
-        classes: "govuk-date-input__input " + item.classes,
+        classes: "govuk-date-input__input " + inputWidthClass + item.classes,
         name: (params.name + "-" + item.name) if params.name else item.name,
         value: item.value,
         type: "number",
