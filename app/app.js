@@ -83,7 +83,7 @@ module.exports = (options) => {
     // make variables available to nunjucks template
     res.locals.componentPath = req.params.component
 
-    res.render(`${req.params.component}/index`, function (error, html) {
+    res.render('component', function (error, html) {
       if (error) {
         next(error)
       } else {
