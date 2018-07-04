@@ -137,7 +137,9 @@
 
     @if $breakpoint == null {
       font-size: $font-size; // sass-lint:disable no-duplicate-properties
-      font-size: $font-size-rem; // sass-lint:disable no-duplicate-properties
+      @if $govuk-typography-use-rem {
+        font-size: $font-size-rem; // sass-lint:disable no-duplicate-properties
+      }
       line-height: $line-height;
     } @elseif $breakpoint == "print" {
       @include govuk-media-query($media-type: print) {
@@ -147,7 +149,9 @@
     } @else {
       @include govuk-media-query($from: $breakpoint) {
         font-size: $font-size; // sass-lint:disable no-duplicate-properties
-        font-size: $font-size-rem; // sass-lint:disable no-duplicate-properties
+        @if $govuk-typography-use-rem {
+          font-size: $font-size-rem; // sass-lint:disable no-duplicate-properties
+        }
         line-height: $line-height;
       }
     }
