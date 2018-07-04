@@ -28,7 +28,7 @@ environment.addGlobal('isReadme', 'true')
 environment.addFilter('componentNameToMacroName', helperFunctions.componentNameToMacroName)
 
 gulp.task('generate:readme', () => {
-  return gulp.src([configPath.components + '**/index.njk'])
+  return gulp.src([configPath.components + '**/README.njk'])
     .pipe(data(file => {
       objectData.componentName = path.dirname(file.path).split(path.sep).slice(-1).toString()
       objectData.componentPath = objectData.componentName
@@ -51,7 +51,6 @@ gulp.task('generate:readme', () => {
       gfm: true // github flavoured markdown https://github.com/domchristie/to-markdown#gfm-boolean
     }))
     .pipe(rename(path => {
-      path.basename = 'README'
       path.extname = '.md'
     }))
     .pipe(gulp.dest(configPath.components))

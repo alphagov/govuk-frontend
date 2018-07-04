@@ -78,7 +78,7 @@ This task will:
 **`gulp generate:readme`**
 
   This task will:
-  - compile all `src/components/componentName/index.njk` files to README markdown files
+  - compile all `src/components/componentName/README.njk` files to README.md markdown files
   These files inherit view templates from `src/views`
 
 **`gulp compile:components`**
