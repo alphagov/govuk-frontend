@@ -71,14 +71,15 @@ which describes how we prefer git history and commit messages to read.
 
 If you open a GitHub pull request on this repo, please update `CHANGELOG` to reflect your contribution.
 
-Add your entry under `Unreleased` as `Breaking changes`, `New features`, `Fixes` or `Internal`.
+Add your entry under `Unreleased` as `Breaking changes`, `New features`, `Fixes`.
+
+Internal changes to the project that are not part of the public API do not need changelog entries, for example fixing the CI build server.
 
 These sections follow [semantic versioning](https://semver.org/), where:
 
 - `Breaking changes` corresponds to a `major` (1.X.X) change.
 - `New features` corresponds to a `minor` (X.1.X) change.
 - `Fixes` corresponds to a `patch` (X.X.1) change.
-- `Internal` corresponds to changes to the project that are not part of the public API, for example fixing the CI build server.
 
 See the [`CHANGELOG_TEMPLATE.md`](/docs/contribution/CHANGELOG_TEMPLATE.md) for an example for how this looks.
 
