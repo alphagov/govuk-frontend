@@ -23,7 +23,7 @@ function getDataForFile (file) {
 var environment = new nunjucks.Environment(
   new nunjucks.FileSystemLoader([configPath.views, configPath.layouts, configPath.components])
 )
-environment.addGlobal('isReadme', 'true')
+
 // make the function above available as a filter for all templates
 environment.addFilter('componentNameToMacroName', helperFunctions.componentNameToMacroName)
 
