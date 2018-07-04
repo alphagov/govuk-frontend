@@ -213,9 +213,9 @@ Find out when to use the radios component in your service in the [GOV.UK Design 
       ]
     }) }}
 
-### Radios with html
+### Radios with legend as page heading
 
-[Preview the Radios with html example](http://govuk-frontend-review.herokuapp.com/components/radios/with-html/preview)
+[Preview the Radios with legend as page heading example](http://govuk-frontend-review.herokuapp.com/components/radios/with-legend-as-page-heading/preview)
 
 #### Markup
 
@@ -223,8 +223,10 @@ Find out when to use the radios component in your service in the [GOV.UK Design 
 
       <fieldset class="govuk-fieldset" aria-describedby="housing-act-hint">
 
-      <legend class="govuk-fieldset__legend">
-        <h1 class="govuk-heading-l">Which part of the Housing Act was your licence issued under?</h1>
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <h1 class="govuk-fieldset__heading">
+          Which part of the Housing Act was your licence issued under?
+        </h1>
       </legend>
 
       <span id="housing-act-hint" class="govuk-hint">
@@ -261,7 +263,76 @@ Find out when to use the radios component in your service in the [GOV.UK Design 
       "name": "housing-act",
       "fieldset": {
         "legend": {
-          "html": "<h1 class=\"govuk-heading-l\">Which part of the Housing Act was your licence issued under?</h1>"
+          "text": "Which part of the Housing Act was your licence issued under?",
+          "classes": "govuk-fieldset__legend--l",
+          "isPageHeading": true
+        }
+      },
+      "hint": {
+        "text": "Select one of the options below."
+      },
+      "items": [
+        {
+          "value": "part-2",
+          "html": "<span class=\"govuk-heading-s govuk-!-margin-bottom-1\">Part 2 of the Housing Act 2004</span> For properties that are 3 or more stories high and occupied by 5 or more people"
+        },
+        {
+          "value": "part-3",
+          "html": "<span class=\"govuk-heading-s govuk-!-margin-bottom-1\">Part 3 of the Housing Act 2004</span> For properties that are within a geographical area defined by a local council"
+        }
+      ]
+    }) }}
+
+### Radios with a medium legend
+
+[Preview the Radios with a medium legend example](http://govuk-frontend-review.herokuapp.com/components/radios/with-a-medium-legend/preview)
+
+#### Markup
+
+    <div class="govuk-form-group">
+
+      <fieldset class="govuk-fieldset" aria-describedby="housing-act-hint">
+
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+        Which part of the Housing Act was your licence issued under?
+      </legend>
+
+      <span id="housing-act-hint" class="govuk-hint">
+        Select one of the options below.
+      </span>
+
+      <div class="govuk-radios">
+
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="housing-act-1" name="housing-act" type="radio" value="part-2">
+          <label class="govuk-label govuk-radios__label" for="housing-act-1">
+            <span class="govuk-heading-s govuk-!-margin-bottom-1">Part 2 of the Housing Act 2004</span> For properties that are 3 or more stories high and occupied by 5 or more people
+          </label>
+        </div>
+
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="housing-act-2" name="housing-act" type="radio" value="part-3">
+          <label class="govuk-label govuk-radios__label" for="housing-act-2">
+            <span class="govuk-heading-s govuk-!-margin-bottom-1">Part 3 of the Housing Act 2004</span> For properties that are within a geographical area defined by a local council
+          </label>
+        </div>
+
+      </div>
+      </fieldset>
+
+    </div>
+
+#### Macro
+
+    {% from "radios/macro.njk" import govukRadios %}
+
+    {{ govukRadios({
+      "idPrefix": "housing-act",
+      "name": "housing-act",
+      "fieldset": {
+        "legend": {
+          "text": "Which part of the Housing Act was your licence issued under?",
+          "classes": "govuk-fieldset__legend--m"
         }
       },
       "hint": {

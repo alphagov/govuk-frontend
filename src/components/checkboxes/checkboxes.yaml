@@ -55,14 +55,35 @@ examples:
         text: Blue
         disabled: true
 
-- name: with html in legend
+- name: with legend as a page heading
   data:
     name: waste
     fieldset:
       legend:
-        html: <h3 class="govuk-heading-m">Which types of waste do you transport regularly?</h3>
+        text: Which types of waste do you transport regularly?
+        classes: govuk-fieldset__legend--l
+        isPageHeading: true
     hint:
       text: Select all that apply
+    items:
+      - value: animal
+        text: Waste from animal carcasses
+      - value: mines
+        text: Waste from mines or quarries
+      - value: farm
+        text: Farm or agricultural waste
+
+- name: with a medium legend
+  data:
+    name: waste
+    fieldset:
+      legend:
+        text: Which types of waste do you transport regularly?
+        classes: govuk-fieldset__legend--m
+    hint:
+      text: Select all that apply
+    errorMessage:
+      text: Select which types of waste you transport regularly
     items:
       - value: animal
         text: Waste from animal carcasses
@@ -112,7 +133,7 @@ examples:
       text: Please select an option
     fieldset:
       legend:
-        html: <h3 class="govuk-heading-m">Which types of waste do you transport regularly?</h3>
+        text: Which types of waste do you transport regularly?
     items:
       - value: animal
         text: Waste from animal carcasses
@@ -121,13 +142,52 @@ examples:
       - value: farm
         text: Farm or agricultural waste
 
+- name: with very long option text
+  readme: false
+  data:
+    name: waste
+    hint:
+      text:
+        Nullam id dolor id nibh ultricies vehicula ut id elit.
+    errorMessage:
+      text:
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    fieldset:
+      legend:
+        text:
+          Maecenas faucibus mollis interdum?
+    items:
+      - value: nullam
+        text:
+          Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu leo
+          quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
+          Maecenas faucibus mollis interdum. Donec id elit non mi porta gravida
+          at eget metus.
+      - value: aenean
+        text:
+          Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis
+          vestibulum. Donec sed odio dui. Duis mollis, est non commodo luctus,
+          nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cum sociis
+          natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+          mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam
+          venenatis vestibulum. Cras mattis consectetur purus sit amet
+          fermentum.
+      - value: fusce
+        text:
+          Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
+          nibh, ut fermentum massa justo sit amet risus. Etiam porta sem
+          malesuada magna mollis euismod. Praesent commodo cursus magna, vel
+          scelerisque nisl consectetur et. Etiam porta sem malesuada magna
+          mollis euismod. Etiam porta sem malesuada magna mollis euismod.
+          Donec sed odio dui. Sed posuere consectetur est at lobortis.
+
 - name: with conditional items
   readme: false
   data:
     idPrefix: how-contacted
     fieldset:
       legend:
-        html: <h3 class="govuk-heading-m">How do you want to be contacted?</h3>
+        text: How do you want to be contacted?
     items:
       - value: email
         text: Email
@@ -154,7 +214,7 @@ examples:
     idPrefix: how-contacted-checked
     fieldset:
       legend:
-        html: <h3 class="govuk-heading-m">How do you want to be contacted?</h3>
+        text: How do you want to be contacted?
     items:
     - value: email
       text: Email

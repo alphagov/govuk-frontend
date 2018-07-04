@@ -81,7 +81,7 @@ Find out when to use the input component in your service in the [GOV.UK Design S
       </label>
 
       <span id="input-with-error-message-hint" class="govuk-hint">
-        It’s on your <i>National Insurance card</i>, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’.
+        It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’.
       </span>
 
       <span id="input-with-error-message-error" class="govuk-error-message">
@@ -100,7 +100,7 @@ Find out when to use the input component in your service in the [GOV.UK Design S
         "text": "National Insurance number"
       },
       "hint": {
-        "html": "It’s on your <i>National Insurance card</i>, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’."
+        "text": "It’s on your National Insurance card, benefit letter, payslip or P60\. For example, ‘QQ 12 34 56 C’."
       },
       "id": "input-with-error-message",
       "name": "test-name-3",
