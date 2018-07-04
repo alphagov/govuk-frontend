@@ -52,6 +52,11 @@
   of text
   ([PR #856](https://github.com/alphagov/govuk-frontend/pull/856))
 
+- Add customised colours handling for warning text
+
+  By adding a border to this component, when a user customises their colour settings
+  they will still see a circle even if the background is removed.
+  ([PR #852](https://github.com/alphagov/govuk-frontend/pull/852))
 
 🏠 Internal:
 
