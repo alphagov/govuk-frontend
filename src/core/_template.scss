@@ -4,13 +4,9 @@
 
   // Applied to the <html> element
   .govuk-template {
-    // Set the overall page background color to the same colour as used by the
+    // Set the overall page background colour to the same colour as used by the
     // footer to give the illusion of a long footer.
     background-color: $govuk-canvas-background-colour;
-
-    // Set the root font-size so that we can define our font-sizes in rem
-    // throughout
-    font-size: $govuk-root-font-size;
   }
 
   // Applied to the <body> element
