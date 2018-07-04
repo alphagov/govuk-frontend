@@ -24,12 +24,12 @@ gulp.task('update-assets-version', () => {
     taskArguments.destination + '/govuk-frontend-ie8.min.css',
     taskArguments.destination + '/govuk-frontend.min.js'
   ])
-  .pipe(vinylPaths(del))
-  .pipe(gulpif(isDist,
-    rename(obj => {
-      obj.basename = obj.basename.replace(/(govuk.*)(?=\.min)/g, '$1-' + pkg.version)
-      return obj
-    })
-  ))
-  .pipe(gulp.dest(taskArguments.destination + '/'))
+    .pipe(vinylPaths(del))
+    .pipe(gulpif(isDist,
+      rename(obj => {
+        obj.basename = obj.basename.replace(/(govuk.*)(?=\.min)/g, '$1-' + pkg.version)
+        return obj
+      })
+    ))
+    .pipe(gulp.dest(taskArguments.destination + '/'))
 })

@@ -48,8 +48,8 @@ describe('grid system', () => {
         `
 
       await expect(sassRender({ data: sass, ...sassConfig }))
-       .rejects
-       .toThrow('Unknown grid width `seven-fifths`')
+        .rejects
+        .toThrow('Unknown grid width `seven-fifths`')
     })
   })
 
