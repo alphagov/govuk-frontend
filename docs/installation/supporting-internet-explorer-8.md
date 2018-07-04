@@ -4,15 +4,37 @@ If you are including GOV.UK Frontend as part of your application's stylesheets
 then you will need to do some additional work to support Internet Explorer 8
 (IE8).
 
-1. [Generate an IE8-specific stylesheet](#bundling-an-ie8-specific-stylesheet)
-2. [Transform the IE8 stylesheet using oldie](#transforming-the-generated-stylesheet-using-oldie)
-3. [Include the IE8 stylesheet in your project](#including-the-ie8-stylesheet-in-your-project)
+1. [Include an HTML5 shiv](#include-an-html5-shiv)
+2. [Generate an IE8-specific stylesheet](#bundling-an-ie8-specific-stylesheet)
+3. [Transform the IE8 stylesheet using oldie](#transforming-the-generated-stylesheet-using-oldie)
+4. [Include the IE8 stylesheet in your project](#including-the-ie8-stylesheet-in-your-project)
 
 Once you have completed these steps, you will be able to [write CSS that targets
 IE8 in your own application styles](#writing-styles-that-target-ie8).
 
 If you are using the distributed versions of GOV.UK Frontend that already
-include an IE8-specific stylesheet then you can include that in your project.
+include an IE8-specific stylesheet then you can include that in your project,
+allowing you to skip steps 2 and 3.
+
+## Include an HTML5 shiv
+
+You will need to to include an [HTML5 shiv](https://github.com/aFarkas/html5shiv)
+which allows the 'semantic' HTML elements introduced in HTML5 to be used in
+older browsers which do not natively support them.
+
+These elements include `article`, `aside`, `figcaption`, `figure`, `footer`,
+`header`, `main`, `mark`, `nav`, `section`, and `time`.
+
+To improve performance for users of modern browsers, you can wrap the shiv
+include with conditional comments that target only the browsers that need it:
+
+```html
+<!--[if lt IE 9]>
+  <script src="/path/tohtml5shiv.js"></script>
+<![endif]-->
+```
+
+Note that some libraries such as Modernizr may already include html5shiv.
 
 ## Bundling an IE8-specific stylesheet
 
