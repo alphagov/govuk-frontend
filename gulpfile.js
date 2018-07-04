@@ -45,9 +45,10 @@ gulp.task('copy:assets', () => {
 // --------------------------------------
 gulp.task('test', cb => {
   runsequence(
-              'scss:lint',
-              'scss:compile',
-              cb)
+    'scss:lint',
+    'scss:compile',
+    cb
+  )
 })
 
 // Copy assets task for local & heroku --
@@ -55,21 +56,25 @@ gulp.task('test', cb => {
 // taskArguments.destination (public)
 // --------------------------------------
 gulp.task('copy-assets', cb => {
-  runsequence('styles',
-              'scripts',
-            cb)
+  runsequence(
+    'styles',
+    'scripts',
+    cb
+  )
 })
 
 // Dev task -----------------------------
 // Runs a sequence of task on start
 // --------------------------------------
 gulp.task('dev', cb => {
-  runsequence('clean',
-              'generate:readme',
-              'copy-assets',
-              'sassdoc',
-              'serve',
-              cb)
+  runsequence(
+    'clean',
+    'generate:readme',
+    'copy-assets',
+    'sassdoc',
+    'serve',
+    cb
+  )
 })
 
 // Serve task ---------------------------
@@ -88,19 +93,22 @@ gulp.task('serve', ['watch'], () => {
 // -------------------------------------
 gulp.task('build:package', cb => {
   runsequence(
-              'clean',
-              'copy-files',
-              'js:compile',
-              'generate:readme',
-              cb)
+    'clean',
+    'copy-files',
+    'js:compile',
+    'generate:readme',
+    cb
+  )
 })
 gulp.task('build:dist', cb => {
-  runsequence('clean',
-              'copy-assets',
-              'copy:assets',
-              'generate:readme',
-              'update-assets-version',
-              cb)
+  runsequence(
+    'clean',
+    'copy-assets',
+    'copy:assets',
+    'generate:readme',
+    'update-assets-version',
+    cb
+  )
 })
 
 // Default task -------------------------

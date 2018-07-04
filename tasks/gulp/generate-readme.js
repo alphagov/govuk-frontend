@@ -29,30 +29,30 @@ environment.addFilter('componentNameToMacroName', helperFunctions.componentNameT
 
 gulp.task('generate:readme', () => {
   return gulp.src([configPath.components + '**/index.njk'])
-  .pipe(data(file => {
-    objectData.componentName = path.dirname(file.path).split(path.sep).slice(-1).toString()
-    objectData.componentPath = objectData.componentName
-    try {
-      let componentPath = path.join(configPath.components, objectData.componentName, `${objectData.componentName}.yaml`)
-      let componentData = yaml.safeLoad(fs.readFileSync(componentPath, 'utf8'), {json: true})
-      objectData.componentData = componentData
-      return componentData
-    } catch (e) {
-      console.log('ENOENT: no such file or directory: ', file)
-    }
-  }))
-  .pipe(data(getDataForFile))
-  .pipe(gulpNunjucks.compile('', {
-    trimBlocks: true, // automatically remove trailing newlines from a block/tag
-    lstripBlocks: true, // automatically remove leading whitespace from a block/tag
-    env: environment
-  }))
-  .pipe(toMarkdown({
-    gfm: true // github flavoured markdown https://github.com/domchristie/to-markdown#gfm-boolean
-  }))
-  .pipe(rename(path => {
-    path.basename = 'README'
-    path.extname = '.md'
-  }))
-  .pipe(gulp.dest(configPath.components))
+    .pipe(data(file => {
+      objectData.componentName = path.dirname(file.path).split(path.sep).slice(-1).toString()
+      objectData.componentPath = objectData.componentName
+      try {
+        let componentPath = path.join(configPath.components, objectData.componentName, `${objectData.componentName}.yaml`)
+        let componentData = yaml.safeLoad(fs.readFileSync(componentPath, 'utf8'), {json: true})
+        objectData.componentData = componentData
+        return componentData
+      } catch (e) {
+        console.log('ENOENT: no such file or directory: ', file)
+      }
+    }))
+    .pipe(data(getDataForFile))
+    .pipe(gulpNunjucks.compile('', {
+      trimBlocks: true, // automatically remove trailing newlines from a block/tag
+      lstripBlocks: true, // automatically remove leading whitespace from a block/tag
+      env: environment
+    }))
+    .pipe(toMarkdown({
+      gfm: true // github flavoured markdown https://github.com/domchristie/to-markdown#gfm-boolean
+    }))
+    .pipe(rename(path => {
+      path.basename = 'README'
+      path.extname = '.md'
+    }))
+    .pipe(gulp.dest(configPath.components))
 })

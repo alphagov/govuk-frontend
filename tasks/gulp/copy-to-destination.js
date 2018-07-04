@@ -20,10 +20,10 @@ gulp.task('copy-files', () => {
     '!' + configPaths.components + '**/__snapshots__/**',
     '!' + configPaths.components + '**/__snapshots__/'
   ])
-  .pipe(scssFiles)
-  .pipe(postcss([
-    autoprefixer
-  ], {syntax: require('postcss-scss')}))
-  .pipe(scssFiles.restore)
-  .pipe(gulp.dest(taskArguments.destination + '/'))
+    .pipe(scssFiles)
+    .pipe(postcss([
+      autoprefixer
+    ], {syntax: require('postcss-scss')}))
+    .pipe(scssFiles.restore)
+    .pipe(gulp.dest(taskArguments.destination + '/'))
 })
