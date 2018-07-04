@@ -10,9 +10,9 @@ Find out when to use the textarea component in your service in the [GOV.UK Desig
 
 ## Quick start examples
 
-### Component default
+### Textarea
 
-[Preview the textarea component](http://govuk-frontend-review.herokuapp.com/components/textarea/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/textarea/preview)
 
 #### Markup
 
@@ -45,7 +45,7 @@ Find out when to use the textarea component in your service in the [GOV.UK Desig
 
 ### Textarea with error message
 
-[Preview the Textarea with error message example](http://govuk-frontend-review.herokuapp.com/components/textarea/with-error-message/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/textarea/with-error-message/preview)
 
 #### Markup
 
@@ -78,7 +78,7 @@ Find out when to use the textarea component in your service in the [GOV.UK Desig
 
 ### Textarea with default value
 
-[Preview the Textarea with default value example](http://govuk-frontend-review.herokuapp.com/components/textarea/with-default-value/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/textarea/with-default-value/preview)
 
 #### Markup
 
@@ -108,7 +108,7 @@ Find out when to use the textarea component in your service in the [GOV.UK Desig
 
 ### Textarea with custom rows
 
-[Preview the Textarea with custom rows example](http://govuk-frontend-review.herokuapp.com/components/textarea/with-custom-rows/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/textarea/with-custom-rows/preview)
 
 #### Markup
 
@@ -135,7 +135,7 @@ Find out when to use the textarea component in your service in the [GOV.UK Desig
 
 ### Textarea with label as page heading
 
-[Preview the Textarea with label as page heading example](http://govuk-frontend-review.herokuapp.com/components/textarea/with-label-as-page-heading/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/textarea/with-label-as-page-heading/preview)
 
 #### Markup
 

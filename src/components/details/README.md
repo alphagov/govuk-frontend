@@ -10,9 +10,9 @@ Find out when to use the details component in your service in the [GOV.UK Design
 
 ## Quick start examples
 
-### Component default
+### Details
 
-[Preview the details component](http://govuk-frontend-review.herokuapp.com/components/details/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/details/preview)
 
 #### Markup
 
@@ -38,7 +38,7 @@ Find out when to use the details component in your service in the [GOV.UK Design
 
 ### Details expanded
 
-[Preview the Details expanded example](http://govuk-frontend-review.herokuapp.com/components/details/expanded/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/details/expanded/preview)
 
 #### Markup
 
@@ -66,7 +66,7 @@ Find out when to use the details component in your service in the [GOV.UK Design
 
 ### Details with html
 
-[Preview the Details with html example](http://govuk-frontend-review.herokuapp.com/components/details/with-html/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/details/with-html/preview)
 
 #### Markup
 

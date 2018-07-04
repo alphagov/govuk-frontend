@@ -10,9 +10,9 @@ Find out when to use the fieldset component in your service in the [GOV.UK Desig
 
 ## Quick start examples
 
-### Component default
+### Fieldset
 
-[Preview the fieldset component](http://govuk-frontend-review.herokuapp.com/components/fieldset/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/fieldset/preview)
 
 #### Markup
 
@@ -36,7 +36,7 @@ Find out when to use the fieldset component in your service in the [GOV.UK Desig
 
 ### Fieldset as page heading
 
-[Preview the Fieldset as page heading example](http://govuk-frontend-review.herokuapp.com/components/fieldset/as-page-heading/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/fieldset/as-page-heading/preview)
 
 #### Markup
 

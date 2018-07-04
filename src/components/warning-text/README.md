@@ -10,9 +10,9 @@ Find out when to use the warning text component in your service in the [GOV.UK D
 
 ## Quick start examples
 
-### Component default
+### Warning text
 
-[Preview the warning text component](http://govuk-frontend-review.herokuapp.com/components/warning-text/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/warning-text/preview)
 
 #### Markup
 

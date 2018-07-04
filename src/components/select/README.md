@@ -10,9 +10,9 @@ Find out when to use the select component in your service in the [GOV.UK Design 
 
 ## Quick start examples
 
-### Component default
+### Select
 
-[Preview the select component](http://govuk-frontend-review.herokuapp.com/components/select/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/select/preview)
 
 #### Markup
 
@@ -62,7 +62,7 @@ Find out when to use the select component in your service in the [GOV.UK Design 
 
 ### Select with hint text and error message
 
-[Preview the Select with hint text and error message example](http://govuk-frontend-review.herokuapp.com/components/select/with-hint-text-and-error-message/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/select/with-hint-text-and-error-message/preview)
 
 #### Markup
 
@@ -124,7 +124,7 @@ Find out when to use the select component in your service in the [GOV.UK Design 
 
 ### Select with label as page heading
 
-[Preview the Select with label as page heading example](http://govuk-frontend-review.herokuapp.com/components/select/with-label-as-page-heading/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/select/with-label-as-page-heading/preview)
 
 #### Markup
 

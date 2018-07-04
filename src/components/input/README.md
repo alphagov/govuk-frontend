@@ -10,9 +10,9 @@ Find out when to use the input component in your service in the [GOV.UK Design S
 
 ## Quick start examples
 
-### Component default
+### Input
 
-[Preview the input component](http://govuk-frontend-review.herokuapp.com/components/input/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/input/preview)
 
 #### Markup
 
@@ -38,7 +38,7 @@ Find out when to use the input component in your service in the [GOV.UK Design S
 
 ### Input with hint text
 
-[Preview the Input with hint text example](http://govuk-frontend-review.herokuapp.com/components/input/with-hint-text/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/input/with-hint-text/preview)
 
 #### Markup
 
@@ -71,7 +71,7 @@ Find out when to use the input component in your service in the [GOV.UK Design S
 
 ### Input with error message
 
-[Preview the Input with error message example](http://govuk-frontend-review.herokuapp.com/components/input/with-error-message/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/input/with-error-message/preview)
 
 #### Markup
 
@@ -111,7 +111,7 @@ Find out when to use the input component in your service in the [GOV.UK Design S
 
 ### Input with width-10 class
 
-[Preview the Input with width-10 class example](http://govuk-frontend-review.herokuapp.com/components/input/with-width-10-class/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/input/with-width-10-class/preview)
 
 #### Markup
 
@@ -145,7 +145,7 @@ Find out when to use the input component in your service in the [GOV.UK Design S
 
 ### Input with width-20 class
 
-[Preview the Input with width-20 class example](http://govuk-frontend-review.herokuapp.com/components/input/with-width-20-class/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/input/with-width-20-class/preview)
 
 #### Markup
 
@@ -179,7 +179,7 @@ Find out when to use the input component in your service in the [GOV.UK Design S
 
 ### Input with width-30 class
 
-[Preview the Input with width-30 class example](http://govuk-frontend-review.herokuapp.com/components/input/with-width-30-class/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/input/with-width-30-class/preview)
 
 #### Markup
 
@@ -213,7 +213,7 @@ Find out when to use the input component in your service in the [GOV.UK Design S
 
 ### Input with label as page heading
 
-[Preview the Input with label as page heading example](http://govuk-frontend-review.herokuapp.com/components/input/with-label-as-page-heading/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/input/with-label-as-page-heading/preview)
 
 #### Markup
 

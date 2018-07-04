@@ -10,9 +10,9 @@ Find out when to use the skip link component in your service in the [GOV.UK Desi
 
 ## Quick start examples
 
-### Component default
+### Skip link
 
-[Preview the skip link component](http://govuk-frontend-review.herokuapp.com/components/skip-link/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/skip-link/preview)
 
 #### Markup
 

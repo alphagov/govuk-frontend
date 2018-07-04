@@ -6,9 +6,9 @@ Use bordered inset text to draw attention to important content on the page.
 
 ## Quick start examples
 
-### Component default
+### Inset text
 
-[Preview the inset text component](http://govuk-frontend-review.herokuapp.com/components/inset-text/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/inset-text/preview)
 
 #### Markup
 
@@ -26,7 +26,7 @@ Use bordered inset text to draw attention to important content on the page.
 
 ### Inset text with html
 
-[Preview the Inset text with html example](http://govuk-frontend-review.herokuapp.com/components/inset-text/with-html/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/inset-text/with-html/preview)
 
 #### Markup
 

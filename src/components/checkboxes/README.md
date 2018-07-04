@@ -10,9 +10,9 @@ Find out when to use the checkboxes component in your service in the [GOV.UK Des
 
 ## Quick start examples
 
-### Component default
+### Checkboxes
 
-[Preview the checkboxes component](http://govuk-frontend-review.herokuapp.com/components/checkboxes/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/checkboxes/preview)
 
 #### Markup
 
@@ -89,7 +89,7 @@ Find out when to use the checkboxes component in your service in the [GOV.UK Des
 
 ### Checkboxes with id and name
 
-[Preview the Checkboxes with id and name example](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-id-and-name/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-id-and-name/preview)
 
 #### Markup
 
@@ -157,7 +157,7 @@ Find out when to use the checkboxes component in your service in the [GOV.UK Des
 
 ### Checkboxes with disabled item
 
-[Preview the Checkboxes with disabled item example](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-disabled-item/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-disabled-item/preview)
 
 #### Markup
 
@@ -215,7 +215,7 @@ Find out when to use the checkboxes component in your service in the [GOV.UK Des
 
 ### Checkboxes with legend as a page heading
 
-[Preview the Checkboxes with legend as a page heading example](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-legend-as-a-page-heading/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-legend-as-a-page-heading/preview)
 
 #### Markup
 
@@ -295,7 +295,7 @@ Find out when to use the checkboxes component in your service in the [GOV.UK Des
 
 ### Checkboxes with a medium legend
 
-[Preview the Checkboxes with a medium legend example](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-a-medium-legend/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-a-medium-legend/preview)
 
 #### Markup
 
@@ -379,7 +379,7 @@ Find out when to use the checkboxes component in your service in the [GOV.UK Des
 
 ### Checkboxes without fieldset
 
-[Preview the Checkboxes without fieldset example](http://govuk-frontend-review.herokuapp.com/components/checkboxes/without-fieldset/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/checkboxes/without-fieldset/preview)
 
 #### Markup
 
@@ -436,7 +436,7 @@ Find out when to use the checkboxes component in your service in the [GOV.UK Des
 
 ### Checkboxes with all fieldset attributes
 
-[Preview the Checkboxes with all fieldset attributes example](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-all-fieldset-attributes/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-all-fieldset-attributes/preview)
 
 #### Markup
 
@@ -525,7 +525,7 @@ Find out when to use the checkboxes component in your service in the [GOV.UK Des
 
 ### Checkboxes with error message
 
-[Preview the Checkboxes with error message example](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-error-message/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-error-message/preview)
 
 #### Markup
 
