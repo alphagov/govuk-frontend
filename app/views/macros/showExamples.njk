@@ -1,4 +1,4 @@
-{% from "loadComponentTemplate.njk" import loadComponentTemplate %}
+{% from "macros/loadComponentTemplate.njk" import loadComponentTemplate %}
 {% from "details/macro.njk" import govukDetails %}
 
 {% macro showExamples(componentNameUrl, componentNameText, componentData) %}
@@ -24,7 +24,7 @@
     {% if isReadme %}
       <h3>{{ itemNameText }}</h3>
       <a href="http://govuk-frontend-review.herokuapp.com{{ previewLink }}">{{ previewText }}</a>
-      {% include "code.njk" %}
+      {% include "partials/code.njk" %}
     {% else %}
       <section aria-labelledby="heading-{{ itemNameUrl }}" class="govuk-!-margin-bottom-9">
         <div class="govuk-width-container">
@@ -52,7 +52,7 @@
         </div>
 
         <div class="govuk-width-container">
-          {% set detailsHtml %}{% include "code.njk" %}{% endset %}
+          {% set detailsHtml %}{% include "partials/code.njk" %}{% endset %}
           {{- govukDetails({ summaryText: "Code", html: detailsHtml }) -}}
         </div>
       </section>

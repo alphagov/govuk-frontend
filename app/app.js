@@ -15,7 +15,7 @@ const configPaths = require('../config/paths.json')
 // Set up views
 const appViews = [
   configPaths.layouts,
-  configPaths.partials,
+  configPaths.views,
   configPaths.examples,
   configPaths.components,
   configPaths.src

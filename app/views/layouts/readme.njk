@@ -22,7 +22,7 @@
 <h2>Quick start examples</h2>
 <p>{% block componentHtmlUsageWriteup %}{% endblock %}</p>
 
-{% from "showExamples.njk" import showExamples %}
+{% from "macros/showExamples.njk" import showExamples %}
 {% block examples %}
 {{ showExamples(componentName, componentNameHuman, componentData) }}
 {% endblock %}
