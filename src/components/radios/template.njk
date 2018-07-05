@@ -3,6 +3,14 @@
 {% from "../hint/macro.njk" import govukHint %}
 {% from "../label/macro.njk" import govukLabel %}
 
+{% macro renderComponent(component, params) %}
+    {% set componentName = component %}
+    {% set macroName = 'govuk' + componentName | capitalize %}
+    {% set macroParams = params %}
+    {% set includePath = '../'+ componentName +'/template.njk' %}
+    {% include includePath %}
+{% endmacro %}
+
 {#- If an id 'prefix' is not passed, fall back to using the name attribute
    instead. We need this for error messages and hints as well -#}
 {% set idPrefix = params.idPrefix if params.idPrefix else params.name %}
@@ -68,7 +76,9 @@
     {% endfor %}
   </div>
 {% endset -%}
-
+{% if params.component -%}
+  {{ renderComponent(params.component.name, params.component.params) }}
+{% endif %}
 <div class="govuk-form-group {%- if params.errorMessage %} govuk-form-group--error{% endif %}">
 {% if params.fieldset %}
   {% call govukFieldset({
