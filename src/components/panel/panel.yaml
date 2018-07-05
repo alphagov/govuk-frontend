@@ -1,5 +1,10 @@
 examples:
 - name: default
   data:
+    titleHtml: Application complete
+    text: 'Your reference number: HDJ2123F'
+- name: custom heading level
+  data:
     titleText: Application complete
+    headingLevel: 1
     text: 'Your reference number: HDJ2123F'
