@@ -64,6 +64,10 @@
   they will still see a circle even if the background is removed.
   ([PR #852](https://github.com/alphagov/govuk-frontend/pull/852))
 
+- Fixes a bug where the phase banner incorrectly uses a font-size of 19px when
+  global styles are enabled
+  ([PR #877}])https://github.com/alphagov/govuk-frontend/pull/877
+
 🏠 Internal:
 
 - Fix Design System url in package READMEs and review app
