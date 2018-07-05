@@ -6,9 +6,9 @@ Use hint text for supporting contextual help
 
 ## Quick start examples
 
-### Component default
+### Hint
 
-[Preview the hint component](http://govuk-frontend-review.herokuapp.com/components/hint/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/hint/preview)
 
 #### Markup
 
@@ -28,7 +28,7 @@ Use hint text for supporting contextual help
 
 ### Hint with html
 
-[Preview the Hint with html example](http://govuk-frontend-review.herokuapp.com/components/hint/with-html/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/hint/with-html/preview)
 
 #### Markup
 

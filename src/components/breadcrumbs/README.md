@@ -10,9 +10,9 @@ Find out when to use the breadcrumbs component in your service in the [GOV.UK De
 
 ## Quick start examples
 
-### Component default
+### Breadcrumbs
 
-[Preview the breadcrumbs component](http://govuk-frontend-review.herokuapp.com/components/breadcrumbs/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/breadcrumbs/preview)
 
 #### Markup
 
@@ -49,7 +49,7 @@ Find out when to use the breadcrumbs component in your service in the [GOV.UK De
 
 ### Breadcrumbs with one level
 
-[Preview the Breadcrumbs with one level example](http://govuk-frontend-review.herokuapp.com/components/breadcrumbs/with-one-level/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/breadcrumbs/with-one-level/preview)
 
 #### Markup
 
@@ -78,7 +78,7 @@ Find out when to use the breadcrumbs component in your service in the [GOV.UK De
 
 ### Breadcrumbs with multiple levels
 
-[Preview the Breadcrumbs with multiple levels example](http://govuk-frontend-review.herokuapp.com/components/breadcrumbs/with-multiple-levels/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/breadcrumbs/with-multiple-levels/preview)
 
 #### Markup
 
@@ -131,7 +131,7 @@ Find out when to use the breadcrumbs component in your service in the [GOV.UK De
 
 ### Breadcrumbs without the home section
 
-[Preview the Breadcrumbs without the home section example](http://govuk-frontend-review.herokuapp.com/components/breadcrumbs/without-the-home-section/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/breadcrumbs/without-the-home-section/preview)
 
 #### Markup
 
@@ -168,7 +168,7 @@ Find out when to use the breadcrumbs component in your service in the [GOV.UK De
 
 ### Breadcrumbs with last breadcrumb as current page
 
-[Preview the Breadcrumbs with last breadcrumb as current page example](http://govuk-frontend-review.herokuapp.com/components/breadcrumbs/with-last-breadcrumb-as-current-page/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/breadcrumbs/with-last-breadcrumb-as-current-page/preview)
 
 #### Markup
 

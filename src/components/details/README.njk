@@ -1,18 +1,12 @@
-{% if isReadme %}
-  {% set parentTemplate = "readme.njk"  %}
-{% else %}
-  {% set parentTemplate = "component.njk"  %}
-{% endif %}
-
-{% extends parentTemplate %}
+{% extends "readme.njk" %}
 
 {# Commented out blocks below inherit from views/component.njk #}
 
 {# componentName #}
 {% block componentDescription %}
-  Component to show a red error message - used for form validation.
-  Use inside a label or legend.
+  Component for conditionally revealing content, using the details HTML element.
 {% endblock %}
+
 {# examples #}
 
 {# override link to design system here if it's different to base url + componentName #}
@@ -39,16 +33,30 @@
   'rows' : [
     [
       {
+        text: 'summaryText (or) summaryHtml'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'Yes'
+      },
+      {
+        text: 'Text or HTML to use within the summary element (the visible part of the details element). If `summaryHtml` is provided, the `summaryText` argument will be ignored.'
+      }
+    ],
+    [
+      {
         text: 'text (or) html'
       },
       {
         text: 'string'
       },
       {
-        text: 'No'
+        text: 'Yes'
       },
       {
-        text: 'Text to use within the error message. If `html` is provided, the `text` argument will be ignored.'
+        text: 'Text or HTML to use within the disclosed part of the details element. If `html` is provided, the `text` argument will be ignored.'
       }
     ],
     [
@@ -62,7 +70,21 @@
         text: 'No'
       },
       {
-        text: 'Optional id attribute to add to the error message span tag.'
+        text: 'Optional id to add to the details element.'
+      }
+    ],
+    [
+      {
+        text: 'open'
+      },
+      {
+        text: 'boolean'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'If true, details element will be expanded.'
       }
     ],
     [
@@ -76,7 +98,7 @@
         text: 'No'
       },
       {
-        text: 'Optional additional classes to add to the error message span tag.'
+        text: 'Optional additional classes to add to the details element.'
       }
     ],
     [
@@ -90,7 +112,7 @@
         text: 'No'
       },
       {
-        text: 'Any extra HTML attributes (for example data attributes) to add to the error message span tag'
+        text: 'Any extra HTML attributes (for example data attributes) to add to the details element.'
       }
     ]
   ]

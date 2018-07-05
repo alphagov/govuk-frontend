@@ -10,9 +10,9 @@ Find out when to use the error message component in your service in the [GOV.UK 
 
 ## Quick start examples
 
-### Component default
+### Error message
 
-[Preview the error message component](http://govuk-frontend-review.herokuapp.com/components/error-message/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/error-message/preview)
 
 #### Markup
 

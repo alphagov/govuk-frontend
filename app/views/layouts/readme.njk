@@ -1,10 +1,12 @@
+{% from "macros/showReadmeExamples.njk" import showReadmeExamples %}
+
 {% set nunjucksHtmlUsageMessage = '**If you’re using Nunjucks macros in production be aware that using  `html` arguments, or ones ending with `Html` can be a [security risk](https://en.wikipedia.org/wiki/Cross-site_scripting). More about it in the [Nunjucks documentation](https://mozilla.github.io/nunjucks/api.html#user-defined-templates-warning).**' %}
-{% set componentName = componentPath %}
-{% set componentNameHuman = componentName | replace("-", " ") %}
-{% set componentGuidanceLink = componentGuidanceLink | default('https://design-system.service.gov.uk/components/' + componentName)%}
+{% set componentSlug = componentPath %}
+{% set componentName = componentSlug | replace("-", " ") %}
+{% set componentGuidanceLink = componentGuidanceLink | default('https://design-system.service.gov.uk/components/' + componentSlug)%}
 <h1>
 {% block componentName %}
-{{ componentNameHuman | capitalize }}
+{{ componentName | capitalize }}
 {% endblock %}
 </h1>
 
@@ -15,16 +17,15 @@
 {% if componentGuidanceLink %}
 <h2>Guidance</h2>
 <p>
-  Find out when to use the {{ componentNameHuman }} component in your service in the <a href="{{- componentGuidanceLink -}}" class="govuk-link">GOV.UK Design System</a>.
+  Find out when to use the {{ componentName }} component in your service in the <a href="{{- componentGuidanceLink -}}" class="govuk-link">GOV.UK Design System</a>.
 </p>
 {% endif %}
 
 <h2>Quick start examples</h2>
 <p>{% block componentHtmlUsageWriteup %}{% endblock %}</p>
 
-{% from "showExamples.njk" import showExamples %}
 {% block examples %}
-{{ showExamples(componentName, componentNameHuman, componentData) }}
+{{ showReadmeExamples(componentSlug, componentName, componentData) }}
 {% endblock %}
 
 <h2>Requirements</h2>

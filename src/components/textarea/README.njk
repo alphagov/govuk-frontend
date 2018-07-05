@@ -1,16 +1,10 @@
-{% if isReadme %}
-  {% set parentTemplate = "readme.njk"  %}
-{% else %}
-  {% set parentTemplate = "component.njk"  %}
-{% endif %}
-
-{% extends parentTemplate %}
+{% extends "readme.njk" %}
 
 {# Commented out blocks below inherit from views/component.njk #}
 
 {# componentName #}
 {% block componentDescription %}
-  A component for entering dates, for example - date of birth.
+  A multi-line text field.
 {% endblock %}
 
 {# examples #}
@@ -21,7 +15,7 @@
 {% block componentArguments %}
 {{ govukTable({
   'firstCellIsHeader': true,
-  'head': [
+  'head' : [
     {
       text: 'Name'
     },
@@ -35,7 +29,8 @@
       text: 'Description'
     }
   ],
-  'rows': [
+  'rows' : [
+    
     [
       {
         text: 'id'
@@ -44,10 +39,24 @@
         text: 'string'
       },
       {
+        text: 'Yes'
+      },
+      {
+        text: 'The id of the textarea'
+      }
+    ],
+    [
+      {
+        text: 'describedBy'
+      },
+      {
+        text: 'string'
+      },
+      {
         text: 'No'
       },
       {
-        text: 'Optional id. This is used for the main component and to compose id attribute for each item.'
+        text: 'Text or element id to add to the `aria-describedby` attribute to provide description for screenreader users.'
       }
     ],
     [
@@ -58,29 +67,15 @@
         text: 'string'
       },
       {
-        text: 'No'
-      },
-      {
-        text: 'Optional name. This is used to compose the name attribute for each item.'
-      }
-    ],
-    [
-      {
-        text: 'items'
-      },
-      {
-        text: 'array'
-      },
-      {
         text: 'Yes'
       },
       {
-        text: 'An array of input objects with name, value and optional classes'
+        text: 'The name of the textarea, which is submitted with the form data.'
       }
     ],
     [
       {
-        text: 'items.{}.id'
+        text: 'rows'
       },
       {
         text: 'string'
@@ -89,21 +84,35 @@
         text: 'No'
       },
       {
-        text: 'Optional item-specific id. If provided, it will be used instead of the generated.'
+        text: 'Optional number of textarea rows (default is 5 rows).'
       }
     ],
     [
       {
-        text: 'items.{}.name'
+        text: 'value'
       },
       {
-        text: 'array'
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Optional initial value of the textarea.'
+      }
+    ],
+    [
+      {
+        text: 'label'
+      },
+      {
+        text: 'object'
       },
       {
         text: 'Yes'
       },
       {
-        text: 'Optional item-specific name attribute. If provided, it will be used instead of the generated name.'
+        text: 'Arguments for the label component. See label component.'
       }
     ],
     [
@@ -117,7 +126,7 @@
         text: 'No'
       },
       {
-        text: 'Optional hint. See hint component.'
+        text: 'Arguments for the hint component (e.g. text). See hint component.'
       }
     ],
     [
@@ -131,21 +140,7 @@
         text: 'No'
       },
       {
-        text: 'Optional error message. See errorMessage component.'
-      }
-    ],
-    [
-      {
-        text: 'fieldset'
-      },
-      {
-        text: 'object'
-      },
-      {
-        text: 'No'
-      },
-      {
-        text: 'Arguments for the fieldset component (e.g. legend). See fieldset component.'
+        text: 'Arguments for the errorMessage component (e.g. text). See errorMessage component.'
       }
     ],
     [
@@ -159,7 +154,7 @@
         text: 'No'
       },
       {
-        text: 'Optional additional classes to add to the date-input container.'
+        text: 'Optional additional classes to add to the textarea tag.'
       }
     ],
     [
@@ -173,9 +168,9 @@
         text: 'No'
       },
       {
-        text: 'Any extra HTML attributes (for example data attributes) to add to the date-input container.'
+        text: 'Any extra HTML attributes (for example data attributes) to add to the textarea tag.'
       }
     ]
   ]
-})}}
+}) }}
 {% endblock %}

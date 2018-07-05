@@ -10,9 +10,9 @@ Find out when to use the table component in your service in the [GOV.UK Design S
 
 ## Quick start examples
 
-### Component default
+### Table
 
-[Preview the table component](http://govuk-frontend-review.herokuapp.com/components/table/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/table/preview)
 
 #### Markup
 
@@ -103,7 +103,7 @@ Find out when to use the table component in your service in the [GOV.UK Design S
 
 ### Table table with head
 
-[Preview the Table table with head example](http://govuk-frontend-review.herokuapp.com/components/table/table-with-head/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/table/table-with-head/preview)
 
 #### Markup
 
@@ -219,7 +219,7 @@ Find out when to use the table component in your service in the [GOV.UK Design S
 
 ### Table table with head and caption
 
-[Preview the Table table with head and caption example](http://govuk-frontend-review.herokuapp.com/components/table/table-with-head-and-caption/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/table/table-with-head-and-caption/preview)
 
 #### Markup
 

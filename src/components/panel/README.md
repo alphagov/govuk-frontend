@@ -10,9 +10,9 @@ Find out when to use the panel component in your service in the [GOV.UK Design S
 
 ## Quick start examples
 
-### Component default
+### Panel
 
-[Preview the panel component](http://govuk-frontend-review.herokuapp.com/components/panel/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/panel/preview)
 
 #### Markup
 

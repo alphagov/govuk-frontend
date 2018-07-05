@@ -10,9 +10,9 @@ Find out when to use the tag component in your service in the [GOV.UK Design Sys
 
 ## Quick start examples
 
-### Component default
+### Tag
 
-[Preview the tag component](http://govuk-frontend-review.herokuapp.com/components/tag/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/tag/preview)
 
 #### Markup
 
@@ -30,7 +30,7 @@ Find out when to use the tag component in your service in the [GOV.UK Design Sys
 
 ### Tag inactive
 
-[Preview the Tag inactive example](http://govuk-frontend-review.herokuapp.com/components/tag/inactive/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/tag/inactive/preview)
 
 #### Markup
 

@@ -12,9 +12,9 @@ Find out when to use the button component in your service in the [GOV.UK Design 
 
 Buttons are configured to perform an action and they can have a different look. For example, they can be disabled until a valid action has been performed by the user.
 
-### Component default
+### Button
 
-[Preview the button component](http://govuk-frontend-review.herokuapp.com/components/button/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/button/preview)
 
 #### Markup
 
@@ -32,7 +32,7 @@ Buttons are configured to perform an action and they can have a different look. 
 
 ### Button disabled
 
-[Preview the Button disabled example](http://govuk-frontend-review.herokuapp.com/components/button/disabled/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/button/disabled/preview)
 
 #### Markup
 
@@ -51,7 +51,7 @@ Buttons are configured to perform an action and they can have a different look. 
 
 ### Button link
 
-[Preview the Button link example](http://govuk-frontend-review.herokuapp.com/components/button/link/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/button/link/preview)
 
 #### Markup
 
@@ -70,7 +70,7 @@ Buttons are configured to perform an action and they can have a different look. 
 
 ### Button link disabled
 
-[Preview the Button link disabled example](http://govuk-frontend-review.herokuapp.com/components/button/link-disabled/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/button/link-disabled/preview)
 
 #### Markup
 
@@ -90,7 +90,7 @@ Buttons are configured to perform an action and they can have a different look. 
 
 ### Button start link
 
-[Preview the Button start link example](http://govuk-frontend-review.herokuapp.com/components/button/start-link/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/button/start-link/preview)
 
 #### Markup
 
@@ -110,7 +110,7 @@ Buttons are configured to perform an action and they can have a different look. 
 
 ### Button input
 
-[Preview the Button input example](http://govuk-frontend-review.herokuapp.com/components/button/input/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/button/input/preview)
 
 #### Markup
 
@@ -128,7 +128,7 @@ Buttons are configured to perform an action and they can have a different look. 
 
 ### Button input disabled
 
-[Preview the Button input disabled example](http://govuk-frontend-review.herokuapp.com/components/button/input-disabled/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/button/input-disabled/preview)
 
 #### Markup
 

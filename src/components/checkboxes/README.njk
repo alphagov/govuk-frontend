@@ -1,16 +1,11 @@
-{% if isReadme %}
-  {% set parentTemplate = "readme.njk"  %}
-{% else %}
-  {% set parentTemplate = "component.njk"  %}
-{% endif %}
-
-{% extends parentTemplate %}
+{% extends "readme.njk" %}
 
 {# Commented out blocks below inherit from views/component.njk #}
 
 {# componentName #}
+
 {% block componentDescription %}
-Let users select a single option from a list.
+  Let users select one or more options.
 {% endblock %}
 
 {# examples #}
@@ -89,7 +84,7 @@ Let users select a single option from a list.
         text: 'No'
       },
       {
-        text: 'String to prefix id for each radio item if no id is specified on each item. If`idPrefix` is not passed, fallback to using the name attribute instead.'
+        text: 'String to prefix id for each checkbox item if no id is specified on each item. If`idPrefix` is not passed, fallback to using the name attribute instead.'
       }
     ],
     [
@@ -103,7 +98,7 @@ Let users select a single option from a list.
         text: 'Yes'
       },
       {
-        text: 'Name attribute for each radio item.'
+        text: 'Name attribute for each checkbox item.'
       }
     ],
     [
@@ -131,7 +126,7 @@ Let users select a single option from a list.
         text: 'Yes'
       },
       {
-        text: 'Text or HTML to use within each radio item label. If `html` is provided, the `text` argument will be ignored.'
+        text: 'Text or HTML to use within each checkbox item label. If `html` is provided, the `text` argument will be ignored.'
       }
     ],
     [
@@ -145,7 +140,7 @@ Let users select a single option from a list.
         text: 'No'
       },
       {
-        text: 'Specific id attribute for the radio item. If ommited, then `idPrefix` string will be applied.'
+        text: 'Specific id attribute for the checkbox item. If ommited, then `idPrefix` string will be applied.'
       }
     ],
     [
@@ -159,7 +154,7 @@ Let users select a single option from a list.
         text: 'Yes'
       },
       {
-        text: 'Specific name for the radio item. If ommited, then component global `name` string will be applied.'
+        text: 'Specific name for the checkbox item. If ommited, then component global `name` string will be applied.'
       }
     ],
     [
@@ -173,7 +168,7 @@ Let users select a single option from a list.
         text: 'Yes'
       },
       {
-        text: 'Value for the radio input.'
+        text: 'Value for the checkbox input.'
       }
     ],
     [
@@ -187,7 +182,7 @@ Let users select a single option from a list.
         text: 'No'
       },
       {
-        html: 'Provide additional attributes to each radio item label. See `label` component for more details.'
+        html: 'Provide additional attributes to each checkbox item label. See `label` component for more details.'
       }
     ],
     [
@@ -201,7 +196,7 @@ Let users select a single option from a list.
         text: 'No'
       },
       {
-        text: 'If true, radio will be checked.'
+        text: 'If true, checkbox will be checked.'
       }
     ],
     [
@@ -243,7 +238,7 @@ Let users select a single option from a list.
         text: 'No'
       },
       {
-        text: 'If true, radio will be disabled.'
+        text: 'If true, checkbox will be disabled.'
       }
     ],
     [
@@ -257,7 +252,7 @@ Let users select a single option from a list.
         text: 'No'
       },
       {
-        text: 'Optional additional classes to add to the radios container.'
+        text: 'Optional additional classes to add to the checkboxes container.'
       }
     ],
     [
@@ -271,7 +266,7 @@ Let users select a single option from a list.
         text: 'No'
       },
       {
-        text: 'Any extra HTML attributes (for example data attributes) to add to the radios container.'
+        text: 'Any extra HTML attributes (for example data attributes) to add to the checkboxes container.'
       }
     ]
   ]

@@ -10,9 +10,9 @@ Find out when to use the footer component in your service in the [GOV.UK Design 
 
 ## Quick start examples
 
-### Component default
+### Footer
 
-[Preview the footer component](http://govuk-frontend-review.herokuapp.com/components/footer/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/footer/preview)
 
 #### Markup
 

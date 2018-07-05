@@ -10,9 +10,9 @@ Find out when to use the date input component in your service in the [GOV.UK Des
 
 ## Quick start examples
 
-### Component default
+### Date input
 
-[Preview the date input component](http://govuk-frontend-review.herokuapp.com/components/date-input/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/date-input/preview)
 
 #### Markup
 
@@ -94,7 +94,7 @@ Find out when to use the date input component in your service in the [GOV.UK Des
 
 ### Date input with errors
 
-[Preview the Date input with errors example](http://govuk-frontend-review.herokuapp.com/components/date-input/with-errors/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/date-input/with-errors/preview)
 
 #### Markup
 
@@ -185,7 +185,7 @@ Find out when to use the date input component in your service in the [GOV.UK Des
 
 ### Date input with error on day input
 
-[Preview the Date input with error on day input example](http://govuk-frontend-review.herokuapp.com/components/date-input/with-error-on-day-input/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/date-input/with-error-on-day-input/preview)
 
 #### Markup
 
@@ -275,7 +275,7 @@ Find out when to use the date input component in your service in the [GOV.UK Des
 
 ### Date input with error on month input
 
-[Preview the Date input with error on month input example](http://govuk-frontend-review.herokuapp.com/components/date-input/with-error-on-month-input/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/date-input/with-error-on-month-input/preview)
 
 #### Markup
 
@@ -365,7 +365,7 @@ Find out when to use the date input component in your service in the [GOV.UK Des
 
 ### Date input with error on year input
 
-[Preview the Date input with error on year input example](http://govuk-frontend-review.herokuapp.com/components/date-input/with-error-on-year-input/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/date-input/with-error-on-year-input/preview)
 
 #### Markup
 

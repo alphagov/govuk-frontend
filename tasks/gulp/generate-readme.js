@@ -21,14 +21,14 @@ function getDataForFile (file) {
 }
 
 var environment = new nunjucks.Environment(
-  new nunjucks.FileSystemLoader([configPath.partials, configPath.layouts, configPath.components])
+  new nunjucks.FileSystemLoader([configPath.views, configPath.layouts, configPath.components])
 )
-environment.addGlobal('isReadme', 'true')
+
 // make the function above available as a filter for all templates
 environment.addFilter('componentNameToMacroName', helperFunctions.componentNameToMacroName)
 
 gulp.task('generate:readme', () => {
-  return gulp.src([configPath.components + '**/index.njk'])
+  return gulp.src([configPath.components + '**/README.njk'])
     .pipe(data(file => {
       objectData.componentName = path.dirname(file.path).split(path.sep).slice(-1).toString()
       objectData.componentPath = objectData.componentName
@@ -51,7 +51,6 @@ gulp.task('generate:readme', () => {
       gfm: true // github flavoured markdown https://github.com/domchristie/to-markdown#gfm-boolean
     }))
     .pipe(rename(path => {
-      path.basename = 'README'
       path.extname = '.md'
     }))
     .pipe(gulp.dest(configPath.components))

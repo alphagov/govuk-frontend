@@ -1,5 +1,5 @@
 {% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
-{% from "showExamples.njk" import showExamples %}
+{% from "macros/showExamples.njk" import showExamples %}
 
 {% extends "full-width.njk" %}
 
@@ -9,7 +9,7 @@
 
 {% set componentName = componentPath %}
 {% set componentNameHuman = componentName | replace("-", " ") %}
-{% set componentGuidanceLink = componentGuidanceLink | default('https://design-system.service.gov.uk/components/' + componentName)%}
+
 {% set htmlMarkup %}
   {% include componentName +"/"+ componentName +".njk" ignore missing %}
 {% endset %}

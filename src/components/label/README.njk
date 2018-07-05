@@ -1,21 +1,17 @@
-{% if isReadme %}
-  {% set parentTemplate = "readme.njk"  %}
-{% else %}
-  {% set parentTemplate = "component.njk"  %}
-{% endif %}
-
-{% extends parentTemplate %}
+{% extends "readme.njk" %}
 
 {# Commented out blocks below inherit from views/component.njk #}
 
 {# componentName #}
+
 {% block componentDescription %}
-  Phase tags are mostly used inside phase banners as an indication of the state of a project. It’s possible to use them outside phase banners, for example as part of a service header.
+  Use labels for all form fields.
 {% endblock %}
+
 {# examples #}
 
 {# override link to design system here if it's different to base url + componentName #}
-{# {% set componentGuidanceLink = 'new link here' %} #}
+{% set componentGuidanceLink = false %}
 
 {% block componentArguments %}
 {{ govukTable({
@@ -43,10 +39,38 @@
         text: 'string'
       },
       {
+        text: 'Yes'
+      },
+      {
+        text: 'Text or HTML to use within the label. If `html` is provided, the `text` argument will be ignored.'
+      }
+    ],
+    [
+      {
+        text: 'for'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'Yes'
+      },
+      {
+        text: 'The value of the for attribute, the id of the input the label is associated with.'
+      }
+    ],
+    [
+      {
+        text: 'isPageHeading'
+      },
+      {
+        text: 'boolean'
+      },
+      {
         text: 'No'
       },
       {
-        text: 'Text or HTML to use within for the tag component. If `html` is provided, the `text` argument will be ignored.'
+        text: 'Whether the label also acts as the heading for the page.'
       }
     ],
     [
@@ -60,7 +84,7 @@
         text: 'No'
       },
       {
-        text: 'Optional additional classes to add to the tag container.'
+        text: 'Optional additional classes to add to the label tag.'
       }
     ],
     [
@@ -74,7 +98,7 @@
         text: 'No'
       },
       {
-        text: 'Any extra HTML attributes (for example data attributes) to add to the tag container.'
+        text: 'Any extra HTML attributes (for example data attributes) to add to the label tag.'
       }
     ]
   ]

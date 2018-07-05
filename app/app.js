@@ -15,7 +15,7 @@ const configPaths = require('../config/paths.json')
 // Set up views
 const appViews = [
   configPaths.layouts,
-  configPaths.partials,
+  configPaths.views,
   configPaths.examples,
   configPaths.components,
   configPaths.src
@@ -83,7 +83,7 @@ module.exports = (options) => {
     // make variables available to nunjucks template
     res.locals.componentPath = req.params.component
 
-    res.render(`${req.params.component}/index`, function (error, html) {
+    res.render('component', function (error, html) {
       if (error) {
         next(error)
       } else {

@@ -10,9 +10,9 @@ Find out when to use the phase banner component in your service in the [GOV.UK D
 
 ## Quick start examples
 
-### Component default
+### Phase banner
 
-[Preview the phase banner component](http://govuk-frontend-review.herokuapp.com/components/phase-banner/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/phase-banner/preview)
 
 #### Markup
 

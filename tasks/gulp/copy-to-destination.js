@@ -15,7 +15,7 @@ gulp.task('copy-files', () => {
     '!**/.DS_Store',
     '!**/*.test.js',
     '!' + configPaths.src + 'README.md', // Don't override the existing README in /package
-    '!' + configPaths.components + '**/index.njk',
+    '!' + configPaths.components + '**/README.njk',
     '!' + configPaths.components + '**/*.{yml,yaml}',
     '!' + configPaths.components + '**/__snapshots__/**',
     '!' + configPaths.components + '**/__snapshots__/'

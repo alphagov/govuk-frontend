@@ -1,0 +1,92 @@
+{% extends "readme.njk" %}
+
+{# Commented out blocks below inherit from views/component.njk #}
+
+{# componentName #}
+
+{% block componentDescription %}
+  Use hint text for supporting contextual help
+{% endblock %}
+
+{# examples #}
+
+{# override link to design system here if it's different to base url + componentName #}
+{% set componentGuidanceLink = false %}
+
+{% block componentArguments %}
+{{ govukTable({
+  'firstCellIsHeader': true,
+  'head' : [
+    {
+      text: 'Name'
+    },
+    {
+      text: 'Type'
+    },
+    {
+      text: 'Required'
+    },
+    {
+      text: 'Description'
+    }
+  ],
+  'rows' : [
+    [
+      {
+        text: 'text or (html) html'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'Yes'
+      },
+      {
+        text: 'Text or HTML to use within the hint. If `html` is provided, the `text` argument will be ignored.'
+      }
+    ],
+    [
+      {
+        text: 'id'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'Yes'
+      },
+      {
+        text: 'Optional id attribute o add to the hint span tag.'
+      }
+    ],
+    [
+      {
+        text: 'classes'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Optional additional classes to add to the hint span tag.'
+      }
+    ],
+    [
+      {
+        text: 'attributes'
+      },
+      {
+        text: 'object'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Any extra HTML attributes (for example data attributes) to add to the hint span tag.'
+      }
+    ]
+  ]
+})}}
+{% endblock %}

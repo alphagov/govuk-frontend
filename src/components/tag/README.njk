@@ -1,23 +1,15 @@
-{% if isReadme %}
-  {% set parentTemplate = "readme.njk"  %}
-{% else %}
-  {% set parentTemplate = "component.njk"  %}
-{% endif %}
-
-{% extends parentTemplate %}
+{% extends "readme.njk" %}
 
 {# Commented out blocks below inherit from views/component.njk #}
 
 {# componentName #}
-
 {% block componentDescription %}
-  Use hint text for supporting contextual help
+  Phase tags are mostly used inside phase banners as an indication of the state of a project. It’s possible to use them outside phase banners, for example as part of a service header.
 {% endblock %}
-
 {# examples #}
 
 {# override link to design system here if it's different to base url + componentName #}
-{% set componentGuidanceLink = false %}
+{# {% set componentGuidanceLink = 'new link here' %} #}
 
 {% block componentArguments %}
 {{ govukTable({
@@ -39,30 +31,16 @@
   'rows' : [
     [
       {
-        text: 'text or (html) html'
+        text: 'text (or) html'
       },
       {
         text: 'string'
       },
       {
-        text: 'Yes'
+        text: 'No'
       },
       {
-        text: 'Text or HTML to use within the hint. If `html` is provided, the `text` argument will be ignored.'
-      }
-    ],
-    [
-      {
-        text: 'id'
-      },
-      {
-        text: 'string'
-      },
-      {
-        text: 'Yes'
-      },
-      {
-        text: 'Optional id attribute o add to the hint span tag.'
+        text: 'Text or HTML to use within for the tag component. If `html` is provided, the `text` argument will be ignored.'
       }
     ],
     [
@@ -76,7 +54,7 @@
         text: 'No'
       },
       {
-        text: 'Optional additional classes to add to the hint span tag.'
+        text: 'Optional additional classes to add to the tag container.'
       }
     ],
     [
@@ -90,7 +68,7 @@
         text: 'No'
       },
       {
-        text: 'Any extra HTML attributes (for example data attributes) to add to the hint span tag.'
+        text: 'Any extra HTML attributes (for example data attributes) to add to the tag container.'
       }
     ]
   ]

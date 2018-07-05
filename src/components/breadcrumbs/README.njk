@@ -1,18 +1,9 @@
-{% if isReadme %}
-  {% set parentTemplate = "readme.njk"  %}
-{% else %}
-  {% set parentTemplate = "component.njk"  %}
-{% endif %}
-
-{% extends parentTemplate %}
+{% extends "readme.njk" %}
 
 {# Commented out blocks below inherit from views/component.njk #}
 
-{# componentName #}
-
 {% block componentDescription %}
-Skip link component. Make skip links visible when they are tabbed to.
-You'll need to add correct id to your main content area, to ensure the skip link will work.
+The Breadcrumbs component helps users to understand where they are within a website’s structure and move between levels.
 {% endblock %}
 
 {# examples #}
@@ -23,7 +14,7 @@ You'll need to add correct id to your main content area, to ensure the skip link
 {% block componentArguments %}
 {{ govukTable({
   'firstCellIsHeader': true,
-  'head' : [
+  'head': [
     {
       text: 'Name'
     },
@@ -37,24 +28,24 @@ You'll need to add correct id to your main content area, to ensure the skip link
       text: 'Description'
     }
   ],
-  'rows' : [
+  'rows': [
     [
       {
-        text: 'text (or) html'
+        text: 'items'
       },
       {
-        text: 'string'
+        text: 'array'
       },
       {
-        text:'No'
+        text: 'Yes'
       },
       {
-        text: 'Text or HTML to use within the skip link. If `html` is provided, the `text` argument will be ignored.'
+        text: 'Array of breadcrumbs item objects.'
       }
     ],
     [
       {
-        text: 'href'
+        text: 'items.{}.text (or) items.{}.html'
       },
       {
         text: 'string'
@@ -63,7 +54,21 @@ You'll need to add correct id to your main content area, to ensure the skip link
         text:'Yes'
       },
       {
-        text: 'The value of the skip link href attribute. Defaults to #content'
+        text: 'Text or HTML to use within the breadcrumbs item. If `html` is provided, the `text` argument will be ignored.'
+      }
+    ],
+    [
+      {
+        text: 'items.{}.href'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'no'
+      },
+      {
+        text: 'Link for the breadcrumbs item. If not specified, breadcrumbs item is a normal list item'
       }
     ],
     [
@@ -74,10 +79,10 @@ You'll need to add correct id to your main content area, to ensure the skip link
         text: 'string'
       },
       {
-        text:'No'
+        text: 'No'
       },
       {
-        text: 'Optional additional classes to add to the skip link.'
+        text: 'Optional additional classes to add to the breadcrumbs container.'
       }
     ],
     [
@@ -91,7 +96,7 @@ You'll need to add correct id to your main content area, to ensure the skip link
         text: 'No'
       },
       {
-        text: 'Any extra HTML attributes (for example data attributes) to add to the skip link.'
+        text: 'Any extra HTML attributes (for example data attributes) to add to the breadcrumbs container.'
       }
     ]
   ]

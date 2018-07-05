@@ -1,19 +1,12 @@
-{% if isReadme %}
-  {% set parentTemplate = "readme.njk"  %}
-{% else %}
-  {% set parentTemplate = "component.njk"  %}
-{% endif %}
-
-{% extends parentTemplate %}
+{% extends "readme.njk" %}
 
 {# Commented out blocks below inherit from views/component.njk #}
 
 {# componentName #}
-{% block componentDescription %}
-  Component for conditionally revealing content, using tabs and tabs panels.
-{% endblock %}
 
-{# examples #}
+{% block componentDescription %}
+The HTML <code>&lt;input&gt;</code> element with type="file" lets a user pick one or more files, to upload to a server.
+{% endblock %}
 
 {# override link to design system here if it's different to base url + componentName #}
 {# {% set componentGuidanceLink = 'new link here' %} #}
@@ -39,7 +32,35 @@
   'rows' : [
     [
       {
+        text: 'name'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'Yes'
+      },
+      {
+        text: 'The name of the input, which is submitted with the form data.'
+      }
+    ],
+    [
+      {
         text: 'id'
+      },
+      {
+        text: 'string'
+      },
+      {
+        text: 'Yes'
+      },
+      {
+        text: 'The id of the input'
+      }
+    ],
+    [
+      {
+        text: 'value'
       },
       {
         text: 'string'
@@ -48,7 +69,49 @@
         text: 'No'
       },
       {
-        text: 'Optional id'
+        text: 'Optional initial value of the input'
+      }
+    ],
+    [
+      {
+        text: 'label'
+      },
+      {
+        text: 'object'
+      },
+      {
+        text: 'Yes'
+      },
+      {
+        text: 'Arguments for the label component. See label component.'
+      }
+    ],
+    [
+      {
+        text: 'hint'
+      },
+      {
+        text: 'object'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Arguments for the hint component (e.g. text). See hint component.'
+      }
+    ],
+    [
+      {
+        text: 'errorMessage'
+      },
+      {
+        text: 'object'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Arguments for the errorMessage component (e.g. text). See errorMessage component.'
       }
     ],
     [
@@ -62,7 +125,7 @@
         text: 'No'
       },
       {
-        text: 'Optional additional classes'
+        text: 'Optional additional classes to add to the input tag.'
       }
     ],
     [
@@ -76,77 +139,7 @@
         text: 'No'
       },
       {
-        text: 'Any extra HTML attributes (for example data attributes) to add to the details element'
-      }
-    ],
-    [
-      {
-        text: 'idPrefix'
-      },
-      {
-        text: 'string'
-      },
-      {
-        text: 'No'
-      },
-      {
-        text: 'String to prefix id for each tab item if no id is specified on each item'
-      }
-    ],
-    [
-      {
-        text: 'items'
-      },
-      {
-        text: 'array'
-      },
-      {
-        text: 'Yes'
-      },
-      {
-        text: 'Array of tab items'
-      }
-    ],
-    [
-      {
-        text: 'items.{}.id'
-      },
-      {
-        text: 'string'
-      },
-      {
-        text: 'Yes'
-      },
-      {
-        text: 'Specific id attribute for the tab item. If ommited, then `idPrefix` string will be applied.'
-      }
-    ],
-    [
-      {
-        text: 'items.{}.label'
-      },
-      {
-        text: 'string'
-      },
-      {
-        text: 'Yes'
-      },
-      {
-        text: 'The text label of a tab item'
-      }
-    ],
-    [
-      {
-        text: 'items.{}.panel.text (or) items.{}.panel.html'
-      },
-      {
-        text: 'string'
-      },
-      {
-        text: 'No'
-      },
-      {
-        text: 'Text or HTML to use within each tab panel. If `html` is provided, the `text` argument will be ignored.'
+        text: 'Any extra HTML attributes (for example accept or data attributes) to add to the input tag.'
       }
     ]
   ]

@@ -10,9 +10,9 @@ Find out when to use the radios component in your service in the [GOV.UK Design 
 
 ## Quick start examples
 
-### Component default
+### Radios
 
-[Preview the radios component](http://govuk-frontend-review.herokuapp.com/components/radios/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/radios/preview)
 
 #### Markup
 
@@ -79,7 +79,7 @@ Find out when to use the radios component in your service in the [GOV.UK Design 
 
 ### Radios inline
 
-[Preview the Radios inline example](http://govuk-frontend-review.herokuapp.com/components/radios/inline/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/radios/inline/preview)
 
 #### Markup
 
@@ -147,7 +147,7 @@ Find out when to use the radios component in your service in the [GOV.UK Design 
 
 ### Radios with disabled
 
-[Preview the Radios with disabled example](http://govuk-frontend-review.herokuapp.com/components/radios/with-disabled/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/radios/with-disabled/preview)
 
 #### Markup
 
@@ -215,7 +215,7 @@ Find out when to use the radios component in your service in the [GOV.UK Design 
 
 ### Radios with legend as page heading
 
-[Preview the Radios with legend as page heading example](http://govuk-frontend-review.herokuapp.com/components/radios/with-legend-as-page-heading/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/radios/with-legend-as-page-heading/preview)
 
 #### Markup
 
@@ -285,7 +285,7 @@ Find out when to use the radios component in your service in the [GOV.UK Design 
 
 ### Radios with a medium legend
 
-[Preview the Radios with a medium legend example](http://govuk-frontend-review.herokuapp.com/components/radios/with-a-medium-legend/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/radios/with-a-medium-legend/preview)
 
 #### Markup
 
@@ -352,7 +352,7 @@ Find out when to use the radios component in your service in the [GOV.UK Design 
 
 ### Radios without fieldset
 
-[Preview the Radios without fieldset example](http://govuk-frontend-review.herokuapp.com/components/radios/without-fieldset/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/radios/without-fieldset/preview)
 
 #### Markup
 
@@ -409,7 +409,7 @@ Find out when to use the radios component in your service in the [GOV.UK Design 
 
 ### Radios with all fieldset attributes
 
-[Preview the Radios with all fieldset attributes example](http://govuk-frontend-review.herokuapp.com/components/radios/with-all-fieldset-attributes/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/radios/with-all-fieldset-attributes/preview)
 
 #### Markup
 

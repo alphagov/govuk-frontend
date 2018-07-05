@@ -10,9 +10,9 @@ Find out when to use the error summary component in your service in the [GOV.UK 
 
 ## Quick start examples
 
-### Component default
+### Error summary
 
-[Preview the error summary component](http://govuk-frontend-review.herokuapp.com/components/error-summary/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/error-summary/preview)
 
 #### Markup
 

@@ -10,9 +10,9 @@ Find out when to use the header component in your service in the [GOV.UK Design 
 
 ## Quick start examples
 
-### Component default
+### Header
 
-[Preview the header component](http://govuk-frontend-review.herokuapp.com/components/header/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/header/preview)
 
 #### Markup
 
@@ -59,7 +59,7 @@ Find out when to use the header component in your service in the [GOV.UK Design 
 
 ### Header with service name
 
-[Preview the Header with service name example](http://govuk-frontend-review.herokuapp.com/components/header/with-service-name/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/header/with-service-name/preview)
 
 #### Markup
 
@@ -113,7 +113,7 @@ Find out when to use the header component in your service in the [GOV.UK Design 
 
 ### Header with navigation
 
-[Preview the Header with navigation example](http://govuk-frontend-review.herokuapp.com/components/header/with-navigation/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/header/with-navigation/preview)
 
 #### Markup
 
@@ -211,7 +211,7 @@ Find out when to use the header component in your service in the [GOV.UK Design 
 
 ### Header with service name and navigation
 
-[Preview the Header with service name and navigation example](http://govuk-frontend-review.herokuapp.com/components/header/with-service-name-and-navigation/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/header/with-service-name-and-navigation/preview)
 
 #### Markup
 

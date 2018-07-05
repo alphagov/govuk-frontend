@@ -6,9 +6,9 @@ Use labels for all form fields.
 
 ## Quick start examples
 
-### Component default
+### Label
 
-[Preview the label component](http://govuk-frontend-review.herokuapp.com/components/label/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/label/preview)
 
 #### Markup
 
@@ -26,7 +26,7 @@ Use labels for all form fields.
 
 ### Label with bold text
 
-[Preview the Label with bold text example](http://govuk-frontend-review.herokuapp.com/components/label/with-bold-text/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/label/with-bold-text/preview)
 
 #### Markup
 
@@ -45,7 +45,7 @@ Use labels for all form fields.
 
 ### Label as page heading
 
-[Preview the Label as page heading example](http://govuk-frontend-review.herokuapp.com/components/label/as-page-heading/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/label/as-page-heading/preview)
 
 #### Markup
 

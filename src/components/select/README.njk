@@ -1,16 +1,10 @@
-{% if isReadme %}
-  {% set parentTemplate = "readme.njk"  %}
-{% else %}
-  {% set parentTemplate = "component.njk"  %}
-{% endif %}
-
-{% extends parentTemplate %}
+{% extends "readme.njk" %}
 
 {# Commented out blocks below inherit from views/component.njk #}
 
 {# componentName #}
 {% block componentDescription %}
-  A multi-line text field.
+The HTML <code>&lt;select&gt;</code> element represents a control that provides a menu of options.
 {% endblock %}
 
 {# examples #}
@@ -36,7 +30,6 @@
     }
   ],
   'rows' : [
-    
     [
       {
         text: 'id'
@@ -48,21 +41,7 @@
         text: 'Yes'
       },
       {
-        text: 'The id of the textarea'
-      }
-    ],
-    [
-      {
-        text: 'describedBy'
-      },
-      {
-        text: 'string'
-      },
-      {
-        text: 'No'
-      },
-      {
-        text: 'Text or element id to add to the `aria-describedby` attribute to provide description for screenreader users.'
+        text: 'Id for each select box'
       }
     ],
     [
@@ -76,12 +55,26 @@
         text: 'Yes'
       },
       {
-        text: 'The name of the textarea, which is submitted with the form data.'
+        text: 'Name property for the select.'
       }
     ],
     [
       {
-        text: 'rows'
+        text: 'items'
+      },
+      {
+        text: 'array'
+      },
+      {
+        text: 'Yes'
+      },
+      {
+        text: 'Array of option items for the select.'
+      }
+    ],
+    [
+      {
+        text: 'item.value'
       },
       {
         text: 'string'
@@ -90,21 +83,49 @@
         text: 'No'
       },
       {
-        text: 'Optional number of textarea rows (default is 5 rows).'
+        text: 'Value for the option item.'
       }
     ],
     [
       {
-        text: 'value'
+        text: 'item.text'
       },
       {
         text: 'string'
       },
       {
+        text: 'Yes'
+      },
+      {
+        text: 'Text for the option item.'
+      }
+    ],
+    [
+      {
+        text: 'item.selected'
+      },
+      {
+        text: 'boolean'
+      },
+      {
         text: 'No'
       },
       {
-        text: 'Optional initial value of the textarea.'
+        text: 'Sets the option as the selected.'
+      }
+    ],
+    [
+      {
+        text: 'item.disabled'
+      },
+      {
+        text: 'boolean'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'Sets the option item as disabled.'
       }
     ],
     [
@@ -115,10 +136,10 @@
         text: 'object'
       },
       {
-        text: 'Yes'
+        text: 'No'
       },
       {
-        text: 'Arguments for the label component. See label component.'
+        text: 'Optional label text or HTML by specifying value for either text or html keys. See label component.'
       }
     ],
     [
@@ -160,7 +181,7 @@
         text: 'No'
       },
       {
-        text: 'Optional additional classes to add to the textarea tag.'
+        text: 'Optional additional classes to add to the select component.'
       }
     ],
     [
@@ -174,9 +195,9 @@
         text: 'No'
       },
       {
-        text: 'Any extra HTML attributes (for example data attributes) to add to the textarea tag.'
+        text: 'Any extra HTML attributes (for example data attributes) to add to the select component.'
       }
     ]
   ]
-}) }}
+})}}
 {% endblock %}

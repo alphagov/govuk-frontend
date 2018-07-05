@@ -10,9 +10,9 @@ Find out when to use the tabs component in your service in the [GOV.UK Design Sy
 
 ## Quick start examples
 
-### Component default
+### Tabs
 
-[Preview the tabs component](http://govuk-frontend-review.herokuapp.com/components/tabs/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/tabs/preview)
 
 #### Markup
 

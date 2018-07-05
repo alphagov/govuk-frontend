@@ -10,9 +10,9 @@ Find out when to use the file upload component in your service in the [GOV.UK De
 
 ## Quick start examples
 
-### Component default
+### File upload
 
-[Preview the file upload component](http://govuk-frontend-review.herokuapp.com/components/file-upload/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/file-upload/preview)
 
 #### Markup
 
@@ -38,7 +38,7 @@ Find out when to use the file upload component in your service in the [GOV.UK De
 
 ### File upload with hint text
 
-[Preview the File upload with hint text example](http://govuk-frontend-review.herokuapp.com/components/file-upload/with-hint-text/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/file-upload/with-hint-text/preview)
 
 #### Markup
 
@@ -71,7 +71,7 @@ Find out when to use the file upload component in your service in the [GOV.UK De
 
 ### File upload with error message
 
-[Preview the File upload with error message example](http://govuk-frontend-review.herokuapp.com/components/file-upload/with-error-message/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/file-upload/with-error-message/preview)
 
 #### Markup
 
@@ -111,7 +111,7 @@ Find out when to use the file upload component in your service in the [GOV.UK De
 
 ### File upload with value and attributes
 
-[Preview the File upload with value and attributes example](http://govuk-frontend-review.herokuapp.com/components/file-upload/with-value-and-attributes/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/file-upload/with-value-and-attributes/preview)
 
 #### Markup
 
@@ -141,7 +141,7 @@ Find out when to use the file upload component in your service in the [GOV.UK De
 
 ### File upload with label as page heading
 
-[Preview the File upload with label as page heading example](http://govuk-frontend-review.herokuapp.com/components/file-upload/with-label-as-page-heading/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/file-upload/with-label-as-page-heading/preview)
 
 #### Markup
 

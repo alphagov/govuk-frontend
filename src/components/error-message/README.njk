@@ -1,25 +1,19 @@
-{% if isReadme %}
-  {% set parentTemplate = "readme.njk"  %}
-{% else %}
-  {% set parentTemplate = "component.njk"  %}
-{% endif %}
-
-{% extends parentTemplate %}
+{% extends "readme.njk" %}
 
 {# Commented out blocks below inherit from views/component.njk #}
 
 {# componentName #}
-
 {% block componentDescription %}
-Link back component, to go back a page.
+  Component to show a red error message - used for form validation.
+  Use inside a label or legend.
 {% endblock %}
-
 {# examples #}
 
 {# override link to design system here if it's different to base url + componentName #}
 {# {% set componentGuidanceLink = 'new link here' %} #}
 
 {% block componentArguments %}
+{% from "table/macro.njk" import govukTable %}
 {{ govukTable({
   'firstCellIsHeader': true,
   'head' : [
@@ -45,24 +39,24 @@ Link back component, to go back a page.
         text: 'string'
       },
       {
-        text:'Yes'
+        text: 'No'
       },
       {
-        text: 'Text or HTML to use within the back link component. If `html` is provided, the `text` argument will be ignored.'
+        text: 'Text to use within the error message. If `html` is provided, the `text` argument will be ignored.'
       }
     ],
     [
       {
-        text: 'href'
+        text: 'id'
       },
       {
         text: 'string'
       },
       {
-        text:'Yes'
+        text: 'No'
       },
       {
-        text: 'The value of the link href attribute'
+        text: 'Optional id attribute to add to the error message span tag.'
       }
     ],
     [
@@ -73,10 +67,10 @@ Link back component, to go back a page.
         text: 'string'
       },
       {
-        text:'No'
+        text: 'No'
       },
       {
-        text: 'Optional additional classes to add to the anchor tag.'
+        text: 'Optional additional classes to add to the error message span tag.'
       }
     ],
     [
@@ -90,7 +84,7 @@ Link back component, to go back a page.
         text: 'No'
       },
       {
-        text: 'Any extra HTML attributes (for example data attributes) to add to the anchor tag.'
+        text: 'Any extra HTML attributes (for example data attributes) to add to the error message span tag'
       }
     ]
   ]
