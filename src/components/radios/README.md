@@ -219,9 +219,7 @@ Find out when to use the radios component in your service in the [GOV.UK Design 
 
 #### Markup
 
-    <div class="govuk-form-group govuk-form-group--error">
-
-      <details class="govuk-details">
+        <details class="govuk-details">
       <summary class="govuk-details__summary">
         <span class="govuk-details__summary-text">
           Help with nationality,
@@ -231,6 +229,8 @@ Find out when to use the radios component in your service in the [GOV.UK Design 
         If you’re not sure about your nationality, try to find out from an official document like a passport or national ID card.
       </div>
     </details>
+
+    <div class="govuk-form-group govuk-form-group--error">
 
       <span id="example-details-error" class="govuk-error-message">
         Please select an option

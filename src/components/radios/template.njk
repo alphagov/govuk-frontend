@@ -39,9 +39,6 @@
     text: params.hint.text
   }) | indent(2) | trim }}
 {% endif %}
-{% if params.component -%}
-  {{ renderComponent(params.component.name, params.component.params) }}
-{% endif %}
 {% if params.errorMessage %}
   {% set errorId = idPrefix + '-error' %}
   {% set describedBy = describedBy + ' ' + errorId if describedBy else errorId %}
@@ -79,7 +76,9 @@
     {% endfor %}
   </div>
 {% endset -%}
-
+{% if params.component -%}
+  {{ renderComponent(params.component.name, params.component.params) }}
+{% endif %}
 <div class="govuk-form-group {%- if params.errorMessage %} govuk-form-group--error{% endif %}">
 {% if params.fieldset %}
   {% call govukFieldset({
