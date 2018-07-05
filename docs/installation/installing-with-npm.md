@@ -93,7 +93,7 @@ This to avoid the risk of global styles conflicting with any pre-existing global
 
 Hovever, we do include some global styles in the [GOV.UK Prototype Kit](https://github.com/alphagov/govuk-prototype-kit-private-beta) to speed up prototyping.
 
-These [global styles](src/core/_global-styles.scss) are are not included by default in GOV.UK Frontend. To include these global styles in your app, you can set `$govuk-global-styles` variable to `true` before importing GOV.UK Frontend styles into your app:
+These [global styles](../../src/core/_global-styles.scss) are are not included by default in GOV.UK Frontend. To include these global styles in your app, you can set `$govuk-global-styles` variable to `true` before importing GOV.UK Frontend styles into your app:
 
 ```
 // application.scss
