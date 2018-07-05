@@ -17,15 +17,14 @@ echo "📦  Publishing package..."
 # Try publishing
 cd package
 npm publish
-echo "🗒 Package published!" 
+echo "🗒 Package published!"
 cd ..
 
 # Extract tag version from ./package/package.json
 ALL_PACKAGE_VERSION=$(node -p "require('./package/package.json').version")
 TAG="v$ALL_PACKAGE_VERSION"
-LATEST_PUBLISHED_TAG=$(git describe --abbrev=0 --tags)
 
-if [ "$LATEST_PUBLISHED_TAG" == "$TAG" ]; then
+if [ $(git tag -l "$TAG") ]; then
     echo "⚠️ Tag $TAG already exists"
     exit 1
 else
