@@ -59,6 +59,23 @@ examples:
         text: No
         disabled: true
 
+- name: with details component
+  data:
+    idPrefix: example-details
+    name: example-details
+    component:
+      name: details
+      params:
+        summaryText: Help with nationality,
+        text: If you’re not sure about your nationality, try to find out from an official document like a passport or national ID card.
+    errorMessage:
+      text: Please select an option
+    items:
+      - value: yes
+        text: Yes
+      - value: no
+        text: No
+
 - name: with html
   data:
     idPrefix: housing-act

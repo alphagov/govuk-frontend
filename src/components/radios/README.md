@@ -213,6 +213,78 @@ Find out when to use the radios component in your service in the [GOV.UK Design 
       ]
     }) }}
 
+### Radios with details component
+
+[Preview the Radios with details component example](http://govuk-frontend-review.herokuapp.com/components/radios/with-details-component/preview)
+
+#### Markup
+
+    <div class="govuk-form-group govuk-form-group--error">
+
+      <details class="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          Help with nationality,
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        If you’re not sure about your nationality, try to find out from an official document like a passport or national ID card.
+      </div>
+    </details>
+
+      <span id="example-details-error" class="govuk-error-message">
+        Please select an option
+      </span>
+
+      <div class="govuk-radios">
+
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="example-details-1" name="example-details" type="radio" value="yes">
+          <label class="govuk-label govuk-radios__label" for="example-details-1">
+            Yes
+          </label>
+        </div>
+
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="example-details-2" name="example-details" type="radio" value="no">
+          <label class="govuk-label govuk-radios__label" for="example-details-2">
+            No
+          </label>
+        </div>
+
+      </div>
+
+    </div>
+
+#### Macro
+
+    {% from "radios/macro.njk" import govukRadios %}
+
+    {{ govukRadios({
+      "idPrefix": "example-details",
+      "name": "example-details",
+      "component": {
+        "name": "details",
+        "params": {
+          "summaryText": "Help with nationality,",
+          "text": "If you’re not sure about your nationality, try to find out from an official document like a passport or national ID card."
+        }
+      },
+      "errorMessage": {
+        "text": "Please select an option"
+      },
+      "items": [
+        {
+          "value": "yes",
+          "text": "Yes"
+        },
+        {
+          "value": "no",
+          "text": "No"
+        }
+      ]
+    }) }}
+
 ### Radios with html
 
 [Preview the Radios with html example](http://govuk-frontend-review.herokuapp.com/components/radios/with-html/preview)
