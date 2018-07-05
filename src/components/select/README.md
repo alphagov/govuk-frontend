@@ -40,7 +40,7 @@ Find out when to use the select component in your service in the [GOV.UK Design 
       "id": "select-1",
       "name": "select-1",
       "label": {
-        "html": "Label text goes here"
+        "text": "Label text goes here"
       },
       "items": [
         {
@@ -155,7 +155,7 @@ Find out when to use the select component in your service in the [GOV.UK Design 
       "id": "select-3",
       "name": "select-3",
       "label": {
-        "html": "Label text goes here",
+        "text": "Label text goes here",
         "isPageHeading": true
       },
       "items": [

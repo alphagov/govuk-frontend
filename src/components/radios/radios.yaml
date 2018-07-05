@@ -59,13 +59,35 @@ examples:
         text: No
         disabled: true
 
-- name: with html
+- name: with legend as page heading
   data:
     idPrefix: housing-act
     name: housing-act
     fieldset:
       legend:
-        html: <h1 class="govuk-heading-l">Which part of the Housing Act was your licence issued under?</h1>
+        text: Which part of the Housing Act was your licence issued under?
+        classes: govuk-fieldset__legend--l
+        isPageHeading: true
+    hint:
+      text: Select one of the options below.
+    items:
+      - value: part-2
+        html:
+          <span class="govuk-heading-s govuk-!-margin-bottom-1">Part 2 of the Housing Act 2004</span>
+          For properties that are 3 or more stories high and occupied by 5 or more people
+      - value: part-3
+        html:
+          <span class="govuk-heading-s govuk-!-margin-bottom-1">Part 3 of the Housing Act 2004</span>
+          For properties that are within a geographical area defined by a local council
+
+- name: with a medium legend
+  data:
+    idPrefix: housing-act
+    name: housing-act
+    fieldset:
+      legend:
+        text: Which part of the Housing Act was your licence issued under?
+        classes: govuk-fieldset__legend--m
     hint:
       text: Select one of the options below.
     items:
@@ -111,6 +133,45 @@ examples:
         text: No
         checked: true
 
+- name: with very long option text
+  readme: false
+  data:
+    name: waste
+    hint:
+      text:
+        Nullam id dolor id nibh ultricies vehicula ut id elit.
+    errorMessage:
+      text:
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    fieldset:
+      legend:
+        text:
+          Maecenas faucibus mollis interdum?
+    items:
+      - value: nullam
+        text:
+          Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu leo
+          quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
+          Maecenas faucibus mollis interdum. Donec id elit non mi porta gravida
+          at eget metus.
+      - value: aenean
+        text:
+          Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis
+          vestibulum. Donec sed odio dui. Duis mollis, est non commodo luctus,
+          nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cum sociis
+          natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+          mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam
+          venenatis vestibulum. Cras mattis consectetur purus sit amet
+          fermentum.
+      - value: fusce
+        text:
+          Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
+          nibh, ut fermentum massa justo sit amet risus. Etiam porta sem
+          malesuada magna mollis euismod. Praesent commodo cursus magna, vel
+          scelerisque nisl consectetur et. Etiam porta sem malesuada magna
+          mollis euismod. Etiam porta sem malesuada magna mollis euismod.
+          Donec sed odio dui. Sed posuere consectetur est at lobortis.
+
 - name: with conditional items
   readme: false
   data:
@@ -118,7 +179,7 @@ examples:
     name: how-contacted
     fieldset:
       legend:
-        html: <h3 class="govuk-heading-m">How do you want to be contacted?</h3>
+        text: How do you want to be contacted?
     items:
       - value: email
         text: Email
@@ -146,7 +207,7 @@ examples:
     name: 'how-contacted-checked'
     fieldset:
       legend:
-        html: <h3 class="govuk-heading-m">How do you want to be contacted?</h3>
+        text: How do you want to be contacted?
     items:
     - value: email
       text: Email

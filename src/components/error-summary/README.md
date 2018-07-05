@@ -58,7 +58,7 @@ Find out when to use the error summary component in your service in the [GOV.UK 
           "href": "#example-error-1"
         },
         {
-          "html": "Descriptive link to the question with an error",
+          "text": "Descriptive link to the question with an error",
           "href": "#example-error-1"
         }
       ]

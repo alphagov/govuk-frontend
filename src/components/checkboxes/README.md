@@ -213,9 +213,9 @@ Find out when to use the checkboxes component in your service in the [GOV.UK Des
       ]
     }) }}
 
-### Checkboxes with html in legend
+### Checkboxes with legend as a page heading
 
-[Preview the Checkboxes with html in legend example](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-html-in-legend/preview)
+[Preview the Checkboxes with legend as a page heading example](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-legend-as-a-page-heading/preview)
 
 #### Markup
 
@@ -223,8 +223,10 @@ Find out when to use the checkboxes component in your service in the [GOV.UK Des
 
       <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
 
-      <legend class="govuk-fieldset__legend">
-        <h3 class="govuk-heading-m">Which types of waste do you transport regularly?</h3>
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <h1 class="govuk-fieldset__heading">
+          Which types of waste do you transport regularly?
+        </h1>
       </legend>
 
       <span id="waste-hint" class="govuk-hint">
@@ -267,11 +269,97 @@ Find out when to use the checkboxes component in your service in the [GOV.UK Des
       "name": "waste",
       "fieldset": {
         "legend": {
-          "html": "<h3 class=\"govuk-heading-m\">Which types of waste do you transport regularly?</h3>"
+          "text": "Which types of waste do you transport regularly?",
+          "classes": "govuk-fieldset__legend--l",
+          "isPageHeading": true
         }
       },
       "hint": {
         "text": "Select all that apply"
+      },
+      "items": [
+        {
+          "value": "animal",
+          "text": "Waste from animal carcasses"
+        },
+        {
+          "value": "mines",
+          "text": "Waste from mines or quarries"
+        },
+        {
+          "value": "farm",
+          "text": "Farm or agricultural waste"
+        }
+      ]
+    }) }}
+
+### Checkboxes with a medium legend
+
+[Preview the Checkboxes with a medium legend example](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-a-medium-legend/preview)
+
+#### Markup
+
+    <div class="govuk-form-group govuk-form-group--error">
+
+      <fieldset class="govuk-fieldset" aria-describedby="waste-hint waste-error">
+
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+        Which types of waste do you transport regularly?
+      </legend>
+
+      <span id="waste-hint" class="govuk-hint">
+        Select all that apply
+      </span>
+
+      <span id="waste-error" class="govuk-error-message">
+        Select which types of waste you transport regularly
+      </span>
+
+      <div class="govuk-checkboxes">
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="waste-1" name="waste" type="checkbox" value="animal">
+          <label class="govuk-label govuk-checkboxes__label" for="waste-1">
+            Waste from animal carcasses
+          </label>
+        </div>
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="waste-2" name="waste" type="checkbox" value="mines">
+          <label class="govuk-label govuk-checkboxes__label" for="waste-2">
+            Waste from mines or quarries
+          </label>
+        </div>
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+          <label class="govuk-label govuk-checkboxes__label" for="waste-3">
+            Farm or agricultural waste
+          </label>
+        </div>
+
+      </div>
+      </fieldset>
+
+    </div>
+
+#### Macro
+
+    {% from "checkboxes/macro.njk" import govukCheckboxes %}
+
+    {{ govukCheckboxes({
+      "name": "waste",
+      "fieldset": {
+        "legend": {
+          "text": "Which types of waste do you transport regularly?",
+          "classes": "govuk-fieldset__legend--m"
+        }
+      },
+      "hint": {
+        "text": "Select all that apply"
+      },
+      "errorMessage": {
+        "text": "Select which types of waste you transport regularly"
       },
       "items": [
         {
@@ -446,7 +534,7 @@ Find out when to use the checkboxes component in your service in the [GOV.UK Des
       <fieldset class="govuk-fieldset" aria-describedby="waste-error">
 
       <legend class="govuk-fieldset__legend">
-        <h3 class="govuk-heading-m">Which types of waste do you transport regularly?</h3>
+        Which types of waste do you transport regularly?
       </legend>
 
       <span id="waste-error" class="govuk-error-message">
@@ -492,7 +580,7 @@ Find out when to use the checkboxes component in your service in the [GOV.UK Des
       },
       "fieldset": {
         "legend": {
-          "html": "<h3 class=\"govuk-heading-m\">Which types of waste do you transport regularly?</h3>"
+          "text": "Which types of waste do you transport regularly?"
         }
       },
       "items": [
