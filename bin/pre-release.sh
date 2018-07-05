@@ -1,8 +1,6 @@
 #!/bin/sh
 set -e
 
-LATEST_PUBLISHED_TAG=$(git describe --abbrev=0 --tags)
-
 npm run test
 npm run build:package
 npm run build:dist
@@ -11,7 +9,7 @@ ALL_PACKAGE_VERSION=$(node -p "require('./package/package.json').version")
 TAG="v$ALL_PACKAGE_VERSION"
 CURRENT_BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
 
-if [ "$LATEST_PUBLISHED_TAG" == "$TAG" ]; then
+if [ $(git tag -l "$TAG") ]; then
     echo "⚠️ Git tag already exists."
     exit 1;
 else
