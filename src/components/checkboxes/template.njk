@@ -59,7 +59,7 @@
       {{ govukLabel({
         html: item.html,
         text: item.text,
-        classes: 'govuk-checkboxes__label',
+        classes: 'govuk-checkboxes__label' + (' ' + item.label.classes if item.label.classes),
         attributes: item.label.attributes,
         for: id
       }) | indent(6) | trim }}
