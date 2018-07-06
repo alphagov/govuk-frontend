@@ -26,6 +26,15 @@
   `headingLevel: <number>` parameter. Default is `2`.
   ([PR #853](https://github.com/alphagov/govuk-frontend/pull/853))
 
+- Update date input component  
+
+  Allow the `name` and `id` attributes to be passed individually for each input item.
+
+  Rely on `classes` instead of item names to set the width of input items.
+
+  Add default (day, month, year) date input items if no items are being specified
+
+  ([PR #857](https://github.com/alphagov/govuk-frontend/pull/857))
 
 🔧 Fixes:
 

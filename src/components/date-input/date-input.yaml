@@ -11,10 +11,13 @@ examples:
     items:
       -
         name: day
+        classes: govuk-input--width-2
       -
         name: month
+        classes: govuk-input--width-2
       -
         name: year
+        classes: govuk-input--width-4
 - name: with errors
   data:
     id: dob-errors
@@ -28,13 +31,13 @@ examples:
     items:
       -
         name: day
-        classes: govuk-input--error
+        classes: govuk-input--width-2 govuk-input--error
       -
         name: month
-        classes: govuk-input--error
+        classes: govuk-input--width-2 govuk-input--error
       -
         name: year
-        classes: govuk-input--error
+        classes: govuk-input--width-4 govuk-input--error
 - name: with error on day input
   data:
     id: dob-day-error
@@ -49,11 +52,13 @@ examples:
     items:
       -
         name: day
-        classes: govuk-input--error
+        classes: govuk-input--width-2 govuk-input--error
       -
         name: month
+        classes: govuk-input--width-2
       -
         name: year
+        classes: govuk-input--width-4
 - name: with error on month input
   data:
     id: dob-month-error
@@ -68,11 +73,13 @@ examples:
     items:
       -
         name: day
+        classes: govuk-input--width-2
       -
         name: month
-        classes: govuk-input--error
+        classes: govuk-input--width-2 govuk-input--error
       -
         name: year
+        classes: govuk-input--width-4
 - name: with error on year input
   data:
     id: dob-year-error
@@ -87,8 +94,19 @@ examples:
     items:
       -
         name: day
+        classes: govuk-input--width-2
       -
         name: month
+        classes: govuk-input--width-2
       -
         name: year
-        classes: govuk-input--error
+        classes: govuk-input--width-4 govuk-input--error
+- name: with default items
+  data:
+    id: dob
+    name: dob
+    fieldset:
+      legend:
+        text: What is your date of birth?
+    hint:
+      text: For example, 31 3 1980

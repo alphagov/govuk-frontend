@@ -66,6 +66,16 @@ describe('Date input', () => {
       expect($items.length).toEqual(3)
     })
 
+    it('renders with default items', () => {
+      const $ = render('date-input', {})
+
+      const $items = $('.govuk-date-input__item')
+      const $firstItemInput = $('.govuk-date-input:first-child .govuk-date-input__input')
+
+      expect($items.length).toEqual(3)
+      expect($firstItemInput.attr('name')).toEqual('day')
+    })
+
     it('renders item with capitalised label text', () => {
       const $ = render('date-input', {
         items: [
@@ -149,6 +159,25 @@ describe('Date input', () => {
       expect($firstItems.hasClass('govuk-date-input__input')).toBeTruthy()
     })
 
+    it('renders items with name', () => {
+      const $ = render('date-input', {
+        items: [
+          {
+            'name': 'date[dd]'
+          },
+          {
+            'name': 'date[mm]'
+          },
+          {
+            'name': 'date[yyy]'
+          }
+        ]
+      })
+
+      const $firstItems = $('.govuk-date-input__item:first-child input')
+      expect($firstItems.attr('name')).toEqual('date[dd]')
+    })
+
     it('renders item with suffixed name for input', () => {
       const $ = render('date-input', {
         name: 'my-date-input',
@@ -167,6 +196,25 @@ describe('Date input', () => {
 
       const $firstItems = $('.govuk-date-input__item:first-child input')
       expect($firstItems.attr('name')).toEqual('my-date-input-day')
+    })
+
+    it('renders items with id', () => {
+      const $ = render('date-input', {
+        items: [
+          {
+            'id': 'day'
+          },
+          {
+            'id': 'month'
+          },
+          {
+            'id': 'year'
+          }
+        ]
+      })
+
+      const $firstItems = $('.govuk-date-input__item:first-child input')
+      expect($firstItems.attr('id')).toEqual('day')
     })
 
     it('renders item with suffixed id for input', () => {

@@ -13,7 +13,6 @@
   }
 
   .govuk-date-input__item {
-    width: 50px;
     margin-right: govuk-spacing(4);
     margin-bottom: 0;
     float: left;
@@ -27,9 +26,5 @@
 
   .govuk-date-input__input {
     margin-bottom: 0;
-  }
-
-  .govuk-date-input__item--year {
-    width: 70px;
   }
 }
