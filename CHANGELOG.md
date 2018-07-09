@@ -75,7 +75,13 @@
 
 - Fixes a bug where the phase banner incorrectly uses a font-size of 19px when
   global styles are enabled
-  ([PR #877}])https://github.com/alphagov/govuk-frontend/pull/877
+  ([PR #877](https://github.com/alphagov/govuk-frontend/pull/877))
+
+- Add outlines to Radios and Checkboxes for customised colour users
+
+  Now when a [user customises their colours](https://accessibility.blog.gov.uk/2017/03/27/how-users-change-colours-on-websites/),
+  they should see a focus state on both Radios and Checkboxes.
+  ([PR #854](https://github.com/alphagov/govuk-frontend/pull/854))
 
 🏠 Internal:
 
