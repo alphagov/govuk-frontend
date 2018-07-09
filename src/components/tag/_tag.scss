@@ -9,6 +9,12 @@
     display: inline-block;
     padding: govuk-spacing(1) 8px 0;
 
+    // When a user customises their colours often the background is removed,
+    // by adding a outline we ensure that the tag component still keeps it's meaning.
+    // https://accessibility.blog.gov.uk/2017/03/27/how-users-change-colours-on-websites/
+    outline: 2px solid transparent;
+    outline-offset: -2px;
+
     color: govuk-colour("white");
     background-color: govuk-colour("blue");
     letter-spacing: 1px;

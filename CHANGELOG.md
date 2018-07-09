@@ -83,6 +83,12 @@
   they should see a focus state on both Radios and Checkboxes.
   ([PR #854](https://github.com/alphagov/govuk-frontend/pull/854))
 
+- Add outline to tag for customised colour users
+
+  Now when a [user customises their colours](https://accessibility.blog.gov.uk/2017/03/27/how-users-change-colours-on-websites/),
+  the tag component still keeps it's meaning.
+  ([PR #855](https://github.com/alphagov/govuk-frontend/pull/855))
+
 🏠 Internal:
 
 - Fix Design System url in package READMEs and review app
