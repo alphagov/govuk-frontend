@@ -34,6 +34,7 @@
   }
 
   .govuk-header__container {
+    @include govuk-clearfix;
     position: relative;
     margin-bottom: -$govuk-header-border-width;
     padding-top: govuk-spacing(2);
@@ -122,17 +123,17 @@
     padding-right: govuk-spacing(8);
 
     @include mq ($from: desktop) {
-      display: inline-block;
       width: 33.33%;
       padding-right: 0;
+      float: left;
       vertical-align: top;
     }
   }
 
   .govuk-header__content {
     @include mq ($from: desktop) {
-      display: inline-block;
       width: 66.66%;
+      float: left;
     }
   }
 
