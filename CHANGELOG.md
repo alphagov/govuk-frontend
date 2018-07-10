@@ -36,6 +36,21 @@
 
   ([PR #857](https://github.com/alphagov/govuk-frontend/pull/857))
 
+- The typography scale can now be converted from pixels to rem automatically,
+  with pixels also being provided as a fallback for older browsers.
+
+  This feature is disabled by default - in order to use it you will need to set
+  `$govuk-typography-use-rem: true` and ensure that `$govuk-root-font-size` is
+  set to the effective size of your root (html) element. For new projects, this
+  should be the default of 16px so you don't have to do anything. For projects
+  that use alphagov/govuk_template this should be 10px.
+
+  The intention is to enable this by default in the next major version:
+  https://github.com/alphagov/govuk-frontend/issues/868
+
+  ([PR #858](https://github.com/alphagov/govuk-frontend/pull/858))
+
+
 🔧 Fixes:
 
 - Apply `display:block` to `.govuk-main-wrapper`
