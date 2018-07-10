@@ -2,7 +2,8 @@
 /// @group settings/typography
 ////
 
-/// Whether or not to define font sizes in rem. This is currently off by
+/// Whether or not to define font sizes in rem, improving accessibility by
+/// allowing users to adjust the base font-size. This is currently off by
 /// default, but will be enabled by default for projects that do not use
 /// alphagov/govuk_template in the next major release.
 ///

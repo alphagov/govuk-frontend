@@ -4,8 +4,8 @@
 
 /// Convert pixels to rem
 ///
-/// The $govuk-root-font-size must match the font-size on your root (html)
-/// element
+/// The $govuk-root-font-size (defined in settings/_typography-responsive.scss)
+/// must be configured to match the font-size of your root (html) element
 ///
 /// @param {Number} $value - Length in pixels
 /// @return {Number} Length in rems
