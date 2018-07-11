@@ -53,6 +53,10 @@
 
 🔧 Fixes:
 
+- Remove mistakenly applied 5px bottom margin from radio and checkbox
+  labels.
+  ([PR #883](https://github.com/alphagov/govuk-frontend/pull/883))
+
 - Apply `display:block` to `.govuk-main-wrapper`
 
   In IE11 `main` element is set to `display:inline` so padding
