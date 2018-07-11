@@ -45,9 +45,8 @@ Find out when to use the header component in your service in the [GOV.UK Design 
             </span>
 
           </a>
-        </div><div class="govuk-header__content">
-
         </div>
+
       </div>
     </header>
 
@@ -92,13 +91,16 @@ Find out when to use the header component in your service in the [GOV.UK Design 
             </span>
 
           </a>
-        </div><div class="govuk-header__content">
+        </div>
+
+        <div class="govuk-header__content">
 
         <a href="/components/header" class="govuk-header__link govuk-header__link--service-name">
           Service Name
         </a>
 
         </div>
+
       </div>
     </header>
 
@@ -146,7 +148,9 @@ Find out when to use the header component in your service in the [GOV.UK Design 
             </span>
 
           </a>
-        </div><div class="govuk-header__content">
+        </div>
+
+        <div class="govuk-header__content">
 
         <button role="button" class="govuk-header__menu-button js-header-toggle" aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu</button>
         <nav>
@@ -180,6 +184,7 @@ Find out when to use the header component in your service in the [GOV.UK Design 
         </nav>
 
         </div>
+
       </div>
     </header>
 
@@ -244,7 +249,9 @@ Find out when to use the header component in your service in the [GOV.UK Design 
             </span>
 
           </a>
-        </div><div class="govuk-header__content">
+        </div>
+
+        <div class="govuk-header__content">
 
         <a href="/components/header" class="govuk-header__link govuk-header__link--service-name">
           Service Name
@@ -282,6 +289,7 @@ Find out when to use the header component in your service in the [GOV.UK Design 
         </nav>
 
         </div>
+
       </div>
     </header>
 

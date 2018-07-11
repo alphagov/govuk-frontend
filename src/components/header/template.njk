@@ -52,9 +52,11 @@
         </span>
         {% endif %}
       </a>
-    </div><div class="govuk-header__content">
+    </div>
+    {% if params.serviceName or params.navigation  %}
+    <div class="govuk-header__content">
 
-    {% if (params.serviceName) %}
+    {% if params.serviceName %}
     <a href="{{ params.serviceUrl }}" class="govuk-header__link govuk-header__link--service-name">
       {{ params.serviceName }}
     </a>
@@ -76,7 +78,7 @@
       </ul>
     </nav>
     {% endif %}
-
     </div>
+    {% endif %}
   </div>
 </header>
