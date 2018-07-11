@@ -99,6 +99,15 @@
 
   ([PR #845](https://github.com/alphagov/govuk-frontend/pull/845))
 
+- Fix header component's reliance on markup whitespace
+
+  We have had issues where the header component can render incorrectly if the markup contains whitespace,
+  for example if it has been pretty printed.
+
+  This changes the header component to use float based columns similar to how the grid system works.
+
+  ([PR #884](httqps://github.com/alphagov/govuk-frontend/pull/884))
+
 🏠 Internal:
 
 - Fix Design System url in package READMEs and review app
