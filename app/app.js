@@ -75,10 +75,12 @@ module.exports = (options) => {
 
     res.locals.componentData = components.map(componentName => {
       let componentData = fileHelper.getComponentData(componentName)
-      let firstExample = componentData.examples[0]
+      let defaultExample = componentData.examples.find(
+        example => example.name === 'default'
+      )
       return {
         componentName,
-        examples: [firstExample]
+        examples: [defaultExample]
       }
     })
     res.render(`all-components`, function (error, html) {
