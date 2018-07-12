@@ -115,6 +115,10 @@
         padding-left: govuk-spacing(4);
         border: 1px solid $govuk-border-colour;
         border-top: 0;
+
+        & > :last-child {
+          margin-bottom: 0;
+        }
       }
     }
 
