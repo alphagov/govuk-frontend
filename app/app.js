@@ -69,6 +69,27 @@ module.exports = (options) => {
     next()
   })
 
+  // All components view
+  app.get('/components/all', function (req, res, next) {
+    const components = fileHelper.allComponents
+
+    res.locals.componentData = components.map(componentName => {
+      let componentData = fileHelper.getComponentData(componentName)
+      let firstExample = componentData.examples[0]
+      return {
+        componentName,
+        examples: [firstExample]
+      }
+    })
+    res.render(`all-components`, function (error, html) {
+      if (error) {
+        next(error)
+      } else {
+        res.send(html)
+      }
+    })
+  })
+
   // Component 'README' page
   app.get('/components/:component', function (req, res, next) {
     // make variables available to nunjucks template
@@ -114,27 +135,6 @@ module.exports = (options) => {
     }
 
     res.render('component-preview', { bodyClasses, previewLayout })
-  })
-
-  // All components view
-  app.get('/examples/all-components', function (req, res, next) {
-    const components = fileHelper.allComponents
-
-    res.locals.componentData = components.map(componentName => {
-      let componentData = fileHelper.getComponentData(componentName)
-      let firstExample = componentData.examples[0]
-      return {
-        componentName,
-        examples: [firstExample]
-      }
-    })
-    res.render(`all-components/index`, function (error, html) {
-      if (error) {
-        next(error)
-      } else {
-        res.send(html)
-      }
-    })
   })
 
   // Example view
