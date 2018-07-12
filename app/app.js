@@ -116,6 +116,27 @@ module.exports = (options) => {
     res.render('component-preview', { bodyClasses, previewLayout })
   })
 
+  // All components view
+  app.get('/examples/all-components', function (req, res, next) {
+    const components = fileHelper.allComponents
+
+    res.locals.componentData = components.map(componentName => {
+      let componentData = fileHelper.getComponentData(componentName)
+      let firstExample = componentData.examples[0]
+      return {
+        componentName,
+        examples: [firstExample]
+      }
+    })
+    res.render(`all-components/index`, function (error, html) {
+      if (error) {
+        next(error)
+      } else {
+        res.send(html)
+      }
+    })
+  })
+
   // Example view
   app.get('/examples/:example', function (req, res, next) {
     res.render(`${req.params.example}/index`, function (error, html) {
