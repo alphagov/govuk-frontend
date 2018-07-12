@@ -4,7 +4,6 @@ const nunjucks = require('nunjucks')
 const util = require('util')
 const fs = require('fs')
 const path = require('path')
-const yaml = require('js-yaml')
 
 const readdir = util.promisify(fs.readdir)
 
@@ -66,16 +65,31 @@ module.exports = (options) => {
   // Whenever the route includes a :component parameter, read the component data
   // from its YAML file
   app.param('component', function (req, res, next, componentName) {
-    let yamlPath = path.join(configPaths.components, componentName, `${componentName}.yaml`)
+    res.locals.componentData = fileHelper.getComponentData(componentName)
+    next()
+  })
 
-    try {
-      res.locals.componentData = yaml.safeLoad(
-        fs.readFileSync(yamlPath, 'utf8'), { json: true }
+  // All components view
+  app.get('/components/all', function (req, res, next) {
+    const components = fileHelper.allComponents
+
+    res.locals.componentData = components.map(componentName => {
+      let componentData = fileHelper.getComponentData(componentName)
+      let defaultExample = componentData.examples.find(
+        example => example.name === 'default'
       )
-      next()
-    } catch (e) {
-      next(new Error('failed to load component YAML file'))
-    }
+      return {
+        componentName,
+        examples: [defaultExample]
+      }
+    })
+    res.render(`all-components`, function (error, html) {
+      if (error) {
+        next(error)
+      } else {
+        res.send(html)
+      }
+    })
   })
 
   // Component 'README' page

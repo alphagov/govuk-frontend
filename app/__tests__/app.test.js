@@ -16,7 +16,7 @@ const requestParamsHomepage = {
 }
 
 const requestParamsExampleAllComponents = {
-  url: `http://localhost:${PORT}/examples/all-components`,
+  url: `http://localhost:${PORT}/components/all`,
   headers: {
     'Content-Type': 'text/plain'
   }
@@ -90,7 +90,10 @@ describe('frontend app', () => {
       request.get(requestParamsHomepage, (err, res) => {
         let $ = cheerio.load(res.body)
         let componentsList = $('li a[href^="/components/"]').get()
-        expect(componentsList.length).toEqual(lib.allComponents.length)
+        // Since we have an 'all' component link that renders the default example of all
+        // components, there will always be one more expected link.
+        let expectedComponentLinks = lib.allComponents.length + 1
+        expect(componentsList.length).toEqual(expectedComponentLinks)
         done(err)
       })
     })

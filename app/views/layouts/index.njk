@@ -11,9 +11,10 @@
       <h2 class="govuk-heading-m">Components</h2>
 
       <ul class="govuk-list">
-      {% for componentName in componentsDirectory | sort %}
-        <li><a href="/components/{{ componentName }}" class="govuk-link">{{ componentName | replace("-", " ") | capitalize }}</a></li>
-      {% endfor %}
+        <li><a href="/components/all" class="govuk-link">All</a></li>
+        {% for componentName in componentsDirectory | sort %}
+          <li><a href="/components/{{ componentName }}" class="govuk-link">{{ componentName | replace("-", " ") | capitalize }}</a></li>
+        {% endfor %}
       </ul>
     </div>
 

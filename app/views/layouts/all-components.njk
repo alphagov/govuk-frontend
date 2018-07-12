@@ -1,0 +1,27 @@
+{% extends "full-width.njk" %}
+
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "macros/showExamples.njk" import showExamples %}
+
+{% set bodyClasses %}
+  language-markup
+{% endset %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    "href": "/"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    <h1 class="govuk-heading-xl">
+      All components
+    </h1>
+  </div>
+  {% for data in componentData %}
+    {% set componentName = data.componentName %}
+    {% set componentNameHuman = componentName | replace("-", " ") %}
+    {{ showExamples(componentName, componentNameHuman, data) }}
+  {% endfor %}
+{% endblock %}
