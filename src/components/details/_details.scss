@@ -80,7 +80,7 @@
     margin-bottom: govuk-spacing(4);
   }
 
-  .govuk-details__text p:last-child {
+  .govuk-details__text > :last-child {
     margin-bottom: 0;
   }
 }
