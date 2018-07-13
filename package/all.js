@@ -1710,6 +1710,8 @@ function initAll () {
   });
 }
 
+console.log('already in package/');
+
 exports.initAll = initAll;
 exports.Button = Button;
 exports.Details = Details;
