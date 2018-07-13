@@ -68,7 +68,6 @@ This will:
   - add release notes from changelog
   - add a summary of highlights (this will be used when sending comms out)
   - attach the generated ZIP that has been generated at the root of the project
-  - mark the release as a pre-release
   - publish release
 
 16. Log out from npm
