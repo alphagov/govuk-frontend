@@ -6,13 +6,13 @@ Component to show a red error message - used for form validation. Use inside a l
 
 ## Guidance
 
-Find out when to use the Error message component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/error-message).
+Find out when to use the error message component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/error-message).
 
 ## Quick start examples
 
-### Component default
+### Error message
 
-[Preview the error-message component](http://govuk-frontend-review.herokuapp.com/components/error-message/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/error-message/preview)
 
 #### Markup
 
@@ -22,7 +22,7 @@ Find out when to use the Error message component in your service in the [GOV.UK 
 
 #### Macro
 
-    {% from 'error-message/macro.njk' import govukErrorMessage %}
+    {% from "error-message/macro.njk" import govukErrorMessage %}
 
     {{ govukErrorMessage({
       "text": "Error message about full name goes here"

@@ -6,13 +6,13 @@ The Breadcrumbs component helps users to understand where they are within a webs
 
 ## Guidance
 
-Find out when to use the Breadcrumbs component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/breadcrumbs).
+Find out when to use the breadcrumbs component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/breadcrumbs).
 
 ## Quick start examples
 
-### Component default
+### Breadcrumbs
 
-[Preview the breadcrumbs component](http://govuk-frontend-review.herokuapp.com/components/breadcrumbs/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/breadcrumbs/preview)
 
 #### Markup
 
@@ -20,7 +20,7 @@ Find out when to use the Breadcrumbs component in your service in the [GOV.UK De
       <ol class="govuk-breadcrumbs__list">
 
         <li class="govuk-breadcrumbs__list-item">
-          <a class="govuk-breadcrumbs__link" href="/section">Section 1</a>
+          <a class="govuk-breadcrumbs__link" href="/section">Section</a>
         </li>
 
         <li class="govuk-breadcrumbs__list-item">
@@ -32,12 +32,12 @@ Find out when to use the Breadcrumbs component in your service in the [GOV.UK De
 
 #### Macro
 
-    {% from 'breadcrumbs/macro.njk' import govukBreadcrumbs %}
+    {% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
 
     {{ govukBreadcrumbs({
       "items": [
         {
-          "text": "Section 1",
+          "text": "Section",
           "href": "/section"
         },
         {
@@ -47,9 +47,9 @@ Find out when to use the Breadcrumbs component in your service in the [GOV.UK De
       ]
     }) }}
 
-### Breadcrumbs--single-section
+### Breadcrumbs with one level
 
-[Preview the breadcrumbs--single-section example](http://govuk-frontend-review.herokuapp.com/components/breadcrumbs/single-section/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/breadcrumbs/with-one-level/preview)
 
 #### Markup
 
@@ -57,7 +57,7 @@ Find out when to use the Breadcrumbs component in your service in the [GOV.UK De
       <ol class="govuk-breadcrumbs__list">
 
         <li class="govuk-breadcrumbs__list-item">
-          <a class="govuk-breadcrumbs__link" href="/section">Section 1</a>
+          <a class="govuk-breadcrumbs__link" href="/section">Section</a>
         </li>
 
       </ol>
@@ -65,20 +65,20 @@ Find out when to use the Breadcrumbs component in your service in the [GOV.UK De
 
 #### Macro
 
-    {% from 'breadcrumbs/macro.njk' import govukBreadcrumbs %}
+    {% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
 
     {{ govukBreadcrumbs({
       "items": [
         {
-          "text": "Section 1",
+          "text": "Section",
           "href": "/section"
         }
       ]
     }) }}
 
-### Breadcrumbs--many-breadcrumbs
+### Breadcrumbs with multiple levels
 
-[Preview the breadcrumbs--many-breadcrumbs example](http://govuk-frontend-review.herokuapp.com/components/breadcrumbs/many-breadcrumbs/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/breadcrumbs/with-multiple-levels/preview)
 
 #### Markup
 
@@ -90,15 +90,15 @@ Find out when to use the Breadcrumbs component in your service in the [GOV.UK De
         </li>
 
         <li class="govuk-breadcrumbs__list-item">
-          <a class="govuk-breadcrumbs__link" href="/section">Section 3</a>
+          <a class="govuk-breadcrumbs__link" href="/section">Section</a>
         </li>
 
         <li class="govuk-breadcrumbs__list-item">
-          <a class="govuk-breadcrumbs__link" href="/section/sub-section">Sub-section 1</a>
+          <a class="govuk-breadcrumbs__link" href="/section/sub-section">Sub-section</a>
         </li>
 
         <li class="govuk-breadcrumbs__list-item">
-          <a class="govuk-breadcrumbs__link" href="/section/sub-section/sub-sub-section">Sub Sub-section 1</a>
+          <a class="govuk-breadcrumbs__link" href="/section/sub-section/sub-sub-section">Sub Sub-section</a>
         </li>
 
       </ol>
@@ -106,7 +106,7 @@ Find out when to use the Breadcrumbs component in your service in the [GOV.UK De
 
 #### Macro
 
-    {% from 'breadcrumbs/macro.njk' import govukBreadcrumbs %}
+    {% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
 
     {{ govukBreadcrumbs({
       "items": [
@@ -115,23 +115,23 @@ Find out when to use the Breadcrumbs component in your service in the [GOV.UK De
           "href": "/"
         },
         {
-          "text": "Section 3",
+          "text": "Section",
           "href": "/section"
         },
         {
-          "text": "Sub-section 1",
+          "text": "Sub-section",
           "href": "/section/sub-section"
         },
         {
-          "text": "Sub Sub-section 1",
+          "text": "Sub Sub-section",
           "href": "/section/sub-section/sub-sub-section"
         }
       ]
     }) }}
 
-### Breadcrumbs--no-home-section
+### Breadcrumbs without the home section
 
-[Preview the breadcrumbs--no-home-section example](http://govuk-frontend-review.herokuapp.com/components/breadcrumbs/no-home-section/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/breadcrumbs/without-the-home-section/preview)
 
 #### Markup
 
@@ -151,7 +151,7 @@ Find out when to use the Breadcrumbs component in your service in the [GOV.UK De
 
 #### Macro
 
-    {% from 'breadcrumbs/macro.njk' import govukBreadcrumbs %}
+    {% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
 
     {{ govukBreadcrumbs({
       "items": [
@@ -166,9 +166,9 @@ Find out when to use the Breadcrumbs component in your service in the [GOV.UK De
       ]
     }) }}
 
-### Breadcrumbs--last-breadcrumb-is-current-page
+### Breadcrumbs with last breadcrumb as current page
 
-[Preview the breadcrumbs--last-breadcrumb-is-current-page example](http://govuk-frontend-review.herokuapp.com/components/breadcrumbs/last-breadcrumb-is-current-page/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/breadcrumbs/with-last-breadcrumb-as-current-page/preview)
 
 #### Markup
 
@@ -190,7 +190,7 @@ Find out when to use the Breadcrumbs component in your service in the [GOV.UK De
 
 #### Macro
 
-    {% from 'breadcrumbs/macro.njk' import govukBreadcrumbs %}
+    {% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
 
     {{ govukBreadcrumbs({
       "items": [

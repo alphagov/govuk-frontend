@@ -10,6 +10,9 @@
 @include govuk-exports("govuk/component/radios") {
   $govuk-radios-size: govuk-spacing(7);
   $govuk-radios-label-padding-left-right: govuk-spacing(3);
+  // When the default focus width is used on a curved edge it looks visually smaller.
+  // So for the circular radios we bump the default to make it look visually consistent.
+  $govuk-radios-focus-width: $govuk-focus-width + 1px;
 
   .govuk-radios__item {
     @include govuk-font($size: 19);
@@ -58,7 +61,8 @@
   }
 
   .govuk-radios__label {
-    display: block;
+    display: inline-block;
+    margin-bottom: 0;
     padding: 8px $govuk-radios-label-padding-left-right govuk-spacing(1);
     cursor: pointer;
     // remove 300ms pause on mobile
@@ -100,8 +104,13 @@
 
   // Focused state
   .govuk-radios__input:focus + .govuk-radios__label::before {
-    -webkit-box-shadow: 0 0 0 4px $govuk-focus-colour;
-            box-shadow: 0 0 0 4px $govuk-focus-colour;
+    // Since box-shadows are removed when users customise their colours
+    // We set a transparent outline that is shown instead.
+    // https://accessibility.blog.gov.uk/2017/03/27/how-users-change-colours-on-websites/
+    outline: $govuk-focus-width solid transparent;
+    outline-offset: $govuk-focus-width;
+    -webkit-box-shadow: 0 0 0 $govuk-radios-focus-width $govuk-focus-colour;
+            box-shadow: 0 0 0 $govuk-radios-focus-width $govuk-focus-colour;
   }
 
   // Selected state

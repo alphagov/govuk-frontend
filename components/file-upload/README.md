@@ -6,13 +6,13 @@ The HTML `<input>` element with type="file" lets a user pick one or more files, 
 
 ## Guidance
 
-Find out when to use the File upload component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/file-upload).
+Find out when to use the file upload component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/file-upload).
 
 ## Quick start examples
 
-### Component default
+### File upload
 
-[Preview the file-upload component](http://govuk-frontend-review.herokuapp.com/components/file-upload/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/file-upload/preview)
 
 #### Markup
 
@@ -26,7 +26,7 @@ Find out when to use the File upload component in your service in the [GOV.UK De
 
 #### Macro
 
-    {% from 'file-upload/macro.njk' import govukFileUpload %}
+    {% from "file-upload/macro.njk" import govukFileUpload %}
 
     {{ govukFileUpload({
       "id": "file-upload-1",
@@ -36,9 +36,9 @@ Find out when to use the File upload component in your service in the [GOV.UK De
       }
     }) }}
 
-### File-upload--with-hint-text
+### File upload with hint text
 
-[Preview the file-upload--with-hint-text example](http://govuk-frontend-review.herokuapp.com/components/file-upload/with-hint-text/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/file-upload/with-hint-text/preview)
 
 #### Markup
 
@@ -56,7 +56,7 @@ Find out when to use the File upload component in your service in the [GOV.UK De
 
 #### Macro
 
-    {% from 'file-upload/macro.njk' import govukFileUpload %}
+    {% from "file-upload/macro.njk" import govukFileUpload %}
 
     {{ govukFileUpload({
       "id": "file-upload-2",
@@ -69,9 +69,9 @@ Find out when to use the File upload component in your service in the [GOV.UK De
       }
     }) }}
 
-### File-upload--with-error-message
+### File upload with error message
 
-[Preview the file-upload--with-error-message example](http://govuk-frontend-review.herokuapp.com/components/file-upload/with-error-message/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/file-upload/with-error-message/preview)
 
 #### Markup
 
@@ -93,7 +93,7 @@ Find out when to use the File upload component in your service in the [GOV.UK De
 
 #### Macro
 
-    {% from 'file-upload/macro.njk' import govukFileUpload %}
+    {% from "file-upload/macro.njk" import govukFileUpload %}
 
     {{ govukFileUpload({
       "id": "file-upload-3",
@@ -109,9 +109,9 @@ Find out when to use the File upload component in your service in the [GOV.UK De
       }
     }) }}
 
-### File-upload--with-value-and-attributes
+### File upload with value and attributes
 
-[Preview the file-upload--with-value-and-attributes example](http://govuk-frontend-review.herokuapp.com/components/file-upload/with-value-and-attributes/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/file-upload/with-value-and-attributes/preview)
 
 #### Markup
 
@@ -125,7 +125,7 @@ Find out when to use the File upload component in your service in the [GOV.UK De
 
 #### Macro
 
-    {% from 'file-upload/macro.njk' import govukFileUpload %}
+    {% from "file-upload/macro.njk" import govukFileUpload %}
 
     {{ govukFileUpload({
       "id": "file-upload-4",
@@ -139,9 +139,9 @@ Find out when to use the File upload component in your service in the [GOV.UK De
       }
     }) }}
 
-### File-upload--with-label-as-page-heading
+### File upload with label as page heading
 
-[Preview the file-upload--with-label-as-page-heading example](http://govuk-frontend-review.herokuapp.com/components/file-upload/with-label-as-page-heading/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/file-upload/with-label-as-page-heading/preview)
 
 #### Markup
 
@@ -158,7 +158,7 @@ Find out when to use the File upload component in your service in the [GOV.UK De
 
 #### Macro
 
-    {% from 'file-upload/macro.njk' import govukFileUpload %}
+    {% from "file-upload/macro.njk" import govukFileUpload %}
 
     {{ govukFileUpload({
       "id": "file-upload-1",

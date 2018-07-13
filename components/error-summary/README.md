@@ -6,13 +6,13 @@ Component to show an error summary box - used at the top of the page, to summari
 
 ## Guidance
 
-Find out when to use the Error summary component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/error-summary).
+Find out when to use the error summary component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/error-summary).
 
 ## Quick start examples
 
-### Component default
+### Error summary
 
-[Preview the error-summary component](http://govuk-frontend-review.herokuapp.com/components/error-summary/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/error-summary/preview)
 
 #### Markup
 
@@ -46,7 +46,7 @@ Find out when to use the Error summary component in your service in the [GOV.UK 
 
 #### Macro
 
-    {% from 'error-summary/macro.njk' import govukErrorSummary %}
+    {% from "error-summary/macro.njk" import govukErrorSummary %}
 
     {{ govukErrorSummary({
       "titleText": "Message to alert the user to a problem goes here",
@@ -58,7 +58,7 @@ Find out when to use the Error summary component in your service in the [GOV.UK 
           "href": "#example-error-1"
         },
         {
-          "html": "Descriptive link to the question with an error",
+          "text": "Descriptive link to the question with an error",
           "href": "#example-error-1"
         }
       ]
