@@ -22,11 +22,9 @@
 
 🔧 Fixes:
 
-- Pull Request Title goes here
+- Update details behaviour to remove margin-bottom for all elements
 
-  Description goes here (optional)
-
-  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+  ([PR #900](https://github.com/alphagov/govuk-frontend/pull/900))
 
 ## 1.1.0 (feature release)
 
