@@ -631,7 +631,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-table__cell ">Yes</td>
 
-<td class="govuk-table__cell ">Optional item-specific name attribute. If provided, it will be used instead of the generated name.</td>
+<td class="govuk-table__cell ">Item-specific name attribute.</td>
 
 </tr>
 
