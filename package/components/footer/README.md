@@ -6,13 +6,13 @@ The footer component is used at the bottom of every GOV.UK page, to help users n
 
 ## Guidance
 
-Find out when to use the Footer component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/footer).
+Find out when to use the footer component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/footer).
 
 ## Quick start examples
 
-### Component default
+### Footer
 
-[Preview the footer component](http://govuk-frontend-review.herokuapp.com/components/footer/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/footer/preview)
 
 #### Markup
 
@@ -48,7 +48,7 @@ Find out when to use the Footer component in your service in the [GOV.UK Design 
           <div class="govuk-footer__meta-item">
             <a
               class="govuk-footer__link govuk-footer__copyright-logo"
-              href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/"
+              href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/"
             >© Crown copyright</a>
           </div>
         </div>
@@ -57,7 +57,7 @@ Find out when to use the Footer component in your service in the [GOV.UK Design 
 
 #### Macro
 
-    {% from 'footer/macro.njk' import govukFooter %}
+    {% from "footer/macro.njk" import govukFooter %}
 
     {{ govukFooter({}) }}
 

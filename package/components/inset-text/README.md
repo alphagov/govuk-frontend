@@ -6,9 +6,9 @@ Use bordered inset text to draw attention to important content on the page.
 
 ## Quick start examples
 
-### Component default
+### Inset text
 
-[Preview the inset-text component](http://govuk-frontend-review.herokuapp.com/components/inset-text/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/inset-text/preview)
 
 #### Markup
 
@@ -18,15 +18,15 @@ Use bordered inset text to draw attention to important content on the page.
 
 #### Macro
 
-    {% from 'inset-text/macro.njk' import govukInsetText %}
+    {% from "inset-text/macro.njk" import govukInsetText %}
 
     {{ govukInsetText({
       "text": "It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application."
     }) }}
 
-### Inset-text--with html
+### Inset text with html
 
-[Preview the inset-text--with html example](http://govuk-frontend-review.herokuapp.com/components/inset-text/with html/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/inset-text/with-html/preview)
 
 #### Markup
 
@@ -36,7 +36,7 @@ Use bordered inset text to draw attention to important content on the page.
 
 #### Macro
 
-    {% from 'inset-text/macro.njk' import govukInsetText %}
+    {% from "inset-text/macro.njk" import govukInsetText %}
 
     {{ govukInsetText({
       "html": "It can take up to 8 weeks to register a <a class=\"govuk-link\" href=\"#\">lasting power of attorney</a> if there are no mistakes in the application."

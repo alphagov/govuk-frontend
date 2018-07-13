@@ -7,11 +7,30 @@
    aria-describedby – for example hints or error messages -#}
 {% set describedBy = "" %}
 
+{% if params.items %}
+  {% set dateInputItems = params.items %}
+{% else %}
+  {% set dateInputItems = [
+    {
+      name: "day",
+      classes: "govuk-input--width-2"
+    },
+    {
+      name: "month",
+      classes: "govuk-input--width-2"
+    },
+    {
+      name: "year",
+      classes: "govuk-input--width-4"
+    }
+  ] %}
+{% endif %}
+
 {#- Capture the HTML so we can optionally nest it in a fieldset -#}
 {% set innerHtml %}
 {% if params.hint %}
-  {% set hintId = params.id + '-hint' %}
-  {% set describedBy = describedBy + ' ' + hintId if describedBy else hintId %}
+  {% set hintId = params.id + "-hint" %}
+  {% set describedBy = describedBy + " " + hintId if describedBy else hintId %}
   {{ govukHint({
     id: hintId,
     classes: params.hint.classes,
@@ -21,8 +40,8 @@
   }) | indent(2) | trim }}
 {% endif %}
 {% if params.errorMessage %}
-  {% set errorId = params.id + '-error' %}
-  {% set describedBy = describedBy + ' ' + errorId if describedBy else errorId %}
+  {% set errorId = params.id + "-error" %}
+  {% set describedBy = describedBy + " " + errorId if describedBy else errorId %}
   {{ govukErrorMessage({
     id: errorId,
     classes: params.errorMessage.classes,
@@ -33,20 +52,24 @@
   <div class="govuk-date-input {%- if params.classes %} {{ params.classes }}{% endif %}"
     {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}
     {%- if params.id %} id="{{ params.id }}"{% endif %}>
-    {% for item in params.items %}
-    <div class="govuk-date-input__item govuk-date-input__item--{{ item.name }}">
+    {% for item in dateInputItems %}
+
+    {# @todo Remove this definition and any mentions of it on the next breaking release #}
+    {% set inputWidthClass = 'govuk-input--width-4 ' if item.name == 'year' else 'govuk-input--width-2 ' %}
+
+    <div class="govuk-date-input__item">
       {{ govukInput({
-        "label":{
-          "text": item.name | capitalize,
-          "classes": 'govuk-date-input__label'
+        label: {
+          text: item.label if item.label else item.name | capitalize,
+          classes: "govuk-date-input__label"
         },
-        "id": params.id + "-" + item.name,
-        "classes": "govuk-date-input__input" + (" " + item.classes if item.classes),
-        "name": params.name + "-" + item.name,
-        "value": item.value,
-        "type": "number",
-        "attributes": {
-          "pattern": "[0-9]*"
+        id: item.id if item.id else (params.id + "-" + item.name),
+        classes: "govuk-date-input__input " + inputWidthClass + item.classes,
+        name: (params.name + "-" + item.name) if params.name else item.name,
+        value: item.value,
+        type: "number",
+        attributes: {
+          pattern: "[0-9]*"
         }
       }) | indent(6) | trim }}
     </div>
@@ -64,7 +87,7 @@
     describedBy: describedBy,
     classes: params.fieldset.classes,
     attributes: {
-      role: 'group'
+      role: "group"
     },
     legend: params.fieldset.legend
   }) %}

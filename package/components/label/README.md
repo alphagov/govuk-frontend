@@ -6,9 +6,9 @@ Use labels for all form fields.
 
 ## Quick start examples
 
-### Component default
+### Label
 
-[Preview the label component](http://govuk-frontend-review.herokuapp.com/components/label/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/label/preview)
 
 #### Markup
 
@@ -18,15 +18,15 @@ Use labels for all form fields.
 
 #### Macro
 
-    {% from 'label/macro.njk' import govukLabel %}
+    {% from "label/macro.njk" import govukLabel %}
 
     {{ govukLabel({
       "text": "National Insurance number"
     }) }}
 
-### Label--with bold text
+### Label with bold text
 
-[Preview the label--with bold text example](http://govuk-frontend-review.herokuapp.com/components/label/with bold text/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/label/with-bold-text/preview)
 
 #### Markup
 
@@ -36,16 +36,16 @@ Use labels for all form fields.
 
 #### Macro
 
-    {% from 'label/macro.njk' import govukLabel %}
+    {% from "label/macro.njk" import govukLabel %}
 
     {{ govukLabel({
       "classes": "govuk-label--s",
       "text": "National Insurance number"
     }) }}
 
-### Label--as page heading
+### Label as page heading
 
-[Preview the label--as page heading example](http://govuk-frontend-review.herokuapp.com/components/label/as page heading/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/label/as-page-heading/preview)
 
 #### Markup
 
@@ -58,7 +58,7 @@ Use labels for all form fields.
 
 #### Macro
 
-    {% from 'label/macro.njk' import govukLabel %}
+    {% from "label/macro.njk" import govukLabel %}
 
     {{ govukLabel({
       "text": "National Insurance number",

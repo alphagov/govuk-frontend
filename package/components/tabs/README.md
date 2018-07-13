@@ -6,13 +6,13 @@ Component for conditionally revealing content, using tabs and tabs panels.
 
 ## Guidance
 
-Find out when to use the Tabs component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/tabs).
+Find out when to use the tabs component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/tabs).
 
 ## Quick start examples
 
-### Component default
+### Tabs
 
-[Preview the tabs component](http://govuk-frontend-review.herokuapp.com/components/tabs/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/tabs/preview)
 
 #### Markup
 
@@ -177,7 +177,7 @@ Find out when to use the Tabs component in your service in the [GOV.UK Design Sy
 
 #### Macro
 
-    {% from 'tabs/macro.njk' import govukTabs %}
+    {% from "tabs/macro.njk" import govukTabs %}
 
     {{ govukTabs({
       "items": [

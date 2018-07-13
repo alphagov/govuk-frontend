@@ -6,13 +6,13 @@ Let users select one or more options.
 
 ## Guidance
 
-Find out when to use the Checkboxes component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/checkboxes).
+Find out when to use the checkboxes component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/checkboxes).
 
 ## Quick start examples
 
-### Component default
+### Checkboxes
 
-[Preview the checkboxes component](http://govuk-frontend-review.herokuapp.com/components/checkboxes/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/checkboxes/preview)
 
 #### Markup
 
@@ -58,7 +58,7 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
 #### Macro
 
-    {% from 'checkboxes/macro.njk' import govukCheckboxes %}
+    {% from "checkboxes/macro.njk" import govukCheckboxes %}
 
     {{ govukCheckboxes({
       "idPrefix": "nationality",
@@ -87,9 +87,9 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
       ]
     }) }}
 
-### Checkboxes--with-id-plus-name
+### Checkboxes with id and name
 
-[Preview the checkboxes--with-id-plus-name example](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-id-plus-name/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-id-and-name/preview)
 
 #### Markup
 
@@ -128,7 +128,7 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
 #### Macro
 
-    {% from 'checkboxes/macro.njk' import govukCheckboxes %}
+    {% from "checkboxes/macro.njk" import govukCheckboxes %}
 
     {{ govukCheckboxes({
       "fieldset": {
@@ -155,9 +155,9 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
       ]
     }) }}
 
-### Checkboxes--with-disabled
+### Checkboxes with disabled item
 
-[Preview the checkboxes--with-disabled example](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-disabled/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-disabled-item/preview)
 
 #### Markup
 
@@ -192,7 +192,7 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
 #### Macro
 
-    {% from 'checkboxes/macro.njk' import govukCheckboxes %}
+    {% from "checkboxes/macro.njk" import govukCheckboxes %}
 
     {{ govukCheckboxes({
       "name": "colours",
@@ -213,9 +213,9 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
       ]
     }) }}
 
-### Checkboxes--with-html
+### Checkboxes with legend as a page heading
 
-[Preview the checkboxes--with-html example](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-html/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-legend-as-a-page-heading/preview)
 
 #### Markup
 
@@ -223,8 +223,10 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
       <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
 
-      <legend class="govuk-fieldset__legend">
-        <h3 class="govuk-heading-m">Which types of waste do you transport regularly?</h3>
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <h1 class="govuk-fieldset__heading">
+          Which types of waste do you transport regularly?
+        </h1>
       </legend>
 
       <span id="waste-hint" class="govuk-hint">
@@ -261,13 +263,15 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
 #### Macro
 
-    {% from 'checkboxes/macro.njk' import govukCheckboxes %}
+    {% from "checkboxes/macro.njk" import govukCheckboxes %}
 
     {{ govukCheckboxes({
       "name": "waste",
       "fieldset": {
         "legend": {
-          "html": "<h3 class=\"govuk-heading-m\">Which types of waste do you transport regularly?</h3>"
+          "text": "Which types of waste do you transport regularly?",
+          "classes": "govuk-fieldset__legend--l",
+          "isPageHeading": true
         }
       },
       "hint": {
@@ -289,9 +293,93 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
       ]
     }) }}
 
-### Checkboxes--without-fieldset
+### Checkboxes with a medium legend
 
-[Preview the checkboxes--without-fieldset example](http://govuk-frontend-review.herokuapp.com/components/checkboxes/without-fieldset/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-a-medium-legend/preview)
+
+#### Markup
+
+    <div class="govuk-form-group govuk-form-group--error">
+
+      <fieldset class="govuk-fieldset" aria-describedby="waste-hint waste-error">
+
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+        Which types of waste do you transport regularly?
+      </legend>
+
+      <span id="waste-hint" class="govuk-hint">
+        Select all that apply
+      </span>
+
+      <span id="waste-error" class="govuk-error-message">
+        Select which types of waste you transport regularly
+      </span>
+
+      <div class="govuk-checkboxes">
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="waste-1" name="waste" type="checkbox" value="animal">
+          <label class="govuk-label govuk-checkboxes__label" for="waste-1">
+            Waste from animal carcasses
+          </label>
+        </div>
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="waste-2" name="waste" type="checkbox" value="mines">
+          <label class="govuk-label govuk-checkboxes__label" for="waste-2">
+            Waste from mines or quarries
+          </label>
+        </div>
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+          <label class="govuk-label govuk-checkboxes__label" for="waste-3">
+            Farm or agricultural waste
+          </label>
+        </div>
+
+      </div>
+      </fieldset>
+
+    </div>
+
+#### Macro
+
+    {% from "checkboxes/macro.njk" import govukCheckboxes %}
+
+    {{ govukCheckboxes({
+      "name": "waste",
+      "fieldset": {
+        "legend": {
+          "text": "Which types of waste do you transport regularly?",
+          "classes": "govuk-fieldset__legend--m"
+        }
+      },
+      "hint": {
+        "text": "Select all that apply"
+      },
+      "errorMessage": {
+        "text": "Select which types of waste you transport regularly"
+      },
+      "items": [
+        {
+          "value": "animal",
+          "text": "Waste from animal carcasses"
+        },
+        {
+          "value": "mines",
+          "text": "Waste from mines or quarries"
+        },
+        {
+          "value": "farm",
+          "text": "Farm or agricultural waste"
+        }
+      ]
+    }) }}
+
+### Checkboxes without fieldset
+
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/checkboxes/without-fieldset/preview)
 
 #### Markup
 
@@ -326,7 +414,7 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
 #### Macro
 
-    {% from 'checkboxes/macro.njk' import govukCheckboxes %}
+    {% from "checkboxes/macro.njk" import govukCheckboxes %}
 
     {{ govukCheckboxes({
       "name": "colours",
@@ -346,9 +434,9 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
       ]
     }) }}
 
-### Checkboxes--with-extreme-fieldset
+### Checkboxes with all fieldset attributes
 
-[Preview the checkboxes--with-extreme-fieldset example](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-extreme-fieldset/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-all-fieldset-attributes/preview)
 
 #### Markup
 
@@ -398,7 +486,7 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
 #### Macro
 
-    {% from 'checkboxes/macro.njk' import govukCheckboxes %}
+    {% from "checkboxes/macro.njk" import govukCheckboxes %}
 
     {{ govukCheckboxes({
       "idPrefix": "example",
@@ -435,9 +523,9 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
       ]
     }) }}
 
-### Checkboxes--with-error
+### Checkboxes with error message
 
-[Preview the checkboxes--with-error example](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-error/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-error-message/preview)
 
 #### Markup
 
@@ -446,7 +534,7 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
       <fieldset class="govuk-fieldset" aria-describedby="waste-error">
 
       <legend class="govuk-fieldset__legend">
-        <h3 class="govuk-heading-m">Which types of waste do you transport regularly?</h3>
+        Which types of waste do you transport regularly?
       </legend>
 
       <span id="waste-error" class="govuk-error-message">
@@ -483,7 +571,7 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
 
 #### Macro
 
-    {% from 'checkboxes/macro.njk' import govukCheckboxes %}
+    {% from "checkboxes/macro.njk" import govukCheckboxes %}
 
     {{ govukCheckboxes({
       "name": "waste",
@@ -492,7 +580,7 @@ Find out when to use the Checkboxes component in your service in the [GOV.UK Des
       },
       "fieldset": {
         "legend": {
-          "html": "<h3 class=\"govuk-heading-m\">Which types of waste do you transport regularly?</h3>"
+          "text": "Which types of waste do you transport regularly?"
         }
       },
       "items": [

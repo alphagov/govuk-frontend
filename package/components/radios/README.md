@@ -6,13 +6,13 @@ Let users select a single option from a list.
 
 ## Guidance
 
-Find out when to use the Radios component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/radios).
+Find out when to use the radios component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/radios).
 
 ## Quick start examples
 
-### Component default
+### Radios
 
-[Preview the radios component](http://govuk-frontend-review.herokuapp.com/components/radios/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/radios/preview)
 
 #### Markup
 
@@ -51,7 +51,7 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 
 #### Macro
 
-    {% from 'radios/macro.njk' import govukRadios %}
+    {% from "radios/macro.njk" import govukRadios %}
 
     {{ govukRadios({
       "idPrefix": "example",
@@ -77,36 +77,36 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
       ]
     }) }}
 
-### Radios--inline
+### Radios inline
 
-[Preview the radios--inline example](http://govuk-frontend-review.herokuapp.com/components/radios/inline/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/radios/inline/preview)
 
 #### Markup
 
     <div class="govuk-form-group">
 
-      <fieldset class="govuk-fieldset" aria-describedby="example-hint">
+      <fieldset class="govuk-fieldset" aria-describedby="example&#39;-hint">
 
       <legend class="govuk-fieldset__legend">
         Have you changed your name?
       </legend>
 
-      <span id="example-hint" class="govuk-hint">
+      <span id="example&#39;-hint" class="govuk-hint">
         This includes changing your last name or spelling your name differently.
       </span>
 
       <div class="govuk-radios govuk-radios--inline">
 
         <div class="govuk-radios__item">
-          <input class="govuk-radios__input" id="example-1" name="example" type="radio" value="yes">
-          <label class="govuk-label govuk-radios__label" for="example-1">
+          <input class="govuk-radios__input" id="example&#39;-1" name="example" type="radio" value="yes">
+          <label class="govuk-label govuk-radios__label" for="example&#39;-1">
             Yes
           </label>
         </div>
 
         <div class="govuk-radios__item">
-          <input class="govuk-radios__input" id="example-2" name="example" type="radio" value="no" checked>
-          <label class="govuk-label govuk-radios__label" for="example-2">
+          <input class="govuk-radios__input" id="example&#39;-2" name="example" type="radio" value="no" checked>
+          <label class="govuk-label govuk-radios__label" for="example&#39;-2">
             No
           </label>
         </div>
@@ -118,10 +118,10 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 
 #### Macro
 
-    {% from 'radios/macro.njk' import govukRadios %}
+    {% from "radios/macro.njk" import govukRadios %}
 
     {{ govukRadios({
-      "idPrefix": "example",
+      "idPrefix": "example'",
       "classes": "govuk-radios--inline",
       "name": "example",
       "fieldset": {
@@ -145,9 +145,9 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
       ]
     }) }}
 
-### Radios--with-disabled
+### Radios with disabled
 
-[Preview the radios--with-disabled example](http://govuk-frontend-review.herokuapp.com/components/radios/with-disabled/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/radios/with-disabled/preview)
 
 #### Markup
 
@@ -186,7 +186,7 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 
 #### Macro
 
-    {% from 'radios/macro.njk' import govukRadios %}
+    {% from "radios/macro.njk" import govukRadios %}
 
     {{ govukRadios({
       "idPrefix": "example-disabled",
@@ -213,9 +213,9 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
       ]
     }) }}
 
-### Radios--with-html
+### Radios with legend as page heading
 
-[Preview the radios--with-html example](http://govuk-frontend-review.herokuapp.com/components/radios/with-html/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/radios/with-legend-as-page-heading/preview)
 
 #### Markup
 
@@ -223,8 +223,10 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 
       <fieldset class="govuk-fieldset" aria-describedby="housing-act-hint">
 
-      <legend class="govuk-fieldset__legend">
-        <h1 class="govuk-heading-l">Which part of the Housing Act was your licence issued under?</h1>
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <h1 class="govuk-fieldset__heading">
+          Which part of the Housing Act was your licence issued under?
+        </h1>
       </legend>
 
       <span id="housing-act-hint" class="govuk-hint">
@@ -254,14 +256,16 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 
 #### Macro
 
-    {% from 'radios/macro.njk' import govukRadios %}
+    {% from "radios/macro.njk" import govukRadios %}
 
     {{ govukRadios({
       "idPrefix": "housing-act",
       "name": "housing-act",
       "fieldset": {
         "legend": {
-          "html": "<h1 class=\"govuk-heading-l\">Which part of the Housing Act was your licence issued under?</h1>"
+          "text": "Which part of the Housing Act was your licence issued under?",
+          "classes": "govuk-fieldset__legend--l",
+          "isPageHeading": true
         }
       },
       "hint": {
@@ -279,9 +283,76 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
       ]
     }) }}
 
-### Radios--without-fieldset
+### Radios with a medium legend
 
-[Preview the radios--without-fieldset example](http://govuk-frontend-review.herokuapp.com/components/radios/without-fieldset/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/radios/with-a-medium-legend/preview)
+
+#### Markup
+
+    <div class="govuk-form-group">
+
+      <fieldset class="govuk-fieldset" aria-describedby="housing-act-hint">
+
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+        Which part of the Housing Act was your licence issued under?
+      </legend>
+
+      <span id="housing-act-hint" class="govuk-hint">
+        Select one of the options below.
+      </span>
+
+      <div class="govuk-radios">
+
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="housing-act-1" name="housing-act" type="radio" value="part-2">
+          <label class="govuk-label govuk-radios__label" for="housing-act-1">
+            <span class="govuk-heading-s govuk-!-margin-bottom-1">Part 2 of the Housing Act 2004</span> For properties that are 3 or more stories high and occupied by 5 or more people
+          </label>
+        </div>
+
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="housing-act-2" name="housing-act" type="radio" value="part-3">
+          <label class="govuk-label govuk-radios__label" for="housing-act-2">
+            <span class="govuk-heading-s govuk-!-margin-bottom-1">Part 3 of the Housing Act 2004</span> For properties that are within a geographical area defined by a local council
+          </label>
+        </div>
+
+      </div>
+      </fieldset>
+
+    </div>
+
+#### Macro
+
+    {% from "radios/macro.njk" import govukRadios %}
+
+    {{ govukRadios({
+      "idPrefix": "housing-act",
+      "name": "housing-act",
+      "fieldset": {
+        "legend": {
+          "text": "Which part of the Housing Act was your licence issued under?",
+          "classes": "govuk-fieldset__legend--m"
+        }
+      },
+      "hint": {
+        "text": "Select one of the options below."
+      },
+      "items": [
+        {
+          "value": "part-2",
+          "html": "<span class=\"govuk-heading-s govuk-!-margin-bottom-1\">Part 2 of the Housing Act 2004</span> For properties that are 3 or more stories high and occupied by 5 or more people"
+        },
+        {
+          "value": "part-3",
+          "html": "<span class=\"govuk-heading-s govuk-!-margin-bottom-1\">Part 3 of the Housing Act 2004</span> For properties that are within a geographical area defined by a local council"
+        }
+      ]
+    }) }}
+
+### Radios without fieldset
+
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/radios/without-fieldset/preview)
 
 #### Markup
 
@@ -316,7 +387,7 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 
 #### Macro
 
-    {% from 'radios/macro.njk' import govukRadios %}
+    {% from "radios/macro.njk" import govukRadios %}
 
     {{ govukRadios({
       "name": "colours",
@@ -336,9 +407,9 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
       ]
     }) }}
 
-### Radios--with-extreme-fieldset
+### Radios with all fieldset attributes
 
-[Preview the radios--with-extreme-fieldset example](http://govuk-frontend-review.herokuapp.com/components/radios/with-extreme-fieldset/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/radios/with-all-fieldset-attributes/preview)
 
 #### Markup
 
@@ -381,7 +452,7 @@ Find out when to use the Radios component in your service in the [GOV.UK Design 
 
 #### Macro
 
-    {% from 'radios/macro.njk' import govukRadios %}
+    {% from "radios/macro.njk" import govukRadios %}
 
     {{ govukRadios({
       "idPrefix": "example",

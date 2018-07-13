@@ -6,13 +6,13 @@ Component for conditionally revealing content, using the details HTML element.
 
 ## Guidance
 
-Find out when to use the Details component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/details).
+Find out when to use the details component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/details).
 
 ## Quick start examples
 
-### Component default
+### Details
 
-[Preview the details component](http://govuk-frontend-review.herokuapp.com/components/details/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/details/preview)
 
 #### Markup
 
@@ -29,16 +29,16 @@ Find out when to use the Details component in your service in the [GOV.UK Design
 
 #### Macro
 
-    {% from 'details/macro.njk' import govukDetails %}
+    {% from "details/macro.njk" import govukDetails %}
 
     {{ govukDetails({
       "summaryText": "Help with nationality",
       "text": "We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post."
     }) }}
 
-### Details--expanded
+### Details expanded
 
-[Preview the details--expanded example](http://govuk-frontend-review.herokuapp.com/components/details/expanded/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/details/expanded/preview)
 
 #### Markup
 
@@ -55,7 +55,7 @@ Find out when to use the Details component in your service in the [GOV.UK Design
 
 #### Macro
 
-    {% from 'details/macro.njk' import govukDetails %}
+    {% from "details/macro.njk" import govukDetails %}
 
     {{ govukDetails({
       "id": "help-with-nationality",
@@ -64,9 +64,9 @@ Find out when to use the Details component in your service in the [GOV.UK Design
       "open": true
     }) }}
 
-### Details--with-html
+### Details with html
 
-[Preview the details--with-html example](http://govuk-frontend-review.herokuapp.com/components/details/with-html/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/details/with-html/preview)
 
 #### Markup
 
@@ -91,7 +91,7 @@ Find out when to use the Details component in your service in the [GOV.UK Design
 
 #### Macro
 
-    {% from 'details/macro.njk' import govukDetails %}
+    {% from "details/macro.njk" import govukDetails %}
 
     {{ govukDetails({
       "summaryText": "Where to find your National Insurance Number",

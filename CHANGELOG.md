@@ -14,6 +14,24 @@
 
 🆕 New features:
 
+- Pull Request Title goes here
+
+  Description goes here (optional)
+
+  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+
+🔧 Fixes:
+
+- Pull Request Title goes here
+
+  Description goes here (optional)
+
+  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+
+## 1.1.0 (feature release)
+
+🆕 New features:
+
 - Add `govuk-visually-hidden-focusable` class
 
   Adds `.govuk-visually-hidden-focusable` and deprecates `.govuk-visually-hidden-focussable` in order to fix the typo in the class name. Please consider updating your code as the next major release will remove the deprecated class.

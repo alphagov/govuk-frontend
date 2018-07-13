@@ -6,13 +6,13 @@ The confirmation panel has a turquoise background and white text. Used for trans
 
 ## Guidance
 
-Find out when to use the Panel component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/panel).
+Find out when to use the panel component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/panel).
 
 ## Quick start examples
 
-### Component default
+### Panel
 
-[Preview the panel component](http://govuk-frontend-review.herokuapp.com/components/panel/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/panel/preview)
 
 #### Markup
 
@@ -29,10 +29,37 @@ Find out when to use the Panel component in your service in the [GOV.UK Design S
 
 #### Macro
 
-    {% from 'panel/macro.njk' import govukPanel %}
+    {% from "panel/macro.njk" import govukPanel %}
+
+    {{ govukPanel({
+      "titleHtml": "Application complete",
+      "text": "Your reference number: HDJ2123F"
+    }) }}
+
+### Panel custom heading level
+
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/panel/custom-heading-level/preview)
+
+#### Markup
+
+    <div class="govuk-panel govuk-panel--confirmation">
+      <h1 class="govuk-panel__title">
+        Application complete
+      </h1>
+
+      <div class="govuk-panel__body">
+        Your reference number: HDJ2123F
+      </div>
+
+    </div>
+
+#### Macro
+
+    {% from "panel/macro.njk" import govukPanel %}
 
     {{ govukPanel({
       "titleText": "Application complete",
+      "headingLevel": 1,
       "text": "Your reference number: HDJ2123F"
     }) }}
 
@@ -87,6 +114,18 @@ If you are using Nunjucks,then macros take the following arguments
 <td class="govuk-table__cell ">Yes</td>
 
 <td class="govuk-table__cell ">Text or HTML for the panel title. If `titleHtml` is provided, the `titleText` argument is ignored.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">headingLevel</th>
+
+<td class="govuk-table__cell ">number</td>
+
+<td class="govuk-table__cell ">no</td>
+
+<td class="govuk-table__cell ">Optional heading level, from 1 to 6\. Default is 2.</td>
 
 </tr>
 

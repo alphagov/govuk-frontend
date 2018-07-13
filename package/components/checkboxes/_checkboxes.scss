@@ -57,7 +57,8 @@
   }
 
   .govuk-checkboxes__label {
-    display: block;
+    display: inline-block;
+    margin-bottom: 0;
     padding: 8px $govuk-checkboxes-label-padding-left-right govuk-spacing(1);
     cursor: pointer;
     // remove 300ms pause on mobile
@@ -107,6 +108,11 @@
 
   // Focused state
   .govuk-checkboxes__input:focus + .govuk-checkboxes__label::before {
+    // Since box-shadows are removed when users customise their colours
+    // We set a transparent outline that is shown instead.
+    // https://accessibility.blog.gov.uk/2017/03/27/how-users-change-colours-on-websites/
+    outline: $govuk-focus-width solid transparent;
+    outline-offset: $govuk-focus-width;
     -webkit-box-shadow: 0 0 0 $govuk-focus-width $govuk-focus-colour;
             box-shadow: 0 0 0 $govuk-focus-width $govuk-focus-colour;
   }

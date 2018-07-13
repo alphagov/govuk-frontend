@@ -6,13 +6,13 @@ A banner that indicates content is in alpha or beta phase with a description.
 
 ## Guidance
 
-Find out when to use the Phase banner component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/phase-banner).
+Find out when to use the phase banner component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/phase-banner).
 
 ## Quick start examples
 
-### Component default
+### Phase banner
 
-[Preview the phase-banner component](http://govuk-frontend-review.herokuapp.com/components/phase-banner/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/phase-banner/preview)
 
 #### Markup
 
@@ -28,7 +28,7 @@ Find out when to use the Phase banner component in your service in the [GOV.UK D
 
 #### Macro
 
-    {% from 'phase-banner/macro.njk' import govukPhaseBanner %}
+    {% from "phase-banner/macro.njk" import govukPhaseBanner %}
 
     {{ govukPhaseBanner({
       "tag": {
