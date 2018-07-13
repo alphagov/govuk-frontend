@@ -619,7 +619,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Optional item-specific id. If provided, it will be used instead of the generated.</td>
+<td class="govuk-table__cell ">Optional item-specific id. If provided, it will be used instead of the generated id.</td>
 
 </tr>
 
@@ -632,6 +632,18 @@ If you are using Nunjucks,then macros take the following arguments
 <td class="govuk-table__cell ">Yes</td>
 
 <td class="govuk-table__cell ">Optional item-specific name attribute. If provided, it will be used instead of the generated name.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">items.{}.value</th>
+
+<td class="govuk-table__cell ">string</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Optional item-specific value attribute. If provided, it will be used as the initial value of the input.</td>
 
 </tr>
 
