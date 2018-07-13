@@ -1,3 +1,7 @@
+# We use `git add --force` to add updates to dist/ and package/
+# Since these are only updated when we release code.
+package/**/*
+dist/**/*
 node_modules/
 npm-debug.log
 .DS_Store
