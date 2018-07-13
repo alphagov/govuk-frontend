@@ -15,13 +15,9 @@ describe('When nunjucks is configured with a different base path', () => {
     nunjucks.configure(configPaths.src)
   })
 
-  allComponents.forEach((component) => {
-    describe(`the ${component} component`, () => {
-      it('can be rendered without erroring', () => {
-        expect(() => {
-          nunjucks.render(`components/${component}/template.njk`, {})
-        }).not.toThrow()
-      })
-    })
+  it.each(allComponents)(`render('%s') does not error`, (component) => {
+    expect(() => {
+      nunjucks.render(`components/${component}/template.njk`, {})
+    }).not.toThrow()
   })
 })
