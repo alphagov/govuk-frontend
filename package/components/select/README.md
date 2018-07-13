@@ -6,13 +6,13 @@ The HTML `<select>` element represents a control that provides a menu of options
 
 ## Guidance
 
-Find out when to use the Select component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/select).
+Find out when to use the select component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/select).
 
 ## Quick start examples
 
-### Component default
+### Select
 
-[Preview the select component](http://govuk-frontend-review.herokuapp.com/components/select/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/select/preview)
 
 #### Markup
 
@@ -34,13 +34,13 @@ Find out when to use the Select component in your service in the [GOV.UK Design 
 
 #### Macro
 
-    {% from 'select/macro.njk' import govukSelect %}
+    {% from "select/macro.njk" import govukSelect %}
 
     {{ govukSelect({
       "id": "select-1",
       "name": "select-1",
       "label": {
-        "html": "Label text goes here"
+        "text": "Label text goes here"
       },
       "items": [
         {
@@ -60,9 +60,9 @@ Find out when to use the Select component in your service in the [GOV.UK Design 
       ]
     }) }}
 
-### Select--with-hint-text-and-error
+### Select with hint text and error message
 
-[Preview the select--with-hint-text-and-error example](http://govuk-frontend-review.herokuapp.com/components/select/with-hint-text-and-error/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/select/with-hint-text-and-error-message/preview)
 
 #### Markup
 
@@ -92,7 +92,7 @@ Find out when to use the Select component in your service in the [GOV.UK Design 
 
 #### Macro
 
-    {% from 'select/macro.njk' import govukSelect %}
+    {% from "select/macro.njk" import govukSelect %}
 
     {{ govukSelect({
       "id": "select-2",
@@ -122,9 +122,9 @@ Find out when to use the Select component in your service in the [GOV.UK Design 
       ]
     }) }}
 
-### Select--with-label-as-page-heading
+### Select with label as page heading
 
-[Preview the select--with-label-as-page-heading example](http://govuk-frontend-review.herokuapp.com/components/select/with-label-as-page-heading/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/select/with-label-as-page-heading/preview)
 
 #### Markup
 
@@ -149,13 +149,13 @@ Find out when to use the Select component in your service in the [GOV.UK Design 
 
 #### Macro
 
-    {% from 'select/macro.njk' import govukSelect %}
+    {% from "select/macro.njk" import govukSelect %}
 
     {{ govukSelect({
       "id": "select-3",
       "name": "select-3",
       "label": {
-        "html": "Label text goes here",
+        "text": "Label text goes here",
         "isPageHeading": true
       },
       "items": [

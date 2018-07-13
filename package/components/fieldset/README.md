@@ -6,13 +6,13 @@ The fieldset element is used to group several controls within a web form. The le
 
 ## Guidance
 
-Find out when to use the Fieldset component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/fieldset).
+Find out when to use the fieldset component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/fieldset).
 
 ## Quick start examples
 
-### Component default
+### Fieldset
 
-[Preview the fieldset component](http://govuk-frontend-review.herokuapp.com/components/fieldset/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/fieldset/preview)
 
 #### Markup
 
@@ -26,7 +26,7 @@ Find out when to use the Fieldset component in your service in the [GOV.UK Desig
 
 #### Macro
 
-    {% from 'fieldset/macro.njk' import govukFieldset %}
+    {% from "fieldset/macro.njk" import govukFieldset %}
 
     {{ govukFieldset({
       "legend": {
@@ -34,9 +34,9 @@ Find out when to use the Fieldset component in your service in the [GOV.UK Desig
       }
     }) }}
 
-### Fieldset--as page heading
+### Fieldset as page heading
 
-[Preview the fieldset--as page heading example](http://govuk-frontend-review.herokuapp.com/components/fieldset/as page heading/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/fieldset/as-page-heading/preview)
 
 #### Markup
 
@@ -52,7 +52,7 @@ Find out when to use the Fieldset component in your service in the [GOV.UK Desig
 
 #### Macro
 
-    {% from 'fieldset/macro.njk' import govukFieldset %}
+    {% from "fieldset/macro.njk" import govukFieldset %}
 
     {{ govukFieldset({
       "legend": {

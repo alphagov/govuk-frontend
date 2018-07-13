@@ -6,13 +6,13 @@ Table description.
 
 ## Guidance
 
-Find out when to use the Table component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/table).
+Find out when to use the table component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/table).
 
 ## Quick start examples
 
-### Component default
+### Table
 
-[Preview the table component](http://govuk-frontend-review.herokuapp.com/components/table/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/table/preview)
 
 #### Markup
 
@@ -55,7 +55,7 @@ Find out when to use the Table component in your service in the [GOV.UK Design S
 
 #### Macro
 
-    {% from 'table/macro.njk' import govukTable %}
+    {% from "table/macro.njk" import govukTable %}
 
     {{ govukTable({
       "rows": [
@@ -101,9 +101,9 @@ Find out when to use the Table component in your service in the [GOV.UK Design S
       ]
     }) }}
 
-### Table--table-with-head
+### Table table with head
 
-[Preview the table--table-with-head example](http://govuk-frontend-review.herokuapp.com/components/table/table-with-head/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/table/table-with-head/preview)
 
 #### Markup
 
@@ -158,7 +158,7 @@ Find out when to use the Table component in your service in the [GOV.UK Design S
 
 #### Macro
 
-    {% from 'table/macro.njk' import govukTable %}
+    {% from "table/macro.njk" import govukTable %}
 
     {{ govukTable({
       "head": [
@@ -217,15 +217,15 @@ Find out when to use the Table component in your service in the [GOV.UK Design S
       ]
     }) }}
 
-### Table--table-with-caption-and-head
+### Table table with head and caption
 
-[Preview the table--table-with-caption-and-head example](http://govuk-frontend-review.herokuapp.com/components/table/table-with-caption-and-head/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/table/table-with-head-and-caption/preview)
 
 #### Markup
 
     <table class="govuk-table">
 
-      <caption class="govuk-table__caption govuk-heading-m">Caption 1 : Months and rates</caption>
+      <caption class="govuk-table__caption govuk-heading-m">Caption 1: Months and rates</caption>
 
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
@@ -276,10 +276,10 @@ Find out when to use the Table component in your service in the [GOV.UK Design S
 
 #### Macro
 
-    {% from 'table/macro.njk' import govukTable %}
+    {% from "table/macro.njk" import govukTable %}
 
     {{ govukTable({
-      "caption": "Caption 1 : Months and rates",
+      "caption": "Caption 1: Months and rates",
       "captionClasses": "govuk-heading-m",
       "firstCellIsHeader": true,
       "head": [

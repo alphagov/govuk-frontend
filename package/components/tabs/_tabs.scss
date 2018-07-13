@@ -8,6 +8,7 @@
     @include govuk-font($size: 19);
     @include govuk-text-colour;
     @include govuk-responsive-margin(1, "top");
+    @include govuk-responsive-margin(6, "bottom");
   }
 
   .govuk-tabs__title {

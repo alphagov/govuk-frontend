@@ -6,13 +6,13 @@ A multi-line text field.
 
 ## Guidance
 
-Find out when to use the Textarea component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/textarea).
+Find out when to use the textarea component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/textarea).
 
 ## Quick start examples
 
-### Component default
+### Textarea
 
-[Preview the textarea component](http://govuk-frontend-review.herokuapp.com/components/textarea/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/textarea/preview)
 
 #### Markup
 
@@ -30,7 +30,7 @@ Find out when to use the Textarea component in your service in the [GOV.UK Desig
 
 #### Macro
 
-    {% from 'textarea/macro.njk' import govukTextarea %}
+    {% from "textarea/macro.njk" import govukTextarea %}
 
     {{ govukTextarea({
       "name": "more-detail",
@@ -43,9 +43,9 @@ Find out when to use the Textarea component in your service in the [GOV.UK Desig
       }
     }) }}
 
-### Textarea--with error message
+### Textarea with error message
 
-[Preview the textarea--with error message example](http://govuk-frontend-review.herokuapp.com/components/textarea/with error message/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/textarea/with-error-message/preview)
 
 #### Markup
 
@@ -63,7 +63,7 @@ Find out when to use the Textarea component in your service in the [GOV.UK Desig
 
 #### Macro
 
-    {% from 'textarea/macro.njk' import govukTextarea %}
+    {% from "textarea/macro.njk" import govukTextarea %}
 
     {{ govukTextarea({
       "name": "no-ni-reason",
@@ -76,9 +76,9 @@ Find out when to use the Textarea component in your service in the [GOV.UK Desig
       }
     }) }}
 
-### Textarea--with default value
+### Textarea with default value
 
-[Preview the textarea--with default value example](http://govuk-frontend-review.herokuapp.com/components/textarea/with default value/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/textarea/with-default-value/preview)
 
 #### Markup
 
@@ -95,7 +95,7 @@ Find out when to use the Textarea component in your service in the [GOV.UK Desig
 
 #### Macro
 
-    {% from 'textarea/macro.njk' import govukTextarea %}
+    {% from "textarea/macro.njk" import govukTextarea %}
 
     {{ govukTextarea({
       "id": "full-address",
@@ -106,9 +106,9 @@ Find out when to use the Textarea component in your service in the [GOV.UK Desig
       }
     }) }}
 
-### Textarea--with custom rows
+### Textarea with custom rows
 
-[Preview the textarea--with custom rows example](http://govuk-frontend-review.herokuapp.com/components/textarea/with custom rows/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/textarea/with-custom-rows/preview)
 
 #### Markup
 
@@ -122,7 +122,7 @@ Find out when to use the Textarea component in your service in the [GOV.UK Desig
 
 #### Macro
 
-    {% from 'textarea/macro.njk' import govukTextarea %}
+    {% from "textarea/macro.njk" import govukTextarea %}
 
     {{ govukTextarea({
       "id": "full-address",
@@ -133,9 +133,9 @@ Find out when to use the Textarea component in your service in the [GOV.UK Desig
       "rows": 8
     }) }}
 
-### Textarea--with label as page heading
+### Textarea with label as page heading
 
-[Preview the textarea--with label as page heading example](http://govuk-frontend-review.herokuapp.com/components/textarea/with label as page heading/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/textarea/with-label-as-page-heading/preview)
 
 #### Markup
 
@@ -152,7 +152,7 @@ Find out when to use the Textarea component in your service in the [GOV.UK Desig
 
 #### Macro
 
-    {% from 'textarea/macro.njk' import govukTextarea %}
+    {% from "textarea/macro.njk" import govukTextarea %}
 
     {{ govukTextarea({
       "id": "textarea-with-page-heading",

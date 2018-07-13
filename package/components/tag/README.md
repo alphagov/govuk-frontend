@@ -6,13 +6,13 @@ Phase tags are mostly used inside phase banners as an indication of the state of
 
 ## Guidance
 
-Find out when to use the Tag component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/tag).
+Find out when to use the tag component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/tag).
 
 ## Quick start examples
 
-### Component default
+### Tag
 
-[Preview the tag component](http://govuk-frontend-review.herokuapp.com/components/tag/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/tag/preview)
 
 #### Markup
 
@@ -22,15 +22,15 @@ Find out when to use the Tag component in your service in the [GOV.UK Design Sys
 
 #### Macro
 
-    {% from 'tag/macro.njk' import govukTag %}
+    {% from "tag/macro.njk" import govukTag %}
 
     {{ govukTag({
       "text": "alpha"
     }) }}
 
-### Tag--inactive
+### Tag inactive
 
-[Preview the tag--inactive example](http://govuk-frontend-review.herokuapp.com/components/tag/inactive/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/tag/inactive/preview)
 
 #### Markup
 
@@ -40,7 +40,7 @@ Find out when to use the Tag component in your service in the [GOV.UK Design Sys
 
 #### Macro
 
-    {% from 'tag/macro.njk' import govukTag %}
+    {% from "tag/macro.njk" import govukTag %}
 
     {{ govukTag({
       "text": "alpha",

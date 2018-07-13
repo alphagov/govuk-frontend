@@ -6,13 +6,13 @@ Use bold text with an exclamation icon if there are consequences - for example, 
 
 ## Guidance
 
-Find out when to use the Warning text component in your service in the [GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/components/warning-text).
+Find out when to use the warning text component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/warning-text).
 
 ## Quick start examples
 
-### Component default
+### Warning text
 
-[Preview the warning-text component](http://govuk-frontend-review.herokuapp.com/components/warning-text/preview)
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/warning-text/preview)
 
 #### Markup
 
@@ -26,7 +26,7 @@ Find out when to use the Warning text component in your service in the [GOV.UK D
 
 #### Macro
 
-    {% from 'warning-text/macro.njk' import govukWarningText %}
+    {% from "warning-text/macro.njk" import govukWarningText %}
 
     {{ govukWarningText({
       "text": "You can be fined up to £5,000 if you don’t register.",
