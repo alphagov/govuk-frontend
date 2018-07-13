@@ -41,6 +41,8 @@ function initAll () {
   })
 }
 
+console.log('already in package/')
+
 export {
   initAll,
   Button,
