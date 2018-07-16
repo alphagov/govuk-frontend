@@ -35,7 +35,7 @@ Find out when to use the date input component in your service in the [GOV.UK Des
               Day
             </label>
 
-            <input class="govuk-input govuk-date-input__input govuk-input--width-2 govuk-input--width-2" id="dob-day" name="dob-day" type="number" pattern="[0-9]*">
+            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dob-day" name="dob-day" type="number" pattern="[0-9]*">
           </div>
         </div>
 
@@ -45,7 +45,7 @@ Find out when to use the date input component in your service in the [GOV.UK Des
               Month
             </label>
 
-            <input class="govuk-input govuk-date-input__input govuk-input--width-2 govuk-input--width-2" id="dob-month" name="dob-month" type="number" pattern="[0-9]*">
+            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dob-month" name="dob-month" type="number" pattern="[0-9]*">
           </div>
         </div>
 
@@ -55,7 +55,7 @@ Find out when to use the date input component in your service in the [GOV.UK Des
               Year
             </label>
 
-            <input class="govuk-input govuk-date-input__input govuk-input--width-4 govuk-input--width-4" id="dob-year" name="dob-year" type="number" pattern="[0-9]*">
+            <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="dob-year" name="dob-year" type="number" pattern="[0-9]*">
           </div>
         </div>
 
@@ -124,7 +124,7 @@ Find out when to use the date input component in your service in the [GOV.UK Des
               Day
             </label>
 
-            <input class="govuk-input govuk-date-input__input govuk-input--width-2 govuk-input--width-2 govuk-input--error" id="dob-errors-day" name="day" type="number" pattern="[0-9]*">
+            <input class="govuk-input govuk-date-input__input govuk-input--width-2 govuk-input--error" id="dob-errors-day" name="day" type="number" pattern="[0-9]*">
           </div>
         </div>
 
@@ -134,7 +134,7 @@ Find out when to use the date input component in your service in the [GOV.UK Des
               Month
             </label>
 
-            <input class="govuk-input govuk-date-input__input govuk-input--width-2 govuk-input--width-2 govuk-input--error" id="dob-errors-month" name="month" type="number" pattern="[0-9]*">
+            <input class="govuk-input govuk-date-input__input govuk-input--width-2 govuk-input--error" id="dob-errors-month" name="month" type="number" pattern="[0-9]*">
           </div>
         </div>
 
@@ -144,7 +144,7 @@ Find out when to use the date input component in your service in the [GOV.UK Des
               Year
             </label>
 
-            <input class="govuk-input govuk-date-input__input govuk-input--width-4 govuk-input--width-4 govuk-input--error" id="dob-errors-year" name="year" type="number" pattern="[0-9]*">
+            <input class="govuk-input govuk-date-input__input govuk-input--width-4 govuk-input--error" id="dob-errors-year" name="year" type="number" pattern="[0-9]*">
           </div>
         </div>
 
@@ -215,7 +215,7 @@ Find out when to use the date input component in your service in the [GOV.UK Des
               Day
             </label>
 
-            <input class="govuk-input govuk-date-input__input govuk-input--width-2 govuk-input--width-2 govuk-input--error" id="dob-day-error-day" name="dob-day-error-day" type="number" pattern="[0-9]*">
+            <input class="govuk-input govuk-date-input__input govuk-input--width-2 govuk-input--error" id="dob-day-error-day" name="dob-day-error-day" type="number" pattern="[0-9]*">
           </div>
         </div>
 
@@ -225,7 +225,7 @@ Find out when to use the date input component in your service in the [GOV.UK Des
               Month
             </label>
 
-            <input class="govuk-input govuk-date-input__input govuk-input--width-2 govuk-input--width-2" id="dob-day-error-month" name="dob-day-error-month" type="number" pattern="[0-9]*">
+            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dob-day-error-month" name="dob-day-error-month" type="number" pattern="[0-9]*">
           </div>
         </div>
 
@@ -235,7 +235,7 @@ Find out when to use the date input component in your service in the [GOV.UK Des
               Year
             </label>
 
-            <input class="govuk-input govuk-date-input__input govuk-input--width-4 govuk-input--width-4" id="dob-day-error-year" name="dob-day-error-year" type="number" pattern="[0-9]*">
+            <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="dob-day-error-year" name="dob-day-error-year" type="number" pattern="[0-9]*">
           </div>
         </div>
 
@@ -307,7 +307,7 @@ Find out when to use the date input component in your service in the [GOV.UK Des
               Day
             </label>
 
-            <input class="govuk-input govuk-date-input__input govuk-input--width-2 govuk-input--width-2" id="dob-month-error-day" name="dob-month-error-day" type="number" pattern="[0-9]*">
+            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dob-month-error-day" name="dob-month-error-day" type="number" pattern="[0-9]*">
           </div>
         </div>
 
@@ -317,7 +317,7 @@ Find out when to use the date input component in your service in the [GOV.UK Des
               Month
             </label>
 
-            <input class="govuk-input govuk-date-input__input govuk-input--width-2 govuk-input--width-2 govuk-input--error" id="dob-month-error-month" name="dob-month-error-month" type="number" pattern="[0-9]*">
+            <input class="govuk-input govuk-date-input__input govuk-input--width-2 govuk-input--error" id="dob-month-error-month" name="dob-month-error-month" type="number" pattern="[0-9]*">
           </div>
         </div>
 
@@ -327,7 +327,7 @@ Find out when to use the date input component in your service in the [GOV.UK Des
               Year
             </label>
 
-            <input class="govuk-input govuk-date-input__input govuk-input--width-4 govuk-input--width-4" id="dob-month-error-year" name="dob-month-error-year" type="number" pattern="[0-9]*">
+            <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="dob-month-error-year" name="dob-month-error-year" type="number" pattern="[0-9]*">
           </div>
         </div>
 
@@ -399,7 +399,7 @@ Find out when to use the date input component in your service in the [GOV.UK Des
               Day
             </label>
 
-            <input class="govuk-input govuk-date-input__input govuk-input--width-2 govuk-input--width-2" id="dob-year-error-day" name="dob-year-error-day" type="number" pattern="[0-9]*">
+            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dob-year-error-day" name="dob-year-error-day" type="number" pattern="[0-9]*">
           </div>
         </div>
 
@@ -409,7 +409,7 @@ Find out when to use the date input component in your service in the [GOV.UK Des
               Month
             </label>
 
-            <input class="govuk-input govuk-date-input__input govuk-input--width-2 govuk-input--width-2" id="dob-year-error-month" name="dob-year-error-month" type="number" pattern="[0-9]*">
+            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dob-year-error-month" name="dob-year-error-month" type="number" pattern="[0-9]*">
           </div>
         </div>
 
@@ -419,7 +419,7 @@ Find out when to use the date input component in your service in the [GOV.UK Des
               Year
             </label>
 
-            <input class="govuk-input govuk-date-input__input govuk-input--width-4 govuk-input--width-4 govuk-input--error" id="dob-year-error-year" name="dob-year-error-year" type="number" pattern="[0-9]*">
+            <input class="govuk-input govuk-date-input__input govuk-input--width-4 govuk-input--error" id="dob-year-error-year" name="dob-year-error-year" type="number" pattern="[0-9]*">
           </div>
         </div>
 
@@ -487,7 +487,7 @@ Find out when to use the date input component in your service in the [GOV.UK Des
               Day
             </label>
 
-            <input class="govuk-input govuk-date-input__input govuk-input--width-2 govuk-input--width-2" id="dob-day" name="dob-day" type="number" pattern="[0-9]*">
+            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dob-day" name="dob-day" type="number" pattern="[0-9]*">
           </div>
         </div>
 
@@ -497,7 +497,7 @@ Find out when to use the date input component in your service in the [GOV.UK Des
               Month
             </label>
 
-            <input class="govuk-input govuk-date-input__input govuk-input--width-2 govuk-input--width-2" id="dob-month" name="dob-month" type="number" pattern="[0-9]*">
+            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dob-month" name="dob-month" type="number" pattern="[0-9]*">
           </div>
         </div>
 
@@ -507,7 +507,7 @@ Find out when to use the date input component in your service in the [GOV.UK Des
               Year
             </label>
 
-            <input class="govuk-input govuk-date-input__input govuk-input--width-4 govuk-input--width-4" id="dob-year" name="dob-year" type="number" pattern="[0-9]*">
+            <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="dob-year" name="dob-year" type="number" pattern="[0-9]*">
           </div>
         </div>
 
