@@ -23,8 +23,10 @@
 🔧 Fixes:
 
 - Update details behaviour to remove margin-bottom for all elements
-
   ([PR #900](https://github.com/alphagov/govuk-frontend/pull/900))
+
+- Update internal padding of tab content in the tabs component
+  ([PR #886](https://github.com/alphagov/govuk-frontend/pull/886))
 
 ## 1.1.0 (feature release)
 
