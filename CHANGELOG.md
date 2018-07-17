@@ -28,6 +28,17 @@
 - Update internal padding of tab content in the tabs component
   ([PR #886](https://github.com/alphagov/govuk-frontend/pull/886))
 
+- Fixes an issue where clicking the revealed content in browsers that do not
+  support the native details element causes the details element to collapse.
+  ([PR #912])(https://github.com/alphagov/govuk-frontend/pull/912)
+
+- Fixes an issue where clicking the revealed content within a details element
+  toggles the aria-expanded attribute on the summary element and the aria-hidden
+  attribute on the content element, causing them to get out of sync with the
+  visible state of the component.
+  ([PR #912])(https://github.com/alphagov/govuk-frontend/pull/912)
+
+
 ## 1.1.0 (feature release)
 
 🆕 New features:
