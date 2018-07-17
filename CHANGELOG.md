@@ -42,6 +42,9 @@
   the name ‘year’ use any other width than 2 characters
   ([PR #908])(https://github.com/alphagov/govuk-frontend/pull/908)
 
+- Fix undefined class displaying in date input
+  ([PR #913])(https://github.com/alphagov/govuk-frontend/pull/913)
+
 ## 1.1.0 (feature release)
 
 🆕 New features:
