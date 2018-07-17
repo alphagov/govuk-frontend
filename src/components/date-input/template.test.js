@@ -361,4 +361,122 @@ describe('Date input', () => {
 
     expect(htmlWithClassName($, '.govuk-fieldset')).toMatchSnapshot()
   })
+
+  // https://github.com/alphagov/govuk-frontend/issues/905
+  describe('to maintain backwards compatibility', () => {
+    it('automatically sets width for the day input if no width class provided', () => {
+      const $ = render('date-input', {
+        items: [
+          {
+            'name': 'day',
+            'classes': 'not-a-width-class'
+          },
+          {
+            'name': 'month'
+          },
+          {
+            'name': 'year'
+          }
+        ]
+      })
+
+      const $dayInput = $('[name="day"]')
+      expect($dayInput.hasClass('govuk-input--width-2')).toBeTruthy()
+    })
+
+    it('automatically sets width for the month input if no width class provided', () => {
+      const $ = render('date-input', {
+        items: [
+          {
+            'name': 'day'
+          },
+          {
+            'name': 'month',
+            'classes': 'not-a-width-class'
+          },
+          {
+            'name': 'year'
+          }
+        ]
+      })
+
+      const $monthInput = $('[name="month"]')
+      expect($monthInput.hasClass('govuk-input--width-2')).toBeTruthy()
+    })
+
+    it('automatically sets width for the year input if no width class provided', () => {
+      const $ = render('date-input', {
+        items: [
+          {
+            'name': 'day'
+          },
+          {
+            'name': 'month'
+          },
+          {
+            'name': 'year',
+            'classes': 'not-a-width-class'
+          }
+        ]
+      })
+
+      const $yearInput = $('[name="year"]')
+      expect($yearInput.hasClass('govuk-input--width-4')).toBeTruthy()
+    })
+
+    it('automatically sets width for an input if no classes provided', () => {
+      const $ = render('date-input', {
+        items: [
+          {
+            'name': 'day'
+          },
+          {
+            'name': 'month'
+          },
+          {
+            'name': 'year'
+          }
+        ]
+      })
+
+      const $dayInput = $('[name="day"]')
+      expect($dayInput.hasClass('govuk-input--width-2')).toBeTruthy()
+    })
+
+    it('does not add classes if a width class is provided', () => {
+      const $ = render('date-input', {
+        items: [
+          {
+            'name': 'day'
+          },
+          {
+            'name': 'month'
+          },
+          {
+            'name': 'year',
+            'classes': 'govuk-input--width-10'
+          }
+        ]
+      })
+
+      const $yearInput = $('[name="year"]')
+      expect($yearInput.hasClass('govuk-input--width-4')).not.toBeTruthy()
+    })
+
+    it('does not add classes for fields with different names', () => {
+      const $ = render('date-input', {
+        items: [
+          {
+            'name': 'foo',
+            'classes': 'a-class'
+          }
+        ]
+      })
+
+      const $fooInput = $('[name="foo"]')
+      expect($fooInput.attr('class')).not.toEqual(
+        expect.stringContaining('govuk-input--width-')
+      )
+    })
+  })
 })
