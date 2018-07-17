@@ -790,7 +790,7 @@ Details.prototype.init = function () {
   }
 
   // Bind an event to handle summary elements
-  this.handleInputs($module, this.setAttributes.bind(this));
+  this.handleInputs($summary, this.setAttributes.bind(this));
 };
 
 /**
