@@ -14,6 +14,9 @@ if [ $(git tag -l "$TAG") ]; then
     exit 1;
 else
     git add .
+    # Since package/ and dist/ are .gitignored any new files
+    # Will not be tracked so we need to add them with `--force`.
+    git add --force package/ dist/
     git commit -m "Release $TAG"
     #set upstream so that we can push the branch up
     git push --set-upstream origin $CURRENT_BRANCH_NAME
