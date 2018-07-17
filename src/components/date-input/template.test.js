@@ -424,6 +424,25 @@ describe('Date input', () => {
       expect($yearInput.hasClass('govuk-input--width-4')).toBeTruthy()
     })
 
+    it('automatically sets width for an input if no classes provided', () => {
+      const $ = render('date-input', {
+        items: [
+          {
+            'name': 'day'
+          },
+          {
+            'name': 'month'
+          },
+          {
+            'name': 'year'
+          }
+        ]
+      })
+
+      const $dayInput = $('[name="day"]')
+      expect($dayInput.hasClass('govuk-input--width-2')).toBeTruthy()
+    })
+
     it('does not add classes if a width class is provided', () => {
       const $ = render('date-input', {
         items: [
