@@ -244,19 +244,19 @@ To use different asset paths, also complete the below step(s).
 
   ``` SCSS
   // Include images from /application/assets/images and fonts from /application/assets/fonts
-  $govuk-assets-path: ‘/application/assets’;
+  $govuk-assets-path: '/application/assets';
 
-  @import “govuk-frontend/all”;
+  @import "govuk-frontend/all";
   ```
 
   Example 2:
 
   ``` SCSS
   // Include images from /images/govuk-frontend and fonts from /fonts
-  $govuk-images-path: “/images/govuk-frontend/”;
-  $govuk-fonts-path: “/fonts/”;
+  $govuk-images-path: "/images/govuk-frontend/";
+  $govuk-fonts-path: "/fonts/";
 
-  @import “govuk-frontend/all”;
+  @import "govuk-frontend/all";
   ```
 
 2. Optional: You can also override the helpers used to generate the asset urls, for example if you are using sass-rails' asset-pipeline functionality. You can do this by setting `$govuk-image-url-function` to the name of the function(s) you wish to use. See `src/settings/_assets.scss` for more information and examples.
