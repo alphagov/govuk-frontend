@@ -362,6 +362,29 @@ describe('Date input', () => {
     expect(htmlWithClassName($, '.govuk-fieldset')).toMatchSnapshot()
   })
 
+  it('does not set classes as undefined if none are defined', () => {
+    const $ = render('date-input', {
+      items: [
+        {
+          'name': 'day'
+        },
+        {
+          'name': 'month'
+        },
+        {
+          'name': 'year'
+        }
+      ]
+    })
+
+    const $dayInput = $('[name="day"]')
+    const $monthInput = $('[name="month"]')
+    const $yearInput = $('[name="year"]')
+    expect($dayInput.hasClass('undefined')).toBeFalsy()
+    expect($monthInput.hasClass('undefined')).toBeFalsy()
+    expect($yearInput.hasClass('undefined')).toBeFalsy()
+  })
+
   // https://github.com/alphagov/govuk-frontend/issues/905
   describe('to maintain backwards compatibility', () => {
     it('automatically sets width for the day input if no width class provided', () => {
