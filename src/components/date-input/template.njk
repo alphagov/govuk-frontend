@@ -80,7 +80,7 @@
           classes: "govuk-date-input__label"
         },
         id: item.id if item.id else (params.id + "-" + item.name),
-        classes: "govuk-date-input__input " + inputWidthClass + item.classes,
+        classes: "govuk-date-input__input " + inputWidthClass + (item.classes if item.classes),
         name: (params.name + "-" + item.name) if params.name else item.name,
         value: item.value,
         type: "number",
