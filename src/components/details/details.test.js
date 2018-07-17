@@ -111,6 +111,15 @@ describe('/components/details', () => {
       expect(detailsOpen).not.toBeNull()
     })
 
+    it('should not be affected when clicking the revealed content', async () => {
+      await page.goto(baseUrl + '/components/details/expanded/preview', { waitUntil: 'load' })
+
+      await page.click('.govuk-details__text')
+
+      const summaryAriaExpanded = await page.evaluate(() => document.body.getElementsByTagName('summary')[0].getAttribute('aria-expanded'))
+      expect(summaryAriaExpanded).toBe('true')
+    })
+
     describe('when details is triggered', () => {
       it('should indicate the expanded state of the summary using aria-expanded', async () => {
         await page.goto(baseUrl + '/components/details/expanded/preview', { waitUntil: 'load' })
