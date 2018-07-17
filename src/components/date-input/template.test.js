@@ -362,6 +362,32 @@ describe('Date input', () => {
     expect(htmlWithClassName($, '.govuk-fieldset')).toMatchSnapshot()
   })
 
+  it('can have classes for individual items', () => {
+    const $ = render('date-input', {
+      items: [
+        {
+          'name': 'day',
+          'classes': 'app-date-input__day'
+        },
+        {
+          'name': 'month',
+          'classes': 'app-date-input__month'
+        },
+        {
+          'name': 'year',
+          'classes': 'app-date-input__year'
+        }
+      ]
+    })
+
+    const $dayInput = $('[name="day"]')
+    const $monthInput = $('[name="month"]')
+    const $yearInput = $('[name="year"]')
+    expect($dayInput.hasClass('app-date-input__day')).toBeTruthy()
+    expect($monthInput.hasClass('app-date-input__month')).toBeTruthy()
+    expect($yearInput.hasClass('app-date-input__year')).toBeTruthy()
+  })
+
   it('does not set classes as undefined if none are defined', () => {
     const $ = render('date-input', {
       items: [
