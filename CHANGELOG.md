@@ -41,20 +41,20 @@
 
 - Fixes an issue where clicking the revealed content in browsers that do not
   support the native details element causes the details element to collapse.
-  ([PR #912])(https://github.com/alphagov/govuk-frontend/pull/912)
+  ([PR #912](https://github.com/alphagov/govuk-frontend/pull/912))
 
 - Fixes an issue where clicking the revealed content within a details element
   toggles the aria-expanded attribute on the summary element and the aria-hidden
   attribute on the content element, causing them to get out of sync with the
   visible state of the component.
-  ([PR #912])(https://github.com/alphagov/govuk-frontend/pull/912)
+  ([PR #912](https://github.com/alphagov/govuk-frontend/pull/912))
 
 - Fixes an issue where it's not possible to make any field that does not have
   the name ‘year’ use any other width than 2 characters
-  ([PR #908])(https://github.com/alphagov/govuk-frontend/pull/908)
+  ([PR #908](https://github.com/alphagov/govuk-frontend/pull/908))
 
 - Fix undefined class displaying in date input
-  ([PR #913])(https://github.com/alphagov/govuk-frontend/pull/913)
+  ([PR #913](https://github.com/alphagov/govuk-frontend/pull/913))
 
 ## 1.1.0 (feature release)
 
@@ -561,7 +561,7 @@ You can now initialize individual components like so:
 - Fixes a bug in IE8 where the button component did not have a shadow, by
   rendering the shadow using a border for IE8 specifically – IE8 does not
   support box-shadow
-  ([PR #737])(https://github.com/alphagov/govuk-frontend/pull/737)
+  ([PR #737](https://github.com/alphagov/govuk-frontend/pull/737))
 
 
 🆕 New features:
