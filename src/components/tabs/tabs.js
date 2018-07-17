@@ -8,7 +8,7 @@ function Tabs ($module) {
   this.$tabs = $module.querySelectorAll('.govuk-tabs__tab')
 
   this.keys = { left: 37, right: 39, up: 38, down: 40 }
-  this.jsHiddenClass = 'js-hidden'
+  this.jsHiddenClass = 'govuk-tabs__panel--hidden'
 }
 
 Tabs.prototype.init = function () {
