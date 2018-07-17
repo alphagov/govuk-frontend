@@ -38,6 +38,9 @@
   visible state of the component.
   ([PR #912])(https://github.com/alphagov/govuk-frontend/pull/912)
 
+- Fixes an issue where it's not possible to make any field that does not have
+  the name ‘year’ use any other width than 2 characters
+  ([PR #908])(https://github.com/alphagov/govuk-frontend/pull/908)
 
 ## 1.1.0 (feature release)
 
