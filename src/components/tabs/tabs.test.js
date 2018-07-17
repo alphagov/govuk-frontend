@@ -47,14 +47,14 @@ describe('/components/tabs', () => {
       it('should display the first tab panel', async () => {
         await page.goto(baseUrl + '/components/tabs/preview', { waitUntil: 'load' })
 
-        const tabPanelIsHidden = await page.evaluate(() => document.body.querySelector('.govuk-tabs > .govuk-tabs__panel').classList.contains('js-hidden'))
+        const tabPanelIsHidden = await page.evaluate(() => document.body.querySelector('.govuk-tabs > .govuk-tabs__panel').classList.contains('govuk-tabs__panel--hidden'))
         expect(tabPanelIsHidden).toBeFalsy()
       })
 
       it('should hide all the tab panels except for the first one', async () => {
         await page.goto(baseUrl + '/components/tabs/preview', { waitUntil: 'load' })
 
-        const tabPanelIsHidden = await page.evaluate(() => document.body.querySelector('.govuk-tabs > .govuk-tabs__panel ~ .govuk-tabs__panel').classList.contains('js-hidden'))
+        const tabPanelIsHidden = await page.evaluate(() => document.body.querySelector('.govuk-tabs > .govuk-tabs__panel ~ .govuk-tabs__panel').classList.contains('govuk-tabs__panel--hidden'))
         expect(tabPanelIsHidden).toBeTruthy()
       })
     })
@@ -78,7 +78,7 @@ describe('/components/tabs', () => {
 
         const secondTabPanelIsHidden = await page.evaluate(() => {
           const secondTabAriaControls = document.body.querySelector('.govuk-tabs__list-item:nth-child(2) .govuk-tabs__tab').getAttribute('aria-controls')
-          return document.body.querySelector(`[id="${secondTabAriaControls}"]`).classList.contains('js-hidden')
+          return document.body.querySelector(`[id="${secondTabAriaControls}"]`).classList.contains('govuk-tabs__panel--hidden')
         })
         expect(secondTabPanelIsHidden).toBeFalsy()
       })
@@ -105,7 +105,7 @@ describe('/components/tabs', () => {
 
         const secondTabPanelIsHidden = await page.evaluate(() => {
           const secondTabAriaControls = document.body.querySelector('.govuk-tabs__list-item:nth-child(2) .govuk-tabs__tab').getAttribute('aria-controls')
-          return document.body.querySelector(`[id="${secondTabAriaControls}"]`).classList.contains('js-hidden')
+          return document.body.querySelector(`[id="${secondTabAriaControls}"]`).classList.contains('govuk-tabs__panel--hidden')
         })
         expect(secondTabPanelIsHidden).toBeFalsy()
       })
@@ -118,7 +118,7 @@ describe('/components/tabs', () => {
         const currentTabAriaSelected = await page.evaluate(() => document.body.querySelector('.govuk-tabs__tab[href="#past-week"]').getAttribute('aria-selected'))
         expect(currentTabAriaSelected).toEqual('true')
 
-        const currentTabPanelIsHidden = await page.evaluate(() => document.getElementById('past-week').classList.contains('js-hidden'))
+        const currentTabPanelIsHidden = await page.evaluate(() => document.getElementById('past-week').classList.contains('govuk-tabs__panel--hidden'))
         expect(currentTabPanelIsHidden).toBeFalsy()
       })
     })

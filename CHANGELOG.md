@@ -22,11 +22,9 @@
 
 🔧 Fixes:
 
-- Pull Request Title goes here
-
-  Description goes here (optional)
-
-  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+- Replace conflicting `js-hidden` class used within the tabs component with a new modifier class.
+  Because this class is defined and used within the JavaScript, no markup changes are required.
+  ([PR #916](https://github.com/alphagov/govuk-frontend/pull/916))
 
 
 ## 1.1.1 (fix release)
