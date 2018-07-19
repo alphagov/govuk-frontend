@@ -35,6 +35,9 @@
 - Replace conflicting `js-hidden` class used within the tabs component with a new modifier class.
   Because this class is defined and used within the JavaScript, no markup changes are required.
   ([PR #916](https://github.com/alphagov/govuk-frontend/pull/916))
+- Use `get-function` when calling a Sass function as passing a string to `call()``
+  is deprecated and will be illegal in Sass 4.0
+  ([PR #919](https://github.com/alphagov/govuk-frontend/pull/919))
 
 
 ## 1.1.1 (fix release)
