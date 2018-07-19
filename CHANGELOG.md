@@ -25,6 +25,11 @@
   You can now provide a divider item (e.g "or") to separate items
   ([PR #849](https://github.com/alphagov/govuk-frontend/pull/849))
 
+- Allow og:image meta tag url to be set independantly
+  Image url for the opengraph image needs to be absolute and
+  can now be overwritten by setting the `assetUrl` variable.
+  ([PR #847](https://github.com/alphagov/govuk-frontend/pull/847))
+
 🔧 Fixes:
 
 - Replace conflicting `js-hidden` class used within the tabs component with a new modifier class.
@@ -75,7 +80,7 @@
   `headingLevel: <number>` parameter. Default is `2`.
   ([PR #853](https://github.com/alphagov/govuk-frontend/pull/853))
 
-- Update date input component  
+- Update date input component
 
   Allow the `name` and `id` attributes to be passed individually for each input item.
 

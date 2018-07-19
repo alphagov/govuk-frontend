@@ -1,6 +1,8 @@
 {% from "./components/skip-link/macro.njk" import govukSkipLink %}
 {% from "./components/header/macro.njk" import govukHeader %}
 {% from "./components/footer/macro.njk" import govukFooter %}
+{# specify absolute url for the static assets folder e.g. http://wwww.domain.com/assets #}
+{% set assetUrl = assetUrl | default(assetPath) %}
 <!DOCTYPE html>
 <html lang="{{ htmlLang | default('en') }}" class="govuk-template {{ htmlClasses }}">
   <head>
@@ -19,9 +21,9 @@
     {% endblock %}
 
     {% block head %}{% endblock %}
-
     {# The default og:image is added below head so that scrapers see any custom metatags first, and this is just a fallback #}
-    <meta property="og:image" content="{{ assetPath | default('/assets') }}/images/govuk-opengraph-image.png">
+    {# image url needs to be absolute e.g. http://wwww.domain.com/.../govuk-opengraph-image.png #}
+    <meta property="og:image" content="{{ assetUrl | default('/assets') }}/images/govuk-opengraph-image.png">
   </head>
   <body class="govuk-template__body {{ bodyClasses }}">
     <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
