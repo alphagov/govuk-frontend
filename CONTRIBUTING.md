@@ -81,7 +81,7 @@ These sections follow [semantic versioning](https://semver.org/), where:
 - `New features` corresponds to a `minor` (X.1.X) change.
 - `Fixes` corresponds to a `patch` (X.X.1) change.
 
-See the [`CHANGELOG_TEMPLATE.md`](/docs/contribution/CHANGELOG_TEMPLATE.md) for an example for how this looks.
+See the [`CHANGELOG_TEMPLATE.md`](/docs/contributing/CHANGELOG_TEMPLATE.md) for an example for how this looks.
 
 Include the modified `CHANGELOG` in the PR.
 
