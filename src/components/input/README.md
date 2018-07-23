@@ -475,7 +475,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Arguments for the label component. See label component.</td>
+<td class="govuk-table__cell ">Arguments for the label component. See <a href="../label/README.md#component-arguments">label</a> component.</td>
 
 </tr>
 
@@ -487,7 +487,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Arguments for the hint component (e.g. text). See hint component.</td>
+<td class="govuk-table__cell ">Arguments for the hint component (e.g. text). See <a href="../hint/README.md#component-arguments">hint</a> component.</td>
 
 </tr>
 
@@ -499,7 +499,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Arguments for the errorMessage component (e.g. text). See errorMessage component.</td>
+<td class="govuk-table__cell ">Arguments for the errorMessage component (e.g. text). See <a href="../error-message/README.md#component-arguments">errorMessage</a> component.</td>
 
 </tr>
 

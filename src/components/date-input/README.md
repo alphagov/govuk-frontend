@@ -655,7 +655,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Optional hint. See hint component.</td>
+<td class="govuk-table__cell ">Optional hint. See <a href="../hint/README.md#component-arguments">hint</a> component.</td>
 
 </tr>
 
@@ -667,7 +667,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Optional error message. See errorMessage component.</td>
+<td class="govuk-table__cell ">Optional error message. See <a href="../error-message/README.md#component-arguments">errorMessage</a> component.</td>
 
 </tr>
 
@@ -679,7 +679,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Arguments for the fieldset component (e.g. legend). See fieldset component.</td>
+<td class="govuk-table__cell ">Arguments for the fieldset component (e.g. legend). See <a href="../fieldset/README.md#component-arguments">fieldset</a> component.</td>
 
 </tr>
 

@@ -99,7 +99,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Arguments for the tag object. See tag component.</td>
+<td class="govuk-table__cell ">Arguments for the tag object. See <a href="../tag/README.md#component-arguments">tag</a> component.</td>
 
 </tr>
 
