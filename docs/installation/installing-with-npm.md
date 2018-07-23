@@ -127,9 +127,14 @@ Include the `node_modules/govuk-frontend/all.js` script on your page. You might 
 
 To initialise all components, use the `initAll` function.
 
+JavaScript in GOV.UK Frontend requires HTML to be parsed first by the browser before it is initialised. Because of this, make sure you include the script before the closing `</body>` tag.
+Including the script elsewhere will stop components from functioning or displaying correctly.
+
 ```html
-<script src="path-to-assets/govuk-frontend/all.js"></script>
-<script>window.GOVUKFrontend.initAll()</script>
+    <script src="path-to-assets/govuk-frontend/all.js"></script>
+    <script>window.GOVUKFrontend.initAll()</script>
+  </body>
+</html>
 ```
 
 #### Initialise individual included components
