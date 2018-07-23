@@ -30,6 +30,10 @@
   can now be overwritten by setting the `assetUrl` variable.
   ([PR #847](https://github.com/alphagov/govuk-frontend/pull/847))
 
+- Only underline the logo in the header on underline when users have overridden
+  colours in their browser, rather than it appearing underlined all the time
+  ([PR #926](https://github.com/alphagov/govuk-frontend/pull/926))
+
 🔧 Fixes:
 
 - Replace conflicting `js-hidden` class used within the tabs component with a new modifier class.
