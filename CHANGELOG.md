@@ -39,6 +39,11 @@
   is deprecated and will be illegal in Sass 4.0
   ([PR #919](https://github.com/alphagov/govuk-frontend/pull/919))
 
+- Fix flash of unstyled content with conditional reveals (Radios and Checkboxes)
+
+  If the conditional reveal JavaScript is slow to execute it can result in showing the user their contents briefly which can be jarring.
+
+  ([PR #885](https://github.com/alphagov/govuk-frontend/pull/885))
 
 ## 1.1.1 (fix release)
 

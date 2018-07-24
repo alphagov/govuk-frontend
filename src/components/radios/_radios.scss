@@ -161,7 +161,7 @@
     padding-left: $conditional-padding-left;
     border-left: $conditional-border-width solid $govuk-border-colour;
 
-    &[aria-hidden="true"] {
+    .js-enabled &--hidden {
       display: none;
     }
 
