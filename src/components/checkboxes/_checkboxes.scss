@@ -66,6 +66,12 @@
     touch-action: manipulation;
   }
 
+  .govuk-checkboxes__hint {
+    display: block;
+    padding-right: $govuk-checkboxes-label-padding-left-right;
+    padding-left: $govuk-checkboxes-label-padding-left-right;
+  }
+
   .govuk-checkboxes__input + .govuk-checkboxes__label::before {
     content: "";
     box-sizing: border-box;

@@ -70,6 +70,12 @@
     touch-action: manipulation;
   }
 
+  .govuk-radios__hint {
+    display: block;
+    padding-right: $govuk-radios-label-padding-left-right;
+    padding-left: $govuk-radios-label-padding-left-right;
+  }
+
   .govuk-radios__input + .govuk-radios__label::before {
     content: "";
     box-sizing: border-box;

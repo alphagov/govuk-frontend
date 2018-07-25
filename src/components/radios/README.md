@@ -425,6 +425,80 @@ Find out when to use the radios component in your service in the [GOV.UK Design 
       ]
     }) }}
 
+### Radios with hints on items
+
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/radios/with-hints-on-items/preview)
+
+#### Markup
+
+    <div class="govuk-form-group">
+
+      <fieldset class="govuk-fieldset">
+
+      <legend class="govuk-fieldset__legend">
+        <h1 class="govuk-fieldset__heading">
+          How do you want to sign in?
+        </h1>
+      </legend>
+
+      <div class="govuk-radios">
+
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="gov-1" name="gov" type="radio" value="gateway" aria-describedby="gov-1-item-hint">
+          <label class="govuk-label govuk-radios__label" for="gov-1">
+            Sign in with Government Gateway
+          </label>
+          <span id="gov-1-item-hint" class="govuk-hint govuk-radios__hint">
+            You&#39;ll have a user ID if you&#39;ve registered for Self Assessment or filed a tax return online before.
+          </span>
+        </div>
+
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="gov-2" name="gov" type="radio" value="verify" aria-describedby="gov-2-item-hint">
+          <label class="govuk-label govuk-radios__label" for="gov-2">
+            Sign in with GOV.UK Verify
+          </label>
+          <span id="gov-2-item-hint" class="govuk-hint govuk-radios__hint">
+            You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity.
+          </span>
+        </div>
+
+      </div>
+      </fieldset>
+
+    </div>
+
+#### Macro
+
+    {% from "radios/macro.njk" import govukRadios %}
+
+    {{ govukRadios({
+      "idPrefix": "gov",
+      "name": "gov",
+      "fieldset": {
+        "legend": {
+          "text": "How do you want to sign in?",
+          "isPageHeading": true
+        }
+      },
+      "items": [
+        {
+          "value": "gateway",
+          "text": "Sign in with Government Gateway",
+          "hint": {
+            "text": "You'll have a user ID if you've registered for Self Assessment or filed a tax return online before."
+          }
+        },
+        {
+          "value": "verify",
+          "text": "Sign in with GOV.UK Verify",
+          "hint": {
+            "text": "You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity."
+          }
+        }
+      ]
+    }) }}
+
 ### Radios without fieldset
 
 [Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/radios/without-fieldset/preview)
@@ -732,6 +806,18 @@ If you are using Nunjucks,then macros take the following arguments
 <td class="govuk-table__cell ">No</td>
 
 <td class="govuk-table__cell ">Provide additional attributes to each radio item label. See [label](../label/README.md#component-arguments) component for more details.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">items.{}.hint</th>
+
+<td class="govuk-table__cell ">object</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Provide optional hint to each radio item. See `hint` component for more details.</td>
 
 </tr>
 

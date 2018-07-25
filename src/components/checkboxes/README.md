@@ -155,6 +155,82 @@ Find out when to use the checkboxes component in your service in the [GOV.UK Des
       ]
     }) }}
 
+### Checkboxes with hints on items
+
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-hints-on-items/preview)
+
+#### Markup
+
+    <div class="govuk-form-group">
+
+      <fieldset class="govuk-fieldset">
+
+      <legend class="govuk-fieldset__legend">
+        <h1 class="govuk-fieldset__heading">
+          How do you want to sign in?
+        </h1>
+      </legend>
+
+      <div class="govuk-checkboxes">
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="government-gateway" name="gateway" type="checkbox" value="gov-gateway" aria-describedby="government-gateway-item-hint">
+          <label class="govuk-label govuk-checkboxes__label" for="government-gateway">
+            Sign in with Government Gateway
+          </label>
+          <span id="government-gateway-item-hint" class="govuk-hint govuk-checkboxes__hint">
+            You’ll have a user ID if you’ve registered for Self Assessment or filed a tax return online before.
+          </span>
+        </div>
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="govuk-verify" name="verify" type="checkbox" value="gov-verify" aria-describedby="govuk-verify-item-hint">
+          <label class="govuk-label govuk-checkboxes__label" for="govuk-verify">
+            Sign in with GOV.UK Verify
+          </label>
+          <span id="govuk-verify-item-hint" class="govuk-hint govuk-checkboxes__hint">
+            You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity.
+          </span>
+        </div>
+
+      </div>
+      </fieldset>
+
+    </div>
+
+#### Macro
+
+    {% from "checkboxes/macro.njk" import govukCheckboxes %}
+
+    {{ govukCheckboxes({
+      "fieldset": {
+        "legend": {
+          "text": "How do you want to sign in?",
+          "isPageHeading": true
+        }
+      },
+      "items": [
+        {
+          "name": "gateway",
+          "id": "government-gateway",
+          "value": "gov-gateway",
+          "text": "Sign in with Government Gateway",
+          "hint": {
+            "text": "You’ll have a user ID if you’ve registered for Self Assessment or filed a tax return online before."
+          }
+        },
+        {
+          "name": "verify",
+          "id": "govuk-verify",
+          "value": "gov-verify",
+          "text": "Sign in with GOV.UK Verify",
+          "hint": {
+            "text": "You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity."
+          }
+        }
+      ]
+    }) }}
+
 ### Checkboxes with disabled item
 
 [Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-disabled-item/preview)
@@ -770,6 +846,18 @@ If you are using Nunjucks,then macros take the following arguments
 <td class="govuk-table__cell ">No</td>
 
 <td class="govuk-table__cell ">Provide additional attributes to each checkbox item label. See [label](../label/README.md#component-arguments) component for more details.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">items.{}.hint</th>
+
+<td class="govuk-table__cell ">object</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Provide optional hint to each checkbox item. See `hint` component for more details.</td>
 
 </tr>
 
