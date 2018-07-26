@@ -48,21 +48,33 @@
     {% set id = item.id if item.id else idPrefix + "-" + loop.index %}
     {% set name = item.name if item.name else params.name %}
     {% set conditionalId = "conditional-" + id %}
+    {% set hasHint = true if item.hint.text or item.hint.html %}
+    {% set itemHintId = id + '-item-hint' %}
     <div class="govuk-checkboxes__item">
       <input class="govuk-checkboxes__input" id="{{ id }}" name="{{ name }}" type="checkbox" value="{{ item.value }}"
       {{-" checked" if item.checked }}
       {{-" disabled" if item.disabled }}
-      {%- if item.conditional %} data-aria-controls="{{ conditionalId }}"{% endif -%}>
+      {%- if item.conditional %} data-aria-controls="{{ conditionalId }}"{% endif -%}
+      {%- if hasHint %} aria-describedby="{{ itemHintId }}"{% endif -%}>
       {{ govukLabel({
         html: item.html,
         text: item.text,
-        classes: 'govuk-checkboxes__label',
+        classes: 'govuk-checkboxes__label' + (' ' + item.label.classes if item.label.classes),
         attributes: item.label.attributes,
         for: id
       }) | indent(6) | trim }}
+      {%- if hasHint %}
+      {{ govukHint({
+        id: itemHintId,
+        classes: 'govuk-checkboxes__hint',
+        attributes: item.hint.attributes,
+        html: item.hint.html,
+        text: item.hint.text
+      }) | indent(6) | trim }}
+      {%- endif %}
     </div>
     {% if item.conditional %}
-      <div class="govuk-checkboxes__conditional" id="{{ conditionalId }}">
+      <div class="govuk-checkboxes__conditional{% if not item.checked %} govuk-checkboxes__conditional--hidden{% endif %}" id="{{ conditionalId }}">
         {{ item.conditional.html | safe }}
       </div>
     {% endif %}

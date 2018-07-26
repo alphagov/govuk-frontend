@@ -116,15 +116,15 @@
         border: 1px solid $govuk-border-colour;
         border-top: 0;
 
+        &--hidden {
+          display: none;
+        }
+
         & > :last-child {
           margin-bottom: 0;
         }
       }
     }
 
-  }
-
-  .js-hidden {
-    display: none;
   }
 }

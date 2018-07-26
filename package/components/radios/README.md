@@ -350,6 +350,155 @@ Find out when to use the radios component in your service in the [GOV.UK Design 
       ]
     }) }}
 
+### Radios with a divider
+
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/radios/with-a-divider/preview)
+
+#### Markup
+
+    <div class="govuk-form-group">
+
+      <fieldset class="govuk-fieldset">
+
+      <legend class="govuk-fieldset__legend">
+        How do you want to sign in?
+      </legend>
+
+      <div class="govuk-radios">
+
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="example-divider-1" name="example" type="radio" value="governement-gateway">
+          <label class="govuk-label govuk-radios__label" for="example-divider-1">
+            Use Government Gateway
+          </label>
+        </div>
+
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="example-divider-2" name="example" type="radio" value="govuk-verify">
+          <label class="govuk-label govuk-radios__label" for="example-divider-2">
+            Use GOV.UK Verify
+          </label>
+        </div>
+
+        <div class="govuk-radios__divider">or</div>
+
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="example-divider-4" name="example" type="radio" value="create-account">
+          <label class="govuk-label govuk-radios__label" for="example-divider-4">
+            Create an account
+          </label>
+        </div>
+
+      </div>
+      </fieldset>
+
+    </div>
+
+#### Macro
+
+    {% from "radios/macro.njk" import govukRadios %}
+
+    {{ govukRadios({
+      "idPrefix": "example-divider",
+      "name": "example",
+      "fieldset": {
+        "legend": {
+          "text": "How do you want to sign in?"
+        }
+      },
+      "items": [
+        {
+          "value": "governement-gateway",
+          "text": "Use Government Gateway"
+        },
+        {
+          "value": "govuk-verify",
+          "text": "Use GOV.UK Verify"
+        },
+        {
+          "divider": "or"
+        },
+        {
+          "value": "create-account",
+          "text": "Create an account"
+        }
+      ]
+    }) }}
+
+### Radios with hints on items
+
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/radios/with-hints-on-items/preview)
+
+#### Markup
+
+    <div class="govuk-form-group">
+
+      <fieldset class="govuk-fieldset">
+
+      <legend class="govuk-fieldset__legend">
+        <h1 class="govuk-fieldset__heading">
+          How do you want to sign in?
+        </h1>
+      </legend>
+
+      <div class="govuk-radios">
+
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="gov-1" name="gov" type="radio" value="gateway" aria-describedby="gov-1-item-hint">
+          <label class="govuk-label govuk-radios__label" for="gov-1">
+            Sign in with Government Gateway
+          </label>
+          <span id="gov-1-item-hint" class="govuk-hint govuk-radios__hint">
+            You&#39;ll have a user ID if you&#39;ve registered for Self Assessment or filed a tax return online before.
+          </span>
+        </div>
+
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="gov-2" name="gov" type="radio" value="verify" aria-describedby="gov-2-item-hint">
+          <label class="govuk-label govuk-radios__label" for="gov-2">
+            Sign in with GOV.UK Verify
+          </label>
+          <span id="gov-2-item-hint" class="govuk-hint govuk-radios__hint">
+            You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity.
+          </span>
+        </div>
+
+      </div>
+      </fieldset>
+
+    </div>
+
+#### Macro
+
+    {% from "radios/macro.njk" import govukRadios %}
+
+    {{ govukRadios({
+      "idPrefix": "gov",
+      "name": "gov",
+      "fieldset": {
+        "legend": {
+          "text": "How do you want to sign in?",
+          "isPageHeading": true
+        }
+      },
+      "items": [
+        {
+          "value": "gateway",
+          "text": "Sign in with Government Gateway",
+          "hint": {
+            "text": "You'll have a user ID if you've registered for Self Assessment or filed a tax return online before."
+          }
+        },
+        {
+          "value": "verify",
+          "text": "Sign in with GOV.UK Verify",
+          "hint": {
+            "text": "You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity."
+          }
+        }
+      ]
+    }) }}
+
 ### Radios without fieldset
 
 [Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/radios/without-fieldset/preview)
@@ -536,7 +685,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Arguments for the fieldset component (e.g. legend). See fieldset component.</td>
+<td class="govuk-table__cell ">Arguments for the fieldset component (e.g. legend). See <a href="../fieldset/README.md#component-arguments">fieldset</a> component.</td>
 
 </tr>
 
@@ -548,7 +697,7 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Arguments for the hint component (e.g. text). See hint component.</td>
+<td class="govuk-table__cell ">Arguments for the hint component (e.g. text). See <a href="../hint/README.md#component-arguments">hint</a> component.</td>
 
 </tr>
 
@@ -656,7 +805,31 @@ If you are using Nunjucks,then macros take the following arguments
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Provide additional attributes to each radio item label. See `label` component for more details.</td>
+<td class="govuk-table__cell ">Provide additional attributes and classes to each radio item label. See [label](../label/README.md#component-arguments) component for more details.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">items.{}.hint</th>
+
+<td class="govuk-table__cell ">object</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Provide optional hint to each radio item. See `hint` component for more details.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">items.{}.divider</th>
+
+<td class="govuk-table__cell ">string</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Optional divider text to separate radio items, for example the text "or".</td>
 
 </tr>
 
