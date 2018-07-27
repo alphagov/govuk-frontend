@@ -101,14 +101,16 @@
 
     &:link,
     &:visited {
-      margin-bottom: -1px; // Negate transparent bottom border
-      border-bottom: 1px solid transparent;
       text-decoration: none;
     }
 
     &:hover,
     &:active {
-      border-bottom-color: currentColor;
+      // Negate the added border
+      margin-bottom: -1px;
+      // Omitting colour will use default value of currentColor – if we
+      // specified currentColor explicitly IE8 would ignore this rule.
+      border-bottom: 1px solid;
     }
   }
 

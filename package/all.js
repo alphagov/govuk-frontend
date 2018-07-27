@@ -881,177 +881,6 @@ Details.prototype.destroy = function (node) {
   node.removeEventListener('click');
 };
 
-function Checkboxes ($module) {
-  this.$module = $module;
-  this.$inputs = $module.querySelectorAll('input[type="checkbox"]');
-}
-
-Checkboxes.prototype.init = function () {
-  var $module = this.$module;
-  var $inputs = this.$inputs;
-
-  /**
-  * Loop over all items with [data-controls]
-  * Check if they have a matching conditional reveal
-  * If they do, assign attributes.
-  **/
-  nodeListForEach($inputs, function ($input) {
-    var controls = $input.getAttribute('data-aria-controls');
-
-    // Check if input controls anything
-    // Check if content exists, before setting attributes.
-    if (!controls || !$module.querySelector('#' + controls)) {
-      return
-    }
-
-    // If we have content that is controlled, set attributes.
-    $input.setAttribute('aria-controls', controls);
-    $input.removeAttribute('data-aria-controls');
-    this.setAttributes($input);
-  }.bind(this));
-
-  // Handle events
-  $module.addEventListener('click', this.handleClick.bind(this));
-};
-
-Checkboxes.prototype.setAttributes = function ($input) {
-  var inputIsChecked = $input.checked;
-  $input.setAttribute('aria-expanded', inputIsChecked);
-
-  var $content = document.querySelector('#' + $input.getAttribute('aria-controls'));
-  $content.setAttribute('aria-hidden', !inputIsChecked);
-};
-
-Checkboxes.prototype.handleClick = function (event) {
-  var $target = event.target;
-
-  // If a checkbox with aria-controls, handle click
-  var isCheckbox = $target.getAttribute('type') === 'checkbox';
-  var hasAriaControls = $target.getAttribute('aria-controls');
-  if (isCheckbox && hasAriaControls) {
-    this.setAttributes($target);
-  }
-};
-
-function ErrorSummary ($module) {
-  this.$module = $module;
-}
-
-ErrorSummary.prototype.init = function () {
-  var $module = this.$module;
-  if (!$module) {
-    return
-  }
-  window.addEventListener('load', function () {
-    $module.focus();
-  });
-};
-
-function Header ($module) {
-  this.$module = $module;
-}
-
-Header.prototype.init = function () {
-  // Check for module
-  var $module = this.$module;
-  if (!$module) {
-    return
-  }
-
-  // Check for button
-  var $toggleButton = $module.querySelector('.js-header-toggle');
-  if (!$toggleButton) {
-    return
-  }
-
-  // Handle $toggleButton click events
-  $toggleButton.addEventListener('click', this.handleClick.bind(this));
-};
-
-/**
-* Toggle class
-* @param {object} node element
-* @param {string} className to toggle
-*/
-Header.prototype.toggleClass = function (node, className) {
-  if (node.className.indexOf(className) > 0) {
-    node.className = node.className.replace(' ' + className, '');
-  } else {
-    node.className += ' ' + className;
-  }
-};
-
-/**
-* An event handler for click event on $toggleButton
-* @param {object} event event
-*/
-Header.prototype.handleClick = function (event) {
-  var $module = this.$module;
-  var $toggleButton = event.target || event.srcElement;
-  var $target = $module.querySelector('#' + $toggleButton.getAttribute('aria-controls'));
-
-  // If a button with aria-controls, handle click
-  if ($toggleButton && $target) {
-    this.toggleClass($target, 'govuk-header__navigation--open');
-    this.toggleClass($toggleButton, 'govuk-header__menu-button--open');
-
-    $toggleButton.setAttribute('aria-expanded', $toggleButton.getAttribute('aria-expanded') !== 'true');
-    $target.setAttribute('aria-hidden', $target.getAttribute('aria-hidden') === 'false');
-  }
-};
-
-function Radios ($module) {
-  this.$module = $module;
-  this.$inputs = $module.querySelectorAll('input[type="radio"]');
-}
-
-Radios.prototype.init = function () {
-  var $module = this.$module;
-  var $inputs = this.$inputs;
-
-  /**
-  * Loop over all items with [data-controls]
-  * Check if they have a matching conditional reveal
-  * If they do, assign attributes.
-  **/
-  nodeListForEach($inputs, function ($input) {
-    var controls = $input.getAttribute('data-aria-controls');
-
-    // Check if input controls anything
-    // Check if content exists, before setting attributes.
-    if (!controls || !$module.querySelector('#' + controls)) {
-      return
-    }
-
-    // If we have content that is controlled, set attributes.
-    $input.setAttribute('aria-controls', controls);
-    $input.removeAttribute('data-aria-controls');
-    this.setAttributes($input);
-  }.bind(this));
-
-  // Handle events
-  $module.addEventListener('click', this.handleClick.bind(this));
-};
-
-Radios.prototype.setAttributes = function ($input) {
-  var inputIsChecked = $input.checked;
-  $input.setAttribute('aria-expanded', inputIsChecked);
-
-  var $content = document.querySelector('#' + $input.getAttribute('aria-controls'));
-  $content.setAttribute('aria-hidden', !inputIsChecked);
-};
-
-Radios.prototype.handleClick = function (event) {
-  nodeListForEach(this.$inputs, function ($input) {
-    // If a radio with aria-controls, handle click
-    var isRadio = $input.getAttribute('type') === 'radio';
-    var hasAriaControls = $input.getAttribute('aria-controls');
-    if (isRadio && hasAriaControls) {
-      this.setAttributes($input);
-    }
-  }.bind(this));
-};
-
 (function(undefined) {
 
     // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-service/master/packages/polyfill-library/polyfills/DOMTokenList/detect.js
@@ -1407,12 +1236,183 @@ Radios.prototype.handleClick = function (event) {
 
 }).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
+function Checkboxes ($module) {
+  this.$module = $module;
+  this.$inputs = $module.querySelectorAll('input[type="checkbox"]');
+}
+
+Checkboxes.prototype.init = function () {
+  var $module = this.$module;
+  var $inputs = this.$inputs;
+
+  /**
+  * Loop over all items with [data-controls]
+  * Check if they have a matching conditional reveal
+  * If they do, assign attributes.
+  **/
+  nodeListForEach($inputs, function ($input) {
+    var controls = $input.getAttribute('data-aria-controls');
+
+    // Check if input controls anything
+    // Check if content exists, before setting attributes.
+    if (!controls || !$module.querySelector('#' + controls)) {
+      return
+    }
+
+    // If we have content that is controlled, set attributes.
+    $input.setAttribute('aria-controls', controls);
+    $input.removeAttribute('data-aria-controls');
+    this.setAttributes($input);
+  }.bind(this));
+
+  // Handle events
+  $module.addEventListener('click', this.handleClick.bind(this));
+};
+
+Checkboxes.prototype.setAttributes = function ($input) {
+  var inputIsChecked = $input.checked;
+  $input.setAttribute('aria-expanded', inputIsChecked);
+
+  var $content = document.querySelector('#' + $input.getAttribute('aria-controls'));
+  $content.classList.toggle('govuk-checkboxes__conditional--hidden', !inputIsChecked);
+};
+
+Checkboxes.prototype.handleClick = function (event) {
+  var $target = event.target;
+
+  // If a checkbox with aria-controls, handle click
+  var isCheckbox = $target.getAttribute('type') === 'checkbox';
+  var hasAriaControls = $target.getAttribute('aria-controls');
+  if (isCheckbox && hasAriaControls) {
+    this.setAttributes($target);
+  }
+};
+
+function ErrorSummary ($module) {
+  this.$module = $module;
+}
+
+ErrorSummary.prototype.init = function () {
+  var $module = this.$module;
+  if (!$module) {
+    return
+  }
+  window.addEventListener('load', function () {
+    $module.focus();
+  });
+};
+
+function Header ($module) {
+  this.$module = $module;
+}
+
+Header.prototype.init = function () {
+  // Check for module
+  var $module = this.$module;
+  if (!$module) {
+    return
+  }
+
+  // Check for button
+  var $toggleButton = $module.querySelector('.js-header-toggle');
+  if (!$toggleButton) {
+    return
+  }
+
+  // Handle $toggleButton click events
+  $toggleButton.addEventListener('click', this.handleClick.bind(this));
+};
+
+/**
+* Toggle class
+* @param {object} node element
+* @param {string} className to toggle
+*/
+Header.prototype.toggleClass = function (node, className) {
+  if (node.className.indexOf(className) > 0) {
+    node.className = node.className.replace(' ' + className, '');
+  } else {
+    node.className += ' ' + className;
+  }
+};
+
+/**
+* An event handler for click event on $toggleButton
+* @param {object} event event
+*/
+Header.prototype.handleClick = function (event) {
+  var $module = this.$module;
+  var $toggleButton = event.target || event.srcElement;
+  var $target = $module.querySelector('#' + $toggleButton.getAttribute('aria-controls'));
+
+  // If a button with aria-controls, handle click
+  if ($toggleButton && $target) {
+    this.toggleClass($target, 'govuk-header__navigation--open');
+    this.toggleClass($toggleButton, 'govuk-header__menu-button--open');
+
+    $toggleButton.setAttribute('aria-expanded', $toggleButton.getAttribute('aria-expanded') !== 'true');
+    $target.setAttribute('aria-hidden', $target.getAttribute('aria-hidden') === 'false');
+  }
+};
+
+function Radios ($module) {
+  this.$module = $module;
+  this.$inputs = $module.querySelectorAll('input[type="radio"]');
+}
+
+Radios.prototype.init = function () {
+  var $module = this.$module;
+  var $inputs = this.$inputs;
+
+  /**
+  * Loop over all items with [data-controls]
+  * Check if they have a matching conditional reveal
+  * If they do, assign attributes.
+  **/
+  nodeListForEach($inputs, function ($input) {
+    var controls = $input.getAttribute('data-aria-controls');
+
+    // Check if input controls anything
+    // Check if content exists, before setting attributes.
+    if (!controls || !$module.querySelector('#' + controls)) {
+      return
+    }
+
+    // If we have content that is controlled, set attributes.
+    $input.setAttribute('aria-controls', controls);
+    $input.removeAttribute('data-aria-controls');
+    this.setAttributes($input);
+  }.bind(this));
+
+  // Handle events
+  $module.addEventListener('click', this.handleClick.bind(this));
+};
+
+Radios.prototype.setAttributes = function ($input) {
+  var inputIsChecked = $input.checked;
+  $input.setAttribute('aria-expanded', inputIsChecked);
+
+  var $content = document.querySelector('#' + $input.getAttribute('aria-controls'));
+  $content.classList.toggle('govuk-radios__conditional--hidden', !inputIsChecked);
+};
+
+Radios.prototype.handleClick = function (event) {
+  nodeListForEach(this.$inputs, function ($input) {
+    // If a radio with aria-controls, handle click
+    var isRadio = $input.getAttribute('type') === 'radio';
+    var hasAriaControls = $input.getAttribute('aria-controls');
+    if (isRadio && hasAriaControls) {
+      this.setAttributes($input);
+    }
+  }.bind(this));
+};
+
 function Tabs ($module) {
   this.$module = $module;
   this.$tabs = $module.querySelectorAll('.govuk-tabs__tab');
 
   this.keys = { left: 37, right: 39, up: 38, down: 40 };
-  this.jsHiddenClass = 'js-hidden';
+  this.jsHiddenClass = 'govuk-tabs__panel--hidden';
 }
 
 Tabs.prototype.init = function () {

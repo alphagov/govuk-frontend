@@ -20,6 +20,18 @@
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
+🔧 Fixes:
+
+- Pull Request Title goes here
+
+  Description goes here (optional)
+
+  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+
+## 1.2.0 (feature release)
+
+🆕 New features:
+
 - Allow for optional divider between radio items
 
   You can now provide a divider item (e.g "or") to separate items
