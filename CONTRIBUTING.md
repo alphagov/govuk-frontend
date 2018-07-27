@@ -93,12 +93,6 @@ See [tasks](/docs/contributing/tasks.md).
 
 See [deploying](/docs/contributing/deploying.md).
 
-## Versioning
-
-We are not using semantic versioning yet, we are going to talk about this soon.
-
-See `CHANGELOG` for more information.
-
 ## Releasing a new version
 
 See [publishing](/docs/contributing/publishing.md).
