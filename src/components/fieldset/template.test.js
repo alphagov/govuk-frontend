@@ -108,4 +108,10 @@ describe('fieldset', () => {
     expect($component.attr('data-attribute')).toEqual('value')
     expect($component.attr('data-another-attribute')).toEqual('another-value')
   })
+
+  it('renders nested components using `call`', () => {
+    const $ = render('fieldset', {}, '<div class="app-nested-component"></div>')
+
+    expect($('.govuk-fieldset .app-nested-component').length).toBeTruthy()
+  })
 })
