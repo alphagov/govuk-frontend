@@ -47,15 +47,6 @@ describe('fieldset', () => {
     expect($legend.parent().get(0).tagName).toEqual('fieldset')
   })
 
-  it('can have additional classes', () => {
-    const $ = render('fieldset', {
-      classes: 'app-fieldset--custom-modifier'
-    })
-
-    const $component = $('.govuk-fieldset')
-    expect($component.hasClass('app-fieldset--custom-modifier')).toBeTruthy()
-  })
-
   it('allows you to set the legend text', () => {
     const $ = render('fieldset', {
       legend: {
@@ -89,7 +80,19 @@ describe('fieldset', () => {
     expect($legend.html()).toContain('<b>your</b>')
   })
 
-  it('allows for additional classes on the legend', () => {
+  it('nests the legend text in an H1 if the legend is a page heading', () => {
+    const $ = render('fieldset', {
+      legend: {
+        text: 'What is your address?',
+        isPageHeading: true
+      }
+    })
+
+    const $headingInsideLegend = $('.govuk-fieldset__legend > h1')
+    expect($headingInsideLegend.text().trim()).toBe('What is your address?')
+  })
+
+  it('can have additional classes on the legend', () => {
     const $ = render('fieldset', {
       legend: {
         text: 'What is your address?',
@@ -101,16 +104,13 @@ describe('fieldset', () => {
     expect($legend.hasClass('my-custom-class')).toBeTruthy()
   })
 
-  it('nests the legend text in an H1 if the legend is a page heading', () => {
+  it('can have additional classes on the fieldset', () => {
     const $ = render('fieldset', {
-      legend: {
-        text: 'What is your address?',
-        isPageHeading: true
-      }
+      classes: 'app-fieldset--custom-modifier'
     })
 
-    const $headingInsideLegend = $('.govuk-fieldset__legend > h1')
-    expect($headingInsideLegend.text().trim()).toBe('What is your address?')
+    const $component = $('.govuk-fieldset')
+    expect($component.hasClass('app-fieldset--custom-modifier')).toBeTruthy()
   })
 
   it('can have additional attributes', () => {
