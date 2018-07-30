@@ -2,7 +2,7 @@
 
 const axe = require('../../../lib/axe-helper')
 
-const { render, getExamples } = require('../../../lib/jest-helpers')
+const { render, renderString, getExamples } = require('../../../lib/jest-helpers')
 
 const examples = getExamples('fieldset')
 
@@ -91,6 +91,21 @@ describe('fieldset', () => {
     const $headingInsideLegend = $('.govuk-fieldset__legend > h1')
     expect($headingInsideLegend.text().trim()).toBe('What is your address?')
   })
+
+  it('accepts fieldset content from the caller', () => {
+    const example = `
+    {% from "fieldset/macro.njk" import govukFieldset %}
+
+    {% call govukFieldset() %}
+      <div class="my-nested-component"></div>
+    {% endcall %}
+    `
+
+    const $ = renderString(example)
+
+    expect($('.govuk-fieldset .my-nested-component').length).toBeTruthy()
+  })
+
 
   it('can have additional classes on the legend', () => {
     const $ = render('fieldset', {
