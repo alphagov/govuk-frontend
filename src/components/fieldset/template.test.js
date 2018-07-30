@@ -47,15 +47,6 @@ describe('fieldset', () => {
     expect($legend.parent().get(0).tagName).toEqual('fieldset')
   })
 
-  it('can have additional classes', () => {
-    const $ = render('fieldset', {
-      classes: 'app-fieldset--custom-modifier'
-    })
-
-    const $component = $('.govuk-fieldset')
-    expect($component.hasClass('app-fieldset--custom-modifier')).toBeTruthy()
-  })
-
   it('allows you to set the legend text', () => {
     const $ = render('fieldset', {
       legend: {
@@ -89,18 +80,6 @@ describe('fieldset', () => {
     expect($legend.html()).toContain('<b>your</b>')
   })
 
-  it('allows for additional classes on the legend', () => {
-    const $ = render('fieldset', {
-      legend: {
-        text: 'What is your address?',
-        classes: 'my-custom-class'
-      }
-    })
-
-    const $legend = $('.govuk-fieldset__legend')
-    expect($legend.hasClass('my-custom-class')).toBeTruthy()
-  })
-
   it('nests the legend text in an H1 if the legend is a page heading', () => {
     const $ = render('fieldset', {
       legend: {
@@ -113,6 +92,33 @@ describe('fieldset', () => {
     expect($headingInsideLegend.text().trim()).toBe('What is your address?')
   })
 
+  it('renders nested components using `call`', () => {
+    const $ = render('fieldset', {}, '<div class="app-nested-component"></div>')
+
+    expect($('.govuk-fieldset .app-nested-component').length).toBeTruthy()
+  })
+
+  it('can have additional classes on the legend', () => {
+    const $ = render('fieldset', {
+      legend: {
+        text: 'What is your address?',
+        classes: 'my-custom-class'
+      }
+    })
+
+    const $legend = $('.govuk-fieldset__legend')
+    expect($legend.hasClass('my-custom-class')).toBeTruthy()
+  })
+
+  it('can have additional classes on the fieldset', () => {
+    const $ = render('fieldset', {
+      classes: 'app-fieldset--custom-modifier'
+    })
+
+    const $component = $('.govuk-fieldset')
+    expect($component.hasClass('app-fieldset--custom-modifier')).toBeTruthy()
+  })
+
   it('can have additional attributes', () => {
     const $ = render('fieldset', {
       attributes: {
@@ -122,11 +128,5 @@ describe('fieldset', () => {
 
     const $component = $('.govuk-fieldset')
     expect($component.attr('data-attribute')).toEqual('value')
-  })
-
-  it('renders nested components using `call`', () => {
-    const $ = render('fieldset', {}, '<div class="app-nested-component"></div>')
-
-    expect($('.govuk-fieldset .app-nested-component').length).toBeTruthy()
   })
 })
