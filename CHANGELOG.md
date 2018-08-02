@@ -28,6 +28,12 @@
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
+- Fix incorrect panel title bottom margin with optional text
+
+  Margin is only added when panel text is provided
+
+  ([PR #936](https://github.com/alphagov/govuk-frontend/pull/936))
+
 ## 1.2.0 (feature release)
 
 🆕 New features:
