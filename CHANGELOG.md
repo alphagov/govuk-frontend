@@ -20,6 +20,13 @@
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
+- Allow attributes on checkboxes/radios
+
+  You can now provide attributes on checkbox and radio items
+  `attributes: { 'data-attribute': 'value' }`
+
+  ([PR #942](https://github.com/alphagov/govuk-frontend/pull/942))
+
 🔧 Fixes:
 
 - Pull Request Title goes here
