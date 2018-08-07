@@ -461,6 +461,18 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
+<th class="govuk-table__header" scope="row">navigation.{}.active</th>
+
+<td class="govuk-table__cell ">boolean</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Flag to mark the navigation item as active or not.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
 <th class="govuk-table__header" scope="row">navigationClasses</th>
 
 <td class="govuk-table__cell ">string</td>
