@@ -198,6 +198,43 @@ describe('Radios', () => {
       expect($lastInput.attr('checked')).toEqual('checked')
     })
 
+    describe('when they include attributes', () => {
+      it('it renders the attributes', () => {
+        const $ = render('radios', {
+          name: 'example-name',
+          items: [
+            {
+              value: 'yes',
+              text: 'Yes',
+              attributes: {
+                'data-attribute': 'ABC',
+                'data-second-attribute': 'DEF'
+              }
+            },
+            {
+              value: 'no',
+              text: 'No',
+              checked: true,
+              attributes: {
+                'data-attribute': 'GHI',
+                'data-second-attribute': 'JKL'
+              }
+            }
+          ]
+        })
+
+        const $component = $('.govuk-radios')
+
+        const $firstInput = $component.find('.govuk-radios__item:first-child input')
+        expect($firstInput.attr('data-attribute')).toEqual('ABC')
+        expect($firstInput.attr('data-second-attribute')).toEqual('DEF')
+
+        const $lastInput = $component.find('.govuk-radios__item:last-child input')
+        expect($lastInput.attr('data-attribute')).toEqual('GHI')
+        expect($lastInput.attr('data-second-attribute')).toEqual('JKL')
+      })
+    })
+
     describe('when they include a hint', () => {
       it('it renders the hint text', () => {
         const $ = render('radios', {

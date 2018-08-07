@@ -253,6 +253,42 @@ describe('Checkboxes', () => {
       expect($secondInput.attr('checked')).toEqual('checked')
       expect($lastInput.attr('checked')).toEqual('checked')
     })
+
+    describe('when they include attributes', () => {
+      it('it renders the attributes', () => {
+        const $ = render('checkboxes', {
+          name: 'example-name',
+          items: [
+            {
+              value: '1',
+              text: 'Option 1',
+              attributes: {
+                'data-attribute': 'ABC',
+                'data-second-attribute': 'DEF'
+              }
+            },
+            {
+              value: '2',
+              text: 'Option 2',
+              attributes: {
+                'data-attribute': 'GHI',
+                'data-second-attribute': 'JKL'
+              }
+            }
+          ]
+        })
+
+        const $component = $('.govuk-checkboxes')
+
+        const $firstInput = $component.find('.govuk-checkboxes__item:first-child input')
+        expect($firstInput.attr('data-attribute')).toEqual('ABC')
+        expect($firstInput.attr('data-second-attribute')).toEqual('DEF')
+
+        const $lastInput = $component.find('.govuk-checkboxes__item:last-child input')
+        expect($lastInput.attr('data-attribute')).toEqual('GHI')
+        expect($lastInput.attr('data-second-attribute')).toEqual('JKL')
+      })
+    })
   })
 
   describe('when they include a hint', () => {
