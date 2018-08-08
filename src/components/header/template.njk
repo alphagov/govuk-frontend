@@ -43,7 +43,7 @@
             <image src="{{ params.assetsPath | default('/assets/images') }}/govuk-logotype-crown.png" class="govuk-header__logotype-crown-fallback-image"></image>
           </svg>
           <span class="govuk-header__logotype-text">
-            GOV.UK
+            {{ params.logoText if params.logoText else 'GOV.UK' }}
           </span>
         </span>
         {% if (params.productName) %}
