@@ -397,25 +397,13 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">removeLogo</th>
-
-<td class="govuk-table__cell ">boolean</td>
-
-<td class="govuk-table__cell ">No</td>
-
-<td class="govuk-table__cell ">Flag to remove the crown logo from the HTML output</td>
-
-</tr>
-
-<tr class="govuk-table__row">
-
 <th class="govuk-table__header" scope="row">logoText</th>
 
 <td class="govuk-table__cell ">string</td>
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">The text next to the crown logo. Defaults to GOV.UK</td>
+<td class="govuk-table__cell ">Remove the crown logo and replace the GOV.UK text with the provided string</td>
 
 </tr>
 

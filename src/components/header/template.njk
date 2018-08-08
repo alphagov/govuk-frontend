@@ -4,7 +4,7 @@
 
     <div class="govuk-header__logo">
       <a href="{{ params.homepageUrl | default('/') }}" class="govuk-header__link govuk-header__link--homepage">
-        {% if not params.removeLogo %}
+        {% if not params.logoText %}
         <span class="govuk-header__logotype">
           {# We use an inline SVG for the crown so that we can cascade the
           currentColor into the crown whilst continuing to support older browsers
