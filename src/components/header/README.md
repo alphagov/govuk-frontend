@@ -21,6 +21,7 @@ Find out when to use the header component in your service in the [GOV.UK Design 
 
         <div class="govuk-header__logo">
           <a href="/" class="govuk-header__link govuk-header__link--homepage">
+
             <span class="govuk-header__logotype">
 
               <svg
@@ -39,6 +40,7 @@ Find out when to use the header component in your service in the [GOV.UK Design 
 
                 <image src="/assets/images/govuk-logotype-crown.png" class="govuk-header__logotype-crown-fallback-image"></image>
               </svg>
+
               <span class="govuk-header__logotype-text">
                 GOV.UK
               </span>
@@ -67,6 +69,7 @@ Find out when to use the header component in your service in the [GOV.UK Design 
 
         <div class="govuk-header__logo">
           <a href="/" class="govuk-header__link govuk-header__link--homepage">
+
             <span class="govuk-header__logotype">
 
               <svg
@@ -85,6 +88,7 @@ Find out when to use the header component in your service in the [GOV.UK Design 
 
                 <image src="/assets/images/govuk-logotype-crown.png" class="govuk-header__logotype-crown-fallback-image"></image>
               </svg>
+
               <span class="govuk-header__logotype-text">
                 GOV.UK
               </span>
@@ -124,6 +128,7 @@ Find out when to use the header component in your service in the [GOV.UK Design 
 
         <div class="govuk-header__logo">
           <a href="/" class="govuk-header__link govuk-header__link--homepage">
+
             <span class="govuk-header__logotype">
 
               <svg
@@ -142,6 +147,7 @@ Find out when to use the header component in your service in the [GOV.UK Design 
 
                 <image src="/assets/images/govuk-logotype-crown.png" class="govuk-header__logotype-crown-fallback-image"></image>
               </svg>
+
               <span class="govuk-header__logotype-text">
                 GOV.UK
               </span>
@@ -225,6 +231,7 @@ Find out when to use the header component in your service in the [GOV.UK Design 
 
         <div class="govuk-header__logo">
           <a href="/" class="govuk-header__link govuk-header__link--homepage">
+
             <span class="govuk-header__logotype">
 
               <svg
@@ -243,6 +250,7 @@ Find out when to use the header component in your service in the [GOV.UK Design 
 
                 <image src="/assets/images/govuk-logotype-crown.png" class="govuk-header__logotype-crown-fallback-image"></image>
               </svg>
+
               <span class="govuk-header__logotype-text">
                 GOV.UK
               </span>
@@ -384,6 +392,18 @@ If you are using Nunjucks,then macros take the following arguments
 <td class="govuk-table__cell ">No</td>
 
 <td class="govuk-table__cell ">The public path for the assets folder. If not provided it defaults to /assets/images</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">logoText</th>
+
+<td class="govuk-table__cell ">string</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Remove the crown logo and replace the GOV.UK text with the provided string</td>
 
 </tr>
 

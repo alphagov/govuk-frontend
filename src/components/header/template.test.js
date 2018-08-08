@@ -64,6 +64,34 @@ describe('header', () => {
     expect($homepageLink.attr('href')).toEqual('/')
   })
 
+  describe('logo text', () => {
+    describe('default', () => {
+      it('renders the crown logo and GOV.UK text', () => {
+        const $ = render('header', {})
+
+        const $component = $('.govuk-header')
+        const $logo = $component.find('.govuk-header__logotype-crown')
+        const $logoText = $component.find('.govuk-header__logotype-text')
+
+        expect($logo.length).toEqual(1)
+        expect($logoText.text().trim()).toEqual('GOV.UK')
+      })
+    })
+    describe('with some logo text', () => {
+      it('removes the crown logo and renders the provided text', () => {
+        const logoText = 'Logo Text'
+        const $ = render('header', { logoText })
+
+        const $component = $('.govuk-header')
+        const $logo = $component.find('.govuk-header__logotype-crown')
+        const $logoText = $component.find('.govuk-header__logotype-text')
+
+        expect($logo.length).toEqual(0)
+        expect($logoText.text().trim()).toEqual(logoText)
+      })
+    })
+  })
+
   describe('with product name', () => {
     it('renders product name', () => {
       const $ = render('header', examples['full width'])

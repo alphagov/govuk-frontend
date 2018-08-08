@@ -4,6 +4,7 @@
 
     <div class="govuk-header__logo">
       <a href="{{ params.homepageUrl | default('/') }}" class="govuk-header__link govuk-header__link--homepage">
+        {% if not params.logoText %}
         <span class="govuk-header__logotype">
           {# We use an inline SVG for the crown so that we can cascade the
           currentColor into the crown whilst continuing to support older browsers
@@ -42,8 +43,9 @@
             interpreted as such, displaying the fallback image. #}
             <image src="{{ params.assetsPath | default('/assets/images') }}/govuk-logotype-crown.png" class="govuk-header__logotype-crown-fallback-image"></image>
           </svg>
+          {% endif %}
           <span class="govuk-header__logotype-text">
-            GOV.UK
+            {{ params.logoText if params.logoText else 'GOV.UK' }}
           </span>
         </span>
         {% if (params.productName) %}
