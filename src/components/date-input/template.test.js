@@ -244,6 +244,13 @@ describe('Date input', () => {
 
       expect($fieldset.attr('role')).toEqual('group')
     })
+
+    it('renders with a form group wrapper', () => {
+      const $ = render('date-input', {})
+
+      const $formGroup = $('.govuk-form-group')
+      expect($formGroup.length).toBeTruthy()
+    })
   })
 
   describe('when it includes a hint', () => {
@@ -293,6 +300,17 @@ describe('Date input', () => {
 
       expect($fieldset.attr('aria-describedby'))
         .toMatch(errorMessageId)
+    })
+
+    it('renders with a form group wrapper that has an error state', () => {
+      const $ = render('date-input', {
+        errorMessage: {
+          text: 'Error message'
+        }
+      })
+
+      const $formGroup = $('.govuk-form-group')
+      expect($formGroup.hasClass('govuk-form-group--error')).toBeTruthy()
     })
   })
 

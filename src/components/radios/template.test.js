@@ -409,6 +409,13 @@ describe('Radios', () => {
       const $label = $component.find('.govuk-radios__item label')
       expect($label.hasClass('bold')).toBeTruthy()
     })
+
+    it('renders with a form group wrapper', () => {
+      const $ = render('radios', {})
+
+      const $formGroup = $('.govuk-form-group')
+      expect($formGroup.length).toBeTruthy()
+    })
   })
 
   describe('when they include a hint', () => {
@@ -489,6 +496,17 @@ describe('Radios', () => {
 
       expect($fieldset.attr('aria-describedby'))
         .toMatch(errorMessageId)
+    })
+
+    it('renders with a form group wrapper that has an error state', () => {
+      const $ = render('radios', {
+        errorMessage: {
+          text: 'Error message'
+        }
+      })
+
+      const $formGroup = $('.govuk-form-group')
+      expect($formGroup.hasClass('govuk-form-group--error')).toBeTruthy()
     })
   })
 
