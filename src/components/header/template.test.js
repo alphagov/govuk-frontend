@@ -64,6 +64,27 @@ describe('header', () => {
     expect($homepageLink.attr('href')).toEqual('/')
   })
 
+  describe('logo', () => {
+    describe('default', () => {
+      it('renders the logo', () => {
+        const $ = render('header', {})
+
+        const $component = $('.govuk-header')
+        const $logo = $component.find('.govuk-header__logotype-crown')
+        expect($logo.length).toEqual(1)
+      })
+    })
+    describe('disabling the logo', () => {
+      it('stop the logo being put in the HTML', () => {
+        const $ = render('header', { removeLogo: true })
+
+        const $component = $('.govuk-header')
+        const $logo = $component.find('.govuk-header__logotype-crown')
+        expect($logo.length).toEqual(0)
+      })
+    })
+  })
+
   describe('logo text', () => {
     describe('default', () => {
       it('renders GOV.UK', () => {
