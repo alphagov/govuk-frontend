@@ -55,6 +55,8 @@
 
   ([PR #951](https://github.com/alphagov/govuk-frontend/pull/951))
 
+- Update date input component to use `display: inline-block`
+  ([PR #938](https://github.com/alphagov/govuk-frontend/pull/938))
 
 ## 1.2.0 (feature release)
 
