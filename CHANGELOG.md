@@ -47,6 +47,15 @@
   Some older browser will be forced into 'quirks mode' if there is whitespace before the doctype.
 
   ([PR #949](https://github.com/alphagov/govuk-frontend/pull/949))
+
+- Remove additional dotted outline from focussed buttons in Firefox
+
+  This was already the intended behaviour, but a minor typo (: rather than ::)
+  meant that it wasn't being applied.
+
+  ([PR #951](https://github.com/alphagov/govuk-frontend/pull/951))
+
+
 ## 1.2.0 (feature release)
 
 🆕 New features:
