@@ -41,6 +41,12 @@
 
   ([PR #936](https://github.com/alphagov/govuk-frontend/pull/936))
 
+- Remove template whitespace
+
+  Remove leading whitespace before the doctype in the page template.
+  Some older browser will be forced into 'quirks mode' if there is whitespace before the doctype.
+
+  ([PR #949](https://github.com/alphagov/govuk-frontend/pull/949))
 ## 1.2.0 (feature release)
 
 🆕 New features:
