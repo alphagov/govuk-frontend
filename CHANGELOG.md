@@ -57,6 +57,9 @@
 
 - Update date input component to use `display: inline-block`
   ([PR #938](https://github.com/alphagov/govuk-frontend/pull/938))
+  
+- Change spacing relationship on default and small legends and hints
+  ([PR #940](https://github.com/alphagov/govuk-frontend/pull/940))
 
 ## 1.2.0 (feature release)
 
