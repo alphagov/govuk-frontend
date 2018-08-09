@@ -80,6 +80,13 @@ describe('Input', () => {
       const $component = $('.govuk-input')
       expect($component.attr('data-attribute')).toEqual('my data value')
     })
+
+    it('renders with a form group wrapper', () => {
+      const $ = render('input', {})
+
+      const $formGroup = $('.govuk-form-group')
+      expect($formGroup.length).toBeTruthy()
+    })
   })
 
   describe('when it includes a hint', () => {
@@ -154,6 +161,17 @@ describe('Input', () => {
 
       const $component = $('.govuk-input')
       expect($component.hasClass('govuk-input--error')).toBeTruthy()
+    })
+
+    it('renders with a form group wrapper that has an error state', () => {
+      const $ = render('input', {
+        errorMessage: {
+          text: 'Error message'
+        }
+      })
+
+      const $formGroup = $('.govuk-form-group')
+      expect($formGroup.hasClass('govuk-form-group--error')).toBeTruthy()
     })
   })
 

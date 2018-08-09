@@ -64,6 +64,13 @@ describe('File upload', () => {
       const $component = $('.govuk-file-upload')
       expect($component.attr('data-attribute')).toEqual('my data value')
     })
+
+    it('renders with a form group wrapper', () => {
+      const $ = render('file-upload', {})
+
+      const $formGroup = $('.govuk-form-group')
+      expect($formGroup.length).toBeTruthy()
+    })
   })
 
   describe('when it includes a hint', () => {
@@ -138,6 +145,17 @@ describe('File upload', () => {
 
       const $component = $('.govuk-file-upload')
       expect($component.hasClass('govuk-file-upload--error')).toBeTruthy()
+    })
+
+    it('renders with a form group wrapper that has an error state', () => {
+      const $ = render('file-upload', {
+        errorMessage: {
+          text: 'Error message'
+        }
+      })
+
+      const $formGroup = $('.govuk-form-group')
+      expect($formGroup.hasClass('govuk-form-group--error')).toBeTruthy()
     })
   })
 

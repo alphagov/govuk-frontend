@@ -80,6 +80,13 @@ describe('Textarea', () => {
       const $component = $('.govuk-textarea')
       expect($component.attr('data-attribute')).toEqual('my data value')
     })
+
+    it('renders with a form group wrapper', () => {
+      const $ = render('textarea', {})
+
+      const $formGroup = $('.govuk-form-group')
+      expect($formGroup.length).toBeTruthy()
+    })
   })
 
   describe('when it includes a hint', () => {
@@ -154,6 +161,17 @@ describe('Textarea', () => {
 
       const $component = $('.govuk-textarea')
       expect($component.hasClass('govuk-textarea--error')).toBeTruthy()
+    })
+
+    it('renders with a form group wrapper that has an error state', () => {
+      const $ = render('textarea', {
+        errorMessage: {
+          text: 'Error message'
+        }
+      })
+
+      const $formGroup = $('.govuk-form-group')
+      expect($formGroup.hasClass('govuk-form-group--error')).toBeTruthy()
     })
   })
 

@@ -142,6 +142,13 @@ describe('Select', () => {
       const $component = $('.govuk-select')
       expect($component.attr('data-attribute')).toEqual('my data value')
     })
+
+    it('renders with a form group wrapper', () => {
+      const $ = render('select', {})
+
+      const $formGroup = $('.govuk-form-group')
+      expect($formGroup.length).toBeTruthy()
+    })
   })
 
   describe('when it includes a hint', () => {
@@ -216,6 +223,17 @@ describe('Select', () => {
 
       const $component = $('.govuk-select')
       expect($component.hasClass('govuk-select--error')).toBeTruthy()
+    })
+
+    it('renders with a form group wrapper that has an error state', () => {
+      const $ = render('select', {
+        errorMessage: {
+          text: 'Error message'
+        }
+      })
+
+      const $formGroup = $('.govuk-form-group')
+      expect($formGroup.hasClass('govuk-form-group--error')).toBeTruthy()
     })
   })
 

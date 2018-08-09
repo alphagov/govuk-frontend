@@ -93,6 +93,13 @@ describe('Checkboxes', () => {
     expect($component.attr('data-second-attribute')).toEqual('second-value')
   })
 
+  it('renders with a form group wrapper', () => {
+    const $ = render('checkboxes', {})
+
+    const $formGroup = $('.govuk-form-group')
+    expect($formGroup.length).toBeTruthy()
+  })
+
   describe('items', () => {
     it('render a matching label and input using name by default', () => {
       const $ = render('checkboxes', {
@@ -424,7 +431,7 @@ describe('Checkboxes', () => {
   })
 
   it('render additional label classes', () => {
-    const $ = render('radios', {
+    const $ = render('checkboxes', {
       name: 'example-label-classes',
       items: [
         {
@@ -437,8 +444,8 @@ describe('Checkboxes', () => {
       ]
     })
 
-    const $component = $('.govuk-radios')
-    const $label = $component.find('.govuk-radios__item label')
+    const $component = $('.govuk-checkboxes')
+    const $label = $component.find('.govuk-checkboxes__item label')
     expect($label.hasClass('bold')).toBeTruthy()
   })
 
@@ -500,6 +507,17 @@ describe('Checkboxes', () => {
 
       expect($fieldset.attr('aria-describedby'))
         .toMatch(errorMessageId)
+    })
+
+    it('renders with a form group wrapper that has an error state', () => {
+      const $ = render('checkboxes', {
+        errorMessage: {
+          text: 'Error message'
+        }
+      })
+
+      const $formGroup = $('.govuk-form-group')
+      expect($formGroup.hasClass('govuk-form-group--error')).toBeTruthy()
     })
   })
 
