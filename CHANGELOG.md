@@ -61,6 +61,9 @@
 - Change spacing relationship on default and small legends and hints
   ([PR #940](https://github.com/alphagov/govuk-frontend/pull/940))
 
+- Adjust tag component padding to compensate for font spacing
+  ([PR #955](https://github.com/alphagov/govuk-frontend/pull/955))
+
 ## 1.2.0 (feature release)
 
 🆕 New features:
