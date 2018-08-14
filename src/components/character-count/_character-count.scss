@@ -8,34 +8,9 @@
 
 @include govuk-exports("govuk/component/character-count") {
   .govuk-character-count {
-    @include govuk-font($size: 19, $line-height: 1.25);
-    @include govuk-focusable;
-
-    box-sizing: border-box; // should this be global?
-    display: block;
-    width: 100%;
-    @include govuk-responsive-margin(6, "bottom");
-    padding: govuk-spacing(1) + 2;
-
-    border: $govuk-border-width-form-element solid $govuk-input-border-colour;
-    border-radius: 0;
-
-    -webkit-appearance: none;
-  }
-
-  .govuk-character-count--error {
-    padding: govuk-spacing(1);
-    border: $govuk-border-width-form-element-error solid $govuk-error-colour;
-  }
-
-  .govuk-character-count {
-    position: relative;
-    z-index: 20;
-    width: 100%;
-    margin: 0; //implicit margin on textarea creates problems on safari
-    @include govuk-responsive-margin(1, "bottom");
-    overflow: auto;
-    background: transparent;
+    .govuk-textarea--error {
+      padding: govuk-spacing(1) - 2; // Stop a "jump" when width of border changes
+    }
   }
 
   .govuk-character-count__message {
