@@ -74,7 +74,6 @@ examples:
       id: word-count
       name: word-count
       maxlength: 10
+      maxwords: 10
       label:
         text: Full address
-      attributes:
-        data-maxwords: 10
