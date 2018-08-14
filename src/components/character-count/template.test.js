@@ -22,7 +22,7 @@ describe('Character count', () => {
         classes: 'app-character-count--custom-modifier'
       })
 
-      const $component = $('.govuk-character-count')
+      const $component = $('.js-character-count')
       expect($component.hasClass('app-character-count--custom-modifier')).toBeTruthy()
     })
 
@@ -31,7 +31,7 @@ describe('Character count', () => {
         id: 'my-character-count'
       })
 
-      const $component = $('.govuk-character-count')
+      const $component = $('.js-character-count')
       expect($component.attr('id')).toEqual('my-character-count')
     })
 
@@ -40,7 +40,7 @@ describe('Character count', () => {
         name: 'my-character-count-name'
       })
 
-      const $component = $('.govuk-character-count')
+      const $component = $('.js-character-count')
       expect($component.attr('name')).toEqual('my-character-count-name')
     })
 
@@ -49,14 +49,14 @@ describe('Character count', () => {
         rows: '4'
       })
 
-      const $component = $('.govuk-character-count')
+      const $component = $('.js-character-count')
       expect($component.attr('rows')).toEqual('4')
     })
 
     it('renders with default number of rows', () => {
       const $ = render('character-count', {})
 
-      const $component = $('.govuk-character-count')
+      const $component = $('.js-character-count')
       expect($component.attr('rows')).toEqual('5')
     })
 
@@ -65,7 +65,7 @@ describe('Character count', () => {
         value: '221B Baker Street\nLondon\nNW1 6XE\n'
       })
 
-      const $component = $('.govuk-character-count')
+      const $component = $('.js-character-count')
       expect($component.text()).toEqual('221B Baker Street\nLondon\nNW1 6XE\n')
     })
 
@@ -76,7 +76,7 @@ describe('Character count', () => {
         }
       })
 
-      const $component = $('.govuk-character-count')
+      const $component = $('.js-character-count')
       expect($component.attr('data-attribute')).toEqual('my data value')
     })
   })
@@ -101,7 +101,7 @@ describe('Character count', () => {
         }
       })
 
-      const $textarea = $('.govuk-character-count')
+      const $textarea = $('.js-character-count')
       const $hint = $('.govuk-hint')
 
       const hintId = new RegExp(
@@ -133,7 +133,7 @@ describe('Character count', () => {
         }
       })
 
-      const $component = $('.govuk-character-count')
+      const $component = $('.js-character-count')
       const $errorMessage = $('.govuk-error-message')
 
       const errorMessageId = new RegExp(
@@ -151,8 +151,8 @@ describe('Character count', () => {
         }
       })
 
-      const $component = $('.govuk-character-count')
-      expect($component.hasClass('govuk-character-count--error')).toBeTruthy()
+      const $component = $('.js-character-count')
+      expect($component.hasClass('govuk-textarea--error')).toBeTruthy()
     })
   })
 
@@ -168,7 +168,7 @@ describe('Character count', () => {
         }
       })
 
-      const $component = $('.govuk-form-group > .govuk-character-count')
+      const $component = $('.govuk-form-group > .js-character-count')
       expect($component.length).toBeTruthy()
     })
 
