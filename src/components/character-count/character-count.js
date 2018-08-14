@@ -2,11 +2,12 @@ import '../../vendor/polyfills/Function/prototype/bind'
 import '../../vendor/polyfills/Event' // addEventListener and event.target normaliziation
 
 function CharacterCount ($module) {
-  this.$module = $module
+  this.parentNode = $module
+  this.$module = $module.querySelector('.js-character-count')
 }
 
 CharacterCount.prototype.defaults = {
-  characterCountAttribute: 'maxlength',
+  characterCountAttribute: 'data-maxlength',
   wordCountAttribute: 'data-maxwords'
 }
 
@@ -27,7 +28,7 @@ CharacterCount.prototype.init = function (options) {
 
   // Set the element limit
   if ($module.getAttribute) {
-    this.maxLength = $module.getAttribute(countAttribute)
+    this.maxLength = this.parentNode.getAttribute(countAttribute)
   }
 
   // Generate and reference message
@@ -267,14 +268,14 @@ CharacterCount.prototype.updateCountMessage = function () {
 
   // Update styles
   if (remainingNumber < 0) {
-    countElement.classList.add('govuk-character-count--error')
+    countElement.classList.add('govuk-textarea--error')
     if (options.validation) {
       countElement.parentNode.parentNode.classList.add('govuk-form-group--error')
     }
     countMessage.classList.remove('govuk-hint')
     countMessage.classList.add('govuk-error-message')
   } else {
-    countElement.classList.remove('govuk-character-count--error')
+    countElement.classList.remove('govuk-textarea--error')
     if (options.validation) {
       countElement.parentNode.parentNode.classList.remove('govuk-form-group--error')
     }
