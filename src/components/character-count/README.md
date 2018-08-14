@@ -16,18 +16,27 @@ Find out when to use the character count component in your service in the [GOV.U
 
 #### Markup
 
-    <div class="govuk-form-group">
+    <div class="govuk-character-count" data-module="character-count"
+     data-maxlength="10"
+    >
 
+    <div class="govuk-form-group">
       <label class="govuk-label" for="more-detail">
         Can you provide more detail?
       </label>
-      <textarea data-module="character-count" class="govuk-character-count" id="more-detail" name="more-detail" rows="5" maxlength="10"" aria-describedby="more-detail-info"></textarea>
+
+      <span id="more-detail-hint" class="govuk-hint govuk-character-count__message ">
+        You have 10 characters remaining
+      </span>
+
+      <textarea class="govuk-textarea js-character-count " id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
+    </div>
+
+    </div>
 
         <span id="more-detail-info" class="govuk-hint govuk-character-count__message ">
         You have 10 characters remaining
       </span>
-
-    </div>
 
 #### Macro
 
@@ -51,18 +60,27 @@ Find out when to use the character count component in your service in the [GOV.U
 
 #### Markup
 
-    <div class="govuk-form-group">
+    <div class="govuk-character-count" data-module="character-count"
+     data-maxlength="10"
+    >
 
+    <div class="govuk-form-group">
       <label class="govuk-label" for="with-highlight">
         Can you provide more detail?
       </label>
-      <textarea data-module="character-count" class="govuk-character-count" id="with-highlight" name="highlight" rows="5" maxlength="10"" aria-describedby="with-highlight-info" data-highlight="true"></textarea>
+
+      <span id="with-highlight-hint" class="govuk-hint govuk-character-count__message ">
+        You have 10 characters remaining
+      </span>
+
+      <textarea class="govuk-textarea js-character-count " id="with-highlight" name="highlight" rows="5" aria-describedby="with-highlight-hint" data-highlight="true"></textarea>
+    </div>
+
+    </div>
 
         <span id="with-highlight-info" class="govuk-hint govuk-character-count__message ">
         You have 10 characters remaining
       </span>
-
-    </div>
 
 #### Macro
 
@@ -89,21 +107,30 @@ Find out when to use the character count component in your service in the [GOV.U
 
 #### Markup
 
-    <div class="govuk-form-group">
+    <div class="govuk-character-count" data-module="character-count"
+     data-maxlength="100"
+    >
 
+    <div class="govuk-form-group">
       <label class="govuk-label" for="with-default-value">
         Full address
       </label>
-      <textarea data-module="character-count" class="govuk-character-count" id="with-default-value" name="default-value" rows="5" maxlength="100"" aria-describedby="with-default-value-info">221B Baker Street
+
+      <span id="with-default-value-hint" class="govuk-hint govuk-character-count__message ">
+        You have 67 characters remaining
+      </span>
+
+      <textarea class="govuk-textarea js-character-count " id="with-default-value" name="default-value" rows="5" aria-describedby="with-default-value-hint">221B Baker Street
     London
     NW1 6XE
     </textarea>
+    </div>
+
+    </div>
 
         <span id="with-default-value-info" class="govuk-hint govuk-character-count__message ">
         You have 67 characters remaining
       </span>
-
-    </div>
 
 #### Macro
 
@@ -128,21 +155,30 @@ Find out when to use the character count component in your service in the [GOV.U
 
 #### Markup
 
-    <div class="govuk-form-group govuk-form-group--error">
+    <div class="govuk-character-count" data-module="character-count"
+     data-maxlength="10"
+    >
 
+    <div class="govuk-form-group">
       <label class="govuk-label" for="exceeding-characters">
         Full address
       </label>
-      <textarea data-module="character-count" class="govuk-character-count govuk-character-count--error" id="exceeding-characters" name="exceeding" rows="5" maxlength="10"" aria-describedby="exceeding-characters-info" data-highlight="true">221B Baker Street
+
+      <span id="exceeding-characters-hint" class="govuk-hint govuk-character-count__message ">
+
+      </span>
+
+      <textarea class="govuk-textarea js-character-count  govuk-textarea--error" id="exceeding-characters" name="exceeding" rows="5" aria-describedby="exceeding-characters-hint" data-highlight="true">221B Baker Street
     London
     NW1 6XE
     </textarea>
+    </div>
+
+    </div>
 
         <span id="exceeding-characters-info" class="govuk-error-message govuk-character-count__message ">
         You have 23 characters too many
       </span>
-
-    </div>
 
 #### Macro
 
@@ -170,12 +206,21 @@ Find out when to use the character count component in your service in the [GOV.U
 
 #### Markup
 
-    <div class="govuk-form-group">
+    <div class="govuk-character-count" data-module="character-count"
+     data-maxlength="10"
+    >
 
+    <div class="govuk-form-group">
       <label class="govuk-label" for="custom-rows">
         Full address
       </label>
-      <textarea data-module="character-count" class="govuk-character-count" id="custom-rows" name="custom" rows="8" maxlength="10""></textarea>
+
+      <span id="custom-rows-hint" class="govuk-hint govuk-character-count__message ">
+
+      </span>
+
+      <textarea class="govuk-textarea js-character-count " id="custom-rows" name="custom" rows="8" aria-describedby="custom-rows-hint"></textarea>
+    </div>
 
     </div>
 
@@ -199,15 +244,24 @@ Find out when to use the character count component in your service in the [GOV.U
 
 #### Markup
 
-    <div class="govuk-form-group">
+    <div class="govuk-character-count" data-module="character-count"
+     data-maxlength="10"
+    >
 
+    <div class="govuk-form-group">
       <h1 class="govuk-label-wrapper">
         <label class="govuk-label" for="textarea-with-page-heading">
           Full address
         </label>
 
       </h1>
-      <textarea data-module="character-count" class="govuk-character-count" id="textarea-with-page-heading" name="address" rows="5" maxlength="10""></textarea>
+
+      <span id="textarea-with-page-heading-hint" class="govuk-hint govuk-character-count__message ">
+
+      </span>
+
+      <textarea class="govuk-textarea js-character-count " id="textarea-with-page-heading" name="address" rows="5" aria-describedby="textarea-with-page-heading-hint"></textarea>
+    </div>
 
     </div>
 
@@ -231,12 +285,21 @@ Find out when to use the character count component in your service in the [GOV.U
 
 #### Markup
 
-    <div class="govuk-form-group">
+    <div class="govuk-character-count" data-module="character-count"
+     data-maxlength="10"
+     data-maxwords="10">
 
+    <div class="govuk-form-group">
       <label class="govuk-label" for="word-count">
         Full address
       </label>
-      <textarea data-module="character-count" class="govuk-character-count" id="word-count" name="word-count" rows="5" maxlength="10"" data-maxwords="10"></textarea>
+
+      <span id="word-count-hint" class="govuk-hint govuk-character-count__message ">
+
+      </span>
+
+      <textarea class="govuk-textarea js-character-count " id="word-count" name="word-count" rows="5" aria-describedby="word-count-hint"></textarea>
+    </div>
 
     </div>
 
@@ -248,11 +311,9 @@ Find out when to use the character count component in your service in the [GOV.U
       "id": "word-count",
       "name": "word-count",
       "maxlength": 10,
+      "maxwords": 10,
       "label": {
         "text": "Full address"
-      },
-      "attributes": {
-        "data-maxwords": 10
       }
     }) }}
 
