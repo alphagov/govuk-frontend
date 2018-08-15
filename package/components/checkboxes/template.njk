@@ -55,7 +55,8 @@
       {{-" checked" if item.checked }}
       {{-" disabled" if item.disabled }}
       {%- if item.conditional %} data-aria-controls="{{ conditionalId }}"{% endif -%}
-      {%- if hasHint %} aria-describedby="{{ itemHintId }}"{% endif -%}>
+      {%- if hasHint %} aria-describedby="{{ itemHintId }}"{% endif -%}
+      {%- for attribute, value in item.attributes %} {{ attribute }}="{{ value }}"{% endfor -%}>
       {{ govukLabel({
         html: item.html,
         text: item.text,

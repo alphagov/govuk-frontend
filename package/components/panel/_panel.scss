@@ -35,6 +35,10 @@
     @include govuk-font($size: 48, $weight: bold);
   }
 
+  .govuk-panel__title:last-child {
+    margin-bottom: 0;
+  }
+
   .govuk-panel__body {
     @include govuk-font($size: 36);
   }
