@@ -1,4 +1,5 @@
 import { nodeListForEach } from './common'
+import Accordion from './components/accordion/accordion'
 import Button from './components/button/button'
 import Details from './components/details/details'
 import Checkboxes from './components/checkboxes/checkboxes'
@@ -7,9 +8,16 @@ import Header from './components/header/header'
 import Radios from './components/radios/radios'
 import Tabs from './components/tabs/tabs'
 
+
 function initAll () {
   // Find all buttons with [role=button] on the document to enhance.
   new Button(document).init()
+
+  // Find all global accordion components to enhance.
+  var $accordions = document.querySelectorAll('[data-module="accordion"]')
+  nodeListForEach($accordions, function ($accordion) {
+    new Accordion($accordion).init()
+  })
 
   // Find all global details elements to enhance.
   var $details = document.querySelectorAll('details')

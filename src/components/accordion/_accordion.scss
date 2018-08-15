@@ -1,0 +1,70 @@
+
+.accordion-controls {
+  text-align: right;
+}
+
+.accordion-expand-all {
+  @include govuk-font($size: 16);
+  display: inline;
+  border-width: 0;
+  color: $govuk-link-colour;
+  background: transparent;
+  cursor: pointer;
+}
+
+.accordion .accordion-section[aria-expanded="false"] .accordion-section-body {
+  display: none;
+}
+
+
+.accordion.with-js {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: $govuk-border-colour;
+}
+
+.accordion.with-js .accordion-section {
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: $govuk-border-colour;
+}
+
+.accordion.with-js .accordion-section-header {
+  position: relative;
+  padding-top: 14px;
+  padding-bottom: 12px;
+  cursor: pointer;
+}
+
+.accordion.with-js .accordion-section-header h2 {
+  color: $govuk-link-colour;
+}
+
+.accordion.with-js h2 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.accordion.with-js .accordion-section-header:hover {
+  background-color: govuk-colour("grey-4");
+}
+
+.accordion.with-js .icon {
+
+  position: absolute;
+  top: 50%;
+  right: 15px;
+
+  width: 16px;
+  height: 16px;
+  margin-top: -8px;
+
+  background-image: url("/assets/images/icon-plus-minus.svg");
+
+  background-repeat: no-repeat;
+  background-position: 0 -16px;
+}
+
+.accordion.with-js .accordion-section[aria-expanded="true"] .icon {
+  background-position: 0 0;
+}
