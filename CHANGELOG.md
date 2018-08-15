@@ -20,6 +20,18 @@
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
+🔧 Fixes:
+
+- Pull Request Title goes here
+
+  Description goes here (optional)
+
+  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+
+## 1.3.0 (feature release)
+
+🆕 New features:
+
 - Allow attributes on checkboxes/radios
 
   You can now provide attributes on checkbox and radio items
@@ -28,12 +40,6 @@
   ([PR #942](https://github.com/alphagov/govuk-frontend/pull/942))
 
 🔧 Fixes:
-
-- Pull Request Title goes here
-
-  Description goes here (optional)
-
-  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
 - Fix incorrect panel title bottom margin with optional text
 
