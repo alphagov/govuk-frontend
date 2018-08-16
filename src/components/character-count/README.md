@@ -25,18 +25,10 @@ Find out when to use the character count component in your service in the [GOV.U
         Can you provide more detail?
       </label>
 
-      <span id="more-detail-hint" class="govuk-hint govuk-character-count__message ">
-        You have 10 characters remaining
-      </span>
-
-      <textarea class="govuk-textarea js-character-count " id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
+      <textarea class="govuk-textarea js-character-count " id="more-detail" name="more-detail" rows="5"></textarea>
     </div>
 
     </div>
-
-        <span id="more-detail-info" class="govuk-hint govuk-character-count__message ">
-        You have 10 characters remaining
-      </span>
 
 #### Macro
 
@@ -48,15 +40,12 @@ Find out when to use the character count component in your service in the [GOV.U
       "maxlength": 10,
       "label": {
         "text": "Can you provide more detail?"
-      },
-      "hint": {
-        "text": "You have 10 characters remaining"
       }
     }) }}
 
-### Character count with highlight
+### Character count with hint
 
-[Preview the Character count with highlight example](http://govuk-frontend-review.herokuapp.com/components/character-count/with-highlight/preview)
+[Preview the Character count with hint example](http://govuk-frontend-review.herokuapp.com/components/character-count/with-hint/preview)
 
 #### Markup
 
@@ -65,39 +54,32 @@ Find out when to use the character count component in your service in the [GOV.U
     >
 
     <div class="govuk-form-group">
-      <label class="govuk-label" for="with-highlight">
+      <label class="govuk-label" for="with-hint">
         Can you provide more detail?
       </label>
 
-      <span id="with-highlight-hint" class="govuk-hint govuk-character-count__message ">
-        You have 10 characters remaining
+      <span id="with-hint-hint" class="govuk-hint">
+        Don&#39;t include personal or financial information, eg your National Insurance number or credit card details.
       </span>
 
-      <textarea class="govuk-textarea js-character-count " id="with-highlight" name="highlight" rows="5" aria-describedby="with-highlight-hint" data-highlight="true"></textarea>
+      <textarea class="govuk-textarea js-character-count " id="with-hint" name="with-hint" rows="5" aria-describedby="with-hint-hint"></textarea>
     </div>
 
     </div>
-
-        <span id="with-highlight-info" class="govuk-hint govuk-character-count__message ">
-        You have 10 characters remaining
-      </span>
 
 #### Macro
 
     {% from "character-count/macro.njk" import govukCharacterCount %}
 
     {{ govukCharacterCount({
-      "id": "with-highlight",
-      "name": "highlight",
+      "name": "with-hint",
+      "id": "with-hint",
       "maxlength": 10,
       "label": {
         "text": "Can you provide more detail?"
       },
       "hint": {
-        "text": "You have 10 characters remaining"
-      },
-      "attributes": {
-        "data-highlight": true
+        "text": "Don't include personal or financial information, eg your National Insurance number or credit card details."
       }
     }) }}
 
@@ -116,21 +98,13 @@ Find out when to use the character count component in your service in the [GOV.U
         Full address
       </label>
 
-      <span id="with-default-value-hint" class="govuk-hint govuk-character-count__message ">
-        You have 67 characters remaining
-      </span>
-
-      <textarea class="govuk-textarea js-character-count " id="with-default-value" name="default-value" rows="5" aria-describedby="with-default-value-hint">221B Baker Street
+      <textarea class="govuk-textarea js-character-count " id="with-default-value" name="default-value" rows="5">221B Baker Street
     London
     NW1 6XE
     </textarea>
     </div>
 
     </div>
-
-        <span id="with-default-value-info" class="govuk-hint govuk-character-count__message ">
-        You have 67 characters remaining
-      </span>
 
 #### Macro
 
@@ -140,13 +114,10 @@ Find out when to use the character count component in your service in the [GOV.U
       "id": "with-default-value",
       "name": "default-value",
       "maxlength": 100,
-      "value": "221B Baker Street\nLondon\nNW1 6XE\n",
       "label": {
         "text": "Full address"
       },
-      "hint": {
-        "text": "You have 67 characters remaining"
-      }
+      "value": "221B Baker Street\nLondon\nNW1 6XE\n"
     }) }}
 
 ### Character count with default value exceeding limit
@@ -159,26 +130,22 @@ Find out when to use the character count component in your service in the [GOV.U
      data-maxlength="10"
     >
 
-    <div class="govuk-form-group">
+    <div class="govuk-form-group govuk-form-group--error">
       <label class="govuk-label" for="exceeding-characters">
         Full address
       </label>
 
-      <span id="exceeding-characters-hint" class="govuk-hint govuk-character-count__message ">
-
+      <span id="exceeding-characters-error" class="govuk-error-message">
+        Please do not exceed the maximum allowed limit
       </span>
 
-      <textarea class="govuk-textarea js-character-count  govuk-textarea--error" id="exceeding-characters" name="exceeding" rows="5" aria-describedby="exceeding-characters-hint" data-highlight="true">221B Baker Street
+      <textarea class="govuk-textarea govuk-textarea--error js-character-count  govuk-textarea--error" id="exceeding-characters" name="exceeding" rows="5" aria-describedby="exceeding-characters-error">221B Baker Street
     London
     NW1 6XE
     </textarea>
     </div>
 
     </div>
-
-        <span id="exceeding-characters-info" class="govuk-error-message govuk-character-count__message ">
-        You have 23 characters too many
-      </span>
 
 #### Macro
 
@@ -193,10 +160,7 @@ Find out when to use the character count component in your service in the [GOV.U
         "text": "Full address"
       },
       "errorMessage": {
-        "text": "You have 23 characters too many"
-      },
-      "attributes": {
-        "data-highlight": true
+        "text": "Please do not exceed the maximum allowed limit"
       }
     }) }}
 
@@ -215,11 +179,7 @@ Find out when to use the character count component in your service in the [GOV.U
         Full address
       </label>
 
-      <span id="custom-rows-hint" class="govuk-hint govuk-character-count__message ">
-
-      </span>
-
-      <textarea class="govuk-textarea js-character-count " id="custom-rows" name="custom" rows="8" aria-describedby="custom-rows-hint"></textarea>
+      <textarea class="govuk-textarea js-character-count " id="custom-rows" name="custom" rows="8"></textarea>
     </div>
 
     </div>
@@ -256,11 +216,7 @@ Find out when to use the character count component in your service in the [GOV.U
 
       </h1>
 
-      <span id="textarea-with-page-heading-hint" class="govuk-hint govuk-character-count__message ">
-
-      </span>
-
-      <textarea class="govuk-textarea js-character-count " id="textarea-with-page-heading" name="address" rows="5" aria-describedby="textarea-with-page-heading-hint"></textarea>
+      <textarea class="govuk-textarea js-character-count " id="textarea-with-page-heading" name="address" rows="5"></textarea>
     </div>
 
     </div>
@@ -286,7 +242,7 @@ Find out when to use the character count component in your service in the [GOV.U
 #### Markup
 
     <div class="govuk-character-count" data-module="character-count"
-     data-maxlength="10"
+
      data-maxwords="10">
 
     <div class="govuk-form-group">
@@ -294,11 +250,7 @@ Find out when to use the character count component in your service in the [GOV.U
         Full address
       </label>
 
-      <span id="word-count-hint" class="govuk-hint govuk-character-count__message ">
-
-      </span>
-
-      <textarea class="govuk-textarea js-character-count " id="word-count" name="word-count" rows="5" aria-describedby="word-count-hint"></textarea>
+      <textarea class="govuk-textarea js-character-count " id="word-count" name="word-count" rows="5"></textarea>
     </div>
 
     </div>
@@ -310,7 +262,6 @@ Find out when to use the character count component in your service in the [GOV.U
     {{ govukCharacterCount({
       "id": "word-count",
       "name": "word-count",
-      "maxlength": 10,
       "maxwords": 10,
       "label": {
         "text": "Full address"
