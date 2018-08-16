@@ -84,7 +84,7 @@ describe('Character count', () => {
   describe('when it includes a hint', () => {
     it('renders with hint', () => {
       const $ = render('character-count', {
-        id: 'character-count-with-error',
+        id: 'character-count-with-hint',
         hint: {
           'text': 'It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.'
         }
@@ -95,7 +95,7 @@ describe('Character count', () => {
 
     it('associates the character count as "described by" the hint', () => {
       const $ = render('character-count', {
-        id: 'character-count-with-error',
+        id: 'character-count-with-hint',
         hint: {
           'text': 'It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.'
         }

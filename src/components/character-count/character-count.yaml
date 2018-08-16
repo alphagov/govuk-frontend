@@ -23,12 +23,12 @@ examples:
       id: with-default-value
       name: default-value
       maxlength: 100
+      label:
+        text: Full address
       value: |
         221B Baker Street
         London
         NW1 6XE
-      label:
-        text: Full address
 
   - name: with default value exceeding limit
     data:
@@ -41,6 +41,8 @@ examples:
         NW1 6XE
       label:
         text: Full address
+      errorMessage:
+        text: Please do not exceed the maximum allowed limit
 
   - name: with custom rows
     data:
@@ -64,7 +66,6 @@ examples:
     data:
       id: word-count
       name: word-count
-      maxlength: 10
       maxwords: 10
       label:
         text: Full address

@@ -2,8 +2,8 @@
 
 exports[`Character count when it includes a hint renders with hint 1`] = `
 
-<span id="character-count-with-error-info"
-      class="govuk-hint govuk-character-count__message "
+<span id="character-count-with-hint-hint"
+      class="govuk-hint"
 >
   It&#x2019;s on your National Insurance card, benefit letter, payslip or P60. For example, &#x2018;QQ 12 34 56 C&#x2019;.
 </span>
@@ -12,8 +12,8 @@ exports[`Character count when it includes a hint renders with hint 1`] = `
 
 exports[`Character count when it includes an error message renders with error message 1`] = `
 
-<span id="character-count-with-error-info"
-      class="govuk-error-message govuk-character-count__message "
+<span id="character-count-with-error-error"
+      class="govuk-error-message"
 >
   Error message
 </span>

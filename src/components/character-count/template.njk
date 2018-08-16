@@ -3,19 +3,9 @@
 {% from "../label/macro.njk" import govukLabel %}
 {% from "../textarea/macro.njk" import govukTextarea %}
 
-
 {#- a record of other elements that we need to associate with the input using
    aria-describedby – for example hints or error messages -#}
 {% set describedBy = "" %}
-
-{% if params.hint %}
-  {% set hintId = params.id + '-info' %}
-  {% set describedBy = describedBy + ' ' + hintId if describedBy else hintId %}
-
-{% elseif params.errorMessage %}
-  {% set errorId = params.id + '-info' %}
-  {% set describedBy = describedBy + ' ' + errorId if describedBy else errorId %}
-{% endif %}
 
 <div class="govuk-character-count" data-module="character-count"
 {% if params.maxlength %} data-maxlength="{{ params.maxlength }}"{% endif %}
@@ -35,30 +25,8 @@
       attributes: params.label.attributes,
       for: params.id
     },
-    hint: {
-      id: hintId,
-      classes: 'govuk-character-count__message ' + (params.hint.classes if params.hint.classes),
-      attributes: params.hint.attributes,
-      html: params.hint.html,
-      text: params.hint.text
-    },
+    hint: params.hint,
+    errorMessage: params.errorMessage,
     attributes: params.attributes
   }) }}
 </div>
-
-  {% if params.hint %}
-    {{ govukHint({
-      id: hintId,
-      classes: 'govuk-character-count__message ' + (params.hint.classes if params.hint.classes),
-      attributes: params.hint.attributes,
-      html: params.hint.html,
-      text: params.hint.text
-    }) | indent(2) | trim }}
-  {% elseif params.errorMessage %}
-    {{ govukErrorMessage({
-      id: errorId,
-      classes: 'govuk-character-count__message ' + (params.errorMessage.classes if params.errorMessage.classes),
-      html: params.errorMessage.html,
-      text: params.errorMessage.text
-    }) | indent(2) | trim }}
-  {% endif %}

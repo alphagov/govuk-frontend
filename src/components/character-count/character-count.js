@@ -156,16 +156,10 @@ CharacterCount.prototype.updateCountMessage = function () {
   // Update styles
   if (remainingNumber < 0) {
     countElement.classList.add('govuk-textarea--error')
-    if (options.validation) {
-      countElement.parentNode.parentNode.classList.add('govuk-form-group--error')
-    }
     countMessage.classList.remove('govuk-hint')
     countMessage.classList.add('govuk-error-message')
   } else {
     countElement.classList.remove('govuk-textarea--error')
-    if (options.validation) {
-      countElement.parentNode.parentNode.classList.remove('govuk-form-group--error')
-    }
     countMessage.classList.remove('govuk-error-message')
     countMessage.classList.add('govuk-hint')
   }
