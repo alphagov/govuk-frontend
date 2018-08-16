@@ -8,6 +8,10 @@
 
 @include govuk-exports("govuk/component/character-count") {
   .govuk-character-count {
+    .govuk-textarea {
+      margin-bottom: govuk-spacing(1);
+    }
+
     .govuk-textarea--error {
       padding: govuk-spacing(1) - 2; // Stop a "jump" when width of border changes
     }
@@ -20,32 +24,5 @@
 
   .govuk-character-count__message--disabled {
     visibility: hidden;
-  }
-
-  .govuk-character-count__wrapper {
-    position: relative;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-  }
-
-  .govuk-character-count__highlight {
-    display: block;
-    position: absolute;
-    z-index: 10;
-    width: 100%;
-    padding: govuk-spacing(1);
-    overflow: auto;
-    border: $govuk-border-width-form-element-error solid transparent;
-    color: transparent;
-    word-wrap: break-word;
-    vertical-align: middle;
-    white-space: pre-wrap;
-
-    mark {
-      opacity: .2;
-      color: transparent;
-      background-color: $govuk-error-colour;
-    }
   }
 }

@@ -6,20 +6,17 @@ examples:
       maxlength: 10
       label:
         text: Can you provide more detail?
-      hint:
-        text: You have 10 characters remaining
 
-  - name: with highlight
+  - name: with hint
     data:
-      id: with-highlight
-      name: highlight
+      name: with-hint
+      id: with-hint
       maxlength: 10
       label:
         text: Can you provide more detail?
       hint:
-        text: You have 10 characters remaining
-      attributes:
-        data-highlight: true
+        text: Don't include personal or financial information, eg your
+              National Insurance number or credit card details.
 
   - name: with default value
     data:
@@ -32,8 +29,6 @@ examples:
         NW1 6XE
       label:
         text: Full address
-      hint:
-        text: You have 67 characters remaining
 
   - name: with default value exceeding limit
     data:
@@ -46,10 +41,6 @@ examples:
         NW1 6XE
       label:
         text: Full address
-      errorMessage:
-        text: You have 23 characters too many
-      attributes:
-        data-highlight: true
 
   - name: with custom rows
     data:
