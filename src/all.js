@@ -8,7 +8,6 @@ import Header from './components/header/header'
 import Radios from './components/radios/radios'
 import Tabs from './components/tabs/tabs'
 
-
 function initAll () {
   // Find all buttons with [role=button] on the document to enhance.
   new Button(document).init()
