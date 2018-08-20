@@ -13,21 +13,17 @@
 
 */
 
-
-function Accordion($module) {
+function Accordion ($module) {
   this.$module = $module
 }
 
-
 Accordion.prototype.init = function () {
-
   // First do feature detection for required API methods
   if (
     document.querySelectorAll &&
     window.NodeList &&
     'classList' in document.body
   ) {
-
     this.sections = []
 
     var accordion_sections = this.$module.querySelectorAll('.accordion-section')
@@ -35,7 +31,7 @@ Accordion.prototype.init = function () {
     var accordion = this
 
     for (var i = accordion_sections.length - 1; i >= 0; i--) {
-       accordion.sections.push(new AccordionSection(accordion_sections[i], accordion))
+      accordion.sections.push(new AccordionSection(accordion_sections[i], accordion))
     };
 
     var accordion_controls = document.createElement('div')
@@ -53,15 +49,10 @@ Accordion.prototype.init = function () {
 
     this.$module.insertBefore(accordion_controls, this.$module.firstChild)
     this.$module.classList.add('with-js')
-
-
   }
-
 }
 
-
-Accordion.prototype.openOrCloseAll = function(event) {
-
+Accordion.prototype.openOrCloseAll = function (event) {
   var open_or_close_all_button = event.target
   var now_expanded = !(open_or_close_all_button.getAttribute('aria-expanded') == 'true')
 
@@ -70,22 +61,17 @@ Accordion.prototype.openOrCloseAll = function(event) {
   };
 
   this.setOpenCloseButtonExpanded(now_expanded)
-
 }
 
-
-Accordion.prototype.setOpenCloseButtonExpanded = function(expanded) {
-
+Accordion.prototype.setOpenCloseButtonExpanded = function (expanded) {
   var open_or_close_all_button = this.$module.querySelector('.accordion-expand-all')
 
-  var new_button_text = expanded ? "Close all" : "Open all"
+  var new_button_text = expanded ? 'Close all' : 'Open all'
   open_or_close_all_button.setAttribute('aria-expanded', expanded)
   open_or_close_all_button.textContent = new_button_text
-
 }
 
-Accordion.prototype.updateOpenAll = function() {
-
+Accordion.prototype.updateOpenAll = function () {
   var sectionsCount = this.sections.length
 
   var openSectionsCount = 0
@@ -101,19 +87,15 @@ Accordion.prototype.updateOpenAll = function() {
   } else {
     this.setOpenCloseButtonExpanded(false)
   }
-
 }
 
-
-function AccordionSection(element, accordion) {
+function AccordionSection (element, accordion) {
   this.$module = element
   this.accordion = accordion
   this.setup()
 }
 
-
-AccordionSection.prototype.setup = function() {
-
+AccordionSection.prototype.setup = function () {
   var sectionExpanded = this.$module.classList.contains('accordion-section--expanded')
 
   this.$module.setAttribute('aria-expanded', sectionExpanded)
@@ -132,37 +114,34 @@ AccordionSection.prototype.setup = function() {
   /* Remove this class now, as the `aria-expanded` attribute is being used
        to store expanded state instead. */
   if (sectionExpanded) {
-    this.$module.classList.remove('accordion-section--expanded');
+    this.$module.classList.remove('accordion-section--expanded')
   }
-
 }
 
-AccordionSection.prototype.toggleExpanded = function(){
+AccordionSection.prototype.toggleExpanded = function () {
   var expanded = (this.$module.getAttribute('aria-expanded') == 'true')
 
   this.setExpanded(!expanded)
   this.accordion.updateOpenAll()
 }
 
-AccordionSection.prototype.keyPressed = function(event) {
-
-  if (event.key === " " || event.key === "Enter") {
-    event.preventDefault();
-    this.toggleExpanded();
+AccordionSection.prototype.keyPressed = function (event) {
+  if (event.key === ' ' || event.key === 'Enter') {
+    event.preventDefault()
+    this.toggleExpanded()
   }
 }
 
-AccordionSection.prototype.expanded = function() {
+AccordionSection.prototype.expanded = function () {
   return (this.$module.getAttribute('aria-expanded') == 'true')
 }
 
-AccordionSection.prototype.setExpanded = function(expanded) {
+AccordionSection.prototype.setExpanded = function (expanded) {
   this.$module.setAttribute('aria-expanded', expanded)
 
   // This is set to trigger reflow for IE8, which doesn't
   // always reflow after a setAttribute call.
   this.$module.className = this.$module.className
-
 }
 
 export default Accordion
