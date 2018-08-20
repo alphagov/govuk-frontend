@@ -26,7 +26,7 @@ Accordion.prototype.init = function () {
   ) {
     this.sections = []
 
-    var accordionSections = this.$module.querySelectorAll('.accordion-section')
+    var accordionSections = this.$module.querySelectorAll('.govuk-accordion__section')
 
     var accordion = this
 
@@ -35,11 +35,11 @@ Accordion.prototype.init = function () {
     };
 
     var accordionControls = document.createElement('div')
-    accordionControls.setAttribute('class', 'accordion-controls')
+    accordionControls.setAttribute('class', 'govuk-accordion__controls')
 
     var openOrCloseAllButton = document.createElement('button')
     openOrCloseAllButton.textContent = 'Open all'
-    openOrCloseAllButton.setAttribute('class', 'accordion-expand-all')
+    openOrCloseAllButton.setAttribute('class', 'govuk-accordion__expand-all')
     openOrCloseAllButton.setAttribute('aria-expanded', 'false')
     openOrCloseAllButton.setAttribute('type', 'button')
 
@@ -64,7 +64,7 @@ Accordion.prototype.openOrCloseAll = function (event) {
 }
 
 Accordion.prototype.setOpenCloseButtonExpanded = function (expanded) {
-  var openOrCloseAllButton = this.$module.querySelector('.accordion-expand-all')
+  var openOrCloseAllButton = this.$module.querySelector('.govuk-accordion__expand-all')
 
   var newButtonText = expanded ? 'Close all' : 'Open all'
   openOrCloseAllButton.setAttribute('aria-expanded', expanded)
@@ -96,25 +96,25 @@ function AccordionSection (element, accordion) {
 }
 
 AccordionSection.prototype.setup = function () {
-  var sectionExpanded = this.$module.classList.contains('accordion-section--expanded')
+  var sectionExpanded = this.$module.classList.contains('govuk-accordion__section--expanded')
 
   this.$module.setAttribute('aria-expanded', sectionExpanded)
 
-  var header = this.$module.querySelector('.accordion-section-header')
+  var header = this.$module.querySelector('.govuk-accordion__section-header')
   header.addEventListener('click', this.toggleExpanded.bind(this))
   header.addEventListener('keypress', this.keyPressed.bind(this))
   header.setAttribute('tabindex', '0')
   header.setAttribute('role', 'button')
 
   var icon = document.createElement('span')
-  icon.setAttribute('class', 'icon')
+  icon.setAttribute('class', 'govuk-accordion--icon')
 
   header.appendChild(icon)
 
   /* Remove this class now, as the `aria-expanded` attribute is being used
        to store expanded state instead. */
   if (sectionExpanded) {
-    this.$module.classList.remove('accordion-section--expanded')
+    this.$module.classList.remove('govuk-accordion__section--expanded')
   }
 }
 
