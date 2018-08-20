@@ -2,72 +2,90 @@
 @import "../../tools/all";
 @import "../../helpers/all";
 
-.accordion-controls {
-  text-align: right;
-}
 
-.accordion-expand-all {
-  @include govuk-font($size: 16);
-  display: inline;
-  border-width: 0;
-  color: $govuk-link-colour;
-  background: transparent;
-  cursor: pointer;
-}
+@include govuk-exports("govuk/component/accordion") {
 
-.accordion .accordion-section[aria-expanded="false"] .accordion-section-body {
-  display: none;
-}
+  .govuk-accordion__controls {
+    text-align: right;
+  }
 
+  // This is styled to look like a link not a button
+  .govuk-accordion__expand-all {
+    @include govuk-font($size: 16);
+    display: inline;
+    border-width: 0;
+    color: $govuk-link-colour;
+    background: transparent;
+    cursor: pointer;
+  }
 
-.accordion.with-js {
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-bottom-color: $govuk-border-colour;
-}
+  // Hide the body of collapsed sections
+  .govuk-accordion.with-js .govuk-accordion__section .govuk-accordion__section-body {
+    display: none;
+  }
 
-.accordion.with-js .accordion-section {
-  border-top-width: 1px;
-  border-top-style: solid;
-  border-top-color: $govuk-border-colour;
-}
+  // Show the body of expanded sections
+  .govuk-accordion.with-js .govuk-accordion__section--expanded .govuk-accordion__section-body {
+    display: block;
+  }
 
-.accordion.with-js .accordion-section-header {
-  position: relative;
-  padding-top: 14px;
-  padding-bottom: 12px;
-  cursor: pointer;
-}
+  // Border at the bottom of the whole accordtion
+  .govuk-accordion.with-js {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: $govuk-border-colour;
+  }
 
-.accordion.with-js .accordion-section-header h2 {
-  color: $govuk-link-colour;
-}
+  // Borders between accordion sections
+  .govuk-accordion.with-js .govuk-accordion__section {
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: $govuk-border-colour;
+  }
 
-.accordion.with-js h2 {
-  margin-top: 0;
-  margin-bottom: 0;
-}
+  // Section headers have a pointer cursor as an additional affordance
+  .govuk-accordion.with-js .govuk-accordion__section-header {
+    position: relative;
+    padding-top: 14px;
+    padding-bottom: 12px;
+    cursor: pointer;
+  }
 
-.accordion.with-js .accordion-section-header:hover {
-  background-color: govuk-colour("grey-4");
-}
+  // Headings in section headers have link colours as an additional affodance
+  .govuk-accordion.with-js .govuk-heading-m {
+    margin-top: 0;
+    margin-bottom: 0;
+    color: $govuk-link-colour;
+  }
 
-.accordion.with-js .icon {
+  // Section headers have a grey background on hover as an additional affodance
+  .govuk-accordion.with-js .govuk-accordion__section-header:hover {
+    background-color: govuk-colour("grey-4");
+  }
 
-  position: absolute;
-  top: 50%;
-  right: 15px;
+  // Display an icon to the right of each header to indicate open/closed status,
+  // and as an additional affordance.
+  //
+  // Note: the image sprite contains both '+' and '-' characters, and uses background-position
+  // to flip between them.
+  .govuk-accordion.with-js .govuk-accordion--icon {
+    position: absolute;
+    top: 50%;
+    right: 15px;
 
-  width: 16px;
-  height: 16px;
-  margin-top: -8px;
+    width: 16px;
+    height: 16px;
+    margin-top: -8px;
 
-  background-image: url("/assets/images/icon-plus-minus.svg");
+    background-image: url("/assets/images/icon-plus-minus.svg");
 
-  background-repeat: no-repeat;
-  background-position: 0 -16px;
-}
+    background-repeat: no-repeat;
+    background-position: 0 -16px;
+  }
 
-.accordion.with-js .accordion-section[aria-expanded="true"] .icon {
-  background-position: 0 0;
+  // Icon should switch position to reveal '-' icon when expanded.
+  .govuk-accordion.with-js .govuk-accordion__section--expanded .govuk-accordion--icon {
+    background-position: 0 0;
+  }
+
 }
