@@ -56,3 +56,22 @@ examples:
         value: 3
         text: GOV.UK frontend option 3
         disabled: true
+- name: with full width override
+  data:
+    id: select-1
+    name: select-1
+    classes: govuk-!-width-full
+    label:
+      text: Label text goes here
+    items:
+      -
+        value: 1
+        text: GOV.UK frontend option 1
+      -
+        value: 2
+        text: GOV.UK frontend option 2
+        selected: true
+      -
+        value: 3
+        text: GOV.UK frontend option 3
+        disabled: true
