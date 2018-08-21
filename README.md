@@ -8,7 +8,7 @@ for government platforms and services.
 
 See live examples of GOV.UK Frontend components, and guidance on when to use
 them in your service, in the [GOV.UK Design
-System](https://govuk-design-system-production.cloudapps.digital/).
+System](https://design-system.service.gov.uk/).
 
 ## Contact the team
 
@@ -20,7 +20,7 @@ team](mailto:govuk-design-system-support@digital.cabinet-office.gov.uk) or get i
 There are 2 ways to start using GOV.UK Frontend in your app.
 
 Once installed, you will be able to use the code from the examples in the
-[GOV.UK Design System](https://govuk-design-system-production.cloudapps.digital/)
+[GOV.UK Design System](https://design-system.service.gov.uk/)
 in your service.
 
 ### 1. Install with npm (recommended)
