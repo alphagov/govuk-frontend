@@ -237,6 +237,26 @@ describe('Date input', () => {
       expect($firstItems.attr('id')).toEqual('my-date-input-day')
     })
 
+    it('renders items with value', () => {
+      const $ = render('date-input', {
+        items: [
+          {
+            id: 'day'
+          },
+          {
+            id: 'month'
+          },
+          {
+            id: 'year',
+            value: '2018'
+          }
+        ]
+      })
+
+      const $lastItems = $('.govuk-date-input__item:last-child input')
+      expect($lastItems.val()).toEqual('2018')
+    })
+
     it('sets the `group` role on the fieldset to force JAWS18 to announce the hint and error message', () => {
       const $ = render('date-input', examples['with errors'])
 
