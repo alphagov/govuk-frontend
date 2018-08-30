@@ -17,12 +17,22 @@ import { nodeListForEach } from '../../common'
 import '../../vendor/polyfills/Function/prototype/bind'
 import '../../vendor/polyfills/Element/prototype/classList'
 
+var KEY_ENTER = 13
+var KEY_SPACE = 32
+
 function Accordion ($module) {
   this.$module = $module
   this.$sections = $module.querySelectorAll('.govuk-accordion__section')
+  this.$openAllButton = ''
 }
 
 Accordion.prototype.init = function () {
+  // Check for module
+  var $module = this.$module
+  if (!$module) {
+    return
+  }
+
   nodeListForEach(this.$sections, function ($section) {
     // Set header attributes
     var header = $section.querySelector('.govuk-accordion__section-header')
@@ -41,78 +51,39 @@ Accordion.prototype.init = function () {
     header.addEventListener('click', this.onToggleExpanded.bind(this, $section))
   }.bind(this))
 
+  // Create "Open all" button and set attributes
+  this.$openAllButton = document.createElement('button')
+  this.setOpenAllButtonAttributes(this.$openAllButton)
+
+  // Create controls and set attributes
   var accordionControls = document.createElement('div')
   accordionControls.setAttribute('class', 'govuk-accordion__controls')
-
-  var openOrCloseAllButton = document.createElement('button')
-  openOrCloseAllButton.textContent = 'Open all'
-  openOrCloseAllButton.setAttribute('class', 'govuk-accordion__expand-all')
-  openOrCloseAllButton.setAttribute('aria-expanded', 'false')
-  openOrCloseAllButton.setAttribute('type', 'button')
-
-  openOrCloseAllButton.addEventListener('click', this.openOrCloseAll.bind(this))
-
-  accordionControls.appendChild(openOrCloseAllButton)
-
+  accordionControls.appendChild(this.$openAllButton)
   this.$module.insertBefore(accordionControls, this.$module.firstChild)
+
   this.$module.classList.add('with-js')
 
+  // Handle events
+  this.$openAllButton.addEventListener('click', this.openOrCloseAllSections.bind(this))
 }
 
-Accordion.prototype.openOrCloseAll = function (event) {
-  var openOrCloseAllButton = event.target
-  var nowExpanded = !(openOrCloseAllButton.getAttribute('aria-expanded') === 'true')
-
-  for (var i = this.sections.length - 1; i >= 0; i--) {
-    this.sections[i].setExpanded(nowExpanded)
-  };
-
-  this.setOpenCloseButtonExpanded(nowExpanded)
-}
-
-Accordion.prototype.setOpenCloseButtonExpanded = function (expanded) {
-  var openOrCloseAllButton = this.$module.querySelector('.govuk-accordion__expand-all')
-
-  var newButtonText = expanded ? 'Close all' : 'Open all'
-  openOrCloseAllButton.setAttribute('aria-expanded', expanded)
-  openOrCloseAllButton.textContent = newButtonText
-}
-
-Accordion.prototype.updateOpenAll = function () {
-  var $sections = this.$sections
-  var sectionsCount = $sections.length
-
-  var openSectionsCount = 0
-
-  for (var i = $sections.length - 1; i >= 0; i--) {
-    if (this.isExpanded($sections[i])) {
-      openSectionsCount += 1
-    }
-  };
-
-  if (sectionsCount === openSectionsCount) {
-    this.setOpenCloseButtonExpanded(true)
-  } else {
-    this.setOpenCloseButtonExpanded(false)
-  }
-}
-
+// Open/close section
 Accordion.prototype.onToggleExpanded = function ($section) {
   var expanded = ($section.getAttribute('aria-expanded') === 'true')
-
   this.setExpanded(!expanded, $section)
-  this.updateOpenAll()
+
+  // See if OpenAll button text should be updated
+  var areAllSectionsOpen = this.checkIfAllSectionsOpen()
+  this.updateOpenAllButton(areAllSectionsOpen)
 }
 
 Accordion.prototype.onKeyPressed = function (section, event) {
-  if (event.key === ' ' || event.key === 'Enter') {
+  if (event.keyCode === KEY_ENTER || event.keyCode === KEY_SPACE) {
     event.preventDefault()
+
+    // Open/close section
     this.onToggleExpanded(section)
   }
-}
-
-Accordion.prototype.isExpanded = function ($section) {
-  return ($section.getAttribute('aria-expanded') === 'true')
 }
 
 // Toggle aria-expanded when section opened/closed
@@ -124,6 +95,10 @@ Accordion.prototype.setExpanded = function (expanded, $section) {
   this.$module.className = this.$module.className
 }
 
+Accordion.prototype.isExpanded = function ($section) {
+  return ($section.getAttribute('aria-expanded') === 'true')
+}
+
 Accordion.prototype.setHeaderAttributes = function ($header) {
   $header.setAttribute('tabindex', '0')
   $header.setAttribute('role', 'button')
@@ -132,6 +107,53 @@ Accordion.prototype.setHeaderAttributes = function ($header) {
   icon.setAttribute('class', 'govuk-accordion--icon')
 
   $header.appendChild(icon)
+}
+
+Accordion.prototype.setOpenAllButtonAttributes = function ($button) {
+  $button.textContent = 'Open all'
+  $button.setAttribute('class', 'govuk-accordion__expand-all')
+  $button.setAttribute('aria-expanded', 'false')
+  $button.setAttribute('type', 'button')
+}
+
+// Open or close all sections
+Accordion.prototype.openOrCloseAllSections = function () {
+  var $module = this
+  var $sections = this.$sections
+
+  var nowExpanded = !($module.$openAllButton.getAttribute('aria-expanded') === 'true')
+
+  nodeListForEach($sections, function ($section) {
+    $module.setExpanded(nowExpanded, $section)
+  })
+
+  $module.updateOpenAllButton(nowExpanded)
+}
+
+// Update "Open all" button
+Accordion.prototype.updateOpenAllButton = function (expanded) {
+  var newButtonText = expanded ? 'Close all' : 'Open all'
+  this.$openAllButton.setAttribute('aria-expanded', expanded)
+  this.$openAllButton.textContent = newButtonText
+}
+
+// Check if all sections are open and update button text
+Accordion.prototype.checkIfAllSectionsOpen = function () {
+  var $this = this
+  var $sections = this.$sections
+  var sectionsCount = this.$sections.length
+  var openSectionsCount = 0
+  var areAllSectionsOpen = false
+
+  nodeListForEach($sections, function ($section) {
+    if ($this.isExpanded($section)) {
+      openSectionsCount++
+    }
+  })
+
+  areAllSectionsOpen = sectionsCount === openSectionsCount
+
+  return areAllSectionsOpen
 }
 
 export default Accordion
