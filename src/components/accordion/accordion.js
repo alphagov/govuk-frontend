@@ -19,18 +19,27 @@ import '../../vendor/polyfills/Element/prototype/classList'
 
 function Accordion ($module) {
   this.$module = $module
+  this.$sections = $module.querySelectorAll('.govuk-accordion__section')
 }
 
 Accordion.prototype.init = function () {
-  this.sections = []
+  nodeListForEach(this.$sections, function ($section) {
+    // Set header attributes
+    var header = $section.querySelector('.govuk-accordion__section-header')
+    this.setHeaderAttributes(header)
 
-  var accordionSections = this.$module.querySelectorAll('.govuk-accordion__section')
+    var sectionExpanded = $section.classList.contains('govuk-accordion__section--expanded')
+    $section.setAttribute('aria-expanded', sectionExpanded)
 
-  var accordion = this
-
-  for (var i = accordionSections.length - 1; i >= 0; i--) {
-    accordion.sections.push(new AccordionSection(accordionSections[i], accordion))
-  };
+    /* Remove this class now, as the `aria-expanded` attribute is being used
+     to store expanded state instead. */
+    if (sectionExpanded) {
+      this.$module.classList.remove('govuk-accordion__section--expanded')
+    }
+    // Handle events
+    header.addEventListener('keypress', this.onKeyPressed.bind(this, $section))
+    header.addEventListener('click', this.onToggleExpanded.bind(this, $section))
+  }.bind(this))
 
   var accordionControls = document.createElement('div')
   accordionControls.setAttribute('class', 'govuk-accordion__controls')
@@ -70,12 +79,13 @@ Accordion.prototype.setOpenCloseButtonExpanded = function (expanded) {
 }
 
 Accordion.prototype.updateOpenAll = function () {
-  var sectionsCount = this.sections.length
+  var $sections = this.$sections
+  var sectionsCount = $sections.length
 
   var openSectionsCount = 0
 
-  for (var i = this.sections.length - 1; i >= 0; i--) {
-    if (this.sections[i].expanded()) {
+  for (var i = $sections.length - 1; i >= 0; i--) {
+    if (this.isExpanded($sections[i])) {
       openSectionsCount += 1
     }
   };
@@ -87,59 +97,41 @@ Accordion.prototype.updateOpenAll = function () {
   }
 }
 
-function AccordionSection (element, accordion) {
-  this.$module = element
-  this.accordion = accordion
-  this.setup()
+Accordion.prototype.onToggleExpanded = function ($section) {
+  var expanded = ($section.getAttribute('aria-expanded') === 'true')
+
+  this.setExpanded(!expanded, $section)
+  this.updateOpenAll()
 }
 
-AccordionSection.prototype.setup = function () {
-  var sectionExpanded = this.$module.classList.contains('govuk-accordion__section--expanded')
-
-  this.$module.setAttribute('aria-expanded', sectionExpanded)
-
-  var header = this.$module.querySelector('.govuk-accordion__section-header')
-  header.addEventListener('click', this.toggleExpanded.bind(this))
-  header.addEventListener('keypress', this.keyPressed.bind(this))
-  header.setAttribute('tabindex', '0')
-  header.setAttribute('role', 'button')
-
-  var icon = document.createElement('span')
-  icon.setAttribute('class', 'govuk-accordion--icon')
-
-  header.appendChild(icon)
-
-  /* Remove this class now, as the `aria-expanded` attribute is being used
-       to store expanded state instead. */
-  if (sectionExpanded) {
-    this.$module.classList.remove('govuk-accordion__section--expanded')
-  }
-}
-
-AccordionSection.prototype.toggleExpanded = function () {
-  var expanded = (this.$module.getAttribute('aria-expanded') === 'true')
-
-  this.setExpanded(!expanded)
-  this.accordion.updateOpenAll()
-}
-
-AccordionSection.prototype.keyPressed = function (event) {
+Accordion.prototype.onKeyPressed = function (section, event) {
   if (event.key === ' ' || event.key === 'Enter') {
     event.preventDefault()
-    this.toggleExpanded()
+    this.onToggleExpanded(section)
   }
 }
 
-AccordionSection.prototype.expanded = function () {
-  return (this.$module.getAttribute('aria-expanded') === 'true')
+Accordion.prototype.isExpanded = function ($section) {
+  return ($section.getAttribute('aria-expanded') === 'true')
 }
 
-AccordionSection.prototype.setExpanded = function (expanded) {
-  this.$module.setAttribute('aria-expanded', expanded)
+// Toggle aria-expanded when section opened/closed
+Accordion.prototype.setExpanded = function (expanded, $section) {
+  $section.setAttribute('aria-expanded', expanded)
 
   // This is set to trigger reflow for IE8, which doesn't
   // always reflow after a setAttribute call.
   this.$module.className = this.$module.className
+}
+
+Accordion.prototype.setHeaderAttributes = function ($header) {
+  $header.setAttribute('tabindex', '0')
+  $header.setAttribute('role', 'button')
+
+  var icon = document.createElement('span')
+  icon.setAttribute('class', 'govuk-accordion--icon')
+
+  $header.appendChild(icon)
 }
 
 export default Accordion
