@@ -13,43 +13,41 @@
 
 */
 
+import { nodeListForEach } from '../../common'
+import '../../vendor/polyfills/Function/prototype/bind'
+import '../../vendor/polyfills/Element/prototype/classList'
+
 function Accordion ($module) {
   this.$module = $module
 }
 
 Accordion.prototype.init = function () {
-  // First do feature detection for required API methods
-  if (
-    document.querySelectorAll &&
-    window.NodeList &&
-    'classList' in document.body
-  ) {
-    this.sections = []
+  this.sections = []
 
-    var accordionSections = this.$module.querySelectorAll('.govuk-accordion__section')
+  var accordionSections = this.$module.querySelectorAll('.govuk-accordion__section')
 
-    var accordion = this
+  var accordion = this
 
-    for (var i = accordionSections.length - 1; i >= 0; i--) {
-      accordion.sections.push(new AccordionSection(accordionSections[i], accordion))
-    };
+  for (var i = accordionSections.length - 1; i >= 0; i--) {
+    accordion.sections.push(new AccordionSection(accordionSections[i], accordion))
+  };
 
-    var accordionControls = document.createElement('div')
-    accordionControls.setAttribute('class', 'govuk-accordion__controls')
+  var accordionControls = document.createElement('div')
+  accordionControls.setAttribute('class', 'govuk-accordion__controls')
 
-    var openOrCloseAllButton = document.createElement('button')
-    openOrCloseAllButton.textContent = 'Open all'
-    openOrCloseAllButton.setAttribute('class', 'govuk-accordion__expand-all')
-    openOrCloseAllButton.setAttribute('aria-expanded', 'false')
-    openOrCloseAllButton.setAttribute('type', 'button')
+  var openOrCloseAllButton = document.createElement('button')
+  openOrCloseAllButton.textContent = 'Open all'
+  openOrCloseAllButton.setAttribute('class', 'govuk-accordion__expand-all')
+  openOrCloseAllButton.setAttribute('aria-expanded', 'false')
+  openOrCloseAllButton.setAttribute('type', 'button')
 
-    openOrCloseAllButton.addEventListener('click', this.openOrCloseAll.bind(this))
+  openOrCloseAllButton.addEventListener('click', this.openOrCloseAll.bind(this))
 
-    accordionControls.appendChild(openOrCloseAllButton)
+  accordionControls.appendChild(openOrCloseAllButton)
 
-    this.$module.insertBefore(accordionControls, this.$module.firstChild)
-    this.$module.classList.add('with-js')
-  }
+  this.$module.insertBefore(accordionControls, this.$module.firstChild)
+  this.$module.classList.add('with-js')
+
 }
 
 Accordion.prototype.openOrCloseAll = function (event) {
