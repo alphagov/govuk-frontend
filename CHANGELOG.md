@@ -26,6 +26,51 @@
 
   ([PR #968](https://github.com/alphagov/govuk-frontend/pull/968))
 
+- Remove name-based width logic from date-input component
+
+  In [1.1 release](https://github.com/alphagov/govuk-frontend/pull/857/files#diff-e94394b2ac1d4f73991af98e4fa34fa3L32)
+  we removed styling which made the year field 4 characters wide, but was
+  coupled to the field's name.
+
+  However, to avoid making this a breaking release, we added logic to
+  automatically add the width classes based on the name.
+
+  We are now removing this behaviour. Instead, users need pass explicit classes
+  for each field in the `items` object for the desired width of the input field.
+
+  If you are using the Nunjucks macro, you need to provide a width class for
+  each item, for example:
+
+  ```
+  {{ govukDateInput({
+    "id": "dob",
+    "name": "dob",
+    "fieldset": {
+      "legend": {
+        "text": "What is your date of birth?"
+      }
+    },
+    "items": [
+      {
+        "name": "day",
+        "classes": "govuk-input--width-2"
+      },
+      {
+        "name": "month",
+        "classes": "govuk-input--width-2"
+      },
+      {
+        "name": "year",
+        "classes": "govuk-input--width-4"
+      }
+    ]
+  }) }}
+  ```
+
+  If you are using plain HTML, you need to manualy add a width-based class, such
+  as  `govuk-input--width-2` or `govuk-input--width-4` to the input fields.
+
+  ([PR #969](https://github.com/alphagov/govuk-frontend/pull/969))
 
 🆕 New features:
 
