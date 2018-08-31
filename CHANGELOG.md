@@ -6,14 +6,26 @@
 
 - Set panel component's title heading level to 1 as default
 
-  We think the panel title should be the h1 in the majority of cases, 
-  so we made it the default. 
+  We think the panel title should be the h1 in the majority of cases, so we made
+  it the default.
 
-  If you have need to change the Panel component heading to something
-  other than h1, you can do so by specifying `headingLevel: <number>`
-  in the Nunjucks macro.
+  If you have need to change the Panel component heading to something other than
+  h1, you can do so by specifying `headingLevel: <number>` in the Nunjucks
+  macro.
 
   ([PR #967](https://github.com/alphagov/govuk-frontend/pull/967))
+
+- Remove deprecated `govuk-visually-hidden-focussable` class name
+
+  In 1.1 release we added a new, correctly spelt
+  `govuk-visually-hidden-focusable` CSS class and marked the old one as
+  deprecated.
+
+  To migrate you need to change `govuk-visually-hidden-focussable` to
+  `govuk-visually-hidden-focusable` in your codebase.
+
+  ([PR #968](https://github.com/alphagov/govuk-frontend/pull/968))
+
 
 🆕 New features:
 
