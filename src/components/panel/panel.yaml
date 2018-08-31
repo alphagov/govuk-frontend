@@ -6,5 +6,5 @@ examples:
 - name: custom heading level
   data:
     titleText: Application complete
-    headingLevel: 1
+    headingLevel: 2
     text: 'Your reference number: HDJ2123F'

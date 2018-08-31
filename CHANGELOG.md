@@ -4,13 +4,16 @@
 
 💥 Breaking changes:
 
-- Pull Request Title goes here
+- Set panel component's title heading level to 1 as default
 
-  Description goes here (optional)
+  We think the panel title should be the h1 in the majority of cases, 
+  so we made it the default. 
 
-  To migrate you need to change: X
+  If you have need to change the Panel component heading to something
+  other than h1, you can do so by specifying `headingLevel: <number>`
+  in the Nunjucks macro.
 
-  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+  ([PR #967](https://github.com/alphagov/govuk-frontend/pull/967))
 
 🆕 New features:
 

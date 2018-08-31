@@ -30,11 +30,11 @@ describe('Panel', () => {
     expect(panelTitle).toEqual('Application &lt;strong&gt;not&lt;/strong&gt; complete')
   })
 
-  it('renders title as h2 (as the default heading level)', () => {
+  it('renders title as h1 (as the default heading level)', () => {
     const $ = render('panel', examples.default)
     const panelTitleHeadingLevel = $('.govuk-panel__title')[0].name
 
-    expect(panelTitleHeadingLevel).toEqual('h2')
+    expect(panelTitleHeadingLevel).toEqual('h1')
   })
 
   it('renders title as specified heading level', () => {
