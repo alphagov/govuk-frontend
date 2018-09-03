@@ -17,6 +17,8 @@
     @include govuk-responsive-margin(6, "bottom");
     padding: govuk-spacing(1);
 
+    resize: vertical;
+
     border: $govuk-border-width-form-element solid $govuk-input-border-colour;
     border-radius: 0;
 
