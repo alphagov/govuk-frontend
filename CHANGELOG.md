@@ -82,6 +82,12 @@
 
 🔧 Fixes:
 
+- Textareas can now only be resized vertically, to prevent them being resized
+  outside of their container bounds. Additionally, they now have a minimum
+  height to prevent them being resized smaller than a text input.
+
+  ([PR #976](https://github.com/alphagov/govuk-frontend/pull/976))
+
 - Pull Request Title goes here
 
   Description goes here (optional)
