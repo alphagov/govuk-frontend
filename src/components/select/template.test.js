@@ -151,6 +151,40 @@ describe('Select', () => {
     })
   })
 
+  describe('when they include option attributes', () => {
+    it('renders the option attributes', () => {
+      const $ = render('select', {
+        value: '2',
+        items: [
+          {
+            text: 'Option 1',
+            attributes: {
+              'data-attribute': 'ABC',
+              'data-second-attribute': 'DEF'
+            }
+          },
+          {
+            text: 'Options 2',
+            attributes: {
+              'data-attribute': 'GHI',
+              'data-second-attribute': 'JKL'
+            }
+          }
+        ]
+      })
+
+      const $component = $('.govuk-select')
+
+      const $firstInput = $component.find('option:first-child')
+      expect($firstInput.attr('data-attribute')).toEqual('ABC')
+      expect($firstInput.attr('data-second-attribute')).toEqual('DEF')
+
+      const $secondInput = $component.find('option:last-child')
+      expect($secondInput.attr('data-attribute')).toEqual('GHI')
+      expect($secondInput.attr('data-second-attribute')).toEqual('JKL')
+    })
+  })
+
   describe('when it includes a hint', () => {
     it('renders the hint', () => {
       const $ = render('select', {
