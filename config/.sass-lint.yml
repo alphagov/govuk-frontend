@@ -296,6 +296,7 @@ rules:
         - 'clip'
         - 'clip-path'
         - 'zoom'
+        - 'resize'
         -
         - 'columns'
         -
