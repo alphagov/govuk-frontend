@@ -19,14 +19,20 @@ $govuk-typography-use-rem: true !default;
 /// in order to allow it to scale with user-preference, in which case this
 /// should be set to 16px.
 ///
-/// If you are integrating Frontend into an existing project that also uses
-/// alphagov/govuk_template then you should set this to 10px to match the 62.5%
-/// (10px) base font size that govuk_template sets on the <html> element.
-///
 /// @type Number
 /// @access public
 
-$govuk-root-font-size: 16px !default;
+// To dynamically set a variable you need to use a function
+@function _set-govuk-root-font-size() {
+  // match the 62.5% (10px) base font size that alphagov/govuk_template sets on the <html> element.
+  @if ($govuk-compatibility-govuktemplate == true) {
+    @return 10px;
+  } @else {
+    @return 16px;
+  }
+}
+
+$govuk-root-font-size: _set-govuk-root-font-size() !default;
 
 /// Responsive typography font map
 ///
