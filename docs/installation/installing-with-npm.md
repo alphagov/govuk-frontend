@@ -41,14 +41,14 @@ imports) if you want to override GOV.UK Frontend with your own styles.
 
 1. To import all components, add the below to your Sass file:
 
-  ```CSS
+  ```SCSS
   @import "node_modules/govuk-frontend/all";
   ```
 
 2. To import an individual component (for example a button), add the below to
 your Sass file:
 
-  ```CSS
+  ```SCSS
   @import "node_modules/govuk-frontend/components/button/button";
   ```
 
@@ -81,7 +81,7 @@ to include add `includePaths` to it.
 
 After resolving the import paths you can import GOV.UK Frontend by using:
 
-```CSS
+```SCSS
 @import "govuk-frontend/components/button/button";
 ```
 
@@ -95,7 +95,7 @@ Hovever, we do include some global styles in the [GOV.UK Prototype Kit](https://
 
 These [global styles](../../src/core/_global-styles.scss) are are not included by default in GOV.UK Frontend. To include these global styles in your app, you can set `$govuk-global-styles` variable to `true` before importing GOV.UK Frontend styles into your app:
 
-```
+```SCSS
 // application.scss
 
 $govuk-global-styles: true;
@@ -110,7 +110,7 @@ Setting compatibility SCSS variables will change how GOV.UK Frontend's CSS rende
 
 To enable this feature include the SCSS variables that correspond with the projects you depend on before importing GOV.UK Frontend styles into your app:
 
-```
+```SCSS
 // application.scss
 
 $govuk-compatibility-govukfrontendtoolkit: true;
