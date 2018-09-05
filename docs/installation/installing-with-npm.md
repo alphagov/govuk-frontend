@@ -103,6 +103,23 @@ $govuk-global-styles: true;
 @import "govuk-frontend/all";
 ```
 
+### Compatibility mode
+GOV.UK Frontend includes additional styles that can be enabled to allow support for deprecated projects such as [GOV.UK Elements](https://github.com/alphagov/govuk_elements), [GOV.UK Template](https://github.com/alphagov/govuk_template), [GOV.UK Frontend Toolkit](https://github.com/alphagov/govuk_frontend_toolkit).
+
+Setting compatibility SCSS variables will change how GOV.UK Frontend's CSS renders to work around global styles that conflict with GOV.UK Frontend.
+
+To enable this feature include the SCSS variables that correspond with the projects you depend on before importing GOV.UK Frontend styles into your app:
+
+```
+// application.scss
+
+$govuk-compatibility-govukfrontendtoolkit: true;
+$govuk-compatibility-govuktemplate: true;
+$govuk-compatibility-govukelements: true;
+
+@import "govuk-frontend/all";
+```
+
 ## Using JavaScript
 
 Some of the JavaScript included in GOV.UK Frontend improves the usability and
