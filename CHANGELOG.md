@@ -72,6 +72,43 @@
 
   ([PR #969](https://github.com/alphagov/govuk-frontend/pull/969))
 
+- Turn off [compatibility mode](./docs/installation/installing-with-npm.md#compatibility-mode) by default for [GOV.UK Elements](https://github.com/alphagov/govuk_elements), [GOV.UK Template](https://github.com/alphagov/govuk_template), [GOV.UK Frontend Toolkit](https://github.com/alphagov/govuk_frontend_toolkit)
+
+  You do not need to make any changes if you do not use these projects alongside GOV.UK Frontend.
+
+  To migrate include the SCSS variables that correspond with the projects you depend on before importing GOV.UK Frontend styles into your app:
+
+  ```SCSS
+  // application.scss
+  $govuk-compatibility-govukfrontendtoolkit: true;
+  $govuk-compatibility-govuktemplate: true;
+  $govuk-compatibility-govukelements: true;
+  @import "govuk-frontend/all";
+  ```
+  ([PR #981](https://github.com/alphagov/govuk-frontend/pull/981))
+
+- Turn on relative typography (rem) by default
+
+  This allows for end-users to adjust GOV.UK Frontend components by setting their font size in their browser.
+
+  If you are using GOV.UK Frontend on with no other frameworks this should not break your project.
+
+  If you need to change this setting for compatibility with [GOV.UK Elements](https://github.com/alphagov/govuk_elements), [GOV.UK Template](https://github.com/alphagov/govuk_template), [GOV.UK Frontend Toolkit](https://github.com/alphagov/govuk_frontend_toolkit) consider enabling [compatibility mode](./docs/installation/installing-with-npm.md#compatibility-mode).
+
+  Otherwise, set `$govuk-typography-use-rem` to `false` before importing GOV.UK Frontend styles into your app:
+  ```SCSS
+  // application.scss
+  $govuk-typography-use-rem: false;
+  @import "govuk-frontend/all";
+  ```
+  ([PR #981](https://github.com/alphagov/govuk-frontend/pull/981))
+
+- Pull Request Title goes here
+
+  Description goes here (optional)
+
+  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+
 🆕 New features:
 
 - Pull Request Title goes here
