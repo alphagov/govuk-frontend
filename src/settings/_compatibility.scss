@@ -16,7 +16,7 @@
 /// @type Boolean
 /// @access public
 
-$govuk-compatibility-govukfrontendtoolkit: true !default;
+$govuk-compatibility-govukfrontendtoolkit: false !default;
 
 /// Compatibility Mode: alphagov/govuk_template
 ///
@@ -25,7 +25,7 @@ $govuk-compatibility-govukfrontendtoolkit: true !default;
 /// @type Boolean
 /// @access public
 
-$govuk-compatibility-govuktemplate: true !default;
+$govuk-compatibility-govuktemplate: false !default;
 
 /// Compatibility Mode: alphagov/govuk_elements
 ///
@@ -34,7 +34,7 @@ $govuk-compatibility-govuktemplate: true !default;
 /// @type Boolean
 /// @access public
 
-$govuk-compatibility-govukelements: true !default;
+$govuk-compatibility-govukelements: false !default;
 
 /// Compatibility Product Map
 ///
