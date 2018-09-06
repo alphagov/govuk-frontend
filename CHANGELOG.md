@@ -103,6 +103,16 @@
   ```
   ([PR #981](https://github.com/alphagov/govuk-frontend/pull/981))
 
+- Remove anchor styling in govuk-lists
+
+  This was an undocumented feature of lists.
+
+  To migrate we recommend using adding `.govuk-link` class to any anchors within a govuk-list.
+
+  If you would like to replicate this functionality without adding a class you can also enable [global styles](https://github.com/alphagov/govuk-frontend/blob/master/docs/installation/installing-with-npm.md#global-styles) (Note: global styles are enabled by default in the GOV.UK Prototype Kit)
+
+  ([PR #985](https://github.com/alphagov/govuk-frontend/pull/985))
+
 - Pull Request Title goes here
 
   Description goes here (optional)
