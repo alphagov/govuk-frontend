@@ -18,7 +18,7 @@ const sassBootstrap = `
   @import "settings/ie8";
 
   $govuk-root-font-size: 16px;
-  $govuk-typography-use-rem: false;
+  $govuk-typography-use-rem: true;
 
   $govuk-breakpoints: (
     desktop: 30em
@@ -112,10 +112,12 @@ describe('@mixin govuk-typography-responsive', () => {
     expect(results.css.toString().trim()).toBe(outdent`
       .foo {
         font-size: 12px;
+        font-size: 0.75rem;
         line-height: 1.25; }
         @media (min-width: 30em) {
           .foo {
             font-size: 14px;
+            font-size: 0.875rem;
             line-height: 1.42857; } }`)
   })
 
@@ -132,6 +134,7 @@ describe('@mixin govuk-typography-responsive', () => {
     expect(results.css.toString().trim()).toBe(outdent`
       .foo {
         font-size: 12px;
+        font-size: 0.75rem;
         line-height: 1.25; }
         @media print {
           .foo {
@@ -168,10 +171,12 @@ describe('@mixin govuk-typography-responsive', () => {
       expect(results.css.toString().trim()).toBe(outdent`
         .foo {
           font-size: 12px !important;
+          font-size: 0.75rem !important;
           line-height: 1.25 !important; }
           @media (min-width: 30em) {
             .foo {
               font-size: 14px !important;
+              font-size: 0.875rem !important;
               line-height: 1.42857 !important; } }`)
     })
 
@@ -188,6 +193,7 @@ describe('@mixin govuk-typography-responsive', () => {
       expect(results.css.toString().trim()).toBe(outdent`
         .foo {
           font-size: 12px !important;
+          font-size: 0.75rem !important;
           line-height: 1.25 !important; }
           @media print {
             .foo {
@@ -210,19 +216,21 @@ describe('@mixin govuk-typography-responsive', () => {
       expect(results.css.toString().trim()).toBe(outdent`
         .foo {
           font-size: 12px;
+          font-size: 0.75rem;
           line-height: 1.75; }
           @media (min-width: 30em) {
             .foo {
               font-size: 14px;
+              font-size: 0.875rem;
               line-height: 1.5; } }`)
     })
   })
 
-  describe('when $govuk-typography-use-rem is enabled', () => {
+  describe('when $govuk-typography-use-rem is disabled', () => {
     it('outputs CSS with suitable media queries', async () => {
       const sass = `
         ${sassBootstrap}
-        $govuk-typography-use-rem: true;
+        $govuk-typography-use-rem: false;
 
         .foo {
           @include govuk-typography-responsive($size: 14)
@@ -233,19 +241,17 @@ describe('@mixin govuk-typography-responsive', () => {
       expect(results.css.toString().trim()).toBe(outdent`
         .foo {
           font-size: 12px;
-          font-size: 0.75rem;
           line-height: 1.25; }
           @media (min-width: 30em) {
             .foo {
               font-size: 14px;
-              font-size: 0.875rem;
               line-height: 1.42857; } }`)
     })
 
     it('adjusts rem values based on root font size', async () => {
       const sass = `
         ${sassBootstrap}
-        $govuk-typography-use-rem: true;
+        $govuk-typography-use-rem: false;
         $govuk-root-font-size: 10px;
 
         .foo {
@@ -257,12 +263,10 @@ describe('@mixin govuk-typography-responsive', () => {
       expect(results.css.toString().trim()).toBe(outdent`
         .foo {
           font-size: 12px;
-          font-size: 1.2rem;
           line-height: 1.25; }
           @media (min-width: 30em) {
             .foo {
               font-size: 14px;
-              font-size: 1.4rem;
               line-height: 1.42857; } }`)
     })
 
@@ -270,7 +274,7 @@ describe('@mixin govuk-typography-responsive', () => {
       it('marks font size and line height as important', async () => {
         const sass = `
           ${sassBootstrap}
-          $govuk-typography-use-rem: true;
+          $govuk-typography-use-rem: false;
 
           .foo {
             @include govuk-typography-responsive($size: 14, $important: true);
@@ -281,12 +285,10 @@ describe('@mixin govuk-typography-responsive', () => {
         expect(results.css.toString().trim()).toBe(outdent`
           .foo {
             font-size: 12px !important;
-            font-size: 0.75rem !important;
             line-height: 1.25 !important; }
             @media (min-width: 30em) {
               .foo {
                 font-size: 14px !important;
-                font-size: 0.875rem !important;
                 line-height: 1.42857 !important; } }`)
       })
     })
