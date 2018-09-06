@@ -70,7 +70,7 @@ Find out when to use the date input component in your service in the [GOV.UK Des
 
     {{ govukDateInput({
       "id": "dob",
-      "name": "dob",
+      "namePrefix": "dob",
       "fieldset": {
         "legend": {
           "text": "What is your date of birth?"
@@ -250,7 +250,7 @@ Find out when to use the date input component in your service in the [GOV.UK Des
 
     {{ govukDateInput({
       "id": "dob-day-error",
-      "name": "dob-day-error",
+      "namePrefix": "dob-day-error",
       "fieldset": {
         "legend": {
           "text": "What is your date of birth?"
@@ -342,7 +342,7 @@ Find out when to use the date input component in your service in the [GOV.UK Des
 
     {{ govukDateInput({
       "id": "dob-month-error",
-      "name": "dob-month-error",
+      "namePrefix": "dob-month-error",
       "fieldset": {
         "legend": {
           "text": "What is your date of birth?"
@@ -434,7 +434,7 @@ Find out when to use the date input component in your service in the [GOV.UK Des
 
     {{ govukDateInput({
       "id": "dob-year-error",
-      "name": "dob-year-error",
+      "namePrefix": "dob-year-error",
       "fieldset": {
         "legend": {
           "text": "What is your date of birth?"
@@ -522,7 +522,7 @@ Find out when to use the date input component in your service in the [GOV.UK Des
 
     {{ govukDateInput({
       "id": "dob",
-      "name": "dob",
+      "namePrefix": "dob",
       "fieldset": {
         "legend": {
           "text": "What is your date of birth?"
@@ -589,13 +589,13 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
-<th class="govuk-table__header" scope="row">name</th>
+<th class="govuk-table__header" scope="row">namePrefix</th>
 
 <td class="govuk-table__cell ">string</td>
 
 <td class="govuk-table__cell ">No</td>
 
-<td class="govuk-table__cell ">Optional name. This is used to compose the name attribute for each item.</td>
+<td class="govuk-table__cell ">Optional prefix. This is used to prefix each `item.name` using `-`.</td>
 
 </tr>
 
