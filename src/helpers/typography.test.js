@@ -14,11 +14,10 @@ const sassConfig = {
 }
 
 const sassBootstrap = `
+  @import "settings/compatibility";
   @import "settings/media-queries";
   @import "settings/ie8";
-
-  $govuk-root-font-size: 16px;
-  $govuk-typography-use-rem: true;
+  @import "settings/typography-responsive";
 
   $govuk-breakpoints: (
     desktop: 30em
@@ -229,8 +228,8 @@ describe('@mixin govuk-typography-responsive', () => {
   describe('when $govuk-typography-use-rem is disabled', () => {
     it('outputs CSS with suitable media queries', async () => {
       const sass = `
-        ${sassBootstrap}
         $govuk-typography-use-rem: false;
+        ${sassBootstrap}
 
         .foo {
           @include govuk-typography-responsive($size: 14)
@@ -250,9 +249,9 @@ describe('@mixin govuk-typography-responsive', () => {
 
     it('adjusts rem values based on root font size', async () => {
       const sass = `
-        ${sassBootstrap}
         $govuk-typography-use-rem: false;
         $govuk-root-font-size: 10px;
+        ${sassBootstrap}
 
         .foo {
           @include govuk-typography-responsive($size: 14)
@@ -273,8 +272,8 @@ describe('@mixin govuk-typography-responsive', () => {
     describe('and $important is set to true', () => {
       it('marks font size and line height as important', async () => {
         const sass = `
-          ${sassBootstrap}
           $govuk-typography-use-rem: false;
+          ${sassBootstrap}
 
           .foo {
             @include govuk-typography-responsive($size: 14, $important: true);
@@ -291,6 +290,29 @@ describe('@mixin govuk-typography-responsive', () => {
                 font-size: 14px !important;
                 line-height: 1.42857 !important; } }`)
       })
+    })
+  })
+
+  describe('when compatibility mode is set', () => {
+    it('$govuk-typography-use-rem is disabled by default', async () => {
+      const sass = `
+        $govuk-compatibility-govuktemplate: true;
+        ${sassBootstrap}
+
+        .foo {
+          @include govuk-typography-responsive($size: 14)
+        }`
+
+      const results = await sassRender({ data: sass, ...sassConfig })
+
+      expect(results.css.toString().trim()).toBe(outdent`
+        .foo {
+          font-size: 12px;
+          line-height: 1.25; }
+          @media (min-width: 30em) {
+            .foo {
+              font-size: 14px;
+              line-height: 1.42857; } }`)
     })
   })
 })
