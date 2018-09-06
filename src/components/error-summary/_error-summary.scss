@@ -49,10 +49,14 @@
     &:link,
     &:visited,
     &:hover,
-    &:active,
-    &:focus {
+    &:active {
       color: $govuk-error-colour;
-      text-decoration: underline;
+    }
+
+    // When focussed, the text colour needs to be darker to ensure that colour
+    // contrast is still acceptable
+    &:focus {
+      color: $govuk-text-colour;
     }
 
     // alphagov/govuk_template includes a specific a:link:focus selector
