@@ -72,6 +72,14 @@
 
   ([PR #969](https://github.com/alphagov/govuk-frontend/pull/969))
 
+- Rename `name` argument of date-input component to `namePrefix`.
+
+  This is better reflective of the purpose of the argument, which is to prefix the `name` attribute of `items`. This is consistent with other components which use the name `idPrefix` to explain similar functionality.
+
+  If your project currently uses this optional argument with the date-input macro, you need to rename all instances of it to `namePrefix` (NB: this argument shouldn't be confused with the `items.{}.name` attribute which hasn't changed.)
+
+  ([PR #984](https://github.com/alphagov/govuk-frontend/pull/984))
+
 - Turn off [compatibility mode](./docs/installation/installing-with-npm.md#compatibility-mode) by default for [GOV.UK Elements](https://github.com/alphagov/govuk_elements), [GOV.UK Template](https://github.com/alphagov/govuk_template), [GOV.UK Frontend Toolkit](https://github.com/alphagov/govuk_frontend_toolkit)
 
   You do not need to make any changes if you do not use these projects alongside GOV.UK Frontend.
