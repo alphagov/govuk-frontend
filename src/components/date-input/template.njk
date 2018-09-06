@@ -61,7 +61,7 @@
         },
         id: item.id if item.id else (params.id + "-" + item.name),
         classes: "govuk-date-input__input " + (item.classes if item.classes),
-        name: (params.name + "-" + item.name) if params.name else item.name,
+        name: (params.namePrefix + "-" + item.name) if params.namePrefix else item.name,
         value: item.value,
         type: "number",
         attributes: {

@@ -2,7 +2,7 @@ examples:
 - name: default
   data:
     id: dob
-    name: dob
+    namePrefix: dob
     fieldset:
       legend:
         text: What is your date of birth?
@@ -41,7 +41,7 @@ examples:
 - name: with error on day input
   data:
     id: dob-day-error
-    name: dob-day-error
+    namePrefix: dob-day-error
     fieldset:
       legend:
         text: What is your date of birth?
@@ -62,7 +62,7 @@ examples:
 - name: with error on month input
   data:
     id: dob-month-error
-    name: dob-month-error
+    namePrefix: dob-month-error
     fieldset:
       legend:
         text: What is your date of birth?
@@ -83,7 +83,7 @@ examples:
 - name: with error on year input
   data:
     id: dob-year-error
-    name: dob-year-error
+    namePrefix: dob-year-error
     fieldset:
       legend:
         text: What is your date of birth?
@@ -104,7 +104,7 @@ examples:
 - name: with default items
   data:
     id: dob
-    name: dob
+    namePrefix: dob
     fieldset:
       legend:
         text: What is your date of birth?
