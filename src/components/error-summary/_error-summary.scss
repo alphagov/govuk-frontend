@@ -56,7 +56,7 @@
     // When focussed, the text colour needs to be darker to ensure that colour
     // contrast is still acceptable
     &:focus {
-      color: $govuk-text-colour;
+      color: $govuk-focus-text-colour;
     }
 
     // alphagov/govuk_template includes a specific a:link:focus selector
