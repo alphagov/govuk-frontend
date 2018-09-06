@@ -44,6 +44,12 @@
   &:active {
     color: $govuk-link-active-colour;
   }
+
+  // When focussed, the text colour needs to be darker to ensure that colour
+  // contrast is still acceptable
+  &:focus {
+    color: $govuk-text-colour;
+  }
 }
 
 /// Muted style link mixin
