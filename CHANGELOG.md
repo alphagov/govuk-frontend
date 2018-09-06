@@ -125,6 +125,9 @@
 
   ([PR #976](https://github.com/alphagov/govuk-frontend/pull/976))
 
+- Defend tables against GOV.UK Elements code
+  ([PR #983](https://github.com/alphagov/govuk-frontend/pull/983))
+
 - Pull Request Title goes here
 
   Description goes here (optional)
