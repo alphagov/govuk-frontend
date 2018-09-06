@@ -649,6 +649,18 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
+<th class="govuk-table__header" scope="row">items.{}.label</th>
+
+<td class="govuk-table__cell ">string</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Optional item-specific label text. If provided, this will be used instead of the items.{}.name.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
 <th class="govuk-table__header" scope="row">hint</th>
 
 <td class="govuk-table__cell ">object</td>
