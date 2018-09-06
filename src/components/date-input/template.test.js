@@ -180,7 +180,7 @@ describe('Date input', () => {
 
     it('renders item with suffixed name for input', () => {
       const $ = render('date-input', {
-        name: 'my-date-input',
+        namePrefix: 'my-date-input',
         items: [
           {
             'name': 'day'
