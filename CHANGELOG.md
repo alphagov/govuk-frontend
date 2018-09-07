@@ -141,11 +141,12 @@
 
   ([PR #960](https://github.com/alphagov/govuk-frontend/pull/960))
 
-- Pull Request Title goes here
+- Allow attributes on select items
 
-  Description goes here (optional)
+  You can now provide attributes on select items
+  `attributes: { 'data-attribute': 'value' }`
 
-  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+  ([PR #977](https://github.com/alphagov/govuk-frontend/pull/977))
 
 🔧 Fixes:
 
