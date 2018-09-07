@@ -121,6 +121,12 @@
 
   ([PR #985](https://github.com/alphagov/govuk-frontend/pull/985))
 
+- Remove the width declaration from the `<select>` component
+
+  The `<select>` component’s width will now be defined by it’s content. This addresses some accessibility issues with the select being 100% wide by default. If you want to style your select to be 100% wide we have added a new override class `.govuk-!-width-full` to allow this.
+
+  ([PR #960](https://github.com/alphagov/govuk-frontend/pull/960))  
+
 - Pull Request Title goes here
 
   Description goes here (optional)
@@ -128,6 +134,12 @@
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
 🆕 New features:
+
+- Add a new width override class `.govuk-!-width-full`
+
+  You can now override elements that have an undefined or smaller percentage  width to be 100% width of their container.
+
+  ([PR #960](https://github.com/alphagov/govuk-frontend/pull/960))
 
 - Pull Request Title goes here
 
@@ -187,7 +199,7 @@
 
 - Update date input component to use `display: inline-block`
   ([PR #938](https://github.com/alphagov/govuk-frontend/pull/938))
-  
+
 - Change spacing relationship on default and small legends and hints
   ([PR #940](https://github.com/alphagov/govuk-frontend/pull/940))
 
