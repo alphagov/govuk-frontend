@@ -17,9 +17,9 @@ Find out when to use the panel component in your service in the [GOV.UK Design S
 #### Markup
 
     <div class="govuk-panel govuk-panel--confirmation">
-      <h2 class="govuk-panel__title">
+      <h1 class="govuk-panel__title">
         Application complete
-      </h2>
+      </h1>
 
       <div class="govuk-panel__body">
         Your reference number: HDJ2123F
@@ -43,9 +43,9 @@ Find out when to use the panel component in your service in the [GOV.UK Design S
 #### Markup
 
     <div class="govuk-panel govuk-panel--confirmation">
-      <h1 class="govuk-panel__title">
+      <h2 class="govuk-panel__title">
         Application complete
-      </h1>
+      </h2>
 
       <div class="govuk-panel__body">
         Your reference number: HDJ2123F
@@ -59,7 +59,7 @@ Find out when to use the panel component in your service in the [GOV.UK Design S
 
     {{ govukPanel({
       "titleText": "Application complete",
-      "headingLevel": 1,
+      "headingLevel": 2,
       "text": "Your reference number: HDJ2123F"
     }) }}
 
