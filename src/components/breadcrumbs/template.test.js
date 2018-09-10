@@ -79,6 +79,25 @@ describe('Breadcrumbs', () => {
       expect($item.html()).toEqual('&lt;span&gt;Section 1&lt;/span&gt;')
     })
 
+    it('renders item anchor with attributes', () => {
+      const $ = render('breadcrumbs', {
+        items: [
+          {
+            'text': 'Section 1',
+            'href': '/section',
+            'attributes': {
+              'data-attribute': 'my-attribute',
+              'data-attribute-2': 'my-attribute-2'
+            }
+          }
+        ]
+      })
+
+      const $breadcrumbLink = $('.govuk-breadcrumbs__link')
+      expect($breadcrumbLink.attr('data-attribute')).toEqual('my-attribute')
+      expect($breadcrumbLink.attr('data-attribute-2')).toEqual('my-attribute-2')
+    })
+
     it('renders item with html', () => {
       const $ = render('breadcrumbs', {
         items: [
