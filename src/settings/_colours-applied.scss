@@ -68,6 +68,16 @@ $govuk-secondary-text-colour: govuk-colour("grey-1") !default;
 
 $govuk-focus-colour: govuk-colour("yellow") !default;
 
+/// Focused text colour
+///
+/// Ensure that the contrast between the text and background colour passes
+/// WCAG Level AA contrast requirements.
+///
+/// @type Colour
+/// @access public
+
+$govuk-focus-text-colour: govuk-colour("black") !default;
+
 /// Error colour
 ///
 /// Used to highlight error messages and form controls in an error state
