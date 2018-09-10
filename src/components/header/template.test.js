@@ -103,5 +103,15 @@ describe('header', () => {
       expect($firstItem.attr('href')).toEqual('#1')
       expect($firstItem.text()).toContain('Navigation item 1')
     })
+
+    describe('menu button', () => {
+      it('has an explicit type="button" so it does not act as a submit button', () => {
+        const $ = render('header', examples['with navigation'])
+
+        const $button = $('.govuk-header__menu-button')
+
+        expect($button.attr('type')).toEqual('button')
+      })
+    })
   })
 })
