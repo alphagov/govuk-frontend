@@ -37,7 +37,7 @@ examples:
 
 - name: with meta
   readme: false
-  description: Secondary navigation to meta information relating to the site
+  description: Secondary navigation with meta information relating to the site
   data:
     meta:
       items:
@@ -47,6 +47,44 @@ examples:
           text: Item 2
         - href: '#3'
           text: Item 3
+
+- name: with custom meta
+  readme: false
+  description: Custom meta section
+  data:
+    meta:
+      text: GOV.UK Prototype Kit v7.0.1
+
+- name: with meta links and meta content
+  readme: false
+  description: Secondary navigation links and custom meta text
+  data:
+    meta:
+      items:
+        - href: '#1'
+          text: Bibendum Ornare
+        - href: '#2'
+          text: Nullam
+        - href: '#3'
+          text: Tortor Fringilla
+        - href: '#4'
+          text: Tellus
+        - href: '#5'
+          text: Egestas Nullam
+        - href: '#6'
+          text: Euismod Etiam
+        - href: '#7'
+          text: Fusce Sollicitudin
+        - href: '#8'
+          text:  Ligula Nullam Ultricies
+      html: Built by the <a href="#" class="govuk-footer__link">Department of Magical Law Enforcement</a>
+
+- name: with custom meta
+  readme: false
+  description: Custom meta section
+  data:
+    meta:
+      text: GOV.UK Prototype Kit v7.0.1
 
 - name: with navigation
   readme: false
@@ -142,5 +180,4 @@ examples:
           text: Terms and conditions
         - href: '/cymraeg'
           text: Rhestr o Wasanaethau Cymraeg
-        - href: '/government/organisations/government-digital-service'
-          text: Government Digital Service
+      html: Built by the <a class="govuk-footer__link" href="#">Government Digital Service</a>
