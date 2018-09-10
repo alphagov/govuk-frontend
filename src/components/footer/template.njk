@@ -16,7 +16,7 @@
                 {% for item in item.items %}
                   {% if item.href and item.text %}
                     <li class="govuk-footer__list-item">
-                      <a class="govuk-footer__link" href="{{ item.href }}">
+                      <a class="govuk-footer__link" href="{{ item.href }}"{% for attribute, value in item.attributes %} {{attribute}}="{{value}}"{% endfor %}>
                         {{ item.text }}
                       </a>
                     </li>
@@ -37,7 +37,7 @@
             <ul class="govuk-footer__inline-list">
               {% for item in params.meta.items %}
                 <li class="govuk-footer__inline-list-item">
-                  <a class="govuk-footer__link" href="{{ item.href }}">
+                  <a class="govuk-footer__link" href="{{ item.href }}"{% for attribute, value in item.attributes %} {{attribute}}="{{value}}"{% endfor %}>
                     {{ item.text }}
                   </a>
                 </li>
