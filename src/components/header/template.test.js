@@ -104,6 +104,24 @@ describe('header', () => {
       expect($firstItem.text()).toContain('Navigation item 1')
     })
 
+    it('renders navigation item anchor with attributes', () => {
+      const $ = render('header', {
+        navigation: [
+          {
+            'text': 'Item',
+            'href': '/link',
+            'attributes': {
+              'data-attribute': 'my-attribute',
+              'data-attribute-2': 'my-attribute-2'
+            }
+          }
+        ]
+      })
+
+      const $navigationLink = $('.govuk-header__navigation-item a')
+      expect($navigationLink.attr('data-attribute')).toEqual('my-attribute')
+      expect($navigationLink.attr('data-attribute-2')).toEqual('my-attribute-2')
+    })
     describe('menu button', () => {
       it('has an explicit type="button" so it does not act as a submit button', () => {
         const $ = render('header', examples['with navigation'])
