@@ -38,7 +38,10 @@
   <select class="govuk-select
     {%- if params.classes %} {{ params.classes }}{% endif %}{%- if params.errorMessage %} govuk-select--error{% endif %}" id="{{ params.id }}" name="{{ params.name }}" {%- if describedBy %} aria-describedby="{{ describedBy }}"{% endif %} {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
   {% for item in params.items %}
-    <option value="{{ item.value }}"{{" selected" if item.selected}}{{" disabled" if item.disabled}}>{{ item.text }}</option>
+    <option value="{{ item.value }}"
+      {{-" selected" if item.selected }}
+      {{-" disabled" if item.disabled }}
+      {%- for attribute, value in item.attributes %} {{ attribute }}="{{ value }}"{% endfor -%}>{{ item.text }}</option>
   {% endfor %}
   </select>
 </div>

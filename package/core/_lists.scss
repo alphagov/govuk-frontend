@@ -20,24 +20,6 @@
     }
   }
 
-  %govuk-list a {
-    &:link {
-      color: $govuk-link-colour;
-    }
-
-    &:visited {
-      color: $govuk-link-visited-colour;
-    }
-
-    &:hover {
-      color: $govuk-link-hover-colour;
-    }
-
-    &:active {
-      color: $govuk-link-active-colour;
-    }
-  }
-
   .govuk-list {
     @extend %govuk-list;
   }

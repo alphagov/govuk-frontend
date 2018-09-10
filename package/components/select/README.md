@@ -176,6 +176,57 @@ Find out when to use the select component in your service in the [GOV.UK Design 
       ]
     }) }}
 
+### Select with full width override
+
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/select/with-full-width-override/preview)
+
+#### Markup
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="select-1">
+        Label text goes here
+      </label>
+
+      <select class="govuk-select govuk-!-width-full" id="select-1" name="select-1">
+
+        <option value="1">GOV.UK frontend option 1</option>
+
+        <option value="2" selected>GOV.UK frontend option 2</option>
+
+        <option value="3" disabled>GOV.UK frontend option 3</option>
+
+      </select>
+    </div>
+
+#### Macro
+
+    {% from "select/macro.njk" import govukSelect %}
+
+    {{ govukSelect({
+      "id": "select-1",
+      "name": "select-1",
+      "classes": "govuk-!-width-full",
+      "label": {
+        "text": "Label text goes here"
+      },
+      "items": [
+        {
+          "value": 1,
+          "text": "GOV.UK frontend option 1"
+        },
+        {
+          "value": 2,
+          "text": "GOV.UK frontend option 2",
+          "selected": true
+        },
+        {
+          "value": 3,
+          "text": "GOV.UK frontend option 3",
+          "disabled": true
+        }
+      ]
+    }) }}
+
 ## Requirements
 
 ### Build tool configuration
@@ -299,6 +350,18 @@ If you are using Nunjucks,then macros take the following arguments
 <td class="govuk-table__cell ">No</td>
 
 <td class="govuk-table__cell ">Sets the option item as disabled.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">item.attributes</th>
+
+<td class="govuk-table__cell ">object</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to the select option tag.</td>
 
 </tr>
 

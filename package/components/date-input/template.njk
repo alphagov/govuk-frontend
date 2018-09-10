@@ -53,26 +53,6 @@
     {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}
     {%- if params.id %} id="{{ params.id }}"{% endif %}>
     {% for item in dateInputItems %}
-
-    {# Maintain backwards compatibility by automatically adding input width
-    classes based on the input name:
-
-    - If there is a width class set on this item, do nothing.
-    - Otherwise, if the input's name is 'year', add a 4 char width class
-    - Otherwise, if the input's name is 'month' or 'day', add a 2 char width class
-    - Otherwise, do nothing.
-
-    @todo Remove this behaviour in the next breaking release:
-    https://github.com/alphagov/govuk-frontend/issues/905 #}
-    {% set inputWidthClass = '' %}
-    {% if not item.classes or not 'govuk-input--width-' in item.classes %}
-      {% if item.name == 'year' %}
-        {% set inputWidthClass = 'govuk-input--width-4 ' %}
-      {% elseif item.name == 'month' or item.name == 'day' %}
-        {% set inputWidthClass = 'govuk-input--width-2 ' %}
-      {% endif %}
-    {% endif %}
-
     <div class="govuk-date-input__item">
       {{ govukInput({
         label: {
@@ -80,8 +60,8 @@
           classes: "govuk-date-input__label"
         },
         id: item.id if item.id else (params.id + "-" + item.name),
-        classes: "govuk-date-input__input " + inputWidthClass + (item.classes if item.classes),
-        name: (params.name + "-" + item.name) if params.name else item.name,
+        classes: "govuk-date-input__input " + (item.classes if item.classes),
+        name: (params.namePrefix + "-" + item.name) if params.namePrefix else item.name,
         value: item.value,
         type: "number",
         attributes: {
