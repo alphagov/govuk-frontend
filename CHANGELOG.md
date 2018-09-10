@@ -14,6 +14,14 @@
 
 🆕 New features:
 
+- Allow additional 'meta' content in the footer
+
+  You can now pass additional 'meta' content (as `meta.html` or `meta.text`)
+  which will appear below any meta links, above the OGL license. This is ideal
+  for, for example, the 'Built by Department Name' colophon.
+
+  ([PR #990](https://github.com/alphagov/govuk-frontend/pull/990))
+
 - Pull Request Title goes here
 
   Description goes here (optional)
