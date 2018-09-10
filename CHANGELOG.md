@@ -30,6 +30,19 @@
 
 🔧 Fixes:
 
+- Fix mobile menu button submitting parent forms
+
+  The menu `<button>` didn’t have an explicit `type` set, which meant that it
+  defaulted to `type=“submit”`.
+
+  This meant that if the header was inside a form (as it is in the Design System
+  examples, but we can imagine other scenarios where this would be the case)
+  clicking the menu button would submit the form.
+
+  In most cases this would also cause the page to reload, which closes the menu.
+
+  ([PR #994](https://github.com/alphagov/govuk-frontend/pull/994))
+
 - Pull Request Title goes here
 
   Description goes here (optional)
