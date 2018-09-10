@@ -27,6 +27,7 @@
   Description goes here (optional)
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+
 ## 2.0.0 (Breaking change)
 
 💥 Breaking changes:
@@ -65,6 +66,8 @@
   We are now removing this behaviour. Instead, users need pass explicit classes
   for each field in the `items` object for the desired width of the input field.
 
+  If you are not passing items at all, you will get the default items which include these classes.
+
   If you are using the Nunjucks macro, you need to provide a width class for
   each item, for example:
 
@@ -94,7 +97,7 @@
   }) }}
   ```
 
-  If you are using plain HTML, you need to manualy add a width-based class, such
+  If you are using plain HTML, you need to manually add a width-based class, such
   as  `govuk-input--width-2` or `govuk-input--width-4` to the input fields.
 
   ([PR #969](https://github.com/alphagov/govuk-frontend/pull/969))
@@ -153,6 +156,12 @@
   The `<select>` component’s width will now be defined by it’s content. This addresses some accessibility issues with the select being 100% wide by default. If you want to style your select to be 100% wide we have added a new override class `.govuk-!-width-full` to allow this.
 
   ([PR #960](https://github.com/alphagov/govuk-frontend/pull/960))
+
+- Use text colour on focus for better contrast
+  
+  Updates the focus styles of links in GOV.UK Frontend so they pass WCAG contrast requirements.
+  
+  ([PR #982](https://github.com/alphagov/govuk-frontend/pull/982))
 
 🆕 New features:
 
