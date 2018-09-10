@@ -128,6 +128,51 @@
   }
 }
 
+
+/// No visited state link mixin
+///
+/// Used in cases where it is not helpful to distinguish between visited and
+/// non-visited links.
+///
+/// For example, navigation links to pages with dynamic content like admin
+/// dashboards. The content on the page is changing all the time, so the fact
+/// that you’ve visited it before is not important.
+///
+/// If you use this mixin in a component you must also include the
+/// govuk-link-common mixin in order to get the focus state.
+///
+/// @example scss
+///   .govuk-component__link {
+///     @include govuk-link-common;
+///     @include govuk-link-style-no-visited-state;
+///   }
+///
+/// @access public
+
+@mixin govuk-link-style-no-visited-state {
+  &:link {
+    color: $govuk-link-colour;
+  }
+
+  &:visited {
+    color: $govuk-link-colour;
+  }
+
+  &:hover {
+    color: $govuk-link-hover-colour;
+  }
+
+  &:active {
+    color: $govuk-link-active-colour;
+  }
+
+  // When focussed, the text colour needs to be darker to ensure that colour
+  // contrast is still acceptable
+  &:focus {
+    color: $govuk-focus-text-colour;
+  }
+}
+
 /// Print friendly link mixin
 ///
 /// When printing, append the the destination URL to the link text, as long
