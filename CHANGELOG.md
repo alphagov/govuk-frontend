@@ -4,6 +4,33 @@
 
 💥 Breaking changes:
 
+- Pull Request Title goes here
+
+  Description goes here (optional)
+
+  To migrate you need to change: X
+
+  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+
+🆕 New features:
+
+- Pull Request Title goes here
+
+  Description goes here (optional)
+
+  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+
+🔧 Fixes:
+
+- Pull Request Title goes here
+
+  Description goes here (optional)
+
+  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+## 2.0.0 (Breaking change)
+
+💥 Breaking changes:
+
 - Set panel component's title heading level to 1 as default
 
   We think the panel title should be the h1 in the majority of cases, so we made
@@ -125,13 +152,7 @@
 
   The `<select>` component’s width will now be defined by it’s content. This addresses some accessibility issues with the select being 100% wide by default. If you want to style your select to be 100% wide we have added a new override class `.govuk-!-width-full` to allow this.
 
-  ([PR #960](https://github.com/alphagov/govuk-frontend/pull/960))  
-
-- Pull Request Title goes here
-
-  Description goes here (optional)
-
-  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+  ([PR #960](https://github.com/alphagov/govuk-frontend/pull/960))
 
 🆕 New features:
 
@@ -158,12 +179,6 @@
 
 - Defend tables against GOV.UK Elements code
   ([PR #983](https://github.com/alphagov/govuk-frontend/pull/983))
-
-- Pull Request Title goes here
-
-  Description goes here (optional)
-
-  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
 ## 1.3.0 (feature release)
 
