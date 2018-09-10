@@ -22,6 +22,12 @@
 
   ([PR #990](https://github.com/alphagov/govuk-frontend/pull/990))
 
+- Allow attributes to be added to some child items in header, footer, breadcrumbs, tabs and error-summary components
+
+  You can now pass additional attributes to links in header, footer, breadcrumbs, tabs and error-summary components
+
+  ([PR #993](https://github.com/alphagov/govuk-frontend/pull/993))
+
 - Pull Request Title goes here
 
   Description goes here (optional)
