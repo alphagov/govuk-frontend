@@ -123,6 +123,10 @@
     padding: 0;
   }
 
+  .govuk-footer__meta-custom {
+    margin-bottom: govuk-spacing(4);
+  }
+
   .govuk-footer__inline-list-item {
     display: inline-block;
     margin-right: govuk-spacing(3);

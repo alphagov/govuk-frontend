@@ -81,6 +81,30 @@ describe('footer', () => {
       expect($firstItem.attr('href')).toEqual('#1')
       expect($firstItem.text()).toContain('Item 1')
     })
+
+    it('renders custom meta text', () => {
+      const $ = render('footer', {
+        meta: {
+          text: 'GOV.UK Prototype Kit <strong>v7.0.1</strong>'
+        }
+      })
+
+      const $component = $('.govuk-footer')
+      const $custom = $component.find('.govuk-footer__meta-custom')
+      expect($custom.text()).toContain('GOV.UK Prototype Kit <strong>v7.0.1</strong>')
+    })
+
+    it('renders custom meta html', () => {
+      const $ = render('footer', {
+        meta: {
+          html: 'GOV.UK Prototype Kit <strong>v7.0.1</strong>'
+        }
+      })
+
+      const $component = $('.govuk-footer')
+      const $custom = $component.find('.govuk-footer__meta-custom')
+      expect($custom.text()).toContain('GOV.UK Prototype Kit v7.0.1')
+    })
   })
 
   describe('navigation', () => {
