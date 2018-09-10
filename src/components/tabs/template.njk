@@ -12,7 +12,7 @@
     {% for item in params.items %}
     {% set id = item.id if item.id else idPrefix + "-" + loop.index %}
       <li class="govuk-tabs__list-item">
-        <a class="govuk-tabs__tab" href="#{{ id }}">
+        <a class="govuk-tabs__tab" href="#{{ id }}"{% for attribute, value in item.attributes %} {{attribute}}="{{value}}"{% endfor %}>
           {{ item.label }}
         </a>
       </li>
@@ -22,7 +22,7 @@
 
   {% for item in params.items %}
   {% set id = item.id if item.id else idPrefix + "-" + loop.index %}
-  <section class="govuk-tabs__panel" id="{{ id }}">
+  <section class="govuk-tabs__panel" id="{{ id }}"{% for attribute, value in item.panel.attributes %} {{attribute}}="{{value}}"{% endfor %}>
     {{ item.panel.html | safe if item.panel.html else item.panel.text }}
   </section>
   {% endfor %}
