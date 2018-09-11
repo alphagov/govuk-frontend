@@ -152,7 +152,7 @@ Find out when to use the header component in your service in the [GOV.UK Design 
 
         <div class="govuk-header__content">
 
-        <button role="button" class="govuk-header__menu-button js-header-toggle" aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu</button>
+        <button type="button" role="button" class="govuk-header__menu-button js-header-toggle" aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu</button>
         <nav>
           <ul id="navigation" class="govuk-header__navigation " aria-label="Top Level Navigation">
 
@@ -257,7 +257,7 @@ Find out when to use the header component in your service in the [GOV.UK Design 
           Service Name
         </a>
 
-        <button role="button" class="govuk-header__menu-button js-header-toggle" aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu</button>
+        <button type="button" role="button" class="govuk-header__menu-button js-header-toggle" aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu</button>
         <nav>
           <ul id="navigation" class="govuk-header__navigation " aria-label="Top Level Navigation">
 
