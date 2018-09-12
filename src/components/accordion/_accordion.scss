@@ -1,0 +1,86 @@
+@import "../../settings/all";
+@import "../../tools/all";
+@import "../../helpers/all";
+
+
+@include govuk-exports("govuk/component/accordion") {
+
+  .govuk-accordion__controls {
+    text-align: right;
+  }
+
+  // This is styled to look like a link not a button
+  .govuk-accordion__expand-all {
+    @include govuk-font($size: 16);
+    display: inline;
+    border-width: 0;
+    color: $govuk-link-colour;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  // Hide the body of collapsed sections
+  .govuk-accordion__section[aria-expanded="false"] .govuk-accordion__section-body {
+    display: none;
+  }
+
+  // Border at the bottom of the whole accordtion
+  .govuk-accordion.with-js {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: $govuk-border-colour;
+  }
+
+  // Borders between accordion sections
+  .govuk-accordion.with-js .govuk-accordion__section {
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: $govuk-border-colour;
+  }
+
+  // Section headers have a pointer cursor as an additional affordance
+  .govuk-accordion.with-js .govuk-accordion__section-header {
+    position: relative;
+    padding-top: 14px;
+    padding-bottom: 12px;
+    cursor: pointer;
+  }
+
+  // Headings in section headers have link colours as an additional affodance
+  .govuk-accordion.with-js .govuk-heading-m {
+    margin-top: 0;
+    margin-bottom: 0;
+    color: $govuk-link-colour;
+  }
+
+  // Section headers have a grey background on hover as an additional affodance
+  .govuk-accordion.with-js .govuk-accordion__section-header:hover {
+    background-color: govuk-colour("grey-4");
+  }
+
+  // Display an icon to the right of each header to indicate open/closed status,
+  // and as an additional affordance.
+  //
+  // Note: the image sprite contains both '+' and '-' characters, and uses background-position
+  // to flip between them.
+  .govuk-accordion.with-js .govuk-accordion--icon {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+
+    width: 16px;
+    height: 16px;
+    margin-top: -8px;
+
+    background-image: url("/assets/images/icon-plus-minus.svg");
+
+    background-repeat: no-repeat;
+    background-position: 0 -16px;
+  }
+
+  // Icon should switch position to reveal '-' icon when expanded.
+  .govuk-accordion.with-js .govuk-accordion__section[aria-expanded="true"] .govuk-accordion--icon {
+    background-position: 0 0;
+  }
+
+}
