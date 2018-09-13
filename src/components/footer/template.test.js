@@ -105,6 +105,27 @@ describe('footer', () => {
       const $custom = $component.find('.govuk-footer__meta-custom')
       expect($custom.text()).toContain('GOV.UK Prototype Kit v7.0.1')
     })
+
+    it('renders attributes on meta links', () => {
+      const $ = render('footer', {
+        meta: {
+          items: [
+            {
+              href: '#1',
+              text: 'meta item 1',
+              attributes: {
+                'data-attribute': 'my-attribute',
+                'data-attribute-2': 'my-attribute-2'
+              }
+            }
+          ]
+        }
+      })
+
+      const $metaLink = $('.govuk-footer__meta .govuk-footer__link')
+      expect($metaLink.attr('data-attribute')).toEqual('my-attribute')
+      expect($metaLink.attr('data-attribute-2')).toEqual('my-attribute-2')
+    })
   })
 
   describe('navigation', () => {
@@ -137,6 +158,29 @@ describe('footer', () => {
       expect($items.length).toEqual(9)
       expect($firstItem.attr('href')).toEqual('#1')
       expect($firstItem.text()).toContain('Navigation item 1')
+    })
+
+    it('renders attributes on links', () => {
+      const $ = render('footer', {
+        navigation: [
+          {
+            items: [
+              {
+                href: '#1',
+                text: 'Navigation item 1',
+                attributes: {
+                  'data-attribute': 'my-attribute',
+                  'data-attribute-2': 'my-attribute-2'
+                }
+              }
+            ]
+          }
+        ]
+      })
+
+      const $navigationLink = $('.govuk-footer__list .govuk-footer__link')
+      expect($navigationLink.attr('data-attribute')).toEqual('my-attribute')
+      expect($navigationLink.attr('data-attribute-2')).toEqual('my-attribute-2')
     })
 
     it('renders lists in columns', () => {

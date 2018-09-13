@@ -128,6 +128,25 @@ describe('Error-summary', () => {
     expect(errorItem.attr('href')).toEqual('#example-error-1')
   })
 
+  it('renders anchor tag with attributes', () => {
+    const $ = render('error-summary', {
+      errorList: [
+        {
+          'text': 'Error-1',
+          'href': '#item',
+          'attributes': {
+            'data-attribute': 'my-attribute',
+            'data-attribute-2': 'my-attribute-2'
+          }
+        }
+      ]
+    })
+
+    const $component = $('.govuk-error-summary__list a')
+    expect($component.attr('data-attribute')).toEqual('my-attribute')
+    expect($component.attr('data-attribute-2')).toEqual('my-attribute-2')
+  })
+
   it('renders error item text', () => {
     const $ = render('error-summary', examples.default)
     const errorItemText = $('.govuk-error-summary .govuk-error-summary__list li:first-child').text().trim()
