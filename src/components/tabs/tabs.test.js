@@ -42,6 +42,9 @@ describe('/components/tabs', () => {
 
         const firstTabAriaSelected = await page.evaluate(() => document.body.querySelector('.govuk-tabs__list-item:first-child .govuk-tabs__tab').getAttribute('aria-selected'))
         expect(firstTabAriaSelected).toEqual('true')
+
+        const firstTabClasses = await page.evaluate(() => document.body.querySelector('.govuk-tabs__list-item:first-child .govuk-tabs__tab').className)
+        expect(firstTabClasses).toContain('govuk-tabs__tab--selected')
       })
 
       it('should display the first tab panel', async () => {
@@ -68,6 +71,9 @@ describe('/components/tabs', () => {
 
         const secondTabAriaSelected = await page.evaluate(() => document.body.querySelector('.govuk-tabs__list-item:nth-child(2) .govuk-tabs__tab').getAttribute('aria-selected'))
         expect(secondTabAriaSelected).toEqual('true')
+
+        const secondTabClasses = await page.evaluate(() => document.body.querySelector('.govuk-tabs__list-item:nth-child(2) .govuk-tabs__tab').className)
+        expect(secondTabClasses).toContain('govuk-tabs__tab--selected')
       })
 
       it('should display the tab panel associated with the selected tab', async () => {
@@ -94,6 +100,9 @@ describe('/components/tabs', () => {
 
         const secondTabAriaSelected = await page.evaluate(() => document.body.querySelector('.govuk-tabs__list-item:nth-child(2) .govuk-tabs__tab').getAttribute('aria-selected'))
         expect(secondTabAriaSelected).toEqual('true')
+
+        const secondTabClasses = await page.evaluate(() => document.body.querySelector('.govuk-tabs__list-item:nth-child(2) .govuk-tabs__tab').className)
+        expect(secondTabClasses).toContain('govuk-tabs__tab--selected')
       })
 
       it('should display the tab panel associated with the selected tab', async () => {
@@ -117,6 +126,9 @@ describe('/components/tabs', () => {
 
         const currentTabAriaSelected = await page.evaluate(() => document.body.querySelector('.govuk-tabs__tab[href="#past-week"]').getAttribute('aria-selected'))
         expect(currentTabAriaSelected).toEqual('true')
+
+        const currentTabClasses = await page.evaluate(() => document.body.querySelector('.govuk-tabs__tab[href="#past-week"]').className)
+        expect(currentTabClasses).toContain('govuk-tabs__tab--selected')
 
         const currentTabPanelIsHidden = await page.evaluate(() => document.getElementById('past-week').classList.contains('govuk-tabs__panel--hidden'))
         expect(currentTabPanelIsHidden).toBeFalsy()
