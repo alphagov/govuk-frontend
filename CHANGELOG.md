@@ -49,6 +49,10 @@
 
   ([PR #994](https://github.com/alphagov/govuk-frontend/pull/994))
 
+- Fix flash of unstyled content in tabs component
+
+  ([PR #1000](https://github.com/alphagov/govuk-frontend/pull/1000))
+
 - Pull Request Title goes here
 
   Description goes here (optional)
