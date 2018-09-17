@@ -207,5 +207,39 @@ describe('Tabs', () => {
         expect($tabPanelItems.attr('data-attribute-2')).toEqual('my-attribute-2')
       })
     })
+
+    it('renders the first tab selected', () => {
+      const $ = render('tabs', {
+        items: [
+          {
+            id: 'tab-1',
+            label: 'Tab 1',
+            panel: {
+              text: 'Panel text'
+            }
+          },
+          {
+            id: 'tab-2',
+            label: 'Tab 2',
+            panel: {
+              text: 'Panel text 2'
+            }
+          },
+          {
+            id: 'tab-3',
+            label: 'Tab 3',
+            panel: {
+              text: 'Panel text 3'
+            }
+          }
+        ]
+      })
+
+      const $tabs = $('.govuk-tabs')
+      const $selectedTabs = $tabs.find('.govuk-tabs__tab--selected')
+      const $hiddenTabPanels = $tabs.find('.govuk-tabs__panel--hidden')
+      expect($hiddenTabPanels.length).toBe(2)
+      expect($selectedTabs.length).toBe(1)
+    })
   })
 })
