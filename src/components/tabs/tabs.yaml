@@ -1,5 +1,43 @@
-examples:
+params:
+- name: id
+  type: string
+  required: false
+  description: This is used for the main component and to compose id attribute for each item.
+- name: idPrefix
+  type: string
+  required: false
+  description: String to prefix id for each tab item if no id is specified on each item
+- name: items
+  type: array
+  required: true
+  description: Array of tab items.
+  params:
+  - name: id
+    type: string
+    required: true
+    description: Specific id attribute for the tab item. If omitted, then `idPrefix` string will be applied.
+  - name: label
+    type: string
+    required: true
+    description: The text label of a tab item.
+  - name: panel.text
+    type: string
+    required: true
+    description: If `html` is set, this is not required. Text to use within each tab panel. If `html` is provided, the `text` argument will be ignored.
+  - name: panel.html
+    type: string
+    required: true
+    description: If `text` is set, this is not required. HTML to use within the each tab panel. If `html` is provided, the `text` argument will be ignored.
+- name: classes
+  type: string
+  required: false
+  description: Classes to add to the tabs component.
+- name: attributes
+  type: object
+  required: false
+  description: HTML attributes (for example data attributes) to add to the tabs component.
 
+examples:
 - name: default
   data:
     items:

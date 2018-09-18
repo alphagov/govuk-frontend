@@ -1,3 +1,48 @@
+params:
+- name: id
+  type: string
+  required: true
+  description: The id of the textarea.
+- name: describedBy
+  type: string
+  required: false
+  description: Text or element id to add to the `aria-describedby` attribute to provide description for screenreader users.
+- name: name
+  type: string
+  required: true
+  description: The name of the textarea, which is submitted with the form data.
+- name: rows
+  type: string
+  required: false
+  description: Optional number of textarea rows (default is 5 rows).
+- name: value
+  type: string
+  required: false
+  description: Optional initial value of the textarea.
+- name: label
+  type: object
+  required: true
+  description: Options for the label component.
+  isComponent: true
+- name: hint
+  type: object
+  required: false
+  description: Options for the hint component.
+  isComponent: true
+- name: errorMessage
+  type: object
+  required: false
+  description: Options for the errorMessage component (e.g. text).
+  isComponent: true
+- name: classes
+  type: string
+  required: false
+  description: Classes to add to the textarea.
+- name: attributes
+  type: object
+  required: false
+  description: HTML attributes (for example data attributes) to add to the textarea.
+
 examples:
   - name: default
     data:
