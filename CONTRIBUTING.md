@@ -17,8 +17,9 @@
 - [Updating Changelog](#updating-changelog)
 
 ### For maintainers
-- [Application tasks](#running-application-tasks)
+- [Application tasks](#application-tasks)
 - [Deploying](#deploying)
+- [Updating the changelog](#updating-changelog)
 - [Versioning](#versioning)
 - [Releasing a new version](#releasing-a-new-version)
 
@@ -85,6 +86,14 @@ See the [`CHANGELOG_TEMPLATE.md`](/docs/contributing/CHANGELOG_TEMPLATE.md) for 
 
 Include the modified `CHANGELOG` in the PR.
 
+## Versioning
+
+See [versioning](/docs/contributing/versioning.md).
+
+## Releasing a new version
+
+See [publishing](/docs/contributing/publishing.md).
+
 ## Application tasks
 
 See [tasks](/docs/contributing/tasks.md).
@@ -92,7 +101,3 @@ See [tasks](/docs/contributing/tasks.md).
 ## Deploying
 
 See [deploying](/docs/contributing/deploying.md).
-
-## Releasing a new version
-
-See [publishing](/docs/contributing/publishing.md).

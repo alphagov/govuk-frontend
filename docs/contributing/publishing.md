@@ -26,7 +26,7 @@ This will:
   - build "govuk-frontend" Sass and JavaScript files into `dist/`
   - commit all changes and push the branch to remote
 
-9. (Optional) Test in [GOV.UK Design System](git@github.com:alphagov/govuk-design-system.git)
+9. (Optional) Test in [GOV.UK Design System](https://github.com/alphagov/govuk-design-system)
 
   If you want to test your changes work correctly when used in the GOV.UK Design System you can use [npm link](https://docs.npmjs.com/cli/link) to test before publishing.
 
