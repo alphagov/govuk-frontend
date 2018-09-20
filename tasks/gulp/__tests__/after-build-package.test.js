@@ -6,8 +6,10 @@ const util = require('util')
 
 const sass = require('node-sass')
 const recursive = require('recursive-readdir')
+var glob = require('glob')
 
 const configPaths = require('../../../config/paths.json')
+const lib = require('../../../lib/file-helper')
 
 const sassRender = util.promisify(sass.render)
 const readFile = util.promisify(fs.readFile)
@@ -42,16 +44,23 @@ describe('package/', () => {
       ]
 
       const additionalFilesNotInSrc = [
-        'package.json'
+        'package.json',
+        '**/macro-options.json'
       ]
 
       return recursive(configPaths.src, filesToIgnore).then(
         files => {
+          let filesNotInSrc = files
+          // Use glob to generate an array of files that accounts for wildcards in filenames
+          filesNotInSrc = glob.sync('{' + additionalFilesNotInSrc.join(',') + '}')
+            // Remove /package prefix from filenames
+            .map(file => file.replace(/^package\//, ''))
+
           return files
             // Remove /src prefix from filenames
             .map(file => file.replace(/^src\//, ''))
             // Allow for additional files that are not in src
-            .concat(additionalFilesNotInSrc)
+            .concat(filesNotInSrc)
             // Sort to make comparison easier
             .sort()
         },
@@ -87,6 +96,32 @@ describe('package/', () => {
     it('should compile without throwing an exeption', async () => {
       const allScssFile = path.join(configPaths.package, 'all.scss')
       await sassRender({ file: allScssFile })
+    })
+  })
+
+  describe('component', () => {
+    const componentNames = lib.allComponents.slice()
+
+    it.each(componentNames)(`'%s' should have macro-options.json that contains JSON`, (name) => {
+      const filePath = path.join(configPaths.package, 'components', name, 'macro-options.json')
+      return readFile(filePath, 'utf8')
+        .then((data) => {
+          var parsedData = JSON.parse(data)
+          // We expect the component JSON to contain "name", "type", "required", "description"
+          expect(parsedData).toEqual(
+            expect.arrayContaining([
+              expect.objectContaining({
+                name: expect.any(String),
+                type: expect.any(String),
+                required: expect.any(Boolean),
+                description: expect.any(String)
+              })
+            ])
+          )
+        })
+        .catch(error => {
+          throw error
+        })
     })
   })
 })

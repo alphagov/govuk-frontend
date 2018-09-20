@@ -22,6 +22,7 @@
     "cheerio": "^1.0.0-rc.2",
     "cssnano": "^3.10.0",
     "express": "^4.16.3",
+    "glob": "^4.5.3",
     "gulp": "^3.9.1",
     "gulp-better-rollup": "3.1.0",
     "gulp-changed": "^3.2.0",
