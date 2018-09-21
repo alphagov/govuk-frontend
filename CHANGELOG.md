@@ -59,6 +59,14 @@
 
   ([PR #986](https://github.com/alphagov/govuk-frontend/pull/986))
 
+- Update `browsersList` in `package.json` to reflect our supported browsers
+
+  `browsersList` is used by PostCSS in our current build to determine which browser prefixes or rules to generate for the built CSS files. This PR adds rules to specify that the browsers in our [browser matrix](https://github.com/alphagov/govuk-frontend#browser-support) should always be prefixed for. Additionally, any browser with more than 0.1% of the global market share is prefixed for.
+
+  In terms of changes to our built CSS, this means that `-webkit-box-sizing` and `-webkit-box-shadow` prefixes will be removed - neither of these prefixes are required by desktop Safari 5.1 or later so this seems a fairly safe change to make.
+
+  ([PR #1002](https://github.com/alphagov/govuk-frontend/pull/1002))
+
 - Pull Request Title goes here
 
   Description goes here (optional)
