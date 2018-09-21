@@ -1,3 +1,39 @@
+params:
+- name: id
+  type: string
+  required: true
+  description: The id of the input.
+- name: name
+  type: string
+  required: true
+  description: The name of the input, which is submitted with the form data.
+- name: type
+  type: string
+  required: false
+  description: Type of input control to render. Defaults to "text".
+- name: value
+  type: string
+  required: false
+  description: Optional initial value of the input.
+- name: hint
+  type: object
+  required: false
+  description: Options for the hint component.
+  isComponent: true
+- name: errorMessage
+  type: object
+  required: false
+  description: Options for the errorMessage component.
+  isComponent: true
+- name: classes
+  type: string
+  required: false
+  description: Classes to add to the anchor tag.
+- name: attributes
+  type: object
+  required: false
+  description: HTML attributes (for example data attributes) to add to the anchor tag.
+
 examples:
   - name: default
     data:

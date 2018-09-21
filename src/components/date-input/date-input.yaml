@@ -1,3 +1,61 @@
+params:
+- name: id
+  type: string
+  required: false
+  description: This is used for the main component and to compose id attribute for each item.
+- name: namePrefix
+  type: string
+  required: false
+  description: Optional prefix. This is used to prefix each `item.name` using `-`.
+- name: items
+  type: array
+  required: true
+  description: An array of input objects with name, value and classes.
+  params:
+  - name: id
+    type: string
+    required: false
+    description: Item-specific id. If provided, it will be used instead of the generated id.
+  - name: name
+    type: string
+    required: true
+    description: Item-specific name attribute.
+  - name: label
+    type: string
+    required: true
+    description: Item-specific label text. If provided, this will be used instead of `name` for item label text.
+  - name: value
+    type: string
+    required: false
+    description: If provided, it will be used as the initial value of the input.
+  - name: classes
+    type: string
+    required: false
+    description: Classes to add to date input item.
+- name: hint
+  type: object
+  required: false
+  description: Options for the hint component.
+  isComponent: true
+- name: errorMessage
+  type: object
+  required: false
+  description: Options for the error message.
+  isComponent: true
+- name: fieldset
+  type: object
+  required: false
+  description: Options for the fieldset component (e.g. legend).
+  isComponent: true
+- name: classes
+  type: string
+  required: false
+  description: Classes to add to the date-input container.
+- name: attributes
+  type: object
+  required: false
+  description: HTML attributes (for example data attributes) to add to the date-input container.
+
 examples:
 - name: default
   data:
