@@ -1,0 +1,305 @@
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "button/macro.njk" import govukButton %}
+{% from "date-input/macro.njk" import govukDateInput %}
+{% from "error-summary/macro.njk" import govukErrorSummary %}
+{% from "file-upload/macro.njk" import govukFileUpload %}
+{% from "input/macro.njk" import govukInput %}
+{% from "select/macro.njk" import govukSelect %}
+{% from "radios/macro.njk" import govukRadios %}
+{% from "checkboxes/macro.njk" import govukCheckboxes %}
+{% from "textarea/macro.njk" import govukTextarea %}
+
+{% extends "layout.njk" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    "href": "/"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<form action="/" method="post">
+
+  {{ govukErrorSummary({
+    "titleText": "There is a problem",
+    "classes": "optional-extra-class",
+    "errorList": [
+      {
+        "text": "Problem with input",
+        "href": "#input"
+      },
+      {
+        "text": "Problem with textarea",
+        "href": "#textarea"
+      },
+      {
+        "text": "Problem with select",
+        "href": "#select"
+      },
+      {
+        "text": "Problem with date input",
+        "href": "#dateinput-day"
+      },
+      {
+        "text": "Problem with date input year",
+        "href": "#dateinput2-year"
+      },
+      {
+        "text": "Problem with file",
+        "href": "#file"
+      },
+      {
+        "text": "Problem with radios",
+        "href": "#radios"
+      },
+      {
+        "text": "Problem with checkboxes",
+        "href": "#checkboxes"
+      },
+      {
+        "text": "Problem with single checkbox",
+        "href": "#single-checkbox"
+      },
+      {
+        "text": "Problem with conditionally-revealed input",
+        "href": "#yes-input"
+      }
+    ]
+  }) }}
+
+  <h1 class="govuk-heading-xl">Your details</h1>
+
+  {{ govukInput({
+    label: {
+      "text": 'Input'
+    },
+    id: "input",
+    name: "input",
+    errorMessage: {
+      "text": "Problem with input"
+    }
+  }) }}
+
+  {{ govukTextarea({
+    label: {
+      "text": 'Textarea'
+    },
+    id: "textarea",
+    name: "textarea",
+    errorMessage: {
+      "text": "Problem with textarea"
+    }
+  }) }}
+
+  {{ govukSelect({
+    label: {
+      "text": 'Select'
+    },
+    id: "select",
+    name: "select",
+    errorMessage: {
+      "text": "Problem with select"
+    },
+    items:[
+      {
+        text: 'Option one',
+        value: 'one'
+      },
+      {
+        text: 'Option two',
+        value: 'two'
+      }
+    ]
+  }) }}
+
+  {{ govukDateInput({
+    fieldset: {
+      legend: {
+        text: 'Date Input'
+      }
+    },
+    id: 'dateinput',
+    name: 'dateinput',
+    errorMessage: {
+      "text": "Problem with date input"
+    },
+    "items": [
+      {
+        "name": "day",
+        "classes": "govuk-input--width-2 govuk-input--error"
+      },
+      {
+        "name": "month",
+        "classes": "govuk-input--width-2 govuk-input--error"
+      },
+      {
+        "name": "year",
+        "classes": "govuk-input--width-4 govuk-input--error"
+      }
+    ]
+    })
+  }}
+
+  {{ govukDateInput({
+    fieldset: {
+      legend: {
+        text: 'Date Input'
+      }
+    },
+    id: 'dateinput2',
+    name: 'dateinput2',
+    errorMessage: {
+      "text": "Problem with date input year!"
+    },
+    "items": [
+      {
+        "name": "day",
+        "classes": "govuk-input--width-2",
+        "value": 5
+      },
+      {
+        "name": "month",
+        "classes": "govuk-input--width-2",
+        "value": 12
+      },
+      {
+        "name": "year",
+        "classes": "govuk-input--width-4 govuk-input--error"
+      }
+    ]
+    })
+  }}
+
+  {{ govukFileUpload({
+    label: {
+      "text": 'File'
+    },
+    id: "file",
+    name: "file",
+    errorMessage: {
+      "text": "Problem with file"
+    }
+  }) }}
+
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: 'Radios'
+      }
+    },
+    name: "radios",
+    errorMessage: {
+      "text": "Problem with radios"
+    },
+    items:[
+      {
+        text: 'One',
+        value: 'one',
+        id: 'radios'
+      },
+      {
+        text: 'Two',
+        value: 'two'
+      }
+    ]
+  }) }}
+
+  {{ govukCheckboxes({
+    fieldset: {
+      legend: {
+        text: 'Checkboxes'
+      }
+    },
+    name: "checkboxes",
+    errorMessage: {
+      "text": "Problem with checkboxes"
+    },
+    items:[
+      {
+        text: 'One',
+        value: 'one',
+        id: "checkboxes"
+      },
+      {
+        text: 'Two',
+        value: 'two'
+      }
+    ]
+  }) }}
+
+  {{ govukCheckboxes({
+    fieldset: false,
+    name: "single-checkbox",
+    errorMessage: {
+      "text": "Problem with single checkbox"
+    },
+    items:[
+      {
+        text: 'I agree to send delicious doughnuts to the Design System team at GDS',
+        value: 'agree',
+        id: 'single-checkbox'
+      }
+    ]
+  }) }}
+
+  {% set yesField %}
+  {{ govukInput({
+    label: {
+      "text": 'Text input'
+    },
+    id: "yes-input",
+    name: "yes-input",
+    errorMessage: {
+      "text": "Problem with input"
+    }
+  }) }}
+  {% endset %}
+
+  {% set noField %}
+  {{ govukInput({
+    label: {
+      "text": 'Text input'
+    },
+    id: "no-input",
+    name: "no-input",
+    errorMessage: {
+      "text": "Problem with input"
+    }
+  }) }}
+  {% endset %}
+
+  {{ govukRadios({
+    "idPrefix": "conditional",
+    "name": "conditional",
+    "fieldset": {
+      "legend": {
+        "text": "Conditional?"
+      },
+      "classes": "govuk-radios--error"
+    },
+    "error": true,
+    "items": [
+      {
+        "value": "yes",
+        "text": "Yes",
+        "checked": true,
+        "conditional": {
+          "html": yesField
+        }
+      },
+      {
+        "value": "no",
+        "text": "No",
+        "conditional": {
+          "html": noField
+        }
+      }
+    ]
+  }) }}
+
+  {{ govukButton({
+    "text": "Continue"
+  }) }}
+
+</form>
+{% endblock %}
