@@ -53,6 +53,12 @@
 
   ([PR #1000](https://github.com/alphagov/govuk-frontend/pull/1000))
 
+- Add 48px favicon
+
+  Microsoft recommends including at least a 48x48px favicon.
+
+  ([PR #986](https://github.com/alphagov/govuk-frontend/pull/986))
+
 - Pull Request Title goes here
 
   Description goes here (optional)
