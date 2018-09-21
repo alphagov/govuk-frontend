@@ -60,6 +60,7 @@
 
   .govuk-header__product-name {
     @include govuk-font($size: 24);
+    display: inline-table;
   }
 
   .govuk-header__link {
