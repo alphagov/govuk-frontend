@@ -28,6 +28,12 @@
 
   ([PR #993](https://github.com/alphagov/govuk-frontend/pull/993))
 
+- Add component options (arguments) as `macro-options.json` to `package`
+
+  We want to be able to expose these options to GOV.UK Design System. This change includes them as `yaml` in `src/components` and adds a build step to transform them to `JSON` and copy them to `package/components`. It also adds a test to check if the copied files are valid JSON and contain expected attributes.
+
+  ([PR #998](https://github.com/alphagov/govuk-frontend/pull/998))
+
 - Pull Request Title goes here
 
   Description goes here (optional)
