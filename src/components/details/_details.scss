@@ -84,3 +84,9 @@
     margin-bottom: 0;
   }
 }
+
+@include govuk-media-query($media-type: print) {
+  .govuk-details__summary {
+    color: govuk-colour("black");
+  }
+}

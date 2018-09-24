@@ -38,3 +38,9 @@
     }
   }
 }
+
+@include govuk-media-query($media-type: print) {
+  .govuk-link:visited {
+    color: govuk-colour("black");
+  }
+}

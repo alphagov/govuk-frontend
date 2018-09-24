@@ -35,6 +35,24 @@
     }
   }
 
+  @include govuk-media-query($media-type: print) {
+    .govuk-error-summary {
+      border-color: govuk-colour("black");
+    }
+
+    .govuk-form-group--error {
+      border-color: govuk-colour("black");
+    }
+
+    .govuk-input--error {
+      border-color: govuk-colour("black");
+    }
+
+    .govuk-error-summary:focus {
+      outline-color: govuk-colour("white");
+    }
+  }
+
   // Cross-component class - adjusts styling of list component
   .govuk-error-summary__list {
     margin-top: 0;
@@ -61,6 +79,18 @@
     @include govuk-compatibility(govuk_template) {
       &:link:focus {
         color: $govuk-error-colour;
+      }
+    }
+  }
+
+  @include govuk-media-query($media-type: print) {
+    .govuk-error-summary__list a {
+      &:link,
+      &:visited,
+      &:hover,
+      &:active,
+      &:focus {
+        color: govuk-colour("black");
       }
     }
   }

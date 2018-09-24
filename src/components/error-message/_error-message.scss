@@ -12,4 +12,17 @@
 
     color: $govuk-error-colour;
   }
+
+  @include govuk-media-query($media-type: print) {
+    .govuk-error-message {
+      @include govuk-font($size: 19, $weight: bold);
+
+      color: govuk-colour("black");
+    }
+
+    .govuk-textarea--error {
+      border: 4px solid govuk-colour("black") !important;
+    }
+  }
+
 }

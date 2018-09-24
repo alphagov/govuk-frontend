@@ -52,3 +52,18 @@
     bottom: $offset;
   }
 }
+
+@include govuk-media-query($media-type: print) {
+
+  .govuk-link:link {
+    color: govuk-colour("black");
+  }
+
+  .govuk-list a:link {
+    color: govuk-colour("black");
+  }
+
+  .govuk-list a:visited {
+    color: govuk-colour("black");
+  }
+}

@@ -17,3 +17,9 @@
     border: $govuk-border-width-form-element-error solid $govuk-error-colour;
   }
 }
+
+@include govuk-media-query($media-type: print) {
+  .govuk-file-upload--error {
+    border: 4px solid govuk-colour("black");
+  }
+}

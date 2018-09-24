@@ -48,3 +48,9 @@
     margin-top: -(govuk-spacing(1));
   }
 }
+
+// @include govuk-media-query($media-type: print) {
+//   .govuk-hint {
+//     color: govuk-colour("black");
+//   }
+// }

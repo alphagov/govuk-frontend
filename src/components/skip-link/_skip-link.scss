@@ -13,3 +13,11 @@
     padding: govuk-spacing(2) govuk-spacing(3);
   }
 }
+
+@include govuk-media-query($media-type: print) {
+  .govuk-skip-link:focus {
+    border: 3px solid govuk-colour("black");
+    outline: none;
+    background-color: govuk-colour("white");
+  }
+}
