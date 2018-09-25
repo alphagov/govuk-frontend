@@ -326,6 +326,36 @@ examples:
             <label class="govuk-label" for="contact-text-message">Mobile phone number</label>
             <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
 
+- name: inline with conditional items
+  readme: false
+  data:
+    classes: govuk-radios--inline
+    idPrefix: how-contacted
+    name: how-contacted
+    fieldset:
+      legend:
+        text: How do you want to be contacted?
+    items:
+      - value: email
+        text: Email
+        conditional:
+          html: |
+            <label class="govuk-label" for="context-email">Email address</label>
+            <input class="govuk-input govuk-!-width-one-third" name="context-email" type="text" id="context-email">
+      - value: phone
+        text: Phone
+        conditional:
+          html: |
+            <label class="govuk-label" for="contact-phone">Phone number</label>
+            <input class="govuk-input govuk-!-width-one-third" name="contact-phone" type="text" id="contact-phone">
+      - value: text
+        text: Text message
+        conditional:
+          html: |
+            <label class="govuk-label" for="contact-text-message">Mobile phone number</label>
+            <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
+
+
 - name: with conditional item checked
   readme: false
   data:

@@ -27,6 +27,14 @@
   You can now pass additional attributes to links in header, footer, breadcrumbs, tabs and error-summary components
 
   ([PR #993](https://github.com/alphagov/govuk-frontend/pull/993))
+  
+- Fix issue with conditional form content and inline form controls
+
+  When inline variant of form controls is used with conditional content, we force
+  it to display block. This is to avoid breaking and confusing styling as it is
+  a combination we don't recommend.
+
+  ([PR #970](https://github.com/alphagov/govuk-frontend/pull/970))
 
 - Add component options (arguments) as `macro-options.json` to `package`
 

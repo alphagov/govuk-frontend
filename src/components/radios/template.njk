@@ -41,7 +41,7 @@
     text: params.errorMessage.text
   }) | indent(2) | trim }}
 {% endif %}
-  <div class="govuk-radios {%- if params.classes %} {{ params.classes }}{% endif %}"
+  <div class="govuk-radios {%- if params.classes %} {{ params.classes }}{% endif %}{%- if isConditional %} govuk-radios--conditional{% endif -%}"
     {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}
     {%- if isConditional %} data-module="radios"{% endif -%}>
     {% for item in params.items %}
