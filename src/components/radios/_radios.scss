@@ -143,6 +143,14 @@
         clear: none;
       }
     }
+
+    // Prevent inline modifier being used with conditional reveals
+    &.govuk-radios--conditional {
+      .govuk-radios__item {
+        margin-right: 0;
+        float: none;
+      }
+    }
   }
 
   .govuk-radios__divider {
