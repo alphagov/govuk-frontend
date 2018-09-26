@@ -1,0 +1,44 @@
+[
+    {
+        "name": "titleText",
+        "type": "string",
+        "required": true,
+        "description": "If `titleHtml` is set, this is not required. Text to use within the panel. If `titleHtml` is provided, the `titleText` argument will be ignored."
+    },
+    {
+        "name": "titleHtml",
+        "type": "string",
+        "required": true,
+        "description": "If `titleText` is set, this is not required. HTML to use within the panel. If `titleHtml` is provided, the `titleText` argument will be ignored."
+    },
+    {
+        "name": "headingLevel",
+        "type": "integer",
+        "required": false,
+        "description": "Heading level, from 1 to 6. Default is 1."
+    },
+    {
+        "name": "text",
+        "type": "string",
+        "required": true,
+        "description": "If `html` is set, this is not required. Text to use within the panel content. If `html` is provided, the `text` argument will be ignored."
+    },
+    {
+        "name": "html",
+        "type": "string",
+        "required": true,
+        "description": "If `text` is set, this is not required. HTML to use within the panel content. If `html` is provided, the `text` argument will be ignored."
+    },
+    {
+        "name": "classes",
+        "type": "string",
+        "required": false,
+        "description": "Classes to add to the panel container."
+    },
+    {
+        "name": "attributes",
+        "type": "object",
+        "required": false,
+        "description": "HTML attributes (for example data attributes) to add to the panel container."
+    }
+]

@@ -78,8 +78,7 @@
 
   .govuk-radios__input + .govuk-radios__label::before {
     content: "";
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+    box-sizing: border-box;
     position: absolute;
     top: 0;
     left: 0;
@@ -115,8 +114,7 @@
     // https://accessibility.blog.gov.uk/2017/03/27/how-users-change-colours-on-websites/
     outline: $govuk-focus-width solid transparent;
     outline-offset: $govuk-focus-width;
-    -webkit-box-shadow: 0 0 0 $govuk-radios-focus-width $govuk-focus-colour;
-            box-shadow: 0 0 0 $govuk-radios-focus-width $govuk-focus-colour;
+    box-shadow: 0 0 0 $govuk-radios-focus-width $govuk-focus-colour;
   }
 
   // Selected state
@@ -143,6 +141,14 @@
         margin-right: govuk-spacing(4);
         float: left;
         clear: none;
+      }
+    }
+
+    // Prevent inline modifier being used with conditional reveals
+    &.govuk-radios--conditional {
+      .govuk-radios__item {
+        margin-right: 0;
+        float: none;
       }
     }
   }
