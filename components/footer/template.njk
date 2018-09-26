@@ -16,7 +16,7 @@
                 {% for item in item.items %}
                   {% if item.href and item.text %}
                     <li class="govuk-footer__list-item">
-                      <a class="govuk-footer__link" href="{{ item.href }}">
+                      <a class="govuk-footer__link" href="{{ item.href }}"{% for attribute, value in item.attributes %} {{attribute}}="{{value}}"{% endfor %}>
                         {{ item.text }}
                       </a>
                     </li>
@@ -31,17 +31,24 @@
     {% endif %}
     <div class="govuk-footer__meta">
       <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
-        {% if params.meta and params.meta.items %}
-          <h2 class="govuk-visually-hidden">Support links</h2>
-          <ul class="govuk-footer__inline-list">
-            {% for item in params.meta.items %}
-              <li class="govuk-footer__inline-list-item">
-                <a class="govuk-footer__link" href="{{ item.href }}">
-                  {{ item.text }}
-                </a>
-              </li>
-            {% endfor %}
-          </ul>
+        {% if params.meta %}
+          {% if params.meta.items %}
+            <h2 class="govuk-visually-hidden">Support links</h2>
+            <ul class="govuk-footer__inline-list">
+              {% for item in params.meta.items %}
+                <li class="govuk-footer__inline-list-item">
+                  <a class="govuk-footer__link" href="{{ item.href }}"{% for attribute, value in item.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+                    {{ item.text }}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+          {% if params.meta.text or params.meta.html %}
+            <div class="govuk-footer__meta-custom">
+              {{ params.meta.html | safe if params.meta.html else params.meta.text }}
+            </div>
+          {% endif %}
         {% endif %}
         {#- The SVG needs `focusable="false"` so that Internet Explorer does not
         treat it as an interactive element - without this it will be

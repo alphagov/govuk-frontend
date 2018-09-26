@@ -152,7 +152,7 @@ Find out when to use the header component in your service in the [GOV.UK Design 
 
         <div class="govuk-header__content">
 
-        <button role="button" class="govuk-header__menu-button js-header-toggle" aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu</button>
+        <button type="button" role="button" class="govuk-header__menu-button js-header-toggle" aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu</button>
         <nav>
           <ul id="navigation" class="govuk-header__navigation " aria-label="Top Level Navigation">
 
@@ -257,7 +257,7 @@ Find out when to use the header component in your service in the [GOV.UK Design 
           Service Name
         </a>
 
-        <button role="button" class="govuk-header__menu-button js-header-toggle" aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu</button>
+        <button type="button" role="button" class="govuk-header__menu-button js-header-toggle" aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu</button>
         <nav>
           <ul id="navigation" class="govuk-header__navigation " aria-label="Top Level Navigation">
 
@@ -468,6 +468,18 @@ If you are using Nunjucks,then macros take the following arguments
 <td class="govuk-table__cell ">No</td>
 
 <td class="govuk-table__cell ">Flag to mark the navigation item as active or not.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">navigation.{}.attributes</th>
+
+<td class="govuk-table__cell ">object</td>
+
+<td class="govuk-table__cell ">No</td>
+
+<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the navigation item anchor.</td>
 
 </tr>
 

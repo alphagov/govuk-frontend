@@ -10,11 +10,12 @@
 /// If this is enabled, you should make sure that $govuk-root-font-size is set
 /// correctly for your project
 ///
+/// If any of the compatibility variables are set, then default
+/// responsive typography to off.
+///
 /// @type Boolean
 /// @access public
 
-// If any of the compatibility variables are set, then default
-// responsive typography to off.
 $govuk-typography-use-rem: if((
     $govuk-compatibility-govukfrontendtoolkit or
     $govuk-compatibility-govuktemplate or

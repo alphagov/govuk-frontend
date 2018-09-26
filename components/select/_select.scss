@@ -11,9 +11,7 @@
     @include govuk-font($size: 19, $line-height: 1.25);
     @include govuk-focusable;
 
-    -webkit-box-sizing: border-box;
-
-            box-sizing: border-box; // should this be global?
+    box-sizing: border-box; // should this be global?
     height: 40px;
 
     padding: govuk-spacing(1); // was 5px 4px 4px - size of it should be adjusted to match other form elements

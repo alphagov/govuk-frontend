@@ -86,7 +86,7 @@
         text-align: center;
         text-decoration: none;
 
-        &[aria-selected= "true"] {
+        &--selected {
           margin-top: - govuk-spacing(1);
           margin-bottom: -1px;
 

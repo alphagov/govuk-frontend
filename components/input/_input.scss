@@ -11,9 +11,7 @@
     @include govuk-font($size: 19);
     @include govuk-focusable;
 
-    -webkit-box-sizing: border-box;
-
-            box-sizing: border-box;
+    box-sizing: border-box;
     width: 100%;
     height: 40px;
     margin-top: 0;

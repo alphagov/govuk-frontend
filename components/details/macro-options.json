@@ -1,0 +1,50 @@
+[
+    {
+        "name": "summaryText",
+        "type": "string",
+        "required": true,
+        "description": "If `summmaryHtml` is set, this is not required. Text to use within the summary element (the visible part of the details element). If `summaryHtml` is provided, the `summaryText` argument will be ignored."
+    },
+    {
+        "name": "summaryHtml",
+        "type": "string",
+        "required": true,
+        "description": "If `summmaryText` is set, this is not required. HTML to use within the summary element (the visible part of the details element). If `summaryHtml` is provided, the `summaryText` argument will be ignored."
+    },
+    {
+        "name": "text",
+        "type": "string",
+        "required": true,
+        "description": "If `html` is set, this is not required. Text to use within the disclosed part of the details element. If `html` is provided, the `text` argument will be ignored."
+    },
+    {
+        "name": "html",
+        "type": "string",
+        "required": true,
+        "description": "If `text` is set, this is not required. HTML to use within the disclosed part of the details element. If `html` is provided, the `text` argument will be ignored."
+    },
+    {
+        "name": "id",
+        "type": "string",
+        "required": false,
+        "description": "Id to add to the details element."
+    },
+    {
+        "name": "open",
+        "type": "boolean",
+        "required": false,
+        "description": "If true, details element will be expanded."
+    },
+    {
+        "name": "classes",
+        "type": "string",
+        "required": false,
+        "description": "Classes to add to the `<details>` element."
+    },
+    {
+        "name": "attributes",
+        "type": "object",
+        "required": false,
+        "description": "HTML attributes (for example data attributes) to add to the `<details>` element."
+    }
+]

@@ -17,8 +17,7 @@
     // Fix legend text wrapping in Edge and IE
     // 1. IE9-11 & Edge 12-13
     // 2. IE8-11
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box; // 1
+    box-sizing: border-box; // 1
     display: table;         // 2
     max-width: 100%;        // 1
     margin-bottom: govuk-spacing(2);
