@@ -197,3 +197,13 @@
     margin-bottom: 0;
   }
 }
+
+@include govuk-media-query($media-type: print) {
+  .govuk-footer {
+    background-color: govuk-colour("white");
+  }
+
+  // .govuk-footer__licence-description {
+  //   display: none;
+  // }
+}

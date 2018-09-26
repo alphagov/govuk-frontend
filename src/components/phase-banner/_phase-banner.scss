@@ -29,3 +29,9 @@
     vertical-align: baseline;
   }
 }
+
+@include govuk-media-query($media-type: print) {
+  .govuk-tag {
+    background-color: govuk-colour("black");
+  }
+}

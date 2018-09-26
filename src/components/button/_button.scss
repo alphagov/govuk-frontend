@@ -178,3 +178,71 @@
   }
 
 }
+
+@include govuk-media-query($media-type: print) {
+  @page {
+    size: A3;
+  }
+
+  .govuk-button {
+    margin-left: 10px;
+    border: $govuk-border-width-form-element solid govuk-colour("black");
+    color: govuk-colour("black");
+    background-color: transparent;
+
+    &:link,
+    &:visited,
+    &:active,
+    &:hover {
+      color: govuk-colour("black");
+      text-decoration: none;
+    }
+  }
+
+  .govuk-button--disabled,
+  .govuk-button[disabled="disabled"],
+  .govuk-button[disabled] {
+    opacity: (.5);
+    color: govuk-colour("black");
+    background: none;
+  }
+
+  .govuk-button:hover {
+    border: $govuk-border-width-form-element solid govuk-colour("black");
+    color: govuk-colour("black");
+    background-color: transparent;
+  }
+
+  .govuk-button:focus {
+    border: 3px solid govuk-colour("grey-2");
+    outline: none;
+    background-color: transparent;
+  }
+
+  .app-iframe-in-component-preview .app-whitespace-highlight {
+    box-shadow: none !important;
+  }
+}
+
+// @include govuk-media-query($media-type: print) {
+
+//   .govuk-button {
+//     border: $govuk-border-width-form-element transparent;
+//     color: govuk-colour("black");
+//     background-color: transparent;
+//     box-shadow: 0 2px 0 transparent;
+
+//     &:link,
+//     &:visited,
+//     &:active,
+//     &:hover {
+//       color: govuk-colour("black");
+//       text-decoration: none;
+//     }
+
+//     &::after {
+//       content: "(link)";
+//       font-size: 15px;
+//     }
+//   }
+// }
