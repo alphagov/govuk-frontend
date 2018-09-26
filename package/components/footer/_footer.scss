@@ -133,6 +133,10 @@
     padding: 0;
   }
 
+  .govuk-footer__meta-custom {
+    margin-bottom: govuk-spacing(4);
+  }
+
   .govuk-footer__inline-list-item {
     display: inline-block;
     margin-right: govuk-spacing(3);
@@ -192,17 +196,20 @@
     padding: 0;
     list-style: none;
     -webkit-column-gap: $govuk-gutter;
+       -moz-column-gap: $govuk-gutter;
             column-gap: $govuk-gutter; // Support: Columns
   }
 
   @include mq ($from: desktop) {
     .govuk-footer__list--columns-2 {
       -webkit-column-count: 2;
+         -moz-column-count: 2;
               column-count: 2; // Support: Columns
     }
 
     .govuk-footer__list--columns-3 {
       -webkit-column-count: 3;
+         -moz-column-count: 3;
               column-count: 3; // Support: Columns
     }
   }

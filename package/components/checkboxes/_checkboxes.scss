@@ -74,8 +74,7 @@
 
   .govuk-checkboxes__input + .govuk-checkboxes__label::before {
     content: "";
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+    box-sizing: border-box;
     position: absolute;
     top: 0;
     left: 0;
@@ -119,8 +118,7 @@
     // https://accessibility.blog.gov.uk/2017/03/27/how-users-change-colours-on-websites/
     outline: $govuk-focus-width solid transparent;
     outline-offset: $govuk-focus-width;
-    -webkit-box-shadow: 0 0 0 $govuk-focus-width $govuk-focus-colour;
-            box-shadow: 0 0 0 $govuk-focus-width $govuk-focus-colour;
+    box-shadow: 0 0 0 $govuk-focus-width $govuk-focus-colour;
   }
 
   // Selected state

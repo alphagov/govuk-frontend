@@ -14,7 +14,7 @@
     {% for item in params.errorList %}
       <li>
       {% if item.href %}
-        <a href="{{ item.href }}">{{ item.html | safe if item.html else item.text }}</a>
+        <a href="{{ item.href }}"{% for attribute, value in item.attributes %} {{attribute}}="{{value}}"{% endfor %}>{{ item.html | safe if item.html else item.text }}</a>
       {% else %}
         {{ item.html | safe if item.html else item.text }}
       {% endif %}
