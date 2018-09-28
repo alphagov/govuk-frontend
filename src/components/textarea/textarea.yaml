@@ -89,3 +89,27 @@ examples:
       label:
         text: Full address
         isPageHeading: true
+
+  - name: with width-10 class
+    data:
+      id: textarea-width-10
+      classes: govuk-textarea--width-10
+      name: address
+      label:
+        text: Full address
+
+  - name: with width-20 class
+    data:
+      id: textarea-width-20
+      classes: govuk-textarea--width-20
+      name: address
+      label:
+        text: Full address
+
+  - name: with width-30 class
+    data:
+      id: textarea-width-30
+      classes: govuk-textarea--width-30
+      name: address
+      label:
+        text: Full address

@@ -29,4 +29,10 @@
   .govuk-textarea--error {
     border: $govuk-border-width-form-element-error solid $govuk-error-colour;
   }
+
+  @each $width, $value in $govuk-field-widths {
+    .govuk-textarea--width-#{$width} {
+      max-width: $value;
+    }
+  }
 }
