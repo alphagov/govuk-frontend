@@ -163,6 +163,29 @@ describe('Table', () => {
     expect($tableHeadCell.eq(1).attr('class')).toMatch('govuk-table__header--numeric')
   })
 
+  it('renders optional classes for the table header cell correctly', () => {
+    const $ = render('table', {
+      'head': [
+        {
+          'text': 'Rate for bicycles',
+          'classes': 'extra-class'
+        }
+      ],
+      'rows': [
+        [
+          {
+            'text': 'January'
+          }
+        ]
+      ]
+    })
+
+    const $component = $('.govuk-table')
+    const $tableHeadCell = $component.find('.govuk-table__head .govuk-table__header:first-child')
+
+    expect($tableHeadCell.hasClass('extra-class')).toBeTruthy()
+  })
+
   describe('rows and cells', () => {
     const $ = render('table', examples.default)
     const $component = $('.govuk-table')
@@ -283,6 +306,23 @@ describe('Table', () => {
     const $tableCell = $component.find('.govuk-table__body .govuk-table__cell')
 
     expect($tableCell.eq(1).attr('class')).toMatch('govuk-table__cell--numeric')
+  })
+
+  it('renders cell‘s optional classes correctly', () => {
+    const $ = render('table', {
+      'rows': [
+        [
+          {
+            'text': '£85',
+            'classes': 'extra-cell-class'
+          }
+        ]
+      ]
+    })
+    const $component = $('.govuk-table')
+    const $tableCell = $component.find('.govuk-table__body .govuk-table__cell:first-child')
+
+    expect($tableCell.hasClass('extra-cell-class')).toBeTruthy()
   })
 
   it('renders cell `colspan` attribute correctly', () => {
