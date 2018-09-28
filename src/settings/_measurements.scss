@@ -83,3 +83,28 @@ $govuk-border-width-form-group-error: $govuk-border-width !default;
 /// @access public
 
 $govuk-focus-width: 3px !default;
+
+
+
+// =========================================================
+// Form field widths
+// =========================================================
+
+/// Form field widths
+///
+/// The ex measurements are based on the number of W's that can fit inside the input
+/// Extra space is left on the right hand side to allow for the Safari prefill icon
+/// Linear regression estimation based on visual tests: y = 1.76 + 1.81x
+///
+/// @type Map
+/// @access public
+
+$govuk-field-widths: (
+  30: 56ex + 3ex,
+  20: 38ex + 3ex,
+  10: 20ex + 3ex,
+  5: 10.8ex,
+  4: 9ex,
+  3: 7.2ex,
+  2: 5.4ex
+);
