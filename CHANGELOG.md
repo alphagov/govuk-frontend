@@ -14,11 +14,12 @@
 
 🆕 New features:
 
-- Pull Request Title goes here
+- Allow classes on table header and row cells
+  
+  Optional classes attribute can now be used on table header and row cell item
+  in the Nunjucks macro
 
-  Description goes here (optional)
-
-  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+  ([PR #1015](https://github.com/alphagov/govuk-frontend/pull/1015))
 
 🔧 Fixes:
 
