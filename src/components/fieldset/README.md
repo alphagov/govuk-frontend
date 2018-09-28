@@ -108,11 +108,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">describedBy</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Text or element id to add to the `aria-describedby` attribute to provide description of the group of fields for screenreader users.</td>
+<td class="govuk-table__cell">Text or element id to add to the `aria-describedby` attribute to provide description of the group of fields for screenreader users.</td>
 
 </tr>
 
@@ -120,11 +120,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">legend</th>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell">object</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Arguments for the legend</td>
+<td class="govuk-table__cell">Arguments for the legend</td>
 
 </tr>
 
@@ -132,11 +132,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">legend.{}.text (or) legend.{}.html</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Legend text or HTML. If `html` is provided, the `text` argument will be ignored.</td>
+<td class="govuk-table__cell">Legend text or HTML. If `html` is provided, the `text` argument will be ignored.</td>
 
 </tr>
 
@@ -144,11 +144,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">legend.{}.classes</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Optional additional classes to add to the legend container.</td>
+<td class="govuk-table__cell">Optional additional classes to add to the legend container.</td>
 
 </tr>
 
@@ -156,11 +156,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">legend.{}.isPageHeading</th>
 
-<td class="govuk-table__cell ">boolean</td>
+<td class="govuk-table__cell">boolean</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Whether the legend also acts as the heading for the page.</td>
+<td class="govuk-table__cell">Whether the legend also acts as the heading for the page.</td>
 
 </tr>
 
@@ -168,11 +168,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">classes</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Optional additional classes to add to the fieldset container.</td>
+<td class="govuk-table__cell">Optional additional classes to add to the fieldset container.</td>
 
 </tr>
 
@@ -180,11 +180,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">attributes</th>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell">object</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the fieldset container.</td>
+<td class="govuk-table__cell">Any extra HTML attributes (for example data attributes) to add to the fieldset container.</td>
 
 </tr>
 

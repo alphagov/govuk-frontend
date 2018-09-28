@@ -190,11 +190,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">element</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Whether to use an `input`, `button` or `a` element to create the button. In most cases you will not need to set this as it will be configured automatically if you use `href` or `html`.</td>
+<td class="govuk-table__cell">Whether to use an `input`, `button` or `a` element to create the button. In most cases you will not need to set this as it will be configured automatically if you use `href` or `html`.</td>
 
 </tr>
 
@@ -202,11 +202,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">text (or) html</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">Yes</td>
+<td class="govuk-table__cell">Yes</td>
 
-<td class="govuk-table__cell ">Text or HTML for the button or link. If `html` is provided, the `text` argument will be ignored and `element` will be automatically set to `button` unless `href` is also set, or it has already been defined. This argument has no effect if `element` is set to `input`.</td>
+<td class="govuk-table__cell">Text or HTML for the button or link. If `html` is provided, the `text` argument will be ignored and `element` will be automatically set to `button` unless `href` is also set, or it has already been defined. This argument has no effect if `element` is set to `input`.</td>
 
 </tr>
 
@@ -214,11 +214,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">name</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">Yes</td>
+<td class="govuk-table__cell">Yes</td>
 
-<td class="govuk-table__cell ">Name for the `input` or `button`. This has no effect on `a` elements.</td>
+<td class="govuk-table__cell">Name for the `input` or `button`. This has no effect on `a` elements.</td>
 
 </tr>
 
@@ -226,11 +226,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">type</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">Yes</td>
+<td class="govuk-table__cell">Yes</td>
 
-<td class="govuk-table__cell ">Type of `input` or `button` – `button`, `submit` or `reset`. Defaults to `submit`. This has no effect on `a` elements.</td>
+<td class="govuk-table__cell">Type of `input` or `button` – `button`, `submit` or `reset`. Defaults to `submit`. This has no effect on `a` elements.</td>
 
 </tr>
 
@@ -238,11 +238,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">value</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">Yes</td>
+<td class="govuk-table__cell">Yes</td>
 
-<td class="govuk-table__cell ">Value for the `button` tag. This has no effect on `a` or `input` elements.</td>
+<td class="govuk-table__cell">Value for the `button` tag. This has no effect on `a` or `input` elements.</td>
 
 </tr>
 
@@ -250,11 +250,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">disabled</th>
 
-<td class="govuk-table__cell ">boolean</td>
+<td class="govuk-table__cell">boolean</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Whether the button should be disabled. For button and input elements, `disabled` and `aria-disabled` attributes will be set automatically.</td>
+<td class="govuk-table__cell">Whether the button should be disabled. For button and input elements, `disabled` and `aria-disabled` attributes will be set automatically.</td>
 
 </tr>
 
@@ -262,11 +262,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">href</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">The URL that the button should link to. If this is set, `element` will be automatically set to `a` if it has not already been defined.</td>
+<td class="govuk-table__cell">The URL that the button should link to. If this is set, `element` will be automatically set to `a` if it has not already been defined.</td>
 
 </tr>
 
@@ -274,11 +274,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">classes</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Optional additional classes</td>
+<td class="govuk-table__cell">Optional additional classes</td>
 
 </tr>
 
@@ -286,11 +286,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">attributes</th>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell">object</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the button component.</td>
+<td class="govuk-table__cell">Any extra HTML attributes (for example data attributes) to add to the button component.</td>
 
 </tr>
 
