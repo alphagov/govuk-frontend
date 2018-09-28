@@ -29,4 +29,13 @@
     border: $govuk-border-width-form-element-error solid $govuk-error-colour;
   }
 
+  .govuk-select[class*="--width-"] {
+    width: 100%;
+  }
+
+  @each $width, $value in $govuk-field-widths {
+    .govuk-select--width-#{$width} {
+      max-width: $value;
+    }
+  }
 }

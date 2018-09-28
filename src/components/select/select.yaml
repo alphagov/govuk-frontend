@@ -110,10 +110,64 @@ examples:
         value: 3
         text: GOV.UK frontend option 3
         disabled: true
+- name: with width-10 class
+  data:
+    id: select-width-10
+    name: select-width-10
+    classes: govuk-select--width-10
+    label:
+      text: Label text goes here
+      isPageHeading: true
+    items:
+      -
+        value: 1
+        text: GOV.UK frontend option 1
+      -
+        value: 2
+        text: GOV.UK frontend option 2
+      -
+        value: 3
+        text: GOV.UK frontend option 3
+- name: with width-20 class
+  data:
+    id: select-width-20
+    name: select-width-20
+    classes: govuk-select--width-20
+    label:
+      text: Label text goes here
+      isPageHeading: true
+    items:
+      -
+        value: 1
+        text: GOV.UK frontend option 1
+      -
+        value: 2
+        text: GOV.UK frontend option 2
+      -
+        value: 3
+        text: GOV.UK frontend option 3
+- name: with width-30 class
+  data:
+    id: select-width-30
+    name: select-width-30
+    classes: govuk-select--width-30
+    label:
+      text: Label text goes here
+      isPageHeading: true
+    items:
+      -
+        value: 1
+        text: GOV.UK frontend option 1
+      -
+        value: 2
+        text: GOV.UK frontend option 2
+      -
+        value: 3
+        text: GOV.UK frontend option 3
 - name: with full width override
   data:
-    id: select-1
-    name: select-1
+    id: select-width-full
+    name: select-width-full
     classes: govuk-!-width-full
     label:
       text: Label text goes here
