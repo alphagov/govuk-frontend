@@ -22,6 +22,14 @@
 
 🔧 Fixes:
 
+- Apply max-width to the `<select> element
+
+  The `<select>` element's width is governed by the widths of its `<option>`'s.
+
+  When the text in the options grows large, the element can grow to > 100% of the width of its container and break the layout.
+
+  ([PR #1013](https://github.com/alphagov/govuk-frontend/pull/1013))
+
 - Pull Request Title goes here
 
   Description goes here (optional)
