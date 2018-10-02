@@ -101,7 +101,7 @@ CharacterCount.prototype.createCountMessage = function () {
 // Bind input propertychange to the elements and update based on the change
 CharacterCount.prototype.bindChangeEvents = function () {
   var $textarea = this.$textarea
-  $textarea.addEventListener('keyup', this.updateCountMessage.bind(this))
+  $textarea.addEventListener('keyup', this.checkIfValueChanged.bind(this))
 
   // Bind focus/blur events to start/stop polling
   $textarea.addEventListener('focus', this.handleFocus.bind(this))
@@ -112,9 +112,9 @@ CharacterCount.prototype.bindChangeEvents = function () {
 // fields by directly changing its `value`. These changes don't trigger events
 // in JavaScript, so we need to poll to handle when and if they occur.
 CharacterCount.prototype.checkIfValueChanged = function () {
-  if (!this.oldValue) this.oldValue = ''
-  if (this.$textarea.value !== this.oldValue) {
-    this.oldValue = this.$textarea.value
+  if (!this.$textarea.oldValue) this.$textarea.oldValue = ''
+  if (this.$textarea.value !== this.$textarea.oldValue) {
+    this.$textarea.oldValue = this.$textarea.value
     var boundUpdateCountMessage = this.updateCountMessage.bind(this)
     boundUpdateCountMessage()
   }
