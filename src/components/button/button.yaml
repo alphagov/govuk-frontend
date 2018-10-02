@@ -39,6 +39,10 @@ params:
   type: object
   required: false
   description: HTML attributes (for example data attributes) to add to the button component.
+- name: preventDoubleClick
+  type: boolean
+  required: false
+  description: Prevent accidental double clicks on submit buttons from submitting forms multiple times
 
 examples:
 - name: default
@@ -72,6 +76,10 @@ examples:
     element: input
     text: Explicit input button disabled
     disabled: true
+- name: prevent double click
+  data:
+    text: Submit
+    preventDoubleClick: true
 - name: with active state
   description: Simulate triggering the :active CSS pseudo-class, not available in the production build.
   data:
