@@ -8,6 +8,7 @@
 
 @include govuk-exports("govuk/component/character-count") {
   .govuk-character-count {
+    .govuk-form-group,
     .govuk-textarea {
       margin-bottom: govuk-spacing(1);
     }

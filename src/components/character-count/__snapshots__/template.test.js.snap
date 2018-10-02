@@ -7,6 +7,12 @@ exports[`Character count when it includes a hint renders with hint 1`] = `
 >
   It&#x2019;s on your National Insurance card, benefit letter, payslip or P60. For example, &#x2018;QQ 12 34 56 C&#x2019;.
 </span>
+<span id="character-count-with-hint-info"
+      class="govuk-hint govuk-character-count__message"
+      aria-live="polite"
+>
+  You can enter up to  characters
+</span>
 
 `;
 
