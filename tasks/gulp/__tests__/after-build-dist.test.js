@@ -11,7 +11,10 @@ describe('dist/', () => {
     it('should include the same files as in src/assets', () => {
       // Build an array of the assets that are present in the src directory.
       const expectedDistAssets = () => {
-        return recursive(path.join(configPaths.src, 'assets')).then(
+        const filesToIgnore = [
+          '.DS_Store'
+        ]
+        return recursive(path.join(configPaths.src, 'assets'), filesToIgnore).then(
           files => {
             return files
               // Remove /package prefix from filenames
