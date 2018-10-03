@@ -22,13 +22,21 @@
 
 🔧 Fixes:
 
-- Apply max-width to the `<select> element
+- Apply max-width to the `<select>` element
 
   The `<select>` element's width is governed by the widths of its `<option>`'s.
 
   When the text in the options grows large, the element can grow to > 100% of the width of its container and break the layout.
 
   ([PR #1013](https://github.com/alphagov/govuk-frontend/pull/1013))
+
+- Prevent product name in header from wrapping
+
+  Currently the product name in the header wraps when the space shrinks which doesn't look great.
+
+  Adding `display: inline-table` prevents that so that the product name as a whole drops to a new line when space is shrunk.
+
+  ([PR #1007](https://github.com/alphagov/govuk-frontend/pull/1007))
 
 - Pull Request Title goes here
 
