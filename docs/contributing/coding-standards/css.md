@@ -460,3 +460,10 @@ Good:
 ### Remove trailing whitespace
 
 More write up on [supported rules](https://github.com/sasstools/sass-lint/tree/master/docs/rules).
+
+##  SassDoC
+We document SCSS using [SassDoc](http://sassdoc.com/file-level-annotations/). This includes most of the settings, helpers and tools layers, with variables, functions and mixins being marked as private or public.
+
+The syntax is used to generate a [SassDoc application](http://govuk-frontend-review.herokuapp.com/docs/) that documents SCSS in a readable format.
+
+See [colour.scss](../../../src/helpers/_colour.scss) for an example of SassDoc syntax.
