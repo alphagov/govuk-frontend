@@ -8,9 +8,9 @@
 {% set describedBy = "" %}
 
 <div class="govuk-character-count" data-module="character-count"
-{% if params.maxlength %} data-maxlength="{{ params.maxlength }}"{% endif %}
-{% if params.threshold %} data-threshold="{{ params.threshold }}"{% endif %}
-{% if params.maxwords %} data-maxwords="{{ params.maxwords }}"{% endif %}>
+{%- if params.maxlength %} data-maxlength="{{ params.maxlength }}"{% endif %}
+{%- if params.threshold %} data-threshold="{{ params.threshold }}"{% endif %}
+{%- if params.maxwords %} data-maxwords="{{ params.maxwords }}"{% endif %}>
   {{ govukTextarea({
     id: params.id,
     name: params.name,
