@@ -26,10 +26,11 @@ CharacterCount.prototype.init = function () {
   // Determine the limit attribute (characters or words)
   var countAttribute = (this.options.maxwords) ? this.defaults.wordCountAttribute : this.defaults.characterCountAttribute
 
-  // Set the element limit
-  if ($module.getAttribute) {
-    this.maxLength = $module.getAttribute(countAttribute)
-  } else {
+  // Save the element limit
+  this.maxLength = $module.getAttribute(countAttribute)
+
+  // Check for limit
+  if (!this.maxLength) {
     return
   }
 
@@ -37,11 +38,10 @@ CharacterCount.prototype.init = function () {
   var boundCreateCountMessage = this.createCountMessage.bind(this)
   this.countMessage = boundCreateCountMessage()
 
-  // If there's a maximum length defined and the count message was successfully applied
+  // If there's a maximum length defined and the count message exists
   if (this.maxLength && this.countMessage) {
-    // Replace maxlength attribute with data-maxlength to avoid hard limit
-    $module.setAttribute('maxlength', '')
-    $module.setAttribute('data-maxlength', $module.maxLength)
+    // Remove hard limit if set
+    $module.removeAttribute('maxlength')
 
     // Bind event changes to the textarea
     var boundChangeEvents = this.bindChangeEvents.bind(this)
@@ -53,6 +53,7 @@ CharacterCount.prototype.init = function () {
   }
 }
 
+// Read data attributes
 CharacterCount.prototype.getDataset = function (element) {
   var dataset = {}
   var attributes = element.attributes
