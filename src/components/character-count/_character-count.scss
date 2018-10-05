@@ -8,6 +8,8 @@
 
 @include govuk-exports("govuk/component/character-count") {
   .govuk-character-count {
+    @include govuk-responsive-margin(6, "bottom");
+
     .govuk-form-group,
     .govuk-textarea {
       margin-bottom: govuk-spacing(1);
