@@ -14,6 +14,12 @@
 
 🆕 New features:
 
+- Add important parameter to visually hidden sass mixins
+
+  Optional parameter added to `govuk-visually-hidden` and `govuk-visually-hidden-focusable` mixins (defaults to true)
+
+  ([PR #1037](https://github.com/alphagov/govuk-frontend/pull/1037))
+
 - Pull Request Title goes here
 
   Description goes here (optional)
@@ -61,7 +67,7 @@
   You can now pass additional attributes to links in header, footer, breadcrumbs, tabs and error-summary components
 
   ([PR #993](https://github.com/alphagov/govuk-frontend/pull/993))
-  
+
 - Fix issue with conditional form content and inline form controls
 
   When inline variant of form controls is used with conditional content, we force
@@ -239,9 +245,9 @@
   ([PR #960](https://github.com/alphagov/govuk-frontend/pull/960))
 
 - Use text colour on focus for better contrast
-  
+
   Updates the focus styles of links in GOV.UK Frontend so they pass WCAG contrast requirements.
-  
+
   ([PR #982](https://github.com/alphagov/govuk-frontend/pull/982))
 
 🆕 New features:
