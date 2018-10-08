@@ -39,6 +39,10 @@
 
   ([PR #1007](https://github.com/alphagov/govuk-frontend/pull/1007))
 
+- Set text colour for radios divider
+
+  ([PR 1023](https://github.com/alphagov/govuk-frontend/pull/1023))
+
 - Pull Request Title goes here
 
   Description goes here (optional)
@@ -62,7 +66,7 @@
   You can now pass additional attributes to links in header, footer, breadcrumbs, tabs and error-summary components
 
   ([PR #993](https://github.com/alphagov/govuk-frontend/pull/993))
-  
+
 - Fix issue with conditional form content and inline form controls
 
   When inline variant of form controls is used with conditional content, we force
@@ -240,9 +244,9 @@
   ([PR #960](https://github.com/alphagov/govuk-frontend/pull/960))
 
 - Use text colour on focus for better contrast
-  
+
   Updates the focus styles of links in GOV.UK Frontend so they pass WCAG contrast requirements.
-  
+
   ([PR #982](https://github.com/alphagov/govuk-frontend/pull/982))
 
 🆕 New features:

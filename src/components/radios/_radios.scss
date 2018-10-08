@@ -156,6 +156,7 @@
   .govuk-radios__divider {
     $govuk-divider-size: $govuk-radios-size !default;
     @include govuk-font($size: 19);
+    @include govuk-text-colour;
     width: $govuk-divider-size;
     margin-bottom: govuk-spacing(2);
     text-align: center;
