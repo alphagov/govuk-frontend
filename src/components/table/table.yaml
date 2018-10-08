@@ -16,6 +16,10 @@ params:
     type: string
     required: false
     description: Specify format of a cell. Currently we only use "numeric".
+  - name: classes
+    type: string
+    required: false
+    description: Classes to add to the table row cell.
   - name: colspan
     type: integer
     required: false
@@ -41,6 +45,10 @@ params:
     type: string
     required: false
     description: Specify format of a cell. Currently we only use "numeric".
+  - name: classes
+    type: string
+    required: false
+    description: Classes to add to the table head cell.
   - name: colspan
     type: integer
     required: false

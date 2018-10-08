@@ -112,11 +112,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">text (or) html</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">Yes</td>
+<td class="govuk-table__cell">Yes</td>
 
-<td class="govuk-table__cell ">Text or HTML to use within the label. If `html` is provided, the `text` argument will be ignored.</td>
+<td class="govuk-table__cell">Text or HTML to use within the label. If `html` is provided, the `text` argument will be ignored.</td>
 
 </tr>
 
@@ -124,11 +124,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">for</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">Yes</td>
+<td class="govuk-table__cell">Yes</td>
 
-<td class="govuk-table__cell ">The value of the for attribute, the id of the input the label is associated with.</td>
+<td class="govuk-table__cell">The value of the for attribute, the id of the input the label is associated with.</td>
 
 </tr>
 
@@ -136,11 +136,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">isPageHeading</th>
 
-<td class="govuk-table__cell ">boolean</td>
+<td class="govuk-table__cell">boolean</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Whether the label also acts as the heading for the page.</td>
+<td class="govuk-table__cell">Whether the label also acts as the heading for the page.</td>
 
 </tr>
 
@@ -148,11 +148,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">classes</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Optional additional classes to add to the label tag.</td>
+<td class="govuk-table__cell">Optional additional classes to add to the label tag.</td>
 
 </tr>
 
@@ -160,11 +160,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">attributes</th>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell">object</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the label tag.</td>
+<td class="govuk-table__cell">Any extra HTML attributes (for example data attributes) to add to the label tag.</td>
 
 </tr>
 

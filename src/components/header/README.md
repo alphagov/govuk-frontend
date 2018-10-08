@@ -367,11 +367,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">homepageUrl</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">The url of the homepage. Defaults to /</td>
+<td class="govuk-table__cell">The url of the homepage. Defaults to /</td>
 
 </tr>
 
@@ -379,11 +379,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">assetsPath</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">The public path for the assets folder. If not provided it defaults to /assets/images</td>
+<td class="govuk-table__cell">The public path for the assets folder. If not provided it defaults to /assets/images</td>
 
 </tr>
 
@@ -391,11 +391,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">productName</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Header title that is placed next to GOV.UK. Used for product names (i.e. Pay, Verify)</td>
+<td class="govuk-table__cell">Header title that is placed next to GOV.UK. Used for product names (i.e. Pay, Verify)</td>
 
 </tr>
 
@@ -403,11 +403,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">serviceName</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Header title that is placed next to GOV.UK. Used for product names (i.e. Pay, Verify)</td>
+<td class="govuk-table__cell">Header title that is placed next to GOV.UK. Used for product names (i.e. Pay, Verify)</td>
 
 </tr>
 
@@ -415,11 +415,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">serviceUrl</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Url for the service name anchor.</td>
+<td class="govuk-table__cell">Url for the service name anchor.</td>
 
 </tr>
 
@@ -427,11 +427,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">navigation</th>
 
-<td class="govuk-table__cell ">array</td>
+<td class="govuk-table__cell">array</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">An array of navigation item objects.</td>
+<td class="govuk-table__cell">An array of navigation item objects.</td>
 
 </tr>
 
@@ -439,11 +439,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">navigation.{}.text</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Text of the navigation item.</td>
+<td class="govuk-table__cell">Text of the navigation item.</td>
 
 </tr>
 
@@ -451,11 +451,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">navigation.{}.href</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Url of the navigation item anchor. Both `href` and `text` attributes for navigation items need to be provided to create an item.</td>
+<td class="govuk-table__cell">Url of the navigation item anchor. Both `href` and `text` attributes for navigation items need to be provided to create an item.</td>
 
 </tr>
 
@@ -463,11 +463,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">navigation.{}.active</th>
 
-<td class="govuk-table__cell ">boolean</td>
+<td class="govuk-table__cell">boolean</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Flag to mark the navigation item as active or not.</td>
+<td class="govuk-table__cell">Flag to mark the navigation item as active or not.</td>
 
 </tr>
 
@@ -475,11 +475,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">navigation.{}.attributes</th>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell">object</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the navigation item anchor.</td>
+<td class="govuk-table__cell">Any extra HTML attributes (for example data attributes) to add to the navigation item anchor.</td>
 
 </tr>
 
@@ -487,11 +487,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">navigationClasses</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Optional classes that can be added to the navigation section of the header.</td>
+<td class="govuk-table__cell">Optional classes that can be added to the navigation section of the header.</td>
 
 </tr>
 
@@ -499,11 +499,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">containerClasses</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Optional classes that can be added to the container, useful if you want to make the header fixed width.</td>
+<td class="govuk-table__cell">Optional classes that can be added to the container, useful if you want to make the header fixed width.</td>
 
 </tr>
 
@@ -511,11 +511,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">classes</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Optional additional classes to add to the header container.</td>
+<td class="govuk-table__cell">Optional additional classes to add to the header container.</td>
 
 </tr>
 
@@ -523,11 +523,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">attributes</th>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell">object</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the header container.</td>
+<td class="govuk-table__cell">Any extra HTML attributes (for example data attributes) to add to the header container.</td>
 
 </tr>
 

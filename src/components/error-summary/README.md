@@ -110,11 +110,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">titleText (or) titleHtml</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">Yes</td>
+<td class="govuk-table__cell">Yes</td>
 
-<td class="govuk-table__cell ">Text or HTML to use for the heading of the error summary block. If `titleHtml` is provided, the `titleText` argument will be ignored.</td>
+<td class="govuk-table__cell">Text or HTML to use for the heading of the error summary block. If `titleHtml` is provided, the `titleText` argument will be ignored.</td>
 
 </tr>
 
@@ -122,11 +122,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">descriptionText (or) descriptionHtml</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Optional text or HTML description of the errors. If `descriptionhtml` is provided, the `descriptionText` argument will be ignored.</td>
+<td class="govuk-table__cell">Optional text or HTML description of the errors. If `descriptionhtml` is provided, the `descriptionText` argument will be ignored.</td>
 
 </tr>
 
@@ -134,11 +134,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">errorList</th>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell">object</td>
 
-<td class="govuk-table__cell ">Yes</td>
+<td class="govuk-table__cell">Yes</td>
 
-<td class="govuk-table__cell ">Contains an array of error link items and all their available arguments.</td>
+<td class="govuk-table__cell">Contains an array of error link items and all their available arguments.</td>
 
 </tr>
 
@@ -146,11 +146,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">errorList.{}.href</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Href attribute for the error link item. If provided item will be an anchor.</td>
+<td class="govuk-table__cell">Href attribute for the error link item. If provided item will be an anchor.</td>
 
 </tr>
 
@@ -158,11 +158,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">errorList.{}.text (or) errorList.{}.html</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">Yes</td>
+<td class="govuk-table__cell">Yes</td>
 
-<td class="govuk-table__cell ">Text or HTML for the error link item. If `html` is provided, the `text` argument will be ignored.</td>
+<td class="govuk-table__cell">Text or HTML for the error link item. If `html` is provided, the `text` argument will be ignored.</td>
 
 </tr>
 
@@ -170,11 +170,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">errorList.{}.attributes</th>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell">object</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the error link anchor.</td>
+<td class="govuk-table__cell">Any extra HTML attributes (for example data attributes) to add to the error link anchor.</td>
 
 </tr>
 
@@ -182,11 +182,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">classes</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Optional additional classes to add to the error-summary container.</td>
+<td class="govuk-table__cell">Optional additional classes to add to the error-summary container.</td>
 
 </tr>
 
@@ -194,11 +194,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">attributes</th>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell">object</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the error-summary container.</td>
+<td class="govuk-table__cell">Any extra HTML attributes (for example data attributes) to add to the error-summary container.</td>
 
 </tr>
 
