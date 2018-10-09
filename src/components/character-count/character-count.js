@@ -24,7 +24,10 @@ CharacterCount.prototype.init = function () {
   this.options = this.getDataset($module)
 
   // Determine the limit attribute (characters or words)
-  var countAttribute = (this.options.maxwords) ? this.defaults.wordCountAttribute : this.defaults.characterCountAttribute
+  var countAttribute = this.defaults.characterCountAttribute
+  if (this.options.maxwords) {
+    countAttribute = this.defaults.wordCountAttribute
+  }
 
   // Save the element limit
   this.maxLength = $module.getAttribute(countAttribute)
@@ -39,7 +42,7 @@ CharacterCount.prototype.init = function () {
   this.countMessage = boundCreateCountMessage()
 
   // If there's a maximum length defined and the count message exists
-  if (this.maxLength && this.countMessage) {
+  if (this.countMessage) {
     // Remove hard limit if set
     $module.removeAttribute('maxlength')
 
@@ -95,6 +98,9 @@ CharacterCount.prototype.createCountMessage = function () {
     this.describedByInfo = this.describedBy + ' ' + elementId + '-info'
     countElement.setAttribute('aria-describedby', this.describedByInfo)
     countMessage = document.getElementById(elementId + '-info')
+  } else {
+  // If there is an existing info count message we move it right after the field
+    countElement.insertAdjacentElement('afterend', countMessage)
   }
   return countMessage
 }
