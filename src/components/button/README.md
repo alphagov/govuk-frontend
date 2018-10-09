@@ -55,7 +55,7 @@ Buttons are configured to perform an action and they can have a different look. 
 
 #### Markup
 
-    <a href="/" role="button" class="govuk-button">
+    <a href="/" role="button" draggable="false" class="govuk-button">
       Link button
     </a>
 
@@ -74,7 +74,7 @@ Buttons are configured to perform an action and they can have a different look. 
 
 #### Markup
 
-    <a href="/" role="button" class="govuk-button govuk-button--disabled">
+    <a href="/" role="button" draggable="false" class="govuk-button govuk-button--disabled">
       Disabled link button
     </a>
 
@@ -94,7 +94,7 @@ Buttons are configured to perform an action and they can have a different look. 
 
 #### Markup
 
-    <a href="/" role="button" class="govuk-button govuk-button--start">
+    <a href="/" role="button" draggable="false" class="govuk-button govuk-button--start">
       Start now link button
     </a>
 

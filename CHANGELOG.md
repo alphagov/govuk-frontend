@@ -15,7 +15,7 @@
 🆕 New features:
 
 - Allow classes on table header and row cells
-  
+
   Optional classes attribute can now be used on table header and row cell item
   in the Nunjucks macro
 
@@ -42,6 +42,16 @@
 - Set text colour for radios divider
 
   ([PR 1023](https://github.com/alphagov/govuk-frontend/pull/1023))
+
+- Stop links styled as button from being dragged
+
+  Moving the mouse over a link while its button is depressed causes the
+  browser’s dragging behaviour to trigger (and prevents the `click`
+  event from firing). This is contrary to how actual `<button>` elements
+  work. This pull request makes the behaviour of links styled as buttons
+  consistent with that of buttons.
+
+  ([PR #1020](https://github.com/alphagov/govuk-frontend/pull/1020))
 
 - Pull Request Title goes here
 

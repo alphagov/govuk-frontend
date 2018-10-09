@@ -21,7 +21,7 @@
 {#- Actually create a button... or a link! #}
 
 {%- if element == 'a' %}
-<a href="{{ params.href if params.href else '#' }}" role="button" {{- commonAttributes | safe }}>
+<a href="{{ params.href if params.href else '#' }}" role="button" draggable="false" {{- commonAttributes | safe }}>
   {{ params.html | safe if params.html else params.text }}
 </a>
 
