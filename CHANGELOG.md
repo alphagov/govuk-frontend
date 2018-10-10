@@ -21,6 +21,11 @@
 
   ([PR #1015](https://github.com/alphagov/govuk-frontend/pull/1015))
 
+- Add character count component
+
+  ([PR #959](https://github.com/alphagov/govuk-frontend/pull/959))
+
+
 🔧 Fixes:
 
 - Apply max-width to the `<select>` element
