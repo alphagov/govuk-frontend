@@ -3,10 +3,6 @@
 {% from "../label/macro.njk" import govukLabel %}
 {% from "../textarea/macro.njk" import govukTextarea %}
 
-{#- a record of other elements that we need to associate with the input using
-   aria-describedby – for example hints or error messages -#}
-{% set describedBy = "" %}
-
 <div class="govuk-character-count" data-module="character-count"
 {%- if params.maxlength %} data-maxlength="{{ params.maxlength }}"{% endif %}
 {%- if params.threshold %} data-threshold="{{ params.threshold }}"{% endif %}
@@ -14,7 +10,7 @@
   {{ govukTextarea({
     id: params.id,
     name: params.name,
-    describedBy: describedBy,
+    describedBy: params.id + '-info',
     rows: params.rows,
     value: params.value,
     classes: 'js-character-count ' + (' govuk-textarea--error' if params.errorMessage) + (params.classes if params.classes),
