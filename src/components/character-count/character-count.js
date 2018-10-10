@@ -1,5 +1,6 @@
 import '../../vendor/polyfills/Function/prototype/bind'
 import '../../vendor/polyfills/Event' // addEventListener and event.target normaliziation
+import '../../vendor/polyfills/Element/prototype/classList'
 
 function CharacterCount ($module) {
   this.$module = $module
