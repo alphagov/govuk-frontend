@@ -43,6 +43,13 @@ describe(`http://localhost:${PORT}`, () => {
         done(err)
       })
     })
+
+    it('should prevent search indexing', done => {
+      requestPath.get(path, (err, res) => {
+        expect(res.headers['x-robots-tag']).toEqual('none')
+        done(err)
+      })
+    })
   })
 
   describe('/', () => {
