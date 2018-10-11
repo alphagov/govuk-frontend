@@ -254,11 +254,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">items</th>
 
-<td class="govuk-table__cell ">array</td>
+<td class="govuk-table__cell">array</td>
 
-<td class="govuk-table__cell ">Yes</td>
+<td class="govuk-table__cell">Yes</td>
 
-<td class="govuk-table__cell ">Array of breadcrumbs item objects.</td>
+<td class="govuk-table__cell">Array of breadcrumbs item objects.</td>
 
 </tr>
 
@@ -266,11 +266,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">items.{}.text (or) items.{}.html</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">Yes</td>
+<td class="govuk-table__cell">Yes</td>
 
-<td class="govuk-table__cell ">Text or HTML to use within the breadcrumbs item. If `html` is provided, the `text` argument will be ignored.</td>
+<td class="govuk-table__cell">Text or HTML to use within the breadcrumbs item. If `html` is provided, the `text` argument will be ignored.</td>
 
 </tr>
 
@@ -278,11 +278,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">items.{}.href</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">no</td>
+<td class="govuk-table__cell">no</td>
 
-<td class="govuk-table__cell ">Link for the breadcrumbs item. If not specified, breadcrumbs item is a normal list item</td>
+<td class="govuk-table__cell">Link for the breadcrumbs item. If not specified, breadcrumbs item is a normal list item</td>
 
 </tr>
 
@@ -290,11 +290,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">items.{}.attributes</th>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell">object</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the breadcrumb anchor item.</td>
+<td class="govuk-table__cell">Any extra HTML attributes (for example data attributes) to add to the breadcrumb anchor item.</td>
 
 </tr>
 
@@ -302,11 +302,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">classes</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Optional additional classes to add to the breadcrumbs container.</td>
+<td class="govuk-table__cell">Optional additional classes to add to the breadcrumbs container.</td>
 
 </tr>
 
@@ -314,11 +314,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">attributes</th>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell">object</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the breadcrumbs container.</td>
+<td class="govuk-table__cell">Any extra HTML attributes (for example data attributes) to add to the breadcrumbs container.</td>
 
 </tr>
 

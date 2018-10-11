@@ -579,11 +579,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">id</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Optional id. This is used for the main component and to compose id attribute for each item.</td>
+<td class="govuk-table__cell">Optional id. This is used for the main component and to compose id attribute for each item.</td>
 
 </tr>
 
@@ -591,11 +591,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">namePrefix</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Optional prefix. This is used to prefix each `item.name` using `-`.</td>
+<td class="govuk-table__cell">Optional prefix. This is used to prefix each `item.name` using `-`.</td>
 
 </tr>
 
@@ -603,11 +603,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">items</th>
 
-<td class="govuk-table__cell ">array</td>
+<td class="govuk-table__cell">array</td>
 
-<td class="govuk-table__cell ">Yes</td>
+<td class="govuk-table__cell">Yes</td>
 
-<td class="govuk-table__cell ">An array of input objects with name, value and optional classes</td>
+<td class="govuk-table__cell">An array of input objects with name, value and optional classes</td>
 
 </tr>
 
@@ -615,11 +615,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">items.{}.id</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Optional item-specific id. If provided, it will be used instead of the generated id.</td>
+<td class="govuk-table__cell">Optional item-specific id. If provided, it will be used instead of the generated id.</td>
 
 </tr>
 
@@ -627,11 +627,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">items.{}.name</th>
 
-<td class="govuk-table__cell ">array</td>
+<td class="govuk-table__cell">array</td>
 
-<td class="govuk-table__cell ">Yes</td>
+<td class="govuk-table__cell">Yes</td>
 
-<td class="govuk-table__cell ">Item-specific name attribute.</td>
+<td class="govuk-table__cell">Item-specific name attribute.</td>
 
 </tr>
 
@@ -639,11 +639,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">items.{}.value</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Optional item-specific value attribute. If provided, it will be used as the initial value of the input.</td>
+<td class="govuk-table__cell">Optional item-specific value attribute. If provided, it will be used as the initial value of the input.</td>
 
 </tr>
 
@@ -651,11 +651,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">items.{}.label</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Optional item-specific label text. If provided, this will be used instead of the items.{}.name.</td>
+<td class="govuk-table__cell">Optional item-specific label text. If provided, this will be used instead of the items.{}.name.</td>
 
 </tr>
 
@@ -663,11 +663,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">hint</th>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell">object</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Optional hint. See <a href="../hint/README.md#component-arguments">hint</a> component.</td>
+<td class="govuk-table__cell">Optional hint. See <a href="../hint/README.md#component-arguments">hint</a> component.</td>
 
 </tr>
 
@@ -675,11 +675,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">errorMessage</th>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell">object</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Optional error message. See <a href="../error-message/README.md#component-arguments">errorMessage</a> component.</td>
+<td class="govuk-table__cell">Optional error message. See <a href="../error-message/README.md#component-arguments">errorMessage</a> component.</td>
 
 </tr>
 
@@ -687,11 +687,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">fieldset</th>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell">object</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Arguments for the fieldset component (e.g. legend). See <a href="../fieldset/README.md#component-arguments">fieldset</a> component.</td>
+<td class="govuk-table__cell">Arguments for the fieldset component (e.g. legend). See <a href="../fieldset/README.md#component-arguments">fieldset</a> component.</td>
 
 </tr>
 
@@ -699,11 +699,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">classes</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Optional additional classes to add to the date-input container.</td>
+<td class="govuk-table__cell">Optional additional classes to add to the date-input container.</td>
 
 </tr>
 
@@ -711,11 +711,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">attributes</th>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell">object</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the date-input container.</td>
+<td class="govuk-table__cell">Any extra HTML attributes (for example data attributes) to add to the date-input container.</td>
 
 </tr>
 

@@ -14,6 +14,24 @@
 
 🆕 New features:
 
+- Pull Request Title goes here
+
+  Description goes here (optional)
+
+  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+
+🔧 Fixes:
+
+- Pull Request Title goes here
+
+  Description goes here (optional)
+
+  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+
+## 2.2.0 (Feature release)
+
+🆕 New features:
+
 - Allow classes on table header and row cells
 
   Optional classes attribute can now be used on table header and row cell item
@@ -57,12 +75,6 @@
   consistent with that of buttons.
 
   ([PR #1020](https://github.com/alphagov/govuk-frontend/pull/1020))
-
-- Pull Request Title goes here
-
-  Description goes here (optional)
-
-  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
 ## 2.1.0 (Feature release)
 

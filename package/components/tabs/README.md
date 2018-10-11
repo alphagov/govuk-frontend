@@ -258,11 +258,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">id</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Optional id</td>
+<td class="govuk-table__cell">Optional id</td>
 
 </tr>
 
@@ -270,11 +270,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">classes</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Optional additional classes</td>
+<td class="govuk-table__cell">Optional additional classes</td>
 
 </tr>
 
@@ -282,11 +282,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">attributes</th>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell">object</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the tabs container</td>
+<td class="govuk-table__cell">Any extra HTML attributes (for example data attributes) to add to the tabs container</td>
 
 </tr>
 
@@ -294,11 +294,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">idPrefix</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">String to prefix id for each tab item if no id is specified on each item</td>
+<td class="govuk-table__cell">String to prefix id for each tab item if no id is specified on each item</td>
 
 </tr>
 
@@ -306,11 +306,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">items</th>
 
-<td class="govuk-table__cell ">array</td>
+<td class="govuk-table__cell">array</td>
 
-<td class="govuk-table__cell ">Yes</td>
+<td class="govuk-table__cell">Yes</td>
 
-<td class="govuk-table__cell ">Array of tab items</td>
+<td class="govuk-table__cell">Array of tab items</td>
 
 </tr>
 
@@ -318,11 +318,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">items.{}.id</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">Yes</td>
+<td class="govuk-table__cell">Yes</td>
 
-<td class="govuk-table__cell ">Specific id attribute for the tab item. If ommited, then `idPrefix` string will be applied.</td>
+<td class="govuk-table__cell">Specific id attribute for the tab item. If ommited, then `idPrefix` string will be applied.</td>
 
 </tr>
 
@@ -330,11 +330,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">items.{}.label</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">Yes</td>
+<td class="govuk-table__cell">Yes</td>
 
-<td class="govuk-table__cell ">The text label of a tab item</td>
+<td class="govuk-table__cell">The text label of a tab item</td>
 
 </tr>
 
@@ -342,11 +342,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">items.{}.attributes</th>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell">object</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the tab item anchor.</td>
+<td class="govuk-table__cell">Any extra HTML attributes (for example data attributes) to add to the tab item anchor.</td>
 
 </tr>
 
@@ -354,11 +354,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">items.{}.panel.text (or) items.{}.panel.html</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Text or HTML to use within each tab panel. If `html` is provided, the `text` argument will be ignored.</td>
+<td class="govuk-table__cell">Text or HTML to use within each tab panel. If `html` is provided, the `text` argument will be ignored.</td>
 
 </tr>
 
@@ -366,11 +366,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">items.{}.panel.attributes</th>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell">object</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the tab panel.</td>
+<td class="govuk-table__cell">Any extra HTML attributes (for example data attributes) to add to the tab panel.</td>
 
 </tr>
 
