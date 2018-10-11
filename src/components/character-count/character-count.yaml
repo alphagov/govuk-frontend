@@ -1,0 +1,137 @@
+params:
+- name: id
+  type: string
+  required: true
+  description: The id of the textarea.
+- name: describedBy
+  type: string
+  required: false
+  description: Text or element id to add to the `aria-describedby` attribute to provide description for screenreader users.
+- name: name
+  type: string
+  required: true
+  description: The name of the textarea, which is submitted with the form data.
+- name: rows
+  type: string
+  required: false
+  description: Optional number of textarea rows (default is 5 rows).
+- name: value
+  type: string
+  required: false
+  description: Optional initial value of the textarea.
+- name: maxlength
+  type: string
+  required: true
+  description: If `maxwords` is set, this is not required. The maximum number of characters. If `maxwords` is provided, the `maxlength` argument will be ignored.
+- name: maxwords
+  type: string
+  required: true
+  description: If `maxlength` is set, this is not required. The maximum number of words. If `maxwords` is provided, the `maxlength` argument will be ignored.
+- name: threshold
+  type: string
+  required: true
+  description: The percentage value of the limit at which point the count message is displayed. If this attribute is set, the count message will be hidden by default.
+- name: label
+  type: object
+  required: true
+  description: Options for the label component.
+  isComponent: true
+- name: hint
+  type: object
+  required: false
+  description: Options for the hint component.
+  isComponent: true
+- name: errorMessage
+  type: object
+  required: false
+  description: Options for the errorMessage component (e.g. text).
+  isComponent: true
+- name: classes
+  type: string
+  required: false
+  description: Classes to add to the textarea.
+- name: attributes
+  type: object
+  required: false
+  description: HTML attributes (for example data attributes) to add to the textarea.
+
+examples:
+  - name: default
+    data:
+      name: more-detail
+      id: more-detail
+      maxlength: 10
+      label:
+        text: Can you provide more detail?
+
+  - name: with hint
+    data:
+      name: with-hint
+      id: with-hint
+      maxlength: 10
+      label:
+        text: Can you provide more detail?
+      hint:
+        text: Don't include personal or financial information, eg your
+              National Insurance number or credit card details.
+
+  - name: with default value
+    data:
+      id: with-default-value
+      name: default-value
+      maxlength: 100
+      label:
+        text: Full address
+      value: |
+        221B Baker Street
+        London
+        NW1 6XE
+
+  - name: with default value exceeding limit
+    data:
+      id: exceeding-characters
+      name: exceeding
+      maxlength: 10
+      value: |
+        221B Baker Street
+        London
+        NW1 6XE
+      label:
+        text: Full address
+      errorMessage:
+        text: Please do not exceed the maximum allowed limit
+
+  - name: with custom rows
+    data:
+      id: custom-rows
+      name: custom
+      maxlength: 10
+      label:
+        text: Full address
+      rows: 8
+
+  - name: with label as page heading
+    data:
+      id: textarea-with-page-heading
+      name: address
+      maxlength: 10
+      label:
+        text: Full address
+        isPageHeading: true
+
+  - name: with word count
+    data:
+      id: word-count
+      name: word-count
+      maxwords: 10
+      label:
+        text: Full address
+
+  - name: with threshold
+    data:
+      id: with-threshold
+      name: with-threshold
+      maxlength: 10
+      threshold: 75
+      label:
+        text: Full address

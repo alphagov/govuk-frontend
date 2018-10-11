@@ -65,6 +65,7 @@ describe('GOV.UK Frontend', () => {
       expect(components).toEqual([
         'Button',
         'Details',
+        'CharacterCount',
         'Checkboxes',
         'ErrorSummary',
         'Header',
