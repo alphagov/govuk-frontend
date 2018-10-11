@@ -109,11 +109,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">titleText (or) titleHtml</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">Yes</td>
+<td class="govuk-table__cell">Yes</td>
 
-<td class="govuk-table__cell ">Text or HTML for the panel title. If `titleHtml` is provided, the `titleText` argument is ignored.</td>
+<td class="govuk-table__cell">Text or HTML for the panel title. If `titleHtml` is provided, the `titleText` argument is ignored.</td>
 
 </tr>
 
@@ -121,11 +121,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">headingLevel</th>
 
-<td class="govuk-table__cell ">number</td>
+<td class="govuk-table__cell">number</td>
 
-<td class="govuk-table__cell ">no</td>
+<td class="govuk-table__cell">no</td>
 
-<td class="govuk-table__cell ">Optional heading level, from 1 to 6\. Default is 2.</td>
+<td class="govuk-table__cell">Optional heading level, from 1 to 6\. Default is 2.</td>
 
 </tr>
 
@@ -133,11 +133,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">text (or) html</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Text or HTML for the panel content. If `html` is provided, the `text` argument is ignored.</td>
+<td class="govuk-table__cell">Text or HTML for the panel content. If `html` is provided, the `text` argument is ignored.</td>
 
 </tr>
 
@@ -145,11 +145,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">classes</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Optional additional classes to add to the panel container.</td>
+<td class="govuk-table__cell">Optional additional classes to add to the panel container.</td>
 
 </tr>
 
@@ -157,11 +157,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">attributes</th>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell">object</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the panel container.</td>
+<td class="govuk-table__cell">Any extra HTML attributes (for example data attributes) to add to the panel container.</td>
 
 </tr>
 

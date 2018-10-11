@@ -107,11 +107,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">meta</th>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell">object</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Object containing parameters for the meta navigation.</td>
+<td class="govuk-table__cell">Object containing parameters for the meta navigation.</td>
 
 </tr>
 
@@ -119,11 +119,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">meta.text</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Text to add to the meta section of the footer, which will appear below any links specified using meta.items. If meta.html is specified, this option is ignored.</td>
+<td class="govuk-table__cell">Text to add to the meta section of the footer, which will appear below any links specified using meta.items. If meta.html is specified, this option is ignored.</td>
 
 </tr>
 
@@ -131,11 +131,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">meta.html</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">HTML to add to the meta section of the footer, which will appear below any links specified using meta.items. If you do not need to use HTML, use meta.text instead.</td>
+<td class="govuk-table__cell">HTML to add to the meta section of the footer, which will appear below any links specified using meta.items. If you do not need to use HTML, use meta.text instead.</td>
 
 </tr>
 
@@ -143,11 +143,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">meta.items</th>
 
-<td class="govuk-table__cell ">array</td>
+<td class="govuk-table__cell">array</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Array of items for use in the meta section of the footer.</td>
+<td class="govuk-table__cell">Array of items for use in the meta section of the footer.</td>
 
 </tr>
 
@@ -155,11 +155,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">meta.items.{}.text</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">List item text in the meta section of the footer.</td>
+<td class="govuk-table__cell">List item text in the meta section of the footer.</td>
 
 </tr>
 
@@ -167,11 +167,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">meta.items.{}.href</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">List item href attribute in the meta section of the footer.</td>
+<td class="govuk-table__cell">List item href attribute in the meta section of the footer.</td>
 
 </tr>
 
@@ -179,11 +179,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">meta.items.{}.attributes</th>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell">object</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the anchor in the footer meta section.</td>
+<td class="govuk-table__cell">Any extra HTML attributes (for example data attributes) to add to the anchor in the footer meta section.</td>
 
 </tr>
 
@@ -191,11 +191,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">navigation</th>
 
-<td class="govuk-table__cell ">array</td>
+<td class="govuk-table__cell">array</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Array of items for use in the navigation section of the footer.</td>
+<td class="govuk-table__cell">Array of items for use in the navigation section of the footer.</td>
 
 </tr>
 
@@ -203,11 +203,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">navigation.{}.title</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Title for a section</td>
+<td class="govuk-table__cell">Title for a section</td>
 
 </tr>
 
@@ -215,11 +215,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">navigation.{}.columns</th>
 
-<td class="govuk-table__cell ">integer</td>
+<td class="govuk-table__cell">integer</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Amount of columns to display items in navigation section of the footer.</td>
+<td class="govuk-table__cell">Amount of columns to display items in navigation section of the footer.</td>
 
 </tr>
 
@@ -227,11 +227,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">navigation.items</th>
 
-<td class="govuk-table__cell ">array</td>
+<td class="govuk-table__cell">array</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Array of items to display in the list in navigation section of the footer.</td>
+<td class="govuk-table__cell">Array of items to display in the list in navigation section of the footer.</td>
 
 </tr>
 
@@ -239,11 +239,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">navigation.items.{}.text</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">List item text in the navigation section of the footer.</td>
+<td class="govuk-table__cell">List item text in the navigation section of the footer.</td>
 
 </tr>
 
@@ -251,11 +251,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">navigation.items.{}.href</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">List item href attribute in the navigation section of the footer. Both `text` and `href` attributes need to be present to create a link.</td>
+<td class="govuk-table__cell">List item href attribute in the navigation section of the footer. Both `text` and `href` attributes need to be present to create a link.</td>
 
 </tr>
 
@@ -263,11 +263,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">navigation.items.{}.attributes</th>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell">object</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the anchor in the footer navigation section.</td>
+<td class="govuk-table__cell">Any extra HTML attributes (for example data attributes) to add to the anchor in the footer navigation section.</td>
 
 </tr>
 
@@ -275,11 +275,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">containerClasses</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Classes that can be added to the inner container, useful if you want to make the footer full width.</td>
+<td class="govuk-table__cell">Classes that can be added to the inner container, useful if you want to make the footer full width.</td>
 
 </tr>
 
@@ -287,11 +287,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">classes</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Optional additional classes to add to the footer component container.</td>
+<td class="govuk-table__cell">Optional additional classes to add to the footer component container.</td>
 
 </tr>
 
@@ -299,11 +299,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">attributes</th>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell">object</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the footer component container.</td>
+<td class="govuk-table__cell">Any extra HTML attributes (for example data attributes) to add to the footer component container.</td>
 
 </tr>
 

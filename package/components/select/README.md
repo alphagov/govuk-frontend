@@ -273,11 +273,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">id</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">Yes</td>
+<td class="govuk-table__cell">Yes</td>
 
-<td class="govuk-table__cell ">Id for each select box</td>
+<td class="govuk-table__cell">Id for each select box</td>
 
 </tr>
 
@@ -285,11 +285,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">name</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">Yes</td>
+<td class="govuk-table__cell">Yes</td>
 
-<td class="govuk-table__cell ">Name property for the select.</td>
+<td class="govuk-table__cell">Name property for the select.</td>
 
 </tr>
 
@@ -297,11 +297,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">items</th>
 
-<td class="govuk-table__cell ">array</td>
+<td class="govuk-table__cell">array</td>
 
-<td class="govuk-table__cell ">Yes</td>
+<td class="govuk-table__cell">Yes</td>
 
-<td class="govuk-table__cell ">Array of option items for the select.</td>
+<td class="govuk-table__cell">Array of option items for the select.</td>
 
 </tr>
 
@@ -309,11 +309,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">item.value</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Value for the option item.</td>
+<td class="govuk-table__cell">Value for the option item.</td>
 
 </tr>
 
@@ -321,11 +321,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">item.text</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">Yes</td>
+<td class="govuk-table__cell">Yes</td>
 
-<td class="govuk-table__cell ">Text for the option item.</td>
+<td class="govuk-table__cell">Text for the option item.</td>
 
 </tr>
 
@@ -333,11 +333,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">item.selected</th>
 
-<td class="govuk-table__cell ">boolean</td>
+<td class="govuk-table__cell">boolean</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Sets the option as the selected.</td>
+<td class="govuk-table__cell">Sets the option as the selected.</td>
 
 </tr>
 
@@ -345,11 +345,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">item.disabled</th>
 
-<td class="govuk-table__cell ">boolean</td>
+<td class="govuk-table__cell">boolean</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Sets the option item as disabled.</td>
+<td class="govuk-table__cell">Sets the option item as disabled.</td>
 
 </tr>
 
@@ -357,11 +357,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">item.attributes</th>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell">object</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to the select option tag.</td>
+<td class="govuk-table__cell">Any extra HTML attributes (for example data attributes) to the select option tag.</td>
 
 </tr>
 
@@ -369,11 +369,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">label</th>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell">object</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Optional label text or HTML by specifying value for either text or html keys. See <a href="../label/README.md#component-arguments">label</a> component.</td>
+<td class="govuk-table__cell">Optional label text or HTML by specifying value for either text or html keys. See <a href="../label/README.md#component-arguments">label</a> component.</td>
 
 </tr>
 
@@ -381,11 +381,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">hint</th>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell">object</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Arguments for the hint component (e.g. text). See <a href="../hint/README.md#component-arguments">hint</a> component.</td>
+<td class="govuk-table__cell">Arguments for the hint component (e.g. text). See <a href="../hint/README.md#component-arguments">hint</a> component.</td>
 
 </tr>
 
@@ -393,11 +393,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">errorMessage</th>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell">object</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Arguments for the errorMessage component (e.g. text). See <a href="../error-message/README.md#component-arguments">errorMessage</a> component.</td>
+<td class="govuk-table__cell">Arguments for the errorMessage component (e.g. text). See <a href="../error-message/README.md#component-arguments">errorMessage</a> component.</td>
 
 </tr>
 
@@ -405,11 +405,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">classes</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Optional additional classes to add to the select component.</td>
+<td class="govuk-table__cell">Optional additional classes to add to the select component.</td>
 
 </tr>
 
@@ -417,11 +417,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">attributes</th>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell">object</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the select component.</td>
+<td class="govuk-table__cell">Any extra HTML attributes (for example data attributes) to add to the select component.</td>
 
 </tr>
 
