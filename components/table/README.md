@@ -384,11 +384,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">rows</th>
 
-<td class="govuk-table__cell ">array</td>
+<td class="govuk-table__cell">array</td>
 
-<td class="govuk-table__cell ">Yes</td>
+<td class="govuk-table__cell">Yes</td>
 
-<td class="govuk-table__cell ">Array of table rows and cells.</td>
+<td class="govuk-table__cell">Array of table rows and cells.</td>
 
 </tr>
 
@@ -396,11 +396,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">rows.[].text (or) rows.[].html</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">Yes</td>
+<td class="govuk-table__cell">Yes</td>
 
-<td class="govuk-table__cell ">Text or HTML for cells in table rows. If `html` is specified, the `text` argument will be ignored.</td>
+<td class="govuk-table__cell">Text or HTML for cells in table rows. If `html` is specified, the `text` argument will be ignored.</td>
 
 </tr>
 
@@ -408,11 +408,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">rows.[].format</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Specify format of a cell. Currently we only use "numeric".</td>
+<td class="govuk-table__cell">Specify format of a cell. Currently we only use "numeric".</td>
 
 </tr>
 
@@ -420,11 +420,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">rows.[].colspan</th>
 
-<td class="govuk-table__cell ">number</td>
+<td class="govuk-table__cell">number</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Specify how many columns a cell extends.</td>
+<td class="govuk-table__cell">Specify how many columns a cell extends.</td>
 
 </tr>
 
@@ -432,11 +432,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">rows.[].rowspan</th>
 
-<td class="govuk-table__cell ">number</td>
+<td class="govuk-table__cell">number</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Specify how many rows a cell extends.</td>
+<td class="govuk-table__cell">Specify how many rows a cell extends.</td>
 
 </tr>
 
@@ -444,11 +444,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">head</th>
 
-<td class="govuk-table__cell ">array</td>
+<td class="govuk-table__cell">array</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Optional array of table head cells.</td>
+<td class="govuk-table__cell">Optional array of table head cells.</td>
 
 </tr>
 
@@ -456,11 +456,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">head.[].text or head.[].html</th>
 
-<td class="govuk-table__cell ">array</td>
+<td class="govuk-table__cell">array</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Optional array of table head cells. If `html` is specified, the `text` argument will be ignored.</td>
+<td class="govuk-table__cell">Optional array of table head cells. If `html` is specified, the `text` argument will be ignored.</td>
 
 </tr>
 
@@ -468,11 +468,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">head.[].colspan</th>
 
-<td class="govuk-table__cell ">number</td>
+<td class="govuk-table__cell">number</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Specify how many columns a cell extends.</td>
+<td class="govuk-table__cell">Specify how many columns a cell extends.</td>
 
 </tr>
 
@@ -480,11 +480,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">head.[].rowspan</th>
 
-<td class="govuk-table__cell ">number</td>
+<td class="govuk-table__cell">number</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Specify how many rows a cell extends.</td>
+<td class="govuk-table__cell">Specify how many rows a cell extends.</td>
 
 </tr>
 
@@ -492,11 +492,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">head.[].format</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Specify format of a cell. Currently we only use "numeric".</td>
+<td class="govuk-table__cell">Specify format of a cell. Currently we only use "numeric".</td>
 
 </tr>
 
@@ -504,11 +504,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">caption</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Optional caption text.</td>
+<td class="govuk-table__cell">Optional caption text.</td>
 
 </tr>
 
@@ -516,11 +516,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">captionClasses</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Optional classes for caption text size. Class should correspond to the available typography heading classes.</td>
+<td class="govuk-table__cell">Optional classes for caption text size. Class should correspond to the available typography heading classes.</td>
 
 </tr>
 
@@ -528,11 +528,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">firstCellIsHeader</th>
 
-<td class="govuk-table__cell ">boolean</td>
+<td class="govuk-table__cell">boolean</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">If set to true, first cell in table row will be a TH instead of a TD.</td>
+<td class="govuk-table__cell">If set to true, first cell in table row will be a TH instead of a TD.</td>
 
 </tr>
 
@@ -540,11 +540,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">classes</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Optional additional classes to add to the table container.</td>
+<td class="govuk-table__cell">Optional additional classes to add to the table container.</td>
 
 </tr>
 
@@ -552,11 +552,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">attributes</th>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell">object</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the table container.</td>
+<td class="govuk-table__cell">Any extra HTML attributes (for example data attributes) to add to the table container.</td>
 
 </tr>
 

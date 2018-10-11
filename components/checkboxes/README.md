@@ -721,11 +721,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">fieldset</th>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell">object</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Arguments for the fieldset component (e.g. legend). See <a href="../fieldset/README.md#component-arguments">fieldset</a> component.</td>
+<td class="govuk-table__cell">Arguments for the fieldset component (e.g. legend). See <a href="../fieldset/README.md#component-arguments">fieldset</a> component.</td>
 
 </tr>
 
@@ -733,11 +733,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">hint</th>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell">object</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Arguments for the hint component (e.g. text). See <a href="../hint/README.md#component-arguments">hint</a> component.</td>
+<td class="govuk-table__cell">Arguments for the hint component (e.g. text). See <a href="../hint/README.md#component-arguments">hint</a> component.</td>
 
 </tr>
 
@@ -745,11 +745,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">errorMessage</th>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell">object</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Arguments for the errorMessage component (e.g. text). See <a href="../error-message/README.md#component-arguments">errorMessage</a> component.</td>
+<td class="govuk-table__cell">Arguments for the errorMessage component (e.g. text). See <a href="../error-message/README.md#component-arguments">errorMessage</a> component.</td>
 
 </tr>
 
@@ -757,11 +757,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">idPrefix</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">String to prefix id for each checkbox item if no id is specified on each item. If`idPrefix` is not passed, fallback to using the name attribute instead.</td>
+<td class="govuk-table__cell">String to prefix id for each checkbox item if no id is specified on each item. If`idPrefix` is not passed, fallback to using the name attribute instead.</td>
 
 </tr>
 
@@ -769,11 +769,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">name</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">Yes</td>
+<td class="govuk-table__cell">Yes</td>
 
-<td class="govuk-table__cell ">Name attribute for each checkbox item.</td>
+<td class="govuk-table__cell">Name attribute for each checkbox item.</td>
 
 </tr>
 
@@ -781,11 +781,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">items</th>
 
-<td class="govuk-table__cell ">array</td>
+<td class="govuk-table__cell">array</td>
 
-<td class="govuk-table__cell ">Yes</td>
+<td class="govuk-table__cell">Yes</td>
 
-<td class="govuk-table__cell ">Array of checkbox items objects.</td>
+<td class="govuk-table__cell">Array of checkbox items objects.</td>
 
 </tr>
 
@@ -793,11 +793,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">items.{}.text (or) items.{}.html</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">Yes</td>
+<td class="govuk-table__cell">Yes</td>
 
-<td class="govuk-table__cell ">Text or HTML to use within each checkbox item label. If `html` is provided, the `text` argument will be ignored.</td>
+<td class="govuk-table__cell">Text or HTML to use within each checkbox item label. If `html` is provided, the `text` argument will be ignored.</td>
 
 </tr>
 
@@ -805,11 +805,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">items.{}.id</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Specific id attribute for the checkbox item. If ommited, then `idPrefix` string will be applied.</td>
+<td class="govuk-table__cell">Specific id attribute for the checkbox item. If ommited, then `idPrefix` string will be applied.</td>
 
 </tr>
 
@@ -817,11 +817,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">items.{}.name</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">Yes</td>
+<td class="govuk-table__cell">Yes</td>
 
-<td class="govuk-table__cell ">Specific name for the checkbox item. If ommited, then component global `name` string will be applied.</td>
+<td class="govuk-table__cell">Specific name for the checkbox item. If ommited, then component global `name` string will be applied.</td>
 
 </tr>
 
@@ -829,11 +829,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">items.{}.value</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">Yes</td>
+<td class="govuk-table__cell">Yes</td>
 
-<td class="govuk-table__cell ">Value for the checkbox input.</td>
+<td class="govuk-table__cell">Value for the checkbox input.</td>
 
 </tr>
 
@@ -841,11 +841,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">items.{}.label</th>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell">object</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Provide additional attributes and classes to each checkbox item label. See [label](../label/README.md#component-arguments) component for more details.</td>
+<td class="govuk-table__cell">Provide additional attributes and classes to each checkbox item label. See [label](../label/README.md#component-arguments) component for more details.</td>
 
 </tr>
 
@@ -853,11 +853,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">items.{}.hint</th>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell">object</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Provide optional hint to each checkbox item. See `hint` component for more details.</td>
+<td class="govuk-table__cell">Provide optional hint to each checkbox item. See `hint` component for more details.</td>
 
 </tr>
 
@@ -865,11 +865,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">items.{}.checked</th>
 
-<td class="govuk-table__cell ">boolean</td>
+<td class="govuk-table__cell">boolean</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">If true, checkbox will be checked.</td>
+<td class="govuk-table__cell">If true, checkbox will be checked.</td>
 
 </tr>
 
@@ -877,11 +877,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">items.{}.conditional</th>
 
-<td class="govuk-table__cell ">boolean</td>
+<td class="govuk-table__cell">boolean</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">If true, content provided will be revealed when the item is checked.</td>
+<td class="govuk-table__cell">If true, content provided will be revealed when the item is checked.</td>
 
 </tr>
 
@@ -889,11 +889,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">items.{}.conditional.html</th>
 
-<td class="govuk-table__cell ">boolean</td>
+<td class="govuk-table__cell">boolean</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Provide content for the conditional reveal.</td>
+<td class="govuk-table__cell">Provide content for the conditional reveal.</td>
 
 </tr>
 
@@ -901,11 +901,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">items.{}.disabled</th>
 
-<td class="govuk-table__cell ">boolean</td>
+<td class="govuk-table__cell">boolean</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">If true, checkbox will be disabled.</td>
+<td class="govuk-table__cell">If true, checkbox will be disabled.</td>
 
 </tr>
 
@@ -913,11 +913,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">items.{}.attributes</th>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell">object</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the checkbox input tag.</td>
+<td class="govuk-table__cell">Any extra HTML attributes (for example data attributes) to add to the checkbox input tag.</td>
 
 </tr>
 
@@ -925,11 +925,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">classes</th>
 
-<td class="govuk-table__cell ">string</td>
+<td class="govuk-table__cell">string</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Optional additional classes to add to the checkboxes container.</td>
+<td class="govuk-table__cell">Optional additional classes to add to the checkboxes container.</td>
 
 </tr>
 
@@ -937,11 +937,11 @@ If you are using Nunjucks,then macros take the following arguments
 
 <th class="govuk-table__header" scope="row">attributes</th>
 
-<td class="govuk-table__cell ">object</td>
+<td class="govuk-table__cell">object</td>
 
-<td class="govuk-table__cell ">No</td>
+<td class="govuk-table__cell">No</td>
 
-<td class="govuk-table__cell ">Any extra HTML attributes (for example data attributes) to add to the checkboxes container.</td>
+<td class="govuk-table__cell">Any extra HTML attributes (for example data attributes) to add to the checkboxes container.</td>
 
 </tr>
 
