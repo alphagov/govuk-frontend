@@ -10,7 +10,7 @@ then you will need to do some additional work to support Internet Explorer 8
 4. [Include the IE8 stylesheet in your project](#including-the-ie8-stylesheet-in-your-project)
 
 Once you have completed these steps, you will be able to [write CSS that targets
-IE8 in your own application styles](#writing-styles-that-target-ie8).
+IE8 in your own application styles](#writing-ie8-specific-styles).
 
 If you are using the distributed versions of GOV.UK Frontend that already
 include an IE8-specific stylesheet then you can include that in your project,

@@ -72,4 +72,4 @@ Class names within this layer use an additional prefix `-!-`, for example
 
 
 
-[ITCSS]: (http://www.creativebloq.com/web-design/manage-large-css-projects-itcss-101517528)
+[ITCSS]: http://www.creativebloq.com/web-design/manage-large-css-projects-itcss-101517528

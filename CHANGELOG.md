@@ -994,7 +994,7 @@ You can now initialize individual components like so:
 
 - Restructure project to enable it to be published as a single package
 
-  The [new project structure]((./src/README.md)) matches our ITCSS inspired layers and is published as a single package as `@govuk-frontend/frontend`.
+  The [new project structure](./src/README.md) matches our ITCSS inspired layers and is published as a single package as `@govuk-frontend/frontend`.
 
   You will need to:
 
