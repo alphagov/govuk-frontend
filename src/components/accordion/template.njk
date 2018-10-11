@@ -1,7 +1,7 @@
 <div class="govuk-accordion" data-module="accordion">
 
   {% for item in params.items %}
-    <div class="govuk-accordion__section">
+    <div class="govuk-accordion__section {% if item.expanded %}govuk-accordion__section--expanded" {% endif %}">
       <div class="govuk-accordion__section-header">
         <h2 class="govuk-heading-m">{{ item.label }}</h2>
       </div>

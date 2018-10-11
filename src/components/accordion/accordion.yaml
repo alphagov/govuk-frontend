@@ -3,6 +3,7 @@ examples:
   data:
     items:
       - label: Section A
+        expanded: true
         content:
           html: |
             <ul class="govuk-list govuk-list--bullet">
