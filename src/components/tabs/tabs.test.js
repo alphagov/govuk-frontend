@@ -133,6 +133,14 @@ describe('/components/tabs', () => {
         const currentTabPanelIsHidden = await page.evaluate(() => document.getElementById('past-week').classList.contains('govuk-tabs__panel--hidden'))
         expect(currentTabPanelIsHidden).toBeFalsy()
       })
+      it('should only update based on hashes that are tabs', async () => {
+        await page.goto(baseUrl + '/components/tabs/tabs-with-anchor-in-panel/preview', { waitUntil: 'load' })
+
+        await page.click('[href="#anchor"]')
+
+        const activeElementId = await page.evaluate(() => document.activeElement.id)
+        expect(activeElementId).toEqual('anchor')
+      })
     })
 
     describe('when rendered on a small device', () => {
