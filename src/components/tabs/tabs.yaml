@@ -165,3 +165,22 @@ examples:
                 </tr>
               </tbody>
             </table>
+
+- name: tabs-with-anchor-in-panel
+  description: Ensure that anchors that are in tab panels work correctly
+  readme: false
+  data:
+    items:
+      - label: Tab 1
+        id: tab-1
+        panel:
+          html: |
+            <h2 class="govuk-heading-l">Tab 1</h2>
+            <p>Testing that when you click the anchor it moves to the anchor point successfully</p>
+            <a class="govuk-link" href="#anchor">Anchor</a>
+            <a id="anchor" tabIndex="0">Anchor Point</a>
+      - label: Tab 2
+        id: tab-2
+        panel:
+          html: |
+            <h2 class="govuk-heading-l">Tab 2</h2>

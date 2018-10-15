@@ -22,6 +22,10 @@
 
 🔧 Fixes:
 
+- Fix anchor links in tabs component panels
+
+  ([PR #1031](https://github.com/alphagov/govuk-frontend/pull/1031))
+
 - Pull Request Title goes here
 
   Description goes here (optional)
