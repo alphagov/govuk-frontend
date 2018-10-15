@@ -105,9 +105,11 @@ Tabs.prototype.teardown = function () {
 
 Tabs.prototype.onHashChange = function (e) {
   var hash = window.location.hash
-  if (!this.hasTab(hash)) {
+  var $tabWithHash = this.getTab(hash)
+  if (!$tabWithHash) {
     return
   }
+
   // Prevent changing the hash
   if (this.changingHash) {
     this.changingHash = false
@@ -116,15 +118,10 @@ Tabs.prototype.onHashChange = function (e) {
 
   // Show either the active tab according to the URL's hash or the first tab
   var $previousTab = this.getCurrentTab()
-  var $activeTab = this.getTab(hash) || this.$tabs[0]
 
   this.hideTab($previousTab)
-  this.showTab($activeTab)
-  $activeTab.focus()
-}
-
-Tabs.prototype.hasTab = function (hash) {
-  return this.$module.querySelector(hash)
+  this.showTab($tabWithHash)
+  $tabWithHash.focus()
 }
 
 Tabs.prototype.hideTab = function ($tab) {
