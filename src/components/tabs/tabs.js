@@ -138,7 +138,7 @@ Tabs.prototype.showTab = function ($tab) {
 }
 
 Tabs.prototype.getTab = function (hash) {
-  return this.$module.querySelector('a[role="tab"][href="' + hash + '"]')
+  return this.$module.querySelector('.govuk-tabs__tab[href="' + hash + '"]')
 }
 
 Tabs.prototype.setAttributes = function ($tab) {
