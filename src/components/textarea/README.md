@@ -163,6 +163,87 @@ Find out when to use the textarea component in your service in the [GOV.UK Desig
       }
     }) }}
 
+### Textarea with width-10 class
+
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/textarea/with-width-10-class/preview)
+
+#### Markup
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="textarea-width-10">
+        Full address
+      </label>
+
+      <textarea class="govuk-textarea govuk-textarea--width-10" id="textarea-width-10" name="address" rows="5"></textarea>
+    </div>
+
+#### Macro
+
+    {% from "textarea/macro.njk" import govukTextarea %}
+
+    {{ govukTextarea({
+      "id": "textarea-width-10",
+      "classes": "govuk-textarea--width-10",
+      "name": "address",
+      "label": {
+        "text": "Full address"
+      }
+    }) }}
+
+### Textarea with width-20 class
+
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/textarea/with-width-20-class/preview)
+
+#### Markup
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="textarea-width-20">
+        Full address
+      </label>
+
+      <textarea class="govuk-textarea govuk-textarea--width-20" id="textarea-width-20" name="address" rows="5"></textarea>
+    </div>
+
+#### Macro
+
+    {% from "textarea/macro.njk" import govukTextarea %}
+
+    {{ govukTextarea({
+      "id": "textarea-width-20",
+      "classes": "govuk-textarea--width-20",
+      "name": "address",
+      "label": {
+        "text": "Full address"
+      }
+    }) }}
+
+### Textarea with width-30 class
+
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/textarea/with-width-30-class/preview)
+
+#### Markup
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="textarea-width-30">
+        Full address
+      </label>
+
+      <textarea class="govuk-textarea govuk-textarea--width-30" id="textarea-width-30" name="address" rows="5"></textarea>
+    </div>
+
+#### Macro
+
+    {% from "textarea/macro.njk" import govukTextarea %}
+
+    {{ govukTextarea({
+      "id": "textarea-width-30",
+      "classes": "govuk-textarea--width-30",
+      "name": "address",
+      "label": {
+        "text": "Full address"
+      }
+    }) }}
+
 ## Requirements
 
 ### Build tool configuration

@@ -176,6 +176,165 @@ Find out when to use the select component in your service in the [GOV.UK Design 
       ]
     }) }}
 
+### Select with width-10 class
+
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/select/with-width-10-class/preview)
+
+#### Markup
+
+    <div class="govuk-form-group">
+      <h1 class="govuk-label-wrapper">
+        <label class="govuk-label" for="select-width-10">
+          Label text goes here
+        </label>
+
+      </h1>
+
+      <select class="govuk-select govuk-select--width-10" id="select-width-10" name="select-width-10">
+
+        <option value="1">GOV.UK frontend option 1</option>
+
+        <option value="2">GOV.UK frontend option 2</option>
+
+        <option value="3">GOV.UK frontend option 3</option>
+
+      </select>
+    </div>
+
+#### Macro
+
+    {% from "select/macro.njk" import govukSelect %}
+
+    {{ govukSelect({
+      "id": "select-width-10",
+      "name": "select-width-10",
+      "classes": "govuk-select--width-10",
+      "label": {
+        "text": "Label text goes here",
+        "isPageHeading": true
+      },
+      "items": [
+        {
+          "value": 1,
+          "text": "GOV.UK frontend option 1"
+        },
+        {
+          "value": 2,
+          "text": "GOV.UK frontend option 2"
+        },
+        {
+          "value": 3,
+          "text": "GOV.UK frontend option 3"
+        }
+      ]
+    }) }}
+
+### Select with width-20 class
+
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/select/with-width-20-class/preview)
+
+#### Markup
+
+    <div class="govuk-form-group">
+      <h1 class="govuk-label-wrapper">
+        <label class="govuk-label" for="select-width-20">
+          Label text goes here
+        </label>
+
+      </h1>
+
+      <select class="govuk-select govuk-select--width-20" id="select-width-20" name="select-width-20">
+
+        <option value="1">GOV.UK frontend option 1</option>
+
+        <option value="2">GOV.UK frontend option 2</option>
+
+        <option value="3">GOV.UK frontend option 3</option>
+
+      </select>
+    </div>
+
+#### Macro
+
+    {% from "select/macro.njk" import govukSelect %}
+
+    {{ govukSelect({
+      "id": "select-width-20",
+      "name": "select-width-20",
+      "classes": "govuk-select--width-20",
+      "label": {
+        "text": "Label text goes here",
+        "isPageHeading": true
+      },
+      "items": [
+        {
+          "value": 1,
+          "text": "GOV.UK frontend option 1"
+        },
+        {
+          "value": 2,
+          "text": "GOV.UK frontend option 2"
+        },
+        {
+          "value": 3,
+          "text": "GOV.UK frontend option 3"
+        }
+      ]
+    }) }}
+
+### Select with width-30 class
+
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/select/with-width-30-class/preview)
+
+#### Markup
+
+    <div class="govuk-form-group">
+      <h1 class="govuk-label-wrapper">
+        <label class="govuk-label" for="select-width-30">
+          Label text goes here
+        </label>
+
+      </h1>
+
+      <select class="govuk-select govuk-select--width-30" id="select-width-30" name="select-width-30">
+
+        <option value="1">GOV.UK frontend option 1</option>
+
+        <option value="2">GOV.UK frontend option 2</option>
+
+        <option value="3">GOV.UK frontend option 3</option>
+
+      </select>
+    </div>
+
+#### Macro
+
+    {% from "select/macro.njk" import govukSelect %}
+
+    {{ govukSelect({
+      "id": "select-width-30",
+      "name": "select-width-30",
+      "classes": "govuk-select--width-30",
+      "label": {
+        "text": "Label text goes here",
+        "isPageHeading": true
+      },
+      "items": [
+        {
+          "value": 1,
+          "text": "GOV.UK frontend option 1"
+        },
+        {
+          "value": 2,
+          "text": "GOV.UK frontend option 2"
+        },
+        {
+          "value": 3,
+          "text": "GOV.UK frontend option 3"
+        }
+      ]
+    }) }}
+
 ### Select with full width override
 
 [Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/select/with-full-width-override/preview)
@@ -183,11 +342,11 @@ Find out when to use the select component in your service in the [GOV.UK Design 
 #### Markup
 
     <div class="govuk-form-group">
-      <label class="govuk-label" for="select-1">
+      <label class="govuk-label" for="select-width-full">
         Label text goes here
       </label>
 
-      <select class="govuk-select govuk-!-width-full" id="select-1" name="select-1">
+      <select class="govuk-select govuk-!-width-full" id="select-width-full" name="select-width-full">
 
         <option value="1">GOV.UK frontend option 1</option>
 
@@ -203,8 +362,8 @@ Find out when to use the select component in your service in the [GOV.UK Design 
     {% from "select/macro.njk" import govukSelect %}
 
     {{ govukSelect({
-      "id": "select-1",
-      "name": "select-1",
+      "id": "select-width-full",
+      "name": "select-width-full",
       "classes": "govuk-!-width-full",
       "label": {
         "text": "Label text goes here"

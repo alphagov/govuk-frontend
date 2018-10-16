@@ -20,6 +20,16 @@
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
+- Add width class modifiers to <select> and <textarea>, for example:
+
+  .govuk-select--width-20
+  .govuk-select--width-30
+
+  .govuk-textarea--width-20
+  .govuk-textarea--width-30
+
+  ([PR #1016](https://github.com/alphagov/govuk-frontend/pull/1016))
+
 🔧 Fixes:
 
 - Fix anchor links in tabs component panels
