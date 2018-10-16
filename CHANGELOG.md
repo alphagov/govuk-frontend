@@ -26,6 +26,10 @@
 
   ([PR #1031](https://github.com/alphagov/govuk-frontend/pull/1031))
 
+- Fix IE8 support in builds in the `dist/` folder
+
+  ([PR #1035](https://github.com/alphagov/govuk-frontend/pull/1035))
+
 - Pull Request Title goes here
 
   Description goes here (optional)
