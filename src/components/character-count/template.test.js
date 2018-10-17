@@ -156,6 +156,18 @@ describe('Character count', () => {
     })
   })
 
+  describe('when it is set to Welsh', () => {
+    it('renders with welsh data attribute', () => {
+      const $ = render('character-count', {
+        id: 'character-count-in-welsh',
+        welsh: true
+      })
+
+      const $component = $('.govuk-character-count')
+      expect($component.attr('data-welsh')).toEqual('true')
+    })
+  })
+
   describe('with dependant components', () => {
     it('have correct nesting order', () => {
       const $ = render('character-count', {

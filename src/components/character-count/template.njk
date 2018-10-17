@@ -6,7 +6,8 @@
 <div class="govuk-character-count" data-module="character-count"
 {%- if params.maxlength %} data-maxlength="{{ params.maxlength }}"{% endif %}
 {%- if params.threshold %} data-threshold="{{ params.threshold }}"{% endif %}
-{%- if params.maxwords %} data-maxwords="{{ params.maxwords }}"{% endif %}>
+{%- if params.maxwords %} data-maxwords="{{ params.maxwords }}"{% endif %}
+{%- if params.welsh %} data-welsh="{{ params.welsh }}"{% endif %}>
   {{ govukTextarea({
     id: params.id,
     name: params.name,
@@ -27,6 +28,10 @@
     attributes: params.attributes
   }) }}
   <span id="{{ params.id }}-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
-    You can enter up to {{ params.maxlength or params.maxwords }} {{'words' if params.maxwords else 'characters' }}
+    {% if params.welsh %}
+      Mi cewch cofnodi fyny at {{ params.maxlength or params.maxwords }} {{'gair' if params.maxwords else 'cymeriad' }}
+    {% else %}
+      You can enter up to {{ params.maxlength or params.maxwords }} {{'words' if params.maxwords else 'characters' }}
+    {% endif %}
   </span>
 </div>

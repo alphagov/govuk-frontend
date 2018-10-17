@@ -9,7 +9,8 @@ function CharacterCount ($module) {
 
 CharacterCount.prototype.defaults = {
   characterCountAttribute: 'data-maxlength',
-  wordCountAttribute: 'data-maxwords'
+  wordCountAttribute: 'data-maxwords',
+  welshAttribute: 'data-welsh'
 }
 
 // Initialize component
@@ -26,12 +27,26 @@ CharacterCount.prototype.init = function () {
 
   // Determine the limit attribute (characters or words)
   var countAttribute = this.defaults.characterCountAttribute
+  var units = 'characters'
   if (this.options.maxwords) {
     countAttribute = this.defaults.wordCountAttribute
+    units = 'words'
   }
 
   // Save the element limit
   this.maxLength = $module.getAttribute(countAttribute)
+  this.rawUnderLimitMessage = 'You have ? ' + units + ' remaining'
+  this.rawOverLimitMessage = 'You have ? ' + units + ' too many'
+
+  if ($module.getAttribute(this.defaults.welshAttribute)) {
+    units = 'cymeriad'
+    if (this.options.maxwords) {
+      units = 'gair'
+    }
+
+    this.rawUnderLimitMessage = 'Mae ganddoch ? ' + units + ' yn weddill'
+    this.rawOverLimitMessage = 'Mae ganddoch ? ' + units + ' yn ormod'
+  }
 
   // Check for limit
   if (!this.maxLength) {
@@ -138,6 +153,8 @@ CharacterCount.prototype.updateCountMessage = function () {
   var currentLength = this.count(countElement.value)
   var maxLength = this.maxLength
   var remainingNumber = maxLength - currentLength
+  var rawUnderLimitMessage = this.rawUnderLimitMessage
+  var rawOverLimitMessage = this.rawOverLimitMessage
 
   // Set threshold if presented in options
   var thresholdPercent = options.threshold ? options.threshold : 0
@@ -160,18 +177,8 @@ CharacterCount.prototype.updateCountMessage = function () {
   }
 
   // Update message
-  var charVerb = 'remaining'
-  var charNoun = 'character'
-  var displayNumber = remainingNumber
-  if (options.maxwords) {
-    charNoun = 'word'
-  }
-  charNoun = charNoun + ((remainingNumber === -1 || remainingNumber === 1) ? '' : 's')
-
-  charVerb = (remainingNumber < 0) ? 'too many' : 'remaining'
-  displayNumber = Math.abs(remainingNumber)
-
-  countMessage.innerHTML = 'You have ' + displayNumber + ' ' + charNoun + ' ' + charVerb
+  var displayNumber = Math.abs(remainingNumber)
+  countMessage.innerHTML = remainingNumber < 0 ? rawOverLimitMessage.replace('?', displayNumber) : rawUnderLimitMessage.replace('?', displayNumber)
 }
 
 CharacterCount.prototype.handleFocus = function () {

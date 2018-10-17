@@ -79,5 +79,11 @@
         "type": "object",
         "required": false,
         "description": "HTML attributes (for example data attributes) to add to the textarea."
+    },
+    {
+        "name": "welsh",
+        "type": "boolean",
+        "required": false,
+        "description": "If set to true the count message is displayed in Welsh (default is in English)."
     }
 ]

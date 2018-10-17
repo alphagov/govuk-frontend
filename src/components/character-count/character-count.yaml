@@ -135,3 +135,22 @@ examples:
       threshold: 75
       label:
         text: Full address
+
+  - name: (Cymraeg)
+    data:
+      id: textarea-in-welsh
+      name: address-in-welsh
+      maxlength: 10
+      welsh: true
+      label:
+        text: Cyfeiriad llawn
+        isPageHeading: true
+
+  - name: with word count (Cymraeg)
+    data:
+      id: word-count-in-welsh
+      name: word-count-in-welsh
+      maxwords: 10
+      welsh: true
+      label:
+        text: Cyfeiriad llawn

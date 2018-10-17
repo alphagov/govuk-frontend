@@ -27,7 +27,9 @@ Find out when to use the character count component in your service in the [GOV.U
     </div>
 
       <span id="more-detail-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
-        You can enter up to 10 characters
+
+          You can enter up to 10 characters
+
       </span>
     </div>
 
@@ -65,7 +67,9 @@ Find out when to use the character count component in your service in the [GOV.U
     </div>
 
       <span id="with-hint-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
-        You can enter up to 10 characters
+
+          You can enter up to 10 characters
+
       </span>
     </div>
 
@@ -105,7 +109,9 @@ Find out when to use the character count component in your service in the [GOV.U
     </div>
 
       <span id="with-default-value-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
-        You can enter up to 100 characters
+
+          You can enter up to 100 characters
+
       </span>
     </div>
 
@@ -147,7 +153,9 @@ Find out when to use the character count component in your service in the [GOV.U
     </div>
 
       <span id="exceeding-characters-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
-        You can enter up to 10 characters
+
+          You can enter up to 10 characters
+
       </span>
     </div>
 
@@ -185,7 +193,9 @@ Find out when to use the character count component in your service in the [GOV.U
     </div>
 
       <span id="custom-rows-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
-        You can enter up to 10 characters
+
+          You can enter up to 10 characters
+
       </span>
     </div>
 
@@ -223,7 +233,9 @@ Find out when to use the character count component in your service in the [GOV.U
     </div>
 
       <span id="textarea-with-page-heading-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
-        You can enter up to 10 characters
+
+          You can enter up to 10 characters
+
       </span>
     </div>
 
@@ -258,7 +270,9 @@ Find out when to use the character count component in your service in the [GOV.U
     </div>
 
       <span id="word-count-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
-        You can enter up to 10 words
+
+          You can enter up to 10 words
+
       </span>
     </div>
 
@@ -292,7 +306,9 @@ Find out when to use the character count component in your service in the [GOV.U
     </div>
 
       <span id="with-threshold-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
-        You can enter up to 10 characters
+
+          You can enter up to 10 characters
+
       </span>
     </div>
 
@@ -307,6 +323,84 @@ Find out when to use the character count component in your service in the [GOV.U
       "threshold": 75,
       "label": {
         "text": "Full address"
+      }
+    }) }}
+
+### Character count (Cymraeg)
+
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/character-count/(Cymraeg)/preview)
+
+#### Markup
+
+    <div class="govuk-character-count" data-module="character-count" data-maxlength="10" data-welsh="true">
+
+    <div class="govuk-form-group">
+      <h1 class="govuk-label-wrapper">
+        <label class="govuk-label" for="textarea-in-welsh">
+          Cyfeiriad llawn
+        </label>
+
+      </h1>
+
+      <textarea class="govuk-textarea js-character-count " id="textarea-in-welsh" name="address-in-welsh" rows="5"></textarea>
+    </div>
+
+      <span id="textarea-in-welsh-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
+
+          Mi cewch cofnodi fyny at 10 cymeriad
+
+      </span>
+    </div>
+
+#### Macro
+
+    {% from "character-count/macro.njk" import govukCharacterCount %}
+
+    {{ govukCharacterCount({
+      "id": "textarea-in-welsh",
+      "name": "address-in-welsh",
+      "maxlength": 10,
+      "welsh": true,
+      "label": {
+        "text": "Cyfeiriad llawn",
+        "isPageHeading": true
+      }
+    }) }}
+
+### Character count with word count (Cymraeg)
+
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/character-count/with-word-count-(Cymraeg)/preview)
+
+#### Markup
+
+    <div class="govuk-character-count" data-module="character-count" data-maxwords="10" data-welsh="true">
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="word-count-in-welsh">
+        Cyfeiriad llawn
+      </label>
+
+      <textarea class="govuk-textarea js-character-count " id="word-count-in-welsh" name="word-count-in-welsh" rows="5"></textarea>
+    </div>
+
+      <span id="word-count-in-welsh-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
+
+          Mi cewch cofnodi fyny at 10 gair
+
+      </span>
+    </div>
+
+#### Macro
+
+    {% from "character-count/macro.njk" import govukCharacterCount %}
+
+    {{ govukCharacterCount({
+      "id": "word-count-in-welsh",
+      "name": "word-count-in-welsh",
+      "maxwords": 10,
+      "welsh": true,
+      "label": {
+        "text": "Cyfeiriad llawn"
       }
     }) }}
 
