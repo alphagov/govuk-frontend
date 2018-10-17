@@ -14,6 +14,12 @@
 
 🆕 New features:
 
+- Add important parameter to visually hidden sass mixins
+
+  Optional parameter added to `govuk-visually-hidden` and `govuk-visually-hidden-focusable` mixins (defaults to true)
+
+  ([PR #1037](https://github.com/alphagov/govuk-frontend/pull/1037))
+
 - Pull Request Title goes here
 
   Description goes here (optional)
