@@ -111,7 +111,9 @@ gulp.task('js:compile', () => {
       // UMD allows the published bundle to work in CommonJS and in the browser.
       format: 'umd'
     }))
-    .pipe(gulpif(isDist, uglify()))
+    .pipe(gulpif(isDist, uglify({
+      ie8: true
+    })))
     .pipe(gulpif(isDist,
       rename({
         basename: 'govuk-frontend',
