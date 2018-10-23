@@ -7,4 +7,33 @@
   @include govuk-grid-column(two-thirds);
   @include govuk-grid-column(three-quarters);
   @include govuk-grid-column(full);
+
+  // Breakpoint specific classes - Tablet sizes
+
+  @include govuk-grid-column($class: "govuk-grid-column--at-tablet", $at: tablet, $width: "full");
+
+  @include govuk-grid-column($class: "govuk-grid-column--at-tablet", $at: tablet, $width: "one-half");
+
+  @include govuk-grid-column($class: "govuk-grid-column--at-tablet", $at: tablet, $width: "two-thirds");
+
+  @include govuk-grid-column($class: "govuk-grid-column--at-tablet", $at: tablet, $width: "one-third");
+
+  @include govuk-grid-column($class: "govuk-grid-column--at-tablet", $at: tablet, $width: "three-quarters");
+
+  @include govuk-grid-column($class: "govuk-grid-column--at-tablet", $at: tablet, $width: "one-quarter");
+
+
+  // Breakpoint specific classes - Desktop sizes
+
+  @include govuk-grid-column($class: "govuk-grid-column--at-desktop", $at: desktop, $width: "full");
+
+  @include govuk-grid-column($class: "govuk-grid-column--at-desktop", $at: desktop, $width: "one-half");
+
+  @include govuk-grid-column($class: "govuk-grid-column--at-desktop", $at: desktop, $width: "two-thirds");
+
+  @include govuk-grid-column($class: "govuk-grid-column--at-desktop", $at: desktop, $width: "one-third");
+
+  @include govuk-grid-column($class: "govuk-grid-column--at-desktop", $at: desktop, $width: "three-quarters");
+
+  @include govuk-grid-column($class: "govuk-grid-column--at-desktop", $at: desktop, $width: "one-quarter");
 }
