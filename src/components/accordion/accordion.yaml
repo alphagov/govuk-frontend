@@ -24,6 +24,7 @@ params:
 examples:
 - name: default
   data:
+    id: default-example
     items:
       - label: Section A
         content:
@@ -40,6 +41,7 @@ examples:
 
 - name: with one section open
   data:
+    id: one-section-open-example
     items:
       - label: Section A
         expanded: true
@@ -57,6 +59,7 @@ examples:
 
 - name: with all sections already open
   data:
+    id: all-sections-open-examplw
     items:
       - label: Section A
         expanded: true
