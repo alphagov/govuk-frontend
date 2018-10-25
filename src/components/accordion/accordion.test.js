@@ -50,11 +50,11 @@ describe('/components/accordion', () => {
         const numberOfExampleSections = 2
 
         for (var i = 0; i < numberOfExampleSections; i++) {
-          const sectionExpanded = await page.evaluate(function (i) {
-            return document.body.querySelector('.govuk-accordion .govuk-accordion__section:nth-of-type(' + (2 + i) + ')').getAttribute('aria-expanded')
+          const sectionHeaderButtonExpanded = await page.evaluate(function (i) {
+            return document.body.querySelector('.govuk-accordion .govuk-accordion__section:nth-of-type(' + (2 + i) + ') .govuk-accordion__section-header-button').getAttribute('aria-expanded')
           }, i)
 
-          expect(sectionExpanded).toEqual('false')
+          expect(sectionHeaderButtonExpanded).toEqual('false')
         }
       })
 
@@ -67,7 +67,7 @@ describe('/components/accordion', () => {
 
         var openOrCloseAllButtonText = await page.evaluate(() => document.body.querySelector('.govuk-accordion__expand-all').textContent)
 
-        expect(openOrCloseAllButtonText).toEqual('Close all')
+        expect(openOrCloseAllButtonText).toEqual('Close all sections')
       })
 
       it('should should open both sections when the Opan all button is clicked', async () => {
@@ -75,13 +75,14 @@ describe('/components/accordion', () => {
 
         await page.click('.govuk-accordion__expand-all')
 
-        const firstSectionExpanded = await page.evaluate(() => document.body.querySelector('.govuk-accordion .govuk-accordion__section:nth-of-type(2)').getAttribute('aria-expanded'))
+        const firstSectionHeaderButtonExpanded = await page.evaluate(() => document.body.querySelectorAll('.govuk-accordion__section').item(0).querySelector('.govuk-accordion__button').getAttribute('aria-expanded'))
 
-        expect(firstSectionExpanded).toEqual('true')
+        expect(firstSectionHeaderButtonExpanded).toBeTruthy()
 
-        const secondSectionExpanded = await page.evaluate(() => document.body.querySelector('.govuk-accordion .govuk-accordion__section:nth-of-type(2)').getAttribute('aria-expanded'))
+        const secondSectionHeaderButtonExpanded = await page.evaluate(() =>
+          document.body.querySelectorAll('.govuk-accordion__section').item(1).querySelector('.govuk-accordion__button').getAttribute('aria-expanded'))
 
-        expect(secondSectionExpanded).toEqual('true')
+        expect(secondSectionHeaderButtonExpanded).toBeTruthy()
       })
 
       it('should already have all sections open if they have the expanded class', async () => {
@@ -91,16 +92,16 @@ describe('/components/accordion', () => {
         const numberOfExampleSections = 2
 
         for (var i = 0; i < numberOfExampleSections; i++) {
-          const sectionExpanded = await page.evaluate(function (i) {
-            return document.body.querySelector('.govuk-accordion .govuk-accordion__section:nth-of-type(' + (2 + i) + ')').getAttribute('aria-expanded')
+          const sectionHeaderButtonExpanded = await page.evaluate(function (i) {
+            return document.body.querySelector('.govuk-accordion .govuk-accordion__section:nth-of-type(' + (2 + i) + ') .govuk-accordion__section-header-button').getAttribute('aria-expanded')
           }, i)
 
-          expect(sectionExpanded).toEqual('true')
+          expect(sectionHeaderButtonExpanded).toEqual('true')
         }
 
         const openOrCloseAllButtonText = await page.evaluate(() => document.body.querySelector('.govuk-accordion__expand-all').textContent)
 
-        expect(openOrCloseAllButtonText).toEqual('Close all')
+        expect(openOrCloseAllButtonText).toEqual('Close all sections')
       })
     })
   })

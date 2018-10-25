@@ -33,13 +33,17 @@ Accordion.prototype.init = function () {
     return
   }
 
-  nodeListForEach(this.$sections, function ($section) {
+  this.moduleId = $module.getAttribute('id')
+
+  nodeListForEach(this.$sections, function ($section, i) {
     // Set header attributes
     var header = $section.querySelector('.govuk-accordion__section-header')
-    this.setHeaderAttributes(header)
+    this.setHeaderAttributes(header, i)
 
-    var sectionExpanded = $section.classList.contains('govuk-accordion__section--expanded')
-    $section.setAttribute('aria-expanded', sectionExpanded)
+    var panel = $section.querySelector('.govuk-accordion__section-body')
+    this.setPanelAttributes(panel, i)
+
+    this.setExpanded(this.isExpanded($section), $section)
 
     // Handle events
     header.addEventListener('keypress', this.onKeyPressed.bind(this, $section))
@@ -68,7 +72,7 @@ Accordion.prototype.init = function () {
 
 // Open/close section
 Accordion.prototype.onToggleExpanded = function ($section) {
-  var expanded = ($section.getAttribute('aria-expanded') === 'true')
+  var expanded = this.isExpanded($section)
   this.setExpanded(!expanded, $section)
 
   // See if OpenAll button text should be updated
@@ -87,7 +91,8 @@ Accordion.prototype.onKeyPressed = function (section, event) {
 
 // Toggle aria-expanded when section opened/closed
 Accordion.prototype.setExpanded = function (expanded, $section) {
-  $section.setAttribute('aria-expanded', expanded)
+  var $button = $section.querySelector('.govuk-accordion__section-header-button')
+  $button.setAttribute('aria-expanded', expanded)
 
   if (expanded) {
     $section.classList.add('govuk-accordion__section--expanded')
@@ -101,17 +106,24 @@ Accordion.prototype.setExpanded = function (expanded, $section) {
 }
 
 Accordion.prototype.isExpanded = function ($section) {
-  return ($section.getAttribute('aria-expanded') === 'true')
+  return ($section.classList.contains('govuk-accordion__section--expanded'))
 }
 
-Accordion.prototype.setHeaderAttributes = function ($header) {
+Accordion.prototype.setHeaderAttributes = function ($header, index) {
   $header.setAttribute('tabindex', '0')
-  $header.setAttribute('role', 'button')
+
+  var $button = $header.querySelector('.govuk-accordion__section-header-button')
+  $button.setAttribute('aria-controls', this.moduleId + '-panel-' + index)
+  $button.setAttribute('role', 'button')
 
   var icon = document.createElement('span')
   icon.setAttribute('class', 'govuk-accordion--icon')
 
   $header.appendChild(icon)
+}
+
+Accordion.prototype.setPanelAttributes = function ($panel, index) {
+  $panel.setAttribute('role', 'region')
 }
 
 Accordion.prototype.setOpenAllButtonAttributes = function ($button) {

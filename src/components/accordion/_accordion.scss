@@ -46,6 +46,8 @@
   // Section headers have a pointer cursor as an additional affordance
   .govuk-accordion.with-js .govuk-accordion__section-header {
     position: relative;
+    margin-top: 0;
+    margin-bottom: 0;
     padding-top: 14px;
     padding-bottom: 12px;
     cursor: pointer;
@@ -55,7 +57,9 @@
   .govuk-accordion.with-js .govuk-heading-m {
     margin-top: 0;
     margin-bottom: 0;
+    border-width: 0;
     color: $govuk-link-colour;
+    background-color: transparent;
   }
 
   // Section headers have a grey background on hover as an additional affodance
