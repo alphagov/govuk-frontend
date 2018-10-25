@@ -93,6 +93,28 @@ describe('Radios', () => {
     expect($component.attr('data-second-attribute')).toEqual('second-value')
   })
 
+  it('render a custom class on the form group', () => {
+    const $ = render('radios', {
+      name: 'example-name',
+      items: [
+        {
+          value: 'yes',
+          text: 'Yes'
+        },
+        {
+          value: 'no',
+          text: 'No'
+        }
+      ],
+      formGroup: {
+        classes: 'custom-group-class'
+      }
+    })
+
+    const $formGroup = $('.govuk-form-group')
+    expect($formGroup.hasClass('custom-group-class')).toBeTruthy()
+  })
+
   describe('items', () => {
     it('render a matching label and input using name by default', () => {
       const $ = render('radios', {
