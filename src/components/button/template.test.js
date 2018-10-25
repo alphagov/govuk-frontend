@@ -218,6 +218,15 @@ describe('Button', () => {
       const $component = $('.govuk-button')
       expect($component.attr('type')).toEqual('button')
     })
+
+    it('renders with preventDoubleClick attribute', () => {
+      const $ = render('button', {
+        preventDoubleClick: true
+      })
+
+      const $component = $('.govuk-button')
+      expect($component.attr('data-prevent-double-click')).toEqual('true')
+    })
   })
 
   describe('implicitly as no "element" param is set', () => {
