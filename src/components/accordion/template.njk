@@ -7,7 +7,7 @@
       <h2 class="govuk-accordion__section-header">
         <div class="govuk-accordion__section-header-button govuk-heading-m" id="{{ id }}-heading-{{ loop.index0 }}">{{ item.label }}</div>
       </h2>
-      <div id="{{ id }}-panel-{{ loop.index0 }}" class="govuk-accordion__section-body" aria-labelledby="{{ id }}-heading-{{ loop.index0 }}">
+      <div id="{{ id }}-panel-{{ loop.index0 }}" class="govuk-accordion__section-panel" aria-labelledby="{{ id }}-heading-{{ loop.index0 }}">
         {{ item.content.html | safe if item.content.html else item.content.text }}
       </div>
     </div>

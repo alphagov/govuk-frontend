@@ -40,7 +40,7 @@ Accordion.prototype.init = function () {
     var header = $section.querySelector('.govuk-accordion__section-header')
     this.setHeaderAttributes(header, i)
 
-    var panel = $section.querySelector('.govuk-accordion__section-body')
+    var panel = $section.querySelector('.govuk-accordion__section-panel')
     this.setPanelAttributes(panel, i)
 
     this.setExpanded(this.isExpanded($section), $section)

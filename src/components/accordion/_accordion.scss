@@ -20,12 +20,12 @@
   }
 
   // Hide the body of collapsed sections
-  .govuk-accordion.with-js .govuk-accordion__section .govuk-accordion__section-body {
+  .govuk-accordion.with-js .govuk-accordion__section .govuk-accordion__section-panel {
     display: none;
   }
 
   // Show the body of expanded sections
-  .govuk-accordion.with-js .govuk-accordion__section--expanded .govuk-accordion__section-body {
+  .govuk-accordion.with-js .govuk-accordion__section--expanded .govuk-accordion__section-panel {
     display: block;
   }
 
