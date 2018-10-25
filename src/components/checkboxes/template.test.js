@@ -100,6 +100,28 @@ describe('Checkboxes', () => {
     expect($formGroup.length).toBeTruthy()
   })
 
+  it('render a custom class on the form group', () => {
+    const $ = render('checkboxes', {
+      name: 'example-name',
+      items: [
+        {
+          value: '1',
+          text: 'Option 1'
+        },
+        {
+          value: '2',
+          text: 'Option 2'
+        }
+      ],
+      formGroup: {
+        classes: 'custom-group-class'
+      }
+    })
+
+    const $formGroup = $('.govuk-form-group')
+    expect($formGroup.hasClass('custom-group-class')).toBeTruthy()
+  })
+
   describe('items', () => {
     it('render a matching label and input using name by default', () => {
       const $ = render('checkboxes', {
