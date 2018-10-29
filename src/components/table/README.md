@@ -442,6 +442,18 @@ If you are using Nunjucks,then macros take the following arguments
 
 <tr class="govuk-table__row">
 
+<th class="govuk-table__header" scope="row">rows.[].attributes</th>
+
+<td class="govuk-table__cell">object</td>
+
+<td class="govuk-table__cell">No</td>
+
+<td class="govuk-table__cell">Any extra HTML attributes (for example data attributes) to add to the cell.</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
 <th class="govuk-table__header" scope="row">head</th>
 
 <td class="govuk-table__cell">array</td>
@@ -497,6 +509,18 @@ If you are using Nunjucks,then macros take the following arguments
 <td class="govuk-table__cell">No</td>
 
 <td class="govuk-table__cell">Specify format of a cell. Currently we only use "numeric".</td>
+
+</tr>
+
+<tr class="govuk-table__row">
+
+<th class="govuk-table__header" scope="row">head.[].attributes</th>
+
+<td class="govuk-table__cell">object</td>
+
+<td class="govuk-table__cell">No</td>
+
+<td class="govuk-table__cell">Any extra HTML attributes (for example data attributes) to add to the cell.</td>
 
 </tr>
 

@@ -418,4 +418,96 @@ describe('Table', () => {
     expect($component.attr('attribute-1')).toEqual('yes')
     expect($component.attr('attribute-2')).toEqual('no')
   })
+
+  it('renders with attributes on a head cell ', () => {
+    const $ = render('table', {
+      'head': [
+        {
+          'text': 'Month you apply',
+          'attributes': {
+            'id': 'some-unique-id'
+          }
+        },
+        {
+          'text': 'Rate for bicycles',
+          'format': 'numeric'
+        },
+        {
+          'text': 'Rate for vehicles',
+          'format': 'numeric'
+        }
+      ],
+      'rows': [
+        [
+          {
+            'text': 'January'
+          },
+          {
+            'text': '£85',
+            'format': 'numeric'
+          }
+        ],
+        [
+          {
+            'text': 'February'
+          },
+          {
+            'text': '£165',
+            'format': 'numeric'
+          }
+        ]
+      ]
+    })
+
+    const $component = $('.govuk-table')
+    const $tableHeadCell = $component.find('.govuk-table__head .govuk-table__header')
+
+    expect($tableHeadCell.eq(0).attr('id')).toMatch('some-unique-id')
+  })
+
+  it('renders with attributes on a body cell ', () => {
+    const $ = render('table', {
+      'head': [
+        {
+          'text': 'Month you apply'
+        },
+        {
+          'text': 'Rate for bicycles',
+          'format': 'numeric'
+        },
+        {
+          'text': 'Rate for vehicles',
+          'format': 'numeric'
+        }
+      ],
+      'rows': [
+        [
+          {
+            'text': 'January',
+            'attributes': {
+              'id': 'some-unique-id'
+            }
+          },
+          {
+            'text': '£85',
+            'format': 'numeric'
+          }
+        ],
+        [
+          {
+            'text': 'February'
+          },
+          {
+            'text': '£165',
+            'format': 'numeric'
+          }
+        ]
+      ]
+    })
+
+    const $component = $('.govuk-table')
+    const $tableBodyCell = $component.find('.govuk-table__body .govuk-table__cell')
+
+    expect($tableBodyCell.eq(0).attr('id')).toMatch('some-unique-id')
+  })
 })
