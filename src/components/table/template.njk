@@ -12,7 +12,7 @@
       {%- if item.format %} govuk-table__header--{{ item.format }}{% endif %}
       {%- if item.classes %} {{ item.classes }}{% endif %}"
       {%- if item.colspan %} colspan="{{ item.colspan }}"{% endif %}
-      {%- if item.rowspan %} rowspan="{{ item.rowspan }}"{% endif %} scope="col">{{ item.html |safe if item.html else item.text }}</th>
+      {%- if item.rowspan %} rowspan="{{ item.rowspan }}"{% endif %}{% for attribute, value in item.attributes %} {{ attribute }}="{{ value }}"{% endfor %} scope="col">{{ item.html |safe if item.html else item.text }}</th>
     {% endfor %}
     </tr>
   </thead>
@@ -28,13 +28,13 @@
       {%- if cell.format %} govuk-table__cell--{{ cell.format }}{% endif %}
       {%- if cell.classes %} {{ cell.classes }}{% endif %}"
       {%- if cell.colspan %} colspan="{{ cell.colspan }}"{% endif %}
-      {%- if cell.rowspan %} rowspan="{{ cell.rowspan }}"{% endif %}>{{ cell.html | safe if cell.html else cell.text }}</td>
+      {%- if cell.rowspan %} rowspan="{{ cell.rowspan }}"{% endif %}{% for attribute, value in cell.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>{{ cell.html | safe if cell.html else cell.text }}</td>
       {% else %}
       <td class="govuk-table__cell 
       {%- if cell.format %} govuk-table__cell--{{ cell.format }}{% endif %}
       {%- if cell.classes %} {{ cell.classes }}{% endif %}"
       {%- if cell.colspan %} colspan="{{ cell.colspan }}"{% endif %}
-      {%- if cell.rowspan %} rowspan="{{ cell.rowspan }}"{% endif %}>{{ cell.html | safe if cell.html else cell.text }}</td>
+      {%- if cell.rowspan %} rowspan="{{ cell.rowspan }}"{% endif %}{% for attribute, value in cell.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>{{ cell.html | safe if cell.html else cell.text }}</td>
       {% endif %}
     {% endfor %}
     </tr>

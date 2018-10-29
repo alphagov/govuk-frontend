@@ -20,6 +20,13 @@
 
   ([PR #1037](https://github.com/alphagov/govuk-frontend/pull/1037))
 
+- Add support for attributes on table cells
+
+  Can now use the familiar `attrubutes: {}` pattern to add various
+  attributes such as `id` or `data-attr` to cells within tables
+
+  ([PR #1045](https://github.com/alphagov/govuk-frontend/pull/1045))
+
 - Pull Request Title goes here
 
   Description goes here (optional)
