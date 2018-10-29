@@ -33,6 +33,7 @@ Follow the below example to add the CSS and JavaScript files to your HTML templa
 
 ```html
 <!DOCTYPE html>
+<html>
   <head>
     <title>Example</title>
     <!--[if !IE 8]><!-->
