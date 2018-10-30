@@ -49,6 +49,7 @@ Accordion.prototype.init = function () {
 
   // Create "Open all" button and set attributes
   this.$openAllButton = document.createElement('button')
+  this.$openAllButton.setAttribute('type', 'button')
   this.setOpenAllButtonAttributes(this.$openAllButton)
 
   // Create controls and set attributes
@@ -107,11 +108,18 @@ Accordion.prototype.isExpanded = function ($section) {
 }
 
 Accordion.prototype.setHeaderAttributes = function ($header, index) {
-  $header.setAttribute('tabindex', '0')
-
   var $button = $header.querySelector('.govuk-accordion__section-header-button')
-  $button.setAttribute('aria-controls', this.moduleId + '-panel-' + (index + 1))
-  $button.setAttribute('role', 'button')
+
+  // Copy existing div element to an actual button element, for improved accessibility.
+  // TODO: this probably needs to be more robust, and copy all attributes and child nodes?
+  var $buttonAsButton = document.createElement('button')
+  $buttonAsButton.setAttribute('class', $button.getAttribute('class'))
+  $buttonAsButton.setAttribute('type', 'button')
+  $buttonAsButton.setAttribute('id', this.moduleId + '-heading-' + (index + 1))
+  $buttonAsButton.setAttribute('aria-controls', this.moduleId + '-panel-' + (index + 1))
+  $buttonAsButton.textContent = $button.textContent
+  $header.removeChild($button)
+  $header.appendChild($buttonAsButton)
 
   var icon = document.createElement('span')
   icon.setAttribute('class', 'govuk-accordion--icon')
