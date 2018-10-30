@@ -113,7 +113,7 @@ Accordion.prototype.setHeaderAttributes = function ($header, index) {
   $header.setAttribute('tabindex', '0')
 
   var $button = $header.querySelector('.govuk-accordion__section-header-button')
-  $button.setAttribute('aria-controls', this.moduleId + '-panel-' + index)
+  $button.setAttribute('aria-controls', this.moduleId + '-panel-' + (index + 1))
   $button.setAttribute('role', 'button')
 
   var icon = document.createElement('span')

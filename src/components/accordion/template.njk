@@ -3,11 +3,11 @@
 <div class="govuk-accordion" data-module="accordion" id="{{ id }}">
 
   {% for item in params.items %}
-    <div class="govuk-accordion__section {% if item.expanded %}govuk-accordion__section--expanded" {% endif %}">
+    <div class="govuk-accordion__section {% if item.expanded %}govuk-accordion__section--expanded"{% endif %}">
       <h2 class="govuk-accordion__section-header">
-        <div class="govuk-accordion__section-header-button govuk-heading-m" id="{{ id }}-heading-{{ loop.index0 }}">{{ item.label }}</div>
+        <div class="govuk-accordion__section-header-button govuk-heading-m" id="{{ id }}-heading-{{ loop.index }}">{{ item.label }}</div>
       </h2>
-      <div id="{{ id }}-panel-{{ loop.index0 }}" class="govuk-accordion__section-panel" aria-labelledby="{{ id }}-heading-{{ loop.index0 }}">
+      <div id="{{ id }}-panel-{{ loop.index }}" class="govuk-accordion__section-panel" aria-labelledby="{{ id }}-heading-{{ loop.index }}">
         {{ item.content.html | safe if item.content.html else item.content.text }}
       </div>
     </div>
