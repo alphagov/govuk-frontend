@@ -27,11 +27,11 @@
 
   ([PR #1045](https://github.com/alphagov/govuk-frontend/pull/1045))
 
-- Pull Request Title goes here
+- Allow form group classes on radios and checkboxes
 
-  Description goes here (optional)
+  We now provide a way to add classes to the radio and checkbox form-group wrapper
 
-  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+  ([PR #1043](https://github.com/alphagov/govuk-frontend/pull/1043))
 
 🔧 Fixes:
 
