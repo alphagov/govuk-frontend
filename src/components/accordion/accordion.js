@@ -40,9 +40,6 @@ Accordion.prototype.init = function () {
     var header = $section.querySelector('.govuk-accordion__section-header')
     this.setHeaderAttributes(header, i)
 
-    var panel = $section.querySelector('.govuk-accordion__section-panel')
-    this.setPanelAttributes(panel, i)
-
     this.setExpanded(this.isExpanded($section), $section)
 
     // Handle events
@@ -120,10 +117,6 @@ Accordion.prototype.setHeaderAttributes = function ($header, index) {
   icon.setAttribute('class', 'govuk-accordion--icon')
 
   $header.appendChild(icon)
-}
-
-Accordion.prototype.setPanelAttributes = function ($panel, index) {
-  $panel.setAttribute('role', 'region')
 }
 
 Accordion.prototype.setOpenAllButtonAttributes = function ($button) {
