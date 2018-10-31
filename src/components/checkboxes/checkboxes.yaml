@@ -14,6 +14,15 @@ params:
   required: false
   description: Options for the errorMessage component (e.g. text).
   isComponent: true
+- name: formGroup
+  type: object
+  required: false
+  description: Options for the form-group wrapper
+  params:
+  - name: classes
+    type: string
+    required: false
+    description: Optional classes to add to the form group (e.g. to show error state for the whole group)
 - name: idPrefix
   type: string
   required: false
@@ -337,6 +346,37 @@ examples:
         html: |
           <label class="govuk-label" for="contact-phone">Phone number</label>
           <input class="govuk-input govuk-!-width-one-third" name="contact-phone" type="text" id="contact-phone">
+    - value: text
+      text: Text message
+      conditional:
+        html: |
+          <label class="govuk-label" for="contact-text-message">Mobile phone number</label>
+          <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
+  
+- name: with optional form-group classes showing group error
+  readme: false
+  data:
+    idPrefix: how-contacted-checked
+    formGroup:
+      classes: 'govuk-form-group--error'
+    fieldset:
+      legend:
+        text: How do you want to be contacted?
+    items:
+    - value: email
+      text: Email
+      conditional:
+        html: |
+          <label class="govuk-label" for="context-email">Mobile phone number</label>
+          <input class="govuk-input govuk-!-width-one-third" name="context-email" type="text" id="context-email">
+    - value: phone
+      text: Phone
+      checked: true
+      conditional:
+        html: |
+          <label class="govuk-label" for="contact-phone">Phone number</label>
+          <span id="contact-phone-error" class="govuk-error-message">Problem with input</span>
+          <input class="govuk-input govuk-input--error govuk-!-width-one-third" name="contact-phone" type="text" id="contact-phone" aria-describedby="contact-phone-error">
     - value: text
       text: Text message
       conditional:
