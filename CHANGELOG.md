@@ -14,6 +14,24 @@
 
 🆕 New features:
 
+- Pull Request Title goes here
+
+  Description goes here (optional)
+
+  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+
+🔧 Fixes:
+
+- Pull Request Title goes here
+
+  Description goes here (optional)
+
+  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+
+## 2.3.0 (Feature release)
+
+🆕 New features:
+
 - Add important parameter to visually hidden sass mixins
 
   Optional parameter added to `govuk-visually-hidden` and `govuk-visually-hidden-focusable` mixins (defaults to true)
@@ -42,12 +60,6 @@
 - Fix IE8 support in builds in the `dist/` folder
 
   ([PR #1035](https://github.com/alphagov/govuk-frontend/pull/1035))
-
-- Pull Request Title goes here
-
-  Description goes here (optional)
-
-  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
 ## 2.2.0 (Feature release)
 

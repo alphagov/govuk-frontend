@@ -40,6 +40,12 @@
                 "type": "integer",
                 "required": false,
                 "description": "Specify how many rows a cell extends."
+            },
+            {
+                "name": "attributes",
+                "type": "object",
+                "required": false,
+                "description": "HTML attributes (for example data attributes) to add to the table cell."
             }
         ]
     },
@@ -84,6 +90,12 @@
                 "type": "integer",
                 "required": false,
                 "description": "Specify how many rows a cell extends."
+            },
+            {
+                "name": "attributes",
+                "type": "object",
+                "required": false,
+                "description": "HTML attributes (for example data attributes) to add to the table cell."
             }
         ]
     },

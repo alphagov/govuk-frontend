@@ -1130,9 +1130,11 @@ Tabs.prototype.teardown = function () {
 
 Tabs.prototype.onHashChange = function (e) {
   var hash = window.location.hash;
-  if (!this.hasTab(hash)) {
+  var $tabWithHash = this.getTab(hash);
+  if (!$tabWithHash) {
     return
   }
+
   // Prevent changing the hash
   if (this.changingHash) {
     this.changingHash = false;
@@ -1141,15 +1143,10 @@ Tabs.prototype.onHashChange = function (e) {
 
   // Show either the active tab according to the URL's hash or the first tab
   var $previousTab = this.getCurrentTab();
-  var $activeTab = this.getTab(hash) || this.$tabs[0];
 
   this.hideTab($previousTab);
-  this.showTab($activeTab);
-  $activeTab.focus();
-};
-
-Tabs.prototype.hasTab = function (hash) {
-  return this.$module.querySelector(hash)
+  this.showTab($tabWithHash);
+  $tabWithHash.focus();
 };
 
 Tabs.prototype.hideTab = function ($tab) {
@@ -1163,7 +1160,7 @@ Tabs.prototype.showTab = function ($tab) {
 };
 
 Tabs.prototype.getTab = function (hash) {
-  return this.$module.querySelector('a[role="tab"][href="' + hash + '"]')
+  return this.$module.querySelector('.govuk-tabs__tab[href="' + hash + '"]')
 };
 
 Tabs.prototype.setAttributes = function ($tab) {
