@@ -117,7 +117,16 @@ Accordion.prototype.setHeaderAttributes = function ($header, index) {
   $buttonAsButton.setAttribute('type', 'button')
   $buttonAsButton.setAttribute('id', this.moduleId + '-heading-' + (index + 1))
   $buttonAsButton.setAttribute('aria-controls', this.moduleId + '-panel-' + (index + 1))
-  $buttonAsButton.textContent = $button.textContent
+
+  for (var i = 0; i < $button.childNodes.length; i++) {
+
+    var child = $button.childNodes[i]
+    $button.removeChild(child)
+    $buttonAsButton.appendChild(child)
+
+  }
+  // $buttonAsButton.textContent = $button.textContent
+
   $header.removeChild($button)
   $header.appendChild($buttonAsButton)
 

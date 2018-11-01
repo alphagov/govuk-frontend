@@ -39,6 +39,28 @@ examples:
               <li>Example item 2</li>
             </ul>
 
+- name: with additional descriptions
+  data:
+    id: with-descriptions
+    items:
+      - label:
+          html: |
+            <h2 class="govuk-heading-m">Test</h2>
+            <p class="govuk-body">Additional description</p>
+        content:
+          html: |
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Example item 1</li>
+            </ul>
+      - label:
+          html: |
+            <h2 class="govuk-heading-m">Test 2</h2>
+            <p class="govuk-body">Additional description</p>
+        content:
+          html: |
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Example item 2</li>
+            </ul>
 - name: with one section open
   data:
     id: one-section-open-example

@@ -53,13 +53,24 @@
     cursor: pointer;
   }
 
-  // Headings in section headers have link colours as an additional affodance
-  .govuk-accordion.with-js .govuk-heading-m {
+  // Buttons within the headers don’t need default styling
+  .govuk-accordion.with-js .govuk-accordion__section-header button {
     margin-top: 0;
     margin-bottom: 0;
     border-width: 0;
-    color: $govuk-link-colour;
     background-color: transparent;
+    text-align: inherit;
+  }
+
+  // Headings in section headers have link colours as an additional affodance
+  .govuk-accordion.with-js .govuk-heading-m {
+    margin-bottom: govuk-spacing(2);
+    color: $govuk-link-colour;
+  }
+
+  // Body paragraphs in section headers don’t need as much margin below
+  .govuk-accordion.with-js .govuk-body {
+    margin-bottom: govuk-spacing(0);
   }
 
   // Section headers have a grey background on hover as an additional affodance
