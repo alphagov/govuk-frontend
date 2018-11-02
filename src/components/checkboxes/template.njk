@@ -12,11 +12,15 @@
 {% set describedBy = "" %}
 
 {% set isConditional = false %}
+
 {% for item in params.items %}
   {% if item.conditional %}
     {% set isConditional = true %}
   {% endif %}
 {% endfor %}
+
+{#- fieldset is false by default -#}
+{% set hasFieldset = true if params.fieldset else false %}
 
 {#- Capture the HTML so we can optionally nest it in a fieldset -#}
 {% set innerHtml %}
@@ -54,6 +58,8 @@
       <input class="govuk-checkboxes__input" id="{{ id }}" name="{{ name }}" type="checkbox" value="{{ item.value }}"
       {{-" checked" if item.checked }}
       {{-" disabled" if item.disabled }}
+      {#- fieldset is false by default -#}
+      {%- if (not hasFieldset) and ((describedBy | length) > 0) %} aria-describedby="{{ describedBy }}"{% endif -%}
       {%- if item.conditional %} data-aria-controls="{{ conditionalId }}"{% endif -%}
       {%- if hasHint %} aria-describedby="{{ itemHintId }}"{% endif -%}
       {%- for attribute, value in item.attributes %} {{ attribute }}="{{ value }}"{% endfor -%}>
