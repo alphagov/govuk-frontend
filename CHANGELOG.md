@@ -28,6 +28,15 @@
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
+- Single field with error should have 'aria-describeby' attribute
+
+  Although we discourage using checkboxes without fieldsets, this fix
+  ensures that if there are no fieldset then the aria-describeby will
+  still be usable by screenreaders by adding the element ids to the checkbox
+  input elements 'aria-describeby' attribute.
+
+  ([PR #1054](https://github.com/alphagov/govuk-frontend/pull/1054))
+
 ## 2.3.0 (Feature release)
 
 🆕 New features:
