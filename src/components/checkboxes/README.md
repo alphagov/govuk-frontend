@@ -510,6 +510,48 @@ Find out when to use the checkboxes component in your service in the [GOV.UK Des
       ]
     }) }}
 
+### Checkboxes with single option set aria-describeby on input
+
+[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-single-option-set-aria-describeby-on-input/preview)
+
+#### Markup
+
+    <div class="govuk-form-group govuk-form-group--error">
+
+      <span id="colours-error" class="govuk-error-message">
+        Please select an option
+      </span>
+
+      <div class="govuk-checkboxes">
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="colours-1" name="colours" type="checkbox" value="red" aria-describedby="colours-error">
+          <label class="govuk-label govuk-checkboxes__label" for="colours-1">
+            Red
+          </label>
+        </div>
+
+      </div>
+
+    </div>
+
+#### Macro
+
+    {% from "checkboxes/macro.njk" import govukCheckboxes %}
+
+    {{ govukCheckboxes({
+      "name": "colours",
+      "errorMessage": {
+        "text": "Please select an option"
+      },
+      "items": [
+        {
+          "value": "red",
+          "text": "Red"
+        }
+      ]
+    }) }}
+
 ### Checkboxes with all fieldset attributes
 
 [Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/checkboxes/with-all-fieldset-attributes/preview)

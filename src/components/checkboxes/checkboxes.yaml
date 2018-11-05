@@ -220,6 +220,15 @@ examples:
       - value: blue
         text: Blue
 
+- name: with single option set aria-describeby on input
+  data:
+    name: colours
+    errorMessage:
+      text: Please select an option
+    items:
+      - value: red
+        text: Red
+
 - name: with all fieldset attributes
   data:
     idPrefix: example
