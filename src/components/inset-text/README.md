@@ -4,6 +4,10 @@
 
 Use bordered inset text to draw attention to important content on the page.
 
+## Guidance
+
+Find out when to use the inset text component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/inset-text).
+
 ## Quick start examples
 
 ### Inset text
