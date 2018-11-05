@@ -18,7 +18,7 @@
 {% endblock %}
 
 {% block content %}
-<form action="/" method="post">
+<form action="/" method="post" style="margin-bottom: 100vh;">
 
   {{ govukErrorSummary({
     "titleText": "There is a problem",
@@ -115,7 +115,8 @@
   {{ govukDateInput({
     fieldset: {
       legend: {
-        text: 'Date Input'
+        text: 'Date Input',
+        classes: 'test-date-input-legend'
       }
     },
     id: 'dateinput',
@@ -143,7 +144,8 @@
   {{ govukDateInput({
     fieldset: {
       legend: {
-        text: 'Date Input'
+        text: 'Date Input',
+        classes: 'test-date-input2-legend'
       }
     },
     id: 'dateinput2',
@@ -185,6 +187,9 @@
     fieldset: {
       legend: {
         text: 'Radios'
+      },
+      attributes: {
+        id: 'test-radios'
       }
     },
     name: "radios",
@@ -208,6 +213,9 @@
     fieldset: {
       legend: {
         text: 'Checkboxes'
+      },
+      attributes: {
+        id: 'test-checkboxes'
       }
     },
     name: "checkboxes",
@@ -275,7 +283,10 @@
       "legend": {
         "text": "Conditional?"
       },
-      "classes": "govuk-radios--error"
+      "classes": "govuk-radios--error",
+      attributes: {
+        id: 'test-conditional-reveal'
+      }
     },
     "error": true,
     "items": [
