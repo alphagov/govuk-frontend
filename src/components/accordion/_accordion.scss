@@ -12,11 +12,16 @@
   // This is styled to look like a link not a button
   .govuk-accordion__expand-all {
     @include govuk-font($size: 16);
+    @include govuk-link-common;
     display: inline;
     border-width: 0;
     color: $govuk-link-colour;
     background: transparent;
     cursor: pointer;
+
+    &:focus {
+      background-color: transparent;
+    }
   }
 
   // Hide the body of collapsed sections
@@ -55,11 +60,16 @@
 
   // Buttons within the headers don’t need default styling
   .govuk-accordion.with-js .govuk-accordion__section-header button {
+    @include govuk-link-common;
     margin-top: 0;
     margin-bottom: 0;
     border-width: 0;
     background-color: transparent;
     text-align: inherit;
+
+    &:focus {
+      background-color: transparent;
+    }
   }
 
   // Headings in section headers have link colours as an additional affodance
