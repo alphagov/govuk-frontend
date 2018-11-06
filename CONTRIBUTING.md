@@ -16,6 +16,7 @@ We love contributions! We've compiled these docs to help you understand our cont
 - [Supported browsers](#supported-browsers)
 - [Commit hygiene](#commit-hygiene)
 - [Updating Changelog](#updating-changelog)
+- [Testing a release](#testing-a-release)
 
 ### For maintainers
 - [Application tasks](#running-application-tasks)
@@ -85,6 +86,9 @@ These sections follow [semantic versioning](https://semver.org/), where:
 See the [`CHANGELOG_TEMPLATE.md`](/docs/contributing/CHANGELOG_TEMPLATE.md) for an example for how this looks.
 
 Include the modified `CHANGELOG` in the PR.
+
+## Testing a release
+If you need to test a release, for example if you're contributing a new component see [Publishing pre-release of GOV.UK Frontend](/docs/contributing/publishing-a-pre-release.md).
 
 ## Application tasks
 
