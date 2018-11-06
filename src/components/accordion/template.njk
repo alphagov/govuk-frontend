@@ -1,17 +1,18 @@
 {% set id = params.id %}
+{% set headingLevel = params.headingLevel if params.headingLevel else 2 %}
 
 <div class="govuk-accordion" data-module="accordion" id="{{ id }}">
 
   {% for item in params.items %}
-    <div class="govuk-accordion__section {% if item.expanded %}govuk-accordion__section--expanded"{% endif %}">
-      <h2 class="govuk-accordion__section-header">
+    <div class="govuk-accordion__section {% if item.expanded %}govuk-accordion__section--expanded{% endif %}">
+      <h{{ headingLevel }} class="govuk-accordion__section-header">
 
         {% if item.label.html %}
           <div class="govuk-accordion__section-header-button" id="{{ id }}-heading-{{ loop.index }}">{{ item.label.html | safe }}</div>
         {% else %}
           <div class="govuk-accordion__section-header-button govuk-heading-m" id="{{ id }}-heading-{{ loop.index }}">{{ item.label }}</div>
         {% endif %}
-      </h2>
+      </h{{ headingLevel }}>
       <div id="{{ id }}-panel-{{ loop.index }}" class="govuk-accordion__section-panel" aria-labelledby="{{ id }}-heading-{{ loop.index }}">
         {{ item.content.html | safe if item.content.html else item.content.text }}
       </div>

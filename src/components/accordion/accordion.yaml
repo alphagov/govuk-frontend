@@ -3,10 +3,14 @@ params:
   type: string
   required: true
   description: Used to assign an `id` in the HTML for the accordion as a whole, and also a prefix for the `id`s of the section panels and the buttons that open them, so that those `id`s can be the target of `aria-labelledby` and `aria-control` attributes.
+- name: headingLevel
+  type: integer
+  required: false
+  description: Heading level, from 1 to 6. Default is 2.
 - name: items
   type: array
   required: true
-  descripion: An array of sections within the accordion.
+  description: An array of sections within the accordion.
   params:
     - name: label
       type: string
@@ -20,6 +24,10 @@ params:
       type: string
       required: true
       description: The HTML content of each section, which is hidden when the section is closed.
+    - name: expanded
+      type: boolean
+      required: false
+      description: Whether the section should be expaneded upon initial load or not. Defaults to false.
 
 examples:
 - name: default
