@@ -643,4 +643,12 @@ describe('Checkboxes', () => {
       expect(htmlWithClassName($, '.govuk-fieldset')).toMatchSnapshot()
     })
   })
+
+  describe('single checkbox without a fieldset', () => {
+    it('adds aria-describe to input if there is an error', () => {
+      const $ = render('checkboxes', examples["with single option set 'aria-describeby' on input"])
+      const $input = $('input')
+      expect($input.attr('aria-describedby')).toMatch('t-and-c-error')
+    })
+  })
 })

@@ -220,6 +220,16 @@ examples:
       - value: blue
         text: Blue
 
+- name: with single option set 'aria-describeby' on input
+  readme: false
+  data:
+    name: t-and-c
+    errorMessage:
+      text: Please accept the terms and conditions
+    items:
+      - value: yes
+        text: I agree to the terms and conditions
+
 - name: with all fieldset attributes
   data:
     idPrefix: example
