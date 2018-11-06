@@ -63,6 +63,10 @@ Accordion.prototype.init = function () {
   // Handle events
   this.$openAllButton.addEventListener('click', this.openOrCloseAllSections.bind(this))
 
+  // See if there is any state stored in sessionStorage and set the sections to
+  // open or closed.
+  this.readState()
+
   // See if OpenAll button text should be updated
   var areAllSectionsOpen = this.checkIfAllSectionsOpen()
   this.updateOpenAllButton(areAllSectionsOpen)
@@ -72,6 +76,9 @@ Accordion.prototype.init = function () {
 Accordion.prototype.onToggleExpanded = function ($section) {
   var expanded = this.isExpanded($section)
   this.setExpanded(!expanded, $section)
+
+  // Store the state in sessionStorage when a change is triggered
+  this.storeState()
 
   // See if OpenAll button text should be updated
   var areAllSectionsOpen = this.checkIfAllSectionsOpen()
@@ -119,11 +126,9 @@ Accordion.prototype.setHeaderAttributes = function ($header, index) {
   $buttonAsButton.setAttribute('aria-controls', this.moduleId + '-panel-' + (index + 1))
 
   for (var i = 0; i < $button.childNodes.length; i++) {
-
     var child = $button.childNodes[i]
     $button.removeChild(child)
     $buttonAsButton.appendChild(child)
-
   }
   // $buttonAsButton.textContent = $button.textContent
 
@@ -181,6 +186,67 @@ Accordion.prototype.checkIfAllSectionsOpen = function () {
   areAllSectionsOpen = sectionsCount === openSectionsCount
 
   return areAllSectionsOpen
+}
+
+// Check for `window.sessionStorage`, and that it actually works.
+var helper = {
+  checkForSessionStorage: function () {
+    var testString = 'this is the test string'
+    var result
+    try {
+      window.sessionStorage.setItem(testString, testString)
+      result = window.sessionStorage.getItem(testString) === testString.toString()
+      window.sessionStorage.removeItem(testString)
+      return result
+    } catch (exception) {
+      // console.log('Notice: sessionStorage not available.')
+    }
+  }
+}
+
+// Set the state of the accordions in sessionStorage
+Accordion.prototype.storeState = function () {
+  if (helper.checkForSessionStorage()) {
+    nodeListForEach(this.$sections, function (element) {
+      // We need a unique way of identifying each panel in the accordion. Since
+      // an `#id` should be unique and an `id` is required for `aria-` attributes
+      // `id` can be safely used.
+      var panelId = element.querySelector('h2 [aria-controls]') ? element.querySelector('h2 [aria-controls]').getAttribute('aria-controls') : false
+      var panelState = element.querySelector('h2 [aria-expanded]') ? element.querySelector('h2 [aria-expanded]').getAttribute('aria-expanded') : false
+
+      if (panelId === false) {
+        console.error(new Error('No aria controls present in accordion heading.'))
+      }
+
+      if (panelState === false) {
+        console.error(new Error('No aria expanded present in accordion heading.'))
+      }
+
+      // Only set the state when both `panelId` and `panelState` are taken from the DOM.
+      if (panelId && panelState) {
+        window.sessionStorage.setItem(panelId, panelState)
+      }
+    })
+  }
+}
+
+// Read the state of the accordions from sessionStorage
+Accordion.prototype.readState = function () {
+  if (helper.checkForSessionStorage()) {
+    nodeListForEach(this.$sections, function ($section) {
+      var panelId = $section.querySelector('h2 [aria-controls]') ? $section.querySelector('h2 [aria-controls]').getAttribute('aria-controls') : false
+      var panelState
+
+      if (panelId) {
+        panelState = window.sessionStorage.getItem(panelId)
+      }
+
+      if (panelState !== null) {
+        var trueState = panelState === 'true'
+        this.setExpanded(trueState, $section)
+      }
+    }.bind(this))
+  }
 }
 
 export default Accordion

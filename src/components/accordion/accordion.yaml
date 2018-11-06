@@ -81,7 +81,7 @@ examples:
 
 - name: with all sections already open
   data:
-    id: all-sections-open-examplw
+    id: all-sections-open-example
     items:
       - label: Section A
         expanded: true
