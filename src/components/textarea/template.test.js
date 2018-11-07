@@ -163,6 +163,17 @@ describe('Textarea', () => {
       expect($component.hasClass('govuk-textarea--error')).toBeTruthy()
     })
 
+    it('renders with a form group wrapper that has extra classes', () => {
+      const $ = render('textarea', {
+        formGroup: {
+          classes: 'extra-class'
+        }
+      })
+
+      const $formGroup = $('.govuk-form-group')
+      expect($formGroup.hasClass('extra-class')).toBeTruthy()
+    })
+
     it('renders with a form group wrapper that has an error state', () => {
       const $ = render('textarea', {
         errorMessage: {

@@ -20,6 +20,12 @@
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
+- Allow form group classes on date, file upload, input, select and textarea
+
+  All remaining form groups should allow additional classes, like with radios and checkboxes
+
+  ([PR #1059](https://github.com/alphagov/govuk-frontend/pull/1059))
+
 🔧 Fixes:
 
 - Pull Request Title goes here

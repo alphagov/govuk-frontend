@@ -149,6 +149,17 @@ describe('Select', () => {
       const $formGroup = $('.govuk-form-group')
       expect($formGroup.length).toBeTruthy()
     })
+
+    it('renders with a form group wrapper that has extra classes', () => {
+      const $ = render('select', {
+        formGroup: {
+          classes: 'extra-class'
+        }
+      })
+
+      const $formGroup = $('.govuk-form-group')
+      expect($formGroup.hasClass('extra-class')).toBeTruthy()
+    })
   })
 
   describe('when they include option attributes', () => {

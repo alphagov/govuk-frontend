@@ -71,6 +71,17 @@ describe('File upload', () => {
       const $formGroup = $('.govuk-form-group')
       expect($formGroup.length).toBeTruthy()
     })
+
+    it('renders with a form group wrapper that has extra classes', () => {
+      const $ = render('file-upload', {
+        formGroup: {
+          classes: 'extra-class'
+        }
+      })
+
+      const $formGroup = $('.govuk-form-group')
+      expect($formGroup.hasClass('extra-class')).toBeTruthy()
+    })
   })
 
   describe('when it includes a hint', () => {
