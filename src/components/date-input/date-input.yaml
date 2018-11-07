@@ -42,6 +42,15 @@ params:
   required: false
   description: Options for the error message.
   isComponent: true
+- name: formGroup
+  type: object
+  required: false
+  description: Options for the form-group wrapper
+  params:
+  - name: classes
+    type: string
+    required: false
+    description: Optional classes to add to the form group (e.g. to show error state for the whole group)
 - name: fieldset
   type: object
   required: false
@@ -168,3 +177,15 @@ examples:
         text: What is your date of birth?
     hint:
       text: For example, 31 3 1980
+- name: with optional form-group classes
+  readme: false
+  data:
+    id: dob
+    namePrefix: dob
+    fieldset:
+      legend:
+        text: What is your date of birth?
+    hint:
+      text: For example, 31 3 1980
+    formGroup:
+      classes: extra-class

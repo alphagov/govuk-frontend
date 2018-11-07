@@ -43,6 +43,15 @@ params:
   required: false
   description: Options for the errorMessage component (e.g. text).
   isComponent: true
+- name: formGroup
+  type: object
+  required: false
+  description: Options for the form-group wrapper
+  params:
+  - name: classes
+    type: string
+    required: false
+    description: Optional classes to add to the form group (e.g. to show error state for the whole group)
 - name: classes
   type: string
   required: false
@@ -117,6 +126,28 @@ examples:
     classes: govuk-!-width-full
     label:
       text: Label text goes here
+    items:
+      -
+        value: 1
+        text: GOV.UK frontend option 1
+      -
+        value: 2
+        text: GOV.UK frontend option 2
+        selected: true
+      -
+        value: 3
+        text: GOV.UK frontend option 3
+        disabled: true
+- name: with optional form-group classes
+  readme: false
+  data:
+    id: select-1
+    name: select-1
+    classes: govuk-!-width-full
+    label:
+      text: Label text goes here
+    formGroup:
+      classes: extra-class
     items:
       -
         value: 1

@@ -26,6 +26,15 @@ params:
   required: false
   description: Options for the errorMessage component.
   isComponent: true
+- name: formGroup
+  type: object
+  required: false
+  description: Options for the form-group wrapper
+  params:
+  - name: classes
+    type: string
+    required: false
+    description: Optional classes to add to the form group (e.g. to show error state for the whole group)
 - name: classes
   type: string
   required: false
@@ -76,3 +85,12 @@ examples:
     label:
       text: Upload a file
       isPageHeading: true
+- name: with optional form-group classes
+  readme: false
+  data:
+    id: file-upload-1
+    name: file-upload-1
+    label:
+      text: Upload a file
+    formGroup:
+      classes: extra-class
