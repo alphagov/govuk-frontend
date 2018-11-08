@@ -17,9 +17,6 @@ import { nodeListForEach } from '../../common'
 import '../../vendor/polyfills/Function/prototype/bind'
 import '../../vendor/polyfills/Element/prototype/classList'
 
-var KEY_ENTER = 13
-var KEY_SPACE = 32
-
 function Accordion ($module) {
   this.$module = $module
   this.$sections = $module.querySelectorAll('.govuk-accordion__section')
@@ -43,7 +40,6 @@ Accordion.prototype.init = function () {
     this.setExpanded(this.isExpanded($section), $section)
 
     // Handle events
-    header.addEventListener('keypress', this.onKeyPressed.bind(this, $section))
     header.addEventListener('click', this.onToggleExpanded.bind(this, $section))
   }.bind(this))
 
@@ -85,14 +81,6 @@ Accordion.prototype.onToggleExpanded = function ($section) {
   this.updateOpenAllButton(areAllSectionsOpen)
 }
 
-Accordion.prototype.onKeyPressed = function (section, event) {
-  if (event.keyCode === KEY_ENTER || event.keyCode === KEY_SPACE) {
-    event.preventDefault()
-
-    // Open/close section
-    this.onToggleExpanded(section)
-  }
-}
 
 // Toggle aria-expanded when section opened/closed
 Accordion.prototype.setExpanded = function (expanded, $section) {
