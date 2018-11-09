@@ -22,9 +22,10 @@
 
   .govuk-footer {
     @include govuk-font($size: 16);
-    @include govuk-responsive-padding(7, "top");
-    @include govuk-responsive-padding(5, "bottom");
-
+    @include govuk-not-ie8 {
+      @include govuk-responsive-padding(7, "top");
+      @include govuk-responsive-padding(5, "bottom");
+    }
     border-top: 1px solid $govuk-footer-border-top;
     color: $govuk-footer-text;
     background: $govuk-footer-background;
@@ -70,6 +71,10 @@
     display: flex; // Support: Flexbox
     margin-right: -$govuk-gutter-half;
     margin-left: -$govuk-gutter-half;
+    @include govuk-if-ie8 {
+      @include govuk-responsive-padding(7, "top");
+      @include govuk-responsive-padding(5, "bottom");
+    }
     flex-wrap: wrap; // Support: Flexbox
     align-items: flex-end; // Support: Flexbox
     justify-content: center; // Support: Flexbox
