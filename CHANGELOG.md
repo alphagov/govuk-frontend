@@ -28,11 +28,9 @@
 
 🔧 Fixes:
 
-- Pull Request Title goes here
+- Fix footer styles in IE8
 
-  Description goes here (optional)
-
-  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+  ([PR #1061](https://github.com/alphagov/govuk-frontend/pull/1061))
 
 - Single field with error should have 'aria-describeby' attribute
 
