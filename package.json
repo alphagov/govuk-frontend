@@ -11,6 +11,7 @@
     "heroku": "gulp copy-assets && gulp sassdoc && node app/start.js",
     "pre-release": "node bin/check-nvmrc.js && ./bin/pre-release.sh",
     "release": "node bin/check-nvmrc.js && ./bin/release.sh",
+    "release-to-branch": "node bin/check-nvmrc.js && ./bin/release-to-branch.sh",
     "build:package": "node bin/check-nvmrc.js && gulp build:package --destination 'package' && npm run test:build:package",
     "build:dist": "node bin/check-nvmrc.js && gulp build:dist --destination 'dist' && npm run test:build:dist",
     "test": "standard && gulp test && gulp copy-assets && jest --testPathIgnorePatterns='after-*'",
