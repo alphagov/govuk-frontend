@@ -4,7 +4,9 @@ We use pre-releases when:
 - We are working on a new contribution and want to see it in the Design System website
 - We want to try an experimental feature as if it's pushed to npm.
 
-This is done by pushing a release to a new branch which can be installed by npm.
+This is done by pushing the files used for a GOV.UK Frontend release (the contents of the `package` directory) to a new branch which can be installed by npm as if it was a released npm package.
+
+No changes get published to npm as part of the process.
 
 1. Checkout the branch you want to pre-release and pull latest changes.
 
