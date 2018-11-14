@@ -18,7 +18,7 @@
 {% endblock %}
 
 {% block content %}
-<form action="/" method="post">
+<form action="/" method="post" style="margin-bottom: 100vh;">
 
   {{ govukErrorSummary({
     "titleText": "There is a problem",
@@ -71,7 +71,7 @@
 
   {{ govukInput({
     label: {
-      "text": 'Input'
+      "text": 'Label for input'
     },
     id: "input",
     name: "input",
@@ -82,7 +82,7 @@
 
   {{ govukTextarea({
     label: {
-      "text": 'Textarea'
+      "text": 'Label for textarea'
     },
     id: "textarea",
     name: "textarea",
@@ -93,7 +93,7 @@
 
   {{ govukSelect({
     label: {
-      "text": 'Select'
+      "text": 'Label for select'
     },
     id: "select",
     name: "select",
@@ -115,7 +115,8 @@
   {{ govukDateInput({
     fieldset: {
       legend: {
-        text: 'Date Input'
+        text: 'Label for date input',
+        classes: 'test-date-input-legend'
       }
     },
     id: 'dateinput',
@@ -143,7 +144,8 @@
   {{ govukDateInput({
     fieldset: {
       legend: {
-        text: 'Date Input'
+        text: 'Label for date input',
+        classes: 'test-date-input2-legend'
       }
     },
     id: 'dateinput2',
@@ -172,7 +174,7 @@
 
   {{ govukFileUpload({
     label: {
-      "text": 'File'
+      "text": 'Label for file upload'
     },
     id: "file",
     name: "file",
@@ -184,7 +186,10 @@
   {{ govukRadios({
     fieldset: {
       legend: {
-        text: 'Radios'
+        text: 'Legend for radios'
+      },
+      attributes: {
+        id: 'test-radios'
       }
     },
     name: "radios",
@@ -193,12 +198,12 @@
     },
     items:[
       {
-        text: 'One',
+        text: 'Label for first radio button',
         value: 'one',
         id: 'radios'
       },
       {
-        text: 'Two',
+        text: 'Label for second radio button',
         value: 'two'
       }
     ]
@@ -207,7 +212,10 @@
   {{ govukCheckboxes({
     fieldset: {
       legend: {
-        text: 'Checkboxes'
+        text: 'Legend for checkboxes'
+      },
+      attributes: {
+        id: 'test-checkboxes'
       }
     },
     name: "checkboxes",
@@ -216,12 +224,12 @@
     },
     items:[
       {
-        text: 'One',
+        text: 'Label for first checkbox',
         value: 'one',
         id: "checkboxes"
       },
       {
-        text: 'Two',
+        text: 'Label for second checkbox',
         value: 'two'
       }
     ]
@@ -235,7 +243,7 @@
     },
     items:[
       {
-        text: 'I agree to send delicious doughnuts to the Design System team at GDS',
+        text: 'Label for single checkbox',
         value: 'agree',
         id: 'single-checkbox'
       }
@@ -245,7 +253,7 @@
   {% set yesField %}
   {{ govukInput({
     label: {
-      "text": 'Text input'
+      "text": 'Label for revealed text input'
     },
     id: "yes-input",
     name: "yes-input",
@@ -258,7 +266,7 @@
   {% set noField %}
   {{ govukInput({
     label: {
-      "text": 'Text input'
+      "text": 'Label for revealed text input'
     },
     id: "no-input",
     name: "no-input",
@@ -273,9 +281,12 @@
     "name": "conditional",
     "fieldset": {
       "legend": {
-        "text": "Conditional?"
+        "text": "Legend for conditionally revealed content"
       },
-      "classes": "govuk-radios--error"
+      "classes": "govuk-radios--error",
+      attributes: {
+        id: 'test-conditional-reveal'
+      }
     },
     "error": true,
     "items": [

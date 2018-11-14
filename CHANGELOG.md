@@ -20,6 +20,19 @@
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
+- Scroll to label or legend when linked from error summary
+
+  When users click links in the error summary, the corresponding label or legend
+  will now be moved to the top of the viewport, rather than the input. This
+  means that the context for the input remains on-screen.
+
+  ([PR #1056](https://github.com/alphagov/govuk-frontend/pull/1056))
+
+- Label or legend are announced for NVDA users when navigating to an input from
+  the error summary
+
+  ([PR #1056](https://github.com/alphagov/govuk-frontend/pull/1056))
+
 - Allow form group classes on date, file upload, input, select and textarea
 
   All remaining form groups should allow additional classes, like with radios and checkboxes
