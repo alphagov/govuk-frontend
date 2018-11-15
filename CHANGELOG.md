@@ -47,6 +47,10 @@
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
+- Remove implicit dependency on Element for classList
+
+  ([PR #1063](https://github.com/alphagov/govuk-frontend/pull/1063))
+
 - Single field with error should have 'aria-describeby' attribute
 
   Although we discourage using checkboxes without fieldsets, this fix
