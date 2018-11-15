@@ -206,11 +206,11 @@ Accordion.prototype.storeState = function () {
       var panelId = element.querySelector('h2 [aria-controls]') ? element.querySelector('h2 [aria-controls]').getAttribute('aria-controls') : false
       var panelState = element.querySelector('h2 [aria-expanded]') ? element.querySelector('h2 [aria-expanded]').getAttribute('aria-expanded') : false
 
-      if (panelId === false) {
+      if (panelId === false && console) {
         console.error(new Error('No aria controls present in accordion heading.'))
       }
 
-      if (panelState === false) {
+      if (panelState === false && console) {
         console.error(new Error('No aria expanded present in accordion heading.'))
       }
 
