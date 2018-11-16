@@ -22,6 +22,7 @@
     padding: govuk-spacing(2) govuk-spacing(4) govuk-spacing(2) 0;
     border-bottom: 1px solid $govuk-border-colour;
     text-align: left;
+    vertical-align: top;
     // GOV.UK Elements sets the font-size and line-height for all headers and cells
     // in tables.
     @include govuk-compatibility(govuk_elements) {
