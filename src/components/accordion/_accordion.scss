@@ -5,6 +5,10 @@
 
 @include govuk-exports("govuk/component/accordion") {
 
+  .govuk-accordion {
+    @include govuk-responsive-margin(6, "bottom");
+  }
+
   .govuk-accordion__controls {
     text-align: right;
   }
@@ -27,6 +31,13 @@
   // Hide the body of collapsed sections
   .govuk-accordion.with-js .govuk-accordion__section .govuk-accordion__section-panel {
     display: none;
+    @include govuk-responsive-padding(3, "top");
+    @include govuk-responsive-padding(3, "bottom");
+  }
+
+  // Remove the bottom margin from the last item inside the panel
+  .govuk-accordion.with-js .govuk-accordion__section .govuk-accordion__section-panel > :last-child {
+    margin-bottom: 0;
   }
 
   // Show the body of expanded sections
@@ -54,6 +65,9 @@
     margin-top: 0;
     margin-bottom: 0;
     padding-top: 14px;
+
+    // Safe area on the right to avoid clashing with icon
+    padding-right: 40px;
     padding-bottom: 12px;
     cursor: pointer;
   }
@@ -63,6 +77,8 @@
     @include govuk-link-common;
     margin-top: 0;
     margin-bottom: 0;
+    margin-left: 0;
+    padding-left: 0;
     border-width: 0;
     background-color: transparent;
     text-align: inherit;
