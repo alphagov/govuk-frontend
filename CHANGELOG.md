@@ -20,6 +20,18 @@
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
+🔧 Fixes:
+
+- Pull Request Title goes here
+
+  Description goes here (optional)
+
+  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+
+## 2.4.0 (Feature release)
+
+🆕 New features:
+
 - Scroll to label or legend when linked from error summary
 
   When users click links in the error summary, the corresponding label or legend
@@ -40,12 +52,6 @@
   ([PR #1059](https://github.com/alphagov/govuk-frontend/pull/1059))
 
 🔧 Fixes:
-
-- Pull Request Title goes here
-
-  Description goes here (optional)
-
-  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
 - Remove implicit dependency on Element for classList
 

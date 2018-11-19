@@ -6,6 +6,251 @@
 
 (function(undefined) {
 
+// Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Object/defineProperty/detect.js
+var detect = (
+  // In IE8, defineProperty could only act on DOM elements, so full support
+  // for the feature requires the ability to set a property on an arbitrary object
+  'defineProperty' in Object && (function() {
+  	try {
+  		var a = {};
+  		Object.defineProperty(a, 'test', {value:42});
+  		return true;
+  	} catch(e) {
+  		return false
+  	}
+  }())
+);
+
+if (detect) return
+
+// Polyfill from https://cdn.polyfill.io/v2/polyfill.js?features=Object.defineProperty&flags=always
+(function (nativeDefineProperty) {
+
+	var supportsAccessors = Object.prototype.hasOwnProperty('__defineGetter__');
+	var ERR_ACCESSORS_NOT_SUPPORTED = 'Getters & setters cannot be defined on this javascript engine';
+	var ERR_VALUE_ACCESSORS = 'A property cannot both have accessors and be writable or have a value';
+
+	Object.defineProperty = function defineProperty(object, property, descriptor) {
+
+		// Where native support exists, assume it
+		if (nativeDefineProperty && (object === window || object === document || object === Element.prototype || object instanceof Element)) {
+			return nativeDefineProperty(object, property, descriptor);
+		}
+
+		if (object === null || !(object instanceof Object || typeof object === 'object')) {
+			throw new TypeError('Object.defineProperty called on non-object');
+		}
+
+		if (!(descriptor instanceof Object)) {
+			throw new TypeError('Property description must be an object');
+		}
+
+		var propertyString = String(property);
+		var hasValueOrWritable = 'value' in descriptor || 'writable' in descriptor;
+		var getterType = 'get' in descriptor && typeof descriptor.get;
+		var setterType = 'set' in descriptor && typeof descriptor.set;
+
+		// handle descriptor.get
+		if (getterType) {
+			if (getterType !== 'function') {
+				throw new TypeError('Getter must be a function');
+			}
+			if (!supportsAccessors) {
+				throw new TypeError(ERR_ACCESSORS_NOT_SUPPORTED);
+			}
+			if (hasValueOrWritable) {
+				throw new TypeError(ERR_VALUE_ACCESSORS);
+			}
+			Object.__defineGetter__.call(object, propertyString, descriptor.get);
+		} else {
+			object[propertyString] = descriptor.value;
+		}
+
+		// handle descriptor.set
+		if (setterType) {
+			if (setterType !== 'function') {
+				throw new TypeError('Setter must be a function');
+			}
+			if (!supportsAccessors) {
+				throw new TypeError(ERR_ACCESSORS_NOT_SUPPORTED);
+			}
+			if (hasValueOrWritable) {
+				throw new TypeError(ERR_VALUE_ACCESSORS);
+			}
+			Object.__defineSetter__.call(object, propertyString, descriptor.set);
+		}
+
+		// OK to define value unconditionally - if a getter has been specified as well, an error would be thrown above
+		if ('value' in descriptor) {
+			object[propertyString] = descriptor.value;
+		}
+
+		return object;
+	};
+}(Object.defineProperty));
+})
+.call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
+
+(function(undefined) {
+  // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Function/prototype/bind/detect.js
+  var detect = 'bind' in Function.prototype;
+
+  if (detect) return
+
+  // Polyfill from https://cdn.polyfill.io/v2/polyfill.js?features=Function.prototype.bind&flags=always
+  Object.defineProperty(Function.prototype, 'bind', {
+      value: function bind(that) { // .length is 1
+          // add necessary es5-shim utilities
+          var $Array = Array;
+          var $Object = Object;
+          var ObjectPrototype = $Object.prototype;
+          var ArrayPrototype = $Array.prototype;
+          var Empty = function Empty() {};
+          var to_string = ObjectPrototype.toString;
+          var hasToStringTag = typeof Symbol === 'function' && typeof Symbol.toStringTag === 'symbol';
+          var isCallable; /* inlined from https://npmjs.com/is-callable */ var fnToStr = Function.prototype.toString, tryFunctionObject = function tryFunctionObject(value) { try { fnToStr.call(value); return true; } catch (e) { return false; } }, fnClass = '[object Function]', genClass = '[object GeneratorFunction]'; isCallable = function isCallable(value) { if (typeof value !== 'function') { return false; } if (hasToStringTag) { return tryFunctionObject(value); } var strClass = to_string.call(value); return strClass === fnClass || strClass === genClass; };
+          var array_slice = ArrayPrototype.slice;
+          var array_concat = ArrayPrototype.concat;
+          var array_push = ArrayPrototype.push;
+          var max = Math.max;
+          // /add necessary es5-shim utilities
+
+          // 1. Let Target be the this value.
+          var target = this;
+          // 2. If IsCallable(Target) is false, throw a TypeError exception.
+          if (!isCallable(target)) {
+              throw new TypeError('Function.prototype.bind called on incompatible ' + target);
+          }
+          // 3. Let A be a new (possibly empty) internal list of all of the
+          //   argument values provided after thisArg (arg1, arg2 etc), in order.
+          // XXX slicedArgs will stand in for "A" if used
+          var args = array_slice.call(arguments, 1); // for normal call
+          // 4. Let F be a new native ECMAScript object.
+          // 11. Set the [[Prototype]] internal property of F to the standard
+          //   built-in Function prototype object as specified in 15.3.3.1.
+          // 12. Set the [[Call]] internal property of F as described in
+          //   15.3.4.5.1.
+          // 13. Set the [[Construct]] internal property of F as described in
+          //   15.3.4.5.2.
+          // 14. Set the [[HasInstance]] internal property of F as described in
+          //   15.3.4.5.3.
+          var bound;
+          var binder = function () {
+
+              if (this instanceof bound) {
+                  // 15.3.4.5.2 [[Construct]]
+                  // When the [[Construct]] internal method of a function object,
+                  // F that was created using the bind function is called with a
+                  // list of arguments ExtraArgs, the following steps are taken:
+                  // 1. Let target be the value of F's [[TargetFunction]]
+                  //   internal property.
+                  // 2. If target has no [[Construct]] internal method, a
+                  //   TypeError exception is thrown.
+                  // 3. Let boundArgs be the value of F's [[BoundArgs]] internal
+                  //   property.
+                  // 4. Let args be a new list containing the same values as the
+                  //   list boundArgs in the same order followed by the same
+                  //   values as the list ExtraArgs in the same order.
+                  // 5. Return the result of calling the [[Construct]] internal
+                  //   method of target providing args as the arguments.
+
+                  var result = target.apply(
+                      this,
+                      array_concat.call(args, array_slice.call(arguments))
+                  );
+                  if ($Object(result) === result) {
+                      return result;
+                  }
+                  return this;
+
+              } else {
+                  // 15.3.4.5.1 [[Call]]
+                  // When the [[Call]] internal method of a function object, F,
+                  // which was created using the bind function is called with a
+                  // this value and a list of arguments ExtraArgs, the following
+                  // steps are taken:
+                  // 1. Let boundArgs be the value of F's [[BoundArgs]] internal
+                  //   property.
+                  // 2. Let boundThis be the value of F's [[BoundThis]] internal
+                  //   property.
+                  // 3. Let target be the value of F's [[TargetFunction]] internal
+                  //   property.
+                  // 4. Let args be a new list containing the same values as the
+                  //   list boundArgs in the same order followed by the same
+                  //   values as the list ExtraArgs in the same order.
+                  // 5. Return the result of calling the [[Call]] internal method
+                  //   of target providing boundThis as the this value and
+                  //   providing args as the arguments.
+
+                  // equiv: target.call(this, ...boundArgs, ...args)
+                  return target.apply(
+                      that,
+                      array_concat.call(args, array_slice.call(arguments))
+                  );
+
+              }
+
+          };
+
+          // 15. If the [[Class]] internal property of Target is "Function", then
+          //     a. Let L be the length property of Target minus the length of A.
+          //     b. Set the length own property of F to either 0 or L, whichever is
+          //       larger.
+          // 16. Else set the length own property of F to 0.
+
+          var boundLength = max(0, target.length - args.length);
+
+          // 17. Set the attributes of the length own property of F to the values
+          //   specified in 15.3.5.1.
+          var boundArgs = [];
+          for (var i = 0; i < boundLength; i++) {
+              array_push.call(boundArgs, '$' + i);
+          }
+
+          // XXX Build a dynamic function with desired amount of arguments is the only
+          // way to set the length property of a function.
+          // In environments where Content Security Policies enabled (Chrome extensions,
+          // for ex.) all use of eval or Function costructor throws an exception.
+          // However in all of these environments Function.prototype.bind exists
+          // and so this code will never be executed.
+          bound = Function('binder', 'return function (' + boundArgs.join(',') + '){ return binder.apply(this, arguments); }')(binder);
+
+          if (target.prototype) {
+              Empty.prototype = target.prototype;
+              bound.prototype = new Empty();
+              // Clean up dangling references.
+              Empty.prototype = null;
+          }
+
+          // TODO
+          // 18. Set the [[Extensible]] internal property of F to true.
+
+          // TODO
+          // 19. Let thrower be the [[ThrowTypeError]] function Object (13.2.3).
+          // 20. Call the [[DefineOwnProperty]] internal method of F with
+          //   arguments "caller", PropertyDescriptor {[[Get]]: thrower, [[Set]]:
+          //   thrower, [[Enumerable]]: false, [[Configurable]]: false}, and
+          //   false.
+          // 21. Call the [[DefineOwnProperty]] internal method of F with
+          //   arguments "arguments", PropertyDescriptor {[[Get]]: thrower,
+          //   [[Set]]: thrower, [[Enumerable]]: false, [[Configurable]]: false},
+          //   and false.
+
+          // TODO
+          // NOTE Function objects created using Function.prototype.bind do not
+          // have a prototype property or the [[Code]], [[FormalParameters]], and
+          // [[Scope]] internal properties.
+          // XXX can't delete prototype in pure-js.
+
+          // 22. Return F.
+          return bound;
+      }
+  });
+})
+.call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
+
+(function(undefined) {
+
 // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Window/detect.js
 var detect = ('Window' in this);
 
@@ -162,93 +407,6 @@ if (detect) return
 	document.removeChild(vbody);
 }());
 
-})
-.call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
-
-(function(undefined) {
-
-// Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Object/defineProperty/detect.js
-var detect = (
-  // In IE8, defineProperty could only act on DOM elements, so full support
-  // for the feature requires the ability to set a property on an arbitrary object
-  'defineProperty' in Object && (function() {
-  	try {
-  		var a = {};
-  		Object.defineProperty(a, 'test', {value:42});
-  		return true;
-  	} catch(e) {
-  		return false
-  	}
-  }())
-);
-
-if (detect) return
-
-// Polyfill from https://cdn.polyfill.io/v2/polyfill.js?features=Object.defineProperty&flags=always
-(function (nativeDefineProperty) {
-
-	var supportsAccessors = Object.prototype.hasOwnProperty('__defineGetter__');
-	var ERR_ACCESSORS_NOT_SUPPORTED = 'Getters & setters cannot be defined on this javascript engine';
-	var ERR_VALUE_ACCESSORS = 'A property cannot both have accessors and be writable or have a value';
-
-	Object.defineProperty = function defineProperty(object, property, descriptor) {
-
-		// Where native support exists, assume it
-		if (nativeDefineProperty && (object === window || object === document || object === Element.prototype || object instanceof Element)) {
-			return nativeDefineProperty(object, property, descriptor);
-		}
-
-		if (object === null || !(object instanceof Object || typeof object === 'object')) {
-			throw new TypeError('Object.defineProperty called on non-object');
-		}
-
-		if (!(descriptor instanceof Object)) {
-			throw new TypeError('Property description must be an object');
-		}
-
-		var propertyString = String(property);
-		var hasValueOrWritable = 'value' in descriptor || 'writable' in descriptor;
-		var getterType = 'get' in descriptor && typeof descriptor.get;
-		var setterType = 'set' in descriptor && typeof descriptor.set;
-
-		// handle descriptor.get
-		if (getterType) {
-			if (getterType !== 'function') {
-				throw new TypeError('Getter must be a function');
-			}
-			if (!supportsAccessors) {
-				throw new TypeError(ERR_ACCESSORS_NOT_SUPPORTED);
-			}
-			if (hasValueOrWritable) {
-				throw new TypeError(ERR_VALUE_ACCESSORS);
-			}
-			Object.__defineGetter__.call(object, propertyString, descriptor.get);
-		} else {
-			object[propertyString] = descriptor.value;
-		}
-
-		// handle descriptor.set
-		if (setterType) {
-			if (setterType !== 'function') {
-				throw new TypeError('Setter must be a function');
-			}
-			if (!supportsAccessors) {
-				throw new TypeError(ERR_ACCESSORS_NOT_SUPPORTED);
-			}
-			if (hasValueOrWritable) {
-				throw new TypeError(ERR_VALUE_ACCESSORS);
-			}
-			Object.__defineSetter__.call(object, propertyString, descriptor.set);
-		}
-
-		// OK to define value unconditionally - if a getter has been specified as well, an error would be thrown above
-		if ('value' in descriptor) {
-			object[propertyString] = descriptor.value;
-		}
-
-		return object;
-	};
-}(Object.defineProperty));
 })
 .call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
@@ -501,6 +659,53 @@ if (detect) return
 })
 .call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
+(function(undefined) {
+
+  // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-service/1f3c09b402f65bf6e393f933a15ba63f1b86ef1f/packages/polyfill-library/polyfills/Element/prototype/matches/detect.js
+  var detect = (
+    'document' in this && "matches" in document.documentElement
+  );
+
+  if (detect) return
+
+  // Polyfill from https://raw.githubusercontent.com/Financial-Times/polyfill-service/1f3c09b402f65bf6e393f933a15ba63f1b86ef1f/packages/polyfill-library/polyfills/Element/prototype/matches/polyfill.js
+  Element.prototype.matches = Element.prototype.webkitMatchesSelector || Element.prototype.oMatchesSelector || Element.prototype.msMatchesSelector || Element.prototype.mozMatchesSelector || function matches(selector) {
+    var element = this;
+    var elements = (element.document || element.ownerDocument).querySelectorAll(selector);
+    var index = 0;
+
+    while (elements[index] && elements[index] !== element) {
+      ++index;
+    }
+
+    return !!elements[index];
+  };
+
+}).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
+
+(function(undefined) {
+
+  // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-service/1f3c09b402f65bf6e393f933a15ba63f1b86ef1f/packages/polyfill-library/polyfills/Element/prototype/closest/detect.js
+  var detect = (
+    'document' in this && "closest" in document.documentElement
+  );
+
+  if (detect) return
+
+    // Polyfill from https://raw.githubusercontent.com/Financial-Times/polyfill-service/1f3c09b402f65bf6e393f933a15ba63f1b86ef1f/packages/polyfill-library/polyfills/Element/prototype/closest/polyfill.js
+  Element.prototype.closest = function closest(selector) {
+    var node = this;
+
+    while (node) {
+      if (node.matches(selector)) return node;
+      else node = 'SVGElement' in window && node instanceof SVGElement ? node.parentNode : node.parentElement;
+    }
+
+    return null;
+  };
+
+}).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
+
 function ErrorSummary ($module) {
   this.$module = $module;
 }
@@ -513,6 +718,119 @@ ErrorSummary.prototype.init = function () {
   window.addEventListener('load', function () {
     $module.focus();
   });
+
+  $module.addEventListener('click', this.handleClick.bind(this));
+};
+
+/**
+* Click event handler
+*
+* @param {MouseEvent} event - Click event
+*/
+ErrorSummary.prototype.handleClick = function (event) {
+  var target = event.target;
+  if (this.focusTarget(target)) {
+    event.preventDefault();
+  }
+};
+
+/**
+ * Focus the target element
+ *
+ * By default, the browser will scroll the target into view. Because our labels
+ * or legends appear above the input, this means the user will be presented with
+ * an input without any context, as the label or legend will be off the top of
+ * the screen.
+ *
+ * Manually handling the click event, scrolling the question into view and then
+ * focussing the element solves this.
+ *
+ * This also results in the label and/or legend being announced correctly in
+ * NVDA (as tested in 2018.3.2) - without this only the field type is announced
+ * (e.g. "Edit, has autocomplete").
+ *
+ * @param {HTMLElement} $target - Event target
+ * @returns {boolean} True if the target was able to be focussed
+ */
+ErrorSummary.prototype.focusTarget = function ($target) {
+  // If the element that was clicked was not a link, return early
+  if ($target.tagName !== 'A' || $target.href === false) {
+    return false
+  }
+
+  var inputId = this.getFragmentFromUrl($target.href);
+  var $input = document.getElementById(inputId);
+  if (!$input) {
+    return false
+  }
+
+  var $legendOrLabel = this.getAssociatedLegendOrLabel($input);
+  if (!$legendOrLabel) {
+    return false
+  }
+
+  // Prefer using the history API where possible, as updating
+  // window.location.hash causes the viewport to jump to the input briefly
+  // before then scrolling to the label/legend in IE10, IE11 and Edge (as tested
+  // in Edge 17).
+  if (window.history.pushState) {
+    window.history.pushState(null, null, '#' + inputId);
+  } else {
+    window.location.hash = inputId;
+  }
+
+  // Scroll the legend or label into view *before* calling focus on the input to
+  // avoid extra scrolling in browsers that don't support `preventScroll` (which
+  // at time of writing is most of them...)
+  $legendOrLabel.scrollIntoView();
+  $input.focus({ preventScroll: true });
+
+  return true
+};
+
+/**
+ * Get fragment from URL
+ *
+ * Extract the fragment (everything after the hash) from a URL, but not including
+ * the hash.
+ *
+ * @param {string} url - URL
+ * @returns {string} Fragment from URL, without the hash
+ */
+ErrorSummary.prototype.getFragmentFromUrl = function (url) {
+  if (url.indexOf('#') === -1) {
+    return false
+  }
+
+  return url.split('#').pop()
+};
+
+/**
+ * Get associated legend or label
+ *
+ * Returns the first element that exists from this list:
+ *
+ * - The `<legend>` associated with the closest `<fieldset>` ancestor
+ * - The first `<label>` that is associated with the input using for="inputId"
+ * - The closest parent `<label>`
+ *
+ * @param {HTMLElement} $input - The input
+ * @returns {HTMLElement} Associated legend or label, or null if no associated
+ *                        legend or label can be found
+ */
+ErrorSummary.prototype.getAssociatedLegendOrLabel = function ($input) {
+  var $fieldset = $input.closest('fieldset');
+
+  if ($fieldset) {
+    var legends = $fieldset.getElementsByTagName('legend');
+
+    if (legends.length) {
+      return legends[0]
+    }
+  }
+
+  return document.querySelector("label[for='" + $input.getAttribute('id') + "']") ||
+    $input.closest('label')
 };
 
 return ErrorSummary;

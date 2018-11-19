@@ -64,6 +64,20 @@
         "isComponent": true
     },
     {
+        "name": "formGroup",
+        "type": "object",
+        "required": false,
+        "description": "Options for the form-group wrapper",
+        "params": [
+            {
+                "name": "classes",
+                "type": "string",
+                "required": false,
+                "description": "Optional classes to add to the form group (e.g. to show error state for the whole group)"
+            }
+        ]
+    },
+    {
         "name": "fieldset",
         "type": "object",
         "required": false,
