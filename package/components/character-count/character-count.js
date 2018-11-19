@@ -937,7 +937,7 @@ if (detect) return
 
     if (detect) return
 
-    // Polyfill from https://raw.githubusercontent.com/Financial-Times/polyfill-service/8717a9e04ac7aff99b4980fbedead98036b0929a/packages/polyfill-library/polyfills/Element/prototype/classList/polyfill.js
+    // Polyfill from https://cdn.polyfill.io/v2/polyfill.js?features=Element.prototype.classList&flags=always
     (function (global) {
       var dpSupport = true;
       var defineGetter = function (object, name, fn, configurable) {
