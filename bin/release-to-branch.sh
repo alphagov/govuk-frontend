@@ -43,5 +43,7 @@ fi
 
 git checkout -
 
+BRANCH_COMMIT_SHA=$(git rev-parse --short $BRANCH_NAME)
+
 echo
-echo "✅ To install the pushed branch release run 'npm install --save alphagov/govuk-frontend#$BRANCH_NAME'"
+echo "✅ To install the pushed branch release run 'npm install --save alphagov/govuk-frontend#$BRANCH_COMMIT_SHA'"
