@@ -12,8 +12,8 @@ const path = require('path')
 const map = require('map-stream')
 const rename = require('gulp-rename')
 
-let scssFiles = filter([configPaths.src + '**/*.scss'], {restore: true})
-let yamlFiles = filter([configPaths.components + '**/*.yaml'], {restore: true})
+let scssFiles = filter([configPaths.src + '**/*.scss'], { restore: true })
+let yamlFiles = filter([configPaths.components + '**/*.yaml'], { restore: true })
 
 gulp.task('copy-files', () => {
   return gulp.src([
@@ -27,7 +27,7 @@ gulp.task('copy-files', () => {
     .pipe(scssFiles)
     .pipe(postcss([
       autoprefixer
-    ], {syntax: require('postcss-scss')}))
+    ], { syntax: require('postcss-scss') }))
     .pipe(scssFiles.restore)
     .pipe(yamlFiles)
     .pipe(map(function (file, done) {
@@ -38,7 +38,7 @@ gulp.task('copy-files', () => {
       let paramsJson
 
       try {
-        yaml = fs.readFileSync(componentPath, {encoding: 'utf8', json: true})
+        yaml = fs.readFileSync(componentPath, { encoding: 'utf8', json: true })
       } catch (e) {
         console.error('ENOENT: no such file or directory: ', componentPath)
       }
