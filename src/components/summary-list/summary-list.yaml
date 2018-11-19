@@ -1,0 +1,422 @@
+params:
+- name: rows
+  type: array
+  required: true
+  description: Array of row item objects
+  params:
+  - name: key.text
+    type: string
+    required: true
+    description: If `html` is set, this is not required. Text to use within the each key. If `html` is provided, the `text` argument will be ignored.
+  - name: key.html
+    type: string
+    required: true
+  - name: key.classes
+    type: string
+    required: false
+    description: Classes to add to the key wrapper
+  - name: value.text
+    type: string
+    required: true
+    description: If `html` is set, this is not required. Text to use within the each value. If `html` is provided, the `text` argument will be ignored.
+  - name: value.html
+    type: string
+    required: true
+    description: If `text` is set, this is not required. HTML to use within the each value. If `html` is provided, the `text` argument will be ignored.
+  - name: value.classes
+    type: string
+    required: false
+    description: Classes to add to the value wrapper
+  - name: actions.items
+    type: array
+    required: false
+    description: Array of action item objects
+    params:
+    - name: classes
+      type: string
+      required: false
+      description: Classes to add to the actions wrapper
+    - name: href
+      type: string
+      required: true
+      description: The value of the link href attribute for an action item
+    - name: text
+      type: string
+      required: true
+      description: If `html` is set, this is not required. Text to use within each action item. If `html` is provided, the `text` argument will be ignored.
+    - name: html
+      type: string
+      required: true
+      description: If `text` is set, this is not required. HTML to use within the each action item. If `html` is provided, the `text` argument will be ignored.
+    - name: visuallyHiddenText
+      type: string
+      required: false
+      description: Actions rely on context from the surrounding content so may require additional accessible text, text supplied to this option is appended to the end, use `html` for more complicated scenarios.
+- name: classes
+  type: string
+  required: false
+  description: Classes to add to the container.
+- name: attributes
+  type: object
+  required: false
+  description: HTML attributes (for example data attributes) to add to the container.
+
+examples:
+  - name: default
+    data:
+      rows:
+        - key:
+            text: Name
+          value:
+            text: Firstname Lastname
+          actions:
+            items:
+              - href: '#'
+                text: Edit
+                visuallyHiddenText: name
+              - href: '#'
+                text: Delete
+                visuallyHiddenText: name
+        - key:
+            text: Date of birth
+          value:
+            text: 13/08/1980
+          actions:
+            items:
+              - href: '#'
+                text: Change
+                visuallyHiddenText: date of birth
+        - key:
+            text: Contact information
+          value:
+            html: |
+              <p class="govuk-body">
+               email@email.com
+              </p>
+              <p class="govuk-body">
+                Address line 1<br>
+                Address line 2<br>
+                Address line 3<br>
+                Address line 4<br>
+                Address line 5
+              </p>
+          actions:
+            items:
+              - href: '#'
+                text: Edit
+                visuallyHiddenText: contact information
+              - href: '#'
+                text: Change
+                visuallyHiddenText: contact information
+  - name: no-border
+    data:
+      classes: govuk-summary-list--no-border
+      rows:
+        - key:
+            text: Name
+          value:
+            text: Firstname Lastname
+        - key:
+            text: Date of birth
+          value:
+            text: 13/08/1980
+        - key:
+            text: Contact information
+          value:
+            html: |
+              <p class="govuk-body">
+                email@email.com
+              </p>
+              <p class="govuk-body">
+                Address line 1<br>
+                Address line 2<br>
+                Address line 3<br>
+                Address line 4<br>
+                Address line 5
+              </p>
+  - name: overridden-widths
+    data:
+      rows:
+        - key:
+            classes: govuk-!-width-one-half
+            text: Name
+          value:
+            classes: govuk-!-width-one-quarter
+            text: Firstname Lastname
+          actions:
+            classes: govuk-!-width-one-half
+            items:
+              - href: '#'
+                text: Edit
+                visuallyHiddenText: name
+              - href: '#'
+                text: Delete
+                visuallyHiddenText: name
+        - key:
+            text: Date of birth
+          value:
+            text: 13/08/1980
+          actions:
+            items:
+              - href: '#'
+                text: Change
+                visuallyHiddenText: date of birth
+        - key:
+            text: Contact information
+          value:
+            html: |
+              <p class="govuk-body">
+                email@email.com
+              </p>
+              <p class="govuk-body">
+                Address line 1<br>
+                Address line 2<br>
+                Address line 3<br>
+                Address line 4<br>
+                Address line 5
+              </p>
+          actions:
+            items:
+              - href: '#'
+                text: Edit
+                visuallyHiddenText: contact information
+              - href: '#'
+                text: Change
+                visuallyHiddenText: contact information
+  - name: check-your-answers
+    data:
+      rows:
+        - key:
+            text: Name
+          value:
+            text: Sarah Philips
+          actions:
+            items:
+              - href: '#'
+                text: Change
+                visuallyHiddenText: name
+        - key:
+            text: Date of birth
+          value:
+            text: 5 January 1978
+          actions:
+            items:
+            - href: '#'
+              text: Change
+              visuallyHiddenText: date of birth
+        - key:
+            text: Contact information
+          value:
+            html: |
+              72 Guild Street<br>
+              London<br>
+              SE23 6FH
+          actions:
+            items:
+              - href: '#'
+                text: Change
+                visuallyHiddenText: contact information
+        - key:
+            text: Contact details
+          value:
+            html: |
+              07700 900457<br>
+              sarah.phillips@example.com
+          actions:
+            items:
+              - href: '#'
+                text: Change
+                visuallyHiddenText: contact details
+        - key:
+            text: Previous application number
+          value:
+            text: 502135326
+          actions:
+            items:
+              - href: '#'
+                text: Change
+                visuallyHiddenText: previous application number
+        - key:
+            text: Licence type
+          value:
+            text: For personal use
+          actions:
+            items:
+              - href: '#'
+                text: Change
+                visuallyHiddenText: licence type
+        - key:
+            text: Home address
+          value:
+            html: |
+              <p class="govuk-body">
+                72 Guild Street<br>
+                London<br>
+                SE23 6FH
+              </p>
+          actions:
+            items:
+              - href: '#'
+                text: Change
+                visuallyHiddenText: home address
+        - key:
+            text: Licence period
+          value:
+            html: |
+              <p class="govuk-body">This is a longer paragraph of text provided by the user to provide additional information.</p>
+              <p class="govuk-body">This is a second paragraph of text provided by the user.</p>
+          actions:
+            items:
+              - href: '#'
+                text: Change
+                visuallyHiddenText: licence period
+  - name: extreme
+    data:
+      rows:
+        - key:
+            text: Name
+          value:
+            text: Barnaby Marmaduke Aloysius Benjy Cobweb Dartagnan Egbert Felix Gaspar Humbert Ignatius Jayden Kasper Leroy Maximilian Neddy Obiajulu Pepin Quilliam Rosencrantz Sexton Teddy Upwood Vivatma Wayland Xylon Yardley Zachary Usansky
+          actions:
+            items:
+              - href: '#'
+                text: Buy
+              - href: '#'
+                text: Use
+              - href: '#'
+                text: Break
+              - href: '#'
+                text: Fix
+              - href: '#'
+                text: Trash
+              - href: '#'
+                text: Change
+              - href: '#'
+                text: Mail
+              - href: '#'
+                text: Upgrade
+              - href: '#'
+                text: Charge
+              - href: '#'
+                text: Point
+              - href: '#'
+                text: Coom
+              - href: '#'
+                text: Press
+              - href: '#'
+                text: Snap
+              - href: '#'
+                text: Work
+              - href: '#'
+                text: Quick
+              - href: '#'
+                text: Erase
+        - key:
+            text: Pneumonoultramicroscopicsilicovolcanoconiosis
+          value:
+            html: |
+              <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi quis consequat diam. Duis efficitur justo at congue iaculis. Quisque scelerisque ornare justo nec congue. Duis egestas felis nibh, eu cursus metus rutrum eget. In dictum lectus diam, dapibus ullamcorper risus gravida a. Vestibulum tempor mattis sapien, at auctor tellus dignissim non. Praesent dictum felis nec diam tempor, vel lobortis leo ultricies.</p>
+              <p class="govuk-body">Suspendisse potenti. Aliquam dictum eu ipsum sed facilisis. Maecenas hendrerit est eget ultrices venenatis. Nam ex nisl, venenatis eget molestie quis, hendrerit id tellus. Morbi et posuere ex, vel interdum sapien. Mauris ac mattis turpis, interdum eleifend erat. Morbi eget efficitur lectus. Sed suscipit laoreet ipsum et iaculis. Integer ornare ipsum quis aliquet scelerisque. Proin venenatis dictum suscipit. Nunc tristique, felis quis fermentum rhoncus, tortor augue egestas ipsum, non porttitor nulla odio vitae purus. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+          actions:
+            items:
+              - href: '#'
+                text: Write
+              - href: '#'
+                text: Cut
+              - href: '#'
+                text: Paste
+              - href: '#'
+                text: Save
+              - href: '#'
+                text: Load
+              - href: '#'
+                text: Check
+              - href: '#'
+                text: Quick
+              - href: '#'
+                text: Rewrite
+              - href: '#'
+                text: Plug
+              - href: '#'
+                text: Play
+              - href: '#'
+                text: Burn
+              - href: '#'
+                text: Rip
+              - href: '#'
+                text: Drag and drop
+              - href: '#'
+                text: Zip
+              - href: '#'
+                text: Unzip
+              - href: '#'
+                text: Lock
+              - href: '#'
+                text: Fill
+              - href: '#'
+                text: Curl
+              - href: '#'
+                text: Find
+              - href: '#'
+                text: View
+              - href: '#'
+        - key:
+            text: Its vanished trees, the trees that had made way for Gatsby’s house, Pneumonoultramicroscopicsilicovolcanoconiosis had once pandered in whispers to the last and greatest of all human dreams; for a transitory enchanted moment man must have held his breath in the presence of this continent, compelled into an aesthetic contemplation he neither understood nor desired, face to face for the last time in history with something commensurate to his capacity for wonder.
+          value:
+            text: The Great Gatsby
+          actions:
+            items:
+              - href: '#'
+                text: Code
+              - href: '#'
+                text: Jam
+              - href: '#'
+                text: Unlock
+              - href: '#'
+                text: Surf
+              - href: '#'
+                text: Scroll
+              - href: '#'
+                text: Pose
+              - href: '#'
+                text: Click
+              - href: '#'
+                text: Cross
+              - href: '#'
+                text: Crack
+              - href: '#'
+                text: Twitch
+              - href: '#'
+                text: Update
+              - href: '#'
+                text: Name
+              - href: '#'
+                text: Read
+              - href: '#'
+                text: Tune
+              - href: '#'
+                text: Print
+              - href: '#'
+                text: Scan
+              - href: '#'
+                text: Send
+              - href: '#'
+                text: Fax
+              - href: '#'
+                text: Rename
+              - href: '#'
+                text: Touch
+              - href: '#'
+                text: Bring
+              - href: '#'
+                text: Pay
+              - href: '#'
+                text: Watch
+              - href: '#'
+                text: Turn
+              - href: '#'
+                text: Leave
+              - href: '#'
+                text: Stop
+              - href: '#'
+                text: Format
