@@ -4,10 +4,6 @@
 
 See the [main README quick start guide](https://github.com/alphagov/govuk-frontend#quick-start) for how to install this component.
 
-## Introduction
-
-The HTML `<input>` element with type="file" lets a user pick one or more files, to upload to a server.
-
 ## Guidance and Examples
 
 Find out when to use the file upload component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/file-upload).

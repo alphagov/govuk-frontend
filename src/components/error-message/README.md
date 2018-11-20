@@ -4,10 +4,6 @@
 
 See the [main README quick start guide](https://github.com/alphagov/govuk-frontend#quick-start) for how to install this component.
 
-## Introduction
-
-Component to show a red error message - used for form validation. Use inside a label or legend.
-
 ## Guidance and Examples
 
 Find out when to use the error message component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/error-message).

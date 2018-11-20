@@ -4,10 +4,6 @@
 
 See the [main README quick start guide](https://github.com/alphagov/govuk-frontend#quick-start) for how to install this component.
 
-## Introduction
-
-Use bold text with an exclamation icon if there are consequences - for example, a fine or prison sentence.
-
 ## Guidance and Examples
 
 Find out when to use the warning text component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/warning-text).

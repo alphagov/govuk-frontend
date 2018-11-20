@@ -4,10 +4,6 @@
 
 See the [main README quick start guide](https://github.com/alphagov/govuk-frontend#quick-start) for how to install this component.
 
-## Introduction
-
-The confirmation panel has a turquoise background and white text. Used for transaction end pages, and Bank Holidays.
-
 ## Guidance and Examples
 
 Find out when to use the panel component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/panel).

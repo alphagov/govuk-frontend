@@ -4,10 +4,6 @@
 
 See the [main README quick start guide](https://github.com/alphagov/govuk-frontend#quick-start) for how to install this component.
 
-## Introduction
-
-Component to show an error summary box - used at the top of the page, to summarise validation errors.
-
 ## Guidance and Examples
 
 Find out when to use the error summary component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/error-summary).

@@ -4,10 +4,6 @@
 
 See the [main README quick start guide](https://github.com/alphagov/govuk-frontend#quick-start) for how to install this component.
 
-## Introduction
-
-Use bordered inset text to draw attention to important content on the page.
-
 ## Guidance and Examples
 
 Find out when to use the inset text component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/inset-text).

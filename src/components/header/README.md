@@ -4,10 +4,6 @@
 
 See the [main README quick start guide](https://github.com/alphagov/govuk-frontend#quick-start) for how to install this component.
 
-## Introduction
-
-The header component is used at the top of every GOV.UK page, to help users navigate.
-
 ## Guidance and Examples
 
 Find out when to use the header component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/header).

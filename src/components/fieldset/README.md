@@ -4,10 +4,6 @@
 
 See the [main README quick start guide](https://github.com/alphagov/govuk-frontend#quick-start) for how to install this component.
 
-## Introduction
-
-The fieldset element is used to group several controls within a web form. The legend element represents a caption for the content of its parent fieldset.
-
 ## Guidance and Examples
 
 Find out when to use the fieldset component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/fieldset).

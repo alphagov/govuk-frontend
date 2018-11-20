@@ -4,10 +4,6 @@
 
 See the [main README quick start guide](https://github.com/alphagov/govuk-frontend#quick-start) for how to install this component.
 
-## Introduction
-
-Link back component, to go back a page.
-
 ## Guidance and Examples
 
 Find out when to use the back link component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/back-link).

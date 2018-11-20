@@ -4,10 +4,6 @@
 
 See the [main README quick start guide](https://github.com/alphagov/govuk-frontend#quick-start) for how to install this component.
 
-## Introduction
-
-A single-line text field.
-
 ## Guidance and Examples
 
 Find out when to use the input component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/text-input).
