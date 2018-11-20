@@ -11,7 +11,6 @@ NPM scripts are defined in `package.json`. These trigger a number of gulp tasks.
 **`npm run start` will trigger `gulp dev` that:**
 - cleans the `public` folder
 - compiles component nunjucks files to `public`
-- generates `README.md` files from nunjucks files
 - copies icons to `public`
 - compile sass files, add vendor prefixes and copy to `public`
 - starts up the Express server and app
@@ -33,7 +32,6 @@ NPM scripts are defined in `package.json`. These trigger a number of gulp tasks.
 - compile component nunjucks to HTML
 - copy template, macro and component.njk files for each component
 - copy Sass files, add vendor prefixes and replace path to be node_modules consumption compliant
-- generate README markdown files
 - runs `npm run test:build:package` (which will test the output is correct)
 
 **`npm run build:dist` will do the following:**
@@ -41,7 +39,6 @@ NPM scripts are defined in `package.json`. These trigger a number of gulp tasks.
 - copy icons
 - copy SASS and add vendor prefixes
 - compile component nujucks files to HTML
-- generate README markdown files
 - take version from 'all/package.json' and append it to compiled & minified JS and CSS files
 - runs `npm run test:dist:package` (which will test the output is correct)
 
@@ -74,12 +71,6 @@ This task will:
 
  This task will:
  - concatenate and uglify javascript (`gulp js:compile`) to a destination folder that can be specified via a --destination flag
-
-**`gulp generate:readme`**
-
-  This task will:
-  - compile all `src/components/componentName/README.njk` files to README.md markdown files
-  These files inherit view templates from `src/views`
 
 **`gulp compile:components`**
 
