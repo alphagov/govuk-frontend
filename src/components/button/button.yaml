@@ -74,21 +74,18 @@ examples:
     disabled: true
 - name: with active state
   description: Simulate triggering the :active CSS pseudo-class, not available in the production build.
-  readme: false
   data:
     name: active
     text: Active
     classes: :active
 - name: with hover state
   description: Simulate triggering the :hover CSS pseudo-class, not available in the production build.
-  readme: false
   data:
     name: hover
     text: Hovered
     classes: :hover
 - name: with focus state
   description: Simulate triggering the :focus CSS pseudo-class, not available in the production build.
-  readme: false
   data:
     name: focus
     text: Focussed

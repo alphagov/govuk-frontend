@@ -102,7 +102,6 @@ examples:
     {}
 
 - name: with meta
-  readme: false
   description: Secondary navigation with meta information relating to the site
   data:
     meta:
@@ -115,14 +114,12 @@ examples:
           text: Item 3
 
 - name: with custom meta
-  readme: false
   description: Custom meta section
   data:
     meta:
       text: GOV.UK Prototype Kit v7.0.1
 
 - name: with meta links and meta content
-  readme: false
   description: Secondary navigation links and custom meta text
   data:
     meta:
@@ -146,14 +143,12 @@ examples:
       html: Built by the <a href="#" class="govuk-footer__link">Department of Magical Law Enforcement</a>
 
 - name: with custom meta
-  readme: false
   description: Custom meta section
   data:
     meta:
       text: GOV.UK Prototype Kit v7.0.1
 
 - name: with navigation
-  readme: false
   data:
     navigation:
       - title: Two column list
@@ -181,7 +176,6 @@ examples:
             text: Navigation item 3
 
 - name: GOV.UK
-  readme: false
   description: A full example based on GOV.UK's current footer
   data:
     navigation:

@@ -100,7 +100,6 @@ examples:
         isPageHeading: true
 
   - name: with optional form-group classes
-    readme: false
     data:
       id: textarea-with-page-heading
       name: address

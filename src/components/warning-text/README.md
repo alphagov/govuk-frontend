@@ -4,34 +4,9 @@
 
 Use bold text with an exclamation icon if there are consequences - for example, a fine or prison sentence.
 
-## Guidance
+## Guidance and Examples
 
 Find out when to use the warning text component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/warning-text).
-
-## Quick start examples
-
-### Warning text
-
-[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/warning-text/preview)
-
-#### Markup
-
-    <div class="govuk-warning-text">
-      <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-      <strong class="govuk-warning-text__text">
-        <span class="govuk-warning-text__assistive">Warning</span>
-        You can be fined up to £5,000 if you don’t register.
-      </strong>
-    </div>
-
-#### Macro
-
-    {% from "warning-text/macro.njk" import govukWarningText %}
-
-    {{ govukWarningText({
-      "text": "You can be fined up to £5,000 if you don’t register.",
-      "iconFallbackText": "Warning"
-    }) }}
 
 ## Requirements
 

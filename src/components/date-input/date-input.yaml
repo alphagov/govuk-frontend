@@ -178,7 +178,6 @@ examples:
     hint:
       text: For example, 31 3 1980
 - name: with optional form-group classes
-  readme: false
   data:
     id: dob
     namePrefix: dob

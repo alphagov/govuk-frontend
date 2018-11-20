@@ -86,7 +86,6 @@ examples:
       text: Upload a file
       isPageHeading: true
 - name: with optional form-group classes
-  readme: false
   data:
     id: file-upload-1
     name: file-upload-1

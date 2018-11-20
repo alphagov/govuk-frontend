@@ -4,67 +4,9 @@
 
 Use labels for all form fields.
 
-## Quick start examples
+## Guidance and Examples
 
-### Label
-
-[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/label/preview)
-
-#### Markup
-
-    <label class="govuk-label">
-      National Insurance number
-    </label>
-
-#### Macro
-
-    {% from "label/macro.njk" import govukLabel %}
-
-    {{ govukLabel({
-      "text": "National Insurance number"
-    }) }}
-
-### Label with bold text
-
-[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/label/with-bold-text/preview)
-
-#### Markup
-
-    <label class="govuk-label govuk-label--s">
-      National Insurance number
-    </label>
-
-#### Macro
-
-    {% from "label/macro.njk" import govukLabel %}
-
-    {{ govukLabel({
-      "classes": "govuk-label--s",
-      "text": "National Insurance number"
-    }) }}
-
-### Label as page heading
-
-[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/label/as-page-heading/preview)
-
-#### Markup
-
-    <h1 class="govuk-label-wrapper">
-      <label class="govuk-label govuk-label--xl">
-        National Insurance number
-      </label>
-
-    </h1>
-
-#### Macro
-
-    {% from "label/macro.njk" import govukLabel %}
-
-    {{ govukLabel({
-      "text": "National Insurance number",
-      "classes": "govuk-label--xl",
-      "isPageHeading": true
-    }) }}
+The label component is used in other components, you can look at the [file upload](https://design-system.service.gov.uk/components/file-upload/#options-example-default--label) component for an example of it in use.
 
 ## Requirements
 

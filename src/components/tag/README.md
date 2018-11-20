@@ -4,48 +4,9 @@
 
 Phase tags are mostly used inside phase banners as an indication of the state of a project. It’s possible to use them outside phase banners, for example as part of a service header.
 
-## Guidance
+## Guidance and Examples
 
 Find out when to use the tag component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/tag).
-
-## Quick start examples
-
-### Tag
-
-[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/tag/preview)
-
-#### Markup
-
-    <strong class="govuk-tag">
-      alpha
-    </strong>
-
-#### Macro
-
-    {% from "tag/macro.njk" import govukTag %}
-
-    {{ govukTag({
-      "text": "alpha"
-    }) }}
-
-### Tag inactive
-
-[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/tag/inactive/preview)
-
-#### Markup
-
-    <strong class="govuk-tag govuk-tag--inactive">
-      alpha
-    </strong>
-
-#### Macro
-
-    {% from "tag/macro.njk" import govukTag %}
-
-    {{ govukTag({
-      "text": "alpha",
-      "classes": "govuk-tag--inactive"
-    }) }}
 
 ## Requirements
 

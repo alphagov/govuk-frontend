@@ -4,28 +4,9 @@
 
 Skip link component. Make skip links visible when they are tabbed to. You'll need to add correct id to your main content area, to ensure the skip link will work.
 
-## Guidance
+## Guidance and Examples
 
 Find out when to use the skip link component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/skip-link).
-
-## Quick start examples
-
-### Skip link
-
-[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/skip-link/preview)
-
-#### Markup
-
-    <a href="#content" class="govuk-skip-link">Skip to main content</a>
-
-#### Macro
-
-    {% from "skip-link/macro.njk" import govukSkipLink %}
-
-    {{ govukSkipLink({
-      "text": "Skip to main content",
-      "href": "#content"
-    }) }}
 
 ## Requirements
 

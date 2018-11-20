@@ -4,47 +4,9 @@
 
 Use bordered inset text to draw attention to important content on the page.
 
-## Guidance
+## Guidance and Examples
 
 Find out when to use the inset text component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/inset-text).
-
-## Quick start examples
-
-### Inset text
-
-[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/inset-text/preview)
-
-#### Markup
-
-    <div class="govuk-inset-text">
-      It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application.
-    </div>
-
-#### Macro
-
-    {% from "inset-text/macro.njk" import govukInsetText %}
-
-    {{ govukInsetText({
-      "text": "It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application."
-    }) }}
-
-### Inset text with html
-
-[Preview this example in the Frontend review app](http://govuk-frontend-review.herokuapp.com/components/inset-text/with-html/preview)
-
-#### Markup
-
-    <div class="govuk-inset-text">
-      It can take up to 8 weeks to register a <a class="govuk-link" href="#">lasting power of attorney</a> if there are no mistakes in the application.
-    </div>
-
-#### Macro
-
-    {% from "inset-text/macro.njk" import govukInsetText %}
-
-    {{ govukInsetText({
-      "html": "It can take up to 8 weeks to register a <a class=\"govuk-link\" href=\"#\">lasting power of attorney</a> if there are no mistakes in the application."
-    }) }}
 
 ## Requirements
 

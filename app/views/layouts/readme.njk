@@ -1,5 +1,3 @@
-{% from "macros/showReadmeExamples.njk" import showReadmeExamples %}
-
 {% set componentSlug = componentPath %}
 {% set componentName = componentSlug | replace("-", " ") %}
 {% set componentGuidanceLink = componentGuidanceLink | default('https://design-system.service.gov.uk/components/' + componentSlug)%}
@@ -14,18 +12,11 @@
 {% endblock %}
 
 {% if componentGuidanceLink %}
-<h2>Guidance</h2>
+<h2>Guidance and Examples</h2>
 <p>
   Find out when to use the {{ componentName }} component in your service in the <a href="{{- componentGuidanceLink -}}" class="govuk-link">GOV.UK Design System</a>.
 </p>
 {% endif %}
-
-<h2>Quick start examples</h2>
-<p>{% block componentHtmlUsageWriteup %}{% endblock %}</p>
-
-{% block examples %}
-{{ showReadmeExamples(componentSlug, componentName, componentData) }}
-{% endblock %}
 
 <h2>Requirements</h2>
 <h3>Build tool configuration</h3>
