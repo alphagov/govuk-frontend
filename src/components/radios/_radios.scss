@@ -38,11 +38,11 @@
     position: absolute;
 
     z-index: 1;
-    top: 0;
-    left: 0;
+    top: -2px;
+    left: -2px;
 
-    width: $govuk-radios-size;
-    height: $govuk-radios-size;
+    width: $govuk-radios-size + 4px;
+    height: $govuk-radios-size + 4px;
 
     cursor: pointer;
 
