@@ -32,6 +32,12 @@
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
+- Update padding of govuk-main-wrapper
+
+  This increases the padding of `govuk-main-wrapper` (on tablet and above) to be more inline with GOV.UK. When updating, your pages will have 10px more white space above and below the 'main' content area.
+
+  ([PR #1073](https://github.com/alphagov/govuk-frontend/pull/1073))
+
 - Remove error-summary dependence on document.onload
 
   ([PR #1215](https://github.com/alphagov/govuk-frontend/pull/1215))
