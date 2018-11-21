@@ -221,7 +221,6 @@ examples:
         text: Blue
 
 - name: with single option set 'aria-describeby' on input
-  readme: false
   data:
     name: t-and-c
     errorMessage:
@@ -270,7 +269,6 @@ examples:
         text: Farm or agricultural waste
 
 - name: with very long option text
-  readme: false
   data:
     name: waste
     hint:
@@ -309,7 +307,6 @@ examples:
           Donec sed odio dui. Sed posuere consectetur est at lobortis.
 
 - name: with conditional items
-  readme: false
   data:
     idPrefix: how-contacted
     fieldset:
@@ -336,7 +333,6 @@ examples:
             <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
 
 - name: with conditional item checked
-  readme: false
   data:
     idPrefix: how-contacted-checked
     fieldset:
@@ -364,7 +360,6 @@ examples:
           <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
   
 - name: with optional form-group classes showing group error
-  readme: false
   data:
     idPrefix: how-contacted-checked
     formGroup:

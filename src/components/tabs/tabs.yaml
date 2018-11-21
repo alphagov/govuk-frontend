@@ -168,7 +168,6 @@ examples:
 
 - name: tabs-with-anchor-in-panel
   description: Ensure that anchors that are in tab panels work correctly
-  readme: false
   data:
     items:
       - label: Tab 1

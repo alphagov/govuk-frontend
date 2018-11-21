@@ -47,12 +47,3 @@ If a snapshot test fails, review the difference in the console. If the change is
 `npm test -- -u src/components/button`
 
 This will update the snapshot file. Commit this file separately with a commit message that explains you're updating the snapshot file and an explanation of what caused the change.
-
-## Updating component READMEs
-We generate the component `README.md` file from `README.njk` in the component directory. In order to ensure that any changes introduced to the `README.njk` files are mirrored in the markdown one, we run tests to compare the files.
-
-If you see the warning
-```
-Generating READMEs › should have no dirty changes since they should be committed into source
-```
-and you intended to make changes to component README(s), just run `gulp generate:readme` to regenerate the component `README.md` files from the `README.njk` files. Commit both the `.md` and `.njk` file.

@@ -139,7 +139,6 @@ examples:
         text: GOV.UK frontend option 3
         disabled: true
 - name: with optional form-group classes
-  readme: false
   data:
     id: select-1
     name: select-1

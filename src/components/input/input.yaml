@@ -139,7 +139,6 @@ examples:
       id: input-with-page-heading
       name: test-name
   - name: with optional form-group classes
-    readme: false
     data:
       label:
         text: National Insurance number

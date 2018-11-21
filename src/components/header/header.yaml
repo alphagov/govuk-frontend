@@ -119,7 +119,6 @@ examples:
         text: Navigation item 4
 
 - name: with large navigation
-  readme: false
   description: An edge case example with a large number of navitation items with long names used to test wrapping
   data:
     navigation:
@@ -157,14 +156,12 @@ examples:
         text: Working, jobs and pensions
 
 - name: full width
-  readme: false
   data:
     containerClasses: govuk-header__container--full-width
     navigationClasses: govuk-header__navigation--end
     productName: Product Name
 
 - name: full width with navigation
-  readme: false
   data:
     containerClasses: govuk-header__container--full-width
     navigationClasses: govuk-header__navigation--end

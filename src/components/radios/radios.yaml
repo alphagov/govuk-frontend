@@ -269,7 +269,6 @@ examples:
         checked: true
 
 - name: with very long option text
-  readme: false
   data:
     name: waste
     hint:
@@ -308,7 +307,6 @@ examples:
           Donec sed odio dui. Sed posuere consectetur est at lobortis.
 
 - name: with conditional items
-  readme: false
   data:
     idPrefix: how-contacted
     name: how-contacted
@@ -336,7 +334,7 @@ examples:
             <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
 
 - name: inline with conditional items
-  readme: false
+  
   data:
     classes: govuk-radios--inline
     idPrefix: how-contacted
@@ -366,7 +364,6 @@ examples:
 
 
 - name: with conditional item checked
-  readme: false
   data:
     idPrefix: 'how-contacted-checked'
     name: 'how-contacted-checked'
@@ -395,7 +392,6 @@ examples:
           <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
 
 - name: with optional form-group classes showing group error
-  readme: false
   data:
     idPrefix: 'how-contacted-2'
     name: 'how-contacted-2'
