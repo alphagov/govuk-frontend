@@ -8,5 +8,4 @@ const configPaths = require('../../config/paths.json')
 gulp.task('watch', () => {
   gulp.watch([configPaths.src + '**/**/*.scss', configPaths.app + 'assets/scss/**/*.scss'], ['styles', 'sassdoc'])
   gulp.watch([configPaths.src + '**/**/*.js'], ['scripts'])
-  // gulp.watch([configPaths.src + '**/**/*.njk'], ['compile:components'])
 })
