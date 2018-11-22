@@ -22,11 +22,10 @@
 
 🔧 Fixes:
 
-- Pull Request Title goes here
+- Add 5px bottom margin to list items within lists that do not have bullets or
+  numbers on mobile breakpoints to make each item visually distinct.
 
-  Description goes here (optional)
-
-  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+  ([PR #1078](https://github.com/alphagov/govuk-frontend/pull/1078))
 
 ## 2.4.0 (Feature release)
 
