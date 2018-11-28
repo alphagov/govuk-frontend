@@ -66,20 +66,20 @@ gulp.task('scss:compile', () => {
       cssnano,
       // transpile css for ie https://github.com/jonathantneal/oldie
       require('oldie')({
-        rgba: {filter: true},
-        rem: {disable: true},
-        unmq: {disable: true},
-        pseudo: {disable: true}
+        rgba: { filter: true },
+        rem: { disable: true },
+        unmq: { disable: true },
+        pseudo: { disable: true }
         // more rules go here
       })
     ])))
     .pipe(gulpif(!isDist, postcss([
       autoprefixer,
       require('oldie')({
-        rgba: {filter: true},
-        rem: {disable: true},
-        unmq: {disable: true},
-        pseudo: {disable: true}
+        rgba: { filter: true },
+        rem: { disable: true },
+        unmq: { disable: true },
+        pseudo: { disable: true }
         // more rules go here
       })
     ])))
