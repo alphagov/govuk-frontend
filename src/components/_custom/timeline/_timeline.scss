@@ -13,7 +13,7 @@ $line-height: 1.5;
 $component-spacing: ($font-size * $line-height) / 2;
 
 $bullet-border: 2px;
-$bullet-size: $bullet-border + ($component-spacing * 2);
+$bullet-size: ($component-spacing * 2) - $bullet-border;
 
 $tail-width: $component-spacing;
 
@@ -110,7 +110,7 @@ $icon-check: url("../../../assets/images/icon-check.svg");
 
     &--in-progress {
       border-color: $color-progress;
-      background: $color-progress $icon-pencil no-repeat center 7px;
+      background: $color-progress $icon-pencil no-repeat center 5px;
     }
 
     &--waiting {
