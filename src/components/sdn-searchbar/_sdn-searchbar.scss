@@ -1,0 +1,46 @@
+@import "../../settings/all";
+@import "../../tools/all";
+@import "../../helpers/all";
+
+
+@include govuk-exports("govuk/component/sdn-searchbar") {
+  // todo replace colors from global variables
+  $from: #2e3ac7;
+  $to: #448bef;
+  $search-block-bg: govuk-colour("white");
+
+  .sdn-searchbar {
+    padding-top: 52px;
+    padding-bottom: 35px;
+    background: linear-gradient(90deg, $from 0%, $to 100%);
+  }
+
+  .sdn-searchbar__item {
+    height: 58px;
+    border-radius: 2px;
+    background-color: $search-block-bg;    
+  }
+
+  .sdn-searchbar-block {
+    display: flex;
+    align-items: center;
+
+    input[type="search"] {
+      width: 100%;
+      height: 20px;
+      border: 0;
+
+      &:focus {
+        outline: 0;
+      }
+    }
+  }
+
+  .sdn-searchbar-block__item {
+    &:first-child {
+      padding: 0 20px;
+      flex-grow: 1;
+    }
+  }
+
+}
