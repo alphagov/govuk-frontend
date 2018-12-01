@@ -95,13 +95,14 @@ $icon-check: url("../../../assets/images/icon-check.svg");
     background-color: $color-default;
     line-height: $bullet-size;
     text-align: center;
+    cursor: pointer;
 
     &--not-done {
-      background: $color-default $icon-check no-repeat center;
+      background: $color-default $icon-dots no-repeat center;
     }
 
     &--done {
-      background: $color-done $icon-dots no-repeat center;
+      background: $color-done $icon-check no-repeat center;
     }
 
     &--in-progress {
@@ -118,6 +119,10 @@ $icon-check: url("../../../assets/images/icon-check.svg");
     color: inherit;
     text-decoration-color: transparent;
 
+    &:hover {
+      text-decoration-color: currentColor;
+    }
+
     &:before {
       content: counter(li) ". ";
       margin-right: $component-spacing / 2;
@@ -126,6 +131,7 @@ $icon-check: url("../../../assets/images/icon-check.svg");
   }
 
   .sdn-timeline-dropdown {
+    display: none;
     position: absolute;
     z-index: 10;
     top: $bullet-size + $component-spacing;
@@ -158,6 +164,10 @@ $icon-check: url("../../../assets/images/icon-check.svg");
       left: 17px;
       border-width: 0 7px 5px 7px;
       border-color: transparent transparent govuk-colour("white") transparent;
+    }
+
+    .sdn-timeline__step--dropdown-active & {
+      display: block;
     }
   }
 
