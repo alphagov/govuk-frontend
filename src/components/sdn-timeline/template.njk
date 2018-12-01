@@ -1,0 +1,10 @@
+<div class="sdn-timeline {%- if params.classes %} {{ params.classes }}{% endif %}"{% for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+    <ol start=0 class="sdn-timeline__list">
+      {% for step in params.steps %}
+        <li class="sdn-timeline__step sdn-timeline__step--{{ step.state }}">
+          <div class="sdn-timeline__bullet">1</div>
+          <a class="sdn-timeline__link" href="{{ step.href }}"{% for attribute, value in step.attributes %} {{attribute}}="{{value}}"{% endfor %}>{{ step.html | safe if step.html else step.text }}</a>
+        </li>
+      {% endfor %}
+    </ol>
+</div>

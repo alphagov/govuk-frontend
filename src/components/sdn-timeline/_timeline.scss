@@ -1,0 +1,109 @@
+@import "../../settings/all";
+@import "../../tools/all";
+@import "../../helpers/all";
+
+$color-done: govuk-colour("green");
+$color-progress: govuk-colour("orange");
+$color-waiting: govuk-colour("blue");
+$color-default: govuk-colour("grey-3");
+
+$font-size: 16px;
+$line-height: 1.5;
+
+$component-spacing: ($font-size * $line-height) / 2;
+
+$bullet-border: 2px;
+$bullet-size: $bullet-border + ($component-spacing * 2);
+
+$tail-width: $component-spacing;
+
+@mixin step($bullet-color, $border-color: $color-default) {
+  border-left-color: $border-color;
+
+  &:last-child:after {
+    background-color: $border-color;
+  }
+
+  .sdn-timeline__bullet {
+    background-color: $bullet-color;
+  }
+}
+
+@include govuk-exports("govuk/component/sdn-timeline") {
+  .sdn-timeline {
+    @include govuk-font($size: 16, $line-height: 1.5);
+    @include govuk-text-colour;
+
+    text-decoration: underline;
+  }
+
+  .sdn-timeline__list {
+    padding-left: 0;
+    list-style: none;
+    counter-reset: li -1;
+  }
+
+  .sdn-timeline__step {
+    position: relative;
+    margin-left: $component-spacing;
+    padding-bottom: $component-spacing * 4;
+    padding-left: $component-spacing * 3;
+    border-left-width: 2px;
+    border-left-style: solid;
+    border-left-color: $color-default;
+
+    &:last-child {
+      padding-bottom: $component-spacing * 2;
+
+      // tail-end of the timeline
+
+      &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: - ($tail-width / 2) - ($bullet-border / 2);
+        width: $tail-width;
+        height: $bullet-border;
+        background-color: $color-default;
+      }
+
+    }
+  }
+
+  .sdn-timeline__step--done {
+    @include step($color-done, $color-done);
+  }
+
+  .sdn-timeline__step--in-progress {
+    @include step($color-progress);
+  }
+
+  .sdn-timeline__step--waiting {
+    @include step($color-waiting);
+  }
+
+  .sdn-timeline__bullet {
+    position: absolute;
+    top: - ($bullet-border / 2);
+    left: - $component-spacing - $bullet-border;
+    width: $bullet-size;
+    height: $bullet-size;
+    border-radius: 50%;
+    color: govuk-colour("white");
+    background-color: $color-default;
+    line-height: $bullet-size;
+    text-align: center;
+  }
+
+  .sdn-timeline__link {
+    position: relative;
+    color: inherit;
+    text-decoration-color: transparent;
+
+    &:before {
+      content: counter(li) ". ";
+      counter-increment: li;
+    }
+  }
+}
