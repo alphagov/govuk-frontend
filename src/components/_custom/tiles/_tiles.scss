@@ -1,6 +1,6 @@
-@import "../../settings/all";
-@import "../../tools/all";
-@import "../../helpers/all";
+@import "../../../settings/all";
+@import "../../../tools/all";
+@import "../../../helpers/all";
 
 
 @mixin tile-borders() {
@@ -21,12 +21,20 @@
   .sdn-tiles__item {
     @include tile-borders();
     box-sizing: border-box;
-    width: 25%;
+    width: 50%;
     border-width: 0 2px 2px 0;
     cursor: pointer;
 
     &:hover {
       background-color: govuk-colour("white");
+    }
+
+    @include govuk-media-query($from: tablet) {
+      width: 33%;
+    }
+
+    @include govuk-media-query($from: desktop) {
+      width: 25%;
     }
   }
 
