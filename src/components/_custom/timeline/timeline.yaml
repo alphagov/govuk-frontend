@@ -12,7 +12,6 @@ params:
     required: true
   - name: state
     type: string
-    required: true
   - name: selected
     type: bool
   - name: dropdown_active
@@ -41,7 +40,6 @@ examples:
       -
         text: Prihlásenie do zdravotnej poistovne
         href: '/'
-        state: 'waiting'
         selected: true
       -
         text: Zaslanie rodného listu na Socialnu poistovnu (ak dostava materske)

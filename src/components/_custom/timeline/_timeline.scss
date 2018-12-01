@@ -90,26 +90,31 @@ $icon-check: url("../../../assets/images/icon-check.svg");
     left: 0;
     width: $bullet-size;
     height: $bullet-size;
+    border: $bullet-border solid $color-default;
     border-radius: 50%;
     color: govuk-colour("white");
-    background-color: $color-default;
+    background-color: govuk-colour("white");
     line-height: $bullet-size;
     text-align: center;
     cursor: pointer;
 
     &--not-done {
+      border-color: $color-default;
       background: $color-default $icon-dots no-repeat center;
     }
 
     &--done {
+      border-color: $color-done;
       background: $color-done $icon-check no-repeat center;
     }
 
     &--in-progress {
+      border-color: $color-progress;
       background: $color-progress $icon-pencil no-repeat center 7px;
     }
 
     &--waiting {
+      border-color: $color-waiting;
       background: $color-waiting $icon-hourglass no-repeat center;
     }
   }
