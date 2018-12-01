@@ -1,0 +1,20 @@
+params:
+- name: containerClasses
+  type: string
+  required: false
+  description: Classes that can be added to the inner container, useful if you want to make the footer full width.
+- name: classes
+  type: string
+  required: false
+  description: Classes to add to the footer component container.
+- name: attributes
+  type: object
+  required: false
+  description: HTML attributes (for example data attributes) to add to the footer component container.
+
+previewLayout: full-width
+
+examples:
+- name: default
+  data:
+    {}
