@@ -22,20 +22,6 @@ $icon-pencil: url("../../../assets/images/icon-pencil.svg");
 $icon-hourglass: url("../../../assets/images/icon-hourglass.svg");
 $icon-check: url("../../../assets/images/icon-check.svg");
 
-@mixin step($bullet-color, $border-color: $color-default, $icon: $icon-dots, $icon-position: center) {
-  &:before {
-    background: $border-color;
-  }
-
-  &:last-child:after {
-    background-color: $border-color;
-  }
-
-  .sdn-timeline__bullet {
-    background: $bullet-color $icon no-repeat $icon-position;
-  }
-}
-
 @include govuk-exports("govuk/component/sdn-timeline") {
   .sdn-timeline {
     @include govuk-font($size: 16, $line-height: 1.5);
@@ -79,24 +65,23 @@ $icon-check: url("../../../assets/images/icon-check.svg");
         height: $bullet-border;
         background-color: $color-default;
       }
-
     }
-  }
 
-  .sdn-timeline__step--not-done {
-    @include step($color-default, $color-default);
-  }
+    &--selected {
+      .sdn-timeline__link {
+        @include govuk-typography-weight-bold;
+      }
+    }
 
-  .sdn-timeline__step--done {
-    @include step($color-done, $color-done, $icon-check);
-  }
+    &--done {
+      &:before {
+        background: $color-done;
+      }
 
-  .sdn-timeline__step--in-progress {
-    @include step($color-progress, $color-default, $icon-pencil, center 7px);
-  }
-
-  .sdn-timeline__step--waiting {
-    @include step($color-waiting, $color-default, $icon-hourglass);
+      &:last-child:after {
+        background-color: $color-done;
+      }
+    }
   }
 
   .sdn-timeline__bullet {
@@ -110,8 +95,23 @@ $icon-check: url("../../../assets/images/icon-check.svg");
     background-color: $color-default;
     line-height: $bullet-size;
     text-align: center;
-  }
 
+    &--not-done {
+      background: $color-default $icon-check no-repeat center;
+    }
+
+    &--done {
+      background: $color-done $icon-dots no-repeat center;
+    }
+
+    &--in-progress {
+      background: $color-progress $icon-pencil no-repeat center 7px;
+    }
+
+    &--waiting {
+      background: $color-waiting $icon-hourglass no-repeat center;
+    }
+  }
 
   .sdn-timeline__link {
     display: flex;
@@ -124,4 +124,82 @@ $icon-check: url("../../../assets/images/icon-check.svg");
       counter-increment: li;
     }
   }
+
+  .sdn-timeline-dropdown {
+    position: absolute;
+    z-index: 10;
+    top: $bullet-size + $component-spacing;
+    left: -$component-spacing;
+    padding: $component-spacing 0;
+    border: 1px solid $color-default;
+    border-radius: 6px;
+    background-color: govuk-colour("white");
+    box-shadow: $color-default 0 15px 30px;
+
+    &:before,
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-style: solid;
+    }
+
+    &:before {
+      top: - 6px;
+      left: 15px;
+      border-width: 0 9px 6px 9px;
+      border-color: transparent transparent $color-default transparent;
+    }
+
+    &:after {
+      top: - 5px;
+      left: 17px;
+      border-width: 0 7px 5px 7px;
+      border-color: transparent transparent govuk-colour("white") transparent;
+    }
+  }
+
+  .sdn-timeline-dropdown__option {
+    display: block;
+    position: relative;
+    padding: govuk-spacing(2) govuk-spacing(7) govuk-spacing(2) (govuk-spacing(6) + $bullet-size);
+    cursor: pointer;
+
+    &:hover {
+      background-color: govuk-colour("grey-4");
+    }
+
+    &--selected {
+      background-color: govuk-colour("grey-3");
+
+      &:hover {
+        background-color: govuk-colour("grey-3");
+      }
+
+      &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: govuk-spacing(2);
+        right: govuk-spacing(3);
+        width: $bullet-size;
+        height: $bullet-size;
+        background: $icon-check no-repeat top right;
+      }
+    }
+  }
+
+  .sdn-timeline-dropdown__bullet {
+    position: absolute;
+    top: govuk-spacing(2) - 2px;
+    left: govuk-spacing(3);
+  }
+
+  .sdn-timeline-dropdown__additional-info {
+    color: govuk-colour("grey-1");
+    @include govuk-font($size: 14);
+  }
+
 }
