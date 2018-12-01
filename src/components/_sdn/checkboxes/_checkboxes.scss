@@ -1,5 +1,8 @@
 .govuk-checkboxes__label {
   padding: 0 $govuk-checkboxes-label-padding-left-right;
+  @include mq ($until: tablet) {
+    padding: 0 10px;
+  }
 }
 
 .govuk-checkboxes__input + .govuk-checkboxes__label::after {

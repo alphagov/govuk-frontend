@@ -33,6 +33,10 @@ $sdn-todo-list-inner-left-right-padding: 30px;
         justify-content: space-between;
         align-items: center;
 
+        @include mq ($until: tablet) {
+          display: block;
+        }
+
         &:last-child {
           padding-bottom: 0;
         }
@@ -45,8 +49,15 @@ $sdn-todo-list-inner-left-right-padding: 30px;
           display: flex;
           align-items: center;
 
+          @include mq ($until: tablet) {
+            display: block;
+          }
+
           .govuk-button {
             margin: 0;
+            @include mq ($until: tablet) {
+              margin-top: govuk-spacing(4);
+            }
           }
 
           .snd-todo-list__item__info {
