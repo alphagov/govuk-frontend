@@ -3,7 +3,7 @@
 @import "../../../helpers/all";
 
 
-@mixin tile-borders() {
+@mixin tile-borders {
   $border-color: #ededed;
   border-style: solid;
   border-color: $border-color;
@@ -12,14 +12,14 @@
 @include govuk-exports("govuk/component/sdn-tiles") {
 
   .sdn-tiles {
-    @include tile-borders();
+    @include tile-borders;
     display: flex;
     border-width: 2px 0 0 2px;
     flex-wrap: wrap;
   }
 
   .sdn-tiles__item {
-    @include tile-borders();
+    @include tile-borders;
     box-sizing: border-box;
     width: 50%;
     border-width: 0 2px 2px 0;

@@ -1,0 +1,7 @@
+.govuk-warning-text {
+  @include sdn-font($size: 20, $weight: light);
+
+  strong {
+    @include sdn-font($size: 20, $weight: light);
+  }
+}
