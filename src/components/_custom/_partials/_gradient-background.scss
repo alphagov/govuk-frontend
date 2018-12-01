@@ -1,0 +1,15 @@
+@mixin gradient-background($left-color: #204ba3, $right-color: #2a61d4) {
+  
+  $sdn-footer-outer-background: linear-gradient(
+    to right,
+    $left-color 0%,
+    $left-color 50%,
+    $right-color 50%,
+    $right-color 100%
+  );
+
+  background: $left-color;
+  @include govuk-media-query($from: desktop) {
+    background: $sdn-footer-outer-background;
+  }
+}
