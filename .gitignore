@@ -9,3 +9,4 @@ package/package-lock.json
 examples/**/package-lock.json
 *.zip
 sassdoc/
+.idea/
