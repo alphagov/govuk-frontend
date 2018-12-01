@@ -12,7 +12,9 @@
 
         <ul class="govuk-list">
           {% for componentName in sdnComponentsDirectory | sort %}
-              <li><a href="/custom-components/{{ componentName }}" class="govuk-link">{{ componentName | replace("-", " ") | capitalize }}</a></li>
+              {% if componentName != '_partials' %}
+                  <li><a href="/custom-components/{{ componentName }}" class="govuk-link">{{ componentName | replace("-", " ") | capitalize }}</a></li>
+              {% endif %}
           {% endfor %}
         </ul>
 

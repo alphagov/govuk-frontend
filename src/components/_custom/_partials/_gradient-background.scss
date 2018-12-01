@@ -1,5 +1,4 @@
 @mixin gradient-background($left-color: #204ba3, $right-color: #2a61d4) {
-  
   $sdn-footer-outer-background: linear-gradient(
     to right,
     $left-color 0%,
