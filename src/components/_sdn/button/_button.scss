@@ -1,5 +1,5 @@
 .govuk-button {
-  @include govuk-font($size: 15, $weight: light, $line-height: 17px);
+  @include govuk-font($size: 15, $weight: bold, $line-height: 17px);
   padding: 12px 15px;
   border-radius: 3px;
 }
