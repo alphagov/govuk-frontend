@@ -1,0 +1,57 @@
+@import "../../../settings/all";
+@import "../../../tools/all";
+@import "../../../helpers/all";
+
+@import "../../../helpers/typography";
+
+@include govuk-exports("govuk/component/sdn-header") {
+  $sdn-header-background-from: #2e3ac7;
+  $sdn-header-background-to: #448bef;
+  $sdn-header-text-color: #ffffff;
+  $sdn-header-height: 55px;
+
+  $sdn-header-border-color: rgba(255, 255, 255, .2);
+
+  .sdn-header {
+    @include govuk-font($size: 14);
+    border: 1px solid $sdn-header-border-color;
+    background: linear-gradient(90deg, $sdn-header-background-from 0%, $sdn-header-background-to 100%);
+  }
+
+  .sdn-header__product-name {
+    @include govuk-font($size: 18);
+  }
+
+  .sdn-header__container {
+    display: flex;
+    position: relative;
+    height: $sdn-header-height;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .sdn-header__link {
+    @include govuk-focusable-fill;
+
+    text-decoration: none;
+
+    &:link,
+    &:visited {
+      color: $sdn-header-text-color;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    // When focussed, the text colour needs to be darker to ensure that colour
+    // contrast is still acceptable
+    &:focus {
+      color: $govuk-focus-text-colour;
+    }
+  }
+
+  .sdn-header__navigation {
+    list-style: none;
+  }
+}
