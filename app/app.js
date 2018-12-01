@@ -64,10 +64,12 @@ module.exports = (options) => {
   // Index page - render the component list template
   app.get('/', async function (req, res) {
     const components = fileHelper.allComponents
+    const sdnComponents = fileHelper.allSdnComponents
     const examples = await readdir(path.resolve(configPaths.examples))
 
     res.render('index', {
       componentsDirectory: components,
+      sdnComponentsDirectory: sdnComponents,
       examplesDirectory: examples
     })
   })
@@ -76,6 +78,13 @@ module.exports = (options) => {
   // from its YAML file
   app.param('component', function (req, res, next, componentName) {
     res.locals.componentData = fileHelper.getComponentData(componentName)
+    next()
+  })
+
+  // Whenever the route includes a :component parameter, read the component data
+  // from its YAML file
+  app.param('custom_component', function (req, res, next, componentName) {
+    res.locals.sdnComponentData = fileHelper.getSdnComponentData(componentName)
     next()
   })
 
@@ -115,6 +124,52 @@ module.exports = (options) => {
       }
     })
   })
+  // Component 'README' page
+  app.get('/custom-components/:custom_component', function (req, res, next) {
+    // make variables available to nunjucks template
+    res.locals.componentPath = req.params.custom_component
+
+    res.render('custom_component', function (error, html) {
+      if (error) {
+        next(error)
+      } else {
+        res.send(html)
+      }
+    })
+  })
+
+  // Component example preview
+  app.get('/components/_custom/:custom_component/:example*?/preview', function (req, res, next) {
+    // Find the data for the specified example (or the default example)
+    let componentName = req.params.custom_component
+    let requestedExampleName = req.params.example || 'default'
+
+    let previewLayout = res.locals.sdnComponentData.previewLayout || 'layout'
+
+    let exampleConfig = res.locals.sdnComponentData.examples.find(
+      example => example.name.replace(/ /g, '-') === requestedExampleName
+    )
+
+    if (!exampleConfig) {
+      next()
+    }
+
+    // Construct and evaluate the component with the data for this example
+    let macroName = helperFunctions.componentNameToMacroName(componentName)
+    let macroParameters = JSON.stringify(exampleConfig.data, null, '\t')
+
+    res.locals.componentView = env.renderString(
+      `{% from '_custom/${componentName}/macro.njk' import ${macroName} %}
+      {{ ${macroName}(${macroParameters}) }}`
+    )
+
+    let bodyClasses = ''
+    if (req.query.iframe) {
+      bodyClasses = 'app-iframe-in-component-preview'
+    }
+
+    res.render('component-preview', { bodyClasses, previewLayout })
+  })
 
   // Component example preview
   app.get('/components/:component/:example*?/preview', function (req, res, next) {
@@ -138,6 +193,39 @@ module.exports = (options) => {
 
     res.locals.componentView = env.renderString(
       `{% from '${componentName}/macro.njk' import ${macroName} %}
+      {{ ${macroName}(${macroParameters}) }}`
+    )
+
+    let bodyClasses = ''
+    if (req.query.iframe) {
+      bodyClasses = 'app-iframe-in-component-preview'
+    }
+
+    res.render('component-preview', { bodyClasses, previewLayout })
+  })
+
+  // Component example preview
+  app.get('/custom-components/:custom_component/:example*?/preview', function (req, res, next) {
+    // Find the data for the specified example (or the default example)
+    let componentName = req.params.custom_component
+    let requestedExampleName = req.params.example || 'default'
+
+    let previewLayout = res.locals.sdnComponentData.previewLayout || 'layout'
+
+    let exampleConfig = res.locals.sdnComponentData.examples.find(
+      example => example.name.replace(/ /g, '-') === requestedExampleName
+    )
+
+    if (!exampleConfig) {
+      next()
+    }
+
+    // Construct and evaluate the component with the data for this example
+    let macroName = helperFunctions.componentNameToMacroName(componentName)
+    let macroParameters = JSON.stringify(exampleConfig.data, null, '\t')
+
+    res.locals.componentView = env.renderString(
+      `{% from '_custom/${componentName}/macro.njk' import ${macroName} %}
       {{ ${macroName}(${macroParameters}) }}`
     )
 

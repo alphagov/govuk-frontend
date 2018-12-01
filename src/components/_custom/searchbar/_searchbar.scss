@@ -1,9 +1,9 @@
-@import "../../settings/all";
-@import "../../tools/all";
-@import "../../helpers/all";
+@import "../../../settings/all";
+@import "../../../tools/all";
+@import "../../../helpers/all";
 
 
-@include govuk-exports("govuk/component/sdn-searchbar") {
+@include govuk-exports("sdn/component/searchbar") {
   // todo replace colors from global variables
   $from: #2e3ac7;
   $to: #448bef;

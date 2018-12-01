@@ -2,18 +2,28 @@
 
 {% block content %}
   <h1 class="govuk-heading-xl">
-    GOV.UK Frontend
+    navody.digital frontend
   </h1>
 
   <div class="govuk-grid-row">
 
     <div class="govuk-grid-column-one-half">
-      <h2 class="govuk-heading-m">Components</h2>
+      <h2 class="govuk-heading-m">navody.digital components</h2>
+
+        <ul class="govuk-list">
+          {% for componentName in sdnComponentsDirectory | sort %}
+              <li><a href="/custom-components/{{ componentName }}" class="govuk-link">{{ componentName | replace("-", " ") | capitalize }}</a></li>
+          {% endfor %}
+        </ul>
+
+
+      <h2 class="govuk-heading-m">gov.uk components</h2>
 
       <ul class="govuk-list">
-        <li><a href="/components/all" class="govuk-link">All</a></li>
         {% for componentName in componentsDirectory | sort %}
-          <li><a href="/components/{{ componentName }}" class="govuk-link">{{ componentName | replace("-", " ") | capitalize }}</a></li>
+              {% if componentName != '_sdn' and componentName != '_custom' %}
+                <li><a href="/components/{{ componentName }}" class="govuk-link">{{ componentName | replace("-", " ") | capitalize }}</a></li>
+            {% endif %}
         {% endfor %}
       </ul>
     </div>

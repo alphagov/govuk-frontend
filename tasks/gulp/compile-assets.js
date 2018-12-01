@@ -105,7 +105,7 @@ gulp.task('js:compile', () => {
   ])
     .pipe(rollup({
       // Used to set the `window` global and UMD/AMD export name.
-      name: 'GOVUKFrontend',
+      name: 'navodyDigitalFrontend',
       // Legacy mode is required for IE8 support
       legacy: true,
       // UMD allows the published bundle to work in CommonJS and in the browser.

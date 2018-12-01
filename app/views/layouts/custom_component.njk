@@ -1,5 +1,5 @@
 {% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
-{% from "macros/showExamples.njk" import showExamples %}
+{% from "macros/showExamples.njk" import showCustomExamples %}
 
 {% extends "full-width.njk" %}
 
@@ -11,7 +11,8 @@
 {% set componentNameHuman = componentName | replace("-", " ") %}
 
 {% set htmlMarkup %}
-  {% include componentName +"/"+ componentName +".njk" ignore missing %}
+    {{ componentName }}
+  {% include "_custom/" + componentName +"/"+ componentName +".njk" ignore missing %}
 {% endset %}
 
 {% block beforeContent %}
@@ -33,6 +34,6 @@
   </div>
 
   {% block examples %}
-    {{ showExamples(componentName, componentNameHuman, componentData) }}
+    {{ showCustomExamples(componentName, componentNameHuman, sdnComponentData) }}
   {% endblock %}
 {% endblock %}

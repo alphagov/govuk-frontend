@@ -46,3 +46,50 @@
   </section>
 {% endfor %}
 {% endmacro %}
+
+{% macro showCustomExamples(componentSlug, componentName, data) %}
+{% for example in data.examples %}
+
+  {% set exampleSlug = (example.name | replace(" ", "-")) %}
+
+  {% if example.name == 'default' %}
+    {% set heading = componentName | capitalize %}
+    {% set path = '/components/_custom/' + componentSlug + "/preview" %}
+  {% else %}
+    {% set heading %}{{ componentName | capitalize }} {{ example.name }}{% endset %}
+    {% set path = '/components/_custom/' + componentSlug + '/' + exampleSlug + "/preview" %}
+  {% endif %}
+
+  <section aria-labelledby="heading-{{ exampleSlug }}" class="govuk-!-margin-bottom-9">
+    <div class="govuk-width-container">
+      <div class="govuk-heading-m">
+        <h3 id="heading-{{ exampleSlug }}" class="app-!-di">{{ heading }}</h3>
+        <a href="{{ path }}" class="govuk-link govuk-!-margin-left-1 govuk-!-font-size-16">
+          (open in a new window)
+        </a>
+      </div>
+
+    {% if example.description %}
+      <p class="govuk-body">
+        {{ example.description }}
+      </p>
+    {% endif %}
+    </div>
+    <div class="app-component-preview">
+      <iframe
+      class="js-component-preview app-component-preview__iframe"
+      src="{{ path }}?iframe=true"
+      frameBorder="0"
+      allowTransparency="true"
+      scrolling="auto"
+      ></iframe>
+    </div>
+
+    <div class="govuk-width-container">
+      {% set detailsHtml %}{% include "partials/custom_code.njk" %}{% endset %}
+      {{- govukDetails({ summaryText: "Code", html: detailsHtml }) -}}
+    </div>
+
+  </section>
+{% endfor %}
+{% endmacro %}
