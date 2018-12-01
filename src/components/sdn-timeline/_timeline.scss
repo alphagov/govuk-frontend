@@ -17,15 +17,22 @@ $bullet-size: $bullet-border + ($component-spacing * 2);
 
 $tail-width: $component-spacing;
 
-@mixin step($bullet-color, $border-color: $color-default) {
-  border-left-color: $border-color;
+$icon-dots: url("../../assets/images/icon-dots.svg");
+$icon-pencil: url("../../assets/images/icon-pencil.svg");
+$icon-hourglass: url("../../assets/images/icon-hourglass.svg");
+$icon-check: url("../../assets/images/icon-check.svg");
+
+@mixin step($bullet-color, $border-color: $color-default, $icon: $icon-dots, $icon-position: center) {
+  &:before {
+    background: $border-color;
+  }
 
   &:last-child:after {
     background-color: $border-color;
   }
 
   .sdn-timeline__bullet {
-    background-color: $bullet-color;
+    background: $bullet-color $icon no-repeat $icon-position;
   }
 }
 
@@ -44,25 +51,30 @@ $tail-width: $component-spacing;
   }
 
   .sdn-timeline__step {
+    @include govuk-responsive-padding(7, "bottom");
     position: relative;
-    margin-left: $component-spacing;
-    padding-bottom: $component-spacing * 4;
-    padding-left: $component-spacing * 3;
-    border-left-width: 2px;
-    border-left-style: solid;
-    border-left-color: $color-default;
+    padding-left: $bullet-border + $component-spacing * 4;
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: $component-spacing;
+      width: $bullet-border;
+      background: $color-default;
+    }
 
     &:last-child {
       padding-bottom: $component-spacing * 2;
 
       // tail-end of the timeline
-
       &:after {
         content: "";
         display: block;
         position: absolute;
         bottom: 0;
-        left: - ($tail-width / 2) - ($bullet-border / 2);
+        left: ($component-spacing / 2) + ($bullet-border / 2);
         width: $tail-width;
         height: $bullet-border;
         background-color: $color-default;
@@ -71,22 +83,26 @@ $tail-width: $component-spacing;
     }
   }
 
+  .sdn-timeline__step--not-done {
+    @include step($color-default, $color-default);
+  }
+
   .sdn-timeline__step--done {
-    @include step($color-done, $color-done);
+    @include step($color-done, $color-done, $icon-check);
   }
 
   .sdn-timeline__step--in-progress {
-    @include step($color-progress);
+    @include step($color-progress, $color-default, $icon-pencil, center 7px);
   }
 
   .sdn-timeline__step--waiting {
-    @include step($color-waiting);
+    @include step($color-waiting, $color-default, $icon-hourglass);
   }
 
   .sdn-timeline__bullet {
     position: absolute;
-    top: - ($bullet-border / 2);
-    left: - $component-spacing - $bullet-border;
+    top: -1px;
+    left: 0;
     width: $bullet-size;
     height: $bullet-size;
     border-radius: 50%;
@@ -96,13 +112,15 @@ $tail-width: $component-spacing;
     text-align: center;
   }
 
+
   .sdn-timeline__link {
-    position: relative;
+    display: flex;
     color: inherit;
     text-decoration-color: transparent;
 
     &:before {
       content: counter(li) ". ";
+      margin-right: $component-spacing / 2;
       counter-increment: li;
     }
   }
