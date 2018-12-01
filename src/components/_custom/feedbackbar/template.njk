@@ -1,0 +1,17 @@
+<div class="sdn-feedbackbar {{ params.classes if params.classes }}" role="contentinfo"
+        {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+  <div class="govuk-width-container {{ params.containerClasses if params.containerClasses }}">
+    <div class="sdn-feedbackbar__container">
+      <div class="sdn-feedbackbar__useful">
+        <span class="sdn-feedbackbar__useful-question">Boli tieto informácie užitočné pre vás?</span>
+        <span>
+          <span class="sdn-feedbackbar__yes"><a href="#" class="sdn-feedbackbar__link">Áno</a></span>
+          <span class="sdn-feedbackbar__no"><a href="#" class="sdn-feedbackbar__link">Nie</a></span>
+        </span>
+      </div>
+      <div class="sdn-feedbackbar__foundbug">
+        <span>Našli ste na stránke chybu?&nbsp;</span><span><a href="#" class="sdn-feedbackbar__link">Napíšte nám</a></span>
+      </div>
+    </div>
+  </div>
+</div>
