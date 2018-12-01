@@ -1,0 +1,64 @@
+params:
+- name: steps
+  type: array
+  required: true
+  description: Array of step objects
+  params:
+  - name: text
+    type: string
+    required: true
+  - name: href
+    type: string
+    required: true
+  - name: state
+    type: string
+    required: true
+- name: classes
+  type: string
+  required: false
+  description: Classes to add to the breadcrumbs container.
+- name: attributes
+  type: object
+  required: false
+  description: HTML attributes (for example data attributes) to add to the breadcrumbs container.
+
+examples:
+- name: default
+  data:
+    steps:
+      -
+        text: Spustenie návodu
+        href: '/'
+        state: 'done'
+      -
+        text: Vyzdvihnutie rodného listu na matrike
+        href: '/'
+        state: 'waiting'
+      -
+        text: Prihlásenie do zdravotnej poistovne
+        href: '/'
+        state: 'waiting'
+      -
+        text: Zaslanie rodného listu na Socialnu poistovnu (ak dostava materske)
+        href: '/'
+        state: 'waiting'
+      -
+        text: Prihlásenie dieťaťa k pediatrovi s prepúšťajúcou správou z pôrodnice
+        href: '/'
+        state: 'waiting'
+      -
+        text: Prihlásenie dieťaťa k trvalému pobytu v ohlasovni pobytu (len v specialnych pripadoch)
+        href: '/'
+        state: 'in-progress'
+      -
+        text: Vybavenie cestovného dokladu dieťaťa
+        href: '/'
+        state: 'not-done'
+      -
+        text: Príspevok pri narodení dieťaťa
+        href: '/'
+        state: 'not-done'
+      -
+        text: Rôzne ďalsie príplatky a príspevky
+        href: '/'
+        state: 'not-done'
