@@ -23,7 +23,8 @@
 
   .sdn-searchbar-block {
     display: flex;
-    align-items: center;
+    padding: 4px;
+    align-items: stretch;
 
     input[type="search"] {
       width: 100%;
@@ -37,10 +38,19 @@
   }
 
   .sdn-searchbar-block__item {
+
+    display: flex;
+    align-items: center;
+
     &:first-child {
       padding: 0 20px;
       flex-grow: 1;
     }
+  }
+
+  .sdn-searchbar-block__item--stretched {
+    align-items: stretch;
+
   }
 
 }
