@@ -41,6 +41,20 @@ $govuk-typography-scale: (
       line-height: 1.05
     )
   ),
+  28: (
+    null: (
+      font-size: 18px,
+      line-height: 20px
+    ),
+    tablet: (
+      font-size: 28px,
+      line-height: 30px
+    ),
+    print: (
+      font-size: 18pt,
+      line-height: 1.15
+    )
+  ),
   27: (
     null: (
       font-size: 18px,
