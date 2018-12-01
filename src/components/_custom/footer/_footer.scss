@@ -133,7 +133,7 @@
 
   .sdn-footer__donate-text {
     padding-left: govuk-spacing(3);
-    @include govuk-font($size: 20, $weight: light);
+    @include sdn-font($size: 20, $weight: light);
   }
 
   .sdn-footer__donate-link {
