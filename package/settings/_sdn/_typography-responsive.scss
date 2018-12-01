@@ -1,0 +1,142 @@
+$govuk-typography-scale: (
+  80: (
+    null: (
+      font-size: 53px,
+      line-height: 55px
+    ),
+    tablet: (
+      font-size: 80px,
+      line-height: 80px
+    ),
+    print: (
+      font-size: 53pt,
+      line-height: 1.1
+    )
+  ),
+  48: (
+    null: (
+      font-size: 32px,
+      line-height: 35px
+    ),
+    tablet: (
+      font-size: 48px,
+      line-height: 50px
+    ),
+    print: (
+      font-size: 32pt,
+      line-height: 1.15
+    )
+  ),
+  36: (
+    null: (
+      font-size: 24px,
+      line-height: 25px
+    ),
+    tablet: (
+      font-size: 36px,
+      line-height: 40px
+    ),
+    print: (
+      font-size: 24pt,
+      line-height: 1.05
+    )
+  ),
+  27: (
+    null: (
+      font-size: 18px,
+      line-height: 20px
+    ),
+    tablet: (
+      font-size: 27px,
+      line-height: 30px
+    ),
+    print: (
+      font-size: 18pt,
+      line-height: 1.15
+    )
+  ),
+  24: (
+    null: (
+      font-size: 18px,
+      line-height: 20px
+    ),
+    tablet: (
+      font-size: 24px,
+      line-height: 30px
+    ),
+    print: (
+      font-size: 18pt,
+      line-height: 1.15
+    )
+  ),
+  20: (
+    null: (
+      font-size: 16px,
+      line-height: 20px
+    ),
+    tablet: (
+      font-size: 20px,
+      line-height: 25px
+    ),
+    print: (
+      font-size: 14pt,
+      line-height: 1.15
+    )
+  ),
+  19: (
+    null: (
+      font-size: 16px,
+      line-height: 20px
+    ),
+    tablet: (
+      font-size: 19px,
+      line-height: 25px
+    ),
+    print: (
+      font-size: 14pt,
+      line-height: 1.15
+    )
+  ),
+  16: (
+    null: (
+      font-size: 14px,
+      line-height: 16px
+    ),
+    tablet: (
+      font-size: 16px,
+      line-height: 24px
+    ),
+    print: (
+      font-size: 14pt,
+      line-height: 1.2
+    )
+  ),
+  15: (
+    null: (
+      font-size: 14px,
+      line-height: 17px
+    ),
+    tablet: (
+      font-size: 15px,
+      line-height: 20px
+    ),
+    print: (
+      font-size: 12pt,
+      line-height: 1.2
+    )
+  ),
+  14: (
+    null: (
+      font-size: 12px,
+      line-height: 15px
+    ),
+    tablet: (
+      font-size: 14px,
+      line-height: 20px
+    ),
+    print: (
+      font-size: 12pt,
+      line-height: 1.2
+    )
+  )
+) !default;

@@ -1,0 +1,131 @@
+@import "../../../settings/all";
+@import "../../../tools/all";
+@import "../../../helpers/all";
+
+$color-done: govuk-colour("green");
+$color-progress: govuk-colour("orange");
+$color-waiting: govuk-colour("blue");
+$color-default: govuk-colour("grey-3");
+
+$font-size: 16px;
+$line-height: 1.5;
+
+$component-spacing: ($font-size * $line-height) / 2;
+
+$bullet-border: 2px;
+$bullet-size: $bullet-border + ($component-spacing * 2);
+
+$tail-width: $component-spacing;
+
+$icon-dots: url("../../../assets/images/icon-dots.svg");
+$icon-pencil: url("../../../assets/images/icon-pencil.svg");
+$icon-hourglass: url("../../../assets/images/icon-hourglass.svg");
+$icon-check: url("../../../assets/images/icon-check.svg");
+
+@mixin step($bullet-color, $border-color: $color-default, $icon: $icon-dots, $icon-position: center) {
+  &:before {
+    background: $border-color;
+  }
+
+  &:last-child:after {
+    background-color: $border-color;
+  }
+
+  .sdn-timeline__bullet {
+    background: $bullet-color $icon no-repeat $icon-position;
+  }
+}
+
+@include govuk-exports("govuk/component/sdn-timeline") {
+  .sdn-timeline {
+    @include govuk-font($size: 16, $line-height: 1.5);
+    @include govuk-text-colour;
+
+    text-decoration: underline;
+  }
+
+  .sdn-timeline__list {
+    padding-left: 0;
+    list-style: none;
+    counter-reset: li -1;
+  }
+
+  .sdn-timeline__step {
+    @include govuk-responsive-padding(7, "bottom");
+    position: relative;
+    padding-left: $bullet-border + $component-spacing * 4;
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: $component-spacing;
+      width: $bullet-border;
+      background: $color-default;
+    }
+
+    &:last-child {
+      padding-bottom: $component-spacing * 2;
+
+      // tail-end of the timeline
+      &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: ($component-spacing / 2) + ($bullet-border / 2);
+        width: $tail-width;
+        height: $bullet-border;
+        background-color: $color-default;
+      }
+
+    }
+  }
+
+  .sdn-timeline__step--not-done {
+    @include step($color-default, $color-default);
+  }
+
+  .sdn-timeline__step--done {
+    @include step($color-done, $color-done, $icon-check);
+  }
+
+  .sdn-timeline__step--in-progress {
+    @include step($color-progress, $color-default, $icon-pencil, center 7px);
+  }
+
+  .sdn-timeline__step--waiting {
+    @include step($color-waiting, $color-default, $icon-hourglass);
+  }
+
+  .sdn-timeline__bullet {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: $bullet-size;
+    height: $bullet-size;
+    border-radius: 50%;
+    color: govuk-colour("white");
+    background-color: $color-default;
+    line-height: $bullet-size;
+    text-align: center;
+  }
+
+
+  .sdn-timeline__link {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    color: inherit;
+    -webkit-text-decoration-color: transparent;
+            text-decoration-color: transparent;
+
+    &:before {
+      content: counter(li) ". ";
+      margin-right: $component-spacing / 2;
+      counter-increment: li;
+    }
+  }
+}
