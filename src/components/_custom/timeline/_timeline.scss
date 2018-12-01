@@ -22,16 +22,6 @@ $icon-pencil: url("../../../assets/images/icon-pencil.svg");
 $icon-hourglass: url("../../../assets/images/icon-hourglass.svg");
 $icon-check: url("../../../assets/images/icon-check.svg");
 
-@mixin step($border-color) {
-  &:before {
-    background: $border-color;
-  }
-
-  &:last-child:after {
-    background-color: $border-color;
-  }
-}
-
 @include govuk-exports("govuk/component/sdn-timeline") {
   .sdn-timeline {
     @include govuk-font($size: 16, $line-height: 1.5);
@@ -75,23 +65,22 @@ $icon-check: url("../../../assets/images/icon-check.svg");
         height: $bullet-border;
         background-color: $color-default;
       }
-
-    }
-  }
-
-  .sdn-timeline__step--selected {
-    .sdn-timeline__link {
-      @include govuk-typography-weight-bold;
-    }
-  }
-
-  .sdn-timeline__step--done {
-    &:before {
-      background: $color-done;
     }
 
-    &:last-child:after {
-      background-color: $color-done;
+    &--selected {
+      .sdn-timeline__link {
+        @include govuk-typography-weight-bold;
+      }
+    }
+
+    &--done {
+      &:before {
+        background: $color-done;
+      }
+
+      &:last-child:after {
+        background-color: $color-done;
+      }
     }
   }
 
@@ -106,22 +95,22 @@ $icon-check: url("../../../assets/images/icon-check.svg");
     background-color: $color-default;
     line-height: $bullet-size;
     text-align: center;
-  }
 
-  .sdn-timeline__bullet--not-done {
-    background: $color-default $icon-check no-repeat center;
-  }
+    &--not-done {
+      background: $color-default $icon-check no-repeat center;
+    }
 
-  .sdn-timeline__bullet--done {
-    background: $color-done $icon-dots no-repeat center;
-  }
+    &--done {
+      background: $color-done $icon-dots no-repeat center;
+    }
 
-  .sdn-timeline__bullet--in-progress {
-    background: $color-progress $icon-pencil no-repeat center 7px;
-  }
+    &--in-progress {
+      background: $color-progress $icon-pencil no-repeat center 7px;
+    }
 
-  .sdn-timeline__bullet--waiting {
-    background: $color-waiting $icon-hourglass no-repeat center;
+    &--waiting {
+      background: $color-waiting $icon-hourglass no-repeat center;
+    }
   }
 
   .sdn-timeline__link {
@@ -181,20 +170,24 @@ $icon-check: url("../../../assets/images/icon-check.svg");
     &:hover {
       background-color: govuk-colour("grey-4");
     }
-  }
 
-  .sdn-timeline-dropdown__option--selected {
-    background: govuk-colour("grey-3");
+    &--selected {
+      background-color: govuk-colour("grey-3");
 
-    &:after {
-      content: "";
-      display: block;
-      position: absolute;
-      top: govuk-spacing(2);
-      right: govuk-spacing(3);
-      width: $bullet-size;
-      height: $bullet-size;
-      background: $icon-check no-repeat top right;
+      &:hover {
+        background-color: govuk-colour("grey-3");
+      }
+
+      &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: govuk-spacing(2);
+        right: govuk-spacing(3);
+        width: $bullet-size;
+        height: $bullet-size;
+        background: $icon-check no-repeat top right;
+      }
     }
   }
 
