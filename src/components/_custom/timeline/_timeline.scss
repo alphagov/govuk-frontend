@@ -1,6 +1,6 @@
-@import "../../settings/all";
-@import "../../tools/all";
-@import "../../helpers/all";
+@import "../../../settings/all";
+@import "../../../tools/all";
+@import "../../../helpers/all";
 
 $color-done: govuk-colour("green");
 $color-progress: govuk-colour("orange");
@@ -17,10 +17,10 @@ $bullet-size: $bullet-border + ($component-spacing * 2);
 
 $tail-width: $component-spacing;
 
-$icon-dots: url("../../assets/images/icon-dots.svg");
-$icon-pencil: url("../../assets/images/icon-pencil.svg");
-$icon-hourglass: url("../../assets/images/icon-hourglass.svg");
-$icon-check: url("../../assets/images/icon-check.svg");
+$icon-dots: url("../../../assets/images/icon-dots.svg");
+$icon-pencil: url("../../../assets/images/icon-pencil.svg");
+$icon-hourglass: url("../../../assets/images/icon-hourglass.svg");
+$icon-check: url("../../../assets/images/icon-check.svg");
 
 @mixin step($bullet-color, $border-color: $color-default, $icon: $icon-dots, $icon-position: center) {
   &:before {
