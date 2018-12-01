@@ -21,6 +21,8 @@ params:
   required: false
   description: HTML attributes (for example data attributes) to add to the phase banner container.
 
+previewLayout: full-width
+
 examples:
   - name: default
     data:

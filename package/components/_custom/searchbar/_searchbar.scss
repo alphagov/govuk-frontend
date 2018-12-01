@@ -1,6 +1,7 @@
 @import "../../../settings/all";
 @import "../../../tools/all";
 @import "../../../helpers/all";
+@import "../_partials/gradient-background";
 
 
 @include govuk-exports("sdn/component/searchbar") {
@@ -8,6 +9,10 @@
   $from: #2e3ac7;
   $to: #448bef;
   $search-block-bg: govuk-colour("white");
+
+  .sdn-searchbar-wrapper {
+    @include gradient-background($from, $to);
+  }
 
   .sdn-searchbar {
     padding-top: 52px;

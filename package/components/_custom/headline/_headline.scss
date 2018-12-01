@@ -1,0 +1,26 @@
+@import "../../../settings/all";
+@import "../../../tools/all";
+@import "../../../helpers/all";
+
+@include govuk-exports("govuk/component/sdn-headline") {
+  $sdn-headline-background: #fafafa;
+  $sdn-headline-text-color: #333333;
+
+  .sdn-headline {
+    background: $sdn-headline-background;
+  }
+
+  .sdn-headline__container {
+    @include govuk-responsive-padding(5, "top");
+    @include govuk-responsive-padding(5, "bottom");
+    color: $sdn-headline-text-color;
+  }
+
+  .sdn-headline__headline {
+    @include govuk-font($size: 28);
+  }
+
+  .sdn-headline__subheadline {
+    @include govuk-font($size: 24);
+  }
+}

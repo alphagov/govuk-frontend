@@ -1,0 +1,27 @@
+<header class="sdn-header {{ params.classes if params.classes }}" role="banner" data-module="header"
+        {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+  <div class="sdn-header__container {{ params.containerClasses | default('govuk-width-container') }}">
+
+    <a href="{{ params.homepageUrl | default('/') }}" class="sdn-header__link">
+      <span class="sdn-header__product-name">
+        {{ params.productName }}
+      </span>
+    </a>
+
+    {% if params.navigation  %}
+    <div class="sdn-header__content">
+      <nav>
+        <ul id="navigation" class="sdn-header__navigation {{ params.navigationClasses if params.navigationClasses }}" aria-label="Top Level Navigation">
+          {% for item in params.navigation %}
+            {% if item.href and item.text %}
+              <li>
+                <a class="sdn-header__link" href="{{ item.href }}"{% for attribute, value in item.attributes %} {{attribute}}="{{value}}"{% endfor %}>{{ item.text }}</a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </nav>
+    </div>
+    {% endif %}
+  </div>
+</header>
