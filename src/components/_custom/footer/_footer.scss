@@ -1,10 +1,10 @@
-@import "../../settings/all";
-@import "../../tools/all";
-@import "../../helpers/all";
+@import "../../../settings/all";
+@import "../../../tools/all";
+@import "../../../helpers/all";
 
-@import "../../helpers/typography";
+@import "../../../helpers/typography";
 
-@include govuk-exports("govuk/component/sdn-footer") {
+@include govuk-exports("sdn/component/footer") {
   $sdn-footer-donate-size: 390px;
 
   $sdn-footer-left-background: #204ba3;
