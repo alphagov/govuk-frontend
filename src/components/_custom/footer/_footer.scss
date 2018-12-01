@@ -3,6 +3,7 @@
 @import "../../../helpers/all";
 
 @import "../../../helpers/typography";
+@import "../_partials/gradient-background";
 
 @include govuk-exports("sdn/component/footer") {
   $sdn-footer-donate-size: 390px;
@@ -16,13 +17,7 @@
     $sdn-footer-right-background $sdn-footer-donate-size,
     $sdn-footer-right-background 100%
   );
-  $sdn-footer-outer-background: linear-gradient(
-    to right,
-    $sdn-footer-left-background 0%,
-    $sdn-footer-left-background 50%,
-    $sdn-footer-right-background 50%,
-    $sdn-footer-right-background 100%
-  );
+  
   $sdn-footer-text: #ffffff;
   $sdn-footer-link: #ffffff;
   $sdn-footer-link-hover: #ffffff;
@@ -39,12 +34,9 @@
 
   .sdn-footer {
     @include govuk-font($size: 16);
-
+    @include gradient-background();
     color: $sdn-footer-text;
-    background: $sdn-footer-left-background;
-    @include govuk-media-query($from: desktop) {
-      background: $sdn-footer-outer-background;
-    }
+    
   }
 
   .sdn-footer__link {
