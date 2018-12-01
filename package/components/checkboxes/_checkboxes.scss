@@ -8,7 +8,7 @@
 @import "../label/label";
 
 @include govuk-exports("govuk/component/checkboxes") {
-  $govuk-checkboxes-size: govuk-spacing(7);
+  $govuk-checkboxes-size: govuk-spacing(7) !default;
   $govuk-checkboxes-label-padding-left-right: govuk-spacing(3);
 
   .govuk-checkboxes__item {

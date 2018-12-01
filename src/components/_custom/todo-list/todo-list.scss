@@ -1,0 +1,116 @@
+@import "../../../settings/all";
+@import "../../../tools/all";
+@import "../../../helpers/all";
+
+$sdn-todo-list-background-color: #fafafa;
+$sdn-todo-list-info: #878788;
+$sdn-todo-list-left-border-color: rgba(0, 0, 0, .1);
+$sdn-todo-list-left-border-width: 5px;
+$sdn-todo-list-inner-top-bottom-padding: 25px;
+$sdn-todo-list-inner-left-right-padding: 30px;
+@include govuk-exports("govuk/component/sdn-todo-list") {
+  .sdn-todo-list-box {
+    padding: $sdn-todo-list-inner-top-bottom-padding $sdn-todo-list-inner-left-right-padding;
+    border-left: $sdn-todo-list-left-border-color solid $sdn-todo-list-left-border-width;
+    background-color: $sdn-todo-list-background-color;
+
+    .sdn-todo-list__title {
+      $sdn-todo-list-title-color: #06070b;
+      color: $sdn-todo-list-title-color;
+      @include sdn-font($size: 24);
+    }
+
+    .sdn-todo-list__items {
+      padding-left: 0;
+      list-style-type: none;
+
+      .sdn-todo-list__item {
+        $sdn-todo-list-item-border-bottom: 1px solid rgba(33, 33, 33, .1);
+        $sdn-todo-list-item-padding: 15px 0 15px 0;
+        display: flex;
+        padding: $sdn-todo-list-item-padding;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        @include mq ($until: tablet) {
+          display: block;
+        }
+
+        &:last-child {
+          padding-bottom: 0;
+        }
+
+        &:not(:last-child) {
+          border-bottom: $sdn-todo-list-item-border-bottom;
+        }
+
+        > div {
+          display: flex;
+          align-items: center;
+
+          @include mq ($until: tablet) {
+            display: block;
+          }
+
+          .govuk-button {
+            margin: 0;
+            @include mq ($until: tablet) {
+              margin-top: govuk-spacing(4);
+            }
+          }
+
+          .snd-todo-list__item__info {
+            color: $sdn-todo-list-info;
+            @include sdn-font($size: 14);
+
+            &:not(:last-child) {
+              margin-right: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+  .govuk-label {
+    @include govuk-font($size: 19);
+    @include govuk-text-colour;
+
+    display: block;
+
+    margin-bottom: govuk-spacing(1);
+  }
+
+  // Modifiers that make labels look more like their equivalent headings
+
+  .govuk-label--xl {
+    @include govuk-font($size: 48, $weight: bold);
+    margin-bottom: govuk-spacing(3);
+  }
+
+  .govuk-label--l {
+    @include govuk-font($size: 36, $weight: bold);
+    margin-bottom: govuk-spacing(3);
+  }
+
+  .govuk-label--m {
+    @include govuk-font($size: 24, $weight: bold);
+    margin-bottom: govuk-spacing(2);
+  }
+
+  .govuk-label--s {
+    @include govuk-font($size: 19, $weight: bold);
+  }
+
+  // When the label is nested inside a heading, override the heading so that it
+  // does not have a margin. Effectively we want to be able to treat the heading
+  // as if it is not there.
+  //
+  // This breaks BEM conventions because it exists as a parent of the 'block',
+  // so we can't really consider an element.
+  .govuk-label-wrapper {
+    margin: 0;
+  }
+}

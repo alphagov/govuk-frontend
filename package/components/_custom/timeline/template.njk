@@ -1,11 +1,32 @@
 <div class="sdn-timeline {%- if params.classes %} {{ params.classes }}{% endif %}"{% for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
     <ol start=0 class="sdn-timeline__list">
       {% for step in params.steps %}
-        <li class="sdn-timeline__step sdn-timeline__step--{{ step.state }}">
-          <div class="sdn-timeline__bullet"></div>
+        <li class="sdn-timeline__step sdn-timeline__step--{{ step.state }}{% if step.selected %} sdn-timeline__step--selected{% endif %}">
+          <div class="sdn-timeline__bullet sdn-timeline__bullet--positioned sdn-timeline__bullet--{{ step.state }}" onClick="this.parentNode.classList.toggle('sdn-timeline__step--dropdown-active');"></div>
           <a class="sdn-timeline__link" href="{{ step.href }}"{% for attribute, value in step.attributes %} {{attribute}}="{{value}}"{% endfor %}>
               {{ step.text }}
           </a>
+            <div class="sdn-timeline-dropdown">
+              <div class="sdn-timeline-dropdown__list">
+                <a class="sdn-timeline-dropdown__option">
+                  <div class="sdn-timeline-dropdown__bullet sdn-timeline__bullet sdn-timeline__bullet--done"></div>
+                  Ukončená
+                </a>
+                <a class="sdn-timeline-dropdown__option">
+                  <div class="sdn-timeline-dropdown__bullet sdn-timeline__bullet sdn-timeline__bullet--waiting"></div>
+                  Prebieha vybavovanie
+                  <div class="sdn-timeline-dropdown__additional-info">Čakám na úrad (lehota 25 dní)</div>
+                </a>
+                <a class="sdn-timeline-dropdown__option sdn-timeline-dropdown__option--selected">
+                  <div class="sdn-timeline-dropdown__bullet sdn-timeline__bullet sdn-timeline__bullet--in-progress"></div>
+                  Nazačatá
+                </a>
+                <a class="sdn-timeline-dropdown__option">
+                  <div class="sdn-timeline-dropdown__bullet sdn-timeline__bullet sdn-timeline__bullet--not-done"></div>
+                  Rozpracovaná
+                </a>
+              </div>
+            </div>
         </li>
       {% endfor %}
     </ol>

@@ -1,0 +1,119 @@
+@import "../../../settings/all";
+@import "../../../tools/all";
+@import "../../../helpers/all";
+
+@include govuk-exports("govuk/component/sdn-feedbackbar") {
+  $sdn-feedbackbar-left-background: #ffffff;
+  $sdn-feedbackbar-right-background: #f4f4f4;
+  $sdn-feedbackbar-text-color: #333333;
+  $sdn-feedbackbar-link: #333333;
+  $sdn-feedbackbar-link-hover: #333333;
+
+  .sdn-feedbackbar {
+    background: $sdn-feedbackbar-right-background;
+
+    @include govuk-media-query($from: desktop) {
+      background: -webkit-linear-gradient(
+        left,
+        $sdn-feedbackbar-left-background 0%,
+        $sdn-feedbackbar-left-background 50%,
+        $sdn-feedbackbar-right-background 50%,
+        $sdn-feedbackbar-right-background 100%
+      );
+      background: linear-gradient(
+        to right,
+        $sdn-feedbackbar-left-background 0%,
+        $sdn-feedbackbar-left-background 50%,
+        $sdn-feedbackbar-right-background 50%,
+        $sdn-feedbackbar-right-background 100%
+      );
+    }
+  }
+
+  .sdn-feedbackbar__link {
+    @include govuk-focusable-fill;
+
+    &:link,
+    &:visited {
+      color: $sdn-feedbackbar-link;
+    }
+
+    &:hover,
+    &:active {
+      color: $sdn-feedbackbar-link-hover;
+    }
+
+    &:focus {
+      color: $govuk-focus-text-colour;
+    }
+  }
+
+  .sdn-feedbackbar__useful,
+  .sdn-feedbackbar__foundbug {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+    @include govuk-media-query($until: tablet) {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: column;
+          -ms-flex-direction: column;
+              flex-direction: column;
+    }
+  }
+
+  .sdn-feedbackbar__useful-question {
+    @include govuk-media-query($from: tablet) {
+      margin-right: govuk-spacing(3);
+    }
+  }
+
+  .sdn-feedbackbar__yes,
+  .sdn-feedbackbar__no {
+    text-transform: uppercase;
+  }
+
+  .sdn-feedbackbar__no {
+    margin-left: govuk-spacing(3);
+  }
+
+  .sdn-feedbackbar__container {
+    @include govuk-responsive-padding(5, "top");
+    @include govuk-responsive-padding(6, "left");
+    @include govuk-responsive-padding(5, "bottom");
+    @include govuk-responsive-padding(6, "right");
+
+    @include govuk-font($size: 16, $line-height: 1.5);
+
+    display: -webkit-box;
+
+    display: -webkit-flex;
+
+    display: -ms-flexbox;
+
+    display: flex;
+    color: $sdn-feedbackbar-text-color;
+    background: $sdn-feedbackbar-right-background;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+
+    @include govuk-media-query($until: desktop) {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: column;
+          -ms-flex-direction: column;
+              flex-direction: column;
+    }
+
+    @include govuk-media-query($from: desktop) {
+      width: 70%;
+      margin-left: 30%;
+    }
+  }
+}
