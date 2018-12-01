@@ -2,10 +2,18 @@
   @include govuk-font($size: 15, $weight: bold, $line-height: 17px);
   padding: 12px 15px;
   border-radius: 3px;
+  box-shadow: none;
 }
 
 .govuk-button--start {
   @include govuk-font($size: 15, $weight: bold, $line-height: 17px);
   padding: 12px 63px 12px 15px;
   border-radius: 3px;
+}
+
+.govuk-button--large {
+  margin-bottom: 0;
+  padding-right: 45px;
+  padding-left: 45px;
+  font-size: 18px;
 }
