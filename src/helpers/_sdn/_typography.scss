@@ -1,0 +1,23 @@
+@mixin govuk-typography-weight-light($important: false) {
+  font-weight: $govuk-font-weight-light iff($important, !important);
+}
+
+@mixin govuk-font($size, $weight: regular, $tabular: false, $line-height: false) {
+  @if $tabular {
+    @include govuk-typography-common($font-family: $govuk-font-family-tabular);
+  } @else {
+    @include govuk-typography-common;
+  }
+
+  @if $weight == regular {
+    @include govuk-typography-weight-regular;
+  } @else if $weight == bold {
+    @include govuk-typography-weight-bold;
+  } @else if $weight == light {
+    @include govuk-typography-weight-light;
+  }
+
+  @if $size {
+    @include govuk-typography-responsive($size, $override-line-height: $line-height);
+  }
+}
