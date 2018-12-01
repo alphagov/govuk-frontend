@@ -1,0 +1,24 @@
+{% from "input/macro.njk" import govukInput %}
+
+<footer class="sdn-footer {{ params.classes if params.classes }}" role="contentinfo"
+        {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+  <div class="govuk-width-container {{ params.containerClasses if params.containerClasses }}">
+    <div class="sdn-footer__container">
+      <div class="sdn-footer__donate">
+        <span class="sdn-footer__heart-wrapper">
+          <span class="sdn-footer__heart"></span>
+        </span>
+        <span class="sdn-footer__donate-text">Páči sa vám čo pre vás robíme?<br><a href="#" class="sdn-footer__link sdn-footer__donate-link">Podporte nás</a></span>
+      </div>
+      <div class="sdn-footer__newsletter">
+        <span class="sdn-footer__newsletter-heading">Novinky emailom <small class="sdn-footer__newsletter-heading-tooltip">(raz mesačne)</small></span>
+        {{ govukInput({
+          id: "email-input",
+          classes: "sdn-footer__newsletter-input",
+          name: "email"
+        }) }}
+        <span class="sdn-footer__newsletter-disclaimer">Prihlásením dávam dobrovoľný súhlas OZ Slovensko.Digital na zasielanie bezplatného newslettera na mnou zadaný e-mail. Tento súhlas môžem kedykoľvek odvolať na kontakt@slovensko.digital. Oboznámil(a) som sa s informáciami v sekcii Ochrana osobných údajov.</span>
+      </div>
+    </div>
+  </div>
+</footer>
