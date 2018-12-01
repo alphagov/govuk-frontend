@@ -1,0 +1,41 @@
+////
+/// @group settings/colours
+////
+
+/// Colour palette
+///
+/// @type Map
+///
+/// @prop $colour - Representation for the given $colour, where $colour is the
+///   friendly name for the colour (e.g. "red": #ff0000);
+///
+/// @access public
+
+$govuk-colours: (
+  // custom colors
+  "orange": #ff9120,
+  "green": #4cae18,
+  "blue": #3a67e8,
+
+  "black": #06070b,
+  "grey-3": #dadadb,
+
+  // original govuk colors
+  "purple": #2e358b,
+  "light-purple": #6f72af,
+  "bright-purple": #912b88,
+  "pink": #d53880,
+  "light-pink": #f499be,
+  "red": #b10e1e,
+  "bright-red": #df3034,
+  "brown": #b58840,
+  "yellow": #ffbf47,
+  "light-green": #85994b,
+  "turquoise": #28a197,
+  "light-blue": #2b8cc4,
+
+  "grey-1": #6f777b,
+  "grey-2": #bfc1c3,
+  "grey-4": #f8f8f8,
+  "white": #ffffff
+) !default;
