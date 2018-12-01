@@ -41,7 +41,10 @@
     @include govuk-font($size: 16);
 
     color: $sdn-footer-text;
-    background: $sdn-footer-outer-background;
+    background: $sdn-footer-left-background;
+    @include govuk-media-query($from: desktop) {
+      background: $sdn-footer-outer-background;
+    }
   }
 
   .sdn-footer__link {
@@ -67,7 +70,9 @@
     @include govuk-responsive-padding(7, "bottom");
 
     display: flex;
-    background: $sdn-footer-inner-background;
+    @include govuk-media-query($from: desktop) {
+      background: $sdn-footer-inner-background;
+    }
 
     @include govuk-media-query($until: desktop) {
       flex-direction: column;
@@ -147,8 +152,24 @@
     @include govuk-font($size: 16);
   }
 
+  .sdn-footer__newsletter-form-group {
+    display: flex;
+    align-items: center;
+  }
+
   .sdn-footer__newsletter-input {
-    max-width: 360px;
+    @include govuk-font($size: 16);
+    @include govuk-media-query($from: tablet) {
+      max-width: 360px;
+    }
+  }
+
+  .sdn-footer__newsletter-button {
+    margin-bottom: 0;
+    margin-left: govuk-spacing(1);
+    @include govuk-media-query($until: tablet) {
+      width: auto;
+    }
   }
 
   .sdn-footer__newsletter-heading-tooltip {

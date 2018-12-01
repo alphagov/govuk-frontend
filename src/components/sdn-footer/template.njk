@@ -1,4 +1,4 @@
-{% from "input/macro.njk" import govukInput %}
+{% from "button/macro.njk" import govukButton %}
 
 <footer class="sdn-footer {{ params.classes if params.classes }}" role="contentinfo"
         {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
@@ -12,12 +12,14 @@
       </div>
       <div class="sdn-footer__newsletter">
         <span class="sdn-footer__newsletter-heading">Novinky emailom <small class="sdn-footer__newsletter-heading-tooltip">(raz mesačne)</small></span>
-        {{ govukInput({
-          id: "email-input",
-          classes: "sdn-footer__newsletter-input",
-          name: "email"
-        }) }}
-        <span class="sdn-footer__newsletter-disclaimer">Prihlásením dávam dobrovoľný súhlas OZ Slovensko.Digital na zasielanie bezplatného newslettera na mnou zadaný e-mail. Tento súhlas môžem kedykoľvek odvolať na kontakt@slovensko.digital. Oboznámil(a) som sa s informáciami v sekcii Ochrana osobných údajov.</span>
+        <div class="govuk-form-group sdn-footer__newsletter-form-group">
+          <input id="email-input" class="govuk-input sdn-footer__newsletter-input" name="email" placeholder="Zadajte emailovú adresu" />
+          {{ govukButton({
+            "text": "Prihlásiť",
+            "classes": "sdn-footer__newsletter-button"
+          }) }}
+        </div>
+        <span class="sdn-footer__newsletter-disclaimer">Prihlásením dávam dobrovoľný súhlas OZ Slovensko.Digital na zasielanie bezplatného newslettera na mnou zadaný e-mail. Tento súhlas môžem kedykoľvek odvolať na <a href="mailto:kontakt@slovensko.digital" class="sdn-footer__link">kontakt@slovensko.digital</a>. Oboznámil(a) som sa s informáciami v sekcii <a href="#" class="sdn-footer__link">Ochrana osobných údajov</a>.</span>
       </div>
     </div>
   </div>
