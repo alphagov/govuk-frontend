@@ -2,11 +2,10 @@
     <ol start=0 class="sdn-timeline__list">
       {% for step in params.steps %}
         <li class="sdn-timeline__step sdn-timeline__step--{{ step.state }}{% if step.selected %} sdn-timeline__step--selected{% endif %}">
-          <div class="sdn-timeline__bullet sdn-timeline__bullet--positioned sdn-timeline__bullet--{{ step.state }}"></div>
+          <div class="sdn-timeline__bullet sdn-timeline__bullet--positioned sdn-timeline__bullet--{{ step.state }}" onClick="this.parentNode.classList.toggle('sdn-timeline__step--dropdown-active');"></div>
           <a class="sdn-timeline__link" href="{{ step.href }}"{% for attribute, value in step.attributes %} {{attribute}}="{{value}}"{% endfor %}>
               {{ step.text }}
           </a>
-          {%- if step.dropdown_active %}
             <div class="sdn-timeline-dropdown">
               <div class="sdn-timeline-dropdown__list">
                 <a class="sdn-timeline-dropdown__option">
@@ -28,7 +27,6 @@
                 </a>
               </div>
             </div>
-          {% endif %}
         </li>
       {% endfor %}
     </ol>
