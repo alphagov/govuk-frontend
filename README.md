@@ -3,18 +3,6 @@ GOV.UK Frontend ·
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 =====================
 
----
-
-## Government Frontend Survey 2018 📝
-
-We're looking to find out more about which frontend technologies and resources you use to support your project.
-
-[Fill in the frontend survey](https://goo.gl/forms/nxoSd4iZ3yQpY4Er2)
-
-This survey is a re-run of a 2016 survey, we plan to publish an anonymised comparison between this year's results and 2016's results.
-
----
-
 GOV.UK Frontend contains the code you need to start building a user interface
 for government platforms and services.
 
