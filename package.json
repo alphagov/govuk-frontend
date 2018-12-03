@@ -7,6 +7,7 @@
   },
   "license": "MIT",
   "scripts": {
+    "prestart": "node bin/check-nvmrc.js",
     "start": "gulp dev",
     "heroku": "gulp copy-assets && gulp sassdoc && node app/start.js",
     "pre-release": "node bin/check-nvmrc.js && ./bin/pre-release.sh",
