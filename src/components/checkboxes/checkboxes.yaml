@@ -358,7 +358,7 @@ examples:
         html: |
           <label class="govuk-label" for="contact-text-message">Mobile phone number</label>
           <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
-  
+
 - name: with optional form-group classes showing group error
   data:
     idPrefix: how-contacted-checked
@@ -388,3 +388,19 @@ examples:
         html: |
           <label class="govuk-label" for="contact-text-message">Mobile phone number</label>
           <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
+
+- name: small
+  data:
+    idPrefix: nationality
+    name: nationality
+    classes: govuk-checkboxes--small
+    fieldset:
+      legend:
+        text: What is your nationality?
+    items:
+      - value: british
+        text: British
+      - value: irish
+        text: Irish
+      - value: other
+        text: Citizen of another country
