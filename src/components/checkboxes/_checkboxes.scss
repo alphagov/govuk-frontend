@@ -9,6 +9,7 @@
 
 @include govuk-exports("govuk/component/checkboxes") {
   $govuk-checkboxes-size: govuk-spacing(7);
+  $govuk-small-checkboxes-size: 24px;
   $govuk-checkboxes-label-padding-left-right: govuk-spacing(3);
 
   .govuk-checkboxes__item {
@@ -34,11 +35,11 @@
     position: absolute;
 
     z-index: 1;
-    top: 0;
-    left: 0;
+    top: -2px;
+    left: -2px;
 
-    width: $govuk-checkboxes-size;
-    height: $govuk-checkboxes-size;
+    width: $govuk-checkboxes-size + 4px;
+    height: $govuk-checkboxes-size + 4px;
 
     cursor: pointer;
 
@@ -153,5 +154,46 @@
     & > :last-child {
       margin-bottom: 0;
     }
+  }
+
+  .govuk-checkboxes--small {
+    .govuk-checkboxes__item {
+      min-height: 0;
+      margin-bottom: govuk-spacing(1);
+      padding-left: 35px;
+    }
+
+    .govuk-checkboxes__input {
+      left: -9px;
+    }
+
+    .govuk-checkboxes__label {
+      display: block;
+      margin-top: -2px;
+      padding: 13px govuk-spacing(3) 8px 0;
+
+      @include govuk-media-query($from: tablet) {
+        padding: 11px govuk-spacing(3) 8px 0;
+      }
+    }
+
+    .govuk-checkboxes__label::before {
+      top: 8px;
+      left: 0;
+      width: $govuk-small-checkboxes-size;
+      height: $govuk-small-checkboxes-size;
+    }
+
+    .govuk-checkboxes__label::after {
+      top: 15px;
+      left: 6px;
+      width: 9px;
+      height: 3.5px;
+      border-width: 0 0 3px 3px;
+    }
+
+    .govuk-checkboxes__item:hover > .govuk-checkboxes__label {
+      text-decoration: underline;
+     }
   }
 }

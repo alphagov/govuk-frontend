@@ -421,3 +421,122 @@ examples:
         html: |
           <label class="govuk-label" for="contact-text-message">Mobile phone number</label>
           <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
+
+- name: small
+  data:
+    idPrefix: nationality
+    name: nationality
+    classes: govuk-checkboxes--small
+    fieldset:
+      legend:
+        text: Filter by
+    items:
+      - value: a
+        text: a thing
+      - value: b
+        text: another thing
+      - value: c
+        text: this thing
+
+- name: small with long text
+  data:
+    idPrefix: nationality
+    name: nationality
+    classes: govuk-checkboxes--small
+    fieldset:
+      legend:
+        text: Filter by
+    items:
+      - value: nullam
+        text:
+          Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu leo
+          quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
+          Maecenas faucibus mollis interdum. Donec id elit non mi porta gravida
+          at eget metus.
+      - value: aenean
+        text:
+          Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis
+          vestibulum. Donec sed odio dui. Duis mollis, est non commodo luctus,
+          nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cum sociis
+          natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+          mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam
+          venenatis vestibulum. Cras mattis consectetur purus sit amet
+          fermentum.
+      - value: fusce
+        text:
+          Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
+          nibh, ut fermentum massa justo sit amet risus. Etiam porta sem
+          malesuada magna mollis euismod. Praesent commodo cursus magna, vel
+          scelerisque nisl consectetur et. Etiam porta sem malesuada magna
+          mollis euismod. Etiam porta sem malesuada magna mollis euismod.
+          Donec sed odio dui. Sed posuere consectetur est at lobortis.
+
+- name: small with error
+  data:
+    idPrefix: nationality
+    name: nationality
+    classes: govuk-checkboxes--small
+    errorMessage:
+      text: "Select a thing"
+    fieldset:
+      legend:
+        text: Filter by
+    items:
+      - value: a
+        text: a thing
+      - value: b
+        text: another thing
+      - value: c
+        text: this thing
+
+- name: small with hint
+  data:
+    idPrefix: nationality
+    name: nationality
+    classes: govuk-checkboxes--small
+    fieldset:
+      legend:
+        text: Filter by
+    items:
+      - value: a
+        text: a thing
+        hint:
+          text: hint for a thing
+      - value: b
+        text: another thing
+      - value: c
+        text: this thing
+
+- name: small with disabled
+  data:
+    idPrefix: nationality
+    name: nationality
+    classes: govuk-checkboxes--small
+    fieldset:
+      legend:
+        text: Filter by
+    items:
+      - value: a
+        text: a thing
+      - value: b
+        text: another thing
+      - value: c
+        text: this thing
+        disabled: true
+
+- name: small with conditional reveal
+  data:
+    idPrefix: how-contacted
+    classes: govuk-checkboxes--small
+    fieldset:
+      legend:
+        text: How do you want to be contacted?
+    items:
+      - value: a
+        text: a thing
+        conditional:
+          html: |
+            <label class="govuk-label" for="context-email">Foo</label>
+            <input class="govuk-input govuk-!-width-one-third" name="context-email" type="text" id="context-email">
+      - value: b
+        text: another thing
