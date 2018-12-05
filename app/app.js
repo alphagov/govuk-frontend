@@ -74,6 +74,19 @@ module.exports = (options) => {
     })
   })
 
+  // Index page - render the component list template
+  app.get('/homepage', async function (req, res) {
+    const components = fileHelper.allComponents
+    const sdnComponents = fileHelper.allSdnComponents
+    const examples = await readdir(path.resolve(configPaths.examples))
+
+    res.render('homepage', {
+      componentsDirectory: components,
+      sdnComponentsDirectory: sdnComponents,
+      examplesDirectory: examples
+    })
+  })
+
   // Whenever the route includes a :component parameter, read the component data
   // from its YAML file
   app.param('component', function (req, res, next, componentName) {
