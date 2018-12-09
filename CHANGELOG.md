@@ -22,6 +22,10 @@
 
 🔧 Fixes:
 
+- Warning text component, remove negative margin left and reduce padding left to match.
+
+  ([PR #1084](https://github.com/alphagov/govuk-frontend/pull/1084))
+
 - Add 5px bottom margin to list items within lists that do not have bullets or
   numbers on mobile breakpoints to make each item visually distinct.
 
