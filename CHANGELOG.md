@@ -31,6 +31,10 @@
 
   ([PR #1078](https://github.com/alphagov/govuk-frontend/pull/1078))
 
+- Add error message attributes to all components
+
+  ([PR #1086](https://github.com/alphagov/govuk-frontend/pull/1086))
+
 ## 2.4.0 (Feature release)
 
 🆕 New features:
