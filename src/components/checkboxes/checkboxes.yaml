@@ -396,11 +396,11 @@ examples:
     classes: govuk-checkboxes--small
     fieldset:
       legend:
-        text: What is your nationality?
+        text: Filter by
     items:
-      - value: british
-        text: British
-      - value: irish
-        text: Irish
-      - value: other
-        text: Citizen of another country
+      - value: a
+        text: a thing
+      - value: b
+        text: another thing
+      - value: c
+        text: this thing
