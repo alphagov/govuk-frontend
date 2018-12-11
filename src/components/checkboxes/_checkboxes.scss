@@ -170,10 +170,10 @@
     .govuk-checkboxes__label {
       display: block;
       margin-top: -2px;
-      padding: 13px govuk-spacing(3) 8px 0;
+      padding: 11px govuk-spacing(3) 9px 0;
 
       @include govuk-media-query($from: tablet) {
-        padding: 11px govuk-spacing(3) 8px 0;
+        padding: 9px govuk-spacing(3) 6px 0;
       }
     }
 
@@ -192,8 +192,16 @@
       border-width: 0 0 3px 3px;
     }
 
-    .govuk-checkboxes__item:hover > .govuk-checkboxes__label {
-      text-decoration: underline;
-     }
+    .govuk-checkboxes__input + .govuk-checkboxes__label::after {
+      border-width: 0 0 3px 3px;
+    }
+
+    .govuk-checkboxes__item:hover > .govuk-checkboxes__label::before {
+      box-shadow: 0 0 0 10px govuk-colour("grey-3");
+    }
+
+    .govuk-checkboxes__item:hover .govuk-checkboxes__input:focus + .govuk-checkboxes__label::before {
+      box-shadow: 0 0 0 $govuk-focus-width $govuk-focus-colour, 0 0 0 10px govuk-colour("grey-3");
+    }
   }
 }
