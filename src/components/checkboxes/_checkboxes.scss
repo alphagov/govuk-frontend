@@ -177,16 +177,17 @@
   .govuk-checkboxes--small .govuk-checkboxes__label {
     display: block;
     margin-top: -2px;
-    padding: 13px govuk-spacing(3) 8px 0;
+    padding: 11px govuk-spacing(3) 9px 0;
 
     @include govuk-media-query($from: tablet) {
-      padding: 11px govuk-spacing(3) 8px 0;
+      padding: 9px govuk-spacing(3) 6px 0;
     }
 
   }
 
   .govuk-checkboxes--small .govuk-checkboxes__item {
     padding-left: 35px;
+    min-height: 0;
   }
 
   .govuk-checkboxes--small .govuk-checkboxes__input + .govuk-checkboxes__label::after {
