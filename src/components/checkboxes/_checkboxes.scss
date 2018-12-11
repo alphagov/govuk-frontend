@@ -186,16 +186,16 @@
   }
 
   .govuk-checkboxes--small .govuk-checkboxes__item {
-    padding-left: 35px;
     min-height: 0;
+    padding-left: 35px;
   }
 
   .govuk-checkboxes--small .govuk-checkboxes__input + .govuk-checkboxes__label::after {
     border-width: 0 0 3px 3px;
   }
 
-  .govuk-checkboxes--small .govuk-checkboxes__item:hover > .govuk-checkboxes__label {
-    text-decoration: underline;
+  .govuk-checkboxes--small .govuk-checkboxes__item:hover > .govuk-checkboxes__label::before {
+    box-shadow: 0 0 0 10px govuk-colour("grey-3");
   }
 
 }
