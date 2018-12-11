@@ -22,6 +22,11 @@
 
 🔧 Fixes:
 
+- Remove unused hint, error message and label imports from the Character Count
+  component
+
+  ([PR #1087](https://github.com/alphagov/govuk-frontend/pull/1087))
+
 - Warning text component, remove negative margin left and reduce padding left to match.
 
   ([PR #1084](https://github.com/alphagov/govuk-frontend/pull/1084))
