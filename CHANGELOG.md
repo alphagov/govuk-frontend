@@ -22,6 +22,16 @@
 
 🔧 Fixes:
 
+- Pull Request Title goes here
+
+  Description goes here (optional)
+
+  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+
+## 4.2.1 (fix release)
+
+🔧 Fixes:
+
 - Remove unused hint, error message and label imports from the Character Count
   component
 
