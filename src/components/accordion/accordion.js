@@ -81,7 +81,6 @@ Accordion.prototype.onToggleExpanded = function ($section) {
   this.updateOpenAllButton(areAllSectionsOpen)
 }
 
-
 // Toggle aria-expanded when section opened/closed
 Accordion.prototype.setExpanded = function (expanded, $section) {
   var $button = $section.querySelector('.govuk-accordion__section-header-button')
@@ -128,13 +127,13 @@ Accordion.prototype.setHeaderAttributes = function ($header, index) {
   icon.setAttribute('height', '16')
   icon.setAttribute('viewBox', '0 0 32 32')
   icon.setAttribute('class', 'govuk-accordion--icon')
-  icon.innerHTML = '<rect class="govuk-accordion--icon-horizontal-bar" x="0" y="12" width="32" height="8" rx=".8"></rect><rect class="govuk-accordion--icon-vertical-bar" x="12" y="0" width="8" height="32" rx=".8"></rect>';
+  icon.innerHTML = '<rect class="govuk-accordion--icon-horizontal-bar" x="0" y="12" width="32" height="8" rx=".8"></rect><rect class="govuk-accordion--icon-vertical-bar" x="12" y="0" width="8" height="32" rx=".8"></rect>'
 
   $header.appendChild(icon)
 }
 
 Accordion.prototype.setOpenAllButtonAttributes = function ($button) {
-  $button.textContent = 'Open all'
+  $button.innerHTML = 'Open all <span class="govuk-visually-hidden">sections</span>'
   $button.setAttribute('class', 'govuk-accordion__expand-all')
   $button.setAttribute('aria-expanded', 'false')
   $button.setAttribute('type', 'button')
@@ -157,8 +156,9 @@ Accordion.prototype.openOrCloseAllSections = function () {
 // Update "Open all" button
 Accordion.prototype.updateOpenAllButton = function (expanded) {
   var newButtonText = expanded ? 'Close all' : 'Open all'
+  newButtonText += '<span class="govuk-visually-hidden"> sections</span>'
   this.$openAllButton.setAttribute('aria-expanded', expanded)
-  this.$openAllButton.textContent = newButtonText
+  this.$openAllButton.innerHTML = newButtonText
 }
 
 // Check if all sections are open and update button text
