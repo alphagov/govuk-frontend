@@ -68,16 +68,20 @@
 
   .govuk-footer__meta {
     display: -webkit-box;
+    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex; // Support: Flexbox
     margin-right: -$govuk-gutter-half;
     margin-left: -$govuk-gutter-half;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap; // Support: Flexbox
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap; // Support: Flexbox
     -webkit-box-align: end;
+    -webkit-align-items: flex-end;
         -ms-flex-align: end;
             align-items: flex-end; // Support: Flexbox
     -webkit-box-pack: center;
+    -webkit-justify-content: center;
         -ms-flex-pack: center;
             justify-content: center; // Support: Flexbox
   }
@@ -90,11 +94,13 @@
 
   .govuk-footer__meta-item--grow {
     -webkit-box-flex: 1;
+    -webkit-flex: 1;
         -ms-flex: 1;
             flex: 1; // Support: Flexbox
     @include mq ($until: tablet) {
-      -ms-flex-preferred-size: 320px;
-          flex-basis: 320px; // Support: Flexbox
+      -webkit-flex-basis: 320px;
+          -ms-flex-preferred-size: 320px;
+              flex-basis: 320px; // Support: Flexbox
     }
   }
 
@@ -154,12 +160,14 @@
 
   .govuk-footer__navigation {
     display: -webkit-box;
+    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex; // Support: Flexbox
     margin-right: -$govuk-gutter-half;
     margin-left: -$govuk-gutter-half;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap; // Support: Flexbox
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap; // Support: Flexbox
   }
 
   .govuk-footer__section {
@@ -170,15 +178,18 @@
     vertical-align: top;
     // Ensure columns take up equal width (typically one-half:one-half)
     -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
         -ms-flex-positive: 1;
             flex-grow: 1; // Support: Flexbox
-    -ms-flex-negative: 1;
-        flex-shrink: 1; // Support: Flexbox
+    -webkit-flex-shrink: 1;
+        -ms-flex-negative: 1;
+            flex-shrink: 1; // Support: Flexbox
     @include mq ($until: desktop) {
       // Make sure columns do not drop below 200px in width
       // Will typically result in wrapping, and end up in a single column on smaller screens.
-      -ms-flex-preferred-size: 200px;
-          flex-basis: 200px; // Support: Flexbox
+      -webkit-flex-basis: 200px;
+          -ms-flex-preferred-size: 200px;
+              flex-basis: 200px; // Support: Flexbox
     }
   }
 
@@ -186,6 +197,7 @@
   @include mq ($from: desktop) {
     .govuk-footer__section:first-child {
       -webkit-box-flex: 2;
+      -webkit-flex-grow: 2;
           -ms-flex-positive: 2;
               flex-grow: 2; // Support: Flexbox
     }
@@ -196,20 +208,17 @@
     padding: 0;
     list-style: none;
     -webkit-column-gap: $govuk-gutter;
-       -moz-column-gap: $govuk-gutter;
             column-gap: $govuk-gutter; // Support: Columns
   }
 
   @include mq ($from: desktop) {
     .govuk-footer__list--columns-2 {
       -webkit-column-count: 2;
-         -moz-column-count: 2;
               column-count: 2; // Support: Columns
     }
 
     .govuk-footer__list--columns-3 {
       -webkit-column-count: 3;
-         -moz-column-count: 3;
               column-count: 3; // Support: Columns
     }
   }
