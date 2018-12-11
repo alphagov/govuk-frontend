@@ -45,6 +45,7 @@
   {{ govukErrorMessage({
     id: errorId,
     classes: params.errorMessage.classes,
+    attributes: params.errorMessage.attributes,
     html: params.errorMessage.html,
     text: params.errorMessage.text
   }) | indent(2) | trim }}

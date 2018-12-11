@@ -15,9 +15,10 @@
   }
 
   %govuk-list > li {
-    @include govuk-media-query($from: tablet) {
-      margin-bottom: govuk-spacing(1);
-    }
+    // Lists without numbers or bullets should always have extra space between
+    // list items. Lists with numbers or bullets only have this extra space on
+    // tablet and above
+    margin-bottom: govuk-spacing(1);
   }
 
   .govuk-list {
@@ -26,17 +27,25 @@
 
   %govuk-list--bullet {
     padding-left: govuk-spacing(4);
-
     list-style-type: disc;
-  }
-
-  .govuk-list--bullet {
-    @extend %govuk-list--bullet;
   }
 
   %govuk-list--number {
     padding-left: govuk-spacing(4);
     list-style-type: decimal;
+  }
+
+  %govuk-list--bullet > li,
+  %govuk-list--number > li {
+    margin-bottom: 0;
+
+    @include govuk-media-query($from: tablet) {
+      margin-bottom: govuk-spacing(1);
+    }
+  }
+
+  .govuk-list--bullet {
+    @extend %govuk-list--bullet;
   }
 
   .govuk-list--number {
