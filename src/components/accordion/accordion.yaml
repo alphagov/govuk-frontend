@@ -51,19 +51,17 @@ examples:
   data:
     id: with-descriptions
     items:
-      - label:
-          html: |
-            <h2 class="govuk-heading-m">Test</h2>
-            <p class="govuk-body">Additional description</p>
+      - label: Test
+        summary:
+          text: Additional description
         content:
           html: |
             <ul class="govuk-list govuk-list--bullet">
               <li>Example item 1</li>
             </ul>
-      - label:
-          html: |
-            <h2 class="govuk-heading-m">Test 2</h2>
-            <p class="govuk-body">Additional description</p>
+      - label: Test 2
+        summary:
+          html: <span class="govuk-!-font-weight-regular">Additional description</span>
         content:
           html: |
             <ul class="govuk-list govuk-list--bullet">

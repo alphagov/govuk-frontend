@@ -101,8 +101,10 @@ Accordion.prototype.isExpanded = function ($section) {
   return ($section.classList.contains('govuk-accordion__section--expanded'))
 }
 
-Accordion.prototype.setHeaderAttributes = function ($header, index) {
-  var $button = $header.querySelector('.govuk-accordion__section-header-button')
+Accordion.prototype.setHeaderAttributes = function ($headerWrapper, index) {
+  var $button = $headerWrapper.querySelector('.govuk-accordion__section-header-button')
+  var $heading = $headerWrapper.querySelector('.govuk-accordion__heading')
+  var $summary = $headerWrapper.querySelector('.govuk-accordion__summary')
 
   // Copy existing div element to an actual button element, for improved accessibility.
   // TODO: this probably needs to be more robust, and copy all attributes and child nodes?
@@ -112,6 +114,10 @@ Accordion.prototype.setHeaderAttributes = function ($header, index) {
   $buttonAsButton.setAttribute('id', this.moduleId + '-heading-' + (index + 1))
   $buttonAsButton.setAttribute('aria-controls', this.moduleId + '-panel-' + (index + 1))
 
+  if (typeof ($summary) !== 'undefined' && $summary !== null) {
+    $buttonAsButton.setAttribute('aria-describedby', this.moduleId + '-summary-' + (index + 1))
+  }
+
   for (var i = 0; i < $button.childNodes.length; i++) {
     var child = $button.childNodes[i]
     $button.removeChild(child)
@@ -119,8 +125,8 @@ Accordion.prototype.setHeaderAttributes = function ($header, index) {
   }
   // $buttonAsButton.textContent = $button.textContent
 
-  $header.removeChild($button)
-  $header.appendChild($buttonAsButton)
+  $heading.removeChild($button)
+  $heading.appendChild($buttonAsButton)
 
   var icon = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
   icon.setAttribute('width', '16')
@@ -129,7 +135,7 @@ Accordion.prototype.setHeaderAttributes = function ($header, index) {
   icon.setAttribute('class', 'govuk-accordion--icon')
   icon.innerHTML = '<rect class="govuk-accordion--icon-horizontal-bar" x="0" y="12" width="32" height="8" rx=".8"></rect><rect class="govuk-accordion--icon-vertical-bar" x="12" y="0" width="8" height="32" rx=".8"></rect>'
 
-  $header.appendChild(icon)
+  $heading.appendChild(icon)
 }
 
 Accordion.prototype.setOpenAllButtonAttributes = function ($button) {

@@ -64,11 +64,11 @@
     position: relative;
     margin-top: 0;
     margin-bottom: 0;
-    padding-top: 14px;
+    padding-top: govuk-spacing(3);
 
     // Safe area on the right to avoid clashing with icon
     padding-right: 40px;
-    padding-bottom: 12px;
+    padding-bottom: govuk-spacing(3);
     cursor: pointer;
   }
 
@@ -78,6 +78,7 @@
     margin-top: 0;
     margin-bottom: 0;
     margin-left: 0;
+    padding-bottom: 0; // Override browser default
     padding-left: 0;
     border-width: 0;
     background-color: transparent;
@@ -86,6 +87,11 @@
     &:focus {
       background-color: transparent;
     }
+  }
+
+  .govuk-accordion__heading {
+    margin-top: 0; // Override browser default
+    margin-bottom: 0; // Override browser default
   }
 
   // Headings in section headers have link colours as an additional affodance
@@ -102,6 +108,10 @@
   // Section headers have a grey background on hover as an additional affodance
   .govuk-accordion.with-js .govuk-accordion__section-header:hover {
     background-color: govuk-colour("grey-4");
+  }
+
+  .govuk-accordion__summary {
+    margin-top: govuk-spacing(2);
   }
 
   // Display an icon to the right of each header to indicate open/closed status,
