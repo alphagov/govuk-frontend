@@ -91,6 +91,7 @@
     "snapshotSerializers": [
       "jest-serializer-html"
     ],
+    "testRegex": "(/__tests__/.*|(\\.|/)(test))\\.jsx?$",
     "globalSetup": "./lib/puppeteer/setup.js",
     "globalTeardown": "./lib/puppeteer/teardown.js"
   }
