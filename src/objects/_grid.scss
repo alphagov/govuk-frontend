@@ -6,10 +6,9 @@
     margin-left: - ($govuk-gutter-half);
   }
 
-  @include govuk-grid-column(one-quarter);
-  @include govuk-grid-column(one-third);
-  @include govuk-grid-column(one-half);
-  @include govuk-grid-column(two-thirds);
-  @include govuk-grid-column(three-quarters);
-  @include govuk-grid-column(full);
+  @each $width in map-keys($govuk-grid-widths) {
+    .govuk-grid-column-#{$width} {
+      @include govuk-grid-column($width, $class: false)
+    }
+  }
 }
