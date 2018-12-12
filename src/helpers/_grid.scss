@@ -9,12 +9,20 @@
 /// @throw if `$key` is not a valid grid width
 /// @access public
 
-@function grid-width($key) {
+@function govuk-grid-width($key) {
   @if map-has-key($govuk-grid-widths, $key) {
     @return map-get($govuk-grid-widths, $key);
   }
 
   @error "Unknown grid width `#{$key}`";
+}
+
+/// Grid width percentage (alias)
+///
+/// @alias govuk-grid-width
+/// @deprecated To be removed in v3.0, replaced by govuk-grid-width
+@function grid-width($key) {
+  @return govuk-grid-width($key);
 }
 
 /// Generate grid row styles
@@ -78,7 +86,7 @@
     }
     padding: 0 $govuk-gutter-half;
     @include govuk-media-query($from: $at) {
-      width: grid-width($width);
+      width: govuk-grid-width($width);
       float: $float;
     }
   }

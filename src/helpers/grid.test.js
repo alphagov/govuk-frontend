@@ -24,13 +24,13 @@ describe('grid system', () => {
 
     @import "tools/exports";
   `
-  describe('grid-width function', () => {
+  describe('govuk-grid-width function', () => {
     it('outputs the specified key value from the map of widths', async () => {
       const sass = `
         ${sassImports}
 
         .foo {
-          content: grid-width(one-quarter);
+          content: govuk-grid-width(one-quarter);
         }`
 
       const results = await sassRender({ data: sass, ...sassConfig })
@@ -44,7 +44,7 @@ describe('grid system', () => {
       const sass = `
         ${sassImports}
 
-        $value: grid-width(seven-fifths);
+        $value: govuk-grid-width(seven-fifths);
         `
 
       await expect(sassRender({ data: sass, ...sassConfig }))
