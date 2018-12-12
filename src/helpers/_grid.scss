@@ -2,20 +2,6 @@
 /// @group helpers
 ////
 
-/// Map of grid column widths
-///
-/// @type Map
-/// @access private
-
-$_govuk-grid-widths: (
-  one-quarter: 25%,
-  one-third: 33.3333%,
-  one-half: 50%,
-  two-thirds: 66.6666%,
-  three-quarters: 75%,
-  full: 100%
-) !default;
-
 /// Grid width percentage
 ///
 /// @param {String} $key - Name of grid width (e.g. two-thirds)
@@ -24,8 +10,8 @@ $_govuk-grid-widths: (
 /// @access public
 
 @function grid-width($key) {
-  @if map-has-key($_govuk-grid-widths, $key) {
-    @return map-get($_govuk-grid-widths, $key);
+  @if map-has-key($govuk-grid-widths, $key) {
+    @return map-get($govuk-grid-widths, $key);
   }
 
   @error "Unknown grid width `#{$key}`";

@@ -27,7 +27,7 @@ describe('grid system', () => {
   describe('grid-width function', () => {
     it('outputs the specified key value from the map of widths', async () => {
       const sass = `
-        @import "helpers/grid";
+        ${sassImports}
 
         .foo {
           content: grid-width(one-quarter);
@@ -42,7 +42,7 @@ describe('grid system', () => {
 
     it('throws an error that the specified key does not exist in the map of widths', async () => {
       const sass = `
-        @import "helpers/grid";
+        ${sassImports}
 
         $value: grid-width(seven-fifths);
         `
