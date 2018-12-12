@@ -29,19 +29,19 @@
   }
 
   // Hide the body of collapsed sections
-  .govuk-accordion.with-js .govuk-accordion__section .govuk-accordion__section-panel {
+  .govuk-accordion.with-js .govuk-accordion__section .govuk-accordion__panel {
     display: none;
     @include govuk-responsive-padding(3, "top");
     @include govuk-responsive-padding(3, "bottom");
   }
 
   // Remove the bottom margin from the last item inside the panel
-  .govuk-accordion.with-js .govuk-accordion__section .govuk-accordion__section-panel > :last-child {
+  .govuk-accordion.with-js .govuk-accordion__section .govuk-accordion__panel > :last-child {
     margin-bottom: 0;
   }
 
   // Show the body of expanded sections
-  .govuk-accordion.with-js .govuk-accordion__section--expanded .govuk-accordion__section-panel {
+  .govuk-accordion.with-js .govuk-accordion__section--expanded .govuk-accordion__panel {
     display: block;
   }
 
@@ -60,7 +60,7 @@
   }
 
   // Section headers have a pointer cursor as an additional affordance
-  .govuk-accordion.with-js .govuk-accordion__section-header {
+  .govuk-accordion.with-js .govuk-accordion__header {
     position: relative;
     margin-top: 0;
     margin-bottom: 0;
@@ -73,7 +73,7 @@
   }
 
   // Buttons within the headers don’t need default styling
-  .govuk-accordion.with-js .govuk-accordion__section-header button {
+  .govuk-accordion.with-js .govuk-accordion__header button {
     @include govuk-link-common;
     margin-top: 0;
     margin-bottom: 0;
@@ -106,7 +106,7 @@
   }
 
   // Section headers have a grey background on hover as an additional affodance
-  .govuk-accordion.with-js .govuk-accordion__section-header:hover {
+  .govuk-accordion.with-js .govuk-accordion__header:hover {
     background-color: govuk-colour("grey-4");
   }
 

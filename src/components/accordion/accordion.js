@@ -34,7 +34,7 @@ Accordion.prototype.init = function () {
 
   nodeListForEach(this.$sections, function ($section, i) {
     // Set header attributes
-    var header = $section.querySelector('.govuk-accordion__section-header')
+    var header = $section.querySelector('.govuk-accordion__header')
     this.setHeaderAttributes(header, i)
 
     this.setExpanded(this.isExpanded($section), $section)
@@ -83,7 +83,7 @@ Accordion.prototype.onToggleExpanded = function ($section) {
 
 // Toggle aria-expanded when section opened/closed
 Accordion.prototype.setExpanded = function (expanded, $section) {
-  var $button = $section.querySelector('.govuk-accordion__section-header-button')
+  var $button = $section.querySelector('.govuk-accordion__button')
   $button.setAttribute('aria-expanded', expanded)
 
   if (expanded) {
@@ -102,7 +102,7 @@ Accordion.prototype.isExpanded = function ($section) {
 }
 
 Accordion.prototype.setHeaderAttributes = function ($headerWrapper, index) {
-  var $button = $headerWrapper.querySelector('.govuk-accordion__section-header-button')
+  var $button = $headerWrapper.querySelector('.govuk-accordion__button')
   var $heading = $headerWrapper.querySelector('.govuk-accordion__heading')
   var $summary = $headerWrapper.querySelector('.govuk-accordion__summary')
 
