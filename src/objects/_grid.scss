@@ -1,6 +1,11 @@
 @include govuk-exports("govuk/objects/grid") {
-  //most common usage
-  @include govuk-grid-row;
+
+  .govuk-grid-row {
+    @include govuk-clearfix;
+    margin-right: - ($govuk-gutter-half);
+    margin-left: - ($govuk-gutter-half);
+  }
+
   @include govuk-grid-column(one-quarter);
   @include govuk-grid-column(one-third);
   @include govuk-grid-column(one-half);

@@ -38,6 +38,7 @@
 ///   @include govuk-grid-row("app-grid");
 ///
 /// @access public
+/// @deprecated To be removed in v3.0, replaced by the govuk-grid-row class
 
 @mixin govuk-grid-row($class: "govuk-grid-row") {
   .#{$class} {
