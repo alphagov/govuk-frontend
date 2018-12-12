@@ -2,24 +2,40 @@ params:
 - name: id
   type: string
   required: true
-  description: Used to assign an `id` in the HTML for the accordion as a whole, and also a prefix for the `id`s of the section panels and the buttons that open them, so that those `id`s can be the target of `aria-labelledby` and `aria-control` attributes.
+  description: Must be **unique** across the domain of your service (as the expanded state of individual instances of the component persists across page loads using [`localStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)). Used as an `id` in the HTML for the accordion as a whole, and also as a prefix for the `id`s of the section contents and the buttons that open them, so that those `id`s can be the target of `aria-labelledby` and `aria-control` attributes.
 - name: headingLevel
   type: integer
   required: false
   description: Heading level, from 1 to 6. Default is 2.
+- name: classes
+  type: string
+  required: false
+  description: Classes to add to the accordion.
+- name: attributes
+  type: object
+  required: false
+  description: HTML attributes (for example data attributes) to add to the accordion.
 - name: items
   type: array
   required: true
   description: An array of sections within the accordion.
   params:
-    - name: label
+    - name: heading.text
       type: string
       required: false
-      description: The title of each section. If `label.html` is supplied, this is ignored.
-    - name: label.html
+      description: The title of each section. If `heading.html` is supplied, this is ignored.
+    - name: heading.html
       type: string
       required: false
       description: The HTML content of the header for each section which is used both as the title for each section, and as the button to open or close each section.
+    - name: summary.text
+      type: string
+      required: false
+      description: Text content for summary line. If `summary.html` is supplied, this is ignored.
+    - name: summary.html
+      type: string
+      required: false
+      description: HTML content for summary line.
     - name: content.html
       type: string
       required: true
@@ -33,14 +49,19 @@ examples:
 - name: default
   data:
     id: default-example
+    classes: myClass
+    attributes:
+      data-attribute: value
     items:
-      - label: Section A
+      - heading:
+          text: Section A
         content:
           html: |
             <ul class="govuk-list govuk-list--bullet">
               <li>Example item 1</li>
             </ul>
-      - label: Section B
+      - heading:
+          text: Section B
         content:
           html: |
             <ul class="govuk-list govuk-list--bullet">
@@ -51,7 +72,8 @@ examples:
   data:
     id: with-descriptions
     items:
-      - label: Test
+      - heading:
+          text: Test
         summary:
           text: Additional description
         content:
@@ -59,7 +81,8 @@ examples:
             <ul class="govuk-list govuk-list--bullet">
               <li>Example item 1</li>
             </ul>
-      - label: Test 2
+      - heading:
+         text: Test 2
         summary:
           html: <span class="govuk-!-font-weight-regular">Additional description</span>
         content:
@@ -71,14 +94,16 @@ examples:
   data:
     id: one-section-open-example
     items:
-      - label: Section A
+      - heading:
+          text: Section A
         expanded: true
         content:
           html: |
             <ul class="govuk-list govuk-list--bullet">
               <li>Example item 1</li>
             </ul>
-      - label: Section B
+      - heading:
+          text: Section B
         content:
           html: |
             <ul class="govuk-list govuk-list--bullet">
@@ -89,14 +114,16 @@ examples:
   data:
     id: all-sections-open-example
     items:
-      - label: Section A
+      - heading:
+          text: Section A
         expanded: true
         content:
           html: |
             <ul class="govuk-list govuk-list--bullet">
               <li>Example item 1</li>
             </ul>
-      - label: Section B
+      - heading:
+          text: Section B
         expanded: true
         content:
           html: |
