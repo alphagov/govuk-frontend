@@ -20,6 +20,14 @@
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
+- Add desktop specific grid column widths
+
+  This allow you to define different grid behaviour for the tablet and desktop
+  breakpoints. For example, you can make a column two-thirds on desktop but
+  expand to full-width on smaller tablet sized screens.
+
+  ([PR #1094](https://github.com/alphagov/govuk-frontend/pull/1094))
+
 - Add summary list component
 
   This component was initially developed to allow us to build the
