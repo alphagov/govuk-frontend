@@ -14,6 +14,9 @@
               <li class="govuk-data-summary-list__actions-list-item">
                 <a class="govuk-link" href="{{ action.href }}">
                   {{ action.html | safe if action.html else action.text }}
+                  {%- if action.visuallyHiddenText -%}
+                    <span class="govuk-visually-hidden"> {{ action.visuallyHiddenText }}</span>
+                  {%- endif %}
                 </a>
               </li>
             {% endfor %}

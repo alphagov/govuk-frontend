@@ -51,7 +51,7 @@ params:
     - name: visuallyHiddenText
       type: string
       required: false
-      description: Actions rely on context from the surrounding content so require additional accessible text, by default this taken from `row.key.text` but you can override it with this option.
+      description: Actions rely on context from the surrounding content so may require additional accessible text, text supplied to this option is appended to the end, use `html` for more complicated scenarios.
 - name: classes
   type: string
   required: false
@@ -72,9 +72,11 @@ examples:
           actions:
             items:
               - href: '#'
-                html: Edit<span class="govuk-visually-hidden"> name</span>
+                text: Edit
+                visuallyHiddenText: name
               - href: '#'
-                html: Delete<span class="govuk-visually-hidden"> name</span>
+                text: Delete
+                visuallyHiddenText: name
         - key:
             text: Date of birth
           value:
@@ -82,7 +84,8 @@ examples:
           actions:
             items:
               - href: '#'
-                html: Change<span class="govuk-visually-hidden"> date of birth</span>
+                text: Change
+                visuallyHiddenText: date of birth
         - key:
             text: Contact information
           value:
@@ -100,9 +103,11 @@ examples:
           actions:
             items:
               - href: '#'
-                html: Edit<span class="govuk-visually-hidden"> contact information</span>
+                text: Edit
+                visuallyHiddenText: contact information
               - href: '#'
-                html: Change<span class="govuk-visually-hidden"> contact information</span>
+                text: Change
+                visuallyHiddenText: contact information
   - name: no-border
     data:
       classes: govuk-data-summary-list--no-border
@@ -142,9 +147,11 @@ examples:
             classes: govuk-!-width-one-half
             items:
               - href: '#'
-                html: Edit<span class="govuk-visually-hidden"> name</span>
+                text: Edit
+                visuallyHiddenText: name
               - href: '#'
-                html: Delete<span class="govuk-visually-hidden"> name</span>
+                text: Delete
+                visuallyHiddenText: name
         - key:
             text: Date of birth
           value:
@@ -152,7 +159,8 @@ examples:
           actions:
             items:
               - href: '#'
-                html: Change<span class="govuk-visually-hidden"> date of birth</span>
+                text: Change
+                visuallyHiddenText: date of birth
         - key:
             text: Contact information
           value:
@@ -170,9 +178,11 @@ examples:
           actions:
             items:
               - href: '#'
-                html: Edit<span class="govuk-visually-hidden"> contact information</span>
+                text: Edit
+                visuallyHiddenText: contact information
               - href: '#'
-                html: Change<span class="govuk-visually-hidden"> contact information</span>
+                text: Change
+                visuallyHiddenText: contact information
   - name: check-your-answers
     data:
       rows:
@@ -183,7 +193,8 @@ examples:
           actions:
             items:
               - href: '#'
-                html: Change<span class="govuk-visually-hidden"> name</span>
+                text: Change
+                visuallyHiddenText: name
         - key:
             text: Date of birth
           value:
@@ -191,7 +202,8 @@ examples:
           actions:
             items:
             - href: '#'
-              html: Change<span class="govuk-visually-hidden"> date of birth</span>
+              text: Change
+              visuallyHiddenText: date of birth
         - key:
             text: Contact information
           value:
@@ -202,7 +214,8 @@ examples:
           actions:
             items:
               - href: '#'
-                html: Change<span class="govuk-visually-hidden"> contact information</span>
+                text: Change
+                visuallyHiddenText: contact information
         - key:
             text: Contact details
           value:
@@ -212,7 +225,8 @@ examples:
           actions:
             items:
               - href: '#'
-                html: Change<span class="govuk-visually-hidden"> contact details</span>
+                text: Change
+                visuallyHiddenText: contact details
         - key:
             text: Previous application number
           value:
@@ -220,7 +234,8 @@ examples:
           actions:
             items:
               - href: '#'
-                html: Change<span class="govuk-visually-hidden"> previous application number</span>
+                text: Change
+                visuallyHiddenText: previous application number
         - key:
             text: Licence type
           value:
@@ -228,7 +243,8 @@ examples:
           actions:
             items:
               - href: '#'
-                html: Change<span class="govuk-visually-hidden"> licence type</span>
+                text: Change
+                visuallyHiddenText: licence type
         - key:
             text: Home address
           value:
@@ -241,7 +257,8 @@ examples:
           actions:
             items:
               - href: '#'
-                html: Change<span class="govuk-visually-hidden"> home address</span>
+                text: Change
+                visuallyHiddenText: home address
         - key:
             text: Licence period
           value:
@@ -251,7 +268,8 @@ examples:
           actions:
             items:
               - href: '#'
-                html: Change<span class="govuk-visually-hidden"> licence period</span>
+                text: Change
+                visuallyHiddenText: licence period
   - name: extreme
     data:
       rows:
