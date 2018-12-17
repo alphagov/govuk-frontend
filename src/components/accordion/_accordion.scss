@@ -7,6 +7,22 @@
 
   .govuk-accordion {
     @include govuk-responsive-margin(6, "bottom");
+    // Border at the bottom of the whole accordion
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: $govuk-border-colour;
+  }
+
+  // Borders between accordion sections
+  .govuk-accordion__section {
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: $govuk-border-colour;
+  }
+
+  // Section headers have a pointer cursor as an additional affordance
+  .govuk-accordion__header {
+    padding-bottom: govuk-spacing(3);
   }
 
   .govuk-accordion__heading {
@@ -14,35 +30,35 @@
     margin-bottom: 0; // Override browser default
   }
 
+  // Buttons within the headers don’t need default styling
+  .govuk-accordion__button {
+    margin-bottom: 0;
+    padding-top: govuk-spacing(3);
+  }
+
   .govuk-accordion__summary {
     margin-top: govuk-spacing(2);
+    margin-bottom: 0;
   }
 
   // JavaScript enabled
   .js-enabled {
 
     // Hide the body of collapsed sections
-    .govuk-accordion .govuk-accordion__section .govuk-accordion__panel {
+    .govuk-accordion__panel {
       display: none;
       @include govuk-responsive-padding(3, "top");
       @include govuk-responsive-padding(3, "bottom");
     }
 
     // Remove the bottom margin from the last item inside the panel
-    .govuk-accordion .govuk-accordion__section .govuk-accordion__panel > :last-child {
+    .govuk-accordion__panel > :last-child {
       margin-bottom: 0;
     }
 
     // Show the body of expanded sections
-    .govuk-accordion .govuk-accordion__section--expanded .govuk-accordion__panel {
+    .govuk-accordion__section--expanded .govuk-accordion__panel {
       display: block;
-    }
-
-    // Border at the bottom of the whole accordtion
-    .govuk-accordion {
-      border-bottom-width: 1px;
-      border-bottom-style: solid;
-      border-bottom-color: $govuk-border-colour;
     }
 
     // This is styled to look like a link not a button
@@ -60,25 +76,26 @@
       }
     }
 
-    // Borders between accordion sections
-    .govuk-accordion .govuk-accordion__section {
-      border-top-width: 1px;
-      border-top-style: solid;
-      border-top-color: $govuk-border-colour;
+    // Section headers have a pointer cursor as an additional affordance
+    .govuk-accordion__header {
+      position: relative;
+      cursor: pointer;
     }
 
-    // Extend the touch area of the button to span the section header
-    .govuk-accordion.with-js .govuk-accordion__header button:after {
-      content: "";
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
+    // Section headers have a grey background on hover as an additional affodance
+    .govuk-accordion__header:hover {
+      background-color: govuk-colour("grey-4");
+    }
+
+    // Setting focus styles on header so that summary that is not part of the button is included in focus
+    .govuk-accordion__header--focused {
+      // These replicate @mixin govuk-focusable (the mixin can't be used as the header doesn't get the focus)
+      outline: $govuk-focus-width solid $govuk-focus-colour;
+      outline-offset: 0;
     }
 
     // Buttons within the headers don’t need default styling
-    .govuk-accordion .govuk-accordion__header button {
+    .govuk-accordion__button {
       @include govuk-link-common;
       width: 100%;
       margin-top: 0;
@@ -91,6 +108,8 @@
 
       padding-left: 0;
       border-width: 0;
+      // Headings in section headers have link colours as an additional affodance
+      color: $govuk-link-colour;
       background: none;
       text-align: left;
       cursor: pointer;
@@ -102,36 +121,13 @@
     }
 
     // Extend the touch area of the button to span the section header
-    .govuk-accordion__section-button:after {
+    .govuk-accordion__button:after {
       content: "";
       position: absolute;
       top: 0;
       right: 0;
       bottom: 0;
       left: 0;
-    }
-
-    // Headings in section headers have link colours as an additional affodance
-    .govuk-accordion .govuk-heading-m {
-      margin-bottom: govuk-spacing(2);
-      color: $govuk-link-colour;
-    }
-
-    // Body paragraphs in section headers don’t need as much margin below
-    .govuk-accordion .govuk-body {
-      margin-bottom: govuk-spacing(0);
-    }
-
-    // Section headers have a grey background on hover as an additional affodance
-    .govuk-accordion .govuk-accordion__header:hover {
-      background-color: govuk-colour("grey-4");
-    }
-
-    // Setting focus styles on header so that summary that is not part of the button is included in focus
-    .govuk-accordion .govuk-accordion__header--focused {
-      // These replicate @mixin govuk-focusable (the mixin can't be used as the header doesn't get the focus)
-      outline: $govuk-focus-width solid $govuk-focus-colour;
-      outline-offset: 0;
     }
 
     .govuk-accordion__controls {
