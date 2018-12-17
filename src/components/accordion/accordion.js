@@ -54,8 +54,6 @@ Accordion.prototype.init = function () {
   accordionControls.appendChild(this.$openAllButton)
   this.$module.insertBefore(accordionControls, this.$module.firstChild)
 
-  this.$module.classList.add('with-js')
-
   // Handle events
   this.$openAllButton.addEventListener('click', this.openOrCloseAllSections.bind(this))
 
