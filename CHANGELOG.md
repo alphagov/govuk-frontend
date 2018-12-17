@@ -20,6 +20,18 @@
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
+- Add data summary list component
+
+  This component was initially developed to allow us to build the
+  'check your answers' pattern.
+
+  It is mostly the same as in the original pattern with some notable differences:
+
+  - On smaller screens it wraps by default
+  - It's possible to have multiple actions
+
+  ([PR #1065](https://github.com/alphagov/govuk-frontend/pull/1065))
+
 🔧 Fixes:
 
 - Pull Request Title goes here
