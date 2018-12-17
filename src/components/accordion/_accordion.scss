@@ -52,11 +52,11 @@
       display: inline;
       border-width: 0;
       color: $govuk-link-colour;
-      background: transparent;
+      background: none;
       cursor: pointer;
 
       &:focus {
-        background-color: transparent;
+        background: none;
       }
     }
 
@@ -91,12 +91,12 @@
 
       padding-left: 0;
       border-width: 0;
-      background-color: transparent;
+      background: none;
       text-align: left;
 
       &:focus {
         outline: none;
-        background-color: transparent;
+        background: none;
       }
     }
 
