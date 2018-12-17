@@ -146,7 +146,7 @@ Accordion.prototype.setHeaderAttributes = function ($headerWrapper, index) {
 
 Accordion.prototype.setOpenAllButtonAttributes = function ($button) {
   $button.innerHTML = 'Open all <span class="govuk-visually-hidden">sections</span>'
-  $button.setAttribute('class', 'govuk-accordion__expand-all')
+  $button.setAttribute('class', 'govuk-accordion__open-all')
   $button.setAttribute('aria-expanded', 'false')
   $button.setAttribute('type', 'button')
 }

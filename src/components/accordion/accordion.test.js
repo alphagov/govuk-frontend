@@ -73,7 +73,7 @@ describe('/components/accordion', () => {
 
         await page.click('.govuk-accordion .govuk-accordion__section:nth-of-type(3) .govuk-accordion__header')
 
-        var openOrCloseAllButtonText = await page.evaluate(() => document.body.querySelector('.govuk-accordion__expand-all').textContent)
+        var openOrCloseAllButtonText = await page.evaluate(() => document.body.querySelector('.govuk-accordion__open-all').textContent)
 
         expect(openOrCloseAllButtonText).toEqual('Close all sections')
       })
@@ -81,7 +81,7 @@ describe('/components/accordion', () => {
       it('should open both sections when the Open all button is clicked', async () => {
         await page.goto(baseUrl + '/components/accordion/preview', { waitUntil: 'load' })
 
-        await page.click('.govuk-accordion__expand-all')
+        await page.click('.govuk-accordion__open-all')
 
         const firstSectionHeaderButtonExpanded = await page.evaluate(() => document.body.querySelectorAll('.govuk-accordion__section').item(0).querySelector('.govuk-accordion__button').getAttribute('aria-expanded'))
 
@@ -106,7 +106,7 @@ describe('/components/accordion', () => {
           expect(sectionHeaderButtonExpanded).toEqual('true')
         }
 
-        const openOrCloseAllButtonText = await page.evaluate(() => document.body.querySelector('.govuk-accordion__expand-all').textContent)
+        const openOrCloseAllButtonText = await page.evaluate(() => document.body.querySelector('.govuk-accordion__open-all').textContent)
 
         expect(openOrCloseAllButtonText).toEqual('Close all sections')
       })

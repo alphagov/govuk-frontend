@@ -62,7 +62,7 @@
     }
 
     // This is styled to look like a link not a button
-    .govuk-accordion__expand-all {
+    .govuk-accordion__open-all {
       @include govuk-font($size: 16);
       @include govuk-link-common;
       display: inline;
