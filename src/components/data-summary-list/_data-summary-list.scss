@@ -85,6 +85,11 @@
     display: inline;
     margin-right:  govuk-spacing(2);
     padding-right: govuk-spacing(2);
+  }
+
+  // In older browsers such as IE8, :last-child is not available,
+  // so only show the border divider where it is available.
+  .govuk-data-summary-list__actions-list-item:not(:last-child) {
     border-right: 1px solid $govuk-border-colour;
   }
 
