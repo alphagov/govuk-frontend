@@ -14,11 +14,15 @@
 
 🆕 New features:
 
-- Pull Request Title goes here
+- Accordion component 🎉
 
-  Description goes here (optional)
+  Contributed by @frankieroberto, as well as @injms, @hannalaakso, @joelanman and others.
 
-  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+  The accordion component lets users show and hide sections of related content on a page.
+
+  For more information see [guidance](https://design-system.service.gov.uk/components/accordion/).
+
+  ([PR #958](https://github.com/alphagov/govuk-frontend/pull/958))
 
 - Add desktop specific grid column widths
 
