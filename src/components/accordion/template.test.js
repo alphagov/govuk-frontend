@@ -67,7 +67,7 @@ describe('Accordion', () => {
           }
         ]
       })
-      const $componentContent = $('.govuk-accordion__panel')
+      const $componentContent = $('.govuk-accordion__content')
 
       expect($componentContent.text().trim()).toEqual('Some content')
     })

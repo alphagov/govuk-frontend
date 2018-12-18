@@ -18,7 +18,7 @@
           </div>
         {% endif %}
       </div>
-      <div id="{{ id }}-panel-{{ loop.index }}" class="govuk-accordion__panel" aria-labelledby="{{ id }}-heading-{{ loop.index }}">
+      <div id="{{ id }}-content-{{ loop.index }}" class="govuk-accordion__content" aria-labelledby="{{ id }}-heading-{{ loop.index }}">
         {{ item.content.html | safe if item.content.html else item.content.text }}
       </div>
     </div>

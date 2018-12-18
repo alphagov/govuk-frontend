@@ -45,19 +45,19 @@
   .js-enabled {
 
     // Hide the body of collapsed sections
-    .govuk-accordion__panel {
+    .govuk-accordion__content {
       display: none;
       @include govuk-responsive-padding(3, "top");
       @include govuk-responsive-padding(3, "bottom");
     }
 
-    // Remove the bottom margin from the last item inside the panel
-    .govuk-accordion__panel > :last-child {
+    // Remove the bottom margin from the last item inside the content
+    .govuk-accordion__content > :last-child {
       margin-bottom: 0;
     }
 
     // Show the body of expanded sections
-    .govuk-accordion__section--expanded .govuk-accordion__panel {
+    .govuk-accordion__section--expanded .govuk-accordion__content {
       display: block;
     }
 

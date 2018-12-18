@@ -110,7 +110,7 @@ Accordion.prototype.setHeaderAttributes = function ($headerWrapper, index) {
   $buttonAsButton.setAttribute('class', $button.getAttribute('class'))
   $buttonAsButton.setAttribute('type', 'button')
   $buttonAsButton.setAttribute('id', this.moduleId + '-heading-' + (index + 1))
-  $buttonAsButton.setAttribute('aria-controls', this.moduleId + '-panel-' + (index + 1))
+  $buttonAsButton.setAttribute('aria-controls', this.moduleId + '-content-' + (index + 1))
 
   $buttonAsButton.addEventListener('focusin', function (e) {
     if (!$headerWrapper.classList.contains('govuk-accordion__header--focused')) {
@@ -212,23 +212,23 @@ var helper = {
 Accordion.prototype.storeState = function () {
   if (helper.checkForSessionStorage()) {
     nodeListForEach(this.$sections, function (element) {
-      // We need a unique way of identifying each panel in the accordion. Since
+      // We need a unique way of identifying each content in the accordion. Since
       // an `#id` should be unique and an `id` is required for `aria-` attributes
       // `id` can be safely used.
-      var panelId = element.querySelector('h2 [aria-controls]') ? element.querySelector('h2 [aria-controls]').getAttribute('aria-controls') : false
-      var panelState = element.querySelector('h2 [aria-expanded]') ? element.querySelector('h2 [aria-expanded]').getAttribute('aria-expanded') : false
+      var contentId = element.querySelector('h2 [aria-controls]') ? element.querySelector('h2 [aria-controls]').getAttribute('aria-controls') : false
+      var contentState = element.querySelector('h2 [aria-expanded]') ? element.querySelector('h2 [aria-expanded]').getAttribute('aria-expanded') : false
 
-      if (panelId === false && console) {
+      if (contentId === false && console) {
         console.error(new Error('No aria controls present in accordion heading.'))
       }
 
-      if (panelState === false && console) {
+      if (contentState === false && console) {
         console.error(new Error('No aria expanded present in accordion heading.'))
       }
 
-      // Only set the state when both `panelId` and `panelState` are taken from the DOM.
-      if (panelId && panelState) {
-        window.sessionStorage.setItem(panelId, panelState)
+      // Only set the state when both `contentId` and `contentState` are taken from the DOM.
+      if (contentId && contentState) {
+        window.sessionStorage.setItem(contentId, contentState)
       }
     })
   }
@@ -238,15 +238,15 @@ Accordion.prototype.storeState = function () {
 Accordion.prototype.readState = function () {
   if (helper.checkForSessionStorage()) {
     nodeListForEach(this.$sections, function ($section) {
-      var panelId = $section.querySelector('h2 [aria-controls]') ? $section.querySelector('h2 [aria-controls]').getAttribute('aria-controls') : false
-      var panelState
+      var contentId = $section.querySelector('h2 [aria-controls]') ? $section.querySelector('h2 [aria-controls]').getAttribute('aria-controls') : false
+      var contentState
 
-      if (panelId) {
-        panelState = window.sessionStorage.getItem(panelId)
+      if (contentId) {
+        contentState = window.sessionStorage.getItem(contentId)
       }
 
-      if (panelState !== null) {
-        var trueState = panelState === 'true'
+      if (contentState !== null) {
+        var trueState = contentState === 'true'
         this.setExpanded(trueState, $section)
       }
     }.bind(this))

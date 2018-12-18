@@ -6,7 +6,7 @@ params:
 - name: headingLevel
   type: integer
   required: false
-  description: Heading level, from 1 to 6. Default is 2.
+  description: Heading level, from 1 to 6. Default is `2`.
 - name: classes
   type: string
   required: false
@@ -23,7 +23,7 @@ params:
     - name: heading.text
       type: string
       required: false
-      description: The title of each section. If `heading.html` is supplied, this is ignored.
+      description: The title of each section. If `heading.html` is supplied, this is ignored. This is used both as the title for each section, and as the button to open or close each section.
     - name: heading.html
       type: string
       required: false
@@ -43,7 +43,7 @@ params:
     - name: expanded
       type: boolean
       required: false
-      description: Whether the section should be expaneded upon initial load or not. Defaults to false.
+      description: Whether the section should be expanded upon initial load or not. Defaults to `false`.
 
 examples:
 - name: default
