@@ -79,6 +79,8 @@
     // Section headers have a pointer cursor as an additional affordance
     .govuk-accordion__header {
       position: relative;
+      // Safe area on the right to avoid clashing with icon
+      padding-right: 40px;
       cursor: pointer;
     }
 
@@ -102,8 +104,6 @@
       margin-bottom: 0;
       margin-left: 0;
       padding-top: govuk-spacing(3);
-      // Safe area on the right to avoid clashing with icon
-      padding-right: 40px;
       padding-bottom: 0;
 
       padding-left: 0;
