@@ -148,6 +148,7 @@
     .govuk-accordion__icon:after,
     .govuk-accordion__icon:before {
       content: "";
+      box-sizing: border-box;
       position: absolute;
       top: 0;
       right: 0;
@@ -156,6 +157,7 @@
       width: 25%;
       height: 25%;
       margin: auto;
+      border: 2px solid transparent;
       background-color: govuk-colour("black");
     }
 
