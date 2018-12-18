@@ -15,6 +15,11 @@ params:
   type: string
   required: false
   description: Optional initial value of the input.
+- name: label
+  type: object
+  required: true
+  description: Options for the label component.
+  isComponent: true
 - name: hint
   type: object
   required: false
