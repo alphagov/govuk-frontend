@@ -47,8 +47,7 @@
   }
 
   .govuk-summary-list__actions {
-    margin-top: govuk-spacing(2);
-    margin-bottom: govuk-spacing(2);
+    margin-bottom: govuk-spacing(3);
     @include govuk-media-query($from: tablet) {
       padding-right: 0;
     }
@@ -60,6 +59,12 @@
     word-break: break-word;
     @include govuk-media-query($from: tablet) {
       width: 30%;
+    }
+  }
+
+  .govuk-summary-list__value {
+    @include govuk-media-query($until: tablet) {
+      margin-bottom: govuk-spacing(3);
     }
   }
 

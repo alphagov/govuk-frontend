@@ -108,6 +108,31 @@ examples:
               - href: '#'
                 text: Change
                 visuallyHiddenText: contact information
+  - name: no-actions
+    data:
+      rows:
+        - key:
+            text: Name
+          value:
+            text: Firstname Lastname
+        - key:
+            text: Date of birth
+          value:
+            text: 13/08/1980
+        - key:
+            text: Contact information
+          value:
+            html: |
+              <p class="govuk-body">
+                email@email.com
+              </p>
+              <p class="govuk-body">
+                Address line 1<br>
+                Address line 2<br>
+                Address line 3<br>
+                Address line 4<br>
+                Address line 5
+              </p>
   - name: no-border
     data:
       classes: govuk-summary-list--no-border
