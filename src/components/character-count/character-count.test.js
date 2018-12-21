@@ -50,10 +50,8 @@ describe('Character count', () => {
     describe('when within the character limit', () => {
       it('counts down to the character limit', async () => {
         await page.goto(baseUrl + '/components/character-count/preview', { waitUntil: 'load' })
+        await page.type('.js-character-count', 'A')
 
-        // Press 1 character
-        await page.focus('.js-character-count')
-        await page.keyboard.press('A')
         const message = await page.$eval('.govuk-character-count__message', el => el.innerHTML.trim())
 
         expect(message).toEqual('You have 9 characters remaining')
@@ -62,13 +60,9 @@ describe('Character count', () => {
 
     describe('when the character limit is exceeded', () => {
       beforeAll(async () => {
+        // Type 11 characters into the character count
         await page.goto(baseUrl + '/components/character-count/preview', { waitUntil: 'load' })
-
-        // Press 11 characters
-        await page.focus('.js-character-count')
-        for (let i = 0; i < 11; i++) {
-          await page.keyboard.press('A')
-        }
+        await page.type('.js-character-count', 'A'.repeat(11))
       })
 
       it('shows the number of characters over the limit', async () => {
