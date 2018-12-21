@@ -109,5 +109,27 @@ describe('Character count', () => {
         expect(messageClasses).toContain('govuk-error-message')
       })
     })
+
+    describe('when the character limit is exceeded on page load', () => {
+      beforeAll(async () => {
+        // Type 11 characters into the character count
+        await goToExample('with-default-value-exceeding-limit')
+      })
+
+      it('shows the number of characters over the limit', async () => {
+        const message = await page.$eval('.govuk-character-count__message', el => el.innerHTML.trim())
+        expect(message).toEqual('You have 23 characters too many')
+      })
+
+      it('adds error styles to the textarea', async () => {
+        const textareaClasses = await page.$eval('.js-character-count', el => el.className)
+        expect(textareaClasses).toContain('govuk-textarea--error')
+      })
+
+      it('adds error styles to the count message', async () => {
+        const messageClasses = await page.$eval('.govuk-character-count__message', el => el.className)
+        expect(messageClasses).toContain('govuk-error-message')
+      })
+    })
   })
 })
