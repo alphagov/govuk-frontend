@@ -5,7 +5,7 @@
 
 const configPaths = require('../../../config/paths.json')
 const PORT = configPaths.ports.test
-const componentUrl = `http://localhost:${PORT}/components/character-count/preview`
+const baseUrl = `http://localhost:${PORT}`
 
 let browser
 let page
@@ -19,6 +19,14 @@ afterAll(async () => {
   await page.close()
 })
 
+const goToExample = (exampleName = false) => {
+  let url = exampleName
+    ? `${baseUrl}/components/character-count/${exampleName}/preview`
+    : `${baseUrl}/components/character-count/preview`
+
+  return page.goto(url, { waitUntil: 'load' })
+}
+
 describe('Character count', () => {
   describe('when JavaScript is unavailable or fails', () => {
     beforeAll(async () => {
@@ -30,7 +38,7 @@ describe('Character count', () => {
     })
 
     it('shows the static message', async () => {
-      await page.goto(componentUrl, { waitUntil: 'load' })
+      await goToExample()
       const message = await page.$eval('.govuk-character-count__message', el => el.innerHTML.trim())
 
       expect(message).toEqual('You can enter up to 10 characters')
@@ -39,15 +47,23 @@ describe('Character count', () => {
 
   describe('when JavaScript is available', () => {
     it('shows the dynamic message', async () => {
-      await page.goto(componentUrl, { waitUntil: 'load' })
+      await goToExample()
 
       const message = await page.$eval('.govuk-character-count__message', el => el.innerHTML.trim())
 
       expect(message).toEqual('You have 10 characters remaining')
     })
 
+    it('shows the characters remaining if the field is pre-filled', async () => {
+      await goToExample('with-default-value')
+
+      const message = await page.$eval('.govuk-character-count__message', el => el.innerHTML.trim())
+
+      expect(message).toEqual('You have 67 characters remaining')
+    })
+
     it('counts down to the character limit', async () => {
-      await page.goto(componentUrl, { waitUntil: 'load' })
+      await goToExample()
       await page.type('.js-character-count', 'A')
 
       const message = await page.$eval('.govuk-character-count__message', el => el.innerHTML.trim())
@@ -58,7 +74,7 @@ describe('Character count', () => {
     describe('when the character limit is exceeded', () => {
       beforeAll(async () => {
         // Type 11 characters into the character count
-        await page.goto(componentUrl, { waitUntil: 'load' })
+        await goToExample()
         await page.type('.js-character-count', 'A'.repeat(11))
       })
 
