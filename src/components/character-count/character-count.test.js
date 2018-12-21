@@ -131,5 +131,24 @@ describe('Character count', () => {
         expect(messageClasses).toContain('govuk-error-message')
       })
     })
+
+    describe('when a threshold is set', () => {
+      beforeAll(async () => {
+        // Type 11 characters into the character count
+        await goToExample('with-threshold')
+      })
+
+      it('does not show the limit until the threshold is reached', async () => {
+        const visibility = await page.$eval('.govuk-character-count__message', el => window.getComputedStyle(el).visibility)
+        expect(visibility).toEqual('hidden')
+      })
+
+      it('becomes visible once the threshold is reached', async () => {
+        await page.type('.js-character-count', 'A'.repeat(8))
+
+        const visibility = await page.$eval('.govuk-character-count__message', el => window.getComputedStyle(el).visibility)
+        expect(visibility).toEqual('visible')
+      })
+    })
   })
 })
