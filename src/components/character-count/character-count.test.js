@@ -83,7 +83,6 @@ describe('Character count', () => {
 
       describe('when the character limit is exceeded', () => {
         beforeAll(async () => {
-          // Type 11 characters into the character count
           await goToExample()
           await page.type('.js-character-count', 'A'.repeat(11))
         })
@@ -113,7 +112,6 @@ describe('Character count', () => {
 
       describe('when the character limit is exceeded on page load', () => {
         beforeAll(async () => {
-          // Type 11 characters into the character count
           await goToExample('with-default-value-exceeding-limit')
         })
 
@@ -135,7 +133,6 @@ describe('Character count', () => {
 
       describe('when a threshold is set', () => {
         beforeAll(async () => {
-          // Type 11 characters into the character count
           await goToExample('with-threshold')
         })
 
@@ -182,7 +179,6 @@ describe('Character count', () => {
 
       describe('when the word limit is exceeded', () => {
         beforeAll(async () => {
-          // Type 11 characters into the character count
           await goToExample('with-word-count')
           await page.type('.js-character-count', 'Hello '.repeat(11))
         })
