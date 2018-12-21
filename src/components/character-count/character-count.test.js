@@ -71,6 +71,15 @@ describe('Character count', () => {
       expect(message).toEqual('You have 9 characters remaining')
     })
 
+    it('uses the singular when there is only one character remaining', async () => {
+      await goToExample()
+      await page.type('.js-character-count', 'A'.repeat(9))
+
+      const message = await page.$eval('.govuk-character-count__message', el => el.innerHTML.trim())
+
+      expect(message).toEqual('You have 1 character remaining')
+    })
+
     describe('when the character limit is exceeded', () => {
       beforeAll(async () => {
         // Type 11 characters into the character count
@@ -81,6 +90,13 @@ describe('Character count', () => {
       it('shows the number of characters over the limit', async () => {
         const message = await page.$eval('.govuk-character-count__message', el => el.innerHTML.trim())
         expect(message).toEqual('You have 1 character too many')
+      })
+
+      it('uses the plural when the limit is exceeded by 2 or more', async () => {
+        await page.type('.js-character-count', 'A')
+
+        const message = await page.$eval('.govuk-character-count__message', el => el.innerHTML.trim())
+        expect(message).toEqual('You have 2 characters too many')
       })
 
       it('adds error styles to the textarea', async () => {
