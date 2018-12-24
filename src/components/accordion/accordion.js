@@ -19,20 +19,47 @@ import '../../vendor/polyfills/Element/prototype/classList'
 
 function Accordion ($module) {
   this.$module = $module
+  this.moduleId = $module.getAttribute('id')
   this.$sections = $module.querySelectorAll('.govuk-accordion__section')
   this.$openAllButton = ''
+  this.browserSupportsSessionStorage = helper.checkForSessionStorage()
 }
 
 // Initialize component
 Accordion.prototype.init = function () {
   // Check for module
-  var $module = this.$module
-  if (!$module) {
+  if (!this.$module) {
     return
   }
 
-  this.moduleId = $module.getAttribute('id')
+  this.createControls()
 
+  this.initSectionHeaders()
+
+  // See if OpenAll button text should be updated
+  var areAllSectionsOpen = this.checkIfAllSectionsOpen()
+  this.updateOpenAllButton(areAllSectionsOpen)
+}
+
+// Create controls and set attributes
+Accordion.prototype.createControls = function () {
+  // Create "Open all" button and set attributes
+  this.$openAllButton = document.createElement('button')
+  this.$openAllButton.setAttribute('type', 'button')
+  this.setOpenAllButtonAttributes(this.$openAllButton)
+
+  // Create control wrapper and add controls to it
+  var accordionControls = document.createElement('div')
+  accordionControls.setAttribute('class', 'govuk-accordion__controls')
+  accordionControls.appendChild(this.$openAllButton)
+  this.$module.insertBefore(accordionControls, this.$module.firstChild)
+
+  // Handle events for the controls
+  this.$openAllButton.addEventListener('click', this.openOrCloseAllSections.bind(this))
+}
+
+// Initialise section headers
+Accordion.prototype.initSectionHeaders = function () {
   // Loop through section headers
   nodeListForEach(this.$sections, function ($section, i) {
     // Set header attributes
@@ -43,29 +70,11 @@ Accordion.prototype.init = function () {
 
     // Handle events
     header.addEventListener('click', this.onToggleExpanded.bind(this, $section))
+
+    // See if there is any state stored in sessionStorage and set the sections to
+    // open or closed.
+    this.setInitialState($section)
   }.bind(this))
-
-  // Create "Open all" button and set attributes
-  this.$openAllButton = document.createElement('button')
-  this.$openAllButton.setAttribute('type', 'button')
-  this.setOpenAllButtonAttributes(this.$openAllButton)
-
-  // Create controls and set attributes
-  var accordionControls = document.createElement('div')
-  accordionControls.setAttribute('class', 'govuk-accordion__controls')
-  accordionControls.appendChild(this.$openAllButton)
-  this.$module.insertBefore(accordionControls, this.$module.firstChild)
-
-  // Handle events
-  this.$openAllButton.addEventListener('click', this.openOrCloseAllSections.bind(this))
-
-  // See if there is any state stored in sessionStorage and set the sections to
-  // open or closed.
-  this.readState()
-
-  // See if OpenAll button text should be updated
-  var areAllSectionsOpen = this.checkIfAllSectionsOpen()
-  this.updateOpenAllButton(areAllSectionsOpen)
 }
 
 // Open/close section
@@ -74,7 +83,7 @@ Accordion.prototype.onToggleExpanded = function ($section) {
   this.setExpanded(!expanded, $section)
 
   // Store the state in sessionStorage when a change is triggered
-  this.storeState()
+  this.storeState($section)
 
   // See if OpenAll button text should be updated
   var areAllSectionsOpen = this.checkIfAllSectionsOpen()
@@ -173,19 +182,12 @@ Accordion.prototype.updateOpenAllButton = function (expanded) {
 
 // Check if all sections are open and update button text
 Accordion.prototype.checkIfAllSectionsOpen = function () {
-  var $this = this
-  var $sections = this.$sections
+  // Get a count of all the Accordion sections
   var sectionsCount = this.$sections.length
-  var openSectionsCount = 0
-  var areAllSectionsOpen = false
+  // Get a count of all Accordion sections that are expanded
+  var expandedSectionCount = this.$module.querySelectorAll('.govuk-accordion__section--expanded').length
+  var areAllSectionsOpen = sectionsCount === expandedSectionCount
 
-  nodeListForEach($sections, function ($section) {
-    if ($this.isExpanded($section)) {
-      openSectionsCount++
-    }
-  })
-
-  areAllSectionsOpen = sectionsCount === openSectionsCount
   return areAllSectionsOpen
 }
 
@@ -208,50 +210,46 @@ var helper = {
 }
 
 // Set the state of the accordions in sessionStorage
-Accordion.prototype.storeState = function () {
-  if (helper.checkForSessionStorage()) {
-    nodeListForEach(this.$sections, function (element) {
-      // We need a unique way of identifying each content in the accordion. Since
-      // an `#id` should be unique and an `id` is required for `aria-` attributes
-      // `id` can be safely used.
-      var $button = element.querySelector('.govuk-accordion__section-button')
+Accordion.prototype.storeState = function ($section) {
+  if (this.browserSupportsSessionStorage) {
+    // We need a unique way of identifying each content in the accordion. Since
+    // an `#id` should be unique and an `id` is required for `aria-` attributes
+    // `id` can be safely used.
+    var $button = $section.querySelector('.govuk-accordion__section-button')
 
-      if ($button) {
-        var contentId = $button.getAttribute('aria-controls')
-        var contentState = $button.getAttribute('aria-expanded')
+    if ($button) {
+      var contentId = $button.getAttribute('aria-controls')
+      var contentState = $button.getAttribute('aria-expanded')
 
-        if (typeof contentId === 'undefined' && (typeof console === 'undefined' || typeof console.log === 'undefined')) {
-          console.error(new Error('No aria controls present in accordion section heading.'))
-        }
-
-        if (typeof contentState === 'undefined' && (typeof console === 'undefined' || typeof console.log === 'undefined')) {
-          console.error(new Error('No aria expanded present in accordion section heading.'))
-        }
-
-        // Only set the state when both `contentId` and `contentState` are taken from the DOM.
-        if (contentId && contentState) {
-          window.sessionStorage.setItem(contentId, contentState)
-        }
+      if (typeof contentId === 'undefined' && (typeof console === 'undefined' || typeof console.log === 'undefined')) {
+        console.error(new Error('No aria controls present in accordion section heading.'))
       }
-    })
+
+      if (typeof contentState === 'undefined' && (typeof console === 'undefined' || typeof console.log === 'undefined')) {
+        console.error(new Error('No aria expanded present in accordion section heading.'))
+      }
+
+      // Only set the state when both `contentId` and `contentState` are taken from the DOM.
+      if (contentId && contentState) {
+        window.sessionStorage.setItem(contentId, contentState)
+      }
+    }
   }
 }
 
 // Read the state of the accordions from sessionStorage
-Accordion.prototype.readState = function () {
-  if (helper.checkForSessionStorage()) {
-    nodeListForEach(this.$sections, function ($section) {
-      var $button = $section.querySelector('.govuk-accordion__section-button')
+Accordion.prototype.setInitialState = function ($section) {
+  if (this.browserSupportsSessionStorage) {
+    var $button = $section.querySelector('.govuk-accordion__section-button')
 
-      if ($button) {
-        var contentId = $button.getAttribute('aria-controls')
-        var contentState = contentId ? window.sessionStorage.getItem(contentId) : null
+    if ($button) {
+      var contentId = $button.getAttribute('aria-controls')
+      var contentState = contentId ? window.sessionStorage.getItem(contentId) : null
 
-        if (contentState !== null) {
-          this.setExpanded(contentState === 'true', $section)
-        }
+      if (contentState !== null) {
+        this.setExpanded(contentState === 'true', $section)
       }
-    }.bind(this))
+    }
   }
 }
 
