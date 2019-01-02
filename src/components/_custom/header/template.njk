@@ -1,4 +1,4 @@
-<header class="sdn-header {{ params.classes if params.classes }}" role="banner" data-module="header"
+<header class="sdn-header {{ params.classes if params.classes }}" role="banner" data-module="sdn-header"
         {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
   <div class="sdn-header__container {{ params.containerClasses | default('govuk-width-container') }}">
 
@@ -12,11 +12,32 @@
     <div class="sdn-header__content">
       <nav>
         <ul id="navigation" class="sdn-header__navigation {{ params.navigationClasses if params.navigationClasses }}" aria-label="Top Level Navigation">
+            <li class="sdn-header__form">
+                <form>
+                    <input class="govuk-input" type="text" placeholder="Hľadať">
+                    <button type="submit">Hľadať</button>
+                </form>
+            </li>
           {% for item in params.navigation %}
             {% if item.href and item.text %}
-              <li>
-                <a class="sdn-header__link" href="{{ item.href }}"{% for attribute, value in item.attributes %} {{attribute}}="{{value}}"{% endfor %}>{{ item.text }}</a>
-              </li>
+                {% if item.items %}
+                  <li>
+                    <div class="sdn-header__subnavigation">
+                        <a href="#" class="sdn-header__link sdn-header__dropdown-toggle js-dropdown-toggle" aria-controls="subnav-dropdown"><span class="sdn-header__fixed-width-text">{{ item.text }}</span></a>
+                        <ul class="sdn-header__dropdown" id="subnav-dropdown">
+                            {% for subitem in item.items %}
+                                <li>
+                                    <a href="{{ subitem.href }}">{{ subitem.text }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                  </li>
+                {% else %}
+                  <li>
+                    <a class="sdn-header__link" href="{{ item.href }}"{% for attribute, value in item.attributes %} {{attribute}}="{{value}}"{% endfor %}>{{ item.text }}</a>
+                  </li>
+                {% endif %}
             {% endif %}
           {% endfor %}
         </ul>

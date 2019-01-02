@@ -7,6 +7,7 @@ import ErrorSummary from './components/error-summary/error-summary'
 import Header from './components/header/header'
 import Radios from './components/radios/radios'
 import Tabs from './components/tabs/tabs'
+import SdnHeader from './components/_custom/header/header'
 
 function initAll () {
   // Find all buttons with [role=button] on the document to enhance.
@@ -45,6 +46,9 @@ function initAll () {
   nodeListForEach($tabs, function ($tabs) {
     new Tabs($tabs).init()
   })
+
+  // Find first sdn header module to enhance.
+  new SdnHeader(document.querySelector('[data-module="sdn-header"]')).init()
 }
 
 export {
@@ -56,5 +60,6 @@ export {
   ErrorSummary,
   Header,
   Radios,
-  Tabs
+  Tabs,
+  SdnHeader
 }

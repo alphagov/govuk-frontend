@@ -52,10 +52,51 @@ params:
 previewLayout: full-width
 
 examples:
-- name: default
-  description: Standard header with one navigation link
+- name: neprihlásený
+  description: Hlavička s dvoma linkami a search fieldom
   data:
     productName: Životné situácie
     navigation:
       - href: '#1'
         text: Časté otázky
+      - href: '#2'
+        text: Prihlásiť
+- name: viac položiek
+  description: Hlavička s troma linkami a search fieldom
+  data:
+    productName: Životné situácie
+    navigation:
+      - href: '#1'
+        text: Časté otázky
+      - href: '#2'
+        text: O nás
+      - href: '#3'
+        text: Prihlásiť
+- name: prihlásený - krátky email
+  description: Hlavička prihláseného používateľa s krátkym emailom
+  data:
+    productName: Životné situácie
+    navigation:
+      - href: '#1'
+        text: Časté otázky
+      - href: '#2'
+        text: b@h6.sk
+        items:
+          - href: '#21'
+            text: 'Nastavenia'
+          - href: '#22'
+            text: 'Odhlásiť'
+- name: prihlásený - dlhý email
+  description: Hlavička prihláseného používateľa s dlhým emailom
+  data:
+    productName: Životné situácie
+    navigation:
+      - href: '#1'
+        text: Časté otázky
+      - href: '#2'
+        text: jan.amos.komensky@gmail.com
+        items:
+          - href: '#21'
+            text: 'Nastavenia'
+          - href: '#22'
+            text: 'Odhlásiť'

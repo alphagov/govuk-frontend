@@ -5,9 +5,19 @@
 @import "../../../helpers/typography";
 
 @include govuk-exports("govuk/component/sdn-header") {
+  $icon-search: url("../../../assets/images/icon-search.svg");
   $sdn-header-background-from: #2e3ac7;
   $sdn-header-background-to: #448bef;
+  $sdn-header-placeholder: #333333;
+  $sdn-search-button-color: transparent;
+  $sdn-search-button-background: #ffffff;
   $sdn-header-text-color: #ffffff;
+  $sdn-dropdown-toggle-hover-color: #aad3fb;
+  $sdn-dropdown-background: #ffffff;
+  $sdn-dropdown-color: #333333;
+  $sdn-dropdown-hover-background: #448bef;
+  $sdn-dropdown-hover-color: #ffffff;
+  $sdn-dropdown-border-color: #e6e6e6;
   $sdn-header-height: 55px;
 
   $sdn-header-border-color: rgba(255, 255, 255, .2);
@@ -38,6 +48,11 @@
     -webkit-justify-content: space-between;
         -ms-flex-pack: justify;
             justify-content: space-between;
+
+    @include mq ($until: desktop) {
+      height: auto;
+      padding: 5px 0;
+    }
   }
 
   .sdn-header__link {
@@ -62,6 +77,237 @@
   }
 
   .sdn-header__navigation {
+    padding-left: 0;
     list-style: none;
+
+    > li {
+      display: inline-block;
+      vertical-align: middle;
+
+      & + li {
+        margin-left: 40px;
+
+        &:before {
+          content: "";
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          margin-left: -22px;
+          border-left: 1px solid $sdn-header-border-color;
+        }
+      }
+
+      &.sdn-header__form {
+        & + li {
+          margin-left: 20px;
+
+          &:before {
+            content: none;
+          }
+        }
+      }
+    }
+
+    @include mq ($until: desktop) {
+      position: relative;
+      margin: 0 0 0 20px;
+      overflow: hidden;
+
+      > li {
+        position: relative;
+        left: -20px;
+        padding: 5px 0;
+        white-space: nowrap;
+
+        & + li {
+          margin-left: 20px;
+        }
+
+        & + li:before,
+        &:before {
+          content: "|";
+          position: absolute;
+          top: auto;
+          bottom: auto;
+          left: -13px;
+          margin-left: 0;
+          border: 0;
+          color: $sdn-header-border-color;
+        }
+
+        &.sdn-header__form {
+          left: 0;
+          margin-right: 20px;
+
+          & + li {
+            &:before {
+              content: "";
+            }
+          }
+
+          &:before {
+            content: none;
+          }
+        }
+      }
+    }
+  }
+
+  .sdn-header__form {
+    max-width: 200px;
+
+    input {
+      @include govuk-font($size: 16);
+
+      box-sizing: border-box;
+      width: 100%;
+      height: 40px;
+      padding: 0 40px 0 12px;
+      border: 0;
+      border-radius: 3px;
+
+      &.govuk-input {
+        outline: transparent;
+      }
+
+      &::-webkit-input-placeholder {
+        opacity: .6;
+        color: $sdn-header-placeholder;
+      }
+
+      &::-moz-placeholder {
+        opacity: .6;
+        color: $sdn-header-placeholder;
+      }
+
+      &:-ms-input-placeholder {
+        opacity: .6;
+        color: $sdn-header-placeholder;
+      }
+
+      &:-moz-placeholder {
+        opacity: .6;
+        color: $sdn-header-placeholder;
+      }
+
+      @include mq ($until: desktop) {
+        height: 30px;
+      }
+    }
+
+    button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 40px;
+      padding: 0;
+      border: 0;
+      border-radius: 3px;
+      opacity: .5;
+      color: $sdn-search-button-color;
+      background: $sdn-search-button-background $icon-search no-repeat center center;
+      background-size: 18px 18px;
+
+      &:focus {
+        outline: transparent;
+      }
+    }
+
+    form {
+      position: relative;
+
+      &:hover {
+        button {
+          opacity: 1;
+        }
+      }
+    }
+
+    @include mq ($until: desktop) {
+      max-width: 180px;
+    }
+
+    @media (max-width: 400px) {
+      width: 100%;
+      max-width: initial;
+    }
+  }
+
+  .sdn-header__subnavigation {
+    position: relative;
+  }
+
+  .sdn-header__dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    margin: 5px 0 0 0;
+    padding: 5px 0;
+    list-style: none;
+    border: 1px solid $sdn-dropdown-border-color;
+    border-radius: 3px;
+    color: $sdn-dropdown-color;
+    background-color: $sdn-dropdown-background;
+
+    a {
+      display: block;
+      padding: 8px 20px;
+      color: inherit;
+      text-decoration: none;
+
+      &:hover {
+        color: $sdn-dropdown-hover-color;
+        background-color: $sdn-dropdown-hover-background;
+      }
+    }
+  }
+
+  .sdn-header__dropdown-toggle {
+    display: block;
+    position: relative;
+    margin-right: 15px;
+
+    &:hover {
+      color: $sdn-dropdown-toggle-hover-color;
+      text-decoration: none;
+    }
+
+    &:after {
+      content: " \25BE";
+      position: absolute;
+      top: -4px;
+      right: -15px;
+      font-size: 18px;
+    }
+
+    &:focus {
+      outline: transparent;
+      color: $sdn-header-text-color;
+      background-color: transparent;
+
+      & + .sdn-header__dropdown {
+        display: block;
+      }
+    }
+  }
+
+  .sdn-header__fixed-width-text {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    @include mq ($from: desktop) {
+      max-width: 195px;
+    }
+
+    @include mq ($until: desktop) {
+      max-width: 100%;
+    }
+
+    @media (max-width: 400px) {
+      width: 100%;
+      max-width: 220px;
+    }
   }
 }
