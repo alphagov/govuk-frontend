@@ -53,14 +53,7 @@
 
 13. Log into npm, using team [credentials](https://github.com/alphagov/design-system-team-credentials/tree/master/npm/govuk-patterns-and-tools).
 
-14. Run `npm run release`.
-
-  This will:
-  - check that you're logged in to npm as the correct user.
-  - publish the package has not been published yet
-  - create a new tag if the current git tag does not match the latest published tag
-  - push the tag to remote origin
-  - create a zip file of the `dist` directory
+14. Run `npm run release`, you will be prompted to continue or cancel.
 
 15. Create a release in the [Github interface](https://github.com/alphagov/govuk-frontend/releases/new)
   - select the latest tag version
