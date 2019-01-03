@@ -1,9 +1,9 @@
 workflow "New workflow" {
   on = "push"
-  resolves = ["actions/bin/sh@master"]
+  resolves = ["Deploy"]
 }
 
-action "actions/bin/sh@master" {
-  uses = "actions/bin/sh@master"
-  args = "git status"
+action "Deploy" {
+  uses = "./deploy"
+  args = "push staging"
 }
