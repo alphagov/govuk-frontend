@@ -7,14 +7,20 @@
 3. Run `npm install` to ensure you have the latest dependencies installed.
 
 4. Create and checkout a new branch (`release-[version-number]`).
+  The version number is determined by looking at the [current "Unreleased" CHANGELOG](../../CHANGELOG.md) changes and updating the previous release number depending on the kind of entries:
+
+  - `Breaking changes` corresponds to a `major` (1.X.X) change.
+  - `New features` corresponds to a `minor` (X.1.X) change.
+  - `Fixes` corresponds to a `patch` (X.X.1) change.
+
+  For example if the previous version is `2.3.0` and there are entries for `Breaking changes` then the new release should be `3.0.0`.
+
+  See the [versioning documentation](../versioning.md) for more information.
 
 5. Update [`CHANGELOG.md`](../../CHANGELOG.md) "Unreleased" heading with the new version number.
-   This should be incremented based on [Semantic versioning](https://semver.org/) from the unreleased changes listed.
-
   Copy the [`CHANGELOG_TEMPLATE.md`](./CHANGELOG_TEMPLATE.md), above the new release to make it easy for new contributors.
 
 6. Update [`package/package.json`](../../package/package.json) version with the new version number.
-This should be incremented based on [Semantic versioning](https://semver.org/) from the unreleased changes listed.
 
 7. Save the changes. Do not commit.
 
