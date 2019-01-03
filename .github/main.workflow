@@ -4,6 +4,6 @@ workflow "New workflow" {
 }
 
 action "Deploy" {
-  uses = "./deploy"
+  uses = "./deploy/"
   args = "push staging"
 }
