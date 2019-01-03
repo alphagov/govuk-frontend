@@ -24,13 +24,7 @@
 
 7. Save the changes. Do not commit.
 
-8. Run `npm run pre-release`.
-
-This will:
-  - copy files from `src/` to `package/` and run tests
-  - add [vendor prefixes](https://github.com/postcss/autoprefixer) to CSS in `package/`
-  - build "govuk-frontend" Sass and JavaScript files into `dist/`
-  - commit all changes and push the branch to remote
+8. Run `npm run pre-release`, you will be prompted to continue or cancel.
 
 9. (Optional) Test in [GOV.UK Design System](git@github.com:alphagov/govuk-design-system.git)
 

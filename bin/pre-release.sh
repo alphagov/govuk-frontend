@@ -1,6 +1,22 @@
 #!/bin/sh
 set -e
 
+echo "Starting a pre-release..."
+echo " "
+echo "This will:"
+echo "- run the test suite"
+echo "- build GOV.UK Frontend into the 'package/' directory"
+echo "- build GOV.UK Frontend into the 'dist/' directory"
+echo "- commit all changes and push the branch to remote"
+echo " "
+
+read -r -p "Do you want to continue? [y/N] " continue_prompt
+
+if [[ $continue_prompt != 'y' ]]; then
+    echo "Cancelling pre-release, if this was a mistake, try again and use 'y' to continue."
+    exit 0
+fi
+
 npm run test
 npm run build:package
 npm run build:dist
@@ -15,7 +31,7 @@ if [ $(git tag -l "$TAG") ]; then
 else
     git add .
     git commit -m "Release $TAG"
-    #set upstream so that we can push the branch up
+    # set upstream so that we can push the branch up
     git push --set-upstream origin $CURRENT_BRANCH_NAME
     git push
     echo "🗒 All done. Ready to create a pull request. Once approved, run npm run release"
