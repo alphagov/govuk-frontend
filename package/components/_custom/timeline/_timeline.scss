@@ -6,6 +6,7 @@ $color-done: govuk-colour("green");
 $color-progress: govuk-colour("orange");
 $color-waiting: govuk-colour("blue");
 $color-default: govuk-colour("grey-3");
+$color-grey: #c0c0c2;
 
 $font-size: 16px;
 $line-height: 1.5;
@@ -206,7 +207,7 @@ $icon-check: url("../../../assets/images/icon-check.svg");
         right: govuk-spacing(3);
         width: $bullet-size;
         height: $bullet-size;
-        background: $icon-check no-repeat top right;
+        background: $color-grey $icon-check no-repeat center center;
       }
     }
   }
