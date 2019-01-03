@@ -177,10 +177,6 @@ Accordion.prototype.setExpanded = function (expanded, $section) {
   // See if "Open all" button text should be updated
   var areAllSectionsOpen = this.checkIfAllSectionsOpen()
   this.updateOpenAllButton(areAllSectionsOpen)
-
-  // This is set to trigger reflow for IE8, which doesn't
-  // always reflow after a setAttribute call.
-  this.$module.className = this.$module.className
 }
 
 // Get state of section
