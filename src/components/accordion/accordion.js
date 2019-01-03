@@ -47,7 +47,7 @@ Accordion.prototype.init = function () {
 
   this.initSectionHeaders()
 
-  // See if OpenAll button text should be updated
+  // See if "Open all" button text should be updated
   var areAllSectionsOpen = this.checkIfAllSectionsOpen()
   this.updateOpenAllButton(areAllSectionsOpen)
 }
@@ -66,7 +66,7 @@ Accordion.prototype.createControls = function () {
   this.$module.insertBefore(accordionControls, this.$module.firstChild)
 
   // Handle events for the controls
-  this.$openAllButton.addEventListener('click', this.openOrCloseAllSections.bind(this))
+  this.$openAllButton.addEventListener('click', this.onOpenOrCloseAllToggle.bind(this))
 }
 
 // Initialise section headers
@@ -80,7 +80,7 @@ Accordion.prototype.initSectionHeaders = function () {
     this.setExpanded(this.isExpanded($section), $section)
 
     // Handle events
-    header.addEventListener('click', this.onToggleExpanded.bind(this, $section))
+    header.addEventListener('click', this.onSectionToggle.bind(this, $section))
 
     // See if there is any state stored in sessionStorage and set the sections to
     // open or closed.
@@ -88,39 +88,32 @@ Accordion.prototype.initSectionHeaders = function () {
   }.bind(this))
 }
 
-// Open/close section
-Accordion.prototype.onToggleExpanded = function ($section) {
+// On section toggle
+Accordion.prototype.onSectionToggle = function ($section) {
   var expanded = this.isExpanded($section)
   this.setExpanded(!expanded, $section)
 
   // Store the state in sessionStorage when a change is triggered
   this.storeState($section)
-
-  // See if OpenAll button text should be updated
-  var areAllSectionsOpen = this.checkIfAllSectionsOpen()
-  this.updateOpenAllButton(areAllSectionsOpen)
 }
 
-// Toggle attributes when section opened/closed
-Accordion.prototype.setExpanded = function (expanded, $section) {
-  var $button = $section.querySelector('.' + this.sectionButtonClass)
-  $button.setAttribute('aria-expanded', expanded)
+// On Open/Close All toggle
+Accordion.prototype.onOpenOrCloseAllToggle = function () {
+  var $module = this
+  var $sections = this.$sections
 
-  if (expanded) {
-    $section.classList.add(this.sectionExpandedClass)
-  } else {
-    $section.classList.remove(this.sectionExpandedClass)
-  }
+  var nowExpanded = !this.checkIfAllSectionsOpen()
 
-  // This is set to trigger reflow for IE8, which doesn't
-  // always reflow after a setAttribute call.
-  this.$module.className = this.$module.className
+  nodeListForEach($sections, function ($section) {
+    $module.setExpanded(nowExpanded, $section)
+    // Store the state in sessionStorage when a change is triggered
+    $module.storeState($section)
+  })
+
+  $module.updateOpenAllButton(nowExpanded)
 }
 
-Accordion.prototype.isExpanded = function ($section) {
-  return $section.classList.contains(this.sectionExpandedClass)
-}
-
+// Set headers on page init
 Accordion.prototype.setHeaderAttributes = function ($headerWrapper, index) {
   var $module = this
   var $span = $headerWrapper.querySelector('.' + this.sectionButtonClass)
@@ -162,6 +155,7 @@ Accordion.prototype.setHeaderAttributes = function ($headerWrapper, index) {
   $heading.appendChild(icon)
 }
 
+// Set "Open all" button on page init
 Accordion.prototype.setOpenAllButtonAttributes = function ($button) {
   $button.innerHTML = 'Open all <span class="govuk-visually-hidden">sections</span>'
   $button.setAttribute('class', this.openAllClass)
@@ -169,28 +163,32 @@ Accordion.prototype.setOpenAllButtonAttributes = function ($button) {
   $button.setAttribute('type', 'button')
 }
 
-Accordion.prototype.openOrCloseAllSections = function () {
-  var $module = this
-  var $sections = this.$sections
+// Toggle attributes when section opened/closed
+Accordion.prototype.setExpanded = function (expanded, $section) {
+  var $button = $section.querySelector('.' + this.sectionButtonClass)
+  $button.setAttribute('aria-expanded', expanded)
 
-  var nowExpanded = !($module.$openAllButton.getAttribute('aria-expanded') === 'true')
+  if (expanded) {
+    $section.classList.add(this.sectionExpandedClass)
+  } else {
+    $section.classList.remove(this.sectionExpandedClass)
+  }
 
-  nodeListForEach($sections, function ($section) {
-    $module.setExpanded(nowExpanded, $section)
-  })
+  // See if "Open all" button text should be updated
+  var areAllSectionsOpen = this.checkIfAllSectionsOpen()
+  this.updateOpenAllButton(areAllSectionsOpen)
 
-  $module.updateOpenAllButton(nowExpanded)
+  // This is set to trigger reflow for IE8, which doesn't
+  // always reflow after a setAttribute call.
+  this.$module.className = this.$module.className
 }
 
-// Update "Open all" button
-Accordion.prototype.updateOpenAllButton = function (expanded) {
-  var newButtonText = expanded ? 'Close all' : 'Open all'
-  newButtonText += '<span class="govuk-visually-hidden"> sections</span>'
-  this.$openAllButton.setAttribute('aria-expanded', expanded)
-  this.$openAllButton.innerHTML = newButtonText
+// Get state of section
+Accordion.prototype.isExpanded = function ($section) {
+  return $section.classList.contains(this.sectionExpandedClass)
 }
 
-// Check if all sections are open and update button text
+// Check if all sections are open
 Accordion.prototype.checkIfAllSectionsOpen = function () {
   // Get a count of all the Accordion sections
   var sectionsCount = this.$sections.length
@@ -199,6 +197,14 @@ Accordion.prototype.checkIfAllSectionsOpen = function () {
   var areAllSectionsOpen = sectionsCount === expandedSectionCount
 
   return areAllSectionsOpen
+}
+
+// Update "Open all" button
+Accordion.prototype.updateOpenAllButton = function (expanded) {
+  var newButtonText = expanded ? 'Close all' : 'Open all'
+  newButtonText += '<span class="govuk-visually-hidden"> sections</span>'
+  this.$openAllButton.setAttribute('aria-expanded', expanded)
+  this.$openAllButton.innerHTML = newButtonText
 }
 
 // Check for `window.sessionStorage`, and that it actually works.
