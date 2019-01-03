@@ -100,10 +100,15 @@ Accordion.prototype.initHeaderAttributes = function ($headerWrapper, index) {
 
   // Copy existing span element to an actual button element, for improved accessibility.
   var $button = document.createElement('button')
-  $button.setAttribute('class', $span.getAttribute('class'))
   $button.setAttribute('type', 'button')
   $button.setAttribute('id', this.moduleId + '-heading-' + (index + 1))
   $button.setAttribute('aria-controls', this.moduleId + '-content-' + (index + 1))
+
+  // Copy all attributes (https://developer.mozilla.org/en-US/docs/Web/API/Element/attributes) from $span to $button
+  for (var i = 0; i < $span.attributes.length; i++) {
+    var attr = $span.attributes.item(i)
+    $button.setAttribute(attr.nodeName, attr.nodeValue)
+  }
 
   $button.addEventListener('focusin', function (e) {
     if (!$headerWrapper.classList.contains($module.sectionHeaderFocusedClass)) {
