@@ -4,6 +4,7 @@ workflow "New workflow" {
 }
 
 action "Deploy" {
-  uses = "./deploy/"
+  uses = "./.github/deploy"
   args = "push staging"
+  secrets = ["SSH_KEY_DECRYPT_PASSPHRASE"]
 }
