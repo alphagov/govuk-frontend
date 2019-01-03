@@ -24,6 +24,9 @@
   $sdn-footer-heart-size: 14px;
   $sdn-footer-heart-background: #ffffff;
 
+  $sdn-footer-input-border-color: #ffffff;
+  $sdn-footer-input-placeholder-color: #333333;
+
   // Based on the govuk-crest-2x.png image dimensions.
   $govuk-footer-crest-image-width-2x: 250px;
   $govuk-footer-crest-image-height-2x: 204px;
@@ -168,6 +171,8 @@
 
   .sdn-footer__newsletter-heading {
     @include govuk-font($size: 16);
+    display: inline-block;
+    margin-bottom: 10px;
   }
 
   .sdn-footer__newsletter-form-group {
@@ -185,6 +190,35 @@
     @include govuk-font($size: 16);
     @include govuk-media-query($from: tablet) {
       max-width: 360px;
+    }
+
+    padding: 1.25em;
+    padding-left: 1em;
+
+    &.govuk-input {
+      border: $govuk-border-width-form-element solid $sdn-footer-input-border-color;
+      border-radius: 2px;
+    }
+
+    &,
+    &:focus {
+      outline: none;
+    }
+
+    &::-webkit-input-placeholder {
+      color: $sdn-footer-input-placeholder-color;
+    }
+
+    &:-ms-input-placeholder {
+      color: $sdn-footer-input-placeholder-color;
+    }
+
+    &::-ms-input-placeholder {
+      color: $sdn-footer-input-placeholder-color;
+    }
+
+    &::placeholder {
+      color: $sdn-footer-input-placeholder-color;
     }
   }
 
