@@ -8,19 +8,14 @@
   .govuk-accordion {
     @include govuk-responsive-margin(6, "bottom");
     // Border at the bottom of the whole accordion
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-bottom-color: $govuk-border-colour;
+    border-bottom: 1px solid $govuk-border-colour;
   }
 
   // Borders between accordion sections
   .govuk-accordion__section {
-    border-top-width: 1px;
-    border-top-style: solid;
-    border-top-color: $govuk-border-colour;
+    border-top: 1px solid $govuk-border-colour;
   }
 
-  // Section headers have a pointer cursor as an additional affordance
   .govuk-accordion__section-header {
     padding-bottom: govuk-spacing(3);
   }
@@ -32,6 +27,7 @@
 
   // Buttons within the sections don’t need default styling
   .govuk-accordion__section-button {
+    @include govuk-font($size: 24, $weight: bold);
     margin-bottom: 0;
     padding-top: govuk-spacing(3);
   }
@@ -105,7 +101,6 @@
       margin-left: 0;
       padding-top: govuk-spacing(3);
       padding-bottom: 0;
-
       padding-left: 0;
       border-width: 0;
       // Headings in section headers have link colours as an additional affodance
