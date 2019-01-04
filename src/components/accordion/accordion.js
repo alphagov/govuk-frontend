@@ -23,6 +23,17 @@ function Accordion ($module) {
   this.$sections = $module.querySelectorAll('.govuk-accordion__section')
   this.$openAllButton = ''
   this.browserSupportsSessionStorage = helper.checkForSessionStorage()
+
+  this.controlsClass = 'govuk-accordion__controls'
+  this.openAllClass = 'govuk-accordion__open-all'
+  this.iconClass = 'govuk-accordion__icon'
+
+  this.sectionHeaderClass = 'govuk-accordion__section-header'
+  this.sectionHeaderFocusedClass = 'govuk-accordion__section-header--focused'
+  this.sectionHeadingClass = 'govuk-accordion__section-heading'
+  this.sectionSummaryClass = 'govuk-accordion__section-summary'
+  this.sectionButtonClass = 'govuk-accordion__section-button'
+  this.sectionExpandedClass = 'govuk-accordion__section--expanded'
 }
 
 // Initialize component
@@ -50,7 +61,7 @@ Accordion.prototype.createControls = function () {
 
   // Create control wrapper and add controls to it
   var accordionControls = document.createElement('div')
-  accordionControls.setAttribute('class', 'govuk-accordion__controls')
+  accordionControls.setAttribute('class', this.controlsClass)
   accordionControls.appendChild(this.$openAllButton)
   this.$module.insertBefore(accordionControls, this.$module.firstChild)
 
@@ -63,7 +74,7 @@ Accordion.prototype.initSectionHeaders = function () {
   // Loop through section headers
   nodeListForEach(this.$sections, function ($section, i) {
     // Set header attributes
-    var header = $section.querySelector('.govuk-accordion__section-header')
+    var header = $section.querySelector('.' + this.sectionHeaderClass)
     this.setHeaderAttributes(header, i)
 
     this.setExpanded(this.isExpanded($section), $section)
@@ -92,13 +103,13 @@ Accordion.prototype.onToggleExpanded = function ($section) {
 
 // Toggle attributes when section opened/closed
 Accordion.prototype.setExpanded = function (expanded, $section) {
-  var $button = $section.querySelector('.govuk-accordion__section-button')
+  var $button = $section.querySelector('.' + this.sectionButtonClass)
   $button.setAttribute('aria-expanded', expanded)
 
   if (expanded) {
-    $section.classList.add('govuk-accordion__section--expanded')
+    $section.classList.add(this.sectionExpandedClass)
   } else {
-    $section.classList.remove('govuk-accordion__section--expanded')
+    $section.classList.remove(this.sectionExpandedClass)
   }
 
   // This is set to trigger reflow for IE8, which doesn't
@@ -107,14 +118,14 @@ Accordion.prototype.setExpanded = function (expanded, $section) {
 }
 
 Accordion.prototype.isExpanded = function ($section) {
-  return $section.classList.contains('govuk-accordion__section--expanded')
+  return $section.classList.contains(this.sectionExpandedClass)
 }
 
 Accordion.prototype.setHeaderAttributes = function ($headerWrapper, index) {
-  var $span = $headerWrapper.querySelector('.govuk-accordion__section-button')
-  var $heading = $headerWrapper.querySelector('.govuk-accordion__section-heading')
-  var $summary = $headerWrapper.querySelector('.govuk-accordion__section-summary')
-  var focusedClass = 'govuk-accordion__section-header--focused'
+  var $module = this
+  var $span = $headerWrapper.querySelector('.' + this.sectionButtonClass)
+  var $heading = $headerWrapper.querySelector('.' + this.sectionHeadingClass)
+  var $summary = $headerWrapper.querySelector('.' + this.sectionSummaryClass)
 
   // Copy existing span element to an actual button element, for improved accessibility.
   var $button = document.createElement('button')
@@ -124,13 +135,13 @@ Accordion.prototype.setHeaderAttributes = function ($headerWrapper, index) {
   $button.setAttribute('aria-controls', this.moduleId + '-content-' + (index + 1))
 
   $button.addEventListener('focusin', function (e) {
-    if (!$headerWrapper.classList.contains(focusedClass)) {
-      $headerWrapper.className += ' ' + focusedClass
+    if (!$headerWrapper.classList.contains($module.sectionHeaderFocusedClass)) {
+      $headerWrapper.className += ' ' + $module.sectionHeaderFocusedClass
     }
   })
 
   $button.addEventListener('blur', function (e) {
-    $headerWrapper.classList.remove(focusedClass)
+    $headerWrapper.classList.remove($module.sectionHeaderFocusedClass)
   })
 
   if (typeof ($summary) !== 'undefined' && $summary !== null) {
@@ -145,8 +156,7 @@ Accordion.prototype.setHeaderAttributes = function ($headerWrapper, index) {
 
   // Add "+/-" icon
   var icon = document.createElement('span')
-
-  icon.className = 'govuk-accordion__icon'
+  icon.className = this.iconClass
   icon.setAttribute('aria-hidden', 'true')
 
   $heading.appendChild(icon)
@@ -154,7 +164,7 @@ Accordion.prototype.setHeaderAttributes = function ($headerWrapper, index) {
 
 Accordion.prototype.setOpenAllButtonAttributes = function ($button) {
   $button.innerHTML = 'Open all <span class="govuk-visually-hidden">sections</span>'
-  $button.setAttribute('class', 'govuk-accordion__open-all')
+  $button.setAttribute('class', this.openAllClass)
   $button.setAttribute('aria-expanded', 'false')
   $button.setAttribute('type', 'button')
 }
@@ -185,7 +195,7 @@ Accordion.prototype.checkIfAllSectionsOpen = function () {
   // Get a count of all the Accordion sections
   var sectionsCount = this.$sections.length
   // Get a count of all Accordion sections that are expanded
-  var expandedSectionCount = this.$module.querySelectorAll('.govuk-accordion__section--expanded').length
+  var expandedSectionCount = this.$module.querySelectorAll('.' + this.sectionExpandedClass).length
   var areAllSectionsOpen = sectionsCount === expandedSectionCount
 
   return areAllSectionsOpen
@@ -215,7 +225,7 @@ Accordion.prototype.storeState = function ($section) {
     // We need a unique way of identifying each content in the accordion. Since
     // an `#id` should be unique and an `id` is required for `aria-` attributes
     // `id` can be safely used.
-    var $button = $section.querySelector('.govuk-accordion__section-button')
+    var $button = $section.querySelector('.' + this.sectionButtonClass)
 
     if ($button) {
       var contentId = $button.getAttribute('aria-controls')
@@ -240,7 +250,7 @@ Accordion.prototype.storeState = function ($section) {
 // Read the state of the accordions from sessionStorage
 Accordion.prototype.setInitialState = function ($section) {
   if (this.browserSupportsSessionStorage) {
-    var $button = $section.querySelector('.govuk-accordion__section-button')
+    var $button = $section.querySelector('.' + this.sectionButtonClass)
 
     if ($button) {
       var contentId = $button.getAttribute('aria-controls')
