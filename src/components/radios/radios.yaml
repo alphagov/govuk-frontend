@@ -48,10 +48,6 @@ params:
     type: string
     required: false
     description: Specific id attribute for the radio item. If omitted, then `idPrefix` string will be applied.
-  - name: name
-    type: string
-    required: true
-    description: Specific name for the radio item. If omitted, then component global `name` string will be applied.
   - name: value
     type: string
     required: true
@@ -78,10 +74,11 @@ params:
     type: string
     required: false
     description: If true, content provided will be revealed when the item is checked.
-  - name: conditional.html
-    type: html
-    required: false
-    description: Provide content for the conditional reveal.
+    params:
+    - name: html
+      type: string
+      required: false
+      description: Provide content for the conditional reveal.
   - name: disabled
     type: boolean
     required: false
