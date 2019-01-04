@@ -103,6 +103,28 @@ describe('/components/accordion', () => {
 
         expect(openOrCloseAllButtonText).toEqual('Close all sections')
       })
+
+      it('should maintain the expanded state after a page refresh', async () => {
+        const sectionHeaderButton = '.govuk-accordion .govuk-accordion__section:nth-of-type(2) .govuk-accordion__section-button'
+
+        await page.goto(baseUrl + '/components/accordion/preview', { waitUntil: 'load' })
+
+        await page.click(sectionHeaderButton)
+
+        const expandedState = await page.evaluate((sectionHeaderButton) => {
+          return document.body.querySelector(sectionHeaderButton).getAttribute('aria-expanded')
+        }, sectionHeaderButton)
+
+        await page.reload({
+          waitUntil: 'load'
+        })
+
+        const expandedStateAfterRefresh = await page.evaluate((sectionHeaderButton) => {
+          return document.body.querySelector(sectionHeaderButton).getAttribute('aria-expanded')
+        }, sectionHeaderButton)
+
+        expect(expandedState).toEqual(expandedStateAfterRefresh)
+      })
     })
   })
 })
