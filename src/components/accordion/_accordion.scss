@@ -166,6 +166,7 @@
 
     // Vertical bar should be hidden when section is open, to display a '-' icon
     .govuk-accordion__section--expanded .govuk-accordion__icon:after {
+      content: " ";
       display: none;
     }
   }
