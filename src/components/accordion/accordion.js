@@ -43,7 +43,7 @@ Accordion.prototype.init = function () {
     return
   }
 
-  this.createControls()
+  this.initControls()
 
   this.initSectionHeaders()
 
@@ -52,12 +52,15 @@ Accordion.prototype.init = function () {
   this.updateOpenAllButton(areAllSectionsOpen)
 }
 
-// Create controls and set attributes
-Accordion.prototype.createControls = function () {
+// Initialise controls and set attributes
+Accordion.prototype.initControls = function () {
   // Create "Open all" button and set attributes
   this.$openAllButton = document.createElement('button')
   this.$openAllButton.setAttribute('type', 'button')
-  this.setOpenAllButtonAttributes(this.$openAllButton)
+  this.$openAllButton.innerHTML = 'Open all <span class="govuk-visually-hidden">sections</span>'
+  this.$openAllButton.setAttribute('class', this.openAllClass)
+  this.$openAllButton.setAttribute('aria-expanded', 'false')
+  this.$openAllButton.setAttribute('type', 'button')
 
   // Create control wrapper and add controls to it
   var accordionControls = document.createElement('div')
@@ -75,7 +78,7 @@ Accordion.prototype.initSectionHeaders = function () {
   nodeListForEach(this.$sections, function ($section, i) {
     // Set header attributes
     var header = $section.querySelector('.' + this.sectionHeaderClass)
-    this.setHeaderAttributes(header, i)
+    this.initHeaderAttributes(header, i)
 
     this.setExpanded(this.isExpanded($section), $section)
 
@@ -88,33 +91,8 @@ Accordion.prototype.initSectionHeaders = function () {
   }.bind(this))
 }
 
-// On section toggle
-Accordion.prototype.onSectionToggle = function ($section) {
-  var expanded = this.isExpanded($section)
-  this.setExpanded(!expanded, $section)
-
-  // Store the state in sessionStorage when a change is triggered
-  this.storeState($section)
-}
-
-// On Open/Close All toggle
-Accordion.prototype.onOpenOrCloseAllToggle = function () {
-  var $module = this
-  var $sections = this.$sections
-
-  var nowExpanded = !this.checkIfAllSectionsOpen()
-
-  nodeListForEach($sections, function ($section) {
-    $module.setExpanded(nowExpanded, $section)
-    // Store the state in sessionStorage when a change is triggered
-    $module.storeState($section)
-  })
-
-  $module.updateOpenAllButton(nowExpanded)
-}
-
-// Set headers on page init
-Accordion.prototype.setHeaderAttributes = function ($headerWrapper, index) {
+// Set individual header attributes
+Accordion.prototype.initHeaderAttributes = function ($headerWrapper, index) {
   var $module = this
   var $span = $headerWrapper.querySelector('.' + this.sectionButtonClass)
   var $heading = $headerWrapper.querySelector('.' + this.sectionHeadingClass)
@@ -155,15 +133,32 @@ Accordion.prototype.setHeaderAttributes = function ($headerWrapper, index) {
   $heading.appendChild(icon)
 }
 
-// Set "Open all" button on page init
-Accordion.prototype.setOpenAllButtonAttributes = function ($button) {
-  $button.innerHTML = 'Open all <span class="govuk-visually-hidden">sections</span>'
-  $button.setAttribute('class', this.openAllClass)
-  $button.setAttribute('aria-expanded', 'false')
-  $button.setAttribute('type', 'button')
+// When section toggled, set and store state
+Accordion.prototype.onSectionToggle = function ($section) {
+  var expanded = this.isExpanded($section)
+  this.setExpanded(!expanded, $section)
+
+  // Store the state in sessionStorage when a change is triggered
+  this.storeState($section)
 }
 
-// Toggle attributes when section opened/closed
+// When Open/Close All toggled, set and store state
+Accordion.prototype.onOpenOrCloseAllToggle = function () {
+  var $module = this
+  var $sections = this.$sections
+
+  var nowExpanded = !this.checkIfAllSectionsOpen()
+
+  nodeListForEach($sections, function ($section) {
+    $module.setExpanded(nowExpanded, $section)
+    // Store the state in sessionStorage when a change is triggered
+    $module.storeState($section)
+  })
+
+  $module.updateOpenAllButton(nowExpanded)
+}
+
+// Set section attributes when opened/closed
 Accordion.prototype.setExpanded = function (expanded, $section) {
   var $button = $section.querySelector('.' + this.sectionButtonClass)
   $button.setAttribute('aria-expanded', expanded)
