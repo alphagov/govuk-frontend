@@ -1,0 +1,14 @@
+<div class="accordion" data-module="accordion">
+
+  {% for item in params.items %}
+    <div class="accordion-section">
+      <div class="accordion-section-header">
+        <h2 class="govuk-heading-m">{{ item.label }}</h2>
+      </div>
+      <div class="accordion-section-body">
+        {{ item.content.html | safe if item.content.html else item.content.text }}
+      </div>
+    </div>
+  {% endfor %}
+
+</div>
