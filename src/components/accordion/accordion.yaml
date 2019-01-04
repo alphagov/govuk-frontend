@@ -1,5 +1,44 @@
+params:
+- name: id
+  type: string
+  required: true
+  description: Used to assign an `id` in the HTML for the accordion as a whole, and also a prefix for the `id`s of the section panels and the buttons that open them, so that those `id`s can be the target of `aria-labelledby` and `aria-control` attributes.
+- name: items
+  type: array
+  required: true
+  descripion: An array of sections within the accordion.
+  params:
+    - name: label
+      type: string
+      required: false
+      description: The title of each section. If `label.html` is supplied, this is ignored.
+    - name: label.html
+      type: string
+      required: false
+      description: The HTML content of the header for each section which is used both as the title for each section, and as the button to open or close each section.
+    - name: content.html
+      type: string
+      required: true
+      description: The HTML content of each section, which is hidden when the section is closed.
+
 examples:
 - name: default
+  data:
+    items:
+      - label: Section A
+        content:
+          html: |
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Example item 1</li>
+            </ul>
+      - label: Section B
+        content:
+          html: |
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Example item 2</li>
+            </ul>
+
+- name: with one section open
   data:
     items:
       - label: Section A
@@ -10,6 +49,24 @@ examples:
               <li>Example item 1</li>
             </ul>
       - label: Section B
+        content:
+          html: |
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Example item 2</li>
+            </ul>
+
+- name: with all sections already open
+  data:
+    items:
+      - label: Section A
+        expanded: true
+        content:
+          html: |
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Example item 1</li>
+            </ul>
+      - label: Section B
+        expanded: true
         content:
           html: |
             <ul class="govuk-list govuk-list--bullet">
