@@ -28,7 +28,7 @@
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
-## 4.2.1 (fix release)
+## 2.4.1 (fix release)
 
 🔧 Fixes:
 
