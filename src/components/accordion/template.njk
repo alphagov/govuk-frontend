@@ -6,19 +6,19 @@
 
   {% for item in params.items %}
     <div class="govuk-accordion__section {% if item.expanded %}govuk-accordion__section--expanded{% endif %}">
-      <div class="govuk-accordion__header">
-        <h{{ headingLevel }} class="govuk-accordion__heading">
-          <span class="govuk-accordion__button govuk-heading-m" id="{{ id }}-heading-{{ loop.index }}">
+      <div class="govuk-accordion__section-header">
+        <h{{ headingLevel }} class="govuk-accordion__section-heading">
+          <span class="govuk-accordion__section-button govuk-heading-m" id="{{ id }}-heading-{{ loop.index }}">
             {{ item.heading.html | safe if item.heading.html else item.heading.text }}
           </span>
         </h{{ headingLevel }}>
         {% if item.summary.html or item.summary.text %}
-          <div class="govuk-accordion__summary govuk-body" id="{{ id }}-summary-{{ loop.index }}">
+          <div class="govuk-accordion__section-summary govuk-body" id="{{ id }}-summary-{{ loop.index }}">
             {{ item.summary.html | safe if item.summary.html else item.summary.text }}
           </div>
         {% endif %}
       </div>
-      <div id="{{ id }}-content-{{ loop.index }}" class="govuk-accordion__content" aria-labelledby="{{ id }}-heading-{{ loop.index }}">
+      <div id="{{ id }}-content-{{ loop.index }}" class="govuk-accordion__section-content" aria-labelledby="{{ id }}-heading-{{ loop.index }}">
         {{ item.content.html | safe if item.content.html else item.content.text }}
       </div>
     </div>

@@ -34,7 +34,7 @@ Accordion.prototype.init = function () {
 
   nodeListForEach(this.$sections, function ($section, i) {
     // Set header attributes
-    var header = $section.querySelector('.govuk-accordion__header')
+    var header = $section.querySelector('.govuk-accordion__section-header')
     this.setHeaderAttributes(header, i)
 
     this.setExpanded(this.isExpanded($section), $section)
@@ -81,7 +81,7 @@ Accordion.prototype.onToggleExpanded = function ($section) {
 
 // Toggle aria-expanded when section opened/closed
 Accordion.prototype.setExpanded = function (expanded, $section) {
-  var $button = $section.querySelector('.govuk-accordion__button')
+  var $button = $section.querySelector('.govuk-accordion__section-button')
   $button.setAttribute('aria-expanded', expanded)
 
   if (expanded) {
@@ -100,9 +100,9 @@ Accordion.prototype.isExpanded = function ($section) {
 }
 
 Accordion.prototype.setHeaderAttributes = function ($headerWrapper, index) {
-  var $button = $headerWrapper.querySelector('.govuk-accordion__button')
-  var $heading = $headerWrapper.querySelector('.govuk-accordion__heading')
-  var $summary = $headerWrapper.querySelector('.govuk-accordion__summary')
+  var $button = $headerWrapper.querySelector('.govuk-accordion__section-button')
+  var $heading = $headerWrapper.querySelector('.govuk-accordion__section-heading')
+  var $summary = $headerWrapper.querySelector('.govuk-accordion__section-summary')
 
   // Copy existing div element to an actual button element, for improved accessibility.
   // TODO: this probably needs to be more robust, and copy all attributes and child nodes?
@@ -113,13 +113,13 @@ Accordion.prototype.setHeaderAttributes = function ($headerWrapper, index) {
   $buttonAsButton.setAttribute('aria-controls', this.moduleId + '-content-' + (index + 1))
 
   $buttonAsButton.addEventListener('focusin', function (e) {
-    if (!$headerWrapper.classList.contains('govuk-accordion__header--focused')) {
-      $headerWrapper.className += ' govuk-accordion__header--focused'
+    if (!$headerWrapper.classList.contains('govuk-accordion__section-header--focused')) {
+      $headerWrapper.className += ' govuk-accordion__section-header--focused'
     }
   })
 
   $buttonAsButton.addEventListener('blur', function (e) {
-    $headerWrapper.classList.remove('govuk-accordion__header--focused')
+    $headerWrapper.classList.remove('govuk-accordion__section-header--focused')
   })
 
   if (typeof ($summary) !== 'undefined' && $summary !== null) {
@@ -219,11 +219,11 @@ Accordion.prototype.storeState = function () {
       var contentState = element.querySelector('h2 [aria-expanded]') ? element.querySelector('h2 [aria-expanded]').getAttribute('aria-expanded') : false
 
       if (contentId === false && console) {
-        console.error(new Error('No aria controls present in accordion heading.'))
+        console.error(new Error('No aria controls present in accordion section heading.'))
       }
 
       if (contentState === false && console) {
-        console.error(new Error('No aria expanded present in accordion heading.'))
+        console.error(new Error('No aria expanded present in accordion section heading.'))
       }
 
       // Only set the state when both `contentId` and `contentState` are taken from the DOM.

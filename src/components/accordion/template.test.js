@@ -29,18 +29,18 @@ describe('Accordion', () => {
           }
         ]
       })
-      const $componentHeading = $('.govuk-accordion__heading')
+      const $componentHeading = $('.govuk-accordion__section-heading')
 
       expect($componentHeading.get(0).tagName).toEqual('h3')
     })
 
-    it('renders with heading text', () => {
+    it('renders with heading button text', () => {
       const $ = render('accordion', {
         headingLevel: '3',
         items: [
           {
             heading: {
-              'text': 'Section A'
+              'html': '<span class="myClass">Section A</span>'
             },
             content: {
               text: 'Some content'
@@ -48,9 +48,9 @@ describe('Accordion', () => {
           }
         ]
       })
-      const $componentHeading = $('.govuk-accordion__heading')
+      const $componentHeadingButton = $('.govuk-accordion__section-button')
 
-      expect($componentHeading.text().trim()).toEqual('Section A')
+      expect($componentHeadingButton.html().trim()).toEqual('<span class="myClass">Section A</span>')
     })
 
     it('renders with content', () => {
@@ -67,7 +67,7 @@ describe('Accordion', () => {
           }
         ]
       })
-      const $componentContent = $('.govuk-accordion__content')
+      const $componentContent = $('.govuk-accordion__section-content')
 
       expect($componentContent.text().trim()).toEqual('Some content')
     })
@@ -111,14 +111,6 @@ describe('Accordion', () => {
             content: {
               text: 'Some content'
             }
-          },
-          {
-            heading: {
-              'text': 'Section B'
-            },
-            content: {
-              text: 'More content'
-            }
           }
         ]
       })
@@ -145,7 +137,7 @@ describe('Accordion', () => {
             }
           ]
         })
-        const $componentSummary = $('.govuk-accordion__summary')
+        const $componentSummary = $('.govuk-accordion__section-summary')
 
         expect($componentSummary.text().trim()).toEqual('Summary of content')
       })
