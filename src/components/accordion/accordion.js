@@ -114,6 +114,16 @@ Accordion.prototype.setHeaderAttributes = function ($headerWrapper, index) {
   $buttonAsButton.setAttribute('id', this.moduleId + '-heading-' + (index + 1))
   $buttonAsButton.setAttribute('aria-controls', this.moduleId + '-panel-' + (index + 1))
 
+  $buttonAsButton.addEventListener('focusin', function (e) {
+    if (!$headerWrapper.classList.contains('govuk-accordion__header--focused')) {
+      $headerWrapper.className += ' govuk-accordion__header--focused'
+    }
+  })
+
+  $buttonAsButton.addEventListener('blur', function (e) {
+    $headerWrapper.classList.remove('govuk-accordion__header--focused')
+  })
+
   if (typeof ($summary) !== 'undefined' && $summary !== null) {
     $buttonAsButton.setAttribute('aria-describedby', this.moduleId + '-summary-' + (index + 1))
   }

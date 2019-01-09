@@ -64,10 +64,6 @@
     position: relative;
     margin-top: 0;
     margin-bottom: 0;
-    padding-top: govuk-spacing(3);
-
-    // Safe area on the right to avoid clashing with icon
-    padding-right: 40px;
     padding-bottom: govuk-spacing(3);
     cursor: pointer;
   }
@@ -75,18 +71,34 @@
   // Buttons within the headers don’t need default styling
   .govuk-accordion.with-js .govuk-accordion__header button {
     @include govuk-link-common;
+    width: 100%;
     margin-top: 0;
     margin-bottom: 0;
     margin-left: 0;
-    padding-bottom: 0; // Override browser default
+    padding-top: govuk-spacing(3);
+    // Safe area on the right to avoid clashing with icon
+    padding-right: 40px;
+    padding-bottom: 0;
+
     padding-left: 0;
     border-width: 0;
     background-color: transparent;
-    text-align: inherit;
+    text-align: left;
 
     &:focus {
+      outline: none;
       background-color: transparent;
     }
+  }
+
+  // Extend the touch area of the button to span the section header
+  .govuk-accordion.with-js .govuk-accordion__header button:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
   }
 
   .govuk-accordion__heading {
@@ -108,6 +120,13 @@
   // Section headers have a grey background on hover as an additional affodance
   .govuk-accordion.with-js .govuk-accordion__header:hover {
     background-color: govuk-colour("grey-4");
+  }
+
+  // Setting focus styles on header so that summary that is not part of the button is included in focus
+  .govuk-accordion.with-js .govuk-accordion__header--focused {
+    // These replicate @mixin govuk-focusable (the mixin can't be used as the header doesn't get the focus)
+    outline: $govuk-focus-width solid $govuk-focus-colour;
+    outline-offset: 0;
   }
 
   .govuk-accordion__summary {
