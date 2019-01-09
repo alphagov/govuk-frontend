@@ -1,6 +1,24 @@
 #!/bin/sh
 set -e
 
+echo "Starting a release..."
+echo " "
+echo "This will:"
+echo "- check that you're logged in to npm as the correct user"
+echo "- publish the package if it has not been published already"
+echo "- check that there is not already a tag published"
+echo "- create a new tag"
+echo "- push the tag to remote origin"
+echo "- create a zip file of the 'dist/' directory locally"
+echo " "
+
+read -r -p "Do you want to continue? [y/N] " continue_prompt
+
+if [[ $continue_prompt != 'y' ]]; then
+    echo "Cancelling release, if this was a mistake, try again and use 'y' to continue."
+    exit 0
+fi
+
 # echo  "Checking that you can publish to npm..."
 
 # at some point we should create a team and check if user exists in a team
@@ -8,8 +26,8 @@ set -e
 
 NPM_USER=$(npm whoami)
 if ! [ "govuk-patterns-and-tools" == "$NPM_USER" ]; then
-  echo "⚠️ FAILURE: You are not logged in with the correct user."
-  exit 1
+    echo "⚠️ FAILURE: You are not logged in with the correct user."
+    exit 1
 fi
 
 echo "📦  Publishing package..."

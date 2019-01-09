@@ -91,6 +91,24 @@ This includes:
 - SCSS - https://govuk-frontend-review.herokuapp.com/docs/
 - Nunjucks Macros (Templates)
 
+## Updating Changelog
+
+If you open a GitHub pull request on this repo, please update `CHANGELOG` to reflect your contribution.
+
+Add your entry under `Unreleased` as `Breaking changes`, `New features`, `Fixes`.
+
+Internal changes to the project that are not part of the public API do not need changelog entries, for example fixing the CI build server.
+
+These sections follow [semantic versioning](https://semver.org/), where:
+
+- `Breaking changes` corresponds to a `major` (1.X.X) change.
+- `New features` corresponds to a `minor` (X.1.X) change.
+- `Fixes` corresponds to a `patch` (X.X.1) change.
+
+See the [`CHANGELOG_TEMPLATE.md`](/docs/contributing/CHANGELOG_TEMPLATE.md) for an example for how this looks.
+
+Include the modified `CHANGELOG` in the PR.
+
 ## Accidental breaking changes
 If a backward-incompatible change is released unintentionally, we will follow the process outlined on semver.org: https://semver.org/#what-do-i-do-if-i-accidentally-release-a-backwards-incompatible-change-as-a-minor-version
 
