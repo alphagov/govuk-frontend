@@ -48,6 +48,14 @@
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
+- Update visually hidden class to fix ordering issue in VoiceOver OSX
+
+  We have fixed an issue in VoiceOver OSX where using the `govuk-visually-hidden` class in links would result in the text being announced out of order.
+
+  We also now recommend to use aria-label or aria-labelledby where appropriate.
+
+  ([PR #1109](https://github.com/alphagov/govuk-frontend/pull/1109))
+
 ## 2.4.1 (fix release)
 
 🔧 Fixes:
