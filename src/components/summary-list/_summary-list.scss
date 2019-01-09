@@ -12,7 +12,7 @@
       width: 100%;
     }
     margin: 0; // Reset default user agent styles
-    @include govuk-responsive-margin(9, "bottom");
+    @include govuk-responsive-margin(6, "bottom");
   }
 
   .govuk-summary-list__row {
