@@ -139,10 +139,7 @@
 
     // Display an icon to the right of each header to indicate open/closed status,
     // and as an additional affordance.
-    //
-    // Note: the SVG icon contains both a vertical bar and a horizontal bar, to make a
-    // '+' icon. The vertical bar is hidden when expanded to display a '-' icon.
-    .govuk-accordion .govuk-accordion--icon {
+    .govuk-accordion__icon {
       position: absolute;
       top: 50%;
       right: 15px;
@@ -151,15 +148,31 @@
       margin-top: -8px;
     }
 
-    .govuk-accordion .govuk-accordion--icon-vertical-bar,
-    .govuk-accordion .govuk-accordion--icon-horizontal-bar {
-      fill: govuk-colour("black");
+    .govuk-accordion__icon:after,
+    .govuk-accordion__icon:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 25%;
+      height: 25%;
+      margin: auto;
+      background-color: govuk-colour("black");
+    }
+
+    .govuk-accordion__icon:before {
+      width: 100%;
+    }
+
+    .govuk-accordion__icon:after {
+      height: 100%;
     }
 
     // Vertical bar should be hidden when section is open, to display a '-' icon
-    .govuk-accordion .govuk-accordion__section--expanded .govuk-accordion--icon-vertical-bar {
+    .govuk-accordion__section--expanded .govuk-accordion__icon:after {
       display: none;
     }
   }
-
 }

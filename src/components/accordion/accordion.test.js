@@ -40,10 +40,18 @@ describe('/components/accordion', () => {
           expect(isContentVisible).toBeTruthy()
         }
       })
+
+      it('does not display "+/-" in the section headings', async () => {
+        await page.setJavaScriptEnabled(false)
+        await page.goto(baseUrl + '/components/accordion/preview', { waitUntil: 'load' })
+
+        const numberOfIcons = await page.evaluate(() => document.body.querySelectorAll('.govuk-accordion .govuk-accordion__section .govuk-accordion__icon').length)
+        expect(numberOfIcons).toEqual(0)
+      })
     })
 
     describe('when JavaScript is available', () => {
-      it('it should indicate that the sections are not expanded', async () => {
+      it('should indicate that the sections are not expanded', async () => {
         await page.setJavaScriptEnabled(true)
         await page.goto(baseUrl + '/components/accordion/preview', { waitUntil: 'load' })
 
@@ -70,7 +78,7 @@ describe('/components/accordion', () => {
         expect(openOrCloseAllButtonText).toEqual('Close all sections')
       })
 
-      it('should should open both sections when the Opan all button is clicked', async () => {
+      it('should open both sections when the Open all button is clicked', async () => {
         await page.goto(baseUrl + '/components/accordion/preview', { waitUntil: 'load' })
 
         await page.click('.govuk-accordion__expand-all')
@@ -79,8 +87,7 @@ describe('/components/accordion', () => {
 
         expect(firstSectionHeaderButtonExpanded).toBeTruthy()
 
-        const secondSectionHeaderButtonExpanded = await page.evaluate(() =>
-          document.body.querySelectorAll('.govuk-accordion__section').item(1).querySelector('.govuk-accordion__button').getAttribute('aria-expanded'))
+        const secondSectionHeaderButtonExpanded = await page.evaluate(() => document.body.querySelectorAll('.govuk-accordion__section').item(1).querySelector('.govuk-accordion__button').getAttribute('aria-expanded'))
 
         expect(secondSectionHeaderButtonExpanded).toBeTruthy()
       })
@@ -124,6 +131,18 @@ describe('/components/accordion', () => {
         }, sectionHeaderButton)
 
         expect(expandedState).toEqual(expandedStateAfterRefresh)
+      })
+
+      describe('"+/-" icon', () => {
+        it('should display "+/-" in the section headings', async () => {
+          await page.setJavaScriptEnabled(true)
+          await page.goto(baseUrl + '/components/accordion/preview', { waitUntil: 'load' })
+
+          const numberOfExampleSections = 2
+
+          const numberOfIcons = await page.evaluate(() => document.body.querySelectorAll('.govuk-accordion .govuk-accordion__section .govuk-accordion__icon').length)
+          expect(numberOfIcons).toEqual(numberOfExampleSections)
+        })
       })
     })
   })
