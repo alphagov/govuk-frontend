@@ -54,6 +54,8 @@
 
   We also now recommend to use aria-label or aria-labelledby where appropriate.
 
+  Thanks to @stevenaproctor and the accessibility team at HMRC for letting us know about this issue.
+
   ([PR #1109](https://github.com/alphagov/govuk-frontend/pull/1109))
 
 ## 2.4.1 (fix release)
