@@ -417,3 +417,20 @@ examples:
         html: |
           <label class="govuk-label" for="contact-text-message">Mobile phone number</label>
           <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
+
+- name: small
+  data:
+    idPrefix: 'how-contacted-2'
+    name: 'how-contacted-2'
+    formGroup:
+      classes: 'govuk-radios--small'
+    fieldset:
+      legend:
+        text: How do you want to be contacted?
+    items:
+    - value: email
+      text: Email
+    - value: phone
+      text: Phone
+    - value: text
+      text: Text message
