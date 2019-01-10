@@ -198,4 +198,8 @@
     box-shadow: 0 0 0 10px govuk-colour("grey-3");
   }
 
+  .govuk-checkboxes--small .govuk-checkboxes__item:hover .govuk-checkboxes__input:focus + .govuk-checkboxes__label::before {
+    box-shadow: 0 0 0 $govuk-focus-width $govuk-focus-colour, 0 0 0 10px govuk-colour("grey-3");
+  }
+
 }
