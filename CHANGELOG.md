@@ -58,6 +58,12 @@
 
   ([PR #1109](https://github.com/alphagov/govuk-frontend/pull/1109))
 
+- Improve rendering in older Internet Explorer
+
+  Added a meta tag to ensure that older IE versions always render with the correct rendering engine
+
+  ([PR #1119](https://github.com/alphagov/govuk-frontend/pull/1119))
+
 ## 2.4.1 (fix release)
 
 🔧 Fixes:
