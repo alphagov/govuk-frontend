@@ -434,3 +434,20 @@ examples:
       text: Phone
     - value: text
       text: Text message
+
+- name: small-no-hover
+  data:
+    idPrefix: 'how-contacted-2'
+    name: 'how-contacted-2'
+    formGroup:
+      classes: 'govuk-radios--small no-hover'
+    fieldset:
+      legend:
+        text: How do you want to be contacted?
+    items:
+    - value: email
+      text: Email
+    - value: phone
+      text: Phone
+    - value: text
+      text: Text message

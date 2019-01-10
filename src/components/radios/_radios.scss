@@ -233,4 +233,13 @@
   .govuk-radios--small .govuk-radios__item:hover .govuk-radios__input:focus + .govuk-radios__label::before {
     box-shadow: 0 0 0 $govuk-radios-focus-width $govuk-focus-colour, 0 0 0 10px govuk-colour("grey-3");
   }
+
+  // These are quick for an alt version
+  .govuk-radios--small.no-hover .govuk-radios__item:hover > .govuk-radios__label::before {
+    box-shadow: none;
+  }
+
+  .govuk-radios--small.no-hover .govuk-radios__item:hover .govuk-radios__input:focus + .govuk-radios__label::before {
+    box-shadow: 0 0 0 $govuk-radios-focus-width $govuk-focus-colour;
+  }
 }

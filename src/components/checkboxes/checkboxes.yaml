@@ -404,3 +404,19 @@ examples:
         text: another thing
       - value: c
         text: this thing
+
+- name: small-no-hover
+  data:
+    idPrefix: nationality
+    name: nationality
+    classes: govuk-checkboxes--small no-hover
+    fieldset:
+      legend:
+        text: Filter by
+    items:
+      - value: a
+        text: a thing
+      - value: b
+        text: another thing
+      - value: c
+        text: this thing
