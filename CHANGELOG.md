@@ -14,6 +14,24 @@
 
 🆕 New features:
 
+- Pull Request Title goes here
+
+  Description goes here (optional)
+
+  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+
+🔧 Fixes:
+
+- Pull Request Title goes here
+
+  Description goes here (optional)
+
+  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+
+## 2.5.0 (Feature release)
+
+🆕 New features:
+
 - Accordion component 🎉
 
   Contributed by @frankieroberto, as well as @injms, @hannalaakso, @joelanman and others.
@@ -45,12 +63,6 @@
   ([PR #1065](https://github.com/alphagov/govuk-frontend/pull/1065))
 
 🔧 Fixes:
-
-- Pull Request Title goes here
-
-  Description goes here (optional)
-
-  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
 - Update visually hidden class to fix ordering issue in VoiceOver OSX
 
