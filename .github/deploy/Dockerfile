@@ -4,7 +4,6 @@ RUN apk --update add git openssh gnupg && \
 rm -rf /var/lib/apt/lists/* && \
 rm /var/cache/apk/*
 
-RUN mkdir ~/.ssh && ssh-keyscan ekosystem.staging.slovensko.digital >> ~/.ssh/known_hosts
 COPY id_rsa.gpg /id_rsa.gpg
 
 RUN git clone --depth 1 https://github.com/slovensko-digital/navody-frontend.git /navody-frontend
