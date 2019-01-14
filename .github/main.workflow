@@ -11,6 +11,6 @@ action "Master branch" {
 action "Deploy to Staging" {
   needs = "Master branch"
   uses = "./.github/deploy"
-  args = "push staging"
+  args = "push -v staging"
   secrets = ["SSH_KEY_DECRYPT_PASSPHRASE"]
 }
