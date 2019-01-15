@@ -50,6 +50,7 @@
     margin-bottom: govuk-spacing(3);
     @include govuk-media-query($from: tablet) {
       padding-right: 0;
+      text-align: right;
     }
   }
 
@@ -80,10 +81,6 @@
     width: 100%;
     margin: 0; // Reset default user agent styles
     padding: 0; // Reset default user agent styles
-
-    @include govuk-media-query($from: tablet) {
-      text-align: right;
-    }
   }
 
   .govuk-summary-list__actions-list-item {

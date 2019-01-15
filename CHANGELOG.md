@@ -28,6 +28,12 @@
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
+- Update summary list to simplify actions
+
+  Only output actions in a list when there's multiple actions.
+
+  ([PR #1131](https://github.com/alphagov/govuk-frontend/pull/1131))
+
 ## 2.5.0 (Feature release)
 
 🆕 New features:

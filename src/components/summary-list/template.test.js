@@ -158,7 +158,7 @@ describe('Data list', () => {
         })
 
         const $component = $('.govuk-summary-list')
-        const $actionLink = $component.find('.govuk-summary-list__actions-list-item a')
+        const $actionLink = $component.find('.govuk-summary-list__actions > a')
 
         expect($actionLink.attr('href')).toBe('https://www.gov.uk')
       })
@@ -178,7 +178,7 @@ describe('Data list', () => {
         })
 
         const $component = $('.govuk-summary-list')
-        const $actionLink = $component.find('.govuk-summary-list__actions-list-item a')
+        const $actionLink = $component.find('.govuk-summary-list__actions > a')
 
         expect($actionLink.text()).toContain('Edit')
       })
@@ -198,7 +198,7 @@ describe('Data list', () => {
         })
 
         const $component = $('.govuk-summary-list')
-        const $actionLink = $component.find('.govuk-summary-list__actions-list-item a')
+        const $actionLink = $component.find('.govuk-summary-list__actions > a')
 
         expect($actionLink.html()).toContain('Edit<span class="visually-hidden"> name</span>')
       })
@@ -222,7 +222,7 @@ describe('Data list', () => {
         })
 
         const $component = $('.govuk-summary-list')
-        const $actionLink = $component.find('.govuk-summary-list__actions-list-item a')
+        const $actionLink = $component.find('.govuk-summary-list__actions > a')
         expect($actionLink.text()).toContain('Edit Custom Accessible Name')
       })
       it('renders classes', async () => {
@@ -245,6 +245,53 @@ describe('Data list', () => {
         const $actionList = $component.find('.govuk-summary-list__actions')
 
         expect($actionList.hasClass('app-custom-class')).toBeTruthy()
+      })
+      it('renders a single anchor with one action', async () => {
+        const $ = render('summary-list', {
+          rows: [
+            {
+              actions: {
+                items: [
+                  {
+                    href: '#',
+                    text: 'First action'
+                  }
+                ]
+              }
+            }
+          ]
+        })
+
+        const $component = $('.govuk-summary-list')
+        const $action = $component.find('.govuk-summary-list__actions > a')
+
+        expect($action.html().trim()).toBe('First action')
+      })
+      it('renders a list with mutliple actions', async () => {
+        const $ = render('summary-list', {
+          rows: [
+            {
+              actions: {
+                items: [
+                  {
+                    href: '#',
+                    text: 'First action'
+                  },
+                  {
+                    href: '#',
+                    text: 'Second action'
+                  }
+                ]
+              }
+            }
+          ]
+        })
+
+        const $component = $('.govuk-summary-list')
+        const $actionList = $component.find('.govuk-summary-list__actions')
+        const $secondAction = $actionList.find('.govuk-summary-list__actions-list-item:last-child')
+
+        expect($secondAction.text().trim()).toBe('Second action')
       })
     })
   })
