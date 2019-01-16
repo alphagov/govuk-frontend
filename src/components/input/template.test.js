@@ -246,4 +246,16 @@ describe('Input', () => {
       expect($label.attr('for')).toEqual('my-input')
     })
   })
+
+  describe('when it includes an autocomplete attribute', () => {
+    it('renders the autocomplete attribute', () => {
+      const $ = render('input', {
+        id: 'input-with-autocomplete',
+        autocomplete: 'postal-code'
+      })
+
+      const $component = $('.govuk-input')
+      expect($component.attr('autocomplete')).toEqual('postal-code')
+    })
+  })
 })
