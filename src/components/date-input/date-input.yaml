@@ -28,6 +28,10 @@ params:
     type: string
     required: false
     description: If provided, it will be used as the initial value of the input.
+  - name: autocomplete
+    type: string
+    required: false
+    description: Attribute to [identify input purpose](https://www.w3.org/WAI/WCAG21/Understanding/identify-input-purpose.html), for instance "postal-code" or "username". See [autofill](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill) for full list of attributes that can be used.
   - name: classes
     type: string
     required: false
@@ -188,3 +192,25 @@ examples:
       text: For example, 31 3 1980
     formGroup:
       classes: extra-class
+- name: with autocomplete values
+  data:
+    id: dob-with-autocomplete-attribute
+    namePrefix: dob-with-autocomplete
+    fieldset:
+      legend:
+        text: What is your date of birth?
+    hint:
+      text: For example, 31 3 1980
+    items:
+      -
+        name: day
+        classes: govuk-input--width-2
+        autocomplete: bday-day
+      -
+        name: month
+        classes: govuk-input--width-2
+        autocomplete: bday-month
+      -
+        name: year
+        classes: govuk-input--width-2
+        autocomplete: bday-year
