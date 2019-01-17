@@ -42,6 +42,14 @@
 
   ([PR #1147](https://github.com/alphagov/govuk-frontend/pull/1147))
 
+- Make gutters in the header consistent with the grid
+
+  This means that the header will now line up with the grid.
+
+  Thanks to @edwardhorsford for raising this issue.
+
+  ([PR #1144](https://github.com/alphagov/govuk-frontend/pull/1144))
+
 ## 2.5.1 (Fix release)
 
 🔧 Fixes:
