@@ -36,6 +36,12 @@
 
   ([PR #1148](https://github.com/alphagov/govuk-frontend/pull/1148))
 
+- Fix container not being centered in IE8
+
+  Since the header and the footer component use this container it also fixes centering for these components.
+
+  ([PR #1147](https://github.com/alphagov/govuk-frontend/pull/1147))
+
 ## 2.5.1 (Fix release)
 
 🔧 Fixes:
