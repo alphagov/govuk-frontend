@@ -14,11 +14,15 @@
 
 🆕 New features:
 
-- Pull Request Title goes here
+- Enable `autocomplete` attributes for input components.
 
-  Description goes here (optional)
+  You can now set the `autocomplete` attribute on input, date input and textarea components using the component macros.
 
-  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+  This was already possible to do with the `attributes` option but this change highlights the new WCAG 2.1 success criteria [Identify Input Purpose](https://www.w3.org/WAI/WCAG21/Understanding/identify-input-purpose.html) which "is to ensure that the purpose of a form input collecting information about the user can be programmatically determined, so that user agents can extract and present this purpose to users using different modalities".
+
+  See [autofill](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill) for the full list of attributes that can be used.
+
+  ([PR #1146](https://github.com/alphagov/govuk-frontend/pull/1146))
 
 🔧 Fixes:
 
