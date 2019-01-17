@@ -28,6 +28,29 @@
 
   ([PR #1178](https://github.com/alphagov/govuk-frontend/pull/1178))
 
+- Prevent accidental multiple submissions of forms
+
+  If a user double clicks a submit button in a form, we debounce this event and ignore the second click.
+
+  HTML data attribute:
+
+  ```html
+  <button class="govuk-button" data-prevent-double-click="true">
+    Submit
+  </button>
+  ```
+
+  Nunjucks macro:
+
+  ```js
+  {{ govukButton({
+    text: "Submit",
+    preventDoubleClick: true
+  }) }}
+  ```
+
+  ([PR #1018](https://github.com/alphagov/govuk-frontend/pull/1018))
+
 🔧 Fixes:
 
 - Pull Request Title goes here
