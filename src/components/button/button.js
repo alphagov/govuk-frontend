@@ -19,7 +19,6 @@ function Button ($module) {
 }
 
 /**
-* Add event handler for KeyDown
 * if the event target element has a role='button' and the event is key space pressed
 * then it prevents the default event and triggers a click event
 * @param {object} event event
@@ -36,7 +35,6 @@ Button.prototype.handleKeyDown = function (event) {
 }
 
 /**
-* Add event handler for click
 * If the click quickly succeeds a previous click then nothing will happen.
 * This stops people accidentally causing multiple form submissions by
 * double clicking buttons.
