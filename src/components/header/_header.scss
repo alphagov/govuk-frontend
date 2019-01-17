@@ -124,13 +124,18 @@
     @include govuk-font($size: 24, $weight: bold);
   }
 
+  .govuk-header__logo,
+  .govuk-header__content {
+    box-sizing: border-box;
+  }
+
   .govuk-header__logo {
     @include govuk-responsive-margin(2, "bottom");
     padding-right: govuk-spacing(8);
 
     @include mq ($from: desktop) {
       width: 33.33%;
-      padding-right: 0;
+      padding-right: $govuk-gutter-half;
       float: left;
       vertical-align: top;
     }
@@ -139,6 +144,7 @@
   .govuk-header__content {
     @include mq ($from: desktop) {
       width: 66.66%;
+      padding-left: $govuk-gutter-half;
       float: left;
     }
   }
