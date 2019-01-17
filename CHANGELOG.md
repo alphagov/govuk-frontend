@@ -32,6 +32,10 @@
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
+- Remove hover state for accordion sections on mobile
+
+  ([PR #1148](https://github.com/alphagov/govuk-frontend/pull/1148))
+
 ## 2.5.1 (Fix release)
 
 🔧 Fixes:
