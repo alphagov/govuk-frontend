@@ -20,6 +20,12 @@
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
+- Prevent accidental multiple submissions of forms
+
+  If a user double clicks a submit button in a form, we debounce this event and ignore the second click.
+
+  ([PR #1018](https://github.com/alphagov/govuk-frontend/pull/1018))
+
 🔧 Fixes:
 
 - Pull Request Title goes here
