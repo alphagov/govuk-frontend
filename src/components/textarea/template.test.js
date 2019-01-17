@@ -249,4 +249,17 @@ describe('Textarea', () => {
       expect($label.attr('for')).toEqual('my-textarea')
     })
   })
+
+  describe('when it includes an autocomplete attribute', () => {
+    it('renders the autocomplete attribute', () => {
+      const $ = render('textarea', {
+        attributes: {
+          'autocomplete': 'street-address'
+        }
+      })
+
+      const $component = $('.govuk-textarea')
+      expect($component.attr('autocomplete')).toEqual('street-address')
+    })
+  })
 })

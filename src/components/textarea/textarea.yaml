@@ -47,6 +47,10 @@ params:
   type: string
   required: false
   description: Classes to add to the textarea.
+- name: autocomplete
+  type: string
+  required: false
+  description: Attribute to [identify input purpose](https://www.w3.org/WAI/WCAG21/Understanding/identify-input-purpose.html), for instance "postal-code" or "username". See [autofill](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill) for full list of attributes that can be used.
 - name: attributes
   type: object
   required: false
@@ -107,3 +111,11 @@ examples:
         text: Full address
       formGroup:
         classes: extra-class
+
+  - name: with autocomplete attribute
+    data:
+      id: textarea-with-autocomplete-attribute
+      name: address
+      label:
+        text: Full address
+      autocomplete: street-address
