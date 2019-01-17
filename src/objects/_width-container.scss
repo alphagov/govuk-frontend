@@ -2,10 +2,6 @@
   // Limit the width of the container to the page width
   max-width: $govuk-page-width;
 
-  @include govuk-if-ie8 {
-    width: $govuk-page-width;
-  }
-
   // On mobile, add half width gutters
   margin: 0 $govuk-gutter-half;
 
@@ -17,6 +13,13 @@
   // As soon as the viewport is greater than the width of the page plus the
   // gutters, just centre the content instead of adding gutters.
   @include govuk-media-query($and: "(min-width: #{($govuk-page-width + $govuk-gutter * 2)})") {
+    margin: 0 auto;
+  }
+
+  @include govuk-if-ie8 {
+    width: $govuk-page-width;
+    // Since media queries are not supported in IE8,
+    // we need to duplicate this margin that centers the page.
     margin: 0 auto;
   }
 }
