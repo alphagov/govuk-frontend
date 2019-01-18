@@ -7,13 +7,11 @@
 
   .govuk-accordion {
     @include govuk-responsive-margin(6, "bottom");
-    // Border at the bottom of the whole accordion
-    border-bottom: 1px solid $govuk-border-colour;
   }
 
   // Borders between accordion sections
   .govuk-accordion__section {
-    border-top: 1px solid $govuk-border-colour;
+    padding-top: govuk-spacing(3);
   }
 
   .govuk-accordion__section-header {
@@ -28,6 +26,7 @@
   // Buttons within the sections don’t need default styling
   .govuk-accordion__section-button {
     @include govuk-font($size: 24, $weight: bold);
+    display: inline-block;
     margin-bottom: 0;
     padding-top: govuk-spacing(3);
   }
@@ -37,19 +36,30 @@
     margin-bottom: 0;
   }
 
+  // Remove the bottom margin from the last item inside the content
+  .govuk-accordion__section-content > :last-child {
+    margin-bottom: 0;
+  }
+
   // JavaScript enabled
   .js-enabled {
+
+    .govuk-accordion {
+      // Border at the bottom of the whole accordion
+      border-bottom: 1px solid $govuk-border-colour;
+    }
+
+    // Borders between accordion sections
+    .govuk-accordion__section {
+      padding-top: 0;
+      border-top: 1px solid $govuk-border-colour;
+    }
 
     // Hide the body of collapsed sections
     .govuk-accordion__section-content {
       display: none;
       @include govuk-responsive-padding(3, "top");
       @include govuk-responsive-padding(3, "bottom");
-    }
-
-    // Remove the bottom margin from the last item inside the content
-    .govuk-accordion__section-content > :last-child {
-      margin-bottom: 0;
     }
 
     // Show the body of expanded sections

@@ -32,6 +32,12 @@
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
+- Fixes styling of the accordion component when there is no JavaScript or it has been turned off
+
+  Thanks @dankmitchell for reporting this issue ([#1130](https://github.com/alphagov/govuk-frontend/issues/1130))
+
+  ([PR #1149](https://github.com/alphagov/govuk-frontend/pull/1149))
+
 - Remove hover state for accordion sections on mobile
 
   ([PR #1148](https://github.com/alphagov/govuk-frontend/pull/1148))
