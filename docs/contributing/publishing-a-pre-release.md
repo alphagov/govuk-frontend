@@ -16,7 +16,9 @@ No changes get published to npm as part of the process.
 
 4. Run `npm run release-to-branch`.
 
-There should now be a branch `pre-release-[your-branch-name-here]` pushed to remote, which you can install with:
+There should now be a branch `pre-release-[your-branch-name-here]` pushed to the GOV.UK Frontend remote origin.
+
+To install this pre-release branch in another project, you can run the following command:
 
 ```bash
 npm install --save alphagov/govuk-frontend#pre-release-[your-branch-name-here]
