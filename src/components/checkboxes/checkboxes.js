@@ -40,8 +40,10 @@ Checkboxes.prototype.setAttributes = function ($input) {
   var inputIsChecked = $input.checked
   $input.setAttribute('aria-expanded', inputIsChecked)
 
-  var $content = document.querySelector('#' + $input.getAttribute('aria-controls'))
-  $content.classList.toggle('govuk-checkboxes__conditional--hidden', !inputIsChecked)
+  var $content = this.$module.querySelector('#' + $input.getAttribute('aria-controls'))
+  if ($content) {
+    $content.classList.toggle('govuk-checkboxes__conditional--hidden', !inputIsChecked)
+  }
 }
 
 Checkboxes.prototype.handleClick = function (event) {
