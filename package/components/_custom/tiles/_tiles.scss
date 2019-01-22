@@ -5,11 +5,15 @@
 
 @mixin tile-borders {
   $border-color: #ededed;
+
   border-style: solid;
   border-color: $border-color;
 }
 
 @include govuk-exports("govuk/component/sdn-tiles") {
+
+  $text-color: #000000;
+  $text-color-hover: #3e3e3e;
 
   .sdn-tiles {
     @include tile-borders;
@@ -28,9 +32,13 @@
     box-sizing: border-box;
     width: 50%;
     border-width: 0 2px 2px 0;
+    color: $text-color;
+    text-decoration: none;
     cursor: pointer;
 
     &:hover {
+      opacity: .9;
+      color: $text-color-hover;
       background-color: govuk-colour("white");
     }
 

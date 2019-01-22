@@ -24,15 +24,13 @@
                   <li>
                     <div class="sdn-header__subnavigation">
                         <a href="#" class="sdn-header__link sdn-header__dropdown-toggle js-dropdown-toggle" aria-controls="subnav-dropdown"><span class="sdn-header__fixed-width-text">{{ item.text }}</span></a>
-                        <div class="wrapper" style="position: absolute; display: block;">
-                            <ul class="sdn-header__dropdown" id="subnav-dropdown">
-                                {% for subitem in item.items %}
-                                    <li>
-                                        <a href="{{ subitem.href }}">{{ subitem.text }}</a>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
+                        <ul class="sdn-header__dropdown" id="subnav-dropdown">
+                            {% for subitem in item.items %}
+                                <li>
+                                    <a href="{{ subitem.href }}">{{ subitem.text }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
                     </div>
                   </li>
                 {% else %}

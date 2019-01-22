@@ -12,7 +12,7 @@ function SdnHeader ($module) {
 
 SdnHeader.prototype.init = function () {
   // Check for module
-  const $module = this.$module
+  var $module = this.$module
   if (!$module) {
     return
   }
@@ -31,7 +31,7 @@ SdnHeader.prototype.init = function () {
   }.bind(this))
 
   this.$dropdown = $module.querySelector('#' + this.$toggleButton.getAttribute('aria-controls'))
-  const $body = document.getElementsByTagName('body')[0]
+  var $body = document.getElementsByTagName('body')[0]
 
   $body.appendChild(this.$dropdown)
 
