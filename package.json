@@ -93,5 +93,8 @@
     ],
     "globalSetup": "./lib/puppeteer/setup.js",
     "globalTeardown": "./lib/puppeteer/teardown.js"
+  },
+  "dependencies": {
+    "popper.js": "^1.14.6"
   }
 }
