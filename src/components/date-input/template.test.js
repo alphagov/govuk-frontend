@@ -459,4 +459,25 @@ describe('Date input', () => {
     expect($monthInput.hasClass('undefined')).toBeFalsy()
     expect($yearInput.hasClass('undefined')).toBeFalsy()
   })
+
+  describe('when it includes autocomplete attributes', () => {
+    it('renders the autocomplete attribute', () => {
+      const $ = render('date-input', {
+        items: [
+          {
+            'autocomplete': 'bday-day'
+          },
+          {
+            'autocomplete': 'bday-month'
+          },
+          {
+            'autocomplete': 'bday-year'
+          }
+        ]
+      })
+
+      const $firstItems = $('.govuk-date-input__item:first-child input')
+      expect($firstItems.attr('autocomplete')).toEqual('bday-day')
+    })
+  })
 })

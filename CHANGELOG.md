@@ -14,13 +14,124 @@
 
 🆕 New features:
 
+- Enable `autocomplete` attributes for input components.
+
+  You can now set the `autocomplete` attribute on input, date input and textarea components using the component macros.
+
+  This was already possible to do with the `attributes` option but this change highlights the new WCAG 2.1 success criteria [Identify Input Purpose](https://www.w3.org/WAI/WCAG21/Understanding/identify-input-purpose.html) which "is to ensure that the purpose of a form input collecting information about the user can be programmatically determined, so that user agents can extract and present this purpose to users using different modalities".
+
+  See [autofill](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill) for the full list of attributes that can be used.
+
+  ([PR #1146](https://github.com/alphagov/govuk-frontend/pull/1146))
+
+🔧 Fixes:
+
 - Pull Request Title goes here
 
   Description goes here (optional)
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+  
+- Include Accordion component in global namespace
+
+  Accordion component was not exported and was therefore unavailable in global namespace
+
+  ([PR #1157](https://github.com/alphagov/govuk-frontend/pull/1157))
+
+- Fixes styling of the accordion component when there is no JavaScript or it has been turned off
+
+  Thanks @dankmitchell for reporting this issue ([#1130](https://github.com/alphagov/govuk-frontend/issues/1130))
+
+  ([PR #1149](https://github.com/alphagov/govuk-frontend/pull/1149))
+
+- Remove hover state for accordion sections on mobile
+
+  ([PR #1148](https://github.com/alphagov/govuk-frontend/pull/1148))
+
+- Fix container not being centered in IE8
+
+  Since the header and the footer component use this container it also fixes centering for these components.
+
+  ([PR #1147](https://github.com/alphagov/govuk-frontend/pull/1147))
+
+- Make gutters in the header consistent with the grid
+
+  This means that the header will now line up with the grid.
+
+  Thanks to @edwardhorsford for raising this issue.
+
+  ([PR #1144](https://github.com/alphagov/govuk-frontend/pull/1144))
+
+## 2.5.1 (Fix release)
 
 🔧 Fixes:
+
+- Update summary list to simplify actions
+
+  Only output actions in a list when there's multiple actions.
+
+  ([PR #1131](https://github.com/alphagov/govuk-frontend/pull/1131))
+
+## 2.5.0 (Feature release)
+
+🆕 New features:
+
+- Accordion component 🎉
+
+  Contributed by @frankieroberto, as well as @injms, @hannalaakso, @joelanman and others.
+
+  The accordion component lets users show and hide sections of related content on a page.
+
+  For more information see [guidance](https://design-system.service.gov.uk/components/accordion/).
+
+  ([PR #958](https://github.com/alphagov/govuk-frontend/pull/958))
+
+- Add desktop specific grid column widths
+
+  This allow you to define different grid behaviour for the tablet and desktop
+  breakpoints. For example, you can make a column two-thirds on desktop but
+  expand to full-width on smaller tablet sized screens.
+
+  ([PR #1094](https://github.com/alphagov/govuk-frontend/pull/1094))
+
+- Add summary list component
+
+  This component was initially developed to allow us to build the
+  'check your answers' pattern.
+
+  It is mostly the same as in the original pattern with some notable differences:
+
+  - On smaller screens it wraps by default
+  - It's possible to have multiple actions
+
+  ([PR #1065](https://github.com/alphagov/govuk-frontend/pull/1065))
+
+🔧 Fixes:
+
+- Update visually hidden class to fix ordering issue in VoiceOver OSX
+
+  We have fixed an issue in VoiceOver OSX where using the `govuk-visually-hidden` class in links would result in the text being announced out of order.
+
+  We also now recommend to use aria-label or aria-labelledby where appropriate.
+
+  Thanks to @stevenaproctor and the accessibility team at HMRC for letting us know about this issue.
+
+  ([PR #1109](https://github.com/alphagov/govuk-frontend/pull/1109))
+
+- Improve rendering in older Internet Explorer
+
+  Added a meta tag to ensure that older IE versions always render with the correct rendering engine
+
+  ([PR #1119](https://github.com/alphagov/govuk-frontend/pull/1119))
+
+## 2.4.1 (fix release)
+
+🔧 Fixes:
+
+- Remove unused hint, error message and label imports from the Character Count
+  component
+
+  ([PR #1087](https://github.com/alphagov/govuk-frontend/pull/1087))
 
 - Warning text component, remove negative margin left and reduce padding left to match.
 
@@ -30,6 +141,10 @@
   numbers on mobile breakpoints to make each item visually distinct.
 
   ([PR #1078](https://github.com/alphagov/govuk-frontend/pull/1078))
+
+- Add error message attributes to all components
+
+  ([PR #1086](https://github.com/alphagov/govuk-frontend/pull/1086))
 
 ## 2.4.0 (Feature release)
 

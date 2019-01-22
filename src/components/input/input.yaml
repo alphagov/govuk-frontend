@@ -15,6 +15,11 @@ params:
   type: string
   required: false
   description: Optional initial value of the input.
+- name: label
+  type: object
+  required: true
+  description: Options for the label component.
+  isComponent: true
 - name: hint
   type: object
   required: false
@@ -38,6 +43,10 @@ params:
   type: string
   required: false
   description: Classes to add to the anchor tag.
+- name: autocomplete
+  type: string
+  required: false
+  description: Attribute to [identify input purpose](https://www.w3.org/WAI/WCAG21/Understanding/identify-input-purpose.html), for instance "postal-code" or "username". See [autofill](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill) for full list of attributes that can be used.
 - name: attributes
   type: object
   required: false
@@ -146,3 +155,10 @@ examples:
       name: test-name
       formGroup:
         classes: extra-class
+  - name: with autocomplete attribute
+    data:
+      label:
+        text: Postcode
+      id: input-with-autocomplete-attribute
+      name: postcode
+      autocomplete: postal-code

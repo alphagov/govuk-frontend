@@ -7,24 +7,24 @@
 3. Run `npm install` to ensure you have the latest dependencies installed.
 
 4. Create and checkout a new branch (`release-[version-number]`).
+  The version number is determined by looking at the [current "Unreleased" CHANGELOG](../../CHANGELOG.md) changes and updating the previous release number depending on the kind of entries:
+
+  - `Breaking changes` corresponds to a `major` (1.X.X) change.
+  - `New features` corresponds to a `minor` (X.1.X) change.
+  - `Fixes` corresponds to a `patch` (X.X.1) change.
+
+  For example if the previous version is `2.3.0` and there are entries for `Breaking changes` then the new release should be `3.0.0`.
+
+  See the [versioning documentation](../versioning.md) for more information.
 
 5. Update [`CHANGELOG.md`](../../CHANGELOG.md) "Unreleased" heading with the new version number.
-   This should be incremented based on [Semantic versioning](https://semver.org/) from the unreleased changes listed.
-
   Copy the [`CHANGELOG_TEMPLATE.md`](./CHANGELOG_TEMPLATE.md), above the new release to make it easy for new contributors.
 
 6. Update [`package/package.json`](../../package/package.json) version with the new version number.
-This should be incremented based on [Semantic versioning](https://semver.org/) from the unreleased changes listed.
 
 7. Save the changes. Do not commit.
 
-8. Run `npm run pre-release`.
-
-This will:
-  - copy files from `src/` to `package/` and run tests
-  - add [vendor prefixes](https://github.com/postcss/autoprefixer) to CSS in `package/`
-  - build "govuk-frontend" Sass and JavaScript files into `dist/`
-  - commit all changes and push the branch to remote
+8. Run `npm run pre-release`, you will be prompted to continue or cancel.
 
 9. (Optional) Test in [GOV.UK Design System](git@github.com:alphagov/govuk-design-system.git)
 
@@ -53,14 +53,7 @@ This will:
 
 13. Log into npm, using team [credentials](https://github.com/alphagov/design-system-team-credentials/tree/master/npm/govuk-patterns-and-tools).
 
-14. Run `npm run release`.
-
-  This will:
-  - check that you're logged in to npm as the correct user.
-  - publish the package has not been published yet
-  - create a new tag if the current git tag does not match the latest published tag
-  - push the tag to remote origin
-  - create a zip file of the `dist` directory
+14. Run `npm run release`, you will be prompted to continue or cancel.
 
 15. Create a release in the [Github interface](https://github.com/alphagov/govuk-frontend/releases/new)
   - select the latest tag version

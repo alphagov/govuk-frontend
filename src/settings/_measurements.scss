@@ -15,6 +15,20 @@
 
 $govuk-page-width: 960px !default;
 
+/// Map of grid column widths
+///
+/// @type Map
+/// @access public
+
+$govuk-grid-widths: (
+  one-quarter: 25%,
+  one-third: 33.3333%,
+  one-half: 50%,
+  two-thirds: 66.6666%,
+  three-quarters: 75%,
+  full: 100%
+) !default;
+
 /// Width of gutter between grid columns
 ///
 /// @type Number

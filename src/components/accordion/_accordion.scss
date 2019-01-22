@@ -1,0 +1,188 @@
+@import "../../settings/all";
+@import "../../tools/all";
+@import "../../helpers/all";
+
+
+@include govuk-exports("govuk/component/accordion") {
+
+  .govuk-accordion {
+    @include govuk-responsive-margin(6, "bottom");
+  }
+
+  // Borders between accordion sections
+  .govuk-accordion__section {
+    padding-top: govuk-spacing(3);
+  }
+
+  .govuk-accordion__section-header {
+    padding-bottom: govuk-spacing(3);
+  }
+
+  .govuk-accordion__section-heading {
+    margin-top: 0; // Override browser default
+    margin-bottom: 0; // Override browser default
+  }
+
+  // Buttons within the sections don’t need default styling
+  .govuk-accordion__section-button {
+    @include govuk-font($size: 24, $weight: bold);
+    display: inline-block;
+    margin-bottom: 0;
+    padding-top: govuk-spacing(3);
+  }
+
+  .govuk-accordion__section-summary {
+    margin-top: govuk-spacing(2);
+    margin-bottom: 0;
+  }
+
+  // Remove the bottom margin from the last item inside the content
+  .govuk-accordion__section-content > :last-child {
+    margin-bottom: 0;
+  }
+
+  // JavaScript enabled
+  .js-enabled {
+
+    .govuk-accordion {
+      // Border at the bottom of the whole accordion
+      border-bottom: 1px solid $govuk-border-colour;
+    }
+
+    // Borders between accordion sections
+    .govuk-accordion__section {
+      padding-top: 0;
+      border-top: 1px solid $govuk-border-colour;
+    }
+
+    // Hide the body of collapsed sections
+    .govuk-accordion__section-content {
+      display: none;
+      @include govuk-responsive-padding(3, "top");
+      @include govuk-responsive-padding(3, "bottom");
+    }
+
+    // Show the body of expanded sections
+    .govuk-accordion__section--expanded .govuk-accordion__section-content {
+      display: block;
+    }
+
+    // This is styled to look like a link not a button
+    .govuk-accordion__open-all {
+      @include govuk-font($size: 16);
+      @include govuk-link-common;
+      display: inline;
+      border-width: 0;
+      color: $govuk-link-colour;
+      background: none;
+      cursor: pointer;
+
+      &:focus {
+        background: none;
+      }
+    }
+
+    // Section headers have a pointer cursor as an additional affordance
+    .govuk-accordion__section-header {
+      position: relative;
+      // Safe area on the right to avoid clashing with icon
+      padding-right: 40px;
+      cursor: pointer;
+    }
+
+    // Section headers have a grey background on hover as an additional affodance
+    .govuk-accordion__section-header:hover {
+      background-color: govuk-colour("grey-4");
+      // For devices that can't hover such as touch devices,
+      // remove hover state as it can be stuck in that state (iOS).
+      @media (hover: none) {
+        background-color: initial;
+      }
+    }
+
+    // Setting focus styles on header so that summary that is not part of the button is included in focus
+    .govuk-accordion__section-header--focused {
+      // These replicate @mixin govuk-focusable (the mixin can't be used as the header doesn't get the focus)
+      outline: $govuk-focus-width solid $govuk-focus-colour;
+      outline-offset: 0;
+    }
+
+    // Buttons within the headers don’t need default styling
+    .govuk-accordion__section-button {
+      @include govuk-link-common;
+      width: 100%;
+      margin-top: 0;
+      margin-bottom: 0;
+      margin-left: 0;
+      padding-top: govuk-spacing(3);
+      padding-bottom: 0;
+      padding-left: 0;
+      border-width: 0;
+      // Headings in section headers have link colours as an additional affodance
+      color: $govuk-link-colour;
+      background: none;
+      text-align: left;
+      cursor: pointer;
+
+      &:focus {
+        outline: none;
+        background: none;
+      }
+    }
+
+    // Extend the touch area of the button to span the section header
+    .govuk-accordion__section-button:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+
+    .govuk-accordion__controls {
+      text-align: right;
+    }
+
+    // Display an icon to the right of each header to indicate open/closed status,
+    // and as an additional affordance.
+    .govuk-accordion__icon {
+      position: absolute;
+      top: 50%;
+      right: 15px;
+      width: 16px;
+      height: 16px;
+      margin-top: -8px;
+    }
+
+    .govuk-accordion__icon:after,
+    .govuk-accordion__icon:before {
+      content: "";
+      box-sizing: border-box;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 25%;
+      height: 25%;
+      margin: auto;
+      border: 2px solid transparent;
+      background-color: govuk-colour("black");
+    }
+
+    .govuk-accordion__icon:before {
+      width: 100%;
+    }
+
+    .govuk-accordion__icon:after {
+      height: 100%;
+    }
+
+    // Vertical bar should be hidden when section is open, to display a '-' icon
+    .govuk-accordion__section--expanded .govuk-accordion__icon:after {
+      content: " ";
+      display: none;
+    }
+  }
+}

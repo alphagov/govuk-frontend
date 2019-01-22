@@ -71,21 +71,7 @@ which describes how we prefer git history and commit messages to read.
 
 ## Updating Changelog
 
-If you open a GitHub pull request on this repo, please update `CHANGELOG` to reflect your contribution.
-
-Add your entry under `Unreleased` as `Breaking changes`, `New features`, `Fixes`.
-
-Internal changes to the project that are not part of the public API do not need changelog entries, for example fixing the CI build server.
-
-These sections follow [semantic versioning](https://semver.org/), where:
-
-- `Breaking changes` corresponds to a `major` (1.X.X) change.
-- `New features` corresponds to a `minor` (X.1.X) change.
-- `Fixes` corresponds to a `patch` (X.X.1) change.
-
-See the [`CHANGELOG_TEMPLATE.md`](/docs/contributing/CHANGELOG_TEMPLATE.md) for an example for how this looks.
-
-Include the modified `CHANGELOG` in the PR.
+See the versioning documentation for [updating the changelog](/docs/contributing/versioning.md#updating-changelog))
 
 ## Testing a release
 If you need to test a release, for example if you're contributing a new component see [Publishing pre-release of GOV.UK Frontend](/docs/contributing/publishing-a-pre-release.md).
