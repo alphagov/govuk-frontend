@@ -42,6 +42,12 @@
                 "description": "If provided, it will be used as the initial value of the input."
             },
             {
+                "name": "autocomplete",
+                "type": "string",
+                "required": false,
+                "description": "Attribute to [identify input purpose](https://www.w3.org/WAI/WCAG21/Understanding/identify-input-purpose.html), for instance \"postal-code\" or \"username\". See [autofill](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill) for full list of attributes that can be used."
+            },
+            {
                 "name": "classes",
                 "type": "string",
                 "required": false,
