@@ -31,6 +31,12 @@
   Description goes here (optional)
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+  
+- Include Accordion component in global namespace
+
+  Accordion component was not exported and was therefore unavailable in global namespace
+
+  ([PR #1157](https://github.com/alphagov/govuk-frontend/pull/1157))
 
 - Fixes styling of the accordion component when there is no JavaScript or it has been turned off
 

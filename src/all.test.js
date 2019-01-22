@@ -63,6 +63,7 @@ describe('GOV.UK Frontend', () => {
 
       // Ensure GOV.UK Frontend exports the expected components
       expect(components).toEqual([
+        'Accordion',
         'Button',
         'Details',
         'CharacterCount',
@@ -84,7 +85,7 @@ describe('GOV.UK Frontend', () => {
       components.forEach(component => {
         page.evaluate(component => {
           const Component = window.GOVUKFrontend[component]
-          const $module = document
+          const $module = document.documentElement
           new Component($module).init()
         }, component)
       })
