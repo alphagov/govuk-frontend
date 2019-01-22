@@ -85,7 +85,7 @@ describe('GOV.UK Frontend', () => {
       components.forEach(component => {
         page.evaluate(component => {
           const Component = window.GOVUKFrontend[component]
-          const $module = document
+          const $module = document.documentElement
           new Component($module).init()
         }, component)
       })
