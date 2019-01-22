@@ -56,6 +56,7 @@ function initAll () {
 
 export {
   initAll,
+  Accordion,
   Button,
   Details,
   CharacterCount,
