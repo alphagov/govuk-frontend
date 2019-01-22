@@ -24,6 +24,7 @@
                   <li>
                     <div class="sdn-header__subnavigation">
                         <a href="#" class="sdn-header__link sdn-header__dropdown-toggle js-dropdown-toggle" aria-controls="subnav-dropdown"><span class="sdn-header__fixed-width-text">{{ item.text }}</span></a>
+                        {#<div class="wrapper" style="position: absolute;">#}
                         <ul class="sdn-header__dropdown" id="subnav-dropdown">
                             {% for subitem in item.items %}
                                 <li>
@@ -31,6 +32,7 @@
                                 </li>
                             {% endfor %}
                         </ul>
+                        {#</div>#}
                     </div>
                   </li>
                 {% else %}

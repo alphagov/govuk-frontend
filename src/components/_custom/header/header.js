@@ -3,6 +3,7 @@ import '../../../vendor/polyfills/Event' // addEventListener and event.target no
 
 function SdnHeader ($module) {
   this.$module = $module
+  this.$toggleButton = null
 }
 
 SdnHeader.prototype.init = function () {
@@ -13,13 +14,13 @@ SdnHeader.prototype.init = function () {
   }
 
   // Check for button
-  var $toggleButton = $module.querySelector('.js-dropdown-toggle')
-  if (!$toggleButton) {
+  this.$toggleButton = $module.querySelector('.js-dropdown-toggle')
+  if (!this.$toggleButton) {
     return
   }
 
   // Handle $toggleButton click events
-  $toggleButton.addEventListener('click', this.handleClick.bind(this))
+  this.$toggleButton.addEventListener('click', this.handleClick.bind(this))
 }
 
 /**
@@ -40,11 +41,12 @@ SdnHeader.prototype.toggleClass = function (node, className) {
  * @param {object} event event
  */
 SdnHeader.prototype.handleClick = function (event) {
-  var $module = this.$module
-  var $toggleButton = event.target || event.srcElement
-  var $target = $module.querySelector('#' + $toggleButton.getAttribute('aria-controls'))
+  event.preventDefault()
 
-  console.log($target);
+  var $module = this.$module
+  var $target = $module.querySelector('#' + this.$toggleButton.getAttribute('aria-controls'))
+
+  console.log($target)
 
   // // If a button with aria-controls, handle click
   // if ($toggleButton && $target) {

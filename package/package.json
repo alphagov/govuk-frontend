@@ -1,7 +1,7 @@
 {
   "name": "govuk-frontend",
   "description": "GOV.UK Frontend contains the code you need to start building a user interface for government platforms and services.",
-  "version": "2.4.1",
+  "version": "2.5.1",
   "main": "all.js",
   "sass": "all.scss",
   "engines": {
