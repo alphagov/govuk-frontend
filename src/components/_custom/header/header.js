@@ -7,11 +7,12 @@ function SdnHeader ($module) {
   this.$toggleButton = null
   this.$dropdown = null
   this.popper = null
+  this.blurEnabled = true
 }
 
 SdnHeader.prototype.init = function () {
   // Check for module
-  var $module = this.$module
+  const $module = this.$module
   if (!$module) {
     return
   }
@@ -22,8 +23,15 @@ SdnHeader.prototype.init = function () {
     return
   }
 
+  $module.querySelectorAll('.sdn-header__dropdown a').forEach(function (node) {
+    node.addEventListener('click', function () {
+      this.$dropdown.style.display = 'none'
+      this.blurEnabled = true
+    }.bind(this))
+  }.bind(this))
+
   this.$dropdown = $module.querySelector('#' + this.$toggleButton.getAttribute('aria-controls'))
-  var $body = document.getElementsByTagName('body')[0]
+  const $body = document.getElementsByTagName('body')[0]
 
   $body.appendChild(this.$dropdown)
 
@@ -31,9 +39,10 @@ SdnHeader.prototype.init = function () {
     placement: 'bottom-end'
   })
 
-  // Handle $toggleButton click events
   this.$toggleButton.addEventListener('click', this.handleClick.bind(this))
   this.$toggleButton.addEventListener('blur', this.handleBlur.bind(this))
+  this.$dropdown.addEventListener('mouseenter', this.handleMouseenter.bind(this))
+  this.$dropdown.addEventListener('mouseleave', this.handleMouseleave.bind(this))
 }
 
 /**
@@ -56,31 +65,25 @@ SdnHeader.prototype.toggleClass = function (node, className) {
 SdnHeader.prototype.handleClick = function (event) {
   event.preventDefault()
 
-  this.popper.update()
-
   this.$dropdown.style.display = 'block'
-
-  // var popperInstance = new Popper(this.$toggleButton, $target, {
-  //   placement: 'left'
-  // })
-  //
-  // console.log($target)
-
-  // // If a button with aria-controls, handle click
-  // if ($toggleButton && $target) {
-  //   this.toggleClass($target, 'govuk-header__navigation--open')
-  //   this.toggleClass($toggleButton, 'govuk-header__menu-button--open')
-  //
-  //   $toggleButton.setAttribute('aria-expanded', $toggleButton.getAttribute('aria-expanded') !== 'true')
-  //   $target.setAttribute('aria-hidden', $target.getAttribute('aria-hidden') === 'false')
-  // }
+  this.popper.update()
 }
 /**
  * An event handler for blur event on $toggleButton
  * @param {object} event event
  */
 SdnHeader.prototype.handleBlur = function (event) {
-  this.$dropdown.style.display = 'none'
+  if (this.blurEnabled) {
+    this.$dropdown.style.display = 'none'
+  }
+}
+
+SdnHeader.prototype.handleMouseenter = function (event) {
+  this.blurEnabled = false
+}
+
+SdnHeader.prototype.handleMouseleave = function (event) {
+  this.blurEnabled = true
 }
 
 export default SdnHeader

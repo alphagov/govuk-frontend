@@ -192,4 +192,22 @@
     @include govuk-font($size: 14);
     opacity: .8;
   }
+
+  .has-sticky-footer {
+    height: 100%;
+
+    body {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .navody-template__content {
+      flex: 1 0 auto;
+    }
+
+    .navody-template__footer {
+      flex-shrink: 0;
+    }
+  }
 }
