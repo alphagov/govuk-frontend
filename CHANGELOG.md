@@ -38,6 +38,12 @@
 
   ([PR #1157](https://github.com/alphagov/govuk-frontend/pull/1157))
 
+- Fix Checkboxes and Radios targeting selectors outside it's scope
+
+  Thanks to [@andysellick](https://github.com/andysellick) and [@bilbof](https://github.com/bilbof) for helping us with this issue.
+
+  ([PR #1156](https://github.com/alphagov/govuk-frontend/pull/1156))
+
 - Fixes styling of the accordion component when there is no JavaScript or it has been turned off
 
   Thanks @dankmitchell for reporting this issue ([#1130](https://github.com/alphagov/govuk-frontend/issues/1130))
