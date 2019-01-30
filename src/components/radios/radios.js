@@ -45,7 +45,10 @@ Radios.prototype.setAttributes = function ($input) {
 }
 
 Radios.prototype.handleClick = function (event) {
-  nodeListForEach(this.$inputs, function ($input) {
+
+  var allRadioInputs = document.querySelectorAll('input[type="radio"]')
+
+  nodeListForEach(allRadioInputs, function ($input) {
     // If a radio with aria-controls, handle click
     var isRadio = $input.getAttribute('type') === 'radio'
     var hasAriaControls = $input.getAttribute('aria-controls')
