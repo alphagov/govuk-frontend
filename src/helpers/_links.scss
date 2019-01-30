@@ -31,6 +31,7 @@
 @mixin govuk-link-style-default {
   &:link {
     color: $govuk-link-colour;
+    text-decoration-color: govuk-colour("light-blue");
   }
 
   &:visited {
@@ -49,6 +50,7 @@
   // contrast is still acceptable
   &:focus {
     color: $govuk-focus-text-colour;
+    text-decoration-color: $govuk-focus-text-colour;
   }
 }
 

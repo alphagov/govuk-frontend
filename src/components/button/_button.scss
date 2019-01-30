@@ -4,7 +4,7 @@
 
 @include govuk-exports("govuk/component/button") {
 
-  $govuk-button-colour: #00823b;
+  $govuk-button-colour: govuk-colour("green");
   $govuk-button-hover-colour: darken($govuk-button-colour, 5%);
   $govuk-button-shadow-colour: darken($govuk-button-colour, 15%);
   $govuk-button-text-colour: govuk-colour("white");

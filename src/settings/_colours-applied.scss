@@ -31,7 +31,7 @@ $govuk-text-colour: govuk-colour("black") !default;
 /// @type Colour
 /// @access public
 
-$govuk-canvas-background-colour: govuk-colour("grey-3") !default;
+$govuk-canvas-background-colour: govuk-colour("light-grey") !default;
 
 /// Body background colour
 ///
@@ -56,7 +56,7 @@ $govuk-print-text-colour: #000000 !default;
 /// @type Colour
 /// @access public
 
-$govuk-secondary-text-colour: govuk-colour("grey-1") !default;
+$govuk-secondary-text-colour: govuk-colour("dark-grey") !default;
 
 /// Focus colour
 ///
@@ -94,7 +94,7 @@ $govuk-error-colour: govuk-colour("red") !default;
 /// @type Colour
 /// @access public
 
-$govuk-border-colour: govuk-colour("grey-2") !default;
+$govuk-border-colour: govuk-colour("mid-grey") !default;
 
 /// Input border colour
 ///
@@ -138,7 +138,7 @@ $govuk-link-visited-colour: #4c2c92 !default;
 /// @type Colour
 /// @access public
 
-$govuk-link-hover-colour: govuk-colour("light-blue") !default;
+$govuk-link-hover-colour: govuk-colour("dark-blue") !default;
 
 /// Active link colour
 ///
