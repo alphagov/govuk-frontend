@@ -1,0 +1,53 @@
+{% extends "template.njk" %}
+
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "button/macro.njk" import govukButton %}
+{% from "radios/macro.njk" import govukRadios %}
+
+{% block head %}
+  <!--[if !IE 8]><!-->
+    <link rel="stylesheet" href="/public/app.css">
+  <!--<![endif]-->
+  <!--[if IE 8]>
+    <link rel="stylesheet" href="/public/app-ie8.css">
+  <![endif]-->
+  <!--[if lt IE 9]>
+    <script src="/vendor/html5-shiv/html5shiv.js"></script>
+  <![endif]-->
+{% endblock %}
+
+{% block bodyEnd %}
+  <script src="/public/all.js"></script>
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/examples/juggling-3-radios"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    {% from "character-count/macro.njk" import govukCharacterCount %}
+
+    {{ govukCharacterCount({
+      name: "with-hint",
+      id: "with-hint",
+      maxlength: 200,
+      label: {
+        text: "What is your most impressive juggling trick?",
+        classes: "govuk-label--xl"
+      }
+    }) }}
+
+    {{ govukButton({
+      "text": "Continue",
+      "href": "/examples/juggling-5-check-answers"
+    }) }}
+  </div>
+</div>
+
+{% endblock %}

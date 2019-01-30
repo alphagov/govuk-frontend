@@ -1,0 +1,71 @@
+{% extends "template.njk" %}
+
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "button/macro.njk" import govukButton %}
+{% from "date-input/macro.njk" import govukDateInput %}
+{% from "input/macro.njk" import govukInput %}
+
+{% block head %}
+  <!--[if !IE 8]><!-->
+    <link rel="stylesheet" href="/public/app.css">
+  <!--<![endif]-->
+  <!--[if IE 8]>
+    <link rel="stylesheet" href="/public/app-ie8.css">
+  <![endif]-->
+  <!--[if lt IE 9]>
+    <script src="/vendor/html5-shiv/html5shiv.js"></script>
+  <![endif]-->
+{% endblock %}
+
+{% block bodyEnd %}
+  <script src="/public/all.js"></script>
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/examples/juggling-0-start-page"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Your details</h1>
+
+    {{ govukInput({
+      label: {
+        text: "Full name",
+        classes: "govuk-label--m"
+      },
+      hint: {
+        text: "This should be your name as you want it to appear on your licence"
+      },
+      id: "full-name",
+      name: "full-name"
+    }) }}
+
+    {{ govukDateInput({
+      id: "dob",
+      namePrefix: "dob",
+      fieldset: {
+        legend: {
+          text: "What is your date of birth?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--m"
+        }
+      },
+      hint: {
+        text: "For example, 31 3 1980"
+      }
+    }) }}
+
+    {{ govukButton({
+      "text": "Continue",
+      "href": "/examples/juggling-2-error"
+    }) }}
+  </div>
+</div>
+
+{% endblock %}

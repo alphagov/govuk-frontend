@@ -1,0 +1,65 @@
+{% extends "template.njk" %}
+
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "button/macro.njk" import govukButton %}
+{% from "tabs/macro.njk" import govukTabs %}
+
+{% block head %}
+  <!--[if !IE 8]><!-->
+    <link rel="stylesheet" href="/public/app.css">
+  <!--<![endif]-->
+  <!--[if IE 8]>
+    <link rel="stylesheet" href="/public/app-ie8.css">
+  <![endif]-->
+  <!--[if lt IE 9]>
+    <script src="/vendor/html5-shiv/html5shiv.js"></script>
+  <![endif]-->
+{% endblock %}
+
+{% block bodyEnd %}
+  <script src="/public/all.js"></script>
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    "items": [
+    { text: 'Home', href: '/' },
+    { text: 'Entertainment', href: '#' },
+    { text: 'Circus skills, party tricks and high jinks', href: '#' }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Apply for a juggling licence</h1>
+
+    <p class="govuk-body">You can apply for, renew, replace or update your juggling licence and pay for it online.</p>
+
+    {{ govukButton({
+      "text": "Start now",
+      "classes": "govuk-button--start",
+      "href": "/examples/juggling-1-personal-details"
+    }) }}
+
+    <h2 class="govuk-heading-m">More information</h2>
+
+    <p class="govuk-body">You’ll need a debit or credit card to use this service.</p>
+
+    <p class="govuk-body">It’s £9.50 cheaper to apply for a juggling licence online than by post.</p>
+
+    <p class="govuk-body">It should take around 2 weeks to get your first juggling licence, but it can take longer.</p>
+
+    <p class="govuk-body">You should use a different service if you need your juggling licence urgently.</p>
+
+    <p class="govuk-body">Don’t book children's parties until you have a valid juggling licence - doing so is at your own risk.</p>
+
+    <h2 class="govuk-heading-m">Other ways to apply</h2>
+
+    <p class="govuk-body">You can pick up juggling licence application forms from your <a href="#" class="govuk-link">local clown college</a> and apply by post, or use the <a href="#" class="govuk-link">Post Office Check and Send service</a>.</p>
+  </div>
+</div>
+
+{% endblock %}

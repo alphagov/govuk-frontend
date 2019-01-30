@@ -1,0 +1,47 @@
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% extends "template.njk" %}
+
+{% from "panel/macro.njk" import govukPanel %}
+
+{% block head %}
+  <!--[if !IE 8]><!-->
+    <link rel="stylesheet" href="/public/app.css">
+  <!--<![endif]-->
+  <!--[if IE 8]>
+    <link rel="stylesheet" href="/public/app-ie8.css">
+  <![endif]-->
+  <!--[if lt IE 9]>
+    <script src="/vendor/html5-shiv/html5shiv.js"></script>
+  <![endif]-->
+{% endblock %}
+
+{% block bodyEnd %}
+  <script src="/public/all.js"></script>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukPanel({
+        titleText: "Application complete",
+        html: "Your reference number<br><strong>53145305520</strong>"
+      }) }}
+
+      <p class="govuk-body">We have sent you a confirmation email.</p>
+
+      <h2 class="govuk-heading-m">What happens next</h2>
+
+      <p class="govuk-body">
+        We’ve sent your application to <a href="#" class="govuk-link">Barnum &amp; Bailey Circus School</a> for approval.
+      </p>
+      <p class="govuk-body">
+        They will contact you either to confirm your registration, or to ask for more information.
+      </p>
+
+      <p class="govuk-body">
+        <a href="#" class="govuk-link">What did you think of this service?</a> (takes 30 seconds)
+      </p>
+    </div>
+  </div>
+{% endblock %}
