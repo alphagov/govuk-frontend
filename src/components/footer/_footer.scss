@@ -7,11 +7,11 @@
 @include govuk-exports("govuk/component/footer") {
 
   $govuk-footer-background: $govuk-canvas-background-colour;
-  $govuk-footer-border-top: #a1acb2;
-  $govuk-footer-border: govuk-colour("grey-2");
-  $govuk-footer-text: #454a4c;
+  $govuk-footer-border-top: $govuk-border-colour;
+  $govuk-footer-border: $govuk-border-colour;
+  $govuk-footer-text: $govuk-secondary-text-colour;
   $govuk-footer-link: $govuk-footer-text;
-  $govuk-footer-link-hover: #171819;
+  $govuk-footer-link-hover: $govuk-text-colour;
 
   // Based on the govuk-crest-2x.png image dimensions.
   $govuk-footer-crest-image-width-2x: 250px;
