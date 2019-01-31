@@ -262,4 +262,62 @@ describe('Textarea', () => {
       expect($component.attr('autocomplete')).toEqual('street-address')
     })
   })
+
+  describe('when it includes describedBy attribute', () => {
+    it('it renders aria-describedBy with provided text', () => {
+      const $ = render('textarea', {
+        describedBy: 'Custom describedBy text'
+      })
+
+      const $component = $('.govuk-textarea')
+
+      expect($component.attr('aria-describedby'))
+        .toMatch('Custom describedBy text')
+    })
+  })
+
+  describe('when it includes describedBy attribute and hint text', () => {
+    it('associates the textarea as "described by" the hint and not the provided describedBy text', () => {
+      const $ = render('textarea', {
+        describedBy: 'Custom describedBy text',
+        hint: {
+          'text': 'Hint'
+        }
+      })
+
+      const $component = $('.govuk-textarea')
+      const $hint = $('.govuk-hint')
+      const hintId = new RegExp(
+        WORD_BOUNDARY + $hint.attr('id') + WORD_BOUNDARY
+      )
+
+      expect($component.attr('aria-describedby'))
+        .toMatch(hintId)
+    })
+  })
+
+  describe('when it includes describedBy attribute hint text and error message', () => {
+    it('associates the textarea as described by both the hint and the error message and not the provided describedBy text', () => {
+      const $ = render('textarea', {
+        describedBy: 'Custom describedBy text',
+        errorMessage: {
+          'text': 'Error message'
+        },
+        hint: {
+          'text': 'Hint'
+        }
+      })
+
+      const $component = $('.govuk-textarea')
+      const $errorMessageId = $('.govuk-error-message').attr('id')
+      const $hintId = $('.govuk-hint').attr('id')
+
+      const combinedIds = new RegExp(
+        WORD_BOUNDARY + $hintId + WHITESPACE + $errorMessageId + WORD_BOUNDARY
+      )
+
+      expect($component.attr('aria-describedby'))
+        .toMatch(combinedIds)
+    })
+  })
 })
