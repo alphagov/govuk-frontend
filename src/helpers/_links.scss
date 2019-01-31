@@ -36,14 +36,17 @@
 
   &:visited {
     color: $govuk-link-visited-colour;
+    text-decoration-color: $govuk-link-visited-colour;
   }
 
   &:hover {
     color: $govuk-link-hover-colour;
+    text-decoration-color: $govuk-link-hover-colour;
   }
 
   &:active {
     color: $govuk-link-active-colour;
+    text-decoration-color: $govuk-link-active-colour;
   }
 
   // When focussed, the text colour needs to be darker to ensure that colour
@@ -76,12 +79,14 @@
   &:hover,
   &:active {
     color: $govuk-secondary-text-colour;
+    text-decoration-color: $govuk-secondary-text-colour;
   }
 
   // When focussed, the text colour needs to be darker to ensure that colour
   // contrast is still acceptable
   &:focus {
     color: $govuk-focus-text-colour;
+    text-decoration-color: $govuk-focus-text-colour;
   }
 
   // alphagov/govuk_template includes a specific a:link:focus selector designed
@@ -90,6 +95,7 @@
   @include govuk-compatibility(govuk_template) {
     &:link:focus {
       @include govuk-text-colour;
+      text-decoration-color: $govuk-focus-text-colour;
     }
   }
 }
@@ -118,6 +124,7 @@
   &:active,
   &:focus {
     @include govuk-text-colour;
+    text-decoration-color: $govuk-text-colour;
   }
 
   // alphagov/govuk_template includes a specific a:link:focus selector designed
@@ -126,6 +133,7 @@
   @include govuk-compatibility(govuk_template) {
     &:link:focus {
       @include govuk-text-colour;
+      text-decoration-color: $govuk-text-colour;
     }
   }
 }
@@ -154,24 +162,29 @@
 @mixin govuk-link-style-no-visited-state {
   &:link {
     color: $govuk-link-colour;
+    text-decoration-color: govuk-colour("light-blue");
   }
 
   &:visited {
     color: $govuk-link-colour;
+    text-decoration-color: govuk-colour("light-blue");
   }
 
   &:hover {
     color: $govuk-link-hover-colour;
+    text-decoration-color: $govuk-link-hover-colour;
   }
 
   &:active {
     color: $govuk-link-active-colour;
+    text-decoration-color: $govuk-link-active-colour;
   }
 
   // When focussed, the text colour needs to be darker to ensure that colour
   // contrast is still acceptable
   &:focus {
     color: $govuk-focus-text-colour;
+    text-decoration-color: $govuk-focus-text-colour;
   }
 }
 
