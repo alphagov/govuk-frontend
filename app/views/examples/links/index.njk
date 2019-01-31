@@ -34,21 +34,25 @@
       <h1 class="govuk-heading-xl">
         Links
       </h1>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-quarter">
+          {% for variant_description, variant_class in variants %}
+        
+        <section class="govuk-!-margin-top-8">
+          <h2 class="govuk-heading-l">{{ variant_description }}</h2>
 
-    {% for variant_description, variant_class in variants %}
-
-      <section class="govuk-!-margin-top-8">
-        <h2 class="govuk-heading-l">{{ variant_description }}</h2>
-
-      {% for state_description, state_class in states %}
-        <p class="govuk-body">
-          <a href="/" class="govuk-link {{ variant_class }} {{ state_class }}">
-            {{ state_description}}
-          </a>
-        </p>
+        {% for state_description, state_class in states %}
+          <p class="govuk-body">
+            <a href="/" class="govuk-link {{ variant_class }} {{ state_class }}">
+              {{ state_description}}
+            </a>
+          </p>
+        {% endfor %}
+        </section>
       {% endfor %}
-      </section>
-    {% endfor %}
+        </div>
+      </div>
+      
 
     </div>
   </div>
