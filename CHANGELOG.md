@@ -44,12 +44,6 @@
 
 🔧 Fixes:
 
-- Pull Request Title goes here
-
-  Description goes here (optional)
-
-  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
-
 - Include Accordion component in global namespace
 
   Accordion component was not exported and was therefore unavailable in global namespace
