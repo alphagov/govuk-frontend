@@ -14,6 +14,24 @@
 
 🆕 New features:
 
+- Pull Request Title goes here
+
+  Description goes here (optional)
+
+  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+
+🔧 Fixes:
+
+- Pull Request Title goes here
+
+  Description goes here (optional)
+
+  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+
+## 2.6.0 (Feature release)
+
+🆕 New features:
+
 - Enable `autocomplete` attributes for input components.
 
   You can now set the `autocomplete` attribute on input, date input and textarea components using the component macros.
@@ -31,7 +49,7 @@
   Description goes here (optional)
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
-  
+
 - Include Accordion component in global namespace
 
   Accordion component was not exported and was therefore unavailable in global namespace
