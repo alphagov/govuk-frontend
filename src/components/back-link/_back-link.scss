@@ -25,6 +25,20 @@
     // Underline is provided by a bottom border
     text-decoration: none;
 
+
+    &:focus {
+      // Current margin minus 3px padding added by focus
+      margin-top: 12px;
+      // 14px for icon + 5px from focus style
+      padding-left: 19px;
+      border-bottom: 1px solid govuk-colour("yellow");
+
+      &:before {
+        top: 2px;
+        left: 5px;
+      }
+    }
+
     // Prepend left pointing arrow
     &:before {
       @include govuk-shape-arrow($direction: left, $base: 10px, $height: 6px);

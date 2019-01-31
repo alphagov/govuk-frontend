@@ -1,0 +1,3503 @@
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "fieldset/macro.njk" import govukFieldset %}
+{% from "input/macro.njk" import govukInput %}
+{% from "button/macro.njk" import govukButton %}
+{% from "radios/macro.njk" import govukRadios %}
+{% from "checkboxes/macro.njk" import govukCheckboxes %}
+{% from "date-input/macro.njk" import govukDateInput %}
+{% from "select/macro.njk" import govukSelect %}
+{% from "file-upload/macro.njk" import govukFileUpload %}
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "inset-text/macro.njk" import govukInsetText %}
+{% from "panel/macro.njk" import govukPanel %}
+{% from "phase-banner/macro.njk" import govukPhaseBanner %}
+{% from "summary-list/macro.njk" import govukSummaryList %}
+{% from "table/macro.njk" import govukTable %}
+{% from "warning-text/macro.njk" import govukWarningText %}
+
+{% extends "layout.njk" %}
+
+{% set variants = {
+  'Standard link': '',
+  'Link with no visited state': 'govuk-link--no-visited-state',
+  'Link with normal text colour': 'govuk-link--text-colour',
+  'Muted link': 'govuk-link--muted'
+} %}
+
+{% set states = {
+  'Link': ':link',
+  'Visited link': ':visited',
+  'Hovered link': ':hover',
+  'Active link': ':active',
+  'Focused link': ':focus',
+  'Focused visited link': ':focus :visited',
+  'Focused hovered link': ':focus :hover',
+  'Focused active link': ':focus :active'
+} %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    "href": "/"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <h1 class="govuk-heading-xl">New colour palette and states</h1>
+  <p class="govuk-body-l">Documenting component combinations for WCAG 2.1 updates</p>
+
+  <h2 class="govuk-heading-m">New colour palette</h2>
+
+  <details class="govuk-details">
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+        See details
+      </span>
+    </summary>
+    <div class="govuk-details__text">
+        <p class="govuk-body">The colour palette has been reduced and all hex values have been changed.</p>
+
+        <pre class="language-markup"><code>
+        $govuk-colours: (
+          "red": #d4351c,
+          "yellow": #ffdd00,
+          "green": #00703c,
+          "blue": #1d70b8,
+          "dark-blue": #003078,
+          "light-blue": #5694ca,
+          "black": #0b0c0c,
+          "dark-grey": #6f777b,
+          "mid-grey": #b1b4b6,
+          "light-grey": #f3f2f1,
+          "white": #ffffff
+        ) !default;
+        </code></pre>
+
+    </div>
+  </details>
+
+
+  <h2 class="govuk-heading-m">Approach to focus state</h2>
+
+  <details class="govuk-details">
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+        See details
+      </span>
+    </summary>
+    <div class="govuk-details__text">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <p class="govuk-body">After a lot of experimentation with different focus colours, WCAG 2.1 “Non-text contrast” could not be met with colour alone.</p> 
+          
+          <p class="govuk-body">The GOV.UK graphic design community opted to keep the (new) yellow colour for :focus and combine it with adding a border (or making an existing border thicker).</p>
+          
+          <p class="govuk-body">While the yellow does not meet colour contrast on white backgrounds, the combination of colour and border will meet WCAG 2.1 on both light and dark backgrounds.</p>
+
+        </div>
+      </div>  
+    </div>
+  </details>
+
+  <h2 class="govuk-heading-m govuk-!-padding-top-4">Approach to types of component</h2>
+
+  <details class="govuk-details">
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+        See details
+      </span>
+    </summary>
+    <div class="govuk-details__text">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <p class="govuk-body">Where a component is conceptually similar (for example, types of form inputs or accordions and tabs) then they should have the same approach to :hover, :focus, :active and selected states where possible.</p> 
+
+          <p class="govuk-body">Future contributions to the GOV.UK Design System will need to consider this so they are not styled in isolation.</p> 
+
+        </div>
+      </div>   
+    </div>
+  </details>
+
+  <h2 class="govuk-heading-m govuk-!-padding-top-4">CSS application</h2>
+
+  <details class="govuk-details">
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+        See details
+      </span>
+    </summary>
+    <div class="govuk-details__text">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <p class="govuk-body">Despite the similarity in appearance the borders have been applied using outline, border and box-shadow depending on the type of component or state.</p> 
+
+      <p class="govuk-body">All :focus states need an outline, even if this is set to transparent. This is so the focus is visible for users that override colours in their browser.</p> 
+      </div>
+    </div>  
+    </div>
+  </details>
+
+  <h2 class="govuk-heading-xl govuk-!-padding-top-4">Style and Comnponent updates</h2>
+
+  <h2 class="govuk-heading-l govuk-!-padding-top-4">Links</h2>
+
+    <div class="govuk-grid-row">
+        {% for variant_description, variant_class in variants %}
+          <div class="govuk-grid-column-one-quarter">
+          <section>
+            <h3 class="govuk-heading-m">{{ variant_description }}</h3>
+
+          {% for state_description, state_class in states %}
+            <p class="govuk-body">
+              <a href="/" class="govuk-link {{ variant_class }} {{ state_class }}">
+                {{ state_description}}
+              </a>
+            </p>
+          {% endfor %}
+          </section>
+        </div>
+        {% endfor %}
+    </div>
+
+  <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+  
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h2 class="govuk-heading-l">Text input</h2>
+      
+      <h3 class="govuk-heading-m">Default</h3>
+      {% call govukFieldset() %}
+        <span id="input"></span>
+        {{ govukInput({
+          id: "govuk-input-a",
+          label: {
+            text: "National Insurance number"
+          }
+        }) }}
+      {% endcall %}
+      
+      <h3 class="govuk-heading-m">Focus</h3>
+      {% call govukFieldset() %}
+        <span id="input"></span>
+        {{ govukInput({
+          id: "govuk-input-a",
+          classes: ":focus",
+          label: {
+            text: "National Insurance number"
+          }
+        }) }}
+      {% endcall %}
+      
+      <h3 class="govuk-heading-m">Error</h3>
+      {% call govukFieldset() %}
+        <span id="input"></span>
+        {{ govukInput({
+          id: "govuk-input-a",
+          label: {
+            text: "National Insurance number"
+          },
+          errorMessage: {
+            text: "Enter a National Insurance number in the correct format"
+          }
+        }) }}
+      {% endcall %}
+
+      <h3 class="govuk-heading-m">Error and Focus</h3>
+
+      {{ govukInsetText({
+        text: "Focus and Error input styles cannot be displayed at the same time, the colour change between error and focus (red to black) has a ratio of 4.03:1"
+      }) }}
+
+      {% call govukFieldset() %}
+        <span id="input"></span>
+        {{ govukInput({
+          id: "govuk-input-a",
+          classes: ":focus",
+          label: {
+            text: "National Insurance number"
+          },
+          errorMessage: {
+            text: "Enter a National Insurance number in the correct format"
+          }
+        }) }}
+      {% endcall %}
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+
+        <h2 class="govuk-heading-l">Buttons</h2>
+
+        <h3 class="govuk-heading-m">Default</h3>
+
+        {% call govukFieldset() %}
+          {{ govukButton({
+            "text": "Save and continue"
+          }) }}
+        {% endcall %}
+        
+        <h3 class="govuk-heading-m">Hover</h3>
+
+        {% call govukFieldset() %}
+          {{ govukButton({
+            "text": "Save and continue",
+            "classes": ":hover"
+          }) }}
+        {% endcall %} 
+
+        <h3 class="govuk-heading-m">Focus</h3>
+
+        {% call govukFieldset() %}
+          {{ govukButton({
+            "text": "Save and continue",
+            "classes": ":focus"
+          }) }}
+        {% endcall %}
+
+        <h3 class="govuk-heading-m">Focus and Active</h3>
+
+        {% call govukFieldset() %}
+          {{ govukButton({
+            "text": "Save and continue",
+            "classes": ":focus :active"
+          }) }}
+        {% endcall %}
+
+        <h3 class="govuk-heading-m">(Start) Default</h3>
+
+        {% call govukFieldset() %}
+          {{ govukButton({
+            "text": "Start now",
+            "classes": "govuk-button--start"
+          }) }}
+        {% endcall %}
+        
+        <h3 class="govuk-heading-m">(Start) Hover</h3>
+
+        {% call govukFieldset() %}
+          {{ govukButton({
+            "text": "Start now",
+            "classes": "govuk-button--start :hover"
+          }) }}
+        {% endcall %} 
+
+        <h3 class="govuk-heading-m">(Start) Focus</h3>
+
+        {{ govukInsetText({
+          text: "Icon needs to be CSS, SVG or sprite for this to work"
+        }) }}
+
+        {% call govukFieldset() %}
+          {{ govukButton({
+            "text": "Start now",
+            "classes": "govuk-button--start :focus"
+          }) }}
+        {% endcall %}  
+
+        <h3 class="govuk-heading-m">(Start) Focus and Active</h3>
+        
+        {% call govukFieldset() %}
+          {{ govukButton({
+            "text": "Start now",
+            "classes": "govuk-button--start :focus :active"
+          }) }}
+        {% endcall %} 
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+
+        <h2 class="govuk-heading-l">Textarea</h2>
+
+        <h3 class="govuk-heading-m">Default</h3>
+
+        {% call govukFieldset() %}
+          <span id="textarea"></span>
+          {% from "textarea/macro.njk" import govukTextarea %}
+          {{ govukTextarea({
+            id: "govuk-textarea-a",
+            name: "govuk-textarea-a",
+            rows: "5",
+            label: {
+              text: "Why can't you provide a National Insurance number?"
+            }
+          }) }}
+        {% endcall %}
+
+        <h3 class="govuk-heading-m">Focus</h3>
+
+        {% call govukFieldset() %}
+          <span id="textarea"></span>
+          {% from "textarea/macro.njk" import govukTextarea %}
+          {{ govukTextarea({
+            id: "govuk-textarea-a",
+            name: "govuk-textarea-a",
+            classes: ":focus",
+            rows: "5",
+            label: {
+              text: "Why can't you provide a National Insurance number?"
+            }
+          }) }}
+        {% endcall %}
+
+        <h3 class="govuk-heading-m">Error</h3>
+
+        {% call govukFieldset() %}
+          <span id="textarea"></span>
+          {% from "textarea/macro.njk" import govukTextarea %}
+          {{ govukTextarea({
+            id: "govuk-textarea-a",
+            name: "govuk-textarea-a",
+            rows: "5",
+            label: {
+              text: "Why can't you provide a National Insurance number?"
+            },
+            errorMessage: {
+              text: "Please provide a reason"
+            }
+          }) }}
+        {% endcall %}
+
+
+        <h3 class="govuk-heading-m">Error and Focus</h3>
+
+        {{ govukInsetText({
+          text: "Focus and Error input styles cannot be displayed at the same time, the colour change between error and focus (red to black) has a ratio of 4.03:1"
+        }) }}
+
+        {% call govukFieldset() %}
+          <span id="textarea"></span>
+          {% from "textarea/macro.njk" import govukTextarea %}
+          {{ govukTextarea({
+            id: "govuk-textarea-a",
+            name: "govuk-textarea-a",
+            classes: ":focus",
+            rows: "5",
+            label: {
+              text: "Why can't you provide a National Insurance number?"
+            },
+            errorMessage: {
+              text: "Please provide a reason"
+            }
+          }) }}
+        {% endcall %}
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+
+        <h2 class="govuk-heading-l">Radios</h2>
+
+        <h3 class="govuk-heading-m">Default</h3>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+              <h1 class="govuk-fieldset__heading">
+                Have you changed your name?
+              </h1>
+            </legend>
+            <span id="changed-name-hint" class="govuk-hint">
+              This includes changing your last name or spelling your name differently.
+            </span>
+            <div class="govuk-radios govuk-radios--inline">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="changed-name-1" name="changed-name-0" type="radio" value="yes">
+                <label class="govuk-label govuk-radios__label" for="changed-name-1">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="changed-name-2" name="changed-name-0" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="changed-name-2">
+                  No
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <h3 class="govuk-heading-m">Focus and Checked</h3>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+              <h1 class="govuk-fieldset__heading">
+                Have you changed your name?
+              </h1>
+            </legend>
+            <span id="changed-name-hint" class="govuk-hint">
+              This includes changing your last name or spelling your name differently.
+            </span>
+            <div class="govuk-radios govuk-radios--inline">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input :focus" id="changed-name-1" name="changed-name" type="radio" value="yes" checked>
+                <label class="govuk-label govuk-radios__label" for="changed-name-1">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="changed-name-2" name="changed-name" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="changed-name-2">
+                  No
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <h3 class="govuk-heading-m">Checked and Focus (Unchecked focus)</h3>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+              <h1 class="govuk-fieldset__heading">
+                Have you changed your name?
+              </h1>
+            </legend>
+            <span id="changed-name-hint" class="govuk-hint">
+              This includes changing your last name or spelling your name differently.
+            </span>
+            <div class="govuk-radios govuk-radios--inline">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="changed-name-1" name="changed-name-4" type="radio" value="yes" checked>
+                <label class="govuk-label govuk-radios__label" for="changed-name-1">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input :focus" id="changed-name-2" name="changed-name-4" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="changed-name-2">
+                  No
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>        
+        
+        <h3 class="govuk-heading-m">Error and Focus</h3>
+
+        <div class="govuk-form-group govuk-form-group--error">
+          <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+              <h1 class="govuk-fieldset__heading">
+                Have you changed your name?
+              </h1>
+            </legend>
+            <span id="changed-name-hint" class="govuk-hint">
+              This includes changing your last name or spelling your name differently.
+            </span>
+            <span id="changed-name-error" class="govuk-error-message">
+              Select yes if you have changed your name
+            </span>
+            <div class="govuk-radios govuk-radios--inline">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input :focus" id="changed-name-1" name="changed-name-2" type="radio" value="yes">
+                <label class="govuk-label govuk-radios__label" for="changed-name-1">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="changed-name-2" name="changed-name-2" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="changed-name-2">
+                  No
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+
+        <h2 class="govuk-heading-l">Checkboxes</h2>
+
+        <h3 class="govuk-heading-m">Default</h3>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+              <h1 class="govuk-fieldset__heading">
+                Which types of waste do you transport?
+              </h1>
+            </legend>
+            <span id="waste-hint" class="govuk-hint">
+              Select all that apply.
+            </span>
+            <div class="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="waste-1" name="waste-0" type="checkbox" value="carcasses">
+                <label class="govuk-label govuk-checkboxes__label" for="waste-1">
+                  Waste from animal carcasses
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="waste-2" name="waste-0" type="checkbox" value="mines">
+                <label class="govuk-label govuk-checkboxes__label" for="waste-2">
+                  Waste from mines or quarries
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="waste-3" name="waste-0" type="checkbox" value="farm">
+                <label class="govuk-label govuk-checkboxes__label" for="waste-3">
+                  Farm or agricultural waste
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        
+        <h3 class="govuk-heading-m">Focus and Checked</h3>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+              <h1 class="govuk-fieldset__heading">
+                Which types of waste do you transport?
+              </h1>
+            </legend>
+            <span id="waste-hint" class="govuk-hint">
+              Select all that apply.
+            </span>
+            <div class="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input :focus" id="waste-1" name="waste-a" type="checkbox" value="carcasses" checked>
+                <label class="govuk-label govuk-checkboxes__label" for="waste-1">
+                  Waste from animal carcasses
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="waste-2" name="waste-a" type="checkbox" value="mines">
+                <label class="govuk-label govuk-checkboxes__label" for="waste-2">
+                  Waste from mines or quarries
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="waste-3" name="waste-a" type="checkbox" value="farm">
+                <label class="govuk-label govuk-checkboxes__label" for="waste-3">
+                  Farm or agricultural waste
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <h3 class="govuk-heading-m">Checked and Focus (Unchecked focus)</h3>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+              <h1 class="govuk-fieldset__heading">
+                Which types of waste do you transport?
+              </h1>
+            </legend>
+            <span id="waste-hint" class="govuk-hint">
+              Select all that apply.
+            </span>
+            <div class="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="waste-1" name="waste-b" type="checkbox" value="carcasses" checked>
+                <label class="govuk-label govuk-checkboxes__label" for="waste-1">
+                  Waste from animal carcasses
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input :focus" id="waste-2" name="waste-b" type="checkbox" value="mines">
+                <label class="govuk-label govuk-checkboxes__label" for="waste-2">
+                  Waste from mines or quarries
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="waste-3" name="waste-b" type="checkbox" value="farm">
+                <label class="govuk-label govuk-checkboxes__label" for="waste-3">
+                  Farm or agricultural waste
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        
+        <h3 class="govuk-heading-m">Focus and Error</h3>
+
+        <div class="govuk-form-group govuk-form-group--error">
+          <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+              <h1 class="govuk-fieldset__heading">
+                Which types of waste do you transport?
+              </h1>
+            </legend>
+            <span id="waste-hint" class="govuk-hint">
+              Select all that apply.
+            </span>
+            <span id="changed-name-error" class="govuk-error-message">
+              Error message
+            </span>
+            <div class="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="waste-1" name="waste-2" type="checkbox" value="carcasses">
+                <label class="govuk-label govuk-checkboxes__label" for="waste-1">
+                  Waste from animal carcasses
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input :focus" id="waste-2" name="waste-2" type="checkbox" value="mines">
+                <label class="govuk-label govuk-checkboxes__label" for="waste-2">
+                  Waste from mines or quarries
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="waste-3" name="waste-2" type="checkbox" value="farm">
+                <label class="govuk-label govuk-checkboxes__label" for="waste-3">
+                  Farm or agricultural waste
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+
+        <h2 class="govuk-heading-l">Date input</h2>
+
+        <h3 class="govuk-heading-m">Default</h3>
+
+        {{ govukDateInput({
+          id: "dob-1",
+          namePrefix: "dob-1",
+          fieldset: {
+            legend: {
+              text: "What is your date of birth?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: "For example, 31 3 1980"
+          },
+          items: [
+            {
+              classes: "govuk-input--width-2",
+              name: "day",
+              value: ""
+            },
+            {
+              classes: "govuk-input--width-2",
+              name: "month",
+              value: ""
+            },
+            {
+              classes: "govuk-input--width-4",
+              name: "year",
+              value: ""
+            }
+          ]
+        }) }}
+
+        <h3 class="govuk-heading-m">Focus</h3>
+
+        {{ govukDateInput({
+          id: "dob-2",
+          namePrefix: "dob-2",
+          fieldset: {
+            legend: {
+              text: "What is your date of birth?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: "For example, 31 3 1980"
+          },
+          items: [
+            {
+              classes: "govuk-input--width-2",
+              name: "day",
+              value: "6"
+            },
+            {
+              classes: "govuk-input--width-2 :focus",
+              name: "month",
+              value: ""
+            },
+            {
+              classes: "govuk-input--width-4",
+              name: "year",
+              value: ""
+            }
+          ]
+        }) }}
+
+        <h3 class="govuk-heading-m">Error</h3>
+
+        {{ govukDateInput({
+          id: "dob-3",
+          namePrefix: "dob-3",
+          fieldset: {
+            legend: {
+              text: "What is your date of birth?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: "For example, 31 3 1980"
+          },
+          errorMessage: {
+            text: "Date of birth must be in the past"
+          },
+          items: [
+            {
+              classes: "govuk-input--width-2",
+              name: "day",
+              value: "6"
+            },
+            {
+              classes: "govuk-input--width-2",
+              name: "month",
+              value: "3"
+            },
+            {
+              classes: "govuk-input--width-4 govuk-input--error",
+              name: "year",
+              value: "2076"
+            }
+          ]
+        }) }}
+
+        <h3 class="govuk-heading-m">Error and Focus</h3>
+        
+        {{ govukInsetText({
+          text: "Focus and Error input styles cannot be displayed at the same time, the colour change between error and focus (red to black) has a ratio of 4.03:1"
+        }) }}
+
+        {{ govukDateInput({
+          id: "dob-4",
+          namePrefix: "dob-4",
+          fieldset: {
+            legend: {
+              text: "What is your date of birth?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: "For example, 31 3 1980"
+          },
+          errorMessage: {
+            text: "Date of birth must be in the past"
+          },
+          items: [
+            {
+              classes: "govuk-input--width-2",
+              name: "day",
+              value: "6"
+            },
+            {
+              classes: "govuk-input--width-2",
+              name: "month",
+              value: "3"
+            },
+            {
+              classes: "govuk-input--width-4 govuk-input--error :focus",
+              name: "year",
+              value: "2076"
+            }
+          ]
+        }) }}
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+
+        <h4 class="govuk-heading-l">Select</h4>
+
+        <h3 class="govuk-heading-m">Default</h3>
+
+        {% call govukFieldset() %}
+          <span id="select"></span>
+          {{ govukSelect({
+            "id": "select-1",
+            "name": "select-1",
+            "label": {
+              "html": "Label text goes here"
+            },
+            "items": [
+              {
+                "value": 1,
+                "text": "GOV.UK frontend option 1"
+              },
+              {
+                "value": 2,
+                "text": "GOV.UK frontend option 2",
+                "selected": true
+              },
+              {
+                "value": 3,
+                "text": "GOV.UK frontend option 3"
+              }
+            ]
+          }) }}
+        {% endcall %}
+
+        <h3 class="govuk-heading-m">Focus</h3>
+
+        {% call govukFieldset() %}
+          <span id="select"></span>
+          {{ govukSelect({
+            "id": "select-2",
+            "name": "select-2",
+            "classes": ":focus",
+            "label": {
+              "html": "Label text goes here"
+            },
+            "items": [
+              {
+                "value": 1,
+                "text": "GOV.UK frontend option 1"
+              },
+              {
+                "value": 2,
+                "text": "GOV.UK frontend option 2",
+                "selected": true
+              },
+              {
+                "value": 3,
+                "text": "GOV.UK frontend option 3"
+              }
+            ]
+          }) }}
+        {% endcall %}
+
+        <h3 class="govuk-heading-m">Error</h3>
+
+        {% call govukFieldset() %}
+          <span id="select"></span>
+          {{ govukSelect({
+            "id": "select-3",
+            "name": "select-3",
+            "errorMessage": {
+              text: "Error message"
+            },
+            "label": {
+              "html": "Label text goes here"
+            },
+            "items": [
+              {
+                "value": 1,
+                "text": "GOV.UK frontend option 1"
+              },
+              {
+                "value": 2,
+                "text": "GOV.UK frontend option 2",
+                "selected": true
+              },
+              {
+                "value": 3,
+                "text": "GOV.UK frontend option 3"
+              }
+            ]
+          }) }}
+        {% endcall %}
+
+        <h3 class="govuk-heading-m">Focus and Error</h3>
+
+        {{ govukInsetText({
+          text: "Focus and Error input styles cannot be displayed at the same time, there is 4.03:1 ratio between red and black"
+        }) }}
+
+        {% call govukFieldset() %}
+          <span id="select"></span>
+          {{ govukSelect({
+            "id": "select-3",
+            "name": "select-3",
+            "classes": ":focus",
+            "errorMessage": {
+              text: "Error message"
+            },
+            "label": {
+              "html": "Label text goes here"
+            },
+            "items": [
+              {
+                "value": 1,
+                "text": "GOV.UK frontend option 1"
+              },
+              {
+                "value": 2,
+                "text": "GOV.UK frontend option 2",
+                "selected": true
+              },
+              {
+                "value": 3,
+                "text": "GOV.UK frontend option 3"
+              }
+            ]
+          }) }}
+        {% endcall %}
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+
+        <h2 class="govuk-heading-l">File upload</h2>
+
+        <h3 class="govuk-heading-m">Default</h3>
+
+        {% call govukFieldset() %}
+          <span id="file"></span>
+          {{- govukFileUpload({
+            id: 'file-upload-1',
+            name: 'file-upload-1',
+            label: {
+              text: 'Upload a file'
+            }
+          }) -}}
+        {% endcall %}
+
+        <h3 class="govuk-heading-m">Focus</h3>
+
+        {% call govukFieldset() %}
+          <span id="file"></span>
+          {{- govukFileUpload({
+            id: 'file-upload-2',
+            name: 'file-upload-2',
+            classes: ':focus',
+            label: {
+              text: 'Upload a file'
+            }
+          }) -}}
+        {% endcall %}
+        
+        <h3 class="govuk-heading-m">Error</h3>
+
+        {% call govukFieldset() %}
+          <span id="file"></span>
+          {{- govukFileUpload({
+            id: 'file-upload-3',
+            name: 'file-upload-3',
+            "errorMessage": {
+              text: "Error message"
+            },
+            label: {
+              text: 'Upload a file'
+            }
+          }) -}}
+        {% endcall %}
+
+        <h3 class="govuk-heading-m">Focus and Error</h3>
+        
+        {% call govukFieldset() %}
+          <span id="file"></span>
+          {{- govukFileUpload({
+            id: 'file-upload-3',
+            name: 'file-upload-3',
+            classes: ':focus',
+            "errorMessage": {
+              text: "Error message"
+            },
+            label: {
+              text: 'Upload a file'
+            }
+          }) -}}
+        {% endcall %}
+
+        {% from "accordion/macro.njk" import govukAccordion %}
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+
+        <h2 class="govuk-heading-l">Accordion</h2>
+
+        {{ govukWarningText({
+          text: "Significant component changes"
+        }) }}
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Text is inset, no longer aligned to hard left</li>
+          <li>New hover and open style</li>
+          <li>Focus area has moved from entire block to heading</li>
+        </ul>
+
+        {{ govukInsetText({
+          text: "Please note, this app will retain the status of the accordion once interacted with"
+        }) }}
+
+        <h3 class="govuk-heading-m">Default</h3>
+
+        <div class="govuk-accordion" data-module="accordion" id="accordion-with-summary-sections">
+
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-with-summary-sections-heading-1">
+                  Understanding agile project management
+                </span>
+              </h2>
+              <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-1">
+                Introductions, methods, core features.
+              </div>
+            </div>
+            <div id="accordion-with-summary-sections-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-with-summary-sections-heading-1">
+              <ul class="govuk-list">
+                <li>
+                  <a class="govuk-link" href="#">Agile and government services: an introduction</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Agile methods: an introduction</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Core principles of agile</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-with-summary-sections-heading-2">
+                  Working with agile methods
+                </span>
+              </h2>
+              <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-2">
+                Workspaces, tools and techniques, user stories, planning.
+              </div>
+            </div>
+            <div id="accordion-with-summary-sections-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-with-summary-sections-heading-2">
+              <ul class="govuk-list">
+                <li>
+                  <a class="govuk-link" href="#">Creating an agile working environment</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Agile tools and techniques</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Set up a team wall</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Writing user stories</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Planning in agile</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Deciding on priorities</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Developing a roadmap</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="govuk-accordion__section ">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-with-summary-sections-heading-3">
+                  Governing agile services
+                </span>
+              </h2>
+              <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-3">
+                Principles, measuring progress, spending money.
+              </div>
+            </div>
+            <div id="accordion-with-summary-sections-content-3" class="govuk-accordion__section-content" aria-labelledby="accordion-with-summary-sections-heading-3">
+              <ul class="govuk-list">
+                <li>
+                  <a class="govuk-link" href="#">Governance principles for agile service delivery</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Measuring and reporting progress</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Spend controls: check if you need approval to spend money on a service</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Spend controls: apply for approval to spend money on a service</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Spend controls: the new pipeline process</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Working across organisational boundaries</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="govuk-accordion__section ">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-with-summary-sections-heading-4">
+                  Phases of an agile project
+                </span>
+              </h2>
+              <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-4">
+                Discovery, alpha, beta, live and retirement.
+              </div>
+            </div>
+            <div id="accordion-with-summary-sections-content-4" class="govuk-accordion__section-content" aria-labelledby="accordion-with-summary-sections-heading-4">
+              <ul class="govuk-list">
+                <li>
+                  <a class="govuk-link" href="#">How the discovery phase works</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">How the alpha phase works</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">How the beta phase works</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">How the live phase works</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Retiring your service</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+
+
+
+        <h3 class="govuk-heading-m">Hover</h3>
+
+        <div class="govuk-accordion" data-module="accordion" id="accordion-with-summary-sections">
+
+          <div class="govuk-accordion__section ">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-with-summary-sections-heading-1">
+                  Understanding agile project management
+                </span>
+              </h2>
+              <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-1">
+                Introductions, methods, core features.
+              </div>
+            </div>
+            <div id="accordion-with-summary-sections-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-with-summary-sections-heading-1">
+              <ul class="govuk-list">
+                <li>
+                  <a class="govuk-link" href="#">Agile and government services: an introduction</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Agile methods: an introduction</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Core principles of agile</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="govuk-accordion__section :hover">
+            <div class="govuk-accordion__section-header :hover">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-with-summary-sections-heading-2">
+                  Working with agile methods
+                </span>
+              </h2>
+              <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-2">
+                Workspaces, tools and techniques, user stories, planning.
+              </div>
+            </div>
+            <div id="accordion-with-summary-sections-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-with-summary-sections-heading-2">
+              <ul class="govuk-list">
+                <li>
+                  <a class="govuk-link" href="#">Creating an agile working environment</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Agile tools and techniques</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Set up a team wall</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Writing user stories</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Planning in agile</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Deciding on priorities</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Developing a roadmap</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="govuk-accordion__section ">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-with-summary-sections-heading-3">
+                  Governing agile services
+                </span>
+              </h2>
+              <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-3">
+                Principles, measuring progress, spending money.
+              </div>
+            </div>
+            <div id="accordion-with-summary-sections-content-3" class="govuk-accordion__section-content" aria-labelledby="accordion-with-summary-sections-heading-3">
+              <ul class="govuk-list">
+                <li>
+                  <a class="govuk-link" href="#">Governance principles for agile service delivery</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Measuring and reporting progress</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Spend controls: check if you need approval to spend money on a service</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Spend controls: apply for approval to spend money on a service</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Spend controls: the new pipeline process</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Working across organisational boundaries</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="govuk-accordion__section ">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-with-summary-sections-heading-4">
+                  Phases of an agile project
+                </span>
+              </h2>
+              <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-4">
+                Discovery, alpha, beta, live and retirement.
+              </div>
+            </div>
+            <div id="accordion-with-summary-sections-content-4" class="govuk-accordion__section-content" aria-labelledby="accordion-with-summary-sections-heading-4">
+              <ul class="govuk-list">
+                <li>
+                  <a class="govuk-link" href="#">How the discovery phase works</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">How the alpha phase works</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">How the beta phase works</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">How the live phase works</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Retiring your service</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+
+
+        <h3 class="govuk-heading-m">Focus</h3>
+
+        <div class="govuk-accordion" data-module="accordion" id="accordion-with-summary-sections">
+
+          <div class="govuk-accordion__section ">
+            <div class="govuk-accordion__section-header govuk-accordion__section-header--focused">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-with-summary-sections-heading-1">
+                  Understanding agile project management
+                </span>
+              </h2>
+              <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-1">
+                Introductions, methods, core features.
+              </div>
+            </div>
+            <div id="accordion-with-summary-sections-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-with-summary-sections-heading-1">
+              <ul class="govuk-list">
+                <li>
+                  <a class="govuk-link" href="#">Agile and government services: an introduction</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Agile methods: an introduction</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Core principles of agile</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="govuk-accordion__section ">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-with-summary-sections-heading-2">
+                  Working with agile methods
+                </span>
+              </h2>
+              <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-2">
+                Workspaces, tools and techniques, user stories, planning.
+              </div>
+            </div>
+            <div id="accordion-with-summary-sections-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-with-summary-sections-heading-2">
+              <ul class="govuk-list">
+                <li>
+                  <a class="govuk-link" href="#">Creating an agile working environment</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Agile tools and techniques</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Set up a team wall</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Writing user stories</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Planning in agile</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Deciding on priorities</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Developing a roadmap</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="govuk-accordion__section ">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-with-summary-sections-heading-3">
+                  Governing agile services
+                </span>
+              </h2>
+              <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-3">
+                Principles, measuring progress, spending money.
+              </div>
+            </div>
+            <div id="accordion-with-summary-sections-content-3" class="govuk-accordion__section-content" aria-labelledby="accordion-with-summary-sections-heading-3">
+              <ul class="govuk-list">
+                <li>
+                  <a class="govuk-link" href="#">Governance principles for agile service delivery</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Measuring and reporting progress</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Spend controls: check if you need approval to spend money on a service</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Spend controls: apply for approval to spend money on a service</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Spend controls: the new pipeline process</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Working across organisational boundaries</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="govuk-accordion__section ">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-with-summary-sections-heading-4">
+                  Phases of an agile project
+                </span>
+              </h2>
+              <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-4">
+                Discovery, alpha, beta, live and retirement.
+              </div>
+            </div>
+            <div id="accordion-with-summary-sections-content-4" class="govuk-accordion__section-content" aria-labelledby="accordion-with-summary-sections-heading-4">
+              <ul class="govuk-list">
+                <li>
+                  <a class="govuk-link" href="#">How the discovery phase works</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">How the alpha phase works</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">How the beta phase works</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">How the live phase works</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Retiring your service</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+
+        <h3 class="govuk-heading-m">Hover and Focus</h3>
+
+        <div class="govuk-accordion" data-module="accordion" id="accordion-with-summary-sections">
+
+          <div class="govuk-accordion__section :hover">
+            <div class="govuk-accordion__section-header govuk-accordion__section-header--focused :hover">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-with-summary-sections-heading-1">
+                  Understanding agile project management
+                </span>
+              </h2>
+              <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-1">
+                Introductions, methods, core features.
+              </div>
+            </div>
+            <div id="accordion-with-summary-sections-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-with-summary-sections-heading-1">
+              <ul class="govuk-list">
+                <li>
+                  <a class="govuk-link" href="#">Agile and government services: an introduction</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Agile methods: an introduction</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Core principles of agile</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="govuk-accordion__section ">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-with-summary-sections-heading-2">
+                  Working with agile methods
+                </span>
+              </h2>
+              <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-2">
+                Workspaces, tools and techniques, user stories, planning.
+              </div>
+            </div>
+            <div id="accordion-with-summary-sections-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-with-summary-sections-heading-2">
+              <ul class="govuk-list">
+                <li>
+                  <a class="govuk-link" href="#">Creating an agile working environment</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Agile tools and techniques</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Set up a team wall</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Writing user stories</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Planning in agile</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Deciding on priorities</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Developing a roadmap</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="govuk-accordion__section ">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-with-summary-sections-heading-3">
+                  Governing agile services
+                </span>
+              </h2>
+              <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-3">
+                Principles, measuring progress, spending money.
+              </div>
+            </div>
+            <div id="accordion-with-summary-sections-content-3" class="govuk-accordion__section-content" aria-labelledby="accordion-with-summary-sections-heading-3">
+              <ul class="govuk-list">
+                <li>
+                  <a class="govuk-link" href="#">Governance principles for agile service delivery</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Measuring and reporting progress</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Spend controls: check if you need approval to spend money on a service</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Spend controls: apply for approval to spend money on a service</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Spend controls: the new pipeline process</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Working across organisational boundaries</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="govuk-accordion__section ">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-with-summary-sections-heading-4">
+                  Phases of an agile project
+                </span>
+              </h2>
+              <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-4">
+                Discovery, alpha, beta, live and retirement.
+              </div>
+            </div>
+            <div id="accordion-with-summary-sections-content-4" class="govuk-accordion__section-content" aria-labelledby="accordion-with-summary-sections-heading-4">
+              <ul class="govuk-list">
+                <li>
+                  <a class="govuk-link" href="#">How the discovery phase works</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">How the alpha phase works</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">How the beta phase works</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">How the live phase works</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="#">Retiring your service</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+
+        <h2 class="govuk-heading-l">Back link</h2>
+
+        <h3 class="govuk-heading-m">Default</h3>
+
+        <div>
+          {{ govukBackLink({
+            text: "Back",
+            href: "#"
+          }) }}
+        </div>
+
+        <h3 class="govuk-heading-m govuk-!-padding-top-4">Focus</h3>
+
+        <div>
+          {{ govukBackLink({
+            text: "Back",
+            href: "#",
+            classes: ":focus"
+          }) }}
+        </div>
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+
+        <h2 class="govuk-heading-l">Breadcrumbs</h2>
+
+        <h3 class="govuk-heading-m">Default</h3>
+
+        <div class="govuk-breadcrumbs">
+          <ol class="govuk-breadcrumbs__list">
+            <li class="govuk-breadcrumbs__list-item">
+              <a class="govuk-breadcrumbs__link" href="#">Home</a>
+            </li>
+            <li class="govuk-breadcrumbs__list-item">
+              <a class="govuk-breadcrumbs__link" href="#">Passports, travel and living abroad</a>
+            </li>
+            <li class="govuk-breadcrumbs__list-item" aria-current="page">Travel abroad</li>
+          </ol>
+        </div>
+
+        <h3 class="govuk-heading-m govuk-!-padding-top-4">Focus</h3>
+
+        <div class="govuk-breadcrumbs">
+          <ol class="govuk-breadcrumbs__list">
+            <li class="govuk-breadcrumbs__list-item">
+              <a class="govuk-breadcrumbs__link" href="#">Home</a>
+            </li>
+            <li class="govuk-breadcrumbs__list-item">
+              <a class="govuk-breadcrumbs__link :focus" href="#">Passports, travel and living abroad</a>
+            </li>
+            <li class="govuk-breadcrumbs__list-item" aria-current="page">Travel abroad</li>
+          </ol>
+        </div>
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+
+        <h2 class="govuk-heading-l">Details</h2>
+
+        <h3 class="govuk-heading-m">Default</h3>
+
+        <details class="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              Help with nationality
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.
+          </div>
+        </details>
+
+        <h3 class="govuk-heading-m">Focus</h3>
+
+        <details class="govuk-details">
+          <summary class="govuk-details__summary :focus">
+            <span class="govuk-details__summary-text">
+              Help with nationality
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.
+          </div>
+        </details>
+
+        <h3 class="govuk-heading-m">Open</h3>
+
+        <details class="govuk-details" open>
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              Help with nationality
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.
+          </div>
+        </details>   
+
+        <h3 class="govuk-heading-m">Focus and Open</h3>
+
+        <details class="govuk-details" open>
+          <summary class="govuk-details__summary :focus">
+            <span class="govuk-details__summary-text">
+              Help with nationality
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.
+          </div>
+        </details>             
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+
+        <h2 class="govuk-heading-l">Error summary</h2>
+
+        <h3 class="govuk-heading-m">Default</h3>
+
+        <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="error-summary">
+          <h2 class="govuk-error-summary__title" id="error-summary-title">
+            There is a problem
+          </h2>
+          <div class="govuk-error-summary__body">
+            <ul class="govuk-list govuk-error-summary__list">
+              <li>
+                <a href="#dob-error">Date of birth must be in the past</a>
+              </li>
+              <li>
+                <a href="#postcode-error">Enter a postcode, like AA1 1AA</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 class="govuk-heading-m">Focus</h3>
+
+        {{ govukWarningText({
+          text: "Focus state is using colour alone. Solution for other components cannot be used here as Error summary will have focus by default, so will need to be red."
+        }) }}
+
+        <div class="govuk-error-summary :focus" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="error-summary">
+          <h2 class="govuk-error-summary__title" id="error-summary-title">
+            There is a problem
+          </h2>
+          <div class="govuk-error-summary__body">
+            <ul class="govuk-list govuk-error-summary__list">
+              <li>
+                <a href="#dob-error">Date of birth must be in the past</a>
+              </li>
+              <li>
+                <a href="#postcode-error">Enter a postcode, like AA1 1AA</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 class="govuk-heading-m">Focus on error summary item</h3>
+
+        <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="error-summary">
+          <h2 class="govuk-error-summary__title" id="error-summary-title">
+            There is a problem
+          </h2>
+          <div class="govuk-error-summary__body">
+            <ul class="govuk-list govuk-error-summary__list">
+              <li>
+                <a class=":focus" href="#dob-error">Date of birth must be in the past</a>
+              </li>
+              <li>
+                <a href="#postcode-error">Enter a postcode, like AA1 1AA</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+
+        <h2 class="govuk-heading-l">Inset text</h2>
+
+        {{ govukInsetText({
+          text: "It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application."
+        }) }}
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+
+        <h2 class="govuk-heading-l">Panel</h2>
+
+        {{ govukPanel({
+          titleText: "Application complete",
+          html: "Your reference number<br><strong>HDJ2123F</strong>"
+        }) }}
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+
+        <h2 class="govuk-heading-l">Test panels</h2>
+
+        {{ govukInsetText({
+          text: "These are not part of GOV.UK Frontend. They are just examples, styled inline and not interactive."
+        }) }}
+
+        <h3 class="govuk-heading-m">Blue background</h3>
+
+        <div class="app-contact-panel" style="background-color: #1d70b8; color: #ffffff; padding: 30px;">
+          <h2 class="govuk-heading-m" style="color: #ffffff;">Get in touch</h2>
+          <p class="govuk-body" style="color: #ffffff; margin-bottom: 0;">
+            If you’ve got a question, idea or suggestion share it in <a class="govuk-link :focus" style="color: #0b0c0c" href="https://ukgovernmentdigital.slack.com/messages/govuk-design-system" data-hsupport="slack" >#govuk-design-system</a> on cross-government Slack (<a class="govuk-link app-contact-panel__link" style="color: #ffffff; text-decoration-color: #ffffff" href="slack://channel?team=T04V6EBTR&amp;id=C6DMEH5R6" data-hsupport="slackapp">open in app</a>) or email the Design System team on <a class="govuk-link app-contact-panel__link" style="color: #ffffff; text-decoration-color: #ffffff" href="mailto:govuk-design-system-support@digital.cabinet-office.gov.uk" data-hsupport="email">govuk-design-system-support@digital.cabinet-office.gov.uk</a></p>
+        </div>
+
+        <h3 class="govuk-heading-m govuk-!-padding-top-6">Grey background</h3>
+
+        <div class="app-contact-panel" style="background-color: #f3f2f1; padding: 30px;">
+          <h2 class="govuk-heading-m">Get in touch</h2>
+          <p class="govuk-body" style="margin-bottom: 0;">
+            If you’ve got a question, idea or suggestion share it in <a class="govuk-link :focus" href="https://ukgovernmentdigital.slack.com/messages/govuk-design-system" data-hsupport="slack">#govuk-design-system</a> on cross-government Slack (<a class="govuk-link app-contact-panel__link"  href="slack://channel?team=T04V6EBTR&amp;id=C6DMEH5R6" data-hsupport="slackapp">open in app</a>) or email the Design System team on <a class="govuk-link app-contact-panel__link" href="mailto:govuk-design-system-support@digital.cabinet-office.gov.uk" data-hsupport="email">govuk-design-system-support@digital.cabinet-office.gov.uk</a></p>
+        </div>
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+
+        <h2 class="govuk-heading-l">Phase banner (including Tag)</h2>
+        
+        <h3 class="govuk-heading-m">Default</h3>
+
+        {{ govukPhaseBanner({
+          tag: {
+            text: "alpha"
+          },
+          html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+        }) }}
+
+       <h3 class="govuk-heading-m govuk-!-padding-top-5">Focus on link</h3>
+
+        {{ govukPhaseBanner({
+          tag: {
+            text: "alpha"
+          },
+          html: 'This is a new service – your <a class="govuk-link :focus" href="#">feedback</a> will help us to improve it.'
+        }) }}
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+
+        <h2 class="govuk-heading-l">Summary list</h2>
+
+        <h3 class="govuk-heading-m">Default</h3>
+
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Name"
+              },
+              value: {
+                text: "Sarah Philips"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "#",
+                    text: "Change",
+                    visuallyHiddenText: "name"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Date of birth"
+              },
+              value: {
+                text: "5 January 1978"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "#",
+                    text: "Change",
+                    visuallyHiddenText: "date of birth"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Contact information"
+              },
+              value: {
+                html: "72 Guild Street<br>London<br>SE23 6FH"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "#",
+                    text: "Change",
+                    visuallyHiddenText: "contact information"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Contact details"
+              },
+              value: {
+                html: '<p class="govuk-body">07700 900457</p><p class="govuk-body">sarah.phillips@example.com</p>'
+              },
+              actions: {
+                items: [
+                  {
+                    href: "#",
+                    text: "Change",
+                    visuallyHiddenText: "contact details"
+                  }
+                ]
+              }
+            }
+          ]
+        }) }}
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+
+        <h2 class="govuk-heading-l">Table</h2>
+
+        <h3 class="govuk-heading-m">Default</h3>
+
+        {{ govukTable({
+          caption: "Dates and amounts",
+          firstCellIsHeader: true,
+          head: [
+            {
+              text: "Date"
+            },
+            {
+              text: "Amount"
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "First 6 weeks"
+              },
+              {
+                text: "£109.80 per week"
+              }
+            ],
+            [
+              {
+                text: "Next 33 weeks"
+              },
+              {
+                text: "£109.80 per week"
+              }
+            ],
+            [
+              {
+                text: "Total estimated pay"
+              },
+              {
+                text: "£4,282.20"
+              }
+            ]
+          ]
+        }) }}
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+
+        <h2 class="govuk-heading-l">Tabs</h2>
+
+        {{ govukWarningText({
+          text: "Significant component changes"
+        }) }}
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Tabs are now styled on the &lt;li&gt; not the &lt;a&gt;</li>
+          <li>New hover and open style</li>
+          <li>Focus area has moved from entire block to text</li>
+        </ul>
+
+        {{ govukInsetText({
+          text: "Please note, JavaScript is currently not running on this component, this is a static example that cannot be interacted with"
+        }) }}
+       
+        <h3 class="govuk-heading-m">Default (first tab open)</h3>
+
+        <div class="govuk-tabs" data-module="tabs">
+          <h2 class="govuk-tabs__title">
+            Contents
+          </h2>
+
+          <ul class="govuk-tabs__list">
+            <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+              <a class="govuk-tabs__tab" href="#past-day">
+                Past day
+              </a>
+            </li>
+            <li class="govuk-tabs__list-item">
+              <a class="govuk-tabs__tab" href="#past-week">
+                Past week
+              </a>
+            </li>
+            <li class="govuk-tabs__list-item">
+              <a class="govuk-tabs__tab" href="#past-month">
+                Past month
+              </a>
+            </li>
+            <li class="govuk-tabs__list-item">
+              <a class="govuk-tabs__tab" href="#past-year">
+                Past year
+              </a>
+            </li>
+          </ul>
+
+          <section class="govuk-tabs__panel" id="past-day">
+            <h2 class="govuk-heading-l">Past day</h2>
+            <table class="govuk-table">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th class="govuk-table__header" scope="col">Case manager</th>
+                  <th class="govuk-table__header" scope="col">Cases opened</th>
+                  <th class="govuk-table__header" scope="col">Cases closed</th>
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">David Francis</td>
+                  <td class="govuk-table__cell">3</td>
+                  <td class="govuk-table__cell">0</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Paul Farmer</td>
+                  <td class="govuk-table__cell">1</td>
+                  <td class="govuk-table__cell">0</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Rita Patel</td>
+                  <td class="govuk-table__cell">2</td>
+                  <td class="govuk-table__cell">0</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </section>
+          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-week">
+            <h2 class="govuk-heading-l">Past week</h2>
+            <table class="govuk-table">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th class="govuk-table__header" scope="col">Case manager</th>
+                  <th class="govuk-table__header" scope="col">Cases opened</th>
+                  <th class="govuk-table__header" scope="col">Cases closed</th>
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">David Francis</td>
+                  <td class="govuk-table__cell">24</td>
+                  <td class="govuk-table__cell">18</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Paul Farmer</td>
+                  <td class="govuk-table__cell">16</td>
+                  <td class="govuk-table__cell">20</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Rita Patel</td>
+                  <td class="govuk-table__cell">24</td>
+                  <td class="govuk-table__cell">27</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </section>
+          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-month">
+            <h2 class="govuk-heading-l">Past month</h2>
+            <table class="govuk-table">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th class="govuk-table__header" scope="col">Case manager</th>
+                  <th class="govuk-table__header" scope="col">Cases opened</th>
+                  <th class="govuk-table__header" scope="col">Cases closed</th>
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">David Francis</td>
+                  <td class="govuk-table__cell">98</td>
+                  <td class="govuk-table__cell">95</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Paul Farmer</td>
+                  <td class="govuk-table__cell">122</td>
+                  <td class="govuk-table__cell">131</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Rita Patel</td>
+                  <td class="govuk-table__cell">126</td>
+                  <td class="govuk-table__cell">142</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </section>
+          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-year">
+            <h2 class="govuk-heading-l">Past year</h2>
+            <table class="govuk-table">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th class="govuk-table__header" scope="col">Case manager</th>
+                  <th class="govuk-table__header" scope="col">Cases opened</th>
+                  <th class="govuk-table__header" scope="col">Cases closed</th>
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">David Francis</td>
+                  <td class="govuk-table__cell">1380</td>
+                  <td class="govuk-table__cell">1472</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Paul Farmer</td>
+                  <td class="govuk-table__cell">1129</td>
+                  <td class="govuk-table__cell">1083</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Rita Patel</td>
+                  <td class="govuk-table__cell">1539</td>
+                  <td class="govuk-table__cell">1265</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </section>
+        </div>
+
+        <h3 class="govuk-heading-m">Hover third tab</h3>
+
+        <div class="govuk-tabs" data-module="tabs">
+          <h2 class="govuk-tabs__title">
+            Contents
+          </h2>
+
+          <ul class="govuk-tabs__list">
+            <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+              <a class="govuk-tabs__tab" href="#past-day">
+                Past day
+              </a>
+            </li>
+            <li class="govuk-tabs__list-item">
+              <a class="govuk-tabs__tab" href="#past-week">
+                Past week
+              </a>
+            </li>
+            <li class="govuk-tabs__list-item :hover">
+              <a class="govuk-tabs__tab" href="#past-month">
+                Past month
+              </a>
+            </li>
+            <li class="govuk-tabs__list-item">
+              <a class="govuk-tabs__tab" href="#past-year">
+                Past year
+              </a>
+            </li>
+          </ul>
+
+          <section class="govuk-tabs__panel" id="past-day">
+            <h2 class="govuk-heading-l">Past day</h2>
+            <table class="govuk-table">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th class="govuk-table__header" scope="col">Case manager</th>
+                  <th class="govuk-table__header" scope="col">Cases opened</th>
+                  <th class="govuk-table__header" scope="col">Cases closed</th>
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">David Francis</td>
+                  <td class="govuk-table__cell">3</td>
+                  <td class="govuk-table__cell">0</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Paul Farmer</td>
+                  <td class="govuk-table__cell">1</td>
+                  <td class="govuk-table__cell">0</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Rita Patel</td>
+                  <td class="govuk-table__cell">2</td>
+                  <td class="govuk-table__cell">0</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </section>
+          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-week">
+            <h2 class="govuk-heading-l">Past week</h2>
+            <table class="govuk-table">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th class="govuk-table__header" scope="col">Case manager</th>
+                  <th class="govuk-table__header" scope="col">Cases opened</th>
+                  <th class="govuk-table__header" scope="col">Cases closed</th>
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">David Francis</td>
+                  <td class="govuk-table__cell">24</td>
+                  <td class="govuk-table__cell">18</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Paul Farmer</td>
+                  <td class="govuk-table__cell">16</td>
+                  <td class="govuk-table__cell">20</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Rita Patel</td>
+                  <td class="govuk-table__cell">24</td>
+                  <td class="govuk-table__cell">27</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </section>
+          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-month">
+            <h2 class="govuk-heading-l">Past month</h2>
+            <table class="govuk-table">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th class="govuk-table__header" scope="col">Case manager</th>
+                  <th class="govuk-table__header" scope="col">Cases opened</th>
+                  <th class="govuk-table__header" scope="col">Cases closed</th>
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">David Francis</td>
+                  <td class="govuk-table__cell">98</td>
+                  <td class="govuk-table__cell">95</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Paul Farmer</td>
+                  <td class="govuk-table__cell">122</td>
+                  <td class="govuk-table__cell">131</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Rita Patel</td>
+                  <td class="govuk-table__cell">126</td>
+                  <td class="govuk-table__cell">142</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </section>
+          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-year">
+            <h2 class="govuk-heading-l">Past year</h2>
+            <table class="govuk-table">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th class="govuk-table__header" scope="col">Case manager</th>
+                  <th class="govuk-table__header" scope="col">Cases opened</th>
+                  <th class="govuk-table__header" scope="col">Cases closed</th>
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">David Francis</td>
+                  <td class="govuk-table__cell">1380</td>
+                  <td class="govuk-table__cell">1472</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Paul Farmer</td>
+                  <td class="govuk-table__cell">1129</td>
+                  <td class="govuk-table__cell">1083</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Rita Patel</td>
+                  <td class="govuk-table__cell">1539</td>
+                  <td class="govuk-table__cell">1265</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </section>
+        </div>
+
+
+        <h3 class="govuk-heading-m">Focus fourth tab</h3>
+
+        <div class="govuk-tabs" data-module="tabs">
+          <h2 class="govuk-tabs__title">
+            Contents
+          </h2>
+
+          <ul class="govuk-tabs__list">
+            <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+              <a class="govuk-tabs__tab" href="#past-day">
+                Past day
+              </a>
+            </li>
+            <li class="govuk-tabs__list-item">
+              <a class="govuk-tabs__tab" href="#past-week">
+                Past week
+              </a>
+            </li>
+            <li class="govuk-tabs__list-item">
+              <a class="govuk-tabs__tab" href="#past-month">
+                Past month
+              </a>
+            </li>
+            <li class="govuk-tabs__list-item">
+              <a class="govuk-tabs__tab :focus" href="#past-year">
+                Past year
+              </a>
+            </li>
+          </ul>
+
+          <section class="govuk-tabs__panel" id="past-day">
+            <h2 class="govuk-heading-l">Past day</h2>
+            <table class="govuk-table">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th class="govuk-table__header" scope="col">Case manager</th>
+                  <th class="govuk-table__header" scope="col">Cases opened</th>
+                  <th class="govuk-table__header" scope="col">Cases closed</th>
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">David Francis</td>
+                  <td class="govuk-table__cell">3</td>
+                  <td class="govuk-table__cell">0</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Paul Farmer</td>
+                  <td class="govuk-table__cell">1</td>
+                  <td class="govuk-table__cell">0</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Rita Patel</td>
+                  <td class="govuk-table__cell">2</td>
+                  <td class="govuk-table__cell">0</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </section>
+          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-week">
+            <h2 class="govuk-heading-l">Past week</h2>
+            <table class="govuk-table">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th class="govuk-table__header" scope="col">Case manager</th>
+                  <th class="govuk-table__header" scope="col">Cases opened</th>
+                  <th class="govuk-table__header" scope="col">Cases closed</th>
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">David Francis</td>
+                  <td class="govuk-table__cell">24</td>
+                  <td class="govuk-table__cell">18</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Paul Farmer</td>
+                  <td class="govuk-table__cell">16</td>
+                  <td class="govuk-table__cell">20</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Rita Patel</td>
+                  <td class="govuk-table__cell">24</td>
+                  <td class="govuk-table__cell">27</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </section>
+          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-month">
+            <h2 class="govuk-heading-l">Past month</h2>
+            <table class="govuk-table">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th class="govuk-table__header" scope="col">Case manager</th>
+                  <th class="govuk-table__header" scope="col">Cases opened</th>
+                  <th class="govuk-table__header" scope="col">Cases closed</th>
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">David Francis</td>
+                  <td class="govuk-table__cell">98</td>
+                  <td class="govuk-table__cell">95</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Paul Farmer</td>
+                  <td class="govuk-table__cell">122</td>
+                  <td class="govuk-table__cell">131</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Rita Patel</td>
+                  <td class="govuk-table__cell">126</td>
+                  <td class="govuk-table__cell">142</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </section>
+          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-year">
+            <h2 class="govuk-heading-l">Past year</h2>
+            <table class="govuk-table">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th class="govuk-table__header" scope="col">Case manager</th>
+                  <th class="govuk-table__header" scope="col">Cases opened</th>
+                  <th class="govuk-table__header" scope="col">Cases closed</th>
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">David Francis</td>
+                  <td class="govuk-table__cell">1380</td>
+                  <td class="govuk-table__cell">1472</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Paul Farmer</td>
+                  <td class="govuk-table__cell">1129</td>
+                  <td class="govuk-table__cell">1083</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Rita Patel</td>
+                  <td class="govuk-table__cell">1539</td>
+                  <td class="govuk-table__cell">1265</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </section>
+        </div>
+
+
+        <h3 class="govuk-heading-m">Select and Focus fourth tab</h3>
+
+        <div class="govuk-tabs" data-module="tabs">
+          <h2 class="govuk-tabs__title">
+            Contents
+          </h2>
+
+          <ul class="govuk-tabs__list">
+            <li class="govuk-tabs__list-item">
+              <a class="govuk-tabs__tab" href="#past-day">
+                Past day
+              </a>
+            </li>
+            <li class="govuk-tabs__list-item">
+              <a class="govuk-tabs__tab" href="#past-week">
+                Past week
+              </a>
+            </li>
+            <li class="govuk-tabs__list-item">
+              <a class="govuk-tabs__tab" href="#past-month">
+                Past month
+              </a>
+            </li>
+            <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+              <a class="govuk-tabs__tab :focus" href="#past-year">
+                Past year
+              </a>
+            </li>
+          </ul>
+
+          <section class="govuk-tabs__panel" id="past-day">
+            <h2 class="govuk-heading-l">Past day</h2>
+            <table class="govuk-table">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th class="govuk-table__header" scope="col">Case manager</th>
+                  <th class="govuk-table__header" scope="col">Cases opened</th>
+                  <th class="govuk-table__header" scope="col">Cases closed</th>
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">David Francis</td>
+                  <td class="govuk-table__cell">3</td>
+                  <td class="govuk-table__cell">0</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Paul Farmer</td>
+                  <td class="govuk-table__cell">1</td>
+                  <td class="govuk-table__cell">0</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Rita Patel</td>
+                  <td class="govuk-table__cell">2</td>
+                  <td class="govuk-table__cell">0</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </section>
+          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-week">
+            <h2 class="govuk-heading-l">Past week</h2>
+            <table class="govuk-table">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th class="govuk-table__header" scope="col">Case manager</th>
+                  <th class="govuk-table__header" scope="col">Cases opened</th>
+                  <th class="govuk-table__header" scope="col">Cases closed</th>
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">David Francis</td>
+                  <td class="govuk-table__cell">24</td>
+                  <td class="govuk-table__cell">18</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Paul Farmer</td>
+                  <td class="govuk-table__cell">16</td>
+                  <td class="govuk-table__cell">20</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Rita Patel</td>
+                  <td class="govuk-table__cell">24</td>
+                  <td class="govuk-table__cell">27</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </section>
+          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-month">
+            <h2 class="govuk-heading-l">Past month</h2>
+            <table class="govuk-table">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th class="govuk-table__header" scope="col">Case manager</th>
+                  <th class="govuk-table__header" scope="col">Cases opened</th>
+                  <th class="govuk-table__header" scope="col">Cases closed</th>
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">David Francis</td>
+                  <td class="govuk-table__cell">98</td>
+                  <td class="govuk-table__cell">95</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Paul Farmer</td>
+                  <td class="govuk-table__cell">122</td>
+                  <td class="govuk-table__cell">131</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Rita Patel</td>
+                  <td class="govuk-table__cell">126</td>
+                  <td class="govuk-table__cell">142</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </section>
+          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-year">
+            <h2 class="govuk-heading-l">Past year</h2>
+            <table class="govuk-table">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th class="govuk-table__header" scope="col">Case manager</th>
+                  <th class="govuk-table__header" scope="col">Cases opened</th>
+                  <th class="govuk-table__header" scope="col">Cases closed</th>
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">David Francis</td>
+                  <td class="govuk-table__cell">1380</td>
+                  <td class="govuk-table__cell">1472</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Paul Farmer</td>
+                  <td class="govuk-table__cell">1129</td>
+                  <td class="govuk-table__cell">1083</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Rita Patel</td>
+                  <td class="govuk-table__cell">1539</td>
+                  <td class="govuk-table__cell">1265</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </section>
+        </div>
+
+
+        <h3 class="govuk-heading-m">Hover and Focus first tab</h3>
+
+        <div class="govuk-tabs" data-module="tabs">
+          <h2 class="govuk-tabs__title">
+            Contents
+          </h2>
+
+          <ul class="govuk-tabs__list">
+            <li class="govuk-tabs__list-item :hover">
+              <a class="govuk-tabs__tab :focus" href="#past-day">
+                Past day
+              </a>
+            </li>
+            <li class="govuk-tabs__list-item">
+              <a class="govuk-tabs__tab" href="#past-week">
+                Past week
+              </a>
+            </li>
+            <li class="govuk-tabs__list-item">
+              <a class="govuk-tabs__tab" href="#past-month">
+                Past month
+              </a>
+            </li>
+            <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+              <a class="govuk-tabs__tab" href="#past-year">
+                Past year
+              </a>
+            </li>
+          </ul>
+
+          <section class="govuk-tabs__panel" id="past-day">
+            <h2 class="govuk-heading-l">Past day</h2>
+            <table class="govuk-table">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th class="govuk-table__header" scope="col">Case manager</th>
+                  <th class="govuk-table__header" scope="col">Cases opened</th>
+                  <th class="govuk-table__header" scope="col">Cases closed</th>
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">David Francis</td>
+                  <td class="govuk-table__cell">3</td>
+                  <td class="govuk-table__cell">0</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Paul Farmer</td>
+                  <td class="govuk-table__cell">1</td>
+                  <td class="govuk-table__cell">0</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Rita Patel</td>
+                  <td class="govuk-table__cell">2</td>
+                  <td class="govuk-table__cell">0</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </section>
+          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-week">
+            <h2 class="govuk-heading-l">Past week</h2>
+            <table class="govuk-table">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th class="govuk-table__header" scope="col">Case manager</th>
+                  <th class="govuk-table__header" scope="col">Cases opened</th>
+                  <th class="govuk-table__header" scope="col">Cases closed</th>
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">David Francis</td>
+                  <td class="govuk-table__cell">24</td>
+                  <td class="govuk-table__cell">18</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Paul Farmer</td>
+                  <td class="govuk-table__cell">16</td>
+                  <td class="govuk-table__cell">20</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Rita Patel</td>
+                  <td class="govuk-table__cell">24</td>
+                  <td class="govuk-table__cell">27</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </section>
+          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-month">
+            <h2 class="govuk-heading-l">Past month</h2>
+            <table class="govuk-table">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th class="govuk-table__header" scope="col">Case manager</th>
+                  <th class="govuk-table__header" scope="col">Cases opened</th>
+                  <th class="govuk-table__header" scope="col">Cases closed</th>
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">David Francis</td>
+                  <td class="govuk-table__cell">98</td>
+                  <td class="govuk-table__cell">95</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Paul Farmer</td>
+                  <td class="govuk-table__cell">122</td>
+                  <td class="govuk-table__cell">131</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Rita Patel</td>
+                  <td class="govuk-table__cell">126</td>
+                  <td class="govuk-table__cell">142</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </section>
+          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-year">
+            <h2 class="govuk-heading-l">Past year</h2>
+            <table class="govuk-table">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th class="govuk-table__header" scope="col">Case manager</th>
+                  <th class="govuk-table__header" scope="col">Cases opened</th>
+                  <th class="govuk-table__header" scope="col">Cases closed</th>
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">David Francis</td>
+                  <td class="govuk-table__cell">1380</td>
+                  <td class="govuk-table__cell">1472</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Paul Farmer</td>
+                  <td class="govuk-table__cell">1129</td>
+                  <td class="govuk-table__cell">1083</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Rita Patel</td>
+                  <td class="govuk-table__cell">1539</td>
+                  <td class="govuk-table__cell">1265</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </section>
+        </div>
+
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+
+        <h2 class="govuk-heading-l">Warning text</h2>
+
+        {{ govukWarningText({
+          text: "You can be fined up to £5,000 if you do not register.",
+          iconFallbackText: "Warning"
+        }) }}
+
+    </div>
+
+    <div class="govuk-grid-column-full">
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+
+        <h2 class="govuk-heading-l">Header</h2>    
+
+        <h3 class="govuk-heading-m">Default (with current page active)</h3>
+
+        <header class="govuk-header " role="banner" data-module="header">
+          <div class="govuk-header__container govuk-width-container">
+
+            <div class="govuk-header__logo">
+              <a href="#" class="govuk-header__link govuk-header__link--homepage">
+                <span class="govuk-header__logotype">
+
+                  <svg role="presentation" focusable="false" class="govuk-header__logotype-crown" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 132 97" height="32" width="36">
+                    <path fill="currentColor" fill-rule="evenodd" d="M25 30.2c3.5 1.5 7.7-.2 9.1-3.7 1.5-3.6-.2-7.8-3.9-9.2-3.6-1.4-7.6.3-9.1 3.9-1.4 3.5.3 7.5 3.9 9zM9 39.5c3.6 1.5 7.8-.2 9.2-3.7 1.5-3.6-.2-7.8-3.9-9.1-3.6-1.5-7.6.2-9.1 3.8-1.4 3.5.3 7.5 3.8 9zM4.4 57.2c3.5 1.5 7.7-.2 9.1-3.8 1.5-3.6-.2-7.7-3.9-9.1-3.5-1.5-7.6.3-9.1 3.8-1.4 3.5.3 7.6 3.9 9.1zm38.3-21.4c3.5 1.5 7.7-.2 9.1-3.8 1.5-3.6-.2-7.7-3.9-9.1-3.6-1.5-7.6.3-9.1 3.8-1.3 3.6.4 7.7 3.9 9.1zm64.4-5.6c-3.6 1.5-7.8-.2-9.1-3.7-1.5-3.6.2-7.8 3.8-9.2 3.6-1.4 7.7.3 9.2 3.9 1.3 3.5-.4 7.5-3.9 9zm15.9 9.3c-3.6 1.5-7.7-.2-9.1-3.7-1.5-3.6.2-7.8 3.7-9.1 3.6-1.5 7.7.2 9.2 3.8 1.5 3.5-.3 7.5-3.8 9zm4.7 17.7c-3.6 1.5-7.8-.2-9.2-3.8-1.5-3.6.2-7.7 3.9-9.1 3.6-1.5 7.7.3 9.2 3.8 1.3 3.5-.4 7.6-3.9 9.1zM89.3 35.8c-3.6 1.5-7.8-.2-9.2-3.8-1.4-3.6.2-7.7 3.9-9.1 3.6-1.5 7.7.3 9.2 3.8 1.4 3.6-.3 7.7-3.9 9.1zM69.7 17.7l8.9 4.7V9.3l-8.9 2.8c-.2-.3-.5-.6-.9-.9L72.4 0H59.6l3.5 11.2c-.3.3-.6.5-.9.9l-8.8-2.8v13.1l8.8-4.7c.3.3.6.7.9.9l-5 15.4v.1c-.2.8-.4 1.6-.4 2.4 0 4.1 3.1 7.5 7 8.1h.2c.3 0 .7.1 1 .1.4 0 .7 0 1-.1h.2c4-.6 7.1-4.1 7.1-8.1 0-.8-.1-1.7-.4-2.4V34l-5.1-15.4c.4-.2.7-.6 1-.9zM66 92.8c16.9 0 32.8 1.1 47.1 3.2 4-16.9 8.9-26.7 14-33.5l-9.6-3.4c1 4.9 1.1 7.2 0 10.2-1.5-1.4-3-4.3-4.2-8.7L108.6 76c2.8-2 5-3.2 7.5-3.3-4.4 9.4-10 11.9-13.6 11.2-4.3-.8-6.3-4.6-5.6-7.9 1-4.7 5.7-5.9 8-.5 4.3-8.7-3-11.4-7.6-8.8 7.1-7.2 7.9-13.5 2.1-21.1-8 6.1-8.1 12.3-4.5 20.8-4.7-5.4-12.1-2.5-9.5 6.2 3.4-5.2 7.9-2 7.2 3.1-.6 4.3-6.4 7.8-13.5 7.2-10.3-.9-10.9-8-11.2-13.8 2.5-.5 7.1 1.8 11 7.3L80.2 60c-4.1 4.4-8 5.3-12.3 5.4 1.4-4.4 8-11.6 8-11.6H55.5s6.4 7.2 7.9 11.6c-4.2-.1-8-1-12.3-5.4l1.4 16.4c3.9-5.5 8.5-7.7 10.9-7.3-.3 5.8-.9 12.8-11.1 13.8-7.2.6-12.9-2.9-13.5-7.2-.7-5 3.8-8.3 7.1-3.1 2.7-8.7-4.6-11.6-9.4-6.2 3.7-8.5 3.6-14.7-4.6-20.8-5.8 7.6-5 13.9 2.2 21.1-4.7-2.6-11.9.1-7.7 8.8 2.3-5.5 7.1-4.2 8.1.5.7 3.3-1.3 7.1-5.7 7.9-3.5.7-9-1.8-13.5-11.2 2.5.1 4.7 1.3 7.5 3.3l-4.7-15.4c-1.2 4.4-2.7 7.2-4.3 8.7-1.1-3-.9-5.3 0-10.2l-9.5 3.4c5 6.9 9.9 16.7 14 33.5 14.8-2.1 30.8-3.2 47.7-3.2z"></path>
+
+                    <image src="/assets/images/govuk-logotype-crown.png" class="govuk-header__logotype-crown-fallback-image"></image>
+                  </svg>
+                  <span class="govuk-header__logotype-text">
+                    GOV.UK
+                  </span>
+                </span>
+              </a>
+            </div>
+            <div class="govuk-header__content">
+
+              <a href="#" class="govuk-header__link govuk-header__link--service-name">
+                Service name
+              </a>
+
+              <button type="button" role="button" class="govuk-header__menu-button js-header-toggle" aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu</button>
+              <nav>
+                <ul id="navigation" class="govuk-header__navigation " aria-label="Top Level Navigation">
+                  <li class="govuk-header__navigation-item govuk-header__navigation-item--active">
+                    <a class="govuk-header__link" href="#1">
+                      Navigation item 1
+                    </a>
+                  </li>
+                  <li class="govuk-header__navigation-item">
+                    <a class="govuk-header__link" href="#2">
+                      Navigation item 2
+                    </a>
+                  </li>
+                  <li class="govuk-header__navigation-item">
+                    <a class="govuk-header__link" href="#3">
+                      Navigation item 3
+                    </a>
+                  </li>
+                  <li class="govuk-header__navigation-item">
+                    <a class="govuk-header__link" href="#4">
+                      Navigation item 4
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </header>
+        
+        <hr class="govuk-section-break govuk-section-break--m">  
+
+        <h3 class="govuk-heading-m">Focus on logo, service name and navigation</h3>
+
+        <header class="govuk-header " role="banner" data-module="header">
+          <div class="govuk-header__container govuk-width-container">
+
+            <div class="govuk-header__logo">
+              <a href="#" class="govuk-header__link govuk-header__link--homepage :focus">
+                <span class="govuk-header__logotype">
+
+                  <svg role="presentation" focusable="false" class="govuk-header__logotype-crown" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 132 97" height="32" width="36">
+                    <path fill="currentColor" fill-rule="evenodd" d="M25 30.2c3.5 1.5 7.7-.2 9.1-3.7 1.5-3.6-.2-7.8-3.9-9.2-3.6-1.4-7.6.3-9.1 3.9-1.4 3.5.3 7.5 3.9 9zM9 39.5c3.6 1.5 7.8-.2 9.2-3.7 1.5-3.6-.2-7.8-3.9-9.1-3.6-1.5-7.6.2-9.1 3.8-1.4 3.5.3 7.5 3.8 9zM4.4 57.2c3.5 1.5 7.7-.2 9.1-3.8 1.5-3.6-.2-7.7-3.9-9.1-3.5-1.5-7.6.3-9.1 3.8-1.4 3.5.3 7.6 3.9 9.1zm38.3-21.4c3.5 1.5 7.7-.2 9.1-3.8 1.5-3.6-.2-7.7-3.9-9.1-3.6-1.5-7.6.3-9.1 3.8-1.3 3.6.4 7.7 3.9 9.1zm64.4-5.6c-3.6 1.5-7.8-.2-9.1-3.7-1.5-3.6.2-7.8 3.8-9.2 3.6-1.4 7.7.3 9.2 3.9 1.3 3.5-.4 7.5-3.9 9zm15.9 9.3c-3.6 1.5-7.7-.2-9.1-3.7-1.5-3.6.2-7.8 3.7-9.1 3.6-1.5 7.7.2 9.2 3.8 1.5 3.5-.3 7.5-3.8 9zm4.7 17.7c-3.6 1.5-7.8-.2-9.2-3.8-1.5-3.6.2-7.7 3.9-9.1 3.6-1.5 7.7.3 9.2 3.8 1.3 3.5-.4 7.6-3.9 9.1zM89.3 35.8c-3.6 1.5-7.8-.2-9.2-3.8-1.4-3.6.2-7.7 3.9-9.1 3.6-1.5 7.7.3 9.2 3.8 1.4 3.6-.3 7.7-3.9 9.1zM69.7 17.7l8.9 4.7V9.3l-8.9 2.8c-.2-.3-.5-.6-.9-.9L72.4 0H59.6l3.5 11.2c-.3.3-.6.5-.9.9l-8.8-2.8v13.1l8.8-4.7c.3.3.6.7.9.9l-5 15.4v.1c-.2.8-.4 1.6-.4 2.4 0 4.1 3.1 7.5 7 8.1h.2c.3 0 .7.1 1 .1.4 0 .7 0 1-.1h.2c4-.6 7.1-4.1 7.1-8.1 0-.8-.1-1.7-.4-2.4V34l-5.1-15.4c.4-.2.7-.6 1-.9zM66 92.8c16.9 0 32.8 1.1 47.1 3.2 4-16.9 8.9-26.7 14-33.5l-9.6-3.4c1 4.9 1.1 7.2 0 10.2-1.5-1.4-3-4.3-4.2-8.7L108.6 76c2.8-2 5-3.2 7.5-3.3-4.4 9.4-10 11.9-13.6 11.2-4.3-.8-6.3-4.6-5.6-7.9 1-4.7 5.7-5.9 8-.5 4.3-8.7-3-11.4-7.6-8.8 7.1-7.2 7.9-13.5 2.1-21.1-8 6.1-8.1 12.3-4.5 20.8-4.7-5.4-12.1-2.5-9.5 6.2 3.4-5.2 7.9-2 7.2 3.1-.6 4.3-6.4 7.8-13.5 7.2-10.3-.9-10.9-8-11.2-13.8 2.5-.5 7.1 1.8 11 7.3L80.2 60c-4.1 4.4-8 5.3-12.3 5.4 1.4-4.4 8-11.6 8-11.6H55.5s6.4 7.2 7.9 11.6c-4.2-.1-8-1-12.3-5.4l1.4 16.4c3.9-5.5 8.5-7.7 10.9-7.3-.3 5.8-.9 12.8-11.1 13.8-7.2.6-12.9-2.9-13.5-7.2-.7-5 3.8-8.3 7.1-3.1 2.7-8.7-4.6-11.6-9.4-6.2 3.7-8.5 3.6-14.7-4.6-20.8-5.8 7.6-5 13.9 2.2 21.1-4.7-2.6-11.9.1-7.7 8.8 2.3-5.5 7.1-4.2 8.1.5.7 3.3-1.3 7.1-5.7 7.9-3.5.7-9-1.8-13.5-11.2 2.5.1 4.7 1.3 7.5 3.3l-4.7-15.4c-1.2 4.4-2.7 7.2-4.3 8.7-1.1-3-.9-5.3 0-10.2l-9.5 3.4c5 6.9 9.9 16.7 14 33.5 14.8-2.1 30.8-3.2 47.7-3.2z"></path>
+
+                    <image src="/assets/images/govuk-logotype-crown.png" class="govuk-header__logotype-crown-fallback-image"></image>
+                  </svg>
+                  <span class="govuk-header__logotype-text">
+                    GOV.UK
+                  </span>
+                </span>
+              </a>
+            </div>
+            <div class="govuk-header__content">
+
+              <a href="#" class="govuk-header__link govuk-header__link--service-name :focus">
+                Service name
+              </a>
+
+              <button type="button" role="button" class="govuk-header__menu-button js-header-toggle" aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu</button>
+              <nav>
+                <ul id="navigation" class="govuk-header__navigation " aria-label="Top Level Navigation">
+                  <li class="govuk-header__navigation-item govuk-header__navigation-item--active">
+                    <a class="govuk-header__link" href="#1">
+                      Navigation item 1
+                    </a>
+                  </li>
+                  <li class="govuk-header__navigation-item">
+                    <a class="govuk-header__link" href="#2">
+                      Navigation item 2
+                    </a>
+                  </li>
+                  <li class="govuk-header__navigation-item">
+                    <a class="govuk-header__link :focus" href="#3">
+                      Navigation item 3
+                    </a>
+                  </li>
+                  <li class="govuk-header__navigation-item">
+                    <a class="govuk-header__link" href="#4">
+                      Navigation item 4
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </header>
+
+
+        <hr class="govuk-section-break govuk-section-break--m">  
+
+        <h3 class="govuk-heading-m">Hover on logo, service name and navigation</h3>
+
+        <header class="govuk-header " role="banner" data-module="header">
+          <div class="govuk-header__container govuk-width-container">
+
+            <div class="govuk-header__logo">
+              <a href="#" class="govuk-header__link govuk-header__link--homepage :hover">
+                <span class="govuk-header__logotype">
+
+                  <svg role="presentation" focusable="false" class="govuk-header__logotype-crown" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 132 97" height="32" width="36">
+                    <path fill="currentColor" fill-rule="evenodd" d="M25 30.2c3.5 1.5 7.7-.2 9.1-3.7 1.5-3.6-.2-7.8-3.9-9.2-3.6-1.4-7.6.3-9.1 3.9-1.4 3.5.3 7.5 3.9 9zM9 39.5c3.6 1.5 7.8-.2 9.2-3.7 1.5-3.6-.2-7.8-3.9-9.1-3.6-1.5-7.6.2-9.1 3.8-1.4 3.5.3 7.5 3.8 9zM4.4 57.2c3.5 1.5 7.7-.2 9.1-3.8 1.5-3.6-.2-7.7-3.9-9.1-3.5-1.5-7.6.3-9.1 3.8-1.4 3.5.3 7.6 3.9 9.1zm38.3-21.4c3.5 1.5 7.7-.2 9.1-3.8 1.5-3.6-.2-7.7-3.9-9.1-3.6-1.5-7.6.3-9.1 3.8-1.3 3.6.4 7.7 3.9 9.1zm64.4-5.6c-3.6 1.5-7.8-.2-9.1-3.7-1.5-3.6.2-7.8 3.8-9.2 3.6-1.4 7.7.3 9.2 3.9 1.3 3.5-.4 7.5-3.9 9zm15.9 9.3c-3.6 1.5-7.7-.2-9.1-3.7-1.5-3.6.2-7.8 3.7-9.1 3.6-1.5 7.7.2 9.2 3.8 1.5 3.5-.3 7.5-3.8 9zm4.7 17.7c-3.6 1.5-7.8-.2-9.2-3.8-1.5-3.6.2-7.7 3.9-9.1 3.6-1.5 7.7.3 9.2 3.8 1.3 3.5-.4 7.6-3.9 9.1zM89.3 35.8c-3.6 1.5-7.8-.2-9.2-3.8-1.4-3.6.2-7.7 3.9-9.1 3.6-1.5 7.7.3 9.2 3.8 1.4 3.6-.3 7.7-3.9 9.1zM69.7 17.7l8.9 4.7V9.3l-8.9 2.8c-.2-.3-.5-.6-.9-.9L72.4 0H59.6l3.5 11.2c-.3.3-.6.5-.9.9l-8.8-2.8v13.1l8.8-4.7c.3.3.6.7.9.9l-5 15.4v.1c-.2.8-.4 1.6-.4 2.4 0 4.1 3.1 7.5 7 8.1h.2c.3 0 .7.1 1 .1.4 0 .7 0 1-.1h.2c4-.6 7.1-4.1 7.1-8.1 0-.8-.1-1.7-.4-2.4V34l-5.1-15.4c.4-.2.7-.6 1-.9zM66 92.8c16.9 0 32.8 1.1 47.1 3.2 4-16.9 8.9-26.7 14-33.5l-9.6-3.4c1 4.9 1.1 7.2 0 10.2-1.5-1.4-3-4.3-4.2-8.7L108.6 76c2.8-2 5-3.2 7.5-3.3-4.4 9.4-10 11.9-13.6 11.2-4.3-.8-6.3-4.6-5.6-7.9 1-4.7 5.7-5.9 8-.5 4.3-8.7-3-11.4-7.6-8.8 7.1-7.2 7.9-13.5 2.1-21.1-8 6.1-8.1 12.3-4.5 20.8-4.7-5.4-12.1-2.5-9.5 6.2 3.4-5.2 7.9-2 7.2 3.1-.6 4.3-6.4 7.8-13.5 7.2-10.3-.9-10.9-8-11.2-13.8 2.5-.5 7.1 1.8 11 7.3L80.2 60c-4.1 4.4-8 5.3-12.3 5.4 1.4-4.4 8-11.6 8-11.6H55.5s6.4 7.2 7.9 11.6c-4.2-.1-8-1-12.3-5.4l1.4 16.4c3.9-5.5 8.5-7.7 10.9-7.3-.3 5.8-.9 12.8-11.1 13.8-7.2.6-12.9-2.9-13.5-7.2-.7-5 3.8-8.3 7.1-3.1 2.7-8.7-4.6-11.6-9.4-6.2 3.7-8.5 3.6-14.7-4.6-20.8-5.8 7.6-5 13.9 2.2 21.1-4.7-2.6-11.9.1-7.7 8.8 2.3-5.5 7.1-4.2 8.1.5.7 3.3-1.3 7.1-5.7 7.9-3.5.7-9-1.8-13.5-11.2 2.5.1 4.7 1.3 7.5 3.3l-4.7-15.4c-1.2 4.4-2.7 7.2-4.3 8.7-1.1-3-.9-5.3 0-10.2l-9.5 3.4c5 6.9 9.9 16.7 14 33.5 14.8-2.1 30.8-3.2 47.7-3.2z"></path>
+
+                    <image src="/assets/images/govuk-logotype-crown.png" class="govuk-header__logotype-crown-fallback-image"></image>
+                  </svg>
+                  <span class="govuk-header__logotype-text">
+                    GOV.UK
+                  </span>
+                </span>
+              </a>
+            </div>
+            <div class="govuk-header__content">
+
+              <a href="#" class="govuk-header__link govuk-header__link--service-name :hover">
+                Service name
+              </a>
+
+              <button type="button" role="button" class="govuk-header__menu-button js-header-toggle" aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu</button>
+              <nav>
+                <ul id="navigation" class="govuk-header__navigation " aria-label="Top Level Navigation">
+                  <li class="govuk-header__navigation-item govuk-header__navigation-item--active">
+                    <a class="govuk-header__link" href="#1">
+                      Navigation item 1
+                    </a>
+                  </li>
+                  <li class="govuk-header__navigation-item">
+                    <a class="govuk-header__link" href="#2">
+                      Navigation item 2
+                    </a>
+                  </li>
+                  <li class="govuk-header__navigation-item">
+                    <a class="govuk-header__link :hover" href="#3">
+                      Navigation item 3
+                    </a>
+                  </li>
+                  <li class="govuk-header__navigation-item">
+                    <a class="govuk-header__link" href="#4">
+                      Navigation item 4
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </header>
+
+
+        <hr class="govuk-section-break govuk-section-break--m">  
+
+        <h3 class="govuk-heading-m">Focus and Hover on logo, service name and navigation</h3>
+
+        {{ govukInsetText({
+          text: "Example included as this component doesn't use the standard text focus and bottom box-shadow would not be visible"
+        }) }}
+
+        <header class="govuk-header " role="banner" data-module="header">
+          <div class="govuk-header__container govuk-width-container">
+
+            <div class="govuk-header__logo">
+              <a href="#" class="govuk-header__link govuk-header__link--homepage :focus :hover">
+                <span class="govuk-header__logotype">
+
+                  <svg role="presentation" focusable="false" class="govuk-header__logotype-crown" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 132 97" height="32" width="36">
+                    <path fill="currentColor" fill-rule="evenodd" d="M25 30.2c3.5 1.5 7.7-.2 9.1-3.7 1.5-3.6-.2-7.8-3.9-9.2-3.6-1.4-7.6.3-9.1 3.9-1.4 3.5.3 7.5 3.9 9zM9 39.5c3.6 1.5 7.8-.2 9.2-3.7 1.5-3.6-.2-7.8-3.9-9.1-3.6-1.5-7.6.2-9.1 3.8-1.4 3.5.3 7.5 3.8 9zM4.4 57.2c3.5 1.5 7.7-.2 9.1-3.8 1.5-3.6-.2-7.7-3.9-9.1-3.5-1.5-7.6.3-9.1 3.8-1.4 3.5.3 7.6 3.9 9.1zm38.3-21.4c3.5 1.5 7.7-.2 9.1-3.8 1.5-3.6-.2-7.7-3.9-9.1-3.6-1.5-7.6.3-9.1 3.8-1.3 3.6.4 7.7 3.9 9.1zm64.4-5.6c-3.6 1.5-7.8-.2-9.1-3.7-1.5-3.6.2-7.8 3.8-9.2 3.6-1.4 7.7.3 9.2 3.9 1.3 3.5-.4 7.5-3.9 9zm15.9 9.3c-3.6 1.5-7.7-.2-9.1-3.7-1.5-3.6.2-7.8 3.7-9.1 3.6-1.5 7.7.2 9.2 3.8 1.5 3.5-.3 7.5-3.8 9zm4.7 17.7c-3.6 1.5-7.8-.2-9.2-3.8-1.5-3.6.2-7.7 3.9-9.1 3.6-1.5 7.7.3 9.2 3.8 1.3 3.5-.4 7.6-3.9 9.1zM89.3 35.8c-3.6 1.5-7.8-.2-9.2-3.8-1.4-3.6.2-7.7 3.9-9.1 3.6-1.5 7.7.3 9.2 3.8 1.4 3.6-.3 7.7-3.9 9.1zM69.7 17.7l8.9 4.7V9.3l-8.9 2.8c-.2-.3-.5-.6-.9-.9L72.4 0H59.6l3.5 11.2c-.3.3-.6.5-.9.9l-8.8-2.8v13.1l8.8-4.7c.3.3.6.7.9.9l-5 15.4v.1c-.2.8-.4 1.6-.4 2.4 0 4.1 3.1 7.5 7 8.1h.2c.3 0 .7.1 1 .1.4 0 .7 0 1-.1h.2c4-.6 7.1-4.1 7.1-8.1 0-.8-.1-1.7-.4-2.4V34l-5.1-15.4c.4-.2.7-.6 1-.9zM66 92.8c16.9 0 32.8 1.1 47.1 3.2 4-16.9 8.9-26.7 14-33.5l-9.6-3.4c1 4.9 1.1 7.2 0 10.2-1.5-1.4-3-4.3-4.2-8.7L108.6 76c2.8-2 5-3.2 7.5-3.3-4.4 9.4-10 11.9-13.6 11.2-4.3-.8-6.3-4.6-5.6-7.9 1-4.7 5.7-5.9 8-.5 4.3-8.7-3-11.4-7.6-8.8 7.1-7.2 7.9-13.5 2.1-21.1-8 6.1-8.1 12.3-4.5 20.8-4.7-5.4-12.1-2.5-9.5 6.2 3.4-5.2 7.9-2 7.2 3.1-.6 4.3-6.4 7.8-13.5 7.2-10.3-.9-10.9-8-11.2-13.8 2.5-.5 7.1 1.8 11 7.3L80.2 60c-4.1 4.4-8 5.3-12.3 5.4 1.4-4.4 8-11.6 8-11.6H55.5s6.4 7.2 7.9 11.6c-4.2-.1-8-1-12.3-5.4l1.4 16.4c3.9-5.5 8.5-7.7 10.9-7.3-.3 5.8-.9 12.8-11.1 13.8-7.2.6-12.9-2.9-13.5-7.2-.7-5 3.8-8.3 7.1-3.1 2.7-8.7-4.6-11.6-9.4-6.2 3.7-8.5 3.6-14.7-4.6-20.8-5.8 7.6-5 13.9 2.2 21.1-4.7-2.6-11.9.1-7.7 8.8 2.3-5.5 7.1-4.2 8.1.5.7 3.3-1.3 7.1-5.7 7.9-3.5.7-9-1.8-13.5-11.2 2.5.1 4.7 1.3 7.5 3.3l-4.7-15.4c-1.2 4.4-2.7 7.2-4.3 8.7-1.1-3-.9-5.3 0-10.2l-9.5 3.4c5 6.9 9.9 16.7 14 33.5 14.8-2.1 30.8-3.2 47.7-3.2z"></path>
+
+                    <image src="/assets/images/govuk-logotype-crown.png" class="govuk-header__logotype-crown-fallback-image"></image>
+                  </svg>
+                  <span class="govuk-header__logotype-text">
+                    GOV.UK
+                  </span>
+                </span>
+              </a>
+            </div>
+            <div class="govuk-header__content">
+
+              <a href="#" class="govuk-header__link govuk-header__link--service-name :focus :hover">
+                Service name
+              </a>
+
+              <button type="button" role="button" class="govuk-header__menu-button js-header-toggle" aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu</button>
+              <nav>
+                <ul id="navigation" class="govuk-header__navigation " aria-label="Top Level Navigation">
+                  <li class="govuk-header__navigation-item govuk-header__navigation-item--active">
+                    <a class="govuk-header__link" href="#1">
+                      Navigation item 1
+                    </a>
+                  </li>
+                  <li class="govuk-header__navigation-item">
+                    <a class="govuk-header__link" href="#2">
+                      Navigation item 2
+                    </a>
+                  </li>
+                  <li class="govuk-header__navigation-item">
+                    <a class="govuk-header__link :focus :hover" href="#3">
+                      Navigation item 3
+                    </a>
+                  </li>
+                  <li class="govuk-header__navigation-item">
+                    <a class="govuk-header__link" href="#4">
+                      Navigation item 4
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </header>
+
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+
+        <h2 class="govuk-heading-l">Footer</h2>
+
+        <h3 class="govuk-heading-m">Default (Full)</h3>
+
+        <footer class="govuk-footer " role="contentinfo">
+          <div class="govuk-width-container ">
+            <div class="govuk-footer__navigation">
+              <div class="govuk-footer__section">
+                <h2 class="govuk-footer__heading govuk-heading-m">Services and information</h2>
+                <ul class="govuk-footer__list govuk-footer__list--columns-2">
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Benefits
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Births, deaths, marriages and care
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Business and self-employed
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Childcare and parenting
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Citizenship and living in the UK
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Crime, justice and the law
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Disabled people
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Driving and transport
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Education and learning
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Employing people
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Environment and countryside
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Housing and local services
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Money and tax
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Passports, travel and living abroad
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Visas and immigration
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Working, jobs and pensions
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="govuk-footer__section">
+                <h2 class="govuk-footer__heading govuk-heading-m">Departments and policy</h2>
+                <ul class="govuk-footer__list ">
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      How government works
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Departments
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Worldwide
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Policies
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Publications
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Announcements
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <hr class="govuk-footer__section-break">
+            <div class="govuk-footer__meta">
+              <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+                <h2 class="govuk-visually-hidden">Support links</h2>
+                <ul class="govuk-footer__inline-list">
+                  <li class="govuk-footer__inline-list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Help
+                    </a>
+                  </li>
+                  <li class="govuk-footer__inline-list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Cookies
+                    </a>
+                  </li>
+                  <li class="govuk-footer__inline-list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Contact
+                    </a>
+                  </li>
+                  <li class="govuk-footer__inline-list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Terms and conditions
+                    </a>
+                  </li>
+                  <li class="govuk-footer__inline-list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Rhestr o Wasanaethau Cymraeg
+                    </a>
+                  </li>
+                </ul>
+                <div class="govuk-footer__meta-custom">
+                  Built by the
+                  <a href="#" class="govuk-footer__link">Government Digital Service</a>
+                </div>
+
+                <svg role="presentation" focusable="false" class="govuk-footer__licence-logo" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 483.2 195.7" height="17" width="41">
+                  <path fill="currentColor" d="M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145"
+                  />
+                </svg>
+                <span class="govuk-footer__licence-description">
+                  All content is available under the
+                  <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, except where otherwise stated
+                </span>
+              </div>
+              <div class="govuk-footer__meta-item">
+                <a class="govuk-footer__link govuk-footer__copyright-logo" href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/">© Crown copyright</a>
+              </div>
+            </div>
+          </div>
+        </footer>
+
+
+        <h3 class="govuk-heading-m govuk-!-padding-top-8">Hover</h3>
+
+        <footer class="govuk-footer " role="contentinfo">
+          <div class="govuk-width-container ">
+            <div class="govuk-footer__navigation">
+              <div class="govuk-footer__section">
+                <h2 class="govuk-footer__heading govuk-heading-m">Services and information</h2>
+                <ul class="govuk-footer__list govuk-footer__list--columns-2">
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Benefits
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Births, deaths, marriages and care
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link :hover" href="#">
+                      Business and self-employed
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Childcare and parenting
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Citizenship and living in the UK
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Crime, justice and the law
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Disabled people
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Driving and transport
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Education and learning
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Employing people
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Environment and countryside
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Housing and local services
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Money and tax
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Passports, travel and living abroad
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Visas and immigration
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Working, jobs and pensions
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="govuk-footer__section">
+                <h2 class="govuk-footer__heading govuk-heading-m">Departments and policy</h2>
+                <ul class="govuk-footer__list ">
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      How government works
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Departments
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Worldwide
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Policies
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Publications
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Announcements
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <hr class="govuk-footer__section-break">
+            <div class="govuk-footer__meta">
+              <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+                <h2 class="govuk-visually-hidden">Support links</h2>
+                <ul class="govuk-footer__inline-list">
+                  <li class="govuk-footer__inline-list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Help
+                    </a>
+                  </li>
+                  <li class="govuk-footer__inline-list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Cookies
+                    </a>
+                  </li>
+                  <li class="govuk-footer__inline-list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Contact
+                    </a>
+                  </li>
+                  <li class="govuk-footer__inline-list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Terms and conditions
+                    </a>
+                  </li>
+                  <li class="govuk-footer__inline-list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Rhestr o Wasanaethau Cymraeg
+                    </a>
+                  </li>
+                </ul>
+                <div class="govuk-footer__meta-custom">
+                  Built by the
+                  <a href="#" class="govuk-footer__link">Government Digital Service</a>
+                </div>
+
+                <svg role="presentation" focusable="false" class="govuk-footer__licence-logo" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 483.2 195.7" height="17" width="41">
+                  <path fill="currentColor" d="M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145"
+                  />
+                </svg>
+                <span class="govuk-footer__licence-description">
+                  All content is available under the
+                  <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, except where otherwise stated
+                </span>
+              </div>
+              <div class="govuk-footer__meta-item">
+                <a class="govuk-footer__link govuk-footer__copyright-logo" href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/">© Crown copyright</a>
+              </div>
+            </div>
+          </div>
+        </footer>
+
+
+
+        <h3 class="govuk-heading-m govuk-!-padding-top-8">Focus</h3>
+
+        {{ govukInsetText({
+          text: "Crown copyright link requires special attention."
+        }) }}
+
+        <footer class="govuk-footer " role="contentinfo">
+          <div class="govuk-width-container ">
+            <div class="govuk-footer__navigation">
+              <div class="govuk-footer__section">
+                <h2 class="govuk-footer__heading govuk-heading-m">Services and information</h2>
+                <ul class="govuk-footer__list govuk-footer__list--columns-2">
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Benefits
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Births, deaths, marriages and care
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link :focus" href="#">
+                      Business and self-employed
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Childcare and parenting
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Citizenship and living in the UK
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Crime, justice and the law
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Disabled people
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Driving and transport
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Education and learning
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Employing people
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Environment and countryside
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Housing and local services
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Money and tax
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Passports, travel and living abroad
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Visas and immigration
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Working, jobs and pensions
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="govuk-footer__section">
+                <h2 class="govuk-footer__heading govuk-heading-m">Departments and policy</h2>
+                <ul class="govuk-footer__list ">
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      How government works
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Departments
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Worldwide
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Policies
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Publications
+                    </a>
+                  </li>
+                  <li class="govuk-footer__list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Announcements
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <hr class="govuk-footer__section-break">
+            <div class="govuk-footer__meta">
+              <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+                <h2 class="govuk-visually-hidden">Support links</h2>
+                <ul class="govuk-footer__inline-list">
+                  <li class="govuk-footer__inline-list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Help
+                    </a>
+                  </li>
+                  <li class="govuk-footer__inline-list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Cookies
+                    </a>
+                  </li>
+                  <li class="govuk-footer__inline-list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Contact
+                    </a>
+                  </li>
+                  <li class="govuk-footer__inline-list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Terms and conditions
+                    </a>
+                  </li>
+                  <li class="govuk-footer__inline-list-item">
+                    <a class="govuk-footer__link" href="#">
+                      Rhestr o Wasanaethau Cymraeg
+                    </a>
+                  </li>
+                </ul>
+                <div class="govuk-footer__meta-custom">
+                  Built by the
+                  <a href="#" class="govuk-footer__link">Government Digital Service</a>
+                </div>
+
+                <svg role="presentation" focusable="false" class="govuk-footer__licence-logo" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 483.2 195.7" height="17" width="41">
+                  <path fill="currentColor" d="M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145"
+                  />
+                </svg>
+                <span class="govuk-footer__licence-description">
+                  All content is available under the
+                  <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, except where otherwise stated
+                </span>
+              </div>
+              <div class="govuk-footer__meta-item">
+                <a class="govuk-footer__link govuk-footer__copyright-logo :focus" href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/">© Crown copyright</a>
+              </div>
+            </div>
+          </div>
+        </footer>
+
+
+
+    </div>
+  </div>
+    
+
+{% endblock %}

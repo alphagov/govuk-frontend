@@ -82,6 +82,7 @@
     // contrast is still acceptable
     &:focus {
       color: $govuk-focus-text-colour;
+      text-decoration: none;
     }
 
     // alphagov/govuk_template includes a specific a:link:focus selector
@@ -115,6 +116,10 @@
       // Omitting colour will use default value of currentColor – if we
       // specified currentColor explicitly IE8 would ignore this rule.
       border-bottom: 1px solid;
+    }
+
+    &:focus {
+      border-bottom: 0;
     }
   }
 

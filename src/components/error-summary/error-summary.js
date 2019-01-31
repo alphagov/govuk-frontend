@@ -11,7 +11,7 @@ ErrorSummary.prototype.init = function () {
   if (!$module) {
     return
   }
-  $module.focus()
+  // $module.focus()
 
   $module.addEventListener('click', this.handleClick.bind(this))
 }

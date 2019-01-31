@@ -20,8 +20,7 @@
 /// Focusable with fill helper
 ///
 /// Provides an additional outline and background colour to clearly indicate when
-/// the target element is focussed. Used for interactive text-based elements such
-/// as links.
+/// the target element is focussed.
 ///
 /// @access public
 
@@ -30,5 +29,32 @@
     outline: $govuk-focus-width solid $govuk-focus-colour;
     outline-offset: 0;
     background-color: $govuk-focus-colour;
+    text-decoration: none;
+  }
+}
+
+/// Focusable with box-shadow
+///
+/// Removes the visible outline and replace with box-shadow and background colour. 
+/// Used for interactive text-based elements.
+///
+/// @access public
+
+@mixin govuk-focusable-text {
+  margin-right: -(govuk-spacing(1));
+  margin-left: -(govuk-spacing(1));
+  padding-top: 3px;
+  padding-right: govuk-spacing(1);
+  padding-left: govuk-spacing(1);
+  outline: $govuk-focus-width solid transparent;
+  outline-offset: 0;
+  background-color: $govuk-focus-colour;
+  box-shadow: 0 4px 0 govuk-colour("black");
+  text-decoration: none;
+}
+
+@mixin govuk-focusable-text-link {
+  &:focus {
+    @include govuk-focusable-text;
   }
 }

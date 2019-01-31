@@ -11,9 +11,25 @@
     @include govuk-font($size: 19);
     @include govuk-text-colour;
     @include govuk-focusable;
+    padding-top: govuk-spacing(1);
+    padding-bottom: govuk-spacing(1);
+  }
+
+  .govuk-file-upload:focus {
+    margin-right: -(govuk-spacing(1));
+    margin-left: -(govuk-spacing(1));
+    padding-right: govuk-spacing(1);
+    padding-left: govuk-spacing(1);
+    border: $govuk-border-width-form-element solid govuk-colour("black");
+    box-shadow: inset 0 0 0 2px govuk-colour("black");
   }
 
   .govuk-file-upload--error {
     border: $govuk-border-width-form-element-error solid $govuk-error-colour;
+
+    &:focus {
+      border: $govuk-border-width-form-element-error solid govuk-colour("black");
+      box-shadow: none;
+    }
   }
 }

@@ -27,6 +27,7 @@
     padding: (govuk-spacing(2) - $govuk-border-width-form-element - ($button-shadow-size / 2)) govuk-spacing(2); // s1
     border: $govuk-border-width-form-element solid transparent;
     border-radius: 0;
+    outline: $govuk-focus-width solid transparent !important;
     color: $govuk-button-text-colour;
     background-color: $govuk-button-colour;
     box-shadow: 0 $button-shadow-size 0 $govuk-button-shadow-colour; // s0
@@ -69,14 +70,29 @@
       border: 0;
     }
 
-    &:hover,
     &:focus {
+      padding-bottom: 5px;
+      color: govuk-colour("black");
+      background-color: govuk-colour("yellow");
+      box-shadow: 0 4px 0 govuk-colour("black");
+    }
+
+    &:hover {
+      color: govuk-colour("white");
       background-color: $govuk-button-hover-colour;
     }
 
     &:active {
       top: $button-shadow-size;
-      box-shadow: none;
+      padding-bottom: 8px;
+      border: $govuk-border-width-form-element solid govuk-colour("yellow");
+      color: govuk-colour("white");
+      background-color: $govuk-button-hover-colour;
+      box-shadow: inset 0 0 0 1px govuk-colour("yellow");
+
+      &:before {
+        box-shadow: none;
+      }
 
       @include govuk-if-ie8 {
         border-bottom-width: 0;
@@ -95,9 +111,9 @@
       position: absolute;
 
       top: -$govuk-border-width-form-element;
-      right: -$govuk-border-width-form-element;
+      right: -5px;
       bottom: -($govuk-border-width-form-element + $button-shadow-size);
-      left: -$govuk-border-width-form-element;
+      left: -5px;
 
       background: transparent;
     }

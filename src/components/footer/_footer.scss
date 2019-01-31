@@ -9,9 +9,9 @@
   $govuk-footer-background: $govuk-canvas-background-colour;
   $govuk-footer-border-top: $govuk-border-colour;
   $govuk-footer-border: $govuk-border-colour;
-  $govuk-footer-text: $govuk-secondary-text-colour;
+  $govuk-footer-text: $govuk-text-colour;
   $govuk-footer-link: $govuk-footer-text;
-  $govuk-footer-link-hover: $govuk-text-colour;
+  $govuk-footer-link-hover: $govuk-footer-text;
 
   // Based on the govuk-crest-2x.png image dimensions.
   $govuk-footer-crest-image-width-2x: 250px;
@@ -31,22 +31,25 @@
   }
 
   .govuk-footer__link {
-    @include govuk-focusable-fill;
+    @include govuk-focusable-text-link;
 
     &:link,
     &:visited {
       color: $govuk-footer-link;
+      text-decoration: none;
     }
 
     &:hover,
     &:active {
       color: $govuk-footer-link-hover;
+      text-decoration: underline;
     }
 
     // When focussed, the text colour needs to be darker to ensure that colour
     // contrast is still acceptable
     &:focus {
       color: $govuk-focus-text-colour;
+      text-decoration: none;
     }
 
     // alphagov/govuk_template includes a specific a:link:focus selector
@@ -115,6 +118,10 @@
     text-align: center;
     text-decoration: none;
     white-space: nowrap;
+
+    &:focus {
+      padding-top: ($govuk-footer-crest-image-height + govuk-spacing(2));
+    }
   }
 
   .govuk-footer__inline-list {

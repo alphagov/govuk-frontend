@@ -125,6 +125,7 @@
     // Since box-shadows are removed when users customise their colours, we set
     // a transparent outline that is shown instead.
     // https://accessibility.blog.gov.uk/2017/03/27/how-users-change-colours-on-websites/
+    border: 4px solid govuk-colour("black");
     outline: $govuk-focus-width solid transparent;
     outline-offset: $govuk-focus-width;
     box-shadow: 0 0 0 $govuk-focus-width $govuk-focus-colour;

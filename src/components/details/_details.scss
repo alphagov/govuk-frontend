@@ -19,7 +19,11 @@
     // Absolutely position the marker against this element
     position: relative;
 
+    margin-right: -(govuk-spacing(1));
     margin-bottom: govuk-spacing(1);
+    margin-left: -(govuk-spacing(1));
+    padding-top: 3px;
+    padding-right: govuk-spacing(1);
 
     // Allow for absolutely positioned marker and align with disclosed text
     padding-left: govuk-spacing(4) + $govuk-border-width;
@@ -39,13 +43,23 @@
   }
 
   .govuk-details__summary:focus {
+    margin-right: -(govuk-spacing(1));
+    margin-left: -(govuk-spacing(1));
+    padding-right: govuk-spacing(1);
+    padding-left: govuk-spacing(4) + $govuk-border-width;
     // -1px offset fixes gap between background and outline in Firefox
-    outline: ($govuk-focus-width + 1px) solid $govuk-focus-colour;
+    outline: ($govuk-focus-width + 1px) solid transparent;
     outline-offset: -1px;
     // When focussed, the text colour needs to be darker to ensure that colour
     // contrast is still acceptable
     color: $govuk-focus-text-colour;
     background: $govuk-focus-colour;
+    box-shadow: 0 4px 0 govuk-colour("black");
+
+    // remove underline on link
+    .govuk-details__summary-text {
+      text-decoration: none;
+    }
   }
 
   // Remove the default details marker so we can style our own consistently and
@@ -61,7 +75,7 @@
 
     top: 0;
     bottom: 0;
-    left: 0;
+    left: govuk-spacing(1);
 
     margin: auto;
 

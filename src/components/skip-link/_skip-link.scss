@@ -5,7 +5,8 @@
 @include govuk-exports("govuk/component/skip-link") {
   .govuk-skip-link {
     @include govuk-visually-hidden-focusable;
-    @include govuk-link-common;
+    @include govuk-focusable-fill;
+    @include govuk-typography-common;
     @include govuk-link-style-text;
     @include govuk-typography-responsive($size: 16);
 
