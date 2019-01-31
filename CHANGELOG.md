@@ -14,9 +14,11 @@
 
 🆕 New features:
 
-- Pull Request Title goes here
+- Allow describedBy parameter to be passed to the textarea component
 
-  Description goes here (optional)
+  Designed behaviour of that parameter is that if the hint text or error message or both exist, 
+  
+  they take precedence over the custom describedBy parameter.
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
