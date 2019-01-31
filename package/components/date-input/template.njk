@@ -65,6 +65,7 @@
         name: (params.namePrefix + "-" + item.name) if params.namePrefix else item.name,
         value: item.value,
         type: "number",
+        autocomplete: item.autocomplete,
         attributes: {
           pattern: "[0-9]*"
         }
