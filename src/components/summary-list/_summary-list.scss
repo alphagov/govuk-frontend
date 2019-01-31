@@ -54,10 +54,17 @@
     }
   }
 
+  .govuk-summary-list__key,
+  .govuk-summary-list__value {
+    // sass-lint:disable no-duplicate-properties
+    // Automatic wrapping for unbreakable text (e.g. URLs)
+    word-break: break-word; // WebKit/Blink only
+    word-break: break-all; // Standards
+  }
+
   .govuk-summary-list__key {
     margin-bottom: govuk-spacing(1);
     @include govuk-typography-weight-bold;
-    word-break: break-word;
     @include govuk-media-query($from: tablet) {
       width: 30%;
     }

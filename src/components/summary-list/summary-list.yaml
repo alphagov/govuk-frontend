@@ -337,6 +337,36 @@ examples:
               - href: '#'
                 text: Erase
         - key:
+            text: Long website address
+          value:
+            html: |
+              <a class="govuk-link" href="https://cs.wikipedia.org/wiki/Llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch">https://cs.wikipedia.org/wiki/Llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch</a>
+          actions:
+            items:
+              - href: '#'
+                text: Change
+                visuallyHiddenText: long website address
+        - key:
+            text: Long email address
+          value:
+            html: |
+              <a class="govuk-link" href="mailto:webmaster@llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch.com">webmaster@llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch.com</a>
+          actions:
+            items:
+              - href: '#'
+                text: Change
+                visuallyHiddenText: long email address
+        - key:
+            text: No wrapping allowed
+          value:
+            html: |
+              <p class="govuk-body" style="white-space: nowrap;">michelle.longish.name@example.com</p>
+          actions:
+            items:
+              - href: '#'
+                text: Change
+                visuallyHiddenText: no wrapping allowed
+        - key:
             text: Pneumonoultramicroscopicsilicovolcanoconiosis
           value:
             html: |
