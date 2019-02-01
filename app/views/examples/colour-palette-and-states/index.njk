@@ -63,11 +63,13 @@
         </div>
         {% endfor %}
     </div>
+
+  <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
   
-  <h2 class="govuk-heading-l govuk-!-padding-top-9">Form elements</h2>
+  <h2 class="govuk-heading-l">Form elements</h2>
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-
+      <h3 class="govuk-heading-m">Text input</h3>
         {% call govukFieldset() %}
           <span id="input"></span>
           {{ govukInput({
@@ -103,6 +105,9 @@
           }) }}
         {% endcall %}
 
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+
+        <h3 class="govuk-heading-m">Buttons</h3>
 
         {% call govukFieldset() %}
           {{ govukButton({
@@ -122,7 +127,32 @@
             "text": "Save and continue",
             "classes": ":focus"
           }) }}
+        {% endcall %}
+
+        {% call govukFieldset() %}
+          {{ govukButton({
+            "text": "Start now",
+            "classes": "govuk-button--start"
+          }) }}
+        {% endcall %}
+
+        {% call govukFieldset() %}
+          {{ govukButton({
+            "text": "Start now",
+            "classes": "govuk-button--start :hover"
+          }) }}
+        {% endcall %} 
+        
+        {% call govukFieldset() %}
+          {{ govukButton({
+            "text": "Start now",
+            "classes": "govuk-button--start :focus"
+          }) }}
         {% endcall %}  
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+
+        <h3 class="govuk-heading-m">Textarea</h3>
 
         {% call govukFieldset() %}
           <span id="textarea"></span>
@@ -168,6 +198,9 @@
           }) }}
         {% endcall %}
 
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+
+        <h3 class="govuk-heading-m">Radios</h3>
 
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
@@ -283,6 +316,11 @@
           </fieldset>
         </div>
 
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+
+        <h3 class="govuk-heading-m">Checkboxes</h3>
+
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
@@ -351,6 +389,10 @@
             </div>
           </fieldset>
         </div>
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+
+        <h3 class="govuk-heading-m">Date input</h3>
 
         {{ govukDateInput({
           id: "dob-1",
@@ -451,6 +493,10 @@
           ]
         }) }}
 
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+
+        <h3 class="govuk-heading-m">Select</h3>
+
         {% call govukFieldset() %}
           <span id="select"></span>
           {{ govukSelect({
@@ -534,6 +580,10 @@
           }) }}
         {% endcall %}
 
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+
+        <h3 class="govuk-heading-m">File upload</h3>
+
         {% call govukFieldset() %}
           <span id="file"></span>
           {{- govukFileUpload({
@@ -574,7 +624,11 @@
 
         {% from "accordion/macro.njk" import govukAccordion %}
 
-        <h2 class="govuk-heading-l govuk-!-padding-top-9">Other components</h2>
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+
+        <h2 class="govuk-heading-l">Other components</h2> 
+
+        <h3 class="govuk-heading-m">Accordion</h3>
 
         <div class="govuk-accordion" data-module="accordion" id="accordion-with-summary-sections">
 
@@ -973,6 +1027,10 @@
 
         </div>
 
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+
+        <h3 class="govuk-heading-m">Back link</h3>
+
         <div>
           {{ govukBackLink({
             text: "Back",
@@ -987,6 +1045,10 @@
             classes: ":focus"
           }) }}
         </div>
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+
+        <h3 class="govuk-heading-m">Breadcrumbs</h3>
 
         <div class="govuk-breadcrumbs">
           <ol class="govuk-breadcrumbs__list">
@@ -1011,7 +1073,11 @@
             <li class="govuk-breadcrumbs__list-item" aria-current="page">Travel abroad</li>
           </ol>
         </div>
-        
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+
+        <h3 class="govuk-heading-m">Details</h3>
+
         <details class="govuk-details">
           <summary class="govuk-details__summary">
             <span class="govuk-details__summary-text">
@@ -1033,6 +1099,10 @@
             We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.
           </div>
         </details>
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+
+        <h3 class="govuk-heading-m">Error summary</h3>
 
         <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="error-summary">
           <h2 class="govuk-error-summary__title" id="error-summary-title">
@@ -1066,15 +1136,61 @@
           </div>
         </div>
 
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+
+        <h3 class="govuk-heading-m">Inset text</h3>
+
         {{ govukInsetText({
           text: "It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application."
         }) }}
 
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+
+        <h3 class="govuk-heading-m">Panel</h3>
 
         {{ govukPanel({
           titleText: "Application complete",
           html: "Your reference number<br><strong>HDJ2123F</strong>"
         }) }}
+        
+        <p class="govuk-body">This component doesn’t have a defualt link style</p>
+
+        {{ govukPanel({
+          titleText: "Application complete",
+          html: "Your reference number<br><strong><a class='govuk-link' href='#'>HDJ2123F</a></strong>"
+        }) }}
+
+
+        {{ govukPanel({
+          titleText: "Application complete",
+          html: "Your reference number<br><strong><a class='govuk-link :focus' href='#'>HDJ2123F</a></strong>"
+        }) }}
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+
+        <h3 class="govuk-heading-m">Blue background</h3>
+
+        <p class="govuk-body">This is a faked example - has inline styles</p>
+
+        <div class="app-contact-panel" style="background-color: #1d70b8; color: #ffffff; padding: 30px;">
+          <h2 class="govuk-heading-m" style="color: #ffffff;">Get in touch</h2>
+          <p class="govuk-body" style="color: #ffffff; margin-bottom: 0;">
+            If you’ve got a question, idea or suggestion share it in <a class="govuk-link :focus" style="color: #0b0c0c" href="https://ukgovernmentdigital.slack.com/messages/govuk-design-system" data-hsupport="slack" style="color: #ffffff; text-decoration-color: #ffffff">#govuk-design-system</a> on cross-government Slack (<a class="govuk-link app-contact-panel__link" style="color: #ffffff; text-decoration-color: #ffffff" href="slack://channel?team=T04V6EBTR&amp;id=C6DMEH5R6" data-hsupport="slackapp">open in app</a>) or email the Design System team on <a class="govuk-link app-contact-panel__link" style="color: #ffffff; text-decoration-color: #ffffff" href="mailto:govuk-design-system-support@digital.cabinet-office.gov.uk" data-hsupport="email">govuk-design-system-support@digital.cabinet-office.gov.uk</a></p>
+        </div>
+
+        <h3 class="govuk-heading-m govuk-!-padding-top-6">Grey background</h3>
+
+        <p class="govuk-body">This is a faked example - has inline styles</p>
+
+        <div class="app-contact-panel" style="background-color: #f3f2f1; padding: 30px;">
+          <h2 class="govuk-heading-m">Get in touch</h2>
+          <p class="govuk-body" style="margin-bottom: 0;">
+            If you’ve got a question, idea or suggestion share it in <a class="govuk-link :focus" href="https://ukgovernmentdigital.slack.com/messages/govuk-design-system" data-hsupport="slack">#govuk-design-system</a> on cross-government Slack (<a class="govuk-link app-contact-panel__link"  href="slack://channel?team=T04V6EBTR&amp;id=C6DMEH5R6" data-hsupport="slackapp">open in app</a>) or email the Design System team on <a class="govuk-link app-contact-panel__link" href="mailto:govuk-design-system-support@digital.cabinet-office.gov.uk" data-hsupport="email">govuk-design-system-support@digital.cabinet-office.gov.uk</a></p>
+        </div>
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+
+        <h3 class="govuk-heading-m">Phase banner (including Tag)</h3>
 
         {{ govukPhaseBanner({
           tag: {
@@ -1082,6 +1198,10 @@
           },
           html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
         }) }}
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+
+        <h3 class="govuk-heading-m">Summary list</h3>
 
         {{ govukSummaryList({
           rows: [
@@ -1156,6 +1276,9 @@
           ]
         }) }}
 
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+
+        <h3 class="govuk-heading-m">Table</h3>
 
         {{ govukTable({
           caption: "Dates and amounts",
@@ -1195,6 +1318,10 @@
             ]
           ]
         }) }}
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+
+        <h3 class="govuk-heading-m">Tabs</h3>
 
         <div class="govuk-tabs" data-module="tabs">
           <h2 class="govuk-tabs__title">
@@ -1497,6 +1624,10 @@
           </section>
         </div>
 
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+
+        <h3 class="govuk-heading-m">Warning text</h3>
+
         {{ govukWarningText({
           text: "You can be fined up to £5,000 if you do not register.",
           iconFallbackText: "Warning"
@@ -1505,6 +1636,10 @@
     </div>
 
     <div class="govuk-grid-column-full">
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+
+        <h3 class="govuk-heading-m">Header</h3>
 
         <header class="govuk-header " role="banner" data-module="header">
           <div class="govuk-header__container govuk-width-container">
@@ -1558,7 +1693,8 @@
             </div>
           </div>
         </header>
-
+        
+        <hr class="govuk-section-break govuk-section-break--m">  
 
         <header class="govuk-header " role="banner" data-module="header">
           <div class="govuk-header__container govuk-width-container">
@@ -1613,6 +1749,10 @@
           </div>
         </header>
 
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
+
+        <h3 class="govuk-heading-m">Footer</h3>
 
         <footer class="govuk-footer " role="contentinfo">
           <div class="govuk-width-container ">
