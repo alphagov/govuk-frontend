@@ -212,5 +212,5 @@ examples:
         autocomplete: bday-month
       -
         name: year
-        classes: govuk-input--width-2
+        classes: govuk-input--width-4
         autocomplete: bday-year
