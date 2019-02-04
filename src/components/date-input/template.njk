@@ -56,6 +56,7 @@
     {%- if params.id %} id="{{ params.id }}"{% endif %}>
     {% for item in dateInputItems %}
     <div class="govuk-date-input__item">
+      {% set attributes = item.attributes if item.attributes else { pattern: "[0-9]*" } %}
       {{ govukInput({
         label: {
           text: item.label if item.label else item.name | capitalize,
@@ -67,9 +68,7 @@
         value: item.value,
         type: "number",
         autocomplete: item.autocomplete,
-        attributes: {
-          pattern: "[0-9]*"
-        }
+        attributes: attributes
       }) | indent(6) | trim }}
     </div>
   {% endfor %}

@@ -36,6 +36,10 @@ params:
     type: string
     required: false
     description: Classes to add to date input item.
+  - name: attributes
+    type: object
+    required: false
+    description: "HTML attributes (for example data attributes) to add to the date input tag. This overrides the default `{ pattern: '[0-9]*' }` so you will need to include this in your attributes."
 - name: hint
   type: object
   required: false
@@ -214,3 +218,31 @@ examples:
         name: year
         classes: govuk-input--width-4
         autocomplete: bday-year
+- name: with input attributes
+  data:
+    id: dob-with-input-attributes
+    namePrefix: dob-with-input-attributes
+    fieldset:
+      legend:
+        text: What is your date of birth?
+    hint:
+      text: For example, 31 3 1980
+    items:
+      -
+        name: day
+        classes: govuk-input--width-2
+        attributes:
+          pattern: '[0-9]*'
+          data-example-day: day
+      -
+        name: month
+        classes: govuk-input--width-2
+        attributes:
+          pattern: '[0-9]*'
+          data-example-month: month
+      -
+        name: year
+        classes: govuk-input--width-4
+        attributes:
+          pattern: '[0-9]*'
+          data-example-year: year

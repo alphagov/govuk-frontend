@@ -20,6 +20,24 @@
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
+- Allow attributes on date inputs
+
+  You can now provide attributes on day/month/year inputs (e.g. `data-example`) below:
+  ```js
+  {{ govukDateInput({
+    items: [
+      {
+        attributes: {
+          pattern: "[0-9]*",
+          "data-example": "value"
+        }
+      }
+    ]
+  }) }}
+  ```
+
+  ([PR #1172](https://github.com/alphagov/govuk-frontend/pull/1172))
+
 - Prevent horizontal jump as scrollbars appear
 
   As content vertical height grows (e.g. autocomplete results appear), browsers
