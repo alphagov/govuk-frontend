@@ -28,6 +28,12 @@
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
+- Fix wrapping of long lines of text in summary list
+
+  Thanks to [@MoJ-Longbeard](https://github.com/MoJ-Longbeard) for raising the issue.
+
+  ([PR #1169](https://github.com/alphagov/govuk-frontend/pull/1169))
+
 ## 2.6.0 (Feature release)
 
 🆕 New features:
