@@ -2,8 +2,9 @@ import '../../vendor/polyfills/Function/prototype/bind'
 import '../../vendor/polyfills/Event' // addEventListener
 import '../../vendor/polyfills/Element/prototype/closest'
 
-function ErrorSummary ($module) {
+function ErrorSummary ($module, options) {
   this.$module = $module
+  this.options = options || {}
 }
 
 ErrorSummary.prototype.init = function () {
@@ -11,9 +12,13 @@ ErrorSummary.prototype.init = function () {
   if (!$module) {
     return
   }
-  window.addEventListener('load', function () {
-    $module.focus()
-  })
+  var autofocus = this.options.autofocus === false ? this.options.autofocus : true
+
+  if (autofocus) {
+    window.addEventListener('load', function () {
+      $module.focus()
+    })
+  }
 
   $module.addEventListener('click', this.handleClick.bind(this))
 }
