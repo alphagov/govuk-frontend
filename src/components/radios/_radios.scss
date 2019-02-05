@@ -205,9 +205,9 @@
   }
 
   .govuk-radios--small .govuk-radios__label {
-    display: block;
     margin-top: -2px;
     padding: 11px govuk-spacing(3) 9px 0;
+    float: left;
 
     @include govuk-media-query($from: tablet) {
       padding: 9px govuk-spacing(3) 6px 0;
