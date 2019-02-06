@@ -218,6 +218,15 @@ describe('Button', () => {
       const $component = $('.govuk-button')
       expect($component.attr('type')).toEqual('button')
     })
+
+    it('renders with debounce data attribute', () => {
+      const $ = render('button', {
+        debounce: true
+      })
+
+      const $component = $('.govuk-button')
+      expect($component.attr('data-debounce')).toEqual('true')
+    })
   })
 
   describe('implicitly as no "element" param is set', () => {

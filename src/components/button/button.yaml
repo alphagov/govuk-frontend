@@ -79,9 +79,7 @@ examples:
 - name: debounced
   data:
     text: Submit
-    attributes: {
-      data-debounce: true
-    }
+    debounce: true
 - name: with active state
   description: Simulate triggering the :active CSS pseudo-class, not available in the production build.
   data:
