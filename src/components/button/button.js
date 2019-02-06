@@ -31,13 +31,11 @@ function Button ($module) {
 * @param {object} event event
 */
 Button.prototype.handleKeyDown = function (event) {
-  // get the target element
-  var target = event.target
   // if the element has a role='button' and the pressed key is a space, we'll simulate a click
-  if (target.getAttribute('role') === 'button' && event.keyCode === KEY_SPACE) {
+  if (event.keyCode === KEY_SPACE) {
     event.preventDefault()
     // trigger the target's click event
-    target.click()
+    event.target.click()
   }
 }
 
@@ -79,9 +77,15 @@ Button.prototype.debounce = function (event) {
 * this will help listening for later inserted elements with a role="button"
 */
 Button.prototype.init = function () {
-  this.$module.addEventListener('keydown', this.handleKeyDown.bind(this))
+  var $module = this.$module
+
+  // If the module is a link that is meant to be a button handle keydown.
+  if ($module.attributes && $module.getAttribute('role') === 'button') {
+    $module.addEventListener('keydown', this.handleKeyDown.bind(this))
+  }
+
   if (this.options.debounce === true) {
-    this.$module.addEventListener('click', this.debounce.bind(this))
+    $module.addEventListener('click', this.debounce.bind(this))
   }
 }
 
