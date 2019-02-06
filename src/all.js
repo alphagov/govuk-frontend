@@ -11,7 +11,10 @@ import Tabs from './components/tabs/tabs'
 
 function initAll () {
   // Find all buttons with [role=button] on the document to enhance.
-  new Button(document).init()
+  var $buttons = document.querySelectorAll('button, input[type="button"], [role="button"]')
+  nodeListForEach($buttons, function ($button) {
+    new Button($button).init()
+  })
 
   // Find all global accordion components to enhance.
   var $accordions = document.querySelectorAll('[data-module="accordion"]')
