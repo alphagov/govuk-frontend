@@ -45,7 +45,6 @@ Radios.prototype.setAttributes = function ($input) {
 }
 
 Radios.prototype.handleClick = function (event) {
-
   var allRadioInputs = document.querySelectorAll('input[type="radio"]')
 
   nodeListForEach(allRadioInputs, function ($input) {
