@@ -76,6 +76,12 @@ examples:
     element: input
     text: Explicit input button disabled
     disabled: true
+- name: debounced
+  data:
+    text: Submit
+    attributes: {
+      data-debounce: true
+    }
 - name: with active state
   description: Simulate triggering the :active CSS pseudo-class, not available in the production build.
   data:

@@ -67,7 +67,10 @@ describe('/components/button', () => {
         // Our examples don't have form wrappers so we need to overwrite it.
         await page.evaluate(() => {
           const $button = document.querySelector('button')
-          $button.outerHTML = `<form>${$button.outerHTML}</form>`
+          const $form = document.createElement('form')
+          $button.parentNode.appendChild($form)
+          $button.parentNode.removeChild($button)
+          $form.appendChild($button)
 
           window.__BUTTON_CLICK_EVENTS = 0
           document.addEventListener('click', () => {
@@ -82,16 +85,45 @@ describe('/components/button', () => {
 
         expect(buttonPressedCount).toBe(2)
       })
-      it('prevents repeat submissions when in a form', async () => {
+      it('doesnt prevent repeat submissions when in a form without debounce feature on', async () => {
         await page.goto(baseUrl + '/components/button/preview', { waitUntil: 'load' })
 
         // Our examples don't have form wrappers so we need to overwrite it.
         await page.evaluate(() => {
           const $button = document.querySelector('button')
-          $button.outerHTML = `<form>${$button.outerHTML}</form>`
+          const $form = document.createElement('form')
+          $button.parentNode.appendChild($form)
+          $button.parentNode.removeChild($button)
+          $form.appendChild($button)
 
           window.__SUBMIT_EVENTS = 0
-          document.querySelector('form').addEventListener('submit', event => {
+          $form.addEventListener('submit', event => {
+            window.__SUBMIT_EVENTS++
+            // Don't refresh the page, which will destroy the context to test against.
+            event.preventDefault()
+          })
+        })
+
+        await page.click('button')
+        await page.click('button')
+
+        const submitCount = await page.evaluate(() => window.__SUBMIT_EVENTS)
+
+        expect(submitCount).toBe(2)
+      })
+      it('prevents repeat submissions when in a form', async () => {
+        await page.goto(baseUrl + '/components/button/debounced/preview', { waitUntil: 'load' })
+
+        // Our examples don't have form wrappers so we need to overwrite it.
+        await page.evaluate(() => {
+          const $button = document.querySelector('button')
+          const $form = document.createElement('form')
+          $button.parentNode.appendChild($form)
+          $button.parentNode.removeChild($button)
+          $form.appendChild($button)
+
+          window.__SUBMIT_EVENTS = 0
+          $form.addEventListener('submit', event => {
             window.__SUBMIT_EVENTS++
             // Don't refresh the page, which will destroy the context to test against.
             event.preventDefault()
@@ -106,15 +138,18 @@ describe('/components/button', () => {
         expect(submitCount).toBe(1)
       })
       it('when a user clicks again intentionally it is not prevented', async () => {
-        await page.goto(baseUrl + '/components/button/preview', { waitUntil: 'load' })
+        await page.goto(baseUrl + '/components/button/debounced/preview', { waitUntil: 'load' })
 
         // Our examples don't have form wrappers so we need to overwrite it.
         await page.evaluate(() => {
           const $button = document.querySelector('button')
-          $button.outerHTML = `<form>${$button.outerHTML}</form>`
+          const $form = document.createElement('form')
+          $button.parentNode.appendChild($form)
+          $button.parentNode.removeChild($button)
+          $form.appendChild($button)
 
           window.__SUBMIT_EVENTS = 0
-          document.querySelector('form').addEventListener('submit', event => {
+          $form.addEventListener('submit', event => {
             window.__SUBMIT_EVENTS++
             // Don't refresh the page, which will destroy the context to test against.
             event.preventDefault()
