@@ -15,7 +15,7 @@
 
   For example if the previous version is `2.3.0` and there are entries for `Breaking changes` then the new release should be `3.0.0`.
 
-  See the [versioning documentation](../versioning.md) for more information.
+  See the [versioning documentation](versioning.md) for more information.
 
 5. Update [`CHANGELOG.md`](../../CHANGELOG.md) "Unreleased" heading with the new version number.
   Copy the [`CHANGELOG_TEMPLATE.md`](./CHANGELOG_TEMPLATE.md), above the new release to make it easy for new contributors.
