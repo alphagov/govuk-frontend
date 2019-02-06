@@ -8,14 +8,21 @@
  * Usage instructions:
  * the 'shim' will be automatically initialised
  */
+import '../../vendor/polyfills/Function/prototype/bind'
 import '../../vendor/polyfills/Event' // addEventListener and event.target normaliziation
 
 var KEY_SPACE = 32
 var DEBOUNCE_TIMEOUT_IN_SECONDS = 1
-var debounceFormSubmitTimer = null
 
 function Button ($module) {
   this.$module = $module
+
+  this.options = {}
+  this.options.debounce = ($module.attributes && $module.getAttribute('data-debounce') === 'true')
+
+  if (this.options.debounce) {
+    this.debounceFormSubmitTimer = null
+  }
 }
 
 /**
@@ -57,14 +64,14 @@ Button.prototype.debounce = function (event) {
   }
 
   // If the timer is still running then we want to prevent the click from submitting the form
-  if (debounceFormSubmitTimer) {
+  if (this.debounceFormSubmitTimer) {
     event.preventDefault()
     return false
   }
 
-  debounceFormSubmitTimer = setTimeout(function () {
-    debounceFormSubmitTimer = null
-  }, DEBOUNCE_TIMEOUT_IN_SECONDS * 1000)
+  this.debounceFormSubmitTimer = setTimeout(function () {
+    this.debounceFormSubmitTimer = null
+  }.bind(this), DEBOUNCE_TIMEOUT_IN_SECONDS * 1000)
 }
 
 /**
@@ -72,8 +79,10 @@ Button.prototype.debounce = function (event) {
 * this will help listening for later inserted elements with a role="button"
 */
 Button.prototype.init = function () {
-  this.$module.addEventListener('keydown', this.handleKeyDown)
-  this.$module.addEventListener('click', this.debounce)
+  this.$module.addEventListener('keydown', this.handleKeyDown.bind(this))
+  if (this.options.debounce === true) {
+    this.$module.addEventListener('click', this.debounce.bind(this))
+  }
 }
 
 export default Button
