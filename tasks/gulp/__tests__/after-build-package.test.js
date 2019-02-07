@@ -44,6 +44,7 @@ describe('package/', () => {
 
       const additionalFilesNotInSrc = [
         'package.json',
+        'govuk-prototype-kit.config.json',
         '**/macro-options.json'
       ]
 
@@ -51,9 +52,7 @@ describe('package/', () => {
         files => {
           let filesNotInSrc = files
           // Use glob to generate an array of files that accounts for wildcards in filenames
-          filesNotInSrc = glob.sync('{' + additionalFilesNotInSrc.join(',') + '}')
-            // Remove /package prefix from filenames
-            .map(file => file.replace(/^package\//, ''))
+          filesNotInSrc = glob.sync('{' + additionalFilesNotInSrc.join(',') + '}', { cwd: 'package' })
 
           return files
             // Remove /src prefix from filenames
