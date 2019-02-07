@@ -46,6 +46,15 @@
   <p class="govuk-body-l">Documenting component colour combinations for WCAG 2.1 updates</p>
 
   <h2 class="govuk-heading-l">Links</h2>
+
+  <p class="govuk-body">Issues:</p>
+
+  <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
+    <li>Visited colour (Not updated - still purple)</li>
+    <li>Hover colour (May not be obvious enough just using colour)</li>
+    <li>Focus colour - Fails non-text contrast against white</li>
+  </ul>
+
     <div class="govuk-grid-row">
         {% for variant_description, variant_class in variants %}
           <div class="govuk-grid-column-one-quarter">
@@ -64,12 +73,33 @@
         {% endfor %}
     </div>
 
+    <h3 class="govuk-heading-m">Potential solution</h3>
+
+    <h4 class="govuk-heading-s">Visited</h4>
+    
+    <p class="govuk-body"> ¯\_(ツ)_/¯</p>
+
+    <h4 class="govuk-heading-s">Hover</h4>
+
+    <p class="govuk-body"> ¯\_(ツ)_/¯</p>
+
+    <h4 class="govuk-heading-s">Focus</h4>
+
+    <p class="govuk-body">The focus state can pass WCAG 2.1 by making another visual change to this state. For example removing the link <a href="/" class="govuk-link :focus" style="text-decoration: none;">underline</a> when focussed means that non-text contrast does not need to be met.</p>
+
   <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
   
   <h2 class="govuk-heading-l">Form elements</h2>
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h3 class="govuk-heading-m">Text input</h3>
+
+        <p class="govuk-body">Issues:</p>
+
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
+          <li>Focus colour - Fails non-text contrast against white</li>
+        </ul>
+
         {% call govukFieldset() %}
           <span id="input"></span>
           {{ govukInput({
@@ -154,6 +184,12 @@
 
         <h3 class="govuk-heading-m">Textarea</h3>
 
+       <p class="govuk-body">Issues:</p>
+
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
+          <li>Focus colour - Fails non-text contrast against white</li>
+        </ul>
+
         {% call govukFieldset() %}
           <span id="textarea"></span>
           {% from "textarea/macro.njk" import govukTextarea %}
@@ -201,6 +237,12 @@
         <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
 
         <h3 class="govuk-heading-m">Radios</h3>
+
+        <p class="govuk-body">Issues:</p>
+
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
+          <li>Focus colour - Fails non-text contrast against white</li>
+        </ul>
 
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
@@ -321,6 +363,12 @@
 
         <h3 class="govuk-heading-m">Checkboxes</h3>
 
+        <p class="govuk-body">Issues:</p>
+
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
+          <li>Focus colour - Fails non-text contrast against white</li>
+        </ul>
+
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
@@ -393,6 +441,12 @@
         <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
 
         <h3 class="govuk-heading-m">Date input</h3>
+
+       <p class="govuk-body">Issues:</p>
+
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
+          <li>Focus colour - will be fixed by text input</li>
+        </ul>
 
         {{ govukDateInput({
           id: "dob-1",
@@ -497,6 +551,12 @@
 
         <h3 class="govuk-heading-m">Select</h3>
 
+       <p class="govuk-body">Issues:</p>
+
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
+          <li>Focus colour - Fails non-text contrast against white</li>
+        </ul>
+
         {% call govukFieldset() %}
           <span id="select"></span>
           {{ govukSelect({
@@ -584,6 +644,12 @@
 
         <h3 class="govuk-heading-m">File upload</h3>
 
+        <p class="govuk-body">Issues:</p>
+
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
+          <li>Focus colour - Fails non-text contrast against white</li>
+        </ul>
+
         {% call govukFieldset() %}
           <span id="file"></span>
           {{- govukFileUpload({
@@ -629,6 +695,14 @@
         <h2 class="govuk-heading-l">Other components</h2> 
 
         <h3 class="govuk-heading-m">Accordion</h3>
+
+        <p class="govuk-body">Issues:</p>
+
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
+          <li>Hover colour - Fails non-text contrast against white</li>
+          <li>Focus colour - Fails non-text contrast against white</li>
+          <li>Hover and Focus colour - Fails non-text contrast against each other</li>
+        </ul>
 
         <div class="govuk-accordion" data-module="accordion" id="accordion-with-summary-sections">
 
@@ -1031,6 +1105,12 @@
 
         <h3 class="govuk-heading-m">Back link</h3>
 
+        <p class="govuk-body">Issues:</p>
+
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
+          <li>Focus colour - can use same solution as text link providing it has a background</li>
+        </ul>
+
         <div>
           {{ govukBackLink({
             text: "Back",
@@ -1049,6 +1129,12 @@
         <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
 
         <h3 class="govuk-heading-m">Breadcrumbs</h3>
+
+        <p class="govuk-body">Issues:</p>
+
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
+          <li>Focus colour - can use same solution as text link providing it has a background</li>
+        </ul>
 
         <div class="govuk-breadcrumbs">
           <ol class="govuk-breadcrumbs__list">
@@ -1078,6 +1164,13 @@
 
         <h3 class="govuk-heading-m">Details</h3>
 
+        <p class="govuk-body">Issues:</p>
+
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
+          <li>Although this is a failure on focus colour the arrow position and state change should mean it still passes WCAG 2.1 (Although it will be fixed by the text link style anyway)</li>
+        </ul>
+
+
         <details class="govuk-details">
           <summary class="govuk-details__summary">
             <span class="govuk-details__summary-text">
@@ -1103,6 +1196,12 @@
         <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
 
         <h3 class="govuk-heading-m">Error summary</h3>
+
+        <p class="govuk-body">Note:</p>
+
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
+            <li>Focus colour - can use same solution as text link providing it has a background</li>
+        </ul>
 
         <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="error-summary">
           <h2 class="govuk-error-summary__title" id="error-summary-title">
@@ -1140,6 +1239,12 @@
 
         <h3 class="govuk-heading-m">Inset text</h3>
 
+        <p class="govuk-body">Note:</p>
+
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
+          <li>Border colour - Technically fails contrast but not an interactive element</li>
+        </ul>
+
         {{ govukInsetText({
           text: "It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application."
         }) }}
@@ -1153,13 +1258,18 @@
           html: "Your reference number<br><strong>HDJ2123F</strong>"
         }) }}
         
-        <p class="govuk-body">This component doesn’t have a defualt link style</p>
+        <p class="govuk-body">Inore - This component doesn’t have a defualt link style</p>
 
         {{ govukPanel({
           titleText: "Application complete",
           html: "Your reference number<br><strong><a class='govuk-link' href='#'>HDJ2123F</a></strong>"
         }) }}
 
+       <p class="govuk-body">Note:</p>
+
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
+          <li>Focus colour - can use same solution as text link providing it has a background</li>
+        </ul>
 
         {{ govukPanel({
           titleText: "Application complete",
@@ -1169,6 +1279,12 @@
         <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
 
         <h3 class="govuk-heading-m">Blue background</h3>
+
+       <p class="govuk-body">Note:</p>
+
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
+          <li>Focus colour - can use same solution as text link providing it has a background</li>
+        </ul>
 
         <p class="govuk-body">This is a faked example - has inline styles</p>
 
@@ -1192,6 +1308,12 @@
 
         <h3 class="govuk-heading-m">Phase banner (including Tag)</h3>
 
+       <p class="govuk-body">Note:</p>
+
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
+          <li>Focus colour - can use same solution as text link providing it has a background</li>
+        </ul>
+
         {{ govukPhaseBanner({
           tag: {
             text: "alpha"
@@ -1202,6 +1324,12 @@
         <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
 
         <h3 class="govuk-heading-m">Summary list</h3>
+
+       <p class="govuk-body">Note:</p>
+
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
+          <li>Focus colour - can use same solution as text link providing it has a background</li>
+        </ul>
 
         {{ govukSummaryList({
           rows: [
@@ -1322,6 +1450,20 @@
         <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
 
         <h3 class="govuk-heading-m">Tabs</h3>
+
+       <p class="govuk-body">Issues:</p>
+
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
+          <li>Focus colour - focussed tab against background</li>
+          <li>Inactive state - inactive tab background against page packground</li>
+          <li>Hover state - Doesn’t have one</li>
+        </ul>
+
+        <p class="govuk-body">Notes:</p>
+
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
+          <li>Should feel like a similar solution to Accordions</li>
+        </ul>
 
         <div class="govuk-tabs" data-module="tabs">
           <h2 class="govuk-tabs__title">
@@ -1473,7 +1615,6 @@
           </section>
         </div>
 
-
         <div class="govuk-tabs" data-module="tabs">
           <h2 class="govuk-tabs__title">
             Contents
@@ -1624,6 +1765,314 @@
           </section>
         </div>
 
+        <h3 class="govuk-heading-m">Potential solution</h3>
+
+        <h4 class="govuk-heading-s">Inactive state</h4>
+    
+        <div class="govuk-tabs" data-module="tabs">
+          <h2 class="govuk-tabs__title">
+            Contents
+          </h2>
+
+          <ul class="govuk-tabs__list">
+            <li class="govuk-tabs__list-item">
+              <a class="govuk-tabs__tab govuk-tabs__tab--selected" style="text-decoration: underline" href="#past-day">
+                Past day
+              </a>
+            </li>
+            <li class="govuk-tabs__list-item">
+              <a class="govuk-tabs__tab" style="text-decoration: underline"  href="#past-week">
+                Past week
+              </a>
+            </li>
+            <li class="govuk-tabs__list-item">
+              <a class="govuk-tabs__tab" style="text-decoration: underline" href="#past-month">
+                Past month
+              </a>
+            </li>
+            <li class="govuk-tabs__list-item">
+              <a class="govuk-tabs__tab" style="text-decoration: underline" href="#past-year">
+                Past year
+              </a>
+            </li>
+          </ul>
+
+          <section class="govuk-tabs__panel" id="past-day">
+            <h2 class="govuk-heading-l">Past day</h2>
+            <table class="govuk-table">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th class="govuk-table__header" scope="col">Case manager</th>
+                  <th class="govuk-table__header" scope="col">Cases opened</th>
+                  <th class="govuk-table__header" scope="col">Cases closed</th>
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">David Francis</td>
+                  <td class="govuk-table__cell">3</td>
+                  <td class="govuk-table__cell">0</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Paul Farmer</td>
+                  <td class="govuk-table__cell">1</td>
+                  <td class="govuk-table__cell">0</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Rita Patel</td>
+                  <td class="govuk-table__cell">2</td>
+                  <td class="govuk-table__cell">0</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </section>
+          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-week">
+            <h2 class="govuk-heading-l">Past week</h2>
+            <table class="govuk-table">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th class="govuk-table__header" scope="col">Case manager</th>
+                  <th class="govuk-table__header" scope="col">Cases opened</th>
+                  <th class="govuk-table__header" scope="col">Cases closed</th>
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">David Francis</td>
+                  <td class="govuk-table__cell">24</td>
+                  <td class="govuk-table__cell">18</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Paul Farmer</td>
+                  <td class="govuk-table__cell">16</td>
+                  <td class="govuk-table__cell">20</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Rita Patel</td>
+                  <td class="govuk-table__cell">24</td>
+                  <td class="govuk-table__cell">27</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </section>
+          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-month">
+            <h2 class="govuk-heading-l">Past month</h2>
+            <table class="govuk-table">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th class="govuk-table__header" scope="col">Case manager</th>
+                  <th class="govuk-table__header" scope="col">Cases opened</th>
+                  <th class="govuk-table__header" scope="col">Cases closed</th>
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">David Francis</td>
+                  <td class="govuk-table__cell">98</td>
+                  <td class="govuk-table__cell">95</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Paul Farmer</td>
+                  <td class="govuk-table__cell">122</td>
+                  <td class="govuk-table__cell">131</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Rita Patel</td>
+                  <td class="govuk-table__cell">126</td>
+                  <td class="govuk-table__cell">142</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </section>
+          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-year">
+            <h2 class="govuk-heading-l">Past year</h2>
+            <table class="govuk-table">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th class="govuk-table__header" scope="col">Case manager</th>
+                  <th class="govuk-table__header" scope="col">Cases opened</th>
+                  <th class="govuk-table__header" scope="col">Cases closed</th>
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">David Francis</td>
+                  <td class="govuk-table__cell">1380</td>
+                  <td class="govuk-table__cell">1472</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Paul Farmer</td>
+                  <td class="govuk-table__cell">1129</td>
+                  <td class="govuk-table__cell">1083</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Rita Patel</td>
+                  <td class="govuk-table__cell">1539</td>
+                  <td class="govuk-table__cell">1265</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </section>
+        </div>
+
+
+        <h4 class="govuk-heading-s">Focus state</h4>
+    
+        <div class="govuk-tabs" data-module="tabs">
+          <h2 class="govuk-tabs__title">
+            Contents
+          </h2>
+
+          <ul class="govuk-tabs__list">
+            <li class="govuk-tabs__list-item">
+              <a class="govuk-tabs__tab govuk-tabs__tab--selected" style="text-decoration: underline" href="#past-day">
+                Past day
+              </a>
+            </li>
+            <li class="govuk-tabs__list-item">
+              <a class="govuk-tabs__tab :focus" style="text-decoration: noneunderline"  href="#past-week">
+                Past week
+              </a>
+            </li>
+            <li class="govuk-tabs__list-item">
+              <a class="govuk-tabs__tab" style="text-decoration: underline" href="#past-month">
+                Past month
+              </a>
+            </li>
+            <li class="govuk-tabs__list-item">
+              <a class="govuk-tabs__tab" style="text-decoration: underline" href="#past-year">
+                Past year
+              </a>
+            </li>
+          </ul>
+
+          <section class="govuk-tabs__panel" id="past-day">
+            <h2 class="govuk-heading-l">Past day</h2>
+            <table class="govuk-table">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th class="govuk-table__header" scope="col">Case manager</th>
+                  <th class="govuk-table__header" scope="col">Cases opened</th>
+                  <th class="govuk-table__header" scope="col">Cases closed</th>
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">David Francis</td>
+                  <td class="govuk-table__cell">3</td>
+                  <td class="govuk-table__cell">0</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Paul Farmer</td>
+                  <td class="govuk-table__cell">1</td>
+                  <td class="govuk-table__cell">0</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Rita Patel</td>
+                  <td class="govuk-table__cell">2</td>
+                  <td class="govuk-table__cell">0</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </section>
+          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-week">
+            <h2 class="govuk-heading-l">Past week</h2>
+            <table class="govuk-table">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th class="govuk-table__header" scope="col">Case manager</th>
+                  <th class="govuk-table__header" scope="col">Cases opened</th>
+                  <th class="govuk-table__header" scope="col">Cases closed</th>
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">David Francis</td>
+                  <td class="govuk-table__cell">24</td>
+                  <td class="govuk-table__cell">18</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Paul Farmer</td>
+                  <td class="govuk-table__cell">16</td>
+                  <td class="govuk-table__cell">20</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Rita Patel</td>
+                  <td class="govuk-table__cell">24</td>
+                  <td class="govuk-table__cell">27</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </section>
+          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-month">
+            <h2 class="govuk-heading-l">Past month</h2>
+            <table class="govuk-table">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th class="govuk-table__header" scope="col">Case manager</th>
+                  <th class="govuk-table__header" scope="col">Cases opened</th>
+                  <th class="govuk-table__header" scope="col">Cases closed</th>
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">David Francis</td>
+                  <td class="govuk-table__cell">98</td>
+                  <td class="govuk-table__cell">95</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Paul Farmer</td>
+                  <td class="govuk-table__cell">122</td>
+                  <td class="govuk-table__cell">131</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Rita Patel</td>
+                  <td class="govuk-table__cell">126</td>
+                  <td class="govuk-table__cell">142</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </section>
+          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-year">
+            <h2 class="govuk-heading-l">Past year</h2>
+            <table class="govuk-table">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th class="govuk-table__header" scope="col">Case manager</th>
+                  <th class="govuk-table__header" scope="col">Cases opened</th>
+                  <th class="govuk-table__header" scope="col">Cases closed</th>
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">David Francis</td>
+                  <td class="govuk-table__cell">1380</td>
+                  <td class="govuk-table__cell">1472</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Paul Farmer</td>
+                  <td class="govuk-table__cell">1129</td>
+                  <td class="govuk-table__cell">1083</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Rita Patel</td>
+                  <td class="govuk-table__cell">1539</td>
+                  <td class="govuk-table__cell">1265</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </section>
+        </div>
+
+
         <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
 
         <h3 class="govuk-heading-m">Warning text</h3>
@@ -1640,6 +2089,12 @@
         <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
 
         <h3 class="govuk-heading-m">Header</h3>
+
+       <p class="govuk-body">Issues:</p>
+
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
+          <li>Active link colour - Contrast against black</li>
+        </ul>        
 
         <header class="govuk-header " role="banner" data-module="header">
           <div class="govuk-header__container govuk-width-container">
@@ -1753,6 +2208,19 @@
         <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
 
         <h3 class="govuk-heading-m">Footer</h3>
+
+       <p class="govuk-body">Issues:</p>
+
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
+          <li>Link colour - Text contrast against background</li>
+        </ul>
+
+       <p class="govuk-body">Notes:</p>
+
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
+          <li>Link colour - If we make it darker it will need an alternate hover state</li>
+          <li>Focus - Will be fixed by text link update if it has background colour</li>
+        </ul>
 
         <footer class="govuk-footer " role="contentinfo">
           <div class="govuk-width-container ">
