@@ -7,6 +7,10 @@
     // Set the overall page background colour to the same colour as used by the
     // footer to give the illusion of a long footer.
     background-color: $govuk-canvas-background-colour;
+
+    // Prevent automatic text sizing, as we already cater for small devices and
+    // would like the browser to stay on 100% text zoom by default.
+    text-size-adjust: 100%;
   }
 
   // Applied to the <body> element
