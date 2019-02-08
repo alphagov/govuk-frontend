@@ -20,9 +20,21 @@
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
+🔧 Fixes:
+
+- Pull Request Title goes here
+
+  Description goes here (optional)
+
+  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+
+## 2.7.0 (Feature release)
+
+🆕 New features:
+
 - Added config file for prototype kit.
 
-  Added a configuration file for an experimental feature in Prototype kit to allow departments to use their own frontend along side govuk-frontend
+  Added a configuration file for an experimental feature in Prototype kit to allow departments to use their own frontend alongside govuk-frontend
 
   Thanks @matcarey (HMRC) for this contribution
 
@@ -37,12 +49,6 @@
   ([PR #1178](https://github.com/alphagov/govuk-frontend/pull/1178))
 
 🔧 Fixes:
-
-- Pull Request Title goes here
-
-  Description goes here (optional)
-
-  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
 - Fix wrapping of long lines of text in summary list
 
