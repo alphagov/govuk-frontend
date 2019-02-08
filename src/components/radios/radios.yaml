@@ -48,10 +48,6 @@ params:
     type: string
     required: false
     description: Specific id attribute for the radio item. If omitted, then `idPrefix` string will be applied.
-  - name: name
-    type: string
-    required: true
-    description: Specific name for the radio item. If omitted, then component global `name` string will be applied.
   - name: value
     type: string
     required: true
