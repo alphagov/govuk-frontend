@@ -20,6 +20,14 @@
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
+- Added config file for prototype kit.
+
+  Added a configuration file for an experimental feature in Prototype kit to allow departments to use their own frontend along side govuk-frontend
+
+  Thanks @matcarey (HMRC) for this contribution
+
+  ([PR #1102](https://github.com/alphagov/govuk-frontend/pull/1102))
+
 - Disable incorrect iOS/Edge text size adjustments
 
   To cater for non-responsive websites, iOS and Edge automatically increase font sizes (iOS in landscape, Edge in portrait on HiDPI displays).
