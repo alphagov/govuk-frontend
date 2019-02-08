@@ -28,6 +28,10 @@ params:
     type: boolean
     required: false
     description: Sets the option item as disabled.
+  - name: attributes
+    type: object
+    required: false
+    description: HTML attributes (for example data attributes) to add to the option.
 - name: label
   type: object
   required: false
@@ -59,7 +63,7 @@ params:
 - name: attributes
   type: object
   required: false
-  description: HTML attributes (for example data attributes) to add to the anchor tag.
+  description: HTML attributes (for example data attributes) to add to the select.
 
 examples:
 - name: default
