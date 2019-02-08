@@ -20,6 +20,14 @@
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
+- Disable incorrect iOS/Edge text size adjustments
+
+  To cater for non-responsive websites, iOS and Edge automatically increase font sizes (iOS in landscape, Edge in portrait on HiDPI displays).
+
+  Since we have already considered typography at these device sizes, this feature is now turned off.
+
+  ([PR #1178](https://github.com/alphagov/govuk-frontend/pull/1178))
+
 🔧 Fixes:
 
 - Pull Request Title goes here
