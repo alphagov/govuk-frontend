@@ -41,8 +41,8 @@
       titleText: "There is a problem",
       errorList: [
         {
-          text: "Date of birth must be in the past",
-          href: "#dob-error"
+          text: "Enter your full name",
+          href: "#full-name"
         }
       ]
     }) }}
@@ -57,9 +57,12 @@
       hint: {
         text: "This should be your name as you want it to appear on your licence"
       },
+      errorMessage: {
+        text: "Enter your full name"
+      },
       id: "full-name",
       name: "full-name",
-      value: "Enrico Rastelli"
+      value: ""
     }) }}
 
     {{ govukDateInput({
@@ -67,7 +70,7 @@
       namePrefix: "dob",
       fieldset: {
         legend: {
-          text: "What is your date of birth?",
+          text: "Date of birth",
           isPageHeading: true,
           classes: "govuk-fieldset__legend--m"
         }
@@ -75,26 +78,37 @@
       hint: {
         text: "For example, 31 3 1980"
       },
-      errorMessage: {
-        text: "Date of birth must be in the past"
-      },
       items: [
         {
-          classes: "govuk-input--width-2 govuk-input--error",
+          classes: "govuk-input--width-2",
           name: "day",
           value: "19"
         },
         {
-          classes: "govuk-input--width-2 govuk-input--error",
+          classes: "govuk-input--width-2",
           name: "month",
           value: "12"
         },
         {
-          classes: "govuk-input--width-4 govuk-input--error",
+          classes: "govuk-input--width-4",
           name: "year",
-          value: "2019"
+          value: "1896"
         }
       ]
+    }) }}
+
+    {{ govukInput({
+      label: {
+        text: "Email address",
+        classes: "govuk-label--m"
+      },
+      hint: {
+        text: "We’ll only use this to contact you about your application."
+      },
+      id: "email",
+      name: "email",
+      type: "email",
+      value: "enrico.rastelli@juggling.club"
     }) }}
 
     {{ govukButton({

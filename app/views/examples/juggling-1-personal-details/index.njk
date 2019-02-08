@@ -51,7 +51,7 @@
       namePrefix: "dob",
       fieldset: {
         legend: {
-          text: "What is your date of birth?",
+          text: "Date of birth",
           isPageHeading: true,
           classes: "govuk-fieldset__legend--m"
         }
@@ -61,10 +61,24 @@
       }
     }) }}
 
-    {{ govukButton({
-      "text": "Continue",
-      "href": "/examples/juggling-2-error"
+    {{ govukInput({
+      label: {
+        text: "Email address",
+        classes: "govuk-label--m"
+      },
+      hint: {
+        text: "We’ll only use this to contact you about your application."
+      },
+      id: "email",
+      name: "email",
+      type: "email"
     }) }}
+
+  <form action="/examples/juggling-2-error" method="post">
+    {{ govukButton({
+      "text": "Continue"
+    }) }}
+  </form>
   </div>
 </div>
 
