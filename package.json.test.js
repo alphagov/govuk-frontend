@@ -12,7 +12,7 @@ describe('because rollup 0.60 drops support for Internet Explorer 8', () => {
 
   describe('rollup', () => {
     it('should be pinned to 0.56.5 in package-lock.json', () => {
-      expect(packageLockJson.dependencies['gulp-better-rollup'].requires.rollup).toEqual('0.56.5')
+      expect(packageLockJson.dependencies['gulp-better-rollup'].requires.rollup).toEqual('>=0.48 <0.57')
       expect(packageLockJson.dependencies['gulp-better-rollup'].dependencies.rollup.version).toEqual('0.56.5')
     })
   })
