@@ -12,8 +12,26 @@
 
   .sdn-headline__container {
     @include govuk-responsive-padding(5, "top");
-    @include govuk-responsive-padding(5, "bottom");
     color: $sdn-headline-text-color;
+
+    @include mq ($from: tablet) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+  }
+
+  .sdn-headline__part {
+    @include govuk-responsive-padding(5, "bottom");
+    max-width: 100%;
+    flex-shrink: 0;
+
+    &--right {
+      @include mq ($from: tablet) {
+        margin: -7px 0;
+      }
+    }
   }
 
   .sdn-headline__headline {
@@ -22,5 +40,9 @@
 
   .sdn-headline__subheadline {
     @include govuk-font($size: 24);
+  }
+
+  .sdn-headline__button {
+    margin-bottom: 0;
   }
 }

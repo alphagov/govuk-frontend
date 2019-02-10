@@ -1,10 +1,15 @@
 <div class="sdn-headline {%- if params.classes %} {{ params.classes }}{% endif %}"{% for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
   <div class="sdn-headline__container govuk-width-container">
-    <div>
+    <div class="sdn-headline__part">
       <span class="sdn-headline__headline">{{ params.headline }}{%- if params.subheadline %}: {% endif %}</span>
       {%- if params.subheadline %}
         <span class="sdn-headline__subheadline">{{ params.subheadline }}</span>
       {% endif %}
     </div>
+    {% if params.button %}
+      <div class="sdn-headline__part sdn-headline__part--right">
+          <a class="sdn-headline__button govuk-button" href="/">{{ params.button }}</a>
+      </div>
+    {% endif %}
   </div>
 </div>

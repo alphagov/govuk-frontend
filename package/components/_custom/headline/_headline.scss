@@ -12,8 +12,39 @@
 
   .sdn-headline__container {
     @include govuk-responsive-padding(5, "top");
-    @include govuk-responsive-padding(5, "bottom");
     color: $sdn-headline-text-color;
+
+    @include mq ($from: tablet) {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+          -ms-flex-align: center;
+              align-items: center;
+      -webkit-flex-wrap: wrap;
+          -ms-flex-wrap: wrap;
+              flex-wrap: wrap;
+    }
+  }
+
+  .sdn-headline__part {
+    @include govuk-responsive-padding(5, "bottom");
+    max-width: 100%;
+    -webkit-flex-shrink: 0;
+        -ms-flex-negative: 0;
+            flex-shrink: 0;
+
+    &--right {
+      @include mq ($from: tablet) {
+        margin: -7px 0;
+      }
+    }
   }
 
   .sdn-headline__headline {
@@ -22,5 +53,9 @@
 
   .sdn-headline__subheadline {
     @include govuk-font($size: 24);
+  }
+
+  .sdn-headline__button {
+    margin-bottom: 0;
   }
 }
