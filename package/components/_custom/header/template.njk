@@ -35,7 +35,7 @@
                   </li>
                 {% else %}
                   <li>
-                    <a class="sdn-header__link" href="{{ item.href }}"{% for attribute, value in item.attributes %} {{attribute}}="{{value}}"{% endfor %}>{{ item.text }}</a>
+                    <a class="sdn-header__link {{ " sdn-header__link--active" if item.active }}" href="{{ item.href }}"{% for attribute, value in item.attributes %} {{attribute}}="{{value}}"{% endfor %}>{{ item.text }}</a>
                   </li>
                 {% endif %}
             {% endif %}

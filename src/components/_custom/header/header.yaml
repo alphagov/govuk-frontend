@@ -100,3 +100,16 @@ examples:
             text: 'Nastavenia'
           - href: '#22'
             text: 'Odhlásiť'
+- name: aktívny odkaz
+  description: Hlavička s aktívnym odkazom
+  data:
+    productName: Životné situácie
+    navigation:
+      - href: '#1'
+        text: Časté otázky
+      - href: '#2'
+        text: O nás
+        active: true
+      - href: '#3'
+        text: Prihlásiť
+

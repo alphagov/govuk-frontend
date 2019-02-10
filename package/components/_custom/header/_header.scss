@@ -65,6 +65,7 @@
       color: $sdn-header-text-color;
     }
 
+    &--active,
     &:hover {
       text-decoration: underline;
     }
