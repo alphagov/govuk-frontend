@@ -43,16 +43,16 @@
 
 {% block content %}
   <h1 class="govuk-heading-xl">Colour palette and states</h1>
-  <p class="govuk-body-l">Documenting component colour combinations for WCAG 2.1 updates</p>
+  <p class="govuk-body-l">Documenting component colour combinations and focus state for WCAG 2.1 updates</p>
 
   <h2 class="govuk-heading-l">Links</h2>
 
   <p class="govuk-body">Issues:</p>
 
   <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
-    <li>Visited colour (Not updated - still purple)</li>
-    <li>Hover colour (May not be obvious enough just using colour)</li>
-    <li>Focus colour - Fails non-text contrast against white</li>
+    <li>Visited colour (Not yet decided - still purple for now)</li>
+    <li>Hover colour (This may not be obvious enough just using colour)</li>
+    <li>Focus colour - Background fails non-text contrast against white</li>
   </ul>
 
     <div class="govuk-grid-row">
@@ -85,7 +85,7 @@
 
     <h4 class="govuk-heading-s">Focus</h4>
 
-    <p class="govuk-body">The focus state can pass WCAG 2.1 by making another visual change to this state. For example removing the link <a href="/" class="govuk-link :focus" style="text-decoration: none;">underline</a> when focussed means that non-text contrast does not need to be met.</p>
+    <p class="govuk-body">The focus state can pass WCAG 2.1 by making another visual change to this state. For example I believe removing the link <a href="/" class="govuk-link :focus" style="text-decoration: none;">underline</a> when focussed means that non-text contrast does not need to be met.</p>
 
   <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
   
@@ -138,6 +138,13 @@
         <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
 
         <h3 class="govuk-heading-m">Buttons</h3>
+
+        <p class="govuk-body">Notes:</p>
+
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
+          <li>I believe the focus meets 2.1 despite not meeting non-text contrast as the state of the button also changes?</li>
+        </ul>
+
 
         {% call govukFieldset() %}
           {{ govukButton({
@@ -442,10 +449,10 @@
 
         <h3 class="govuk-heading-m">Date input</h3>
 
-       <p class="govuk-body">Issues:</p>
+       <p class="govuk-body">Notes:</p>
 
         <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
-          <li>Focus colour - will be fixed by text input</li>
+          <li>Focus colour - will be fixed by fixing standard text input</li>
         </ul>
 
         {{ govukDateInput({
@@ -1108,7 +1115,7 @@
         <p class="govuk-body">Issues:</p>
 
         <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
-          <li>Focus colour - can use same solution as text link providing it has a background</li>
+          <li>Focus colour - Will be able to use same solution as text link providing it has a background</li>
         </ul>
 
         <div>
@@ -1133,7 +1140,7 @@
         <p class="govuk-body">Issues:</p>
 
         <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
-          <li>Focus colour - can use same solution as text link providing it has a background</li>
+          <li>Focus colour - Will be able to use same solution as text link providing it has a background</li>
         </ul>
 
         <div class="govuk-breadcrumbs">
@@ -1164,10 +1171,10 @@
 
         <h3 class="govuk-heading-m">Details</h3>
 
-        <p class="govuk-body">Issues:</p>
+        <p class="govuk-body">Notes:</p>
 
         <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
-          <li>Although this is a failure on focus colour the arrow position and state change should mean it still passes WCAG 2.1 (Although it will be fixed by the text link style anyway)</li>
+          <li>Although this fails non-text contrast on focus, the arrow position and state change should mean it still passes WCAG 2.1 (Although it will also be fixed by the text link style too)</li>
         </ul>
 
 
@@ -1200,7 +1207,8 @@
         <p class="govuk-body">Note:</p>
 
         <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
-            <li>Focus colour - can use same solution as text link providing it has a background</li>
+          <li>Focus colour (text) - can use same solution as text link providing it has a background</li>
+          <li>Focus colour (outline) - has contrast against red, but not white. Should use same solution as a text input.</li>
         </ul>
 
         <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="error-summary">
@@ -1258,7 +1266,7 @@
           html: "Your reference number<br><strong>HDJ2123F</strong>"
         }) }}
         
-        <p class="govuk-body">Inore - This component doesn’t have a defualt link style</p>
+        <p class="govuk-body">Ignore - This component doesn’t have a defualt link style</p>
 
         {{ govukPanel({
           titleText: "Application complete",
@@ -1454,15 +1462,15 @@
        <p class="govuk-body">Issues:</p>
 
         <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
-          <li>Focus colour - focussed tab against background</li>
-          <li>Inactive state - inactive tab background against page packground</li>
+          <li>Focus colour - focussed tab against page background (white)</li>
+          <li>Inactive state - inactive tab background against page background (white)</li>
           <li>Hover state - Doesn’t have one</li>
         </ul>
 
         <p class="govuk-body">Notes:</p>
 
         <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
-          <li>Should feel like a similar solution to Accordions</li>
+          <li>Should have the same solution as Accordions as they are conceptually similar</li>
         </ul>
 
         <div class="govuk-tabs" data-module="tabs">
@@ -2212,14 +2220,14 @@
        <p class="govuk-body">Issues:</p>
 
         <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
-          <li>Link colour - Text contrast against background</li>
+          <li>Link colour - Text contrast against background of footer</li>
         </ul>
 
        <p class="govuk-body">Notes:</p>
 
         <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
           <li>Link colour - If we make it darker it will need an alternate hover state</li>
-          <li>Focus - Will be fixed by text link update if it has background colour</li>
+          <li>Focus - Will be fixed by text link update as long as it has a background colour</li>
         </ul>
 
         <footer class="govuk-footer " role="contentinfo">
