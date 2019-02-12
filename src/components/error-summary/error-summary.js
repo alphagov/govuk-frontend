@@ -11,9 +11,9 @@ ErrorSummary.prototype.init = function () {
   if (!$module) {
     return
   }
-  window.addEventListener('load', function () {
-    $module.focus()
-  })
+  // window.addEventListener('load', function () {
+  //   $module.focus()
+  // })
 
   $module.addEventListener('click', this.handleClick.bind(this))
 }
