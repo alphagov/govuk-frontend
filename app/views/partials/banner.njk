@@ -1,0 +1,14 @@
+{% if shouldShowAppBanner %}
+<div class="app-banner app-banner--warning" data-module="app-banner">
+  <div class="govuk-width-container">
+    <p class="govuk-body">
+      This is not a real service, and is used for testing purposes only.
+      <br>
+      See the <a class="govuk-link" href="https://design-system.service.gov.uk/">GOV.UK Design System</a> for recommended guidance.
+    </p>
+    <form method="post" action="/hide-banner">
+      <button class="govuk-button app-banner__button">Hide this banner</button>
+    </form>
+  </div>
+</div>
+{% endif %}

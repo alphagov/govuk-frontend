@@ -17,7 +17,8 @@ const expectedPages = [
   '/examples/links',
   '/examples/typography',
   '/examples/template-default',
-  '/examples/template-custom'
+  '/examples/template-custom',
+  '/full-page-examples/start-page'
 ]
 
 // Returns a wrapper for `request` which applies these options by default
@@ -62,6 +63,40 @@ describe(`http://localhost:${PORT}`, () => {
         let expectedComponentLinks = lib.allComponents.length + 1
         expect(componentsList.length).toEqual(expectedComponentLinks)
         done(err)
+      })
+    })
+    describe('Banner', () => {
+      it('should be visible by default', done => {
+        requestPath('/', (err, res) => {
+          let $ = cheerio.load(res.body)
+
+          // Check the page responded correctly
+          expect(res.statusCode).toBe(200)
+          expect($.html()).toContain('GOV.UK Frontend')
+
+          // Check that the banner is visible
+          let appBanner = $('[data-module="app-banner"]')
+          expect(appBanner.length).toBeTruthy()
+          done(err)
+        })
+      })
+      it('should be dismissable', done => {
+        request.post({
+          url: `http://localhost:${PORT}/hide-banner`,
+          followAllRedirects: true,
+          jar: true // enable cookies
+        }, (err, res) => {
+          let $ = cheerio.load(res.body)
+
+          // Check the page responded correctly
+          expect(res.statusCode).toBe(200)
+          expect($.html()).toContain('GOV.UK Frontend')
+
+          // Check that the banner is not visible
+          let appBanner = $('[data-module="app-banner"]')
+          expect(appBanner.length).toBeFalsy()
+          done(err)
+        })
       })
     })
   })
