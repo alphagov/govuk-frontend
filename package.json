@@ -23,6 +23,7 @@
   "devDependencies": {
     "autoprefixer": "^9.3.1",
     "cheerio": "^1.0.0-rc.2",
+    "cookie-parser": "^1.4.4",
     "cssnano": "^4.1.7",
     "express": "^4.16.4",
     "glob": "^7.1.3",

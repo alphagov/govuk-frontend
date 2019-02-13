@@ -60,6 +60,9 @@ module.exports = (options) => {
   app.use('/vendor/html5-shiv/', express.static('node_modules/html5shiv/dist/'))
   app.use('/assets', express.static(path.join(configPaths.src, 'assets')))
 
+  // Handle the banner component serverside.
+  require('./banner.js')(app)
+
   // Define routes
 
   // Index page - render the component list template

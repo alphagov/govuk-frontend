@@ -1,0 +1,40 @@
+.app-banner {
+  font-family: sans-serif;
+  font-size: 2rem;
+  line-height: 1.5;
+  overflow: hidden;
+  padding-bottom: govuk-spacing(6);
+  padding-top: govuk-spacing(6);
+
+  .app-banner__button {
+    margin-bottom: 0;
+  }
+
+  .govuk-body {
+    color: inherit;
+    font-size: inherit;
+  }
+
+  .govuk-link:not(:focus) {
+    color: inherit;
+  }
+}
+
+.app-banner--hidden {
+  display: none;
+}
+
+.app-banner--warning {
+  background: govuk-colour('red');
+  color: govuk-colour('white');
+
+  .app-banner__button,
+  .app-banner__button:active,
+  .app-banner__button:hover,
+  .app-banner__button:focus {
+    background: govuk-colour('white');
+    box-shadow: 0 2px 0 $govuk-text-colour;
+    color: $govuk-text-colour;
+    margin-bottom: 0;
+  }
+}

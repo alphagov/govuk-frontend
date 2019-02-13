@@ -16,6 +16,11 @@
   {% block styles %}{% endblock %}
 {% endblock %}
 
+{% block header %}
+  {% include "../partials/banner.njk" %}
+  {{ super() }}
+{% endblock %}
+
 {% block bodyEnd %}
   <script src="/public/all.js"></script>
   <script>window.GOVUKFrontend.initAll()</script>

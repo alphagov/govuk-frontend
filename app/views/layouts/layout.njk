@@ -23,7 +23,9 @@
 {% endblock %}
 
 {# Turn the header and footer off #}
-{% block header %}{% endblock %}
+{% block header %}
+  {% include "../partials/banner.njk" %}
+{% endblock %}
 {% block footer %}{% endblock %}
 
 {% block bodyEnd %}
