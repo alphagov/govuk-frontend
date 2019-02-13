@@ -1,9 +1,5 @@
 {% extends "template.njk" %}
 
-{% set htmlClasses = "app-no-canvas-background" %}
-
-{% block pageTitle %}GOV.UK Frontend{% endblock %}
-
 {% block head %}
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
@@ -22,20 +18,7 @@
   {% block styles %}{% endblock %}
 {% endblock %}
 
-{# Turn the header and footer off #}
-{% block header %}{% endblock %}
-{% block footer %}{% endblock %}
-
 {% block bodyEnd %}
   <script src="/public/all.js"></script>
   <script>window.GOVUKFrontend.initAll()</script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.15/iframeResizer.min.js" integrity="sha256-NZjCYaMfryuJQRMgekHuC02c/Wv4sMRzHG2zyhrVwKU=" crossorigin="anonymous"></script>
-  <!--[if lte IE 8]>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.15/ie8.polyfils.min.js"></script>
-  <![endif]-->
-  <script type="text/javascript">
-    var domReady = function(a,b,c){b=document,c='addEventListener';b[c]?b[c]('DOMContentLoaded',a):window.attachEvent('onload',a)}
-    domReady(iFrameResize({}, '.js-component-preview'))
-  </script>
-  {% block scripts %}{% endblock %}
 {% endblock %}
