@@ -1,4 +1,5 @@
-<div class="app-banner app-banner--warning {{ "app-banner--hidden" if not shouldShowAppBanner }}" data-module="app-banner">
+{% if shouldShowAppBanner %}
+<div class="app-banner app-banner--warning" data-module="app-banner">
   <div class="govuk-width-container">
     <p class="govuk-body">
       This is not a real service, and is used for testing purposes only.
@@ -10,3 +11,4 @@
     </form>
   </div>
 </div>
+{% endif %}
