@@ -16,6 +16,7 @@ const appViews = [
   configPaths.layouts,
   configPaths.views,
   configPaths.examples,
+  configPaths.fullPageExamples,
   configPaths.components,
   configPaths.src
 ]
@@ -65,10 +66,12 @@ module.exports = (options) => {
   app.get('/', async function (req, res) {
     const components = fileHelper.allComponents
     const examples = await readdir(path.resolve(configPaths.examples))
+    const fullPageExamples = await readdir(path.resolve(configPaths.fullPageExamples))
 
     res.render('index', {
       componentsDirectory: components,
-      examplesDirectory: examples
+      examplesDirectory: examples,
+      fullPageExamplesDirectory: fullPageExamples
     })
   })
 
@@ -151,6 +154,17 @@ module.exports = (options) => {
 
   // Example view
   app.get('/examples/:example', function (req, res, next) {
+    res.render(`${req.params.example}/index`, function (error, html) {
+      if (error) {
+        next(error)
+      } else {
+        res.send(html)
+      }
+    })
+  })
+
+  // Full page examples view
+  app.get('/full-page-examples/:example', function (req, res, next) {
     res.render(`${req.params.example}/index`, function (error, html) {
       if (error) {
         next(error)
