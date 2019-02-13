@@ -17,7 +17,8 @@ const expectedPages = [
   '/examples/links',
   '/examples/typography',
   '/examples/template-default',
-  '/examples/template-custom'
+  '/examples/template-custom',
+  '/full-page-examples/start-page'
 ]
 
 // Returns a wrapper for `request` which applies these options by default
