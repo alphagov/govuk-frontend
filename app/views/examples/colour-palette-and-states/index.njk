@@ -29,10 +29,10 @@
   'Visited link': ':visited',
   'Hovered link': ':hover',
   'Active link': ':active',
-  'Focussed link': ':focus',
-  'Focussed visited link': ':focus :visited',
-  'Focussed hovered link': ':focus :hover',
-  'Focussed active link': ':focus :active'
+  'Focused link': ':focus',
+  'Focused visited link': ':focus :visited',
+  'Focused hovered link': ':focus :hover',
+  'Focused active link': ':focus :active'
 } %}
 
 {% block beforeContent %}
@@ -85,7 +85,7 @@
 
     <h4 class="govuk-heading-s">Focus</h4>
 
-    <p class="govuk-body">The focus state can pass WCAG 2.1 by making another visual change to this state. For example I believe removing the link <a href="/" class="govuk-link :focus" style="text-decoration: none;">underline</a> when focussed means that non-text contrast does not need to be met.</p>
+    <p class="govuk-body">The focus state can pass WCAG 2.1 by making another visual change to this state. For example I believe removing the link <a href="/" class="govuk-link :focus" style="text-decoration: none;">underline</a> when focused means that non-text contrast does not need to be met.</p>
 
   <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
   
@@ -1267,7 +1267,7 @@
           html: "Your reference number<br><strong>HDJ2123F</strong>"
         }) }}
         
-        <p class="govuk-body">Ignore - This component doesn’t have a defualt link style</p>
+        <p class="govuk-body">Ignore - This component doesn’t have a default link style</p>
 
         {{ govukPanel({
           titleText: "Application complete",
@@ -1463,7 +1463,7 @@
        <p class="govuk-body">Issues:</p>
 
         <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
-          <li>Focus colour - focussed tab against page background (white)</li>
+          <li>Focus colour - focused tab against page background (white)</li>
           <li>Inactive state - inactive tab background against page background (white)</li>
           <li>Hover state - Doesn’t have one</li>
         </ul>
