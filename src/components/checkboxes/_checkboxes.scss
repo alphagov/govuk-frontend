@@ -176,11 +176,11 @@
 
   .govuk-checkboxes--small .govuk-checkboxes__label {
     margin-top: -2px;
-    padding: 13px govuk-spacing(3) 9px 0;
+    padding: 13px govuk-spacing(3) 13px 0;
     float: left;
 
     @include govuk-media-query($from: tablet) {
-      padding: 11px govuk-spacing(3) 7px 0;
+      padding: 11px govuk-spacing(3) 10px 0;
     }
 
   }
