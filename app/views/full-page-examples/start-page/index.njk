@@ -1,0 +1,109 @@
+{% extends "_generic.njk" %}
+
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "button/macro.njk" import govukButton %}
+{% from "tabs/macro.njk" import govukTabs %}
+
+{% set pageTitle = "Apply online for a UK passport" %}
+{% block pageTitle %}GOV.UK - {{ pageTitle }}{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#/"
+      },
+      {
+        text: "Passports, travel and living abroad",
+        href: "#/browse/abroad"
+      },
+      {
+        text: "Passports",
+        href: "#/browse/abroad/passports"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">{{ pageTitle }}</h1>
+
+      <p class="govuk-body">You can apply for, renew, replace or update your passport and pay for it online.</p>
+
+      {{ govukButton({
+        text: "Start now",
+        href: "#",
+        classes: "govuk-button--start govuk-!-margin-top-2 govuk-!-margin-bottom-8"
+      }) }}
+
+      {% set moreInformationHTML %}
+        <p>You’ll need a debit or credit card to use this service.</p>
+
+        <p><a class="govuk-link" href="/passport-fees">It’s £9.50 cheaper</a> to apply for a passport online than by post.</p>
+
+        <p>It should take around 6 weeks to get your first UK adult passport, but it can take longer.</p>
+
+        <p>All other application types (for example, renewing a passport or getting a child passport) should take 3 weeks. It can take longer if more information is needed or your application hasn’t been filled out correctly.</p>
+
+        <p>You should use a different service if you <a class="govuk-link" href="/get-a-passport-urgently">need your passport urgently</a>.</p>
+      {% endset %}
+
+      {% set otherWaysToApplyHTML %}
+        <p>You can pick up passport application forms from your <a class="govuk-link" rel="external" href="http://www.postoffice.co.uk/branch-finder">local Post Office</a> and apply by post, or use the <a class="govuk-link" href="/how-the-post-office-check-and-send-service-works">Post Office Check and Send service</a>.</p>
+      {% endset %}
+
+      {{ govukTabs({
+        items: [
+          {
+            label: "More information",
+            id: "more-information",
+            panel: {
+              html: moreInformationHTML
+            }
+          },
+          {
+            label: "Other ways to apply",
+            id: "other-ways-to-apply",
+            panel: {
+              html: otherWaysToApplyHTML
+            }
+          }
+        ]
+      }) }}
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+      <!-- The Related items component is not part of GOV.UK Frontend but will be styled if used in the Prototype Kit -->
+
+      <aside class="app-related-items" role="complementary">
+        <h2 class="govuk-heading-m" id="subsection-title">
+          Related content
+        </h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li class="gem-c-related-navigation__link">
+              <a class="govuk-link" href="#/get-a-passport-urgently">Get a passport urgently</a>
+            </li>
+            <li class="gem-c-related-navigation__link">
+              <a class="govuk-link" href="#/renew-adult-passport">Renew or replace your adult passport</a>
+            </li>
+            <li class="gem-c-related-navigation__link">
+              <a class="govuk-link" href="#/passport-fees">Passport fees</a>
+            </li>
+            <li class="gem-c-related-navigation__link">
+              <a class="govuk-link" href="#/government/news/need-to-renew-your-british-passport-go-online">Need to renew your British passport? Go online</a>
+            </li>
+            <li class="gem-c-related-navigation__link">
+              <a class="govuk-link" href="#/government/news/changes-to-passport-applications-for-british-nationals-living-abroad">Changes to passport applications for British nationals living abroad</a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+    </div>
+  </div>
+{% endblock %}
