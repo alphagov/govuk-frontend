@@ -9,6 +9,7 @@ $color-default: govuk-colour("grey-3");
 $color-default-transparent: rgba(0, 0, 0, .14); // transparent version of grey-3
 $color-black: #333333;
 $std-timeline-dropdown-bg-color: #f1f1f1;
+$std-timeline-bullet-shadow: #ffbf47;
 
 $font-size: 16px;
 $line-height: 1.5;
@@ -75,6 +76,11 @@ $icon-check-black: url("../../../assets/images/icon-check-black.svg");
       .sdn-timeline__link {
         @include govuk-typography-weight-bold;
       }
+
+      .sdn-timeline__bullet {
+        outline: transparent;
+        box-shadow: 0 0 0 3px $std-timeline-bullet-shadow;
+      }
     }
 
     &--done {
@@ -101,6 +107,11 @@ $icon-check-black: url("../../../assets/images/icon-check-black.svg");
     line-height: $bullet-size;
     text-align: center;
     cursor: pointer;
+
+    &:focus {
+      outline: transparent;
+      box-shadow: 0 0 0 3px $std-timeline-bullet-shadow;
+    }
 
     &--not-done {
       border-color: $color-default;
@@ -184,6 +195,8 @@ $icon-check-black: url("../../../assets/images/icon-check-black.svg");
     display: block;
     position: relative;
     padding: govuk-spacing(2) govuk-spacing(7) govuk-spacing(2) (govuk-spacing(6) + $bullet-size);
+    color: inherit;
+    text-decoration: none;
     cursor: pointer;
 
     &:hover {
