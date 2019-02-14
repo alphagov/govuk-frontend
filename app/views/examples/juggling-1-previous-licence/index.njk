@@ -23,7 +23,7 @@
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
-    href: "/examples/juggling-1-personal-details"
+    href: "/examples/juggling-0-start-page"
   }) }}
 {% endblock %}
 
@@ -36,33 +36,26 @@
       name: "changed-name",
       fieldset: {
         legend: {
-          text: "How many balls are you able to juggle?",
+          text: "Have you held a juggling licence before?",
           isPageHeading: true,
-          classes: "govuk-fieldset__legend--xl"
+          classes: "govuk-fieldset__legend--l"
         }
       },
       items: [
         {
-          value: "3+",
-          text: "3 or more"
+          value: "yes",
+          text: "Yes"
         },
         {
-          value: "1-2",
-          text: "1 or 2"
-        },
-        {
-          divider: "or"
-        },
-        {
-          value: "0",
-          text: "None – I cannot juggle"
+          value: "no",
+          text: "No"
         }
       ]
     }) }}
 
     {{ govukButton({
       "text": "Continue",
-      "href": "/examples/juggling-4-character-count"
+      "href": "/examples/juggling-2-previous-details"
     }) }}
   </div>
 </div>

@@ -1,0 +1,68 @@
+{% extends "template.njk" %}
+
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "button/macro.njk" import govukButton %}
+{% from "date-input/macro.njk" import govukDateInput %}
+{% from "input/macro.njk" import govukInput %}
+
+{% block head %}
+  <!--[if !IE 8]><!-->
+    <link rel="stylesheet" href="/public/app.css">
+  <!--<![endif]-->
+  <!--[if IE 8]>
+    <link rel="stylesheet" href="/public/app-ie8.css">
+  <![endif]-->
+  <!--[if lt IE 9]>
+    <script src="/vendor/html5-shiv/html5shiv.js"></script>
+  <![endif]-->
+{% endblock %}
+
+{% block bodyEnd %}
+  <script src="/public/all.js"></script>
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/examples/juggling-1-previous-licence"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">Previous licence details</h1>
+
+    {{ govukInput({
+      label: {
+        text: "Licence number",
+        classes: 'govuk-label--s'
+      },
+      id: "full-name",
+      name: "full-name"
+    }) }}
+
+    {{ govukDateInput({
+      id: "licence-issued",
+      namePrefix: "passport-issued",
+      fieldset: {
+        legend: {
+          text: "Expiry date",
+          classes: 'govuk-fieldset__legend--s'
+        }
+      },
+      hint: {
+        text: "For example, 12 11 2017"
+      }
+    }) }}
+
+    {{ govukButton({
+      "text": "Continue",
+      href: "/examples/juggling-3-error"
+    }) }}
+  </div>
+</div>
+
+{% endblock %}
