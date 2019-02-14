@@ -1,0 +1,3191 @@
+{# This example is based of the live "UK bank holidays" page: https://www.gov.uk/bank-holidays #}
+{% extends "_generic.njk" %}
+
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "tabs/macro.njk" import govukTabs %}
+{% from "panel/macro.njk" import govukPanel %}
+{% from "table/macro.njk" import govukTable %}
+
+{% set pageTitle = "UK bank holidays" %}
+{% block pageTitle %}GOV.UK - {{ pageTitle }}{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#/"
+      },
+      {
+        text: "Working, jobs and pensions",
+        href: "#/browse/working"
+      },
+      {
+        text: "Holidays, time off, sick leave, maternity and paternity leave",
+        href: "#/browse/working/time-off"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">{{ pageTitle }}</h1>
+
+      {% set englandAndWalesHTML %}
+
+        {% set englandAndWalesPanelTitleHtml %}
+          <div class='govuk-!-font-size-24 govuk-!-margin-bottom-4'>The next bank holiday in England and Wales is</div>
+        19 April
+        {% endset %}
+
+        {% set englandAndWalesPanelHtml %}
+          <span class='govuk-!-font-size-24 govuk-!-font-weight-bold'>Good Friday</span>
+        19 April
+        {% endset %}
+
+        {{ govukPanel({
+          titleHtml: englandAndWalesPanelTitleHtml,
+          html: englandAndWalesPanelHtml
+        }) }}
+
+        <hr class="govuk-section-break govuk-section-break--l">
+
+        <h2 class="govuk-heading-m">Upcoming bank holidays in England and Wales</h2>
+
+        {{ govukTable({
+          caption: "2019",
+          captionClasses: "govuk-!-margin-bottom-4",
+          head: [
+            {
+              text: "Date",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Day",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Name",
+              classes: "govuk-visually-hidden"
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "19 April"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Good Friday"
+              }
+            ],
+            [
+              {
+                text: "22 April"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Easter Monday"
+              }
+            ],
+            [
+              {
+                text: "6 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Early May bank holiday"
+              }
+            ],
+            [
+              {
+                text: "27 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Spring bank holiday"
+              }
+            ],
+            [
+              {
+                text: "26 August"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "	Summer bank holiday"
+              }
+            ],
+            [
+              {
+                text: "25 December"
+              },
+              {
+                text: "Wednesday"
+              },
+              {
+                text: "Christmas Day"
+              }
+            ],
+            [
+              {
+                text: "26 December"
+              },
+              {
+                text: "Thursday"
+              },
+              {
+                text: "Boxing Day"
+              }
+            ]
+          ]
+        }) }}
+
+        {{ govukTable({
+          caption: "2020",
+          captionClasses: "govuk-!-margin-bottom-4",
+          head: [
+            {
+              text: "Date",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Day",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Name",
+              classes: "govuk-visually-hidden"
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "1 January"
+              },
+              {
+                text: "Wednesday"
+              },
+              {
+                text: "New Year’s Day"
+              }
+            ],
+            [
+              {
+                text: "10 April"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Good Friday"
+              }
+            ],
+            [
+              {
+                text: "13 April"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Easter Monday"
+              }
+            ],
+            [
+              {
+                text: "4 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Early May bank holiday"
+              }
+            ],
+            [
+              {
+                text: "25 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Spring bank holiday"
+              }
+            ],
+            [
+              {
+                text: "31 August"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Summer bank holiday"
+              }
+            ],
+            [
+              {
+                text: "25 December"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Christmas Day"
+              }
+            ],
+            [
+              {
+                text: "28 December"
+              },
+              {
+                text: "Thursday"
+              },
+              {
+                text: "Boxing Day (substitute day)"
+              }
+            ]
+          ]
+        }) }}
+        <p class="govuk-body">If a bank holiday is on a weekend, a ‘substitute’ weekday becomes a bank holiday, normally the following Monday.</p>
+
+        <p class="govuk-body">Your employer doesn’t have to give you <a class="govuk-link" href="/holiday-entitlement-rights" title="Holiday entitlement rights">paid leave on bank or public holidays</a>.</p>
+
+        <p class="govuk-body">Bank holidays might affect <a class="govuk-link" href="/how-to-have-your-benefits-paid">how and when your benefits are paid</a>.</p>
+
+        <hr class="govuk-section-break govuk-section-break--m">
+
+        <h2 class="govuk-heading-m" id="past-bank-holidays-in-scotland">Past bank holidays in England and Wales</h2>
+
+        {{ govukTable({
+          caption: "2019",
+          captionClasses: "govuk-!-margin-bottom-4",
+          head: [
+            {
+              text: "Date",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Day",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Name",
+              classes: "govuk-visually-hidden"
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "1 January"
+              },
+              {
+                text: "Tuesday"
+              },
+              {
+                text: "New Year's Day"
+              }
+            ]
+          ]
+        }) }}
+
+        {{ govukTable({
+          caption: "2018",
+          captionClasses: "govuk-!-margin-bottom-4",
+          head: [
+            {
+              text: "Date",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Day",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Name",
+              classes: "govuk-visually-hidden"
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "28 December"
+              },
+              {
+                text: "Thursday"
+              },
+              {
+                text: "Boxing Day (substitute day)"
+              }
+            ],
+            [
+              {
+                text: "25 December"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Christmas Day"
+              }
+            ],
+            [
+              {
+                text: "31 August"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Summer bank holiday"
+              }
+            ],
+            [
+              {
+                text: "25 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Spring bank holiday"
+              }
+            ],
+            [
+              {
+                text: "4 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Early May bank holiday"
+              }
+            ],
+            [
+              {
+                text: "13 April"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Easter Monday"
+              }
+            ],
+            [
+              {
+                text: "10 April"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Good Friday"
+              }
+            ]
+          ]
+        }) }}
+
+        {{ govukTable({
+          caption: "2017",
+          captionClasses: "govuk-!-margin-bottom-4",
+          head: [
+            {
+              text: "Date",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Day",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Name",
+              classes: "govuk-visually-hidden"
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "28 December"
+              },
+              {
+                text: "Thursday"
+              },
+              {
+                text: "Boxing Day (substitute day)"
+              }
+            ],
+            [
+              {
+                text: "25 December"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Christmas Day"
+              }
+            ],
+            [
+              {
+                text: "31 August"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Summer bank holiday"
+              }
+            ],
+            [
+              {
+                text: "25 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Spring bank holiday"
+              }
+            ],
+            [
+              {
+                text: "4 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Early May bank holiday"
+              }
+            ],
+            [
+              {
+                text: "13 April"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Easter Monday"
+              }
+            ],
+            [
+              {
+                text: "10 April"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Good Friday"
+              }
+            ]
+          ]
+        }) }}
+
+        {{ govukTable({
+          caption: "2016",
+          captionClasses: "govuk-!-margin-bottom-4",
+          head: [
+            {
+              text: "Date",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Day",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Name",
+              classes: "govuk-visually-hidden"
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "28 December"
+              },
+              {
+                text: "Thursday"
+              },
+              {
+                text: "Boxing Day (substitute day)"
+              }
+            ],
+            [
+              {
+                text: "25 December"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Christmas Day"
+              }
+            ],
+            [
+              {
+                text: "31 August"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Summer bank holiday"
+              }
+            ],
+            [
+              {
+                text: "25 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Spring bank holiday"
+              }
+            ],
+            [
+              {
+                text: "4 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Early May bank holiday"
+              }
+            ],
+            [
+              {
+                text: "13 April"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Easter Monday"
+              }
+            ],
+            [
+              {
+                text: "10 April"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Good Friday"
+              }
+            ]
+          ]
+        }) }}
+
+        {{ govukTable({
+          caption: "2015",
+          captionClasses: "govuk-!-margin-bottom-4",
+          head: [
+            {
+              text: "Date",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Day",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Name",
+              classes: "govuk-visually-hidden"
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "28 December"
+              },
+              {
+                text: "Thursday"
+              },
+              {
+                text: "Boxing Day (substitute day)"
+              }
+            ],
+            [
+              {
+                text: "25 December"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Christmas Day"
+              }
+            ],
+            [
+              {
+                text: "31 August"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Summer bank holiday"
+              }
+            ],
+            [
+              {
+                text: "25 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Spring bank holiday"
+              }
+            ],
+            [
+              {
+                text: "4 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Early May bank holiday"
+              }
+            ],
+            [
+              {
+                text: "13 April"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Easter Monday"
+              }
+            ],
+            [
+              {
+                text: "10 April"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Good Friday"
+              }
+            ]
+          ]
+        }) }}
+
+        {{ govukTable({
+          caption: "2014",
+          captionClasses: "govuk-!-margin-bottom-4",
+          head: [
+            {
+              text: "Date",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Day",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Name",
+              classes: "govuk-visually-hidden"
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "28 December"
+              },
+              {
+                text: "Thursday"
+              },
+              {
+                text: "Boxing Day (substitute day)"
+              }
+            ],
+            [
+              {
+                text: "25 December"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Christmas Day"
+              }
+            ],
+            [
+              {
+                text: "31 August"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Summer bank holiday"
+              }
+            ],
+            [
+              {
+                text: "25 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Spring bank holiday"
+              }
+            ],
+            [
+              {
+                text: "4 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Early May bank holiday"
+              }
+            ],
+            [
+              {
+                text: "13 April"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Easter Monday"
+              }
+            ],
+            [
+              {
+                text: "10 April"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Good Friday"
+              }
+            ]
+          ]
+        }) }}
+
+        {{ govukTable({
+          caption: "2013",
+          captionClasses: "govuk-!-margin-bottom-4",
+          head: [
+            {
+              text: "Date",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Day",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Name",
+              classes: "govuk-visually-hidden"
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "28 December"
+              },
+              {
+                text: "Thursday"
+              },
+              {
+                text: "Boxing Day (substitute day)"
+              }
+            ],
+            [
+              {
+                text: "25 December"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Christmas Day"
+              }
+            ],
+            [
+              {
+                text: "31 August"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Summer bank holiday"
+              }
+            ],
+            [
+              {
+                text: "25 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Spring bank holiday"
+              }
+            ],
+            [
+              {
+                text: "4 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Early May bank holiday"
+              }
+            ],
+            [
+              {
+                text: "13 April"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Easter Monday"
+              }
+            ],
+            [
+              {
+                text: "10 April"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Good Friday"
+              }
+            ]
+          ]
+        }) }}
+
+        {{ govukTable({
+          caption: "2012",
+          captionClasses: "govuk-!-margin-bottom-4",
+          head: [
+            {
+              text: "Date",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Day",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Name",
+              classes: "govuk-visually-hidden"
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "28 December"
+              },
+              {
+                text: "Thursday"
+              },
+              {
+                text: "Boxing Day (substitute day)"
+              }
+            ],
+            [
+              {
+                text: "25 December"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Christmas Day"
+              }
+            ],
+            [
+              {
+                text: "31 August"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Summer bank holiday"
+              }
+            ],
+            [
+              {
+                text: "25 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Spring bank holiday"
+              }
+            ],
+            [
+              {
+                text: "4 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Early May bank holiday"
+              }
+            ],
+            [
+              {
+                text: "13 April"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Easter Monday"
+              }
+            ],
+            [
+              {
+                text: "10 April"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Good Friday"
+              }
+            ]
+          ]
+        }) }}
+
+      {% endset %} {# end of englandAndWalesHTML #}
+
+      {% set scotlandHTML %}
+
+        {% set scotlandPanelTitleHtml %}
+          <div class='govuk-!-font-size-24 govuk-!-margin-bottom-4'>The next bank holiday in Scotland is</div>
+        19 April
+        {% endset %}
+
+        {% set scotlandPanelHtml %}
+          <span class='govuk-!-font-size-24 govuk-!-font-weight-bold'>Good Friday</span>
+        19 April
+        {% endset %}
+
+        {{ govukPanel({
+          titleHtml: scotlandPanelTitleHtml,
+          html: scotlandPanelHtml
+        }) }}
+
+        <hr class="govuk-section-break govuk-section-break--l">
+
+        <h2 class="govuk-heading-m">Upcoming bank holidays in Scotland</h2>
+
+
+        {{ govukTable({
+          caption: "2019",
+          captionClasses: "govuk-!-margin-bottom-4",
+          head: [
+            {
+              text: "Date",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Day",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Name",
+              classes: "govuk-visually-hidden"
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "19 April"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Good Friday"
+              }
+            ],
+            [
+              {
+                text: "6 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Early May bank holiday"
+              }
+            ],
+            [
+              {
+                text: "27 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Spring bank holiday"
+              }
+            ],
+            [
+              {
+                text: "5 August"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Summer bank holiday"
+              }
+            ],
+            [
+              {
+                text: "2 December"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "St Andrew’s Day (substitute day)"
+              }
+            ],
+            [
+              {
+                text: "25 December"
+              },
+              {
+                text: "Wednesday"
+              },
+              {
+                text: "Christmas Day"
+              }
+            ],
+            [
+              {
+                text: "26 December"
+              },
+              {
+                text: "Thursday"
+              },
+              {
+                text: "Boxing Day"
+              }
+            ]
+          ]
+        }) }}
+
+        {{ govukTable({
+          caption: "2020",
+          captionClasses: "govuk-!-margin-bottom-4",
+          head: [
+            {
+              text: "Date",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Day",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Name",
+              classes: "govuk-visually-hidden"
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "1 January"
+              },
+              {
+                text: "Wednesday"
+              },
+              {
+                text: "New Year’s Day"
+              }
+            ],
+            [
+              {
+                text: "2 January"
+              },
+              {
+                text: "Thursday"
+              },
+              {
+                text: "2nd January"
+              }
+            ],
+            [
+              {
+                text: "10 April"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Good Friday"
+              }
+            ],
+            [
+              {
+                text: "4 May"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Good Friday"
+              }
+            ],
+            [
+              {
+                text: "4 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Early May bank holiday"
+              }
+            ],
+            [
+              {
+                text: "25 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Spring bank holiday"
+              }
+            ],
+            [
+              {
+                text: "3 August"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Summer bank holiday"
+              }
+            ],
+            [
+              {
+                text: "30 November"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "	St Andrew’s Day"
+              }
+            ],
+            [
+              {
+                text: "25 December"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Christmas Day"
+              }
+            ],
+            [
+              {
+                text: "28 December"
+              },
+              {
+                text: "Thursday"
+              },
+              {
+                text: "Boxing Day (substitute day)"
+              }
+            ]
+          ]
+        }) }}
+
+        <p class="govuk-body">If a bank holiday is on a weekend, a ‘substitute’ weekday becomes a bank holiday, normally the following Monday.</p>
+
+        <p class="govuk-body">Your employer doesn’t have to give you <a class="govuk-link" href="/holiday-entitlement-rights" title="Holiday entitlement rights">paid leave on bank or public holidays</a>.</p>
+
+        <p class="govuk-body">Bank holidays might affect <a class="govuk-link" href="/how-to-have-your-benefits-paid">how and when your benefits are paid</a>.</p>
+
+        <hr class="govuk-section-break govuk-section-break--m">
+
+        <h2 class="govuk-heading-m" id="past-bank-holidays-in-scotland">Past bank holidays in Scotland</h2>
+
+        {{ govukTable({
+          caption: "2019",
+          captionClasses: "govuk-!-margin-bottom-4",
+          head: [
+            {
+              text: "Date",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Day",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Name",
+              classes: "govuk-visually-hidden"
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "1 January"
+              },
+              {
+                text: "Tuesday"
+              },
+              {
+                text: "New Year’s Day"
+              }
+            ]
+          ]
+        }) }}
+
+        {{ govukTable({
+          caption: "2018",
+          captionClasses: "govuk-!-margin-bottom-4",
+          head: [
+            {
+              text: "Date",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Day",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Name",
+              classes: "govuk-visually-hidden"
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "28 December"
+              },
+              {
+                text: "Thursday"
+              },
+              {
+                text: "Boxing Day (substitute day)"
+              }
+            ],
+            [
+              {
+                text: "25 December"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Christmas Day"
+              }
+            ],
+            [
+              {
+                text: "30 November"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "	St Andrew’s Day"
+              }
+            ],
+            [
+              {
+                text: "3 August"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Summer bank holiday"
+              }
+            ],
+            [
+              {
+                text: "25 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Spring bank holiday"
+              }
+            ],
+            [
+              {
+                text: "4 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Early May bank holiday"
+              }
+            ],
+            [
+              {
+                text: "10 April"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Good Friday"
+              }
+            ],
+
+            [
+              {
+                text: "2 January"
+              },
+              {
+                text: "Thursday"
+              },
+              {
+                text: "2nd January"
+              }
+            ],
+            [
+              {
+                text: "1 January"
+              },
+              {
+                text: "Wednesday"
+              },
+              {
+                text: "New Year’s Day"
+              }
+            ]
+          ]
+        }) }}
+
+        {{ govukTable({
+          caption: "2017",
+          captionClasses: "govuk-!-margin-bottom-4",
+          head: [
+            {
+              text: "Date",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Day",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Name",
+              classes: "govuk-visually-hidden"
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "28 December"
+              },
+              {
+                text: "Thursday"
+              },
+              {
+                text: "Boxing Day (substitute day)"
+              }
+            ],
+            [
+              {
+                text: "25 December"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Christmas Day"
+              }
+            ],
+            [
+              {
+                text: "30 November"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "	St Andrew’s Day"
+              }
+            ],
+            [
+              {
+                text: "3 August"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Summer bank holiday"
+              }
+            ],
+            [
+              {
+                text: "25 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Spring bank holiday"
+              }
+            ],
+            [
+              {
+                text: "4 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Early May bank holiday"
+              }
+            ],
+            [
+              {
+                text: "10 April"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Good Friday"
+              }
+            ],
+
+            [
+              {
+                text: "2 January"
+              },
+              {
+                text: "Thursday"
+              },
+              {
+                text: "2nd January"
+              }
+            ],
+            [
+              {
+                text: "1 January"
+              },
+              {
+                text: "Wednesday"
+              },
+              {
+                text: "New Year’s Day"
+              }
+            ]
+          ]
+        }) }}
+
+        {{ govukTable({
+          caption: "2016",
+          captionClasses: "govuk-!-margin-bottom-4",
+          head: [
+            {
+              text: "Date",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Day",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Name",
+              classes: "govuk-visually-hidden"
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "28 December"
+              },
+              {
+                text: "Thursday"
+              },
+              {
+                text: "Boxing Day (substitute day)"
+              }
+            ],
+            [
+              {
+                text: "25 December"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Christmas Day"
+              }
+            ],
+            [
+              {
+                text: "30 November"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "	St Andrew’s Day"
+              }
+            ],
+            [
+              {
+                text: "3 August"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Summer bank holiday"
+              }
+            ],
+            [
+              {
+                text: "25 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Spring bank holiday"
+              }
+            ],
+            [
+              {
+                text: "4 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Early May bank holiday"
+              }
+            ],
+            [
+              {
+                text: "10 April"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Good Friday"
+              }
+            ],
+
+            [
+              {
+                text: "2 January"
+              },
+              {
+                text: "Thursday"
+              },
+              {
+                text: "2nd January"
+              }
+            ],
+            [
+              {
+                text: "1 January"
+              },
+              {
+                text: "Wednesday"
+              },
+              {
+                text: "New Year’s Day"
+              }
+            ]
+          ]
+        }) }}
+
+        {{ govukTable({
+          caption: "2015",
+          captionClasses: "govuk-!-margin-bottom-4",
+          head: [
+            {
+              text: "Date",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Day",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Name",
+              classes: "govuk-visually-hidden"
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "28 December"
+              },
+              {
+                text: "Thursday"
+              },
+              {
+                text: "Boxing Day (substitute day)"
+              }
+            ],
+            [
+              {
+                text: "25 December"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Christmas Day"
+              }
+            ],
+            [
+              {
+                text: "30 November"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "	St Andrew’s Day"
+              }
+            ],
+            [
+              {
+                text: "3 August"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Summer bank holiday"
+              }
+            ],
+            [
+              {
+                text: "25 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Spring bank holiday"
+              }
+            ],
+            [
+              {
+                text: "4 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Early May bank holiday"
+              }
+            ],
+            [
+              {
+                text: "10 April"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Good Friday"
+              }
+            ],
+
+            [
+              {
+                text: "2 January"
+              },
+              {
+                text: "Thursday"
+              },
+              {
+                text: "2nd January"
+              }
+            ],
+            [
+              {
+                text: "1 January"
+              },
+              {
+                text: "Wednesday"
+              },
+              {
+                text: "New Year’s Day"
+              }
+            ]
+          ]
+        }) }}
+
+        {{ govukTable({
+          caption: "2014",
+          captionClasses: "govuk-!-margin-bottom-4",
+          head: [
+            {
+              text: "Date",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Day",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Name",
+              classes: "govuk-visually-hidden"
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "28 December"
+              },
+              {
+                text: "Thursday"
+              },
+              {
+                text: "Boxing Day (substitute day)"
+              }
+            ],
+            [
+              {
+                text: "25 December"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Christmas Day"
+              }
+            ],
+            [
+              {
+                text: "30 November"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "	St Andrew’s Day"
+              }
+            ],
+            [
+              {
+                text: "3 August"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Summer bank holiday"
+              }
+            ],
+            [
+              {
+                text: "25 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Spring bank holiday"
+              }
+            ],
+            [
+              {
+                text: "4 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Early May bank holiday"
+              }
+            ],
+            [
+              {
+                text: "10 April"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Good Friday"
+              }
+            ],
+
+            [
+              {
+                text: "2 January"
+              },
+              {
+                text: "Thursday"
+              },
+              {
+                text: "2nd January"
+              }
+            ],
+            [
+              {
+                text: "1 January"
+              },
+              {
+                text: "Wednesday"
+              },
+              {
+                text: "New Year’s Day"
+              }
+            ]
+          ]
+        }) }}
+
+        {{ govukTable({
+          caption: "2013",
+          captionClasses: "govuk-!-margin-bottom-4",
+          head: [
+            {
+              text: "Date",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Day",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Name",
+              classes: "govuk-visually-hidden"
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "28 December"
+              },
+              {
+                text: "Thursday"
+              },
+              {
+                text: "Boxing Day (substitute day)"
+              }
+            ],
+            [
+              {
+                text: "25 December"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Christmas Day"
+              }
+            ],
+            [
+              {
+                text: "30 November"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "	St Andrew’s Day"
+              }
+            ],
+            [
+              {
+                text: "3 August"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Summer bank holiday"
+              }
+            ],
+            [
+              {
+                text: "25 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Spring bank holiday"
+              }
+            ],
+            [
+              {
+                text: "4 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Early May bank holiday"
+              }
+            ],
+            [
+              {
+                text: "10 April"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Good Friday"
+              }
+            ],
+
+            [
+              {
+                text: "2 January"
+              },
+              {
+                text: "Thursday"
+              },
+              {
+                text: "2nd January"
+              }
+            ],
+            [
+              {
+                text: "1 January"
+              },
+              {
+                text: "Wednesday"
+              },
+              {
+                text: "New Year’s Day"
+              }
+            ]
+          ]
+        }) }}
+
+        {{ govukTable({
+          caption: "2012",
+          captionClasses: "govuk-!-margin-bottom-4",
+          head: [
+            {
+              text: "Date",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Day",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Name",
+              classes: "govuk-visually-hidden"
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "28 December"
+              },
+              {
+                text: "Thursday"
+              },
+              {
+                text: "Boxing Day (substitute day)"
+              }
+            ],
+            [
+              {
+                text: "25 December"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Christmas Day"
+              }
+            ],
+            [
+              {
+                text: "30 November"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "	St Andrew’s Day"
+              }
+            ],
+            [
+              {
+                text: "3 August"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Summer bank holiday"
+              }
+            ],
+            [
+              {
+                text: "25 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Spring bank holiday"
+              }
+            ],
+            [
+              {
+                text: "4 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Early May bank holiday"
+              }
+            ],
+            [
+              {
+                text: "10 April"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Good Friday"
+              }
+            ],
+
+            [
+              {
+                text: "2 January"
+              },
+              {
+                text: "Thursday"
+              },
+              {
+                text: "2nd January"
+              }
+            ],
+            [
+              {
+                text: "1 January"
+              },
+              {
+                text: "Wednesday"
+              },
+              {
+                text: "New Year’s Day"
+              }
+            ]
+          ]
+        }) }}
+      {% endset %} {# end of scotlandHTML #}
+
+      {% set irelandHTML %}
+
+        {% set irelandPanelTitleHtml %}
+          <div class='govuk-!-font-size-24 govuk-!-margin-bottom-4'>The next bank holiday in Northern Ireland is</div>
+        19 April
+        {% endset %}
+
+        {% set irelandPanelHtml %}
+          <span class='govuk-!-font-size-24 govuk-!-font-weight-bold'>Good Friday</span>        19 April
+        {% endset %}
+
+        {{ govukPanel({
+          titleHtml: irelandPanelTitleHtml,
+          html: irelandPanelHtml
+        }) }}
+
+        <hr class="govuk-section-break govuk-section-break--l">
+
+        <h2 class="govuk-heading-m">Upcoming bank holidays in Northern Ireland</h2>
+
+
+        {{ govukTable({
+          caption: "2019",
+          captionClasses: "govuk-!-margin-bottom-4",
+          head: [
+            {
+              text: "Date",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Day",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Name",
+              classes: "govuk-visually-hidden"
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "18 March"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "St Patrick’s Day (substitute day)"
+              }
+            ],
+            [
+              {
+                text: "19 April"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Good Friday"
+              }
+            ],
+            [
+              {
+                text: "22 April"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Easter Monday"
+              }
+            ],
+            [
+              {
+                text: "6 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "	Early May bank holiday"
+              }
+            ],
+            [
+              {
+                text: "27 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Spring bank holiday"
+              }
+            ],
+            [
+              {
+                text: "12 July"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Battle of the Boyne (Orangemen’s Day)"
+              }
+            ],
+            [
+              {
+                text: "26 August"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Summer bank holiday"
+              }
+            ],
+            [
+              {
+                text: "25 December"
+              },
+              {
+                text: "Wednesday"
+              },
+              {
+                text: "Christmas Day"
+              }
+            ],
+            [
+              {
+                text: "26 December"
+              },
+              {
+                text: "Thursday"
+              },
+              {
+                text: "Boxing Day"
+              }
+            ]
+          ]
+        }) }}
+
+        {{ govukTable({
+          caption: "2020",
+          captionClasses: "govuk-!-margin-bottom-4",
+          head: [
+            {
+              text: "Date",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Day",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Name",
+              classes: "govuk-visually-hidden"
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "1 January"
+              },
+              {
+                text: "Wednesday"
+              },
+              {
+                text: "New Year’s Day"
+              }
+            ],
+            [
+              {
+                text: "17 March"
+              },
+              {
+                text: "Tuesday"
+              },
+              {
+                text: "St Patrick’s Day"
+              }
+            ],
+            [
+              {
+                text: "10 April"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Good Friday"
+              }
+            ],
+            [
+              {
+                text: "13 April"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Easter Monday"
+              }
+            ],
+            [
+              {
+                text: "4 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Early May bank holiday"
+              }
+            ],
+            [
+              {
+                text: "25 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Spring bank holiday"
+              }
+            ],
+            [
+              {
+                text: "13 July"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Battle of the Boyne (Orangemen’s Day) (substitute day)"
+              }
+            ],
+            [
+              {
+                text: "31 August"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Summer bank holiday"
+              }
+            ],
+            [
+              {
+                text: "25 December"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Christmas Day"
+              }
+            ],
+            [
+              {
+                text: "28 December"
+              },
+              {
+                text: "Thursday"
+              },
+              {
+                text: "Boxing Day (substitute day)"
+              }
+            ]
+          ]
+        }) }}
+
+        <p class="govuk-body">If a bank holiday is on a weekend, a ‘substitute’ weekday becomes a bank holiday, normally the following Monday.</p>
+
+        <p class="govuk-body">Your employer doesn’t have to give you <a class="govuk-link" href="/holiday-entitlement-rights" title="Holiday entitlement rights">paid leave on bank or public holidays</a>.</p>
+
+        <p class="govuk-body">Bank holidays might affect <a class="govuk-link" href="/how-to-have-your-benefits-paid">how and when your benefits are paid</a>.</p>
+
+        <hr class="govuk-section-break govuk-section-break--m">
+
+        <h2 class="govuk-heading-m" id="past-bank-holidays-in-scotland">Past bank holidays in Northern Ireland</h2>
+
+        {{ govukTable({
+          caption: "2019",
+          captionClasses: "govuk-!-margin-bottom-4",
+          head: [
+            {
+              text: "Date",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Day",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Name",
+              classes: "govuk-visually-hidden"
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "1 January"
+              },
+              {
+                text: "Tuesday"
+              },
+              {
+                text: "New Year's Day"
+              }
+            ]
+          ]
+        }) }}
+
+        {{ govukTable({
+          caption: "2018",
+          captionClasses: "govuk-!-margin-bottom-4",
+          head: [
+            {
+              text: "Date",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Day",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Name",
+              classes: "govuk-visually-hidden"
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "28 December"
+              },
+              {
+                text: "Thursday"
+              },
+              {
+                text: "Boxing Day (substitute day)"
+              }
+            ],
+            [
+              {
+                text: "25 December"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Christmas Day"
+              }
+            ],
+            [
+              {
+                text: "31 August"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Summer bank holiday"
+              }
+            ],
+            [
+              {
+                text: "25 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Spring bank holiday"
+              }
+            ],
+            [
+              {
+                text: "4 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Early May bank holiday"
+              }
+            ],
+            [
+              {
+                text: "13 April"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Easter Monday"
+              }
+            ],
+            [
+              {
+                text: "10 April"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Good Friday"
+              }
+            ]
+          ]
+        }) }}
+
+        {{ govukTable({
+          caption: "2017",
+          captionClasses: "govuk-!-margin-bottom-4",
+          head: [
+            {
+              text: "Date",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Day",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Name",
+              classes: "govuk-visually-hidden"
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "28 December"
+              },
+              {
+                text: "Thursday"
+              },
+              {
+                text: "Boxing Day (substitute day)"
+              }
+            ],
+            [
+              {
+                text: "25 December"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Christmas Day"
+              }
+            ],
+            [
+              {
+                text: "31 August"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Summer bank holiday"
+              }
+            ],
+            [
+              {
+                text: "25 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Spring bank holiday"
+              }
+            ],
+            [
+              {
+                text: "4 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Early May bank holiday"
+              }
+            ],
+            [
+              {
+                text: "13 April"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Easter Monday"
+              }
+            ],
+            [
+              {
+                text: "10 April"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Good Friday"
+              }
+            ]
+          ]
+        }) }}
+
+        {{ govukTable({
+          caption: "2016",
+          captionClasses: "govuk-!-margin-bottom-4",
+          head: [
+            {
+              text: "Date",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Day",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Name",
+              classes: "govuk-visually-hidden"
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "28 December"
+              },
+              {
+                text: "Thursday"
+              },
+              {
+                text: "Boxing Day (substitute day)"
+              }
+            ],
+            [
+              {
+                text: "25 December"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Christmas Day"
+              }
+            ],
+            [
+              {
+                text: "31 August"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Summer bank holiday"
+              }
+            ],
+            [
+              {
+                text: "25 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Spring bank holiday"
+              }
+            ],
+            [
+              {
+                text: "4 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Early May bank holiday"
+              }
+            ],
+            [
+              {
+                text: "13 April"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Easter Monday"
+              }
+            ],
+            [
+              {
+                text: "10 April"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Good Friday"
+              }
+            ]
+          ]
+        }) }}
+
+        {{ govukTable({
+          caption: "2015",
+          captionClasses: "govuk-!-margin-bottom-4",
+          head: [
+            {
+              text: "Date",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Day",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Name",
+              classes: "govuk-visually-hidden"
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "28 December"
+              },
+              {
+                text: "Thursday"
+              },
+              {
+                text: "Boxing Day (substitute day)"
+              }
+            ],
+            [
+              {
+                text: "25 December"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Christmas Day"
+              }
+            ],
+            [
+              {
+                text: "31 August"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Summer bank holiday"
+              }
+            ],
+            [
+              {
+                text: "25 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Spring bank holiday"
+              }
+            ],
+            [
+              {
+                text: "4 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Early May bank holiday"
+              }
+            ],
+            [
+              {
+                text: "13 April"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Easter Monday"
+              }
+            ],
+            [
+              {
+                text: "10 April"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Good Friday"
+              }
+            ]
+          ]
+        }) }}
+
+        {{ govukTable({
+          caption: "2014",
+          captionClasses: "govuk-!-margin-bottom-4",
+          head: [
+            {
+              text: "Date",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Day",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Name",
+              classes: "govuk-visually-hidden"
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "28 December"
+              },
+              {
+                text: "Thursday"
+              },
+              {
+                text: "Boxing Day (substitute day)"
+              }
+            ],
+            [
+              {
+                text: "25 December"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Christmas Day"
+              }
+            ],
+            [
+              {
+                text: "31 August"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Summer bank holiday"
+              }
+            ],
+            [
+              {
+                text: "25 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Spring bank holiday"
+              }
+            ],
+            [
+              {
+                text: "4 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Early May bank holiday"
+              }
+            ],
+            [
+              {
+                text: "13 April"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Easter Monday"
+              }
+            ],
+            [
+              {
+                text: "10 April"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Good Friday"
+              }
+            ]
+          ]
+        }) }}
+
+        {{ govukTable({
+          caption: "2013",
+          captionClasses: "govuk-!-margin-bottom-4",
+          head: [
+            {
+              text: "Date",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Day",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Name",
+              classes: "govuk-visually-hidden"
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "28 December"
+              },
+              {
+                text: "Thursday"
+              },
+              {
+                text: "Boxing Day (substitute day)"
+              }
+            ],
+            [
+              {
+                text: "25 December"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Christmas Day"
+              }
+            ],
+            [
+              {
+                text: "31 August"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Summer bank holiday"
+              }
+            ],
+            [
+              {
+                text: "25 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Spring bank holiday"
+              }
+            ],
+            [
+              {
+                text: "4 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Early May bank holiday"
+              }
+            ],
+            [
+              {
+                text: "13 April"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Easter Monday"
+              }
+            ],
+            [
+              {
+                text: "10 April"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Good Friday"
+              }
+            ]
+          ]
+        }) }}
+
+        {{ govukTable({
+          caption: "2012",
+          captionClasses: "govuk-!-margin-bottom-4",
+          head: [
+            {
+              text: "Date",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Day",
+              classes: "govuk-visually-hidden"
+            },
+            {
+              text: "Name",
+              classes: "govuk-visually-hidden"
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "28 December"
+              },
+              {
+                text: "Thursday"
+              },
+              {
+                text: "Boxing Day (substitute day)"
+              }
+            ],
+            [
+              {
+                text: "25 December"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Christmas Day"
+              }
+            ],
+            [
+              {
+                text: "31 August"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Summer bank holiday"
+              }
+            ],
+            [
+              {
+                text: "25 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Spring bank holiday"
+              }
+            ],
+            [
+              {
+                text: "4 May"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Early May bank holiday"
+              }
+            ],
+            [
+              {
+                text: "13 April"
+              },
+              {
+                text: "Monday"
+              },
+              {
+                text: "Easter Monday"
+              }
+            ],
+            [
+              {
+                text: "10 April"
+              },
+              {
+                text: "Friday"
+              },
+              {
+                text: "Good Friday"
+              }
+            ]
+          ]
+        }) }}
+      {% endset %} {# end of irelandHTML #}
+
+      {# "<article>" tag used in https://www.gov.uk/bank-holidays #}
+      <article>
+
+        {{ govukTabs({
+          items: [
+            {
+              label: "England and Wales",
+              id: "tab_england-and-wales",
+              panel: {
+                html: englandAndWalesHTML
+              }
+            },
+            {
+              label: "Scotland",
+              id: "tab_scotland",
+              panel: {
+                html: scotlandHTML
+              }
+            },
+            {
+              label: "Northern Ireland",
+              id: "tab_northern-ireland",
+              panel: {
+                html: irelandHTML
+              }
+            }
+          ]
+        }) }}
+
+        <p class="govuk-body">Last updated: 8 February 2019</p>
+      </article>
+
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+      <!-- The Related items component is not part of GOV.UK Frontend but will be styled if used in the Prototype Kit -->
+
+      <aside class="app-related-items" role="complementary">
+        <h2 class="govuk-heading-m" id="subsection-title">
+          Related content
+        </h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li class="gem-c-related-navigation__link">
+              <a class="govuk-link" href="#/holiday-entitlement-rights">Holiday entitlement</a>
+            </li>
+            <li class="gem-c-related-navigation__link">
+              <a class="govuk-link" href="#/school-term-holiday-dates">School term and holiday dates</a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+    </div>
+  </div>
+{% endblock %}
