@@ -4919,6 +4919,41 @@ SdnHeader.prototype.handleMouseleave = function (event) {
   this.blurEnabled = true;
 };
 
+function SdnTimeline ($module) {
+  this.$module = $module;
+  this.$bullets = [];
+}
+
+SdnTimeline.prototype.init = function () {
+  // Check for module
+  var $module = this.$module;
+  if (!$module) {
+    return
+  }
+
+  this.$bullets = $module.querySelectorAll('.js-sdn-timeline__bullet');
+
+  nodeListForEach(this.$bullets, function ($bullet) {
+    $bullet.setAttribute('tabindex', '0');
+    $bullet.addEventListener('click', this.handleClick);
+    $bullet.addEventListener('focusout', this.handleBlur);
+  }.bind(this));
+};
+
+SdnTimeline.prototype.handleClick = function (event) {
+  event.preventDefault();
+
+  this.parentNode.classList.toggle('sdn-timeline__step--dropdown-active');
+};
+
+SdnTimeline.prototype.handleBlur = function (event) {
+  event.preventDefault();
+
+  setTimeout(function () {
+    this.parentNode.classList.remove('sdn-timeline__step--dropdown-active');
+  }.bind(this), 100);
+};
+
 function initAll () {
   // Find all buttons with [role=button] on the document to enhance.
   new Button(document).init();
@@ -4965,6 +5000,9 @@ function initAll () {
 
   // Find first sdn header module to enhance.
   new SdnHeader(document.querySelector('[data-module="sdn-header"]')).init();
+
+  // Find first sdn header module to enhance.
+  new SdnTimeline(document.querySelector('[data-module="sdn-timeline"]')).init();
 }
 
 exports.initAll = initAll;
@@ -4978,5 +5016,6 @@ exports.Header = Header;
 exports.Radios = Radios;
 exports.Tabs = Tabs;
 exports.SdnHeader = SdnHeader;
+exports.SdnTimeline = SdnTimeline;
 
 })));

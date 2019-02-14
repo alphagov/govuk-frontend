@@ -5,6 +5,10 @@
 @import "../../../helpers/typography";
 @import "../_partials/gradient-background";
 
+$icon-facebook: url("../../../assets/images/icon-facebook.svg");
+$icon-github: url("../../../assets/images/icon-github.svg");
+$icon-youtube: url("../../../assets/images/icon-youtube.svg");
+
 @include govuk-exports("sdn/component/footer") {
   $sdn-footer-donate-size: 30%;
 
@@ -26,6 +30,9 @@
 
   $sdn-footer-input-border-color: #ffffff;
   $sdn-footer-input-placeholder-color: #333333;
+
+  $sdn-footer-bottom-container-background-color: #1d1e21;
+  $icon-background-color: #ffffff;
 
   // Based on the govuk-crest-2x.png image dimensions.
   $govuk-footer-crest-image-width-2x: 250px;
@@ -267,6 +274,123 @@
       -webkit-flex-shrink: 0;
           -ms-flex-negative: 0;
               flex-shrink: 0;
+    }
+  }
+
+  .sdn-footer__bottom-container {
+    padding-top: 70px;
+    padding-bottom: 70px;
+    background-color: $sdn-footer-bottom-container-background-color;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .sdn-footer__links {
+    @include govuk-font($size: 19, $line-height: 1.75);
+
+    margin-top: 20px;
+    font-weight: 100;
+    text-align: center;
+
+    @include govuk-media-query($from: desktop) {
+      width: 40%;
+      text-align: left;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+  }
+
+  .sdn-footer__contact {
+    @include govuk-font($size: 16, $line-height: 2);
+
+    margin-top: 20px;
+    font-weight: 100;
+    text-align: center;
+
+    @include govuk-media-query($from: desktop) {
+      width: 40%;
+      text-align: left;
+    }
+  }
+
+  .sdn-footer__social {
+    @include govuk-font($size: 19);
+
+    margin-top: 20px;
+    text-align: center;
+
+    @include govuk-media-query($from: desktop) {
+      width: 20%;
+      text-align: left;
+    }
+  }
+
+  .sdn-footer__bottom-columns {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row;
+
+    @include govuk-media-query($until: desktop) {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: column;
+          -ms-flex-direction: column;
+              flex-direction: column;
+    }
+  }
+
+  .footer-icon {
+    display: inline-block;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    padding: 8px;
+    border-radius: 50%;
+    background-color: $icon-background-color;
+
+    span {
+      display: block;
+      width: 24px;
+      height: 24px;
+      overflow: hidden;
+      background-repeat: no-repeat;
+      background-position: center center;
+      text-indent: 100%;
+      white-space: nowrap;
+    }
+  }
+
+  .footer-icon__facebook {
+    span {
+      background-image: $icon-facebook;
+    }
+  }
+
+  .footer-icon__github {
+    span {
+      background-image: $icon-github;
+    }
+  }
+
+  .footer-icon__youtube {
+    span {
+      background-image: $icon-youtube;
     }
   }
 }
