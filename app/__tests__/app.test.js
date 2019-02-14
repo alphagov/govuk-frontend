@@ -18,6 +18,9 @@ const expectedPages = [
   '/examples/typography',
   '/examples/template-default',
   '/examples/template-custom',
+  '/full-page-examples/bank-holidays',
+  '/full-page-examples/check-your-answers',
+  '/full-page-examples/service-manual-topic',
   '/full-page-examples/start-page'
 ]
 
