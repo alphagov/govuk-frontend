@@ -15,6 +15,10 @@ params:
   type: object
   required: false
   description: HTML attributes (for example data attributes) to add to the breadcrumbs container.
+- name: button
+  type: string
+  required: false
+  description: Activates button if filled in
 
 previewLayout: full-width
 
@@ -26,3 +30,7 @@ examples:
   data:
     headline: Narodenie dieťaťa
     subheadline: Samuel
+- name: with button
+  data:
+    headline: Narodenie dieťaťa
+    button: Začať vybavovať
