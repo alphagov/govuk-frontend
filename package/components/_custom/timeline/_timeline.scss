@@ -6,6 +6,7 @@ $color-done: govuk-colour("green");
 $color-progress: govuk-colour("orange");
 $color-waiting: govuk-colour("blue");
 $color-default: govuk-colour("grey-3");
+$color-default-transparent: rgba(0, 0, 0, .14); // transparent version of grey-3
 $color-black: #333333;
 $std-timeline-dropdown-bg-color: #f1f1f1;
 
@@ -153,7 +154,7 @@ $icon-check-black: url("../../../assets/images/icon-check-black.svg");
     border: 1px solid $color-default;
     border-radius: 6px;
     background-color: govuk-colour("white");
-    box-shadow: $color-default 0 15px 30px;
+    box-shadow: $color-default-transparent 0 15px 30px;
 
     &:before,
     &:after {
