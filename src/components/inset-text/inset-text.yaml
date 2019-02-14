@@ -14,11 +14,11 @@ params:
 - name: classes
   type: string
   required: false
-  description: Classes to add to the anchor tag.
+  description: Optional classes to add to the inset text container.
 - name: attributes
   type: object
   required: false
-  description: HTML attributes (for example data attributes) to add to the anchor tag.
+  description: HTML attributes (for example data attributes) to add to the inset text container.
 
 examples:
   - name: default
