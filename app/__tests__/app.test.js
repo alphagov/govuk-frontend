@@ -20,6 +20,7 @@ const expectedPages = [
   '/examples/template-custom',
   '/full-page-examples/bank-holidays',
   '/full-page-examples/check-your-answers',
+  '/full-page-examples/feedback-page',
   '/full-page-examples/service-manual-topic',
   '/full-page-examples/start-page'
 ]
@@ -100,6 +101,41 @@ describe(`http://localhost:${PORT}`, () => {
           expect(appBanner.length).toBeFalsy()
           done(err)
         })
+      })
+    })
+  })
+
+  describe('/full-page-examples/feedback-page', () => {
+    it('should not show errors if submit with no input', (done) => {
+      request.get({
+        url: `http://localhost:${PORT}/full-page-examples/feedback-page`
+      }, (err, res) => {
+        let $ = cheerio.load(res.body)
+
+        // Check the page responded correctly
+        expect(res.statusCode).toBe(200)
+        expect($.html()).toContain('Send your feedback to this service')
+
+        // Check that the error summary is not visible
+        let $errorSummary = $('[data-module="error-summary"]')
+        expect($errorSummary.length).toBeFalsy()
+        done(err)
+      })
+    })
+    it('should show errors if form is submitted with no input', (done) => {
+      request.post({
+        url: `http://localhost:${PORT}/full-page-examples/feedback-page`
+      }, (err, res) => {
+        let $ = cheerio.load(res.body)
+
+        // Check the page responded correctly
+        expect(res.statusCode).toBe(200)
+        expect($.html()).toContain('Send your feedback to this service')
+
+        // Check that the error summary is visible
+        let $errorSummary = $('[data-module="error-summary"]')
+        expect($errorSummary.length).toBeTruthy()
+        done(err)
       })
     })
   })
