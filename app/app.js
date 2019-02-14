@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const bodyParser = require('body-parser')
 const nunjucks = require('nunjucks')
 const util = require('util')
 const fs = require('fs')
@@ -59,6 +60,9 @@ module.exports = (options) => {
   // serve html5-shiv from node modules
   app.use('/vendor/html5-shiv/', express.static('node_modules/html5shiv/dist/'))
   app.use('/assets', express.static(path.join(configPaths.src, 'assets')))
+
+  // Turn form POSTs into data that can be used for validation.
+  app.use(bodyParser.urlencoded({ extended: true }))
 
   // Handle the banner component serverside.
   require('./banner.js')(app)
@@ -176,6 +180,8 @@ module.exports = (options) => {
       }
     })
   })
+
+  require('./views/full-page-examples/feedback-page')(app)
 
   app.get('/robots.txt', function (req, res) {
     res.type('text/plain')
