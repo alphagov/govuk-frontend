@@ -59,7 +59,7 @@ params:
 - name: classes
   type: string
   required: false
-  description: Classes to add to the anchor tag.
+  description: Optional classes to add to the select.
 - name: attributes
   type: object
   required: false
