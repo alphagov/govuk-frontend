@@ -38,11 +38,11 @@ params:
   - name: classes
     type: string
     required: false
-    description: Optional classes to add to the form group (e.g. to show error state for the whole group)
+    description: Classes to add to the form group (e.g. to show error state for the whole group)
 - name: classes
   type: string
   required: false
-  description: Optional classes to add to the input.
+  description: Classes to add to the input.
 - name: autocomplete
   type: string
   required: false
