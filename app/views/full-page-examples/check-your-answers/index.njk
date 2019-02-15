@@ -9,6 +9,7 @@
 {% block pageTitle %}GOV.UK - {{ pageTitle }}{% endblock %}
 
 {% block header %}
+  {% include "../../partials/banner.njk" %}
   {{ govukHeader({
     serviceName: "Temporary events notice"
   }) }}
