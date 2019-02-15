@@ -1,0 +1,19 @@
+{# This example is not based on a live example #}
+{% extends "_generic.njk" %}
+
+{% from "panel/macro.njk" import govukPanel %}
+
+{% set pageTitle = "Thank you for confirming your postcode" %}
+{% block pageTitle %}GOV.UK - {{ pageTitle }}{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukPanel({
+        titleText: pageTitle
+      }) }}
+    </div>
+  </div>
+{% endblock %}

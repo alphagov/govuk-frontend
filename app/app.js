@@ -185,6 +185,7 @@ module.exports = (options) => {
   require('./views/full-page-examples/how-do-you-want-to-sign-in')(app)
   require('./views/full-page-examples/upload-your-photo')(app)
   require('./views/full-page-examples/what-is-your-nationality')(app)
+  require('./views/full-page-examples/what-is-your-postcode')(app)
 
   app.get('/robots.txt', function (req, res) {
     res.type('text/plain')
