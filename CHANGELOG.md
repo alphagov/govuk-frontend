@@ -28,6 +28,14 @@
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
+
+- Prevent summary list from wrapping mid-word for most browsers
+
+  Thanks to [Malcolm Butler](https://github.com/MoJ-Longbeard) for fixing this issue!
+
+  ([PR #1185](https://github.com/alphagov/govuk-frontend/pull/1185))
+  
+
 ## 2.7.0 (Feature release)
 
 🆕 New features:

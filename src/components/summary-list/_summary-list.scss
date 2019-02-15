@@ -58,8 +58,8 @@
   .govuk-summary-list__value {
     // sass-lint:disable no-duplicate-properties
     // Automatic wrapping for unbreakable text (e.g. URLs)
-    word-break: break-word; // WebKit/Blink only
     word-break: break-all; // Standards
+    word-break: break-word; // WebKit/Blink only
   }
 
   .govuk-summary-list__key {
