@@ -7,7 +7,20 @@ module.exports = (app) => {
     [
       body('confirm-nationality')
         .exists()
-        .not().isEmpty().withMessage('Select your nationality or nationalities')
+        .not().isEmpty().withMessage('Select your nationality or nationalities'),
+      body('country-name')
+        .custom((value, { req: request }) => {
+          // See https://github.com/express-validator/express-validator/pull/658
+          const confirmedNationality = request.body['confirm-nationality'] || []
+          // If the other country option is selected and there's no value.
+          if (
+            confirmedNationality.includes('other-country-nationality') &&
+              !value
+          ) {
+            throw new Error('Enter your country')
+          }
+          return true
+        })
     ],
     (request, response) => {
       const errors = formatValidationErrors(validationResult(request))

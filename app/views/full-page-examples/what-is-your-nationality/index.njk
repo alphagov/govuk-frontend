@@ -3,6 +3,7 @@
 
 {% from "back-link/macro.njk" import govukBackLink %}
 {% from "checkboxes/macro.njk" import govukCheckboxes %}
+{% from "input/macro.njk" import govukInput %}
 {% from "details/macro.njk" import govukDetails %}
 {% from "button/macro.njk" import govukButton %}
 {% from "error-summary/macro.njk" import govukErrorSummary %}
@@ -29,6 +30,21 @@
               }) }}
           {% endif %}
 
+        {% set otherCountryHtml %}
+
+          {{ govukInput({
+            id: "country-name",
+            name: "country-name",
+            type: "text",
+            classes: "govuk-!-width-one-third",
+            label: {
+              text: "Country name"
+            },
+            errorMessage: errors["country-name"]
+            }) }}
+
+        {% endset %}
+
         {{ govukCheckboxes({
           idPrefix: "confirm-nationality",
           name: "confirm-nationality",
@@ -47,17 +63,20 @@
               id: "confirm-nationality",
               value: "british-nationality",
               text: "British (including English, Scottish, Welsh or from Northern Ireland)",
-              checked: values["confirm-nationality"] === "british-nationality"
+              checked: values["confirm-nationality"]|length and "british-nationality" in values["confirm-nationality"]
             },
             {
               value: "irish-nationality",
               text: "Irish (including from Northern Ireland)",
-              checked: values["confirm-nationality"] === "irish-nationality"
+              checked: values["confirm-nationality"]|length and "irish-nationality" in values["confirm-nationality"]
             },
             {
               value: "other-country-nationality",
               text: "Citizen of a different country",
-              checked: values["confirm-nationality"] === "other-country-nationality"
+              checked: values["confirm-nationality"]|length and "other-country-nationality" in values["confirm-nationality"],
+              conditional: {
+                html: otherCountryHtml
+              }
             }
           ],
           errorMessage: errors["confirm-nationality"]
