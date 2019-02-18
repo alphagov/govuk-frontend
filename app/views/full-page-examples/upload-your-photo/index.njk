@@ -1,0 +1,80 @@
+{# This example is based of the live "Passport" service: https://www.passport.service.gov.uk/photo/upload #}
+{% extends "_generic.njk" %}
+
+{% from "phase-banner/macro.njk" import govukPhaseBanner %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "radios/macro.njk" import govukRadios %}
+{% from "error-summary/macro.njk" import govukErrorSummary %}
+{% from "button/macro.njk" import govukButton %}
+{% from "file-upload/macro.njk" import govukFileUpload %}
+
+{% set pageTitle = "Upload your photo" %}
+{% block pageTitle %}GOV.UK - {{ pageTitle }}{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block header %}
+  {% include "../../partials/banner.njk" %}
+  {{ govukHeader({
+    serviceName: "Apply for a passport"
+  }) }}
+{% endblock %}
+
+{% block beforeContent %}
+    {{ govukPhaseBanner({
+        tag: {
+            text: "beta"
+        },
+        html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+    }) }}
+    {{ govukBackLink({
+        text: "Back",
+        href: "#"
+    }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form method="post" novalidate>
+            {% if errorSummary.length > 0 %}
+                {{ govukErrorSummary({
+                    titleText: "There is a problem",
+                    errorList: errorSummary 
+                }) }}
+            {% endif %}
+
+            <h1 class="govuk-heading-xl">{{ pageTitle }}</h1>
+
+            <p class="govuk-body">
+                Your photo will now go through an automated check.
+            </p>
+
+            <p class="govuk-body">
+                You’ll need to review it before you add the photo to your application.
+            </p>
+
+            {{ govukFileUpload({
+                id: "photo",
+                name: "photo",
+                label: {
+                    text: "Upload your photo"
+                },
+                errorMessage: errors["photo"]
+            }) }}
+
+            <h2 class="govuk-heading-m">Your photo must be:</h2>
+
+            <ul class="govuk-list govuk-list--bullet">
+                <li>in colour</li>
+                <li>unaltered by computer software</li>
+                <li>at least 50KB and no more than 10MB</li>
+            </ul>
+
+            {{ govukButton({
+                text: "Submit your photo"
+            }) }}
+        </form>
+    </div>
+  </div>
+{% endblock %}

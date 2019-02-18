@@ -182,6 +182,7 @@ module.exports = (options) => {
   })
 
   require('./views/full-page-examples/feedback-page')(app)
+  require('./views/full-page-examples/upload-your-photo')(app)
 
   app.get('/robots.txt', function (req, res) {
     res.type('text/plain')
