@@ -21,9 +21,12 @@ const expectedPages = [
   '/full-page-examples/bank-holidays',
   '/full-page-examples/check-your-answers',
   '/full-page-examples/feedback-page',
+  '/full-page-examples/how-do-you-want-to-sign-in',
   '/full-page-examples/service-manual-topic',
   '/full-page-examples/start-page',
-  '/full-page-examples/upload-your-photo'
+  '/full-page-examples/upload-your-photo',
+  '/full-page-examples/what-is-your-nationality',
+  '/full-page-examples/what-is-your-postcode'
 ]
 
 // Returns a wrapper for `request` which applies these options by default
@@ -167,6 +170,111 @@ describe(`http://localhost:${PORT}`, () => {
         // Check the page responded correctly
         expect(res.statusCode).toBe(200)
         expect($.html()).toContain('Upload your photo')
+
+        // Check that the error summary is visible
+        let $errorSummary = $('[data-module="error-summary"]')
+        expect($errorSummary.length).toBeTruthy()
+        done(err)
+      })
+    })
+  })
+
+  describe('/full-page-examples/how-do-you-want-to-sign-in', () => {
+    it('should not show errors if submit with no input', (done) => {
+      request.get({
+        url: `http://localhost:${PORT}/full-page-examples/how-do-you-want-to-sign-in`
+      }, (err, res) => {
+        let $ = cheerio.load(res.body)
+
+        // Check the page responded correctly
+        expect(res.statusCode).toBe(200)
+        expect($.html()).toContain('How do you want to sign in?')
+
+        // Check that the error summary is not visible
+        let $errorSummary = $('[data-module="error-summary"]')
+        expect($errorSummary.length).toBeFalsy()
+        done(err)
+      })
+    })
+    it('should show errors if form is submitted with no input', (done) => {
+      request.post({
+        url: `http://localhost:${PORT}/full-page-examples/how-do-you-want-to-sign-in`
+      }, (err, res) => {
+        let $ = cheerio.load(res.body)
+
+        // Check the page responded correctly
+        expect(res.statusCode).toBe(200)
+        expect($.html()).toContain('How do you want to sign in?')
+
+        // Check that the error summary is visible
+        let $errorSummary = $('[data-module="error-summary"]')
+        expect($errorSummary.length).toBeTruthy()
+        done(err)
+      })
+    })
+  })
+
+  describe('/full-page-examples/what-is-your-nationality', () => {
+    it('should not show errors if submit with no input', (done) => {
+      request.get({
+        url: `http://localhost:${PORT}/full-page-examples/what-is-your-nationality`
+      }, (err, res) => {
+        let $ = cheerio.load(res.body)
+
+        // Check the page responded correctly
+        expect(res.statusCode).toBe(200)
+        expect($.html()).toContain('What is your nationality?')
+
+        // Check that the error summary is not visible
+        let $errorSummary = $('[data-module="error-summary"]')
+        expect($errorSummary.length).toBeFalsy()
+        done(err)
+      })
+    })
+    it('should show errors if form is submitted with no input', (done) => {
+      request.post({
+        url: `http://localhost:${PORT}/full-page-examples/what-is-your-nationality`
+      }, (err, res) => {
+        let $ = cheerio.load(res.body)
+
+        // Check the page responded correctly
+        expect(res.statusCode).toBe(200)
+        expect($.html()).toContain('What is your nationality?')
+
+        // Check that the error summary is visible
+        let $errorSummary = $('[data-module="error-summary"]')
+        expect($errorSummary.length).toBeTruthy()
+        done(err)
+      })
+    })
+  })
+
+  describe('/full-page-examples/what-is-your-postcode', () => {
+    it('should not show errors if submit with no input', (done) => {
+      request.get({
+        url: `http://localhost:${PORT}/full-page-examples/what-is-your-postcode`
+      }, (err, res) => {
+        let $ = cheerio.load(res.body)
+
+        // Check the page responded correctly
+        expect(res.statusCode).toBe(200)
+        expect($.html()).toContain('What is your home postcode?')
+
+        // Check that the error summary is not visible
+        let $errorSummary = $('[data-module="error-summary"]')
+        expect($errorSummary.length).toBeFalsy()
+        done(err)
+      })
+    })
+    it('should show errors if form is submitted with no input', (done) => {
+      request.post({
+        url: `http://localhost:${PORT}/full-page-examples/what-is-your-postcode`
+      }, (err, res) => {
+        let $ = cheerio.load(res.body)
+
+        // Check the page responded correctly
+        expect(res.statusCode).toBe(200)
+        expect($.html()).toContain('What is your home postcode?')
 
         // Check that the error summary is visible
         let $errorSummary = $('[data-module="error-summary"]')

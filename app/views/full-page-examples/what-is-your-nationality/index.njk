@@ -1,0 +1,77 @@
+{# This example is based of the  "What is your nationality?" example: https://www.registertovote.service.gov.uk/register-to-vote/nationality #}
+{% extends "_generic.njk" %}
+
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "checkboxes/macro.njk" import govukCheckboxes %}
+{% from "details/macro.njk" import govukDetails %}
+{% from "button/macro.njk" import govukButton %}
+{% from "error-summary/macro.njk" import govukErrorSummary %}
+
+{% set pageTitle = "What is your nationality?" %}
+{% block pageTitle %}GOV.UK - {{ pageTitle }}{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "#"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form method="post" novalidate>
+          {% if errorSummary.length > 0 %}
+              {{ govukErrorSummary({
+                  titleText: "There is a problem",
+                  errorList: errorSummary
+              }) }}
+          {% endif %}
+
+        {{ govukCheckboxes({
+          idPrefix: "confirm-nationality",
+          name: "confirm-nationality",
+          fieldset: {
+            legend: {
+              text: "What is your nationality?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: "Select all options that are relevant to you."
+          },
+          items: [
+            {
+              id: "confirm-nationality",
+              value: "british-nationality",
+              text: "British (including English, Scottish, Welsh or from Northern Ireland)",
+              checked: values["confirm-nationality"] === "british-nationality"
+            },
+            {
+              value: "irish-nationality",
+              text: "Irish (including from Northern Ireland)",
+              checked: values["confirm-nationality"] === "irish-nationality"
+            },
+            {
+              value: "other-country-nationality",
+              text: "Citizen of a different country",
+              checked: values["confirm-nationality"] === "other-country-nationality"
+            }
+          ],
+          errorMessage: errors["confirm-nationality"]
+        }) }}
+
+        {{ govukDetails({
+          summaryText: "Help with nationality",
+          text: "We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post."
+        }) }}
+
+      {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}
