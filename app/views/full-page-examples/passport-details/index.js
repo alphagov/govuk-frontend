@@ -1,22 +1,5 @@
 const { body, validationResult } = require('express-validator/check')
-
-// To make it easier to use in the view, might be nicer as a Nunjucks function
-function getErrors (errorsInstance) {
-  if (errorsInstance.isEmpty()) {
-    return false
-  }
-  const errors = errorsInstance.array()
-  const formattedErrors = {}
-  errors.forEach(error => {
-    formattedErrors[error.param] = {
-      id: error.param,
-      href: '#' + error.param,
-      value: error.value,
-      text: error.msg
-    }
-  })
-  return formattedErrors
-}
+const { formatValidationErrors } = require('../../../utils.js')
 
 module.exports = (app) => {
   app.post(
@@ -36,7 +19,7 @@ module.exports = (app) => {
         .not().isEmpty().withMessage('Enter your expiry year')
     ],
     (request, response) => {
-      const errors = getErrors(validationResult(request))
+      const errors = formatValidationErrors(validationResult(request))
 
       if (!errors) {
         return response.render('./full-page-examples/passport-details/confirm')

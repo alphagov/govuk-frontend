@@ -1,25 +1,9 @@
 const { body, validationResult } = require('express-validator/check')
-
-// To make it easier to use in the view, might be nicer as a Nunjucks function
-function getErrors (errorsInstance) {
-  if (errorsInstance.isEmpty()) {
-    return false
-  }
-  const errors = errorsInstance.array()
-  const formattedErrors = {}
-  errors.forEach(error => {
-    formattedErrors[error.param] = {
-      href: '#' + error.param,
-      value: error.value,
-      text: error.msg
-    }
-  })
-  return formattedErrors
-}
+const { formatValidationErrors } = require('../../../utils.js')
 
 module.exports = (app) => {
   app.post(
-    '/full-page-examples/feedback-page',
+    '/full-page-examples/feedback',
     [
       body('what-were-you-trying-to-do')
         .exists()
@@ -62,15 +46,15 @@ module.exports = (app) => {
 
     ],
     (request, response) => {
-      const errors = getErrors(validationResult(request))
+      const errors = formatValidationErrors(validationResult(request))
       if (errors) {
-        return response.render('./full-page-examples/feedback-page/index', {
+        return response.render('./full-page-examples/feedback/index', {
           errors,
           errorSummary: Object.values(errors),
           values: request.body // In production this should sanitized.
         })
       }
-      response.render('./full-page-examples/feedback-page/confirm')
+      response.render('./full-page-examples/feedback/confirm')
     }
   )
 }
