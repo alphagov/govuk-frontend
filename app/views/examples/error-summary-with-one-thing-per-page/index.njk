@@ -20,12 +20,8 @@
     "classes": "optional-extra-class",
     "errorList": [
       {
-        "text": "Descriptive link to the question with an error",
-        "href": "#example-error-1"
-      },
-      {
-        "text": "Descriptive link to the question with an error",
-        "href": "#example-error-1"
+        "text": "Date of birth must include a month and year",
+        "href": "#dob-month"
       }
     ]
   }) }}
@@ -43,8 +39,23 @@
     hint: {
       text: 'For example 5 12 1987'
     },
+    items:[
+      {
+        name: 'day',
+        classes: 'govuk-input--width-2',
+        value: '22'
+      },
+      {
+        name: 'month',
+        classes: 'govuk-input--width-2 govuk-input--error'
+      },
+      {
+        name: 'year',
+        classes: 'govuk-input--width-4 govuk-input--error'
+      }
+    ],
     errorMessage: {
-      text: "You must provide your date of birth"
+      text: "Date of birth must include a month and year"
     }
     })
   }}
