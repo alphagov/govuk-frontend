@@ -1,0 +1,469 @@
+{
+    "// url": "https://www.gov.uk/news-and-communications.json?keywords=&related_to_brexit=true&level_one_taxon=&public_timestamp%5Bfrom%5D=&public_timestamp%5Bto%5D=&order=most-viewed",
+    "total": "586",
+    "generic_description": "publications matched your criteria",
+    "pluralised_document_noun": "results",
+    "applied_filters": [
+      [
+        {
+          "preposition": "About",
+          "text": "Brexit",
+          "link": {
+            "data": {
+              "facet": "related_to_brexit",
+              "name": null,
+              "value": true
+            }
+          }
+        }
+      ]
+    ],
+    "documents": [
+      {
+        "document": {
+          "title": "HM Revenue and Customs simplifies importing from the EU as part of 'no deal' preparation",
+          "link": "/government/news/hm-revenue-and-customs-simplifies-importing-from-the-eu-as-part-of-no-deal-preparation",
+          "summary": "HMRC announces Transitional Simplified Procedures for customs, should we leave the EU without a deal, by writing to 145,000 VAT registered businesses trading with the EU. ",
+          "is_historic": false,
+          "government_name": null,
+          "metadata": [
+            {
+              "label": "From",
+              "value": "HM Treasury and 1 others",
+              "is_text": true
+            },
+            {
+              "label": "Updated",
+              "is_date": true,
+              "machine_date": "2019-02-04",
+              "human_date": "4 February 2019"
+            }
+          ]
+        },
+        "document_index": 1
+      },
+      {
+        "document": {
+          "title": "Joint statement on behalf of the Prime Minister and President Juncker",
+          "link": "/government/news/joint-statement-on-behalf-of-the-prime-minister-and-president-juncker",
+          "summary": "Prime Minister Theresa May met President Juncker in Brussels.",
+          "is_historic": false,
+          "government_name": null,
+          "metadata": [
+            {
+              "label": "From",
+              "value": "Prime Minister's Office, 10 Downing Street",
+              "is_text": true
+            },
+            {
+              "label": "Updated",
+              "is_date": true,
+              "machine_date": "2019-02-07",
+              "human_date": "7 February 2019"
+            }
+          ]
+        },
+        "document_index": 2
+      },
+      {
+        "document": {
+          "title": "Government outlines no deal arrangements for EU citizens",
+          "link": "/government/news/government-outlines-no-deal-arrangements-for-eu-citizens",
+          "summary": "In the event of no deal, EU citizens will be able to enter the UK to visit, work or study after 29 March 2019.",
+          "is_historic": false,
+          "government_name": null,
+          "metadata": [
+            {
+              "label": "From",
+              "value": "Home Office and 1 others",
+              "is_text": true
+            },
+            {
+              "label": "Updated",
+              "is_date": true,
+              "machine_date": "2019-01-28",
+              "human_date": "28 January 2019"
+            }
+          ]
+        },
+        "document_index": 3
+      },
+      {
+        "document": {
+          "title": "New advice for travellers visiting the UK, EU or European Economic Area in the event of a no-deal EU Exit",
+          "link": "/government/news/new-advice-for-travellers-visiting-the-uk-eu-or-european-economic-area-in-the-event-of-a-no-deal-eu-exit",
+          "summary": "The government has published its latest advice for people travelling to the UK, European Union, European Economic Area or Switzerland after 29 March 2019.",
+          "is_historic": false,
+          "government_name": null,
+          "metadata": [
+            {
+              "label": "From",
+              "value": "Department of Health and Social Care",
+              "is_text": true
+            },
+            {
+              "label": "Updated",
+              "is_date": true,
+              "machine_date": "2019-01-28",
+              "human_date": "28 January 2019"
+            }
+          ]
+        },
+        "document_index": 4
+      },
+      {
+        "document": {
+          "title": "Letters on 'no deal' Brexit advice for businesses only trading with the EU",
+          "link": "/government/publications/no-deal-brexit-advice-for-businesses-only-trading-with-the-eu",
+          "summary": "HMRC letters to VAT-registered businesses only trading with the EU explaining how to prepare for changes to customs, excise and VAT if the UK leaves the EU without a deal.  ",
+          "is_historic": false,
+          "government_name": null,
+          "metadata": [
+            {
+              "label": "From",
+              "value": "HM Revenue & Customs",
+              "is_text": true
+            },
+            {
+              "label": "Updated",
+              "is_date": true,
+              "machine_date": "2019-02-04",
+              "human_date": "4 February 2019"
+            }
+          ]
+        },
+        "document_index": 5
+      },
+      {
+        "document": {
+          "title": "UK and EEA EFTA states strike agreement to protect citizens’ rights in a no deal scenario",
+          "link": "/government/news/uk-and-eea-efta-states-strike-agreement-to-protect-citizens-rights-in-a-no-deal-scenario",
+          "summary": "The UK has reached an agreement with Norway, Iceland and Liechtenstein to protect citizens’ rights in the event the UK leaves the EU without a deal.",
+          "is_historic": false,
+          "government_name": null,
+          "metadata": [
+            {
+              "label": "From",
+              "value": "Department for Exiting the European Union",
+              "is_text": true
+            },
+            {
+              "label": "Updated",
+              "is_date": true,
+              "machine_date": "2019-02-08",
+              "human_date": "8 February 2019"
+            }
+          ]
+        },
+        "document_index": 6
+      },
+      {
+        "document": {
+          "title": "PM's statement to the House of Commons on Brexit: 12 February 2019",
+          "link": "/government/speeches/pms-statement-to-the-house-of-commons-on-brexit-12-february-2019",
+          "summary": "Prime Minister Theresa May gave a statement to the House of Commons on Brexit.",
+          "is_historic": false,
+          "government_name": null,
+          "metadata": [
+            {
+              "label": "From",
+              "value": "Prime Minister's Office, 10 Downing Street",
+              "is_text": true
+            },
+            {
+              "label": "Updated",
+              "is_date": true,
+              "machine_date": "2019-02-12",
+              "human_date": "12 February 2019"
+            }
+          ]
+        },
+        "document_index": 7
+      },
+      {
+        "document": {
+          "title": "Blue UK passport to return after EU exit",
+          "link": "/government/news/blue-uk-passport-to-return-after-eu-exit",
+          "summary": "The cover of the UK passport will be returning to blue after the UK leaves the European Union, the Immigration Minister Brandon Lewis has announced.",
+          "is_historic": false,
+          "government_name": null,
+          "metadata": [
+            {
+              "label": "From",
+              "value": "Home Office and 1 others",
+              "is_text": true
+            },
+            {
+              "label": "Updated",
+              "is_date": true,
+              "machine_date": "2017-12-22",
+              "human_date": "22 December 2017"
+            }
+          ]
+        },
+        "document_index": 8
+      },
+      {
+        "document": {
+          "title": "Information and events for British citizens in Spain",
+          "link": "/government/news/information-and-events-for-british-citizens-in-spain",
+          "summary": "The British Embassy and Consulates regularly hold events across Spain to update British citizens on the UK’s departure from the European Union.",
+          "is_historic": false,
+          "government_name": null,
+          "metadata": [
+            {
+              "label": "Updated",
+              "is_date": true,
+              "machine_date": "2019-02-08",
+              "human_date": "8 February 2019"
+            }
+          ]
+        },
+        "document_index": 9
+      },
+      {
+        "document": {
+          "title": "Design for new product safety marking",
+          "link": "/government/news/design-for-new-product-safety-marking",
+          "summary": "Government publishes design for the UK marking that would apply to certain products sold in the UK if the UK leaves the EU without a deal.",
+          "is_historic": false,
+          "government_name": null,
+          "metadata": [
+            {
+              "label": "From",
+              "value": "Department for Business, Energy & Industrial Strategy and 1 others",
+              "is_text": true
+            },
+            {
+              "label": "Updated",
+              "is_date": true,
+              "machine_date": "2019-02-02",
+              "human_date": "2 February 2019"
+            }
+          ]
+        },
+        "document_index": 10
+      },
+      {
+        "document": {
+          "title": "PM speech in Belfast: 5 February 2019",
+          "link": "/government/speeches/pm-speech-in-belfast-5-february-2019",
+          "summary": "Prime Minister Theresa May gave a speech in Belfast today.",
+          "is_historic": false,
+          "government_name": null,
+          "metadata": [
+            {
+              "label": "From",
+              "value": "Prime Minister's Office, 10 Downing Street",
+              "is_text": true
+            },
+            {
+              "label": "Updated",
+              "is_date": true,
+              "machine_date": "2019-02-05",
+              "human_date": "5 February 2019"
+            }
+          ]
+        },
+        "document_index": 11
+      },
+      {
+        "document": {
+          "title": "A message from the British Ambassador to Ireland on the Common Travel Area",
+          "link": "/government/speeches/a-message-from-the-british-ambassador-to-ireland-on-the-common-travel-area--2",
+          "summary": "An op-ed from HMA Robin Barnett on the Common Travel Area (CTA).",
+          "is_historic": false,
+          "government_name": null,
+          "metadata": [
+            {
+              "label": "From",
+              "value": "Foreign & Commonwealth Office",
+              "is_text": true
+            },
+            {
+              "label": "Updated",
+              "is_date": true,
+              "machine_date": "2019-02-06",
+              "human_date": "6 February 2019"
+            }
+          ]
+        },
+        "document_index": 12
+      },
+      {
+        "document": {
+          "title": "Information and events for British citizens in France",
+          "link": "/government/news/information-and-events-for-british-citizens-in-france",
+          "summary": "The British Embassy in Paris has been holding meetings across France to update British citizens working and living in the country and answering their questions regarding Britain's departure from the European Union. ",
+          "is_historic": false,
+          "government_name": null,
+          "metadata": [
+            {
+              "label": "Updated",
+              "is_date": true,
+              "machine_date": "2019-02-05",
+              "human_date": "5 February 2019"
+            }
+          ]
+        },
+        "document_index": 13
+      },
+      {
+        "document": {
+          "title": "EU Exit awareness evenings for Central and Eastern European citizens",
+          "link": "/government/news/eu-exit-awareness-evenings-for-central-and-eastern-european-citizens",
+          "summary": "Meetings for citizens of Central and Eastern European countries residing in the UK will take place in February 2019 in Glasgow and Leeds.",
+          "is_historic": false,
+          "government_name": null,
+          "metadata": [
+            {
+              "label": "Updated",
+              "is_date": true,
+              "machine_date": "2019-01-24",
+              "human_date": "24 January 2019"
+            }
+          ]
+        },
+        "document_index": 14
+      },
+      {
+        "document": {
+          "title": "EU Exit: road haulage",
+          "link": "/government/speeches/eu-exit-road-haulage",
+          "summary": "A road haulage statutory instrument has been laid in Parliament which is designed to ensure UK law operates effectively if the UK leaves the EU without a deal.",
+          "is_historic": false,
+          "government_name": null,
+          "metadata": [
+            {
+              "label": "From",
+              "value": "Department for Transport and 1 others",
+              "is_text": true
+            },
+            {
+              "label": "Updated",
+              "is_date": true,
+              "machine_date": "2019-02-05",
+              "human_date": "5 February 2019"
+            }
+          ]
+        },
+        "document_index": 15
+      },
+      {
+        "document": {
+          "title": "MHCLG EU Exit local information sharing",
+          "link": "/government/news/mhclg-eu-exit-local-information-sharing",
+          "summary": "MHCLG continues to closely engage with local authorities so that they and their residents are well-prepared for the UK leaving the EU on 29 March 2019.",
+          "is_historic": false,
+          "government_name": null,
+          "metadata": [
+            {
+              "label": "From",
+              "value": "Ministry of Housing, Communities & Local Government",
+              "is_text": true
+            },
+            {
+              "label": "Updated",
+              "is_date": true,
+              "machine_date": "2019-02-05",
+              "human_date": "5 February 2019"
+            }
+          ]
+        },
+        "document_index": 16
+      },
+      {
+        "document": {
+          "title": "Information and events for British citizens in Germany",
+          "link": "/government/news/information-and-events-for-british-citizens-in-germany",
+          "summary": "The British Embassy and Consulates have been holding a series of meetings to inform British citizens working and living in Germany about their rights as Britain leaves the European Union. ",
+          "is_historic": false,
+          "government_name": null,
+          "metadata": [
+            {
+              "label": "Updated",
+              "is_date": true,
+              "machine_date": "2019-02-14",
+              "human_date": "14 February 2019"
+            }
+          ]
+        },
+        "document_index": 17
+      },
+      {
+        "document": {
+          "title": "Contingency legislation covering regulation of medicines and medical devices in a no deal scenario",
+          "link": "/government/news/contingency-legislation-covering-regulation-of-medicines-and-medical-devices-in-a-no-deal-scenario",
+          "summary": "Legislation has been published which, in the event of the UK leaving the EU with no agreement, will cover the regulation of medicines, medical devices and clinical trials.",
+          "is_historic": false,
+          "government_name": null,
+          "metadata": [
+            {
+              "label": "From",
+              "value": "Medicines and Healthcare products Regulatory Agency",
+              "is_text": true
+            },
+            {
+              "label": "Updated",
+              "is_date": true,
+              "machine_date": "2019-01-24",
+              "human_date": "24 January 2019"
+            }
+          ]
+        },
+        "document_index": 18
+      },
+      {
+        "document": {
+          "title": "PM meeting with the Prime Minister of Malta: 11 February 2019",
+          "link": "/government/news/pm-meeting-with-the-prime-minister-of-malta-11-february-2019",
+          "summary": "Prime Minister Theresa May met Prime Minister Muscat at Downing Street.",
+          "is_historic": false,
+          "government_name": null,
+          "metadata": [
+            {
+              "label": "From",
+              "value": "Prime Minister's Office, 10 Downing Street",
+              "is_text": true
+            },
+            {
+              "label": "Updated",
+              "is_date": true,
+              "machine_date": "2019-02-11",
+              "human_date": "11 February 2019"
+            }
+          ]
+        },
+        "document_index": 19
+      },
+      {
+        "document": {
+          "title": "EU Exit Local Government Delivery Board: January 2019 update",
+          "link": "/government/news/eu-exit-local-government-delivery-board-january-2019-update",
+          "summary": "Update from the meeting held on 24 January 2019.",
+          "is_historic": false,
+          "government_name": null,
+          "metadata": [
+            {
+              "label": "From",
+              "value": "Ministry of Housing, Communities & Local Government",
+              "is_text": true
+            },
+            {
+              "label": "Updated",
+              "is_date": true,
+              "machine_date": "2019-02-08",
+              "human_date": "8 February 2019"
+            }
+          ]
+        },
+        "document_index": 20
+      }
+    ],
+    "page_count": 20,
+    "finder_name": "News and communications",
+    "any_filters_applied": true,
+    "atom_url": "/news-and-communications.atom?order=most-viewed&public_timestamp%5Bfrom%5D=&public_timestamp%5Bto%5D=&related_to_brexit=true",
+    "next_and_prev_links": "<nav\n  class=\"gem-c-pagination\"\n  role=\"navigation\"\n  aria-label=\"Pagination\"\n>\n  <ul class=\"gem-c-pagination__list\" data-module=\"track-click\">\n      <li class=\"gem-c-pagination__item gem-c-pagination__item--next\">\n        <a href=\"/news-and-communications?order=most-viewed&amp;page=2&amp;public_timestamp%5Bfrom%5D=&amp;public_timestamp%5Bto%5D=&amp;related_to_brexit=true\"\n          class=\"gem-c-pagination__link\"\n          rel=\"next\"\n          data-track-category=\"contentsClicked\"\n          data-track-action=\"next\"\n          data-track-label=\"/news-and-communications?order=most-viewed&amp;page=2&amp;public_timestamp%5Bfrom%5D=&amp;public_timestamp%5Bto%5D=&amp;related_to_brexit=true\"\n          data-track-dimension=\"next\"\n          data-track-dimension-index=\"29\"\n        >\n          <span class=\"gem-c-pagination__link-title\">\n            <svg class=\"gem-c-pagination__link-icon\" xmlns=\"http://www.w3.org/2000/svg\" height=\"13\" width=\"17\" viewBox=\"0 0 17 13\">\n              <path fill=\"currentColor\" d=\"m10.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z\"/>\n            </svg>\n            <span class=\"gem-c-pagination__link-text\">\n              Next page\n            </span>\n          </span>\n            <span class=\"gem-c-pagination__link-divider visually-hidden\">:</span>\n            <span class=\"gem-c-pagination__link-label\">2 of 30</span>\n        </a>\n      </li>\n  </ul>\n</nav>\n",
+    "sort_options": "<span class='visually-hidden'>sorted by <strong>Most viewed</strong></span>"
+  }
