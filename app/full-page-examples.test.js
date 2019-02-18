@@ -15,6 +15,7 @@ const expectedPages = [
   'passport-details',
   'service-manual-topic',
   'start-page',
+  'update-your-account-details',
   'upload-your-photo',
   'what-is-your-nationality',
   'what-is-your-postcode'
@@ -106,6 +107,37 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
           // Check the page responded correctly
           expect(res.statusCode).toBe(200)
           expect($.html()).toContain('Passport details')
+
+          // Check that the error summary is visible
+          let $errorSummary = $('[data-module="error-summary"]')
+          expect($errorSummary.length).toBeTruthy()
+          done(err)
+        })
+      })
+    })
+
+    describe('update-your-account-details', () => {
+      it('should not show errors if submit with no input', (done) => {
+        requestPath.get('update-your-account-details', (err, res) => {
+          let $ = cheerio.load(res.body)
+
+          // Check the page responded correctly
+          expect(res.statusCode).toBe(200)
+          expect($.html()).toContain('Update your account details')
+
+          // Check that the error summary is not visible
+          let $errorSummary = $('[data-module="error-summary"]')
+          expect($errorSummary.length).toBeFalsy()
+          done(err)
+        })
+      })
+      it('should show errors if form is submitted with no input', (done) => {
+        requestPath.post(`update-your-account-details`, (err, res) => {
+          let $ = cheerio.load(res.body)
+
+          // Check the page responded correctly
+          expect(res.statusCode).toBe(200)
+          expect($.html()).toContain('Update your account details')
 
           // Check that the error summary is visible
           let $errorSummary = $('[data-module="error-summary"]')
