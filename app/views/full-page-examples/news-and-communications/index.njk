@@ -5,6 +5,7 @@
 {% from "select/macro.njk" import govukSelect %}
 {% from "checkboxes/macro.njk" import govukCheckboxes %}
 {% from "button/macro.njk" import govukButton %}
+{% from "error-summary/macro.njk" import govukErrorSummary %}
 
 {% set pageTitle = "News and communications" %}
 {% block pageTitle %}GOV.UK - {{ pageTitle }}{% endblock %}
@@ -49,6 +50,12 @@
 {% endblock %}
 
 {% block content %}
+  {% if errorSummary.length > 0 %}
+    {{ govukErrorSummary({
+      titleText: "There is a problem",
+      errorList: errorSummary 
+    }) }}
+  {% endif %}
   <h1 class="govuk-heading-xl">{{ pageTitle }}</h1>
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-one-third">
@@ -61,22 +68,29 @@
                 },
                 items: [
                     {
+                        value: "default",
+                        text: "Select an option",
+                        selected: order === "default"
+                    },
+                    {
                         value: "most-viewed",
                         text: "Most viewed",
-                        selected: source === "most-viewed"
+                        selected: order === "most-viewed"
                     },
                     {
                         value: "updated-newest",
                         text: "Updated (newest)",
-                        selected: source === "updated-newest"
+                        selected: order === "updated-newest"
                     },
                     {
                         value: "updated-oldest",
                         text: "Updated (oldest)",
-                        selected: source === "updated-oldest"
+                        selected: order === "updated-oldest"
                     }
-                ]
+                ],
+                errorMessage: errors['order']
             }) }}
+
             {{ govukCheckboxes({
                 idPrefix: "brexit",
                 name: "brexit",
@@ -84,7 +98,7 @@
                     {
                         value: "true",
                         text: "Show only brexit results",
-                        checked: source === "related-to-brexit"
+                        checked: brexit
                     }
                 ]
             }) }}

@@ -4,12 +4,22 @@ module.exports = (app) => {
     (request, response) => {
       const { order, brexit } = request.query
       let source = 'most-viewed'
+      let errors = {}
       if (
         order === 'most-viewed' ||
         order === 'updated-oldest' ||
         order === 'updated-newest'
       ) {
         source = order
+      }
+      if (order === 'default' && !brexit) {
+        errors = {
+          'order': {
+            href: '#order',
+            value: 'default',
+            text: 'Select an option'
+          }
+        }
       }
       // If brexit true on forget about the source order, which is OK for a demonstration page.
       if (brexit) {
@@ -19,7 +29,10 @@ module.exports = (app) => {
       response.render('./full-page-examples/news-and-communications/index', {
         total,
         documents,
-        source
+        order,
+        brexit,
+        errors,
+        errorSummary: Object.values(errors)
       })
     }
   )
