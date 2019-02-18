@@ -1,6 +1,7 @@
 {# This example is based of the live "Send your feedback to GOV.UK Verify" start page: https://www.signin.service.gov.uk/feedback #}
 {% extends "_generic.njk" %}
 
+{% from "warning-text/macro.njk" import govukWarningText %}
 {% from "radios/macro.njk" import govukRadios %}
 {% from "input/macro.njk" import govukInput %}
 {% from "character-count/macro.njk" import govukCharacterCount %}
@@ -29,9 +30,9 @@
                 Use this form to ask a question, report a problem or suggest an improvement this service can make.
             </p>
 
-            <p class="govuk-body govuk-!-font-weight-bold">
-                Don't include any personal or financial information like your National Insurance number or credit card details.
-            </p>
+            {{ govukWarningText({
+                text: "Don't include any personal or financial information like your National Insurance number or credit card details."
+            }) }}
 
             {{ govukCharacterCount({
                 name: "what-were-you-trying-to-do",
