@@ -3,7 +3,7 @@ const { formatValidationErrors } = require('../../../utils.js')
 
 module.exports = (app) => {
   app.post(
-    '/full-page-examples/feedback-page',
+    '/full-page-examples/feedback',
     [
       body('what-were-you-trying-to-do')
         .exists()
@@ -48,13 +48,13 @@ module.exports = (app) => {
     (request, response) => {
       const errors = formatValidationErrors(validationResult(request))
       if (errors) {
-        return response.render('./full-page-examples/feedback-page/index', {
+        return response.render('./full-page-examples/feedback/index', {
           errors,
           errorSummary: Object.values(errors),
           values: request.body // In production this should sanitized.
         })
       }
-      response.render('./full-page-examples/feedback-page/confirm')
+      response.render('./full-page-examples/feedback/confirm')
     }
   )
 }

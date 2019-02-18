@@ -9,7 +9,7 @@ const PORT = configPaths.ports.test
 const expectedPages = [
   'bank-holidays',
   'check-your-answers',
-  'feedback-page',
+  'feedback',
   'how-do-you-want-to-sign-in',
   'news-and-communications',
   'passport-details',
@@ -53,9 +53,9 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
   })
 
   describe('/full-page-examples/', () => {
-    describe('feedback-page', () => {
+    describe('feedback', () => {
       it('should not show errors if submit with no input', (done) => {
-        requestPath.get('feedback-page', (err, res) => {
+        requestPath.get('feedback', (err, res) => {
           let $ = cheerio.load(res.body)
 
           // Check the page responded correctly
@@ -69,7 +69,7 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
         })
       })
       it('should show errors if form is submitted with no input', (done) => {
-        requestPath.post(`feedback-page`, (err, res) => {
+        requestPath.post(`feedback`, (err, res) => {
           let $ = cheerio.load(res.body)
 
           // Check the page responded correctly
