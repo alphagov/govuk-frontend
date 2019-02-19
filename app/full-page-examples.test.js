@@ -72,7 +72,7 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
         })
       })
       it('should show errors if form is submitted with no input', (done) => {
-        requestPath.post(`feedback`, (err, res) => {
+        requestPath.post('feedback', (err, res) => {
           let $ = cheerio.load(res.body)
 
           // Check the page responded correctly
@@ -134,7 +134,7 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
         })
       })
       it('should show errors if form is submitted with no input', (done) => {
-        requestPath.post(`passport-details`, (err, res) => {
+        requestPath.post('passport-details', (err, res) => {
           let $ = cheerio.load(res.body)
 
           // Check the page responded correctly
@@ -165,7 +165,7 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
         })
       })
       it('should show errors if form is submitted with no input', (done) => {
-        requestPath.post(`update-your-account-details`, (err, res) => {
+        requestPath.post('update-your-account-details', (err, res) => {
           let $ = cheerio.load(res.body)
 
           // Check the page responded correctly
@@ -196,7 +196,7 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
         })
       })
       it('should show errors if form is submitted with no input', (done) => {
-        requestPath.post(`upload-your-photo`, (err, res) => {
+        requestPath.post('upload-your-photo', (err, res) => {
           let $ = cheerio.load(res.body)
 
           // Check the page responded correctly
@@ -227,7 +227,7 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
         })
       })
       it('should show errors if form is submitted with no input', (done) => {
-        requestPath.post(`how-do-you-want-to-sign-in`, (err, res) => {
+        requestPath.post('how-do-you-want-to-sign-in', (err, res) => {
           let $ = cheerio.load(res.body)
 
           // Check the page responded correctly
@@ -258,7 +258,7 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
         })
       })
       it('should show errors if form is submitted with no input', (done) => {
-        requestPath.post(`what-is-your-nationality`, (err, res) => {
+        requestPath.post('what-is-your-nationality', (err, res) => {
           let $ = cheerio.load(res.body)
 
           // Check the page responded correctly
@@ -320,7 +320,7 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
         })
       })
       it('should show errors if form is submitted with no input', (done) => {
-        requestPath.post(`what-is-your-postcode`, (err, res) => {
+        requestPath.post('what-is-your-postcode', (err, res) => {
           let $ = cheerio.load(res.body)
 
           // Check the page responded correctly
