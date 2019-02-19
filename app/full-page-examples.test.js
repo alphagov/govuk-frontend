@@ -18,6 +18,7 @@ const expectedPages = [
   'start-page',
   'update-your-account-details',
   'upload-your-photo',
+  'what-is-your-address',
   'what-is-your-nationality',
   'what-is-your-postcode'
 ]
@@ -263,6 +264,37 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
           // Check the page responded correctly
           expect(res.statusCode).toBe(200)
           expect($.html()).toContain('What is your nationality?')
+
+          // Check that the error summary is visible
+          let $errorSummary = $('[data-module="error-summary"]')
+          expect($errorSummary.length).toBeTruthy()
+          done(err)
+        })
+      })
+    })
+
+    describe('what-is-your-address', () => {
+      it('should not show errors if submit with no input', (done) => {
+        requestPath.get('what-is-your-address', (err, res) => {
+          let $ = cheerio.load(res.body)
+
+          // Check the page responded correctly
+          expect(res.statusCode).toBe(200)
+          expect($.html()).toContain('What is your address?')
+
+          // Check that the error summary is not visible
+          let $errorSummary = $('[data-module="error-summary"]')
+          expect($errorSummary.length).toBeFalsy()
+          done(err)
+        })
+      })
+      it('should show errors if form is submitted with no input', (done) => {
+        requestPath.post('what-is-your-address', (err, res) => {
+          let $ = cheerio.load(res.body)
+
+          // Check the page responded correctly
+          expect(res.statusCode).toBe(200)
+          expect($.html()).toContain('What is your address?')
 
           // Check that the error summary is visible
           let $errorSummary = $('[data-module="error-summary"]')
