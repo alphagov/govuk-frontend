@@ -8,11 +8,11 @@ module.exports = (app) => {
       body('what-were-you-trying-to-do')
         .exists()
         .not().isEmpty().withMessage('Enter what you were trying to do')
-        .isLength({ max: 3000 }).withMessage('What were you trying to do must be 3000 characters or less'),
+        .isLength({ max: 100 }).withMessage('What were you trying to do must be 100 characters or less'),
       body('detail')
         .exists()
         .not().isEmpty().withMessage('Enter details of your question, problem or feedback')
-        .isLength({ max: 3000 }).withMessage('Details of your question, problem or feedback must be 3000 characters or less'),
+        .isLength({ max: 300 }).withMessage('Details of your question, problem or feedback must be 300 characters or less'),
       body('do-you-want-a-reply')
         .exists()
         .not().isEmpty().withMessage('Select yes if you want a reply'),

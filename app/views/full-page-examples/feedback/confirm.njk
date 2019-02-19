@@ -8,6 +8,13 @@
 
 {% set mainClasses = "govuk-main-wrapper--l" %}
 
+{% block header %}
+  {% include "../../partials/banner.njk" %}
+  {{ govukHeader({
+    productName: "Verify"
+  }) }}
+{% endblock %}
+
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">

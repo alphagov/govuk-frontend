@@ -8,10 +8,17 @@
 {% from "button/macro.njk" import govukButton %}
 {% from "error-summary/macro.njk" import govukErrorSummary %}
 
-{% set pageTitle = "Send your feedback to this service" %}
+{% set pageTitle = "Send your feedback to GOV.UK Verify" %}
 {% block pageTitle %}GOV.UK - {{ pageTitle }}{% endblock %}
 
 {% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block header %}
+  {% include "../../partials/banner.njk" %}
+  {{ govukHeader({
+    productName: "Verify"
+  }) }}
+{% endblock %}
 
 {% block content %}
   <div class="govuk-grid-row">
@@ -27,7 +34,7 @@
             <h1 class="govuk-heading-xl">{{ pageTitle }}</h1>
 
             <p class="govuk-body">
-                Use this form to ask a question, report a problem or suggest an improvement this service can make.
+                Use this form to ask a question, report a problem or suggest an improvement GOV.UK Verify can make.
             </p>
 
             {{ govukWarningText({
@@ -37,8 +44,9 @@
             {{ govukCharacterCount({
                 name: "what-were-you-trying-to-do",
                 id: "what-were-you-trying-to-do",
-                maxlength: 3000,
-                rows: 10,
+                maxlength: 100,
+                threshold: 50,
+                rows: 5,
                 label: {
                     text: "What were you trying to do?"
                 },
@@ -49,8 +57,8 @@
             {{ govukCharacterCount({
                 name: "detail",
                 id: "detail",
-                maxlength: 3000,
-                rows: 20,
+                maxlength: 300,
+                rows: 10,
                 label: {
                     text: "Please provide details of your question, problem or feedback"
                 },
@@ -59,7 +67,7 @@
             }) }}
 
             {% set yesHTML %}
-                <p class="govuk-body">Leave your details below if you'd like a response from this service.</p>
+                <p class="govuk-body">Leave your details below if you'd like a response from GOV.UK Verify.</p>
 
                 {{ govukInput({
                     id: "name",
