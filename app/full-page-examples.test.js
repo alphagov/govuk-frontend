@@ -10,6 +10,7 @@ const expectedPages = [
   'bank-holidays',
   'check-your-answers',
   'feedback',
+  'have-you-changed-your-name',
   'how-do-you-want-to-sign-in',
   'news-and-communications',
   'passport-details',
@@ -76,6 +77,37 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
           // Check the page responded correctly
           expect(res.statusCode).toBe(200)
           expect($.html()).toContain('Send your feedback to GOV.UK Verify')
+
+          // Check that the error summary is visible
+          let $errorSummary = $('[data-module="error-summary"]')
+          expect($errorSummary.length).toBeTruthy()
+          done(err)
+        })
+      })
+    })
+
+    describe('have-you-changed-your-name', () => {
+      it('should not show errors if submit with no input', (done) => {
+        requestPath.get('have-you-changed-your-name', (err, res) => {
+          let $ = cheerio.load(res.body)
+
+          // Check the page responded correctly
+          expect(res.statusCode).toBe(200)
+          expect($.html()).toContain('Have you changed your name?')
+
+          // Check that the error summary is not visible
+          let $errorSummary = $('[data-module="error-summary"]')
+          expect($errorSummary.length).toBeFalsy()
+          done(err)
+        })
+      })
+      it('should show errors if form is submitted with no input', (done) => {
+        requestPath.post('have-you-changed-your-name', (err, res) => {
+          let $ = cheerio.load(res.body)
+
+          // Check the page responded correctly
+          expect(res.statusCode).toBe(200)
+          expect($.html()).toContain('Have you changed your name?')
 
           // Check that the error summary is visible
           let $errorSummary = $('[data-module="error-summary"]')
