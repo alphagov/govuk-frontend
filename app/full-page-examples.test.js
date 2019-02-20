@@ -20,7 +20,8 @@ const expectedPages = [
   'upload-your-photo',
   'what-is-your-address',
   'what-is-your-nationality',
-  'what-is-your-postcode'
+  'what-is-your-postcode',
+  'what-was-the-last-country-you-visited'
 ]
 
 // Returns a wrapper for `request` which applies these options by default
@@ -357,6 +358,37 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
           let $ = cheerio.load(res.body)
           // Check the results are correct
           expect($.html()).toContain('586 results')
+          done(err)
+        })
+      })
+    })
+
+    describe('what-was-the-last-country-you-visited', () => {
+      it('should not show errors if submit with no input', (done) => {
+        requestPath.get('what-was-the-last-country-you-visited', (err, res) => {
+          let $ = cheerio.load(res.body)
+
+          // Check the page responded correctly
+          expect(res.statusCode).toBe(200)
+          expect($.html()).toContain('What was the last country you visited?')
+
+          // Check that the error summary is not visible
+          let $errorSummary = $('[data-module="error-summary"]')
+          expect($errorSummary.length).toBeFalsy()
+          done(err)
+        })
+      })
+      it('should show errors if form is submitted with no input', (done) => {
+        requestPath.post(`what-was-the-last-country-you-visited`, (err, res) => {
+          let $ = cheerio.load(res.body)
+
+          // Check the page responded correctly
+          expect(res.statusCode).toBe(200)
+          expect($.html()).toContain('What was the last country you visited?')
+
+          // Check that the error summary is visible
+          let $errorSummary = $('[data-module="error-summary"]')
+          expect($errorSummary.length).toBeTruthy()
           done(err)
         })
       })

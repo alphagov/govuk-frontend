@@ -6,8 +6,19 @@ module.exports = (app) => {
     '/full-page-examples/what-is-your-nationality',
     [
       body('confirm-nationality')
-        .exists()
-        .not().isEmpty().withMessage('Select your nationality or nationalities'),
+        .custom((value, { req: request }) => {
+          // See https://github.com/express-validator/express-validator/pull/658
+          const cannotProvideNationality = !!request.body['details-cannot-provide-nationality']
+          // If the user cannot provide their nationality and has given us separate details
+          // then do not show an error for the nationality fields.
+          if (cannotProvideNationality) {
+            return true
+          }
+          if (!value) {
+            throw new Error('Select your nationality or nationalities')
+          }
+          return true
+        }),
       body('country-name')
         .custom((value, { req: request }) => {
           // See https://github.com/express-validator/express-validator/pull/658

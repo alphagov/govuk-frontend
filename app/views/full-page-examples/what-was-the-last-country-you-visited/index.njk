@@ -1,0 +1,67 @@
+{# This example is based of the  "What is your home postcode?" example: https://design-system.service.gov.uk/patterns/question-pages/postcode/index.html #}
+{% extends "_generic.njk" %}
+
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "button/macro.njk" import govukButton %}
+{% from "select/macro.njk" import govukSelect %}
+{% from "error-summary/macro.njk" import govukErrorSummary %}
+{% from "input/macro.njk" import govukInput %}
+
+{% set pageTitle = "What was the last country you visited?" %}
+{% block pageTitle %}GOV.UK - {{ pageTitle }}{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "#"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <form method="post" novalidate>
+    {% if errorSummary.length > 0 %}
+        {{ govukErrorSummary({
+            titleText: "There is a problem",
+            errorList: errorSummary
+        }) }}
+    {% endif %}
+
+    {{ govukSelect({
+        id: "last-visited-country",
+        name: "last-visited-country",
+        label: {
+          text: pageTitle,
+          classes: "govuk-label--xl",
+          isPageHeading: true
+        },
+        hint: {
+          text: "This excludes visits within the UK"
+        },
+        items: [
+          {
+              value: "",
+              text: "Select an option"
+          },
+          {
+              value: "france",
+              text: "France"
+          },
+          {
+              value: "spain",
+              text: "Spain"
+          },
+          {
+              value: "other",
+              text: "Other"
+          }
+        ],
+        errorMessage: errors["last-visited-country"]
+    }) }}
+
+    {{ govukButton({
+        text: "Continue"
+      }) }}
+  </form>
+
+{% endblock %}
