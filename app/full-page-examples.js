@@ -7,6 +7,7 @@ module.exports = (app) => {
   require('./views/full-page-examples/upload-your-photo')(app)
   require('./views/full-page-examples/what-is-your-nationality')(app)
   require('./views/full-page-examples/what-is-your-postcode')(app)
+  require('./views/full-page-examples/what-was-the-last-country-you-visited')(app)
 
   // Display full page examples index by default if not handled already
   app.get('/full-page-examples/:example', function (req, res, next) {
