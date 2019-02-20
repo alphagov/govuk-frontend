@@ -1,17 +1,14 @@
+const shuffleSeed = require('shuffle-seed')
+
+const { documents } = require('./data.json')
+
 module.exports = (app) => {
   app.get(
     '/full-page-examples/news-and-communications',
     (request, response) => {
-      const { order, brexit } = request.query
-      let source = 'most-viewed'
+      let { order, brexit } = request.query
+
       let errors = {}
-      if (
-        order === 'most-viewed' ||
-        order === 'updated-oldest' ||
-        order === 'updated-newest'
-      ) {
-        source = order
-      }
       if (order === 'default' && !brexit) {
         errors = {
           'order': {
@@ -20,15 +17,23 @@ module.exports = (app) => {
             text: 'Select an option'
           }
         }
+        // Ensure that the document ordering are the same when no order is selected.
+        order = undefined
       }
-      // If brexit true on forget about the source order, which is OK for a demonstration page.
-      if (brexit) {
-        source = 'related-to-brexit'
-      }
-      const { total, documents } = require(`./data/${source}.json`)
+
+      // Shuffle the documents based on the query string, to simulate different responses.
+      const seed = order + brexit
+      const shuffledDocuments = shuffleSeed.shuffle(documents, seed)
+
+      const total = '128124'
+      // Shuffle the total based on the query string
+      const randomizedTotal = shuffleSeed.shuffle(total.split(''), seed).join('')
+      // Make the total more readable
+      const formattedTotal = randomizedTotal.substring(0, 3) + ',' + randomizedTotal.substring(3)
+
       response.render('./full-page-examples/news-and-communications/index', {
-        total,
-        documents,
+        total: formattedTotal,
+        documents: shuffledDocuments,
         order,
         brexit,
         errors,
