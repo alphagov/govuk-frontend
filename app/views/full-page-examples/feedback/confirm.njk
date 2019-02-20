@@ -1,4 +1,3 @@
-{# This example is based of the live "Send your feedback to GOV.UK Verify" start page: https://www.signin.service.gov.uk/feedback #}
 {% extends "_generic.njk" %}
 
 {% from "panel/macro.njk" import govukPanel %}
@@ -7,6 +6,13 @@
 {% block pageTitle %}GOV.UK - {{ pageTitle }}{% endblock %}
 
 {% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block header %}
+  {% include "../../partials/banner.njk" %}
+  {{ govukHeader({
+    productName: "Verify"
+  }) }}
+{% endblock %}
 
 {% block content %}
   <div class="govuk-grid-row">

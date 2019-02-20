@@ -16,7 +16,18 @@
 {% block header %}
   {% include "../../partials/banner.njk" %}
   {{ govukHeader({
-    serviceName: "Apply for a passport"
+    serviceName: "Apply for a passport",
+    navigation: [
+        {
+            href: "#",
+            text: "Home"
+        },
+        {
+            href: "#upload-a-photo",
+            text: "Upload a photo",
+            active: true
+        }
+    ]
   }) }}
 {% endblock %}
 
@@ -60,16 +71,11 @@
                 label: {
                     text: "Upload your photo"
                 },
+                hint: {
+                    text: "Your photo must be at least 50KB and no more than 10MB"
+                },
                 errorMessage: errors["photo"]
             }) }}
-
-            <h2 class="govuk-heading-m">Your photo must be:</h2>
-
-            <ul class="govuk-list govuk-list--bullet">
-                <li>in colour</li>
-                <li>unaltered by computer software</li>
-                <li>at least 50KB and no more than 10MB</li>
-            </ul>
 
             {{ govukButton({
                 text: "Submit your photo"

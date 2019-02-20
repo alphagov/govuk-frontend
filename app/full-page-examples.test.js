@@ -10,6 +10,7 @@ const expectedPages = [
   'bank-holidays',
   'check-your-answers',
   'feedback',
+  'have-you-changed-your-name',
   'how-do-you-want-to-sign-in',
   'news-and-communications',
   'passport-details',
@@ -17,6 +18,7 @@ const expectedPages = [
   'start-page',
   'update-your-account-details',
   'upload-your-photo',
+  'what-is-your-address',
   'what-is-your-nationality',
   'what-is-your-postcode'
 ]
@@ -61,7 +63,7 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
 
           // Check the page responded correctly
           expect(res.statusCode).toBe(200)
-          expect($.html()).toContain('Send your feedback to this service')
+          expect($.html()).toContain('Send your feedback to GOV.UK Verify')
 
           // Check that the error summary is not visible
           let $errorSummary = $('[data-module="error-summary"]')
@@ -70,12 +72,43 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
         })
       })
       it('should show errors if form is submitted with no input', (done) => {
-        requestPath.post(`feedback`, (err, res) => {
+        requestPath.post('feedback', (err, res) => {
           let $ = cheerio.load(res.body)
 
           // Check the page responded correctly
           expect(res.statusCode).toBe(200)
-          expect($.html()).toContain('Send your feedback to this service')
+          expect($.html()).toContain('Send your feedback to GOV.UK Verify')
+
+          // Check that the error summary is visible
+          let $errorSummary = $('[data-module="error-summary"]')
+          expect($errorSummary.length).toBeTruthy()
+          done(err)
+        })
+      })
+    })
+
+    describe('have-you-changed-your-name', () => {
+      it('should not show errors if submit with no input', (done) => {
+        requestPath.get('have-you-changed-your-name', (err, res) => {
+          let $ = cheerio.load(res.body)
+
+          // Check the page responded correctly
+          expect(res.statusCode).toBe(200)
+          expect($.html()).toContain('Have you changed your name?')
+
+          // Check that the error summary is not visible
+          let $errorSummary = $('[data-module="error-summary"]')
+          expect($errorSummary.length).toBeFalsy()
+          done(err)
+        })
+      })
+      it('should show errors if form is submitted with no input', (done) => {
+        requestPath.post('have-you-changed-your-name', (err, res) => {
+          let $ = cheerio.load(res.body)
+
+          // Check the page responded correctly
+          expect(res.statusCode).toBe(200)
+          expect($.html()).toContain('Have you changed your name?')
 
           // Check that the error summary is visible
           let $errorSummary = $('[data-module="error-summary"]')
@@ -101,7 +134,7 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
         })
       })
       it('should show errors if form is submitted with no input', (done) => {
-        requestPath.post(`passport-details`, (err, res) => {
+        requestPath.post('passport-details', (err, res) => {
           let $ = cheerio.load(res.body)
 
           // Check the page responded correctly
@@ -132,7 +165,7 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
         })
       })
       it('should show errors if form is submitted with no input', (done) => {
-        requestPath.post(`update-your-account-details`, (err, res) => {
+        requestPath.post('update-your-account-details', (err, res) => {
           let $ = cheerio.load(res.body)
 
           // Check the page responded correctly
@@ -163,7 +196,7 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
         })
       })
       it('should show errors if form is submitted with no input', (done) => {
-        requestPath.post(`upload-your-photo`, (err, res) => {
+        requestPath.post('upload-your-photo', (err, res) => {
           let $ = cheerio.load(res.body)
 
           // Check the page responded correctly
@@ -194,7 +227,7 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
         })
       })
       it('should show errors if form is submitted with no input', (done) => {
-        requestPath.post(`how-do-you-want-to-sign-in`, (err, res) => {
+        requestPath.post('how-do-you-want-to-sign-in', (err, res) => {
           let $ = cheerio.load(res.body)
 
           // Check the page responded correctly
@@ -225,12 +258,43 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
         })
       })
       it('should show errors if form is submitted with no input', (done) => {
-        requestPath.post(`what-is-your-nationality`, (err, res) => {
+        requestPath.post('what-is-your-nationality', (err, res) => {
           let $ = cheerio.load(res.body)
 
           // Check the page responded correctly
           expect(res.statusCode).toBe(200)
           expect($.html()).toContain('What is your nationality?')
+
+          // Check that the error summary is visible
+          let $errorSummary = $('[data-module="error-summary"]')
+          expect($errorSummary.length).toBeTruthy()
+          done(err)
+        })
+      })
+    })
+
+    describe('what-is-your-address', () => {
+      it('should not show errors if submit with no input', (done) => {
+        requestPath.get('what-is-your-address', (err, res) => {
+          let $ = cheerio.load(res.body)
+
+          // Check the page responded correctly
+          expect(res.statusCode).toBe(200)
+          expect($.html()).toContain('What is your address?')
+
+          // Check that the error summary is not visible
+          let $errorSummary = $('[data-module="error-summary"]')
+          expect($errorSummary.length).toBeFalsy()
+          done(err)
+        })
+      })
+      it('should show errors if form is submitted with no input', (done) => {
+        requestPath.post('what-is-your-address', (err, res) => {
+          let $ = cheerio.load(res.body)
+
+          // Check the page responded correctly
+          expect(res.statusCode).toBe(200)
+          expect($.html()).toContain('What is your address?')
 
           // Check that the error summary is visible
           let $errorSummary = $('[data-module="error-summary"]')
@@ -256,7 +320,7 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
         })
       })
       it('should show errors if form is submitted with no input', (done) => {
-        requestPath.post(`what-is-your-postcode`, (err, res) => {
+        requestPath.post('what-is-your-postcode', (err, res) => {
           let $ = cheerio.load(res.body)
 
           // Check the page responded correctly

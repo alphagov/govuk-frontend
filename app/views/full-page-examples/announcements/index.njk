@@ -2,6 +2,7 @@
 {% extends "_generic.njk" %}
 
 {% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "inset-text/macro.njk" import govukInsetText %}
 
 {% set pageTitle = "2018’s oddest requests from Brits abroad: ‘Strictly’, vampires and sausages" %}
 {% block pageTitle %}GOV.UK - {{ pageTitle }}{% endblock %}
@@ -78,7 +79,9 @@
 
     <p class="govuk-body govuk-!-font-size-16 govuk-!-margin-bottom-1">Published 31 December 2018</p>
 
-    <p class="govuk-body govuk-!-font-size-16 govuk-!-margin-bottom-7">From: <a class="govuk-link" href="https://www.gov.uk/government/organisations/foreign-commonwealth-office">Foreign & Commonwealth Office</a></p>
+    <p class="govuk-body govuk-!-font-size-16 govuk-!-margin-bottom-4">
+      From: <a class="govuk-link" href="https://www.gov.uk/government/organisations/foreign-commonwealth-office">Foreign & Commonwealth Office</a>
+    </p>
 
     <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 
@@ -116,11 +119,17 @@
 
     <p class="govuk-body">The work of the FCO’s consular staff was also featured on <a class="govuk-link" href="https://www.bbc.co.uk/iplayer/episode/b0bt7sd2/inside-the-foreign-office-series-1-3-brits-in-trouble">Inside the Foreign Office</a> which aired on BBC 2 in November.</p>
 
-    <h2 id="fco-spokesperson-said" class="govuk-body">A FCO spokesman said:</h2>
+    {% set insetTextHTML %}
+      <h2 id="fco-spokesperson-said" class="govuk-body">A FCO spokesman said:</h2>
 
-    <p class="govuk-body">I can regretfully confirm that the Foreign Office isn’t able to offer advice on vampires, rogue stray cats or ‘Strictly’ contestants. And our capacity to deploy veggie sausages remains sadly lacking.</p>
+      <p class="govuk-body">I can regretfully confirm that the Foreign Office isn’t able to offer advice on vampires, rogue stray cats or ‘Strictly’ contestants. And our capacity to deploy veggie sausages remains sadly lacking.</p>
 
-    <p class="govuk-body">But in all seriousness, getting into trouble abroad can be daunting and upsetting.  If you find yourself in an emergency in another country, contact the nearest British Embassy, High Commission or Consulate and our consular staff will do everything they can to help.</p>
+      <p class="govuk-body">But in all seriousness, getting into trouble abroad can be daunting and upsetting.  If you find yourself in an emergency in another country, contact the nearest British Embassy, High Commission or Consulate and our consular staff will do everything they can to help.</p>
+    {% endset %}
+
+    {{ govukInsetText({
+      html: insetTextHTML
+    }) }}
 
     <h3 id="further-information" class="govuk-heading-s">Further information</h3>
 
@@ -130,16 +139,11 @@
       <li>We recommend people read our travel advice before going abroad.  It is available here: <a class="govuk-link" href="https://www.gov.uk/foreign-travel-advice">FCO Travel Advice</a>.</li>
     </ul>
 
-    <h3 id="further-information-1" class="govuk-heading-s">Further information</h3>
+    <hr class="govuk-section-break govuk-section-break--l">
 
-    <ul class="govuk-list govuk-list--bullet">
-      <li>
-        Follow the Foreign Office on Twitter <a class="govuk-link" href="https://twitter.com/foreignoffice">@foreignoffice</a> and <a class="govuk-link" href="https://www.facebook.com/foreignoffice?ref=hl">Facebook</a>
-      </li>
-      <li>
-        Follow the Foreign Office on <a class="govuk-link" href="https://www.instagram.com/ukforeignoffice/">Instagram</a>, <a class="govuk-link" href="https://www.youtube.com/user/ukforeignoffice">YouTube</a>
-      </li>
-    </ul>
+    <a href="#" class="govuk-link govuk-link--muted">
+      Is there anything wrong with this page?
+    </a>
   </div>
 </div>
 {% endblock %}
