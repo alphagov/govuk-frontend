@@ -7,7 +7,10 @@ module.exports = (app) => {
     [
       body('photo')
         .exists()
-        .not().isEmpty().withMessage('Select a photo')
+        .not().isEmpty().withMessage('Select a photo'),
+      body('terms-and-conditions')
+        .exists()
+        .not().isEmpty().withMessage('Select I accept the terms and conditions')
     ],
     (request, response) => {
       const errors = formatValidationErrors(validationResult(request))

@@ -5,6 +5,7 @@
 {% from "back-link/macro.njk" import govukBackLink %}
 {% from "radios/macro.njk" import govukRadios %}
 {% from "error-summary/macro.njk" import govukErrorSummary %}
+{% from "checkboxes/macro.njk" import govukCheckboxes %}
 {% from "button/macro.njk" import govukButton %}
 {% from "file-upload/macro.njk" import govukFileUpload %}
 
@@ -75,6 +76,20 @@
                     text: "Your photo must be at least 50KB and no more than 10MB"
                 },
                 errorMessage: errors["photo"]
+            }) }}
+
+            {{ govukCheckboxes({
+                idPrefix: "terms-and-conditions",
+                name: "terms-and-conditions",
+                items: [
+                    {
+                        id: "terms-and-conditions",
+                        value: "true",
+                        html: 'I accept the <a href="#">terms and conditions</a>',
+                        checked: values["terms-and-conditions"]
+                    }
+                ],
+                errorMessage: errors["terms-and-conditions"]
             }) }}
 
             {{ govukButton({
