@@ -341,7 +341,7 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
         requestPath.get('news-and-communications', (err, res) => {
           let $ = cheerio.load(res.body)
           // Check the results are correct
-          expect($.html()).toContain('128,124 results')
+          expect($.html()).toContain('822,411 results')
           done(err)
         })
       })
@@ -349,15 +349,15 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
         requestPath.get('news-and-communications?order=updated-newest', (err, res) => {
           let $ = cheerio.load(res.body)
           // Check the results are correct
-          expect($.html()).toContain('128,123 results')
+          expect($.html()).toContain('142,218 results')
           done(err)
         })
       })
       it('should show brexit results when checked', (done) => {
-        requestPath.get('news-and-communications?order=most-viewed&brexit=true', (err, res) => {
+        requestPath.get('news-and-communications?order=updated-newest&organisation=hmrc', (err, res) => {
           let $ = cheerio.load(res.body)
           // Check the results are correct
-          expect($.html()).toContain('586 results')
+          expect($.html()).toContain('421,182 results')
           done(err)
         })
       })
