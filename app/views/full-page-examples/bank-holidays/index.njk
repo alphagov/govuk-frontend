@@ -36,16 +36,18 @@
       {% set englandAndWalesHTML %}
 
         {% set englandAndWalesPanelTitleHtml %}
-          <div class='govuk-!-font-size-24 govuk-!-margin-bottom-4'>The next bank holiday in England and Wales is</div>
-        19 April
+          <div class='govuk-!-font-size-36 govuk-!-margin-bottom-4'>
+            The next bank holiday in England and Wales is
+          </div>
+          19 April
         {% endset %}
 
         {% set englandAndWalesPanelHtml %}
-          <span class='govuk-!-font-size-24 govuk-!-font-weight-bold'>Good Friday</span>
-        19 April
+          Good Friday
         {% endset %}
 
         {{ govukPanel({
+          headingLevel: 2,
           titleHtml: englandAndWalesPanelTitleHtml,
           html: englandAndWalesPanelHtml
         }) }}
@@ -993,16 +995,18 @@
       {% set scotlandHTML %}
 
         {% set scotlandPanelTitleHtml %}
-          <div class='govuk-!-font-size-24 govuk-!-margin-bottom-4'>The next bank holiday in Scotland is</div>
-        19 April
+          <div class='govuk-!-font-size-36 govuk-!-margin-bottom-4'>
+            The next bank holiday in Scotland is
+          </div>
+          19 April
         {% endset %}
 
         {% set scotlandPanelHtml %}
-          <span class='govuk-!-font-size-24 govuk-!-font-weight-bold'>Good Friday</span>
-        19 April
+          Good Friday
         {% endset %}
 
         {{ govukPanel({
+          headingLevel: 2,
           titleHtml: scotlandPanelTitleHtml,
           html: scotlandPanelHtml
         }) }}
@@ -2134,15 +2138,18 @@
       {% set irelandHTML %}
 
         {% set irelandPanelTitleHtml %}
-          <div class='govuk-!-font-size-24 govuk-!-margin-bottom-4'>The next bank holiday in Northern Ireland is</div>
-        19 April
+          <div class='govuk-!-font-size-36 govuk-!-margin-bottom-4'>
+            The next bank holiday in Northern Ireland is
+          </div>
+          19 April
         {% endset %}
 
         {% set irelandPanelHtml %}
-          <span class='govuk-!-font-size-24 govuk-!-font-weight-bold'>Good Friday</span>        19 April
+          Good Friday
         {% endset %}
 
         {{ govukPanel({
+          headingLevel: 2,
           titleHtml: irelandPanelTitleHtml,
           html: irelandPanelHtml
         }) }}
