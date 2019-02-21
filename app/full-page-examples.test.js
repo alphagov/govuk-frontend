@@ -12,7 +12,6 @@ const expectedPages = [
   'feedback',
   'have-you-changed-your-name',
   'how-do-you-want-to-sign-in',
-  'news-and-communications',
   'passport-details',
   'service-manual-topic',
   'start-page',
@@ -331,33 +330,6 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
           // Check that the error summary is visible
           let $errorSummary = $('[data-module="error-summary"]')
           expect($errorSummary.length).toBeTruthy()
-          done(err)
-        })
-      })
-    })
-
-    describe('news-and-communications', () => {
-      it('should show most wanted results by default', (done) => {
-        requestPath.get('news-and-communications', (err, res) => {
-          let $ = cheerio.load(res.body)
-          // Check the results are correct
-          expect($.html()).toContain('128,124 results')
-          done(err)
-        })
-      })
-      it('should show sorted results when selected', (done) => {
-        requestPath.get('news-and-communications?order=updated-newest', (err, res) => {
-          let $ = cheerio.load(res.body)
-          // Check the results are correct
-          expect($.html()).toContain('128,123 results')
-          done(err)
-        })
-      })
-      it('should show brexit results when checked', (done) => {
-        requestPath.get('news-and-communications?order=most-viewed&brexit=true', (err, res) => {
-          let $ = cheerio.load(res.body)
-          // Check the results are correct
-          expect($.html()).toContain('586 results')
           done(err)
         })
       })
