@@ -1,0 +1,152 @@
+{# This example is based of the live "News and communications" GOV.UK page: https://www.gov.uk/news-and-communications #}
+{% extends "_generic.njk" %}
+
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "select/macro.njk" import govukSelect %}
+{% from "radios/macro.njk" import govukRadios %}
+{% from "checkboxes/macro.njk" import govukCheckboxes %}
+{% from "button/macro.njk" import govukButton %}
+
+{% set pageTitle = "News and communications" %}
+{% block pageTitle %}GOV.UK - {{ pageTitle }}{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <style>
+        .app-document-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 0;
+            margin-bottom: 30px;
+        }
+        .app-document-list > li {
+            border-bottom: 1px solid #bfc1c3;
+            margin-bottom: 15px;
+        }
+        .app-metadata-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            margin-left: -5px;
+            margin-right: -5px;
+        }
+        .app-metadata-list > li {
+            display: inline-block;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+    </style>
+{% endblock %}
+
+{% block beforeContent %}
+    {{ govukBreadcrumbs({
+        items: [
+            {
+                text: "Home",
+                href: "#"
+            }
+        ]
+    }) }}
+{% endblock %}
+
+{% block content %}
+  <h1 class="govuk-heading-xl">{{ pageTitle }}</h1>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+        <form method="get" novalidate>
+            {{ govukRadios({
+              idPrefix: "order",
+              name: "order",
+              classes: "govuk-radios--small",
+              fieldset: {
+                legend: {
+                  text: "Sort by",
+                  classes: "govuk-fieldset__legend--s"
+                }
+              },
+              items: [
+                {
+                  id: "order",
+                  value: "most-viewed",
+                  text: "Most viewed",
+                  checked: order === "most-viewed"
+                },
+                {
+                    value: "updated-newest",
+                    text: "Updated (newest)",
+                    checked: order === "updated-newest"
+                },
+                {
+                    value: "updated-oldest",
+                    text: "Updated (oldest)",
+                    checked: order === "updated-oldest"
+                }
+              ]
+            }) }}
+
+            {{ govukCheckboxes({
+              idPrefix: "organisation",
+              name: "organisation",
+              classes: "govuk-checkboxes--small",
+              fieldset: {
+                legend: {
+                  text: "Organisation",
+                  classes: "govuk-fieldset__legend--s"
+                }
+              },
+              items: [
+                {
+                  value: "hmrc",
+                  text: "HM Revenue and Customs (HMRC)",
+                  checked: values["organisation"]|length and "hmrc" in values["organisation"]
+                },
+                {
+                  value: "employment-tribunal",
+                  text: "Employment Tribunal",
+                  checked: values["organisation"]|length and "employment-tribunal" in values["organisation"]
+                },
+                {
+                  value: "mod",
+                  text: "Ministry of Defence",
+                  checked: values["organisation"]|length and "mod" in values["organisation"]
+                }
+              ]
+            }) }}
+
+            {{ govukButton({
+                text: "Update filters"
+            }) }}
+        </form>
+    </div>
+    <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-l">{{ total }} results</h2>
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+        <ul class="app-document-list">
+            {% for document in documents %}
+                {% set document = document.document %}
+                <li>
+                    <a class="govuk-link govuk-heading-s govuk-!-margin-bottom-2"
+                       href="https://gov.uk{{ document.link }}">
+                        {{ document.title }}
+                    </a>
+                    <p class="govuk-body govuk-!-margin-bottom-4">
+                        {{ document.summary }}
+                    </p>
+                    <ul class="app-metadata-list">
+                        {% for data in document.metadata %}
+                            <li class="govuk-body govuk-!-font-size-16">
+                                {% if data['is_text'] %}
+                                    {{ data.value }}
+                                {% endif %}
+                                {% if data['is_date'] %}
+                                    Updated: {{ data['human_date'] }}
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+  </div>
+{% endblock %}
