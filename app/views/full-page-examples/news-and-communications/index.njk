@@ -3,9 +3,9 @@
 
 {% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
 {% from "select/macro.njk" import govukSelect %}
+{% from "radios/macro.njk" import govukRadios %}
 {% from "checkboxes/macro.njk" import govukCheckboxes %}
 {% from "button/macro.njk" import govukButton %}
-{% from "error-summary/macro.njk" import govukErrorSummary %}
 
 {% set pageTitle = "News and communications" %}
 {% block pageTitle %}GOV.UK - {{ pageTitle }}{% endblock %}
@@ -50,57 +50,67 @@
 {% endblock %}
 
 {% block content %}
-  {% if errorSummary.length > 0 %}
-    {{ govukErrorSummary({
-      titleText: "There is a problem",
-      errorList: errorSummary 
-    }) }}
-  {% endif %}
   <h1 class="govuk-heading-xl">{{ pageTitle }}</h1>
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-one-third">
         <form method="get" novalidate>
-            {{ govukSelect({
-                id: "order",
-                name: "order",
-                label: {
-                    text: "Sort by"
+            {{ govukRadios({
+              idPrefix: "order",
+              name: "order",
+              classes: "govuk-radios--small",
+              fieldset: {
+                legend: {
+                  text: "Sort by",
+                  classes: "govuk-fieldset__legend--s"
+                }
+              },
+              items: [
+                {
+                  id: "order",
+                  value: "most-viewed",
+                  text: "Most viewed",
+                  checked: order === "most-viewed"
                 },
-                items: [
-                    {
-                        value: "default",
-                        text: "Select an option",
-                        selected: order === "default"
-                    },
-                    {
-                        value: "most-viewed",
-                        text: "Most viewed",
-                        selected: order === "most-viewed"
-                    },
-                    {
-                        value: "updated-newest",
-                        text: "Updated (newest)",
-                        selected: order === "updated-newest"
-                    },
-                    {
-                        value: "updated-oldest",
-                        text: "Updated (oldest)",
-                        selected: order === "updated-oldest"
-                    }
-                ],
-                errorMessage: errors['order']
+                {
+                    value: "updated-newest",
+                    text: "Updated (newest)",
+                    checked: order === "updated-newest"
+                },
+                {
+                    value: "updated-oldest",
+                    text: "Updated (oldest)",
+                    checked: order === "updated-oldest"
+                }
+              ]
             }) }}
 
             {{ govukCheckboxes({
-                idPrefix: "brexit",
-                name: "brexit",
-                items: [
-                    {
-                        value: "true",
-                        text: "Show only brexit results",
-                        checked: brexit
-                    }
-                ]
+              idPrefix: "organisation",
+              name: "organisation",
+              classes: "govuk-checkboxes--small",
+              fieldset: {
+                legend: {
+                  text: "Organisation",
+                  classes: "govuk-fieldset__legend--s"
+                }
+              },
+              items: [
+                {
+                  value: "hmrc",
+                  text: "HM Revenue and Customs (HMRC)",
+                  checked: values["organisation"]|length and "hmrc" in values["organisation"]
+                },
+                {
+                  value: "employment-tribunal",
+                  text: "Employment Tribunal",
+                  checked: values["organisation"]|length and "employment-tribunal" in values["organisation"]
+                },
+                {
+                  value: "mod",
+                  text: "Ministry of Defence",
+                  checked: values["organisation"]|length and "mod" in values["organisation"]
+                }
+              ]
             }) }}
 
             {{ govukButton({
