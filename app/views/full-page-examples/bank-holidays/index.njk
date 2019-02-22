@@ -36,18 +36,16 @@
       {% set englandAndWalesHTML %}
 
         {% set englandAndWalesPanelTitleHtml %}
-          <div class='govuk-!-font-size-24 govuk-!-margin-bottom-4'>The next bank holiday in England and Wales is</div>
-        19 April
-        {% endset %}
-
-        {% set englandAndWalesPanelHtml %}
-          <span class='govuk-!-font-size-24 govuk-!-font-weight-bold'>Good Friday</span>
-        19 April
+          <div class='govuk-!-font-size-36 govuk-!-margin-bottom-4'>
+            The next bank holiday in England and Wales is
+          </div>
+          19 April
         {% endset %}
 
         {{ govukPanel({
+          headingLevel: 2,
           titleHtml: englandAndWalesPanelTitleHtml,
-          html: englandAndWalesPanelHtml
+          text: 'Good Friday'
         }) }}
 
         <hr class="govuk-section-break govuk-section-break--l">
@@ -268,7 +266,7 @@
 
         <hr class="govuk-section-break govuk-section-break--m">
 
-        <h2 class="govuk-heading-m" id="past-bank-holidays-in-scotland">Past bank holidays in England and Wales</h2>
+        <h2 class="govuk-heading-m">Past bank holidays in England and Wales</h2>
 
         {{ govukTable({
           caption: "2019",
@@ -993,18 +991,16 @@
       {% set scotlandHTML %}
 
         {% set scotlandPanelTitleHtml %}
-          <div class='govuk-!-font-size-24 govuk-!-margin-bottom-4'>The next bank holiday in Scotland is</div>
-        19 April
-        {% endset %}
-
-        {% set scotlandPanelHtml %}
-          <span class='govuk-!-font-size-24 govuk-!-font-weight-bold'>Good Friday</span>
-        19 April
+          <div class='govuk-!-font-size-36 govuk-!-margin-bottom-4'>
+            The next bank holiday in Scotland is
+          </div>
+          19 April
         {% endset %}
 
         {{ govukPanel({
+          headingLevel: 2,
           titleHtml: scotlandPanelTitleHtml,
-          html: scotlandPanelHtml
+          text: 'Good Friday'
         }) }}
 
         <hr class="govuk-section-break govuk-section-break--l">
@@ -1249,7 +1245,7 @@
 
         <hr class="govuk-section-break govuk-section-break--m">
 
-        <h2 class="govuk-heading-m" id="past-bank-holidays-in-scotland">Past bank holidays in Scotland</h2>
+        <h2 class="govuk-heading-m">Past bank holidays in Scotland</h2>
 
         {{ govukTable({
           caption: "2019",
@@ -2134,17 +2130,16 @@
       {% set irelandHTML %}
 
         {% set irelandPanelTitleHtml %}
-          <div class='govuk-!-font-size-24 govuk-!-margin-bottom-4'>The next bank holiday in Northern Ireland is</div>
-        19 April
-        {% endset %}
-
-        {% set irelandPanelHtml %}
-          <span class='govuk-!-font-size-24 govuk-!-font-weight-bold'>Good Friday</span>        19 April
+          <div class='govuk-!-font-size-36 govuk-!-margin-bottom-4'>
+            The next bank holiday in Northern Ireland is
+          </div>
+          19 April
         {% endset %}
 
         {{ govukPanel({
+          headingLevel: 2,
           titleHtml: irelandPanelTitleHtml,
-          html: irelandPanelHtml
+          text: 'Good Friday'
         }) }}
 
         <hr class="govuk-section-break govuk-section-break--l">
@@ -2411,7 +2406,7 @@
 
         <hr class="govuk-section-break govuk-section-break--m">
 
-        <h2 class="govuk-heading-m" id="past-bank-holidays-in-scotland">Past bank holidays in Northern Ireland</h2>
+        <h2 class="govuk-heading-m">Past bank holidays in Northern Ireland</h2>
 
         {{ govukTable({
           caption: "2019",
