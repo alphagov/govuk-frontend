@@ -8,7 +8,7 @@
 {% from "input/macro.njk" import govukInput %}
 
 {% set pageTitle = "What was the last country you visited?" %}
-{% block pageTitle %}GOV.UK - {{ pageTitle }}{% endblock %}
+{% block pageTitle %}{{ "Error: " if errors }}GOV.UK - {{ pageTitle }}{% endblock %}
 
 {% block beforeContent %}
   {{ govukBackLink({
