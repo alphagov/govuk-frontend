@@ -9,7 +9,7 @@
 {% from "error-summary/macro.njk" import govukErrorSummary %}
 
 {% set pageTitle = "How do you want to sign in?" %}
-{% block pageTitle %}GOV.UK - {{ pageTitle }}{% endblock %}
+{% block pageTitle %}{{ "Error: " if errors }}GOV.UK - {{ pageTitle }}{% endblock %}
 
 {% block beforeContent %}
   {{ govukBackLink({

@@ -79,6 +79,9 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
           expect(res.statusCode).toBe(200)
           expect($.html()).toContain('Send your feedback to GOV.UK Verify')
 
+          // Check the title has an error
+          expect($('title').text()).toContain('Error:')
+
           // Check that the error summary is visible
           let $errorSummary = $('[data-module="error-summary"]')
           expect($errorSummary.length).toBeTruthy()
@@ -109,6 +112,9 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
           // Check the page responded correctly
           expect(res.statusCode).toBe(200)
           expect($.html()).toContain('Have you changed your name?')
+
+          // Check the title has an error
+          expect($('title').text()).toContain('Error:')
 
           // Check that the error summary is visible
           let $errorSummary = $('[data-module="error-summary"]')
@@ -141,6 +147,9 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
           expect(res.statusCode).toBe(200)
           expect($.html()).toContain('Passport details')
 
+          // Check the title has an error
+          expect($('title').text()).toContain('Error:')
+
           // Check that the error summary is visible
           let $errorSummary = $('[data-module="error-summary"]')
           expect($errorSummary.length).toBeTruthy()
@@ -171,6 +180,9 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
           // Check the page responded correctly
           expect(res.statusCode).toBe(200)
           expect($.html()).toContain('Update your account details')
+
+          // Check the title has an error
+          expect($('title').text()).toContain('Error:')
 
           // Check that the error summary is visible
           let $errorSummary = $('[data-module="error-summary"]')
@@ -203,6 +215,9 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
           expect(res.statusCode).toBe(200)
           expect($.html()).toContain('Upload your photo')
 
+          // Check the title has an error
+          expect($('title').text()).toContain('Error:')
+
           // Check that the error summary is visible
           let $errorSummary = $('[data-module="error-summary"]')
           expect($errorSummary.length).toBeTruthy()
@@ -233,6 +248,9 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
           // Check the page responded correctly
           expect(res.statusCode).toBe(200)
           expect($.html()).toContain('How do you want to sign in?')
+
+          // Check the title has an error
+          expect($('title').text()).toContain('Error:')
 
           // Check that the error summary is visible
           let $errorSummary = $('[data-module="error-summary"]')
@@ -265,6 +283,9 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
           expect(res.statusCode).toBe(200)
           expect($.html()).toContain('What is your nationality?')
 
+          // Check the title has an error
+          expect($('title').text()).toContain('Error:')
+
           // Check that the error summary is visible
           let $errorSummary = $('[data-module="error-summary"]')
           expect($errorSummary.length).toBeTruthy()
@@ -295,6 +316,9 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
           // Check the page responded correctly
           expect(res.statusCode).toBe(200)
           expect($.html()).toContain('What is your address?')
+
+          // Check the title has an error
+          expect($('title').text()).toContain('Error:')
 
           // Check that the error summary is visible
           let $errorSummary = $('[data-module="error-summary"]')
@@ -327,6 +351,9 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
           expect(res.statusCode).toBe(200)
           expect($.html()).toContain('What is your home postcode?')
 
+          // Check the title has an error
+          expect($('title').text()).toContain('Error:')
+
           // Check that the error summary is visible
           let $errorSummary = $('[data-module="error-summary"]')
           expect($errorSummary.length).toBeTruthy()
@@ -351,12 +378,15 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
         })
       })
       it('should show errors if form is submitted with no input', (done) => {
-        requestPath.post(`what-was-the-last-country-you-visited`, (err, res) => {
+        requestPath.post('what-was-the-last-country-you-visited', (err, res) => {
           let $ = cheerio.load(res.body)
 
           // Check the page responded correctly
           expect(res.statusCode).toBe(200)
           expect($.html()).toContain('What was the last country you visited?')
+
+          // Check the title has an error
+          expect($('title').text()).toContain('Error:')
 
           // Check that the error summary is visible
           let $errorSummary = $('[data-module="error-summary"]')
