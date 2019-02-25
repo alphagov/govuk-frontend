@@ -29,7 +29,7 @@ describe('Error message', () => {
     })
 
     const content = $('.govuk-error-message').html().trim()
-    expect(content).toEqual('Unexpected &gt; in body')
+    expect(content).toContain('Unexpected &gt; in body')
   })
 
   it('allows summary HTML to be passed un-escaped', () => {
@@ -38,7 +38,7 @@ describe('Error message', () => {
     })
 
     const content = $('.govuk-error-message').html().trim()
-    expect(content).toEqual('Unexpected <b>bold text</b> in body copy')
+    expect(content).toContain('Unexpected <b>bold text</b> in body copy')
   })
 
   it('allows additional attributes to be specified', () => {
@@ -52,5 +52,34 @@ describe('Error message', () => {
     const $component = $('.govuk-error-message')
     expect($component.attr('data-test')).toEqual('attribute')
     expect($component.attr('id')).toEqual('my-error-message')
+  })
+
+  it('includes a visually hidden "Error" prefix by default', () => {
+    const $ = render('error-message', {
+      text: 'Enter your full name'
+    })
+
+    const $component = $('.govuk-error-message')
+    expect($component.text().trim()).toEqual('Error: Enter your full name')
+  })
+
+  it('allows the visually hidden prefix to be customised', () => {
+    const $ = render('error-message', {
+      text: 'Rhowch eich enw llawn',
+      visuallyHiddenText: 'Gwall'
+    })
+
+    const $component = $('.govuk-error-message')
+    expect($component.text().trim()).toEqual('Gwall: Rhowch eich enw llawn')
+  })
+
+  it('allows the visually hidden prefix to be removed', () => {
+    const $ = render('error-message', {
+      text: 'There is an error on line 42',
+      visuallyHiddenText: false
+    })
+
+    const $component = $('.govuk-error-message')
+    expect($component.text().trim()).toEqual('There is an error on line 42')
   })
 })
