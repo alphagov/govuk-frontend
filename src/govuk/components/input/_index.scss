@@ -66,6 +66,11 @@
     }
   }
 
+  .govuk-input--extra-letter-spacing {
+    @include govuk-font(false, $tabular: true);
+    letter-spacing: .05em;
+  }
+
   // em measurements are based on the point size of the typeface
   // Extra space is added on the right hand side to allow for the Safari prefill icon
 
