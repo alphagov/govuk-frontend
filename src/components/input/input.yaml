@@ -162,3 +162,21 @@ examples:
       id: input-with-autocomplete-attribute
       name: postcode
       autocomplete: postal-code
+  - name: extra tracking ni
+    data:
+      label:
+        text: National insurance number
+      classes: govuk-input--width-30 govuk-input--extra-tracking
+      value: QQ 12 34 56 C
+  - name: extra tracking phone
+    data:
+      label:
+        text: Phone number
+      classes: govuk-input--width-30 govuk-input--extra-tracking
+      value: 03069 991234
+  - name: extra tracking reference
+    data:
+      label:
+        text: Driving licence number
+      classes: govuk-input--width-30 govuk-input--extra-tracking
+      value: GLADS101125C95401
