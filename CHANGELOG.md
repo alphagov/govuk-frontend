@@ -20,6 +20,15 @@
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
+- Accommodate camera notches on new devices (iPhone X, Google Pixel 3 etc)
+
+  On newer devices with "camera notches", browsers reserve a safe area in landscape orientation (known as pillarboxing) so content isn't obscured.
+
+  To avoid this, support has been added for `viewport-fit=cover` as shown here:
+  https://webkit.org/blog/7929/designing-websites-for-iphone-x/
+
+  ([PR #1176](https://github.com/alphagov/govuk-frontend/pull/1176))
+
 🔧 Fixes:
 
 - Pull Request Title goes here
