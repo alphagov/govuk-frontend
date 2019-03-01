@@ -38,11 +38,13 @@
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
 
-- Prevent summary list from wrapping mid-word for most browsers
+- Improve word wrapping in summary list component
 
-  Thanks to [Malcolm Butler](https://github.com/MoJ-Longbeard) for fixing this issue!
+  Thanks to [Edward Horsford](https://github.com/edwardhorsford) and [Lee Kowalkowski](https://github.com/leekowalkowski-hmrc) for their help on this one.
 
-  ([PR #1185](https://github.com/alphagov/govuk-frontend/pull/1185))
+  Also thanks to [Malcolm Butler](https://github.com/MoJ-Longbeard) for exploring a [previous version of this fix](https://github.com/alphagov/govuk-frontend/pull/1185).
+
+  ([PR #1220](https://github.com/alphagov/govuk-frontend/pull/1220))
   
 
 ## 2.7.0 (Feature release)
