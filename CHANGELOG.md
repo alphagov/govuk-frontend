@@ -20,6 +20,16 @@
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
+- Prevent horizontal jump as scrollbars appear
+
+  As content vertical height grows (e.g. autocomplete results appear), browsers
+  may add scroll bars causing the page to jump horizontally in position.
+
+  To avoid this, re-introduce fix from GOV.UK Template:
+  https://github.com/alphagov/govuk-frontend/issues/1204
+
+  ([PR #1230](https://github.com/alphagov/govuk-frontend/pull/1230))
+
 - Accommodate camera notches on new devices (iPhone X, Google Pixel 3 etc)
 
   On newer devices with "camera notches", browsers reserve a safe area in landscape orientation (known as pillarboxing) so content isn't obscured.
