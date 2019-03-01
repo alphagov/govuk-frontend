@@ -11,13 +11,14 @@
 import '../../vendor/polyfills/Event' // addEventListener and event.target normaliziation
 
 var KEY_SPACE = 32
+var DEBOUNCE_TIMEOUT_IN_SECONDS = 1
+var debounceFormSubmitTimer = null
 
 function Button ($module) {
   this.$module = $module
 }
 
 /**
-* Add event handler for KeyDown
 * if the event target element has a role='button' and the event is key space pressed
 * then it prevents the default event and triggers a click event
 * @param {object} event event
@@ -34,11 +35,35 @@ Button.prototype.handleKeyDown = function (event) {
 }
 
 /**
+* If the click quickly succeeds a previous click then nothing will happen.
+* This stops people accidentally causing multiple form submissions by
+* double clicking buttons.
+*/
+Button.prototype.debounce = function (event) {
+  var target = event.target
+  // Check the button that is clicked on has the preventDoubleClick feature enabled
+  if (target.getAttribute('data-prevent-double-click') !== 'true') {
+    return
+  }
+
+  // If the timer is still running then we want to prevent the click from submitting the form
+  if (debounceFormSubmitTimer) {
+    event.preventDefault()
+    return false
+  }
+
+  debounceFormSubmitTimer = setTimeout(function () {
+    debounceFormSubmitTimer = null
+  }, DEBOUNCE_TIMEOUT_IN_SECONDS * 1000)
+}
+
+/**
 * Initialise an event listener for keydown at document level
 * this will help listening for later inserted elements with a role="button"
 */
 Button.prototype.init = function () {
   this.$module.addEventListener('keydown', this.handleKeyDown)
+  this.$module.addEventListener('click', this.debounce)
 }
 
 export default Button
