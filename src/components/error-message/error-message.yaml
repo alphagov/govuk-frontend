@@ -19,6 +19,9 @@ params:
   type: object
   required: false
   description: HTML attributes (for example data attributes) to add to the error message span tag
+- name: visuallyHiddenText
+  type: string
+  description: A visually hidden prefix used before the error message. Defaults to "Error".
 
 accessibilityCriteria: |
   When used with a single input, the error message MUST:
