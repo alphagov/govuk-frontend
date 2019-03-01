@@ -370,8 +370,8 @@ examples:
             text: Pneumonoultramicroscopicsilicovolcanoconiosis
           value:
             html: |
-              <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi quis consequat diam. Duis efficitur justo at congue iaculis. Quisque scelerisque ornare justo nec congue. Duis egestas felis nibh, eu cursus metus rutrum eget. In dictum lectus diam, dapibus ullamcorper risus gravida a. Vestibulum tempor mattis sapien, at auctor tellus dignissim non. Praesent dictum felis nec diam tempor, vel lobortis leo ultricies.</p>
-              <p class="govuk-body">Suspendisse potenti. Aliquam dictum eu ipsum sed facilisis. Maecenas hendrerit est eget ultrices venenatis. Nam ex nisl, venenatis eget molestie quis, hendrerit id tellus. Morbi et posuere ex, vel interdum sapien. Mauris ac mattis turpis, interdum eleifend erat. Morbi eget efficitur lectus. Sed suscipit laoreet ipsum et iaculis. Integer ornare ipsum quis aliquet scelerisque. Proin venenatis dictum suscipit. Nunc tristique, felis quis fermentum rhoncus, tortor augue egestas ipsum, non porttitor nulla odio vitae purus. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+              <p class="govuk-body">Pneumonoultramicroscopicsilicovolcanoconiosis is a word coined by the president of the National Puzzlers' League as a synonym for the disease known as silicosis. It is the longest word in the English language published in a dictionary, the Oxford English Dictionary, which defines it as "an artificial long word said to mean a lung disease caused by inhaling very fine ash and sand dust."</p>
+              <p class="govuk-body">Silicosis is a form of occupational lung disease caused by inhalation of crystalline silica dust, and is marked by inflammation and scarring in the form of nodular lesions in the upper lobes of the lungs. It is a type of pneumoconiosis.</p>
           actions:
             items:
               - href: '#'
