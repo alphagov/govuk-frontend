@@ -220,7 +220,7 @@ examples:
       - value: blue
         text: Blue
 
-- name: with single option set 'aria-describeby' on input
+- name: with single option set 'aria-describedby' on input
   data:
     name: t-and-c
     errorMessage:
