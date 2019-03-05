@@ -1,4 +1,6 @@
 @import "../settings/all";
+@import "../tools/all";
+@import "../helpers/all";
 
 @include govuk-exports("govuk/core/template") {
 

@@ -1,6 +1,7 @@
 /* eslint-env jest */
 
 const { allComponents } = require('../../lib/file-helper')
+const { renderSass } = require('../../lib/jest-helpers')
 
 const configPaths = require('../../config/paths.json')
 
@@ -19,5 +20,11 @@ describe('When nunjucks is configured with a different base path', () => {
     expect(() => {
       nunjucks.render(`components/${component}/template.njk`, {})
     }).not.toThrow()
+  })
+})
+
+it.each(allComponents)('%s.scss renders to CSS without errors', (component) => {
+  return renderSass({
+    file: `${configPaths.src}/components/${component}/_${component}.scss`
   })
 })
