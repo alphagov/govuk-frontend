@@ -1,3 +1,7 @@
+@import "../settings/all";
+@import "../tools/all";
+@import "../helpers/all";
+
 @mixin govuk-width-container {
   // Limit the width of the container to the page width
   max-width: $govuk-page-width;
