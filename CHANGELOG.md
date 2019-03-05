@@ -20,15 +20,23 @@
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
-- Allow attributes on date inputs
+- Enable `pattern` attribute for input
 
-  You can now provide attributes on day/month/year inputs (e.g. `data-example`) below:
+  You can now set the `pattern` attribute on input fields using the component macros:
+  ```js
+  {{ govukInput({
+    name: "example",
+    pattern: "[0-9]*"
+  }) }}
+  ```
+
+  As well as `pattern`, custom attributes can also be added on day/month/year inputs (e.g. `data-example`) shown below:
   ```js
   {{ govukDateInput({
     items: [
       {
+        pattern: "[0-9]*",
         attributes: {
-          pattern: "[0-9]*",
           "data-example": "value"
         }
       }

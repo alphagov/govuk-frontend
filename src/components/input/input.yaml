@@ -47,6 +47,10 @@ params:
   type: string
   required: false
   description: Attribute to [identify input purpose](https://www.w3.org/WAI/WCAG21/Understanding/identify-input-purpose.html), for instance "postal-code" or "username". See [autofill](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill) for full list of attributes that can be used.
+- name: pattern
+  type: string
+  required: false
+  description: Attribute to [provide a regular expression pattern](https://www.w3.org/TR/html51/sec-forms.html#the-pattern-attribute), used to match allowed character combinations for the input value.
 - name: attributes
   type: object
   required: false
@@ -162,3 +166,11 @@ examples:
       id: input-with-autocomplete-attribute
       name: postcode
       autocomplete: postal-code
+  - name: with pattern attribute
+    data:
+      label:
+        text: Numbers only
+      id: input-with-pattern-attribute
+      name: numbers-only
+      type: number
+      pattern: '[0-9]*'

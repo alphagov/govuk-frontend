@@ -154,6 +154,20 @@ describe('Date input', () => {
       expect($firstInput.attr('pattern')).toEqual('[0-9]*')
     })
 
+    it('renders inputs with custom pattern attribute', () => {
+      const $ = render('date-input', {
+        items: [
+          {
+            'name': 'day',
+            'pattern': '[0-8]*'
+          }
+        ]
+      })
+
+      const $firstInput = $('.govuk-date-input__item:first-child input')
+      expect($firstInput.attr('pattern')).toEqual('[0-8]*')
+    })
+
     it('renders item with implicit class for label', () => {
       const $ = render('date-input', {
         items: [
