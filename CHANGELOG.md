@@ -101,6 +101,23 @@
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
+- Ensure that files within the core, objects and overrides layers can be
+  imported individually
+
+  Unlike components, the files within these layers did not previously import
+  their dependencies (for example, most of them require the govuk-exports mixin
+  but did not import it).
+
+  We've also added tests to ensure that files within these layers can be
+  imported and rendered to CSS without erroring, which should catch this in the
+  future.
+
+  Thanks to [Alasdair McLeay](https://github.com/penx) for originally raising a
+  PR to fix this.
+
+  ([PR #1235](https://github.com/alphagov/govuk-frontend/pull/1235))
+
+
 - Ensure inset component does not misalign nested components
 
   Thanks to [Paul Hayes](https://github.com/fofr) for raising this issue.
