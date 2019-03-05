@@ -12,6 +12,12 @@
         "description": "String to prefix id for each tab item if no id is specified on each item"
     },
     {
+        "name": "title",
+        "type": "string",
+        "required": false,
+        "description": "Title for the tabs table of contents"
+    },
+    {
         "name": "items",
         "type": "array",
         "required": true,
@@ -30,16 +36,36 @@
                 "description": "The text label of a tab item."
             },
             {
-                "name": "panel.text",
-                "type": "string",
-                "required": true,
-                "description": "If `html` is set, this is not required. Text to use within each tab panel. If `html` is provided, the `text` argument will be ignored."
+                "name": "attributes",
+                "type": "object",
+                "required": false,
+                "description": "HTML attributes (for example data attributes) to add to the tab."
             },
             {
-                "name": "panel.html",
-                "type": "string",
+                "name": "panel",
+                "description": "Content for the panel",
+                "type": "object",
                 "required": true,
-                "description": "If `text` is set, this is not required. HTML to use within the each tab panel. If `html` is provided, the `text` argument will be ignored."
+                "params": [
+                    {
+                        "name": "text",
+                        "type": "string",
+                        "required": true,
+                        "description": "If `html` is set, this is not required. Text to use within each tab panel. If `html` is provided, the `text` argument will be ignored."
+                    },
+                    {
+                        "name": "html",
+                        "type": "string",
+                        "required": true,
+                        "description": "If `text` is set, this is not required. HTML to use within the each tab panel. If `html` is provided, the `text` argument will be ignored."
+                    },
+                    {
+                        "name": "attributes",
+                        "type": "object",
+                        "required": false,
+                        "description": "HTML attributes (for example data attributes) to add to the tab panel."
+                    }
+                ]
             }
         ]
     },

@@ -20,9 +20,24 @@
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
+🔧 Fixes:
+
+- Pull Request Title goes here
+
+  Description goes here (optional)
+
+  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+
+
+## 2.8.0 (Feature release)
+
+🆕 New features:
+
 - Enable `pattern` attribute for input
 
-  You can now set the `pattern` attribute on input fields using the component macros:
+  You can now set the `pattern` attribute on input fields using the component
+  macros:
+
   ```js
   {{ govukInput({
     name: "example",
@@ -30,7 +45,9 @@
   }) }}
   ```
 
-  As well as `pattern`, custom attributes can also be added on day/month/year inputs (e.g. `data-example`) shown below:
+  As well as `pattern`, custom attributes can also be added on day/month/year
+  inputs (e.g. `data-example`) shown below:
+
   ```js
   {{ govukDateInput({
     items: [
@@ -46,6 +63,7 @@
 
   ([PR #1172](https://github.com/alphagov/govuk-frontend/pull/1172))
 
+
 - Prevent horizontal jump as scrollbars appear
 
   As content vertical height grows (e.g. autocomplete results appear), browsers
@@ -56,23 +74,28 @@
 
   ([PR #1230](https://github.com/alphagov/govuk-frontend/pull/1230))
 
+
 - Accommodate camera notches on new devices (iPhone X, Google Pixel 3 etc)
 
-  On newer devices with "camera notches", browsers reserve a safe area in landscape orientation (known as pillarboxing) so content isn't obscured.
+  On newer devices with "camera notches", browsers reserve a safe area in
+  landscape orientation (known as pillarboxing) so content isn't obscured.
 
   To avoid this, support has been added for `viewport-fit=cover` as shown here:
   https://webkit.org/blog/7929/designing-websites-for-iphone-x/
 
   ([PR #1176](https://github.com/alphagov/govuk-frontend/pull/1176))
 
+
 - Prefix error messages with a visually hidden "Error:", to make it clearer to
   users of assistive technologies
 
   ([PR #1221](https://github.com/alphagov/govuk-frontend/pull/1221))
 
+
 - Prevent accidental multiple submissions of forms
 
-  If a user double clicks a submit button in a form, we debounce this event and ignore the second click.
+  If a user double clicks a submit button in a form, we debounce this event and
+  ignore the second click.
 
   HTML data attribute:
 
@@ -93,13 +116,8 @@
 
   ([PR #1018](https://github.com/alphagov/govuk-frontend/pull/1018))
 
+
 🔧 Fixes:
-
-- Pull Request Title goes here
-
-  Description goes here (optional)
-
-  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
 - Ensure that files within the core, objects and overrides layers can be
   imported individually
