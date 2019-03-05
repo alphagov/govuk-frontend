@@ -75,6 +75,12 @@
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
+- Ensure inset component does not misalign nested components
+
+  Thanks to [Paul Hayes](https://github.com/fofr) for raising this issue.
+
+  ([PR #1232](https://github.com/alphagov/govuk-frontend/pull/1232))
+
 
 - Improve word wrapping in summary list component
 
