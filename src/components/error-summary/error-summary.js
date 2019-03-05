@@ -2,8 +2,13 @@ import '../../vendor/polyfills/Function/prototype/bind'
 import '../../vendor/polyfills/Event' // addEventListener
 import '../../vendor/polyfills/Element/prototype/closest'
 
-function ErrorSummary ($module) {
+import { getDataset } from '../../common.js'
+
+function ErrorSummary ($module, options) {
   this.$module = $module
+
+  // If there are no options default to an empty object
+  this.options = typeof options !== 'undefined' ? options : {}
 }
 
 ErrorSummary.prototype.init = function () {
@@ -11,11 +16,35 @@ ErrorSummary.prototype.init = function () {
   if (!$module) {
     return
   }
-  window.addEventListener('load', function () {
-    $module.focus()
-  })
+
+  // Read options set using dataset ('data-' values)
+  this.options = Object.assign({}, getDataset($module), this.options)
+
+  console.log(this.options)
+
+  var autofocus = typeof this.options.autofocus !== 'undefined' ? this.options.autofocus : true
+
+  // We need to decide how/if we should be doing type cohercing?
+  if (autofocus === 'false') {
+    autofocus = false
+  }
+  if (autofocus === 'true') {
+    autofocus = true
+  }
+
+  console.log(autofocus)
+
+  if (autofocus) {
+    window.addEventListener('load', function () {
+      this.focus()
+    }.bind(this))
+  }
 
   $module.addEventListener('click', this.handleClick.bind(this))
+}
+
+ErrorSummary.prototype.focus = function () {
+  this.$module.focus()
 }
 
 /**

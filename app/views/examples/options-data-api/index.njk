@@ -1,6 +1,7 @@
 {% extends "template.njk" %}
 
 {% from "character-count/macro.njk" import govukCharacterCount %}
+{% from "error-summary/macro.njk" import govukErrorSummary %}
 
 {% block head %}
   <!--[if !IE 8]><!-->
@@ -21,7 +22,7 @@
 
   <h2 class="govuk-heading-l">Character count<h2>
   <h3 class="govuk-heading-m">Data API</h3>
-  <div id="data">
+  <div id="character-count-data">
     {{ govukCharacterCount({
       name: "with-hint",
       id: "with-hint",
@@ -35,7 +36,7 @@
     }) }}
   </div>
   <h3 class="govuk-heading-m">Programmatic API</h3>
-  <div id="programmatic">
+  <div id="character-count-programmatic">
     {{ govukCharacterCount({
       name: "programmatic-api",
       id: "programmatic-api",
@@ -48,7 +49,7 @@
     }) }}
   </div>
   <h3 class="govuk-heading-m">Overriden Data API</h3>
-  <div id="overriden">
+  <div id="character-count-overriden">
     {{ govukCharacterCount({
       name: "overriden-api",
       id: "overriden-api",
@@ -61,6 +62,57 @@
       }
     }) }}
   </div>
+
+  <h2 class="govuk-heading-l">Error summary<h2>
+  <h3 class="govuk-heading-m">Data API</h3>
+  <div id="error-summary-data">
+    {{ govukErrorSummary({
+      autofocus: false,
+      titleText: "There is a problem",
+      errorList: [
+        {
+          text: "The date your passport was issued must be in the past",
+          href: "#passport-issued-error"
+        },
+        {
+          text: "Enter a postcode, like AA1 1AA",
+          href: "#postcode-error"
+        }
+      ]
+    }) }}
+  </div>
+  <h3 class="govuk-heading-m">Programmatic API</h3>
+  <div id="error-summary-programmatic">
+    {{ govukErrorSummary({
+      titleText: "There is a problem",
+      errorList: [
+        {
+          text: "The date your passport was issued must be in the past",
+          href: "#passport-issued-error"
+        },
+        {
+          text: "Enter a postcode, like AA1 1AA",
+          href: "#postcode-error"
+        }
+      ]
+    }) }}
+  </div>
+  <h3 class="govuk-heading-m">Overriden Data API</h3>
+  <div id="error-summary-overriden">
+    {{ govukErrorSummary({
+      titleText: "There is a problem",
+      errorList: [
+        {
+          text: "The date your passport was issued must be in the past",
+          href: "#passport-issued-error"
+        },
+        {
+          text: "Enter a postcode, like AA1 1AA",
+          href: "#postcode-error"
+        }
+      ]
+    }) }}
+  </div>
 {% endblock %}
 
 {% block bodyEnd %}
@@ -68,18 +120,37 @@
   <script>
     var CharacterCount = window.GOVUKFrontend.CharacterCount
 
-    var $characterCountDataAPI = document.querySelector('#data [data-module="character-count"]')
+    // Character Count
+    var $characterCountDataAPI = document.querySelector('#character-count-data [data-module="character-count"]')
     new CharacterCount($characterCountDataAPI).init()
 
-    var $characterCountProgrammaticAPI = document.querySelector('#programmatic [data-module="character-count"]')
+    var $characterCountProgrammaticAPI = document.querySelector('#character-count-programmatic [data-module="character-count"]')
     new CharacterCount($characterCountProgrammaticAPI, {
       maxwords: 200
     }).init()
 
     // Should the programmatic API override the data? Or the other way around?
-    var $characterCountOverriddenDataAPI = document.querySelector('#overriden [data-module="character-count"]')
+    var $characterCountOverriddenDataAPI = document.querySelector('#character-count-overriden [data-module="character-count"]')
     new CharacterCount($characterCountOverriddenDataAPI, {
       maxlength: 300
+    }).init()
+  </script>
+  <script>
+    var ErrorSummary = window.GOVUKFrontend.ErrorSummary
+
+    // Character Count
+    var $errorSummaryDataAPI = document.querySelector('#error-summary-data [data-module="error-summary"]')
+    new ErrorSummary($errorSummaryDataAPI).init()
+
+    var $errorSummaryProgrammaticAPI = document.querySelector('#error-summary-programmatic [data-module="error-summary"]')
+    new ErrorSummary($errorSummaryProgrammaticAPI, {
+      autofocus: false
+    }).init()
+
+    // Should the programmatic API override the data? Or the other way around?
+    var $errorSummaryOverriddenDataAPI = document.querySelector('#error-summary-overriden [data-module="error-summary"]')
+    new ErrorSummary($errorSummaryOverriddenDataAPI, {
+      autofocus: true
     }).init()
   </script>
 {% endblock %}

@@ -26,3 +26,18 @@ export function generateUniqueID () {
     return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16)
   })
 }
+
+export function getDataset (element) {
+  var dataset = {}
+  var attributes = element.attributes
+  if (attributes) {
+    for (var i = 0; i < attributes.length; i++) {
+      var attribute = attributes[i]
+      var match = attribute.name.match(/^data-(.+)/)
+      if (match) {
+        dataset[match[1]] = attribute.value
+      }
+    }
+  }
+  return dataset
+}

@@ -1,5 +1,6 @@
 <div class="govuk-error-summary
   {%- if params.classes %} {{ params.classes }}{% endif %}" aria-labelledby="error-summary-title" role="alert" tabindex="-1"
+  {% if params.autofocus === false or params.autofocus === true %} data-autofocus="{{ params.autofocus }}"{% endif %}
   {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %} data-module="error-summary">
   <h2 class="govuk-error-summary__title" id="error-summary-title">
     {{ params.titleHtml | safe if params.titleHtml else params.titleText }}

@@ -2,6 +2,8 @@ import '../../vendor/polyfills/Function/prototype/bind'
 import '../../vendor/polyfills/Event' // addEventListener and event.target normaliziation
 import '../../vendor/polyfills/Element/prototype/classList'
 
+import { getDataset } from '../../common.js'
+
 function CharacterCount ($module, options) {
   this.$module = $module
   this.$textarea = $module.querySelector('.js-character-count')
@@ -25,7 +27,7 @@ CharacterCount.prototype.init = function () {
   }
 
   // Read options set using dataset ('data-' values)
-  this.options = Object.assign({}, this.getDataset($module), this.options)
+  this.options = Object.assign({}, getDataset($module), this.options)
 
   // Check for limit
   if (!this.options.maxlength && !this.options.maxwords) {
@@ -49,22 +51,6 @@ CharacterCount.prototype.init = function () {
     var boundUpdateCountMessage = this.updateCountMessage.bind(this)
     boundUpdateCountMessage()
   }
-}
-
-// Read data attributes
-CharacterCount.prototype.getDataset = function (element) {
-  var dataset = {}
-  var attributes = element.attributes
-  if (attributes) {
-    for (var i = 0; i < attributes.length; i++) {
-      var attribute = attributes[i]
-      var match = attribute.name.match(/^data-(.+)/)
-      if (match) {
-        dataset[match[1]] = attribute.value
-      }
-    }
-  }
-  return dataset
 }
 
 // Counts characters or words in text
