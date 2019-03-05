@@ -23,7 +23,9 @@
     errorMessage: params.errorMessage,
     attributes: params.attributes
   }) }}
+  {% if params.maxlength or params.maxwords %}
   <span id="{{ params.id }}-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
     You can enter up to {{ params.maxlength or params.maxwords }} {{'words' if params.maxwords else 'characters' }}
   </span>
+  {% endif %}
 </div>

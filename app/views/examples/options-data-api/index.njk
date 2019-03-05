@@ -1,0 +1,85 @@
+{% extends "template.njk" %}
+
+{% from "character-count/macro.njk" import govukCharacterCount %}
+
+{% block head %}
+  <!--[if !IE 8]><!-->
+    <link rel="stylesheet" href="/public/app.css">
+  <!--<![endif]-->
+  <!--[if IE 8]>
+    <link rel="stylesheet" href="/public/app-ie8.css">
+  <![endif]-->
+  <!--[if lt IE 9]>
+    <script src="/vendor/html5-shiv/html5shiv.js"></script>
+  <![endif]-->
+{% endblock %}
+
+{% block content %}
+  <h1 class="govuk-heading-xl">
+    Options Data Api
+  </h1>
+
+  <h2 class="govuk-heading-l">Character count<h2>
+  <h3 class="govuk-heading-m">Data API</h3>
+  <div id="data">
+    {{ govukCharacterCount({
+      name: "with-hint",
+      id: "with-hint",
+      maxlength: 200,
+      label: {
+        text: "Can you provide more detail?"
+      },
+      hint: {
+        text: "Do not include personal or financial information like your National Insurance number or credit card details."
+      }
+    }) }}
+  </div>
+  <h3 class="govuk-heading-m">Programmatic API</h3>
+  <div id="programmatic">
+    {{ govukCharacterCount({
+      name: "programmatic-api",
+      id: "programmatic-api",
+      label: {
+        text: "Can you provide more detail?"
+      },
+      hint: {
+        text: "Do not include personal or financial information like your National Insurance number or credit card details."
+      }
+    }) }}
+  </div>
+  <h3 class="govuk-heading-m">Overriden Data API</h3>
+  <div id="overriden">
+    {{ govukCharacterCount({
+      name: "overriden-api",
+      id: "overriden-api",
+      maxlength: 200,
+      label: {
+        text: "Can you provide more detail?"
+      },
+      hint: {
+        text: "Do not include personal or financial information like your National Insurance number or credit card details."
+      }
+    }) }}
+  </div>
+{% endblock %}
+
+{% block bodyEnd %}
+  <script src="/public/all.js"></script>
+  <script>
+    var CharacterCount = window.GOVUKFrontend.CharacterCount
+
+    var $characterCountDataAPI = document.querySelector('#data [data-module="character-count"]')
+    new CharacterCount($characterCountDataAPI).init()
+
+    var $characterCountProgrammaticAPI = document.querySelector('#programmatic [data-module="character-count"]')
+    new CharacterCount($characterCountProgrammaticAPI, {
+      maxwords: 200
+    }).init()
+
+    // Should the programmatic API override the data? Or the other way around?
+    var $characterCountOverriddenDataAPI = document.querySelector('#overriden [data-module="character-count"]')
+    new CharacterCount($characterCountOverriddenDataAPI, {
+      maxlength: 300
+    }).init()
+  </script>
+{% endblock %}

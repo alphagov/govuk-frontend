@@ -2,9 +2,12 @@ import '../../vendor/polyfills/Function/prototype/bind'
 import '../../vendor/polyfills/Event' // addEventListener and event.target normaliziation
 import '../../vendor/polyfills/Element/prototype/classList'
 
-function CharacterCount ($module) {
+function CharacterCount ($module, options) {
   this.$module = $module
   this.$textarea = $module.querySelector('.js-character-count')
+
+  // If there are no options default to an empty object
+  this.options = typeof options !== 'undefined' ? options : {}
 }
 
 CharacterCount.prototype.defaults = {
@@ -22,19 +25,10 @@ CharacterCount.prototype.init = function () {
   }
 
   // Read options set using dataset ('data-' values)
-  this.options = this.getDataset($module)
-
-  // Determine the limit attribute (characters or words)
-  var countAttribute = this.defaults.characterCountAttribute
-  if (this.options.maxwords) {
-    countAttribute = this.defaults.wordCountAttribute
-  }
-
-  // Save the element limit
-  this.maxLength = $module.getAttribute(countAttribute)
+  this.options = Object.assign({}, this.getDataset($module), this.options)
 
   // Check for limit
-  if (!this.maxLength) {
+  if (!this.options.maxlength && !this.options.maxwords) {
     return
   }
 
@@ -136,7 +130,7 @@ CharacterCount.prototype.updateCountMessage = function () {
 
   // Determine the remaining number of characters/words
   var currentLength = this.count(countElement.value)
-  var maxLength = this.maxLength
+  var maxLength = options.maxlength || options.maxwords
   var remainingNumber = maxLength - currentLength
 
   // Set threshold if presented in options
