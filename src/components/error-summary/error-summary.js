@@ -2,7 +2,7 @@ import '../../vendor/polyfills/Function/prototype/bind'
 import '../../vendor/polyfills/Event' // addEventListener
 import '../../vendor/polyfills/Element/prototype/closest'
 
-import { getDataset } from '../../common.js'
+import { extractDatasetOptions } from '../../common.js'
 
 function ErrorSummary ($module, options) {
   this.$module = $module
@@ -18,21 +18,9 @@ ErrorSummary.prototype.init = function () {
   }
 
   // Read options set using dataset ('data-' values)
-  this.options = Object.assign({}, getDataset($module), this.options)
+  this.options = Object.assign({}, extractDatasetOptions($module), this.options)
 
-  console.log(this.options)
-
-  var autofocus = typeof this.options.autofocus !== 'undefined' ? this.options.autofocus : true
-
-  // We need to decide how/if we should be doing type cohercing?
-  if (autofocus === 'false') {
-    autofocus = false
-  }
-  if (autofocus === 'true') {
-    autofocus = true
-  }
-
-  console.log(autofocus)
+  var autofocus = typeof this.options.autofocus === 'boolean' ? this.options.autofocus : true
 
   if (autofocus) {
     window.addEventListener('load', function () {

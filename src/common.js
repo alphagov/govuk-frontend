@@ -27,16 +27,30 @@ export function generateUniqueID () {
   })
 }
 
-export function getDataset (element) {
+export function extractDatasetOptions ($element) {
   var dataset = {}
-  var attributes = element.attributes
-  if (attributes) {
-    for (var i = 0; i < attributes.length; i++) {
-      var attribute = attributes[i]
-      var match = attribute.name.match(/^data-(.+)/)
-      if (match) {
-        dataset[match[1]] = attribute.value
-      }
+  var attributes = $element.attributes
+  if (!attributes) {
+    return dataset
+  }
+  for (var i = 0; i < attributes.length; i++) {
+    var attribute = attributes[i]
+    var match = attribute.name.match(/^data-(.+)/)
+    if (!match) {
+      continue
+    }
+
+    var value = attribute.value
+    var key = match[1]
+
+    if (!isNaN(value)) {
+      dataset[key] = parseInt(value, 10)
+    } else if(value === 'true') {
+      dataset[key] = true
+    } else if(value === 'false') {
+      dataset[key] = false
+    } else {
+      dataset[key] = value
     }
   }
   return dataset

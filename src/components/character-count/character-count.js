@@ -2,7 +2,7 @@ import '../../vendor/polyfills/Function/prototype/bind'
 import '../../vendor/polyfills/Event' // addEventListener and event.target normaliziation
 import '../../vendor/polyfills/Element/prototype/classList'
 
-import { getDataset } from '../../common.js'
+import { extractDatasetOptions } from '../../common.js'
 
 function CharacterCount ($module, options) {
   this.$module = $module
@@ -27,7 +27,7 @@ CharacterCount.prototype.init = function () {
   }
 
   // Read options set using dataset ('data-' values)
-  this.options = Object.assign({}, getDataset($module), this.options)
+  this.options = Object.assign({}, extractDatasetOptions($module), this.options)
 
   // Check for limit
   if (!this.options.maxlength && !this.options.maxwords) {
