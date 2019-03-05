@@ -20,6 +20,32 @@
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
+- Enable `pattern` attribute for input
+
+  You can now set the `pattern` attribute on input fields using the component macros:
+  ```js
+  {{ govukInput({
+    name: "example",
+    pattern: "[0-9]*"
+  }) }}
+  ```
+
+  As well as `pattern`, custom attributes can also be added on day/month/year inputs (e.g. `data-example`) shown below:
+  ```js
+  {{ govukDateInput({
+    items: [
+      {
+        pattern: "[0-9]*",
+        attributes: {
+          "data-example": "value"
+        }
+      }
+    ]
+  }) }}
+  ```
+
+  ([PR #1172](https://github.com/alphagov/govuk-frontend/pull/1172))
+
 - Prevent horizontal jump as scrollbars appear
 
   As content vertical height grows (e.g. autocomplete results appear), browsers

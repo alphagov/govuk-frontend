@@ -32,10 +32,18 @@ params:
     type: string
     required: false
     description: Attribute to [identify input purpose](https://www.w3.org/WAI/WCAG21/Understanding/identify-input-purpose.html), for instance "postal-code" or "username". See [autofill](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill) for full list of attributes that can be used.
+  - name: pattern
+    type: string
+    required: false
+    description: Attribute to [provide a regular expression pattern](https://www.w3.org/TR/html51/sec-forms.html#the-pattern-attribute), used to match allowed character combinations for the input value.
   - name: classes
     type: string
     required: false
     description: Classes to add to date input item.
+  - name: attributes
+    type: object
+    required: false
+    description: HTML attributes (for example data attributes) to add to the date input tag.
 - name: hint
   type: object
   required: false
@@ -212,5 +220,30 @@ examples:
         autocomplete: bday-month
       -
         name: year
-        classes: govuk-input--width-2
+        classes: govuk-input--width-4
         autocomplete: bday-year
+- name: with input attributes
+  data:
+    id: dob-with-input-attributes
+    namePrefix: dob-with-input-attributes
+    fieldset:
+      legend:
+        text: What is your date of birth?
+    hint:
+      text: For example, 31 3 1980
+    items:
+      -
+        name: day
+        classes: govuk-input--width-2
+        attributes:
+          data-example-day: day
+      -
+        name: month
+        classes: govuk-input--width-2
+        attributes:
+          data-example-month: month
+      -
+        name: year
+        classes: govuk-input--width-4
+        attributes:
+          data-example-year: year

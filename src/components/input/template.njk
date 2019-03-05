@@ -41,5 +41,6 @@
   {%- if params.value %} value="{{ params.value}}"{% endif %}
   {%- if describedBy %} aria-describedby="{{ describedBy }}"{% endif %}
   {%- if params.autocomplete %} autocomplete="{{ params.autocomplete}}"{% endif %}
+  {%- if params.pattern %} pattern="{{ params.pattern }}"{% endif %}
   {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor -%}>
 </div>
