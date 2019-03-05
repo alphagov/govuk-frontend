@@ -1,3 +1,7 @@
+@import "../settings/all";
+@import "../tools/all";
+@import "../helpers/all";
+
 @include govuk-exports("govuk/overrides/typography") {
   // Font size and line height
 
