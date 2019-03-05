@@ -4,7 +4,17 @@
         "type": "object",
         "required": false,
         "description": "Object containing options for the meta navigation.",
-        "arguments": [
+        "params": [
+            {
+                "name": "html",
+                "type": "string",
+                "description": "HTML to add to the meta section of the footer, which will appear below any links specified using meta.items."
+            },
+            {
+                "name": "text",
+                "type": "string",
+                "description": "Text to add to the meta section of the footer, which will appear below any links specified using meta.items. If meta.html is specified, this option is ignored."
+            },
             {
                 "name": "items",
                 "type": "array",
@@ -38,7 +48,7 @@
         "type": "array",
         "required": false,
         "description": "Array of items for use in the navigation section of the footer.",
-        "arguments": [
+        "params": [
             {
                 "name": "title",
                 "type": "string",
@@ -56,7 +66,7 @@
                 "type": "array",
                 "required": false,
                 "description": "Array of items to display in the list in navigation section of the footer.",
-                "arguments": [
+                "params": [
                     {
                         "name": "text",
                         "type": "string",

@@ -30,7 +30,7 @@
                 "name": "classes",
                 "type": "string",
                 "required": false,
-                "description": "Optional classes to add to the form group (e.g. to show error state for the whole group)"
+                "description": "Classes to add to the form group (e.g. to show error state for the whole group)"
             }
         ]
     },
@@ -69,12 +69,6 @@
                 "type": "string",
                 "required": false,
                 "description": "Specific id attribute for the radio item. If omitted, then `idPrefix` string will be applied."
-            },
-            {
-                "name": "name",
-                "type": "string",
-                "required": true,
-                "description": "Specific name for the radio item. If omitted, then component global `name` string will be applied."
             },
             {
                 "name": "value",

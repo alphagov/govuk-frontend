@@ -10,6 +10,7 @@
     @include govuk-media-query($from: tablet) {
       display: table;
       width: 100%;
+      table-layout: fixed; // Required to allow us to wrap words that overflow.
     }
     margin: 0; // Reset default user agent styles
     @include govuk-responsive-margin(6, "bottom");
@@ -49,6 +50,7 @@
   .govuk-summary-list__actions {
     margin-bottom: govuk-spacing(3);
     @include govuk-media-query($from: tablet) {
+      width: 20%;
       padding-right: 0;
       text-align: right;
     }
@@ -56,10 +58,9 @@
 
   .govuk-summary-list__key,
   .govuk-summary-list__value {
-    // sass-lint:disable no-duplicate-properties
     // Automatic wrapping for unbreakable text (e.g. URLs)
-    word-break: break-word; // WebKit/Blink only
-    word-break: break-all; // Standards
+    word-wrap: break-word; // Fallback for older browsers only
+    overflow-wrap: break-word;
   }
 
   .govuk-summary-list__key {
@@ -73,6 +74,9 @@
   .govuk-summary-list__value {
     @include govuk-media-query($until: tablet) {
       margin-bottom: govuk-spacing(3);
+    }
+    @include govuk-media-query($from: tablet) {
+      width: 50%;
     }
   }
 

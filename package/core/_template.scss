@@ -1,4 +1,6 @@
 @import "../settings/all";
+@import "../tools/all";
+@import "../helpers/all";
 
 @include govuk-exports("govuk/core/template") {
 
@@ -14,6 +16,12 @@
        -moz-text-size-adjust: 100%;
         -ms-text-size-adjust: 100%;
             text-size-adjust: 100%;
+
+    // Force the scrollbar to always display in IE, to prevent horizontal page
+    // jumps as content height changes (e.g. autocomplete results open).
+    @include govuk-media-query($media-type: screen) {
+      overflow-y: scroll;
+    }
   }
 
   // Applied to the <body> element
