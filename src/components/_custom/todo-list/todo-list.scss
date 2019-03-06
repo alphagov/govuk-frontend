@@ -5,6 +5,7 @@
 $sdn-todo-list-background-color: #fafafa;
 $sdn-todo-list-action-background-color: rgba(180, 194, 255, .2);
 $sdn-todo-list-action-completed-background-color: #e5f2e4;
+$sdn-todo-list-action-waiting-background-color: #fdf4ce;
 $sdn-todo-list-info: #878788;
 $sdn-todo-list-left-border-color: rgba(0, 0, 0, .1);
 $sdn-todo-list-completed-border-color: #4cae18;
@@ -105,9 +106,9 @@ $sdn-todo-list-button-text-color-hover: #387f12;
   }
 
   .sdn-todo-list-main-action {
-    //padding: $sdn-todo-list-inner-top-bottom-padding $sdn-todo-list-inner-left-right-padding 10px $sdn-todo-list-inner-left-right-padding;
+    padding: $sdn-todo-list-inner-top-bottom-padding $sdn-todo-list-inner-left-right-padding 10px $sdn-todo-list-inner-left-right-padding;
     //border: $sdn-todo-list-left-border-color solid 2px;
-    //background-color: $sdn-todo-list-action-background-color;
+    background-color: $sdn-todo-list-action-background-color;
 
     .sdn-todo-list-box + & {
       margin-top: 30px;
@@ -122,6 +123,12 @@ $sdn-todo-list-button-text-color-hover: #387f12;
       padding: $sdn-todo-list-inner-top-bottom-padding $sdn-todo-list-inner-left-right-padding 10px $sdn-todo-list-inner-left-right-padding;
       //border: $sdn-todo-list-completed-border-color solid 2px;
       background-color: $sdn-todo-list-action-completed-background-color;
+    }
+
+    .sdn-todo-list--waiting & {
+      padding: $sdn-todo-list-inner-top-bottom-padding $sdn-todo-list-inner-left-right-padding 10px $sdn-todo-list-inner-left-right-padding;
+      //border: $sdn-todo-list-completed-border-color solid 2px;
+      background-color: $sdn-todo-list-action-waiting-background-color;
     }
   }
 

@@ -1,4 +1,6 @@
-<div class="sdn-todo-list{% if params.completed %} sdn-todo-list--completed{% endif %}">
+<div class="sdn-todo-list
+{% if params.state and params.state == 'completed' %} sdn-todo-list--completed{% endif %}
+{% if params.state and params.state == 'waiting' %} sdn-todo-list--waiting{% endif %}">
   <div class="sdn-todo-list-box">
     <div class="sdn-todo-list__title">{{ params.title }}</div>
     <ul class="sdn-todo-list__items">
