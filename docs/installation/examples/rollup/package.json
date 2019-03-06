@@ -1,0 +1,19 @@
+{
+  "private": true,
+  "name": "rollup-boilerplate",
+  "description": "rollup boilerplate consuming govuk-frontend",
+  "scripts": {
+    "build": "rollup -c",
+    "start": "npm run build && serve"
+  },
+  "dependencies": {
+    "govuk-frontend": "*"
+  },
+  "devDependencies": {
+    "rollup": "0.56.5",
+    "rollup-plugin-commonjs": "^9.2.1",
+    "rollup-plugin-node-resolve": "^4.0.1",
+    "rollup-plugin-uglify": "^6.0.2",
+    "serve": "^10.1.2"
+  }
+}
