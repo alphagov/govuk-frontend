@@ -31,6 +31,11 @@
     text-decoration: none;
     cursor: pointer;
 
+    &:link,
+    &:visited {
+      color: $text-color;
+    }
+
     &:hover {
       opacity: .9;
       color: $text-color-hover;

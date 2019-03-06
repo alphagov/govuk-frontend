@@ -1,0 +1,37 @@
+////
+/// @group _sdn/settings/colours
+////
+
+@import "../../helpers/colour";
+
+// =============================================================================
+// Links
+// =============================================================================
+
+/// Link colour
+///
+/// @type Colour
+/// @access public
+
+$govuk-link-colour: govuk-colour("blue") !default;
+
+/// Visited link colour
+///
+/// @type Colour
+/// @access public
+
+$govuk-link-visited-colour: #439250 !default;
+
+/// Link hover colour
+///
+/// @type Colour
+/// @access public
+
+$govuk-link-hover-colour: govuk-colour("light-blue") !default;
+
+/// Active link colour
+///
+/// @type Colour
+/// @access public
+
+$govuk-link-active-colour: govuk-colour("light-blue") !default;

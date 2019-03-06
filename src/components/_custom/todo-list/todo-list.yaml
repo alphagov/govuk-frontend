@@ -2,3 +2,53 @@ params:
 
 examples:
  - name: default
+   data:
+     title: Úlohy a podklady
+     completed: false
+     button: Podať elektronicky
+     is_start_button: true
+     tasks:
+      -
+        title: Vybrať obchodné meno
+        completed: true
+      -
+        title: Vyzdvihnúť a oskenovať dokument od lekára
+        description: Vsetky udaje mame k dispozicii
+        completed: false
+      -
+        title: Získať súhlas vlastníkov nehnuteľnosti
+        description: Musíte získať súhlas všetkých vlastníkov
+        link_url: '#button1'
+        link_text: Spustiť
+        completed: true
+      -
+        title: Určiť správcu vkladu
+        description: Musí byť jeden z konateľov
+        link_url: '#button2'
+        link_text: Spustiť
+        completed: false
+ - name: completed
+   data:
+     title: Úlohy a podklady
+     completed: true
+     tasks:
+      -
+        title: Vybrať obchodné meno
+        completed: true
+      -
+        title: Vyzdvihnúť a oskenovať dokument od lekára
+        description: Vsetky udaje mame k dispozicii
+        completed: true
+      -
+        title: Získať súhlas vlastníkov nehnuteľnosti
+        description: Musíte získať súhlas všetkých vlastníkov
+        link_url: '#button1'
+        link_text: Spustiť
+        completed: true
+      -
+        title: Určiť správcu vkladu
+        description: Musí byť jeden z konateľov
+        link_url: '#button2'
+        link_text: Spustiť
+        completed: true
+

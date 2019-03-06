@@ -1,46 +1,59 @@
-<div class="sdn-todo-list-box">
-  <div class="sdn-todo-list__title">List podúloh</div>
-  <ul class="sdn-todo-list__items">
-    <li class="sdn-todo-list__item">
-      <div>
-        <div class="govuk-checkboxes__item">
-          <input class="govuk-checkboxes__input" id="nationality-1" name="nationality" type="checkbox" value="british">
-          <label class="govuk-label govuk-checkboxes__label" for="nationality-1">
-            Vyplnit dokument Samuel
-          </label>
+<div class="sdn-todo-list{% if params.completed %} sdn-todo-list--completed{% endif %}">
+  <div class="sdn-todo-list-box">
+    <div class="sdn-todo-list__title">{{ params.title }}</div>
+    <ul class="sdn-todo-list__items">
+      {% for task in params.tasks %}
+      <li class="sdn-todo-list__item">
+        {% if task.html %}
+          {{ task.html|safe }}
+        {% else %}
+          <div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="todo-list-input-{{ loop.index }}" name="todo-list-input-{{ loop.index }}" type="checkbox" value="{{ loop.index }}"{% if task.completed %} checked="checked"{% endif %}>
+              <label class="govuk-label govuk-checkboxes__label" for="todo-list-input-{{ loop.index }}">
+                {{ task.title }}
+              </label>
+
+                {% if task.description %}
+                    <div class="snd-todo-list__item__info">{{ task.description|safe }}</div>
+                {% endif %}
+            </div>
+          </div>
+          {% if task.link_text %}
+            <div>
+              <a href="{{ task.link_url }}" class="snd-todo-list__link"{% if task.open_in_new_window %} target="_blank"{% endif %}>
+                {{ task.link_text }}
+              </a>
+            </div>
+          {% endif %}
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="sdn-todo-list-main-action">
+    {% if params.info %}
+        <div class="govuk-body-s sdn-todo-list-main-action__info">
+            {{ params.info|safe }}
         </div>
-      </div>
-      <div>
-        <a href="/" role="button" draggable="false" class="govuk-button govuk-button--start">
-          Spustiť
-        </a>
-      </div>
-    </li>
-    <li class="sdn-todo-list__item">
-      <div>
-        <div class="govuk-checkboxes__item">
-          <input class="govuk-checkboxes__input" id="nationality-2" name="nationality" type="checkbox" value="british">
-          <label class="govuk-label govuk-checkboxes__label" for="nationality-2">
-            Vyplnit dokument Samuel
-          </label>
-        </div>
-      </div>
-      <div>
-        <div class="snd-todo-list__item__info">(Vsetky udaje mame k dispozicii)</div>
-        <a href="/" role="button" draggable="false" class="govuk-button govuk-button--start">
-          Vygenerovať
-        </a>
-      </div>
-    </li>
-    <li class="sdn-todo-list__item">
-      <div>
-        <div class="govuk-checkboxes__item">
-          <input class="govuk-checkboxes__input" id="nationality-3" name="nationality" type="checkbox" value="british">
-          <label class="govuk-label govuk-checkboxes__label" for="nationality-3">
-            Vyzdvihnúť a oskenovať dokument od lekára
-          </label>
-        </div>
-      </div>
-    </li>
-  </ul>
+    {% endif %}
+
+    {% if params.button %}
+    <a href="{{ params.url }}" role="button" draggable="false" class="govuk-button{% if params.is_start_button %} govuk-button--start{% endif %}">
+      {{ params.button }}
+    </a>
+    {% endif %}
+
+    {% if params.secondary_button %}
+    <a href="{{ params.secondary_button_url }}" role="button" draggable="false" class="govuk-button sdn-todo-list__button-secondary">
+      {{ params.secondary_button }}
+    </a>
+    {% endif %}
+
+      {% if params.description %}
+          <div class="govuk-body-m">
+              {{ params.description }}
+          </div>
+      {% endif %}
+  </div>
 </div>
