@@ -24,6 +24,12 @@
 
   ([PR #1233](https://github.com/alphagov/govuk-frontend/pull/1233))
 
+- Allow initAll to be scoped to a specific part of a page
+
+  See ["Initialise GOV.UK Frontend in only certain sections of a page"](docs/installation/installing-with-npm.md#initialise-govuk-frontend-in-only-certain-sections-of-a-page) for more information.
+
+  ([PR #1216](https://github.com/alphagov/govuk-frontend/pull/1216))
+
 🔧 Fixes:
 
 - Pull Request Title goes here
@@ -157,7 +163,7 @@
   Also thanks to [Malcolm Butler](https://github.com/MoJ-Longbeard) for exploring a [previous version of this fix](https://github.com/alphagov/govuk-frontend/pull/1185).
 
   ([PR #1220](https://github.com/alphagov/govuk-frontend/pull/1220))
-  
+
 
 ## 2.7.0 (Feature release)
 
