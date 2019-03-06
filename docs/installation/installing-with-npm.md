@@ -235,6 +235,9 @@ See [JavaScript Coding Standards](/docs/contributing/coding-standards/js.md) for
 #### Using GOV.UK Frontend with Webpack 4
 Here's an example of setting up [`webpack.config.js`](examples/webpack/webpack.config.js) in your project
 
+#### Using GOV.UK Frontend with Rollup
+Here's an example of setting up [`rollup.config.js`](examples/rollup/rollup.config.js) in your project
+
 ## Importing assets
 
 In order to import GOV.UK Frontend images and fonts to your project, you should configure your application to reference or copy the relevant GOV.UK Frontend assets.
