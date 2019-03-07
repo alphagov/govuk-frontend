@@ -105,6 +105,14 @@ $govuk-border-colour: govuk-colour("grey-2") !default;
 
 $govuk-input-border-colour: govuk-colour("black") !default;
 
+/// Input border colour
+///
+/// Used for hover states on form controls
+///
+/// @type Colour
+/// @access public
+
+$govuk-input-hover-colour: govuk-colour("grey-3") !default;
 
 
 // =============================================================================

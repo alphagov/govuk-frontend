@@ -97,3 +97,10 @@ $govuk-border-width-form-group-error: $govuk-border-width !default;
 /// @access public
 
 $govuk-focus-width: 3px !default;
+
+/// Hover width for form controls with a hover state
+///
+/// @type Number
+/// @access public
+
+$govuk-input-hover-width: 10px !default;

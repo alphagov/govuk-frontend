@@ -8,7 +8,9 @@
 @import "../label/label";
 
 @include govuk-exports("govuk/component/checkboxes") {
-  $govuk-checkboxes-size: govuk-spacing(7);
+
+  $govuk-touch-target-size: 44px;
+  $govuk-checkboxes-size: 40px;
   $govuk-small-checkboxes-size: 24px;
   $govuk-checkboxes-label-padding-left-right: govuk-spacing(3);
 
@@ -156,17 +158,40 @@
     }
   }
 
+  // =========================================================
+  // Small checkboxes
+  // =========================================================
+
   .govuk-checkboxes--small {
+
+    $input-size-with-borders: $govuk-small-checkboxes-size + ($govuk-border-width-form-element * 2);
+    $offset: ($govuk-touch-target-size - $input-size-with-borders) / 2;
+
     .govuk-checkboxes__item {
+      @include govuk-clearfix;
       min-height: 0;
-      margin-bottom: govuk-spacing(1);
+      margin-bottom: 0;
       padding-left: 35px;
     }
 
+    // Shift the touch target into the left margin so that the visible edge of
+    // the control is aligned
+    //
+    //   ┆What colours do you like?
+    //  ┌┆───┐
+    //  │┆[] │ Purple
+    //  └┆▲──┘
+    //  ▲┆└─ Check box pseudo element, aligned with margin
+    //  └─── Touch target (invisible input), shifted into the margin
     .govuk-checkboxes__input {
-      left: -9px;
+      left: $offset * -1;
     }
 
+    // Adjust the size and position of the label.
+    //
+    // Unlike larger checkboxes, we also have to float the label in order to
+    // 'shrink' it, preventing the hover state from kicking in across the full
+    // width of the parent element.
     .govuk-checkboxes__label {
       margin-top: -2px;
       padding: 13px govuk-spacing(3) 9px 0;
@@ -177,13 +202,19 @@
       }
     }
 
+    // [ ] Check box
+    //
+    // Reduce the size of the check box [1], vertically center it within the
+    // touch target [2]
     .govuk-checkboxes__label::before {
-      top: 8px;
-      left: 0;
-      width: $govuk-small-checkboxes-size;
-      height: $govuk-small-checkboxes-size;
+      top: $offset; // 2
+      width: $govuk-small-checkboxes-size; // 1
+      height: $govuk-small-checkboxes-size; // 1
     }
 
+    // ✔ Check mark
+    //
+    // Reduce the size of the check mark and re-align within the checkbox
     .govuk-checkboxes__label::after {
       top: 15px;
       left: 6px;
@@ -192,16 +223,25 @@
       border-width: 0 0 3px 3px;
     }
 
-    .govuk-checkboxes__input + .govuk-checkboxes__label::after {
-      border-width: 0 0 3px 3px;
+    // Hover state for small checkbox.
+    //
+    // We use a hover state for small checkboxes because the touch target size
+    // is so much larger than their visible size, and so we need to provide
+    // feedback to the user as to which checkbox they will select when their
+    // cursor is outside of the visible area.
+    .govuk-checkboxes__item:hover .govuk-checkboxes__label::before {
+      box-shadow: 0 0 0 $govuk-hover-width $govuk-input-hover-colour;
     }
 
-    .govuk-checkboxes__item:hover > .govuk-checkboxes__label::before {
-      box-shadow: 0 0 0 10px govuk-colour("grey-3");
-    }
-
+    // Because we've overridden the border-shadow provided by the focus state,
+    // we need to redefine that too.
+    //
+    // We use two box shadows, one that restores the original focus state [1]
+    // and another that then applies the hover state [2].
     .govuk-checkboxes__item:hover .govuk-checkboxes__input:focus + .govuk-checkboxes__label::before {
-      box-shadow: 0 0 0 $govuk-focus-width $govuk-focus-colour, 0 0 0 10px govuk-colour("grey-3");
+      // sass-lint:disable indentation
+      box-shadow: 0 0 0 $govuk-focus-width $govuk-focus-colour,       // [1]
+                  0 0 0 $govuk-hover-width $govuk-input-hover-colour; // [2]
     }
   }
 }
