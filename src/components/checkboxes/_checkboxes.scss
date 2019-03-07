@@ -165,13 +165,15 @@
   .govuk-checkboxes--small {
 
     $input-size-with-borders: $govuk-small-checkboxes-size + ($govuk-border-width-form-element * 2);
-    $offset: ($govuk-touch-target-size - $input-size-with-borders) / 2;
+    $input-offset: ($govuk-touch-target-size - $input-size-with-borders) / 2;
+
+    $label-offset: $input-size-with-borders + $input-offset;
 
     .govuk-checkboxes__item {
       @include govuk-clearfix;
       min-height: 0;
       margin-bottom: 0;
-      padding-left: 35px;
+      padding-left: $label-offset;
     }
 
     // Shift the touch target into the left margin so that the visible edge of
@@ -184,7 +186,7 @@
     //  ▲┆└─ Check box pseudo element, aligned with margin
     //  └─── Touch target (invisible input), shifted into the margin
     .govuk-checkboxes__input {
-      left: $offset * -1;
+      left: $input-offset * -1;
     }
 
     // Adjust the size and position of the label.
@@ -207,7 +209,7 @@
     // Reduce the size of the check box [1], vertically center it within the
     // touch target [2]
     .govuk-checkboxes__label::before {
-      top: $offset; // 2
+      top: $input-offset; // 2
       width: $govuk-small-checkboxes-size; // 1
       height: $govuk-small-checkboxes-size; // 1
     }
@@ -236,6 +238,13 @@
     .govuk-checkboxes__hint {
       padding: 0;
       clear: both;
+    }
+
+    // Align conditional reveals with small checkboxes
+    .govuk-checkboxes__conditional {
+      $margin-left: ($govuk-small-checkboxes-size / 2) - ($conditional-border-width / 2);
+      margin-left: $margin-left;
+      padding-left: $label-offset - ($margin-left + $conditional-border-width);
     }
 
     // Hover state for small checkbox.
