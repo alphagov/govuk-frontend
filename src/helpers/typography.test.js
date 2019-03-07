@@ -50,6 +50,93 @@ const sassBootstrap = `
   @import "tools/iff";
   @import "helpers/typography";`
 
+describe('@mixin govuk-typography-common', () => {
+  it('should output a @font-face declaration by default', async () => {
+    const sass = `
+    @import "settings/all";
+    @import "helpers/all";
+
+    :root {
+      @include govuk-typography-common;
+    }
+    :root {
+      @include govuk-typography-common($font-family: $govuk-font-family-tabular);
+    }
+    `
+
+    const results = await sassRender({ data: sass, ...sassConfig })
+    const resultsString = results.css.toString()
+
+    expect(resultsString).toContain(`@font-face`)
+    expect(resultsString).toContain(`font-family: "nta"`)
+    expect(resultsString).toContain(`font-family: "ntatabularnumbers"`)
+  })
+  it('should not output a @font-face declaration when the user has changed their font', async () => {
+    const sass = `
+    $govuk-font-family: Helvetica, Arial, sans-serif;
+    $govuk-font-family-tabular: monospace;
+    @import "settings/all";
+    @import "helpers/all";
+
+    :root {
+      @include govuk-typography-common;
+    }
+    :root {
+      @include govuk-typography-common($font-family: $govuk-font-family-tabular);
+    }
+    `
+
+    const results = await sassRender({ data: sass, ...sassConfig })
+    const resultsString = results.css.toString()
+
+    expect(resultsString).not.toContain(`@font-face`)
+    expect(resultsString).not.toContain(`font-family: "nta"`)
+    expect(resultsString).not.toContain(`font-family: "ntatabularnumbers"`)
+  })
+  it('should not output a @font-face declaration when the user wants compatibility with GOV.UK Template', async () => {
+    const sass = `
+    $govuk-compatibility-govuktemplate: true;
+    @import "settings/all";
+    @import "helpers/all";
+
+    :root {
+      @include govuk-typography-common;
+    }
+    :root {
+      @include govuk-typography-common($font-family: $govuk-font-family-tabular);
+    }
+    `
+
+    const results = await sassRender({ data: sass, ...sassConfig })
+    const resultsString = results.css.toString()
+
+    expect(resultsString).not.toContain(`@font-face`)
+    expect(resultsString).toContain(`font-family: "nta"`)
+    expect(resultsString).toContain(`font-family: "ntatabularnumbers"`)
+  })
+  it('should not output a @font-face declaration when the user has turned off this feature', async () => {
+    const sass = `
+    $govuk-include-default-font-face: false;
+    @import "settings/all";
+    @import "helpers/all";
+
+    :root {
+      @include govuk-typography-common;
+    }
+    :root {
+      @include govuk-typography-common($font-family: $govuk-font-family-tabular);
+    }
+    `
+
+    const results = await sassRender({ data: sass, ...sassConfig })
+    const resultsString = results.css.toString()
+
+    expect(resultsString).not.toContain(`@font-face`)
+    expect(resultsString).toContain(`font-family: "nta"`)
+    expect(resultsString).toContain(`font-family: "ntatabularnumbers"`)
+  })
+})
+
 describe('@function _govuk-line-height', () => {
   it('preserves line-height if already unitless', async () => {
     const sass = `
