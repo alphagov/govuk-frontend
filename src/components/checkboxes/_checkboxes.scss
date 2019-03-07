@@ -229,8 +229,8 @@
     // is so much larger than their visible size, and so we need to provide
     // feedback to the user as to which checkbox they will select when their
     // cursor is outside of the visible area.
-    .govuk-checkboxes__item:hover .govuk-checkboxes__label::before {
-      box-shadow: 0 0 0 $govuk-hover-width $govuk-input-hover-colour;
+    .govuk-checkboxes__item:not(:disabled):hover .govuk-checkboxes__label::before {
+      box-shadow: 0 0 0 $govuk-hover-width $govuk-hover-colour;
     }
 
     // Because we've overridden the border-shadow provided by the focus state,
@@ -241,7 +241,7 @@
     .govuk-checkboxes__item:hover .govuk-checkboxes__input:focus + .govuk-checkboxes__label::before {
       // sass-lint:disable indentation
       box-shadow: 0 0 0 $govuk-focus-width $govuk-focus-colour,       // [1]
-                  0 0 0 $govuk-hover-width $govuk-input-hover-colour; // [2]
+                  0 0 0 $govuk-hover-width $govuk-hover-colour; // [2]
     }
   }
 }
