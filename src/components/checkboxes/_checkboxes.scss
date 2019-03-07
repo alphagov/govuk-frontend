@@ -223,6 +223,21 @@
       border-width: 0 0 3px 3px;
     }
 
+    // Fix position of hint with small checkboxes
+    //
+    // Do not use hints with small checkboxes – because they're within the input
+    // wrapper they trigger the hover state, but clicking them doesn't actually
+    // activate the control.
+    //
+    // (But if you do use them – which you probably will 😩 – they won't look
+    // completely broken)
+    //
+    // (Seriously don't use them though ✋)
+    .govuk-checkboxes__hint {
+      padding: 0;
+      clear: both;
+    }
+
     // Hover state for small checkbox.
     //
     // We use a hover state for small checkboxes because the touch target size
