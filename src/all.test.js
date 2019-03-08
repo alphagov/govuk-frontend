@@ -90,6 +90,28 @@ describe('GOV.UK Frontend', () => {
         }, component)
       })
     })
+    it('can be initialised scoped to certain sections of the page', async () => {
+      await page.goto(baseUrl + '/examples/scoped-initialisation', { waitUntil: 'load' })
+
+      // To test that certain parts of the page are scoped we have two similar components
+      // that we can interact with to check if they're interactive.
+
+      // Check that the conditional reveal component has a conditional section that would open if enhanced.
+      await page.waitForSelector('#conditional-not-scoped-1', { hidden: true })
+
+      await page.click('[for="not-scoped-1"]')
+
+      // Check that when it is clicked that nothing opens, which shows that it has not been enhanced.
+      await page.waitForSelector('#conditional-not-scoped-1', { hidden: true })
+
+      // Check the other conditional reveal which has been enhanced based on it's scope.
+      await page.waitForSelector('#conditional-scoped-1', { hidden: true })
+
+      await page.click('[for="scoped-1"]')
+
+      // Check that it has opened as expected.
+      await page.waitForSelector('#conditional-scoped-1', { hidden: false })
+    })
   })
   describe('global styles', async () => {
     it('are disabled by default', async () => {

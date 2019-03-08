@@ -9,46 +9,53 @@ import Header from './components/header/header'
 import Radios from './components/radios/radios'
 import Tabs from './components/tabs/tabs'
 
-function initAll () {
-  // Find all buttons with [role=button] on the document to enhance.
-  new Button(document).init()
+function initAll (options) {
+  // Set the options to an empty object by default if no options are passed.
+  options = typeof options !== 'undefined' ? options : {}
+
+  // Allow the user to initialise GOV.UK Frontend in only certain sections of the page
+  // Defaults to the entire document if nothing is set.
+  var scope = typeof options.scope !== 'undefined' ? options.scope : document
+
+  // Find all buttons with [role=button] on the scope to enhance.
+  new Button(scope).init()
 
   // Find all global accordion components to enhance.
-  var $accordions = document.querySelectorAll('[data-module="accordion"]')
+  var $accordions = scope.querySelectorAll('[data-module="accordion"]')
   nodeListForEach($accordions, function ($accordion) {
     new Accordion($accordion).init()
   })
 
   // Find all global details elements to enhance.
-  var $details = document.querySelectorAll('details')
+  var $details = scope.querySelectorAll('details')
   nodeListForEach($details, function ($detail) {
     new Details($detail).init()
   })
 
-  var $characterCount = document.querySelectorAll('[data-module="character-count"]')
+  var $characterCount = scope.querySelectorAll('[data-module="character-count"]')
   nodeListForEach($characterCount, function ($characterCount) {
     new CharacterCount($characterCount).init()
   })
 
-  var $checkboxes = document.querySelectorAll('[data-module="checkboxes"]')
+  var $checkboxes = scope.querySelectorAll('[data-module="checkboxes"]')
   nodeListForEach($checkboxes, function ($checkbox) {
     new Checkboxes($checkbox).init()
   })
 
   // Find first error summary module to enhance.
-  var $errorSummary = document.querySelector('[data-module="error-summary"]')
+  var $errorSummary = scope.querySelector('[data-module="error-summary"]')
   new ErrorSummary($errorSummary).init()
 
   // Find first header module to enhance.
-  var $toggleButton = document.querySelector('[data-module="header"]')
+  var $toggleButton = scope.querySelector('[data-module="header"]')
   new Header($toggleButton).init()
 
-  var $radios = document.querySelectorAll('[data-module="radios"]')
+  var $radios = scope.querySelectorAll('[data-module="radios"]')
   nodeListForEach($radios, function ($radio) {
     new Radios($radio).init()
   })
 
-  var $tabs = document.querySelectorAll('[data-module="tabs"]')
+  var $tabs = scope.querySelectorAll('[data-module="tabs"]')
   nodeListForEach($tabs, function ($tabs) {
     new Tabs($tabs).init()
   })

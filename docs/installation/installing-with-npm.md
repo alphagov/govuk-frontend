@@ -154,6 +154,21 @@ Including the script elsewhere will stop components from functioning or displayi
 </html>
 ```
 
+#### Initialise GOV.UK Frontend in only certain sections of a page
+
+By default, the `initAll` function from GOV.UK Frontend initialises all components scoped to an entire page with the `document` object.
+
+You can change this by passing the `scope` parameter to the `initAll` function.
+
+For example, if you have a modal dialog box that opens with new markup you could do the following:
+
+```js
+var $modal = document.querySelector('.modal')
+window.GOVUKFrontend.initAll({
+  scope: $modal
+})
+```
+
 #### Initialise individual included components
 
 GOV.UK Frontend components with JavaScript behaviour have the `data-module` attribute set in their markup.
