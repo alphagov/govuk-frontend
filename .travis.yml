@@ -8,8 +8,9 @@ jobs:
   include:
     - stage: Run npm test
       script:
+      # We can skip Travis if there are only changes to files like the CHANGELOG
+      - ./bin/check-skip-ci.sh
       # Ensure Travis aborts without running tests if the package-lock.json file needs updating
-      - set -e
       - ./bin/check-package-lock.sh
       # TravisCI is slower than our local machines, so results in intermittent timeouts
       # using the `--runInBand` flag we can force it to without requiring as much
