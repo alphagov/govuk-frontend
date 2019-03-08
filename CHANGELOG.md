@@ -32,6 +32,10 @@
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
+- Remove error-summary dependence on document.onload
+
+  ([PR #1215](https://github.com/alphagov/govuk-frontend/pull/1215))
+
 
 ## 2.8.0 (Feature release)
 
