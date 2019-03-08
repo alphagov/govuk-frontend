@@ -20,6 +20,10 @@
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
+- Add classes to action items in the summary list component
+
+  ([PR #1233](https://github.com/alphagov/govuk-frontend/pull/1233))
+
 🔧 Fixes:
 
 - Pull Request Title goes here
@@ -62,7 +66,6 @@
   ```
 
   ([PR #1172](https://github.com/alphagov/govuk-frontend/pull/1172))
-
 
 - Prevent horizontal jump as scrollbars appear
 
