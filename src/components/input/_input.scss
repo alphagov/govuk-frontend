@@ -72,7 +72,7 @@
     max-width: 5.4ex;
   }
 
-  .govuk-input--extra-tracking {
+  .govuk-input--extra-letter-spacing {
     @include govuk-font(false, $tabular: true);
     letter-spacing: .05em;
   }

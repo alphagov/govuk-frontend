@@ -162,21 +162,21 @@ examples:
       id: input-with-autocomplete-attribute
       name: postcode
       autocomplete: postal-code
-  - name: extra tracking ni
+  - name: extra letter spacing ni
     data:
       label:
         text: National insurance number
-      classes: govuk-input--width-30 govuk-input--extra-tracking
+      classes: govuk-input--width-30 govuk-input--extra-letter-spacing
       value: QQ 12 34 56 C
-  - name: extra tracking phone
+  - name: extra letter spacing phone
     data:
       label:
         text: Phone number
-      classes: govuk-input--width-30 govuk-input--extra-tracking
+      classes: govuk-input--width-30 govuk-input--extra-letter-spacing
       value: 03069 991234
-  - name: extra tracking reference
+  - name: extra letter spacing reference
     data:
       label:
         text: Driving licence number
-      classes: govuk-input--width-30 govuk-input--extra-tracking
+      classes: govuk-input--width-30 govuk-input--extra-letter-spacing
       value: GLADS101125C95401
