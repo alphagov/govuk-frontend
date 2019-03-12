@@ -26,28 +26,29 @@
 
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-one-third">
+
           {{ govukTimeline({
-            reset_button_url: '/examples/template-prepis-vozidla-0',
+            readonly: true,
             steps: [
               {
                 text: 'Úvod',
-                href: '/examples/template-prepis-vozidla-0',
+                href: '/examples/template-prepis-vozidla-0-readonly',
                 state: 'done'
               },
               {
                 text: 'Prihlásiť nového držiteľa vozidla',
-                href: '/examples/template-prepis-vozidla-1',
-                state: 'done',
+                href: '/examples/template-prepis-vozidla-1-readonly',
+                state: 'not-done',
                 selected: true
               },
               {
                 text: 'Zaplatiť správne poplatky',
-                href: '/examples/template-prepis-vozidla-2',
+                href: '/examples/template-prepis-vozidla-2-readonly',
                 state: 'not-done'
               },
               {
                 text: 'Uzatvoriť povinné zmluvné poistenie',
-                href: '/examples/template-prepis-vozidla-3',
+                href: '/examples/template-prepis-vozidla-3-readonly',
                 state: 'not-done'
               },
               {
@@ -79,13 +80,14 @@
           </div>
 
           <div id="todo_list">
-
             {{ govukTodoList({
               "title": "Povinnosti",
-              "reset_button": "Začať vybavovať úlohu odznovu",
-              "reset_button_url": "/examples/template-prepis-vozidla-1",
-              "info": "Úloha je vybavená.",
-              "state": "completed",
+              "readonly": true,
+              "primary_button": "Požiadať elektronicky",
+              "primary_button_url": "/examples/template-prepis-vozidla-1-vybavuje-sa",
+              "info": "Po splnení všetkých povinností a príprave všetkých podkladov môžete požiadať elektronicky o zápis nového držiteľa vozidla. Po úspešnom podaní žiadosti vám do schránky na slovensko.sk prídu platobné inštrukcie.",
+              "todolist_activate_url": "/examples/template-prepis-vozidla-1",
+              "todolist_description": "Aby ste nestratili prehľad, čo ste už spravili a čo ešte musíte spraviť, aktivujte si odškrtávanie vybavených povinností a úloh.",
               "tasks": [
                 {
                   "title": "Mám občiansky preukaz s elektronickým čipom",
@@ -107,8 +109,9 @@
           {{ govukNextLink({
             label: 'Ďalšia úloha',
             text: '2. Zaplatiť správne poplatky',
-            url: '/examples/template-prepis-vozidla-2'
+            url: '/examples/template-prepis-vozidla-2-readonly'
           }) }}
+
         </div>
       </div>
     </main>

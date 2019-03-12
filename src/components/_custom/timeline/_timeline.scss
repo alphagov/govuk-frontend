@@ -32,8 +32,6 @@ $icon-check-black: url("../../../assets/images/icon-check-black.svg");
   .sdn-timeline {
     @include govuk-font($size: 16, $line-height: 1.5);
     @include govuk-text-colour;
-
-    text-decoration: underline;
   }
 
   .sdn-timeline__list {
@@ -247,4 +245,24 @@ $icon-check-black: url("../../../assets/images/icon-check-black.svg");
     @include govuk-font($size: 14);
   }
 
+  .snd-timeline--readonly {
+    .sdn-timeline__bullet {
+      display: none;
+    }
+
+    .sdn-timeline__step {
+      padding-left: 0;
+
+      &:before,
+      &:after {
+        display: none;
+      }
+    }
+  }
+
+  .sdn-timeline-title {
+    @include govuk-font($size: 24, $weight: regular);
+
+    margin: 0 0 30px 0;
+  }
 }

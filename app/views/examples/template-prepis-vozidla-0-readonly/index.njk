@@ -1,0 +1,132 @@
+{% extends "template-navody.njk" %}
+
+{% from "_custom/timeline/macro.njk" import govukTimeline %}
+{% from "_custom/headline/macro.njk" import govukHeadline %}
+{% from "_custom/todo-list/macro.njk" import govukTodoList %}
+{% from "_custom/next-link/macro.njk" import govukNextLink %}
+
+{% block head %}
+  <!--[if !IE 8]><!-->
+    <link rel="stylesheet" href="/public/app.css">
+  <!--<![endif]-->
+  <!--[if IE 8]>
+    <link rel="stylesheet" href="/public/app-ie8.css">
+  <![endif]-->
+  <!--[if lt IE 9]>
+    <script src="/vendor/html5-shiv/html5shiv.js"></script>
+  <![endif]-->
+{% endblock %}
+
+{% block main %}
+  {{ govukHeadline({
+    headline: 'Prepis vozidla - nový majiteľ'
+  }) }}
+  <div class="govuk-width-container">
+    <main class="govuk-main-wrapper">
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-third">
+          {{ govukTimeline({
+            reset_button_url: '/examples/template-prepis-vozidla-1',
+            readonly: true,
+            steps: [
+              {
+                text: 'Úvod',
+                href: '/examples/template-prepis-vozidla-0-readonly',
+                state: 'not-done',
+                selected: true
+              },
+              {
+                text: 'Prihlásiť nového držiteľa vozidla',
+                href: '/examples/template-prepis-vozidla-1-readonly',
+                state: 'not-done'
+              },
+              {
+                text: 'Zaplatiť správne poplatky',
+                href: '/examples/template-prepis-vozidla-2-readonly',
+                state: 'not-done'
+              },
+              {
+                text: 'Uzatvoriť povinné zmluvné poistenie',
+                href: '/examples/template-prepis-vozidla-3-readonly',
+                state: 'not-done'
+              },
+              {
+                text: 'Absolvovať obhliadku vozidla',
+                href: '#',
+                state: 'not-done'
+              },
+              {
+                text: 'Vyzdvihnúť doklady',
+                href: '#',
+                state: 'not-done'
+              }
+            ]
+          }) }}
+        </div>
+
+        <div class="govuk-grid-column-two-thirds">
+          <div class="govuk-body sdn-content">
+            <h1 class="govuk-heading-l">
+              Úvod
+            </h1>
+
+            <p>
+              Kúpili ste, alebo chcete na seba prepísať vozidlo od predošlého majiteľa.
+            </p>
+            <p>
+              Vzťahuje sa na
+            </p><ul class="govuk-list govuk-list--bullet">
+              <li>vozidlá prepisované na fyzickú osobu</li>
+              <li>vozidlá kupované na Slovensku</li>
+            </ul>
+            <p></p>
+
+            <p>
+            </p><h2>Čo musíte urobiť ako nový majiteľ vozidla</h2>
+            Ako nový majiteľ sa musíte dať zapísať do dokladov vozidla ako nový držiteľ. Túto povinnosť si musíte splniť do
+            <ul class="govuk-list govuk-list--bullet">
+              <li>30 dní, ak vybavujete zápis osobne</li>
+              <li>15 dní, ak vybavujete zápis elektronicky</li>
+            </ul>
+            <p></p>
+            <div class="govuk-warning-text">
+              <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+              <strong class="govuk-warning-text__text">
+                <span class="govuk-warning-text__assistive">Nedodržanie lehoty</span>
+                V prípade nedodržania 30 dňovej lehoty musíte vykonať kontrolu originality a odborný posudok s výsledkom „spôsobilé“ predložiť pri zápise nového držiteľa vozidla. Posudok o kontrole originality nemôže byť pritom starší ako 15 dní. V tomto prípade už nemusíte absolvovať obhliadku vozidla.
+              </strong>
+            </div>
+
+            <div class="govuk-inset-text">
+              <b>Tip:</b> Predošlý majiteľ môže pri podávaní žiadosti o prevod držby vozidla potrebovať písomné plnomocenstvo s osvedčeným podpisom osoby, na ktorú sa držba vozidla previedla. Toto splnomocnenie môžete zaslať priamo orgánu Policajného zboru prostredníctvom elektronickej služby zavedenej na tento účel. Elektronickú službu nájdete<a href="https://portal.minv.sk/wps/myportal/domov/vozidla/el_sluzby/splnomocnenia/NEV76_ZapisanieSplnomocnenia/" target="_blank"> na stránke ministerstva vnútra.</a>
+            </div>
+          </div>
+
+          <div id="todo_list">
+            {{ govukTodoList({
+              "title": "Povinnosti",
+              "state": "completed",
+              "todolist_activate_url": "/examples/template-prepis-vozidla-0",
+              "todolist_description": "Aby ste nestratili prehľad, čo ste už spravili a čo ešte musíte spraviť, aktivujte si odškrtávanie vybavených povinností a úloh.",
+              "readonly": true,
+              "tasks": []
+            }) }}
+          </div>
+
+          {{ govukNextLink({
+            label: 'Ďalšia úloha',
+            text: '1. Prihlásiť nového držiteľa vozidla',
+            url: '/examples/template-prepis-vozidla-1-readonly'
+          }) }}
+
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}
+
+{% block bodyEnd %}
+  <script src="/public/all.js"></script>
+    <script>window.navodyDigitalFrontend.initAll()</script>
+{% endblock %}

@@ -107,8 +107,8 @@ $sdn-todo-list-button-text-color-hover: #387f12;
 
   .sdn-todo-list-main-action {
     padding: $sdn-todo-list-inner-top-bottom-padding $sdn-todo-list-inner-left-right-padding 10px $sdn-todo-list-inner-left-right-padding;
-    //border: $sdn-todo-list-left-border-color solid 2px;
-    background-color: $sdn-todo-list-action-background-color;
+    //border-top: $sdn-todo-list-completed-border-color solid 2px;
+    background-color: $sdn-todo-list-background-color;
 
     .sdn-todo-list-box + & {
       margin-top: 30px;
@@ -146,11 +146,19 @@ $sdn-todo-list-button-text-color-hover: #387f12;
     }
   }
 
-  .sdn-todo-list__button-secondary {
+  .govuk-button__secondary {
+    margin-bottom: 10px;
+    padding: 8px;
+    border-width: 1px;
     border-color: $sdn-todo-list-button-secondary-border-color;
+    opacity: .8;
     color: $sdn-todo-list-button-text-color;
     background-color: transparent;
     vertical-align: middle;
+
+    &.govuk-button {
+      @include govuk-font($size: 15, $weight: normal);
+    }
 
     &:link,
     &:visited,
@@ -166,6 +174,19 @@ $sdn-todo-list-button-text-color-hover: #387f12;
       color: $sdn-todo-list-button-text-color-hover;
       background-color: transparent;
     }
+  }
+
+  .sdn-todo-list-main-action-buttons {
+    a,
+    div {
+      vertical-align: middle;
+    }
+  }
+
+  .sdn-todo-list-main-action-buttons-divider {
+    display: inline-block;
+    margin-right: 5px;
+    margin-left: 5px;
   }
 
   .govuk-label {
@@ -206,5 +227,28 @@ $sdn-todo-list-button-text-color-hover: #387f12;
   // so we can't really consider an element.
   .govuk-label-wrapper {
     margin: 0;
+  }
+
+  .sdn-todo-list--readonly {
+    .snd-todo-list__item__info {
+      margin-left: 0 !important;
+    }
+
+    .govuk-checkboxes__item {
+      padding-left: 0;
+    }
+
+    .govuk-checkboxes__input {
+      display: none;
+
+      + label {
+        padding-left: 0;
+
+        &:after,
+        &:before {
+          display: none;
+        }
+      }
+    }
   }
 }

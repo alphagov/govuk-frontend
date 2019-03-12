@@ -27,10 +27,11 @@
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-one-third">
           {{ govukTimeline({
+            reset_button_url: '/examples/template-prepis-vozidla-0',
             steps: [
               {
                 text: 'Úvod',
-                href: '#',
+                href: '/examples/template-prepis-vozidla-0',
                 state: 'done'
               },
               {
@@ -46,7 +47,7 @@
               },
               {
                 text: 'Uzatvoriť povinné zmluvné poistenie',
-                href: '#',
+                href: '/examples/template-prepis-vozidla-3',
                 state: 'not-done'
               },
               {
@@ -81,10 +82,10 @@
 
             {{ govukTodoList({
               "title": "Povinnosti a podklady",
-              "button": "Označiť úlohu za vybavenú",
-              "secondary_button": "Začať vybavovať znovu",
-              "url": "/examples/template-prepis-vozidla-1-vybavene",
-              "secondary_button_url": "/examples/template-prepis-vozidla-1",
+              "secondary_button": "Označiť úlohu za vybavenú",
+              "secondary_button_url": "/examples/template-prepis-vozidla-1-vybavene",
+              "reset_button": "Začať vybavovať úlohu odznovu",
+              "reset_button_url": "/examples/template-prepis-vozidla-1",
               "info": "<strong>Prebieha vybavovanie</strong><br>Po úspešnom podaní má úrad 28 dní na vybavenie žiadosti. Po vybavení žiadosti, keď dostanete odpoveď do schránky na slovensko.sk, označte úlohu za vybavenú.",
               "state": 'waiting',
               "tasks": [

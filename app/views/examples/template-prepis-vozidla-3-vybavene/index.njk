@@ -37,18 +37,18 @@
               {
                 text: 'Prihlásiť nového držiteľa vozidla',
                 href: '/examples/template-prepis-vozidla-1',
-                state: 'done',
-                selected: true
+                state: 'done'
               },
               {
                 text: 'Zaplatiť správne poplatky',
                 href: '/examples/template-prepis-vozidla-2',
-                state: 'not-done'
+                state: 'done'
               },
               {
                 text: 'Uzatvoriť povinné zmluvné poistenie',
                 href: '/examples/template-prepis-vozidla-3',
-                state: 'not-done'
+                state: 'done',
+                selected: true
               },
               {
                 text: 'Absolvovať obhliadku vozidla',
@@ -67,48 +67,37 @@
         <div class="govuk-grid-column-two-thirds">
           <div class="govuk-body sdn-content">
             <div id="all_steps_completed">
+              <h1 class="govuk-heading-l">
+                Uzatvoriť povinné zmluvné poistenie
+              </h1>
 
+              Na vydanie dokladov od vozidla je potrebné mať uzatvorené povinné zmluvné poistenie (zákonné poistenie) pre vami prihlasované vozidlo. Povinné zmluvné poistenie pokrýva škody ktoré vzniknú vedením poisteného vozidla.
+              Po uzatvorení povinného zmluvného poistenia vám bude vydaná dočasná biela karta, ktorú je potrebné mať pri sebe pri preberaní nových dokladov od vozidla na dopravnom inšpektoráte.
+
+              <div class="govuk-inset-text">
+                <b>Tip:</b> Povinné zmluvné poistenie je možné uzatvoriť aj online alebo telefonicky. Následne vám bude dočasná biela a zelená karta doručené na váš email ktorý ste zadali pri uzatváraní poistenia. Vytlačte si dočasnú bielu a zelenú kartu, tieto doklady je potrebné mať pri sebe pri vedení vozidla. Dočasnú bielu kartu je tiež potrebné mať pri sebe pri návšteve dopravného inšpektorátu za účeľom vyzdvihnutia dokladov.
+              </div>
             </div>
-            <h1 class="govuk-heading-l">
-              Prihlásiť sa ako nový držiteľ vozidla
-            </h1>
-
-            <p>
-              Po vyplnení a odoslaní elektronického formulára žiadosti si skontrolujte vašu elektronickú schránku, do ktorej vám bude doručené inštrukcie na úhradu správnych poplatkov.
-            </p>
-          </div>
 
           <div id="todo_list">
-
             {{ govukTodoList({
-              "title": "Povinnosti",
-              "reset_button": "Začať vybavovať úlohu odznovu",
-              "reset_button_url": "/examples/template-prepis-vozidla-1",
-              "info": "Úloha je vybavená.",
+              "title": "Povinnosti a podklady",
               "state": "completed",
-              "tasks": [
-                {
-                  "title": "Mám občiansky preukaz s elektronickým čipom",
-                  "completed": true
-                },
-                {
-                  "title": "Mám malý technický preukaz (Osvedčenie o evidencii časť I.) s elektronickým čipom",
-                  "description": "Preukaz s čipom má vozidlo v prípade ak bolo osvedčenie o evidencii časť&nbsp;I vydané po&nbsp;31.&nbsp;máji&nbsp;2010"
-                },
-                {
-                  "title": "Pôvodný majiteľ odhlásil vozidlo",
-                  "link_text": "Návod na odhlásenie",
-                  "link_url": "https://staging.navody.digital/zivotne-situacie/prepis_vozidla_predavajuci"
-                }
-              ]
+              "readonly": true,
+              "tasks": [],
+              "reset_button": 'Začať vybavovať znovu',
+              "reset_button_url": '/examples/template-prepis-vozidla-2',
+              "info": "Úloha je vybavená.",
+              "todolist_description": "V zozname úloh môžete kliknúť na ikonku a nastaviť stav úlohy. Ak má úloha nejaké ďalšie povinnosti, môžete ich odškrtávať v zozname nižšie."
             }) }}
           </div>
 
           {{ govukNextLink({
             label: 'Ďalšia úloha',
-            text: '2. Zaplatiť správne poplatky',
-            url: '/examples/template-prepis-vozidla-2'
+            text: '4. Absolvovať obhliadku vozidla',
+            url: '#'
           }) }}
+
         </div>
       </div>
     </main>

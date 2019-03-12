@@ -1,61 +1,94 @@
 <div class="sdn-todo-list
+{% if params.readonly %} sdn-todo-list--readonly{% endif %}
 {% if params.state and params.state == 'completed' %} sdn-todo-list--completed{% endif %}
 {% if params.state and params.state == 'waiting' %} sdn-todo-list--waiting{% endif %}">
-  <div class="sdn-todo-list-box">
-    <div class="sdn-todo-list__title">{{ params.title }}</div>
-    <ul class="sdn-todo-list__items">
-      {% for task in params.tasks %}
-      <li class="sdn-todo-list__item">
-        {% if task.html %}
-          {{ task.html|safe }}
+
+    {% if params.todolist_description %}
+        {% if params.readonly %}
+            {% if params.todolist_activate_url %}
+                <div style="background-color: #fffbe4; padding: 30px; margin-bottom: 30px;">
+                    <p style="font-size: 15px; opacity: 0.6">
+                        {{ params.todolist_description }}
+                    </p>
+                    <a href="{{ params.todolist_activate_url }}" class="govuk-button govuk-button__secondary" style="margin-bottom: 0;  opacity: 0.8">Začať evidovať stav vybavenia</a>
+                </div>
+            {% endif %}
         {% else %}
-          <div>
-            <div class="govuk-checkboxes__item">
-              <input class="govuk-checkboxes__input" id="todo-list-input-{{ loop.index }}" name="todo-list-input-{{ loop.index }}" type="checkbox" value="{{ loop.index }}"{% if task.completed %} checked="checked"{% endif %}>
-              <label class="govuk-label govuk-checkboxes__label" for="todo-list-input-{{ loop.index }}">
-                {{ task.title }}
-              </label>
-
-                {% if task.description %}
-                    <div class="snd-todo-list__item__info">{{ task.description|safe }}</div>
-                {% endif %}
+            <div style="background-color: #fffbe4; padding: 30px; margin-bottom: 30px;">
+                <p style="font-size: 15px; margin-bottom: 0; opacity: 0.6">
+                    {{ params.todolist_description }}
+                </p>
             </div>
-          </div>
-          {% if task.link_text %}
-            <div>
-              <a href="{{ task.link_url }}" class="snd-todo-list__link"{% if task.open_in_new_window %} target="_blank"{% endif %}>
-                {{ task.link_text }}
-              </a>
-            </div>
-          {% endif %}
         {% endif %}
-      </li>
-      {% endfor %}
-    </ul>
-  </div>
-  <div class="sdn-todo-list-main-action">
-    {% if params.info %}
-        <div class="govuk-body-s sdn-todo-list-main-action__info">
-            {{ params.info|safe }}
+    {% endif %}
+
+    {% if params.tasks.length > 0 %}
+    <div class="sdn-todo-list-box">
+        <div class="sdn-todo-list__title">{{ params.title }}</div>
+        <ul class="sdn-todo-list__items">
+          {% for task in params.tasks %}
+          <li class="sdn-todo-list__item">
+            {% if task.html %}
+              {{ task.html|safe }}
+            {% else %}
+              <div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="todo-list-input-{{ loop.index }}" name="todo-list-input-{{ loop.index }}" type="checkbox" value="{{ loop.index }}"{% if task.completed %} checked="checked"{% endif %}>
+                  <label class="govuk-label govuk-checkboxes__label" for="todo-list-input-{{ loop.index }}">
+                    {{ task.title }}
+                  </label>
+
+                    {% if task.description %}
+                        <div class="snd-todo-list__item__info">{{ task.description|safe }}</div>
+                    {% endif %}
+                </div>
+              </div>
+              {% if task.link_text %}
+                <div>
+                  <a href="{{ task.link_url }}" class="snd-todo-list__link"{% if task.open_in_new_window %} target="_blank"{% endif %}>
+                    {{ task.link_text }}
+                  </a>
+                </div>
+              {% endif %}
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+    {% if params.info or params.primary_button or params.secondary_button %}
+      <div class="sdn-todo-list-main-action">
+        {% if params.info %}
+            <div class="govuk-body-s sdn-todo-list-main-action__info">
+                {{ params.info|safe }}
+            </div>
+        {% endif %}
+
+        <div class="sdn-todo-list-main-action-buttons">
+            {% if params.primary_button %}
+                <a href="{{ params.primary_button_url }}" role="button" draggable="false" class="govuk-button govuk-button--start">
+                  {{ params.primary_button }}
+                </a>
+            {% endif %}
+
+            {% if params.secondary_button %}
+              {% if params.primary_button %}
+                    <div class="govuk-body-s sdn-todo-list-main-action-buttons-divider">
+                        alebo
+                    </div>
+                  {% endif %}
+
+                <a href="{{ params.secondary_button_url }}" role="button" draggable="false" class="govuk-button">
+                  {{ params.secondary_button }}
+                </a>
+            {% endif %}
         </div>
-    {% endif %}
 
-    {% if params.button %}
-    <a href="{{ params.url }}" role="button" draggable="false" class="govuk-button{% if params.is_start_button %} govuk-button--start{% endif %}">
-      {{ params.button }}
-    </a>
+        {% if params.reset_button %}
+        <a href="{{ params.reset_button_url }}" role="button" draggable="false" class="govuk-button govuk-button__secondary">
+          {{ params.reset_button }}
+        </a>
+        {% endif %}
+      </div>
     {% endif %}
-
-    {% if params.secondary_button %}
-    <a href="{{ params.secondary_button_url }}" role="button" draggable="false" class="govuk-button sdn-todo-list__button-secondary">
-      {{ params.secondary_button }}
-    </a>
-    {% endif %}
-
-      {% if params.description %}
-          <div class="govuk-body-m">
-              {{ params.description }}
-          </div>
-      {% endif %}
-  </div>
 </div>

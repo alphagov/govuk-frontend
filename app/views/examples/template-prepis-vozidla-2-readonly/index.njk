@@ -27,27 +27,27 @@
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-one-third">
           {{ govukTimeline({
-            reset_button_url: '/examples/template-prepis-vozidla-0',
+            readonly: true,
             steps: [
               {
                 text: 'Úvod',
-                href: '#',
+                href: '/examples/template-prepis-vozidla-0-readonly',
                 state: 'done'
               },
               {
                 text: 'Prihlásiť nového držiteľa vozidla',
-                href: '/examples/template-prepis-vozidla-1',
+                href: '/examples/template-prepis-vozidla-1-readonly',
                 state: 'done'
               },
               {
                 text: 'Zaplatiť správne poplatky',
-                href: '/examples/template-prepis-vozidla-2',
+                href: '/examples/template-prepis-vozidla-2-readonly',
                 state: 'not-done',
                 selected: true
               },
               {
                 text: 'Uzatvoriť povinné zmluvné poistenie',
-                href: '#',
+                href: '/examples/template-prepis-vozidla-3-readonly',
                 state: 'not-done'
               },
               {
@@ -86,10 +86,9 @@
           <div id="todo_list">
             {{ govukTodoList({
               "title": "Povinnosti a podklady",
-              "secondary_button": "Označiť úlohu za vybavenú",
-              "secondary_button_url": "/examples/template-prepis-vozidla-2-vybavene",
-              "info": "Ak ste uhradili poplatky podľa inštrukcií, označte túto úlohu za vybavenú.",
-              "todolist_description": "V zozname úloh môžete kliknúť na ikonku a nastaviť stav úlohy. Ak má úloha nejaké ďalšie povinnosti, môžete ich odškrtávať v zozname nižšie.",
+              "readonly": true,
+              "todolist_activate_url": "/examples/template-prepis-vozidla-2",
+              "todolist_description": "Aby ste nestratili prehľad, čo ste už spravili a čo ešte musíte spraviť, aktivujte si odškrtávanie vybavených povinností a úloh.",
               "tasks": [
                 {
                   "title": "Mám inštrukcie k platbe správnych poplatkov",

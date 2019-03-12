@@ -27,10 +27,11 @@
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-one-third">
           {{ govukTimeline({
+            reset_button_url: '/examples/template-prepis-vozidla-0',
             steps: [
               {
                 text: 'Úvod',
-                href: '#',
+                href: '/examples/template-prepis-vozidla-0',
                 state: 'done'
               },
               {
@@ -46,7 +47,7 @@
               },
               {
                 text: 'Uzatvoriť povinné zmluvné poistenie',
-                href: '#',
+                href: '/examples/template-prepis-vozidla-3',
                 state: 'not-done'
               },
               {
@@ -80,11 +81,13 @@
           <div id="todo_list">
 
             {{ govukTodoList({
-              "title": "Povinnosti a podklady",
-              "button": "Požiadať elektronicky",
-              "url": "/examples/template-prepis-vozidla-1-vybavuje-sa",
-              "is_start_button": true,
-              "info": "Po splnení všetkých povinností a príprave všetkých podkladov môžete požiadať elektronicky o zápis nového držiteľa vozidla. Po úspešnom podaní žiadosti vám do schránky na slovensko.sk prídu platobné inštrukcie.",
+              "title": "Povinnosti",
+              "primary_button": "Požiadať elektronicky",
+              "primary_button_url": "/examples/template-prepis-vozidla-1-vybavuje-sa",
+              "secondary_button": "Označiť úlohu za vybavenú",
+              "secondary_button_url": "/examples/template-prepis-vozidla-1-vybavene",
+              "info": "Po splnení všetkých povinností môžete požiadať elektronicky o zápis nového držiteľa vozidla. Po úspešnom podaní žiadosti vám do schránky na slovensko.sk prídu platobné inštrukcie.",
+              "todolist_description": "V zozname úloh môžete kliknúť na ikonku a nastaviť stav úlohy. Ak má úloha nejaké ďalšie povinnosti, môžete ich odškrtávať v zozname nižšie.",
               "tasks": [
                 {
                   "title": "Mám občiansky preukaz s elektronickým čipom",

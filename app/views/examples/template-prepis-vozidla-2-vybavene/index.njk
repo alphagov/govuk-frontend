@@ -27,10 +27,11 @@
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-one-third">
           {{ govukTimeline({
+            reset_button_url: '/examples/template-prepis-vozidla-0',
             steps: [
               {
                 text: 'Úvod',
-                href: '#',
+                href: '/examples/template-prepis-vozidla-0',
                 state: 'done'
               },
               {
@@ -46,7 +47,7 @@
               },
               {
                 text: 'Uzatvoriť povinné zmluvné poistenie',
-                href: '#',
+                href: '/examples/template-prepis-vozidla-3',
                 state: 'not-done'
               },
               {
@@ -83,13 +84,13 @@
           </div>
 
           <div id="todo_list">
-
             {{ govukTodoList({
               "title": "Povinnosti a podklady",
               "state": "completed",
-              "secondary_button": 'Začať vybavovať znovu',
-              "secondary_button_url": '/examples/template-prepis-vozidla-2',
+              "reset_button": 'Začať vybavovať znovu',
+              "reset_button_url": '/examples/template-prepis-vozidla-2',
               "info": "Úloha je vybavená.",
+              "todolist_description": "V zozname úloh môžete kliknúť na ikonku a nastaviť stav úlohy. Ak má úloha nejaké ďalšie povinnosti, môžete ich odškrtávať v zozname nižšie.",
               "tasks": [
                 {
                   "title": "Mám inštrukcie k platbe správnych poplatkov",

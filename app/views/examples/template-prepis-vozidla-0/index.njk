@@ -32,13 +32,13 @@
               {
                 text: 'Úvod',
                 href: '/examples/template-prepis-vozidla-0',
-                state: 'done'
+                state: 'done',
+                selected: true
               },
               {
                 text: 'Prihlásiť nového držiteľa vozidla',
                 href: '/examples/template-prepis-vozidla-1',
-                state: 'done',
-                selected: true
+                state: 'not-done'
               },
               {
                 text: 'Zaplatiť správne poplatky',
@@ -66,49 +66,48 @@
 
         <div class="govuk-grid-column-two-thirds">
           <div class="govuk-body sdn-content">
-            <div id="all_steps_completed">
-
-            </div>
             <h1 class="govuk-heading-l">
-              Prihlásiť sa ako nový držiteľ vozidla
+              Úvod
             </h1>
 
             <p>
-              Po vyplnení a odoslaní elektronického formulára žiadosti si skontrolujte vašu elektronickú schránku, do ktorej vám bude doručené inštrukcie na úhradu správnych poplatkov.
+              Kúpili ste, alebo chcete na seba prepísať vozidlo od predošlého majiteľa.
             </p>
-          </div>
+            <p>
+              Vzťahuje sa na
+            </p><ul class="govuk-list govuk-list--bullet">
+              <li>vozidlá prepisované na fyzickú osobu</li>
+              <li>vozidlá kupované na Slovensku</li>
+            </ul>
+            <p></p>
 
-          <div id="todo_list">
+            <p>
+            </p><h2>Čo musíte urobiť ako nový majiteľ vozidla</h2>
+            Ako nový majiteľ sa musíte dať zapísať do dokladov vozidla ako nový držiteľ. Túto povinnosť si musíte splniť do
+            <ul class="govuk-list govuk-list--bullet">
+              <li>30 dní, ak vybavujete zápis osobne</li>
+              <li>15 dní, ak vybavujete zápis elektronicky</li>
+            </ul>
+            <p></p>
+            <div class="govuk-warning-text">
+              <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+              <strong class="govuk-warning-text__text">
+                <span class="govuk-warning-text__assistive">Nedodržanie lehoty</span>
+                V prípade nedodržania 30 dňovej lehoty musíte vykonať kontrolu originality a odborný posudok s výsledkom „spôsobilé“ predložiť pri zápise nového držiteľa vozidla. Posudok o kontrole originality nemôže byť pritom starší ako 15 dní. V tomto prípade už nemusíte absolvovať obhliadku vozidla.
+              </strong>
+            </div>
 
-            {{ govukTodoList({
-              "title": "Povinnosti",
-              "reset_button": "Začať vybavovať úlohu odznovu",
-              "reset_button_url": "/examples/template-prepis-vozidla-1",
-              "info": "Úloha je vybavená.",
-              "state": "completed",
-              "tasks": [
-                {
-                  "title": "Mám občiansky preukaz s elektronickým čipom",
-                  "completed": true
-                },
-                {
-                  "title": "Mám malý technický preukaz (Osvedčenie o evidencii časť I.) s elektronickým čipom",
-                  "description": "Preukaz s čipom má vozidlo v prípade ak bolo osvedčenie o evidencii časť&nbsp;I vydané po&nbsp;31.&nbsp;máji&nbsp;2010"
-                },
-                {
-                  "title": "Pôvodný majiteľ odhlásil vozidlo",
-                  "link_text": "Návod na odhlásenie",
-                  "link_url": "https://staging.navody.digital/zivotne-situacie/prepis_vozidla_predavajuci"
-                }
-              ]
-            }) }}
+            <div class="govuk-inset-text">
+              <b>Tip:</b> Predošlý majiteľ môže pri podávaní žiadosti o prevod držby vozidla potrebovať písomné plnomocenstvo s osvedčeným podpisom osoby, na ktorú sa držba vozidla previedla. Toto splnomocnenie môžete zaslať priamo orgánu Policajného zboru prostredníctvom elektronickej služby zavedenej na tento účel. Elektronickú službu nájdete<a href="https://portal.minv.sk/wps/myportal/domov/vozidla/el_sluzby/splnomocnenia/NEV76_ZapisanieSplnomocnenia/" target="_blank"> na stránke ministerstva vnútra.</a>
+            </div>
           </div>
 
           {{ govukNextLink({
             label: 'Ďalšia úloha',
-            text: '2. Zaplatiť správne poplatky',
-            url: '/examples/template-prepis-vozidla-2'
+            text: '1. Prihlásiť nového držiteľa vozidla',
+            url: '/examples/template-prepis-vozidla-1'
           }) }}
+
         </div>
       </div>
     </main>
