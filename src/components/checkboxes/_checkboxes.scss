@@ -68,7 +68,6 @@
     padding: 8px $govuk-checkboxes-label-padding-left-right govuk-spacing(1);
     cursor: pointer;
     // remove 300ms pause on mobile
-    -ms-touch-action: manipulation;
     touch-action: manipulation;
   }
 

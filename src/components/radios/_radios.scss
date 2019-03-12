@@ -71,7 +71,6 @@
     padding: 8px $govuk-radios-label-padding-left-right govuk-spacing(1);
     cursor: pointer;
     // remove 300ms pause on mobile
-    -ms-touch-action: manipulation;
     touch-action: manipulation;
   }
 
@@ -280,6 +279,7 @@
     .govuk-radios__hint {
       padding: 0;
       clear: both;
+      pointer-events: none;
     }
 
     // Align conditional reveals with small radios
