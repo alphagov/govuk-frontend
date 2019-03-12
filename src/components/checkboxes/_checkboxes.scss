@@ -255,7 +255,7 @@
       clear: both;
     }
 
-    // Hover state for small checkbox.
+    // Hover state for small checkboxes.
     //
     // We use a hover state for small checkboxes because the touch target size
     // is so much larger than their visible size, and so we need to provide
@@ -272,8 +272,24 @@
     // and another that then applies the hover state [2].
     .govuk-checkboxes__item:hover .govuk-checkboxes__input:focus + .govuk-checkboxes__label::before {
       // sass-lint:disable indentation
-      box-shadow: 0 0 0 $govuk-focus-width $govuk-focus-colour,       // [1]
-                  0 0 0 $govuk-hover-width $govuk-hover-colour; // [2]
+      box-shadow: 0 0 0 $govuk-focus-width $govuk-focus-colour, // 1
+                  0 0 0 $govuk-hover-width $govuk-hover-colour; // 2
+    }
+
+    // For devices that explicitly don't support hover, don't provide a hover
+    // state (e.g. on touch devices like iOS).
+    //
+    // We can't use `@media (hover: hover)` because we wouldn't get the hover
+    // state in browsers that don't support `@media (hover)` (like Internet
+    // Explorer) – so we have to 'undo' the hover state instead.
+    @media (hover: none) {
+      .govuk-checkboxes__item:hover .govuk-checkboxes__input:not(:disabled) + .govuk-checkboxes__label::before {
+        box-shadow: initial;
+      }
+
+      .govuk-checkboxes__item:hover .govuk-checkboxes__input:focus + .govuk-checkboxes__label::before {
+        box-shadow: 0 0 0 $govuk-focus-width $govuk-focus-colour;
+      }
     }
   }
 }
