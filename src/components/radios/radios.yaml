@@ -590,3 +590,20 @@ examples:
         text: happiness
       - value: funkiness
         text: funkiness
+
+- name: small with a divider
+  data:
+    idPrefix: example-small-divider
+    name: example
+    fieldset:
+      legend:
+        text: How do you want to sign in?
+    classes: govuk-radios--small
+    items:
+      - value: governement-gateway
+        text: Use Government Gateway
+      - value: govuk-verify
+        text: Use GOV.UK Verify
+      - divider: or
+      - value: create-account
+        text: Create an account

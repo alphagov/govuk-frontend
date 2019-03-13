@@ -290,6 +290,11 @@
       clear: both;
     }
 
+    .govuk-radios__divider {
+      width: $govuk-small-radios-size;
+      margin-bottom: govuk-spacing(1);
+    }
+
     // Hover state for small radios.
     //
     // We use a hover state for small radios because the touch target size
