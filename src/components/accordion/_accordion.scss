@@ -66,7 +66,7 @@
       @include govuk-responsive-padding(3, "top");
       @include govuk-responsive-padding(3, "right");
       @include govuk-responsive-padding(3, "bottom");
-      @include govuk-responsive-padding(3, "left");
+      @include govuk-responsive-padding(0, "left");
     }
 
     // Show the body of expanded sections
@@ -86,6 +86,10 @@
         .govuk-accordion__section-button {
 
           &:focus {
+            margin-right: 0;
+            margin-left: 0;
+            padding-right: 0;
+            padding-left: 0;
             color: govuk-colour("blue");
             background-color: transparent;
             box-shadow: none;
@@ -94,6 +98,12 @@
       }
 
       &:focus-within {
+        
+        .govuk-accordion__section-header,
+        .govuk-accordion__section-content {
+          padding-left: govuk-spacing(3);
+        }
+
         outline: $govuk-focus-width solid $govuk-focus-colour;
         outline-offset: 0;
       }
@@ -101,6 +111,10 @@
       .govuk-accordion__section-button {
 
         &:focus {
+          margin-right: 0;
+          margin-left: 0;
+          padding-right: 0;
+          padding-left: 0;
           color: govuk-colour("blue");
           background-color: transparent;
           box-shadow: none;
@@ -134,7 +148,7 @@
     // Section headers have a pointer cursor as an additional affordance
     .govuk-accordion__section-header {
       position: relative;
-      @include govuk-responsive-padding(3, "left");
+      @include govuk-responsive-padding(0, "left");
       // Safe area on the right to avoid clashing with icon
       padding-right: 40px;
       cursor: pointer;
@@ -194,13 +208,18 @@
 
       .govuk-accordion__section-button {
         @include govuk-focusable-text;
-        // Stop focus breaking outside of component
+        margin-right: 0;
+        margin-left: 0;
         color: govuk-colour("black");
       }
     }
 
     .govuk-accordion__section-header--focused:active {
       .govuk-accordion__section-button {
+        margin-right: 0;
+        margin-left: 0;
+        padding-right: 0;
+        padding-left: 0;
         color: govuk-colour("blue");
         background-color: transparent;
         box-shadow: none;
