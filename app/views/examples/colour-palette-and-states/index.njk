@@ -54,9 +54,9 @@
       </span>
     </summary>
     <div class="govuk-details__text">
-        <p class="govuk-body">The colour palette has been reduced and all hex values have been changed.</p>
+        <p class="govuk-body">The colour palette has been updated. There are fewer colours in the main palette and each colour has an updated hex value.</p>
 
-        <pre class="language-markup"><code>
+        <pre class="language-markup govuk-!-font-size-14"><code>
         $govuk-colours: (
           "red": #d4351c,
           "yellow": #ffdd00,
@@ -88,13 +88,23 @@
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
 
-          <p class="govuk-body">After a lot of experimentation with different focus colours, WCAG 2.1 “Non-text contrast” could not be met with colour alone.</p> 
+          <h3 class="govuk-heading-s">Not using colour alone</h3>
           
-          <p class="govuk-body">The GOV.UK graphic design community opted to keep the (new) yellow colour for :focus and combine it with adding a border (or making an existing border thicker).</p>
+          <p class="govuk-body">After a lot of experimentation with different focus colours and styles, WCAG 2.1 “Non-text contrast” of <code>:focus</code> could not be satisfactorily met with colour alone.</p> 
           
-          <p class="govuk-body">While the yellow does not meet colour contrast on white backgrounds, the combination of colour and border will meet WCAG 2.1 on both light and dark backgrounds.</p>
+          <p class="govuk-body">The GOV.UK graphic design community opted to keep the (new) yellow colour for <code>:focus</code> and combine it with adding a border (or making an existing border thicker).</p>
+          
+          <p class="govuk-body">While we know the yellow alone does not meet colour contrast on white backgrounds, the combination of colour and border (or other simultanious changes) will meet WCAG 2.1 on both light and dark backgrounds.</p>
 
-          <p class="govuk-body">An effort has been made to differentiate between <code>:focus</code> when navigating the page and <code>:focus</code> being applied when a user interacts with an element. For example, there is a differnt focus style when tabbing to a button and pressing the button. This logic has also been applied to accordions, tabs and details because once the component has been interacted with, and the user doesn’t leave the page, the emphasis should move the the content. This is only acceptable if there is another perceivable change as this focus style does not meet colour contrast.</p>
+          <h3 class="govuk-heading-s">Styling focus based on type of interaction</h3>
+
+          <p class="govuk-body">An effort has been made to differentiate between <code>:focus</code> when navigating the page and <code>:focus</code> being applied when a user interacts with an element.</p>
+          
+          <p class="govuk-body">For example, there is a differnt focus style when tabbing to a button and pressing the button. This logic has also been applied to accordions, tabs and details because once the component has been interacted with, and the user doesn’t leave the page, the emphasis should move the the content.</p>
+          
+          <p class="govuk-body">This is only acceptable if there is another perceivable change, such as an icon changing, as this focus style does not meet colour contrast.</p>
+
+          <p class="govuk-body govuk-!-margin-bottom-0">We may look at <code><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible" class="govuk-link">:focus-visible</a></code> once it has better browser support.</p>
 
         </div>
       </div>  
@@ -113,10 +123,9 @@
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
 
-          <p class="govuk-body">Where a component is conceptually similar (for example, types of form inputs or accordions and tabs) then they should have the same approach to :hover, :focus, :active and selected states where possible.</p> 
+          <p class="govuk-body">Where a component is conceptually similar (for example, types of form inputs or accordions and tabs) then they should have the same approach to <code>:hover</code>, <code>:focus</code>, <code>:active</code> and selected states where possible.</p> 
 
-          <p class="govuk-body">Future contributions to the GOV.UK Design System will need to consider this so they are not styled in isolation.</p> 
-
+          <p class="govuk-body govuk-!-margin-bottom-0">Future contributions to the GOV.UK Design System will need to consider these rules  so they are not styled in isolation.</p> 
         </div>
       </div>   
     </div>
@@ -134,9 +143,11 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <p class="govuk-body">Despite the similarity in appearance the borders have been applied using outline, border and box-shadow depending on the type of component or state.</p> 
+      <p class="govuk-body">Despite the similarity in appearance the borders have been applied using <code>outline</code>, <code>border</code> and <code>box-shadow</code> depending on the type of component or state.</p> 
 
-      <p class="govuk-body">All :focus states need an outline, even if this is set to transparent. This is so the focus is visible for users that override colours in their browser.</p> 
+      <p class="govuk-body">All <code>:focus</code> states will need an outline, even if this is set to transparent. This is so the focus is visible for users that override colours in their browser.</p> 
+
+      <p class="govuk-body govuk-!-margin-bottom-0">Please note, this may not be the case for some of these examples, this will be covered when moving into production.</p> 
       </div>
     </div>  
     </div>
@@ -287,7 +298,7 @@
         <h3 class="govuk-heading-m">(Start) Focus</h3>
 
         {{ govukInsetText({
-          text: "Icon needs to be CSS, SVG or sprite for this to work"
+          text: "Icon will need to be updated to CSS, SVG or sprite for this state to work"
         }) }}
 
         {% call govukFieldset() %}
@@ -1007,8 +1018,8 @@
 
         <ul class="govuk-list govuk-list--bullet">
           <li>Text is inset, no longer aligned to hard left</li>
-          <li>New hover and open style</li>
-          <li>Focus area has moved from entire block to heading</li>
+          <li>New hover state and selected style</li>
+          <li>Focus style and area is different based on type of interaction with the component</li>
         </ul>
 
         {{ govukInsetText({
@@ -2021,6 +2032,10 @@
 
         <h2 class="govuk-heading-l">Details</h2>
 
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Focus style is different based on type of interaction with the component</li>
+        </ul>
+
         <h3 class="govuk-heading-m">Default</h3>
 
         <details class="govuk-details">
@@ -2327,13 +2342,13 @@
         <h2 class="govuk-heading-l">Tabs</h2>
 
         {{ govukWarningText({
-          text: "Significant component changes - Work in progress"
+          text: "Significant component changes - Work in progress, JavaScript is broken"
         }) }}
 
         <ul class="govuk-list govuk-list--bullet">
           <li>Tabs are now styled on the &lt;li&gt; not the &lt;a&gt;</li>
-          <li>New hover and open style</li>
-          <li>Focus area has moved from entire block to text</li>
+          <li>New hover state and selected style</li>
+          <li>Focus style and area is different based on type of interaction with the component</li>
         </ul>
 
         {{ govukInsetText({
@@ -3358,8 +3373,12 @@
 
         <h2 class="govuk-heading-l">Footer</h2>
 
+        {{ govukWarningText({
+          text: "Needs more work"
+        }) }}
+
         {{ govukInsetText({
-          text: "Links in the footer look like standard text, acceptable in list form but causes problems when mixed with non-link content such as 'Built by the Government Digital Service'"
+          text: "Links in the footer look like standard text, while acceptable in list form this causes problems when mixed with non-link content. For example 'Built by the Government Digital Service'"
         }) }}
 
         <h3 class="govuk-heading-m">Default (Full)</h3>
