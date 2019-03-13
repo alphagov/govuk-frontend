@@ -38,6 +38,12 @@
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
+- Fix tabs bullet point character encoding issue when not enhanced
+
+  Thanks [Ed Horsford](https://github.com/edwardhorsford) and [Steve Sims](https://github.com/stevesims) for their help on this one.
+
+  ([PR #1247](https://github.com/alphagov/govuk-frontend/pull/1247))
+
 - Update padding of govuk-main-wrapper
 
   This increases the padding of `govuk-main-wrapper` (on tablet and above) to be more inline with GOV.UK. When updating, your pages will have 10px more white space above and below the 'main' content area.
