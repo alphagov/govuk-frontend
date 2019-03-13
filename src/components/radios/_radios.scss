@@ -39,26 +39,31 @@
   .govuk-radios__input {
     $input-offset: ($govuk-touch-target-size - $govuk-radios-size) / 2;
 
-    position: absolute;
-
-    z-index: 1;
-    top: $input-offset * -1;
-    left: $input-offset * -1;
-
-    width: $govuk-touch-target-size;
-    height: $govuk-touch-target-size;
-
     cursor: pointer;
 
     // IE8 doesn’t support pseudo-elements, so we don’t want to hide native
     // elements there.
     @include govuk-not-ie8 {
+      position: absolute;
+
+      z-index: 1;
+      top: $input-offset * -1;
+      left: $input-offset * -1;
+
+      width: $govuk-touch-target-size;
+      height: $govuk-touch-target-size;
       margin: 0;
+
       opacity: 0;
     }
 
-    // add focus outline to input element for IE8
     @include govuk-if-ie8 {
+      margin-top: 10px;
+      margin-right: $govuk-radios-size / -2;
+      margin-left: $govuk-radios-size / -2;
+      float: left;
+
+      // add focus outline to input
       &:focus {
         outline: $govuk-focus-width solid $govuk-focus-colour;
       }
@@ -229,7 +234,13 @@
     //  ▲┆└─ Radio pseudo element, aligned with margin
     //  └─── Touch target (invisible input), shifted into the margin
     .govuk-radios__input {
-      left: $input-offset * -1;
+      @include govuk-not-ie8 {
+        left: $input-offset * -1;
+      }
+
+      @include govuk-if-ie8 {
+        margin-left: $govuk-small-radios-size * -1;
+      }
     }
 
     // Adjust the size and position of the label.
