@@ -29,7 +29,7 @@
     margin-left: govuk-spacing(5);
 
     &::before {
-      content: "\2014 ";
+      content: "\2014 "; // "— "
       margin-left: - govuk-spacing(5);
       padding-right: govuk-spacing(1);
     }
