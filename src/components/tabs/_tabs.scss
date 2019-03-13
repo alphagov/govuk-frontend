@@ -125,8 +125,22 @@
         }
       }
 
+      .govuk-tabs__list-item--selected {
+
+        &:focus-within {
+          outline: $govuk-focus-width solid $govuk-focus-colour;
+          outline-offset: 0;
+          box-shadow: inset 0 4px 0 0 govuk-colour("black");
+        }
+      }
+
       .govuk-tabs__list-item--selected .govuk-tabs__tab {
         text-decoration: none;
+
+        &:focus {
+          background-color: transparent;
+          box-shadow: none;
+        }
       }
 
       .govuk-tabs__panel {
