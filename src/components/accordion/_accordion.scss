@@ -97,15 +97,16 @@
         }
       }
 
-      &:focus-within {
-        
-        .govuk-accordion__section-header,
-        .govuk-accordion__section-content {
-          padding-left: govuk-spacing(3);
-        }
+      .govuk-accordion__section-header {
+        &:focus-within {
+          outline: $govuk-focus-width solid $govuk-focus-colour;
+          outline-offset: 0;
+          box-shadow: inset 0 3px 0 0 govuk-colour("black");
 
-        outline: $govuk-focus-width solid $govuk-focus-colour;
-        outline-offset: 0;
+          .govuk-accordion__section-button {
+            color: govuk-colour("black");
+          }
+        }
       }
 
       .govuk-accordion__section-button {
@@ -156,7 +157,6 @@
 
     // Section headers have a grey background on hover as an additional affodance
     .govuk-accordion__section-header:hover {
-      background-color: govuk-colour("light-grey");
       box-shadow: inset 0 3px 0 0 govuk-colour("light-blue");
       // For devices that can't hover such as touch devices,
       // remove hover state as it can be stuck in that state (iOS).
@@ -208,8 +208,6 @@
 
       .govuk-accordion__section-button {
         @include govuk-focusable-text;
-        margin-right: 0;
-        margin-left: 0;
         color: govuk-colour("black");
       }
     }
