@@ -292,7 +292,7 @@
     // We can't use `@media (hover: hover)` because we wouldn't get the hover
     // state in browsers that don't support `@media (hover)` (like Internet
     // Explorer) – so we have to 'undo' the hover state instead.
-    @media (hover: none) {
+    @media (hover: none), (pointer: coarse) {
       .govuk-checkboxes__item:hover .govuk-checkboxes__input:not(:disabled) + .govuk-checkboxes__label::before {
         box-shadow: initial;
       }
