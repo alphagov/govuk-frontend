@@ -98,11 +98,11 @@
 
           <h3 class="govuk-heading-s">Styling focus based on type of interaction</h3>
 
-          <p class="govuk-body">An effort has been made to differentiate between <code>:focus</code> when navigating the page and <code>:focus</code> being applied when a user interacts with an element.</p>
+          <p class="govuk-body">An effort has been made to differentiate between <code>:focus</code> when navigating the page and <code>:focus</code> being applied when a user interacts with an element and focus is retained.</p>
           
           <p class="govuk-body">For example, there is a differnt focus style when tabbing to a button and pressing the button. This logic has also been applied to accordions, tabs and details because once the component has been interacted with, and the user doesn’t leave the page, the emphasis should move the the content.</p>
           
-          <p class="govuk-body">This is only acceptable if there is another perceivable change, such as an icon changing, as this focus style does not meet colour contrast.</p>
+          <p class="govuk-body">This is only acceptable if there is another perceivable change specifically when focus is applied.</p>
 
           <p class="govuk-body govuk-!-margin-bottom-0">We may look at <code><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible" class="govuk-link">:focus-visible</a></code> once it has better browser support.</p>
 
@@ -1706,8 +1706,8 @@
 
         <div class="govuk-accordion" data-module="accordion" id="accordion-with-summary-sections-open-f">
 
-          <div class="govuk-accordion__section govuk-accordion__section--expanded :focus-within">
-            <div class="govuk-accordion__section-header govuk-accordion__section-header--focused">
+          <div class="govuk-accordion__section govuk-accordion__section--expanded">
+            <div class="govuk-accordion__section-header govuk-accordion__section-header--focused :focus-within">
               <h2 class="govuk-accordion__section-heading">
                 <span class="govuk-accordion__section-button :focus" id="accordion-with-summary-sections-heading-1">
                   Understanding agile project management
@@ -1837,11 +1837,11 @@
         </div>
 
 
-        <h3 class="govuk-heading-m">Section (open) with Focus-within and Focus on internal link</h3>
+        <h3 class="govuk-heading-m">Section (open) with Focus on internal link</h3>
 
         <div class="govuk-accordion" data-module="accordion" id="accordion-with-summary-sections-open-g">
 
-          <div class="govuk-accordion__section govuk-accordion__section--expanded :focus-within">
+          <div class="govuk-accordion__section govuk-accordion__section--expanded">
             <div class="govuk-accordion__section-header govuk-accordion__section-header--focused">
               <h2 class="govuk-accordion__section-heading">
                 <span class="govuk-accordion__section-button :focus" id="accordion-with-summary-sections-heading-1">
