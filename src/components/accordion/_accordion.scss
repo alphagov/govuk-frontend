@@ -98,6 +98,7 @@
       }
 
       .govuk-accordion__section-header {
+        
         &:focus-within {
           outline: $govuk-focus-width solid $govuk-focus-colour;
           outline-offset: 0;

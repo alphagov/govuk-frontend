@@ -100,9 +100,11 @@
 
           <p class="govuk-body">An effort has been made to differentiate between <code>:focus</code> when navigating the page and <code>:focus</code> being applied when a user interacts with an element and focus is retained.</p>
           
-          <p class="govuk-body">For example, there is a differnt focus style when tabbing to a button and pressing the button. This logic has also been applied to accordions, tabs and details because once the component has been interacted with, and the user doesn’t leave the page, the emphasis should move the the content.</p>
+          <p class="govuk-body">For example, the focus state of components that will reload the page is heavier becuase the state is not retained on page reload.</p>
           
-          <p class="govuk-body">This is only acceptable if there is another perceivable change specifically when focus is applied.</p>
+          <p class="govuk-body">The focus states of accordions, tabs and details uses the same heavy style as links when navigating but changes to a lighter style once the component has been interacted with. When the user doesn’t leave the page, the emphasis should be on the content that has been revealed.</p>
+          
+          <p class="govuk-body">This is only acceptable if there is another perceivable change that meets colour contrast of 3:1 specifically when focus is applied. On these components this is handled by a change in font or border colour and / or text style.</p>
 
           <p class="govuk-body govuk-!-margin-bottom-0">We may look at <code><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible" class="govuk-link">:focus-visible</a></code> once it has better browser support.</p>
 
