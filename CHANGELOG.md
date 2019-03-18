@@ -54,6 +54,12 @@
 
   ([PR #1215](https://github.com/alphagov/govuk-frontend/pull/1215))
 
+- Ensure font is not loaded twice on slow networks
+
+  This is only an issue for users that are using alphagov/govuk_template alongside GOV.UK Frontend.
+
+  ([PR #1242](https://github.com/alphagov/govuk-frontend/pull/1242))
+
 
 ## 2.8.0 (Feature release)
 
