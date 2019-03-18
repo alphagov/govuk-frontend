@@ -29,7 +29,19 @@ $govuk-font-family-tabular: $govuk-font-family-nta-tabular !default;
 
 $govuk-font-family-print: sans-serif !default;
 
+/// Include the default @font-face declarations
+///
+/// If you have set $govuk-font-family to something other than $govuk-font-family-nta this option is disabled by default.
+///
+/// If you are using $govuk-compatibility-govuktemplate this option is disabled by default.
+///
+/// @type Boolean
+/// @access public
 
+$govuk-include-default-font-face: (
+  $govuk-font-family == $govuk-font-family-nta and
+  not($govuk-compatibility-govuktemplate)
+ ) !default;
 
 // =========================================================
 // Font weights
