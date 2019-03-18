@@ -96,6 +96,9 @@
   }
 
   //  •  Radio button
+  //
+  // We create the 'button' entirely out of 'border' so that they remain
+  // 'filled' even when colours are overridden in the browser.
   .govuk-radios__label::after {
     content: "";
 
@@ -274,9 +277,7 @@
     .govuk-radios__label::after {
       top: 14px;
       left: 6px;
-      width: 10px;
-      height: 10px;
-      border-width: 1px;
+      border-width: 6px;
     }
 
     // Fix position of hint with small radios
