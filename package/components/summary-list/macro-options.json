@@ -41,17 +41,17 @@
                 "description": "Classes to add to the value wrapper"
             },
             {
+                "name": "actions.classes",
+                "type": "string",
+                "required": false,
+                "description": "Classes to add to the actions wrapper"
+            },
+            {
                 "name": "actions.items",
                 "type": "array",
                 "required": false,
                 "description": "Array of action item objects",
                 "params": [
-                    {
-                        "name": "classes",
-                        "type": "string",
-                        "required": false,
-                        "description": "Classes to add to the actions wrapper"
-                    },
                     {
                         "name": "href",
                         "type": "string",
@@ -75,6 +75,12 @@
                         "type": "string",
                         "required": false,
                         "description": "Actions rely on context from the surrounding content so may require additional accessible text, text supplied to this option is appended to the end, use `html` for more complicated scenarios."
+                    },
+                    {
+                        "name": "classes",
+                        "type": "string",
+                        "required": false,
+                        "description": "Classes to add to the action item"
                     }
                 ]
             }

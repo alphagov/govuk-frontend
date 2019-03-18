@@ -20,6 +20,18 @@
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
+🔧 Fixes:
+
+- Pull Request Title goes here
+
+  Description goes here (optional)
+
+  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+
+## 2.9.0 (Feature release)
+
+🆕 New features:
+
 - Add classes to action items in the summary list component
 
   ([PR #1233](https://github.com/alphagov/govuk-frontend/pull/1233))
@@ -31,12 +43,6 @@
   ([PR #1216](https://github.com/alphagov/govuk-frontend/pull/1216))
 
 🔧 Fixes:
-
-- Pull Request Title goes here
-
-  Description goes here (optional)
-
-  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
 - Fix tabs bullet point character encoding issue when not enhanced
 
@@ -59,7 +65,6 @@
   This is only an issue for users that are using alphagov/govuk_template alongside GOV.UK Frontend.
 
   ([PR #1242](https://github.com/alphagov/govuk-frontend/pull/1242))
-
 
 ## 2.8.0 (Feature release)
 
