@@ -14,7 +14,11 @@ const uglify = require('gulp-uglify')
 const eol = require('gulp-eol')
 const rename = require('gulp-rename')
 const cssnano = require('cssnano')
-const postcsspseudoclasses = require('postcss-pseudo-classes')
+const postcsspseudoclasses = require('postcss-pseudo-classes')({
+  // Work around a bug in pseudo classes plugin that badly transforms
+  // :not(:whatever) pseudo selectors
+  blacklist: [':not(', ':disabled)', ':last-child)', ':focus)']
+})
 
 // Compile CSS and JS task --------------
 // --------------------------------------
