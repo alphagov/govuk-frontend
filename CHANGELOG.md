@@ -68,6 +68,12 @@
 
 ## 2.8.0 (Feature release)
 
+### Considerations for fixed components such as modals
+
+We have been made aware that the [change to force scroll bars to appear at all times](https://github.com/alphagov/govuk-frontend/pull/1230) can change the behaviour of some components such as modals.
+
+If you're using your own components that rely on the overflow state of the document (such as modals) you should make sure you test those components when updating to this version.
+
 🆕 New features:
 
 - Enable `pattern` attribute for input
