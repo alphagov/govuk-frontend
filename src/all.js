@@ -10,6 +10,7 @@ import Radios from './components/radios/radios'
 import Tabs from './components/tabs/tabs'
 import SdnHeader from './components/_custom/header/header'
 import SdnTimeline from './components/_custom/timeline/timeline'
+import SdnAppearLink from './utilities/appear-link/appear-link'
 
 function initAll () {
   // Find all buttons with [role=button] on the document to enhance.
@@ -60,6 +61,11 @@ function initAll () {
 
   // Find first sdn header module to enhance.
   new SdnTimeline(document.querySelector('[data-module="sdn-timeline"]')).init()
+
+  var $appearLinks = document.querySelectorAll('[data-module="sdn-appear-link"]')
+  nodeListForEach($appearLinks, function ($link) {
+    new SdnAppearLink($link).init()
+  })
 }
 
 export {
