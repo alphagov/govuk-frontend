@@ -40,6 +40,7 @@
       opacity: .9;
       color: $text-color-hover;
       background-color: govuk-colour("white");
+      text-decoration: underline;
     }
 
     @include govuk-media-query($from: tablet) {

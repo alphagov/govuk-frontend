@@ -24,6 +24,42 @@ params:
 examples:
   - name: default
     data:
-      tag:
-        text: alpha
-      html: This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.
+      items:
+        - 
+          title: Narodenie dieťaťa
+          image: https://placekitten.com/200/234
+          url: https://slovensko.digital
+        -
+          title: Narodenie koníka
+          image: https://placekitten.com/200/234
+          url: https://slovensko.digital
+        -
+          title: Narodenie koníka
+          image: https://placekitten.com/200/234
+          url: https://slovensko.digital
+        -
+          title: Narodenie koníka
+          image: https://placekitten.com/200/234
+          url: https://slovensko.digital
+        -
+          title: Narodenie koníka
+          image: https://placekitten.com/200/234
+          url: https://slovensko.digital
+        -
+          title: Narodenie koníka
+          image: https://placekitten.com/200/234
+          url: https://slovensko.digital
+        -
+          title: Narodenie koníka
+          image: https://placekitten.com/200/234
+          url: https://slovensko.digital
+        -
+          title: Narodenie koníka
+          image: https://placekitten.com/200/234
+          url: https://slovensko.digital
+        -
+          title: Narodenie koníka
+          image: https://placekitten.com/200/234
+          url: https://slovensko.digital
+
+        
