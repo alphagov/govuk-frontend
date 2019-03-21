@@ -33,11 +33,11 @@
 
     // When a user customises their colours the background colour will often be removed.
     // Adding a border to the component keeps it's shape as a circle.
-    border: 3px solid govuk-colour("grey-2");
+    border: 3px solid govuk-colour("black");
     border-radius: 50%;
 
     color: govuk-colour("white");
-    background: govuk-colour("grey-2");
+    background: govuk-colour("black");
 
     font-size: 1.6em;
     line-height: 29px;
