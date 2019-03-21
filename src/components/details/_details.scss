@@ -62,15 +62,6 @@
     }
   }
 
-  .govuk-details[open] {
-    .govuk-details__summary:focus {
-      outline: $govuk-focus-width solid $govuk-focus-colour;
-      outline-offset: 0;
-      background-color: transparent;
-      box-shadow: none;
-    }
-  }
-
   // Remove the default details marker so we can style our own consistently and
   // ensure it displays in Firefox (see implementation.md for details)
   .govuk-details__summary::-webkit-details-marker {
