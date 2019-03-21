@@ -44,10 +44,10 @@ gulp.task('scss:compile', () => {
       cssnano
     ])))
     .pipe(gulpif(!isDist, postcss([
-      autoprefixer,
+      autoprefixer
       // Auto-generate 'companion' classes for pseudo-selector states - e.g. a
       // :hover class you can use to simulate the hover state in the review app
-      postcsspseudoclasses
+      // postcsspseudoclasses
     ])))
     .pipe(gulpif(isDist,
       rename({
