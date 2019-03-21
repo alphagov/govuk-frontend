@@ -2,6 +2,6 @@
   @include sdn-font($size: 20, $weight: light);
 
   strong {
-    @include sdn-font($size: 20, $weight: light);
+    @include sdn-font($size: 18, $weight: bold);
   }
 }
