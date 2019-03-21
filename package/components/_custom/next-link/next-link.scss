@@ -1,0 +1,38 @@
+@import "../../../settings/all";
+@import "../../../tools/all";
+@import "../../../helpers/all";
+
+@include govuk-exports("govuk/component/sdn-next-link") {
+
+  $text-color: #3a67e8;
+
+  .sdn-next-link {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+
+  .sdn-next-link__link {
+    font-size: 21px;
+    font-weight: 600;
+    text-decoration: none;
+
+    small {
+      display: block;
+      font-weight: 400;
+      text-decoration: underline;
+    }
+
+    &,
+    &:link,
+    &:visited {
+      color: $text-color;
+    }
+
+    &:hover {
+      &,
+      small {
+        opacity: .8;
+      }
+    }
+  }
+}

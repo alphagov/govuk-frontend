@@ -681,7 +681,7 @@ function SdnTimeline ($module) {
 SdnTimeline.prototype.init = function () {
   // Check for module
   var $module = this.$module;
-  if (!$module) {
+  if (!$module || $module.className.indexOf('snd-timeline--readonly') > -1) {
     return
   }
 

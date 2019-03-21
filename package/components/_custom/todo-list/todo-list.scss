@@ -3,21 +3,35 @@
 @import "../../../helpers/all";
 
 $sdn-todo-list-background-color: #fafafa;
+$sdn-todo-list-action-background-color: rgba(180, 194, 255, .2);
+$sdn-todo-list-action-completed-background-color: #e5f2e4;
+$sdn-todo-list-action-waiting-background-color: #fdf4ce;
 $sdn-todo-list-info: #878788;
 $sdn-todo-list-left-border-color: rgba(0, 0, 0, .1);
+$sdn-todo-list-completed-border-color: #4cae18;
+$sdn-todo-list-link-color: #000000;
 $sdn-todo-list-left-border-width: 5px;
 $sdn-todo-list-inner-top-bottom-padding: 25px;
+$sdn-todo-list-inner-bottom-bottom-padding: 15px;
 $sdn-todo-list-inner-left-right-padding: 30px;
+
+$sdn-todo-list-button-secondary-border-color: rgba(0, 0, 0, .7);
+$sdn-todo-list-button-text-color: #000000;
+
+$sdn-todo-list-button-secondary-border-color-hover: #387f12;
+$sdn-todo-list-button-text-color-hover: #387f12;
+
 @include govuk-exports("govuk/component/sdn-todo-list") {
+
   .sdn-todo-list-box {
-    padding: $sdn-todo-list-inner-top-bottom-padding $sdn-todo-list-inner-left-right-padding;
+    padding: $sdn-todo-list-inner-top-bottom-padding $sdn-todo-list-inner-left-right-padding $sdn-todo-list-inner-bottom-bottom-padding $sdn-todo-list-inner-left-right-padding;
     border-left: $sdn-todo-list-left-border-color solid $sdn-todo-list-left-border-width;
     background-color: $sdn-todo-list-background-color;
 
     .sdn-todo-list__title {
+      @include sdn-font($size: 24);
       $sdn-todo-list-title-color: #06070b;
       color: $sdn-todo-list-title-color;
-      @include sdn-font($size: 24);
     }
 
     .sdn-todo-list__items {
@@ -72,19 +86,17 @@ $sdn-todo-list-inner-left-right-padding: 30px;
             display: block;
           }
 
-          .govuk-button {
-            margin: 0;
-            @include mq ($until: tablet) {
-              margin-top: govuk-spacing(4);
-            }
-          }
-
           .snd-todo-list__item__info {
-            color: $sdn-todo-list-info;
             @include sdn-font($size: 14);
+            margin-left: 25px;
+            color: $sdn-todo-list-info;
 
             &:not(:last-child) {
               margin-right: 20px;
+            }
+
+            @include mq ($until: tablet) {
+              margin-left: 30px;
             }
           }
         }
@@ -92,6 +104,109 @@ $sdn-todo-list-inner-left-right-padding: 30px;
     }
   }
 
+  .snd-todo-list__link {
+    color: govuk-colour("blue");
+
+    &:visited,
+    &:link {
+      color: govuk-colour("blue");
+      text-decoration: none;
+    }
+
+    &:hover {
+      opacity: .7;
+      text-decoration: underline;
+    }
+
+    @include mq ($until: tablet) {
+      display: block;
+      margin-left: 30px;
+    }
+  }
+
+  .sdn-todo-list-main-action {
+    padding: $sdn-todo-list-inner-top-bottom-padding $sdn-todo-list-inner-left-right-padding 10px $sdn-todo-list-inner-left-right-padding;
+    //border-top: $sdn-todo-list-completed-border-color solid 2px;
+    background-color: $sdn-todo-list-background-color;
+
+    .sdn-todo-list-box + & {
+      margin-top: 30px;
+    }
+
+    .govuk-button {
+      @include govuk-font($size: 20, $weight: bold);
+      margin-bottom: 20px;
+    }
+
+    .sdn-todo-list--completed & {
+      padding: $sdn-todo-list-inner-top-bottom-padding $sdn-todo-list-inner-left-right-padding 10px $sdn-todo-list-inner-left-right-padding;
+      //border: $sdn-todo-list-completed-border-color solid 2px;
+      background-color: $sdn-todo-list-action-completed-background-color;
+    }
+
+    .sdn-todo-list--waiting & {
+      padding: $sdn-todo-list-inner-top-bottom-padding $sdn-todo-list-inner-left-right-padding 10px $sdn-todo-list-inner-left-right-padding;
+      //border: $sdn-todo-list-completed-border-color solid 2px;
+      background-color: $sdn-todo-list-action-waiting-background-color;
+    }
+  }
+
+  .sdn-todo-list {
+    &--completed {
+      .sdn-todo-list-box {
+        border-left-color: $sdn-todo-list-completed-border-color;
+      }
+
+      .sdn-todo-list-main-action__info {
+        display: inline-block;
+        margin-right: 10px;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  .govuk-button__secondary {
+    margin-bottom: 10px;
+    padding: 8px;
+    border-width: 1px;
+    border-color: $sdn-todo-list-button-secondary-border-color;
+    opacity: .8;
+    color: $sdn-todo-list-button-text-color;
+    background-color: transparent;
+    vertical-align: middle;
+
+    &.govuk-button {
+      @include govuk-font($size: 15, $weight: normal);
+    }
+
+    &:link,
+    &:visited,
+    &:active,
+    &:hover {
+      //@include govuk-font($size: 15, $weight: regular);
+      color: $sdn-todo-list-button-text-color;
+      font-weight: normal;
+    }
+
+    &:hover {
+      border-color: $sdn-todo-list-button-secondary-border-color-hover;
+      color: $sdn-todo-list-button-text-color-hover;
+      background-color: transparent;
+    }
+  }
+
+  .sdn-todo-list-main-action-buttons {
+    a,
+    div {
+      vertical-align: middle;
+    }
+  }
+
+  .sdn-todo-list-main-action-buttons-divider {
+    display: inline-block;
+    margin-right: 5px;
+    margin-left: 5px;
+  }
 
   .govuk-label {
     @include govuk-font($size: 19);
@@ -131,5 +246,28 @@ $sdn-todo-list-inner-left-right-padding: 30px;
   // so we can't really consider an element.
   .govuk-label-wrapper {
     margin: 0;
+  }
+
+  .sdn-todo-list--readonly {
+    .snd-todo-list__item__info {
+      margin-left: 0 !important;
+    }
+
+    .govuk-checkboxes__item {
+      padding-left: 0;
+    }
+
+    .govuk-checkboxes__input {
+      display: none;
+
+      + label {
+        padding-left: 0;
+
+        &:after,
+        &:before {
+          display: none;
+        }
+      }
+    }
   }
 }

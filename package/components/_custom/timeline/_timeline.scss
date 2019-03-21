@@ -8,6 +8,7 @@ $color-waiting: govuk-colour("blue");
 $color-default: govuk-colour("grey-3");
 $color-default-transparent: rgba(0, 0, 0, .14); // transparent version of grey-3
 $color-black: #333333;
+$link-color: #000000;
 $std-timeline-dropdown-bg-color: #f1f1f1;
 $std-timeline-bullet-shadow: #ffbf47;
 
@@ -31,8 +32,6 @@ $icon-check-black: url("../../../assets/images/icon-check-black.svg");
   .sdn-timeline {
     @include govuk-font($size: 16, $line-height: 1.5);
     @include govuk-text-colour;
-
-    text-decoration: underline;
   }
 
   .sdn-timeline__list {
@@ -77,7 +76,7 @@ $icon-check-black: url("../../../assets/images/icon-check-black.svg");
         @include govuk-typography-weight-bold;
       }
 
-      .sdn-timeline__bullet {
+      > .sdn-timeline__bullet {
         outline: transparent;
         box-shadow: 0 0 0 3px $std-timeline-bullet-shadow;
       }
@@ -139,11 +138,17 @@ $icon-check-black: url("../../../assets/images/icon-check-black.svg");
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    color: inherit;
+    color: $link-color;
     -webkit-text-decoration-color: transparent;
             text-decoration-color: transparent;
 
+    &:link,
+    &:visited {
+      color: $link-color;
+    }
+
     &:hover {
+      color: $link-color;
       -webkit-text-decoration-color: currentColor;
               text-decoration-color: currentColor;
     }
@@ -200,11 +205,17 @@ $icon-check-black: url("../../../assets/images/icon-check-black.svg");
     display: block;
     position: relative;
     padding: govuk-spacing(2) govuk-spacing(7) govuk-spacing(2) (govuk-spacing(6) + $bullet-size);
-    color: inherit;
+    color: $link-color;
     text-decoration: none;
     cursor: pointer;
 
+    &:link,
+    &:visited {
+      color: $link-color;
+    }
+
     &:hover {
+      color: $link-color;
       background-color: $std-timeline-dropdown-bg-color;
     }
 
@@ -239,4 +250,24 @@ $icon-check-black: url("../../../assets/images/icon-check-black.svg");
     @include govuk-font($size: 14);
   }
 
+  .snd-timeline--readonly {
+    .sdn-timeline__bullet {
+      display: none;
+    }
+
+    .sdn-timeline__step {
+      padding-left: 0;
+
+      &:before,
+      &:after {
+        display: none;
+      }
+    }
+  }
+
+  .sdn-timeline-title {
+    @include govuk-font($size: 24, $weight: regular);
+
+    margin: 0 0 30px 0;
+  }
 }
