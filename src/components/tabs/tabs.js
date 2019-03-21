@@ -5,7 +5,7 @@ import { nodeListForEach } from '../../common'
 
 function Tabs ($module) {
   this.$module = $module
-  this.$tabs = $module.querySelectorAll('.govuk-tabs__list-item')
+  this.$tabs = $module.querySelectorAll('.govuk-tabs__tab')
 
   this.keys = { left: 37, right: 39, up: 38, down: 40 }
   this.jsHiddenClass = 'govuk-tabs__panel--hidden'
@@ -248,18 +248,18 @@ Tabs.prototype.hidePanel = function (tab) {
 
 Tabs.prototype.unhighlightTab = function ($tab) {
   $tab.setAttribute('aria-selected', 'false')
-  $tab.classList.remove('govuk-tabs__list-item--selected')
+  $tab.classList.remove('govuk-tabs__tab--selected')
   $tab.setAttribute('tabindex', '-1')
 }
 
 Tabs.prototype.highlightTab = function ($tab) {
   $tab.setAttribute('aria-selected', 'true')
-  $tab.classList.add('govuk-tabs__list-item--selected')
+  $tab.classList.add('govuk-tabs__tab--selected')
   $tab.setAttribute('tabindex', '0')
 }
 
 Tabs.prototype.getCurrentTab = function () {
-  return this.$module.querySelector('.govuk-tabs__list-item--selected')
+  return this.$module.querySelector('.govuk-tabs__tab--selected')
 }
 
 // this is because IE doesn't always return the actual value but a relative full path
