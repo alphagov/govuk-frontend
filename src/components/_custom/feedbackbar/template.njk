@@ -1,16 +1,42 @@
-<div class="sdn-feedbackbar {{ params.classes if params.classes }}" role="contentinfo"
-        {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+<div class="sdn-feedbackbar {{ params.classes if params.classes }}" role="contentinfo" {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}" {% endfor %}>
   <div class="govuk-width-container {{ params.containerClasses if params.containerClasses }}">
-    <div class="sdn-feedbackbar__container">
+    <div class="sdn-feedbackbar__container" id="sdn-feedbackbar-container">
       <div class="sdn-feedbackbar__useful">
-        <span class="sdn-feedbackbar__useful-question">Boli tieto informácie pre vás užitočné?</span>
-        <span>
-          <span class="sdn-feedbackbar__yes"><a href="#" class="sdn-feedbackbar__link">Áno</a></span>
-          <span class="sdn-feedbackbar__no"><a href="#" class="sdn-feedbackbar__link">Nie</a></span>
-        </span>
+        <div id="sdn-feedbackbar-useful">
+          <span class="sdn-feedbackbar__useful-question">Boli tieto informácie pre vás užitočné?</span>
+          <span>
+            <span class="sdn-feedbackbar__yes" data-module="sdn-appear-link" data-appear="sdn-feedbackbar-thanks" data-disappear="sdn-feedbackbar-useful">
+              <a href="#" class="sdn-feedbackbar__link">Áno</a>
+            </span>
+            <span class="sdn-feedbackbar__no" data-module="sdn-appear-link" data-appear="sdn-feedbackbar-form-no" data-disappear="sdn-feedbackbar-container">
+              <a href="#" class="sdn-feedbackbar__link">Nie</a>
+            </span>
+          </span>
+        </div>
+        <div id="sdn-feedbackbar-thanks" class="sdn-appear-link-hide">
+          <span>Ďakujeme za odozvu!&nbsp;</span>
+        </div>
       </div>
       <div class="sdn-feedbackbar__foundbug">
-        <span>Našli ste na stránke chybu?&nbsp;</span><span><a href="#" class="sdn-feedbackbar__link">Napíšte nám</a></span>
+        <span>Našli ste na stránke chybu?&nbsp;</span>
+        <span>
+          <a href="#" class="sdn-feedbackbar__link" data-module="sdn-appear-link" data-appear="sdn-feedbackbar-form-foundbug" data-disappear="sdn-feedbackbar-container">Napíšte nám</a>
+        </span>
+      </div>
+    </div>
+    <div id="sdn-feedbackbar-form-no" class="sdn-feedbackbar__container sdn-feedbackbar__form sdn-appear-link-hide">
+      <a href="#" data-module="sdn-appear-link" data-appear="sdn-feedbackbar-container" data-disappear="sdn-feedbackbar-form-no" class="sdn-feedbackbar__close">zatvoriť</a>
+      <div>
+        <h3 class="govuk-heading-m">{{params.no.title}}</h3>
+
+        {{params.no.html | safe if params.no.html else params.no.text}}
+      </div>
+    </div>
+    <div id="sdn-feedbackbar-form-foundbug" class="sdn-feedbackbar__container sdn-feedbackbar__form sdn-appear-link-hide">
+      <a href="#" data-module="sdn-appear-link" data-appear="sdn-feedbackbar-container" data-disappear="sdn-feedbackbar-form-foundbug" class="sdn-feedbackbar__close">zatvoriť</a>
+      <div>
+        <h3 class="govuk-heading-m">{{params.foundbug.title}}</h3>
+        {{params.foundbug.html | safe if params.foundbug.html  else params.foundbug.text }}
       </div>
     </div>
   </div>

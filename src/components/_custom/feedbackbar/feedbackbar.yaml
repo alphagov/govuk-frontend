@@ -17,4 +17,18 @@ previewLayout: full-width
 examples:
 - name: default
   data:
-    {}
+        no:
+            title: Nadpis NIE
+            text: slaby text
+        foundbug:
+            title: Nadpis Bug
+            html: <p id="feedback_explanation" class="gem-c-feedback__form-paragraph">Don’t include personal or financial information like your National Insurance number or credit card details.</p><div class="govuk-form-group">
+                <label for="input-e3e94fe2" class="gem-c-label govuk-label">
+                What were you doing?
+                </label>
+                <input name="what_doing" class="gem-c-input govuk-input" id="input-e3e94fe2" type="text" aria-describedby="feedback_explanation">
+                </div><div class="govuk-form-group">
+                <label for="input-a186d211" class="gem-c-label govuk-label">
+                What went wrong?
+                </label>  <input name="what_wrong" class="gem-c-input govuk-input" id="input-a186d211" type="text">
+                </div><button class="gem-c-button govuk-button" type="submit">Send</button>
