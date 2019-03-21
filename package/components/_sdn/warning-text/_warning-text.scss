@@ -2,6 +2,11 @@
   @include sdn-font($size: 20, $weight: light);
 
   strong {
-    @include sdn-font($size: 20, $weight: light);
+    @include sdn-font($size: 18, $weight: bold);
   }
+}
+
+.govuk-warning-text__icon {
+  border: 3px solid govuk-colour("grey-2");
+  background: govuk-colour("grey-2");
 }

@@ -116,4 +116,18 @@
       margin-left: 30%;
     }
   }
+
+  .sdn-feedbackbar__close {
+    position: absolute;
+    right: 1em;
+  }
+
+  .sdn-feedbackbar__form {
+    // margin-right: 3em;
+    // background: $sdn-feedbackbar-left-background;
+
+    border-top: $sdn-feedbackbar-right-background .5em solid;
+    border-bottom: $sdn-feedbackbar-right-background .5em solid;
+    background: $sdn-feedbackbar-left-background;
+  }
 }

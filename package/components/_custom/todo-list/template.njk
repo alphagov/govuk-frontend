@@ -45,9 +45,7 @@
               </div>
               {% if task.link_text %}
                 <div>
-                  <a href="{{ task.link_url }}" class="snd-todo-list__link"{% if task.open_in_new_window %} target="_blank"{% endif %}>
-                    {{ task.link_text }}
-                  </a>
+                  <a href="{{ task.link_url }}" class="snd-todo-list__link"{% if task.open_in_new_window %} target="_blank"{% endif %}>{{ task.link_text }}</a>
                 </div>
               {% endif %}
             {% endif %}

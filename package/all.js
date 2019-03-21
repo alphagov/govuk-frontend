@@ -4954,6 +4954,42 @@ SdnTimeline.prototype.handleBlur = function (event) {
   }.bind(this), 100);
 };
 
+function SndAppearLink($module) {
+  console.log($module);
+  this.$module = $module;
+  this.$appear = null;
+  this.$disappear = null;
+}
+
+SndAppearLink.prototype.init = function() {
+  // Check for module
+  var $module = this.$module;
+  if (!$module) {
+    return;
+  }
+
+  $module.addEventListener("click", this.handleClick.bind(this));
+  var appearId = $module.dataset["appear"];
+  var disappearId = $module.dataset["disappear"];
+
+  this.$appear = document.getElementById(appearId);
+  this.$disappear = document.getElementById(disappearId);
+};
+
+SndAppearLink.prototype.handleClick = function(event) {
+  event.preventDefault();
+
+  if (this.$appear) {
+    this.$appear.classList.remove("sdn-appear-link-hide");
+  }
+  if (this.$disappear) {
+    this.$disappear.classList.add("sdn-appear-link-hide");
+  }
+
+  console.log(this.$appear, this.$disappear);
+
+};
+
 function initAll () {
   // Find all buttons with [role=button] on the document to enhance.
   new Button(document).init();
@@ -5003,6 +5039,11 @@ function initAll () {
 
   // Find first sdn header module to enhance.
   new SdnTimeline(document.querySelector('[data-module="sdn-timeline"]')).init();
+
+  var $appearLinks = document.querySelectorAll('[data-module="sdn-appear-link"]');
+  nodeListForEach($appearLinks, function ($link) {
+    new SndAppearLink($link).init();
+  });
 }
 
 exports.initAll = initAll;

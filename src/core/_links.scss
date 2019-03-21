@@ -1,6 +1,7 @@
 @include govuk-exports("govuk/core/links") {
 
   $icon-external-link: url("../../assets/images/icon-external-link.svg");
+  $icon-external-link-white: url("../../assets/images/icon-external-link-white.svg");
 
   %govuk-link {
     @include govuk-link-common;
@@ -37,5 +38,11 @@
     background-position: left center;
     background-size: contain;
     text-decoration: none;
+  }
+
+  .govuk-button {
+    &[href*="//"]:not([href*="navody.digital"]):not([href^="#"]):not([href^="/"]):after {
+      background-image: $icon-external-link-white !important;
+    }
   }
 }

@@ -1,5 +1,8 @@
 @include govuk-exports("govuk/core/links") {
 
+  $icon-external-link: url("../../assets/images/icon-external-link.svg");
+  $icon-external-link-white: url("../../assets/images/icon-external-link-white.svg");
+
   %govuk-link {
     @include govuk-link-common;
     @include govuk-link-style-default;
@@ -23,5 +26,23 @@
 
   .govuk-link--no-visited-state {
     @include govuk-link-style-no-visited-state;
+  }
+
+  a[href*="//"]:not([href*="navody.digital"]):not([href^="#"]):not([href^="/"]):after {
+    content: "\00a0\00a0\00a0" !important;
+    display: inline-block;
+    margin-left: 3px;
+    background-color: transparent;
+    background-image: $icon-external-link;
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: contain;
+    text-decoration: none;
+  }
+
+  .govuk-button {
+    &[href*="//"]:not([href*="navody.digital"]):not([href^="#"]):not([href^="/"]):after {
+      background-image: $icon-external-link-white !important;
+    }
   }
 }
