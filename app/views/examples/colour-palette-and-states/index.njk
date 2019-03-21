@@ -145,11 +145,11 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <p class="govuk-body">Despite the similarity in appearance the borders have been applied using <code>outline</code>, <code>border</code> and <code>box-shadow</code> depending on the type of component or state.</p> 
+      <p class="govuk-body">Despite the similarity in appearance the borders in this demo have been applied using <code>outline</code>, <code>border</code> and <code>box-shadow</code> depending on the type of component or state. This is likely to change to box-shadow only as we move into development.</p> 
 
-      <p class="govuk-body">All <code>:focus</code> states will need an outline, even if this is set to transparent. This is so the focus is visible for users that override colours in their browser.</p> 
+      <p class="govuk-body">However all <code>:focus</code> states will need an outline, even if this is set to transparent. This is so the focus is visible for users that override colours in their browser.</p> 
 
-      <p class="govuk-body govuk-!-margin-bottom-0">Please note, this may not be the case for some of these examples, this will be covered when moving into production.</p> 
+      <p class="govuk-body govuk-!-margin-bottom-0">***Please note, this may not be the case for some of these examples, this will be covered when moving into production.</p> 
       </div>
     </div>  
     </div>
@@ -1164,7 +1164,8 @@
 
 
 
-        <h3 class="govuk-heading-m">Hover section</h3>
+        <h3 class="govuk-heading-m govuk-!-padding-top-4">Hover section</h3>
+        <p class="govuk-body">This has set states so use the default example to see interaction</p>
 
         <div class="govuk-accordion" data-module="accordion" id="accordion-with-summary-sections-b">
 
@@ -1298,9 +1299,8 @@
 
         </div>
 
-
-
-        <h3 class="govuk-heading-m">Focus section (closed)</h3>
+        <h3 class="govuk-heading-m govuk-!-padding-top-4">Focus section (closed)</h3>
+        <p class="govuk-body">This has set states so use the default example to see interaction</p>
 
         <div class="govuk-accordion" data-module="accordion" id="accordion-with-summary-sections-c">
 
@@ -1434,7 +1434,8 @@
 
         </div>
 
-        <h3 class="govuk-heading-m">Hover and Focus section (closed)</h3>
+        <h3 class="govuk-heading-m govuk-!-padding-top-4">Hover and Focus section (closed)</h3>
+        <p class="govuk-body">This has set states so use the default example to see interaction</p>
 
         <div class="govuk-accordion" data-module="accordion" id="accordion-with-summary-sections-d">
 
@@ -1568,8 +1569,8 @@
 
         </div>
 
-
-        <h3 class="govuk-heading-m">Section (open)</h3>
+        <h3 class="govuk-heading-m govuk-!-padding-top-4">Section (open)</h3>
+        <p class="govuk-body">This has set states so use the default example to see interaction</p>
 
         <div class="govuk-accordion" data-module="accordion" id="accordion-with-summary-sections-open-e">
 
@@ -1703,12 +1704,12 @@
 
         </div>
 
-
-        <h3 class="govuk-heading-m">Section (open) with Focus within</h3>
+        <h3 class="govuk-heading-m govuk-!-padding-top-4">Section (open) with Focus within</h3>
+        <p class="govuk-body">This has set states so use the default example to see interaction</p>
 
         <div class="govuk-accordion" data-module="accordion" id="accordion-with-summary-sections-open-f">
 
-          <div class="govuk-accordion__section govuk-accordion__section--expanded">
+          <div class="govuk-accordion__section govuk-accordion__section--expanded :focus-within">
             <div class="govuk-accordion__section-header govuk-accordion__section-header--focused :focus-within">
               <h2 class="govuk-accordion__section-heading">
                 <span class="govuk-accordion__section-button :focus" id="accordion-with-summary-sections-heading-1">
@@ -1839,7 +1840,8 @@
         </div>
 
 
-        <h3 class="govuk-heading-m">Section (open) with Focus on internal link</h3>
+        <h3 class="govuk-heading-m govuk-!-padding-top-4">Section (open) with Focus on internal link</h3>
+        <p class="govuk-body">This has set states so use the default example to see interaction</p>
 
         <div class="govuk-accordion" data-module="accordion" id="accordion-with-summary-sections-open-g">
 
@@ -2365,28 +2367,28 @@
 
           <ul class="govuk-tabs__list">
             <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
-              <a class="govuk-tabs__tab" href="#past-day">
+              <a class="govuk-tabs__tab" href="#past-day-1">
                 Past day
               </a>
             </li>
             <li class="govuk-tabs__list-item">
-              <a class="govuk-tabs__tab" href="#past-week">
+              <a class="govuk-tabs__tab" href="#past-week-1">
                 Past week
               </a>
             </li>
             <li class="govuk-tabs__list-item">
-              <a class="govuk-tabs__tab" href="#past-month">
+              <a class="govuk-tabs__tab" href="#past-month-1">
                 Past month
               </a>
             </li>
             <li class="govuk-tabs__list-item">
-              <a class="govuk-tabs__tab" href="#past-year">
+              <a class="govuk-tabs__tab" href="#past-year-1">
                 Past year
               </a>
             </li>
           </ul>
 
-          <section class="govuk-tabs__panel" id="past-day">
+          <section class="govuk-tabs__panel" id="past-day-1">
             <h2 class="govuk-heading-l">Past day</h2>
             <table class="govuk-table">
               <thead class="govuk-table__head">
@@ -2416,7 +2418,7 @@
             </table>
 
           </section>
-          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-week">
+          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-week-1">
             <h2 class="govuk-heading-l">Past week</h2>
             <table class="govuk-table">
               <thead class="govuk-table__head">
@@ -2446,7 +2448,7 @@
             </table>
 
           </section>
-          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-month">
+          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-month-1">
             <h2 class="govuk-heading-l">Past month</h2>
             <table class="govuk-table">
               <thead class="govuk-table__head">
@@ -2476,7 +2478,7 @@
             </table>
 
           </section>
-          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-year">
+          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-year-1">
             <h2 class="govuk-heading-l">Past year</h2>
             <table class="govuk-table">
               <thead class="govuk-table__head">
@@ -2509,6 +2511,7 @@
         </div>
 
         <h3 class="govuk-heading-m">Hover third tab</h3>
+        <p class="govuk-body">This has set states so use the default example to see interaction</p>
 
         <div class="govuk-tabs" data-module="tabs">
           <h2 class="govuk-tabs__title">
@@ -2517,28 +2520,28 @@
 
           <ul class="govuk-tabs__list">
             <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
-              <a class="govuk-tabs__tab" href="#past-day">
+              <a class="govuk-tabs__tab" href="#past-day-2">
                 Past day
               </a>
             </li>
             <li class="govuk-tabs__list-item">
-              <a class="govuk-tabs__tab" href="#past-week">
+              <a class="govuk-tabs__tab" href="#past-week-2">
                 Past week
               </a>
             </li>
-            <li class="govuk-tabs__list-item :hover">
-              <a class="govuk-tabs__tab" href="#past-month">
+            <li class="govuk-tabs__list-item">
+              <a class="govuk-tabs__tab :hover" href="#past-month-2">
                 Past month
               </a>
             </li>
             <li class="govuk-tabs__list-item">
-              <a class="govuk-tabs__tab" href="#past-year">
+              <a class="govuk-tabs__tab" href="#past-year-2">
                 Past year
               </a>
             </li>
           </ul>
 
-          <section class="govuk-tabs__panel" id="past-day">
+          <section class="govuk-tabs__panel" id="past-day-2">
             <h2 class="govuk-heading-l">Past day</h2>
             <table class="govuk-table">
               <thead class="govuk-table__head">
@@ -2568,7 +2571,7 @@
             </table>
 
           </section>
-          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-week">
+          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-week-2">
             <h2 class="govuk-heading-l">Past week</h2>
             <table class="govuk-table">
               <thead class="govuk-table__head">
@@ -2598,7 +2601,7 @@
             </table>
 
           </section>
-          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-month">
+          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-month-2">
             <h2 class="govuk-heading-l">Past month</h2>
             <table class="govuk-table">
               <thead class="govuk-table__head">
@@ -2628,7 +2631,7 @@
             </table>
 
           </section>
-          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-year">
+          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-year-2">
             <h2 class="govuk-heading-l">Past year</h2>
             <table class="govuk-table">
               <thead class="govuk-table__head">
@@ -2661,7 +2664,8 @@
         </div>
 
 
-        <h3 class="govuk-heading-m">Focus fourth tab</h3>
+        <h3 class="govuk-heading-m">Focus and select first tab</h3>
+        <p class="govuk-body">This has set states so use the default example to see interaction</p>
 
         <div class="govuk-tabs" data-module="tabs">
           <h2 class="govuk-tabs__title">
@@ -2670,28 +2674,28 @@
 
           <ul class="govuk-tabs__list">
             <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
-              <a class="govuk-tabs__tab" href="#past-day">
+              <a class="govuk-tabs__tab :focus" href="#past-day-3">
                 Past day
               </a>
             </li>
             <li class="govuk-tabs__list-item">
-              <a class="govuk-tabs__tab" href="#past-week">
+              <a class="govuk-tabs__tab" href="#past-week-3">
                 Past week
               </a>
             </li>
             <li class="govuk-tabs__list-item">
-              <a class="govuk-tabs__tab" href="#past-month">
+              <a class="govuk-tabs__tab" href="#past-month-3">
                 Past month
               </a>
             </li>
             <li class="govuk-tabs__list-item">
-              <a class="govuk-tabs__tab :focus" href="#past-year">
+              <a class="govuk-tabs__tab" href="#past-year-3">
                 Past year
               </a>
             </li>
           </ul>
 
-          <section class="govuk-tabs__panel" id="past-day">
+          <section class="govuk-tabs__panel" id="past-day-3">
             <h2 class="govuk-heading-l">Past day</h2>
             <table class="govuk-table">
               <thead class="govuk-table__head">
@@ -2721,7 +2725,7 @@
             </table>
 
           </section>
-          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-week">
+          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-week-3">
             <h2 class="govuk-heading-l">Past week</h2>
             <table class="govuk-table">
               <thead class="govuk-table__head">
@@ -2751,7 +2755,7 @@
             </table>
 
           </section>
-          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-month">
+          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-month-3">
             <h2 class="govuk-heading-l">Past month</h2>
             <table class="govuk-table">
               <thead class="govuk-table__head">
@@ -2781,7 +2785,7 @@
             </table>
 
           </section>
-          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-year">
+          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-year-3">
             <h2 class="govuk-heading-l">Past year</h2>
             <table class="govuk-table">
               <thead class="govuk-table__head">
@@ -2812,313 +2816,6 @@
 
           </section>
         </div>
-
-
-        <h3 class="govuk-heading-m">Select and Focus fourth tab</h3>
-
-        <div class="govuk-tabs" data-module="tabs">
-          <h2 class="govuk-tabs__title">
-            Contents
-          </h2>
-
-          <ul class="govuk-tabs__list">
-            <li class="govuk-tabs__list-item">
-              <a class="govuk-tabs__tab" href="#past-day">
-                Past day
-              </a>
-            </li>
-            <li class="govuk-tabs__list-item">
-              <a class="govuk-tabs__tab" href="#past-week">
-                Past week
-              </a>
-            </li>
-            <li class="govuk-tabs__list-item">
-              <a class="govuk-tabs__tab" href="#past-month">
-                Past month
-              </a>
-            </li>
-            <li class="govuk-tabs__list-item govuk-tabs__list-item--selected :focus-within">
-              <a class="govuk-tabs__tab :focus" href="#past-year">
-                Past year
-              </a>
-            </li>
-          </ul>
-
-          <section class="govuk-tabs__panel" id="past-day">
-            <h2 class="govuk-heading-l">Past day</h2>
-            <table class="govuk-table">
-              <thead class="govuk-table__head">
-                <tr class="govuk-table__row">
-                  <th class="govuk-table__header" scope="col">Case manager</th>
-                  <th class="govuk-table__header" scope="col">Cases opened</th>
-                  <th class="govuk-table__header" scope="col">Cases closed</th>
-                </tr>
-              </thead>
-              <tbody class="govuk-table__body">
-                <tr class="govuk-table__row">
-                  <td class="govuk-table__cell">David Francis</td>
-                  <td class="govuk-table__cell">3</td>
-                  <td class="govuk-table__cell">0</td>
-                </tr>
-                <tr class="govuk-table__row">
-                  <td class="govuk-table__cell">Paul Farmer</td>
-                  <td class="govuk-table__cell">1</td>
-                  <td class="govuk-table__cell">0</td>
-                </tr>
-                <tr class="govuk-table__row">
-                  <td class="govuk-table__cell">Rita Patel</td>
-                  <td class="govuk-table__cell">2</td>
-                  <td class="govuk-table__cell">0</td>
-                </tr>
-              </tbody>
-            </table>
-
-          </section>
-          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-week">
-            <h2 class="govuk-heading-l">Past week</h2>
-            <table class="govuk-table">
-              <thead class="govuk-table__head">
-                <tr class="govuk-table__row">
-                  <th class="govuk-table__header" scope="col">Case manager</th>
-                  <th class="govuk-table__header" scope="col">Cases opened</th>
-                  <th class="govuk-table__header" scope="col">Cases closed</th>
-                </tr>
-              </thead>
-              <tbody class="govuk-table__body">
-                <tr class="govuk-table__row">
-                  <td class="govuk-table__cell">David Francis</td>
-                  <td class="govuk-table__cell">24</td>
-                  <td class="govuk-table__cell">18</td>
-                </tr>
-                <tr class="govuk-table__row">
-                  <td class="govuk-table__cell">Paul Farmer</td>
-                  <td class="govuk-table__cell">16</td>
-                  <td class="govuk-table__cell">20</td>
-                </tr>
-                <tr class="govuk-table__row">
-                  <td class="govuk-table__cell">Rita Patel</td>
-                  <td class="govuk-table__cell">24</td>
-                  <td class="govuk-table__cell">27</td>
-                </tr>
-              </tbody>
-            </table>
-
-          </section>
-          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-month">
-            <h2 class="govuk-heading-l">Past month</h2>
-            <table class="govuk-table">
-              <thead class="govuk-table__head">
-                <tr class="govuk-table__row">
-                  <th class="govuk-table__header" scope="col">Case manager</th>
-                  <th class="govuk-table__header" scope="col">Cases opened</th>
-                  <th class="govuk-table__header" scope="col">Cases closed</th>
-                </tr>
-              </thead>
-              <tbody class="govuk-table__body">
-                <tr class="govuk-table__row">
-                  <td class="govuk-table__cell">David Francis</td>
-                  <td class="govuk-table__cell">98</td>
-                  <td class="govuk-table__cell">95</td>
-                </tr>
-                <tr class="govuk-table__row">
-                  <td class="govuk-table__cell">Paul Farmer</td>
-                  <td class="govuk-table__cell">122</td>
-                  <td class="govuk-table__cell">131</td>
-                </tr>
-                <tr class="govuk-table__row">
-                  <td class="govuk-table__cell">Rita Patel</td>
-                  <td class="govuk-table__cell">126</td>
-                  <td class="govuk-table__cell">142</td>
-                </tr>
-              </tbody>
-            </table>
-
-          </section>
-          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-year">
-            <h2 class="govuk-heading-l">Past year</h2>
-            <table class="govuk-table">
-              <thead class="govuk-table__head">
-                <tr class="govuk-table__row">
-                  <th class="govuk-table__header" scope="col">Case manager</th>
-                  <th class="govuk-table__header" scope="col">Cases opened</th>
-                  <th class="govuk-table__header" scope="col">Cases closed</th>
-                </tr>
-              </thead>
-              <tbody class="govuk-table__body">
-                <tr class="govuk-table__row">
-                  <td class="govuk-table__cell">David Francis</td>
-                  <td class="govuk-table__cell">1380</td>
-                  <td class="govuk-table__cell">1472</td>
-                </tr>
-                <tr class="govuk-table__row">
-                  <td class="govuk-table__cell">Paul Farmer</td>
-                  <td class="govuk-table__cell">1129</td>
-                  <td class="govuk-table__cell">1083</td>
-                </tr>
-                <tr class="govuk-table__row">
-                  <td class="govuk-table__cell">Rita Patel</td>
-                  <td class="govuk-table__cell">1539</td>
-                  <td class="govuk-table__cell">1265</td>
-                </tr>
-              </tbody>
-            </table>
-
-          </section>
-        </div>
-
-
-        <h3 class="govuk-heading-m">Hover and Focus first tab</h3>
-
-        <div class="govuk-tabs" data-module="tabs">
-          <h2 class="govuk-tabs__title">
-            Contents
-          </h2>
-
-          <ul class="govuk-tabs__list">
-            <li class="govuk-tabs__list-item :hover">
-              <a class="govuk-tabs__tab :focus" href="#past-day">
-                Past day
-              </a>
-            </li>
-            <li class="govuk-tabs__list-item">
-              <a class="govuk-tabs__tab" href="#past-week">
-                Past week
-              </a>
-            </li>
-            <li class="govuk-tabs__list-item">
-              <a class="govuk-tabs__tab" href="#past-month">
-                Past month
-              </a>
-            </li>
-            <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
-              <a class="govuk-tabs__tab" href="#past-year">
-                Past year
-              </a>
-            </li>
-          </ul>
-
-          <section class="govuk-tabs__panel" id="past-day">
-            <h2 class="govuk-heading-l">Past day</h2>
-            <table class="govuk-table">
-              <thead class="govuk-table__head">
-                <tr class="govuk-table__row">
-                  <th class="govuk-table__header" scope="col">Case manager</th>
-                  <th class="govuk-table__header" scope="col">Cases opened</th>
-                  <th class="govuk-table__header" scope="col">Cases closed</th>
-                </tr>
-              </thead>
-              <tbody class="govuk-table__body">
-                <tr class="govuk-table__row">
-                  <td class="govuk-table__cell">David Francis</td>
-                  <td class="govuk-table__cell">3</td>
-                  <td class="govuk-table__cell">0</td>
-                </tr>
-                <tr class="govuk-table__row">
-                  <td class="govuk-table__cell">Paul Farmer</td>
-                  <td class="govuk-table__cell">1</td>
-                  <td class="govuk-table__cell">0</td>
-                </tr>
-                <tr class="govuk-table__row">
-                  <td class="govuk-table__cell">Rita Patel</td>
-                  <td class="govuk-table__cell">2</td>
-                  <td class="govuk-table__cell">0</td>
-                </tr>
-              </tbody>
-            </table>
-
-          </section>
-          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-week">
-            <h2 class="govuk-heading-l">Past week</h2>
-            <table class="govuk-table">
-              <thead class="govuk-table__head">
-                <tr class="govuk-table__row">
-                  <th class="govuk-table__header" scope="col">Case manager</th>
-                  <th class="govuk-table__header" scope="col">Cases opened</th>
-                  <th class="govuk-table__header" scope="col">Cases closed</th>
-                </tr>
-              </thead>
-              <tbody class="govuk-table__body">
-                <tr class="govuk-table__row">
-                  <td class="govuk-table__cell">David Francis</td>
-                  <td class="govuk-table__cell">24</td>
-                  <td class="govuk-table__cell">18</td>
-                </tr>
-                <tr class="govuk-table__row">
-                  <td class="govuk-table__cell">Paul Farmer</td>
-                  <td class="govuk-table__cell">16</td>
-                  <td class="govuk-table__cell">20</td>
-                </tr>
-                <tr class="govuk-table__row">
-                  <td class="govuk-table__cell">Rita Patel</td>
-                  <td class="govuk-table__cell">24</td>
-                  <td class="govuk-table__cell">27</td>
-                </tr>
-              </tbody>
-            </table>
-
-          </section>
-          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-month">
-            <h2 class="govuk-heading-l">Past month</h2>
-            <table class="govuk-table">
-              <thead class="govuk-table__head">
-                <tr class="govuk-table__row">
-                  <th class="govuk-table__header" scope="col">Case manager</th>
-                  <th class="govuk-table__header" scope="col">Cases opened</th>
-                  <th class="govuk-table__header" scope="col">Cases closed</th>
-                </tr>
-              </thead>
-              <tbody class="govuk-table__body">
-                <tr class="govuk-table__row">
-                  <td class="govuk-table__cell">David Francis</td>
-                  <td class="govuk-table__cell">98</td>
-                  <td class="govuk-table__cell">95</td>
-                </tr>
-                <tr class="govuk-table__row">
-                  <td class="govuk-table__cell">Paul Farmer</td>
-                  <td class="govuk-table__cell">122</td>
-                  <td class="govuk-table__cell">131</td>
-                </tr>
-                <tr class="govuk-table__row">
-                  <td class="govuk-table__cell">Rita Patel</td>
-                  <td class="govuk-table__cell">126</td>
-                  <td class="govuk-table__cell">142</td>
-                </tr>
-              </tbody>
-            </table>
-
-          </section>
-          <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-year">
-            <h2 class="govuk-heading-l">Past year</h2>
-            <table class="govuk-table">
-              <thead class="govuk-table__head">
-                <tr class="govuk-table__row">
-                  <th class="govuk-table__header" scope="col">Case manager</th>
-                  <th class="govuk-table__header" scope="col">Cases opened</th>
-                  <th class="govuk-table__header" scope="col">Cases closed</th>
-                </tr>
-              </thead>
-              <tbody class="govuk-table__body">
-                <tr class="govuk-table__row">
-                  <td class="govuk-table__cell">David Francis</td>
-                  <td class="govuk-table__cell">1380</td>
-                  <td class="govuk-table__cell">1472</td>
-                </tr>
-                <tr class="govuk-table__row">
-                  <td class="govuk-table__cell">Paul Farmer</td>
-                  <td class="govuk-table__cell">1129</td>
-                  <td class="govuk-table__cell">1083</td>
-                </tr>
-                <tr class="govuk-table__row">
-                  <td class="govuk-table__cell">Rita Patel</td>
-                  <td class="govuk-table__cell">1539</td>
-                  <td class="govuk-table__cell">1265</td>
-                </tr>
-              </tbody>
-            </table>
-
-          </section>
-        </div>
-
 
         <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">  
 
