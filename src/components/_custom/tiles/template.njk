@@ -1,32 +1,10 @@
 <div class="sdn-tiles">
-    <a href="#" class="sdn-tiles__item sdn-tile">
-        <img class="sdn-tile__image" src="https://placekitten.com/200/234" alt="">
-        <span class="sdn-tile__content sdn-tile-content-text-block">
-            <span class="sdn-tile-content-text-block__item">Narodenie dieťaťa</span>
-        </span>
-    </a>
-    <a href="#" class="sdn-tiles__item sdn-tile">
-        <img class="sdn-tile__image" src="https://placekitten.com/457/345" alt="">
-        <span class="sdn-tile__content sdn-tile-content-text-block">
-            <span class="sdn-tile-content-text-block__item">Narodenie dieťaťa</span>
-        </span>
-    </a>
-    <a href="#" class="sdn-tiles__item sdn-tile">
-        <img class="sdn-tile__image" src="https://placekitten.com/200/100" alt="">
-        <span class="sdn-tile__content sdn-tile-content-text-block">
-            <span class="sdn-tile-content-text-block__item">strasne dlhy text je tu</span>
-        </span>
-    </a>
-    <a href="#" class="sdn-tiles__item sdn-tile">
-        <img class="sdn-tile__image" src="https://placekitten.com/200/100" alt="">
-        <span class="sdn-tile__content sdn-tile-content-text-block">
-            <span class="sdn-tile-content-text-block__item">Narodenie dieťaťa</span>
-        </span>
-    </a>
-    <a href="#" class="sdn-tiles__item sdn-tile">
-        <img class="sdn-tile__image" src="https://placekitten.com/200/100" alt="">
-        <span class="sdn-tile__content sdn-tile-content-text-block">
-            <span class="sdn-tile-content-text-block__item">Narodenie dieťaťa</span>
-        </span>
-    </a>
+    {% for item in params.items %}
+        <a href="{{item.url}}" class="sdn-tiles__item sdn-tile">
+            <img class="sdn-tile__image" src="{{item.image}}" alt="">
+            <span class="sdn-tile__content sdn-tile-content-text-block">
+                <span class="sdn-tile-content-text-block__item">{{item.title}}</span>
+            </span>
+        </a>
+    {% endfor %}
 </div>
