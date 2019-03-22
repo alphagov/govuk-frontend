@@ -48,8 +48,7 @@
     // When focussed, the text colour needs to be darker to ensure that colour
     // contrast is still acceptable
     &:focus {
-      color: $govuk-focus-text-colour;
-      text-decoration: none;
+      text-decoration: none !important;
     }
 
     // alphagov/govuk_template includes a specific a:link:focus selector
@@ -118,10 +117,6 @@
     text-align: center;
     text-decoration: none;
     white-space: nowrap;
-
-    &:focus {
-      padding-top: ($govuk-footer-crest-image-height + govuk-spacing(2));
-    }
   }
 
   .govuk-footer__inline-list {

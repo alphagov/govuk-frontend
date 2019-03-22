@@ -41,15 +41,11 @@
 /// @access public
 
 @mixin govuk-focusable-text {
-  margin-right: -(govuk-spacing(1));
-  margin-left: -(govuk-spacing(1));
-  padding-top: 3px;
-  padding-right: govuk-spacing(1);
-  padding-left: govuk-spacing(1);
   outline: $govuk-focus-width solid transparent;
   outline-offset: 0;
+  color: $govuk-text-colour;
   background-color: $govuk-focus-colour;
-  box-shadow: 0 4px 0 govuk-colour("black");
+  box-shadow: -5px -1px 0 1px govuk-colour("yellow"), 5px -1px 0 1px govuk-colour("yellow"), -3px 1px 0 3px govuk-colour("black"), 3px 1px 0 3px govuk-colour("black");
   text-decoration: none;
 }
 

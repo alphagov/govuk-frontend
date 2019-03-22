@@ -27,16 +27,7 @@
 
 
     &:focus {
-      // Current margin minus 3px padding added by focus
-      margin-top: 12px;
-      // 14px for icon + 5px from focus style
-      padding-left: 19px;
       border-bottom: 1px solid govuk-colour("yellow");
-
-      &:before {
-        top: 2px;
-        left: 5px;
-      }
     }
 
     // Prepend left pointing arrow

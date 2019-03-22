@@ -106,7 +106,7 @@
       }
 
       .govuk-accordion__section-header {
-        
+
         &:focus-within {
           outline: $govuk-focus-width solid transparent;
           outline-offset: 0;
@@ -139,20 +139,13 @@
       @include govuk-focusable-text-link;
       box-sizing: border-box;
       display: inline;
-      margin-right: 0;
-      margin-left: -5px;
-      padding-top: 3px;
-      padding-right: 5px;
-      padding-left: 5px;
+      margin: 0;
+      margin-right: 5px;
+      padding: 0;
       border-width: 0;
       color: $govuk-link-colour;
       background: none;
       cursor: pointer;
-
-      &:focus {
-        margin-right: 0;
-        color: govuk-colour("black");
-      }
     }
 
     // Section headers have a pointer cursor as an additional affordance
@@ -192,7 +185,8 @@
       margin-top: 0;
       margin-bottom: 0;
       margin-left: 0;
-      padding-top: 3px;
+      padding-top: 0;
+      padding-right: 0;
       padding-bottom: 0;
       padding-left: 0;
       border-width: 0;
