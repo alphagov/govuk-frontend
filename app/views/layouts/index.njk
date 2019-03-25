@@ -35,7 +35,7 @@
 
       <ul class="govuk-list">
       {% for exampleName in examplesDirectory | sort %}
-        <li><a href="/examples/{{ exampleName }}" class="govuk-link">{{ exampleName | replace("-", " ") | capitalize }}</a></li>
+        <li><a href="/examples/{{ exampleName }}/index" class="govuk-link">{{ exampleName | replace("-", " ") | capitalize }}</a></li>
       {% endfor %}
       </ul>
 

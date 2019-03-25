@@ -8,7 +8,7 @@
         <span class="sdn-footer__heart-wrapper">
           <span class="sdn-footer__heart"></span>
         </span>
-        <span class="sdn-footer__donate-text">Páči sa vám čo pre vás robíme?<br><a href="#" class="sdn-footer__link sdn-footer__donate-link">Podporte nás</a></span>
+        <span class="sdn-footer__donate-text">Páči sa vám čo pre vás robíme?<br><a href="https://slovensko.digital/podpora" class="sdn-footer__link sdn-footer__donate-link">Podporte nás</a></span>
       </div>
       <div class="sdn-footer__newsletter">
         <span class="sdn-footer__newsletter-heading">Novinky emailom <small class="sdn-footer__newsletter-heading-tooltip">(raz mesačne)</small></span>
@@ -28,12 +28,11 @@
       <div class="sdn-footer__bottom-columns">
         <div class="sdn-footer__links">
           <ul>
+            {% for link in params.links %}
             <li>
-              <a href="#">Pre médiá</a>
+              <a href="{{ link.url }}">{{ link.text }}</a>
             </li>
-            <li>
-              <a href="#">Ochrana osobných údajov</a>
-            </li>
+            {% endfor %}
           </ul>
         </div>
         <div class="sdn-footer__contact">
@@ -44,11 +43,13 @@
             <a href="mailto:kontakt@slovensko.digital">kontakt@slovensko.digital</a>
           </div>
         </div>
+        {% if params.social %}
         <div class="sdn-footer__social">
-          <a href="#facebook" class="footer-icon footer-icon__facebook"><span>facebook</span></a>
-          <a href="#github" class="footer-icon footer-icon__github"><span>github</span></a>
-          <a href="#youtube" class="footer-icon footer-icon__youtube"><span>github</span></a>
+          {% for name, url in params.social %}
+            <a href="{{ url }}" class="footer-icon footer-icon__{{ name }}"><span>{{ name }}</span></a>
+          {% endfor %}
         </div>
+        {% endif %}
       </div>
     </div>
   </div>

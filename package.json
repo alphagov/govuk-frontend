@@ -18,7 +18,8 @@
     "build:dist": "node bin/check-nvmrc.js && gulp build:dist --destination 'dist' && npm run test:build:dist",
     "test": "standard && gulp test && gulp copy-assets && jest --testPathIgnorePatterns='after-*'",
     "test:build:package": "jest tasks/gulp/__tests__/after-build-package.test.js",
-    "test:build:dist": "jest tasks/gulp/__tests__/after-build-dist.test.js"
+    "test:build:dist": "jest tasks/gulp/__tests__/after-build-dist.test.js",
+    "build:examples": "rm -rf ./dist/examples/ && wget http://localhost:3000/ --accept-regex \"/(examples|public|assets)/\" -r -e robots=off -nc -k -xnH --domain localhost -E -P ./dist/examples/"
   },
   "devDependencies": {
     "autoprefixer": "^9.3.1",
@@ -95,6 +96,7 @@
     "globalTeardown": "./lib/puppeteer/teardown.js"
   },
   "dependencies": {
+    "express-writer": "0.0.4",
     "popper.js": "^1.14.6"
   }
 }

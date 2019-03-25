@@ -4,6 +4,7 @@ const nunjucks = require('nunjucks')
 const util = require('util')
 const fs = require('fs')
 const path = require('path')
+const writer = require('express-writer')
 
 const readdir = util.promisify(fs.readdir)
 
@@ -34,8 +35,15 @@ module.exports = (options) => {
     ...nunjucksOptions // merge any additional options and overwrite defaults above.
   })
 
+  writer.setWriteDirectory('./dist/html')
+
   // make the function available as a filter for all templates
   env.addFilter('componentNameToMacroName', helperFunctions.componentNameToMacroName)
+
+  // static html export
+  // if (app.get('env') === 'dist') {
+  // app.use(writer.watch)
+  // }
 
   // Set view engine
   app.set('view engine', 'njk')
@@ -251,8 +259,8 @@ module.exports = (options) => {
   })
 
   // Example view
-  app.get('/examples/:example', function (req, res, next) {
-    res.render(`${req.params.example}/index`, function (error, html) {
+  app.get('/examples/:example/:action?', function (req, res, next) {
+    res.render(`${req.params.example}/${req.params.action || 'index'}`, function (error, html) {
       if (error) {
         next(error)
       } else {

@@ -1,0 +1,25 @@
+{{ govukTimeline({
+    readonly: true,
+    steps: [
+        {
+            text: 'Úvod',
+            href: '/examples/odklad-danoveho-priznania/index',
+            selected: step == 1
+        },
+        {
+            text: 'Registrácia na Finančnej správe',
+            href: '/examples/odklad-danoveho-priznania/registracia',
+            selected: step == 2
+        },
+        {
+            text: 'Inštalácia aplikácie eDane',
+            href: '/examples/odklad-danoveho-priznania/instalacia',
+            selected: step == 3
+        },
+        {
+            text: 'Podanie oznámenie o predĺžení lehoty na podanie daňového priznania',
+            href: '/examples/odklad-danoveho-priznania/podanie',
+            selected: step == 4
+        }
+    ]
+}) }}

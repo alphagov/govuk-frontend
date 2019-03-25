@@ -1,0 +1,49 @@
+{% extends "template-static-odklad-danoveho-priznania.njk" %}
+
+{% from "_custom/timeline/macro.njk" import govukTimeline %}
+{% from "_custom/headline/macro.njk" import govukHeadline %}
+{% from "_custom/todo-list/macro.njk" import govukTodoList %}
+{% from "_custom/next-link/macro.njk" import govukNextLink %}
+
+{% set step = 4 %}
+
+{% block main %}
+    <h1>Podanie oznámenie o predĺžení lehoty na podanie daňového priznania</h1>
+
+    <ul class="govuk-list govuk-list--number">
+        <li>V hlavnom menu kliknite na <b>Elektronická podateľňa</b> → <b>Prihlásenie</b></li>
+        <li>Prihláste sa použitím vášho ID a hesla ktoré ste zadali pri registrácii na portál Finančnej správy.</li>
+        <li>Po prihlásení kliknite na <b>Daňové dokumenty</b>.</li>
+        <li>Vyberte možnosť <b>Daň z príjmov fyzickej osoby</b> → <b>Oznámenie daňovníka o predĺžení lehoty na podanie daňového priznania</b>.</li>
+        <li>Vyplňte formulár <b>Oznámenia daňovníka o predĺžení lehoty na podanie daňového priznania</b>.</li>
+        <li>Kliknite na tlačidlo <b>Kontrolovať</b>.</li>
+        <li>Kliknite na <b>Podpísať ZEP-om</b>.<br></li>
+        <li>Skontrolujte vami zadané údaje a kliknite na <b>Podpísať</b>.
+            <!-- <details>
+
+              <summary><span class="summary">Čo robiť ak nastala chyba pri vytváraní elektronického podpisu</span></summary>
+
+              <div class="panel panel-border-narrow">
+            <p>Ak nastane chyba pri podpisovaní Oznámenia daňovníka o predĺžení lehoty na podanie daňového priznania, pokračujte podľa nasledujúcich bodov.</p>
+            <ul class="govuk-list govuk-list--number">
+            <li>Kliknite na ikonu nastavení medzi políčkom dátumu a ikonou otázniku  → <b>Nastavenia</b></li>
+            <li>Vyberte možnosť <b>PKCS#11/PKCS#12</b></li>
+            <li>Kliknite na <b>Autokonfigurácia</b></li>
+            <li>Kliknite na <b>#1 FFFFFFFFFFFFFFFF (Sig_ZEP)</b> v tabuľke</li>
+            <li>Kliknite na <b>OK</b></li>
+            <li>Kliknite <b>Podpísať</b></li>
+            <li>Kliknite <b>Podať EZ-ou</b></li>
+            <li>Aplikácia eDane vám zobrazí výsledok odoslania dokumentu. Pre zobrazenie potvrdenia o prijatí podania kliknite na <b>Vyhľadať potvrdenku</b>.</li>
+
+
+
+              </div>
+
+            </details> -->
+        </li>
+        <li>Kliknite na certifikát v tabuľke.</li>
+        <li>Kliknite na <b>OK</b>.</li>
+        <li>Kliknite <b>Podať EZ-ou</b>.</li>
+        <li>Aplikácia eDane vám zobrazí výsledok odoslania dokumentu. Pre zobrazenie potvrdenia o prijatí podania kliknite na <b>Vyhľadať potvrdenku</b>.</li>
+    </ul>
+{% endblock %}

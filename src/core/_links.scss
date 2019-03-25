@@ -38,6 +38,10 @@
     background-position: left center;
     background-size: contain;
     text-decoration: none;
+
+    .sdn-footer & {
+      content: "" !important;
+    }
   }
 
   .govuk-button {
