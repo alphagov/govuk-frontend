@@ -63,7 +63,7 @@
       id: "input-1",
       name: "test-name",
       errorMessage: {
-        text: "National Insurance Number"
+        text: "Enter your National Insurance Number"
       }
     }) }}
 
@@ -171,19 +171,22 @@
         text: 'For example, 31 3 1980'
       },
       errorMessage: {
-        text: 'Error message goes here'
+        text: 'Date of birth must be in the past'
       },
       id: 'dob',
       name: 'dob',
       items:[
         {
-          name: 'day'
+          name: 'day',
+          classes: 'govuk-input--width-2 govuk-input--error'
         },
         {
-          name: 'month'
+          name: 'month',
+          classes: 'govuk-input--width-2 govuk-input--error'
         },
         {
-          name: 'year'
+          name: 'year',
+          classes: 'govuk-input--width-4 govuk-input--error'
         }
       ]
       })
@@ -201,20 +204,24 @@
         text: 'For example, 31 3 1980'
       },
       errorMessage: {
-        text: 'Day not valid'
+        text: 'Date of birth must include a day'
       },
       id: 'dob',
       name: 'dob',
       items:[
         {
           name: 'day',
-          classes: 'govuk-input--error'
+          classes: 'govuk-input--width-2 govuk-input--error'
         },
         {
-          name: 'month'
+          name: 'month',
+          value: '10',
+          classes: 'govuk-input--width-2'
         },
         {
-          name: 'year'
+          name: 'year',
+          value: '1985',
+          classes: 'govuk-input--width-4'
         }
       ]
       })
