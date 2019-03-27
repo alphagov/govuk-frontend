@@ -14,89 +14,89 @@
 
 {% block beforeContent %}
   {{ govukBackLink({
-	text: "Back"
+    text: "Back"
   }) }}
 {% endblock %}
 
 {% block content %}
   <div class="govuk-grid-row">
-	<div class="govuk-grid-column-two-thirds">
-	  {% if errorSummary.length > 0 %}
-		{{ govukErrorSummary({
-		  titleText: "There is a problem",
-		  errorList: errorSummary 
-		}) }}
-	  {% endif %}
-	  <h1 class="govuk-heading-xl">{{ pageTitle }}</h1>
+    <div class="govuk-grid-column-two-thirds">
+      {% if errorSummary.length > 0 %}
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: errorSummary
+        }) }}
+      {% endif %}
+      <h1 class="govuk-heading-xl">{{ pageTitle }}</h1>
 
-	  <form method="post" novalidate>
+      <form method="post" novalidate>
 
-		{{ govukInput({
-		  label: {
-			text: "Passport number",
-			classes: "govuk-label--m"
-		  },
-		  hint: {
-			text: "For example, 502135326"
-		  },
-		  classes: "govuk-input--width-10",
-		  id: "passport-number",
-		  name: "passport-number",
-		  value: values["passport-number"],
-		  errorMessage: errors["passport-number"]
-		}) }}
+        {{ govukInput({
+          label: {
+            text: "Passport number",
+            classes: "govuk-label--m"
+          },
+          hint: {
+            text: "For example, 502135326"
+          },
+          classes: "govuk-input--width-10",
+          id: "passport-number",
+          name: "passport-number",
+          value: values["passport-number"],
+          errorMessage: errors["passport-number"]
+        }) }}
 
-		{% set dateInputDayClass = "govuk-input--width-2" %}
-		{% set dateInputMonthClass = "govuk-input--width-2" %}
-		{% set dateInputYearClass = "govuk-input--width-4" %}
+        {% set dateInputDayClass = "govuk-input--width-2" %}
+        {% set dateInputMonthClass = "govuk-input--width-2" %}
+        {% set dateInputYearClass = "govuk-input--width-4" %}
 
-		{% if errors["expiry-day"] %}
-			{% set dateInputDayClass = dateInputDayClass + " govuk-input--error" %}
-		{% endif %}
-		{% if errors["expiry-month"] %}
-			{% set dateInputMonthClass = dateInputMonthClass + " govuk-input--error" %}
-		{% endif %}
-		{% if errors["expiry-year"] %}
-			{% set dateInputYearClass = dateInputYearClass + " govuk-input--error" %}
-		{% endif %}
+        {% if errors["expiry-day"] %}
+          {% set dateInputDayClass = dateInputDayClass + " govuk-input--error" %}
+        {% endif %}
+        {% if errors["expiry-month"] %}
+          {% set dateInputMonthClass = dateInputMonthClass + " govuk-input--error" %}
+        {% endif %}
+        {% if errors["expiry-year"] %}
+          {% set dateInputYearClass = dateInputYearClass + " govuk-input--error" %}
+        {% endif %}
 
-		{{ govukDateInput({
-		  id: "expiry",
-		  namePrefix: "expiry",
-		  fieldset: {
-			legend: {
-			  text: "Expiry date",
-			  classes: "govuk-fieldset__legend--m"
-			}
-		  },
-		  hint: {
-			text: "For example, 31 3 1980"
-		  },
-			items: [
-				{
-					classes: dateInputDayClass,
-					name: "day",
-					value: values["expiry-day"]
-				},
-				{
-					classes: dateInputMonthClass,
-					name: "month",
-					value: values["expiry-month"]
-				},
-				{
-					classes: dateInputYearClass,
-					name: "year",
-					value: values["expiry-year"]
-				}
-			],
-		 	errorMessage: errors["expiry"]
-		}) }}
+        {{ govukDateInput({
+          id: "expiry",
+          namePrefix: "expiry",
+          fieldset: {
+            legend: {
+              text: "Expiry date",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: "For example, 31 3 1980"
+          },
+          items: [
+            {
+              classes: dateInputDayClass,
+              name: "day",
+              value: values["expiry-day"]
+            },
+            {
+              classes: dateInputMonthClass,
+              name: "month",
+              value: values["expiry-month"]
+            },
+            {
+              classes: dateInputYearClass,
+              name: "year",
+              value: values["expiry-year"]
+            }
+          ],
+          errorMessage: errors["expiry"]
+        }) }}
 
-		{{ govukButton({
-		  text: "Continue"
-		}) }}
+        {{ govukButton({
+          text: "Continue"
+        }) }}
 
-	  </form>
-	</div>
+      </form>
+    </div>
   </div>
 {% endblock %}

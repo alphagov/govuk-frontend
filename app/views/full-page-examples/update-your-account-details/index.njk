@@ -12,60 +12,60 @@
 
 {% block beforeContent %}
   {{ govukBackLink({
-	text: "Back"
+    text: "Back"
   }) }}
 {% endblock %}
 
 {% block content %}
   <div class="govuk-grid-row">
-		<div class="govuk-grid-column-two-thirds">
-			{% if errorSummary.length > 0 %}
-			{{ govukErrorSummary({
-				titleText: "There is a problem",
-				errorList: errorSummary 
-			}) }}
-			{% endif %}
-			<h1 class="govuk-heading-xl">{{ pageTitle }}</h1>
+    <div class="govuk-grid-column-two-thirds">
+      {% if errorSummary.length > 0 %}
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: errorSummary
+        }) }}
+      {% endif %}
+      <h1 class="govuk-heading-xl">{{ pageTitle }}</h1>
 
-			<form method="post" novalidate>
+      <form method="post" novalidate>
 
-				{{ govukInput({
-					label: {
-						text: "Email address",
-						classes: "govuk-label--m"
-					},
-					type: "email",
-					id: "email",
-					name: "email",
-					value: values["email"],
-					errorMessage: errors["email"],
-					autocomplete: "email",
-					attributes: {
-						spellcheck: false
-					}
-				}) }}
+        {{ govukInput({
+          label: {
+            text: "Email address",
+            classes: "govuk-label--m"
+          },
+          type: "email",
+          id: "email",
+          name: "email",
+          value: values["email"],
+          errorMessage: errors["email"],
+          autocomplete: "email",
+          attributes: {
+            spellcheck: false
+          }
+        }) }}
 
-				{{ govukInput({
-					label: {
-						text: "New password",
-						classes: "govuk-label--m"
-					},
-					type: "password",
-					id: "password",
-					name: "password",
-					value: values["password"],
-					errorMessage: errors["password"],
-					autocomplete: "new-password",
-					attributes: {
-						spellcheck: false
-					}
-				}) }}
+        {{ govukInput({
+          label: {
+            text: "New password",
+            classes: "govuk-label--m"
+          },
+          type: "password",
+          id: "password",
+          name: "password",
+          value: values["password"],
+          errorMessage: errors["password"],
+          autocomplete: "new-password",
+          attributes: {
+            spellcheck: false
+          }
+        }) }}
 
-				{{ govukButton({
-					text: "Save account details"
-				}) }}
+        {{ govukButton({
+          text: "Save account details"
+        }) }}
 
-			</form>
-		</div>
+      </form>
+    </div>
   </div>
 {% endblock %}
