@@ -12,12 +12,16 @@
     @include govuk-clearfix;
     // font-size: 0 removes whitespace caused by inline-block
     font-size: 0;
+    white-space: nowrap;
   }
 
   .govuk-date-input__item {
     display: inline-block;
-    margin-right: govuk-spacing(4);
     margin-bottom: 0;
+  }
+
+  .govuk-date-input__item + .govuk-date-input__item {
+    margin-left: govuk-spacing(4);
   }
 
   .govuk-date-input__label {

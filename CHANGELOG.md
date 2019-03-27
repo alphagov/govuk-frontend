@@ -34,6 +34,12 @@
 
   ([PR #1265](https://github.com/alphagov/govuk-frontend/pull/1265))
 
+- Prevent wrapping of individual date inputs
+
+  Date inputs should group together as if they're a single field, this fix keeps them together using `white-space: nowrap`.
+
+  ([PR #1257](https://github.com/alphagov/govuk-frontend/pull/1257))
+
 ## 2.9.0 (Feature release)
 
 🆕 New features:
