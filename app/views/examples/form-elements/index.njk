@@ -60,7 +60,10 @@
     <span id="radio-stacked"></span>
     {{ govukRadios({
       "fieldset": {
-        "legendHtml": "<h2 class=\"govuk-heading-l\">How do you want to be contacted?</h2>"
+        "legend": {
+          text: "How do you want to be contacted?",
+          classes: "govuk-fieldset__legend--m"
+        }
       },
       "idPrefix": "radio-stacked",
       "name": "radio-stacked",
@@ -121,12 +124,17 @@
 
     <span id="date"></span>
     {{- govukDateInput({
-      fieldset: {
-        legendText: 'What is your date of birth?',
-        legendHintText: 'For example, 31 3 1980'
+      "fieldset": {
+        "legend": {
+          "text": "What is your date of birth?",
+          "classes": "govuk-fieldset__legend--m"
+        }
       },
-      id: 'dob',
-      name: 'dob'
+      "hint": {
+        "text": "For example, 31 3 1980"
+      },
+      "id": "dob",
+      "name": "dob"
     }) -}}
 
     {% call govukFieldset() %}
