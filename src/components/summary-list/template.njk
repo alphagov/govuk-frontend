@@ -19,7 +19,7 @@
         <dd class="govuk-summary-list__actions {%- if row.actions.classes %} {{ row.actions.classes }}{% endif %}">
           {% if row.actions.items.length == 1 %}
             {{ _actionLink(row.actions.items[0]) | indent(12) | trim }}
-          {% else %}
+          {% elseif row.actions.items.length > 1 %}
             <ul class="govuk-summary-list__actions-list">
               {% for action in row.actions.items %}
                 <li class="govuk-summary-list__actions-list-item">
