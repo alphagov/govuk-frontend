@@ -1,0 +1,62 @@
+{% from "../error-message/macro.njk" import govukErrorMessage -%}
+{% from "../fieldset/macro.njk" import govukFieldset %}
+{% from "../hint/macro.njk" import govukHint %}
+{% from "../label/macro.njk" import govukLabel %}
+
+{#- a record of other elements that we need to associate with the input using
+   aria-describedby – for example hints or error messages -#}
+{%- set describedBy = params.fieldset.describedBy if params.fieldset.describedBy else "" -%}
+
+{#- Capture the HTML so we can optionally nest it in a fieldset -#}
+{%- set innerHtml %}
+{% if params.label and not params.fieldset %}
+  {{ govukLabel({
+    html: params.label.html,
+    text: params.label.text,
+    classes: params.label.classes,
+    isPageHeading: params.label.isPageHeading,
+    attributes: params.label.attributes,
+    for: params.id
+  }) | indent(2) | trim }}
+{% endif %}
+{% if params.hint %}
+  {% set hintId = params.id + '-hint' %}
+  {% set describedBy = describedBy + ' ' + hintId if describedBy else hintId %}
+  {{ govukHint({
+    id: hintId,
+    classes: params.hint.classes,
+    attributes: params.hint.attributes,
+    html: params.hint.html,
+    text: params.hint.text
+  }) | indent(2) | trim }}
+{% endif %}
+{% if params.errorMessage %}
+  {% set errorId = params.id + '-error' %}
+  {% set describedBy = describedBy + ' ' + errorId if describedBy else errorId %}
+  {{ govukErrorMessage({
+    id: errorId,
+    classes: params.errorMessage.classes,
+    attributes: params.errorMessage.attributes,
+    html: params.errorMessage.html,
+    text: params.errorMessage.text,
+    visuallyHiddenText: params.errorMessage.visuallyHiddenText
+  }) | indent(2) | trim }}
+{% endif %}
+{% endset %}
+
+<div class="govuk-form-group {%- if params.errorMessage %} govuk-form-group--error{% endif %} {%- if params.formGroup.classes %} {{ params.formGroup.classes }}{% endif %}">
+{% if params.fieldset %}
+  {% call govukFieldset({
+    describedBy: describedBy,
+    classes: params.fieldset.classes,
+    attributes: params.fieldset.attributes,
+    legend: params.fieldset.legend
+  }) %}
+  {{ innerHtml | trim | safe }}
+{{ caller() if caller }} {#- if statement allows usage of `call` to be optional -#}
+  {% endcall %}
+{% else %}
+  {{ innerHtml | trim | safe }}
+{{ caller() if caller }} {#- if statement allows usage of `call` to be optional -#}
+{% endif %}
+</div>

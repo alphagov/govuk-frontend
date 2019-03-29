@@ -1,0 +1,66 @@
+params:
+- name: id
+  type: string
+  required: true
+  description: The id of the input
+- name: fieldset
+  type: object
+  required: false
+  description: Options for the fieldset component (e.g. legend).
+  isComponent: true
+- name: hint
+  type: object
+  required: false
+  description: Options for the hint component.
+  isComponent: true
+- name: label
+  type: object
+  required: false
+  description: Options for the label component if no fieldset is provided.
+  isComponent: true
+- name: errorMessage
+  type: object
+  required: false
+  description: Options for the errorMessage component.
+  isComponent: true
+- name: formGroup
+  type: object
+  required: false
+  description: Options for the form-group wrapper.
+  params:
+  - name: classes
+    type: string
+    required: false
+    description: Classes to add to the form group (e.g. to show error state for the whole group)
+- name: caller
+  type: nunjucks-block
+  required: false
+  description: Not strictly a parameter but [Nunjucks code convention](https://mozilla.github.io/nunjucks/templating.html#call). Using a `call` block enables you to call a macro with all the text inside the tag. This is helpful if you want to pass a lot of content into a macro. To use it, you will need to wrap the entire form group component in a `call` block.
+
+examples:
+- name: default
+  data:
+    id: address
+    label:
+      text: What is your address?
+- name: with label as page heading
+  data:
+    id: address-heading
+    label:
+      text: What is your address?
+      classes: govuk-label--xl
+      isPageHeading: true
+- name: with fieldset legend
+  data:
+    id: address-fieldset
+    fieldset:
+      legend:
+        text: What is your address?
+- name: with fieldset legend as page heading
+  data:
+    id: address-fieldset-heading
+    fieldset:
+      legend:
+        text: What is your address?
+        classes: govuk-fieldset__legend--xl
+        isPageHeading: true

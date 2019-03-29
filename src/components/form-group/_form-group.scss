@@ -1,8 +1,8 @@
-@import "../settings/all";
-@import "../tools/all";
-@import "../helpers/all";
+@import "../../settings/all";
+@import "../../tools/all";
+@import "../../helpers/all";
 
-@include govuk-exports("govuk/objects/form-group") {
+@include govuk-exports("govuk/component/form-group") {
 
   .govuk-form-group {
     @include govuk-clearfix;
