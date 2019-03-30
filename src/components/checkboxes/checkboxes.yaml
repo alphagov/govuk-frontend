@@ -229,6 +229,17 @@ examples:
       - value: yes
         text: I agree to the terms and conditions
 
+- name: with single option (and hint) set 'aria-describedby' on input
+  data:
+    name: t-and-c-with-hint
+    errorMessage:
+      text: Please accept the terms and conditions
+    items:
+      - value: yes
+        text: I agree to the terms and conditions
+        hint:
+          text: Go on, you know you want to!
+
 - name: with all fieldset attributes
   data:
     idPrefix: example
@@ -380,7 +391,7 @@ examples:
         html: |
           <label class="govuk-label" for="contact-text-message">Mobile phone number</label>
           <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
-  
+
 - name: with optional form-group classes showing group error
   data:
     idPrefix: how-contacted-checked

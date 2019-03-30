@@ -656,10 +656,18 @@ describe('Checkboxes', () => {
   })
 
   describe('single checkbox without a fieldset', () => {
-    it('adds aria-describe to input if there is an error', () => {
+    it('adds aria-describedby to input if there is an error', () => {
       const $ = render('checkboxes', examples["with single option set 'aria-describedby' on input"])
       const $input = $('input')
       expect($input.attr('aria-describedby')).toMatch('t-and-c-error')
+    })
+  })
+
+  describe('single checkbox (with hint) without a fieldset', () => {
+    it('adds aria-describedby to input if there is an error and a hint', () => {
+      const $ = render('checkboxes', examples["with single option (and hint) set 'aria-describedby' on input"])
+      const $input = $('input')
+      expect($input.attr('aria-describedby')).toMatch('t-and-c-with-hint-error t-and-c-with-hint-1-item-hint')
     })
   })
 })
