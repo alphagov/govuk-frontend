@@ -1,4 +1,5 @@
 {% from "back-link/macro.njk" import govukBackLink %}
+{% from "form-group/macro.njk" import govukFormGroup %}
 {% from "fieldset/macro.njk" import govukFieldset %}
 {% from "input/macro.njk" import govukInput %}
 {% from "button/macro.njk" import govukButton %}
@@ -23,8 +24,10 @@
     <li><a href="#input" class="govuk-link">Label and text input</a></li>
     <li><a href="#textarea" class="govuk-link">Label and textarea</a></li>
     <li><a href="#radio-stacked" class="govuk-link">Fieldset, legend and radio buttons (stacked)</a></li>
+    <li><a href="#radio-stacked-sub-headings" class="govuk-link">Fieldset, legend and radio buttons with sub-headings (stacked)</a></li>
     <li><a href="#radio-inline" class="govuk-link">Fieldset, legend and radio buttons (inline - yes or no)</a></li>
     <li><a href="#checkboxes-stacked" class="govuk-link">Fieldset, legend and checkboxes (stacked)</a></li>
+    <li><a href="#checkboxes-stacked-sub-headings" class="govuk-link">Fieldset, legend and checkboxes with sub-headings (stacked)</a></li>
     <li><a href="#date" class="govuk-link">Date pattern</a></li>
     <li><a href="#select" class="govuk-link">Select box</a></li>
     <li><a href="#file" class="govuk-link">File upload</a></li>
@@ -83,6 +86,93 @@
       ]
     }) }}
 
+    <span id="radio-stacked-sub-headings"></span>
+    {% call govukFormGroup({
+      fieldset: {
+        legend: {
+          text: "Pick one of the following options:",
+          classes: "govuk-fieldset__legend--m"
+        }
+      }
+    }) %}
+
+    {{ govukRadios({
+      "fieldset": {
+        "legend": {
+          text: "Group 1",
+          classes: "govuk-fieldset__legend--s"
+        }
+      },
+      "idPrefix": "radio-stacked-sub-headings-group-1",
+      "name": "radio-stacked-sub-headings",
+      "items": [
+        {
+          "value": "a",
+          "text": "Option A"
+        },
+        {
+          "value": "b",
+          "text": "Option B"
+        },
+        {
+          "value": "c",
+          "text": "Option C"
+        }
+      ]
+    }) }}
+
+    {{ govukRadios({
+      "fieldset": {
+        "legend": {
+          text: "Group 2",
+          classes: "govuk-fieldset__legend--s"
+        }
+      },
+      "idPrefix": "radio-stacked-sub-headings-group-2",
+      "name": "radio-stacked-sub-headings",
+      "items": [
+        {
+          "value": "a",
+          "text": "Option A"
+        },
+        {
+          "value": "b",
+          "text": "Option B"
+        },
+        {
+          "value": "c",
+          "text": "Option C"
+        }
+      ]
+    }) }}
+
+    {{ govukRadios({
+      "fieldset": {
+        "legend": {
+          text: "Group 3",
+          classes: "govuk-fieldset__legend--s"
+        }
+      },
+      "idPrefix": "radio-stacked-sub-headings-group-3",
+      "name": "radio-stacked-sub-headings",
+      "items": [
+        {
+          "value": "a",
+          "text": "Option A"
+        },
+        {
+          "value": "b",
+          "text": "Option B"
+        },
+        {
+          "value": "c",
+          "text": "Option C"
+        }
+      ]
+    }) }}
+
+    {% endcall %}
+
     <span id="radio-inline"></span>
     {{ govukRadios({
       "fieldset": {},
@@ -121,6 +211,94 @@
         }
       ]
     }) }}
+
+    <span id="checkboxes-stacked-sub-headings"></span>
+    {% call govukFormGroup({
+      id: "checkboxes-stacked-sub-headings",
+      fieldset: {
+        legend: {
+          text: "Which of the following apply?",
+          classes: "govuk-fieldset__legend--m"
+        }
+      }
+    }) %}
+
+    {{ govukCheckboxes({
+      "fieldset": {
+        "legend": {
+          text: "Group 1",
+          classes: "govuk-fieldset__legend--s"
+        }
+      },
+      "idPrefix": "checkboxes-stacked-sub-headings-group-1",
+      "name": "checkboxes-stacked-sub-headings",
+      "items": [
+        {
+          "value": "a",
+          "text": "Option A"
+        },
+        {
+          "value": "b",
+          "text": "Option B"
+        },
+        {
+          "value": "c",
+          "text": "Option C"
+        }
+      ]
+    }) }}
+
+    {{ govukCheckboxes({
+      "fieldset": {
+        "legend": {
+          text: "Group 2",
+          classes: "govuk-fieldset__legend--s"
+        }
+      },
+      "idPrefix": "checkboxes-stacked-sub-headings-group-2",
+      "name": "checkboxes-stacked-sub-headings",
+      "items": [
+        {
+          "value": "a",
+          "text": "Option A"
+        },
+        {
+          "value": "b",
+          "text": "Option B"
+        },
+        {
+          "value": "c",
+          "text": "Option C"
+        }
+      ]
+    }) }}
+
+    {{ govukCheckboxes({
+      "fieldset": {
+        "legend": {
+          text: "Group 3",
+          classes: "govuk-fieldset__legend--s"
+        }
+      },
+      "idPrefix": "checkboxes-stacked-sub-headings-group-3",
+      "name": "checkboxes-stacked-sub-headings",
+      "items": [
+        {
+          "value": "a",
+          "text": "Option A"
+        },
+        {
+          "value": "b",
+          "text": "Option B"
+        },
+        {
+          "value": "c",
+          "text": "Option C"
+        }
+      ]
+    }) }}
+
+    {% endcall %}
 
     <span id="date"></span>
     {{- govukDateInput({
