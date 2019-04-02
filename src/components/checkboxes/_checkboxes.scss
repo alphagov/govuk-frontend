@@ -205,11 +205,11 @@
     // width of the parent element.
     .govuk-checkboxes__label {
       margin-top: -2px;
-      padding: 13px govuk-spacing(3) 9px 0;
+      padding: 13px govuk-spacing(3) 13px 1px;
       float: left;
 
       @include govuk-media-query($from: tablet) {
-        padding: 11px govuk-spacing(3) 7px 0;
+        padding: 11px govuk-spacing(3) 10px 1px;
       }
     }
 
@@ -218,7 +218,7 @@
     // Reduce the size of the check box [1], vertically center it within the
     // touch target [2]
     .govuk-checkboxes__label::before {
-      top: $input-offset; // 2
+      top: $input-offset - $govuk-border-width-form-element; // 2
       width: $govuk-small-checkboxes-size; // 1
       height: $govuk-small-checkboxes-size; // 1
     }

@@ -176,6 +176,10 @@
     text-align: center;
   }
 
+  // =========================================================
+  // Conditional reveals
+  // =========================================================
+
   $conditional-border-width: $govuk-border-width-mobile;
   // Calculate the amount of padding needed to keep the border centered against the radios.
   $conditional-border-padding: ($govuk-radios-size / 2) - ($conditional-border-width / 2);
@@ -199,12 +203,14 @@
     }
   }
 
+  // =========================================================
+  // Small checkboxes
+  // =========================================================
+
   .govuk-radios--small {
 
-    $input-size-with-borders: $govuk-small-radios-size + ($govuk-border-width-form-element * 2);
-    $input-offset: ($govuk-touch-target-size - $input-size-with-borders) / 2;
-
-    $label-offset: $input-size-with-borders + $input-offset;
+    $input-offset: ($govuk-touch-target-size - $govuk-small-radios-size) / 2;
+    $label-offset: $govuk-touch-target-size - $input-offset;
 
     .govuk-radios__item {
       @include govuk-clearfix;
@@ -234,11 +240,11 @@
     // width of the parent element.
     .govuk-radios__label {
       margin-top: -2px;
-      padding: 13px govuk-spacing(3) 13px 0;
+      padding: 13px govuk-spacing(3) 13px 1px;
       float: left;
 
       @include govuk-media-query($from: tablet) {
-        padding: 11px govuk-spacing(3) 10px 0;
+        padding: 11px govuk-spacing(3) 10px 1px;
       }
     }
 
@@ -247,7 +253,7 @@
     // Reduce the size of the control [1], vertically centering it within the
     // touch target [2]
     .govuk-radios__label::before {
-      top: $input-offset; // 2
+      top: $input-offset - $govuk-border-width-form-element; // 2
       width: $govuk-small-radios-size; // 1
       height: $govuk-small-radios-size; // 1
     }
