@@ -23,7 +23,7 @@
     min-height: $govuk-checkboxes-size;
 
     margin-bottom: govuk-spacing(2);
-    padding: 0 0 0 $govuk-checkboxes-size;
+    padding-left: $govuk-checkboxes-size;
 
     clear: left;
   }
@@ -34,18 +34,21 @@
   }
 
   .govuk-checkboxes__input {
+    $input-offset: ($govuk-touch-target-size - $govuk-checkboxes-size) / 2;
+
     position: absolute;
 
     z-index: 1;
-    top: -2px;
-    left: -2px;
+    top: $input-offset * -1;
+    left: $input-offset * -1;
 
-    width: $govuk-checkboxes-size + 4px;
-    height: $govuk-checkboxes-size + 4px;
+    width: $govuk-touch-target-size;
+    height: $govuk-touch-target-size;
 
     cursor: pointer;
 
-    // IE8 doesn’t support pseudoelements, so we don’t want to hide native elements there.
+    // IE8 doesn’t support pseudo-elements, so we don’t want to hide native
+    // elements there.
     @include govuk-not-ie8 {
       margin: 0;
       opacity: 0;
@@ -69,13 +72,8 @@
     touch-action: manipulation;
   }
 
-  .govuk-checkboxes__hint {
-    display: block;
-    padding-right: $govuk-checkboxes-label-padding-left-right;
-    padding-left: $govuk-checkboxes-label-padding-left-right;
-  }
-
-  .govuk-checkboxes__input + .govuk-checkboxes__label::before {
+  // [ ] Check box
+  .govuk-checkboxes__label::before {
     content: "";
     box-sizing: border-box;
     position: absolute;
@@ -85,11 +83,13 @@
     height: $govuk-checkboxes-size;
     border: $govuk-border-width-form-element solid currentColor;
     background: transparent;
-
-    // padding-bottom: 1px;
   }
 
-  .govuk-checkboxes__input + .govuk-checkboxes__label::after {
+  // ✔ Check mark
+  //
+  // The check mark is a box with a border on the left and bottom side (└──),
+  // rotated 45 degrees
+  .govuk-checkboxes__label::after {
     content: "";
 
     position: absolute;
@@ -110,10 +110,16 @@
     background: transparent;
   }
 
+  .govuk-checkboxes__hint {
+    display: block;
+    padding-right: $govuk-checkboxes-label-padding-left-right;
+    padding-left: $govuk-checkboxes-label-padding-left-right;
+  }
+
   // Focused state
   .govuk-checkboxes__input:focus + .govuk-checkboxes__label::before {
-    // Since box-shadows are removed when users customise their colours
-    // We set a transparent outline that is shown instead.
+    // Since box-shadows are removed when users customise their colours, we set
+    // a transparent outline that is shown instead.
     // https://accessibility.blog.gov.uk/2017/03/27/how-users-change-colours-on-websites/
     outline: $govuk-focus-width solid transparent;
     outline-offset: $govuk-focus-width;
@@ -134,6 +140,10 @@
   .govuk-checkboxes__input:disabled + .govuk-checkboxes__label {
     opacity: .5;
   }
+
+  // =========================================================
+  // Conditional reveals
+  // =========================================================
 
   $conditional-border-width: $govuk-border-width-mobile;
   // Calculate the amount of padding needed to keep the border centered against the checkbox.
@@ -164,16 +174,15 @@
 
   .govuk-checkboxes--small {
 
-    $input-size-with-borders: $govuk-small-checkboxes-size + ($govuk-border-width-form-element * 2);
-    $input-offset: ($govuk-touch-target-size - $input-size-with-borders) / 2;
-
-    $label-offset: $input-size-with-borders + $input-offset;
+    $input-offset: ($govuk-touch-target-size - $govuk-small-checkboxes-size) / 2;
+    $label-offset: $govuk-touch-target-size - $input-offset;
 
     .govuk-checkboxes__item {
       @include govuk-clearfix;
       min-height: 0;
       margin-bottom: 0;
       padding-left: $label-offset;
+      float: left;
     }
 
     // Shift the touch target into the left margin so that the visible edge of
@@ -231,10 +240,8 @@
     // wrapper they trigger the hover state, but clicking them doesn't actually
     // activate the control.
     //
-    // (But if you do use them – which you probably will 😩 – they won't look
-    // completely broken)
-    //
-    // (Seriously don't use them though ✋)
+    // (If you do use them, they won't look completely broken... but seriously,
+    // don't use them)
     .govuk-checkboxes__hint {
       padding: 0;
       clear: both;
@@ -245,6 +252,7 @@
       $margin-left: ($govuk-small-checkboxes-size / 2) - ($conditional-border-width / 2);
       margin-left: $margin-left;
       padding-left: $label-offset - ($margin-left + $conditional-border-width);
+      clear: both;
     }
 
     // Hover state for small checkbox.
