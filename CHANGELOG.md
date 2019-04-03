@@ -26,6 +26,14 @@
 
   ([PR #1281](https://github.com/alphagov/govuk-frontend/pull/1281))
 
+- Ability to group radio buttons/checkboxes within sub-headings
+
+  New form examples have been added to show multiple lists of radio buttons and checkboxes within a wrapping `govukFormGroup()`.
+
+  The conditional reveal now works across these groups, not just single lists.
+
+  ([PR #1266](https://github.com/alphagov/govuk-frontend/pull/1266))
+
 🔧 Fixes:
 
 - Pull Request Title goes here
