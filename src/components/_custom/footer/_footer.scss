@@ -123,6 +123,7 @@ $icon-youtube: url("../../../assets/images/icon-youtube.svg");
   .sdn-footer__heart-wrapper {
     display: flex;
     width: 40px;
+    min-width: 40px;
     height: 40px;
     border-radius: 20px;
     background: $sdn-footer-heart-background;
@@ -131,6 +132,7 @@ $icon-youtube: url("../../../assets/images/icon-youtube.svg");
   }
 
   .sdn-footer__donate-text {
+    padding-right: govuk-spacing(3);
     padding-left: govuk-spacing(3);
     @include sdn-font($size: 20, $weight: light);
   }
@@ -160,8 +162,10 @@ $icon-youtube: url("../../../assets/images/icon-youtube.svg");
 
   .sdn-footer__newsletter-input {
     @include govuk-font($size: 16);
+    height: 45px;
     @include govuk-media-query($from: tablet) {
       max-width: 360px;
+      height: 44px;
     }
 
     padding: 1.25em;
