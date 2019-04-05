@@ -119,12 +119,39 @@
     border: 0;
   }
 
+  // No border on entire summary list
   .govuk-summary-list--no-border {
-    .govuk-summary-list__key,
-    .govuk-summary-list__value,
-    .govuk-summary-list__actions,
-    .govuk-summary-list__row {
+    @include govuk-media-query($until: tablet) {
+      .govuk-summary-list__row {
+        border: 0;
+      }
+    }
+
+    @include govuk-media-query($from: tablet) {
+      .govuk-summary-list__key,
+      .govuk-summary-list__value,
+      .govuk-summary-list__actions {
+        // Remove 1px border, add 1px height back on
+        padding-bottom: govuk-spacing(2) + 1px;
+        border: 0;
+      }
+    }
+  }
+
+  // No border on specific rows
+  .govuk-summary-list__row--no-border {
+    @include govuk-media-query($until: tablet) {
       border: 0;
+    }
+
+    @include govuk-media-query($from: tablet) {
+      .govuk-summary-list__key,
+      .govuk-summary-list__value,
+      .govuk-summary-list__actions {
+        // Remove 1px border, add 1px height back on
+        padding-bottom: govuk-spacing(2) + 1px;
+        border: 0;
+      }
     }
   }
 }
