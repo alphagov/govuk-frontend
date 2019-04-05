@@ -23,48 +23,7 @@
   }) }}
   <div class="govuk-width-container">
     <main class="govuk-main-wrapper">
-
       <div class="govuk-grid-row">
-        <div class="govuk-grid-column-one-third">
-          {{ govukTimeline({
-            reset_button_url: '/examples/template-prepis-vozidla-1',
-            readonly: true,
-            steps: [
-              {
-                text: 'Úvod',
-                href: '/examples/template-prepis-vozidla-0-readonly',
-                state: 'not-done',
-                selected: true
-              },
-              {
-                text: 'Prihlásiť nového držiteľa vozidla',
-                href: '/examples/template-prepis-vozidla-1-readonly',
-                state: 'not-done'
-              },
-              {
-                text: 'Zaplatiť správne poplatky',
-                href: '/examples/template-prepis-vozidla-2-readonly',
-                state: 'not-done'
-              },
-              {
-                text: 'Uzatvoriť povinné zmluvné poistenie',
-                href: '/examples/template-prepis-vozidla-3-readonly',
-                state: 'not-done'
-              },
-              {
-                text: 'Absolvovať obhliadku vozidla',
-                href: '#',
-                state: 'not-done'
-              },
-              {
-                text: 'Vyzdvihnúť doklady',
-                href: '#',
-                state: 'not-done'
-              }
-            ]
-          }) }}
-        </div>
-
         <div class="govuk-grid-column-two-thirds">
           <div class="govuk-body sdn-content">
             <h1 class="govuk-heading-l">
@@ -120,6 +79,46 @@
             url: '/examples/template-prepis-vozidla-1-readonly'
           }) }}
 
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+            {{ govukTimeline({
+                reset_button_url: '/examples/template-prepis-vozidla-1',
+                readonly: true,
+                steps: [
+                    {
+                        text: 'Úvod',
+                        href: '/examples/template-prepis-vozidla-0-readonly',
+                        state: 'not-done',
+                        selected: true
+                    },
+                    {
+                        text: 'Prihlásiť nového držiteľa vozidla',
+                        href: '/examples/template-prepis-vozidla-1-readonly',
+                        state: 'not-done'
+                    },
+                    {
+                        text: 'Zaplatiť správne poplatky',
+                        href: '/examples/template-prepis-vozidla-2-readonly',
+                        state: 'not-done'
+                    },
+                    {
+                        text: 'Uzatvoriť povinné zmluvné poistenie',
+                        href: '/examples/template-prepis-vozidla-3-readonly',
+                        state: 'not-done'
+                    },
+                    {
+                        text: 'Absolvovať obhliadku vozidla',
+                        href: '#',
+                        state: 'not-done'
+                    },
+                    {
+                        text: 'Vyzdvihnúť doklady',
+                        href: '#',
+                        state: 'not-done'
+                    }
+                ]
+            }) }}
         </div>
       </div>
     </main>

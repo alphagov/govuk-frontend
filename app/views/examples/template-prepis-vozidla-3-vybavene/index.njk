@@ -21,49 +21,10 @@
   {{ govukHeadline({
     headline: 'Prepis vozidla - nový majiteľ'
   }) }}
+
   <div class="govuk-width-container">
     <main class="govuk-main-wrapper">
-
       <div class="govuk-grid-row">
-        <div class="govuk-grid-column-one-third">
-          {{ govukTimeline({
-            reset_button_url: '/examples/template-prepis-vozidla-0',
-            steps: [
-              {
-                text: 'Úvod',
-                href: '/examples/template-prepis-vozidla-0',
-                state: 'done'
-              },
-              {
-                text: 'Prihlásiť nového držiteľa vozidla',
-                href: '/examples/template-prepis-vozidla-1',
-                state: 'done'
-              },
-              {
-                text: 'Zaplatiť správne poplatky',
-                href: '/examples/template-prepis-vozidla-2',
-                state: 'done'
-              },
-              {
-                text: 'Uzatvoriť povinné zmluvné poistenie',
-                href: '/examples/template-prepis-vozidla-3',
-                state: 'done',
-                selected: true
-              },
-              {
-                text: 'Absolvovať obhliadku vozidla',
-                href: '#',
-                state: 'not-done'
-              },
-              {
-                text: 'Vyzdvihnúť doklady',
-                href: '#',
-                state: 'not-done'
-              }
-            ]
-          }) }}
-        </div>
-
         <div class="govuk-grid-column-two-thirds">
           <div class="govuk-body sdn-content">
             <div id="all_steps_completed">
@@ -79,25 +40,65 @@
               </div>
             </div>
 
-          <div id="todo_list">
-            {{ govukTodoList({
-              "title": "Povinnosti a podklady",
-              "state": "completed",
-              "readonly": true,
-              "tasks": [],
-              "reset_button": 'Začať vybavovať znovu',
-              "reset_button_url": '/examples/template-prepis-vozidla-2',
-              "info": "Úloha je vybavená.",
-              "todolist_description": "V zozname úloh môžete kliknúť na ikonku a nastaviť stav úlohy. Ak má úloha nejaké ďalšie povinnosti, môžete ich odškrtávať v zozname nižšie."
+            <div id="todo_list">
+              {{ govukTodoList({
+                "title": "Povinnosti a podklady",
+                "state": "completed",
+                "readonly": true,
+                "tasks": [],
+                "reset_button": 'Začať vybavovať znovu',
+                "reset_button_url": '/examples/template-prepis-vozidla-2',
+                "info": "Úloha je vybavená.",
+                "todolist_description": "V zozname úloh môžete kliknúť na ikonku a nastaviť stav úlohy. Ak má úloha nejaké ďalšie povinnosti, môžete ich odškrtávať v zozname nižšie."
+              }) }}
+            </div>
+
+            {{ govukNextLink({
+              label: 'Ďalšia úloha',
+              text: '4. Absolvovať obhliadku vozidla',
+              url: '#'
             }) }}
+
           </div>
+        </div>
 
-          {{ govukNextLink({
-            label: 'Ďalšia úloha',
-            text: '4. Absolvovať obhliadku vozidla',
-            url: '#'
-          }) }}
-
+        <div class="govuk-grid-column-one-third">
+            {{ govukTimeline({
+                reset_button_url: '/examples/template-prepis-vozidla-0',
+                steps: [
+                    {
+                        text: 'Úvod',
+                        href: '/examples/template-prepis-vozidla-0',
+                        state: 'done'
+                    },
+                    {
+                        text: 'Prihlásiť nového držiteľa vozidla',
+                        href: '/examples/template-prepis-vozidla-1',
+                        state: 'done'
+                    },
+                    {
+                        text: 'Zaplatiť správne poplatky',
+                        href: '/examples/template-prepis-vozidla-2',
+                        state: 'done'
+                    },
+                    {
+                        text: 'Uzatvoriť povinné zmluvné poistenie',
+                        href: '/examples/template-prepis-vozidla-3',
+                        state: 'done',
+                        selected: true
+                    },
+                    {
+                        text: 'Absolvovať obhliadku vozidla',
+                        href: '#',
+                        state: 'not-done'
+                    },
+                    {
+                        text: 'Vyzdvihnúť doklady',
+                        href: '#',
+                        state: 'not-done'
+                    }
+                ]
+            }) }}
         </div>
       </div>
     </main>
