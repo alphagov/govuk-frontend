@@ -80,6 +80,13 @@
     }
   }
 
+  // Expand width when value is last column (no action)
+  .govuk-summary-list__value:last-child {
+    @include govuk-media-query($from: tablet) {
+      width: 70%;
+    }
+  }
+
   .govuk-summary-list__value > p {
     margin-bottom: govuk-spacing(2);
   }
