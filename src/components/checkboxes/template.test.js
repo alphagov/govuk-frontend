@@ -531,6 +531,17 @@ describe('Checkboxes', () => {
         .toMatch(errorMessageId)
     })
 
+    it('does not associate each input as "described by" the error message', () => {
+      const $ = render('checkboxes', examples['with error message and hints on items'])
+
+      const $inputs = $('input')
+
+      $inputs.each((i, input) => {
+        expect($(input).attr('aria-describedby'))
+          .toEqual(`waste-${(i + 1)}-item-hint`)
+      })
+    })
+
     it('renders with a form group wrapper that has an error state', () => {
       const $ = render('checkboxes', {
         errorMessage: {

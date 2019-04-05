@@ -268,6 +268,28 @@ examples:
       - value: farm
         text: Farm or agricultural waste
 
+- name: with error message and hints on items
+  data:
+    name: waste
+    errorMessage:
+      text: Please select an option
+    fieldset:
+      legend:
+        text: Which types of waste do you transport regularly?
+    items:
+      - value: animal
+        text: Waste from animal carcasses
+        hint:
+          text: Nullam id dolor id nibh ultricies vehicula ut id elit.
+      - value: mines
+        text: Waste from mines or quarries
+        hint:
+          text: Nullam id dolor id nibh ultricies vehicula ut id elit.
+      - value: farm
+        text: Farm or agricultural waste
+        hint:
+          text: Nullam id dolor id nibh ultricies vehicula ut id elit.
+
 - name: with very long option text
   data:
     name: waste
