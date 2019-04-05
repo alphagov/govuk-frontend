@@ -124,7 +124,7 @@ examples:
 
 - name: inline
   data:
-    idPrefix: example'
+    idPrefix: example
     classes: govuk-radios--inline
     name: example
     fieldset:
@@ -330,7 +330,7 @@ examples:
             <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
 
 - name: inline with conditional items
-  
+
   data:
     classes: govuk-radios--inline
     idPrefix: how-contacted

@@ -10,7 +10,7 @@ params:
 - name: value
   type: string
   required: false
-  description: 	Optional initial value of the input
+  description: Optional initial value of the input
 - name: label
   type: object
   required: true
