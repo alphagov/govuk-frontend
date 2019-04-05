@@ -317,6 +317,66 @@ describe('Data list', () => {
 
         expect($action.hasClass('govuk-link--no-visited-state')).toBeTruthy()
       })
+      it('skips the action column when none are provided', async () => {
+        const $ = render('summary-list', {
+          rows: [
+            {
+              key: {
+                text: 'Name'
+              },
+              value: {
+                text: 'Firstname Lastname'
+              }
+            }
+          ]
+        })
+
+        const $component = $('.govuk-summary-list')
+        const $action = $component.find('.govuk-summary-list__actions')
+
+        expect($action.length).toEqual(0)
+      })
+      it('adds dummy action columns when only some rows have actions', async () => {
+        const $ = render('summary-list', {
+          rows: [
+            {
+              key: {
+                text: 'Name'
+              },
+              value: {
+                text: 'Firstname Lastname'
+              }
+            },
+            {
+              key: {
+                text: 'Name'
+              },
+              value: {
+                text: 'Firstname Lastname'
+              },
+              actions: {
+                items: [
+                  {
+                    href: '#',
+                    text: 'First action'
+                  }
+                ]
+              }
+            }
+          ]
+        })
+
+        const $component = $('.govuk-summary-list')
+        const $action = $component.find('.govuk-summary-list__actions')
+
+        // First action column is a dummy
+        expect($action[0].tagName).toEqual('span')
+        expect($($action[0]).text()).toEqual('')
+
+        // Second action column contains link text
+        expect($action[1].tagName).toEqual('dd')
+        expect($($action[1]).text()).toContain('First action')
+      })
     })
   })
 })
