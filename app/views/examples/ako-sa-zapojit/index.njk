@@ -1,0 +1,130 @@
+{% extends "template-navody.njk" %}
+
+{% block head %}
+    <!--[if !IE 8]><!-->
+    <link rel="stylesheet" href="/public/app.css">
+    <!--<![endif]-->
+    <!--[if IE 8]>
+    <link rel="stylesheet" href="/public/app-ie8.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script src="/vendor/html5-shiv/html5shiv.js"></script>
+    <![endif]-->
+{% endblock %}
+
+{% block main %}
+    <style>
+        .govuk-grid-row{
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+        }
+
+        .govuk-grid-column-one-third {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+        }
+
+        .govuk-grid-column-one-third p{
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 640px){
+            .govuk-grid-row {
+                display: block;
+            }
+
+            .govuk-grid-column-one-third {
+                display: block;
+            }
+        }
+
+    </style>
+    <div class="govuk-width-container">
+        <main class="govuk-main-wrapper">
+            <div class="govuk-grid-row govuk-!-padding-top-6">
+                <div class="govuk-grid-column-full">
+
+                    <h1 class="govuk-heading-xl">Ako sa môžem do projektu zapojiť</h1>
+                    <div class="govuk-body sdn-content" style="text-align:justify">
+                        <p class="govuk-body" style="text-align:left">
+                            Projekt Návody.Digital je komunitný projekt, preto sa na ňom podieľa množstvo dobrovoľníkov.  Prispieť k rozvoju projektu Návody.Digital môžete napr. takýmito rolami na projekte:
+                        </p>
+                        <div class="govuk-grid-row">
+                            <div class="govuk-grid-column-one-third">
+                                <div>
+                                    <h3>Testovač elektronických služieb štátu</h3>
+                                    <p>V prípade, ak bežne vybavujete Vaše životné situácie (napr. aj tie podnikateľské) online, ste na správnom mieste. Stačí, ak nám spíšete Vašu skúsenosť do vopred zadefinovatej štruktúry a my môžeme návod zaradiť medzi existujúce.</p>
+                                </div>
+                                <a href="https://docs.google.com/document/d/1vWyHTN3z9FrkrAyHeLvdhM9bbi3WhA9SJcI2f3cY-uc/edit?usp=sharing" target="_blank" role="button" draggable="false" class="govuk-button">
+                                    Pridať návod
+                                </a>
+                            </div>
+                            <div class="govuk-grid-column-one-third">
+                                <div>
+                                    <h3>Developer</h3>
+                                    <p>Chceme sa stále rozvíjať – z hľadiska obsahu, aplikácií a funkcionalít. Ak programujete a chcete robiť na zmysluplnom projekte, dajte nám vedieť. Interný vývoj portálu Návody.Digital prebieha v jazyku Ruby on Rails, avšak  v prípade záujmu sa nám môžu hlásiť aj ostatní. Frontend developeri schopní pracovať v HTML/CSS/JavaScripte sú vítaní.</p>
+                                </div>
+                                <a href="https://github.com/slovensko-digital/navody.digital" target="_blank" role="button" draggable="false" class="govuk-button">
+                                    Poď programovať
+                                </a>
+                            </div>
+                            <div class="govuk-grid-column-one-third">
+                                <div>
+                                    <h3>Copywriter</h3>
+                                    <p>Ak Vám nie je cudzie písané slovo a zo surového textu viete vytvoriť jasný, dobre sa čítajúci text, táto rola je pre Vás ako stvorená. Pomôžete nám, ak podrobíte vzniknuté návody jazykovou korektúrou.</p>
+                                </div>
+                                <a href="mailto:navody@slovensko.digital" role="button" draggable="false" class="govuk-button">
+                                    Napíšte nám
+                                </a>
+                            </div>
+                        </div>
+                        <div class="govuk-grid-row">
+                            <div class="govuk-grid-column-one-third">
+                                <div>
+                                    <h3>Editor</h3>
+                                    <p>Editor sa bude podieľať na nahadzovaní “surových” textov do formy vhodnej na publikovanie. Dobrovoľník bude na začiatku “vyškolený” ako pracovať so systémom. Je to príležitosť niečo nové sa naučiť.</p>
+                                </div>
+                                <a href="mailto:navody@slovensko.digital" role="button" draggable="false" class="govuk-button">
+                                    Napíšte nám
+                                </a>
+                            </div>
+                            <div class="govuk-grid-column-one-third">
+                                <div>
+                                    <h3>UX</h3>
+                                    <p>Ak máte nápad, ako možno návody vylepšiť z hľadiska UX, dajte nám vedieť. Chceme aby bol portál Návody.Digital pre každého užívateľsky prívetivý.</p>
+                                </div>
+                                <a href="mailto:navody@slovensko.digital" role="button" draggable="false" class="govuk-button">
+                                    Napíšte nám
+                                </a>
+                            </div>
+                            <div class="govuk-grid-column-one-third">
+                                <div>
+                                    <h3 style="text-align:left">Úradníci a vecniari, ktorí riešia e-government služby
+                                    </h3>
+                                    <p>Ak ste úradník, príp. vecniar, ktorý pozná dané životné situácie a elektronické služby štátu od A-Z, to znamená viete presne ako čo vybaviť, hľadáme aj Vás. Môžete sa zapojiť do tvorby ďalších návodov.</p>
+                                </div>
+                                <a href="mailto:navody@slovensko.digital" role="button" draggable="false" class="govuk-button">
+                                    Napíšte nám
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+{% endblock %}
+
+{% block bodyEnd %}
+    <script src="/public/all.js"></script>
+    <script>window.navodyDigitalFrontend.initAll()</script>
+{% endblock %}
