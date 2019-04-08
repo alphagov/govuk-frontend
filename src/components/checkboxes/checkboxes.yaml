@@ -229,6 +229,17 @@ examples:
       - value: yes
         text: I agree to the terms and conditions
 
+- name: with single option (and hint) set 'aria-describedby' on input
+  data:
+    name: t-and-c-with-hint
+    errorMessage:
+      text: Please accept the terms and conditions
+    items:
+      - value: yes
+        text: I agree to the terms and conditions
+        hint:
+          text: Go on, you know you want to!
+
 - name: with all fieldset attributes
   data:
     idPrefix: example
@@ -267,6 +278,28 @@ examples:
         text: Waste from mines or quarries
       - value: farm
         text: Farm or agricultural waste
+
+- name: with error message and hints on items
+  data:
+    name: waste
+    errorMessage:
+      text: Please select an option
+    fieldset:
+      legend:
+        text: Which types of waste do you transport regularly?
+    items:
+      - value: animal
+        text: Waste from animal carcasses
+        hint:
+          text: Nullam id dolor id nibh ultricies vehicula ut id elit.
+      - value: mines
+        text: Waste from mines or quarries
+        hint:
+          text: Nullam id dolor id nibh ultricies vehicula ut id elit.
+      - value: farm
+        text: Farm or agricultural waste
+        hint:
+          text: Nullam id dolor id nibh ultricies vehicula ut id elit.
 
 - name: with very long option text
   data:
@@ -358,7 +391,7 @@ examples:
         html: |
           <label class="govuk-label" for="contact-text-message">Mobile phone number</label>
           <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
-  
+
 - name: with optional form-group classes showing group error
   data:
     idPrefix: how-contacted-checked

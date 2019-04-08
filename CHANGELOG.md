@@ -28,6 +28,12 @@
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
+- Prevent duplicate checkbox aria-describedby
+
+  Addresses an edge case where a checkbox with a hint (but without a fieldset) is output with duplicate `aria-describeby` attributes. Fixes issue ([PR #1248](https://github.com/alphagov/govuk-frontend/pull/1248))
+
+  ([PR #1265](https://github.com/alphagov/govuk-frontend/pull/1265))
+
 ## 2.9.0 (Feature release)
 
 🆕 New features:
