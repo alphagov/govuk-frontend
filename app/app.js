@@ -2,15 +2,14 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const nunjucks = require('nunjucks')
-const util = require('util')
-const fs = require('fs')
 const path = require('path')
-
-const readdir = util.promisify(fs.readdir)
 
 const helperFunctions = require('../lib/helper-functions')
 const fileHelper = require('../lib/file-helper')
 const configPaths = require('../config/paths.json')
+
+// Routers
+const indexRouter = require('./routes/indexRoutes')
 
 // Set up views
 const appViews = [
@@ -74,17 +73,7 @@ module.exports = (options) => {
   // Define routes
 
   // Index page - render the component list template
-  app.get('/', async function (req, res) {
-    const components = fileHelper.allComponents
-    const examples = await readdir(path.resolve(configPaths.examples))
-    const fullPageExamples = await readdir(path.resolve(configPaths.fullPageExamples))
-
-    res.render('index', {
-      componentsDirectory: components,
-      examplesDirectory: examples,
-      fullPageExamplesDirectory: fullPageExamples
-    })
-  })
+  app.use('/', indexRouter)
 
   // Whenever the route includes a :component parameter, read the component data
   // from its YAML file
