@@ -13,34 +13,7 @@
 {% endblock %}
 
 {% block main %}
-    <style>
-        @media (min-width: 641px) {
-            .govuk-width-container-same-height .govuk-grid-row {
-                display: -webkit-box;
-                display: -ms-flexbox;
-                display: flex;
-            }
-
-            .govuk-width-container-same-height .govuk-grid-column-one-third {
-                display: -webkit-box;
-                display: -ms-flexbox;
-                display: flex;
-                -webkit-box-orient: vertical;
-                -webkit-box-direction: normal;
-                -ms-flex-direction: column;
-                flex-direction: column;
-                -webkit-box-pack: justify;
-                -ms-flex-pack: justify;
-                justify-content: space-between;
-            }
-
-            .govuk-width-container-same-height .govuk-grid-column-one-third > div {
-                margin-bottom: 40px;
-            }
-        }
-
-    </style>
-    <div class="govuk-width-container govuk-width-container-same-height">
+    <div class="govuk-width-container">
         <main class="govuk-main-wrapper">
             <div class="govuk-grid-row govuk-!-padding-top-6">
                 <div class="govuk-grid-column-full">
@@ -51,7 +24,7 @@
                             Projekt Návody.Digital je komunitný projekt, preto sa na ňom podieľa množstvo dobrovoľníkov.
                             Prispieť k rozvoju projektu Návody.Digital môžete napr. takýmito rolami na projekte:
                         </p>
-                        <div class="govuk-grid-row">
+                        <div class="govuk-grid-row govuk-grid-row-same-height">
                             <div class="govuk-grid-column-one-third">
                                 <div>
                                     <h3>Testovač elektronických služieb štátu</h3>
@@ -91,7 +64,7 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="govuk-grid-row">
+                        <div class="govuk-grid-row govuk-grid-row-same-height">
                             <div class="govuk-grid-column-one-third">
                                 <div>
                                     <h3>Editor</h3>

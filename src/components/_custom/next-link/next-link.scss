@@ -41,7 +41,9 @@ $right-arrow: url("../../../assets/images/arrow-pointing-to-right.svg");
     &,
     &:link,
     &:visited {
+      outline: none;
       color: $text-color;
+      background-color: inherit;
     }
 
     &:hover {

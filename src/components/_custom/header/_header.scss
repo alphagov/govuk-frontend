@@ -241,7 +241,7 @@
     }
   }
 
-  $list-of-breakpoints: 600 650 700 750 800 850 900 950 1000;
+  $list-of-breakpoints: 600 650 700 750 800 850 900 950 1000 1050 1100 1150 1200;
 
   @each $breakpoint in $list-of-breakpoints {
     .#{sdn-header}-#{$breakpoint} {
@@ -274,6 +274,10 @@
             left: -20px;
             padding: 5px 0;
             white-space: nowrap;
+
+            &:first-child {
+              left: 0;
+            }
 
             & + li {
               margin-left: 20px;

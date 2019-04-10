@@ -1,112 +1,68 @@
-params:
-- name: steps
-  type: array
-  required: true
-  description: Array of step objects
-  params:
-  - name: text
-    type: string
-    required: true
-  - name: href
-    type: string
-    required: true
-  - name: state
-    type: string
-  - name: selected
-    type: bool
-  - name: dropdown_active
-    type: bool
-- name: classes
-  type: string
-  required: false
-  description: Classes to add to the breadcrumbs container.
-- name: attributes
-  type: object
-  required: false
-  description: HTML attributes (for example data attributes) to add to the breadcrumbs container.
-
 examples:
 - name: default
   data:
+    title: Úlohy
     steps:
-      -
-        text: Spustenie návodu
+      - text: Spustenie návodu
         href: '/'
         state: 'done'
-      -
-        text: Vyzdvihnutie rodného listu na matrike
+      - text: Vyzdvihnutie rodného listu na matrike
         href: '/'
         state: 'waiting'
-      -
-        text: Prihlásenie do zdravotnej poistovne
+      - text: Prihlásenie do zdravotnej poistovne
         href: '/'
         state: 'waiting'
         selected: true
-      -
-        text: Zaslanie rodného listu na Socialnu poistovnu (ak dostava materske)
+      - text: Zaslanie rodného listu na Socialnu poistovnu (ak dostava materske)
         href: '/'
         state: 'waiting'
-      -
-        text: Prihlásenie dieťaťa k pediatrovi s prepúšťajúcou správou z pôrodnice
+      - text: Prihlásenie dieťaťa k pediatrovi s prepúšťajúcou správou z pôrodnice
         href: '/'
         state: 'waiting'
-      -
-        text: Prihlásenie dieťaťa k trvalému pobytu v ohlasovni pobytu (len v specialnych pripadoch)
+      - text: Prihlásenie dieťaťa k trvalému pobytu v ohlasovni pobytu (len v specialnych pripadoch)
         href: '/'
         state: 'in-progress'
         dropdown_active: true
-      -
-        text: Vybavenie cestovného dokladu dieťaťa
+      - text: Vybavenie cestovného dokladu dieťaťa
         href: '/'
         state: 'not-done'
-      -
-        text: Príspevok pri narodení dieťaťa
+      - text: Príspevok pri narodení dieťaťa
         href: '/'
         state: 'not-done'
-      -
-        text: Rôzne ďalsie príplatky a príspevky
+      - text: Rôzne ďalsie príplatky a príspevky
         href: '/'
         state: 'not-done'
 - name: readonly
   data:
     readonly: true
-    reset_button_url: '#reset',
+    reset_button_url: '#reset'
     steps:
-      -
-        text: Spustenie návodu
+      - text: Spustenie návodu
         href: '/'
         state: 'done'
-      -
-        text: Vyzdvihnutie rodného listu na matrike
+      - text: Vyzdvihnutie rodného listu na matrike
         href: '/'
         state: 'waiting'
-      -
-        text: Prihlásenie do zdravotnej poistovne
+      - text: Prihlásenie do zdravotnej poistovne
         href: '/'
         state: 'waiting'
         selected: true
-      -
-        text: Zaslanie rodného listu na Socialnu poistovnu (ak dostava materske)
+      - text: Zaslanie rodného listu na Socialnu poistovnu (ak dostava materske)
         href: '/'
         state: 'waiting'
-      -
-        text: Prihlásenie dieťaťa k pediatrovi s prepúšťajúcou správou z pôrodnice
+      - text: Prihlásenie dieťaťa k pediatrovi s prepúšťajúcou správou z pôrodnice
         href: '/'
         state: 'waiting'
-      -
-        text: Prihlásenie dieťaťa k trvalému pobytu v ohlasovni pobytu (len v specialnych pripadoch)
+      - text: Prihlásenie dieťaťa k trvalému pobytu v ohlasovni pobytu (len v specialnych pripadoch)
         href: '/'
         state: 'in-progress'
         dropdown_active: true
-      -
-        text: Vybavenie cestovného dokladu dieťaťa
+      - text: Vybavenie cestovného dokladu dieťaťa
         href: '/'
         state: 'not-done'
-      -
-        text: Príspevok pri narodení dieťaťa
+      - text: Príspevok pri narodení dieťaťa
         href: '/'
         state: 'not-done'
-      -
-        text: Rôzne ďalsie príplatky a príspevky
+      - text: Rôzne ďalsie príplatky a príspevky
         href: '/'
         state: 'not-done'

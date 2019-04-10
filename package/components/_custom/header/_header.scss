@@ -48,11 +48,6 @@
     -webkit-justify-content: space-between;
         -ms-flex-pack: justify;
             justify-content: space-between;
-
-    @include mq ($until: desktop) {
-      height: auto;
-      padding: 5px 0;
-    }
   }
 
   .sdn-header__link {
@@ -108,50 +103,6 @@
         }
       }
     }
-
-    @include mq ($until: desktop) {
-      position: relative;
-      margin: 0 0 0 20px;
-      overflow: hidden;
-
-      > li {
-        position: relative;
-        left: -20px;
-        padding: 5px 0;
-        white-space: nowrap;
-
-        & + li {
-          margin-left: 20px;
-        }
-
-        & + li:before,
-        &:before {
-          content: "|";
-          position: absolute;
-          top: auto;
-          bottom: auto;
-          left: -13px;
-          margin-left: 0;
-          border: 0;
-          color: $sdn-header-border-color;
-        }
-
-        &.sdn-header__form {
-          left: 0;
-          margin-right: 20px;
-
-          & + li {
-            &:before {
-              content: "";
-            }
-          }
-
-          &:before {
-            content: none;
-          }
-        }
-      }
-    }
   }
 
   .sdn-header__form {
@@ -190,10 +141,6 @@
         opacity: .6;
         color: $sdn-header-placeholder;
       }
-
-      @include mq ($until: desktop) {
-        height: 30px;
-      }
     }
 
     button {
@@ -223,10 +170,6 @@
           opacity: 1;
         }
       }
-    }
-
-    @include mq ($until: desktop) {
-      max-width: 180px;
     }
 
     @media (max-width: 400px) {
@@ -302,13 +245,83 @@
       max-width: 195px;
     }
 
-    @include mq ($until: desktop) {
-      max-width: 100%;
-    }
-
     @media (max-width: 400px) {
       width: 100%;
       max-width: 220px;
+    }
+  }
+
+  $list-of-breakpoints: 600 650 700 750 800 850 900 950 1000 1050 1100 1150 1200;
+
+  @each $breakpoint in $list-of-breakpoints {
+    .#{sdn-header}-#{$breakpoint} {
+
+      @include mq ($until: $breakpoint * 1px) {
+        .sdn-header__container {
+          height: auto;
+          padding: 5px 0;
+        }
+
+        .sdn-header__fixed-width-text {
+          max-width: 100%;
+        }
+
+        .sdn-header__form {
+          max-width: 180px;
+
+          input {
+            height: 30px;
+          }
+        }
+
+        .sdn-header__navigation {
+          position: relative;
+          margin: 0 0 0 20px;
+          overflow: hidden;
+
+          > li {
+            position: relative;
+            left: -20px;
+            padding: 5px 0;
+            white-space: nowrap;
+
+            &:first-child {
+              left: 0;
+            }
+
+            & + li {
+              margin-left: 20px;
+            }
+
+            & + li:before,
+            &:before {
+              content: "|";
+              position: absolute;
+              top: auto;
+              bottom: auto;
+              left: -13px;
+              margin-left: 0;
+              border: 0;
+              color: $sdn-header-border-color;
+            }
+
+            &.sdn-header__form {
+              left: 0;
+              margin-right: 20px;
+
+              & + li {
+                &:before {
+                  content: "";
+                }
+              }
+
+              &:before {
+                content: none;
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

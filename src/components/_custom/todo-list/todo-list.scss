@@ -21,6 +21,8 @@ $sdn-todo-list-button-text-color: #000000;
 $sdn-todo-list-button-secondary-border-color-hover: #387f12;
 $sdn-todo-list-button-text-color-hover: #387f12;
 
+$sdn-todo-list-button-conjunction-text-color: #000000;
+
 @include govuk-exports("govuk/component/sdn-todo-list") {
 
   .sdn-todo-list-box {
@@ -106,7 +108,7 @@ $sdn-todo-list-button-text-color-hover: #387f12;
   }
 
   .sdn-todo-list-main-action {
-    padding: $sdn-todo-list-inner-top-bottom-padding $sdn-todo-list-inner-left-right-padding 10px $sdn-todo-list-inner-left-right-padding;
+    padding: $sdn-todo-list-inner-top-bottom-padding $sdn-todo-list-inner-left-right-padding;
     //border-top: $sdn-todo-list-completed-border-color solid 2px;
     background-color: $sdn-todo-list-background-color;
 
@@ -176,10 +178,68 @@ $sdn-todo-list-button-text-color-hover: #387f12;
     }
   }
 
+  .sdn-todo-list-main-action-buttons-wrapper {
+    margin-left: -4px;
+    padding: 4px;
+    overflow: hidden;
+  }
+
   .sdn-todo-list-main-action-buttons {
-    a,
-    div {
-      vertical-align: middle;
+    margin-top: -40px;
+
+    .govuk-button {
+      position: relative;
+      margin-top: 40px;
+      margin-bottom: 0;
+
+      & + .govuk-button {
+        &::after,
+        &::before {
+          @include govuk-font($size: 16, $weight: regular);
+
+          content: "alebo";
+          position: absolute;
+          border-top: 3px solid transparent;
+          color: $sdn-todo-list-button-conjunction-text-color;
+          text-align: center;
+          pointer-events: none;
+        }
+
+        &::before {
+          top: 50%;
+          right: 103%;
+          left: -80px;
+          transform: translateY(-50%);
+        }
+
+        &:after {
+          top: -33px;
+          right: 0;
+          left: 0;
+
+          @include mq ($from: tablet) {
+
+            top: -38px;
+          }
+        }
+
+        &:active {
+          top: 2px;
+
+          &::after,
+          &::before {
+            border-top-width: 1px;
+          }
+        }
+      }
+    }
+
+    @include mq ($from: tablet) {
+      margin-left: -80px;
+
+      .govuk-button {
+        margin-left: 80px;
+      }
     }
   }
 

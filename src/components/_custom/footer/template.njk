@@ -6,20 +6,33 @@
     <div class="sdn-footer__container">
       <div class="sdn-footer__newsletter">
         <span class="sdn-footer__newsletter-heading">Novinky emailom <small class="sdn-footer__newsletter-heading-tooltip">(raz mesačne)</small></span>
-        <div class="govuk-form-group sdn-footer__newsletter-form-group">
-          <input id="email-input" class="govuk-input sdn-footer__newsletter-input" name="email" placeholder="Zadajte emailovú adresu" />
-          {{ govukButton({
-            "text": "Prihlásiť",
-            "classes": "sdn-footer__newsletter-button"
-          }) }}
+        <div id="newsletter-success" style="display: none">
+          <p>
+            <strong>Na Váš e-mail sme poslali potvrdzovaciu správu.</strong>
+            <br>
+            Ďakujeme za Váš záujem.
+          </p>
         </div>
+        <form id="newsletter-form" action="{{ newsletterFormUrl|default('') }}" data-action="https://my.sendinblue.com/users/subscribeembed/js_id/29wti/id/4" method="post">
+          <div class="govuk-form-group sdn-footer__newsletter-form-group">
+            <input type="hidden" name="js_id" id="js_id" value="29wti">
+            <input type="hidden" name="listid" id="listid" value="4">
+            <input type="hidden" name="from_url" id="from_url" value="yes">
+            <input type="hidden" name="hdn_email_txt" id="hdn_email_txt" value="">
+            <input id="email-input" class="govuk-input sdn-footer__newsletter-input" name="email" placeholder="Zadajte emailovú adresu" />
+            {{ govukButton({
+              "text": "Prihlásiť",
+              "classes": "sdn-footer__newsletter-button"
+            }) }}
+          </div>
+        </form>
         <span class="sdn-footer__newsletter-disclaimer">Prihlásením dávam dobrovoľný súhlas OZ Slovensko.Digital na zasielanie bezplatného newslettera na mnou zadaný e-mail. Tento súhlas môžem kedykoľvek odvolať na <a href="mailto:kontakt@slovensko.digital" class="sdn-footer__link">kontakt@slovensko.digital</a>. Oboznámil(a) som sa s informáciami v sekcii <a href="#" class="sdn-footer__link">Ochrana osobných údajov</a>.</span>
       </div>
       <div class="sdn-footer__donate">
         <span class="sdn-footer__heart-wrapper">
           <span class="sdn-footer__heart"></span>
         </span>
-        <span class="sdn-footer__donate-text">Páči sa vám čo pre vás robíme?<br><a href="https://slovensko.digital/podpora" class="sdn-footer__link sdn-footer__donate-link">Podporte nás</a></span>
+        <span class="sdn-footer__donate-text">Páči sa vám čo pre vás robíme?<br><a href="https://slovensko.digital/dve-percenta#ako-poukazat" class="sdn-footer__link sdn-footer__donate-link">Podporte nás</a></span>
       </div>
     </div>
   </div>

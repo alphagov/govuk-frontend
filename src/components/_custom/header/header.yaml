@@ -1,69 +1,42 @@
-params:
-- name: homepageUrl
-  type: string
-  required: false
-  description: The url of the homepage. Defaults to /
-- name: productName
-  type: string
-  required: true
-  description: Header title.
-- name: navigation
-  type: array
-  required: false
-  description: An array of navigation item objects.
-  params:
-  - name: text
-    type: string
-    required: false
-    description: Text of the navigation item.
-  - name: href
-    type: string
-    required: false
-    description: Url of the navigation item anchor. Both `href` and `text` attributes for navigation items need to be provided to create an item.
-  - name: active
-    type: boolean
-    required: false
-    description: Flag to mark the navigation item as active or not.
-  - name: attributes
-    type: object
-    required: false
-    description: HTML attributes (for example data attributes) to add to the navigation item anchor.
-- name: navigationClasses
-  type: string
-  required: false
-  description: Classes for the navigation section of the header.
-- name: containerClasses
-  type: string
-  required: false
-  description: Classes for the container, useful if you want to make the header fixed width.
-- name: classes
-  type: string
-  required: false
-  description: Classes to add to the header container.
-- name: attributes
-  type: object
-  required: false
-  description: HTML attributes (for example data attributes) to add to the header container.
-- name: userName
-  type: string
-  required: false
-  description: Logged-in user name. If not provided, doesn't render the user component.
-
+description: "Breakpoint pre responzivitu sa nastavuje css triedou <code>sdn-header-X</code>, kde X predstavuje šírku okna prehliadača v pixeloch a môže mať jednu z hodnôt:
+600, 650, 700, 750, 800, 850, 900, 950, 1000, 1050, 1100, 1150, 1200. Príslušnú css triedu je potrebné nastaviť podľa šírky položiek menu, tak aby sa header prepol do responzívnej verzie najneskôr
+vtedy, keď sa najpravejšia položka menu \"dotkne\" nadpisu v pravej časti hlavičky."
 previewLayout: full-width
 
 examples:
 - name: neprihlásený
   description: Hlavička s dvoma linkami a search fieldom
   data:
+    show_search: true
+    responsiveClass: sdn-header-950
     productName: Životné situácie
     navigation:
       - href: '#1'
         text: Časté otázky
       - href: '#2'
         text: Prihlásiť
+- name: bez vyhladavania
+  description: Hlavička s dvoma linkami bez search fieldu
+  data:
+    show_search: false
+    responsiveClass: sdn-header-1200
+    productName: Životné situácie
+    navigation:
+      - href: '#1'
+        text: Časté otázky
+      - href: '#2'
+        text: Varila myšička kašičku
+      - href: '#3'
+        text: Kontakty
+      - href: '#4'
+        text: FAQ
+      - href: '#5'
+        text: Prihlásiť
 - name: viac položiek
   description: Hlavička s troma linkami a search fieldom
   data:
+    show_search: true
+    responsiveClass: sdn-header-1050
     productName: Životné situácie
     navigation:
       - href: '#1'
@@ -75,6 +48,8 @@ examples:
 - name: prihlásený - krátky email
   description: Hlavička prihláseného používateľa s krátkym emailom
   data:
+    show_search: true
+    responsiveClass: sdn-header-950
     productName: Životné situácie
     navigation:
       - href: '#1'
@@ -89,6 +64,8 @@ examples:
 - name: prihlásený - dlhý email
   description: Hlavička prihláseného používateľa s dlhým emailom
   data:
+    show_search: true
+    responsiveClass: sdn-header-1100
     productName: Životné situácie
     navigation:
       - href: '#1'
@@ -103,6 +80,8 @@ examples:
 - name: aktívny odkaz
   description: Hlavička s aktívnym odkazom
   data:
+    show_search: true
+    responsiveClass: sdn-header-950
     productName: Životné situácie
     navigation:
       - href: '#1'

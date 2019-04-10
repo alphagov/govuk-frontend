@@ -10,23 +10,8 @@
   $sdn-feedbackbar-link-hover: #333333;
 
   .sdn-feedbackbar {
-    background: $sdn-feedbackbar-right-background;
-
-    @include govuk-media-query($from: desktop) {
-      background: -webkit-linear-gradient(
-        left,
-        $sdn-feedbackbar-left-background 0%,
-        $sdn-feedbackbar-left-background 50%,
-        $sdn-feedbackbar-right-background 50%,
-        $sdn-feedbackbar-right-background 100%
-      );
-      background: linear-gradient(
-        to right,
-        $sdn-feedbackbar-left-background 0%,
-        $sdn-feedbackbar-left-background 50%,
-        $sdn-feedbackbar-right-background 50%,
-        $sdn-feedbackbar-right-background 100%
-      );
+    .govuk-width-container {
+      margin: 0 auto;
     }
   }
 
@@ -74,7 +59,14 @@
 
   .sdn-feedbackbar__yes,
   .sdn-feedbackbar__no {
+    @include govuk-font($size: 18, $line-height: 1.2);
+    font-weight: bold;
     text-transform: uppercase;
+
+    a {
+      border-bottom: 2px solid;
+      text-decoration: none;
+    }
   }
 
   .sdn-feedbackbar__no {
@@ -112,8 +104,7 @@
     }
 
     @include govuk-media-query($from: desktop) {
-      width: 70%;
-      margin-left: 30%;
+      position: relative;
     }
   }
 
