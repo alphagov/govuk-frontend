@@ -417,3 +417,193 @@ examples:
         html: |
           <label class="govuk-label" for="contact-text-message">Mobile phone number</label>
           <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
+
+- name: small
+  data:
+    idPrefix: 'how-contacted-2'
+    name: 'how-contacted-2'
+    formGroup:
+      classes: 'govuk-radios--small'
+    fieldset:
+      legend:
+        text: How do you want to be contacted?
+    items:
+    - value: email
+      text: Email
+    - value: phone
+      text: Phone
+    - value: text
+      text: Text message
+
+- name: small with long text
+  data:
+    idPrefix: foo
+    name: foo
+    classes: govuk-radios--small
+    fieldset:
+      legend:
+        text: Venenatis Condimentum
+    items:
+      - value: nullam
+        text:
+          Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu leo
+          quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
+          Maecenas faucibus mollis interdum. Donec id elit non mi porta gravida
+          at eget metus.
+      - value: aenean
+        text:
+          Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis
+          vestibulum. Donec sed odio dui. Duis mollis, est non commodo luctus,
+          nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cum sociis
+          natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+          mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam
+          venenatis vestibulum. Cras mattis consectetur purus sit amet
+          fermentum.
+      - value: fusce
+        text:
+          Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
+          nibh, ut fermentum massa justo sit amet risus. Etiam porta sem
+          malesuada magna mollis euismod. Praesent commodo cursus magna, vel
+          scelerisque nisl consectetur et. Etiam porta sem malesuada magna
+          mollis euismod. Etiam porta sem malesuada magna mollis euismod.
+          Donec sed odio dui. Sed posuere consectetur est at lobortis.
+
+- name: small with error
+  data:
+    idPrefix: 'how-contacted-2'
+    name: 'how-contacted-2'
+    formGroup:
+      classes: 'govuk-radios--small'
+    fieldset:
+      legend:
+        text: How do you want to be contacted?
+    errorMessage:
+      text: "Select a thing"
+    items:
+    - value: email
+      text: Email
+    - value: phone
+      text: Phone
+    - value: text
+      text: Text message
+
+- name: small with hint
+  data:
+    idPrefix: 'how-contacted-2'
+    name: 'how-contacted-2'
+    formGroup:
+      classes: 'govuk-radios--small'
+    fieldset:
+      legend:
+        text: How do you want to be contacted?
+    items:
+    - value: email
+      text: Email
+      hint:
+        text: Hint for email address
+    - value: phone
+      text: Phone
+    - value: text
+      text: Text message
+
+- name: small with disabled
+  data:
+    idPrefix: 'how-contacted-2'
+    name: 'how-contacted-2'
+    formGroup:
+      classes: 'govuk-radios--small'
+    fieldset:
+      legend:
+        text: How do you want to be contacted?
+    items:
+    - value: email
+      text: Email
+    - value: phone
+      text: Phone
+    - value: text
+      text: Text message
+      disabled: true
+
+- name: small with conditional reveal
+  data:
+    idPrefix: 'how-contacted-2'
+    name: 'how-contacted-2'
+    formGroup:
+      classes: 'govuk-radios--small'
+    fieldset:
+      legend:
+        text: How do you want to be contacted?
+    items:
+    - value: email
+      text: Email
+      conditional:
+        html: |
+          <label class="govuk-label" for="context-email">Foo</label>
+          <input class="govuk-input govuk-!-width-one-third" name="context-email" type="text" id="context-email">
+    - value: phone
+      text: Phone
+    - value: text
+      text: Text message
+
+- name: small inline
+  data:
+    idPrefix: sort
+    classes: govuk-radios--small govuk-radios--inline
+    name: example
+    fieldset:
+      legend:
+        text: Sort by
+    items:
+      - value: relevance
+        text: relevance
+      - value: title
+        text: title
+      - value: created
+        text: created
+
+- name: small inline extreme
+  data:
+    idPrefix: sort
+    classes: govuk-radios--small govuk-radios--inline
+    name: example
+    fieldset:
+      legend:
+        text: Sort by
+    items:
+      - value: relevance
+        text: relevance
+      - value: title
+        text: title
+      - value: created
+        text: created
+      - value: modified
+        text: modified
+      - value: category
+        text: category
+      - value: votes
+        text: votes
+      - value: flavour
+        text: flavour
+      - value: hue
+        text: hue
+      - value: happiness
+        text: happiness
+      - value: funkiness
+        text: funkiness
+
+- name: small with a divider
+  data:
+    idPrefix: example-small-divider
+    name: example
+    fieldset:
+      legend:
+        text: How do you want to sign in?
+    classes: govuk-radios--small
+    items:
+      - value: governement-gateway
+        text: Use Government Gateway
+      - value: govuk-verify
+        text: Use GOV.UK Verify
+      - divider: or
+      - value: create-account
+        text: Create an account
