@@ -10,6 +10,7 @@ const configPaths = require('../config/paths.json')
 
 // Routers
 const indexRouter = require('./routes/indexRoutes')
+const exampleRouter = require('./routes/exampleRoutes')
 
 // Set up views
 const appViews = [
@@ -153,15 +154,7 @@ module.exports = (options) => {
   })
 
   // Example view
-  app.get('/examples/:example', function (req, res, next) {
-    res.render(`${req.params.example}/index`, function (error, html) {
-      if (error) {
-        next(error)
-      } else {
-        res.send(html)
-      }
-    })
-  })
+  app.use('/examples', exampleRouter)
 
   // Full page example views
   require('./full-page-examples.js')(app)
