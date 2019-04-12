@@ -5,6 +5,7 @@
 }(this, (function () { 'use strict';
 
 function SndAppearLink($module) {
+  console.log($module);
   this.$module = $module;
   this.$appear = null;
   this.$disappear = null;
@@ -34,6 +35,9 @@ SndAppearLink.prototype.handleClick = function(event) {
   if (this.$disappear) {
     this.$disappear.classList.add("sdn-appear-link-hide");
   }
+
+  console.log(this.$appear, this.$disappear);
+
 };
 
 return SndAppearLink;

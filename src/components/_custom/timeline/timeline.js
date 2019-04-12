@@ -8,7 +8,7 @@ function SdnTimeline ($module) {
 
 SdnTimeline.prototype.init = function () {
   // Check for module
-  const $module = this.$module
+  var $module = this.$module
   if (!$module || $module.className.indexOf('snd-timeline--readonly') > -1) {
     return
   }
@@ -19,7 +19,7 @@ SdnTimeline.prototype.init = function () {
 SdnTimeline.prototype.handleClick = function (event) {
   event.preventDefault()
 
-  const element = event.target
+  var element = event.target
 
   element.parentNode.classList.toggle('sdn-timeline__step--dropdown-active')
 
