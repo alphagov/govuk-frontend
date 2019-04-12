@@ -664,18 +664,31 @@ if (detect) return
  * This seems to fail in IE8, requires more investigation.
  * See: https://github.com/imagitama/nodelist-foreach-polyfill
  */
-function nodeListForEach (nodes, callback) {
-  if (window.NodeList.prototype.forEach) {
-    return nodes.forEach(callback)
-  }
-  for (var i = 0; i < nodes.length; i++) {
-    callback.call(window, nodes[i], i, nodes);
-  }
+
+function on (elSelector, eventName, selector, fn) {
+  var element = document.querySelector(elSelector);
+
+  element.addEventListener(eventName, function (event) {
+    var possibleTargets = element.querySelectorAll(selector);
+    var target = event.target;
+
+    for (var i = 0, l = possibleTargets.length; i < l; i++) {
+      var el = target;
+      var p = possibleTargets[i];
+
+      while (el && el !== element) {
+        if (el === p) {
+          return fn.call(p, event)
+        }
+
+        el = el.parentNode;
+      }
+    }
+  });
 }
 
 function SdnTimeline ($module) {
   this.$module = $module;
-  this.$bullets = [];
 }
 
 SdnTimeline.prototype.init = function () {
@@ -685,19 +698,22 @@ SdnTimeline.prototype.init = function () {
     return
   }
 
-  this.$bullets = $module.querySelectorAll('.js-sdn-timeline__bullet');
-
-  nodeListForEach(this.$bullets, function ($bullet) {
-    $bullet.setAttribute('tabindex', '0');
-    $bullet.addEventListener('click', this.handleClick);
-    $bullet.addEventListener('focusout', this.handleBlur);
-  }.bind(this));
+  on('body', 'click', '.js-sdn-timeline__bullet', this.handleClick.bind(this));
 };
 
 SdnTimeline.prototype.handleClick = function (event) {
   event.preventDefault();
 
-  this.parentNode.classList.toggle('sdn-timeline__step--dropdown-active');
+  var element = event.target;
+
+  element.parentNode.classList.toggle('sdn-timeline__step--dropdown-active');
+
+  if (!element.getAttribute('data-blur-initialized')) {
+    element.setAttribute('data-blur-initialized', true);
+    element.setAttribute('tabindex', '0');
+    element.addEventListener('focusout', this.handleBlur);
+    element.focus();
+  }
 };
 
 SdnTimeline.prototype.handleBlur = function (event) {
