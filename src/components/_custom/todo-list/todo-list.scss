@@ -1,0 +1,314 @@
+@import "../../../settings/all";
+@import "../../../tools/all";
+@import "../../../helpers/all";
+
+$sdn-todo-list-background-color: #fafafa;
+$sdn-todo-list-action-background-color: rgba(180, 194, 255, .2);
+$sdn-todo-list-action-completed-background-color: #e5f2e4;
+$sdn-todo-list-action-waiting-background-color: #fdf4ce;
+$sdn-todo-list-info: #878788;
+$sdn-todo-list-left-border-color: rgba(0, 0, 0, .1);
+$sdn-todo-list-completed-border-color: #4cae18;
+$sdn-todo-list-link-color: #000000;
+$sdn-todo-list-left-border-width: 5px;
+$sdn-todo-list-inner-top-bottom-padding: 25px;
+$sdn-todo-list-inner-bottom-bottom-padding: 15px;
+$sdn-todo-list-inner-left-right-padding: 30px;
+
+$sdn-todo-list-button-secondary-border-color: rgba(0, 0, 0, .7);
+$sdn-todo-list-button-text-color: #000000;
+
+$sdn-todo-list-button-secondary-border-color-hover: #387f12;
+$sdn-todo-list-button-text-color-hover: #387f12;
+
+$sdn-todo-list-button-conjunction-text-color: #000000;
+
+@include govuk-exports("govuk/component/sdn-todo-list") {
+
+  .sdn-todo-list-box {
+    padding: $sdn-todo-list-inner-top-bottom-padding $sdn-todo-list-inner-left-right-padding $sdn-todo-list-inner-bottom-bottom-padding $sdn-todo-list-inner-left-right-padding;
+    border-left: $sdn-todo-list-left-border-color solid $sdn-todo-list-left-border-width;
+    background-color: $sdn-todo-list-background-color;
+
+    .sdn-todo-list__title {
+      @include sdn-font($size: 24);
+      $sdn-todo-list-title-color: #06070b;
+      color: $sdn-todo-list-title-color;
+    }
+
+    .sdn-todo-list__items {
+      padding-left: 0;
+      list-style-type: none;
+
+      .sdn-todo-list__item {
+        $sdn-todo-list-item-border-bottom: 1px solid rgba(33, 33, 33, .1);
+        $sdn-todo-list-item-padding: 15px 0 15px 0;
+        display: flex;
+        padding: $sdn-todo-list-item-padding;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        @include mq ($until: tablet) {
+          display: block;
+        }
+
+        &:last-child {
+          padding-bottom: 0;
+        }
+
+        &:not(:last-child) {
+          border-bottom: $sdn-todo-list-item-border-bottom;
+        }
+
+        > div {
+          display: flex;
+          align-items: center;
+
+          @include mq ($until: tablet) {
+            display: block;
+          }
+
+          .snd-todo-list__item__info {
+            @include sdn-font($size: 14);
+            margin-left: 25px;
+            color: $sdn-todo-list-info;
+
+            &:not(:last-child) {
+              margin-right: 20px;
+            }
+
+            @include mq ($until: tablet) {
+              margin-left: 30px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .snd-todo-list__link {
+    color: govuk-colour("blue");
+
+    &:visited,
+    &:link {
+      color: govuk-colour("blue");
+      text-decoration: none;
+    }
+
+    &:hover {
+      opacity: .7;
+      text-decoration: underline;
+    }
+
+    @include mq ($until: tablet) {
+      display: block;
+      margin-left: 30px;
+    }
+  }
+
+  .sdn-todo-list-main-action {
+    padding: $sdn-todo-list-inner-top-bottom-padding $sdn-todo-list-inner-left-right-padding;
+    //border-top: $sdn-todo-list-completed-border-color solid 2px;
+    background-color: $sdn-todo-list-background-color;
+
+    .sdn-todo-list-box + & {
+      margin-top: 30px;
+    }
+
+    .govuk-button {
+      @include govuk-font($size: 20, $weight: bold);
+      margin-bottom: 20px;
+    }
+
+    .sdn-todo-list--completed & {
+      padding: $sdn-todo-list-inner-top-bottom-padding $sdn-todo-list-inner-left-right-padding 10px $sdn-todo-list-inner-left-right-padding;
+      //border: $sdn-todo-list-completed-border-color solid 2px;
+      background-color: $sdn-todo-list-action-completed-background-color;
+    }
+
+    .sdn-todo-list--waiting & {
+      padding: $sdn-todo-list-inner-top-bottom-padding $sdn-todo-list-inner-left-right-padding 10px $sdn-todo-list-inner-left-right-padding;
+      //border: $sdn-todo-list-completed-border-color solid 2px;
+      background-color: $sdn-todo-list-action-waiting-background-color;
+    }
+  }
+
+  .sdn-todo-list {
+    &--completed {
+      .sdn-todo-list-box {
+        border-left-color: $sdn-todo-list-completed-border-color;
+      }
+
+      .sdn-todo-list-main-action__info {
+        display: inline-block;
+        margin-right: 10px;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  .govuk-button__secondary {
+    margin-bottom: 10px;
+    padding: 8px;
+    border-width: 1px;
+    border-color: $sdn-todo-list-button-secondary-border-color;
+    opacity: .8;
+    color: $sdn-todo-list-button-text-color;
+    background-color: transparent;
+    vertical-align: middle;
+
+    &.govuk-button {
+      @include govuk-font($size: 15, $weight: normal);
+    }
+
+    &:link,
+    &:visited,
+    &:active,
+    &:hover {
+      //@include govuk-font($size: 15, $weight: regular);
+      color: $sdn-todo-list-button-text-color;
+      font-weight: normal;
+    }
+
+    &:hover {
+      border-color: $sdn-todo-list-button-secondary-border-color-hover;
+      color: $sdn-todo-list-button-text-color-hover;
+      background-color: transparent;
+    }
+  }
+
+  .sdn-todo-list-main-action-buttons-wrapper {
+    margin-left: -4px;
+    padding: 4px;
+    overflow: hidden;
+  }
+
+  .sdn-todo-list-main-action-buttons {
+    margin-top: -40px;
+
+    .govuk-button {
+      position: relative;
+      margin-top: 40px;
+      margin-bottom: 0;
+
+      & + .govuk-button {
+        &::after,
+        &::before {
+          @include govuk-font($size: 16, $weight: regular);
+
+          content: "alebo";
+          position: absolute;
+          border-top: 3px solid transparent;
+          color: $sdn-todo-list-button-conjunction-text-color;
+          text-align: center;
+          pointer-events: none;
+        }
+
+        &::before {
+          top: 50%;
+          right: 103%;
+          left: -80px;
+          transform: translateY(-50%);
+        }
+
+        &:after {
+          top: -33px;
+          right: 0;
+          left: 0;
+
+          @include mq ($from: tablet) {
+
+            top: -38px;
+          }
+        }
+
+        &:active {
+          top: 2px;
+
+          &::after,
+          &::before {
+            border-top-width: 1px;
+          }
+        }
+      }
+    }
+
+    @include mq ($from: tablet) {
+      margin-left: -80px;
+
+      .govuk-button {
+        margin-left: 80px;
+      }
+    }
+  }
+
+  .sdn-todo-list-main-action-buttons-divider {
+    display: inline-block;
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+
+  .govuk-label {
+    @include govuk-font($size: 19);
+    @include govuk-text-colour;
+
+    display: block;
+
+    margin-bottom: govuk-spacing(1);
+  }
+
+  // Modifiers that make labels look more like their equivalent headings
+
+  .govuk-label--xl {
+    @include govuk-font($size: 48, $weight: bold);
+    margin-bottom: govuk-spacing(3);
+  }
+
+  .govuk-label--l {
+    @include govuk-font($size: 36, $weight: bold);
+    margin-bottom: govuk-spacing(3);
+  }
+
+  .govuk-label--m {
+    @include govuk-font($size: 24, $weight: bold);
+    margin-bottom: govuk-spacing(2);
+  }
+
+  .govuk-label--s {
+    @include govuk-font($size: 19, $weight: bold);
+  }
+
+  // When the label is nested inside a heading, override the heading so that it
+  // does not have a margin. Effectively we want to be able to treat the heading
+  // as if it is not there.
+  //
+  // This breaks BEM conventions because it exists as a parent of the 'block',
+  // so we can't really consider an element.
+  .govuk-label-wrapper {
+    margin: 0;
+  }
+
+  .sdn-todo-list--readonly {
+    .snd-todo-list__item__info {
+      margin-left: 0 !important;
+    }
+
+    .govuk-checkboxes__item {
+      padding-left: 0;
+    }
+
+    .govuk-checkboxes__input {
+      display: none;
+
+      + label {
+        padding-left: 0;
+
+        &:after,
+        &:before {
+          display: none;
+        }
+      }
+    }
+  }
+}

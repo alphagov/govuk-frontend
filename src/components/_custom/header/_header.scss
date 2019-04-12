@@ -1,0 +1,318 @@
+@import "../../../settings/all";
+@import "../../../tools/all";
+@import "../../../helpers/all";
+
+@import "../../../helpers/typography";
+
+@include govuk-exports("govuk/component/sdn-header") {
+  $icon-search: url("../../../assets/images/icon-search.svg");
+  $sdn-header-background-from: #2e3ac7;
+  $sdn-header-background-to: #448bef;
+  $sdn-header-placeholder: #333333;
+  $sdn-search-button-color: transparent;
+  $sdn-search-button-background: #ffffff;
+  $sdn-header-text-color: #ffffff;
+  $sdn-dropdown-toggle-hover-color: #aad3fb;
+  $sdn-dropdown-background: #ffffff;
+  $sdn-dropdown-color: #333333;
+  $sdn-dropdown-hover-background: #448bef;
+  $sdn-dropdown-hover-color: #ffffff;
+  $sdn-dropdown-border-color: #e6e6e6;
+  $sdn-header-height: 55px;
+
+  $sdn-header-border-color: rgba(255, 255, 255, .2);
+
+  .sdn-header {
+    @include govuk-font($size: 14);
+    border-bottom: 1px solid $sdn-header-border-color;
+    background: linear-gradient(90deg, $sdn-header-background-from 0%, $sdn-header-background-to 100%);
+  }
+
+  .sdn-header__product-name {
+    @include govuk-font($size: 18);
+  }
+
+  .sdn-header__container {
+    display: flex;
+    position: relative;
+    height: $sdn-header-height;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .sdn-header__link {
+    @include govuk-focusable-fill;
+
+    text-decoration: none;
+
+    &:link,
+    &:visited {
+      color: $sdn-header-text-color;
+    }
+
+    &--active,
+    &:hover {
+      text-decoration: underline;
+    }
+
+    // When focussed, the text colour needs to be darker to ensure that colour
+    // contrast is still acceptable
+    &:focus {
+      color: $govuk-focus-text-colour;
+    }
+  }
+
+  .sdn-header__navigation {
+    padding-left: 0;
+    list-style: none;
+
+    > li {
+      display: inline-block;
+      vertical-align: middle;
+
+      & + li {
+        margin-left: 40px;
+
+        &:before {
+          content: "";
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          margin-left: -22px;
+          border-left: 1px solid $sdn-header-border-color;
+        }
+      }
+
+      &.sdn-header__form {
+        & + li {
+          margin-left: 20px;
+
+          &:before {
+            content: none;
+          }
+        }
+      }
+    }
+  }
+
+  .sdn-header__form {
+    max-width: 200px;
+
+    input {
+      @include govuk-font($size: 16);
+
+      box-sizing: border-box;
+      width: 100%;
+      height: 40px;
+      padding: 0 40px 0 12px;
+      border: 0;
+      border-radius: 3px;
+
+      &.govuk-input {
+        outline: transparent;
+      }
+
+      &::-webkit-input-placeholder {
+        opacity: .6;
+        color: $sdn-header-placeholder;
+      }
+
+      &::-moz-placeholder {
+        opacity: .6;
+        color: $sdn-header-placeholder;
+      }
+
+      &:-ms-input-placeholder {
+        opacity: .6;
+        color: $sdn-header-placeholder;
+      }
+
+      &:-moz-placeholder {
+        opacity: .6;
+        color: $sdn-header-placeholder;
+      }
+    }
+
+    button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 40px;
+      padding: 0;
+      border: 0;
+      border-radius: 3px;
+      opacity: .5;
+      color: $sdn-search-button-color;
+      background: $sdn-search-button-background $icon-search no-repeat center center;
+      background-size: 18px 18px;
+
+      &:focus {
+        outline: transparent;
+      }
+    }
+
+    form {
+      position: relative;
+
+      &:hover {
+        button {
+          opacity: 1;
+        }
+      }
+    }
+
+    @media (max-width: 400px) {
+      width: 100%;
+      max-width: initial;
+    }
+  }
+
+  .sdn-header__subnavigation {
+    position: relative;
+  }
+
+  .sdn-header__dropdown {
+    @include govuk-font($size: 14);
+    display: none;
+    z-index: 9999;
+    margin: 10px 0 0 0;
+    padding: 5px 0;
+    list-style: none;
+    border: 1px solid $sdn-dropdown-border-color;
+    border-radius: 3px;
+    color: $sdn-dropdown-color;
+    background-color: $sdn-dropdown-background;
+
+    a {
+      display: block;
+      padding: 8px 20px;
+      color: inherit;
+      text-decoration: none;
+
+      &:hover {
+        color: $sdn-dropdown-hover-color;
+        background-color: $sdn-dropdown-hover-background;
+      }
+    }
+  }
+
+  .sdn-header__dropdown-toggle {
+    display: block;
+    position: relative;
+    margin-right: 15px;
+
+    &:hover {
+      color: $sdn-dropdown-toggle-hover-color;
+      text-decoration: none;
+    }
+
+    &:after {
+      content: " \25BE";
+      position: absolute;
+      top: -4px;
+      right: -15px;
+      font-size: 18px;
+    }
+
+    &:focus {
+      outline: transparent;
+      color: $sdn-header-text-color;
+      background-color: transparent;
+
+      & + .sdn-header__dropdown {
+        display: block;
+      }
+    }
+  }
+
+  .sdn-header__fixed-width-text {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    @include mq ($from: desktop) {
+      max-width: 195px;
+    }
+
+    @media (max-width: 400px) {
+      width: 100%;
+      max-width: 220px;
+    }
+  }
+
+  $list-of-breakpoints: 600 650 700 750 800 850 900 950 1000 1050 1100 1150 1200;
+
+  @each $breakpoint in $list-of-breakpoints {
+    .#{sdn-header}-#{$breakpoint} {
+
+      @include mq ($until: $breakpoint * 1px) {
+        .sdn-header__container {
+          height: auto;
+          padding: 5px 0;
+        }
+
+        .sdn-header__fixed-width-text {
+          max-width: 100%;
+        }
+
+        .sdn-header__form {
+          max-width: 180px;
+
+          input {
+            height: 30px;
+          }
+        }
+
+        .sdn-header__navigation {
+          position: relative;
+          margin: 0 0 0 20px;
+          overflow: hidden;
+
+          > li {
+            position: relative;
+            left: -20px;
+            padding: 5px 0;
+            white-space: nowrap;
+
+            &:first-child {
+              left: 0;
+              padding-right: 20px;
+            }
+
+            & + li {
+              margin-left: 20px;
+            }
+
+            & + li:before,
+            &:before {
+              content: "|";
+              position: absolute;
+              top: auto;
+              bottom: auto;
+              left: -13px;
+              margin-left: 0;
+              border: 0;
+              color: $sdn-header-border-color;
+            }
+
+            &.sdn-header__form {
+              left: 0;
+              margin-right: 20px;
+
+              & + li {
+                &:before {
+                  content: "";
+                }
+              }
+
+              &:before {
+                content: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

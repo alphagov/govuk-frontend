@@ -1,0 +1,11 @@
+@mixin govuk-typography-weight-light($important: false) {
+  font-weight: $govuk-font-weight-light iff($important, !important);
+}
+
+@mixin sdn-font($size, $weight: regular, $tabular: false, $line-height: false) {
+  @include govuk-font($size, $weight: $weight, $tabular: $tabular, $line-height: $line-height);
+
+  @if $weight == light {
+    @include govuk-typography-weight-light;
+  }
+}

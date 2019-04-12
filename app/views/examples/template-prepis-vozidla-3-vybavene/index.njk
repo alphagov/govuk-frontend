@@ -1,0 +1,111 @@
+{% extends "template-navody.njk" %}
+
+{% from "_custom/timeline/macro.njk" import govukTimeline %}
+{% from "_custom/headline/macro.njk" import govukHeadline %}
+{% from "_custom/todo-list/macro.njk" import govukTodoList %}
+{% from "_custom/next-link/macro.njk" import govukNextLink %}
+
+{% block head %}
+  <!--[if !IE 8]><!-->
+    <link rel="stylesheet" href="/public/app.css">
+  <!--<![endif]-->
+  <!--[if IE 8]>
+    <link rel="stylesheet" href="/public/app-ie8.css">
+  <![endif]-->
+  <!--[if lt IE 9]>
+    <script src="/vendor/html5-shiv/html5shiv.js"></script>
+  <![endif]-->
+{% endblock %}
+
+{% block main %}
+  {{ govukHeadline({
+    headline: 'Prepis vozidla - nový majiteľ'
+  }) }}
+
+  <div class="govuk-width-container">
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <div class="govuk-body sdn-content">
+            <div id="all_steps_completed">
+              <h1 class="govuk-heading-l">
+                Uzatvoriť povinné zmluvné poistenie
+              </h1>
+
+              Na vydanie dokladov od vozidla je potrebné mať uzatvorené povinné zmluvné poistenie (zákonné poistenie) pre vami prihlasované vozidlo. Povinné zmluvné poistenie pokrýva škody ktoré vzniknú vedením poisteného vozidla.
+              Po uzatvorení povinného zmluvného poistenia vám bude vydaná dočasná biela karta, ktorú je potrebné mať pri sebe pri preberaní nových dokladov od vozidla na dopravnom inšpektoráte.
+
+              <div class="govuk-inset-text">
+                <b>Tip:</b> Povinné zmluvné poistenie je možné uzatvoriť aj online alebo telefonicky. Následne vám bude dočasná biela a zelená karta doručené na váš email ktorý ste zadali pri uzatváraní poistenia. Vytlačte si dočasnú bielu a zelenú kartu, tieto doklady je potrebné mať pri sebe pri vedení vozidla. Dočasnú bielu kartu je tiež potrebné mať pri sebe pri návšteve dopravného inšpektorátu za účeľom vyzdvihnutia dokladov.
+              </div>
+            </div>
+
+            <div id="todo_list">
+              {{ govukTodoList({
+                "title": "Povinnosti a podklady",
+                "state": "completed",
+                "readonly": true,
+                "tasks": [],
+                "reset_button": 'Začať vybavovať znovu',
+                "reset_button_url": '/examples/template-prepis-vozidla-2',
+                "info": "Úloha je vybavená.",
+                "todolist_description": "V zozname úloh môžete kliknúť na ikonku a nastaviť stav úlohy. Ak má úloha nejaké ďalšie povinnosti, môžete ich odškrtávať v zozname nižšie."
+              }) }}
+            </div>
+
+            {{ govukNextLink({
+              label: 'Ďalšia úloha',
+              text: '4. Absolvovať obhliadku vozidla',
+              url: '#'
+            }) }}
+
+          </div>
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+            {{ govukTimeline({
+                reset_button_url: '/examples/template-prepis-vozidla-0',
+                steps: [
+                    {
+                        text: 'Úvod',
+                        href: '/examples/template-prepis-vozidla-0',
+                        state: 'done'
+                    },
+                    {
+                        text: 'Prihlásiť nového držiteľa vozidla',
+                        href: '/examples/template-prepis-vozidla-1',
+                        state: 'done'
+                    },
+                    {
+                        text: 'Zaplatiť správne poplatky',
+                        href: '/examples/template-prepis-vozidla-2',
+                        state: 'done'
+                    },
+                    {
+                        text: 'Uzatvoriť povinné zmluvné poistenie',
+                        href: '/examples/template-prepis-vozidla-3',
+                        state: 'done',
+                        selected: true
+                    },
+                    {
+                        text: 'Absolvovať obhliadku vozidla',
+                        href: '#',
+                        state: 'not-done'
+                    },
+                    {
+                        text: 'Vyzdvihnúť doklady',
+                        href: '#',
+                        state: 'not-done'
+                    }
+                ]
+            }) }}
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}
+
+{% block bodyEnd %}
+  <script src="/public/all.js"></script>
+    <script>window.navodyDigitalFrontend.initAll()</script>
+{% endblock %}

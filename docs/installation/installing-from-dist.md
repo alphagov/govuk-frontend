@@ -1,41 +1,25 @@
-# Installing GOV.UK Frontend from `dist`
+# Použitie statického js/css vo vašom projekte
 
-## Limitations
+## Postup inštalácie
 
-When installing from `dist`, you are using compiled and minified versions of the
-stylesheet. This means that you will not be able to:
+### 1. Stiahnutie súborov
 
-- selectively include the CSS or JavaScript for individual components.
-- build your own styles or components based on the palette or typography and
-  spacing mixins.
-- customise the build (for example, overriding colours or enabling global
-  styles).
-- use the component Nunjucks templates.
+Stiahnite si najnovšiu skompilovanú a minifikovanú verziu css, js a assetov:
 
-If you require any of this functionality, you should [install GOV.UK Frontend
-using node package manager](installing-with-npm.md) instead.
+- [CSS and JS](https://github.com/slovensko-digital/navody-frontend/tree/master/dist)
+- [Assety](https://github.com/slovensko-digital/navody-frontend/tree/master/dist/assets)
 
-## Steps to install
+### 2. Vloženie do vášho projektu
 
-### 1. Download resources
+Musíte skopírovať celý obsah adresára `assets` do public root adresára vášho projektu.
 
-Download the latest compiled and minified versions of the stylesheets,
-JavaScript and the assets:
-
-- [CSS and JavaScript](https://github.com/alphagov/govuk-frontend/tree/master/dist)
-- [Assets](https://github.com/alphagov/govuk-frontend/tree/master/dist/assets)
-
-### 2. Include resources
-
-You must copy the entire `assets` folder to the root of your service.
-
-Follow the below example to add the CSS and JavaScript files to your HTML template. This example assumes you have copied the stylesheets and JavaScript files to `/stylesheets` and `/javascript` respectively.
+Príklad použitia, za predpokladu, že ste css súbor skopírovali do adresára `stylesheets` a js súbor do adresára `javascript`.
 
 ```html
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Example</title>
+    <title>Ukážka</title>
     <!--[if !IE 8]><!-->
       <link rel="stylesheet" href="stylesheets/govuk-frontend-[latest version].min.css">
     <!--<![endif]-->
@@ -44,8 +28,7 @@ Follow the below example to add the CSS and JavaScript files to your HTML templa
     <![endif]-->
   </head>
   <body>
-    <!-- Copy and paste component HTML-->
-    <button class="govuk-button">This is a button component</button>
+    <button class="govuk-button">Toto je komponent tlačidlo</button>
     <script src="javascript/govuk-frontend-[latest version].min.js"></script>
     <script>window.GOVUKFrontend.initAll()</script>
   </body>

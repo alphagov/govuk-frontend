@@ -1,0 +1,19 @@
+@import "../../../settings/all";
+@import "../../../tools/all";
+@import "../../../helpers/all";
+
+@import "../../tag/tag";
+
+@include govuk-exports("govuk/component/sdn-phase-banner") {
+
+  .sdn-phase-banner {
+    border-bottom: 0;
+
+    .govuk-phase-banner__content {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+    }
+  }
+}

@@ -1,0 +1,94 @@
+description: "Breakpoint pre responzivitu sa nastavuje css triedou <code>sdn-header-X</code>, kde X predstavuje šírku okna prehliadača v pixeloch a môže mať jednu z hodnôt:
+600, 650, 700, 750, 800, 850, 900, 950, 1000, 1050, 1100, 1150, 1200. Príslušnú css triedu je potrebné nastaviť podľa šírky položiek menu, tak aby sa header prepol do responzívnej verzie najneskôr
+vtedy, keď sa najpravejšia položka menu \"dotkne\" nadpisu v pravej časti hlavičky."
+previewLayout: full-width
+
+examples:
+- name: neprihlásený
+  description: Hlavička s dvoma linkami a search fieldom
+  data:
+    show_search: true
+    responsiveClass: sdn-header-950
+    productName: Životné situácie
+    navigation:
+      - href: '#1'
+        text: Časté otázky
+      - href: '#2'
+        text: Prihlásiť
+- name: bez vyhladavania
+  description: Hlavička s dvoma linkami bez search fieldu
+  data:
+    show_search: false
+    responsiveClass: sdn-header-1200
+    productName: Životné situácie
+    navigation:
+      - href: '#1'
+        text: Časté otázky
+      - href: '#2'
+        text: Varila myšička kašičku
+      - href: '#3'
+        text: Kontakty
+      - href: '#4'
+        text: FAQ
+      - href: '#5'
+        text: Prihlásiť
+- name: viac položiek
+  description: Hlavička s troma linkami a search fieldom
+  data:
+    show_search: true
+    responsiveClass: sdn-header-1050
+    productName: Životné situácie
+    navigation:
+      - href: '#1'
+        text: Časté otázky
+      - href: '#2'
+        text: O nás
+      - href: '#3'
+        text: Prihlásiť
+- name: prihlásený - krátky email
+  description: Hlavička prihláseného používateľa s krátkym emailom
+  data:
+    show_search: true
+    responsiveClass: sdn-header-950
+    productName: Životné situácie
+    navigation:
+      - href: '#1'
+        text: Časté otázky
+      - href: '#2'
+        text: b@h6.sk
+        items:
+          - href: '#21'
+            text: 'Nastavenia'
+          - href: '#22'
+            text: 'Odhlásiť'
+- name: prihlásený - dlhý email
+  description: Hlavička prihláseného používateľa s dlhým emailom
+  data:
+    show_search: true
+    responsiveClass: sdn-header-1100
+    productName: Životné situácie
+    navigation:
+      - href: '#1'
+        text: Časté otázky
+      - href: '#2'
+        text: jan.amos.komensky@gmail.com
+        items:
+          - href: '#21'
+            text: 'Nastavenia'
+          - href: '#22'
+            text: 'Odhlásiť'
+- name: aktívny odkaz
+  description: Hlavička s aktívnym odkazom
+  data:
+    show_search: true
+    responsiveClass: sdn-header-950
+    productName: Životné situácie
+    navigation:
+      - href: '#1'
+        text: Časté otázky
+      - href: '#2'
+        text: O nás
+        active: true
+      - href: '#3'
+        text: Prihlásiť
+

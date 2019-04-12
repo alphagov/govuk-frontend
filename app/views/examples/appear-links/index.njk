@@ -1,0 +1,37 @@
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "fieldset/macro.njk" import govukFieldset %}
+{% from "input/macro.njk" import govukInput %}
+{% from "button/macro.njk" import govukButton %}
+{% from "radios/macro.njk" import govukRadios %}
+{% from "checkboxes/macro.njk" import govukCheckboxes %}
+{% from "date-input/macro.njk" import govukDateInput %}
+{% from "select/macro.njk" import govukSelect %}
+{% from "file-upload/macro.njk" import govukFileUpload %}
+
+{% extends "layout.njk" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    "href": "/"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <h1 class="govuk-heading-xl">Appear links</h1>
+
+  <div id="skrycele">
+    Bla bla bla
+    <div id="skryma">
+      <a href="#" data-module="sdn-appear-link" data-appear="ukazma" data-disappear="skryma">hide</a>
+    </div>
+    <div id="ukazma" class="sdn-appear-link-hide">
+      ahoj
+    </div>
+    <a href="#" data-module="sdn-appear-link" data-appear="ukazvelke" data-disappear="skrycele">hide all</a>
+  </div>
+  <div id="ukazvelke" class="sdn-appear-link-hide">
+    toto je velka vec ktora sa cela ukaze
+    <a href="#" data-module="sdn-appear-link" data-appear="skrycele" data-disappear="ukazvelke">close</a>
+  </div>
+
+{% endblock %}

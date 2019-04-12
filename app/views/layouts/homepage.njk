@@ -1,0 +1,61 @@
+{% extends "layout.njk" %}
+{% from "_custom/header/macro.njk" import govukHeader %}
+
+
+{% block content %}
+    {{ govukHeader({
+      "productName": "Životné situácie",
+      "navigation": [
+        {
+          "href": "#1",
+          "text": "Časté otázky"
+        }
+      ]
+    }) }}
+
+  <h1 class="govuk-heading-xl">
+    navody.digital frontend
+  </h1>
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-one-half">
+      <h2 class="govuk-heading-m">navody.digital components</h2>
+
+        <ul class="govuk-list">
+          {% for componentName in sdnComponentsDirectory | sort %}
+              {% if componentName != '_partials' %}
+                  <li><a href="/custom-components/{{ componentName }}" class="govuk-link">{{ componentName | replace("-", " ") | capitalize }}</a></li>
+              {% endif %}
+          {% endfor %}
+        </ul>
+
+
+      <h2 class="govuk-heading-m">gov.uk components</h2>
+
+      <ul class="govuk-list">
+        {% for componentName in componentsDirectory | sort %}
+              {% if componentName != '_sdn' and componentName != '_custom' %}
+                <li><a href="/components/{{ componentName }}" class="govuk-link">{{ componentName | replace("-", " ") | capitalize }}</a></li>
+            {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="govuk-grid-column-one-half">
+      <h2 class="govuk-heading-m">Examples</h2>
+
+      <ul class="govuk-list">
+      {% for exampleName in examplesDirectory | sort %}
+        <li><a href="/examples/{{ exampleName }}" class="govuk-link">{{ exampleName | replace("-", " ") | capitalize }}</a></li>
+      {% endfor %}
+      </ul>
+
+      <h2 class="govuk-heading-m">Misc</h2>
+
+      <ul class="govuk-list">
+        <li><a href="/docs" class="govuk-link">Sass Documentation</a></li>
+      </ul>
+    </div>
+  </div>
+{% endblock %}

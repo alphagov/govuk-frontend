@@ -1,0 +1,14 @@
+previewLayout: full-width
+
+examples:
+- name: default
+  data:
+    links:
+      - url: '#media'
+        text: Pre médiá
+      - url: '#gdpr'
+        text: Ochrana osobných údajov
+    social:
+      facebook: '#facebook'
+      github: '#github'
+      youtube: '#youtube'

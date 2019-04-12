@@ -1,0 +1,122 @@
+{% extends "template-navody.njk" %}
+
+{% from "_custom/timeline/macro.njk" import govukTimeline %}
+{% from "_custom/headline/macro.njk" import govukHeadline %}
+{% from "_custom/todo-list/macro.njk" import govukTodoList %}
+{% from "_custom/next-link/macro.njk" import govukNextLink %}
+
+{% block head %}
+  <!--[if !IE 8]><!-->
+    <link rel="stylesheet" href="/public/app.css">
+  <!--<![endif]-->
+  <!--[if IE 8]>
+    <link rel="stylesheet" href="/public/app-ie8.css">
+  <![endif]-->
+  <!--[if lt IE 9]>
+    <script src="/vendor/html5-shiv/html5shiv.js"></script>
+  <![endif]-->
+{% endblock %}
+
+{% block main %}
+  {{ govukHeadline({
+    headline: 'Prepis vozidla - nový majiteľ'
+  }) }}
+
+  <div class="govuk-width-container">
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <div class="govuk-body sdn-content">
+            <div id="all_steps_completed">
+
+            </div>
+            <h1 class="govuk-heading-l">
+              Prihlásiť sa ako nový držiteľ vozidla
+            </h1>
+
+            <p>
+              Po vyplnení a odoslaní elektronického formulára žiadosti si skontrolujte vašu elektronickú schránku, do ktorej vám bude doručené inštrukcie na úhradu správnych poplatkov.
+            </p>
+          </div>
+
+          <div id="todo_list">
+
+            {{ govukTodoList({
+              "title": "Povinnosti",
+              "reset_button": "Začať vybavovať úlohu odznovu",
+              "reset_button_url": "/examples/template-prepis-vozidla-1",
+              "info": "Úloha je vybavená.",
+              "state": "completed",
+              "tasks": [
+                {
+                  "title": "Mám občiansky preukaz s elektronickým čipom",
+                  "completed": true
+                },
+                {
+                  "title": "Mám malý technický preukaz (Osvedčenie o evidencii časť I.) s elektronickým čipom",
+                  "description": "Preukaz s čipom má vozidlo v prípade ak bolo osvedčenie o evidencii časť&nbsp;I vydané po&nbsp;31.&nbsp;máji&nbsp;2010"
+                },
+                {
+                  "title": "Pôvodný majiteľ odhlásil vozidlo",
+                  "link_text": "Návod na odhlásenie",
+                  "link_url": "https://staging.navody.digital/zivotne-situacie/prepis_vozidla_predavajuci"
+                }
+              ]
+            }) }}
+          </div>
+
+          {{ govukNextLink({
+            label: 'Ďalšia úloha',
+            text: '2. Zaplatiť správne poplatky',
+            url: '/examples/template-prepis-vozidla-2'
+          }) }}
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+            {{ govukTimeline({
+                reset_button_url: '/examples/template-prepis-vozidla-0',
+                steps: [
+                    {
+                        text: 'Úvod',
+                        href: '/examples/template-prepis-vozidla-0',
+                        state: 'done'
+                    },
+                    {
+                        text: 'Prihlásiť nového držiteľa vozidla',
+                        href: '/examples/template-prepis-vozidla-1',
+                        state: 'done',
+                        selected: true
+                    },
+                    {
+                        text: 'Zaplatiť správne poplatky',
+                        href: '/examples/template-prepis-vozidla-2',
+                        state: 'not-done'
+                    },
+                    {
+                        text: 'Uzatvoriť povinné zmluvné poistenie',
+                        href: '/examples/template-prepis-vozidla-3',
+                        state: 'not-done'
+                    },
+                    {
+                        text: 'Absolvovať obhliadku vozidla',
+                        href: '#',
+                        state: 'not-done'
+                    },
+                    {
+                        text: 'Vyzdvihnúť doklady',
+                        href: '#',
+                        state: 'not-done'
+                    }
+                ]
+            }) }}
+        </div>
+
+      </div>
+    </main>
+  </div>
+{% endblock %}
+
+{% block bodyEnd %}
+  <script src="/public/all.js"></script>
+    <script>window.navodyDigitalFrontend.initAll()</script>
+{% endblock %}

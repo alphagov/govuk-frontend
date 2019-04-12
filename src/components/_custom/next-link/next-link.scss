@@ -1,0 +1,56 @@
+@import "../../../settings/all";
+@import "../../../tools/all";
+@import "../../../helpers/all";
+
+$right-arrow: url("../../../assets/images/arrow-pointing-to-right.svg");
+
+@include govuk-exports("govuk/component/sdn-next-link") {
+
+  $text-color: #3a67e8;
+
+  .sdn-next-link {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding-left: 30px;
+
+    &:before {
+      content: "";
+      display: inline-block;
+      width: 16px;
+      height: 20px;
+      margin-left: -30px;
+      background-image: $right-arrow;
+      background-repeat: no-repeat;
+      background-position: center right;
+      background-size: cover;
+    }
+  }
+
+  .sdn-next-link__link {
+    padding-left: 10px;
+    font-size: 21px;
+    font-weight: 600;
+    text-decoration: none;
+
+    small {
+      display: block;
+      font-weight: 400;
+      text-decoration: underline;
+    }
+
+    &,
+    &:link,
+    &:visited {
+      outline: none;
+      color: $text-color;
+      background-color: inherit;
+    }
+
+    &:hover {
+      &,
+      small {
+        opacity: .8;
+      }
+    }
+  }
+}

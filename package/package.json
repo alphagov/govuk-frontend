@@ -1,7 +1,7 @@
 {
-  "name": "govuk-frontend",
+  "name": "navody-digital-frontend",
   "description": "GOV.UK Frontend contains the code you need to start building a user interface for government platforms and services.",
-  "version": "2.10.0",
+  "version": "0.1.2",
   "main": "all.js",
   "sass": "all.scss",
   "engines": {
@@ -13,13 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/alphagov/govuk-frontend.git"
+    "url": "https://github.com/slovensko-digital/navody-frontend.git"
   },
   "bugs": {
     "url": "https://github.com/alphagov/govuk-frontend/issues"
   },
   "homepage": "https://github.com/alphagov/govuk-frontend#readme",
   "keywords": [
+    "slovensko.digital",
     "govuk",
     "frontend",
     "design system",

@@ -1,0 +1,268 @@
+@import "../../../settings/all";
+@import "../../../tools/all";
+@import "../../../helpers/all";
+
+$color-done: govuk-colour("green");
+$color-progress: govuk-colour("orange");
+$color-waiting: govuk-colour("blue");
+$color-default: govuk-colour("grey-3");
+$color-default-transparent: rgba(0, 0, 0, .14); // transparent version of grey-3
+$color-black: #333333;
+$link-color: #000000;
+$std-timeline-dropdown-bg-color: #f1f1f1;
+$std-timeline-bullet-shadow: #ffbf47;
+
+$font-size: 16px;
+$line-height: 1.5;
+
+$component-spacing: ($font-size * $line-height) / 2;
+
+$bullet-border: 2px;
+$bullet-size: ($component-spacing * 2) - $bullet-border;
+
+$tail-width: $component-spacing;
+
+$icon-dots: url("../../../assets/images/icon-dots.svg");
+$icon-pencil: url("../../../assets/images/icon-pencil.svg");
+$icon-hourglass: url("../../../assets/images/icon-hourglass.svg");
+$icon-check: url("../../../assets/images/icon-check.svg");
+$icon-check-black: url("../../../assets/images/icon-check-black.svg");
+
+@include govuk-exports("govuk/component/sdn-timeline") {
+  .sdn-timeline {
+    @include govuk-font($size: 16, $line-height: 1.5);
+    @include govuk-text-colour;
+  }
+
+  .sdn-timeline__list {
+    padding-left: 0;
+    list-style: none;
+    counter-reset: li -1;
+  }
+
+  .sdn-timeline__step {
+    @include govuk-responsive-padding(7, "bottom");
+    position: relative;
+    padding-left: $bullet-border + $component-spacing * 4;
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: $component-spacing;
+      width: $bullet-border;
+      background: $color-default;
+    }
+
+    &:last-child {
+      padding-bottom: $component-spacing * 2;
+
+      // tail-end of the timeline
+      &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: ($component-spacing / 2) + ($bullet-border / 2);
+        width: $tail-width;
+        height: $bullet-border;
+        background-color: $color-default;
+      }
+    }
+
+    &--selected {
+      .sdn-timeline__link {
+        @include govuk-typography-weight-bold;
+      }
+
+      > .sdn-timeline__bullet {
+        outline: transparent;
+        box-shadow: 0 0 0 3px $std-timeline-bullet-shadow;
+      }
+    }
+
+    &--done {
+      &:before {
+        background: $color-done;
+      }
+
+      &:last-child:after {
+        background-color: $color-done;
+      }
+    }
+  }
+
+  .sdn-timeline__bullet {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: $bullet-size;
+    height: $bullet-size;
+    border: $bullet-border solid $color-default;
+    border-radius: 50%;
+    color: govuk-colour("white");
+    background-color: govuk-colour("white");
+    line-height: $bullet-size;
+    text-align: center;
+    cursor: pointer;
+
+    &:focus {
+      outline: transparent;
+      box-shadow: 0 0 0 3px $std-timeline-bullet-shadow;
+    }
+
+    &--not-done {
+      border-color: $color-default;
+      background: $color-default $icon-dots no-repeat center;
+    }
+
+    &--done {
+      border-color: $color-done;
+      background: $color-done $icon-check no-repeat center;
+    }
+
+    &--in-progress {
+      border-color: $color-progress;
+      background: $color-progress $icon-pencil no-repeat center 5px;
+    }
+
+    &--waiting {
+      border-color: $color-waiting;
+      background: $color-waiting $icon-hourglass no-repeat center;
+    }
+  }
+
+  .sdn-timeline__link {
+    display: flex;
+    color: $link-color;
+    text-decoration-color: transparent;
+
+    &:link,
+    &:visited {
+      color: $link-color;
+    }
+
+    &:hover {
+      color: $link-color;
+      text-decoration-color: currentColor;
+    }
+
+    &:before {
+      content: counter(li) ". ";
+      margin-right: $component-spacing / 2;
+      counter-increment: li;
+    }
+  }
+
+  .sdn-timeline-dropdown {
+    display: none;
+    position: absolute;
+    z-index: 10;
+    top: $bullet-size + $component-spacing;
+    left: -$component-spacing;
+    padding: $component-spacing 0;
+    border: 1px solid $color-default;
+    border-radius: 6px;
+    background-color: govuk-colour("white");
+    box-shadow: $color-default-transparent 0 15px 30px;
+
+    &:before,
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-style: solid;
+    }
+
+    &:before {
+      top: - 6px;
+      left: 15px;
+      border-width: 0 9px 6px 9px;
+      border-color: transparent transparent $color-default transparent;
+    }
+
+    &:after {
+      top: - 5px;
+      left: 17px;
+      border-width: 0 7px 5px 7px;
+      border-color: transparent transparent govuk-colour("white") transparent;
+    }
+
+    .sdn-timeline__step--dropdown-active & {
+      display: block;
+    }
+  }
+
+  .sdn-timeline-dropdown__option {
+    display: block;
+    position: relative;
+    padding: govuk-spacing(2) govuk-spacing(7) govuk-spacing(2) (govuk-spacing(6) + $bullet-size);
+    color: $link-color;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:link,
+    &:visited {
+      color: $link-color;
+    }
+
+    &:hover {
+      color: $link-color;
+      background-color: $std-timeline-dropdown-bg-color;
+    }
+
+    &--selected {
+      background-color: $std-timeline-dropdown-bg-color;
+
+      &:hover {
+        background-color: govuk-colour("grey-3");
+      }
+
+      &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: govuk-spacing(2);
+        right: govuk-spacing(3);
+        width: $bullet-size;
+        height: $bullet-size;
+        background: $icon-check-black no-repeat center center;
+      }
+    }
+  }
+
+  .sdn-timeline-dropdown__bullet {
+    position: absolute;
+    top: govuk-spacing(2) - 2px;
+    left: govuk-spacing(3);
+  }
+
+  .sdn-timeline-dropdown__additional-info {
+    color: govuk-colour("grey-1");
+    @include govuk-font($size: 14);
+  }
+
+  .snd-timeline--readonly {
+    .sdn-timeline__bullet {
+      display: none;
+    }
+
+    .sdn-timeline__step {
+      padding-left: 0;
+
+      &:before,
+      &:after {
+        display: none;
+      }
+    }
+  }
+
+  .sdn-timeline-title {
+    @include govuk-font($size: 24, $weight: regular);
+
+    margin: 0 0 30px 0;
+  }
+}

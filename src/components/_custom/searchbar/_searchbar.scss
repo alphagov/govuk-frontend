@@ -1,0 +1,59 @@
+@import "../../../settings/all";
+@import "../../../tools/all";
+@import "../../../helpers/all";
+@import "../_partials/gradient-background";
+
+
+@include govuk-exports("sdn/component/searchbar") {
+  // todo replace colors from global variables
+  $from: #2e3ac7;
+  $to: #448bef;
+  $search-block-bg: govuk-colour("white");
+
+  .sdn-searchbar-wrapper {
+    background: linear-gradient(90deg, $from 0%, $to 100%);
+  }
+
+  .sdn-searchbar {
+    padding-top: 52px;
+    padding-bottom: 35px;
+  }
+
+  .sdn-searchbar__item {
+    height: 50px;
+    border-radius: 2px;
+    background-color: $search-block-bg;
+  }
+
+  .sdn-searchbar-block {
+    display: flex;
+    padding: 4px;
+    align-items: stretch;
+
+    input[type="search"] {
+      width: 100%;
+      border: 0;
+
+      &:focus {
+        outline: 0;
+      }
+    }
+  }
+
+  .sdn-searchbar-block__item {
+
+    display: flex;
+    align-items: center;
+
+    &:first-child {
+      padding: 0 20px;
+      flex-grow: 1;
+    }
+  }
+
+  .sdn-searchbar-block__item--stretched {
+    align-items: stretch;
+
+  }
+
+}

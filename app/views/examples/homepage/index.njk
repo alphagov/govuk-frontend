@@ -1,0 +1,86 @@
+{% extends "template-navody.njk" %}
+
+{% from "_custom/timeline/macro.njk" import govukTimeline %}
+{% from "_custom/headline/macro.njk" import govukHeadline %}
+{% from "_custom/todo-list/macro.njk" import govukTodoList %}
+{% from "_custom/next-link/macro.njk" import govukNextLink %}
+{% from "_custom/searchbar/macro.njk" import govukSearchbar %}
+{% from "_custom/tiles/macro.njk" import govukTiles %}
+
+{% block head %}
+  <!--[if !IE 8]><!-->
+  <link rel="stylesheet" href="/public/app.css">
+  <!--<![endif]-->
+  <!--[if IE 8]> <link rel="stylesheet" href="/public/app-ie8.css"> <![endif]-->
+  <!--[if lt IE 9]> <script src="/vendor/html5-shiv/html5shiv.js"></script> <![endif]-->
+{% endblock %}
+
+{% block main %}
+
+  {{ govukSearchbar({
+  "tag": {
+    "text": "alpha"
+  },
+  "html": "This is a new service - your <a href=\"#\" class=\"govuk-link\">feedback</a> will help us to improve it."
+}) }}
+
+  {{ govukTiles({
+  "items": [
+    {
+      "title": "Narodenie dieťaťa",
+      "image": "https://placekitten.com/200/234",
+      "url": "https://slovensko.digital"
+    },
+    {
+      "title": "Narodenie dieťaťa",
+      "image": "https://placekitten.com/200/234",
+      "url": "https://slovensko.digital"
+    },
+    {
+      "title": "Narodenie dieťaťa",
+      "image": "https://placekitten.com/200/234",
+      "url": "https://slovensko.digital"
+    },
+    {
+      "title": "Narodenie dieťaťa",
+      "image": "https://placekitten.com/200/234",
+      "url": "https://slovensko.digital"
+    },
+    {
+      "title": "Narodenie dieťaťa",
+      "image": "https://placekitten.com/200/234",
+      "url": "https://slovensko.digital"
+    },
+    {
+      "title": "Narodenie dieťaťa",
+      "image": "https://placekitten.com/200/234",
+      "url": "https://slovensko.digital"
+    },
+    {
+      "title": "Narodenie dieťaťa",
+      "image": "https://placekitten.com/200/234",
+      "url": "https://slovensko.digital"
+    },
+    {
+      "title": "Narodenie dieťaťa",
+      "image": "https://placekitten.com/200/234",
+      "url": "https://slovensko.digital"
+    },
+    {
+      "title": "Narodenie dieťaťa",
+      "image": "https://placekitten.com/200/234",
+      "url": "https://slovensko.digital"
+    }
+  ] 
+  }) }}
+
+{% endblock %}
+
+{% block bodyEnd %}
+  <script src="/public/all.js"></script>
+  <script>
+    window
+      .navodyDigitalFrontend
+      .initAll()
+  </script>
+{% endblock %}

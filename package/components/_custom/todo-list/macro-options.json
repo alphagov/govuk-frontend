@@ -1,0 +1,120 @@
+params:
+
+examples:
+ - name: default
+   data:
+     title: Povinnosti
+     todolist_description: V zozname úloh môžete kliknúť na ikonku a nastaviť stav úlohy. Ak má úloha nejaké ďalšie povinnosti, môžete ich odškrtávať v zozname nižšie.
+     primary_button: Požiadať elektronicky
+     primary_button_url: '#'
+     secondary_button: Označiť úlohu za vybavenú
+     secondary_button_url: '#'
+     info: Po splnení všetkých povinností môžete požiadať elektronicky o zápis nového držiteľa vozidla. Po úspešnom podaní žiadosti vám do schránky na slovensko.sk prídu platobné inštrukcie.
+
+     tasks:
+      -
+        title: Vybrať obchodné meno
+        completed: true
+      -
+        title: Vyzdvihnúť a oskenovať dokument od lekára
+        description: Vsetky udaje mame k dispozicii
+        completed: false
+      -
+        title: Získať súhlas vlastníkov nehnuteľnosti
+        description: Musíte získať súhlas všetkých vlastníkov
+        link_url: '#button1'
+        link_text: Spustiť
+        completed: true
+      -
+        title: Určiť správcu vkladu
+        description: Musí byť jeden z konateľov
+        link_url: '#button2'
+        link_text: Spustiť
+        completed: false
+ - name: completed
+   data:
+     title: Povinnosti
+     state: completed
+     todolist_description: V zozname úloh môžete kliknúť na ikonku a nastaviť stav úlohy. Ak má úloha nejaké ďalšie povinnosti, môžete ich odškrtávať v zozname nižšie.
+     reset_button: Začať vybavovať úlohu odznovu
+     reset_button_url: '#'
+     info: Úloha je vybavená.
+     tasks:
+      -
+        title: Vybrať obchodné meno
+        completed: true
+      -
+        title: Vyzdvihnúť a oskenovať dokument od lekára
+        description: Vsetky udaje mame k dispozicii
+        completed: true
+      -
+        title: Získať súhlas vlastníkov nehnuteľnosti
+        description: Musíte získať súhlas všetkých vlastníkov
+        link_url: '#button1'
+        link_text: Spustiť
+        completed: true
+      -
+        title: Určiť správcu vkladu
+        description: Musí byť jeden z konateľov
+        link_url: '#button2'
+        link_text: Spustiť
+        completed: true
+ - name: waiting
+   data:
+     title: Povinnosti
+     state: waiting
+     secondary_button: Označiť úlohu za vybavenú
+     info: <strong>Prebieha vybavovanie</strong><br>Po úspešnom podaní má úrad 28 dní na vybavenie žiadosti. Po vybavení žiadosti, keď dostanete odpoveď do schránky na slovensko.sk, označte úlohu za vybavenú.
+     secondary_button_url: /examples/template-prepis-vozidla-1-vybavene
+     todolist_description: V zozname úloh môžete kliknúť na ikonku a nastaviť stav úlohy. Ak má úloha nejaké ďalšie povinnosti, môžete ich odškrtávať v zozname nižšie.
+     reset_button: Začať vybavovať úlohu odznovu
+     reset_button_url: '#'
+     tasks:
+      -
+        title: Vybrať obchodné meno
+        completed: true
+      -
+        title: Vyzdvihnúť a oskenovať dokument od lekára
+        description: Vsetky udaje mame k dispozicii
+        completed: true
+      -
+        title: Získať súhlas vlastníkov nehnuteľnosti
+        description: Musíte získať súhlas všetkých vlastníkov
+        link_url: '#button1'
+        link_text: Spustiť
+        completed: true
+      -
+        title: Určiť správcu vkladu
+        description: Musí byť jeden z konateľov
+        link_url: '#button2'
+        link_text: Spustiť
+        completed: true
+ - name: readonly
+   data:
+     title: Povinnosti
+     readonly: true
+     todolist_activate_url: '#'
+     todolist_description: Aby ste nestratili prehľad, čo ste už spravili a čo ešte musíte spraviť, aktivujte si odškrtávanie vybavených povinností a úloh.
+     primary_button: Požiadať elektronicky
+     primary_button_url: '#'
+     tasks:
+      -
+        title: Vybrať obchodné meno
+        completed: true
+      -
+        title: Vyzdvihnúť a oskenovať dokument od lekára
+        description: Vsetky udaje mame k dispozicii
+        completed: true
+      -
+        title: Získať súhlas vlastníkov nehnuteľnosti
+        description: Musíte získať súhlas všetkých vlastníkov
+        link_url: '#button1'
+        link_text: Spustiť
+        completed: true
+      -
+        title: Určiť správcu vkladu
+        description: Musí byť jeden z konateľov
+        link_url: '#button2'
+        link_text: Spustiť
+        completed: true
+

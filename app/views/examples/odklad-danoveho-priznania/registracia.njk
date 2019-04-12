@@ -1,0 +1,32 @@
+{% extends "template-static-odklad-danoveho-priznania.njk" %}
+
+{% from "_custom/timeline/macro.njk" import govukTimeline %}
+{% from "_custom/headline/macro.njk" import govukHeadline %}
+{% from "_custom/todo-list/macro.njk" import govukTodoList %}
+{% from "_custom/next-link/macro.njk" import govukNextLink %}
+
+{% set step = 2 %}
+
+{% block main %}
+    <h1>Registrovať sa na Finančnej správe</h1>
+
+    <p>Zaregistrujte sa na <a href="https://www.financnasprava.sk/sk/registracia-index">portáli Finančnej správy</a>.</p>
+    <ul class="govuk-list govuk-list--number">
+      <li>Zvoľte možnosť <b>Registrácia s využitím občianskeho preukazu s elektronickým čipom (eID)</b></li>
+      <li>Počas registrácie označte možnosť <b>Žiadam o sprístupnenie oprávnenia pre osobné konanie</b></li>
+    </ul>
+    <p>Heslo ktoré zadáte počas registrácie budete používať na prihlásenie do portálu Finančnej správy a aplikácie eDane.</p>
+
+    <h1 class="govuk-heading-l">Prihlásenie do Finančnej správy</h1>
+    <ul class="govuk-list govuk-list--number">
+      <li>Prihláste sa na portál <a href="https://pfsiam.financnasprava.sk/Iam.Web/LogIn/UPVS">Finančnej správy</a> pomocou vášho občianskeho preukazu s čipom.</li>
+      <li>Zistite si vaše ID. ID je sedemmiestne číslo, ktoré budete potrebovať pre aplikácie eDane. ID nájdete v pravom hornom rohu vedľa vášho mena.</li>
+    </ul>
+    <img width="100%" src="/assets/images/static/odklad_dp_scr1.jpg">
+
+    {{ govukNextLink({
+      label: 'Ďalšia úloha',
+      text: '2. Nainštalovať aplikáciu eDane',
+      url: '/examples/odklad-danoveho-priznania/instalacia'
+    }) }}
+{% endblock %}

@@ -1,0 +1,68 @@
+examples:
+- name: default
+  data:
+    title: Úlohy
+    steps:
+      - text: Spustenie návodu
+        href: '/'
+        state: 'done'
+      - text: Vyzdvihnutie rodného listu na matrike
+        href: '/'
+        state: 'waiting'
+      - text: Prihlásenie do zdravotnej poistovne
+        href: '/'
+        state: 'waiting'
+        selected: true
+      - text: Zaslanie rodného listu na Socialnu poistovnu (ak dostava materske)
+        href: '/'
+        state: 'waiting'
+      - text: Prihlásenie dieťaťa k pediatrovi s prepúšťajúcou správou z pôrodnice
+        href: '/'
+        state: 'waiting'
+      - text: Prihlásenie dieťaťa k trvalému pobytu v ohlasovni pobytu (len v specialnych pripadoch)
+        href: '/'
+        state: 'in-progress'
+        dropdown_active: true
+      - text: Vybavenie cestovného dokladu dieťaťa
+        href: '/'
+        state: 'not-done'
+      - text: Príspevok pri narodení dieťaťa
+        href: '/'
+        state: 'not-done'
+      - text: Rôzne ďalsie príplatky a príspevky
+        href: '/'
+        state: 'not-done'
+- name: readonly
+  data:
+    readonly: true
+    reset_button_url: '#reset'
+    steps:
+      - text: Spustenie návodu
+        href: '/'
+        state: 'done'
+      - text: Vyzdvihnutie rodného listu na matrike
+        href: '/'
+        state: 'waiting'
+      - text: Prihlásenie do zdravotnej poistovne
+        href: '/'
+        state: 'waiting'
+        selected: true
+      - text: Zaslanie rodného listu na Socialnu poistovnu (ak dostava materske)
+        href: '/'
+        state: 'waiting'
+      - text: Prihlásenie dieťaťa k pediatrovi s prepúšťajúcou správou z pôrodnice
+        href: '/'
+        state: 'waiting'
+      - text: Prihlásenie dieťaťa k trvalému pobytu v ohlasovni pobytu (len v specialnych pripadoch)
+        href: '/'
+        state: 'in-progress'
+        dropdown_active: true
+      - text: Vybavenie cestovného dokladu dieťaťa
+        href: '/'
+        state: 'not-done'
+      - text: Príspevok pri narodení dieťaťa
+        href: '/'
+        state: 'not-done'
+      - text: Rôzne ďalsie príplatky a príspevky
+        href: '/'
+        state: 'not-done'

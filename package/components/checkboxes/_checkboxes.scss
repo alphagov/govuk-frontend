@@ -11,7 +11,7 @@
 
   $govuk-touch-target-size: 44px;
   $govuk-checkboxes-size: 40px;
-  $govuk-small-checkboxes-size: 24px;
+  $govuk-small-checkboxes-size: 24px !default;
   $govuk-checkboxes-label-padding-left-right: govuk-spacing(3);
 
   .govuk-checkboxes__item {

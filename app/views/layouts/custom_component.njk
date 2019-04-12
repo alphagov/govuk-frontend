@@ -1,0 +1,45 @@
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "macros/showExamples.njk" import showCustomExamples %}
+
+{% extends "full-width.njk" %}
+
+{% set bodyClasses %}
+  language-markup
+{% endset %}
+
+{% set componentName = componentPath %}
+{% set componentNameHuman = componentName | replace("-", " ") %}
+
+{% set htmlMarkup %}
+    {{ componentName }}
+  {% include "_custom/" + componentName +"/"+ componentName +".njk" ignore missing %}
+{% endset %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    "items": [
+    { text: 'navody.digital frontend', href: '/' },
+    { text: componentNameHuman | capitalize }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    <h1 class="govuk-heading-xl">
+      {% block componentName %}
+        {{ componentNameHuman | capitalize }}
+      {% endblock %}
+    </h1>
+
+    {% if sdnComponentData.description %}
+      <div class="govuk-inset-text">
+        {{ sdnComponentData.description | safe }}
+      </div>
+    {% endif %}
+  </div>
+
+  {% block examples %}
+    {{ showCustomExamples(componentName, componentNameHuman, sdnComponentData) }}
+  {% endblock %}
+{% endblock %}

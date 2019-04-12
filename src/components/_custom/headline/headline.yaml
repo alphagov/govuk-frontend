@@ -1,0 +1,36 @@
+params:
+- name: headline
+  type: string
+  required: true
+  description: Main headline text
+- name: subheadline
+  type: string
+  required: false
+  description: Optional sub-headline
+- name: classes
+  type: string
+  required: false
+  description: Classes to add to the breadcrumbs container.
+- name: attributes
+  type: object
+  required: false
+  description: HTML attributes (for example data attributes) to add to the breadcrumbs container.
+- name: button
+  type: string
+  required: false
+  description: Activates button if filled in
+
+previewLayout: full-width
+
+examples:
+- name: default
+  data:
+    headline: Narodenie dieťaťa
+- name: with subheadline
+  data:
+    headline: Narodenie dieťaťa
+    subheadline: Samuel
+- name: with button
+  data:
+    headline: Narodenie dieťaťa
+    button: Začať vybavovať

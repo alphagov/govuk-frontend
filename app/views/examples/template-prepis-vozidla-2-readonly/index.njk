@@ -1,0 +1,123 @@
+{% extends "template-navody.njk" %}
+
+{% from "_custom/timeline/macro.njk" import govukTimeline %}
+{% from "_custom/headline/macro.njk" import govukHeadline %}
+{% from "_custom/todo-list/macro.njk" import govukTodoList %}
+{% from "_custom/next-link/macro.njk" import govukNextLink %}
+
+{% block head %}
+  <!--[if !IE 8]><!-->
+    <link rel="stylesheet" href="/public/app.css">
+  <!--<![endif]-->
+  <!--[if IE 8]>
+    <link rel="stylesheet" href="/public/app-ie8.css">
+  <![endif]-->
+  <!--[if lt IE 9]>
+    <script src="/vendor/html5-shiv/html5shiv.js"></script>
+  <![endif]-->
+{% endblock %}
+
+{% block main %}
+  {{ govukHeadline({
+    headline: 'Prepis vozidla - nový majiteľ'
+  }) }}
+  <div class="govuk-width-container">
+    <main class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <div class="govuk-body sdn-content">
+            <div id="all_steps_completed">
+
+            </div>
+            <h1 class="govuk-heading-l">
+              Zaplatenie správnych poplatkov
+            </h1>
+
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Správny poplatok podľa výkonu vozidla a dátumu prvej evidencie. Tabuľku poplatkov nájdete na <a href="https://www.minv.sk/?spravne-poplatky-1" target="_blank">stránke Ministerstva vnútra.</a></li>
+              <li>Poplatok za vydanie tabuliek s evidenčným číslom 16.50 eura za jednu tabuľku, takže <b>33 eur</b> za dve tabuľky. Tento poplatok sa neuhrádza pri prepise auta v rámci okresu. V tom prípade sa evidenčné čísla nemenia.</li>
+              <li>Zrýchlené vydanie osvedčenia o evidencii vozidla časť I. (malý technický preukaz) do dvoch dní je spoplatnené sumou <b>30 eur</b>. </li>
+            </ul>
+            <div class="govuk-inset-text">
+              <b>Tip:</b> Výška poplatku za tabuľky s evidenčným číslom vo výške 16.50 za kus platí pre klasické plechové tabuľky. V prípade ak si chcete vybrať vlastné evidenčné číslo vozidla, alebo mať miesto zadnej plechovej tabuľky plastovú, správny poplatok je vyšší. Taktiež je možné dokúpiť tabuľku s evidenčným číslom na nosič bicyklov, alebo prívesný vozík.
+            </div>
+          </div>
+
+          <div id="todo_list">
+            {{ govukTodoList({
+              "title": "Povinnosti a podklady",
+              "readonly": true,
+              "todolist_activate_url": "/examples/template-prepis-vozidla-2",
+              "todolist_description": "Aby ste nestratili prehľad, čo ste už spravili a čo ešte musíte spraviť, aktivujte si odškrtávanie vybavených povinností a úloh.",
+              "tasks": [
+                {
+                  "title": "Mám inštrukcie k platbe správnych poplatkov",
+                  "link_text": "Podanie žiadosti",
+                  "link_url": "/examples/template-prepis-vozidla-1",
+                  "completed": true
+                },
+                {
+                  "title": "Mám zaplatené správne poplatky",
+                  "link_text": "Zoznam poplatkov",
+                  "link_url": "https://www.minv.sk/?spravne-poplatky-1",
+                  "open_in_new_window": true
+                }
+              ]
+            }) }}
+          </div>
+
+          {{ govukNextLink({
+            label: 'Ďalšia úloha',
+            text: '3. Uzatvoriť povinné zmluvné poistenie',
+            url: '#'
+          }) }}
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+            {{ govukTimeline({
+                readonly: true,
+                steps: [
+                    {
+                        text: 'Úvod',
+                        href: '/examples/template-prepis-vozidla-0-readonly',
+                        state: 'done'
+                    },
+                    {
+                        text: 'Prihlásiť nového držiteľa vozidla',
+                        href: '/examples/template-prepis-vozidla-1-readonly',
+                        state: 'done'
+                    },
+                    {
+                        text: 'Zaplatiť správne poplatky',
+                        href: '/examples/template-prepis-vozidla-2-readonly',
+                        state: 'not-done',
+                        selected: true
+                    },
+                    {
+                        text: 'Uzatvoriť povinné zmluvné poistenie',
+                        href: '/examples/template-prepis-vozidla-3-readonly',
+                        state: 'not-done'
+                    },
+                    {
+                        text: 'Absolvovať obhliadku vozidla',
+                        href: '#',
+                        state: 'not-done'
+                    },
+                    {
+                        text: 'Vyzdvihnúť doklady',
+                        href: '#',
+                        state: 'not-done'
+                    }
+                ]
+            }) }}
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}
+
+{% block bodyEnd %}
+  <script src="/public/all.js"></script>
+    <script>window.navodyDigitalFrontend.initAll()</script>
+{% endblock %}

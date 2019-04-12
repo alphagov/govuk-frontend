@@ -1,0 +1,10 @@
+<div class="sdn-tiles">
+    {% for item in params.items %}
+        <a href="{{item.url}}" class="sdn-tiles__item sdn-tile">
+            <img class="sdn-tile__image" src="{{item.image}}" alt="">
+            <span class="sdn-tile__content sdn-tile-content-text-block">
+                <span class="sdn-tile-content-text-block__item">{{item.title}}</span>
+            </span>
+        </a>
+    {% endfor %}
+</div>

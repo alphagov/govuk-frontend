@@ -12,6 +12,7 @@
   "sassdoc": "sassdoc/",
   "src": "src/",
     "components": "src/components/",
+    "sdn_components": "src/components/_custom/",
   "ports": {
     "app": 3000,
     "test": 8888

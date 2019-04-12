@@ -1,0 +1,42 @@
+{% extends "template-static-odklad-danoveho-priznania.njk" %}
+
+{% from "_custom/timeline/macro.njk" import govukTimeline %}
+{% from "_custom/headline/macro.njk" import govukHeadline %}
+{% from "_custom/todo-list/macro.njk" import govukTodoList %}
+{% from "_custom/next-link/macro.njk" import govukNextLink %}
+
+{% set step = 1 %}
+
+{% block main %}
+    <h1>
+      Odklad daňového priznania
+    </h1>
+
+    <p>
+      Tento návod vám pomôže pri predĺžení lehoty na podanie daňového priznania.
+    </p>
+    <p>
+      Vzťahuje sa na:
+    </p><ul class="govuk-list govuk-list--bullet">
+      <li>Daňové priznanie fyzických osôb</li>
+    </ul>
+    <p></p>
+
+    <h2 class="govuk-heading-m">
+      Predtým, než začnete
+    </h2>
+
+    <p>Na elektronické ohlásenie o predĺžený lehoty na podanie daňového priznania potrebujete:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Občiansky preukaz s elektronickým čipom (eID)</li>
+      <li>Čítačku na občiansky preukaz s čipom</li>
+      <li>Mať nainštalovaný softvér na používanie občianskeho preukazu s čipom</li>
+    </ul>
+
+      {{ govukNextLink({
+        label: 'Ďalšia úloha',
+        text: '1. Registrovať sa na Finančnej správe',
+        url: '/examples/odklad-danoveho-priznania/registracia'
+      }) }}
+{% endblock %}

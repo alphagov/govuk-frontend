@@ -1,0 +1,108 @@
+@import "../../../settings/all";
+@import "../../../tools/all";
+@import "../../../helpers/all";
+
+
+@mixin tile-borders {
+  $border-color: #ededed;
+
+  border-style: solid;
+  border-color: $border-color;
+}
+
+@include govuk-exports("govuk/component/sdn-tiles") {
+
+  $text-color: #000000;
+  $text-color-hover: #3e3e3e;
+
+  .sdn-tiles {
+    @include tile-borders;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    border-width: 2px 0 0 2px;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+  }
+
+  .sdn-tiles__item {
+    @include tile-borders;
+    box-sizing: border-box;
+    width: 50%;
+    border-width: 0 2px 2px 0;
+    color: $text-color;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:link,
+    &:visited {
+      color: $text-color;
+    }
+
+    &:hover {
+      opacity: .9;
+      color: $text-color-hover;
+      background-color: govuk-colour("white");
+      text-decoration: underline;
+    }
+
+    @include govuk-media-query($from: tablet) {
+      width: 33%;
+    }
+
+    @include govuk-media-query($from: desktop) {
+      width: 25%;
+    }
+  }
+
+  .sdn-tile {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 16px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+
+  .sdn-tile__image {
+    height: 150px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: center;
+       object-position: center;
+  }
+
+  .sdn-tile__content {
+    margin-top: 35px;
+    margin-bottom: 15px;
+  }
+
+  .sdn-tile-content-text-block {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    font-weight: bold;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+
+  .sdn-tile-content-text-block__item {
+    @include govuk-font($size: 24, $line-height: 1.5);
+    font-weight: bold;
+    text-align: center;
+  }
+
+}

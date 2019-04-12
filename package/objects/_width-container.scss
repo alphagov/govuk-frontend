@@ -54,6 +54,13 @@
     // we need to duplicate this margin that centers the page.
     margin: 0 auto;
   }
+
+  @include govuk-if-ie8 {
+    width: $govuk-page-width;
+    // Since media queries are not supported in IE8,
+    // we need to duplicate this margin that centers the page.
+    margin: 0 auto;
+  }
 }
 
 @include govuk-exports("govuk/objects/width-container") {

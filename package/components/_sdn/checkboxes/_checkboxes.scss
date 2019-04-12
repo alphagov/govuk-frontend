@@ -1,0 +1,19 @@
+.govuk-checkboxes__label {
+  padding: 0 $govuk-checkboxes-label-padding-left-right;
+  @include mq ($until: tablet) {
+    padding: 0 10px;
+  }
+}
+
+.govuk-checkboxes__input + .govuk-checkboxes__label::after {
+  top: 6px;
+  left: 5px;
+  width: 9px;
+  height: 4px;
+
+  border-width: 0 0 2px 2px;
+}
+
+.govuk-checkboxes__input + .govuk-checkboxes__label::before {
+  border: 1px solid currentColor;
+}

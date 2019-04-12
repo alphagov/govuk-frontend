@@ -20,14 +20,14 @@ gulp.task('update-assets-version', () => {
   let pkg = require('../../' + configPaths.package + 'package.json')
   fs.writeFileSync(taskArguments.destination + '/VERSION.txt', pkg.version + '\r\n')
   return gulp.src([
-    taskArguments.destination + '/govuk-frontend.min.css',
-    taskArguments.destination + '/govuk-frontend-ie8.min.css',
-    taskArguments.destination + '/govuk-frontend.min.js'
+    taskArguments.destination + '/navody-digital.min.css',
+    taskArguments.destination + '/navody-digital-ie8.min.css',
+    taskArguments.destination + '/navody-digital.min.js'
   ])
     .pipe(vinylPaths(del))
     .pipe(gulpif(isDist,
       rename(obj => {
-        obj.basename = obj.basename.replace(/(govuk.*)(?=\.min)/g, '$1-' + pkg.version)
+        obj.basename = obj.basename.replace(/(navody.*)(?=\.min)/g, '$1-' + pkg.version)
         return obj
       })
     ))

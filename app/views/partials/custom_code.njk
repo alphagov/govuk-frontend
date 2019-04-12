@@ -1,0 +1,12 @@
+{% from "macros/loadComponentTemplate.njk" import loadCustomComponentTemplate %}
+
+<h4 class="govuk-heading-s">Markup</h4>
+{% set componentHtml %}{{ loadCustomComponentTemplate(componentSlug, example.data) }}{% endset %}
+<pre><code class="govuk-!-font-size-16">{{- componentHtml | e -}}</code></pre>
+
+<h4 class="govuk-heading-s">Macro</h4>
+<pre class="govuk-!-margin-bottom-0 govuk-!-font-size-16"><code>{% raw %}{%{% endraw %} from "{{ componentSlug }}/macro.njk" import {{ componentSlug | componentNameToMacroName }} {% raw %}%}{% endraw %}
+
+{% raw %}{{ {% endraw %}{{ componentSlug | componentNameToMacroName }}(
+  {{- example.data | dump(2) -}}
+  ){% raw %} }}{% endraw %}</code></pre>

@@ -25,3 +25,7 @@ examples:
     data:
       text: You can be fined up to £5,000 if you don’t register.
       iconFallbackText: Warning
+  - name: svk
+    data:
+      text: V prípade nedodržania 30 dňovej lehoty musíte vykonať kontrolu originality a odborný posudok s výsledkom „spôsobilé“ predložiť pri zápise nového držiteľa vozidla. Posudok o kontrole originality nemôže byť pritom starší ako 15 dní. V tomto prípade už nemusíte absolvovať obhliadku vozidla.
+      iconFallbackText: Warning

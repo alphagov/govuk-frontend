@@ -10,7 +10,7 @@
 @include govuk-exports("govuk/component/checkboxes") {
 
   $govuk-touch-target-size: 44px;
-  $govuk-checkboxes-size: 40px;
+  $govuk-checkboxes-size: 40px !default;
   $govuk-small-checkboxes-size: 24px;
   $govuk-checkboxes-label-padding-left-right: govuk-spacing(3);
 

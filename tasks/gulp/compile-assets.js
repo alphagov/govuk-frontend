@@ -14,11 +14,11 @@ const uglify = require('gulp-uglify')
 const eol = require('gulp-eol')
 const rename = require('gulp-rename')
 const cssnano = require('cssnano')
-const postcsspseudoclasses = require('postcss-pseudo-classes')({
-  // Work around a bug in pseudo classes plugin that badly transforms
-  // :not(:whatever) pseudo selectors
-  blacklist: [':not(', ':disabled)', ':last-child)', ':focus)']
-})
+// const postcsspseudoclasses = require('postcss-pseudo-classes')({
+// Work around a bug in pseudo classes plugin that badly transforms
+// :not(:whatever) pseudo selectors
+// blacklist: [':not(', ':disabled)', ':last-child)', ':focus)']
+// })
 
 // Compile CSS and JS task --------------
 // --------------------------------------
@@ -48,14 +48,14 @@ gulp.task('scss:compile', () => {
       cssnano
     ])))
     .pipe(gulpif(!isDist, postcss([
-      autoprefixer,
+      autoprefixer
       // Auto-generate 'companion' classes for pseudo-selector states - e.g. a
       // :hover class you can use to simulate the hover state in the review app
-      postcsspseudoclasses
+      // postcsspseudoclasses
     ])))
     .pipe(gulpif(isDist,
       rename({
-        basename: 'govuk-frontend',
+        basename: 'navody-digital',
         extname: '.min.css'
       })
     ))
@@ -89,7 +89,7 @@ gulp.task('scss:compile', () => {
     ])))
     .pipe(gulpif(isDist,
       rename({
-        basename: 'govuk-frontend-ie8',
+        basename: 'navody-digital-ie8',
         extname: '.min.css'
       })
     ))
@@ -109,7 +109,7 @@ gulp.task('js:compile', () => {
   ])
     .pipe(rollup({
       // Used to set the `window` global and UMD/AMD export name.
-      name: 'GOVUKFrontend',
+      name: 'navodyDigitalFrontend',
       // Legacy mode is required for IE8 support
       legacy: true,
       // UMD allows the published bundle to work in CommonJS and in the browser.
@@ -120,7 +120,7 @@ gulp.task('js:compile', () => {
     })))
     .pipe(gulpif(isDist,
       rename({
-        basename: 'govuk-frontend',
+        basename: 'navody-digital',
         extname: '.min.js'
       })
     ))

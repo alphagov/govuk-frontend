@@ -8,6 +8,9 @@ import ErrorSummary from './components/error-summary/error-summary'
 import Header from './components/header/header'
 import Radios from './components/radios/radios'
 import Tabs from './components/tabs/tabs'
+import SdnHeader from './components/_custom/header/header'
+import SdnTimeline from './components/_custom/timeline/timeline'
+import SdnAppearLink from './utilities/appear-link/appear-link'
 
 function initAll (options) {
   // Set the options to an empty object by default if no options are passed.
@@ -59,6 +62,17 @@ function initAll (options) {
   nodeListForEach($tabs, function ($tabs) {
     new Tabs($tabs).init()
   })
+
+  // Find first sdn header module to enhance.
+  new SdnHeader(document.querySelector('[data-module="sdn-header"]')).init()
+
+  // Find first sdn header module to enhance.
+  new SdnTimeline(document.querySelector('[data-module="sdn-timeline"]')).init()
+
+  var $appearLinks = document.querySelectorAll('[data-module="sdn-appear-link"]')
+  nodeListForEach($appearLinks, function ($link) {
+    new SdnAppearLink($link).init()
+  })
 }
 
 export {
@@ -71,5 +85,7 @@ export {
   ErrorSummary,
   Header,
   Radios,
-  Tabs
+  Tabs,
+  SdnHeader,
+  SdnTimeline
 }
