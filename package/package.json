@@ -1,7 +1,7 @@
 {
-  "name": "govuk-frontend",
+  "name": "mavody-digital-frontend",
   "description": "GOV.UK Frontend contains the code you need to start building a user interface for government platforms and services.",
-  "version": "2.5.1",
+  "version": "0.1.0",
   "main": "all.js",
   "sass": "all.scss",
   "engines": {
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/alphagov/govuk-frontend#readme",
   "keywords": [
+    "slovensko.digital",
     "govuk",
     "frontend",
     "design system",
