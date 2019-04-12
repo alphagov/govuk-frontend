@@ -1,32 +1,34 @@
 import '../../../vendor/polyfills/Function/prototype/bind'
 import '../../../vendor/polyfills/Event'
-import { nodeListForEach } from '../../../common'
+import { on } from '../../../common'
 
 function SdnTimeline ($module) {
   this.$module = $module
-  this.$bullets = []
 }
 
 SdnTimeline.prototype.init = function () {
   // Check for module
-  var $module = this.$module
+  const $module = this.$module
   if (!$module || $module.className.indexOf('snd-timeline--readonly') > -1) {
     return
   }
 
-  this.$bullets = $module.querySelectorAll('.js-sdn-timeline__bullet')
-
-  nodeListForEach(this.$bullets, function ($bullet) {
-    $bullet.setAttribute('tabindex', '0')
-    $bullet.addEventListener('click', this.handleClick)
-    $bullet.addEventListener('focusout', this.handleBlur)
-  }.bind(this))
+  on('body', 'click', '.js-sdn-timeline__bullet', this.handleClick.bind(this))
 }
 
 SdnTimeline.prototype.handleClick = function (event) {
   event.preventDefault()
 
-  this.parentNode.classList.toggle('sdn-timeline__step--dropdown-active')
+  const element = event.target
+
+  element.parentNode.classList.toggle('sdn-timeline__step--dropdown-active')
+
+  if (!element.getAttribute('data-blur-initialized')) {
+    element.setAttribute('data-blur-initialized', true)
+    element.setAttribute('tabindex', '0')
+    element.addEventListener('focusout', this.handleBlur)
+    element.focus()
+  }
 }
 
 SdnTimeline.prototype.handleBlur = function (event) {
