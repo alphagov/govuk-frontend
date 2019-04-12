@@ -28,9 +28,23 @@
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
+## 2.10.0 (Feature release)
+
+🆕 New features:
+
+- Add smaller versions of radio buttons and checkboxes
+
+  Thanks to [@owenm6](https://github.com/owenm6) for their help and support on this one.
+
+  ([PR #1125](https://github.com/alphagov/govuk-frontend/pull/1125))
+
+🔧 Fixes:
+
 - Prevent duplicate checkbox aria-describedby
 
-  Addresses an edge case where a checkbox with a hint (but without a fieldset) is output with duplicate `aria-describeby` attributes. Fixes issue ([PR #1248](https://github.com/alphagov/govuk-frontend/pull/1248))
+  Addresses an edge case where a checkbox with a hint (but without a fieldset) is output with duplicate `aria-describeby` attributes. Fixes issue [#1248](https://github.com/alphagov/govuk-frontend/pull/1248).
+
+  Thanks to [@colinrotherham](https://github.com/colinrotherham) for fixing this issue.
 
   ([PR #1265](https://github.com/alphagov/govuk-frontend/pull/1265))
 
