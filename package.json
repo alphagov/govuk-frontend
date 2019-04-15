@@ -93,7 +93,9 @@
     ]
   },
   "jest": {
-    "setupTestFrameworkScriptFile": "./config/jest-setup.js",
+    "setupFilesAfterEnv": [
+      "./config/jest-setup.js"
+    ],
     "snapshotSerializers": [
       "jest-serializer-html"
     ],

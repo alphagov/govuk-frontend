@@ -39,7 +39,7 @@ afterAll(async (done) => {
 })
 
 describe('GOV.UK Frontend', () => {
-  describe('javascript', async () => {
+  describe('javascript', () => {
     it('can be accessed via `GOVUKFrontend`', async () => {
       await page.goto(baseUrl + '/', { waitUntil: 'load' })
 
@@ -113,7 +113,7 @@ describe('GOV.UK Frontend', () => {
       await page.waitForSelector('#conditional-scoped-1', { hidden: false })
     })
   })
-  describe('global styles', async () => {
+  describe('global styles', () => {
     it('are disabled by default', async () => {
       const sass = `
         @import "all";

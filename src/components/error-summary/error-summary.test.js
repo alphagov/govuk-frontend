@@ -43,7 +43,7 @@ describe('Error Summary', () => {
     ['a conditionally revealed input', 'yes-input', '#test-conditional-reveal legend']
   ]
 
-  describe.each(inputTypes)('when linking to %s', async (_, inputId, legendOrLabelSelector) => {
+  describe.each(inputTypes)('when linking to %s', (_, inputId, legendOrLabelSelector) => {
     beforeAll(async () => {
       await page.goto(`${baseUrl}/examples/error-summary`, { waitUntil: 'load' })
       await page.click(`.govuk-error-summary a[href="#${inputId}"]`)
