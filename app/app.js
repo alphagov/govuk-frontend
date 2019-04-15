@@ -11,6 +11,7 @@ const configPaths = require('../config/paths.json')
 const indexRouter = require('./routes/indexRoutes')
 const exampleRouter = require('./routes/exampleRoutes')
 const componentRouter = require('./routes/componentRoutes')
+const fullPageExampleRouter = require('./routes/fullPageExampleRoutes')
 
 // Set up views
 const appViews = [
@@ -86,7 +87,7 @@ module.exports = (options) => {
   app.use('/examples', exampleRouter)
 
   // Full page example views
-  require('./full-page-examples.js')(app)
+  app.use('/full-page-examples', fullPageExampleRouter)
 
   app.get('/robots.txt', function (req, res) {
     res.type('text/plain')
