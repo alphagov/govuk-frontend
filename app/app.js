@@ -5,12 +5,12 @@ const nunjucks = require('nunjucks')
 const path = require('path')
 
 const helperFunctions = require('../lib/helper-functions')
-const fileHelper = require('../lib/file-helper')
 const configPaths = require('../config/paths.json')
 
 // Routers
 const indexRouter = require('./routes/indexRoutes')
 const exampleRouter = require('./routes/exampleRoutes')
+const componentRouter = require('./routes/componentRoutes')
 
 // Set up views
 const appViews = [
@@ -38,6 +38,9 @@ module.exports = (options) => {
 
   // make the function available as a filter for all templates
   env.addFilter('componentNameToMacroName', helperFunctions.componentNameToMacroName)
+
+  // Set the nunjucksEnv so it can be used in various routes like componentRoute.js
+  app.set('nunjucksEnv', env)
 
   // Set view engine
   app.set('view engine', 'njk')
@@ -76,82 +79,8 @@ module.exports = (options) => {
   // Index page - render the component list template
   app.use('/', indexRouter)
 
-  // Whenever the route includes a :component parameter, read the component data
-  // from its YAML file
-  app.param('component', function (req, res, next, componentName) {
-    res.locals.componentData = fileHelper.getComponentData(componentName)
-    next()
-  })
-
   // All components view
-  app.get('/components/all', function (req, res, next) {
-    const components = fileHelper.allComponents
-
-    res.locals.componentData = components.map(componentName => {
-      let componentData = fileHelper.getComponentData(componentName)
-      let defaultExample = componentData.examples.find(
-        example => example.name === 'default'
-      )
-      return {
-        componentName,
-        examples: [defaultExample]
-      }
-    })
-    res.render(`all-components`, function (error, html) {
-      if (error) {
-        next(error)
-      } else {
-        res.send(html)
-      }
-    })
-  })
-
-  // Component 'README' page
-  app.get('/components/:component', function (req, res, next) {
-    // make variables available to nunjucks template
-    res.locals.componentPath = req.params.component
-
-    res.render('component', function (error, html) {
-      if (error) {
-        next(error)
-      } else {
-        res.send(html)
-      }
-    })
-  })
-
-  // Component example preview
-  app.get('/components/:component/:example*?/preview', function (req, res, next) {
-    // Find the data for the specified example (or the default example)
-    let componentName = req.params.component
-    let requestedExampleName = req.params.example || 'default'
-
-    let previewLayout = res.locals.componentData.previewLayout || 'layout'
-
-    let exampleConfig = res.locals.componentData.examples.find(
-      example => example.name.replace(/ /g, '-') === requestedExampleName
-    )
-
-    if (!exampleConfig) {
-      next()
-    }
-
-    // Construct and evaluate the component with the data for this example
-    let macroName = helperFunctions.componentNameToMacroName(componentName)
-    let macroParameters = JSON.stringify(exampleConfig.data, null, '\t')
-
-    res.locals.componentView = env.renderString(
-      `{% from '${componentName}/macro.njk' import ${macroName} %}
-      {{ ${macroName}(${macroParameters}) }}`
-    )
-
-    let bodyClasses = ''
-    if (req.query.iframe) {
-      bodyClasses = 'app-iframe-in-component-preview'
-    }
-
-    res.render('component-preview', { bodyClasses, previewLayout })
-  })
+  app.use('/components', componentRouter)
 
   // Example view
   app.use('/examples', exampleRouter)
