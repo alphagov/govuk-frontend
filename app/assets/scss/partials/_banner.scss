@@ -1,9 +1,9 @@
 .app-banner {
-  font-family: sans-serif;
-  @include govuk-font($size: 36, $line-height: 1.5)
-  overflow: hidden;
-  padding-bottom: govuk-spacing(6);
   padding-top: govuk-spacing(6);
+  padding-bottom: govuk-spacing(6);
+  overflow: hidden;
+  @include govuk-font($size: 36, $line-height: 1.5)
+  font-family: sans-serif;
 
   .app-banner__button {
     margin-bottom: 0;
@@ -24,16 +24,16 @@
 }
 
 .app-banner--warning {
-  background: govuk-colour('red');
-  color: govuk-colour('white');
+  color: govuk-colour("white");
+  background: govuk-colour("red");
 
   .app-banner__button,
   .app-banner__button:active,
   .app-banner__button:hover,
   .app-banner__button:focus {
-    background: govuk-colour('white');
-    box-shadow: 0 2px 0 $govuk-text-colour;
-    color: $govuk-text-colour;
     margin-bottom: 0;
+    color: $govuk-text-colour;
+    background: govuk-colour("white");
+    box-shadow: 0 2px 0 $govuk-text-colour;
   }
 }
