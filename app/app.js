@@ -59,6 +59,10 @@ module.exports = (options) => {
 
   // serve html5-shiv from node modules
   app.use('/vendor/html5-shiv/', express.static('node_modules/html5shiv/dist/'))
+
+  // serve legacy code from node node modules
+  app.use('/vendor/govuk_template/', express.static('node_modules/govuk_template_jinja/assets/stylesheets/'))
+
   app.use('/assets', express.static(path.join(configPaths.src, 'assets')))
 
   // Turn form POSTs into data that can be used for validation.
