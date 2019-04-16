@@ -15,8 +15,12 @@
     font-size: inherit;
   }
 
-  .govuk-link:not(:focus) {
-    color: inherit;
+  .govuk-link {
+    color: govuk-colour("white");
+  }
+
+  .govuk-link:focus {
+    color: $govuk-text-colour;
   }
 }
 
