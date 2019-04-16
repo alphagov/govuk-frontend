@@ -12,7 +12,7 @@ const indexRouter = require('./routes/indexRoutes')
 const exampleRouter = require('./routes/exampleRoutes')
 const componentRouter = require('./routes/componentRoutes')
 const fullPageExampleRouter = require('./routes/fullPageExampleRoutes')
-const bannerRoute = require('./routes/banner')
+const bannerRoute = require('./routes/bannerRoutes')
 
 // Set up views
 const appViews = [
