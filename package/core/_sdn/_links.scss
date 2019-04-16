@@ -1,3 +1,5 @@
+@import "../../tools/all";
+
 @include govuk-exports("sdn/core/links") {
 
   $icon-external-link: url("../../assets/images/icon-external-link.svg");
