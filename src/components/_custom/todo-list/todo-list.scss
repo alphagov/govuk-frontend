@@ -71,7 +71,6 @@ $sdn-todo-list-button-conjunction-text-color: #000000;
 
           .snd-todo-list__item__info {
             @include sdn-font($size: 14);
-            margin-left: 25px;
             color: $sdn-todo-list-info;
 
             &:not(:last-child) {
