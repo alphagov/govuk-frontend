@@ -1,7 +1,6 @@
 .app-banner {
   font-family: sans-serif;
-  font-size: 2rem;
-  line-height: 1.5;
+  @include govuk-font($size: 36, $line-height: 1.5)
   overflow: hidden;
   padding-bottom: govuk-spacing(6);
   padding-top: govuk-spacing(6);
