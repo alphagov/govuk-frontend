@@ -12,6 +12,7 @@ const indexRouter = require('./routes/indexRoutes')
 const exampleRouter = require('./routes/exampleRoutes')
 const componentRouter = require('./routes/componentRoutes')
 const fullPageExampleRouter = require('./routes/fullPageExampleRoutes')
+const bannerRoute = require('./routes/banner')
 
 // Set up views
 const appViews = [
@@ -73,7 +74,7 @@ module.exports = (options) => {
   app.use(bodyParser.urlencoded({ extended: true }))
 
   // Handle the banner component serverside.
-  require('./banner.js')(app)
+  app.use(bannerRoute)
 
   // Define routes
 
