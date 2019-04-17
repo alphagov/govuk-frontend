@@ -1,23 +1,8 @@
-/**
- * @jest-environment ./lib/puppeteer/environment.js
- */
 /* eslint-env jest */
 
 const configPaths = require('../../../config/paths.json')
 const PORT = configPaths.ports.test
 const baseUrl = `http://localhost:${PORT}`
-
-let browser
-let page
-
-beforeAll(async () => {
-  browser = global.__BROWSER__
-  page = await browser.newPage()
-})
-
-afterAll(async () => {
-  await page.close()
-})
 
 const goToExample = (exampleName = false) => {
   let url = exampleName

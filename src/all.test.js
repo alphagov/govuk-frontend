@@ -1,6 +1,3 @@
-/**
- * @jest-environment ./lib/puppeteer/environment.js
- */
 /* eslint-env jest */
 
 const util = require('util')
@@ -15,14 +12,9 @@ const sassConfig = {
   includePaths: [ configPaths.src ]
 }
 
-let browser
-let page
 let baseUrl = 'http://localhost:' + PORT
 
 beforeAll(async (done) => {
-  browser = global.__BROWSER__
-  page = await browser.newPage()
-
   // Capture JavaScript errors.
   page.on('pageerror', error => {
     // If the stack trace includes 'all.js' then we want to fail these tests.
@@ -30,11 +22,6 @@ beforeAll(async (done) => {
       throw error
     }
   })
-  done()
-})
-
-afterAll(async (done) => {
-  await page.close()
   done()
 })
 

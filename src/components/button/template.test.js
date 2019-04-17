@@ -1,3 +1,6 @@
+/**
+ * @jest-environment jsdom
+ */
 /* eslint-env jest */
 
 const axe = require('../../../lib/axe-helper')

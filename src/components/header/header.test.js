@@ -1,6 +1,3 @@
-/**
- * @jest-environment ./lib/puppeteer/environment.js
- */
 /* eslint-env jest */
 
 const devices = require('puppeteer/DeviceDescriptors')
@@ -8,27 +5,25 @@ const iPhone = devices['iPhone 6']
 const configPaths = require('../../../config/paths.json')
 const PORT = configPaths.ports.test
 
-let browser
-let page
 let baseUrl = 'http://localhost:' + PORT
 
 beforeAll(async (done) => {
-  browser = global.__BROWSER__
-  page = await browser.newPage()
   await page.emulate(iPhone)
-  done()
-})
-
-afterAll(async (done) => {
-  await page.close()
   done()
 })
 
 describe('/components/header', () => {
   describe('/components/header/with-navigation/preview', () => {
     describe('when JavaScript is unavailable or fails', () => {
-      it('falls back to making the navigation visible', async () => {
+      beforeAll(async () => {
         await page.setJavaScriptEnabled(false)
+      })
+
+      afterAll(async () => {
+        await page.setJavaScriptEnabled(true)
+      })
+
+      it('falls back to making the navigation visible', async () => {
         await page.goto(baseUrl + '/components/header/with-navigation/preview', { waitUntil: 'load' })
         const isContentVisible = await page.waitForSelector('.govuk-header__navigation', { visible: true, timeout: 1000 })
         expect(isContentVisible).toBeTruthy()
@@ -38,7 +33,6 @@ describe('/components/header', () => {
     describe('when JavaScript is available', () => {
       describe('when menu button is pressed', () => {
         it('should indicate the open state of the toggle button', async () => {
-          await page.setJavaScriptEnabled(true)
           await page.goto(baseUrl + '/components/header/with-navigation/preview', { waitUntil: 'load' })
 
           await page.click('.js-header-toggle')

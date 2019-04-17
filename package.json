@@ -55,6 +55,7 @@
     "html5shiv": "^3.7.3",
     "jest": "^24.7.1",
     "jest-axe": "^3.1.1",
+    "jest-puppeteer": "^4.1.1",
     "jest-serializer-html": "^6.0.0",
     "js-yaml": "^3.13.1",
     "map-stream": "0.0.7",
@@ -88,6 +89,12 @@
     "iOS >= 9"
   ],
   "standard": {
+    "globals": [
+      "page",
+      "browser",
+      "context",
+      "jestPuppeteer"
+    ],
     "ignore": [
       "/dist/**/*.js",
       "/package/**/*.js",
@@ -95,13 +102,12 @@
     ]
   },
   "jest": {
+    "preset": "jest-puppeteer",
     "setupFilesAfterEnv": [
       "./config/jest-setup.js"
     ],
     "snapshotSerializers": [
       "jest-serializer-html"
-    ],
-    "globalSetup": "./lib/puppeteer/setup.js",
-    "globalTeardown": "./lib/puppeteer/teardown.js"
+    ]
   }
 }
