@@ -1,5 +1,7 @@
 'use strict'
 
+const path = require('path')
+
 const gulp = require('gulp')
 const configPaths = require('../../config/paths.json')
 const sass = require('gulp-sass')
@@ -74,7 +76,6 @@ gulp.task('scss:compile', () => {
         rem: { disable: true },
         unmq: { disable: true },
         pseudo: { disable: true }
-        // more rules go here
       })
     ])))
     .pipe(gulpif(!isDist, postcss([
@@ -95,7 +96,45 @@ gulp.task('scss:compile', () => {
     ))
     .pipe(gulp.dest(taskArguments.destination + '/'))
 
-  return merge(compile, compileOldIe)
+  let compileLegacy, compileLegacyIE8
+
+  if (!isDist) {
+    compileLegacy = gulp.src(path.join(configPaths.app, 'assets/scss/app-legacy.scss'))
+      .pipe(plumber(errorHandler))
+      .pipe(sass({
+        includePaths: ['node_modules/govuk_frontend_toolkit/stylesheets', 'node_modules']
+      }))
+      .pipe(postcss([
+        autoprefixer,
+        // Auto-generate 'companion' classes for pseudo-selector states - e.g. a
+        // :hover class you can use to simulate the hover state in the review app
+        postcsspseudoclasses
+      ]))
+      .pipe(gulp.dest(taskArguments.destination + '/'))
+
+    compileLegacyIE8 = gulp.src(path.join(configPaths.app, 'assets/scss/app-legacy-ie8.scss'))
+      .pipe(plumber(errorHandler))
+      .pipe(sass({
+        includePaths: ['node_modules/govuk_frontend_toolkit/stylesheets', 'node_modules']
+      }))
+      .pipe(postcss([
+        autoprefixer,
+        postcsspseudoclasses,
+        require('oldie')({
+          rgba: { filter: true },
+          rem: { disable: true },
+          unmq: { disable: true },
+          pseudo: { disable: true }
+        })
+      ]))
+      .pipe(gulp.dest(taskArguments.destination + '/'))
+  }
+
+  if (isDist) {
+    return merge(compile, compileOldIe)
+  } else {
+    return merge(compile, compileOldIe, compileLegacy, compileLegacyIE8)
+  }
 })
 
 // Compile js task for preview ----------
