@@ -16,7 +16,8 @@
     "release-to-branch": "node bin/check-nvmrc.js && ./bin/release-to-branch.sh",
     "build:package": "node bin/check-nvmrc.js && gulp build:package --destination 'package' && npm run test:build:package",
     "build:dist": "node bin/check-nvmrc.js && gulp build:dist --destination 'dist' && npm run test:build:dist",
-    "test": "standard && gulp test && gulp copy-assets && jest --testPathIgnorePatterns='after-*'",
+    "test": "npm run test:dependencies && standard && gulp test && gulp copy-assets && jest --testPathIgnorePatterns='after-*'",
+    "test:dependencies": "npm ls --depth=0",
     "test:build:package": "jest tasks/gulp/__tests__/after-build-package.test.js",
     "test:build:dist": "jest tasks/gulp/__tests__/after-build-dist.test.js"
   },
