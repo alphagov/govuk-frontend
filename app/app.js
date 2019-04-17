@@ -7,13 +7,6 @@ const path = require('path')
 const helperFunctions = require('../lib/helper-functions')
 const configPaths = require('../config/paths.json')
 
-// Routers
-const indexRouter = require('./routes/indexRoutes')
-const exampleRouter = require('./routes/exampleRoutes')
-const componentRouter = require('./routes/componentRoutes')
-const fullPageExampleRouter = require('./routes/fullPageExampleRoutes')
-const bannerRoute = require('./routes/bannerRoutes')
-
 // Set up views
 const appViews = [
   configPaths.layouts,
@@ -74,21 +67,21 @@ module.exports = (options) => {
   app.use(bodyParser.urlencoded({ extended: true }))
 
   // Handle the banner component serverside.
-  app.use(bannerRoute)
+  app.use(require('./routes/bannerRoutes'))
 
   // Define routes
 
   // Index page - render the component list template
-  app.use('/', indexRouter)
+  app.use('/', require('./routes/indexRoutes'))
 
   // All components view
-  app.use('/components', componentRouter)
+  app.use('/components', require('./routes/componentRoutes'))
 
   // Example view
-  app.use('/examples', exampleRouter)
+  app.use('/examples', require('./routes/exampleRoutes'))
 
   // Full page example views
-  app.use('/full-page-examples', fullPageExampleRouter)
+  app.use('/full-page-examples', require('./routes/fullPageExampleRoutes'))
 
   app.get('/robots.txt', function (req, res) {
     res.type('text/plain')
