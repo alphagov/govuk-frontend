@@ -22,6 +22,6 @@
   {% for data in componentData %}
     {% set componentName = data.componentName %}
     {% set componentNameHuman = componentName | replace("-", " ") %}
-    {{ showExamples(componentName, componentNameHuman, data) }}
+    {{ showExamples(componentName, componentNameHuman, data, legacy_query) }}
   {% endfor %}
 {% endblock %}

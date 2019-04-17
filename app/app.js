@@ -71,6 +71,17 @@ module.exports = (options) => {
   // Handle the banner component serverside.
   require('./banner.js')(app)
 
+  // Define middleware for all routes
+  app.use('*', function (request, response, next) {
+    response.locals.legacy = request.query['legacy'] === '1'
+    if (response.locals.legacy) {
+      response.locals.legacy_query = '?legacy=1'
+    } else {
+      response.locals.legacy_query = ''
+    }
+    next()
+  })
+
   // Define routes
 
   // Index page - render the component list template
