@@ -41,7 +41,7 @@ module.exports = (options) => {
   app.set('view engine', 'njk')
 
   // Disallow search index indexing
-  app.use(function (req, res, next) {
+  app.use((req, res, next) => {
     // none - Equivalent to noindex, nofollow
     // noindex - Do not show this page in search results and do not show a
     //   "Cached" link in search results.
@@ -83,7 +83,7 @@ module.exports = (options) => {
   // Full page example views
   app.use('/full-page-examples', require('./routes/fullPageExampleRoutes'))
 
-  app.get('/robots.txt', function (req, res) {
+  app.get('/robots.txt', (req, res) => {
     res.type('text/plain')
     res.send('User-agent: *\nDisallow: /')
   })
