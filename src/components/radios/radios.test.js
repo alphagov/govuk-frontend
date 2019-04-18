@@ -1,6 +1,3 @@
-/**
- * @jest-environment ./lib/puppeteer/environment.js
- */
 /* eslint-env jest */
 
 const cheerio = require('cheerio')
@@ -8,8 +5,6 @@ const cheerio = require('cheerio')
 const configPaths = require('../../../config/paths.json')
 const PORT = configPaths.ports.test
 
-let browser
-let page
 let baseUrl = 'http://localhost:' + PORT
 
 const goToAndGetComponent = async (name, example) => {
@@ -34,20 +29,17 @@ const waitForVisibleSelector = async (selector) => {
   })
 }
 
-beforeEach(async () => {
-  browser = global.__BROWSER__
-  page = await browser.newPage()
-})
-
-afterEach(async () => {
-  await page.close()
-})
-
 describe('Radios with conditional reveals', () => {
   describe('when JavaScript is unavailable or fails', () => {
-    it('has no ARIA attributes applied', async () => {
+    beforeAll(async () => {
       await page.setJavaScriptEnabled(false)
+    })
 
+    afterAll(async () => {
+      await page.setJavaScriptEnabled(true)
+    })
+
+    it('has no ARIA attributes applied', async () => {
       const $ = await goToAndGetComponent('radios', 'with-conditional-items')
       const $component = $('.govuk-radios')
 
@@ -58,8 +50,6 @@ describe('Radios with conditional reveals', () => {
       expect(hasAriaControls).toBeFalsy()
     })
     it('falls back to making all conditional content visible', async () => {
-      await page.setJavaScriptEnabled(false)
-
       await goToAndGetComponent('radios', 'with-conditional-items')
 
       const isContentVisible = await waitForVisibleSelector('.govuk-radios__conditional')

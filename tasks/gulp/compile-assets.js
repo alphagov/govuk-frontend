@@ -143,8 +143,8 @@ gulp.task('js:compile', () => {
   // for dist/ folder we only want compiled 'all.js' file
   let srcFiles = isDist ? configPaths.src + 'all.js' : configPaths.src + '**/*.js'
   return gulp.src([
-    '!' + configPaths.src + '**/*.test.js',
-    srcFiles
+    srcFiles,
+    '!' + configPaths.src + '**/*.test.js'
   ])
     .pipe(rollup({
       // Used to set the `window` global and UMD/AMD export name.

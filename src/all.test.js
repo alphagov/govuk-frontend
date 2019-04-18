@@ -1,6 +1,3 @@
-/**
- * @jest-environment ./lib/puppeteer/environment.js
- */
 /* eslint-env jest */
 
 const util = require('util')
@@ -15,14 +12,9 @@ const sassConfig = {
   includePaths: [ configPaths.src ]
 }
 
-let browser
-let page
 let baseUrl = 'http://localhost:' + PORT
 
 beforeAll(async (done) => {
-  browser = global.__BROWSER__
-  page = await browser.newPage()
-
   // Capture JavaScript errors.
   page.on('pageerror', error => {
     // If the stack trace includes 'all.js' then we want to fail these tests.
@@ -33,13 +25,8 @@ beforeAll(async (done) => {
   done()
 })
 
-afterAll(async (done) => {
-  await page.close()
-  done()
-})
-
 describe('GOV.UK Frontend', () => {
-  describe('javascript', async () => {
+  describe('javascript', () => {
     it('can be accessed via `GOVUKFrontend`', async () => {
       await page.goto(baseUrl + '/', { waitUntil: 'load' })
 
@@ -113,7 +100,7 @@ describe('GOV.UK Frontend', () => {
       await page.waitForSelector('#conditional-scoped-1', { hidden: false })
     })
   })
-  describe('global styles', async () => {
+  describe('global styles', () => {
     it('are disabled by default', async () => {
       const sass = `
         @import "all";

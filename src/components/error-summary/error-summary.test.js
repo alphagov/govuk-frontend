@@ -1,25 +1,9 @@
-/**
- * @jest-environment ./lib/puppeteer/environment.js
- */
 /* eslint-env jest */
 
 const configPaths = require('../../../config/paths.json')
 const PORT = configPaths.ports.test
 
-let browser
-let page
 let baseUrl = 'http://localhost:' + PORT
-
-beforeAll(async (done) => {
-  browser = global.__BROWSER__
-  page = await browser.newPage()
-  done()
-})
-
-afterAll(async (done) => {
-  await page.close()
-  done()
-})
 
 describe('Error Summary', () => {
   it('is automatically focused when the page loads', async () => {
@@ -43,7 +27,7 @@ describe('Error Summary', () => {
     ['a conditionally revealed input', 'yes-input', '#test-conditional-reveal legend']
   ]
 
-  describe.each(inputTypes)('when linking to %s', async (_, inputId, legendOrLabelSelector) => {
+  describe.each(inputTypes)('when linking to %s', (_, inputId, legendOrLabelSelector) => {
     beforeAll(async () => {
       await page.goto(`${baseUrl}/examples/error-summary`, { waitUntil: 'load' })
       await page.click(`.govuk-error-summary a[href="#${inputId}"]`)

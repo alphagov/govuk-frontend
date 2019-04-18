@@ -1,6 +1,3 @@
-/**
- * @jest-environment ./lib/puppeteer/environment.js
- */
 /* eslint-env jest */
 
 // const devices = require('puppeteer/DeviceDescriptors')
@@ -9,26 +6,20 @@
 const configPaths = require('../../../config/paths.json')
 const PORT = configPaths.ports.test
 
-let browser
-let page
 let baseUrl = 'http://localhost:' + PORT
-
-beforeAll(async (done) => {
-  browser = global.__BROWSER__
-  page = await browser.newPage()
-  done()
-})
-
-afterAll(async (done) => {
-  await page.close()
-  done()
-})
 
 describe('/components/accordion', () => {
   describe('/components/accordion/preview', () => {
     describe('when JavaScript is unavailable or fails', () => {
-      it('falls back to making all accordion sections visible', async () => {
+      beforeAll(async () => {
         await page.setJavaScriptEnabled(false)
+      })
+
+      afterAll(async () => {
+        await page.setJavaScriptEnabled(true)
+      })
+
+      it('falls back to making all accordion sections visible', async () => {
         await page.goto(baseUrl + '/components/accordion/preview', { waitUntil: 'load' })
 
         const numberOfExampleSections = 2
@@ -42,7 +33,6 @@ describe('/components/accordion', () => {
       })
 
       it('does not display "+/-" in the section headings', async () => {
-        await page.setJavaScriptEnabled(false)
         await page.goto(baseUrl + '/components/accordion/preview', { waitUntil: 'load' })
 
         const numberOfIcons = await page.evaluate(() => document.body.querySelectorAll('.govuk-accordion .govuk-accordion__section .govuk-accordion__icon').length)
@@ -52,7 +42,6 @@ describe('/components/accordion', () => {
 
     describe('when JavaScript is available', () => {
       it('should indicate that the sections are not expanded', async () => {
-        await page.setJavaScriptEnabled(true)
         await page.goto(baseUrl + '/components/accordion/preview', { waitUntil: 'load' })
 
         const numberOfExampleSections = 2
@@ -93,7 +82,6 @@ describe('/components/accordion', () => {
       })
 
       it('should already have all sections open if they have the expanded class', async () => {
-        await page.setJavaScriptEnabled(true)
         await page.goto(baseUrl + '/components/accordion/with-all-sections-already-open/preview', { waitUntil: 'load' })
 
         const numberOfExampleSections = 2
@@ -135,7 +123,6 @@ describe('/components/accordion', () => {
 
       describe('"+/-" icon', () => {
         it('should display "+/-" in the section headings', async () => {
-          await page.setJavaScriptEnabled(true)
           await page.goto(baseUrl + '/components/accordion/preview', { waitUntil: 'load' })
 
           const numberOfExampleSections = 2
