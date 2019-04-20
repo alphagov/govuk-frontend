@@ -1,0 +1,142 @@
+{% extends "template-navody.njk" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "date-input/macro.njk" import govukDateInput %}
+{% from "button/macro.njk" import govukButton %}
+
+{% block head %}
+    <!--[if !IE 8]><!-->
+    <link rel="stylesheet" href="/public/libs.css">
+    <link rel="stylesheet" href="/public/app.css">
+    <!--<![endif]-->
+    <!--[if IE 8]>
+    <link rel="stylesheet" href="/public/app-ie8.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script src="/vendor/html5-shiv/html5shiv.js"></script>
+    <![endif]-->
+{% endblock %}
+
+{% block main %}
+    <div class="govuk-width-container">
+        <main class="govuk-main-wrapper">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
+                    <form method="post" novalidate>
+
+                        <div class="govuk-form-group">
+                            <label class="govuk-label govuk-label--m" for="municipality">
+                                Obec
+                            </label>
+                            <span id="passport-number-hint" class="govuk-hint">
+                                Začnite písať názov a následne si vyberte v zozname
+                              </span>
+
+                            <div id="municipality-field"></div>
+                            <input type="hidden" name="municipality_email" >
+                        </div>
+
+                        {{ govukInput({
+                            label: {
+                                text: "Passport number",
+                                classes: "govuk-label--m"
+                            },
+                            hint: {
+                                text: "For example, 502135326"
+                            },
+                            classes: "govuk-input--width-10",
+                            id: "passport-number",
+                            name: "passport-number",
+                            value: values["passport-number"],
+                            errorMessage: errors["passport-number"]
+                        }) }}
+
+                        {% set dateInputDayClass = "govuk-input--width-2" %}
+                        {% set dateInputMonthClass = "govuk-input--width-2" %}
+                        {% set dateInputYearClass = "govuk-input--width-4" %}
+
+                        {% if errors["expiry-day"] %}
+                            {% set dateInputDayClass = dateInputDayClass + " govuk-input--error" %}
+                        {% endif %}
+                        {% if errors["expiry-month"] %}
+                            {% set dateInputMonthClass = dateInputMonthClass + " govuk-input--error" %}
+                        {% endif %}
+                        {% if errors["expiry-year"] %}
+                            {% set dateInputYearClass = dateInputYearClass + " govuk-input--error" %}
+                        {% endif %}
+
+                        {{ govukDateInput({
+                            id: "expiry",
+                            namePrefix: "expiry",
+                            fieldset: {
+                                legend: {
+                                    text: "Expiry date",
+                                    classes: "govuk-fieldset__legend--m"
+                                }
+                            },
+                            hint: {
+                                text: "For example, 31 3 1980"
+                            },
+                            items: [
+                                {
+                                    classes: dateInputDayClass,
+                                    name: "day",
+                                    value: values["expiry-day"]
+                                },
+                                {
+                                    classes: dateInputMonthClass,
+                                    name: "month",
+                                    value: values["expiry-month"]
+                                },
+                                {
+                                    classes: dateInputYearClass,
+                                    name: "year",
+                                    value: values["expiry-year"]
+                                }
+                            ],
+                            errorMessage: errors["expiry"]
+                        }) }}
+
+                        {{ govukButton({
+                            text: "Continue"
+                        }) }}
+                    </form>
+
+                </div>
+            </div>
+        </main>
+    </div>
+{% endblock %}
+
+{% block bodyEnd %}
+    <script src="/public/libs.js"></script>
+    <script src="/public/all.js"></script>
+
+    <script src="/examples/autocomplete/slovak-municipalities.js"></script>
+    <script>
+      window.navodyDigitalFrontend.initAll();
+
+      var municipalities = Object.keys(SLOVAK_MUNICIPALITIES);
+
+      accessibleAutocomplete({
+        element: document.getElementById('municipality-field'),
+        id: 'municipality',
+        displayMenu: 'overlay',
+        showAllValues: true,
+        source: municipalities,
+        //   function(query, populateResults) {
+        //   var results = ['asd', 'sdsd'];
+        //   populateResults(municipalities);
+        // },
+        dropdownArrow: function (config) {
+          return '<svg class="' + config.className + '" style="top: 8px;" viewBox="0 0 512 512" ><path d="M256,298.3L256,298.3L256,298.3l174.2-167.2c4.3-4.2,11.4-4.1,15.8,0.2l30.6,29.9c4.4,4.3,4.5,11.3,0.2,15.5L264.1,380.9  c-2.2,2.2-5.2,3.2-8.1,3c-3,0.1-5.9-0.9-8.1-3L35.2,176.7c-4.3-4.2-4.2-11.2,0.2-15.5L66,131.3c4.4-4.3,11.5-4.4,15.8-0.2L256,298.3  z"/></svg>'
+        },
+        tNoResults: function() {
+          return 'Obec so zadaným názvom sa nenašla.';
+        },
+        onConfirm: function(value) {
+            document.querySelector('[name=municipality_email]').value = SLOVAK_MUNICIPALITIES[value];
+        }
+      })
+
+    </script>
+{% endblock %}
