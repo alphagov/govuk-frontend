@@ -20,6 +20,8 @@ require('./tasks/gulp/sassdoc.js')
 
 const external = {
   scripts: [
+    'lib/replace-diacritics.js',
+    'lib/slovak-municipalities.js',
     'node_modules/accessible-autocomplete/dist/accessible-autocomplete.min.js'
   ],
   styles: [
