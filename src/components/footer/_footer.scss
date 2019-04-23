@@ -7,11 +7,24 @@
 @include govuk-exports("govuk/component/footer") {
 
   $govuk-footer-background: $govuk-canvas-background-colour;
-  $govuk-footer-border-top: #a1acb2;
-  $govuk-footer-border: govuk-colour("grey-2");
-  $govuk-footer-text: #454a4c;
+  $govuk-footer-border: $govuk-border-colour;
+  // This variable can be removed entirely once the legacy palette goes away,
+  // as it'll just be the same as $govuk-footer-border.
+  $govuk-footer-border-top: $govuk-border-colour;
+  $govuk-footer-text: $govuk-text-colour;
   $govuk-footer-link: $govuk-footer-text;
-  $govuk-footer-link-hover: #171819;
+  $govuk-footer-link-hover: false;
+
+  @if ($govuk-use-legacy-palette) {
+    // sass-lint:disable no-color-literals
+    $govuk-footer-border-top: #a1acb2;
+    $govuk-footer-border: govuk-colour("grey-2");
+    $govuk-footer-text: #454a4c;
+    $govuk-footer-link: $govuk-footer-text;
+
+    // Only used with the legacy palette
+    $govuk-footer-link-hover: #171819;
+  }
 
   // Based on the govuk-crest-2x.png image dimensions.
   $govuk-footer-crest-image-width-2x: 250px;
@@ -33,14 +46,23 @@
   .govuk-footer__link {
     @include govuk-focusable-fill;
 
-    &:link,
-    &:visited {
-      color: $govuk-footer-link;
-    }
+    @if ($govuk-use-legacy-palette) {
+      &:link,
+      &:visited {
+        color: $govuk-footer-link;
+      }
 
-    &:hover,
-    &:active {
-      color: $govuk-footer-link-hover;
+      &:hover,
+      &:active {
+        color: $govuk-footer-link-hover;
+      }
+    } @else {
+      &:link,
+      &:visited,
+      &:hover,
+      &:active {
+        color: $govuk-footer-link;
+      }
     }
 
     // When focussed, the text colour needs to be darker to ensure that colour
