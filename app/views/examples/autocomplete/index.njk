@@ -32,7 +32,7 @@
                               </span>
 
                             <div id="municipality-field"></div>
-                            <input type="hidden" name="municipality_email" >
+                            <input type="hidden" name="municipality_email">
                         </div>
 
                         {{ govukInput({
@@ -143,23 +143,23 @@
     </style>
 
     <script>
-      window.navodyDigitalFrontend.initAll();
+      window.navodyDigitalFrontend.initAll()
 
-      var municipalities = [];
-      var municipalityEmails = {};
+      var municipalities = []
+      var municipalityEmails = {}
 
       for (var i = 0; i < SLOVAK_MUNICIPALITIES.length; i++)
       {
-        var municipality = SLOVAK_MUNICIPALITIES[i];
+        var municipality = SLOVAK_MUNICIPALITIES[i]
 
-        var searchText = replaceDiacritics(municipality[0]).toLowerCase();
-        var label = municipality[0] + (municipality[2] !== '' ? (' (' + municipality[2] + ')') : '');
+        var searchText = replaceDiacritics(municipality[0]).toLowerCase()
+        var label = municipality[0] + (municipality[2] !== '' ? (' (' + municipality[2] + ')') : '')
 
-        SLOVAK_MUNICIPALITIES[i][3] = searchText.replace(/[ -]+/g, ' ');
-        SLOVAK_MUNICIPALITIES[i][4] = label;
+        SLOVAK_MUNICIPALITIES[i][3] = searchText.replace(/[ -]+/g, ' ')
+        SLOVAK_MUNICIPALITIES[i][4] = label
 
-        municipalities.push(label);
-        municipalityEmails[label] = municipality[1];
+        municipalities.push(label)
+        municipalityEmails[label] = municipality[1]
       }
 
       accessibleAutocomplete({
@@ -168,64 +168,45 @@
         displayMenu: 'overlay',
         showAllValues: true,
         autoselect: true,
-        source: function(query, populateResults) {
-          console.log(query);
-          var results = [];
+        source: function (query, populateResults) {
+          var results = []
 
-          if (query === '') {
-            results = municipalities;
+          if (query === '')
+          {
+            results = municipalities
           }
           else
           {
-            var term = replaceDiacritics(query).toLowerCase();
+            var term = replaceDiacritics(query).toLowerCase()
 
-            for (var i = 0; i < municipalities.length; i++)
+            for (var i = 0; i < municipalities.length && results.length < 50; i++)
             {
-              var municipality = SLOVAK_MUNICIPALITIES[i];
+              var municipality = SLOVAK_MUNICIPALITIES[i]
+              var index = municipality[3].indexOf(term)
 
-              var index = municipality[3].indexOf(term);
-
-              if (index === 0) {
-                results.push(municipality[4]);
-              }
-              else
+              if (index > -1 && (index === 0 || municipality[3][index - 1] === ' '))
               {
-                if (index > -1) {
-                  if (term.length < 4)
-                  {
-                    for (var f = 0; f < municipality[3].length; f++)
-                    {
-                      if (municipality[3].indexOf(term) === 0)
-                      {
-                        results.push(municipality[4]);
-                      }
-                    }
-                  }
-                  else
-                  {
-                    results.push(municipality[4]);
-                  }
-                }
+                results.push(municipality[4])
               }
             }
           }
 
           results = results.sort(function (a, b) {
-            return ((a < b) ? -1 : ((a > b) ? 1 : 0));
-          });
+            return ((a < b) ? -1 : ((a > b) ? 1 : 0))
+          })
 
-          populateResults(results);
+          populateResults(results)
         },
         dropdownArrow: function (config) {
           return '<svg class="' + config.className + '" style="top: 8px;" viewBox="0 0 512 512" ><path d="M256,298.3L256,298.3L256,298.3l174.2-167.2c4.3-4.2,11.4-4.1,15.8,0.2l30.6,29.9c4.4,4.3,4.5,11.3,0.2,15.5L264.1,380.9  c-2.2,2.2-5.2,3.2-8.1,3c-3,0.1-5.9-0.9-8.1-3L35.2,176.7c-4.3-4.2-4.2-11.2,0.2-15.5L66,131.3c4.4-4.3,11.5-4.4,15.8-0.2L256,298.3  z"/></svg>'
         },
-        tNoResults: function() {
-          return 'Obec sa nenašla.';
+        tNoResults: function () {
+          return 'Obec sa nenašla.'
         },
-        onConfirm: function(value) {
-            document.querySelector('[name=municipality_email]').value = municipalityEmails[value] ? municipalityEmails[value] : '';
+        onConfirm: function (value) {
+          document.querySelector('[name=municipality_email]').value = municipalityEmails[value] ? municipalityEmails[value] : ''
         }
-      });
+      })
 
     </script>
 {% endblock %}
