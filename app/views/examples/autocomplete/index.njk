@@ -119,6 +119,7 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
+        .autocomplete__hint,
         .autocomplete__input {
             padding: 5px 35px 5px 5px;
             font-family: "Roboto", Arial, sans-serif;
@@ -132,6 +133,7 @@
         }
 
         @media (min-width: 40.0625em) {
+            .autocomplete__hint,
             .autocomplete__input {
                 font-size: 18px;
                 font-size: 1.125rem;
@@ -165,6 +167,7 @@
         id: 'municipality',
         displayMenu: 'overlay',
         showAllValues: true,
+        autoselect: true,
         source: function(query, populateResults) {
           console.log(query);
           var results = [];
