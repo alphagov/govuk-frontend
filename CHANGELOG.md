@@ -20,6 +20,12 @@
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
+- Remove duplicate form field markup from each macro
+
+  All form fields are now wrapped in `govukFormGroup()` to generate the appropriate hint, error message, fieldset and legend (or label).
+
+  ([PR #1281](https://github.com/alphagov/govuk-frontend/pull/1281))
+
 🔧 Fixes:
 
 - Pull Request Title goes here
