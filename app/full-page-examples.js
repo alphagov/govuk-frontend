@@ -1,4 +1,5 @@
 module.exports = (app) => {
+  require('./views/full-page-examples/applicant-details')(app)
   require('./views/full-page-examples/have-you-changed-your-name')(app)
   require('./views/full-page-examples/feedback')(app)
   require('./views/full-page-examples/how-do-you-want-to-sign-in')(app)
