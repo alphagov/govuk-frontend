@@ -412,6 +412,12 @@ changelog](./docs/contributing/versioning.md#updating-changelog).
 
   ([PR #1371](https://github.com/alphagov/govuk-frontend/pull/1371))
 
+- Remove duplicate form field markup from each macro
+
+  All form fields are now wrapped in `govukFormGroup()` to generate the appropriate hint, error message, fieldset and legend (or label).
+
+  ([PR #1281](https://github.com/alphagov/govuk-frontend/pull/1281))
+
 🔧 Fixes:
 
 - Removed adjustments that were needed for v1 Transport
