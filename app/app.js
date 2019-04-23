@@ -75,9 +75,9 @@ module.exports = (options) => {
   app.use('*', function (request, response, next) {
     response.locals.legacy = request.query['legacy'] === '1'
     if (response.locals.legacy) {
-      response.locals.legacy_query = '?legacy=1'
+      response.locals.legacyQuery = '?legacy=1'
     } else {
-      response.locals.legacy_query = ''
+      response.locals.legacyQuery = ''
     }
     next()
   })
