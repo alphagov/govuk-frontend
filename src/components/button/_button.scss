@@ -3,14 +3,13 @@
 @import "../../helpers/all";
 
 @include govuk-exports("govuk/component/button") {
-  // Primary button variables
-  $govuk-button-colour: #00823b; // sass-lint:disable no-color-literals
+  $govuk-button-colour: govuk-colour("green", $legacy: #00823b); // sass-lint:disable no-color-literals
   $govuk-button-hover-colour: govuk-shade($govuk-button-colour, 20%);
   $govuk-button-shadow-colour: govuk-shade($govuk-button-colour, 60%);
   $govuk-button-text-colour: govuk-colour("white");
 
   // Secondary button variables
-  $govuk-secondary-button-colour: govuk-colour("grey-3");
+  $govuk-secondary-button-colour: govuk-colour("light-grey", $legacy: "grey-3");
   $govuk-secondary-button-hover-colour: govuk-shade($govuk-secondary-button-colour, 10%);
   $govuk-secondary-button-shadow-colour: govuk-shade($govuk-secondary-button-colour, 40%);
   $govuk-secondary-button-text-colour: govuk-colour("black");
