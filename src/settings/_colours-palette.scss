@@ -11,7 +11,11 @@
 /// @type Boolean
 /// @access public
 
-$govuk-use-legacy-palette: true !default;
+$govuk-use-legacy-palette: if((
+    $govuk-compatibility-govukfrontendtoolkit or
+    $govuk-compatibility-govuktemplate or
+    $govuk-compatibility-govukelements
+  ), true, false) !default;
 
 /// Legacy colour palette
 ///
