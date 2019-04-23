@@ -9,11 +9,32 @@
 ///
 /// @param {String} $colour - Name of colour from the colour palette
 ///   (`$govuk-colours`)
+/// @param {String} $legacy - Either the name of colour from the legacy palette
+///   or a colour literal, to return instead when in 'legacy mode' - matching
+///   the palette from GOV.UK Template, Elements or Frontend Toolkit
 /// @return {Colour} Representation of named colour
+///
+/// @example scss - Using legacy colours from the palette
+///  .foo {
+///    background-colour: govuk-colour("mid-grey", $legacy: "grey-2");
+///  }
+///
+/// @example scss - Using legacy colour literals
+///  .foo {
+///    background-colour: govuk-colour("green", $legacy: #BADA55);
+///  }
+///
 /// @throw if `$colour` is not a colour from the colour palette
 /// @access public
 
-@function govuk-colour($colour) {
+@function govuk-colour($colour, $legacy: false) {
+  @if ($govuk-use-legacy-palette and $legacy) {
+    @if (type-of($legacy) == "color") {
+      @return $legacy;
+    }
+    $colour: $legacy;
+  }
+
   $colour: quote($colour);
 
   @if not map-has-key($govuk-colours, $colour) {
