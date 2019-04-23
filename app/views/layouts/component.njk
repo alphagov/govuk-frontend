@@ -17,7 +17,7 @@
 {% block beforeContent %}
   {{ govukBreadcrumbs({
     "items": [
-    { text: 'GOV.UK Frontend', href: '/' },
+    { text: 'GOV.UK Frontend', href: '/' + legacyQuery },
     { text: componentNameHuman | capitalize }
     ]
   }) }}
@@ -33,6 +33,6 @@
   </div>
 
   {% block examples %}
-    {{ showExamples(componentName, componentNameHuman, componentData) }}
+    {{ showExamples(componentName, componentNameHuman, componentData,legacyQuery) }}
   {% endblock %}
 {% endblock %}
