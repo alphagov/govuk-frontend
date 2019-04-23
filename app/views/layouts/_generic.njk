@@ -13,28 +13,26 @@
     <link rel="stylesheet" media="all" href="/vendor/govuk_template/fonts.css"/>
     <!--[if !IE 8]><!-->
       <link rel="stylesheet" href="/public/app-legacy.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous" />
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js" integrity="sha256-Zb9yKJ/cfs+jG/zIOFL0QEuXr2CDKF7FR5YBJY3No+c=" crossorigin="anonymous"></script>
     <!--<![endif]-->
     <!--[if IE 8]>
       <link rel="stylesheet" href="/public/app-legacy-ie8.css">
     <![endif]-->
-    <!--[if lt IE 9]>
-      <script src="/vendor/html5-shiv/html5shiv.js"></script>
-    <![endif]-->
   {% else %}
     <!--[if !IE 8]><!-->
       <link rel="stylesheet" href="/public/app.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous" />
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js" integrity="sha256-Zb9yKJ/cfs+jG/zIOFL0QEuXr2CDKF7FR5YBJY3No+c=" crossorigin="anonymous"></script>
     <!--<![endif]-->
     <!--[if IE 8]>
       <link rel="stylesheet" href="/public/app-ie8.css">
     <![endif]-->
-    <!--[if lt IE 9]>
-      <script src="/vendor/html5-shiv/html5shiv.js"></script>
-    <![endif]-->
   {% endif %}
+
+  <!--[if !IE 8]><!-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js" integrity="sha256-Zb9yKJ/cfs+jG/zIOFL0QEuXr2CDKF7FR5YBJY3No+c=" crossorigin="anonymous"></script>
+  <!--<![endif]-->
+  <!--[if lt IE 9]>
+    <script src="/vendor/html5-shiv/html5shiv.js"></script>
+  <![endif]-->
 
   {% block styles %}{% endblock %}
 {% endblock %}
