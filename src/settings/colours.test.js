@@ -15,6 +15,7 @@ const sassConfig = {
 describe('Organisation colours', () => {
   it('should define websafe colours that meet contrast requirements', async () => {
     const sass = `
+      @import "settings/compatibility";
       @import "settings/colours-palette";
       @import "settings/colours-organisations";
       @import "settings/colours-applied";
