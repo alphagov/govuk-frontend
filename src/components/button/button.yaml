@@ -98,3 +98,29 @@ examples:
     name: focus
     text: Focussed
     classes: :focus
+- name: Secondary
+  description: A button for secondary actions
+  data:
+    name: secondary
+    text: Secondary button
+    classes: govuk-button--secondary
+- name: Secondary link
+  description: A link button for secondary actions
+  data:
+    name: secondary
+    text: Secondary button
+    href: '/'
+    classes: govuk-button--secondary
+- name: Warning
+  description: A button for actions that need a warning
+  data:
+    name: Warning
+    text: Warning button
+    classes: govuk-button--warning
+- name: Warning link
+  description: A link button for actions that need a warning
+  data:
+    name: Warning
+    text: Warning button
+    href: '/'
+    classes: govuk-button--warning
