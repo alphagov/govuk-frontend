@@ -187,7 +187,9 @@
   // Conditional reveals
   // =========================================================
 
-  $conditional-border-width: $govuk-border-width-mobile;
+  // The narrow border is used in the conditional reveals because the border has
+  // to be an even number in order to be centred under the 40px checkbox or radio.
+  $conditional-border-width: $govuk-border-width-narrow;
   // Calculate the amount of padding needed to keep the border centered against the radios.
   $conditional-border-padding: ($govuk-radios-size / 2) - ($conditional-border-width / 2);
   // Move the border centered with the radios
