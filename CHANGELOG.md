@@ -1,9 +1,15 @@
 # Changelog
 
-## Unreleased v3.0
+## Unreleased 3.0.0 (Breaking release)
 
 See the [versioning documentation for how to update this
 changelog](./docs/contributing/versioning.md#updating-changelog).
+
+- Rename `$govuk-border-width-mobile` to `$govuk-border-width-narrow`
+
+  To migrate: If you are using `$govuk-border-width-mobile` in your own custom code, you need to rename any instances to `$govuk-border-width-narrow`.
+
+  ([PR #1287](https://github.com/alphagov/govuk-frontend/pull/1287))
 
 - The colour palette has been updated.
 
@@ -94,6 +100,16 @@ changelog](./docs/contributing/versioning.md#updating-changelog).
   ([PR #1288](https://github.com/alphagov/govuk-frontend/pull/1288))
 
 [compatibility mode]: https://github.com/alphagov/govuk-frontend/blob/master/docs/installation/installing-with-npm.md#compatibility-mode
+
+🔧 Fixes:
+
+- Rename `$govuk-border-width-mobile` to `$govuk-border-width-narrow`
+
+  This better reflects how the variable is used.
+
+  Also make the error summary border the standard width on mobile.
+
+  ([PR #1287](https://github.com/alphagov/govuk-frontend/pull/1287))
 
 ## 2.13.0
 
