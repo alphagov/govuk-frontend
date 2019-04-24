@@ -14,6 +14,15 @@
 
 🆕 New features:
 
+- Add new govuk-shade and govuk-tint functions for creating shades and tints of
+  colours.
+
+  ([PR #1207](https://github.com/alphagov/govuk-frontend/pull/1207))
+
+- Add new secondary and warning button variants
+
+  ([PR #1207](https://github.com/alphagov/govuk-frontend/pull/1207))
+
 - Pull Request Title goes here
 
   Description goes here (optional)
