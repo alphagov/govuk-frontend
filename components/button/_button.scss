@@ -3,11 +3,23 @@
 @import "../../helpers/all";
 
 @include govuk-exports("govuk/component/button") {
-
-  $govuk-button-colour: #00823b;
-  $govuk-button-hover-colour: darken($govuk-button-colour, 5%);
-  $govuk-button-shadow-colour: darken($govuk-button-colour, 15%);
+  // Primary button variables
+  $govuk-button-colour: #00823b; // sass-lint:disable no-color-literals
+  $govuk-button-hover-colour: govuk-shade($govuk-button-colour, 20%);
+  $govuk-button-shadow-colour: govuk-shade($govuk-button-colour, 60%);
   $govuk-button-text-colour: govuk-colour("white");
+
+  // Secondary button variables
+  $govuk-secondary-button-colour: govuk-colour("grey-3");
+  $govuk-secondary-button-hover-colour: govuk-shade($govuk-secondary-button-colour, 10%);
+  $govuk-secondary-button-shadow-colour: govuk-shade($govuk-secondary-button-colour, 40%);
+  $govuk-secondary-button-text-colour: govuk-colour("black");
+
+  // Warning button variables
+  $govuk-warning-button-colour: govuk-colour("red");
+  $govuk-warning-button-hover-colour: govuk-shade($govuk-warning-button-colour, 20%);
+  $govuk-warning-button-shadow-colour: govuk-shade($govuk-warning-button-colour, 60%);
+  $govuk-warning-button-text-colour: govuk-colour("white");
 
   // Because the shadow (s0) is visually 'part of' the button, we need to reduce
   // the height of the button to compensate by adjusting its padding (s1) and
@@ -141,6 +153,64 @@
     }
   }
 
+  .govuk-button--secondary {
+    background-color: $govuk-secondary-button-colour;
+    box-shadow: 0 $button-shadow-size 0 $govuk-secondary-button-shadow-colour;
+
+    &,
+    &:link,
+    &:visited,
+    &:active,
+    &:hover {
+      color: $govuk-secondary-button-text-colour;
+    }
+
+    // alphagov/govuk_template includes a specific a:link:focus selector
+    // designed to make unvisited links a slightly darker blue when focussed, so
+    // we need to override the text colour for that combination of selectors so
+    // so that unvisited links styled as buttons do not end up with dark blue
+    // text when focussed.
+    @include govuk-compatibility(govuk_template) {
+      &:link:focus {
+        color: $govuk-secondary-button-text-colour;
+      }
+    }
+
+    &:hover,
+    &:focus {
+      background-color: $govuk-secondary-button-hover-colour;
+    }
+  }
+
+  .govuk-button--warning {
+    background-color: $govuk-warning-button-colour;
+    box-shadow: 0 $button-shadow-size 0 $govuk-warning-button-shadow-colour;
+
+    &,
+    &:link,
+    &:visited,
+    &:active,
+    &:hover {
+      color: $govuk-warning-button-text-colour;
+    }
+
+    // alphagov/govuk_template includes a specific a:link:focus selector
+    // designed to make unvisited links a slightly darker blue when focussed, so
+    // we need to override the text colour for that combination of selectors so
+    // so that unvisited links styled as buttons do not end up with dark blue
+    // text when focussed.
+    @include govuk-compatibility(govuk_template) {
+      &:link:focus {
+        color: $govuk-warning-button-text-colour;
+      }
+    }
+
+    &:hover,
+    &:focus {
+      background-color: $govuk-warning-button-hover-colour;
+    }
+  }
+
   .govuk-button--start {
     @include govuk-typography-weight-bold;
     @include govuk-typography-responsive($size: 24, $override-line-height: 1);
@@ -176,5 +246,4 @@
     padding-top: (govuk-spacing(2) - $govuk-border-width-form-element - ($button-shadow-size / 2) + $offset); // s1
     padding-bottom: (govuk-spacing(2) - $govuk-border-width-form-element - ($button-shadow-size / 2) - $offset + 1); // s1
   }
-
 }

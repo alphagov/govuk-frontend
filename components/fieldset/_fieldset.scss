@@ -4,10 +4,20 @@
 
 @include govuk-exports("govuk/component/fieldset") {
   .govuk-fieldset {
+    min-width: 0;
     margin: 0;
     padding: 0;
     border: 0;
     @include govuk-clearfix;
+  }
+
+  // Fix for Firefox < 53
+  // https://bugzilla.mozilla.org/show_bug.cgi?id=504622
+  @supports not (caret-color: auto) {
+    .govuk-fieldset,
+    x:-moz-any-link {
+      display: table-cell;
+    }
   }
 
   .govuk-fieldset__legend {
