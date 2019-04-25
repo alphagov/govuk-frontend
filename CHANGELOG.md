@@ -22,6 +22,16 @@
 - Add new secondary and warning button variants
 
   ([PR #1207](https://github.com/alphagov/govuk-frontend/pull/1207))
+  
+- Ensure fieldset never exceeds max-width
+
+  This fix ensures that both WebKit/Blink and Firefox are prevented from expanding their fieldset widths to the content's minimum size.
+
+  This was preventing `max-width: 100%` from being applied to select menus inside a fieldset.
+
+  See discussion in ["Reset your fieldset"](https://thatemil.com/blog/2015/01/03/reset-your-fieldset/) and raised by [issue #1264](https://github.com/alphagov/govuk-frontend/issues/1264)
+
+  ([PR #1269](https://github.com/alphagov/govuk-frontend/pull/1269))
 
 - Pull Request Title goes here
 
@@ -56,16 +66,6 @@
   Thanks to [@colinrotherham](https://github.com/colinrotherham) for fixing this issue.
 
   ([PR #1265](https://github.com/alphagov/govuk-frontend/pull/1265))
-
-- Ensure fieldset never exceeds max-width
-
-  This fix ensures that both WebKit/Blink and Firefox are prevented from expanding their fieldset widths to the content's minimum size.
-
-  This was preventing `max-width: 100%` from being applied to select menus inside a fieldset.
-
-  See discussion in ["Reset your fieldset"](https://thatemil.com/blog/2015/01/03/reset-your-fieldset/) and raised by [issue #1264](https://github.com/alphagov/govuk-frontend/issues/1264)
-
-  ([PR #1269](https://github.com/alphagov/govuk-frontend/pull/1269))
 
 ## 2.9.0 (Feature release)
 
