@@ -49,3 +49,25 @@
     @return map-get($org-colour, colour);
   }
 }
+
+/// Make a colour darker by mixing it with black
+///
+/// @param {Colour} $colour - colour to shade
+/// @param {Number} $percentage - percentage of `$colour` in returned color
+/// @return {Colour}
+/// @access public
+
+@function govuk-shade($colour, $percentage) {
+  @return mix(#000000, $colour, $percentage);
+}
+
+/// Make a colour lighter by mixing it with white
+///
+/// @param {Colour} $colour - colour to tint
+/// @param {Number} $percentage - percentage of `$colour` in returned color
+/// @return {Colour}
+/// @access public
+
+@function govuk-tint($colour, $percentage) {
+  @return mix(govuk-colour("white"), $colour, $percentage);
+}

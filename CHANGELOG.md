@@ -14,19 +14,37 @@
 
 🆕 New features:
 
-- Add support for custom row classes on the summary list component (including support for some rows without action links)
+- Pull Request Title goes here
 
-  ([PR #1259](https://github.com/alphagov/govuk-frontend/pull/1259))
+  Description goes here (optional)
+
+  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+
+🔧 Fixes:
+
+- Pull Request Title goes here
+
+  Description goes here (optional)
+
+  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+
+## 2.11.0 (Feature release)
+
+🆕 New features:
+
+- Add new secondary and warning button variants
+
+  ([PR #1207](https://github.com/alphagov/govuk-frontend/pull/1207))
 
 - Add new govuk-shade and govuk-tint functions for creating shades and tints of
   colours.
 
   ([PR #1207](https://github.com/alphagov/govuk-frontend/pull/1207))
 
-- Add new secondary and warning button variants
+- Add support for custom row classes on the summary list component (including support for some rows without action links)
 
-  ([PR #1207](https://github.com/alphagov/govuk-frontend/pull/1207))
-  
+  ([PR #1259](https://github.com/alphagov/govuk-frontend/pull/1259))
+
 - Ensure fieldset never exceeds max-width
 
   This fix ensures that both WebKit/Blink and Firefox are prevented from expanding their fieldset widths to the content's minimum size.
@@ -36,12 +54,6 @@
   See discussion in ["Reset your fieldset"](https://thatemil.com/blog/2015/01/03/reset-your-fieldset/) and raised by [issue #1264](https://github.com/alphagov/govuk-frontend/issues/1264)
 
   ([PR #1269](https://github.com/alphagov/govuk-frontend/pull/1269))
-
-- Pull Request Title goes here
-
-  Description goes here (optional)
-
-  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
 🔧 Fixes:
 
@@ -54,12 +66,6 @@
   So the key column always stays at 30% width
 
   ([PR #1259](https://github.com/alphagov/govuk-frontend/pull/1259))
-
-- Pull Request Title goes here
-
-  Description goes here (optional)
-
-  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
 ## 2.10.0 (Feature release)
 
