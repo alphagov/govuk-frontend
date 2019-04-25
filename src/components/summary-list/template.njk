@@ -6,16 +6,23 @@
     {% endif -%}
   </a>
 {% endmacro -%}
+
+{# Determine if we need 2 or 3 columns #}
+{% set anyRowHasActions = false %}
+{% for row in params.rows %}
+  {% set anyRowHasActions = true if row.actions.items else anyRowHasActions %}
+{% endfor -%}
+
 <dl class="govuk-summary-list {%- if params.classes %} {{ params.classes }}{% endif %}"{% for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
   {% for row in params.rows %}
-    <div class="govuk-summary-list__row">
+    <div class="govuk-summary-list__row {%- if row.classes %} {{ row.classes }}{% endif %}">
       <dt class="govuk-summary-list__key {%- if row.key.classes %} {{ row.key.classes }}{% endif %}">
         {{ row.key.html | safe if row.key.html else row.key.text }}
       </dt>
       <dd class="govuk-summary-list__value {%- if row.value.classes %} {{ row.value.classes }}{% endif %}">
         {{ row.value.html | indent(8) | trim | safe if row.value.html else row.value.text }}
       </dd>
-      {% if row.actions.items %}
+      {% if row.actions.items.length %}
         <dd class="govuk-summary-list__actions {%- if row.actions.classes %} {{ row.actions.classes }}{% endif %}">
           {% if row.actions.items.length == 1 %}
             {{ _actionLink(row.actions.items[0]) | indent(12) | trim }}
@@ -29,6 +36,9 @@
             </ul>
           {% endif %}
         </dd>
+      {% elseif anyRowHasActions %}
+        {# Add dummy column to extend border #}
+        <span class="govuk-summary-list__actions"></span>
       {% endif %}
     </div>
   {% endfor %}

@@ -44,6 +44,22 @@ describe('Data list', () => {
     expect($component.attr('data-attribute-2')).toEqual('value-2')
   })
   describe('rows', () => {
+    it('renders classes', async () => {
+      const $ = render('summary-list', {
+        rows: [
+          {
+            key: {
+              text: 'Name'
+            },
+            classes: 'app-custom-class'
+          }
+        ]
+      })
+
+      const $component = $('.govuk-summary-list')
+      const $row = $component.find('.govuk-summary-list__row')
+      expect($row.hasClass('app-custom-class')).toBeTruthy()
+    })
     describe('keys', () => {
       it('renders text', async () => {
         const $ = render('summary-list', {
@@ -316,6 +332,66 @@ describe('Data list', () => {
         const $action = $component.find('.govuk-summary-list__actions > a')
 
         expect($action.hasClass('govuk-link--no-visited-state')).toBeTruthy()
+      })
+      it('skips the action column when none are provided', async () => {
+        const $ = render('summary-list', {
+          rows: [
+            {
+              key: {
+                text: 'Name'
+              },
+              value: {
+                text: 'Firstname Lastname'
+              }
+            }
+          ]
+        })
+
+        const $component = $('.govuk-summary-list')
+        const $action = $component.find('.govuk-summary-list__actions')
+
+        expect($action.length).toEqual(0)
+      })
+      it('adds dummy action columns when only some rows have actions', async () => {
+        const $ = render('summary-list', {
+          rows: [
+            {
+              key: {
+                text: 'Name'
+              },
+              value: {
+                text: 'Firstname Lastname'
+              }
+            },
+            {
+              key: {
+                text: 'Name'
+              },
+              value: {
+                text: 'Firstname Lastname'
+              },
+              actions: {
+                items: [
+                  {
+                    href: '#',
+                    text: 'First action'
+                  }
+                ]
+              }
+            }
+          ]
+        })
+
+        const $component = $('.govuk-summary-list')
+        const $action = $component.find('.govuk-summary-list__actions')
+
+        // First action column is a dummy
+        expect($action[0].tagName).toEqual('span')
+        expect($($action[0]).text()).toEqual('')
+
+        // Second action column contains link text
+        expect($action[1].tagName).toEqual('dd')
+        expect($($action[1]).text()).toContain('First action')
       })
     })
   })

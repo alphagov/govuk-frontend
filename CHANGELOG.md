@@ -14,6 +14,10 @@
 
 🆕 New features:
 
+- Add support for custom row classes on the summary list component (including support for some rows without action links)
+
+  ([PR #1259](https://github.com/alphagov/govuk-frontend/pull/1259))
+
 - Add new govuk-shade and govuk-tint functions for creating shades and tints of
   colours.
 
@@ -30,6 +34,16 @@
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
 🔧 Fixes:
+
+- Add various fixes to the summary list component:
+
+  1. Fixes the 1px row height change when borders are removed
+  Padding is now adjusted by 1px instead
+
+  2. Fixes the text alignment when the actions column isn't added
+  So the key column always stays at 30% width
+
+  ([PR #1259](https://github.com/alphagov/govuk-frontend/pull/1259))
 
 - Pull Request Title goes here
 

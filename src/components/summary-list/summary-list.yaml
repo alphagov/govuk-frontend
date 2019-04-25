@@ -112,13 +112,46 @@ examples:
               - href: '#'
                 text: Change
                 visuallyHiddenText: contact information
-  - name: no-actions
+  - name: without actions
     data:
       rows:
         - key:
             text: Name
           value:
             text: Firstname Lastname
+        - key:
+            text: Date of birth
+          value:
+            text: 13/08/1980
+        - key:
+            text: Contact information
+          value:
+            html: |
+              <p class="govuk-body">
+                email@email.com
+              </p>
+              <p class="govuk-body">
+                Address line 1<br>
+                Address line 2<br>
+                Address line 3<br>
+                Address line 4<br>
+                Address line 5
+              </p>
+  - name: with some actions
+    data:
+      rows:
+        - key:
+            text: Name
+          value:
+            text: Firstname Lastname
+          actions:
+            items:
+              - href: '#'
+                text: Edit
+                visuallyHiddenText: name
+              - href: '#'
+                text: Delete
+                visuallyHiddenText: name
         - key:
             text: Date of birth
           value:
@@ -163,6 +196,32 @@ examples:
                 Address line 4<br>
                 Address line 5
               </p>
+  - name: no-border on last row
+    data:
+      rows:
+        - key:
+            text: Name
+          value:
+            text: Firstname Lastname
+        - key:
+            text: Date of birth
+          value:
+            text: 13/08/1980
+        - key:
+            text: Contact information
+          value:
+            html: |
+              <p class="govuk-body">
+                email@email.com
+              </p>
+              <p class="govuk-body">
+                Address line 1<br>
+                Address line 2<br>
+                Address line 3<br>
+                Address line 4<br>
+                Address line 5
+              </p>
+          classes: govuk-summary-list__row--no-border
   - name: overridden-widths
     data:
       rows:
