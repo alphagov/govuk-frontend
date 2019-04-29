@@ -4,15 +4,99 @@
 
 💥 Breaking changes:
 
+- The colour palette has been updated.
+
+  **Note:** If you are using [compatibility mode], the existing palette will be
+  preserved.
+
+  Purple, red, yellow, green, blue and light blue have all been updated to new
+  colours.
+
+  Dark blue has been added, and bright red has been removed.
+
+  Greys 1-through-4 have been replaced with dark, mid and light-grey. As a
+  general rule of thumb, dark grey replaces grey-1 and is designed to be used as
+  a foreground colour; light grey replaces both grey-3 and grey-4 and is
+  designed to be used as a background colour, and mid-grey replaces grey-2 and
+  is designed to be used for borders.
+
+  To migrate you'll need to update any references to bright-red, grey-1, grey-2,
+  grey-3 or grey-4 to use the new colours from the palette.
+
+  | Colour        | Before    | After     | Notes                             |
+  | ------------- | --------- | --------- | --------------------------------- |
+  | purple        | `#2e358b` | `#4c2c92` | updated - matches visited links   |
+  | light-purple  | `#6f72af` | `#6f72af` |                                   |
+  | bright-purple | `#912b88` | `#912b88` |                                   |
+  | pink          | `#d53880` | `#d53880` |                                   |
+  | light-pink    | `#f499be` | `#f499be` |                                   |
+  | red           | `#b10e1e` | `#d4351c` | updated                           |
+  | bright-red    | `#df3034` |           | removed - similar to the new red  |
+  | orange        | `#f47738` | `#f47738` |                                   |
+  | brown         | `#b58840` | `#b58840` |                                   |
+  | yellow        | `#ffbf47` | `#ffdd00` | updated                           |
+  | light-green   | `#85994b` | `#85994b` |                                   |
+  | green         | `#006435` | `#00703c` | updated                           |
+  | turquoise     | `#28a197` | `#28a197` |                                   |
+  | light-blue    | `#2b8cc4` | `#5694ca` | updated                           |
+  | blue          | `#005ea5` | `#1d70b8` | updated                           |
+  | dark-blue     |           | `#003078` | added                             |
+  | black         | `#0b0c0c` | `#0b0c0c` |                                   |
+  | grey-1        | `#6f777b` |           | removed                           |
+  | dark-grey     |           | `#6f777b` | added                             |
+  | grey-2        | `#bfc1c3` |           | removed                           |
+  | mid-grey      |           | `#b1b4b6` | added                             |
+  | grey-3        | `#dee0e2` |           | removed                           |
+  | grey-4        | `#f8f8f8` |           | removed                           |
+  | light-grey    |           | `#f3f2f1` | added                             |
+  | white         | `#ffffff` | `#ffffff` |                                   |
+
+  ([PR #1288](https://github.com/alphagov/govuk-frontend/pull/1288))
+
+- The button component now uses the green from the colour palette, instead of
+  a custom green used only for the button.
+
+  **Note:** If you are using [compatibility mode], the existing button colour
+  will be preserved.
+
+  ([PR #1288](https://github.com/alphagov/govuk-frontend/pull/1288))
+
+- The confirmation panel now uses a green background rather than a turquoise
+  background.
+
+  **Note:** If you are using [compatibility mode], the existing turquoise panel
+  colour will be preserved.
+
+  ([PR #1288](https://github.com/alphagov/govuk-frontend/pull/1288))
+
+- Links now get darker when hovered, rather than lighter.
+
+  **Note:** If you are using [compatibility mode], the existing link hover style
+  will be preserved.
+
+  ([PR #1288](https://github.com/alphagov/govuk-frontend/pull/1288))
+
 - Pull Request Title goes here
 
   Description goes here (optional)
 
-  To migrate you need to change: X
-
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
 🆕 New features:
+
+- A new setting `$govuk-use-legacy-palette` has been added, which by default
+  will be true if any of the `$govuk-compatibility-*` settings are true.
+
+  When set to `true`, the existing colour palette from v2.x of GOV.UK Frontend
+  will be used.
+
+  ([PR #1288](https://github.com/alphagov/govuk-frontend/pull/1288))
+
+- The `govuk-colour` function has been updated to add a `$legacy` argument,
+  which allows you to specify a colour (either a literal, or a name of a colour
+  from the legacy palette) to use when `$govuk-use-legacy-palette` is true.
+
+  ([PR #1288](https://github.com/alphagov/govuk-frontend/pull/1288))
 
 - Pull Request Title goes here
 
@@ -27,6 +111,8 @@
   Description goes here (optional)
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+
+[compatibility mode]: https://github.com/alphagov/govuk-frontend/blob/master/docs/installation/installing-with-npm.md#compatibility-mode
 
 ## 2.11.0 (Feature release)
 
