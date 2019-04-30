@@ -43,7 +43,7 @@
   
   .sdn-feedbackbar__foundbug {
     @include govuk-media-query($until: tablet) {
-      margin-top: govuk-spacing(1);
+      margin-top: govuk-spacing(2);
     }
   }
   
