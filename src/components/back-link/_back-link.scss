@@ -25,6 +25,12 @@
     // Underline is provided by a bottom border
     text-decoration: none;
 
+    // When the back link is focused, hide the bottom link border as the
+    // focus styles has a bottom border.
+    &:focus {
+      border-bottom-color: transparent;
+    }
+
     // Prepend left pointing arrow
     &:before {
       @include govuk-shape-arrow($direction: left, $base: 10px, $height: 6px);
