@@ -3,6 +3,7 @@ module.exports = (app) => {
   require('./views/full-page-examples/have-you-changed-your-name')(app)
   require('./views/full-page-examples/feedback')(app)
   require('./views/full-page-examples/how-do-you-want-to-sign-in')(app)
+  require('./views/full-page-examples/news-and-communications')(app)
   require('./views/full-page-examples/passport-details')(app)
   require('./views/full-page-examples/update-your-account-details')(app)
   require('./views/full-page-examples/upload-your-photo')(app)
