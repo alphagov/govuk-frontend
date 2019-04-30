@@ -65,8 +65,6 @@
   }
 
   .govuk-header__link {
-    @include govuk-focusable-fill;
-
     text-decoration: none;
 
     &:link,
@@ -77,6 +75,8 @@
     &:hover {
       text-decoration: underline;
     }
+
+    @include govuk-focusable-text-link;
 
     // When focussed, the text colour needs to be darker to ensure that colour
     // contrast is still acceptable
@@ -115,6 +115,11 @@
       // Omitting colour will use default value of currentColor – if we
       // specified currentColor explicitly IE8 would ignore this rule.
       border-bottom: 1px solid;
+    }
+
+    // Remove any borders that show when focused and hovered.
+    &:focus {
+      border-bottom: 0;
     }
   }
 
