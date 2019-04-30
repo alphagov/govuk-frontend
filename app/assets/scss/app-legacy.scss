@@ -8,6 +8,9 @@ $govuk-compatibility-govukfrontendtoolkit: true;
 $govuk-compatibility-govuktemplate: true;
 $govuk-compatibility-govukelements: true;
 
+// Set Elements assets path
+$path: "/assets/images/";
+
 // Import GOV.UK frontend toolkit and GOV.UK elements
 @import "govuk-elements-sass/public/sass/govuk-elements";
 

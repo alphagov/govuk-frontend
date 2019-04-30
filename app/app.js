@@ -19,7 +19,8 @@ const appViews = [
   configPaths.examples,
   configPaths.fullPageExamples,
   configPaths.components,
-  configPaths.src
+  configPaths.src,
+  configPaths.node_modules
 ]
 
 module.exports = (options) => {
@@ -61,7 +62,7 @@ module.exports = (options) => {
   app.use('/vendor/html5-shiv/', express.static('node_modules/html5shiv/dist/'))
 
   // serve legacy code from node node modules
-  app.use('/vendor/govuk_template/', express.static('node_modules/govuk_template_jinja/assets/stylesheets/'))
+  app.use('/vendor/govuk_template/', express.static('node_modules/govuk_template_jinja/assets/'))
 
   app.use('/assets', express.static(path.join(configPaths.src, 'assets')))
 

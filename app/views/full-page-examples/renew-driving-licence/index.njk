@@ -1,0 +1,156 @@
+{# This example is based on the "Renew driving licence"
+example: https://www.gov.uk/renew-driving-licence #}
+{% extends "govuk_template_jinja/views/layouts/govuk_template.html" %}
+
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "inset-text/macro.njk" import govukInsetText %}
+{% from "tabs/macro.njk" import govukTabs %}
+
+{% set asset_path = "/vendor/govuk_template/" %}
+{% set homepage_url = "/" %}
+{% set pageTitle = "Renew your driving licence" %}
+{% block page_title %}GOV.UK - {{ pageTitle }}{% endblock %}
+
+{% block head %}
+  <!--[if !IE 8]><!-->
+    <link rel="stylesheet" href="/public/app-legacy.css">
+  <!--<![endif]-->
+  <!--[if IE 8]>
+    <link rel="stylesheet" href="/public/app-legacy-ie8.css">
+  <![endif]-->
+{% endblock %}
+
+{% block content %}
+  <main id="content" role="main">
+    <div class="grid-row">
+      <div class="column-two-thirds">
+        {{ govukBreadcrumbs({
+          items: [
+            {
+              text: "Home",
+              href: "#/"
+            },
+            {
+              text: "Driving and transport",
+              href: "#/browse/driving"
+            },
+            {
+              text: "Driving licences",
+              href: "#/browse/driving/driving-licences"
+            }
+          ]
+        }) }}
+
+        <h1 class="heading-xlarge">
+         {{ pageTitle }}
+        </h1>
+
+        <p>Renew your driving licence online with DVLA if you have a valid UK passport.</p>
+
+        {{ govukInsetText({
+          html: "There’s a different way to <a href='#'>renew your licence if you’re 70 or over</a> and <a href='#'>renew a 5-year bus or lorry licence</a>."
+        }) }}
+
+        <a class="button button-start govuk-!-margin-top-2 govuk-!-margin-bottom-8" href="#" role="button">Start now</a>
+
+        {% set moreInformationHTML %}
+
+          <p>You must renew a photocard licence every 10 years - you’ll receive a reminder before your current licence ends.</p>
+
+          <h2 class="heading-medium">What you need</h2>
+
+          <p>To renew online, you need:</p>
+
+          <ul class="list list-bullet">
+            <li>a valid UK passport</li>
+            <li>to be a resident of Great Britain - there’s a different service in <a href="http://www.nidirect.gov.uk/index/information-and-services/motoring/driver-licensing/need-a-new-or-updated-licence/renewing-your-driving-licence.htm">Northern Ireland</a>
+            </li>
+            <li>to pay £14 by MasterCard, Visa, Electron or Delta debit or credit card (there’s no fee if you’re over 70 or have a medical short period licence)</li>
+            <li>addresses of where you’ve lived over the last 3 years</li>
+            <li>your current driving licence (if you do not have your licence you must say why in your application)</li>
+            <li>your National Insurance number (if you know it)</li>
+            <li>to not be disqualified from driving</li>
+          </ul>
+
+          <h2 class="heading-medium">How long it takes</h2>
+
+          <p>Your driving licence should arrive within a week if you apply online.</p>
+
+          {{ govukInsetText({
+            html: "You must send your old photocard licence to DVLA when you get your new licence. You’ll be told the address to use when you finish the application."
+          }) }}
+
+          <p>Your new licence will be valid from the date your application is approved, not from the expiry date of your current licence.</p>
+
+          <h2 class="heading-medium">Personal data</h2>
+
+          <p>DVLA will send you a confirmation email once you’ve applied. You might be asked to take part in research by email, but you can opt out.</p>
+        {% endset %}
+
+        {% set otherWaysToApplyHTML %}
+          <h2 class="heading-medium govuk-!-margin-top-1">Apply at a Post Office</h2>
+
+          <p>You’ll get a reminder letter in the post. Take it to a <a href="http://www.postoffice.co.uk/branch-finder">Post Office</a> that deals with DVLA photocard licence renewal.</p>
+
+          <p>You also need to take:</p>
+
+          <ul class="list list-bullet">
+            <li>your photocard licence if you have it</li>
+            <li>the £21.50 fee</li>
+          </ul>
+
+          <p>If you do not have a reminder letter, you’ll need your photocard licence to apply at the Post Office.</p>
+
+          {{ govukInsetText({
+            html: "You cannot apply at the Post Office if your name has changed. You’ll need to apply by post."
+          }) }}
+
+          <h2 class="heading-medium">Apply by post</h2>
+
+          <p><a href="https://forms.dft.gov.uk/order-dvla-forms/">Order a ‘D1 pack’ of forms</a> from DVLA or get one from a <a href="http://www.postoffice.co.uk/branch-finder">Post Office</a> that deals with DVLA photocard renewal or vehicle tax.</p>
+
+          <p>You need to include these things with your completed forms:</p>
+
+          <ul class="list list-bullet">
+            <li>a recent <a href="/photos-for-passports">passport type photo</a> (do not sign the back of the photo)</li>
+            <li>your current photocard licence, if you have it</li>
+            <li>a cheque or postal order for £17, payable to DVLA (no fee is needed if you have a medical short period licence or you’re aged 70 or over)</li>
+          </ul>
+
+          <p>You also need to include <a href="#">identity documents</a> if you’ve changed your name.</p>
+
+          <h2 class="heading-medium">After you apply at a Post Office or by post</h2>
+          <p>Your driving licence should arrive within 3 weeks. It might take longer if your medical or personal details need to be checked.</p>
+
+          <p>You can continue driving while you wait for your new licence to arrive.</p>
+
+        {% endset %}
+
+        {{ govukTabs({
+          items: [
+            {
+              label: "More information",
+              id: "more-information",
+              panel: {
+                html: moreInformationHTML
+              }
+            },
+            {
+              label: "Other ways to apply",
+              id: "other-ways-to-apply",
+              panel: {
+                html: otherWaysToApplyHTML
+              }
+            }
+          ]
+        }) }}
+      </div>
+    </div>
+  </main>
+
+{% endblock %}
+
+{% block body_end %}
+  <script src="/public/all.js"></script>
+  <script>window.GOVUKFrontend.initAll()</script>
+{% endblock %}
