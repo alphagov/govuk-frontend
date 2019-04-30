@@ -35,18 +35,21 @@
 
   .sdn-feedbackbar__useful,
   .sdn-feedbackbar__foundbug {
-    display: flex;
     flex-wrap: wrap;
     @include govuk-media-query($until: tablet) {
       flex-direction: column;
     }
   }
-
-  .sdn-feedbackbar__useful-question {
-    @include govuk-media-query($from: tablet) {
-      margin-right: govuk-spacing(3);
+  
+  .sdn-feedbackbar__foundbug {
+    @include govuk-media-query($until: tablet) {
+      margin-top: govuk-spacing(1);
     }
   }
+  
+  .sdn-feedbackbar__useful-question {
+      margin-right: govuk-spacing(3);
+    }
 
   .sdn-feedbackbar__yes,
   .sdn-feedbackbar__no {
