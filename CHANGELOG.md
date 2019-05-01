@@ -120,6 +120,15 @@
 
   ([PR #1287](https://github.com/alphagov/govuk-frontend/pull/1287))
 
+- Fixes govuk-template focussed link colour overriding govuk-frontends
+
+  govuk-template uses specific css selector`a:link:focus` whereas
+  govuk-frontend uses `.govuk-link:focus`. This fix makes govuk-frontend
+  selector more specific `.govuk-link:link:focus` but only when compatibility
+  mode is being used.
+
+  ([PR #1310](https://github.com/alphagov/govuk-frontend/pull/1310))
+
 [compatibility mode]: https://github.com/alphagov/govuk-frontend/blob/master/docs/installation/installing-with-npm.md#compatibility-mode
 
 ## 2.11.0 (Feature release)
