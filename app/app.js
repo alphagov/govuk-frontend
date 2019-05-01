@@ -177,7 +177,9 @@ module.exports = (options) => {
 
   // Example view
   app.get('/examples/:example', function (req, res, next) {
-    res.render(`${req.params.example}/index`, function (error, html) {
+    // Passing a random number used for the links so that they will be unique and not display as "visited"
+    const randomPageHash = (Math.random() * 1000000).toFixed()
+    res.render(`${req.params.example}/index`, { randomPageHash }, function (error, html) {
       if (error) {
         next(error)
       } else {
