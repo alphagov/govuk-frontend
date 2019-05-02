@@ -125,6 +125,7 @@ examples:
 
 - name: with id and name
   data:
+    name: with-id-and-name
     fieldset:
       legend:
         text: What is your nationality?
@@ -341,6 +342,7 @@ examples:
 
 - name: with conditional items
   data:
+    name: with-conditional-items
     idPrefix: how-contacted
     fieldset:
       legend:
@@ -367,6 +369,7 @@ examples:
 
 - name: with conditional item checked
   data:
+    name: how-contacted-checked
     idPrefix: how-contacted-checked
     fieldset:
       legend:
@@ -394,6 +397,7 @@ examples:
 
 - name: with optional form-group classes showing group error
   data:
+    name: how-contacted-checked
     idPrefix: how-contacted-checked
     formGroup:
       classes: 'govuk-form-group--error'
@@ -526,6 +530,7 @@ examples:
 
 - name: small with conditional reveal
   data:
+    name: how-contacted
     idPrefix: how-contacted
     classes: govuk-checkboxes--small
     fieldset:
