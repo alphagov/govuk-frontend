@@ -109,6 +109,30 @@ describe('footer', () => {
       expect($custom.text()).toContain('GOV.UK Prototype Kit v7.0.1')
     })
 
+    it('renders custom licence text', () => {
+      const $ = render('footer', {
+        licence: {
+          text: 'GOV.UK Licence'
+        }
+      })
+
+      const $component = $('.govuk-footer')
+      const $custom = $component.find('.govuk-footer__licence-description')
+      expect($custom.text()).toContain('GOV.UK Licence')
+    })
+
+    it('renders custom licence text', () => {
+      const $ = render('footer', {
+        licence: {
+          html: 'GOV.UK Licence'
+        }
+      })
+
+      const $component = $('.govuk-footer')
+      const $custom = $component.find('.govuk-footer__licence-description')
+      expect($custom.text()).toContain('GOV.UK Licence')
+    })
+
     it('renders attributes on meta links', () => {
       const $ = render('footer', {
         meta: {

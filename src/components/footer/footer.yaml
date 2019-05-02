@@ -57,6 +57,28 @@ params:
       type: object
       required: false
       description: HTML attributes (for example data attributes) to add to the anchor in the footer navigation section.
+- name: licence
+  type: object
+  required: false
+  description: License Text
+  params:
+  - name: html
+    type: string
+    description: HTML licence section of the footer.
+  - name: text
+    type: string
+    description: Text licence section of the footer.
+- name: copyright
+  type: object
+  required: false
+  description: License Text
+  params:
+  - name: html
+    type: string
+    description: HTML copyright section of the footer.
+  - name: text
+    type: string
+    description: Text copyright section of the footer.
 - name: containerClasses
   type: string
   required: false
@@ -124,6 +146,16 @@ examples:
   data:
     meta:
       text: GOV.UK Prototype Kit v7.0.1
+
+- name: with custom licence text
+  description: Custom licence section
+  data:
+    licence: GOVUK Licence
+
+- name: with custom copyright text
+  description: Custom copyright section
+  data:
+    logoText: Copyright
 
 - name: with meta links and meta content
   description: Secondary navigation links and custom meta text
