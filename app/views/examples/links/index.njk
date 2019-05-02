@@ -42,7 +42,7 @@
 
       {% for state_description, state_class in states %}
         <p class="govuk-body">
-          <a href="/" class="govuk-link {{ variant_class }} {{ state_class }}">
+          <a href="/#{{ randomPageHash }}" class="govuk-link {{ variant_class }} {{ state_class }}">
             {{ state_description}}
           </a>
         </p>
