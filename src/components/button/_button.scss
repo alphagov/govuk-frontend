@@ -81,25 +81,25 @@
       border: 0;
     }
 
-    &:focus {
-      // !important is used to ensure that when the user hovers over a focussed button
-      // it does not change background/Text colour
-      color: govuk-colour("black") !important;
-      background-color: govuk-colour("yellow") !important;
-      box-shadow: 0 4px 0 govuk-colour("black");
-    }
-
+    // Ordering of this pseudo selector is important to ensure
+    // It replaces hover state when element is focussed and mouse is hovering
     &:hover {
       color: govuk-colour("white");
       background-color: $govuk-button-hover-colour;
     }
 
-    &:active {
+    // Ordering of this pseudo selector is important to ensure
+    // It replaces hover state when element is focussed and mouse is hovering
+    &:focus {
+      color: govuk-colour("black");
+      background-color: govuk-colour("yellow");
+      box-shadow: 0 4px 0 govuk-colour("black");
+    }
 
+    &:active {
       border: $govuk-border-width-form-element solid govuk-colour("yellow");
-      // !important is used to overwrite the :focus !important colour
-      color: govuk-colour("white") !important;
-      background-color: $govuk-button-hover-colour !important;
+      color: govuk-colour("white");
+      background-color: $govuk-button-hover-colour;
       box-shadow: inset 0 0 0 1px govuk-colour("yellow");
 
       @include govuk-if-ie8 {
