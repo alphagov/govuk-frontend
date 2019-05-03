@@ -38,6 +38,7 @@
     padding: (govuk-spacing(2) - $govuk-border-width-form-element - ($button-shadow-size / 2)) govuk-spacing(2); // s1
     border: $govuk-border-width-form-element solid transparent;
     border-radius: 0;
+    outline: $govuk-focus-width solid transparent !important;
     color: $govuk-button-text-colour;
     background-color: $govuk-button-colour;
     box-shadow: 0 $button-shadow-size 0 $govuk-button-shadow-colour; // s0
@@ -80,14 +81,26 @@
       border: 0;
     }
 
-    &:hover,
     &:focus {
+      // !important is used to ensure that when the user hovers over a focussed button
+      // it does not change background/Text colour
+      color: govuk-colour("black") !important;
+      background-color: govuk-colour("yellow") !important;
+      box-shadow: 0 4px 0 govuk-colour("black");
+    }
+
+    &:hover {
+      color: govuk-colour("white");
       background-color: $govuk-button-hover-colour;
     }
 
     &:active {
-      top: $button-shadow-size;
-      box-shadow: none;
+
+      border: $govuk-border-width-form-element solid govuk-colour("yellow");
+      // !important is used to overwrite the :focus !important colour
+      color: govuk-colour("white") !important;
+      background-color: $govuk-button-hover-colour !important;
+      box-shadow: inset 0 0 0 1px govuk-colour("yellow");
 
       @include govuk-if-ie8 {
         border-bottom-width: 0;
