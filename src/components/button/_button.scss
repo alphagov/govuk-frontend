@@ -192,6 +192,14 @@
     &:focus {
       background-color: $govuk-secondary-button-hover-colour;
     }
+
+    // Ordering of this pseudo selector is important to ensure
+    // It replaces hover state when element is focussed and mouse is hovering
+    &:focus {
+      color: govuk-colour("black");
+      background-color: govuk-colour("yellow");
+      box-shadow: 0 4px 0 govuk-colour("black");
+    }
   }
 
   .govuk-button--warning {
@@ -220,6 +228,14 @@
     &:hover,
     &:focus {
       background-color: $govuk-warning-button-hover-colour;
+    }
+
+    // Ordering of this pseudo selector is important to ensure
+    // It replaces hover state when element is focussed and mouse is hovering
+    &:focus {
+      color: govuk-colour("black");
+      background-color: govuk-colour("yellow");
+      box-shadow: 0 4px 0 govuk-colour("black");
     }
   }
 
