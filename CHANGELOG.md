@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## Template
 
 💥 Breaking changes:
 
@@ -27,6 +27,16 @@
   Description goes here (optional)
 
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+
+## Unreleased
+
+🔧 Fixes:
+
+- Update colour for MHCLG
+
+  Fixes the brand colour for MHCLG to their correct corporate "green" brand.
+
+  ([PR #1319](https://github.com/alphagov/govuk-frontend/pull/1319))
 
 ## 2.11.0 (Feature release)
 
