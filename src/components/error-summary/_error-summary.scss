@@ -38,7 +38,7 @@
   }
 
   .govuk-error-summary__list a {
-    @include govuk-focusable-fill;
+    @include govuk-focusable-text-link;
     @include govuk-typography-weight-bold;
 
     // Override default link styling to use error colour
@@ -53,15 +53,6 @@
     // contrast is still acceptable
     &:focus {
       color: $govuk-focus-text-colour;
-    }
-
-    // alphagov/govuk_template includes a specific a:link:focus selector
-    // designed to make unvisited links a slightly darker blue when focussed, so
-    // we need to override the text colour for that combination of selectors.
-    @include govuk-compatibility(govuk_template) {
-      &:link:focus {
-        color: $govuk-error-colour;
-      }
     }
   }
 
