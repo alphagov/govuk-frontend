@@ -3,37 +3,18 @@
   padding-bottom: govuk-spacing(6);
   overflow: hidden;
   @include govuk-font($size: 36, $line-height: 1.5)
-  font-family: sans-serif;
-
-  .app-banner__button {
-    margin-bottom: 0;
-  }
 
   .govuk-body {
     color: inherit;
     font-size: inherit;
   }
 
-  .govuk-link {
-    color: govuk-colour("white");
-  }
-
-  .govuk-link:focus {
-    color: $govuk-text-colour;
+  .govuk-link:not(:focus) {
+    color: inherit;
   }
 }
 
 .app-banner--warning {
   color: govuk-colour("white");
   background: govuk-colour("red");
-
-  .app-banner__button,
-  .app-banner__button:active,
-  .app-banner__button:hover,
-  .app-banner__button:focus {
-    margin-bottom: 0;
-    color: $govuk-text-colour;
-    background: govuk-colour("white");
-    box-shadow: 0 2px 0 $govuk-text-colour;
-  }
 }
