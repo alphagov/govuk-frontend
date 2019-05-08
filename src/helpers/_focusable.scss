@@ -33,6 +33,29 @@
   }
 }
 
+@mixin govuk-focusable-text {
+  // When colours are overridden, for example when users have a dark mode,
+  // backgrounds and box-shadows disappear, so we need to ensure there's a
+  // transparent outline which will be set to a visible colour.
+
+  // Since Internet Explorer 8 does not support box-shadow, we want to force the user-agent outlines
+  @include govuk-not-ie8 {
+    outline: $govuk-focus-width solid transparent;
+    outline-offset: 0;
+  }
+  color: $govuk-text-colour;
+  background-color: $govuk-focus-colour;
+  // sass-lint:disable indentation
+  box-shadow: -5px -1px 0 1px $govuk-focus-colour,
+              5px -1px 0 1px $govuk-focus-colour,
+              -3px 1px 0 3px $govuk-text-colour,
+              3px 1px 0 3px $govuk-text-colour;
+  // sass-lint:enable indentation
+  // When link is focussed, hide the default underline since the
+  // box shadow adds the "underline"
+  text-decoration: none;
+}
+
 /// Focusable with box-shadow
 ///
 /// Removes the visible outline and replace with box-shadow and background colour.
@@ -42,25 +65,6 @@
 
 @mixin govuk-focusable-text-link {
   &:focus {
-    // When colours are overridden, for example when users have a dark mode,
-    // backgrounds and box-shadows disappear, so we need to ensure there's a
-    // transparent outline which will be set to a visible colour.
-
-    // Since Internet Explorer 8 does not support box-shadow, we want to force the user-agent outlines
-    @include govuk-not-ie8 {
-      outline: $govuk-focus-width solid transparent;
-      outline-offset: 0;
-    }
-    color: $govuk-text-colour;
-    background-color: $govuk-focus-colour;
-    // sass-lint:disable indentation
-    box-shadow: -5px -1px 0 1px $govuk-focus-colour,
-                5px -1px 0 1px $govuk-focus-colour,
-                -3px 1px 0 3px $govuk-text-colour,
-                3px 1px 0 3px $govuk-text-colour;
-    // sass-lint:enable indentation
-    // When link is focussed, hide the default underline since the
-    // box shadow adds the "underline"
-    text-decoration: none;
+    @include govuk-focusable-text;
   }
 }
