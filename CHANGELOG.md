@@ -16,6 +16,12 @@
 
   ([PR #1312](https://github.com/alphagov/govuk-frontend/pull/1312))
 
+- Update footer links to use new focus style
+
+  To migrate: [TODO add migration instructions before we ship v3.0.0]
+
+  ([PR #1321](https://github.com/alphagov/govuk-frontend/pull/1321))
+
 - Update links (and things that look like links) to use the new focus style
 
   To migrate: [TODO add migration instructions before we ship v3.0.0]
