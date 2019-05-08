@@ -130,3 +130,16 @@ examples:
             <ul class="govuk-list govuk-list--bullet">
               <li>Example item 2</li>
             </ul>
+
+- name: with focusable elements inside
+  data:
+    id: with-focusable-elements
+    items:
+      - heading:
+          text: Section A
+        content:
+          html: <a class="govuk-link" href="#">Link A</a>
+      - heading:
+          text: Section B
+        content:
+          html: <a class="govuk-link" href="#">Link B</a>
