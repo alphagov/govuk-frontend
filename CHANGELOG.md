@@ -5,6 +5,12 @@
 See the [versioning documentation for how to update this
 changelog](./docs/contributing/versioning.md#updating-changelog).
 
+- Update form inputs to use new WCAG 2.1 compliant focus style
+
+  To migrate: [TODO add migration instructions before we ship v3.0.0]
+
+  ([PR #1312](https://github.com/alphagov/govuk-frontend/pull/13))
+
 - Update links (and things that look like links) to use the new focus style
 
   To migrate: [TODO add migration instructions before we ship v3.0.0]
