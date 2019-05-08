@@ -22,6 +22,10 @@
 
 🔧 Fixes:
 
+- Remove deprecated `@else-if` statement, replace with `@else if`
+
+  ([PR #1333](https://github.com/alphagov/govuk-frontend/pull/1333))
+
 - Pull Request Title goes here
 
   Description goes here (optional)
