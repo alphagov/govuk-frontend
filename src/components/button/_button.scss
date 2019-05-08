@@ -93,10 +93,14 @@
     &:focus {
       color: govuk-colour("black");
       background-color: govuk-colour("yellow");
-      box-shadow: 0 4px 0 govuk-colour("black");
+      box-shadow: 0 2px 0 govuk-colour("black");
     }
 
     &:active {
+      // Bump the button down by 2px so it looks like its being pressed in
+      position: relative;
+      top: 2px;
+
       border: $govuk-border-width-form-element solid govuk-colour("yellow");
       color: govuk-colour("white");
       background-color: $govuk-button-hover-colour;
@@ -198,7 +202,7 @@
     &:focus {
       color: govuk-colour("black");
       background-color: govuk-colour("yellow");
-      box-shadow: 0 4px 0 govuk-colour("black");
+      box-shadow: 0 2px 0 govuk-colour("black");
     }
   }
 
@@ -235,7 +239,7 @@
     &:focus {
       color: govuk-colour("black");
       background-color: govuk-colour("yellow");
-      box-shadow: 0 4px 0 govuk-colour("black");
+      box-shadow: 0 2px 0 govuk-colour("black");
     }
   }
 
