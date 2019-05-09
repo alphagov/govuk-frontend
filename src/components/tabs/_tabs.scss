@@ -84,7 +84,11 @@
         color: govuk-colour("black");
         background-color: govuk-colour("light-grey", $legacy: "grey-4");
         text-align: center;
-        text-decoration: none;
+        text-decoration: underline;
+
+        &:hover {
+          box-shadow: inset 0 4px 0 0 govuk-colour("light-blue");
+        }
 
         &--selected {
           margin-top: - govuk-spacing(1);
@@ -96,13 +100,18 @@
           padding-bottom: govuk-spacing(3) + 1px;
           padding-left: govuk-spacing(4) - 1px;
 
-          border: 1px solid $govuk-border-colour;
-          border-bottom: 0;
+          border-top: 1px solid transparent;
+          border-right: 1px solid $govuk-border-colour;
+          border-bottom: 1px solid transparent;
+          border-left: 1px solid $govuk-border-colour;
+
           color: govuk-colour("black");
           background-color: govuk-colour("white");
+          box-shadow: inset 0 4px 0 0 govuk-colour("blue");
+          text-decoration: none;
 
           &:focus {
-            background-color: transparent;
+            box-shadow: inset 0 4px 0 0 govuk-colour("yellow"), inset 0 8px 0 0 govuk-colour("black");
           }
         }
       }
