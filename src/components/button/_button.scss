@@ -91,9 +91,9 @@
     // It replaces hover state when element is focussed and mouse is hovering
     &:focus {
       outline-color: transparent;
-      color: govuk-colour("black");
-      background-color: govuk-colour("yellow");
-      box-shadow: 0 2px 0 govuk-colour("black");
+      color: $govuk-focus-text-colour;
+      background-color: $govuk-focus-colour;
+      box-shadow: 0 2px 0 $govuk-focus-text-colour;
     }
 
     &:active {
@@ -101,10 +101,10 @@
       position: relative;
       top: 2px;
 
-      border: $govuk-border-width-form-element solid govuk-colour("yellow");
-      color: govuk-colour("white");
+      border: $govuk-border-width-form-element solid $govuk-focus-colour;
+      color: $govuk-button-text-colour;
       background-color: $govuk-button-hover-colour;
-      box-shadow: inset 0 0 0 1px govuk-colour("yellow");
+      box-shadow: inset 0 0 0 1px $govuk-focus-colour;
 
       @include govuk-if-ie8 {
         border-bottom-width: 0;
@@ -192,17 +192,16 @@
       }
     }
 
-    &:hover,
-    &:focus {
+    &:hover {
       background-color: $govuk-secondary-button-hover-colour;
     }
 
     // Ordering of this pseudo selector is important to ensure
     // It replaces hover state when element is focussed and mouse is hovering
     &:focus {
-      color: govuk-colour("black");
-      background-color: govuk-colour("yellow");
-      box-shadow: 0 2px 0 govuk-colour("black");
+      color: $govuk-focus-text-colour;
+      background-color: $govuk-focus-colour;
+      box-shadow: 0 2px 0 $govuk-focus-text-colour;
     }
   }
 
@@ -229,17 +228,16 @@
       }
     }
 
-    &:hover,
-    &:focus {
+    &:hover {
       background-color: $govuk-warning-button-hover-colour;
     }
 
     // Ordering of this pseudo selector is important to ensure
     // It replaces hover state when element is focussed and mouse is hovering
     &:focus {
-      color: govuk-colour("black");
-      background-color: govuk-colour("yellow");
-      box-shadow: 0 2px 0 govuk-colour("black");
+      color: $govuk-focus-text-colour;
+      background-color: $govuk-focus-colour;
+      box-shadow: 0 2px 0 $govuk-focus-text-colour;
     }
   }
 
