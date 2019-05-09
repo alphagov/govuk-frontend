@@ -38,10 +38,8 @@
 
 {%- if element == 'a' %}
 <a href="{{ params.href if params.href else '#' }}" role="button" draggable="false" {{- commonAttributes | safe }}>
-  <span style="display:inline-block">
   {{ params.html | safe if params.html else params.text }}
   {{ iconMarkUp  | safe }}
-  </span>
 </a>
 
 {%- elseif element == 'button' %}
