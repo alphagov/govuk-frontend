@@ -86,21 +86,40 @@
         text-align: center;
         text-decoration: underline;
 
+        @include govuk-if-ie8 {
+          // IE8 doesn't support `box-shadow` so add an actual border that is
+          // modified to indicate state.
+          border-top: 4px solid transparent;
+        }
+
         &:hover {
           box-shadow: inset 0 4px 0 0 govuk-colour("light-blue");
+
+          @include govuk-if-ie8 {
+            border-top: 4px solid govuk-colour("light-blue");
+          }
         }
 
         &--selected {
+          $top-border-width: 1px;
+          $top-border-adjustment: 1px;
+
+          @include govuk-if-ie8 {
+            // IE8 already has a top border so no adjustment is needed
+            $top-border-width: 4px;
+            $top-border-adjustment: 0;
+          }
+
           margin-top: - govuk-spacing(1);
           margin-bottom: -1px;
 
           // 1px is compensation for border (otherwise we get a 1px shift)
-          padding-top: govuk-spacing(3) - 1px;
+          padding-top: govuk-spacing(3) - $top-border-adjustment;
           padding-right: govuk-spacing(4) - 1px;
           padding-bottom: govuk-spacing(3) + 1px;
           padding-left: govuk-spacing(4) - 1px;
 
-          border-top: 1px solid transparent;
+          border-top: $top-border-width solid transparent;
           border-right: 1px solid $govuk-border-colour;
           border-bottom: 1px solid transparent;
           border-left: 1px solid $govuk-border-colour;
@@ -110,8 +129,16 @@
           box-shadow: inset 0 4px 0 0 govuk-colour("blue");
           text-decoration: none;
 
+          @include govuk-if-ie8 {
+            border-top: 4px solid govuk-colour("blue");
+          }
+
           &:focus {
             box-shadow: inset 0 4px 0 0 govuk-colour("yellow"), inset 0 8px 0 0 govuk-colour("black");
+
+            @include govuk-if-ie8 {
+              border-top: 4px solid govuk-colour("black");
+            }
           }
         }
       }
