@@ -13,16 +13,14 @@
 
   .govuk-tabs__title {
     @include govuk-font($size: 19);
-    margin-bottom: govuk-spacing(1);
+    margin-bottom: govuk-spacing(2);
   }
 
   .govuk-tabs__list {
     margin: 0;
     padding: 0;
     list-style: none;
-    @include mq($until: tablet) {
-      @include govuk-responsive-margin(6, "bottom");
-    }
+    @include govuk-responsive-margin(6, "bottom");
   }
 
   .govuk-tabs__list-item {
@@ -41,8 +39,7 @@
     @include govuk-font($size: 19);
 
     display: inline-block;
-    padding-top: govuk-spacing(2);
-    padding-bottom: govuk-spacing(2);
+    margin-bottom: govuk-spacing(2);
 
     &[aria-current = "true"] {
       color: govuk-colour("black");
@@ -61,6 +58,7 @@
 
       .govuk-tabs__list {
         @include govuk-clearfix;
+        margin-bottom: 0;
         border-bottom: 1px solid $govuk-border-colour;
       }
 
@@ -85,6 +83,12 @@
         background-color: govuk-colour("light-grey", $legacy: "grey-4");
         text-align: center;
         text-decoration: underline;
+
+        @include mq($from: tablet) {
+          margin-bottom: 0;
+          padding-top: govuk-spacing(2);
+          padding-bottom: govuk-spacing(2);
+        }
 
         @include govuk-if-ie8 {
           // IE8 doesn't support `box-shadow` so add an actual border that is
