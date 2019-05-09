@@ -1,5 +1,16 @@
-{# Determine type of element to use, if not explicitly set -#}
+{# Set classes for this component #}
+{% set classNames = "govuk-button" %}
 
+
+{% if params.classes %}
+  {% set classNames = classNames + " " + params.classes %}
+{% endif %}
+{% if params.disabled %}
+  {% set classNames = classNames + " govuk-button--disabled" %}
+{% endif %}
+
+
+{# Determine type of element to use, if not explicitly set -#}
 {% if params.element %}
   {% set element = params.element | lower %}
 {% else %}
@@ -10,9 +21,14 @@
   {% endif %}
 {% endif %}
 
+{% if params.isStartButton %}
+  {% set iconMarkUp = '<svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" height="19px" width="30px"><path fill="currentColor" d="M7.5 0H0l10 10L0 20h7.5l10-10-10-10z"/></svg>' %}
+  {% set classNames = classNames + " govuk-button--start" %}
+{% endif %}
+
 {#- Define common attributes that we can use across all element types #}
 
-{%- set commonAttributes %} class="govuk-button{% if params.classes %} {{ params.classes }}{% endif %}{% if params.disabled %} govuk-button--disabled{% endif %}"{% for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}{% endset %}
+{%- set commonAttributes %} class="{{ classNames }}" {% for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}{% endset %}
 
 {#- Define common attributes we can use for both button and input types #}
 
@@ -22,12 +38,16 @@
 
 {%- if element == 'a' %}
 <a href="{{ params.href if params.href else '#' }}" role="button" draggable="false" {{- commonAttributes | safe }}>
+  <span style="display:inline-block">
   {{ params.html | safe if params.html else params.text }}
+  {{ iconMarkUp  | safe }}
+  </span>
 </a>
 
 {%- elseif element == 'button' %}
 <button {%- if params.value %} value="{{ params.value }}"{% endif %} {{- buttonAttributes | safe }} {{- commonAttributes | safe }}>
   {{ params.html | safe if params.html else params.text }}
+  {{ iconMarkUp | safe }}
 </button>
 
 {%- elseif element == 'input' %}
