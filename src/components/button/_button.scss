@@ -38,7 +38,6 @@
     padding: (govuk-spacing(2) - $govuk-border-width-form-element - ($button-shadow-size / 2)) govuk-spacing(2); // s1
     border: $govuk-border-width-form-element solid transparent;
     border-radius: 0;
-    outline: $govuk-focus-width solid transparent !important;
     color: $govuk-button-text-colour;
     background-color: $govuk-button-colour;
     box-shadow: 0 $button-shadow-size 0 $govuk-button-shadow-colour; // s0
@@ -71,6 +70,7 @@
     // text when focussed.
     @include govuk-compatibility(govuk_template) {
       &:link:focus {
+        outline-color: transparent;
         color: $govuk-button-text-colour;
       }
     }
@@ -84,13 +84,13 @@
     // Ordering of this pseudo selector is important to ensure
     // It replaces hover state when element is focussed and mouse is hovering
     &:hover {
-      color: govuk-colour("white");
       background-color: $govuk-button-hover-colour;
     }
 
     // Ordering of this pseudo selector is important to ensure
     // It replaces hover state when element is focussed and mouse is hovering
     &:focus {
+      outline-color: transparent;
       color: govuk-colour("black");
       background-color: govuk-colour("yellow");
       box-shadow: 0 2px 0 govuk-colour("black");
