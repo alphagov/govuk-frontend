@@ -245,19 +245,17 @@
     @include govuk-typography-weight-bold;
     @include govuk-typography-responsive($size: 24, $override-line-height: 1);
 
+    position: relative;
     min-height: auto;
+
     padding-top: govuk-spacing(2) - $govuk-border-width-form-element;
-    padding-right: govuk-spacing(7);
     padding-bottom: govuk-spacing(2) - $govuk-border-width-form-element;
     padding-left: govuk-spacing(3);
 
-    background-image: govuk-image-url("icon-pointer.png");
-    background-repeat: no-repeat;
-    background-position: 100% 50%;
-
-    @include govuk-device-pixel-ratio {
-      background-image: govuk-image-url("icon-pointer-2x.png");
-      background-size: 30px 19px;
+    svg {
+      top: 50%;
+      bottom: 50%;
+      margin-bottom: -5px;
     }
   }
 
