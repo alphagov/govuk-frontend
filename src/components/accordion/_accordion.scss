@@ -83,6 +83,7 @@
       color: $govuk-link-colour;
       background: none;
       cursor: pointer;
+      -webkit-appearance: none;
 
       @include govuk-link-common;
       @include govuk-link-style-default;
@@ -123,15 +124,13 @@
       }
     }
 
-    // Setting focus styles on header so that summary that is not part of the button is included in focus
-    .govuk-accordion__section-header--focused {
-      // These replicate @mixin govuk-focusable (the mixin can't be used as the header doesn't get the focus)
-      outline: $govuk-focus-width solid transparent;
-      outline-offset: 0;
-    }
-
     .govuk-accordion__section--expanded .govuk-accordion__section-header--focused {
       border-top-color: $govuk-focus-colour;
+      // When colours are overridden, for example when users have a dark mode,
+      // backgrounds and box-shadows disappear, so we need to ensure there's a
+      // transparent outline which will be set to a visible colour.
+      outline: $govuk-focus-width solid transparent;
+      outline-offset: 0;
       color: $govuk-text-colour;
       // sass-lint:disable indentation
       box-shadow: inset 0 $govuk-accordion-border-width 0 0 $govuk-focus-colour,
@@ -151,6 +150,7 @@
       background: none;
       text-align: left;
       cursor: pointer;
+      -webkit-appearance: none;
 
       @include govuk-not-ie8 {
         &:focus {
