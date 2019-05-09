@@ -125,7 +125,9 @@
     }
 
     .govuk-accordion__section--expanded .govuk-accordion__section-header--focused {
-      border-top-color: $govuk-focus-colour;
+      @include govuk-not-ie8 {
+        border-top-color: $govuk-focus-colour;
+      }
       // When colours are overridden, for example when users have a dark mode,
       // backgrounds and box-shadows disappear, so we need to ensure there's a
       // transparent outline which will be set to a visible colour.
@@ -152,10 +154,10 @@
       cursor: pointer;
       -webkit-appearance: none;
 
-      @include govuk-not-ie8 {
+      @include govuk-if-ie8 {
         &:focus {
-          outline: none;
-          background: none;
+          color: $govuk-text-colour;
+          background: $govuk-focus-colour;
         }
       }
 
