@@ -130,3 +130,25 @@ examples:
             <ul class="govuk-list govuk-list--bullet">
               <li>Example item 2</li>
             </ul>
+
+- name: with custom open and close html
+  data:
+    id: custom-open-close-html
+    attributes:
+      data-open-all-html: Custom open <b>html</b>
+      data-close-all-html: Custom close <b>html</b>
+    items:
+      - heading:
+          text: Section A
+        content:
+          html: |
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Example item 1</li>
+            </ul>
+      - heading:
+          text: Section B
+        content:
+          html: |
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Example item 2</li>
+            </ul>

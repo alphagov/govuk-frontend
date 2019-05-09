@@ -144,6 +144,28 @@ describe('/components/accordion', () => {
           expect(numberOfIcons).toEqual(numberOfExampleSections)
         })
       })
+
+      describe('with custom open and cllose html', () => {
+        it('should change display the custom Open all button', async () => {
+          await page.goto(baseUrl + '/components/accordion/with-custom-open-and-close-html/preview', { waitUntil: 'load' })
+
+          var openOrCloseAllButtonText = await page.evaluate(() => document.body.querySelector('.govuk-accordion__open-all').textContent)
+
+          expect(openOrCloseAllButtonText).toEqual('Custom open html')
+        })
+
+        it('should change display the custom Close all button', async () => {
+          await page.goto(baseUrl + '/components/accordion/with-custom-open-and-close-html/preview', { waitUntil: 'load' })
+
+          await page.click('.govuk-accordion .govuk-accordion__section:nth-of-type(2) .govuk-accordion__section-header')
+
+          await page.click('.govuk-accordion .govuk-accordion__section:nth-of-type(3) .govuk-accordion__section-header')
+
+          var openOrCloseAllButtonText = await page.evaluate(() => document.body.querySelector('.govuk-accordion__open-all').textContent)
+
+          expect(openOrCloseAllButtonText).toEqual('Custom close html')
+        })
+      })
     })
   })
 })

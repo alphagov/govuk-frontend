@@ -55,9 +55,15 @@ Accordion.prototype.init = function () {
 // Initialise controls and set attributes
 Accordion.prototype.initControls = function () {
   // Create "Open all" button and set attributes
+  this.buttonText = {
+    openAll: this.$module.getAttribute('data-open-all-html') ||
+      'Open all <span class="govuk-visually-hidden">sections</span>',
+    closeAll: this.$module.getAttribute('data-close-all-html') ||
+      'Close all <span class="govuk-visually-hidden">sections</span>'
+  }
   this.$openAllButton = document.createElement('button')
   this.$openAllButton.setAttribute('type', 'button')
-  this.$openAllButton.innerHTML = 'Open all <span class="govuk-visually-hidden">sections</span>'
+  this.$openAllButton.innerHTML = this.buttonText.openAll
   this.$openAllButton.setAttribute('class', this.openAllClass)
   this.$openAllButton.setAttribute('aria-expanded', 'false')
   this.$openAllButton.setAttribute('type', 'button')
@@ -197,8 +203,7 @@ Accordion.prototype.checkIfAllSectionsOpen = function () {
 
 // Update "Open all" button
 Accordion.prototype.updateOpenAllButton = function (expanded) {
-  var newButtonText = expanded ? 'Close all' : 'Open all'
-  newButtonText += '<span class="govuk-visually-hidden"> sections</span>'
+  var newButtonText = expanded ? this.buttonText.closeAll : this.buttonText.openAll
   this.$openAllButton.setAttribute('aria-expanded', expanded)
   this.$openAllButton.innerHTML = newButtonText
 }
