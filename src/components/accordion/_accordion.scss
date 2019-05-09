@@ -86,6 +86,12 @@
 
       @include govuk-link-common;
       @include govuk-link-style-default;
+
+      // Remove default button focus outline in Firefox
+      &::-moz-focus-inner {
+        padding: 0;
+        border: 0;
+      }
     }
 
     // Section headers have a pointer cursor as an additional affordance
@@ -151,6 +157,12 @@
           outline: none;
           background: none;
         }
+      }
+
+      // Remove default button focus outline in Firefox
+      &::-moz-focus-inner {
+        padding: 0;
+        border: 0;
       }
     }
 
