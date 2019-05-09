@@ -107,6 +107,14 @@ changelog](./docs/contributing/versioning.md#updating-changelog).
 
   ([PR #1288](https://github.com/alphagov/govuk-frontend/pull/1288))
 
+- Spacing of tabs list updated to be more inline with similar lists on GOV.UK and the Design System
+
+  The tabs headings spacing has changed slightly on on mobile and when Javascript is disabled. See https://github.com/alphagov/govuk-frontend/pull/1330#issuecomment-491233294
+
+  To migrate: In the unlikely event that your app relies on the spacing of the tab headings being a certain height on mobile and with JS disabled, you should make the necessary adjustments in your code.
+
+  ([PR #1330](https://github.com/alphagov/govuk-frontend/pull/1330))
+
 🆕 New features:
 
 - Checkboxes and radios use a new focus state with a thicker border. The
