@@ -44,13 +44,6 @@
   }
 
   .govuk-footer__link {
-    text-decoration: none;
-
-    &:hover,
-    &:active {
-      text-decoration: underline;
-    }
-
     @if ($govuk-use-legacy-palette) {
       &:link,
       &:visited {
@@ -79,6 +72,16 @@
       &:link:focus {
         @include govuk-text-colour;
       }
+    }
+  }
+
+  .govuk-footer__inline-list .govuk-footer__link,
+  .govuk-footer__list .govuk-footer__link {
+    text-decoration: none;
+
+    &:hover,
+    &:active {
+      text-decoration: underline;
     }
   }
 
