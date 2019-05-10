@@ -1,4 +1,18 @@
-{# This example is based of the live "UK bank holidays" page: https://www.gov.uk/bank-holidays #}
+---
+scenario: >-
+  You want to know when the next bank holiday will be.
+
+
+  Things to try:
+
+  1. Find out when the next bank holiday is in Scotland.
+
+  2. Find out when the Boxing Day bank holiday is in 2020.
+
+notes: >-
+  This example is based on https://www.gov.uk/bank-holidays.
+  The data is not 'live' and so the answer is unlikely to be correct.
+---
 {% extends "_generic.njk" %}
 
 {% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
