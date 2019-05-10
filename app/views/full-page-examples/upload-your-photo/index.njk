@@ -1,3 +1,13 @@
+---
+scenario: >-
+  As part of an online service, you are asked to upload your photo.
+
+
+  Things to try:
+
+  1. Intentionally avoid uploading a file and accepting terms and conditions before continuing to the next page.
+---
+
 {# This example is based of the live "Passport" service: https://www.passport.service.gov.uk/photo/upload #}
 {% extends "_generic.njk" %}
 
@@ -52,7 +62,7 @@
             {% if errorSummary.length > 0 %}
                 {{ govukErrorSummary({
                     titleText: "There is a problem",
-                    errorList: errorSummary 
+                    errorList: errorSummary
                 }) }}
             {% endif %}
 

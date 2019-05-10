@@ -1,5 +1,15 @@
-{# This example is based of the  "How do you want to sign in?
-" example: https://www.gov.uk/log-in-file-self-assessment-tax-return/sign-in/prove-identity #}
+---
+scenario: >-
+  As part of an online service, you are asked to select how you want to sign in.
+
+
+  Things to try:
+
+  1. Intentionally avoid answering the question before continuing to the next page.
+
+notes: Based on https://www.gov.uk/log-in-file-self-assessment-tax-return/sign-in/prove-identity
+---
+
 {% extends "_generic.njk" %}
 
 {% from "back-link/macro.njk" import govukBackLink %}
