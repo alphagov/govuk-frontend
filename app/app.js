@@ -39,6 +39,7 @@ module.exports = (options) => {
 
   // make the function available as a filter for all templates
   env.addFilter('componentNameToMacroName', helperFunctions.componentNameToMacroName)
+  env.addGlobal('markdown', require('marked'))
 
   // Set view engine
   app.set('view engine', 'njk')

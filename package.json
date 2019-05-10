@@ -60,6 +60,7 @@
     "jest-serializer-html": "^6.0.0",
     "js-yaml": "^3.13.1",
     "map-stream": "0.0.7",
+    "marked": "^0.6.2",
     "merge-stream": "^1.0.1",
     "node-sass": "^4.11.0",
     "nodemon": "^1.18.11",
