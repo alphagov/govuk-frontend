@@ -70,7 +70,6 @@
     // text when focussed.
     @include govuk-compatibility(govuk_template) {
       &:link:focus {
-        outline-color: transparent;
         color: $govuk-button-text-colour;
       }
     }
@@ -81,14 +80,10 @@
       border: 0;
     }
 
-    // Ordering of this pseudo selector is important to ensure
-    // It replaces hover state when element is focussed and mouse is hovering
     &:hover {
       background-color: $govuk-button-hover-colour;
     }
 
-    // Ordering of this pseudo selector is important to ensure
-    // It replaces hover state when element is focussed and mouse is hovering
     &:focus {
       outline-color: transparent;
       color: $govuk-focus-text-colour;
@@ -196,8 +191,6 @@
       background-color: $govuk-secondary-button-hover-colour;
     }
 
-    // Ordering of this pseudo selector is important to ensure
-    // It replaces hover state when element is focussed and mouse is hovering
     &:focus {
       color: $govuk-focus-text-colour;
       background-color: $govuk-focus-colour;
@@ -232,8 +225,6 @@
       background-color: $govuk-warning-button-hover-colour;
     }
 
-    // Ordering of this pseudo selector is important to ensure
-    // It replaces hover state when element is focussed and mouse is hovering
     &:focus {
       color: $govuk-focus-text-colour;
       background-color: $govuk-focus-colour;
