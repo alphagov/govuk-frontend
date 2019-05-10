@@ -44,7 +44,12 @@
   }
 
   .govuk-footer__link {
-    @include govuk-focusable-fill;
+    text-decoration: none;
+
+    &:hover,
+    &:active {
+      text-decoration: underline;
+    }
 
     @if ($govuk-use-legacy-palette) {
       &:link,
@@ -65,11 +70,7 @@
       }
     }
 
-    // When focussed, the text colour needs to be darker to ensure that colour
-    // contrast is still acceptable
-    &:focus {
-      color: $govuk-focus-text-colour;
-    }
+    @include govuk-focusable-text-link;
 
     // alphagov/govuk_template includes a specific a:link:focus selector
     // designed to make unvisited links a slightly darker blue when focussed, so
