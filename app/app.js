@@ -89,12 +89,12 @@ module.exports = (options) => {
   app.get('/', async function (req, res) {
     const components = fileHelper.allComponents
     const examples = await readdir(path.resolve(configPaths.examples))
-    const fullPageExamples = await readdir(path.resolve(configPaths.fullPageExamples))
+    const fullPageExamples = fileHelper.fullPageExamples()
 
     res.render('index', {
       componentsDirectory: components,
       examplesDirectory: examples,
-      fullPageExamplesDirectory: fullPageExamples
+      fullPageExamples: fullPageExamples
     })
   })
 

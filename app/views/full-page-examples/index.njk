@@ -1,0 +1,30 @@
+{% extends "layout.njk" %}
+{% from "back-link/macro.njk" import govukBackLink %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    href: "/" + legacyQuery
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      Full page examples
+    </h1>
+
+    <p class="govuk-body-l">These examples are designed to test the styles, components and patterns from GOV.UK Frontend in a realistic context.</p>
+
+    <p class="govuk-body">Your responses to any questions asked in the examples will not be recorded.</p>
+
+    <hr class="govuk-section-break govuk-section-break--l" />
+
+    {% for example in examples %}
+
+      <h2 class="govuk-heading-m"><a href="/full-page-examples/{{ example.path }}" class="govuk-link">{{ example.name | replace("-", " ") | capitalize }}</a></h2>
+
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

@@ -29,11 +29,11 @@
     </div>
 
     <div class="govuk-grid-column-one-third">
-      <h2 class="govuk-heading-m">Full page examples</h2>
+      <h2 class="govuk-heading-m"><a href="/full-page-examples">Full page examples</a></h2>
 
       <ul class="govuk-list">
-      {% for exampleName in fullPageExamplesDirectory | sort %}
-        <li><a href="/full-page-examples/{{ exampleName }}{{ legacyQuery }}" class="govuk-link">{{ exampleName | replace("-", " ") | capitalize }}</a></li>
+      {% for example in fullPageExamples %}
+        <li><a href="/full-page-examples/{{ example.path }}{{ legacyQuery }}" class="govuk-link">{{ example.name | replace("-", " ") | capitalize }}</a></li>
       {% endfor %}
       </ul>
 
