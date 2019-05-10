@@ -102,6 +102,12 @@
 
 🆕 New features:
 
+- Checkboxes and radios use a new focus state with a thicker border. The
+  transparent outline, previously required to show the focus state when custom
+  colour schemes are used, has been removed.
+
+  ([PR #1316](https://github.com/alphagov/govuk-frontend/pull/1316))
+
 - A new setting `$govuk-use-legacy-palette` has been added, which by default
   will be true if any of the `$govuk-compatibility-*` settings are true.
 

@@ -123,11 +123,7 @@
 
   // Focused state
   .govuk-radios__input:focus + .govuk-radios__label::before {
-    // Since box-shadows are removed when users customise their colours we set a
-    // transparent outline that is shown instead.
-    // https://accessibility.blog.gov.uk/2017/03/27/how-users-change-colours-on-websites/
-    outline: $govuk-focus-width solid transparent;
-    outline-offset: $govuk-focus-width;
+    border-width: 4px;
     box-shadow: 0 0 0 $govuk-radios-focus-width $govuk-focus-colour;
   }
 
@@ -277,9 +273,9 @@
     //
     // Reduce the size of the 'button' and center it within the ring
     .govuk-radios__label::after {
-      top: 14px;
-      left: 6px;
-      border-width: 6px;
+      top: 15px;
+      left: 7px;
+      border-width: 5px;
     }
 
     // Fix position of hint with small radios
