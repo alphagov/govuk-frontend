@@ -135,4 +135,30 @@ describe('header', () => {
       })
     })
   })
+
+  describe('SVG logo', () => {
+    const $ = render('header', {})
+    const $svg = $('.govuk-header__logotype-crown')
+
+    it('sets focusable="false" so that IE does not treat it as an interactive element', () => {
+      expect($svg.attr('focusable')).toEqual('false')
+    })
+
+    it('sets role="presentation" so that it is ignored by assistive technologies', () => {
+      expect($svg.attr('focusable')).toEqual('false')
+    })
+
+    describe('fallback PNG', () => {
+      const $fallbackImage = $('.govuk-header__logotype-crown-fallback-image')
+
+      it('uses the <image> tag which is a valid SVG element', () => {
+        expect($fallbackImage[0].tagName).toEqual('image')
+      })
+
+      it('sets a blank xlink:href to prevent IE from downloading both the SVG and the PNG', () => {
+        // Cheerio converts xhref to href - https://github.com/cheeriojs/cheerio/issues/1101
+        expect($fallbackImage.attr('href')).toEqual('')
+      })
+    })
+  })
 })
