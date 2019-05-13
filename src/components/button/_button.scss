@@ -106,6 +106,17 @@
       }
     }
 
+    &:focus:hover {
+      border: $govuk-border-width-form-element solid $govuk-focus-colour;
+      color: $govuk-button-text-colour;
+      background-color: $govuk-button-hover-colour;
+      box-shadow: inset 0 0 0 1px $govuk-focus-colour;
+
+      @include govuk-if-ie8 {
+        border-bottom-width: 0;
+      }
+    }
+
     // The following adjustments do not work for <input type="button"> as
     // non-container elements cannot include pseudo elements (i.e. ::before).
 
@@ -211,6 +222,17 @@
         border-bottom-width: 0;
       }
     }
+
+    &:focus:hover {
+      border: $govuk-border-width-form-element solid $govuk-focus-colour;
+      color: $govuk-secondary-button-text-colour;
+      background-color: $govuk-secondary-button-colour;
+      box-shadow: inset 0 0 0 1px $govuk-focus-colour;
+
+      @include govuk-if-ie8 {
+        border-bottom-width: 0;
+      }
+    }
   }
 
   .govuk-button--warning {
@@ -251,6 +273,17 @@
       position: relative;
       top: 2px;
 
+      border: $govuk-border-width-form-element solid $govuk-focus-colour;
+      color: $govuk-warning-button-text-colour;
+      background-color: $govuk-warning-button-colour;
+      box-shadow: inset 0 0 0 1px $govuk-focus-colour;
+
+      @include govuk-if-ie8 {
+        border-bottom-width: 0;
+      }
+    }
+
+    &:focus:hover {
       border: $govuk-border-width-form-element solid $govuk-focus-colour;
       color: $govuk-warning-button-text-colour;
       background-color: $govuk-warning-button-colour;
