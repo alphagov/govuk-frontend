@@ -224,20 +224,27 @@
     @include govuk-typography-weight-bold;
     @include govuk-typography-responsive($size: 24, $override-line-height: 1);
 
+    display: inline-flex;
     min-height: auto;
+
     padding-top: govuk-spacing(2) - $govuk-border-width-form-element;
-    padding-right: govuk-spacing(7);
+    padding-right: govuk-spacing(3);
     padding-bottom: govuk-spacing(2) - $govuk-border-width-form-element;
     padding-left: govuk-spacing(3);
 
-    background-image: govuk-image-url("icon-pointer.png");
-    background-repeat: no-repeat;
-    background-position: 100% 50%;
+    justify-content: center;
+  }
 
-    @include govuk-device-pixel-ratio {
-      background-image: govuk-image-url("icon-pointer-2x.png");
-      background-size: 30px 19px;
+  .govuk-button__start-icon {
+    margin-top: -3px;
+    margin-left: govuk-spacing(1);
+
+    @include govuk-media-query($from: desktop) {
+      margin-left: govuk-spacing(2);
     }
+    vertical-align: middle;
+    flex-shrink: 0;
+    align-self: center;
   }
 
   // Begin adjustments for font baseline offset
