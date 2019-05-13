@@ -39,6 +39,7 @@ module.exports = (options) => {
 
   // make the function available as a filter for all templates
   env.addFilter('componentNameToMacroName', helperFunctions.componentNameToMacroName)
+  env.addGlobal('markdown', require('marked'))
 
   // Set view engine
   app.set('view engine', 'njk')
@@ -89,12 +90,12 @@ module.exports = (options) => {
   app.get('/', async function (req, res) {
     const components = fileHelper.allComponents
     const examples = await readdir(path.resolve(configPaths.examples))
-    const fullPageExamples = await readdir(path.resolve(configPaths.fullPageExamples))
+    const fullPageExamples = fileHelper.fullPageExamples()
 
     res.render('index', {
       componentsDirectory: components,
       examplesDirectory: examples,
-      fullPageExamplesDirectory: fullPageExamples
+      fullPageExamples: fullPageExamples
     })
   })
 
