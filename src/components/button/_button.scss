@@ -215,7 +215,7 @@
 
       border: $govuk-border-width-form-element solid $govuk-focus-colour;
       color: $govuk-secondary-button-text-colour;
-      background-color: $govuk-secondary-button-colour;
+      background-color: $govuk-secondary-button-hover-colour;
       box-shadow: inset 0 0 0 1px $govuk-focus-colour;
 
       @include govuk-if-ie8 {
@@ -226,7 +226,7 @@
     &:focus:hover {
       border: $govuk-border-width-form-element solid $govuk-focus-colour;
       color: $govuk-secondary-button-text-colour;
-      background-color: $govuk-secondary-button-colour;
+      background-color: $govuk-secondary-button-hover-colour;
       box-shadow: inset 0 0 0 1px $govuk-focus-colour;
 
       @include govuk-if-ie8 {
@@ -275,7 +275,7 @@
 
       border: $govuk-border-width-form-element solid $govuk-focus-colour;
       color: $govuk-warning-button-text-colour;
-      background-color: $govuk-warning-button-colour;
+      background-color: $govuk-warning-button-hover-colour;
       box-shadow: inset 0 0 0 1px $govuk-focus-colour;
 
       @include govuk-if-ie8 {
@@ -286,7 +286,7 @@
     &:focus:hover {
       border: $govuk-border-width-form-element solid $govuk-focus-colour;
       color: $govuk-warning-button-text-colour;
-      background-color: $govuk-warning-button-colour;
+      background-color: $govuk-warning-button-hover-colour;
       box-shadow: inset 0 0 0 1px $govuk-focus-colour;
 
       @include govuk-if-ie8 {
