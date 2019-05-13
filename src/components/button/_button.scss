@@ -255,10 +255,12 @@
     svg {
       margin-top: -2px;
       vertical-align: middle;
+    }
 
-      @include govuk-media-query($until: tablet) {
-        height: 16px;
-      }
+    @include govuk-media-query($until: tablet) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 
