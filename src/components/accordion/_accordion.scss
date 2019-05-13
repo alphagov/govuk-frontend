@@ -154,6 +154,14 @@
       cursor: pointer;
       -webkit-appearance: none;
 
+      @include govuk-not-ie8 {
+        // Ensure the default focus styles are not shown for buttons
+        &:focus {
+          outline: none;
+          background: none;
+        }
+      }
+
       @include govuk-if-ie8 {
         &:focus {
           color: $govuk-text-colour;
