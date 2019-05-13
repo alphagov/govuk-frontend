@@ -202,12 +202,6 @@
       background-color: $govuk-secondary-button-hover-colour;
     }
 
-    &:focus {
-      color: $govuk-focus-text-colour;
-      background-color: $govuk-focus-colour;
-      box-shadow: 0 2px 0 $govuk-focus-text-colour;
-    }
-
     &:active {
       // Bump the button down by 2px so it looks like its being pressed in
       position: relative;
@@ -260,12 +254,6 @@
 
     &:hover {
       background-color: $govuk-warning-button-hover-colour;
-    }
-
-    &:focus {
-      color: $govuk-focus-text-colour;
-      background-color: $govuk-focus-colour;
-      box-shadow: 0 2px 0 $govuk-focus-text-colour;
     }
 
     &:active {
