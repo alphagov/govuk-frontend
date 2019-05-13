@@ -142,7 +142,7 @@
         font-size: $font-size-rem; // sass-lint:disable no-duplicate-properties
       }
       line-height: $line-height;
-    } @elseif $breakpoint == "print" {
+    } @else if $breakpoint == "print" {
       @include govuk-media-query($media-type: print) {
         font-size: $font-size;
         line-height: $line-height;
