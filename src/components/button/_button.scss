@@ -196,6 +196,21 @@
       background-color: $govuk-focus-colour;
       box-shadow: 0 2px 0 $govuk-focus-text-colour;
     }
+
+    &:active {
+      // Bump the button down by 2px so it looks like its being pressed in
+      position: relative;
+      top: 2px;
+
+      border: $govuk-border-width-form-element solid $govuk-focus-colour;
+      color: $govuk-secondary-button-text-colour;
+      background-color: $govuk-secondary-button-colour;
+      box-shadow: inset 0 0 0 1px $govuk-focus-colour;
+
+      @include govuk-if-ie8 {
+        border-bottom-width: 0;
+      }
+    }
   }
 
   .govuk-button--warning {
@@ -229,6 +244,21 @@
       color: $govuk-focus-text-colour;
       background-color: $govuk-focus-colour;
       box-shadow: 0 2px 0 $govuk-focus-text-colour;
+    }
+
+    &:active {
+      // Bump the button down by 2px so it looks like its being pressed in
+      position: relative;
+      top: 2px;
+
+      border: $govuk-border-width-form-element solid $govuk-focus-colour;
+      color: $govuk-warning-button-text-colour;
+      background-color: $govuk-warning-button-colour;
+      box-shadow: inset 0 0 0 1px $govuk-focus-colour;
+
+      @include govuk-if-ie8 {
+        border-bottom-width: 0;
+      }
     }
   }
 
