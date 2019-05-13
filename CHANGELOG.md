@@ -42,6 +42,11 @@
 
   ([PR #1319](https://github.com/alphagov/govuk-frontend/pull/1319))
 
+- Prevent the fallback PNG image for the crown in the header from being
+  downloaded unnecessarily in Internet Explorer and Edge.
+
+  ([PR #1337](https://github.com/alphagov/govuk-frontend/pull/1337))
+
 ## 2.11.0 (Feature release)
 
 🆕 New features:
