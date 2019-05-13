@@ -10,6 +10,12 @@
 
   ([PR #1326](https://github.com/alphagov/govuk-frontend/pull/1326))
 
+- Update accordion to use new WCAG 2.1 compliant focus style
+
+  To migrate: [TODO add migration instructions before we ship v3.0.0]
+
+  ([PR #1324](https://github.com/alphagov/govuk-frontend/pull/1324))
+
 - Update form inputs to use new WCAG 2.1 compliant focus style
 
   To migrate: [TODO add migration instructions before we ship v3.0.0]
@@ -149,6 +155,10 @@
   ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
 
 🔧 Fixes:
+
+- Update accordion focus styles to remove firefox outlines
+
+  ([PR #1324](https://github.com/alphagov/govuk-frontend/pull/1324))
 
 - Rename `$govuk-border-width-mobile` to `$govuk-border-width-narrow`
 
