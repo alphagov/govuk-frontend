@@ -253,9 +253,12 @@
     padding-left: govuk-spacing(3);
 
     svg {
-      top: 50%;
-      bottom: 50%;
-      margin-bottom: -5px;
+      margin-top: -2px;
+      vertical-align: middle;
+
+      @include govuk-media-query($until: tablet) {
+        height: 16px;
+      }
     }
   }
 
