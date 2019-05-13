@@ -65,7 +65,7 @@ examples:
   data:
     text: Start now link button
     href: '/'
-    classes: 'govuk-button--start'
+    isStartButton: true
 - name: input
   data:
     element: input

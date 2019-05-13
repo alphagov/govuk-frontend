@@ -259,4 +259,16 @@ describe('Button', () => {
       expect($component.attr('type')).toEqual('submit')
     })
   })
+
+  describe('Start button', () => {
+    it('renders a svg', () => {
+      const $ = render('button', {
+        href: '/',
+        isStartButton: true
+      })
+
+      const $component = $('.govuk-button .govuk-button__start-icon')
+      expect($component.get(0).tagName).toEqual('svg')
+    })
+  })
 })
