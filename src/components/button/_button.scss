@@ -245,22 +245,24 @@
     @include govuk-typography-weight-bold;
     @include govuk-typography-responsive($size: 24, $override-line-height: 1);
 
-    position: relative;
+    display: inline-flex;
     min-height: auto;
 
     padding-top: govuk-spacing(2) - $govuk-border-width-form-element;
     padding-bottom: govuk-spacing(2) - $govuk-border-width-form-element;
     padding-left: govuk-spacing(3);
 
+    align-items: center;
+    justify-content: center;
+
     svg {
       margin-top: -2px;
       vertical-align: middle;
-    }
 
-    @include govuk-media-query($until: tablet) {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      @include govuk-media-query($until: tablet) {
+        height: 16px;
+        margin-left: .1em;
+      }
     }
   }
 
