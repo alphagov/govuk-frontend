@@ -18,6 +18,22 @@
 
   ([PR #1345](https://github.com/alphagov/govuk-frontend/pull/1345))
 
+- Update start now button to have styled icon when focused
+
+  Without migrating, start buttons will lose their icon, to migrate:
+
+  **If you are using the button Nunjucks macro**, you should:
+
+  - add macro option `isStartButton` and set it to `true`
+  - remove the class `.govuk-button--start`, as this is now automatically applied by the new option.
+
+  For a full example see the [Nunjucks example on the Design System website](https://design-system.service.gov.uk/components/button/#start-buttons).
+
+  **If you are using HTML**, you should update your HTML to include the new inline SVG, which can be found
+  in the [HTML example on the Design System website](https://design-system.service.gov.uk/components/button/#start-buttons).
+
+  ([PR #1341](https://github.com/alphagov/govuk-frontend/pull/1341))
+
 - Update tabs to use new WCAG 2.1 compliant focus style
 
   To migrate: [TODO add migration instructions before we ship v3.0.0]
