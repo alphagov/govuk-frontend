@@ -176,7 +176,7 @@
       margin-left: govuk-spacing(1);
     }
 
-    @include govuk-focusable;
+    @include govuk-focusable-text-link;
 
     @include mq ($from: tablet) {
       top: govuk-spacing(3);
