@@ -53,54 +53,6 @@ describe('grid system', () => {
     })
   })
 
-  describe('@govuk-grid-row mixin', () => {
-    it('outputs default defined styles for .govuk-grid-row class', async () => {
-      const sass = `
-        ${sassImports}
-        @import "helpers/clearfix";
-
-        @include govuk-grid-row();
-        `
-
-      const results = await sassRender({ data: sass, ...sassConfig })
-
-      expect(results.css
-        .toString()
-        .trim())
-        .toBe(outdent`
-        .govuk-grid-row {
-          margin-right: -15px;
-          margin-left: -15px; }
-          .govuk-grid-row:after {
-            content: \"\";
-            display: block;
-            clear: both; }`)
-    })
-    it('outputs styles for the specified class', async () => {
-      const sass = `
-        ${sassImports}
-        @import "helpers/clearfix";
-
-        @include govuk-grid-row('app-grid-row');
-        `
-
-      const results = await sassRender({ data: sass, ...sassConfig })
-
-      expect(results.css
-        .toString()
-        .trim())
-        .toBe(outdent`
-        .app-grid-row {
-          margin-right: -15px;
-          margin-left: -15px; }
-          .app-grid-row:after {
-            content: \"\";
-            display: block;
-            clear: both; }
-        `)
-    })
-  })
-
   describe('@govuk-grid-column mixin', () => {
     it('outputs the CSS required for a column in the grid', async () => {
       const sass = `

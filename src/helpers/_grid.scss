@@ -25,29 +25,6 @@
   @return govuk-grid-width($key);
 }
 
-/// Generate grid row styles
-///
-/// Creates a grid row class with a standardised margin.
-///
-/// @param {String} $class [govuk-grid-row] CSS class name
-///
-/// @example scss - Default
-///   @include govuk-grid-row;
-///
-/// @example scss - Customising the class name
-///   @include govuk-grid-row("app-grid");
-///
-/// @access public
-/// @deprecated To be removed in v3.0, replaced by the govuk-grid-row class
-
-@mixin govuk-grid-row($class: "govuk-grid-row") {
-  .#{$class} {
-    @include govuk-clearfix;
-    margin-right: - ($govuk-gutter-half);
-    margin-left: - ($govuk-gutter-half);
-  }
-}
-
 /// Generate grid column styles
 ///
 /// Creates a grid column with standard gutter between the columns.
