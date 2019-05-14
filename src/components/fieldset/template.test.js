@@ -61,6 +61,15 @@ describe('fieldset', () => {
     expect($legend.text().trim()).toEqual('What is your address?')
   })
 
+  it('allows you to set the aria-describedby attribute', () => {
+    const $ = render('fieldset', {
+      describedBy: 'some-id'
+    })
+
+    const $component = $('.govuk-fieldset')
+    expect($component.attr('aria-describedby')).toEqual('some-id')
+  })
+
   it('escapes HTML in the text argument', () => {
     const $ = render('fieldset', {
       legend: {

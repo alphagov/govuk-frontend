@@ -97,7 +97,25 @@ examples:
       -
         name: year
         classes: govuk-input--width-4
-- name: with errors
+- name: with errors only
+  data:
+    id: dob-errors
+    fieldset:
+      legend:
+        text: What is your date of birth?
+    errorMessage:
+      text: Error message goes here
+    items:
+      -
+        name: day
+        classes: govuk-input--width-2 govuk-input--error
+      -
+        name: month
+        classes: govuk-input--width-2 govuk-input--error
+      -
+        name: year
+        classes: govuk-input--width-4 govuk-input--error
+- name: with errors and hint
   data:
     id: dob-errors
     fieldset:

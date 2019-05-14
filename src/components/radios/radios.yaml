@@ -242,6 +242,22 @@ examples:
       - value: blue
         text: Blue
 
+- name: with fieldset and error message
+  data:
+    idPrefix: example
+    name: example
+    errorMessage:
+      text: Please select an option
+    fieldset:
+      legend:
+        text: Have you changed your name?
+    items:
+      - value: yes
+        text: Yes
+      - value: no
+        text: No
+        checked: true
+
 - name: with all fieldset attributes
   data:
     idPrefix: example

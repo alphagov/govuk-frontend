@@ -5,7 +5,7 @@
 
 {#- a record of other elements that we need to associate with the input using
    aria-describedby – for example hints or error messages -#}
-{% set describedBy = "" %}
+{% set describedBy = params.fieldset.describedBy if params.fieldset.describedBy else "" %}
 
 {% if params.items %}
   {% set dateInputItems = params.items %}

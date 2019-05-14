@@ -71,6 +71,30 @@ describe('Radios', () => {
     expect($component.hasClass('app-radios--custom-modifier')).toBeTruthy()
   })
 
+  it('renders initial aria-describedby on fieldset', () => {
+    const describedById = 'some-id'
+
+    const $ = render('radios', {
+      name: 'example-name',
+      fieldset: {
+        describedBy: describedById
+      },
+      items: [
+        {
+          value: 'yes',
+          text: 'Yes'
+        },
+        {
+          value: 'no',
+          text: 'No'
+        }
+      ]
+    })
+
+    const $fieldset = $('.govuk-fieldset')
+    expect($fieldset.attr('aria-describedby')).toMatch(describedById)
+  })
+
   it('render attributes', () => {
     const $ = render('radios', {
       name: 'example-name',
@@ -462,6 +486,24 @@ describe('Radios', () => {
 
       expect($fieldset.attr('aria-describedby')).toMatch(hintId)
     })
+
+    it('associates the fieldset as "described by" the hint and parent fieldset', () => {
+      const describedById = 'some-id'
+      const params = examples['with all fieldset attributes']
+
+      params.fieldset.describedBy = describedById
+
+      const $ = render('radios', params)
+      const $fieldset = $('.govuk-fieldset')
+      const $hint = $('.govuk-hint')
+
+      const hintId = new RegExp(
+        WORD_BOUNDARY + describedById + WHITESPACE + $hint.attr('id') + WORD_BOUNDARY
+      )
+
+      expect($fieldset.attr('aria-describedby')).toMatch(hintId)
+      delete params.fieldset.describedBy
+    })
   })
 
   describe('when they include an error message', () => {
@@ -510,7 +552,7 @@ describe('Radios', () => {
     })
 
     it('associates the fieldset as "described by" the error message', () => {
-      const $ = render('radios', examples['with all fieldset attributes'])
+      const $ = render('radios', examples['with fieldset and error message'])
 
       const $fieldset = $('.govuk-fieldset')
       const $errorMessage = $('.govuk-error-message')
@@ -521,6 +563,27 @@ describe('Radios', () => {
 
       expect($fieldset.attr('aria-describedby'))
         .toMatch(errorMessageId)
+    })
+
+    it('associates the fieldset as "described by" the error message and parent fieldset', () => {
+      const describedById = 'some-id'
+      const params = examples['with fieldset and error message']
+
+      params.fieldset.describedBy = describedById
+
+      const $ = render('radios', params)
+
+      const $fieldset = $('.govuk-fieldset')
+      const $errorMessage = $('.govuk-error-message')
+
+      const errorMessageId = new RegExp(
+        WORD_BOUNDARY + describedById + WHITESPACE + $errorMessage.attr('id') + WORD_BOUNDARY
+      )
+
+      expect($fieldset.attr('aria-describedby'))
+        .toMatch(errorMessageId)
+
+      delete params.fieldset.describedBy
     })
 
     it('renders with a form group wrapper that has an error state', () => {
@@ -540,15 +603,37 @@ describe('Radios', () => {
       const $ = render('radios', examples['with all fieldset attributes'])
 
       const $fieldset = $('.govuk-fieldset')
-      const $errorMessageId = $('.govuk-error-message').attr('id')
-      const $hintId = $('.govuk-hint').attr('id')
+      const errorMessageId = $('.govuk-error-message').attr('id')
+      const hintId = $('.govuk-hint').attr('id')
 
       const combinedIds = new RegExp(
-        WORD_BOUNDARY + $hintId + WHITESPACE + $errorMessageId + WORD_BOUNDARY
+        WORD_BOUNDARY + hintId + WHITESPACE + errorMessageId + WORD_BOUNDARY
       )
 
       expect($fieldset.attr('aria-describedby'))
         .toMatch(combinedIds)
+    })
+
+    it('associates the fieldset as described by the hint, error message and parent fieldset', () => {
+      const describedById = 'some-id'
+      const params = examples['with all fieldset attributes']
+
+      params.fieldset.describedBy = describedById
+
+      const $ = render('radios', params)
+
+      const $fieldset = $('.govuk-fieldset')
+      const errorMessageId = $('.govuk-error-message').attr('id')
+      const hintId = $('.govuk-hint').attr('id')
+
+      const combinedIds = new RegExp(
+        WORD_BOUNDARY + describedById + WHITESPACE + hintId + WHITESPACE + errorMessageId + WORD_BOUNDARY
+      )
+
+      expect($fieldset.attr('aria-describedby'))
+        .toMatch(combinedIds)
+
+      delete params.fieldset.describedBy
     })
   })
 

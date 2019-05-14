@@ -57,6 +57,17 @@ describe('File upload', () => {
       expect($component.val()).toEqual('C:/fakepath')
     })
 
+    it('renders with aria-describedby', () => {
+      const describedById = 'some-id'
+
+      const $ = render('file-upload', {
+        describedBy: describedById
+      })
+
+      const $component = $('.govuk-file-upload')
+      expect($component.attr('aria-describedby')).toMatch(describedById)
+    })
+
     it('renders with attributes', () => {
       const $ = render('file-upload', {
         attributes: {
@@ -117,6 +128,28 @@ describe('File upload', () => {
       expect($component.attr('aria-describedby'))
         .toMatch(hintId)
     })
+
+    it('associates the input as "described by" the hint and parent fieldset', () => {
+      const describedById = 'some-id'
+
+      const $ = render('file-upload', {
+        id: 'file-upload-with-hint',
+        describedBy: describedById,
+        hint: {
+          text: 'Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.'
+        }
+      })
+
+      const $component = $('.govuk-file-upload')
+      const $hint = $('.govuk-hint')
+
+      const hintId = new RegExp(
+        WORD_BOUNDARY + describedById + WHITESPACE + $hint.attr('id') + WORD_BOUNDARY
+      )
+
+      expect($component.attr('aria-describedby'))
+        .toMatch(hintId)
+    })
   })
 
   describe('when it includes an error message', () => {
@@ -144,6 +177,28 @@ describe('File upload', () => {
 
       const errorMessageId = new RegExp(
         WORD_BOUNDARY + $errorMessage.attr('id') + WORD_BOUNDARY
+      )
+
+      expect($component.attr('aria-describedby'))
+        .toMatch(errorMessageId)
+    })
+
+    it('associates the input as "described by" the error message and parent fieldset', () => {
+      const describedById = 'some-id'
+
+      const $ = render('file-upload', {
+        id: 'input-with-error',
+        describedBy: describedById,
+        errorMessage: {
+          'text': 'Error message'
+        }
+      })
+
+      const $component = $('.govuk-file-upload')
+      const $errorMessage = $('.govuk-error-message')
+
+      const errorMessageId = new RegExp(
+        WORD_BOUNDARY + describedById + WHITESPACE + $errorMessage.attr('id') + WORD_BOUNDARY
       )
 
       expect($component.attr('aria-describedby'))
@@ -186,11 +241,37 @@ describe('File upload', () => {
       })
 
       const $component = $('.govuk-file-upload')
-      const $errorMessageId = $('.govuk-error-message').attr('id')
-      const $hintId = $('.govuk-hint').attr('id')
+      const errorMessageId = $('.govuk-error-message').attr('id')
+      const hintId = $('.govuk-hint').attr('id')
 
       const combinedIds = new RegExp(
-        WORD_BOUNDARY + $hintId + WHITESPACE + $errorMessageId + WORD_BOUNDARY
+        WORD_BOUNDARY + hintId + WHITESPACE + errorMessageId + WORD_BOUNDARY
+      )
+
+      expect($component.attr('aria-describedby'))
+        .toMatch(combinedIds)
+    })
+
+    it('associates the input as described by the hint, error message and parent fieldset', () => {
+      const describedById = 'some-id'
+
+      const $ = render('file-upload', {
+        id: 'input-with-error',
+        describedBy: describedById,
+        errorMessage: {
+          'text': 'Error message'
+        },
+        hint: {
+          'text': 'Hint'
+        }
+      })
+
+      const $component = $('.govuk-file-upload')
+      const errorMessageId = $('.govuk-error-message').attr('id')
+      const hintId = $('.govuk-hint').attr('id')
+
+      const combinedIds = new RegExp(
+        WORD_BOUNDARY + describedById + WHITESPACE + hintId + WHITESPACE + errorMessageId + WORD_BOUNDARY
       )
 
       expect($component.attr('aria-describedby'))

@@ -14,6 +14,14 @@
 
 🆕 New features:
 
+- Support aria-describedby on all form fields
+
+  All form fields now support an initial `aria-describedby` value, populated before the optional hint and error message IDs are appended.
+
+  Useful when fields are described by errors or hints on parent fieldsets.
+
+  ([PR #1347](https://github.com/alphagov/govuk-frontend/pull/1347))
+
 - Pull Request Title goes here
 
   Description goes here (optional)
