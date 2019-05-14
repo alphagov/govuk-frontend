@@ -5,6 +5,20 @@
 See the [versioning documentation for how to update this
 changelog](./docs/contributing/versioning.md#updating-changelog).
 
+- Update positioning on table headers and cells to help improve readability
+
+  To migrate: If you rely on a centered certain vertical alignment, you could add
+  a custom class to your application.
+
+  ```css
+  .app-table--vertical-align-middle .govuk-table__header,
+  .app-table--vertical-align-middle .govuk-table__cell {
+    vertical-align: middle;
+  }
+  ```
+
+  ([PR #1345](https://github.com/alphagov/govuk-frontend/pull/1345))
+
 - Update tabs to use new WCAG 2.1 compliant focus style
 
   To migrate: [TODO add migration instructions before we ship v3.0.0]
