@@ -135,6 +135,15 @@
 
   ([PR #1343](https://github.com/alphagov/govuk-frontend/pull/1343))
 
+- Remove grid-width mixin
+
+  https://github.com/alphagov/govuk-frontend/pull/1090 deprecated this mixin
+  and left it in as an alias to govuk-grid-width.
+
+  To migrate you'll need to replace any reference to the `grid-width` mixin with `govuk-grid-width`
+
+  ([PR #1342](https://github.com/alphagov/govuk-frontend/pull/1342))
+
 - Pull Request Title goes here
 
   Description goes here (optional)
