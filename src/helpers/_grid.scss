@@ -17,14 +17,6 @@
   @error "Unknown grid width `#{$key}`";
 }
 
-/// Grid width percentage (alias)
-///
-/// @alias govuk-grid-width
-/// @deprecated To be removed in v3.0, replaced by govuk-grid-width
-@function grid-width($key) {
-  @return govuk-grid-width($key);
-}
-
 /// Generate grid column styles
 ///
 /// Creates a grid column with standard gutter between the columns.
