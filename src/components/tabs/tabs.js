@@ -170,6 +170,10 @@ Tabs.prototype.unsetAttributes = function ($tab) {
 }
 
 Tabs.prototype.onTabClick = function (e) {
+  if (!e.target.classList.contains('govuk-tabs__tab')) {
+  // Allow events on child DOM elements to bubble up to tab parent
+    return false
+  }
   e.preventDefault()
   var $newTab = e.target
   var $currentTab = this.getCurrentTab()
