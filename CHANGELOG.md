@@ -210,6 +210,10 @@
 
 🔧 Fixes:
 
+- Fix HTML elements in tabs label breaking
+
+([PR #1351](https://github.com/alphagov/govuk-frontend/pull/1351))
+
 - fixes tabs keyboard navigation bug in IE8
 
   Users were unable to tab between tab panels using the keyboard and had to
