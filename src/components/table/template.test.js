@@ -109,6 +109,26 @@ describe('Table', () => {
     expect($lastTableHeader.hasClass('govuk-table__header')).toBeTruthy()
   })
 
+  it('includes additional classes when the first row is a header', () => {
+    const $ = render('table', {
+      'firstCellIsHeader': true,
+      'rows': [
+        [
+          {
+            'text': 'January',
+            'classes': 'my-custom-class'
+          },
+          {
+            'text': '£85',
+            'format': 'numeric'
+          }
+        ]
+      ]
+    })
+
+    expect($('.govuk-table__row *:first-child').hasClass('my-custom-class')).toBeTruthy()
+  })
+
   it('renders with thead', () => {
     const args = examples['table with head']
     const $ = render('table', args)
