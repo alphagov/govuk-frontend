@@ -21,14 +21,21 @@
     {% for row in params.rows %}
     <tr class="govuk-table__row">
     {% for cell in row %}
+      {% set commonAttributes %}
+        {%- if cell.colspan %} colspan="{{ cell.colspan }}"{% endif %}
+        {%- if cell.rowspan %} rowspan="{{ cell.rowspan }}"{% endif %}{% for attribute, value in cell.attributes %} {{ attribute }}="{{ value }}"{% endfor %}
+      {% endset %}
       {% if loop.first and params.firstCellIsHeader %}
-      <th class="govuk-table__header{%- if cell.classes %} {{ cell.classes }}{% endif %}" scope="row">{{ cell.html | safe if cell.html else cell.text }}</th>
+      <th class="govuk-table__header{%- if cell.classes %} {{ cell.classes }}{% endif %}"
+        scope="row"
+        {{ commonAttributes | safe }}
+      >{{ cell.html | safe if cell.html else cell.text }}</th>
       {% else %}
       <td class="govuk-table__cell
-      {%- if cell.format %} govuk-table__cell--{{ cell.format }}{% endif %}
-      {%- if cell.classes %} {{ cell.classes }}{% endif %}"
-      {%- if cell.colspan %} colspan="{{ cell.colspan }}"{% endif %}
-      {%- if cell.rowspan %} rowspan="{{ cell.rowspan }}"{% endif %}{% for attribute, value in cell.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>{{ cell.html | safe if cell.html else cell.text }}</td>
+        {%- if cell.format %} govuk-table__cell--{{ cell.format }}{% endif %}
+        {%- if cell.classes %} {{ cell.classes }}{% endif %}"
+        {{ commonAttributes | safe }}
+      >{{ cell.html | safe if cell.html else cell.text }}</td>
       {% endif %}
     {% endfor %}
     </tr>
