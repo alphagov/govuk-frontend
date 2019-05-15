@@ -22,7 +22,7 @@
     <tr class="govuk-table__row">
     {% for cell in row %}
       {% if loop.first and params.firstCellIsHeader %}
-      <th class="govuk-table__header" scope="row">{{ cell.html | safe if cell.html else cell.text }}</th>
+      <th class="govuk-table__header{%- if cell.classes %} {{ cell.classes }}{% endif %}" scope="row">{{ cell.html | safe if cell.html else cell.text }}</th>
       {% else %}
       <td class="govuk-table__cell
       {%- if cell.format %} govuk-table__cell--{{ cell.format }}{% endif %}
