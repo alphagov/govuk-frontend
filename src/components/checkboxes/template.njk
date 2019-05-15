@@ -74,7 +74,7 @@
         attributes: item.label.attributes,
         for: id
       }) | indent(6) | trim }}
-      {%- if hasHint %}
+      {% if hasHint %}
       {{ govukHint({
         id: itemHintId,
         classes: 'govuk-checkboxes__hint',
@@ -82,7 +82,7 @@
         html: item.hint.html,
         text: item.hint.text
       }) | indent(6) | trim }}
-      {%- endif %}
+      {% endif %}
     </div>
     {% if item.conditional %}
       <div class="govuk-checkboxes__conditional{% if not item.checked %} govuk-checkboxes__conditional--hidden{% endif %}" id="{{ conditionalId }}">
