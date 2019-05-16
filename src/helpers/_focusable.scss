@@ -43,13 +43,13 @@
     outline: $govuk-focus-width solid transparent;
     outline-offset: 0;
   }
-  color: $govuk-text-colour;
+  color: $govuk-focus-text-colour;
   background-color: $govuk-focus-colour;
   // sass-lint:disable indentation
   box-shadow: -5px -1px 0 1px $govuk-focus-colour,
               5px -1px 0 1px $govuk-focus-colour,
-              -3px 1px 0 3px $govuk-text-colour,
-              3px 1px 0 3px $govuk-text-colour;
+              -3px 1px 0 3px $govuk-focus-text-colour,
+              3px 1px 0 3px $govuk-focus-text-colour;
   // sass-lint:enable indentation
   // When link is focussed, hide the default underline since the
   // box shadow adds the "underline"

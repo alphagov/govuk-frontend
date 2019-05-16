@@ -93,7 +93,7 @@
       }
       // Since Internet Explorer does not support `:not()` we set a clearer focus style to match user-agent outlines.
       @include govuk-if-ie8 {
-        color: $govuk-text-colour;
+        color: $govuk-focus-text-colour;
         background-color: $govuk-focus-colour;
       }
       box-shadow: inset 0 0 0 1px $govuk-focus-colour;
@@ -101,7 +101,7 @@
 
     &:focus:not(:active):not(:hover) {
       border-color: $govuk-focus-colour;
-      color: $govuk-text-colour;
+      color: $govuk-focus-text-colour;
       background-color: $govuk-focus-colour;
       box-shadow: 0 2px 0 $govuk-focus-text-colour;
     }
