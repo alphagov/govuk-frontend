@@ -6,7 +6,6 @@
   .govuk-skip-link {
     @include govuk-visually-hidden-focusable;
     @include govuk-typography-common;
-    @include govuk-focusable-fill;
     @include govuk-link-style-text;
     @include govuk-typography-responsive($size: 16);
 
@@ -22,6 +21,12 @@
       // Escaped due to Sass max() vs. CSS native max()
       padding-right: unquote("max(#{govuk-spacing(3)}, #{$padding-safe-area-right})");
       padding-left: unquote("max(#{govuk-spacing(3)}, #{$padding-safe-area-left})");
+    }
+
+    &:focus {
+      outline: $govuk-focus-width solid $govuk-focus-colour;
+      outline-offset: $govuk-focus-offset;
+      background-color: $govuk-focus-colour;
     }
   }
 }

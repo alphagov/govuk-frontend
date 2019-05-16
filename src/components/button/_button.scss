@@ -89,7 +89,7 @@
       // Since Internet Explorer 8 does not support box-shadow, we want to force the user-agent outlines
       @include govuk-not-ie8 {
         outline: $govuk-focus-width solid transparent;
-        outline-offset: 0;
+        outline-offset: $govuk-focus-offset;
       }
       // Since Internet Explorer does not support `:not()` we set a clearer focus style to match user-agent outlines.
       @include govuk-if-ie8 {
