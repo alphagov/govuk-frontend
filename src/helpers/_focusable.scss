@@ -27,11 +27,11 @@
 
 @mixin govuk-focusable-fill {
   &:focus {
-    @include govuk-focusable-text;
+    @include govuk-focusable-fill-css;
   }
 }
 
-@mixin govuk-focusable-text {
+@mixin govuk-focusable-fill-css {
   // When colours are overridden, for example when users have a dark mode,
   // backgrounds and box-shadows disappear, so we need to ensure there's a
   // transparent outline which will be set to a visible colour.
