@@ -246,20 +246,4 @@
     flex-shrink: 0;
     align-self: center;
   }
-
-  // Begin adjustments for font baseline offset
-  // These should be removed when the font is updated with the correct baseline
-  // For the 1px addition please see https://github.com/alphagov/govuk-frontend/pull/365#discussion_r154349428
-
-  $offset: 2;
-
-  .govuk-button {
-    padding-top: (govuk-spacing(2) - $govuk-border-width-form-element - ($button-shadow-size / 2) + $offset); // s1
-    padding-bottom: (govuk-spacing(2) - $govuk-border-width-form-element - ($button-shadow-size / 2) - $offset + 1); // s1
-  }
-
-  .govuk-button--start {
-    padding-top: (govuk-spacing(2) - $govuk-border-width-form-element - ($button-shadow-size / 2) + $offset); // s1
-    padding-bottom: (govuk-spacing(2) - $govuk-border-width-form-element - ($button-shadow-size / 2) - $offset + 1); // s1
-  }
 }
