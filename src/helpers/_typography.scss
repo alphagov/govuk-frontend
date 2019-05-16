@@ -171,7 +171,13 @@
 
 @mixin govuk-font($size, $weight: regular, $tabular: false, $line-height: false) {
   @if $tabular {
-    @include govuk-typography-common($font-family: $govuk-font-family-tabular);
+    @include govuk-typography-common;
+    font-feature-settings: "tnum" 1;
+
+    @supports(font-variant-numeric: tabular-nums) {
+      font-feature-settings: normal;
+      font-variant-numeric: tabular-nums;
+    }
   } @else {
     @include govuk-typography-common;
   }
