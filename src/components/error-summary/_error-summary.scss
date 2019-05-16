@@ -13,6 +13,11 @@
     @include govuk-focusable;
 
     border: $govuk-border-width solid $govuk-error-colour;
+
+    &:focus {
+      // Remove `box-shadow` inherited from `:focus`.
+      box-shadow: none;
+    }
   }
 
   .govuk-error-summary__title {
