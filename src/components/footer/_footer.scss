@@ -63,7 +63,7 @@
       }
     }
 
-    @include govuk-focusable-text-link;
+    @include govuk-focusable-fill;
 
     // alphagov/govuk_template includes a specific a:link:focus selector
     // designed to make unvisited links a slightly darker blue when focussed, so

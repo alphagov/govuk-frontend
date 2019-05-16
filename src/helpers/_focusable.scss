@@ -27,9 +27,7 @@
 
 @mixin govuk-focusable-fill {
   &:focus {
-    outline: $govuk-focus-width solid $govuk-focus-colour;
-    outline-offset: 0;
-    background-color: $govuk-focus-colour;
+    @include govuk-focusable-text;
   }
 }
 
@@ -54,17 +52,4 @@
   // When link is focussed, hide the default underline since the
   // box shadow adds the "underline"
   text-decoration: none;
-}
-
-/// Focusable with box-shadow
-///
-/// Removes the visible outline and replace with box-shadow and background colour.
-/// Used for interactive text-based elements.
-///
-/// @access public
-
-@mixin govuk-focusable-text-link {
-  &:focus {
-    @include govuk-focusable-text;
-  }
 }

@@ -10,7 +10,7 @@
 
 @mixin govuk-link-common {
   @include govuk-typography-common;
-  @include govuk-focusable-text-link;
+  @include govuk-focusable-fill;
 }
 
 /// Default link style mixin

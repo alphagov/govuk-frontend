@@ -76,7 +76,7 @@
       text-decoration: underline;
     }
 
-    @include govuk-focusable-text-link;
+    @include govuk-focusable-fill;
 
     // When focussed, the text colour needs to be darker to ensure that colour
     // contrast is still acceptable

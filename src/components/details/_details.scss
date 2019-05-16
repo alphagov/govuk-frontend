@@ -32,7 +32,7 @@
       color: $govuk-link-hover-colour;
     }
 
-    @include govuk-focusable-text-link;
+    @include govuk-focusable-fill;
   }
 
   // ...but only underline the text, not the arrow
