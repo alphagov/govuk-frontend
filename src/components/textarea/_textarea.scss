@@ -24,19 +24,6 @@
     border-radius: 0;
 
     -webkit-appearance: none;
-
-    &:focus {
-      // Double the border by adding its width again. Use `box-shadow` to do
-      // this instead of changing `border-width` (which changes element size) and
-      // since `outline` is already used for the yellow focus state.
-      box-shadow: inset 0 0 0 $govuk-border-width-form-element;
-
-      @include govuk-if-ie8 {
-        // IE8 doesn't support `box-shadow` so double the border with
-        // `border-width`.
-        border-width: $govuk-border-width-form-element * 2;
-      }
-    }
   }
 
   .govuk-textarea--error {
