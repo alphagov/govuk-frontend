@@ -10,19 +10,22 @@
 ///
 /// @access public
 
-$govuk-focus-width-inner: 2px;
+@mixin govuk-focussed-input {
+  outline: $govuk-focus-width solid $govuk-focus-colour;
+  outline-offset: 0;
+  box-shadow: inset 0 0 0 $govuk-border-width-form-element $govuk-text-colour;
 
-@mixin govuk-focusable {
-  &:focus {
-    outline: $govuk-focus-width solid $govuk-focus-colour;
-    outline-offset: 0;
-    box-shadow: inset 0 0 0 $govuk-focus-width-inner $govuk-text-colour;
-
-    @include govuk-if-ie8 {
-      // IE8 doesn't support `box-shadow` so add an actual border
-      border: $govuk-focus-width-inner solid $govuk-text-colour;
-    }
+  @include govuk-if-ie8 {
+    // IE8 doesn't support `box-shadow` so add an actual border
+    border: $govuk-border-width-form-element solid $govuk-text-colour;
   }
+}
+
+@mixin govuk-focussed-input-error {
+  border-color: $govuk-input-border-colour;
+  // Remove `box-shadow` inherited from `:focus` as `textarea--error`
+  // already has the thicker border.
+  box-shadow: none;
 }
 
 /// Focusable with fill helper
@@ -33,13 +36,7 @@ $govuk-focus-width-inner: 2px;
 ///
 /// @access public
 
-@mixin govuk-focusable-fill {
-  &:focus {
-    @include govuk-focusable-fill-css;
-  }
-}
-
-@mixin govuk-focusable-fill-css {
+@mixin govuk-focussed-fill {
   // When colours are overridden, for example when users have a dark mode,
   // backgrounds and box-shadows disappear, so we need to ensure there's a
   // transparent outline which will be set to a visible colour.

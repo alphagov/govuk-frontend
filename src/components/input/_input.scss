@@ -9,7 +9,6 @@
 @include govuk-exports("govuk/component/input") {
   .govuk-input {
     @include govuk-font($size: 19);
-    @include govuk-focusable;
 
     box-sizing: border-box;
     width: 100%;
@@ -24,6 +23,10 @@
 
     // Disable inner shadow and remove rounded corners
     appearance: none;
+
+    &:focus {
+      @include govuk-focussed-input;
+    }
   }
 
   .govuk-input::-webkit-outer-spin-button,
@@ -40,10 +43,7 @@
     border: $govuk-border-width-form-element-error solid $govuk-error-colour;
 
     &:focus {
-      border-color: $govuk-input-border-colour;
-      // Remove `box-shadow` inherited from `:focus` as `input--error`
-      // already has the thicker border.
-      box-shadow: none;
+      @include govuk-focussed-input-error;
     }
   }
 

@@ -76,12 +76,8 @@
       text-decoration: underline;
     }
 
-    @include govuk-focusable-fill;
-
-    // When focussed, the text colour needs to be darker to ensure that colour
-    // contrast is still acceptable
     &:focus {
-      color: $govuk-focus-text-colour;
+      @include govuk-focussed-fill;
     }
 
     // alphagov/govuk_template includes a specific a:link:focus selector
@@ -170,13 +166,15 @@
       text-decoration: underline;
     }
 
+    &:focus {
+      @include govuk-focussed-fill;
+    }
+
     &::after {
       @include govuk-shape-arrow($direction: down, $base: 10px, $display: inline-block);
       content: "";
       margin-left: govuk-spacing(1);
     }
-
-    @include govuk-focusable-fill;
 
     @include mq ($from: tablet) {
       top: govuk-spacing(3);

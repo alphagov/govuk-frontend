@@ -10,13 +10,12 @@
     @include govuk-text-colour;
     @include govuk-responsive-padding(4);
     @include govuk-responsive-margin(8, "bottom");
-    @include govuk-focusable;
 
     border: $govuk-border-width solid $govuk-error-colour;
 
     &:focus {
-      // Remove `box-shadow` inherited from `:focus`.
-      box-shadow: none;
+      outline: $govuk-focus-width solid $govuk-focus-colour;
+      outline-offset: 0;
     }
   }
 
@@ -43,7 +42,6 @@
   }
 
   .govuk-error-summary__list a {
-    @include govuk-focusable-fill;
     @include govuk-typography-weight-bold;
 
     // Override default link styling to use error colour
@@ -54,10 +52,8 @@
       color: $govuk-error-colour;
     }
 
-    // When focussed, the text colour needs to be darker to ensure that colour
-    // contrast is still acceptable
     &:focus {
-      color: $govuk-focus-text-colour;
+      @include govuk-focussed-fill;
     }
   }
 

@@ -202,7 +202,7 @@
     // We also want to avoid styling when the secttion is pressed or `:active`
     // to avoid the different focus styles from flashing quickly while the user interacts with the section.
     .govuk-accordion__section:not(.govuk-accordion__section--expanded) .govuk-accordion__section-button:focus:not(:active) {
-      @include govuk-focusable-fill-css;
+      @include govuk-focussed-fill;
     }
 
     .govuk-accordion__controls {

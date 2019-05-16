@@ -9,7 +9,6 @@
 @include govuk-exports("govuk/component/textarea") {
   .govuk-textarea {
     @include govuk-font($size: 19, $line-height: 1.25);
-    @include govuk-focusable;
 
     box-sizing: border-box; // should this be global?
     display: block;
@@ -24,16 +23,17 @@
     border-radius: 0;
 
     -webkit-appearance: none;
+
+    &:focus {
+      @include govuk-focussed-input;
+    }
   }
 
   .govuk-textarea--error {
     border: $govuk-border-width-form-element-error solid $govuk-error-colour;
 
     &:focus {
-      border-color: $govuk-input-border-colour;
-      // Remove `box-shadow` inherited from `:focus` as `textarea--error`
-      // already has the thicker border.
-      box-shadow: none;
+      @include govuk-focussed-input-error;
     }
 
   }

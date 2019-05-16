@@ -12,7 +12,6 @@
   .govuk-file-upload {
     @include govuk-font($size: 19);
     @include govuk-text-colour;
-    @include govuk-focusable;
     padding-top: $component-padding;
     padding-bottom: $component-padding;
 
@@ -23,6 +22,8 @@
       margin-left: -$component-padding;
       padding-right: $component-padding;
       padding-left: $component-padding;
+
+      @include govuk-focussed-input;
     }
 
     // Set "focus-within" to fix https://bugzilla.mozilla.org/show_bug.cgi?id=1430196
@@ -36,11 +37,7 @@
       padding-right: $component-padding;
       padding-left: $component-padding;
 
-      // Emulate `govuk-focusable` mixin styles for this component in FF
-      outline: $govuk-focus-width solid $govuk-focus-colour;
-      outline-offset: 0;
-
-      box-shadow: inset 0 0 0 4px $govuk-input-border-colour;
+      @include govuk-focussed-input;
     }
   }
 
@@ -54,10 +51,7 @@
     border: $govuk-border-width-form-element-error solid $govuk-error-colour;
 
     &:focus {
-      border-color: $govuk-input-border-colour;
-      // Remove `box-shadow` inherited from `:focus` as `file-upload--error`
-      // already has the thicker border.
-      box-shadow: none;
+      @include govuk-focussed-input-error;
     }
 
     // Repeat `:focus` styles to prevent error styles from being applied when
@@ -66,8 +60,7 @@
     // to recognise `focus-within` and don't set any styles from the block
     // when it's a selector.
     &:focus-within {
-      border-color: $govuk-input-border-colour;
-      box-shadow: none;
+      @include govuk-focussed-input-error;
     }
   }
 }
