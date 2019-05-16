@@ -23,7 +23,7 @@
       padding-right: $component-padding;
       padding-left: $component-padding;
 
-      @include govuk-focussed-input;
+      @include govuk-focussed-input(4px);
     }
 
     // Set "focus-within" to fix https://bugzilla.mozilla.org/show_bug.cgi?id=1430196
@@ -37,7 +37,7 @@
       padding-right: $component-padding;
       padding-left: $component-padding;
 
-      @include govuk-focussed-input;
+      @include govuk-focussed-input(4px);
     }
   }
 
