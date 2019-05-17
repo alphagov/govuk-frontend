@@ -27,7 +27,7 @@
              govuk-font-url("light-222368e53d-v2.woff") format("woff");
         font-weight: normal;
         font-style: normal;
-        font-display: fallback;
+        font-display: swap;
       }
 
       @font-face {
@@ -38,7 +38,7 @@
              govuk-font-url("bold-5d3836b441-v2.woff") format("woff");
         font-weight: bold;
         font-style: normal;
-        font-display: fallback;
+        font-display: swap;
       }
 
     }
