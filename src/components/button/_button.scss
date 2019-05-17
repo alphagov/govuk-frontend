@@ -246,4 +246,21 @@
     flex-shrink: 0;
     align-self: center;
   }
+
+  @include govuk-compatibility(govuk_template) {
+    // Begin adjustments for font baseline offset when using v1 of nta
+
+    $offset: 2;
+
+    .govuk-button {
+      padding-top: (govuk-spacing(2) - $govuk-border-width-form-element - ($button-shadow-size / 2) + $offset); // s1
+      padding-bottom: (govuk-spacing(2) - $govuk-border-width-form-element - ($button-shadow-size / 2) - $offset + 1); // s1
+    }
+
+    .govuk-button--start {
+      padding-top: (govuk-spacing(2) - $govuk-border-width-form-element - ($button-shadow-size / 2) + $offset); // s1
+      padding-bottom: (govuk-spacing(2) - $govuk-border-width-form-element - ($button-shadow-size / 2) - $offset + 1); // s1
+    }
+  }
+
 }

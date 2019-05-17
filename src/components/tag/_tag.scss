@@ -26,4 +26,12 @@
   .govuk-tag--inactive {
     background-color: govuk-colour("dark-grey", $legacy: "grey-1");
   }
+
+  @include govuk-compatibility(govuk_template) {
+    .govuk-tag {
+      // Begin adjustments for font baseline offset when using v1 of nta
+      padding-bottom: 1px;
+    }
+  }
+
 }
