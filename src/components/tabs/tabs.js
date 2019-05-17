@@ -204,10 +204,25 @@ Tabs.prototype.onTabKeydown = function (e) {
 }
 
 Tabs.prototype.activateNextTab = function () {
+  // IE doesn't support 'nextElementSibling' this code polyfills IE8
+  // https://developer.mozilla.org/en-US/docs/Web/API/NonDocumentTypeChildNode/nextElementSibling#Polyfill_for_Internet_Explorer_8
+  // Source: https://github.com/Alhadis/Snippets/blob/master/js/polyfills/IE8-child-elements.js
+  if (!('nextElementSibling' in document.documentElement)) {
+    Object.defineProperty(Element.prototype, 'nextElementSibling', { // eslint-disable-line no-undef
+      get: function () {
+        var e = this.nextSibling
+        while (e && e.nodeType !== 1) {
+          e = e.nextSibling
+        }
+        return e
+      }
+    })
+  }
+
   var currentTab = this.getCurrentTab()
   var nextTabListItem = currentTab.parentNode.nextElementSibling
   if (nextTabListItem) {
-    var nextTab = nextTabListItem.firstElementChild
+    var nextTab = nextTabListItem.querySelector('.govuk-tabs__tab')
   }
   if (nextTab) {
     this.hideTab(currentTab)
@@ -218,10 +233,25 @@ Tabs.prototype.activateNextTab = function () {
 }
 
 Tabs.prototype.activatePreviousTab = function () {
+  // IE doesn't support 'previousElementSibling' this code polyfills IE8
+  // https://developer.mozilla.org/en-US/docs/Web/API/NonDocumentTypeChildNode/previousElementSibling#Polyfill_for_Internet_Explorer_8
+  // Source: https://github.com/Alhadis/Snippets/blob/master/js/polyfills/IE8-child-elements.js
+  if (!('previousElementSibling' in document.documentElement)) {
+    Object.defineProperty(Element.prototype, 'previousElementSibling', { // eslint-disable-line no-undef
+      get: function () {
+        var e = this.previousSibling
+        while (e && e.nodeType !== 1) {
+          e = e.previousSibling
+        }
+        return e
+      }
+    })
+  }
+
   var currentTab = this.getCurrentTab()
   var previousTabListItem = currentTab.parentNode.previousElementSibling
   if (previousTabListItem) {
-    var previousTab = previousTabListItem.firstElementChild
+    var previousTab = previousTabListItem.querySelector('.govuk-tabs__tab')
   }
   if (previousTab) {
     this.hideTab(currentTab)
