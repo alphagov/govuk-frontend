@@ -40,21 +40,22 @@
       // Vertically align with the parent element
       position: absolute;
 
-      top: -1px;
-      bottom: 1px;
+      top: 0;
+      bottom: 0;
       left: 0;
 
       margin: auto;
     }
   }
 
-  // Begin adjustments for font baseline offset
-  // These should be removed when the font is updated with the correct baseline
+  @include govuk-compatibility(govuk_template) {
+    // Begin adjustments for font baseline offset
 
-  .govuk-back-link:before {
-    $offset: 1px;
+    .govuk-back-link:before {
+      $offset: 1px;
 
-    top: $offset * -1;
-    bottom: $offset;
+      top: $offset * -1;
+      bottom: $offset;
+    }
   }
 }
