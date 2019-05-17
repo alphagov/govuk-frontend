@@ -137,10 +137,10 @@
           }
 
           &:focus {
-            box-shadow: inset 0 4px 0 0 $govuk-focus-colour, inset 0 8px 0 0 govuk-colour("black");
+            box-shadow: inset 0 4px 0 0 $govuk-focus-colour, inset 0 8px 0 0 $govuk-focus-text-colour;
 
             @include govuk-if-ie8 {
-              border-top-color: govuk-colour("black");
+              border-top-color: $govuk-focus-text-colour;
             }
           }
         }
