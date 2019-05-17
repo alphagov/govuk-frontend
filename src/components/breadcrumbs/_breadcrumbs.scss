@@ -56,17 +56,15 @@
 
       position: absolute;
 
-      // Begin adjustments for font baseline offset
-      // These should be reverted when the font is updated with the correct
-      // baseline
+      top: 0;
+      bottom: 0;
 
-      // top: 0;
-      // bottom: 0;
+      @include govuk-compatibility(govuk_template) {
+        // Begin adjustments for font baseline offset
 
-      top: -1px;
-      bottom: 1px;
-
-      // End adjustments for font baseline offset
+        top: -1px;
+        bottom: 1px;
+      }
 
       // Offset by the difference between the width of the non-rotated square
       // and its width when rotated
