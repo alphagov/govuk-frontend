@@ -9,7 +9,6 @@
 @include govuk-exports("govuk/component/select") {
   .govuk-select {
     @include govuk-font($size: 19, $line-height: 1.25);
-    @include govuk-focusable;
 
     box-sizing: border-box; // should this be global?
     max-width: 100%;
@@ -18,6 +17,8 @@
     border: $govuk-border-width-form-element solid $govuk-input-border-colour;
 
     &:focus {
+      outline: $govuk-focus-width solid $govuk-focus-colour;
+      outline-offset: 0;
       // Double the border by adding its width again. Use `box-shadow` to do
       // this instead of changing `border-width` (which changes element size) and
       // since `outline` is already used for the yellow focus state.

@@ -10,9 +10,13 @@
     @include govuk-text-colour;
     @include govuk-responsive-padding(4);
     @include govuk-responsive-margin(8, "bottom");
-    @include govuk-focusable;
 
     border: $govuk-border-width solid $govuk-error-colour;
+
+    &:focus {
+      outline: $govuk-focus-width solid $govuk-focus-colour;
+      outline-offset: 0;
+    }
   }
 
   .govuk-error-summary__title {
