@@ -78,6 +78,27 @@ describe('/components/tabs', () => {
         })
         expect(secondTabPanelIsHidden).toBeFalsy()
       })
+
+      describe('when the tab contains a DOM element', () => {
+        it('should display the tab panel associated with the selected tab', async () => {
+          await page.goto(baseUrl + '/components/tabs/preview', { waitUntil: 'load' })
+
+          await page.evaluate(() => {
+            // Replace contents of second tab with a DOM element
+            const secondTab = document.body.querySelector('.govuk-tabs__list-item:nth-child(2) .govuk-tabs__tab')
+            secondTab.innerHTML = '<span>Tab 2</span>'
+          })
+
+          // Click the DOM element inside the second tab
+          await page.click('.govuk-tabs__list-item:nth-child(2) .govuk-tabs__tab span')
+
+          const secondTabPanelIsHidden = await page.evaluate(() => {
+            const secondTabAriaControls = document.body.querySelector('.govuk-tabs__list-item:nth-child(2) .govuk-tabs__tab').getAttribute('aria-controls')
+            return document.body.querySelector(`[id="${secondTabAriaControls}"]`).classList.contains('govuk-tabs__panel--hidden')
+          })
+          expect(secondTabPanelIsHidden).toBeFalsy()
+        })
+      })
     })
 
     describe('when first tab is focused and the right arrow key is pressed', () => {
