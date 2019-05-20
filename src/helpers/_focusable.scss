@@ -2,21 +2,6 @@
 /// @group helpers
 ////
 
-/// Focusable helper
-///
-/// Provides an additional outline to clearly indicate when the target element is
-/// focussed. Used for interactive elements which themselves have some background
-/// or border, such as most form elements.
-///
-/// @access public
-
-@mixin govuk-focusable {
-  &:focus {
-    outline: $govuk-focus-width solid $govuk-focus-colour;
-    outline-offset: 0;
-  }
-}
-
 /// Focused text
 ///
 /// Provides an outline to clearly indicate when the target element is focused.
