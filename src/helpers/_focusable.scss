@@ -33,7 +33,12 @@
   }
 }
 
-@mixin govuk-focusable-text {
+/// Focused text
+///
+/// Provides an outline to clearly indicate when the target element is focused.
+/// Used for interactive text-based elements.
+
+@mixin govuk-focused-text {
   // When colours are overridden, for example when users have a dark mode,
   // backgrounds and box-shadows disappear, so we need to ensure there's a
   // transparent outline which will be set to a visible colour.
@@ -54,17 +59,4 @@
   // When link is focussed, hide the default underline since the
   // box shadow adds the "underline"
   text-decoration: none;
-}
-
-/// Focusable with box-shadow
-///
-/// Removes the visible outline and replace with box-shadow and background colour.
-/// Used for interactive text-based elements.
-///
-/// @access public
-
-@mixin govuk-focusable-text-link {
-  &:focus {
-    @include govuk-focusable-text;
-  }
 }
