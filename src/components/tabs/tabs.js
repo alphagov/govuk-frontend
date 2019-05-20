@@ -1,5 +1,7 @@
 import '../../vendor/polyfills/Function/prototype/bind'
 import '../../vendor/polyfills/Element/prototype/classList'
+import '../../vendor/polyfills/Element/prototype/nextElementSibling'
+import '../../vendor/polyfills/Element/prototype/previousElementSibling'
 import '../../vendor/polyfills/Event' // addEventListener and event.target normaliziation
 import { nodeListForEach } from '../../common'
 
@@ -207,7 +209,7 @@ Tabs.prototype.activateNextTab = function () {
   var currentTab = this.getCurrentTab()
   var nextTabListItem = currentTab.parentNode.nextElementSibling
   if (nextTabListItem) {
-    var nextTab = nextTabListItem.firstElementChild
+    var nextTab = nextTabListItem.querySelector('.govuk-tabs__tab')
   }
   if (nextTab) {
     this.hideTab(currentTab)
@@ -221,7 +223,7 @@ Tabs.prototype.activatePreviousTab = function () {
   var currentTab = this.getCurrentTab()
   var previousTabListItem = currentTab.parentNode.previousElementSibling
   if (previousTabListItem) {
-    var previousTab = previousTabListItem.firstElementChild
+    var previousTab = previousTabListItem.querySelector('.govuk-tabs__tab')
   }
   if (previousTab) {
     this.hideTab(currentTab)

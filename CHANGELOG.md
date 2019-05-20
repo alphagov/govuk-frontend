@@ -194,6 +194,13 @@
 
 🔧 Fixes:
 
+- fixes tabs keyboard navigation bug in IE8
+
+  Users were unable to tab between tab panels using the keyboard and had to
+  use their mouse to toggle between panels.
+
+  ([PR #1359](https://github.com/alphagov/govuk-frontend/pull/1359))
+
 - Update accordion focus styles to remove firefox outlines
 
   ([PR #1324](https://github.com/alphagov/govuk-frontend/pull/1324))
