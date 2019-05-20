@@ -18,6 +18,7 @@
 
     &:focus {
       outline: $govuk-focus-width solid $govuk-focus-colour;
+      // Ensure outline appears outside of the element
       outline-offset: 0;
       // Double the border by adding its width again. Use `box-shadow` to do
       // this instead of changing `border-width` (which changes element size) and

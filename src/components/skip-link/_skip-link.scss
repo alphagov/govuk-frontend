@@ -25,7 +25,6 @@
 
     &:focus {
       outline: $govuk-focus-width solid $govuk-focus-colour;
-      outline-offset: 0;
       background-color: $govuk-focus-colour;
     }
   }
