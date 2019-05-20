@@ -5,6 +5,29 @@
 See the [versioning documentation for how to update this
 changelog](./docs/contributing/versioning.md#updating-changelog).
 
+- Remove `govuk-focusable`, `govuk-focusable-fill` mixins, introduce `govuk-focus-text` mixin.
+
+  To migrate:
+
+  For many use cases where `govuk-focusable-fill` was used you can now use `govuk-focused-text`.
+
+  Before
+  ```scss
+  @include govuk-focusable-fill;
+  ```
+
+  After
+  ```scss
+  &:focus {
+    @include govuk-focused-text;
+  }
+  ```
+
+  For the `govuk-focusable` mixin, there is no general purpose mixin to replace this,
+  please read the new [TODO focus how to guide on the Design System website](#[TODO]).
+
+  ([PR #1361](https://github.com/alphagov/govuk-frontend/pull/1361))
+
 - Update positioning on table headers and cells to help improve readability
 
   To migrate: If you rely on a centered certain vertical alignment, you could add
