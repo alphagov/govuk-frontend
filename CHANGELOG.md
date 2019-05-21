@@ -210,11 +210,17 @@
 
 🔧 Fixes:
 
+- Fix improperly indented html output in Design System examples
+
+  Thanks to [Debs](https://github.com/debsdee) and [Joe](https://github.com/joelanman) for raising this issue.
+
+  ([PR #1353](https://github.com/alphagov/govuk-frontend/pull/1353))
+
 - Fix HTML elements in tabs label breaking
 
-([PR #1351](https://github.com/alphagov/govuk-frontend/pull/1351))
+  ([PR #1351](https://github.com/alphagov/govuk-frontend/pull/1351))
 
-- fixes tabs keyboard navigation bug in IE8
+- Fix tabs keyboard navigation bug in IE8
 
   Users were unable to tab between tab panels using the keyboard and had to
   use their mouse to toggle between panels.
