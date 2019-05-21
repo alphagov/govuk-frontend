@@ -197,6 +197,14 @@ changelog](./docs/contributing/versioning.md#updating-changelog).
 
   ([PR #1288](https://github.com/alphagov/govuk-frontend/pull/1288))
 
+- Table row headers (the first cell in each row when firstCellIsHeader is true)
+  can now have additional classes, rowspan, colspan and additional attributes,
+  in line with other table cells.
+
+  Thanks to [Ed Horsford](https://github.com/edwardhorsford) for reporting.
+
+  ([PR #1367](https://github.com/alphagov/govuk-frontend/pull/1367))
+
 [compatibility mode]: https://github.com/alphagov/govuk-frontend/blob/master/docs/installation/installing-with-npm.md#compatibility-mode
 
 🔧 Fixes:
