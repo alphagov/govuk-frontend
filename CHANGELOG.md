@@ -247,6 +247,13 @@ changelog](./docs/contributing/versioning.md#updating-changelog).
 
   ([PR #1310](https://github.com/alphagov/govuk-frontend/pull/1310))
 
+- Fixes the description for serviceName option in header component (used in the
+  GOV.UK Design System)
+
+  Thanks to [Ed Horsford](https://github.com/edwardhorsford) for reporting.
+
+  ([PR #1368](https://github.com/alphagov/govuk-frontend/pull/1368))
+
 ## 2.13.0
 
 🆕 New features
