@@ -10,589 +10,498 @@ const { render, getExamples } = require('../../../lib/jest-helpers')
 const examples = getExamples('table')
 
 describe('Table', () => {
-  it('default example passes accessibility tests', async () => {
+  it('passes basic accessibility tests', async () => {
     const $ = render('table', examples.default)
 
     const results = await axe($.html())
     expect(results).toHaveNoViolations()
   })
 
-  it('renders with classes', () => {
+  it('allows you to pass additional classes on the table', () => {
     const $ = render('table', {
-      'classes': 'custom-class-goes-here',
-      'rows': [
-        [
-          {
-            'text': 'January'
-          },
-          {
-            'text': '£85',
-            'format': 'numeric'
-          }
-        ],
-        [
-          {
-            'text': 'February'
-          },
-          {
-            'text': '£165',
-            'format': 'numeric'
-          }
-        ]
-      ]
+      classes: 'custom-class-goes-here'
     })
-    const $component = $('.govuk-table')
 
-    expect($component.hasClass('custom-class-goes-here')).toBeTruthy()
+    expect($('.govuk-table').hasClass('custom-class-goes-here')).toBeTruthy()
   })
 
-  it('renders with caption text', () => {
+  it('allows you to specify attributes for the table', () => {
+    const $ = render('table', {
+      attributes: {
+        'data-foo': 'bar'
+      }
+    })
+
+    expect($('.govuk-table').attr('data-foo')).toEqual('bar')
+  })
+
+  // =========================================================
+  // Captions
+  // =========================================================
+
+  it('allows caption text', () => {
     const $ = render('table', examples['table with head and caption'])
     const $caption = $('.govuk-table__caption')
 
     expect($caption.text()).toBe('Caption 1: Months and rates')
   })
 
-  it('renders the caption size class', () => {
+  it('allows you to pass additional classes for the caption', () => {
     const $ = render('table', examples['table with head and caption'])
     const $caption = $('.govuk-table__caption')
 
     expect($caption.hasClass('govuk-heading-m')).toBeTruthy()
   })
 
-  it('renders first cell in every row as a <th> element with correct `govuk-table__header` class and `scope=row` attribute', () => {
-    const $ = render('table', {
-      'firstCellIsHeader': true,
-      'rows': [
-        [
-          {
-            'text': 'January'
-          },
-          {
-            'text': '£85',
-            'format': 'numeric'
-          },
-          {
-            'text': '£95',
-            'format': 'numeric'
-          }
-        ],
-        [
-          {
-            'text': 'February'
-          },
-          {
-            'text': '£75',
-            'format': 'numeric'
-          },
-          {
-            'text': '£55',
-            'format': 'numeric'
-          }
-        ]
-      ]
-    })
-    const $component = $('.govuk-table')
-    const $tableBody = $component.find('.govuk-table .govuk-table__body')
-    const $firstTableRow = $tableBody.find('.govuk-table__row:first-child')
-    const $firstTableHeader = $firstTableRow.find('.govuk-table__header:first-child')
+  // =========================================================
+  // Column headers
+  // =========================================================
 
-    expect($firstTableHeader.get(0).tagName).toEqual('th')
-    expect($firstTableHeader.attr('scope')).toEqual('row')
-    expect($firstTableHeader.hasClass('govuk-table__header')).toBeTruthy()
-
-    const $lastTableRow = $tableBody.find('.govuk-table__row:last-child')
-    const $lastTableHeader = $lastTableRow.find('.govuk-table__header:first-child')
-
-    expect($lastTableHeader.get(0).tagName).toEqual('th')
-    expect($lastTableHeader.attr('scope')).toEqual('row')
-    expect($lastTableHeader.hasClass('govuk-table__header')).toBeTruthy()
-  })
-
-  it('includes additional classes when the first row is a header', () => {
-    const $ = render('table', {
-      'firstCellIsHeader': true,
-      'rows': [
-        [
-          {
-            'text': 'January',
-            'classes': 'my-custom-class'
-          },
-          {
-            'text': '£85',
-            'format': 'numeric'
-          }
-        ]
-      ]
-    })
-
-    expect($('.govuk-table__row *:first-child').hasClass('my-custom-class')).toBeTruthy()
-  })
-
-  it('includes rowspan when the first row is a header', () => {
-    const $ = render('table', {
-      'firstCellIsHeader': true,
-      'rows': [
-        [
-          {
-            'text': 'January',
-            'rowspan': 2
-          },
-          {
-            'text': '£85',
-            'format': 'numeric'
-          }
-        ]
-      ]
-    })
-
-    expect($('.govuk-table__row *:first-child').attr('rowspan')).toEqual('2')
-  })
-
-  it('includes colspan when the first row is a header', () => {
-    const $ = render('table', {
-      'firstCellIsHeader': true,
-      'rows': [
-        [
-          {
-            'text': 'January',
-            'colspan': 2
-          },
-          {
-            'text': '£85',
-            'format': 'numeric'
-          }
-        ]
-      ]
-    })
-
-    expect($('.govuk-table__row *:first-child').attr('colspan')).toEqual('2')
-  })
-
-  it('includes additional attributes when the first row is a header', () => {
-    const $ = render('table', {
-      'firstCellIsHeader': true,
-      'rows': [
-        [
-          {
-            'text': 'January',
-            'attributes': {
-              'data-foo': 'bar'
-            }
-          },
-          {
-            'text': '£85',
-            'format': 'numeric'
-          }
-        ]
-      ]
-    })
-
-    expect($('.govuk-table__row *:first-child').attr('data-foo')).toEqual('bar')
-  })
-
-  it('renders with thead', () => {
+  it('allows you to specify column headers', () => {
     const args = examples['table with head']
     const $ = render('table', args)
 
-    const $component = $('.govuk-table')
-    const $tableHead = $component.find('.govuk-table__head')
-    const $tableHeadRow = $tableHead.find('.govuk-table__row')
-    const $tableHeadCell = $tableHeadRow.find('.govuk-table__header')
+    const headings = $('.govuk-table').find('thead tr th')
+      .map((_, e) => $(e).text())
+      .get()
 
-    expect($tableHead).toHaveLength(1)
-    expect($tableHeadRow).toHaveLength(1)
-    expect($tableHeadCell).toHaveLength(3)
+    expect(headings).toEqual([
+      'Month you apply',
+      'Rate for bicycles',
+      'Rate for vehicles'
+    ])
   })
 
-  it('renders table header cell `format` attribute correctly', () => {
+  it('escapes HTML in column headers when passed as text', () => {
     const $ = render('table', {
-      'head': [
+      head: [
         {
-          'text': 'Month you apply'
-        },
-        {
-          'text': 'Rate for bicycles',
-          'format': 'numeric'
-        },
-        {
-          'text': 'Rate for vehicles',
-          'format': 'numeric'
+          text: 'Foo <script>hacking.do(1337)</script>'
         }
-      ],
-      'rows': [
-        [
-          {
-            'text': 'January'
-          },
-          {
-            'text': '£85',
-            'format': 'numeric'
-          }
-        ],
-        [
-          {
-            'text': 'February'
-          },
-          {
-            'text': '£165',
-            'format': 'numeric'
-          }
-        ]
       ]
     })
 
-    const $component = $('.govuk-table')
-    const $tableHeadCell = $component.find('.govuk-table__head .govuk-table__header')
+    const $th = $('.govuk-table thead tr th')
 
-    expect($tableHeadCell.eq(1).attr('class')).toMatch('govuk-table__header--numeric')
+    expect($th.text()).toEqual('Foo <script>hacking.do(1337)</script>')
   })
 
-  it('renders optional classes for the table header cell correctly', () => {
+  it('allows HTML in column headers when passed as HTML', () => {
     const $ = render('table', {
-      'head': [
+      head: [
         {
-          'text': 'Rate for bicycles',
-          'classes': 'extra-class'
+          html: 'Foo <span>bar</span>'
         }
-      ],
-      'rows': [
-        [
-          {
-            'text': 'January'
-          }
-        ]
       ]
     })
 
-    const $component = $('.govuk-table')
-    const $tableHeadCell = $component.find('.govuk-table__head .govuk-table__header:first-child')
+    const $th = $('.govuk-table thead tr th')
 
-    expect($tableHeadCell.hasClass('extra-class')).toBeTruthy()
+    expect($th.text()).toEqual('Foo bar')
   })
 
-  describe('rows and cells', () => {
-    const $ = render('table', examples.default)
-    const $component = $('.govuk-table')
-    const $tableBody = $component.find('.govuk-table__body')
-    const $tableRow = $component.find('.govuk-table__row')
-    const $tableCell = $component.find('.govuk-table__cell')
-
-    it('renders one tbody element', () => {
-      expect($tableBody).toHaveLength(1)
-    })
-
-    it('renders the specified number of rows', () => {
-      expect($tableRow).toHaveLength(3)
-    })
-
-    it('renders the specified number of cells in row 1', () => {
-      expect($tableRow.eq(0).find($tableCell)).toHaveLength(3)
-    })
-
-    it('renders the specified number of cells in row 2', () => {
-      expect($tableRow.eq(1).find($tableCell)).toHaveLength(3)
-    })
-
-    it('renders the specified number of cells in row 3', () => {
-      expect($tableRow.eq(2).find($tableCell)).toHaveLength(3)
-    })
-
-    it('renders correct text in cell 1 of row 1', () => {
-      expect($tableRow.eq(0).find($tableCell).eq(0).text()).toEqual('January')
-    })
-
-    it('renders correct text in cell 2 of row 1', () => {
-      expect($tableRow.eq(0).find($tableCell).eq(1).text()).toEqual('£85')
-    })
-
-    it('renders correct text in cell 3 of row 1', () => {
-      expect($tableRow.eq(0).find($tableCell).eq(2).text()).toEqual('£95')
-    })
-  })
-
-  it('renders cell with html', () => {
+  it('allows you to specify the format of column headers', () => {
     const $ = render('table', {
-      'rows': [
-        [
-          {
-            'text': 'January'
-          },
-          {
-            'html': '<em>85</em>',
-            'format': 'numeric'
-          },
-          {
-            'text': '£165',
-            'format': 'numeric'
-          }
-        ]
-      ]
-    })
-
-    const $component = $('.govuk-table')
-    const $tableBody = $component.find('.govuk-table__body')
-    const $tableRow = $tableBody.find('.govuk-table__row')
-    const $tableCell = $tableRow.find('.govuk-table__cell')
-
-    expect($tableCell.eq(1).html()).toEqual('<em>85</em>')
-  })
-
-  it('renders cell escaped html in text', () => {
-    const $ = render('table', {
-      'rows': [
-        [
-          {
-            'text': 'January'
-          },
-          {
-            'text': '<em>85</em>',
-            'format': 'numeric'
-          },
-          {
-            'text': '£165',
-            'format': 'numeric'
-          }
-        ]
-      ]
-    })
-    const $component = $('.govuk-table')
-    const $tableBody = $component.find('.govuk-table__body')
-    const $tableRow = $tableBody.find('.govuk-table__row')
-    const $tableCell = $tableRow.find('.govuk-table__cell')
-
-    expect($tableCell.eq(1).html()).toEqual('&lt;em&gt;85&lt;/em&gt;')
-  })
-
-  it('renders cell `format` attribute correctly', () => {
-    const $ = render('table', {
-      'rows': [
-        [
-          {
-            'text': 'January'
-          },
-          {
-            'text': '£85',
-            'format': 'numeric'
-          }
-        ],
-        [
-          {
-            'text': 'February'
-          },
-          {
-            'text': '£165',
-            'format': 'numeric'
-          }
-        ]
-      ]
-    })
-    const $component = $('.govuk-table')
-    const $tableCell = $component.find('.govuk-table__body .govuk-table__cell')
-
-    expect($tableCell.eq(1).attr('class')).toMatch('govuk-table__cell--numeric')
-  })
-
-  it('renders cell‘s optional classes correctly', () => {
-    const $ = render('table', {
-      'rows': [
-        [
-          {
-            'text': '£85',
-            'classes': 'extra-cell-class'
-          }
-        ]
-      ]
-    })
-    const $component = $('.govuk-table')
-    const $tableCell = $component.find('.govuk-table__body .govuk-table__cell:first-child')
-
-    expect($tableCell.hasClass('extra-cell-class')).toBeTruthy()
-  })
-
-  it('renders cell `colspan` attribute correctly', () => {
-    const $ = render('table', {
-      'rows': [
-        [
-          {
-            'text': 'January'
-          },
-          {
-            'text': '£85',
-            'format': 'numeric',
-            'colspan': 2
-          }
-        ],
-        [
-          {
-            'text': 'February'
-          },
-          {
-            'text': '£165',
-            'format': 'numeric'
-          }
-        ]
-      ]
-    })
-    const $component = $('.govuk-table')
-    const $tableCell = $component.find('.govuk-table__body .govuk-table__row .govuk-table__cell')
-
-    expect($tableCell.eq(1).attr('colspan')).toEqual('2')
-  })
-
-  it('renders cell `rowspan` attribute correctly', () => {
-    const $ = render('table', {
-      'rows': [
-        [
-          {
-            'text': 'January'
-          },
-          {
-            'text': '£85',
-            'format': 'numeric',
-            'rowspan': 2
-          }
-        ],
-        [
-          {
-            'text': 'February'
-          },
-          {
-            'text': '£165',
-            'format': 'numeric'
-          }
-        ]
-      ]
-    })
-    const $component = $('.govuk-table')
-    const $tableCell = $component.find('.govuk-table__body .govuk-table__row .govuk-table__cell')
-
-    expect($tableCell.eq(1).attr('rowspan')).toEqual('2')
-  })
-
-  it('renders with attributes', () => {
-    const $ = render('table', {
-      'attributes': {
-        'attribute-1': 'yes',
-        'attribute-2': 'no'
-      },
-      'rows': [
-        [
-          {
-            'text': 'January'
-          },
-          {
-            'text': '£85',
-            'format': 'numeric'
-          }
-        ],
-        [
-          {
-            'text': 'February'
-          },
-          {
-            'text': '£165',
-            'format': 'numeric'
-          }
-        ]
-      ]
-    })
-
-    const $component = $('.govuk-table')
-
-    expect($component.attr('attribute-1')).toEqual('yes')
-    expect($component.attr('attribute-2')).toEqual('no')
-  })
-
-  it('renders with attributes on a head cell ', () => {
-    const $ = render('table', {
-      'head': [
+      head: [
         {
-          'text': 'Month you apply',
-          'attributes': {
-            'id': 'some-unique-id'
-          }
-        },
-        {
-          'text': 'Rate for bicycles',
-          'format': 'numeric'
-        },
-        {
-          'text': 'Rate for vehicles',
-          'format': 'numeric'
+          text: 'Foo',
+          format: 'numeric'
         }
-      ],
-      'rows': [
-        [
-          {
-            'text': 'January'
-          },
-          {
-            'text': '£85',
-            'format': 'numeric'
+      ]
+    })
+
+    const $th = $('.govuk-table thead tr th')
+
+    expect($th.hasClass('govuk-table__header--numeric')).toBeTruthy()
+  })
+
+  it('allows you to pass additional classes for column headers', () => {
+    const $ = render('table', {
+      head: [
+        {
+          text: 'Foo',
+          classes: 'my-custom-class'
+        }
+      ]
+    })
+
+    const $th = $('.govuk-table thead tr th')
+
+    expect($th.hasClass('my-custom-class')).toBeTruthy()
+  })
+
+  it('allows you to specify the rowspan for column headers', () => {
+    const $ = render('table', {
+      head: [
+        {
+          text: 'Foo',
+          rowspan: 2
+        }
+      ]
+    })
+
+    const $th = $('.govuk-table thead tr th')
+
+    expect($th.attr('rowspan')).toEqual('2')
+  })
+
+  it('allows you to specify the colspan for column headers', () => {
+    const $ = render('table', {
+      head: [
+        {
+          text: 'Foo',
+          colspan: 2
+        }
+      ]
+    })
+
+    const $th = $('.govuk-table thead tr th')
+
+    expect($th.attr('colspan')).toEqual('2')
+  })
+
+  it('allows you to specify additional attributes for column headers', () => {
+    const $ = render('table', {
+      head: [
+        {
+          text: 'Foo',
+          attributes: {
+            'data-fizz': 'buzz'
           }
-        ],
+        }
+      ]
+    })
+
+    const $th = $('.govuk-table thead tr th')
+
+    expect($th.attr('data-fizz')).toEqual('buzz')
+  })
+
+  // =========================================================
+  // Row headers
+  // =========================================================
+
+  describe('when firstCellIsHeader is false', () => {
+    it('does not include row headers', () => {
+      const $ = render('table', {
+        rows: [
+          [
+            { text: 'Apples' },
+            { text: 'green' }
+          ],
+          [
+            { text: 'Strawberries' },
+            { text: 'red' }
+          ],
+          [
+            { text: 'Bananas' },
+            { text: 'yellow' }
+          ]
+        ]
+      })
+
+      const cells = $('.govuk-table').find('tbody tr td')
+        .map((_, e) => $(e).text())
+        .get()
+
+      expect(cells).toEqual(
+        ['Apples', 'green', 'Strawberries', 'red', 'Bananas', 'yellow']
+      )
+    })
+  })
+
+  describe('when firstCellIsHeader is true', () => {
+    it('includes row headers', () => {
+      const $ = render('table', {
+        firstCellIsHeader: true,
+        rows: [
+          [
+            { text: 'Apples' },
+            { text: 'green' }
+          ],
+          [
+            { text: 'Strawberries' },
+            { text: 'red' }
+          ],
+          [
+            { text: 'Bananas' },
+            { text: 'yellow' }
+          ]
+        ]
+      })
+
+      const headings = $('.govuk-table').find('tbody tr th')
+        .map((_, e) => $(e).text())
+        .get()
+
+      expect(headings).toEqual(['Apples', 'Strawberries', 'Bananas'])
+    })
+
+    it('escapes HTML in row headers when passed as text', () => {
+      const $ = render('table', {
+        firstCellIsHeader: true,
+        rows: [
+          [
+            { text: 'Foo <script>hacking.do(1337)</script>' }
+          ]
+        ]
+      })
+
+      const $th = $('.govuk-table tbody tr th')
+
+      expect($th.text()).toEqual('Foo <script>hacking.do(1337)</script>')
+    })
+
+    it('allows HTML in row headers when passed as HTML', () => {
+      const $ = render('table', {
+        firstCellIsHeader: true,
+        rows: [
+          [
+            { html: 'Foo <span>bar</span>' }
+          ]
+        ]
+      })
+
+      const $th = $('.govuk-table tbody tr th')
+
+      expect($th.text()).toEqual('Foo bar')
+    })
+
+    it('associates row headers with their rows using scope="row"', () => {
+      const $ = render('table', {
+        firstCellIsHeader: true,
+        rows: [
+          [
+            { text: 'Foo' },
+            { text: 'bar' }
+          ]
+        ]
+      })
+
+      const $th = $('.govuk-table').find('tbody tr th')
+
+      expect($th.attr('scope')).toEqual('row')
+    })
+
+    it('applies the govuk-table__header class to the row headers', () => {
+      const $ = render('table', {
+        firstCellIsHeader: true,
+        rows: [
+          [
+            { text: 'Foo' },
+            { text: 'bar' }
+          ]
+        ]
+      })
+
+      const $th = $('.govuk-table').find('tbody tr th')
+
+      expect($th.hasClass('govuk-table__header')).toBeTruthy()
+    })
+
+    it('allows you to specify additional classes for the row headers', () => {
+      const $ = render('table', {
+        firstCellIsHeader: true,
+        rows: [
+          [
+            { text: 'Foo', classes: 'my-custom-class' },
+            { text: 'bar' }
+          ]
+        ]
+      })
+
+      const $th = $('.govuk-table').find('tbody tr th')
+
+      expect($th.hasClass('my-custom-class')).toBeTruthy()
+    })
+
+    it('allows you to specify the rowspan for the row headers', () => {
+      const $ = render('table', {
+        firstCellIsHeader: true,
+        rows: [
+          [
+            { text: 'Foo', rowspan: 2 },
+            { text: 'bar' }
+          ]
+        ]
+      })
+
+      const $th = $('.govuk-table').find('tbody tr th')
+
+      expect($th.attr('rowspan')).toEqual('2')
+    })
+
+    it('allows you to specify the colspan for the row headers', () => {
+      const $ = render('table', {
+        firstCellIsHeader: true,
+        rows: [
+          [
+            { text: 'Foo', colspan: 2 },
+            { text: 'bar' }
+          ]
+        ]
+      })
+
+      const $th = $('.govuk-table').find('tbody tr th')
+
+      expect($th.attr('colspan')).toEqual('2')
+    })
+
+    it('allows you to specify attributes for the row headers', () => {
+      const $ = render('table', {
+        firstCellIsHeader: true,
+        rows: [
+          [
+            { text: 'Foo', attributes: { 'data-fizz': 'buzz' } },
+            { text: 'bar' }
+          ]
+        ]
+      })
+
+      const $th = $('.govuk-table').find('tbody tr th')
+
+      expect($th.attr('data-fizz')).toEqual('buzz')
+    })
+  })
+
+  // =========================================================
+  // Cells
+  // =========================================================
+
+  it('allows you to specify table cells', () => {
+    const $ = render('table', {
+      rows: [
+        [{ text: 'A' }, { text: '1' }],
+        [{ text: 'B' }, { text: '2' }],
+        [{ text: 'C' }, { text: '3' }]
+      ]
+    })
+
+    const cells = $('.govuk-table').find('tbody tr')
+      .map((_, tr) => {
+        return [$(tr).find('td').map((_, td) => $(td).text()).get()]
+      })
+      .get()
+
+    expect(cells).toEqual([
+      ['A', '1'],
+      ['B', '2'],
+      ['C', '3']
+    ])
+  })
+
+  it('escapes HTML in cells when passed as text', () => {
+    const $ = render('table', {
+      rows: [
+        [
+          { text: 'Foo <script>hacking.do(1337)</script>' }
+        ]
+      ]
+    })
+
+    const $td = $('.govuk-table td')
+
+    expect($td.text()).toEqual('Foo <script>hacking.do(1337)</script>')
+  })
+
+  it('allows HTML in cells when passed as HTML', () => {
+    const $ = render('table', {
+      rows: [
+        [
+          { html: 'Foo <span>bar</span>' }
+        ]
+      ]
+    })
+
+    const $td = $('.govuk-table td')
+
+    expect($td.text()).toEqual('Foo bar')
+  })
+
+  it('allows you to specify the format of cells', () => {
+    const $ = render('table', {
+      rows: [
         [
           {
-            'text': 'February'
-          },
-          {
-            'text': '£165',
-            'format': 'numeric'
+            text: 'Foo',
+            format: 'numeric'
           }
         ]
       ]
     })
 
-    const $component = $('.govuk-table')
-    const $tableHeadCell = $component.find('.govuk-table__head .govuk-table__header')
+    const $td = $('.govuk-table td')
 
-    expect($tableHeadCell.eq(0).attr('id')).toMatch('some-unique-id')
+    expect($td.hasClass('govuk-table__cell--numeric')).toBeTruthy()
   })
 
-  it('renders with attributes on a body cell ', () => {
+  it('allows you to pass additional classes for cells', () => {
     const $ = render('table', {
-      'head': [
-        {
-          'text': 'Month you apply'
-        },
-        {
-          'text': 'Rate for bicycles',
-          'format': 'numeric'
-        },
-        {
-          'text': 'Rate for vehicles',
-          'format': 'numeric'
-        }
-      ],
-      'rows': [
+      rows: [
         [
           {
-            'text': 'January',
-            'attributes': {
-              'id': 'some-unique-id'
+            text: 'Foo',
+            classes: 'my-custom-class'
+          }
+        ]
+      ]
+    })
+
+    const $td = $('.govuk-table td')
+
+    expect($td.hasClass('my-custom-class')).toBeTruthy()
+  })
+
+  it('allows you to specify the rowspan for cells', () => {
+    const $ = render('table', {
+      rows: [
+        [
+          {
+            text: 'Foo',
+            rowspan: 2
+          }
+        ]
+      ]
+    })
+
+    const $td = $('.govuk-table td')
+
+    expect($td.attr('rowspan')).toEqual('2')
+  })
+
+  it('allows you to specify the colspan for cells', () => {
+    const $ = render('table', {
+      rows: [
+        [
+          {
+            text: 'Foo',
+            colspan: 2
+          }
+        ]
+      ]
+    })
+
+    const $td = $('.govuk-table td')
+
+    expect($td.attr('colspan')).toEqual('2')
+  })
+
+  it('allows you to specify additional attributes for cells', () => {
+    const $ = render('table', {
+      rows: [
+        [
+          {
+            text: 'Foo',
+            attributes: {
+              'data-fizz': 'buzz'
             }
-          },
-          {
-            'text': '£85',
-            'format': 'numeric'
-          }
-        ],
-        [
-          {
-            'text': 'February'
-          },
-          {
-            'text': '£165',
-            'format': 'numeric'
           }
         ]
       ]
     })
 
-    const $component = $('.govuk-table')
-    const $tableBodyCell = $component.find('.govuk-table__body .govuk-table__cell')
+    const $td = $('.govuk-table td')
 
-    expect($tableBodyCell.eq(0).attr('id')).toMatch('some-unique-id')
+    expect($td.attr('data-fizz')).toEqual('buzz')
   })
 })
