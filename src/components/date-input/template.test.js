@@ -308,7 +308,7 @@ describe('Date input', () => {
     })
 
     it('sets the `group` role on the fieldset to force JAWS18 to announce the hint and error message', () => {
-      const $ = render('date-input', examples['with errors'])
+      const $ = render('date-input', examples['with errors and hint'])
 
       const $fieldset = $('.govuk-fieldset')
 
@@ -336,12 +336,12 @@ describe('Date input', () => {
 
   describe('when it includes a hint', () => {
     it('renders the hint', () => {
-      const $ = render('date-input', examples['with errors'])
+      const $ = render('date-input', examples['with errors and hint'])
       expect(htmlWithClassName($, '.govuk-hint')).toMatchSnapshot()
     })
 
     it('associates the fieldset as "described by" the hint', () => {
-      const $ = render('date-input', examples['with errors'])
+      const $ = render('date-input', examples['with errors and hint'])
 
       const $fieldset = $('.govuk-fieldset')
       const $hint = $('.govuk-hint')
@@ -353,16 +353,37 @@ describe('Date input', () => {
       expect($fieldset.attr('aria-describedby'))
         .toMatch(hintId)
     })
+
+    it('associates the fieldset as "described by" the hint and parent fieldset', () => {
+      const describedById = 'some-id'
+      const params = examples['with errors and hint']
+
+      params.fieldset.describedBy = describedById
+
+      const $ = render('date-input', params)
+
+      const $fieldset = $('.govuk-fieldset')
+      const $hint = $('.govuk-hint')
+
+      const hintId = new RegExp(
+        WORD_BOUNDARY + describedById + WHITESPACE + $hint.attr('id') + WORD_BOUNDARY
+      )
+
+      expect($fieldset.attr('aria-describedby'))
+        .toMatch(hintId)
+
+      delete params.fieldset.describedBy
+    })
   })
 
   describe('when it includes an error message', () => {
     it('renders the error message', () => {
-      const $ = render('date-input', examples['with errors'])
+      const $ = render('date-input', examples['with errors only'])
       expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
     })
 
     it('uses the id as a prefix for the error message id', () => {
-      const $ = render('date-input', examples['with errors'])
+      const $ = render('date-input', examples['with errors only'])
 
       const $errorMessage = $('.govuk-error-message')
 
@@ -370,7 +391,7 @@ describe('Date input', () => {
     })
 
     it('associates the fieldset as "described by" the error message', () => {
-      const $ = render('date-input', examples['with errors'])
+      const $ = render('date-input', examples['with errors only'])
 
       const $fieldset = $('.govuk-fieldset')
       const $errorMessage = $('.govuk-error-message')
@@ -381,6 +402,27 @@ describe('Date input', () => {
 
       expect($fieldset.attr('aria-describedby'))
         .toMatch(errorMessageId)
+    })
+
+    it('associates the fieldset as "described by" the error message and parent fieldset', () => {
+      const describedById = 'some-id'
+      const params = examples['with errors only']
+
+      params.fieldset.describedBy = describedById
+
+      const $ = render('date-input', params)
+
+      const $fieldset = $('.govuk-fieldset')
+      const $errorMessage = $('.govuk-error-message')
+
+      const errorMessageId = new RegExp(
+        WORD_BOUNDARY + describedById + WHITESPACE + $errorMessage.attr('id') + WORD_BOUNDARY
+      )
+
+      expect($fieldset.attr('aria-describedby'))
+        .toMatch(errorMessageId)
+
+      delete params.fieldset.describedBy
     })
 
     it('renders with a form group wrapper that has an error state', () => {
@@ -397,14 +439,34 @@ describe('Date input', () => {
 
   describe('when they include both a hint and an error message', () => {
     it('associates the fieldset as described by both the hint and the error message', () => {
-      const $ = render('date-input', examples['with errors'])
+      const $ = render('date-input', examples['with errors and hint'])
 
       const $fieldset = $('.govuk-fieldset')
-      const $errorMessageId = $('.govuk-error-message').attr('id')
-      const $hintId = $('.govuk-hint').attr('id')
+      const errorMessageId = $('.govuk-error-message').attr('id')
+      const hintId = $('.govuk-hint').attr('id')
 
       const combinedIds = new RegExp(
-        WORD_BOUNDARY + $hintId + WHITESPACE + $errorMessageId + WORD_BOUNDARY
+        WORD_BOUNDARY + hintId + WHITESPACE + errorMessageId + WORD_BOUNDARY
+      )
+
+      expect($fieldset.attr('aria-describedby'))
+        .toMatch(combinedIds)
+    })
+
+    it('associates the fieldset as described by the hint, error message and parent fieldset', () => {
+      const describedById = 'some-id'
+      const params = examples['with errors and hint']
+
+      params.fieldset.describedBy = describedById
+
+      const $ = render('date-input', params)
+
+      const $fieldset = $('.govuk-fieldset')
+      const errorMessageId = $('.govuk-error-message').attr('id')
+      const hintId = $('.govuk-hint').attr('id')
+
+      const combinedIds = new RegExp(
+        WORD_BOUNDARY + describedById + WHITESPACE + hintId + WHITESPACE + errorMessageId + WORD_BOUNDARY
       )
 
       expect($fieldset.attr('aria-describedby'))
