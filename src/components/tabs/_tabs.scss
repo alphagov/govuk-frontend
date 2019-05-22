@@ -75,6 +75,7 @@
       }
 
       .govuk-tabs__tab {
+        position: relative;
         margin-right: govuk-spacing(1);
         padding-right: govuk-spacing(4);
         padding-left: govuk-spacing(4);
@@ -90,57 +91,76 @@
           padding-bottom: govuk-spacing(2);
         }
 
-        @include govuk-if-ie8 {
-          // IE8 doesn't support `box-shadow` so add an actual border that is
-          // modified to indicate state.
-          border-top: 4px solid transparent;
+        // Since borders are joined with a  45 degree angle bevel 'mitre joint',
+        // we can't set the top border color.
+        //
+        // +-------------+
+        // | \=========/ |
+        // |   +-----+   |
+        // |   | Tab |   |
+        // +---+     +---+
+        //
+        // To get around this we float a border above the tab
+        // so that it'll be 90 degree angle 'butt joint'.
+        //
+        // +---+-----+---+
+        // |   |=====|   |
+        // |   +-----+   |
+        // |   | Tab |   |
+        // +---+     +---+
+        //
+        &::after {
+          content: "";
+          position: absolute;
+          top: -1px;
+          right: 0;
+          left: 0;
+          border: 0 solid transparent;
         }
 
         &:hover {
-          box-shadow: inset 0 4px 0 0 govuk-colour("light-blue");
+          // Remove outline from unenhanced focus state
+          outline: none;
+          // Remove styles from unenhanced focus state
+          box-shadow: none;
 
-          @include govuk-if-ie8 {
+          &::after {
+            border-top-width: 4px;
             border-top-color: govuk-colour("light-blue");
           }
         }
 
         &--selected {
-          $top-border-width: 1px;
-          $top-border-adjustment: 1px;
-
-          @include govuk-if-ie8 {
-            // IE8 already has a top border so no adjustment is needed
-            $top-border-width: 4px;
-            $top-border-adjustment: 0;
-          }
-
-          margin-top: - govuk-spacing(1);
+          margin-top: - (govuk-spacing(1) - 1px);
           margin-bottom: -1px;
 
-          // 1px is compensation for border (otherwise we get a 1px shift)
-          padding-top: govuk-spacing(3) - $top-border-adjustment;
+          padding-top: govuk-spacing(3) - 2px;
           padding-right: govuk-spacing(4) - 1px;
           padding-bottom: govuk-spacing(3) + 1px;
           padding-left: govuk-spacing(4) - 1px;
 
-          border-top: $top-border-width solid transparent;
-          border-right: 1px solid $govuk-border-colour;
-          border-left: 1px solid $govuk-border-colour;
+          border: 1px solid $govuk-border-colour;
+          border-bottom: 0;
 
           color: $govuk-text-colour;
           background-color: govuk-colour("white");
-          box-shadow: inset 0 4px 0 0 $govuk-link-colour;
           text-decoration: none;
 
-          @include govuk-if-ie8 {
+          &::after {
+            border-top-width: 4px;
             border-top-color: $govuk-link-colour;
           }
 
           &:focus {
-            box-shadow: inset 0 4px 0 0 $govuk-focus-colour, inset 0 8px 0 0 $govuk-focus-text-colour;
+            // Remove outline from unenhanced focus state
+            outline: none;
+            // Remove styles from unenhanced focus state
+            box-shadow: none;
 
-            @include govuk-if-ie8 {
-              border-top-color: $govuk-focus-text-colour;
+            &::after {
+              border-bottom-width: 4px;
+              border-top-color: $govuk-focus-colour;
+              border-bottom-color: $govuk-focus-text-colour;
             }
           }
         }
