@@ -14,6 +14,12 @@
 
 🆕 New features:
 
+- Support custom attributes on summary list action links
+
+  You can now use the `attributes` macro option to add additional HTML attributes to summary list action links.
+
+  ([PR #1372](https://github.com/alphagov/govuk-frontend/pull/1372))
+
 - Support aria-describedby on all form fields
 
   All form fields now support an initial `aria-describedby` value, populated before the optional hint and error message IDs are appended.

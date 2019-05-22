@@ -55,7 +55,11 @@ params:
     - name: classes
       type: string
       required: false
-      description: Classes to add to the action item
+      description: Classes to add to the action item.
+    - name: attributes
+      type: object
+      required: false
+      description: HTML attributes (for example data attributes) to add to the action item.
 - name: classes
   type: string
   required: false
