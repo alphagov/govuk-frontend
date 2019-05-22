@@ -256,6 +256,13 @@
 
   ([PR #1310](https://github.com/alphagov/govuk-frontend/pull/1310))
 
+- Fixes the description for serviceName option in header component (used in the
+  GOV.UK Design System)
+
+  Thanks to [Ed Horsford](https://github.com/edwardhorsford) for reporting.
+
+  ([PR #1368](https://github.com/alphagov/govuk-frontend/pull/1368))
+
 [compatibility mode]: https://github.com/alphagov/govuk-frontend/blob/master/docs/installation/installing-with-npm.md#compatibility-mode
 
 ## 2.11.0 (Feature release)

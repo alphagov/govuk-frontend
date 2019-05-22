@@ -10,11 +10,11 @@ params:
 - name: productName
   type: string
   required: false
-  description: Header title that is placed next to GOV.UK. Used for product names (i.e. Pay, Verify)
+  description: Product name, used when the product name follows on directly from ‘GOV.UK’. For example, GOV.UK Pay or GOV.UK Design System. In most circumstances, you should use serviceName.
 - name: serviceName
   type: string
   required: false
-  description: Header title that is placed next to GOV.UK. Used for product names (i.e. Pay, Verify)
+  description: The name of your service, included in the header.
 - name: serviceUrl
   type: string
   required: false
