@@ -6,6 +6,8 @@
 ///
 /// Provides an outline to clearly indicate when the target element is focused.
 /// Used for interactive text-based elements.
+///
+/// @access public
 
 @mixin govuk-focused-text {
   // When colours are overridden, for example when users have a dark mode,
