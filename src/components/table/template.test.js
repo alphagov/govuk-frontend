@@ -109,6 +109,88 @@ describe('Table', () => {
     expect($lastTableHeader.hasClass('govuk-table__header')).toBeTruthy()
   })
 
+  it('includes additional classes when the first row is a header', () => {
+    const $ = render('table', {
+      'firstCellIsHeader': true,
+      'rows': [
+        [
+          {
+            'text': 'January',
+            'classes': 'my-custom-class'
+          },
+          {
+            'text': '£85',
+            'format': 'numeric'
+          }
+        ]
+      ]
+    })
+
+    expect($('.govuk-table__row *:first-child').hasClass('my-custom-class')).toBeTruthy()
+  })
+
+  it('includes rowspan when the first row is a header', () => {
+    const $ = render('table', {
+      'firstCellIsHeader': true,
+      'rows': [
+        [
+          {
+            'text': 'January',
+            'rowspan': 2
+          },
+          {
+            'text': '£85',
+            'format': 'numeric'
+          }
+        ]
+      ]
+    })
+
+    expect($('.govuk-table__row *:first-child').attr('rowspan')).toEqual('2')
+  })
+
+  it('includes colspan when the first row is a header', () => {
+    const $ = render('table', {
+      'firstCellIsHeader': true,
+      'rows': [
+        [
+          {
+            'text': 'January',
+            'colspan': 2
+          },
+          {
+            'text': '£85',
+            'format': 'numeric'
+          }
+        ]
+      ]
+    })
+
+    expect($('.govuk-table__row *:first-child').attr('colspan')).toEqual('2')
+  })
+
+  it('includes additional attributes when the first row is a header', () => {
+    const $ = render('table', {
+      'firstCellIsHeader': true,
+      'rows': [
+        [
+          {
+            'text': 'January',
+            'attributes': {
+              'data-foo': 'bar'
+            }
+          },
+          {
+            'text': '£85',
+            'format': 'numeric'
+          }
+        ]
+      ]
+    })
+
+    expect($('.govuk-table__row *:first-child').attr('data-foo')).toEqual('bar')
+  })
+
   it('renders with thead', () => {
     const args = examples['table with head']
     const $ = render('table', args)
