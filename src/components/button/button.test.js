@@ -104,6 +104,34 @@ describe('/components/button', () => {
 
         expect(submitCount).toBe(2)
       })
+      it('does not prevent subsequent clicks on different buttons', async () => {
+        await page.goto(baseUrl + '/components/button/prevent-double-click/preview', { waitUntil: 'load' })
+
+        // Our examples don't have form wrappers so we need to overwrite it.
+        await page.evaluate(() => {
+          const $button = document.querySelector('button')
+          const $buttonPrime = $button.cloneNode()
+          const $form = document.createElement('form')
+          $button.parentNode.appendChild($form)
+          $button.parentNode.removeChild($button)
+          $form.appendChild($button)
+          $form.appendChild($buttonPrime)
+
+          window.__SUBMIT_EVENTS = 0
+          $form.addEventListener('submit', event => {
+            window.__SUBMIT_EVENTS++
+            // Don't refresh the page, which will destroy the context to test against.
+            event.preventDefault()
+          })
+        })
+
+        await page.click('button:nth-child(1)')
+        await page.click('button:nth-child(2)')
+
+        const submitCount = await page.evaluate(() => window.__SUBMIT_EVENTS)
+
+        expect(submitCount).toBe(2)
+      })
     })
   })
 })
