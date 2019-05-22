@@ -508,6 +508,13 @@
 
 [compatibility mode]: https://github.com/alphagov/govuk-frontend/blob/master/docs/installation/installing-with-npm.md#compatibility-mode
 
+- Allow distinct buttons with `prevent-double-click` enabled to be clicked subsequently within one second
+
+  For buttons with `prevent-double-click` enabled we set the `debounceFormSubmitTimer` for each instance, so a specific action is stopped from being called multiple times without interfering with other submit buttons on the page.
+
+  ([PR #1370](https://github.com/alphagov/govuk-frontend/pull/1370))
+
+
 ## 2.11.0 (Feature release)
 
 🆕 New features:
