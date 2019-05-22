@@ -22,8 +22,6 @@ scenario: >-
 {% set pageTitle = "Upload your photo" %}
 {% block pageTitle %}{{ "Error: " if errors }}GOV.UK - {{ pageTitle }}{% endblock %}
 
-{% set mainClasses = "govuk-main-wrapper--l" %}
-
 {% block header %}
   {% include "../../partials/banner.njk" %}
   {{ govukHeader({

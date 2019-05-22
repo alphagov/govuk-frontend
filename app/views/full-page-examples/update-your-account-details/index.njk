@@ -18,8 +18,6 @@ scenario: >-
 {% set pageTitle = "Update your account details" %}
 {% block pageTitle %}{{ "Error: " if errors }}GOV.UK - {{ pageTitle }}{% endblock %}
 
-{% set mainClasses = "govuk-main-wrapper--l" %}
-
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back"
