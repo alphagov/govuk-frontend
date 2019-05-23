@@ -59,7 +59,7 @@ describe('grid system', () => {
         ${sassImports}
 
         .govuk-grid-column-full {
-          @include govuk-grid-column($class: false);
+          @include govuk-grid-column();
         }
         `
 
@@ -84,7 +84,7 @@ describe('grid system', () => {
         ${sassImports}
 
         .govuk-grid-column-two-thirds {
-          @include govuk-grid-column(two-thirds, $class: false);
+          @include govuk-grid-column(two-thirds);
         }
       `
       const results = await sassRender({ data: sass, ...sassConfig })
@@ -109,7 +109,7 @@ describe('grid system', () => {
         ${sassImports}
 
         .govuk-grid-column-one-quarter-at-desktop {
-          @include govuk-grid-column(one-quarter, $at: desktop, $class: false);
+          @include govuk-grid-column(one-quarter, $at: desktop);
         }
       `
       const results = await sassRender({ data: sass, ...sassConfig })
@@ -132,7 +132,7 @@ describe('grid system', () => {
         ${sassImports}
 
         .govuk-grid-column-one-quarter-at-500px {
-          @include govuk-grid-column(one-quarter, $at: 500px, $class: false);
+          @include govuk-grid-column(one-quarter, $at: 500px);
         }
       `
       const results = await sassRender({ data: sass, ...sassConfig })
@@ -157,7 +157,7 @@ describe('grid system', () => {
         ${sassImports}
 
         .govuk-grid-column-one-half-right {
-          @include govuk-grid-column(one-half, $float: right, $class: false);
+          @include govuk-grid-column(one-half, $float: right);
         }
       `
       const results = await sassRender({ data: sass, ...sassConfig })
@@ -174,52 +174,6 @@ describe('grid system', () => {
             .govuk-grid-column-one-half-right {
               width: 50%;
               float: right; } }
-        `)
-    })
-
-    it('includes the class name by default (deprecated)', async () => {
-      const sass = `
-        ${sassImports}
-
-        @include govuk-grid-column();
-        `
-
-      const results = await sassRender({ data: sass, ...sassConfig })
-
-      expect(results.css
-        .toString()
-        .trim())
-        .toBe(outdent`
-        .govuk-grid-column-full {
-          box-sizing: border-box;
-          width: 100%;
-          padding: 0 15px; }
-          @media (min-width: 40.0625em) {
-            .govuk-grid-column-full {
-              width: 100%;
-              float: left; } }`)
-    })
-
-    it('allows the class name to be overridden (deprecated)', async () => {
-      const sass = `
-        ${sassImports}
-
-        @include govuk-grid-column(three-quarters, $class:'large-column');
-      `
-      const results = await sassRender({ data: sass, ...sassConfig })
-
-      expect(results.css
-        .toString()
-        .trim())
-        .toBe(outdent`
-        .large-column-three-quarters {
-          box-sizing: border-box;
-          width: 100%;
-          padding: 0 15px; }
-          @media (min-width: 40.0625em) {
-            .large-column-three-quarters {
-              width: 75%;
-              float: left; } }
         `)
     })
   })
