@@ -265,6 +265,31 @@ describe('Data list', () => {
 
         expect($actionList.hasClass('app-custom-class')).toBeTruthy()
       })
+      it('renders attributes', async () => {
+        const $ = render('summary-list', {
+          rows: [
+            {
+              actions: {
+                items: [
+                  {
+                    text: 'Edit',
+                    attributes: {
+                      'data-test-attribute': 'value',
+                      'data-test-attribute-2': 'value-2'
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        })
+
+        const $component = $('.govuk-summary-list')
+        const $actionLink = $component.find('.govuk-summary-list__actions > a')
+
+        expect($actionLink.attr('data-test-attribute')).toEqual('value')
+        expect($actionLink.attr('data-test-attribute-2')).toEqual('value-2')
+      })
       it('renders a single anchor with one action', async () => {
         const $ = render('summary-list', {
           rows: [
