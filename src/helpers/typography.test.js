@@ -1,15 +1,10 @@
 /* eslint-env jest */
 
-const util = require('util')
-
-const configPaths = require('../../config/paths.json')
-
 const outdent = require('outdent')
-const sass = require('node-sass')
-const sassRender = util.promisify(sass.render)
+
+const { renderSass } = require('../../lib/jest-helpers')
 
 const sassConfig = {
-  includePaths: [ configPaths.src ],
   outputStyle: 'nested'
 }
 
@@ -64,7 +59,7 @@ describe('@mixin govuk-typography-common', () => {
     }
     `
 
-    const results = await sassRender({ data: sass, ...sassConfig })
+    const results = await renderSass({ data: sass, ...sassConfig })
     const resultsString = results.css.toString()
 
     expect(resultsString).toContain(`@font-face`)
@@ -86,7 +81,7 @@ describe('@mixin govuk-typography-common', () => {
     }
     `
 
-    const results = await sassRender({ data: sass, ...sassConfig })
+    const results = await renderSass({ data: sass, ...sassConfig })
     const resultsString = results.css.toString()
 
     expect(resultsString).not.toContain(`@font-face`)
@@ -107,7 +102,7 @@ describe('@mixin govuk-typography-common', () => {
     }
     `
 
-    const results = await sassRender({ data: sass, ...sassConfig })
+    const results = await renderSass({ data: sass, ...sassConfig })
     const resultsString = results.css.toString()
 
     expect(resultsString).not.toContain(`@font-face`)
@@ -128,7 +123,7 @@ describe('@mixin govuk-typography-common', () => {
     }
     `
 
-    const results = await sassRender({ data: sass, ...sassConfig })
+    const results = await renderSass({ data: sass, ...sassConfig })
     const resultsString = results.css.toString()
 
     expect(resultsString).not.toContain(`@font-face`)
@@ -146,7 +141,7 @@ describe('@function _govuk-line-height', () => {
         line-height: _govuk-line-height($line-height: 3.141, $font-size: 20px);
       }`
 
-    const results = await sassRender({ data: sass, ...sassConfig })
+    const results = await renderSass({ data: sass, ...sassConfig })
 
     expect(results.css.toString().trim()).toBe(outdent`
       .foo {
@@ -161,7 +156,7 @@ describe('@function _govuk-line-height', () => {
         line-height: _govuk-line-height($line-height: 2em, $font-size: 20px);
       }`
 
-    const results = await sassRender({ data: sass, ...sassConfig })
+    const results = await renderSass({ data: sass, ...sassConfig })
 
     expect(results.css.toString().trim()).toBe(outdent`
       .foo {
@@ -176,7 +171,7 @@ describe('@function _govuk-line-height', () => {
         line-height: _govuk-line-height($line-height: 30px, $font-size: 20px);
       }`
 
-    const results = await sassRender({ data: sass, ...sassConfig })
+    const results = await renderSass({ data: sass, ...sassConfig })
 
     expect(results.css.toString().trim()).toBe(outdent`
       .foo {
@@ -193,7 +188,7 @@ describe('@mixin govuk-typography-responsive', () => {
         @include govuk-typography-responsive($size: 14)
       }`
 
-    const results = await sassRender({ data: sass, ...sassConfig })
+    const results = await renderSass({ data: sass, ...sassConfig })
 
     expect(results.css.toString().trim()).toBe(outdent`
       .foo {
@@ -215,7 +210,7 @@ describe('@mixin govuk-typography-responsive', () => {
         @include govuk-typography-responsive($size: 12)
       }`
 
-    const results = await sassRender({ data: sass, ...sassConfig })
+    const results = await renderSass({ data: sass, ...sassConfig })
 
     expect(results.css.toString().trim()).toBe(outdent`
       .foo {
@@ -236,7 +231,7 @@ describe('@mixin govuk-typography-responsive', () => {
         @include govuk-typography-responsive(3.14159265359)
       }`
 
-    await expect(sassRender({ data: sass, ...sassConfig }))
+    await expect(renderSass({ data: sass, ...sassConfig }))
       .rejects
       .toThrow(
         'Unknown font size `3.14159` - expected a point from the typography scale.'
@@ -252,7 +247,7 @@ describe('@mixin govuk-typography-responsive', () => {
           @include govuk-typography-responsive($size: 14, $important: true);
         }`
 
-      const results = await sassRender({ data: sass, ...sassConfig })
+      const results = await renderSass({ data: sass, ...sassConfig })
 
       expect(results.css.toString().trim()).toBe(outdent`
         .foo {
@@ -274,7 +269,7 @@ describe('@mixin govuk-typography-responsive', () => {
           @include govuk-typography-responsive($size: 12, $important: true);
         }`
 
-      const results = await sassRender({ data: sass, ...sassConfig })
+      const results = await renderSass({ data: sass, ...sassConfig })
 
       expect(results.css.toString().trim()).toBe(outdent`
         .foo {
@@ -297,7 +292,7 @@ describe('@mixin govuk-typography-responsive', () => {
           @include govuk-typography-responsive($size: 14, $override-line-height: 21px);
         }`
 
-      const results = await sassRender({ data: sass, ...sassConfig })
+      const results = await renderSass({ data: sass, ...sassConfig })
 
       expect(results.css.toString().trim()).toBe(outdent`
         .foo {
@@ -322,7 +317,7 @@ describe('@mixin govuk-typography-responsive', () => {
           @include govuk-typography-responsive($size: 14)
         }`
 
-      const results = await sassRender({ data: sass, ...sassConfig })
+      const results = await renderSass({ data: sass, ...sassConfig })
 
       expect(results.css.toString().trim()).toBe(outdent`
         .foo {
@@ -344,7 +339,7 @@ describe('@mixin govuk-typography-responsive', () => {
           @include govuk-typography-responsive($size: 14)
         }`
 
-      const results = await sassRender({ data: sass, ...sassConfig })
+      const results = await renderSass({ data: sass, ...sassConfig })
 
       expect(results.css.toString().trim()).toBe(outdent`
         .foo {
@@ -366,7 +361,7 @@ describe('@mixin govuk-typography-responsive', () => {
             @include govuk-typography-responsive($size: 14, $important: true);
           }`
 
-        const results = await sassRender({ data: sass, ...sassConfig })
+        const results = await renderSass({ data: sass, ...sassConfig })
 
         expect(results.css.toString().trim()).toBe(outdent`
           .foo {
@@ -390,7 +385,7 @@ describe('@mixin govuk-typography-responsive', () => {
           @include govuk-typography-responsive($size: 14)
         }`
 
-      const results = await sassRender({ data: sass, ...sassConfig })
+      const results = await renderSass({ data: sass, ...sassConfig })
 
       expect(results.css.toString().trim()).toBe(outdent`
         .foo {
