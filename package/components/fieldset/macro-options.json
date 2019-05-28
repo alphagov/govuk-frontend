@@ -3,7 +3,7 @@
         "name": "describedBy",
         "type": "string",
         "required": false,
-        "description": "Text or element id to add to the `aria-describedby` attribute to provide description of the group of fields for screenreader users."
+        "description": "One or more element IDs to add to the `aria-describedby` attribute, used to provide additional descriptive information for screenreader users."
     },
     {
         "name": "legend",

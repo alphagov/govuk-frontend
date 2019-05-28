@@ -1,5 +1,11 @@
 [
     {
+        "name": "describedBy",
+        "type": "string",
+        "required": false,
+        "description": "One or more element IDs to add to the input `aria-describedby` attribute without a fieldset, used to provide additional descriptive information for screenreader users."
+    },
+    {
         "name": "fieldset",
         "type": "object",
         "required": false,
