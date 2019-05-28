@@ -1,16 +1,8 @@
 # Changelog
 
-## Template
+See the [versioning documentation for how to update this changelog](./docs/contributing/versioning.md#updating-changelog).
 
-💥 Breaking changes:
-
-- Pull Request Title goes here
-
-  Description goes here (optional)
-
-  To migrate you need to change: X
-
-  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+## Unreleased
 
 🆕 New features:
 
@@ -28,26 +20,6 @@
 
   ([PR #1347](https://github.com/alphagov/govuk-frontend/pull/1347))
 
-- Pull Request Title goes here
-
-  Description goes here (optional)
-
-  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
-
-🔧 Fixes:
-
-- Remove deprecated `@else-if` statement, replace with `@else if`
-
-  ([PR #1333](https://github.com/alphagov/govuk-frontend/pull/1333))
-
-- Pull Request Title goes here
-
-  Description goes here (optional)
-
-  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
-
-## Unreleased
-
 🔧 Fixes:
 
 - Update colour for MHCLG
@@ -55,6 +27,10 @@
   Fixes the brand colour for MHCLG to their correct corporate "green" brand.
 
   ([PR #1319](https://github.com/alphagov/govuk-frontend/pull/1319))
+
+- Remove deprecated `@else-if` statement, replace with `@else if`
+
+  ([PR #1333](https://github.com/alphagov/govuk-frontend/pull/1333))
 
 - Prevent the fallback PNG image for the crown in the header from being
   downloaded unnecessarily in Internet Explorer and Edge.
