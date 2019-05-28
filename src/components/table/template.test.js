@@ -86,7 +86,7 @@ describe('Table', () => {
 
       const $th = $('.govuk-table thead tr th')
 
-      expect($th.text()).toEqual('Foo <script>hacking.do(1337)</script>')
+      expect($th.html()).toEqual('Foo &lt;script&gt;hacking.do(1337)&lt;/script&gt;')
     })
 
     it('allow HTML when passed as HTML', () => {
@@ -100,7 +100,7 @@ describe('Table', () => {
 
       const $th = $('.govuk-table thead tr th')
 
-      expect($th.text()).toEqual('Foo bar')
+      expect($th.html()).toEqual('Foo <span>bar</span>')
     })
 
     it('can have a format specified', () => {
@@ -254,7 +254,7 @@ describe('Table', () => {
 
         const $th = $('.govuk-table tbody tr th')
 
-        expect($th.text()).toEqual('Foo <script>hacking.do(1337)</script>')
+        expect($th.html()).toEqual('Foo &lt;script&gt;hacking.do(1337)&lt;/script&gt;')
       })
 
       it('allow HTML when passed as HTML', () => {
@@ -269,7 +269,7 @@ describe('Table', () => {
 
         const $th = $('.govuk-table tbody tr th')
 
-        expect($th.text()).toEqual('Foo bar')
+        expect($th.html()).toEqual('Foo <span>bar</span>')
       })
 
       it('are associated with their rows using scope="row"', () => {
@@ -408,7 +408,7 @@ describe('Table', () => {
 
       const $td = $('.govuk-table td')
 
-      expect($td.text()).toEqual('Foo <script>hacking.do(1337)</script>')
+      expect($td.html()).toEqual('Foo &lt;script&gt;hacking.do(1337)&lt;/script&gt;')
     })
 
     it('allow HTML when passed as HTML', () => {
@@ -422,7 +422,7 @@ describe('Table', () => {
 
       const $td = $('.govuk-table td')
 
-      expect($td.text()).toEqual('Foo bar')
+      expect($td.html()).toEqual('Foo <span>bar</span>')
     })
 
     it('can have a format specified', () => {
