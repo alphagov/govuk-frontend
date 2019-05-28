@@ -76,42 +76,45 @@
     touch-action: manipulation;
   }
 
-  // [ ] Check box
-  .govuk-checkboxes__label::before {
-    content: "";
-    box-sizing: border-box;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: $govuk-checkboxes-size;
-    height: $govuk-checkboxes-size;
-    border: $govuk-border-width-form-element solid currentColor;
-    background: transparent;
-  }
+  // Internet Explorer 8 does not all the features needed for the custom inputs, so avoid showing them.
+  @include govuk-not-ie8 {
+    // [ ] Check box
+    .govuk-checkboxes__label::before {
+      content: "";
+      box-sizing: border-box;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: $govuk-checkboxes-size;
+      height: $govuk-checkboxes-size;
+      border: $govuk-border-width-form-element solid currentColor;
+      background: transparent;
+    }
 
-  // ✔ Check mark
-  //
-  // The check mark is a box with a border on the left and bottom side (└──),
-  // rotated 45 degrees
-  .govuk-checkboxes__label::after {
-    content: "";
+    // ✔ Check mark
+    //
+    // The check mark is a box with a border on the left and bottom side (└──),
+    // rotated 45 degrees
+    .govuk-checkboxes__label::after {
+      content: "";
 
-    position: absolute;
-    top: 11px;
-    left: 9px;
-    width: 18px;
-    height: 7px;
+      position: absolute;
+      top: 11px;
+      left: 9px;
+      width: 18px;
+      height: 7px;
 
-    transform: rotate(-45deg);
-    border: solid;
-    border-width: 0 0 $govuk-border-width $govuk-border-width;
-    // Fix bug in IE11 caused by transform rotate (-45deg).
-    // See: alphagov/govuk_elements/issues/518
-    border-top-color: transparent;
+      transform: rotate(-45deg);
+      border: solid;
+      border-width: 0 0 $govuk-border-width $govuk-border-width;
+      // Fix bug in IE11 caused by transform rotate (-45deg).
+      // See: alphagov/govuk_elements/issues/518
+      border-top-color: transparent;
 
-    opacity: 0;
+      opacity: 0;
 
-    background: transparent;
+      background: transparent;
+    }
   }
 
   .govuk-checkboxes__hint {
@@ -120,15 +123,18 @@
     padding-left: $govuk-checkboxes-label-padding-left-right;
   }
 
-  // Focused state
-  .govuk-checkboxes__input:focus + .govuk-checkboxes__label::before {
-    border-width: 4px;
-    box-shadow: 0 0 0 $govuk-focus-width $govuk-focus-colour;
-  }
+  // Internet Explorer 8 does not all the features needed for the custom inputs, so avoid showing them.
+  @include govuk-not-ie8 {
+    // Focused state
+    .govuk-checkboxes__input:focus + .govuk-checkboxes__label::before {
+      border-width: 4px;
+      box-shadow: 0 0 0 $govuk-focus-width $govuk-focus-colour;
+    }
 
-  // Selected state
-  .govuk-checkboxes__input:checked + .govuk-checkboxes__label::after {
-    opacity: 1;
+    // Selected state
+    .govuk-checkboxes__input:checked + .govuk-checkboxes__label::after {
+      opacity: 1;
+    }
   }
 
   // Disabled state
@@ -221,25 +227,28 @@
       }
     }
 
-    // [ ] Check box
-    //
-    // Reduce the size of the check box [1], vertically center it within the
-    // touch target [2]
-    .govuk-checkboxes__label::before {
-      top: $input-offset - $govuk-border-width-form-element; // 2
-      width: $govuk-small-checkboxes-size; // 1
-      height: $govuk-small-checkboxes-size; // 1
-    }
+    // Internet Explorer 8 does not all the features needed for the custom inputs, so avoid showing them.
+    @include govuk-not-ie8 {
+      // [ ] Check box
+      //
+      // Reduce the size of the check box [1], vertically center it within the
+      // touch target [2]
+      .govuk-checkboxes__label::before {
+        top: $input-offset - $govuk-border-width-form-element; // 2
+        width: $govuk-small-checkboxes-size; // 1
+        height: $govuk-small-checkboxes-size; // 1
+      }
 
-    // ✔ Check mark
-    //
-    // Reduce the size of the check mark and re-align within the checkbox
-    .govuk-checkboxes__label::after {
-      top: 15px;
-      left: 6px;
-      width: 9px;
-      height: 3.5px;
-      border-width: 0 0 3px 3px;
+      // ✔ Check mark
+      //
+      // Reduce the size of the check mark and re-align within the checkbox
+      .govuk-checkboxes__label::after {
+        top: 15px;
+        left: 6px;
+        width: 9px;
+        height: 3.5px;
+        border-width: 0 0 3px 3px;
+      }
     }
 
     // Fix position of hint with small checkboxes
@@ -263,40 +272,43 @@
       clear: both;
     }
 
-    // Hover state for small checkboxes.
-    //
-    // We use a hover state for small checkboxes because the touch target size
-    // is so much larger than their visible size, and so we need to provide
-    // feedback to the user as to which checkbox they will select when their
-    // cursor is outside of the visible area.
-    .govuk-checkboxes__item:hover .govuk-checkboxes__input:not(:disabled) + .govuk-checkboxes__label::before {
-      box-shadow: 0 0 0 $govuk-hover-width $govuk-hover-colour;
-    }
-
-    // Because we've overridden the border-shadow provided by the focus state,
-    // we need to redefine that too.
-    //
-    // We use two box shadows, one that restores the original focus state [1]
-    // and another that then applies the hover state [2].
-    .govuk-checkboxes__item:hover .govuk-checkboxes__input:focus + .govuk-checkboxes__label::before {
-      // sass-lint:disable indentation
-      box-shadow: 0 0 0 $govuk-focus-width $govuk-focus-colour, // 1
-                  0 0 0 $govuk-hover-width $govuk-hover-colour; // 2
-    }
-
-    // For devices that explicitly don't support hover, don't provide a hover
-    // state (e.g. on touch devices like iOS).
-    //
-    // We can't use `@media (hover: hover)` because we wouldn't get the hover
-    // state in browsers that don't support `@media (hover)` (like Internet
-    // Explorer) – so we have to 'undo' the hover state instead.
-    @media (hover: none), (pointer: coarse) {
+    // Internet Explorer 8 does not all the features needed for the custom inputs, so avoid showing them.
+    @include govuk-not-ie8 {
+      // Hover state for small checkboxes.
+      //
+      // We use a hover state for small checkboxes because the touch target size
+      // is so much larger than their visible size, and so we need to provide
+      // feedback to the user as to which checkbox they will select when their
+      // cursor is outside of the visible area.
       .govuk-checkboxes__item:hover .govuk-checkboxes__input:not(:disabled) + .govuk-checkboxes__label::before {
-        box-shadow: initial;
+        box-shadow: 0 0 0 $govuk-hover-width $govuk-hover-colour;
       }
 
+      // Because we've overridden the border-shadow provided by the focus state,
+      // we need to redefine that too.
+      //
+      // We use two box shadows, one that restores the original focus state [1]
+      // and another that then applies the hover state [2].
       .govuk-checkboxes__item:hover .govuk-checkboxes__input:focus + .govuk-checkboxes__label::before {
-        box-shadow: 0 0 0 $govuk-focus-width $govuk-focus-colour;
+        // sass-lint:disable indentation
+        box-shadow: 0 0 0 $govuk-focus-width $govuk-focus-colour, // 1
+                    0 0 0 $govuk-hover-width $govuk-hover-colour; // 2
+      }
+
+      // For devices that explicitly don't support hover, don't provide a hover
+      // state (e.g. on touch devices like iOS).
+      //
+      // We can't use `@media (hover: hover)` because we wouldn't get the hover
+      // state in browsers that don't support `@media (hover)` (like Internet
+      // Explorer) – so we have to 'undo' the hover state instead.
+      @media (hover: none), (pointer: coarse) {
+        .govuk-checkboxes__item:hover .govuk-checkboxes__input:not(:disabled) + .govuk-checkboxes__label::before {
+          box-shadow: initial;
+        }
+
+        .govuk-checkboxes__item:hover .govuk-checkboxes__input:focus + .govuk-checkboxes__label::before {
+          box-shadow: 0 0 0 $govuk-focus-width $govuk-focus-colour;
+        }
       }
     }
   }
