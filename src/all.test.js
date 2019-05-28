@@ -1,16 +1,9 @@
 /* eslint-env jest */
 
-const util = require('util')
-
 const configPaths = require('../config/paths.json')
 const PORT = configPaths.ports.test
 
-const sass = require('node-sass')
-const sassRender = util.promisify(sass.render)
-
-const sassConfig = {
-  includePaths: [ configPaths.src ]
-}
+const { renderSass } = require('../lib/jest-helpers')
 
 let baseUrl = 'http://localhost:' + PORT
 
@@ -105,7 +98,7 @@ describe('GOV.UK Frontend', () => {
       const sass = `
         @import "all";
       `
-      const results = await sassRender({ data: sass, ...sassConfig })
+      const results = await renderSass({ data: sass })
       expect(results.css.toString()).not.toContain(', a {')
       expect(results.css.toString()).not.toContain(', p {')
     })
@@ -114,7 +107,7 @@ describe('GOV.UK Frontend', () => {
         $govuk-global-styles: true;
         @import "all";
       `
-      const results = await sassRender({ data: sass, ...sassConfig })
+      const results = await renderSass({ data: sass })
       expect(results.css.toString()).toContain(', a {')
       expect(results.css.toString()).toContain(', p {')
     })
@@ -153,7 +146,7 @@ describe('GOV.UK Frontend', () => {
   it('does not contain any unexpected govuk- function calls', async () => {
     const sass = `@import "all"`
 
-    const results = await sassRender({ data: sass, ...sassConfig })
+    const results = await renderSass({ data: sass })
     const css = results.css.toString()
 
     const functionCalls = css.match(/_?govuk-[\w-]+\(.*?\)/g)
