@@ -197,6 +197,26 @@
 
   ([PR #1342](https://github.com/alphagov/govuk-frontend/pull/1342))
 
+- Remove the deprecated `$class` parameter from the `@govuk-grid-column` mixin
+
+  To migrate, you'll need to update any places in your code where you use the
+  `@govuk-grid-column` mixin.
+
+  If you are currently passing a class name (`$class: 'foo'`) you should remove
+  the `$class` argument and wrap your call to the mixin in the class name
+  instead:
+
+  ```
+  .foo {
+    @include govuk-grid-column(...)
+  }
+  ```
+
+  If you are currently passing `$class: false` then you can just remove the
+  `$class` argument, as this is now the default behaviour.
+
+  ([PR #1376](https://github.com/alphagov/govuk-frontend/pull/1376))
+
 - Pull Request Title goes here
 
   Description goes here (optional)
