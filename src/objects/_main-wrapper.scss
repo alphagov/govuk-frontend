@@ -50,6 +50,10 @@
     @include govuk-main-wrapper;
   }
 
+  // For most instances of main wrapper, :first-child will give the correct spacing without
+  // the need for the `l` modifier, but it is available in instances where there may be
+  // empty elements that would be difficult to remove.
+  .govuk-main-wrapper:first-child,
   .govuk-main-wrapper--l {
     @include govuk-main-wrapper--l;
   }
