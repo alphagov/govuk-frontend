@@ -253,6 +253,15 @@
 
   ([PR #1367](https://github.com/alphagov/govuk-frontend/pull/1367))
 
+- Simplify `.govuk-main-wrapper` logic to avoid the need for large modifier in most cases.
+
+  By using :first-child we can avoid the need for a modifier class, which is often missed.
+
+  We are also deprecating mixins for main wrapper.
+  We're not sure these are useful, so these will be removed in a future release, if you are using this please let us know: https://github.com/alphagov/govuk-frontend/issues/1379
+
+  ([PR #1371](https://github.com/alphagov/govuk-frontend/pull/1371))
+
 - Pull Request Title goes here
 
   Description goes here (optional)
