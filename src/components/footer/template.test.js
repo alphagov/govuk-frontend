@@ -70,7 +70,7 @@ describe('footer', () => {
 
       const $component = $('.govuk-footer')
       const $heading = $component.find('h2.govuk-visually-hidden')
-      expect($heading.text()).toEqual('Support links')
+      expect($heading.text()).toEqual('Items')
     })
 
     it('renders links', () => {
