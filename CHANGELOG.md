@@ -252,6 +252,10 @@ changelog](./docs/contributing/versioning.md#updating-changelog).
 
 🔧 Fixes:
 
+- Fix settings layer being implicitly dependant on itself.
+
+  ([PR #1381](https://github.com/alphagov/govuk-frontend/pull/1381))
+
 - Fix improperly indented html output in Design System examples
 
   Thanks to [Debs](https://github.com/debsdee) and [Joe](https://github.com/joelanman) for raising this issue.
