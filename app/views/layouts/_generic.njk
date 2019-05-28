@@ -43,6 +43,39 @@
 {% endblock %}
 
 {% block bodyEnd %}
+
+  {% if legacy %}
+    <script src="/vendor/govuk_template/javascripts/govuk-template.js"></script>
+
+    {# Frontend Toolkit dependency #}
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    {# Frontend Toolkit modules #}
+    <script src="/vendor/govuk_frontend_toolkit/details.polyfill.js"></script>
+    <script src="/vendor/govuk_frontend_toolkit/modules.js"></script>
+    <script src="/vendor/govuk_frontend_toolkit/modules/auto-track-event.js"></script>
+    <script src="/vendor/govuk_frontend_toolkit/primary-links.js"></script>
+    <script src="/vendor/govuk_frontend_toolkit/shim-links-with-button-role.js"></script>
+    <script src="/vendor/govuk_frontend_toolkit/show-hide-content.js"></script>
+    <script src="/vendor/govuk_frontend_toolkit/stick-at-top-when-scrolling.js"></script>
+    <script src="/vendor/govuk_frontend_toolkit/stop-scrolling-at-footer.js"></script>
+
+    <script>
+      (function() {
+        // Instantiate Frontend Toolkit modules
+        // Ordering follows what we do in test manifest: /spec/manifest.js
+        GOVUK.details.init()
+        GOVUK.modules.start()
+        GOVUK.primaryLinks.init()
+
+        var showHideContent = new GOVUK.ShowHideContent()
+        showHideContent.init()
+
+        GOVUK.stickAtTopWhenScrolling.init()
+        GOVUK.shimLinksWithButtonRole.init()
+      })()
+     </script>
+  {% endif %}
+
   <script src="/public/all.js"></script>
   <script>window.GOVUKFrontend.initAll()</script>
 {% endblock %}
