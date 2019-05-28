@@ -1,14 +1,8 @@
 /* eslint-env jest */
 
-const util = require('util')
-
-const configPaths = require('../../config/paths.json')
-
-const sass = require('node-sass')
-const sassRender = util.promisify(sass.render)
+const { renderSass } = require('../../lib/jest-helpers')
 
 const sassConfig = {
-  includePaths: [ configPaths.src ],
   outputStyle: 'compressed'
 }
 
@@ -29,7 +23,7 @@ describe('@mixin govuk-exports', () => {
         }
       }`
 
-    const results = await sassRender({ data: sass, ...sassConfig })
+    const results = await renderSass({ data: sass, ...sassConfig })
 
     expect(results.css.toString().trim()).toEqual('.foo{color:red}')
   })
@@ -50,7 +44,7 @@ describe('@mixin govuk-exports', () => {
         }
       }`
 
-    const results = await sassRender({ data: sass, ...sassConfig })
+    const results = await renderSass({ data: sass, ...sassConfig })
 
     expect(results.css.toString().trim())
       .toEqual('.foo{color:red}.bar{color:blue}')

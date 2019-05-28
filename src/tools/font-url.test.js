@@ -1,14 +1,8 @@
 /* eslint-env jest */
 
-const util = require('util')
-
-const configPaths = require('../../config/paths.json')
-
-const sass = require('node-sass')
-const sassRender = util.promisify(sass.render)
+const { renderSass } = require('../../lib/jest-helpers')
 
 const sassConfig = {
-  includePaths: [ configPaths.src ],
   outputStyle: 'compressed'
 }
 
@@ -24,7 +18,7 @@ describe('@function font-url', () => {
         src: govuk-font-url("whatever.woff2");
       }`
 
-    const results = await sassRender({ data: sass, ...sassConfig })
+    const results = await renderSass({ data: sass, ...sassConfig })
 
     expect(results.css.toString().trim()).toEqual(
       '@font-face{font-family:"whatever";src:url("/path/to/fonts/whatever.woff2")}'
@@ -42,7 +36,7 @@ describe('@function font-url', () => {
         src: govuk-font-url("whatever.woff2");
       }`
 
-    const results = await sassRender({ data: sass, ...sassConfig })
+    const results = await renderSass({ data: sass, ...sassConfig })
 
     expect(results.css.toString().trim()).toEqual(
       '@font-face{font-family:"whatever";src:"WHATEVER.WOFF2"}'
@@ -65,7 +59,7 @@ describe('@function font-url', () => {
         src: govuk-font-url("whatever.woff2");
       }`
 
-    const results = await sassRender({ data: sass, ...sassConfig })
+    const results = await renderSass({ data: sass, ...sassConfig })
 
     expect(results.css.toString().trim()).toEqual(
       '@font-face{font-family:"whatever";src:url("/custom/whatever.woff2")}'
