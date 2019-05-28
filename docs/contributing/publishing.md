@@ -18,7 +18,6 @@
   See the [versioning documentation](versioning.md) for more information.
 
 5. Update [`CHANGELOG.md`](../../CHANGELOG.md) "Unreleased" heading with the new version number.
-  Copy the [`CHANGELOG_TEMPLATE.md`](./CHANGELOG_TEMPLATE.md), above the new release to make it easy for new contributors.
 
 6. Update [`package/package.json`](../../package/package.json) version with the new version number.
 

@@ -1,8 +1,10 @@
 # Changelog
 
+## Unreleased
+
 See the [versioning documentation for how to update this changelog](./docs/contributing/versioning.md#updating-changelog).
 
-## Unreleased
+## 2.12.0
 
 🆕 New features:
 

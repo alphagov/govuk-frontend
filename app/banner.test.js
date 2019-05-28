@@ -29,7 +29,7 @@ describe('Banner', () => {
       done(err)
     })
   })
-  it('should be dismissable', done => {
+  it.skip('should be dismissable', done => {
     requestPath.post('/hide-banner', {
       followAllRedirects: true,
       jar: true // enable cookies

@@ -18,6 +18,12 @@
         "description": "Optional initial value of the input"
     },
     {
+        "name": "describedBy",
+        "type": "string",
+        "required": false,
+        "description": "One or more element IDs to add to the `aria-describedby` attribute, used to provide additional descriptive information for screenreader users."
+    },
+    {
         "name": "label",
         "type": "object",
         "required": true,
