@@ -74,8 +74,7 @@ gulp.task('scss:compile', () => {
       require('oldie')({
         rgba: { filter: true },
         rem: { disable: true },
-        unmq: { disable: true },
-        pseudo: { disable: true }
+        unmq: { disable: true }
       })
     ])))
     .pipe(gulpif(!isDist, postcss([
@@ -83,9 +82,7 @@ gulp.task('scss:compile', () => {
       require('oldie')({
         rgba: { filter: true },
         rem: { disable: true },
-        unmq: { disable: true },
-        pseudo: { disable: true }
-        // more rules go here
+        unmq: { disable: true }
       })
     ])))
     .pipe(gulpif(isDist,
@@ -123,8 +120,7 @@ gulp.task('scss:compile', () => {
         require('oldie')({
           rgba: { filter: true },
           rem: { disable: true },
-          unmq: { disable: true },
-          pseudo: { disable: true }
+          unmq: { disable: true }
         })
       ]))
       .pipe(gulp.dest(taskArguments.destination + '/'))
