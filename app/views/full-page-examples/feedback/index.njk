@@ -31,8 +31,6 @@ notes: Based on https://www.signin.service.gov.uk/feedback
 {% set pageTitle = "Send your feedback to GOV.UK Verify" %}
 {% block pageTitle %}{{ "Error: " if errors }}GOV.UK - {{ pageTitle }}{% endblock %}
 
-{% set mainClasses = "govuk-main-wrapper--l" %}
-
 {% block header %}
   {% include "../../partials/banner.njk" %}
   {{ govukHeader({
