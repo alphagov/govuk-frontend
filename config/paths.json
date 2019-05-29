@@ -8,7 +8,7 @@
   "config": "config/",
   "dist": "dist/",
   "node_modules": "node_modules/",
-  "package": "package/",
+  "package": "package/govuk/",
   "public": "public/",
   "sassdoc": "sassdoc/",
   "src": "src/govuk/",
