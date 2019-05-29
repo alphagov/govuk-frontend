@@ -104,6 +104,12 @@ examples:
     name: secondary
     text: Secondary button
     classes: govuk-button--secondary
+- name: Secondary disabled
+  data:
+    name: secondary
+    text: Secondary button disabled
+    classes: govuk-button--secondary
+    disabled: true
 - name: Secondary link
   description: A link button for secondary actions
   data:
@@ -117,6 +123,12 @@ examples:
     name: Warning
     text: Warning button
     classes: govuk-button--warning
+- name: Warning disabled
+  data:
+    name: warning
+    text: Warning button disabled
+    classes: govuk-button--warning
+    disabled: true
 - name: Warning link
   description: A link button for actions that need a warning
   data:
