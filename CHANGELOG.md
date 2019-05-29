@@ -4,6 +4,10 @@
 
 See the [versioning documentation for how to update this changelog](./docs/contributing/versioning.md#updating-changelog).
 
+🔧 Fixes:
+
+- Fixes the color of disabled secondary and warning button variants
+
 ## 2.12.0
 
 🆕 New features:
