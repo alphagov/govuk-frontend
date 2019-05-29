@@ -6,9 +6,9 @@ See the [versioning documentation for how to update this changelog](./docs/contr
 
 🆕 New features:
 
-- Meta title
+- Support custom text on meta title 
 
-  Hard coded 'Support Links' is replaced by `params.meta.title`
+  Hard coded 'Support Links' is replaced by `params.meta.visuallyHiddenTitle` this has a default off Support links.
 
   ([PR #1387](https://github.com/alphagov/govuk-frontend/pull/1387))
 

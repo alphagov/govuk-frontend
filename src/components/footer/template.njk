@@ -32,7 +32,7 @@
     <div class="govuk-footer__meta">
       <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
         {% if params.meta %}
-          <h2 class="govuk-visually-hidden">{{ params.meta.title }}</h2>
+          <h2 class="govuk-visually-hidden">{{ params.meta.visuallyHiddenTitle | default("Support links") }}</h2>
           {% if params.meta.items %}
             <ul class="govuk-footer__inline-list">
               {% for item in params.meta.items %}

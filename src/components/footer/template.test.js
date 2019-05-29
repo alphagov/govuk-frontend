@@ -73,6 +73,16 @@ describe('footer', () => {
       expect($heading.text()).toEqual('Items')
     })
 
+    it('renders default heading when none supplied', () => {
+      const $ = render('footer', {
+        meta: {}
+      })
+
+      const $component = $('.govuk-footer')
+      const $heading = $component.find('h2.govuk-visually-hidden')
+      expect($heading.text()).toEqual('Support links')
+    })
+
     it('renders links', () => {
       const $ = render('footer', examples['with meta'])
 
