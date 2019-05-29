@@ -2,7 +2,7 @@
 
 const util = require('util')
 
-const configPaths = require('../../config/paths.json')
+const configPaths = require('../../../config/paths.json')
 
 const outdent = require('outdent')
 const sass = require('node-sass')

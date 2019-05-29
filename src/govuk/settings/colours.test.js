@@ -5,7 +5,7 @@ const util = require('util')
 const sass = require('node-sass')
 const sassRender = util.promisify(sass.render)
 
-const configPaths = require('../../config/paths.json')
+const configPaths = require('../../../config/paths.json')
 
 const sassConfig = {
   includePaths: [ configPaths.src, 'node_modules/' ],

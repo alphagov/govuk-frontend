@@ -2,7 +2,7 @@
 
 const util = require('util')
 
-const configPaths = require('../config/paths.json')
+const configPaths = require('../../config/paths.json')
 const PORT = configPaths.ports.test
 
 const sass = require('node-sass')

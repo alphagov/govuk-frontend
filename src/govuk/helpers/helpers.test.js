@@ -6,7 +6,7 @@ const util = require('util')
 const sass = require('node-sass')
 const sassRender = util.promisify(sass.render)
 
-const configPaths = require('../../config/paths.json')
+const configPaths = require('../../../config/paths.json')
 
 describe('The helpers layer', () => {
   it('should not output any CSS', async () => {

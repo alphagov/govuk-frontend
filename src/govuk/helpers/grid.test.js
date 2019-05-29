@@ -3,7 +3,7 @@
 const util = require('util')
 const outdent = require('outdent')
 
-const configPaths = require('../../config/paths.json')
+const configPaths = require('../../../config/paths.json')
 
 const sass = require('node-sass')
 const sassRender = util.promisify(sass.render)
