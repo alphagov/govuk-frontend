@@ -10,7 +10,7 @@ var glob = require('glob')
 const configPaths = require('../../../config/paths.json')
 const lib = require('../../../lib/file-helper')
 
-const { renderSass } = require('../../lib/jest-helpers')
+const { renderSass } = require('../../../lib/jest-helpers')
 
 const readFile = util.promisify(fs.readFile)
 
