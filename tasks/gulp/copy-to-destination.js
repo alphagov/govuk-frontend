@@ -12,12 +12,12 @@ const path = require('path')
 const map = require('map-stream')
 const rename = require('gulp-rename')
 
-let scssFiles = filter([configPaths.src + '**/*.scss'], { restore: true })
+let scssFiles = filter([configPaths.srcRoot + '**/*.scss'], { restore: true })
 let yamlFiles = filter([configPaths.components + '**/*.yaml'], { restore: true })
 
 gulp.task('copy-files', () => {
   return gulp.src([
-    configPaths.src + '**/*',
+    configPaths.srcRoot + '**/*',
     '!**/.DS_Store',
     '!**/*.test.js',
     '!' + configPaths.src + 'README.md', // Don't override the existing README in /package

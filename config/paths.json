@@ -11,6 +11,7 @@
   "package": "package/govuk/",
   "public": "public/",
   "sassdoc": "sassdoc/",
+  "srcRoot": "src/",
   "src": "src/govuk/",
     "components": "src/govuk/components/",
   "ports": {
