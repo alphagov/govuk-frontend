@@ -4,9 +4,19 @@
 
 See the [versioning documentation for how to update this changelog](./docs/contributing/versioning.md#updating-changelog).
 
+🆕 New features:
+
+- Support custom text on meta title 
+
+  Hard coded 'Support Links' is replaced by `params.meta.visuallyHiddenTitle` this has a default off Support links.
+
+  ([PR #1387](https://github.com/alphagov/govuk-frontend/pull/1387))
+
 🔧 Fixes:
 
 - Fixes the color of disabled secondary and warning button variants
+
+  ([PR #1392](https://github.com/alphagov/govuk-frontend/pull/1392))
 
 ## 2.12.0
 
