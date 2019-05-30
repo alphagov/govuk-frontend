@@ -63,6 +63,7 @@
       }
 
       .govuk-tabs__list-item {
+        position: relative;
         margin-right: govuk-spacing(1);
         margin-left: 0;
         padding-top: govuk-spacing(2);
@@ -114,6 +115,16 @@
 
         @include mq($from: tablet) {
           margin-bottom: 0;
+        }
+
+        // Extend the touch area of the button to span the section header
+        &:after {
+          content: "";
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
         }
       }
 
