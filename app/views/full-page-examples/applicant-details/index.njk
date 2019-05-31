@@ -16,8 +16,8 @@ notes: >-
 
 {% set asset_path = "/vendor/govuk_template/" %}
 {% set homepage_url = "/" %}
-{% set pageTitle = "Applicant details" %}
-{% block pageTitle %}{{ "Error: " if errors }}GOV.UK - {{ pageTitle }}{% endblock %}
+{% set page_title = "Applicant details" %}
+{% block page_title %}{{ "Error: " if errors }}GOV.UK - {{ page_title }}{% endblock %}
 
 {% block head %}
   <!--[if !IE 8]><!-->
@@ -58,7 +58,7 @@ notes: >-
         {% endif %}
 
         <h1 class="heading-xlarge">
-         {{ pageTitle }}
+         {{ page_title }}
         </h1>
 
         <form method="post" novalidate>
