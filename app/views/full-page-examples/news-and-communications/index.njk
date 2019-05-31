@@ -143,10 +143,11 @@ notes: >-
             {% for document in documents %}
                 {% set document = document.document %}
                 <li>
-                    <a class="govuk-link govuk-heading-s govuk-!-margin-bottom-2"
-                       href="https://gov.uk{{ document.link }}">
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-2">
+                      <a class="govuk-link" href="https://gov.uk{{ document.link }}">
                         {{ document.title }}
-                    </a>
+                      </a>
+                    </h3>
                     <p class="govuk-body govuk-!-margin-bottom-4">
                         {{ document.summary }}
                     </p>
