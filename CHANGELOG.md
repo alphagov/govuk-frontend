@@ -44,6 +44,12 @@ See the [versioning documentation for how to update this changelog](./docs/contr
 
   ([PR #1347](https://github.com/alphagov/govuk-frontend/pull/1347))
 
+- Trigger setAttributes on radio inputs with shared wrapper
+
+  This change allows radio input events (for conditional reveals) to be scoped higher to parent `.govuk-form-group` wrappers, allowing groups with multiple lists to behave correctly.
+
+  ([PR #1297](https://github.com/alphagov/govuk-frontend/pull/1297))
+
 🔧 Fixes:
 
 - Update colour for MHCLG

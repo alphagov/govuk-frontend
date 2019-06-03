@@ -1,15 +1,23 @@
 import '../../vendor/polyfills/Function/prototype/bind'
 import '../../vendor/polyfills/Event' // addEventListener and event.target normaliziation
 import '../../vendor/polyfills/Element/prototype/classList'
+import '../../vendor/polyfills/Element/prototype/closest'
 import { nodeListForEach } from '../../common'
 
 function Radios ($module) {
   this.$module = $module
-  this.$inputs = $module.querySelectorAll('input[type="radio"]')
+
+  // Find optional parent group
+  var $wrapper = $module.closest('.govuk-form-group')
+  var $parentWrapper = $wrapper && $wrapper.parentNode.closest('.govuk-form-group')
+
+  // Add radios in optional wrappers up to one level higher
+  this.$formGroup = $parentWrapper || $wrapper || $module
+  this.$inputs = this.$formGroup.querySelectorAll('input[type="radio"]')
 }
 
 Radios.prototype.init = function () {
-  var $module = this.$module
+  var $formGroup = this.$formGroup
   var $inputs = this.$inputs
 
   /**
@@ -22,7 +30,7 @@ Radios.prototype.init = function () {
 
     // Check if input controls anything
     // Check if content exists, before setting attributes.
-    if (!controls || !$module.querySelector('#' + controls)) {
+    if (!controls || !$formGroup.querySelector('#' + controls)) {
       return
     }
 
@@ -33,14 +41,14 @@ Radios.prototype.init = function () {
   }.bind(this))
 
   // Handle events
-  $module.addEventListener('click', this.handleClick.bind(this))
+  $formGroup.addEventListener('click', this.handleClick.bind(this))
 }
 
 Radios.prototype.setAttributes = function ($input) {
   var inputIsChecked = $input.checked
   $input.setAttribute('aria-expanded', inputIsChecked)
 
-  var $content = this.$module.querySelector('#' + $input.getAttribute('aria-controls'))
+  var $content = this.$formGroup.querySelector('#' + $input.getAttribute('aria-controls'))
   if ($content) {
     $content.classList.toggle('govuk-radios__conditional--hidden', !inputIsChecked)
   }
