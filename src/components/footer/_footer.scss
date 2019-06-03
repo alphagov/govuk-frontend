@@ -77,13 +77,16 @@
     }
   }
 
-  .govuk-footer__inline-list .govuk-footer__link,
-  .govuk-footer__list .govuk-footer__link {
-    text-decoration: none;
+  // Internet Explorer 8 does not support `:not()` selectors, so don't conditionally show underlines.
+  @include govuk-not-ie8 {
+    .govuk-footer__inline-list .govuk-footer__link,
+    .govuk-footer__list .govuk-footer__link {
+      text-decoration: none;
 
-    &:hover,
-    &:active {
-      text-decoration: underline;
+      &:hover:not(:focus),
+      &:active:not(:focus) {
+        text-decoration: underline;
+      }
     }
   }
 
