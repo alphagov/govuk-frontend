@@ -18,6 +18,14 @@ See the [versioning documentation for how to update this changelog](./docs/contr
 
   ([PR #1392](https://github.com/alphagov/govuk-frontend/pull/1392))
 
+- Adds missing height and width attributes to the fallback crown PNG in the header.
+
+  ([PR #1419](https://github.com/alphagov/govuk-frontend/pull/1419))
+
+- Fixes alignment of the fallback crown PNG with 'GOV.UK' in the header in IE8
+
+  ([PR #1419](https://github.com/alphagov/govuk-frontend/pull/1419))
+
 ## 2.12.0
 
 🆕 New features:

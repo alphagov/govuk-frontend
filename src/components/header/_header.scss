@@ -289,8 +289,7 @@
 
   // Begin adjustments for font baseline offset
   // These should be removed when the font is updated with the correct baseline
-  .govuk-header__logotype-crown,
-  .govuk-header__logotype-crown-fallback-image {
+  .govuk-header__logotype-crown {
     position: relative;
     top: -4px;
   }
