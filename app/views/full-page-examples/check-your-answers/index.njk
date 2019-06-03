@@ -18,13 +18,15 @@ notes: The links to change your answers are not functional.
 {% from "summary-list/macro.njk" import govukSummaryList %}
 {% from "button/macro.njk" import govukButton %}
 
-{% set pageTitle = "Technology - Service Manual" %}
-{% block pageTitle %}GOV.UK - {{ pageTitle }}{% endblock %}
+{% set pageTitle = "Check your answers" %}
+{% set serviceName = "Temporary events notice" %}
+
+{% block pageTitle %}{{ pageTitle }} - {{ serviceName }} - GOV.UK{% endblock %}
 
 {% block header %}
   {% include "../../partials/banner.njk" %}
   {{ govukHeader({
-    serviceName: "Temporary events notice"
+    serviceName: serviceName
   }) }}
 {% endblock %}
 

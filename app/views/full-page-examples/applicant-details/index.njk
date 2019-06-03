@@ -17,7 +17,7 @@ notes: >-
 {% set asset_path = "/vendor/govuk_template/" %}
 {% set homepage_url = "/" %}
 {% set page_title = "Applicant details" %}
-{% block page_title %}{{ "Error: " if errors }}GOV.UK - {{ page_title }}{% endblock %}
+{% block page_title %}{{ "Error: " if errors }}{{ page_title }} - GOV.UK{% endblock %}
 
 {% block head %}
   <!--[if !IE 8]><!-->
