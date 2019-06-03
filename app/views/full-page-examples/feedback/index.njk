@@ -28,8 +28,8 @@ notes: Based on https://www.signin.service.gov.uk/feedback
 {% from "button/macro.njk" import govukButton %}
 {% from "error-summary/macro.njk" import govukErrorSummary %}
 
-{% set pageTitle = "Send your feedback to GOV.UK Verify" %}
-{% block pageTitle %}{{ "Error: " if errors }}GOV.UK - {{ pageTitle }}{% endblock %}
+{% set pageTitle = "Send your feedback" %}
+{% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - Verify - GOV.UK{% endblock %}
 
 {% block header %}
   {% include "../../partials/banner.njk" %}

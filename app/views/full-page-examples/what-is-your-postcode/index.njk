@@ -17,7 +17,7 @@ scenario: >-
 {% from "input/macro.njk" import govukInput %}
 
 {% set pageTitle = "What is your home postcode?" %}
-{% block pageTitle %}{{ "Error: " if errors }}GOV.UK - {{ pageTitle }}{% endblock %}
+{% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block beforeContent %}
   {{ govukBackLink({
