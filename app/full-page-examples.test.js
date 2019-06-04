@@ -63,7 +63,7 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
 
           // Check the page responded correctly
           expect(res.statusCode).toBe(200)
-          expect($.html()).toContain('Send your feedback to GOV.UK Verify')
+          expect($.html()).toContain('Send your feedback')
 
           // Check that the error summary is not visible
           let $errorSummary = $('[data-module="error-summary"]')
@@ -77,7 +77,7 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
 
           // Check the page responded correctly
           expect(res.statusCode).toBe(200)
-          expect($.html()).toContain('Send your feedback to GOV.UK Verify')
+          expect($.html()).toContain('Send your feedback')
 
           // Check the title has an error
           expect($('title').text()).toContain('Error:')

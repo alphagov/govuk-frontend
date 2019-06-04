@@ -20,7 +20,7 @@ scenario: >-
 {% from "button/macro.njk" import govukButton %}
 
 {% set pageTitle = "Passport details" %}
-{% block pageTitle %}{{ "Error: " if errors }}GOV.UK - {{ pageTitle }}{% endblock %}
+{% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block beforeContent %}
   {{ govukBackLink({

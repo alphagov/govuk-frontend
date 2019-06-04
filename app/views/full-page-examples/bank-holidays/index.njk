@@ -21,7 +21,7 @@ notes: >-
 {% from "table/macro.njk" import govukTable %}
 
 {% set pageTitle = "UK bank holidays" %}
-{% block pageTitle %}GOV.UK - {{ pageTitle }}{% endblock %}
+{% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block beforeContent %}
   {{ govukBreadcrumbs({

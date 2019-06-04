@@ -14,7 +14,7 @@ notes: The links within each section are not functional.
 {% from "accordion/macro.njk" import govukAccordion %}
 
 {% set pageTitle = "Technology - Service Manual" %}
-{% block pageTitle %}GOV.UK - {{ pageTitle }}{% endblock %}
+{% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block beforeContent %}
   {{ govukBreadcrumbs({

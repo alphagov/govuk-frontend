@@ -30,7 +30,7 @@ scenario: >-
 {% from "error-summary/macro.njk" import govukErrorSummary %}
 
 {% set pageTitle = "What is your nationality?" %}
-{% block pageTitle %}{{ "Error: " if errors }}GOV.UK - {{ pageTitle }}{% endblock %}
+{% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block beforeContent %}
   {{ govukBackLink({
