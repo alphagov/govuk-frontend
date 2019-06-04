@@ -33,7 +33,7 @@ exports[`Checkboxes nested dependant components passes through label params with
 <label class="govuk-label govuk-checkboxes__label"
        data-attribute="value"
        data-second-attribute="second-value"
-       for="example-name-1"
+       for="example-name"
 >
   <b>
     Option 1
