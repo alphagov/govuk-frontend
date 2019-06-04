@@ -5,6 +5,38 @@
 See the [versioning documentation for how to update this
 changelog](./docs/contributing/versioning.md#updating-changelog).
 
+- Make radios and checkboxes components easier to link to from the error summary component
+
+  You should check that clicking a link from the error summary to radios or checkboxes results in the first input being focused.
+
+  The `id` of the first input in a set of radios or checkboxes will no longer be suffixed with `-1`. This means that it will be the same as your `idPrefix`, or if `idPrefix` is not set it'll be the same as the `name`.
+
+  We've made this change to make it easier to link from the error summary to radios or checkboxes, if you we're working around this before by setting the first input's `item.id` to the same as the `name` you can now remove this.
+
+  To migrate you can update your error summary so it links to the first element, for example if you are using an `idPrefix` option of `question`, your error summary can now link to `#question` instead of `#question-1`.
+
+  If you cannot change your error summary, you could change your component to set the `item.id` option for the first input, for example:
+
+  ```javascript
+  {{ govukRadios({
+    idPrefix: "question",
+    name: "question",
+    items: [
+      {
+        id: "question-1",
+        value: "yes",
+        text: "Yes"
+      },
+      {
+        value: "no",
+        text: "No"
+      }
+    ]
+  }) }}
+  ```
+
+  ([PR #1426](https://github.com/alphagov/govuk-frontend/pull/1426))
+
 - Remove `govuk-focusable`, `govuk-focusable-fill` mixins, introduce `govuk-focus-text` mixin.
 
   To migrate:
