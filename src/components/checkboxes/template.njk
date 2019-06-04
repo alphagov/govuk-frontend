@@ -53,7 +53,17 @@
     {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}
     {%- if isConditional %} data-module="checkboxes"{% endif -%}>
     {% for item in params.items %}
-    {% set id = item.id if item.id else idPrefix + "-" + loop.index %}
+    {#- If the user explicitly sets an id, use this instead of the regular idPrefix -#}
+    {%- if item.id -%}
+      {%- set id = item.id -%}
+    {%- else -%}
+      {#- The first id should not have a number suffix so it's easy to link to from the error summary component -#}
+      {%- if loop.first -%}
+        {%- set id = idPrefix %}
+      {% else %}
+        {%- set id = idPrefix + "-" + loop.index -%}
+      {%- endif -%}
+    {%- endif -%}
     {% set name = item.name if item.name else params.name %}
     {% set conditionalId = "conditional-" + id %}
     {% set hasHint = true if item.hint.text or item.hint.html %}
