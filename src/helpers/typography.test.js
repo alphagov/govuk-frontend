@@ -63,7 +63,7 @@ describe('@mixin govuk-typography-common', () => {
     const resultsString = results.css.toString()
 
     expect(resultsString).toContain(`@font-face`)
-    expect(resultsString).toContain(`font-family: "nta"`)
+    expect(resultsString).toContain(`font-family: "GOVUKTransport"`)
     expect(resultsString).toContain(`font-family: "ntatabularnumbers"`)
   })
   it('should not output a @font-face declaration when the user has changed their font', async () => {
@@ -85,7 +85,7 @@ describe('@mixin govuk-typography-common', () => {
     const resultsString = results.css.toString()
 
     expect(resultsString).not.toContain(`@font-face`)
-    expect(resultsString).not.toContain(`font-family: "nta"`)
+    expect(resultsString).not.toContain(`font-family: "GOVUKTransport"`)
     expect(resultsString).not.toContain(`font-family: "ntatabularnumbers"`)
   })
   it('should not output a @font-face declaration when the user wants compatibility with GOV.UK Template', async () => {
@@ -127,7 +127,7 @@ describe('@mixin govuk-typography-common', () => {
     const resultsString = results.css.toString()
 
     expect(resultsString).not.toContain(`@font-face`)
-    expect(resultsString).toContain(`font-family: "nta"`)
+    expect(resultsString).toContain(`font-family: "GOVUKTransport"`)
     expect(resultsString).toContain(`font-family: "ntatabularnumbers"`)
   })
 })

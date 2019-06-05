@@ -7,40 +7,39 @@
 
 @import "../tools/exports";
 
-/// Font Face - NTA
+/// Font Face - GOV.UK Transport
 ///
-/// Outputs the font-face declaration for NTA at the root of the CSS document
+/// Outputs the font-face declaration for GOV.UK Transport at the root of the CSS document
 /// the first time it is called.
 ///
 /// @access private
 
-@mixin _govuk-font-face-nta {
-  @include govuk-exports("govuk/helpers/font-face") {
+@mixin _govuk-font-face-govuk-transport {
+  @include govuk-exports("govuk/helpers/font-faces") {
     @at-root {
       /*! Copyright (c) 2011 by Margaret Calvert & Henrik Kubel. All rights reserved. The font has been customised for exclusive use on gov.uk. This cut is not commercially available. */
 
       @font-face {
-        font-family: "nta";
+        font-family: "GOVUKTransport";
         src: govuk-font-url("light-df2b968d71-v2.eot");
         src: govuk-font-url("light-df2b968d71-v2.eot?#iefix") format("embedded-opentype"),
-             govuk-font-url("light-68f0c84f0e-v2.woff2") format("woff2"),
-             govuk-font-url("light-222368e53d-v2.woff") format("woff");
+            govuk-font-url("light-68f0c84f0e-v2.woff2") format("woff2"),
+            govuk-font-url("light-222368e53d-v2.woff") format("woff");
         font-weight: normal;
         font-style: normal;
         font-display: fallback;
       }
 
       @font-face {
-        font-family: "nta";
+        font-family: "GOVUKTransport";
         src: govuk-font-url("bold-a7fa10839b-v2.eot");
         src: govuk-font-url("bold-a7fa10839b-v2.eot?#iefix") format("embedded-opentype"),
-             govuk-font-url("bold-9561e2d007-v2.woff2") format("woff2"),
-             govuk-font-url("bold-5d3836b441-v2.woff") format("woff");
+            govuk-font-url("bold-9561e2d007-v2.woff2") format("woff2"),
+            govuk-font-url("bold-5d3836b441-v2.woff") format("woff");
         font-weight: bold;
         font-style: normal;
         font-display: fallback;
       }
-
     }
   }
 }
