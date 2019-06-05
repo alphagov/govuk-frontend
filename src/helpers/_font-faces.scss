@@ -21,24 +21,20 @@
 
       @font-face {
         font-family: "GOVUKTransport";
-        src: govuk-font-url("light-df2b968d71-v2.eot");
-        src: govuk-font-url("light-df2b968d71-v2.eot?#iefix") format("embedded-opentype"),
-            govuk-font-url("light-68f0c84f0e-v2.woff2") format("woff2"),
-            govuk-font-url("light-222368e53d-v2.woff") format("woff");
+        src: govuk-font-url("light-68f0c84f0e-v2.woff2") format("woff2"),
+             govuk-font-url("light-222368e53d-v2.woff") format("woff");
         font-weight: normal;
         font-style: normal;
-        font-display: fallback;
+        font-display: swap;
       }
 
       @font-face {
         font-family: "GOVUKTransport";
-        src: govuk-font-url("bold-a7fa10839b-v2.eot");
-        src: govuk-font-url("bold-a7fa10839b-v2.eot?#iefix") format("embedded-opentype"),
-            govuk-font-url("bold-9561e2d007-v2.woff2") format("woff2"),
-            govuk-font-url("bold-5d3836b441-v2.woff") format("woff");
+        src: govuk-font-url("bold-9561e2d007-v2.woff2") format("woff2"),
+             govuk-font-url("bold-5d3836b441-v2.woff") format("woff");
         font-weight: bold;
         font-style: normal;
-        font-display: fallback;
+        font-display: swap;
       }
     }
   }
