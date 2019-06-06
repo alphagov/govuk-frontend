@@ -63,16 +63,6 @@ ErrorSummary.prototype.focusTarget = function ($target) {
     return false
   }
 
-  // Prefer using the history API where possible, as updating
-  // window.location.hash causes the viewport to jump to the input briefly
-  // before then scrolling to the label/legend in IE10, IE11 and Edge (as tested
-  // in Edge 17).
-  if (window.history.pushState) {
-    window.history.pushState(null, null, '#' + inputId)
-  } else {
-    window.location.hash = inputId
-  }
-
   // Scroll the legend or label into view *before* calling focus on the input to
   // avoid extra scrolling in browsers that don't support `preventScroll` (which
   // at time of writing is most of them...)
