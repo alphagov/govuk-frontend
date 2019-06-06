@@ -138,8 +138,8 @@ describe('Radios', () => {
 
       const $firstInput = $component.find('.govuk-radios__item:first-child input')
       const $firstLabel = $component.find('.govuk-radios__item:first-child label')
-      expect($firstInput.attr('id')).toEqual('example-name-1')
-      expect($firstLabel.attr('for')).toEqual('example-name-1')
+      expect($firstInput.attr('id')).toEqual('example-name')
+      expect($firstLabel.attr('for')).toEqual('example-name')
 
       const $lastInput = $component.find('.govuk-radios__item:last-child input')
       const $lastLabel = $component.find('.govuk-radios__item:last-child label')
@@ -167,8 +167,8 @@ describe('Radios', () => {
 
       const $firstInput = $component.find('.govuk-radios__item:first-child input')
       const $firstLabel = $component.find('.govuk-radios__item:first-child label')
-      expect($firstInput.attr('id')).toEqual('custom-1')
-      expect($firstLabel.attr('for')).toEqual('custom-1')
+      expect($firstInput.attr('id')).toEqual('custom')
+      expect($firstLabel.attr('for')).toEqual('custom')
 
       const $lastInput = $component.find('.govuk-radios__item:last-child input')
       const $lastLabel = $component.find('.govuk-radios__item:last-child label')
@@ -384,8 +384,8 @@ describe('Radios', () => {
         const $firstInput = $component.find('.govuk-radios__input').first()
         const $firstConditional = $component.find('.govuk-radios__conditional').first()
 
-        expect($firstInput.attr('data-aria-controls')).toBe('conditional-example-conditional-1')
-        expect($firstConditional.attr('id')).toBe('conditional-example-conditional-1')
+        expect($firstInput.attr('data-aria-controls')).toBe('conditional-example-conditional')
+        expect($firstConditional.attr('id')).toBe('conditional-example-conditional')
       })
     })
 
