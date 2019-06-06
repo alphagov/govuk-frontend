@@ -47,9 +47,9 @@ describe('Error Summary', () => {
       expect(legendOrLabelOffsetFromTop).toEqual(0)
     })
 
-    it('updates the hash in the URL', async () => {
+    it('does not include a hash in the URL', async () => {
       const hash = await page.evaluate(() => window.location.hash)
-      expect(hash).toBe(`#${inputId}`)
+      expect(hash).toBe('')
     })
   })
 })
