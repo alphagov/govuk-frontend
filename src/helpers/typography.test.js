@@ -64,7 +64,7 @@ describe('@mixin govuk-typography-common', () => {
 
     expect(resultsString).toContain(`@font-face`)
     expect(resultsString).toContain(`font-family: "GOVUKTransport"`)
-    expect(resultsString).toContain(`font-family: "ntatabularnumbers"`)
+    expect(resultsString).toContain(`font-family: "GOVUKTransport"`)
   })
   it('should not output a @font-face declaration when the user has changed their font', async () => {
     const sass = `
@@ -128,7 +128,7 @@ describe('@mixin govuk-typography-common', () => {
 
     expect(resultsString).not.toContain(`@font-face`)
     expect(resultsString).toContain(`font-family: "GOVUKTransport"`)
-    expect(resultsString).toContain(`font-family: "ntatabularnumbers"`)
+    expect(resultsString).toContain(`font-family: "GOVUKTransport"`)
   })
 })
 
