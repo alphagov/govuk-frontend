@@ -37,6 +37,25 @@ changelog](./docs/contributing/versioning.md#updating-changelog).
 
   ([PR #1426](https://github.com/alphagov/govuk-frontend/pull/1426))
 
+- Update the font to v2
+
+  The new version of the font is significantly smaller and its baseline has been
+  optimised for the web, which means it's more consistent with other fonts.
+
+  This means we can remove the adjustments that were previously required to
+  vertically align text visually within boxes.
+
+  For more details see the original issue logged by [@Nooshu](https://github.com/Nooshu) (https://github.com/alphagov/govuk_template/pull/357 & https://github.com/alphagov/govuk-frontend/issues/1012).
+
+  The original version of the font is no longer included. If you're using GOV.UK
+  Frontend alongside GOV.UK Template then the version of the font from GOV.UK
+  Template will be used, as long as you've enabled [compatibility mode].
+
+  To migrate: if you have any custom components you may want to check their vertical
+  alignment
+
+  ([PR #1434](https://github.com/alphagov/govuk-frontend/pull/1434))
+
 - Remove `govuk-focusable`, `govuk-focusable-fill` mixins, introduce `govuk-focus-text` mixin.
 
   To migrate:
@@ -251,6 +270,21 @@ changelog](./docs/contributing/versioning.md#updating-changelog).
   ([PR #1376](https://github.com/alphagov/govuk-frontend/pull/1376))
 
 🆕 New features:
+
+- IE 8 now falls back to Arial rather than Transport
+
+  All of the browsers we support use the WOFF or WOFF2 fonts, except for IE 8
+  which requires Embedded Open Type (.eot). The EOT version of the font is
+  considerably larger, which impacts performance for users who are likely to be
+  on older machines.
+
+  Given IE8 only represents a very small percentage of traffic we get, we now
+  fallback to Arial instead.
+
+  Thanks to [@Nooshu](https://github.com/Nooshu) for their
+  [recommendation to drop EOT files for older IE](https://github.com/alphagov/govuk-frontend/pull/1356#issuecomment-494727525).
+
+  ([PR #1434](https://github.com/alphagov/govuk-frontend/pull/1434))
 
 - Checkboxes and radios use a new focus state with a thicker border. The
   transparent outline, previously required to show the focus state when custom
