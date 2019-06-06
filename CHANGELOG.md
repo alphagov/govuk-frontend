@@ -261,6 +261,12 @@ changelog](./docs/contributing/versioning.md#updating-changelog).
 
 🔧 Fixes:
 
+- Stop appending hash when error summary link clicked
+
+  This prevents incorrectly focusing the form element with the hash id, instead of the error summary, when form is re-submitted with the hash in the URL and there are further errors.
+
+  ([PR #1435](https://github.com/alphagov/govuk-frontend/pull/1435))
+
 - Fix settings layer being implicitly dependant on itself.
 
   ([PR #1381](https://github.com/alphagov/govuk-frontend/pull/1381))
