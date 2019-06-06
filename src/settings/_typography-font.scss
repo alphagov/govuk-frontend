@@ -39,7 +39,10 @@ $govuk-font-family: if($govuk-use-legacy-font,
 /// @type List
 /// @access public
 
-$govuk-font-family-tabular: $govuk-font-family-nta-tabular !default;
+$govuk-font-family-tabular: if($govuk-use-legacy-font,
+  $govuk-font-family-nta-tabular,
+  false
+) !default;
 
 /// Font families to use for print media
 ///
