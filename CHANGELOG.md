@@ -268,6 +268,27 @@
 
   ([PR #1376](https://github.com/alphagov/govuk-frontend/pull/1376))
 
+- The 'aria-label' in the header is now correctly applied to the `<nav>` element
+  rather than the `<ul>` within it, and has been changed from 'Top Level
+  Navigation' to 'top level' as screen readers will already announce the role.
+
+  If you are using navigation within your header, and you are not using the
+  nunjucks templates, you should make this change in your own code, replacing
+
+  ```html
+  <nav>
+    <ul id="navigation" class="govuk-header__navigation" aria-label="Top Level Navigation">
+  ```
+
+  with:
+
+  ```html
+  <nav aria-label="top level">
+      <ul id="navigation" class="govuk-header__navigation">
+  ```
+
+  ([PR #1440](https://github.com/alphagov/govuk-frontend/pull/1440))
+
 - Pull Request Title goes here
 
   Description goes here (optional)
