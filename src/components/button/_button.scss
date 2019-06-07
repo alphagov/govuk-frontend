@@ -34,7 +34,7 @@
     width: 100%;
     margin-top: 0;
     @include govuk-responsive-margin(6, "bottom", $adjustment: $button-shadow-size); // s2
-    padding: (govuk-spacing(2) - $govuk-border-width-form-element - ($button-shadow-size / 2)) govuk-spacing(2); // s1
+    padding: (govuk-spacing(2) - $govuk-border-width-form-element) govuk-spacing(2) (govuk-spacing(2) - $govuk-border-width-form-element - ($button-shadow-size / 2)); // s1
     border: $govuk-border-width-form-element solid transparent;
     border-radius: 0;
     color: $govuk-button-text-colour;
@@ -233,16 +233,10 @@
     display: inline-flex;
     min-height: auto;
 
-    padding-top: govuk-spacing(2) - $govuk-border-width-form-element;
-    padding-right: govuk-spacing(3);
-    padding-bottom: govuk-spacing(2) - $govuk-border-width-form-element;
-    padding-left: govuk-spacing(3);
-
     justify-content: center;
   }
 
   .govuk-button__start-icon {
-    margin-top: -3px;
     margin-left: govuk-spacing(1);
 
     @include govuk-media-query($from: desktop) {
@@ -253,19 +247,17 @@
     align-self: center;
   }
 
-  // Begin adjustments for font baseline offset
-  // These should be removed when the font is updated with the correct baseline
-  // For the 1px addition please see https://github.com/alphagov/govuk-frontend/pull/365#discussion_r154349428
+  @if $govuk-use-legacy-font {
+    // Begin adjustments for font baseline offset when using v1 of nta
+    $offset: 2;
 
-  $offset: 2;
+    .govuk-button {
+      padding-top: (govuk-spacing(2) - $govuk-border-width-form-element - ($button-shadow-size / 2) + $offset); // s1
+      padding-bottom: (govuk-spacing(2) - $govuk-border-width-form-element - ($button-shadow-size / 2) - $offset + 1); // s1
+    }
 
-  .govuk-button {
-    padding-top: (govuk-spacing(2) - $govuk-border-width-form-element - ($button-shadow-size / 2) + $offset); // s1
-    padding-bottom: (govuk-spacing(2) - $govuk-border-width-form-element - ($button-shadow-size / 2) - $offset + 1); // s1
-  }
-
-  .govuk-button--start {
-    padding-top: (govuk-spacing(2) - $govuk-border-width-form-element - ($button-shadow-size / 2) + $offset); // s1
-    padding-bottom: (govuk-spacing(2) - $govuk-border-width-form-element - ($button-shadow-size / 2) - $offset + 1); // s1
+    .govuk-button__start-icon {
+      margin-top: -3px;
+    }
   }
 }
