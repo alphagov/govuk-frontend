@@ -2,8 +2,8 @@
 /// @group settings/typography
 ////
 
-/// List of font families to use if using GOV.UK Transport (the default font 'stack' for
-/// GOV.UK)
+/// List of font families to use if using GOV.UK Transport (the default font
+/// 'stack' for GOV.UK)
 ///
 /// @type List
 /// @access public
@@ -15,7 +15,7 @@ $govuk-font-family-govuk-transport: "GOVUKTransport", Arial, sans-serif;
 ///
 /// @type List
 /// @access public
-/// @deprecated Will be removed once support for GOV.UK Template/Elements is dropped
+/// @deprecated To be removed once support for compatibility mode is dropped
 
 $govuk-font-family-nta: "nta", Arial, sans-serif;
 
@@ -27,6 +27,6 @@ $govuk-font-family-nta: "nta", Arial, sans-serif;
 ///
 /// @type List
 /// @access public
-/// @deprecated Will be removed once support for GOV.UK Template/Elements is dropped
+/// @deprecated To be removed once support for compatibility mode is dropped
 
 $govuk-font-family-nta-tabular: "ntatabularnumbers", $govuk-font-family-nta;
