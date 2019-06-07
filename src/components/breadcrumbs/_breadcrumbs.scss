@@ -56,17 +56,16 @@
 
       position: absolute;
 
-      // Begin adjustments for font baseline offset
-      // These should be reverted when the font is updated with the correct
-      // baseline
+      @if $govuk-use-legacy-font {
+        // Begin adjustments for font baseline offset
+        // These should be removed when legacy font support is dropped
+        top: -1px;
+        bottom: 1px;
 
-      // top: 0;
-      // bottom: 0;
-
-      top: -1px;
-      bottom: 1px;
-
-      // End adjustments for font baseline offset
+      } @else {
+        top: 0;
+        bottom: 0;
+      }
 
       // Offset by the difference between the width of the non-rotated square
       // and its width when rotated
