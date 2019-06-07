@@ -17,10 +17,10 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  // If the user is using the default NTA font we need to include the font-face declarations.
-  // We do not need to include the NTA font-face declarations if alphagov/govuk_template is being used since they will already be included.
+  // If the user is using the default GOV.UK Transport font we need to include the font-face declarations.
+  // We do not need to include the GOV.UK Transport font-face declarations if alphagov/govuk_template is being used since nta will already be included by default
   @if ($govuk-include-default-font-face) {
-    @include _govuk-font-face-nta;
+    @include _govuk-font-face-govuk-transport;
   }
 
   @include govuk-media-query($media-type: print) {
@@ -71,6 +71,7 @@
 /// @return {Number} The line height as either a relative value or unmodified
 ///
 /// @access private
+
 @function _govuk-line-height($line-height, $font-size) {
   @if not unitless($line-height) and unit($line-height) == unit($font-size) {
     $line-height: $line-height / $font-size;
@@ -171,7 +172,18 @@
 
 @mixin govuk-font($size, $weight: regular, $tabular: false, $line-height: false) {
   @if $tabular {
-    @include govuk-typography-common($font-family: $govuk-font-family-tabular);
+    // if govuk-font-family-tabular is set use $govuk-font-family-tabular
+    @if $govuk-font-family-tabular {
+      @include govuk-typography-common($font-family: $govuk-font-family-tabular);
+    } @else {
+      @include govuk-typography-common;
+      font-feature-settings: "tnum" 1;
+
+      @supports(font-variant-numeric: tabular-nums) {
+        font-feature-settings: normal;
+        font-variant-numeric: tabular-nums;
+      }
+    }
   } @else {
     @include govuk-typography-common;
   }
