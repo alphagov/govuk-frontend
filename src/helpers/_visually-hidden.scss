@@ -18,7 +18,8 @@
 
   width: 1px iff($important, !important);
   height: 1px iff($important, !important);
-  // If margin is set to a negative value it can cause text to be announced in the wrong order in VoiceOver for OSX
+  // If margin is set to a negative value it can cause text to be announced in
+  // the wrong order in VoiceOver for OSX
   margin: 0 iff($important, !important);
   padding: 0 iff($important, !important);
 
@@ -50,7 +51,8 @@
 
   width: 1px iff($important, !important);
   height: 1px iff($important, !important);
-  // If margin is set to a negative value it can cause text to be announced in the wrong order in VoiceOver for OSX
+  // If margin is set to a negative value it can cause text to be announced in
+  // the wrong order in VoiceOver for OSX
   margin: 0 iff($important, !important);
 
   overflow: hidden iff($important, !important);

@@ -20,7 +20,8 @@
 // </div>
 
 
-/// @deprecated Replace this mixin with more direct references to the [spacing mixins](https://design-system.service.gov.uk/styles/spacing/#spacing-on-custom-components).
+/// @deprecated Replace this mixin with more direct references to the [spacing
+/// mixins](https://design-system.service.gov.uk/styles/spacing/#spacing-on-custom-components).
 @mixin govuk-main-wrapper {
   // In IE11 the `main` element can be used, but is not recognized  –
   // meaning it's not defined in IE's default style sheet,
@@ -38,9 +39,11 @@
   }
 }
 
-/// Use govuk-main-wrapper--l when you page does not have Breadcrumbs, phase banners or back links.
+/// Use govuk-main-wrapper--l when you page does not have Breadcrumbs, phase
+/// banners or back links.
 ///
-/// @deprecated Replace this mixin with more direct references to the [spacing mixins](https://design-system.service.gov.uk/styles/spacing/#spacing-on-custom-components).
+/// @deprecated Replace this mixin with more direct references to the [spacing
+/// mixins](https://design-system.service.gov.uk/styles/spacing/#spacing-on-custom-components).
 @mixin govuk-main-wrapper--l {
   @include govuk-responsive-padding(8, "top");
 }
@@ -50,9 +53,10 @@
     @include govuk-main-wrapper;
   }
 
-  // For most instances of main wrapper, :first-child will give the correct spacing without
-  // the need for the `l` modifier, but it is available in instances where there may be
-  // empty elements that would be difficult to remove.
+  // For most instances of main wrapper, :first-child will give the correct
+  // spacing without the need for the `l` modifier, but it is available in
+  // instances where there may be empty elements that would be difficult to
+  // remove.
   .govuk-main-wrapper:first-child,
   .govuk-main-wrapper--l {
     @include govuk-main-wrapper--l;
