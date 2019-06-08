@@ -26,19 +26,19 @@
 
   .sdn-thumbnail-caption {
     width: 70%;
-  }
 
-  .sdn-thumbnail-caption > .govuk-body {
-    margin-bottom: 0;
+    > .govuk-body {
+      margin-bottom: 0;
+    }
   }
 
   .sdn-thumbnail-btn {
     width: 30%;
     text-align: right;
-  }
 
-  .sdn-thumbnail-btn > .govuk-button {
-    margin-bottom: 0;
+    > .govuk-button {
+      margin-bottom: 0;
+    }
   }
 
   @media (max-width: 640px) {
@@ -49,6 +49,12 @@
     .sdn-thumbnail-caption,
     .sdn-thumbnail-btn {
       width: 100%;
+    }
+
+    .sdn-thumbnail-btn {
+      > .govuk-button {
+        margin-top: 1rem;
+      }
     }
   }
 }
