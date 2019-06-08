@@ -1,0 +1,91 @@
+{% extends "template-lepsiesluzby.njk" %}
+
+{% from "header/macro.njk" import govukHeader %}
+
+{% block head %}
+  <!--[if !IE 8]><!-->
+  <link rel="stylesheet" href="/public/app.css">
+  <!--<![endif]-->
+  <!--[if IE 8]> <link rel="stylesheet" href="/public/app-ie8.css"> <![endif]-->
+  <!--[if lt IE 9]> <script src="/vendor/html5-shiv/html5shiv.js"></script> <![endif]-->
+{% endblock %}
+
+{% block main %}
+
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-column-full">
+      <h2 class="govuk-heading-l">Máte nápad ako zlepšiť elektronické služby ?</h2>
+      <p>Poďme do toho spolu a ukážme, kde je priestor na zlepšenie.</p>
+    </div>
+    <div class="govuk-grid-column-two-thirds">
+
+        <form action="/" method="post">
+          <fieldset class="govuk-fieldset">
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="govuk-input-summary">
+                Akú situáciu riešite? Krátky popis.
+              </label>
+              <input class="govuk-input" id="govuk-input-summary" name="govuk-input-summary" type="text">
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="govuk-textarea-description">
+                Text podnetu
+              </label>
+              <textarea class="govuk-textarea" id="govuk-textarea-description" name="govuk-textarea-description" rows="5"></textarea>
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="select-category">
+                Kategória <em>(nepovinné)</em>
+              </label>
+              <select class="govuk-select govuk-!-width-one-third" id="select-category" name="select-category">
+                <option value="0">Žiadne</option>
+                <option value="1">Občan</option>
+                <option value="2" selected="">Podnikateľ</option>
+                <option value="3">Úradník</option>
+              </select>
+
+              <select class="govuk-select govuk-!-width-one-third" id="select-subcategory" name="select-subcategory">
+                <option value="0">Žiadne</option>
+                <option value="1">Bývanie</option>
+                <option value="2" selected="">Financie</option>
+                <option value="3">Zamestnanie</option>
+              </select>
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="file-upload">
+                Príloha <em>(nepovinné)</em>
+              </label>
+              <input class="govuk-file-upload" id="file-upload" name="file-upload" type="file">
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="govuk-input-name">
+                Meno
+              </label>
+              <input class="govuk-input govuk-!-width-one-half" id="govuk-input-name" name="govuk-input-name" type="text">
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="govuk-input-email">
+                E-mail
+              </label>
+              <input class="govuk-input govuk-!-width-one-half" id="govuk-input-email" name="govuk-input-email" type="text">
+            </div>
+
+            <button type="submit" class="govuk-button">
+              Vytvoriť
+            </button>
+          </fieldset>
+        </form>
+
+      </div>
+    </div>
+
+  </main>
+</div>
+
+{% endblock %}
