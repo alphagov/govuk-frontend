@@ -264,5 +264,11 @@ $icon-check-black: url("../../../assets/images/icon-check-black.svg");
     @include govuk-font($size: 24, $weight: regular);
 
     margin: 0 0 30px 0;
+
+    &--mobile-only {
+      @include govuk-media-query($from: tablet) {
+        display: none;
+      }
+    }
   }
 }
