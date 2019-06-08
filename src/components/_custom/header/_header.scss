@@ -42,6 +42,8 @@
 
   .sdn-header__link {
     @include govuk-focusable-fill;
+    margin: 10px 0;
+    line-height: 20px;
 
     text-decoration: none;
 
@@ -175,7 +177,9 @@
   .sdn-header__dropdown {
     @include govuk-font($size: 14);
     display: none;
+    position: absolute;
     z-index: 9999;
+    right: 0;
     margin: 10px 0 0 0;
     padding: 5px 0;
     list-style: none;
@@ -189,6 +193,7 @@
       padding: 8px 20px;
       color: inherit;
       text-decoration: none;
+      white-space: nowrap;
 
       &:hover {
         color: $sdn-dropdown-hover-color;
@@ -210,7 +215,7 @@
     &:after {
       content: " \25BE";
       position: absolute;
-      top: -4px;
+      top: 0;
       right: -15px;
       font-size: 18px;
     }
@@ -241,6 +246,37 @@
     }
   }
 
+  .sdn-header__menu-button {
+    @include govuk-font($size: 16);
+    display: none;
+    position: absolute;
+    //top: govuk-spacing(4);
+    top: 15px;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    color: $sdn-header-text-color;
+    background: none;
+    line-height: 20px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &::after {
+      @include govuk-shape-arrow($direction: down, $base: 10px, $display: inline-block);
+      content: "";
+      margin-left: govuk-spacing(1);
+    }
+
+    @include govuk-focusable;
+
+    @include mq ($from: tablet) {
+      top: govuk-spacing(3);
+    }
+  }
+
   $list-of-breakpoints: 600 650 700 750 800 850 900 950 1000 1050 1100 1150 1200;
 
   @each $breakpoint in $list-of-breakpoints {
@@ -250,61 +286,59 @@
         .sdn-header__container {
           height: auto;
           padding: 5px 0;
+          flex-wrap: wrap;
+        }
+
+        .sdn-header__menu-button {
+          display: block;
+        }
+
+        .sdn-header__content {
+          width: 100%;
         }
 
         .sdn-header__fixed-width-text {
           max-width: 100%;
         }
 
+        .sdn-header__dropdown-toggle {
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+
         .sdn-header__form {
-          max-width: 180px;
+          max-width: initial;
+          margin-right: 0;
+          padding-right: 0;
 
           input {
             height: 30px;
           }
         }
 
+        .sdn-header__dropdown {
+          position: static;
+        }
+
         .sdn-header__navigation {
+          display: none;
           position: relative;
-          margin: 0 0 0 20px;
+          margin-top: 0;
           overflow: hidden;
 
+          &--open {
+            display: block;
+          }
+
           > li {
+            display: list-item;
             position: relative;
-            left: -20px;
-            padding: 5px 0;
+            padding: 10px 0;
+            border-bottom: 1px solid $sdn-header-background-to;
             white-space: nowrap;
 
-            &:first-child {
-              left: 0;
-              padding-right: 20px;
-            }
-
             & + li {
-              margin-left: 20px;
-            }
-
-            & + li:before,
-            &:before {
-              content: "|";
-              position: absolute;
-              top: auto;
-              bottom: auto;
-              left: -13px;
               margin-left: 0;
-              border: 0;
-              color: $sdn-header-border-color;
-            }
-
-            &.sdn-header__form {
-              left: 0;
-              margin-right: 20px;
-
-              & + li {
-                &:before {
-                  content: "";
-                }
-              }
 
               &:before {
                 content: none;

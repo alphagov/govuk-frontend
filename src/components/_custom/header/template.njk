@@ -10,36 +10,37 @@
 
     {% if params.navigation  %}
     <div class="sdn-header__content">
+      <button type="button" role="button" class="sdn-header__menu-button sdn-header__menu-button js-header-toggle" aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu</button>
       <nav>
         <ul id="navigation" class="sdn-header__navigation {{ params.navigationClasses if params.navigationClasses }}" aria-label="Top Level Navigation">
-            {% if params.show_search %}
-            <li class="sdn-header__form">
-                <form>
-                    <input class="govuk-input" type="text" placeholder="Hľadať">
-                    <button type="submit">Hľadať</button>
-                </form>
-            </li>
-            {% endif %}
+          {% if params.show_search %}
+          <li class="sdn-header__form">
+            <form>
+              <input class="govuk-input" type="text" placeholder="Hľadať">
+              <button type="submit">Hľadať</button>
+            </form>
+          </li>
+          {% endif %}
           {% for item in params.navigation %}
             {% if item.href and item.text %}
-                {% if item.items %}
-                  <li>
-                    <div class="sdn-header__subnavigation">
-                        <a href="#" class="sdn-header__link sdn-header__dropdown-toggle js-dropdown-toggle" aria-controls="subnav-dropdown"><span class="sdn-header__fixed-width-text">{{ item.text }}</span></a>
-                        <ul class="sdn-header__dropdown" id="subnav-dropdown">
-                            {% for subitem in item.items %}
-                                <li>
-                                    <a href="{{ subitem.href }}">{{ subitem.text }}</a>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                  </li>
-                {% else %}
-                  <li>
-                    <a class="sdn-header__link {{ " sdn-header__link--active" if item.active }}" href="{{ item.href }}"{% for attribute, value in item.attributes %} {{attribute}}="{{value}}"{% endfor %}>{{ item.text }}</a>
-                  </li>
-                {% endif %}
+              {% if item.items %}
+                <li>
+                  <div class="sdn-header__subnavigation">
+                    <a href="#" class="sdn-header__link sdn-header__dropdown-toggle js-dropdown-toggle" aria-controls="subnav-dropdown-{{ loop.index }}"><span class="sdn-header__fixed-width-text">{{ item.text }}</span></a>
+                    <ul class="sdn-header__dropdown" id="subnav-dropdown-{{ loop.index }}">
+                      {% for subitem in item.items %}
+                        <li>
+                          <a href="{{ subitem.href }}">{{ subitem.text }}</a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                </li>
+              {% else %}
+                <li>
+                  <a class="sdn-header__link {{ " sdn-header__link--active" if item.active }}" href="{{ item.href }}"{% for attribute, value in item.attributes %} {{attribute}}="{{value}}"{% endfor %}>{{ item.text }}</a>
+                </li>
+              {% endif %}
             {% endif %}
           {% endfor %}
         </ul>

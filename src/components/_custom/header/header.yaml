@@ -77,6 +77,27 @@ examples:
             text: 'Nastavenia'
           - href: '#22'
             text: 'Odhlásiť'
+- name: menu s dvomi dropdownami
+  description: Hlavička prihláseného používateľa s druhým dropdownom
+  data:
+    show_search: true
+    responsiveClass: sdn-header-1100
+    productName: Životné situácie
+    navigation:
+      - href: '#1'
+        text: Časté otázky
+        items:
+          - href: '#11'
+            text: 'Otázka 1'
+          - href: '#12'
+            text: 'Otázka 2'
+      - href: '#2'
+        text: jan.amos.komensky@gmail.com
+        items:
+          - href: '#21'
+            text: 'Nastavenia'
+          - href: '#22'
+            text: 'Odhlásiť'
 - name: aktívny odkaz
   description: Hlavička s aktívnym odkazom
   data:
