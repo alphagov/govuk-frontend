@@ -1,0 +1,124 @@
+{% extends "template-lepsiesluzby.njk" %}
+
+{% from "header/macro.njk" import govukHeader %}
+{% from "_custom/hero/macro.njk" import govukHero %}
+{% from "_custom/thumbnail/macro.njk" import govukThumbnail %}
+{% from "table/macro.njk" import govukTable %}
+{% from "button/macro.njk" import govukButton %}
+
+{% block head %}
+  <!--[if !IE 8]><!-->
+  <link rel="stylesheet" href="/public/app.css">
+  <!--<![endif]-->
+  <!--[if IE 8]> <link rel="stylesheet" href="/public/app-ie8.css"> <![endif]-->
+  <!--[if lt IE 9]> <script src="/vendor/html5-shiv/html5shiv.js"></script> <![endif]-->
+{% endblock %}
+
+{% block main %}
+
+{{ govukHero() }}
+
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-three-quarters govuk-!-padding-bottom-6">
+        {{ govukThumbnail() }}
+      </div>
+    </div>
+
+    {{ govukTable({
+      "caption": "Čo aktuálne riešime",
+      "captionClasses": "govuk-heading-m",
+      "firstCellIsHeader": true,
+      "head": [
+        {
+          "text": "Podnet"
+        },
+        {
+          "text": "Kategória",
+          "format": "numeric"
+        },
+        {
+          "text": "Dátum",
+          "format": "numeric"
+        }
+      ],
+      "rows": [
+        [
+          {
+            "text": "Web slovensko.sk"
+          },
+          {
+            "text": "Občan - Financie",
+            "format": "numeric"
+          },
+          {
+            "text": "2019-06-08",
+            "format": "numeric"
+          }
+        ],
+        [
+          {
+            "text": "Web slovensko.sk"
+          },
+          {
+            "text": "Občan - Financie",
+            "format": "numeric"
+          },
+          {
+            "text": "2019-06-08",
+            "format": "numeric"
+          }
+        ],
+        [
+          {
+            "text": "Web slovensko.sk"
+          },
+          {
+            "text": "Občan - Financie",
+            "format": "numeric"
+          },
+          {
+            "text": "2019-06-08",
+            "format": "numeric"
+          }
+        ],
+        [
+          {
+            "text": "Web slovensko.sk"
+          },
+          {
+            "text": "Občan - Financie",
+            "format": "numeric"
+          },
+          {
+            "text": "2019-06-08",
+            "format": "numeric"
+          }
+        ],
+        [
+          {
+            "text": "Web slovensko.sk"
+          },
+          {
+            "text": "Občan - Financie",
+            "format": "numeric"
+          },
+          {
+            "text": "2019-06-08",
+            "format": "numeric"
+          }
+        ]
+      ]
+    }) }}
+
+    {{ govukButton({
+      "text": "Zobraziť viac",
+      "href": "/"
+    }) }}
+
+  </main>
+</div>
+
+{% endblock %}

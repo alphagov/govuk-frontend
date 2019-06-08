@@ -1,0 +1,60 @@
+@import "../../../settings/all";
+@import "../../../tools/all";
+@import "../../../helpers/all";
+@import "../_partials/gradient-background";
+
+
+@include govuk-exports("sdn/component/thumbnail") {
+
+  $sdn-thumbnail-border-color: #bfc1c3;
+  $sdn-thumbnail-border-top-color: #448bef;
+
+  .sdn-thumbnail {
+    display: flex;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    border: 2px solid $sdn-thumbnail-border-color;
+    border-radius: 3px;
+    border-top-color: $sdn-thumbnail-border-top-color;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .sdn-thumbnail-caption {
+    width: 70%;
+  }
+
+  .sdn-thumbnail-caption {
+    width: 70%;
+
+    > .govuk-body {
+      margin-bottom: 0;
+    }
+  }
+
+  .sdn-thumbnail-btn {
+    width: 30%;
+    text-align: right;
+
+    > .govuk-button {
+      margin-bottom: 0;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .sdn-thumbnail {
+      flex-direction: column;
+    }
+
+    .sdn-thumbnail-caption,
+    .sdn-thumbnail-btn {
+      width: 100%;
+    }
+
+    .sdn-thumbnail-btn {
+      > .govuk-button {
+        margin-top: 1rem;
+      }
+    }
+  }
+}
