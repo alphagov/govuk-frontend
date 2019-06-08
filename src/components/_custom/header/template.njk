@@ -1,11 +1,14 @@
 <header class="sdn-header {{ params.responsiveClass }} {{ params.classes if params.classes }}" role="banner" data-module="sdn-header"
         {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
-  <div class="sdn-header__container {{ params.containerClasses | default('govuk-width-container') }}">
-
+  <div class="sdn-header__container {{ params.containerClasses | default('govuk-width-container') }} {% if params.productLogo %}sdn-header__container--logo{% endif %}">
     <a href="{{ params.homepageUrl | default('/') }}" class="sdn-header__link">
-      <span class="sdn-header__product-name">
-        {{ params.productName }}
-      </span>
+      {% if params.productLogo %}
+        <img src="{{ params.productLogo }}" alt="{{ params.productName }}" />
+      {% else %}
+        <span class="sdn-header__product-name">
+          {{ params.productName }}
+        </span>
+      {% endif %}
     </a>
 
     {% if params.navigation  %}

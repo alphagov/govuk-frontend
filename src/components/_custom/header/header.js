@@ -51,6 +51,11 @@ SdnHeader.prototype.setupDropdown = function($node) {
       }
     })
   })
+  $node.addEventListener("blur", function() {
+    if (blurEnabled) {
+      $dropdown.style.display = "none";
+    }
+  })
   $dropdown.addEventListener("mouseenter", function() {
     blurEnabled = false
   })

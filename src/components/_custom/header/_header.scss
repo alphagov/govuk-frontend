@@ -38,6 +38,19 @@
     height: $sdn-header-height;
     align-items: center;
     justify-content: space-between;
+
+    &--logo {
+      > a {
+        display: flex;
+
+        > img {
+          height: 20px;
+          @include mq ($from: tablet) {
+            height: 25px;
+          }
+        }
+      }
+    }
   }
 
   .sdn-header__link {
