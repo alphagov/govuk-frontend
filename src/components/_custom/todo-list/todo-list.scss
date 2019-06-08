@@ -51,6 +51,8 @@ $sdn-todo-list-button-conjunction-text-color: #000000;
 
         @include mq ($until: tablet) {
           display: block;
+
+          @include govuk-clearfix;
         }
 
         &:last-child {
@@ -67,6 +69,8 @@ $sdn-todo-list-button-conjunction-text-color: #000000;
 
           @include mq ($until: tablet) {
             display: block;
+
+            @include govuk-clearfix;
           }
 
           .snd-todo-list__item__info {
@@ -75,10 +79,6 @@ $sdn-todo-list-button-conjunction-text-color: #000000;
 
             &:not(:last-child) {
               margin-right: 20px;
-            }
-
-            @include mq ($until: tablet) {
-              margin-left: 30px;
             }
           }
         }
@@ -102,7 +102,14 @@ $sdn-todo-list-button-conjunction-text-color: #000000;
 
     @include mq ($until: tablet) {
       display: block;
-      margin-left: 30px;
+      margin-top: 15px;
+      margin-left: 35px;
+    }
+  }
+
+  .sdn-todo-list--readonly .snd-todo-list__link {
+    @include mq ($until: tablet) {
+      margin-left: auto;
     }
   }
 
@@ -253,8 +260,11 @@ $sdn-todo-list-button-conjunction-text-color: #000000;
     @include govuk-text-colour;
 
     display: block;
-
     margin-bottom: govuk-spacing(1);
+
+    &.govuk-checkboxes__label {
+      float: none;
+    }
   }
 
   // Modifiers that make labels look more like their equivalent headings
