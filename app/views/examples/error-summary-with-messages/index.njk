@@ -21,12 +21,12 @@
     "classes": "optional-extra-class",
     "errorList": [
       {
-        "text": "Descriptive link to the question with an error",
-        "href": "#example-error-1"
+        "text": "You must provide your passport number",
+        "href": "#passport-number"
       },
       {
-        "text": "Descriptive link to the question with an error",
-        "href": "#example-error-1"
+        "text": "You must provide your expiry date",
+        "href": "#expiry-month"
       }
     ]
   }) }}
@@ -35,8 +35,11 @@
 
   {{ govukInput({
     label: {
-      "html": '<h3 class="govuk-heading-m govuk-!-margin-bottom-1">Passport number</h3>',
-      "hintText": "For example, 502135326"
+      text: "Passport number",
+      classes: "govuk-label--m"
+    },
+    hint: {
+      text: "For example, 502135326"
     },
     id: "passport-number",
     name: "passport-number",
@@ -47,23 +50,28 @@
 
   {{ govukDateInput({
     fieldset: {
-      legendHtml: '<h3 class="govuk-heading-m">Expiry date</h3>',
-      legendHintText: 'For example, 08 2014'
+      legend: {
+        text: 'Expiry date',
+        classes: 'govuk-fieldset__legend--m'
+      }
+    },
+    hint: {
+      text: 'For example, 08 2014'
     },
     id: 'expiry',
     name: 'expiry',
     items:[
       {
         name: 'month',
-        classes: 'govuk-input--width-2'
+        classes: 'govuk-input--width-2 govuk-input--error'
       },
       {
         name: 'year',
-        classes: 'govuk-input--width-4'
+        classes: 'govuk-input--width-4 govuk-input--error'
       }
     ],
     errorMessage: {
-      "text": "You must provide your expiry date"
+      "text": "Enter your expiry date"
     }
     })
   }}

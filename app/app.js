@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const bodyParser = require('body-parser')
 const nunjucks = require('nunjucks')
 const util = require('util')
 const fs = require('fs')
@@ -17,6 +18,7 @@ const appViews = [
   configPaths.layouts,
   configPaths.views,
   configPaths.examples,
+  configPaths.fullPageExamples,
   configPaths.components,
   configPaths.src
 ]
@@ -67,6 +69,12 @@ module.exports = (options) => {
   app.use('/vendor/html5-shiv/', express.static('node_modules/html5shiv/dist/'))
   app.use('/assets', express.static(path.join(configPaths.src, 'assets')))
 
+  // Turn form POSTs into data that can be used for validation.
+  app.use(bodyParser.urlencoded({ extended: true }))
+
+  // Handle the banner component serverside.
+  require('./banner.js')(app)
+
   // Define routes
 
   // Index page - render the component list template
@@ -74,11 +82,13 @@ module.exports = (options) => {
     const components = fileHelper.allComponents
     const sdnComponents = fileHelper.allSdnComponents
     const examples = await readdir(path.resolve(configPaths.examples))
+    const fullPageExamples = await readdir(path.resolve(configPaths.fullPageExamples))
 
     res.render('index', {
       componentsDirectory: components,
       sdnComponentsDirectory: sdnComponents,
-      examplesDirectory: examples
+      examplesDirectory: examples,
+      fullPageExamplesDirectory: fullPageExamples
     })
   })
 
@@ -268,6 +278,9 @@ module.exports = (options) => {
       }
     })
   })
+
+  // Full page example views
+  require('./full-page-examples.js')(app)
 
   app.get('/robots.txt', function (req, res) {
     res.type('text/plain')

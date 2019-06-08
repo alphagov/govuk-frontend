@@ -14,6 +14,238 @@
 
 🆕 New features:
 
+- Pull Request Title goes here
+
+  Description goes here (optional)
+
+  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+
+🔧 Fixes:
+
+- Pull Request Title goes here
+
+  Description goes here (optional)
+
+  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+
+## 2.10.0 (Feature release)
+
+🆕 New features:
+
+- Add smaller versions of radio buttons and checkboxes
+
+  Thanks to [@owenm6](https://github.com/owenm6) for their help and support on this one.
+
+  ([PR #1125](https://github.com/alphagov/govuk-frontend/pull/1125))
+
+🔧 Fixes:
+
+- Prevent duplicate checkbox aria-describedby
+
+  Addresses an edge case where a checkbox with a hint (but without a fieldset) is output with duplicate `aria-describeby` attributes. Fixes issue [#1248](https://github.com/alphagov/govuk-frontend/pull/1248).
+
+  Thanks to [@colinrotherham](https://github.com/colinrotherham) for fixing this issue.
+
+  ([PR #1265](https://github.com/alphagov/govuk-frontend/pull/1265))
+
+## 2.9.0 (Feature release)
+
+🆕 New features:
+
+- Add classes to action items in the summary list component
+
+  ([PR #1233](https://github.com/alphagov/govuk-frontend/pull/1233))
+
+- Allow initAll to be scoped to a specific part of a page
+
+  See ["Initialise GOV.UK Frontend in only certain sections of a page"](docs/installation/installing-with-npm.md#initialise-govuk-frontend-in-only-certain-sections-of-a-page) for more information.
+
+  ([PR #1216](https://github.com/alphagov/govuk-frontend/pull/1216))
+
+🔧 Fixes:
+
+- Fix tabs bullet point character encoding issue when not enhanced
+
+  Thanks [Ed Horsford](https://github.com/edwardhorsford) and [Steve Sims](https://github.com/stevesims) for their help on this one.
+
+  ([PR #1247](https://github.com/alphagov/govuk-frontend/pull/1247))
+
+- Update padding of govuk-main-wrapper
+
+  This increases the padding of `govuk-main-wrapper` (on tablet and above) to be more inline with GOV.UK. When updating, your pages will have 10px more white space above and below the 'main' content area.
+
+  ([PR #1073](https://github.com/alphagov/govuk-frontend/pull/1073))
+
+- Remove error-summary dependence on document.onload
+
+  ([PR #1215](https://github.com/alphagov/govuk-frontend/pull/1215))
+
+- Ensure font is not loaded twice on slow networks
+
+  This is only an issue for users that are using alphagov/govuk_template alongside GOV.UK Frontend.
+
+  ([PR #1242](https://github.com/alphagov/govuk-frontend/pull/1242))
+
+## 2.8.0 (Feature release)
+
+### Considerations for fixed components such as modals
+
+We have been made aware that the [change to force scroll bars to appear at all times](https://github.com/alphagov/govuk-frontend/pull/1230) can change the behaviour of some components such as modals.
+
+If you're using your own components that rely on the overflow state of the document (such as modals) you should make sure you test those components when updating to this version.
+
+🆕 New features:
+
+- Enable `pattern` attribute for input
+
+  You can now set the `pattern` attribute on input fields using the component
+  macros:
+
+  ```js
+  {{ govukInput({
+    name: "example",
+    pattern: "[0-9]*"
+  }) }}
+  ```
+
+  As well as `pattern`, custom attributes can also be added on day/month/year
+  inputs (e.g. `data-example`) shown below:
+
+  ```js
+  {{ govukDateInput({
+    items: [
+      {
+        pattern: "[0-9]*",
+        attributes: {
+          "data-example": "value"
+        }
+      }
+    ]
+  }) }}
+  ```
+
+  ([PR #1172](https://github.com/alphagov/govuk-frontend/pull/1172))
+
+- Prevent horizontal jump as scrollbars appear
+
+  As content vertical height grows (e.g. autocomplete results appear), browsers
+  may add scroll bars causing the page to jump horizontally in position.
+
+  To avoid this, re-introduce fix from GOV.UK Template:
+  https://github.com/alphagov/govuk-frontend/issues/1204
+
+  ([PR #1230](https://github.com/alphagov/govuk-frontend/pull/1230))
+
+
+- Accommodate camera notches on new devices (iPhone X, Google Pixel 3 etc)
+
+  On newer devices with "camera notches", browsers reserve a safe area in
+  landscape orientation (known as pillarboxing) so content isn't obscured.
+
+  To avoid this, support has been added for `viewport-fit=cover` as shown here:
+  https://webkit.org/blog/7929/designing-websites-for-iphone-x/
+
+  ([PR #1176](https://github.com/alphagov/govuk-frontend/pull/1176))
+
+
+- Prefix error messages with a visually hidden "Error:", to make it clearer to
+  users of assistive technologies
+
+  ([PR #1221](https://github.com/alphagov/govuk-frontend/pull/1221))
+
+
+- Prevent accidental multiple submissions of forms
+
+  If a user double clicks a submit button in a form, we debounce this event and
+  ignore the second click.
+
+  HTML data attribute:
+
+  ```html
+  <button class="govuk-button" data-prevent-double-click="true">
+    Submit
+  </button>
+  ```
+
+  Nunjucks macro:
+
+  ```js
+  {{ govukButton({
+    text: "Submit",
+    preventDoubleClick: true
+  }) }}
+  ```
+
+  ([PR #1018](https://github.com/alphagov/govuk-frontend/pull/1018))
+
+
+🔧 Fixes:
+
+- Ensure that files within the core, objects and overrides layers can be
+  imported individually
+
+  Unlike components, the files within these layers did not previously import
+  their dependencies (for example, most of them require the govuk-exports mixin
+  but did not import it).
+
+  We've also added tests to ensure that files within these layers can be
+  imported and rendered to CSS without erroring, which should catch this in the
+  future.
+
+  Thanks to [Alasdair McLeay](https://github.com/penx) for originally raising a
+  PR to fix this.
+
+  ([PR #1235](https://github.com/alphagov/govuk-frontend/pull/1235))
+
+
+- Ensure inset component does not misalign nested components
+
+  Thanks to [Paul Hayes](https://github.com/fofr) for raising this issue.
+
+  ([PR #1232](https://github.com/alphagov/govuk-frontend/pull/1232))
+
+
+- Improve word wrapping in summary list component
+
+  Thanks to [Edward Horsford](https://github.com/edwardhorsford) and [Lee Kowalkowski](https://github.com/leekowalkowski-hmrc) for their help on this one.
+
+  Also thanks to [Malcolm Butler](https://github.com/MoJ-Longbeard) for exploring a [previous version of this fix](https://github.com/alphagov/govuk-frontend/pull/1185).
+
+  ([PR #1220](https://github.com/alphagov/govuk-frontend/pull/1220))
+
+
+## 2.7.0 (Feature release)
+
+🆕 New features:
+
+- Added config file for prototype kit.
+
+  Added a configuration file for an experimental feature in Prototype kit to allow departments to use their own frontend alongside govuk-frontend
+
+  Thanks @matcarey (HMRC) for this contribution
+
+  ([PR #1102](https://github.com/alphagov/govuk-frontend/pull/1102))
+
+- Disable incorrect iOS/Edge text size adjustments
+
+  To cater for non-responsive websites, iOS and Edge automatically increase font sizes (iOS in landscape, Edge in portrait on HiDPI displays).
+
+  Since we have already considered typography at these device sizes, this feature is now turned off.
+
+  ([PR #1178](https://github.com/alphagov/govuk-frontend/pull/1178))
+
+🔧 Fixes:
+
+- Fix wrapping of long lines of text in summary list
+
+  Thanks to [@MoJ-Longbeard](https://github.com/MoJ-Longbeard) for raising the issue.
+
+  ([PR #1169](https://github.com/alphagov/govuk-frontend/pull/1169))
+
+## 2.6.0 (Feature release)
+
+🆕 New features:
+
 - Enable `autocomplete` attributes for input components.
 
   You can now set the `autocomplete` attribute on input, date input and textarea components using the component macros.
@@ -26,17 +258,17 @@
 
 🔧 Fixes:
 
-- Pull Request Title goes here
-
-  Description goes here (optional)
-
-  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
-  
 - Include Accordion component in global namespace
 
   Accordion component was not exported and was therefore unavailable in global namespace
 
   ([PR #1157](https://github.com/alphagov/govuk-frontend/pull/1157))
+
+- Fix Checkboxes and Radios targeting selectors outside it's scope
+
+  Thanks to [@andysellick](https://github.com/andysellick) and [@bilbof](https://github.com/bilbof) for helping us with this issue.
+
+  ([PR #1156](https://github.com/alphagov/govuk-frontend/pull/1156))
 
 - Fixes styling of the accordion component when there is no JavaScript or it has been turned off
 

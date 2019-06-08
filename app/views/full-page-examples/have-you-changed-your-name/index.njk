@@ -1,0 +1,63 @@
+{# This example is based of the "Radios" example: https://design-system.service.gov.uk/components/radios #}
+{% extends "_generic.njk" %}
+
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "error-summary/macro.njk" import govukErrorSummary %}
+{% from "radios/macro.njk" import govukRadios %}
+{% from "button/macro.njk" import govukButton %}
+
+{% set pageTitle = "Have you changed your name?" %}
+{% block pageTitle %}{{ "Error: " if errors }}GOV.UK - {{ pageTitle }}{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "#"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <form method="post" novalidate>
+    {% if errorSummary.length > 0 %}
+        {{ govukErrorSummary({
+            titleText: "There is a problem",
+            errorList: errorSummary
+        }) }}
+    {% endif %}
+
+
+    {{ govukRadios({
+      classes: "govuk-radios--inline",
+      idPrefix: "changed-name",
+      name: "changed-name",
+      fieldset: {
+        legend: {
+          text: pageTitle,
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--xl"
+        }
+      },
+      hint: {
+        text: "This includes changing your last name or spelling your name differently."
+      },
+      items: [
+        {
+          id: "changed-name",
+          value: "yes",
+          text: "Yes"
+        },
+        {
+          value: "no",
+          text: "No"
+        }
+      ],
+      errorMessage: errors["changed-name"]
+    }) }}
+
+    {{ govukButton({
+        text: "Continue"
+      }) }}
+  </form>
+
+{% endblock %}

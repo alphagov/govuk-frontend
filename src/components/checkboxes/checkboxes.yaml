@@ -22,7 +22,7 @@ params:
   - name: classes
     type: string
     required: false
-    description: Optional classes to add to the form group (e.g. to show error state for the whole group)
+    description: Classes to add to the form group (e.g. to show error state for the whole group)
 - name: idPrefix
   type: string
   required: false
@@ -220,7 +220,7 @@ examples:
       - value: blue
         text: Blue
 
-- name: with single option set 'aria-describeby' on input
+- name: with single option set 'aria-describedby' on input
   data:
     name: t-and-c
     errorMessage:
@@ -228,6 +228,17 @@ examples:
     items:
       - value: yes
         text: I agree to the terms and conditions
+
+- name: with single option (and hint) set 'aria-describedby' on input
+  data:
+    name: t-and-c-with-hint
+    errorMessage:
+      text: Please accept the terms and conditions
+    items:
+      - value: yes
+        text: I agree to the terms and conditions
+        hint:
+          text: Go on, you know you want to!
 
 - name: with all fieldset attributes
   data:
@@ -267,6 +278,28 @@ examples:
         text: Waste from mines or quarries
       - value: farm
         text: Farm or agricultural waste
+
+- name: with error message and hints on items
+  data:
+    name: waste
+    errorMessage:
+      text: Please select an option
+    fieldset:
+      legend:
+        text: Which types of waste do you transport regularly?
+    items:
+      - value: animal
+        text: Waste from animal carcasses
+        hint:
+          text: Nullam id dolor id nibh ultricies vehicula ut id elit.
+      - value: mines
+        text: Waste from mines or quarries
+        hint:
+          text: Nullam id dolor id nibh ultricies vehicula ut id elit.
+      - value: farm
+        text: Farm or agricultural waste
+        hint:
+          text: Nullam id dolor id nibh ultricies vehicula ut id elit.
 
 - name: with very long option text
   data:
@@ -358,7 +391,7 @@ examples:
         html: |
           <label class="govuk-label" for="contact-text-message">Mobile phone number</label>
           <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
-  
+
 - name: with optional form-group classes showing group error
   data:
     idPrefix: how-contacted-checked
@@ -388,3 +421,122 @@ examples:
         html: |
           <label class="govuk-label" for="contact-text-message">Mobile phone number</label>
           <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
+
+- name: small
+  data:
+    idPrefix: nationality
+    name: nationality
+    classes: govuk-checkboxes--small
+    fieldset:
+      legend:
+        text: Filter by
+    items:
+      - value: a
+        text: a thing
+      - value: b
+        text: another thing
+      - value: c
+        text: this thing
+
+- name: small with long text
+  data:
+    idPrefix: nationality
+    name: nationality
+    classes: govuk-checkboxes--small
+    fieldset:
+      legend:
+        text: Filter by
+    items:
+      - value: nullam
+        text:
+          Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu leo
+          quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
+          Maecenas faucibus mollis interdum. Donec id elit non mi porta gravida
+          at eget metus.
+      - value: aenean
+        text:
+          Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis
+          vestibulum. Donec sed odio dui. Duis mollis, est non commodo luctus,
+          nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cum sociis
+          natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+          mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam
+          venenatis vestibulum. Cras mattis consectetur purus sit amet
+          fermentum.
+      - value: fusce
+        text:
+          Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
+          nibh, ut fermentum massa justo sit amet risus. Etiam porta sem
+          malesuada magna mollis euismod. Praesent commodo cursus magna, vel
+          scelerisque nisl consectetur et. Etiam porta sem malesuada magna
+          mollis euismod. Etiam porta sem malesuada magna mollis euismod.
+          Donec sed odio dui. Sed posuere consectetur est at lobortis.
+
+- name: small with error
+  data:
+    idPrefix: nationality
+    name: nationality
+    classes: govuk-checkboxes--small
+    errorMessage:
+      text: "Select a thing"
+    fieldset:
+      legend:
+        text: Filter by
+    items:
+      - value: a
+        text: a thing
+      - value: b
+        text: another thing
+      - value: c
+        text: this thing
+
+- name: small with hint
+  data:
+    idPrefix: nationality
+    name: nationality
+    classes: govuk-checkboxes--small
+    fieldset:
+      legend:
+        text: Filter by
+    items:
+      - value: a
+        text: a thing
+        hint:
+          text: hint for a thing
+      - value: b
+        text: another thing
+      - value: c
+        text: this thing
+
+- name: small with disabled
+  data:
+    idPrefix: nationality
+    name: nationality
+    classes: govuk-checkboxes--small
+    fieldset:
+      legend:
+        text: Filter by
+    items:
+      - value: a
+        text: a thing
+      - value: b
+        text: another thing
+      - value: c
+        text: this thing
+        disabled: true
+
+- name: small with conditional reveal
+  data:
+    idPrefix: how-contacted
+    classes: govuk-checkboxes--small
+    fieldset:
+      legend:
+        text: How do you want to be contacted?
+    items:
+      - value: a
+        text: a thing
+        conditional:
+          html: |
+            <label class="govuk-label" for="context-email">Foo</label>
+            <input class="govuk-input govuk-!-width-one-third" name="context-email" type="text" id="context-email">
+      - value: b
+        text: another thing

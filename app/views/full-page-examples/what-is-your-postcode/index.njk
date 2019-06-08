@@ -1,0 +1,47 @@
+{# This example is based of the  "What is your home postcode?" example: https://design-system.service.gov.uk/patterns/question-pages/postcode/index.html #}
+{% extends "_generic.njk" %}
+
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "button/macro.njk" import govukButton %}
+{% from "error-summary/macro.njk" import govukErrorSummary %}
+{% from "input/macro.njk" import govukInput %}
+
+{% set pageTitle = "What is your home postcode?" %}
+{% block pageTitle %}{{ "Error: " if errors }}GOV.UK - {{ pageTitle }}{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "#"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <form method="post" novalidate>
+    {% if errorSummary.length > 0 %}
+        {{ govukErrorSummary({
+            titleText: "There is a problem",
+            errorList: errorSummary
+        }) }}
+    {% endif %}
+
+    {{ govukInput({
+      label: {
+        text: pageTitle,
+        classes: "govuk-label--xl",
+        isPageHeading: true
+      },
+      classes: "govuk-input--width-10",
+      id: "address-postcode",
+      name: "address-postcode",
+      autocomplete: "postal-code",
+      errorMessage: errors["address-postcode"]
+    }) }}
+
+    {{ govukButton({
+        text: "Continue"
+      }) }}
+  </form>
+
+{% endblock %}

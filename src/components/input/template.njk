@@ -33,12 +33,14 @@
     classes: params.errorMessage.classes,
     attributes: params.errorMessage.attributes,
     html: params.errorMessage.html,
-    text: params.errorMessage.text
+    text: params.errorMessage.text,
+    visuallyHiddenText: params.errorMessage.visuallyHiddenText
   }) | indent(2) | trim }}
 {% endif %}
   <input class="govuk-input {%- if params.classes %} {{ params.classes }}{% endif %} {%- if params.errorMessage %} govuk-input--error{% endif %}" id="{{ params.id }}" name="{{ params.name }}" type="{{ params.type | default('text') }}"
   {%- if params.value %} value="{{ params.value}}"{% endif %}
   {%- if describedBy %} aria-describedby="{{ describedBy }}"{% endif %}
   {%- if params.autocomplete %} autocomplete="{{ params.autocomplete}}"{% endif %}
+  {%- if params.pattern %} pattern="{{ params.pattern }}"{% endif %}
   {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor -%}>
 </div>

@@ -1,6 +1,8 @@
 {% from "./components/skip-link/macro.njk" import govukSkipLink -%}
+{% from "./components/_custom/phase-banner/macro.njk" import govukPhaseBanner -%}
 {% from "./components/_custom/header/macro.njk" import govukHeader -%}
 {% from "./components/_custom/footer/macro.njk" import govukFooter -%}
+{% from "./components/_custom/feedbackbar/macro.njk" import govukFeedbackbar %}
 {# specify absolute url for the static assets folder e.g. http://wwww.domain.com/assets #}
 {%- set assetUrl = assetUrl | default(assetPath) -%}
 <!DOCTYPE html>
@@ -30,46 +32,77 @@
   <body class="govuk-template__body {{ bodyClasses }}">
     <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
     <div class="navody-template__content">
-    {% block bodyStart %}{% endblock %}
+      {% block bodyStart %}{% endblock %}
 
-    {% block skipLink %}
-      {{ govukSkipLink({
-        href: '#main-content',
-        text: 'Skip to main content'
-      }) }}
-    {% endblock %}
+      {% block skipLink %}
+        {{ govukSkipLink({
+          href: '#main-content',
+          text: 'Skip to main content'
+        }) }}
+      {% endblock %}
 
-    {% block header %}
-      {{ govukHeader({
-          productName: 'Životné situácie',
-          navigation: [{
-              href: '#1',
-              text: 'Časté otázky'
-          },
-    {
-        href: '#2',
-        text: 'b@h6.sk',
-        items: [
-        {
-            text: 'Odhlásiť',
-            href: '#3'
-        }
-        ]
-    }]
-      }) }}
-    {% endblock %}
+      {% block header %}
+          <div class="govuk-width-container">
+          {{ govukPhaseBanner({
+              tag: {
+                  text: "BETA VERZIA"
+              },
+              html: 'Toto je nová služba občianskeho združenia <strong>Slovensko.Digital</strong>. Pomôžte nám ju zlepšiť.'
+          }) }}
+          </div>
+        {{ govukHeader({
+            productName: 'Životné situácie',
+            navigation: [{
+                href: '#1',
+                text: 'O Projekte'
+            },
+                {
+                href: '#1',
+                text: 'Často kladené otázky'
+            },
+            {
+                href: '#2',
+                text: 'jozkomrkvicka@gmail.com.sk',
+                items: [
+                  {
+                      text: 'Odhlásiť',
+                      href: '#3'
+                  }
+                ]
+            }]
+        }) }}
+      {% endblock %}
 
-    {% block main %}
-      <div class="govuk-width-container">
-        <h1>
-          <a href="#" onclick="document.getElementById('dynamic-content').innerHTML += '<h2>Hello world</h2><h2>Hello world</h2><h2>Hello world</h2>';">Pridať obsah</a>
-        </h1>
-        <div id="dynamic-content"></div>
-      </div>
-    {% endblock %}
+      {% block main %}
+        <div class="govuk-width-container">
+          <h1>
+            <a href="#" onclick="document.getElementById('dynamic-content').innerHTML += '<h2>Hello world</h2><h2>Hello world</h2><h2>Hello world</h2>';">Pridať obsah</a>
+          </h1>
+          <div id="dynamic-content"></div>
+        </div>
+      {% endblock %}
     </div>
-
+    {{ govukFeedbackbar({
+        no: {
+            title: 'Nadpis NIE',
+            text: 'slaby text'
+        },
+        foundbug: {
+            title: 'Nadpis Bug',
+            html: '<p id="feedback_explanation" class="gem-c-feedback__form-paragraph">Don’t include personal or financial information like your National Insurance number or credit card details.</p><div class="govuk-form-group">
+                  <label for="input-e3e94fe2" class="gem-c-label govuk-label">
+                  What were you doing?
+                  </label>
+                  <input name="what_doing" class="gem-c-input govuk-input" id="input-e3e94fe2" type="text" aria-describedby="feedback_explanation">
+                  </div><div class="govuk-form-group">
+                  <label for="input-a186d211" class="gem-c-label govuk-label">
+                  What went wrong?
+                  </label>  <input name="what_wrong" class="gem-c-input govuk-input" id="input-a186d211" type="text">
+                  </div><button class="gem-c-button govuk-button" type="submit">Send</button>'
+        }
+    }) }}
     <div class="navody-template__footer">
+
       {% block footer %}
         {{ govukFooter({}) }}
       {% endblock %}

@@ -1,0 +1,120 @@
+{# This example is based of the  "What is your nationality?" example: https://www.registertovote.service.gov.uk/register-to-vote/nationality #}
+{% extends "_generic.njk" %}
+
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "checkboxes/macro.njk" import govukCheckboxes %}
+{% from "input/macro.njk" import govukInput %}
+{% from "details/macro.njk" import govukDetails %}
+{% from "textarea/macro.njk" import govukTextarea %}
+{% from "button/macro.njk" import govukButton %}
+{% from "error-summary/macro.njk" import govukErrorSummary %}
+
+{% set pageTitle = "What is your nationality?" %}
+{% block pageTitle %}{{ "Error: " if errors }}GOV.UK - {{ pageTitle }}{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "#"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form method="post" novalidate>
+          {% if errorSummary.length > 0 %}
+              {{ govukErrorSummary({
+                  titleText: "There is a problem",
+                  errorList: errorSummary
+              }) }}
+          {% endif %}
+
+        {% set otherCountryHtml %}
+
+          {{ govukInput({
+            id: "country-name",
+            name: "country-name",
+            type: "text",
+            classes: "govuk-!-width-one-third",
+            label: {
+              text: "Country name"
+            },
+            errorMessage: errors["country-name"]
+            }) }}
+
+        {% endset %}
+
+        {{ govukCheckboxes({
+          idPrefix: "confirm-nationality",
+          name: "confirm-nationality",
+          fieldset: {
+            legend: {
+              text: "What is your nationality?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: "Select all options that are relevant to you."
+          },
+          items: [
+            {
+              id: "confirm-nationality",
+              value: "british-nationality",
+              text: "British",
+              checked: values["confirm-nationality"]|length and "british-nationality" in values["confirm-nationality"],
+              hint: {
+                text: "including English, Scottish, Welsh and Northern Irish"
+              }
+            },
+            {
+              value: "irish-nationality",
+              text: "Irish",
+              checked: values["confirm-nationality"]|length and "irish-nationality" in values["confirm-nationality"],
+              hint: {
+                text: "including from Northern Ireland"
+              }
+            },
+            {
+              value: "other-country-nationality",
+              text: "Citizen of a different country",
+              checked: values["confirm-nationality"]|length and "other-country-nationality" in values["confirm-nationality"],
+              conditional: {
+                html: otherCountryHtml
+              }
+            }
+          ],
+          errorMessage: errors["confirm-nationality"]
+        }) }}
+
+        {% set helpWithNationalityHtml %}
+
+          <p class="govuk-body">
+            We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.
+          </p>
+
+          {{ govukTextarea({
+            name: "details-cannot-provide-nationality",
+            id: "details-cannot-provide-nationality",
+            label: {
+              text: "Can you provide more detail on why you cannot confirm your nationality?"
+            },
+            value: values["details-cannot-provide-nationality"]
+          }) }}
+
+        {% endset %}
+
+        {{ govukDetails({
+          summaryText: "Help with nationality",
+          html: helpWithNationalityHtml
+        }) }}
+
+      {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

@@ -21,54 +21,16 @@
   {{ govukHeadline({
     headline: 'Prepis vozidla - nový majiteľ'
   }) }}
+
   <div class="govuk-width-container">
     <main class="govuk-main-wrapper">
-
       <div class="govuk-grid-row">
-        <div class="govuk-grid-column-one-third">
-          {{ govukTimeline({
-            readonly: true,
-            steps: [
-              {
-                text: 'Úvod',
-                href: '/examples/template-prepis-vozidla-0-readonly',
-                state: 'done'
-              },
-              {
-                text: 'Prihlásiť nového držiteľa vozidla',
-                href: '/examples/template-prepis-vozidla-1-readonly',
-                state: 'done'
-              },
-              {
-                text: 'Zaplatiť správne poplatky',
-                href: '/examples/template-prepis-vozidla-2-readonly',
-                state: 'done'
-              },
-              {
-                text: 'Uzatvoriť povinné zmluvné poistenie',
-                href: '/examples/template-prepis-vozidla-3-readonly',
-                state: 'not-done',
-                selected: true
-              },
-              {
-                text: 'Absolvovať obhliadku vozidla',
-                href: '#',
-                state: 'not-done'
-              },
-              {
-                text: 'Vyzdvihnúť doklady',
-                href: '#',
-                state: 'not-done'
-              }
-            ]
-          }) }}
-        </div>
-
         <div class="govuk-grid-column-two-thirds">
           <div class="govuk-body sdn-content">
             <div id="all_steps_completed">
 
             </div>
+
             <h1 class="govuk-heading-l">
               Uzatvoriť povinné zmluvné poistenie
             </h1>
@@ -78,28 +40,66 @@
 
             <div class="govuk-inset-text">
               <b>Tip:</b> Povinné zmluvné poistenie je možné uzatvoriť aj online alebo telefonicky. Následne vám bude dočasná biela a zelená karta doručené na váš email ktorý ste zadali pri uzatváraní poistenia. Vytlačte si dočasnú bielu a zelenú kartu, tieto doklady je potrebné mať pri sebe pri vedení vozidla. Dočasnú bielu kartu je tiež potrebné mať pri sebe pri návšteve dopravného inšpektorátu za účeľom vyzdvihnutia dokladov.
-
-
             </div>
 
-          <div id="todo_list">
-            {{ govukTodoList({
-              "title": "Povinnosti a podklady",
-              "readonly": true,
-              "todolist_activate_url": "/examples/template-prepis-vozidla-3",
-              "todolist_description": "Aby ste nestratili prehľad, čo ste už spravili a čo ešte musíte spraviť, aktivujte si odškrtávanie vybavených povinností a úloh.",
-              "tasks": []
+            <div id="todo_list">
+              {{ govukTodoList({
+                "title": "Povinnosti a podklady",
+                "readonly": true,
+                "todolist_activate_url": "/examples/template-prepis-vozidla-3",
+                "todolist_description": "Aby ste nestratili prehľad, čo ste už spravili a čo ešte musíte spraviť, aktivujte si odškrtávanie vybavených povinností a úloh.",
+                "tasks": []
+              }) }}
+            </div>
+
+            {{ govukNextLink({
+              label: 'Ďalšia úloha',
+              text: '4. Absolvovať obhliadku vozidla',
+              url: '#'
             }) }}
+
+            </div>
           </div>
 
-          {{ govukNextLink({
-            label: 'Ďalšia úloha',
-            text: '4. Absolvovať obhliadku vozidla',
-            url: '#'
-          }) }}
-
+          <div class="govuk-grid-column-one-third">
+                {{ govukTimeline({
+                    readonly: true,
+                    steps: [
+                        {
+                            text: 'Úvod',
+                            href: '/examples/template-prepis-vozidla-0-readonly',
+                            state: 'done'
+                        },
+                        {
+                            text: 'Prihlásiť nového držiteľa vozidla',
+                            href: '/examples/template-prepis-vozidla-1-readonly',
+                            state: 'done'
+                        },
+                        {
+                            text: 'Zaplatiť správne poplatky',
+                            href: '/examples/template-prepis-vozidla-2-readonly',
+                            state: 'done'
+                        },
+                        {
+                            text: 'Uzatvoriť povinné zmluvné poistenie',
+                            href: '/examples/template-prepis-vozidla-3-readonly',
+                            state: 'not-done',
+                            selected: true
+                        },
+                        {
+                            text: 'Absolvovať obhliadku vozidla',
+                            href: '#',
+                            state: 'not-done'
+                        },
+                        {
+                            text: 'Vyzdvihnúť doklady',
+                            href: '#',
+                            state: 'not-done'
+                        }
+                    ]
+                }) }}
+          </div>
         </div>
-      </div>
     </main>
   </div>
 {% endblock %}

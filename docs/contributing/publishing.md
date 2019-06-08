@@ -15,7 +15,7 @@
 
   For example if the previous version is `2.3.0` and there are entries for `Breaking changes` then the new release should be `3.0.0`.
 
-  See the [versioning documentation](../versioning.md) for more information.
+  See the [versioning documentation](versioning.md) for more information.
 
 5. Update [`CHANGELOG.md`](../../CHANGELOG.md) "Unreleased" heading with the new version number.
   Copy the [`CHANGELOG_TEMPLATE.md`](./CHANGELOG_TEMPLATE.md), above the new release to make it easy for new contributors.
@@ -71,8 +71,8 @@ npm logout
 17. Send a message to our users in both the X-GOV and GDS #govuk-design-system slack channels that indicates
 there's a new release with a short summary.
 
-18. Move Trello cards from "Next Frontend release" column to "Done".
+18. Move cards on the [Sprint board](https://github.com/orgs/alphagov/projects/4) from "Ready to Release" column to "Done".
 
-19. Add Trello cards to "This Sprint" column for
+19. Add cards to the "Backlog" column:
   - Update the GOV.UK Design System to use the latest release
   - Update the GOV.UK Prototype Kit to use the latest release

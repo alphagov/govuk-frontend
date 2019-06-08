@@ -1,4 +1,4 @@
-<header class="sdn-header {{ params.classes if params.classes }}" role="banner" data-module="sdn-header"
+<header class="sdn-header {{ params.responsiveClass }} {{ params.classes if params.classes }}" role="banner" data-module="sdn-header"
         {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
   <div class="sdn-header__container {{ params.containerClasses | default('govuk-width-container') }}">
 
@@ -12,12 +12,14 @@
     <div class="sdn-header__content">
       <nav>
         <ul id="navigation" class="sdn-header__navigation {{ params.navigationClasses if params.navigationClasses }}" aria-label="Top Level Navigation">
+            {% if params.show_search %}
             <li class="sdn-header__form">
                 <form>
                     <input class="govuk-input" type="text" placeholder="Hľadať">
                     <button type="submit">Hľadať</button>
                 </form>
             </li>
+            {% endif %}
           {% for item in params.navigation %}
             {% if item.href and item.text %}
                 {% if item.items %}

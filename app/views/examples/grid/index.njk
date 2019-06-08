@@ -129,4 +129,60 @@
       </p>
     </div>
   </div>
+
+  <h2 class="govuk-heading-l govuk-!-margin-top-9" id="same-height-rows">
+    Same height rows
+  </h2>
+
+  <div class="govuk-inset-text">
+    Add <code>govuk-grid-row-same-height</code> class to <code>govuk-grid-row</code> element. Children of column div will be spaced evenly to fit the whole row height. You might need to wrap a group of children to a wrapper div if you don't want to alter their vertical flow withing the group. See the code in the example grid bellow.
+  </div>
+
+  <div class="govuk-grid-row govuk-grid-row-same-height">
+    <div class="govuk-grid-column-one-third">
+      <div>
+        <h2 class="govuk-heading-m">Card like column</h2>
+        <p class="govuk-body">
+          This guide shows how to make your service look consistent with the rest of GOV.UK.
+        </p>
+      </div>
+      <button class="govuk-button">Button</button>
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <div>
+        <h2 class="govuk-heading-m">Another card like column</h2>
+        <p class="govuk-body">
+          This guide shows how to make your service look consistent with the rest of GOV.UK. It includes example code and guidance for layout, typography, colour, images, icons, forms, buttons and data.
+        </p>
+      </div>
+      <button class="govuk-button">Button</button>
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <h2 class="govuk-heading-m">Evenly spaced column children</h2>
+      <button class="govuk-button">Button 1</button>
+      <button class="govuk-button">Button 2</button>
+      <button class="govuk-button">Button 3</button>
+    </div>
+  </div>
+
+  <div class="govuk-grid-row govuk-grid-row-same-height">
+    <div class="govuk-grid-column-two-thirds" style="background-color: #ebebeb;">
+      <div>
+        <h2 class="govuk-heading-m govuk-!-margin-top-4">First column</h2>
+        <p class="govuk-body">
+          This guide shows how to make your service look consistent with the rest of GOV.UK.
+        </p>
+      </div>
+      <button class="govuk-button">Button</button>
+    </div>
+    <div class="govuk-grid-column-one-third" style="background-color: #dcdcdc;">
+      <h2 class="govuk-heading-m govuk-!-margin-top-4">Second column</h2>
+      <p>
+        This guide shows how to make your service look consistent with the rest of GOV.UK. It includes example code and guidance for layout, typography, colour, images, icons, forms, buttons and data.
+      </p>
+      <p>
+        This guide shows how to make your service look consistent with the rest of GOV.UK. It includes example code and guidance for layout, typography, colour, images, icons, forms, buttons and data.
+      </p>
+    </div>
+  </div>
 {% endblock %}

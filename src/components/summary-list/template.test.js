@@ -293,6 +293,27 @@ describe('Data list', () => {
 
         expect($secondAction.text().trim()).toBe('Second action')
       })
+      it('renders classes on actions', async () => {
+        const $ = render('summary-list', {
+          rows: [
+            {
+              actions: {
+                items: [
+                  {
+                    text: 'Edit',
+                    classes: 'govuk-link--no-visited-state'
+                  }
+                ]
+              }
+            }
+          ]
+        })
+
+        const $component = $('.govuk-summary-list')
+        const $action = $component.find('.govuk-summary-list__actions > a')
+
+        expect($action.hasClass('govuk-link--no-visited-state')).toBeTruthy()
+      })
     })
   })
 })

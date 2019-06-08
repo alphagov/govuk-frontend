@@ -66,3 +66,19 @@ examples:
       - text: Rôzne ďalsie príplatky a príspevky
         href: '/'
         state: 'not-done'
+- name: titleMobileOnly
+  data:
+    title: Úlohy
+    titleMobileOnly: true
+    steps:
+      - text: Spustenie návodu
+        href: '/'
+        state: 'done'
+      - text: Vyzdvihnutie rodného listu na matrike
+        href: '/'
+        state: 'waiting'
+      - text: Prihlásenie do zdravotnej poistovne
+        href: '/'
+        state: 'waiting'
+        selected: true
+

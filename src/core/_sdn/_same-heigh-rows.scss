@@ -1,0 +1,18 @@
+@import "../../settings/all";
+@import "../../tools/all";
+@import "../../helpers/all";
+
+@include govuk-exports("sdn/core/same-heigh-rows") {
+  @include mq ($from: tablet) {
+    .govuk-grid-row-same-height {
+      display: flex;
+
+      div[class*="govuk-grid-column-"] {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+    }
+  }
+}

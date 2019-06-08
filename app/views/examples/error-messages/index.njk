@@ -54,14 +54,16 @@
 
     {{ govukInput({
       label: {
-        text: "National Insurance Number",
-        hintText: "It’s on your National Insurance card, benefit letter,
-        payslip or P60. For example, ‘QQ 12 34 56 C’."
+        text: "National Insurance Number"
+      },
+      hint: {
+        text: 'It’s on your National Insurance card, benefit letter,
+        payslip or P60. For example, ‘QQ 12 34 56 C’.'
       },
       id: "input-1",
       name: "test-name",
       errorMessage: {
-        text: "National Insurance Number"
+        text: "Enter your National Insurance Number"
       }
     }) }}
 
@@ -103,7 +105,9 @@
 
     {{ govukRadios({
       fieldset: {
-        legendHtml: "<h3 class=\"govuk-heading-m\">How do you want to be contacted?</h3>"
+        legend: {
+          text: "How do you want to be contacted?"
+        }
       },
       errorMessage: {
         text: "Please select an option"
@@ -130,7 +134,9 @@
 
     {{ govukCheckboxes({
       fieldset: {
-        legendHtml: "<h3 class=\"govuk-heading-m\">What type of waste do you want to dispose of?</h3>"
+        legend: {
+          text: "What type of waste do you want to dispose of?"
+        }
       },
       errorMessage: {
         text: "Please select an option"
@@ -157,23 +163,30 @@
 
     {{- govukDateInput({
       fieldset: {
-        legendText: 'What is your date of birth?',
-        legendHintText: 'For example, 31 3 1980'
+        legend: {
+          text: "What is your date of birth?"
+        }
+      },
+      hint: {
+        text: 'For example, 31 3 1980'
       },
       errorMessage: {
-        text: 'Error message goes here'
+        text: 'Date of birth must be in the past'
       },
       id: 'dob',
       name: 'dob',
       items:[
         {
-          name: 'day'
+          name: 'day',
+          classes: 'govuk-input--width-2 govuk-input--error'
         },
         {
-          name: 'month'
+          name: 'month',
+          classes: 'govuk-input--width-2 govuk-input--error'
         },
         {
-          name: 'year'
+          name: 'year',
+          classes: 'govuk-input--width-4 govuk-input--error'
         }
       ]
       })
@@ -183,24 +196,32 @@
 
     {{- govukDateInput({
       fieldset: {
-        legendText: 'What is your date of birth?',
-        legendHintText: 'For example, 31 3 1980'
+        legend: {
+          text: "What is your date of birth?"
+        }
+      },
+      hint: {
+        text: 'For example, 31 3 1980'
       },
       errorMessage: {
-        text: 'Day not valid'
+        text: 'Date of birth must include a day'
       },
       id: 'dob',
       name: 'dob',
       items:[
         {
           name: 'day',
-          classes: 'govuk-input--error'
+          classes: 'govuk-input--width-2 govuk-input--error'
         },
         {
-          name: 'month'
+          name: 'month',
+          value: '10',
+          classes: 'govuk-input--width-2'
         },
         {
-          name: 'year'
+          name: 'year',
+          value: '1985',
+          classes: 'govuk-input--width-4'
         }
       ]
       })
@@ -240,8 +261,10 @@
       id: "more-detail",
       name: "more-detail",
       label: {
-        text: "Can you provide more detail?",
-        hintText: "Don't include personal or financial information, eg your National Insurance number or credit card details."
+        text: "Can you provide more detail?"
+      },
+      hint: {
+        text: 'Don’t include personal or financial information, for example your National Insurance number or credit card details.'
       },
       "errorMessage": {
         text: "Error message goes here"

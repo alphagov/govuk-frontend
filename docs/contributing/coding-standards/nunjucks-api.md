@@ -36,23 +36,23 @@ If a component depends on another component, we group the options for the depend
 Example of a component depending on another component
 ```
 {{ govukLabel({
-	"text": "Label text",
-	"errorMessage": {
-		"text": "Error message"
-	}
+  "text": "Label text",
+  "errorMessage": {
+    "text": "Error message"
+  }
 }) }}
 ```
 
 Example of a component depending on two other components
 ```
 {{ govukInput({
-	"name": "example-input",
-	"label": {
-		"text": "Label text"
-	},
-	"errorMessage": {
-		"text": "Error message"
-	}
+  "name": "example-input",
+  "label": {
+    "text": "Label text"
+  },
+  "errorMessage": {
+    "text": "Error message"
+  }
 }) }}
 ```
 
@@ -74,11 +74,11 @@ You cannot use this to set attributes that are already defined, such as class â€
 Example:
 ```
 {{ govukButton({
-	"attributes" : {
-	   "data-target" : "contact-by-text",
-	   "aria-labelledby": "error-summary-heading-example-1",
-	   "tabindex": "-1"
-	}
+  "attributes" : {
+    "data-target" : "contact-by-text",
+    "aria-labelledby": "error-summary-heading-example-1",
+    "tabindex": "-1"
+  }
 }) }}
 ```
 
@@ -106,13 +106,13 @@ When a component has multiple visual presentations, such default button vs start
 Default button example:
 ```
 {{ govukButton({
-	"text" : "Continue"
+  "text" : "Continue"
 }) }}
 ```
 Start button example:
 ```
 {{ govukButton({
-	"text" : "Start",
-	"classes" : "govuk-button--start"
+  "text" : "Start",
+  "classes" : "govuk-button--start"
 }) }}
 ```

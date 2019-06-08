@@ -40,26 +40,26 @@ afterAll(async (done) => {
 
 describe('GOV.UK Frontend', () => {
   describe('javascript', async () => {
-    it('can be accessed via `GOVUKFrontend`', async () => {
+    it('can be accessed via `navodyDigitalFrontend`', async () => {
       await page.goto(baseUrl + '/', { waitUntil: 'load' })
 
-      const GOVUKFrontendGlobal = await page.evaluate(() => window.GOVUKFrontend)
+      const navodyDigitalFrontendGlobal = await page.evaluate(() => window.navodyDigitalFrontend)
 
-      expect(typeof GOVUKFrontendGlobal).toBe('object')
+      expect(typeof navodyDigitalFrontendGlobal).toBe('object')
     })
     it('exports `initAll` function', async () => {
       await page.goto(baseUrl + '/', { waitUntil: 'load' })
 
-      const typeofInitAll = await page.evaluate(() => typeof window.GOVUKFrontend.initAll)
+      const typeofInitAll = await page.evaluate(() => typeof window.navodyDigitalFrontend.initAll)
 
       expect(typeofInitAll).toEqual('function')
     })
     it('exports Components', async () => {
       await page.goto(baseUrl + '/', { waitUntil: 'load' })
 
-      const GOVUKFrontendGlobal = await page.evaluate(() => window.GOVUKFrontend)
+      const navodyDigitalFrontendGlobal = await page.evaluate(() => window.navodyDigitalFrontend)
 
-      var components = Object.keys(GOVUKFrontendGlobal).filter(method => method !== 'initAll')
+      var components = Object.keys(navodyDigitalFrontendGlobal).filter(method => method !== 'initAll')
 
       // Ensure GOV.UK Frontend exports the expected components
       expect(components).toEqual([
@@ -71,45 +71,72 @@ describe('GOV.UK Frontend', () => {
         'ErrorSummary',
         'Header',
         'Radios',
-        'Tabs'
+        'Tabs',
+        'SdnHeader',
+        'SdnTimeline'
       ])
     })
     it('exported Components can be initialised', async () => {
       await page.goto(baseUrl + '/', { waitUntil: 'load' })
 
-      const GOVUKFrontendGlobal = await page.evaluate(() => window.GOVUKFrontend)
+      const navodyDigitalFrontendGlobal = await page.evaluate(() => window.navodyDigitalFrontend)
 
-      var components = Object.keys(GOVUKFrontendGlobal).filter(method => method !== 'initAll')
+      var components = Object.keys(navodyDigitalFrontendGlobal).filter(method => method !== 'initAll')
 
       // Check that all the components on the GOV.UK Frontend global can be initialised
       components.forEach(component => {
         page.evaluate(component => {
-          const Component = window.GOVUKFrontend[component]
+          const Component = window.navodyDigitalFrontend[component]
           const $module = document.documentElement
           new Component($module).init()
         }, component)
       })
     })
-  })
-  describe('global styles', async () => {
-    it('are disabled by default', async () => {
-      const sass = `
-        @import "all";
-      `
-      const results = await sassRender({ data: sass, ...sassConfig })
-      expect(results.css.toString()).not.toContain(', a {')
-      expect(results.css.toString()).not.toContain(', p {')
+    it('can be initialised scoped to certain sections of the page', async () => {
+      await page.goto(baseUrl + '/examples/scoped-initialisation', { waitUntil: 'load' })
+
+      // To test that certain parts of the page are scoped we have two similar components
+      // that we can interact with to check if they're interactive.
+
+      // Check that the conditional reveal component has a conditional section that would open if enhanced.
+      await page.waitForSelector('#conditional-not-scoped-1', { hidden: true })
+
+      await page.click('[for="not-scoped-1"]')
+
+      // Check that when it is clicked that nothing opens, which shows that it has not been enhanced.
+      await page.waitForSelector('#conditional-not-scoped-1', { hidden: true })
+
+      // Check the other conditional reveal which has been enhanced based on it's scope.
+      await page.waitForSelector('#conditional-scoped-1', { hidden: true })
+
+      await page.click('[for="scoped-1"]')
+
+      // Check that it has opened as expected.
+      await page.waitForSelector('#conditional-scoped-1', { hidden: false })
     })
-    it('are enabled if $global-styles variable is set to true', async () => {
-      const sass = `
-        $govuk-global-styles: true;
-        @import "all";
-      `
-      const results = await sassRender({ data: sass, ...sassConfig })
-      expect(results.css.toString()).toContain(', a {')
-      expect(results.css.toString()).toContain(', p {')
-    })
   })
+
+  // navody.digital uses global styles in the default build
+  //
+  // describe('global styles', async () => {
+  //   it('are disabled by default', async () => {
+  //     const sass = `
+  //       @import "all";
+  //     `
+  //     const results = await sassRender({ data: sass, ...sassConfig })
+  //     expect(results.css.toString()).not.toContain(', a {')
+  //     expect(results.css.toString()).not.toContain(', p {')
+  //   })
+  //   it('are enabled if $global-styles variable is set to true', async () => {
+  //     const sass = `
+  //       $govuk-global-styles: true;
+  //       @import "all";
+  //     `
+  //     const results = await sassRender({ data: sass, ...sassConfig })
+  //     expect(results.css.toString()).toContain(', a {')
+  //     expect(results.css.toString()).toContain(', p {')
+  //   })
+  // })
 
   // Sass functions will be automatically evaluated at compile time and the
   // return value from the function will be used in the compiled CSS.

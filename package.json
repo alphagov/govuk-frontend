@@ -1,9 +1,9 @@
 {
   "private": true,
-  "name": "govuk-frontend-repository",
+  "name": "navody-digital-repository",
   "description": "Used only for the development of GOV.UK Frontend, see `package/package.json` for the published `package.json`",
   "engines": {
-    "node": "8.9.4"
+    "node": "10.15.1"
   },
   "license": "MIT",
   "scripts": {
@@ -23,13 +23,17 @@
   },
   "devDependencies": {
     "autoprefixer": "^9.3.1",
+    "body-parser": "^1.18.3",
     "cheerio": "^1.0.0-rc.2",
+    "cookie-parser": "^1.4.4",
     "cssnano": "^4.1.7",
     "express": "^4.16.4",
+    "express-validator": "^5.3.1",
     "glob": "^7.1.3",
     "gulp": "^3.9.1",
     "gulp-better-rollup": "3.1.0",
     "gulp-changed": "^3.2.0",
+    "gulp-concat": "^2.6.1",
     "gulp-data": "^1.3.1",
     "gulp-debug": "^4.0.0",
     "gulp-eol": "^0.2.0",
@@ -96,6 +100,7 @@
     "globalTeardown": "./lib/puppeteer/teardown.js"
   },
   "dependencies": {
+    "accessible-autocomplete": "^1.6.2",
     "express-writer": "0.0.4",
     "popper.js": "^1.14.6"
   }

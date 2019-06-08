@@ -10,16 +10,8 @@
   $sdn-feedbackbar-link-hover: #333333;
 
   .sdn-feedbackbar {
-    background: $sdn-feedbackbar-right-background;
-
-    @include govuk-media-query($from: desktop) {
-      background: linear-gradient(
-        to right,
-        $sdn-feedbackbar-left-background 0%,
-        $sdn-feedbackbar-left-background 50%,
-        $sdn-feedbackbar-right-background 50%,
-        $sdn-feedbackbar-right-background 100%
-      );
+    .govuk-width-container {
+      margin: 0 auto;
     }
   }
 
@@ -43,22 +35,32 @@
 
   .sdn-feedbackbar__useful,
   .sdn-feedbackbar__foundbug {
-    display: flex;
     flex-wrap: wrap;
     @include govuk-media-query($until: tablet) {
       flex-direction: column;
     }
   }
 
-  .sdn-feedbackbar__useful-question {
-    @include govuk-media-query($from: tablet) {
-      margin-right: govuk-spacing(3);
+  .sdn-feedbackbar__foundbug {
+    @include govuk-media-query($until: tablet) {
+      margin-top: govuk-spacing(2);
     }
+  }
+
+  .sdn-feedbackbar__useful-question {
+    margin-right: govuk-spacing(3);
   }
 
   .sdn-feedbackbar__yes,
   .sdn-feedbackbar__no {
+    @include govuk-font($size: 18, $line-height: 1.2);
+    font-weight: bold;
     text-transform: uppercase;
+
+    a {
+      border-bottom: 2px solid;
+      text-decoration: none;
+    }
   }
 
   .sdn-feedbackbar__no {
@@ -83,8 +85,7 @@
     }
 
     @include govuk-media-query($from: desktop) {
-      width: 70%;
-      margin-left: 30%;
+      position: relative;
     }
   }
 

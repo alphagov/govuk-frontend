@@ -33,7 +33,8 @@
     classes: params.errorMessage.classes,
     attributes: params.errorMessage.attributes,
     html: params.errorMessage.html,
-    text: params.errorMessage.text
+    text: params.errorMessage.text,
+    visuallyHiddenText: params.errorMessage.visuallyHiddenText
   }) | indent(2) | trim }}
 {% endif %}
   <input class="govuk-file-upload {%- if params.classes %} {{ params.classes }}{% endif %} {%- if params.errorMessage %} govuk-file-upload--error{% endif %}" id="{{ params.id }}" name="{{ params.name }}" type="file"

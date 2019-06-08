@@ -40,6 +40,12 @@
                 "type": "boolean",
                 "required": false,
                 "description": "Sets the option item as disabled."
+            },
+            {
+                "name": "attributes",
+                "type": "object",
+                "required": false,
+                "description": "HTML attributes (for example data attributes) to add to the option."
             }
         ]
     },
@@ -74,7 +80,7 @@
                 "name": "classes",
                 "type": "string",
                 "required": false,
-                "description": "Optional classes to add to the form group (e.g. to show error state for the whole group)"
+                "description": "Classes to add to the form group (e.g. to show error state for the whole group)"
             }
         ]
     },
@@ -82,12 +88,12 @@
         "name": "classes",
         "type": "string",
         "required": false,
-        "description": "Classes to add to the anchor tag."
+        "description": "Classes to add to the select."
     },
     {
         "name": "attributes",
         "type": "object",
         "required": false,
-        "description": "HTML attributes (for example data attributes) to add to the anchor tag."
+        "description": "HTML attributes (for example data attributes) to add to the select."
     }
 ]

@@ -39,7 +39,8 @@
     classes: params.errorMessage.classes,
     attributes: params.errorMessage.attributes,
     html: params.errorMessage.html,
-    text: params.errorMessage.text
+    text: params.errorMessage.text,
+    visuallyHiddenText: params.errorMessage.visuallyHiddenText
   }) | indent(2) | trim }}
 {% endif %}
   <div class="govuk-radios {%- if params.classes %} {{ params.classes }}{% endif %}{%- if isConditional %} govuk-radios--conditional{% endif -%}"

@@ -1,0 +1,132 @@
+{# This example is based of the live "Send your feedback to GOV.UK Verify" start page: https://www.signin.service.gov.uk/feedback #}
+{% extends "_generic.njk" %}
+
+{% from "warning-text/macro.njk" import govukWarningText %}
+{% from "radios/macro.njk" import govukRadios %}
+{% from "input/macro.njk" import govukInput %}
+{% from "character-count/macro.njk" import govukCharacterCount %}
+{% from "button/macro.njk" import govukButton %}
+{% from "error-summary/macro.njk" import govukErrorSummary %}
+
+{% set pageTitle = "Send your feedback to GOV.UK Verify" %}
+{% block pageTitle %}{{ "Error: " if errors }}GOV.UK - {{ pageTitle }}{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block header %}
+  {% include "../../partials/banner.njk" %}
+  {{ govukHeader({
+    productName: "Verify"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form method="post" novalidate>
+            {% if errorSummary.length > 0 %}
+                {{ govukErrorSummary({
+                    titleText: "There is a problem",
+                    errorList: errorSummary 
+                }) }}
+            {% endif %}
+
+            <h1 class="govuk-heading-xl">{{ pageTitle }}</h1>
+
+            <p class="govuk-body">
+                Use this form to ask a question, report a problem or suggest an improvement GOV.UK Verify can make.
+            </p>
+
+            {{ govukWarningText({
+                text: "Don't include any personal or financial information like your National Insurance number or credit card details."
+            }) }}
+
+            {{ govukCharacterCount({
+                name: "what-were-you-trying-to-do",
+                id: "what-were-you-trying-to-do",
+                maxlength: 100,
+                threshold: 50,
+                rows: 5,
+                label: {
+                    text: "What were you trying to do?"
+                },
+                value: values["what-were-you-trying-to-do"],
+                errorMessage: errors["what-were-you-trying-to-do"]
+            }) }}
+
+            {{ govukCharacterCount({
+                name: "detail",
+                id: "detail",
+                maxlength: 300,
+                rows: 10,
+                label: {
+                    text: "Please provide details of your question, problem or feedback"
+                },
+                value: values["detail"],
+                errorMessage: errors["detail"]
+            }) }}
+
+            {% set yesHTML %}
+                <p class="govuk-body">Leave your details below if you'd like a response from GOV.UK Verify.</p>
+
+                {{ govukInput({
+                    id: "name",
+                    name: "name",
+                    label: {
+                        text: "Name"
+                    },
+                    value: values["name"],
+                    errorMessage: errors["name"]
+                }) }}
+
+                {{ govukInput({
+                    id: "email",
+                    name: "email",
+                    type: "email",
+                    label: {
+                        text: "Email address"
+                    },
+                    hint: {
+                        text: "We’ll only use this to reply to your message."
+                    },
+                    value: values["email"],
+                    errorMessage: errors["email"]
+                }) }}
+
+                <p class="govuk-body govuk-!-margin-top-6">By sending this message, you consent to us using your information as detailed in the privacy notice.</p>
+            {% endset -%}
+
+            {{ govukRadios({
+                idPrefix: "do-you-want-a-reply",
+                name: "do-you-want-a-reply",
+                fieldset: {
+                    legend: {
+                        text: "Do you want a reply?"
+                    }
+                },
+                items: [
+                    {
+                        id: "do-you-want-a-reply",
+                        value: "yes",
+                        text: "Yes",
+                        checked: values["do-you-want-a-reply"] === "yes",
+                        conditional: {
+                            html: yesHTML
+                        }
+                    },
+                    {
+                        value: "no",
+                        text: "No",
+                        checked: values["do-you-want-a-reply"] === "no"
+                    }
+                ],
+                errorMessage: errors["do-you-want-a-reply"]
+            }) }}
+
+            {{ govukButton({
+                text: "Send message"
+            }) }}
+        </form>
+    </div>
+  </div>
+{% endblock %}

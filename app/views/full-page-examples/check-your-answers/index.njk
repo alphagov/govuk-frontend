@@ -1,0 +1,233 @@
+{# This example is based of the  "Check your answers before sending your application" example: https://design-system.service.gov.uk/patterns/check-answers/default/index.html #}
+{% extends "_generic.njk" %}
+
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "summary-list/macro.njk" import govukSummaryList %}
+{% from "button/macro.njk" import govukButton %}
+
+{% set pageTitle = "Technology - Service Manual" %}
+{% block pageTitle %}GOV.UK - {{ pageTitle }}{% endblock %}
+
+{% block header %}
+  {% include "../../partials/banner.njk" %}
+  {{ govukHeader({
+    serviceName: "Temporary events notice"
+  }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "#"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+
+    <h1 class="govuk-heading-xl">Check your answers before sending your application</h1>
+
+    <h2 class="govuk-heading-m">Personal details</h2>
+
+    {{ govukSummaryList({
+      classes: 'govuk-!-margin-bottom-9',
+      rows: [
+        {
+          key: {
+            text: "Name"
+          },
+          value: {
+            text: "Sarah Philips"
+          },
+          actions: {
+            items: [
+              {
+                href: "#/name",
+                text: "Change",
+                visuallyHiddenText: "name"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Date of birth"
+          },
+          value: {
+            text: "5 January 1978"
+          },
+          actions: {
+            items: [
+              {
+                href: "#/date-of-birth",
+                text: "Change",
+                visuallyHiddenText: "date of birth"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Contact information"
+          },
+          value: {
+            html: "72 Guild Street<br>London<br>SE23 6FH"
+          },
+          actions: {
+            items: [
+              {
+                href: "#/contact-information",
+                text: "Change",
+                visuallyHiddenText: "contact information"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Contact details"
+          },
+          value: {
+            html: '<p class="govuk-body">07700 900457</p><p class="govuk-body">sarah.phillips@example.com</p>'
+          },
+          actions: {
+            items: [
+              {
+                href: "#/contact-details",
+                text: "Change",
+                visuallyHiddenText: "contact details"
+              }
+            ]
+          }
+        }
+      ]
+    }) }}
+
+
+    <h2 class="govuk-heading-m">Application details</h2>
+
+    {{ govukSummaryList({
+      classes: 'govuk-!-margin-bottom-9',
+      rows: [
+        {
+          key: {
+            text: "Previous application number"
+          },
+          value: {
+            text: "502135326"
+          },
+          actions: {
+            items: [
+              {
+                href: "#/previous-application-number",
+                text: "Change",
+                visuallyHiddenText: "previous application number"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Licence type"
+          },
+          value: {
+            text: "For personal use"
+          },
+          actions: {
+            items: [
+              {
+                href: "#/licence-type",
+                text: "Change",
+                visuallyHiddenText: "licence type"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Home address"
+          },
+          value: {
+            html: "72 Guild Street<br>London<br>SE23 6FH"
+          },
+          actions: {
+            items: [
+              {
+                href: "#/home-address",
+                text: "Change",
+                visuallyHiddenText: "home address"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Licence period"
+          },
+          value: {
+            text: "Valid for 6 months"
+          },
+          actions: {
+            items: [
+              {
+                href: "#/licence-period",
+                text: "Change",
+                visuallyHiddenText: "licence period"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Additional details"
+          },
+          value: {
+            html: '
+              <p class="govuk-body">I have contacted my council for a Temporary Event Notice (<abbr title="Temporary Event Notice">TEN</abbr>) as I want to carry out a ‘licensable activity’ on unlicensed premises in England or Wales.</p>
+
+              <p class="govuk-body">Licensable activity includes:</p>
+
+              <ul class="govuk-list govuk-list--bullet">
+                <li>selling alcohol</li>
+                <li>serving alcohol to members of a private club</li>
+                <li>providing entertainment, such as music, dancing or indoor sporting events</li>
+                <li>serving hot food or drink between 11pm and 5am</li>
+              </ul>
+
+              <p class="govuk-body">
+                To find out more you can visit out website at: 
+                <a class="govuk-link" href="#">https://reallylongurlformyeventthatneedsatemporaryeventsnotice.com</a>
+              </p>
+            '
+          },
+          actions: {
+            items: [
+              {
+                href: "#/additional-details",
+                text: "Change",
+                visuallyHiddenText: "additional details"
+              }
+            ]
+          }
+        }
+      ]
+    }) }}
+
+    <h2 class="govuk-heading-m">Now send your application</h2>
+
+    <p class="govuk-body">By submitting this notification you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
+
+    <form action="/full-page-examples/check-your-answers" method="post">
+
+      <input type="hidden" name="answers-checked" value="true">
+
+      {{ govukButton({
+        text: "Accept and send"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+{% endblock %}

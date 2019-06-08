@@ -10,15 +10,15 @@ $icon-github: url("../../../assets/images/icon-github.svg");
 $icon-youtube: url("../../../assets/images/icon-youtube.svg");
 
 @include govuk-exports("sdn/component/footer") {
-  $sdn-footer-donate-size: 30%;
+  $sdn-footer-newsletter-size: 70%;
 
   $sdn-footer-left-background: #204ba3;
   $sdn-footer-right-background: #2a61d4;
   $sdn-footer-inner-background: linear-gradient(
     to right,
     $sdn-footer-left-background 0%,
-    $sdn-footer-left-background $sdn-footer-donate-size,
-    $sdn-footer-right-background $sdn-footer-donate-size,
+    $sdn-footer-left-background $sdn-footer-newsletter-size,
+    $sdn-footer-right-background $sdn-footer-newsletter-size,
     $sdn-footer-right-background 100%);
 
   $sdn-footer-text: #ffffff;
@@ -95,16 +95,15 @@ $icon-youtube: url("../../../assets/images/icon-youtube.svg");
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    -webkit-flex-shrink: 0;
-        -ms-flex-negative: 0;
-            flex-shrink: 0;
-    @include govuk-media-query($from: desktop) {
-      width: $sdn-footer-donate-size;
-    }
+    padding-left: govuk-spacing(3);
     -webkit-box-align: center;
     -webkit-align-items: center;
         -ms-flex-align: center;
             align-items: center;
+
+    @include govuk-media-query($until: desktop) {
+      padding-top: govuk-spacing(6);
+    }
   }
 
   .sdn-footer__heart {
@@ -146,6 +145,7 @@ $icon-youtube: url("../../../assets/images/icon-youtube.svg");
     display: -ms-flexbox;
     display: flex;
     width: 40px;
+    min-width: 40px;
     height: 40px;
     border-radius: 20px;
     background: $sdn-footer-heart-background;
@@ -160,6 +160,7 @@ $icon-youtube: url("../../../assets/images/icon-youtube.svg");
   }
 
   .sdn-footer__donate-text {
+    padding-right: govuk-spacing(3);
     padding-left: govuk-spacing(3);
     @include sdn-font($size: 20, $weight: light);
   }
@@ -172,7 +173,10 @@ $icon-youtube: url("../../../assets/images/icon-youtube.svg");
     padding-top: govuk-spacing(6);
     @include govuk-media-query($from: desktop) {
       padding-top: 0;
-      padding-left: govuk-spacing(6);
+      -webkit-box-flex: 0;
+      -webkit-flex: 0 0 $sdn-footer-newsletter-size;
+          -ms-flex: 0 0 $sdn-footer-newsletter-size;
+              flex: 0 0 $sdn-footer-newsletter-size;
     }
   }
 
@@ -195,8 +199,10 @@ $icon-youtube: url("../../../assets/images/icon-youtube.svg");
 
   .sdn-footer__newsletter-input {
     @include govuk-font($size: 16);
+    height: 45px;
     @include govuk-media-query($from: tablet) {
       max-width: 360px;
+      height: 44px;
     }
 
     padding: 1.25em;
@@ -244,6 +250,8 @@ $icon-youtube: url("../../../assets/images/icon-youtube.svg");
 
   .sdn-footer__newsletter-disclaimer {
     @include govuk-font($size: 14);
+    display: inline-block;
+    padding-right: govuk-spacing(3);
     opacity: .8;
   }
 

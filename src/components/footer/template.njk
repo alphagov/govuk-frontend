@@ -3,17 +3,17 @@
   <div class="govuk-width-container {{ params.containerClasses if params.containerClasses }}">
     {% if params.navigation %}
       <div class="govuk-footer__navigation">
-        {% for item in params.navigation %}
+        {% for nav in params.navigation %}
           <div class="govuk-footer__section">
-            <h2 class="govuk-footer__heading govuk-heading-m">{{ item.title }}</h2>
-            {% if item.items %}
+            <h2 class="govuk-footer__heading govuk-heading-m">{{ nav.title }}</h2>
+            {% if nav.items %}
               {% set listClasses %}
-                {% if item.columns %}
-                  govuk-footer__list--columns-{{ item.columns }}
+                {% if nav.columns %}
+                  govuk-footer__list--columns-{{ nav.columns }}
                 {% endif %}
               {% endset %}
               <ul class="govuk-footer__list {{ listClasses | trim }}">
-                {% for item in item.items %}
+                {% for item in nav.items %}
                   {% if item.href and item.text %}
                     <li class="govuk-footer__list-item">
                       <a class="govuk-footer__link" href="{{ item.href }}"{% for attribute, value in item.attributes %} {{attribute}}="{{value}}"{% endfor %}>

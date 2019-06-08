@@ -6,6 +6,7 @@ const taskListing = require('gulp-task-listing')
 const runsequence = require('run-sequence')
 const taskArguments = require('./tasks/gulp/task-arguments')
 const nodemon = require('nodemon')
+const concat = require('gulp-concat')
 
 // Gulp sub-tasks
 require('./tasks/gulp/clean.js')
@@ -16,6 +17,17 @@ require('./tasks/gulp/watch.js')
 require('./tasks/gulp/copy-to-destination.js')
 require('./tasks/gulp/asset-version.js')
 require('./tasks/gulp/sassdoc.js')
+
+const external = {
+  scripts: [
+    'lib/replace-diacritics.js',
+    'lib/slovak-municipalities.js',
+    'node_modules/accessible-autocomplete/dist/accessible-autocomplete.min.js'
+  ],
+  styles: [
+    'node_modules/accessible-autocomplete/dist/accessible-autocomplete.min.css'
+  ]
+}
 
 // Umbrella scripts tasks for preview ---
 // Runs js lint and compilation
@@ -39,6 +51,18 @@ gulp.task('copy:assets', () => {
     .pipe(gulp.dest(taskArguments.destination + '/assets/'))
 })
 
+gulp.task('external-scripts', () => {
+  return gulp.src(external.scripts)
+    .pipe(concat('libs.js'))
+    .pipe(gulp.dest(taskArguments.destination + '/'))
+})
+
+gulp.task('external-styles', () => {
+  return gulp.src(external.styles)
+    .pipe(concat('libs.css'))
+    .pipe(gulp.dest(taskArguments.destination + '/'))
+})
+
 // All test combined --------------------
 // Runs js, scss and accessibility tests
 // --------------------------------------
@@ -58,6 +82,8 @@ gulp.task('copy-assets', cb => {
   runsequence(
     'styles',
     'scripts',
+    'external-scripts',
+    'external-styles',
     cb
   )
 })
@@ -94,6 +120,8 @@ gulp.task('build:package', cb => {
     'clean',
     'copy-files',
     'js:compile',
+    'external-scripts',
+    'external-styles',
     cb
   )
 })

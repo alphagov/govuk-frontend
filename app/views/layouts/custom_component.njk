@@ -31,6 +31,12 @@
         {{ componentNameHuman | capitalize }}
       {% endblock %}
     </h1>
+
+    {% if sdnComponentData.description %}
+      <div class="govuk-inset-text">
+        {{ sdnComponentData.description | safe }}
+      </div>
+    {% endif %}
   </div>
 
   {% block examples %}

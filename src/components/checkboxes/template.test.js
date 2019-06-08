@@ -531,6 +531,17 @@ describe('Checkboxes', () => {
         .toMatch(errorMessageId)
     })
 
+    it('does not associate each input as "described by" the error message', () => {
+      const $ = render('checkboxes', examples['with error message and hints on items'])
+
+      const $inputs = $('input')
+
+      $inputs.each((i, input) => {
+        expect($(input).attr('aria-describedby'))
+          .toEqual(`waste-${(i + 1)}-item-hint`)
+      })
+    })
+
     it('renders with a form group wrapper that has an error state', () => {
       const $ = render('checkboxes', {
         errorMessage: {
@@ -645,10 +656,18 @@ describe('Checkboxes', () => {
   })
 
   describe('single checkbox without a fieldset', () => {
-    it('adds aria-describe to input if there is an error', () => {
-      const $ = render('checkboxes', examples["with single option set 'aria-describeby' on input"])
+    it('adds aria-describedby to input if there is an error', () => {
+      const $ = render('checkboxes', examples["with single option set 'aria-describedby' on input"])
       const $input = $('input')
       expect($input.attr('aria-describedby')).toMatch('t-and-c-error')
+    })
+  })
+
+  describe('single checkbox (with hint) without a fieldset', () => {
+    it('adds aria-describedby to input if there is an error and a hint', () => {
+      const $ = render('checkboxes', examples["with single option (and hint) set 'aria-describedby' on input"])
+      const $input = $('input')
+      expect($input.attr('aria-describedby')).toMatch('t-and-c-with-hint-error t-and-c-with-hint-1-item-hint')
     })
   })
 })

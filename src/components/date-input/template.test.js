@@ -76,6 +76,39 @@ describe('Date input', () => {
       expect($firstItemInput.attr('name')).toEqual('day')
     })
 
+    it('renders with item attributes', () => {
+      const $ = render('date-input', {
+        items: [
+          {
+            'name': 'day',
+            'attributes': {
+              'data-example-day': 'day'
+            }
+          },
+          {
+            'name': 'month',
+            'attributes': {
+              'data-example-month': 'month'
+            }
+          },
+          {
+            'name': 'year',
+            'attributes': {
+              'data-example-year': 'year'
+            }
+          }
+        ]
+      })
+
+      const $input1 = $('.govuk-date-input__item:nth-of-type(1) input')
+      const $input2 = $('.govuk-date-input__item:nth-of-type(2) input')
+      const $input3 = $('.govuk-date-input__item:nth-of-type(3) input')
+
+      expect($input1.attr('data-example-day')).toEqual('day')
+      expect($input2.attr('data-example-month')).toEqual('month')
+      expect($input3.attr('data-example-year')).toEqual('year')
+    })
+
     it('renders item with capitalised label text', () => {
       const $ = render('date-input', {
         items: [
@@ -119,6 +152,20 @@ describe('Date input', () => {
 
       const $firstInput = $('.govuk-date-input__item:first-child input')
       expect($firstInput.attr('pattern')).toEqual('[0-9]*')
+    })
+
+    it('renders inputs with custom pattern attribute', () => {
+      const $ = render('date-input', {
+        items: [
+          {
+            'name': 'day',
+            'pattern': '[0-8]*'
+          }
+        ]
+      })
+
+      const $firstInput = $('.govuk-date-input__item:first-child input')
+      expect($firstInput.attr('pattern')).toEqual('[0-8]*')
     })
 
     it('renders item with implicit class for label', () => {

@@ -42,7 +42,8 @@
     classes: params.errorMessage.classes,
     attributes: params.errorMessage.attributes,
     html: params.errorMessage.html,
-    text: params.errorMessage.text
+    text: params.errorMessage.text,
+    visuallyHiddenText: params.errorMessage.visuallyHiddenText
   }) | indent(2) | trim }}
 {% endif %}
   <div class="govuk-checkboxes {%- if params.classes %} {{ params.classes }}{% endif %}"
@@ -53,15 +54,15 @@
     {% set name = item.name if item.name else params.name %}
     {% set conditionalId = "conditional-" + id %}
     {% set hasHint = true if item.hint.text or item.hint.html %}
-    {% set itemHintId = id + '-item-hint' %}
+    {% set itemHintId = id + "-item-hint" if hasHint else "" %}
+    {% set itemDescribedBy = describedBy if not hasFieldset else "" %}
+    {% set itemDescribedBy = (itemDescribedBy + " " + itemHintId) | trim %}
     <div class="govuk-checkboxes__item">
       <input class="govuk-checkboxes__input" id="{{ id }}" name="{{ name }}" type="checkbox" value="{{ item.value }}"
       {{-" checked" if item.checked }}
       {{-" disabled" if item.disabled }}
-      {#- fieldset is false by default -#}
-      {%- if (not hasFieldset) and ((describedBy | length) > 0) %} aria-describedby="{{ describedBy }}"{% endif -%}
       {%- if item.conditional %} data-aria-controls="{{ conditionalId }}"{% endif -%}
-      {%- if hasHint %} aria-describedby="{{ itemHintId }}"{% endif -%}
+      {%- if itemDescribedBy %} aria-describedby="{{ itemDescribedBy }}"{% endif -%}
       {%- for attribute, value in item.attributes %} {{ attribute }}="{{ value }}"{% endfor -%}>
       {{ govukLabel({
         html: item.html,

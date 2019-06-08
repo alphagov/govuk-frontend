@@ -1,0 +1,105 @@
+{# This example is based of the  "How do you want to sign in?
+" example: https://www.gov.uk/log-in-file-self-assessment-tax-return/sign-in/prove-identity #}
+{% extends "_generic.njk" %}
+
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "radios/macro.njk" import govukRadios %}
+{% from "button/macro.njk" import govukButton %}
+{% from "error-summary/macro.njk" import govukErrorSummary %}
+
+{% set pageTitle = "How do you want to sign in?" %}
+{% block pageTitle %}{{ "Error: " if errors }}GOV.UK - {{ pageTitle }}{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "#"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form method="post" novalidate>
+          {% if errorSummary.length > 0 %}
+              {{ govukErrorSummary({
+                  titleText: "There is a problem",
+                  errorList: errorSummary
+              }) }}
+          {% endif %}
+
+        {{ govukRadios({
+          idPrefix: "sign-in",
+          name: "sign-in",
+          fieldset: {
+            legend: {
+              text: "How do you want to sign in?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: "You'll need an account to prove your identity and complete your Self Assessment."
+          },
+          items: [
+            {
+              id: "sign-in",
+              value: "government-gateway",
+              text: "Sign in with Government Gateway",
+              checked: values["sign-in"] === "government-gateway",
+              label: {
+                classes: "govuk-label--s"
+              },
+              hint: {
+                text: "You'll have a user ID if you've registered for Self Assessment or filed a tax return online before."
+              }
+            },
+            {
+              value: "govuk-verify",
+              text: "Sign in with GOV.UK Verify",
+              checked: values["sign-in"] === "govuk-verify",
+              label: {
+                classes: "govuk-label--s"
+              },
+              hint: {
+                text: "You'll have an account if you've already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity."
+              }
+            },
+            {
+              value: "sign-in-with-a-digital-identity-from-another-european-country",
+              text: "Sign in with a digital identity from another European country",
+              checked: values["sign-in"] === "sign-in-with-a-digital-identity-from-another-european-country",
+              label: {
+                classes: "govuk-label--s"
+              },
+              hint: {
+                text: "If you are part of Germany’s Online-Ausweis you can use it here. Identity schemes from other countries will become available later."
+              }
+            },
+            {
+              divider: "or"
+            },
+            {
+              value: "register-for-self-assessment",
+              text: "Register for Self Assessment",
+              checked: values["sign-in"] === "register-for-self-assessment",
+              label: {
+                classes: "govuk-label--s"
+              },
+              hint: {
+                text: "You must register before you can file your first tax return."
+              }
+            }
+          ],
+          errorMessage: errors["sign-in"]
+        }) }}
+
+      {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

@@ -58,5 +58,11 @@
         "type": "object",
         "required": false,
         "description": "HTML attributes (for example data attributes) to add to the button component."
+    },
+    {
+        "name": "preventDoubleClick",
+        "type": "boolean",
+        "required": false,
+        "description": "Prevent accidental double clicks on submit buttons from submitting forms multiple times"
     }
 ]
