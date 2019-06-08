@@ -2,10 +2,10 @@
     <div class="sdn-searchbar-wrapper__item sdn-searchbar govuk-width-container">
         <div class="sdn-searchbar__item sdn-searchbar-block">
             <div class="sdn-searchbar-block__item">
-                <input class="govuk-input" type="search" placeholder="Vyhľadať životnú situáciu">
+                <input class="govuk-input" type="search" placeholder="{{ params.placeholder | default('Vyhľadať životnú situáciu') }}">
             </div>
             <div class="sdn-searchbar-block__item sdn-searchbar-block__item--stretched">
-                <button class="govuk-button govuk-button--large">Hľadat</button>
+                <button class="govuk-button govuk-button--large">{{ params.buttonText | default('Hľadat') }}</button>
             </div>
         </div>
     </div>
