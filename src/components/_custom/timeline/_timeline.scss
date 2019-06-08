@@ -263,6 +263,10 @@ $icon-check-black: url("../../../assets/images/icon-check-black.svg");
   .sdn-timeline-title {
     @include govuk-font($size: 24, $weight: regular);
 
+    @include govuk-media-query($from: tablet) {
+      display: none;
+    }
+
     margin: 0 0 30px 0;
   }
 }
