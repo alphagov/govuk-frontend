@@ -197,7 +197,7 @@ Accordion.prototype.checkIfAllSectionsOpen = function () {
 
 // Update "Open all" button
 Accordion.prototype.updateOpenAllButton = function (expanded) {
-  var newButtonText = expanded ? 'Close all' : 'Open all'
+  var newButtonText = expanded ? 'Zbaliť všetko' : 'Rozbaliť všetko'
   newButtonText += '<span class="govuk-visually-hidden"> sections</span>'
   this.$openAllButton.setAttribute('aria-expanded', expanded)
   this.$openAllButton.innerHTML = newButtonText
