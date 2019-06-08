@@ -1,6 +1,8 @@
 {% extends "template-lepsiesluzby.njk" %}
 
 {% from "header/macro.njk" import govukHeader %}
+{% from "_custom/hero/macro.njk" import govukHero %}
+{% from "_custom/thumbnail/macro.njk" import govukThumbnail %}
 {% from "table/macro.njk" import govukTable %}
 {% from "button/macro.njk" import govukButton %}
 
@@ -14,134 +16,16 @@
 
 {% block main %}
 
-<style type="text/css">
-  /* Component .sdn-hero */
-  .sdn-hero {
-    background: linear-gradient(90deg, #2e3ac7 0%, #448bef 100%);
-  }
-
-  .sdn-hero-inner {
-    background: url("http://localhost:3000/assets/images/icon-ajjasom.svg") right -70px no-repeat;
-    background-size: 500px;
-    padding: 3rem 0;
-  }
-
-  .sdn-hero-text {
-    max-width: 60%;
-  }
-
-  .snd-hero-title,
-  .snd-hero-description {
-    color: #ffffff;
-  }
-
-  @media (max-width: 768px) {
-    .sdn-hero-inner {
-      background: none;
-      padding: 1.5rem 0;
-    }
-
-    .sdn-hero-text {
-      max-width: 80%;
-    }
-
-    .snd-hero-title {
-      font-size: 2rem;
-      line-height: 2.4rem;
-      margin-bottom: 1rem;
-    }
-
-    .snd-hero-description {
-      font-size: 1rem;
-      margin-bottom: .5rem;
-      line-height: 1.4rem;
-    }
-  }
-
-  /* Component .sdn-thumbnail */
-
-  .sdn-thumbnail {
-    border: 2px solid #bfc1c3;
-    border-top-color: #448bef;
-    border-radius: 3px;
-    padding: 2rem ;
-    margin-bottom: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .sdn-thumbnail-caption {
-    width: 70%;
-  }
-
-  .sdn-thumbnail-caption {
-    width: 70%;
-  }
-
-  .sdn-thumbnail-caption > .govuk-body {
-    margin-bottom: 0;
-  }
-
-  .sdn-thumbnail-btn {
-    width: 30%;
-    text-align: right;
-  }
-
-  .sdn-thumbnail-btn > .govuk-button {
-    margin-bottom: 0;
-  }
-
-  @media (max-width: 640px) {
-    .sdn-thumbnail {
-      flex-direction: column;
-    }
-
-    .sdn-thumbnail-caption,
-    .sdn-thumbnail-btn {
-      width: 100%;
-    }
-  }
-
-
-</style>
-
-<section class="sdn-hero">
-  <div class="govuk-width-container">
-    <div class="sdn-hero-inner">
-      <div class="sdn-hero-text">
-        <h1 class="snd-hero-title govuk-heading-xl">Aj vy môžete zlepšiť štátne elektronické služby</h1>
-        <p class="snd-hero-description govuk-body-l">Tu môžete upozorniť na problémy štátnych elektronických služieb, alebo zadať návrhy na ich zlepšenie.</p>
-      </div>
-    </div>
-  </div>
-</section>
+{{ govukHero() }}
 
 <div class="govuk-width-container">
   <main class="govuk-main-wrapper">
+
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-three-quarters govuk-!-padding-bottom-6">
-
-        <div class="sdn-thumbnail">
-          <div class="sdn-thumbnail-caption">
-            <h2 class="govuk-heading-m">Nefungovali vám správne e-služby, máte nápad?</h2>
-            <p class="govuk-body">
-             Našli ste chybu? Máte nápad ako ich vylepšiť? Ukážme spoločne, kde je priestor na zlepšenie.
-            </p>
-          </div>
-          <div class="sdn-thumbnail-btn">
-            {{ govukButton({
-              "text": "Zaslať podnet",
-              "href": "/",
-              "classes": "govuk-button--start"
-            }) }}
-          </div>
-        </div>
-
+        {{ govukThumbnail() }}
       </div>
     </div>
-
-
 
     {{ govukTable({
       "caption": "Čo aktuálne riešime",
