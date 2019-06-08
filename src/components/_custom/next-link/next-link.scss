@@ -5,7 +5,6 @@
 $right-arrow: url("../../../assets/images/arrow-pointing-to-right.svg");
 
 @include govuk-exports("govuk/component/sdn-next-link") {
-
   $text-color: #3a67e8;
 
   .sdn-next-link {
@@ -58,5 +57,5 @@ $right-arrow: url("../../../assets/images/arrow-pointing-to-right.svg");
         opacity: .8;
       }
     }
-  } 
+  }
 }
