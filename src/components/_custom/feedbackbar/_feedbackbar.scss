@@ -40,16 +40,16 @@
       flex-direction: column;
     }
   }
-  
+
   .sdn-feedbackbar__foundbug {
     @include govuk-media-query($until: tablet) {
       margin-top: govuk-spacing(2);
     }
   }
-  
+
   .sdn-feedbackbar__useful-question {
-      margin-right: govuk-spacing(3);
-    }
+    margin-right: govuk-spacing(3);
+  }
 
   .sdn-feedbackbar__yes,
   .sdn-feedbackbar__no {
