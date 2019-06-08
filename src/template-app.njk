@@ -1,0 +1,118 @@
+{% from "./components/skip-link/macro.njk" import govukSkipLink -%}
+{% from "./components/_custom/header/macro.njk" import govukHeader -%}
+{% from "./components/_custom/footer/macro.njk" import govukFooter -%}
+{% from "./components/_custom/headline/macro.njk" import govukHeadline %}
+
+{# specify absolute url for the static assets folder e.g. http://wwww.domain.com/assets #}
+{%- set assetUrl = assetUrl | default(assetPath) -%}
+<!DOCTYPE html>
+<html lang="{{ htmlLang | default('en') }}" class="has-sticky-footer {{ htmlClasses }}">
+  <head>
+    <meta charset="utf-8" />
+    <title>{% block pageTitle %}Oznámenie údajov do registra MNO | slovensko.digital{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {#<meta name="theme-color" content="{{ themeColor | default('#0b0c0c') }}" /> #}{# Hardcoded value of $govuk-black #}
+    {# Ensure that older IE versions always render with the correct rendering engine #}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    {% block headIcons %}
+    {% endblock %}
+
+    {% block head %}
+      <!--[if !IE 8]><!-->
+      <link rel="stylesheet" href="/public/app.css">
+      <!--<![endif]-->
+      <!--[if IE 8]>
+      <link rel="stylesheet" href="/public/app-ie8.css">
+      <![endif]-->
+    {% endblock %}
+
+    <style>
+      body::before {
+        content: "" !important;
+      }
+    </style>
+  </head>
+  <body class="govuk-template__body {{ bodyClasses }}">
+    <div class="navody-template__content">
+    {% block bodyStart %}{% endblock %}
+
+    {% block skipLink %}
+      {{ govukSkipLink({
+        href: '#main-content',
+        text: 'Skip to main content'
+      }) }}
+    {% endblock %}
+
+    {% block header %}
+      {{ govukHeader({
+          productName: 'Návody.digital od slovensko.digital',
+          homepageUrl: '/examples/odklad-danoveho-priznania/index'
+      }) }}
+    {% endblock %}
+
+    {{ govukHeadline({
+      headline: 'Oznámenie údajov do registra MNO'
+    }) }}
+
+    <div class="govuk-width-container">
+      <main class="govuk-main-wrapper">
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-full">
+            <div class="govuk-body sdn-content">
+              {% block main %}
+              {% endblock %}
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <div class="navody-template__footer">
+      {% block footer %}
+        {{ govukFooter({
+          newsletterFormUrl: "https://my.sendinblue.com/users/subscribe/js_id/29wti/id/4",
+          social: {
+            facebook: "https://www.facebook.com/slovensko.digital/",
+            github: "https://github.com/slovensko-digital",
+            youtube: "https://www.youtube.com/channel/UCbpnKa1XOIpQLYUQ2dz7Sng"
+          }
+        }) }}
+      {% endblock %}
+
+      {% block bodyEnd %}{% endblock %}
+    </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $('#newsletter-form').submit(function (evt) {
+          evt.preventDefault();
+
+          var form = $(evt.target);
+          var data = form.serialize();
+          var button = form.find('button')[0];
+          button.innerHTML = 'Prihlasujem...';
+
+          $.ajax({
+            type: 'POST',
+            url: form.data('action'),
+            data: data,
+            dataType: 'json',
+            success: function (data) {
+              if (data.result !== undefined && data.result.result === 'success') {
+                form.remove();
+                $('#newsletter-success').show();
+              }
+            },
+            complete: function () {
+              button.innerHTML = 'Prihlásiť'
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
