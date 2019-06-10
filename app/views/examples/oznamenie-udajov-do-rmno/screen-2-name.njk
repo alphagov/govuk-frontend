@@ -1,0 +1,54 @@
+{% extends "template-app.njk" %}
+{% from "button/macro.njk" import govukButton %}
+{% from "input/macro.njk" import govukInput %}
+
+{% set step = 2 %}
+
+{% block main %}
+
+  <form action="search" method="post" id="form">
+    {{ govukInput({
+  "label": {"text": "Zadajte meno"},
+  "id": "input-example",
+  "name": "test-name"
+}) }}
+
+    {{ govukButton({
+  "text": "Ďalej"
+}) }}
+  </form>
+
+  <script>
+    function init() {
+      const form = document.getElementById("form");
+      form.addEventListener('submit', handleSubmit);
+    }
+
+    function handleSubmit(e) {
+      e.preventDefault();
+
+      const r = confirm("Nasli moji radcove?")
+
+      if (r) {
+        window.location = "screen-5-org-unit";
+      } else {
+        window.location = "screen-3-org-type";
+      }
+
+    }
+    init();
+  </script>
+
+  {# 
+  {{ govukButton({
+  "text": "Nasli sme vase data! :)",
+  "href": "screen-5-org-unit",
+  "classes": "govuk-button--start"
+}) }}
+
+  {{ govukButton({
+  "text": "Nenasli sme vase data! :)",
+  "href": "screen-3-org-type"
+}) }} #}
+
+{% endblock %}

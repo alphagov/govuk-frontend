@@ -1,0 +1,100 @@
+{% extends "template-app.njk" %}
+{% from "radios/macro.njk" import govukRadios %}
+{% from "button/macro.njk" import govukButton %}
+
+{% set step = 3 %}
+
+{% block main %}
+
+  <form action="" method="post" id="form">
+    {{ govukRadios({
+  "idPrefix": "rmno",
+  "name": "org-type",
+  "fieldset": {
+    "legend": {
+      "text": "Aký typ organizácie ste?",
+      "classes": "govuk-fieldset__legend--l",
+      "isPageHeading": true
+    }
+  },
+  "hint": {
+    "text": "Vyberte jednu z možností."
+  },
+  "items": [
+    {
+      "value": "obcianske-zdruzenie",
+      "html": "<span class=\"govuk-heading-s govuk-!-margin-bottom-1\">Občianske združenie</span> Popisok lepsi"
+    },
+    {
+      "value": "odborova-organizacia",
+      "html": "<span class=\"govuk-heading-s govuk-!-margin-bottom-1\">Odborová organizácia</span>"
+    },
+    {
+      "value": "organizacia-zamestnavatelov",
+      "html": "<span class=\"govuk-heading-s govuk-!-margin-bottom-1\">Organizácia zamestnávateľov</span> Popisok lepsi"
+    },
+    {
+      "value": "nadacia",
+      "html": "<span class=\"govuk-heading-s govuk-!-margin-bottom-1\">Nadácia</span> Popisok lepsi"
+    },
+    {
+      "value": "neziskova-organizacia-pvps",
+      "html": "<span class=\"govuk-heading-s govuk-!-margin-bottom-1\">Nezisková organizácia poskytujúca všeobecne prospešné služby</span> Popisok lepsi"
+    },
+    {
+      "value": "neinvesticny-fond",
+      "html": "<span class=\"govuk-heading-s govuk-!-margin-bottom-1\">Neinvestičný fond</span> Popisok lepsi"
+    },
+    {
+      "value": "organizacia-medzinarodna",
+      "html": "<span class=\"govuk-heading-s govuk-!-margin-bottom-1\">Oranizácia s medzinárodným prvkom</span> Popisok lepsi"
+    },
+    {
+      "value": "ine",
+      "html": "<span class=\"govuk-heading-s govuk-!-margin-bottom-1\">Iný druh neziskovej orgamizácie</span> Popisok lepsi"
+    }
+  ]
+}) }}
+
+    {{ govukButton({"text": "Ďalej"}) }}
+  </form>
+
+  <script>
+    function init() {
+      const form = document.getElementById("form");
+      form.addEventListener('submit', handleSubmit);
+    }
+
+    function handleSubmit(e) {
+      e.preventDefault();
+
+      const form = e.target;
+      switch (form['org-type'].value) {
+        case "obcianske-zdruzenie":
+        case "odborova-organizacia":
+        case "organizacia-zamestnavatelov":
+        case "organizacia-medzinarodna":
+          window.location = "screen-5-org-unit";
+          break;
+
+        case "nadacia":
+        case "neziskova-organizacia-pvps":
+        case "neinvesticny-fond":
+          window.location = "not-required";
+          break;
+
+        case "ine":
+          return 0;
+          break;
+
+        default:
+          throw Error("nepoznane");
+      }
+    }
+    init();
+  </script>
+
+  {#   
+  <a href="not-required">Tento typ nevyzaduje registraciu</a>
+  <a href="screen-7-org-statutory">Tento typ vyzaduje registraciu</a> #}
+{% endblock %}
