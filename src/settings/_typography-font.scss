@@ -53,7 +53,8 @@ $govuk-font-family-print: sans-serif !default;
 
 /// Include the default @font-face declarations
 ///
-/// If you have set $govuk-font-family to something other than $govuk-font-family-govuk-transport this option is disabled by default.
+/// If you have set $govuk-font-family to something other than
+/// `$govuk-font-family-govuk-transport` this option is disabled by default.
 ///
 /// @type Boolean
 /// @access public
