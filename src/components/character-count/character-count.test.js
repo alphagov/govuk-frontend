@@ -124,6 +124,10 @@ describe('Character count', () => {
         it('does not show the limit until the threshold is reached', async () => {
           const visibility = await page.$eval('.govuk-character-count__message', el => window.getComputedStyle(el).visibility)
           expect(visibility).toEqual('hidden')
+
+          // Ensure threshold is hidden for users of assistive technologies
+          const ariaHidden = await page.$eval('.govuk-character-count__message', el => el.getAttribute('aria-hidden'))
+          expect(ariaHidden).toEqual('true')
         })
 
         it('becomes visible once the threshold is reached', async () => {
@@ -131,6 +135,10 @@ describe('Character count', () => {
 
           const visibility = await page.$eval('.govuk-character-count__message', el => window.getComputedStyle(el).visibility)
           expect(visibility).toEqual('visible')
+
+          // Ensure threshold is visible for users of assistive technologies
+          const ariaHidden = await page.$eval('.govuk-character-count__message', el => el.getAttribute('aria-hidden'))
+          expect(ariaHidden).toBeFalsy()
         })
       })
     })
