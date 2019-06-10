@@ -46,9 +46,11 @@
   }
 
   .govuk-header__logotype-crown {
+    position: relative;
+    top: -1px;
     margin-right: 1px;
     fill: currentColor;
-    vertical-align: middle;
+    vertical-align: top;
   }
 
   .govuk-header__logotype-crown-fallback-image {
@@ -97,7 +99,7 @@
 
     display: inline-block;
     font-size: 30px; // We don't have a mixin that produces 30px font size
-    line-height: 30px;
+    line-height: 1;
 
     &:link,
     &:visited {
@@ -290,18 +292,25 @@
     }
   }
 
-  // Begin adjustments for font baseline offset
-  // These should be removed when the font is updated with the correct baseline
-  .govuk-header__logotype-crown,
-  .govuk-header__logotype-crown-fallback-image {
-    position: relative;
-    top: -4px;
-  }
+  @if $govuk-use-legacy-font {
+    // Begin adjustments for font baseline offset
+    // These should be removed when the font is updated with the correct baseline
+    .govuk-header__logotype-crown,
+    .govuk-header__logotype-crown-fallback-image {
+      position: relative;
+      top: -4px;
+      vertical-align: middle;
+    }
 
-  .govuk-header {
-    $offset: 3px;
-    padding-top: $offset;
+    .govuk-header {
+      $offset: 3px;
+      padding-top: $offset;
+    }
+
+    .govuk-header__link--homepage {
+      line-height: 30px;
+    }
+    // End adjustments
   }
-  // End adjustments
 
 }
