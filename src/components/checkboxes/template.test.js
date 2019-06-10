@@ -786,7 +786,7 @@ describe('Checkboxes', () => {
       const $input = $('input')
 
       expect($input.attr('aria-describedby'))
-        .toMatch(`${describedById} t-and-c-with-hint-error t-and-c-with-hint-1-item-hint`)
+        .toMatch(`${describedById} t-and-c-with-hint-error t-and-c-with-hint-item-hint`)
     })
   })
 })
