@@ -1,0 +1,18 @@
+{% extends "template-app.njk" %}
+{% from "button/macro.njk" import govukButton %}
+
+{% set step = 3 %}
+
+{% block main %}
+  <h1 class="govuk-heading-l">Mate organizacnu jednotku?</h1>
+
+  {{ govukButton({
+  "text": "Ano",
+  "href": "screen-6-org-info"
+}) }}
+  {{ govukButton({
+  "text": "Nie",
+  "href": "screen-6-org-info"
+}) }}
+
+{% endblock %}

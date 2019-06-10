@@ -1,0 +1,53 @@
+{% extends "template-app.njk" %}
+
+{% from "summary-list/macro.njk" import govukSummaryList %}
+{% from "button/macro.njk" import govukButton %}
+
+{% set step = 3 %}
+
+{% block main %}
+
+  <h1 class="govuk-heading-l">Vytlačte a odošlite na:</h1>
+  {{ govukSummaryList({
+  "rows": [
+    {
+      "key": {
+        "text": "Inštitúcia"
+      },
+      "value": {
+        "text": "Ministerstvo vnútra"
+      }
+    },
+    {
+      "key": {
+        "text": "Ulica"
+      },
+      "value": {
+        "text": "Drieňová 22"
+      }
+    },
+    {
+      "key": {
+        "text": "PSČ"
+      },
+      "value": {
+        "text": "826 86"
+      }
+    },
+    {
+      "key": {
+        "text": "Mesto"
+      },
+      "value": {
+        "text": "Bratislava"
+      }
+    }
+  ]
+}) }}
+
+  {{ govukButton({
+  "text": "Hotovo",
+  "href": "/"
+}) }}
+
+{% endblock %}

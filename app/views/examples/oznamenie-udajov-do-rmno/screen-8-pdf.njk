@@ -1,0 +1,32 @@
+{% extends "template-app.njk" %}
+{% from "file-upload/macro.njk" import govukFileUpload %}
+{% from "button/macro.njk" import govukButton %}
+
+{% set step = 3 %}
+
+{% block main %}
+
+  <h1 class="govuk-heading-l">PDF - oznamenie statutarov</h1>
+
+  <form>
+
+    {{ govukFileUpload({
+  "id": "file-upload-1",
+  "name": "file-upload-1",
+  "label": {
+    "text": "Priložiť zápisnicu z valného zhromaždenia"
+  }
+}) }}
+  </form>
+
+  {{ govukButton({
+  "text": "Zaslať cez elektronicky",
+  "href": "https://slovensko.sk"
+}) }}
+
+  {{ govukButton({
+  "text": "Zaslať papierovo",
+  "href": "screen-9-paper-send"
+}) }}
+
+{% endblock %}

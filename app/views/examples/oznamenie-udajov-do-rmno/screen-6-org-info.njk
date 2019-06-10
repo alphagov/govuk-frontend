@@ -1,0 +1,48 @@
+{% extends "template-app.njk" %}
+{% from "button/macro.njk" import govukButton %}
+{% from "input/macro.njk" import govukInput %}
+
+{% set step = 3 %}
+
+{% block main %}
+
+  <h1 class="govuk-heading-l">Informácie o organizácii</h1>
+
+  <form action="search" method="post" id="form">
+    {{ govukInput({
+  "label": {"text": "Názov organizácie (to uz mame ci nie?)"},
+  "id": "input-example",
+  "name": "test-name"
+}) }}
+
+    {{ govukInput({
+  "label": {"text": "Adresa"},
+  "id": "input-example",
+  "name": "test-name"
+}) }}
+
+    {{ govukInput({
+  "label": {"text": "IČO (aj toto možno máme)"},
+  "id": "input-example",
+  "name": "test-name"
+}) }}
+
+    {{ govukInput({
+  "label": {"text": "Registračné číslo"},
+  "id": "input-example",
+  "name": "test-name"
+}) }}
+
+    {{ govukInput({
+  "label": {"text": "Dátum registrácie"},
+  "id": "input-example",
+  "name": "test-name"
+}) }}
+
+    {{ govukButton({
+  "text": "Ďalej",
+  "href": "screen-7-org-statutory"
+}) }}
+  </form>
+
+{% endblock %}

@@ -1,7 +1,15 @@
 {% extends "template-app.njk" %}
+{% from "button/macro.njk" import govukButton %}
 
 {% set step = 1 %}
 
 {% block main %}
-Úvod
+  <h1 class="govuk-heading-l">Úvod</h1>
+
+  {{ govukButton({
+  "text": "Začni",
+  "href": "screen-2-name",
+  "classes": "govuk-button--start"
+}) }}
+
 {% endblock %}

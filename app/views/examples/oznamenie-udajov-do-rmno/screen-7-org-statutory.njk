@@ -1,0 +1,19 @@
+{% extends "template-app.njk" %}
+{% from "button/macro.njk" import govukButton %}
+
+{% set step = 3 %}
+
+{% block main %}
+
+  <h1 class="govuk-heading-l">Informácie o štatutárovi</h1>
+
+  {{ govukButton({
+  "text": "Pridať ďalšieho",
+  "href": "screen-7-org-statutory"
+}) }}
+
+  {{ govukButton({
+  "text": "Všetci pridaní",
+  "href": "screen-8-pdf"
+}) }}
+{% endblock %}
