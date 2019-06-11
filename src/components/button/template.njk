@@ -33,7 +33,7 @@ treat it as an interactive element - without this it will be
 
 {#- Define common attributes that we can use across all element types #}
 
-{%- set commonAttributes %} class="{{ classNames }}"{% for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}{% endset %}
+{%- set commonAttributes %} class="{{ classNames }}" data-module="govuk-button"{% for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}{% endset %}
 
 {#- Define common attributes we can use for both button and input types #}
 

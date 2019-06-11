@@ -17,10 +17,11 @@ function initAll (options) {
   // Defaults to the entire document if nothing is set.
   var scope = typeof options.scope !== 'undefined' ? options.scope : document
 
-  // Find all buttons with [role=button] on the scope to enhance.
-  new Button(scope).init()
+  var $buttons = scope.querySelectorAll('[data-module="govuk-button"]')
+  nodeListForEach($buttons, function ($button) {
+    new Button($button).init()
+  })
 
-  // Find all global accordion components to enhance.
   var $accordions = scope.querySelectorAll('[data-module="govuk-accordion"]')
   nodeListForEach($accordions, function ($accordion) {
     new Accordion($accordion).init()
