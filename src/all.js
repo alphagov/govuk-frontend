@@ -27,8 +27,7 @@ function initAll (options) {
     new Accordion($accordion).init()
   })
 
-  // Find all global details elements to enhance.
-  var $details = scope.querySelectorAll('details')
+  var $details = scope.querySelectorAll('[data-module="govuk-details"]')
   nodeListForEach($details, function ($detail) {
     new Details($detail).init()
   })
