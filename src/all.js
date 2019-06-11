@@ -32,8 +32,8 @@ function initAll (options) {
     new Details($detail).init()
   })
 
-  var $characterCount = scope.querySelectorAll('[data-module="govuk-character-count"]')
-  nodeListForEach($characterCount, function ($characterCount) {
+  var $characterCounts = scope.querySelectorAll('[data-module="govuk-character-count"]')
+  nodeListForEach($characterCounts, function ($characterCount) {
     new CharacterCount($characterCount).init()
   })
 
