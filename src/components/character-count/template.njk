@@ -1,6 +1,6 @@
 {% from "../textarea/macro.njk" import govukTextarea %}
 
-<div class="govuk-character-count" data-module="character-count"
+<div class="govuk-character-count" data-module="govuk-character-count"
 {%- if params.maxlength %} data-maxlength="{{ params.maxlength }}"{% endif %}
 {%- if params.threshold %} data-threshold="{{ params.threshold }}"{% endif %}
 {%- if params.maxwords %} data-maxwords="{{ params.maxwords }}"{% endif %}>
