@@ -166,7 +166,7 @@ To initialise the first radio component on a page, use:
 
 ```js
 var Radios = window.GOVUKFrontend.Radios
-var $radio = document.querySelector('[data-module="radios"]')
+var $radio = document.querySelector('[data-module="govuk-radios"]')
 if ($radio) {
   new Radios($radio).init()
 }
@@ -216,7 +216,7 @@ You can use this attribute to initialise the component manually, this may be use
 To initialise the first radio component on a page, use:
 
 ```js
-var $radio = document.querySelector('[data-module="radios"]')
+var $radio = document.querySelector('[data-module="govuk-radios"]')
 if ($radio) {
   new Radios($radio).init()
 }
