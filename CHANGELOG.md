@@ -327,6 +327,21 @@ changelog](./docs/contributing/versioning.md#updating-changelog).
 
 🔧 Fixes:
 
+- Removed adjustments that were needed for v1 Transport
+
+  If v2 font is being used then there is no need for the adjustments that are currently used to compensate for the baseline issues of v1 Transport
+
+  The following components were updated:
+  - Back-link
+  - Breadcrumbs
+  - Button (mostly affected start button)
+  - Header
+  - Tags
+
+  If v1 font is being used then the adjustments will still automatically be included in the compiled css.
+
+  ([PR #1441](https://github.com/alphagov/govuk-frontend/pull/1441))
+
 - Stop appending hash when error summary link clicked
 
   This prevents incorrectly focusing the form element with the hash id, instead of the error summary, when form is re-submitted with the hash in the URL and there are further errors.
