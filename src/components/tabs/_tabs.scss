@@ -106,20 +106,21 @@
         }
 
         &--selected {
+          $border-width: 1px;
+
           position: relative;
 
           margin-top: - govuk-spacing(1);
-          margin-bottom: -1px;
 
-          // 1px is compensation for border (otherwise we get a 1px shift)
-          padding-top: govuk-spacing(3) - 1px;
-          padding-right: govuk-spacing(4) - 1px;
-          padding-bottom: govuk-spacing(3) + 1px;
-          padding-left: govuk-spacing(4) - 1px;
+          // Compensation for border (otherwise we get a shift)
+          margin-bottom: -$border-width;
+          padding-top: govuk-spacing(3) - $border-width;
+          padding-right: govuk-spacing(4) - $border-width;
+          padding-bottom: govuk-spacing(3) + $border-width;
+          padding-left: govuk-spacing(4) - $border-width;
 
-          border-top: $top-border-width solid $govuk-border-colour;
-          border-right: 1px solid $govuk-border-colour;
-          border-left: 1px solid $govuk-border-colour;
+          border: $border-width solid $govuk-border-colour;
+          border-bottom: 0;
 
           color: $govuk-text-colour;
           background-color: govuk-colour("white");
