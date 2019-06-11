@@ -66,7 +66,7 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
           expect($.html()).toContain('Send your feedback')
 
           // Check that the error summary is not visible
-          let $errorSummary = $('[data-module="error-summary"]')
+          let $errorSummary = $('[data-module="govuk-error-summary"]')
           expect($errorSummary.length).toBeFalsy()
           done(err)
         })
@@ -83,7 +83,7 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
           expect($('title').text()).toContain('Error:')
 
           // Check that the error summary is visible
-          let $errorSummary = $('[data-module="error-summary"]')
+          let $errorSummary = $('[data-module="govuk-error-summary"]')
           expect($errorSummary.length).toBeTruthy()
           done(err)
         })
@@ -100,7 +100,7 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
           expect($.html()).toContain('Have you changed your name?')
 
           // Check that the error summary is not visible
-          let $errorSummary = $('[data-module="error-summary"]')
+          let $errorSummary = $('[data-module="govuk-error-summary"]')
           expect($errorSummary.length).toBeFalsy()
           done(err)
         })
@@ -117,7 +117,7 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
           expect($('title').text()).toContain('Error:')
 
           // Check that the error summary is visible
-          let $errorSummary = $('[data-module="error-summary"]')
+          let $errorSummary = $('[data-module="govuk-error-summary"]')
           expect($errorSummary.length).toBeTruthy()
           done(err)
         })
@@ -134,7 +134,7 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
           expect($.html()).toContain('Passport details')
 
           // Check that the error summary is not visible
-          let $errorSummary = $('[data-module="error-summary"]')
+          let $errorSummary = $('[data-module="govuk-error-summary"]')
           expect($errorSummary.length).toBeFalsy()
           done(err)
         })
@@ -151,7 +151,7 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
           expect($('title').text()).toContain('Error:')
 
           // Check that the error summary is visible
-          let $errorSummary = $('[data-module="error-summary"]')
+          let $errorSummary = $('[data-module="govuk-error-summary"]')
           expect($errorSummary.length).toBeTruthy()
           done(err)
         })
@@ -168,7 +168,7 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
           expect($.html()).toContain('Update your account details')
 
           // Check that the error summary is not visible
-          let $errorSummary = $('[data-module="error-summary"]')
+          let $errorSummary = $('[data-module="govuk-error-summary"]')
           expect($errorSummary.length).toBeFalsy()
           done(err)
         })
@@ -185,7 +185,7 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
           expect($('title').text()).toContain('Error:')
 
           // Check that the error summary is visible
-          let $errorSummary = $('[data-module="error-summary"]')
+          let $errorSummary = $('[data-module="govuk-error-summary"]')
           expect($errorSummary.length).toBeTruthy()
           done(err)
         })
@@ -202,7 +202,7 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
           expect($.html()).toContain('Upload your photo')
 
           // Check that the error summary is not visible
-          let $errorSummary = $('[data-module="error-summary"]')
+          let $errorSummary = $('[data-module="govuk-error-summary"]')
           expect($errorSummary.length).toBeFalsy()
           done(err)
         })
@@ -219,7 +219,7 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
           expect($('title').text()).toContain('Error:')
 
           // Check that the error summary is visible
-          let $errorSummary = $('[data-module="error-summary"]')
+          let $errorSummary = $('[data-module="govuk-error-summary"]')
           expect($errorSummary.length).toBeTruthy()
           done(err)
         })
@@ -236,7 +236,7 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
           expect($.html()).toContain('How do you want to sign in?')
 
           // Check that the error summary is not visible
-          let $errorSummary = $('[data-module="error-summary"]')
+          let $errorSummary = $('[data-module="govuk-error-summary"]')
           expect($errorSummary.length).toBeFalsy()
           done(err)
         })
@@ -253,7 +253,7 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
           expect($('title').text()).toContain('Error:')
 
           // Check that the error summary is visible
-          let $errorSummary = $('[data-module="error-summary"]')
+          let $errorSummary = $('[data-module="govuk-error-summary"]')
           expect($errorSummary.length).toBeTruthy()
           done(err)
         })
@@ -270,7 +270,7 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
           expect($.html()).toContain('What is your nationality?')
 
           // Check that the error summary is not visible
-          let $errorSummary = $('[data-module="error-summary"]')
+          let $errorSummary = $('[data-module="govuk-error-summary"]')
           expect($errorSummary.length).toBeFalsy()
           done(err)
         })
@@ -287,7 +287,7 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
           expect($('title').text()).toContain('Error:')
 
           // Check that the error summary is visible
-          let $errorSummary = $('[data-module="error-summary"]')
+          let $errorSummary = $('[data-module="govuk-error-summary"]')
           expect($errorSummary.length).toBeTruthy()
           done(err)
         })
@@ -304,7 +304,7 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
           expect($.html()).toContain('What is your address?')
 
           // Check that the error summary is not visible
-          let $errorSummary = $('[data-module="error-summary"]')
+          let $errorSummary = $('[data-module="govuk-error-summary"]')
           expect($errorSummary.length).toBeFalsy()
           done(err)
         })
@@ -321,7 +321,7 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
           expect($('title').text()).toContain('Error:')
 
           // Check that the error summary is visible
-          let $errorSummary = $('[data-module="error-summary"]')
+          let $errorSummary = $('[data-module="govuk-error-summary"]')
           expect($errorSummary.length).toBeTruthy()
           done(err)
         })
@@ -338,7 +338,7 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
           expect($.html()).toContain('What is your home postcode?')
 
           // Check that the error summary is not visible
-          let $errorSummary = $('[data-module="error-summary"]')
+          let $errorSummary = $('[data-module="govuk-error-summary"]')
           expect($errorSummary.length).toBeFalsy()
           done(err)
         })
@@ -355,7 +355,7 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
           expect($('title').text()).toContain('Error:')
 
           // Check that the error summary is visible
-          let $errorSummary = $('[data-module="error-summary"]')
+          let $errorSummary = $('[data-module="govuk-error-summary"]')
           expect($errorSummary.length).toBeTruthy()
           done(err)
         })
@@ -399,7 +399,7 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
           expect($.html()).toContain('What was the last country you visited?')
 
           // Check that the error summary is not visible
-          let $errorSummary = $('[data-module="error-summary"]')
+          let $errorSummary = $('[data-module="govuk-error-summary"]')
           expect($errorSummary.length).toBeFalsy()
           done(err)
         })
@@ -416,7 +416,7 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
           expect($('title').text()).toContain('Error:')
 
           // Check that the error summary is visible
-          let $errorSummary = $('[data-module="error-summary"]')
+          let $errorSummary = $('[data-module="govuk-error-summary"]')
           expect($errorSummary.length).toBeTruthy()
           done(err)
         })
