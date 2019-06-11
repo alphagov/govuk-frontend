@@ -50,7 +50,7 @@ describe('Character count', () => {
 
       it('counts down to the character limit', async () => {
         await goToExample()
-        await page.type('.js-character-count', 'A')
+        await page.type('.govuk-js-character-count', 'A')
 
         const message = await page.$eval('.govuk-character-count__message', el => el.innerHTML.trim())
 
@@ -59,7 +59,7 @@ describe('Character count', () => {
 
       it('uses the singular when there is only one character remaining', async () => {
         await goToExample()
-        await page.type('.js-character-count', 'A'.repeat(9))
+        await page.type('.govuk-js-character-count', 'A'.repeat(9))
 
         const message = await page.$eval('.govuk-character-count__message', el => el.innerHTML.trim())
 
@@ -69,7 +69,7 @@ describe('Character count', () => {
       describe('when the character limit is exceeded', () => {
         beforeAll(async () => {
           await goToExample()
-          await page.type('.js-character-count', 'A'.repeat(11))
+          await page.type('.govuk-js-character-count', 'A'.repeat(11))
         })
 
         it('shows the number of characters over the limit', async () => {
@@ -78,14 +78,14 @@ describe('Character count', () => {
         })
 
         it('uses the plural when the limit is exceeded by 2 or more', async () => {
-          await page.type('.js-character-count', 'A')
+          await page.type('.govuk-js-character-count', 'A')
 
           const message = await page.$eval('.govuk-character-count__message', el => el.innerHTML.trim())
           expect(message).toEqual('You have 2 characters too many')
         })
 
         it('adds error styles to the textarea', async () => {
-          const textareaClasses = await page.$eval('.js-character-count', el => el.className)
+          const textareaClasses = await page.$eval('.govuk-js-character-count', el => el.className)
           expect(textareaClasses).toContain('govuk-textarea--error')
         })
 
@@ -106,7 +106,7 @@ describe('Character count', () => {
         })
 
         it('adds error styles to the textarea', async () => {
-          const textareaClasses = await page.$eval('.js-character-count', el => el.className)
+          const textareaClasses = await page.$eval('.govuk-js-character-count', el => el.className)
           expect(textareaClasses).toContain('govuk-textarea--error')
         })
 
@@ -131,7 +131,7 @@ describe('Character count', () => {
         })
 
         it('becomes visible once the threshold is reached', async () => {
-          await page.type('.js-character-count', 'A'.repeat(8))
+          await page.type('.govuk-js-character-count', 'A'.repeat(8))
 
           const visibility = await page.$eval('.govuk-character-count__message', el => window.getComputedStyle(el).visibility)
           expect(visibility).toEqual('visible')
@@ -154,7 +154,7 @@ describe('Character count', () => {
 
       it('counts down to the word limit', async () => {
         await goToExample('with-word-count')
-        await page.type('.js-character-count', 'Hello world')
+        await page.type('.govuk-js-character-count', 'Hello world')
 
         const message = await page.$eval('.govuk-character-count__message', el => el.innerHTML.trim())
 
@@ -163,7 +163,7 @@ describe('Character count', () => {
 
       it('uses the singular when there is only one word remaining', async () => {
         await goToExample('with-word-count')
-        await page.type('.js-character-count', 'Hello '.repeat(9))
+        await page.type('.govuk-js-character-count', 'Hello '.repeat(9))
 
         const message = await page.$eval('.govuk-character-count__message', el => el.innerHTML.trim())
 
@@ -173,7 +173,7 @@ describe('Character count', () => {
       describe('when the word limit is exceeded', () => {
         beforeAll(async () => {
           await goToExample('with-word-count')
-          await page.type('.js-character-count', 'Hello '.repeat(11))
+          await page.type('.govuk-js-character-count', 'Hello '.repeat(11))
         })
 
         it('shows the number of words over the limit', async () => {
@@ -182,14 +182,14 @@ describe('Character count', () => {
         })
 
         it('uses the plural when the limit is exceeded by 2 or more', async () => {
-          await page.type('.js-character-count', 'World')
+          await page.type('.govuk-js-character-count', 'World')
 
           const message = await page.$eval('.govuk-character-count__message', el => el.innerHTML.trim())
           expect(message).toEqual('You have 2 words too many')
         })
 
         it('adds error styles to the textarea', async () => {
-          const textareaClasses = await page.$eval('.js-character-count', el => el.className)
+          const textareaClasses = await page.$eval('.govuk-js-character-count', el => el.className)
           expect(textareaClasses).toContain('govuk-textarea--error')
         })
 
