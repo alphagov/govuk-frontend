@@ -80,19 +80,18 @@
 
       .govuk-tabs__tab {
         margin-right: govuk-spacing(1);
+        margin-bottom: 0;
+        padding-top: govuk-spacing(2);
         padding-right: govuk-spacing(4);
+        padding-bottom: govuk-spacing(2);
         padding-left: govuk-spacing(4);
+
         float: left;
         color: govuk-colour("black");
         background-color: govuk-colour("light-grey", $legacy: "grey-4");
         text-align: center;
         text-decoration: underline;
 
-        @include govuk-media-query($from: tablet) {
-          margin-bottom: 0;
-          padding-top: govuk-spacing(2);
-          padding-bottom: govuk-spacing(2);
-        }
 
         @include govuk-if-ie8 {
           // IE8 doesn't support `box-shadow` so add an outline to indicate
