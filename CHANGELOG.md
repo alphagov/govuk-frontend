@@ -5,6 +5,23 @@
 See the [versioning documentation for how to update this
 changelog](./docs/contributing/versioning.md#updating-changelog).
 
+- Renamed css class names `js-character-count` and `js-header-toggle`
+
+  Fixes issues with govuk-fronted javascript clashing with govuk-template/govuk-element and potentially other third-party javascript libraries using `js-` class names as hooks.
+
+  HTML markup will only need to change if nunjucks macros are not being used.
+  Update it use `govuk-js-character-count` or `govuk-js-header-toggle`.
+
+  Eg. `<textarea class="govuk-textarea govuk-js-character-count"></textarea>`
+
+  if you have any custom JavaScript relying on either `js-character-count` or `js-header-toggle`, you will
+  need to update it use `govuk-js-character-count` or `govuk-js-header-toggle`.
+
+  Eg. `document.querySelectorAll('.govuk-js-character-count')`
+  Eg. `document.querySelectorAll('.govuk-js-header-toggle')`
+
+  ([PR #1444](https://github.com/alphagov/govuk-frontend/pull/1444))
+
 - Make radios and checkboxes components easier to link to from the error summary component
 
   You should check that clicking a link from the error summary to radios or checkboxes results in the first input being focused.
