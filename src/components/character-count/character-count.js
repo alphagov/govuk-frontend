@@ -144,8 +144,12 @@ CharacterCount.prototype.updateCountMessage = function () {
   var thresholdValue = maxLength * thresholdPercent / 100
   if (thresholdValue > currentLength) {
     countMessage.classList.add('govuk-character-count__message--disabled')
+    // Ensure threshold is hidden for users of assistive technologies
+    countMessage.setAttribute('aria-hidden', true)
   } else {
     countMessage.classList.remove('govuk-character-count__message--disabled')
+    // Ensure threshold is visible for users of assistive technologies
+    countMessage.removeAttribute('aria-hidden')
   }
 
   // Update styles
