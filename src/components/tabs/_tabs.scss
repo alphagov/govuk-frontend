@@ -49,6 +49,12 @@
       color: govuk-colour("black");
       text-decoration: none;
     }
+
+    @include govuk-if-ie8 {
+      &:focus {
+        outline: $govuk-focus-width solid $govuk-focus-colour;
+      }
+    }
   }
 
   .govuk-tabs__panel {
@@ -92,16 +98,11 @@
         text-align: center;
         text-decoration: underline;
 
-
-        @include govuk-if-ie8 {
-          // IE8 doesn't support `box-shadow` so add an outline to indicate
-          // state.
-          outline: $govuk-focus-width solid transparent;
-        }
-
-        &:focus {
-          // Hide browser default outline when link is pressed
-          outline: $govuk-focus-width solid transparent;
+        @include govuk-not-ie8 {
+          &:focus {
+            // Hide browser default outline when link is pressed
+            outline: $govuk-focus-width solid transparent;
+          }
         }
 
         &--selected {
@@ -135,10 +136,6 @@
               margin-right: 7px;
               margin-left: 7px;
               box-shadow: 0 (-$highlight-space) 0 $highlight-space $govuk-focus-colour, 0 -9px 0 $highlight-space govuk-colour("black");
-            }
-
-            @include govuk-if-ie8 {
-              outline: $govuk-focus-width solid $govuk-focus-colour;
             }
           }
         }
