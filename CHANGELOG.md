@@ -357,6 +357,12 @@
 
   ([PR #1442](https://github.com/alphagov/govuk-frontend/pull/1442))
 
+- Fix issue where link underlines sit too low in Firefox
+
+  See the original issue for details: https://github.com/alphagov/govuk-frontend/issues/962
+
+  ([PR #1434](https://github.com/alphagov/govuk-frontend/pull/1434))
+
 - Stop appending hash when error summary link clicked
 
   This prevents incorrectly focusing the form element with the hash id, instead of the error summary, when form is re-submitted with the hash in the URL and there are further errors.
