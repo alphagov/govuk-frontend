@@ -113,12 +113,14 @@
   To migrate: [TODO add migration instructions before we ship v3.0.0]
 
   ([PR #1326](https://github.com/alphagov/govuk-frontend/pull/1326))
+  ([PR #1445](https://github.com/alphagov/govuk-frontend/pull/1445))
 
 - Update accordion to use new WCAG 2.1 compliant focus style
 
   To migrate: [TODO add migration instructions before we ship v3.0.0]
 
   ([PR #1324](https://github.com/alphagov/govuk-frontend/pull/1324))
+  ([PR #1445](https://github.com/alphagov/govuk-frontend/pull/1445))
 
 - Update form inputs to use new WCAG 2.1 compliant focus style
 
