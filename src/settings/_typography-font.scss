@@ -31,7 +31,7 @@ $govuk-use-legacy-font: if((
 
 $govuk-font-family: if($govuk-use-legacy-font,
   $govuk-font-family-nta,
-  $govuk-font-family-govuk-transport
+  $govuk-font-family-gds-transport
 ) !default;
 
 /// Font families to use when displaying tabular numbers
@@ -54,13 +54,13 @@ $govuk-font-family-print: sans-serif !default;
 /// Include the default @font-face declarations
 ///
 /// If you have set $govuk-font-family to something other than
-/// `$govuk-font-family-govuk-transport` this option is disabled by default.
+/// `$govuk-font-family-gds-transport` this option is disabled by default.
 ///
 /// @type Boolean
 /// @access public
 
 $govuk-include-default-font-face: (
-  $govuk-font-family == $govuk-font-family-govuk-transport
+  $govuk-font-family == $govuk-font-family-gds-transport
  ) !default;
 
 // =========================================================

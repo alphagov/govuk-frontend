@@ -7,20 +7,20 @@
 
 @import "../tools/exports";
 
-/// Font Face - GOV.UK Transport
+/// Font Face - GDS Transport
 ///
-/// Outputs the font-face declaration for GOV.UK Transport at the root of the CSS document
+/// Outputs the font-face declaration for GDS Transport at the root of the CSS document
 /// the first time it is called.
 ///
 /// @access private
 
-@mixin _govuk-font-face-govuk-transport {
+@mixin _govuk-font-face-gds-transport {
   @include govuk-exports("govuk/helpers/font-faces") {
     @at-root {
       /*! Copyright (c) 2011 by Margaret Calvert & Henrik Kubel. All rights reserved. The font has been customised for exclusive use on gov.uk. This cut is not commercially available. */
 
       @font-face {
-        font-family: "GOVUKTransport";
+        font-family: "GDS Transport";
         src: govuk-font-url("light-68f0c84f0e-v2.woff2") format("woff2"),
              govuk-font-url("light-222368e53d-v2.woff") format("woff");
         font-weight: normal;
@@ -29,7 +29,7 @@
       }
 
       @font-face {
-        font-family: "GOVUKTransport";
+        font-family: "GDS Transport";
         src: govuk-font-url("bold-9561e2d007-v2.woff2") format("woff2"),
              govuk-font-url("bold-5d3836b441-v2.woff") format("woff");
         font-weight: bold;
