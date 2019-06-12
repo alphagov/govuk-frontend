@@ -36,10 +36,6 @@
   .govuk-tabs__tab {
     @include govuk-link-style-default;
 
-    @include govuk-media-query($until: tablet) {
-      @include govuk-link-common;
-    }
-
     @include govuk-font($size: 19);
 
     display: inline-block;
@@ -50,6 +46,13 @@
       text-decoration: none;
     }
 
+    // Focus state for mobile and when JavaScript is disabled
+    // It is removed for JS-enabled desktop styles
+    &:focus {
+      @include govuk-focused-text;
+    }
+
+    // IE8 doesn't support `box-shadow` so add an outline to indicate focus
     @include govuk-if-ie8 {
       &:focus {
         outline: $govuk-focus-width solid $govuk-focus-colour;
@@ -100,8 +103,8 @@
 
         @include govuk-not-ie8 {
           &:focus {
-            // Hide browser default outline when link is pressed
-            outline: $govuk-focus-width solid transparent;
+            // Remove no-JS styles
+            box-shadow: none;
           }
         }
 
