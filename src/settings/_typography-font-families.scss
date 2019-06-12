@@ -2,13 +2,13 @@
 /// @group settings/typography
 ////
 
-/// List of font families to use if using GOV.UK Transport (the default font
+/// List of font families to use if using GDS Transport (the default font
 /// 'stack' for GOV.UK)
 ///
 /// @type List
 /// @access public
 
-$govuk-font-family-govuk-transport: "GOVUKTransport", Arial, sans-serif;
+$govuk-font-family-gds-transport: "GDS Transport", Arial, sans-serif;
 
 /// List of font families to use if using NTA (old font 'stack' for
 /// GOV.UK)
