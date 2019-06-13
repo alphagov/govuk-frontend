@@ -60,7 +60,7 @@
     </a>
     {% endif %}
     {% if params.navigation %}
-    <button type="button" role="button" class="govuk-header__menu-button js-header-toggle" aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu</button>
+    <button type="button" role="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu</button>
     <nav>
       <ul id="navigation" class="govuk-header__navigation {{ params.navigationClasses if params.navigationClasses }}" aria-label="Top Level Navigation">
         {% for item in params.navigation %}

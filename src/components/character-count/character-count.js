@@ -4,7 +4,7 @@ import '../../vendor/polyfills/Element/prototype/classList'
 
 function CharacterCount ($module) {
   this.$module = $module
-  this.$textarea = $module.querySelector('.js-character-count')
+  this.$textarea = $module.querySelector('.govuk-js-character-count')
 }
 
 CharacterCount.prototype.defaults = {
