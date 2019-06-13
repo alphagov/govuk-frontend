@@ -287,6 +287,77 @@
 
   ([PR #1376](https://github.com/alphagov/govuk-frontend/pull/1376))
 
+- Ensure GOV.UK Frontend component selectors cannot conflict when initialised
+
+  Components which have JavaScript functionality include a data attribute called `[data-module]`,
+  we have added the `govuk-` prefix as a namespace.
+
+  This ensures the component's name does not conflict with other service level components
+  with the same name, which is consistent with our CSS class name convention.
+
+  If you're using Nunjucks macros, and are [using the `initAll` function](https://github.com/alphagov/govuk-frontend/blob/master/docs/installation/installing-with-npm.md#option-1-include-javascript) you will not be affected.
+
+  If you are using HTML, you will need to add the `govuk-` prefix to any `[data-module]` attributes.
+
+  For example the accordion component selector has changed from `[data-module="accordion"]` to `[data-module="govuk-accordion"]`.
+
+  ```html
+  <div class="govuk-accordion" data-module="govuk-accordion">
+    <!-- ... -->
+  </div>
+  ```
+
+  If you are initialising components manually, you will need to add the `govuk-` prefix to any CSS selectors used to find GOV.UK Frontend components:
+
+  ```javascript
+  var $accordions = document.querySelector('[data-module="govuk-accordion"]')
+  ```
+
+  ([PR #1443](https://github.com/alphagov/govuk-frontend/pull/1443))
+
+
+- Button and details components are now initialised consistently
+
+  The button and details components now use the `[data-module]` selector to initialise them.
+
+  If you're using Nunjucks macros, and are [using the `initAll` function](https://github.com/alphagov/govuk-frontend/blob/master/docs/installation/installing-with-npm.md#option-1-include-javascript) you will not be affected.
+
+  ### Button component
+
+  The button component now is initialised with the `[data-module="govuk-button"]` selector instead of globally based on the document.
+
+  If you are using HTML, you need to add the `[data-module="govuk-button"]` attribute to your buttons:
+
+  ```html
+  <button ... data-module="govuk-button">...</button>
+  ```
+
+  If you are initialising the button component manually, you will need to reference this `[data-module]` attribute:
+
+  ```javascript
+  var $buttons = document.querySelector('[data-module="govuk-button"]')
+  ```
+
+  ### Details component
+
+  The details component now is initialised with the `[data-module="govuk-details"]` selector instead of `details` globally.
+
+  If you are using the Nunjucks macro no changes is needed.
+
+  If you are using HTML, you need to add the `[data-module="govuk-details"]` attribute to your details:
+
+  ```html
+  <details ... data-module="govuk-details">...</details>
+  ```
+
+  If you are initialising the button component manually, you will need to reference this `[data-module]` attribute:
+
+  ```javascript
+  var $details = document.querySelector('[data-module="govuk-details"]')
+  ```
+
+  ([PR #1443](https://github.com/alphagov/govuk-frontend/pull/1443))
+
 - Pull Request Title goes here
 
   Description goes here (optional)

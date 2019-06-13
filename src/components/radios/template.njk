@@ -45,7 +45,7 @@
 {% endif %}
   <div class="govuk-radios {%- if params.classes %} {{ params.classes }}{% endif %}{%- if isConditional %} govuk-radios--conditional{% endif -%}"
     {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}
-    {%- if isConditional %} data-module="radios"{% endif -%}>
+    {%- if isConditional %} data-module="govuk-radios"{% endif -%}>
     {% for item in params.items %}
     {#- If the user explicitly sets an id, use this instead of the regular idPrefix -#}
     {%- if item.id -%}
