@@ -1,5 +1,15 @@
-{# This example is based of the  "How do you want to sign in?
-" example: https://www.gov.uk/log-in-file-self-assessment-tax-return/sign-in/prove-identity #}
+---
+scenario: >-
+  As part of an online service, you are asked to select how you want to sign in.
+
+
+  Things to try:
+
+  1. Intentionally avoid answering the question before continuing to the next page.
+
+notes: Based on https://www.gov.uk/log-in-file-self-assessment-tax-return/sign-in/prove-identity
+---
+
 {% extends "_generic.njk" %}
 
 {% from "back-link/macro.njk" import govukBackLink %}
@@ -9,7 +19,7 @@
 {% from "error-summary/macro.njk" import govukErrorSummary %}
 
 {% set pageTitle = "How do you want to sign in?" %}
-{% block pageTitle %}{{ "Error: " if errors }}GOV.UK - {{ pageTitle }}{% endblock %}
+{% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -45,7 +55,6 @@
           },
           items: [
             {
-              id: "sign-in",
               value: "government-gateway",
               text: "Sign in with Government Gateway",
               checked: values["sign-in"] === "government-gateway",

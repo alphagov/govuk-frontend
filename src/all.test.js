@@ -1,16 +1,9 @@
 /* eslint-env jest */
 
-const util = require('util')
-
 const configPaths = require('../config/paths.json')
 const PORT = configPaths.ports.test
 
-const sass = require('node-sass')
-const sassRender = util.promisify(sass.render)
-
-const sassConfig = {
-  includePaths: [ configPaths.src ]
-}
+const { renderSass } = require('../lib/jest-helpers')
 
 let baseUrl = 'http://localhost:' + PORT
 
@@ -84,20 +77,20 @@ describe('GOV.UK Frontend', () => {
       // that we can interact with to check if they're interactive.
 
       // Check that the conditional reveal component has a conditional section that would open if enhanced.
-      await page.waitForSelector('#conditional-not-scoped-1', { hidden: true })
+      await page.waitForSelector('#conditional-not-scoped', { hidden: true })
 
-      await page.click('[for="not-scoped-1"]')
+      await page.click('[for="not-scoped"]')
 
       // Check that when it is clicked that nothing opens, which shows that it has not been enhanced.
-      await page.waitForSelector('#conditional-not-scoped-1', { hidden: true })
+      await page.waitForSelector('#conditional-not-scoped', { hidden: true })
 
       // Check the other conditional reveal which has been enhanced based on it's scope.
-      await page.waitForSelector('#conditional-scoped-1', { hidden: true })
+      await page.waitForSelector('#conditional-scoped', { hidden: true })
 
-      await page.click('[for="scoped-1"]')
+      await page.click('[for="scoped"]')
 
       // Check that it has opened as expected.
-      await page.waitForSelector('#conditional-scoped-1', { hidden: false })
+      await page.waitForSelector('#conditional-scoped', { hidden: false })
     })
   })
   describe('global styles', () => {
@@ -105,7 +98,7 @@ describe('GOV.UK Frontend', () => {
       const sass = `
         @import "all";
       `
-      const results = await sassRender({ data: sass, ...sassConfig })
+      const results = await renderSass({ data: sass })
       expect(results.css.toString()).not.toContain(', a {')
       expect(results.css.toString()).not.toContain(', p {')
     })
@@ -114,7 +107,7 @@ describe('GOV.UK Frontend', () => {
         $govuk-global-styles: true;
         @import "all";
       `
-      const results = await sassRender({ data: sass, ...sassConfig })
+      const results = await renderSass({ data: sass })
       expect(results.css.toString()).toContain(', a {')
       expect(results.css.toString()).toContain(', p {')
     })
@@ -153,7 +146,7 @@ describe('GOV.UK Frontend', () => {
   it('does not contain any unexpected govuk- function calls', async () => {
     const sass = `@import "all"`
 
-    const results = await sassRender({ data: sass, ...sassConfig })
+    const results = await renderSass({ data: sass })
     const css = results.css.toString()
 
     const functionCalls = css.match(/_?govuk-[\w-]+\(.*?\)/g)

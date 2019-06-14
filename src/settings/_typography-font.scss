@@ -1,8 +1,24 @@
+@import "compatibility";
+@import "typography-font-families";
+
 ////
 /// @group settings/typography
 ////
 
+/// Use 'legacy' fonts
+///
+/// Whether or not to use v1 nta font from GOV.UK Elements / Frontend
+/// Toolkit, for teams that are migrating to GOV.UK Frontend and may be using
+/// components from both places in a single application.
+///
+/// @type Boolean
+/// @access public
 
+$govuk-use-legacy-font: if((
+    $govuk-compatibility-govukfrontendtoolkit or
+    $govuk-compatibility-govuktemplate or
+    $govuk-compatibility-govukelements
+  ), true, false) !default;
 
 // =========================================================
 // Font families
@@ -13,14 +29,20 @@
 /// @type List
 /// @access public
 
-$govuk-font-family: $govuk-font-family-nta !default;
+$govuk-font-family: if($govuk-use-legacy-font,
+  $govuk-font-family-nta,
+  $govuk-font-family-gds-transport
+) !default;
 
 /// Font families to use when displaying tabular numbers
 ///
 /// @type List
 /// @access public
 
-$govuk-font-family-tabular: $govuk-font-family-nta-tabular !default;
+$govuk-font-family-tabular: if($govuk-use-legacy-font,
+  $govuk-font-family-nta-tabular,
+  false
+) !default;
 
 /// Font families to use for print media
 ///
@@ -31,16 +53,14 @@ $govuk-font-family-print: sans-serif !default;
 
 /// Include the default @font-face declarations
 ///
-/// If you have set $govuk-font-family to something other than $govuk-font-family-nta this option is disabled by default.
-///
-/// If you are using $govuk-compatibility-govuktemplate this option is disabled by default.
+/// If you have set $govuk-font-family to something other than
+/// `$govuk-font-family-gds-transport` this option is disabled by default.
 ///
 /// @type Boolean
 /// @access public
 
 $govuk-include-default-font-face: (
-  $govuk-font-family == $govuk-font-family-nta and
-  not($govuk-compatibility-govuktemplate)
+  $govuk-font-family == $govuk-font-family-gds-transport
  ) !default;
 
 // =========================================================

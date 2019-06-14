@@ -1,3 +1,21 @@
+---
+scenario: >-
+  You would like to find relevant articles by sorting the results and filtering
+  by the organisation(s) that published the articles.
+
+
+  Things to try:
+
+  1. Sort the list of results so that the oldest results are first.
+
+  2. Filter the list of results to show only those published by the Ministry of
+     Defence.
+
+notes: >-
+  The filtering and sorting may not be accurate – this is just a demonstration
+  of the sort of interactions that you would find on a search page.
+---
+
 {# This example is based of the live "News and communications" GOV.UK page: https://www.gov.uk/news-and-communications #}
 {% extends "_generic.njk" %}
 
@@ -8,7 +26,7 @@
 {% from "button/macro.njk" import govukButton %}
 
 {% set pageTitle = "News and communications" %}
-{% block pageTitle %}GOV.UK - {{ pageTitle }}{% endblock %}
+{% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block head %}
     {{ super() }}
@@ -125,10 +143,11 @@
             {% for document in documents %}
                 {% set document = document.document %}
                 <li>
-                    <a class="govuk-link govuk-heading-s govuk-!-margin-bottom-2"
-                       href="https://gov.uk{{ document.link }}">
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-2">
+                      <a class="govuk-link" href="https://gov.uk{{ document.link }}">
                         {{ document.title }}
-                    </a>
+                      </a>
+                    </h3>
                     <p class="govuk-body govuk-!-margin-bottom-4">
                         {{ document.summary }}
                     </p>

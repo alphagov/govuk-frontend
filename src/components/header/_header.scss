@@ -46,9 +46,11 @@
   }
 
   .govuk-header__logotype-crown {
+    position: relative;
+    top: -1px;
     margin-right: 1px;
     fill: currentColor;
-    vertical-align: middle;
+    vertical-align: top;
   }
 
   .govuk-header__logotype-crown-fallback-image {
@@ -65,8 +67,6 @@
   }
 
   .govuk-header__link {
-    @include govuk-focusable-fill;
-
     text-decoration: none;
 
     &:link,
@@ -78,10 +78,8 @@
       text-decoration: underline;
     }
 
-    // When focussed, the text colour needs to be darker to ensure that colour
-    // contrast is still acceptable
     &:focus {
-      color: $govuk-focus-text-colour;
+      @include govuk-focused-text;
     }
 
     // alphagov/govuk_template includes a specific a:link:focus selector
@@ -101,7 +99,7 @@
 
     display: inline-block;
     font-size: 30px; // We don't have a mixin that produces 30px font size
-    line-height: 30px;
+    line-height: 1;
 
     &:link,
     &:visited {
@@ -115,6 +113,11 @@
       // Omitting colour will use default value of currentColor – if we
       // specified currentColor explicitly IE8 would ignore this rule.
       border-bottom: 1px solid;
+    }
+
+    // Remove any borders that show when focused and hovered.
+    &:focus {
+      border-bottom: 0;
     }
   }
 
@@ -165,13 +168,15 @@
       text-decoration: underline;
     }
 
+    &:focus {
+      @include govuk-focused-text;
+    }
+
     &::after {
       @include govuk-shape-arrow($direction: down, $base: 10px, $display: inline-block);
       content: "";
       margin-left: govuk-spacing(1);
     }
-
-    @include govuk-focusable;
 
     @include mq ($from: tablet) {
       top: govuk-spacing(3);
@@ -287,17 +292,25 @@
     }
   }
 
-  // Begin adjustments for font baseline offset
-  // These should be removed when the font is updated with the correct baseline
-  .govuk-header__logotype-crown {
-    position: relative;
-    top: -4px;
-  }
+  @if $govuk-use-legacy-font {
+    // Begin adjustments for font baseline offset
+    // These should be removed when the font is updated with the correct baseline
+    .govuk-header__logotype-crown,
+    .govuk-header__logotype-crown-fallback-image {
+      position: relative;
+      top: -4px;
+      vertical-align: middle;
+    }
 
-  .govuk-header {
-    $offset: 3px;
-    padding-top: $offset;
+    .govuk-header {
+      $offset: 3px;
+      padding-top: $offset;
+    }
+
+    .govuk-header__link--homepage {
+      line-height: 30px;
+    }
+    // End adjustments
   }
-  // End adjustments
 
 }

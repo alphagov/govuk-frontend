@@ -13,7 +13,7 @@ Header.prototype.init = function () {
   }
 
   // Check for button
-  var $toggleButton = $module.querySelector('.js-header-toggle')
+  var $toggleButton = $module.querySelector('.govuk-js-header-toggle')
   if (!$toggleButton) {
     return
   }

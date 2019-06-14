@@ -1,3 +1,16 @@
+---
+scenario: >-
+  As part of an online service, you are asked to check your answers before
+  you send your application.
+
+
+  Things to try:
+
+  1. You would like to change your answer for one of the questions.
+
+notes: The links to change your answers are not functional.
+---
+
 {# This example is based of the  "Check your answers before sending your application" example: https://design-system.service.gov.uk/patterns/check-answers/default/index.html #}
 {% extends "_generic.njk" %}
 
@@ -5,13 +18,15 @@
 {% from "summary-list/macro.njk" import govukSummaryList %}
 {% from "button/macro.njk" import govukButton %}
 
-{% set pageTitle = "Technology - Service Manual" %}
-{% block pageTitle %}GOV.UK - {{ pageTitle }}{% endblock %}
+{% set pageTitle = "Check your answers" %}
+{% set serviceName = "Temporary events notice" %}
+
+{% block pageTitle %}{{ pageTitle }} - {{ serviceName }} - GOV.UK{% endblock %}
 
 {% block header %}
   {% include "../../partials/banner.njk" %}
   {{ govukHeader({
-    serviceName: "Temporary events notice"
+    serviceName: serviceName
   }) }}
 {% endblock %}
 
@@ -196,7 +211,7 @@
               </ul>
 
               <p class="govuk-body">
-                To find out more you can visit out website at: 
+                To find out more you can visit out website at:
                 <a class="govuk-link" href="#">https://reallylongurlformyeventthatneedsatemporaryeventsnotice.com</a>
               </p>
             '

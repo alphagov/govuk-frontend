@@ -4,7 +4,7 @@ import '../../vendor/polyfills/Element/prototype/classList'
 
 function CharacterCount ($module) {
   this.$module = $module
-  this.$textarea = $module.querySelector('.js-character-count')
+  this.$textarea = $module.querySelector('.govuk-js-character-count')
 }
 
 CharacterCount.prototype.defaults = {
@@ -144,8 +144,12 @@ CharacterCount.prototype.updateCountMessage = function () {
   var thresholdValue = maxLength * thresholdPercent / 100
   if (thresholdValue > currentLength) {
     countMessage.classList.add('govuk-character-count__message--disabled')
+    // Ensure threshold is hidden for users of assistive technologies
+    countMessage.setAttribute('aria-hidden', true)
   } else {
     countMessage.classList.remove('govuk-character-count__message--disabled')
+    // Ensure threshold is visible for users of assistive technologies
+    countMessage.removeAttribute('aria-hidden')
   }
 
   // Update styles

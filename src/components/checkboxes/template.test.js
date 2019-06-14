@@ -169,8 +169,8 @@ describe('Checkboxes', () => {
 
       const $firstInput = $component.find('.govuk-checkboxes__item:first-child input')
       const $firstLabel = $component.find('.govuk-checkboxes__item:first-child label')
-      expect($firstInput.attr('id')).toEqual('example-name-1')
-      expect($firstLabel.attr('for')).toEqual('example-name-1')
+      expect($firstInput.attr('id')).toEqual('example-name')
+      expect($firstLabel.attr('for')).toEqual('example-name')
 
       const $lastInput = $component.find('.govuk-checkboxes__item:last-child input')
       const $lastLabel = $component.find('.govuk-checkboxes__item:last-child label')
@@ -198,8 +198,8 @@ describe('Checkboxes', () => {
 
       const $firstInput = $component.find('.govuk-checkboxes__item:first-child input')
       const $firstLabel = $component.find('.govuk-checkboxes__item:first-child label')
-      expect($firstInput.attr('id')).toEqual('custom-1')
-      expect($firstLabel.attr('for')).toEqual('custom-1')
+      expect($firstInput.attr('id')).toEqual('custom')
+      expect($firstLabel.attr('for')).toEqual('custom')
 
       const $lastInput = $component.find('.govuk-checkboxes__item:last-child input')
       const $lastLabel = $component.find('.govuk-checkboxes__item:last-child label')
@@ -226,7 +226,7 @@ describe('Checkboxes', () => {
       const $component = $('.govuk-checkboxes')
 
       const $firstInput = $component.find('.govuk-checkboxes__item:first-child input')
-      expect($firstInput.attr('id')).toBe('example-name-1')
+      expect($firstInput.attr('id')).toBe('example-name')
 
       const $lastInput = $component.find('.govuk-checkboxes__item:last-child input')
       const $lastLabel = $component.find('.govuk-checkboxes__item:last-child label')
@@ -474,8 +474,8 @@ describe('Checkboxes', () => {
       const $firstInput = $component.find('.govuk-checkboxes__input').first()
       const $firstConditional = $component.find('.govuk-checkboxes__conditional').first()
 
-      expect($firstInput.attr('data-aria-controls')).toBe('conditional-example-conditional-1')
-      expect($firstConditional.attr('id')).toBe('conditional-example-conditional-1')
+      expect($firstInput.attr('data-aria-controls')).toBe('conditional-example-conditional')
+      expect($firstConditional.attr('id')).toBe('conditional-example-conditional')
     })
   })
 
@@ -584,9 +584,12 @@ describe('Checkboxes', () => {
 
       const $inputs = $('input')
 
-      $inputs.each((i, input) => {
-        expect($(input).attr('aria-describedby'))
-          .toEqual(`waste-${(i + 1)}-item-hint`)
+      $inputs.each((index, input) => {
+        let expectedDescribedById = `waste-${(index + 1)}-item-hint`
+        if (index === 0) {
+          expectedDescribedById = `waste-item-hint`
+        }
+        expect($(input).attr('aria-describedby')).toEqual(expectedDescribedById)
       })
     })
 
@@ -770,7 +773,7 @@ describe('Checkboxes', () => {
     it('adds aria-describedby to input if there is an error and a hint', () => {
       const $ = render('checkboxes', examples["with single option (and hint) set 'aria-describedby' on input"])
       const $input = $('input')
-      expect($input.attr('aria-describedby')).toMatch('t-and-c-with-hint-error t-and-c-with-hint-1-item-hint')
+      expect($input.attr('aria-describedby')).toMatch('t-and-c-with-hint-error t-and-c-with-hint-item-hint')
     })
 
     it('adds aria-describedby to input if there is an error, hint and parent fieldset', () => {
@@ -783,7 +786,7 @@ describe('Checkboxes', () => {
       const $input = $('input')
 
       expect($input.attr('aria-describedby'))
-        .toMatch(`${describedById} t-and-c-with-hint-error t-and-c-with-hint-1-item-hint`)
+        .toMatch(`${describedById} t-and-c-with-hint-error t-and-c-with-hint-item-hint`)
     })
   })
 })

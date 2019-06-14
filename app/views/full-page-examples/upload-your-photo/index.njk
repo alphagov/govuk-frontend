@@ -1,3 +1,13 @@
+---
+scenario: >-
+  As part of an online service, you are asked to upload your photo.
+
+
+  Things to try:
+
+  1. Intentionally avoid uploading a file and accepting terms and conditions before continuing to the next page.
+---
+
 {# This example is based of the live "Passport" service: https://www.passport.service.gov.uk/photo/upload #}
 {% extends "_generic.njk" %}
 
@@ -10,9 +20,7 @@
 {% from "file-upload/macro.njk" import govukFileUpload %}
 
 {% set pageTitle = "Upload your photo" %}
-{% block pageTitle %}{{ "Error: " if errors }}GOV.UK - {{ pageTitle }}{% endblock %}
-
-{% set mainClasses = "govuk-main-wrapper--l" %}
+{% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block header %}
   {% include "../../partials/banner.njk" %}
@@ -52,7 +60,7 @@
             {% if errorSummary.length > 0 %}
                 {{ govukErrorSummary({
                     titleText: "There is a problem",
-                    errorList: errorSummary 
+                    errorList: errorSummary
                 }) }}
             {% endif %}
 
@@ -83,7 +91,6 @@
                 name: "terms-and-conditions",
                 items: [
                     {
-                        id: "terms-and-conditions",
                         value: "true",
                         html: 'I accept the <a class="govuk-link" href="#">terms and conditions</a>',
                         checked: values["terms-and-conditions"]

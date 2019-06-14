@@ -1,3 +1,15 @@
+---
+scenario: >-
+  You want to apply for a passport.
+
+
+  Things to try:
+
+  1. Find out other ways to apply
+
+notes: The buttons and links on this page are not functional.
+---
+
 {# This example is based of the live "Apply online for a UK passport" start page: https://www.gov.uk/apply-renew-passport #}
 {% extends "_generic.njk" %}
 
@@ -6,7 +18,7 @@
 {% from "tabs/macro.njk" import govukTabs %}
 
 {% set pageTitle = "Apply online for a UK passport" %}
-{% block pageTitle %}GOV.UK - {{ pageTitle }}{% endblock %}
+{% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block beforeContent %}
   {{ govukBreadcrumbs({
@@ -37,23 +49,24 @@
       {{ govukButton({
         text: "Start now",
         href: "#",
-        classes: "govuk-button--start govuk-!-margin-top-2 govuk-!-margin-bottom-8"
+        classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-8",
+        isStartButton: true
       }) }}
 
       {% set moreInformationHTML %}
         <p>You’ll need a debit or credit card to use this service.</p>
 
-        <p><a class="govuk-link" href="/passport-fees">It’s £9.50 cheaper</a> to apply for a passport online than by post.</p>
+        <p><a class="govuk-link" href="#">It’s £9.50 cheaper</a> to apply for a passport online than by post.</p>
 
         <p>It should take around 6 weeks to get your first UK adult passport, but it can take longer.</p>
 
         <p>All other application types (for example, renewing a passport or getting a child passport) should take 3 weeks. It can take longer if more information is needed or your application hasn’t been filled out correctly.</p>
 
-        <p>You should use a different service if you <a class="govuk-link" href="/get-a-passport-urgently">need your passport urgently</a>.</p>
+        <p>You should use a different service if you <a class="govuk-link" href="#">need your passport urgently</a>.</p>
       {% endset %}
 
       {% set otherWaysToApplyHTML %}
-        <p>You can pick up passport application forms from your <a class="govuk-link" rel="external" href="http://www.postoffice.co.uk/branch-finder">local Post Office</a> and apply by post, or use the <a class="govuk-link" href="/how-the-post-office-check-and-send-service-works">Post Office Check and Send service</a>.</p>
+        <p>You can pick up passport application forms from your <a class="govuk-link" rel="external" href="http://www.postoffice.co.uk/branch-finder">local Post Office</a> and apply by post, or use the <a class="govuk-link" href="#">Post Office Check and Send service</a>.</p>
       {% endset %}
 
       {{ govukTabs({

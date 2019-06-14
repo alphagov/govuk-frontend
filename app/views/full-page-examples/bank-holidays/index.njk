@@ -1,4 +1,18 @@
-{# This example is based of the live "UK bank holidays" page: https://www.gov.uk/bank-holidays #}
+---
+scenario: >-
+  You want to know when the next bank holiday will be.
+
+
+  Things to try:
+
+  1. Find out when the next bank holiday is in Scotland.
+
+  2. Find out when the Boxing Day bank holiday is in 2020.
+
+notes: >-
+  This example is based on https://www.gov.uk/bank-holidays.
+  The data is not 'live' and so the answer is unlikely to be correct.
+---
 {% extends "_generic.njk" %}
 
 {% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
@@ -7,7 +21,7 @@
 {% from "table/macro.njk" import govukTable %}
 
 {% set pageTitle = "UK bank holidays" %}
-{% block pageTitle %}GOV.UK - {{ pageTitle }}{% endblock %}
+{% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block beforeContent %}
   {{ govukBreadcrumbs({
@@ -36,9 +50,9 @@
       {% set englandAndWalesHTML %}
 
         {% set englandAndWalesPanelTitleHtml %}
-          <div class='govuk-!-font-size-36 govuk-!-margin-bottom-4'>
+          <span class='govuk-!-font-size-36 govuk-!-margin-bottom-4 govuk-!-display-block'>
             The next bank holiday in England and Wales is
-          </div>
+          </span>
           19 April
         {% endset %}
 
@@ -991,9 +1005,9 @@
       {% set scotlandHTML %}
 
         {% set scotlandPanelTitleHtml %}
-          <div class='govuk-!-font-size-36 govuk-!-margin-bottom-4'>
+          <span class='govuk-!-font-size-36 govuk-!-margin-bottom-4 govuk-!-display-block'>
             The next bank holiday in Scotland is
-          </div>
+          </span>
           19 April
         {% endset %}
 
@@ -2130,9 +2144,9 @@
       {% set irelandHTML %}
 
         {% set irelandPanelTitleHtml %}
-          <div class='govuk-!-font-size-36 govuk-!-margin-bottom-4'>
+          <span class='govuk-!-font-size-36 govuk-!-margin-bottom-4 govuk-!-display-block'>
             The next bank holiday in Northern Ireland is
-          </div>
+          </span>
           19 April
         {% endset %}
 

@@ -1,17 +1,15 @@
+@import "compatibility";
+
 ////
 /// @group settings/typography
 ////
 
 /// Whether or not to define font sizes in rem, improving accessibility by
-/// allowing users to adjust the base font-size. This is currently off by
-/// default, but will be enabled by default for projects that do not use
-/// alphagov/govuk_template in the next major release.
+/// allowing users to adjust the base font-size. This is enabled by default,
+/// unless any of the compatibility mode settings are enabled.
 ///
-/// If this is enabled, you should make sure that $govuk-root-font-size is set
-/// correctly for your project
-///
-/// If any of the compatibility variables are set, then default
-/// responsive typography to off.
+/// You should make sure that $govuk-root-font-size is set correctly for your
+/// project.
 ///
 /// @type Boolean
 /// @access public
@@ -32,8 +30,9 @@ $govuk-typography-use-rem: if((
 /// should be set to 16px.
 ///
 /// If you are integrating Frontend into an existing project that also uses
-/// alphagov/govuk_template then you should set this to 10px to match the 62.5%
-/// (10px) base font size that govuk_template sets on the <html> element.
+/// alphagov/govuk_template and you wish to enable `$govuk-typography-use-rem`
+/// then you should set this to 10px to match the 62.5% (10px) base font size
+/// that govuk_template sets on the <html> element.
 ///
 /// @type Number
 /// @access public

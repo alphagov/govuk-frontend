@@ -17,45 +17,45 @@ function initAll (options) {
   // Defaults to the entire document if nothing is set.
   var scope = typeof options.scope !== 'undefined' ? options.scope : document
 
-  // Find all buttons with [role=button] on the scope to enhance.
-  new Button(scope).init()
+  var $buttons = scope.querySelectorAll('[data-module="govuk-button"]')
+  nodeListForEach($buttons, function ($button) {
+    new Button($button).init()
+  })
 
-  // Find all global accordion components to enhance.
-  var $accordions = scope.querySelectorAll('[data-module="accordion"]')
+  var $accordions = scope.querySelectorAll('[data-module="govuk-accordion"]')
   nodeListForEach($accordions, function ($accordion) {
     new Accordion($accordion).init()
   })
 
-  // Find all global details elements to enhance.
-  var $details = scope.querySelectorAll('details')
+  var $details = scope.querySelectorAll('[data-module="govuk-details"]')
   nodeListForEach($details, function ($detail) {
     new Details($detail).init()
   })
 
-  var $characterCount = scope.querySelectorAll('[data-module="character-count"]')
-  nodeListForEach($characterCount, function ($characterCount) {
+  var $characterCounts = scope.querySelectorAll('[data-module="govuk-character-count"]')
+  nodeListForEach($characterCounts, function ($characterCount) {
     new CharacterCount($characterCount).init()
   })
 
-  var $checkboxes = scope.querySelectorAll('[data-module="checkboxes"]')
+  var $checkboxes = scope.querySelectorAll('[data-module="govuk-checkboxes"]')
   nodeListForEach($checkboxes, function ($checkbox) {
     new Checkboxes($checkbox).init()
   })
 
   // Find first error summary module to enhance.
-  var $errorSummary = scope.querySelector('[data-module="error-summary"]')
+  var $errorSummary = scope.querySelector('[data-module="govuk-error-summary"]')
   new ErrorSummary($errorSummary).init()
 
   // Find first header module to enhance.
-  var $toggleButton = scope.querySelector('[data-module="header"]')
+  var $toggleButton = scope.querySelector('[data-module="govuk-header"]')
   new Header($toggleButton).init()
 
-  var $radios = scope.querySelectorAll('[data-module="radios"]')
+  var $radios = scope.querySelectorAll('[data-module="govuk-radios"]')
   nodeListForEach($radios, function ($radio) {
     new Radios($radio).init()
   })
 
-  var $tabs = scope.querySelectorAll('[data-module="tabs"]')
+  var $tabs = scope.querySelectorAll('[data-module="govuk-tabs"]')
   nodeListForEach($tabs, function ($tabs) {
     new Tabs($tabs).init()
   })

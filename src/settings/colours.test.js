@@ -1,9 +1,6 @@
 /* eslint-env jest */
 
-const util = require('util')
-
-const sass = require('node-sass')
-const sassRender = util.promisify(sass.render)
+const { renderSass } = require('../../lib/jest-helpers')
 
 const configPaths = require('../../config/paths.json')
 
@@ -15,6 +12,7 @@ const sassConfig = {
 describe('Organisation colours', () => {
   it('should define websafe colours that meet contrast requirements', async () => {
     const sass = `
+      @import "settings/compatibility";
       @import "settings/colours-palette";
       @import "settings/colours-organisations";
       @import "settings/colours-applied";
@@ -36,6 +34,6 @@ describe('Organisation colours', () => {
         }
       }`
 
-    await sassRender({ data: sass, ...sassConfig })
+    await renderSass({ data: sass, ...sassConfig })
   })
 })

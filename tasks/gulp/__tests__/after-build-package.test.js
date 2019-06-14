@@ -4,14 +4,14 @@ const fs = require('fs')
 const path = require('path')
 const util = require('util')
 
-const sass = require('node-sass')
 const recursive = require('recursive-readdir')
 var glob = require('glob')
 
 const configPaths = require('../../../config/paths.json')
 const lib = require('../../../lib/file-helper')
 
-const sassRender = util.promisify(sass.render)
+const { renderSass } = require('../../../lib/jest-helpers')
+
 const readFile = util.promisify(fs.readFile)
 
 describe('package/', () => {
@@ -93,7 +93,7 @@ describe('package/', () => {
   describe('all.scss', () => {
     it('should compile without throwing an exception', async () => {
       const allScssFile = path.join(configPaths.package, 'all.scss')
-      await sassRender({ file: allScssFile })
+      await renderSass({ file: allScssFile })
     })
   })
 

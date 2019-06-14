@@ -24,6 +24,7 @@ module.exports = (app) => {
     [
       body('email')
         .exists()
+        .isEmail().withMessage('Enter an email address in the correct format, like name@example.com')
         .not().isEmpty().withMessage('Enter your email address'),
       body('password')
         .exists()

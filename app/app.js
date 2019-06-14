@@ -39,6 +39,7 @@ module.exports = (options) => {
 
   // make the function available as a filter for all templates
   env.addFilter('componentNameToMacroName', helperFunctions.componentNameToMacroName)
+  env.addGlobal('markdown', require('marked'))
 
   // Set view engine
   app.set('view engine', 'njk')
@@ -61,8 +62,10 @@ module.exports = (options) => {
   // serve html5-shiv from node modules
   app.use('/vendor/html5-shiv/', express.static('node_modules/html5shiv/dist/'))
 
-  // serve legacy code from node node modules
+  // serve legacy code from node modules
   app.use('/vendor/govuk_template/', express.static('node_modules/govuk_template_jinja/assets/'))
+  app.use('/vendor/govuk_frontend_toolkit/', express.static('node_modules/govuk_frontend_toolkit/javascripts/govuk/'))
+  app.use('/vendor/jquery/', express.static('node_modules/jquery/dist'))
 
   app.use('/assets', express.static(path.join(configPaths.src, 'assets')))
 
@@ -89,12 +92,12 @@ module.exports = (options) => {
   app.get('/', async function (req, res) {
     const components = fileHelper.allComponents
     const examples = await readdir(path.resolve(configPaths.examples))
-    const fullPageExamples = await readdir(path.resolve(configPaths.fullPageExamples))
+    const fullPageExamples = fileHelper.fullPageExamples()
 
     res.render('index', {
       componentsDirectory: components,
       examplesDirectory: examples,
-      fullPageExamplesDirectory: fullPageExamples
+      fullPageExamples: fullPageExamples
     })
   })
 
@@ -177,7 +180,9 @@ module.exports = (options) => {
 
   // Example view
   app.get('/examples/:example', function (req, res, next) {
-    res.render(`${req.params.example}/index`, function (error, html) {
+    // Passing a random number used for the links so that they will be unique and not display as "visited"
+    const randomPageHash = (Math.random() * 1000000).toFixed()
+    res.render(`${req.params.example}/index`, { randomPageHash }, function (error, html) {
       if (error) {
         next(error)
       } else {

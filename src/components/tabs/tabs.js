@@ -1,5 +1,7 @@
 import '../../vendor/polyfills/Function/prototype/bind'
 import '../../vendor/polyfills/Element/prototype/classList'
+import '../../vendor/polyfills/Element/prototype/nextElementSibling'
+import '../../vendor/polyfills/Element/prototype/previousElementSibling'
 import '../../vendor/polyfills/Event' // addEventListener and event.target normaliziation
 import { nodeListForEach } from '../../common'
 
@@ -168,6 +170,10 @@ Tabs.prototype.unsetAttributes = function ($tab) {
 }
 
 Tabs.prototype.onTabClick = function (e) {
+  if (!e.target.classList.contains('govuk-tabs__tab')) {
+  // Allow events on child DOM elements to bubble up to tab parent
+    return false
+  }
   e.preventDefault()
   var $newTab = e.target
   var $currentTab = this.getCurrentTab()
@@ -207,7 +213,7 @@ Tabs.prototype.activateNextTab = function () {
   var currentTab = this.getCurrentTab()
   var nextTabListItem = currentTab.parentNode.nextElementSibling
   if (nextTabListItem) {
-    var nextTab = nextTabListItem.firstElementChild
+    var nextTab = nextTabListItem.querySelector('.govuk-tabs__tab')
   }
   if (nextTab) {
     this.hideTab(currentTab)
@@ -221,7 +227,7 @@ Tabs.prototype.activatePreviousTab = function () {
   var currentTab = this.getCurrentTab()
   var previousTabListItem = currentTab.parentNode.previousElementSibling
   if (previousTabListItem) {
-    var previousTab = previousTabListItem.firstElementChild
+    var previousTab = previousTabListItem.querySelector('.govuk-tabs__tab')
   }
   if (previousTab) {
     this.hideTab(currentTab)

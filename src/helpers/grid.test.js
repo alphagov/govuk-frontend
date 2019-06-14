@@ -1,17 +1,13 @@
 /* eslint-env jest */
 
-const util = require('util')
 const outdent = require('outdent')
 
-const configPaths = require('../../config/paths.json')
-
-const sass = require('node-sass')
-const sassRender = util.promisify(sass.render)
+const { renderSass } = require('../../lib/jest-helpers')
 
 const sassConfig = {
-  includePaths: [ configPaths.src ],
   outputStyle: 'nested'
 }
+
 describe('grid system', () => {
   const sassImports = `
     @import "settings/ie8";
@@ -33,7 +29,7 @@ describe('grid system', () => {
           content: govuk-grid-width(one-quarter);
         }`
 
-      const results = await sassRender({ data: sass, ...sassConfig })
+      const results = await renderSass({ data: sass, ...sassConfig })
 
       expect(results.css.toString().trim()).toBe(outdent`
       .foo {
@@ -47,57 +43,9 @@ describe('grid system', () => {
         $value: govuk-grid-width(seven-fifths);
         `
 
-      await expect(sassRender({ data: sass, ...sassConfig }))
+      await expect(renderSass({ data: sass, ...sassConfig }))
         .rejects
         .toThrow('Unknown grid width `seven-fifths`')
-    })
-  })
-
-  describe('@govuk-grid-row mixin', () => {
-    it('outputs default defined styles for .govuk-grid-row class', async () => {
-      const sass = `
-        ${sassImports}
-        @import "helpers/clearfix";
-
-        @include govuk-grid-row();
-        `
-
-      const results = await sassRender({ data: sass, ...sassConfig })
-
-      expect(results.css
-        .toString()
-        .trim())
-        .toBe(outdent`
-        .govuk-grid-row {
-          margin-right: -15px;
-          margin-left: -15px; }
-          .govuk-grid-row:after {
-            content: \"\";
-            display: block;
-            clear: both; }`)
-    })
-    it('outputs styles for the specified class', async () => {
-      const sass = `
-        ${sassImports}
-        @import "helpers/clearfix";
-
-        @include govuk-grid-row('app-grid-row');
-        `
-
-      const results = await sassRender({ data: sass, ...sassConfig })
-
-      expect(results.css
-        .toString()
-        .trim())
-        .toBe(outdent`
-        .app-grid-row {
-          margin-right: -15px;
-          margin-left: -15px; }
-          .app-grid-row:after {
-            content: \"\";
-            display: block;
-            clear: both; }
-        `)
     })
   })
 
@@ -107,11 +55,11 @@ describe('grid system', () => {
         ${sassImports}
 
         .govuk-grid-column-full {
-          @include govuk-grid-column($class: false);
+          @include govuk-grid-column();
         }
         `
 
-      const results = await sassRender({ data: sass, ...sassConfig })
+      const results = await renderSass({ data: sass, ...sassConfig })
 
       expect(results.css
         .toString()
@@ -132,10 +80,10 @@ describe('grid system', () => {
         ${sassImports}
 
         .govuk-grid-column-two-thirds {
-          @include govuk-grid-column(two-thirds, $class: false);
+          @include govuk-grid-column(two-thirds);
         }
       `
-      const results = await sassRender({ data: sass, ...sassConfig })
+      const results = await renderSass({ data: sass, ...sassConfig })
 
       expect(results.css
         .toString()
@@ -157,10 +105,10 @@ describe('grid system', () => {
         ${sassImports}
 
         .govuk-grid-column-one-quarter-at-desktop {
-          @include govuk-grid-column(one-quarter, $at: desktop, $class: false);
+          @include govuk-grid-column(one-quarter, $at: desktop);
         }
       `
-      const results = await sassRender({ data: sass, ...sassConfig })
+      const results = await renderSass({ data: sass, ...sassConfig })
 
       expect(results.css
         .toString()
@@ -180,10 +128,10 @@ describe('grid system', () => {
         ${sassImports}
 
         .govuk-grid-column-one-quarter-at-500px {
-          @include govuk-grid-column(one-quarter, $at: 500px, $class: false);
+          @include govuk-grid-column(one-quarter, $at: 500px);
         }
       `
-      const results = await sassRender({ data: sass, ...sassConfig })
+      const results = await renderSass({ data: sass, ...sassConfig })
 
       expect(results.css
         .toString()
@@ -205,10 +153,10 @@ describe('grid system', () => {
         ${sassImports}
 
         .govuk-grid-column-one-half-right {
-          @include govuk-grid-column(one-half, $float: right, $class: false);
+          @include govuk-grid-column(one-half, $float: right);
         }
       `
-      const results = await sassRender({ data: sass, ...sassConfig })
+      const results = await renderSass({ data: sass, ...sassConfig })
 
       expect(results.css
         .toString()
@@ -222,52 +170,6 @@ describe('grid system', () => {
             .govuk-grid-column-one-half-right {
               width: 50%;
               float: right; } }
-        `)
-    })
-
-    it('includes the class name by default (deprecated)', async () => {
-      const sass = `
-        ${sassImports}
-
-        @include govuk-grid-column();
-        `
-
-      const results = await sassRender({ data: sass, ...sassConfig })
-
-      expect(results.css
-        .toString()
-        .trim())
-        .toBe(outdent`
-        .govuk-grid-column-full {
-          box-sizing: border-box;
-          width: 100%;
-          padding: 0 15px; }
-          @media (min-width: 40.0625em) {
-            .govuk-grid-column-full {
-              width: 100%;
-              float: left; } }`)
-    })
-
-    it('allows the class name to be overridden (deprecated)', async () => {
-      const sass = `
-        ${sassImports}
-
-        @include govuk-grid-column(three-quarters, $class:'large-column');
-      `
-      const results = await sassRender({ data: sass, ...sassConfig })
-
-      expect(results.css
-        .toString()
-        .trim())
-        .toBe(outdent`
-        .large-column-three-quarters {
-          box-sizing: border-box;
-          width: 100%;
-          padding: 0 15px; }
-          @media (min-width: 40.0625em) {
-            .large-column-three-quarters {
-              width: 75%;
-              float: left; } }
         `)
     })
   })

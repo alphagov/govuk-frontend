@@ -1,26 +1,21 @@
-/**
- * JavaScript 'shim' to trigger the click event of element(s) when the space key is pressed.
- *
- * Created since some Assistive Technologies (for example some Screenreaders)
- * will tell a user to press space on a 'button', so this functionality needs to be shimmed
- * See https://github.com/alphagov/govuk_elements/pull/272#issuecomment-233028270
- *
- * Usage instructions:
- * the 'shim' will be automatically initialised
- */
 import '../../vendor/polyfills/Event' // addEventListener and event.target normaliziation
+import '../../vendor/polyfills/Function/prototype/bind'
 
 var KEY_SPACE = 32
 var DEBOUNCE_TIMEOUT_IN_SECONDS = 1
-var debounceFormSubmitTimer = null
 
 function Button ($module) {
   this.$module = $module
+  this.debounceFormSubmitTimer = null
 }
 
 /**
-* if the event target element has a role='button' and the event is key space pressed
-* then it prevents the default event and triggers a click event
+* JavaScript 'shim' to trigger the click event of element(s) when the space key is pressed.
+*
+* Created since some Assistive Technologies (for example some Screenreaders)
+* will tell a user to press space on a 'button', so this functionality needs to be shimmed
+* See https://github.com/alphagov/govuk_elements/pull/272#issuecomment-233028270
+*
 * @param {object} event event
 */
 Button.prototype.handleKeyDown = function (event) {
@@ -47,14 +42,14 @@ Button.prototype.debounce = function (event) {
   }
 
   // If the timer is still running then we want to prevent the click from submitting the form
-  if (debounceFormSubmitTimer) {
+  if (this.debounceFormSubmitTimer) {
     event.preventDefault()
     return false
   }
 
-  debounceFormSubmitTimer = setTimeout(function () {
-    debounceFormSubmitTimer = null
-  }, DEBOUNCE_TIMEOUT_IN_SECONDS * 1000)
+  this.debounceFormSubmitTimer = setTimeout(function () {
+    this.debounceFormSubmitTimer = null
+  }.bind(this), DEBOUNCE_TIMEOUT_IN_SECONDS * 1000)
 }
 
 /**

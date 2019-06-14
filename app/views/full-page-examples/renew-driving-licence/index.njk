@@ -1,3 +1,11 @@
+---
+scenario: You want to renew your driving license.
+notes: >-
+  The buttons and links on this page are not functional. This example shows
+  GOV.UK Frontend used alongside our 'legacy' frontend frameworks.
+  The links and buttons on this page have known accessibility issues.
+---
+
 {# This example is based on the "Renew driving licence"
 example: https://www.gov.uk/renew-driving-licence #}
 {% extends "govuk_template_jinja/views/layouts/govuk_template.html" %}
@@ -9,7 +17,7 @@ example: https://www.gov.uk/renew-driving-licence #}
 {% set asset_path = "/vendor/govuk_template/" %}
 {% set homepage_url = "/" %}
 {% set pageTitle = "Renew your driving licence" %}
-{% block page_title %}GOV.UK - {{ pageTitle }}{% endblock %}
+{% block page_title %}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block head %}
   <!--[if !IE 8]><!-->
@@ -112,7 +120,7 @@ example: https://www.gov.uk/renew-driving-licence #}
           <p>You need to include these things with your completed forms:</p>
 
           <ul class="list list-bullet">
-            <li>a recent <a href="/photos-for-passports">passport type photo</a> (do not sign the back of the photo)</li>
+            <li>a recent <a href="#">passport type photo</a> (do not sign the back of the photo)</li>
             <li>your current photocard licence, if you have it</li>
             <li>a cheque or postal order for £17, payable to DVLA (no fee is needed if you have a medical short period licence or you’re aged 70 or over)</li>
           </ul>

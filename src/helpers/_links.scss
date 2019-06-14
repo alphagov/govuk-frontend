@@ -10,7 +10,10 @@
 
 @mixin govuk-link-common {
   @include govuk-typography-common;
-  @include govuk-focusable-fill;
+
+  &:focus {
+    @include govuk-focused-text;
+  }
 }
 
 /// Default link style mixin
@@ -49,6 +52,17 @@
   // contrast is still acceptable
   &:focus {
     color: $govuk-focus-text-colour;
+  }
+
+  // alphagov/govuk_template includes a specific a:link:focus selector
+  // designed to make unvisited link  s a slightly darker blue when focussed, so
+  // we need to override the text colour for that combination of selectors so
+  // so that unvisited links styled as buttons do not end up with dark blue
+  // text when focussed.
+  @include govuk-compatibility(govuk_template) {
+    &:link:focus {
+      color: $govuk-focus-text-colour;
+    }
   }
 }
 

@@ -25,6 +25,12 @@
     // Underline is provided by a bottom border
     text-decoration: none;
 
+    // When the back link is focused, hide the bottom link border as the
+    // focus styles has a bottom border.
+    &:focus {
+      border-bottom-color: transparent;
+    }
+
     // Prepend left pointing arrow
     &:before {
       @include govuk-shape-arrow($direction: left, $base: 10px, $height: 6px);
@@ -34,21 +40,23 @@
       // Vertically align with the parent element
       position: absolute;
 
-      top: -1px;
-      bottom: 1px;
+      top: 0;
+      bottom: 0;
       left: 0;
 
       margin: auto;
     }
   }
 
-  // Begin adjustments for font baseline offset
-  // These should be removed when the font is updated with the correct baseline
+  @if $govuk-use-legacy-font {
+    // Begin adjustments for font baseline offset
+    // These should be removed when legacy font support is dropped
+    .govuk-back-link:before {
+      $offset: 1px;
 
-  .govuk-back-link:before {
-    $offset: 1px;
-
-    top: $offset * -1;
-    bottom: $offset;
+      top: $offset * -1;
+      bottom: $offset;
+    }
   }
+
 }

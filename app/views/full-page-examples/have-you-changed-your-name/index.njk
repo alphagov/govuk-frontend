@@ -1,3 +1,15 @@
+---
+scenario: >-
+
+  As part of an online service, you are asked if you have changed your name.
+
+
+  Things to try:
+
+  1. Intentionally avoid answering the question before continuing to the next
+     page.
+---
+
 {# This example is based of the "Radios" example: https://design-system.service.gov.uk/components/radios #}
 {% extends "_generic.njk" %}
 
@@ -7,7 +19,7 @@
 {% from "button/macro.njk" import govukButton %}
 
 {% set pageTitle = "Have you changed your name?" %}
-{% block pageTitle %}{{ "Error: " if errors }}GOV.UK - {{ pageTitle }}{% endblock %}
+{% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -43,7 +55,6 @@
       },
       items: [
         {
-          id: "changed-name",
           value: "yes",
           text: "Yes"
         },

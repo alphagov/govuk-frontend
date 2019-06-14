@@ -1,14 +1,8 @@
 /* eslint-env jest */
 
-const util = require('util')
-
-const configPaths = require('../../config/paths.json')
-
-const sass = require('node-sass')
-const sassRender = util.promisify(sass.render)
+const { renderSass } = require('../../lib/jest-helpers')
 
 const sassConfig = {
-  includePaths: [ configPaths.src ],
   outputStyle: 'compressed'
 }
 
@@ -32,7 +26,7 @@ describe('@mixin govuk-media-query', () => {
         }
       }`
 
-    const results = await sassRender({ data: sass, ...sassConfig })
+    const results = await renderSass({ data: sass, ...sassConfig })
 
     expect(results.css.toString().trim()).toBe('@media (min-width: 20em){.foo{color:red}}')
   })
@@ -48,7 +42,7 @@ describe('@mixin govuk-media-query', () => {
         }
       }`
 
-    const results = await sassRender({ data: sass, ...sassConfig })
+    const results = await renderSass({ data: sass, ...sassConfig })
 
     expect(results.css.toString().trim()).toBe('@media (min-width: 20em){.foo{color:red}}')
   })
@@ -63,7 +57,7 @@ describe('@mixin govuk-media-query', () => {
         }
       }`
 
-    const results = await sassRender({ data: sass, ...sassConfig })
+    const results = await renderSass({ data: sass, ...sassConfig })
 
     expect(results.css.toString().trim()).toBe('@media (max-width: 20em){.foo{color:red}}')
   })
@@ -79,7 +73,7 @@ describe('@mixin govuk-media-query', () => {
         }
       }`
 
-    const results = await sassRender({ data: sass, ...sassConfig })
+    const results = await renderSass({ data: sass, ...sassConfig })
 
     expect(results.css.toString().trim()).toBe('@media (max-width: 61.24em){.foo{color:red}}')
   })
@@ -94,7 +88,7 @@ describe('@mixin govuk-media-query', () => {
         }
       }`
 
-    const results = await sassRender({ data: sass, ...sassConfig })
+    const results = await renderSass({ data: sass, ...sassConfig })
 
     expect(results.css.toString().trim()).toBe('@media (min-width: 20em) and (max-width: 40em){.foo{color:red}}')
   })
@@ -110,7 +104,7 @@ describe('@mixin govuk-media-query', () => {
         }
       }`
 
-    const results = await sassRender({ data: sass, ...sassConfig })
+    const results = await renderSass({ data: sass, ...sassConfig })
 
     expect(results.css.toString().trim()).toBe('@media (min-width: 20em) and (max-width: 46.24em){.foo{color:red}}')
   })
@@ -125,7 +119,7 @@ describe('@mixin govuk-media-query', () => {
         }
       }`
 
-    const results = await sassRender({ data: sass, ...sassConfig })
+    const results = await renderSass({ data: sass, ...sassConfig })
 
     expect(results.css.toString().trim()).toBe('@media (max-width: 40em) and (orientation: landscape){.foo{color:red}}')
   })
@@ -140,7 +134,7 @@ describe('@mixin govuk-media-query', () => {
         }
       }`
 
-    const results = await sassRender({ data: sass, ...sassConfig })
+    const results = await renderSass({ data: sass, ...sassConfig })
 
     expect(results.css.toString().trim()).toBe('@media aural and (max-width: 40em){.foo{color:red}}')
   })
@@ -168,7 +162,7 @@ describe('@mixin govuk-media-query', () => {
           }
         }`
 
-      const results = await sassRender({ data: sass, ...sassConfig })
+      const results = await renderSass({ data: sass, ...sassConfig })
 
       expect(results.css.toString().trim()).toBe('.foo{color:forestgreen}')
     })
@@ -187,7 +181,7 @@ describe('@mixin govuk-media-query', () => {
           }
         }`
 
-      const results = await sassRender({ data: sass, ...sassConfig })
+      const results = await renderSass({ data: sass, ...sassConfig })
 
       expect(results.css.toString().trim()).toBe('.foo{color:blue}')
     })

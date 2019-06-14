@@ -1,6 +1,6 @@
 {% from "../textarea/macro.njk" import govukTextarea %}
 
-<div class="govuk-character-count" data-module="character-count"
+<div class="govuk-character-count" data-module="govuk-character-count"
 {%- if params.maxlength %} data-maxlength="{{ params.maxlength }}"{% endif %}
 {%- if params.threshold %} data-threshold="{{ params.threshold }}"{% endif %}
 {%- if params.maxwords %} data-maxwords="{{ params.maxwords }}"{% endif %}>
@@ -10,7 +10,7 @@
     describedBy: params.id + '-info',
     rows: params.rows,
     value: params.value,
-    classes: 'js-character-count ' + (' govuk-textarea--error' if params.errorMessage) + (params.classes if params.classes),
+    classes: 'govuk-js-character-count ' + (' govuk-textarea--error' if params.errorMessage) + (params.classes if params.classes),
     label: {
       html: params.label.html,
       text: params.label.text,

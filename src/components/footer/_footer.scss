@@ -7,11 +7,24 @@
 @include govuk-exports("govuk/component/footer") {
 
   $govuk-footer-background: $govuk-canvas-background-colour;
-  $govuk-footer-border-top: #a1acb2;
-  $govuk-footer-border: govuk-colour("grey-2");
-  $govuk-footer-text: #454a4c;
+  $govuk-footer-border: $govuk-border-colour;
+  // This variable can be removed entirely once the legacy palette goes away,
+  // as it'll just be the same as $govuk-footer-border.
+  $govuk-footer-border-top: $govuk-border-colour;
+  $govuk-footer-text: $govuk-text-colour;
   $govuk-footer-link: $govuk-footer-text;
-  $govuk-footer-link-hover: #171819;
+  $govuk-footer-link-hover: false;
+
+  @if ($govuk-use-legacy-palette) {
+    // sass-lint:disable no-color-literals
+    $govuk-footer-border-top: #a1acb2;
+    $govuk-footer-border: govuk-colour("grey-2");
+    $govuk-footer-text: #454a4c;
+    $govuk-footer-link: $govuk-footer-text;
+
+    // Only used with the legacy palette
+    $govuk-footer-link-hover: #171819;
+  }
 
   // Based on the govuk-crest-2x.png image dimensions.
   $govuk-footer-crest-image-width-2x: 250px;
@@ -31,22 +44,27 @@
   }
 
   .govuk-footer__link {
-    @include govuk-focusable-fill;
+    @if ($govuk-use-legacy-palette) {
+      &:link,
+      &:visited {
+        color: $govuk-footer-link;
+      }
 
-    &:link,
-    &:visited {
-      color: $govuk-footer-link;
+      &:hover,
+      &:active {
+        color: $govuk-footer-link-hover;
+      }
+    } @else {
+      &:link,
+      &:visited,
+      &:hover,
+      &:active {
+        color: $govuk-footer-link;
+      }
     }
 
-    &:hover,
-    &:active {
-      color: $govuk-footer-link-hover;
-    }
-
-    // When focussed, the text colour needs to be darker to ensure that colour
-    // contrast is still acceptable
     &:focus {
-      color: $govuk-focus-text-colour;
+      @include govuk-focused-text;
     }
 
     // alphagov/govuk_template includes a specific a:link:focus selector
@@ -55,6 +73,19 @@
     @include govuk-compatibility(govuk_template) {
       &:link:focus {
         @include govuk-text-colour;
+      }
+    }
+  }
+
+  // Internet Explorer 8 does not support `:not()` selectors, so don't conditionally show underlines.
+  @include govuk-not-ie8 {
+    .govuk-footer__inline-list .govuk-footer__link,
+    .govuk-footer__list .govuk-footer__link {
+      text-decoration: none;
+
+      &:hover:not(:focus),
+      &:active:not(:focus) {
+        text-decoration: underline;
       }
     }
   }
