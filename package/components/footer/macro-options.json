@@ -6,6 +6,11 @@
         "description": "Object containing options for the meta navigation.",
         "params": [
             {
+                "name": "visuallyHiddenTitle",
+                "type": "string",
+                "description": "Title for a meta item section, which defaults to Support links"
+            },
+            {
                 "name": "html",
                 "type": "string",
                 "description": "HTML to add to the meta section of the footer, which will appear below any links specified using meta.items."
