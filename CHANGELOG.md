@@ -5,6 +5,8 @@
 See the [versioning documentation for how to update this
 changelog](./docs/contributing/versioning.md#updating-changelog).
 
+## 2.13.0
+
 🆕 New features
 
 - You can now override the visually hidden 'Support links' text in the footer by

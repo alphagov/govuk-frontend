@@ -133,7 +133,6 @@
   .govuk-button[disabled="disabled"],
   .govuk-button[disabled] {
     opacity: (.5);
-    background: $govuk-button-colour;
 
     &:hover {
       background-color: $govuk-button-colour;
@@ -179,6 +178,10 @@
     &:hover,
     &:focus {
       background-color: $govuk-secondary-button-hover-colour;
+
+      &[disabled] {
+        background-color: $govuk-secondary-button-colour;
+      }
     }
   }
 
@@ -208,6 +211,10 @@
     &:hover,
     &:focus {
       background-color: $govuk-warning-button-hover-colour;
+
+      &[disabled] {
+        background-color: $govuk-warning-button-colour;
+      }
     }
   }
 
