@@ -1,9 +1,9 @@
 /* eslint-env jest */
 
-const configPaths = require('../config/paths.json')
+const configPaths = require('../../config/paths.json')
 const PORT = configPaths.ports.test
 
-const { renderSass } = require('../lib/jest-helpers')
+const { renderSass } = require('../../lib/jest-helpers')
 
 let baseUrl = 'http://localhost:' + PORT
 

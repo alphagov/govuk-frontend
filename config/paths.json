@@ -11,8 +11,8 @@
   "package": "package/",
   "public": "public/",
   "sassdoc": "sassdoc/",
-  "src": "src/",
-    "components": "src/components/",
+  "src": "src/govuk/",
+    "components": "src/govuk/components/",
   "ports": {
     "app": 3000,
     "test": 8888

@@ -1,8 +1,8 @@
 /* eslint-env jest */
 
-const { renderSass } = require('../../lib/jest-helpers')
+const { renderSass } = require('../../../lib/jest-helpers')
 
-const configPaths = require('../../config/paths.json')
+const configPaths = require('../../../config/paths.json')
 
 const sassConfig = {
   includePaths: [ configPaths.src, 'node_modules/' ],

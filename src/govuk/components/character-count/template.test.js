@@ -5,7 +5,7 @@
 
 const { axe } = require('jest-axe')
 
-const { render, getExamples, htmlWithClassName } = require('../../../lib/jest-helpers')
+const { render, getExamples, htmlWithClassName } = require('../../../../lib/jest-helpers')
 
 const examples = getExamples('textarea')
 

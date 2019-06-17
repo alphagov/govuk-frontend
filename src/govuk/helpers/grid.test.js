@@ -2,7 +2,7 @@
 
 const outdent = require('outdent')
 
-const { renderSass } = require('../../lib/jest-helpers')
+const { renderSass } = require('../../../lib/jest-helpers')
 
 const sassConfig = {
   outputStyle: 'nested'

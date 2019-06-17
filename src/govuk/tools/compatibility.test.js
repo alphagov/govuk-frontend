@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-const { renderSass } = require('../../lib/jest-helpers')
+const { renderSass } = require('../../../lib/jest-helpers')
 
 const sassConfig = {
   outputStyle: 'compressed'
