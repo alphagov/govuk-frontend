@@ -25,5 +25,21 @@
 
     GOVUK.stickAtTopWhenScrolling.init()
     GOVUK.shimLinksWithButtonRole.init()
+
+    // Copied from https://github.com/alphagov/govuk_elements/blob/ef0baed92fabbbfdc0f6ea09d7dd76bffa994bf8/assets/javascripts/application.js#L22
+    $(window).load(function () {
+      // If there is an error summary, set focus to the summary
+      if ($('.error-summary').length) {
+        $('.error-summary').focus()
+        $('.error-summary a').click(function (e) {
+          e.preventDefault()
+          var href = $(this).attr('href')
+          $(href).focus()
+        })
+      } else {
+        // Otherwise, set focus to the field with the error
+        $('.error input:first').focus()
+      }
+    })
   })()
 </script>

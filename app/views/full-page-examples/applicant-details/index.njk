@@ -135,6 +135,7 @@ notes: >-
 {% endblock %}
 
 {% block body_end %}
+  {% include "partials/legacyJavaScript.njk" %}
   <script src="/public/all.js"></script>
   <script>window.GOVUKFrontend.initAll()</script>
 {% endblock %}
