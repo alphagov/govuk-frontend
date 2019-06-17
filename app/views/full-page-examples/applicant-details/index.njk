@@ -75,7 +75,7 @@ notes: >-
                Enter your full name
              </span>
             {% endif %}
-            <input class="form-control {%- if errors["full-name"] %} form-control-error {% endif %}" id="full-name" type="text" name="full-name" value="{{ values['full-name'] }}">
+            <input class="form-control {%- if errors["full-name"] %} form-control-error {% endif %}" id="full-name" type="text" name="full-name" value="{{ values['full-name'] }}" autocomplete="name">
           </div>
 
           {% set dateInputDayClass = "govuk-input--width-2" %}
