@@ -33,6 +33,10 @@ We recommend [installing GOV.UK Frontend using node package manager
 You can also [download the compiled and minified assets (CSS, JavaScript) from
 GitHub](docs/installation/installing-from-dist.md).
 
+## Getting updates
+
+See [updating with npm](https://github.com/alphagov/govuk-frontend/blob/master/docs/installation/updating-with-npm.md).
+
 ## Browser support
 
 GOV.UK Frontend will allow you to build services that comply with the [guidance

@@ -71,17 +71,7 @@ In order to import GOV.UK Frontend images and fonts to your project, you should 
 
 ## Getting updates
 
-To check whether you have the latest version of GOV.UK Frontend, run:
-
-```
-npm outdated govuk-frontend
-```
-
-To update to the latest version, run:
-
-```
-npm update govuk-frontend
-```
+See [updating with npm](https://github.com/alphagov/govuk-frontend/blob/master/docs/installation/updating-with-npm.md).
 
 ## Licence
 
