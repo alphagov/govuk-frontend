@@ -142,6 +142,8 @@ gulp.task('scss:compile', () => {
 gulp.task('js:compile', () => {
   // for dist/ folder we only want compiled 'all.js' file
   let srcFiles = isDist ? configPaths.src + 'all.js' : configPaths.src + '**/*.js'
+  let destination = isDist ? taskArguments.destination : taskArguments.destination + '/govuk/'
+
   return gulp.src([
     srcFiles,
     '!' + configPaths.src + '**/*.test.js'
@@ -164,5 +166,5 @@ gulp.task('js:compile', () => {
       })
     ))
     .pipe(eol())
-    .pipe(gulp.dest(taskArguments.destination + '/'))
+    .pipe(gulp.dest(destination))
 })

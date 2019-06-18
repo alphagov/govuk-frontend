@@ -60,5 +60,5 @@ gulp.task('copy-files', () => {
       path.extname = '.json'
     }))
     .pipe(yamlFiles.restore)
-    .pipe(gulp.dest(taskArguments.destination + '/'))
+    .pipe(gulp.dest(taskArguments.destination + '/govuk/'))
 })
