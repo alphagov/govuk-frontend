@@ -1,0 +1,20 @@
+{% extends "govuk_template_jinja/views/layouts/govuk_template.html" %}
+
+{% set asset_path = "/vendor/govuk_template/" %}
+{% set homepage_url = "/" %}
+{% block page_title %}{{ "Error: " if errors }}{{ page_title }} - GOV.UK{% endblock %}
+
+{% block head %}
+  <!--[if !IE 8]><!-->
+    <link rel="stylesheet" href="/public/app-legacy.css">
+  <!--<![endif]-->
+  <!--[if IE 8]>
+    <link rel="stylesheet" href="/public/app-legacy-ie8.css">
+  <![endif]-->
+{% endblock %}
+
+{% block body_end %}
+  {% include "partials/legacyJavaScript.njk" %}
+  <script src="/public/all.js"></script>
+  <script>window.GOVUKFrontend.initAll()</script>
+{% endblock %}

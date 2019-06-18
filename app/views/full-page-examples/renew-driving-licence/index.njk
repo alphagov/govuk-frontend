@@ -8,25 +8,13 @@ notes: >-
 
 {# This example is based on the "Renew driving licence"
 example: https://www.gov.uk/renew-driving-licence #}
-{% extends "govuk_template_jinja/views/layouts/govuk_template.html" %}
+{% extends "legacy.njk" %}
 
 {% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
 {% from "inset-text/macro.njk" import govukInsetText %}
 {% from "tabs/macro.njk" import govukTabs %}
 
-{% set asset_path = "/vendor/govuk_template/" %}
-{% set homepage_url = "/" %}
-{% set pageTitle = "Renew your driving licence" %}
-{% block page_title %}{{ pageTitle }} - GOV.UK{% endblock %}
-
-{% block head %}
-  <!--[if !IE 8]><!-->
-    <link rel="stylesheet" href="/public/app-legacy.css">
-  <!--<![endif]-->
-  <!--[if IE 8]>
-    <link rel="stylesheet" href="/public/app-legacy-ie8.css">
-  <![endif]-->
-{% endblock %}
+{% set page_title = "Renew your driving licence" %}
 
 {% block content %}
   <main id="content" role="main">
@@ -50,7 +38,7 @@ example: https://www.gov.uk/renew-driving-licence #}
         }) }}
 
         <h1 class="heading-xlarge">
-         {{ pageTitle }}
+         {{ page_title }}
         </h1>
 
         <p>Renew your driving licence online with DVLA if you have a valid UK passport.</p>
@@ -156,10 +144,4 @@ example: https://www.gov.uk/renew-driving-licence #}
     </div>
   </main>
 
-{% endblock %}
-
-{% block body_end %}
-  {% include "partials/legacyJavaScript.njk" %}
-  <script src="/public/all.js"></script>
-  <script>window.GOVUKFrontend.initAll()</script>
 {% endblock %}

@@ -8,25 +8,13 @@ notes: >-
   known accessibility issues.
 ---
 
-{% extends "govuk_template_jinja/views/layouts/govuk_template.html" %}
+{% extends "legacy.njk" %}
 
 {% from "back-link/macro.njk" import govukBackLink %}
 {% from "date-input/macro.njk" import govukDateInput %}
 {% from "button/macro.njk" import govukButton %}
 
-{% set asset_path = "/vendor/govuk_template/" %}
-{% set homepage_url = "/" %}
 {% set page_title = "Applicant details" %}
-{% block page_title %}{{ "Error: " if errors }}{{ page_title }} - GOV.UK{% endblock %}
-
-{% block head %}
-  <!--[if !IE 8]><!-->
-    <link rel="stylesheet" href="/public/app-legacy.css">
-  <!--<![endif]-->
-  <!--[if IE 8]>
-    <link rel="stylesheet" href="/public/app-legacy-ie8.css">
-  <![endif]-->
-{% endblock %}
 
 {% block content %}
   <main id="content" role="main">
@@ -132,10 +120,4 @@ notes: >-
       </div>
     </div>
   </main>
-{% endblock %}
-
-{% block body_end %}
-  {% include "partials/legacyJavaScript.njk" %}
-  <script src="/public/all.js"></script>
-  <script>window.GOVUKFrontend.initAll()</script>
 {% endblock %}
