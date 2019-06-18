@@ -73,7 +73,7 @@
     "recursive-readdir": "^2.2.2",
     "request": "^2.88.0",
     "sass-color-helpers": "^2.1.1",
-    "sassdoc": "^2.6.0",
+    "sassdoc": "^2.7.0",
     "shuffle-seed": "^1.1.6",
     "standard": "^12.0.1",
     "vinyl-paths": "^2.1.0",
