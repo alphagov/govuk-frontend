@@ -1,27 +1,15 @@
-{% extends "govuk_template_jinja/views/layouts/govuk_template.html" %}
+{% extends "legacy.njk" %}
+
+{% set page_title = "Applicant details submitted" %}
 
 {% from "panel/macro.njk" import govukPanel %}
-
-{% set asset_path = "/vendor/govuk_template/" %}
-{% set homepage_url = "/" %}
-{% set pageTitle = "Applicant details submitted" %}
-{% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
-
-{% block head %}
-  <!--[if !IE 8]><!-->
-    <link rel="stylesheet" href="/public/app-legacy.css">
-  <!--<![endif]-->
-  <!--[if IE 8]>
-    <link rel="stylesheet" href="/public/app-legacy-ie8.css">
-  <![endif]-->
-{% endblock %}
 
 {% block content %}
   <main id="content" role="main">
     <div class="grid-row">
       <div class="column-two-thirds">
         {{ govukPanel({
-          titleText: pageTitle,
+          titleText: page_title,
           classes: "govuk-!-margin-top-8"
         }) }}
       </div>
