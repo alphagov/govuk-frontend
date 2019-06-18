@@ -297,7 +297,7 @@ examples:
               text: Change
               visuallyHiddenText: date of birth
         - key:
-            text: Contact information
+            text: Address
           value:
             html: |
               72 Guild Street<br>
@@ -307,7 +307,7 @@ examples:
             items:
               - href: '#'
                 text: Change
-                visuallyHiddenText: contact information
+                visuallyHiddenText: address
         - key:
             text: Contact details
           value:
