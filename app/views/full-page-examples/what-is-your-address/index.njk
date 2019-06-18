@@ -54,7 +54,8 @@ scenario: >-
             id: "address-line-1",
             name: "address-line-1",
             value: values["address-line-1"],
-            errorMessage: errors["address-line-1"]
+            errorMessage: errors["address-line-1"],
+            autocomplete: "address-line1"
           }) }}
 
           {{ govukInput({
@@ -63,7 +64,8 @@ scenario: >-
             },
             id: "address-line-2",
             name: "address-line-2",
-            value: values["address-line-2"]
+            value: values["address-line-2"],
+            autocomplete: "address-line2"
           }) }}
 
           {{ govukInput({
@@ -96,7 +98,8 @@ scenario: >-
             id: "address-postcode",
             name: "address-postcode",
             value: values["address-postcode"],
-            errorMessage: errors["address-postcode"]
+            errorMessage: errors["address-postcode"],
+            autocomplete: "postal-code"
           }) }}
 
         {% endcall %}
