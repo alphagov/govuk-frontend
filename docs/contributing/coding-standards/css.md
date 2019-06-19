@@ -466,4 +466,4 @@ We document SCSS using [SassDoc](http://sassdoc.com/file-level-annotations/). Th
 
 The syntax is used to generate a [SassDoc application](http://govuk-frontend-review.herokuapp.com/docs/) that documents SCSS in a readable format.
 
-See [colour.scss](../../../src/helpers/_colour.scss) for an example of SassDoc syntax.
+See [colour.scss](../../../src/govuk/helpers/_colour.scss) for an example of SassDoc syntax.

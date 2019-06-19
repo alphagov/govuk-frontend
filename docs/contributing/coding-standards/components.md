@@ -1,6 +1,6 @@
 # Components
 
-Find components in `src/components`.
+Find components in `src/govuk/components`.
 
 Components must use the `.govuk-` namespace.
 
@@ -19,10 +19,6 @@ Components must:
 ### Component folder structure and naming
 
 Component folder and files should be singular, except in cases where they are more commonly used in groups, for example, radios, breadcrumbs and checkboxes.
-
-An example component exists in `src/components/component-example`.
-
-Use this as the basis for creating new components.
 
 The folder structure should be:
 

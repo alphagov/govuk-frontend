@@ -75,7 +75,7 @@ This task will:
 **`gulp compile:components`**
 
   This task will:
-  - compile all `src/components/componentName/componentName.njk` files to HTML files
+  - compile all `src/govuk/components/componentName/componentName.njk` files to HTML files
 
 **`gulp lint`**
 
