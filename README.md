@@ -33,10 +33,6 @@ We recommend [installing GOV.UK Frontend using node package manager
 You can also [download the compiled and minified assets (CSS, JavaScript) from
 GitHub](docs/installation/installing-from-dist.md).
 
-## Getting updates
-
-See [updating with npm](https://github.com/alphagov/govuk-frontend/blob/master/docs/installation/updating-with-npm.md).
-
 ## Browser support
 
 GOV.UK Frontend will allow you to build services that comply with the [guidance
@@ -103,6 +99,15 @@ https://support.microsoft.com/en-gb/help/13862/windows-use-high-contrast-mode
 
 [how-users-change-colours-on-websites]:
 https://accessibility.blog.gov.uk/2017/03/27/how-users-change-colours-on-websites/
+
+## Getting updates
+
+To be notified when there’s a new release, you can either:
+
+- [watch the govuk-frontend Github repository](https://help.github.com/en/articles/watching-and-unwatching-repositories)
+- subscribe to the [#govuk-design-system channel on cross-government Slack](https://ukgovernmentdigital.slack.com/app_redirect?channel=govuk-design-system)
+
+Find out how to [update with npm](https://github.com/alphagov/govuk-frontend/blob/master/docs/installation/updating-with-npm.md).
 
 ## Licence
 
