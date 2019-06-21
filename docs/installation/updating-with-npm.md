@@ -1,7 +1,9 @@
 # Updating GOV.UK Frontend using node package manager (NPM)
 
 You can update with node package manager (NPM) if you [originally installed
-GOV.UK Frontend with NPM](https://github.com/alphagov/govuk-frontend/blob/master/docs/installation/installing-with-npm.md#requirements).
+GOV.UK Frontend with NPM](https://
+
+.com/alphagov/govuk-frontend/blob/master/docs/installation/installing-with-npm.md#requirements).
 
 ## Find out which version you're using
 
@@ -15,13 +17,13 @@ If you do not have command line access, you can see the version number in the
 `package.json` file in the root of your project directory. For example:
 
 ```json
-'gov-uk frontend': ‘2.11.0’
+'govuk-frontend': ‘2.11.0’
 ````
 
 ## Update
 
 You can check the [release
-notes](https://github.com/alphagov/frontend/releases) in the GOV.UK Frontend Github repository to find out the latest version of GOV.UK Frontend.
+notes](https://github.com/alphagov/frontend/releases) in the GOV.UK Frontend GitHub repository to find out the latest version of GOV.UK Frontend.
 
 You can update to any version.
 
