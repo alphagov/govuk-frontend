@@ -25,7 +25,7 @@ notes](https://github.com/alphagov/frontend/releases) in the GOV.UK Frontend Git
 
 You can update to any version.
 
-You'll need to make code changes to make sure GOV.UK Frontend keeps working in your project, if you’re updating either:
+You may need to make code changes to make sure GOV.UK Frontend keeps working in your project, if you’re updating either:
 
 - to a major version - for example you’re updating to 2.0.0
 - past a major version - for example you’re updating from 1.2.0 to 2.3.0
