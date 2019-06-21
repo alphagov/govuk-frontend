@@ -68,7 +68,7 @@ module.exports = (options) => {
   app.use('/vendor/govuk_frontend_toolkit/', express.static('node_modules/govuk_frontend_toolkit/javascripts/govuk/'))
   app.use('/vendor/jquery/', express.static('node_modules/jquery/dist'))
 
-  app.use('/assets', express.static(path.join(configPaths.src, 'assets')))
+  app.use('/govuk/assets', express.static(path.join(configPaths.src, 'assets')))
 
   // Turn form POSTs into data that can be used for validation.
   app.use(bodyParser.urlencoded({ extended: true }))
