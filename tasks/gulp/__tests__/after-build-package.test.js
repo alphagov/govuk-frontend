@@ -39,13 +39,15 @@ describe('package/', () => {
         '.DS_Store',
         '*.test.js',
         '*.yaml',
-        '*.snap'
+        '*.snap',
+        '*/govuk/README.md'
       ]
 
       const additionalFilesNotInSrc = [
         'package.json',
         'govuk-prototype-kit.config.json',
-        '**/macro-options.json'
+        '**/macro-options.json',
+        'README.md'
       ]
 
       return recursive(configPaths.src, filesToIgnore).then(
@@ -92,7 +94,7 @@ describe('package/', () => {
 
   describe('all.scss', () => {
     it('should compile without throwing an exception', async () => {
-      const allScssFile = path.join(configPaths.package, 'all.scss')
+      const allScssFile = path.join(configPaths.package, 'govuk', 'all.scss')
       await renderSass({ file: allScssFile })
     })
   })
@@ -101,7 +103,7 @@ describe('package/', () => {
     const componentNames = lib.allComponents.slice()
 
     it.each(componentNames)(`'%s' should have macro-options.json that contains JSON`, (name) => {
-      const filePath = path.join(configPaths.package, 'components', name, 'macro-options.json')
+      const filePath = path.join(configPaths.package, 'govuk', 'components', name, 'macro-options.json')
       return readFile(filePath, 'utf8')
         .then((data) => {
           var parsedData = JSON.parse(data)
