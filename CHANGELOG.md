@@ -358,6 +358,11 @@ changelog](./docs/contributing/versioning.md#updating-changelog).
 
   ([PR #1443](https://github.com/alphagov/govuk-frontend/pull/1443))
 
+- Two unused images (`assets/images/icon-arrow-left.png` and
+  `assets/images/icon-important.png`) have been removed.
+
+  ([PR #1473](https://github.com/alphagov/govuk-frontend/pull/1473))
+
 🆕 New features:
 
 - IE 8 now falls back to Arial rather than Transport
