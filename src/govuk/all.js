@@ -1,9 +1,10 @@
 import { nodeListForEach } from './common'
 import Accordion from './components/accordion/accordion'
 import Button from './components/button/button'
-import Details from './components/details/details'
 import CharacterCount from './components/character-count/character-count'
 import Checkboxes from './components/checkboxes/checkboxes'
+import DateInput from './components/date-input/date-input'
+import Details from './components/details/details'
 import ErrorSummary from './components/error-summary/error-summary'
 import Header from './components/header/header'
 import Radios from './components/radios/radios'
@@ -27,11 +28,6 @@ function initAll (options) {
     new Accordion($accordion).init()
   })
 
-  var $details = scope.querySelectorAll('[data-module="govuk-details"]')
-  nodeListForEach($details, function ($detail) {
-    new Details($detail).init()
-  })
-
   var $characterCounts = scope.querySelectorAll('[data-module="govuk-character-count"]')
   nodeListForEach($characterCounts, function ($characterCount) {
     new CharacterCount($characterCount).init()
@@ -40,6 +36,18 @@ function initAll (options) {
   var $checkboxes = scope.querySelectorAll('[data-module="govuk-checkboxes"]')
   nodeListForEach($checkboxes, function ($checkbox) {
     new Checkboxes($checkbox).init()
+  })
+
+  nodeListForEach(
+    scope.querySelectorAll('[data-module="govuk-date-input"]'),
+    function ($input) {
+      new DateInput($input).init()
+    }
+  )
+
+  var $details = scope.querySelectorAll('[data-module="govuk-details"]')
+  nodeListForEach($details, function ($detail) {
+    new Details($detail).init()
   })
 
   // Find first error summary module to enhance.
