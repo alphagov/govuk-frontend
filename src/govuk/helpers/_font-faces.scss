@@ -21,6 +21,24 @@
 
       @font-face {
         font-family: "GDS Transport";
+        src: govuk-font-url("light-v2.5.woff2") format("woff2"),
+             govuk-font-url("light-v2.5.woff") format("woff");
+        font-weight: normal;
+        font-style: normal;
+        font-display: fallback;
+      }
+
+      @font-face {
+        font-family: "GDS Transport";
+        src: govuk-font-url("bold-v2.5.woff2") format("woff2"),
+             govuk-font-url("bold-v2.5.woff") format("woff");
+        font-weight: bold;
+        font-style: normal;
+        font-display: fallback;
+      }
+
+      @font-face {
+        font-family: "GDS Transport Old";
         src: govuk-font-url("light-68f0c84f0e-v2.woff2") format("woff2"),
              govuk-font-url("light-222368e53d-v2.woff") format("woff");
         font-weight: normal;
@@ -29,7 +47,7 @@
       }
 
       @font-face {
-        font-family: "GDS Transport";
+        font-family: "GDS Transport Old";
         src: govuk-font-url("bold-9561e2d007-v2.woff2") format("woff2"),
              govuk-font-url("bold-5d3836b441-v2.woff") format("woff");
         font-weight: bold;

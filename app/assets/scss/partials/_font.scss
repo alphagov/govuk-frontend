@@ -1,0 +1,23 @@
+.font-debug {
+  @include govuk-font($size: 48);
+  @include govuk-clearfix;
+  background: govuk-colour(yellow);
+  border: 2px solid govuk-colour(black);
+  padding: 10px;
+}
+
+.font-debug--bold {
+  @include govuk-font($size: false, $weight: bold);
+}
+
+.font-debug__font {
+  float: left;
+}
+
+.font-debug__font--arial {
+  font-family: 'Arial';
+}
+
+.font-debug__font--old {
+  font-family: 'GDS Transport Old';
+}
