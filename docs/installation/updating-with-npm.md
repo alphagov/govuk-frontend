@@ -5,7 +5,7 @@ GOV.UK Frontend with npm](https://github.com/alphagov/govuk-frontend/blob/master
 
 ## Find out which version you're using
 
-You can find out which version of GOV.UK Frontend your project is using with:
+You can find out which version of GOV.UK Frontend your project is using by running:
 
 ```shell
 npm list govuk-frontend
