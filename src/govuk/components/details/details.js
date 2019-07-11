@@ -89,7 +89,9 @@ Details.prototype.init = function () {
   $summary.setAttribute('aria-controls', $content.id)
 
   // Set tabIndex so the summary is keyboard accessible for non-native elements
-  // http://www.saliences.com/browserBugs/tabIndex.html
+  //
+  // We have to use the camelcase `tabIndex` property as there is a bug in IE6/IE7 when we set the correct attribute lowercase:
+  // See http://web.archive.org/web/20170120194036/http://www.saliences.com/browserBugs/tabIndex.html for more information.
   if (!NATIVE_DETAILS) {
     $summary.tabIndex = 0
   }
