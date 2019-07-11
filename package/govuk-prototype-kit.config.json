@@ -1,15 +1,14 @@
 {
   "nunjucksPaths": [
-    "/",
-    "/components"
+    "/"
   ],
   "scripts": [
-    "/all.js"
+    "/govuk/all.js"
   ],
   "assets": [
-    "/assets"
+    "/govuk/assets"
   ],
   "sass": [
-    "/all.scss"
+    "/govuk/all.scss"
   ]
 }
