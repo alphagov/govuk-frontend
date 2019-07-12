@@ -100,7 +100,7 @@
           border: $border-width solid $govuk-border-colour;
           border-bottom: 0;
 
-          background-color: govuk-colour("white");
+          background-color: $govuk-body-background-colour;
           text-decoration: none;
         }
 
