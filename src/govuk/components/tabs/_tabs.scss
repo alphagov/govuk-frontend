@@ -5,8 +5,6 @@
 @include govuk-exports("govuk/component/tabs") {
 
   .govuk-tabs {
-    @include govuk-font($size: 19);
-    @include govuk-text-colour;
     @include govuk-responsive-margin(1, "top");
     @include govuk-responsive-margin(6, "bottom");
   }
@@ -35,7 +33,6 @@
 
   .govuk-tabs__tab {
     @include govuk-link-style-default;
-
     @include govuk-font($size: 19);
 
     display: inline-block;
@@ -76,6 +73,7 @@
       }
 
       .govuk-tabs__tab {
+        @include govuk-link-style-text;
         margin-right: govuk-spacing(1);
         margin-bottom: 0;
         padding-top: govuk-spacing(2);
@@ -84,7 +82,6 @@
         padding-left: govuk-spacing(4);
 
         float: left;
-        color: govuk-colour("black");
         background-color: govuk-colour("light-grey", $legacy: "grey-4");
         text-align: center;
         text-decoration: underline;
@@ -106,7 +103,6 @@
           border: $border-width solid $govuk-border-colour;
           border-bottom: 0;
 
-          color: $govuk-text-colour;
           background-color: govuk-colour("white");
           text-decoration: none;
         }

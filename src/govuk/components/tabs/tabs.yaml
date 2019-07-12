@@ -192,9 +192,9 @@ examples:
         panel:
           html: |
             <h2 class="govuk-heading-l">Tab 1</h2>
-            <p>Testing that when you click the anchor it moves to the anchor point successfully</p>
-            <a class="govuk-link" href="#anchor">Anchor</a>
-            <a id="anchor" tabIndex="0">Anchor Point</a>
+            <p class="govuk-body">Testing that when you click the anchor it moves to the anchor point successfully</p>
+            <p class="govuk-body"><a class="govuk-link" href="#anchor">Anchor</a></p>
+            <p class="govuk-body"><a id="anchor" tabIndex="0">Anchor Point</a></p>
       - label: Tab 2
         id: tab-2
         panel:
