@@ -46,13 +46,6 @@
     &:focus {
       @include govuk-focused-text;
     }
-
-    // IE8 doesn't support `box-shadow` so add an outline to indicate focus
-    @include govuk-if-ie8 {
-      &:focus {
-        outline: $govuk-focus-width solid $govuk-focus-colour;
-      }
-    }
   }
 
   .govuk-tabs__panel {
@@ -96,13 +89,6 @@
         text-align: center;
         text-decoration: underline;
 
-        @include govuk-not-ie8 {
-          &:focus {
-            // Remove no-JS styles
-            box-shadow: none;
-          }
-        }
-
         &--selected {
           $border-width: 1px;
 
@@ -123,18 +109,28 @@
           color: $govuk-text-colour;
           background-color: govuk-colour("white");
           text-decoration: none;
+        }
 
-          &:focus {
+        &:focus {
 
-            &:after {
-              // Add "highlight" on focused link
-              $highlight-space: 13px;
-              content: "";
-              display: block;
-              margin-right: $highlight-space;
-              margin-left: $highlight-space;
-              box-shadow: 0 (-$highlight-space) 0 $highlight-space $govuk-focus-colour, 0 -9px 0 $highlight-space govuk-colour("black");
-            }
+          // IE8 doesn't support `box-shadow` so add an outline to indicate focus instead
+          @include govuk-if-ie8 {
+            outline: $govuk-focus-width solid $govuk-focus-colour;
+          }
+
+          // Move the focus style from the entire tab to the link
+          @include govuk-not-ie8 {
+            box-shadow: none;
+          }
+
+          &:after {
+            // Add "highlight" on focused link
+            $highlight-space: 13px;
+            content: "";
+            display: block;
+            margin-right: $highlight-space;
+            margin-left: $highlight-space;
+            box-shadow: 0 (-$highlight-space) 0 $highlight-space $govuk-focus-colour, 0 -9px 0 $highlight-space govuk-colour("black");
           }
         }
       }
