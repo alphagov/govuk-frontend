@@ -42,6 +42,8 @@
   {{ super() }}
 {% endblock %}
 
+{% set mainClasses = 'govuk-main-wrapper--auto-spacing' %}
+
 {% block bodyEnd %}
   {% if legacy %}
     {% include "partials/legacyJavaScript.njk" %}
