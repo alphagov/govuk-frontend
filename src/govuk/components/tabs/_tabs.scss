@@ -41,11 +41,6 @@
     display: inline-block;
     margin-bottom: govuk-spacing(2);
 
-    &[aria-current = "true"] {
-      color: govuk-colour("black");
-      text-decoration: none;
-    }
-
     // Focus state for mobile and when JavaScript is disabled
     // It is removed for JS-enabled desktop styles
     &:focus {
