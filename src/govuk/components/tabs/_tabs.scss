@@ -76,10 +76,7 @@
         @include govuk-link-style-text;
         margin-right: govuk-spacing(1);
         margin-bottom: 0;
-        padding-top: govuk-spacing(2);
-        padding-right: govuk-spacing(4);
-        padding-bottom: govuk-spacing(2);
-        padding-left: govuk-spacing(4);
+        padding: govuk-spacing(2) govuk-spacing(4);
 
         float: left;
         background-color: govuk-colour("light-grey", $legacy: "grey-4");
@@ -133,10 +130,7 @@
 
       .govuk-tabs__panel {
         @include govuk-responsive-margin(0, "bottom");
-        padding-top: govuk-spacing(6);
-        padding-right: govuk-spacing(4);
-        padding-bottom: govuk-spacing(6);
-        padding-left: govuk-spacing(4);
+        padding: govuk-spacing(6) govuk-spacing(4);
         border: 1px solid $govuk-border-colour;
         border-top: 0;
 
