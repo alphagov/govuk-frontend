@@ -22,11 +22,11 @@ params:
   params:
     - name: heading.text
       type: string
-      required: false
+      required: true
       description: The title of each section. If `heading.html` is supplied, this is ignored. This is used both as the title for each section, and as the button to open or close each section.
     - name: heading.html
       type: string
-      required: false
+      required: true
       description: The HTML content of the header for each section which is used both as the title for each section, and as the button to open or close each section.
     - name: summary.text
       type: string
