@@ -36,6 +36,10 @@ params:
       type: string
       required: false
       description: HTML content for summary line.
+    - name: content.text
+      type: string
+      required: true
+      description: The text content of each section, which is hidden when the section is closed. If `content.html` is supplied, this is ignored.
     - name: content.html
       type: string
       required: true
