@@ -57,7 +57,7 @@
   // spacing without the need for the `l` modifier, but it is available in
   // instances where there may be empty elements that would be difficult to
   // remove.
-  .govuk-main-wrapper:first-child,
+  .govuk-main-wrapper--auto-spacing:first-child,
   .govuk-main-wrapper--l {
     @include govuk-main-wrapper--l;
   }
