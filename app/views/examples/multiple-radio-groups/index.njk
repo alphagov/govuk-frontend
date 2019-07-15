@@ -1,0 +1,132 @@
+{% extends "layout.njk" %}
+
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "button/macro.njk" import govukButton %}
+{% from "radios/macro.njk" import govukRadios %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    "href": "/"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<h1 class="govuk-heading-xl">Multiple radio groups</h1>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-half">
+    <form method="get" novalidate>
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <h2 class="govuk-fieldset__heading">
+            What is your favourite colour?
+          </h2>
+        </legend>
+        <h3 class="govuk-heading-m">Warm colours</h3>
+        {{ govukRadios({
+          idPrefix: "warm",
+          name: "colour",
+          items: [
+            {
+              value: "red",
+              text: "Red",
+              conditional: {
+                html: '<p class="govuk-body">Nice choice, I like red too.</p>'
+              }
+            },
+            {
+              value: "orange",
+              text: "Orange",
+              conditional: {
+                html: '<p class="govuk-body">Nice choice, I like orange too.</p>'
+              }
+            }
+          ]
+        }) }}
+
+        <h3 class="govuk-heading-m">Cool colours</h3>
+        {{ govukRadios({
+          idPrefix: "cool",
+          name: "colour",
+          items: [
+            {
+              value: "blue",
+              text: "Blue",
+              conditional: {
+                html: '<p class="govuk-body">Nice choice, I like blue too.</p>'
+              }
+            },
+            {
+              value: "green",
+              text: "Green",
+              conditional: {
+                html: '<p class="govuk-body">Boo, you monster...</p>'
+              }
+            }
+          ]
+        }) }}
+      </fieldset>
+      {{ govukButton({
+        text: "Submit"
+      }) }}
+    </form>
+  </div>
+  <div class="govuk-grid-column-one-half">
+    <form method="get" novalidate>
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <h2 class="govuk-fieldset__heading">
+            What is your least favourite colour?
+          </h2>
+        </legend>
+        <h3 class="govuk-heading-m">Warm colours</h3>
+        {{ govukRadios({
+          idPrefix: "least-warm",
+          name: "colour",
+          items: [
+            {
+              value: "red",
+              text: "Red",
+              conditional: {
+                html: '<p class="govuk-body">Nice choice, I like red too.</p>'
+              }
+            },
+            {
+              value: "orange",
+              text: "Orange",
+              conditional: {
+                html: '<p class="govuk-body">Nice choice, I like orange too.</p>'
+              }
+            }
+          ]
+        }) }}
+
+        <h3 class="govuk-heading-m">Cool colours</h3>
+        {{ govukRadios({
+          idPrefix: "least-cool",
+          name: "colour",
+          items: [
+            {
+              value: "blue",
+              text: "Blue",
+              conditional: {
+                html: '<p class="govuk-body">Nice choice, I like blue too.</p>'
+              }
+            },
+            {
+              value: "green",
+              text: "Green",
+              conditional: {
+                html: '<p class="govuk-body">Boo, you monster...</p>'
+              }
+            }
+          ]
+        }) }}
+      </fieldset>
+      {{ govukButton({
+        text: "Submit"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}
