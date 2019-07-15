@@ -5,12 +5,11 @@ import { nodeListForEach } from '../../common'
 
 function Radios ($module) {
   this.$module = $module
-  this.$inputs = $module.querySelectorAll('input[type="radio"]')
 }
 
 Radios.prototype.init = function () {
   var $module = this.$module
-  var $inputs = this.$inputs
+  var $inputs = $module.querySelectorAll('input[type="radio"]')
 
   /**
   * Loop over all items with [data-controls]
@@ -40,14 +39,17 @@ Radios.prototype.setAttributes = function ($input) {
   var inputIsChecked = $input.checked
   $input.setAttribute('aria-expanded', inputIsChecked)
 
-  var $content = this.$module.querySelector('#' + $input.getAttribute('aria-controls'))
+  var $content = document.querySelector('#' + $input.getAttribute('aria-controls'))
   if ($content) {
     $content.classList.toggle('govuk-radios__conditional--hidden', !inputIsChecked)
   }
 }
 
-Radios.prototype.handleClick = function (event) {
-  nodeListForEach(this.$inputs, function ($input) {
+Radios.prototype.handleClick = function () {
+  // Because checking one radio can uncheck a radio in another $module,
+  // we need to call set attributes on all radios in the document
+  var $allInputs = document.querySelectorAll('input[type="radio"]')
+  nodeListForEach($allInputs, function ($input) {
     // If a radio with aria-controls, handle click
     var isRadio = $input.getAttribute('type') === 'radio'
     var hasAriaControls = $input.getAttribute('aria-controls')
