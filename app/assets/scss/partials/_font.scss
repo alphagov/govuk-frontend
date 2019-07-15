@@ -12,12 +12,26 @@
 
 .font-debug__font {
   float: left;
+  margin-right: 10px;
 }
 
 .font-debug__font--arial {
   font-family: 'Arial';
+  color: red;
 }
 
 .font-debug__font--old {
   font-family: 'GDS Transport Old';
+  color: blue;
+}
+
+
+.font-debug__font--revised {
+  font-family: 'GDS Transport 2';
+  color: purple;
+}
+
+.font-debug__font--v1 {
+  font-family: 'GDS Transport v1';
+  color: green;
 }

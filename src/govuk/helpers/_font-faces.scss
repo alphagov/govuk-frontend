@@ -20,6 +20,24 @@
       /*! Copyright (c) 2011 by Margaret Calvert & Henrik Kubel. All rights reserved. The font has been customised for exclusive use on gov.uk. This cut is not commercially available. */
 
       @font-face {
+        font-family: "GDS Transport 2";
+        src: govuk-font-url("GDS-Transport-Light-2019WEB.woff2") format("woff2"),
+             govuk-font-url("GDS-Transport-Light-2019WEB.woff") format("woff");
+        font-weight: normal;
+        font-style: normal;
+        font-display: fallback;
+      }
+
+      @font-face {
+        font-family: "GDS Transport 2";
+        src: govuk-font-url("GDS-Transport-Bold-2019WEB.woff2") format("woff2"),
+             govuk-font-url("GDS-Transport-Bold-2019WEB.woff") format("woff");
+        font-weight: bold;
+        font-style: normal;
+        font-display: fallback;
+      }
+
+      @font-face {
         font-family: "GDS Transport";
         src: govuk-font-url("light-v2.5.woff2") format("woff2"),
              govuk-font-url("light-v2.5.woff") format("woff");
@@ -50,6 +68,24 @@
         font-family: "GDS Transport Old";
         src: govuk-font-url("bold-9561e2d007-v2.woff2") format("woff2"),
              govuk-font-url("bold-5d3836b441-v2.woff") format("woff");
+        font-weight: bold;
+        font-style: normal;
+        font-display: fallback;
+      }
+
+      @font-face {
+        font-family: "GDS Transport v1";
+        src: govuk-font-url("light-f38ad40456-v1.woff2") format("woff2"),
+             govuk-font-url("light-458f8ea81c-v1.woff") format("woff");
+        font-weight: normal;
+        font-style: normal;
+        font-display: fallback;
+      }
+
+      @font-face {
+        font-family: "GDS Transport v1";
+        src: govuk-font-url("bold-a2452cb66f-v1.woff2") format("woff2"),
+             govuk-font-url("bold-f38c792ac2-v1.woff") format("woff");
         font-weight: bold;
         font-style: normal;
         font-display: fallback;
