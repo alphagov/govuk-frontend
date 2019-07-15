@@ -100,6 +100,15 @@ https://support.microsoft.com/en-gb/help/13862/windows-use-high-contrast-mode
 [how-users-change-colours-on-websites]:
 https://accessibility.blog.gov.uk/2017/03/27/how-users-change-colours-on-websites/
 
+## Getting updates
+
+To be notified when there’s a new release, you can either:
+
+- [watch the govuk-frontend Github repository](https://help.github.com/en/articles/watching-and-unwatching-repositories)
+- join the [#govuk-design-system channel on cross-government Slack](https://ukgovernmentdigital.slack.com/app_redirect?channel=govuk-design-system)
+
+Find out how to [update with npm](https://github.com/alphagov/govuk-frontend/blob/master/docs/installation/updating-with-npm.md).
+
 ## Licence
 
 Unless stated otherwise, the codebase is released under the MIT License. This
