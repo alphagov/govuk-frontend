@@ -22,6 +22,7 @@
   }
 
   .govuk-tabs__list-item {
+    @include govuk-font($size: 19);
     margin-left: govuk-spacing(5);
 
     &::before {
@@ -33,7 +34,6 @@
 
   .govuk-tabs__tab {
     @include govuk-link-style-default;
-    @include govuk-font($size: 19);
 
     display: inline-block;
     margin-bottom: govuk-spacing(2);
