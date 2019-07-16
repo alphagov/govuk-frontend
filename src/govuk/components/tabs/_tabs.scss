@@ -11,6 +11,7 @@
 
   .govuk-tabs__title {
     @include govuk-font($size: 19);
+    @include govuk-text-colour;
     margin-bottom: govuk-spacing(2);
   }
 
@@ -26,6 +27,7 @@
     margin-left: govuk-spacing(5);
 
     &::before {
+      @include govuk-text-colour;
       content: "\2014 "; // "— "
       margin-left: - govuk-spacing(5);
       padding-right: govuk-spacing(1);
