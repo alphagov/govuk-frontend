@@ -52,14 +52,11 @@ Radios.prototype.handleClick = function (event) {
   }
   // Because checking one radio can uncheck a radio in another $module,
   // we need to call set attributes on all radios in the document
-  var $allInputs = document.querySelectorAll('input[type="radio"]')
+  //
+  // We also only want radios which have aria-controls, as they support conditional reveals.
+  var $allInputs = document.querySelectorAll('input[type="radio"][aria-controls]')
   nodeListForEach($allInputs, function ($input) {
-    // If a radio with aria-controls, handle click
-    var isRadio = $input.getAttribute('type') === 'radio'
-    var hasAriaControls = $input.getAttribute('aria-controls')
-    if (isRadio && hasAriaControls) {
-      this.setAttributes($input)
-    }
+    this.setAttributes($input)
   }.bind(this))
 }
 
