@@ -46,19 +46,23 @@ Radios.prototype.setAttributes = function ($input) {
 }
 
 Radios.prototype.handleClick = function (event) {
+  var $clickedInput = event.target
   // We only want to handle clicks for radio inputs
-  if (event.target.type !== 'radio') {
+  if ($clickedInput.type !== 'radio') {
     return
   }
   // Because checking one radio can uncheck a radio in another $module,
-  // we need to call set attributes on all radios in the document
+  // we need to call set attributes on all radios in the same form, or document if they're not in a form.
   //
   // We also only want radios which have aria-controls, as they support conditional reveals.
   var $allInputs = document.querySelectorAll('input[type="radio"][aria-controls]')
-  var $clickedInput = event.target
   nodeListForEach($allInputs, function ($input) {
+    // Only inputs with the same form owner should change.
+    var hasSameFormOwner = ($input.form === $clickedInput.form)
+
     // In radios, only radios with the same name will affect each other.
-    if ($input.name === $clickedInput.name) {
+    var hasSameName = ($input.name === $clickedInput.name)
+    if (hasSameName && hasSameFormOwner) {
       this.setAttributes($input)
     }
   }.bind(this))

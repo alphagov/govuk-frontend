@@ -149,6 +149,28 @@
         text: "Submit"
       }) }}
     </form>
+
+    <h3 class="govuk-heading-m">A question that is not in a form</h3>
+    {{ govukRadios({
+      idPrefix: "question-not-in-form",
+      name: "question-not-in-form",
+      items: [
+        {
+          value: "yes",
+          text: "Yes",
+          conditional: {
+            html: '<p class="govuk-body">Fair enough.</p>'
+          }
+        },
+        {
+          value: "no",
+          text: "No",
+          conditional: {
+            html: '<p class="govuk-body">No judgment.</p>'
+          }
+        }
+      ]
+    }) }}
   </div>
 </div>
 {% endblock %}

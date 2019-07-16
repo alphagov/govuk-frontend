@@ -133,6 +133,15 @@ describe('Radios with conditional reveals', () => {
         const isWarmConditionalRevealHidden = await waitForHiddenSelector('#conditional-warm')
         expect(isWarmConditionalRevealHidden).toBeTruthy()
       })
+      it('toggles conditional reveals when not in a form', async () => {
+        await page.goto(baseUrl + '/examples/multiple-radio-groups', { waitUntil: 'load' })
+
+        // Select first input in radios not in a form
+        await page.click('#question-not-in-form')
+
+        const isConditionalRevealVisible = await waitForVisibleSelector('#conditional-question-not-in-form')
+        expect(isConditionalRevealVisible).toBeTruthy()
+      })
     })
   })
 })
