@@ -55,8 +55,12 @@ Radios.prototype.handleClick = function (event) {
   //
   // We also only want radios which have aria-controls, as they support conditional reveals.
   var $allInputs = document.querySelectorAll('input[type="radio"][aria-controls]')
+  var $clickedInput = event.target
   nodeListForEach($allInputs, function ($input) {
-    this.setAttributes($input)
+    // In radios, only radios with the same name will affect each other.
+    if ($input.name === $clickedInput.name) {
+      this.setAttributes($input)
+    }
   }.bind(this))
 }
 

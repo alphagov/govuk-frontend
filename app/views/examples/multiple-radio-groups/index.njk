@@ -65,6 +65,28 @@
             }
           ]
         }) }}
+
+        <h3 class="govuk-heading-m">Do you like colours in general?</h3>
+        {{ govukRadios({
+          idPrefix: "colours-in-general",
+          name: "colours-in-general",
+          items: [
+            {
+              value: "yes",
+              text: "Yes",
+              conditional: {
+                html: '<p class="govuk-body">Fair enough.</p>'
+              }
+            },
+            {
+              value: "no",
+              text: "No",
+              conditional: {
+                html: '<p class="govuk-body">No judgment.</p>'
+              }
+            }
+          ]
+        }) }}
       </fieldset>
       {{ govukButton({
         text: "Submit"
