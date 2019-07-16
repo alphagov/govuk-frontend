@@ -83,27 +83,6 @@
         text-align: center;
         text-decoration: underline;
 
-        &--selected {
-          $border-width: 1px;
-
-          position: relative;
-
-          margin-top: - govuk-spacing(1);
-
-          // Compensation for border (otherwise we get a shift)
-          margin-bottom: -$border-width;
-          padding-top: govuk-spacing(3) - $border-width;
-          padding-right: govuk-spacing(4) - $border-width;
-          padding-bottom: govuk-spacing(3) + $border-width;
-          padding-left: govuk-spacing(4) - $border-width;
-
-          border: $border-width solid $govuk-border-colour;
-          border-bottom: 0;
-
-          background-color: $govuk-body-background-colour;
-          text-decoration: none;
-        }
-
         &:focus {
 
           // IE8 doesn't support `box-shadow` so add an outline to indicate focus instead
@@ -128,19 +107,40 @@
         }
       }
 
+      .govuk-tabs__tab--selected {
+        $border-width: 1px;
+
+        position: relative;
+
+        margin-top: - govuk-spacing(1);
+
+        // Compensation for border (otherwise we get a shift)
+        margin-bottom: -$border-width;
+        padding-top: govuk-spacing(3) - $border-width;
+        padding-right: govuk-spacing(4) - $border-width;
+        padding-bottom: govuk-spacing(3) + $border-width;
+        padding-left: govuk-spacing(4) - $border-width;
+
+        border: $border-width solid $govuk-border-colour;
+        border-bottom: 0;
+
+        background-color: $govuk-body-background-colour;
+        text-decoration: none;
+      }
+
       .govuk-tabs__panel {
         @include govuk-responsive-margin(0, "bottom");
         padding: govuk-spacing(6) govuk-spacing(4);
         border: 1px solid $govuk-border-colour;
         border-top: 0;
 
-        &--hidden {
-          display: none;
-        }
-
         & > :last-child {
           margin-bottom: 0;
         }
+      }
+
+      .govuk-tabs__panel--hidden {
+        display: none;
       }
     }
 
