@@ -10,8 +10,8 @@
   <ul class="govuk-tabs__list">
     {% for item in params.items %}
     {% set id = item.id if item.id else idPrefix + "-" + loop.index %}
-      <li class="govuk-tabs__list-item">
-        <a class="govuk-tabs__tab{% if loop.index == 1 %} govuk-tabs__tab--selected{% endif %}" href="#{{ id }}"
+      <li class="govuk-tabs__list-item{% if loop.index == 1 %} govuk-tabs__list-item--selected{% endif %}">
+        <a class="govuk-tabs__tab" href="#{{ id }}"
            {%- for attribute, value in item.attributes %} {{attribute}}="{{value}}"{% endfor %}>
           {{ item.label }}
         </a>

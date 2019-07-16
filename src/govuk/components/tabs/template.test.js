@@ -227,22 +227,35 @@ describe('Tabs', () => {
             panel: {
               text: 'Panel text 2'
             }
+          }
+        ]
+      })
+
+      const $tab = $('[href="#tab-1"]').parent()
+      expect($tab.hasClass('govuk-tabs__list-item--selected')).toBeTruthy()
+    })
+
+    it('hides all but the first panel', () => {
+      const $ = render('tabs', {
+        items: [
+          {
+            id: 'tab-1',
+            label: 'Tab 1',
+            panel: {
+              text: 'Panel text'
+            }
           },
           {
-            id: 'tab-3',
-            label: 'Tab 3',
+            id: 'tab-2',
+            label: 'Tab 2',
             panel: {
-              text: 'Panel text 3'
+              text: 'Panel text 2'
             }
           }
         ]
       })
 
-      const $tabs = $('.govuk-tabs')
-      const $selectedTabs = $tabs.find('.govuk-tabs__tab--selected')
-      const $hiddenTabPanels = $tabs.find('.govuk-tabs__panel--hidden')
-      expect($hiddenTabPanels.length).toBe(2)
-      expect($selectedTabs.length).toBe(1)
+      expect($('#tab-2').hasClass('govuk-tabs__panel--hidden')).toBeTruthy()
     })
   })
 })

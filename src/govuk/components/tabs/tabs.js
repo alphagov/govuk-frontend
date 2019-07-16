@@ -254,18 +254,18 @@ Tabs.prototype.hidePanel = function (tab) {
 
 Tabs.prototype.unhighlightTab = function ($tab) {
   $tab.setAttribute('aria-selected', 'false')
-  $tab.classList.remove('govuk-tabs__tab--selected')
+  $tab.parentNode.classList.remove('govuk-tabs__list-item--selected')
   $tab.setAttribute('tabindex', '-1')
 }
 
 Tabs.prototype.highlightTab = function ($tab) {
   $tab.setAttribute('aria-selected', 'true')
-  $tab.classList.add('govuk-tabs__tab--selected')
+  $tab.parentNode.classList.add('govuk-tabs__list-item--selected')
   $tab.setAttribute('tabindex', '0')
 }
 
 Tabs.prototype.getCurrentTab = function () {
-  return this.$module.querySelector('.govuk-tabs__tab--selected')
+  return this.$module.querySelector('.govuk-tabs__list-item--selected .govuk-tabs__tab')
 }
 
 // this is because IE doesn't always return the actual value but a relative full path

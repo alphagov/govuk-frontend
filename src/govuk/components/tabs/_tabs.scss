@@ -60,22 +60,16 @@
         border-bottom: 1px solid $govuk-border-colour;
       }
 
-      .govuk-tabs__list-item {
-        margin-left: 0;
-
-        &::before {
-          content: none;
-        }
-      }
-
       .govuk-tabs__title {
         display: none;
       }
 
-      .govuk-tabs__tab {
-        @include govuk-link-style-text;
+      .govuk-tabs__list-item {
+        position: relative;
+
         margin-right: govuk-spacing(1);
         margin-bottom: 0;
+        margin-left: 0;
         padding: govuk-spacing(2) govuk-spacing(4);
 
         float: left;
@@ -83,31 +77,12 @@
         text-align: center;
         text-decoration: underline;
 
-        &:focus {
-
-          // IE8 doesn't support `box-shadow` so add an outline to indicate focus instead
-          @include govuk-if-ie8 {
-            outline: $govuk-focus-width solid $govuk-focus-colour;
-          }
-
-          // Move the focus style from the entire tab to the link
-          @include govuk-not-ie8 {
-            box-shadow: none;
-          }
-
-          &:after {
-            // Add "highlight" on focused link
-            $highlight-space: 13px;
-            content: "";
-            display: block;
-            margin-right: $highlight-space;
-            margin-left: $highlight-space;
-            box-shadow: 0 (-$highlight-space) 0 $highlight-space $govuk-focus-colour, 0 -9px 0 $highlight-space govuk-colour("black");
-          }
+        &::before {
+          content: none;
         }
       }
 
-      .govuk-tabs__tab--selected {
+      .govuk-tabs__list-item--selected {
         $border-width: 1px;
 
         position: relative;
@@ -125,7 +100,25 @@
         border-bottom: 0;
 
         background-color: $govuk-body-background-colour;
-        text-decoration: none;
+
+        .govuk-tabs__tab {
+          text-decoration: none;
+        }
+      }
+
+      .govuk-tabs__tab {
+        @include govuk-link-style-text;
+
+        margin-bottom: 0;
+
+        &::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+        }
       }
 
       .govuk-tabs__panel {
