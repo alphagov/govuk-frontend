@@ -36,11 +36,13 @@ Radios.prototype.init = function () {
 }
 
 Radios.prototype.setAttributes = function ($input) {
-  var inputIsChecked = $input.checked
-  $input.setAttribute('aria-expanded', inputIsChecked)
-
   var $content = document.querySelector('#' + $input.getAttribute('aria-controls'))
-  if ($content) {
+
+  if ($content && $content.classList.contains('govuk-radios__conditional')) {
+    var inputIsChecked = $input.checked
+
+    $input.setAttribute('aria-expanded', inputIsChecked)
+
     $content.classList.toggle('govuk-radios__conditional--hidden', !inputIsChecked)
   }
 }
