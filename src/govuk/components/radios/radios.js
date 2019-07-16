@@ -45,7 +45,11 @@ Radios.prototype.setAttributes = function ($input) {
   }
 }
 
-Radios.prototype.handleClick = function () {
+Radios.prototype.handleClick = function (event) {
+  // We only want to handle clicks for radio inputs
+  if (event.target.type !== 'radio') {
+    return
+  }
   // Because checking one radio can uncheck a radio in another $module,
   // we need to call set attributes on all radios in the document
   var $allInputs = document.querySelectorAll('input[type="radio"]')
