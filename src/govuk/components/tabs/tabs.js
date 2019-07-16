@@ -146,6 +146,7 @@ Tabs.prototype.setAttributes = function ($tab) {
   $tab.setAttribute('id', 'tab_' + panelId)
   $tab.setAttribute('role', 'tab')
   $tab.setAttribute('aria-controls', panelId)
+  $tab.setAttribute('aria-selected', 'false')
   $tab.setAttribute('tabindex', '-1')
 
   // set panel attributes
@@ -160,6 +161,7 @@ Tabs.prototype.unsetAttributes = function ($tab) {
   $tab.removeAttribute('id')
   $tab.removeAttribute('role')
   $tab.removeAttribute('aria-controls')
+  $tab.removeAttribute('aria-selected')
   $tab.removeAttribute('tabindex')
 
   // unset panel attributes
