@@ -61,7 +61,7 @@
   }
 
   .govuk-header__product-name {
-    @include govuk-font($size: 24);
+    @include govuk-font($size: 24, $line-height: 1);
     display: inline-table;
     padding-right: govuk-spacing(2);
   }
@@ -117,6 +117,7 @@
 
     // Remove any borders that show when focused and hovered.
     &:focus {
+      margin-bottom: 0;
       border-bottom: 0;
     }
   }
