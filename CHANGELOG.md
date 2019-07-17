@@ -77,7 +77,7 @@ If you're using HTML or custom JavaScript, change:
 
 #### If you’re using Nunjucks
 
-1. In your `nunjucks.configure` property, change `/frontend/` to `/govuk-frontend/`:
+1. Change your `nunjucks.configure` property so that the only GOV.UK Frontend directory it contains is `node_modules/govuk-frontend/`:
 
 ```nunjucks
 nunjucks.configure([
