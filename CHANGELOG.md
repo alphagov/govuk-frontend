@@ -207,6 +207,22 @@ If there are links back to radios or checkboxes components in your error summary
 
 [Pull request #1426: Make radios and checkboxes components easier to link to from error summary](https://github.com/alphagov/govuk-frontend/pull/1426)
 
+### Update the markup for tabs
+
+You do not need to do anything if you're using the Nunjucks macros.
+
+If you are not using the Nunjucks macros, remove the `govuk-tabs__tab--selected` class from the first tab's link, then add the `govuk-tabs__list-item--selected` class to the link's parent list item.
+
+```html
+<li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+  <a class="govuk-tabs__tab" href="#tab1">
+    Tab 1
+  </a>
+</li>
+```
+
+[Pull request #1496: Update the focus state for tabs](https://github.com/alphagov/govuk-frontend/pull/1443)
+
 ### Update start button icon
 
 [Start buttons](https://design-system.service.gov.uk/components/button/#start-buttons) have a new icon. Your start buttons will lose their current icons unless you replace the old icon with the new one.
