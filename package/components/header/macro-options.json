@@ -21,7 +21,7 @@
         "name": "serviceName",
         "type": "string",
         "required": false,
-        "description": "Header title that is placed next to GOV.UK. Used for product names (i.e. Pay, Verify)"
+        "description": "Header title that is placed separately from GOV.UK. Used for service names such as 'Register to vote'"
     },
     {
         "name": "serviceUrl",
