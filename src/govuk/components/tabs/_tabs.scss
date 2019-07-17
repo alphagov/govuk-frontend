@@ -5,14 +5,13 @@
 @include govuk-exports("govuk/component/tabs") {
 
   .govuk-tabs {
-    @include govuk-font($size: 19);
-    @include govuk-text-colour;
     @include govuk-responsive-margin(1, "top");
     @include govuk-responsive-margin(6, "bottom");
   }
 
   .govuk-tabs__title {
     @include govuk-font($size: 19);
+    @include govuk-text-colour;
     margin-bottom: govuk-spacing(2);
   }
 
@@ -24,9 +23,11 @@
   }
 
   .govuk-tabs__list-item {
+    @include govuk-font($size: 19);
     margin-left: govuk-spacing(5);
 
     &::before {
+      @include govuk-text-colour;
       content: "\2014 "; // "— "
       margin-left: - govuk-spacing(5);
       padding-right: govuk-spacing(1);
@@ -36,27 +37,13 @@
   .govuk-tabs__tab {
     @include govuk-link-style-default;
 
-    @include govuk-font($size: 19);
-
     display: inline-block;
     margin-bottom: govuk-spacing(2);
-
-    &[aria-current = "true"] {
-      color: govuk-colour("black");
-      text-decoration: none;
-    }
 
     // Focus state for mobile and when JavaScript is disabled
     // It is removed for JS-enabled desktop styles
     &:focus {
       @include govuk-focused-text;
-    }
-
-    // IE8 doesn't support `box-shadow` so add an outline to indicate focus
-    @include govuk-if-ie8 {
-      &:focus {
-        outline: $govuk-focus-width solid $govuk-focus-colour;
-      }
     }
   }
 
@@ -75,91 +62,79 @@
         border-bottom: 1px solid $govuk-border-colour;
       }
 
+      .govuk-tabs__title {
+        display: none;
+      }
+
       .govuk-tabs__list-item {
+        position: relative;
+
+        margin-right: govuk-spacing(1);
+        margin-bottom: 0;
         margin-left: 0;
+        padding: govuk-spacing(2) govuk-spacing(4);
+
+        float: left;
+        background-color: govuk-colour("light-grey", $legacy: "grey-4");
+        text-align: center;
 
         &::before {
           content: none;
         }
       }
 
-      .govuk-tabs__title {
-        display: none;
+      .govuk-tabs__list-item--selected {
+        $border-width: 1px;
+
+        position: relative;
+
+        margin-top: - govuk-spacing(1);
+
+        // Compensation for border (otherwise we get a shift)
+        margin-bottom: -$border-width;
+        padding-top: govuk-spacing(3) - $border-width;
+        padding-right: govuk-spacing(4) - $border-width;
+        padding-bottom: govuk-spacing(3) + $border-width;
+        padding-left: govuk-spacing(4) - $border-width;
+
+        border: $border-width solid $govuk-border-colour;
+        border-bottom: 0;
+
+        background-color: $govuk-body-background-colour;
+
+        .govuk-tabs__tab {
+          text-decoration: none;
+        }
       }
 
       .govuk-tabs__tab {
-        margin-right: govuk-spacing(1);
+        @include govuk-link-style-text;
+
         margin-bottom: 0;
-        padding-top: govuk-spacing(2);
-        padding-right: govuk-spacing(4);
-        padding-bottom: govuk-spacing(2);
-        padding-left: govuk-spacing(4);
 
-        float: left;
-        color: govuk-colour("black");
-        background-color: govuk-colour("light-grey", $legacy: "grey-4");
-        text-align: center;
-        text-decoration: underline;
-
-        @include govuk-not-ie8 {
-          &:focus {
-            // Remove no-JS styles
-            box-shadow: none;
-          }
-        }
-
-        &--selected {
-          $border-width: 1px;
-
-          position: relative;
-
-          margin-top: - govuk-spacing(1);
-
-          // Compensation for border (otherwise we get a shift)
-          margin-bottom: -$border-width;
-          padding-top: govuk-spacing(3) - $border-width;
-          padding-right: govuk-spacing(4) - $border-width;
-          padding-bottom: govuk-spacing(3) + $border-width;
-          padding-left: govuk-spacing(4) - $border-width;
-
-          border: $border-width solid $govuk-border-colour;
-          border-bottom: 0;
-
-          color: $govuk-text-colour;
-          background-color: govuk-colour("white");
-          text-decoration: none;
-
-          &:focus {
-
-            &:after {
-              // Add "highlight" on focused link
-              $highlight-space: 13px;
-              content: "";
-              display: block;
-              margin-right: $highlight-space;
-              margin-left: $highlight-space;
-              box-shadow: 0 (-$highlight-space) 0 $highlight-space $govuk-focus-colour, 0 -9px 0 $highlight-space govuk-colour("black");
-            }
-          }
+        &::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
         }
       }
 
       .govuk-tabs__panel {
         @include govuk-responsive-margin(0, "bottom");
-        padding-top: govuk-spacing(6);
-        padding-right: govuk-spacing(4);
-        padding-bottom: govuk-spacing(6);
-        padding-left: govuk-spacing(4);
+        padding: govuk-spacing(6) govuk-spacing(4);
         border: 1px solid $govuk-border-colour;
         border-top: 0;
-
-        &--hidden {
-          display: none;
-        }
 
         & > :last-child {
           margin-bottom: 0;
         }
+      }
+
+      .govuk-tabs__panel--hidden {
+        display: none;
       }
     }
 
