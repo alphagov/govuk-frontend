@@ -6,11 +6,11 @@
 You must make the following changes when you migrate to this release, or your service may break.
 
 ### Update file paths, attributes and class names
-To make sure your project's files do not conflict with GOV.UK Frontend, we've moved our package files into a directory called `govuk`.
+To make sure GOV.UK Frontend's files do not conflict with your code, we've moved our package files into a directory called `govuk`.
 
 #### If you’re using Sass
 
-Add `govuk/` to `@import` paths in your [Sass](https://sass-lang.com/) file that have a `govuk-frontend/` path.
+Add `govuk/` after `govuk-frontend/` to `@import` paths in your [Sass](https://sass-lang.com/) file.
 
 For example:
 
@@ -35,9 +35,9 @@ You must do the following.
 
 You must add `govuk/` to your import file paths.
 
-If you're importing `node_modules/govuk-frontend/all.js` in your project, change this file path to `node_modules/govuk-frontend/govuk/all.js`.
+If you're importing `node_modules/govuk-frontend/all.js` in your code, change this file path to `node_modules/govuk-frontend/govuk/all.js`.
 
-If you’re importing a specific path, add `govuk/` after 'govuk-frontend/`. For example, if you're importing the button component:
+If you’re importing a specific path, add `govuk/` after `govuk-frontend/`. For example, if you're importing the button component:
 
 ```nunjucks
 import Button from 'govuk-frontend/govuk/components/button/button'
@@ -60,7 +60,7 @@ The [button](https://design-system.service.gov.uk/components/button/) and [detai
 - `data-module="govuk-button"` to each `<button>` HTML tag
 - `data-module="govuk-details"` to each `<details>` HTML tag
 
-If you're using your own JavaScript code to initialise components, add a `govuk-` prefix to any selectors that find components.
+If you're using your own JavaScript code to initialise components, add a `govuk-` prefix to any selectors that find components using the `data-module` attribute.
 
 [Pull request #1443: Ensure GOV.UK Frontend component selectors cannot conflict when initialised](https://github.com/alphagov/govuk-frontend/pull/1443)
 
@@ -77,7 +77,7 @@ If you're using HTML or custom JavaScript, change:
 
 #### If you’re using Nunjucks
 
-1. Change your `nunjucks.configure` property so it only includes the  `node_modules/govuk-frontend/` directory:
+1. In your `nunjucks.configure` property, change `/frontend/` to `/govuk-frontend/`:
 
 ```nunjucks
 nunjucks.configure([
@@ -103,7 +103,7 @@ Update the assets path to include the `govuk/` directory:
 
 `/node_modules/govuk-frontend/govuk/assets`
 
-If your project uses Express.js, you must also use the following code in your configuration file:
+If your code uses Express.js, you must also use the following code in your configuration file:
 
 ```javascript
 app.use('/assets', express.static(path.join(__dirname, '/node_modules/govuk-frontend/govuk/assets')))
@@ -117,11 +117,11 @@ Pull requests:
 
 The focus state of components now meets the new WCAG 2.1 level AA requirements.
 
-You must [update your component’s focus state](xxxx) to make your design consistent with our new focus styles.
+You must update your component’s focus state to make your design consistent with our new focus styles.
 
 If you've extended or created components, you can no longer use the `govuk-focusable` or `govuk-focusable-fill` mixins in your Sass files.
 
-If you're using `govuk-focusable`, you must remove it. There’s no direct replacement, so you must [use our Sass variables to make your components consistent](xxx#heading) with GOV.UK Frontend.
+If you're using `govuk-focusable`, you must remove it. There’s no direct replacement, so you must use our Sass variables to make your components consistent with GOV.UK Frontend.
 
 If you're using `govuk-focusable-fill`, include the `govuk-focused-text` mixin inside your component's `:focus` selector. For example:
 
@@ -182,11 +182,9 @@ We've also changed the background of the following components:
 
 If you're using legacy projects like GOV.UK Elements, you can keep your current colours by [turning on compatibility mode](https://github.com/alphagov/govuk-frontend/docs/installation/compatibility.md).
 
-Read our [blog post about why we changed the colour palette](xxxx)
-
 [Pull request #1288: Update colour palette](https://github.com/alphagov/govuk-frontend/pull/1288).
 
-### Check the new font
+### Check the new version of the font
 
 The size and baseline of the Design System's font are now more consistent with other fonts. Text now aligns vertically in text boxes without you needing to adjust it.
 
