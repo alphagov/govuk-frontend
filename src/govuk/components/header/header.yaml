@@ -155,6 +155,11 @@ examples:
       - href: '/browse/working'
         text: Working, jobs and pensions
 
+- name: with product name
+  data:
+    navigationClasses: govuk-header__navigation--end
+    productName: Product Name
+
 - name: full width
   data:
     containerClasses: govuk-header__container--full-width
