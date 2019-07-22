@@ -117,11 +117,11 @@ Pull requests:
 
 The focus state of components now meets the new WCAG 2.1 level AA requirements.
 
-You must [update your component’s focus state](https://design-system.service.gov.uk/get-started/TODO) to make your design consistent with our new focus styles.
+You must update your component’s focus state to make your design consistent with our new focus styles.
 
 If you've extended or created components, you can no longer use the `govuk-focusable` or `govuk-focusable-fill` mixins in your Sass files.
 
-If you're using `govuk-focusable`, you must remove it. There’s no direct replacement, so you must [use our Sass variables to make your components consistent](https://design-system.service.gov.uk/get-started/TODO#TODO) with GOV.UK Frontend.
+If you're using `govuk-focusable`, you must remove it. There’s no direct replacement, so you must use our Sass variables to make your components consistent with GOV.UK Frontend.
 
 If you're using `govuk-focusable-fill`, include the `govuk-focused-text` mixin inside your component's `:focus` selector. For example:
 
@@ -181,8 +181,6 @@ We've also changed the background of the following components:
 - links in their hover state - `dark-blue` instead of `light-blue`
 
 If you're using legacy projects like GOV.UK Elements, you can keep your current colours by [turning on compatibility mode](https://github.com/alphagov/govuk-frontend/blob/master/docs/installation/compatibility.md).
-
-Read our [blog post about why we changed the colour palette](https://designnotes.blog.gov.uk/TODO).
 
 [Pull request #1288: Update colour palette](https://github.com/alphagov/govuk-frontend/pull/1288).
 
