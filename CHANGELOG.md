@@ -2,13 +2,13 @@
 
 ## Unreleased 3.0.0 (Breaking release)
 
-## Breaking changes
+### Breaking changes
 You must make the following changes when you migrate to this release, or your service may break.
 
-### Update file paths, attributes and class names
+#### Update file paths, attributes and class names
 To make sure GOV.UK Frontend's files do not conflict with your code, we've moved our package files into a directory called `govuk`.
 
-#### If you’re using Sass
+##### If you’re using Sass
 
 Add `govuk/` after `govuk-frontend/` to `@import` paths in your [Sass](https://sass-lang.com/) file.
 
@@ -17,13 +17,13 @@ For example:
 ```scss
 @import "node_modules/govuk-frontend/govuk/all";
 ```
-If you’ve [added `node_modules/govuk-frontend` as a Sass include path](https://github.com/alphagov/govuk-frontend/blob/268b1e1b962d4bd293c5681868a2119f8b4ece60/docs/installation/installing-with-npm.md#optional-resolving-scss-import-paths), add `govuk/` to your `@import` paths:
+If you’ve [added `node_modules/govuk-frontend` as a Sass include path](https://github.com/alphagov/govuk-frontend/blob/master/docs/installation/installing-with-npm.md#optional-resolving-scss-import-paths), add `govuk/` to your `@import` paths:
 
 ```scss
 @import "govuk/all";
 ```
 
-####  If you’re using Javascript
+#####  If you’re using Javascript
 
 You must do the following.
 
@@ -31,7 +31,7 @@ You must do the following.
 2. Update and add `data-module` attributes.
 3. Update CSS class names.
 
-##### Update file paths
+###### Update file paths
 
 You must add `govuk/` to your import file paths.
 
@@ -43,9 +43,9 @@ If you’re importing a specific path, add `govuk/` after `govuk-frontend/`. For
 import Button from 'govuk-frontend/govuk/components/button/button'
 ```
 
-##### Update and add data-module attributes
+###### Update and add data-module attributes
 
-You do not need to do anything if you're using Nunjucks macros and the [`initAll`](https://github.com/alphagov/govuk-frontend/blob/268b1e1b962d4bd293c5681868a2119f8b4ece60/docs/installation/installing-with-npm.md#option-1-include-javascript) function.
+You do not need to do anything if you're using Nunjucks macros and the [`initAll`](https://github.com/alphagov/govuk-frontend/blob/master/docs/installation/installing-with-npm.md#option-1-include-javascript) function.
 
 If you are not using the Nunjucks macros, add a `govuk-` prefix to `data-module` attribute values. For example:
 
@@ -64,7 +64,7 @@ If you're using your own JavaScript code to initialise components, add a `govuk-
 
 [Pull request #1443: Ensure GOV.UK Frontend component selectors cannot conflict when initialised](https://github.com/alphagov/govuk-frontend/pull/1443)
 
-##### Update CSS class names
+###### Update CSS class names
 
 You do not need to do anything if you're using Nunjucks.
 
@@ -75,7 +75,7 @@ If you're using HTML or custom JavaScript, change:
 
 [Pull request #1444: Renames `js-` css prefix to `govuk-js-`](https://github.com/alphagov/govuk-frontend/pull/1444)
 
-#### If you’re using Nunjucks
+##### If you’re using Nunjucks
 
 1. Change your `nunjucks.configure` property so that the only GOV.UK Frontend directory it contains is `node_modules/govuk-frontend/`:
 
@@ -97,7 +97,7 @@ nunjucks.configure([
 {% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
 ```
 
-#### Update asset paths
+##### Update asset paths
 
 Update the assets path to include the `govuk/` directory:
 
@@ -113,15 +113,15 @@ Pull requests:
 - [#1458: Namespace nunjucks and components](https://github.com/alphagov/govuk-frontend/pull/1458)
 - [#1467: Update the main entry point in package.json](https://github.com/alphagov/govuk-frontend/pull/1467)
 
-### Migrate to the new accessible focus states
+#### Migrate to the new accessible focus states
 
 The focus state of components now meets the new WCAG 2.1 level AA requirements.
 
-You must update your component’s focus state to make your design consistent with our new focus styles.
+You must [update your component’s focus state](https://design-system.service.gov.uk/get-started/TODO) to make your design consistent with our new focus styles.
 
 If you've extended or created components, you can no longer use the `govuk-focusable` or `govuk-focusable-fill` mixins in your Sass files.
 
-If you're using `govuk-focusable`, you must remove it. There’s no direct replacement, so you must use our Sass variables to make your components consistent with GOV.UK Frontend.
+If you're using `govuk-focusable`, you must remove it. There’s no direct replacement, so you must [use our Sass variables to make your components consistent](https://design-system.service.gov.uk/get-started/TODO#TODO) with GOV.UK Frontend.
 
 If you're using `govuk-focusable-fill`, include the `govuk-focused-text` mixin inside your component's `:focus` selector. For example:
 
@@ -142,7 +142,7 @@ Pull requests:
 - [#1361: Remove `govuk-focusable`, `govuk-focusable-fill` mixins, introduce `govuk-focus-text` mixin](https://github.com/alphagov/govuk-frontend/pull/1361)
 
 
-### Update colours
+#### Update colours
 
 You can now use the following new colour variables that we've added to the [colour palette](https://design-system.service.gov.uk/styles/colour#main-colours):
 
@@ -180,24 +180,26 @@ We've also changed the background of the following components:
 - confirmation panels - `green` instead of `turquoise`
 - links in their hover state - `dark-blue` instead of `light-blue`
 
-If you're using legacy projects like GOV.UK Elements, you can keep your current colours by [turning on compatibility mode](https://github.com/alphagov/govuk-frontend/docs/installation/compatibility.md).
+If you're using legacy projects like GOV.UK Elements, you can keep your current colours by [turning on compatibility mode](https://github.com/alphagov/govuk-frontend/blob/master/docs/installation/compatibility.md).
+
+Read our [blog post about why we changed the colour palette](https://designnotes.blog.gov.uk/TODO).
 
 [Pull request #1288: Update colour palette](https://github.com/alphagov/govuk-frontend/pull/1288).
 
-### Check the new version of the font
+#### Check the new version of the font
 
 The size and baseline of the Design System's font are now more consistent with other fonts. Text now aligns vertically in text boxes without you needing to adjust it.
 
 If you've extended or created components, you should check that your text is still vertically aligned correctly.
 
-If you're using GOV.UK Frontend and [GOV.UK Template](https://github.com/alphagov/govuk_template), you can [turn on compatibility mode](https://github.com/alphagov/govuk-frontend/docs/installation/compatibility.md) to keep using the font from GOV.UK Template.
+If you're using GOV.UK Frontend and [GOV.UK Template](https://github.com/alphagov/govuk_template), you can [turn on compatibility mode](https://github.com/alphagov/govuk-frontend/blob/master/docs/installation/compatibility.md) to keep using the font from GOV.UK Template.
 
 Pull requests:
 
 - [#1434: Update font to use v2 of GOV.UK Transport font](https://github.com/alphagov/govuk-frontend/pull/1434)
 - [#1441: Removing font style adjustments](https://github.com/alphagov/govuk-frontend/pull/1441)
 
-### Update links from error summary components to radios and checkboxes
+#### Update links from error summary components to radios and checkboxes
 
 If you've linked from an error summary component to the first input in a [radios](https://design-system.service.gov.uk/components/radios/) or [checkboxes](https://design-system.service.gov.uk/components/checkboxes/) component, the link will no longer work.
 
@@ -207,7 +209,7 @@ If there are links back to radios or checkboxes components in your error summary
 
 [Pull request #1426: Make radios and checkboxes components easier to link to from error summary](https://github.com/alphagov/govuk-frontend/pull/1426)
 
-### Update the markup for tabs
+#### Update the markup for tabs
 
 You do not need to do anything if you're using the Nunjucks macros.
 
@@ -223,7 +225,7 @@ If you are not using the Nunjucks macros, remove the `govuk-tabs__tab--selected`
 
 [Pull request #1496: Update the focus state for tabs](https://github.com/alphagov/govuk-frontend/pull/1443)
 
-### Update start button icon
+#### Update start button icon
 
 [Start buttons](https://design-system.service.gov.uk/components/button/#start-buttons) have a new icon. Your start buttons will lose their current icons unless you replace the old icon with the new one.
 
@@ -246,7 +248,7 @@ If you're using HTML, add the SVG code from the [start button example in the Des
 
 [Pull request #1341: Add new start button icon](https://github.com/alphagov/govuk-frontend/pull/1341)
 
-### Adjust text alignment in tables
+#### Adjust text alignment in tables
 
 Text now aligns to the top of table cells. If you've used a different alignment in a table, you should use your own CSS styles to keep the alignment the same.
 
@@ -262,7 +264,7 @@ For example, to align text in the centre:
 
 [Pull request #1345: Set 'vertical-align:top' positioning on table headers and cells](https://github.com/alphagov/govuk-frontend/pull/1345)
 
-### Replace mixins in grids
+#### Replace mixins in grids
 
 If you're using the `@govuk-grid-column` Sass mixin to create custom grid classes, you must remove the `$class` parameter.
 
@@ -284,21 +286,21 @@ Pull requests:
 - [#1342: Remove grid-width mixin](https://github.com/alphagov/govuk-frontend/pull/1342)
 - [#1343: Removes govuk-grid-row mixin](https://github.com/alphagov/govuk-frontend/pull/1343)
 
-### Rename the border width variable
+#### Rename the border width variable
 
 If you use Sass and you’ve extended or created components that use the border width variable, rename `$govuk-border-width-mobile` to `$govuk-border-width-narrow`.
 
 [Pull request #1287: Rename border-width-mobile to reflect how it's used](https://github.com/alphagov/govuk-frontend/pull/1287)
 
-## New features
+### New features
 
-### Add attributes to table headings
+#### Add attributes to table headings
 
 You can now add attributes like classes, rowspan and colspan to table row headers.
 
 [Pull request #1367: Allow for classes, rowspan, colspan and attributes on row headers](https://github.com/alphagov/govuk-frontend/pull/1367). Thanks to [edwardhorsford](https://github.com/edwardhorsford).
 
-### Use page wrappers without a modifier
+#### Use page wrappers without a modifier
 
 If your page wrapper does not have components above the main section, you no longer need to use the [`govuk-main-wrapper--l` modifier class](https://design-system.service.gov.uk/styles/layout/#exploded-view-of-page-wrappers-without-a-back-link-breadcrumbs-or-phase-banner) to increase the vertical space above the content.
 
@@ -306,7 +308,7 @@ The `govuk-main-wrapper` and `govuk-main-wrapper--l` mixins are now deprecated. 
 
 [Pull request #1371: Simplify main wrapper spacing logic](https://github.com/alphagov/govuk-frontend/pull/1371)
 
-### GDS Transport now falls back to Arial in Internet Explorer 8 (IE8)
+#### GDS Transport now falls back to Arial in Internet Explorer 8 (IE8)
 
 IE8 will now use Arial instead of GDS Transport.
 
@@ -314,7 +316,7 @@ This is because IE8 requires a very large Embedded Open Type (.eot) font file fo
 
 [Pull request #1434: Update font to use v2 of GOV.UK Transport font](https://github.com/alphagov/govuk-frontend/pull/1434). Thanks to [@Nooshu](https://github.com/Nooshu).
 
-## Fixes
+### Fixes
 
 - [Pull request #1310: The border on error summaries is now the correct width on mobile.
 GOV.UK Template's focused link colour no longer overrides GOV.UK Frontend](https://github.com/alphagov/govuk-frontend/pull/1310).
