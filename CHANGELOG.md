@@ -298,13 +298,18 @@ You can now add attributes like classes, rowspan and colspan to table row header
 
 [Pull request #1367: Allow for classes, rowspan, colspan and attributes on row headers](https://github.com/alphagov/govuk-frontend/pull/1367). Thanks to [edwardhorsford](https://github.com/edwardhorsford).
 
-#### Use page wrappers without a modifier
 
-If your page wrapper does not have components above the main section, you no longer need to use the [`govuk-main-wrapper--l` modifier class](https://design-system.service.gov.uk/styles/layout/#exploded-view-of-page-wrappers-without-a-back-link-breadcrumbs-or-phase-banner) to increase the vertical space above the content.
+#### Use page wrapper auto spacing
+
+You can now use the the `.govuk-main-wrapper--auto-spacing` modifier on the main wrapper.
+
+This will apply the correct spacing depending on whether there are any elements (such the back link, breadcrumbs or phase banner components) before the `.govuk-main-wrapper` in the `.govuk-width-container`.
+
+If you need to control the spacing manually, use the `.govuk-main-wrapper--l` modifier instead.
 
 The `govuk-main-wrapper` and `govuk-main-wrapper--l` mixins are now deprecated. [Contact us](https://design-system.service.gov.uk/get-in-touch/) if you need to continue using these mixins.
 
-[Pull request #1371: Simplify main wrapper spacing logic](https://github.com/alphagov/govuk-frontend/pull/1371)
+[Pull request #1493: Add automatic vertical spacing modifier for main wrapper](https://github.com/alphagov/govuk-frontend/pull/1493)
 
 #### GDS Transport now falls back to Arial in Internet Explorer 8 (IE8)
 
