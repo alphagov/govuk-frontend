@@ -53,11 +53,14 @@
     @include govuk-main-wrapper;
   }
 
-  // For most instances of main wrapper, :first-child will give the correct
-  // spacing without the need for the `l` modifier, but it is available in
-  // instances where there may be empty elements that would be difficult to
-  // remove.
-  .govuk-main-wrapper:first-child,
+  // Using the `.govuk-main-wrapper--auto-spacing` modifier should apply the
+  // correct spacing depending on whether there are any elements
+  // (such the back link, breadcrumbs or phase banner components) before the
+  // `.govuk-main-wrapper` in the `govuk-width-container`.
+  //
+  // If you need to control the spacing manually, use the
+  // `govuk-main-wrapper--l` modifier instead.
+  .govuk-main-wrapper--auto-spacing:first-child,
   .govuk-main-wrapper--l {
     @include govuk-main-wrapper--l;
   }
