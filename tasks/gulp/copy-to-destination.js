@@ -12,8 +12,8 @@ const path = require('path')
 const map = require('map-stream')
 const rename = require('gulp-rename')
 
-let scssFiles = filter([configPaths.src + '**/*.scss'], { restore: true })
-let yamlFiles = filter([configPaths.components + '**/*.yaml'], { restore: true })
+const scssFiles = filter([configPaths.src + '**/*.scss'], { restore: true })
+const yamlFiles = filter([configPaths.components + '**/*.yaml'], { restore: true })
 
 gulp.task('copy-files', () => {
   return gulp.src([
@@ -31,8 +31,8 @@ gulp.task('copy-files', () => {
     .pipe(scssFiles.restore)
     .pipe(yamlFiles)
     .pipe(map(function (file, done) {
-      let componentName = path.dirname(file.path).split(path.sep).slice(-1).toString()
-      let componentPath = path.join(configPaths.components, componentName, `${componentName}.yaml`)
+      const componentName = path.dirname(file.path).split(path.sep).slice(-1).toString()
+      const componentPath = path.join(configPaths.components, componentName, `${componentName}.yaml`)
       let yaml
       let json
       let paramsJson

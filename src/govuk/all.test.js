@@ -5,7 +5,7 @@ const PORT = configPaths.ports.test
 
 const { renderSass } = require('../../lib/jest-helpers')
 
-let baseUrl = 'http://localhost:' + PORT
+const baseUrl = 'http://localhost:' + PORT
 
 beforeAll(async (done) => {
   // Capture JavaScript errors.

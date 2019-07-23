@@ -3,7 +3,7 @@
 const configPaths = require('../../../../config/paths.json')
 const PORT = configPaths.ports.test
 
-let baseUrl = 'http://localhost:' + PORT
+const baseUrl = 'http://localhost:' + PORT
 
 describe('Error Summary', () => {
   it('is automatically focused when the page loads', async () => {
@@ -13,7 +13,7 @@ describe('Error Summary', () => {
     expect(moduleName).toBe('govuk-error-summary')
   })
 
-  let inputTypes = [
+  const inputTypes = [
     // [description, input id, selector for label or legend]
     ['an input', 'input', 'label[for="input"]'],
     ['a textarea', 'textarea', 'label[for="textarea"]'],

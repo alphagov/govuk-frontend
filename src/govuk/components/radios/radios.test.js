@@ -5,7 +5,7 @@ const cheerio = require('cheerio')
 const configPaths = require('../../../../config/paths.json')
 const PORT = configPaths.ports.test
 
-let baseUrl = 'http://localhost:' + PORT
+const baseUrl = 'http://localhost:' + PORT
 
 const goToAndGetComponent = async (name, example) => {
   const componentPath = `${baseUrl}/components/${name}/${example}/preview`

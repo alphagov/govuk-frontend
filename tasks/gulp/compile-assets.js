@@ -51,7 +51,7 @@ const compileStyleshet = isDist ? configPaths.src + 'all.scss' : configPaths.app
 const compileOldIeStyleshet = isDist ? configPaths.src + 'all-ie8.scss' : configPaths.app + 'assets/scss/app-ie8.scss'
 
 gulp.task('scss:compile', () => {
-  let compile = gulp.src(compileStyleshet)
+  const compile = gulp.src(compileStyleshet)
     .pipe(plumber(errorHandler))
     .pipe(sass())
     // minify css add vendor prefixes and normalize to compiled css
@@ -73,7 +73,7 @@ gulp.task('scss:compile', () => {
     ))
     .pipe(gulp.dest(taskArguments.destination + '/'))
 
-  let compileOldIe = gulp.src(compileOldIeStyleshet)
+  const compileOldIe = gulp.src(compileOldIeStyleshet)
     .pipe(plumber(errorHandler))
     .pipe(sass())
     // minify css add vendor prefixes and normalize to compiled css
@@ -151,7 +151,7 @@ gulp.task('scss:compile', () => {
 // --------------------------------------
 gulp.task('js:compile', () => {
   // for dist/ folder we only want compiled 'all.js' file
-  let srcFiles = isDist ? configPaths.src + 'all.js' : configPaths.src + '**/*.js'
+  const srcFiles = isDist ? configPaths.src + 'all.js' : configPaths.src + '**/*.js'
 
   return gulp.src([
     srcFiles,
