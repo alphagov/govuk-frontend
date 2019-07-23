@@ -5,12 +5,11 @@ import { nodeListForEach } from '../../common'
 
 function Radios ($module) {
   this.$module = $module
-  this.$inputs = $module.querySelectorAll('input[type="radio"]')
 }
 
 Radios.prototype.init = function () {
   var $module = this.$module
-  var $inputs = this.$inputs
+  var $inputs = $module.querySelectorAll('input[type="radio"]')
 
   /**
   * Loop over all items with [data-controls]
@@ -37,21 +36,35 @@ Radios.prototype.init = function () {
 }
 
 Radios.prototype.setAttributes = function ($input) {
-  var inputIsChecked = $input.checked
-  $input.setAttribute('aria-expanded', inputIsChecked)
+  var $content = document.querySelector('#' + $input.getAttribute('aria-controls'))
 
-  var $content = this.$module.querySelector('#' + $input.getAttribute('aria-controls'))
-  if ($content) {
+  if ($content && $content.classList.contains('govuk-radios__conditional')) {
+    var inputIsChecked = $input.checked
+
+    $input.setAttribute('aria-expanded', inputIsChecked)
+
     $content.classList.toggle('govuk-radios__conditional--hidden', !inputIsChecked)
   }
 }
 
 Radios.prototype.handleClick = function (event) {
-  nodeListForEach(this.$inputs, function ($input) {
-    // If a radio with aria-controls, handle click
-    var isRadio = $input.getAttribute('type') === 'radio'
-    var hasAriaControls = $input.getAttribute('aria-controls')
-    if (isRadio && hasAriaControls) {
+  var $clickedInput = event.target
+  // We only want to handle clicks for radio inputs
+  if ($clickedInput.type !== 'radio') {
+    return
+  }
+  // Because checking one radio can uncheck a radio in another $module,
+  // we need to call set attributes on all radios in the same form, or document if they're not in a form.
+  //
+  // We also only want radios which have aria-controls, as they support conditional reveals.
+  var $allInputs = document.querySelectorAll('input[type="radio"][aria-controls]')
+  nodeListForEach($allInputs, function ($input) {
+    // Only inputs with the same form owner should change.
+    var hasSameFormOwner = ($input.form === $clickedInput.form)
+
+    // In radios, only radios with the same name will affect each other.
+    var hasSameName = ($input.name === $clickedInput.name)
+    if (hasSameName && hasSameFormOwner) {
       this.setAttributes($input)
     }
   }.bind(this))

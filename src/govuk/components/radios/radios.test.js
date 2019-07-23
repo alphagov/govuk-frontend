@@ -119,5 +119,29 @@ describe('Radios with conditional reveals', () => {
       const isContentHidden = await waitForHiddenSelector(`[id="${firstInputAriaControls}"]`)
       expect(isContentHidden).toBeTruthy()
     })
+
+    describe('with multiple radio groups on the same page', () => {
+      it('toggles conditional reveals in other groups', async () => {
+        await page.goto(baseUrl + '/examples/multiple-radio-groups', { waitUntil: 'load' })
+
+        // Select red in warm colours
+        await page.click('#warm')
+
+        // Select blue in cool colours
+        await page.click('#cool')
+
+        const isWarmConditionalRevealHidden = await waitForHiddenSelector('#conditional-warm')
+        expect(isWarmConditionalRevealHidden).toBeTruthy()
+      })
+      it('toggles conditional reveals when not in a form', async () => {
+        await page.goto(baseUrl + '/examples/multiple-radio-groups', { waitUntil: 'load' })
+
+        // Select first input in radios not in a form
+        await page.click('#question-not-in-form')
+
+        const isConditionalRevealVisible = await waitForVisibleSelector('#conditional-question-not-in-form')
+        expect(isConditionalRevealVisible).toBeTruthy()
+      })
+    })
   })
 })
