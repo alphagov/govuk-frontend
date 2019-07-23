@@ -111,9 +111,9 @@ describe('header', () => {
       const $ = render('header', {
         navigation: [
           {
-            'text': 'Item',
-            'href': '/link',
-            'attributes': {
+            text: 'Item',
+            href: '/link',
+            attributes: {
               'data-attribute': 'my-attribute',
               'data-attribute-2': 'my-attribute-2'
             }

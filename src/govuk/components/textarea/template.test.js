@@ -108,7 +108,7 @@ describe('Textarea', () => {
       const $ = render('textarea', {
         id: 'textarea-with-error',
         hint: {
-          'text': 'It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.'
+          text: 'It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.'
         }
       })
 
@@ -119,7 +119,7 @@ describe('Textarea', () => {
       const $ = render('textarea', {
         id: 'textarea-with-error',
         hint: {
-          'text': 'It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.'
+          text: 'It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.'
         }
       })
 
@@ -141,7 +141,7 @@ describe('Textarea', () => {
         id: 'textarea-with-error',
         describedBy: describedById,
         hint: {
-          'text': 'It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.'
+          text: 'It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.'
         }
       })
 
@@ -173,7 +173,7 @@ describe('Textarea', () => {
       const $ = render('textarea', {
         id: 'textarea-with-error',
         errorMessage: {
-          'text': 'Error message'
+          text: 'Error message'
         }
       })
 
@@ -195,7 +195,7 @@ describe('Textarea', () => {
         id: 'textarea-with-error',
         describedBy: describedById,
         errorMessage: {
-          'text': 'Error message'
+          text: 'Error message'
         }
       })
 
@@ -213,7 +213,7 @@ describe('Textarea', () => {
     it('adds the error class to the textarea', () => {
       const $ = render('textarea', {
         errorMessage: {
-          'text': 'Error message'
+          text: 'Error message'
         }
       })
 
@@ -248,10 +248,10 @@ describe('Textarea', () => {
     it('associates the textarea as described by both the hint and the error message', () => {
       const $ = render('textarea', {
         errorMessage: {
-          'text': 'Error message'
+          text: 'Error message'
         },
         hint: {
-          'text': 'Hint'
+          text: 'Hint'
         }
       })
 
@@ -273,10 +273,10 @@ describe('Textarea', () => {
       const $ = render('textarea', {
         describedBy: describedById,
         errorMessage: {
-          'text': 'Error message'
+          text: 'Error message'
         },
         hint: {
-          'text': 'Hint'
+          text: 'Hint'
         }
       })
 
@@ -298,10 +298,10 @@ describe('Textarea', () => {
       const $ = render('textarea', {
         id: 'nested-order',
         label: {
-          'text': 'Full address'
+          text: 'Full address'
         },
         errorMessage: {
-          'text': 'Error message'
+          text: 'Error message'
         }
       })
 
@@ -313,7 +313,7 @@ describe('Textarea', () => {
       const $ = render('textarea', {
         id: 'my-textarea',
         label: {
-          'text': 'Full address'
+          text: 'Full address'
         }
       })
 
@@ -324,7 +324,7 @@ describe('Textarea', () => {
       const $ = render('textarea', {
         id: 'my-textarea',
         label: {
-          'text': 'Full address'
+          text: 'Full address'
         }
       })
 
@@ -337,7 +337,7 @@ describe('Textarea', () => {
     it('renders the autocomplete attribute', () => {
       const $ = render('textarea', {
         attributes: {
-          'autocomplete': 'street-address'
+          autocomplete: 'street-address'
         }
       })
 

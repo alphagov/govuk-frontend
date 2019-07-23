@@ -66,7 +66,7 @@ describe('Tag', () => {
     const $ = render('tag', {
       attributes: {
         'data-test': 'attribute',
-        'id': 'my-tag'
+        id: 'my-tag'
       },
       html: '<span>alpha</span>'
     })

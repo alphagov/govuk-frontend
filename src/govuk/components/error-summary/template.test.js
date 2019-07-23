@@ -135,9 +135,9 @@ describe('Error-summary', () => {
     const $ = render('error-summary', {
       errorList: [
         {
-          'text': 'Error-1',
-          'href': '#item',
-          'attributes': {
+          text: 'Error-1',
+          href: '#item',
+          attributes: {
             'data-attribute': 'my-attribute',
             'data-attribute-2': 'my-attribute-2'
           }
@@ -159,9 +159,9 @@ describe('Error-summary', () => {
 
   it('allows error item HTML to be passed un-escaped', () => {
     const $ = render('error-summary', {
-      'errorList': [
+      errorList: [
         {
-          'html': 'Descriptive link to the <b>question</b> with an error'
+          html: 'Descriptive link to the <b>question</b> with an error'
         }
       ]
     })
@@ -173,9 +173,9 @@ describe('Error-summary', () => {
 
   it('allows error item text to be passed whilst escaping HTML entities', () => {
     const $ = render('error-summary', {
-      'errorList': [
+      errorList: [
         {
-          'text': 'Descriptive link to the <b>question</b> with an error'
+          text: 'Descriptive link to the <b>question</b> with an error'
         }
       ]
     })
@@ -187,10 +187,10 @@ describe('Error-summary', () => {
 
   it('allows error item HTML inside "a" tag to be passed un-escaped', () => {
     const $ = render('error-summary', {
-      'errorList': [
+      errorList: [
         {
-          'html': 'Descriptive link to the <b>question</b> with an error',
-          'href': '#error-1'
+          html: 'Descriptive link to the <b>question</b> with an error',
+          href: '#error-1'
         }
       ]
     })
@@ -202,10 +202,10 @@ describe('Error-summary', () => {
 
   it('allows error item text inside "a" tag to be passed whilst escaping HTML entities', () => {
     const $ = render('error-summary', {
-      'errorList': [
+      errorList: [
         {
-          'text': 'Descriptive link to the <b>question</b> with an error',
-          'href': '#error-1'
+          text: 'Descriptive link to the <b>question</b> with an error',
+          href: '#error-1'
         }
       ]
     })

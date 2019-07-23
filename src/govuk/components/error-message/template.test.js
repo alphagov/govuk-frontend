@@ -48,7 +48,7 @@ describe('Error message', () => {
     const $ = render('error-message', {
       attributes: {
         'data-test': 'attribute',
-        'id': 'my-error-message'
+        id: 'my-error-message'
       }
     })
 

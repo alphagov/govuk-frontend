@@ -298,7 +298,7 @@ describe('Input', () => {
       const $ = render('input', {
         id: 'my-input',
         label: {
-          'text': 'National Insurance number'
+          text: 'National Insurance number'
         }
       })
 
@@ -310,7 +310,7 @@ describe('Input', () => {
       const $ = render('input', {
         id: 'my-input',
         label: {
-          'text': 'National Insurance number'
+          text: 'National Insurance number'
         }
       })
 
@@ -321,7 +321,7 @@ describe('Input', () => {
       const $ = render('input', {
         id: 'my-input',
         label: {
-          'text': 'National Insurance number'
+          text: 'National Insurance number'
         }
       })
 

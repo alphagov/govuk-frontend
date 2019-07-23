@@ -68,11 +68,11 @@ describe('Select', () => {
         value: '2',
         items: [
           {
-            'value': '1',
+            value: '1',
             text: 'Option 1'
           },
           {
-            'value': '2',
+            value: '2',
             text: 'Options 2'
           }
         ]
@@ -105,7 +105,7 @@ describe('Select', () => {
         items: [
           {
             text: 'Option 1',
-            'selected': true
+            selected: true
           },
           {
             text: 'Options 2'
@@ -215,7 +215,7 @@ describe('Select', () => {
       const $ = render('select', {
         id: 'select-with-hint',
         hint: {
-          'text': 'Hint text goes here'
+          text: 'Hint text goes here'
         }
       })
 
@@ -226,7 +226,7 @@ describe('Select', () => {
       const $ = render('select', {
         id: 'select-with-hint',
         hint: {
-          'text': 'Hint text goes here'
+          text: 'Hint text goes here'
         }
       })
 
@@ -248,7 +248,7 @@ describe('Select', () => {
         id: 'select-with-hint',
         describedBy: describedById,
         hint: {
-          'text': 'Hint text goes here'
+          text: 'Hint text goes here'
         }
       })
 
@@ -302,7 +302,7 @@ describe('Select', () => {
         id: 'select-with-error',
         describedBy: describedById,
         errorMessage: {
-          'text': 'Error message'
+          text: 'Error message'
         }
       })
 

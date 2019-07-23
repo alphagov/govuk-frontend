@@ -89,7 +89,7 @@ describe('Character count', () => {
       const $ = render('character-count', {
         id: 'character-count-with-hint',
         hint: {
-          'text': 'It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.'
+          text: 'It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.'
         }
       })
 
@@ -100,7 +100,7 @@ describe('Character count', () => {
       const $ = render('character-count', {
         id: 'character-count-with-hint',
         hint: {
-          'text': 'It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.'
+          text: 'It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.'
         }
       })
 
@@ -132,7 +132,7 @@ describe('Character count', () => {
       const $ = render('character-count', {
         id: 'character-count-with-error',
         errorMessage: {
-          'text': 'Error message'
+          text: 'Error message'
         }
       })
 
@@ -150,7 +150,7 @@ describe('Character count', () => {
     it('adds the error class to the character-count', () => {
       const $ = render('character-count', {
         errorMessage: {
-          'text': 'Error message'
+          text: 'Error message'
         }
       })
 
@@ -164,10 +164,10 @@ describe('Character count', () => {
       const $ = render('character-count', {
         id: 'nested-order',
         label: {
-          'text': 'Full address'
+          text: 'Full address'
         },
         errorMessage: {
-          'text': 'Error message'
+          text: 'Error message'
         }
       })
 
@@ -179,7 +179,7 @@ describe('Character count', () => {
       const $ = render('character-count', {
         id: 'my-character-count',
         label: {
-          'text': 'Full address'
+          text: 'Full address'
         }
       })
 
@@ -190,7 +190,7 @@ describe('Character count', () => {
       const $ = render('character-count', {
         id: 'my-character-count',
         label: {
-          'text': 'Full address'
+          text: 'Full address'
         }
       })
 

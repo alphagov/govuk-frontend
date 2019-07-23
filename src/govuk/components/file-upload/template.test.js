@@ -168,7 +168,7 @@ describe('File upload', () => {
       const $ = render('file-upload', {
         id: 'input-with-error',
         errorMessage: {
-          'text': 'Error message'
+          text: 'Error message'
         }
       })
 
@@ -190,7 +190,7 @@ describe('File upload', () => {
         id: 'input-with-error',
         describedBy: describedById,
         errorMessage: {
-          'text': 'Error message'
+          text: 'Error message'
         }
       })
 
@@ -208,7 +208,7 @@ describe('File upload', () => {
     it('includes the error class on the component', () => {
       const $ = render('file-upload', {
         errorMessage: {
-          'text': 'Error message'
+          text: 'Error message'
         }
       })
 
@@ -233,10 +233,10 @@ describe('File upload', () => {
       const $ = render('file-upload', {
         id: 'input-with-error',
         errorMessage: {
-          'text': 'Error message'
+          text: 'Error message'
         },
         hint: {
-          'text': 'Hint'
+          text: 'Hint'
         }
       })
 
@@ -259,10 +259,10 @@ describe('File upload', () => {
         id: 'input-with-error',
         describedBy: describedById,
         errorMessage: {
-          'text': 'Error message'
+          text: 'Error message'
         },
         hint: {
-          'text': 'Hint'
+          text: 'Hint'
         }
       })
 

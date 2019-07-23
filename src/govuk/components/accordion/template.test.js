@@ -24,7 +24,7 @@ describe('Accordion', () => {
         items: [
           {
             heading: {
-              'text': 'Section A'
+              text: 'Section A'
             },
             content: {
               text: 'Some content'
@@ -43,7 +43,7 @@ describe('Accordion', () => {
         items: [
           {
             heading: {
-              'html': '<span class="myClass">Section A</span>'
+              html: '<span class="myClass">Section A</span>'
             },
             content: {
               text: 'Some content'
@@ -62,7 +62,7 @@ describe('Accordion', () => {
         items: [
           {
             heading: {
-              'text': 'Section A'
+              text: 'Section A'
             },
             content: {
               text: 'Some content'
@@ -109,7 +109,7 @@ describe('Accordion', () => {
           {
             expanded: true,
             heading: {
-              'text': 'Section A'
+              text: 'Section A'
             },
             content: {
               text: 'Some content'
@@ -129,13 +129,13 @@ describe('Accordion', () => {
           items: [
             {
               heading: {
-                'text': 'Section A'
+                text: 'Section A'
               },
               summary: {
-                'text': 'Summary of content'
+                text: 'Summary of content'
               },
               content: {
-                'text': 'Some content'
+                text: 'Some content'
               }
             }
           ]
