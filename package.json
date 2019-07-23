@@ -28,7 +28,7 @@
     "cheerio": "^1.0.0-rc.3",
     "cookie-parser": "^1.4.4",
     "cssnano": "^4.1.10",
-    "eslint": "^5.16.0",
+    "eslint": "^6.1.0",
     "express": "^4.16.4",
     "express-validator": "^5.3.1",
     "front-matter": "^3.0.2",
@@ -75,7 +75,7 @@
     "sass-color-helpers": "^2.1.1",
     "sassdoc": "^2.7.0",
     "shuffle-seed": "^1.1.6",
-    "standard": "^12.0.1",
+    "standard": "^13.1.0",
     "vinyl-paths": "^2.1.0",
     "yargs": "^13.2.2"
   },
