@@ -5,13 +5,24 @@
 $right-arrow: url("../../../assets/images/arrow-pointing-to-right.svg");
 
 @include govuk-exports("govuk/component/sdn-next-link") {
-
   $text-color: #3a67e8;
 
   .sdn-next-link {
     margin-top: 50px;
     margin-bottom: 50px;
     padding-left: 30px;
+  }
+
+  .sdn-next-link__link {
+    display: inline-block;
+    font-size: 21px;
+    font-weight: 600;
+    text-decoration: none;
+
+    .sdn-next-link__container {
+      display: inline-block;
+      margin-left: 10px;
+    }
 
     &:before {
       content: "";
@@ -23,14 +34,8 @@ $right-arrow: url("../../../assets/images/arrow-pointing-to-right.svg");
       background-repeat: no-repeat;
       background-position: center right;
       background-size: cover;
+      vertical-align: top;
     }
-  }
-
-  .sdn-next-link__link {
-    padding-left: 10px;
-    font-size: 21px;
-    font-weight: 600;
-    text-decoration: none;
 
     small {
       display: block;

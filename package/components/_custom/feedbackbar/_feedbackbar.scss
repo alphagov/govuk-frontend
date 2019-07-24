@@ -35,10 +35,6 @@
 
   .sdn-feedbackbar__useful,
   .sdn-feedbackbar__foundbug {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
     -webkit-flex-wrap: wrap;
         -ms-flex-wrap: wrap;
             flex-wrap: wrap;
@@ -51,10 +47,14 @@
     }
   }
 
-  .sdn-feedbackbar__useful-question {
-    @include govuk-media-query($from: tablet) {
-      margin-right: govuk-spacing(3);
+  .sdn-feedbackbar__foundbug {
+    @include govuk-media-query($until: tablet) {
+      margin-top: govuk-spacing(2);
     }
+  }
+
+  .sdn-feedbackbar__useful-question {
+    margin-right: govuk-spacing(3);
   }
 
   .sdn-feedbackbar__yes,
@@ -116,7 +116,7 @@
   .sdn-feedbackbar__form {
     // margin-right: 3em;
     // background: $sdn-feedbackbar-left-background;
-
+    position: relative;
     border-top: $sdn-feedbackbar-right-background .5em solid;
     border-bottom: $sdn-feedbackbar-right-background .5em solid;
     background: $sdn-feedbackbar-left-background;

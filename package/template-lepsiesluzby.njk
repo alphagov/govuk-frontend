@@ -1,0 +1,63 @@
+{% from "./components/_custom/header/macro.njk" import govukHeader -%}
+{% from "./components/_custom/footer/macro.njk" import govukFooter -%}
+{# specify absolute url for the static assets folder e.g. http://wwww.domain.com/assets #}
+{%- set assetUrl = assetUrl | default(assetPath) -%}
+<!DOCTYPE html>
+<html lang="{{ htmlLang | default('en') }}" class="has-sticky-footer {{ htmlClasses }}">
+  <head>
+    <meta charset="utf-8" />
+    <title>{% block pageTitle %}lepsiesluzby.sk{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="{{ themeColor | default('#0b0c0c') }}" /> {# Hardcoded value of $govuk-black #}
+    {# Ensure that older IE versions always render with the correct rendering engine #}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    {% block headIcons %}
+      <link rel="shortcut icon" sizes="16x16 32x32 48x48" href="{{ assetPath | default('/assets') }}/images/favicon.ico" type="image/x-icon" />
+      <link rel="mask-icon" href="{{ assetPath | default('/assets') }}/images/govuk-mask-icon.svg" color="{{ themeColor | default('#0b0c0c') }}"> {# Hardcoded value of $govuk-black #}
+      <link rel="apple-touch-icon" sizes="180x180" href="{{ assetPath | default('/assets') }}/images/govuk-apple-touch-icon-180x180.png">
+      <link rel="apple-touch-icon" sizes="167x167" href="{{ assetPath | default('/assets') }}/images/govuk-apple-touch-icon-167x167.png">
+      <link rel="apple-touch-icon" sizes="152x152" href="{{ assetPath | default('/assets') }}/images/govuk-apple-touch-icon-152x152.png">
+      <link rel="apple-touch-icon" href="{{ assetPath | default('/assets') }}/images/govuk-apple-touch-icon.png">
+    {% endblock %}
+
+    {% block head %}{% endblock %}
+    {# The default og:image is added below head so that scrapers see any custom metatags first, and this is just a fallback #}
+    {# image url needs to be absolute e.g. http://wwww.domain.com/.../govuk-opengraph-image.png #}
+    <meta property="og:image" content="{{ assetUrl | default('/assets') }}/images/govuk-opengraph-image.png">
+  </head>
+  <body class="govuk-template__body {{ bodyClasses }}">
+    <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+    <div class="navody-template__content">
+
+      {% block header %}
+        {{ govukHeader({
+            "show_search": false,
+            "responsiveClass": "sdn-header-1200",
+            "productName": 'Portál lepsiesluzby.sk',
+            "navigation": [{
+                href: '#1',
+                text: 'O Projekte'
+            },
+                {
+                href: '#2',
+                text: 'Zadané podnety'
+            }]
+        }) }}
+      {% endblock %}
+
+      {% block main %}
+
+      {% endblock %}
+    </div>
+
+    <div class="navody-template__footer">
+
+      {% block footer %}
+        {{ govukFooter({}) }}
+      {% endblock %}
+
+      {% block bodyEnd %}{% endblock %}
+    </div>
+  </body>
+</html>

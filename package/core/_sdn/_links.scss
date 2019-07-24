@@ -5,7 +5,7 @@
   $icon-external-link: url("../../assets/images/icon-external-link.svg");
   $icon-external-link-white: url("../../assets/images/icon-external-link-white.svg");
 
-  a[href*="//"]:not([href*="navody.digital"]):not([href^="#"]):not([href^="/"]):after {
+  a[href*="//"]:not([href*="navody.digital"]):not([href^="#"]):not([href^="/"]):not(.no-arrow):after {
     content: "\00a0\00a0\00a0" !important;
     display: inline-block;
     margin-left: 3px;
@@ -22,7 +22,7 @@
   }
 
   .govuk-button {
-    &[href*="//"]:not([href*="navody.digital"]):not([href^="#"]):not([href^="/"]):after {
+    &[href*="//"]:not([href*="navody.digital"]):not([href^="#"]):not([href^="/"]):not(.no-arrow):after {
       background-image: $icon-external-link-white !important;
     }
   }
