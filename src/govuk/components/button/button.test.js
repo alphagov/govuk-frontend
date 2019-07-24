@@ -3,7 +3,7 @@
 const configPaths = require('../../../../config/paths.json')
 const PORT = configPaths.ports.test
 
-let baseUrl = 'http://localhost:' + PORT
+const baseUrl = 'http://localhost:' + PORT
 
 describe('/components/button', () => {
   describe('/components/button/link', () => {

@@ -5,7 +5,7 @@ const iPhone = devices['iPhone 6']
 const configPaths = require('../../../../config/paths.json')
 const PORT = configPaths.ports.test
 
-let baseUrl = 'http://localhost:' + PORT
+const baseUrl = 'http://localhost:' + PORT
 
 beforeAll(async (done) => {
   await page.emulate(iPhone)

@@ -86,7 +86,7 @@ describe('Warning text', () => {
     const $ = render('warning-text', {
       attributes: {
         'data-test': 'attribute',
-        'id': 'my-warning-text'
+        id: 'my-warning-text'
       }
     })
 

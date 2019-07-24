@@ -55,11 +55,11 @@ describe(`http://localhost:${PORT}`, () => {
   describe('/', () => {
     it('should display the list of components', done => {
       requestPath('/', (err, res) => {
-        let $ = cheerio.load(res.body)
-        let componentsList = $('li a[href^="/components/"]').get()
+        const $ = cheerio.load(res.body)
+        const componentsList = $('li a[href^="/components/"]').get()
         // Since we have an 'all' component link that renders the default example of all
         // components, there will always be one more expected link.
-        let expectedComponentLinks = lib.allComponents.length + 1
+        const expectedComponentLinks = lib.allComponents.length + 1
         expect(componentsList.length).toEqual(expectedComponentLinks)
         done(err)
       })
@@ -77,7 +77,7 @@ describe(`http://localhost:${PORT}`, () => {
       'bodyEnd'
     ])('should have a %s block set', (block, done) => {
       requestPath(templatePath, (err, res) => {
-        let $ = cheerio.load(res.body)
+        const $ = cheerio.load(res.body)
         expect($.html()).toContain(`<!-- block:${block} -->`)
         done(err)
       })
@@ -85,7 +85,7 @@ describe(`http://localhost:${PORT}`, () => {
 
     it('should have additional `htmlClasses`', done => {
       requestPath(templatePath, (err, res) => {
-        let $ = cheerio.load(res.body)
+        const $ = cheerio.load(res.body)
         const $html = $('html')
 
         expect($html.attr('class')).toBe('govuk-template app-html-class')
@@ -95,7 +95,7 @@ describe(`http://localhost:${PORT}`, () => {
 
     it('should have assets overriden', done => {
       requestPath(templatePath, (err, res) => {
-        let $ = cheerio.load(res.body)
+        const $ = cheerio.load(res.body)
         const $linkAsset = $('link[href^="/images/"]')
         expect($linkAsset.length).toBe(6)
         done(err)
@@ -104,7 +104,7 @@ describe(`http://localhost:${PORT}`, () => {
 
     it('should have theme-color overriden', done => {
       requestPath(templatePath, (err, res) => {
-        let $ = cheerio.load(res.body)
+        const $ = cheerio.load(res.body)
         const $linkMaskIcon = $('link[rel="mask-icon"]')
         const $metaThemeColor = $('meta[name="theme-color"]')
 
@@ -116,7 +116,7 @@ describe(`http://localhost:${PORT}`, () => {
 
     it('should have additional `bodyClasses`', done => {
       requestPath(templatePath, (err, res) => {
-        let $ = cheerio.load(res.body)
+        const $ = cheerio.load(res.body)
         const $body = $('body')
 
         expect($body.attr('class')).toBe('govuk-template__body app-body-class')
@@ -126,7 +126,7 @@ describe(`http://localhost:${PORT}`, () => {
 
     it('should have `pageTitle` overriden', done => {
       requestPath(templatePath, (err, res) => {
-        let $ = cheerio.load(res.body)
+        const $ = cheerio.load(res.body)
         const $title = $('title')
 
         expect($title.html()).toBe('GOV.UK - Le meilleur endroit pour trouver des services gouvernementaux et de l&apos;information')
@@ -136,7 +136,7 @@ describe(`http://localhost:${PORT}`, () => {
 
     it('should have an application stylesheet', done => {
       requestPath(templatePath, (err, res) => {
-        let $ = cheerio.load(res.body)
+        const $ = cheerio.load(res.body)
         const $appStylesheet = $('link[href="/public/app.css"]')
         expect($appStylesheet.length).toBe(1)
         done(err)
@@ -145,7 +145,7 @@ describe(`http://localhost:${PORT}`, () => {
 
     it('should have a custom Skip link component', done => {
       requestPath(templatePath, (err, res) => {
-        let $ = cheerio.load(res.body)
+        const $ = cheerio.load(res.body)
         const $skipLink = $('.govuk-skip-link')
         expect($skipLink.html()).toBe('Passer au contenu principal')
         done(err)
@@ -154,7 +154,7 @@ describe(`http://localhost:${PORT}`, () => {
 
     it('should have a custom Header component', done => {
       requestPath(templatePath, (err, res) => {
-        let $ = cheerio.load(res.body)
+        const $ = cheerio.load(res.body)
         const $header = $('.govuk-header')
         const $serviceName = $header.find('.govuk-header__link--service-name')
         expect($serviceName.html()).toContain('Nom du service')
@@ -164,7 +164,7 @@ describe(`http://localhost:${PORT}`, () => {
 
     it('should have a Phase banner component', done => {
       requestPath.get(templatePath, (err, res) => {
-        let $ = cheerio.load(res.body)
+        const $ = cheerio.load(res.body)
         const $phaseBanner = $('.govuk-phase-banner')
         const $text = $phaseBanner.find('.govuk-phase-banner__text')
         expect($text.html()).toContain('C&apos;est un nouveau service - vos <a class="govuk-link" href="#">commentaires</a> nous aideront &#xE0; l&apos;am&#xE9;liorer.')
@@ -174,7 +174,7 @@ describe(`http://localhost:${PORT}`, () => {
 
     it('should have a custom Footer component', done => {
       requestPath.get(templatePath, (err, res) => {
-        let $ = cheerio.load(res.body)
+        const $ = cheerio.load(res.body)
         const $footer = $('.govuk-footer')
         const $footerLink = $footer.find('.govuk-footer__link')
         expect($footerLink.html()).toContain('Aidez-moi')
@@ -184,7 +184,7 @@ describe(`http://localhost:${PORT}`, () => {
 
     it('should have `content` within the main section of the page', done => {
       requestPath.get(templatePath, (err, res) => {
-        let $ = cheerio.load(res.body)
+        const $ = cheerio.load(res.body)
         const $main = $('main')
 
         expect($main.html()).toContain('<!-- block:content -->')
@@ -194,7 +194,7 @@ describe(`http://localhost:${PORT}`, () => {
 
     it('should have `beforeContent` outside the main section of the page', done => {
       requestPath.get(templatePath, (err, res) => {
-        let $ = cheerio.load(res.body)
+        const $ = cheerio.load(res.body)
         const $container = $('.govuk-width-container')
         const $phaseBanner = $container.find('> .govuk-phase-banner')
         const $backLink = $container.find('> .govuk-back-link')
@@ -207,7 +207,7 @@ describe(`http://localhost:${PORT}`, () => {
 
     it('should have set `mainClasses`', done => {
       requestPath.get(templatePath, (err, res) => {
-        let $ = cheerio.load(res.body)
+        const $ = cheerio.load(res.body)
         const $main = $('main')
 
         expect($main.attr('class')).toBe('govuk-main-wrapper govuk-main-wrapper--auto-spacing app-main-class')

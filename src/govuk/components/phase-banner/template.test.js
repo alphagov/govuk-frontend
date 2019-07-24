@@ -74,8 +74,8 @@ describe('Phase banner', () => {
 
     it('renders the tag component html', () => {
       const $ = render('phase-banner', {
-        'tag': {
-          'html': '<em>alpha</em>'
+        tag: {
+          html: '<em>alpha</em>'
         }
       })
 
@@ -84,9 +84,9 @@ describe('Phase banner', () => {
 
     it('renders the tag component classes', () => {
       const $ = render('phase-banner', {
-        'tag': {
-          'text': 'alpha',
-          'classes': 'govuk-tag--inactive'
+        tag: {
+          text: 'alpha',
+          classes: 'govuk-tag--inactive'
         }
       })
 

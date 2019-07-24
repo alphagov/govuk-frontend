@@ -17,7 +17,7 @@ describe('Data list', () => {
       rules: {
         // In newer versions of the HTML specification wrapper
         // <div>s are allowed in a definition list
-        'dlitem': { enabled: false },
+        dlitem: { enabled: false },
         'definition-list': { enabled: false }
       }
     })

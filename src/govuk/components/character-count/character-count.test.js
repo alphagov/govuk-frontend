@@ -5,7 +5,7 @@ const PORT = configPaths.ports.test
 const baseUrl = `http://localhost:${PORT}`
 
 const goToExample = (exampleName = false) => {
-  let url = exampleName
+  const url = exampleName
     ? `${baseUrl}/components/character-count/${exampleName}/preview`
     : `${baseUrl}/components/character-count/preview`
 

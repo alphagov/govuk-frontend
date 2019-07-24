@@ -17,7 +17,7 @@ const isDist = taskArguments.destination === 'dist' || false
 // Add all.package.json version
 // ----------------------------------
 gulp.task('update-assets-version', () => {
-  let pkg = require('../../' + configPaths.package + 'package.json')
+  const pkg = require('../../' + configPaths.package + 'package.json')
   fs.writeFileSync(taskArguments.destination + '/VERSION.txt', pkg.version + '\r\n')
   return gulp.src([
     taskArguments.destination + '/govuk-frontend.min.css',

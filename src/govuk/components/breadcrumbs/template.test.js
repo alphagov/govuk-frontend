@@ -30,8 +30,8 @@ describe('Breadcrumbs', () => {
     it('renders with attributes', () => {
       const $ = render('breadcrumbs', {
         attributes: {
-          'id': 'my-navigation',
-          'role': 'navigation'
+          id: 'my-navigation',
+          role: 'navigation'
         }
       })
 
@@ -44,10 +44,10 @@ describe('Breadcrumbs', () => {
       const $ = render('breadcrumbs', {
         items: [
           {
-            'text': 'Section 1'
+            text: 'Section 1'
           },
           {
-            'text': 'Sub-section'
+            text: 'Sub-section'
           }
         ]
       })
@@ -60,7 +60,7 @@ describe('Breadcrumbs', () => {
       const $ = render('breadcrumbs', {
         items: [
           {
-            'text': 'Section 1'
+            text: 'Section 1'
           }
         ]
       })
@@ -73,7 +73,7 @@ describe('Breadcrumbs', () => {
       const $ = render('breadcrumbs', {
         items: [
           {
-            'text': '<span>Section 1</span>'
+            text: '<span>Section 1</span>'
           }
         ]
       })
@@ -86,9 +86,9 @@ describe('Breadcrumbs', () => {
       const $ = render('breadcrumbs', {
         items: [
           {
-            'text': 'Section 1',
-            'href': '/section',
-            'attributes': {
+            text: 'Section 1',
+            href: '/section',
+            attributes: {
               'data-attribute': 'my-attribute',
               'data-attribute-2': 'my-attribute-2'
             }
@@ -105,7 +105,7 @@ describe('Breadcrumbs', () => {
       const $ = render('breadcrumbs', {
         items: [
           {
-            'html': '<em>Section 1</em>'
+            html: '<em>Section 1</em>'
           }
         ]
       })
@@ -118,8 +118,8 @@ describe('Breadcrumbs', () => {
       const $ = render('breadcrumbs', {
         items: [
           {
-            'text': 'Section 1',
-            'href': '/section'
+            text: 'Section 1',
+            href: '/section'
           }
         ]
       })
@@ -135,8 +135,8 @@ describe('Breadcrumbs', () => {
       const $ = render('breadcrumbs', {
         items: [
           {
-            'html': '<em>Section 1</em>',
-            'href': '/section'
+            html: '<em>Section 1</em>',
+            href: '/section'
           }
         ]
       })

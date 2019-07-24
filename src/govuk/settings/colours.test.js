@@ -5,7 +5,7 @@ const { renderSass } = require('../../../lib/jest-helpers')
 const configPaths = require('../../../config/paths.json')
 
 const sassConfig = {
-  includePaths: [ configPaths.src, 'node_modules/' ],
+  includePaths: [configPaths.src, 'node_modules/'],
   outputStyle: 'compressed'
 }
 

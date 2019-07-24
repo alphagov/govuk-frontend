@@ -54,13 +54,13 @@ describe('Date input', () => {
       const $ = render('date-input', {
         items: [
           {
-            'name': 'day'
+            name: 'day'
           },
           {
-            'name': 'month'
+            name: 'month'
           },
           {
-            'name': 'year'
+            name: 'year'
           }
         ]
       })
@@ -83,20 +83,20 @@ describe('Date input', () => {
       const $ = render('date-input', {
         items: [
           {
-            'name': 'day',
-            'attributes': {
+            name: 'day',
+            attributes: {
               'data-example-day': 'day'
             }
           },
           {
-            'name': 'month',
-            'attributes': {
+            name: 'month',
+            attributes: {
               'data-example-month': 'month'
             }
           },
           {
-            'name': 'year',
-            'attributes': {
+            name: 'year',
+            attributes: {
               'data-example-year': 'year'
             }
           }
@@ -116,13 +116,13 @@ describe('Date input', () => {
       const $ = render('date-input', {
         items: [
           {
-            'name': 'day'
+            name: 'day'
           },
           {
-            'name': 'month'
+            name: 'month'
           },
           {
-            'name': 'year'
+            name: 'year'
           }
         ]
       })
@@ -135,7 +135,7 @@ describe('Date input', () => {
       const $ = render('date-input', {
         items: [
           {
-            'name': 'day'
+            name: 'day'
           }
         ]
       })
@@ -148,7 +148,7 @@ describe('Date input', () => {
       const $ = render('date-input', {
         items: [
           {
-            'name': 'day'
+            name: 'day'
           }
         ]
       })
@@ -161,8 +161,8 @@ describe('Date input', () => {
       const $ = render('date-input', {
         items: [
           {
-            'name': 'day',
-            'pattern': '[0-8]*'
+            name: 'day',
+            pattern: '[0-8]*'
           }
         ]
       })
@@ -175,13 +175,13 @@ describe('Date input', () => {
       const $ = render('date-input', {
         items: [
           {
-            'name': 'day'
+            name: 'day'
           },
           {
-            'name': 'month'
+            name: 'month'
           },
           {
-            'name': 'year'
+            name: 'year'
           }
         ]
       })
@@ -194,13 +194,13 @@ describe('Date input', () => {
       const $ = render('date-input', {
         items: [
           {
-            'name': 'day'
+            name: 'day'
           },
           {
-            'name': 'month'
+            name: 'month'
           },
           {
-            'name': 'year'
+            name: 'year'
           }
         ]
       })
@@ -213,13 +213,13 @@ describe('Date input', () => {
       const $ = render('date-input', {
         items: [
           {
-            'name': 'date[dd]'
+            name: 'date[dd]'
           },
           {
-            'name': 'date[mm]'
+            name: 'date[mm]'
           },
           {
-            'name': 'date[yyy]'
+            name: 'date[yyy]'
           }
         ]
       })
@@ -233,13 +233,13 @@ describe('Date input', () => {
         namePrefix: 'my-date-input',
         items: [
           {
-            'name': 'day'
+            name: 'day'
           },
           {
-            'name': 'month'
+            name: 'month'
           },
           {
-            'name': 'year'
+            name: 'year'
           }
         ]
       })
@@ -252,13 +252,13 @@ describe('Date input', () => {
       const $ = render('date-input', {
         items: [
           {
-            'id': 'day'
+            id: 'day'
           },
           {
-            'id': 'month'
+            id: 'month'
           },
           {
-            'id': 'year'
+            id: 'year'
           }
         ]
       })
@@ -272,13 +272,13 @@ describe('Date input', () => {
         id: 'my-date-input',
         items: [
           {
-            'name': 'day'
+            name: 'day'
           },
           {
-            'name': 'month'
+            name: 'month'
           },
           {
-            'name': 'year'
+            name: 'year'
           }
         ]
       })
@@ -527,16 +527,16 @@ describe('Date input', () => {
     const $ = render('date-input', {
       items: [
         {
-          'name': 'day',
-          'classes': 'app-date-input__day'
+          name: 'day',
+          classes: 'app-date-input__day'
         },
         {
-          'name': 'month',
-          'classes': 'app-date-input__month'
+          name: 'month',
+          classes: 'app-date-input__month'
         },
         {
-          'name': 'year',
-          'classes': 'app-date-input__year'
+          name: 'year',
+          classes: 'app-date-input__year'
         }
       ]
     })
@@ -553,13 +553,13 @@ describe('Date input', () => {
     const $ = render('date-input', {
       items: [
         {
-          'name': 'day'
+          name: 'day'
         },
         {
-          'name': 'month'
+          name: 'month'
         },
         {
-          'name': 'year'
+          name: 'year'
         }
       ]
     })
@@ -577,13 +577,13 @@ describe('Date input', () => {
       const $ = render('date-input', {
         items: [
           {
-            'autocomplete': 'bday-day'
+            autocomplete: 'bday-day'
           },
           {
-            'autocomplete': 'bday-month'
+            autocomplete: 'bday-month'
           },
           {
-            'autocomplete': 'bday-year'
+            autocomplete: 'bday-year'
           }
         ]
       })

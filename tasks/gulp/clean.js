@@ -10,7 +10,7 @@ const del = require('del')
 // ------------------------------------------------------
 
 gulp.task('clean', () => {
-  let destination = taskArguments.destination
+  const destination = taskArguments.destination
 
   if (destination === 'package') {
     return del([
