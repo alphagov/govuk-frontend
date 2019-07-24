@@ -33,9 +33,9 @@ You must do the following.
 
 ###### Update file paths
 
-You must add `govuk/` to your import file paths.
+You must add `govuk/` to your import paths.
 
-If you're importing `node_modules/govuk-frontend/all.js` in your code, change this file path to `node_modules/govuk-frontend/govuk/all.js`.
+If you're importing `node_modules/govuk-frontend/all.js`, change this import path to `node_modules/govuk-frontend/govuk/all.js`.
 
 If you’re importing a specific path, add `govuk/` after `govuk-frontend/`. For example, if you're importing the button component:
 
@@ -47,7 +47,7 @@ import Button from 'govuk-frontend/govuk/components/button/button'
 
 You do not need to do anything if you're using Nunjucks macros and the [`initAll`](https://github.com/alphagov/govuk-frontend/blob/master/docs/installation/installing-with-npm.md#option-1-include-javascript) function.
 
-If you are not using the Nunjucks macros, add a `govuk-` prefix to `data-module` attribute values. For example:
+If you are not using Nunjucks macros, add a `govuk-` prefix to `data-module` attribute values. For example:
 
 ```html
 <div class="govuk-accordion" data-module="govuk-accordion">
@@ -77,7 +77,7 @@ If you're using HTML or custom JavaScript, change:
 
 ##### If you’re using Nunjucks
 
-1. Change your `nunjucks.configure` property so that the only GOV.UK Frontend directory it contains is `node_modules/govuk-frontend/`:
+1. Change your `nunjucks.configure` object so that the only GOV.UK Frontend directory it contains is `node_modules/govuk-frontend/`:
 
 ```nunjucks
 nunjucks.configure([
@@ -91,7 +91,7 @@ nunjucks.configure([
 {% extends "govuk/template.njk" %}
 ```
 
-3. Update the import paths in your components so they include `govuk/components/`. For example:
+3. Change the import paths in your components so they include `govuk/components/`. For example:
 
 ```nunjucks
 {% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
@@ -99,7 +99,7 @@ nunjucks.configure([
 
 ##### Update asset paths
 
-Update the assets path to include the `govuk/` directory:
+In the assets path, add `govuk/` after `govuk-frontend/`:
 
 `/node_modules/govuk-frontend/govuk/assets`
 
@@ -117,9 +117,9 @@ Pull requests:
 
 The focus state of components now meets the new WCAG 2.1 level AA requirements.
 
-You must update your component’s focus state to make your design consistent with our new focus styles.
+You must update your component’s focus state to make your design is consistent with our new focus styles.
 
-If you've extended or created components, you can no longer use the `govuk-focusable` or `govuk-focusable-fill` mixins in your Sass files.
+If you've extended or created components, you can no longer use the `govuk-focusable` or `govuk-focusable-fill` Sass mixins.
 
 If you're using `govuk-focusable`, you must remove it. There’s no direct replacement, so you must use our Sass variables to make your components consistent with GOV.UK Frontend.
 
@@ -209,9 +209,11 @@ If there are links back to radios or checkboxes components in your error summary
 
 #### Update the markup for tabs
 
-You do not need to do anything if you're using the Nunjucks macros.
+You do not need to do anything if you're using Nunjucks macros.
 
-If you are not using the Nunjucks macros, remove the `govuk-tabs__tab--selected` class from the first tab's link, then add the `govuk-tabs__list-item--selected` class to the link's parent list item.
+If you are not using Nunjucks macros, remove the `govuk-tabs__tab--selected` class from the first tab's link, then add the `govuk-tabs__list-item--selected` class to that link's parent list item.
+
+For example:
 
 ```html
 <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
@@ -262,7 +264,7 @@ For example, to align text in the centre:
 
 [Pull request #1345: Set 'vertical-align:top' positioning on table headers and cells](https://github.com/alphagov/govuk-frontend/pull/1345)
 
-#### Replace mixins in grids
+#### Replace Sass mixins in grids
 
 If you're using the `@govuk-grid-column` Sass mixin to create custom grid classes, you must remove the `$class` parameter.
 
@@ -301,13 +303,13 @@ You can now add attributes like classes, rowspan and colspan to table row header
 
 #### Use page wrapper auto spacing
 
-You can now use the the `.govuk-main-wrapper--auto-spacing` modifier on the main wrapper.
+You can now add the `.govuk-main-wrapper--auto-spacing` modifier class to your `<main>` element to add responsive padding to the top and bottom of the page.
 
-This will apply the correct spacing depending on whether there are any elements (such the back link, breadcrumbs or phase banner components) before the `.govuk-main-wrapper` in the `.govuk-width-container`.
+This will add the correct amount of padding depending on if there are elements above the `<main>` element inside the `govuk-width-container` wrapper, like a back link or breadcrumbs component.
 
 If you need to control the spacing manually, use the `.govuk-main-wrapper--l` modifier instead.
 
-The `govuk-main-wrapper` and `govuk-main-wrapper--l` mixins are now deprecated. [Contact us](https://design-system.service.gov.uk/get-in-touch/) if you need to continue using these mixins.
+The `govuk-main-wrapper` and `govuk-main-wrapper--l` Sass mixins are now deprecated. [Contact us](https://design-system.service.gov.uk/get-in-touch/) if you need to continue using these mixins.
 
 [Pull request #1493: Add automatic vertical spacing modifier for main wrapper](https://github.com/alphagov/govuk-frontend/pull/1493)
 
