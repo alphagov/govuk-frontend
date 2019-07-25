@@ -77,7 +77,7 @@ If you're using HTML or custom JavaScript, change:
 
 ##### If you’re using Nunjucks
 
-1. Change your `nunjucks.configure` object so that the only GOV.UK Frontend directory it contains is `node_modules/govuk-frontend/`:
+1. Change your `nunjucks.configure` function so that the only GOV.UK Frontend directory it contains is `node_modules/govuk-frontend/`:
 
 ```nunjucks
 nunjucks.configure([
@@ -117,7 +117,7 @@ Pull requests:
 
 The focus state of components now meets the new WCAG 2.1 level AA requirements.
 
-You must update your component’s focus state to make your design is consistent with our new focus styles.
+You must update your component’s focus state to make your design consistent with our new focus styles.
 
 If you've extended or created components, you can no longer use the `govuk-focusable` or `govuk-focusable-fill` Sass mixins.
 
@@ -305,7 +305,7 @@ You can now add attributes like classes, rowspan and colspan to table row header
 
 You can now add the `.govuk-main-wrapper--auto-spacing` modifier class to your `<main>` element to add responsive padding to the top and bottom of the page.
 
-This will add the correct amount of padding depending on if there are elements above the `<main>` element inside the `govuk-width-container` wrapper, like a back link or breadcrumbs component.
+This will add the correct amount of padding depending on if there are elements above the `<main>` element inside the `govuk-width-container` wrapper. Elements above the `<main>` element could include a back link or breadcrumb component.
 
 If you need to control the spacing manually, use the `.govuk-main-wrapper--l` modifier instead.
 
