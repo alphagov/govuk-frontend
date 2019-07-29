@@ -1,0 +1,118 @@
+@import "../../settings/all";
+@import "../../tools/all";
+@import "../../helpers/all";
+
+@include govuk-exports("govuk/component/breadcrumbs") {
+
+  // Size of chevron (excluding border)
+  $chevron-size: 7px;
+
+  // Size of chevron border
+  $chevron-border-width: 1px;
+
+  // Colour of chevron
+  $chevron-border-colour: $govuk-secondary-text-colour;
+
+  // Calculated altitude (△↕) of the right-angled isosceles chevron with sides
+  // of length 8 (7px + 1px border):
+  //
+  // √(8² + 8²) * 0.5 ≅ 5.655
+  $chevron-altitude-calculated: 5.655px;
+
+  .govuk-breadcrumbs {
+    @include govuk-font($size: 16);
+    @include govuk-text-colour;
+
+    margin-top: govuk-spacing(3);
+    margin-bottom: govuk-spacing(2);
+  }
+
+  .govuk-breadcrumbs__list {
+    @include govuk-clearfix;
+
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  .govuk-breadcrumbs__list-item {
+
+    display: inline-block;
+    position: relative;
+
+    margin-bottom: govuk-spacing(1);
+
+    // Add both margin and padding such that the chevron appears centrally
+    // between each breadcrumb item
+    margin-left: govuk-spacing(2);
+    padding-left: govuk-spacing(2) + $chevron-altitude-calculated;
+
+    float: left;
+
+    // Create a chevron using a box with borders on two sides, rotated 45deg.
+    &:before {
+      content: "";
+      display: block;
+
+      position: absolute;
+
+      @if $govuk-use-legacy-font {
+        // Begin adjustments for font baseline offset
+        // These should be removed when legacy font support is dropped
+        top: -1px;
+        bottom: 1px;
+
+      } @else {
+        top: 0;
+        bottom: 0;
+      }
+
+      // Offset by the difference between the width of the non-rotated square
+      // and its width when rotated
+      left: (($chevron-altitude-calculated * -2) + $chevron-size + $chevron-border-width);
+
+      width: $chevron-size;
+      height: $chevron-size;
+
+      margin: auto 0;
+
+      -webkit-transform: rotate(45deg);
+
+          -ms-transform: rotate(45deg);
+
+              transform: rotate(45deg);
+
+      border: solid;
+      border-width: $chevron-border-width $chevron-border-width 0 0;
+      border-color: $chevron-border-colour;
+
+      // Fall back to a greater than sign for IE8
+      @include govuk-if-ie8 {
+        content: "\003e"; // Greater than sign (>)
+        width: auto;
+        height: auto;
+        border: 0;
+        color: $chevron-border-colour;
+
+        // IE8 doesn't seem to like rendering pseudo-elements using @font-faces,
+        // so fall back to using another sans-serif font to render the chevron.
+        font-family: Arial, sans-serif;
+      }
+    }
+
+    &:first-child {
+      margin-left: 0;
+      padding-left: 0;
+
+      &:before {
+        content: none;
+        display: none;
+      }
+    }
+  }
+
+  .govuk-breadcrumbs__link {
+    @include govuk-link-common;
+    @include govuk-link-style-text;
+  }
+}

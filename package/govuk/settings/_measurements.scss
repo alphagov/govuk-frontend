@@ -1,0 +1,106 @@
+////
+/// @group settings/measurements
+////
+
+
+
+// =========================================================
+// Page layout
+// =========================================================
+
+/// Width of main container
+///
+/// @type Number
+/// @access public
+
+$govuk-page-width: 960px !default;
+
+/// Map of grid column widths
+///
+/// @type Map
+/// @access public
+
+$govuk-grid-widths: (
+  one-quarter: 25%,
+  one-third: 33.3333%,
+  one-half: 50%,
+  two-thirds: 66.6666%,
+  three-quarters: 75%,
+  full: 100%
+) !default;
+
+/// Width of gutter between grid columns
+///
+/// @type Number
+/// @access public
+
+$govuk-gutter: 30px !default;
+
+/// Width of half the gutter between grid columns
+///
+/// @type Number
+/// @access public
+
+$govuk-gutter-half: $govuk-gutter / 2;
+
+
+
+// =========================================================
+// Borders
+// =========================================================
+
+/// Standard border width
+///
+/// @type Number
+/// @access public
+
+$govuk-border-width: 5px !default;
+
+/// Wide border width
+///
+/// @type Number
+/// @access public
+
+$govuk-border-width-wide: 10px !default;
+
+/// Narrow border width
+///
+/// @type Number
+/// @access public
+
+$govuk-border-width-narrow: 4px !default;
+
+/// Form control border width
+///
+/// @type Number
+/// @access public
+
+$govuk-border-width-form-element: 2px !default;
+
+/// Form control border width when in error state
+///
+/// @type Number
+/// @access public
+
+$govuk-border-width-form-element-error: 4px !default;
+
+/// Form group border width when in error state
+///
+/// @type Number
+/// @access public
+
+$govuk-border-width-form-group-error: $govuk-border-width !default;
+
+/// Border width of focus outline
+///
+/// @type Number
+/// @access public
+
+$govuk-focus-width: 3px !default;
+
+/// Hover width for form controls with a hover state
+///
+/// @type Number
+/// @access public
+
+$govuk-hover-width: 10px !default;

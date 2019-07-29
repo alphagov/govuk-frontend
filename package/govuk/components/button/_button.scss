@@ -1,0 +1,279 @@
+@import "../../settings/all";
+@import "../../tools/all";
+@import "../../helpers/all";
+
+@include govuk-exports("govuk/component/button") {
+  $govuk-button-colour: govuk-colour("green", $legacy: #00823b); // sass-lint:disable no-color-literals
+  $govuk-button-hover-colour: govuk-shade($govuk-button-colour, 20%);
+  $govuk-button-shadow-colour: govuk-shade($govuk-button-colour, 60%);
+  $govuk-button-text-colour: govuk-colour("white");
+
+  // Secondary button variables
+  $govuk-secondary-button-colour: govuk-colour("light-grey", $legacy: "grey-3");
+  $govuk-secondary-button-hover-colour: govuk-shade($govuk-secondary-button-colour, 10%);
+  $govuk-secondary-button-shadow-colour: govuk-shade($govuk-secondary-button-colour, 40%);
+  $govuk-secondary-button-text-colour: govuk-colour("black");
+
+  // Warning button variables
+  $govuk-warning-button-colour: govuk-colour("red");
+  $govuk-warning-button-hover-colour: govuk-shade($govuk-warning-button-colour, 20%);
+  $govuk-warning-button-shadow-colour: govuk-shade($govuk-warning-button-colour, 60%);
+  $govuk-warning-button-text-colour: govuk-colour("white");
+
+  // Because the shadow (s0) is visually 'part of' the button, we need to reduce
+  // the height of the button to compensate by adjusting its padding (s1) and
+  // increase the bottom margin to include it (s2).
+  $button-shadow-size: $govuk-border-width-form-element;
+
+  .govuk-button {
+    @include govuk-font($size: 19, $line-height: 19px);
+
+    box-sizing: border-box;
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    margin-top: 0;
+    @include govuk-responsive-margin(6, "bottom", $adjustment: $button-shadow-size); // s2
+    padding: (govuk-spacing(2) - $govuk-border-width-form-element) govuk-spacing(2) (govuk-spacing(2) - $govuk-border-width-form-element - ($button-shadow-size / 2)); // s1
+    border: $govuk-border-width-form-element solid transparent;
+    border-radius: 0;
+    color: $govuk-button-text-colour;
+    background-color: $govuk-button-colour;
+    box-shadow: 0 $button-shadow-size 0 $govuk-button-shadow-colour; // s0
+    text-align: center;
+    vertical-align: top;
+    cursor: pointer;
+    -webkit-appearance: none;
+
+    @include govuk-if-ie8 {
+      border-bottom: $button-shadow-size solid $govuk-button-shadow-colour;
+    }
+
+    @include govuk-media-query($from: tablet) {
+      width: auto;
+    }
+
+    // Ensure that any global link styles are overridden
+    &:link,
+    &:visited,
+    &:active,
+    &:hover {
+      color: $govuk-button-text-colour;
+      text-decoration: none;
+    }
+
+    // Fix unwanted button padding in Firefox
+    &::-moz-focus-inner {
+      padding: 0;
+      border: 0;
+    }
+
+    &:hover {
+      background-color: $govuk-button-hover-colour;
+    }
+
+    &:active {
+      // Bump the button down so it looks like its being pressed in
+      top: $button-shadow-size;
+
+      @include govuk-if-ie8 {
+        border-bottom-width: 0;
+      }
+    }
+
+    &:focus {
+      border-color: $govuk-focus-colour;
+      // When colours are overridden, for example when users have a dark mode,
+      // backgrounds and box-shadows disappear, so we need to ensure there's a
+      // transparent outline which will be set to a visible colour.
+      // Since Internet Explorer 8 does not support box-shadow, we want to force the user-agent outlines
+      @include govuk-not-ie8 {
+        outline: $govuk-focus-width solid transparent;
+      }
+      // Since Internet Explorer does not support `:not()` we set a clearer focus style to match user-agent outlines.
+      @include govuk-if-ie8 {
+        color: $govuk-focus-text-colour;
+        background-color: $govuk-focus-colour;
+      }
+      box-shadow: inset 0 0 0 1px $govuk-focus-colour;
+    }
+
+    &:focus:not(:active):not(:hover) {
+      border-color: $govuk-focus-colour;
+      color: $govuk-focus-text-colour;
+      background-color: $govuk-focus-colour;
+      box-shadow: 0 2px 0 $govuk-focus-text-colour;
+    }
+
+    // The following adjustments do not work for <input type="button"> as
+    // non-container elements cannot include pseudo elements (i.e. ::before).
+
+    // Use a pseudo element to expand the click target area to include the
+    // button's shadow as well, in case users try to click it.
+    &::before {
+      content: "";
+      display: block;
+
+      position: absolute;
+
+      top: -$govuk-border-width-form-element;
+      right: -$govuk-border-width-form-element;
+      bottom: -($govuk-border-width-form-element + $button-shadow-size);
+      left: -$govuk-border-width-form-element;
+
+      background: transparent;
+    }
+
+    // When the button is active it is shifted down by $button-shadow-size to
+    // denote a 'pressed' state. If the user happened to click at the very top
+    // of the button, their mouse is no longer over the button (because it has
+    // 'moved beneath them') and so the click event is not fired.
+    //
+    // This corrects that by shifting the top of the pseudo element so that it
+    // continues to cover the area that the user originally clicked, which means
+    // the click event is still fired.
+    //
+    // 🎉
+    &:active::before {
+      top: -($govuk-border-width-form-element + $button-shadow-size);
+    }
+  }
+
+  .govuk-button--disabled,
+  .govuk-button[disabled="disabled"],
+  .govuk-button[disabled] {
+    opacity: (.5);
+
+    &:hover {
+      background-color: $govuk-button-colour;
+      cursor: default;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:active {
+      top: 0;
+      box-shadow: 0 $button-shadow-size 0 $govuk-button-shadow-colour; // s0
+      @include govuk-if-ie8 {
+        border-bottom: $button-shadow-size solid $govuk-button-shadow-colour; // s0
+      }
+    }
+  }
+
+  .govuk-button--secondary {
+    background-color: $govuk-secondary-button-colour;
+    box-shadow: 0 $button-shadow-size 0 $govuk-secondary-button-shadow-colour;
+
+    &,
+    &:link,
+    &:visited,
+    &:active,
+    &:hover {
+      color: $govuk-secondary-button-text-colour;
+    }
+
+    // alphagov/govuk_template includes a specific a:link:focus selector
+    // designed to make unvisited links a slightly darker blue when focussed, so
+    // we need to override the text colour for that combination of selectors so
+    // so that unvisited links styled as buttons do not end up with dark blue
+    // text when focussed.
+    @include govuk-compatibility(govuk_template) {
+      &:link:focus {
+        color: $govuk-secondary-button-text-colour;
+      }
+    }
+
+    &:hover {
+      background-color: $govuk-secondary-button-hover-colour;
+
+      &[disabled] {
+        background-color: $govuk-secondary-button-colour;
+      }
+    }
+  }
+
+  .govuk-button--warning {
+    background-color: $govuk-warning-button-colour;
+    box-shadow: 0 $button-shadow-size 0 $govuk-warning-button-shadow-colour;
+
+    &,
+    &:link,
+    &:visited,
+    &:active,
+    &:hover {
+      color: $govuk-warning-button-text-colour;
+    }
+
+    // alphagov/govuk_template includes a specific a:link:focus selector
+    // designed to make unvisited links a slightly darker blue when focussed, so
+    // we need to override the text colour for that combination of selectors so
+    // so that unvisited links styled as buttons do not end up with dark blue
+    // text when focussed.
+    @include govuk-compatibility(govuk_template) {
+      &:link:focus {
+        color: $govuk-warning-button-text-colour;
+      }
+    }
+
+    &:hover {
+      background-color: $govuk-warning-button-hover-colour;
+
+      &[disabled] {
+        background-color: $govuk-warning-button-colour;
+      }
+    }
+  }
+
+  .govuk-button--start {
+    @include govuk-typography-weight-bold;
+    @include govuk-typography-responsive($size: 24, $override-line-height: 1);
+
+    display: -webkit-inline-box;
+
+    display: -webkit-inline-flex;
+
+    display: -ms-inline-flexbox;
+
+    display: inline-flex;
+    min-height: auto;
+
+    -webkit-box-pack: center;
+
+    -webkit-justify-content: center;
+
+        -ms-flex-pack: center;
+
+            justify-content: center;
+  }
+
+  .govuk-button__start-icon {
+    margin-left: govuk-spacing(1);
+
+    @include govuk-media-query($from: desktop) {
+      margin-left: govuk-spacing(2);
+    }
+    vertical-align: middle;
+    -webkit-flex-shrink: 0;
+        -ms-flex-negative: 0;
+            flex-shrink: 0;
+    -webkit-align-self: center;
+        -ms-flex-item-align: center;
+            align-self: center;
+  }
+
+  @if $govuk-use-legacy-font {
+    // Begin adjustments for font baseline offset when using v1 of nta
+    $offset: 2;
+
+    .govuk-button {
+      padding-top: (govuk-spacing(2) - $govuk-border-width-form-element - ($button-shadow-size / 2) + $offset); // s1
+      padding-bottom: (govuk-spacing(2) - $govuk-border-width-form-element - ($button-shadow-size / 2) - $offset + 1); // s1
+    }
+
+    .govuk-button__start-icon {
+      margin-top: -3px;
+    }
+  }
+}
