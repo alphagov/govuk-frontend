@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased 3.0.0 (Breaking release)
+## 3.0.0 (Breaking release)
 
 ### Breaking changes
 You must make the following changes when you migrate to this release, or your service may break.

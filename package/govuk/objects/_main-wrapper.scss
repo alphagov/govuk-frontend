@@ -1,0 +1,67 @@
+@import "../settings/all";
+@import "../tools/all";
+@import "../helpers/all";
+
+// Example usage with Breadcrumbs, phase banners, back links:
+// <div class="govuk-width-container">
+//   <!-- Breadcrumbs, phase banners, back links are placed in here. -->
+//   <div class="govuk-main-wrapper">
+//       <!-- Wrapper for the main content of your page which applies padding
+//            to the top / bottom -->
+//   </div>
+// </div>
+//
+// Example usage without Breadcrumbs, phase banners, back links:
+// <div class="govuk-width-container">
+//   <div class="govuk-main-wrapper govuk-main-wrapper--l">
+//       <!-- Wrapper for the main content of your page which applies padding
+//            to the top / bottom -->
+//   </div>
+// </div>
+
+
+/// @deprecated Replace this mixin with more direct references to the [spacing
+/// mixins](https://design-system.service.gov.uk/styles/spacing/#spacing-on-custom-components).
+@mixin govuk-main-wrapper {
+  // In IE11 the `main` element can be used, but is not recognized  –
+  // meaning it's not defined in IE's default style sheet,
+  // so it uses CSS initial value, which is inline.
+  display: block;
+  padding-top: govuk-spacing(4);
+  padding-bottom: govuk-spacing(4);
+
+  @include govuk-media-query($from: tablet) {
+    // This spacing is manually adjusted to replicate the margin of
+    // govuk-heading-xl (50px) minus the spacing of back link and
+    // breadcrumbs (10px)
+    padding-top: govuk-spacing(7);
+    padding-bottom: govuk-spacing(7);
+  }
+}
+
+/// Use govuk-main-wrapper--l when you page does not have Breadcrumbs, phase
+/// banners or back links.
+///
+/// @deprecated Replace this mixin with more direct references to the [spacing
+/// mixins](https://design-system.service.gov.uk/styles/spacing/#spacing-on-custom-components).
+@mixin govuk-main-wrapper--l {
+  @include govuk-responsive-padding(8, "top");
+}
+
+@include govuk-exports("govuk/objects/main-wrapper") {
+  .govuk-main-wrapper {
+    @include govuk-main-wrapper;
+  }
+
+  // Using the `.govuk-main-wrapper--auto-spacing` modifier should apply the
+  // correct spacing depending on whether there are any elements
+  // (such the back link, breadcrumbs or phase banner components) before the
+  // `.govuk-main-wrapper` in the `govuk-width-container`.
+  //
+  // If you need to control the spacing manually, use the
+  // `govuk-main-wrapper--l` modifier instead.
+  .govuk-main-wrapper--auto-spacing:first-child,
+  .govuk-main-wrapper--l {
+    @include govuk-main-wrapper--l;
+  }
+}
