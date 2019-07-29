@@ -26,7 +26,7 @@ GOV.UK Frontend will:
 - no longer use `rem` for font sizes
 
 To turn on compatibility mode for all 3 legacy frameworks, add the following
-variables to your project's Sass file, above `@import "govuk-frontend/all"`:
+variables to your project's Sass file, above `@import "govuk-frontend/govuk/all"`:
 
 ```SCSS
 $govuk-compatibility-govukfrontendtoolkit: true;
@@ -42,7 +42,7 @@ If you are not using any of the legacy frameworks, you can still configure
 GOV.UK Frontend to use the old colour palette.
 
 Add the following variable to your project's Sass file, above
-`@import "govuk-frontend/all"`:
+`@import "govuk-frontend/govuk/all"`:
 
 ```scss
 $govuk-use-legacy-palette: true;
