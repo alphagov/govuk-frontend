@@ -1,0 +1,206 @@
+////
+/// @group helpers
+////
+
+@import "../tools/px-to-rem";
+
+/// 'Common typography' helper
+///
+/// Sets the font family and associated properties, such as font smoothing. Also
+/// overrides the font for print.
+///
+/// @param {List} $font-family [$govuk-font-family] Font family to use
+/// @access public
+
+@mixin govuk-typography-common($font-family: $govuk-font-family) {
+  font-family: $font-family;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  // If the user is using the default GDS Transport font we need to include
+  // the font-face declarations.
+  //
+  // We do not need to include the GDS Transport font-face declarations if
+  // alphagov/govuk_template is being used since nta will already be included by
+  // default.
+  @if ($govuk-include-default-font-face) {
+    @include _govuk-font-face-gds-transport;
+  }
+
+  @include govuk-media-query($media-type: print) {
+    font-family: $govuk-font-family-print;
+  }
+}
+
+/// Text colour helper
+///
+/// Sets the text colour, including a suitable override for print.
+///
+/// @access public
+
+@mixin govuk-text-colour {
+  color: $govuk-text-colour;
+
+  @include govuk-media-query($media-type: print) {
+    color: $govuk-print-text-colour;
+  }
+}
+
+/// Regular font weight helper
+///
+/// @param {Boolean} $important [false] - Whether to mark declarations as
+///   `!important`. Generally Used to create override classes.
+/// @access public
+
+@mixin govuk-typography-weight-regular($important: false) {
+  font-weight: $govuk-font-weight-regular iff($important, !important);
+}
+
+/// Bold font weight helper
+///
+/// @param {Boolean} $important [false] - Whether to mark declarations as
+///   `!important`. Generally Used to create override classes.
+/// @access public
+
+@mixin govuk-typography-weight-bold($important: false) {
+  font-weight: $govuk-font-weight-bold iff($important, !important);
+}
+
+/// Convert line-heights specified in pixels into a relative value, unless
+/// they are already unit-less (and thus already treated as relative values)
+/// or the units do not match the units used for the font size.
+///
+/// @param {Number} $line-height Line height
+/// @param {Number} $font-size Font size
+/// @return {Number} The line height as either a relative value or unmodified
+///
+/// @access private
+
+@function _govuk-line-height($line-height, $font-size) {
+  @if not unitless($line-height) and unit($line-height) == unit($font-size) {
+    $line-height: $line-height / $font-size;
+  }
+
+  @return $line-height;
+}
+
+/// Responsive typography helper
+///
+/// Takes a 'font map' as an argument and uses it to create font-size and
+/// line-height declarations for different breakpoints, and for print.
+///
+/// Example font map:
+///
+/// $my-font-map: (
+///   null: (
+///     font-size: 16px,
+///     line-height: 20px
+///   ),
+///   tablet: (
+///     font-size: 19px,
+///     line-height: 25px
+///   ),
+///   print: (
+///     font-size: 14pt,
+///     line-height: 1.15
+///   )
+/// );
+///
+/// @param {Map} $font-map - Font map
+/// @param {Number} $override-line-height [false] - Non responsive custom line
+///   height. Omit to use the line height from the font map.
+/// @param {Boolean} $important [false] - Whether to mark declarations as
+///   `!important`.
+///
+/// @access public
+
+@mixin govuk-typography-responsive($size, $override-line-height: false, $important: false) {
+
+  @if not map-has-key($govuk-typography-scale, $size) {
+    @error "Unknown font size `#{$size}` - expected a point from the typography scale.";
+  }
+
+  $font-map: map-get($govuk-typography-scale, $size);
+
+  @each $breakpoint, $breakpoint-map in $font-map {
+    $font-size: map-get($breakpoint-map, "font-size");
+    $font-size-rem: govuk-px-to-rem($font-size);
+
+    $line-height: _govuk-line-height(
+      $line-height: if($override-line-height,
+        $override-line-height,
+        map-get($breakpoint-map, "line-height")
+      ),
+      $font-size: $font-size
+    );
+
+    // Mark rules as !important if $important is true - this will result in
+    // these variables becoming strings, so this needs to happen *after* they
+    // are used in calculations
+    $font-size: $font-size iff($important, !important);
+    $font-size-rem: $font-size-rem iff($important, !important);
+    $line-height: $line-height iff($important, !important);
+
+    @if $breakpoint == null {
+      font-size: $font-size; // sass-lint:disable no-duplicate-properties
+      @if $govuk-typography-use-rem {
+        font-size: $font-size-rem; // sass-lint:disable no-duplicate-properties
+      }
+      line-height: $line-height;
+    } @else if $breakpoint == "print" {
+      @include govuk-media-query($media-type: print) {
+        font-size: $font-size;
+        line-height: $line-height;
+      }
+    } @else {
+      @include govuk-media-query($from: $breakpoint) {
+        font-size: $font-size; // sass-lint:disable no-duplicate-properties
+        @if $govuk-typography-use-rem {
+          font-size: $font-size-rem; // sass-lint:disable no-duplicate-properties
+        }
+        line-height: $line-height;
+      }
+    }
+  }
+}
+
+/// Font helper
+///
+/// @param {Number} $size - Size of the font as it would appear on desktop -
+///   uses the responsive font size map
+/// @param {String} $weight [regular] - Weight: `bold` or `regular`
+/// @param {Boolean} $tabular [false] - Whether to use tabular numbers or not
+/// @param {Number} $line-height [false] - Line-height, if overriding the default
+///
+/// @access public
+
+@mixin govuk-font($size, $weight: regular, $tabular: false, $line-height: false) {
+  @if $tabular {
+    // if govuk-font-family-tabular is set use $govuk-font-family-tabular
+    @if $govuk-font-family-tabular {
+      @include govuk-typography-common($font-family: $govuk-font-family-tabular);
+    } @else {
+      @include govuk-typography-common;
+      -webkit-font-feature-settings: "tnum" 1;
+              font-feature-settings: "tnum" 1;
+
+      @supports(font-variant-numeric: tabular-nums) {
+        -webkit-font-feature-settings: normal;
+                font-feature-settings: normal;
+        font-variant-numeric: tabular-nums;
+      }
+    }
+  } @else {
+    @include govuk-typography-common;
+  }
+
+  @if $weight == regular {
+    @include govuk-typography-weight-regular;
+  } @else if $weight == bold {
+    @include govuk-typography-weight-bold;
+  }
+
+  @if $size {
+    @include govuk-typography-responsive($size, $override-line-height: $line-height);
+  }
+}
