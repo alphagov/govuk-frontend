@@ -182,7 +182,7 @@ We've also changed the background of the following components:
 
 If you're using legacy projects like GOV.UK Elements, you can keep your current colours by [turning on compatibility mode](https://github.com/alphagov/govuk-frontend/blob/master/docs/installation/compatibility.md).
 
-Read our [blog post about why we changed the colour palette](https://designnotes.blog.gov.uk/2019/07/29/were-updating-the-gov-uk-colours-and-font)
+Read our [blog post about why we changed the colour palette](https://designnotes.blog.gov.uk/2019/07/29/weve-updated-the-gov-uk-colours-and-font/)
 
 [Pull request #1288: Update colour palette](https://github.com/alphagov/govuk-frontend/pull/1288).
 
