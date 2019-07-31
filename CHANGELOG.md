@@ -171,8 +171,12 @@ purple|#2e358b|#4c2c92
 red|#b10e1e|#d4351c
 yellow|#ffbf47|#ffdd00
 green|#006435|#00703c
+grey-2|#bfc1c3|#b1b4b6
+grey-3|#dee0e2|#f3f2f1
+grey-4|#f8f8f8|#f3f2f1
 light-blue|#2b8cc4|#5694ca
 blue|#005ea5|#1d70b8
+bright-red|#df3034|#d4351c
 
 We've also changed the background of the following components:
 
