@@ -75,7 +75,7 @@ describe('/components/accordion', () => {
 
         var openOrCloseAllButtonText = await page.evaluate(() => document.body.querySelector('.govuk-accordion__open-all').textContent)
 
-        expect(openOrCloseAllButtonText).toEqual('Close all sections')
+        expect(openOrCloseAllButtonText).toEqual('Zbaliť všetko')
       })
 
       it('should open both sections when the Open all button is clicked', async () => {
