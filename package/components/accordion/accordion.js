@@ -798,7 +798,7 @@ Accordion.prototype.initControls = function () {
   // Create "Open all" button and set attributes
   this.$openAllButton = document.createElement('button');
   this.$openAllButton.setAttribute('type', 'button');
-  this.$openAllButton.innerHTML = 'Rozbaliť všetko <span class="govuk-visually-hidden">sections</span>';
+  this.$openAllButton.innerHTML = 'Rozbaliť všetko';
   this.$openAllButton.setAttribute('class', this.openAllClass);
   this.$openAllButton.setAttribute('aria-expanded', 'false');
   this.$openAllButton.setAttribute('type', 'button');
