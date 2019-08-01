@@ -63,6 +63,24 @@ describe('Select', () => {
       expect($items.length).toEqual(2)
     })
 
+    it('renders without falsely items', () => {
+      const $ = render('select', {
+        items: [
+          {
+            text: 'Option 1'
+          },
+          undefined,
+          null,
+          false,
+          {
+            text: 'Options 2'
+          }
+        ]
+      })
+      const $items = $('.govuk-select option')
+      expect($items.length).toEqual(2)
+    })
+
     it('renders item with value', () => {
       const $ = render('select', {
         value: '2',

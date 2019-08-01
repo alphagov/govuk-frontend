@@ -75,6 +75,37 @@ describe('Accordion', () => {
       expect($componentContent.text().trim()).toEqual('Some content')
     })
 
+    it('renders list without falsely values', () => {
+      const $ = render('accordion', {
+        headingLevel: '3',
+        items: [
+          {
+            heading: {
+              text: 'Section A'
+            },
+            content: {
+              text: 'Some content'
+            }
+          },
+          false,
+          undefined,
+          null,
+          {
+            heading: {
+              text: 'Section B'
+            },
+            content: {
+              text: 'Some content'
+            }
+          }
+        ]
+      })
+      const $component = $('.govuk-accordion')
+      const $items = $component.find('.govuk-accordion__section')
+
+      expect($items.length).toEqual(2)
+    })
+
     it('renders with classes', () => {
       const $ = render('accordion', {
         classes: 'app-accordion--custom-modifier'
