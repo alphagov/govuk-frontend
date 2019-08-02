@@ -81,6 +81,31 @@ describe('Tabs', () => {
         expect($firstPanel.attr('id')).toEqual('tab-1')
       })
 
+      it('render without falsely values', () => {
+        const $ = render('tabs', {
+          items: [
+            {
+              id: 'tab-1',
+              label: 'Tab 1',
+              panel: { text: 'Panel 1 content' }
+            },
+            undefined,
+            null,
+            false,
+            {
+              id: 'tab-2',
+              label: 'Tab 2',
+              panel: { text: 'Panel 2 content' }
+            }
+          ]
+        })
+
+        const $component = $('.govuk-tabs')
+
+        const $items = $component.find('.govuk-tabs__list-item')
+        expect($items.length).toEqual(2)
+      })
+
       it('render a matching tab and panel using custom idPrefix', () => {
         const $ = render('tabs', {
           idPrefix: 'custom',

@@ -44,6 +44,31 @@ describe('Data list', () => {
     expect($component.attr('data-attribute-2')).toEqual('value-2')
   })
   describe('rows', () => {
+    it('renders list without falsely values', async () => {
+      const $ = render('summary-list', {
+        rows: [
+          {
+            key: {
+              text: 'Name'
+            },
+            classes: 'app-custom-class'
+          },
+          null,
+          undefined,
+          false,
+          {
+            key: {
+              text: 'Name 2'
+            },
+            classes: 'app-custom-class'
+          }
+        ]
+      })
+
+      const $component = $('.govuk-summary-list')
+      const $row = $component.find('.govuk-summary-list__row')
+      expect($row.length).toBe(2)
+    })
     it('renders classes', async () => {
       const $ = render('summary-list', {
         rows: [

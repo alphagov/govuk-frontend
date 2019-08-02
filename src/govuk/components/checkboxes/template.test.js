@@ -50,6 +50,30 @@ describe('Checkboxes', () => {
     expect($lastLabel.text()).toContain('Option 2')
   })
 
+  it('render example without falsely values', () => {
+    const $ = render('checkboxes', {
+      name: 'example-name',
+      items: [
+        {
+          value: '1',
+          text: 'Option 1'
+        },
+        undefined,
+        null,
+        false,
+        {
+          value: '2',
+          text: 'Option 2'
+        }
+      ]
+    })
+
+    const $component = $('.govuk-checkboxes')
+    const $items = $component.find('.govuk-checkboxes__item')
+
+    expect($items.length).toEqual(2)
+  })
+
   it('render classes', () => {
     const $ = render('checkboxes', {
       name: 'example-name',

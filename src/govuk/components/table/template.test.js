@@ -397,6 +397,31 @@ describe('Table', () => {
       ])
     })
 
+    it('can be skipped when falsely', () => {
+      const $ = render('table', {
+        rows: [
+          [{ text: 'A' }, { text: '1' }],
+          null,
+          undefined,
+          false,
+          [{ text: 'B' }, { text: '2' }],
+          [{ text: 'C' }, { text: '3' }]
+        ]
+      })
+
+      const cells = $('.govuk-table').find('tbody tr')
+        .map((_, tr) => {
+          return [$(tr).find('td').map((_, td) => $(td).text()).get()]
+        })
+        .get()
+
+      expect(cells).toEqual([
+        ['A', '1'],
+        ['B', '2'],
+        ['C', '3']
+      ])
+    })
+
     it('have HTML escaped when passed as text', () => {
       const $ = render('table', {
         rows: [

@@ -50,6 +50,28 @@ describe('Radios', () => {
     expect($lastLabel.text()).toContain('No')
   })
 
+  it('renders without falsely items', () => {
+    const $ = render('radios', {
+      name: 'example-name',
+      items: [
+        {
+          value: 'yes',
+          text: 'Yes'
+        },
+        undefined,
+        null,
+        {
+          value: 'no',
+          text: 'No'
+        }
+      ]
+    })
+
+    const $component = $('.govuk-radios')
+    const $items = $component.find('.govuk-radios__item input')
+    expect($items.length).toEqual(2)
+  })
+
   it('render classes', () => {
     const $ = render('radios', {
       name: 'example-name',
