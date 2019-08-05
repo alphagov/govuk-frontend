@@ -72,6 +72,8 @@
 
   .govuk-radios__label {
     display: inline-block;
+    // In order for Internet Explorer 9 - 11 to inherit opacity on pseudo elements the parent needs to be relative to it's direct children.
+    position: relative;
     margin-bottom: 0;
     padding: 8px $govuk-radios-label-padding-left-right govuk-spacing(1);
     cursor: pointer;
@@ -85,7 +87,7 @@
     box-sizing: border-box;
     position: absolute;
     top: 0;
-    left: 0;
+    left: -$govuk-radios-size;
 
     width: $govuk-radios-size;
     height: $govuk-radios-size;
@@ -104,7 +106,7 @@
 
     position: absolute;
     top: govuk-spacing(2);
-    left: govuk-spacing(2);
+    left: govuk-spacing(2) - $govuk-radios-size;
 
     width: 0;
     height: 0;
@@ -216,6 +218,7 @@
 
     $input-offset: ($govuk-touch-target-size - $govuk-small-radios-size) / 2;
     $label-offset: $govuk-touch-target-size - $input-offset;
+    $label-offset-top: -2px;
 
     .govuk-radios__item {
       @include govuk-clearfix;
@@ -250,7 +253,7 @@
     // 'shrink' it, preventing the hover state from kicking in across the full
     // width of the parent element.
     .govuk-radios__label {
-      margin-top: -2px;
+      margin-top: $label-offset-top;
       padding: 13px govuk-spacing(3) 13px 1px;
       float: left;
 
@@ -264,7 +267,8 @@
     // Reduce the size of the control [1], vertically centering it within the
     // touch target [2]
     .govuk-radios__label::before {
-      top: $input-offset - $govuk-border-width-form-element; // 2
+      top: $input-offset - $govuk-border-width-form-element - $label-offset-top; // 2
+      left: -($input-offset + $govuk-small-radios-size);
       width: $govuk-small-radios-size; // 1
       height: $govuk-small-radios-size; // 1
     }
@@ -273,8 +277,8 @@
     //
     // Reduce the size of the 'button' and center it within the ring
     .govuk-radios__label::after {
-      top: 15px;
-      left: 7px;
+      top: 17px;
+      left: 7px - ($input-offset + $govuk-small-radios-size);
       border-width: 5px;
     }
 
