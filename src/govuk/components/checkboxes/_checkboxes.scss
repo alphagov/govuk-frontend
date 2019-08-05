@@ -69,6 +69,8 @@
 
   .govuk-checkboxes__label {
     display: inline-block;
+    // In order for Internet Explorer 9 - 11 to inherit opacity on pseudo elements the parent needs to be relative to it's direct children.
+    position: relative;
     margin-bottom: 0;
     padding: 8px $govuk-checkboxes-label-padding-left-right govuk-spacing(1);
     cursor: pointer;
@@ -82,7 +84,7 @@
     box-sizing: border-box;
     position: absolute;
     top: 0;
-    left: 0;
+    left: -$govuk-checkboxes-size;
     width: $govuk-checkboxes-size;
     height: $govuk-checkboxes-size;
     border: $govuk-border-width-form-element solid currentColor;
@@ -98,7 +100,7 @@
 
     position: absolute;
     top: 11px;
-    left: 9px;
+    left: 9px - $govuk-checkboxes-size;
     width: 18px;
     height: 7px;
 
@@ -178,6 +180,7 @@
 
     $input-offset: ($govuk-touch-target-size - $govuk-small-checkboxes-size) / 2;
     $label-offset: $govuk-touch-target-size - $input-offset;
+    $label-offset-top: -2px;
 
     .govuk-checkboxes__item {
       @include govuk-clearfix;
@@ -212,7 +215,7 @@
     // 'shrink' it, preventing the hover state from kicking in across the full
     // width of the parent element.
     .govuk-checkboxes__label {
-      margin-top: -2px;
+      margin-top: $label-offset-top;
       padding: 13px govuk-spacing(3) 13px 1px;
       float: left;
 
@@ -226,7 +229,8 @@
     // Reduce the size of the check box [1], vertically center it within the
     // touch target [2]
     .govuk-checkboxes__label::before {
-      top: $input-offset - $govuk-border-width-form-element; // 2
+      top: $input-offset - $govuk-border-width-form-element - $label-offset-top; // 2
+      left: -($input-offset + $govuk-small-checkboxes-size);
       width: $govuk-small-checkboxes-size; // 1
       height: $govuk-small-checkboxes-size; // 1
     }
@@ -235,8 +239,8 @@
     //
     // Reduce the size of the check mark and re-align within the checkbox
     .govuk-checkboxes__label::after {
-      top: 15px;
-      left: 6px;
+      top: 17px;
+      left: 6px - ($input-offset + $govuk-small-checkboxes-size);
       width: 9px;
       height: 3.5px;
       border-width: 0 0 3px 3px;
