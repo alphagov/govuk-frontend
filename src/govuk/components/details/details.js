@@ -15,48 +15,8 @@ function Details ($module) {
   this.$module = $module
 }
 
-/**
-* Handle cross-modal click events
-* @param {object} node element
-* @param {function} callback function
-*/
-Details.prototype.handleInputs = function (node, callback) {
-  node.addEventListener('keypress', function (event) {
-    var target = event.target
-    // When the key gets pressed - check if it is enter or space
-    if (event.keyCode === KEY_ENTER || event.keyCode === KEY_SPACE) {
-      if (target.nodeName.toLowerCase() === 'summary') {
-        // Prevent space from scrolling the page
-        // and enter from submitting a form
-        event.preventDefault()
-        // Click to let the click event do all the necessary action
-        if (target.click) {
-          target.click()
-        } else {
-          // except Safari 5.1 and under don't support .click() here
-          callback(event)
-        }
-      }
-    }
-  })
-
-  // Prevent keyup to prevent clicking twice in Firefox when using space key
-  node.addEventListener('keyup', function (event) {
-    var target = event.target
-    if (event.keyCode === KEY_SPACE) {
-      if (target.nodeName.toLowerCase() === 'summary') {
-        event.preventDefault()
-      }
-    }
-  })
-
-  node.addEventListener('click', callback)
-}
-
 Details.prototype.init = function () {
-  var $module = this.$module
-
-  if (!$module) {
+  if (!this.$module) {
     return
   }
 
@@ -66,6 +26,12 @@ Details.prototype.init = function () {
   if (hasNativeDetails) {
     return
   }
+
+  this.polyfillDetails()
+}
+
+Details.prototype.polyfillDetails = function () {
+  var $module = this.$module
 
   // Save shortcuts to the inner summary and content elements
   var $summary = this.$summary = $module.getElementsByTagName('summary').item(0)
@@ -110,14 +76,14 @@ Details.prototype.init = function () {
   }
 
   // Bind an event to handle summary elements
-  this.handleInputs($summary, this.setAttributes.bind(this))
+  this.polyfillHandleInputs($summary, this.polyfillSetAttributes.bind(this))
 }
 
 /**
 * Define a statechange function that updates aria-expanded and style.display
 * @param {object} summary element
 */
-Details.prototype.setAttributes = function () {
+Details.prototype.polyfillSetAttributes = function () {
   var $module = this.$module
   var $summary = this.$summary
   var $content = this.$content
@@ -141,13 +107,41 @@ Details.prototype.setAttributes = function () {
 }
 
 /**
-* Remove the click event from the node element
+* Handle cross-modal click events
 * @param {object} node element
+* @param {function} callback function
 */
-Details.prototype.destroy = function (node) {
-  node.removeEventListener('keypress')
-  node.removeEventListener('keyup')
-  node.removeEventListener('click')
+Details.prototype.polyfillHandleInputs = function (node, callback) {
+  node.addEventListener('keypress', function (event) {
+    var target = event.target
+    // When the key gets pressed - check if it is enter or space
+    if (event.keyCode === KEY_ENTER || event.keyCode === KEY_SPACE) {
+      if (target.nodeName.toLowerCase() === 'summary') {
+        // Prevent space from scrolling the page
+        // and enter from submitting a form
+        event.preventDefault()
+        // Click to let the click event do all the necessary action
+        if (target.click) {
+          target.click()
+        } else {
+          // except Safari 5.1 and under don't support .click() here
+          callback(event)
+        }
+      }
+    }
+  })
+
+  // Prevent keyup to prevent clicking twice in Firefox when using space key
+  node.addEventListener('keyup', function (event) {
+    var target = event.target
+    if (event.keyCode === KEY_SPACE) {
+      if (target.nodeName.toLowerCase() === 'summary') {
+        event.preventDefault()
+      }
+    }
+  })
+
+  node.addEventListener('click', callback)
 }
 
 export default Details
