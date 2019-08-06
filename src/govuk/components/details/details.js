@@ -11,9 +11,6 @@ import { generateUniqueID } from '../../common.js'
 var KEY_ENTER = 13
 var KEY_SPACE = 32
 
-// Create a flag to know if the browser supports navtive details
-var NATIVE_DETAILS = typeof document.createElement('details').open === 'boolean'
-
 function Details ($module) {
   this.$module = $module
 }
@@ -63,6 +60,13 @@ Details.prototype.init = function () {
     return
   }
 
+  // If there is native details support, we want to avoid running code to polyfill native behaviour.
+  var hasNativeDetails = typeof this.$module.open === 'boolean'
+
+  if (hasNativeDetails) {
+    return
+  }
+
   // Save shortcuts to the inner summary and content elements
   var $summary = this.$summary = $module.getElementsByTagName('summary').item(0)
   var $content = this.$content = $module.getElementsByTagName('div').item(0)
@@ -92,9 +96,7 @@ Details.prototype.init = function () {
   //
   // We have to use the camelcase `tabIndex` property as there is a bug in IE6/IE7 when we set the correct attribute lowercase:
   // See http://web.archive.org/web/20170120194036/http://www.saliences.com/browserBugs/tabIndex.html for more information.
-  if (!NATIVE_DETAILS) {
-    $summary.tabIndex = 0
-  }
+  $summary.tabIndex = 0
 
   // Detect initial open state
   var openAttr = $module.getAttribute('open') !== null
@@ -104,9 +106,7 @@ Details.prototype.init = function () {
   } else {
     $summary.setAttribute('aria-expanded', 'false')
     $content.setAttribute('aria-hidden', 'true')
-    if (!NATIVE_DETAILS) {
-      $content.style.display = 'none'
-    }
+    $content.style.display = 'none'
   }
 
   // Bind an event to handle summary elements
@@ -128,16 +128,15 @@ Details.prototype.setAttributes = function () {
   $summary.setAttribute('aria-expanded', (expanded ? 'false' : 'true'))
   $content.setAttribute('aria-hidden', (hidden ? 'false' : 'true'))
 
-  if (!NATIVE_DETAILS) {
-    $content.style.display = (expanded ? 'none' : '')
+  $content.style.display = (expanded ? 'none' : '')
 
-    var hasOpenAttr = $module.getAttribute('open') !== null
-    if (!hasOpenAttr) {
-      $module.setAttribute('open', 'open')
-    } else {
-      $module.removeAttribute('open')
-    }
+  var hasOpenAttr = $module.getAttribute('open') !== null
+  if (!hasOpenAttr) {
+    $module.setAttribute('open', 'open')
+  } else {
+    $module.removeAttribute('open')
   }
+
   return true
 }
 
