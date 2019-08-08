@@ -46,7 +46,7 @@ params:
 - name: isStartButton
   type: boolean
   required: false
-  description: If set to true this button will have an arrow icon added to it. Use for the main call to action on your service's start page.
+  description: Use for the main call to action on your service's start page.
 
 examples:
 - name: default
