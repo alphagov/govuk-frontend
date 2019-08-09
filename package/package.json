@@ -1,25 +1,26 @@
 {
   "name": "navody-digital-frontend",
-  "description": "GOV.UK Frontend contains the code you need to start building a user interface for government platforms and services.",
-  "version": "0.1.7",
+  "description": "Navody.Digital Frontend contains the code you need to start building a user interface for navody.digital",
+  "version": "0.1.8",
   "main": "all.js",
   "sass": "all.scss",
   "engines": {
     "node": ">= 4.2.0"
   },
   "author": {
-    "name": "GOV.UK Design System Team (Government Digital Service)",
-    "email": "design-system-developers@digital.cabinet-office.gov.uk"
+    "name": "Slovensko.Digital",
+    "email": "navody@slovensko.digital"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/slovensko-digital/navody-frontend.git"
   },
   "bugs": {
-    "url": "https://github.com/alphagov/govuk-frontend/issues"
+    "url": "https://github.com/slovensko-digital/navody-frontend/issues"
   },
-  "homepage": "https://github.com/alphagov/govuk-frontend#readme",
+  "homepage": "https://github.com/slovensko-digital/navody-frontend#readme",
   "keywords": [
+    "navody.digital",
     "slovensko.digital",
     "govuk",
     "frontend",
