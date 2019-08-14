@@ -18,6 +18,9 @@
 
 {% block bodyEnd %}
   <script src="/public/all.js"></script>
+  <script>
+    window.GOVUKFrontend.initAll()
+  </script>
 {% endblock %}
 
 {% block beforeContent %}
@@ -39,7 +42,7 @@
       maxlength: 200,
       label: {
         text: "What is your most impressive juggling trick?",
-        classes: "govuk-label--xl"
+        classes: "govuk-label--l"
       }
     }) }}
 
