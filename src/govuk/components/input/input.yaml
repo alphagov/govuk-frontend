@@ -11,6 +11,10 @@ params:
   type: string
   required: false
   description: Type of input control to render. Defaults to "text".
+- name: inputmode
+  type: string
+  require: false
+  description: Optional value for [inputmode](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode).
 - name: value
   type: string
   required: false
