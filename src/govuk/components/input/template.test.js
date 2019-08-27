@@ -341,4 +341,15 @@ describe('Input', () => {
       expect($component.attr('autocomplete')).toEqual('postal-code')
     })
   })
+
+  describe('when it includes an inputmode', () => {
+    it('renders with an inputmode attached to the input', () => {
+      const $ = render('input', {
+        inputmode: 'decimal'
+      })
+
+      const $component = $('.govuk-form-group > .govuk-input')
+      expect($component.attr('inputmode')).toEqual('decimal')
+    })
+  })
 })

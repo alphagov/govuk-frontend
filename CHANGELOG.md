@@ -2,6 +2,19 @@
 
 ## Unreleased
 
+###  Inputmode
+
+Adds the ability to pass an optional [inputmode](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode) into the input component
+
+```javascript
+govukInput({
+  inputmode: 'email'
+})
+```
+
+- [Pull request #1527: Adding inputmode to input component](https://github.com/alphagov/govuk-frontend/pull/1527)
+
+
 ### Fixes
 
 - [Pull request #1512: Update components to only output items when they are defined](https://github.com/alphagov/govuk-frontend/pull/1512).
