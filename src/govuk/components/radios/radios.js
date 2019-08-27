@@ -41,8 +41,6 @@ Radios.prototype.setAttributes = function ($input) {
   if ($content && $content.classList.contains('govuk-radios__conditional')) {
     var inputIsChecked = $input.checked
 
-    $input.setAttribute('aria-expanded', inputIsChecked)
-
     $content.classList.toggle('govuk-radios__conditional--hidden', !inputIsChecked)
   }
 }
