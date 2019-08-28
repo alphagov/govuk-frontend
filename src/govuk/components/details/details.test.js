@@ -6,6 +6,14 @@ const PORT = configPaths.ports.test
 const baseUrl = 'http://localhost:' + PORT
 
 describe('details', () => {
+  it('should not polyfill when details element is available', async () => {
+    await page.goto(baseUrl + '/components/details/preview', { waitUntil: 'load' })
+
+    const summaryAriaExpanded = await page.evaluate(() => {
+      return document.querySelector('summary').getAttribute('aria-expanded')
+    })
+    expect(summaryAriaExpanded).toBe(null)
+  })
   describe('/examples/details-polyfill', () => {
     it('should add to summary the button role', async () => {
       await page.goto(baseUrl + '/examples/details-polyfill', { waitUntil: 'load' })
