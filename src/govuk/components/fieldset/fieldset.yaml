@@ -28,6 +28,10 @@ params:
   type: string
   required: false
   description: Classes to add to the fieldset container.
+- name: role
+  type: string
+  required: false
+  description: Optional ARIA role attribute.
 - name: attributes
   type: object
   required: false
