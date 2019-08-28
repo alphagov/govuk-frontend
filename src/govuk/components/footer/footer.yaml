@@ -251,3 +251,53 @@ examples:
         - href: '/cymraeg'
           text: Rhestr o Wasanaethau Cymraeg
       html: Built by the <a class="govuk-footer__link" href="#">Government Digital Service</a>
+
+- name: Three equal columns
+  description: A full example to demonstrate three equal width columns
+  data:
+    navigation:
+      - title: Single column list 1
+        columns: 1
+        items:
+          - href: '#1'
+            text: Navigation item 1
+          - href: '#2'
+            text: Navigation item 2
+          - href: '#3'
+            text: Navigation item 3
+          - href: '#4'
+            text: Navigation item 4
+          - href: '#5'
+            text: Navigation item 5
+          - href: '#6'
+            text: Navigation item 6
+      - title: Single column list 2
+        columns: 1
+        items:
+          - href: '#1'
+            text: Navigation item 1
+          - href: '#2'
+            text: Navigation item 2
+          - href: '#3'
+            text: Navigation item 3
+          - href: '#4'
+            text: Navigation item 4
+          - href: '#5'
+            text: Navigation item 5
+          - href: '#6'
+            text: Navigation item 6
+      - title: Single column list 3
+        columns: 1
+        items:
+          - href: '#1'
+            text: Navigation item 1
+          - href: '#2'
+            text: Navigation item 2
+          - href: '#3'
+            text: Navigation item 3
+          - href: '#4'
+            text: Navigation item 4
+          - href: '#5'
+            text: Navigation item 5
+          - href: '#6'
+            text: Navigation item 6
