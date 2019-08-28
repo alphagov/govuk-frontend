@@ -1,0 +1,56 @@
+{% from "back-link/macro.njk" import govukBackLink %}
+
+{% extends "layout.njk" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    "href": "/"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Details polyfill examples
+      </h1>
+
+      <p class="govuk-body">
+        In order to test our polyfill code for details we need to have examples that do not use the native elements.
+      </p>
+
+
+      <h2 class="govuk-heading-m">
+        Default
+      </h2>
+
+      <div class="govuk-details" data-module="govuk-details" id="default">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Help with nationality
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.
+        </div>
+      </div>
+
+      <h2 class="govuk-heading-m">
+        Expanded
+      </h2>
+
+      <div class="govuk-details" data-module="govuk-details" open id="expanded">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Help with nationality
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.
+        </div>
+      </div>
+
+    </div>
+  </div>
+{% endblock %}
