@@ -256,7 +256,6 @@ describe('Button', () => {
 
       const $component = $('.govuk-button')
       expect($component.get(0).tagName).toEqual('button')
-      expect($component.attr('type')).toEqual('submit')
     })
   })
 
