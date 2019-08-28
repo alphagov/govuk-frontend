@@ -196,9 +196,9 @@
     }
   }
 
-  // Sections two-third:one-third on desktop
+  // If the there are only two sections and set the layout to be two-third:one-third on desktop
   @include mq ($from: desktop) {
-    .govuk-footer__section:first-child {
+    .govuk-footer__section:first-child:nth-last-child(2) {
       flex-grow: 2; // Support: Flexbox
     }
   }
