@@ -18,6 +18,7 @@ govukInput({
 ### Fixes
 
 - [Pull request #1512: Update components to only output items when they are defined](https://github.com/alphagov/govuk-frontend/pull/1512).
+- [Pull request #1538: Simplify button types to avoid unnecessary type attribute](https://github.com/alphagov/govuk-frontend/pull/1538).
 
 ## 3.0.0 (Breaking release)
 
