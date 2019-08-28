@@ -23,8 +23,8 @@ exports[`Date input nested dependant components passes through label params with
 exports[`Date input passes through fieldset params without breaking 1`] = `
 
 <fieldset class="govuk-fieldset"
-          aria-describedby="dob-hint"
           role="group"
+          aria-describedby="dob-hint"
 >
   <legend class="govuk-fieldset__legend">
     What is your date of birth?
@@ -36,8 +36,8 @@ exports[`Date input passes through fieldset params without breaking 1`] = `
 exports[`Date input passes through html fieldset params without breaking 1`] = `
 
 <fieldset class="govuk-fieldset"
-          aria-describedby="dob-error"
           role="group"
+          aria-describedby="dob-error"
 >
   <legend class="govuk-fieldset__legend">
     What is your
