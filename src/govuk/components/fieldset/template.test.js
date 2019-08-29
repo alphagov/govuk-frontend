@@ -131,6 +131,15 @@ describe('fieldset', () => {
     expect($component.hasClass('app-fieldset--custom-modifier')).toBeTruthy()
   })
 
+  it('can have an explicit role', () => {
+    const $ = render('fieldset', {
+      role: 'group'
+    })
+
+    const $component = $('.govuk-fieldset')
+    expect($component.attr('role')).toEqual('group')
+  })
+
   it('can have additional attributes', () => {
     const $ = render('fieldset', {
       attributes: {
