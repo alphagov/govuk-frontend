@@ -4,7 +4,7 @@
 
 ### New features
 
-#### Add attributes to the date input fieldset
+#### Add attributes to the fieldset on the date input component
 
 You can now pass attributes to add to the fieldset on the date input component.
 
@@ -16,9 +16,9 @@ You can now pass an ARIA role to the fieldset component.
 
 [Pull request #1541: Allow date input fieldset attributes to be set](https://github.com/alphagov/govuk-frontend/pull/1541).
 
-#### Inputmode
+#### Add inputmode to the input component
 
-Adds the ability to pass an optional [inputmode](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode) into the input component
+You can now pass [inputmode](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode) to the input component.
 
 ```javascript
 govukInput({
@@ -26,7 +26,7 @@ govukInput({
 })
 ```
 
-- [Pull request #1527: Adding inputmode to input component](https://github.com/alphagov/govuk-frontend/pull/1527)
+- [Pull request #1527: Add inputmode option to the input component](https://github.com/alphagov/govuk-frontend/pull/1527)
 
 
 ### Fixes
