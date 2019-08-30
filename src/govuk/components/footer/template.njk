@@ -4,15 +4,15 @@
     {% if params.navigation %}
       <div class="govuk-footer__navigation">
         {% for nav in params.navigation %}
-          <div class="govuk-footer__section">
+          {% set sectionClasses -%}
+            {%- if nav.columns -%}
+              govuk-footer__section--span-{{ nav.columns }}
+            {%- endif -%}
+          {%- endset %}
+          <div class="govuk-footer__section{% if sectionClasses %} {{ sectionClasses }}{% endif %}">
             <h2 class="govuk-footer__heading govuk-heading-m">{{ nav.title }}</h2>
             {% if nav.items %}
-              {% set listClasses %}
-                {% if nav.columns %}
-                  govuk-footer__list--columns-{{ nav.columns }}
-                {% endif %}
-              {% endset %}
-              <ul class="govuk-footer__list {{ listClasses | trim }}">
+              <ul class="govuk-footer__list">
                 {% for item in nav.items %}
                   {% if item.href and item.text %}
                     <li class="govuk-footer__list-item">

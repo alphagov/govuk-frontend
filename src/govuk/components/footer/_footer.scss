@@ -174,10 +174,16 @@
   }
 
   .govuk-footer__navigation {
-    display: flex; // Support: Flexbox
     margin-right: -$govuk-gutter-half;
     margin-left: -$govuk-gutter-half;
-    flex-wrap: wrap; // Support: Flexbox
+  }
+
+  @supports (display: grid) {
+    .govuk-footer__navigation {
+      $minimum-column-size: 250px;
+      display: grid; // Support: Grid
+      grid-template-columns: repeat(auto-fit, minmax($minimum-column-size, 1fr)); // Support: Grid
+    }
   }
 
   .govuk-footer__section {
@@ -186,22 +192,23 @@
     margin-bottom: $govuk-gutter;
     margin-left: $govuk-gutter-half;
     vertical-align: top;
-    // Ensure columns take up equal width (typically one-half:one-half)
-    flex-grow: 1; // Support: Flexbox
-    flex-shrink: 1; // Support: Flexbox
-    @include mq ($until: desktop) {
-      // Make sure columns do not drop below 200px in width
-      // Will typically result in wrapping, and end up in a single column on smaller screens.
-      flex-basis: 200px; // Support: Flexbox
-    }
   }
 
-  // If there are only two sections, set the layout to be two-third:one-third on desktop
   @include mq ($from: desktop) {
-    // We match the first section with `:first-child`.
-    // To ensure the section is one of two, we can count backwards using `:nth-last-child(2)`.
-    .govuk-footer__section:first-child:nth-last-child(2) {
-      flex-grow: 2; // Support: Flexbox
+    .govuk-footer__section--span-2 {
+      grid-column: span 2; // Support: Grid
+    }
+
+    .govuk-footer__section--span-2 .govuk-footer__list {
+      column-count: 2; // Support: Columns
+    }
+
+    .govuk-footer__section--span-3 {
+      grid-column: span 3; // Support: Grid
+    }
+
+    .govuk-footer__section--span-3 .govuk-footer__list {
+      column-count: 3; // Support: Columns
     }
   }
 
@@ -210,16 +217,6 @@
     padding: 0;
     list-style: none;
     column-gap: $govuk-gutter; // Support: Columns
-  }
-
-  @include mq ($from: desktop) {
-    .govuk-footer__list--columns-2 {
-      column-count: 2; // Support: Columns
-    }
-
-    .govuk-footer__list--columns-3 {
-      column-count: 3; // Support: Columns
-    }
   }
 
   .govuk-footer__list-item {
