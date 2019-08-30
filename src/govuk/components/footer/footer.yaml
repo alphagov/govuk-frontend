@@ -158,11 +158,10 @@ examples:
     meta:
       text: GOV.UK Prototype Kit v7.0.1
 
-- name: with navigation
+- name: Three columns
   data:
     navigation:
-      - title: Two column list
-        columns: 2
+      - title: Single column list 1
         items:
           - href: '#1'
             text: Navigation item 1
@@ -176,7 +175,7 @@ examples:
             text: Navigation item 5
           - href: '#6'
             text: Navigation item 6
-      - title: Single column list
+      - title: Single column list 2
         items:
           - href: '#1'
             text: Navigation item 1
@@ -184,6 +183,76 @@ examples:
             text: Navigation item 2
           - href: '#3'
             text: Navigation item 3
+          - href: '#4'
+            text: Navigation item 4
+          - href: '#5'
+            text: Navigation item 5
+          - href: '#6'
+            text: Navigation item 6
+      - title: Single column list 3
+        items:
+          - href: '#1'
+            text: Navigation item 1
+          - href: '#2'
+            text: Navigation item 2
+          - href: '#3'
+            text: Navigation item 3
+          - href: '#4'
+            text: Navigation item 4
+          - href: '#5'
+            text: Navigation item 5
+          - href: '#6'
+            text: Navigation item 6
+
+- name: Two columns
+  data:
+    navigation:
+      - title: Single column list 1
+        items:
+          - href: '#1'
+            text: Navigation item 1
+          - href: '#2'
+            text: Navigation item 2
+          - href: '#3'
+            text: Navigation item 3
+          - href: '#4'
+            text: Navigation item 4
+          - href: '#5'
+            text: Navigation item 5
+          - href: '#6'
+            text: Navigation item 6
+      - title: Single column list 2
+        items:
+          - href: '#1'
+            text: Navigation item 1
+          - href: '#2'
+            text: Navigation item 2
+          - href: '#3'
+            text: Navigation item 3
+          - href: '#4'
+            text: Navigation item 4
+          - href: '#5'
+            text: Navigation item 5
+          - href: '#6'
+            text: Navigation item 6
+
+- name: One column
+  data:
+    navigation:
+      - title: Single column list 1
+        items:
+          - href: '#1'
+            text: Navigation item 1
+          - href: '#2'
+            text: Navigation item 2
+          - href: '#3'
+            text: Navigation item 3
+          - href: '#4'
+            text: Navigation item 4
+          - href: '#5'
+            text: Navigation item 5
+          - href: '#6'
+            text: Navigation item 6
 
 - name: GOV.UK
   description: A full example based on GOV.UK's current footer
@@ -251,165 +320,3 @@ examples:
         - href: '/cymraeg'
           text: Rhestr o Wasanaethau Cymraeg
       html: Built by the <a class="govuk-footer__link" href="#">Government Digital Service</a>
-
-- name: One-third Two-third
-  description: A full example based on GOV.UK's current footer
-  data:
-    navigation:
-      - title: One column
-        items:
-          - href: '#1'
-            text: Navigation item 1
-          - href: '#2'
-            text: Navigation item 2
-          - href: '#3'
-            text: Navigation item 3
-          - href: '#4'
-            text: Navigation item 4
-          - href: '#5'
-            text: Navigation item 5
-          - href: '#6'
-            text: Navigation item 6
-      - title: Two columns
-        columns: 2
-        items:
-          - href: '#1'
-            text: Navigation item 1
-          - href: '#2'
-            text: Navigation item 2
-          - href: '#3'
-            text: Navigation item 3
-          - href: '#4'
-            text: Navigation item 4
-          - href: '#5'
-            text: Navigation item 5
-          - href: '#6'
-            text: Navigation item 6
-          - href: '#7'
-            text: Navigation item 7
-          - href: '#8'
-            text: Navigation item 8
-          - href: '#9'
-            text: Navigation item 9
-          - href: '#10'
-            text: Navigation item 10
-          - href: '#11'
-            text: Navigation item 11
-    meta:
-      items:
-        - href: '/help'
-          text: Help
-        - href: '/help/cookies'
-          text: Cookies
-        - href: '/contact'
-          text: Contact
-        - href: '/help/terms-conditions'
-          text: Terms and conditions
-        - href: '/cymraeg'
-          text: Rhestr o Wasanaethau Cymraeg
-      html: Built by the <a class="govuk-footer__link" href="#">Government Digital Service</a>
-
-- name: Three equal columns
-  description: A full example to demonstrate three equal width columns
-  data:
-    navigation:
-      - title: Single column list 1
-        columns: 1
-        items:
-          - href: '#1'
-            text: Navigation item 1
-          - href: '#2'
-            text: Navigation item 2
-          - href: '#3'
-            text: Navigation item 3
-          - href: '#4'
-            text: Navigation item 4
-          - href: '#5'
-            text: Navigation item 5
-          - href: '#6'
-            text: Navigation item 6
-      - title: Single column list 2
-        columns: 1
-        items:
-          - href: '#1'
-            text: Navigation item 1
-          - href: '#2'
-            text: Navigation item 2
-          - href: '#3'
-            text: Navigation item 3
-          - href: '#4'
-            text: Navigation item 4
-          - href: '#5'
-            text: Navigation item 5
-          - href: '#6'
-            text: Navigation item 6
-      - title: Single column list 3
-        columns: 1
-        items:
-          - href: '#1'
-            text: Navigation item 1
-          - href: '#2'
-            text: Navigation item 2
-          - href: '#3'
-            text: Navigation item 3
-          - href: '#4'
-            text: Navigation item 4
-          - href: '#5'
-            text: Navigation item 5
-          - href: '#6'
-            text: Navigation item 6
-
-- name: Two equal columns
-  description: A full example to demonstrate three equal width columns
-  data:
-    navigation:
-      - title: Single column list 1
-        columns: 1
-        items:
-          - href: '#1'
-            text: Navigation item 1
-          - href: '#2'
-            text: Navigation item 2
-          - href: '#3'
-            text: Navigation item 3
-          - href: '#4'
-            text: Navigation item 4
-          - href: '#5'
-            text: Navigation item 5
-          - href: '#6'
-            text: Navigation item 6
-      - title: Single column list 2
-        columns: 1
-        items:
-          - href: '#1'
-            text: Navigation item 1
-          - href: '#2'
-            text: Navigation item 2
-          - href: '#3'
-            text: Navigation item 3
-          - href: '#4'
-            text: Navigation item 4
-          - href: '#5'
-            text: Navigation item 5
-          - href: '#6'
-            text: Navigation item 6
-
-- name: One column
-  description: A full example to demonstrate three equal width columns
-  data:
-    navigation:
-      - title: Single column list 1
-        columns: 1
-        items:
-          - href: '#1'
-            text: Navigation item 1
-          - href: '#2'
-            text: Navigation item 2
-          - href: '#3'
-            text: Navigation item 3
-          - href: '#4'
-            text: Navigation item 4
-          - href: '#5'
-            text: Navigation item 5
-          - href: '#6'
-            text: Navigation item 6
