@@ -3,7 +3,7 @@
         "name": "rows",
         "type": "array",
         "required": true,
-        "description": "Array of row item objects",
+        "description": "Array of row item objects.",
         "params": [
             {
                 "name": "key.text",

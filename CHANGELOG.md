@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 3.1.0 (Feature release)
+
 ### New features
 
 #### Add attributes to the fieldset on the date input component

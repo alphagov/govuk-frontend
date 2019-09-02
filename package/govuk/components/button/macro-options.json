@@ -64,5 +64,11 @@
         "type": "boolean",
         "required": false,
         "description": "Prevent accidental double clicks on submit buttons from submitting forms multiple times"
+    },
+    {
+        "name": "isStartButton",
+        "type": "boolean",
+        "required": false,
+        "description": "Use for the main call to action on your service's start page."
     }
 ]
