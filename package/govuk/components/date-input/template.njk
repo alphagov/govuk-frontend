@@ -84,9 +84,8 @@
   {% call govukFieldset({
     describedBy: describedBy,
     classes: params.fieldset.classes,
-    attributes: {
-      role: "group"
-    },
+    role: 'group',
+    attributes: params.fieldset.attributes,
     legend: params.fieldset.legend
   }) %}
   {{ innerHtml | trim | safe }}
