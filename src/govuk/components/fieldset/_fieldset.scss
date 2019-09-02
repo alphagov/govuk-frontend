@@ -32,8 +32,6 @@
     max-width: 100%;        // 1
     margin-bottom: govuk-spacing(2);
     padding: 0;
-    // Hack to let legends or elements within legends have margins in webkit browsers
-    overflow: hidden;
 
     white-space: normal;    // 1
   }
