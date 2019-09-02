@@ -224,9 +224,11 @@
     }
   }
 
-  // Sections two-third:one-third on desktop
+  // If there are only two sections, set the layout to be two-third:one-third on desktop
   @include mq ($from: desktop) {
-    .govuk-footer__section:first-child {
+    // We match the first section with `:first-child`.
+    // To ensure the section is one of two, we can count backwards using `:nth-last-child(2)`.
+    .govuk-footer__section:first-child:nth-last-child(2) {
       -webkit-box-flex: 2;
       -webkit-flex-grow: 2;
           -ms-flex-positive: 2;
