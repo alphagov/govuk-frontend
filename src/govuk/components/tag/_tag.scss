@@ -15,9 +15,13 @@
 
     color: govuk-colour("white");
     background-color: govuk-colour("blue");
+    // Deprecation warning: This will be removed in v4. 
+    // Use the .govuk-tag--uppercase modifier to make tag uppercase / spaced out if required.
     letter-spacing: 1px;
 
     text-decoration: none;
+    // Deprecation warning: This will be removed in v4. 
+    // Use the .govuk-tag--uppercase modifier to make tag uppercase / spaced out if required.
     text-transform: uppercase;
 
     @if $govuk-use-legacy-font {
@@ -48,6 +52,7 @@
     text-transform: lowercase;
 
     &:first-letter {
+      // Force first letter to be a capital after transformation.
       text-transform: capitalize;
     }
   }
