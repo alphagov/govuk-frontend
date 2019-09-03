@@ -38,6 +38,20 @@
     }
   }
 
+  .govuk-tag--uppercase {
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .govuk-tag--lowercase {
+    letter-spacing: normal;
+    text-transform: lowercase;
+
+    &:first-letter {
+      text-transform: capitalize;
+    }
+  }
+
   .govuk-tag--inactive {
     background-color: govuk-colour("dark-grey", $legacy: "grey-1");
   }
