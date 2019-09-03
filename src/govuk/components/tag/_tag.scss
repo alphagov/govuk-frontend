@@ -58,6 +58,17 @@
   }
 
   .govuk-tag--inactive {
-    background-color: govuk-colour("dark-grey", $legacy: "grey-1");
+    padding-top: 3px;
+    padding-right: 6px;
+    padding-bottom: 2px;
+    padding-left: 6px;
+    border: 2px solid govuk-colour("dark-grey", $legacy: "grey-1");
+    color: govuk-colour("dark-grey", $legacy: "grey-1");
+    background-color: govuk-colour("white");
+    // background-color: govuk-colour("dark-grey", $legacy: "grey-1");
+  }
+
+  .govuk-tag--warning {
+    background-color: govuk-colour("red");
   }
 }

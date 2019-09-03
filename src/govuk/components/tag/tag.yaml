@@ -20,10 +20,6 @@ examples:
  - name: default
    data:
     text: alpha
- - name: inactive
-   data:
-    text: alpha
-    classes: govuk-tag--inactive
  - name: uppercase
    data:
     text: alpha
@@ -36,3 +32,11 @@ examples:
    data:
     text: not started yet
     classes: govuk-tag--lowercase
+ - name: inactive
+   data:
+    text: Can’t start now
+    classes: govuk-tag--lowercase govuk-tag--inactive
+ - name: warning
+   data:
+    text: Warning
+    classes: govuk-tag--warning        
