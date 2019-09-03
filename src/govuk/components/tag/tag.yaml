@@ -24,3 +24,15 @@ examples:
    data:
     text: alpha
     classes: govuk-tag--inactive
+ - name: uppercase
+   data:
+    text: alpha
+    classes: govuk-tag--uppercase
+ - name: lowercase
+   data:
+    text: completed
+    classes: govuk-tag--lowercase
+ - name: lowercase multi-word
+   data:
+    text: not started yet
+    classes: govuk-tag--lowercase
