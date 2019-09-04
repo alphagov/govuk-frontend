@@ -82,6 +82,17 @@ describe('Character count', () => {
       const $component = $('.govuk-js-character-count')
       expect($component.attr('data-attribute')).toEqual('my data value')
     })
+
+    it('renders with formGroup', () => {
+      const $ = render('character-count', {
+        formGroup: {
+          classes: 'app-character-count--custom-modifier'
+        }
+      })
+
+      const $component = $('.govuk-form-group')
+      expect($component.hasClass('app-character-count--custom-modifier')).toBeTruthy()
+    })
   })
 
   describe('when it includes a hint', () => {
