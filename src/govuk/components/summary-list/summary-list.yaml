@@ -4,6 +4,10 @@ params:
   required: true
   description: Array of row item objects.
   params:
+  - name: classes
+    type: string
+    required: false
+    description: Classes to add to the row `div`
   - name: key.text
     type: string
     required: true
