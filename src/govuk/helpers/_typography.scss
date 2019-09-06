@@ -13,9 +13,6 @@
 /// @access public
 
 @mixin govuk-typography-common($font-family: $govuk-font-family) {
-  font-family: $font-family;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 
   // If the user is using the default GDS Transport font we need to include
   // the font-face declarations.
@@ -23,9 +20,23 @@
   // We do not need to include the GDS Transport font-face declarations if
   // alphagov/govuk_template is being used since nta will already be included by
   // default.
+  //
+  // With IE8, we do not render GDS Transport font-faces and fall back to system
+  // level fonts.
   @if ($govuk-include-default-font-face) {
-    @include _govuk-font-face-gds-transport;
+
+    @include govuk-not-ie8 {
+      @include _govuk-font-face-gds-transport;
+    }
+
+    @include govuk-if-ie8 {
+      $font-family: $govuk-font-family-ie8-fallback-for-gds-transport;
+    }
   }
+
+  font-family: $font-family;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 
   @include govuk-media-query($media-type: print) {
     font-family: $govuk-font-family-print;
