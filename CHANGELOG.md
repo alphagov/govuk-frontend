@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+### New features
+
+#### Add formGroup parameter to character count component
+
+- [Pull request #1553: Include formGroup on character count and pass through to textarea to allow class to be added to character count form group](https://github.com/alphagov/govuk-frontend/pull/1553)
+
 ### Fixes
 
 - [Pull request #1548: Fix fieldset legend text clipping when using a custom or fallback font](https://github.com/alphagov/govuk-frontend/pull/1548).
