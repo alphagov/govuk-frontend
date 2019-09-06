@@ -50,6 +50,7 @@ describe('@mixin govuk-typography-common', () => {
     const sass = `
     @import "settings/all";
     @import "helpers/all";
+    @import "tools/ie8";
 
     :root {
       @include govuk-typography-common;
