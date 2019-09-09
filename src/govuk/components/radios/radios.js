@@ -37,8 +37,13 @@ Radios.prototype.setAttributes = function ($input) {
 
   if ($content && $content.classList.contains('govuk-radios__conditional')) {
     var inputIsChecked = $input.checked
-
-    $input.setAttribute('aria-expanded', inputIsChecked)
+    var $label = document.querySelector('.govuk-radios__label[for=' + $input.id + ']')
+    // If the label does not have hidden text for state, inject it.
+    if (!$label.querySelector('.js-govuk-radios__label__state')) {
+      $label.innerHTML = $label.innerHTML + '<span class="govuk-visually-hidden js-govuk-radios__label__state"></span>'
+    }
+    // Set the hidden text for state depending on if it's expanded or not.
+    $label.querySelector('.js-govuk-radios__label__state').innerText = inputIsChecked ? 'Expanded' : 'Collapsed'
 
     $content.classList.toggle('govuk-radios__conditional--hidden', !inputIsChecked)
   }
