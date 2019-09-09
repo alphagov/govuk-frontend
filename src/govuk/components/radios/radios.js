@@ -25,9 +25,6 @@ Radios.prototype.init = function () {
       return
     }
 
-    // If we have content that is controlled, set attributes.
-    $input.setAttribute('aria-controls', controls)
-    $input.removeAttribute('data-aria-controls')
     this.setAttributes($input)
   }.bind(this))
 
@@ -36,7 +33,7 @@ Radios.prototype.init = function () {
 }
 
 Radios.prototype.setAttributes = function ($input) {
-  var $content = document.querySelector('#' + $input.getAttribute('aria-controls'))
+  var $content = document.querySelector('#' + $input.getAttribute('data-aria-controls'))
 
   if ($content && $content.classList.contains('govuk-radios__conditional')) {
     var inputIsChecked = $input.checked
@@ -56,8 +53,8 @@ Radios.prototype.handleClick = function (event) {
   // Because checking one radio can uncheck a radio in another $module,
   // we need to call set attributes on all radios in the same form, or document if they're not in a form.
   //
-  // We also only want radios which have aria-controls, as they support conditional reveals.
-  var $allInputs = document.querySelectorAll('input[type="radio"][aria-controls]')
+  // We also only want radios which have data-aria-controls, as they support conditional reveals.
+  var $allInputs = document.querySelectorAll('input[type="radio"][data-aria-controls]')
   nodeListForEach($allInputs, function ($input) {
     // Only inputs with the same form owner should change.
     var hasSameFormOwner = ($input.form === $clickedInput.form)
