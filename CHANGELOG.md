@@ -11,6 +11,7 @@
 ### Fixes
 
 - [Pull request #1548: Fix fieldset legend text clipping when using a custom or fallback font](https://github.com/alphagov/govuk-frontend/pull/1548).
+- [Pull request #1559: Stop IE8 from downloading GDS Transport font](https://github.com/alphagov/govuk-frontend/pull/1559).
 
 ## 3.1.0 (Feature release)
 
