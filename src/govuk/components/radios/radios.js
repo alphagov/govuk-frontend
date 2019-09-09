@@ -43,7 +43,7 @@ Radios.prototype.setAttributes = function ($input) {
       $label.innerHTML = $label.innerHTML + '<span class="govuk-visually-hidden js-govuk-radios__label__state"></span>'
     }
     // Set the hidden text for state depending on if it's expanded or not.
-    $label.querySelector('.js-govuk-radios__label__state').innerText = inputIsChecked ? 'Expanded' : 'Collapsed'
+    $label.querySelector('.js-govuk-radios__label__state').innerText = inputIsChecked ? ', Expanded' : ', Collapsed'
 
     $content.classList.toggle('govuk-radios__conditional--hidden', !inputIsChecked)
   }
