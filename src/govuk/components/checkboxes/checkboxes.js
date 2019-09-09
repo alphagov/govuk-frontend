@@ -26,9 +26,6 @@ Checkboxes.prototype.init = function () {
       return
     }
 
-    // If we have content that is controlled, set attributes.
-    $input.setAttribute('aria-controls', controls)
-    $input.removeAttribute('data-aria-controls')
     this.setAttributes($input)
   }.bind(this))
 
@@ -40,7 +37,7 @@ Checkboxes.prototype.setAttributes = function ($input) {
   var inputIsChecked = $input.checked
   $input.setAttribute('aria-expanded', inputIsChecked)
 
-  var $content = this.$module.querySelector('#' + $input.getAttribute('aria-controls'))
+  var $content = this.$module.querySelector('#' + $input.getAttribute('data-aria-controls'))
   if ($content) {
     $content.classList.toggle('govuk-checkboxes__conditional--hidden', !inputIsChecked)
   }
@@ -51,7 +48,7 @@ Checkboxes.prototype.handleClick = function (event) {
 
   // If a checkbox with aria-controls, handle click
   var isCheckbox = $target.getAttribute('type') === 'checkbox'
-  var hasAriaControls = $target.getAttribute('aria-controls')
+  var hasAriaControls = $target.getAttribute('data-aria-controls')
   if (isCheckbox && hasAriaControls) {
     this.setAttributes($target)
   }
