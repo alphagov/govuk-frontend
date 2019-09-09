@@ -44,7 +44,8 @@ Radios.prototype.init = function () {
   }.bind(this))
 
   if ($checkedInput) {
-    this.$announcer.innerText = $checkedInput.labels[0].innerText + ', Expanded'
+    var $label = document.querySelector('.govuk-radios__label[for=' + $checkedInput.id + ']')
+    this.$announcer.innerText = $label.innerText + ', Expanded'
   }
 
   // Handle events
@@ -88,7 +89,8 @@ Radios.prototype.handleClick = function (event) {
       $checkedInput = $input
     }
   }.bind(this))
-  this.$announcer.innerText = $checkedInput.labels[0].innerText + ', Expanded'
+  var $label = document.querySelector('.govuk-radios__label[for=' + $checkedInput.id + ']')
+  this.$announcer.innerText = $label.innerText + ', Expanded'
 }
 
 export default Radios

@@ -59,7 +59,8 @@ Checkboxes.prototype.handleClick = function (event) {
   var isCheckbox = $target.getAttribute('type') === 'checkbox'
   var hasAriaControls = $target.getAttribute('data-aria-controls')
   if (isCheckbox && hasAriaControls) {
-    this.$announcer.innerText = $target.labels[0].innerText + ', ' + ($target.checked ? 'Expanded' : 'Collapsed') + '.'
+    var $label = document.querySelector('.govuk-checkboxes__label[for=' + $target.id + ']')
+    this.$announcer.innerText = $label.innerText + ', ' + ($target.checked ? 'Expanded' : 'Collapsed') + '.'
 
     this.setAttributes($target)
   }
