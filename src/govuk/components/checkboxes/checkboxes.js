@@ -38,7 +38,13 @@ Checkboxes.prototype.init = function () {
 
 Checkboxes.prototype.setAttributes = function ($input) {
   var inputIsChecked = $input.checked
-  $input.setAttribute('aria-expanded', inputIsChecked)
+  var $label = document.querySelector('.govuk-checkboxes__label[for=' + $input.id + ']')
+  // If the label does not have hidden text for state, inject it.
+  if (!$label.querySelector('.js-govuk-checkboxes__label__state')) {
+    $label.innerHTML = $label.innerHTML + '<span class="govuk-visually-hidden js-govuk-checkboxes__label__state"></span>'
+  }
+  // Set the hidden text for state depending on if it's expanded or not.
+  $label.querySelector('.js-govuk-checkboxes__label__state').innerText = inputIsChecked ? 'Expanded' : 'Collapsed'
 
   var $content = this.$module.querySelector('#' + $input.getAttribute('aria-controls'))
   if ($content) {
