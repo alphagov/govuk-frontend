@@ -4,9 +4,19 @@
 
 ### New features
 
-#### Add formGroup parameter to character count component
+#### Add classes to the form group wrapper of the character count component
 
-- [Pull request #1553: Include formGroup on character count and pass through to textarea to allow class to be added to character count form group](https://github.com/alphagov/govuk-frontend/pull/1553).
+You can now add classes to the form group wrapper of the character count component.
+
+```javascript
+govukCharacterCount({
+  formGroup: {
+    classes: 'app-character-count--custom-modifier'
+  }
+})
+```
+
+- [Pull request #1553: Include formGroup on character count and pass through to textarea to allow class to be added to character count form group](https://github.com/alphagov/govuk-frontend/pull/1553). Thanks to [Emma Lewis](https://github.com/LBHELewis).
 
 ### Fixes
 
