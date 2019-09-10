@@ -78,9 +78,9 @@ module.exports = (options) => {
 
   // Define middleware for all routes
   app.use('*', function (request, response, next) {
-    response.locals.legacy = request.query['legacy'] === '1'
+    response.locals.legacy = (request.query['legacy'] === '1' || request.query['legacy'] === 'true')
     if (response.locals.legacy) {
-      response.locals.legacyQuery = '?legacy=1'
+      response.locals.legacyQuery = '?legacy=' + request.query['legacy']
     } else {
       response.locals.legacyQuery = ''
     }
