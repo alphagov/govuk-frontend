@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 3.2.0 (Feature release)
+
 ### New features
 
 #### Add classes to the form group wrapper of the character count component
