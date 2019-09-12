@@ -19,7 +19,11 @@ params:
 examples:
  - name: default
    data:
+    text: Completed
+ - name: uppercase
+   data:
     text: alpha
+    classes: govuk-tag--uppercase
  - name: inactive
    data:
     text: alpha
