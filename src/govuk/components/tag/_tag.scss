@@ -15,10 +15,8 @@
 
     color: govuk-colour("white");
     background-color: govuk-colour("blue");
-    letter-spacing: 1px;
 
     text-decoration: none;
-    text-transform: uppercase;
 
     @if $govuk-use-legacy-font {
       // Since New Transport sits slightly higher than other common fonts.
@@ -36,6 +34,11 @@
       padding-bottom: 4px;
       padding-left: 8px;
     }
+  }
+
+  .govuk-tag--uppercase {
+    letter-spacing: 1px;
+    text-transform: uppercase;
   }
 
   .govuk-tag--inactive {
