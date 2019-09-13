@@ -4,7 +4,7 @@
 
 @include govuk-exports("govuk/component/label") {
   .govuk-label {
-    @include govuk-font($size: 19);
+    @include govuk-font($size: 19, $weight: bold);
     @include govuk-text-colour;
 
     display: block;
