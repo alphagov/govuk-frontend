@@ -1,8 +1,5 @@
 /* eslint-env jest */
 
-// const devices = require('puppeteer/DeviceDescriptors')
-// const iPhone = devices['iPhone 6']
-// const iPad = devices['iPad landscape']
 const configPaths = require('../../../../config/paths.json')
 const PORT = configPaths.ports.test
 
