@@ -2,6 +2,7 @@
 {% from "button/macro.njk" import govukButton %}
 {% from "date-input/macro.njk" import govukDateInput %}
 {% from "error-summary/macro.njk" import govukErrorSummary %}
+{% from "fieldset/macro.njk" import govukFieldset %}
 {% from "file-upload/macro.njk" import govukFileUpload %}
 {% from "input/macro.njk" import govukInput %}
 {% from "select/macro.njk" import govukSelect %}
@@ -63,6 +64,10 @@
       {
         "text": "Problem with conditionally-revealed input",
         "href": "#yes-input"
+      },
+      {
+        "text": "Problem with input within large fieldset",
+        "href": "#address-postcode"
       }
     ]
   }) }}
@@ -307,6 +312,62 @@
       }
     ]
   }) }}
+
+  {% call govukFieldset({
+    legend: {
+      text: "What is your address?",
+      classes: "govuk-fieldset__legend--xl",
+      isPageHeading: true
+    }
+  }) %}
+
+    {{ govukInput({
+      label: {
+        html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
+      },
+      id: "address-line-1",
+      name: "address-line-1"
+    }) }}
+
+    {{ govukInput({
+      label: {
+        html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
+      },
+      id: "address-line-2",
+      name: "address-line-2"
+    }) }}
+
+    {{ govukInput({
+      label: {
+        text: "Town or city"
+      },
+      classes: "govuk-!-width-two-thirds",
+      id: "address-town",
+      name: "address-town"
+    }) }}
+
+    {{ govukInput({
+      label: {
+        text: "County"
+      },
+      classes: "govuk-!-width-two-thirds",
+      id: "address-county",
+      name: "address-county"
+    }) }}
+
+    {{ govukInput({
+      label: {
+        text: "Postcode"
+      },
+      errorMessage: {
+        text: "Enter a valid postcode"
+      },
+      classes: "govuk-input--width-10",
+      id: "address-postcode",
+      name: "address-postcode"
+    }) }}
+
+  {% endcall %}
 
   {{ govukButton({
     "text": "Continue"
