@@ -66,8 +66,8 @@
         "href": "#yes-input"
       },
       {
-        "text": "Problem with radios with heading",
-        "href": "#traal"
+        "text": "Problem with radios with big heading",
+        "href": "#radios-big-heading"
       },
       {
         "text": "Problem with input within large fieldset",
@@ -319,13 +319,13 @@
 
   {{ govukRadios({
     classes: "govuk-radios--inline",
-    idPrefix: "traal",
-    name: "traal",
+    idPrefix: "radios-big-heading",
+    name: "radios-big-heading",
     fieldset: {
       legend: {
         text: "Have you supplied orders signed in triplicate, sent in, sent back, queried, lost, found, subjected to public inquiry, lost again, and finally buried in soft peat for three months and recycled as firelighters?",
         isPageHeading: true,
-        classes: "govuk-fieldset__legend--xl"
+        classes: "govuk-fieldset__legend--xl test-radios-big-heading-legend"
       }
     },
     errorMessge: {

@@ -24,7 +24,11 @@ describe('Error Summary', () => {
     ['a group of radio buttons', 'radios', '#test-radios legend'],
     ['a group of checkboxes', 'checkboxes', '#test-checkboxes legend'],
     ['a single checkbox', 'single-checkbox', 'label[for="single-checkbox"]'],
-    ['a conditionally revealed input', 'yes-input', '#test-conditional-reveal legend']
+    ['a conditionally revealed input', 'yes-input', '#test-conditional-reveal legend'],
+    ['a group of radio buttons after a particularly long heading', 'radios-big-heading', '.test-radios-big-heading-legend'],
+    // Rather than scrolling to the fieldset, we expect to scroll to the label
+    // because of the distance between the input and the fieldset
+    ['an input within a large fieldset', 'address-postcode', 'label[for="address-postcode"]']
   ]
 
   describe.each(inputTypes)('when linking to %s', (_, inputId, legendOrLabelSelector) => {
