@@ -66,6 +66,10 @@
         "href": "#yes-input"
       },
       {
+        "text": "Problem with radios with heading",
+        "href": "#traal"
+      },
+      {
         "text": "Problem with input within large fieldset",
         "href": "#address-postcode"
       }
@@ -309,6 +313,32 @@
         "conditional": {
           "html": noField
         }
+      }
+    ]
+  }) }}
+
+  {{ govukRadios({
+    classes: "govuk-radios--inline",
+    idPrefix: "traal",
+    name: "traal",
+    fieldset: {
+      legend: {
+        text: "Have you supplied orders signed in triplicate, sent in, sent back, queried, lost, found, subjected to public inquiry, lost again, and finally buried in soft peat for three months and recycled as firelighters?",
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl"
+      }
+    },
+    errorMessge: {
+      text: "Select whether you have supplied orders meeting these criteria"
+    },
+    items: [
+      {
+        value: "yes",
+        text: "Yes"
+      },
+      {
+        value: "no",
+        text: "No"
       }
     ]
   }) }}

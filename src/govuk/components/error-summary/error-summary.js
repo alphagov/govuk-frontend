@@ -112,10 +112,16 @@ ErrorSummary.prototype.getAssociatedLegendOrLabel = function ($input) {
 
     if (legends.length) {
       var $candidateLegend = legends[0]
-      
-      // Only scroll to the fieldset’s legend (instead of the label associated
-      // with the input) if the input would end up in the top half of the
-      // screen.
+
+      // If the input type is radio or checkbox, always use the legend if there
+      // is one.
+      if ($input.type === 'checkbox' || $input.type === 'radio') {
+        return $candidateLegend
+      }
+
+      // For other input types, only scroll to the fieldset’s legend (instead of
+      // the label associated with the input) if the input would end up in the
+      // top half of the screen.
       //
       // This should avoid situations where the input either ends up off the
       // screen, or obscured by a software keyboard.
