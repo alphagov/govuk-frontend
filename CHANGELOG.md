@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+### Fixes
+- [Pull request #1574: Make form elements scale correctly when text resized by user](https://github.com/alphagov/govuk-frontend/pull/1574).
+
 ## 3.2.0 (Feature release)
 
 ### New features

@@ -13,6 +13,9 @@
     box-sizing: border-box; // should this be global?
     max-width: 100%;
     height: 40px;
+    @if $govuk-typography-use-rem {
+      height: govuk-px-to-rem(40px);
+    }
     padding: govuk-spacing(1); // was 5px 4px 4px - size of it should be adjusted to match other form elements
     border: $govuk-border-width-form-element solid $govuk-input-border-colour;
 
