@@ -44,22 +44,4 @@ describe('Banner', () => {
       done(err)
     })
   })
-
-  it.skip('should be dismissable', done => {
-    requestPath.post('/hide-banner', {
-      followAllRedirects: true,
-      jar: true // enable cookies
-    }, (err, res) => {
-      const $ = cheerio.load(res.body)
-
-      // Check the page responded correctly
-      expect(res.statusCode).toBe(200)
-      expect($.html()).toContain('GOV.UK Frontend')
-
-      // Check that the banner is not visible
-      const appBanner = $('[data-module="app-banner"]')
-      expect(appBanner.length).toBeFalsy()
-      done(err)
-    })
-  })
 })
