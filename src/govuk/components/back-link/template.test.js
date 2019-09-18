@@ -16,16 +16,6 @@ describe('back-link component', () => {
     expect(results).toHaveNoViolations()
   })
 
-  it.skip('fails to render if the required fields are not included', () => {
-    // TODO: href is a required field but the component does not error,
-    // when it is not passed
-    expect(() => {
-      render('back-link', {
-        text: 'Example'
-      })
-    }).toThrow()
-  })
-
   it('renders the default example with an anchor, href and text correctly', () => {
     const $ = render('back-link', examples.default)
 
