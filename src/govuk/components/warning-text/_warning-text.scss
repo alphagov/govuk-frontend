@@ -23,13 +23,15 @@
     display: inline-block;
 
     position: absolute;
-    top: 50%;
     left: 0;
 
-    min-width: 32px;
+    min-width: 29px;
     min-height: 29px;
-    margin-top: -20px; // Half the height of the circle (adjusted for NTA)
-    padding-top: 3px;
+    margin-top: -7px;
+
+    @include govuk-media-query($from: tablet) {
+      margin-top: -5px;
+    }
 
     // When a user customises their colours the background colour will often be removed.
     // Adding a border to the component keeps it's shape as a circle.
@@ -51,6 +53,6 @@
 
   .govuk-warning-text__text {
     display: block;
-    padding-left: 50px;
+    padding-left: 45px;
   }
 }
