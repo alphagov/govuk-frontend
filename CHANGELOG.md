@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+### New features
+
+#### Allow `lang` to be set on `<title>` and `<main>` of template
+
+You can now set the [lang attribute](https://www.w3.org/International/questions/qa-html-language-declarations) in the title and main of page template.
+
+This will help with scenarios where some of the elements, such as navigation and footer, are in English whereas the title and page content are in a different language.
+
+- [Pull request #1576: Allow `lang` to be set on title and main of template](https://github.com/alphagov/govuk-frontend/pull/1576).
+
 ### Fixes
 - [Pull request #1574: Make form elements scale correctly when text resized by user](https://github.com/alphagov/govuk-frontend/pull/1574).
 - [Pull request ##1570: Prevent inputs ending up off screen or obscured by keyboards when linking from the error summary to inputs within a large fieldset](https://github.com/alphagov/govuk-frontend/pull/1570)
