@@ -50,6 +50,16 @@ Accordion.prototype.init = function () {
   // See if "Open all" button text should be updated
   var areAllSectionsOpen = this.checkIfAllSectionsOpen()
   this.updateOpenAllButton(areAllSectionsOpen)
+
+  // Is it only anchor links that have the behaviour of scrolling to a section?
+  // Should we handle hashchange too, I'm not sure what real usecase people would be setting programmatic focus to something
+  // instead of using an anchor link, so maybe we should intentionally avoid that til we find a real user need...
+  document.addEventListener('click', function (event) {
+    this.onAnchorLinksPressed(event.target.hash, false)
+  }.bind(this))
+  window.addEventListener('load', function () {
+    this.onAnchorLinksPressed(window.location.hash, true)
+  }.bind(this))
 }
 
 // Initialise controls and set attributes
@@ -161,6 +171,34 @@ Accordion.prototype.onOpenOrCloseAllToggle = function () {
   })
 
   $module.updateOpenAllButton(nowExpanded)
+}
+
+Accordion.prototype.onAnchorLinksPressed = function (hash, shouldScrollIntoView) {
+  if (!hash) {
+    return
+  }
+  // Check if there is an element to anchor to.
+  var $idTarget = document.getElementById(hash.substr(1))
+  if (!$idTarget) {
+    return
+  }
+  // If that element is inside of a section then we can expanded that section.
+  // TODO: Polyfill #closest
+  var $parentSection = $idTarget.closest('.govuk-accordion__section')
+  if (!$parentSection || this.isExpanded($parentSection)) {
+    return
+  }
+
+  this.setExpanded(true, $parentSection)
+
+  // If the hash is set on page load then we'll need to scroll to the right element ourselves.
+  if (!shouldScrollIntoView) {
+    return
+  }
+  // Wait for the page to re-layout so that the element we want to move to is visible.
+  window.setTimeout(function () {
+    $idTarget.scrollIntoView()
+  })
 }
 
 // Set section attributes when opened/closed
