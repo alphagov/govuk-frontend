@@ -1,0 +1,60 @@
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "accordion/macro.njk" import govukAccordion %}
+
+{% extends "layout.njk" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    "href": "/"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Accordion with an anchor link in side a section example
+      </h1>
+
+      <p class="govuk-body">
+        This example allows us to test that links within sections can be focused properly.
+      </p>
+
+      <p class="govuk-body">
+        <a href="#anchor">
+          Link to anchor within a section
+        </a>
+      </p>
+
+      {% set sectionHTML %}
+        <p class="govuk-body">
+          This is the content with a anchor link inside.
+        </p>
+        <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum justo dui, imperdiet nec mollis quis, luctus a dolor. Cras consectetur tincidunt tristique. Donec eget vulputate turpis. Nullam sem urna, pulvinar in euismod ac, aliquam hendrerit ex. Donec vehicula velit ut felis dictum pharetra. Aliquam dapibus quam ut consequat aliquet. Aenean vestibulum felis sit amet tortor congue semper. Ut lacus nisl, rutrum in bibendum eu, molestie eget nulla.</p>
+        <h3 class="govuk-heading-l" id="anchor">
+          Anchor
+        </h3>
+        <p class="govuk-body">Aenean fringilla vel metus nec tincidunt. Nam venenatis metus tempor finibus efficitur. Aenean ex elit, convallis vitae nisi et, mattis vestibulum dolor. Aenean et purus nec arcu pulvinar tincidunt ac nec lacus. Curabitur malesuada pellentesque dui a sollicitudin. Morbi ac dignissim risus. Cras consequat, ex ut ultricies volutpat, libero velit vestibulum nisl, eu iaculis nibh ligula sed tellus.</p>
+      {% endset %}
+
+      {{ govukAccordion({
+        id: "accordion-with-anchor-link",
+        items: [
+          {
+            heading: {
+              text: "Section with a anchor link inside"
+            },
+            content: {
+              html: sectionHTML
+            }
+          }
+        ]
+      }) }}
+
+      <p class="govuk-body">Vestibulum pretium viverra mi. Nulla finibus tempus nulla malesuada auctor. Suspendisse a aliquam turpis. Aenean ut malesuada tortor. Donec vel mi dolor. Nam in gravida est. Aliquam eu nibh eu metus porta volutpat. Donec placerat orci et urna euismod volutpat. Integer blandit urna vitae eleifend maximus. Quisque fringilla iaculis venenatis. Etiam in porta ex. Nullam vitae sapien mollis, pharetra felis in, gravida elit. Nulla ultrices urna ac mi molestie maximus. In tincidunt tellus dolor, eget tincidunt diam vestibulum in. Maecenas sed sapien non nisi malesuada ornare. Proin nec rhoncus libero.</p>
+      <p class="govuk-body">Donec ante diam, imperdiet vitae pretium at, facilisis in nulla. Vestibulum ultrices, orci eget consequat mattis, eros purus rutrum nibh, nec commodo neque justo id nulla. Praesent at enim facilisis sem iaculis consequat. Sed dictum dui et justo blandit venenatis. Etiam tempor, nibh ut sollicitudin blandit, neque diam ullamcorper neque, in viverra neque neque et arcu. Curabitur non dui dolor. Proin eget dictum ante. Aliquam egestas eget augue eget cursus. Nam consectetur ut neque quis interdum.</p>
+      <p class="govuk-body">Sed nec volutpat neque. Sed finibus, nisl id ullamcorper interdum, nibh augue sagittis nisl, vel venenatis justo risus eu nulla. Sed sodales est vel cursus vehicula. Curabitur ut facilisis quam. Vestibulum consequat vel arcu ut fringilla. Curabitur posuere leo ut magna consequat sollicitudin. Proin id metus in ex scelerisque placerat. Vestibulum ut mauris velit. Donec id tortor metus. In id laoreet enim. Praesent egestas, dui non hendrerit ultricies, arcu felis aliquet nunc, vitae sollicitudin nisl arcu a quam. Cras ultricies nunc metus, ac bibendum libero finibus in. Mauris tristique finibus massa id posuere. Vestibulum neque ligula, laoreet eu nisi in, pulvinar pretium lacus. Nullam porta, urna nec aliquam euismod, neque est viverra quam, vel scelerisque metus tellus vitae massa. Ut sed neque quis lacus lobortis lobortis.</p>
+    </div>
+  </div>
+{% endblock %}
