@@ -64,7 +64,7 @@ examples:
       label:
         text: Can you provide more detail?
       hint:
-        text: Don't include personal or financial information, eg your
+        text: Don’t include personal or financial information, eg your
               National Insurance number or credit card details.
 
   - name: with error message
@@ -72,7 +72,7 @@ examples:
       name: no-ni-reason
       id: no-ni-reason
       label:
-        text: Why can't you provide a National Insurance number?
+        text: Why can’t you provide a National Insurance number?
       errorMessage:
         text: You must provide an explanation
 
