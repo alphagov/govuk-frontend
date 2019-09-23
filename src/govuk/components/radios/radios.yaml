@@ -225,7 +225,7 @@ examples:
       - value: gateway
         text: Sign in with Government Gateway
         hint:
-          text: You'll have a user ID if you've registered for Self Assessment or filed a tax return online before.
+          text: You’ll have a user ID if you’ve registered for Self Assessment or filed a tax return online before.
       - value: verify
         text: Sign in with GOV.UK Verify
         hint:
