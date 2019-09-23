@@ -12,6 +12,12 @@ This will help with scenarios where some of the elements, such as navigation and
 
 - [Pull request #1576: Allow `lang` to be set on title and main of template](https://github.com/alphagov/govuk-frontend/pull/1576).
 
+#### Add new override class to hide elements
+
+You can now use the `.govuk-!-display-none` override class to hide elements.
+
+- [Pull request #1586: Add display none override class](https://github.com/alphagov/govuk-frontend/pull/1586).
+
 #### Visual updates to the warning text component
 
 Align ‘Warning text’ icon with first line of the content fixing [#1352](https://github.com/alphagov/govuk-frontend/issues/1352) Some changes were made to the size and spacing of the icon to help with positioning.
