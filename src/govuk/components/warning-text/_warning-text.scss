@@ -5,9 +5,6 @@
 @include govuk-exports("govuk/component/warning-text") {
 
   .govuk-warning-text {
-    @include govuk-font($size: 19);
-    @include govuk-text-colour;
-
     position: relative;
     @include govuk-responsive-margin(6, "bottom");
     padding: govuk-spacing(2) 0;
@@ -50,6 +47,8 @@
   }
 
   .govuk-warning-text__text {
+    @include govuk-font($size: 19, $weight: bold);
+    @include govuk-text-colour;
     display: block;
     padding-left: 50px;
   }
