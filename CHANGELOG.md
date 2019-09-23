@@ -15,7 +15,8 @@ This will help with scenarios where some of the elements, such as navigation and
 ### Fixes
 - [Pull request #1574: Make form elements scale correctly when text resized by user](https://github.com/alphagov/govuk-frontend/pull/1574).
 - [Pull request #1584: Fix text resize issue with warning text icon](https://github.com/alphagov/govuk-frontend/pull/1584)
-- [Pull request ##1570: Prevent inputs ending up off screen or obscured by keyboards when linking from the error summary to inputs within a large fieldset](https://github.com/alphagov/govuk-frontend/pull/1570)
+- [Pull request #1570: Prevent inputs ending up off screen or obscured by keyboards when linking from the error summary to inputs within a large fieldset](https://github.com/alphagov/govuk-frontend/pull/1570)
+- [Pull request #1585: Explicitly set font weight on warning-text component](https://github.com/alphagov/govuk-frontend/pull/1585)
 
 ## 3.2.0 (Feature release)
 
