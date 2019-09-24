@@ -9,7 +9,7 @@ params:
   description: Optional prefix. This is used to prefix each `item.name` using `-`.
 - name: items
   type: array
-  required: true
+  required: false
   description: An array of input objects with name, value and classes.
   params:
   - name: id
