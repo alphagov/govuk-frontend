@@ -30,6 +30,7 @@ Align ‘Warning text’ icon with first line of the content fixing [#1352](http
 - [Pull request #1570: Prevent inputs ending up off screen or obscured by keyboards when linking from the error summary to inputs within a large fieldset](https://github.com/alphagov/govuk-frontend/pull/1570)
 - [Pull request #1585: Explicitly set font weight on warning-text component](https://github.com/alphagov/govuk-frontend/pull/1585)
 - [Pull request #1587: Fix height and alignment issue within header in Chrome 76+](https://github.com/alphagov/govuk-frontend/pull/1587)
+- [Pull request #1589: Remove role="button" from header button](https://github.com/alphagov/govuk-frontend/pull/1589)
 
 ## 3.2.0 (Feature release)
 
