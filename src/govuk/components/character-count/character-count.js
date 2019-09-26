@@ -47,20 +47,16 @@ CharacterCount.prototype.init = function () {
     return
   }
 
+  // Remove hard limit if set
+  $module.removeAttribute('maxlength')
 
-  // If there's a maximum length defined and the count message exists
-  if (this.countMessage) {
-    // Remove hard limit if set
-    $module.removeAttribute('maxlength')
+  // Bind event changes to the textarea
+  var boundChangeEvents = this.bindChangeEvents.bind(this)
+  boundChangeEvents()
 
-    // Bind event changes to the textarea
-    var boundChangeEvents = this.bindChangeEvents.bind(this)
-    boundChangeEvents()
-
-    // Update count message
-    var boundUpdateCountMessage = this.updateCountMessage.bind(this)
-    boundUpdateCountMessage()
-  }
+  // Update count message
+  var boundUpdateCountMessage = this.updateCountMessage.bind(this)
+  boundUpdateCountMessage()
 }
 
 // Read data attributes
