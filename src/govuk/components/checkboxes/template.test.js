@@ -501,6 +501,42 @@ describe('Checkboxes', () => {
       expect($firstInput.attr('data-aria-controls')).toBe('conditional-example-conditional')
       expect($firstConditional.attr('id')).toBe('conditional-example-conditional')
     })
+
+    it('omits empty conditionals', () => {
+      const $ = render('checkboxes', {
+        name: 'example-conditional',
+        items: [
+          {
+            value: 'foo',
+            text: 'Foo',
+            conditional: {
+              html: false
+            }
+          }
+        ]
+      })
+
+      const $component = $('.govuk-checkboxes')
+      expect($component.find('.govuk-checkboxes__conditional').length).toEqual(0)
+    })
+
+    it('does not associate checkboxes with empty conditionals', () => {
+      const $ = render('checkboxes', {
+        name: 'example-conditional',
+        items: [
+          {
+            value: 'foo',
+            text: 'Foo',
+            conditional: {
+              html: false
+            }
+          }
+        ]
+      })
+
+      const $input = $('.govuk-checkboxes__input').first()
+      expect($input.attr('data-aria-controls')).toBeFalsy()
+    })
   })
 
   it('render additional label classes', () => {

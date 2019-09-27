@@ -433,6 +433,50 @@ describe('Radios', () => {
         expect($firstInput.attr('data-aria-controls')).toBe('conditional-example-conditional')
         expect($firstConditional.attr('id')).toBe('conditional-example-conditional')
       })
+
+      it('omits empty conditionals', () => {
+        const $ = render('radios', {
+          name: 'example-conditional',
+          items: [
+            {
+              value: 'yes',
+              text: 'Yes',
+              conditional: {
+                html: false
+              }
+            },
+            {
+              value: 'no',
+              text: 'No'
+            }
+          ]
+        })
+
+        const $component = $('.govuk-radios')
+        expect($component.find('.govuk-radios__conditional').length).toEqual(0)
+      })
+
+      it('does not associate radios with empty conditionals', () => {
+        const $ = render('radios', {
+          name: 'example-conditional',
+          items: [
+            {
+              value: 'yes',
+              text: 'Yes',
+              conditional: {
+                html: false
+              }
+            },
+            {
+              value: 'no',
+              text: 'No'
+            }
+          ]
+        })
+
+        const $input = $('.govuk-radios__input').first()
+        expect($input.attr('data-aria-controls')).toBeFalsy()
+      })
     })
 
     it('render divider', () => {

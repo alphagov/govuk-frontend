@@ -13,7 +13,7 @@
 
 {% set isConditional = false %}
 {% for item in params.items %}
-  {% if item.conditional %}
+  {% if item.conditional.html %}
     {% set isConditional = true %}
   {% endif %}
 {% endfor %}
@@ -69,7 +69,7 @@
           <input class="govuk-radios__input" id="{{ id }}" name="{{ params.name }}" type="radio" value="{{ item.value }}"
           {{-" checked" if item.checked }}
           {{-" disabled" if item.disabled }}
-          {%- if item.conditional %} data-aria-controls="{{ conditionalId }}"{% endif -%}
+          {%- if item.conditional.html %} data-aria-controls="{{ conditionalId }}"{% endif -%}
           {%- if hasHint %} aria-describedby="{{ itemHintId }}"{% endif -%}
           {%- for attribute, value in item.attributes %} {{ attribute }}="{{ value }}"{% endfor -%}>
           {{ govukLabel({
@@ -89,7 +89,7 @@
           }) | indent(6) | trim }}
           {% endif %}
         </div>
-        {% if item.conditional %}
+        {% if item.conditional.html %}
           <div class="govuk-radios__conditional{% if not item.checked %} govuk-radios__conditional--hidden{% endif %}" id="{{ conditionalId }}">
             {{ item.conditional.html | safe }}
           </div>
