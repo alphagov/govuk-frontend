@@ -20,6 +20,14 @@ params:
     type: string
     required: true
     description: Item-specific name attribute.
+  - name: type
+    type: string
+    required: false
+    description: Sets the input type, default is text.
+  - name: inputmode
+    type: string
+    required: false
+    description: Sets the input inputmode, default is numric.
   - name: label
     type: string
     required: true

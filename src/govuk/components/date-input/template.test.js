@@ -131,7 +131,7 @@ describe('Date input', () => {
       expect($firstItems.text().trim()).toEqual('Day')
     })
 
-    it('renders inputs with type="number"', () => {
+    it('renders inputs with type="text"', () => {
       const $ = render('date-input', {
         items: [
           {
@@ -141,7 +141,20 @@ describe('Date input', () => {
       })
 
       const $firstInput = $('.govuk-date-input__item:first-child input')
-      expect($firstInput.attr('type')).toEqual('number')
+      expect($firstInput.attr('type')).toEqual('text')
+    })
+
+    it('renders inputs with inputmode="numric"', () => {
+      const $ = render('date-input', {
+        items: [
+          {
+            name: 'day'
+          }
+        ]
+      })
+
+      const $firstInput = $('.govuk-date-input__item:first-child input')
+      expect($firstInput.attr('inputmode')).toEqual('numeric')
     })
 
     it('renders inputs with pattern="[0-9]*" to trigger numeric keypad on iOS', () => {
@@ -169,6 +182,34 @@ describe('Date input', () => {
 
       const $firstInput = $('.govuk-date-input__item:first-child input')
       expect($firstInput.attr('pattern')).toEqual('[0-8]*')
+    })
+
+    it('renders inputs with custom type', () => {
+      const $ = render('date-input', {
+        items: [
+          {
+            name: 'day',
+            type: 'password'
+          }
+        ]
+      })
+
+      const $firstInput = $('.govuk-date-input__item:first-child input')
+      expect($firstInput.attr('type')).toEqual('password')
+    })
+
+    it('renders inputs with custom inputmode attribute', () => {
+      const $ = render('date-input', {
+        items: [
+          {
+            name: 'day',
+            inputmode: 'url'
+          }
+        ]
+      })
+
+      const $firstInput = $('.govuk-date-input__item:first-child input')
+      expect($firstInput.attr('inputmode')).toEqual('url')
     })
 
     it('renders item with implicit class for label', () => {
