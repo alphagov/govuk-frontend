@@ -1873,7 +1873,9 @@ ErrorSummary.prototype.getFragmentFromUrl = function (url) {
  *
  * Returns the first element that exists from this list:
  *
- * - The `<legend>` associated with the closest `<fieldset>` ancestor
+ * - The `<legend>` associated with the closest `<fieldset>` ancestor, as long
+ *   as the top of it is no more than half a viewport height away from the
+ *   bottom of the input
  * - The first `<label>` that is associated with the input using for="inputId"
  * - The closest parent `<label>`
  *
@@ -1888,7 +1890,32 @@ ErrorSummary.prototype.getAssociatedLegendOrLabel = function ($input) {
     var legends = $fieldset.getElementsByTagName('legend');
 
     if (legends.length) {
-      return legends[0]
+      var $candidateLegend = legends[0];
+
+      // If the input type is radio or checkbox, always use the legend if there
+      // is one.
+      if ($input.type === 'checkbox' || $input.type === 'radio') {
+        return $candidateLegend
+      }
+
+      // For other input types, only scroll to the fieldset’s legend (instead of
+      // the label associated with the input) if the input would end up in the
+      // top half of the screen.
+      //
+      // This should avoid situations where the input either ends up off the
+      // screen, or obscured by a software keyboard.
+      var legendTop = $candidateLegend.getBoundingClientRect().top;
+      var inputRect = $input.getBoundingClientRect();
+
+      // If the browser doesn't support Element.getBoundingClientRect().height
+      // or window.innerHeight (like IE8), bail and just link to the label.
+      if (inputRect.height && window.innerHeight) {
+        var inputBottom = inputRect.top + inputRect.height;
+
+        if (inputBottom - legendTop < window.innerHeight / 2) {
+          return $candidateLegend
+        }
+      }
     }
   }
 

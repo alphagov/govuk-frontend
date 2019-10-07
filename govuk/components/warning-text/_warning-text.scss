@@ -5,9 +5,6 @@
 @include govuk-exports("govuk/component/warning-text") {
 
   .govuk-warning-text {
-    @include govuk-font($size: 19);
-    @include govuk-text-colour;
-
     position: relative;
     @include govuk-responsive-margin(6, "bottom");
     padding: govuk-spacing(2) 0;
@@ -23,13 +20,15 @@
     display: inline-block;
 
     position: absolute;
-    top: 50%;
     left: 0;
 
-    min-width: 32px;
+    min-width: 29px;
     min-height: 29px;
-    margin-top: -20px; // Half the height of the circle (adjusted for NTA)
-    padding-top: 3px;
+    margin-top: -7px;
+
+    @include govuk-media-query($from: tablet) {
+      margin-top: -5px;
+    }
 
     // When a user customises their colours the background colour will often be removed.
     // Adding a border to the component keeps it's shape as a circle.
@@ -39,7 +38,7 @@
     color: govuk-colour("white");
     background: govuk-colour("black");
 
-    font-size: 1.6em;
+    font-size: 30px;
     line-height: 29px;
 
     text-align: center;
@@ -53,7 +52,9 @@
   }
 
   .govuk-warning-text__text {
+    @include govuk-font($size: 19, $weight: bold);
+    @include govuk-text-colour;
     display: block;
-    padding-left: 50px;
+    padding-left: 45px;
   }
 }
