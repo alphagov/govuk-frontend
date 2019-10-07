@@ -26,6 +26,10 @@ CharacterCount.prototype.init = function () {
     return
   }
 
+  // We move count message right after the field
+  // Kept for backwards compatibility
+  $textarea.insertAdjacentElement('afterend', $countMessage)
+
   // Read options set using dataset ('data-' values)
   this.options = this.getDataset($module)
 
@@ -43,9 +47,6 @@ CharacterCount.prototype.init = function () {
     return
   }
 
-  // Generate and reference message
-  var boundCreateCountMessage = this.createCountMessage.bind(this)
-  this.countMessage = boundCreateCountMessage()
 
   // If there's a maximum length defined and the count message exists
   if (this.countMessage) {
@@ -88,27 +89,6 @@ CharacterCount.prototype.count = function (text) {
     length = text.length
   }
   return length
-}
-
-// Generate count message and bind it to the input
-// returns reference to the generated element
-CharacterCount.prototype.createCountMessage = function () {
-  var countElement = this.$textarea
-  var elementId = countElement.id
-  // Check for existing info count message
-  var countMessage = document.getElementById(elementId + '-info')
-  // If there is no existing info count message we add one right after the field
-  if (elementId && !countMessage) {
-    countElement.insertAdjacentHTML('afterend', '<span id="' + elementId + '-info" class="govuk-hint govuk-character-count__message" aria-live="polite"></span>')
-    this.describedBy = countElement.getAttribute('aria-describedby')
-    this.describedByInfo = this.describedBy + ' ' + elementId + '-info'
-    countElement.setAttribute('aria-describedby', this.describedByInfo)
-    countMessage = document.getElementById(elementId + '-info')
-  } else {
-  // If there is an existing info count message we move it right after the field
-    countElement.insertAdjacentElement('afterend', countMessage)
-  }
-  return countMessage
 }
 
 // Bind input propertychange to the elements and update based on the change
