@@ -12,4 +12,4 @@ Find out when to use the tag component in your service in the [GOV.UK Design Sys
 
 Use options to customise the appearance, content and behaviour of a component when using a macro, for example, changing the text.
 
-See [options table](https://design-system.service.gov.uk/components/tag/#options-example-default) for details.
+See [options table](https://design-system.service.gov.uk/components/tag/#options-tag-example) for details.

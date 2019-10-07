@@ -12,4 +12,4 @@ Find out when to use the breadcrumbs component in your service in the [GOV.UK De
 
 Use options to customise the appearance, content and behaviour of a component when using a macro, for example, changing the text.
 
-See [options table](https://design-system.service.gov.uk/components/breadcrumbs/#options-example-default) for details.
+See [options table](https://design-system.service.gov.uk/components/breadcrumbs/#options-breadcrumbs-example) for details.

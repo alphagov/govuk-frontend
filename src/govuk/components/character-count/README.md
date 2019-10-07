@@ -12,4 +12,4 @@ Find out when to use the character count component in your service in the [GOV.U
 
 Use options to customise the appearance, content and behaviour of a component when using a macro, for example, changing the text.
 
-See [options table](https://design-system.service.gov.uk/components/character-count/#options-example-default) for details.
+See [options table](https://design-system.service.gov.uk/components/character-count/#options-character-count-example) for details.
