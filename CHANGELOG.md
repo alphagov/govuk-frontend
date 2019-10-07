@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 3.3.0 (Feature release)
+
 ### New features
 
 #### Allow `lang` to be set on `<title>` and `<main>` of template
