@@ -5,6 +5,9 @@ import '../../vendor/polyfills/Element/prototype/classList'
 function CharacterCount ($module) {
   this.$module = $module
   this.$textarea = $module.querySelector('.govuk-js-character-count')
+  if (this.$textarea) {
+    this.$countMessage = $module.querySelector('[id=' + this.$textarea.id + '-info]')
+  }
 }
 
 CharacterCount.prototype.defaults = {
@@ -17,7 +20,9 @@ CharacterCount.prototype.init = function () {
   // Check for module
   var $module = this.$module
   var $textarea = this.$textarea
-  if (!$textarea) {
+  var $countMessage = this.$countMessage
+
+  if (!$textarea || !$countMessage) {
     return
   }
 
@@ -132,7 +137,7 @@ CharacterCount.prototype.checkIfValueChanged = function () {
 CharacterCount.prototype.updateCountMessage = function () {
   var countElement = this.$textarea
   var options = this.options
-  var countMessage = this.countMessage
+  var countMessage = this.$countMessage
 
   // Determine the remaining number of characters/words
   var currentLength = this.count(countElement.value)
