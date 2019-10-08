@@ -257,7 +257,7 @@ describe('Data list', () => {
                 items: [
                   {
                     text: 'Edit',
-                    visuallyHiddenText: 'Custom Accessible Name'
+                    visuallyHiddenText: 'Edit Custom Accessible Name'
                   }
                 ]
               }
@@ -266,8 +266,10 @@ describe('Data list', () => {
         })
 
         const $component = $('.govuk-summary-list')
-        const $actionLink = $component.find('.govuk-summary-list__actions > a')
-        expect($actionLink.text()).toContain('Edit Custom Accessible Name')
+        const $actionVisableText = $component.find('.govuk-summary-list__actions > a > span[aria-hidden="true"]')
+        const $actionHiddenText = $component.find('.govuk-summary-list__actions > a > .govuk-visually-hidden')
+        expect($actionVisableText.text()).toContain('Edit')
+        expect($actionHiddenText.text()).toContain('Edit Custom Accessible Name')
       })
       it('renders classes', async () => {
         const $ = render('summary-list', {
