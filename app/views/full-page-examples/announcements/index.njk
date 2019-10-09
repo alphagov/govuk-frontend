@@ -11,6 +11,7 @@ notes: Based on https://www.gov.uk/government/news/strictly-vampires-and-sausage
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block header %}
+{% include "../../partials/banner.njk" %}
 {{ govukHeader({
   navigation: [
     {
