@@ -35,6 +35,7 @@ Align ‘Warning text’ icon with first line of the content fixing [#1352](http
 - [Pull request #1589: Remove role="button" from header button](https://github.com/alphagov/govuk-frontend/pull/1589)
 - [Pull request #1595: Do not output conditionally revealed content for radios or checkboxes when it's empty](https://github.com/alphagov/govuk-frontend/pull/1595)
 - [Pull request #1594: Refactor handling of count message in character count Javascript](https://github.com/alphagov/govuk-frontend/pull/1594)
+- [Pull request #1609: Update hex value for secondary text to improve contrast](https://github.com/alphagov/govuk-frontend/pull/1609)
 
 ## 3.2.0 (Feature release)
 
