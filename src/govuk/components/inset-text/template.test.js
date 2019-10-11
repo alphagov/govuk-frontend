@@ -42,16 +42,16 @@ describe('Inset text', () => {
       })
 
       const content = $('.govuk-inset-text').html().trim()
-      expect(content).toEqual('It can take &lt;b&gt;up to 8 weeks&lt;/b&gt; to register a lasting power of attorney if there are no mistakes in the application.')
+      expect(content).toEqual('<p class="govuk-body">It can take &lt;b&gt;up to 8 weeks&lt;/b&gt; to register a lasting power of attorney if there are no mistakes in the application.</p>')
     })
 
     it('allows HTML to be passed un-escaped', () => {
       const $ = render('inset-text', {
-        html: 'It can take <b>up to 8 weeks</b> to register a lasting power of attorney if there are no mistakes in the application.'
+        html: '<p class="govuk-body">It can take <b>up to 8 weeks</b> to register a lasting power of attorney if there are no mistakes in the application.</p>'
       })
 
       const content = $('.govuk-inset-text').html().trim()
-      expect(content).toEqual('It can take <b>up to 8 weeks</b> to register a lasting power of attorney if there are no mistakes in the application.')
+      expect(content).toEqual('<p class="govuk-body">It can take <b>up to 8 weeks</b> to register a lasting power of attorney if there are no mistakes in the application.</p>')
     })
 
     it('renders with attributes', () => {

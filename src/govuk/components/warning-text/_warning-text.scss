@@ -50,8 +50,8 @@
 
   .govuk-warning-text__text {
     @include govuk-font($size: 19, $weight: bold);
-    @include govuk-text-colour;
     display: block;
+    margin: 0;
     padding-left: 45px;
   }
 }

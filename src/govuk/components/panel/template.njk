@@ -7,7 +7,11 @@
   </h{{ headingLevel }}>
   {% if params.html or params.text %}
   <div class="govuk-panel__body">
-    {{ params.html | safe if params.html else params.text }}
+  {% if params.html %}
+    {{ params.html | safe }}
+  {% else %}
+    <p class="govuk-body">{{ params.text }}</p>
+  {% endif %}
   </div>
   {% endif %}
 </div>

@@ -41,7 +41,13 @@
     margin-bottom: 0;
   }
 
-  // Remove the bottom margin from the last item inside the content
+  // Remove the top margin from the first p inside the summary
+  .govuk-accordion__section-summary > p:first-child {
+    margin-top: 0;
+  }
+
+  // Remove the bottom margin from the last item inside the summary/content
+  .govuk-accordion__section-summary > :last-child,
   .govuk-accordion__section-content > :last-child {
     margin-bottom: 0;
   }

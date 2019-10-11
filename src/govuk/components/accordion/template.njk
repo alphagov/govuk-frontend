@@ -13,13 +13,21 @@
             </span>
           </h{{ headingLevel }}>
           {% if item.summary.html or item.summary.text %}
-            <div class="govuk-accordion__section-summary govuk-body" id="{{ id }}-summary-{{ loop.index }}">
-              {{ item.summary.html | safe if item.summary.html else item.summary.text }}
+            <div class="govuk-accordion__section-summary" id="{{ id }}-summary-{{ loop.index }}">
+            {% if item.summary.html %}
+              {{ item.summary.html | safe }}
+            {% else %}
+              <p class="govuk-body">{{ item.summary.text }}</p>
+            {% endif %}
             </div>
           {% endif %}
         </div>
         <div id="{{ id }}-content-{{ loop.index }}" class="govuk-accordion__section-content" aria-labelledby="{{ id }}-heading-{{ loop.index }}">
-          {{ item.content.html | safe if item.content.html else item.content.text }}
+        {% if item.content.html %}
+          {{ item.content.html | safe }}
+        {% else %}
+          <p class="govuk-body">{{ item.content.text }}</p>
+        {% endif %}
         </div>
       </div>
     {% endif %}

@@ -53,8 +53,8 @@ examples:
   data:
     summaryText: Where to find your National Insurance Number
     html: |
-      Your National Insurance number can be found on
-      <ul>
+      <p class="govuk-body">Your National Insurance number can be found on</p>
+      <ul class="govuk-list govuk-list--bullet">
         <li>your National Insurance card</li>
         <li>your payslip</li>
         <li>P60</li>

@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Fixes
+
+- [Pull request #1613: Wrap component text with <p> where semantics are missing](https://github.com/alphagov/govuk-frontend/pull/1574).
+
 ## 3.3.0 (Feature release)
 
 ### New features

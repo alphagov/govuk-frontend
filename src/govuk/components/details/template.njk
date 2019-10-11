@@ -5,6 +5,10 @@
     </span>
   </summary>
   <div class="govuk-details__text">
-    {{ params.html | safe if params.html else params.text }}
+  {% if params.html %}
+    {{ params.html | safe }}
+  {% else %}
+    <p class="govuk-body">{{ params.text }}</p>
+  {% endif %}
   </div>
 </details>

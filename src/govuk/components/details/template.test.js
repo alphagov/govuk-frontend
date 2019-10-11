@@ -38,16 +38,16 @@ describe('Details', () => {
     })
 
     const detailsText = $('.govuk-details__text').html().trim()
-    expect(detailsText).toEqual('More about the greater than symbol (&gt;)')
+    expect(detailsText).toEqual('<p class="govuk-body">More about the greater than symbol (&gt;)</p>')
   })
 
   it('allows HTML to be passed un-escaped', () => {
     const $ = render('details', {
-      html: 'More about <b>bold text</b>'
+      html: '<p class="govuk-body">More about <b>bold text</b></p>'
     })
 
     const detailsText = $('.govuk-details__text').html().trim()
-    expect(detailsText).toEqual('More about <b>bold text</b>')
+    expect(detailsText).toEqual('<p class="govuk-body">More about <b>bold text</b></p>')
   })
 
   it('allows summary text to be passed whilst escaping HTML entities', () => {

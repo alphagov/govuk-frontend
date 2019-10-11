@@ -88,7 +88,7 @@ examples:
       - heading:
          text: Test 2
         summary:
-          html: <span class="govuk-!-font-weight-regular">Additional description</span>
+          html: <p class="govuk-body"><span class="govuk-!-font-weight-regular">Additional description</span></p>
         content:
           html: |
             <ul class="govuk-list govuk-list--bullet">
@@ -142,8 +142,8 @@ examples:
       - heading:
           text: Section A
         content:
-          html: <a class="govuk-link" href="#">Link A</a>
+          html: <p class="govuk-body"><a class="govuk-link" href="#">Link A</a></p>
       - heading:
           text: Section B
         content:
-          html: <a class="govuk-link" href="#">Link B</a>
+          html: <p class="govuk-body"><a class="govuk-link" href="#">Link B</a></p>

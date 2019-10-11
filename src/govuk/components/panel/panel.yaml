@@ -31,8 +31,12 @@ params:
 examples:
 - name: default
   data:
-    titleHtml: Application complete
+    titleText: Application complete
     text: 'Your reference number: HDJ2123F'
+- name: with html
+  data:
+    titleHtml: Application complete
+    html: '<p class="govuk-body">Your reference number: <span>HDJ2123F</span></p>'
 - name: custom heading level
   data:
     titleText: Application complete

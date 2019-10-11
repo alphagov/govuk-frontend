@@ -71,16 +71,16 @@ describe('Panel', () => {
     })
 
     const panelBodyText = $('.govuk-panel__body').html().trim()
-    expect(panelBodyText).toEqual('Your reference number&lt;br&gt;&lt;strong&gt;HDJ2123F&lt;/strong&gt;')
+    expect(panelBodyText).toEqual('<p class="govuk-body">Your reference number&lt;br&gt;&lt;strong&gt;HDJ2123F&lt;/strong&gt;</p>')
   })
 
   it('allows body HTML to be passed un-escaped', () => {
     const $ = render('panel', {
-      html: 'Your reference number<br><strong>HDJ2123F</strong>'
+      html: '<p class="govuk-body">Your reference number<br><strong>HDJ2123F</strong></p>'
     })
 
     const panelBodyText = $('.govuk-panel__body').html().trim()
-    expect(panelBodyText).toEqual('Your reference number<br><strong>HDJ2123F</strong>')
+    expect(panelBodyText).toEqual('<p class="govuk-body">Your reference number<br><strong>HDJ2123F</strong></p>')
   })
 
   it('allows additional classes to be added to the component', () => {
