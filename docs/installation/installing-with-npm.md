@@ -241,24 +241,24 @@ Follow either [Recommended solution](#recommended-solution) or [Alternative solu
 
 ### Recommended solution
 
-Make `/node_modules/govuk-frontend/assets` available to your project by routing
+Make `/node_modules/govuk-frontend/govuk/assets` available to your project by routing
 requests for your assets folder there.
 
 For example, if your project uses [express.js](https://expressjs.com/), below is
 a code sample you could add to your configuration:
 
 ```JS
-app.use('/assets', express.static(path.join(__dirname, '/node_modules/govuk-frontend/assets')))
+app.use('/assets', express.static(path.join(__dirname, '/node_modules/govuk-frontend/govuk/assets')))
 ```
 ### Alternative solution
 
-Manually copy the images and fonts from `/node_modules/govuk-frontend/assets` into a public facing directory in your project. Ideally copying the files to your project should be an automated task or part of your build pipeline to ensure that the GOV.UK Frontend assets stay up-to-date.
+Manually copy the images and fonts from `/node_modules/govuk-frontend/govuk/assets` into a public facing directory in your project. Ideally copying the files to your project should be an automated task or part of your build pipeline to ensure that the GOV.UK Frontend assets stay up-to-date.
 
 The default paths used for assets are `assets/images` and `assets/fonts`. **If your asset folders follow this structure, you will not need to complete the following steps.**
 
 To use different asset paths, also complete the below step(s).
 
-1. Set `$govuk-assets-path`, `$govuk-images-path` and `$govuk-fonts-path` in your project Sass file to point to the relevant directories in your project (this will override the defaults set in `/node_modules/govuk-frontend/settings/_assets.scss`). Make sure you do this in Sass before importing `govuk-frontend` into your project - see [Importing styles](#importing-styles).
+1. Set `$govuk-assets-path`, `$govuk-images-path` and `$govuk-fonts-path` in your project Sass file to point to the relevant directories in your project (this will override the defaults set in `/node_modules/govuk-frontend/govuk/settings/_assets.scss`). Make sure you do this in Sass before importing `govuk-frontend` into your project - see [Importing styles](#importing-styles).
 
   Example 1:
 

@@ -55,7 +55,7 @@ stylesheet without having to redefine anything else.
 
 // application.scss
 
-@import "govuk-frontend/frontend/all";
+@import "node_modules/govuk-frontend/govuk/all";
 
 .example {
   // example application style
