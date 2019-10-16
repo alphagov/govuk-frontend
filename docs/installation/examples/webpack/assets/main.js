@@ -1,3 +1,3 @@
-import Button from 'govuk-frontend/components/button/button'
+import Button from 'govuk-frontend/govuk/components/button/button'
 
 new Button(document).init()
