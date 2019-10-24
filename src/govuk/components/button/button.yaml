@@ -13,15 +13,15 @@ params:
   description: If `text` is set, this is not required. HTML for the button or link. If `html` is provided, the `text` argument will be ignored and `element` will be automatically set to `button` unless `href` is also set, or it has already been defined. This argument has no effect if `element` is set to `input`.
 - name: name
   type: string
-  required: true
+  required: false
   description: Name for the `input` or `button`. This has no effect on `a` elements.
 - name: type
   type: string
-  required: true
+  required: false
   description: Type of `input` or `button` – `button`, `submit` or `reset`. Defaults to `submit`. This has no effect on `a` elements.
 - name: value
   type: string
-  required: true
+  required: false
   description: Value for the `button` tag. This has no effect on `a` or `input` elements.
 - name: disabled
   type: boolean
