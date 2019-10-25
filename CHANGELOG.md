@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+### Fixes
+- [Pull request #1620: Only add underline to back link when href exists ](https://github.com/alphagov/govuk-frontend/pull/1620).
+
 ## 3.3.0 (Feature release)
 
 ### New features
