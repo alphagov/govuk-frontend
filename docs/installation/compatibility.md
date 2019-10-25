@@ -10,8 +10,7 @@ frameworks:
 You cannot use the following features if you installed GOV.UK Frontend from
 `dist`. [Install with node package manager](installing-from-npm.md) instead.
 
-If you use these features, your service will not have GOV.UK Frontend's many
-accessibility and usability improvements.
+If you use these features, your service will not meet [level AA of WCAG 2.1](https://www.gov.uk/service-manual/helping-people-to-use-your-service/understanding-wcag) because your users will not be able to change the font size.
 
 ## Turn on 'compatibility mode'
 
