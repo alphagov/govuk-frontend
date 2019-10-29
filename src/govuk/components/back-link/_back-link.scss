@@ -17,7 +17,10 @@
 
     // Allow space for the arrow
     padding-left: 14px;
+  }
 
+  // Only add a custom underline if the component is linkable
+  .govuk-back-link[href] {
     // Use border-bottom rather than text-decoration so that the arrow is
     // underlined as well.
     border-bottom: 1px solid govuk-colour("black");
@@ -30,22 +33,22 @@
     &:focus {
       border-bottom-color: transparent;
     }
+  }
 
-    // Prepend left pointing arrow
-    &:before {
-      @include govuk-shape-arrow($direction: left, $base: 10px, $height: 6px);
+  // Prepend left pointing arrow
+  .govuk-back-link:before {
+    @include govuk-shape-arrow($direction: left, $base: 10px, $height: 6px);
 
-      content: "";
+    content: "";
 
-      // Vertically align with the parent element
-      position: absolute;
+    // Vertically align with the parent element
+    position: absolute;
 
-      top: 0;
-      bottom: 0;
-      left: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
 
-      margin: auto;
-    }
+    margin: auto;
   }
 
   @if $govuk-use-legacy-font {
