@@ -2,6 +2,10 @@
   background-color: $govuk-body-background-colour;
 }
 
+.app-width-container--wide {
+  @include govuk-width-container(1200px);
+}
+
 .app-iframe-in-component-preview {
   margin: 15px 0;
 }

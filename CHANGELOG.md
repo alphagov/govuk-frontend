@@ -4,7 +4,34 @@
 
 ### New features
 
-#### Allow attributes to be set on `<body>` of template
+#### Create custom width container classes
+
+You can now create custom page width container classes using the `govuk-width-container` mixin. You do this by passing in the required maximum width of the container.
+
+For example:
+
+```scss
+.app-width-container--wide {
+  @include govuk-width-container(1200px);
+}
+```
+
+You can use the generated classes to set the width of:
+- template container
+- header container
+- footer container
+
+It was already possible to set the page app width with the `$govuk-page-width` variable. This new feature is useful when creating additional custom page width classes.
+
+- [Pull request #1626: Allow creating custom width containers and using them with template](https://github.com/alphagov/govuk-frontend/pull/1626).
+
+#### Set custom container classes on template
+
+You can now set classes on `.govuk-width-container` in the template with `containerClasses`. This is useful if you want to set a custom width class on the template container.
+
+- [Pull request #1626: Allow creating custom width containers and using them with template](https://github.com/alphagov/govuk-frontend/pull/1626).
+
+#### Set attributes on the `<body>` of template
 
 You can now set attributes in the `<body>` element of page template.
 
