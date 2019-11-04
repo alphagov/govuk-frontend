@@ -13,6 +13,7 @@
 {% set assetPath = '' %}
 {% set themeColor = 'blue' %}
 {% set bodyClasses = 'app-body-class' %}
+{% set containerClasses = "app-width-container--wide" %}
 
 {% block pageTitle %}GOV.UK - Le meilleur endroit pour trouver des services gouvernementaux et de l'information{% endblock %}
 
@@ -54,6 +55,7 @@
   <!-- block:header -->
   {{ govukHeader({
     serviceName: "Nom du service",
+    containerClasses: "app-width-container--wide",
     navigation: [
       {
         href: '#1',
@@ -104,6 +106,7 @@
 {% block footer %}
   <!-- block:footer -->
   {{ govukFooter({
+    containerClasses: "app-width-container--wide",
     "meta": {
       "items": [
         {
