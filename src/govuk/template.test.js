@@ -61,6 +61,34 @@ describe('Template', () => {
       expect($('head meta[property="foo"]').attr('content')).toEqual('bar')
     })
 
+    it('uses a default assets path of /assets', () => {
+      const $ = renderTemplate()
+      const $icon = $('link[rel="shortcut icon"]')
+
+      expect($icon.attr('href')).toEqual('/assets/images/favicon.ico')
+    })
+
+    it('can have the assets path overridden using assetPath', () => {
+      const $ = renderTemplate({ assetPath: '/whatever' })
+      const $icon = $('link[rel="shortcut icon"]')
+
+      expect($icon.attr('href')).toEqual('/whatever/images/favicon.ico')
+    })
+
+    it('uses a default assets URL of whatever assetPath is', () => {
+      const $ = renderTemplate({ assetPath: '/whatever' })
+      const $ogImage = $('meta[property="og:image"]')
+
+      expect($ogImage.attr('content')).toEqual('/whatever/images/govuk-opengraph-image.png')
+    })
+
+    it('can have the assets URL overridden using assetUrl', () => {
+      const $ = renderTemplate({ assetUrl: '//a.gov.uk' })
+      const $ogImage = $('meta[property="og:image"]')
+
+      expect($ogImage.attr('content')).toEqual('//a.gov.uk/images/govuk-opengraph-image.png')
+    })
+
     describe('<meta name="theme-color">', () => {
       it('has a default content of #0b0c0c', () => {
         const $ = renderTemplate()
