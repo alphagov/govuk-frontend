@@ -86,6 +86,11 @@ describe('Template', () => {
     })
 
     describe('<main>', () => {
+      it('has role="main", supporting browsers that do not natively support HTML5 elements', () => {
+        const $ = renderTemplate()
+        expect($('main').attr('role')).toEqual('main')
+      })
+
       it('can have custom classes added using mainClasses', () => {
         const $ = renderTemplate({ mainClasses: 'custom-main-class' })
         expect($('main').hasClass('custom-main-class')).toBeTruthy()
