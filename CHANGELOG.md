@@ -40,6 +40,7 @@ You can now set attributes in the `<body>` element of page template.
 ### Fixes
 - [Pull request #1620: Only add underline to back link when href exists ](https://github.com/alphagov/govuk-frontend/pull/1620).
 - [Pull request #1609: Update hex value for secondary text to improve contrast](https://github.com/alphagov/govuk-frontend/pull/1609)
+- [Pull request #1631: Fix classes on character count when in error state](https://github.com/alphagov/govuk-frontend/pull/1631)
 
 ## 3.3.0 (Feature release)
 
