@@ -168,6 +168,18 @@ describe('Character count', () => {
       const $component = $('.govuk-js-character-count')
       expect($component.hasClass('govuk-textarea--error')).toBeTruthy()
     })
+
+    it('renders with classes', () => {
+      const $ = render('character-count', {
+        errorMessage: {
+          text: 'Error message'
+        },
+        classes: 'app-character-count--custom-modifier'
+      })
+
+      const $component = $('.govuk-js-character-count')
+      expect($component.hasClass('app-character-count--custom-modifier')).toBeTruthy()
+    })
   })
 
   describe('with dependant components', () => {
