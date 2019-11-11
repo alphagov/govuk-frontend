@@ -40,6 +40,7 @@ You can now set attributes in the `<body>` element of page template.
 ### Fixes
 - [Pull request #1620: Only add underline to back link when href exists ](https://github.com/alphagov/govuk-frontend/pull/1620).
 - [Pull request #1609: Update hex value for secondary text to improve contrast](https://github.com/alphagov/govuk-frontend/pull/1609)
+- [Pull request #1594: Refactor handling of count message in character count Javascript](https://github.com/alphagov/govuk-frontend/pull/1594)
 - [Pull request #1631: Fix classes on character count when in error state](https://github.com/alphagov/govuk-frontend/pull/1631)
 
 ## 3.3.0 (Feature release)
@@ -74,7 +75,6 @@ Align ‘Warning text’ icon with first line of the content fixing [#1352](http
 - [Pull request #1587: Fix height and alignment issue within header in Chrome 76+](https://github.com/alphagov/govuk-frontend/pull/1587)
 - [Pull request #1589: Remove role="button" from header button](https://github.com/alphagov/govuk-frontend/pull/1589)
 - [Pull request #1595: Do not output conditionally revealed content for radios or checkboxes when it's empty](https://github.com/alphagov/govuk-frontend/pull/1595)
-- [Pull request #1594: Refactor handling of count message in character count Javascript](https://github.com/alphagov/govuk-frontend/pull/1594)
 
 ## 3.2.0 (Feature release)
 
