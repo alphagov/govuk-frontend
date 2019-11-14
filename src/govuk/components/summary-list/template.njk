@@ -2,7 +2,7 @@
   <a class="govuk-link {%- if action.classes %} {{ action.classes }}{% endif %}" href="{{ action.href }}" {%- for attribute, value in action.attributes %} {{attribute}}="{{value}}"{% endfor %}>
     {{ action.html | safe if action.html else action.text }}
     {%- if action.visuallyHiddenText -%}
-      <span class="govuk-visually-hidden"> {{ action.visuallyHiddenText }}</span>
+      <span class="govuk-visually-hidden">&nbsp;{{ action.visuallyHiddenText }}</span>
     {% endif -%}
   </a>
 {% endmacro -%}
