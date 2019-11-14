@@ -49,6 +49,7 @@ You can now add attributes to the `<body>` element of a page, by using the [`bod
 - [Pull request #1609: Update hex value for secondary text to improve contrast](https://github.com/alphagov/govuk-frontend/pull/1609).
 - [Pull request #1620: Only add underline to back link when href exists ](https://github.com/alphagov/govuk-frontend/pull/1620).
 - [Pull request #1631: Fix classes on character count when in error state](https://github.com/alphagov/govuk-frontend/pull/1631).
+- [Pull request #1646: Add custom classes to character count](https://github.com/alphagov/govuk-frontend/pull/1646)
 
 
 ## 3.3.0 (Feature release)
