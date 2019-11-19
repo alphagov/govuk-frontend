@@ -27,7 +27,7 @@
     {# image url needs to be absolute e.g. http://wwww.domain.com/.../govuk-opengraph-image.png #}
     <meta property="og:image" content="{{ assetUrl | default('/assets') }}/images/govuk-opengraph-image.png">
   </head>
-  <body class="govuk-template__body {{ bodyClasses }}">
+  <body class="govuk-template__body {{ bodyClasses }}" {%- for attribute, value in bodyAttributes %} {{attribute}}="{{value}}"{% endfor %}>
     <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
     {% block bodyStart %}{% endblock %}
 
@@ -43,7 +43,7 @@
     {% endblock %}
 
     {% block main %}
-      <div class="govuk-width-container">
+      <div class="govuk-width-container {{ containerClasses }}">
         {% block beforeContent %}{% endblock %}
         <main class="govuk-main-wrapper {{ mainClasses }}" id="main-content" role="main"{% if mainLang %} lang="{{ mainLang }}"{% endif %}>
           {% block content %}{% endblock %}

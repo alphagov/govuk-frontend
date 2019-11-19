@@ -12,4 +12,4 @@ Find out when to use the inset text component in your service in the [GOV.UK Des
 
 Use options to customise the appearance, content and behaviour of a component when using a macro, for example, changing the text.
 
-See [options table](https://design-system.service.gov.uk/components/inset-text/#options-example-default) for details.
+See [options table](https://design-system.service.gov.uk/components/inset-text/#options-inset-text-example) for details.
