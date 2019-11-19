@@ -12,4 +12,4 @@ Find out when to use the error message component in your service in the [GOV.UK 
 
 Use options to customise the appearance, content and behaviour of a component when using a macro, for example, changing the text.
 
-See [options table](https://design-system.service.gov.uk/components/error-message/#options-example-default) for details.
+See [options table](https://design-system.service.gov.uk/components/error-message/#options-error-message-example) for details.
