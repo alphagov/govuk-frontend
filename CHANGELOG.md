@@ -37,7 +37,7 @@ Use the `$govuk-page-width` Sass variable instead if all your pages are the same
 
 - [Pull request #1626: Allow creating custom width containers and using them with template](https://github.com/alphagov/govuk-frontend/pull/1626).
 
-#### Add attributes to the <body> element of a page
+#### Add attributes to the `<body>` element of a page
 
 You can now add attributes to the `<body>` element of a page, by using the [`bodyAttributes` variable](https://design-system.service.gov.uk/styles/page-template/#variables) in the page template.
 
