@@ -20,19 +20,19 @@
     {
         "name": "name",
         "type": "string",
-        "required": true,
+        "required": false,
         "description": "Name for the `input` or `button`. This has no effect on `a` elements."
     },
     {
         "name": "type",
         "type": "string",
-        "required": true,
+        "required": false,
         "description": "Type of `input` or `button` – `button`, `submit` or `reset`. Defaults to `submit`. This has no effect on `a` elements."
     },
     {
         "name": "value",
         "type": "string",
-        "required": true,
+        "required": false,
         "description": "Value for the `button` tag. This has no effect on `a` or `input` elements."
     },
     {

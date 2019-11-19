@@ -2,9 +2,27 @@
 @import "../tools/all";
 @import "../helpers/all";
 
-@mixin govuk-width-container {
-  // Limit the width of the container to the page width
-  max-width: $govuk-page-width;
+////
+/// @group objects
+////
+
+/// Width container mixin
+///
+/// Used to create page width and custom width container classes.
+///
+/// @param {String} $width [$govuk-page-width] - Width in pixels
+///
+/// @example scss - Creating a 1200px wide container class
+///  .app-width-container--wide {
+///    @include govuk-width-container(1200px);
+///  }
+///
+/// @access public
+
+@mixin govuk-width-container($width: $govuk-page-width) {
+
+  // By default, limit the width of the container to the page width
+  max-width: $width;
 
   // On mobile, add half width gutters
   margin: 0 $govuk-gutter-half;
@@ -38,7 +56,7 @@
 
   // As soon as the viewport is greater than the width of the page plus the
   // gutters, just centre the content instead of adding gutters.
-  @include govuk-media-query($and: "(min-width: #{($govuk-page-width + $govuk-gutter * 2)})") {
+  @include govuk-media-query($and: "(min-width: #{($width + $govuk-gutter * 2)})") {
     margin: 0 auto;
 
     // Since a safe area may have previously been set above,
@@ -49,7 +67,7 @@
   }
 
   @include govuk-if-ie8 {
-    width: $govuk-page-width;
+    width: $width;
     // Since media queries are not supported in IE8,
     // we need to duplicate this margin that centers the page.
     margin: 0 auto;

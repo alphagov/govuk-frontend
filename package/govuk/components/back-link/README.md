@@ -12,4 +12,4 @@ Find out when to use the back link component in your service in the [GOV.UK Desi
 
 Use options to customise the appearance, content and behaviour of a component when using a macro, for example, changing the text.
 
-See [options table](https://design-system.service.gov.uk/components/back-link/#options-example-default) for details.
+See [options table](https://design-system.service.gov.uk/components/back-link/#options-back-link-example) for details.
