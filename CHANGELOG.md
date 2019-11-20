@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+### New features
+
 ### Fixes
 
 - [Pull request #1655: Ensure components use public `govuk-media-query` mixin](https://github.com/alphagov/govuk-frontend/pull/1655).
