@@ -24,6 +24,15 @@ describe('footer', () => {
     expect($component.attr('role')).toEqual('contentinfo')
   })
 
+  it('no items displayed when no item array is provided', () => {
+    const $ = render('footer', {
+      navigation: []
+    })
+
+    const $component = $('.govuk-footer')
+    expect($component.find('.govuk-footer__navigation').length).toEqual(0)
+  })
+
   it('renders attributes correctly', () => {
     const $ = render('footer', {
       attributes: {
@@ -81,6 +90,15 @@ describe('footer', () => {
       const $component = $('.govuk-footer')
       const $heading = $component.find('h2.govuk-visually-hidden')
       expect($heading.text()).toEqual('Support links')
+    })
+
+    it('doesn\'t render footer link list when no items are provided', () => {
+      const $ = render('footer', {
+        meta: { items: [] }
+      })
+
+      const $component = $('.govuk-footer')
+      expect($component.find('.govuk-footer__inline-list').length).toEqual(0)
     })
 
     it('renders links', () => {
