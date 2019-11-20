@@ -69,6 +69,15 @@ describe('Date input', () => {
       expect($items.length).toEqual(3)
     })
 
+    it('renders defaults when an empty item array is provided', () => {
+      const $ = render('date-input', {
+        items: []
+      })
+
+      const $items = $('.govuk-date-input__item')
+      expect($items.length).toEqual(3)
+    })
+
     it('renders with default items', () => {
       const $ = render('date-input', {})
 

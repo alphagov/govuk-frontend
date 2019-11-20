@@ -7,7 +7,7 @@
    aria-describedby – for example hints or error messages -#}
 {% set describedBy = params.fieldset.describedBy if params.fieldset.describedBy else "" %}
 
-{% if params.items %}
+{% if params.items | length %}
   {% set dateInputItems = params.items %}
 {% else %}
   {% set dateInputItems = [

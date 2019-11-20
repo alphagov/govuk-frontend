@@ -57,6 +57,20 @@ describe('Tabs', () => {
     })
 
     describe('items', () => {
+      it('doesn\'t render a list if items is not defined', () => {
+        const $ = render('tabs', {})
+
+        const $component = $('.govuk-tabs')
+        expect($component.find('.govuk-tabs__list').length).toEqual(0)
+      })
+
+      it('doesn\'t render a list if items is empty', () => {
+        const $ = render('tabs', { items: [] })
+
+        const $component = $('.govuk-tabs')
+        expect($component.find('.govuk-tabs__list').length).toEqual(0)
+      })
+
       it('render a matching tab and panel using item id', () => {
         const $ = render('tabs', {
           items: [
