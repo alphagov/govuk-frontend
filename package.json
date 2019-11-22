@@ -93,6 +93,7 @@
     "ie 8-11",
     "iOS >= 9"
   ],
+  "sasslintConfig": "config/.sass-lint.yml",
   "standard": {
     "globals": [
       "page",
