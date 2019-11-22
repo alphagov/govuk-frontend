@@ -1,7 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Date input nested dependant components passes through label params without breaking 1`] = `
-
 <label class="govuk-label govuk-date-input__label"
        for="dob-day"
 >
@@ -17,11 +16,9 @@ exports[`Date input nested dependant components passes through label params with
 >
   Year
 </label>
-
 `;
 
 exports[`Date input passes through fieldset params without breaking 1`] = `
-
 <fieldset class="govuk-fieldset"
           role="group"
           aria-describedby="dob-hint"
@@ -30,11 +27,9 @@ exports[`Date input passes through fieldset params without breaking 1`] = `
     What is your date of birth?
   </legend>
 </fieldset>
-
 `;
 
 exports[`Date input passes through html fieldset params without breaking 1`] = `
-
 <fieldset class="govuk-fieldset"
           role="group"
           aria-describedby="dob-error"
@@ -47,25 +42,20 @@ exports[`Date input passes through html fieldset params without breaking 1`] = `
     ?
   </legend>
 </fieldset>
-
 `;
 
 exports[`Date input when it includes a hint renders the hint 1`] = `
-
 <span id="dob-errors-hint"
       class="govuk-hint"
 >
   For example, 31 3 1980
 </span>
-
 `;
 
 exports[`Date input when it includes an error message renders the error message 1`] = `
-
 <span id="dob-errors-error"
       class="govuk-error-message"
 >
   Error message goes here
 </span>
-
 `;
