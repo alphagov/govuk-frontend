@@ -1,5 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Input by default renders boolean attributes 1`] = `
+<div class="govuk-form-group">
+  <input class="govuk-input"
+         id
+         name
+         type="text"
+         data-attribute
+  >
+</div>
+`;
+
 exports[`Input when it includes a hint renders the hint 1`] = `
 <span id="input-with-hint-hint"
       class="govuk-hint"

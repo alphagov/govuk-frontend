@@ -41,6 +41,41 @@ exports[`Checkboxes nested dependant components passes through label params with
 </label>
 `;
 
+exports[`Checkboxes renders boolean attributes 1`] = `
+<div class="govuk-form-group">
+  <div class="govuk-checkboxes"
+       data-attribute
+  >
+    <div class="govuk-checkboxes__item">
+      <input class="govuk-checkboxes__input"
+             id="example-name"
+             name="example-name"
+             type="checkbox"
+             value="1"
+      >
+      <label class="govuk-label govuk-checkboxes__label"
+             for="example-name"
+      >
+        Option 1
+      </label>
+    </div>
+    <div class="govuk-checkboxes__item">
+      <input class="govuk-checkboxes__input"
+             id="example-name-2"
+             name="example-name"
+             type="checkbox"
+             value="2"
+      >
+      <label class="govuk-label govuk-checkboxes__label"
+             for="example-name-2"
+      >
+        Option 2
+      </label>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Checkboxes when they include a hint renders the hint 1`] = `
 <span id="example-hint"
       class="govuk-hint"

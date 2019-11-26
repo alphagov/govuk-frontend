@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Data list renders boolean attributes 1`] = `
+<dl class="govuk-summary-list"
+    data-attribute
+>
+</dl>
+`;
+
+exports[`Data list rows actions renders boolean attributes 1`] = `
+<dl class="govuk-summary-list">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+    </dt>
+    <dd class="govuk-summary-list__value">
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link"
+         href
+         data-attribute
+      >
+        Edit
+      </a>
+    </dd>
+  </div>
+</dl>
+`;

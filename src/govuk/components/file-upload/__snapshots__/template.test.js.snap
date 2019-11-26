@@ -1,5 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`File upload by default renders boolean attributes 1`] = `
+<div class="govuk-form-group">
+  <input class="govuk-file-upload"
+         id
+         name
+         type="file"
+         data-attribute
+  >
+</div>
+`;
+
 exports[`File upload when it includes a hint renders with hint 1`] = `""`;
 
 exports[`File upload when it includes an error message renders with error message 1`] = `

@@ -1,5 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Textarea by default renders boolean attributes 1`] = `
+<div class="govuk-form-group">
+  <textarea class="govuk-textarea"
+            id
+            name
+            rows="5"
+            data-attribute
+  >
+  </textarea>
+</div>
+`;
+
 exports[`Textarea when it includes a hint renders with hint 1`] = `
 <span id="textarea-with-error-hint"
       class="govuk-hint"

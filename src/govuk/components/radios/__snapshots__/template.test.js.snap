@@ -1,5 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Radios items when they include attributes renders boolean attributes 1`] = `
+<div class="govuk-form-group">
+  <div class="govuk-radios">
+    <div class="govuk-radios__item">
+      <input class="govuk-radios__input"
+             id="example-name"
+             name="example-name"
+             type="radio"
+             value="yes"
+             data-attribute
+      >
+      <label class="govuk-label govuk-radios__label"
+             for="example-name"
+      >
+        Yes
+      </label>
+    </div>
+    <div class="govuk-radios__item">
+      <input class="govuk-radios__input"
+             id="example-name-2"
+             name="example-name"
+             type="radio"
+             value="no"
+             checked
+             data-attribute
+      >
+      <label class="govuk-label govuk-radios__label"
+             for="example-name-2"
+      >
+        No
+      </label>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Radios nested dependant components passes through fieldset params without breaking 1`] = `
 <fieldset class="govuk-fieldset app-fieldset--custom-modifier"
           aria-describedby="example-hint example-error"
@@ -39,6 +75,41 @@ exports[`Radios nested dependant components passes through label params without 
 >
   &lt;b&gt;No&lt;/b&gt;
 </label>
+`;
+
+exports[`Radios renders boolean attributes 1`] = `
+<div class="govuk-form-group">
+  <div class="govuk-radios"
+       data-attribute
+  >
+    <div class="govuk-radios__item">
+      <input class="govuk-radios__input"
+             id="example-name"
+             name="example-name"
+             type="radio"
+             value="yes"
+      >
+      <label class="govuk-label govuk-radios__label"
+             for="example-name"
+      >
+        Yes
+      </label>
+    </div>
+    <div class="govuk-radios__item">
+      <input class="govuk-radios__input"
+             id="example-name-2"
+             name="example-name"
+             type="radio"
+             value="no"
+      >
+      <label class="govuk-label govuk-radios__label"
+             for="example-name-2"
+      >
+        No
+      </label>
+    </div>
+  </div>
+</div>
 `;
 
 exports[`Radios when they include a hint renders the hint 1`] = `

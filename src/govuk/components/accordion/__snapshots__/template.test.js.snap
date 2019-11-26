@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Accordion by default renders boolean attributes 1`] = `
+<div class="govuk-accordion"
+     data-module="govuk-accordion"
+     id
+     data-attribute
+>
+</div>
+`;

@@ -1,5 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Select by default renders boolean attributes 1`] = `
+<div class="govuk-form-group">
+  <select class="govuk-select"
+          id
+          name
+          data-attribute
+  >
+  </select>
+</div>
+`;
+
 exports[`Select when it includes a hint renders the hint 1`] = `
 <span id="select-with-hint-hint"
       class="govuk-hint"

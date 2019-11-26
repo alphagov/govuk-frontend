@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error message renders boolean attributes 1`] = `
+<span class="govuk-error-message"
+      data-attribute
+>
+  <span class="govuk-visually-hidden">
+    Error:
+  </span>
+</span>
+`;

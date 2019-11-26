@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`fieldset renders boolean attributes 1`] = `
+<fieldset class="govuk-fieldset"
+          data-attribute
+>
+</fieldset>
+`;

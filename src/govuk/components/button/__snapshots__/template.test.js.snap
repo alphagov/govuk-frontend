@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button with explicit input button set by "element" renders boolean attributes 1`] = `
+<input value="Example"
+       type="submit"
+       class="govuk-button"
+       data-module="govuk-button"
+       data-attribute
+>
+`;

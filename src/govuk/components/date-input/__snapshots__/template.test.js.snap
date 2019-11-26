@@ -1,5 +1,59 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Date input by default renders boolean attributes 1`] = `
+<div class="govuk-form-group">
+  <div class="govuk-date-input"
+       data-attribute
+  >
+    <div class="govuk-date-input__item">
+      <div class="govuk-form-group">
+        <label class="govuk-label govuk-date-input__label"
+               for="undefined-day"
+        >
+          Day
+        </label>
+        <input class="govuk-input govuk-date-input__input govuk-input--width-2"
+               id="undefined-day"
+               name="day"
+               type="number"
+               pattern="[0-9]*"
+        >
+      </div>
+    </div>
+    <div class="govuk-date-input__item">
+      <div class="govuk-form-group">
+        <label class="govuk-label govuk-date-input__label"
+               for="undefined-month"
+        >
+          Month
+        </label>
+        <input class="govuk-input govuk-date-input__input govuk-input--width-2"
+               id="undefined-month"
+               name="month"
+               type="number"
+               pattern="[0-9]*"
+        >
+      </div>
+    </div>
+    <div class="govuk-date-input__item">
+      <div class="govuk-form-group">
+        <label class="govuk-label govuk-date-input__label"
+               for="undefined-year"
+        >
+          Year
+        </label>
+        <input class="govuk-input govuk-date-input__input govuk-input--width-4"
+               id="undefined-year"
+               name="year"
+               type="number"
+               pattern="[0-9]*"
+        >
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Date input nested dependant components passes through label params without breaking 1`] = `
 <label class="govuk-label govuk-date-input__label"
        for="dob-day"

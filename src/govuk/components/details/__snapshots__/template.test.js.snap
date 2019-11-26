@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Details renders boolean attributes 1`] = `
+<details class="govuk-details"
+         data-module="govuk-details"
+         data-attribute
+>
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+  </div>
+</details>
+`;

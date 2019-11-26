@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Label by default renders boolean attributes 1`] = `
+<label class="govuk-label"
+       data-attribute
+>
+  National Insurance number
+</label>
+`;

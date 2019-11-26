@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`back-link component renders boolean attributes 1`] = `
+<a href="#"
+   class="govuk-back-link"
+   data-attribute
+>
+  Back
+</a>
+`;

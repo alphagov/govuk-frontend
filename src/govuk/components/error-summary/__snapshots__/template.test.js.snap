@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error-summary renders anchor tag with boolean attributes 1`] = `
+<div class="govuk-error-summary"
+     aria-labelledby="error-summary-title"
+     role="alert"
+     tabindex="-1"
+     data-module="govuk-error-summary"
+>
+  <h2 class="govuk-error-summary__title"
+      id="error-summary-title"
+  >
+  </h2>
+  <div class="govuk-error-summary__body">
+    <ul class="govuk-list govuk-error-summary__list">
+      <li>
+        <a href="#item"
+           data-attribute
+        >
+          Error-1
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`Error-summary renders boolean attributes 1`] = `
+<div class="govuk-error-summary"
+     aria-labelledby="error-summary-title"
+     role="alert"
+     tabindex="-1"
+     data-attribute
+     data-module="govuk-error-summary"
+>
+  <h2 class="govuk-error-summary__title"
+      id="error-summary-title"
+  >
+  </h2>
+  <div class="govuk-error-summary__body">
+    <ul class="govuk-list govuk-error-summary__list">
+    </ul>
+  </div>
+</div>
+`;

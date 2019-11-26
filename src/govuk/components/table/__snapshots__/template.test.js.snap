@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Table cells renders boolean attributes 1`] = `
+<table class="govuk-table">
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell"
+          data-attribute
+      >
+        Foo
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`Table column headers renders boolean attributes 1`] = `
+<table class="govuk-table">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col"
+          class="govuk-table__header"
+          data-attribute
+      >
+        Foo
+      </th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+  </tbody>
+</table>
+`;
+
+exports[`Table renders boolean attributes 1`] = `
+<table class="govuk-table"
+       data-attribute
+>
+  <tbody class="govuk-table__body">
+  </tbody>
+</table>
+`;
+
+exports[`Table row headers when firstCellIsHeader is true renders boolean attributes 1`] = `
+<table class="govuk-table">
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <th scope="row"
+          class="govuk-table__header"
+          data-attribute
+      >
+        Foo
+      </th>
+      <td class="govuk-table__cell">
+        bar
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;

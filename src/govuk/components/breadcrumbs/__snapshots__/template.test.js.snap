@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Breadcrumbs by default renders boolean attributes 1`] = `
+<div class="govuk-breadcrumbs"
+     data-attribute
+>
+  <ol class="govuk-breadcrumbs__list">
+  </ol>
+</div>
+`;

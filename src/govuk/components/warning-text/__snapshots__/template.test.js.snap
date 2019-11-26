@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Warning text renders boolean attributes 1`] = `
+<div class="govuk-warning-text"
+     data-attribute
+     id="my-warning-text"
+>
+  <span class="govuk-warning-text__icon"
+        aria-hidden="true"
+  >
+    !
+  </span>
+  <strong class="govuk-warning-text__text">
+    <span class="govuk-warning-text__assistive">
+    </span>
+  </strong>
+</div>
+`;

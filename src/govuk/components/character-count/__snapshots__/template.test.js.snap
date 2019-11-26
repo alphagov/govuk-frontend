@@ -1,5 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Character count by default renders boolean attributes 1`] = `
+<div class="govuk-character-count"
+     data-module="govuk-character-count"
+>
+  <div class="govuk-form-group">
+    <textarea class="govuk-textarea govuk-js-character-count"
+              id
+              name
+              rows="5"
+              aria-describedby="undefined-info"
+              data-attribute
+    >
+    </textarea>
+  </div>
+  <span id="-info"
+        class="govuk-hint govuk-character-count__message"
+        aria-live="polite"
+  >
+    You can enter up to  characters
+  </span>
+</div>
+`;
+
 exports[`Character count when it includes a hint renders with hint 1`] = `
 <span id="character-count-with-hint-hint"
       class="govuk-hint"

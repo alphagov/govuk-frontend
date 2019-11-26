@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tabs by default items render a tab anchor with boolean attributes 1`] = `
+<div class="govuk-tabs"
+     data-module="govuk-tabs"
+>
+  <h2 class="govuk-tabs__title">
+    Contents
+  </h2>
+  <ul class="govuk-tabs__list">
+    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+      <a class="govuk-tabs__tab"
+         href="#tab-1"
+         data-attribute
+      >
+        Tab 1
+      </a>
+    </li>
+  </ul>
+  <section class="govuk-tabs__panel"
+           id="tab-1"
+  >
+  </section>
+</div>
+`;
+
+exports[`Tabs by default items render a tab panel with boolean attributes 1`] = `
+<div class="govuk-tabs"
+     data-module="govuk-tabs"
+>
+  <h2 class="govuk-tabs__title">
+    Contents
+  </h2>
+  <ul class="govuk-tabs__list">
+    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+      <a class="govuk-tabs__tab"
+         href="#tab-1"
+      >
+        Tab 1
+      </a>
+    </li>
+  </ul>
+  <section class="govuk-tabs__panel"
+           id="tab-1"
+           data-attribute
+  >
+    Panel text
+  </section>
+</div>
+`;
+
+exports[`Tabs by default renders boolean attributes 1`] = `
+<div class="govuk-tabs"
+     data-attribute
+     data-module="govuk-tabs"
+>
+  <h2 class="govuk-tabs__title">
+    Contents
+  </h2>
+</div>
+`;

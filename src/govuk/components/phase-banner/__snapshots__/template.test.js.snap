@@ -1,5 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Phase banner by default renders boolean attributes 1`] = `
+<div class="govuk-phase-banner"
+     data-attribute
+>
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+    </strong>
+    <span class="govuk-phase-banner__text">
+    </span>
+  </p>
+</div>
+`;
+
 exports[`Phase banner with dependant components renders the tag component classes 1`] = `
 <strong class="govuk-tag govuk-phase-banner__content__tag govuk-tag--inactive">
   alpha

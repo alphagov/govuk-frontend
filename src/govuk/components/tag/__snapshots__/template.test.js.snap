@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tag renders boolean attributes 1`] = `
+<strong class="govuk-tag"
+        data-attribute
+>
+  <span>
+    alpha
+  </span>
+</strong>
+`;

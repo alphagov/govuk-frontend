@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Panel renders boolean attributes 1`] = `
+<div class="govuk-panel govuk-panel--confirmation"
+     data-attribute
+>
+  <h1 class="govuk-panel__title">
+  </h1>
+</div>
+`;
