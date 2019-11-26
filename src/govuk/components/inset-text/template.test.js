@@ -5,7 +5,7 @@
 
 const axe = require('../../../../lib/axe-helper')
 
-const { render, getExamples } = require('../../../../lib/jest-helpers')
+const { html, render, getExamples } = require('../../../../lib/jest-helpers')
 
 const examples = getExamples('inset-text')
 
@@ -54,7 +54,7 @@ describe('Inset text', () => {
       expect(content).toEqual('It can take <b>up to 8 weeks</b> to register a lasting power of attorney if there are no mistakes in the application.')
     })
 
-    it('renders with attributes', () => {
+    it('renders attributes with values', () => {
       const $ = render('inset-text', {
         attributes: {
           'data-attribute': 'my data value'
@@ -63,6 +63,16 @@ describe('Inset text', () => {
 
       const $component = $('.govuk-inset-text')
       expect($component.attr('data-attribute')).toEqual('my data value')
+    })
+
+    it('renders boolean attributes', () => {
+      const componentHtml = html('inset-text', {
+        attributes: {
+          'data-attribute': null
+        }
+      })
+
+      expect(componentHtml).toMatchSnapshot()
     })
   })
 })

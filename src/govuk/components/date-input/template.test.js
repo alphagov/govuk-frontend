@@ -5,7 +5,7 @@
 
 const axe = require('../../../../lib/axe-helper')
 
-const { render, getExamples, htmlWithClassName } = require('../../../../lib/jest-helpers')
+const { html, render, getExamples, htmlWithClassName } = require('../../../../lib/jest-helpers')
 
 const examples = getExamples('date-input')
 
@@ -39,7 +39,7 @@ describe('Date input', () => {
       expect($component.attr('id')).toEqual('my-date-input')
     })
 
-    it('renders with attributes', () => {
+    it('renders attributes with values', () => {
       const $ = render('date-input', {
         attributes: {
           'data-attribute': 'my data value'
@@ -48,6 +48,16 @@ describe('Date input', () => {
 
       const $component = $('.govuk-date-input')
       expect($component.attr('data-attribute')).toEqual('my data value')
+    })
+
+    it('renders boolean attributes', () => {
+      const componentHtml = html('date-input', {
+        attributes: {
+          'data-attribute': null
+        }
+      })
+
+      expect(componentHtml).toMatchSnapshot()
     })
 
     it('renders with items', () => {

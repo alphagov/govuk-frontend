@@ -5,7 +5,7 @@
 
 const axe = require('../../../../lib/axe-helper')
 
-const { render, getExamples } = require('../../../../lib/jest-helpers')
+const { html, render, getExamples } = require('../../../../lib/jest-helpers')
 
 const examples = getExamples('details')
 
@@ -77,7 +77,7 @@ describe('Details', () => {
     expect($component.hasClass('some-additional-class')).toBeTruthy()
   })
 
-  it('allows additional attributes to be added to the details element', () => {
+  it('renders attributes with values', () => {
     const $ = render('details', {
       attributes: {
         'data-some-data-attribute': 'i-love-data',
@@ -88,5 +88,15 @@ describe('Details', () => {
     const $component = $('.govuk-details')
     expect($component.attr('data-some-data-attribute')).toEqual('i-love-data')
     expect($component.attr('another-attribute')).toEqual('true')
+  })
+
+  it('renders boolean attributes', () => {
+    const componentHtml = html('details', {
+      attributes: {
+        'data-attribute': null
+      }
+    })
+
+    expect(componentHtml).toMatchSnapshot()
   })
 })

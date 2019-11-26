@@ -40,5 +40,5 @@
   <input class="govuk-file-upload {%- if params.classes %} {{ params.classes }}{% endif %} {%- if params.errorMessage %} govuk-file-upload--error{% endif %}" id="{{ params.id }}" name="{{ params.name }}" type="file"
   {%- if params.value %} value="{{ params.value }}"{% endif %}
   {%- if describedBy %} aria-describedby="{{ describedBy }}"{% endif %}
-  {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+  {%- for attribute, value in params.attributes %} {{ attribute }}{% if value %}="{{ value }}"{% endif %}{% endfor %}>
 </div>

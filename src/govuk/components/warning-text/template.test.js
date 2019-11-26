@@ -5,7 +5,7 @@
 
 const axe = require('../../../../lib/axe-helper')
 
-const { render, getExamples } = require('../../../../lib/jest-helpers')
+const { html, render, getExamples } = require('../../../../lib/jest-helpers')
 
 const examples = getExamples('warning-text')
 
@@ -82,7 +82,7 @@ describe('Warning text', () => {
     expect($component.html()).toContain('<span>Some custom warning text</span>')
   })
 
-  it('renders attributes', () => {
+  it('renders attributes with values', () => {
     const $ = render('warning-text', {
       attributes: {
         'data-test': 'attribute',
@@ -93,5 +93,16 @@ describe('Warning text', () => {
     const $component = $('.govuk-warning-text')
     expect($component.attr('data-test')).toEqual('attribute')
     expect($component.attr('id')).toEqual('my-warning-text')
+  })
+
+  it('renders boolean attributes', () => {
+    const componentHtml = html('warning-text', {
+      attributes: {
+        'data-attribute': null,
+        id: 'my-warning-text'
+      }
+    })
+
+    expect(componentHtml).toMatchSnapshot()
   })
 })

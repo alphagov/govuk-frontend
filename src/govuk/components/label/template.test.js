@@ -5,7 +5,7 @@
 
 const axe = require('../../../../lib/axe-helper')
 
-const { render, getExamples } = require('../../../../lib/jest-helpers')
+const { html, render, getExamples } = require('../../../../lib/jest-helpers')
 
 const examples = getExamples('label')
 
@@ -90,7 +90,7 @@ describe('Label', () => {
       expect($selector.length).toBeTruthy()
     })
 
-    it('allows additional attributes to be added to the component', () => {
+    it('renders attributes with values', () => {
       const $ = render('label', {
         text: 'National Insurance number',
         attributes: {
@@ -102,6 +102,17 @@ describe('Label', () => {
       const $component = $('.govuk-label')
       expect($component.attr('first-attribute')).toEqual('true')
       expect($component.attr('second-attribute')).toEqual('false')
+    })
+
+    it('renders boolean attributes', () => {
+      const componentHtml = html('label', {
+        text: 'National Insurance number',
+        attributes: {
+          'data-attribute': null
+        }
+      })
+
+      expect(componentHtml).toMatchSnapshot()
     })
   })
 })

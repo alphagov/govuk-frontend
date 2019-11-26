@@ -5,7 +5,7 @@
 
 const axe = require('../../../../lib/axe-helper')
 
-const { render, getExamples } = require('../../../../lib/jest-helpers')
+const { html, render, getExamples } = require('../../../../lib/jest-helpers')
 
 const examples = getExamples('hint')
 
@@ -54,7 +54,7 @@ describe('Hint', () => {
       expect(content).toEqual('Unexpected <b>bold text</b> in body copy')
     })
 
-    it('renders with attributes', () => {
+    it('renders attributes with values', () => {
       const $ = render('hint', {
         attributes: {
           'data-attribute': 'my data value'
@@ -63,6 +63,16 @@ describe('Hint', () => {
 
       const $component = $('.govuk-hint')
       expect($component.attr('data-attribute')).toEqual('my data value')
+    })
+
+    it('renders boolean attributes', () => {
+      const componentHtml = html('hint', {
+        attributes: {
+          'data-attribute': null
+        }
+      })
+
+      expect(componentHtml).toMatchSnapshot()
     })
   })
 })

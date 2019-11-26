@@ -1,5 +1,5 @@
 <div class="govuk-warning-text {{- ' ' + params.classes if params.classes}}"
-  {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor -%}
+  {%- for attribute, value in params.attributes %} {{ attribute }}{% if value %}="{{ value }}"{% endif %}{% endfor -%}
   >
   <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
   <strong class="govuk-warning-text__text">

@@ -5,7 +5,7 @@
 
 const axe = require('../../../../lib/axe-helper')
 
-const { render, getExamples } = require('../../../../lib/jest-helpers')
+const { html, render, getExamples } = require('../../../../lib/jest-helpers')
 
 const examples = getExamples('footer')
 
@@ -33,7 +33,7 @@ describe('footer', () => {
     expect($component.find('.govuk-footer__navigation').length).toEqual(0)
   })
 
-  it('renders attributes correctly', () => {
+  it('renders attributes with values', () => {
     const $ = render('footer', {
       attributes: {
         'data-test-attribute': 'value',
@@ -44,6 +44,16 @@ describe('footer', () => {
     const $component = $('.govuk-footer')
     expect($component.attr('data-test-attribute')).toEqual('value')
     expect($component.attr('data-test-attribute-2')).toEqual('value-2')
+  })
+
+  it('renders boolean attributes', () => {
+    const componentHtml = html('footer', {
+      attributes: {
+        'data-attribute': null
+      }
+    })
+
+    expect(componentHtml).toMatchSnapshot()
   })
 
   it('renders classes', () => {
@@ -157,6 +167,24 @@ describe('footer', () => {
       expect($metaLink.attr('data-attribute')).toEqual('my-attribute')
       expect($metaLink.attr('data-attribute-2')).toEqual('my-attribute-2')
     })
+
+    it('renders boolean attributes on meta links', () => {
+      const componentHtml = html('footer', {
+        meta: {
+          items: [
+            {
+              href: '#1',
+              text: 'meta item 1',
+              attributes: {
+                'data-attribute': null
+              }
+            }
+          ]
+        }
+      })
+
+      expect(componentHtml).toMatchSnapshot()
+    })
   })
 
   describe('navigation', () => {
@@ -212,6 +240,24 @@ describe('footer', () => {
       const $navigationLink = $('.govuk-footer__list .govuk-footer__link')
       expect($navigationLink.attr('data-attribute')).toEqual('my-attribute')
       expect($navigationLink.attr('data-attribute-2')).toEqual('my-attribute-2')
+    })
+
+    it('renders boolean attributes on links', () => {
+      const componentHtml = html('footer', {
+        meta: {
+          items: [
+            {
+              href: '#1',
+              text: 'Navigation item 1',
+              attributes: {
+                'data-attribute': null
+              }
+            }
+          ]
+        }
+      })
+
+      expect(componentHtml).toMatchSnapshot()
     })
 
     it('renders lists in columns', () => {

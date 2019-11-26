@@ -5,7 +5,7 @@
 
 const axe = require('../../../../lib/axe-helper')
 
-const { render, getExamples } = require('../../../../lib/jest-helpers')
+const { html, render, getExamples } = require('../../../../lib/jest-helpers')
 
 const examples = getExamples('button')
 
@@ -26,7 +26,7 @@ describe('Button', () => {
       expect($component.text()).toContain('Save and continue')
     })
 
-    it('renders with attributes', () => {
+    it('renders attributes with values', () => {
       const $ = render('button', {
         element: 'button',
         attributes: {
@@ -38,6 +38,17 @@ describe('Button', () => {
       const $component = $('.govuk-button')
       expect($component.attr('aria-controls')).toEqual('example-id')
       expect($component.attr('data-tracking-dimension')).toEqual('123')
+    })
+
+    it('renders boolean attributes', () => {
+      const componentHtml = html('button', {
+        element: 'button',
+        attributes: {
+          'data-attribute': null
+        }
+      })
+
+      expect(componentHtml).toMatchSnapshot()
     })
 
     it('renders with classes', () => {
@@ -124,7 +135,7 @@ describe('Button', () => {
       expect($component.html()).toContain('Start <em>now</em>')
     })
 
-    it('renders with attributes', () => {
+    it('renders attributes with values', () => {
       const $ = render('button', {
         element: 'a',
         attributes: {
@@ -136,6 +147,17 @@ describe('Button', () => {
       const $component = $('.govuk-button')
       expect($component.attr('aria-controls')).toEqual('example-id')
       expect($component.attr('data-tracking-dimension')).toEqual('123')
+    })
+
+    it('renders boolean attributes', () => {
+      const componentHtml = html('button', {
+        element: 'a',
+        attributes: {
+          'data-attribute': null
+        }
+      })
+
+      expect(componentHtml).toMatchSnapshot()
     })
 
     it('renders with classes', () => {
@@ -165,7 +187,7 @@ describe('Button', () => {
       expect($component.attr('type')).toEqual('submit')
     })
 
-    it('renders with attributes', () => {
+    it('renders attributes with values', () => {
       const $ = render('button', {
         element: 'input',
         attributes: {
@@ -177,6 +199,18 @@ describe('Button', () => {
       const $component = $('.govuk-button')
       expect($component.attr('aria-controls')).toEqual('example-id')
       expect($component.attr('data-tracking-dimension')).toEqual('123')
+    })
+
+    it.only('renders boolean attributes', () => {
+      const componentHtml = html('button', {
+        element: 'input',
+        text: 'Example',
+        attributes: {
+          'data-attribute': null
+        }
+      })
+
+      expect(componentHtml).toMatchSnapshot()
     })
 
     it('renders with classes', () => {

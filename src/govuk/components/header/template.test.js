@@ -5,7 +5,7 @@
 
 const axe = require('../../../../lib/axe-helper')
 
-const { render, getExamples } = require('../../../../lib/jest-helpers')
+const { html, render, getExamples } = require('../../../../lib/jest-helpers')
 
 const examples = getExamples('header')
 
@@ -24,7 +24,7 @@ describe('header', () => {
     expect($component.attr('role')).toEqual('banner')
   })
 
-  it('renders attributes correctly', () => {
+  it('renders attributes with values', () => {
     const $ = render('header', {
       attributes: {
         'data-test-attribute': 'value',
@@ -35,6 +35,17 @@ describe('header', () => {
     const $component = $('.govuk-header')
     expect($component.attr('data-test-attribute')).toEqual('value')
     expect($component.attr('data-test-attribute-2')).toEqual('value-2')
+  })
+
+  it('renders boolean attributes', () => {
+    const componentHtml = html('header', {
+      element: 'header',
+      attributes: {
+        'data-attribute': null
+      }
+    })
+
+    expect(componentHtml).toMatchSnapshot()
   })
 
   it('renders classes', () => {
@@ -125,6 +136,23 @@ describe('header', () => {
       expect($navigationLink.attr('data-attribute')).toEqual('my-attribute')
       expect($navigationLink.attr('data-attribute-2')).toEqual('my-attribute-2')
     })
+
+    it('renders navigation item anchor with boolean attributes', () => {
+      const componentHtml = html('header', {
+        navigation: [
+          {
+            text: 'Item',
+            href: '/link',
+            attributes: {
+              'data-attribute': null
+            }
+          }
+        ]
+      })
+
+      expect(componentHtml).toMatchSnapshot()
+    })
+
     describe('menu button', () => {
       it('has an explicit type="button" so it does not act as a submit button', () => {
         const $ = render('header', examples['with navigation'])

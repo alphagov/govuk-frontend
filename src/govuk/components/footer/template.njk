@@ -1,5 +1,5 @@
 <footer class="govuk-footer {{ params.classes if params.classes }}" role="contentinfo"
-        {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+        {%- for attribute, value in params.attributes %} {{ attribute }}{% if value %}="{{ value }}"{% endif %}{% endfor %}>
   <div class="govuk-width-container {{ params.containerClasses if params.containerClasses }}">
     {% if params.navigation | length %}
       <div class="govuk-footer__navigation">
@@ -16,7 +16,7 @@
                 {% for item in nav.items %}
                   {% if item.href and item.text %}
                     <li class="govuk-footer__list-item">
-                      <a class="govuk-footer__link" href="{{ item.href }}"{% for attribute, value in item.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+                      <a class="govuk-footer__link" href="{{ item.href }}"{% for attribute, value in item.attributes %} {{ attribute }}{% if value %}="{{ value }}"{% endif %}{% endfor %}>
                         {{ item.text }}
                       </a>
                     </li>
@@ -37,7 +37,7 @@
             <ul class="govuk-footer__inline-list">
               {% for item in params.meta.items %}
                 <li class="govuk-footer__inline-list-item">
-                  <a class="govuk-footer__link" href="{{ item.href }}"{% for attribute, value in item.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+                  <a class="govuk-footer__link" href="{{ item.href }}"{% for attribute, value in item.attributes %} {{ attribute }}{% if value %}="{{ value }}"{% endif %}{% endfor %}>
                     {{ item.text }}
                   </a>
                 </li>

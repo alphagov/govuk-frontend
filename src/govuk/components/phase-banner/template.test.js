@@ -5,7 +5,7 @@
 
 const axe = require('../../../../lib/axe-helper')
 
-const { render, getExamples, htmlWithClassName } = require('../../../../lib/jest-helpers')
+const { html, render, getExamples, htmlWithClassName } = require('../../../../lib/jest-helpers')
 
 const examples = getExamples('phase-banner')
 
@@ -52,7 +52,7 @@ describe('Phase banner', () => {
       expect(phaseBannerText).toEqual('This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.')
     })
 
-    it('allows additional attributes to be added to the component', () => {
+    it('renders attributes with values', () => {
       const $ = render('phase-banner', {
         attributes: {
           'first-attribute': 'true',
@@ -64,7 +64,18 @@ describe('Phase banner', () => {
       expect($component.attr('first-attribute')).toEqual('true')
       expect($component.attr('second-attribute')).toEqual('false')
     })
+
+    it('renders boolean attributes', () => {
+      const componentHtml = html('phase-banner', {
+        attributes: {
+          'data-attribute': null
+        }
+      })
+
+      expect(componentHtml).toMatchSnapshot()
+    })
   })
+
   describe('with dependant components', () => {
     it('renders the tag component text', () => {
       const $ = render('phase-banner', examples.default)

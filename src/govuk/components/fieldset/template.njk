@@ -2,7 +2,7 @@
   {%- if params.classes %} {{ params.classes }}{% endif %}"
   {%- if params.role %} role="{{ params.role }}"{% endif %}
   {%- if params.describedBy %} aria-describedby="{{ params.describedBy }}"{% endif %}
-  {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+  {%- for attribute, value in params.attributes %} {{ attribute }}{% if value %}="{{ value }}"{% endif %}{% endfor %}>
   {% if params.legend.html or params.legend.text %}
   <legend class="govuk-fieldset__legend {%- if params.legend.classes %} {{ params.legend.classes }}{% endif %}">
   {% if params.legend.isPageHeading %}

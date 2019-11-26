@@ -5,7 +5,7 @@
 
 const axe = require('../../../../lib/axe-helper')
 
-const { render, getExamples } = require('../../../../lib/jest-helpers')
+const { html, render, getExamples } = require('../../../../lib/jest-helpers')
 
 const examples = getExamples('table')
 
@@ -25,7 +25,7 @@ describe('Table', () => {
     expect($('.govuk-table').hasClass('custom-class-goes-here')).toBeTruthy()
   })
 
-  it('can have additional attributes', () => {
+  it('renders attributes with values', () => {
     const $ = render('table', {
       attributes: {
         'data-foo': 'bar'
@@ -33,6 +33,16 @@ describe('Table', () => {
     })
 
     expect($('.govuk-table').attr('data-foo')).toEqual('bar')
+  })
+
+  it('renders boolean attributes', () => {
+    const componentHtml = html('table', {
+      attributes: {
+        'data-attribute': null
+      }
+    })
+
+    expect(componentHtml).toMatchSnapshot()
   })
 
   // =========================================================
@@ -163,7 +173,7 @@ describe('Table', () => {
       expect($th.attr('colspan')).toEqual('2')
     })
 
-    it('can have additional attributes', () => {
+    it('renders attributes with values', () => {
       const $ = render('table', {
         head: [
           {
@@ -178,6 +188,21 @@ describe('Table', () => {
       const $th = $('.govuk-table thead tr th')
 
       expect($th.attr('data-fizz')).toEqual('buzz')
+    })
+
+    it('renders boolean attributes', () => {
+      const componentHtml = html('table', {
+        head: [
+          {
+            text: 'Foo',
+            attributes: {
+              'data-attribute': null
+            }
+          }
+        ]
+      })
+
+      expect(componentHtml).toMatchSnapshot()
     })
   })
 
@@ -352,7 +377,7 @@ describe('Table', () => {
         expect($th.attr('colspan')).toEqual('2')
       })
 
-      it('can have additional attributes', () => {
+      it('renders attributes with values', () => {
         const $ = render('table', {
           firstCellIsHeader: true,
           rows: [
@@ -366,6 +391,20 @@ describe('Table', () => {
         const $th = $('.govuk-table').find('tbody tr th')
 
         expect($th.attr('data-fizz')).toEqual('buzz')
+      })
+
+      it('renders boolean attributes', () => {
+        const componentHtml = html('table', {
+          firstCellIsHeader: true,
+          rows: [
+            [
+              { text: 'Foo', attributes: { 'data-attribute': null } },
+              { text: 'bar' }
+            ]
+          ]
+        })
+
+        expect(componentHtml).toMatchSnapshot()
       })
     })
   })
@@ -518,7 +557,7 @@ describe('Table', () => {
       expect($td.attr('colspan')).toEqual('2')
     })
 
-    it('can have additional attributes', () => {
+    it('renders attributes with values', () => {
       const $ = render('table', {
         rows: [
           [
@@ -535,6 +574,23 @@ describe('Table', () => {
       const $td = $('.govuk-table td')
 
       expect($td.attr('data-fizz')).toEqual('buzz')
+    })
+
+    it('renders boolean attributes', () => {
+      const componentHtml = html('table', {
+        rows: [
+          [
+            {
+              text: 'Foo',
+              attributes: {
+                'data-attribute': null
+              }
+            }
+          ]
+        ]
+      })
+
+      expect(componentHtml).toMatchSnapshot()
     })
   })
 })

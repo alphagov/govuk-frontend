@@ -5,7 +5,7 @@
 
 const axe = require('../../../../lib/axe-helper')
 
-const { render, getExamples } = require('../../../../lib/jest-helpers')
+const { html, render, getExamples } = require('../../../../lib/jest-helpers')
 
 const examples = getExamples('error-message')
 
@@ -44,7 +44,7 @@ describe('Error message', () => {
     expect(content).toContain('Unexpected <b>bold text</b> in body copy')
   })
 
-  it('allows additional attributes to be specified', () => {
+  it('renders attributes with values', () => {
     const $ = render('error-message', {
       attributes: {
         'data-test': 'attribute',
@@ -55,6 +55,16 @@ describe('Error message', () => {
     const $component = $('.govuk-error-message')
     expect($component.attr('data-test')).toEqual('attribute')
     expect($component.attr('id')).toEqual('my-error-message')
+  })
+
+  it('renders boolean attributes', () => {
+    const componentHtml = html('error-message', {
+      attributes: {
+        'data-attribute': null
+      }
+    })
+
+    expect(componentHtml).toMatchSnapshot()
   })
 
   it('includes a visually hidden "Error" prefix by default', () => {

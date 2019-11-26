@@ -5,7 +5,7 @@
 
 const axe = require('../../../../lib/axe-helper')
 
-const { render, getExamples } = require('../../../../lib/jest-helpers')
+const { html, render, getExamples } = require('../../../../lib/jest-helpers')
 
 const examples = getExamples('error-summary')
 
@@ -97,7 +97,7 @@ describe('Error-summary', () => {
     expect($component.hasClass('extra-class one-more-class')).toBeTruthy()
   })
 
-  it('allows additional attributes to be added to the error-summary component', () => {
+  it('renders attributes with values', () => {
     const $ = render('error-summary', {
       attributes: {
         'first-attribute': 'true',
@@ -108,6 +108,16 @@ describe('Error-summary', () => {
     const $component = $('.govuk-error-summary')
     expect($component.attr('first-attribute')).toEqual('true')
     expect($component.attr('second-attribute')).toEqual('false')
+  })
+
+  it('renders boolean attributes', () => {
+    const componentHtml = html('error-summary', {
+      attributes: {
+        'data-attribute': null
+      }
+    })
+
+    expect(componentHtml).toMatchSnapshot()
   })
 
   it('number of error items matches the number of items specified', () => {
@@ -148,6 +158,22 @@ describe('Error-summary', () => {
     const $component = $('.govuk-error-summary__list a')
     expect($component.attr('data-attribute')).toEqual('my-attribute')
     expect($component.attr('data-attribute-2')).toEqual('my-attribute-2')
+  })
+
+  it('renders anchor tag with boolean attributes', () => {
+    const componentHtml = html('error-summary', {
+      errorList: [
+        {
+          text: 'Error-1',
+          href: '#item',
+          attributes: {
+            'data-attribute': null
+          }
+        }
+      ]
+    })
+
+    expect(componentHtml).toMatchSnapshot()
   })
 
   it('renders error item text', () => {

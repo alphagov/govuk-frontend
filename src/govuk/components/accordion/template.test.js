@@ -5,7 +5,7 @@
 
 const { axe } = require('jest-axe')
 
-const { render, getExamples } = require('../../../../lib/jest-helpers')
+const { html, render, getExamples } = require('../../../../lib/jest-helpers')
 
 const examples = getExamples('accordion')
 
@@ -124,7 +124,7 @@ describe('Accordion', () => {
       expect($component.attr('id')).toEqual('my-accordion')
     })
 
-    it('renders with attributes', () => {
+    it('renders attributes with values', () => {
       const $ = render('accordion', {
         attributes: {
           'data-attribute': 'my data value'
@@ -132,6 +132,15 @@ describe('Accordion', () => {
       })
       const $component = $('.govuk-accordion')
       expect($component.attr('data-attribute')).toEqual('my data value')
+    })
+
+    it('renders boolean attributes', () => {
+      const componentHtml = html('accordion', {
+        attributes: {
+          'data-attribute': null
+        }
+      })
+      expect(componentHtml).toMatchSnapshot()
     })
 
     it('renders with section expanded class', () => {

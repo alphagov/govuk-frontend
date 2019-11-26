@@ -5,7 +5,7 @@
 
 const axe = require('../../../../lib/axe-helper')
 
-const { render, getExamples } = require('../../../../lib/jest-helpers')
+const { html, render, getExamples } = require('../../../../lib/jest-helpers')
 
 const examples = getExamples('breadcrumbs')
 
@@ -27,7 +27,7 @@ describe('Breadcrumbs', () => {
       expect($component.hasClass('app-breadcrumbs--custom-modifier')).toBeTruthy()
     })
 
-    it('renders with attributes', () => {
+    it('renders attributes with values', () => {
       const $ = render('breadcrumbs', {
         attributes: {
           id: 'my-navigation',
@@ -38,6 +38,16 @@ describe('Breadcrumbs', () => {
       const $component = $('.govuk-breadcrumbs')
       expect($component.attr('id')).toEqual('my-navigation')
       expect($component.attr('role')).toEqual('navigation')
+    })
+
+    it('renders boolean attributes', () => {
+      const componentHtml = html('breadcrumbs', {
+        attributes: {
+          'data-attribute': null
+        }
+      })
+
+      expect(componentHtml).toMatchSnapshot()
     })
 
     it('renders with items', () => {

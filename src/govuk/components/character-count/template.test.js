@@ -5,7 +5,7 @@
 
 const { axe } = require('jest-axe')
 
-const { render, getExamples, htmlWithClassName } = require('../../../../lib/jest-helpers')
+const { html, render, getExamples, htmlWithClassName } = require('../../../../lib/jest-helpers')
 
 const examples = getExamples('textarea')
 
@@ -72,7 +72,7 @@ describe('Character count', () => {
       expect($component.text()).toEqual('221B Baker Street\nLondon\nNW1 6XE\n')
     })
 
-    it('renders with attributes', () => {
+    it('renders attributes with values', () => {
       const $ = render('character-count', {
         attributes: {
           'data-attribute': 'my data value'
@@ -81,6 +81,16 @@ describe('Character count', () => {
 
       const $component = $('.govuk-js-character-count')
       expect($component.attr('data-attribute')).toEqual('my data value')
+    })
+
+    it('renders boolean attributes', () => {
+      const componentHtml = html('character-count', {
+        attributes: {
+          'data-attribute': null
+        }
+      })
+
+      expect(componentHtml).toMatchSnapshot()
     })
 
     it('renders with formGroup', () => {

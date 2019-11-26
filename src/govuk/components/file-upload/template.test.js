@@ -5,7 +5,7 @@
 
 const axe = require('../../../../lib/axe-helper')
 
-const { render, getExamples, htmlWithClassName } = require('../../../../lib/jest-helpers')
+const { html, render, getExamples, htmlWithClassName } = require('../../../../lib/jest-helpers')
 
 const examples = getExamples('file-upload')
 
@@ -68,7 +68,7 @@ describe('File upload', () => {
       expect($component.attr('aria-describedby')).toMatch(describedById)
     })
 
-    it('renders with attributes', () => {
+    it('renders attributes with values', () => {
       const $ = render('file-upload', {
         attributes: {
           'data-attribute': 'my data value'
@@ -77,6 +77,16 @@ describe('File upload', () => {
 
       const $component = $('.govuk-file-upload')
       expect($component.attr('data-attribute')).toEqual('my data value')
+    })
+
+    it('renders boolean attributes', () => {
+      const componentHtml = html('file-upload', {
+        attributes: {
+          'data-attribute': null
+        }
+      })
+
+      expect(componentHtml).toMatchSnapshot()
     })
 
     it('renders with a form group wrapper', () => {

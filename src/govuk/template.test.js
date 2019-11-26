@@ -3,7 +3,7 @@
 const nunjucks = require('nunjucks')
 const configPaths = require('../../config/paths.json')
 
-const { renderTemplate } = require('../../lib/jest-helpers')
+const { htmlTemplate, renderTemplate } = require('../../lib/jest-helpers')
 
 describe('Template', () => {
   describe('with default nunjucks configuration', () => {
@@ -134,6 +134,11 @@ describe('Template', () => {
     it('can have custom attributes added using bodyAttributes', () => {
       const $ = renderTemplate({ bodyAttributes: { 'data-foo': 'bar' } })
       expect($('body').attr('data-foo')).toEqual('bar')
+    })
+
+    it('can have custom boolean attributes added using bodyAttributes', () => {
+      const templateHtml = htmlTemplate({ bodyAttributes: { 'data-attribute': null } })
+      expect(templateHtml).toMatchSnapshot()
     })
 
     it('can have additional content added after the opening tag using bodyStart block', () => {

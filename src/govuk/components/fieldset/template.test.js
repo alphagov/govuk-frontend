@@ -5,7 +5,7 @@
 
 const axe = require('../../../../lib/axe-helper')
 
-const { render, getExamples } = require('../../../../lib/jest-helpers')
+const { html, render, getExamples } = require('../../../../lib/jest-helpers')
 
 const examples = getExamples('fieldset')
 
@@ -140,7 +140,7 @@ describe('fieldset', () => {
     expect($component.attr('role')).toEqual('group')
   })
 
-  it('can have additional attributes', () => {
+  it('renders attributes with values', () => {
     const $ = render('fieldset', {
       attributes: {
         'data-attribute': 'value'
@@ -149,5 +149,15 @@ describe('fieldset', () => {
 
     const $component = $('.govuk-fieldset')
     expect($component.attr('data-attribute')).toEqual('value')
+  })
+
+  it('renders boolean attributes', () => {
+    const componentHtml = html('fieldset', {
+      attributes: {
+        'data-attribute': null
+      }
+    })
+
+    expect(componentHtml).toMatchSnapshot()
   })
 })

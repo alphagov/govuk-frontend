@@ -5,7 +5,7 @@
 
 const axe = require('../../../../lib/axe-helper')
 
-const { render, getExamples } = require('../../../../lib/jest-helpers')
+const { html, render, getExamples } = require('../../../../lib/jest-helpers')
 
 const examples = getExamples('tag')
 
@@ -62,7 +62,7 @@ describe('Tag', () => {
     expect($component.html()).toContain('<span>alpha</span>')
   })
 
-  it('renders attributes', () => {
+  it('renders attributes with values', () => {
     const $ = render('tag', {
       attributes: {
         'data-test': 'attribute',
@@ -74,5 +74,16 @@ describe('Tag', () => {
     const $component = $('.govuk-tag')
     expect($component.attr('data-test')).toEqual('attribute')
     expect($component.attr('id')).toEqual('my-tag')
+  })
+
+  it('renders boolean attributes', () => {
+    const componentHtml = html('tag', {
+      attributes: {
+        'data-attribute': null
+      },
+      html: '<span>alpha</span>'
+    })
+
+    expect(componentHtml).toMatchSnapshot()
   })
 })

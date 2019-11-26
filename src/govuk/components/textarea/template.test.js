@@ -5,7 +5,7 @@
 
 const axe = require('../../../../lib/axe-helper')
 
-const { render, getExamples, htmlWithClassName } = require('../../../../lib/jest-helpers')
+const { html, render, getExamples, htmlWithClassName } = require('../../../../lib/jest-helpers')
 
 const examples = getExamples('textarea')
 
@@ -84,7 +84,7 @@ describe('Textarea', () => {
       expect($component.text()).toEqual('221B Baker Street\nLondon\nNW1 6XE\n')
     })
 
-    it('renders with attributes', () => {
+    it('renders attributes with values', () => {
       const $ = render('textarea', {
         attributes: {
           'data-attribute': 'my data value'
@@ -93,6 +93,16 @@ describe('Textarea', () => {
 
       const $component = $('.govuk-textarea')
       expect($component.attr('data-attribute')).toEqual('my data value')
+    })
+
+    it('renders boolean attributes', () => {
+      const componentHtml = html('textarea', {
+        attributes: {
+          'data-attribute': null
+        }
+      })
+
+      expect(componentHtml).toMatchSnapshot()
     })
 
     it('renders with a form group wrapper', () => {

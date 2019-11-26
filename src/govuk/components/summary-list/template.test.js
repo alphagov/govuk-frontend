@@ -5,7 +5,7 @@
 
 const axe = require('../../../../lib/axe-helper')
 
-const { render, getExamples } = require('../../../../lib/jest-helpers')
+const { html, render, getExamples } = require('../../../../lib/jest-helpers')
 
 const examples = getExamples('summary-list')
 
@@ -31,7 +31,7 @@ describe('Data list', () => {
     const $component = $('.govuk-summary-list')
     expect($component.hasClass('app-custom-class')).toBeTruthy()
   })
-  it('renders with attributes', () => {
+  it('renders attributes with values', () => {
     const $ = render('summary-list', {
       attributes: {
         'data-attribute-1': 'value-1',
@@ -42,6 +42,15 @@ describe('Data list', () => {
     const $component = $('.govuk-summary-list')
     expect($component.attr('data-attribute-1')).toEqual('value-1')
     expect($component.attr('data-attribute-2')).toEqual('value-2')
+  })
+  it('renders boolean attributes', () => {
+    const componentHtml = html('summary-list', {
+      attributes: {
+        'data-attribute': null
+      }
+    })
+
+    expect(componentHtml).toMatchSnapshot()
   })
   describe('rows', () => {
     it('renders list without falsely values', async () => {
@@ -290,7 +299,7 @@ describe('Data list', () => {
 
         expect($actionList.hasClass('app-custom-class')).toBeTruthy()
       })
-      it('renders attributes', async () => {
+      it('renders attributes with values', async () => {
         const $ = render('summary-list', {
           rows: [
             {
@@ -314,6 +323,26 @@ describe('Data list', () => {
 
         expect($actionLink.attr('data-test-attribute')).toEqual('value')
         expect($actionLink.attr('data-test-attribute-2')).toEqual('value-2')
+      })
+      it('renders boolean attributes', () => {
+        const componentHtml = html('summary-list', {
+          rows: [
+            {
+              actions: {
+                items: [
+                  {
+                    text: 'Edit',
+                    attributes: {
+                      'data-attribute': null
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        })
+
+        expect(componentHtml).toMatchSnapshot()
       })
       it('renders a single anchor with one action', async () => {
         const $ = render('summary-list', {

@@ -5,7 +5,7 @@
 
 const axe = require('../../../../lib/axe-helper')
 
-const { render, getExamples, htmlWithClassName } = require('../../../../lib/jest-helpers')
+const { html, render, getExamples, htmlWithClassName } = require('../../../../lib/jest-helpers')
 
 const examples = getExamples('checkboxes')
 
@@ -119,7 +119,7 @@ describe('Checkboxes', () => {
     expect($fieldset.attr('aria-describedby')).toMatch(describedById)
   })
 
-  it('render attributes', () => {
+  it('renders attributes with values', () => {
     const $ = render('checkboxes', {
       name: 'example-name',
       items: [
@@ -142,6 +142,27 @@ describe('Checkboxes', () => {
 
     expect($component.attr('data-attribute')).toEqual('value')
     expect($component.attr('data-second-attribute')).toEqual('second-value')
+  })
+
+  it('renders boolean attributes', () => {
+    const componentHtml = html('checkboxes', {
+      name: 'example-name',
+      items: [
+        {
+          value: '1',
+          text: 'Option 1'
+        },
+        {
+          value: '2',
+          text: 'Option 2'
+        }
+      ],
+      attributes: {
+        'data-attribute': null
+      }
+    })
+
+    expect(componentHtml).toMatchSnapshot()
   })
 
   it('renders with a form group wrapper', () => {
@@ -335,7 +356,7 @@ describe('Checkboxes', () => {
     })
 
     describe('when they include attributes', () => {
-      it('it renders the attributes', () => {
+      it('renders attributes with values', () => {
         const $ = render('checkboxes', {
           name: 'example-name',
           items: [

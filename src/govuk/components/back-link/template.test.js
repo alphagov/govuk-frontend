@@ -4,7 +4,7 @@
 /* eslint-env jest */
 
 const axe = require('../../../../lib/axe-helper')
-const { render, getExamples } = require('../../../../lib/jest-helpers')
+const { html, render, getExamples } = require('../../../../lib/jest-helpers')
 
 const examples = getExamples('back-link')
 
@@ -75,7 +75,7 @@ describe('back-link component', () => {
     expect($component.html()).toEqual('Back')
   })
 
-  it('renders attributes correctly', () => {
+  it('renders attributes with values', () => {
     const $ = render('back-link', {
       attributes: {
         'data-test': 'attribute',
@@ -88,5 +88,15 @@ describe('back-link component', () => {
     const $component = $('.govuk-back-link')
     expect($component.attr('data-test')).toEqual('attribute')
     expect($component.attr('aria-label')).toEqual('Back to home')
+  })
+
+  it('renders boolean attributes', () => {
+    const componentHtml = html('back-link', {
+      attributes: {
+        'data-attribute': null
+      }
+    })
+
+    expect(componentHtml).toMatchSnapshot()
   })
 })

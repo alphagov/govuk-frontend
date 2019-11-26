@@ -5,7 +5,7 @@
 
 const axe = require('../../../../lib/axe-helper')
 
-const { render, getExamples } = require('../../../../lib/jest-helpers')
+const { html, render, getExamples } = require('../../../../lib/jest-helpers')
 
 const examples = getExamples('skip-link')
 
@@ -69,7 +69,7 @@ describe('Skip link', () => {
     expect($component.hasClass('app-skip-link--custom-class')).toBeTruthy()
   })
 
-  it('renders attributes', () => {
+  it('renders attributes with values', () => {
     const $ = render('skip-link', {
       attributes: {
         'data-test': 'attribute',
@@ -80,5 +80,15 @@ describe('Skip link', () => {
     const $component = $('.govuk-skip-link')
     expect($component.attr('data-test')).toEqual('attribute')
     expect($component.attr('aria-label')).toEqual('Skip to content')
+  })
+
+  it('renders boolean attributes', () => {
+    const componentHtml = html('skip-link', {
+      attributes: {
+        'data-attribute': null
+      }
+    })
+
+    expect(componentHtml).toMatchSnapshot()
   })
 })

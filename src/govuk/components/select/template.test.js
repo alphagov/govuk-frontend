@@ -5,7 +5,7 @@
 
 const axe = require('../../../../lib/axe-helper')
 
-const { render, getExamples, htmlWithClassName } = require('../../../../lib/jest-helpers')
+const { html, render, getExamples, htmlWithClassName } = require('../../../../lib/jest-helpers')
 
 const examples = getExamples('select')
 
@@ -164,7 +164,7 @@ describe('Select', () => {
       expect($component.attr('aria-describedby')).toMatch(describedById)
     })
 
-    it('renders with attributes', () => {
+    it('renders attributes with values', () => {
       const $ = render('select', {
         attributes: {
           'data-attribute': 'my data value'
@@ -173,6 +173,16 @@ describe('Select', () => {
 
       const $component = $('.govuk-select')
       expect($component.attr('data-attribute')).toEqual('my data value')
+    })
+
+    it('renders boolean attributes', () => {
+      const componentHtml = html('select', {
+        attributes: {
+          'data-attribute': null
+        }
+      })
+
+      expect(componentHtml).toMatchSnapshot()
     })
 
     it('renders with a form group wrapper', () => {

@@ -1,5 +1,5 @@
 <header class="govuk-header {{ params.classes if params.classes }}" role="banner" data-module="govuk-header"
-        {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+        {%- for attribute, value in params.attributes %} {{ attribute }}{% if value %}="{{ value }}"{% endif %}{% endfor %}>
   <div class="govuk-header__container {{ params.containerClasses | default('govuk-width-container') }}">
     <div class="govuk-header__logo">
       <a href="{{ params.homepageUrl | default('/') }}" class="govuk-header__link govuk-header__link--homepage">
@@ -66,7 +66,7 @@
         {% for item in params.navigation %}
           {% if item.href and item.text %}
             <li class="govuk-header__navigation-item{{ ' govuk-header__navigation-item--active' if item.active }}">
-              <a class="govuk-header__link" href="{{ item.href }}"{% for attribute, value in item.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+              <a class="govuk-header__link" href="{{ item.href }}"{% for attribute, value in item.attributes %} {{ attribute }}{% if value %}="{{ value }}"{% endif %}{% endfor %}>
                 {{ item.text }}
               </a>
             </li>

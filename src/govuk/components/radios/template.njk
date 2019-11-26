@@ -44,7 +44,7 @@
   }) | indent(2) | trim }}
 {% endif %}
   <div class="govuk-radios {%- if params.classes %} {{ params.classes }}{% endif %}{%- if isConditional %} govuk-radios--conditional{% endif -%}"
-    {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}
+    {%- for attribute, value in params.attributes %} {{ attribute }}{% if value %}="{{ value }}"{% endif %}{% endfor %}
     {%- if isConditional %} data-module="govuk-radios"{% endif -%}>
     {% for item in params.items %}
       {% if item %}
@@ -71,7 +71,7 @@
           {{-" disabled" if item.disabled }}
           {%- if item.conditional.html %} data-aria-controls="{{ conditionalId }}"{% endif -%}
           {%- if hasHint %} aria-describedby="{{ itemHintId }}"{% endif -%}
-          {%- for attribute, value in item.attributes %} {{ attribute }}="{{ value }}"{% endfor -%}>
+          {%- for attribute, value in item.attributes %} {{ attribute }}{% if value %}="{{ value }}"{% endif %}{% endfor -%}>
           {{ govukLabel({
             html: item.html,
             text: item.text,

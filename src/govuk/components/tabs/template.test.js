@@ -5,7 +5,7 @@
 
 const axe = require('../../../../lib/axe-helper')
 
-const { render, getExamples } = require('../../../../lib/jest-helpers')
+const { html, render, getExamples } = require('../../../../lib/jest-helpers')
 
 const examples = getExamples('tabs')
 
@@ -45,7 +45,7 @@ describe('Tabs', () => {
       expect(content).toEqual('Custom title for Contents')
     })
 
-    it('renders with attributes', () => {
+    it('renders attributes with values', () => {
       const $ = render('tabs', {
         attributes: {
           'data-attribute': 'my data value'
@@ -54,6 +54,16 @@ describe('Tabs', () => {
 
       const $component = $('.govuk-tabs')
       expect($component.attr('data-attribute')).toEqual('my data value')
+    })
+
+    it('renders boolean attributes', () => {
+      const componentHtml = html('tabs', {
+        attributes: {
+          'data-attribute': null
+        }
+      })
+
+      expect(componentHtml).toMatchSnapshot()
     })
 
     describe('items', () => {
@@ -227,6 +237,22 @@ describe('Tabs', () => {
         expect($tabItemLink.attr('data-attribute-2')).toEqual('my-attribute-2')
       })
 
+      it('render a tab anchor with boolean attributes', () => {
+        const componentHtml = html('tabs', {
+          items: [
+            {
+              id: 'tab-1',
+              label: 'Tab 1',
+              attributes: {
+                'data-attribute': null
+              }
+            }
+          ]
+        })
+
+        expect(componentHtml).toMatchSnapshot()
+      })
+
       it('render a tab panel with attributes', () => {
         const $ = render('tabs', {
           items: [
@@ -247,6 +273,25 @@ describe('Tabs', () => {
         const $tabPanelItems = $('.govuk-tabs__panel')
         expect($tabPanelItems.attr('data-attribute')).toEqual('my-attribute')
         expect($tabPanelItems.attr('data-attribute-2')).toEqual('my-attribute-2')
+      })
+
+      it('render a tab panel with boolean attributes', () => {
+        const componentHtml = html('tabs', {
+          items: [
+            {
+              id: 'tab-1',
+              label: 'Tab 1',
+              panel: {
+                text: 'Panel text',
+                attributes: {
+                  'data-attribute': null
+                }
+              }
+            }
+          ]
+        })
+
+        expect(componentHtml).toMatchSnapshot()
       })
     })
 

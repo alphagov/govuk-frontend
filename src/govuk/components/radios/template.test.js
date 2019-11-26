@@ -5,7 +5,7 @@
 
 const axe = require('../../../../lib/axe-helper')
 
-const { render, getExamples, htmlWithClassName } = require('../../../../lib/jest-helpers')
+const { html, render, getExamples, htmlWithClassName } = require('../../../../lib/jest-helpers')
 
 const examples = getExamples('radios')
 
@@ -117,7 +117,7 @@ describe('Radios', () => {
     expect($fieldset.attr('aria-describedby')).toMatch(describedById)
   })
 
-  it('render attributes', () => {
+  it('renders attributes with values', () => {
     const $ = render('radios', {
       name: 'example-name',
       items: [
@@ -140,6 +140,27 @@ describe('Radios', () => {
 
     expect($component.attr('data-attribute')).toEqual('value')
     expect($component.attr('data-second-attribute')).toEqual('second-value')
+  })
+
+  it('renders boolean attributes', () => {
+    const componentHtml = html('radios', {
+      name: 'example-name',
+      items: [
+        {
+          value: 'yes',
+          text: 'Yes'
+        },
+        {
+          value: 'no',
+          text: 'No'
+        }
+      ],
+      attributes: {
+        'data-attribute': null
+      }
+    })
+
+    expect(componentHtml).toMatchSnapshot()
   })
 
   it('render a custom class on the form group', () => {
@@ -270,7 +291,7 @@ describe('Radios', () => {
     })
 
     describe('when they include attributes', () => {
-      it('it renders the attributes', () => {
+      it('renders attributes with values', () => {
         const $ = render('radios', {
           name: 'example-name',
           items: [
@@ -303,6 +324,31 @@ describe('Radios', () => {
         const $lastInput = $component.find('.govuk-radios__item:last-child input')
         expect($lastInput.attr('data-attribute')).toEqual('GHI')
         expect($lastInput.attr('data-second-attribute')).toEqual('JKL')
+      })
+
+      it('renders boolean attributes', () => {
+        const componentHtml = html('radios', {
+          name: 'example-name',
+          items: [
+            {
+              value: 'yes',
+              text: 'Yes',
+              attributes: {
+                'data-attribute': null
+              }
+            },
+            {
+              value: 'no',
+              text: 'No',
+              checked: true,
+              attributes: {
+                'data-attribute': null
+              }
+            }
+          ]
+        })
+
+        expect(componentHtml).toMatchSnapshot()
       })
     })
 
