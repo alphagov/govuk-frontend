@@ -29,7 +29,7 @@
       </p>
     {% endif %}
     </div>
-    <div class="app-component-preview">
+    <div class="govuk-width-container app-component-preview {%- if data.previewLayout %} app-component-preview--{{ data.previewLayout }}{% endif %}">
       <iframe
       class="js-component-preview app-component-preview__iframe"
       src="{{ path + iframePathQuery }}"

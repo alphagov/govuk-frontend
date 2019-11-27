@@ -152,8 +152,6 @@ module.exports = (options) => {
     const componentName = req.params.component
     const requestedExampleName = req.params.example || 'default'
 
-    const previewLayout = res.locals.componentData.previewLayout || 'layout'
-
     const exampleConfig = res.locals.componentData.examples.find(
       example => example.name.replace(/ /g, '-') === requestedExampleName
     )
@@ -171,9 +169,19 @@ module.exports = (options) => {
       {{ ${macroName}(${macroParameters}) }}`
     )
 
+    // Optional preview layout
+    let previewLayout = res.locals.componentData.previewLayout
     let bodyClasses = ''
+
+    // Customise iframe preview
     if (req.query.iframe) {
       bodyClasses = 'app-iframe-in-component-preview'
+
+      if (previewLayout) {
+        bodyClasses += ` app-iframe-in-component-preview--${previewLayout}`
+      }
+
+      previewLayout = 'component-iframe'
     }
 
     res.render('component-preview', { bodyClasses, previewLayout })

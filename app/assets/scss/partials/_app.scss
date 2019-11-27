@@ -8,7 +8,12 @@
 
 // Injected into the preview page, that is then put in an iframe
 .app-iframe-in-component-preview {
-  margin: 15px 0;
+  margin: 5px;
+}
+
+.app-iframe-in-component-preview--full-width {
+  margin-right: 0;
+  margin-left: 0;
 }
 
 // Removes the breakpoint sass-mq debug display
@@ -22,9 +27,15 @@
 
 .app-component-preview {
   position: relative;
-  width: 100%;
-  margin-top: -15px;
-  margin-bottom: 15px;
+  @include govuk-responsive-margin(5, "top");
+  @include govuk-responsive-margin(5, "bottom");
+}
+
+// Full width for header/footer etc
+.app-component-preview--full-width {
+  max-width: none;
+  margin-right: 0;
+  margin-left: 0;
 }
 
 .app-component-preview__iframe {
