@@ -1,0 +1,120 @@
+params:
+- name: id
+  type: string
+  required: true
+  description: The id of the modal dialogue.
+- name: open
+  type: boolean
+  required: true
+  description: If true, modal dialogue element will be visible.
+- name: headingLevel
+  type: integer
+  required: false
+  description: Heading level, from 1 to 6. Default is `2`.
+- name: classes
+  type: string
+  required: false
+  description: Classes to add to the modal dialogue.
+- name: attributes
+  type: object
+  required: false
+  description: HTML attributes (for example data attributes) to add to the modal dialogue.
+- name: assetsPath
+  type: string
+  required: false
+  description: The public path for the assets folder. If not provided it defaults to /assets/images
+- name: role
+  type: string
+  required: false
+  description: Optional ARIA role attribute.
+- name: labelledBy
+  type: string
+  required: false
+  description: One or more element IDs to add to the modal dialogue `aria-labelledby` attribute, used to provide a heading which labels the dialogue for screenreader users.
+- name: describedBy
+  type: string
+  required: false
+  description: One or more element IDs to add to the modal dialogue `aria-describedby` attribute, used to provide additional text to describe the dialogue for screenreader users.
+- name: heading.text
+  type: string
+  required: true
+  description: The title of the modal dialogue. If `heading.html` is supplied, this is ignored.
+- name: heading.html
+  type: string
+  required: true
+  description: The HTML content for the title of the modal dialogue.
+- name: description.text
+  type: string
+  required: true
+  description: The modal dialog’s prompt text. If `description.html` is supplied, this is ignored.
+- name: description.html
+  type: string
+  required: true
+  description: The HTML content for the modal dialog’s prompt text.
+
+previewLayout: modal
+
+examples:
+  - name: default
+    description: Defaults to hidden and must be opened with the modal dialogue’s open() method.
+    data:
+      id: modal
+      heading:
+        text: This is a modal dialogue
+      description:
+        html: <p class="govuk-body">Prompt text for the modal dialogue component goes here</p>
+
+  - name: open
+    data:
+      id: modal
+      open: true
+      heading:
+        text: This is a modal dialogue
+      description:
+        html: <p class="govuk-body">Prompt text for the modal dialogue component goes here</p>
+
+  - name: open with scrolling content
+    data:
+      id: modal
+      open: true
+      heading:
+        text: This is a modal dialogue
+      description:
+        html: |
+          <p class="govuk-body">
+            This is some very long content.
+          </p>
+    caller:
+      html: |
+        <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac consectetur purus, et varius nisi. Praesent convallis neque id mollis pharetra. Vivamus rutrum, dolor at aliquam facilisis, massa augue commodo felis, sit amet ultricies nunc nulla nec urna. Cras cursus sodales lorem porttitor varius. Curabitur eget auctor mi. In blandit neque vel gravida commodo. Etiam consectetur scelerisque orci, vitae consequat felis. Sed pulvinar, enim vel efficitur laoreet, enim ligula mollis felis, vitae elementum urna ex sit amet nisi. Proin ut cursus mi. Fusce non feugiat ex. Donec a justo sed nunc tincidunt pharetra. Aenean lacinia non sapien eu facilisis. Praesent laoreet vestibulum mattis. Aliquam laoreet hendrerit leo. Quisque aliquam non magna ornare faucibus. Sed venenatis porttitor urna, vitae euismod nunc posuere nec.</p>
+        <p class="govuk-body">Suspendisse fringilla pellentesque massa. Nulla facilisi. Quisque sit amet eleifend metus, vel vestibulum nulla. Donec nec nisl at ipsum consequat blandit eget quis quam. Proin urna quam, imperdiet at aliquam ut, varius sit amet enim. Cras tempor finibus leo, vel rhoncus justo lacinia non. Curabitur nec tempus odio, at euismod turpis. Sed aliquam mi sed mauris commodo, non mollis velit molestie. Donec semper malesuada dapibus. In id gravida mi, eu mollis tortor. Morbi ut arcu porta, euismod nisi sed, mattis mi. Duis sit amet varius odio.</p>
+        <p class="govuk-body">Duis porttitor dolor sed orci convallis, et congue nibh vulputate. Cras eu nulla a metus pretium porttitor quis sed diam. Integer mollis vitae urna quis varius. Curabitur eu lorem sit amet nulla pulvinar maximus. Vestibulum id dui luctus, mattis metus sit amet, consectetur neque. Vestibulum ac libero at turpis consequat semper eu nec nisl. In ultricies vel massa sed scelerisque.</p>
+        <p class="govuk-body">Donec egestas velit vitae lacus eleifend, mollis aliquam libero laoreet. Curabitur ac neque a urna rhoncus fringilla sed vitae mi. Maecenas luctus vitae lectus ut accumsan. Nulla ullamcorper malesuada tortor a sollicitudin. Aliquam quam ipsum, rhoncus sit amet elit eu, pharetra cursus nibh. Nunc blandit diam sit amet leo lacinia, sed condimentum velit malesuada. Quisque vitae ex et odio condimentum pretium. Aenean lectus sapien, gravida feugiat est vitae, dignissim luctus erat. Suspendisse eget dui posuere, congue augue a, convallis nibh.</p>
+        <p class="govuk-body">Fusce maximus leo leo, ut efficitur felis tincidunt sed. Morbi a quam at nisi facilisis tincidunt. Vestibulum porta risus at elit pharetra volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In posuere arcu eu orci volutpat scelerisque. Vivamus vel sapien a diam tempus viverra. Fusce dapibus arcu ipsum, in ultricies purus tempus id.</p>
+        <p class="govuk-body">Vivamus faucibus, mauris vitae molestie suscipit, mauris enim pellentesque mauris, in facilisis nibh mauris vitae risus. Aenean mattis nunc nec ligula dapibus, nec vehicula erat cursus. Curabitur iaculis, ante vel venenatis commodo, metus metus ornare dolor, euismod vehicula nisi dui eget ante. Nunc pretium est vitae dui vehicula, sit amet finibus libero pretium. Nulla et tellus rhoncus, varius massa et, molestie odio. Nulla varius elit et feugiat lobortis. Maecenas id vestibulum sapien, vitae pellentesque neque. Proin pellentesque mi at bibendum venenatis.</p>
+        <p class="govuk-body">Aenean sit amet laoreet libero, facilisis varius enim. Nullam ullamcorper leo ut sollicitudin sagittis. Mauris lobortis lacus mi, semper sollicitudin nulla condimentum a. Ut tempor, diam non maximus congue, purus velit tincidunt eros, at posuere purus tortor eu erat. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed pulvinar velit quis tincidunt imperdiet. Praesent congue condimentum eros, ut ultricies sem pulvinar vel. Vestibulum cursus at lorem eu lobortis. Praesent eleifend sit amet eros cursus sodales. Phasellus sapien erat, efficitur id accumsan vitae, ornare ut magna. Suspendisse venenatis rutrum magna, quis vulputate sem convallis id. Curabitur eu mauris id libero maximus vestibulum. Sed est turpis, tincidunt eu tincidunt vel, elementum a eros.</p>
+        <p class="govuk-body">Morbi vel purus erat. Phasellus ac velit id magna pretium venenatis in ac ante. Nunc ut nisi nec leo tincidunt ullamcorper. Morbi convallis dignissim sem, ac tempus lorem faucibus non. Donec interdum erat quam, at vehicula nulla porttitor ac. Cras sagittis mattis maximus. Curabitur venenatis interdum leo, eget ornare felis. Vestibulum nec ipsum vestibulum, tincidunt neque sed, facilisis justo. Nunc elementum sagittis justo quis congue. Donec neque magna, consequat in viverra a, aliquam ut ipsum. Fusce eu interdum sem, in pulvinar erat.</p>
+        <p class="govuk-body">Vestibulum ultricies arcu ligula, ut bibendum mi pulvinar at. Vestibulum luctus lectus vel ornare euismod. Duis porta elit eget pharetra commodo. Cras in enim at tortor porta tincidunt vitae quis arcu. Fusce eget molestie turpis, quis sodales eros. Integer felis purus, molestie a magna vel, viverra congue odio. Aenean tincidunt finibus erat, in tincidunt ligula porttitor sit amet. Nullam vel tristique nibh. Maecenas pharetra, tellus eget varius interdum, sem libero dapibus purus, at varius lectus urna quis felis. Morbi sed purus egestas, dictum purus vel, placerat nulla.</p>
+        <p class="govuk-body">Vivamus eget nisl quis elit placerat consectetur sit amet in libero. Nam vitae tortor at felis egestas posuere in eget leo. Maecenas eget porta felis. In convallis at ipsum et euismod. Mauris nec odio urna. Maecenas tellus lacus, gravida a faucibus at, posuere eget lacus. Nullam tortor nunc, vulputate et tempus ut, hendrerit maximus turpis. Cras maximus dapibus tincidunt. Integer ultricies consequat ullamcorper. Sed vitae dolor lacus. Curabitur at eleifend velit. Morbi sit amet lorem tempus, tincidunt elit eu, egestas odio. Suspendisse potenti. Vivamus a pharetra ipsum. Morbi volutpat dolor at tempus porttitor.</p>
+
+  - name: open with timeout message
+    data:
+      id: modal
+      open: true
+      role: alertdialog
+      heading:
+        text: Your session is due to expire in 5 minutes
+      description:
+        html: |
+          <p class="govuk-body">
+            You have not done anything on the service for a while.
+          </p>
+          <p class="govuk-body">
+            Your session will end in 5 minutes if you do not do anything on the
+            page. You’ll need to start your application again if that happens.
+          </p>
+    caller:
+      html: |
+        <button type="button" class="govuk-button" data-module="govuk-button">
+          Resume application
+        </button>

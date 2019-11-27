@@ -6,6 +6,7 @@ import CharacterCount from './components/character-count/character-count'
 import Checkboxes from './components/checkboxes/checkboxes'
 import ErrorSummary from './components/error-summary/error-summary'
 import Header from './components/header/header'
+import ModalDialogue from './components/modal-dialogue/modal-dialogue'
 import Radios from './components/radios/radios'
 import Tabs from './components/tabs/tabs'
 
@@ -49,6 +50,11 @@ function initAll (options) {
   // Find first header module to enhance.
   var $toggleButton = scope.querySelector('[data-module="govuk-header"]')
   new Header($toggleButton).init()
+
+  var $modals = scope.querySelectorAll('[data-module="govuk-modal-dialogue"]')
+  nodeListForEach($modals, function ($modal) {
+    new ModalDialogue($modal).init()
+  })
 
   var $radios = scope.querySelectorAll('[data-module="govuk-radios"]')
   nodeListForEach($radios, function ($radio) {

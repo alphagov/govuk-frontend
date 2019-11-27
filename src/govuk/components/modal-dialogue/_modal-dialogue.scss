@@ -1,0 +1,161 @@
+@import "../../settings/all";
+@import "../../tools/all";
+@import "../../helpers/all";
+
+@include govuk-exports("govuk/component/modal-dialogue") {
+  $govuk-dialogue-width: 640px;
+
+  .govuk-modal-dialogue,
+  .govuk-modal-dialogue__backdrop {
+    position: fixed;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  // Hide dialogue when closed
+  .govuk-modal-dialogue {
+    display: none;
+  }
+
+  // Show dialogue when opened
+  .govuk-modal-dialogue--open {
+    display: block;
+  }
+
+  // Wrapper to handle overflow scrolling
+  .govuk-modal-dialogue__wrapper {
+    box-sizing: border-box;
+    display: flex;
+    height: 100%;
+    @include govuk-responsive-padding(7, "top");
+    @include govuk-responsive-padding(7, "bottom");
+    overflow-y: auto;
+    align-items: flex-start; // sass-lint:disable no-duplicate-properties
+    align-items: safe center;
+  }
+
+  // HTML5 dialogue component
+  .govuk-modal-dialogue__box {
+    box-sizing: border-box;
+    display: block;
+    position: relative;
+    z-index: 1;
+    width: 90%;
+    margin: auto;
+    padding: 0;
+    overflow-y: auto;
+    border: $govuk-focus-width solid govuk-colour("black");
+    background: govuk-colour("white");
+
+    // Add focus outline to dialogue
+    &:focus {
+      outline: $govuk-focus-width solid $govuk-focus-colour;
+    }
+
+    // Hide browser backdrop
+    &::backdrop {
+      display: none;
+    }
+  }
+
+  // Header with close button
+  .govuk-modal-dialogue__header {
+    @include govuk-clearfix;
+    @include govuk-responsive-margin(5, "bottom");
+    padding-bottom: $govuk-focus-width;
+    color: govuk-colour("white");
+    background-color: govuk-colour("black");
+    text-align: right;
+  }
+
+  // Inner content
+  .govuk-modal-dialogue__content {
+    @include govuk-font($size: 16);
+    @include govuk-responsive-padding(6);
+    padding-top: 0;
+  }
+
+  .govuk-modal-dialogue__description {
+    @include govuk-responsive-margin(4, "bottom");
+  }
+
+  // Remove bottom margins
+  .govuk-modal-dialogue__description:last-child,
+  .govuk-modal-dialogue__description > :last-child,
+  .govuk-modal-dialogue__content > :last-child {
+    margin-bottom: 0;
+  }
+
+  // Custom backdrop
+  .govuk-modal-dialogue__backdrop {
+    opacity: .8;
+    background: govuk-colour("black");
+    pointer-events: none;
+    touch-action: none;
+  }
+
+  // Crown icon
+  .govuk-modal-dialogue__crown {
+    display: block;
+    margin: 6px 0 0 6px;
+    @include govuk-responsive-margin(5, "left");
+    float: left;
+  }
+
+  // Heading
+  .govuk-modal-dialogue__heading:last-child {
+    margin-bottom: 0;
+  }
+
+  // Close button
+  .govuk-modal-dialogue__close {
+    $font-size: 36px;
+    $line-height: 1;
+
+    display: block;
+    width: auto;
+    min-width: 44px;
+    margin: 0;
+    padding: 2px 5px;
+    float: right;
+    color: govuk-colour("white");
+    background-color: govuk-colour("black");
+    box-shadow: none !important;
+    font-size: $font-size;
+    @if $govuk-typography-use-rem {
+      font-size: govuk-px-to-rem($font-size);
+    }
+    @include govuk-typography-weight-bold;
+    line-height: $line-height;
+
+    &:hover {
+      color: govuk-colour("black");
+      background-color: govuk-colour("yellow");
+    }
+
+    &:active {
+      top: 0;
+    }
+  }
+
+  // New dialogue width, inline button + link
+  @include govuk-media-query($from: tablet) {
+    .govuk-modal-dialogue__content {
+      padding-top: 0;
+    }
+
+    .govuk-modal-dialogue__box {
+      width: percentage($govuk-dialogue-width / map-get($govuk-breakpoints, desktop));
+    }
+  }
+
+  // Fixed width
+  @include govuk-media-query($from: desktop) {
+    .govuk-modal-dialogue__box {
+      width: $govuk-dialogue-width;
+    }
+  }
+}
