@@ -32,7 +32,8 @@
 }
 
 // Full width for header/footer etc
-.app-component-preview--full-width {
+.app-component-preview--full-width,
+.app-component-preview--modal {
   max-width: none;
   margin-right: 0;
   margin-left: 0;
@@ -57,11 +58,21 @@
     content: " ";
     display: table;
     width: 100%;
+    height: 100%;
     clear: both;
     box-shadow: 0 0 0 5px $app-preview-border-colour;
 
     @include govuk-if-ie8 {
       outline: 5px solid $app-preview-border-colour;
     }
+  }
+}
+
+// Allow fixed height for "position: fixed" modal
+.app-iframe-in-component-preview--modal {
+  height: 400px;
+
+  @include govuk-media-query ($from: tablet) {
+    height: 500px;
   }
 }
