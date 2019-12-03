@@ -25,24 +25,28 @@ describe('@mixin govuk-width-container', () => {
       .toContain(outdent`
       .app-width-container--wide {
         max-width: 1200px;
-        margin: 0 15px; }
+        margin-right: 15px;
+        margin-left: 15px; }
         @supports (margin: max(calc(0px))) {
           .app-width-container--wide {
             margin-right: max(15px, calc(15px + env(safe-area-inset-right)));
             margin-left: max(15px, calc(15px + env(safe-area-inset-left))); } }
         @media (min-width: 40.0625em) {
           .app-width-container--wide {
-            margin: 0 30px; }
+            margin-right: 30px;
+            margin-left: 30px; }
             @supports (margin: max(calc(0px))) {
               .app-width-container--wide {
                 margin-right: max(30px, calc(15px + env(safe-area-inset-right)));
                 margin-left: max(30px, calc(15px + env(safe-area-inset-left))); } } }
         @media (min-width: 1260px) {
           .app-width-container--wide {
-            margin: 0 auto; }
+            margin-right: auto;
+            margin-left: auto; }
             @supports (margin: max(calc(0px))) {
               .app-width-container--wide {
-                margin: 0 auto; } } }
+                margin-right: auto;
+                margin-left: auto; } } }
       `)
   })
 })
