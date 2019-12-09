@@ -95,10 +95,61 @@ describe('Character count', () => {
     })
   })
 
+  describe('count message', () => {
+    it('renders with the amount of characters expected', () => {
+      const $ = render('character-count', {
+        maxlength: 10
+      })
+
+      const $countMessage = $('.govuk-character-count__message')
+      expect($countMessage.text()).toContain('You can enter up to 10 characters')
+    })
+    it('renders with the amount of words expected', () => {
+      const $ = render('character-count', {
+        maxwords: 10
+      })
+
+      const $countMessage = $('.govuk-character-count__message')
+      expect($countMessage.text()).toContain('You can enter up to 10 words')
+    })
+    it('is associated with the textarea', () => {
+      const $ = render('character-count', {
+        maxlength: 10
+      })
+
+      const $textarea = $('.govuk-js-character-count')
+      const $countMessage = $('.govuk-character-count__message')
+
+      const hintId = new RegExp(
+        WORD_BOUNDARY + $countMessage.attr('id') + WORD_BOUNDARY
+      )
+
+      expect($textarea.attr('aria-describedby'))
+        .toMatch(hintId)
+    })
+    it('renders with custom classes', () => {
+      const $ = render('character-count', {
+        countMessage: {
+          classes: 'app-custom-count-message'
+        }
+      })
+
+      const $countMessage = $('.govuk-character-count__message')
+      expect($countMessage.hasClass('app-custom-count-message')).toBeTruthy()
+    })
+    it('renders with aria live set to polite', () => {
+      const $ = render('character-count', {})
+
+      const $countMessage = $('.govuk-character-count__message')
+      expect($countMessage.attr('aria-live')).toEqual('polite')
+    })
+  })
+
   describe('when it includes a hint', () => {
     it('renders with hint', () => {
       const $ = render('character-count', {
         id: 'character-count-with-hint',
+        maxlength: 10,
         hint: {
           text: 'It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.'
         }

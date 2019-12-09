@@ -28,7 +28,7 @@
   {{ govukHint({
     text: 'You can enter up to ' + (params.maxlength or params.maxwords) + (' words' if params.maxwords else ' characters'),
     id: params.id + '-info',
-    classes: 'govuk-character-count__message' + (' ' + params.countMessageClasses if params.countMessageClasses),
+    classes: 'govuk-character-count__message' + (' ' + params.countMessage.classes if params.countMessage.classes),
     attributes: {
       'aria-live': 'polite'
     }
