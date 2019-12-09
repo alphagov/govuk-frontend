@@ -261,29 +261,6 @@ examples:
       - value: other
         text: Citizen of another country
 
-- name: with all fieldset attributes
-  data:
-    idPrefix: example
-    name: example
-    fieldset:
-      classes: app-fieldset--custom-modifier
-      attributes:
-        data-attribute: value
-        data-second-attribute: second-value
-      legend:
-        text: What is your nationality?
-    hint:
-      text: If you have dual nationality, select all options that are relevant to you.
-    errorMessage:
-      text: Please select an option
-    items:
-      - value: british
-        text: British
-      - value: irish
-        text: Irish
-      - value: other
-        text: Citizen of another country
-
 - name: with error message
   data:
     name: waste

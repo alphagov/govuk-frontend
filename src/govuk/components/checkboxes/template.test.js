@@ -560,7 +560,12 @@ describe('Checkboxes', () => {
 
   describe('when they include an error message', () => {
     it('renders the error message', () => {
-      const $ = render('checkboxes', examples['with all fieldset attributes'])
+      const $ = render('checkboxes', {
+        name: 'example',
+        errorMessage: {
+          text: 'Please select an option'
+        }
+      })
 
       expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
     })
@@ -667,13 +672,50 @@ describe('Checkboxes', () => {
 
   describe('when they include a hint', () => {
     it('renders the hint', () => {
-      const $ = render('checkboxes', examples['with all fieldset attributes'])
+      const $ = render('checkboxes', {
+        name: 'example',
+        hint: {
+          text: 'If you have dual nationality, select all options that are relevant to you.'
+        },
+        items: [
+          {
+            value: 'british',
+            text: 'British',
+            hint: {
+              text: 'Hint for british option here'
+            }
+          },
+          {
+            value: 'irish',
+            text: 'Irish'
+          },
+          {
+            hint: {
+              text: 'Hint for other option here',
+              classes: 'app-checkboxes__hint-other',
+              attributes: {
+                'data-test-attribute': true
+              }
+            }
+          }
+        ]
+      })
 
       expect(htmlWithClassName($, '.govuk-hint')).toMatchSnapshot()
     })
 
     it('associates the fieldset as "described by" the hint', () => {
-      const $ = render('checkboxes', examples['with all fieldset attributes'])
+      const $ = render('checkboxes', {
+        name: 'example',
+        fieldset: {
+          legend: {
+            text: 'What is your nationality?'
+          }
+        },
+        hint: {
+          text: 'If you have dual nationality, select all options that are relevant to you.'
+        }
+      })
 
       const $fieldset = $('.govuk-fieldset')
       const $hint = $('.govuk-hint')
@@ -687,11 +729,19 @@ describe('Checkboxes', () => {
 
     it('associates the fieldset as "described by" the hint and parent fieldset', () => {
       const describedById = 'some-id'
-      const params = examples['with all fieldset attributes']
 
-      params.fieldset.describedBy = describedById
-
-      const $ = render('checkboxes', params)
+      const $ = render('checkboxes', {
+        name: 'example',
+        fieldset: {
+          describedBy: describedById,
+          legend: {
+            text: 'What is your nationality?'
+          }
+        },
+        hint: {
+          text: 'If you have dual nationality, select all options that are relevant to you.'
+        }
+      })
       const $fieldset = $('.govuk-fieldset')
       const $hint = $('.govuk-hint')
 
@@ -700,13 +750,25 @@ describe('Checkboxes', () => {
       )
 
       expect($fieldset.attr('aria-describedby')).toMatch(hintId)
-      delete params.fieldset.describedBy
     })
   })
 
   describe('when they include both a hint and an error message', () => {
     it('associates the fieldset as described by both the hint and the error message', () => {
-      const $ = render('checkboxes', examples['with all fieldset attributes'])
+      const $ = render('checkboxes', {
+        name: 'example',
+        errorMessage: {
+          text: 'Please select an option'
+        },
+        fieldset: {
+          legend: {
+            text: 'What is your nationality?'
+          }
+        },
+        hint: {
+          text: 'If you have dual nationality, select all options that are relevant to you.'
+        }
+      })
 
       const $fieldset = $('.govuk-fieldset')
       const errorMessageId = $('.govuk-error-message').attr('id')
@@ -722,11 +784,22 @@ describe('Checkboxes', () => {
 
     it('associates the fieldset as described by the hint, error message and parent fieldset', () => {
       const describedById = 'some-id'
-      const params = examples['with all fieldset attributes']
 
-      params.fieldset.describedBy = describedById
-
-      const $ = render('checkboxes', params)
+      const $ = render('checkboxes', {
+        name: 'example',
+        errorMessage: {
+          text: 'Please select an option'
+        },
+        fieldset: {
+          describedBy: describedById,
+          legend: {
+            text: 'What is your nationality?'
+          }
+        },
+        hint: {
+          text: 'If you have dual nationality, select all options that are relevant to you.'
+        }
+      })
 
       const $fieldset = $('.govuk-fieldset')
       const errorMessageId = $('.govuk-error-message').attr('id')
@@ -738,14 +811,18 @@ describe('Checkboxes', () => {
 
       expect($fieldset.attr('aria-describedby'))
         .toMatch(combinedIds)
-
-      delete params.fieldset.describedBy
     })
   })
 
   describe('nested dependant components', () => {
     it('have correct nesting order', () => {
-      const $ = render('checkboxes', examples['with all fieldset attributes'])
+      const $ = render('checkboxes', {
+        fieldset: {
+          legend: {
+            text: 'What is your nationality?'
+          }
+        }
+      })
 
       const $component = $('.govuk-form-group > .govuk-fieldset > .govuk-checkboxes')
       expect($component.length).toBeTruthy()
@@ -777,7 +854,25 @@ describe('Checkboxes', () => {
     })
 
     it('passes through fieldset params without breaking', () => {
-      const $ = render('checkboxes', examples['with all fieldset attributes'])
+      const $ = render('checkboxes', {
+        name: 'example',
+        errorMessage: {
+          text: 'Please select an option'
+        },
+        fieldset: {
+          classes: 'app-fieldset--custom-modifier',
+          attributes: {
+            'data-attribute': 'value',
+            'data-second-attribute': 'second-value'
+          },
+          legend: {
+            text: 'What is your nationality?'
+          }
+        },
+        hint: {
+          text: 'If you have dual nationality, select all options that are relevant to you.'
+        }
+      })
 
       expect(htmlWithClassName($, '.govuk-fieldset')).toMatchSnapshot()
     })
