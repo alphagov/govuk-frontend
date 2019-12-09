@@ -6,7 +6,7 @@ See the [main README quick start guide](https://github.com/alphagov/govuk-fronte
 
 ## Guidance and Examples
 
-The label component is used in other input components, to see an example of it in use see the [text input component](https://design-system.service.gov.uk/components/text-input/#using-hint-text).
+The hint component is used in other input components. To see an example of it in use, see the [text input component](https://design-system.service.gov.uk/components/text-input/#hint-text).
 
 ## Component options
 
