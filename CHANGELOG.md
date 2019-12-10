@@ -4,6 +4,12 @@
 
 ### New features
 
+#### Add classes to the character count component's count message
+
+If you're using Nunjucks, you can now add classes to the character count component's count message using the `countMessage.classes` option.
+
+- [Pull request #1650: Make Character Count use hint component for message and allow custom classes to be added](https://github.com/alphagov/govuk-frontend/pull/1650)
+
 ### Fixes
 
 - [Pull request #1670: Make width-container margins more targetted to avoid specificity issues](https://github.com/alphagov/govuk-frontend/pull/1670).
