@@ -2,6 +2,29 @@ import '../../vendor/polyfills/Function/prototype/bind'
 import '../../vendor/polyfills/Event' // addEventListener and event.target normaliziation
 import '../../vendor/polyfills/Element/prototype/classList'
 
+function _patchElementProperty ($element, propertyName, options) {
+  var superProps = Object.getPrototypeOf($element)
+  var superSet = Object.getOwnPropertyDescriptor(superProps, propertyName).set
+  var superGet = Object.getOwnPropertyDescriptor(superProps, propertyName).get
+  var newProps = {
+    get: function () {
+      var result = superGet.apply(this, arguments)
+      if (typeof options.get === 'function') {
+        options.get()
+      }
+      return result
+    },
+    set: function () {
+      var result = superSet.apply(this, arguments)
+      if (typeof options.set === 'function') {
+        options.set()
+      }
+      return result
+    }
+  }
+  Object.defineProperty($element, propertyName, newProps)
+}
+
 function CharacterCount ($module) {
   this.$module = $module
   this.$textarea = $module.querySelector('.govuk-js-character-count')
@@ -92,9 +115,10 @@ CharacterCount.prototype.bindChangeEvents = function () {
   var $textarea = this.$textarea
   $textarea.addEventListener('keyup', this.checkIfValueChanged.bind(this))
 
-  // Bind focus/blur events to start/stop polling
-  $textarea.addEventListener('focus', this.handleFocus.bind(this))
-  $textarea.addEventListener('blur', this.handleBlur.bind(this))
+  // TODO: I believe that this will only work the first initialisation of the component
+  _patchElementProperty($textarea, 'value', {
+    set: this.checkIfValueChanged.bind(this)
+  })
 }
 
 // Speech recognition software such as Dragon NaturallySpeaking will modify the
@@ -157,16 +181,6 @@ CharacterCount.prototype.updateCountMessage = function () {
   displayNumber = Math.abs(remainingNumber)
 
   countMessage.innerHTML = 'You have ' + displayNumber + ' ' + charNoun + ' ' + charVerb
-}
-
-CharacterCount.prototype.handleFocus = function () {
-  // Check if value changed on focus
-  this.valueChecker = setInterval(this.checkIfValueChanged.bind(this), 1000)
-}
-
-CharacterCount.prototype.handleBlur = function () {
-  // Cancel value checking on blur
-  clearInterval(this.valueChecker)
 }
 
 export default CharacterCount
