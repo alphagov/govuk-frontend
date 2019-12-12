@@ -47,6 +47,17 @@ exports[`Checkboxes when they include a hint renders the hint 1`] = `
 >
   If you have dual nationality, select all options that are relevant to you.
 </span>
+<span id="example-item-hint"
+      class="govuk-hint govuk-checkboxes__hint"
+>
+  Hint for british option here
+</span>
+<span id="example-3-item-hint"
+      class="govuk-hint govuk-checkboxes__hint app-checkboxes__hint-other"
+      data-test-attribute="true"
+>
+  Hint for other option here
+</span>
 `;
 
 exports[`Checkboxes when they include an error message renders the error message 1`] = `

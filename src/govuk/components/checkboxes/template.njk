@@ -88,7 +88,7 @@
           {% if hasHint %}
           {{ govukHint({
             id: itemHintId,
-            classes: 'govuk-checkboxes__hint',
+            classes: 'govuk-checkboxes__hint' + (' ' + item.hint.classes if item.hint.classes),
             attributes: item.hint.attributes,
             html: item.hint.html,
             text: item.hint.text

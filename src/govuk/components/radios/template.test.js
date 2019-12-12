@@ -535,13 +535,44 @@ describe('Radios', () => {
 
   describe('when they include a hint', () => {
     it('renders the hint', () => {
-      const $ = render('radios', examples['with all fieldset attributes'])
+      const $ = render('radios', {
+        name: 'example',
+        hint: {
+          text: 'This includes changing your last name or spelling your name differently.'
+        },
+        items: [
+          {
+            hint: {
+              text: 'Hint for yes option here'
+            }
+          },
+          {
+            hint: {
+              classes: 'app-radios__hint-no',
+              text: 'Hint for no option here',
+              attributes: {
+                'data-test-attribute': true
+              }
+            }
+          }
+        ]
+      })
 
       expect(htmlWithClassName($, '.govuk-hint')).toMatchSnapshot()
     })
 
     it('associates the fieldset as "described by" the hint', () => {
-      const $ = render('radios', examples['with all fieldset attributes'])
+      const $ = render('radios', {
+        name: 'example',
+        fieldset: {
+          legend: {
+            text: 'Have you changed your name?'
+          }
+        },
+        hint: {
+          text: 'This includes changing your last name or spelling your name differently.'
+        }
+      })
 
       const $fieldset = $('.govuk-fieldset')
       const $hint = $('.govuk-hint')
@@ -555,11 +586,19 @@ describe('Radios', () => {
 
     it('associates the fieldset as "described by" the hint and parent fieldset', () => {
       const describedById = 'some-id'
-      const params = examples['with all fieldset attributes']
 
-      params.fieldset.describedBy = describedById
-
-      const $ = render('radios', params)
+      const $ = render('radios', {
+        name: 'example',
+        fieldset: {
+          describedBy: describedById,
+          legend: {
+            text: 'Have you changed your name?'
+          }
+        },
+        hint: {
+          text: 'This includes changing your last name or spelling your name differently.'
+        }
+      })
       const $fieldset = $('.govuk-fieldset')
       const $hint = $('.govuk-hint')
 
@@ -568,13 +607,17 @@ describe('Radios', () => {
       )
 
       expect($fieldset.attr('aria-describedby')).toMatch(hintId)
-      delete params.fieldset.describedBy
     })
   })
 
   describe('when they include an error message', () => {
     it('renders the error message', () => {
-      const $ = render('radios', examples['with all fieldset attributes'])
+      const $ = render('radios', {
+        name: 'example',
+        errorMessage: {
+          text: 'Please select an option'
+        }
+      })
       expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
     })
 
@@ -666,7 +709,19 @@ describe('Radios', () => {
 
   describe('when they include both a hint and an error message', () => {
     it('associates the fieldset as described by both the hint and the error message', () => {
-      const $ = render('radios', examples['with all fieldset attributes'])
+      const $ = render('radios', {
+        errorMessage: {
+          text: 'Please select an option'
+        },
+        fieldset: {
+          legend: {
+            text: 'Have you changed your name?'
+          }
+        },
+        hint: {
+          text: 'This includes changing your last name or spelling your name differently.'
+        }
+      })
 
       const $fieldset = $('.govuk-fieldset')
       const errorMessageId = $('.govuk-error-message').attr('id')
@@ -682,11 +737,21 @@ describe('Radios', () => {
 
     it('associates the fieldset as described by the hint, error message and parent fieldset', () => {
       const describedById = 'some-id'
-      const params = examples['with all fieldset attributes']
 
-      params.fieldset.describedBy = describedById
-
-      const $ = render('radios', params)
+      const $ = render('radios', {
+        errorMessage: {
+          text: 'Please select an option'
+        },
+        fieldset: {
+          describedBy: describedById,
+          legend: {
+            text: 'Have you changed your name?'
+          }
+        },
+        hint: {
+          text: 'This includes changing your last name or spelling your name differently.'
+        }
+      })
 
       const $fieldset = $('.govuk-fieldset')
       const errorMessageId = $('.govuk-error-message').attr('id')
@@ -698,14 +763,18 @@ describe('Radios', () => {
 
       expect($fieldset.attr('aria-describedby'))
         .toMatch(combinedIds)
-
-      delete params.fieldset.describedBy
     })
   })
 
   describe('nested dependant components', () => {
     it('have correct nesting order', () => {
-      const $ = render('radios', examples['with all fieldset attributes'])
+      const $ = render('radios', {
+        fieldset: {
+          legend: {
+            text: 'Have you changed your name?'
+          }
+        }
+      })
 
       const $component = $('.govuk-form-group > .govuk-fieldset > .govuk-radios')
       expect($component.length).toBeTruthy()
@@ -737,7 +806,25 @@ describe('Radios', () => {
     })
 
     it('passes through fieldset params without breaking', () => {
-      const $ = render('radios', examples['with all fieldset attributes'])
+      const $ = render('radios', {
+        name: 'example',
+        errorMessage: {
+          text: 'Please select an option'
+        },
+        fieldset: {
+          classes: 'app-fieldset--custom-modifier',
+          attributes: {
+            'data-attribute': 'value',
+            'data-second-attribute': 'second-value'
+          },
+          legend: {
+            text: 'Have you changed your name?'
+          }
+        },
+        hint: {
+          text: 'This includes changing your last name or spelling your name differently.'
+        }
+      })
 
       expect(htmlWithClassName($, '.govuk-fieldset')).toMatchSnapshot()
     })
