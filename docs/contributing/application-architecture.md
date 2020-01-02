@@ -26,7 +26,7 @@
 
 - `bin/`
 
-  Binary/executable files (i.e. bash scripts) mainly used in the [publishing process](publishing.md).
+  Binary/executable files (i.e. bash scripts) mainly used in the [publishing process](/docs/releasing/publishing.md).
 
 - `config/`
 
