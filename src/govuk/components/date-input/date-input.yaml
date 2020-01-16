@@ -1,7 +1,7 @@
 params:
 - name: id
   type: string
-  required: false
+  required: true
   description: This is used for the main component and to compose id attribute for each item.
 - name: namePrefix
   type: string
