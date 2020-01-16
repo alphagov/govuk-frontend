@@ -1,4 +1,4 @@
-# Install using Node.js package manager (npm)
+# Install GOV.UK Frontend using Node.js package manager (npm)
 
 ## Requirements
 
@@ -184,8 +184,8 @@ Create an HTML file with the following code:
 
 Replace:
 
-- `{PATH-TO-CSS}` with the path to your CSS
-- `{PATH-TO-JAVASCRIPT}` with the path to your JavaScript
+- `{PATH-TO-CSS}` with the path to the CSS file
+- `{PATH-TO-JAVASCRIPT}` with the path to the JavaScript file
 
 Check that GOV.UK Frontend's Javascript, CSS, images and font are working. You should see a [default button](https://design-system.service.gov.uk/components/button/#default-buttons).
 
