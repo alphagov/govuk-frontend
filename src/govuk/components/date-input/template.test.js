@@ -30,15 +30,6 @@ describe('Date input', () => {
       expect($component.hasClass('app-date-input--custom-modifier')).toBeTruthy()
     })
 
-    it('renders with id', () => {
-      const $ = render('date-input', {
-        id: 'my-date-input'
-      })
-
-      const $component = $('.govuk-date-input')
-      expect($component.attr('id')).toEqual('my-date-input')
-    })
-
     it('renders with attributes', () => {
       const $ = render('date-input', {
         attributes: {
