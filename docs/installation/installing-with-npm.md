@@ -12,9 +12,9 @@
     npm init -y
     ```
 
-3. [Install Nunjucks v3.0.0 or later](https://www.npmjs.com/package/nunjucks), if you want to [use GOV.UK Frontend's Nunjucks macros](https://design-system.service.gov.uk/get-started/production/#using-nunjucks-macros).
+3. Install a Sass compiler that will work with your project, for example [Dart Sass](https://sass-lang.com/dart-sass) or [LibSass](https://sass-lang.com/libsass).
 
-4. Install a Sass compiler that will work with your project, for example [Dart Sass](https://sass-lang.com/dart-sass) or [LibSass](https://sass-lang.com/libsass).
+You can also [install Nunjucks v3.0.0 or later](https://www.npmjs.com/package/nunjucks) if you want to [use GOV.UK Frontend's Nunjucks macros](https://design-system.service.gov.uk/get-started/production/#using-nunjucks-macros).
 
 ## Install
 
@@ -36,7 +36,7 @@ Add the following to the main Sass file in your project, to import all the CSS s
 @import "node_modules/govuk-frontend/govuk/all";
 ```
 
-If you want to override GOV.UK Frontend's styles with your own styles, add the `@import` line below your own Sass rules.
+If you want to override GOV.UK Frontend's styles with your own styles, add the `@import` line before your own Sass rules.
 
 You can also import individual components. For example to import the [button](https://design-system.service.gov.uk/components/button/) component:
 
@@ -44,7 +44,7 @@ You can also import individual components. For example to import the [button](ht
 @import "node_modules/govuk-frontend/govuk/components/button/button";
 ```
 
-You can also [use styles from our old frameworks](https://github.com/alphagov/govuk-frontend/blob/master/docs/installation/compatibility.md) GOV.UK Frontend Toolkit, GOV.UK Template and GOV.UK Elements.
+If your project uses GOV.UK Frontend toolkit, GOV.UK Template or GOV.UK Elements, you can [configure GOV.UK Frontend to work with them](https://github.com/alphagov/govuk-frontend/blob/master/docs/installation/compatibility.md).
 
 #### Simplify Sass import paths
 
@@ -86,22 +86,22 @@ Copy the following folders into your project folder:
 
 You should use an automated task or your build pipeline to copy the files, so your project folder stays up to date when we update GOV.UK Frontend.
 
-#### If you use different folders
+##### If you use different folders
 
-If you use different folders for images and the font, you can override GOV.UK Frontend's default paths with your paths.
+If you use different folders for images and the font, you should override GOV.UK Frontend's default paths with your paths.
 
 If your `image` and `font` folders are together in the same folder, set the `$govuk-assets-path` variable to your folder. For example:
 
 ```SCSS
-$govuk-assets-path: '/{YOUR-FOLDER}';
+$govuk-assets-path: '/<YOUR-FOLDER>';
 @import "govuk-frontend/govuk/all";
 ```
 
 If your `image` and `font` folders are in different folders, set the `$govuk-images-path` and `$govuk-fonts-path` variables to your folders. For example:
 
 ```SCSS
-$govuk-images-path: "/{YOUR-IMAGES-FOLDER}/";
-$govuk-fonts-path: "/{YOUR-FONTS-FOLDER}/";
+$govuk-images-path: "/<YOUR-IMAGES-FOLDER>/";
+$govuk-fonts-path: "/<YOUR-FONTS-FOLDER>/";
 @import "govuk-frontend/govuk/all";
 ```
 
@@ -114,7 +114,7 @@ You can either:
 - add GOV.UK Frontend's JavaScript file to your HTML
 - import the JavaScript using a bundler like [Webpack](https://webpack.js.org/)
 
-You must also initialise GOV.UK Frontend's components by calling the `initAll` function. If you do not initialise, some components will not work correctly for users who have accessible needs or use older browsers.
+You must also initialise GOV.UK Frontend's components by calling the `initAll` function. If you do not initialise, some components will not work correctly for disabled users who use assistive technologies.
 
 ### Add the JavaScript file to your HTML
 
@@ -135,19 +135,28 @@ Then add GOV.UK Frontend's Javascript file before the closing `</body>` tag of y
 </body>
 ```
 
-You can also select specific components, then call `initAll` with a `scope` parameter that includes only those components. For example, to initialise only [radios](https://design-system.service.gov.uk/components/radios/):
+You can select and initialise specific components using their `data-module` attribute. For example, initialise the first radio component on a page using `govuk-radios`:
 
 ```html
-...
   <script>
-    var radio = document.querySelector('.radio')
-    window.GOVUKFrontend.initAll({
-      scope: $radio
-    })
+    var Radios = window.GOVUKFrontend.Radios
+    var $radio = document.querySelector('[data-module="govuk-radios"]')
+    if ($radio) {
+      new Radios($radio).init()
+    }
   </script>
 ```
 
-If you add markup to a page after it's loaded, you can also use the `data-module` attribute to select specific components. For example, you can select radios using their `data-module` attribute of `govuk-radios`.
+If you add new markup to a page, for example a modal dialogue box, you can run `initAll` with a `scope` parameter to initialise the components on part of a page. For example:
+
+```html
+  <script>
+    var $modal = document.querySelector('.modal')
+    window.GOVUKFrontend.initAll({
+      scope: $modal
+    })
+  </script>
+```
 
 #### Import JavaScript using a bundler
 
@@ -173,19 +182,19 @@ Create an HTML file with the following code:
 <!DOCTYPE html>
   <head>
     <title>Example title</title>
-    <link rel="stylesheet" href="/{PATH-TO-CSS}/application.css">
+    <link rel="stylesheet" href="/<PATH-TO-CSS>/application.css">
   </head>
   <body>
     <button class="govuk-button">Example button</button>
-    <script src="/{PATH-TO-JAVASCRIPT}/all.js"></script>
+    <script src="/<PATH-TO-JAVASCRIPT>/all.js"></script>
   </body>
 </html>
 ```
 
 Replace:
 
-- `{PATH-TO-CSS}` with the path to the CSS file
-- `{PATH-TO-JAVASCRIPT}` with the path to the JavaScript file
+- `<PATH-TO-CSS>` with the path to the CSS file
+- `<PATH-TO-JAVASCRIPT>` with the path to the JavaScript file
 
 Check that GOV.UK Frontend's Javascript, CSS, images and font are working. You should see a [default button](https://design-system.service.gov.uk/components/button/#default-buttons).
 
