@@ -140,7 +140,7 @@ describe('Date input', () => {
       expect($firstItems.text().trim()).toEqual('Day')
     })
 
-    it('renders inputs with type="number"', () => {
+    it('renders inputs with type="text"', () => {
       const $ = render('date-input', {
         items: [
           {
@@ -150,7 +150,20 @@ describe('Date input', () => {
       })
 
       const $firstInput = $('.govuk-date-input__item:first-child input')
-      expect($firstInput.attr('type')).toEqual('number')
+      expect($firstInput.attr('type')).toEqual('text')
+    })
+
+    it('renders inputs with inputmode="numeric"', () => {
+      const $ = render('date-input', {
+        items: [
+          {
+            name: 'day'
+          }
+        ]
+      })
+
+      const $firstInput = $('.govuk-date-input__item:first-child input')
+      expect($firstInput.attr('inputmode')).toEqual('numeric')
     })
 
     it('renders inputs with pattern="[0-9]*" to trigger numeric keypad on iOS', () => {
