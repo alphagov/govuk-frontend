@@ -153,7 +153,7 @@ describe('Date input', () => {
       expect($firstInput.attr('type')).toEqual('text')
     })
 
-    it('renders inputs with inputmode="numric"', () => {
+    it('renders inputs with inputmode="numeric"', () => {
       const $ = render('date-input', {
         items: [
           {
