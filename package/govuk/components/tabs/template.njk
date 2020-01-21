@@ -6,7 +6,7 @@
   <h2 class="govuk-tabs__title">
     {{ params.title | default ("Contents") }}
   </h2>
-  {% if(params.items) %}
+  {% if(params.items | length) %}
   <ul class="govuk-tabs__list">
     {% for item in params.items %}
       {% if item %}

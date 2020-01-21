@@ -4,6 +4,12 @@
 
 ### New features
 
+### Fixes
+
+## 3.5.0 (Feature release)
+
+### New features
+
 #### Add classes to the character count component's count message
 
 If you're using Nunjucks, you can now add classes to the character count component's count message using the `countMessage.classes` option.

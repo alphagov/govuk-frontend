@@ -82,7 +82,7 @@
           {% if hasHint %}
           {{ govukHint({
             id: itemHintId,
-            classes: 'govuk-radios__hint',
+            classes: 'govuk-radios__hint' + (' ' + item.hint.classes if item.hint.classes),
             attributes: item.hint.attributes,
             html: item.hint.html,
             text: item.hint.text
