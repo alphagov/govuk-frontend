@@ -10,11 +10,11 @@ params:
 - name: descriptionText
   type: string
   required: false
-  description: Text to use for the description of the errors. If `descriptionHtml` is provided,  `descriptionText` will be ignored.
+  description: Text to use for the description of the errors. If you set `descriptionHtml`, the component will ignore `descriptionText`.
 - name: descriptionHtml
   type: string
   required: false
-  description: HTML to use for the description of the errors. If `descriptionHtml` is provided, `descriptionText` will be ignored.
+  description: HTML to use for the description of the errors. If you set this option, the component will ignore `descriptionText`.
 
 - name: errorList
   type: array
