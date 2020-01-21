@@ -243,16 +243,12 @@
 
     display: -webkit-inline-box;
 
-    display: -webkit-inline-flex;
-
     display: -ms-inline-flexbox;
 
     display: inline-flex;
     min-height: auto;
 
     -webkit-box-pack: center;
-
-    -webkit-justify-content: center;
 
         -ms-flex-pack: center;
 
@@ -266,12 +262,10 @@
       margin-left: govuk-spacing(2);
     }
     vertical-align: middle;
-    -webkit-flex-shrink: 0;
-        -ms-flex-negative: 0;
-            flex-shrink: 0;
-    -webkit-align-self: center;
-        -ms-flex-item-align: center;
-            align-self: center;
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+    -ms-flex-item-align: center;
+        align-self: center;
   }
 
   @if $govuk-use-legacy-font {

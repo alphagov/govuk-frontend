@@ -1,12 +1,12 @@
 <footer class="govuk-footer {{ params.classes if params.classes }}" role="contentinfo"
         {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
   <div class="govuk-width-container {{ params.containerClasses if params.containerClasses }}">
-    {% if params.navigation %}
+    {% if params.navigation | length %}
       <div class="govuk-footer__navigation">
         {% for nav in params.navigation %}
           <div class="govuk-footer__section">
             <h2 class="govuk-footer__heading govuk-heading-m">{{ nav.title }}</h2>
-            {% if nav.items %}
+            {% if nav.items | length %}
               {% set listClasses %}
                 {% if nav.columns %}
                   govuk-footer__list--columns-{{ nav.columns }}
@@ -33,7 +33,7 @@
       <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
         {% if params.meta %}
           <h2 class="govuk-visually-hidden">{{ params.meta.visuallyHiddenTitle | default("Support links") }}</h2>
-          {% if params.meta.items %}
+          {% if params.meta.items | length %}
             <ul class="govuk-footer__inline-list">
               {% for item in params.meta.items %}
                 <li class="govuk-footer__inline-list-item">

@@ -25,7 +25,8 @@
   max-width: $width;
 
   // On mobile, add half width gutters
-  margin: 0 $govuk-gutter-half;
+  margin-right: $govuk-gutter-half;
+  margin-left: $govuk-gutter-half;
 
   // Respect 'display cutout' safe area (avoids notches and rounded corners)
   @supports (margin: unquote("max(calc(0px))")) {
@@ -40,7 +41,8 @@
 
   // On tablet, add full width gutters
   @include govuk-media-query($from: tablet) {
-    margin: 0 $govuk-gutter;
+    margin-right: $govuk-gutter;
+    margin-left: $govuk-gutter;
 
     // Respect 'display cutout' safe area (avoids notches and rounded corners)
     @supports (margin: unquote("max(calc(0px))")) {
@@ -57,12 +59,14 @@
   // As soon as the viewport is greater than the width of the page plus the
   // gutters, just centre the content instead of adding gutters.
   @include govuk-media-query($and: "(min-width: #{($width + $govuk-gutter * 2)})") {
-    margin: 0 auto;
+    margin-right: auto;
+    margin-left: auto;
 
     // Since a safe area may have previously been set above,
     // we need to duplicate this margin that centers the page.
     @supports (margin: unquote("max(calc(0px))")) {
-      margin: 0 auto;
+      margin-right: auto;
+      margin-left: auto;
     }
   }
 
@@ -70,7 +74,8 @@
     width: $width;
     // Since media queries are not supported in IE8,
     // we need to duplicate this margin that centers the page.
-    margin: 0 auto;
+    margin-right: auto;
+    margin-left: auto;
   }
 }
 

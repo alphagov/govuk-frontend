@@ -756,12 +756,13 @@ if (detect) return
 
     (function (global) {
 
-      // Polyfill from https://github.com/Financial-Times/polyfill-service/pull/1062/files#diff-404b69b4750d18dea4174930a49170fd
+      // There is no polyfill in polyfill-library (https://github.com/Financial-Times/polyfill-library/issues/338)
+      // So we source this from https://github.com/Alhadis/Snippets/blob/e09b4dfb7ffc9e250bc28319051e39ead3e5f70a/js/polyfills/IE8-child-elements.js#L28-L33
       Object.defineProperty(Element.prototype, "nextElementSibling", {
         get: function(){
           var el = this.nextSibling;
           while (el && el.nodeType !== 1) { el = el.nextSibling; }
-          return (el.nodeType === 1) ? el : null;
+          return el;
         }
       });
 
@@ -779,12 +780,13 @@ if (detect) return
     if (detect) return
 
     (function (global) {
-      // Polyfill from https://github.com/Financial-Times/polyfill-service/pull/1062/files#diff-b45a1197b842728cb76b624b6ba7d739
+      // There is no polyfill in polyfill-library (https://github.com/Financial-Times/polyfill-library/issues/338)
+      // So we source this from https://github.com/Alhadis/Snippets/blob/e09b4dfb7ffc9e250bc28319051e39ead3e5f70a/js/polyfills/IE8-child-elements.js#L35-L40
       Object.defineProperty(Element.prototype, 'previousElementSibling', {
         get: function(){
           var el = this.previousSibling;
           while (el && el.nodeType !== 1) { el = el.previousSibling; }
-          return (el.nodeType === 1) ? el : null;
+          return el;
         }
       });
 
