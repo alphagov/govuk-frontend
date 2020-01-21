@@ -26,6 +26,12 @@
     &:focus {
       outline: $govuk-focus-width solid $govuk-focus-colour;
       background-color: $govuk-focus-colour;
+
+      // Undo unwanted changes when global styles are enabled
+      @if ($govuk-global-styles) {
+        box-shadow: none;
+        text-decoration: underline;
+      }
     }
   }
 }

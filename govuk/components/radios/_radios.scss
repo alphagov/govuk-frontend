@@ -148,7 +148,7 @@
   // =========================================================
 
   .govuk-radios--inline {
-    @include mq ($from: tablet) {
+    @include govuk-media-query ($from: tablet) {
       @include govuk-clearfix;
 
       .govuk-radios__item {

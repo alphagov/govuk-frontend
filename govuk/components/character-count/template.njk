@@ -1,4 +1,5 @@
 {% from "../textarea/macro.njk" import govukTextarea %}
+{% from "../hint/macro.njk" import govukHint %}
 
 <div class="govuk-character-count" data-module="govuk-character-count"
 {%- if params.maxlength %} data-maxlength="{{ params.maxlength }}"{% endif %}
@@ -24,7 +25,12 @@
     errorMessage: params.errorMessage,
     attributes: params.attributes
   }) }}
-  <span id="{{ params.id }}-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
-    You can enter up to {{ params.maxlength or params.maxwords }} {{'words' if params.maxwords else 'characters' }}
-  </span>
+  {{ govukHint({
+    text: 'You can enter up to ' + (params.maxlength or params.maxwords) + (' words' if params.maxwords else ' characters'),
+    id: params.id + '-info',
+    classes: 'govuk-character-count__message' + (' ' + params.countMessage.classes if params.countMessage.classes),
+    attributes: {
+      'aria-live': 'polite'
+    }
+  }) }}
 </div>
