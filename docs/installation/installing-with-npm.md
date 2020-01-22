@@ -9,7 +9,7 @@
 2. `cd` to the root of your project and check if you have a [`package.json` file](https://docs.npmjs.com/files/package.json). If you do not have the file, create it by running:
 
     ```
-    npm init -y
+    npm init
     ```
 
 3. Install a Sass compiler that will work with your project, for example [Dart Sass](https://sass-lang.com/dart-sass) or [LibSass](https://sass-lang.com/libsass).
