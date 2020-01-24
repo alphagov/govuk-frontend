@@ -24,3 +24,39 @@ examples:
    data:
     text: alpha
     classes: govuk-tag--inactive
+ - name: grey
+   data:
+    text: Grey
+    classes: govuk-tag--grey
+ - name: blue
+   data:
+    text: Blue
+    classes: govuk-tag--blue
+ - name: turquoise
+   data:
+    text: Turquoise
+    classes: govuk-tag--turquoise
+ - name: green
+   data:
+    text: Green
+    classes: govuk-tag--green
+ - name: purple
+   data:
+    text: Purple
+    classes: govuk-tag--purple
+ - name: pink
+   data:
+    text: Pink
+    classes: govuk-tag--pink
+ - name: red
+   data:
+    text: Red
+    classes: govuk-tag--red
+ - name: orange
+   data:
+    text: Orange
+    classes: govuk-tag--orange
+ - name: yellow
+   data:
+    text: Yellow
+    classes: govuk-tag--yellow
