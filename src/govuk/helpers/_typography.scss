@@ -126,6 +126,11 @@
     $font-size: map-get($breakpoint-map, "font-size");
     $font-size-rem: govuk-px-to-rem($font-size);
 
+    // The effective root font size on iOS is 17px *when we use dynamic type*,
+    // so to maintain the same font size we need to set the size in rem relative
+    // to that instead.
+    $font-size-ios: $font-size / 17px * 1rem;
+
     $line-height: _govuk-line-height(
       $line-height: if($override-line-height,
         $override-line-height,
@@ -145,6 +150,10 @@
       font-size: $font-size; // sass-lint:disable no-duplicate-properties
       @if $govuk-typography-use-rem {
         font-size: $font-size-rem; // sass-lint:disable no-duplicate-properties
+
+        @supports (font: -apple-system-body) {
+          font-size: $font-size-ios;
+        }
       }
       line-height: $line-height;
     } @else if $breakpoint == "print" {
@@ -157,6 +166,10 @@
         font-size: $font-size; // sass-lint:disable no-duplicate-properties
         @if $govuk-typography-use-rem {
           font-size: $font-size-rem; // sass-lint:disable no-duplicate-properties
+
+          @supports (font: -apple-system-body) {
+            font-size: $font-size-ios;
+          }
         }
         line-height: $line-height;
       }

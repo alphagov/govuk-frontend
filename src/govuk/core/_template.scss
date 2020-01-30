@@ -19,6 +19,12 @@
     @include govuk-media-query($media-type: screen) {
       overflow-y: scroll;
     }
+
+    // Enable 'Dynamic Type' on iOS devices, so that text size resizes in line
+    // with operating system text size preferences.
+    @supports (font: -apple-system-body) {
+      font: -apple-system-body;
+    }
   }
 
   // Applied to the <body> element
