@@ -4,6 +4,12 @@
 
 ### New features
 
+#### Add display override for hiding content when printing
+
+Introduce a CSS class that can be used to hide any given element from the print view: `govuk-!-display-none-print`
+
+[Pull request #1723: Add display override for hiding content when printing](https://github.com/alphagov/govuk-frontend/pull/1723).
+
 ### Fixes
 
 ## 3.5.0 (Feature release)
