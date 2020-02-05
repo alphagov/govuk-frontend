@@ -144,8 +144,8 @@ describe('header', () => {
       expect($svg.attr('focusable')).toEqual('false')
     })
 
-    it('sets role="presentation" so that it is ignored by assistive technologies', () => {
-      expect($svg.attr('focusable')).toEqual('false')
+    it('sets aria-hidden="true" so that it is ignored by assistive technologies', () => {
+      expect($svg.attr('aria-hidden')).toEqual('true')
     })
 
     describe('fallback PNG', () => {
