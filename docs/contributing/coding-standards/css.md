@@ -117,7 +117,7 @@ style rules are followed using a project [YAML file](../../../config/.sass-lint.
 As we're using node-sass parser to parse our scss files, the package of choice
 is [sass-lint](https://github.com/sasstools/sass-lint).
 
-See [testing and linting](../testing-and-linting.md) for more information.
+See [testing and linting](/docs/releasing/testing-and-linting.md) for more information.
 
 ## Running the lint task
 
@@ -126,7 +126,7 @@ or check linting directly in [Sublime Text](https://github.com/skovhus/SublimeLi
 [Atom](https://atom.io/packages/linter-sass-lint)
 or other [IDE's](https://github.com/sasstools/sass-lint#ide-integration)
 
-See also [testing and linting](../testing-and-linting.md).
+See also [testing and linting](/docs/releasing/testing-and-linting.md).
 
 ## Linting rules
 
