@@ -3,6 +3,7 @@
 @import "../../../helpers/all";
 @import "../_partials/gradient-background";
 
+$icon-search: url("../../../assets/images/icon-search-white.svg");
 
 @include govuk-exports("sdn/component/searchbar") {
   // todo replace colors from global variables
@@ -15,8 +16,13 @@
   }
 
   .sdn-searchbar {
-    padding-top: 52px;
-    padding-bottom: 35px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+    @include govuk-media-query($from: tablet) {
+      padding-top: 52px;
+      padding-bottom: 35px;
+    }
   }
 
   .sdn-searchbar__item {
@@ -41,7 +47,6 @@
   }
 
   .sdn-searchbar-block__item {
-
     display: flex;
     align-items: center;
 
@@ -53,7 +58,21 @@
 
   .sdn-searchbar-block__item--stretched {
     align-items: stretch;
-
   }
 
+  .sdn-searchbar-button {
+    @include govuk-media-query($until: tablet) {
+      padding: 20px;
+      background-image: $icon-search;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: 50%;
+    }
+  }
+
+  .sdn-searchbar-button--text {
+    @include govuk-media-query($until: tablet) {
+      display: none;
+    }
+  }
 }

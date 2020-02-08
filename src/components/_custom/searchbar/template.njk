@@ -5,7 +5,9 @@
                 <input class="govuk-input" type="search" placeholder="{{ params.placeholder | default('Vyhľadať životnú situáciu') }}">
             </div>
             <div class="sdn-searchbar-block__item sdn-searchbar-block__item--stretched">
-                <button class="govuk-button govuk-button--large">{{ params.buttonText | default('Hľadat') }}</button>
+                <button class="govuk-button govuk-button--large sdn-searchbar-button">
+                    <span class="sdn-searchbar-button--text">{{ params.buttonText | default('Hľadat') }}</span>
+                </button>
             </div>
         </div>
     </div>
