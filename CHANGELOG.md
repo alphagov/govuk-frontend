@@ -6,6 +6,8 @@
 
 ### Fixes
 
+- [Pull request #1724: Fix fallback logo being detected by Google Chrome's image description feature](https://github.com/alphagov/govuk-frontend/pull/1724).
+
 ## 3.5.0 (Feature release)
 
 ### New features
