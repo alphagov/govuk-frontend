@@ -10,7 +10,7 @@ params:
 - name: href
   type: string
   required: false
-  description: The value of the skip link href attribute. Defaults to `#content` if not provided.
+  description: The value of the skip link's `href` attribute. Defaults to `#content` if you do not provide a value.
 - name: classes
   type: string
   required: false
