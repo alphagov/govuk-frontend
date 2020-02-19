@@ -122,4 +122,4 @@ The standard docs have a [complete list of rules and some reasoning behind them]
 
 Read more about [running standard manually or in your editor](https://github.com/alphagov/styleguides/blob/master/js.md#linting).
 
-See also [testing and linting](../testing-and-linting.md).
+See also [testing and linting](/docs/releasing/testing-and-linting.md).
