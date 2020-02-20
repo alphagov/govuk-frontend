@@ -47,12 +47,10 @@
   }
 
   // JavaScript enabled
-  .js-enabled {
+  .govuk-accordion--js-enabled {
 
-    .govuk-accordion {
-      // Border at the bottom of the whole accordion
-      border-bottom: 1px solid $govuk-border-colour;
-    }
+    // Border at the bottom of the whole accordion
+    border-bottom: 1px solid $govuk-border-colour;
 
     // Borders between accordion sections
     .govuk-accordion__section {

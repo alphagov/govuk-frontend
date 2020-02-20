@@ -199,7 +199,7 @@
     list-style: none;
   }
 
-  .js-enabled {
+  .govuk-header--js-enabled {
     .govuk-header__menu-button {
       display: block;
       @include govuk-media-query ($from: desktop) {

@@ -8,9 +8,12 @@ function Header ($module) {
 Header.prototype.init = function () {
   // Check for module
   var $module = this.$module
-  if (!$module) {
+  // Check module exists and hasn't already been initialised
+  if (!$module || $module.classList.contains('govuk-header--js-enabled')) {
     return
   }
+
+  $module.classList.add('govuk-header--js-enabled')
 
   // Check for button
   var $toggleButton = $module.querySelector('.govuk-js-header-toggle')

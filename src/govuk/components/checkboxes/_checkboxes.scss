@@ -161,7 +161,7 @@
     padding-left: $conditional-padding-left;
     border-left: $conditional-border-width solid $govuk-border-colour;
 
-    .js-enabled &--hidden {
+    .govuk-checkboxes--js-enabled &--hidden {
       display: none;
     }
 

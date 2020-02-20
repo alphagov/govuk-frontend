@@ -9,6 +9,14 @@ function Radios ($module) {
 
 Radios.prototype.init = function () {
   var $module = this.$module
+
+  // Check module exists and hasn't already been initialised
+  if (!$module || $module.classList.contains('govuk-radios--js-enabled')) {
+    return
+  }
+
+  $module.classList.add('govuk-radios--js-enabled')
+
   var $inputs = $module.querySelectorAll('input[type="radio"]')
 
   /**

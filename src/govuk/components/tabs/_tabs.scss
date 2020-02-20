@@ -52,7 +52,7 @@
   }
 
   // JavaScript enabled
-  .js-enabled {
+  .govuk-tabs--js-enabled {
 
     @include govuk-media-query($from: tablet) {
 

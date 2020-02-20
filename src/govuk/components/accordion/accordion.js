@@ -38,10 +38,13 @@ function Accordion ($module) {
 
 // Initialize component
 Accordion.prototype.init = function () {
-  // Check for module
-  if (!this.$module) {
+  var $module = this.$module
+  // Check module exists and hasn't already been initialised
+  if (!$module || $module.classList.contains('govuk-accordion--js-enabled')) {
     return
   }
+
+  $module.classList.add('govuk-accordion--js-enabled')
 
   this.initControls()
 

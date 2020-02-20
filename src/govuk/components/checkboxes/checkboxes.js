@@ -10,6 +10,15 @@ function Checkboxes ($module) {
 
 Checkboxes.prototype.init = function () {
   var $module = this.$module
+  var $module = this.$module
+
+  // Check module exists and hasn't already been initialised
+  if (!$module || $module.classList.contains('govuk-checkboxes--js-enabled')) {
+    return
+  }
+
+  $module.classList.add('govuk-checkboxes--js-enabled')
+
   var $inputs = this.$inputs
 
   /**

@@ -14,6 +14,14 @@ function Tabs ($module) {
 }
 
 Tabs.prototype.init = function () {
+  // Check module exists and hasn't already been initialised
+  var $module = this.$module
+  if (!$module || $module.classList.contains('govuk-tabs--js-enabled')) {
+    return
+  }
+
+  $module.classList.add('govuk-tabs--js-enabled')
+
   if (typeof window.matchMedia === 'function') {
     this.setupResponsiveChecks()
   } else {
