@@ -8,8 +8,10 @@
 /// @param {Boolean} $condition - Whether to return the value of `$if-true`
 /// @param {Mixed} $if-true - Value to return if `$condition` is truthy
 /// @return {Mixed} Value of `$if-true` if `$condition` is truthy, else null
-/// @access public
+/// @access private
+/// @deprecated We will be removing this function in a future release, use `if($condition, $if-true, null);` instead.
 
 @function iff($condition, $if-true) {
+  @warn "The `iff` function will be removed in a future release, use `if($condition, $if-true, null);` instead.";
   @return if($condition, $if-true, null);
 }
