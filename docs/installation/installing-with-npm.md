@@ -15,7 +15,14 @@ To use GOV.UK Frontend with NPM you must:
    you don’t already have one. You can create a default `package.json` file by
    running `npm init` from the root of your application.
 
-3. If you want to use the GOV.UK Frontend Nunjucks macros, install Nunjucks -
+3. Install either:
+
+   - [LibSass](https://sass-lang.com/libsass) - version 3.3.0 or higher
+   - [Dart Sass](https://www.npmjs.com/package/sass) - version 1.0.0 or higher
+
+   GOV.UK Frontend also works with Ruby Sass version 3.4.0 or higher, but we recommend you do not use Ruby Sass because it's been deprecated.
+
+4. If you want to use the GOV.UK Frontend Nunjucks macros, install Nunjucks -
    the minimum version required is 3.0.0.
 
 ```
