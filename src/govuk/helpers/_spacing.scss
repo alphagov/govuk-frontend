@@ -82,16 +82,16 @@
     @if $breakpoint == null {
 
       @if $direction == all {
-        #{$property}: $breakpoint-value iff($important, !important);
+        #{$property}: $breakpoint-value if($important, !important, null);
       } @else {
-        #{$property}-#{$direction}: $breakpoint-value iff($important, !important);
+        #{$property}-#{$direction}: $breakpoint-value if($important, !important, null);
       }
     } @else {
       @include govuk-media-query($from: $breakpoint) {
         @if $direction == all {
-          #{$property}: $breakpoint-value iff($important, !important);
+          #{$property}: $breakpoint-value if($important, !important, null);
         } @else {
-          #{$property}-#{$direction}: $breakpoint-value iff($important, !important);
+          #{$property}-#{$direction}: $breakpoint-value if($important, !important, null);
         }
       }
     }
