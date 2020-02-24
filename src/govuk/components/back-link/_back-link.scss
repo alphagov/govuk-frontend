@@ -19,25 +19,26 @@
     padding-left: 14px;
   }
 
+
   // Only add a custom underline if the component is linkable
   .govuk-back-link[href] {
     // Use border-bottom rather than text-decoration so that the arrow is
     // underlined as well.
-    border-bottom: 1px solid govuk-colour("black");
+    border-bottom: 1px solid transparent;
 
     // Underline is provided by a bottom border
-    text-decoration: none;
+    text-decoration: underline;
 
     // When the back link is focused, hide the bottom link border as the
     // focus styles has a bottom border.
     &:focus {
       border-bottom-color: transparent;
+      text-decoration: none;
     }
   }
 
-  // Prepend left pointing arrow
+  // Prepend left pointing chevron
   .govuk-back-link:before {
-    @include govuk-shape-arrow($direction: left, $base: 10px, $height: 6px);
 
     content: "";
 
@@ -45,10 +46,29 @@
     position: absolute;
 
     top: 0;
-    bottom: 0;
-    left: 0;
+    bottom: 1px;
+    left: 3px;
+    width: 7px;
+    height: 7px;
 
     margin: auto;
+    clip-path: inherit;
+    transform: rotate(225deg);
+    border: solid;
+    border-width: 1px 1px 0 0;
+
+    -webkit-transform: rotate(225deg);
+    -ms-transform: rotate(225deg);
+  }
+
+  //Append pseudo element to increase touch target
+  .govuk-back-link:after {
+    content: "";
+    position: absolute;
+    top: -14px;
+    right: 0;
+    bottom: -14px;
+    left: 0;
   }
 
   @if $govuk-use-legacy-font {
@@ -61,5 +81,4 @@
       bottom: $offset;
     }
   }
-
 }
