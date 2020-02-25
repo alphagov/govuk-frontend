@@ -68,14 +68,15 @@ examples:
       -
         text: Agile Delivery
         href: '/service-manual/agile-delivery'
-- name: with last breadcrumb as current page
+- name: with long taxon on mobile
   data:
     items:
-      -
-        text: Home
-        href: '/'
-      -
-        text: Passports, travel and living abroad
-        href: '/browse/abroad'
-      -
-        text: Travel abroad
+    -
+      text: 'Home'
+      href: '/'
+    -
+      text: 'Education, training and skills'
+      href: '/education'
+    -
+      text: 'Education of disadvantaged children appended with some extra long content to make this a very very very very long taxon'
+      href: '/education'

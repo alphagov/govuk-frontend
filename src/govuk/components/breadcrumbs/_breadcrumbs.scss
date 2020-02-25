@@ -111,4 +111,45 @@
     @include govuk-link-common;
     @include govuk-link-style-text;
   }
+
+  @include govuk-media-query($until: tablet) {
+
+    .govuk-breadcrumbs__list {
+      display: flex;
+    }
+
+    .govuk-breadcrumbs__list-item {
+      display: none;
+    }
+
+    .govuk-breadcrumbs__list-item {
+      &:first-child,
+      &:last-child {
+        display: inherit;
+      }
+    }
+
+    .govuk-breadcrumbs__list-item {
+      padding-top: 14px;
+      padding-bottom: 14px;
+    }
+
+    .govuk-breadcrumbs__list-item:before {
+      top: 18px;
+      margin: 0;
+    }
+
+    .govuk-breadcrumbs__link {
+      position: relative;
+    }
+
+    .govuk-breadcrumbs__link::after {
+      content: "";
+      position: absolute;
+      top: -14px;
+      right: 0;
+      bottom: -14px;
+      left: 0;
+    }
+  }
 }
