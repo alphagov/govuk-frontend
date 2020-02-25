@@ -23,7 +23,7 @@ jobs:
       node_js: 4 # Node 4 required for oldest version of node-sass we support
       install: npm install -g node-sass@v3.4.0 # node-sass v3.4.0 = libsass v3.3.0
       script: 
-        - node-sass -v
+        - node-sass --version
         - time node-sass src/govuk/all.scss > /dev/null
 
     - name: 🎯 Test Sass compiles using Dart Sass v1.0.0
@@ -38,7 +38,7 @@ jobs:
       rvm: 1.9.3-p551 # Assumed based on release date of Ruby Sass v3.4.0
       install: gem install sass -v 3.4.0
       script: 
-        - sass -v
+        - sass --version
         - time sass src/govuk/all.scss > /dev/null
 
 # Heroku is configured to automatically deploy the following branches
