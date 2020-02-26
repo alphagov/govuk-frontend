@@ -115,7 +115,6 @@
 /// @access public
 
 @mixin govuk-typography-responsive($size, $override-line-height: false, $important: false) {
-
   @if not map-has-key($govuk-typography-scale, $size) {
     @error "Unknown font size `#{$size}` - expected a point from the typography scale.";
   }
@@ -127,7 +126,8 @@
     $font-size-rem: govuk-px-to-rem($font-size);
 
     $line-height: _govuk-line-height(
-      $line-height: if($override-line-height,
+      $line-height: if(
+        $override-line-height,
         $override-line-height,
         map-get($breakpoint-map, "line-height")
       ),
@@ -143,21 +143,29 @@
 
     @if $breakpoint == null {
       font-size: $font-size; // sass-lint:disable no-duplicate-properties
+
       @if $govuk-typography-use-rem {
         font-size: $font-size-rem; // sass-lint:disable no-duplicate-properties
       }
+
       line-height: $line-height;
-    } @else if $breakpoint == "print" {
+    }
+
+    @else if $breakpoint == "print" {
       @include govuk-media-query($media-type: print) {
         font-size: $font-size;
         line-height: $line-height;
       }
-    } @else {
+    }
+
+    @else {
       @include govuk-media-query($from: $breakpoint) {
         font-size: $font-size; // sass-lint:disable no-duplicate-properties
+
         @if $govuk-typography-use-rem {
           font-size: $font-size-rem; // sass-lint:disable no-duplicate-properties
         }
+
         line-height: $line-height;
       }
     }
@@ -179,22 +187,29 @@
     // if govuk-font-family-tabular is set use $govuk-font-family-tabular
     @if $govuk-font-family-tabular {
       @include govuk-typography-common($font-family: $govuk-font-family-tabular);
-    } @else {
+    }
+
+    @else {
       @include govuk-typography-common;
+
       font-feature-settings: "tnum" 1;
 
-      @supports(font-variant-numeric: tabular-nums) {
+      @supports (font-variant-numeric: tabular-nums) {
         font-feature-settings: normal;
         font-variant-numeric: tabular-nums;
       }
     }
-  } @else {
+  }
+
+  @else {
     @include govuk-typography-common;
   }
 
   @if $weight == regular {
     @include govuk-typography-weight-regular;
-  } @else if $weight == bold {
+  }
+
+  @else if $weight == bold {
     @include govuk-typography-weight-bold;
   }
 

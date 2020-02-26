@@ -7,7 +7,7 @@
 /// @access public
 
 @mixin govuk-clearfix {
-  &:after {
+  &::after {
     content: "";
     display: block;
     clear: both;

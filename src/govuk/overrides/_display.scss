@@ -3,7 +3,6 @@
 @import "../helpers/all";
 
 @include govuk-exports("govuk/overrides/display") {
-
   .govuk-\!-display-inline {
     display: inline !important;
   }

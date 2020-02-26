@@ -8,6 +8,7 @@
     margin: 0;
     padding: 0;
     border: 0;
+
     @include govuk-clearfix;
   }
 
@@ -32,7 +33,6 @@
     max-width: 100%;        // 1
     margin-bottom: govuk-spacing(2);
     padding: 0;
-
     white-space: normal;    // 1
   }
 
@@ -40,16 +40,19 @@
 
   .govuk-fieldset__legend--xl {
     @include govuk-font($size: 48, $weight: bold);
+
     margin-bottom: govuk-spacing(3);
   }
 
   .govuk-fieldset__legend--l {
     @include govuk-font($size: 36, $weight: bold);
+
     margin-bottom: govuk-spacing(3);
   }
 
   .govuk-fieldset__legend--m {
     @include govuk-font($size: 24, $weight: bold);
+
     margin-bottom: govuk-spacing(3);
   }
 

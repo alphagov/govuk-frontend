@@ -3,17 +3,13 @@
 @import "../../helpers/all";
 
 @include govuk-exports("govuk/component/panel") {
-
   .govuk-panel {
     @include govuk-font($size: 19);
 
     box-sizing: border-box;
-
     margin-bottom: govuk-spacing(3);
     padding: govuk-spacing(7) - $govuk-border-width;
-
     border: $govuk-border-width solid transparent;
-
     text-align: center;
 
     @include govuk-media-query($until: tablet) {
@@ -40,5 +36,4 @@
   .govuk-panel__body {
     @include govuk-font($size: 36);
   }
-
 }

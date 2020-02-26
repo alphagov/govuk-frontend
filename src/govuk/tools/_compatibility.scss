@@ -30,7 +30,9 @@
     @if map-get($_govuk-compatibility, $product) == true {
       @content;
     }
-  } @else {
+  }
+
+  @else {
     @error "Non existent product '#{$product}'";
   }
 }

@@ -67,7 +67,9 @@
 
   @if ($websafe and map-has-key($org-colour, colour-websafe)) {
     @return map-get($org-colour, colour-websafe);
-  } @else {
+  }
+
+  @else {
     @return map-get($org-colour, colour);
   }
 }

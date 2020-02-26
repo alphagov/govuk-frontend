@@ -3,7 +3,6 @@
 @import "../../helpers/all";
 
 @include govuk-exports("govuk/component/details") {
-
   .govuk-details {
     @include govuk-font($size: 19);
     @include govuk-text-colour;
@@ -18,7 +17,6 @@
 
     // Absolutely position the marker against this element
     position: relative;
-
     margin-bottom: govuk-spacing(1);
 
     // Allow for absolutely positioned marker and align with disclosed text
@@ -54,14 +52,12 @@
   }
 
   // Append our own open / closed marker using a pseudo-element
-  .govuk-details__summary:before {
+  .govuk-details__summary::before {
     content: "";
     position: absolute;
-
     top: -1px;
     bottom: 0;
     left: 0;
-
     margin: auto;
 
     @include govuk-shape-arrow($direction: right, $base: 14px);

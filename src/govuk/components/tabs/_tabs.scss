@@ -3,7 +3,6 @@
 @import "../../helpers/all";
 
 @include govuk-exports("govuk/component/tabs") {
-
   .govuk-tabs {
     @include govuk-responsive-margin(1, "top");
     @include govuk-responsive-margin(6, "bottom");
@@ -12,6 +11,7 @@
   .govuk-tabs__title {
     @include govuk-font($size: 19);
     @include govuk-text-colour;
+
     margin-bottom: govuk-spacing(2);
   }
 
@@ -19,15 +19,18 @@
     margin: 0;
     padding: 0;
     list-style: none;
+
     @include govuk-responsive-margin(6, "bottom");
   }
 
   .govuk-tabs__list-item {
     @include govuk-font($size: 19);
+
     margin-left: govuk-spacing(5);
 
     &::before {
       @include govuk-text-colour;
+
       content: "\2014 "; // "— "
       margin-left: - govuk-spacing(5);
       padding-right: govuk-spacing(1);
@@ -53,11 +56,10 @@
 
   // JavaScript enabled
   .js-enabled {
-
     @include govuk-media-query($from: tablet) {
-
       .govuk-tabs__list {
         @include govuk-clearfix;
+
         margin-bottom: 0;
         border-bottom: 1px solid $govuk-border-colour;
       }
@@ -68,12 +70,10 @@
 
       .govuk-tabs__list-item {
         position: relative;
-
         margin-right: govuk-spacing(1);
         margin-bottom: 0;
         margin-left: 0;
         padding: govuk-spacing(2) govuk-spacing(4);
-
         float: left;
         background-color: govuk-colour("light-grey", $legacy: "grey-4");
         text-align: center;
@@ -87,7 +87,6 @@
         $border-width: 1px;
 
         position: relative;
-
         margin-top: - govuk-spacing(1);
 
         // Compensation for border (otherwise we get a shift)
@@ -96,10 +95,8 @@
         padding-right: govuk-spacing(4) - $border-width;
         padding-bottom: govuk-spacing(3) + $border-width;
         padding-left: govuk-spacing(4) - $border-width;
-
         border: $border-width solid $govuk-border-colour;
         border-bottom: 0;
-
         background-color: $govuk-body-background-colour;
 
         .govuk-tabs__tab {
@@ -124,6 +121,7 @@
 
       .govuk-tabs__panel {
         @include govuk-responsive-margin(0, "bottom");
+
         padding: govuk-spacing(6) govuk-spacing(4);
         border: 1px solid $govuk-border-colour;
         border-top: 0;
@@ -137,6 +135,5 @@
         display: none;
       }
     }
-
   }
 }

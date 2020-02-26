@@ -22,7 +22,9 @@
 
   @if ($use-custom-function) {
     @return call(get-function($govuk-image-url-function), $filename);
-  } @else {
+  }
+
+  @else {
     @return url($govuk-images-path + $filename);
   }
 }

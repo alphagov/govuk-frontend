@@ -4,8 +4,6 @@
 
 @import "../helpers/colour";
 
-
-
 // =========================================================
 // Generic
 // =========================================================
@@ -48,7 +46,7 @@ $govuk-body-background-colour: govuk-colour("white") !default;
 /// @type Colour
 /// @access public
 
-$govuk-print-text-colour: #000000 !default;
+$govuk-print-text-colour: #000 !default;
 
 /// Secondary text colour
 ///
@@ -114,7 +112,6 @@ $govuk-input-border-colour: govuk-colour("black") !default;
 /// @access public
 
 $govuk-hover-colour: govuk-colour("mid-grey", $legacy: "grey-3");
-
 
 // =============================================================================
 // Links

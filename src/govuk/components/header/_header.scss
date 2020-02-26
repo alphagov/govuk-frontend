@@ -1,7 +1,6 @@
 @import "../../settings/all";
 @import "../../tools/all";
 @import "../../helpers/all";
-
 @import "../../helpers/typography";
 
 @include govuk-exports("govuk/component/header") {
@@ -21,7 +20,6 @@
     border-bottom: govuk-spacing(2) solid govuk-colour("white");
     color: $govuk-header-text;
     background: $govuk-header-background;
-
   }
 
   .govuk-header__container--full-width {
@@ -35,6 +33,7 @@
 
   .govuk-header__container {
     @include govuk-clearfix;
+
     position: relative;
     margin-bottom: -$govuk-header-border-width;
     padding-top: govuk-spacing(2);
@@ -63,6 +62,7 @@
 
   .govuk-header__product-name {
     @include govuk-font($size: 24, $line-height: 1);
+
     display: inline-table;
     padding-right: govuk-spacing(2);
   }
@@ -126,6 +126,7 @@
   .govuk-header__link--service-name {
     display: inline-block;
     margin-bottom: govuk-spacing(2);
+
     @include govuk-font($size: 24, $weight: bold);
   }
 
@@ -136,6 +137,7 @@
 
   .govuk-header__logo {
     @include govuk-responsive-margin(2, "bottom");
+
     padding-right: govuk-spacing(8);
 
     @include govuk-media-query ($from: desktop) {
@@ -156,6 +158,7 @@
 
   .govuk-header__menu-button {
     @include govuk-font($size: 16);
+
     display: none;
     position: absolute;
     top: govuk-spacing(4);
@@ -176,6 +179,7 @@
 
     &::after {
       @include govuk-shape-arrow($direction: down, $base: 10px, $display: inline-block);
+
       content: "";
       margin-left: govuk-spacing(1);
     }
@@ -193,6 +197,7 @@
 
   .govuk-header__navigation {
     @include govuk-responsive-margin(2, "bottom");
+
     display: block;
     margin: 0;
     padding: 0;
@@ -202,6 +207,7 @@
   .js-enabled {
     .govuk-header__menu-button {
       display: block;
+
       @include govuk-media-query ($from: desktop) {
         display: none;
       }
@@ -209,6 +215,7 @@
 
     .govuk-header__navigation {
       display: none;
+
       @include govuk-media-query ($from: desktop) {
         display: block;
       }
@@ -218,7 +225,6 @@
       display: block;
     }
   }
-
 
   .govuk-header__navigation--end {
     @include govuk-media-query ($from: desktop) {
@@ -245,6 +251,7 @@
 
     a {
       @include govuk-font($size: 16, $weight: bold);
+
       white-space: nowrap;
     }
   }
@@ -288,7 +295,7 @@
       }
 
       // Do not append link href to GOV.UK link when printing (e.g. '(/)')
-      &:after {
+      &::after {
         display: none;
       }
     }
@@ -306,6 +313,7 @@
 
     .govuk-header {
       $offset: 3px;
+
       padding-top: $offset;
     }
 
@@ -314,5 +322,4 @@
     }
     // End adjustments
   }
-
 }

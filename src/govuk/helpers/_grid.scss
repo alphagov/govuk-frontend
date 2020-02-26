@@ -49,10 +49,13 @@
 
 @mixin govuk-grid-column($width: full, $float: left, $at: tablet) {
   box-sizing: border-box;
+
   @if $at != desktop {
     width: 100%;
   }
+
   padding: 0 $govuk-gutter-half;
+
   @include govuk-media-query($from: $at) {
     width: govuk-grid-width($width);
     float: $float;

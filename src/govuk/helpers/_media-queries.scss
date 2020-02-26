@@ -2,8 +2,6 @@
 /// @group helpers
 ////
 
-
-
 // =========================================================
 // Wrangle sass-mq config...
 // =========================================================
@@ -22,6 +20,7 @@ $mq-show-breakpoints: ();
 // 'rasterize' any media queries.
 
 $mq-responsive: true;
+
 @if (variable-exists(govuk-is-ie8) and $govuk-is-ie8) {
   $mq-responsive: false;
 }
@@ -40,8 +39,6 @@ $sass-mq-already-included: false !default;
 @import "../vendor/sass-mq";
 
 $sass-mq-already-included: true;
-
-
 
 // =========================================================
 // Helpers
@@ -91,5 +88,5 @@ $sass-mq-already-included: true;
 @mixin govuk-media-query($args...) {
   @include mq($args...) {
     @content;
-  };
+  }
 }

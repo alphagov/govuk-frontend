@@ -33,7 +33,9 @@
     position: relative;
     width: 100%;
     margin-top: 0;
+
     @include govuk-responsive-margin(6, "bottom", $adjustment: $button-shadow-size); // s2
+
     padding: (govuk-spacing(2) - $govuk-border-width-form-element) govuk-spacing(2) (govuk-spacing(2) - $govuk-border-width-form-element - ($button-shadow-size / 2)); // s1
     border: $govuk-border-width-form-element solid transparent;
     border-radius: 0;
@@ -95,6 +97,7 @@
         color: $govuk-focus-text-colour;
         background-color: $govuk-focus-colour;
       }
+
       box-shadow: inset 0 0 0 1px $govuk-focus-colour;
     }
 
@@ -124,14 +127,11 @@
     &::before {
       content: "";
       display: block;
-
       position: absolute;
-
       top: -$govuk-border-width-form-element;
       right: -$govuk-border-width-form-element;
       bottom: -($govuk-border-width-form-element + $button-shadow-size);
       left: -$govuk-border-width-form-element;
-
       background: transparent;
     }
 
@@ -153,7 +153,7 @@
   .govuk-button--disabled,
   .govuk-button[disabled="disabled"],
   .govuk-button[disabled] {
-    opacity: (.5);
+    opacity: (0.5);
 
     &:hover {
       background-color: $govuk-button-colour;
@@ -167,6 +167,7 @@
     &:active {
       top: 0;
       box-shadow: 0 $button-shadow-size 0 $govuk-button-shadow-colour; // s0
+
       @include govuk-if-ie8 {
         border-bottom: $button-shadow-size solid $govuk-button-shadow-colour; // s0
       }
@@ -243,7 +244,6 @@
 
     display: inline-flex;
     min-height: auto;
-
     justify-content: center;
   }
 
@@ -253,6 +253,7 @@
     @include govuk-media-query($from: desktop) {
       margin-left: govuk-spacing(2);
     }
+
     vertical-align: middle;
     flex-shrink: 0;
     align-self: center;

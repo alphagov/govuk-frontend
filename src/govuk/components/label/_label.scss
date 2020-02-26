@@ -8,7 +8,6 @@
     @include govuk-text-colour;
 
     display: block;
-
     margin-bottom: govuk-spacing(1);
   }
 
@@ -16,16 +15,19 @@
 
   .govuk-label--xl {
     @include govuk-font($size: 48, $weight: bold);
+
     margin-bottom: govuk-spacing(3);
   }
 
   .govuk-label--l {
     @include govuk-font($size: 36, $weight: bold);
+
     margin-bottom: govuk-spacing(3);
   }
 
   .govuk-label--m {
     @include govuk-font($size: 24, $weight: bold);
+
     margin-bottom: govuk-spacing(2);
   }
 

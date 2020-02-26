@@ -1,7 +1,6 @@
 @import "../../settings/all";
 @import "../../tools/all";
 @import "../../helpers/all";
-
 @import "../error-message/error-message";
 @import "../fieldset/fieldset";
 @import "../hint/hint";
@@ -22,12 +21,9 @@
 
     display: block;
     position: relative;
-
     min-height: $govuk-radios-size;
-
     margin-bottom: govuk-spacing(2);
     padding-left: $govuk-radios-size;
-
     clear: left;
   }
 
@@ -45,15 +41,12 @@
     // elements there.
     @include govuk-not-ie8 {
       position: absolute;
-
       z-index: 1;
       top: $input-offset * -1;
       left: $input-offset * -1;
-
       width: $govuk-touch-target-size;
       height: $govuk-touch-target-size;
       margin: 0;
-
       opacity: 0;
     }
 
@@ -86,10 +79,8 @@
     position: absolute;
     top: 0;
     left: 0;
-
     width: $govuk-radios-size;
     height: $govuk-radios-size;
-
     border: $govuk-border-width-form-element solid currentColor;
     border-radius: 50%;
     background: transparent;
@@ -101,14 +92,11 @@
   // 'filled' even when colours are overridden in the browser.
   .govuk-radios__label::after {
     content: "";
-
     position: absolute;
     top: govuk-spacing(2);
     left: govuk-spacing(2);
-
     width: 0;
     height: 0;
-
     border: govuk-spacing(2) solid currentColor;
     border-radius: 50%;
     opacity: 0;
@@ -139,7 +127,7 @@
   }
 
   .govuk-radios__input:disabled + .govuk-radios__label {
-    opacity: .5;
+    opacity: 0.5;
   }
 
   // =========================================================
@@ -172,8 +160,10 @@
 
   .govuk-radios__divider {
     $govuk-divider-size: $govuk-radios-size !default;
+
     @include govuk-font($size: 19);
     @include govuk-text-colour;
+
     width: $govuk-divider-size;
     margin-bottom: govuk-spacing(2);
     text-align: center;
@@ -195,6 +185,7 @@
 
   .govuk-radios__conditional {
     @include govuk-responsive-margin(4, "bottom");
+
     margin-left: $conditional-margin-left;
     padding-left: $conditional-padding-left;
     border-left: $conditional-border-width solid $govuk-border-colour;
@@ -219,6 +210,7 @@
 
     .govuk-radios__item {
       @include govuk-clearfix;
+
       min-height: 0;
       margin-bottom: 0;
       padding-left: $label-offset;
@@ -295,6 +287,7 @@
     // Align conditional reveals with small radios
     .govuk-radios__conditional {
       $margin-left: ($govuk-small-radios-size / 2) - ($conditional-border-width / 2);
+
       margin-left: $margin-left;
       padding-left: $label-offset - ($margin-left + $conditional-border-width);
       clear: both;
@@ -322,8 +315,9 @@
     // and another that then applies the hover state [2].
     .govuk-radios__item:hover .govuk-radios__input:focus + .govuk-radios__label::before {
       // sass-lint:disable indentation
-      box-shadow: 0 0 0 $govuk-radios-focus-width $govuk-focus-colour, // 1
-                  0 0 0 $govuk-hover-width        $govuk-hover-colour; // 2
+      box-shadow:
+        0 0 0 $govuk-radios-focus-width $govuk-focus-colour, 
+              $govuk-hover-width        $govuk-hover-colour; // 2
     }
 
     // For devices that explicitly don't support hover, don't provide a hover

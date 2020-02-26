@@ -1,7 +1,6 @@
 @import "../../settings/all";
 @import "../../tools/all";
 @import "../../helpers/all";
-
 @import "../../helpers/typography";
 
 @include govuk-exports("govuk/component/footer") {
@@ -54,7 +53,9 @@
       &:active {
         color: $govuk-footer-link-hover;
       }
-    } @else {
+    }
+
+    @else {
       &:link,
       &:visited,
       &:hover,
@@ -79,7 +80,9 @@
 
   .govuk-footer__section-break {
     margin: 0; // Reset `<hr>` default margins
+
     @include govuk-responsive-margin(8, "bottom");
+
     border: 0; // Reset `<hr>` default borders
     border-bottom: 1px solid $govuk-footer-border;
   }
@@ -101,6 +104,7 @@
 
   .govuk-footer__meta-item--grow {
     flex: 1; // Support: Flexbox
+
     @include govuk-media-query ($until: tablet) {
       flex-basis: 320px; // Support: Flexbox
     }
@@ -109,9 +113,11 @@
   .govuk-footer__licence-logo {
     display: inline-block;
     margin-right: govuk-spacing(2);
+
     @include govuk-media-query ($until: desktop) {
       margin-bottom: govuk-spacing(3);
     }
+
     vertical-align: top;
   }
 
@@ -124,9 +130,11 @@
     min-width: $govuk-footer-crest-image-width;
     padding-top: ($govuk-footer-crest-image-height + govuk-spacing(2));
     background-image: govuk-image-url("govuk-crest.png");
+
     @include govuk-device-pixel-ratio {
       background-image: govuk-image-url("govuk-crest-2x.png");
     }
+
     background-repeat: no-repeat;
     background-position: 50% 0%;
     background-size: $govuk-footer-crest-image-width $govuk-footer-crest-image-height;
@@ -153,10 +161,13 @@
 
   .govuk-footer__heading {
     @include govuk-responsive-margin(7, "bottom");
+
     padding-bottom: govuk-spacing(4);
+
     @include govuk-media-query ($until: tablet) {
       padding-bottom: govuk-spacing(2);
     }
+
     border-bottom: 1px solid $govuk-footer-border;
   }
 
@@ -176,6 +187,7 @@
     // Ensure columns take up equal width (typically one-half:one-half)
     flex-grow: 1; // Support: Flexbox
     flex-shrink: 1; // Support: Flexbox
+
     @include govuk-media-query ($until: desktop) {
       // Make sure columns do not drop below 200px in width
       // Will typically result in wrapping, and end up in a single column on smaller screens.

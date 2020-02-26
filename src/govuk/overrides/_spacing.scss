@@ -42,7 +42,6 @@ $_spacing-directions: (
   @each $scale-point, $scale-map in $govuk-spacing-responsive-scale {
 
     .govuk-\!-#{$property}-#{$scale-point} {
-
       @include _govuk-responsive-spacing($scale-point, $property, "all", true);
     }
 

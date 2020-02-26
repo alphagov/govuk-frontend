@@ -19,6 +19,7 @@
   @include govuk-not-ie8 {
     outline: $govuk-focus-width solid transparent;
   }
+
   color: $govuk-focus-text-colour;
   background-color: $govuk-focus-colour;
   box-shadow: 0 -2px $govuk-focus-colour, 0 4px $govuk-focus-text-colour;
