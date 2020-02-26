@@ -70,6 +70,6 @@ and override all other layers. Rules in this layer will generally be marked as
 Class names within this layer use an additional prefix `-!-`, for example
 `.govuk-!-font-width-regular`.
 
-
+If an override is applied conditionally the class name will indicate that at the end, for example: `.govuk-!-display-none-print`.
 
 [ITCSS]: (http://www.creativebloq.com/web-design/manage-large-css-projects-itcss-101517528)
