@@ -51,6 +51,7 @@
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
     "gulp-sass-lint": "^1.4.0",
+    "gulp-stylelint": "^13.0.0",
     "gulp-task-listing": "^1.1.0",
     "gulp-to-markdown": "^1.0.0",
     "gulp-uglify": "^3.0.2",
@@ -77,6 +78,9 @@
     "sassdoc": "^2.7.0",
     "shuffle-seed": "^1.1.6",
     "standard": "^13.1.0",
+    "stylelint": "^13.2.0",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-scss": "^3.14.2",
     "vinyl-paths": "^3.0.1",
     "yargs": "^15.0.2"
   },
@@ -93,7 +97,20 @@
     "ie 8-11",
     "iOS >= 9"
   ],
-  "sasslintConfig": "config/.sass-lint.yml",
+  "stylelint": {
+    "ignoreFiles": [
+      "src/govuk/vendor/**/*.scss"
+    ],
+    "plugins": [
+      "stylelint-scss"
+    ],
+    "extends": "stylelint-config-standard",
+    "rules": {
+      "no-descending-specificity": null,
+      "at-rule-no-unknown": null,
+      "scss/at-rule-no-unknown": true
+    }
+  },
   "standard": {
     "globals": [
       "page",
