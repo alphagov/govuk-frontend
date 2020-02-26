@@ -316,8 +316,8 @@
     .govuk-radios__item:hover .govuk-radios__input:focus + .govuk-radios__label::before {
       // sass-lint:disable indentation
       box-shadow:
-        0 0 0 $govuk-radios-focus-width $govuk-focus-colour, 
-              $govuk-hover-width        $govuk-hover-colour; // 2
+        0 0 0 $govuk-radios-focus-width $govuk-focus-colour,
+        $govuk-hover-width $govuk-hover-colour; // 2
     }
 
     // For devices that explicitly don't support hover, don't provide a hover

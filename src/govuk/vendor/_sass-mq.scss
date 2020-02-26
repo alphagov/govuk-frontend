@@ -174,12 +174,12 @@ $mq-media-type: all !default;
 ///  }
 @mixin mq(
   $from: false,
-    $until: false,
-    $and: false,
-    $media-type: $mq-media-type,
-    $breakpoints: $mq-breakpoints,
-    $responsive: $mq-responsive,
-    $static-breakpoint: $mq-static-breakpoint
+  $until: false,
+  $and: false,
+  $media-type: $mq-media-type,
+  $breakpoints: $mq-breakpoints,
+  $responsive: $mq-responsive,
+  $static-breakpoint: $mq-static-breakpoint
 ) {
   $min-width: 0;
   $max-width: 0;
@@ -216,11 +216,11 @@ $mq-media-type: all !default;
     // Output only rules that start at or span our target width
     @if (
       $and == false
-            and $min-width <= $target-width
-            and (
-                $until == false or $max-width >= $target-width
-            )
-            and $media-type != 'print'
+      and $min-width <= $target-width
+      and (
+          $until == false or $max-width >= $target-width
+      )
+      and $media-type != 'print'
         ) {
       @content;
     }

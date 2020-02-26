@@ -273,8 +273,8 @@
     .govuk-checkboxes__item:hover .govuk-checkboxes__input:focus + .govuk-checkboxes__label::before {
       // sass-lint:disable indentation
       box-shadow:
-        0 0 0 $govuk-focus-width $govuk-focus-colour, 
-              $govuk-hover-width $govuk-hover-colour; // 2
+        0 0 0 $govuk-focus-width $govuk-focus-colour,
+        $govuk-hover-width $govuk-hover-colour; // 2
     }
 
     // For devices that explicitly don't support hover, don't provide a hover

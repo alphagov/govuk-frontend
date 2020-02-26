@@ -12,7 +12,8 @@
 
   @each $width in map-keys($govuk-grid-widths) {
     .govuk-grid-column-#{$width} {
-      @include govuk-grid-column($width); }
+      @include govuk-grid-column($width);
+    }
   }
 
   // These *must* be defined in a separate loop as they have the same
@@ -20,6 +21,7 @@
   // them in the outputted CSS
   @each $width in map-keys($govuk-grid-widths) {
     .govuk-grid-column-#{$width}-from-desktop {
-      @include govuk-grid-column($width, $at: desktop); }
+      @include govuk-grid-column($width, $at: desktop);
+    }
   }
 }
