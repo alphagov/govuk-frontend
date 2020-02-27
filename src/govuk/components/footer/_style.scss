@@ -1,5 +1,3 @@
-@import "../../helpers/typography";
-
 @include govuk-exports("govuk/component/footer") {
 
   $govuk-footer-background: $govuk-canvas-background-colour;
