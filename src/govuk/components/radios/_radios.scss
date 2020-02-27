@@ -2,4 +2,9 @@
 @import "../../tools/all";
 @import "../../helpers/all";
 
+@import "../error-message/error-message";
+@import "../fieldset/fieldset";
+@import "../hint/hint";
+@import "../label/label";
+
 @import "./style";

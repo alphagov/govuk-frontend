@@ -1,7 +1,3 @@
-@import "../error-message/error-message";
-@import "../hint/hint";
-@import "../label/label";
-
 @include govuk-exports("govuk/component/file-upload") {
   $component-padding: govuk-spacing(1);
 

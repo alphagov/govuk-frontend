@@ -1,5 +1,3 @@
-@import "../tag/tag";
-
 @include govuk-exports("govuk/component/phase-banner") {
   .govuk-phase-banner {
     padding-top: govuk-spacing(2);

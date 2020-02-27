@@ -1,7 +1,3 @@
-@import "../error-message/error-message";
-@import "../hint/hint";
-@import "../label/label";
-
 @include govuk-exports("govuk/component/character-count") {
   .govuk-character-count {
     @include govuk-responsive-margin(6, "bottom");

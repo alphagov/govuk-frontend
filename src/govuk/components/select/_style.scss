@@ -1,7 +1,3 @@
-@import "../error-message/error-message";
-@import "../hint/hint";
-@import "../label/label";
-
 @include govuk-exports("govuk/component/select") {
   .govuk-select {
     @include govuk-font($size: 19, $line-height: 1.25);
