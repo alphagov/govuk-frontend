@@ -14,8 +14,8 @@
     {
         "name": "href",
         "type": "string",
-        "required": true,
-        "description": "The value of the skip link href attribute. Defaults to"
+        "required": false,
+        "description": "The value of the skip link’s `href` attribute. Defaults to `#content` if you do not provide a value."
     },
     {
         "name": "classes",
