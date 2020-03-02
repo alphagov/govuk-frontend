@@ -107,4 +107,17 @@
     @include govuk-link-common;
     @include govuk-link-style-text;
   }
+
+  .govuk-breadcrumbs--collapse-on-mobile {
+    @include govuk-media-query($until: tablet) {
+      .govuk-breadcrumbs__list-item {
+        display: none;
+
+        &:first-child,
+        &:last-child {
+          display: inline-block;
+        }
+      }
+    }
+  }
 }

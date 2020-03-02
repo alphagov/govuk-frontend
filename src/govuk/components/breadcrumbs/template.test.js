@@ -144,6 +144,21 @@ describe('Breadcrumbs', () => {
       const $anchor = $('.govuk-breadcrumbs__list-item a')
       expect($anchor.html()).toEqual('<em>Section 1</em>')
     })
+
+    it('renders item as collapse on mobile if specified', () => {
+      const $ = render('breadcrumbs', {
+        collapseOnMobile: true,
+        items: [
+          {
+            html: '<em>Section 1</em>',
+            href: '/section'
+          }
+        ]
+      })
+
+      const $component = $('.govuk-breadcrumbs')
+      expect($component.hasClass('govuk-breadcrumbs--collapse-on-mobile')).toBeTruthy()
+    })
   })
 
   describe('default example', () => {
