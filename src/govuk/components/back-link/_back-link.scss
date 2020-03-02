@@ -89,6 +89,15 @@
     }
   }
 
+  .govuk-back-link:after {
+    content: "";
+    position: absolute;
+    top: -14px;
+    right: 0;
+    bottom: -14px;
+    left: 0;
+  }
+
   @if $govuk-use-legacy-font {
     // Begin adjustments for font baseline offset
     // These should be removed when legacy font support is dropped
