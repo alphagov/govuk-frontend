@@ -28,19 +28,13 @@
     padding-left: 14px;
   }
 
-  // Only add a custom underline if the component is linkable
+  // Only underline if the component is linkable
   .govuk-back-link[href] {
-    // Use border-bottom rather than text-decoration so that the arrow is
-    // underlined as well.
-    border-bottom: 1px solid govuk-colour("black");
-
-    // Underline is provided by a bottom border
-    text-decoration: none;
+    text-decoration: underline;
 
     // When the back link is focused, hide the bottom link border as the
     // focus styles has a bottom border.
     &:focus {
-      border-bottom-color: transparent;
       text-decoration: none;
 
       &:before {
