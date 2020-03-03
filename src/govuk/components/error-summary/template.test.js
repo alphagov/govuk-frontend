@@ -42,7 +42,7 @@ describe('Error-summary', () => {
     const $ = render('error-summary', examples.default)
     const summaryTitle = $('.govuk-error-summary__title').text().trim()
 
-    expect(summaryTitle).toEqual('Message to alert the user to a problem goes here')
+    expect(summaryTitle).toEqual('There is a problem')
   })
 
   it('allows title text to be passed whilst escaping HTML entities', () => {
@@ -64,10 +64,12 @@ describe('Error-summary', () => {
   })
 
   it('renders description text', () => {
-    const $ = render('error-summary', examples.default)
+    const $ = render('error-summary', {
+      descriptionText: 'Lorem ipsum'
+    })
     const summaryDescription = $('.govuk-error-summary__body p').text().trim()
 
-    expect(summaryDescription).toEqual('Optional description of the errors and how to correct them')
+    expect(summaryDescription).toEqual('Lorem ipsum')
   })
 
   it('allows description text to be passed whilst escaping HTML entities', () => {
@@ -154,21 +156,21 @@ describe('Error-summary', () => {
     const $ = render('error-summary', examples.default)
     const errorItemText = $('.govuk-error-summary .govuk-error-summary__list li:first-child').text().trim()
 
-    expect(errorItemText).toEqual('Descriptive link to the question with an error')
+    expect(errorItemText).toEqual('The date your passport was issued must be in the past')
   })
 
   it('allows error item HTML to be passed un-escaped', () => {
     const $ = render('error-summary', {
       errorList: [
         {
-          html: 'Descriptive link to the <b>question</b> with an error'
+          html: 'The date your passport was issued <b>must</b> be in the past'
         }
       ]
     })
 
     const errorItemText = $('.govuk-error-summary .govuk-error-summary__list li').html().trim()
 
-    expect(errorItemText).toEqual('Descriptive link to the <b>question</b> with an error')
+    expect(errorItemText).toEqual('The date your passport was issued <b>must</b> be in the past')
   })
 
   it('allows error item text to be passed whilst escaping HTML entities', () => {
