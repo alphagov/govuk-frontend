@@ -42,7 +42,7 @@ Your component will not use the right font or images until you've added GOV.UK F
 
 2. Run your application, then use [the Fonts tab in Firefox Page Inspector](https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector/How_to/Edit_fonts#The_Fonts_tab) to check the accordion is using the GDS Transport font.
 
-In your live application, we recommend [routing requests to `node-modules`](/docs/installation/importing-css-assets-and-javascript.md#fonts-and-image-assets) instead of copying files.
+In your live application, we recommend [routing requests to `node-modules`](/docs/installation/importing-css-assets-and-javascript.md#font-and-image-assets) instead of copying files.
 
 ## Get the JavaScript working
 
