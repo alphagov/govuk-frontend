@@ -8,9 +8,9 @@
 
 #### Use colours with the tag component
 
-You can now [use colour with tags](https://design-system.service.gov.uk//tag/#using-colour-with-tags) to help distinguish between different tags - or to help draw the user’s attention to a tag if it’s especially important.
+You can now [use colour with tags](https://design-system.service.gov.uk/components/tag/#using-colour-with-tags) to help distinguish between different tags - or to help draw the user’s attention to a tag if it’s especially important.
 
-This also means you should replace the `.govuk-tag--inactive` class with the `.govuk-tag--grey` class. `.govuk-tag--inactive` is now deprecrated, and it will be removed in a future release.
+This also means you should replace the `.govuk-tag--inactive` class with the `.govuk-tag--grey` class. `.govuk-tag--inactive` is now deprecated, and it will be removed in a future release.
 
 [Pull request #1711: Additional Tag modifier classes for different colours](https://github.com/alphagov/govuk-frontend/pull/1711).
 
@@ -22,7 +22,7 @@ You can now hide elements when users print a page, using the new `govuk-!-displa
 
 #### The `iff` Sass function is now deprecated
 
-You should no longer use the [`iff` Sass function](http://govuk-frontend-review.herokuapp.com/docs/#tools-function-iff). The function is now deprecated, and it will be removed in a future release.
+You should no longer use the `iff` Sass function. The function is now deprecated, and it will be removed in a future release.
 
 [Pull request #1742: Deprecate iff function](https://github.com/alphagov/govuk-frontend/pull/1742).
 
