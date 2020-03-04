@@ -14,25 +14,25 @@
 /// @access public
 
 @mixin govuk-visually-hidden($important: true) {
-  position: absolute iff($important, !important);
+  position: absolute if($important, !important, null);
 
-  width: 1px iff($important, !important);
-  height: 1px iff($important, !important);
+  width: 1px if($important, !important, null);
+  height: 1px if($important, !important, null);
   // If margin is set to a negative value it can cause text to be announced in
   // the wrong order in VoiceOver for OSX
-  margin: 0 iff($important, !important);
-  padding: 0 iff($important, !important);
+  margin: 0 if($important, !important, null);
+  padding: 0 if($important, !important, null);
 
-  overflow: hidden iff($important, !important);
-  clip: rect(0 0 0 0) iff($important, !important);
-  clip-path: inset(50%) iff($important, !important);
+  overflow: hidden if($important, !important, null);
+  clip: rect(0 0 0 0) if($important, !important, null);
+  clip-path: inset(50%) if($important, !important, null);
 
-  border: 0 iff($important, !important);
+  border: 0 if($important, !important, null);
 
   // For long content, line feeds are not interpreted as spaces and small width
   // causes content to wrap 1 word per line:
   // https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
-  white-space: nowrap iff($important, !important);
+  white-space: nowrap if($important, !important, null);
 }
 
 /// Hide an element visually, but have it available for screen readers whilst
@@ -47,35 +47,35 @@
 /// @access public
 
 @mixin govuk-visually-hidden-focusable($important: true) {
-  position: absolute iff($important, !important);
+  position: absolute if($important, !important, null);
 
-  width: 1px iff($important, !important);
-  height: 1px iff($important, !important);
+  width: 1px if($important, !important, null);
+  height: 1px if($important, !important, null);
   // If margin is set to a negative value it can cause text to be announced in
   // the wrong order in VoiceOver for OSX
-  margin: 0 iff($important, !important);
+  margin: 0 if($important, !important, null);
 
-  overflow: hidden iff($important, !important);
-  clip: rect(0 0 0 0) iff($important, !important);
-  clip-path: inset(50%) iff($important, !important);
+  overflow: hidden if($important, !important, null);
+  clip: rect(0 0 0 0) if($important, !important, null);
+  clip-path: inset(50%) if($important, !important, null);
 
   // For long content, line feeds are not interpreted as spaces and small width
   // causes content to wrap 1 word per line:
   // https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
-  white-space: nowrap iff($important, !important);
+  white-space: nowrap if($important, !important, null);
 
   &:active,
   &:focus {
-    position: static iff($important, !important);
+    position: static if($important, !important, null);
 
-    width: auto iff($important, !important);
-    height: auto iff($important, !important);
-    margin: inherit iff($important, !important);
+    width: auto if($important, !important, null);
+    height: auto if($important, !important, null);
+    margin: inherit if($important, !important, null);
 
-    overflow: visible iff($important, !important);
-    clip: auto iff($important, !important);
-    clip-path: none iff($important, !important);
+    overflow: visible if($important, !important, null);
+    clip: auto if($important, !important, null);
+    clip-path: none if($important, !important, null);
 
-    white-space: inherit iff($important, !important);
+    white-space: inherit if($important, !important, null);
   }
 }
