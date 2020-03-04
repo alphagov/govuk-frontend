@@ -10,6 +10,8 @@
 
 You can now [use colour with tags](https://design-system.service.gov.uk//tag/#using-colour-with-tags) to help distinguish between different tags - or to help draw the user’s attention to a tag if it’s especially important.
 
+This also means you should replace the `.govuk-tag--inactive` class with the `.govuk-tag--grey` class. `.govuk-tag--inactive` is now deprecrated, and it will be removed in a future release.
+
 [Pull request #1711: Additional Tag modifier classes for different colours](https://github.com/alphagov/govuk-frontend/pull/1711).
 
 #### Hide elements when users print a page
