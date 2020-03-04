@@ -2,19 +2,33 @@
 
 ## Unreleased
 
+## 3.6.0 (Feature release)
+
 ### New features
 
-#### Add display override for hiding content when printing
+#### Use colours with the tag component
 
-Introduce a CSS class that can be used to hide any given element from the print view: `govuk-!-display-none-print`
+You can now [use colour with tags](https://design-system.service.gov.uk//tag/#using-colour-with-tags) to help distinguish between different tags - or to help draw the user’s attention to a tag if it’s especially important.
+
+[Pull request #1711: Additional Tag modifier classes for different colours](https://github.com/alphagov/govuk-frontend/pull/1711).
+
+#### Hide elements when users print a page
+
+You can now hide elements when users print a page, using the new `govuk-!-display-none-print` class.
 
 [Pull request #1723: Add display override for hiding content when printing](https://github.com/alphagov/govuk-frontend/pull/1723).
 
+#### The `iff` Sass function is now deprecated
+
+You should no longer use the [`iff` Sass function](http://govuk-frontend-review.herokuapp.com/docs/#tools-function-iff). The function is now deprecated, and it will be removed in a future release.
+
+[Pull request #1742: Deprecate iff function](https://github.com/alphagov/govuk-frontend/pull/1742).
+
 ### Fixes
 
-- [Pull request #1746: Use generic div element for tabspanel](https://github.com/alphagov/govuk-frontend/pull/1746).
-- [Pull request #1745: Update vendor polyfills to match upstream](https://github.com/alphagov/govuk-frontend/pull/1745).
 - [Pull request #1724: Fix fallback logo being detected by Google Chrome's image description feature](https://github.com/alphagov/govuk-frontend/pull/1724).
+- [Pull request #1745: Update vendor polyfills to match upstream](https://github.com/alphagov/govuk-frontend/pull/1745).
+- [Pull request #1746: Use generic div element for tabspanel](https://github.com/alphagov/govuk-frontend/pull/1746).
 
 ## 3.5.0 (Feature release)
 
