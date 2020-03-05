@@ -52,13 +52,36 @@ accessibilityCriteria: |
 examples:
 - name: default
   data:
-    titleText: Message to alert the user to a problem goes here
-    descriptionText: Optional description of the errors and how to correct them
-    classes: optional-extra-class
+    titleText: There is a problem
     errorList:
       -
-        text: Descriptive link to the question with an error
+        text: The date your passport was issued must be in the past
         href: '#example-error-1'
       -
-        text: Descriptive link to the question with an error
+        text: Enter a postcode, like AA1 1AA
+        href: '#example-error-2'
+- name: without links
+  data:
+    titleText: There is a problem
+    errorList:
+      -
+        text: Invalid username or password
+- name: mixed with and without links
+  data:
+    titleText: There is a problem
+    errorList:
+      -
+        text: Invalid username or password
+      -
+        text: Agree to the terms of service to log in
+        href: '#example-error-1'
+- name: with everything
+  data:
+    titleText: There is a problem
+    descriptionText: Please fix the errors below.
+    errorList:
+      -
+        text: Invalid username or password
+      -
+        text: Agree to the terms of service to log in
         href: '#example-error-1'
