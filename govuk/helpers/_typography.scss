@@ -53,7 +53,7 @@
 /// @access public
 
 @mixin govuk-typography-weight-regular($important: false) {
-  font-weight: $govuk-font-weight-regular iff($important, !important);
+  font-weight: $govuk-font-weight-regular if($important, !important, null);
 }
 
 /// Bold font weight helper
@@ -63,7 +63,7 @@
 /// @access public
 
 @mixin govuk-typography-weight-bold($important: false) {
-  font-weight: $govuk-font-weight-bold iff($important, !important);
+  font-weight: $govuk-font-weight-bold if($important, !important, null);
 }
 
 /// Convert line-heights specified in pixels into a relative value, unless
@@ -137,9 +137,9 @@
     // Mark rules as !important if $important is true - this will result in
     // these variables becoming strings, so this needs to happen *after* they
     // are used in calculations
-    $font-size: $font-size iff($important, !important);
-    $font-size-rem: $font-size-rem iff($important, !important);
-    $line-height: $line-height iff($important, !important);
+    $font-size: $font-size if($important, !important, null);
+    $font-size-rem: $font-size-rem if($important, !important, null);
+    $line-height: $line-height if($important, !important, null);
 
     @if $breakpoint == null {
       font-size: $font-size; // sass-lint:disable no-duplicate-properties
