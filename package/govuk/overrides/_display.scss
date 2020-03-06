@@ -19,4 +19,10 @@
   .govuk-\!-display-none {
     display: none !important;
   }
+
+  @include govuk-media-query($media-type: print) {
+    .govuk-\!-display-none-print {
+      display: none !important;
+    }
+  }
 }
