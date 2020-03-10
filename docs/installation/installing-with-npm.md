@@ -31,4 +31,4 @@ npm install govuk-frontend --save
 
 When the installation finishes, the `govuk-frontend` package will be inside your `node_modules` folder.
 
-You can now [get started by adding one GOV.UK Frontend component](/docs/installation/get-started.md).
+You should now get started by [getting the CSS, assets and JavaScript working](/docs/installation/get-started.md) with one GOV.UK Frontend component.
