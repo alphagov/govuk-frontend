@@ -76,7 +76,9 @@
     }
 
     &:hover {
-      text-decoration: underline;
+      @include govuk-hovered-text;
+      color: $govuk-header-text;
+      box-shadow: 0 -2px transparent, 0 4px $govuk-header-text;
     }
 
     &:focus {
@@ -255,6 +257,10 @@
       &:hover,
       &:visited {
         color: $govuk-header-link-active;
+      }
+
+      &:hover {
+        color: $govuk-header-text;
       }
 
       // When focussed, the text colour needs to be darker to ensure that colour

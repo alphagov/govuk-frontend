@@ -14,6 +14,11 @@
   &:focus {
     @include govuk-focused-text;
   }
+
+  &:hover:not(:focus) {
+    @include govuk-hovered-text;
+  }
+
 }
 
 /// Default link style mixin
@@ -88,6 +93,11 @@
   &:hover,
   &:active {
     color: $govuk-secondary-text-colour;
+  }
+
+  &:hover:not(:focus) {
+    color: $govuk-secondary-text-colour;
+    box-shadow: 0 -2px transparent, 0 4px $govuk-secondary-text-colour;
   }
 
   // When focussed, the text colour needs to be darker to ensure that colour

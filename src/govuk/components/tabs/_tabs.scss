@@ -40,6 +40,12 @@
     display: inline-block;
     margin-bottom: govuk-spacing(2);
 
+    &:hover {
+      @include govuk-hovered-text;
+      color: $govuk-text-colour;
+      box-shadow: 0 -2px transparent, 0 4px $govuk-text-colour;
+    }
+
     // Focus state for mobile and when JavaScript is disabled
     // It is removed for JS-enabled desktop styles
     &:focus {

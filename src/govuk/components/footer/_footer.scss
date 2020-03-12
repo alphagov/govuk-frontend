@@ -63,6 +63,12 @@
       }
     }
 
+    &:hover {
+      @include govuk-hovered-text;
+      color: govuk-colour("black");
+      box-shadow: 0 -2px transparent, 0 4px govuk-colour("black");
+    }
+
     &:focus {
       @include govuk-focused-text;
     }

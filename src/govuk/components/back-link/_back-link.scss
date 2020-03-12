@@ -33,6 +33,12 @@
     &:focus {
       border-bottom-color: transparent;
     }
+
+    &:hover {
+      border-bottom: 1px solid transparent;
+      color: govuk-colour("black");
+      box-shadow: 0 -2px transparent, 0 4px govuk-colour("black");
+    }
   }
 
   // Prepend left pointing arrow
