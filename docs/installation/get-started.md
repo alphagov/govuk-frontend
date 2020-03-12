@@ -39,7 +39,9 @@ Paste the HTML into a page or template in your application.
       </head>
     ```
 
-3. Run your application and check that the accordion renders using styles that start with `govuk-`.
+3. Run your application and check that the accordion displays correctly.
+
+The accordion will use a generic font until you get the font and images working, and will not be interactive until you get the JavaScript working.
 
 There are also different ways you can [import GOV.UK Frontend's CSS](/docs/installation/importing-css-assets-and-javascript.md#css).
 
