@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Fixes
+
+- [Pull request #1765: Import textarea from character count](https://github.com/alphagov/govuk-frontend/pull/1765).
+
 ## 3.6.0 (Feature release)
 
 ### New features
