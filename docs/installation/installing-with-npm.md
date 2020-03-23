@@ -21,7 +21,7 @@
 
 You can also [install Nunjucks v3.0.0 or later](https://www.npmjs.com/package/nunjucks) if you want to [use GOV.UK Frontend's Nunjucks macros](https://design-system.service.gov.uk/get-started/production/#using-nunjucks-macros).
 
-## Install
+## Install GOV.UK Frontend
 
 Run:
 
@@ -29,6 +29,6 @@ Run:
 npm install govuk-frontend --save
 ```
 
-When the installation finishes, the `govuk-frontend` package will be inside your `node_modules` folder.
+When the installation finishes, the `govuk-frontend` package will be in your `node_modules` folder.
 
 You should now get started by [getting the CSS, assets and JavaScript working](/docs/installation/get-started.md) with one GOV.UK Frontend component.

@@ -81,7 +81,7 @@ Set the `$govuk-assets-path` variable if your `font` and `image` folders have th
 $govuk-assets-path: '/<YOUR-ASSETS-FOLDER>';
 ```
 
-Set the the `$govuk-images-path` and `$govuk-fonts-path` variables if your `font` and `image` folders have different parent folders. For example:
+Set the `$govuk-images-path` and `$govuk-fonts-path` variables if your `font` and `image` folders have different parent folders. For example:
 
 ```SCSS
 $govuk-images-path: "/<YOUR-IMAGES-FOLDER>/";

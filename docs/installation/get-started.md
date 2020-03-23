@@ -1,8 +1,8 @@
 # Get started
 
-Get one GOV.UK Frontend component working in your application, so you can test everything works correctly before you add more components or styles.
+Get one GOV.UK Frontend component working in your application, so you can test everything works before you add more components or styles.
 
-You will need to do the following.
+You will need to do all the following steps to get your component working.
 
 1. Install GOV.UK Frontend.
 2. Add the HTML for a component to your application.
@@ -49,7 +49,7 @@ There are also different ways you can [import GOV.UK Frontend's CSS](/docs/insta
 
 Your component will not use the right font or images until you've added GOV.UK Frontend's assets to your application.
 
-1. Copy the:
+1. Copy the following 2 folders:
 
     - `/node_modules/govuk-frontend/govuk/assets/images` folder to `<YOUR-APP>/assets/images`
     - `/node_modules/govuk-frontend/govuk/assets/fonts` folder to `<YOUR-APP>/assets/fonts`
@@ -80,7 +80,7 @@ In your live application, we recommend [using an automated task or your build pi
     </body>
     ```
 
-4. Run your application and check you can show and hide sections of the accordion by selecting the buttons.
+4. Run your application and check it works the same way as the Design System accordion example, by selecting the buttons and checking the accordion shows and hides sections.
 
 In your live application:
 
