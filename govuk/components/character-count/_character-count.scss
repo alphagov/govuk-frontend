@@ -5,6 +5,7 @@
 @import "../error-message/error-message";
 @import "../hint/hint";
 @import "../label/label";
+@import "../textarea/textarea";
 
 @include govuk-exports("govuk/component/character-count") {
   .govuk-character-count {

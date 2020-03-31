@@ -48,11 +48,23 @@
     }
   }
 
+  %govuk-list--spaced > li {
+    margin-bottom: govuk-spacing(3);
+
+    &:last-child {
+      margin-bottom: govuk-spacing(0);
+    }
+  }
+
   .govuk-list--bullet {
     @extend %govuk-list--bullet;
   }
 
   .govuk-list--number {
     @extend %govuk-list--number;
+  }
+
+  .govuk-list--spaced {
+    @extend %govuk-list--spaced;
   }
 }
