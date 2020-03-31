@@ -6,6 +6,6 @@ const configPaths = require('../../config/paths.json')
 // When a file is changed, re-run the build task.
 // ---------------------------------------
 gulp.task('watch', () => Promise.all([
-  gulp.watch([configPaths.src + '**/**/*.scss', configPaths.app + 'assets/scss/**/*.scss'], gulp.parallel('styles', 'sassdoc')),
+  gulp.watch([configPaths.src + '**/**/*.scss', configPaths.app + 'assets/scss/**/*.scss'], gulp.series('styles')),
   gulp.watch([configPaths.src + '**/**/*.js'], gulp.series('scripts'))
 ]))

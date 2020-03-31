@@ -14,7 +14,6 @@ require('./tasks/gulp/watch.js')
 // new tasks
 require('./tasks/gulp/copy-to-destination.js')
 require('./tasks/gulp/asset-version.js')
-require('./tasks/gulp/sassdoc.js')
 
 // Umbrella scripts tasks for preview ---
 // Runs js lint and compilation
@@ -71,7 +70,6 @@ gulp.task('serve', gulp.parallel(
 gulp.task('dev', gulp.series(
   'clean',
   'copy-assets',
-  'sassdoc',
   'serve'
 ))
 
