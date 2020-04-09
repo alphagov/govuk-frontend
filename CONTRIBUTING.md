@@ -59,7 +59,7 @@ See our [coding standards for components](/docs/contributing/coding-standards/co
 See [testing](/docs/contributing/testing.md).
 
 ## Supported browsers
-Your contribution needs to work with certain browsers as set out in [README](README.md#browser-and-assistive-technology-support). See also [supporting Internet Explorer 8](/docs/installation/supporting-internet-explorer-8.md).
+Your contribution needs to work with certain browsers as set out in [README](README.md#browser-and-assistive-technology-support). See also [supporting Internet Explorer 8](https://frontend.design-system.service.gov.uk/supporting-ie8/).
 
 ## Supported assistive technology
 Your contribution needs to work with certain assistive technology as set out in [README](README.md#browser-and-assistive-technology-support).

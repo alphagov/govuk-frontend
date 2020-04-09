@@ -21,12 +21,12 @@ Once installed, you will be able to use the code from the examples in the
 ### 1. Install with npm (recommended)
 
 We recommend [installing GOV.UK Frontend using node package manager
-(npm)](https://github.com/alphagov/govuk-frontend/blob/master/docs/installation/installing-with-npm.md).
+(npm)](https://frontend.design-system.service.gov.uk/installing-with-npm/).
 
 ### 2. Install by using compiled files
 
 You can also [download the compiled and minified assets (CSS, JavaScript) from
-GitHub](https://github.com/alphagov/govuk-frontend/blob/master/docs/installation/installing-from-dist.md).
+GitHub](https://frontend.design-system.service.gov.uk/installing-from-dist/).
 
 ## Importing styles
 
@@ -40,7 +40,7 @@ To import add the below to your Sass file:
   @import "node_modules/govuk-frontend/govuk/all";
   ```
 
-[More details on importing styles](https://github.com/alphagov/govuk-frontend/blob/master/docs/installation/installing-with-npm.md#importing-styles)
+[More details on importing styles](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#css)
 
 ## Importing JavaScript
 
@@ -59,14 +59,14 @@ Next you need to initialise the script by adding:
 <script>window.GOVUKFrontend.initAll()</script>
 ```
 
-[More details on importing Javascript and advanced options](https://github.com/alphagov/govuk-frontend/blob/master/docs/installation/installing-with-npm.md#importing-javascript)
+[More details on importing Javascript and advanced options](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#javascript)
 
 
 ## Importing assets
 
 In order to import GOV.UK Frontend images and fonts to your project, you should configure your application to reference or copy the relevant GOV.UK Frontend assets.
 
-[More details on importing assets](https://github.com/alphagov/govuk-frontend/blob/master/docs/installation/installing-with-npm.md#import-assets)
+[More details on importing assets](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#font-and-image-assets)
 
 
 ## Getting updates
@@ -76,7 +76,7 @@ To be notified when there’s a new release, you can either:
 - [watch the govuk-frontend Github repository](https://help.github.com/en/articles/watching-and-unwatching-repositories)
 - join the [#govuk-design-system channel on cross-government Slack](https://ukgovernmentdigital.slack.com/app_redirect?channel=govuk-design-system)
 
-Find out how to [update with npm](https://github.com/alphagov/govuk-frontend/blob/master/docs/installation/updating-with-npm.md).
+Find out how to [update with npm](https://frontend.design-system.service.gov.uk/updating-with-npm/).
 
 ## Licence
 

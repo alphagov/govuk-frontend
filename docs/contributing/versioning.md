@@ -95,7 +95,7 @@ The other primary way is through what is [published to npm](https://github.com/a
 
 This includes:
 
-- [JavaScript](https://github.com/alphagov/govuk-frontend/blob/master/docs/installation/installing-with-npm.md#using-javascript)
+- [JavaScript](https://frontend.design-system.service.gov.uk/installing-with-npm/#javascript)
 - SCSS - https://govuk-frontend-review.herokuapp.com/docs/
 - Nunjucks Macros (Templates)
 

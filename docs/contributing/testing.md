@@ -43,7 +43,7 @@ You should test that your contribution works:
 
 - in [recommended browsers](https://www.gov.uk/service-manual/technology/designing-for-different-browsers-and-devices#browsers-to-test-in)
 - with [recommended assistive technologies](https://www.gov.uk/service-manual/technology/testing-with-assistive-technologies#what-to-test)
-- in [Internet Explorer 8](/docs/installation/supporting-internet-explorer-8.md), 9 and 10 - components do not need to look perfect
+- in [Internet Explorer 8](https://frontend.design-system.service.gov.uk/supporting-ie8/), 9 and 10 - components do not need to look perfect
 - when your users [override colours in Windows, Firefox and Chrome](https://accessibility.blog.gov.uk/2018/08/01/supporting-users-who-change-colours-on-gov-uk/)
 
 ## 4. Run the automated tests
