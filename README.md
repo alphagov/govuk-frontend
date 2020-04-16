@@ -31,7 +31,7 @@ We recommend [installing GOV.UK Frontend using node package manager
 ### 2. Install by using compiled files
 
 You can also [download the compiled and minified assets (CSS, JavaScript) from
-GitHub](https://frontend.design-system.service.gov.uk/install-from-dist/).
+GitHub](https://frontend.design-system.service.gov.uk/installing-from-dist/).
 
 ## Browser and assistive technology support
 
@@ -50,7 +50,7 @@ Using Frontend will help your service meet [level AA of WCAG 2.1](https://www.go
 
 You should also use:
 
-- [the JavaScript from GOV.UK Frontend](ttps://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#javascript)
+- [the JavaScript from GOV.UK Frontend](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#javascript)
 - [a separate stylesheet](https://frontend.design-system.service.gov.uk/supporting-ie8/) if you support Internet Explorer 8
 
 Your service will not meet level AA of WCAG 2.1 if you use [compatibility mode](https://frontend.design-system.service.gov.uk/compatibility-mode/) to use GOV.UK Frontend with old frameworks or the old colour palette.
