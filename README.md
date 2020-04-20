@@ -68,7 +68,7 @@ To be notified when there’s a new release, you can either:
 - [watch the govuk-frontend Github repository](https://help.github.com/en/articles/watching-and-unwatching-repositories)
 - join the [#govuk-design-system channel on cross-government Slack](https://ukgovernmentdigital.slack.com/app_redirect?channel=govuk-design-system)
 
-Find out how to [update with npm](hhttps://frontend.design-system.service.gov.uk/updating-with-npm/).
+Find out how to [update with npm](https://frontend.design-system.service.gov.uk/updating-with-npm/).
 
 ## Licence
 

@@ -96,7 +96,7 @@ The other primary way is through what is [published to npm](https://github.com/a
 This includes:
 
 - [JavaScript](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#javascript)
-- SCSS - https://govuk-frontend-review.herokuapp.com/docs/
+- [SCSS](https://frontend.design-system.service.gov.uk/sass-api-reference/#sass-api-reference)
 - Nunjucks Macros (Templates)
 
 ## Updating Changelog
