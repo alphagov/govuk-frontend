@@ -62,7 +62,7 @@
     "jquery": "1.12.4",
     "js-yaml": "^3.13.1",
     "map-stream": "0.0.7",
-    "marked": "^0.7.0",
+    "marked": "^1.0.0",
     "merge-stream": "^2.0.0",
     "node-sass": "^4.13.1",
     "nodemon": "^2.0.3",
