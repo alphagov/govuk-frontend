@@ -2,7 +2,7 @@
   padding-top: govuk-spacing(6);
   padding-bottom: govuk-spacing(6);
   overflow: hidden;
-  @include govuk-font($size: 36, $line-height: 1.5)
+  @include govuk-font($size: 36, $line-height: 1.5);
 
   .govuk-body {
     color: inherit;
