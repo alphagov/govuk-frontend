@@ -24,9 +24,9 @@
   {% for item in params.items %}
     {% if item %}
       {% set id = item.id if item.id else idPrefix + "-" + loop.index %}
-      <section class="govuk-tabs__panel{% if loop.index > 1 %} govuk-tabs__panel--hidden{% endif %}" id="{{ id }}"{% for attribute, value in item.panel.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+      <div class="govuk-tabs__panel{% if loop.index > 1 %} govuk-tabs__panel--hidden{% endif %}" id="{{ id }}"{% for attribute, value in item.panel.attributes %} {{attribute}}="{{value}}"{% endfor %}>
         {{ item.panel.html | safe if item.panel.html else item.panel.text }}
-      </section>
+      </div>
     {% endif %}
   {% endfor %}
 </div>

@@ -115,4 +115,41 @@
     @include govuk-link-common;
     @include govuk-link-style-text;
   }
+
+  .govuk-breadcrumbs--collapse-on-mobile {
+    @include govuk-media-query($until: tablet) {
+      .govuk-breadcrumbs__list {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+      }
+
+      .govuk-breadcrumbs__list-item {
+        display: none;
+        padding-top: govuk-spacing(3);
+        padding-bottom: govuk-spacing(3);
+
+        &:first-child,
+        &:last-child {
+          display: inline-block;
+        }
+
+        &:before {
+          top: 20px;
+          margin: 0;
+        }
+      }
+
+      .govuk-breadcrumbs__link {
+        &:after {
+          content: "";
+          position: absolute;
+          top: -14px;
+          right: 0;
+          bottom: -14px;
+          left: 0;
+        }
+      }
+    }
+  }
 }
