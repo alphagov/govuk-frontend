@@ -39,7 +39,6 @@
     "govuk_template_jinja": "0.25.0",
     "gulp": "^4.0.2",
     "gulp-better-rollup": "3.1.0",
-    "gulp-changed": "^4.0.0",
     "gulp-debug": "^4.0.0",
     "gulp-eol": "^0.2.0",
     "gulp-filter": "^6.0.0",
