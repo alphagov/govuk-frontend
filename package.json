@@ -22,7 +22,7 @@
     "test:build:dist": "jest tasks/gulp/__tests__/after-build-dist.test.js"
   },
   "devDependencies": {
-    "acorn": "^7.1.0",
+    "acorn": "^7.1.1",
     "autoprefixer": "^9.7.2",
     "body-parser": "^1.18.3",
     "cheerio": "^1.0.0-rc.3",
