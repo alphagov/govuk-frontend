@@ -1,6 +1,4 @@
-@import "../settings/all";
-@import "../tools/all";
-@import "../helpers/all";
+@import "../base";
 
 @include govuk-exports("govuk/objects/form-group") {
 
