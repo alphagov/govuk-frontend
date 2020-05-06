@@ -1,5 +1,3 @@
-@import "../../helpers/typography";
-
 @include govuk-exports("govuk/component/header") {
 
   $govuk-header-background: govuk-colour("black");
