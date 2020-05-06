@@ -80,4 +80,4 @@ Open Government 3.0 licence.
 ## Contribution guidelines
 
 If you want to help us build GOV.UK Frontend, view our [contribution
-guidelines](CONTRIBUTING.md).
+guidelines](CONTRIBUTING.md)!
