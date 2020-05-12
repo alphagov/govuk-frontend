@@ -23,6 +23,12 @@ describe('When nunjucks is configured with a different base path', () => {
   })
 })
 
+it('_all.scss renders to CSS without errors', () => {
+  return renderSass({
+    file: `${configPaths.src}/components/_all.scss`
+  })
+})
+
 it.each(allComponents)('%s.scss renders to CSS without errors', (component) => {
   return renderSass({
     file: `${configPaths.src}/components/${component}/_${component}.scss`

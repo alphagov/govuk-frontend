@@ -2,6 +2,32 @@
 
 ## Unreleased
 
+### New features
+
+#### Improved Sass compilation times
+
+We've changed the way that dependencies are imported within GOV.UK Frontend to improve Sass compilation times.
+
+If you currently import `node_modules/govuk-frontend/govuk/all`, you will automatically benefit from these improvements.
+
+If you currently import a subset of GOV.UK Frontend, you can now:
+
+- import components using their `index` file, which will avoid importing the dependencies again
+- import `node-modules/govuk-frontend/govuk/base` instead of importing `node-modules/govuk-frontend/govuk/settings/all`, `node-modules/govuk-frontend/govuk/helpers/all` and `node-modules/govuk-frontend/govuk/tools/all`
+
+For example:
+
+```scss
+@import "node_modules/govuk-frontend/govuk/base";
+
+@import "node_modules/govuk-frontend/govuk/core/all";
+@import "node_modules/govuk-frontend/govuk/objects/all";
+
+@import "node_modules/govuk-frontend/govuk/components/button";
+@import "node_modules/govuk-frontend/govuk/components/footer";
+@import "node_modules/govuk-frontend/govuk/components/header";
+```
+
 ### Fixes
 
 - [Pull request #1753: Make back link arrow consistent with breadcrumb component](https://github.com/alphagov/govuk-frontend/pull/1753)
