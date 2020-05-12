@@ -1,4 +1,4 @@
-@import "../tag/tag";
+@import "../tag/index";
 
 @include govuk-exports("govuk/component/phase-banner") {
   .govuk-phase-banner {

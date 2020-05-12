@@ -1,7 +1,7 @@
-@import "../error-message/error-message";
-@import "../hint/hint";
-@import "../label/label";
-@import "../textarea/textarea";
+@import "../error-message/index";
+@import "../hint/index";
+@import "../label/index";
+@import "../textarea/index";
 
 @include govuk-exports("govuk/component/character-count") {
   .govuk-character-count {

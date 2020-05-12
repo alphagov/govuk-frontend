@@ -1,7 +1,7 @@
-@import "../error-message/error-message";
-@import "../input/input";
-@import "../hint/hint";
-@import "../label/label";
+@import "../error-message/index";
+@import "../input/index";
+@import "../hint/index";
+@import "../label/index";
 
 @include govuk-exports("govuk/component/date-input") {
   .govuk-date-input {
