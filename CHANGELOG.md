@@ -10,10 +10,10 @@ We've changed the way that dependencies are imported within GOV.UK Frontend to i
 
 If you currently import `node_modules/govuk-frontend/govuk/all`, you will automatically benefit from these improvements.
 
-If you currently import a subset of GOV.UK Frontend:
+If you currently import a subset of GOV.UK Frontend, you can now:
 
-- you can now import `node-modules/govuk-frontend/govuk/base` instead of importing `node-modules/govuk-frontend/govuk/settings/all`, `node-modules/govuk-frontend/govuk/helpers/all` and `node-modules/govuk-frontend/govuk/tools/all`
-- you should import components using their `index` file, which will avoid importing the dependencies again
+- import components using their `index` file, which will avoid importing the dependencies again
+- import `node-modules/govuk-frontend/govuk/base` instead of importing `node-modules/govuk-frontend/govuk/settings/all`, `node-modules/govuk-frontend/govuk/helpers/all` and `node-modules/govuk-frontend/govuk/tools/all`
 
 For example:
 
