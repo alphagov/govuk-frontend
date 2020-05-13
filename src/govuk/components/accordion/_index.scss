@@ -19,6 +19,10 @@
   }
 
   .govuk-accordion__section-heading {
+    // Override browser defaults to ensure consistent element height
+    // Font size is set in .govuk-accordion__section-button
+    @include govuk-font(24);
+
     margin-top: 0; // Override browser default
     margin-bottom: 0; // Override browser default
   }
