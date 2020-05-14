@@ -1,0 +1,192 @@
+---
+scenario: >-
+  As part of an online service, you are asked to enter card details.
+
+
+  Things to try:
+
+  1. ???
+
+---
+
+{# This example is based of the "Passport details" pattern: https://design-system.service.gov.uk/patterns/question-pages/ #}
+{% extends "_generic.njk" %}
+
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "error-summary/macro.njk" import govukErrorSummary %}
+{% from "input/macro.njk" import govukInput %}
+{% from "date-input/macro.njk" import govukDateInput %}
+{% from "button/macro.njk" import govukButton %}
+{% from "inset-text/macro.njk" import govukInsetText %}
+{% from "fieldset/macro.njk" import govukFieldset %}
+
+{% set pageTitle = "Enter card details" %}
+{% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.UK{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {% if errorSummary.length > 0 %}
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: errorSummary
+        }) }}
+      {% endif %}
+      <h1 class="govuk-heading-l">{{ pageTitle }}</h1>
+
+      <form method="post" novalidate>
+
+        {{ govukInput({
+          label: {
+            text: "Card number"
+          },
+          hint: {
+            text: "Accepted credit and debit card types"
+          },
+          classes: "govuk-!-width-three-quarters",
+          id: "card-number",
+          name: "card-number",
+          value: values["card-number"],
+          errorMessage: errors["card-number"]
+        }) }}
+
+        {% set dateInputDayClass = "govuk-input--width-2" %}
+        {% set dateInputMonthClass = "govuk-input--width-2" %}
+        {% set dateInputYearClass = "govuk-input--width-4" %}
+
+        {% if errors["expiry-day"] %}
+          {% set dateInputDayClass = dateInputDayClass + " govuk-input--error" %}
+        {% endif %}
+        {% if errors["expiry-month"] %}
+          {% set dateInputMonthClass = dateInputMonthClass + " govuk-input--error" %}
+        {% endif %}
+        {% if errors["expiry-year"] %}
+          {% set dateInputYearClass = dateInputYearClass + " govuk-input--error" %}
+        {% endif %}
+
+        {{ govukDateInput({
+          id: "expiry",
+          namePrefix: "expiry",
+          fieldset: {
+            legend: {
+              text: "Expiry date"
+            }
+          },
+          hint: {
+            text: "For example, 10/20"
+          },
+          items: [
+            {
+              classes: dateInputMonthClass,
+              name: "month",
+              value: values["expiry-month"]
+            },
+            {
+              classes: dateInputYearClass,
+              name: "year",
+              value: values["expiry-year"]
+            }
+          ],
+          errorMessage: errors["expiry"]
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Name on card"
+          },
+          classes: "govuk-!-width-three-quarters",
+          id: "card-name",
+          name: "card-name",
+          value: values["card-name"],
+          errorMessage: errors["card-name"]
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Card security code"
+          },
+          hint: {
+            text: "The last 3 digits on the back of the card"
+          },
+          classes: "govuk-input--width-3",
+          id: "card-cvv",
+          name: "card-cvv",
+          value: values["card-cvv"],
+          errorMessage: errors["card-cvv"]
+        }) }}
+
+        <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
+
+        {% call govukFieldset({
+          legend: {
+            text: "Billing address",
+            classes: "govuk-fieldset__legend--m"
+          }
+        }) %}
+
+        {{ govukInput({
+            label: {
+              html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
+            },
+            id: "address-line-1",
+            name: "address-line-1",
+            autocomplete: "address-line1"
+          }) }}
+
+          {{ govukInput({
+            label: {
+              html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
+            },
+            id: "address-line-2",
+            name: "address-line-2",
+            autocomplete: "address-line2"
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: "Town or city"
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "address-town",
+            name: "address-town",
+            autocomplete: "address-level2"
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: "County"
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "address-county",
+            name: "address-county"
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: "Postcode"
+            },
+            classes: "govuk-input--width-10",
+            id: "address-postcode",
+            name: "address-postcode",
+            autocomplete: "postal-code"
+          }) }}
+
+        {% endcall %}
+
+        <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
+        
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}
