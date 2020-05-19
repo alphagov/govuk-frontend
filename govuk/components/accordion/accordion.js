@@ -876,7 +876,7 @@ Accordion.prototype.initHeaderAttributes = function ($headerWrapper, index) {
   icon.className = this.iconClass;
   icon.setAttribute('aria-hidden', 'true');
 
-  $heading.appendChild(icon);
+  $button.appendChild(icon);
 };
 
 // When section toggled, set and store state
