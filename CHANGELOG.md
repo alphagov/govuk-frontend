@@ -33,6 +33,7 @@ For example:
 - [Pull request #1753: Make back link arrow consistent with breadcrumb component](https://github.com/alphagov/govuk-frontend/pull/1753)
 - [Pull request #1765: Import textarea from character count](https://github.com/alphagov/govuk-frontend/pull/1765).
 - [Pull request #1778: Fix accordion underline hover state being removed when hovering plus/minus symbol](https://github.com/alphagov/govuk-frontend/pull/1778).
+- [Pull request #1796: Standardise accordion section headings font size (reduce height of section headings on mobile)](https://github.com/alphagov/govuk-frontend/pull/1796).
 
 ## 3.6.0 (Feature release)
 
