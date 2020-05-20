@@ -28,6 +28,24 @@ For example:
 @import "node_modules/govuk-frontend/govuk/components/header";
 ```
 
+
+### Deprecations
+
+#### Importing files from the core or overrides layers
+
+If you import specific files from the core or overrides layers, you should import the `base` file first:
+
+```scss
+@import "node_modules/govuk-frontend/govuk/base";
+
+@import "node_modules/govuk-frontend/core/typography";
+```
+
+Importing files from the core or overrides layers without importing `base` will [no longer work as of GOV.UK Frontend v4.0](https://github.com/alphagov/govuk-frontend/issues/1800).
+
+[Pull request #1807: Warn if importing core, overrides without dependencies](https://github.com/alphagov/govuk-frontend/pull/1807).
+
+
 ### Fixes
 
 - [Pull request #1753: Make back link arrow consistent with breadcrumb component](https://github.com/alphagov/govuk-frontend/pull/1753)
