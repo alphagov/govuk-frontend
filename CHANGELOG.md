@@ -4,6 +4,13 @@
 
 ### New features
 
+#### New list modifier to add extra spacing between list items
+
+If a list is hard to read becuse the items run across multiple lines you can now [add extra spacing using the `govuk-list--spaced` modifier class](http://design-system.service.gov.uk//styles/typography/#adding-extra-spacing-between-list-items).
+
+[Pull request #1775: Add list--spaced modifier](https://github.com/alphagov/govuk-frontend/pull/1775).
+
+
 #### Improved Sass compilation times
 
 We've changed the way that dependencies are imported within GOV.UK Frontend to improve Sass compilation times.
