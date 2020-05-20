@@ -28,6 +28,8 @@ For example:
 @import "node_modules/govuk-frontend/govuk/components/header";
 ```
 
+[Pull request #1804: Allow components to be imported without dependencies](https://github.com/alphagov/govuk-frontend/pull/1804).
+
 
 ### Deprecations
 
