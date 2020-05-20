@@ -56,10 +56,6 @@
     @include govuk-media-query($from: tablet) {
       margin-bottom: govuk-spacing(3);
     }
-
-    &:last-child {
-      margin-bottom: govuk-spacing(0);
-    }
   }
 
   .govuk-list--bullet {
