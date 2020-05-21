@@ -75,3 +75,4 @@ there's a new release with a short summary.
 19. Add cards to the "Backlog" column:
   - Update the GOV.UK Design System to use the latest release
   - Update the GOV.UK Prototype Kit to use the latest release
+  - Update the GOV.UK Frontend Docs to use the latest release
