@@ -5,6 +5,18 @@
 {#- a record of other elements that we need to associate with the input using
    aria-describedby – for example hints or error messages -#}
 {% set describedBy = params.describedBy if params.describedBy else "" %}
+
+{%- set inputTag %}
+<input class="govuk-input {%- if params.classes %} {{ params.classes }}{% endif %} {%- if params.errorMessage %} govuk-input--error{% endif %}" id="{{ params.id }}" name="{{ params.name }}" type="{{ params.type | default('text') }}"
+{%- if (params.spellcheck === false) or (params.spellcheck === true) %} spellcheck="{{ params.spellcheck }}"{% endif %}
+{%- if params.value %} value="{{ params.value}}"{% endif %}
+{%- if describedBy %} aria-describedby="{{ describedBy }}"{% endif %}
+{%- if params.autocomplete %} autocomplete="{{ params.autocomplete}}"{% endif %}
+{%- if params.pattern %} pattern="{{ params.pattern }}"{% endif %}
+{%- if params.inputmode %} inputmode="{{ params.inputmode }}"{% endif %}
+{%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor -%}>
+{% endset -%}
+
 <div class="govuk-form-group {%- if params.errorMessage %} govuk-form-group--error{% endif %} {%- if params.formGroup.classes %} {{ params.formGroup.classes }}{% endif %}">
   {{ govukLabel({
     html: params.label.html,
@@ -37,12 +49,21 @@
     visuallyHiddenText: params.errorMessage.visuallyHiddenText
   }) | indent(2) | trim }}
 {% endif %}
-  <input class="govuk-input {%- if params.classes %} {{ params.classes }}{% endif %} {%- if params.errorMessage %} govuk-input--error{% endif %}" id="{{ params.id }}" name="{{ params.name }}" type="{{ params.type | default('text') }}"
-  {%- if (params.spellcheck === false) or (params.spellcheck === true) %} spellcheck="{{ params.spellcheck }}"{% endif %}
-  {%- if params.value %} value="{{ params.value}}"{% endif %}
-  {%- if describedBy %} aria-describedby="{{ describedBy }}"{% endif %}
-  {%- if params.autocomplete %} autocomplete="{{ params.autocomplete}}"{% endif %}
-  {%- if params.pattern %} pattern="{{ params.pattern }}"{% endif %}
-  {%- if params.inputmode %} inputmode="{{ params.inputmode }}"{% endif %}
-  {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor -%}>
+{%- if params.prefix or params.suffix %}<div class="govuk-input__wrapper">{% endif -%}
+{%- if params.prefix %}
+  {%- if params.prefix.html | length or params.prefix.text | length %}
+    <span class="govuk-input__prefix {{- ' ' + params.prefix.classes if params.prefix.classes }}" aria-hidden="true" {%- for attribute, value in item.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+      {{- params.prefix.html | safe if params.prefix.html else params.prefix.text -}}
+    </span>
+  {% endif -%}
+{% endif -%}
+{{- inputTag | safe -}}
+{%- if params.suffix %}
+  {%- if params.suffix.html | length or params.suffix.text | length %}
+    <span class="govuk-input__suffix {{- ' ' + params.suffix.classes if params.suffix.classes }}" aria-hidden="true" {%- for attribute, value in item.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+      {{- params.suffix.html | safe if params.suffix.html else params.suffix.text -}}
+    </span>
+  {% endif -%}
+{% endif -%}
+{%- if params.prefix or params.suffix %}</div>{% endif %}
 </div>

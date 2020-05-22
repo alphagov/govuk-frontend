@@ -38,6 +38,48 @@ params:
   required: false
   description: Options for the error message component. The error message component will not display if you use a falsy value for `errorMessage`, for example `false` or `null`.
   isComponent: true
+- name: prefix
+  type: object
+  required: false
+  description: Options for the prefix tag.
+  params:
+    - name: text
+      type: string
+      required: true
+      description: Required. If `html` is set, this is not required. Text to use within the label. If `html` is provided, the `text` argument will be ignored.
+    - name: html
+      type: string
+      required: true
+      description: Required. If `text` is set, this is not required. HTML to use within the label. If `html` is provided, the `text` argument will be ignored.
+    - name: classes
+      type: string
+      required: false
+      description: Classes to add to the prefix tag
+    - name: attributes
+      type: object
+      required: false
+      description: HTML attributes (for example data attributes) to add to the prefix tag.
+- name: suffix
+  type: object
+  required: false
+  description: Options for the suffix tag.
+  params:
+    - name: text
+      type: string
+      required: true
+      description: Required. If `html` is set, this is not required. Text to use within the label. If `html` is provided, the `text` argument will be ignored.
+    - name: html
+      type: string
+      required: true
+      description: Required. If `text` is set, this is not required. HTML to use within the label. If `html` is provided, the `text` argument will be ignored.
+    - name: classes
+      type: string
+      required: false
+      description: Classes to add to the suffix tag
+    - name: attributes
+      type: object
+      required: false
+      description: HTML attributes (for example data attributes) to add to the suffix tag.
 - name: formGroup
   type: object
   required: false
@@ -203,6 +245,77 @@ examples:
       type: text
       spellcheck: false
 
+  - name: with prefix element
+    data:
+      label:
+        text: Amount, in pounds
+      id: input-with-prefix-element
+      name: amount
+      type: number
+      classes: govuk-input--width-10
+      prefix:
+        text: £
+  - name: with prefix and error elements
+    data:
+      label:
+        text: Amount, in pounds
+      id: input-with-prefix-element-with-error
+      name: amount
+      type: number
+      classes: govuk-input--width-10
+      errorMessage:
+        text: Enter an amount in pounds
+      prefix:
+        text: £
+  - name: with suffix element
+    data:
+      label:
+        text: Weight, in kilograms
+      id: input-with-suffix-element
+      name: weight
+      type: number
+      classes: govuk-input--width-10
+      suffix:
+        text: kg
+  - name: with suffix and error elements
+    data:
+      label:
+        text: Weight, in kilograms
+      id: input-with-suffix-element-with-error
+      name: weight
+      type: number
+      classes: govuk-input--width-10
+      errorMessage:
+        text: Enter a weight in kilograms
+      suffix:
+        text: kg
+  - name: with prefix and suffix elements
+    data:
+      label:
+        text: Cost per item, in pounds
+      id: input-with-prefix-suffix-elements
+      name: cost
+      type: number
+      classes: govuk-input--width-10
+      prefix:
+        text: £
+      suffix:
+        text: per item
+  - name: with prefix, suffix and error elements
+    data:
+      label:
+        text: Cost per item, in pounds
+      id: input-with-prefix-suffix-elements-with-error
+      name: cost
+      type: number
+      classes: govuk-input--width-10
+      errorMessage:
+        text: Enter a cost per item in pounds
+      prefix:
+        text: £
+      suffix:
+        text: per item
+
 # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: classes
     hidden: true
@@ -256,4 +369,3 @@ examples:
     hidden: true
     data:
       inputmode: decimal
-
