@@ -48,6 +48,7 @@
     "gulp-rename": "^2.0.0",
     "gulp-sass": "^4.1.0",
     "gulp-sass-lint": "^1.4.0",
+    "gulp-stylelint": "^13.0.0",
     "gulp-task-listing": "^1.1.0",
     "gulp-uglify": "^3.0.2",
     "html5shiv": "^3.7.3",
@@ -73,6 +74,7 @@
     "sassdoc": "^2.7.3",
     "shuffle-seed": "^1.1.6",
     "standard": "^14.3.4",
+    "stylelint": "^13.7.1",
     "vinyl-paths": "^3.0.1",
     "yargs": "^15.4.1"
   },
