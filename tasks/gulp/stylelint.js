@@ -12,7 +12,7 @@ gulp.task('scss:stylelint', () => {
     .pipe(stylelint({
       failAfterError: true,
       reporters: [
-        { formatter: 'verbose', console: true }
+        { formatter: 'string', console: true }
       ]
     }))
 })
