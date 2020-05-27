@@ -117,6 +117,15 @@
         &:last-child {
           display: inline-block;
         }
+
+        &:before {
+          top: 6px;
+          margin: 0;
+        }
+      }
+
+      .govuk-breadcrumbs__list {
+        display: flex;
       }
     }
   }
