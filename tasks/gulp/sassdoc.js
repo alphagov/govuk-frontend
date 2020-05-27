@@ -7,6 +7,13 @@ gulp.task('sassdoc', function () {
     .pipe(sassdoc({
       dest: paths.sassdoc,
       groups: {
+        'helpers/accessibility': 'Helpers / Accessibility',
+        'helpers/colour': 'Helpers / Colour',
+        'helpers/layout': 'Helpers / Layout',
+        'helpers/links': 'Helpers / Links',
+        'helpers/shapes': 'Helpers / Shapes',
+        'helpers/spacing': 'Helpers / Spacing',
+        'helpers/typography': 'Helpers / Typography',
         'settings/assets': 'Settings / Assets',
         'settings/colours': 'Settings / Colours',
         'settings/compatibility': 'Settings / Compatibility',
@@ -18,7 +25,9 @@ gulp.task('sassdoc', function () {
         'settings/typography': 'Settings / Typography',
         tools: 'Tools',
         helpers: 'Helpers',
-        overrides: 'Overrides'
+        overrides: 'Overrides',
+        objects: 'Objects',
+        'objects/layout': 'Objects / Layout'
       }
     }))
     .resume()
