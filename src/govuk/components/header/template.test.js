@@ -107,6 +107,20 @@ describe('header', () => {
       expect($firstItem.text()).toContain('Navigation item 1')
     })
 
+    it('renders navigation item with html', () => {
+      const $ = render('header', {
+        navigation: [
+          {
+            href: "#1",
+            html: '<em>Nav item</em>'
+          }
+        ]
+      })
+
+      const $navigationLink = $('.govuk-header__navigation-item a')
+      expect($navigationLink.html()).toContain('<em>Nav item</em>')
+    })
+
     it('renders navigation item anchor with attributes', () => {
       const $ = render('header', {
         navigation: [
