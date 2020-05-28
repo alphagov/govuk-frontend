@@ -4,6 +4,12 @@
 
 ### New features
 
+#### Add ability to set HTML for a navigation item within the Header component
+
+Allow HTML to be set instead for navigation items instead of just text.
+
+[Pull request #1819: Add the ability to specify HTML for a navigation item](https://github.com/alphagov/govuk-frontend/pull/1819)
+
 #### Add collapseOnMobile breadcrumbs flag
 
 Add a collapseOnMobile flag to breadcrumbs which, when set to true, means the breadcrumb collapses to the first and last items only on mobile and doesn't wrap onto a new line.

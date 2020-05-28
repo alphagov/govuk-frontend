@@ -27,7 +27,11 @@ params:
   - name: text
     type: string
     required: false
-    description: Text of the navigation item.
+    description: Text for the navigation item. If `html` is provided, the `text` argument will be ignored.
+  - name: html
+    type: string
+    required: false
+    description: HTML for the navigation item. If `html` is provided, the `text` argument will be ignored.
   - name: href
     type: string
     required: false
@@ -179,3 +183,15 @@ examples:
         text: Navigation item 2
       - href: '#3'
         text: Navigation item 3
+
+- name: navigation item with html
+  data:
+    serviceName: Service Name
+    navigation:
+      - href: '#1'
+        html: <em>Navigation item 1</em>
+        active: true
+      - href: '#2'
+        html: <em>Navigation item 2</em>
+      - href: '#3'
+        html: <em>Navigation item 3</em>
