@@ -111,7 +111,7 @@ describe('header', () => {
       const $ = render('header', {
         navigation: [
           {
-            href: "#1",
+            href: '#1',
             html: '<em>Nav item</em>'
           }
         ]
