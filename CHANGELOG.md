@@ -45,6 +45,15 @@ Find out more about [importing CSS](https://frontend.design-system.service.gov.u
 
 This was added in [pull request #1804: Allow components to be imported without dependencies](https://github.com/alphagov/govuk-frontend/pull/1804).
 
+#### Collapse breadcrumb component on mobile
+
+You can now collapse the [breadcrumb](https://design-system.service.gov.uk/components/breadcrumbs/) component on mobile using the new `collapseOnMobile` option, so it:
+
+- shows only the first and last items
+- does not wrap
+
+This was added in [pull request #1754: Add collapseOnMobile breadcrumbs flag](https://github.com/alphagov/govuk-frontend/pull/1754).
+
 #### Back links are easier to select
 
 The [back link](https://design-system.service.gov.uk/components/back-link/) component is now:
