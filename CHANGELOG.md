@@ -4,12 +4,17 @@
 
 ### New features
 
+#### Add collapseOnMobile breadcrumbs flag
+
+Add a collapseOnMobile flag to breadcrumbs which, when set to true, means the breadcrumb collapses to the first and last items only on mobile and doesn't wrap onto a new line.
+
+[Pull request #1754: Add collapseOnMobile breadcrumbs flag](https://github.com/alphagov/govuk-frontend/pull/1754)
+
 #### New list modifier to add extra spacing between list items
 
 If a list is hard to read becuse the items run across multiple lines you can now [add extra spacing using the `govuk-list--spaced` modifier class](http://design-system.service.gov.uk//styles/typography/#adding-extra-spacing-between-list-items).
 
 [Pull request #1775: Add list--spaced modifier](https://github.com/alphagov/govuk-frontend/pull/1775).
-
 
 #### Improved Sass compilation times
 
