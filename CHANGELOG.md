@@ -4,34 +4,29 @@
 
 ### New features
 
-#### Add ability to set HTML for a navigation item within the Header component
+#### Add extra spacing between list items
 
-Allow HTML to be set instead for navigation items instead of just text.
+If a [list](https://design-system.service.gov.uk/styles/typography/#lists) is hard to read because the items run across multiple lines, you can now [add extra spacing between list items](http://design-system.service.gov.uk/styles/typography/#adding-extra-spacing-between-list-items) using the new `govuk-list--spaced` class.
 
-[Pull request #1819: Add the ability to specify HTML for a navigation item](https://github.com/alphagov/govuk-frontend/pull/1819)
+This was added in [pull request #1775: Add list--spaced modifier](https://github.com/alphagov/govuk-frontend/pull/1775).
 
-#### Add collapseOnMobile breadcrumbs flag
+#### Use HTML for navigation items in the header
 
-Add a collapseOnMobile flag to breadcrumbs which, when set to true, means the breadcrumb collapses to the first and last items only on mobile and doesn't wrap onto a new line.
+You can now use HTML for a navigation item in the [header](https://design-system.service.gov.uk/components/header/) component, using the new `html` option.
 
-[Pull request #1754: Add collapseOnMobile breadcrumbs flag](https://github.com/alphagov/govuk-frontend/pull/1754)
+This was added in [pull request #1819: Add the ability to specify HTML for a navigation item](https://github.com/alphagov/govuk-frontend/pull/1819).
 
-#### New list modifier to add extra spacing between list items
+#### Import settings, tools and helpers CSS in one line
 
-If a list is hard to read becuse the items run across multiple lines you can now [add extra spacing using the `govuk-list--spaced` modifier class](http://design-system.service.gov.uk//styles/typography/#adding-extra-spacing-between-list-items).
+You can now import `node_modules/govuk-frontend/govuk/base`, instead of importing `settings`, `helpers` and `tools` separately.
 
-[Pull request #1775: Add list--spaced modifier](https://github.com/alphagov/govuk-frontend/pull/1775).
+#### Sass now compiles faster
 
-#### Improved Sass compilation times
+GOV.UK Frontend's Sass files now compile to CSS faster, because we've changed the way dependencies work when you import them.
 
-We've changed the way that dependencies are imported within GOV.UK Frontend to improve Sass compilation times.
+If you already import `node_modules/govuk-frontend/govuk/all` in your Sass file, you do not need to do anything. Sass will automatically compile faster.
 
-If you currently import `node_modules/govuk-frontend/govuk/all`, you will automatically benefit from these improvements.
-
-If you currently import a subset of GOV.UK Frontend, you can now:
-
-- import components using their `index` file, which will avoid importing the dependencies again
-- import `node-modules/govuk-frontend/govuk/base` instead of importing `node-modules/govuk-frontend/govuk/settings/all`, `node-modules/govuk-frontend/govuk/helpers/all` and `node-modules/govuk-frontend/govuk/tools/all`
+If you import specific parts of GOV.UK Frontend in your Sass file instead, you can now make Sass compile faster by importing `base` then a component's `index` file. This will avoid GOV.UK Frontend importing dependencies multiple times.
 
 For example:
 
@@ -41,37 +36,61 @@ For example:
 @import "node_modules/govuk-frontend/govuk/core/all";
 @import "node_modules/govuk-frontend/govuk/objects/all";
 
-@import "node_modules/govuk-frontend/govuk/components/button";
-@import "node_modules/govuk-frontend/govuk/components/footer";
-@import "node_modules/govuk-frontend/govuk/components/header";
+@import "node_modules/govuk-frontend/govuk/components/button/index";
+@import "node_modules/govuk-frontend/govuk/components/footer/index";
+@import "node_modules/govuk-frontend/govuk/components/header/index";
 ```
 
-[Pull request #1804: Allow components to be imported without dependencies](https://github.com/alphagov/govuk-frontend/pull/1804).
+Find out more about [importing CSS](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#css).
+
+This was added in [pull request #1804: Allow components to be imported without dependencies](https://github.com/alphagov/govuk-frontend/pull/1804).
+
+#### Collapse breadcrumb component on mobile
+
+You can now collapse the [breadcrumb](https://design-system.service.gov.uk/components/breadcrumbs/) component on mobile using the new `collapseOnMobile` option, so it:
+
+- shows only the first and last items
+- does not wrap
+
+This was added in [pull request #1754: Add collapseOnMobile breadcrumbs flag](https://github.com/alphagov/govuk-frontend/pull/1754).
+
+#### Back links are easier to select
+
+The [back link](https://design-system.service.gov.uk/components/back-link/) component is now:
+
+- bigger, so it's easier to select if you're using a touch screen
+- more consistent with the design of the breadcrumb component 
+
+This was added in [pull request #1753: Make back link arrow consistent with breadcrumb component](https://github.com/alphagov/govuk-frontend/pull/1753).
 
 
-### Deprecations
+### Deprecated features
 
-#### Importing files from the core or overrides layers
+#### Importing from the `core` and `overrides` layers without `base`
 
-If you import specific files from the core or overrides layers, you should import the `base` file first:
+If you import specific files from the `core` or `overrides` layers, you now need to import `node_modules/govuk-frontend/govuk/base` first.
+
+For example:
 
 ```scss
 @import "node_modules/govuk-frontend/govuk/base";
-
 @import "node_modules/govuk-frontend/core/typography";
 ```
 
-Importing files from the core or overrides layers without importing `base` will [no longer work as of GOV.UK Frontend v4.0](https://github.com/alphagov/govuk-frontend/issues/1800).
+If you do not import `node_modules/govuk-frontend/govuk/base` first, your service will no longer work from GOV.UK Frontend v4.0.0.
 
-[Pull request #1807: Warn if importing core, overrides without dependencies](https://github.com/alphagov/govuk-frontend/pull/1807).
+This was added in [pull request #1807: Warn if importing core, overrides without dependencies](https://github.com/alphagov/govuk-frontend/pull/1807).
 
 
 ### Fixes
 
-- [Pull request #1753: Make back link arrow consistent with breadcrumb component](https://github.com/alphagov/govuk-frontend/pull/1753)
-- [Pull request #1765: Import textarea from character count](https://github.com/alphagov/govuk-frontend/pull/1765).
-- [Pull request #1778: Fix accordion underline hover state being removed when hovering plus/minus symbol](https://github.com/alphagov/govuk-frontend/pull/1778).
-- [Pull request #1796: Standardise accordion section headings font size (reduce height of section headings on mobile)](https://github.com/alphagov/govuk-frontend/pull/1796).
+We’ve made fixes to GOV.UK Frontend in the following pull requests:
+
+- [pull request #1778: Fix accordion underline hover state being removed when hovering plus/minus symbol](https://github.com/alphagov/govuk-frontend/pull/1778)
+- [pull request #1765: Import textarea from character count](https://github.com/alphagov/govuk-frontend/pull/1765)
+- [pull request #1753: Make backlink arrow consistent with breadcrumb component](https://github.com/alphagov/govuk-frontend/pull/1753)
+- [pull request #1796: Standardise accordion section headings font size (reduce height of section headings on mobile)](https://github.com/alphagov/govuk-frontend/pull/1796)
+
 
 ## 3.6.0 (Feature release)
 
