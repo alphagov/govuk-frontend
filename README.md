@@ -28,10 +28,10 @@ in your service.
 We recommend [installing GOV.UK Frontend using node package manager
 (npm)](https://frontend.design-system.service.gov.uk/installing-with-npm/).
 
-### 2. Install by using compiled files
+### 2. Install using compiled files
 
-You can also [download the compiled and minified assets (CSS, JavaScript) from
-GitHub](https://frontend.design-system.service.gov.uk/installing-from-dist/).
+You can also install GOV.UK Frontend by [copying our CSS, JavaScript and asset 
+files into your project](https://frontend.design-system.service.gov.uk/install-using-precompiled-files/).
 
 ## Browser and assistive technology support
 
