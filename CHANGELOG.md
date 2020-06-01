@@ -10,13 +10,13 @@
 
 If a [list](https://design-system.service.gov.uk/styles/typography/#lists) is hard to read because the items run across multiple lines, you can now [add extra spacing between list items](http://design-system.service.gov.uk/styles/typography/#adding-extra-spacing-between-list-items) using the new `govuk-list--spaced` class.
 
-This was added in [pull request #1775: Add list--spaced modifier](https://github.com/alphagov/govuk-frontend/pull/1775).
+This was added in [pull request #1775: Add list--spaced modifier](https://github.com/alphagov/govuk-frontend/pull/1775). Thanks to [@frankieroberto](https://github.com/frankieroberto) for raising this issue.
 
 #### Use HTML for navigation items in the header
 
 You can now use HTML for a navigation item in the [header](https://design-system.service.gov.uk/components/header/) component, using the new `html` option.
 
-This was added in [pull request #1819: Add the ability to specify HTML for a navigation item](https://github.com/alphagov/govuk-frontend/pull/1819).
+This was added in [pull request #1819: Add the ability to specify HTML for a navigation item](https://github.com/alphagov/govuk-frontend/pull/1819). Thanks to [@adamsilver](https://github.com/adamsilver).
 
 #### Import settings, tools and helpers CSS in one line
 
@@ -45,7 +45,7 @@ For example:
 
 Find out more about [importing CSS](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#css).
 
-This was added in [pull request #1804: Allow components to be imported without dependencies](https://github.com/alphagov/govuk-frontend/pull/1804).
+This was added in [pull request #1804: Allow components to be imported without dependencies](https://github.com/alphagov/govuk-frontend/pull/1804). Thanks to [@kevindew](https://github.com/kevindew) for raising this issue.
 
 #### Collapse breadcrumb component on mobile
 
@@ -54,7 +54,7 @@ You can now [collapse the breadcrumb component on mobile](https://design-system.
 - shows only the first and last items
 - does not wrap
 
-This was added in [pull request #1754: Add collapseOnMobile breadcrumbs flag](https://github.com/alphagov/govuk-frontend/pull/1754).
+This was added in [pull request #1754: Add collapseOnMobile breadcrumbs flag](https://github.com/alphagov/govuk-frontend/pull/1754). Thanks to [@vanitabarrett](https://github.com/vanitabarrett) and [@miaallers](https://github.com/miaallers).
 
 #### Back links are easier to select
 
@@ -63,7 +63,7 @@ The [back link](https://design-system.service.gov.uk/components/back-link/) comp
 - bigger, so it's easier to select if you're using a touch screen
 - more consistent with the design of the breadcrumb component 
 
-This was added in [pull request #1753: Make back link arrow consistent with breadcrumb component](https://github.com/alphagov/govuk-frontend/pull/1753).
+This was added in [pull request #1753: Make back link arrow consistent with breadcrumb component](https://github.com/alphagov/govuk-frontend/pull/1753). Thanks to [@vanitabarrett](https://github.com/vanitabarrett) and [@miaallers](https://github.com/miaallers).
 
 
 ### Deprecated features
@@ -90,7 +90,6 @@ We’ve made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#1778: Fix accordion underline hover state being removed when hovering plus/minus symbol](https://github.com/alphagov/govuk-frontend/pull/1778)
 - [#1765: Import textarea from character count](https://github.com/alphagov/govuk-frontend/pull/1765)
-- [#1753: Make backlink arrow consistent with breadcrumb component](https://github.com/alphagov/govuk-frontend/pull/1753)
 - [#1796: Standardise accordion section headings font size (reduce height of section headings on mobile)](https://github.com/alphagov/govuk-frontend/pull/1796)
 
 
