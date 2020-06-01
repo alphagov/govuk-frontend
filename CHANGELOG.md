@@ -86,10 +86,10 @@ This was added in [pull request #1807: Warn if importing core, overrides without
 
 We’ve made fixes to GOV.UK Frontend in the following pull requests:
 
-- [pull request #1778: Fix accordion underline hover state being removed when hovering plus/minus symbol](https://github.com/alphagov/govuk-frontend/pull/1778)
-- [pull request #1765: Import textarea from character count](https://github.com/alphagov/govuk-frontend/pull/1765)
-- [pull request #1753: Make backlink arrow consistent with breadcrumb component](https://github.com/alphagov/govuk-frontend/pull/1753)
-- [pull request #1796: Standardise accordion section headings font size (reduce height of section headings on mobile)](https://github.com/alphagov/govuk-frontend/pull/1796)
+- [#1778: Fix accordion underline hover state being removed when hovering plus/minus symbol](https://github.com/alphagov/govuk-frontend/pull/1778)
+- [#1765: Import textarea from character count](https://github.com/alphagov/govuk-frontend/pull/1765)
+- [#1753: Make backlink arrow consistent with breadcrumb component](https://github.com/alphagov/govuk-frontend/pull/1753)
+- [#1796: Standardise accordion section headings font size (reduce height of section headings on mobile)](https://github.com/alphagov/govuk-frontend/pull/1796)
 
 
 ## 3.6.0 (Feature release)
