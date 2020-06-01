@@ -1,4 +1,15 @@
-<div class="govuk-breadcrumbs{%- if params.classes %} {{ params.classes }}{% endif %}"{% for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+{# Set classes for this component #}
+{%- set classNames = "govuk-breadcrumbs " -%}
+
+{% if params.classes %}
+  {% set classNames = classNames + params.classes %}
+{% endif -%}
+
+{% if params.collapseOnMobile %}
+  {% set classNames = classNames + " govuk-breadcrumbs--collapse-on-mobile" %}
+{% endif -%}
+
+<div class="{{classNames}}"{% for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
   <ol class="govuk-breadcrumbs__list">
   {% for item in params.items %}
     {% if item.href %}

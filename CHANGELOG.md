@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 3.7.0 (Feature release)
+
 ### New features
 
 #### Add extra spacing between list items
