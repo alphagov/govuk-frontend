@@ -47,7 +47,7 @@ This was added in [pull request #1804: Allow components to be imported without d
 
 #### Collapse breadcrumb component on mobile
 
-You can now collapse the [breadcrumb](https://design-system.service.gov.uk/components/breadcrumbs/) component on mobile using the new `collapseOnMobile` option, so it:
+You can now [collapse the breadcrumb component on mobile](https://design-system.service.gov.uk/components/breadcrumbs/#collapsing-breadcrumbs-on-mobile-devices) using the new `collapseOnMobile` option, so it:
 
 - shows only the first and last items
 - does not wrap
