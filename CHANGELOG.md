@@ -70,9 +70,9 @@ This was added in [pull request #1753: Make back link arrow consistent with brea
 
 #### Importing from the `core` and `overrides` layers without `base`
 
-If you import specific files from the `core` or `overrides` layers, you now need to import `node_modules/govuk-frontend/govuk/base` first.
+If you import specific files from the `core` or `overrides` layers, you’ll now see a deprecation warning when compiling Sass if you do not import `node_modules/govuk-frontend/govuk/base` first.
 
-For example:
+To fix the warning, import `node_modules/govuk-frontend/govuk/base` first. For example:
 
 ```scss
 @import "node_modules/govuk-frontend/govuk/base";
