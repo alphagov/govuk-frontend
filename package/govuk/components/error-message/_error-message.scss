@@ -1,15 +1,2 @@
-@import "../../settings/all";
-@import "../../tools/all";
-@import "../../helpers/all";
-
-@include govuk-exports("govuk/component/error-message") {
-  .govuk-error-message {
-    @include govuk-font($size: 19, $weight: bold);
-
-    display: block;
-    margin-bottom: govuk-spacing(3);
-    clear: both;
-
-    color: $govuk-error-colour;
-  }
-}
+@import "../../base";
+@import "./index";

@@ -39,7 +39,13 @@
                 "name": "text",
                 "type": "string",
                 "required": false,
-                "description": "Text of the navigation item."
+                "description": "Text for the navigation item. If `html` is provided, the `text` argument will be ignored."
+            },
+            {
+                "name": "html",
+                "type": "string",
+                "required": false,
+                "description": "HTML for the navigation item. If `html` is provided, the `text` argument will be ignored."
             },
             {
                 "name": "href",
