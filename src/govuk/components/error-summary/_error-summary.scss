@@ -49,6 +49,7 @@
 
     &:hover {
       @include govuk-hovered-text;
+      box-shadow: 0 -2px transparent, 0 4px $govuk-error-colour;
     }
 
     // Override default link styling to use error colour

@@ -109,15 +109,6 @@
       text-decoration: none;
     }
 
-    &:hover,
-    &:active {
-      // Negate the added border
-      margin-bottom: -1px;
-      // Omitting colour will use default value of currentColor – if we
-      // specified currentColor explicitly IE8 would ignore this rule.
-      border-bottom: 1px solid;
-    }
-
     // Remove any borders that show when focused and hovered.
     &:focus {
       margin-bottom: 0;
