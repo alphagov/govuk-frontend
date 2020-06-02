@@ -43,6 +43,15 @@
   .govuk-error-summary__list a {
     @include govuk-typography-weight-bold;
 
+    &:focus {
+      @include govuk-focused-text;
+    }
+
+    &:hover {
+      @include govuk-hovered-text;
+      box-shadow: 0 -2px transparent, 0 3px $govuk-error-colour;
+    }
+
     // Override default link styling to use error colour
     &:link,
     &:visited,
@@ -51,9 +60,6 @@
       color: $govuk-error-colour;
     }
 
-    &:focus {
-      @include govuk-focused-text;
-    }
   }
 
 }

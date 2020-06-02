@@ -62,6 +62,19 @@
       text-decoration: none;
     }
 
+    // If user sets `$govuk-global-styles: true` it messes with the new for hover state for
+    // <a> tags styled as buttons
+    // Override the styles that are coming through to the button for now
+    // This is a terrible solution really but it's just to fix a prototype while do user research
+    // We'll look at a better solution when we publish the hover styles
+    @if ($govuk-global-styles) {
+      &:hover:not(:focus) {
+        color: $govuk-button-text-colour;
+        background-color: $govuk-button-hover-colour;
+        box-shadow: 0 $button-shadow-size 0 $govuk-button-shadow-colour;
+      }
+    }
+
     // Fix unwanted button padding in Firefox
     &::-moz-focus-inner {
       padding: 0;

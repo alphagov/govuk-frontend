@@ -26,3 +26,17 @@
   // box shadow adds the "underline"
   text-decoration: none;
 }
+
+@mixin govuk-hovered-text {
+
+  // @include govuk-not-ie8 {
+  //   outline: $govuk-focus-width solid transparent;
+  // }
+
+  color: $govuk-link-colour;
+  background-color: transparent;
+  box-shadow: 0 -2px transparent, 0 3px $govuk-link-colour;
+  // When link is focussed, hide the default underline since the
+  // box shadow adds the "underline"
+  text-decoration: none;
+}

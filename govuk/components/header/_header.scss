@@ -76,7 +76,9 @@
     }
 
     &:hover {
-      text-decoration: underline;
+      @include govuk-hovered-text;
+      color: $govuk-header-text;
+      box-shadow: 0 -2px transparent, 0 3px $govuk-header-text;
     }
 
     &:focus {
@@ -105,15 +107,6 @@
     &:link,
     &:visited {
       text-decoration: none;
-    }
-
-    &:hover,
-    &:active {
-      // Negate the added border
-      margin-bottom: -1px;
-      // Omitting colour will use default value of currentColor – if we
-      // specified currentColor explicitly IE8 would ignore this rule.
-      border-bottom: 1px solid;
     }
 
     // Remove any borders that show when focused and hovered.
@@ -255,6 +248,10 @@
       &:hover,
       &:visited {
         color: $govuk-header-link-active;
+      }
+
+      &:hover {
+        color: $govuk-header-text;
       }
 
       // When focussed, the text colour needs to be darker to ensure that colour

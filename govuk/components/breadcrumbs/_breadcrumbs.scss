@@ -114,5 +114,10 @@
   .govuk-breadcrumbs__link {
     @include govuk-link-common;
     @include govuk-link-style-text;
+
+    &:hover:not(:focus) {
+      color: govuk-colour("black");
+      box-shadow: 0 -2px transparent, 0 3px govuk-colour("black");
+    }
   }
 }

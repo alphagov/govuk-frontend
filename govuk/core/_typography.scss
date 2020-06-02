@@ -131,6 +131,13 @@
 
   .govuk-body-s {
     @extend %govuk-body-s;
+
+    .govuk-link {
+      &:hover {
+        box-shadow: 0 -2px transparent, 0 2px $govuk-link-colour;
+      }
+    }
+
   }
 
   %govuk-body-xs {
