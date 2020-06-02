@@ -113,7 +113,7 @@
 
     &:hover:not(:focus) {
       color: govuk-colour("black");
-      box-shadow: 0 -2px transparent, 0 4px govuk-colour("black");
+      box-shadow: 0 -2px transparent, 0 3px govuk-colour("black");
     }
   }
 }

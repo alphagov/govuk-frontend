@@ -78,7 +78,7 @@
     &:hover {
       @include govuk-hovered-text;
       color: $govuk-header-text;
-      box-shadow: 0 -2px transparent, 0 4px $govuk-header-text;
+      box-shadow: 0 -2px transparent, 0 3px $govuk-header-text;
     }
 
     &:focus {

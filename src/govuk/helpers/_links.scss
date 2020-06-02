@@ -97,7 +97,7 @@
 
   &:hover:not(:focus) {
     color: $govuk-secondary-text-colour;
-    box-shadow: 0 -2px transparent, 0 4px $govuk-secondary-text-colour;
+    box-shadow: 0 -2px transparent, 0 3px $govuk-secondary-text-colour;
   }
 
   // When focussed, the text colour needs to be darker to ensure that colour
