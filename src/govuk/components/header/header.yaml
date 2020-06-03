@@ -187,6 +187,7 @@ examples:
 - name: navigation item with html
   data:
     serviceName: Service Name
+    serviceUrl: '/components/header'
     navigation:
       - href: '#1'
         html: <em>Navigation item 1</em>
