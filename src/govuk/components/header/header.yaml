@@ -18,7 +18,7 @@ params:
 - name: serviceUrl
   type: string
   required: false
-  description: Url for the service name anchor.
+  description: Url for the service name anchor. Defaults to / but is only rendered if serviceName is also present
 - name: navigation
   type: array
   required: false

@@ -84,6 +84,18 @@ describe('header', () => {
       const $component = $('.govuk-header')
       const $serviceName = $component.find('.govuk-header__link--service-name')
       expect($serviceName.text().trim()).toEqual('Service Name')
+      expect($serviceName.attr('href')).toEqual('/components/header')
+    })
+
+    it('renders with a default serviceUrl', () => {
+      const $ = render('header', {
+        serviceName: 'Service Name'
+      })
+
+      const $component = $('.govuk-header')
+      const $serviceName = $component.find('.govuk-header__link--service-name')
+      expect($serviceName.text().trim()).toEqual('Service Name')
+      expect($serviceName.attr('href')).toEqual('/')
     })
   })
 

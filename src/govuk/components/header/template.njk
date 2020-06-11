@@ -55,7 +55,7 @@
     {% if params.serviceName or params.navigation  %}
     <div class="govuk-header__content">
     {% if params.serviceName %}
-    <a href="{{ params.serviceUrl }}" class="govuk-header__link govuk-header__link--service-name">
+    <a href="{{ params.serviceUrl | default('/') }}" class="govuk-header__link govuk-header__link--service-name">
       {{ params.serviceName }}
     </a>
     {% endif %}

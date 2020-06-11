@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+### Breaking changes
+
+#### Header `serviceUrl` param now defaults to `/`
+
+When specifying `serviceName` to render a link in the header component, `serviceUrl` now defaults to `/` where previously it would have rendered an empty `href` attribute on the link.
+
 ## 3.7.0 (Feature release)
 
 ### New features
