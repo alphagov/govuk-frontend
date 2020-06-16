@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+### New features
+
+#### Darkened secondary text colour
+
+We darkened `govuk-colour("dark-grey")` to improve the readability of hint text. It now has a contrast ratio of 7:1 and helps hint text meet the WCAG 2.1 (AAA) accessibility standard.
+
 ### Fixes
 
 We’ve made fixes to GOV.UK Frontend in the following pull requests:
