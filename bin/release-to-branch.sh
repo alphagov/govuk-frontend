@@ -10,7 +10,7 @@ if [[ -n $(git status --porcelain) ]]; then
   exit 1
 fi
 
-# Remove local branch is it already exists
+# Remove local branch if it already exists
 if [ `git branch --list $BRANCH_NAME` ]; then
   echo "⚠️ Cleaning up branch $BRANCH_NAME that already exists."
   git branch -D $BRANCH_NAME
