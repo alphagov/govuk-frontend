@@ -1,5 +1,6 @@
 import '../../vendor/polyfills/Function/prototype/bind'
-import '../../vendor/polyfills/Event' // addEventListener and event.target normaliziation
+// addEventListener, event.target normalization and DOMContentLoaded
+import '../../vendor/polyfills/Event'
 import '../../vendor/polyfills/Element/prototype/classList'
 import { nodeListForEach } from '../../common'
 
@@ -29,11 +30,30 @@ Checkboxes.prototype.init = function () {
     // If we have content that is controlled, set attributes.
     $input.setAttribute('aria-controls', controls)
     $input.removeAttribute('data-aria-controls')
-    this.setAttributes($input)
-  }.bind(this))
+  })
+
+  if (document.readyState === 'loading') {
+    window.addEventListener('DOMContentLoaded', this.syncState.bind(this))
+  } else {
+    this.syncState()
+  }
+
+  // When the page is restored after navigating 'back' in some browsers the
+  // state of form controls is not restored until *after* the DOMContentLoaded
+  // event is fired, so we need to sync after the pageshow event is fired as
+  // well.
+  //
+  // (Older browsers don't have a pageshow event, so we do both.)
+  window.addEventListener('pageshow', this.syncState.bind(this))
 
   // Handle events
   $module.addEventListener('click', this.handleClick.bind(this))
+}
+
+Checkboxes.prototype.syncState = function () {
+  nodeListForEach(this.$inputs, function ($input) {
+    this.setAttributes($input)
+  }.bind(this))
 }
 
 Checkboxes.prototype.setAttributes = function ($input) {
