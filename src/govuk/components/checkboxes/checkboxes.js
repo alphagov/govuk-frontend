@@ -22,7 +22,7 @@ Checkboxes.prototype.init = function () {
 
     // Check if input controls anything
     // Check if content exists, before setting attributes.
-    if (!controls || !$module.querySelector('#' + controls)) {
+    if (!controls || !document.getElementById(controls)) {
       return
     }
 
@@ -40,7 +40,7 @@ Checkboxes.prototype.setAttributes = function ($input) {
   var inputIsChecked = $input.checked
   $input.setAttribute('aria-expanded', inputIsChecked)
 
-  var $content = this.$module.querySelector('#' + $input.getAttribute('aria-controls'))
+  var $content = document.getElementById($input.getAttribute('aria-controls'))
   if ($content) {
     $content.classList.toggle('govuk-checkboxes__conditional--hidden', !inputIsChecked)
   }

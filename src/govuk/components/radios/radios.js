@@ -21,7 +21,7 @@ Radios.prototype.init = function () {
 
     // Check if input controls anything
     // Check if content exists, before setting attributes.
-    if (!controls || !$module.querySelector('#' + controls)) {
+    if (!controls || !document.getElementById(controls)) {
       return
     }
 
@@ -36,7 +36,7 @@ Radios.prototype.init = function () {
 }
 
 Radios.prototype.setAttributes = function ($input) {
-  var $content = document.querySelector('#' + $input.getAttribute('aria-controls'))
+  var $content = document.getElementById($input.getAttribute('aria-controls'))
 
   if ($content && $content.classList.contains('govuk-radios__conditional')) {
     var inputIsChecked = $input.checked
