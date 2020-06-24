@@ -41,7 +41,7 @@ Checkboxes.prototype.setAttributes = function ($input) {
   $input.setAttribute('aria-expanded', inputIsChecked)
 
   var $content = document.getElementById($input.getAttribute('aria-controls'))
-  if ($content) {
+  if ($content && $content.classList.contains('govuk-checkboxes__conditional')) {
     $content.classList.toggle('govuk-checkboxes__conditional--hidden', !inputIsChecked)
   }
 }
