@@ -56,11 +56,12 @@ Checkboxes.prototype.syncAll = function () {
 }
 
 Checkboxes.prototype.syncWithInputState = function ($input) {
-  var inputIsChecked = $input.checked
-  $input.setAttribute('aria-expanded', inputIsChecked)
-
   var $content = this.$module.querySelector('#' + $input.getAttribute('aria-controls'))
+
   if ($content) {
+    var inputIsChecked = $input.checked
+
+    $input.setAttribute('aria-expanded', inputIsChecked)
     $content.classList.toggle('govuk-checkboxes__conditional--hidden', !inputIsChecked)
   }
 }
