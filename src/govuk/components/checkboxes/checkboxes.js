@@ -37,27 +37,27 @@ Checkboxes.prototype.init = function () {
   // event is fired, so we need to sync after the pageshow event in browsers
   // that support it.
   if ('onpageshow' in window) {
-    window.addEventListener('pageshow', this.syncState.bind(this))
+    window.addEventListener('pageshow', this.syncAll.bind(this))
   } else {
-    window.addEventListener('DOMContentLoaded', this.syncState.bind(this))
+    window.addEventListener('DOMContentLoaded', this.syncAll.bind(this))
   }
 
   // Although we've set up handlers to sync state on the pageshow or
   // DOMContentLoaded event, init could be called after those events have fired,
   // for example if they are added to the page dynamically, so sync now too.
-  this.syncState()
+  this.syncAll()
 
   // Handle events
   $module.addEventListener('click', this.handleClick.bind(this))
 }
 
-Checkboxes.prototype.syncState = function () {
+Checkboxes.prototype.syncAll = function () {
   nodeListForEach(this.$inputs, function ($input) {
-    this.setAttributes($input)
+    this.syncWithInputState($input)
   }.bind(this))
 }
 
-Checkboxes.prototype.setAttributes = function ($input) {
+Checkboxes.prototype.syncWithInputState = function ($input) {
   var inputIsChecked = $input.checked
   $input.setAttribute('aria-expanded', inputIsChecked)
 
@@ -74,7 +74,7 @@ Checkboxes.prototype.handleClick = function (event) {
   var isCheckbox = $target.getAttribute('type') === 'checkbox'
   var hasAriaControls = $target.getAttribute('aria-controls')
   if (isCheckbox && hasAriaControls) {
-    this.setAttributes($target)
+    this.syncWithInputState($target)
   }
 }
 

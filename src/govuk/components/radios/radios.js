@@ -37,27 +37,27 @@ Radios.prototype.init = function () {
   // event is fired, so we need to sync after the pageshow event in browsers
   // that support it.
   if ('onpageshow' in window) {
-    window.addEventListener('pageshow', this.syncState.bind(this))
+    window.addEventListener('pageshow', this.syncAll.bind(this))
   } else {
-    window.addEventListener('DOMContentLoaded', this.syncState.bind(this))
+    window.addEventListener('DOMContentLoaded', this.syncAll.bind(this))
   }
 
   // Although we've set up handlers to sync state on the pageshow or
   // DOMContentLoaded event, init could be called after those events have fired,
   // for example if they are added to the page dynamically, so sync now too.
-  this.syncState()
+  this.syncAll()
 
   // Handle events
   $module.addEventListener('click', this.handleClick.bind(this))
 }
 
-Radios.prototype.syncState = function () {
+Radios.prototype.syncAll = function () {
   nodeListForEach(this.$inputs, function ($input) {
-    this.setAttributes($input)
+    this.syncWithInputState($input)
   }.bind(this))
 }
 
-Radios.prototype.setAttributes = function ($input) {
+Radios.prototype.syncWithInputState = function ($input) {
   var $content = document.querySelector('#' + $input.getAttribute('aria-controls'))
 
   if ($content && $content.classList.contains('govuk-radios__conditional')) {
@@ -87,7 +87,7 @@ Radios.prototype.handleClick = function (event) {
     // In radios, only radios with the same name will affect each other.
     var hasSameName = ($input.name === $clickedInput.name)
     if (hasSameName && hasSameFormOwner) {
-      this.setAttributes($input)
+      this.syncWithInputState($input)
     }
   }.bind(this))
 }
