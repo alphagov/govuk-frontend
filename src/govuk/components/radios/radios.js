@@ -13,22 +13,18 @@ Radios.prototype.init = function () {
   var $module = this.$module
   var $inputs = this.$inputs
 
-  /**
-  * Loop over all items with [data-controls]
-  * Check if they have a matching conditional reveal
-  * If they do, assign attributes.
-  **/
   nodeListForEach($inputs, function ($input) {
-    var controls = $input.getAttribute('data-aria-controls')
+    var target = $input.getAttribute('data-aria-controls')
 
-    // Check if input controls anything
-    // Check if content exists, before setting attributes.
-    if (!controls || !$module.querySelector('#' + controls)) {
+    // Skip radios without data-aria-controls attributes, or where the
+    // target element does not exist.
+    if (!target || !$module.querySelector('#' + target)) {
       return
     }
 
-    // If we have content that is controlled, set attributes.
-    $input.setAttribute('aria-controls', controls)
+    // Promote the data-aria-controls attribute to a aria-controls attribute
+    // so that the relationship is exposed in the AOM
+    $input.setAttribute('aria-controls', target)
     $input.removeAttribute('data-aria-controls')
   })
 
@@ -62,28 +58,30 @@ Radios.prototype.syncWithInputState = function ($input) {
     var inputIsChecked = $input.checked
 
     $input.setAttribute('aria-expanded', inputIsChecked)
-
     $content.classList.toggle('govuk-radios__conditional--hidden', !inputIsChecked)
   }
 }
 
 Radios.prototype.handleClick = function (event) {
   var $clickedInput = event.target
-  // We only want to handle clicks for radio inputs
+
+  // Ignore clicks on things that aren't radio buttons
   if ($clickedInput.type !== 'radio') {
     return
   }
-  // Because checking one radio can uncheck a radio in another $module,
-  // we need to call set attributes on all radios in the same form, or document if they're not in a form.
-  //
-  // We also only want radios which have aria-controls, as they support conditional reveals.
-  var $allInputs = document.querySelectorAll('input[type="radio"][aria-controls]')
-  nodeListForEach($allInputs, function ($input) {
-    // Only inputs with the same form owner should change.
-    var hasSameFormOwner = ($input.form === $clickedInput.form)
 
-    // In radios, only radios with the same name will affect each other.
+  // Because checking one radio can un-check a radio in another $module, we need
+  // to call set attributes on all radios in the same form that have the same
+  // name.
+  //
+  // We only need to consider radios with conditional reveals, which will have
+  // aria-controls attributes.
+  var $allInputs = document.querySelectorAll('input[type="radio"][aria-controls]')
+
+  nodeListForEach($allInputs, function ($input) {
+    var hasSameFormOwner = ($input.form === $clickedInput.form)
     var hasSameName = ($input.name === $clickedInput.name)
+
     if (hasSameName && hasSameFormOwner) {
       this.syncWithInputState($input)
     }

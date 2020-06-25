@@ -13,22 +13,18 @@ Checkboxes.prototype.init = function () {
   var $module = this.$module
   var $inputs = this.$inputs
 
-  /**
-  * Loop over all items with [data-controls]
-  * Check if they have a matching conditional reveal
-  * If they do, assign attributes.
-  **/
   nodeListForEach($inputs, function ($input) {
-    var controls = $input.getAttribute('data-aria-controls')
+    var target = $input.getAttribute('data-aria-controls')
 
-    // Check if input controls anything
-    // Check if content exists, before setting attributes.
-    if (!controls || !$module.querySelector('#' + controls)) {
+    // Skip checkboxes without data-aria-controls attributes, or where the
+    // target element does not exist.
+    if (!target || !$module.querySelector('#' + target)) {
       return
     }
 
-    // If we have content that is controlled, set attributes.
-    $input.setAttribute('aria-controls', controls)
+    // Promote the data-aria-controls attribute to a aria-controls attribute
+    // so that the relationship is exposed in the AOM
+    $input.setAttribute('aria-controls', target)
     $input.removeAttribute('data-aria-controls')
   })
 
@@ -47,7 +43,6 @@ Checkboxes.prototype.init = function () {
   // for example if they are added to the page dynamically, so sync now too.
   this.syncAll()
 
-  // Handle events
   $module.addEventListener('click', this.handleClick.bind(this))
 }
 
