@@ -32,19 +32,20 @@ Radios.prototype.init = function () {
     $input.removeAttribute('data-aria-controls')
   })
 
-  if (document.readyState === 'loading') {
-    window.addEventListener('DOMContentLoaded', this.syncState.bind(this))
-  } else {
-    this.syncState()
-  }
-
   // When the page is restored after navigating 'back' in some browsers the
   // state of form controls is not restored until *after* the DOMContentLoaded
-  // event is fired, so we need to sync after the pageshow event is fired as
-  // well.
-  //
-  // (Older browsers don't have a pageshow event, so we do both.)
-  window.addEventListener('pageshow', this.syncState.bind(this))
+  // event is fired, so we need to sync after the pageshow event in browsers
+  // that support it.
+  if ('onpageshow' in window) {
+    window.addEventListener('pageshow', this.syncState.bind(this))
+  } else {
+    window.addEventListener('DOMContentLoaded', this.syncState.bind(this))
+  }
+
+  // Although we've set up handlers to sync state on the pageshow or
+  // DOMContentLoaded event, init could be called after those events have fired,
+  // for example if they are added to the page dynamically, so sync now too.
+  this.syncState()
 
   // Handle events
   $module.addEventListener('click', this.handleClick.bind(this))
