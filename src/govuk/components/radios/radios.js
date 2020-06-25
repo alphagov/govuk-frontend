@@ -52,9 +52,7 @@ Radios.prototype.init = function () {
 }
 
 Radios.prototype.syncAll = function () {
-  nodeListForEach(this.$inputs, function ($input) {
-    this.syncWithInputState($input)
-  }.bind(this))
+  nodeListForEach(this.$inputs, this.syncWithInputState.bind(this))
 }
 
 Radios.prototype.syncWithInputState = function ($input) {
