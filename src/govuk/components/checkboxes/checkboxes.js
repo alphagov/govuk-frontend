@@ -1,5 +1,6 @@
 import '../../vendor/polyfills/Function/prototype/bind'
-import '../../vendor/polyfills/Event' // addEventListener and event.target normaliziation
+// addEventListener, event.target normalization and DOMContentLoaded
+import '../../vendor/polyfills/Event'
 import '../../vendor/polyfills/Element/prototype/classList'
 import { nodeListForEach } from '../../common'
 
@@ -29,14 +30,32 @@ Checkboxes.prototype.init = function () {
     // If we have content that is controlled, set attributes.
     $input.setAttribute('aria-controls', controls)
     $input.removeAttribute('data-aria-controls')
-    this.setAttributes($input)
-  }.bind(this))
+  })
+
+  // When the page is restored after navigating 'back' in some browsers the
+  // state of form controls is not restored until *after* the DOMContentLoaded
+  // event is fired, so we need to sync after the pageshow event in browsers
+  // that support it.
+  if ('onpageshow' in window) {
+    window.addEventListener('pageshow', this.syncAll.bind(this))
+  } else {
+    window.addEventListener('DOMContentLoaded', this.syncAll.bind(this))
+  }
+
+  // Although we've set up handlers to sync state on the pageshow or
+  // DOMContentLoaded event, init could be called after those events have fired,
+  // for example if they are added to the page dynamically, so sync now too.
+  this.syncAll()
 
   // Handle events
   $module.addEventListener('click', this.handleClick.bind(this))
 }
 
-Checkboxes.prototype.setAttributes = function ($input) {
+Checkboxes.prototype.syncAll = function () {
+  nodeListForEach(this.$inputs, this.syncWithInputState.bind(this))
+}
+
+Checkboxes.prototype.syncWithInputState = function ($input) {
   var inputIsChecked = $input.checked
   $input.setAttribute('aria-expanded', inputIsChecked)
 
@@ -53,7 +72,7 @@ Checkboxes.prototype.handleClick = function (event) {
   var isCheckbox = $target.getAttribute('type') === 'checkbox'
   var hasAriaControls = $target.getAttribute('aria-controls')
   if (isCheckbox && hasAriaControls) {
-    this.setAttributes($target)
+    this.syncWithInputState($target)
   }
 }
 
