@@ -67,8 +67,9 @@
 npm logout
 ```
 
-17. Send a message to our users in both the X-GOV and GDS #govuk-design-system slack channels that indicates
-there's a new release with a short summary.
+17. Publish a short summary of the release in the cross-government and GDS #govuk-design-system Slack channels. For example:
+
+    🚀 We’ve just released GOV.‌UK Frontend v3.7.0. It's now easier and faster to use our Sass. We've also made improvements to back links, breadcrumbs, lists and the header. [https://github.com/alphagov/govuk-frontend/releases/tag/v3.7.0](https://github.com/alphagov/govuk-frontend/releases/tag/v3.7.0)
 
 18. Move cards on the [Sprint board](https://github.com/orgs/alphagov/projects/4) from "Ready to Release" column to "Done".
 
