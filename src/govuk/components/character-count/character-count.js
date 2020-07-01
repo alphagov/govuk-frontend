@@ -50,13 +50,8 @@ CharacterCount.prototype.init = function () {
   // Remove hard limit if set
   $module.removeAttribute('maxlength')
 
-  // Bind event changes to the textarea
-  var boundChangeEvents = this.bindChangeEvents.bind(this)
-  boundChangeEvents()
-
-  // Update count message
-  var boundUpdateCountMessage = this.updateCountMessage.bind(this)
-  boundUpdateCountMessage()
+  this.bindChangeEvents()
+  this.updateCountMessage()
 }
 
 // Read data attributes
@@ -104,8 +99,7 @@ CharacterCount.prototype.checkIfValueChanged = function () {
   if (!this.$textarea.oldValue) this.$textarea.oldValue = ''
   if (this.$textarea.value !== this.$textarea.oldValue) {
     this.$textarea.oldValue = this.$textarea.value
-    var boundUpdateCountMessage = this.updateCountMessage.bind(this)
-    boundUpdateCountMessage()
+    this.updateCountMessage()
   }
 }
 
