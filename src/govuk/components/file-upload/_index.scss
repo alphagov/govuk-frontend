@@ -59,9 +59,6 @@
 
     &:focus {
       border-color: $govuk-input-border-colour;
-      // Remove `box-shadow` inherited from `:focus` as `file-upload--error`
-      // already has the thicker border.
-      box-shadow: none;
     }
 
     // Repeat `:focus` styles to prevent error styles from being applied when
@@ -71,7 +68,6 @@
     // when it's a selector.
     &:focus-within {
       border-color: $govuk-input-border-colour;
-      box-shadow: none;
     }
   }
 }
