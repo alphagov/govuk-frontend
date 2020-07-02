@@ -55,14 +55,6 @@
     margin-left: -$component-padding;
     padding-right: $component-padding;
     padding-left: $component-padding;
-    border: $govuk-border-width-form-element-error solid $govuk-error-colour;
-
-    &:focus {
-      border-color: $govuk-input-border-colour;
-      // Remove `box-shadow` inherited from `:focus` as `file-upload--error`
-      // already has the thicker border.
-      box-shadow: none;
-    }
 
     // Repeat `:focus` styles to prevent error styles from being applied when
     // input button is pressed as this moves the focus to "within".
@@ -71,7 +63,6 @@
     // when it's a selector.
     &:focus-within {
       border-color: $govuk-input-border-colour;
-      box-shadow: none;
     }
   }
 }

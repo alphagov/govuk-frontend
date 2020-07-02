@@ -42,9 +42,6 @@
 
     &:focus {
       border-color: $govuk-input-border-colour;
-      // Remove `box-shadow` inherited from `:focus` as `textarea--error`
-      // already has the thicker border.
-      box-shadow: none;
     }
 
   }

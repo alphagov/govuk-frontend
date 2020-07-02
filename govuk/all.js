@@ -1687,14 +1687,32 @@ Checkboxes.prototype.init = function () {
     // If we have content that is controlled, set attributes.
     $input.setAttribute('aria-controls', controls);
     $input.removeAttribute('data-aria-controls');
-    this.setAttributes($input);
-  }.bind(this));
+  });
+
+  // When the page is restored after navigating 'back' in some browsers the
+  // state of form controls is not restored until *after* the DOMContentLoaded
+  // event is fired, so we need to sync after the pageshow event in browsers
+  // that support it.
+  if ('onpageshow' in window) {
+    window.addEventListener('pageshow', this.syncAll.bind(this));
+  } else {
+    window.addEventListener('DOMContentLoaded', this.syncAll.bind(this));
+  }
+
+  // Although we've set up handlers to sync state on the pageshow or
+  // DOMContentLoaded event, init could be called after those events have fired,
+  // for example if they are added to the page dynamically, so sync now too.
+  this.syncAll();
 
   // Handle events
   $module.addEventListener('click', this.handleClick.bind(this));
 };
 
-Checkboxes.prototype.setAttributes = function ($input) {
+Checkboxes.prototype.syncAll = function () {
+  nodeListForEach(this.$inputs, this.syncWithInputState.bind(this));
+};
+
+Checkboxes.prototype.syncWithInputState = function ($input) {
   var inputIsChecked = $input.checked;
   $input.setAttribute('aria-expanded', inputIsChecked);
 
@@ -1711,7 +1729,7 @@ Checkboxes.prototype.handleClick = function (event) {
   var isCheckbox = $target.getAttribute('type') === 'checkbox';
   var hasAriaControls = $target.getAttribute('aria-controls');
   if (isCheckbox && hasAriaControls) {
-    this.setAttributes($target);
+    this.syncWithInputState($target);
   }
 };
 
@@ -1959,11 +1977,12 @@ Header.prototype.handleClick = function (event) {
 
 function Radios ($module) {
   this.$module = $module;
+  this.$inputs = $module.querySelectorAll('input[type="radio"]');
 }
 
 Radios.prototype.init = function () {
   var $module = this.$module;
-  var $inputs = $module.querySelectorAll('input[type="radio"]');
+  var $inputs = this.$inputs;
 
   /**
   * Loop over all items with [data-controls]
@@ -1982,14 +2001,32 @@ Radios.prototype.init = function () {
     // If we have content that is controlled, set attributes.
     $input.setAttribute('aria-controls', controls);
     $input.removeAttribute('data-aria-controls');
-    this.setAttributes($input);
-  }.bind(this));
+  });
+
+  // When the page is restored after navigating 'back' in some browsers the
+  // state of form controls is not restored until *after* the DOMContentLoaded
+  // event is fired, so we need to sync after the pageshow event in browsers
+  // that support it.
+  if ('onpageshow' in window) {
+    window.addEventListener('pageshow', this.syncAll.bind(this));
+  } else {
+    window.addEventListener('DOMContentLoaded', this.syncAll.bind(this));
+  }
+
+  // Although we've set up handlers to sync state on the pageshow or
+  // DOMContentLoaded event, init could be called after those events have fired,
+  // for example if they are added to the page dynamically, so sync now too.
+  this.syncAll();
 
   // Handle events
   $module.addEventListener('click', this.handleClick.bind(this));
 };
 
-Radios.prototype.setAttributes = function ($input) {
+Radios.prototype.syncAll = function () {
+  nodeListForEach(this.$inputs, this.syncWithInputState.bind(this));
+};
+
+Radios.prototype.syncWithInputState = function ($input) {
   var $content = document.querySelector('#' + $input.getAttribute('aria-controls'));
 
   if ($content && $content.classList.contains('govuk-radios__conditional')) {
@@ -2019,7 +2056,7 @@ Radios.prototype.handleClick = function (event) {
     // In radios, only radios with the same name will affect each other.
     var hasSameName = ($input.name === $clickedInput.name);
     if (hasSameName && hasSameFormOwner) {
-      this.setAttributes($input);
+      this.syncWithInputState($input);
     }
   }.bind(this));
 };
