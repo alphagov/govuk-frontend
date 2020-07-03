@@ -8,6 +8,7 @@
 
     box-sizing: border-box;
     width: 100%;
+    min-width: 0;
     height: 40px;
     @if $govuk-typography-use-rem {
       height: govuk-px-to-rem(40px);
@@ -129,9 +130,15 @@
     border: $govuk-border-width-form-element solid $govuk-input-border-colour;
     background-color: govuk-colour("light-grey", $legacy: "grey-3");
 
+    @include govuk-media-query($until: tablet) {
+      line-height: 1.6;
+    }
+
     text-align: center;
     white-space: nowrap;
     cursor: default; // emphasise non-editable status of prefixes and suffixes
+
+    flex: 0 0 auto;
 
   }
 
