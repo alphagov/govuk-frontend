@@ -51,13 +51,13 @@ Checkboxes.prototype.syncAll = function () {
 }
 
 Checkboxes.prototype.syncWithInputState = function ($input) {
-  var $content = this.$module.querySelector('#' + $input.getAttribute('aria-controls'))
+  var $target = this.$module.querySelector('#' + $input.getAttribute('aria-controls'))
 
-  if ($content && $content.classList.contains('govuk-checkboxes__conditional')) {
+  if ($target && $target.classList.contains('govuk-checkboxes__conditional')) {
     var inputIsChecked = $input.checked
 
     $input.setAttribute('aria-expanded', inputIsChecked)
-    $content.classList.toggle('govuk-checkboxes__conditional--hidden', !inputIsChecked)
+    $target.classList.toggle('govuk-checkboxes__conditional--hidden', !inputIsChecked)
   }
 }
 

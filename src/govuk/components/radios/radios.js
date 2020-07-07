@@ -52,13 +52,13 @@ Radios.prototype.syncAll = function () {
 }
 
 Radios.prototype.syncWithInputState = function ($input) {
-  var $content = document.querySelector('#' + $input.getAttribute('aria-controls'))
+  var $target = document.querySelector('#' + $input.getAttribute('aria-controls'))
 
-  if ($content && $content.classList.contains('govuk-radios__conditional')) {
+  if ($target && $target.classList.contains('govuk-radios__conditional')) {
     var inputIsChecked = $input.checked
 
     $input.setAttribute('aria-expanded', inputIsChecked)
-    $content.classList.toggle('govuk-radios__conditional--hidden', !inputIsChecked)
+    $target.classList.toggle('govuk-radios__conditional--hidden', !inputIsChecked)
   }
 }
 
