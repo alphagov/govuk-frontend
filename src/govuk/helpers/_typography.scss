@@ -183,7 +183,7 @@
       @include govuk-typography-common;
       font-feature-settings: "tnum" 1;
 
-      @supports(font-variant-numeric: tabular-nums) {
+      @supports (font-variant-numeric: tabular-nums) {
         font-feature-settings: normal;
         font-variant-numeric: tabular-nums;
       }

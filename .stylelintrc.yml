@@ -2,7 +2,6 @@
 extends: stylelint-config-gds/scss
 ignoreFiles: src/govuk/vendor/**/*
 rules:
-  at-rule-name-space-after: ~
   block-closing-brace-empty-line-before: ~
   block-closing-brace-newline-before: ~
   declaration-block-trailing-semicolon: ~
