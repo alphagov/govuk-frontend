@@ -2,7 +2,6 @@
 extends: stylelint-config-gds/scss
 ignoreFiles: src/govuk/vendor/**/*
 rules:
-  declaration-colon-space-after: ~
   declaration-no-important: ~
   function-comma-newline-after: ~
   function-parentheses-newline-inside: ~
