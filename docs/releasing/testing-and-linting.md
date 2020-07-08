@@ -16,11 +16,11 @@ See [Tasks](tasks.md) for details of what `npm test` does.
 
 ## SASS linting
 
-See [CSS Coding Standards](coding-standards/css.md#linting) for details.
+See [CSS Coding Standards](/docs/contributing/coding-standards/css.md#linting) for details.
 
 ## Javascript linting
 
-See [JavaScript Coding Standards](coding-standards/js.md#formatting-and-linting) for details.
+See [JavaScript Coding Standards](/docs/contributing/coding-standards/js.md#formatting-and-linting) for details.
 
 ## Unit and functional tests with Node.js
 
