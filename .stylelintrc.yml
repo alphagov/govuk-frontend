@@ -3,7 +3,6 @@ extends: stylelint-config-gds/scss
 ignoreFiles: src/govuk/vendor/**/*
 rules:
   declaration-no-important: ~
-  function-parentheses-newline-inside: ~
   indentation: ~
   max-empty-lines: ~
   media-feature-name-no-unknown: ~

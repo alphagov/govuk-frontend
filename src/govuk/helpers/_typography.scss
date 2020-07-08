@@ -127,7 +127,8 @@
     $font-size-rem: govuk-px-to-rem($font-size);
 
     $line-height: _govuk-line-height(
-      $line-height: if($override-line-height,
+      $line-height: if(
+        $override-line-height,
         $override-line-height,
         map-get($breakpoint-map, "line-height")
       ),
