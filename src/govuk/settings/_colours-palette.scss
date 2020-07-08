@@ -13,11 +13,15 @@
 /// @type Boolean
 /// @access public
 
-$govuk-use-legacy-palette: if((
+$govuk-use-legacy-palette: if(
+  (
     $govuk-compatibility-govukfrontendtoolkit or
     $govuk-compatibility-govuktemplate or
     $govuk-compatibility-govukelements
-  ), true, false) !default;
+  ),
+  true, // sass-lint:disable-line indentation
+  false // sass-lint:disable-line indentation
+) !default;
 
 /// Modern colour palette
 ///

@@ -14,11 +14,15 @@
 /// @type Boolean
 /// @access public
 
-$govuk-use-legacy-font: if((
+$govuk-use-legacy-font: if(
+  (
     $govuk-compatibility-govukfrontendtoolkit or
     $govuk-compatibility-govuktemplate or
     $govuk-compatibility-govukelements
-  ), true, false) !default;
+  ),
+  true, // sass-lint:disable-line indentation
+  false // sass-lint:disable-line indentation
+) !default;
 
 // =========================================================
 // Font families
