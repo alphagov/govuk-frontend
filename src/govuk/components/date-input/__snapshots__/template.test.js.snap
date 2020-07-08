@@ -45,11 +45,11 @@ exports[`Date input passes through html fieldset params without breaking 1`] = `
 `;
 
 exports[`Date input when it includes a hint renders the hint 1`] = `
-<span id="dob-errors-hint"
-      class="govuk-hint"
+<div id="dob-errors-hint"
+     class="govuk-hint"
 >
   For example, 31 3 1980
-</span>
+</div>
 `;
 
 exports[`Date input when it includes an error message renders the error message 1`] = `
