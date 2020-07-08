@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Select when it includes a hint renders the hint 1`] = `
-<span id="select-with-hint-hint"
-      class="govuk-hint"
+<div id="select-with-hint-hint"
+     class="govuk-hint"
 >
   Hint text goes here
-</span>
+</div>
 `;
 
 exports[`Select when it includes an error message renders with error message 1`] = `
