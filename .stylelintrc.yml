@@ -4,7 +4,6 @@ ignoreFiles: src/govuk/vendor/**/*
 rules:
   declaration-no-important: ~
   indentation: ~
-  media-feature-parentheses-space-inside: ~
   no-duplicate-selectors: ~
   no-eol-whitespace: ~
   no-extra-semicolons: ~
