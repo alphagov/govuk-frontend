@@ -87,5 +87,5 @@ $sass-mq-already-included: true;
 @mixin govuk-media-query($args...) {
   @include mq($args...) {
     @content;
-  };
+  }
 }
