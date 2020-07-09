@@ -1,5 +1,4 @@
 @include govuk-exports("govuk/component/tabs") {
-
   .govuk-tabs {
     @include govuk-responsive-margin(1, "top");
     @include govuk-responsive-margin(6, "bottom");
@@ -51,7 +50,6 @@
   .js-enabled {
 
     @include govuk-media-query($from: tablet) {
-
       .govuk-tabs__list {
         @include govuk-clearfix;
         margin-bottom: 0;

@@ -1,5 +1,4 @@
 @include govuk-exports("govuk/component/panel") {
-
   .govuk-panel {
     @include govuk-font($size: 19);
 

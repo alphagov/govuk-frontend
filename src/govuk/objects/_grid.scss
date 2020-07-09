@@ -1,7 +1,6 @@
 @import "../base";
 
 @include govuk-exports("govuk/objects/grid") {
-
   .govuk-grid-row {
     @include govuk-clearfix;
     margin-right: - ($govuk-gutter-half);

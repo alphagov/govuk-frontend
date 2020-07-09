@@ -1,5 +1,4 @@
 @include govuk-exports("govuk/component/summary-list") {
-
   .govuk-summary-list {
     @include govuk-font($size: 19);
     @include govuk-text-colour;
