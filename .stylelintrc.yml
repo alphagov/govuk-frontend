@@ -5,4 +5,3 @@ rules:
   declaration-no-important: ~
   indentation: ~
   selector-pseudo-element-colon-notation: ~
-  value-list-max-empty-lines: ~
