@@ -59,6 +59,10 @@ params:
   type: string
   required: false
   description: Attribute to [provide a regular expression pattern](https://www.w3.org/TR/html51/sec-forms.html#the-pattern-attribute), used to match allowed character combinations for the input value.
+- name: spellcheck
+  type: boolean
+  required: false
+  description: Optional field to enable or disable the spellcheck attribute on the input.
 - name: attributes
   type: object
   required: false
@@ -182,3 +186,19 @@ examples:
       name: numbers-only
       type: number
       pattern: '[0-9]*'
+  - name: with spellcheck enabled
+    data:
+      label:
+        text: Spellcheck is enabled
+      id: input-with-spellcheck-enabled
+      name: spellcheck
+      type: text
+      spellcheck: true
+  - name: with spellcheck disabled
+    data:
+      label:
+        text: Spellcheck is disabled
+      id: input-with-spellcheck-disabled
+      name: spellcheck
+      type: text
+      spellcheck: false

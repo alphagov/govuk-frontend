@@ -244,6 +244,36 @@ describe('Input', () => {
     })
   })
 
+  describe('when it has the spellcheck attribute', () => {
+    it('renders with spellcheck attribute set to true', () => {
+      const $ = render('input', {
+        spellcheck: true
+      })
+
+      const $component = $('.govuk-input')
+      expect($component.attr('spellcheck')).toEqual('true')
+    })
+
+    it('renders with spellcheck attribute set to false', () => {
+      const $ = render('input', {
+        name: 'my-input-name',
+        spellcheck: false
+      })
+
+      const $component = $('.govuk-input')
+      expect($component.attr('spellcheck')).toEqual('false')
+    })
+
+    it('renders without spellcheck attribute by default', () => {
+      const $ = render('input', {
+        name: 'my-input-name'
+      })
+
+      const $component = $('.govuk-input')
+      expect($component.attr('spellcheck')).toBeUndefined()
+    })
+  })
+
   describe('when it includes both a hint and an error message', () => {
     it('associates the input as described by both the hint and the error message', () => {
       const $ = render('input', {
