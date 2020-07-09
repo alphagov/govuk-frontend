@@ -38,8 +38,6 @@
   }
 
   // Reduces visual spacing of legend when there is a hint
-
-  .govuk-fieldset__legend + .govuk-hint,
   .govuk-fieldset__legend + .govuk-hint {
     margin-top: -(govuk-spacing(1));
   }
