@@ -4,7 +4,6 @@ ignoreFiles: src/govuk/vendor/**/*
 rules:
   declaration-no-important: ~
   indentation: ~
-  scss/comment-no-loud: ~
   scss/operator-no-unspaced: ~
   selector-pseudo-element-colon-notation: ~
   selector-type-no-unknown: ~
