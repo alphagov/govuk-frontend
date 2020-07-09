@@ -5,5 +5,4 @@ rules:
   declaration-no-important: ~
   indentation: ~
   selector-pseudo-element-colon-notation: ~
-  value-keyword-case: ~
   value-list-max-empty-lines: ~
