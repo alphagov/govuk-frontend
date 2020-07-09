@@ -3,5 +3,4 @@ extends: stylelint-config-gds/scss
 ignoreFiles: src/govuk/vendor/**/*
 rules:
   declaration-no-important: ~
-  indentation: ~
   selector-pseudo-element-colon-notation: ~
