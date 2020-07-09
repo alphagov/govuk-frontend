@@ -103,6 +103,36 @@ describe('Textarea', () => {
     })
   })
 
+  describe('when it has the spellcheck attribute', () => {
+    it('renders with spellcheck attribute set to true', () => {
+      const $ = render('textarea', {
+        spellcheck: true
+      })
+
+      const $component = $('.govuk-textarea')
+      expect($component.attr('spellcheck')).toEqual('true')
+    })
+
+    it('renders with spellcheck attribute set to false', () => {
+      const $ = render('textarea', {
+        name: 'my-textarea-name',
+        spellcheck: false
+      })
+
+      const $component = $('.govuk-textarea')
+      expect($component.attr('spellcheck')).toEqual('false')
+    })
+
+    it('renders without spellcheck attribute by default', () => {
+      const $ = render('textarea', {
+        name: 'my-textarea-name'
+      })
+
+      const $component = $('.govuk-textarea')
+      expect($component.attr('spellcheck')).toBeUndefined()
+    })
+  })
+
   describe('when it includes a hint', () => {
     it('renders with hint', () => {
       const $ = render('textarea', {
