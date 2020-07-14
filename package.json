@@ -31,7 +31,7 @@
     "del": "^5.0.0",
     "eslint": "^6.8.0",
     "express": "^4.16.4",
-    "express-validator": "^5.3.1",
+    "express-validator": "^6.6.0",
     "front-matter": "^3.2.1",
     "glob": "^7.1.4",
     "govuk-elements-sass": "3.1.3",
