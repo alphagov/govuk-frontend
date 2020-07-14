@@ -498,21 +498,21 @@ describe('Date input', () => {
 
   describe('nested dependant components', () => {
     it('have correct nesting order', () => {
-      const $ = render('date-input', examples['default'])
+      const $ = render('date-input', examples.default)
 
       const $component = $('.govuk-form-group > .govuk-fieldset > .govuk-date-input')
       expect($component.length).toBeTruthy()
     })
 
     it('passes through label params without breaking', () => {
-      const $ = render('date-input', examples['default'])
+      const $ = render('date-input', examples.default)
 
       expect(htmlWithClassName($, '.govuk-date-input__label')).toMatchSnapshot()
     })
   })
 
   it('passes through fieldset params without breaking', () => {
-    const $ = render('date-input', examples['default'])
+    const $ = render('date-input', examples.default)
 
     expect(htmlWithClassName($, '.govuk-fieldset')).toMatchSnapshot()
   })

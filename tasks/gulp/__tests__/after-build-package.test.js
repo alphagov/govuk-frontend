@@ -102,7 +102,7 @@ describe('package/', () => {
   describe('component', () => {
     const componentNames = lib.allComponents.slice()
 
-    it.each(componentNames)(`'%s' should have macro-options.json that contains JSON`, (name) => {
+    it.each(componentNames)('\'%s\' should have macro-options.json that contains JSON', (name) => {
       const filePath = path.join(configPaths.package, 'govuk', 'components', name, 'macro-options.json')
       return readFile(filePath, 'utf8')
         .then((data) => {

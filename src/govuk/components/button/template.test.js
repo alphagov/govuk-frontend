@@ -158,7 +158,7 @@ describe('Button', () => {
 
   describe('with explicit input button set by "element"', () => {
     it('renders with anchor, href and an accessible role of button', () => {
-      const $ = render('button', examples['input'])
+      const $ = render('button', examples.input)
 
       const $component = $('.govuk-button')
       expect($component.get(0).tagName).toEqual('input')

@@ -7,7 +7,7 @@ const sassConfig = {
 }
 
 describe('@function govuk-colour', () => {
-  let sassBootstrap = ``
+  let sassBootstrap = ''
 
   beforeEach(() => {
     sassBootstrap = `

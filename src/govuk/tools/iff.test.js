@@ -17,7 +17,7 @@ describe('@function iff', () => {
 
     const results = await renderSass({ data: sass, ...sassConfig })
 
-    expect(results.css.toString().trim()).toBe(`.foo{color:red !important}`)
+    expect(results.css.toString().trim()).toBe('.foo{color:red !important}')
   })
 
   it('does not output if the condition is falsey', async () => {
@@ -30,6 +30,6 @@ describe('@function iff', () => {
 
     const results = await renderSass({ data: sass, ...sassConfig })
 
-    expect(results.css.toString().trim()).toBe(`.foo{color:red}`)
+    expect(results.css.toString().trim()).toBe('.foo{color:red}')
   })
 })

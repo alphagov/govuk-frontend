@@ -652,7 +652,7 @@ describe('Checkboxes', () => {
       $inputs.each((index, input) => {
         let expectedDescribedById = `waste-${(index + 1)}-item-hint`
         if (index === 0) {
-          expectedDescribedById = `waste-item-hint`
+          expectedDescribedById = 'waste-item-hint'
         }
         expect($(input).attr('aria-describedby')).toEqual(expectedDescribedById)
       })
