@@ -72,7 +72,7 @@
     "sass-color-helpers": "^2.1.1",
     "sassdoc": "^2.7.2",
     "shuffle-seed": "^1.1.6",
-    "standard": "^13.1.0",
+    "standard": "^14.3.4",
     "vinyl-paths": "^3.0.1",
     "yargs": "^15.4.1"
   },
