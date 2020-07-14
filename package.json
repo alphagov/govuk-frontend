@@ -51,7 +51,7 @@
     "gulp-task-listing": "^1.1.0",
     "gulp-uglify": "^3.0.2",
     "html5shiv": "^3.7.3",
-    "jest": "^24.8.0",
+    "jest": "^26.1.0",
     "jest-axe": "^3.4.0",
     "jest-puppeteer": "^4.4.0",
     "jest-serializer-html": "^7.0.0",
