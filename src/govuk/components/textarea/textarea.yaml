@@ -7,6 +7,10 @@ params:
   type: string
   required: true
   description: The name of the textarea, which is submitted with the form data.
+- name: spellcheck
+  type: boolean
+  required: false
+  description: Optional field to enable or disable the spellcheck attribute on the textarea.
 - name: rows
   type: string
   required: false
@@ -119,3 +123,21 @@ examples:
       label:
         text: Full address
       autocomplete: street-address
+
+  - name: with spellcheck enabled
+    data:
+      label:
+        text: Spellcheck is enabled
+      id: textarea-with-spellcheck-enabled
+      name: spellcheck
+      type: text
+      spellcheck: true
+
+  - name: with spellcheck disabled
+    data:
+      label:
+        text: Spellcheck is disabled
+      id: textarea-with-spellcheck-disabled
+      name: spellcheck
+      type: text
+      spellcheck: false

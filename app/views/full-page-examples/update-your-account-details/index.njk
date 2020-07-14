@@ -48,9 +48,7 @@ scenario: >-
           value: values["email"],
           errorMessage: errors["email"],
           autocomplete: "email",
-          attributes: {
-            spellcheck: false
-          }
+          spellcheck: false
         }) }}
 
         {{ govukInput({
@@ -64,9 +62,7 @@ scenario: >-
           value: values["password"],
           errorMessage: errors["password"],
           autocomplete: "new-password",
-          attributes: {
-            spellcheck: false
-          }
+          spellcheck: false
         }) }}
 
         {{ govukButton({

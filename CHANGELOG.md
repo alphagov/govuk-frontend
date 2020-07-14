@@ -8,6 +8,12 @@
 
 We darkened `govuk-colour("dark-grey")` to improve the readability of hint text. It now has a contrast ratio of 7:1 and helps hint text meet the WCAG 2.1 (AAA) accessibility standard.
 
+#### Add spellcheck parameter to input and textarea components
+
+Optional parameter added to the input and textarea components to enable or disable the spellcheck attribute
+
+([PR #1859](https://github.com/alphagov/govuk-frontend/pull/1859))
+
 ### Fixes
 
 We’ve made fixes to GOV.UK Frontend in the following pull requests:
