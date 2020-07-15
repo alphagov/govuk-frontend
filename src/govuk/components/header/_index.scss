@@ -167,7 +167,7 @@
       @include govuk-focused-text;
     }
 
-    &::after {
+    &:after {
       @include govuk-shape-arrow($direction: down, $base: 10px, $display: inline-block);
       content: "";
       margin-left: govuk-spacing(1);
@@ -179,7 +179,7 @@
   }
 
   .govuk-header__menu-button--open {
-    &::after {
+    &:after {
       @include govuk-shape-arrow($direction: up, $base: 10px, $display: inline-block);
     }
   }
