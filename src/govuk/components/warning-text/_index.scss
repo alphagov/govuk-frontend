@@ -13,13 +13,15 @@
   .govuk-warning-text__icon {
     @include govuk-font($size: false, $weight: bold);
 
+    box-sizing: border-box;
+
     display: inline-block;
 
     position: absolute;
     left: 0;
 
-    min-width: 29px;
-    min-height: 29px;
+    min-width: 35px;
+    min-height: 35px;
     margin-top: -7px;
 
     @include govuk-media-query($from: tablet) {
