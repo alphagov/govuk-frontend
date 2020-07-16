@@ -50,6 +50,20 @@ CharacterCount.prototype.init = function () {
   // Remove hard limit if set
   $module.removeAttribute('maxlength')
 
+  // When the page is restored after navigating 'back' in some browsers the
+  // state of the character count is not restored until *after* the DOMContentLoaded
+  // event is fired, so we need to sync after the pageshow event in browsers
+  // that support it.
+  if ('onpageshow' in window) {
+    window.addEventListener('pageshow', this.sync.bind(this))
+  } else {
+    window.addEventListener('DOMContentLoaded', this.sync.bind(this))
+  }
+
+  this.sync()
+}
+
+CharacterCount.prototype.sync = function () {
   this.bindChangeEvents()
   this.updateCountMessage()
 }
