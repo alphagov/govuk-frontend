@@ -1,0 +1,540 @@
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "details/macro.njk" import govukDetails %}
+{% from "header/macro.njk" import govukHeader %}
+{% from "error-summary/macro.njk" import govukErrorSummary %}
+{% from "tabs/macro.njk" import govukTabs %}
+{% from "table/macro.njk" import govukTable %}
+
+{% extends "layout.njk" %}
+
+{% block styles %}
+  <style>
+
+    .link-no-underline {
+      text-decoration: none;
+    }
+    
+    .slides {
+      background-color: #1d70b8;
+      color: #ffffff;
+      box-sizing: border-box;
+      padding: 15px;
+    }
+
+    .slides .govuk-body,
+    .slides .govuk-link,
+    .slides .govuk-heading-l,
+    .slides .govuk-heading-m {
+      color: #ffffff;
+    }
+
+    .slides .govuk-link:hover:not(:focus) {
+      color: #fff;
+      box-shadow: 0 -2px transparent, 0 3px #ffffff;
+    }
+
+    .slides .govuk-button {
+      background-color: #ffffff;
+      color: #1d70b8;
+      box-shadow: 0 2px 0 #134876;
+      font-weight: bold;
+    }
+
+    .slides.govuk-button:focus:not(:active):not(:hover) {
+      border-color: #ffdd00;
+      color: #0b0c0c;
+      background-color: #ffdd00;
+      box-shadow: 0 2px 0 #0b0c0c;
+    }
+
+    .slides .govuk-details__summary {
+      color: #ffffff;
+    }
+
+    .slides .govuk-details__summary:hover:not(:focus) {
+      color: #fff;
+      background-color: transparent;
+      box-shadow: 0 -2px transparent, 0 3px #ffffff;
+      text-decoration: none;
+    }
+
+    .slides .govuk-details__text {
+      color: #ffffff;
+      border-left: 5px solid #ffffff;
+    }
+
+    .light-grey-panel {
+      background-color: #f3f2f1;
+      padding: 15px;
+    }
+    
+  </style>
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    "href": "/"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+  
+      <h1 class="govuk-heading-xl">Hover states</h1>
+
+      <p class="govuk-body-l">
+        Examples of components to test hover and focus states with.
+      </p>
+
+      <!-- TYPOGRAPHY -->
+      <section>
+
+        <h2 class="govuk-heading-l">
+          Typography
+        </h2>
+      
+        <div class="govuk-!-margin-bottom-9">
+          <p class="govuk-body">
+            You can’t keep a pet pig at your home until you <a href="#?" class="govuk-link">get a county parish holding (CPH) number</a> from the Rural Payments Agency (RPA). You must also tell the <a href="#?" class="govuk-link">Animal and Plant Health Agency (APHA)</a> that you’re keeping pigs, within 30 days of your first pet pig arriving on your land.
+          </p>
+        </div>
+
+        <div class="govuk-!-margin-bottom-9">
+          <h2 class="govuk-heading-m">
+            <a href="#?" class="govuk-link">Link with underline</a>
+          </h2>
+          <h3 class="govuk-heading-s">
+            <a href="#?" class="govuk-link">Link with underline</a>
+          </h3>
+          <p class="govuk-body">
+            <a href="#?" class="govuk-link">Link with underline</a>
+          </p>
+          <p class="govuk-body-s">
+            <a href="#?" class="govuk-link">Link with underline</a>
+          </p>
+        </div>
+
+        <div class="govuk-!-margin-bottom-9">
+          <h2 class="govuk-heading-m">
+            <a href="#?" class="govuk-link link-no-underline">Link with no underline</a>
+          </h2>
+          <h3 class="govuk-heading-s">
+            <a href="#?" class="govuk-link link-no-underline">Link with no underline</a>
+          </h3>
+          <p class="govuk-body">
+            <a href="#?" class="govuk-link link-no-underline">Link with no underline</a>
+          </p>
+          <p class="govuk-body-s">
+            <a href="#?" class="govuk-link link-no-underline">Link with no underline</a>
+          </p>
+        </div>
+
+        <div class="govuk-!-margin-bottom-9">
+          {{ govukDetails({
+            summaryText: "Help with nationality",
+            text: "We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post."
+          }) }}
+        </div>
+      
+      </section>
+
+      <!-- NAVIGATION -->
+      <section>
+
+        <h2 class="govuk-heading-l">
+          Navigation
+        </h2>
+
+        <div class="govuk-header__container govuk-width-container govuk-!-margin-bottom-9">
+          {{ govukHeader({
+            homepageUrl: "#?",
+            serviceName: "Service name",
+            serviceUrl: "#?",
+            navigation: [
+              {
+                href: "#1",
+                text: "Navigation item 1",
+                active: true
+              },
+              {
+                href: "#2",
+                text: "Navigation item 2"
+              },
+              {
+                href: "#3",
+                text: "Navigation item 3"
+              },
+              {
+                href: "#4",
+                text: "Navigation item 4"
+              }
+            ]
+          }) }}
+        </div>
+
+        <div class="govuk-!-margin-bottom-9">
+          {{ govukBreadcrumbs({
+            items: [
+              {
+                text: "Home",
+                href: "#?"
+              },
+              {
+                text: "Passports, travel and living abroad",
+                href: "#?"
+              },
+              {
+                text: "Travel abroad",
+                href: "#?"
+              }
+            ]
+          }) }}
+        </div>
+      </section>
+
+      <!-- PANELS -->
+      <section>
+
+        <h2 class="govuk-heading-l">
+          Panels and boxes
+        </h2>
+
+        <div class="govuk-!-margin-bottom-9">
+          {{ govukErrorSummary({
+            titleText: "There is a problem",
+            errorList: [
+              {
+                text: "The date your passport was issued must be in the past",
+                href: "#passport-issued-error"
+              },
+              {
+                text: "Enter a postcode, like AA1 1AA",
+                href: "#postcode-error"
+              }
+            ]
+          }) }}
+        </div>
+
+        <div class="govuk-!-margin-bottom-9">
+          <div class="slides">
+            <h2 class="govuk-heading-l">
+              How to apply
+            </h2>
+            <h3 class="govuk-heading-m govuk-!-margin-bottom-1">
+              Get a digital passport photo
+            </h3>
+            <p class="govuk-body">
+              We’ll show you how to get a digital photo.
+            </p>
+            <h3 class="govuk-heading-m govuk-!-margin-bottom-1">
+              Apply and pay online
+            </h3>
+            <p class="govuk-body">
+              A standard passport costs £75.50.
+            </p>
+            <h3 class="govuk-heading-m govuk-!-margin-bottom-1">
+              Ask someone to confirm your identity
+            </h3>
+            <p class="govuk-body">
+              They can <a href='#' class='govuk-link'>confirm your identity online</a> without a printed photo.
+            </p>
+            <h3 class="govuk-heading-m govuk-!-margin-bottom-1">
+              Send us your documents
+            </h3>
+            <p class="govuk-body">
+              They need to be originals. We’ll tell you what you need to send.
+            </p>
+            <h3 class="govuk-heading-m govuk-!-margin-bottom-1">
+              Go for an interview
+            </h3>
+            <p class="govuk-body">
+              If you need an <a href='#' class='govuk-link'>interview</a>, we’ll write to you with the details.
+            </p>
+            <button class="govuk-button govuk-!-margin-top-3" data-module="govuk-button">
+              Continue
+            </button>
+            {{ govukDetails({
+              summaryText: "I need help doing things online",
+              html: "You can call the Passport Adviceline and ask for help
+              <br>
+              <br>Telephone: +44 (0) 300 330 0901
+              <br>Textphone: +44 (0) 300 330 0808
+              <br>Monday to Friday, 8:00am to 8:00pm (UK time)
+              <br>Weekends and public holidays, 9:00am to 5:30pm (UK time)
+              <br>
+              <br><a href='#' class='govuk-link'>Find out about call charges</a>"
+            }) }}
+          </div>
+        </div>
+
+        <div class="govuk-!-margin-bottom-9">
+          {% set pastDayHtml %}
+          <h2 class="govuk-heading-l">Past day</h2>
+          {{ govukTable({
+            head: [
+              {
+                text: "Case manager"
+              },
+              {
+                text: "Cases opened"
+              },
+              {
+                text: "Cases closed"
+              }
+            ],
+            rows: [
+              [
+                {
+                  text: "David Francis"
+                },
+                {
+                  text: "3"
+                },
+                {
+                  text: "0"
+                }
+              ],
+              [
+                {
+                  text: "Paul Farmer"
+                },
+                {
+                  text: "1"
+                },
+                {
+                  text: "0"
+                }
+              ],
+              [
+                {
+                  text: "Rita Patel"
+                },
+                {
+                  text: "2"
+                },
+                {
+                  text: "0"
+                }
+              ]
+            ]
+          }) }}
+          {% endset -%}
+
+          {% set pastWeekHtml %}
+          <h2 class="govuk-heading-l">Past week</h2>
+          {{ govukTable({
+            head: [
+              {
+                text: "Case manager"
+              },
+              {
+                text: "Cases opened"
+              },
+              {
+                text: "Cases closed"
+              }
+            ],
+            rows: [
+              [
+                {
+                  text: "David Francis"
+                },
+                {
+                  text: "24"
+                },
+                {
+                  text: "18"
+                }
+              ],
+              [
+                {
+                  text: "Paul Farmer"
+                },
+                {
+                  text: "16"
+                },
+                {
+                  text: "20"
+                }
+              ],
+              [
+                {
+                  text: "Rita Patel"
+                },
+                {
+                  text: "24"
+                },
+                {
+                  text: "27"
+                }
+              ]
+            ]
+          }) }}
+          {% endset -%}
+
+          {% set pastMonthHtml %}
+          <h2 class="govuk-heading-l">Past month</h2>
+          {{ govukTable({
+            head: [
+              {
+                text: "Case manager"
+              },
+              {
+                text: "Cases opened"
+              },
+              {
+                text: "Cases closed"
+              }
+            ],
+            rows: [
+              [
+                {
+                  text: "David Francis"
+                },
+                {
+                  text: "98"
+                },
+                {
+                  text: "95"
+                }
+              ],
+              [
+                {
+                  text: "Paul Farmer"
+                },
+                {
+                  text: "122"
+                },
+                {
+                  text: "131"
+                }
+              ],
+              [
+                {
+                  text: "Rita Patel"
+                },
+                {
+                  text: "126"
+                },
+                {
+                  text: "142"
+                }
+              ]
+            ]
+          }) }}
+          {% endset -%}
+
+          {% set pastYearHtml %}
+          <h2 class="govuk-heading-l">Past year</h2>
+          {{ govukTable({
+            head: [
+              {
+                text: "Case manager"
+              },
+              {
+                text: "Cases opened"
+              },
+              {
+                text: "Cases closed"
+              }
+            ],
+            rows: [
+              [
+                {
+                  text: "David Francis"
+                },
+                {
+                  text: "1380"
+                },
+                {
+                  text: "1472"
+                }
+              ],
+              [
+                {
+                  text: "Paul Farmer"
+                },
+                {
+                  text: "1129"
+                },
+                {
+                  text: "1083"
+                }
+              ],
+              [
+                {
+                  text: "Rita Patel"
+                },
+                {
+                  text: "1539"
+                },
+                {
+                  text: "1265"
+                }
+              ]
+            ]
+          }) }}
+          {% endset -%}
+
+          {{ govukTabs({
+            items: [
+              {
+                label: "Past day",
+                id: "past-day",
+                panel: {
+                  html: pastDayHtml
+                }
+              },
+              {
+                label: "Past week",
+                id: "past-week",
+                panel: {
+                  html: pastWeekHtml
+                }
+              },
+              {
+                label: "Past month",
+                id: "past-month",
+                panel: {
+                  html: pastMonthHtml
+                }
+              },
+              {
+                label: "Past year",
+                id: "past-year",
+                panel: {
+                  html: pastYearHtml
+                }
+              }
+            ]
+          }) }}
+        </div>
+
+
+        <div class="govuk-!-margin-bottom-9">
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-half">
+              <div class="light-grey-panel">
+                <h3 class="govuk-heading-s">
+                  Grey aside panel
+                </h3>
+                <p class="govuk-body">
+                  A short paragraph with <a href="#" class="govuk-link">some link text</a>.
+                </p>
+              </div>
+            </div>
+          </div>
+
+      </section>
+      
+
+    </div>
+  </div>
+
+
+
+  
+{% endblock %}
