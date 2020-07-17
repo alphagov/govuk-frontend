@@ -137,11 +137,42 @@ describe('Character count', () => {
       const $countMessage = $('.govuk-character-count__message')
       expect($countMessage.hasClass('app-custom-count-message')).toBeTruthy()
     })
+
     it('renders with aria live set to polite', () => {
       const $ = render('character-count', {})
 
       const $countMessage = $('.govuk-character-count__message')
       expect($countMessage.attr('aria-live')).toEqual('polite')
+    })
+  })
+
+  describe('when it has the spellcheck attribute', () => {
+    it('renders the textarea with spellcheck attribute set to true', () => {
+      const $ = render('character-count', {
+        spellcheck: true
+      })
+
+      const $component = $('.govuk-character-count .govuk-textarea')
+      expect($component.attr('spellcheck')).toEqual('true')
+    })
+
+    it('renders the textarea with spellcheck attribute set to false', () => {
+      const $ = render('character-count', {
+        name: 'my-char-count-name',
+        spellcheck: false
+      })
+
+      const $component = $('.govuk-character-count .govuk-textarea')
+      expect($component.attr('spellcheck')).toEqual('false')
+    })
+
+    it('renders the textarea without spellcheck attribute by default', () => {
+      const $ = render('character-count', {
+        name: 'my-char-count-name'
+      })
+
+      const $component = $('.govuk-character-count .govuk-textarea')
+      expect($component.attr('spellcheck')).toBeUndefined()
     })
   })
 
