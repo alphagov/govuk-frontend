@@ -59,6 +59,10 @@ params:
   type: object
   required: false
   description: HTML attributes (for example data attributes) to add to the textarea.
+- name: spellcheck
+  type: boolean
+  required: false
+  description: Optional field to enable or disable the spellcheck attribute on the character count.
 - name: countMessage
   type: object
   required: false
