@@ -10,9 +10,10 @@ We darkened `govuk-colour("dark-grey")` to improve the readability of hint text.
 
 #### Add spellcheck parameter to input and textarea components
 
-Optional parameter added to the input and textarea components to enable or disable the spellcheck attribute
+Optional parameter added to the input, textarea and character count components to enable or disable the spellcheck attribute
 
 ([PR #1859](https://github.com/alphagov/govuk-frontend/pull/1859))
+([PR #1869](https://github.com/alphagov/govuk-frontend/pull/1869))
 
 ### Fixes
 
