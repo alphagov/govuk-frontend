@@ -53,23 +53,28 @@ examples:
   data:
     text: Save and continue
 - name: attributes
+  hidden: true
   data:
     text: Button with additional attributes
     attributes:
       'aria-controls': 'example-id'
 - name: custom classes
+  hidden: true
   data:
     text: Button with custom class
     classes: app-button--custom-modifier
 - name: type
+  hidden: true
   data:
     text: Button with type
     type: button
 - name: value
+  hidden: true
   data:
     text: Button with value
     value: start
 - name: name
+  hidden: true
   data:
     text: Button with name
     name: start-now
@@ -92,6 +97,7 @@ examples:
     href: '/'
     isStartButton: true
 - name: no href link
+  hidden: true
   data:
     element: a
     text: Link with no href
@@ -101,6 +107,7 @@ examples:
     name: start-now
     text: Start now
 - name: input attributes
+  hidden: true
   data:
     element: input
     name: start-now
@@ -108,6 +115,7 @@ examples:
     attributes:
       'aria-controls': 'example-id'
 - name: input classes
+  hidden: true
   data:
     element: input
     name: start-now
@@ -179,15 +187,18 @@ examples:
     href: '/'
     classes: govuk-button--warning
 - name: html
+  hidden: true
   data:
     html: 'Start <em>now</em>'
 - name: link with attributes
+  hidden: true
   data:
     text: Button link with attributes
     href: /
     attributes:
       'data-tracking-dimension': '123'
 - name: link with classes
+  hidden: true
   data:
     text: Button link with classes
     href: /
