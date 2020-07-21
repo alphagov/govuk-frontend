@@ -8,11 +8,33 @@
 
 We darkened `govuk-colour("dark-grey")` to improve the readability of hint text. It now has a contrast ratio of 7:1 and helps hint text meet the WCAG 2.1 (AAA) accessibility standard.
 
+#### Updated error styling for text input, select, textarea and file upload components
+
+The error styling for the text input, select and textarea components no longer makes the border thicker.
+
+The error styling for the file upload component no longer includes a border around the file upload input.
+
+We're making these changes to ensure that the focus state is always perceivable.
+
+When an error message relates to multiple fields, ensure you are explicit about which field has the error. You must not rely on users being able to perceive which field has the error styling.
+
+([PR #1870](https://github.com/alphagov/govuk-frontend/pull/1870))
+
 #### Add spellcheck parameter to input and textarea components
 
 Optional parameter added to the input and textarea components to enable or disable the spellcheck attribute
 
 ([PR #1859](https://github.com/alphagov/govuk-frontend/pull/1859))
+
+### Deprecated features
+
+#### The `$govuk-border-width-form-element-error` setting
+
+The `$govuk-border-width-form-element-error` setting has been deprecated, and will be removed in GOV.UK Frontend v4.0.
+
+Update any references to `$govuk-border-width-form-element-error` in your application's styles to reference `$govuk-border-width-form-element` instead.
+
+([PR #1870](https://github.com/alphagov/govuk-frontend/pull/1870))
 
 ### Fixes
 
