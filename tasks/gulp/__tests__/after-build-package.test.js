@@ -47,6 +47,7 @@ describe('package/', () => {
         'package.json',
         'govuk-prototype-kit.config.json',
         '**/macro-options.json',
+        '**/fixtures.json',
         'README.md'
       ]
 

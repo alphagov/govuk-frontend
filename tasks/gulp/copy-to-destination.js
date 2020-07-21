@@ -1,5 +1,6 @@
 'use strict'
 
+const nunjucks = require('nunjucks')
 const gulp = require('gulp')
 const configPaths = require('../../config/paths.json')
 const postcss = require('gulp-postcss')
@@ -32,25 +33,45 @@ gulp.task('copy-files', () => {
     .pipe(yamlFiles)
     .pipe(map(function (file, done) {
       const componentName = path.dirname(file.path).split(path.sep).slice(-1).toString()
-      const componentPath = path.join(configPaths.components, componentName, `${componentName}.yaml`)
+      const componentYamlPath = path.join(configPaths.components, componentName, `${componentName}.yaml`)
+      const componentTemplatePath = path.join(configPaths.components, componentName, `template.njk`)
       let yaml
       let json
       let paramsJson
+      let examplesJson
 
       try {
-        yaml = fs.readFileSync(componentPath, { encoding: 'utf8', json: true })
+        yaml = fs.readFileSync(componentYamlPath, { encoding: 'utf8', json: true })
       } catch (e) {
-        console.error('ENOENT: no such file or directory: ', componentPath)
+        console.error('ENOENT: no such file or directory: ', componentYamlPath)
       }
 
       if (yaml) {
         json = yamlToJson.safeLoad(yaml)
-        paramsJson = json.params // We only want the 'params' data from component yaml
+        examplesJson = json.examples
+        paramsJson = json.params
+
+        if (examplesJson) {
+          const fixturesPath = path.join(taskArguments.destination, '/govuk/components', componentName, 'fixtures.json')
+          const fixtures = []
+
+          examplesJson.forEach(function (example) {
+            const fixture = {
+              name: example.name,
+              options: example.data,
+              html: nunjucks.render(componentTemplatePath, { params: example.data }).trim()
+            }
+
+            fixtures.push(fixture)
+          })
+
+          fs.writeFileSync(fixturesPath, JSON.stringify(fixtures, null, 2))
+        }
 
         if (paramsJson) {
           file.contents = Buffer.from(JSON.stringify(paramsJson, null, 4))
         } else {
-          console.error(componentPath + ' is missing "params"')
+          console.error(componentYamlPath + ' is missing "params"')
         }
       }
       done(null, file)
