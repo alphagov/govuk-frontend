@@ -52,13 +52,34 @@ examples:
 - name: default
   data:
     text: Save and continue
+- name: attributes
+  data:
+    text: Button with additional attributes
+    attributes:
+      'aria-controls': 'example-id'
+- name: custom classes
+  data:
+    text: Button with custom class
+    classes: app-button--custom-modifier
+- name: type
+  data:
+    text: Button with type
+    type: button
+- name: value
+  data:
+    text: Button with value
+    value: start
+- name: name
+  data:
+    text: Button with name
+    name: start-now
 - name: disabled
   data:
     text: Disabled button
     disabled: true
 - name: link
   data:
-    text: Link button
+    text: Button link
     href: '/'
 - name: link disabled
   data:
@@ -70,11 +91,28 @@ examples:
     text: Start now link button
     href: '/'
     isStartButton: true
+- name: no href link
+  data:
+    element: a
+    text: Link with no href
 - name: input
   data:
     element: input
     name: start-now
     text: Start now
+- name: input attributes
+  data:
+    element: input
+    name: start-now
+    text: Start now
+    attributes:
+      'aria-controls': 'example-id'
+- name: input classes
+  data:
+    element: input
+    name: start-now
+    text: Start now
+    classes: 'app-button--custom-modifier'
 - name: input disabled
   data:
     element: input
@@ -140,3 +178,18 @@ examples:
     text: Warning button
     href: '/'
     classes: govuk-button--warning
+- name: html
+  data:
+    html: 'Start <em>now</em>'
+- name: link with attributes
+  data:
+    text: Button link with attributes
+    href: /
+    attributes:
+      'data-tracking-dimension': '123'
+- name: link with classes
+  data:
+    text: Button link with classes
+    href: /
+    classes: 'app-button--custom-modifier'
+
