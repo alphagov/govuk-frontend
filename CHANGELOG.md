@@ -4,38 +4,53 @@
 
 ### New features
 
-#### Darkened secondary text colour
+#### The secondary text colour is now darker
 
-We darkened `govuk-colour("dark-grey")` to improve the readability of hint text. It now has a contrast ratio of 7:1 and helps hint text meet the WCAG 2.1 (AAA) accessibility standard.
+`$govuk-secondary-text-colour` and `govuk-colour("dark-grey")` are now darker so users can more clearly read hint text that uses the colour.
 
-#### Updated error styling for text input, select, textarea and file upload components
+The colour now has a contrast ratio of 7:1, and helps hint text meet the WCAG 2.1 (AAA) accessibility standard.
 
-The error styling for the text input, select and textarea components no longer makes the border thicker.
+#### Error styling for field border thickness is now the same with and without an error
 
-The error styling for the file upload component no longer includes a border around the file upload input.
+The error styling for the:
 
-We're making these changes to ensure that the focus state is always perceivable.
+- text input, select and textarea components no longer makes the border thicker
+- file upload component no longer includes a border around the file upload input
 
-When an error message relates to multiple fields, ensure you are explicit about which field has the error. You must not rely on users being able to perceive which field has the error styling.
+This means it’s easier for users to tell the difference between a field with an error and a field that's focused.
 
-([PR #1870](https://github.com/alphagov/govuk-frontend/pull/1870))
+When an error message is about several fields, make sure you're clear which field has the error. You must not rely on users being able to tell which field has the error styling.
 
-#### Add spellcheck parameter to input and textarea components
+This was added in [pull request #1870: Reduce border width of form inputs in the error state](https://github.com/alphagov/govuk-frontend/pull/1870).
 
-Optional parameter added to the input, textarea and character count components to enable or disable the spellcheck attribute
+#### Set spellcheck with a new option
 
-([PR #1859](https://github.com/alphagov/govuk-frontend/pull/1859))
-([PR #1869](https://github.com/alphagov/govuk-frontend/pull/1869))
+You can now turn spellcheck on or off in the input, textarea and character count components using the new `spellcheck` option instead of the `attributes` option.
+
+For example:
+
+```javascript
+{{ govukInput
+  {{
+    "spellcheck": true
+  }}
+}}
+```
+
+This was added in pull requests:
+
+- [#1859: Add spellcheck option](https://github.com/alphagov/govuk-frontend/pull/1859)
+- [#1869: Add missing spellcheck param to character count](https://github.com/alphagov/govuk-frontend/pull/1869)
 
 ### Deprecated features
 
-#### The `$govuk-border-width-form-element-error` setting
+#### $govuk-border-width-form-element-error
 
-The `$govuk-border-width-form-element-error` setting has been deprecated, and will be removed in GOV.UK Frontend v4.0.
+From GOV.UK Frontend v4.0.0, you'll no longer be able to use the [`$govuk-border-width-form-element-error`](https://frontend.design-system.service.gov.uk/sass-api-reference/#govuk-border-width-form-element-error) Sass setting to set the border of a form group with an error.
 
-Update any references to `$govuk-border-width-form-element-error` in your application's styles to reference `$govuk-border-width-form-element` instead.
+Replace any instances of `$govuk-border-width-form-element-error` in your Sass code with `$govuk-border-width-form-element`.
 
-([PR #1870](https://github.com/alphagov/govuk-frontend/pull/1870))
+This was changed in [pull request #1870: Reduce border width of form inputs in the error state](https://github.com/alphagov/govuk-frontend/pull/1870).
 
 ### Fixes
 
