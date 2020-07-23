@@ -8,7 +8,7 @@
 
 `$govuk-secondary-text-colour` and `govuk-colour("dark-grey")` are now darker so users can more clearly read hint text that uses the colour.
 
-The colour now has a contrast ratio of 7:1, and helps hint text meet the WCAG 2.1 (AAA) accessibility standard.
+The colour now has a contrast ratio of 7:1 against a white background, and helps hint text meet the WCAG 2.1 (AAA) accessibility standard.
 
 #### Error styling for field border thickness is now the same with and without an error
 
@@ -30,11 +30,9 @@ You can now turn spellcheck on or off in the input, textarea and character count
 For example:
 
 ```javascript
-{{ govukInput
-  {{
-    "spellcheck": true
-  }}
-}}
+{{ govukInput({
+    spellcheck: true
+}) }}
 ```
 
 This was added in pull requests:
@@ -46,9 +44,9 @@ This was added in pull requests:
 
 #### $govuk-border-width-form-element-error
 
-From GOV.UK Frontend v4.0.0, you'll no longer be able to use the [`$govuk-border-width-form-element-error`](https://frontend.design-system.service.gov.uk/sass-api-reference/#govuk-border-width-form-element-error) Sass setting to set the border of a form group with an error.
+From GOV.UK Frontend v4.0.0, you'll no longer be able to reference the [`$govuk-border-width-form-element-error`](https://frontend.design-system.service.gov.uk/sass-api-reference/#govuk-border-width-form-element-error) Sass setting.
 
-Replace any instances of `$govuk-border-width-form-element-error` in your Sass code with `$govuk-border-width-form-element`.
+Change any references to `$govuk-border-width-form-element-error` in your Sass code so they reference `$govuk-border-width-form-element` instead.
 
 This was changed in [pull request #1870: Reduce border width of form inputs in the error state](https://github.com/alphagov/govuk-frontend/pull/1870).
 
