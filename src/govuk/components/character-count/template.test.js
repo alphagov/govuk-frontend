@@ -3,7 +3,7 @@
  */
 /* eslint-env jest */
 
-const { axe } = require('jest-axe')
+const axe = require('../../../../lib/axe-helper')
 
 const { render, getExamples, htmlWithClassName } = require('../../../../lib/jest-helpers')
 

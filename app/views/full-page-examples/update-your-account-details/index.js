@@ -1,4 +1,4 @@
-const { body, validationResult } = require('express-validator/check')
+const { body, validationResult } = require('express-validator')
 
 // To make it easier to use in the view, might be nicer as a Nunjucks function
 function getErrors (errorsInstance) {

@@ -146,7 +146,7 @@ describe('GOV.UK Frontend', () => {
   // the compiled CSS - if it finds anything, it will result in the test
   // failing.
   it('does not contain any unexpected govuk- function calls', async () => {
-    const sass = `@import "all"`
+    const sass = '@import "all"'
 
     const results = await renderSass({ data: sass })
     const css = results.css.toString()
