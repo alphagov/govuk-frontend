@@ -47,11 +47,11 @@ const errorHandler = function (error) {
   this.emit('end')
 }
 // different entry points for both streams below and depending on destination flag
-const compileStyleshet = isDist ? configPaths.src + 'all.scss' : configPaths.app + 'assets/scss/app.scss'
-const compileOldIeStyleshet = isDist ? configPaths.src + 'all-ie8.scss' : configPaths.app + 'assets/scss/app-ie8.scss'
+const compileStylesheet = isDist ? configPaths.src + 'all.scss' : configPaths.app + 'assets/scss/app.scss'
+const compileOldIeStylesheet = isDist ? configPaths.src + 'all-ie8.scss' : configPaths.app + 'assets/scss/app-ie8.scss'
 
 gulp.task('scss:compile', () => {
-  const compile = gulp.src(compileStyleshet)
+  const compile = gulp.src(compileStylesheet)
     .pipe(plumber(errorHandler))
     .pipe(sass())
     // minify css add vendor prefixes and normalize to compiled css
@@ -73,7 +73,7 @@ gulp.task('scss:compile', () => {
     ))
     .pipe(gulp.dest(taskArguments.destination + '/'))
 
-  const compileOldIe = gulp.src(compileOldIeStyleshet)
+  const compileOldIe = gulp.src(compileOldIeStylesheet)
     .pipe(plumber(errorHandler))
     .pipe(sass())
     // minify css add vendor prefixes and normalize to compiled css
