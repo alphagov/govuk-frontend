@@ -1,12 +1,17 @@
 # Publishing GOV.UK Frontend
 
-1. Checkout **master** and pull latest changes.
+1. Make sure you have cards in the "Backlog" column to:
+  - Update the GOV.UK Design System to use the latest release
+  - Update the GOV.UK Prototype Kit to use the latest release
+  - Update the GOV.UK Frontend Docs to use the latest release
 
-2. Run `nvm use` to ensure you are using the right version of Node.js and npm.
+2. Checkout **master** and pull latest changes.
 
-3. Run `npm install` to ensure you have the latest dependencies installed.
+3. Run `nvm use` to ensure you are using the right version of Node.js and npm.
 
-4. Create and checkout a new branch (`release-[version-number]`).
+4. Run `npm install` to ensure you have the latest dependencies installed.
+
+5. Create and checkout a new branch (`release-[version-number]`).
   The version number is determined by looking at the [current "Unreleased" CHANGELOG](../../CHANGELOG.md) changes and updating the previous release number depending on the kind of entries:
 
   - `Breaking changes` corresponds to a `major` (1.X.X) change.
@@ -17,15 +22,15 @@
 
   See the [versioning documentation](versioning.md) for more information.
 
-5. Update [`CHANGELOG.md`](../../CHANGELOG.md) "Unreleased" heading with the new version number.
+6. Update [`CHANGELOG.md`](../../CHANGELOG.md) "Unreleased" heading with the new version number. Add a new "Unreleased" heading above this, so people raising new PRs know where to add these to the Changelog.
 
-6. Update [`package/package.json`](../../package/package.json) version with the new version number.
+7. Update [`package/package.json`](../../package/package.json) version with the new version number.
 
-7. Save the changes. Do not commit.
+8. Save the changes. Do not commit.
 
-8. Run `npm run pre-release`, you will be prompted to continue or cancel.
+9. Run `npm run pre-release`, you will be prompted to continue or cancel.
 
-9. (Optional) Test in [GOV.UK Design System](git@github.com:alphagov/govuk-design-system.git)
+10. (Optional) Test in [GOV.UK Design System](git@github.com:alphagov/govuk-design-system.git)
 
   If you want to test your changes work correctly when used in the GOV.UK Design System you can use [npm link](https://docs.npmjs.com/cli/link) to test before publishing.
 
@@ -43,37 +48,31 @@
   npm unlink ../govuk-frontend/package/
   ```
 
-10. Create a pull request and copy the changelog text.
+11. Create a pull request and copy the changelog text.
    When reviewing the PR, check that the version numbers have been updated and that the compiled assets use this version number.
 
-11. Once the pull request is approved, merge to **master**.
+12. Once the pull request is approved, merge to **master**.
 
-12. Checkout **master** and pull the latest changes.
+13. Checkout **master** and pull the latest changes.
 
-13. Log into npm, using team [credentials](https://github.com/alphagov/design-system-team-credentials/tree/master/npm/govuk-patterns-and-tools).
+14. Log into npm (`npm login`), using team [credentials](https://github.com/alphagov/design-system-team-credentials/tree/master/npm/govuk-patterns-and-tools).
 
-14. Run `npm run release`, you will be prompted to continue or cancel.
+15. Run `npm run release`, you will be prompted to continue or cancel.
 
-15. Create a release in the [Github interface](https://github.com/alphagov/govuk-frontend/releases/new)
-  - select the latest tag version
-  - set "GOV.UK Frontend release v[version-number]" as the title
+16. View the created tag in the [Github interface](https://github.com/alphagov/govuk-frontend/releases)
+  - select the latest tag
+  - set "GOV.UK Frontend v[version-number]" as the title
   - add release notes from changelog
-  - add a summary of highlights (this will be used when sending comms out)
-  - attach the generated ZIP that has been generated at the root of the project
+  - attach the generated ZIP that has been generated at the root of this project
   - publish release
 
-16. Log out from npm
+17. Log out from npm
 ```bash
 npm logout
 ```
 
-17. Post a short summary of the release in the cross-government and GDS #govuk-design-system Slack channels. For example:
+18. Once you've updated the GOV.UK Design System, Prototype Kit, and Frontend Docs, post a short summary of the release in the cross-government and GDS #govuk-design-system Slack channels. For example:
 
     🚀 We’ve just released GOV.‌UK Frontend v3.7.0. It's now easier and faster to use our Sass. We've also made improvements to back links, breadcrumbs, lists and the header. Thanks to @<SLACK-NAME> and @<SLACK-NAME> for helping with this release. [https://github.com/alphagov/govuk-frontend/releases/tag/v3.7.0](https://github.com/alphagov/govuk-frontend/releases/tag/v3.7.0)
 
-18. Move cards on the [Sprint board](https://github.com/orgs/alphagov/projects/4) from "Ready to Release" column to "Done".
-
-19. Add cards to the "Backlog" column:
-  - Update the GOV.UK Design System to use the latest release
-  - Update the GOV.UK Prototype Kit to use the latest release
-  - Update the GOV.UK Frontend Docs to use the latest release
+19. Move cards on the [Sprint board](https://github.com/orgs/alphagov/projects/4) from "Ready to Release" column to "Done". Close any associated milestones.
