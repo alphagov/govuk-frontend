@@ -44,9 +44,6 @@
 
     &:focus {
       border-color: $govuk-input-border-colour;
-      // Remove `box-shadow` inherited from `:focus` as `select--error`
-      // already has the thicker border.
-      box-shadow: none;
     }
   }
 

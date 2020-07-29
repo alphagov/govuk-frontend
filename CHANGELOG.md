@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 3.8.0 (Feature release)
+
 ### New features
 
 #### The secondary text colour is now darker

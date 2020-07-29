@@ -92,12 +92,13 @@
   // rotated 45 degrees
   .govuk-checkboxes__label::after {
     content: "";
+    box-sizing: border-box;
 
     position: absolute;
     top: 11px;
     left: 9px;
-    width: 18px;
-    height: 7px;
+    width: 23px;
+    height: 12px;
 
     -webkit-transform: rotate(-45deg);
 
@@ -105,7 +106,7 @@
 
             transform: rotate(-45deg);
     border: solid;
-    border-width: 0 0 $govuk-border-width $govuk-border-width;
+    border-width: 0 0 5px 5px;
     // Fix bug in IE11 caused by transform rotate (-45deg).
     // See: alphagov/govuk_elements/issues/518
     border-top-color: transparent;
@@ -238,8 +239,8 @@
     .govuk-checkboxes__label::after {
       top: 15px;
       left: 6px;
-      width: 9px;
-      height: 3.5px;
+      width: 12px;
+      height: 6.5px;
       border-width: 0 0 3px 3px;
     }
 

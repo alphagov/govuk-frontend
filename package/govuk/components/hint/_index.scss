@@ -16,7 +16,7 @@
   // is unlikely that the default or govuk-label--s class would be used in this
   // case.
 
-  // This adjustment will not work in browsers that do not support :not(). 
+  // This adjustment will not work in browsers that do not support :not().
   // Users with these browsers will see the default size margin (5px larger).
 
   .govuk-label:not(.govuk-label--m):not(.govuk-label--l):not(.govuk-label--xl) + .govuk-hint {
@@ -30,7 +30,7 @@
   // it is unlikely that the default or govuk-fieldset__legend--s class would be
   // used in this case.
 
-  // This adjustment will not work in browsers that do not support :not(). 
+  // This adjustment will not work in browsers that do not support :not().
   // Users with these browsers will see the default size margin (5px larger).
 
   .govuk-fieldset__legend:not(.govuk-fieldset__legend--m):not(.govuk-fieldset__legend--l):not(.govuk-fieldset__legend--xl) + .govuk-hint {

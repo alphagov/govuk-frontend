@@ -12,6 +12,12 @@
         "description": "The name of the textarea, which is submitted with the form data."
     },
     {
+        "name": "spellcheck",
+        "type": "boolean",
+        "required": false,
+        "description": "Optional field to enable or disable the spellcheck attribute on the textarea."
+    },
+    {
         "name": "rows",
         "type": "string",
         "required": false,
