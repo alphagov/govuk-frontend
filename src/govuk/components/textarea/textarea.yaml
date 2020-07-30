@@ -130,7 +130,6 @@ examples:
         text: Spellcheck is enabled
       id: textarea-with-spellcheck-enabled
       name: spellcheck
-      type: text
       spellcheck: true
 
   - name: with spellcheck disabled
@@ -139,5 +138,4 @@ examples:
         text: Spellcheck is disabled
       id: textarea-with-spellcheck-disabled
       name: spellcheck
-      type: text
       spellcheck: false
