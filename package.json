@@ -13,7 +13,7 @@
     "heroku": "gulp copy-assets && gulp sassdoc && node app/start.js",
     "build-release": "node bin/check-nvmrc.js && ./bin/build-release.sh",
     "publish-release": "node bin/check-nvmrc.js && ./bin/publish-release.sh",
-    "release-to-branch": "node bin/check-nvmrc.js && ./bin/release-to-branch.sh",
+    "pre-release": "node bin/check-nvmrc.js && ./bin/pre-release.sh",
     "build:package": "node bin/check-nvmrc.js && gulp build:package --destination 'package' && npm run test:build:package",
     "build:dist": "node bin/check-nvmrc.js && gulp build:dist --destination 'dist' && npm run test:build:dist",
     "test": "npm run test:dependencies && standard && gulp test && gulp copy-assets && jest --testPathIgnorePatterns='after-*'",
