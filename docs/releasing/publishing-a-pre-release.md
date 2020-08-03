@@ -14,6 +14,6 @@ No changes get published to npm as part of the process.
 
 3. Run `npm install` to ensure you have the latest dependencies installed.
 
-4. Run `npm run release-to-branch`. This will create and push a new branch `pre-release-[your-branch-name-here]` to GitHub.
+4. Run `npm run pre-release`. This will create and push a new branch `pre-release-[your-branch-name-here]` to GitHub.
 
 5. Use the command provided by the script to update other projects to use the pre-release.
