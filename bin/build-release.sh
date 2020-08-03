@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-echo "Starting a pre-release..."
+echo "Starting to build release..."
 echo " "
 echo "This will:"
 echo "- run the test suite"
@@ -13,7 +13,7 @@ echo " "
 read -r -p "Do you want to continue? [y/N] " continue_prompt
 
 if [[ $continue_prompt != 'y' ]]; then
-    echo "Cancelling pre-release, if this was a mistake, try again and use 'y' to continue."
+    echo "Cancelling build, if this was a mistake, try again and use 'y' to continue."
     exit 0
 fi
 
@@ -34,5 +34,5 @@ else
     # set upstream so that we can push the branch up
     git push --set-upstream origin $CURRENT_BRANCH_NAME
     git push
-    echo "🗒 All done. Ready to create a pull request. Once approved, run npm run release"
+    echo "🗒 All done. Ready to create a pull request. Once approved, run npm run publish-release"
 fi

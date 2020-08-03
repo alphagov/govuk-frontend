@@ -28,7 +28,7 @@
 
 8. Save the changes. Do not commit.
 
-9. Run `npm run pre-release`, you will be prompted to continue or cancel.
+9. Run `npm run build-release`, you will be prompted to continue or cancel.
 
 10. (Optional) Test in [GOV.UK Design System](git@github.com:alphagov/govuk-design-system.git)
 
