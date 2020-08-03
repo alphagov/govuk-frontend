@@ -57,7 +57,7 @@
 
 14. Log into npm (`npm login`), using team [credentials](https://github.com/alphagov/design-system-team-credentials/tree/master/npm/govuk-patterns-and-tools).
 
-15. Run `npm run release`, you will be prompted to continue or cancel.
+15. Run `npm run publish-release`, you will be prompted to continue or cancel.
 
 16. View the created tag in the [Github interface](https://github.com/alphagov/govuk-frontend/releases)
   - select the latest tag

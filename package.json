@@ -12,7 +12,7 @@
     "start": "gulp dev",
     "heroku": "gulp copy-assets && gulp sassdoc && node app/start.js",
     "pre-release": "node bin/check-nvmrc.js && ./bin/pre-release.sh",
-    "release": "node bin/check-nvmrc.js && ./bin/release.sh",
+    "publish-release": "node bin/check-nvmrc.js && ./bin/publish-release.sh",
     "release-to-branch": "node bin/check-nvmrc.js && ./bin/release-to-branch.sh",
     "build:package": "node bin/check-nvmrc.js && gulp build:package --destination 'package' && npm run test:build:package",
     "build:dist": "node bin/check-nvmrc.js && gulp build:dist --destination 'dist' && npm run test:build:dist",
