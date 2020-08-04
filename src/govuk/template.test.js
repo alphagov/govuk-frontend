@@ -2,6 +2,7 @@
 
 const nunjucks = require('nunjucks')
 const configPaths = require('../../config/paths.json')
+const crypto = require('crypto')
 
 const { renderTemplate } = require('../../lib/jest-helpers')
 
@@ -150,6 +151,20 @@ describe('Template', () => {
       const $ = renderTemplate({}, { bodyEnd })
 
       expect($('body > div:last-of-type').text()).toEqual('bodyEnd')
+    })
+
+    describe('inline script that adds "js-enabled" class', () => {
+      it('should match the hash published in docs', () => {
+        const $ = renderTemplate()
+        const script = $('body > script').first().html()
+
+        // Create a base64 encoded hash of the contents of the script tag
+        const hash = crypto.createHash('sha256').update(script).digest('base64')
+
+        // A change to the inline script would be a breaking change, and it would also require
+        // updating the hash published in https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#if-your-javascript-isn-t-working-properly
+        expect('sha256-' + hash).toEqual('sha256-+6WnXIl4mbFTCARd8N3COQmT3bJJmo32N8q8ZSQAIcU=')
+      })
     })
 
     describe('skip link', () => {
