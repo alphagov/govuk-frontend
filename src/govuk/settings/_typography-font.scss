@@ -20,8 +20,8 @@ $govuk-use-legacy-font: if(
     $govuk-compatibility-govuktemplate or
     $govuk-compatibility-govukelements
   ),
-  true, // sass-lint:disable-line indentation
-  false // sass-lint:disable-line indentation
+  true,
+  false
 ) !default;
 
 // =========================================================

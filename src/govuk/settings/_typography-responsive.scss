@@ -20,8 +20,8 @@ $govuk-typography-use-rem: if(
     $govuk-compatibility-govuktemplate or
     $govuk-compatibility-govukelements
   ),
-  false, // sass-lint:disable-line indentation
-  true // sass-lint:disable-line indentation
+  false,
+  true
 ) !default;
 
 /// Root font size

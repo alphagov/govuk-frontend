@@ -1,5 +1,5 @@
 @include govuk-exports("govuk/component/button") {
-  $govuk-button-colour: govuk-colour("green", $legacy: #00823b); // sass-lint:disable no-color-literals
+  $govuk-button-colour: govuk-colour("green", $legacy: #00823b);
   $govuk-button-hover-colour: govuk-shade($govuk-button-colour, 20%);
   $govuk-button-shadow-colour: govuk-shade($govuk-button-colour, 60%);
   $govuk-button-text-colour: govuk-colour("white");
