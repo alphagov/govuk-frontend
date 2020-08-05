@@ -121,10 +121,7 @@ See [testing and linting](/docs/releasing/testing-and-linting.md) for more infor
 
 ## Running the lint task
 
-You can run the linter in [gulp](https://www.npmjs.com/package/gulp-sass-lint)
-or check linting directly in [Sublime Text](https://github.com/skovhus/SublimeLinter-contrib-sass-lint),
-[Atom](https://atom.io/packages/linter-sass-lint)
-or other [IDE's](https://github.com/sasstools/sass-lint#ide-integration)
+You can run the linter in gulp by running `gulp scss:lint`, or use linting in [Sublime Text](https://github.com/SublimeLinter/SublimeLinter-stylelint), [Atom](https://atom.io/packages/linter-stylelint) or [other editors that support stylelint](https://stylelint.io/user-guide/integrations/editor).
 
 See also [testing and linting](/docs/releasing/testing-and-linting.md).
 

@@ -4,7 +4,7 @@ const gulp = require('gulp')
 const configPaths = require('../../config/paths.json')
 const stylelint = require('gulp-stylelint')
 
-gulp.task('scss:stylelint', () => {
+gulp.task('scss:lint', () => {
   return gulp.src([
     configPaths.app + '**/*.scss',
     configPaths.src + '**/*.scss'
