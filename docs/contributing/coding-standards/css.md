@@ -112,10 +112,7 @@ This makes it easier to keep track of different contexts.
 # Linting
 
 To ensure code quality and consistency in our Sass files we check that certain
-style rules are followed using a project [YAML file](../../../config/.sass-lint.yml)
-
-As we're using node-sass parser to parse our scss files, the package of choice
-is [sass-lint](https://github.com/sasstools/sass-lint).
+style rules are followed. These rules are based on [stylelint-config-gds](https://github.com/alphagov/stylelint-config-gds/blob/main/scss.js), but we also add our own custom rules with a project [YAML file](../../../.stylelintrc.yml).
 
 See [testing and linting](/docs/releasing/testing-and-linting.md) for more information.
 
@@ -438,7 +435,7 @@ Good:
 $my-example-var: value;
 ```
 
-### Don't write trailing zeros for numeric values with a decimal point
+### Don't write trailing zeroes for numeric values with a decimal point
 
 Bad:
 ```
@@ -450,13 +447,13 @@ Bad:
 Good:
 ```
 .selector {
-  font-size: 0.5em;
+  font-size: .5em;
 }
 ```
 
 ### Remove trailing whitespace
 
-More write up on [supported rules](https://github.com/sasstools/sass-lint/tree/master/docs/rules).
+More write up on [supported rules](https://stylelint.io/user-guide/rules/list).
 
 ##  SassDoC
 We document SCSS using [SassDoc](http://sassdoc.com/file-level-annotations/). This includes most of the settings, helpers and tools layers, with variables, functions and mixins being marked as private or public.
