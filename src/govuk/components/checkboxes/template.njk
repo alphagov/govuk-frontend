@@ -71,7 +71,7 @@
         {% set itemHintId = id + "-item-hint" if hasHint else "" %}
         {% set itemDescribedBy = describedBy if not hasFieldset else "" %}
         {% set itemDescribedBy = (itemDescribedBy + " " + itemHintId) | trim %}
-        <div class="govuk-checkboxes__item">
+        <div class="govuk-checkboxes__item" tabindex="-1">
           <input class="govuk-checkboxes__input" id="{{ id }}" name="{{ name }}" type="checkbox" value="{{ item.value }}"
           {{-" checked" if item.checked }}
           {{-" disabled" if item.disabled }}
