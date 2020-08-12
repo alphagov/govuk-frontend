@@ -31,7 +31,8 @@
   
   .govuk-checkboxes__item:focus {
     outline: none;
-    & .govuk-checkboxes__label:before {
+    
+    & .govuk-checkboxes__label:before { 
       border-width: 4px;
       box-shadow: 0 0 0 $govuk-focus-width $govuk-focus-colour;
     }
