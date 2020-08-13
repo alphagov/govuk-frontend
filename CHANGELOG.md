@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 3.8.1 (Fix release)
+
 ### Fixes
 
 We’ve made fixes to GOV.UK Frontend in the following pull requests:
