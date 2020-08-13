@@ -11,10 +11,6 @@
     .govuk-textarea {
       margin-bottom: govuk-spacing(1);
     }
-
-    .govuk-textarea--error {
-      padding: govuk-spacing(1) - 2; // Stop a "jump" when width of border changes
-    }
   }
 
   .govuk-character-count__message {
