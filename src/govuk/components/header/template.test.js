@@ -107,6 +107,24 @@ describe('header', () => {
       expect($firstItem.text()).toContain('Navigation item 1')
     })
 
+    it('renders navigation default label correctly', () => {
+      const $ = render('header', examples['with navigation'])
+
+      const $component = $('.govuk-header')
+      const $list = $component.find('ul.govuk-header__navigation')
+
+      expect($list.attr('aria-label')).toEqual('Top Level Navigation')
+    })
+
+    it('allows navigation label to be customised', () => {
+      const $ = render('header', examples['with custom navigation label'])
+
+      const $component = $('.govuk-header')
+      const $list = $component.find('ul.govuk-header__navigation')
+
+      expect($list.attr('aria-label')).toEqual('Custom navigation label')
+    })
+
     it('renders navigation item with html', () => {
       const $ = render('header', {
         navigation: [
@@ -146,6 +164,20 @@ describe('header', () => {
         const $button = $('.govuk-header__menu-button')
 
         expect($button.attr('type')).toEqual('button')
+      })
+      it('renders default label correctly', () => {
+        const $ = render('header', examples['with navigation'])
+
+        const $button = $('.govuk-header__menu-button')
+
+        expect($button.attr('aria-label')).toEqual('Show or hide Top Level Navigation')
+      })
+      it('allows label to be customised', () => {
+        const $ = render('header', examples['with custom menu button label'])
+
+        const $button = $('.govuk-header__menu-button')
+
+        expect($button.attr('aria-label')).toEqual('Custom button label')
       })
     })
   })

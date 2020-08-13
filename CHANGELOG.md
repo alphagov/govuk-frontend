@@ -2,6 +2,23 @@
 
 ## Unreleased
 
+### New features
+
+#### Set navigation and mobile menu labels of the header with new options
+
+You can now customise the `aria-label` attributes of the navigation and mobile menu of the header component using the new `navigationLabel` and `menuButtonLabel` options.
+
+For example:
+
+```javascript
+{{ govukHeader({
+    navigationLabel: "Custom navigation label",
+    menuButtonLabel: "Custom menu label"
+}) }}
+```
+
+This was added in [pull request #1905: Set navigation and mobile menu labels of the header component with new options](https://github.com/alphagov/govuk-frontend/pull/1905).
+
 ## 3.8.1 (Fix release)
 
 ### Fixes

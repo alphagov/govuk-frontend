@@ -48,6 +48,14 @@ params:
   type: string
   required: false
   description: Classes for the navigation section of the header.
+- name: navigationLabel
+  type: string
+  required: false
+  description: Text for the `aria-label` attribute of the navigation. Defaults to "Top Level Navigation".
+- name: menuButtonLabel
+  type: string
+  required: false
+  description: Text for the `aria-label` attribute of the button that toggles the navigation. Defaults to "Show or hide Top Level Navigation".
 - name: containerClasses
   type: string
   required: false
@@ -95,6 +103,34 @@ examples:
 
 - name: with navigation
   data:
+    navigation:
+      - href: '#1'
+        text: Navigation item 1
+        active: true
+      - href: '#2'
+        text: Navigation item 2
+      - href: '#3'
+        text: Navigation item 3
+      - href: '#4'
+        text: Navigation item 4
+
+- name: with custom navigation label
+  data:
+    navigationLabel: Custom navigation label
+    navigation:
+      - href: '#1'
+        text: Navigation item 1
+        active: true
+      - href: '#2'
+        text: Navigation item 2
+      - href: '#3'
+        text: Navigation item 3
+      - href: '#4'
+        text: Navigation item 4
+
+- name: with custom menu button label
+  data:
+    menuButtonLabel: Custom button label
     navigation:
       - href: '#1'
         text: Navigation item 1
