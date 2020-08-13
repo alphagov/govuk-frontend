@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+### Fixes
+
+We’ve made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#1912: Fix character count shrinking as you go over limit](https://github.com/alphagov/govuk-frontend/pull/1912)
+
 ## 3.8.0 (Feature release)
 
 ### New features
