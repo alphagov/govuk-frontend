@@ -21,14 +21,45 @@ params:
   description: HTML attributes (for example data attributes) to add to the skip link.
 
 examples:
-- name: default
-  data:
-    text: Skip to main content
-    href: '#content'
+  - name: default
+    data:
+      text: Skip to main content
+      href: '#content'
 
-- name: with focus
-  description: Simulate triggering the :focus CSS pseudo-class, not available in the production build.
-  data:
-    classes: :focus
-    text: Skip to main content
-    href: '#content'
+  - name: with focus
+    description: Simulate triggering the :focus CSS pseudo-class, not available in the production build.
+    data:
+      classes: :focus
+      text: Skip to main content
+      href: '#content'
+
+# Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+  - name: default values
+    hidden: true
+    data: {}
+  - name: custom href
+    hidden: true
+    data:
+      href: "#custom"
+  - name: custom text
+    hidden: true
+    data:
+      text: skip
+  - name: html as text
+    hidden: true
+    data:
+      text: <p>skip</p>
+  - name: html
+    hidden: true
+    data:
+      html: <p>skip</p>
+  - name: classes
+    hidden: true
+    data:
+      classes: app-skip-link--custom-class
+  - name: attributes
+    hidden: true
+    data:
+      attributes:
+        data-test: attribute
+        aria-label: Skip to content
