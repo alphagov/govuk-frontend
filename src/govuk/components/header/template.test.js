@@ -149,6 +149,20 @@ describe('header', () => {
       expect($navigationLink.html()).toContain('<em>Navigation item 1</em>')
     })
 
+    it('renders navigation item with text without a link', () => {
+      const $ = render('header', examples['navigation item with text without link'])
+
+      const $navigationItem = $('.govuk-header__navigation-item')
+      expect($navigationItem.html().trim()).toEqual('Navigation item 1')
+    })
+
+    it('renders navigation item with html without a link', () => {
+      const $ = render('header', examples['navigation item with html without link'])
+
+      const $navigationItem = $('.govuk-header__navigation-item')
+      expect($navigationItem.html()).toContain('<em>Navigation item 1</em>')
+    })
+
     it('renders navigation item anchor with attributes', () => {
       const $ = render('header', examples['navigation item with attributes'])
 
