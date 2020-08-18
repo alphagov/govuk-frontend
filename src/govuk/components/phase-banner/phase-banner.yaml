@@ -27,3 +27,35 @@ examples:
       tag:
         text: alpha
       html: This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.
+
+# Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+  - name: classes
+    hidden: true
+    data:
+      classes: extra-class one-more-class
+  - name: text
+    hidden: true
+    data:
+      text: This is a new service – your feedback will help us to improve it
+  - name: html as text
+    hidden: true
+    data:
+      text: This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.
+  - name: attributes
+    hidden: true
+    data:
+      attributes:
+        first-attribute: true
+        second-attribute: false
+  - name: tag html
+    hidden: true
+    data:
+      tag:
+        html: <em>alpha</em>
+  - name: tag classes
+    hidden: true
+    data:
+      tag:
+        classes: govuk-tag--inactive
+        text: alpha
+
