@@ -38,3 +38,35 @@ examples:
     titleText: Application complete
     headingLevel: 2
     text: 'Your reference number: HDJ2123F'
+
+# Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+- name: title html as text
+  hidden: true
+  data:
+    titleText: Application <strong>not</strong> complete
+- name: title html
+  hidden: true
+  data:
+    titleHtml: Application <strong>not</strong> complete
+- name: body html as text
+  hidden: true
+  data:
+    text: Your reference number<br><strong>HDJ2123F</strong>
+- name: body html
+  hidden: true
+  data:
+    html: Your reference number<br><strong>HDJ2123F</strong>
+- name: classes
+  hidden: true
+  data:
+    classes: extra-class one-more-class
+- name: attributes
+  hidden: true
+  data:
+    attributes:
+      first-attribute: true
+      second-attribute: false
+- name: title with no body text
+  hidden: true
+  data:
+    titleText: Application complete
