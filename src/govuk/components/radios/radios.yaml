@@ -108,7 +108,7 @@ accessibilityCriteria: |
 examples:
 - name: default
   data:
-    idPrefix: example
+    idPrefix: example-default
     name: example
     fieldset:
       legend:
@@ -224,10 +224,12 @@ examples:
     items:
       - value: gateway
         text: Sign in with Government Gateway
+        id: gateway
         hint:
           text: You’ll have a user ID if you’ve registered for Self Assessment or filed a tax return online before.
       - value: verify
         text: Sign in with GOV.UK Verify
+        id: verify
         hint:
           text: You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity.
 
@@ -324,7 +326,6 @@ examples:
             <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
 
 - name: inline with conditional items
-
   data:
     classes: govuk-radios--inline
     idPrefix: how-contacted
@@ -363,13 +364,13 @@ examples:
     items:
     - value: email
       text: Email
+      checked: true
       conditional:
         html: |
-          <label class="govuk-label" for="context-email">Mobile phone number</label>
+          <label class="govuk-label" for="context-email">Email</label>
           <input class="govuk-input govuk-!-width-one-third" name="context-email" type="text" id="context-email">
     - value: phone
       text: Phone
-      checked: true
       conditional:
         html: |
           <label class="govuk-label" for="contact-phone">Phone number</label>
@@ -601,3 +602,191 @@ examples:
       - divider: or
       - value: create-account
         text: Create an account
+
+# Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+
+- name: minimal items and name
+  hidden: true
+  data:
+    name: example-name
+    items:
+      - value: yes
+        text: Yes
+      - value: no
+        text: No
+- name: with falsey items
+  hidden: true
+  data:
+    name: example-name
+    items:
+      - value: yes
+        text: Yes
+      - null
+      - false
+      - value: no
+        text: No
+- name: fieldset with describedBy
+  hidden: true
+  data:
+    name: example-name
+    fieldset:
+      describedBy: some-id
+    items:
+      - value: yes
+        text: Yes
+      - value: no
+        text: No
+- name: attributes
+  hidden: true
+  data:
+    name: example-name
+    attributes:
+      data-attribute: value
+      data-second-attribute: second-value
+    items:
+      - value: yes
+        text: Yes
+      - value: no
+        text: No
+- name: items with attributes
+  hidden: true
+  data:
+    name: example-name
+    items:
+      - value: yes
+        text: Yes
+        attributes:
+          data-attribute: ABC
+          data-second-attribute: DEF
+      - value: no
+        text: No
+        attributes:
+          data-attribute: GHI
+          data-second-attribute: JKL
+- name: with empty conditional
+  hidden: true
+  data:
+    name: example-conditional
+    items:
+      - value: yes
+        text: Yes
+        conditional:
+          html: false
+      - value: no
+        text: No
+- name: label with classes
+  hidden: true
+  data:
+    name: example-label-classes
+    items:
+      - value: yes
+        text: Yes
+        label:
+          classes: bold
+- name: with hints on parent and items
+  hidden: true
+  data:
+    name: example-multiple-hints
+    fieldset:
+      legend:
+        text: Have you changed your name?
+    hint:
+      text: This includes changing your last name or spelling your name differently.
+    items:
+      - hint:
+          text: Hint for yes option here
+      - hint:
+          text: Hint for no option here
+- name: with describedBy and hint
+  hidden: true
+  data:
+    name: example-hint-describedby
+    fieldset:
+      describedBy: some-id
+      legend:
+        text: Have you changed your name?
+    hint:
+      text: This includes changing your last name or spelling your name differently.
+- name: with error message
+  hidden: true
+  data:
+    name: example-error-message
+    errorMessage:
+      text: Please select an option
+- name: with error message and idPrefix
+  hidden: true
+  data:
+    name: example-error-message
+    idPrefix: id-prefix
+    errorMessage:
+      text: Please select an option
+- name: with hint and error message
+  hidden: true
+  data:
+    name: example-error-message-hint
+    errorMessage:
+      text: Please select an option
+    fieldset:
+      legend:
+        text: Have you changed your name?
+    hint:
+      text: This includes changing your last name or spelling your name differently.
+- name: with hint, error message and describedBy
+  hidden: true
+  data:
+    name: example-error-message-hint
+    errorMessage:
+      text: Please select an option
+    fieldset:
+      describedBy: some-id
+      legend:
+        text: Have you changed your name?
+    hint:
+      text: This includes changing your last name or spelling your name differently.
+- name: label with attributes
+  hidden: true
+  data:
+    items:
+      - value: yes
+        text: Yes
+        label:
+          attributes:
+            data-attribute: value
+            data-second-attribute: second-value
+- name: fieldset params
+  hidden: true
+  data:
+    name: example-fieldset-params
+    fieldset:
+      classes: app-fieldset--custom-modifier
+      legend:
+        text: Have you changed your name?
+      attributes:
+        data-attribute: value
+        data-second-attribute: second-value
+    hint:
+      text: This includes changing your last name or spelling your name differently.
+- name: fieldset with html
+  hidden: true
+  data:
+    fieldset:
+      legend:
+        html: Have <b>you</b> changed your name?
+- name: with fieldset, error message and describedBy
+  hidden: true
+  data:
+    idPrefix: example
+    name: example
+    errorMessage:
+      text: Please select an option
+    fieldset:
+      describedBy: some-id
+      legend:
+        text: Have you changed your name?
+    items:
+      - value: yes
+        text: Yes
+      - value: no
+        text: No
+        checked: true
+

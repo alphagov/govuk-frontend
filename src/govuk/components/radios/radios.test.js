@@ -69,10 +69,10 @@ describe('Radios with conditional reveals', () => {
     it('has no conditional content revealed that is associated with an unchecked input', async () => {
       const $ = await goToAndGetComponent('radios', 'with-conditional-item-checked')
       const $component = $('.govuk-radios')
-      const $firstInput = $component.find('.govuk-radios__item:first-child .govuk-radios__input')
-      const firstInputAriaControls = $firstInput.attr('aria-controls')
+      const $uncheckedInput = $component.find('.govuk-radios__item').last().find('.govuk-radios__input')
+      const uncheckedInputAriaControls = $uncheckedInput.attr('aria-controls')
 
-      const isContentHidden = await waitForHiddenSelector(`[id="${firstInputAriaControls}"].govuk-radios__conditional--hidden`)
+      const isContentHidden = await waitForHiddenSelector(`[id="${uncheckedInputAriaControls}"].govuk-radios__conditional--hidden`)
       expect(isContentHidden).toBeTruthy()
     })
     it('indicates when conditional content is collapsed or revealed', async () => {

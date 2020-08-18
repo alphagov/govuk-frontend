@@ -21,19 +21,7 @@ describe('Radios', () => {
   })
 
   it('render example with minimum required name and items', () => {
-    const $ = render('radios', {
-      name: 'example-name',
-      items: [
-        {
-          value: 'yes',
-          text: 'Yes'
-        },
-        {
-          value: 'no',
-          text: 'No'
-        }
-      ]
-    })
+    const $ = render('radios', examples['minimal items and name'])
 
     const $component = $('.govuk-radios')
 
@@ -51,21 +39,7 @@ describe('Radios', () => {
   })
 
   it('renders without falsely items', () => {
-    const $ = render('radios', {
-      name: 'example-name',
-      items: [
-        {
-          value: 'yes',
-          text: 'Yes'
-        },
-        undefined,
-        null,
-        {
-          value: 'no',
-          text: 'No'
-        }
-      ]
-    })
+    const $ = render('radios', examples['with falsey items'])
 
     const $component = $('.govuk-radios')
     const $items = $component.find('.govuk-radios__item input')
@@ -73,68 +47,24 @@ describe('Radios', () => {
   })
 
   it('render classes', () => {
-    const $ = render('radios', {
-      name: 'example-name',
-      items: [
-        {
-          value: 'yes',
-          text: 'Yes'
-        },
-        {
-          value: 'no',
-          text: 'No'
-        }
-      ],
-      classes: 'app-radios--custom-modifier'
-    })
+    const $ = render('radios', examples.inline)
 
     const $component = $('.govuk-radios')
 
-    expect($component.hasClass('app-radios--custom-modifier')).toBeTruthy()
+    expect($component.hasClass('govuk-radios--inline')).toBeTruthy()
   })
 
   it('renders initial aria-describedby on fieldset', () => {
     const describedById = 'some-id'
 
-    const $ = render('radios', {
-      name: 'example-name',
-      fieldset: {
-        describedBy: describedById
-      },
-      items: [
-        {
-          value: 'yes',
-          text: 'Yes'
-        },
-        {
-          value: 'no',
-          text: 'No'
-        }
-      ]
-    })
+    const $ = render('radios', examples['fieldset with describedBy'])
 
     const $fieldset = $('.govuk-fieldset')
     expect($fieldset.attr('aria-describedby')).toMatch(describedById)
   })
 
   it('render attributes', () => {
-    const $ = render('radios', {
-      name: 'example-name',
-      items: [
-        {
-          value: 'yes',
-          text: 'Yes'
-        },
-        {
-          value: 'no',
-          text: 'No'
-        }
-      ],
-      attributes: {
-        'data-attribute': 'value',
-        'data-second-attribute': 'second-value'
-      }
-    })
+    const $ = render('radios', examples.attributes)
 
     const $component = $('.govuk-radios')
 
@@ -143,101 +73,47 @@ describe('Radios', () => {
   })
 
   it('render a custom class on the form group', () => {
-    const $ = render('radios', {
-      name: 'example-name',
-      items: [
-        {
-          value: 'yes',
-          text: 'Yes'
-        },
-        {
-          value: 'no',
-          text: 'No'
-        }
-      ],
-      formGroup: {
-        classes: 'custom-group-class'
-      }
-    })
+    const $ = render('radios', examples['with optional form-group classes showing group error'])
 
     const $formGroup = $('.govuk-form-group')
-    expect($formGroup.hasClass('custom-group-class')).toBeTruthy()
+    expect($formGroup.hasClass('govuk-form-group--error')).toBeTruthy()
   })
 
   describe('items', () => {
     it('render a matching label and input using name by default', () => {
-      const $ = render('radios', {
-        name: 'example-name',
-        items: [
-          {
-            value: 'yes',
-            text: 'Yes'
-          },
-          {
-            value: 'no',
-            text: 'No'
-          }
-        ]
-      })
+      const $ = render('radios', examples.default)
 
       const $component = $('.govuk-radios')
 
       const $firstInput = $component.find('.govuk-radios__item:first-child input')
       const $firstLabel = $component.find('.govuk-radios__item:first-child label')
-      expect($firstInput.attr('id')).toEqual('example-name')
-      expect($firstLabel.attr('for')).toEqual('example-name')
+      expect($firstInput.attr('id')).toEqual('example-default')
+      expect($firstLabel.attr('for')).toEqual('example-default')
 
       const $lastInput = $component.find('.govuk-radios__item:last-child input')
       const $lastLabel = $component.find('.govuk-radios__item:last-child label')
-      expect($lastInput.attr('id')).toEqual('example-name-2')
-      expect($lastLabel.attr('for')).toEqual('example-name-2')
+      expect($lastInput.attr('id')).toEqual('example-default-2')
+      expect($lastLabel.attr('for')).toEqual('example-default-2')
     })
 
     it('render a matching label and input using custom idPrefix', () => {
-      const $ = render('radios', {
-        idPrefix: 'custom',
-        name: 'example-name',
-        items: [
-          {
-            value: 'yes',
-            text: 'Yes'
-          },
-          {
-            value: 'no',
-            text: 'No'
-          }
-        ]
-      })
+      const $ = render('radios', examples.default)
 
       const $component = $('.govuk-radios')
 
       const $firstInput = $component.find('.govuk-radios__item:first-child input')
       const $firstLabel = $component.find('.govuk-radios__item:first-child label')
-      expect($firstInput.attr('id')).toEqual('custom')
-      expect($firstLabel.attr('for')).toEqual('custom')
+      expect($firstInput.attr('id')).toEqual('example-default')
+      expect($firstLabel.attr('for')).toEqual('example-default')
 
       const $lastInput = $component.find('.govuk-radios__item:last-child input')
       const $lastLabel = $component.find('.govuk-radios__item:last-child label')
-      expect($lastInput.attr('id')).toEqual('custom-2')
-      expect($lastLabel.attr('for')).toEqual('custom-2')
+      expect($lastInput.attr('id')).toEqual('example-default-2')
+      expect($lastLabel.attr('for')).toEqual('example-default-2')
     })
 
     it('render disabled', () => {
-      const $ = render('radios', {
-        name: 'example-name',
-        items: [
-          {
-            value: 'yes',
-            text: 'Yes',
-            disabled: true
-          },
-          {
-            value: 'no',
-            text: 'No',
-            disabled: true
-          }
-        ]
-      })
+      const $ = render('radios', examples['with disabled'])
 
       const $component = $('.govuk-radios')
 
@@ -249,20 +125,7 @@ describe('Radios', () => {
     })
 
     it('render checked', () => {
-      const $ = render('radios', {
-        name: 'example-name',
-        items: [
-          {
-            value: 'yes',
-            text: 'Yes'
-          },
-          {
-            value: 'no',
-            text: 'No',
-            checked: true
-          }
-        ]
-      })
+      const $ = render('radios', examples.default)
 
       const $component = $('.govuk-radios')
       const $lastInput = $component.find('.govuk-radios__item:last-child input')
@@ -271,28 +134,7 @@ describe('Radios', () => {
 
     describe('when they include attributes', () => {
       it('it renders the attributes', () => {
-        const $ = render('radios', {
-          name: 'example-name',
-          items: [
-            {
-              value: 'yes',
-              text: 'Yes',
-              attributes: {
-                'data-attribute': 'ABC',
-                'data-second-attribute': 'DEF'
-              }
-            },
-            {
-              value: 'no',
-              text: 'No',
-              checked: true,
-              attributes: {
-                'data-attribute': 'GHI',
-                'data-second-attribute': 'JKL'
-              }
-            }
-          ]
-        })
+        const $ = render('radios', examples['items with attributes'])
 
         const $component = $('.govuk-radios')
 
@@ -308,171 +150,67 @@ describe('Radios', () => {
 
     describe('when they include a hint', () => {
       it('it renders the hint text', () => {
-        const $ = render('radios', {
-          items: [
-            {
-              value: 'value',
-              text: 'This is text',
-              hint: {
-                text: 'This is a hint'
-              }
-            }
-          ]
-        })
-        expect($('.govuk-radios__hint').text()).toContain('This is a hint')
+        const $ = render('radios', examples['with hints on items'])
+
+        expect($('.govuk-radios__hint').text())
+          .toContain('You’ll have a user ID if you’ve registered for Self Assessment or filed a tax return online before.')
       })
 
       it('it renders the correct id attribute for the hint', () => {
-        const $ = render('radios', {
-          items: [
-            {
-              value: 'value',
-              text: 'This is text',
-              id: 'item-id',
-              hint: {
-                text: 'This is a hint'
-              }
-            }
-          ]
-        })
+        const $ = render('radios', examples['with hints on items'])
 
-        expect($('.govuk-radios__hint').attr('id')).toBe('item-id-item-hint')
+        expect($('.govuk-radios__hint').attr('id')).toBe('gateway-item-hint')
       })
 
       it('the input describedBy attribute matches the item hint id', () => {
-        const $ = render('radios', {
-          items: [
-            {
-              value: 'value',
-              text: 'This is text',
-              id: 'item-id',
-              hint: {
-                text: 'This is a hint'
-              }
-            }
-          ]
-        })
+        const $ = render('radios', examples['with hints on items'])
 
-        expect($('.govuk-radios__input').attr('aria-describedby')).toBe('item-id-item-hint')
+        expect($('.govuk-radios__input').attr('aria-describedby')).toBe('gateway-item-hint')
       })
     })
 
     describe('render conditionals', () => {
       it('hidden by default when not checked', () => {
-        const $ = render('radios', {
-          name: 'example-conditional',
-          items: [
-            {
-              value: 'yes',
-              text: 'Yes',
-              conditional: {
-                html: 'Conditional content that should be hidden'
-              }
-            },
-            {
-              value: 'no',
-              text: 'No'
-            }
-          ]
-        })
+        const $ = render('radios', examples['with conditional items'])
 
         const $component = $('.govuk-radios')
 
-        const $firstConditional = $component.find('.govuk-radios__conditional').first()
-        expect($firstConditional.html()).toContain('Conditional content that should be hidden')
-        expect($firstConditional.hasClass('govuk-radios__conditional--hidden')).toBeTruthy()
+        const $hiddenConditional = $component.find('.govuk-radios__conditional').first()
+        expect($hiddenConditional.text()).toContain('Mobile phone number')
+        expect($hiddenConditional.hasClass('govuk-radios__conditional--hidden')).toBeTruthy()
       })
+
       it('visible by default when checked', () => {
-        const $ = render('radios', {
-          name: 'example-conditional',
-          items: [
-            {
-              value: 'yes',
-              text: 'Yes',
-              checked: true,
-              conditional: {
-                html: 'Conditional content that should be visible'
-              }
-            },
-            {
-              value: 'no',
-              text: 'No'
-            }
-          ]
-        })
+        const $ = render('radios', examples['with conditional item checked'])
 
         const $component = $('.govuk-radios')
 
-        const $firstConditional = $component.find('.govuk-radios__conditional').first()
-        expect($firstConditional.html()).toContain('Conditional content that should be visible')
-        expect($firstConditional.hasClass('govuk-radios__conditional--hidden')).toBeFalsy()
+        const $visibleConditional = $component.find('.govuk-radios__conditional').first()
+        expect($visibleConditional.text()).toContain('Email')
+        expect($visibleConditional.hasClass('govuk-radios__conditional--hidden')).toBeFalsy()
       })
+
       it('with association to the input they are controlled by', () => {
-        const $ = render('radios', {
-          name: 'example-conditional',
-          items: [
-            {
-              value: 'yes',
-              text: 'Yes',
-              conditional: {
-                html: 'Conditional content that should be hidden'
-              }
-            },
-            {
-              value: 'no',
-              text: 'No'
-            }
-          ]
-        })
+        const $ = render('radios', examples['with conditional items'])
 
         const $component = $('.govuk-radios')
 
         const $firstInput = $component.find('.govuk-radios__input').first()
         const $firstConditional = $component.find('.govuk-radios__conditional').first()
 
-        expect($firstInput.attr('data-aria-controls')).toBe('conditional-example-conditional')
-        expect($firstConditional.attr('id')).toBe('conditional-example-conditional')
+        expect($firstInput.attr('data-aria-controls')).toBe('conditional-how-contacted')
+        expect($firstConditional.attr('id')).toBe('conditional-how-contacted')
       })
 
       it('omits empty conditionals', () => {
-        const $ = render('radios', {
-          name: 'example-conditional',
-          items: [
-            {
-              value: 'yes',
-              text: 'Yes',
-              conditional: {
-                html: false
-              }
-            },
-            {
-              value: 'no',
-              text: 'No'
-            }
-          ]
-        })
+        const $ = render('radios', examples['with empty conditional'])
 
         const $component = $('.govuk-radios')
         expect($component.find('.govuk-radios__conditional').length).toEqual(0)
       })
 
       it('does not associate radios with empty conditionals', () => {
-        const $ = render('radios', {
-          name: 'example-conditional',
-          items: [
-            {
-              value: 'yes',
-              text: 'Yes',
-              conditional: {
-                html: false
-              }
-            },
-            {
-              value: 'no',
-              text: 'No'
-            }
-          ]
-        })
+        const $ = render('radios', examples['with empty conditional'])
 
         const $input = $('.govuk-radios__input').first()
         expect($input.attr('data-aria-controls')).toBeFalsy()
@@ -480,26 +218,7 @@ describe('Radios', () => {
     })
 
     it('render divider', () => {
-      const $ = render('radios', {
-        name: 'example-divider',
-        items: [
-          {
-            value: 'yes',
-            text: 'Yes'
-          },
-          {
-            value: 'no',
-            text: 'No'
-          },
-          {
-            divider: 'or'
-          },
-          {
-            value: 'maybe',
-            text: 'Maybe'
-          }
-        ]
-      })
+      const $ = render('radios', examples['with a divider'])
 
       const $component = $('.govuk-radios')
       const $divider = $component.find('.govuk-radios__divider')
@@ -507,18 +226,7 @@ describe('Radios', () => {
     })
 
     it('render additional label classes', () => {
-      const $ = render('radios', {
-        name: 'example-label-classes',
-        items: [
-          {
-            value: 'yes',
-            text: 'Yes',
-            label: {
-              classes: 'bold'
-            }
-          }
-        ]
-      })
+      const $ = render('radios', examples['label with classes'])
 
       const $component = $('.govuk-radios')
       const $label = $component.find('.govuk-radios__item label')
@@ -526,7 +234,7 @@ describe('Radios', () => {
     })
 
     it('renders with a form group wrapper', () => {
-      const $ = render('radios', {})
+      const $ = render('radios', examples.default)
 
       const $formGroup = $('.govuk-form-group')
       expect($formGroup.length).toBeTruthy()
@@ -535,129 +243,47 @@ describe('Radios', () => {
 
   describe('when they include a hint', () => {
     it('renders the hint', () => {
-      const $ = render('radios', {
-        name: 'example',
-        hint: {
-          text: 'This includes changing your last name or spelling your name differently.'
-        },
-        items: [
-          {
-            hint: {
-              text: 'Hint for yes option here'
-            }
-          },
-          {
-            hint: {
-              classes: 'app-radios__hint-no',
-              text: 'Hint for no option here',
-              attributes: {
-                'data-test-attribute': true
-              }
-            }
-          }
-        ]
-      })
+      const $ = render('radios', examples['with hints on parent and items'])
 
       expect(htmlWithClassName($, '.govuk-hint')).toMatchSnapshot()
     })
 
     it('associates the fieldset as "described by" the hint', () => {
-      const $ = render('radios', {
-        name: 'example',
-        fieldset: {
-          legend: {
-            text: 'Have you changed your name?'
-          }
-        },
-        hint: {
-          text: 'This includes changing your last name or spelling your name differently.'
-        }
-      })
+      const $ = render('radios', examples['with hints on parent and items'])
 
       const $fieldset = $('.govuk-fieldset')
-      const $hint = $('.govuk-hint')
 
-      const hintId = new RegExp(
-        WORD_BOUNDARY + $hint.attr('id') + WORD_BOUNDARY
-      )
-
-      expect($fieldset.attr('aria-describedby')).toMatch(hintId)
+      expect($fieldset.attr('aria-describedby')).toMatch('example-multiple-hints-hint')
     })
 
     it('associates the fieldset as "described by" the hint and parent fieldset', () => {
-      const describedById = 'some-id'
-
-      const $ = render('radios', {
-        name: 'example',
-        fieldset: {
-          describedBy: describedById,
-          legend: {
-            text: 'Have you changed your name?'
-          }
-        },
-        hint: {
-          text: 'This includes changing your last name or spelling your name differently.'
-        }
-      })
+      const $ = render('radios', examples['with describedBy and hint'])
       const $fieldset = $('.govuk-fieldset')
-      const $hint = $('.govuk-hint')
 
-      const hintId = new RegExp(
-        WORD_BOUNDARY + describedById + WHITESPACE + $hint.attr('id') + WORD_BOUNDARY
-      )
-
-      expect($fieldset.attr('aria-describedby')).toMatch(hintId)
+      expect($fieldset.attr('aria-describedby')).toMatch('some-id')
     })
   })
 
   describe('when they include an error message', () => {
     it('renders the error message', () => {
-      const $ = render('radios', {
-        name: 'example',
-        errorMessage: {
-          text: 'Please select an option'
-        }
-      })
+      const $ = render('radios', examples['with error message'])
+
       expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
     })
 
     it('uses the idPrefix for the error message id if provided', () => {
-      const $ = render('radios', {
-        name: 'name-of-radios',
-        errorMessage: {
-          text: 'Have you changed your name?'
-        },
-        idPrefix: 'id-prefix',
-        items: [
-          {
-            value: 'yes',
-            text: 'Yes'
-          }
-        ]
-      })
-
+      const $ = render('radios', examples['with error message and idPrefix'])
       const $errorMessage = $('.govuk-error-message')
 
       expect($errorMessage.attr('id')).toEqual('id-prefix-error')
     })
 
     it('falls back to using the name for the error message id', () => {
-      const $ = render('radios', {
-        name: 'name-of-radios',
-        errorMessage: {
-          text: 'Have you changed your name?'
-        },
-        items: [
-          {
-            value: 'yes',
-            text: 'Yes'
-          }
-        ]
-      })
+      const $ = render('radios', examples['with error message'])
 
       const $errorMessage = $('.govuk-error-message')
 
-      expect($errorMessage.attr('id')).toEqual('name-of-radios-error')
+      expect($errorMessage.attr('id')).toEqual('example-error-message-error')
     })
 
     it('associates the fieldset as "described by" the error message', () => {
@@ -675,32 +301,21 @@ describe('Radios', () => {
     })
 
     it('associates the fieldset as "described by" the error message and parent fieldset', () => {
-      const describedById = 'some-id'
-      const params = examples['with fieldset and error message']
-
-      params.fieldset.describedBy = describedById
-
-      const $ = render('radios', params)
+      const $ = render('radios', examples['with fieldset, error message and describedBy'])
 
       const $fieldset = $('.govuk-fieldset')
       const $errorMessage = $('.govuk-error-message')
 
       const errorMessageId = new RegExp(
-        WORD_BOUNDARY + describedById + WHITESPACE + $errorMessage.attr('id') + WORD_BOUNDARY
+        WORD_BOUNDARY + 'some-id' + WHITESPACE + $errorMessage.attr('id') + WORD_BOUNDARY
       )
 
       expect($fieldset.attr('aria-describedby'))
         .toMatch(errorMessageId)
-
-      delete params.fieldset.describedBy
     })
 
     it('renders with a form group wrapper that has an error state', () => {
-      const $ = render('radios', {
-        errorMessage: {
-          text: 'Error message'
-        }
-      })
+      const $ = render('radios', examples['with error message'])
 
       const $formGroup = $('.govuk-form-group')
       expect($formGroup.hasClass('govuk-form-group--error')).toBeTruthy()
@@ -709,19 +324,7 @@ describe('Radios', () => {
 
   describe('when they include both a hint and an error message', () => {
     it('associates the fieldset as described by both the hint and the error message', () => {
-      const $ = render('radios', {
-        errorMessage: {
-          text: 'Please select an option'
-        },
-        fieldset: {
-          legend: {
-            text: 'Have you changed your name?'
-          }
-        },
-        hint: {
-          text: 'This includes changing your last name or spelling your name differently.'
-        }
-      })
+      const $ = render('radios', examples['with hint and error message'])
 
       const $fieldset = $('.govuk-fieldset')
       const errorMessageId = $('.govuk-error-message').attr('id')
@@ -736,29 +339,14 @@ describe('Radios', () => {
     })
 
     it('associates the fieldset as described by the hint, error message and parent fieldset', () => {
-      const describedById = 'some-id'
-
-      const $ = render('radios', {
-        errorMessage: {
-          text: 'Please select an option'
-        },
-        fieldset: {
-          describedBy: describedById,
-          legend: {
-            text: 'Have you changed your name?'
-          }
-        },
-        hint: {
-          text: 'This includes changing your last name or spelling your name differently.'
-        }
-      })
+      const $ = render('radios', examples['with hint, error message and describedBy'])
 
       const $fieldset = $('.govuk-fieldset')
       const errorMessageId = $('.govuk-error-message').attr('id')
       const hintId = $('.govuk-hint').attr('id')
 
       const combinedIds = new RegExp(
-        WORD_BOUNDARY + describedById + WHITESPACE + hintId + WHITESPACE + errorMessageId + WORD_BOUNDARY
+        WORD_BOUNDARY + 'some-id' + WHITESPACE + hintId + WHITESPACE + errorMessageId + WORD_BOUNDARY
       )
 
       expect($fieldset.attr('aria-describedby'))
@@ -768,86 +356,26 @@ describe('Radios', () => {
 
   describe('nested dependant components', () => {
     it('have correct nesting order', () => {
-      const $ = render('radios', {
-        fieldset: {
-          legend: {
-            text: 'Have you changed your name?'
-          }
-        }
-      })
+      const $ = render('radios', examples.default)
 
       const $component = $('.govuk-form-group > .govuk-fieldset > .govuk-radios')
       expect($component.length).toBeTruthy()
     })
 
     it('passes through label params without breaking', () => {
-      const $ = render('radios', {
-        name: 'example-name',
-        items: [
-          {
-            value: 'yes',
-            html: '<b>Yes</b>',
-            label: {
-              attributes: {
-                'data-attribute': 'value',
-                'data-second-attribute': 'second-value'
-              }
-            }
-          },
-          {
-            value: 'no',
-            text: '<b>No</b>',
-            checked: true
-          }
-        ]
-      })
+      const $ = render('radios', examples['label with attributes'])
 
       expect(htmlWithClassName($, '.govuk-radios__label')).toMatchSnapshot()
     })
 
     it('passes through fieldset params without breaking', () => {
-      const $ = render('radios', {
-        name: 'example',
-        errorMessage: {
-          text: 'Please select an option'
-        },
-        fieldset: {
-          classes: 'app-fieldset--custom-modifier',
-          attributes: {
-            'data-attribute': 'value',
-            'data-second-attribute': 'second-value'
-          },
-          legend: {
-            text: 'Have you changed your name?'
-          }
-        },
-        hint: {
-          text: 'This includes changing your last name or spelling your name differently.'
-        }
-      })
+      const $ = render('radios', examples['fieldset params'])
 
       expect(htmlWithClassName($, '.govuk-fieldset')).toMatchSnapshot()
     })
 
     it('passes through html fieldset params without breaking', () => {
-      const $ = render('radios', {
-        name: 'example-name',
-        items: [
-          {
-            value: 'yes',
-            text: 'Yes'
-          },
-          {
-            value: 'no',
-            text: 'No'
-          }
-        ],
-        fieldset: {
-          legend: {
-            html: 'Have <b>you</b> changed your name?'
-          }
-        }
-      })
+      const $ = render('radios', examples['fieldset with html'])
 
       expect(htmlWithClassName($, '.govuk-fieldset')).toMatchSnapshot()
     })
