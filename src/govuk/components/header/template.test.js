@@ -10,66 +10,68 @@ const { render, getExamples } = require('../../../../lib/jest-helpers')
 const examples = getExamples('header')
 
 describe('header', () => {
-  it('passes accessibility tests', async () => {
-    const $ = render('header', examples.default)
+  describe('default example', () => {
+    it('passes accessibility tests', async () => {
+      const $ = render('header', examples.default)
 
-    const results = await axe($.html())
-    expect(results).toHaveNoViolations()
-  })
-
-  it('has a role of `banner`', () => {
-    const $ = render('header', {})
-
-    const $component = $('.govuk-header')
-    expect($component.attr('role')).toEqual('banner')
-  })
-
-  it('renders attributes correctly', () => {
-    const $ = render('header', {
-      attributes: {
-        'data-test-attribute': 'value',
-        'data-test-attribute-2': 'value-2'
-      }
+      const results = await axe($.html())
+      expect(results).toHaveNoViolations()
     })
 
-    const $component = $('.govuk-header')
-    expect($component.attr('data-test-attribute')).toEqual('value')
-    expect($component.attr('data-test-attribute-2')).toEqual('value-2')
+    it('has a role of `banner`', () => {
+      const $ = render('header', examples.default)
+
+      const $component = $('.govuk-header')
+      expect($component.attr('role')).toEqual('banner')
+    })
   })
 
-  it('renders classes', () => {
-    const $ = render('header', {
-      classes: 'app-header--custom-modifier'
+  describe('custom options', () => {
+    it('renders attributes correctly', () => {
+      const $ = render('header', examples.attributes)
+
+      const $component = $('.govuk-header')
+      expect($component.attr('data-test-attribute')).toEqual('value')
+      expect($component.attr('data-test-attribute-2')).toEqual('value-2')
     })
 
-    const $component = $('.govuk-header')
-    expect($component.hasClass('app-header--custom-modifier')).toBeTruthy()
-  })
+    it('renders classes', () => {
+      const $ = render('header', examples.classes)
 
-  it('renders custom container classes', () => {
-    const $ = render('header', {
-      containerClasses: 'app-width-container'
+      const $component = $('.govuk-header')
+      expect($component.hasClass('app-header--custom-modifier')).toBeTruthy()
     })
 
-    const $component = $('.govuk-header')
-    const $container = $component.find('.govuk-header__container')
+    it('renders custom container classes', () => {
+      const $ = render('header', examples['full width'])
 
-    expect($container.hasClass('app-width-container')).toBeTruthy()
-  })
+      const $component = $('.govuk-header')
+      const $container = $component.find('.govuk-header__container')
 
-  it('renders home page URL', () => {
-    const $ = render('header', {
-      homepageUrl: '/'
+      expect($container.hasClass('govuk-header__container--full-width')).toBeTruthy()
     })
 
-    const $component = $('.govuk-header')
-    const $homepageLink = $component.find('.govuk-header__link--homepage')
-    expect($homepageLink.attr('href')).toEqual('/')
+    it('renders custom navigation classes', () => {
+      const $ = render('header', examples['full width with navigation'])
+
+      const $component = $('.govuk-header')
+      const $container = $component.find('.govuk-header__navigation')
+
+      expect($container.hasClass('govuk-header__navigation--end')).toBeTruthy()
+    })
+
+    it('renders home page URL', () => {
+      const $ = render('header', examples['custom homepage url'])
+
+      const $component = $('.govuk-header')
+      const $homepageLink = $component.find('.govuk-header__link--homepage')
+      expect($homepageLink.attr('href')).toEqual('/')
+    })
   })
 
   describe('with product name', () => {
     it('renders product name', () => {
-      const $ = render('header', examples['full width'])
+      const $ = render('header', examples['with product name'])
 
       const $component = $('.govuk-header')
       const $productName = $component.find('.govuk-header__product-name')
@@ -84,6 +86,14 @@ describe('header', () => {
       const $component = $('.govuk-header')
       const $serviceName = $component.find('.govuk-header__link--service-name')
       expect($serviceName.text().trim()).toEqual('Service Name')
+    })
+
+    it('renders with service url', () => {
+      const $ = render('header', examples['with service name'])
+
+      const $component = $('.govuk-header')
+      const $serviceName = $component.find('.govuk-header__link--service-name')
+      expect($serviceName.attr('href')).toEqual('/components/header')
     })
   })
 
@@ -125,38 +135,28 @@ describe('header', () => {
       expect($list.attr('aria-label')).toEqual('Custom navigation label')
     })
 
+    it('renders navigation with active item', () => {
+      const $ = render('header', examples['with navigation'])
+
+      const $activeItem = $('a.govuk-header__navigation-item:first-child')
+      expect($activeItem.hasClass('govuk-header__navigation-item--active'))
+    })
+
     it('renders navigation item with html', () => {
-      const $ = render('header', {
-        navigation: [
-          {
-            href: '#1',
-            html: '<em>Nav item</em>'
-          }
-        ]
-      })
+      const $ = render('header', examples['navigation item with html'])
 
       const $navigationLink = $('.govuk-header__navigation-item a')
-      expect($navigationLink.html()).toContain('<em>Nav item</em>')
+      expect($navigationLink.html()).toContain('<em>Navigation item 1</em>')
     })
 
     it('renders navigation item anchor with attributes', () => {
-      const $ = render('header', {
-        navigation: [
-          {
-            text: 'Item',
-            href: '/link',
-            attributes: {
-              'data-attribute': 'my-attribute',
-              'data-attribute-2': 'my-attribute-2'
-            }
-          }
-        ]
-      })
+      const $ = render('header', examples['navigation item with attributes'])
 
       const $navigationLink = $('.govuk-header__navigation-item a')
       expect($navigationLink.attr('data-attribute')).toEqual('my-attribute')
       expect($navigationLink.attr('data-attribute-2')).toEqual('my-attribute-2')
     })
+
     describe('menu button', () => {
       it('has an explicit type="button" so it does not act as a submit button', () => {
         const $ = render('header', examples['with navigation'])
@@ -183,7 +183,7 @@ describe('header', () => {
   })
 
   describe('SVG logo', () => {
-    const $ = render('header', {})
+    const $ = render('header', examples.default)
     const $svg = $('.govuk-header__logotype-crown')
 
     it('sets focusable="false" so that IE does not treat it as an interactive element', () => {

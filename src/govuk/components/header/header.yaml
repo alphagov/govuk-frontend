@@ -232,3 +232,28 @@ examples:
         html: <em>Navigation item 2</em>
       - href: '#3'
         html: <em>Navigation item 3</em>
+
+# Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+- name: attributes
+  hidden: true
+  data:
+    attributes:
+      data-test-attribute: value
+      data-test-attribute-2: value-2
+- name: classes
+  hidden: true
+  data:
+    classes: app-header--custom-modifier
+- name: custom homepage url
+  hidden: true
+  data:
+    homepageUrl: /
+- name: navigation item with attributes
+  hidden: true
+  data:
+    navigation:
+      - href: /link
+        text: Item
+        attributes:
+          data-attribute: my-attribute
+          data-attribute-2: my-attribute-2
