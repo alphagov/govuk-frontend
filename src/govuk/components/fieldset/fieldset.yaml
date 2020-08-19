@@ -52,3 +52,38 @@ examples:
       text: What is your address?
       classes: govuk-fieldset__legend--xl
       isPageHeading: true
+
+# Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+- name: with describedBy
+  hidden: true
+  data:
+    describedBy: some-id
+- name: html as text
+  hidden: true
+  data:
+    legend:
+      text: What is <b>your</b> address?
+- name: html
+  hidden: true
+  data:
+    legend:
+      html: What is <b>your</b> address?
+- name: legend classes
+  hidden: true
+  data:
+    legend:
+      text: What is your address?
+      classes: my-custom-class
+- name: classes
+  hidden: true
+  data:
+    classes: app-fieldset--custom-modifier
+- name: role
+  hidden: true
+  data:
+    role: group
+- name: attributes
+  hidden: true
+  data:
+    attributes:
+      data-attribute: value
