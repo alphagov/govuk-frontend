@@ -15,7 +15,6 @@ params:
   type: string
   required: false
   description: HTML to use for the description of the errors. If you set this option, the component will ignore `descriptionText`.
-
 - name: errorList
   type: array
   required: true
@@ -85,3 +84,71 @@ examples:
       -
         text: Agree to the terms of service to log in
         href: '#example-error-1'
+
+# Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+- name: html as titleText
+  hidden: true
+  data:
+    titleText: Alert, <em>alert</em>
+- name: title html
+  hidden: true
+  data:
+    titleHtml: Alert, <em>alert</em>
+- name: description
+  hidden: true
+  data:
+    descriptionText: Lorem ipsum
+- name: html as descriptionText
+  hidden: true
+  data:
+    descriptionText: See errors below (▼)
+- name: description html
+  hidden: true
+  data:
+    descriptionHtml: See <span>errors</span> below
+- name: classes
+  hidden: true
+  data:
+    classes: extra-class one-more-class
+- name: attributes
+  hidden: true
+  data:
+    attributes:
+      first-attribute: 'true'
+      second-attribute: 'false'
+- name: error list with attributes
+  hidden: true
+  data:
+    errorList:
+      -
+        text: Error-1
+        href: '#item'
+        attributes:
+          data-attribute: my-attribute
+          data-attribute-2: my-attribute-2
+- name: error list with html as text
+  hidden: true
+  data:
+    errorList:
+      -
+        text: Descriptive link to the <b>question</b> with an error
+- name: error list with html
+  hidden: true
+  data:
+    errorList:
+      -
+        html: The date your passport was issued <b>must</b> be in the past
+- name: error list with html link
+  hidden: true
+  data:
+    errorList:
+      -
+        html: Descriptive link to the <b>question</b> with an error
+        href: '#error-1'
+- name: error list with html as text link
+  hidden: true
+  data:
+    errorList:
+      -
+        text: Descriptive link to the <b>question</b> with an error
+        href: '#error-1'
