@@ -36,3 +36,22 @@ examples:
           </strong>
         </div>
         <p class="govuk-body">It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application.</p>
+
+# Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+  - name: classes
+    hidden: true
+    data:
+      classes: app-inset-text--custom-modifier
+  - name: id
+    hidden: true
+    data:
+      id: my-inset-text
+  - name: html as text
+    hidden: true
+    data:
+      text: It can take <b>up to 8 weeks</b> to register a lasting power of attorney if there are no mistakes in the application.
+  - name: attributes
+    hidden: true
+    data:
+      attributes:
+        data-attribute: my data value
