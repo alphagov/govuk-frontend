@@ -4,7 +4,6 @@ ignoreFiles: src/govuk/vendor/**/*
 plugins:
   - stylelint-order
 rules:
-  declaration-no-important: ~
   # govuk-frontend has a specific ordering pattern that should be applied to
   # rules
   #

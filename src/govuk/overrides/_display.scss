@@ -4,6 +4,7 @@
 
 @import "../base";
 
+// stylelint-disable declaration-no-important
 @include govuk-exports("govuk/overrides/display") {
   .govuk-\!-display-inline {
     display: inline !important;
