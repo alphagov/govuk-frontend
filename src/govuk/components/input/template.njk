@@ -52,17 +52,17 @@
 {%- if params.prefix or params.suffix %}<div class="govuk-input__wrapper">{% endif -%}
 {%- if params.prefix %}
   {%- if params.prefix.html | length or params.prefix.text | length %}
-    <span class="govuk-input__prefix {{- ' ' + params.prefix.classes if params.prefix.classes }}" aria-hidden="true" {%- for attribute, value in params.prefix.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+    <div class="govuk-input__prefix {{- ' ' + params.prefix.classes if params.prefix.classes }}" aria-hidden="true" {%- for attribute, value in params.prefix.attributes %} {{attribute}}="{{value}}"{% endfor %}>
       {{- params.prefix.html | safe if params.prefix.html else params.prefix.text -}}
-    </span>
+    </div>
   {% endif -%}
 {% endif -%}
 {{- inputTag | safe -}}
 {%- if params.suffix %}
   {%- if params.suffix.html | length or params.suffix.text | length %}
-    <span class="govuk-input__suffix {{- ' ' + params.suffix.classes if params.suffix.classes }}" aria-hidden="true" {%- for attribute, value in params.suffix.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+    <div class="govuk-input__suffix {{- ' ' + params.suffix.classes if params.suffix.classes }}" aria-hidden="true" {%- for attribute, value in params.suffix.attributes %} {{attribute}}="{{value}}"{% endfor %}>
       {{- params.suffix.html | safe if params.suffix.html else params.suffix.text -}}
-    </span>
+    </div>
   {% endif -%}
 {% endif -%}
 {%- if params.prefix or params.suffix %}</div>{% endif %}
