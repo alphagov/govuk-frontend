@@ -41,3 +41,37 @@ examples:
 - name: default
   data:
     text: Error message about full name goes here
+
+# Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+- name: id
+  hidden: true
+  data:
+    id: my-error-message-id
+- name: classes
+  hidden: true
+  data:
+    classes: custom-class
+- name: html as text
+  hidden: true
+  data:
+    text: Unexpected > in body
+- name: html
+  hidden: true
+  data:
+    html: Unexpected <b>bold text</b> in body copy
+- name: attributes
+  hidden: true
+  data:
+    attributes:
+      data-test: attribute
+      id: my-error-message
+- name: with visually hidden text
+  hidden: true
+  data:
+    text: Rhowch eich enw llawn
+    visuallyHiddenText: Gwall
+- name: visually hidden text removed
+  hidden: true
+  data:
+    text: There is an error on line 42
+    visuallyHiddenText: false
