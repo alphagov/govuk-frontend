@@ -301,3 +301,53 @@ examples:
             text: Navigation item 5
           - href: '#6'
             text: Navigation item 6
+
+# Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+- name: attributes
+  data:
+    attributes:
+      data-test-attribute: value
+      data-test-attribute-2: value-2
+- name: classes
+  data:
+    classes: app-footer--custom-modifier
+- name: with container classes
+  data:
+    containerClasses: app-width-container
+- name: with empty meta
+  data:
+    meta: {}
+- name: with empty meta items
+  data:
+    meta:
+      items: []
+- name: meta html as text
+  data:
+    meta:
+      text: GOV.UK Prototype Kit <strong>v7.0.1</strong>
+- name: with meta html
+  data:
+    meta:
+      html: GOV.UK Prototype Kit <strong>v7.0.1</strong>
+- name: with meta item attributes
+  data:
+    meta:
+      items:
+        - href: '#1'
+          text: meta item 1
+          attributes:
+            data-attribute: my-attribute
+            data-attribute-2: my-attribute-2
+- name: with empty navigation
+  data:
+    navigation: []
+- name: with navigation item attributes
+  data:
+    navigation:
+      -
+        items:
+          - href: '#1'
+            text: Navigation item 1
+            attributes:
+              data-attribute: my-attribute
+              data-attribute-2: my-attribute-2
