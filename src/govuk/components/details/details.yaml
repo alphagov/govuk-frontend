@@ -61,3 +61,35 @@ examples:
         <li>benefits information</li>
         <li>tax return</li>
       </ul>
+
+# Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+- name: id
+  hidden: true
+  data:
+    id: my-details-element
+- name: html as text
+  hidden: true
+  data:
+    text: More about the greater than symbol (>)
+- name: html
+  hidden: true
+  data:
+    html: More about <b>bold text</b>
+- name: summary html as text
+  hidden: true
+  data:
+    summaryText: The greater than symbol (>) is the best
+- name: summary html
+  hidden: true
+  data:
+    summaryHtml: Use <b>bold text</b> sparingly
+- name: classes
+  hidden: true
+  data:
+    classes: some-additional-class
+- name: attributes
+  hidden: true
+  data:
+    attributes:
+      data-some-data-attribute: i-love-data
+      another-attribute: true
