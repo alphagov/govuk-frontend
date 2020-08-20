@@ -69,10 +69,10 @@ describe('Checkboxes with conditional reveals', () => {
     it('has no conditional content revealed that is associated with an unchecked input', async () => {
       const $ = await goToAndGetComponent('checkboxes', 'with-conditional-item-checked')
       const $component = $('.govuk-checkboxes')
-      const $firstInput = $component.find('.govuk-checkboxes__item:first-child .govuk-checkboxes__input')
-      const firstInputAriaControls = $firstInput.attr('aria-controls')
+      const $uncheckedInput = $component.find('.govuk-checkboxes__item').last().find('.govuk-checkboxes__input')
+      const uncheckedInputAriaControls = $uncheckedInput.attr('aria-controls')
 
-      const isContentHidden = await waitForHiddenSelector(`[id="${firstInputAriaControls}"].govuk-checkboxes__conditional--hidden`)
+      const isContentHidden = await waitForHiddenSelector(`[id="${uncheckedInputAriaControls}"].govuk-checkboxes__conditional--hidden`)
       expect(isContentHidden).toBeTruthy()
     })
     it('indicates when conditional content is collapsed or revealed', async () => {
