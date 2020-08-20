@@ -265,3 +265,120 @@ examples:
         classes: govuk-input--width-4
         attributes:
           data-example-year: year
+
+# Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+- name: no data
+  hidden: true
+  data: {}
+- name: classes
+  hidden: true
+  data:
+    classes: app-date-input--custom-modifier
+- name: attributes
+  hidden: true
+  data:
+    attributes:
+      data-attribute: my data value
+- name: with empty items
+  hidden: true
+  data:
+    items: []
+- name: custom pattern
+  hidden: true
+  data:
+    items:
+      -
+        name: day
+        pattern: '[0-8]*'
+- name: with nested name
+  hidden: true
+  data:
+    items:
+      -
+        name: day[dd]
+      -
+        name: month[mm]
+      -
+        name: year[yyyy]
+- name: with id on items
+  hidden: true
+  data:
+    items:
+      -
+        id: day
+      -
+        id: month
+      -
+        year: year
+- name: suffixed id
+  hidden: true
+  data:
+    id: my-date-input
+    items:
+      -
+        name: day
+      -
+        name: month
+      -
+        name: year
+- name: with values
+  hidden: true
+  data:
+    items:
+      -
+        id: day
+      -
+        id: month
+      -
+        id: year
+        value: 2018
+- name: with hint and describedBy
+  hidden: true
+  data:
+    id: dob-errors
+    fieldset:
+      describedBy: some-id
+      legend:
+        text: What is your date of birth?
+    hint:
+      text: For example, 31 3 1980
+- name: with error and describedBy
+  hidden: true
+  data:
+    id: dob-errors
+    fieldset:
+      describedBy: some-id
+      legend:
+        text: What is your date of birth?
+    errorMessage:
+      text: Error message goes here
+- name: fieldset html
+  hidden: true
+  data:
+    fieldset:
+      legend:
+        html: What is your <b>date of birth</b>?
+- name: items with classes
+  hidden: true
+  data:
+    items:
+      -
+        name: day
+        classes: app-date-input__day
+      -
+        name: month
+        classes: app-date-input__month
+      -
+        name: year
+        classes: app-date-input__year
+- name: items without classes
+  hidden: true
+  data:
+    items:
+      -
+        name: day
+      -
+        name: month
+      -
+        name: year
+
