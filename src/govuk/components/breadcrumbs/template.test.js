@@ -19,21 +19,14 @@ describe('Breadcrumbs', () => {
     })
 
     it('renders with classes', () => {
-      const $ = render('breadcrumbs', {
-        classes: 'app-breadcrumbs--custom-modifier'
-      })
+      const $ = render('breadcrumbs', examples.classes)
 
       const $component = $('.govuk-breadcrumbs')
       expect($component.hasClass('app-breadcrumbs--custom-modifier')).toBeTruthy()
     })
 
     it('renders with attributes', () => {
-      const $ = render('breadcrumbs', {
-        attributes: {
-          id: 'my-navigation',
-          role: 'navigation'
-        }
-      })
+      const $ = render('breadcrumbs', examples.attributes)
 
       const $component = $('.govuk-breadcrumbs')
       expect($component.attr('id')).toEqual('my-navigation')
@@ -41,60 +34,28 @@ describe('Breadcrumbs', () => {
     })
 
     it('renders with items', () => {
-      const $ = render('breadcrumbs', {
-        items: [
-          {
-            text: 'Section 1'
-          },
-          {
-            text: 'Sub-section'
-          }
-        ]
-      })
+      const $ = render('breadcrumbs', examples.default)
 
       const $items = $('.govuk-breadcrumbs__list-item')
       expect($items.length).toEqual(2)
     })
 
     it('renders item with text', () => {
-      const $ = render('breadcrumbs', {
-        items: [
-          {
-            text: 'Section 1'
-          }
-        ]
-      })
+      const $ = render('breadcrumbs', examples['with last breadcrumb as current page'])
 
-      const $item = $('.govuk-breadcrumbs__list-item')
-      expect($item.text()).toEqual('Section 1')
+      const $item = $('.govuk-breadcrumbs__list-item').last()
+      expect($item.text()).toEqual('Travel abroad')
     })
 
     it('renders item with escaped entities in text', () => {
-      const $ = render('breadcrumbs', {
-        items: [
-          {
-            text: '<span>Section 1</span>'
-          }
-        ]
-      })
+      const $ = render('breadcrumbs', examples['html as text'])
 
       const $item = $('.govuk-breadcrumbs__list-item')
       expect($item.html()).toEqual('&lt;span&gt;Section 1&lt;/span&gt;')
     })
 
     it('renders item anchor with attributes', () => {
-      const $ = render('breadcrumbs', {
-        items: [
-          {
-            text: 'Section 1',
-            href: '/section',
-            attributes: {
-              'data-attribute': 'my-attribute',
-              'data-attribute-2': 'my-attribute-2'
-            }
-          }
-        ]
-      })
+      const $ = render('breadcrumbs', examples['item attributes'])
 
       const $breadcrumbLink = $('.govuk-breadcrumbs__link')
       expect($breadcrumbLink.attr('data-attribute')).toEqual('my-attribute')
@@ -102,59 +63,31 @@ describe('Breadcrumbs', () => {
     })
 
     it('renders item with html', () => {
-      const $ = render('breadcrumbs', {
-        items: [
-          {
-            html: '<em>Section 1</em>'
-          }
-        ]
-      })
+      const $ = render('breadcrumbs', examples.html)
 
-      const $item = $('.govuk-breadcrumbs__list-item')
+      const $item = $('.govuk-breadcrumbs__list-item').first()
       expect($item.html()).toEqual('<em>Section 1</em>')
     })
 
     it('renders item with anchor', () => {
-      const $ = render('breadcrumbs', {
-        items: [
-          {
-            text: 'Section 1',
-            href: '/section'
-          }
-        ]
-      })
+      const $ = render('breadcrumbs', examples.default)
 
-      const $anchor = $('.govuk-breadcrumbs__list-item a')
+      const $anchor = $('.govuk-breadcrumbs__list-item a').first()
       expect($anchor.get(0).tagName).toEqual('a')
       expect($anchor.attr('class')).toEqual('govuk-breadcrumbs__link')
       expect($anchor.attr('href')).toEqual('/section')
-      expect($anchor.text()).toEqual('Section 1')
+      expect($anchor.text()).toEqual('Section')
     })
 
     it('renders item with html inside anchor', () => {
-      const $ = render('breadcrumbs', {
-        items: [
-          {
-            html: '<em>Section 1</em>',
-            href: '/section'
-          }
-        ]
-      })
+      const $ = render('breadcrumbs', examples.html)
 
-      const $anchor = $('.govuk-breadcrumbs__list-item a')
-      expect($anchor.html()).toEqual('<em>Section 1</em>')
+      const $anchor = $('.govuk-breadcrumbs__list-item a').last()
+      expect($anchor.html()).toEqual('<em>Section 2</em>')
     })
 
     it('renders item as collapse on mobile if specified', () => {
-      const $ = render('breadcrumbs', {
-        collapseOnMobile: true,
-        items: [
-          {
-            html: '<em>Section 1</em>',
-            href: '/section'
-          }
-        ]
-      })
+      const $ = render('breadcrumbs', examples['with collapse on mobile'])
 
       const $component = $('.govuk-breadcrumbs')
       expect($component.hasClass('govuk-breadcrumbs--collapse-on-mobile')).toBeTruthy()
