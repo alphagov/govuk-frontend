@@ -147,3 +147,38 @@ examples:
           text: Section B
         content:
           html: <a class="govuk-link" href="#">Link B</a>
+
+# Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+- name: custom heading level
+  hidden: true
+  data:
+    headingLevel: 3
+    items:
+      - heading:
+          text: Section A
+        content:
+          text: Some content
+- name: heading html
+  hidden: true
+  data:
+    items:
+      - heading:
+          html: <span class="myClass">Section A</span>
+        content:
+          text: Some content
+- name: with falsey values
+  hidden: true
+  data:
+    items:
+      - heading:
+          text: Section A
+        content:
+          text: Some content
+      - false
+      - ""
+      - null
+      - heading:
+          text: Section B
+        content:
+          text: Some content
+
