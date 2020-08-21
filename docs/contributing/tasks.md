@@ -77,11 +77,6 @@ This task will:
   This task will:
   - compile all `src/govuk/components/componentName/componentName.njk` files to HTML files
 
-**`gulp lint`**
-
-  Is an umbrella task that will run:
-  - `gulp scss:lint`
-
 ## Express app only
 
 To simply run the Express app without gulp tasks being triggered, simply run `node app/start.js`.
