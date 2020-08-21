@@ -73,6 +73,12 @@ describe('fieldset', () => {
     expect($headingInsideLegend.text().trim()).toBe('What is your address?')
   })
 
+  it('renders html when passed as fieldset content', () => {
+    const $ = render('fieldset', examples['html fieldset content'])
+
+    expect($('.govuk-fieldset .my-content').text().trim()).toEqual('This is some content to put inside the fieldset')
+  })
+
   it('renders nested components using `call`', () => {
     const $ = render('fieldset', {}, '<div class="app-nested-component"></div>')
 
