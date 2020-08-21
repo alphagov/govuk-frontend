@@ -4,6 +4,10 @@
 
 ### New features
 
+#### Add new brand colour for The Foreign, Commonwealth and Development Office (FCDO)
+
+This was added in [pull request #1918: Add new brand colour for FCDO](https://github.com/alphagov/govuk-frontend/pull/1918).
+
 #### Set navigation and mobile menu labels of the header with new options
 
 You can now customise the `aria-label` attributes of the navigation and mobile menu of the header component using the new `navigationLabel` and `menuButtonLabel` options.
