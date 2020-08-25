@@ -60,6 +60,10 @@ describe('dist/', () => {
     it('should not contain current media query displayed on body element', () => {
       expect(stylesheet).not.toMatch(/body:before{content:/)
     })
+
+    it('should contain the copyright notice', () => {
+      expect(stylesheet).toContain('/*! Copyright (c) 2011 by Margaret Calvert & Henrik Kubel. All rights reserved. The font has been customised for exclusive use on gov.uk. This cut is not commercially available. */')
+    })
   })
 
   describe(`govuk-frontend-ie8-${version}.min.css`, () => {
