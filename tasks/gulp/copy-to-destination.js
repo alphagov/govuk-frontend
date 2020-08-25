@@ -1,5 +1,6 @@
 'use strict'
 
+const nunjucks = require('nunjucks')
 const gulp = require('gulp')
 const configPaths = require('../../config/paths.json')
 const postcss = require('gulp-postcss')
@@ -29,6 +30,48 @@ gulp.task('copy-files', () => {
       autoprefixer
     ], { syntax: require('postcss-scss') }))
     .pipe(scssFiles.restore)
+    .pipe(yamlFiles)
+    .pipe(map(function (file, done) {
+      const componentName = path.dirname(file.path).split(path.sep).slice(-1).toString()
+      const componentYamlPath = path.join(configPaths.components, componentName, `${componentName}.yaml`)
+      const componentTemplatePath = path.join(configPaths.components, componentName, 'template.njk')
+      let yaml
+
+      try {
+        yaml = fs.readFileSync(componentYamlPath, { encoding: 'utf8', json: true })
+      } catch (e) {
+        console.error('ENOENT: no such file or directory: ', componentYamlPath)
+      }
+
+      if (yaml) {
+        const json = yamlToJson.safeLoad(yaml)
+        const examplesJson = json.examples
+
+        if (examplesJson) {
+          const fixtures = {
+            component: componentName,
+            fixtures: []
+          }
+
+          examplesJson.forEach(function (example) {
+            const fixture = {
+              name: example.name,
+              options: example.data,
+              html: nunjucks.render(componentTemplatePath, { params: example.data }).trim()
+            }
+
+            fixtures.fixtures.push(fixture)
+          })
+
+          file.contents = Buffer.from(JSON.stringify(fixtures, null, 4))
+          done(null, file)
+        }
+      }
+    }))
+    .pipe(rename(path => {
+      path.basename = 'fixtures'
+      path.extname = '.json'
+    }))
     .pipe(yamlFiles)
     .pipe(map(function (file, done) {
       const componentName = path.dirname(file.path).split(path.sep).slice(-1).toString()
