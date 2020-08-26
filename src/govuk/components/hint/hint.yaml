@@ -9,7 +9,7 @@ params:
   description: If `text` is set, this is not required. HTML to use within the hint. If `html` is provided, the `text` argument will be ignored.
 - name: id
   type: string
-  required: true
+  required: false
   description: Optional id attribute to add to the hint span tag.
 - name: classes
   type: string
@@ -50,6 +50,7 @@ examples:
 - name: classes
   hidden: true
   data:
+    id: example-hint
     classes: app-hint--custom-modifier
 - name: id
   hidden: true
