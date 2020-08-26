@@ -108,11 +108,7 @@ accessibilityCriteria: |
 examples:
 - name: default
   data:
-    idPrefix: example-default
-    name: example
-    fieldset:
-      legend:
-        text: Have you changed your name?
+    name: example-default
     hint:
       text: This includes changing your last name or spelling your name differently.
     items:
@@ -604,7 +600,15 @@ examples:
         text: Create an account
 
 # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
-
+- name: with idPrefix
+  data:
+    name: example-radio
+    idPrefix: example-id-prefix
+    items:
+      - value: yes
+        text: Yes
+      - value: no
+        text: No
 - name: minimal items and name
   hidden: true
   data:

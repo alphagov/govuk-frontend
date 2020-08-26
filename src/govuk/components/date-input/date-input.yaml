@@ -81,6 +81,9 @@ examples:
 - name: default
   data:
     id: dob
+- name: complete question
+  data:
+    id: dob
     namePrefix: dob
     fieldset:
       legend:

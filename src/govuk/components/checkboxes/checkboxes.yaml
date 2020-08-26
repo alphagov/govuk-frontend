@@ -112,13 +112,7 @@ accessibilityCriteria: |
 examples:
 - name: default
   data:
-    idPrefix: nationality
     name: nationality
-    fieldset:
-      legend:
-        text: What is your nationality?
-    hint:
-      text: If you have dual nationality, select all options that are relevant to you.
     items:
       - value: british
         text: British
@@ -547,10 +541,11 @@ examples:
         text: another thing
 
 # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
-- name: with minimum name and items
+- name: with idPrefix
   hidden: true
   data:
     name: example-name
+    idPrefix: nationality
     items:
       - value: 1
         text: Option 1

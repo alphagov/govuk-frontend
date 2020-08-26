@@ -10,7 +10,7 @@ const { render, getExamples } = require('../../../../lib/jest-helpers')
 const examples = getExamples('summary-list')
 
 describe('Summary list', () => {
-  describe('by default', () => {
+  describe('default example', () => {
     it('passes accessibility tests', async () => {
       const $ = render('summary-list', examples.default)
 
@@ -24,7 +24,9 @@ describe('Summary list', () => {
       })
       expect(results).toHaveNoViolations()
     })
+  })
 
+  describe('custom options', () => {
     it('renders classes', async () => {
       const $ = render('summary-list', examples['no-border'])
 
@@ -125,7 +127,7 @@ describe('Summary list', () => {
       })
 
       it('renders text', async () => {
-        const $ = render('summary-list', examples.default)
+        const $ = render('summary-list', examples['with actions'])
 
         const $component = $('.govuk-summary-list')
         const $actionLink = $component.find('.govuk-summary-list__actions > a')
@@ -143,7 +145,7 @@ describe('Summary list', () => {
       })
 
       it('renders custom accessible name', async () => {
-        const $ = render('summary-list', examples.default)
+        const $ = render('summary-list', examples['with actions'])
 
         const $component = $('.govuk-summary-list')
         const $actionLink = $component.find('.govuk-summary-list__actions > a')
@@ -198,7 +200,7 @@ describe('Summary list', () => {
       })
 
       it('skips the action column when no array is provided', async () => {
-        const $ = render('summary-list', examples['without actions'])
+        const $ = render('summary-list', examples.default)
 
         const $component = $('.govuk-summary-list')
         const $action = $component.find('.govuk-summary-list__actions')

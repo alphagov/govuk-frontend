@@ -13,19 +13,12 @@ const WORD_BOUNDARY = '\\b'
 const WHITESPACE = '\\s'
 
 describe('File upload', () => {
-  describe('by default', () => {
+  describe('default example', () => {
     it('passes accessibility tests', async () => {
       const $ = render('file-upload', examples.default)
 
       const results = await axe($.html())
       expect(results).toHaveNoViolations()
-    })
-
-    it('renders with classes', () => {
-      const $ = render('file-upload', examples.classes)
-
-      const $component = $('.govuk-file-upload')
-      expect($component.hasClass('app-file-upload--custom-modifier')).toBeTruthy()
     })
 
     it('renders with id', () => {
@@ -40,6 +33,22 @@ describe('File upload', () => {
 
       const $component = $('.govuk-file-upload')
       expect($component.attr('name')).toEqual('file-upload-1')
+    })
+
+    it('renders with a form group wrapper', () => {
+      const $ = render('file-upload', examples.default)
+
+      const $formGroup = $('.govuk-form-group')
+      expect($formGroup.length).toBeTruthy()
+    })
+  })
+
+  describe('custom options', () => {
+    it('renders with classes', () => {
+      const $ = render('file-upload', examples.classes)
+
+      const $component = $('.govuk-file-upload')
+      expect($component.hasClass('app-file-upload--custom-modifier')).toBeTruthy()
     })
 
     it('renders with value', () => {
@@ -61,13 +70,6 @@ describe('File upload', () => {
 
       const $component = $('.govuk-file-upload')
       expect($component.attr('accept')).toEqual('.jpg, .jpeg, .png')
-    })
-
-    it('renders with a form group wrapper', () => {
-      const $ = render('file-upload', examples.default)
-
-      const $formGroup = $('.govuk-form-group')
-      expect($formGroup.length).toBeTruthy()
     })
 
     it('renders with a form group wrapper that has extra classes', () => {

@@ -21,21 +21,21 @@ describe('Checkboxes', () => {
   })
 
   it('render example with minimum required name and items', () => {
-    const $ = render('checkboxes', examples['with minimum name and items'])
+    const $ = render('checkboxes', examples.default)
 
     const $component = $('.govuk-checkboxes')
 
     const $firstInput = $component.find('.govuk-checkboxes__item:first-child input')
     const $firstLabel = $component.find('.govuk-checkboxes__item:first-child label')
-    expect($firstInput.attr('name')).toEqual('example-name')
-    expect($firstInput.val()).toEqual('1')
-    expect($firstLabel.text()).toContain('Option 1')
+    expect($firstInput.attr('name')).toEqual('nationality')
+    expect($firstInput.val()).toEqual('british')
+    expect($firstLabel.text()).toContain('British')
 
     const $lastInput = $component.find('.govuk-checkboxes__item:last-child input')
     const $lastLabel = $component.find('.govuk-checkboxes__item:last-child label')
-    expect($lastInput.attr('name')).toEqual('example-name')
-    expect($lastInput.val()).toEqual('2')
-    expect($lastLabel.text()).toContain('Option 2')
+    expect($lastInput.attr('name')).toEqual('nationality')
+    expect($lastInput.val()).toEqual('other')
+    expect($lastLabel.text()).toContain('Citizen of another country')
   })
 
   it('render example without falsely values', () => {
@@ -95,22 +95,6 @@ describe('Checkboxes', () => {
 
   describe('items', () => {
     it('render a matching label and input using name by default', () => {
-      const $ = render('checkboxes', examples['with minimum name and items'])
-
-      const $component = $('.govuk-checkboxes')
-
-      const $firstInput = $component.find('.govuk-checkboxes__item:first-child input')
-      const $firstLabel = $component.find('.govuk-checkboxes__item:first-child label')
-      expect($firstInput.attr('id')).toEqual('example-name')
-      expect($firstLabel.attr('for')).toEqual('example-name')
-
-      const $lastInput = $component.find('.govuk-checkboxes__item:last-child input')
-      const $lastLabel = $component.find('.govuk-checkboxes__item:last-child label')
-      expect($lastInput.attr('id')).toEqual('example-name-2')
-      expect($lastLabel.attr('for')).toEqual('example-name-2')
-    })
-
-    it('render a matching label and input using custom idPrefix', () => {
       const $ = render('checkboxes', examples.default)
 
       const $component = $('.govuk-checkboxes')
@@ -124,6 +108,22 @@ describe('Checkboxes', () => {
       const $lastLabel = $component.find('.govuk-checkboxes__item:last-child label')
       expect($lastInput.attr('id')).toEqual('nationality-3')
       expect($lastLabel.attr('for')).toEqual('nationality-3')
+    })
+
+    it('render a matching label and input using custom idPrefix', () => {
+      const $ = render('checkboxes', examples['with idPrefix'])
+
+      const $component = $('.govuk-checkboxes')
+
+      const $firstInput = $component.find('.govuk-checkboxes__item:first-child input')
+      const $firstLabel = $component.find('.govuk-checkboxes__item:first-child label')
+      expect($firstInput.attr('id')).toEqual('nationality')
+      expect($firstLabel.attr('for')).toEqual('nationality')
+
+      const $lastInput = $component.find('.govuk-checkboxes__item:last-child input')
+      const $lastLabel = $component.find('.govuk-checkboxes__item:last-child label')
+      expect($lastInput.attr('id')).toEqual('nationality-2')
+      expect($lastLabel.attr('for')).toEqual('nationality-2')
     })
 
     it('render explicitly passed item ids', () => {
@@ -334,7 +334,7 @@ describe('Checkboxes', () => {
     })
 
     it('associates the fieldset as "described by" the hint', () => {
-      const $ = render('checkboxes', examples.default)
+      const $ = render('checkboxes', examples['with id and name'])
 
       const $fieldset = $('.govuk-fieldset')
       const $hint = $('.govuk-hint')
@@ -393,7 +393,7 @@ describe('Checkboxes', () => {
 
   describe('nested dependant components', () => {
     it('have correct nesting order', () => {
-      const $ = render('checkboxes', examples.default)
+      const $ = render('checkboxes', examples['fieldset params'])
 
       const $component = $('.govuk-form-group > .govuk-fieldset > .govuk-checkboxes')
       expect($component.length).toBeTruthy()

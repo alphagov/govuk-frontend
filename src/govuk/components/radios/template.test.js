@@ -21,19 +21,19 @@ describe('Radios', () => {
   })
 
   it('render example with minimum required name and items', () => {
-    const $ = render('radios', examples['minimal items and name'])
+    const $ = render('radios', examples.default)
 
     const $component = $('.govuk-radios')
 
     const $firstInput = $component.find('.govuk-radios__item:first-child input')
     const $firstLabel = $component.find('.govuk-radios__item:first-child label')
-    expect($firstInput.attr('name')).toEqual('example-name')
+    expect($firstInput.attr('name')).toEqual('example-default')
     expect($firstInput.val()).toEqual('yes')
     expect($firstLabel.text()).toContain('Yes')
 
     const $lastInput = $component.find('.govuk-radios__item:last-child input')
     const $lastLabel = $component.find('.govuk-radios__item:last-child label')
-    expect($lastInput.attr('name')).toEqual('example-name')
+    expect($lastInput.attr('name')).toEqual('example-default')
     expect($lastInput.val()).toEqual('no')
     expect($lastLabel.text()).toContain('No')
   })
@@ -97,19 +97,19 @@ describe('Radios', () => {
     })
 
     it('render a matching label and input using custom idPrefix', () => {
-      const $ = render('radios', examples.default)
+      const $ = render('radios', examples['with idPrefix'])
 
       const $component = $('.govuk-radios')
 
       const $firstInput = $component.find('.govuk-radios__item:first-child input')
       const $firstLabel = $component.find('.govuk-radios__item:first-child label')
-      expect($firstInput.attr('id')).toEqual('example-default')
-      expect($firstLabel.attr('for')).toEqual('example-default')
+      expect($firstInput.attr('id')).toEqual('example-id-prefix')
+      expect($firstLabel.attr('for')).toEqual('example-id-prefix')
 
       const $lastInput = $component.find('.govuk-radios__item:last-child input')
       const $lastLabel = $component.find('.govuk-radios__item:last-child label')
-      expect($lastInput.attr('id')).toEqual('example-default-2')
-      expect($lastLabel.attr('for')).toEqual('example-default-2')
+      expect($lastInput.attr('id')).toEqual('example-id-prefix-2')
+      expect($lastLabel.attr('for')).toEqual('example-id-prefix-2')
     })
 
     it('render disabled', () => {
@@ -356,7 +356,7 @@ describe('Radios', () => {
 
   describe('nested dependant components', () => {
     it('have correct nesting order', () => {
-      const $ = render('radios', examples.default)
+      const $ = render('radios', examples.inline)
 
       const $component = $('.govuk-form-group > .govuk-fieldset > .govuk-radios')
       expect($component.length).toBeTruthy()

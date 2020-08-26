@@ -12,19 +12,12 @@ const examples = getExamples('character-count')
 const WORD_BOUNDARY = '\\b'
 
 describe('Character count', () => {
-  describe('by default', () => {
+  describe('default example', () => {
     it('passes accessibility tests', async () => {
       const $ = render('character-count', examples.default)
 
       const results = await axe($.html())
       expect(results).toHaveNoViolations()
-    })
-
-    it('renders with classes', () => {
-      const $ = render('character-count', examples.classes)
-
-      const $component = $('.govuk-js-character-count')
-      expect($component.hasClass('app-character-count--custom-modifier')).toBeTruthy()
     })
 
     it('renders with id', () => {
@@ -41,18 +34,27 @@ describe('Character count', () => {
       expect($component.attr('name')).toEqual('more-detail')
     })
 
-    it('renders with rows', () => {
-      const $ = render('character-count', examples['with custom rows'])
-
-      const $component = $('.govuk-js-character-count')
-      expect($component.attr('rows')).toEqual('8')
-    })
-
     it('renders with default number of rows', () => {
       const $ = render('character-count', examples.default)
 
       const $component = $('.govuk-js-character-count')
       expect($component.attr('rows')).toEqual('5')
+    })
+  })
+
+  describe('custom options', () => {
+    it('renders with classes', () => {
+      const $ = render('character-count', examples.classes)
+
+      const $component = $('.govuk-js-character-count')
+      expect($component.hasClass('app-character-count--custom-modifier')).toBeTruthy()
+    })
+
+    it('renders with rows', () => {
+      const $ = render('character-count', examples['with custom rows'])
+
+      const $component = $('.govuk-js-character-count')
+      expect($component.attr('rows')).toEqual('8')
     })
 
     it('renders with value', () => {

@@ -4,7 +4,7 @@ exports[`Textarea when it includes a hint renders with hint 1`] = `
 <div id="more-detail-hint"
      class="govuk-hint"
 >
-  Don&#x2019;t include personal or financial information, eg your National Insurance number or credit card details.
+  Don&apos;t include personal or financial information, eg your National Insurance number or credit card details.
 </div>
 `;
 

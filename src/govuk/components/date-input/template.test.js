@@ -13,14 +13,14 @@ const WORD_BOUNDARY = '\\b'
 const WHITESPACE = '\\s'
 
 describe('Date input', () => {
-  it('default example passes accessibility tests', async () => {
-    const $ = render('date-input', examples.default)
-
-    const results = await axe($.html())
-    expect(results).toHaveNoViolations()
-  })
-
   describe('default example', () => {
+    it('passes accessibility tests', async () => {
+      const $ = render('date-input', examples.default)
+
+      const results = await axe($.html())
+      expect(results).toHaveNoViolations()
+    })
+
     it('renders with id', () => {
       const $ = render('date-input', examples.default)
 
@@ -28,28 +28,11 @@ describe('Date input', () => {
       expect($component.attr('id')).toEqual('dob')
     })
 
-    it('renders with items', () => {
+    it('renders default inputs', () => {
       const $ = render('date-input', examples.default)
 
       const $items = $('.govuk-date-input__item')
       expect($items.length).toEqual(3)
-    })
-
-    it('renders defaults when an empty item array is provided', () => {
-      const $ = render('date-input', examples['with empty items'])
-
-      const $items = $('.govuk-date-input__item')
-      expect($items.length).toEqual(3)
-    })
-
-    it('renders with default items', () => {
-      const $ = render('date-input', examples['no data'])
-
-      const $items = $('.govuk-date-input__item')
-      const $firstItemInput = $('.govuk-date-input:first-child .govuk-date-input__input')
-
-      expect($items.length).toEqual(3)
-      expect($firstItemInput.attr('name')).toEqual('day')
     })
 
     it('renders item with capitalised label text', () => {
@@ -94,15 +77,34 @@ describe('Date input', () => {
       expect($firstItems.hasClass('govuk-date-input__input')).toBeTruthy()
     })
 
-    it('renders items with name', () => {
-      const $ = render('date-input', examples['with nested name'])
+    it('renders with a form group wrapper', () => {
+      const $ = render('date-input', examples.default)
 
-      const $firstItems = $('.govuk-date-input__item:first-child input')
-      expect($firstItems.attr('name')).toEqual('day[dd]')
+      const $formGroup = $('.govuk-form-group')
+      expect($formGroup.length).toBeTruthy()
+    })
+  })
+
+  describe('items', () => {
+    it('renders defaults when an empty item array is provided', () => {
+      const $ = render('date-input', examples['with empty items'])
+
+      const $items = $('.govuk-date-input__item')
+      expect($items.length).toEqual(3)
+    })
+
+    it('renders with default items', () => {
+      const $ = render('date-input', examples['no data'])
+
+      const $items = $('.govuk-date-input__item')
+      const $firstItemInput = $('.govuk-date-input:first-child .govuk-date-input__input')
+
+      expect($items.length).toEqual(3)
+      expect($firstItemInput.attr('name')).toEqual('day')
     })
 
     it('renders item with suffixed name for input', () => {
-      const $ = render('date-input', examples.default)
+      const $ = render('date-input', examples['complete question'])
 
       const $firstItems = $('.govuk-date-input__item:first-child input')
       expect($firstItems.attr('name')).toEqual('dob-day')
@@ -127,13 +129,6 @@ describe('Date input', () => {
 
       const $lastItems = $('.govuk-date-input__item:last-child input')
       expect($lastItems.val()).toEqual('2018')
-    })
-
-    it('renders with a form group wrapper', () => {
-      const $ = render('date-input', examples.default)
-
-      const $formGroup = $('.govuk-form-group')
-      expect($formGroup.length).toBeTruthy()
     })
   })
 
@@ -164,6 +159,13 @@ describe('Date input', () => {
       expect($input3.attr('data-example-year')).toEqual('year')
     })
 
+    it('renders items with name', () => {
+      const $ = render('date-input', examples['with nested name'])
+
+      const $firstItems = $('.govuk-date-input__item:first-child input')
+      expect($firstItems.attr('name')).toEqual('day[dd]')
+    })
+
     it('renders inputs with custom pattern attribute', () => {
       const $ = render('date-input', examples['custom pattern'])
 
@@ -181,12 +183,12 @@ describe('Date input', () => {
 
   describe('when it includes a hint', () => {
     it('renders the hint', () => {
-      const $ = render('date-input', examples.default)
+      const $ = render('date-input', examples['complete question'])
       expect(htmlWithClassName($, '.govuk-hint')).toMatchSnapshot()
     })
 
     it('associates the fieldset as "described by" the hint', () => {
-      const $ = render('date-input', examples.default)
+      const $ = render('date-input', examples['complete question'])
 
       const $fieldset = $('.govuk-fieldset')
       const $hint = $('.govuk-hint')
@@ -295,7 +297,7 @@ describe('Date input', () => {
 
   describe('nested dependant components', () => {
     it('have correct nesting order', () => {
-      const $ = render('date-input', examples.default)
+      const $ = render('date-input', examples['complete question'])
 
       const $component = $('.govuk-form-group > .govuk-fieldset > .govuk-date-input')
       expect($component.length).toBeTruthy()
@@ -308,7 +310,7 @@ describe('Date input', () => {
     })
 
     it('passes through fieldset params without breaking', () => {
-      const $ = render('date-input', examples.default)
+      const $ = render('date-input', examples['complete question'])
 
       expect(htmlWithClassName($, '.govuk-fieldset')).toMatchSnapshot()
     })

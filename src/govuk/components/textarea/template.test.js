@@ -119,13 +119,13 @@ describe('Textarea', () => {
 
   describe('when it includes a hint', () => {
     it('renders with hint', () => {
-      const $ = render('textarea', examples.default)
+      const $ = render('textarea', examples['with hint'])
 
       expect(htmlWithClassName($, '.govuk-hint')).toMatchSnapshot()
     })
 
     it('associates the textarea as "described by" the hint', () => {
-      const $ = render('textarea', examples['with hint and described by'])
+      const $ = render('textarea', examples['with hint'])
 
       const $textarea = $('.govuk-textarea')
       const $hint = $('.govuk-hint')

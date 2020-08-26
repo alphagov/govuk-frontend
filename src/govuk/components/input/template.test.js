@@ -13,19 +13,12 @@ const WORD_BOUNDARY = '\\b'
 const WHITESPACE = '\\s'
 
 describe('Input', () => {
-  describe('by default', () => {
+  describe('default example', () => {
     it('passes accessibility tests', async () => {
       const $ = render('input', examples.default)
 
       const results = await axe($.html())
       expect(results).toHaveNoViolations()
-    })
-
-    it('renders with classes', () => {
-      const $ = render('input', examples.classes)
-
-      const $component = $('.govuk-input')
-      expect($component.hasClass('app-input--custom-modifier')).toBeTruthy()
     })
 
     it('renders with id', () => {
@@ -47,6 +40,22 @@ describe('Input', () => {
 
       const $component = $('.govuk-input')
       expect($component.attr('type')).toEqual('text')
+    })
+
+    it('renders with a form group wrapper', () => {
+      const $ = render('input', examples.default)
+
+      const $formGroup = $('.govuk-form-group')
+      expect($formGroup.length).toBeTruthy()
+    })
+  })
+
+  describe('custom options', () => {
+    it('renders with classes', () => {
+      const $ = render('input', examples.classes)
+
+      const $component = $('.govuk-input')
+      expect($component.hasClass('app-input--custom-modifier')).toBeTruthy()
     })
 
     it('allows you to override the type', () => {
@@ -82,13 +91,6 @@ describe('Input', () => {
 
       const $component = $('.govuk-input')
       expect($component.attr('data-attribute')).toEqual('my data value')
-    })
-
-    it('renders with a form group wrapper', () => {
-      const $ = render('input', examples.default)
-
-      const $formGroup = $('.govuk-form-group')
-      expect($formGroup.length).toBeTruthy()
     })
 
     it('renders with a form group wrapper that has extra classes', () => {

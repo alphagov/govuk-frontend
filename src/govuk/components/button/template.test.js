@@ -10,14 +10,14 @@ const { render, getExamples } = require('../../../../lib/jest-helpers')
 const examples = getExamples('button')
 
 describe('Button', () => {
-  it('default example passes accessibility tests', async () => {
-    const $ = render('button', examples.default)
+  describe('default example', () => {
+    it('passes accessibility tests', async () => {
+      const $ = render('button', examples.default)
 
-    const results = await axe($.html())
-    expect(results).toHaveNoViolations()
-  })
+      const results = await axe($.html())
+      expect(results).toHaveNoViolations()
+    })
 
-  describe('button element', () => {
     it('renders the default example', () => {
       const $ = render('button', examples.default)
 
@@ -25,7 +25,9 @@ describe('Button', () => {
       expect($component.get(0).tagName).toEqual('button')
       expect($component.text()).toContain('Save and continue')
     })
+  })
 
+  describe('custom options', () => {
     it('renders with attributes', () => {
       const $ = render('button', examples.attributes)
 
