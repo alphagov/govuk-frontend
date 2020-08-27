@@ -213,10 +213,6 @@ examples:
   data:
     element: button
     html: Start <em>now</em>
-- name: html with no explicit element
-  hidden: true
-  data:
-    html: Start <em>now</em>
 - name: no data
   hidden: true
   data: {}
