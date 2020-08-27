@@ -159,7 +159,9 @@
       border-bottom: 0;
     }
     @include govuk-media-query($from: mobile) {
-      border-right: 0;
+      @include govuk-not-ie8 {
+        border-right: 0;
+      }
     }
   }
 
@@ -168,7 +170,9 @@
       border-top: 0;
     }
     @include govuk-media-query($from: mobile) {
-      border-left: 0;
+      @include govuk-not-ie8 {
+        border-left: 0;
+      }
     }
   }
 }
