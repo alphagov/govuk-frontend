@@ -245,7 +245,37 @@ examples:
       type: text
       spellcheck: false
 
-  - name: with prefix element
+  - name: with prefix
+    data:
+      label:
+        text: Amount, in pounds
+      id: input-with-prefix
+      name: amount
+      classes: govuk-input--width-10
+      prefix:
+        text: £
+  - name: with prefix with html as text
+    hidden: true
+    data:
+      label:
+        text: Amount, in pounds
+      id: input-with-prefix
+      name: amount
+      classes: govuk-input--width-10
+      prefix:
+        text: <span>£</span>
+  - name: with prefix with html
+    hidden: true
+    data:
+      label:
+        html: Amount, in pounds
+      id: input-with-prefix
+      name: amount
+      classes: govuk-input--width-10
+      prefix:
+        html: <span>£</span>
+  - name: with prefix with classes
+    hidden: true
     data:
       label:
         text: Amount, in pounds
@@ -254,15 +284,15 @@ examples:
       classes: govuk-input--width-10
       prefix:
         text: £
-  - name: with prefix and error elements
+        classes: app-input__prefix--custom-modifier
+  - name: with prefix with attributes
+    hidden: true
     data:
       label:
         text: Amount, in pounds
       id: input-with-prefix-element
       name: amount
       classes: govuk-input--width-10
-      errorMessage:
-        text: Enter an amount in pounds
       prefix:
         text: £
         attributes:
@@ -277,18 +307,51 @@ examples:
       classes: govuk-input--width-10
       suffix:
         text: kg
-  - name: with suffix and error elements
+  - name: with suffix with html as text
+    hidden: true
     data:
       label:
         text: Weight, in kilograms
-      id: input-with-suffix-element-with-error
+      id: input-with-suffix
       name: weight
       classes: govuk-input--width-10
-      errorMessage:
-        text: Enter a weight in kilograms
       suffix:
-        text: kg
-  - name: with prefix and suffix elements
+        text: <span>kg</span>
+  - name: with suffix with html
+    hidden: true
+    data:
+      label:
+        text: Weight, in kilograms
+      id: input-with-suffix
+      name: weight
+      classes: govuk-input--width-10
+      suffix:
+        html: <span>kg</span>
+  - name: with suffix with classes
+    hidden: true
+    data:
+      label:
+        text: Weight, in kilograms
+      id: input-with-suffix
+      name: weight
+      classes: govuk-input--width-10
+      suffix:
+        html: <span>kg</span>
+        classes: app-input__suffix--custom-modifier
+  - name: with suffix with attributes
+    hidden: true
+    data:
+      label:
+        text: Weight, in kilograms
+      id: input-with-suffix
+      name: weight
+      classes: govuk-input--width-10
+      suffix:
+        html: <span>kg</span>
+        attributes:
+          data-attribute: value
+
+  - name: with prefix and suffix
     data:
       label:
         text: Cost per item, in pounds
@@ -299,16 +362,14 @@ examples:
         text: £
       suffix:
         text: per item
-  - name: with prefix, suffix and error elements
+  - name: with prefix and long suffix
     data:
       label:
-        text: Cost per item, in pounds
-      id: input-with-prefix-suffix-elements-with-error
+        text: Cost per item, in pounds, per household member
+      id: input-with-prefix-suffix
       name: cost
       classes: govuk-input--width-10
-      errorMessage:
-        text: Enter a cost per item in pounds
       prefix:
         text: £
       suffix:
-        text: per item
+        text: per household member

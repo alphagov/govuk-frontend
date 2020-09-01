@@ -112,6 +112,13 @@ describe('Input', () => {
       const $formGroup = $('.govuk-form-group')
       expect($formGroup.hasClass('extra-class')).toBeTruthy()
     })
+
+    it('doesn\'t render the input wrapper', () => {
+      const $ = render('input', examples.default)
+
+      const $wrapper = $('.govuk-form-group > .govuk-input__wrapper')
+      expect($wrapper.length).toBeFalsy()
+    })
   })
 
   describe('when it includes a hint', () => {
@@ -380,6 +387,109 @@ describe('Input', () => {
 
       const $component = $('.govuk-form-group > .govuk-input')
       expect($component.attr('inputmode')).toEqual('decimal')
+    })
+  })
+
+  describe('when it includes a prefix', () => {
+    it('renders the input wrapper', () => {
+      const $ = render('input', examples['with prefix'])
+
+      const $wrapper = $('.govuk-form-group > .govuk-input__wrapper')
+      expect($wrapper.length).toBeTruthy()
+    })
+    it('renders the prefix inside the wrapper', () => {
+      const $ = render('input', examples['with prefix'])
+
+      const $prefix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix')
+      expect($prefix.length).toBeTruthy()
+    })
+    it('hides the prefix from screen readers using the aria-hidden attribute', () => {
+      const $ = render('input', examples['with prefix'])
+
+      const $prefix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix')
+      expect($prefix.attr('aria-hidden')).toEqual('true')
+    })
+    it('allows prefix text to be passed whilst escaping HTML entities', () => {
+      const $ = render('input', examples['with prefix with html as text'])
+
+      const $prefix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix')
+
+      expect($prefix.html()).toEqual('&lt;span&gt;&#xA3;&lt;/span&gt;')
+    })
+    it('allows prefix HTML to be passed un-escaped', () => {
+      const $ = render('input', examples['with prefix with html'])
+
+      const $prefix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix')
+
+      expect($prefix.html()).toEqual('<span>&#xA3;</span>')
+    })
+    it('renders with classes', () => {
+      const $ = render('input', examples['with prefix with classes'])
+
+      const $prefix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix')
+      expect($prefix.hasClass('app-input__prefix--custom-modifier')).toBeTruthy()
+    })
+    it('renders with attributes', () => {
+      const $ = render('input', examples['with prefix with attributes'])
+
+      const $prefix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix')
+      expect($prefix.attr('data-attribute')).toEqual('value')
+    })
+  })
+
+  describe('when it includes a suffix', () => {
+    it('renders the input wrapper', () => {
+      const $ = render('input', examples['with suffix'])
+
+      const $wrapper = $('.govuk-form-group > .govuk-input__wrapper')
+      expect($wrapper.length).toBeTruthy()
+    })
+    it('renders the suffix inside the wrapper', () => {
+      const $ = render('input', examples['with suffix'])
+
+      const $suffix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__suffix')
+      expect($suffix.length).toBeTruthy()
+    })
+    it('hides the suffix from screen readers using the aria-hidden attribute', () => {
+      const $ = render('input', examples['with suffix'])
+
+      const $suffix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__suffix')
+      expect($suffix.attr('aria-hidden')).toEqual('true')
+    })
+    it('allows suffix text to be passed whilst escaping HTML entities', () => {
+      const $ = render('input', examples['with suffix with html as text'])
+
+      const $suffix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__suffix')
+
+      expect($suffix.html()).toEqual('&lt;span&gt;kg&lt;/span&gt;')
+    })
+    it('allows suffix HTML to be passed un-escaped', () => {
+      const $ = render('input', examples['with suffix with html'])
+
+      const $suffix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__suffix')
+
+      expect($suffix.html()).toEqual('<span>kg</span>')
+    })
+    it('renders with classes', () => {
+      const $ = render('input', examples['with suffix with classes'])
+
+      const $suffix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__suffix')
+      expect($suffix.hasClass('app-input__suffix--custom-modifier')).toBeTruthy()
+    })
+    it('renders with attributes', () => {
+      const $ = render('input', examples['with suffix with attributes'])
+
+      const $suffix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__suffix')
+      expect($suffix.attr('data-attribute')).toEqual('value')
+    })
+  })
+
+  describe('when it includes both a prefix and a suffix', () => {
+    it('renders the prefix before the suffix', () => {
+      const $ = render('input', examples['with prefix and suffix'])
+
+      const $prefixBeforeSuffix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix ~ .govuk-input__suffix')
+      expect($prefixBeforeSuffix.length).toBeTruthy()
     })
   })
 })
