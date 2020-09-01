@@ -41,7 +41,7 @@ params:
 - name: prefix
   type: object
   required: false
-  description: Options for the prefix tag.
+  description: Options for the prefix element.
   params:
     - name: text
       type: string
@@ -54,15 +54,15 @@ params:
     - name: classes
       type: string
       required: false
-      description: Classes to add to the prefix tag
+      description: Classes to add to the prefix.
     - name: attributes
       type: object
       required: false
-      description: HTML attributes (for example data attributes) to add to the prefix tag.
+      description: HTML attributes (for example data attributes) to add to the prefix element.
 - name: suffix
   type: object
   required: false
-  description: Options for the suffix tag.
+  description: Options for the suffix element.
   params:
     - name: text
       type: string
@@ -75,11 +75,11 @@ params:
     - name: classes
       type: string
       required: false
-      description: Classes to add to the suffix tag
+      description: Classes to add to the suffix element.
     - name: attributes
       type: object
       required: false
-      description: HTML attributes (for example data attributes) to add to the suffix tag.
+      description: HTML attributes (for example data attributes) to add to the suffix element.
 - name: formGroup
   type: object
   required: false
@@ -251,7 +251,6 @@ examples:
         text: Amount, in pounds
       id: input-with-prefix-element
       name: amount
-      type: number
       classes: govuk-input--width-10
       prefix:
         text: £
@@ -259,21 +258,22 @@ examples:
     data:
       label:
         text: Amount, in pounds
-      id: input-with-prefix-element-with-error
+      id: input-with-prefix-element
       name: amount
-      type: number
       classes: govuk-input--width-10
       errorMessage:
         text: Enter an amount in pounds
       prefix:
         text: £
-  - name: with suffix element
+        attributes:
+          data-attribute: value
+
+  - name: with suffix
     data:
       label:
         text: Weight, in kilograms
-      id: input-with-suffix-element
+      id: input-with-suffix
       name: weight
-      type: number
       classes: govuk-input--width-10
       suffix:
         text: kg
@@ -283,7 +283,6 @@ examples:
         text: Weight, in kilograms
       id: input-with-suffix-element-with-error
       name: weight
-      type: number
       classes: govuk-input--width-10
       errorMessage:
         text: Enter a weight in kilograms
@@ -293,9 +292,8 @@ examples:
     data:
       label:
         text: Cost per item, in pounds
-      id: input-with-prefix-suffix-elements
+      id: input-with-prefix-suffix
       name: cost
-      type: number
       classes: govuk-input--width-10
       prefix:
         text: £
@@ -307,7 +305,6 @@ examples:
         text: Cost per item, in pounds
       id: input-with-prefix-suffix-elements-with-error
       name: cost
-      type: number
       classes: govuk-input--width-10
       errorMessage:
         text: Enter a cost per item in pounds
