@@ -362,6 +362,17 @@ examples:
         text: £
       suffix:
         text: per item
+  - name: with prefix and long suffix
+    data:
+      label:
+        text: Cost per item, in pounds, per household member
+      id: input-with-prefix-suffix
+      name: cost
+      classes: govuk-input--width-10
+      prefix:
+        text: £
+      suffix:
+        text: per household member
   - name: with prefix and suffix and error
     data:
       label:

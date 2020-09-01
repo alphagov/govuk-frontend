@@ -102,6 +102,16 @@
       // Hack to stop focus style being overlapped by the suffix
       z-index: 1;
     }
+
+    // Split prefix/suffix onto separate lines on narrow screens
+    @include govuk-media-query($until: mobile) {
+      display: block;
+
+      .govuk-input {
+        // Set max-width to override potential width override class on the input
+        max-width: 100%;
+      }
+    }
   }
 
   .govuk-input__prefix,
@@ -133,13 +143,31 @@
     cursor: default;
 
     flex: 0 0 auto;
+
+    // Split prefix/suffix onto separate lines on narrow screens
+    @include govuk-media-query($until: mobile) {
+      display: block;
+      height: 100%;
+      white-space: normal;
+    }
   }
 
   .govuk-input__prefix {
-    border-right: 0;
+    @include govuk-media-query($until: mobile) {
+      border-bottom: 0;
+    }
+    @include govuk-media-query($from: mobile) {
+      border-right: 0;
+    }
   }
 
+  // Split prefix/suffix onto separate lines on narrow screens
   .govuk-input__suffix {
-    border-left: 0;
+    @include govuk-media-query($until: mobile) {
+      border-top: 0;
+    }
+    @include govuk-media-query($from: mobile) {
+      border-left: 0;
+    }
   }
 }
