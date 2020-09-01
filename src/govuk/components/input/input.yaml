@@ -251,52 +251,8 @@ examples:
         text: Amount, in pounds
       id: input-with-prefix
       name: amount
-      classes: govuk-input--width-10
       prefix:
         text: £
-  - name: with prefix with html as text
-    hidden: true
-    data:
-      label:
-        text: Amount, in pounds
-      id: input-with-prefix
-      name: amount
-      classes: govuk-input--width-10
-      prefix:
-        text: <span>£</span>
-  - name: with prefix with html
-    hidden: true
-    data:
-      label:
-        html: Amount, in pounds
-      id: input-with-prefix
-      name: amount
-      classes: govuk-input--width-10
-      prefix:
-        html: <span>£</span>
-  - name: with prefix with classes
-    hidden: true
-    data:
-      label:
-        text: Amount, in pounds
-      id: input-with-prefix-element
-      name: amount
-      classes: govuk-input--width-10
-      prefix:
-        text: £
-        classes: app-input__prefix--custom-modifier
-  - name: with prefix with attributes
-    hidden: true
-    data:
-      label:
-        text: Amount, in pounds
-      id: input-with-prefix-element
-      name: amount
-      classes: govuk-input--width-10
-      prefix:
-        text: £
-        attributes:
-          data-attribute: value
 
   - name: with suffix
     data:
@@ -304,52 +260,8 @@ examples:
         text: Weight, in kilograms
       id: input-with-suffix
       name: weight
-      classes: govuk-input--width-10
       suffix:
         text: kg
-  - name: with suffix with html as text
-    hidden: true
-    data:
-      label:
-        text: Weight, in kilograms
-      id: input-with-suffix
-      name: weight
-      classes: govuk-input--width-10
-      suffix:
-        text: <span>kg</span>
-  - name: with suffix with html
-    hidden: true
-    data:
-      label:
-        text: Weight, in kilograms
-      id: input-with-suffix
-      name: weight
-      classes: govuk-input--width-10
-      suffix:
-        html: <span>kg</span>
-  - name: with suffix with classes
-    hidden: true
-    data:
-      label:
-        text: Weight, in kilograms
-      id: input-with-suffix
-      name: weight
-      classes: govuk-input--width-10
-      suffix:
-        html: <span>kg</span>
-        classes: app-input__suffix--custom-modifier
-  - name: with suffix with attributes
-    hidden: true
-    data:
-      label:
-        text: Weight, in kilograms
-      id: input-with-suffix
-      name: weight
-      classes: govuk-input--width-10
-      suffix:
-        html: <span>kg</span>
-        attributes:
-          data-attribute: value
 
   - name: with prefix and suffix
     data:
@@ -357,7 +269,6 @@ examples:
         text: Cost per item, in pounds
       id: input-with-prefix-suffix
       name: cost
-      classes: govuk-input--width-10
       prefix:
         text: £
       suffix:
@@ -368,7 +279,6 @@ examples:
         text: Cost per item, in pounds, per household member
       id: input-with-prefix-suffix
       name: cost
-      classes: govuk-input--width-10
       prefix:
         text: £
       suffix:
@@ -379,13 +289,23 @@ examples:
         text: Cost per item, in pounds
       id: input-with-prefix-suffix
       name: cost
-      classes: govuk-input--width-10
       prefix:
         text: £
       suffix:
         text: per item
       errorMessage:
         text: Error message goes here
+  - name: with prefix and suffix and width modifier
+    data:
+      label:
+        text: Cost per item, in pounds
+      id: input-with-prefix-suffix
+      name: cost
+      classes: govuk-input--width-5
+      prefix:
+        text: £
+      suffix:
+        text: per item
 
 # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: classes
@@ -440,3 +360,83 @@ examples:
     hidden: true
     data:
       inputmode: decimal
+
+  - name: with prefix with html as text
+    hidden: true
+    data:
+      label:
+        text: Amount, in pounds
+      id: input-with-prefix
+      name: amount
+      prefix:
+        text: <span>£</span>
+  - name: with prefix with html
+    hidden: true
+    data:
+      label:
+        html: Amount, in pounds
+      id: input-with-prefix
+      name: amount
+      prefix:
+        html: <span>£</span>
+  - name: with prefix with classes
+    hidden: true
+    data:
+      label:
+        text: Amount, in pounds
+      id: input-with-prefix-element
+      name: amount
+      prefix:
+        text: £
+        classes: app-input__prefix--custom-modifier
+  - name: with prefix with attributes
+    hidden: true
+    data:
+      label:
+        text: Amount, in pounds
+      id: input-with-prefix-element
+      name: amount
+      prefix:
+        text: £
+        attributes:
+          data-attribute: value
+
+  - name: with suffix with html as text
+    hidden: true
+    data:
+      label:
+        text: Weight, in kilograms
+      id: input-with-suffix
+      name: weight
+      suffix:
+        text: <span>kg</span>
+  - name: with suffix with html
+    hidden: true
+    data:
+      label:
+        text: Weight, in kilograms
+      id: input-with-suffix
+      name: weight
+      suffix:
+        html: <span>kg</span>
+  - name: with suffix with classes
+    hidden: true
+    data:
+      label:
+        text: Weight, in kilograms
+      id: input-with-suffix
+      name: weight
+      suffix:
+        html: <span>kg</span>
+        classes: app-input__suffix--custom-modifier
+  - name: with suffix with attributes
+    hidden: true
+    data:
+      label:
+        text: Weight, in kilograms
+      id: input-with-suffix
+      name: weight
+      suffix:
+        html: <span>kg</span>
+        attributes:
+          data-attribute: value
