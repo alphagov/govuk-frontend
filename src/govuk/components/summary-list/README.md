@@ -6,7 +6,7 @@ See the [main README quick start guide](https://github.com/alphagov/govuk-fronte
 
 ## Guidance and Examples
 
-Find out when to use the details component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/summary-list).
+Find out when to use the summary list component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/summary-list).
 
 ## Component options
 
