@@ -4,6 +4,11 @@
 
 ### New features
 
+#### Add HTML test fixtures
+You can use our test fixtures to check you're outputting the same HTML that GOV.UK Frontend uses.
+
+This was added in [pull request #1925: Generate fixtures.json files for components on build:package](https://github.com/alphagov/govuk-frontend/pull/1925)
+
 #### Add new brand colour for The Foreign, Commonwealth and Development Office (FCDO)
 
 This was added in [pull request #1918: Add new brand colour for FCDO](https://github.com/alphagov/govuk-frontend/pull/1918).
