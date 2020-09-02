@@ -4,6 +4,27 @@
 
 ### New features
 
+#### Add prefix and suffix for text input
+
+You can now add a prefix or suffix element to the text input to help users enter things like currencies and measurements.
+
+For example:
+
+```javascript
+{{ govukInput({
+  label: {
+    text: "Amount, in pounds"
+  },
+  prefix: {
+    text: "£"
+  }
+}) }}
+```
+
+You shouldn't rely on prefixes or suffixes alone because people who use a screen reader won't see them. You should add any specific type of information you need to the input label or hint text as well.
+
+This was added in [pull request #1816: Add input prefix and suffix](https://github.com/alphagov/govuk-frontend/pull/1816).
+
 #### Add HTML test fixtures
 You can use our test fixtures to check you're outputting the same HTML that GOV.UK Frontend uses.
 
