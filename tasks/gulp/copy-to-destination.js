@@ -1,5 +1,6 @@
 'use strict'
 
+const nunjucks = require('nunjucks')
 const gulp = require('gulp')
 const configPaths = require('../../config/paths.json')
 const postcss = require('gulp-postcss')
@@ -31,29 +32,17 @@ gulp.task('copy-files', () => {
     .pipe(scssFiles.restore)
     .pipe(yamlFiles)
     .pipe(map(function (file, done) {
-      const componentName = path.dirname(file.path).split(path.sep).slice(-1).toString()
-      const componentPath = path.join(configPaths.components, componentName, `${componentName}.yaml`)
-      let yaml
-      let json
-      let paramsJson
-
-      try {
-        yaml = fs.readFileSync(componentPath, { encoding: 'utf8', json: true })
-      } catch (e) {
-        console.error('ENOENT: no such file or directory: ', componentPath)
-      }
-
-      if (yaml) {
-        json = yamlToJson.safeLoad(yaml)
-        paramsJson = json.params // We only want the 'params' data from component yaml
-
-        if (paramsJson) {
-          file.contents = Buffer.from(JSON.stringify(paramsJson, null, 4))
-        } else {
-          console.error(componentPath + ' is missing "params"')
-        }
-      }
-      done(null, file)
+      const fixturesFile = generateFixtures(file)
+      done(null, fixturesFile)
+    }))
+    .pipe(rename(path => {
+      path.basename = 'fixtures'
+      path.extname = '.json'
+    }))
+    .pipe(yamlFiles)
+    .pipe(map(function (file, done) {
+      const macroFile = generateMacroOptions(file)
+      done(null, macroFile)
     }))
     .pipe(rename(path => {
       path.basename = 'macro-options'
@@ -62,3 +51,69 @@ gulp.task('copy-files', () => {
     .pipe(yamlFiles.restore)
     .pipe(gulp.dest(taskArguments.destination + '/govuk/'))
 })
+
+function generateFixtures (file) {
+  const json = convertYamlToJson(file)
+  const componentName = path.dirname(file.path).split(path.sep).slice(-1).toString()
+  const componentTemplatePath = path.join(configPaths.components, componentName, 'template.njk')
+
+  if (json) {
+    const examplesJson = json.examples
+
+    if (examplesJson) {
+      const fixtures = {
+        component: componentName,
+        fixtures: []
+      }
+
+      examplesJson.forEach(function (example) {
+        const fixture = {
+          name: example.name,
+          options: example.data,
+          html: nunjucks.render(componentTemplatePath, { params: example.data }).trim()
+        }
+
+        fixtures.fixtures.push(fixture)
+      })
+
+      file.contents = Buffer.from(JSON.stringify(fixtures, null, 4))
+      return file
+    } else {
+      console.error(file.path + ' is missing "examples" and/or "params"')
+    }
+  }
+}
+
+function generateMacroOptions (file) {
+  const json = convertYamlToJson(file)
+  let paramsJson
+
+  if (json) {
+    paramsJson = json.params // We only want the 'params' data from component yaml
+
+    if (paramsJson) {
+      file.contents = Buffer.from(JSON.stringify(paramsJson, null, 4))
+      return file
+    } else {
+      console.error(file.path + ' is missing "params"')
+    }
+  }
+}
+
+function convertYamlToJson (file) {
+  const componentName = path.dirname(file.path).split(path.sep).slice(-1).toString()
+  const componentPath = path.join(configPaths.components, componentName, `${componentName}.yaml`)
+  let yaml
+
+  try {
+    yaml = fs.readFileSync(componentPath, { encoding: 'utf8', json: true })
+  } catch (e) {
+    console.error('ENOENT: no such file or directory: ', componentPath)
+  }
+
+  if (yaml) {
+    return yamlToJson.safeLoad(yaml)
+  }
+
+  return false
+}
