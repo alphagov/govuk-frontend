@@ -266,6 +266,19 @@ examples:
         attributes:
           data-attribute: my-attribute
           data-attribute-2: my-attribute-2
+- name: navigation item with html as text
+  hidden: true
+  data:
+    serviceName: Service Name
+    serviceUrl: '/components/header'
+    navigation:
+      - href: '#1'
+        text: <em>Navigation item 1</em>
+        active: true
+      - href: '#2'
+        text: <em>Navigation item 2</em>
+      - href: '#3'
+        text: <em>Navigation item 3</em>
 - name: navigation item with html without link
   hidden: true
   data:
