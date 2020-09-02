@@ -36,6 +36,10 @@ params:
   type: object
   required: false
   description: HTML attributes (for example data attributes) to add to the fieldset container.
+- name: html
+  type: string
+  required: false
+  description: HTML to use/render within the fieldset element.
 - name: caller
   type: nunjucks-block
   required: false
@@ -52,3 +56,47 @@ examples:
       text: What is your address?
       classes: govuk-fieldset__legend--xl
       isPageHeading: true
+
+# Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+- name: html fieldset content
+  hidden: true
+  data:
+    legend:
+      text: What is your address?
+    html: |
+      <div class="my-content">
+        <p>This is some content to put inside the fieldset</p>
+      </div>
+- name: with describedBy
+  hidden: true
+  data:
+    describedBy: some-id
+- name: html as text
+  hidden: true
+  data:
+    legend:
+      text: What is <b>your</b> address?
+- name: html
+  hidden: true
+  data:
+    legend:
+      html: What is <b>your</b> address?
+- name: legend classes
+  hidden: true
+  data:
+    legend:
+      text: What is your address?
+      classes: my-custom-class
+- name: classes
+  hidden: true
+  data:
+    classes: app-fieldset--custom-modifier
+- name: role
+  hidden: true
+  data:
+    role: group
+- name: attributes
+  hidden: true
+  data:
+    attributes:
+      data-attribute: value

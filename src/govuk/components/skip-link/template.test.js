@@ -10,75 +10,71 @@ const { render, getExamples } = require('../../../../lib/jest-helpers')
 const examples = getExamples('skip-link')
 
 describe('Skip link', () => {
-  it('default example passes accessibility tests', async () => {
-    const $ = render('skip-link', examples.default)
+  describe('default example', () => {
+    it('passes accessibility tests', async () => {
+      const $ = render('skip-link', examples.default)
 
-    const results = await axe($.html())
-    expect(results).toHaveNoViolations()
-  })
-
-  it('renders href', () => {
-    const $ = render('skip-link', {
-      href: '#custom'
+      const results = await axe($.html())
+      expect(results).toHaveNoViolations()
     })
 
-    const $component = $('.govuk-skip-link')
-    expect($component.attr('href')).toEqual('#custom')
-  })
+    it('renders text', () => {
+      const $ = render('skip-link', examples.default)
 
-  it('renders default href', () => {
-    const $ = render('skip-link', {})
-
-    const $component = $('.govuk-skip-link')
-    expect($component.attr('href')).toEqual('#content')
-  })
-
-  it('renders text', () => {
-    const $ = render('skip-link', {
-      text: 'skip'
+      const $component = $('.govuk-skip-link')
+      expect($component.html()).toEqual('Skip to main content')
     })
 
-    const $component = $('.govuk-skip-link')
-    expect($component.html()).toEqual('skip')
+    it('renders default href', () => {
+      const $ = render('skip-link', examples['default values'])
+
+      const $component = $('.govuk-skip-link')
+      expect($component.attr('href')).toEqual('#content')
+    })
   })
 
-  it('renders escaped html in text', () => {
-    const $ = render('skip-link', {
-      text: '<p>skip</p>'
+  describe('custom options', () => {
+    it('renders href', () => {
+      const $ = render('skip-link', examples['custom href'])
+
+      const $component = $('.govuk-skip-link')
+      expect($component.attr('href')).toEqual('#custom')
     })
 
-    const $component = $('.govuk-skip-link')
-    expect($component.html()).toEqual('&lt;p&gt;skip&lt;/p&gt;')
-  })
+    it('renders text', () => {
+      const $ = render('skip-link', examples['custom text'])
 
-  it('renders html', () => {
-    const $ = render('skip-link', {
-      html: '<p>skip</p>'
+      const $component = $('.govuk-skip-link')
+      expect($component.html()).toEqual('skip')
     })
 
-    const $component = $('.govuk-skip-link')
-    expect($component.html()).toEqual('<p>skip</p>')
-  })
+    it('renders escaped html in text', () => {
+      const $ = render('skip-link', examples['html as text'])
 
-  it('renders classes', () => {
-    const $ = render('skip-link', {
-      classes: 'app-skip-link--custom-class'
+      const $component = $('.govuk-skip-link')
+      expect($component.html()).toEqual('&lt;p&gt;skip&lt;/p&gt;')
     })
 
-    const $component = $('.govuk-skip-link')
-    expect($component.hasClass('app-skip-link--custom-class')).toBeTruthy()
-  })
+    it('renders html', () => {
+      const $ = render('skip-link', examples.html)
 
-  it('renders attributes', () => {
-    const $ = render('skip-link', {
-      attributes: {
-        'data-test': 'attribute',
-        'aria-label': 'Skip to content'
-      }
+      const $component = $('.govuk-skip-link')
+      expect($component.html()).toEqual('<p>skip</p>')
     })
 
-    const $component = $('.govuk-skip-link')
-    expect($component.attr('data-test')).toEqual('attribute')
-    expect($component.attr('aria-label')).toEqual('Skip to content')
+    it('renders classes', () => {
+      const $ = render('skip-link', examples.classes)
+
+      const $component = $('.govuk-skip-link')
+      expect($component.hasClass('app-skip-link--custom-class')).toBeTruthy()
+    })
+
+    it('renders attributes', () => {
+      const $ = render('skip-link', examples.attributes)
+
+      const $component = $('.govuk-skip-link')
+      expect($component.attr('data-test')).toEqual('attribute')
+      expect($component.attr('aria-label')).toEqual('Skip to content')
+    })
   })
 })

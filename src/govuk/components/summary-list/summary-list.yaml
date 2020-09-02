@@ -81,6 +81,31 @@ examples:
             text: Name
           value:
             text: Firstname Lastname
+        - key:
+            text: Date of birth
+          value:
+            text: 13/08/1980
+        - key:
+            text: Contact information
+          value:
+            html: |
+              <p class="govuk-body">
+                email@email.com
+              </p>
+              <p class="govuk-body">
+                Address line 1<br>
+                Address line 2<br>
+                Address line 3<br>
+                Address line 4<br>
+                Address line 5
+              </p>
+  - name: with actions
+    data:
+      rows:
+        - key:
+            text: Name
+          value:
+            text: Firstname Lastname
           actions:
             items:
               - href: '#'
@@ -120,31 +145,6 @@ examples:
               - href: '#'
                 text: Change
                 visuallyHiddenText: contact information
-  - name: without actions
-    data:
-      rows:
-        - key:
-            text: Name
-          value:
-            text: Firstname Lastname
-        - key:
-            text: Date of birth
-          value:
-            text: 13/08/1980
-        - key:
-            text: Contact information
-          value:
-            html: |
-              <p class="govuk-body">
-                email@email.com
-              </p>
-              <p class="govuk-body">
-                Address line 1<br>
-                Address line 2<br>
-                Address line 3<br>
-                Address line 4<br>
-                Address line 5
-              </p>
   - name: with some actions
     data:
       rows:
@@ -545,3 +545,106 @@ examples:
                 text: Stop
               - href: '#'
                 text: Format
+
+# Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+  - name: attributes
+    hidden: true
+    data:
+      attributes:
+        data-attribute-1: value-1
+        data-attribute-2: value-2
+  - name: with falsey values
+    hidden: true
+    data:
+      rows:
+        - key:
+            text: Name
+        - null
+        - false
+        - ""
+        - key:
+            text: Name 2
+  - name: key with html
+    hidden: true
+    data:
+      rows:
+        - key:
+            html: <b>Name</b>
+  - name: key with classes
+    hidden: true
+    data:
+      rows:
+        - key:
+            text: Name
+            classes: app-custom-class
+  - name: value with html
+    hidden: true
+    data:
+      rows:
+        - key:
+          value:
+            html: <span>email@email.com</span>
+  - name: actions href
+    hidden: true
+    data:
+      rows:
+        - actions:
+            items:
+              - href: https://www.gov.uk
+  - name: actions with html
+    hidden: true
+    data:
+      rows:
+        - actions:
+            items:
+              - html: Edit<span class="visually-hidden"> name</span>
+  - name: actions with classes
+    hidden: true
+    data:
+      rows:
+        - actions:
+            classes: app-custom-class
+            items:
+              - text: Edit
+  - name: actions with attributes
+    hidden: true
+    data:
+      rows:
+        - actions:
+            items:
+              - text: Edit
+                href: '#'
+                attributes:
+                  data-test-attribute: value
+                  data-test-attribute-2: value-2
+  - name: single action with anchor
+    hidden: true
+    data:
+      rows:
+        - actions:
+            items:
+              - text: First action
+                href: '#'
+  - name: classes on items
+    hidden: true
+    data:
+      rows:
+        - actions:
+            items:
+              - text: Edit
+                href: '#'
+                classes: govuk-link--no-visited-state
+  - name: empty items array
+    hidden: true
+    data:
+      rows:
+        - actions:
+            items: []
+  - name: rows with classes
+    hidden: true
+    data:
+      rows:
+        - key:
+            text: Name
+          classes: app-custom-class
+

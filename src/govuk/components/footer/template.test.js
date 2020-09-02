@@ -18,28 +18,14 @@ describe('footer', () => {
   })
 
   it('entire component must have a role of `contentinfo`', () => {
-    const $ = render('footer', {})
+    const $ = render('footer', examples.default)
 
     const $component = $('.govuk-footer')
     expect($component.attr('role')).toEqual('contentinfo')
   })
 
-  it('no items displayed when no item array is provided', () => {
-    const $ = render('footer', {
-      navigation: []
-    })
-
-    const $component = $('.govuk-footer')
-    expect($component.find('.govuk-footer__navigation').length).toEqual(0)
-  })
-
   it('renders attributes correctly', () => {
-    const $ = render('footer', {
-      attributes: {
-        'data-test-attribute': 'value',
-        'data-test-attribute-2': 'value-2'
-      }
-    })
+    const $ = render('footer', examples.attributes)
 
     const $component = $('.govuk-footer')
     expect($component.attr('data-test-attribute')).toEqual('value')
@@ -47,18 +33,14 @@ describe('footer', () => {
   })
 
   it('renders classes', () => {
-    const $ = render('footer', {
-      classes: 'app-footer--custom-modifier'
-    })
+    const $ = render('footer', examples.classes)
 
     const $component = $('.govuk-footer')
     expect($component.hasClass('app-footer--custom-modifier')).toBeTruthy()
   })
 
   it('renders custom container classes', () => {
-    const $ = render('footer', {
-      containerClasses: 'app-width-container'
-    })
+    const $ = render('footer', examples['with container classes'])
 
     const $component = $('.govuk-footer')
     const $container = $component.find('.govuk-width-container')
@@ -83,9 +65,7 @@ describe('footer', () => {
     })
 
     it('renders default heading when none supplied', () => {
-      const $ = render('footer', {
-        meta: {}
-      })
+      const $ = render('footer', examples['with empty meta'])
 
       const $component = $('.govuk-footer')
       const $heading = $component.find('h2.govuk-visually-hidden')
@@ -93,9 +73,7 @@ describe('footer', () => {
     })
 
     it('doesn\'t render footer link list when no items are provided', () => {
-      const $ = render('footer', {
-        meta: { items: [] }
-      })
+      const $ = render('footer', examples['with empty meta items'])
 
       const $component = $('.govuk-footer')
       expect($component.find('.govuk-footer__inline-list').length).toEqual(0)
@@ -114,11 +92,15 @@ describe('footer', () => {
     })
 
     it('renders custom meta text', () => {
-      const $ = render('footer', {
-        meta: {
-          text: 'GOV.UK Prototype Kit <strong>v7.0.1</strong>'
-        }
-      })
+      const $ = render('footer', examples['with custom meta'])
+
+      const $component = $('.govuk-footer')
+      const $custom = $component.find('.govuk-footer__meta-custom')
+      expect($custom.text()).toContain('GOV.UK Prototype Kit v7.0.1')
+    })
+
+    it('renders custom meta html as text', () => {
+      const $ = render('footer', examples['meta html as text'])
 
       const $component = $('.govuk-footer')
       const $custom = $component.find('.govuk-footer__meta-custom')
@@ -126,11 +108,7 @@ describe('footer', () => {
     })
 
     it('renders custom meta html', () => {
-      const $ = render('footer', {
-        meta: {
-          html: 'GOV.UK Prototype Kit <strong>v7.0.1</strong>'
-        }
-      })
+      const $ = render('footer', examples['with meta html'])
 
       const $component = $('.govuk-footer')
       const $custom = $component.find('.govuk-footer__meta-custom')
@@ -138,20 +116,7 @@ describe('footer', () => {
     })
 
     it('renders attributes on meta links', () => {
-      const $ = render('footer', {
-        meta: {
-          items: [
-            {
-              href: '#1',
-              text: 'meta item 1',
-              attributes: {
-                'data-attribute': 'my-attribute',
-                'data-attribute-2': 'my-attribute-2'
-              }
-            }
-          ]
-        }
-      })
+      const $ = render('footer', examples['with meta item attributes'])
 
       const $metaLink = $('.govuk-footer__meta .govuk-footer__link')
       expect($metaLink.attr('data-attribute')).toEqual('my-attribute')
@@ -165,6 +130,13 @@ describe('footer', () => {
 
       const results = await axe($.html())
       expect(results).toHaveNoViolations()
+    })
+
+    it('no items displayed when no item array is provided', () => {
+      const $ = render('footer', examples['with empty navigation'])
+
+      const $component = $('.govuk-footer')
+      expect($component.find('.govuk-footer__navigation').length).toEqual(0)
     })
 
     it('renders headings', () => {
@@ -192,22 +164,7 @@ describe('footer', () => {
     })
 
     it('renders attributes on links', () => {
-      const $ = render('footer', {
-        navigation: [
-          {
-            items: [
-              {
-                href: '#1',
-                text: 'Navigation item 1',
-                attributes: {
-                  'data-attribute': 'my-attribute',
-                  'data-attribute-2': 'my-attribute-2'
-                }
-              }
-            ]
-          }
-        ]
-      })
+      const $ = render('footer', examples['with navigation item attributes'])
 
       const $navigationLink = $('.govuk-footer__list .govuk-footer__link')
       expect($navigationLink.attr('data-attribute')).toEqual('my-attribute')

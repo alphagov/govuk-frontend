@@ -10,107 +10,92 @@ const { render, getExamples } = require('../../../../lib/jest-helpers')
 const examples = getExamples('panel')
 
 describe('Panel', () => {
-  it('default example passes accessibility tests', async () => {
-    const $ = render('panel', examples.default)
+  describe('default example', () => {
+    it('passes accessibility tests', async () => {
+      const $ = render('panel', examples.default)
 
-    const results = await axe($.html())
-    expect(results).toHaveNoViolations()
-  })
-
-  it('renders title text', () => {
-    const $ = render('panel', examples.default)
-    const panelTitle = $('.govuk-panel__title').text().trim()
-
-    expect(panelTitle).toEqual('Application complete')
-  })
-
-  it('allows title text to be passed whilst escaping HTML entities', () => {
-    const $ = render('panel', {
-      titleText: 'Application <strong>not</strong> complete'
+      const results = await axe($.html())
+      expect(results).toHaveNoViolations()
     })
 
-    const panelTitle = $('.govuk-panel__title').html().trim()
-    expect(panelTitle).toEqual('Application &lt;strong&gt;not&lt;/strong&gt; complete')
-  })
+    it('renders title text', () => {
+      const $ = render('panel', examples.default)
+      const panelTitle = $('.govuk-panel__title').text().trim()
 
-  it('renders title as h1 (as the default heading level)', () => {
-    const $ = render('panel', examples.default)
-    const panelTitleHeadingLevel = $('.govuk-panel__title')[0].name
-
-    expect(panelTitleHeadingLevel).toEqual('h1')
-  })
-
-  it('renders title as specified heading level', () => {
-    const $ = render('panel', {
-      headingLevel: 3
-    })
-    const panelTitleHeadingLevel = $('.govuk-panel__title')[0].name
-
-    expect(panelTitleHeadingLevel).toEqual('h3')
-  })
-
-  it('allows title HTML to be passed un-escaped', () => {
-    const $ = render('panel', {
-      titleHtml: 'Application <strong>not</strong> complete'
+      expect(panelTitle).toEqual('Application complete')
     })
 
-    const panelTitle = $('.govuk-panel__title').html().trim()
-    expect(panelTitle).toEqual('Application <strong>not</strong> complete')
-  })
+    it('renders title as h1 (as the default heading level)', () => {
+      const $ = render('panel', examples.default)
+      const panelTitleHeadingLevel = $('.govuk-panel__title')[0].name
 
-  it('renders body text', () => {
-    const $ = render('panel', examples.default)
-    const panelBodyText = $('.govuk-panel__body').text().trim()
-
-    expect(panelBodyText).toEqual('Your reference number: HDJ2123F')
-  })
-
-  it('allows body text to be passed whilst escaping HTML entities', () => {
-    const $ = render('panel', {
-      text: 'Your reference number<br><strong>HDJ2123F</strong>'
+      expect(panelTitleHeadingLevel).toEqual('h1')
     })
 
-    const panelBodyText = $('.govuk-panel__body').html().trim()
-    expect(panelBodyText).toEqual('Your reference number&lt;br&gt;&lt;strong&gt;HDJ2123F&lt;/strong&gt;')
-  })
+    it('renders body text', () => {
+      const $ = render('panel', examples.default)
+      const panelBodyText = $('.govuk-panel__body').text().trim()
 
-  it('allows body HTML to be passed un-escaped', () => {
-    const $ = render('panel', {
-      html: 'Your reference number<br><strong>HDJ2123F</strong>'
+      expect(panelBodyText).toEqual('Your reference number: HDJ2123F')
     })
 
-    const panelBodyText = $('.govuk-panel__body').html().trim()
-    expect(panelBodyText).toEqual('Your reference number<br><strong>HDJ2123F</strong>')
+    it('doesnt render panel body if no body text is passed', () => {
+      const $ = render('panel', examples['title with no body text'])
+      const panelBody = $('.govuk-panel__body').length
+
+      expect(panelBody).toBeFalsy()
+    })
   })
 
-  it('allows additional classes to be added to the component', () => {
-    const $ = render('panel', {
-      classes: 'extra-class one-more-class'
+  describe('custom options', () => {
+    it('allows title text to be passed whilst escaping HTML entities', () => {
+      const $ = render('panel', examples['title html as text'])
+
+      const panelTitle = $('.govuk-panel__title').html().trim()
+      expect(panelTitle).toEqual('Application &lt;strong&gt;not&lt;/strong&gt; complete')
     })
 
-    const $component = $('.govuk-panel')
-    expect($component.hasClass('extra-class one-more-class')).toBeTruthy()
-  })
+    it('renders title as specified heading level', () => {
+      const $ = render('panel', examples['custom heading level'])
+      const panelTitleHeadingLevel = $('.govuk-panel__title')[0].name
 
-  it('allows additional attributes to be added to the component', () => {
-    const $ = render('panel', {
-      attributes: {
-        'first-attribute': 'true',
-        'second-attribute': 'false'
-      }
+      expect(panelTitleHeadingLevel).toEqual('h2')
     })
 
-    const $component = $('.govuk-panel')
-    expect($component.attr('first-attribute')).toEqual('true')
-    expect($component.attr('second-attribute')).toEqual('false')
-  })
+    it('allows title HTML to be passed un-escaped', () => {
+      const $ = render('panel', examples['title html'])
 
-  it('doesnt render panel body if no body text is passed', () => {
-    const $ = render('panel', {
-      titleText: 'Application complete'
+      const panelTitle = $('.govuk-panel__title').html().trim()
+      expect(panelTitle).toEqual('Application <strong>not</strong> complete')
     })
-    const panelBody = $('.govuk-panel__body').length
 
-    expect(panelBody).toBeFalsy()
+    it('allows body text to be passed whilst escaping HTML entities', () => {
+      const $ = render('panel', examples['body html as text'])
+
+      const panelBodyText = $('.govuk-panel__body').html().trim()
+      expect(panelBodyText).toEqual('Your reference number&lt;br&gt;&lt;strong&gt;HDJ2123F&lt;/strong&gt;')
+    })
+
+    it('allows body HTML to be passed un-escaped', () => {
+      const $ = render('panel', examples['body html'])
+
+      const panelBodyText = $('.govuk-panel__body').html().trim()
+      expect(panelBodyText).toEqual('Your reference number<br><strong>HDJ2123F</strong>')
+    })
+
+    it('allows additional classes to be added to the component', () => {
+      const $ = render('panel', examples.classes)
+
+      const $component = $('.govuk-panel')
+      expect($component.hasClass('extra-class one-more-class')).toBeTruthy()
+    })
+
+    it('allows additional attributes to be added to the component', () => {
+      const $ = render('panel', examples.attributes)
+
+      const $component = $('.govuk-panel')
+      expect($component.attr('first-attribute')).toEqual('true')
+      expect($component.attr('second-attribute')).toEqual('false')
+    })
   })
 })

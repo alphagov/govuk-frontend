@@ -2,13 +2,10 @@
 
 exports[`Checkboxes nested dependant components passes through fieldset params without breaking 1`] = `
 <fieldset class="govuk-fieldset app-fieldset--custom-modifier"
-          aria-describedby="example-hint example-error"
+          aria-describedby="example-name-error"
           data-attribute="value"
           data-second-attribute="second-value"
 >
-  <legend class="govuk-fieldset__legend">
-    What is your nationality?
-  </legend>
 </fieldset>
 `;
 
@@ -34,34 +31,28 @@ exports[`Checkboxes nested dependant components passes through label params with
     Option 1
   </b>
 </label>
-<label class="govuk-label govuk-checkboxes__label"
-       for="example-name-2"
->
-  &lt;b&gt;Option 2&lt;/b&gt;
-</label>
 `;
 
 exports[`Checkboxes when they include a hint renders the hint 1`] = `
-<div id="example-hint"
+<div id="example-multiple-hints-hint"
      class="govuk-hint"
 >
   If you have dual nationality, select all options that are relevant to you.
 </div>
-<div id="example-item-hint"
+<div id="example-multiple-hints-item-hint"
      class="govuk-hint govuk-checkboxes__hint"
 >
   Hint for british option here
 </div>
-<div id="example-3-item-hint"
-     class="govuk-hint govuk-checkboxes__hint app-checkboxes__hint-other"
-     data-test-attribute="true"
+<div id="example-multiple-hints-3-item-hint"
+     class="govuk-hint govuk-checkboxes__hint"
 >
   Hint for other option here
 </div>
 `;
 
 exports[`Checkboxes when they include an error message renders the error message 1`] = `
-<span id="example-error"
+<span id="waste-error"
       class="govuk-error-message"
 >
   Please select an option

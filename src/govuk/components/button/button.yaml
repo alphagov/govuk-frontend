@@ -140,3 +140,80 @@ examples:
     text: Warning button
     href: '/'
     classes: govuk-button--warning
+
+# Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+- name: attributes
+  hidden: true
+  data:
+    element: button
+    attributes:
+      aria-controls: example-id
+      data-tracking-dimension: 123
+- name: link attributes
+  hidden: true
+  data:
+    element: a
+    attributes:
+      aria-controls: example-id
+      data-tracking-dimension: 123
+- name: input attributes
+  hidden: true
+  data:
+    element: input
+    attributes:
+      aria-controls: example-id
+      data-tracking-dimension: 123
+- name: classes
+  hidden: true
+  data:
+    element: button
+    classes: app-button--custom-modifier
+- name: link classes
+  hidden: true
+  data:
+    element: a
+    classes: app-button--custom-modifier
+- name: input classes
+  hidden: true
+  data:
+    element: input
+    classes: app-button--custom-modifier
+- name: name
+  hidden: true
+  data:
+    element: button
+    name: start-now
+- name: type
+  hidden: true
+  data:
+    element: button
+    type: button
+- name: input type
+  hidden: true
+  data:
+    element: input
+    type: button
+- name: explicit link
+  hidden: true
+  data:
+    element: a
+    href: /
+    text: Continue
+- name: no href
+  hidden: true
+  data:
+    element: a
+- name: value
+  hidden: true
+  data:
+    element: button
+    value: start
+- name: html
+  hidden: true
+  data:
+    element: button
+    html: Start <em>now</em>
+- name: no data
+  hidden: true
+  data: {}
+

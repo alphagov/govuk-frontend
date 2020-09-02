@@ -10,69 +10,60 @@ const { render, getExamples } = require('../../../../lib/jest-helpers')
 const examples = getExamples('tag')
 
 describe('Tag', () => {
-  it('default example passes accessibility tests', async () => {
-    const $ = render('tag', examples.default)
+  describe('default example', () => {
+    it('passes accessibility tests', async () => {
+      const $ = render('tag', examples.default)
 
-    const results = await axe($.html())
-    expect(results).toHaveNoViolations()
-  })
-
-  it('renders the default example with strong element and text', () => {
-    const $ = render('tag', examples.default)
-
-    const $component = $('.govuk-tag')
-    expect($component.get(0).tagName).toEqual('strong')
-    expect($component.text()).toContain('alpha')
-  })
-
-  it('renders classes', () => {
-    const $ = render('tag', {
-      classes: 'govuk-tag--inactive',
-      text: 'alpha'
+      const results = await axe($.html())
+      expect(results).toHaveNoViolations()
     })
 
-    const $component = $('.govuk-tag')
-    expect($component.hasClass('govuk-tag--inactive')).toBeTruthy()
-  })
+    it('renders the default example with strong element and text', () => {
+      const $ = render('tag', examples.default)
 
-  it('renders custom text', () => {
-    const $ = render('tag', {
-      text: 'some-custom-text'
+      const $component = $('.govuk-tag')
+      expect($component.get(0).tagName).toEqual('strong')
+      expect($component.text()).toContain('alpha')
     })
 
-    const $component = $('.govuk-tag')
-    expect($component.html()).toContain('some-custom-text')
+    it('renders classes', () => {
+      const $ = render('tag', examples.inactive)
+
+      const $component = $('.govuk-tag')
+      expect($component.hasClass('govuk-tag--inactive')).toBeTruthy()
+    })
   })
 
-  it('renders escaped html when passed to text', () => {
-    const $ = render('tag', {
-      text: '<span>alpha</span>'
+  describe('custom options', () => {
+    it('renders custom text', () => {
+      const $ = render('tag', examples.grey)
+
+      const $component = $('.govuk-tag')
+      expect($component.html()).toContain('Grey')
     })
 
-    const $component = $('.govuk-tag')
-    expect($component.html()).toContain('&lt;span&gt;alpha&lt;/span&gt;')
+    it('renders attributes', () => {
+      const $ = render('tag', examples.attributes)
+
+      const $component = $('.govuk-tag')
+      expect($component.attr('data-test')).toEqual('attribute')
+      expect($component.attr('id')).toEqual('my-tag')
+    })
   })
 
-  it('renders html', () => {
-    const $ = render('tag', {
-      html: '<span>alpha</span>'
+  describe('html', () => {
+    it('renders escaped html when passed to text', () => {
+      const $ = render('tag', examples['html as text'])
+
+      const $component = $('.govuk-tag')
+      expect($component.html()).toContain('&lt;span&gt;alpha&lt;/span&gt;')
     })
 
-    const $component = $('.govuk-tag')
-    expect($component.html()).toContain('<span>alpha</span>')
-  })
+    it('renders html', () => {
+      const $ = render('tag', examples.html)
 
-  it('renders attributes', () => {
-    const $ = render('tag', {
-      attributes: {
-        'data-test': 'attribute',
-        id: 'my-tag'
-      },
-      html: '<span>alpha</span>'
+      const $component = $('.govuk-tag')
+      expect($component.html()).toContain('<span>alpha</span>')
     })
-
-    const $component = $('.govuk-tag')
-    expect($component.attr('data-test')).toEqual('attribute')
-    expect($component.attr('id')).toEqual('my-tag')
   })
 })

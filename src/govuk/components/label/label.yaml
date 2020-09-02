@@ -37,3 +37,33 @@ examples:
       text: National Insurance number
       classes: govuk-label--xl
       isPageHeading: true
+
+# Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+  - name: empty
+    hidden: true
+    data: {}
+  - name: classes
+    hidden: true
+    data:
+      text: National Insurance number
+      classes: extra-class one-more-class
+  - name: html as text
+    hidden: true
+    data:
+      text: National Insurance number, <em>NINO</em>
+  - name: html
+    hidden: true
+    data:
+      html: National Insurance number <em>NINO</em>
+  - name: for
+    hidden: true
+    data:
+      for: '#dummy-input'
+      text: National Insurance number
+  - name: attributes
+    hidden: true
+    data:
+      text: National Insurance number
+      attributes:
+        first-attribute: 'true'
+        second-attribute: 'false'

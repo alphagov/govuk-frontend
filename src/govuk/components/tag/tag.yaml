@@ -17,46 +17,63 @@ params:
   description: HTML attributes (for example data attributes) to add to the tag.
 
 examples:
- - name: default
-   data:
+- name: default
+  data:
     text: alpha
- - name: inactive
-   data:
+- name: inactive
+  data:
     text: alpha
     classes: govuk-tag--inactive
- - name: grey
-   data:
+- name: grey
+  data:
     text: Grey
     classes: govuk-tag--grey
- - name: blue
-   data:
+- name: blue
+  data:
     text: Blue
     classes: govuk-tag--blue
- - name: turquoise
-   data:
+- name: turquoise
+  data:
     text: Turquoise
     classes: govuk-tag--turquoise
- - name: green
-   data:
+- name: green
+  data:
     text: Green
     classes: govuk-tag--green
- - name: purple
-   data:
+- name: purple
+  data:
     text: Purple
     classes: govuk-tag--purple
- - name: pink
-   data:
+- name: pink
+  data:
     text: Pink
     classes: govuk-tag--pink
- - name: red
-   data:
+- name: red
+  data:
     text: Red
     classes: govuk-tag--red
- - name: orange
-   data:
+- name: orange
+  data:
     text: Orange
     classes: govuk-tag--orange
- - name: yellow
-   data:
+- name: yellow
+  data:
     text: Yellow
     classes: govuk-tag--yellow
+
+# Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+- name: attributes
+  hidden: true
+  data:
+    text: Tag with attributes
+    attributes:
+      data-test: attribute
+      id: my-tag
+- name: html as text
+  hidden: true
+  data:
+    text: <span>alpha</span>
+- name: html
+  hidden: true
+  data:
+    html: <span>alpha</span>

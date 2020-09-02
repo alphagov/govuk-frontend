@@ -112,13 +112,7 @@ accessibilityCriteria: |
 examples:
 - name: default
   data:
-    idPrefix: nationality
     name: nationality
-    fieldset:
-      legend:
-        text: What is your nationality?
-    hint:
-      text: If you have dual nationality, select all options that are relevant to you.
     items:
       - value: british
         text: British
@@ -144,6 +138,9 @@ examples:
         id: item_irish
         value: irish
         text: Irish
+      - name: custom-name-scottish
+        text: Scottish
+        value: scottish
 
 - name: with hints on items
   data:
@@ -157,13 +154,13 @@ examples:
         value: gov-gateway
         text: Sign in with Government Gateway
         hint:
-          text: You’ll have a user ID if you’ve registered for Self Assessment or filed a tax return online before.
+          text: You'll have a user ID if you've registered for Self Assessment or filed a tax return online before.
       - name: verify
         id: govuk-verify
         value: gov-verify
         text: Sign in with GOV.UK Verify
         hint:
-          text: You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity.
+          text: You'll have an account if you've already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity.
 
 - name: with disabled item
   data:
@@ -374,13 +371,13 @@ examples:
     items:
     - value: email
       text: Email
+      checked: true
       conditional:
         html: |
           <label class="govuk-label" for="context-email">Mobile phone number</label>
           <input class="govuk-input govuk-!-width-one-third" name="context-email" type="text" id="context-email">
     - value: phone
       text: Phone
-      checked: true
       conditional:
         html: |
           <label class="govuk-label" for="contact-phone">Phone number</label>
@@ -542,3 +539,224 @@ examples:
             <input class="govuk-input govuk-!-width-one-third" name="context-email" type="text" id="context-email">
       - value: b
         text: another thing
+
+# Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+- name: with idPrefix
+  hidden: true
+  data:
+    name: example-name
+    idPrefix: nationality
+    items:
+      - value: 1
+        text: Option 1
+      - value: 2
+        text: Option 2
+- name: with falsey values
+  hidden: true
+  data:
+    name: example-name
+    items:
+      - value: 1
+        text: Option 1
+      - false
+      - null
+      - ""
+      - value: 2
+        text: Option 2
+- name: classes
+  hidden: true
+  data:
+    name: example-name
+    classes: app-checkboxes--custom-modifier
+    items:
+      - value: 1
+        text: Option 1
+      - value: 2
+        text: Option 2
+- name: with fieldset describedBy
+  hidden: true
+  data:
+    name: example-name
+    fieldset:
+      describedBy: some-id
+    items:
+      - value: 1
+        text: Option 1
+      - value: 2
+        text: Option 2
+    hint:
+      text: If you have dual nationality, select all options that are relevant to you.
+- name: attributes
+  hidden: true
+  data:
+    name: example-name
+    attributes:
+      data-attribute: value
+      data-second-attribute: second-value
+    items:
+      - value: 1
+        text: Option 1
+      - value: 2
+        text: Option 2
+- name: with checked item
+  hidden: true
+  data:
+    name: example-name
+    items:
+      - value: 1
+        text: Option 1
+      - value: 2
+        text: Option 2
+        checked: true
+      - value: 3
+        text: Option 3
+        checked: true
+- name: items with attributes
+  hidden: true
+  data:
+    name: example-name
+    items:
+      - value: 1
+        text: Option 1
+        attributes:
+          data-attribute: ABC
+          data-second-attribute: DEF
+      - value: 2
+        text: Option 2
+        attributes:
+          data-attribute: GHI
+          data-second-attribute: JKL
+- name: empty conditional
+  hidden: true
+  data:
+    name: example-conditional
+    items:
+      - value: foo
+        text: Foo
+        conditional:
+          html: false
+- name: with label classes
+  hidden: true
+  data:
+    name: example-label-classes
+    items:
+      - value: yes
+        text: Yes
+        label:
+          classes: bold
+- name: multiple hints
+  hidden: true
+  data:
+    name: example-multiple-hints
+    hint:
+      text: If you have dual nationality, select all options that are relevant to you.
+    items:
+      - value: british
+        text: British
+        hint:
+          text: Hint for british option here
+      - value: irish
+        text: Irish
+      - hint:
+          text: Hint for other option here
+- name: with error message and hint
+  hidden: true
+  data:
+    name: example
+    errorMessage:
+      text: Please select an option
+    fieldset:
+      legend:
+        text: What is your nationality?
+    hint:
+      text: If you have dual nationality, select all options that are relevant to you.
+- name: with error, hint and fieldset describedBy
+  hidden: true
+  data:
+    name: example
+    errorMessage:
+      text: Please select an option
+    fieldset:
+      describedBy: some-id
+      legend:
+        text: What is your nationality?
+    hint:
+      text: If you have dual nationality, select all options that are relevant to you.
+- name: label with attributes
+  hidden: true
+  data:
+    name: example-name
+    items:
+      - value: 1
+        html: <b>Option 1</b>
+        label:
+          attributes:
+            data-attribute: value
+            data-second-attribute: second-value
+- name: fieldset params
+  hidden: true
+  data:
+    name: example-name
+    errorMessage:
+      text: Please select an option
+    legend:
+      text: What is your nationality?
+    fieldset:
+      classes: app-fieldset--custom-modifier
+      attributes:
+        data-attribute: value
+        data-second-attribute: second-value
+- name: fieldset html params
+  hidden: true
+  data:
+    name: example-name
+    fieldset:
+      legend:
+        html: What is your <b>nationality</b>?
+- name: with single option set 'aria-describedby' on input, and describedBy
+  hidden: true
+  data:
+    describedBy: some-id
+    name: t-and-c
+    errorMessage:
+      text: Please accept the terms and conditions
+    items:
+      - value: yes
+        text: I agree to the terms and conditions
+- name: with single option (and hint) set 'aria-describedby' on input, and describedBy
+  hidden: true
+  data:
+    describedBy: some-id
+    name: t-and-c-with-hint
+    errorMessage:
+      text: Please accept the terms and conditions
+    items:
+      - value: yes
+        text: I agree to the terms and conditions
+        hint:
+          text: Go on, you know you want to!
+- name: with error and idPrefix
+  hidden: true
+  data:
+    name: name-of-checkboxes
+    errorMessage:
+      text: Please select an option
+    idPrefix: id-prefix
+    items:
+      - value: animal
+        text: Waste from animal carcasses
+- name: with error message and fieldset describedBy
+  hidden: true
+  data:
+    name: example
+    errorMessage:
+      text: Please select an option
+    fieldset:
+      describedBy: some-id
+      legend:
+        text: What is your nationality?
+
+
+
+
+
