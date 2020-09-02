@@ -6,7 +6,7 @@ See the [main README quick start guide](https://github.com/alphagov/govuk-fronte
 
 ## Guidance and Examples
 
-Find out when to use the details component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/accordion).
+Find out when to use the accordion component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/accordion).
 
 ## Component options
 
