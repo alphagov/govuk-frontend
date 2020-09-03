@@ -34,11 +34,12 @@ Header.prototype.handleClick = function (event) {
 
   // If a button with aria-controls, handle click
   if ($toggleButton && $target) {
-    $target.classList.toggle('govuk-header__navigation--open')
-    $toggleButton.classList.toggle('govuk-header__menu-button--open')
+    var isVisible = $target.classList.toggle('govuk-header__navigation--open')
 
-    $toggleButton.setAttribute('aria-expanded', $toggleButton.getAttribute('aria-expanded') !== 'true')
-    $target.setAttribute('aria-hidden', $target.getAttribute('aria-hidden') === 'false')
+    $toggleButton.classList.toggle('govuk-header__menu-button--open', isVisible)
+
+    $toggleButton.setAttribute('aria-expanded', isVisible)
+    $target.setAttribute('aria-hidden', !isVisible)
   }
 }
 
