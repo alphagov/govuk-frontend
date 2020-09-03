@@ -13,6 +13,28 @@ This was added in [pull request #1925: Generate fixtures.json files for componen
 
 This was added in [pull request #1918: Add new brand colour for FCDO](https://github.com/alphagov/govuk-frontend/pull/1918).
 
+#### Render header navigation item without a link
+
+You can now render navigation items using the header macro without wrapping them in a link.
+
+You can do this by setting `text` or `html` and not setting `href`.
+
+For example:
+
+```javascript
+{{ govukHeader({
+  navigation: [
+    {
+      html: '<form method="post" action="url.com">
+              <input type="submit" class="app-logout-button-style" value="Log out" />
+            </form>'
+    }
+  ]
+}) }}
+```
+
+This was added in [pull request # 1921: Make it possible to exclude link from header navigation item](https://github.com/alphagov/govuk-frontend/pull/1921).
+
 #### Set navigation and mobile menu labels of the header with new options
 
 You can now customise the `aria-label` attributes of the navigation and mobile menu of the header component using the new `navigationLabel` and `menuButtonLabel` options.

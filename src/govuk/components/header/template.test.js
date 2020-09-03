@@ -142,11 +142,32 @@ describe('header', () => {
       expect($activeItem.hasClass('govuk-header__navigation-item--active'))
     })
 
-    it('renders navigation item with html', () => {
+    it('allows navigation item text to be passed whilst escaping HTML entities', () => {
+      const $ = render('header', examples['navigation item with html as text'])
+
+      const $navigationLink = $('.govuk-header__navigation-item a')
+      expect($navigationLink.html()).toContain('&lt;em&gt;Navigation item 1&lt;/em&gt;')
+    })
+
+    it('allows navigation item HTML to be passed un-escaped', () => {
       const $ = render('header', examples['navigation item with html'])
 
       const $navigationLink = $('.govuk-header__navigation-item a')
       expect($navigationLink.html()).toContain('<em>Navigation item 1</em>')
+    })
+
+    it('renders navigation item with text without a link', () => {
+      const $ = render('header', examples['navigation item with text without link'])
+
+      const $navigationItem = $('.govuk-header__navigation-item')
+      expect($navigationItem.html().trim()).toEqual('Navigation item 1')
+    })
+
+    it('renders navigation item with html without a link', () => {
+      const $ = render('header', examples['navigation item with html without link'])
+
+      const $navigationItem = $('.govuk-header__navigation-item')
+      expect($navigationItem.html()).toContain('<em>Navigation item 1</em>')
     })
 
     it('renders navigation item anchor with attributes', () => {

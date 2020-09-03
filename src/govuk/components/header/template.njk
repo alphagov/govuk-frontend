@@ -64,11 +64,15 @@
     <nav>
       <ul id="navigation" class="govuk-header__navigation {{ params.navigationClasses if params.navigationClasses }}" aria-label="{{ params.navigationLabel | default('Top Level Navigation') }}">
         {% for item in params.navigation %}
-          {% if item.href and (item.text or item.html) %}
+          {% if item.text or item.html %}
             <li class="govuk-header__navigation-item{{ ' govuk-header__navigation-item--active' if item.active }}">
-              <a class="govuk-header__link" href="{{ item.href }}"{% for attribute, value in item.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+              {% if item.href %}
+                <a class="govuk-header__link" href="{{ item.href }}"{% for attribute, value in item.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+              {% endif %}
                 {{ item.html | safe if item.html else item.text }}
-              </a>
+              {% if item.href %}
+                </a>
+              {% endif %}
             </li>
           {% endif %}
         {% endfor %}
