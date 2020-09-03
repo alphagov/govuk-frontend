@@ -1,75 +1,83 @@
 # Changelog
 
-## Unreleased
+## 3.9.0 (feature release)
 
 ### New features
 
-#### Add prefix and suffix for text input
+#### Add a prefix or suffix to a text input component
 
-You can now add a prefix or suffix element to the text input to help users enter things like currencies and measurements.
+You can now [use prefixes and suffixes in the text input component](https://design-system.service.gov.uk/components/text-input/#prefixes-and-suffixes) to help users enter things like currencies and measurements.
 
-For example:
+This was added in [pull request #1269: Add input prefix and suffix](https://github.com/alphagov/govuk-design-system/pull/1269/files). Thanks to [@simonwhatley](https://github.com/simonwhatley) and the GOV.UK Coronavirus Services Team.
 
-```javascript
-{{ govukInput({
-  label: {
-    text: "Amount, in pounds"
-  },
-  prefix: {
-    text: "£"
-  }
-}) }}
-```
+#### Customise navigation in the header component
 
-You shouldn't rely on prefixes or suffixes alone because people who use a screen reader won't see them. You should add any specific type of information you need to the input label or hint text as well.
+If you use the [header component with navigation](https://design-system.service.gov.uk/components/header/#header-with-service-name-and-navigation), you can now:
 
-This was added in [pull request #1816: Add input prefix and suffix](https://github.com/alphagov/govuk-frontend/pull/1816).
+- customise the section's `aria-label` text
+- add navigation items without links
 
-#### Add HTML test fixtures
-You can use our test fixtures to check you're outputting the same HTML that GOV.UK Frontend uses.
+##### Customise aria-label text
 
-This was added in [pull request #1925: Generate fixtures.json files for components on build:package](https://github.com/alphagov/govuk-frontend/pull/1925)
+You can use the new:
 
-#### Add new brand colour for The Foreign, Commonwealth and Development Office (FCDO)
-
-This was added in [pull request #1918: Add new brand colour for FCDO](https://github.com/alphagov/govuk-frontend/pull/1918).
-
-#### Render header navigation item without a link
-
-You can now render navigation items using the header macro without wrapping them in a link.
-
-You can do this by setting `text` or `html` and not setting `href`.
+- `navigationLabel` option to set the `aria-label` text for the navigation section
+- `menuButtonLabel` option to set the `aria-label` text for the button that hides or shows the navigation section on mobile
 
 For example:
 
 ```javascript
 {{ govukHeader({
-  navigation: [
+    navigationLabel: "Custom navigation section aria-label",
+    menuButtonLabel: "Custom menu button aria-label"
+}) }}
+```
+
+The default labels are now:
+
+- **Navigation menu** for `navigationLabel`
+- **Show or hide navigation menu** for `menuButtonLabel`
+
+This was added in pull requests:
+
+- [#1905: Set navigation and mobile menu labels of the header component with new options](https://github.com/alphagov/govuk-frontend/pull/1905)
+- [#1943: Change header menu button label](https://github.com/alphagov/govuk-frontend/pull/1943)
+
+Thanks to [@domoscargin](https://github.com/domoscargin) for raising this issue.
+
+##### Add navigation items without links
+
+To add a navigation item without a link, use the `text` or `html` option to add the item but do not use the `href` option.
+
+For example:
+
+```javascript
+{{ govukHeader({
+    navigation: [
     {
-      html: '<form method="post" action="url.com">
-              <input type="submit" class="app-logout-button-style" value="Log out" />
-            </form>'
+      html: "<form method='post' action='url.com'>
+              <input type='submit' class='app-logout-button-style' value='Log out' />
+            </form>"
     }
   ]
 }) }}
 ```
 
-This was added in [pull request # 1921: Make it possible to exclude link from header navigation item](https://github.com/alphagov/govuk-frontend/pull/1921).
+This was added in [pull request #1921: Make it possible to exclude link from header navigation item](https://github.com/alphagov/govuk-frontend/pull/1921).
 
-#### Set navigation and mobile menu labels of the header with new options
+#### Test if your HTML matches GOV.UK Frontend
 
-You can now customise the `aria-label` attributes of the navigation and mobile menu of the header component using the new `navigationLabel` and `menuButtonLabel` options.
+You can now use our test fixtures to [check you're outputting the same HTML that GOV.UK Frontend uses](http://frontend.design-system.service.gov.uk/testing-your-html/).
 
-For example:
+This was added in [pull request #1925: Generate fixtures.json files for components on build:package](https://github.com/alphagov/govuk-frontend/pull/1925). Thanks to everyone who fed back on [our test fixtures proposal](https://github.com/alphagov/govuk-frontend/issues/1830#issuecomment-665075842).
 
-```javascript
-{{ govukHeader({
-    navigationLabel: "Custom navigation label",
-    menuButtonLabel: "Custom menu label"
-}) }}
-```
+### Fixes
 
-This was added in [pull request #1905: Set navigation and mobile menu labels of the header component with new options](https://github.com/alphagov/govuk-frontend/pull/1905).
+We’ve made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#1918: Add new brand colour for FCDO](https://github.com/alphagov/govuk-frontend/pull/1918) - thanks to [@deborahchua](https://github.com/deborahchua) for contributing this
+- [#1942: Set aria-expanded and aria-hidden attributes on header menu button and menu when page loads](https://github.com/alphagov/govuk-frontend/pull/1942)
+- [#1947 Add print styles for the panel component](https://github.com/alphagov/govuk-frontend/pull/1947)
 
 ### Fixes
 
