@@ -1,5 +1,5 @@
 import '../../vendor/polyfills/Function/prototype/bind'
-import '../../vendor/polyfills/Event' // addEventListener and event.target normaliziation
+import '../../vendor/polyfills/Event' // addEventListener and event.target normalization
 import '../../vendor/polyfills/Element/prototype/classList'
 
 function Header ($module) {
