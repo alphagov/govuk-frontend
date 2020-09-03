@@ -31,6 +31,31 @@ describe('/components/header', () => {
     })
 
     describe('when JavaScript is available', () => {
+      describe('when no navigation is present', () => {
+        it('exits gracefully with no errors', async () => {
+          // Errors logged to the console will cause this test to fail
+          await page.goto(baseUrl + '/components/header/preview', { waitUntil: 'load' })
+        })
+      })
+
+      describe('on page load', () => {
+        beforeAll(async () => {
+          await page.goto(baseUrl + '/components/header/with-navigation/preview', { waitUntil: 'load' })
+        })
+
+        it('exposes the hidden state of the menu using aria-hidden', async () => {
+          const ariaHidden = await page.$eval('.govuk-header__navigation', el => el.getAttribute('aria-hidden'))
+
+          expect(ariaHidden).toBe('true')
+        })
+
+        it('exposes the collapsed state of the menu button using aria-expanded', async () => {
+          const ariaExpanded = await page.$eval('.govuk-header__menu-button', el => el.getAttribute('aria-expanded'))
+
+          expect(ariaExpanded).toBe('false')
+        })
+      })
+
       describe('when menu button is pressed', () => {
         it('should indicate the open state of the toggle button', async () => {
           await page.goto(baseUrl + '/components/header/with-navigation/preview', { waitUntil: 'load' })
