@@ -50,6 +50,13 @@ For example:
 
 This was added in [pull request #1905: Set navigation and mobile menu labels of the header component with new options](https://github.com/alphagov/govuk-frontend/pull/1905).
 
+### Fixes
+
+We’ve made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#1943: Change header menu button label](https://github.com/alphagov/govuk-frontend/pull/1943)
+
+
 ## 3.8.1 (Fix release)
 
 ### Fixes
