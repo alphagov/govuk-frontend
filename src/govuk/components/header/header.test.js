@@ -7,108 +7,146 @@ const PORT = configPaths.ports.test
 
 const baseUrl = 'http://localhost:' + PORT
 
-beforeAll(async (done) => {
-  await page.emulate(iPhone)
-  done()
-})
+describe('Header navigation', () => {
+  beforeAll(async (done) => {
+    await page.emulate(iPhone)
+    done()
+  })
 
-describe('/components/header', () => {
-  describe('/components/header/with-navigation/preview', () => {
-    describe('when JavaScript is unavailable or fails', () => {
-      beforeAll(async () => {
-        await page.setJavaScriptEnabled(false)
-      })
-
-      afterAll(async () => {
-        await page.setJavaScriptEnabled(true)
-      })
-
-      it('falls back to making the navigation visible', async () => {
-        await page.goto(baseUrl + '/components/header/with-navigation/preview', { waitUntil: 'load' })
-        const isContentVisible = await page.waitForSelector('.govuk-header__navigation', { visible: true, timeout: 1000 })
-        expect(isContentVisible).toBeTruthy()
+  describe('when JavaScript is unavailable or fails', () => {
+    beforeAll(async () => {
+      await page.setJavaScriptEnabled(false)
+      await page.goto(`${baseUrl}/components/header/with-navigation/preview`, {
+        waitUntil: 'load'
       })
     })
 
-    describe('when JavaScript is available', () => {
-      describe('when menu button is pressed', () => {
-        it('should indicate the open state of the toggle button', async () => {
-          await page.goto(baseUrl + '/components/header/with-navigation/preview', { waitUntil: 'load' })
+    afterAll(async () => {
+      await page.setJavaScriptEnabled(true)
+    })
 
-          await page.click('.govuk-js-header-toggle')
+    it('shows the navigation', async () => {
+      await expect(page).toMatchElement('.govuk-header__navigation', {
+        visible: true,
+        timeout: 1000
+      })
+    })
+  })
 
-          const toggleButtonIsOpen = await page.evaluate(() => document.body.querySelector('.govuk-header__menu-button').classList.contains('govuk-header__menu-button--open'))
-          expect(toggleButtonIsOpen).toBeTruthy()
+  describe('when JavaScript is available', () => {
+    describe('when no navigation is present', () => {
+      it('exits gracefully with no errors', async () => {
+        // Errors logged to the console will cause this test to fail
+        await page.goto(`${baseUrl}/components/header/preview`, {
+          waitUntil: 'load'
         })
+      })
+    })
 
-        it('should indicate the expanded state of the toggle button using aria-expanded', async () => {
-          await page.goto(baseUrl + '/components/header/with-navigation/preview', { waitUntil: 'load' })
-
-          await page.click('.govuk-js-header-toggle')
-
-          const toggleButtonAriaExpanded = await page.evaluate(() => document.body.querySelector('.govuk-header__menu-button').getAttribute('aria-expanded'))
-          expect(toggleButtonAriaExpanded).toBe('true')
-        })
-
-        it('should indicate the open state of the navigation', async () => {
-          await page.goto(baseUrl + '/components/header/with-navigation/preview', { waitUntil: 'load' })
-
-          await page.click('.govuk-js-header-toggle')
-
-          const navigationIsOpen = await page.evaluate(() => document.body.querySelector('.govuk-header__navigation').classList.contains('govuk-header__navigation--open'))
-          expect(navigationIsOpen).toBeTruthy()
-        })
-
-        it('should indicate the visible state of the navigation using aria-hidden', async () => {
-          await page.goto(baseUrl + '/components/header/with-navigation/preview', { waitUntil: 'load' })
-
-          await page.click('.govuk-js-header-toggle')
-
-          const navigationAriaHidden = await page.evaluate(() => document.body.querySelector('.govuk-header__navigation').getAttribute('aria-hidden'))
-          expect(navigationAriaHidden).toBe('false')
+    describe('on page load', () => {
+      beforeAll(async () => {
+        await page.goto(`${baseUrl}/components/header/with-navigation/preview`, {
+          waitUntil: 'load'
         })
       })
 
-      describe('when menu button is pressed twice', () => {
-        it('should indicate the open state of the toggle button', async () => {
-          await page.goto(baseUrl + '/components/header/with-navigation/preview', { waitUntil: 'load' })
+      it('exposes the hidden state of the menu using aria-hidden', async () => {
+        const ariaHidden = await page.$eval('.govuk-header__navigation',
+          el => el.getAttribute('aria-hidden')
+        )
 
-          await page.click('.govuk-js-header-toggle')
-          await page.click('.govuk-js-header-toggle')
+        expect(ariaHidden).toBe('true')
+      })
 
-          const toggleButtonIsOpen = await page.evaluate(() => document.body.querySelector('.govuk-header__menu-button').classList.contains('govuk-header__menu-button--open'))
-          expect(toggleButtonIsOpen).toBeFalsy()
+      it('exposes the collapsed state of the menu button using aria-expanded', async () => {
+        const ariaExpanded = await page.$eval('.govuk-header__menu-button',
+          el => el.getAttribute('aria-expanded')
+        )
+
+        expect(ariaExpanded).toBe('false')
+      })
+    })
+
+    describe('when menu button is pressed', () => {
+      beforeAll(async () => {
+        await page.goto(`${baseUrl}/components/header/with-navigation/preview`, {
+          waitUntil: 'load'
         })
+        await page.click('.govuk-js-header-toggle')
+      })
 
-        it('should indicate the expanded state of the toggle button using aria-expanded', async () => {
-          await page.goto(baseUrl + '/components/header/with-navigation/preview', { waitUntil: 'load' })
+      it('adds the --open modifier class to the menu, making it visible', async () => {
+        const hasOpenClass = await page.$eval('.govuk-header__navigation',
+          el => el.classList.contains('govuk-header__navigation--open')
+        )
 
-          await page.click('.govuk-js-header-toggle')
-          await page.click('.govuk-js-header-toggle')
+        expect(hasOpenClass).toBeTruthy()
+      })
 
-          const toggleButtonAriaExpanded = await page.evaluate(() => document.body.querySelector('.govuk-header__menu-button').getAttribute('aria-expanded'))
-          expect(toggleButtonAriaExpanded).toBe('false')
+      it('adds the --open modifier class to the menu button', async () => {
+        const hasOpenClass = await page.$eval('.govuk-header__menu-button',
+          el => el.classList.contains('govuk-header__menu-button--open')
+        )
+
+        expect(hasOpenClass).toBeTruthy()
+      })
+
+      it('exposes the visible state of the menu using aria-hidden', async () => {
+        const ariaHidden = await page.$eval('.govuk-header__navigation',
+          el => el.getAttribute('aria-hidden')
+        )
+
+        expect(ariaHidden).toBe('false')
+      })
+
+      it('exposes the expanded state of the menu button using aria-expanded', async () => {
+        const ariaExpanded = await page.$eval('.govuk-header__menu-button',
+          el => el.getAttribute('aria-expanded')
+        )
+
+        expect(ariaExpanded).toBe('true')
+      })
+    })
+
+    describe('when menu button is pressed twice', () => {
+      beforeAll(async () => {
+        await page.goto(`${baseUrl}/components/header/with-navigation/preview`, {
+          waitUntil: 'load'
         })
+        await page.click('.govuk-js-header-toggle')
+        await page.click('.govuk-js-header-toggle')
+      })
 
-        it('should indicate the open state of the navigation', async () => {
-          await page.goto(baseUrl + '/components/header/with-navigation/preview', { waitUntil: 'load' })
+      it('removes the --open modifier class from the menu, hiding it', async () => {
+        const hasOpenClass = await page.$eval('.govuk-header__navigation',
+          el => el.classList.contains('govuk-header__navigation--open')
+        )
 
-          await page.click('.govuk-js-header-toggle')
-          await page.click('.govuk-js-header-toggle')
+        expect(hasOpenClass).toBeFalsy()
+      })
 
-          const navigationIsOpen = await page.evaluate(() => document.body.querySelector('.govuk-header__navigation').classList.contains('govuk-header__navigation--open'))
-          expect(navigationIsOpen).toBeFalsy()
-        })
+      it('removes the --open modifier class from the menu button', async () => {
+        const hasOpenClass = await page.$eval('.govuk-header__menu-button',
+          el => el.classList.contains('govuk-header__menu-button--open')
+        )
 
-        it('should indicate the visible state of the navigation using aria-hidden', async () => {
-          await page.goto(baseUrl + '/components/header/with-navigation/preview', { waitUntil: 'load' })
+        expect(hasOpenClass).toBeFalsy()
+      })
 
-          await page.click('.govuk-js-header-toggle')
-          await page.click('.govuk-js-header-toggle')
+      it('exposes the hidden state of the menu using aria-hidden', async () => {
+        const ariaHidden = await page.$eval('.govuk-header__navigation',
+          el => el.getAttribute('aria-hidden')
+        )
 
-          const navigationAriaHidden = await page.evaluate(() => document.body.querySelector('.govuk-header__navigation').getAttribute('aria-hidden'))
-          expect(navigationAriaHidden).toBe('true')
-        })
+        expect(ariaHidden).toBe('true')
+      })
+
+      it('exposes the collapsed state of the menu button using aria-expanded', async () => {
+        const ariaExpanded = await page.$eval('.govuk-header__menu-button',
+          el => el.getAttribute('aria-expanded')
+        )
+
+        expect(ariaExpanded).toBe('false')
       })
     })
   })
