@@ -56,6 +56,7 @@ We’ve made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#1943: Change header menu button label](https://github.com/alphagov/govuk-frontend/pull/1943)
 - [#1942: Set aria-expanded and aria-hidden attributes on header menu button and menu when page loads](https://github.com/alphagov/govuk-frontend/pull/1942)
+- [#1947 Add print styles for the panel component](https://github.com/alphagov/govuk-frontend/pull/1947)
 
 ## 3.8.1 (Fix release)
 
