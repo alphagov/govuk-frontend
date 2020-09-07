@@ -38,6 +38,48 @@ params:
   required: false
   description: Options for the error message component. The error message component will not display if you use a falsy value for `errorMessage`, for example `false` or `null`.
   isComponent: true
+- name: prefix
+  type: object
+  required: false
+  description: Options for the prefix element.
+  params:
+    - name: text
+      type: string
+      required: true
+      description: Required. If `html` is set, this is not required. Text to use within the label. If `html` is provided, the `text` argument will be ignored.
+    - name: html
+      type: string
+      required: true
+      description: Required. If `text` is set, this is not required. HTML to use within the label. If `html` is provided, the `text` argument will be ignored.
+    - name: classes
+      type: string
+      required: false
+      description: Classes to add to the prefix.
+    - name: attributes
+      type: object
+      required: false
+      description: HTML attributes (for example data attributes) to add to the prefix element.
+- name: suffix
+  type: object
+  required: false
+  description: Options for the suffix element.
+  params:
+    - name: text
+      type: string
+      required: true
+      description: Required. If `html` is set, this is not required. Text to use within the label. If `html` is provided, the `text` argument will be ignored.
+    - name: html
+      type: string
+      required: true
+      description: Required. If `text` is set, this is not required. HTML to use within the label. If `html` is provided, the `text` argument will be ignored.
+    - name: classes
+      type: string
+      required: false
+      description: Classes to add to the suffix element.
+    - name: attributes
+      type: object
+      required: false
+      description: HTML attributes (for example data attributes) to add to the suffix element.
 - name: formGroup
   type: object
   required: false
@@ -203,6 +245,68 @@ examples:
       type: text
       spellcheck: false
 
+  - name: with prefix
+    data:
+      label:
+        text: Amount, in pounds
+      id: input-with-prefix
+      name: amount
+      prefix:
+        text: £
+
+  - name: with suffix
+    data:
+      label:
+        text: Weight, in kilograms
+      id: input-with-suffix
+      name: weight
+      suffix:
+        text: kg
+
+  - name: with prefix and suffix
+    data:
+      label:
+        text: Cost per item, in pounds
+      id: input-with-prefix-suffix
+      name: cost
+      prefix:
+        text: £
+      suffix:
+        text: per item
+  - name: with prefix and long suffix
+    data:
+      label:
+        text: Cost per item, in pounds, per household member
+      id: input-with-prefix-suffix
+      name: cost
+      prefix:
+        text: £
+      suffix:
+        text: per household member
+  - name: with prefix and suffix and error
+    data:
+      label:
+        text: Cost per item, in pounds
+      id: input-with-prefix-suffix
+      name: cost
+      prefix:
+        text: £
+      suffix:
+        text: per item
+      errorMessage:
+        text: Error message goes here
+  - name: with prefix and suffix and width modifier
+    data:
+      label:
+        text: Cost per item, in pounds
+      id: input-with-prefix-suffix
+      name: cost
+      classes: govuk-input--width-5
+      prefix:
+        text: £
+      suffix:
+        text: per item
+
 # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: classes
     hidden: true
@@ -257,3 +361,82 @@ examples:
     data:
       inputmode: decimal
 
+  - name: with prefix with html as text
+    hidden: true
+    data:
+      label:
+        text: Amount, in pounds
+      id: input-with-prefix
+      name: amount
+      prefix:
+        text: <span>£</span>
+  - name: with prefix with html
+    hidden: true
+    data:
+      label:
+        html: Amount, in pounds
+      id: input-with-prefix
+      name: amount
+      prefix:
+        html: <span>£</span>
+  - name: with prefix with classes
+    hidden: true
+    data:
+      label:
+        text: Amount, in pounds
+      id: input-with-prefix-element
+      name: amount
+      prefix:
+        text: £
+        classes: app-input__prefix--custom-modifier
+  - name: with prefix with attributes
+    hidden: true
+    data:
+      label:
+        text: Amount, in pounds
+      id: input-with-prefix-element
+      name: amount
+      prefix:
+        text: £
+        attributes:
+          data-attribute: value
+
+  - name: with suffix with html as text
+    hidden: true
+    data:
+      label:
+        text: Weight, in kilograms
+      id: input-with-suffix
+      name: weight
+      suffix:
+        text: <span>kg</span>
+  - name: with suffix with html
+    hidden: true
+    data:
+      label:
+        text: Weight, in kilograms
+      id: input-with-suffix
+      name: weight
+      suffix:
+        html: <span>kg</span>
+  - name: with suffix with classes
+    hidden: true
+    data:
+      label:
+        text: Weight, in kilograms
+      id: input-with-suffix
+      name: weight
+      suffix:
+        html: <span>kg</span>
+        classes: app-input__suffix--custom-modifier
+  - name: with suffix with attributes
+    hidden: true
+    data:
+      label:
+        text: Weight, in kilograms
+      id: input-with-suffix
+      name: weight
+      suffix:
+        html: <span>kg</span>
+        attributes:
+          data-attribute: value
