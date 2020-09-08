@@ -8,7 +8,13 @@
 
 You can now [use prefixes and suffixes in the text input component](https://design-system.service.gov.uk/components/text-input/#prefixes-and-suffixes) to help users enter things like currencies and measurements.
 
-This was added in [pull request #1269: Add input prefix and suffix](https://github.com/alphagov/govuk-design-system/pull/1269/files). Thanks to [@simonwhatley](https://github.com/simonwhatley) and the GOV.UK Coronavirus Services Team.
+This was added in [pull request #1816: Add input prefix and suffix](https://github.com/alphagov/govuk-frontend/pull/1816). Thanks to [@simonwhatley](https://github.com/simonwhatley) and the GOV.UK Coronavirus Services Team.
+
+#### Test if your HTML matches GOV.UK Frontend
+
+You can now use our test fixtures to [check you're outputting the same HTML that GOV.UK Frontend uses](http://frontend.design-system.service.gov.uk/testing-your-html/).
+
+This was added in [pull request #1925: Generate fixtures.json files for components on build:package](https://github.com/alphagov/govuk-frontend/pull/1925). Thanks to everyone who fed back on [our test fixtures proposal](https://github.com/alphagov/govuk-frontend/issues/1830#issuecomment-665075842).
 
 #### Customise navigation in the header component
 
@@ -41,9 +47,7 @@ The default labels are now:
 This was added in pull requests:
 
 - [#1905: Set navigation and mobile menu labels of the header component with new options](https://github.com/alphagov/govuk-frontend/pull/1905)
-- [#1943: Change header menu button label](https://github.com/alphagov/govuk-frontend/pull/1943)
-
-Thanks to [@domoscargin](https://github.com/domoscargin) for raising this issue.
+- [#1943: Change header menu button label](https://github.com/alphagov/govuk-frontend/pull/1943) - thanks to [@domoscargin](https://github.com/domoscargin) for raising this issue
 
 ##### Add navigation items without links
 
@@ -64,12 +68,6 @@ For example:
 ```
 
 This was added in [pull request #1921: Make it possible to exclude link from header navigation item](https://github.com/alphagov/govuk-frontend/pull/1921).
-
-#### Test if your HTML matches GOV.UK Frontend
-
-You can now use our test fixtures to [check you're outputting the same HTML that GOV.UK Frontend uses](http://frontend.design-system.service.gov.uk/testing-your-html/).
-
-This was added in [pull request #1925: Generate fixtures.json files for components on build:package](https://github.com/alphagov/govuk-frontend/pull/1925). Thanks to everyone who fed back on [our test fixtures proposal](https://github.com/alphagov/govuk-frontend/issues/1830#issuecomment-665075842).
 
 ### Fixes
 
