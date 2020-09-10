@@ -1,0 +1,275 @@
+{
+    "component": "button",
+    "fixtures": [
+        {
+            "name": "default",
+            "options": {
+                "text": "Save and continue"
+            },
+            "html": "<button class=\"govuk-button\" data-module=\"govuk-button\">\n  Save and continue\n</button>"
+        },
+        {
+            "name": "disabled",
+            "options": {
+                "text": "Disabled button",
+                "disabled": true
+            },
+            "html": "<button disabled=\"disabled\" aria-disabled=\"true\" class=\"govuk-button govuk-button--disabled\" data-module=\"govuk-button\">\n  Disabled button\n</button>"
+        },
+        {
+            "name": "link",
+            "options": {
+                "text": "Link button",
+                "href": "/"
+            },
+            "html": "<a href=\"/\" role=\"button\" draggable=\"false\" class=\"govuk-button\" data-module=\"govuk-button\">\n  Link button\n</a>"
+        },
+        {
+            "name": "link disabled",
+            "options": {
+                "text": "Disabled link button",
+                "href": "/",
+                "disabled": true
+            },
+            "html": "<a href=\"/\" role=\"button\" draggable=\"false\" class=\"govuk-button govuk-button--disabled\" data-module=\"govuk-button\">\n  Disabled link button\n</a>"
+        },
+        {
+            "name": "start link",
+            "options": {
+                "text": "Start now link button",
+                "href": "/",
+                "isStartButton": true
+            },
+            "html": "<a href=\"/\" role=\"button\" draggable=\"false\" class=\"govuk-button govuk-button--start\" data-module=\"govuk-button\">\n  Start now link button\n  <svg class=\"govuk-button__start-icon\" xmlns=\"http://www.w3.org/2000/svg\" width=\"17.5\" height=\"19\" viewBox=\"0 0 33 40\" aria-hidden=\"true\" focusable=\"false\">\n    <path fill=\"currentColor\" d=\"M0 0h13l20 20-20 20H0l20-20z\"/>\n  </svg></a>"
+        },
+        {
+            "name": "input",
+            "options": {
+                "element": "input",
+                "name": "start-now",
+                "text": "Start now"
+            },
+            "html": "<input value=\"Start now\" type=\"submit\" name=\"start-now\" class=\"govuk-button\" data-module=\"govuk-button\">"
+        },
+        {
+            "name": "input disabled",
+            "options": {
+                "element": "input",
+                "text": "Explicit input button disabled",
+                "disabled": true
+            },
+            "html": "<input value=\"Explicit input button disabled\" type=\"submit\" disabled=\"disabled\" aria-disabled=\"true\" class=\"govuk-button govuk-button--disabled\" data-module=\"govuk-button\">"
+        },
+        {
+            "name": "prevent double click",
+            "options": {
+                "text": "Submit",
+                "preventDoubleClick": true
+            },
+            "html": "<button data-prevent-double-click=\"true\" class=\"govuk-button\" data-module=\"govuk-button\">\n  Submit\n</button>"
+        },
+        {
+            "name": "with active state",
+            "options": {
+                "name": "active",
+                "text": "Active",
+                "classes": ":active"
+            },
+            "html": "<button name=\"active\" class=\"govuk-button :active\" data-module=\"govuk-button\">\n  Active\n</button>"
+        },
+        {
+            "name": "with hover state",
+            "options": {
+                "name": "hover",
+                "text": "Hovered",
+                "classes": ":hover"
+            },
+            "html": "<button name=\"hover\" class=\"govuk-button :hover\" data-module=\"govuk-button\">\n  Hovered\n</button>"
+        },
+        {
+            "name": "with focus state",
+            "options": {
+                "name": "focus",
+                "text": "Focussed",
+                "classes": ":focus"
+            },
+            "html": "<button name=\"focus\" class=\"govuk-button :focus\" data-module=\"govuk-button\">\n  Focussed\n</button>"
+        },
+        {
+            "name": "Secondary",
+            "options": {
+                "name": "secondary",
+                "text": "Secondary button",
+                "classes": "govuk-button--secondary"
+            },
+            "html": "<button name=\"secondary\" class=\"govuk-button govuk-button--secondary\" data-module=\"govuk-button\">\n  Secondary button\n</button>"
+        },
+        {
+            "name": "Secondary disabled",
+            "options": {
+                "name": "secondary",
+                "text": "Secondary button disabled",
+                "classes": "govuk-button--secondary",
+                "disabled": true
+            },
+            "html": "<button name=\"secondary\" disabled=\"disabled\" aria-disabled=\"true\" class=\"govuk-button govuk-button--secondary govuk-button--disabled\" data-module=\"govuk-button\">\n  Secondary button disabled\n</button>"
+        },
+        {
+            "name": "Secondary link",
+            "options": {
+                "name": "secondary",
+                "text": "Secondary button",
+                "href": "/",
+                "classes": "govuk-button--secondary"
+            },
+            "html": "<a href=\"/\" role=\"button\" draggable=\"false\" class=\"govuk-button govuk-button--secondary\" data-module=\"govuk-button\">\n  Secondary button\n</a>"
+        },
+        {
+            "name": "Warning",
+            "options": {
+                "name": "Warning",
+                "text": "Warning button",
+                "classes": "govuk-button--warning"
+            },
+            "html": "<button name=\"Warning\" class=\"govuk-button govuk-button--warning\" data-module=\"govuk-button\">\n  Warning button\n</button>"
+        },
+        {
+            "name": "Warning disabled",
+            "options": {
+                "name": "warning",
+                "text": "Warning button disabled",
+                "classes": "govuk-button--warning",
+                "disabled": true
+            },
+            "html": "<button name=\"warning\" disabled=\"disabled\" aria-disabled=\"true\" class=\"govuk-button govuk-button--warning govuk-button--disabled\" data-module=\"govuk-button\">\n  Warning button disabled\n</button>"
+        },
+        {
+            "name": "Warning link",
+            "options": {
+                "name": "Warning",
+                "text": "Warning button",
+                "href": "/",
+                "classes": "govuk-button--warning"
+            },
+            "html": "<a href=\"/\" role=\"button\" draggable=\"false\" class=\"govuk-button govuk-button--warning\" data-module=\"govuk-button\">\n  Warning button\n</a>"
+        },
+        {
+            "name": "attributes",
+            "options": {
+                "element": "button",
+                "attributes": {
+                    "aria-controls": "example-id",
+                    "data-tracking-dimension": 123
+                }
+            },
+            "html": "<button class=\"govuk-button\" data-module=\"govuk-button\" aria-controls=\"example-id\" data-tracking-dimension=\"123\">\n  \n</button>"
+        },
+        {
+            "name": "link attributes",
+            "options": {
+                "element": "a",
+                "attributes": {
+                    "aria-controls": "example-id",
+                    "data-tracking-dimension": 123
+                }
+            },
+            "html": "<a href=\"#\" role=\"button\" draggable=\"false\" class=\"govuk-button\" data-module=\"govuk-button\" aria-controls=\"example-id\" data-tracking-dimension=\"123\">\n  \n</a>"
+        },
+        {
+            "name": "input attributes",
+            "options": {
+                "element": "input",
+                "attributes": {
+                    "aria-controls": "example-id",
+                    "data-tracking-dimension": 123
+                }
+            },
+            "html": "<input value=\"\" type=\"submit\" class=\"govuk-button\" data-module=\"govuk-button\" aria-controls=\"example-id\" data-tracking-dimension=\"123\">"
+        },
+        {
+            "name": "classes",
+            "options": {
+                "element": "button",
+                "classes": "app-button--custom-modifier"
+            },
+            "html": "<button class=\"govuk-button app-button--custom-modifier\" data-module=\"govuk-button\">\n  \n</button>"
+        },
+        {
+            "name": "link classes",
+            "options": {
+                "element": "a",
+                "classes": "app-button--custom-modifier"
+            },
+            "html": "<a href=\"#\" role=\"button\" draggable=\"false\" class=\"govuk-button app-button--custom-modifier\" data-module=\"govuk-button\">\n  \n</a>"
+        },
+        {
+            "name": "input classes",
+            "options": {
+                "element": "input",
+                "classes": "app-button--custom-modifier"
+            },
+            "html": "<input value=\"\" type=\"submit\" class=\"govuk-button app-button--custom-modifier\" data-module=\"govuk-button\">"
+        },
+        {
+            "name": "name",
+            "options": {
+                "element": "button",
+                "name": "start-now"
+            },
+            "html": "<button name=\"start-now\" class=\"govuk-button\" data-module=\"govuk-button\">\n  \n</button>"
+        },
+        {
+            "name": "type",
+            "options": {
+                "element": "button",
+                "type": "button"
+            },
+            "html": "<button type=\"button\" class=\"govuk-button\" data-module=\"govuk-button\">\n  \n</button>"
+        },
+        {
+            "name": "input type",
+            "options": {
+                "element": "input",
+                "type": "button"
+            },
+            "html": "<input value=\"\" type=\"button\" class=\"govuk-button\" data-module=\"govuk-button\">"
+        },
+        {
+            "name": "explicit link",
+            "options": {
+                "element": "a",
+                "href": "/",
+                "text": "Continue"
+            },
+            "html": "<a href=\"/\" role=\"button\" draggable=\"false\" class=\"govuk-button\" data-module=\"govuk-button\">\n  Continue\n</a>"
+        },
+        {
+            "name": "no href",
+            "options": {
+                "element": "a"
+            },
+            "html": "<a href=\"#\" role=\"button\" draggable=\"false\" class=\"govuk-button\" data-module=\"govuk-button\">\n  \n</a>"
+        },
+        {
+            "name": "value",
+            "options": {
+                "element": "button",
+                "value": "start"
+            },
+            "html": "<button value=\"start\" class=\"govuk-button\" data-module=\"govuk-button\">\n  \n</button>"
+        },
+        {
+            "name": "html",
+            "options": {
+                "element": "button",
+                "html": "Start <em>now</em>"
+            },
+            "html": "<button class=\"govuk-button\" data-module=\"govuk-button\">\n  Start <em>now</em>\n</button>"
+        },
+        {
+            "name": "no data",
+            "options": {},
+            "html": "<button class=\"govuk-button\" data-module=\"govuk-button\">\n  \n</button>"
+        }
+    ]
+}

@@ -37,6 +37,15 @@
     visuallyHiddenText: params.errorMessage.visuallyHiddenText
   }) | indent(2) | trim }}
 {% endif %}
+
+{%- if params.prefix or params.suffix %}<div class="govuk-input__wrapper">{% endif -%}
+
+  {%- if params.prefix.text or params.prefix.html %}
+    <div class="govuk-input__prefix {{- ' ' + params.prefix.classes if params.prefix.classes }}" aria-hidden="true" {%- for attribute, value in params.prefix.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+      {{- params.prefix.html | safe if params.prefix.html else params.prefix.text -}}
+    </div>
+  {% endif -%}
+
   <input class="govuk-input {%- if params.classes %} {{ params.classes }}{% endif %} {%- if params.errorMessage %} govuk-input--error{% endif %}" id="{{ params.id }}" name="{{ params.name }}" type="{{ params.type | default('text') }}"
   {%- if (params.spellcheck === false) or (params.spellcheck === true) %} spellcheck="{{ params.spellcheck }}"{% endif %}
   {%- if params.value %} value="{{ params.value}}"{% endif %}
@@ -45,4 +54,12 @@
   {%- if params.pattern %} pattern="{{ params.pattern }}"{% endif %}
   {%- if params.inputmode %} inputmode="{{ params.inputmode }}"{% endif %}
   {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor -%}>
+
+  {%- if params.suffix.text or params.suffix.html %}
+    <div class="govuk-input__suffix {{- ' ' + params.suffix.classes if params.suffix.classes }}" aria-hidden="true" {%- for attribute, value in params.suffix.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+      {{- params.suffix.html | safe if params.suffix.html else params.suffix.text -}}
+    </div>
+  {% endif -%}
+
+{%- if params.prefix or params.suffix %}</div>{% endif %}
 </div>

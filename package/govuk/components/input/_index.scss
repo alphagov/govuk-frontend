@@ -93,4 +93,95 @@
     max-width: 5.4ex;
   }
 
+  .govuk-input__wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+
+    .govuk-input {
+      -webkit-box-flex: 0;
+          -ms-flex: 0 1 auto;
+              flex: 0 1 auto;
+    }
+
+    .govuk-input:focus {
+      // Hack to stop focus style being overlapped by the suffix
+      z-index: 1;
+    }
+
+    // Split prefix/suffix onto separate lines on narrow screens
+    @include govuk-media-query($until: mobile) {
+      display: block;
+
+      .govuk-input {
+        // Set max-width to override potential width override class on the input
+        max-width: 100%;
+      }
+    }
+  }
+
+  .govuk-input__prefix,
+  .govuk-input__suffix {
+    @include govuk-font($size: 19);
+
+    box-sizing: border-box;
+    display: inline-block;
+    min-width: 40px;
+    @if $govuk-typography-use-rem {
+      min-width: govuk-px-to-rem(40px);
+    }
+    height: 40px;
+    @if $govuk-typography-use-rem {
+      height: govuk-px-to-rem(40px);
+    }
+
+    padding: govuk-spacing(1);
+    border: $govuk-border-width-form-element solid $govuk-input-border-colour;
+    background-color: govuk-colour("light-grey", $legacy: "grey-3");
+
+    text-align: center;
+    @include govuk-media-query($until: tablet) {
+      line-height: 1.6;
+    }
+    white-space: nowrap;
+
+    // Emphasise non-editable status of prefixes and suffixes
+    cursor: default;
+
+    -webkit-box-flex: 0;
+
+        -ms-flex: 0 0 auto;
+
+            flex: 0 0 auto;
+
+    // Split prefix/suffix onto separate lines on narrow screens
+    @include govuk-media-query($until: mobile) {
+      display: block;
+      height: 100%;
+      white-space: normal;
+    }
+  }
+
+  .govuk-input__prefix {
+    @include govuk-media-query($until: mobile) {
+      border-bottom: 0;
+    }
+    @include govuk-media-query($from: mobile) {
+      @include govuk-not-ie8 {
+        border-right: 0;
+      }
+    }
+  }
+
+  // Split prefix/suffix onto separate lines on narrow screens
+  .govuk-input__suffix {
+    @include govuk-media-query($until: mobile) {
+      border-top: 0;
+    }
+    @include govuk-media-query($from: mobile) {
+      @include govuk-not-ie8 {
+        border-left: 0;
+      }
+    }
+  }
 }

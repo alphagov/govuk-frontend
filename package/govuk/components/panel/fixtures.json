@@ -1,0 +1,74 @@
+{
+    "component": "panel",
+    "fixtures": [
+        {
+            "name": "default",
+            "options": {
+                "titleHtml": "Application complete",
+                "text": "Your reference number: HDJ2123F"
+            },
+            "html": "<div class=\"govuk-panel govuk-panel--confirmation\">\n  <h1 class=\"govuk-panel__title\">\n    Application complete\n  </h1>\n  \n  <div class=\"govuk-panel__body\">\n    Your reference number: HDJ2123F\n  </div>\n  \n</div>"
+        },
+        {
+            "name": "custom heading level",
+            "options": {
+                "titleText": "Application complete",
+                "headingLevel": 2,
+                "text": "Your reference number: HDJ2123F"
+            },
+            "html": "<div class=\"govuk-panel govuk-panel--confirmation\">\n  <h2 class=\"govuk-panel__title\">\n    Application complete\n  </h2>\n  \n  <div class=\"govuk-panel__body\">\n    Your reference number: HDJ2123F\n  </div>\n  \n</div>"
+        },
+        {
+            "name": "title html as text",
+            "options": {
+                "titleText": "Application <strong>not</strong> complete"
+            },
+            "html": "<div class=\"govuk-panel govuk-panel--confirmation\">\n  <h1 class=\"govuk-panel__title\">\n    Application &lt;strong&gt;not&lt;/strong&gt; complete\n  </h1>\n  \n</div>"
+        },
+        {
+            "name": "title html",
+            "options": {
+                "titleHtml": "Application <strong>not</strong> complete"
+            },
+            "html": "<div class=\"govuk-panel govuk-panel--confirmation\">\n  <h1 class=\"govuk-panel__title\">\n    Application <strong>not</strong> complete\n  </h1>\n  \n</div>"
+        },
+        {
+            "name": "body html as text",
+            "options": {
+                "text": "Your reference number<br><strong>HDJ2123F</strong>"
+            },
+            "html": "<div class=\"govuk-panel govuk-panel--confirmation\">\n  <h1 class=\"govuk-panel__title\">\n    \n  </h1>\n  \n  <div class=\"govuk-panel__body\">\n    Your reference number&lt;br&gt;&lt;strong&gt;HDJ2123F&lt;/strong&gt;\n  </div>\n  \n</div>"
+        },
+        {
+            "name": "body html",
+            "options": {
+                "html": "Your reference number<br><strong>HDJ2123F</strong>"
+            },
+            "html": "<div class=\"govuk-panel govuk-panel--confirmation\">\n  <h1 class=\"govuk-panel__title\">\n    \n  </h1>\n  \n  <div class=\"govuk-panel__body\">\n    Your reference number<br><strong>HDJ2123F</strong>\n  </div>\n  \n</div>"
+        },
+        {
+            "name": "classes",
+            "options": {
+                "classes": "extra-class one-more-class"
+            },
+            "html": "<div class=\"govuk-panel govuk-panel--confirmation extra-class one-more-class\">\n  <h1 class=\"govuk-panel__title\">\n    \n  </h1>\n  \n</div>"
+        },
+        {
+            "name": "attributes",
+            "options": {
+                "attributes": {
+                    "first-attribute": true,
+                    "second-attribute": false
+                }
+            },
+            "html": "<div class=\"govuk-panel govuk-panel--confirmation\" first-attribute=\"true\" second-attribute=\"false\">\n  <h1 class=\"govuk-panel__title\">\n    \n  </h1>\n  \n</div>"
+        },
+        {
+            "name": "title with no body text",
+            "options": {
+                "titleText": "Application complete"
+            },
+            "html": "<div class=\"govuk-panel govuk-panel--confirmation\">\n  <h1 class=\"govuk-panel__title\">\n    Application complete\n  </h1>\n  \n</div>"
+        }
+    ]
+}

@@ -20,6 +20,12 @@
   .govuk-panel--confirmation {
     color: govuk-colour("white");
     background: govuk-colour("green", $legacy: "turquoise");
+
+    @include govuk-media-query($media-type: print) {
+      border-color: currentColor;
+      color: $govuk-print-text-colour;
+      background: none;
+    }
   }
 
   .govuk-panel__title {
