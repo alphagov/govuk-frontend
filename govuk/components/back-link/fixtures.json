@@ -1,0 +1,56 @@
+{
+    "component": "back-link",
+    "fixtures": [
+        {
+            "name": "default",
+            "options": {
+                "href": "#"
+            },
+            "html": "<a href=\"#\" class=\"govuk-back-link\">Back</a>"
+        },
+        {
+            "name": "with custom text",
+            "options": {
+                "href": "#",
+                "text": "Back to home"
+            },
+            "html": "<a href=\"#\" class=\"govuk-back-link\">Back to home</a>"
+        },
+        {
+            "name": "classes",
+            "options": {
+                "classes": "app-back-link--custom-class",
+                "href": "#"
+            },
+            "html": "<a href=\"#\" class=\"govuk-back-link app-back-link--custom-class\">Back</a>"
+        },
+        {
+            "name": "html as text",
+            "options": {
+                "text": "<b>Home</b>",
+                "href": "#"
+            },
+            "html": "<a href=\"#\" class=\"govuk-back-link\">&lt;b&gt;Home&lt;/b&gt;</a>"
+        },
+        {
+            "name": "html",
+            "options": {
+                "html": "<b>Back</b>",
+                "href": "#"
+            },
+            "html": "<a href=\"#\" class=\"govuk-back-link\"><b>Back</b></a>"
+        },
+        {
+            "name": "attributes",
+            "options": {
+                "href": "#",
+                "html": "<b>Back to home</b>",
+                "attributes": {
+                    "data-test": "attribute",
+                    "aria-label": "Back to home"
+                }
+            },
+            "html": "<a href=\"#\" class=\"govuk-back-link\" data-test=\"attribute\" aria-label=\"Back to home\"><b>Back to home</b></a>"
+        }
+    ]
+}

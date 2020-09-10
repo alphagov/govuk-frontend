@@ -56,6 +56,12 @@
         "description": "HTML attributes (for example data attributes) to add to the fieldset container."
     },
     {
+        "name": "html",
+        "type": "string",
+        "required": false,
+        "description": "HTML to use/render within the fieldset element."
+    },
+    {
         "name": "caller",
         "type": "nunjucks-block",
         "required": false,

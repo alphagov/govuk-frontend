@@ -57,6 +57,70 @@
         "isComponent": true
     },
     {
+        "name": "prefix",
+        "type": "object",
+        "required": false,
+        "description": "Options for the prefix element.",
+        "params": [
+            {
+                "name": "text",
+                "type": "string",
+                "required": true,
+                "description": "Required. If `html` is set, this is not required. Text to use within the label. If `html` is provided, the `text` argument will be ignored."
+            },
+            {
+                "name": "html",
+                "type": "string",
+                "required": true,
+                "description": "Required. If `text` is set, this is not required. HTML to use within the label. If `html` is provided, the `text` argument will be ignored."
+            },
+            {
+                "name": "classes",
+                "type": "string",
+                "required": false,
+                "description": "Classes to add to the prefix."
+            },
+            {
+                "name": "attributes",
+                "type": "object",
+                "required": false,
+                "description": "HTML attributes (for example data attributes) to add to the prefix element."
+            }
+        ]
+    },
+    {
+        "name": "suffix",
+        "type": "object",
+        "required": false,
+        "description": "Options for the suffix element.",
+        "params": [
+            {
+                "name": "text",
+                "type": "string",
+                "required": true,
+                "description": "Required. If `html` is set, this is not required. Text to use within the label. If `html` is provided, the `text` argument will be ignored."
+            },
+            {
+                "name": "html",
+                "type": "string",
+                "required": true,
+                "description": "Required. If `text` is set, this is not required. HTML to use within the label. If `html` is provided, the `text` argument will be ignored."
+            },
+            {
+                "name": "classes",
+                "type": "string",
+                "required": false,
+                "description": "Classes to add to the suffix element."
+            },
+            {
+                "name": "attributes",
+                "type": "object",
+                "required": false,
+                "description": "HTML attributes (for example data attributes) to add to the suffix element."
+            }
+        ]
+    },
+    {
         "name": "formGroup",
         "type": "object",
         "required": false,

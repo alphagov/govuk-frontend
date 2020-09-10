@@ -1961,55 +1961,50 @@ ErrorSummary.prototype.getAssociatedLegendOrLabel = function ($input) {
 
 function Header ($module) {
   this.$module = $module;
+  this.$menuButton = $module && $module.querySelector('.govuk-js-header-toggle');
+  this.$menu = this.$menuButton && $module.querySelector(
+    '#' + this.$menuButton.getAttribute('aria-controls')
+  );
 }
 
+/**
+ * Initialise header
+ *
+ * Check for the presence of the header, menu and menu button – if any are
+ * missing then there's nothing to do so return early.
+ */
 Header.prototype.init = function () {
-  // Check for module
-  var $module = this.$module;
-  if (!$module) {
+  if (!this.$module || !this.$menuButton || !this.$menu) {
     return
   }
 
-  // Check for button
-  var $toggleButton = $module.querySelector('.govuk-js-header-toggle');
-  if (!$toggleButton) {
-    return
-  }
-
-  // Handle $toggleButton click events
-  $toggleButton.addEventListener('click', this.handleClick.bind(this));
+  this.syncState(this.$menu.classList.contains('govuk-header__navigation--open'));
+  this.$menuButton.addEventListener('click', this.handleMenuButtonClick.bind(this));
 };
 
 /**
-* Toggle class
-* @param {object} node element
-* @param {string} className to toggle
-*/
-Header.prototype.toggleClass = function (node, className) {
-  if (node.className.indexOf(className) > 0) {
-    node.className = node.className.replace(' ' + className, '');
-  } else {
-    node.className += ' ' + className;
-  }
+ * Sync menu state
+ *
+ * Sync the menu button class and the accessible state of the menu and the menu
+ * button with the visible state of the menu
+ *
+ * @param {boolean} isVisible Whether the menu is currently visible
+ */
+Header.prototype.syncState = function (isVisible) {
+  this.$menuButton.classList.toggle('govuk-header__menu-button--open', isVisible);
+  this.$menuButton.setAttribute('aria-expanded', isVisible);
+  this.$menu.setAttribute('aria-hidden', !isVisible);
 };
 
 /**
-* An event handler for click event on $toggleButton
-* @param {object} event event
-*/
-Header.prototype.handleClick = function (event) {
-  var $module = this.$module;
-  var $toggleButton = event.target || event.srcElement;
-  var $target = $module.querySelector('#' + $toggleButton.getAttribute('aria-controls'));
-
-  // If a button with aria-controls, handle click
-  if ($toggleButton && $target) {
-    this.toggleClass($target, 'govuk-header__navigation--open');
-    this.toggleClass($toggleButton, 'govuk-header__menu-button--open');
-
-    $toggleButton.setAttribute('aria-expanded', $toggleButton.getAttribute('aria-expanded') !== 'true');
-    $target.setAttribute('aria-hidden', $target.getAttribute('aria-hidden') === 'false');
-  }
+ * Handle menu button click
+ *
+ * When the menu button is clicked, change the visibility of the menu and then
+ * sync the accessibility state and menu button state
+ */
+Header.prototype.handleMenuButtonClick = function () {
+  var isVisible = this.$menu.classList.toggle('govuk-header__navigation--open');
+  this.syncState(isVisible);
 };
 
 function Radios ($module) {
