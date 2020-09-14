@@ -1,7 +1,6 @@
 @import "../../core/lists";
 
 @include govuk-exports("govuk/component/error-summary") {
-
   .govuk-error-summary {
     @include govuk-text-colour;
     @include govuk-responsive-padding(4);
@@ -51,5 +50,4 @@
       @include govuk-focused-text;
     }
   }
-
 }

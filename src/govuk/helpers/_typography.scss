@@ -127,7 +127,8 @@
     $font-size-rem: govuk-px-to-rem($font-size);
 
     $line-height: _govuk-line-height(
-      $line-height: if($override-line-height,
+      $line-height: if(
+        $override-line-height,
         $override-line-height,
         map-get($breakpoint-map, "line-height")
       ),
@@ -183,7 +184,7 @@
       @include govuk-typography-common;
       font-feature-settings: "tnum" 1;
 
-      @supports(font-variant-numeric: tabular-nums) {
+      @supports (font-variant-numeric: tabular-nums) {
         font-feature-settings: normal;
         font-variant-numeric: tabular-nums;
       }

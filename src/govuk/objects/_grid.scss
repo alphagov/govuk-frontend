@@ -1,7 +1,6 @@
 @import "../base";
 
 @include govuk-exports("govuk/objects/grid") {
-
   .govuk-grid-row {
     @include govuk-clearfix;
     margin-right: - ($govuk-gutter-half);
@@ -10,7 +9,7 @@
 
   @each $width in map-keys($govuk-grid-widths) {
     .govuk-grid-column-#{$width} {
-      @include govuk-grid-column($width)
+      @include govuk-grid-column($width);
     }
   }
 
@@ -19,7 +18,7 @@
   // them in the outputted CSS
   @each $width in map-keys($govuk-grid-widths) {
     .govuk-grid-column-#{$width}-from-desktop {
-      @include govuk-grid-column($width, $at: desktop)
+      @include govuk-grid-column($width, $at: desktop);
     }
   }
 }

@@ -4,6 +4,7 @@
 
 @import "../base";
 
+// stylelint-disable declaration-no-important
 @include govuk-exports("govuk/overrides/width") {
   .govuk-\!-width-full {
     width: 100% !important;
