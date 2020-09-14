@@ -14,5 +14,9 @@
   {% endif %}
   </legend>
   {% endif %}
-{{ caller() if caller }} {#- if statement allows usage of `call` to be optional -#}
+{% if caller %} {#- if statement allows usage of `call` to be optional -#}
+  {{ caller() }}
+{% elseif params.html %}
+  {{ params.html | safe }}
+{% endif %}
 </fieldset>

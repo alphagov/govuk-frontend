@@ -1,6 +1,8 @@
 # Changelog
 
-## 3.9.0 (feature release)
+## Unreleased
+
+## 3.9.0 (Feature release)
 
 ### New features
 
@@ -73,7 +75,7 @@ This was added in [pull request #1921: Make it possible to exclude link from hea
 
 We’ve made fixes to GOV.UK Frontend in the following pull requests:
 
-- [#1918: Add new brand colour for FCDO](https://github.com/alphagov/govuk-frontend/pull/1918) - thanks to [@deborahchua](https://github.com/deborahchua) for contributing this
+- [#1918: Add new brand colour for FCDO](https://github.com/alphagov/govuk-frontend/pull/1918) - thanks to [@deborahchua](https://github.com/deborahchua) and [@beccapearce](https://github.com/beccapearce) for contributing this
 - [#1942: Set aria-expanded and aria-hidden attributes on header menu button and menu when page loads](https://github.com/alphagov/govuk-frontend/pull/1942)
 - [#1947 Add print styles for the panel component](https://github.com/alphagov/govuk-frontend/pull/1947)
 

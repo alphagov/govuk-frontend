@@ -1,0 +1,199 @@
+{
+    "component": "textarea",
+    "fixtures": [
+        {
+            "name": "default",
+            "options": {
+                "name": "more-detail",
+                "id": "more-detail",
+                "label": {
+                    "text": "Can you provide more detail?"
+                }
+            },
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"more-detail\">\n    Can you provide more detail?\n  </label>\n\n\n  <textarea class=\"govuk-textarea\" id=\"more-detail\" name=\"more-detail\" rows=\"5\"></textarea>\n</div>"
+        },
+        {
+            "name": "with hint",
+            "options": {
+                "name": "more-detail",
+                "id": "more-detail",
+                "label": {
+                    "text": "Can you provide more detail?"
+                },
+                "hint": {
+                    "text": "Don't include personal or financial information, eg your National Insurance number or credit card details."
+                }
+            },
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"more-detail\">\n    Can you provide more detail?\n  </label>\n\n  \n  \n  <div id=\"more-detail-hint\" class=\"govuk-hint\">\n    Don&#39;t include personal or financial information, eg your National Insurance number or credit card details.\n  </div>\n\n\n  <textarea class=\"govuk-textarea\" id=\"more-detail\" name=\"more-detail\" rows=\"5\" aria-describedby=\"more-detail-hint\"></textarea>\n</div>"
+        },
+        {
+            "name": "with error message",
+            "options": {
+                "name": "no-ni-reason",
+                "id": "no-ni-reason",
+                "label": {
+                    "text": "Why can’t you provide a National Insurance number?"
+                },
+                "errorMessage": {
+                    "text": "You must provide an explanation"
+                }
+            },
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  <label class=\"govuk-label\" for=\"no-ni-reason\">\n    Why can’t you provide a National Insurance number?\n  </label>\n\n\n  \n  \n  <span id=\"no-ni-reason-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> You must provide an explanation\n  </span>\n\n  <textarea class=\"govuk-textarea govuk-textarea--error\" id=\"no-ni-reason\" name=\"no-ni-reason\" rows=\"5\" aria-describedby=\"no-ni-reason-error\"></textarea>\n</div>"
+        },
+        {
+            "name": "with default value",
+            "options": {
+                "id": "full-address",
+                "name": "address",
+                "value": "221B Baker Street\nLondon\nNW1 6XE\n",
+                "label": {
+                    "text": "Full address"
+                }
+            },
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"full-address\">\n    Full address\n  </label>\n\n\n  <textarea class=\"govuk-textarea\" id=\"full-address\" name=\"address\" rows=\"5\">221B Baker Street\nLondon\nNW1 6XE\n</textarea>\n</div>"
+        },
+        {
+            "name": "with custom rows",
+            "options": {
+                "id": "full-address",
+                "name": "address",
+                "label": {
+                    "text": "Full address"
+                },
+                "rows": 8
+            },
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"full-address\">\n    Full address\n  </label>\n\n\n  <textarea class=\"govuk-textarea\" id=\"full-address\" name=\"address\" rows=\"8\"></textarea>\n</div>"
+        },
+        {
+            "name": "with label as page heading",
+            "options": {
+                "id": "textarea-with-page-heading",
+                "name": "address",
+                "label": {
+                    "text": "Full address",
+                    "isPageHeading": true
+                }
+            },
+            "html": "<div class=\"govuk-form-group\">\n  <h1 class=\"govuk-label-wrapper\">\n    <label class=\"govuk-label\" for=\"textarea-with-page-heading\">\n      Full address\n    </label>\n    </h1>\n\n\n  <textarea class=\"govuk-textarea\" id=\"textarea-with-page-heading\" name=\"address\" rows=\"5\"></textarea>\n</div>"
+        },
+        {
+            "name": "with optional form-group classes",
+            "options": {
+                "id": "textarea-with-page-heading",
+                "name": "address",
+                "label": {
+                    "text": "Full address"
+                },
+                "formGroup": {
+                    "classes": "extra-class"
+                }
+            },
+            "html": "<div class=\"govuk-form-group extra-class\">\n  <label class=\"govuk-label\" for=\"textarea-with-page-heading\">\n    Full address\n  </label>\n\n\n  <textarea class=\"govuk-textarea\" id=\"textarea-with-page-heading\" name=\"address\" rows=\"5\"></textarea>\n</div>"
+        },
+        {
+            "name": "with autocomplete attribute",
+            "options": {
+                "id": "textarea-with-autocomplete-attribute",
+                "name": "address",
+                "label": {
+                    "text": "Full address"
+                },
+                "autocomplete": "street-address"
+            },
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"textarea-with-autocomplete-attribute\">\n    Full address\n  </label>\n\n\n  <textarea class=\"govuk-textarea\" id=\"textarea-with-autocomplete-attribute\" name=\"address\" rows=\"5\" autocomplete=\"street-address\"></textarea>\n</div>"
+        },
+        {
+            "name": "with spellcheck enabled",
+            "options": {
+                "label": {
+                    "text": "Spellcheck is enabled"
+                },
+                "id": "textarea-with-spellcheck-enabled",
+                "name": "spellcheck",
+                "spellcheck": true
+            },
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"textarea-with-spellcheck-enabled\">\n    Spellcheck is enabled\n  </label>\n\n\n  <textarea class=\"govuk-textarea\" id=\"textarea-with-spellcheck-enabled\" name=\"spellcheck\" rows=\"5\" spellcheck=\"true\"></textarea>\n</div>"
+        },
+        {
+            "name": "with spellcheck disabled",
+            "options": {
+                "label": {
+                    "text": "Spellcheck is disabled"
+                },
+                "id": "textarea-with-spellcheck-disabled",
+                "name": "spellcheck",
+                "spellcheck": false
+            },
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"textarea-with-spellcheck-disabled\">\n    Spellcheck is disabled\n  </label>\n\n\n  <textarea class=\"govuk-textarea\" id=\"textarea-with-spellcheck-disabled\" name=\"spellcheck\" rows=\"5\" spellcheck=\"false\"></textarea>\n</div>"
+        },
+        {
+            "name": "classes",
+            "options": {
+                "classes": "app-textarea--custom-modifier"
+            },
+            "html": "<div class=\"govuk-form-group\">\n  \n\n\n  <textarea class=\"govuk-textarea app-textarea--custom-modifier\" id=\"\" name=\"\" rows=\"5\"></textarea>\n</div>"
+        },
+        {
+            "name": "attributes",
+            "options": {
+                "attributes": {
+                    "data-attribute": "my data value"
+                }
+            },
+            "html": "<div class=\"govuk-form-group\">\n  \n\n\n  <textarea class=\"govuk-textarea\" id=\"\" name=\"\" rows=\"5\" data-attribute=\"my data value\"></textarea>\n</div>"
+        },
+        {
+            "name": "with describedBy",
+            "options": {
+                "describedBy": "some-id"
+            },
+            "html": "<div class=\"govuk-form-group\">\n  \n\n\n  <textarea class=\"govuk-textarea\" id=\"\" name=\"\" rows=\"5\" aria-describedby=\"some-id\"></textarea>\n</div>"
+        },
+        {
+            "name": "with hint and described by",
+            "options": {
+                "describedBy": "some-id",
+                "hint": {
+                    "text": "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
+                }
+            },
+            "html": "<div class=\"govuk-form-group\">\n  \n\n  \n  \n  <div id=\"undefined-hint\" class=\"govuk-hint\">\n    It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.\n  </div>\n\n\n  <textarea class=\"govuk-textarea\" id=\"\" name=\"\" rows=\"5\" aria-describedby=\"some-id undefined-hint\"></textarea>\n</div>"
+        },
+        {
+            "name": "with error message and described by",
+            "options": {
+                "describedBy": "some-id",
+                "id": "textarea-with-error",
+                "errorMessage": {
+                    "text": "Error message"
+                }
+            },
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  \n\n\n  \n  \n  <span id=\"textarea-with-error-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message\n  </span>\n\n  <textarea class=\"govuk-textarea govuk-textarea--error\" id=\"textarea-with-error\" name=\"\" rows=\"5\" aria-describedby=\"some-id textarea-with-error-error\"></textarea>\n</div>"
+        },
+        {
+            "name": "with hint and error message",
+            "options": {
+                "errorMessage": {
+                    "text": "Error message"
+                },
+                "hint": {
+                    "text": "Hint"
+                }
+            },
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  \n\n  \n  \n  <div id=\"undefined-hint\" class=\"govuk-hint\">\n    Hint\n  </div>\n\n\n  \n  \n  <span id=\"undefined-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message\n  </span>\n\n  <textarea class=\"govuk-textarea govuk-textarea--error\" id=\"\" name=\"\" rows=\"5\" aria-describedby=\"undefined-hint undefined-error\"></textarea>\n</div>"
+        },
+        {
+            "name": "with hint, error message and described by",
+            "options": {
+                "describedBy": "some-id",
+                "errorMessage": {
+                    "text": "Error message"
+                },
+                "hint": {
+                    "text": "Hint"
+                }
+            },
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  \n\n  \n  \n  <div id=\"undefined-hint\" class=\"govuk-hint\">\n    Hint\n  </div>\n\n\n  \n  \n  <span id=\"undefined-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message\n  </span>\n\n  <textarea class=\"govuk-textarea govuk-textarea--error\" id=\"\" name=\"\" rows=\"5\" aria-describedby=\"some-id undefined-hint undefined-error\"></textarea>\n</div>"
+        }
+    ]
+}

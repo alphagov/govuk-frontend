@@ -51,7 +51,7 @@
                 "name": "href",
                 "type": "string",
                 "required": false,
-                "description": "Url of the navigation item anchor. Both `href` and `text` attributes for navigation items need to be provided to create an item."
+                "description": "Url of the navigation item anchor."
             },
             {
                 "name": "active",
@@ -72,6 +72,18 @@
         "type": "string",
         "required": false,
         "description": "Classes for the navigation section of the header."
+    },
+    {
+        "name": "navigationLabel",
+        "type": "string",
+        "required": false,
+        "description": "Text for the `aria-label` attribute of the navigation. Defaults to \"Navigation menu\"."
+    },
+    {
+        "name": "menuButtonLabel",
+        "type": "string",
+        "required": false,
+        "description": "Text for the `aria-label` attribute of the button that toggles the navigation. Defaults to \"Show or hide navigation menu\"."
     },
     {
         "name": "containerClasses",

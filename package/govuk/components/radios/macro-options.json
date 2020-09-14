@@ -38,7 +38,7 @@
         "name": "idPrefix",
         "type": "string",
         "required": false,
-        "description": "String to prefix id for each checkbox item if no id is specified on each item. If `idPrefix` is not passed, fallback to using the name attribute instead."
+        "description": "String to prefix id for each radio item if no id is specified on each item. If `idPrefix` is not passed, fallback to using the name attribute instead."
     },
     {
         "name": "name",
@@ -87,7 +87,7 @@
                 "name": "hint",
                 "type": "object",
                 "required": false,
-                "description": "Provide hint to each checkbox item.",
+                "description": "Provide hint to each radio item.",
                 "isComponent": true
             },
             {

@@ -14,7 +14,7 @@
     {
         "name": "id",
         "type": "string",
-        "required": true,
+        "required": false,
         "description": "Optional id attribute to add to the hint span tag."
     },
     {
