@@ -10,7 +10,7 @@ To check the whole codebase, run:
 npm test
 ```
 
-This will trigger [standard](https://github.com/standard/standard) and [sass-lint](https://github.com/sasstools/sass-lint) for linting, and [Jest](https://github.com/facebook/jest) for unit and functional tests.
+This will trigger [standard](https://github.com/standard/standard) and [stylelint](https://github.com/stylelint/stylelint) for linting, and [Jest](https://github.com/facebook/jest) for unit and functional tests.
 
 See [Tasks](tasks.md) for details of what `npm test` does.
 

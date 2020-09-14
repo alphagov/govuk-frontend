@@ -281,7 +281,6 @@
     // We use two box shadows, one that restores the original focus state [1]
     // and another that then applies the hover state [2].
     .govuk-checkboxes__item:hover .govuk-checkboxes__input:focus + .govuk-checkboxes__label::before {
-      // sass-lint:disable indentation
       box-shadow: 0 0 0 $govuk-focus-width $govuk-focus-colour, // 1
                   0 0 0 $govuk-hover-width $govuk-hover-colour; // 2
     }
