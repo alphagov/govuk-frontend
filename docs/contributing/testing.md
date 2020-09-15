@@ -60,6 +60,10 @@ You should write new tests if you’ve created a new component, or changed the w
 - changing or adding to the component's Nunjucks macro
 - creating or updating a Sass mixin or function
 
+Test files use examples from each component’s `.yaml` file, for example `src/govuk/components/button/button.yaml`. When you add or update tests, you can use the existing examples or add new ones.
+
+Use `hidden: true` in a new example if you do not want to include the example in the review app. The example will still appear in our [test fixtures](http://frontend.design-system.service.gov.uk/testing-your-html/).
+
 ### If you created a component
 
 Create the following files in the `src/govuk/components` folder:
