@@ -61,6 +61,7 @@
 
 16. View the created tag in the [Github interface](https://github.com/alphagov/govuk-frontend/releases)
   - select the latest tag
+  - press 'Edit tag'
   - set "GOV.UK Frontend v[version-number]" as the title
   - add release notes from changelog
   - attach the generated ZIP that has been generated at the root of this project
