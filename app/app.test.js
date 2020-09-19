@@ -53,11 +53,11 @@ describe(`http://localhost:${PORT}`, () => {
   describe('/', () => {
     it('should display the list of components', done => {
       requestPath('/', (err, res) => {
-        let $ = cheerio.load(res.body)
-        let componentsList = $('li a[href^="/components/"]').get()
+        const $ = cheerio.load(res.body)
+        const componentsList = $('li a[href^="/components/"]').get()
         // Since we have an 'all' component link that renders the default example of all
         // components, there will always be one more expected link.
-        let expectedComponentLinks = lib.allComponents.length
+        const expectedComponentLinks = lib.allComponents.length
         expect(componentsList.length).toEqual(expectedComponentLinks)
         done(err)
       })

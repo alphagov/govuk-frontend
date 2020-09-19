@@ -1,0 +1,115 @@
+[
+    {
+        "name": "meta",
+        "type": "object",
+        "required": false,
+        "description": "Object containing options for the meta navigation.",
+        "params": [
+            {
+                "name": "visuallyHiddenTitle",
+                "type": "string",
+                "description": "Title for a meta item section, which defaults to Support links"
+            },
+            {
+                "name": "html",
+                "type": "string",
+                "description": "HTML to add to the meta section of the footer, which will appear below any links specified using meta.items."
+            },
+            {
+                "name": "text",
+                "type": "string",
+                "description": "Text to add to the meta section of the footer, which will appear below any links specified using meta.items. If meta.html is specified, this option is ignored."
+            },
+            {
+                "name": "items",
+                "type": "array",
+                "required": false,
+                "description": "Array of items for use in the meta section of the footer.",
+                "params": [
+                    {
+                        "name": "text",
+                        "type": "string",
+                        "required": false,
+                        "description": "List item text in the meta section of the footer."
+                    },
+                    {
+                        "name": "href",
+                        "type": "string",
+                        "required": false,
+                        "description": "List item href attribute in the meta section of the footer."
+                    },
+                    {
+                        "name": "attributes",
+                        "type": "object",
+                        "required": false,
+                        "description": "HTML attributes (for example data attributes) to add to the anchor in the footer meta section."
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "navigation",
+        "type": "array",
+        "required": false,
+        "description": "Array of items for use in the navigation section of the footer.",
+        "params": [
+            {
+                "name": "title",
+                "type": "string",
+                "required": false,
+                "description": "Title for a section"
+            },
+            {
+                "name": "columns",
+                "type": "integer",
+                "required": false,
+                "description": "Amount of columns to display items in navigation section of the footer."
+            },
+            {
+                "name": "items",
+                "type": "array",
+                "required": false,
+                "description": "Array of items to display in the list in navigation section of the footer.",
+                "params": [
+                    {
+                        "name": "text",
+                        "type": "string",
+                        "required": false,
+                        "description": "List item text in the navigation section of the footer."
+                    },
+                    {
+                        "name": "href",
+                        "type": "string",
+                        "required": false,
+                        "description": "List item href attribute in the navigation section of the footer. Both `text` and `href` attributes need to be present to create a link."
+                    },
+                    {
+                        "name": "attributes",
+                        "type": "object",
+                        "required": false,
+                        "description": "HTML attributes (for example data attributes) to add to the anchor in the footer navigation section."
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "containerClasses",
+        "type": "string",
+        "required": false,
+        "description": "Classes that can be added to the inner container, useful if you want to make the footer full width."
+    },
+    {
+        "name": "classes",
+        "type": "string",
+        "required": false,
+        "description": "Classes to add to the footer component container."
+    },
+    {
+        "name": "attributes",
+        "type": "object",
+        "required": false,
+        "description": "HTML attributes (for example data attributes) to add to the footer component container."
+    }
+]

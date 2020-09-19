@@ -1,0 +1,796 @@
+params:
+- name: fieldset
+  type: object
+  required: false
+  description: Options for the fieldset component (e.g. legend).
+  isComponent: true
+- name: hint
+  type: object
+  required: false
+  description: Options for the hint component (e.g. text).
+  isComponent: true
+- name: errorMessage
+  type: object
+  required: false
+  description: Options for the error message component. The error message component will not display if you use a falsy value for `errorMessage`, for example `false` or `null`.
+  isComponent: true
+- name: formGroup
+  type: object
+  required: false
+  description: Options for the form-group wrapper
+  params:
+  - name: classes
+    type: string
+    required: false
+    description: Classes to add to the form group (e.g. to show error state for the whole group)
+- name: idPrefix
+  type: string
+  required: false
+  description: String to prefix id for each radio item if no id is specified on each item. If `idPrefix` is not passed, fallback to using the name attribute instead.
+- name: name
+  type: string
+  required: true
+  description: Name attribute for each radio item.
+- name: items
+  type: array
+  required: true
+  description: Array of radio items objects.
+  params:
+  - name: text
+    type: string
+    required: true
+    description: If `html` is set, this is not required. Text to use within each radio item label. If `html` is provided, the `text` argument will be ignored.
+  - name: html
+    type: string
+    required: true
+    description: If `text` is set, this is not required. HTML to use within each radio item label. If `html` is provided, the `text` argument will be ignored.
+  - name: id
+    type: string
+    required: false
+    description: Specific id attribute for the radio item. If omitted, then `idPrefix` string will be applied.
+  - name: value
+    type: string
+    required: true
+    description: Value for the radio input.
+  - name: label
+    type: object
+    required: false
+    description: Provide attributes and classes to each radio item label.
+    isComponent: true
+  - name: hint
+    type: object
+    required: false
+    description: Provide hint to each radio item.
+    isComponent: true
+  - name: divider
+    type: string
+    required: false
+    description: Divider text to separate radio items, for example the text "or".
+  - name: checked
+    type: boolean
+    required: false
+    description: If true, radio will be checked.
+  - name: conditional
+    type: string
+    required: false
+    description: If true, content provided will be revealed when the item is checked.
+  - name: conditional.html
+    type: html
+    required: false
+    description: Provide content for the conditional reveal.
+  - name: disabled
+    type: boolean
+    required: false
+    description: If true, radio will be disabled.
+  - name: attributes
+    type: object
+    required: false
+    description: HTML attributes (for example data attributes) to add to the radio input tag.
+- name: classes
+  type: string
+  required: false
+  description: Classes to add to the radio container.
+- name: attributes
+  type: object
+  required: false
+  description: HTML attributes (for example data attributes) to add to the radio input tag.
+
+accessibilityCriteria: |
+  ## Conditional reveals
+  Must:
+  - be visible as static content if JavaScript is unavailable or fails
+  - be hidden if JavaScript is available and is collapsed
+  - indicate if content is expanded or collapsed
+  - indicate that there is collapsed content to interact with
+
+  Note that we have known issues against this criteria: https://github.com/alphagov/govuk_elements/issues/575
+
+examples:
+- name: default
+  data:
+    name: example-default
+    hint:
+      text: This includes changing your last name or spelling your name differently.
+    items:
+      - value: yes
+        text: Yes
+      - value: no
+        text: No
+        checked: true
+
+- name: inline
+  data:
+    idPrefix: example
+    classes: govuk-radios--inline
+    name: example
+    fieldset:
+      legend:
+        text: Have you changed your name?
+    hint:
+      text: This includes changing your last name or spelling your name differently.
+    items:
+      - value: yes
+        text: Yes
+      - value: no
+        text: No
+        checked: true
+
+- name: with disabled
+  data:
+    idPrefix: example-disabled
+    name: example-disabled
+    fieldset:
+      legend:
+        text: Have you changed your name?
+    hint:
+      text: This includes changing your last name or spelling your name differently.
+    items:
+      - value: yes
+        text: Yes
+        disabled: true
+      - value: no
+        text: No
+        disabled: true
+
+- name: with legend as page heading
+  data:
+    idPrefix: housing-act
+    name: housing-act
+    fieldset:
+      legend:
+        text: Which part of the Housing Act was your licence issued under?
+        classes: govuk-fieldset__legend--l
+        isPageHeading: true
+    hint:
+      text: Select one of the options below.
+    items:
+      - value: part-2
+        html:
+          <span class="govuk-heading-s govuk-!-margin-bottom-1">Part 2 of the Housing Act 2004</span>
+          For properties that are 3 or more stories high and occupied by 5 or more people
+      - value: part-3
+        html:
+          <span class="govuk-heading-s govuk-!-margin-bottom-1">Part 3 of the Housing Act 2004</span>
+          For properties that are within a geographical area defined by a local council
+
+- name: with a medium legend
+  data:
+    idPrefix: housing-act
+    name: housing-act
+    fieldset:
+      legend:
+        text: Which part of the Housing Act was your licence issued under?
+        classes: govuk-fieldset__legend--m
+    hint:
+      text: Select one of the options below.
+    items:
+      - value: part-2
+        html:
+          <span class="govuk-heading-s govuk-!-margin-bottom-1">Part 2 of the Housing Act 2004</span>
+          For properties that are 3 or more stories high and occupied by 5 or more people
+      - value: part-3
+        html:
+          <span class="govuk-heading-s govuk-!-margin-bottom-1">Part 3 of the Housing Act 2004</span>
+          For properties that are within a geographical area defined by a local council
+
+- name: with a divider
+  data:
+    idPrefix: example-divider
+    name: example
+    fieldset:
+      legend:
+        text: How do you want to sign in?
+    items:
+      - value: governement-gateway
+        text: Use Government Gateway
+      - value: govuk-verify
+        text: Use GOV.UK Verify
+      - divider: or
+      - value: create-account
+        text: Create an account
+
+- name: with hints on items
+  data:
+    idPrefix: gov
+    name: gov
+    fieldset:
+      legend:
+        text: How do you want to sign in?
+        isPageHeading: true
+    items:
+      - value: gateway
+        text: Sign in with Government Gateway
+        id: gateway
+        hint:
+          text: You’ll have a user ID if you’ve registered for Self Assessment or filed a tax return online before.
+      - value: verify
+        text: Sign in with GOV.UK Verify
+        id: verify
+        hint:
+          text: You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity.
+
+- name: without fieldset
+  data:
+    name: colours
+    items:
+      - value: red
+        text: Red
+      - value: green
+        text: Green
+      - value: blue
+        text: Blue
+
+- name: with fieldset and error message
+  data:
+    idPrefix: example
+    name: example
+    errorMessage:
+      text: Please select an option
+    fieldset:
+      legend:
+        text: Have you changed your name?
+    items:
+      - value: yes
+        text: Yes
+      - value: no
+        text: No
+        checked: true
+
+- name: with very long option text
+  data:
+    name: waste
+    hint:
+      text:
+        Nullam id dolor id nibh ultricies vehicula ut id elit.
+    errorMessage:
+      text:
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    fieldset:
+      legend:
+        text:
+          Maecenas faucibus mollis interdum?
+    items:
+      - value: nullam
+        text:
+          Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu leo
+          quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
+          Maecenas faucibus mollis interdum. Donec id elit non mi porta gravida
+          at eget metus.
+      - value: aenean
+        text:
+          Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis
+          vestibulum. Donec sed odio dui. Duis mollis, est non commodo luctus,
+          nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cum sociis
+          natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+          mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam
+          venenatis vestibulum. Cras mattis consectetur purus sit amet
+          fermentum.
+      - value: fusce
+        text:
+          Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
+          nibh, ut fermentum massa justo sit amet risus. Etiam porta sem
+          malesuada magna mollis euismod. Praesent commodo cursus magna, vel
+          scelerisque nisl consectetur et. Etiam porta sem malesuada magna
+          mollis euismod. Etiam porta sem malesuada magna mollis euismod.
+          Donec sed odio dui. Sed posuere consectetur est at lobortis.
+
+- name: with conditional items
+  data:
+    idPrefix: how-contacted
+    name: how-contacted
+    fieldset:
+      legend:
+        text: How do you want to be contacted?
+    items:
+      - value: email
+        text: Email
+        conditional:
+          html: |
+            <label class="govuk-label" for="context-email">Mobile phone number</label>
+            <input class="govuk-input govuk-!-width-one-third" name="context-email" type="text" id="context-email">
+      - value: phone
+        text: Phone
+        conditional:
+          html: |
+            <label class="govuk-label" for="contact-phone">Phone number</label>
+            <input class="govuk-input govuk-!-width-one-third" name="contact-phone" type="text" id="contact-phone">
+      - value: text
+        text: Text message
+        conditional:
+          html: |
+            <label class="govuk-label" for="contact-text-message">Mobile phone number</label>
+            <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
+
+- name: inline with conditional items
+  data:
+    classes: govuk-radios--inline
+    idPrefix: how-contacted
+    name: how-contacted
+    fieldset:
+      legend:
+        text: How do you want to be contacted?
+    items:
+      - value: email
+        text: Email
+        conditional:
+          html: |
+            <label class="govuk-label" for="context-email">Email address</label>
+            <input class="govuk-input govuk-!-width-one-third" name="context-email" type="text" id="context-email">
+      - value: phone
+        text: Phone
+        conditional:
+          html: |
+            <label class="govuk-label" for="contact-phone">Phone number</label>
+            <input class="govuk-input govuk-!-width-one-third" name="contact-phone" type="text" id="contact-phone">
+      - value: text
+        text: Text message
+        conditional:
+          html: |
+            <label class="govuk-label" for="contact-text-message">Mobile phone number</label>
+            <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
+
+
+- name: with conditional item checked
+  data:
+    idPrefix: 'how-contacted-checked'
+    name: 'how-contacted-checked'
+    fieldset:
+      legend:
+        text: How do you want to be contacted?
+    items:
+    - value: email
+      text: Email
+      checked: true
+      conditional:
+        html: |
+          <label class="govuk-label" for="context-email">Email</label>
+          <input class="govuk-input govuk-!-width-one-third" name="context-email" type="text" id="context-email">
+    - value: phone
+      text: Phone
+      conditional:
+        html: |
+          <label class="govuk-label" for="contact-phone">Phone number</label>
+          <input class="govuk-input govuk-!-width-one-third" name="contact-phone" type="text" id="contact-phone">
+    - value: text
+      text: Text message
+      conditional:
+        html: |
+          <label class="govuk-label" for="contact-text-message">Mobile phone number</label>
+          <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
+
+- name: with optional form-group classes showing group error
+  data:
+    idPrefix: 'how-contacted-2'
+    name: 'how-contacted-2'
+    formGroup:
+      classes: 'govuk-form-group--error'
+    fieldset:
+      legend:
+        text: How do you want to be contacted?
+    items:
+    - value: email
+      text: Email
+      conditional:
+        html: |
+          <label class="govuk-label" for="context-email">Mobile phone number</label>
+          <input class="govuk-input govuk-!-width-one-third" name="context-email" type="text" id="context-email">
+    - value: phone
+      text: Phone
+      checked: true
+      conditional:
+        html: |
+          <label class="govuk-label" for="contact-phone">Phone number</label>
+          <span id="contact-phone-error" class="govuk-error-message">Problem with input</span>
+          <input class="govuk-input govuk-input--error govuk-!-width-one-third" name="contact-phone" type="text" id="contact-phone" aria-describedby="contact-phone-error">
+    - value: text
+      text: Text message
+      conditional:
+        html: |
+          <label class="govuk-label" for="contact-text-message">Mobile phone number</label>
+          <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
+
+- name: small
+  data:
+    idPrefix: 'how-contacted-2'
+    name: 'how-contacted-2'
+    formGroup:
+      classes: 'govuk-radios--small'
+    fieldset:
+      legend:
+        text: How do you want to be contacted?
+    items:
+    - value: email
+      text: Email
+    - value: phone
+      text: Phone
+    - value: text
+      text: Text message
+
+- name: small with long text
+  data:
+    idPrefix: foo
+    name: foo
+    classes: govuk-radios--small
+    fieldset:
+      legend:
+        text: Venenatis Condimentum
+    items:
+      - value: nullam
+        text:
+          Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu leo
+          quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
+          Maecenas faucibus mollis interdum. Donec id elit non mi porta gravida
+          at eget metus.
+      - value: aenean
+        text:
+          Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis
+          vestibulum. Donec sed odio dui. Duis mollis, est non commodo luctus,
+          nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cum sociis
+          natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+          mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam
+          venenatis vestibulum. Cras mattis consectetur purus sit amet
+          fermentum.
+      - value: fusce
+        text:
+          Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
+          nibh, ut fermentum massa justo sit amet risus. Etiam porta sem
+          malesuada magna mollis euismod. Praesent commodo cursus magna, vel
+          scelerisque nisl consectetur et. Etiam porta sem malesuada magna
+          mollis euismod. Etiam porta sem malesuada magna mollis euismod.
+          Donec sed odio dui. Sed posuere consectetur est at lobortis.
+
+- name: small with error
+  data:
+    idPrefix: 'how-contacted-2'
+    name: 'how-contacted-2'
+    formGroup:
+      classes: 'govuk-radios--small'
+    fieldset:
+      legend:
+        text: How do you want to be contacted?
+    errorMessage:
+      text: "Select a thing"
+    items:
+    - value: email
+      text: Email
+    - value: phone
+      text: Phone
+    - value: text
+      text: Text message
+
+- name: small with hint
+  data:
+    idPrefix: 'how-contacted-2'
+    name: 'how-contacted-2'
+    formGroup:
+      classes: 'govuk-radios--small'
+    fieldset:
+      legend:
+        text: How do you want to be contacted?
+    items:
+    - value: email
+      text: Email
+      hint:
+        text: Hint for email address
+    - value: phone
+      text: Phone
+    - value: text
+      text: Text message
+
+- name: small with disabled
+  data:
+    idPrefix: 'how-contacted-2'
+    name: 'how-contacted-2'
+    formGroup:
+      classes: 'govuk-radios--small'
+    fieldset:
+      legend:
+        text: How do you want to be contacted?
+    items:
+    - value: email
+      text: Email
+    - value: phone
+      text: Phone
+    - value: text
+      text: Text message
+      disabled: true
+
+- name: small with conditional reveal
+  data:
+    idPrefix: 'how-contacted-2'
+    name: 'how-contacted-2'
+    formGroup:
+      classes: 'govuk-radios--small'
+    fieldset:
+      legend:
+        text: How do you want to be contacted?
+    items:
+    - value: email
+      text: Email
+      conditional:
+        html: |
+          <label class="govuk-label" for="context-email">Foo</label>
+          <input class="govuk-input govuk-!-width-one-third" name="context-email" type="text" id="context-email">
+    - value: phone
+      text: Phone
+    - value: text
+      text: Text message
+
+- name: small inline
+  data:
+    idPrefix: sort
+    classes: govuk-radios--small govuk-radios--inline
+    name: example
+    fieldset:
+      legend:
+        text: Sort by
+    items:
+      - value: relevance
+        text: relevance
+      - value: title
+        text: title
+      - value: created
+        text: created
+
+- name: small inline extreme
+  data:
+    idPrefix: sort
+    classes: govuk-radios--small govuk-radios--inline
+    name: example
+    fieldset:
+      legend:
+        text: Sort by
+    items:
+      - value: relevance
+        text: relevance
+      - value: title
+        text: title
+      - value: created
+        text: created
+      - value: modified
+        text: modified
+      - value: category
+        text: category
+      - value: votes
+        text: votes
+      - value: flavour
+        text: flavour
+      - value: hue
+        text: hue
+      - value: happiness
+        text: happiness
+      - value: funkiness
+        text: funkiness
+
+- name: small with a divider
+  data:
+    idPrefix: example-small-divider
+    name: example
+    fieldset:
+      legend:
+        text: How do you want to sign in?
+    classes: govuk-radios--small
+    items:
+      - value: governement-gateway
+        text: Use Government Gateway
+      - value: govuk-verify
+        text: Use GOV.UK Verify
+      - divider: or
+      - value: create-account
+        text: Create an account
+
+# Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+- name: with idPrefix
+  data:
+    name: example-radio
+    idPrefix: example-id-prefix
+    items:
+      - value: yes
+        text: Yes
+      - value: no
+        text: No
+- name: minimal items and name
+  hidden: true
+  data:
+    name: example-name
+    items:
+      - value: yes
+        text: Yes
+      - value: no
+        text: No
+- name: with falsey items
+  hidden: true
+  data:
+    name: example-name
+    items:
+      - value: yes
+        text: Yes
+      - null
+      - false
+      - value: no
+        text: No
+- name: fieldset with describedBy
+  hidden: true
+  data:
+    name: example-name
+    fieldset:
+      describedBy: some-id
+    items:
+      - value: yes
+        text: Yes
+      - value: no
+        text: No
+- name: attributes
+  hidden: true
+  data:
+    name: example-name
+    attributes:
+      data-attribute: value
+      data-second-attribute: second-value
+    items:
+      - value: yes
+        text: Yes
+      - value: no
+        text: No
+- name: items with attributes
+  hidden: true
+  data:
+    name: example-name
+    items:
+      - value: yes
+        text: Yes
+        attributes:
+          data-attribute: ABC
+          data-second-attribute: DEF
+      - value: no
+        text: No
+        attributes:
+          data-attribute: GHI
+          data-second-attribute: JKL
+- name: with empty conditional
+  hidden: true
+  data:
+    name: example-conditional
+    items:
+      - value: yes
+        text: Yes
+        conditional:
+          html: false
+      - value: no
+        text: No
+- name: label with classes
+  hidden: true
+  data:
+    name: example-label-classes
+    items:
+      - value: yes
+        text: Yes
+        label:
+          classes: bold
+- name: with hints on parent and items
+  hidden: true
+  data:
+    name: example-multiple-hints
+    fieldset:
+      legend:
+        text: Have you changed your name?
+    hint:
+      text: This includes changing your last name or spelling your name differently.
+    items:
+      - hint:
+          text: Hint for yes option here
+      - hint:
+          text: Hint for no option here
+- name: with describedBy and hint
+  hidden: true
+  data:
+    name: example-hint-describedby
+    fieldset:
+      describedBy: some-id
+      legend:
+        text: Have you changed your name?
+    hint:
+      text: This includes changing your last name or spelling your name differently.
+- name: with error message
+  hidden: true
+  data:
+    name: example-error-message
+    errorMessage:
+      text: Please select an option
+- name: with error message and idPrefix
+  hidden: true
+  data:
+    name: example-error-message
+    idPrefix: id-prefix
+    errorMessage:
+      text: Please select an option
+- name: with hint and error message
+  hidden: true
+  data:
+    name: example-error-message-hint
+    errorMessage:
+      text: Please select an option
+    fieldset:
+      legend:
+        text: Have you changed your name?
+    hint:
+      text: This includes changing your last name or spelling your name differently.
+- name: with hint, error message and describedBy
+  hidden: true
+  data:
+    name: example-error-message-hint
+    errorMessage:
+      text: Please select an option
+    fieldset:
+      describedBy: some-id
+      legend:
+        text: Have you changed your name?
+    hint:
+      text: This includes changing your last name or spelling your name differently.
+- name: label with attributes
+  hidden: true
+  data:
+    items:
+      - value: yes
+        text: Yes
+        label:
+          attributes:
+            data-attribute: value
+            data-second-attribute: second-value
+- name: fieldset params
+  hidden: true
+  data:
+    name: example-fieldset-params
+    fieldset:
+      classes: app-fieldset--custom-modifier
+      legend:
+        text: Have you changed your name?
+      attributes:
+        data-attribute: value
+        data-second-attribute: second-value
+    hint:
+      text: This includes changing your last name or spelling your name differently.
+- name: fieldset with html
+  hidden: true
+  data:
+    fieldset:
+      legend:
+        html: Have <b>you</b> changed your name?
+- name: with fieldset, error message and describedBy
+  hidden: true
+  data:
+    idPrefix: example
+    name: example
+    errorMessage:
+      text: Please select an option
+    fieldset:
+      describedBy: some-id
+      legend:
+        text: Have you changed your name?
+    items:
+      - value: yes
+        text: Yes
+      - value: no
+        text: No
+        checked: true
+

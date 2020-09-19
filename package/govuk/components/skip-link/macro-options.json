@@ -1,0 +1,32 @@
+[
+    {
+        "name": "text",
+        "type": "string",
+        "required": true,
+        "description": "If `html` is set, this is not required. Text to use within the skip link component. If `html` is provided, the `text` argument will be ignored."
+    },
+    {
+        "name": "html",
+        "type": "string",
+        "required": true,
+        "description": "If `text` is set, this is not required. HTML to use within the skip link component. If `html` is provided, the `text` argument will be ignored."
+    },
+    {
+        "name": "href",
+        "type": "string",
+        "required": false,
+        "description": "The value of the skip link’s `href` attribute. Defaults to `#content` if you do not provide a value."
+    },
+    {
+        "name": "classes",
+        "type": "string",
+        "required": false,
+        "description": "Classes to add to the skip link."
+    },
+    {
+        "name": "attributes",
+        "type": "object",
+        "required": false,
+        "description": "HTML attributes (for example data attributes) to add to the skip link."
+    }
+]

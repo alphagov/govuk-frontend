@@ -1,0 +1,123 @@
+---
+scenario:
+  As part of an online service you are asked to provide details for the
+  applicant.
+notes: >-
+  This example shows GOV.UK Frontend used alongside our 'legacy' frontend
+  frameworks. The full name field, and links within the header and footer have
+  known accessibility issues.
+---
+
+{% extends "legacy.njk" %}
+
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "date-input/macro.njk" import govukDateInput %}
+{% from "button/macro.njk" import govukButton %}
+
+{% set page_title = "Applicant details" %}
+
+{% block content %}
+  <main id="content" role="main">
+    <div class="grid-row">
+      <div class="column-two-thirds">
+
+        {{ govukBackLink({
+          text: "Back"
+        }) }}
+
+       {% if errorSummary.length > 0 %}
+          <div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+            <h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+              There is a problem
+            </h2>
+
+            <ul class="error-summary-list">
+              {% for item in errorSummary %}
+                <li>
+                  {% if item.href %}
+                    <a href="{{ item.href }}"{% for attribute, value in item.attributes %} {{attribute}}="{{value}}"{% endfor %}>{{ item.html | safe if item.html else item.text }}</a>
+                  {% else %}
+                    {{ item.html | safe if item.html else item.text }}
+                  {% endif %}
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+
+        <h1 class="heading-xlarge">
+         {{ page_title }}
+        </h1>
+
+        <form method="post" novalidate>
+
+          <div class="form-group {%- if errors["full-name"] %} form-group-error {% endif %}">
+            <label class="form-label-bold" for="full-name">
+              Full name
+              <span class="form-hint">
+                Please enter your name as it’s written on official documents such as a passport or driving licence.
+              </span>
+            </label>
+            {% if errors["full-name"] %}
+              <span class="error-message">
+               Enter your full name
+             </span>
+            {% endif %}
+            <input class="form-control {%- if errors["full-name"] %} form-control-error {% endif %}" id="full-name" type="text" name="full-name" value="{{ values['full-name'] }}" autocomplete="name">
+          </div>
+
+          {% set dateInputDayClass = "govuk-input--width-2" %}
+          {% set dateInputMonthClass = "govuk-input--width-2" %}
+          {% set dateInputYearClass = "govuk-input--width-4" %}
+
+          {% if errors["dob-day"] %}
+            {% set dateInputDayClass = dateInputDayClass + " govuk-input--error" %}
+          {% endif %}
+          {% if errors["dob-month"] %}
+            {% set dateInputMonthClass = dateInputMonthClass + " govuk-input--error" %}
+          {% endif %}
+          {% if errors["dob-year"] %}
+            {% set dateInputYearClass = dateInputYearClass + " govuk-input--error" %}
+          {% endif %}
+
+          {{ govukDateInput({
+            id: "dob",
+            namePrefix: "dob",
+            fieldset: {
+              legend: {
+                text: "Date of birth",
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: "For example, 31 3 1980"
+            },
+            items: [
+              {
+                classes: dateInputDayClass,
+                name: "day",
+                value: values["dob-day"]
+              },
+              {
+                classes: dateInputMonthClass,
+                name: "month",
+                value: values["dob-month"]
+              },
+              {
+                classes: dateInputYearClass,
+                name: "year",
+                value: values["dob-year"]
+              }
+            ],
+            errorMessage: errors["dob"]
+          }) }}
+
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+
+        </form>
+      </div>
+    </div>
+  </main>
+{% endblock %}

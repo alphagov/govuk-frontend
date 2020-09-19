@@ -1,0 +1,95 @@
+params:
+- name: summaryText
+  type: string
+  required: true
+  description: If `summmaryHtml` is set, this is not required. Text to use within the summary element (the visible part of the details element). If `summaryHtml` is provided, the `summaryText` argument will be ignored.
+- name: summaryHtml
+  type: string
+  required: true
+  description: If `summmaryText` is set, this is not required. HTML to use within the summary element (the visible part of the details element). If `summaryHtml` is provided, the `summaryText` argument will be ignored.
+- name: text
+  type: string
+  required: true
+  description: If `html` is set, this is not required. Text to use within the disclosed part of the details element. If `html` is provided, the `text` argument will be ignored.
+- name: html
+  type: string
+  required: true
+  description: If `text` is set, this is not required. HTML to use within the disclosed part of the details element. If `html` is provided, the `text` argument will be ignored.
+- name: id
+  type: string
+  required: false
+  description: Id to add to the details element.
+- name: open
+  type: boolean
+  required: false
+  description: If true, details element will be expanded.
+- name: classes
+  type: string
+  required: false
+  description: Classes to add to the `<details>` element.
+- name: attributes
+  type: object
+  required: false
+  description: HTML attributes (for example data attributes) to add to the `<details>` element.
+
+examples:
+- name: default
+  data:
+    summaryText: Help with nationality
+    text:
+      We need to know your nationality so we can work out which elections
+      you’re entitled to vote in. If you can’t provide your nationality,
+      you’ll have to send copies of identity documents through the post.
+- name: expanded
+  data:
+    id: help-with-nationality
+    summaryText: Help with nationality
+    text:
+      We need to know your nationality so we can work out which elections
+      you’re entitled to vote in. If you can’t provide your nationality,
+      you’ll have to send copies of identity documents through the post.
+    open: true
+- name: with html
+  data:
+    summaryText: Where to find your National Insurance Number
+    html: |
+      Your National Insurance number can be found on
+      <ul>
+        <li>your National Insurance card</li>
+        <li>your payslip</li>
+        <li>P60</li>
+        <li>benefits information</li>
+        <li>tax return</li>
+      </ul>
+
+# Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+- name: id
+  hidden: true
+  data:
+    id: my-details-element
+- name: html as text
+  hidden: true
+  data:
+    text: More about the greater than symbol (>)
+- name: html
+  hidden: true
+  data:
+    html: More about <b>bold text</b>
+- name: summary html as text
+  hidden: true
+  data:
+    summaryText: The greater than symbol (>) is the best
+- name: summary html
+  hidden: true
+  data:
+    summaryHtml: Use <b>bold text</b> sparingly
+- name: classes
+  hidden: true
+  data:
+    classes: some-additional-class
+- name: attributes
+  hidden: true
+  data:
+    attributes:
+      data-some-data-attribute: i-love-data
+      another-attribute: true

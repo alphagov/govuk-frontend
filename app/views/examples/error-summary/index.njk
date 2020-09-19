@@ -2,6 +2,7 @@
 {% from "button/macro.njk" import govukButton %}
 {% from "date-input/macro.njk" import govukDateInput %}
 {% from "error-summary/macro.njk" import govukErrorSummary %}
+{% from "fieldset/macro.njk" import govukFieldset %}
 {% from "file-upload/macro.njk" import govukFileUpload %}
 {% from "input/macro.njk" import govukInput %}
 {% from "select/macro.njk" import govukSelect %}
@@ -63,6 +64,14 @@
       {
         "text": "Problem with conditionally-revealed input",
         "href": "#yes-input"
+      },
+      {
+        "text": "Problem with radios with big heading",
+        "href": "#radios-big-heading"
+      },
+      {
+        "text": "Problem with input within large fieldset",
+        "href": "#address-postcode"
       }
     ]
   }) }}
@@ -307,6 +316,88 @@
       }
     ]
   }) }}
+
+  {{ govukRadios({
+    classes: "govuk-radios--inline",
+    idPrefix: "radios-big-heading",
+    name: "radios-big-heading",
+    fieldset: {
+      legend: {
+        text: "Have you supplied orders signed in triplicate, sent in, sent back, queried, lost, found, subjected to public inquiry, lost again, and finally buried in soft peat for three months and recycled as firelighters?",
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl test-radios-big-heading-legend"
+      }
+    },
+    errorMessge: {
+      text: "Select whether you have supplied orders meeting these criteria"
+    },
+    items: [
+      {
+        value: "yes",
+        text: "Yes"
+      },
+      {
+        value: "no",
+        text: "No"
+      }
+    ]
+  }) }}
+
+  {% call govukFieldset({
+    legend: {
+      text: "What is your address?",
+      classes: "govuk-fieldset__legend--xl",
+      isPageHeading: true
+    }
+  }) %}
+
+    {{ govukInput({
+      label: {
+        html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
+      },
+      id: "address-line-1",
+      name: "address-line-1"
+    }) }}
+
+    {{ govukInput({
+      label: {
+        html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
+      },
+      id: "address-line-2",
+      name: "address-line-2"
+    }) }}
+
+    {{ govukInput({
+      label: {
+        text: "Town or city"
+      },
+      classes: "govuk-!-width-two-thirds",
+      id: "address-town",
+      name: "address-town"
+    }) }}
+
+    {{ govukInput({
+      label: {
+        text: "County"
+      },
+      classes: "govuk-!-width-two-thirds",
+      id: "address-county",
+      name: "address-county"
+    }) }}
+
+    {{ govukInput({
+      label: {
+        text: "Postcode"
+      },
+      errorMessage: {
+        text: "Enter a valid postcode"
+      },
+      classes: "govuk-input--width-10",
+      id: "address-postcode",
+      name: "address-postcode"
+    }) }}
+
+  {% endcall %}
 
   {{ govukButton({
     "text": "Continue"

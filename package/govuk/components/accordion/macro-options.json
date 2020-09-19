@@ -1,0 +1,76 @@
+[
+    {
+        "name": "id",
+        "type": "string",
+        "required": true,
+        "description": "Must be **unique** across the domain of your service (as the expanded state of individual instances of the component persists across page loads using [`sessionStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage)). Used as an `id` in the HTML for the accordion as a whole, and also as a prefix for the `id`s of the section contents and the buttons that open them, so that those `id`s can be the target of `aria-labelledby` and `aria-control` attributes."
+    },
+    {
+        "name": "headingLevel",
+        "type": "integer",
+        "required": false,
+        "description": "Heading level, from 1 to 6. Default is `2`."
+    },
+    {
+        "name": "classes",
+        "type": "string",
+        "required": false,
+        "description": "Classes to add to the accordion."
+    },
+    {
+        "name": "attributes",
+        "type": "object",
+        "required": false,
+        "description": "HTML attributes (for example data attributes) to add to the accordion."
+    },
+    {
+        "name": "items",
+        "type": "array",
+        "required": true,
+        "description": "An array of sections within the accordion.",
+        "params": [
+            {
+                "name": "heading.text",
+                "type": "string",
+                "required": true,
+                "description": "The title of each section. If `heading.html` is supplied, this is ignored. This is used both as the title for each section, and as the button to open or close each section."
+            },
+            {
+                "name": "heading.html",
+                "type": "string",
+                "required": true,
+                "description": "The HTML content of the header for each section which is used both as the title for each section, and as the button to open or close each section."
+            },
+            {
+                "name": "summary.text",
+                "type": "string",
+                "required": false,
+                "description": "Text content for summary line. If `summary.html` is supplied, this is ignored."
+            },
+            {
+                "name": "summary.html",
+                "type": "string",
+                "required": false,
+                "description": "HTML content for summary line."
+            },
+            {
+                "name": "content.text",
+                "type": "string",
+                "required": true,
+                "description": "The text content of each section, which is hidden when the section is closed. If `content.html` is supplied, this is ignored."
+            },
+            {
+                "name": "content.html",
+                "type": "string",
+                "required": true,
+                "description": "The HTML content of each section, which is hidden when the section is closed."
+            },
+            {
+                "name": "expanded",
+                "type": "boolean",
+                "required": false,
+                "description": "Whether the section should be expanded upon initial load or not. Defaults to `false`."
+            }
+        ]
+    }
+]

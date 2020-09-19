@@ -9,7 +9,7 @@
 
 {% block beforeContent %}
   {{ govukBackLink({
-    "href": "/"
+    href: "/" + legacyQuery
   }) }}
 {% endblock %}
 
@@ -22,6 +22,6 @@
   {% for data in componentData %}
     {% set componentName = data.componentName %}
     {% set componentNameHuman = componentName | replace("-", " ") %}
-    {{ showExamples(componentName, componentNameHuman, data) }}
+    {{ showExamples(componentName, componentNameHuman, data, legacyQuery) }}
   {% endfor %}
 {% endblock %}

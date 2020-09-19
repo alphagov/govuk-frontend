@@ -1,3 +1,13 @@
+---
+scenario: >-
+  As part of an online service, you wish to update your account details.
+
+
+  Things to try:
+
+  1. Intentionally avoid answering the questions before continuing to the next page.
+---
+
 {% extends "_generic.njk" %}
 
 {% from "back-link/macro.njk" import govukBackLink %}
@@ -6,9 +16,7 @@
 {% from "button/macro.njk" import govukButton %}
 
 {% set pageTitle = "Update your account details" %}
-{% block pageTitle %}{{ "Error: " if errors }}GOV.UK - {{ pageTitle }}{% endblock %}
-
-{% set mainClasses = "govuk-main-wrapper--l" %}
+{% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -40,9 +48,7 @@
           value: values["email"],
           errorMessage: errors["email"],
           autocomplete: "email",
-          attributes: {
-            spellcheck: false
-          }
+          spellcheck: false
         }) }}
 
         {{ govukInput({
@@ -56,9 +62,7 @@
           value: values["password"],
           errorMessage: errors["password"],
           autocomplete: "new-password",
-          attributes: {
-            spellcheck: false
-          }
+          spellcheck: false
         }) }}
 
         {{ govukButton({

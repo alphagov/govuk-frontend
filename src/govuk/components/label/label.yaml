@@ -1,0 +1,69 @@
+params:
+- name: text
+  type: string
+  required: true
+  description: If `html` is set, this is not required. Text to use within the label. If `html` is provided, the `text` argument will be ignored.
+- name: html
+  type: string
+  required: true
+  description: If `text` is set, this is not required. HTML to use within the label. If `html` is provided, the `text` argument will be ignored.
+- name: for
+  type: string
+  required: true
+  description: The value of the for attribute, the id of the input the label is associated with.
+- name: isPageHeading
+  type: boolean
+  required: false
+  description: Whether the label also acts as the heading for the page.
+- name: classes
+  type: string
+  required: false
+  description: Classes to add to the label tag.
+- name: attributes
+  type: object
+  required: false
+  description: HTML attributes (for example data attributes) to add to the label tag.
+
+examples:
+  - name: default
+    data:
+      text: National Insurance number
+  - name: with bold text
+    data:
+      classes: govuk-label--s
+      text: National Insurance number
+  - name: as page heading
+    data:
+      text: National Insurance number
+      classes: govuk-label--xl
+      isPageHeading: true
+
+# Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+  - name: empty
+    hidden: true
+    data: {}
+  - name: classes
+    hidden: true
+    data:
+      text: National Insurance number
+      classes: extra-class one-more-class
+  - name: html as text
+    hidden: true
+    data:
+      text: National Insurance number, <em>NINO</em>
+  - name: html
+    hidden: true
+    data:
+      html: National Insurance number <em>NINO</em>
+  - name: for
+    hidden: true
+    data:
+      for: '#dummy-input'
+      text: National Insurance number
+  - name: attributes
+    hidden: true
+    data:
+      text: National Insurance number
+      attributes:
+        first-attribute: 'true'
+        second-attribute: 'false'

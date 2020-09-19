@@ -1,0 +1,25 @@
+<div class="govuk-error-summary
+  {%- if params.classes %} {{ params.classes }}{% endif %}" aria-labelledby="error-summary-title" role="alert" tabindex="-1"
+  {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %} data-module="govuk-error-summary">
+  <h2 class="govuk-error-summary__title" id="error-summary-title">
+    {{ params.titleHtml | safe if params.titleHtml else params.titleText }}
+  </h2>
+  <div class="govuk-error-summary__body">
+    {% if params.descriptionHtml or params.descriptionText %}
+    <p>
+      {{ params.descriptionHtml | safe if params.descriptionHtml else params.descriptionText }}
+    </p>
+    {% endif %}
+    <ul class="govuk-list govuk-error-summary__list">
+    {% for item in params.errorList %}
+      <li>
+      {% if item.href %}
+        <a href="{{ item.href }}"{% for attribute, value in item.attributes %} {{attribute}}="{{value}}"{% endfor %}>{{ item.html | safe if item.html else item.text }}</a>
+      {% else %}
+        {{ item.html | safe if item.html else item.text }}
+      {% endif %}
+      </li>
+    {% endfor %}
+    </ul>
+  </div>
+</div>

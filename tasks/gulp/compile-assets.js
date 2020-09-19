@@ -35,11 +35,11 @@ const errorHandler = function (error) {
   this.emit('end')
 }
 // different entry points for both streams below and depending on destination flag
-const compileStyleshet = isDist ? configPaths.src + 'all.scss' : configPaths.app + 'assets/scss/app.scss'
-const compileOldIeStyleshet = isDist ? configPaths.src + 'all-ie8.scss' : configPaths.app + 'assets/scss/app-ie8.scss'
+const compileStylesheet = isDist ? configPaths.src + 'all.scss' : configPaths.app + 'assets/scss/app.scss'
+const compileOldIeStylesheet = isDist ? configPaths.src + 'all-ie8.scss' : configPaths.app + 'assets/scss/app-ie8.scss'
 
 gulp.task('scss:compile', () => {
-  let compile = gulp.src(compileStyleshet)
+  const compile = gulp.src(compileStylesheet)
     .pipe(plumber(errorHandler))
     .pipe(sass())
     // minify css add vendor prefixes and normalize to compiled css
@@ -61,7 +61,7 @@ gulp.task('scss:compile', () => {
     ))
     .pipe(gulp.dest(taskArguments.destination + '/'))
 
-  let compileOldIe = gulp.src(compileOldIeStyleshet)
+  const compileOldIe = gulp.src(compileOldIeStylesheet)
     .pipe(plumber(errorHandler))
     .pipe(sass())
     // minify css add vendor prefixes and normalize to compiled css
@@ -102,10 +102,11 @@ gulp.task('scss:compile', () => {
 // --------------------------------------
 gulp.task('js:compile', () => {
   // for dist/ folder we only want compiled 'all.js' file
-  let srcFiles = isDist ? configPaths.src + 'all.js' : configPaths.src + '**/*.js'
+  const srcFiles = isDist ? configPaths.src + 'all.js' : configPaths.src + '**/*.js'
+
   return gulp.src([
-    '!' + configPaths.src + '**/*.test.js',
-    srcFiles
+    srcFiles,
+    '!' + configPaths.src + '**/*.test.js'
   ])
     .pipe(rollup({
       // Used to set the `window` global and UMD/AMD export name.
@@ -125,5 +126,5 @@ gulp.task('js:compile', () => {
       })
     ))
     .pipe(eol())
-    .pipe(gulp.dest(taskArguments.destination + '/'))
+    .pipe(gulp.dest(destinationPath))
 })

@@ -1,0 +1,72 @@
+{
+    "component": "skip-link",
+    "fixtures": [
+        {
+            "name": "default",
+            "options": {
+                "text": "Skip to main content",
+                "href": "#content"
+            },
+            "html": "<a href=\"#content\" class=\"govuk-skip-link\">Skip to main content</a>"
+        },
+        {
+            "name": "with focus",
+            "options": {
+                "classes": ":focus",
+                "text": "Skip to main content",
+                "href": "#content"
+            },
+            "html": "<a href=\"#content\" class=\"govuk-skip-link :focus\">Skip to main content</a>"
+        },
+        {
+            "name": "default values",
+            "options": {},
+            "html": "<a href=\"#content\" class=\"govuk-skip-link\"></a>"
+        },
+        {
+            "name": "custom href",
+            "options": {
+                "href": "#custom"
+            },
+            "html": "<a href=\"#custom\" class=\"govuk-skip-link\"></a>"
+        },
+        {
+            "name": "custom text",
+            "options": {
+                "text": "skip"
+            },
+            "html": "<a href=\"#content\" class=\"govuk-skip-link\">skip</a>"
+        },
+        {
+            "name": "html as text",
+            "options": {
+                "text": "<p>skip</p>"
+            },
+            "html": "<a href=\"#content\" class=\"govuk-skip-link\">&lt;p&gt;skip&lt;/p&gt;</a>"
+        },
+        {
+            "name": "html",
+            "options": {
+                "html": "<p>skip</p>"
+            },
+            "html": "<a href=\"#content\" class=\"govuk-skip-link\"><p>skip</p></a>"
+        },
+        {
+            "name": "classes",
+            "options": {
+                "classes": "app-skip-link--custom-class"
+            },
+            "html": "<a href=\"#content\" class=\"govuk-skip-link app-skip-link--custom-class\"></a>"
+        },
+        {
+            "name": "attributes",
+            "options": {
+                "attributes": {
+                    "data-test": "attribute",
+                    "aria-label": "Skip to content"
+                }
+            },
+            "html": "<a href=\"#content\" class=\"govuk-skip-link\" data-test=\"attribute\" aria-label=\"Skip to content\"></a>"
+        }
+    ]
+}

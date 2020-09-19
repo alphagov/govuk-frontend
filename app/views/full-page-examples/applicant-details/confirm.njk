@@ -1,0 +1,18 @@
+{% extends "legacy.njk" %}
+
+{% set page_title = "Applicant details submitted" %}
+
+{% from "panel/macro.njk" import govukPanel %}
+
+{% block content %}
+  <main id="content" role="main">
+    <div class="grid-row">
+      <div class="column-two-thirds">
+        {{ govukPanel({
+          titleText: page_title,
+          classes: "govuk-!-margin-top-8"
+        }) }}
+      </div>
+    </div>
+</main>
+{% endblock %}

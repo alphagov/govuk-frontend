@@ -1,0 +1,27 @@
+@if not mixin-exists("govuk-exports") {
+  @warn "Importing items from the overrides layer without first importing `base` is deprecated, and will no longer work as of GOV.UK Frontend v4.0.";
+}
+
+@import "../base";
+
+@include govuk-exports("govuk/overrides/typography") {
+  // Font size and line height
+
+  // Generate typography override classes for each responsive font map in the
+  // typography scale eg .govuk-\!-font-size-80
+  @each $size in map-keys($govuk-typography-scale) {
+    .govuk-\!-font-size-#{$size} {
+      @include govuk-typography-responsive($size, $important: true);
+    }
+  }
+
+  // Weights
+
+  .govuk-\!-font-weight-regular {
+    @include govuk-typography-weight-regular($important: true);
+  }
+
+  .govuk-\!-font-weight-bold {
+    @include govuk-typography-weight-bold($important: true);
+  }
+}

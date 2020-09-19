@@ -2,13 +2,34 @@
   background-color: $govuk-body-background-colour;
 }
 
+.app-width-container--wide {
+  @include govuk-width-container(1200px);
+}
+
+// Injected into the preview page, that is then put in an iframe
 .app-iframe-in-component-preview {
   margin: 15px 0;
-}
-/* Injected into the preview page, that is then put in an iframe */
-.app-iframe-in-component-preview {}
 
-/* Removes the breakpoint sass-mq debug display */
+  // Highlight the whitespace around a component, so you can see without having to
+  // inspect it.
+  .app-whitespace-highlight {
+    $app-preview-border-colour: #e4f2ff;
+
+    @include govuk-clearfix;
+
+    content: " ";
+    display: table;
+    width: 100%;
+    clear: both;
+    box-shadow: 0 0 0 5px $app-preview-border-colour;
+
+    @include govuk-if-ie8 {
+      outline: 5px solid $app-preview-border-colour;
+    }
+  }
+}
+
+// Removes the breakpoint sass-mq debug display
 .app-iframe-in-component-preview:before {
   display: none;
 }
@@ -19,33 +40,15 @@
 
 .app-component-preview {
   position: relative;
+  width: 100%;
   margin-top: -15px;
   margin-bottom: 15px;
-  width: 100%;
 }
 
 .app-component-preview__iframe {
-  z-index: 20;
   display: block;
   position: relative;
-  border: none;
+  z-index: 20;
   width: 100%;
-}
-
-// Highlight the whitespace around a component, so you can see without having to
-// inspect it.
-.app-iframe-in-component-preview {
-  .app-whitespace-highlight {
-    @include govuk-clearfix;
-
-    content: " ";
-    display: table;
-    clear: both;
-    width: 100%;
-    box-shadow: 0 0 0 5px #e4f2ff;
-
-    @include govuk-if-ie8 {
-      outline: 5px solid #e4f2ff;
-    }
-  }
+  border: 0;
 }

@@ -5,7 +5,7 @@ const configPaths = require('../../../config/paths.json')
 const recursive = require('recursive-readdir')
 
 describe('dist/', () => {
-  let version = require(path.join('../../../', configPaths.package, 'package.json')).version
+  const version = require(path.join('../../../', configPaths.package, 'package.json')).version
 
   describe('assets/', () => {
     it('should include the same files as in src/assets', () => {
@@ -18,7 +18,7 @@ describe('dist/', () => {
           files => {
             return files
               // Remove /package prefix from filenames
-              .map(file => file.replace(/^src\/assets\//, ''))
+              .map(file => file.replace(/^src\/govuk\/assets\//, ''))
               // Sort to make comparison easier
               .sort()
           },
@@ -59,6 +59,10 @@ describe('dist/', () => {
 
     it('should not contain current media query displayed on body element', () => {
       expect(stylesheet).not.toMatch(/body:before{content:/)
+    })
+
+    it('should contain the copyright notice', () => {
+      expect(stylesheet).toContain('/*! Copyright (c) 2011 by Margaret Calvert & Henrik Kubel. All rights reserved. The font has been customised for exclusive use on gov.uk. This cut is not commercially available. */')
     })
   })
 

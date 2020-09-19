@@ -34,3 +34,9 @@ This will build sources, serve pages and watch for changes.
 ```
 npm start
 ```
+
+## Deploying
+
+You can deploy your project straight to a Heroku instance.
+
+An existing Heroku instance can be found at: [http://govuk-frontend-review.herokuapp.com/](http://govuk-frontend-review.herokuapp.com/)

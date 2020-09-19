@@ -1,4 +1,24 @@
-{# This example is based of the live "Send your feedback to GOV.UK Verify" start page: https://www.signin.service.gov.uk/feedback #}
+---
+scenario: >-
+  You have used a service called GOV.UK Verify and wish to report an issue.
+
+
+  Things to try:
+
+  1. Intentionally put too much content in the feedback box.
+
+    “What were you trying to do” question has a limit of 100 characters.
+
+    “Please provide details of your question, problem or feedback” has a limit
+    of 300 characters.
+
+  2. Say that you want a reply, but avoid filling in the details of how you
+     would like to be contacted.
+
+  3. Avoid answering the question “Do you want a reply?”
+
+notes: Based on https://www.signin.service.gov.uk/feedback
+---
 {% extends "_generic.njk" %}
 
 {% from "warning-text/macro.njk" import govukWarningText %}
@@ -8,10 +28,8 @@
 {% from "button/macro.njk" import govukButton %}
 {% from "error-summary/macro.njk" import govukErrorSummary %}
 
-{% set pageTitle = "Send your feedback to GOV.UK Verify" %}
-{% block pageTitle %}{{ "Error: " if errors }}GOV.UK - {{ pageTitle }}{% endblock %}
-
-{% set mainClasses = "govuk-main-wrapper--l" %}
+{% set pageTitle = "Send your feedback" %}
+{% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - Verify - GOV.UK{% endblock %}
 
 {% block header %}
   {% include "../../partials/banner.njk" %}
@@ -27,7 +45,7 @@
             {% if errorSummary.length > 0 %}
                 {{ govukErrorSummary({
                     titleText: "There is a problem",
-                    errorList: errorSummary 
+                    errorList: errorSummary
                 }) }}
             {% endif %}
 

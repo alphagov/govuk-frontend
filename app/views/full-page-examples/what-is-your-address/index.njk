@@ -1,3 +1,14 @@
+---
+scenario: >-
+  As part of an online service, you are asked to provide your address.
+
+
+  Things to try:
+
+  1. Intentionally avoid answering the questions before continuing to the next
+     page.
+---
+
 {# This example is based of the  "What is your home address?" example: https://design-system.service.gov.uk/patterns/addresses/multiple/index.html #}
 {% extends "_generic.njk" %}
 
@@ -8,7 +19,7 @@
 {% from "button/macro.njk" import govukButton %}
 
 {% set pageTitle = "What is your home address?" %}
-{% block pageTitle %}{{ "Error: " if errors }}GOV.UK - {{ pageTitle }}{% endblock %}
+{% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -43,7 +54,8 @@
             id: "address-line-1",
             name: "address-line-1",
             value: values["address-line-1"],
-            errorMessage: errors["address-line-1"]
+            errorMessage: errors["address-line-1"],
+            autocomplete: "address-line1"
           }) }}
 
           {{ govukInput({
@@ -53,7 +65,7 @@
             id: "address-line-2",
             name: "address-line-2",
             value: values["address-line-2"],
-            errorMessage: (not not errors["address-line-1"])
+            autocomplete: "address-line2"
           }) }}
 
           {{ govukInput({
@@ -86,7 +98,8 @@
             id: "address-postcode",
             name: "address-postcode",
             value: values["address-postcode"],
-            errorMessage: errors["address-postcode"]
+            errorMessage: errors["address-postcode"],
+            autocomplete: "postal-code"
           }) }}
 
         {% endcall %}

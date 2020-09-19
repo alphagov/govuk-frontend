@@ -15,33 +15,31 @@ const requestPath = request.defaults({
 })
 
 describe('Banner', () => {
-  it('should be visible by default', done => {
+  it('is visible by default', done => {
     requestPath.get('/', (err, res) => {
-      let $ = cheerio.load(res.body)
+      const $ = cheerio.load(res.body)
 
       // Check the page responded correctly
       expect(res.statusCode).toBe(200)
       expect($.html()).toContain('GOV.UK Frontend')
 
       // Check that the banner is visible
-      let appBanner = $('[data-module="app-banner"]')
+      const appBanner = $('[data-module="app-banner"]')
       expect(appBanner.length).toBeTruthy()
       done(err)
     })
   })
-  it('should be dismissable', done => {
-    requestPath.post('/hide-banner', {
-      followAllRedirects: true,
-      jar: true // enable cookies
-    }, (err, res) => {
-      let $ = cheerio.load(res.body)
+
+  it('can be hidden using a url parameter', done => {
+    requestPath.get('/?hide-banner', (err, res) => {
+      const $ = cheerio.load(res.body)
 
       // Check the page responded correctly
       expect(res.statusCode).toBe(200)
       expect($.html()).toContain('GOV.UK Frontend')
 
-      // Check that the banner is not visible
-      let appBanner = $('[data-module="app-banner"]')
+      // Check that the banner is visible
+      const appBanner = $('[data-module="app-banner"]')
       expect(appBanner.length).toBeFalsy()
       done(err)
     })

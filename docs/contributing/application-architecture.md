@@ -26,11 +26,11 @@
 
 - `bin/`
 
-  Binary/executable files (i.e. bash scripts) mainly used in the [publishing process](publishing.md).
+  Binary/executable files (i.e. bash scripts) mainly used in the [publishing process](/docs/releasing/publishing.md).
 
 - `config/`
 
-  Configuration files for the preview app, [sass-lint](https://github.com/sasstools/sass-lint) and [Jest](https://github.com/facebook/jest).
+  Configuration files for the preview app and [Jest](https://github.com/facebook/jest).
 
 
 - `dist/` **contains auto-generated files**
@@ -59,7 +59,7 @@
   Application modules and helpers. See [tasks](tasks.md) for more information about the tasks.
 
 
-### Auto-generated directories  
+### Auto-generated directories
 
 - `public/`
 

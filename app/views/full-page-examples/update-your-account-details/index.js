@@ -1,4 +1,4 @@
-const { body, validationResult } = require('express-validator/check')
+const { body, validationResult } = require('express-validator')
 
 // To make it easier to use in the view, might be nicer as a Nunjucks function
 function getErrors (errorsInstance) {
@@ -24,6 +24,7 @@ module.exports = (app) => {
     [
       body('email')
         .exists()
+        .isEmail().withMessage('Enter an email address in the correct format, like name@example.com')
         .not().isEmpty().withMessage('Enter your email address'),
       body('password')
         .exists()

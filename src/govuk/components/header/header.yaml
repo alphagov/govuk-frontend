@@ -1,0 +1,291 @@
+params:
+- name: homepageUrl
+  type: string
+  required: false
+  description: The url of the homepage. Defaults to /
+- name: assetsPath
+  type: string
+  required: false
+  description: The public path for the assets folder. If not provided it defaults to /assets/images
+- name: productName
+  type: string
+  required: false
+  description: Product name, used when the product name follows on directly from ‘GOV.UK’. For example, GOV.UK Pay or GOV.UK Design System. In most circumstances, you should use serviceName.
+- name: serviceName
+  type: string
+  required: false
+  description: The name of your service, included in the header.
+- name: serviceUrl
+  type: string
+  required: false
+  description: Url for the service name anchor.
+- name: navigation
+  type: array
+  required: false
+  description: An array of navigation item objects.
+  params:
+  - name: text
+    type: string
+    required: false
+    description: Text for the navigation item. If `html` is provided, the `text` argument will be ignored.
+  - name: html
+    type: string
+    required: false
+    description: HTML for the navigation item. If `html` is provided, the `text` argument will be ignored.
+  - name: href
+    type: string
+    required: false
+    description: Url of the navigation item anchor.
+  - name: active
+    type: boolean
+    required: false
+    description: Flag to mark the navigation item as active or not.
+  - name: attributes
+    type: object
+    required: false
+    description: HTML attributes (for example data attributes) to add to the navigation item anchor.
+- name: navigationClasses
+  type: string
+  required: false
+  description: Classes for the navigation section of the header.
+- name: navigationLabel
+  type: string
+  required: false
+  description: Text for the `aria-label` attribute of the navigation. Defaults to "Navigation menu".
+- name: menuButtonLabel
+  type: string
+  required: false
+  description: Text for the `aria-label` attribute of the button that toggles the navigation. Defaults to "Show or hide navigation menu".
+- name: containerClasses
+  type: string
+  required: false
+  description: Classes for the container, useful if you want to make the header fixed width.
+- name: classes
+  type: string
+  required: false
+  description: Classes to add to the header container.
+- name: attributes
+  type: object
+  required: false
+  description: HTML attributes (for example data attributes) to add to the header container.
+
+previewLayout: full-width
+accessibilityCriteria: |
+  Text and links in the Header must:
+  - have a text contrast ratio higher than 4.5:1 against the background colour to meet [WCAG AA](https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast)
+
+  Links in the Header must:
+  - accept focus
+  - be focusable with a keyboard
+  - be usable with a keyboard
+  - indicate when they have focus
+  - change in appearance when touched (in the touch-down state)
+  - change in appearance when hovered
+  - have visible text
+
+  Images in the Header must:
+  - be presentational when linked to from accompanying text (crown icon).
+
+  Landmarks and Roles in the Header should:
+  - have a role of `banner` at the root of the component (<header>) (https://www.w3.org/TR/wai-aria-1.1/#banner)
+
+examples:
+- name: default
+  description: The standard header as used on information pages on GOV.UK
+  data:
+    {}
+
+- name: with service name
+  description: If your service is more than a few pages long, you can help users understand where they are by adding the service name.
+  data:
+    serviceName: Service Name
+    serviceUrl: '/components/header'
+
+- name: with navigation
+  data:
+    navigation:
+      - href: '#1'
+        text: Navigation item 1
+        active: true
+      - href: '#2'
+        text: Navigation item 2
+      - href: '#3'
+        text: Navigation item 3
+      - href: '#4'
+        text: Navigation item 4
+
+- name: with custom navigation label
+  data:
+    navigationLabel: Custom navigation label
+    navigation:
+      - href: '#1'
+        text: Navigation item 1
+        active: true
+      - href: '#2'
+        text: Navigation item 2
+      - href: '#3'
+        text: Navigation item 3
+      - href: '#4'
+        text: Navigation item 4
+
+- name: with custom menu button label
+  data:
+    menuButtonLabel: Custom button label
+    navigation:
+      - href: '#1'
+        text: Navigation item 1
+        active: true
+      - href: '#2'
+        text: Navigation item 2
+      - href: '#3'
+        text: Navigation item 3
+      - href: '#4'
+        text: Navigation item 4
+
+- name: with service name and navigation
+  description: If you need to include basic navigation, contact or account management links.
+  data:
+    serviceName: Service Name
+    serviceUrl: '/components/header'
+    navigation:
+      - href: '#1'
+        text: Navigation item 1
+        active: true
+      - href: '#2'
+        text: Navigation item 2
+      - href: '#3'
+        text: Navigation item 3
+      - href: '#4'
+        text: Navigation item 4
+
+- name: with large navigation
+  description: An edge case example with a large number of navitation items with long names used to test wrapping
+  data:
+    navigation:
+      - href: '/browse/benefits'
+        text: Benefits
+      - href: '/browse/births-deaths-marriages'
+        text: Births, deaths, marriages and care
+      - href: '/browse/business'
+        text: Business and self-employed
+      - href: '/browse/childcare-parenting'
+        text: Childcare and parenting
+      - href: '/browse/citizenship'
+        text: Citizenship and living in the UK
+      - href: '/browse/justice'
+        text: Crime, justice and the law
+      - href: '/browse/disabilities'
+        text: Disabled people
+      - href: '/browse/driving'
+        text: Driving and transport
+      - href: '/browse/education'
+        text: Education and learning
+      - href: '/browse/employing-people'
+        text: Employing people
+      - href: '/browse/environment-countryside'
+        text: Environment and countryside
+      - href: '/browse/housing-local-services'
+        text: Housing and local services
+      - href: '/browse/tax'
+        text: Money and tax
+      - href: '/browse/abroad'
+        text: Passports, travel and living abroad
+      - href: '/browse/visas-immigration'
+        text: Visas and immigration
+      - href: '/browse/working'
+        text: Working, jobs and pensions
+
+- name: with product name
+  data:
+    navigationClasses: govuk-header__navigation--end
+    productName: Product Name
+
+- name: full width
+  data:
+    containerClasses: govuk-header__container--full-width
+    navigationClasses: govuk-header__navigation--end
+    productName: Product Name
+
+- name: full width with navigation
+  data:
+    containerClasses: govuk-header__container--full-width
+    navigationClasses: govuk-header__navigation--end
+    productName: Product Name
+    navigation:
+      - href: '#1'
+        text: Navigation item 1
+        active: true
+      - href: '#2'
+        text: Navigation item 2
+      - href: '#3'
+        text: Navigation item 3
+
+- name: navigation item with html
+  data:
+    serviceName: Service Name
+    serviceUrl: '/components/header'
+    navigation:
+      - href: '#1'
+        html: <em>Navigation item 1</em>
+        active: true
+      - href: '#2'
+        html: <em>Navigation item 2</em>
+      - href: '#3'
+        html: <em>Navigation item 3</em>
+
+- name: navigation item with text without link
+  data:
+    serviceName: Service Name
+    serviceUrl: '/components/header'
+    navigation:
+      - text: Navigation item 1
+      - text: Navigation item 2
+      - text: Navigation item 3
+
+# Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+- name: attributes
+  hidden: true
+  data:
+    attributes:
+      data-test-attribute: value
+      data-test-attribute-2: value-2
+- name: classes
+  hidden: true
+  data:
+    classes: app-header--custom-modifier
+- name: custom homepage url
+  hidden: true
+  data:
+    homepageUrl: /
+- name: navigation item with attributes
+  hidden: true
+  data:
+    navigation:
+      - href: /link
+        text: Item
+        attributes:
+          data-attribute: my-attribute
+          data-attribute-2: my-attribute-2
+- name: navigation item with html as text
+  hidden: true
+  data:
+    serviceName: Service Name
+    serviceUrl: '/components/header'
+    navigation:
+      - href: '#1'
+        text: <em>Navigation item 1</em>
+        active: true
+      - href: '#2'
+        text: <em>Navigation item 2</em>
+      - href: '#3'
+        text: <em>Navigation item 3</em>
+- name: navigation item with html without link
+  hidden: true
+  data:
+    serviceName: Service Name
+    serviceUrl: '/components/header'
+    navigation:
+      - html: <em>Navigation item 1</em>
+        active: true
+      - html: <em>Navigation item 2</em>
+      - html: <em>Navigation item 3</em>

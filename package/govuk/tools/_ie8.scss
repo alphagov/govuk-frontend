@@ -1,0 +1,51 @@
+////
+/// @group tools/internet-explorer-8
+////
+
+/// Conditionally include rules only for IE8
+///
+/// @content Passed content is only outputted if we're compiling a stylesheet
+///   that targets IE8 (if `$govuk-is-ie8` is true)
+///
+/// @example scss - Usage
+///
+///   .foo {
+///     min-width: 100px;
+///     // Specify width for IE8 only
+///     @include govuk-if-ie8 {
+///       width: 100px;
+///     }
+///   }
+///
+/// @access public
+
+@mixin govuk-if-ie8 {
+  @if $govuk-is-ie8 {
+    @content;
+  }
+}
+
+/// Conditionally exclude rules for IE8
+///
+/// @content Passed content is only outputted if we're not compiling a
+///   stylesheet that targets IE8 (if `$govuk-is-ie8` is false)
+///
+/// @example scss - Usage
+///
+///   .foo {
+///     font-weight: bold;
+///
+///     // Enhance foo only for modern browsers (not IE8)
+///     @include govuk-not-ie8 {
+///       font-family: "Comic Sans MS", "Curlz MT" cursive, sans-serif;
+///       color: #FF69B4;
+///     }
+///   }
+///
+/// @access public
+
+@mixin govuk-not-ie8 {
+  @if not $govuk-is-ie8 {
+    @content;
+  }
+}

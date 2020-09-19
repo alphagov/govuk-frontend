@@ -6,7 +6,7 @@ To provide a level of consistency for developers we have standardised option nam
 
 The options (arguments) accepted by the component macro are specified in a `[component-name].yaml` file as `params`. Each option should have the following attributes: `name`, `type`, `required`, `description`.
 
-An option can additionally contain `params` that denotes nested items in the option (see [breadcrumbs component](https://github.com/alphagov/govuk-frontend/blob/master/src/components/breadcrumbs/breadcrumbs.yaml#L6)) and `isComponent: true` where the option is another component (see [checkboxes component](https://github.com/alphagov/govuk-frontend/blob/master/src/components/checkboxes/checkboxes.yaml#L11)).
+An option can additionally contain `params` that denotes nested items in the option (see [breadcrumbs component](https://github.com/alphagov/govuk-frontend/blob/master/src/govuk/components/breadcrumbs/breadcrumbs.yaml#L6)) and `isComponent: true` where the option is another component (see [checkboxes component](https://github.com/alphagov/govuk-frontend/blob/master/src/govuk/components/checkboxes/checkboxes.yaml#L11)).
 
 Component macro options are shipped as  `macro-options.json` in `package`.
 

@@ -59,6 +59,14 @@ the previous class available.
 
 Sometimes it is not possible to deprecate code, this is OK but try to make this a last resort.
 
+### Sass doc deprecation annotations
+
+When deprecating Sass, you can use the [deprecated annotation](http://sassdoc.com/annotations/#deprecated).
+
+If there is an alias, for example if you are renaming something, you can use the [alias annotation](http://sassdoc.com/annotations/#alias).
+
+See [an example of deprecating a Sass mixin on GitHub](https://github.com/alphagov/govuk-frontend/blob/9424d87ed54764d2d8afe35d6e0077ee43d231e1/src/helpers/_grid.scss#L20-L26).
+
 ## Migration
 
 Migration is the practice of a user moving from one approach to an equivalent approach.
@@ -87,8 +95,8 @@ The other primary way is through what is [published to npm](https://github.com/a
 
 This includes:
 
-- [JavaScript](https://github.com/alphagov/govuk-frontend/blob/master/docs/installation/installing-with-npm.md#using-javascript)
-- SCSS - https://govuk-frontend-review.herokuapp.com/docs/
+- [JavaScript](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#javascript)
+- [SCSS](https://frontend.design-system.service.gov.uk/sass-api-reference/#sass-api-reference)
 - Nunjucks Macros (Templates)
 
 ## Updating Changelog

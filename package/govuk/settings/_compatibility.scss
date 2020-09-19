@@ -1,0 +1,75 @@
+////
+/// 'Compatibility Mode'
+///
+/// Enabling these flags improves compatibility if you are using GOV.UK Frontend
+/// in an application that also uses govuk_elements, govuk_frontend_toolkit or
+/// govuk_template (the 'legacy repos').
+///
+/// Enabling any of these settings will, by default:
+///
+/// - switch GOV.UK Frontend to using the same colour palette as the legacy
+///   repos, by setting `$govuk-use-legacy-palette` to true.
+///
+/// - prevent GOV.UK Frontend from using rem for font sizing, by setting
+///   `$govuk-typography-use-rem` to false.
+///
+/// @group settings/compatibility
+////
+
+
+/// Compatibility Mode: alphagov/govuk_frontend_toolkit
+///
+/// Set this to true if you are also including alphagov/govuk_frontend_toolkit
+/// in your application.
+///
+/// @type Boolean
+/// @access public
+
+$govuk-compatibility-govukfrontendtoolkit: false !default;
+
+/// Compatibility Mode: alphagov/govuk_template
+///
+/// Enabling this will:
+///
+/// - prevent GOV.UK Frontend from including the New Transport typeface, as
+///   it'll use the version of New Transport included with GOV.UK Template.
+///
+/// - alter some of the CSS outputted by GOV.UK Frontend to 'counter'
+///   specific CSS rules in GOV.UK Template.
+///
+/// Set this to true if you are also including alphagov/govuk_template in your
+/// application.
+///
+/// @type Boolean
+/// @access public
+
+$govuk-compatibility-govuktemplate: false !default;
+
+/// Compatibility Mode: alphagov/govuk_elements
+///
+/// Enabling this will:
+///
+/// - alter some of the CSS outputted by GOV.UK Frontend to 'counter'
+///   specific CSS rules in GOV.UK Elements.
+///
+/// Set this to true if you are also including alphagov/govuk_elements in your
+/// application.
+///
+/// @type Boolean
+/// @access public
+
+$govuk-compatibility-govukelements: false !default;
+
+/// Compatibility Product Map
+///
+/// Maps product names to their settings that we can use to lookup states from
+/// within the `@govuk-compatibility` mixin.
+///
+/// @type Map
+/// @access private
+
+$_govuk-compatibility: (
+  govuk_frontend_toolkit: $govuk-compatibility-govukfrontendtoolkit,
+  govuk_template: $govuk-compatibility-govuktemplate,
+  govuk_elements: $govuk-compatibility-govukelements,
+);

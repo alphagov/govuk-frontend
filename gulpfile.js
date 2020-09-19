@@ -10,13 +10,14 @@ const concat = require('gulp-concat')
 
 // Gulp sub-tasks
 require('./tasks/gulp/clean.js')
-require('./tasks/gulp/lint.js')
 require('./tasks/gulp/compile-assets.js')
+require('./tasks/gulp/nodemon.js')
 require('./tasks/gulp/watch.js')
 // new tasks
 require('./tasks/gulp/copy-to-destination.js')
 require('./tasks/gulp/asset-version.js')
 require('./tasks/gulp/sassdoc.js')
+require('./tasks/gulp/stylelint.js')
 
 const external = {
   scripts: [

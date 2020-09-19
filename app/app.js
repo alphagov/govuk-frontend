@@ -20,14 +20,15 @@ const appViews = [
   configPaths.examples,
   configPaths.fullPageExamples,
   configPaths.components,
-  configPaths.src
+  configPaths.src,
+  configPaths.node_modules
 ]
 
 module.exports = (options) => {
   const nunjucksOptions = options ? options.nunjucks : {}
 
   // Configure nunjucks
-  let env = nunjucks.configure(appViews, {
+  const env = nunjucks.configure(appViews, {
     autoescape: true, // output with dangerous characters are escaped automatically
     express: app, // the express app that nunjucks should install to
     noCache: true, // never use a cache and recompile templates each time
@@ -41,6 +42,7 @@ module.exports = (options) => {
 
   // make the function available as a filter for all templates
   env.addFilter('componentNameToMacroName', helperFunctions.componentNameToMacroName)
+  env.addGlobal('markdown', require('marked'))
 
   // static html export
   // if (app.get('env') === 'dist') {
@@ -67,6 +69,13 @@ module.exports = (options) => {
 
   // serve html5-shiv from node modules
   app.use('/vendor/html5-shiv/', express.static('node_modules/html5shiv/dist/'))
+
+  // serve legacy code from node modules
+  app.use('/vendor/govuk_template/', express.static('node_modules/govuk_template_jinja/assets/'))
+  app.use('/vendor/govuk_frontend_toolkit/assets', express.static('node_modules/govuk_frontend_toolkit/images'))
+  app.use('/vendor/govuk_frontend_toolkit/', express.static('node_modules/govuk_frontend_toolkit/javascripts/govuk/'))
+  app.use('/vendor/jquery/', express.static('node_modules/jquery/dist'))
+
   app.use('/assets', express.static(path.join(configPaths.src, 'assets')))
 
   // Turn form POSTs into data that can be used for validation.
@@ -75,6 +84,17 @@ module.exports = (options) => {
   // Handle the banner component serverside.
   require('./banner.js')(app)
 
+  // Define middleware for all routes
+  app.use('*', function (request, response, next) {
+    response.locals.legacy = (request.query.legacy === '1' || request.query.legacy === 'true')
+    if (response.locals.legacy) {
+      response.locals.legacyQuery = '?legacy=' + request.query.legacy
+    } else {
+      response.locals.legacyQuery = ''
+    }
+    next()
+  })
+
   // Define routes
 
   // Index page - render the component list template
@@ -82,13 +102,13 @@ module.exports = (options) => {
     const components = fileHelper.allComponents
     const sdnComponents = fileHelper.allSdnComponents
     const examples = await readdir(path.resolve(configPaths.examples))
-    const fullPageExamples = await readdir(path.resolve(configPaths.fullPageExamples))
+    const fullPageExamples = fileHelper.fullPageExamples()
 
     res.render('index', {
       componentsDirectory: components,
       sdnComponentsDirectory: sdnComponents,
       examplesDirectory: examples,
-      fullPageExamplesDirectory: fullPageExamples
+      fullPageExamples: fullPageExamples
     })
   })
 
@@ -124,8 +144,8 @@ module.exports = (options) => {
     const components = fileHelper.allComponents
 
     res.locals.componentData = components.map(componentName => {
-      let componentData = fileHelper.getComponentData(componentName)
-      let defaultExample = componentData.examples.find(
+      const componentData = fileHelper.getComponentData(componentName)
+      const defaultExample = componentData.examples.find(
         example => example.name === 'default'
       )
       return {
@@ -133,7 +153,7 @@ module.exports = (options) => {
         examples: [defaultExample]
       }
     })
-    res.render(`all-components`, function (error, html) {
+    res.render('all-components', function (error, html) {
       if (error) {
         next(error)
       } else {
@@ -205,12 +225,12 @@ module.exports = (options) => {
   // Component example preview
   app.get('/components/:component/:example*?/preview', function (req, res, next) {
     // Find the data for the specified example (or the default example)
-    let componentName = req.params.component
-    let requestedExampleName = req.params.example || 'default'
+    const componentName = req.params.component
+    const requestedExampleName = req.params.example || 'default'
 
-    let previewLayout = res.locals.componentData.previewLayout || 'layout'
+    const previewLayout = res.locals.componentData.previewLayout || 'layout'
 
-    let exampleConfig = res.locals.componentData.examples.find(
+    const exampleConfig = res.locals.componentData.examples.find(
       example => example.name.replace(/ /g, '-') === requestedExampleName
     )
 
@@ -219,8 +239,8 @@ module.exports = (options) => {
     }
 
     // Construct and evaluate the component with the data for this example
-    let macroName = helperFunctions.componentNameToMacroName(componentName)
-    let macroParameters = JSON.stringify(exampleConfig.data, null, '\t')
+    const macroName = helperFunctions.componentNameToMacroName(componentName)
+    const macroParameters = JSON.stringify(exampleConfig.data, null, '\t')
 
     res.locals.componentView = env.renderString(
       `{% from '${componentName}/macro.njk' import ${macroName} %}
@@ -270,7 +290,9 @@ module.exports = (options) => {
 
   // Example view
   app.get('/examples/:example/:action?', function (req, res, next) {
-    res.render(`${req.params.example}/${req.params.action || 'index'}`, function (error, html) {
+    // Passing a random number used for the links so that they will be unique and not display as "visited"
+    const randomPageHash = (Math.random() * 1000000).toFixed()
+    res.render(`${req.params.example}/${req.params.action || 'index'}`, { randomPageHash }, function (error, html) {
       if (error) {
         next(error)
       } else {

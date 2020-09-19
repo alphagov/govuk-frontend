@@ -1,0 +1,55 @@
+params:
+- name: text
+  type: string
+  required: true
+  description: If `html` is set, this is not required. Text to use within the back link component. If `html` is provided, the `text` argument will be ignored.
+- name: html
+  type: string
+  required: true
+  description: If `text` is set, this is not required. HTML to use within the back link component. If `html` is provided, the `text` argument will be ignored.
+- name: href
+  type: string
+  required: true
+  description: The value of the link href attribute.
+- name: classes
+  type: string
+  required: false
+  description: Classes to add to the anchor tag.
+- name: attributes
+  type: object
+  required: false
+  description: HTML attributes (for example data attributes) to add to the anchor tag.
+
+examples:
+- name: default
+  data:
+    href: '#'
+- name: with custom text
+  data:
+    href: '#'
+    text: Back to home
+
+# Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+- name: classes
+  hidden: true
+  data:
+    classes: app-back-link--custom-class
+    href: '#'
+- name: html as text
+  hidden: true
+  data:
+    text: <b>Home</b>
+    href: '#'
+- name: html
+  hidden: true
+  data:
+    html: <b>Back</b>
+    href: '#'
+- name: attributes
+  hidden: true
+  data:
+    href: '#'
+    html: <b>Back to home</b>
+    attributes:
+      data-test: attribute
+      aria-label: Back to home

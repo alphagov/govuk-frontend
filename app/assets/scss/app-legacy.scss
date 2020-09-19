@@ -1,0 +1,17 @@
+// Include GOV.UK Elements and GOV.UK Frontend Toolkit to mimic a service which
+// is migrating to use GOV.UK Frontend.
+//
+// GOV.UK Template is included as a separate CSS file, which is how most
+// services use it (as opposed to including it in their Sass file)
+
+$govuk-compatibility-govukfrontendtoolkit: true;
+$govuk-compatibility-govuktemplate: true;
+$govuk-compatibility-govukelements: true;
+
+// Set Elements assets path
+$path: "/vendor/govuk_frontend_toolkit/assets/";
+
+// Import GOV.UK frontend toolkit and GOV.UK elements
+@import "govuk-elements-sass/public/sass/govuk-elements";
+
+@import "app";

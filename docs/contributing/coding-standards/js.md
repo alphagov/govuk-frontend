@@ -104,7 +104,7 @@ Use default export over named export.
 
 ## Polyfilling
 
-If you need to support older browsers, import the necessary [polyfills](/src/vendor/polyfills) and they will be added to the environment when the feature is not supported.
+If you need to support older browsers, import the necessary [polyfills](/src/govuk/vendor/polyfills) and they will be added to the environment when the feature is not supported.
 
 For example, if you want to polyfill `addEventListener` for IE8, import the Event polyfills.
 
@@ -122,4 +122,4 @@ The standard docs have a [complete list of rules and some reasoning behind them]
 
 Read more about [running standard manually or in your editor](https://github.com/alphagov/styleguides/blob/master/js.md#linting).
 
-See also [testing and linting](../testing-and-linting.md).
+See also [testing and linting](/docs/releasing/testing-and-linting.md).

@@ -1,10 +1,8 @@
 /* eslint-env jest */
 
 const path = require('path')
-const util = require('util')
 
-const sass = require('node-sass')
-const sassRender = util.promisify(sass.render)
+const { renderSass } = require('../../../lib/jest-helpers')
 
 const lib = require('../../../lib/file-helper')
 const configPaths = require('../../../config/paths.json')
@@ -16,7 +14,7 @@ describe('Individual components', () => {
     const getSassRenders = () => {
       return componentNames.map(name => {
         const filePath = path.join(configPaths.components, name, `_${name}.scss`)
-        return sassRender({ file: filePath })
+        return renderSass({ file: filePath })
       })
     }
 

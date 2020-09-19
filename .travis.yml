@@ -1,20 +1,46 @@
 language: node_js
 notifications:
   email: false
-sudo: false
-before_deploy:
-- test $TRAVIS_TEST_RESULT = 0
+
 jobs:
   include:
-    - stage: Run npm test
+    - name: 🧪 Run test suite
       script:
-      # Ensure Travis aborts without running tests if the package-lock.json file needs updating
+      # Ensure Travis aborts without running tests if the package-lock.json file
+      # needs updating
       - set -e
       - ./bin/check-package-lock.sh
-      # TravisCI is slower than our local machines, so results in intermittent timeouts
-      # using the `--runInBand` flag we can force it to without requiring as much
-      # resources (https://facebook.github.io/jest/docs/en/troubleshooting.html#tests-are-extremely-slow-on-docker-and-or-continuous-integration-ci-server)
+      # TravisCI is slower than our local machines, so results in intermittent
+      # timeouts using the `--runInBand` flag we can force it to without
+      # requiring as much resource.
+      # https://facebook.github.io/jest/docs/en/troubleshooting.html#tests-are-extremely-slow-on-docker-and-or-continuous-integration-ci-server
       - npm test -- --runInBand
-    # Heroku is configured to automatically deploy the following branches
-    # once CI passes:
-    # master         -> http://govuk-frontend-review.herokuapp.com/
+
+    # Ensure that the Sass compiles using the minimum versions of the compilers
+    # that we aim to support
+
+    - name: 📚 Test Sass compiles using LibSass v3.3.0
+      node_js: 4 # Node 4 required for oldest version of node-sass we support
+      install: npm install -g node-sass@v3.4.0 # node-sass v3.4.0 = libsass v3.3.0
+      script: 
+        - node-sass --version
+        - time node-sass src/govuk/all.scss > /dev/null
+
+    - name: 🎯 Test Sass compiles using Dart Sass v1.0.0
+      node_js: 8 # Assumed based on release date of dart-sass v1.0.0
+      install: npm install -g sass@v1.0.0
+      script: 
+        - sass --version
+        - time sass src/govuk/all.scss > /dev/null
+
+    - name: 💎 Test Sass compiles using Ruby Sass v3.4.0 (deprecated)
+      language: ruby
+      rvm: 1.9.3-p551 # Assumed based on release date of Ruby Sass v3.4.0
+      install: gem install sass -v 3.4.0
+      script: 
+        - sass --version
+        - time sass src/govuk/all.scss > /dev/null
+
+# Heroku is configured to automatically deploy the following branches
+# once CI passes:
+# master         -> http://govuk-frontend-review.herokuapp.com/

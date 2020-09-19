@@ -35,6 +35,14 @@
         Links
       </h1>
 
+      <p class="govuk-body">
+        <a class="govuk-link" href="#">Link with that wraps over two lines to test that the focus style works as expected</a>
+      </p>
+
+      <p class="govuk-body">
+        (<a class="govuk-link" href="#">Link with surrounding brackets</a>) test that the focus style does not overlap.
+      </p>
+
     {% for variant_description, variant_class in variants %}
 
       <section class="govuk-!-margin-top-8">
@@ -42,7 +50,7 @@
 
       {% for state_description, state_class in states %}
         <p class="govuk-body">
-          <a href="/" class="govuk-link {{ variant_class }} {{ state_class }}">
+          <a href="/#{{ randomPageHash }}" class="govuk-link {{ variant_class }} {{ state_class }}">
             {{ state_description}}
           </a>
         </p>

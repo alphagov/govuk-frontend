@@ -6,7 +6,12 @@ module.exports = function (app) {
   // Detect if banner should be shown based on cookies set
   app.use(cookieParser())
   app.use(function (request, response, next) {
-    let cookie = request.cookies[BANNER_COOKIE_NAME]
+    if ('hide-banner' in request.query) {
+      app.locals.shouldShowAppBanner = false
+      return next()
+    }
+
+    const cookie = request.cookies[BANNER_COOKIE_NAME]
 
     if (cookie === 'yes') {
       app.locals.shouldShowAppBanner = false
@@ -19,13 +24,13 @@ module.exports = function (app) {
   })
 
   app.post('/hide-banner', async function (request, response) {
-    let maxAgeInDays = 28
+    const maxAgeInDays = 28
     response.cookie(BANNER_COOKIE_NAME, 'yes', {
       maxAge: maxAgeInDays * 24 * 60 * 60 * 1000,
       httpOnly: true
     })
     // Redirect to where the user POSTed from.
-    let previousURL = request.header('Referer') || '/'
+    const previousURL = request.header('Referer') || '/'
     response.redirect(previousURL)
   })
 }

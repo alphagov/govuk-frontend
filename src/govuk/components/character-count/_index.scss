@@ -1,0 +1,24 @@
+@import "../error-message/index";
+@import "../hint/index";
+@import "../label/index";
+@import "../textarea/index";
+
+@include govuk-exports("govuk/component/character-count") {
+  .govuk-character-count {
+    @include govuk-responsive-margin(6, "bottom");
+
+    .govuk-form-group,
+    .govuk-textarea {
+      margin-bottom: govuk-spacing(1);
+    }
+  }
+
+  .govuk-character-count__message {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .govuk-character-count__message--disabled {
+    visibility: hidden;
+  }
+}

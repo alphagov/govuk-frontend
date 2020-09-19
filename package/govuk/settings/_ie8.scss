@@ -1,0 +1,18 @@
+////
+/// @group settings/internet-explorer-8
+////
+
+/// Whether the stylesheet being built is targeting Internet Explorer 8.
+///
+/// @type Boolean
+/// @access public
+
+$govuk-is-ie8: false !default;
+
+/// The name of the breakpoint to use as the target when rasterizing media
+/// queries
+///
+/// @type String
+/// @access public
+
+$govuk-ie8-breakpoint: desktop !default;

@@ -44,25 +44,25 @@ See [running locally](/docs/contributing/running-locally.md).
 
 ### CSS
 
-See our [coding standards for CSS](/docs/contributing/coding-standards/css.md) and [testing and linting](/docs/contributing/testing-and-linting.md).
+See our [coding standards for CSS](/docs/contributing/coding-standards/css.md) and [testing](/docs/contributing/testing.md).
 
 ### JavaScript
 
-See our [coding standards for JavaScript](/docs/contributing/coding-standards/js.md) and [testing and linting](/docs/contributing/testing-and-linting.md).
+See our [coding standards for JavaScript](/docs/contributing/coding-standards/js.md) and [testing ](/docs/contributing/testing.md).
 
 ### Components and Nunjucks API
 
-See our [coding standards for components](/docs/contributing/coding-standards/components.md), [coding standards for Nunjucks macros](/docs/contributing/coding-standards/nunjucks-api.md) and [testing and linting](/docs/contributing/testing-and-linting.md).
+See our [coding standards for components](/docs/contributing/coding-standards/components.md), [coding standards for Nunjucks macros](/docs/contributing/coding-standards/nunjucks-api.md) and [testing](/docs/contributing/testing.md).
 
 ## Testing and linting
 
-See [testing and linting](/docs/contributing/testing-and-linting.md).
+See [testing](/docs/contributing/testing.md).
 
 ## Supported browsers
-Your contribution needs to work with certain browsers as set out in [README](README.md#browser-support). See also [supporting Internet Explorer 8](/docs/installation/supporting-internet-explorer-8.md).
+Your contribution needs to work with certain browsers as set out in [README](README.md#browser-and-assistive-technology-support). See also [supporting Internet Explorer 8](https://frontend.design-system.service.gov.uk/supporting-ie8/).
 
 ## Supported assistive technology
-Your contribution needs to work with certain assistive technology as set out in [README](README.md#assistive-technology-support).
+Your contribution needs to work with certain assistive technology as set out in [README](README.md#browser-and-assistive-technology-support).
 
 ## Commit hygiene
 
@@ -71,10 +71,10 @@ which describes how we prefer git history and commit messages to read.
 
 ## Updating Changelog
 
-See the versioning documentation for [updating the changelog](/docs/contributing/versioning.md#updating-changelog))
+See the versioning documentation for [updating the changelog](/docs/contributing/versioning.md#updating-changelog)
 
 ## Testing a release
-If you need to test a release, for example if you're contributing a new component see [Publishing pre-release of GOV.UK Frontend](/docs/contributing/publishing-a-pre-release.md).
+If you need to test a release, for example if you're contributing a new component see [Publishing pre-release of GOV.UK Frontend](/docs/releasing/publishing-a-pre-release.md).
 
 ## Application tasks
 
@@ -82,8 +82,8 @@ See [tasks](/docs/contributing/tasks.md).
 
 ## Deploying
 
-See [deploying](/docs/contributing/deploying.md).
+See [deploying](/docs/contributing/running-locally.md#deploying).
 
 ## Releasing a new version
 
-See [publishing](/docs/contributing/publishing.md).
+See [publishing](/docs/releasing/publishing.md).

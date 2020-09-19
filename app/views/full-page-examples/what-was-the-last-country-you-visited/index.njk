@@ -1,3 +1,13 @@
+---
+scenario: >-
+  As part of an online service, you are asked to provide the last country you visited.
+
+
+  Things to try:
+
+  1. Intentionally avoid answering the question before continuing to the next page.
+---
+
 {# This example is based of the  "What is your home postcode?" example: https://design-system.service.gov.uk/patterns/question-pages/postcode/index.html #}
 {% extends "_generic.njk" %}
 
@@ -8,7 +18,7 @@
 {% from "input/macro.njk" import govukInput %}
 
 {% set pageTitle = "What was the last country you visited?" %}
-{% block pageTitle %}{{ "Error: " if errors }}GOV.UK - {{ pageTitle }}{% endblock %}
+{% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block beforeContent %}
   {{ govukBackLink({

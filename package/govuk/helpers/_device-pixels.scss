@@ -1,0 +1,37 @@
+////
+/// @group helpers
+////
+
+/// Media query for retina images (device-pixel-ratio)
+///
+/// @param {Number} $ratio [2] - Device pixel ratio
+/// @content Passed content will be outputted within the media query
+///
+/// @example scss - Providing a @2x image for screens that support it
+///   background-image: govuk-image-url("my-image.png");
+///
+///   @include govuk-device-pixel-ratio {
+///     background-image: govuk-image-url("my-image-2x.png");
+///   }
+///
+/// @example scss - Using a custom ratio
+///   background-image: govuk-image-url("my-image.png");
+///
+///   @include govuk-device-pixel-ratio {
+///     background-image: govuk-image-url("my-image-2x.png");
+///   }
+///
+///   @include govuk-device-pixel-ratio(3) {
+///     background-image: govuk-image-url("my-image-3x.png");
+///   }
+///
+/// @access public
+
+@mixin govuk-device-pixel-ratio($ratio: 2) {
+  @media only screen and (-webkit-min-device-pixel-ratio: $ratio),
+    only screen and (     min-device-pixel-ratio: $ratio),
+    only screen and (             min-resolution: #{($ratio*96)}dpi),
+    only screen and (             min-resolution: #{$ratio}dppx) {
+      @content;
+    }
+}
