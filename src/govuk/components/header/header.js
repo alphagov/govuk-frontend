@@ -36,7 +36,6 @@ Header.prototype.init = function () {
 Header.prototype.syncState = function (isVisible) {
   this.$menuButton.classList.toggle('govuk-header__menu-button--open', isVisible)
   this.$menuButton.setAttribute('aria-expanded', isVisible)
-  this.$menu.setAttribute('aria-hidden', !isVisible)
 }
 
 /**
