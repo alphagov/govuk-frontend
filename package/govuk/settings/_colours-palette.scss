@@ -1,5 +1,8 @@
 @import "compatibility";
 
+// stylelint-disable value-list-max-empty-lines -- allow empty lines in lists
+// in this file to allow grouping
+
 ////
 /// @group settings/colours
 ////
@@ -13,11 +16,15 @@
 /// @type Boolean
 /// @access public
 
-$govuk-use-legacy-palette: if((
+$govuk-use-legacy-palette: if(
+  (
     $govuk-compatibility-govukfrontendtoolkit or
     $govuk-compatibility-govuktemplate or
     $govuk-compatibility-govukelements
-  ), true, false) !default;
+  ),
+  true,
+  false
+) !default;
 
 /// Modern colour palette
 ///

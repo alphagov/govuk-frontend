@@ -28,10 +28,10 @@
 /// @access public
 
 @mixin govuk-device-pixel-ratio($ratio: 2) {
+  // stylelint-disable indentation
   @media only screen and (-webkit-min-device-pixel-ratio: $ratio),
-    only screen and (     min-device-pixel-ratio: $ratio),
-    only screen and (             min-resolution: #{($ratio*96)}dpi),
-    only screen and (             min-resolution: #{$ratio}dppx) {
+    only screen and (min-resolution: #{($ratio * 96)}dpi),
+    only screen and (min-resolution: #{$ratio}dppx) {
       @content;
     }
 }

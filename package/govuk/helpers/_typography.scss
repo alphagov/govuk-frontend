@@ -127,7 +127,8 @@
     $font-size-rem: govuk-px-to-rem($font-size);
 
     $line-height: _govuk-line-height(
-      $line-height: if($override-line-height,
+      $line-height: if(
+        $override-line-height,
         $override-line-height,
         map-get($breakpoint-map, "line-height")
       ),
@@ -142,9 +143,9 @@
     $line-height: $line-height if($important, !important, null);
 
     @if $breakpoint == null {
-      font-size: $font-size; // sass-lint:disable no-duplicate-properties
+      font-size: $font-size;
       @if $govuk-typography-use-rem {
-        font-size: $font-size-rem; // sass-lint:disable no-duplicate-properties
+        font-size: $font-size-rem;
       }
       line-height: $line-height;
     } @else if $breakpoint == "print" {
@@ -154,9 +155,9 @@
       }
     } @else {
       @include govuk-media-query($from: $breakpoint) {
-        font-size: $font-size; // sass-lint:disable no-duplicate-properties
+        font-size: $font-size;
         @if $govuk-typography-use-rem {
-          font-size: $font-size-rem; // sass-lint:disable no-duplicate-properties
+          font-size: $font-size-rem;
         }
         line-height: $line-height;
       }
@@ -184,7 +185,7 @@
       -webkit-font-feature-settings: "tnum" 1;
               font-feature-settings: "tnum" 1;
 
-      @supports(font-variant-numeric: tabular-nums) {
+      @supports (font-variant-numeric: tabular-nums) {
         -webkit-font-feature-settings: normal;
                 font-feature-settings: normal;
         font-variant-numeric: tabular-nums;
