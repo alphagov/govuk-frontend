@@ -4,8 +4,6 @@
 
 @import "../helpers/colour";
 
-
-
 // =========================================================
 // Generic
 // =========================================================
@@ -114,7 +112,6 @@ $govuk-input-border-colour: govuk-colour("black") !default;
 /// @access public
 
 $govuk-hover-colour: govuk-colour("mid-grey", $legacy: "grey-3");
-
 
 // =============================================================================
 // Links

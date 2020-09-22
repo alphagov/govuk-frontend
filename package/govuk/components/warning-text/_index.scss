@@ -1,5 +1,4 @@
 @include govuk-exports("govuk/component/warning-text") {
-
   .govuk-warning-text {
     position: relative;
     @include govuk-responsive-margin(6, "bottom");

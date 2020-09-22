@@ -1,5 +1,5 @@
 @include govuk-exports("govuk/component/button") {
-  $govuk-button-colour: govuk-colour("green", $legacy: #00823b); // sass-lint:disable no-color-literals
+  $govuk-button-colour: govuk-colour("green", $legacy: #00823b);
   $govuk-button-hover-colour: govuk-shade($govuk-button-colour, 20%);
   $govuk-button-shadow-colour: govuk-shade($govuk-button-colour, 60%);
   $govuk-button-text-colour: govuk-colour("white");
@@ -117,7 +117,7 @@
 
     // Use a pseudo element to expand the click target area to include the
     // button's shadow as well, in case users try to click it.
-    &::before {
+    &:before {
       content: "";
       display: block;
 
@@ -141,7 +141,7 @@
     // the click event is still fired.
     //
     // 🎉
-    &:active::before {
+    &:active:before {
       top: -($govuk-border-width-form-element + $button-shadow-size);
     }
   }
