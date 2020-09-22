@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+### Fixes
+
+We’ve made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#1967: Fix navigation links in the header not being announced by screen readers](https://github.com/alphagov/govuk-frontend/pull/1967)
+
 ## 3.9.0 (Feature release)
 
 ### New features

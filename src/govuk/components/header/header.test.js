@@ -50,14 +50,6 @@ describe('Header navigation', () => {
         })
       })
 
-      it('exposes the hidden state of the menu using aria-hidden', async () => {
-        const ariaHidden = await page.$eval('.govuk-header__navigation',
-          el => el.getAttribute('aria-hidden')
-        )
-
-        expect(ariaHidden).toBe('true')
-      })
-
       it('exposes the collapsed state of the menu button using aria-expanded', async () => {
         const ariaExpanded = await page.$eval('.govuk-header__menu-button',
           el => el.getAttribute('aria-expanded')
@@ -89,14 +81,6 @@ describe('Header navigation', () => {
         )
 
         expect(hasOpenClass).toBeTruthy()
-      })
-
-      it('exposes the visible state of the menu using aria-hidden', async () => {
-        const ariaHidden = await page.$eval('.govuk-header__navigation',
-          el => el.getAttribute('aria-hidden')
-        )
-
-        expect(ariaHidden).toBe('false')
       })
 
       it('exposes the expanded state of the menu button using aria-expanded', async () => {
@@ -131,14 +115,6 @@ describe('Header navigation', () => {
         )
 
         expect(hasOpenClass).toBeFalsy()
-      })
-
-      it('exposes the hidden state of the menu using aria-hidden', async () => {
-        const ariaHidden = await page.$eval('.govuk-header__navigation',
-          el => el.getAttribute('aria-hidden')
-        )
-
-        expect(ariaHidden).toBe('true')
       })
 
       it('exposes the collapsed state of the menu button using aria-expanded', async () => {
