@@ -1,5 +1,4 @@
 @include govuk-exports("govuk/component/summary-list") {
-
   .govuk-summary-list {
     @include govuk-font($size: 19);
     @include govuk-text-colour;
@@ -29,15 +28,8 @@
 
     @include govuk-media-query($from: tablet) {
       display: table-cell;
-      padding-right: govuk-spacing(4);
-    }
-  }
-
-  .govuk-summary-list__key,
-  .govuk-summary-list__value,
-  .govuk-summary-list__actions {
-    @include govuk-media-query($from: tablet) {
       padding-top: govuk-spacing(2);
+      padding-right: govuk-spacing(4);
       padding-bottom: govuk-spacing(2);
       border-bottom: 1px solid $govuk-border-colour;
     }
@@ -99,7 +91,7 @@
 
   .govuk-summary-list__actions-list-item {
     display: inline;
-    margin-right:  govuk-spacing(2);
+    margin-right: govuk-spacing(2);
     padding-right: govuk-spacing(2);
   }
 

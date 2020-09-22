@@ -11,7 +11,7 @@
   // https://bugzilla.mozilla.org/show_bug.cgi?id=504622
   @supports not (caret-color: auto) {
     .govuk-fieldset,
-    x:-moz-any-link {
+    x:-moz-any-link { // stylelint-disable-line selector-type-no-unknown
       display: table-cell;
     }
   }

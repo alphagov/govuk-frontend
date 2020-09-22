@@ -15,7 +15,6 @@
     border-bottom: govuk-spacing(2) solid govuk-colour("white");
     color: $govuk-header-text;
     background: $govuk-header-background;
-
   }
 
   .govuk-header__container--full-width {
@@ -168,7 +167,7 @@
       @include govuk-focused-text;
     }
 
-    &::after {
+    &:after {
       @include govuk-shape-arrow($direction: down, $base: 10px, $display: inline-block);
       content: "";
       margin-left: govuk-spacing(1);
@@ -180,7 +179,7 @@
   }
 
   .govuk-header__menu-button--open {
-    &::after {
+    &:after {
       @include govuk-shape-arrow($direction: up, $base: 10px, $display: inline-block);
     }
   }
@@ -212,7 +211,6 @@
       display: block;
     }
   }
-
 
   .govuk-header__navigation--end {
     @include govuk-media-query ($from: desktop) {
@@ -308,5 +306,4 @@
     }
     // End adjustments
   }
-
 }

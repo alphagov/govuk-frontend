@@ -2,8 +2,6 @@
 /// @group helpers/layout
 ////
 
-
-
 // =========================================================
 // Wrangle sass-mq config...
 // =========================================================
@@ -40,8 +38,6 @@ $sass-mq-already-included: false !default;
 @import "../vendor/sass-mq";
 
 $sass-mq-already-included: true;
-
-
 
 // =========================================================
 // Helpers
@@ -91,5 +87,5 @@ $sass-mq-already-included: true;
 @mixin govuk-media-query($args...) {
   @include mq($args...) {
     @content;
-  };
+  }
 }

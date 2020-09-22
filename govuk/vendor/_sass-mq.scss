@@ -1,8 +1,6 @@
 // mq() v4.0.2
 // sass-mq/sass-mq
 
-// sass-lint:disable-all
-
 @charset "UTF-8"; // Fixes an issue where Ruby locale is not set properly
                   // See https://github.com/sass-mq/sass-mq/pull/10
 
@@ -347,5 +345,3 @@ $mq-media-type: all !default;
 @if length($mq-show-breakpoints) > 0 {
     @include mq-show-breakpoints;
 }
-
-// sass-lint:enable-all

@@ -142,7 +142,6 @@
   }
 }
 
-
 /// No visited state link mixin
 ///
 /// Used in cases where it is not helpful to distinguish between visited and
@@ -196,11 +195,10 @@
 
 @mixin govuk-link-print-friendly {
   @include govuk-media-query($media-type: print) {
-
     &[href^="/"],
     &[href^="http://"],
     &[href^="https://"] {
-      &::after {
+      &:after {
         content: " (" attr(href) ")";
         font-size: 90%;
 

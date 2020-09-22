@@ -52,7 +52,6 @@
       // These should be removed when legacy font support is dropped
       top: -1px;
       bottom: 1px;
-
     } @else {
       top: 0;
       bottom: 0;
@@ -108,5 +107,4 @@
       bottom: $offset;
     }
   }
-
 }

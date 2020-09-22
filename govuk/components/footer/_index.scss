@@ -10,7 +10,6 @@
   $govuk-footer-link-hover: false;
 
   @if ($govuk-use-legacy-palette) {
-    // sass-lint:disable no-color-literals
     $govuk-footer-border-top: #a1acb2;
     $govuk-footer-border: govuk-colour("grey-2");
     $govuk-footer-text: #454a4c;
