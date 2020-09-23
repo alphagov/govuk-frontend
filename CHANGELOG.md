@@ -2,6 +2,17 @@
 
 ## Unreleased
 
+### Breaking changes
+You must make the following changes when you migrate to this release, or your service may break.
+
+#### Remove deprecated $govuk-border-width-form-element-error
+To make sure the border width of form elements in their error state is the same as form elements in their normal state, we've deprecated the `$govuk-border-width-form-element-error` setting.
+
+You must remove this setting. Otherwise, you would have to conditionally add overrides if users changed the `$govuk-border-width-form-element` to maintain a consistent focus state.
+
+This was added in [pull request 1963: Remove deprecated `$govuk-border-width-form-element-error` setting](https://github.com/alphagov/govuk-frontend/pull/1963).
+
+
 ## 3.14.0 (Feature release)
 
 ### New features
