@@ -293,6 +293,14 @@ examples:
       -
         name: day
         pattern: '[0-8]*'
+- name: custom inputmode
+  hidden: true
+  data:
+    items:
+      -
+        name: day
+        pattern: '[0-9X]*'
+        inputmode: 'text'
 - name: with nested name
   hidden: true
   data:
