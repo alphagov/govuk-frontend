@@ -1,0 +1,134 @@
+params:
+- name: title
+  type: string
+  required: false
+  description: Custom title text. Defaults to 'Important' ('Success' for success banner and 'Error' for error banner). If `titleHtml` is supplied, this is ignored.
+- name: titleHtml
+  type: string
+  required: false
+  description: Custom title HTML. Defaults to 'Important' ('Success' for success banner and 'Error' for error banner).
+- name: titleHeadingLevel
+  type: string
+  required: false
+  description: Heading level, from 1 to 6. Default is `2`.
+- name: content
+  type: string
+  required: true
+  description: Content for the notification banner. If `contentHtml` is supplied, this is ignored.
+- name: contentHtml
+  type: string
+  required: true
+  description: HTML content for the notification banner.
+- name: type
+  type: string
+  required: false
+  description: Sets classes and attributes to create a type of notification banner. Accepts `success` or `alert`.
+- name: role
+  type: string
+  required: false
+  description: Custom role for the notification banner. Defaults to `region` (`alert` for success and error banners).
+- name: tabindex
+  type: string
+  required: false
+  description: Custom tabindex for the notification banner. Not set by default (defaults to `-1` for success and error banners).
+- name: initialFocus
+  type: string
+  required: false
+  description: Sets `data-module="govuk-initial-focus"` for the notification banner which focuses the banner on page load. Not set by default (on by default for success and error banners).
+- name: classes
+  type: string
+  required: false
+  description: Classes to add to the notification banner.
+- name: attributes
+  type: object
+  required: false
+  description: HTML attributes (for example data attributes) to add to the notification banner.
+
+examples:
+- name: default
+  data:
+    content: You have 9 days to send a response.
+- name: with content as html
+  data:
+    contentHtml: |
+      <h3 class="govuk-heading-m">This publication was withdrawn on 7 March 2014</h3><p>Archived and replaced by the <a href="#">new planning guidance</a> launched 6 March 2014 on an external website</p>
+- name: with type as success
+  data:
+    type: success
+    content: Email sent to example@email.com
+- name: with type as error
+  data:
+    type: error
+    content: There was a problem uploading your file. Please try again.
+
+# Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+
+- name: custom title
+  hidden: true
+  data:
+    title: Important information
+    content: You have 9 days to send a response.
+- name: title as html
+  hidden: true
+  data:
+    titleHtml: <span>Important information</span>
+    content: You have 9 days to send a response.
+- name: title html as text
+  hidden: true
+  data:
+    title: <span>Important information</span>
+    content: You have 9 days to send a response.
+- name: custom title heading level
+  hidden: true
+  data:
+    titleHeadingLevel: 3
+    content: You have 9 days to send a response.
+
+- name: custom content
+  hidden: true
+  data:
+    content: This publication was withdrawn on 7 March 2014.
+- name: content html as text
+  hidden: true
+  data:
+    content: <span>This publication was withdrawn on 7 March 2014.</span>
+
+- name:  custom role
+  hidden: true
+  data:
+    role: banner
+    content: You have 9 days to send a response.
+- name: custom tabindex
+  hidden: true
+  data:
+    tabindex: "0"
+    content: You have 9 days to send a response.
+- name: initialFocus as true
+  hidden: true
+  data:
+    initialFocus: true
+    content: You have 9 days to send a response.
+- name: initialFocus as false and type as success
+  hidden: true
+  data:
+    type: success
+    initialFocus: false
+    content: Email sent to example@email.com
+
+- name: classes
+  hidden: true
+  data:
+    content: You have 9 days to send a response.
+    classes: app-my-class
+- name: attributes
+  hidden: true
+  data:
+    content: You have 9 days to send a response.
+    attributes:
+      my-attribute: value
+
+- name: with invalid type
+  hidden: true
+  data:
+    type: some-type
+    content: You have 9 days to send a response.
