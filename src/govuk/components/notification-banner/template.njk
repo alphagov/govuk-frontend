@@ -1,0 +1,40 @@
+{% if params.role %}
+  {% set role = params.role %}
+{% elif params.type == "success" or params.type == "error" %}
+  {% set role = "alert" %}
+{% else %}
+  {% set role = "region" %}
+{% endif %}
+
+{% if params.tabindex %}
+  {% set tabindex = params.tabindex %}
+{% elif params.type == "success" or params.type == "error" %}
+  {% set tabindex = "-1" %}
+{% endif %}
+
+{% set titleHeadingLevel = params.titleHeadingLevel if params.titleHeadingLevel else 2 %}
+
+<div class="govuk-notification-banner
+  {%- if params.type == "success" %} govuk-notification-banner--success{% endif %}
+  {%- if params.type == "error" %} govuk-notification-banner--error{% endif %}
+  {%- if params.classes %} {{ params.classes }}{% endif %}"
+  role="{{ role }}"
+  {% if tabindex %} tabindex="{{ tabindex }}" {% endif %}
+  {% if not(params.type == "success") and not(params.type == "error") %} aria-labelledby="govuk-notification-banner-title" {% endif %}
+  {% if ((params.type == "success" or params.type == "error") and not(params.initialFocus === false)) or params.initialFocus === true %} data-module="govuk-initial-focus"{% endif %}
+  {% for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}
+>
+  <div class="govuk-notification-banner__header">
+    <h{{ titleHeadingLevel }} class="govuk-notification-banner__title" {% if not(params.type == "success") and not(params.type == "error") %} id="govuk-notification-banner-title" {% endif %}
+    >
+      {%- if params.titleHtml %} {{ params.titleHtml | safe }}
+      {%- elif params.title %} {{ params.title }}
+      {%- elif params.type == "success" %}Success
+      {%- elif params.type == "error" %}Error
+      {%- else %}Important{%- endif -%}
+    </h{{ titleHeadingLevel }}>
+  </div>
+  <div class="govuk-notification-banner__content">
+    {{ params.contentHtml | safe if params.contentHtml else params.content }}
+  </div>
+</div>
