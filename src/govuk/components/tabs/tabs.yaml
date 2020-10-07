@@ -19,7 +19,7 @@ params:
   - name: id
     type: string
     required: true
-    description: Specific id attribute for the tab item. If omitted, then `idPrefix` string will be applied.
+    description: Specific id attribute for the tab item. If omitted, then `idPrefix` string is required instead.
   - name: label
     type: string
     required: true
