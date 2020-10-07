@@ -40,7 +40,7 @@ params:
   params:
   - name: title
     type: string
-    required: false
+    required: true
     description: Title for a section
   - name: columns
     type: integer
