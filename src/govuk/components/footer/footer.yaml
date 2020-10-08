@@ -53,11 +53,11 @@ params:
     params:
     - name: text
       type: string
-      required: false
+      required: true
       description: List item text in the navigation section of the footer.
     - name: href
       type: string
-      required: false
+      required: true
       description: List item href attribute in the navigation section of the footer. Both `text` and `href` attributes need to be present to create a link.
     - name: attributes
       type: object
