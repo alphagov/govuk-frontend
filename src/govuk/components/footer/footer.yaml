@@ -23,11 +23,11 @@ params:
     params:
     - name: text
       type: string
-      required: false
+      required: true
       description: List item text in the meta section of the footer.
     - name: href
       type: string
-      required: false
+      required: true
       description: List item href attribute in the meta section of the footer.
     - name: attributes
       type: object
