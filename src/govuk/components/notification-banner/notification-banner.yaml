@@ -60,19 +60,29 @@ examples:
   data:
     type: success
     text: Email sent to example@email.com
+- name: success with custom html
+  data:
+    type: success
+    html: |
+      <h3 class="govuk-heading-m">4 files uploaded</h3><ul class="govuk-!-margin-0 govuk-list"><li><a href="link-1" class="govuk-notification-banner__link govuk-notification-banner__link--success">government-strategy.pdf</a></li><li><a href="link-2" class="govuk-notification-banner__link govuk-notification-banner__link--success">government-strategy-v1.pdf</a></li></ul>
 - name: with type as error
   data:
     type: error
     text: There was a problem uploading your file. Please try again.
+- name: error with custom html
+  data:
+    type: error
+    html: |
+      <p class="govuk-!-margin-0 govuk-heading-m">There was a problem uploading your file. <a href="#" class="govuk-notification-banner__link govuk-notification-banner__link--error">Please try again.</a></p>
 - name: with a list
   data:
     html: |
       <h3 class="govuk-heading-m">4 files uploaded</h3>
       <ul class="govuk-list govuk-list--bullet">
-          <li><a href="#">government-strategy.pdf</a></li>
-          <li><a href="#">government-strategy-v2.pdf</a></li>
-          <li><a href="#">government-strategy-v3-FINAL.pdf</a></li>
-          <li><a href="#">government-strategy-v4-FINAL-v2.pdf</a></li>
+          <li><a href="#" class="govuk-notification-banner__link">government-strategy.pdf</a></li>
+          <li><a href="#" class="govuk-notification-banner__link">government-strategy-v2.pdf</a></li>
+          <li><a href="#" class="govuk-notification-banner__link">government-strategy-v3-FINAL.pdf</a></li>
+          <li><a href="#" class="govuk-notification-banner__link">government-strategy-v4-FINAL-v2.pdf</a></li>
       </ul>
 
 # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
