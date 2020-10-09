@@ -1,3 +1,75 @@
-.govuk-notification-banner {
-  display: block;
+@include govuk-exports("govuk/component/notification-banner") {
+  .govuk-notification-banner {
+    @include govuk-font($size: 19);
+    @include govuk-responsive-margin(8, "bottom");
+
+    border: $govuk-border-width solid $govuk-brand-colour;
+
+    &:focus {
+      outline: $govuk-focus-width solid $govuk-focus-colour;
+    }
+  }
+
+  .govuk-notification-banner--success {
+    border-color: $govuk-success-colour;
+  }
+
+  .govuk-notification-banner--error {
+    border-color: $govuk-error-colour;
+  }
+
+  .govuk-notification-banner__header {
+    padding: 2px govuk-spacing(3) govuk-spacing(1);
+
+    // Ensures the notification header appears separate to the notification body text in high contrast mode
+    border-bottom: 1px solid transparent;
+
+    background-color: $govuk-brand-colour;
+
+    @include govuk-media-query($from: tablet) {
+      padding: 2px govuk-spacing(4) govuk-spacing(1);
+    }
+  }
+
+  .govuk-notification-banner--success .govuk-notification-banner__header {
+    background-color: $govuk-success-colour;
+  }
+
+  .govuk-notification-banner--error .govuk-notification-banner__header {
+    background-color: $govuk-error-colour;
+  }
+
+  .govuk-notification-banner__title {
+    @include govuk-font($size: 19, $weight: bold);
+
+    margin: 0;
+
+    padding: 0;
+
+    color: govuk-colour("white");
+  }
+
+  .govuk-notification-banner__content {
+    @include govuk-font($size: 24, $weight: bold);
+
+    padding: govuk-spacing(3);
+
+    @include govuk-media-query($from: tablet) {
+      padding: govuk-spacing(4);
+    }
+  }
+
+  .govuk-notification-banner__link {
+    @include govuk-typography-weight-bold;
+    @include govuk-link-common;
+    @include govuk-link-style-default;
+  }
+
+  .govuk-notification-banner__link--success {
+    @include govuk-link-style-success;
+  }
+
+  .govuk-notification-banner__link--error {
+    @include govuk-link-style-error;
+  }
 }
