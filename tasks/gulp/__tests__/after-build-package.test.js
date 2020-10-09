@@ -107,17 +107,19 @@ describe('package/', () => {
       return readFile(filePath, 'utf8')
         .then((data) => {
           var parsedData = JSON.parse(data)
+
           // We expect the component JSON to contain "name", "type", "required", "description"
-          expect(parsedData).toEqual(
-            expect.arrayContaining([
+          expect(parsedData).toBeInstanceOf(Array)
+          parsedData.forEach((option) => {
+            expect(option).toEqual(
               expect.objectContaining({
                 name: expect.any(String),
                 type: expect.any(String),
                 required: expect.any(Boolean),
                 description: expect.any(String)
               })
-            ])
-          )
+            )
+          })
         })
         .catch(error => {
           throw error
@@ -135,15 +137,19 @@ describe('package/', () => {
           expect(parsedData).toEqual(
             expect.objectContaining({
               component: name,
-              fixtures: expect.arrayContaining([
-                expect.objectContaining({
-                  name: expect.any(String),
-                  options: expect.any(Object),
-                  html: expect.any(String)
-                })
-              ])
+              fixtures: expect.any(Object)
             })
           )
+
+          parsedData.fixtures.forEach((fixture) => {
+            expect(fixture).toEqual(
+              expect.objectContaining({
+                name: expect.any(String),
+                options: expect.any(Object),
+                html: expect.any(String)
+              })
+            )
+          })
         })
         .catch(error => {
           throw error

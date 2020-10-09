@@ -6,12 +6,15 @@ params:
   params:
   - name: visuallyHiddenTitle
     type: string
+    required: false
     description: Title for a meta item section, which defaults to Support links
   - name: html
     type: string
+    required: false
     description: HTML to add to the meta section of the footer, which will appear below any links specified using meta.items.
   - name: text
     type: string
+    required: false
     description: Text to add to the meta section of the footer, which will appear below any links specified using meta.items. If meta.html is specified, this option is ignored.
   - name: items
     type: array
@@ -20,11 +23,11 @@ params:
     params:
     - name: text
       type: string
-      required: false
+      required: true
       description: List item text in the meta section of the footer.
     - name: href
       type: string
-      required: false
+      required: true
       description: List item href attribute in the meta section of the footer.
     - name: attributes
       type: object
@@ -37,7 +40,7 @@ params:
   params:
   - name: title
     type: string
-    required: false
+    required: true
     description: Title for a section
   - name: columns
     type: integer
@@ -50,11 +53,11 @@ params:
     params:
     - name: text
       type: string
-      required: false
+      required: true
       description: List item text in the navigation section of the footer.
     - name: href
       type: string
-      required: false
+      required: true
       description: List item href attribute in the navigation section of the footer. Both `text` and `href` attributes need to be present to create a link.
     - name: attributes
       type: object
