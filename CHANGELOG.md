@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+### New features
+
+#### Customise input mode in the date component
+
+You can now customise the input mode of each input in the date component to trigger a keyboard of your choice to appear on mobiles.
+
+This was added in [#1975 Enable custom inputmode for date input component](https://github.com/alphagov/govuk-frontend/pull/1975) – thanks to [@foaly-nr1](https://github.com/foaly-nr1) for contributing this.
+
 ## 3.9.1 (Fix release)
 
 ### Fixes
