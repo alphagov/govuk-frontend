@@ -213,7 +213,7 @@ describe('Checkboxes', () => {
       const $component = $('.govuk-checkboxes')
 
       const $firstConditional = $component.find('.govuk-checkboxes__conditional').first()
-      expect($firstConditional.text().trim()).toContain('Mobile phone number')
+      expect($firstConditional.text().trim()).toContain('Email address')
       expect($firstConditional.hasClass('govuk-checkboxes__conditional--hidden')).toBeTruthy()
     })
     it('visible by default when checked', () => {
@@ -222,7 +222,7 @@ describe('Checkboxes', () => {
       const $component = $('.govuk-checkboxes')
 
       const $firstConditional = $component.find('.govuk-checkboxes__conditional').first()
-      expect($firstConditional.text().trim()).toContain('Mobile phone number')
+      expect($firstConditional.text().trim()).toContain('Email address')
       expect($firstConditional.hasClass('govuk-checkboxes__conditional--hidden')).toBeFalsy()
     })
 

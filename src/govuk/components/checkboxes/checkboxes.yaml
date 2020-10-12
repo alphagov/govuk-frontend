@@ -346,7 +346,7 @@ examples:
         text: Email
         conditional:
           html: |
-            <label class="govuk-label" for="context-email">Mobile phone number</label>
+            <label class="govuk-label" for="context-email">Email address</label>
             <input class="govuk-input govuk-!-width-one-third" name="context-email" type="text" id="context-email">
       - value: phone
         text: Phone
@@ -374,7 +374,7 @@ examples:
       checked: true
       conditional:
         html: |
-          <label class="govuk-label" for="context-email">Mobile phone number</label>
+          <label class="govuk-label" for="context-email">Email address</label>
           <input class="govuk-input govuk-!-width-one-third" name="context-email" type="text" id="context-email">
     - value: phone
       text: Phone
@@ -403,7 +403,7 @@ examples:
       text: Email
       conditional:
         html: |
-          <label class="govuk-label" for="context-email">Mobile phone number</label>
+          <label class="govuk-label" for="context-email">Email address</label>
           <input class="govuk-input govuk-!-width-one-third" name="context-email" type="text" id="context-email">
     - value: phone
       text: Phone
