@@ -22,7 +22,7 @@ params:
 - name: type
   type: string
   required: false
-  description: If `type` is set to `success` or `alert`, the notification banner sets `role` to `alert` and `tabindex` to `-1`, and JavaScript moves the keyboard focus moves to the notification banner when the page loads. If `type` is not set, the notification banner defaults to setting `role` to `region` and using `aria-labelledby` to provide information for users of assistive technologies.
+  description: If `type` is set to `success` or `error`, the notification banner sets `role` to `alert` and `tabindex` to `-1`, and JavaScript moves the keyboard focus moves to the notification banner when the page loads. If `type` is not set, the notification banner defaults to setting `role` to `region` and using `aria-labelledby` to provide information for users of assistive technologies.
 - name: role
   type: string
   required: false
