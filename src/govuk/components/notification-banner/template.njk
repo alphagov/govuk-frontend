@@ -1,40 +1,53 @@
+{%- if params.type == "success" or params.type == "error" %}
+  {% set successOrError = true %}
+{% endif %}
+
+{%- if successOrError %}
+  {% set typeClass = "govuk-notification-banner--" + params.type %}
+{% endif %}
+
 {% if params.role %}
   {% set role = params.role %}
-{% elif params.type == "success" or params.type == "error" %}
+{% elif successOrError %}
+  {# If type is success or error, the notification banner is focused on page load. Add `role="alert"` to prioritise the information in the notification banner to users of assistive technologies #}
   {% set role = "alert" %}
 {% else %}
+  {# Otherwise add `role="region"` to make the notification banner a landmark to help users of assistive technologies to navigate to the banner #}
   {% set role = "region" %}
 {% endif %}
 
 {% if params.tabindex %}
   {% set tabindex = params.tabindex %}
-{% elif params.type == "success" or params.type == "error" %}
+{# TODO:  Link below logic to check whether js focus behaviour is enabled (when decision has been made in  https://github.com/alphagov/govuk-frontend/pull/1977#discussion_r500833933 #}
+{% elif successOrError and not(params.tabindex === false)%}
+  {# If type is success or error, add `tabindex="-1"` to make the notification banner focusable #}
   {% set tabindex = "-1" %}
 {% endif %}
 
-{% set titleHeadingLevel = params.titleHeadingLevel if params.titleHeadingLevel else 2 %}
+{%- if params.titleHtml %}
+  {% set title = params.titleHtml | safe %}
+{%- elif params.title %}
+  {% set title = params.title %}
+{%- elif params.type == "success" %}
+  {% set title = "Success" %}
+{%- elif params.type == "error" %}
+  {% set title = "Error" %}
+{%- else %}
+  {% set title = "Important" %}
+{%- endif -%}
 
-<div class="govuk-notification-banner
-  {%- if params.type == "success" %} govuk-notification-banner--success{% endif %}
-  {%- if params.type == "error" %} govuk-notification-banner--error{% endif %}
-  {%- if params.classes %} {{ params.classes }}{% endif %}"
-  role="{{ role }}"
-  {% if tabindex %} tabindex="{{ tabindex }}" {% endif %}
-  {% if not(params.type == "success") and not(params.type == "error") %} aria-labelledby="govuk-notification-banner-title" {% endif %}
-  {% if ((params.type == "success" or params.type == "error") and not(params.initialFocus === false)) or params.initialFocus === true %} data-module="govuk-initial-focus"{% endif %}
-  {% for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}
->
+<div class="govuk-notification-banner {{ typeClass }} {%- if params.classes %} {{ params.classes }}{% endif -%}" role="{{ role }}"
+  {%- if tabindex %} tabindex="{{ tabindex }}" {% endif %}
+  {%- if (role == "region") -%} aria-labelledby="{{ params.titleId | default('govuk-notification-banner-title') }}" {%- endif -%}
+  {# TODO: Sort out the below logic when decision has been made in discussion in https://github.com/alphagov/govuk-frontend/pull/1977#discussion_r500833933 is concluded #}
+  {%- if ((params.type == "success" or params.type == "error") and not(params.initialFocus === false)) or params.initialFocus === true -%} data-module="govuk-initial-focus"{% endif %}
+  {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
   <div class="govuk-notification-banner__header">
-    <h{{ titleHeadingLevel }} class="govuk-notification-banner__title" {% if not(params.type == "success") and not(params.type == "error") %} id="govuk-notification-banner-title" {% endif %}
-    >
-      {%- if params.titleHtml %} {{ params.titleHtml | safe }}
-      {%- elif params.title %} {{ params.title }}
-      {%- elif params.type == "success" %}Success
-      {%- elif params.type == "error" %}Error
-      {%- else %}Important{%- endif -%}
-    </h{{ titleHeadingLevel }}>
+    <h{{ params.titleHeadingLevel | default(2) }} class="govuk-notification-banner__title"{% if (role == "region" or params.id) %} id="{{ params.titleId | default('govuk-notification-banner-title') }}" {%- endif %}>
+      {{ title }}
+    </h{{ params.titleHeadingLevel | default(2) }}>
   </div>
   <div class="govuk-notification-banner__content">
-    {{ params.contentHtml | safe if params.contentHtml else params.content }}
+    {{ params.html | safe if params.html else params.text }}
   </div>
 </div>

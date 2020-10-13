@@ -21,8 +21,9 @@ describe('Notification-banner', () => {
     it('aria-labelledby attribute matches the title id', () => {
       const $ = render('notification-banner', examples.default)
       const ariaAttr = $('.govuk-notification-banner').attr('aria-labelledby')
+      const titleId = $('.govuk-notification-banner__title').attr('id')
 
-      expect(ariaAttr).toEqual('govuk-notification-banner-title')
+      expect(ariaAttr).toEqual(titleId)
     })
 
     it('has role=region attribute', () => {
@@ -67,13 +68,6 @@ describe('Notification-banner', () => {
       expect($title.html().trim()).toEqual('Important')
     })
 
-    it('title id matches the aria-labelledby attribute on the component', () => {
-      const $ = render('notification-banner', examples.default)
-      const $title = $('.govuk-notification-banner__title')
-
-      expect($title.attr('id')).toEqual('govuk-notification-banner-title')
-    })
-
     it('renders content', () => {
       const $ = render('notification-banner', examples.default)
       const $content = $('.govuk-notification-banner__content')
@@ -91,7 +85,7 @@ describe('Notification-banner', () => {
     })
 
     it('renders custom content', () => {
-      const $ = render('notification-banner', examples['custom content'])
+      const $ = render('notification-banner', examples['custom text'])
       const $content = $('.govuk-notification-banner__content')
 
       expect($content.html().trim()).toEqual('This publication was withdrawn on 7 March 2014.')
@@ -111,6 +105,14 @@ describe('Notification-banner', () => {
       expect($component.attr('role')).toEqual('banner')
     })
 
+    it('renders aria-labelledby attribute matching the title id when role overridden to region', () => {
+      const $ = render('notification-banner', examples['role overridden to region'])
+      const ariaAttr = $('.govuk-notification-banner').attr('aria-labelledby')
+      const titleId = $('.govuk-notification-banner__title').attr('id')
+
+      expect(ariaAttr).toEqual(titleId)
+    })
+
     it('renders custom tabindex', () => {
       const $ = render('notification-banner', examples['custom tabindex'])
       const $component = $('.govuk-notification-banner')
@@ -118,11 +120,32 @@ describe('Notification-banner', () => {
       expect($component.attr('tabindex')).toEqual('0')
     })
 
+    it('renders custom title id', () => {
+      const $ = render('notification-banner', examples['custom title id'])
+      const $title = $('.govuk-notification-banner__title')
+
+      expect($title.attr('id')).toEqual('my-id')
+    })
+
+    it('has an aria-labelledby attribute matching the title id', () => {
+      const $ = render('notification-banner', examples['custom title id'])
+      const ariaAttr = $('.govuk-notification-banner').attr('aria-labelledby')
+
+      expect(ariaAttr).toEqual('my-id')
+    })
+
     it('renders data-module attribute to focus component on page load', () => {
       const $ = render('notification-banner', examples['initialFocus as true'])
 
       const $component = $('.govuk-notification-banner')
       expect($component.attr('data-module')).toEqual('govuk-initial-focus')
+    })
+
+    it('removes tabindex attribute so component is not focusable', () => {
+      const $ = render('notification-banner', examples['tabindex as false and type as success'])
+
+      const $component = $('.govuk-notification-banner')
+      expect($component.attr('tabindex')).toBeFalsy()
     })
 
     it('removes data-module attribute so component is not focused on page load', () => {
@@ -163,14 +186,14 @@ describe('Notification-banner', () => {
     })
 
     it('renders content as escaped html when passed as text', () => {
-      const $ = render('notification-banner', examples['content html as text'])
+      const $ = render('notification-banner', examples['html as text'])
       const $content = $('.govuk-notification-banner__content')
 
       expect($content.html().trim()).toEqual('&lt;span&gt;This publication was withdrawn on 7 March 2014.&lt;/span&gt;')
     })
 
     it('renders content as html', () => {
-      const $ = render('notification-banner', examples['with content as html'])
+      const $ = render('notification-banner', examples['with text as html'])
       const $contentHtml = $('.govuk-notification-banner__content')
 
       expect($contentHtml.html().trim()).toEqual('<h3 class="govuk-heading-m">This publication was withdrawn on 7 March 2014</h3><p>Archived and replaced by the <a href="#">new planning guidance</a> launched 6 March 2014 on an external website</p>')
@@ -190,6 +213,20 @@ describe('Notification-banner', () => {
 
       const $component = $('.govuk-notification-banner')
       expect($component.attr('role')).toEqual('alert')
+    })
+
+    it('does not render aria-labelledby', () => {
+      const $ = render('notification-banner', examples['with type as success'])
+      const $component = $('.govuk-notification-banner')
+
+      expect($component.attr('aria-labelledby')).toBeFalsy()
+    })
+
+    it('does not render a title id for aria-labelledby', () => {
+      const $ = render('notification-banner', examples['with type as success'])
+      const $component = $('.govuk-notification-banner')
+
+      expect($component.attr('id')).not.toEqual('govuk-notification-banner-title')
     })
 
     it('has the correct tabindex attribute to be focused', () => {
@@ -227,6 +264,20 @@ describe('Notification-banner', () => {
 
       const $component = $('.govuk-notification-banner')
       expect($component.attr('role')).toEqual('alert')
+    })
+
+    it('does not render aria-labbelledby', () => {
+      const $ = render('notification-banner', examples['with type as error'])
+      const $component = $('.govuk-notification-banner')
+
+      expect($component.attr('aria-labbelledby')).toBeFalsy()
+    })
+
+    it('does not render a title id for aria-labelledby', () => {
+      const $ = render('notification-banner', examples['with type as error'])
+      const $component = $('.govuk-notification-banner')
+
+      expect($component.attr('id')).not.toEqual('govuk-notification-banner-title')
     })
 
     it('has the correct tabindex attribute to be focused', () => {
