@@ -173,6 +173,13 @@ describe('Date input', () => {
       expect($firstInput.attr('pattern')).toEqual('[0-8]*')
     })
 
+    it('renders inputs with custom inputmode="text"', () => {
+      const $ = render('date-input', examples['custom inputmode'])
+
+      const $firstInput = $('.govuk-date-input__item:first-child input')
+      expect($firstInput.attr('inputmode')).toEqual('text')
+    })
+
     it('renders with a form group wrapper that has extra classes', () => {
       const $ = render('date-input', examples['with optional form-group classes'])
 
