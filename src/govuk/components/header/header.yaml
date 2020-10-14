@@ -101,6 +101,16 @@ examples:
     serviceName: Service Name
     serviceUrl: '/components/header'
 
+- name: with service name and phase banner
+  description: If your service is in alpha or beta and you wish to display a banner.
+  data:
+    serviceName: Service Name
+    serviceUrl: '/components/header'
+    phaseBanner:
+      tag:
+        text: alpha
+      html: This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.
+
 - name: with navigation
   data:
     navigation:

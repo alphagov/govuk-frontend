@@ -11,7 +11,6 @@ scenario: >-
 {# This example is based of the live "Passport" service: https://www.passport.service.gov.uk/photo/upload #}
 {% extends "_generic.njk" %}
 
-{% from "phase-banner/macro.njk" import govukPhaseBanner %}
 {% from "back-link/macro.njk" import govukBackLink %}
 {% from "radios/macro.njk" import govukRadios %}
 {% from "error-summary/macro.njk" import govukErrorSummary %}
@@ -36,17 +35,17 @@ scenario: >-
             text: "Upload a photo",
             active: true
         }
-    ]
-  }) }}
-{% endblock %}
-
-{% block beforeContent %}
-    {{ govukPhaseBanner({
+    ],
+    phaseBanner: {
         tag: {
             text: "beta"
         },
         html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-    }) }}
+    }
+  }) }}
+{% endblock %}
+
+{% block beforeContent %}
     {{ govukBackLink({
         text: "Back",
         href: "#"

@@ -157,6 +157,9 @@ describe(`http://localhost:${PORT}`, () => {
         const $ = cheerio.load(res.body)
         const $header = $('.govuk-header')
         const $serviceName = $header.find('.govuk-header__link--service-name')
+        const $phaseBanner = $header.find('.govuk-phase-banner')
+
+        expect($phaseBanner.length).toBe(1)
         expect($serviceName.html()).toContain('Nom du service')
         done(err)
       })
@@ -196,10 +199,8 @@ describe(`http://localhost:${PORT}`, () => {
       requestPath.get(templatePath, (err, res) => {
         const $ = cheerio.load(res.body)
         const $container = $('.govuk-width-container')
-        const $phaseBanner = $container.find('> .govuk-phase-banner')
         const $backLink = $container.find('> .govuk-back-link')
 
-        expect($phaseBanner.length).toBe(1)
         expect($backLink.length).toBe(1)
         done(err)
       })

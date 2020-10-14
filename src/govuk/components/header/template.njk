@@ -1,5 +1,7 @@
-<header class="govuk-header {{ params.classes if params.classes }}" role="banner" data-module="govuk-header"
-        {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+{% from "../phase-banner/macro.njk" import govukPhaseBanner %}
+
+<header role="banner" class="govuk-header {{ params.classes if params.classes }}"  data-module="govuk-header" 
+      {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
   <div class="govuk-header__container {{ params.containerClasses | default('govuk-width-container') }}">
     <div class="govuk-header__logo">
       <a href="{{ params.homepageUrl | default('/') }}" class="govuk-header__link govuk-header__link--homepage">
@@ -82,4 +84,19 @@
     </div>
     {% endif %}
   </div>
+  {% if params.phaseBanner %}
+    <div class="govuk-template__body govuk-!-margin-0">
+      <div class="{{ params.containerClasses | default('govuk-width-container') }}">
+        {{ govukPhaseBanner({
+            tag: {
+              text: params.phaseBanner.tag.text,
+              html: params.tag.html,
+              classes: param.phaseBanner.classes
+            },
+            html: params.phaseBanner.html,
+            attributes: param.phaseBanner.attributes
+        }) }}
+      </div>
+    </div>
+  {% endif %}
 </header>
