@@ -34,13 +34,19 @@
   }
 
   .govuk-notification-banner__content {
-    @include govuk-font($size: 24, $weight: bold);
-
-    padding: govuk-spacing(3);
+    margin: govuk-spacing(3);
 
     @include govuk-media-query($from: tablet) {
-      padding: govuk-spacing(4);
+      margin: govuk-spacing(4);
     }
+  }
+
+  .govuk-notification-banner__heading {
+    @include govuk-font($size: 24, $weight: bold);
+
+    margin: 0 0 govuk-spacing(3) 0;
+
+    padding: 0;
   }
 
   .govuk-notification-banner__link {
