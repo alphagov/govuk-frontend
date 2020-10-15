@@ -6,20 +6,29 @@
   {% set typeClass = "govuk-notification-banner--" + params.type %}
 {% endif %}
 
-{% if params.role %}
+{% if 'role' in params %}
   {% set role = params.role %}
 {% elif successOrError %}
-  {# If type is success or error, the notification banner is focused on page load. Add `role="alert"` to prioritise the information in the notification banner to users of assistive technologies #}
+  {# If type is success or error, add `role="alert"` to prioritise the information in the notification banner to users of assistive technologies #}
   {% set role = "alert" %}
 {% else %}
   {# Otherwise add `role="region"` to make the notification banner a landmark to help users of assistive technologies to navigate to the banner #}
   {% set role = "region" %}
 {% endif %}
 
-{% if params.tabindex %}
+{# Check whether to add `data-initial-focus="true"` which focuses the notification banner on page load #}
+{% if 'initialFocus' in params %}
+  {% set initialFocus = params.initialFocus %}
+{% elif successOrError %}
+  {% set initialFocus = true %}
+{% else %}
+  {% set initialFocus = false %}
+{% endif %}
+
+{% if 'tabindex' in params %}
   {% set tabindex = params.tabindex %}
-{# TODO:  Link below logic to check whether js focus behaviour is enabled (when decision has been made in  https://github.com/alphagov/govuk-frontend/pull/1977#discussion_r500833933 #}
-{% elif successOrError and not(params.tabindex === false)%}
+{# Check that success or error banner doesn't include tabindex="false" and that the banner should be focused on page load #}
+{% elif successOrError and initialFocus %}
   {# If type is success or error, add `tabindex="-1"` to make the notification banner focusable #}
   {% set tabindex = "-1" %}
 {% endif %}
@@ -37,17 +46,21 @@
 {%- endif -%}
 
 <div class="govuk-notification-banner {{ typeClass }} {%- if params.classes %} {{ params.classes }}{% endif -%}" role="{{ role }}"
-  {%- if tabindex %} tabindex="{{ tabindex }}" {% endif %}
-  {%- if (role == "region") -%} aria-labelledby="{{ params.titleId | default('govuk-notification-banner-title') }}" {%- endif -%}
-  {# TODO: Sort out the below logic when decision has been made in discussion in https://github.com/alphagov/govuk-frontend/pull/1977#discussion_r500833933 is concluded #}
-  {%- if ((params.type == "success" or params.type == "error") and not(params.initialFocus === false)) or params.initialFocus === true -%} data-module="govuk-initial-focus"{% endif %}
+  {%- if tabindex !== false %} tabindex="{{ tabindex }}" {% endif %}
+  {%- if (role == "region") %} aria-labelledby="{{ params.titleId | default('govuk-notification-banner-title') }}" {%- endif -%}
+  {%- if initialFocus -%} data-initial-focus="true"{% endif %}
   {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
   <div class="govuk-notification-banner__header">
-    <h{{ params.titleHeadingLevel | default(2) }} class="govuk-notification-banner__title"{% if (role == "region" or params.id) %} id="{{ params.titleId | default('govuk-notification-banner-title') }}" {%- endif %}>
+    <h{{ params.titleHeadingLevel | default(2) }} class="govuk-notification-banner__title"{% if (role == "region" or params.titleId) %} id="{{ params.titleId | default('govuk-notification-banner-title') }}" {%- endif %}>
       {{ title }}
     </h{{ params.titleHeadingLevel | default(2) }}>
   </div>
   <div class="govuk-notification-banner__content">
-    {{ params.html | safe if params.html else params.text }}
+    {%- if params.html -%}
+      {{ params.html | safe }}
+    {%- elif params.text -%}
+      {# Set default style for single line content #}
+      <p class="govuk-notification-banner__heading">{{ params.text }}</p>
+    {%- endif -%}
   </div>
 </div>

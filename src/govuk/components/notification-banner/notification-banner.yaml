@@ -28,9 +28,9 @@ params:
   required: false
   description: Overrides the value of the `role` attribute for the notification banner. Defaults to `region`. If `type` is set to `success` or `error`, defaults to `alert`.
 - name: tabindex
-  type: string
+  type: string/boolean
   required: false
-  description: Overrides the value of the `tabindex` attribute for the notification banner. Not set by default.  If `type` is set to `success` or `error`, defaults to `-1`.
+  description: Overrides the value of the `tabindex` attribute for the notification banner. Not set by default.  If `type` is set to `success` or `error`, defaults to `-1`; the attribute can be removed by setting `tabindex` to `false`;
 - name: titleId
   type: string
   required: false
@@ -51,7 +51,7 @@ params:
 examples:
 - name: default
   data:
-    text: You have 9 days to send a response.
+    text: This publication was withdrawn on 7 March 2014.
 - name: with text as html
   data:
     html: |
@@ -81,27 +81,39 @@ examples:
   hidden: true
   data:
     title: Important information
-    text: You have 9 days to send a response.
+    text: This publication was withdrawn on 7 March 2014.
 - name: title as html
   hidden: true
   data:
     titleHtml: <span>Important information</span>
-    text: You have 9 days to send a response.
+    text: This publication was withdrawn on 7 March 2014.
 - name: title html as text
   hidden: true
   data:
     title: <span>Important information</span>
-    text: You have 9 days to send a response.
+    text: This publication was withdrawn on 7 March 2014.
 - name: custom title heading level
   hidden: true
   data:
     titleHeadingLevel: 3
-    text: You have 9 days to send a response.
+    text: This publication was withdrawn on 7 March 2014.
 - name: custom title id
   hidden: true
   data:
     titleId: my-id
-    text: You have 9 days to send a response.
+    text: This publication was withdrawn on 7 March 2014.
+- name: custom title id with type as success
+  hidden: true
+  data:
+    type: success
+    titleId: my-id
+    text: Email sent to example@email.com
+- name: custom title id with type as error
+  hidden: true
+  data:
+    type: error
+    titleId: my-id
+    text: There was a problem uploading your file. Please try again.
 
 - name: custom text
   hidden: true
@@ -116,7 +128,7 @@ examples:
   hidden: true
   data:
     role: banner
-    text: You have 9 days to send a response.
+    text: This publication was withdrawn on 7 March 2014.
 - name:  role overridden to region
   hidden: true
   data:
@@ -126,8 +138,8 @@ examples:
 - name: custom tabindex
   hidden: true
   data:
-    tabindex: "0"
-    text: You have 9 days to send a response.
+    tabindex: 0
+    text: This publication was withdrawn on 7 March 2014.
 - name: tabindex as false and type as success
   hidden: true
   data:
@@ -138,7 +150,7 @@ examples:
   hidden: true
   data:
     initialFocus: true
-    text: You have 9 days to send a response.
+    text: This publication was withdrawn on 7 March 2014.
 - name: initialFocus as false and type as success
   hidden: true
   data:
@@ -149,12 +161,12 @@ examples:
 - name: classes
   hidden: true
   data:
-    text: You have 9 days to send a response.
+    text: This publication was withdrawn on 7 March 2014.
     classes: app-my-class
 - name: attributes
   hidden: true
   data:
-    text: You have 9 days to send a response.
+    text: This publication was withdrawn on 7 March 2014.
     attributes:
       my-attribute: value
 
@@ -162,4 +174,4 @@ examples:
   hidden: true
   data:
     type: some-type
-    text: You have 9 days to send a response.
+    text: This publication was withdrawn on 7 March 2014.

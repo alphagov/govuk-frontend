@@ -40,11 +40,11 @@ describe('Notification-banner', () => {
       expect($component.attr('tabindex')).toBeFalsy()
     })
 
-    it('does not have data-module attribute to focus component on page load', () => {
+    it('does not have data-initial-focus attribute to focus component on page load', () => {
       const $ = render('notification-banner', examples.default)
       const $component = $('.govuk-notification-banner')
 
-      expect($component.attr('data-module')).not.toEqual('govuk-initial-focus')
+      expect($component.attr('data-initial-focus')).not.toEqual('govuk-initial-focus')
     })
 
     it('renders header container', () => {
@@ -72,7 +72,7 @@ describe('Notification-banner', () => {
       const $ = render('notification-banner', examples.default)
       const $content = $('.govuk-notification-banner__content')
 
-      expect($content.html().trim()).toEqual('You have 9 days to send a response.')
+      expect($content.html().trim()).toEqual('<p class="govuk-notification-banner__heading">This publication was withdrawn on 7 March 2014.</p>')
     })
   })
 
@@ -88,7 +88,7 @@ describe('Notification-banner', () => {
       const $ = render('notification-banner', examples['custom text'])
       const $content = $('.govuk-notification-banner__content')
 
-      expect($content.html().trim()).toEqual('This publication was withdrawn on 7 March 2014.')
+      expect($content.html().trim()).toEqual('<p class="govuk-notification-banner__heading">This publication was withdrawn on 7 March 2014.</p>')
     })
 
     it('renders custom heading level', () => {
@@ -134,11 +134,11 @@ describe('Notification-banner', () => {
       expect(ariaAttr).toEqual('my-id')
     })
 
-    it('renders data-module attribute to focus component on page load', () => {
+    it('renders data-initial-focus attribute to focus component on page load', () => {
       const $ = render('notification-banner', examples['initialFocus as true'])
 
       const $component = $('.govuk-notification-banner')
-      expect($component.attr('data-module')).toEqual('govuk-initial-focus')
+      expect($component.attr('data-initial-focus')).toEqual('true')
     })
 
     it('removes tabindex attribute so component is not focusable', () => {
@@ -148,11 +148,11 @@ describe('Notification-banner', () => {
       expect($component.attr('tabindex')).toBeFalsy()
     })
 
-    it('removes data-module attribute so component is not focused on page load', () => {
+    it('removes data-initial-focus attribute so component is not focused on page load', () => {
       const $ = render('notification-banner', examples['initialFocus as false and type as success'])
 
       const $component = $('.govuk-notification-banner')
-      expect($component.attr('data-module')).toBeFalsy()
+      expect($component.attr('data-initial-focus')).toBeFalsy()
     })
 
     it('renders classes', () => {
@@ -185,11 +185,11 @@ describe('Notification-banner', () => {
       expect($title.html().trim()).toEqual('<span>Important information</span>')
     })
 
-    it('renders content as escaped html when passed as text', () => {
+    it(' as escaped html when passed as text', () => {
       const $ = render('notification-banner', examples['html as text'])
       const $content = $('.govuk-notification-banner__content')
 
-      expect($content.html().trim()).toEqual('&lt;span&gt;This publication was withdrawn on 7 March 2014.&lt;/span&gt;')
+      expect($content.html().trim()).toEqual('<p class="govuk-notification-banner__heading">&lt;span&gt;This publication was withdrawn on 7 March 2014.&lt;/span&gt;</p>')
     })
 
     it('renders content as html', () => {
@@ -226,7 +226,14 @@ describe('Notification-banner', () => {
       const $ = render('notification-banner', examples['with type as success'])
       const $component = $('.govuk-notification-banner')
 
-      expect($component.attr('id')).not.toEqual('govuk-notification-banner-title')
+      expect($component.attr('id')).toBeFalsy()
+    })
+
+    it('renders custom title id', () => {
+      const $ = render('notification-banner', examples['custom title id with type as success'])
+      const $title = $('.govuk-notification-banner__title')
+
+      expect($title.attr('id')).toEqual('my-id')
     })
 
     it('has the correct tabindex attribute to be focused', () => {
@@ -236,11 +243,11 @@ describe('Notification-banner', () => {
       expect($component.attr('tabindex')).toEqual('-1')
     })
 
-    it('renders data-module attribute to focus component on page load', () => {
+    it('renders data-initial-focus attribute to focus component on page load', () => {
       const $ = render('notification-banner', examples['with type as success'])
 
       const $component = $('.govuk-notification-banner')
-      expect($component.attr('data-module')).toEqual('govuk-initial-focus')
+      expect($component.attr('data-initial-focus')).toEqual('true')
     })
 
     it('renders default success title text', () => {
@@ -277,7 +284,14 @@ describe('Notification-banner', () => {
       const $ = render('notification-banner', examples['with type as error'])
       const $component = $('.govuk-notification-banner')
 
-      expect($component.attr('id')).not.toEqual('govuk-notification-banner-title')
+      expect($component.attr('id')).toBeFalsy()
+    })
+
+    it('renders custom title id', () => {
+      const $ = render('notification-banner', examples['custom title id with type as error'])
+      const $title = $('.govuk-notification-banner__title')
+
+      expect($title.attr('id')).toEqual('my-id')
     })
 
     it('has the correct tabindex attribute to be focused', () => {
@@ -287,11 +301,11 @@ describe('Notification-banner', () => {
       expect($component.attr('tabindex')).toEqual('-1')
     })
 
-    it('renders data-module attribute to focus component on page load', () => {
+    it('renders data-initial-focus attribute to focus component on page load', () => {
       const $ = render('notification-banner', examples['with type as error'])
 
       const $component = $('.govuk-notification-banner')
-      expect($component.attr('data-module')).toEqual('govuk-initial-focus')
+      expect($component.attr('data-initial-focus')).toEqual('true')
     })
 
     it('renders default error title text', () => {
@@ -317,11 +331,11 @@ describe('Notification-banner', () => {
       expect($component.attr('tabindex')).toBeFalsy()
     })
 
-    it('does not have data-module attribute to focus component on page load', () => {
+    it('does not have data-initial-focus attribute to focus component on page load', () => {
       const $ = render('notification-banner', examples['with invalid type'])
       const $component = $('.govuk-notification-banner')
 
-      expect($component.attr('data-module')).not.toEqual('govuk-initial-focus')
+      expect($component.attr('data-initial-focus')).not.toEqual('govuk-initial-focus')
     })
   })
 })
