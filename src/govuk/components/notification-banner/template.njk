@@ -27,9 +27,9 @@
 
 {% if 'tabindex' in params %}
   {% set tabindex = params.tabindex %}
-{# Check that success or error banner doesn't include tabindex="false" and that the banner should be focused on page load #}
+{# Check that success or error banner should be focused on page load #}
 {% elif successOrError and initialFocus %}
-  {# If type is success or error, add `tabindex="-1"` to make the notification banner focusable #}
+  {# Make the notification banner focusable #}
   {% set tabindex = "-1" %}
 {% endif %}
 
