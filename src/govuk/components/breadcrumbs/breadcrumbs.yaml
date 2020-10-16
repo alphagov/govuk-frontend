@@ -103,12 +103,18 @@ examples:
   hidden: true
   data:
     classes: app-breadcrumbs--custom-modifier
+    items:
+      -
+        text: Home
 - name: attributes
   hidden: true
   data:
     attributes:
       id: my-navigation
       role: navigation
+    items:
+      -
+        text: Home
 - name: item attributes
   hidden: true
   data:
