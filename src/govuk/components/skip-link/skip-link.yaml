@@ -40,6 +40,7 @@ examples:
   - name: custom href
     hidden: true
     data:
+      text: Skip to custom content
       href: "#custom"
   - name: custom text
     hidden: true
@@ -56,10 +57,12 @@ examples:
   - name: classes
     hidden: true
     data:
+      text: Skip link
       classes: app-skip-link--custom-class
   - name: attributes
     hidden: true
     data:
+      text: Skip link
       attributes:
         data-test: attribute
         aria-label: Skip to content
