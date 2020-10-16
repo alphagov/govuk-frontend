@@ -347,7 +347,7 @@ examples:
 - name: with navigation item attributes
   data:
     navigation:
-      -
+      - title: Single column list 1
         items:
           - href: '#1'
             text: Navigation item 1
