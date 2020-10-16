@@ -276,19 +276,23 @@ examples:
 - name: classes
   hidden: true
   data:
+    id: with-classes
     classes: app-date-input--custom-modifier
 - name: attributes
   hidden: true
   data:
+    id: with-attributes
     attributes:
       data-attribute: my data value
 - name: with empty items
   hidden: true
   data:
+    id: with-empty-items
     items: []
 - name: custom pattern
   hidden: true
   data:
+    id: with-custom-pattern
     items:
       -
         name: day
@@ -296,6 +300,7 @@ examples:
 - name: custom inputmode
   hidden: true
   data:
+    id: with-custom-inputmode
     items:
       -
         name: day
@@ -304,6 +309,7 @@ examples:
 - name: with nested name
   hidden: true
   data:
+    id: with-nested-name
     items:
       -
         name: day[dd]
@@ -314,13 +320,17 @@ examples:
 - name: with id on items
   hidden: true
   data:
+    id: with-item-id
     items:
       -
         id: day
+        name: day
       -
         id: month
+        name: month
       -
-        year: year
+        id: year
+        name: year
 - name: suffixed id
   hidden: true
   data:
@@ -335,13 +345,17 @@ examples:
 - name: with values
   hidden: true
   data:
+    id: with-values
     items:
       -
         id: day
+        name: day
       -
         id: month
+        name: month
       -
         id: year
+        name: year
         value: 2018
 - name: with hint and describedBy
   hidden: true
@@ -366,12 +380,14 @@ examples:
 - name: fieldset html
   hidden: true
   data:
+    id: with-fieldset-html
     fieldset:
       legend:
         html: What is your <b>date of birth</b>?
 - name: items with classes
   hidden: true
   data:
+    id: with-item-classes
     items:
       -
         name: day
@@ -385,6 +401,7 @@ examples:
 - name: items without classes
   hidden: true
   data:
+    id: without-item-classes
     items:
       -
         name: day
