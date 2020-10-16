@@ -18,6 +18,7 @@ params:
     description: Link for the breadcrumbs item. If not specified, breadcrumbs item is a normal list item.
   - name: attributes
     type: object
+    required: false
     description: HTML attributes (for example data attributes) to add to the individual crumb.
 - name: classes
   type: string
