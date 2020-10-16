@@ -42,10 +42,12 @@ examples:
     hidden: true
     data:
       classes: app-inset-text--custom-modifier
+      text: It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application.
   - name: id
     hidden: true
     data:
       id: my-inset-text
+      text: It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application.
   - name: html as text
     hidden: true
     data:
@@ -53,5 +55,6 @@ examples:
   - name: attributes
     hidden: true
     data:
+      text: It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application.
       attributes:
         data-attribute: my data value
