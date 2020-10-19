@@ -1,13 +1,13 @@
 @include govuk-exports("govuk/component/header") {
 
-  $govuk-header-background: govuk-colour("black");
-  $govuk-header-border-color: $govuk-brand-colour;
-  $govuk-header-border-width: govuk-spacing(2);
-  $govuk-header-text: govuk-colour("white");
-  $govuk-header-link: govuk-colour("white");
-  $govuk-header-link-hover: govuk-colour("white");
-  $govuk-header-link-active: #1d8feb;
-  $govuk-header-nav-item-border-color: #2e3133;
+  $govuk-header-background: govuk-colour("black") !default !global;
+  $govuk-header-border-color: $govuk-brand-colour !default !global;
+  $govuk-header-border-width: govuk-spacing(2) !default !global;
+  $govuk-header-text: govuk-colour("white") !default !global;
+  $govuk-header-link: govuk-colour("white") !default !global;
+  $govuk-header-link-hover: govuk-colour("white") !default !global;
+  $govuk-header-link-active: #1d8feb !default !global;
+  $govuk-header-nav-item-border-color: #2e3133 !default !global;
 
   .govuk-header {
     @include govuk-font($size: 16);
