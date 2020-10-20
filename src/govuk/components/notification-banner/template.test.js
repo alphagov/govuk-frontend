@@ -37,7 +37,7 @@ describe('Notification-banner', () => {
       const $ = render('notification-banner', examples.default)
 
       const $component = $('.govuk-notification-banner')
-      expect($component.attr('tabindex')).toBeFalsy()
+      expect($component.attr('tabindex')).toBeUndefined()
     })
 
     it('does not have data-initial-focus attribute to focus component on page load', () => {
@@ -145,14 +145,14 @@ describe('Notification-banner', () => {
       const $ = render('notification-banner', examples['tabindex as false and type as success'])
 
       const $component = $('.govuk-notification-banner')
-      expect($component.attr('tabindex')).toBeFalsy()
+      expect($component.attr('tabindex')).toBeUndefined()
     })
 
     it('removes data-initial-focus attribute so component is not focused on page load', () => {
       const $ = render('notification-banner', examples['initialFocus as false and type as success'])
 
       const $component = $('.govuk-notification-banner')
-      expect($component.attr('data-initial-focus')).toBeFalsy()
+      expect($component.attr('data-initial-focus')).toBeUndefined()
     })
 
     it('renders classes', () => {
@@ -219,14 +219,14 @@ describe('Notification-banner', () => {
       const $ = render('notification-banner', examples['with type as success'])
       const $component = $('.govuk-notification-banner')
 
-      expect($component.attr('aria-labelledby')).toBeFalsy()
+      expect($component.attr('aria-labelledby')).toBeUndefined()
     })
 
     it('does not render a title id for aria-labelledby', () => {
       const $ = render('notification-banner', examples['with type as success'])
       const $component = $('.govuk-notification-banner')
 
-      expect($component.attr('id')).toBeFalsy()
+      expect($component.attr('id')).toBeUndefined()
     })
 
     it('renders custom title id', () => {
@@ -277,14 +277,14 @@ describe('Notification-banner', () => {
       const $ = render('notification-banner', examples['with type as error'])
       const $component = $('.govuk-notification-banner')
 
-      expect($component.attr('aria-labbelledby')).toBeFalsy()
+      expect($component.attr('aria-labbelledby')).toBeUndefined()
     })
 
     it('does not render a title id for aria-labelledby', () => {
       const $ = render('notification-banner', examples['with type as error'])
       const $component = $('.govuk-notification-banner')
 
-      expect($component.attr('id')).toBeFalsy()
+      expect($component.attr('id')).toBeUndefined()
     })
 
     it('renders custom title id', () => {
@@ -328,7 +328,7 @@ describe('Notification-banner', () => {
       const $ = render('notification-banner', examples['with invalid type'])
 
       const $component = $('.govuk-notification-banner')
-      expect($component.attr('tabindex')).toBeFalsy()
+      expect($component.attr('tabindex')).toBeUndefined()
     })
 
     it('does not have data-initial-focus attribute to focus component on page load', () => {
