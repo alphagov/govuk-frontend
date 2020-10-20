@@ -40,6 +40,13 @@ describe('Notification-banner', () => {
       expect($component.attr('tabindex')).toBeUndefined()
     })
 
+    it('has data-module attribute to initialise JavaScript', () => {
+      const $ = render('notification-banner', examples.default)
+      const $component = $('.govuk-notification-banner')
+
+      expect($component.attr('data-module')).toEqual('govuk-notification-banner')
+    })
+
     it('does not have data-initial-focus attribute to focus component on page load', () => {
       const $ = render('notification-banner', examples.default)
       const $component = $('.govuk-notification-banner')

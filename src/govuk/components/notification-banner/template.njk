@@ -46,6 +46,7 @@
 <div class="govuk-notification-banner {{ typeClass }} {%- if params.classes %} {{ params.classes }}{% endif -%}" role="{{ role }}"
   {%- if tabindex or tabindex === 0 %} tabindex="{{ tabindex }}" {% endif %}
   {%- if (role == "region") %} aria-labelledby="{{ params.titleId | default('govuk-notification-banner-title') }}" {%- endif -%}
+  data-module="govuk-notification-banner"
   {%- if initialFocus -%} data-initial-focus="true"{% endif %}
   {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
   <div class="govuk-notification-banner__header">
