@@ -74,6 +74,16 @@ examples:
           <li><a href="#">government-strategy-v3-FINAL.pdf</a></li>
           <li><a href="#">government-strategy-v4-FINAL-v2.pdf</a></li>
       </ul>
+- name: auto-focus as is set to false, with type as success
+  data:
+    type: success
+    autoFocus: false
+    text: Email sent to example@email.com
+- name: data-auto-focus is set without role=alert
+  data:
+    type: success
+    role: banner
+    text: Email sent to example@email.com
 
 # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
 
@@ -151,12 +161,6 @@ examples:
   data:
     autoFocus: true
     text: This publication was withdrawn on 7 March 2014.
-- name: autoFocus as false and type as success
-  hidden: true
-  data:
-    type: success
-    autoFocus: false
-    text: Email sent to example@email.com
 
 - name: classes
   hidden: true

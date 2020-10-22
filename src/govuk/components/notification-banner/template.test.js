@@ -156,7 +156,7 @@ describe('Notification-banner', () => {
     })
 
     it('removes data-auto-focus attribute so component is not focused on page load', () => {
-      const $ = render('notification-banner', examples['autoFocus as false and type as success'])
+      const $ = render('notification-banner', examples['auto-focus as is set to false, with type as success'])
 
       const $component = $('.govuk-notification-banner')
       expect($component.attr('data-auto-focus')).toBeUndefined()

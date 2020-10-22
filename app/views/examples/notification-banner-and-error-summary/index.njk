@@ -1,0 +1,29 @@
+{% extends "_generic.njk" %}
+
+{% from "error-summary/macro.njk" import govukErrorSummary %}
+{% from "notification-banner/macro.njk" import govukNotificationBanner %}
+
+{% set pageTitle = "Notification banner and error summary" %}
+{% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.UK{% endblock %}
+
+{% block header %}
+  {% include "../../partials/banner.njk" %}
+  {{ govukHeader({}) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+          {{ govukErrorSummary({
+            titleText: "There is a problem"
+          })}}
+
+        {{ govukNotificationBanner({
+          text: "Invite sent to example@email.com",
+          type: "success"
+        })}}
+
+    </div>
+  </div>
+{% endblock %}

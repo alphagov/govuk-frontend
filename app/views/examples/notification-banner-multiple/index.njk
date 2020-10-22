@@ -1,0 +1,32 @@
+{% extends "_generic.njk" %}
+
+{% from "notification-banner/macro.njk" import govukNotificationBanner %}
+
+{% set pageTitle = "Notification banner" %}
+{% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.UK{% endblock %}
+
+{% block header %}
+  {% include "../../partials/banner.njk" %}
+  {{ govukHeader({}) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        {{ govukNotificationBanner({
+          text: "Invite sent to example@email.com",
+          type: "success"
+        })}}
+
+        {{ govukNotificationBanner({
+          text: "You need to respond within two days",
+          type: "success"
+        })}}
+
+        <h1 class="govuk-heading-xl">{{ pageTitle }}</h1>
+
+        <p class="govuk-body">Please note that it's not recommended to have multiple banners of the same type on the page. This page is an example for testing purposes.</p>
+    </div>
+  </div>
+{% endblock %}
