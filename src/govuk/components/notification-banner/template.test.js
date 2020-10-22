@@ -47,11 +47,11 @@ describe('Notification-banner', () => {
       expect($component.attr('data-module')).toEqual('govuk-notification-banner')
     })
 
-    it('does not have data-initial-focus attribute to focus component on page load', () => {
+    it('does not have data-auto-focus attribute to focus component on page load', () => {
       const $ = render('notification-banner', examples.default)
       const $component = $('.govuk-notification-banner')
 
-      expect($component.attr('data-initial-focus')).not.toEqual('govuk-initial-focus')
+      expect($component.attr('data-auto-focus')).not.toEqual('govuk-auto-focus')
     })
 
     it('renders header container', () => {
@@ -141,11 +141,11 @@ describe('Notification-banner', () => {
       expect(ariaAttr).toEqual('my-id')
     })
 
-    it('renders data-initial-focus attribute to focus component on page load', () => {
-      const $ = render('notification-banner', examples['initialFocus as true'])
+    it('renders data-auto-focus attribute to focus component on page load', () => {
+      const $ = render('notification-banner', examples['autoFocus as true'])
 
       const $component = $('.govuk-notification-banner')
-      expect($component.attr('data-initial-focus')).toEqual('true')
+      expect($component.attr('data-auto-focus')).toEqual('true')
     })
 
     it('removes tabindex attribute so component is not focusable', () => {
@@ -155,11 +155,11 @@ describe('Notification-banner', () => {
       expect($component.attr('tabindex')).toBeUndefined()
     })
 
-    it('removes data-initial-focus attribute so component is not focused on page load', () => {
-      const $ = render('notification-banner', examples['initialFocus as false and type as success'])
+    it('removes data-auto-focus attribute so component is not focused on page load', () => {
+      const $ = render('notification-banner', examples['autoFocus as false and type as success'])
 
       const $component = $('.govuk-notification-banner')
-      expect($component.attr('data-initial-focus')).toBeUndefined()
+      expect($component.attr('data-auto-focus')).toBeUndefined()
     })
 
     it('renders classes', () => {
@@ -250,11 +250,11 @@ describe('Notification-banner', () => {
       expect($component.attr('tabindex')).toEqual('-1')
     })
 
-    it('renders data-initial-focus attribute to focus component on page load', () => {
+    it('renders data-auto-focus attribute to focus component on page load', () => {
       const $ = render('notification-banner', examples['with type as success'])
 
       const $component = $('.govuk-notification-banner')
-      expect($component.attr('data-initial-focus')).toEqual('true')
+      expect($component.attr('data-auto-focus')).toEqual('true')
     })
 
     it('renders default success title text', () => {
@@ -308,11 +308,11 @@ describe('Notification-banner', () => {
       expect($component.attr('tabindex')).toEqual('-1')
     })
 
-    it('renders data-initial-focus attribute to focus component on page load', () => {
+    it('renders data-auto-focus attribute to focus component on page load', () => {
       const $ = render('notification-banner', examples['with type as error'])
 
       const $component = $('.govuk-notification-banner')
-      expect($component.attr('data-initial-focus')).toEqual('true')
+      expect($component.attr('data-auto-focus')).toEqual('true')
     })
 
     it('renders default error title text', () => {
@@ -338,11 +338,11 @@ describe('Notification-banner', () => {
       expect($component.attr('tabindex')).toBeUndefined()
     })
 
-    it('does not have data-initial-focus attribute to focus component on page load', () => {
+    it('does not have data-auto-focus attribute to focus component on page load', () => {
       const $ = render('notification-banner', examples['with invalid type'])
       const $component = $('.govuk-notification-banner')
 
-      expect($component.attr('data-initial-focus')).not.toEqual('govuk-initial-focus')
+      expect($component.attr('data-auto-focus')).not.toEqual('govuk-auto-focus')
     })
   })
 })

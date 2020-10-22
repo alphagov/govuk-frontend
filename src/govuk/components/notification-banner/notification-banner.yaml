@@ -35,7 +35,7 @@ params:
   type: string
   required: false
   description: Overrides the value of the `id` attribute for the title. `id` used by the `aria-labelledby` attribute on the notification banner to provide information to users of assistive technologies. `id` defaults to `govuk-notification-banner-title` if `role` is set to `region`. If `type` is set to `success` or `error`, `id` is not rendered by default.
-- name: initialFocus
+- name: autoFocus
   type: boolean
   required: false
   description: Moves keyboard focus to the notification banner when the page loads. Defaults to `false`. If `type` is set to `success` or `error`, defaults to `true`.
@@ -146,16 +146,16 @@ examples:
     type: success
     tabindex: false
     text: Email sent to example@email.com
-- name: initialFocus as true
+- name: autoFocus as true
   hidden: true
   data:
-    initialFocus: true
+    autoFocus: true
     text: This publication was withdrawn on 7 March 2014.
-- name: initialFocus as false and type as success
+- name: autoFocus as false and type as success
   hidden: true
   data:
     type: success
-    initialFocus: false
+    autoFocus: false
     text: Email sent to example@email.com
 
 - name: classes
