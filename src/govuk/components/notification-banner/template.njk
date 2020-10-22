@@ -1,0 +1,65 @@
+{%- if params.type == "success" or params.type == "error" %}
+  {% set successOrError = true %}
+{% endif %}
+
+{%- if successOrError %}
+  {% set typeClass = "govuk-notification-banner--" + params.type %}
+{% endif %}
+
+{% if params.role %}
+  {% set role = params.role %}
+{% elif successOrError %}
+  {# If type is success or error, add `role="alert"` to prioritise the information in the notification banner to users of assistive technologies #}
+  {% set role = "alert" %}
+{% else %}
+  {# Otherwise add `role="region"` to make the notification banner a landmark to help users of assistive technologies to navigate to the banner #}
+  {% set role = "region" %}
+{% endif %}
+
+{# Check whether to add `data-auto-focus="true"` which focuses the notification banner on page load #}
+{% if params.autoFocus is defined %}
+  {% set autoFocus = params.autoFocus %}
+{% elif successOrError %}
+  {% set autoFocus = true %}
+{% endif %}
+
+{% if params.tabindex is defined %}
+  {% set tabindex = params.tabindex %}
+{# Make sure that success or error banner should be focused on page load #}
+{% elif successOrError and autoFocus %}
+  {# Make the notification banner focusable #}
+  {% set tabindex = "-1" %}
+{% endif %}
+
+{%- if params.titleHtml %}
+  {% set title = params.titleHtml | safe %}
+{%- elif params.title %}
+  {% set title = params.title %}
+{%- elif params.type == "success" %}
+  {% set title = "Success" %}
+{%- elif params.type == "error" %}
+  {% set title = "Error" %}
+{%- else %}
+  {% set title = "Important" %}
+{%- endif -%}
+
+<div class="govuk-notification-banner {{ typeClass }} {%- if params.classes %} {{ params.classes }}{% endif -%}" role="{{ role }}"
+  {%- if tabindex or tabindex === 0 %} tabindex="{{ tabindex }}" {% endif %}
+  {%- if (role == "region") %} aria-labelledby="{{ params.titleId | default('govuk-notification-banner-title') }}" {%- endif -%}
+  data-module="govuk-notification-banner"
+  {%- if autoFocus -%} data-auto-focus="true"{% endif %}
+  {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+  <div class="govuk-notification-banner__header">
+    <h{{ params.titleHeadingLevel | default(2) }} class="govuk-notification-banner__title"{% if (role == "region" or params.titleId) %} id="{{ params.titleId | default('govuk-notification-banner-title') }}" {%- endif %}>
+      {{ title }}
+    </h{{ params.titleHeadingLevel | default(2) }}>
+  </div>
+  <div class="govuk-notification-banner__content">
+    {%- if params.html -%}
+      {{ params.html | safe }}
+    {%- elif params.text -%}
+      {# Set default style for single line content #}
+      <p class="govuk-notification-banner__heading">{{ params.text }}</p>
+    {%- endif -%}
+  </div>
+</div>
