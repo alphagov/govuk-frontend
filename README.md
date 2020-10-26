@@ -38,7 +38,7 @@ files into your project](https://frontend.design-system.service.gov.uk/install-u
 GOV.UK Frontend supports:
 
 - [recommended browsers](https://www.gov.uk/service-manual/technology/designing-for-different-browsers-and-devices#browsers-to-test-in)
-- [recommended assistive technologies](https://www.gov.uk/service-manual/technology/testing-with-assistive-technologies#what-to-test)
+- [recommended assistive technologies](https://www.gov.uk/service-manual/technology/testing-with-assistive-technologies#which-assistive-technologies-to-test-with)
 - Internet Explorer 8, 9 and 10, although components may not look perfect
 - your users overriding colours in Windows, Firefox and Chrome
 
