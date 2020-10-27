@@ -270,9 +270,6 @@ examples:
           data-example-year: year
 
 # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
-- name: no data
-  hidden: true
-  data: {}
 - name: classes
   hidden: true
   data:

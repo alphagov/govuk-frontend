@@ -94,7 +94,7 @@ describe('Date input', () => {
     })
 
     it('renders with default items', () => {
-      const $ = render('date-input', examples['no data'])
+      const $ = render('date-input', examples.default)
 
       const $items = $('.govuk-date-input__item')
       const $firstItemInput = $('.govuk-date-input:first-child .govuk-date-input__input')
