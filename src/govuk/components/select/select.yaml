@@ -172,15 +172,35 @@ examples:
   - name: with describedBy
     hidden: true
     data:
+      id: with-describedby
+      name: with-describedby
+      items:
+        -
+          value: 1
+          text: GOV.UK frontend option 1
+        -
+          value: 2
+          text: GOV.UK frontend option 2
       describedBy: some-id
   - name: attributes
     hidden: true
     data:
+      id: with-attributes
+      name: with-attributes
+      items:
+        -
+          value: 1
+          text: GOV.UK frontend option 1
+        -
+          value: 2
+          text: GOV.UK frontend option 2
       attributes:
         data-attribute: my data value
   - name: attributes on items
     hidden: true
     data:
+      id: with-item-attributes
+      name: with-item-attributes
       value: 2
       items:
         -
@@ -196,6 +216,8 @@ examples:
   - name: with falsey values
     hidden: true
     data:
+      id: with-falsey-values
+      name: with-falsey-values
       items:
         -
           text: Option 1
@@ -208,25 +230,50 @@ examples:
     hidden: true
     data:
       id: select-with-hint
+      name: select-with-hint
       hint:
         text: Hint text goes here
   - name: hint and describedBy
     hidden: true
     data:
       id: select-with-hint
+      name: select-with-hint
       describedBy: some-id
       hint:
         text: Hint text goes here
+      items:
+        -
+          value: 1
+          text: GOV.UK frontend option 1
+        -
+          value: 2
+          text: GOV.UK frontend option 2
   - name: error
     hidden: true
     data:
       id: select-with-error
+      name: select-with-error
       errorMessage:
         text: Error message
+      items:
+        -
+          value: 1
+          text: GOV.UK frontend option 1
+        -
+          value: 2
+          text: GOV.UK frontend option 2
   - name: error and describedBy
     hidden: true
     data:
       id: select-with-error
+      name: select-with-error
       describedBy: some-id
       errorMessage:
         text: Error message
+      items:
+        -
+          value: 1
+          text: GOV.UK frontend option 1
+        -
+          value: 2
+          text: GOV.UK frontend option 2

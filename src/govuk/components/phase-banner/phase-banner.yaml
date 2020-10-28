@@ -32,6 +32,7 @@ examples:
   - name: classes
     hidden: true
     data:
+      text: This is a new service – your feedback will help us to improve it
       classes: extra-class one-more-class
   - name: text
     hidden: true
@@ -44,17 +45,20 @@ examples:
   - name: attributes
     hidden: true
     data:
+      text: This is a new service – your feedback will help us to improve it
       attributes:
         first-attribute: true
         second-attribute: false
   - name: tag html
     hidden: true
     data:
+      text: This is a new service – your feedback will help us to improve it
       tag:
         html: <em>alpha</em>
   - name: tag classes
     hidden: true
     data:
+      text: This is a new service – your feedback will help us to improve it
       tag:
         classes: govuk-tag--inactive
         text: alpha

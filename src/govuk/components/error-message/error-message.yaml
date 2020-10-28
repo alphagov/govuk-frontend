@@ -48,10 +48,12 @@ examples:
   hidden: true
   data:
     id: my-error-message-id
+    text: This is an error message
 - name: classes
   hidden: true
   data:
     classes: custom-class
+    text: This is an error message
 - name: html as text
   hidden: true
   data:
@@ -63,6 +65,7 @@ examples:
 - name: attributes
   hidden: true
   data:
+    text: This is an error message
     attributes:
       data-test: attribute
       id: my-error-message

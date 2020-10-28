@@ -18,6 +18,7 @@ params:
     description: Link for the breadcrumbs item. If not specified, breadcrumbs item is a normal list item.
   - name: attributes
     type: object
+    required: false
     description: HTML attributes (for example data attributes) to add to the individual crumb.
 - name: classes
   type: string
@@ -102,12 +103,18 @@ examples:
   hidden: true
   data:
     classes: app-breadcrumbs--custom-modifier
+    items:
+      -
+        text: Home
 - name: attributes
   hidden: true
   data:
     attributes:
       id: my-navigation
       role: navigation
+    items:
+      -
+        text: Home
 - name: item attributes
   hidden: true
   data:

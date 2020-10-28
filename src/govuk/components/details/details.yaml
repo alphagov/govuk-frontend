@@ -67,29 +67,39 @@ examples:
   hidden: true
   data:
     id: my-details-element
+    summaryText: Expand this section
+    text: Here are some more details
 - name: html as text
   hidden: true
   data:
+    summaryText: Expand this section
     text: More about the greater than symbol (>)
 - name: html
   hidden: true
   data:
+    summaryText: Expand this section
     html: More about <b>bold text</b>
 - name: summary html as text
   hidden: true
   data:
     summaryText: The greater than symbol (>) is the best
+    text: Here are some more details
 - name: summary html
   hidden: true
   data:
     summaryHtml: Use <b>bold text</b> sparingly
+    text: Here are some more details
 - name: classes
   hidden: true
   data:
     classes: some-additional-class
+    text: Here are some more details
+    summaryText: Expand me
 - name: attributes
   hidden: true
   data:
+    text: Here are some more details
+    summaryText: Expand me
     attributes:
       data-some-data-attribute: i-love-data
       another-attribute: true

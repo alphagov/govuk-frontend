@@ -90,35 +90,62 @@ examples:
   hidden: true
   data:
     titleText: Alert, <em>alert</em>
+    errorList:
+      -
+        text: Invalid username or password
 - name: title html
   hidden: true
   data:
     titleHtml: Alert, <em>alert</em>
+    errorList:
+      -
+        text: Invalid username or password
 - name: description
   hidden: true
   data:
+    titleText: There is a problem
     descriptionText: Lorem ipsum
+    errorList:
+      -
+        text: Invalid username or password
 - name: html as descriptionText
   hidden: true
   data:
+    titleText: There is a problem
     descriptionText: See errors below (▼)
+    errorList:
+      -
+        text: Invalid username or password
 - name: description html
   hidden: true
   data:
+    titleText: There is a problem
     descriptionHtml: See <span>errors</span> below
+    errorList:
+      -
+        text: Invalid username or password
 - name: classes
   hidden: true
   data:
+    titleText: There is a problem
     classes: extra-class one-more-class
+    errorList:
+      -
+        text: Invalid username or password
 - name: attributes
   hidden: true
   data:
+    titleText: There is a problem
     attributes:
       first-attribute: 'true'
       second-attribute: 'false'
+    errorList:
+      -
+        text: Invalid username or password
 - name: error list with attributes
   hidden: true
   data:
+    titleText: There is a problem
     errorList:
       -
         text: Error-1
@@ -129,18 +156,21 @@ examples:
 - name: error list with html as text
   hidden: true
   data:
+    titleText: There is a problem
     errorList:
       -
         text: Descriptive link to the <b>question</b> with an error
 - name: error list with html
   hidden: true
   data:
+    titleText: There is a problem
     errorList:
       -
         html: The date your passport was issued <b>must</b> be in the past
 - name: error list with html link
   hidden: true
   data:
+    titleText: There is a problem
     errorList:
       -
         html: Descriptive link to the <b>question</b> with an error
@@ -148,6 +178,7 @@ examples:
 - name: error list with html as text link
   hidden: true
   data:
+    titleText: There is a problem
     errorList:
       -
         text: Descriptive link to the <b>question</b> with an error

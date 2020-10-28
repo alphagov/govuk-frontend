@@ -171,33 +171,45 @@ examples:
     hidden: true
     data:
       classes: custom-class-goes-here
+      rows:
+        -
+          - text: Jan
+          - text: Feb
   - name: attributes
     hidden: true
     data:
       attributes:
         data-foo: bar
+      rows:
+        -
+          - text: Jan
+          - text: Feb
   - name: html as text
     hidden: true
     data:
       head:
         - text: Foo <script>hacking.do(1337)</script>
       rows:
-      -
-        - text: Foo <script>hacking.do(1337)</script>
+        -
+          - text: Foo <script>hacking.do(1337)</script>
   - name: html
     hidden: true
     data:
       head:
         - html: Foo <span>bar</span>
       rows:
-      -
-        - html: Foo <span>bar</span>
+        -
+          - html: Foo <span>bar</span>
   - name: head with classes
     hidden: true
     data:
       head:
         - text: Foo
           classes: my-custom-class
+      rows:
+        -
+          - text: Jan
+          - text: Feb
   - name: head with rowspan and colspan
     hidden: true
     data:
@@ -205,12 +217,20 @@ examples:
         - text: Foo
           rowspan: 2
           colspan: 2
+      rows:
+        -
+          - text: Jan
+          - text: Feb
   - name: head with attributes
     hidden: true
     data:
       head:
         - attributes:
             data-fizz: buzz
+      rows:
+        -
+          - text: Jan
+          - text: Feb
   - name: with firstCellIsHeader true
     hidden: true
     data:

@@ -550,6 +550,11 @@ examples:
   - name: attributes
     hidden: true
     data:
+      rows:
+        - key:
+            text: Name
+          value:
+            text: Firstname Lastname
       attributes:
         data-attribute-1: value-1
         data-attribute-2: value-2
@@ -559,17 +564,23 @@ examples:
       rows:
         - key:
             text: Name
+          value:
+            text: Firstname Lastname
         - null
         - false
         - ""
         - key:
             text: Name 2
+          value:
+            text: Firstname2 Lastname2
   - name: key with html
     hidden: true
     data:
       rows:
         - key:
             html: <b>Name</b>
+          value:
+            html: <strong>Firstname Lastname</strong>
   - name: key with classes
     hidden: true
     data:
@@ -577,40 +588,62 @@ examples:
         - key:
             text: Name
             classes: app-custom-class
+          value:
+            text: Firstname Lastname
   - name: value with html
     hidden: true
     data:
       rows:
         - key:
+            text: Name
           value:
             html: <span>email@email.com</span>
   - name: actions href
     hidden: true
     data:
       rows:
-        - actions:
+        - key:
+            text: Name
+          value:
+            text: Firstname Lastname
+          actions:
             items:
               - href: https://www.gov.uk
+                text: Go to GOV.UK
   - name: actions with html
     hidden: true
     data:
       rows:
-        - actions:
+        - key:
+            text: Name
+          value:
+            text: Firstname Lastname
+          actions:
             items:
               - html: Edit<span class="visually-hidden"> name</span>
+                href: "#"
   - name: actions with classes
     hidden: true
     data:
       rows:
-        - actions:
+        - key:
+            text: Name
+          value:
+            text: Firstname Lastname
+          actions:
             classes: app-custom-class
             items:
               - text: Edit
+                href: "/edit"
   - name: actions with attributes
     hidden: true
     data:
       rows:
-        - actions:
+        - key:
+            text: Name
+          value:
+            text: Firstname Lastname
+          actions:
             items:
               - text: Edit
                 href: '#'
@@ -621,7 +654,11 @@ examples:
     hidden: true
     data:
       rows:
-        - actions:
+        - key:
+            text: Name
+          value:
+            text: Firstname Lastname
+          actions:
             items:
               - text: First action
                 href: '#'
@@ -629,7 +666,11 @@ examples:
     hidden: true
     data:
       rows:
-        - actions:
+        - key:
+            text: Name
+          value:
+            text: Firstname Lastname
+          actions:
             items:
               - text: Edit
                 href: '#'
@@ -638,7 +679,11 @@ examples:
     hidden: true
     data:
       rows:
-        - actions:
+        - key:
+            text: Name
+          value:
+            text: Firstname Lastname
+          actions:
             items: []
   - name: rows with classes
     hidden: true
@@ -646,5 +691,7 @@ examples:
       rows:
         - key:
             text: Name
+          value:
+            text: Firstname Lastname
           classes: app-custom-class
 

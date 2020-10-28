@@ -697,9 +697,13 @@ examples:
     hint:
       text: This includes changing your last name or spelling your name differently.
     items:
-      - hint:
+      - value: yes
+        text: Yes
+        hint:
           text: Hint for yes option here
-      - hint:
+      - value: no
+        text: No
+        hint:
           text: Hint for no option here
 - name: with describedBy and hint
   hidden: true
@@ -711,12 +715,22 @@ examples:
         text: Have you changed your name?
     hint:
       text: This includes changing your last name or spelling your name differently.
+    items:
+      - value: yes
+        text: Yes
+      - value: no
+        text: No
 - name: with error message
   hidden: true
   data:
     name: example-error-message
     errorMessage:
       text: Please select an option
+    items:
+      - value: yes
+        text: Yes
+      - value: no
+        text: No
 - name: with error message and idPrefix
   hidden: true
   data:
@@ -724,6 +738,11 @@ examples:
     idPrefix: id-prefix
     errorMessage:
       text: Please select an option
+    items:
+      - value: yes
+        text: Yes
+      - value: no
+        text: No
 - name: with hint and error message
   hidden: true
   data:
@@ -735,6 +754,11 @@ examples:
         text: Have you changed your name?
     hint:
       text: This includes changing your last name or spelling your name differently.
+    items:
+      - value: yes
+        text: Yes
+      - value: no
+        text: No
 - name: with hint, error message and describedBy
   hidden: true
   data:
@@ -747,9 +771,15 @@ examples:
         text: Have you changed your name?
     hint:
       text: This includes changing your last name or spelling your name differently.
+    items:
+      - value: yes
+        text: Yes
+      - value: no
+        text: No
 - name: label with attributes
   hidden: true
   data:
+    name: with-label-attributes
     items:
       - value: yes
         text: Yes
@@ -770,12 +800,23 @@ examples:
         data-second-attribute: second-value
     hint:
       text: This includes changing your last name or spelling your name differently.
+    items:
+      - value: yes
+        text: Yes
+      - value: no
+        text: No
 - name: fieldset with html
   hidden: true
   data:
+    name: with-fieldset-html
     fieldset:
       legend:
         html: Have <b>you</b> changed your name?
+    items:
+      - value: yes
+        text: Yes
+      - value: no
+        text: No
 - name: with fieldset, error message and describedBy
   hidden: true
   data:

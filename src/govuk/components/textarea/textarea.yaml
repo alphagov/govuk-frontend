@@ -149,25 +149,44 @@ examples:
   - name: classes
     hidden: true
     data:
+      id: with-classes
+      name: with-classes
+      label:
+        text: With classes
       classes: app-textarea--custom-modifier
   - name: attributes
     hidden: true
     data:
+      id: with-attributes
+      name: with-attributes
+      label:
+        text: With attributes
       attributes:
         data-attribute: my data value
   - name: with describedBy
     hidden: true
     data:
+      id: with-describedby
+      name: with-describedby
+      label:
+        text: With describedBy
       describedBy: some-id
   - name: with hint and described by
     hidden: true
     data:
+      id: with-hint-describedby
+      name: with-hint-describedby
+      label:
+        text: With hint and describedBy
       describedBy: some-id
       hint:
         text: It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
   - name: with error message and described by
     hidden: true
     data:
+      name: textarea-with-error
+      label:
+        text: Textarea with error
       describedBy: some-id
       id: textarea-with-error
       errorMessage:
@@ -175,6 +194,10 @@ examples:
   - name: with hint and error message
     hidden: true
     data:
+      id: with-hint-error
+      name: with-hint-error
+      label:
+        text: With hint and error
       errorMessage:
         text: Error message
       hint:
@@ -182,6 +205,10 @@ examples:
   - name: with hint, error message and described by
     hidden: true
     data:
+      id: with-hint-error-describedby
+      name: with-hint-error-describedby
+      label:
+        text: With hint, error and describedBy
       describedBy: some-id
       errorMessage:
         text: Error message

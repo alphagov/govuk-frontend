@@ -150,6 +150,7 @@ examples:
 - name: classes
   hidden: true
   data:
+    id: accordion-classes
     classes: myClass
     items:
       - heading:
@@ -159,6 +160,7 @@ examples:
 - name: attributes
   hidden: true
   data:
+    id: accordion-attributes
     attributes:
       data-attribute: value
     items:
@@ -169,6 +171,7 @@ examples:
 - name: custom heading level
   hidden: true
   data:
+    id: accordion-heading
     headingLevel: 3
     items:
       - heading:
@@ -178,6 +181,7 @@ examples:
 - name: heading html
   hidden: true
   data:
+    id: accordion-heading-html
     items:
       - heading:
           html: <span class="myClass">Section A</span>
@@ -186,6 +190,7 @@ examples:
 - name: with falsey values
   hidden: true
   data:
+    id: accordion-falsey
     items:
       - heading:
           text: Section A

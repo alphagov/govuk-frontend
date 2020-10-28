@@ -206,25 +206,47 @@ examples:
     hidden: true
     data:
       classes: app-tabs--custom-modifier
+      items:
+        - label: Tab 1
+          id: tab-1
+          panel:
+            text: Information about tabs
   - name: id
     hidden: true
     data:
       id: my-tabs
+      items:
+        - label: Tab 1
+          id: tab-1
+          panel:
+            text: Information about tabs
   - name: title
     hidden: true
     data:
       title: Custom title for Contents
+      items:
+        - label: Tab 1
+          id: tab-1
+          panel:
+            text: Information about tabs
   - name: attributes
     hidden: true
     data:
       attributes:
         data-attribute: my data value
+      items:
+        - label: Tab 1
+          id: tab-1
+          panel:
+            text: Information about tabs
   - name: item with attributes
     hidden: true
     data:
       items:
         - id: tab-1
           label: Tab 1
+          panel:
+            text: Information about tabs
           attributes:
             data-attribute: my-attribute
             data-attribute-2: my-attribute-2
@@ -279,9 +301,11 @@ examples:
     data:
       items:
         - label: Tab 1
+          id: tab-1
           panel:
             text: <p>Panel 1 content</p>
         - label: Tab 2
+          id: tab-2
           panel:
             text: <p>Panel 2 content</p>
   - name: html
@@ -289,9 +313,11 @@ examples:
     data:
       items:
         - label: Tab 1
+          id: tab-1
           panel:
             html: <p>Panel 1 content</p>
         - label: Tab 2
+          id: tab-2
           panel:
             html: <p>Panel 2 content</p>
 

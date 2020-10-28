@@ -144,6 +144,7 @@ examples:
 
 - name: with hints on items
   data:
+    name: with-hints-on-items
     fieldset:
       legend:
         text: How do you want to sign in?
@@ -244,7 +245,7 @@ examples:
 
 - name: with fieldset and error message
   data:
-    name: colours
+    name: nationality
     errorMessage:
       text: Please accept the terms and conditions
     fieldset:
@@ -663,6 +664,11 @@ examples:
   hidden: true
   data:
     name: example
+    items:
+      - value: british
+        text: British
+      - value: irish
+        text: Irish
     errorMessage:
       text: Please select an option
     fieldset:
@@ -682,6 +688,11 @@ examples:
         text: What is your nationality?
     hint:
       text: If you have dual nationality, select all options that are relevant to you.
+    items:
+      - value: british
+        text: British
+      - value: irish
+        text: Irish
 - name: label with attributes
   hidden: true
   data:
@@ -706,6 +717,11 @@ examples:
       attributes:
         data-attribute: value
         data-second-attribute: second-value
+    items:
+      - value: british
+        text: British
+      - value: irish
+        text: Irish
 - name: fieldset html params
   hidden: true
   data:
@@ -713,6 +729,11 @@ examples:
     fieldset:
       legend:
         html: What is your <b>nationality</b>?
+    items:
+      - value: british
+        text: British
+      - value: irish
+        text: Irish
 - name: with single option set 'aria-describedby' on input, and describedBy
   hidden: true
   data:
@@ -755,6 +776,11 @@ examples:
       describedBy: some-id
       legend:
         text: What is your nationality?
+    items:
+      - value: british
+        text: British
+      - value: irish
+        text: Irish
 
 
 

@@ -158,33 +158,68 @@ examples:
   - name: classes
     hidden: true
     data:
+      id: with-classes
+      name: with-classes
+      maxlength: 10
+      label:
+        text: With classes
       classes: app-character-count--custom-modifier
   - name: attributes
     hidden: true
     data:
+      id: with-attributes
+      name: with-attributes
+      maxlength: 10
+      label:
+        text: With attributes
       attributes:
         data-attribute: my data value
   - name: formGroup with classes
     hidden: true
     data:
+      id: with-formgroup
+      name: with-formgroup
+      maxlength: 10
+      label:
+        text: With formgroup
       formGroup:
         classes: app-character-count--custom-modifier
   - name: custom classes on countMessage
     hidden: true
     data:
+      id: with-custom-countmessage-class
+      name: with-custom-countmessage-class
+      maxlength: 10
+      label:
+        text: With custom countMessage class
       countMessage:
         classes: app-custom-count-message
   - name: spellcheck enabled
     hidden: true
     data:
+      id: with-spellcheck
+      name: with-spellcheck
+      maxlength: 10
+      label:
+        text: With spellcheck
       spellcheck: true
   - name: spellcheck disabled
     hidden: true
     data:
+      id: without-spellcheck
+      name: without-spellcheck
+      maxlength: 10
+      label:
+        text: Without spellcheck
       spellcheck: false
   - name: custom classes with error message
     hidden: true
     data:
+      id: with-custom-error-class
+      name: with-custom-error-class
+      maxlength: 10
+      label:
+        text: With custom error class
       classes: app-character-count--custom-modifier
       errorMessage:
         text: Error message
