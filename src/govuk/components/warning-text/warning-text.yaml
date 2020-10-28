@@ -60,7 +60,3 @@ examples:
     hidden: true
     data:
       iconFallbackText: Some custom fallback text
-  - name: text only
-    hidden: true
-    data:
-      text: Some custom warning text

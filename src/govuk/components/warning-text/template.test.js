@@ -48,13 +48,6 @@ describe('Warning text', () => {
       expect($component.hasClass('govuk-warning-text--custom-class')).toBeTruthy()
     })
 
-    it('renders with text option only', () => {
-      const $ = render('warning-text', examples['text only'])
-
-      const $component = $('.govuk-warning-text')
-      expect($component.html()).toContain('Some custom warning text')
-    })
-
     it('renders custom assistive text', () => {
       const $ = render('warning-text', examples['icon fallback text only'])
 
