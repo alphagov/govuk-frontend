@@ -33,6 +33,13 @@ jobs:
         - sass --version
         - time sass src/govuk/all.scss > /dev/null
 
+    - name: 🎯 Test Sass compiles using latest Dart Sass
+      node_js: 14
+      install: npm install -g sass@latest
+      script: 
+        - sass --version
+        - time sass src/govuk/all.scss > /dev/null
+
     - name: 💎 Test Sass compiles using Ruby Sass v3.4.0 (deprecated)
       language: ruby
       rvm: 1.9.3-p551 # Assumed based on release date of Ruby Sass v3.4.0
