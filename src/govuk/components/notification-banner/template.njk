@@ -16,21 +16,6 @@
   {% set role = "region" %}
 {% endif %}
 
-{# Check whether to add `data-auto-focus="true"` which focuses the notification banner on page load #}
-{% if params.autoFocus is defined %}
-  {% set autoFocus = params.autoFocus %}
-{% elif successOrError %}
-  {% set autoFocus = true %}
-{% endif %}
-
-{% if params.tabindex is defined %}
-  {% set tabindex = params.tabindex %}
-{# Make sure that success or error banner should be focused on page load #}
-{% elif successOrError and autoFocus %}
-  {# Make the notification banner focusable #}
-  {% set tabindex = "-1" %}
-{% endif %}
-
 {%- if params.titleHtml %}
   {% set title = params.titleHtml | safe %}
 {%- elif params.title %}
@@ -43,11 +28,10 @@
   {% set title = "Important" %}
 {%- endif -%}
 
-<div class="govuk-notification-banner {{ typeClass }} {%- if params.classes %} {{ params.classes }}{% endif -%}" role="{{ role }}"
-  {%- if tabindex or tabindex === 0 %} tabindex="{{ tabindex }}" {% endif %}
-  {%- if (role == "region") %} aria-labelledby="{{ params.titleId | default('govuk-notification-banner-title') }}" {%- endif -%}
+<div class="govuk-notification-banner{% if typeClass %} {{ typeClass }}{% endif %}{% if params.classes %} {{ params.classes }}{% endif %}" role="{{ role }}"
+  {%- if (role == "region") %} aria-labelledby="{{ params.titleId | default('govuk-notification-banner-title')}}" {% endif -%}
   data-module="govuk-notification-banner"
-  {%- if autoFocus -%} data-auto-focus="true"{% endif %}
+  {%- if params.disableAutoFocus %} data-disable-auto-focus="true"{% endif %}
   {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
   <div class="govuk-notification-banner__header">
     <h{{ params.titleHeadingLevel | default(2) }} class="govuk-notification-banner__title"{% if (role == "region" or params.titleId) %} id="{{ params.titleId | default('govuk-notification-banner-title') }}" {%- endif %}>

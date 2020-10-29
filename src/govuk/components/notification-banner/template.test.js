@@ -33,25 +33,11 @@ describe('Notification-banner', () => {
       expect($component.attr('role')).toEqual('region')
     })
 
-    it('does not have tabindex set', () => {
-      const $ = render('notification-banner', examples.default)
-
-      const $component = $('.govuk-notification-banner')
-      expect($component.attr('tabindex')).toBeUndefined()
-    })
-
     it('has data-module attribute to initialise JavaScript', () => {
       const $ = render('notification-banner', examples.default)
       const $component = $('.govuk-notification-banner')
 
       expect($component.attr('data-module')).toEqual('govuk-notification-banner')
-    })
-
-    it('does not have data-auto-focus attribute to focus component on page load', () => {
-      const $ = render('notification-banner', examples.default)
-      const $component = $('.govuk-notification-banner')
-
-      expect($component.attr('data-auto-focus')).not.toEqual('govuk-auto-focus')
     })
 
     it('renders header container', () => {
@@ -113,18 +99,11 @@ describe('Notification-banner', () => {
     })
 
     it('renders aria-labelledby attribute matching the title id when role overridden to region', () => {
-      const $ = render('notification-banner', examples['role overridden to region'])
+      const $ = render('notification-banner', examples['role=alert overridden to role=region, with type as success'])
       const ariaAttr = $('.govuk-notification-banner').attr('aria-labelledby')
       const titleId = $('.govuk-notification-banner__title').attr('id')
 
       expect(ariaAttr).toEqual(titleId)
-    })
-
-    it('renders custom tabindex', () => {
-      const $ = render('notification-banner', examples['custom tabindex'])
-      const $component = $('.govuk-notification-banner')
-
-      expect($component.attr('tabindex')).toEqual('0')
     })
 
     it('renders custom title id', () => {
@@ -141,25 +120,11 @@ describe('Notification-banner', () => {
       expect(ariaAttr).toEqual('my-id')
     })
 
-    it('renders data-auto-focus attribute to focus component on page load', () => {
-      const $ = render('notification-banner', examples['autoFocus as true'])
+    it('adds the data-disable-auto-focus attribute so component is not focused on page load', () => {
+      const $ = render('notification-banner', examples['auto-focus disabled, with type as success'])
 
       const $component = $('.govuk-notification-banner')
-      expect($component.attr('data-auto-focus')).toEqual('true')
-    })
-
-    it('removes tabindex attribute so component is not focusable', () => {
-      const $ = render('notification-banner', examples['tabindex as false and type as success'])
-
-      const $component = $('.govuk-notification-banner')
-      expect($component.attr('tabindex')).toBeUndefined()
-    })
-
-    it('removes data-auto-focus attribute so component is not focused on page load', () => {
-      const $ = render('notification-banner', examples['autoFocus as false and type as success'])
-
-      const $component = $('.govuk-notification-banner')
-      expect($component.attr('data-auto-focus')).toBeUndefined()
+      expect($component.attr('data-disable-auto-focus')).toBeTruthy()
     })
 
     it('renders classes', () => {
@@ -192,11 +157,11 @@ describe('Notification-banner', () => {
       expect($title.html().trim()).toEqual('<span>Important information</span>')
     })
 
-    it(' as escaped html when passed as text', () => {
+    it('renders content as escaped html when passed as text', () => {
       const $ = render('notification-banner', examples['html as text'])
-      const $content = $('.govuk-notification-banner__heading')
+      const $content = $('.govuk-notification-banner__content')
 
-      expect($content.html().trim()).toEqual('&lt;span&gt;This publication was withdrawn on 7 March 2014.&lt;/span&gt;')
+      expect($content.html().trim()).toEqual('<p class="govuk-notification-banner__heading">&lt;span&gt;This publication was withdrawn on 7 March 2014.&lt;/span&gt;</p>')
     })
 
     it('renders content as html', () => {
@@ -234,27 +199,6 @@ describe('Notification-banner', () => {
       const $component = $('.govuk-notification-banner')
 
       expect($component.attr('id')).toBeUndefined()
-    })
-
-    it('renders custom title id', () => {
-      const $ = render('notification-banner', examples['custom title id with type as success'])
-      const $title = $('.govuk-notification-banner__title')
-
-      expect($title.attr('id')).toEqual('my-id')
-    })
-
-    it('has the correct tabindex attribute to be focused', () => {
-      const $ = render('notification-banner', examples['with type as success'])
-
-      const $component = $('.govuk-notification-banner')
-      expect($component.attr('tabindex')).toEqual('-1')
-    })
-
-    it('renders data-auto-focus attribute to focus component on page load', () => {
-      const $ = render('notification-banner', examples['with type as success'])
-
-      const $component = $('.govuk-notification-banner')
-      expect($component.attr('data-auto-focus')).toEqual('true')
     })
 
     it('renders default success title text', () => {
@@ -301,20 +245,6 @@ describe('Notification-banner', () => {
       expect($title.attr('id')).toEqual('my-id')
     })
 
-    it('has the correct tabindex attribute to be focused', () => {
-      const $ = render('notification-banner', examples['with type as error'])
-
-      const $component = $('.govuk-notification-banner')
-      expect($component.attr('tabindex')).toEqual('-1')
-    })
-
-    it('renders data-auto-focus attribute to focus component on page load', () => {
-      const $ = render('notification-banner', examples['with type as error'])
-
-      const $component = $('.govuk-notification-banner')
-      expect($component.attr('data-auto-focus')).toEqual('true')
-    })
-
     it('renders default error title text', () => {
       const $ = render('notification-banner', examples['with type as error'])
       const $title = $('.govuk-notification-banner__title')
@@ -331,18 +261,12 @@ describe('Notification-banner', () => {
       expect($component.attr('role')).toEqual('region')
     })
 
-    it('does not have tabindex set', () => {
+    it('aria-labelledby attribute matches the title id', () => {
       const $ = render('notification-banner', examples['with invalid type'])
+      const ariaAttr = $('.govuk-notification-banner').attr('aria-labelledby')
+      const titleId = $('.govuk-notification-banner__title').attr('id')
 
-      const $component = $('.govuk-notification-banner')
-      expect($component.attr('tabindex')).toBeUndefined()
-    })
-
-    it('does not have data-auto-focus attribute to focus component on page load', () => {
-      const $ = render('notification-banner', examples['with invalid type'])
-      const $component = $('.govuk-notification-banner')
-
-      expect($component.attr('data-auto-focus')).not.toEqual('govuk-auto-focus')
+      expect(ariaAttr).toEqual(titleId)
     })
   })
 })
