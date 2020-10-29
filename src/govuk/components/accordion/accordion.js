@@ -4,7 +4,7 @@
 
   This allows a collection of sections to be collapsed by default,
   showing only their headers. Sections can be exanded or collapsed
-  individually by clicking their headers. An "Open all" button is
+  individually by clicking their headers. An "Show all" button is
   also added to the top of the accordion, which switches to "Close all"
   when all the sections are expanded.
 
@@ -47,17 +47,17 @@ Accordion.prototype.init = function () {
 
   this.initSectionHeaders()
 
-  // See if "Open all" button text should be updated
+  // See if "Show all" button text should be updated
   var areAllSectionsOpen = this.checkIfAllSectionsOpen()
   this.updateOpenAllButton(areAllSectionsOpen)
 }
 
 // Initialise controls and set attributes
 Accordion.prototype.initControls = function () {
-  // Create "Open all" button and set attributes
+  // Create "Show all" button and set attributes
   this.$openAllButton = document.createElement('button')
   this.$openAllButton.setAttribute('type', 'button')
-  this.$openAllButton.innerHTML = 'Open all <span class="govuk-visually-hidden">sections</span>'
+  this.$openAllButton.innerHTML = 'Show all <span class="govuk-visually-hidden">sections</span>'
   this.$openAllButton.setAttribute('class', this.openAllClass)
   this.$openAllButton.setAttribute('aria-expanded', 'false')
   this.$openAllButton.setAttribute('type', 'button')
@@ -174,7 +174,7 @@ Accordion.prototype.setExpanded = function (expanded, $section) {
     $section.classList.remove(this.sectionExpandedClass)
   }
 
-  // See if "Open all" button text should be updated
+  // See if "Show all" button text should be updated
   var areAllSectionsOpen = this.checkIfAllSectionsOpen()
   this.updateOpenAllButton(areAllSectionsOpen)
 }
@@ -195,9 +195,9 @@ Accordion.prototype.checkIfAllSectionsOpen = function () {
   return areAllSectionsOpen
 }
 
-// Update "Open all" button
+// Update "Show all" button
 Accordion.prototype.updateOpenAllButton = function (expanded) {
-  var newButtonText = expanded ? 'Close all' : 'Open all'
+  var newButtonText = expanded ? 'Hide all' : 'Show all'
   newButtonText += '<span class="govuk-visually-hidden"> sections</span>'
   this.$openAllButton.setAttribute('aria-expanded', expanded)
   this.$openAllButton.innerHTML = newButtonText
