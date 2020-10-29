@@ -27,18 +27,14 @@ params:
   type: string
   required: false
   description: Overrides the value of the `role` attribute for the notification banner. Defaults to `region`. If `type` is set to `success` or `error`, defaults to `alert`.
-- name: tabindex
-  type: string/boolean
-  required: false
-  description: Overrides the value of the `tabindex` attribute for the notification banner. Not set by default.  If `type` is set to `success` or `error`, defaults to `-1`; the attribute can be removed by setting `tabindex` to `false`;
 - name: titleId
   type: string
   required: false
   description: Overrides the value of the `id` attribute for the title. `id` used by the `aria-labelledby` attribute on the notification banner to provide information to users of assistive technologies. `id` defaults to `govuk-notification-banner-title` if `role` is set to `region`. If `type` is set to `success` or `error`, `id` is not rendered by default.
-- name: autoFocus
+- name: disableAutoFocus
   type: boolean
   required: false
-  description: Moves keyboard focus to the notification banner when the page loads. Defaults to `false`. If `type` is set to `success` or `error`, defaults to `true`.
+  description: If you set 'type' to 'success' or 'error', or 'role' to 'alert', JavaScript moves the keyboard focus to the notification banner when the page loads. To disable this behaviour, set 'disableAutoFocus' to 'true'.
 - name: classes
   type: string
   required: false
@@ -87,6 +83,16 @@ examples:
           <li><a href="#" class="govuk-notification-banner__link">government-strategy-v3-FINAL.pdf</a></li>
           <li><a href="#" class="govuk-notification-banner__link">government-strategy-v4-FINAL-v2.pdf</a></li>
       </ul>
+- name: auto-focus disabled, with type as success
+  data:
+    type: success
+    disableAutoFocus: true
+    text: Email sent to example@email.com
+- name:  role=alert overridden to role=region, with type as success
+  data:
+    type: success
+    role: region
+    text: Email sent to example@email.com-
 
 # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
 
@@ -142,34 +148,6 @@ examples:
   data:
     role: banner
     text: This publication was withdrawn on 7 March 2014.
-- name:  role overridden to region
-  hidden: true
-  data:
-    type: success
-    role: region
-    text: Email sent to example@email.com-
-- name: custom tabindex
-  hidden: true
-  data:
-    tabindex: 0
-    text: This publication was withdrawn on 7 March 2014.
-- name: tabindex as false and type as success
-  hidden: true
-  data:
-    type: success
-    tabindex: false
-    text: Email sent to example@email.com
-- name: autoFocus as true
-  hidden: true
-  data:
-    autoFocus: true
-    text: This publication was withdrawn on 7 March 2014.
-- name: autoFocus as false and type as success
-  hidden: true
-  data:
-    type: success
-    autoFocus: false
-    text: Email sent to example@email.com
 
 - name: classes
   hidden: true

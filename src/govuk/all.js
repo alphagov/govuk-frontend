@@ -5,6 +5,7 @@ import Details from './components/details/details'
 import CharacterCount from './components/character-count/character-count'
 import Checkboxes from './components/checkboxes/checkboxes'
 import ErrorSummary from './components/error-summary/error-summary'
+import NotificationBanner from './components/notification-banner/notification-banner'
 import Header from './components/header/header'
 import Radios from './components/radios/radios'
 import Tabs from './components/tabs/tabs'
@@ -49,6 +50,11 @@ function initAll (options) {
   // Find first header module to enhance.
   var $toggleButton = scope.querySelector('[data-module="govuk-header"]')
   new Header($toggleButton).init()
+
+  var $notificationBanners = scope.querySelectorAll('[data-module="govuk-notification-banner"]')
+  nodeListForEach($notificationBanners, function ($notificationBanner) {
+    new NotificationBanner($notificationBanner).init()
+  })
 
   var $radios = scope.querySelectorAll('[data-module="govuk-radios"]')
   nodeListForEach($radios, function ($radio) {
