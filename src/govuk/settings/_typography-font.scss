@@ -52,6 +52,8 @@ $govuk-font-family-tabular: if(
 
 /// Font families to use for print media
 ///
+/// This option avoids font-related issues that occur with some printer drivers and operating systems.
+///
 /// @type List
 /// @access public
 
