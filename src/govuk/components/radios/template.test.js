@@ -176,7 +176,7 @@ describe('Radios', () => {
         const $component = $('.govuk-radios')
 
         const $hiddenConditional = $component.find('.govuk-radios__conditional').first()
-        expect($hiddenConditional.text()).toContain('Mobile phone number')
+        expect($hiddenConditional.text()).toContain('Email address')
         expect($hiddenConditional.hasClass('govuk-radios__conditional--hidden')).toBeTruthy()
       })
 
