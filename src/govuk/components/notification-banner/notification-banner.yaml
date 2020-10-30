@@ -2,35 +2,35 @@ params:
 - name: text
   type: string
   required: true
-  description: If `html` is set, this is not required. Text to use within the notification banner. If `html` is provided, the `text` argument will be ignored.
+  description: The text that displays in the notification banner. If you set `html`, this option is not required and is ignored.
 - name: html
   type: string
   required: true
-  description: If `text` is set, this is not required. HTML to use within the notification banner. If `html` is provided, the `text` argument will be ignored.
+  description: The HTML to use within the notification banner. If you set `text`, this is not required. If you set `html`, the `text` option is ignored.
 - name: title
   type: string
   required: false
-  description: Title text to use within the notification banner. Defaults to 'Important' ('Success' for success type and 'Error' for error type). If `titleHtml` is supplied, the `title` argument will be ignored.
+  description: The title text that displays in the notification banner. If you do not set `type`, the `title` text defaults to 'Important'. If you set `type` to `success`, the `title` text defaults to 'Success'. If you set `type` to `error`, the `title` text defaults to 'Error'. If you set `titleHtml`, the `title` option is ignored.
 - name: titleHtml
   type: string
   required: false
-  description: Title HTML to use within the notification banner. If `titleHtml` is provided, the `title` argument will be ignored.
+  description: The title HTML to use within the notification banner. If you set `titleHtml`, the `title` option is ignored.
 - name: titleHeadingLevel
   type: string
   required: false
-  description: Heading level, from 1 to 6. Default is `2`.
+  description: Sets heading level for the title only. The minimum is `1`. The maximum is `6`. The default is `2`.
 - name: type
   type: string
   required: false
-  description: If `type` is set to `success` or `error`, the notification banner sets `role` to `alert` and `tabindex` to `-1`, and JavaScript moves the keyboard focus moves to the notification banner when the page loads. If `type` is not set, the notification banner defaults to setting `role` to `region` and using `aria-labelledby` to provide information for users of assistive technologies.
+  description: The type of notification to render. If you set `type` to `success` or `error`, the notification banner sets `role` to `alert`. JavaScript then moves the keyboard focus to the notification banner when the page loads. If you do not set `type`, the notification banner sets `role` to `region` and uses `aria-labelledby` to provide information to users of assistive technologies.
 - name: role
   type: string
   required: false
-  description: Overrides the value of the `role` attribute for the notification banner. Defaults to `region`. If `type` is set to `success` or `error`, defaults to `alert`.
+  description: Overrides the value of the `role` attribute for the notification banner. Defaults to `region`. If you set `type` to `success` or `error`, `role` defaults to `alert`.
 - name: titleId
   type: string
   required: false
-  description: Overrides the value of the `id` attribute for the title. `id` used by the `aria-labelledby` attribute on the notification banner to provide information to users of assistive technologies. `id` defaults to `govuk-notification-banner-title` if `role` is set to `region`. If `type` is set to `success` or `error`, `id` is not rendered by default.
+  description: "`id` for the `aria-labelledby` attribute, which provides information to users of assistive technologies. Overrides the value of the `id` attribute for the title. If you set `role` to `region`, `id` defaults to `govuk-notification-banner-title`. If you set `type` to `success` or `error`, `id` is not rendered by default."
 - name: disableAutoFocus
   type: boolean
   required: false
@@ -38,11 +38,11 @@ params:
 - name: classes
   type: string
   required: false
-  description: Classes to add to the notification banner.
+  description: The classes that you want to add to the notification banner.
 - name: attributes
   type: object
   required: false
-  description: HTML attributes (for example data attributes) to add to the notification banner.
+  description: The HTML attributes that you want to add to the notification banner, for example, data attributes.
 
 examples:
 - name: default
