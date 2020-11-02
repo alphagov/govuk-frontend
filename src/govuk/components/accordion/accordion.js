@@ -135,6 +135,24 @@ Accordion.prototype.initHeaderAttributes = function ($headerWrapper, index) {
   icon.className = this.iconClass
   icon.setAttribute('aria-hidden', 'true')
 
+  // Add 'show / hide' text
+  var span = document.createElement('span')
+  var showHideSpan = document.createElement('span')
+  var commaSpan = document.createElement('span')
+  var thisSectionSpan = document.createElement('span')
+
+  showHideSpan.className = 'govuk-accordion__toggle-link js-toggle-link'
+  commaSpan.className = 'govuk-visually-hidden'
+  thisSectionSpan.className = 'govuk-visually-hidden'
+
+  commaSpan.innerHTML = ', '
+  thisSectionSpan.innerHTML = ' this section'
+
+  span.appendChild(commaSpan)
+  span.appendChild(showHideSpan)
+  span.appendChild(thisSectionSpan)
+
+  $button.appendChild(span)
   $button.appendChild(icon)
 }
 
@@ -168,10 +186,14 @@ Accordion.prototype.setExpanded = function (expanded, $section) {
   var $button = $section.querySelector('.' + this.sectionButtonClass)
   $button.setAttribute('aria-expanded', expanded)
 
+  var $showHideLink = $section.querySelector('.govuk-accordion__toggle-link')
+
   if (expanded) {
     $section.classList.add(this.sectionExpandedClass)
+    $showHideLink.innerText = 'hide'
   } else {
     $section.classList.remove(this.sectionExpandedClass)
+    $showHideLink.innerText = 'show'
   }
 
   // See if "Show all" button text should be updated
