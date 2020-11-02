@@ -2,20 +2,18 @@
 
   $govuk-accordion-link-colour: $govuk-text-colour;
   $govuk-accordion-link-hover-colour: $govuk-text-colour;
-  $govuk-accordion-border-width: 3px;
   $govuk-accordion-hover-colour: govuk-colour("light-grey", $legacy: "grey-3");
 
   // Some things stolen from button component
   $govuk-button-shadow-colour: $govuk-border-colour;
   $button-shadow-size: $govuk-border-width-form-element;
+  // Some things stolen from back link component
+  $chevron-size: 7px;
+  $chevron-border-width: 2px;
+  $chevron-border-colour: $govuk-text-colour;
 
   .govuk-accordion {
     @include govuk-responsive-margin(6, "bottom");
-  }
-
-  // Space between accordion sections
-  .govuk-accordion__section {
-    margin-bottom: govuk-spacing(1);
   }
 
   .govuk-accordion__section-header {
@@ -53,8 +51,9 @@
 
     // Borders between accordion sections
     .govuk-accordion__section {
+      margin: 0 0 govuk-spacing(2);
       border: 1px solid $govuk-border-colour;
-      border-bottom: 3px solid $govuk-border-colour;
+      box-shadow: 0 $button-shadow-size 0 $govuk-button-shadow-colour;
     }
 
     // Hide the body of collapsed sections
@@ -70,7 +69,7 @@
       padding: govuk-spacing(5) govuk-spacing(5) govuk-spacing(5) (govuk-spacing(5) - 3px);
     }
 
-    // This is styled to look like a link not a button
+    // This is styled to look like a button
     .govuk-accordion__open-all {
       @include govuk-font($size: 19, $line-height: 19px);
       box-sizing: border-box;
@@ -134,6 +133,59 @@
       }
     }
 
+    .govuk-accordion__open-all--show,
+    .govuk-accordion__open-all--hide {
+      display: block;
+      margin-left: 25px;
+    }
+
+    .govuk-accordion__open-all--show:before,
+    .govuk-accordion__open-all--hide:before {
+      content: "";
+      box-sizing: border-box;
+      position: absolute;
+      top: 13px;
+      left: 25px;
+      width: 19px;
+      height: 19px;
+      border: 1px solid $govuk-text-colour;
+      border-radius: 50%;
+    }
+
+    .govuk-accordion__open-all--show:after,
+    .govuk-accordion__open-all--hide:after {
+      content: "";
+      position: absolute;
+      top: 16px;
+      left: 30px;
+      width: $chevron-size;
+      height: $chevron-size;
+      margin-right: 5px;
+      border: solid;
+      border-width: $chevron-border-width $chevron-border-width 0 0;
+      border-color: $chevron-border-colour;
+      // Fall back to a less than sign for IE8
+      @include govuk-if-ie8 {
+        content: "\003c"; // Less than sign (<)
+        width: auto;
+        height: auto;
+        border: 0;
+        color: $chevron-border-colour;
+        // IE8 doesn't seem to like rendering pseudo-elements using @font-faces,
+        // so fall back to using another sans-serif font to render the chevron.
+        font-family: Arial, sans-serif;
+      }
+    }
+
+    .govuk-accordion__open-all--show:after {
+      transform: rotate(135deg);
+    }
+
+    .govuk-accordion__open-all--hide:after {
+      top: 20px;
+      transform: rotate(315deg);
+    }
+
     // Section headers have a pointer cursor as an additional affordance
     .govuk-accordion__section-header {
       position: relative;
@@ -150,7 +202,7 @@
     @media (hover: none) {
       .govuk-accordion__section-header:hover {
         border-top-color: $govuk-accordion-link-colour;
-        box-shadow: inset 0 $govuk-accordion-border-width 0 0 $govuk-accordion-link-colour;
+        box-shadow: inset 0 1px 0 0 $govuk-accordion-link-colour;
       }
     }
 
@@ -170,6 +222,10 @@
 
       &:focus {
         @include govuk-focused-text;
+
+        .govuk-accordion__toggle-link {
+          color: $govuk-text-colour;
+        }
       }
 
       // Remove default button focus outline in Firefox
@@ -201,34 +257,68 @@
       text-align: left;
     }
 
-    // Display an icon to the right of each header to indicate open/closed status,
-    // and as an additional affordance.
-    .govuk-accordion__icon {
-      box-sizing: border-box;
+    // Show & hide controls
+
+    .govuk-accordion__toggle {
       display: block;
-      width: 19px;
-      height: 19px;
-      margin-top: govuk-spacing(1);
-      border: 1px solid $govuk-text-colour;
-      border-radius: 10px;
-      background-color: transparent;
+      position: relative;
+      margin-top: 5px;
     }
 
-    // .govuk-accordion__icon:before {
-    //   content: "";
-    //   box-sizing: border-box;
-    //   display: inline-block;
-    //   width: 20px;
-    //   height: 20px;
-    //   border: 2px solid govuk-colour("black");
-    //   background-color: transparent;
-    // }
+    .govuk-accordion__toggle-link {
+      @include govuk-font($size: 19, $line-height: 1);
+      display: block;
+      margin-left: 25px;
+      text-transform: capitalize;
+    }
+
+    .govuk-accordion__toggle-link:before {
+      content: "";
+      box-sizing: border-box;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 19px;
+      height: 19px;
+      border: 1px solid $govuk-text-colour;
+      border-radius: 50%;
+    }
+
+    .govuk-accordion__toggle-link:after {
+      content: "";
+      position: absolute;
+      top: 3px;
+      left: 5px;
+      width: $chevron-size;
+      height: $chevron-size;
+      margin-right: 5px;
+      transform: rotate(135deg);
+      border: solid;
+      border-width: $chevron-border-width $chevron-border-width 0 0;
+      border-color: $chevron-border-colour;
+      // Fall back to a less than sign for IE8
+      @include govuk-if-ie8 {
+        content: "\003c"; // Less than sign (<)
+        width: auto;
+        height: auto;
+        border: 0;
+        color: $chevron-border-colour;
+        // IE8 doesn't seem to like rendering pseudo-elements using @font-faces,
+        // so fall back to using another sans-serif font to render the chevron.
+        font-family: Arial, sans-serif;
+      }
+    }
 
     .govuk-accordion__section--expanded {
       border-left: 4px solid $govuk-text-colour;
 
       .govuk-accordion__section-header {
         padding: govuk-spacing(5) govuk-spacing(5) govuk-spacing(5) (govuk-spacing(5) - 3px);
+      }
+
+      .govuk-accordion__toggle-link:after {
+        top: 7px;
+        transform: rotate(315deg);
       }
     }
   }

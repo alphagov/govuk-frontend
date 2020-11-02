@@ -57,7 +57,7 @@ Accordion.prototype.initControls = function () {
   // Create "Show all" button and set attributes
   this.$openAllButton = document.createElement('button')
   this.$openAllButton.setAttribute('type', 'button')
-  this.$openAllButton.innerHTML = 'Show all <span class="govuk-visually-hidden">sections</span>'
+  this.$openAllButton.innerHTML = '<span class="govuk-accordion__open-all--text">Show all</span> <span class="govuk-visually-hidden">sections</span>'
   this.$openAllButton.setAttribute('class', this.openAllClass)
   this.$openAllButton.setAttribute('aria-expanded', 'false')
   this.$openAllButton.setAttribute('type', 'button')
@@ -141,6 +141,7 @@ Accordion.prototype.initHeaderAttributes = function ($headerWrapper, index) {
   var commaSpan = document.createElement('span')
   var thisSectionSpan = document.createElement('span')
 
+  span.className = 'govuk-accordion__toggle'
   showHideSpan.className = 'govuk-accordion__toggle-link js-toggle-link'
   commaSpan.className = 'govuk-visually-hidden'
   thisSectionSpan.className = 'govuk-visually-hidden'
@@ -219,7 +220,7 @@ Accordion.prototype.checkIfAllSectionsOpen = function () {
 
 // Update "Show all" button
 Accordion.prototype.updateOpenAllButton = function (expanded) {
-  var newButtonText = expanded ? 'Hide all' : 'Show all'
+  var newButtonText = expanded ? '<span class="govuk-accordion__open-all--hide">Hide all</span>' : '<span class="govuk-accordion__open-all--show">Show all</span>'
   newButtonText += '<span class="govuk-visually-hidden"> sections</span>'
   this.$openAllButton.setAttribute('aria-expanded', expanded)
   this.$openAllButton.innerHTML = newButtonText
