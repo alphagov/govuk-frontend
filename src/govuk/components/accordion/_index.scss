@@ -1,16 +1,18 @@
 @include govuk-exports("govuk/component/accordion") {
 
-  $govuk-accordion-link-colour: $govuk-text-colour;
+  $govuk-accordion-link-colour: $govuk-secondary-text-colour;
   $govuk-accordion-link-hover-colour: $govuk-text-colour;
   $govuk-accordion-hover-colour: govuk-colour("light-grey", $legacy: "grey-3");
+  $govuk-accordion-icon-border-colour: $govuk-secondary-text-colour;
 
   // Some things stolen from button component
   $govuk-button-shadow-colour: $govuk-border-colour;
   $button-shadow-size: $govuk-border-width-form-element;
+
   // Some things stolen from back link component
   $chevron-size: 7px;
   $chevron-border-width: 2px;
-  $chevron-border-colour: $govuk-text-colour;
+  $chevron-border-colour: $govuk-secondary-text-colour;
 
   .govuk-accordion {
     @include govuk-responsive-margin(6, "bottom");
@@ -59,14 +61,13 @@
     // Hide the body of collapsed sections
     .govuk-accordion__section-content {
       display: none;
-      @include govuk-responsive-padding(3, "top");
-      @include govuk-responsive-padding(3, "bottom");
     }
 
     // Show the body of expanded sections
     .govuk-accordion__section--expanded .govuk-accordion__section-content {
+      @include govuk-responsive-padding(5);
+      @include govuk-responsive-padding(1, "top");
       display: block;
-      padding: govuk-spacing(5) govuk-spacing(5) govuk-spacing(5) (govuk-spacing(5) - 3px);
     }
 
     // This is styled to look like a button
@@ -75,9 +76,10 @@
       box-sizing: border-box;
       position: relative;
       margin: 0 0 govuk-spacing(2);
-      padding: (govuk-spacing(3) - $govuk-border-width-form-element) govuk-spacing(5) (govuk-spacing(3) - $govuk-border-width-form-element - ($button-shadow-size / 2));
+      padding: (govuk-spacing(3) - $govuk-border-width-form-element) govuk-spacing(3) (govuk-spacing(3) - $govuk-border-width-form-element - ($button-shadow-size / 2));
       border: 1px solid $govuk-border-colour;
       border-radius: 0;
+      color: $govuk-accordion-link-colour;
       background-color: transparent;
       box-shadow: 0 $button-shadow-size 0 $govuk-button-shadow-colour;
       text-align: center;
@@ -85,11 +87,16 @@
       cursor: pointer;
       -webkit-appearance: none;
 
+      @include govuk-media-query($from: tablet) {
+        padding: (govuk-spacing(3) - $govuk-border-width-form-element) govuk-spacing(5) (govuk-spacing(3) - $govuk-border-width-form-element - ($button-shadow-size / 2));
+      }
+
       // Ensure that any global link styles are overridden
       &:link,
       &:visited,
       &:active,
       &:hover {
+        outline: 0;
         color: $govuk-text-colour;
         text-decoration: none;
       }
@@ -108,22 +115,27 @@
       }
 
       &:focus {
-        border-color: $govuk-focus-colour;
+        border-color: $govuk-text-colour;
+        color: $govuk-text-colour;
         @include govuk-not-ie8 {
           outline: $govuk-focus-width solid transparent;
         }
         @include govuk-if-ie8 {
           color: $govuk-focus-text-colour;
-          background-color: $govuk-focus-colour;
         }
-        box-shadow: inset 0 0 0 1px $govuk-focus-colour;
-      }
 
-      &:focus:not(:active):not(:hover) {
-        border-color: $govuk-text-colour;
-        color: $govuk-focus-text-colour;
         background-color: $govuk-focus-colour;
         box-shadow: 0 2px 0 $govuk-focus-text-colour;
+
+        .govuk-accordion__open-all--show:before,
+        .govuk-accordion__open-all--hide:before {
+          border: 1px solid $govuk-accordion-link-hover-colour;
+        }
+
+        .govuk-accordion__open-all--show:after,
+        .govuk-accordion__open-all--hide:after {
+          border-color: $govuk-accordion-link-hover-colour;
+        }
       }
 
       // Remove default button focus outline in Firefox
@@ -133,23 +145,30 @@
       }
     }
 
+    // These probably don't need to be separate classes tbh
     .govuk-accordion__open-all--show,
     .govuk-accordion__open-all--hide {
       display: block;
-      margin-left: 25px;
+      margin: 0 15px 0 25px;
+      text-align: left;
     }
 
+    // Should probably separate out all the code for the chevron icons so it's not repeated
     .govuk-accordion__open-all--show:before,
     .govuk-accordion__open-all--hide:before {
       content: "";
       box-sizing: border-box;
       position: absolute;
       top: 13px;
-      left: 25px;
+      left: 15px;
       width: 19px;
       height: 19px;
-      border: 1px solid $govuk-text-colour;
+      border: 1px solid $govuk-accordion-icon-border-colour;
       border-radius: 50%;
+
+      @include govuk-media-query($from: tablet) {
+        left: 25px;
+      }
     }
 
     .govuk-accordion__open-all--show:after,
@@ -157,7 +176,7 @@
       content: "";
       position: absolute;
       top: 16px;
-      left: 30px;
+      left: 20px;
       width: $chevron-size;
       height: $chevron-size;
       margin-right: 5px;
@@ -175,6 +194,10 @@
         // so fall back to using another sans-serif font to render the chevron.
         font-family: Arial, sans-serif;
       }
+
+      @include govuk-media-query($from: tablet) {
+        left: 30px;
+      }
     }
 
     .govuk-accordion__open-all--show:after {
@@ -189,7 +212,6 @@
     // Section headers have a pointer cursor as an additional affordance
     .govuk-accordion__section-header {
       position: relative;
-      color: $govuk-accordion-link-colour;
       cursor: pointer;
     }
 
@@ -225,6 +247,14 @@
 
         .govuk-accordion__toggle-link {
           color: $govuk-text-colour;
+        }
+
+        .govuk-accordion__toggle-link:before {
+          border: 1px solid $govuk-accordion-link-hover-colour;
+        }
+
+        .govuk-accordion__toggle-link:after {
+          border-color: $govuk-accordion-link-hover-colour;
         }
       }
 
@@ -269,6 +299,7 @@
       @include govuk-font($size: 19, $line-height: 1);
       display: block;
       margin-left: 25px;
+      color: $govuk-accordion-link-colour;
       text-transform: capitalize;
     }
 
@@ -280,7 +311,7 @@
       left: 0;
       width: 19px;
       height: 19px;
-      border: 1px solid $govuk-text-colour;
+      border: 1px solid $govuk-accordion-icon-border-colour;
       border-radius: 50%;
     }
 
@@ -310,10 +341,11 @@
     }
 
     .govuk-accordion__section--expanded {
-      border-left: 4px solid $govuk-text-colour;
+      border-left: 1px solid $govuk-text-colour;
+      box-shadow: inset 4px 0 0 0 $govuk-text-colour;
 
-      .govuk-accordion__section-header {
-        padding: govuk-spacing(5) govuk-spacing(5) govuk-spacing(5) (govuk-spacing(5) - 3px);
+      .govuk-accordion__section-header:hover:not(:focus) {
+        box-shadow: inset 4px 0 0 0 $govuk-text-colour;
       }
 
       .govuk-accordion__toggle-link:after {
