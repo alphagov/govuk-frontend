@@ -1,15 +1,30 @@
 # Publishing GOV.UK Frontend
 
-1. Make sure you have cards in the "Backlog" column to:
-  - Update the GOV.UK Design System to use the latest release
-  - Update the GOV.UK Prototype Kit to use the latest release
-  - Update the GOV.UK Frontend Docs to use the latest release
+## Steps you must complete before you release a new version of GOV.UK Frontend
 
 2. Checkout **master** and pull latest changes.
+1. Raise new issues in the team GitHub repositories to:
+- Create release notes for the new release, for example, [#1986](https://github.com/alphagov/govuk-frontend/issues/1986)
+- Create release notes for the new GOV.UK Prototype Kit v[VERSION NUMBER]   
+- Release v[VERSION NUMBER], for example, [#1987](https://github.com/alphagov/govuk-frontend/issues/1987)
+- Update the GOV.UK Design System to use the new release, for example, [#1347](https://github.com/alphagov/govuk-design-system/issues/1347)
+- Update the GOV.UK Frontend Docs to use the new release, for example, [#75](https://github.com/alphagov/govuk-frontend-docs/issues/75)
+- Update the GOV.UK Prototype Kit to use the new release, for example, [#923](https://github.com/alphagov/govuk-prototype-kit/issues/923)
+- Release GOV.UK Prototype Kit v[version number], for example, [#917](https://github.com/alphagov/govuk-prototype-kit/issues/917)
 
 3. Run `nvm use` to ensure you are using the right version of Node.js and npm.
+2. Add the issues to the **Design System Sprint Board**.
 
 4. Run `npm install` to ensure you have the latest dependencies installed.
+3. Confirm that any related content for the Design System or Frontend docs is ready to publish.
+
+4. Write a summary of the release. For example:
+
+    🚀 We’ve just released GOV.‌UK Frontend v3.7.0. It's now easier and faster to use our Sass. We've also made improvements to back links, breadcrumbs, lists and the header. Thanks to @<SLACK-NAME> and @<SLACK-NAME> for helping with this release. [https://github.com/alphagov/govuk-frontend/releases/tag/v3.7.0](https://github.com/alphagov/govuk-frontend/releases/tag/v3.7.0)
+
+5. Ask a tech writer or a content writer to review the summary.
+
+## Release a new version of GOV.UK Frontend
 
 5. Create and checkout a new branch (`release-[version-number]`).
   The version number is determined by looking at the [current "Unreleased" CHANGELOG](../../CHANGELOG.md) changes and updating the previous release number depending on the kind of entries:
@@ -72,8 +87,8 @@
 npm logout
 ```
 
-18. Once you've updated the GOV.UK Design System, Prototype Kit, and Frontend Docs, post a short summary of the release in the cross-government and GDS #govuk-design-system Slack channels. For example:
+## Steps you must complete after you release a new version of GOV.UK Frontend
 
-    🚀 We’ve just released GOV.‌UK Frontend v3.7.0. It's now easier and faster to use our Sass. We've also made improvements to back links, breadcrumbs, lists and the header. Thanks to @<SLACK-NAME> and @<SLACK-NAME> for helping with this release. [https://github.com/alphagov/govuk-frontend/releases/tag/v3.7.0](https://github.com/alphagov/govuk-frontend/releases/tag/v3.7.0)
+1. Update the GOV.UK Design System, Prototype Kit, and Frontend Docs (as in step 1 of [Steps you must complete before you release a new version of GOV.UK Frontend](#steps-you-must-complete-before-you-release-a-new-version-of-govuk-frontend)).
 
-19. Move cards on the [Sprint board](https://github.com/orgs/alphagov/projects/4) from "Ready to Release" column to "Done". Close any associated milestones.
+2. Move cards on the [Sprint board](https://github.com/orgs/alphagov/projects/4) from the **Ready to Release** column to **Done**. Close any associated milestones.
