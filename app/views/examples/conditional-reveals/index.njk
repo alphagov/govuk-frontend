@@ -1,0 +1,175 @@
+{% extends "layout.njk" %}
+
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "checkboxes/macro.njk" import govukCheckboxes %}
+{% from "radios/macro.njk" import govukRadios %}
+{% from "input/macro.njk" import govukInput %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    "href": "/"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {% set emailHtml %}
+    {{ govukInput({
+      id: "contact-by-email",
+      name: "contact-by-email",
+      type: "email",
+      spellcheck: false,
+      classes: "govuk-!-width-one-third",
+      label: {
+        text: "Email address"
+      }
+    }) }}
+    {% endset -%}
+
+    {% set phoneHtml %}
+    {{ govukInput({
+      id: "contact-by-phone",
+      name: "contact-by-phone",
+      type: "tel",
+      classes: "govuk-!-width-one-third",
+      label: {
+        text: "Phone number"
+      }
+    }) }}
+    {% endset -%}
+
+    {% set textHtml %}
+    {{ govukInput({
+      id: "contact-by-text",
+      name: "contact-by-text",
+      type: "tel",
+      classes: "govuk-!-width-one-third",
+      label: {
+        text: "Mobile phone number"
+      }
+    }) }}
+    {% endset -%}
+
+    <a class="govuk-link" href="#">Focusable element</a>
+
+    {{ govukCheckboxes({
+      idPrefix: "contact",
+      name: "contact",
+      fieldset: {
+        legend: {
+          text: "How would you like to be contacted?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      hint: {
+        text: "Select all options that are relevant to you."
+      },
+      items: [
+        {
+          value: "email",
+          text: "Email",
+          conditional: {
+            html: emailHtml
+          }
+        },
+        {
+          value: "phone",
+          text: "Phone",
+          conditional: {
+            html: phoneHtml
+          }
+        },
+        {
+          value: "text message",
+          text: "Text message",
+          conditional: {
+            html: textHtml
+          }
+        }
+      ]
+    }) }}
+
+    {% set emailHtml %}
+    {{ govukInput({
+      id: "radio-email",
+      name: "contact-by-email",
+      type: "email",
+      spellcheck: false,
+      classes: "govuk-!-width-one-third",
+      label: {
+        text: "Email address"
+      }
+    }) }}
+    {% endset -%}
+
+    {% set phoneHtml %}
+    {{ govukInput({
+      id: "radio-phone",
+      name: "contact-by-phone",
+      type: "tel",
+      classes: "govuk-!-width-one-third",
+      label: {
+        text: "Phone number"
+      }
+    }) }}
+    {% endset -%}
+
+    {% set textHtml %}
+    {{ govukInput({
+      id: "radio-text",
+      name: "contact-by-text",
+      type: "tel",
+      classes: "govuk-!-width-one-third",
+      label: {
+        text: "Mobile phone number"
+      }
+    }) }}
+    {% endset -%}
+
+    <a class="govuk-link" href="#">Focusable element</a>
+
+    {{ govukRadios({
+      idPrefix: "radio-contact",
+      name: "contact",
+      fieldset: {
+        legend: {
+          text: "How would you prefer to be contacted?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      hint: {
+        text: "Select one option."
+      },
+      items: [
+        {
+          value: "email",
+          text: "Email",
+          conditional: {
+            html: emailHtml
+          }
+        },
+        {
+          value: "phone",
+          text: "Phone",
+          conditional: {
+            html: phoneHtml
+          }
+        },
+        {
+          value: "text",
+          text: "Text message",
+          conditional: {
+            html: textHtml
+          }
+        }
+      ]
+    }) }}
+
+    {% endblock %}
+  </div>
+</div>
