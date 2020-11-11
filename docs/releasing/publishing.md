@@ -93,7 +93,7 @@ npm logout
 
 ## Steps you must complete after you release a new version of GOV.UK Frontend
 
-1. Update the GOV.UK Design System, Prototype Kit, and Frontend Docs (as in step 1 of [Steps you must complete before you release a new version of GOV.UK Frontend](#steps-you-must-complete-before-you-release-a-new-version-of-govuk-frontend)).
+1. Update the GOV.UK Design System, Prototype Kit, and Frontend Docs and release a new version of the Prototype Kit (as in step 1 of [Steps you must complete before you release a new version of GOV.UK Frontend](#steps-you-must-complete-before-you-release-a-new-version-of-govuk-frontend)).
 
 2. Post your summary of the release in the cross-government and GDS #govuk-design-system Slack channels.
 
