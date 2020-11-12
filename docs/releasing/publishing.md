@@ -4,19 +4,19 @@
 
 1. Raise new issues in the team GitHub repositories to:
 
-  - Create release notes for the new release, for example, [#1986](https://github.com/alphagov/govuk-frontend/issues/1986)
-  - Create release notes for the new version of GOV.UK Prototype Kit, for example, [#958](https://github.com/alphagov/govuk-prototype-kit/issues/958)
-  - Release the new version, for example, [#1987](https://github.com/alphagov/govuk-frontend/issues/1987)
-  - Update the GOV.UK Design System to use the new release, for example, [#1347](https://github.com/alphagov/govuk-design-system/issues/1347)
-  - Update the GOV.UK Frontend Docs to use the new release, for example, [#75](https://github.com/alphagov/govuk-frontend-docs/issues/75)
-  - Update the GOV.UK Prototype Kit to use the new release, for example, [#923](https://github.com/alphagov/govuk-prototype-kit/issues/923)
-  - Release the new version of GOV.UK Prototype Kit, for example, [#917](https://github.com/alphagov/govuk-prototype-kit/issues/917)
+  - Create release notes for the new release (example card: [#1986](https://github.com/alphagov/govuk-frontend/issues/1986))
+  - Create release notes for the new version of GOV.UK Prototype Kit (example card: [#958](https://github.com/alphagov/govuk-prototype-kit/issues/958))
+  - Release the new version (example card: [#1987](https://github.com/alphagov/govuk-frontend/issues/1987))
+  - Update the GOV.UK Design System to use the new release (example card: [#1347](https://github.com/alphagov/govuk-design-system/issues/1347))
+  - Update the GOV.UK Frontend Docs to use the new release (example card: [#75](https://github.com/alphagov/govuk-frontend-docs/issues/75))
+  - Update the GOV.UK Prototype Kit to use the new release (example card: [#923](https://github.com/alphagov/govuk-prototype-kit/issues/923))
+  - Release the new version of GOV.UK Prototype Kit (example card: [#917](https://github.com/alphagov/govuk-prototype-kit/issues/917))
 
 2. Add the issues to the **Design System Sprint Board**.
 
 3. Confirm that any related content for the Design System or Frontend docs is ready to publish.
 
-4. Write a summary of the release. For example:
+4. Write a summary of the release for the cross-government and GDS #govuk-design-system Slack channels. For example:
 
     🚀 We’ve just released GOV.‌UK Frontend v3.7.0. It's now easier and faster to use our Sass. We've also made improvements to back links, breadcrumbs, lists and the header. Thanks to @<SLACK-NAME> and @<SLACK-NAME> for helping with this release. [https://github.com/alphagov/govuk-frontend/releases/tag/v3.7.0](https://github.com/alphagov/govuk-frontend/releases/tag/v3.7.0)
 
