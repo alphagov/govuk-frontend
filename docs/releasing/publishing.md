@@ -16,7 +16,7 @@
 
 3. Confirm that any related content for the Design System or Frontend docs is ready to publish.
 
-4. Write a summary of the release for the cross-government and GDS #govuk-design-system Slack channels. For example:
+4. Write a summary to post on Slack after the release. For example:
 
     🚀 We’ve just released GOV.‌UK Frontend v3.7.0. It's now easier and faster to use our Sass. We've also made improvements to back links, breadcrumbs, lists and the header. Thanks to @<SLACK-NAME> and @<SLACK-NAME> for helping with this release. [https://github.com/alphagov/govuk-frontend/releases/tag/v3.7.0](https://github.com/alphagov/govuk-frontend/releases/tag/v3.7.0)
 
