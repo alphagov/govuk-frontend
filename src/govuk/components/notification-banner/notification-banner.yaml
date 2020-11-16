@@ -93,6 +93,12 @@ examples:
     type: success
     role: region
     text: Email sent to example@email.com-
+- name:  custom tabindex
+  data:
+    type: success
+    text: Email sent to example@email.com-
+    attributes:
+      tabindex: 2
 
 # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
 
