@@ -1,0 +1,34 @@
+{% extends "_generic.njk" %}
+
+{% from "panel/macro.njk" import govukPanel %}
+
+{% set pageTitle = "Photo submitted" %}
+{% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
+
+{% block header %}
+  {% include "../../partials/banner.njk" %}
+  {{ govukHeader({
+    serviceName: "Apply for a passport",
+    navigation: [
+        {
+            href: "#",
+            text: "Home"
+        },
+        {
+            href: "#upload-a-photo",
+            text: "Upload a photo",
+            active: true
+        }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukPanel({
+        titleText: pageTitle
+      }) }}
+    </div>
+  </div>
+{% endblock %}
