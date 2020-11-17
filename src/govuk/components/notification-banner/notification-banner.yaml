@@ -7,7 +7,7 @@ params:
   type: string
   required: true
   description: If `text` is set, this is not required. HTML to use within the notification banner. If `html` is provided, the `text` argument will be ignored.
-- name: title
+- name: titleText
   type: string
   required: false
   description: Title text to use within the notification banner. Defaults to 'Important' ('Success' for success type and 'Error' for error type). If `titleHtml` is supplied, the `title` argument will be ignored.
@@ -105,7 +105,7 @@ examples:
 - name: custom title
   hidden: true
   data:
-    title: Important information
+    titleText: Important information
     text: This publication was withdrawn on 7 March 2014.
 - name: title as html
   hidden: true
@@ -115,7 +115,7 @@ examples:
 - name: title html as text
   hidden: true
   data:
-    title: <span>Important information</span>
+    titleText: <span>Important information</span>
     text: This publication was withdrawn on 7 March 2014.
 - name: custom title heading level
   hidden: true

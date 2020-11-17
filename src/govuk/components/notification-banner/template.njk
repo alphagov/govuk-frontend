@@ -18,8 +18,8 @@
 
 {%- if params.titleHtml %}
   {% set title = params.titleHtml | safe %}
-{%- elif params.title %}
-  {% set title = params.title %}
+{%- elif params.titleText %}
+  {% set title = params.titleText %}
 {%- elif params.type == "success" %}
   {% set title = "Success" %}
 {%- elif params.type == "error" %}
