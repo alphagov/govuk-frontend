@@ -18,13 +18,6 @@ describe('Error-summary', () => {
       expect(results).toHaveNoViolations()
     })
 
-    it('aria-labelledby attribute matches the title id', () => {
-      const $ = render('error-summary', examples.default)
-      const ariaAttr = $('.govuk-error-summary').attr('aria-labelledby')
-
-      expect(ariaAttr).toEqual('error-summary-title')
-    })
-
     it('has role=alert attribute', () => {
       const $ = render('error-summary', examples.default)
       const roleAttr = $('.govuk-error-summary').attr('role')

@@ -1,5 +1,5 @@
 <div class="govuk-error-summary
-  {%- if params.classes %} {{ params.classes }}{% endif %}" aria-labelledby="error-summary-title" role="alert" tabindex="-1"
+  {%- if params.classes %} {{ params.classes }}{% endif %}" role="alert" tabindex="-1"
   {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %} data-module="govuk-error-summary">
   <h2 class="govuk-error-summary__title" id="error-summary-title">
     {{ params.titleHtml | safe if params.titleHtml else params.titleText }}
