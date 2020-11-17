@@ -18,13 +18,6 @@ describe('Error-summary', () => {
       expect(results).toHaveNoViolations()
     })
 
-    it('has role=alert attribute', () => {
-      const $ = render('error-summary', examples.default)
-      const roleAttr = $('.govuk-error-summary').attr('role')
-
-      expect(roleAttr).toEqual('alert')
-    })
-
     it('has the correct tabindex attribute to be focussed', () => {
       const $ = render('error-summary', examples.default)
       const tabindexAttr = $('.govuk-error-summary').attr('tabindex')
