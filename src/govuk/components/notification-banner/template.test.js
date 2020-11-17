@@ -187,18 +187,18 @@ describe('Notification-banner', () => {
       expect($component.attr('role')).toEqual('alert')
     })
 
-    it('does not render aria-labelledby', () => {
+    it('does render aria-labelledby', () => {
       const $ = render('notification-banner', examples['with type as success'])
       const $component = $('.govuk-notification-banner')
 
-      expect($component.attr('aria-labelledby')).toBeUndefined()
+      expect($component.attr('aria-labelledby')).toEqual('govuk-notification-banner-title')
     })
 
-    it('does not render a title id for aria-labelledby', () => {
+    it('renders a title id for aria-labelledby', () => {
       const $ = render('notification-banner', examples['with type as success'])
-      const $component = $('.govuk-notification-banner')
+      const $component = $('.govuk-notification-banner__title')
 
-      expect($component.attr('id')).toBeUndefined()
+      expect($component.attr('id')).toEqual('govuk-notification-banner-title')
     })
 
     it('renders default success title text', () => {
@@ -206,6 +206,15 @@ describe('Notification-banner', () => {
       const $title = $('.govuk-notification-banner__title')
 
       expect($title.html().trim()).toEqual('Success')
+    })
+
+    it('renders custom title id and aria-labelledby', () => {
+      const $ = render('notification-banner', examples['custom title id with type as success'])
+      const $component = $('.govuk-notification-banner')
+      const $title = $('.govuk-notification-banner__title')
+
+      expect($component.attr('aria-labelledby')).toEqual('my-id')
+      expect($title.attr('id')).toEqual('my-id')
     })
   })
 
@@ -224,18 +233,18 @@ describe('Notification-banner', () => {
       expect($component.attr('role')).toEqual('alert')
     })
 
-    it('does not render aria-labbelledby', () => {
+    it('does render aria-labelledby', () => {
       const $ = render('notification-banner', examples['with type as error'])
       const $component = $('.govuk-notification-banner')
 
-      expect($component.attr('aria-labbelledby')).toBeUndefined()
+      expect($component.attr('aria-labelledby')).toEqual('govuk-notification-banner-title')
     })
 
-    it('does not render a title id for aria-labelledby', () => {
+    it('does render a title id for aria-labelledby', () => {
       const $ = render('notification-banner', examples['with type as error'])
-      const $component = $('.govuk-notification-banner')
+      const $component = $('.govuk-notification-banner__title')
 
-      expect($component.attr('id')).toBeUndefined()
+      expect($component.attr('id')).toEqual('govuk-notification-banner-title')
     })
 
     it('renders custom title id', () => {
@@ -250,6 +259,15 @@ describe('Notification-banner', () => {
       const $title = $('.govuk-notification-banner__title')
 
       expect($title.html().trim()).toEqual('Error')
+    })
+
+    it('renders custom title id and aria-labelledby', () => {
+      const $ = render('notification-banner', examples['custom title id with type as error'])
+      const $component = $('.govuk-notification-banner')
+      const $title = $('.govuk-notification-banner__title')
+
+      expect($component.attr('aria-labelledby')).toEqual('my-id')
+      expect($title.attr('id')).toEqual('my-id')
     })
   })
 
