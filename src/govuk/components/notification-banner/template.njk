@@ -29,12 +29,12 @@
 {%- endif -%}
 
 <div class="govuk-notification-banner{% if typeClass %} {{ typeClass }}{% endif %}{% if params.classes %} {{ params.classes }}{% endif %}" role="{{ role }}"
-  {%- if (role == "region") %} aria-labelledby="{{ params.titleId | default('govuk-notification-banner-title')}}" {% endif -%}
+  aria-labelledby="{{ params.titleId | default('govuk-notification-banner-title')}}"
   data-module="govuk-notification-banner"
   {%- if params.disableAutoFocus %} data-disable-auto-focus="true"{% endif %}
   {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
   <div class="govuk-notification-banner__header">
-    <h{{ params.titleHeadingLevel | default(2) }} class="govuk-notification-banner__title"{% if (role == "region" or params.titleId) %} id="{{ params.titleId | default('govuk-notification-banner-title') }}" {%- endif %}>
+    <h{{ params.titleHeadingLevel | default(2) }} class="govuk-notification-banner__title" id="{{ params.titleId | default('govuk-notification-banner-title') }}" >
       {{ title }}
     </h{{ params.titleHeadingLevel | default(2) }}>
   </div>
