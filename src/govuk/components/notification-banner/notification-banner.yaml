@@ -97,11 +97,11 @@ examples:
   data:
     type: success
     role: region
-    text: Email sent to example@email.com-
+    text: Email sent to example@email.com
 - name:  custom tabindex
   data:
     type: success
-    text: Email sent to example@email.com-
+    text: Email sent to example@email.com
     attributes:
       tabindex: 2
 
