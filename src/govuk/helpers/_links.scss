@@ -82,12 +82,9 @@
 /// @access public
 
 @mixin govuk-link-style-error {
-  &:link {
-    color: $govuk-error-colour;
-  }
-
+  &:link,
   &:visited {
-    color: $govuk-link-visited-colour;
+    color: $govuk-error-colour;
   }
 
   &:hover {
@@ -132,12 +129,9 @@
 /// @access public
 
 @mixin govuk-link-style-success {
-  &:link {
-    color: $govuk-success-colour;
-  }
-
+  &:link,
   &:visited {
-    color: $govuk-link-visited-colour;
+    color: $govuk-success-colour;
   }
 
   &:hover {
