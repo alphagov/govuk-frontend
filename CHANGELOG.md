@@ -2,13 +2,21 @@
 
 ## Unreleased
 
+## 3.10.0 (Feature release)
+
 ### New features
+
+#### Update users with notification banners
+
+You can now [use notification banners](https://design-system.service.gov.uk/components/notification-banner/) to tell users about events that occur elsewhere in your service. For example, when they need to complete tasks.
+
+This was added in [pull request #1935: Create notification banner component](https://github.com/alphagov/govuk-frontend/issues/1935).
 
 #### Customise input mode in the date component
 
-You can now customise the input mode of each input in the date component to trigger a keyboard of your choice to appear on mobiles.
+You can now change which keyboard type displays for mobile and tablet users. This enables users to enter characters other than numbers when they use the date input. To change the keyboard type, set the `inputmode` when you use the Nunjucks macro options.```
 
-This was added in [#1975 Enable custom inputmode for date input component](https://github.com/alphagov/govuk-frontend/pull/1975) – thanks to [@foaly-nr1](https://github.com/foaly-nr1) for contributing this.
+This was added in [pull request #1975: Enable custom inputmode for date input component](https://github.com/alphagov/govuk-frontend/pull/1975). Thanks to [@foaly-nr1](https://github.com/foaly-nr1) for contributing this issue.
 
 ## 3.9.1 (Fix release)
 
