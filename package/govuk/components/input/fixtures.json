@@ -328,63 +328,103 @@
         {
             "name": "classes",
             "options": {
+                "id": "with-classes",
+                "name": "with-classes",
+                "label": {
+                    "text": "With classes"
+                },
                 "classes": "app-input--custom-modifier"
             },
-            "html": "<div class=\"govuk-form-group\">\n  \n\n<input class=\"govuk-input app-input--custom-modifier\" id=\"\" name=\"\" type=\"text\">\n</div>"
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"with-classes\">\n    With classes\n  </label>\n\n<input class=\"govuk-input app-input--custom-modifier\" id=\"with-classes\" name=\"with-classes\" type=\"text\">\n</div>"
         },
         {
             "name": "custom type",
             "options": {
+                "id": "with-custom-type",
+                "name": "with-custom-type",
+                "label": {
+                    "text": "With custom type"
+                },
                 "type": "number"
             },
-            "html": "<div class=\"govuk-form-group\">\n  \n\n<input class=\"govuk-input\" id=\"\" name=\"\" type=\"number\">\n</div>"
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"with-custom-type\">\n    With custom type\n  </label>\n\n<input class=\"govuk-input\" id=\"with-custom-type\" name=\"with-custom-type\" type=\"number\">\n</div>"
         },
         {
             "name": "value",
             "options": {
+                "id": "with-value",
+                "name": "with-value",
+                "label": {
+                    "text": "With value"
+                },
                 "value": "QQ 12 34 56 C"
             },
-            "html": "<div class=\"govuk-form-group\">\n  \n\n<input class=\"govuk-input\" id=\"\" name=\"\" type=\"text\" value=\"QQ 12 34 56 C\">\n</div>"
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"with-value\">\n    With value\n  </label>\n\n<input class=\"govuk-input\" id=\"with-value\" name=\"with-value\" type=\"text\" value=\"QQ 12 34 56 C\">\n</div>"
         },
         {
             "name": "with describedBy",
             "options": {
+                "id": "with-describedby",
+                "name": "with-describedby",
+                "label": {
+                    "text": "With describedBy"
+                },
                 "describedBy": "some-id"
             },
-            "html": "<div class=\"govuk-form-group\">\n  \n\n<input class=\"govuk-input\" id=\"\" name=\"\" type=\"text\" aria-describedby=\"some-id\">\n</div>"
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"with-describedby\">\n    With describedBy\n  </label>\n\n<input class=\"govuk-input\" id=\"with-describedby\" name=\"with-describedby\" type=\"text\" aria-describedby=\"some-id\">\n</div>"
         },
         {
             "name": "attributes",
             "options": {
+                "id": "with-attributes",
+                "name": "with-attributes",
+                "label": {
+                    "text": "With attributes"
+                },
                 "attributes": {
                     "data-attribute": "my data value"
                 }
             },
-            "html": "<div class=\"govuk-form-group\">\n  \n\n<input class=\"govuk-input\" id=\"\" name=\"\" type=\"text\" data-attribute=\"my data value\">\n</div>"
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"with-attributes\">\n    With attributes\n  </label>\n\n<input class=\"govuk-input\" id=\"with-attributes\" name=\"with-attributes\" type=\"text\" data-attribute=\"my data value\">\n</div>"
         },
         {
             "name": "hint with describedBy",
             "options": {
+                "id": "with-hint-describedby",
+                "name": "with-hint-describedby",
+                "label": {
+                    "text": "With hint describedBy"
+                },
                 "describedBy": "some-id",
                 "hint": {
                     "text": "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
                 }
             },
-            "html": "<div class=\"govuk-form-group\">\n  \n\n  \n  \n  <div id=\"undefined-hint\" class=\"govuk-hint\">\n    It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.\n  </div>\n\n<input class=\"govuk-input\" id=\"\" name=\"\" type=\"text\" aria-describedby=\"some-id undefined-hint\">\n</div>"
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"with-hint-describedby\">\n    With hint describedBy\n  </label>\n\n  \n  \n  <div id=\"with-hint-describedby-hint\" class=\"govuk-hint\">\n    It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.\n  </div>\n\n<input class=\"govuk-input\" id=\"with-hint-describedby\" name=\"with-hint-describedby\" type=\"text\" aria-describedby=\"some-id with-hint-describedby-hint\">\n</div>"
         },
         {
             "name": "error with describedBy",
             "options": {
+                "id": "with-error-describedby",
+                "name": "with-error-describedby",
+                "label": {
+                    "text": "With error describedBy"
+                },
                 "describedBy": "some-id",
                 "errorMessage": {
                     "text": "Error message"
                 }
             },
-            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  \n\n\n  \n  \n  <span id=\"undefined-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message\n  </span>\n<input class=\"govuk-input govuk-input--error\" id=\"\" name=\"\" type=\"text\" aria-describedby=\"some-id undefined-error\">\n</div>"
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  <label class=\"govuk-label\" for=\"with-error-describedby\">\n    With error describedBy\n  </label>\n\n\n  \n  \n  <span id=\"with-error-describedby-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message\n  </span>\n<input class=\"govuk-input govuk-input--error\" id=\"with-error-describedby\" name=\"with-error-describedby\" type=\"text\" aria-describedby=\"some-id with-error-describedby-error\">\n</div>"
         },
         {
             "name": "with error and hint",
             "options": {
+                "id": "with-error-hint",
+                "name": "with-error-hint",
+                "label": {
+                    "text": "With error and hint"
+                },
                 "errorMessage": {
                     "text": "Error message"
                 },
@@ -392,11 +432,16 @@
                     "text": "Hint"
                 }
             },
-            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  \n\n  \n  \n  <div id=\"undefined-hint\" class=\"govuk-hint\">\n    Hint\n  </div>\n\n\n  \n  \n  <span id=\"undefined-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message\n  </span>\n<input class=\"govuk-input govuk-input--error\" id=\"\" name=\"\" type=\"text\" aria-describedby=\"undefined-hint undefined-error\">\n</div>"
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  <label class=\"govuk-label\" for=\"with-error-hint\">\n    With error and hint\n  </label>\n\n  \n  \n  <div id=\"with-error-hint-hint\" class=\"govuk-hint\">\n    Hint\n  </div>\n\n\n  \n  \n  <span id=\"with-error-hint-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message\n  </span>\n<input class=\"govuk-input govuk-input--error\" id=\"with-error-hint\" name=\"with-error-hint\" type=\"text\" aria-describedby=\"with-error-hint-hint with-error-hint-error\">\n</div>"
         },
         {
             "name": "with error, hint and describedBy",
             "options": {
+                "id": "with-error-hint-describedby",
+                "name": "with-error-hint-describedby",
+                "label": {
+                    "text": "With error, hint and describedBy"
+                },
                 "errorMessage": {
                     "text": "Error message"
                 },
@@ -405,14 +450,19 @@
                 },
                 "describedBy": "some-id"
             },
-            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  \n\n  \n  \n  <div id=\"undefined-hint\" class=\"govuk-hint\">\n    Hint\n  </div>\n\n\n  \n  \n  <span id=\"undefined-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message\n  </span>\n<input class=\"govuk-input govuk-input--error\" id=\"\" name=\"\" type=\"text\" aria-describedby=\"some-id undefined-hint undefined-error\">\n</div>"
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  <label class=\"govuk-label\" for=\"with-error-hint-describedby\">\n    With error, hint and describedBy\n  </label>\n\n  \n  \n  <div id=\"with-error-hint-describedby-hint\" class=\"govuk-hint\">\n    Hint\n  </div>\n\n\n  \n  \n  <span id=\"with-error-hint-describedby-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message\n  </span>\n<input class=\"govuk-input govuk-input--error\" id=\"with-error-hint-describedby\" name=\"with-error-hint-describedby\" type=\"text\" aria-describedby=\"some-id with-error-hint-describedby-hint with-error-hint-describedby-error\">\n</div>"
         },
         {
             "name": "inputmode",
             "options": {
+                "id": "with-inputmode",
+                "name": "with-inputmode",
+                "label": {
+                    "text": "With inputmode"
+                },
                 "inputmode": "decimal"
             },
-            "html": "<div class=\"govuk-form-group\">\n  \n\n<input class=\"govuk-input\" id=\"\" name=\"\" type=\"text\" inputmode=\"decimal\">\n</div>"
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"with-inputmode\">\n    With inputmode\n  </label>\n\n<input class=\"govuk-input\" id=\"with-inputmode\" name=\"with-inputmode\" type=\"text\" inputmode=\"decimal\">\n</div>"
         },
         {
             "name": "with prefix with html as text",

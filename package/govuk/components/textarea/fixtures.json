@@ -129,50 +129,79 @@
         {
             "name": "classes",
             "options": {
+                "id": "with-classes",
+                "name": "with-classes",
+                "label": {
+                    "text": "With classes"
+                },
                 "classes": "app-textarea--custom-modifier"
             },
-            "html": "<div class=\"govuk-form-group\">\n  \n\n\n  <textarea class=\"govuk-textarea app-textarea--custom-modifier\" id=\"\" name=\"\" rows=\"5\"></textarea>\n</div>"
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"with-classes\">\n    With classes\n  </label>\n\n\n  <textarea class=\"govuk-textarea app-textarea--custom-modifier\" id=\"with-classes\" name=\"with-classes\" rows=\"5\"></textarea>\n</div>"
         },
         {
             "name": "attributes",
             "options": {
+                "id": "with-attributes",
+                "name": "with-attributes",
+                "label": {
+                    "text": "With attributes"
+                },
                 "attributes": {
                     "data-attribute": "my data value"
                 }
             },
-            "html": "<div class=\"govuk-form-group\">\n  \n\n\n  <textarea class=\"govuk-textarea\" id=\"\" name=\"\" rows=\"5\" data-attribute=\"my data value\"></textarea>\n</div>"
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"with-attributes\">\n    With attributes\n  </label>\n\n\n  <textarea class=\"govuk-textarea\" id=\"with-attributes\" name=\"with-attributes\" rows=\"5\" data-attribute=\"my data value\"></textarea>\n</div>"
         },
         {
             "name": "with describedBy",
             "options": {
+                "id": "with-describedby",
+                "name": "with-describedby",
+                "label": {
+                    "text": "With describedBy"
+                },
                 "describedBy": "some-id"
             },
-            "html": "<div class=\"govuk-form-group\">\n  \n\n\n  <textarea class=\"govuk-textarea\" id=\"\" name=\"\" rows=\"5\" aria-describedby=\"some-id\"></textarea>\n</div>"
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"with-describedby\">\n    With describedBy\n  </label>\n\n\n  <textarea class=\"govuk-textarea\" id=\"with-describedby\" name=\"with-describedby\" rows=\"5\" aria-describedby=\"some-id\"></textarea>\n</div>"
         },
         {
             "name": "with hint and described by",
             "options": {
+                "id": "with-hint-describedby",
+                "name": "with-hint-describedby",
+                "label": {
+                    "text": "With hint and describedBy"
+                },
                 "describedBy": "some-id",
                 "hint": {
                     "text": "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
                 }
             },
-            "html": "<div class=\"govuk-form-group\">\n  \n\n  \n  \n  <div id=\"undefined-hint\" class=\"govuk-hint\">\n    It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.\n  </div>\n\n\n  <textarea class=\"govuk-textarea\" id=\"\" name=\"\" rows=\"5\" aria-describedby=\"some-id undefined-hint\"></textarea>\n</div>"
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"with-hint-describedby\">\n    With hint and describedBy\n  </label>\n\n  \n  \n  <div id=\"with-hint-describedby-hint\" class=\"govuk-hint\">\n    It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.\n  </div>\n\n\n  <textarea class=\"govuk-textarea\" id=\"with-hint-describedby\" name=\"with-hint-describedby\" rows=\"5\" aria-describedby=\"some-id with-hint-describedby-hint\"></textarea>\n</div>"
         },
         {
             "name": "with error message and described by",
             "options": {
+                "name": "textarea-with-error",
+                "label": {
+                    "text": "Textarea with error"
+                },
                 "describedBy": "some-id",
                 "id": "textarea-with-error",
                 "errorMessage": {
                     "text": "Error message"
                 }
             },
-            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  \n\n\n  \n  \n  <span id=\"textarea-with-error-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message\n  </span>\n\n  <textarea class=\"govuk-textarea govuk-textarea--error\" id=\"textarea-with-error\" name=\"\" rows=\"5\" aria-describedby=\"some-id textarea-with-error-error\"></textarea>\n</div>"
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  <label class=\"govuk-label\" for=\"textarea-with-error\">\n    Textarea with error\n  </label>\n\n\n  \n  \n  <span id=\"textarea-with-error-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message\n  </span>\n\n  <textarea class=\"govuk-textarea govuk-textarea--error\" id=\"textarea-with-error\" name=\"textarea-with-error\" rows=\"5\" aria-describedby=\"some-id textarea-with-error-error\"></textarea>\n</div>"
         },
         {
             "name": "with hint and error message",
             "options": {
+                "id": "with-hint-error",
+                "name": "with-hint-error",
+                "label": {
+                    "text": "With hint and error"
+                },
                 "errorMessage": {
                     "text": "Error message"
                 },
@@ -180,11 +209,16 @@
                     "text": "Hint"
                 }
             },
-            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  \n\n  \n  \n  <div id=\"undefined-hint\" class=\"govuk-hint\">\n    Hint\n  </div>\n\n\n  \n  \n  <span id=\"undefined-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message\n  </span>\n\n  <textarea class=\"govuk-textarea govuk-textarea--error\" id=\"\" name=\"\" rows=\"5\" aria-describedby=\"undefined-hint undefined-error\"></textarea>\n</div>"
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  <label class=\"govuk-label\" for=\"with-hint-error\">\n    With hint and error\n  </label>\n\n  \n  \n  <div id=\"with-hint-error-hint\" class=\"govuk-hint\">\n    Hint\n  </div>\n\n\n  \n  \n  <span id=\"with-hint-error-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message\n  </span>\n\n  <textarea class=\"govuk-textarea govuk-textarea--error\" id=\"with-hint-error\" name=\"with-hint-error\" rows=\"5\" aria-describedby=\"with-hint-error-hint with-hint-error-error\"></textarea>\n</div>"
         },
         {
             "name": "with hint, error message and described by",
             "options": {
+                "id": "with-hint-error-describedby",
+                "name": "with-hint-error-describedby",
+                "label": {
+                    "text": "With hint, error and describedBy"
+                },
                 "describedBy": "some-id",
                 "errorMessage": {
                     "text": "Error message"
@@ -193,7 +227,7 @@
                     "text": "Hint"
                 }
             },
-            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  \n\n  \n  \n  <div id=\"undefined-hint\" class=\"govuk-hint\">\n    Hint\n  </div>\n\n\n  \n  \n  <span id=\"undefined-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message\n  </span>\n\n  <textarea class=\"govuk-textarea govuk-textarea--error\" id=\"\" name=\"\" rows=\"5\" aria-describedby=\"some-id undefined-hint undefined-error\"></textarea>\n</div>"
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  <label class=\"govuk-label\" for=\"with-hint-error-describedby\">\n    With hint, error and describedBy\n  </label>\n\n  \n  \n  <div id=\"with-hint-error-describedby-hint\" class=\"govuk-hint\">\n    Hint\n  </div>\n\n\n  \n  \n  <span id=\"with-hint-error-describedby-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message\n  </span>\n\n  <textarea class=\"govuk-textarea govuk-textarea--error\" id=\"with-hint-error-describedby\" name=\"with-hint-error-describedby\" rows=\"5\" aria-describedby=\"some-id with-hint-error-describedby-hint with-hint-error-describedby-error\"></textarea>\n</div>"
         }
     ]
 }

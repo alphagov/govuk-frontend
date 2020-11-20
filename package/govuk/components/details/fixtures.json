@@ -30,54 +30,64 @@
         {
             "name": "id",
             "options": {
-                "id": "my-details-element"
+                "id": "my-details-element",
+                "summaryText": "Expand this section",
+                "text": "Here are some more details"
             },
-            "html": "<details id=\"my-details-element\" class=\"govuk-details\" data-module=\"govuk-details\">\n  <summary class=\"govuk-details__summary\">\n    <span class=\"govuk-details__summary-text\">\n      \n    </span>\n  </summary>\n  <div class=\"govuk-details__text\">\n    \n  </div>\n</details>"
+            "html": "<details id=\"my-details-element\" class=\"govuk-details\" data-module=\"govuk-details\">\n  <summary class=\"govuk-details__summary\">\n    <span class=\"govuk-details__summary-text\">\n      Expand this section\n    </span>\n  </summary>\n  <div class=\"govuk-details__text\">\n    Here are some more details\n  </div>\n</details>"
         },
         {
             "name": "html as text",
             "options": {
+                "summaryText": "Expand this section",
                 "text": "More about the greater than symbol (>)"
             },
-            "html": "<details class=\"govuk-details\" data-module=\"govuk-details\">\n  <summary class=\"govuk-details__summary\">\n    <span class=\"govuk-details__summary-text\">\n      \n    </span>\n  </summary>\n  <div class=\"govuk-details__text\">\n    More about the greater than symbol (&gt;)\n  </div>\n</details>"
+            "html": "<details class=\"govuk-details\" data-module=\"govuk-details\">\n  <summary class=\"govuk-details__summary\">\n    <span class=\"govuk-details__summary-text\">\n      Expand this section\n    </span>\n  </summary>\n  <div class=\"govuk-details__text\">\n    More about the greater than symbol (&gt;)\n  </div>\n</details>"
         },
         {
             "name": "html",
             "options": {
+                "summaryText": "Expand this section",
                 "html": "More about <b>bold text</b>"
             },
-            "html": "<details class=\"govuk-details\" data-module=\"govuk-details\">\n  <summary class=\"govuk-details__summary\">\n    <span class=\"govuk-details__summary-text\">\n      \n    </span>\n  </summary>\n  <div class=\"govuk-details__text\">\n    More about <b>bold text</b>\n  </div>\n</details>"
+            "html": "<details class=\"govuk-details\" data-module=\"govuk-details\">\n  <summary class=\"govuk-details__summary\">\n    <span class=\"govuk-details__summary-text\">\n      Expand this section\n    </span>\n  </summary>\n  <div class=\"govuk-details__text\">\n    More about <b>bold text</b>\n  </div>\n</details>"
         },
         {
             "name": "summary html as text",
             "options": {
-                "summaryText": "The greater than symbol (>) is the best"
+                "summaryText": "The greater than symbol (>) is the best",
+                "text": "Here are some more details"
             },
-            "html": "<details class=\"govuk-details\" data-module=\"govuk-details\">\n  <summary class=\"govuk-details__summary\">\n    <span class=\"govuk-details__summary-text\">\n      The greater than symbol (&gt;) is the best\n    </span>\n  </summary>\n  <div class=\"govuk-details__text\">\n    \n  </div>\n</details>"
+            "html": "<details class=\"govuk-details\" data-module=\"govuk-details\">\n  <summary class=\"govuk-details__summary\">\n    <span class=\"govuk-details__summary-text\">\n      The greater than symbol (&gt;) is the best\n    </span>\n  </summary>\n  <div class=\"govuk-details__text\">\n    Here are some more details\n  </div>\n</details>"
         },
         {
             "name": "summary html",
             "options": {
-                "summaryHtml": "Use <b>bold text</b> sparingly"
+                "summaryHtml": "Use <b>bold text</b> sparingly",
+                "text": "Here are some more details"
             },
-            "html": "<details class=\"govuk-details\" data-module=\"govuk-details\">\n  <summary class=\"govuk-details__summary\">\n    <span class=\"govuk-details__summary-text\">\n      Use <b>bold text</b> sparingly\n    </span>\n  </summary>\n  <div class=\"govuk-details__text\">\n    \n  </div>\n</details>"
+            "html": "<details class=\"govuk-details\" data-module=\"govuk-details\">\n  <summary class=\"govuk-details__summary\">\n    <span class=\"govuk-details__summary-text\">\n      Use <b>bold text</b> sparingly\n    </span>\n  </summary>\n  <div class=\"govuk-details__text\">\n    Here are some more details\n  </div>\n</details>"
         },
         {
             "name": "classes",
             "options": {
-                "classes": "some-additional-class"
+                "classes": "some-additional-class",
+                "text": "Here are some more details",
+                "summaryText": "Expand me"
             },
-            "html": "<details class=\"govuk-details some-additional-class\" data-module=\"govuk-details\">\n  <summary class=\"govuk-details__summary\">\n    <span class=\"govuk-details__summary-text\">\n      \n    </span>\n  </summary>\n  <div class=\"govuk-details__text\">\n    \n  </div>\n</details>"
+            "html": "<details class=\"govuk-details some-additional-class\" data-module=\"govuk-details\">\n  <summary class=\"govuk-details__summary\">\n    <span class=\"govuk-details__summary-text\">\n      Expand me\n    </span>\n  </summary>\n  <div class=\"govuk-details__text\">\n    Here are some more details\n  </div>\n</details>"
         },
         {
             "name": "attributes",
             "options": {
+                "text": "Here are some more details",
+                "summaryText": "Expand me",
                 "attributes": {
                     "data-some-data-attribute": "i-love-data",
                     "another-attribute": true
                 }
             },
-            "html": "<details class=\"govuk-details\" data-module=\"govuk-details\" data-some-data-attribute=\"i-love-data\" another-attribute=\"true\">\n  <summary class=\"govuk-details__summary\">\n    <span class=\"govuk-details__summary-text\">\n      \n    </span>\n  </summary>\n  <div class=\"govuk-details__text\">\n    \n  </div>\n</details>"
+            "html": "<details class=\"govuk-details\" data-module=\"govuk-details\" data-some-data-attribute=\"i-love-data\" another-attribute=\"true\">\n  <summary class=\"govuk-details__summary\">\n    <span class=\"govuk-details__summary-text\">\n      Expand me\n    </span>\n  </summary>\n  <div class=\"govuk-details__text\">\n    Here are some more details\n  </div>\n</details>"
         }
     ]
 }

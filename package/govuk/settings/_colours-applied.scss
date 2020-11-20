@@ -86,6 +86,15 @@ $govuk-focus-text-colour: govuk-colour("black") !default;
 
 $govuk-error-colour: govuk-colour("red") !default;
 
+/// Success colour
+///
+/// Used to highlight success messages and banners
+///
+/// @type Colour
+/// @access public
+
+$govuk-success-colour: govuk-colour("green") !default;
+
 /// Border colour
 ///
 /// Used in for example borders, separators, rules and keylines.

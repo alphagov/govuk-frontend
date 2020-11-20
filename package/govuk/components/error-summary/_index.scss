@@ -37,17 +37,7 @@
 
   .govuk-error-summary__list a {
     @include govuk-typography-weight-bold;
-
-    // Override default link styling to use error colour
-    &:link,
-    &:visited,
-    &:hover,
-    &:active {
-      color: $govuk-error-colour;
-    }
-
-    &:focus {
-      @include govuk-focused-text;
-    }
+    @include govuk-link-common;
+    @include govuk-link-style-error;
   }
 }
