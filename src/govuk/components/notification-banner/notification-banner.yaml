@@ -11,10 +11,9 @@ params:
   type: string
   required: false
   description: |
-    The title text that displays in the notification banner. You can use any string with this option. Use this option to set text that does not contain HTML. The available default values are 'Important', 'Success', 'Error', and null:
+    The title text that displays in the notification banner. You can use any string with this option. Use this option to set text that does not contain HTML. The available default values are 'Important', 'Success', and null:
     - if you do not set `type`, `titleText` defaults to 'Important'
     - if you set `type` to `success`, `titleText` defaults to 'Success'
-    - if you set `type` to `error`, `titleText` defaults to 'Error'
     - if you set `titleHtml`, this option is ignored
 - name: titleHtml
   type: string
@@ -27,11 +26,11 @@ params:
 - name: type
   type: string
   required: false
-  description: The type of notification to render. You can use only the `success`, `error`, or null values with this option. If you set `type` to `success` or `error`, the notification banner sets `role` to `alert`. JavaScript then moves the keyboard focus to the notification banner when the page loads. If you do not set `type`, the notification banner sets `role` to `region`.
+  description: The type of notification to render. You can use only the `success` or null values with this option. If you set `type` to `success`, the notification banner sets `role` to `alert`. JavaScript then moves the keyboard focus to the notification banner when the page loads. If you do not set `type`, the notification banner sets `role` to `region`.
 - name: role
   type: string
   required: false
-  description: Overrides the value of the `role` attribute for the notification banner. Defaults to `region`. If you set `type` to `success` or `error`, `role` defaults to `alert`.
+  description: Overrides the value of the `role` attribute for the notification banner. Defaults to `region`. If you set `type` to `success`, `role` defaults to `alert`.
 - name: titleId
   type: string
   required: false
@@ -39,7 +38,7 @@ params:
 - name: disableAutoFocus
   type: boolean
   required: false
-  description: If you set `type` to `success` or `error`, or `role` to `alert`, JavaScript moves the keyboard focus to the notification banner when the page loads. To disable this behaviour, set `disableAutoFocus` to `true`.
+  description: If you set `type` to `success`, or `role` to `alert`, JavaScript moves the keyboard focus to the notification banner when the page loads. To disable this behaviour, set `disableAutoFocus` to `true`.
 - name: classes
   type: string
   required: false
@@ -69,15 +68,6 @@ examples:
     type: success
     html: |
       <h3 class="govuk-notification-banner__heading">4 files uploaded</h3><ul class="govuk-!-margin-0 govuk-list"><li><a href="link-1" class="govuk-notification-banner__link">government-strategy.pdf</a></li><li><a href="link-2" class="govuk-notification-banner__link">government-strategy-v1.pdf</a></li></ul>
-- name: with type as error
-  data:
-    type: error
-    text: There was a problem uploading your file. Please try again.
-- name: error with custom html
-  data:
-    type: error
-    html: |
-      <p class="govuk-notification-banner__heading">There was a problem uploading your file. <a href="#" class="govuk-notification-banner__link">Please try again.</a></p>
 - name: with a list
   data:
     html: |
@@ -138,12 +128,6 @@ examples:
     type: success
     titleId: my-id
     text: Email sent to example@email.com
-- name: custom title id with type as error
-  hidden: true
-  data:
-    type: error
-    titleId: my-id
-    text: There was a problem uploading your file. Please try again.
 
 - name: custom text
   hidden: true

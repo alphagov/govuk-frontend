@@ -2,7 +2,7 @@
 scenario: >-
   As part of an online service, you are asked to upload your photo.
 
-  The upload will always fail with an error that uses the notification banner.
+  The upload will always result in a success (alert) message that uses the notification banner.
 ---
 
 {# This example is based of the live "Passport" service: https://www.passport.service.gov.uk/photo/upload #}
@@ -44,8 +44,8 @@ scenario: >-
         <form method="post" novalidate>
             {% if isError %}
                 {{ govukNotificationBanner({
-                "type": "error",
-                "html": "<p class=\"govuk-notification-banner__heading\">There was a problem uploading your file. <a href=\"#\" class=\"govuk-notification-banner__link\">Please try again.</a></p>\n"
+                "type": "success",
+                "html": "<p class=\"govuk-notification-banner__heading\">Success, your photo has been uploaded</p>\n"
                 }) }}
             {% endif %}
 

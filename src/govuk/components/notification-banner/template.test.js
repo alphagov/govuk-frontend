@@ -218,59 +218,6 @@ describe('Notification-banner', () => {
     })
   })
 
-  describe('when error type is passed', () => {
-    it('renders with appropriate class', () => {
-      const $ = render('notification-banner', examples['with type as error'])
-
-      const $component = $('.govuk-notification-banner')
-      expect($component.hasClass('govuk-notification-banner--error')).toBeTruthy()
-    })
-
-    it('has role=alert attribute', () => {
-      const $ = render('notification-banner', examples['with type as error'])
-
-      const $component = $('.govuk-notification-banner')
-      expect($component.attr('role')).toEqual('alert')
-    })
-
-    it('does render aria-labelledby', () => {
-      const $ = render('notification-banner', examples['with type as error'])
-      const $component = $('.govuk-notification-banner')
-
-      expect($component.attr('aria-labelledby')).toEqual('govuk-notification-banner-title')
-    })
-
-    it('does render a title id for aria-labelledby', () => {
-      const $ = render('notification-banner', examples['with type as error'])
-      const $component = $('.govuk-notification-banner__title')
-
-      expect($component.attr('id')).toEqual('govuk-notification-banner-title')
-    })
-
-    it('renders custom title id', () => {
-      const $ = render('notification-banner', examples['custom title id with type as error'])
-      const $title = $('.govuk-notification-banner__title')
-
-      expect($title.attr('id')).toEqual('my-id')
-    })
-
-    it('renders default error title text', () => {
-      const $ = render('notification-banner', examples['with type as error'])
-      const $title = $('.govuk-notification-banner__title')
-
-      expect($title.html().trim()).toEqual('Error')
-    })
-
-    it('renders custom title id and aria-labelledby', () => {
-      const $ = render('notification-banner', examples['custom title id with type as error'])
-      const $component = $('.govuk-notification-banner')
-      const $title = $('.govuk-notification-banner__title')
-
-      expect($component.attr('aria-labelledby')).toEqual('my-id')
-      expect($title.attr('id')).toEqual('my-id')
-    })
-  })
-
   describe('when type that is invalid is passed', () => {
     it('has role=region attribute', () => {
       const $ = render('notification-banner', examples['with invalid type'])
