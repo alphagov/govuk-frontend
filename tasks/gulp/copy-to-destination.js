@@ -70,7 +70,8 @@ function generateFixtures (file) {
         const fixture = {
           name: example.name,
           options: example.data,
-          html: nunjucks.render(componentTemplatePath, { params: example.data }).trim()
+          html: nunjucks.render(componentTemplatePath, { params: example.data }).trim(),
+          hidden: example.hidden
         }
 
         fixtures.fixtures.push(fixture)
