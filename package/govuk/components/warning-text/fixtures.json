@@ -20,12 +20,14 @@
         {
             "name": "attributes",
             "options": {
+                "text": "You can be fined up to £5,000 if you don’t register.",
+                "iconFallbackText": "Warning",
                 "attributes": {
                     "id": "my-warning-text",
                     "data-test": "attribute"
                 }
             },
-            "html": "<div class=\"govuk-warning-text\" id=\"my-warning-text\" data-test=\"attribute\">\n  <span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span>\n  <strong class=\"govuk-warning-text__text\">\n    <span class=\"govuk-warning-text__assistive\"></span>\n    \n  </strong>\n</div>"
+            "html": "<div class=\"govuk-warning-text\" id=\"my-warning-text\" data-test=\"attribute\">\n  <span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span>\n  <strong class=\"govuk-warning-text__text\">\n    <span class=\"govuk-warning-text__assistive\">Warning</span>\n    You can be fined up to £5,000 if you don’t register.\n  </strong>\n</div>"
         },
         {
             "name": "classes",
@@ -39,16 +41,19 @@
         {
             "name": "html",
             "options": {
+                "text": "You can be fined up to £5,000 if you don’t register.",
+                "iconFallbackText": "Warning",
                 "html": "<span>Some custom warning text</span>"
             },
-            "html": "<div class=\"govuk-warning-text\">\n  <span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span>\n  <strong class=\"govuk-warning-text__text\">\n    <span class=\"govuk-warning-text__assistive\"></span>\n    <span>Some custom warning text</span>\n  </strong>\n</div>"
+            "html": "<div class=\"govuk-warning-text\">\n  <span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span>\n  <strong class=\"govuk-warning-text__text\">\n    <span class=\"govuk-warning-text__assistive\">Warning</span>\n    <span>Some custom warning text</span>\n  </strong>\n</div>"
         },
         {
             "name": "html as text",
             "options": {
+                "iconFallbackText": "Warning",
                 "text": "<span>Some custom warning text</span>"
             },
-            "html": "<div class=\"govuk-warning-text\">\n  <span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span>\n  <strong class=\"govuk-warning-text__text\">\n    <span class=\"govuk-warning-text__assistive\"></span>\n    &lt;span&gt;Some custom warning text&lt;/span&gt;\n  </strong>\n</div>"
+            "html": "<div class=\"govuk-warning-text\">\n  <span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span>\n  <strong class=\"govuk-warning-text__text\">\n    <span class=\"govuk-warning-text__assistive\">Warning</span>\n    &lt;span&gt;Some custom warning text&lt;/span&gt;\n  </strong>\n</div>"
         },
         {
             "name": "icon fallback text only",
@@ -56,13 +61,6 @@
                 "iconFallbackText": "Some custom fallback text"
             },
             "html": "<div class=\"govuk-warning-text\">\n  <span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span>\n  <strong class=\"govuk-warning-text__text\">\n    <span class=\"govuk-warning-text__assistive\">Some custom fallback text</span>\n    \n  </strong>\n</div>"
-        },
-        {
-            "name": "text only",
-            "options": {
-                "text": "Some custom warning text"
-            },
-            "html": "<div class=\"govuk-warning-text\">\n  <span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span>\n  <strong class=\"govuk-warning-text__text\">\n    <span class=\"govuk-warning-text__assistive\"></span>\n    Some custom warning text\n  </strong>\n</div>"
         }
     ]
 }

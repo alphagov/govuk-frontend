@@ -149,22 +149,48 @@
         {
             "name": "with describedBy",
             "options": {
+                "id": "with-describedby",
+                "name": "with-describedby",
+                "items": [
+                    {
+                        "value": 1,
+                        "text": "GOV.UK frontend option 1"
+                    },
+                    {
+                        "value": 2,
+                        "text": "GOV.UK frontend option 2"
+                    }
+                ],
                 "describedBy": "some-id"
             },
-            "html": "<div class=\"govuk-form-group\">\n  \n\n\n  <select class=\"govuk-select\" id=\"\" name=\"\" aria-describedby=\"some-id\">\n  \n  </select>\n</div>"
+            "html": "<div class=\"govuk-form-group\">\n  \n\n\n  <select class=\"govuk-select\" id=\"with-describedby\" name=\"with-describedby\" aria-describedby=\"some-id\">\n  \n    \n      <option value=\"1\">GOV.UK frontend option 1</option>\n    \n  \n    \n      <option value=\"2\">GOV.UK frontend option 2</option>\n    \n  \n  </select>\n</div>"
         },
         {
             "name": "attributes",
             "options": {
+                "id": "with-attributes",
+                "name": "with-attributes",
+                "items": [
+                    {
+                        "value": 1,
+                        "text": "GOV.UK frontend option 1"
+                    },
+                    {
+                        "value": 2,
+                        "text": "GOV.UK frontend option 2"
+                    }
+                ],
                 "attributes": {
                     "data-attribute": "my data value"
                 }
             },
-            "html": "<div class=\"govuk-form-group\">\n  \n\n\n  <select class=\"govuk-select\" id=\"\" name=\"\" data-attribute=\"my data value\">\n  \n  </select>\n</div>"
+            "html": "<div class=\"govuk-form-group\">\n  \n\n\n  <select class=\"govuk-select\" id=\"with-attributes\" name=\"with-attributes\" data-attribute=\"my data value\">\n  \n    \n      <option value=\"1\">GOV.UK frontend option 1</option>\n    \n  \n    \n      <option value=\"2\">GOV.UK frontend option 2</option>\n    \n  \n  </select>\n</div>"
         },
         {
             "name": "attributes on items",
             "options": {
+                "id": "with-item-attributes",
+                "name": "with-item-attributes",
                 "value": 2,
                 "items": [
                     {
@@ -183,11 +209,13 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-form-group\">\n  \n\n\n  <select class=\"govuk-select\" id=\"\" name=\"\">\n  \n    \n      <option value=\"\" data-attribute=\"ABC\" data-second-attribute=\"DEF\">Option 1</option>\n    \n  \n    \n      <option value=\"\" data-attribute=\"GHI\" data-second-attribute=\"JKL\">Option 2</option>\n    \n  \n  </select>\n</div>"
+            "html": "<div class=\"govuk-form-group\">\n  \n\n\n  <select class=\"govuk-select\" id=\"with-item-attributes\" name=\"with-item-attributes\">\n  \n    \n      <option value=\"\" data-attribute=\"ABC\" data-second-attribute=\"DEF\">Option 1</option>\n    \n  \n    \n      <option value=\"\" data-attribute=\"GHI\" data-second-attribute=\"JKL\">Option 2</option>\n    \n  \n  </select>\n</div>"
         },
         {
             "name": "with falsey values",
             "options": {
+                "id": "with-falsey-values",
+                "name": "with-falsey-values",
                 "items": [
                     {
                         "text": "Option 1"
@@ -200,49 +228,83 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-form-group\">\n  \n\n\n  <select class=\"govuk-select\" id=\"\" name=\"\">\n  \n    \n      <option value=\"\">Option 1</option>\n    \n  \n    \n  \n    \n  \n    \n  \n    \n      <option value=\"\">Options 2</option>\n    \n  \n  </select>\n</div>"
+            "html": "<div class=\"govuk-form-group\">\n  \n\n\n  <select class=\"govuk-select\" id=\"with-falsey-values\" name=\"with-falsey-values\">\n  \n    \n      <option value=\"\">Option 1</option>\n    \n  \n    \n  \n    \n  \n    \n  \n    \n      <option value=\"\">Options 2</option>\n    \n  \n  </select>\n</div>"
         },
         {
             "name": "hint",
             "options": {
                 "id": "select-with-hint",
+                "name": "select-with-hint",
                 "hint": {
                     "text": "Hint text goes here"
                 }
             },
-            "html": "<div class=\"govuk-form-group\">\n  \n\n  \n  \n  <div id=\"select-with-hint-hint\" class=\"govuk-hint\">\n    Hint text goes here\n  </div>\n\n\n  <select class=\"govuk-select\" id=\"select-with-hint\" name=\"\" aria-describedby=\"select-with-hint-hint\">\n  \n  </select>\n</div>"
+            "html": "<div class=\"govuk-form-group\">\n  \n\n  \n  \n  <div id=\"select-with-hint-hint\" class=\"govuk-hint\">\n    Hint text goes here\n  </div>\n\n\n  <select class=\"govuk-select\" id=\"select-with-hint\" name=\"select-with-hint\" aria-describedby=\"select-with-hint-hint\">\n  \n  </select>\n</div>"
         },
         {
             "name": "hint and describedBy",
             "options": {
                 "id": "select-with-hint",
+                "name": "select-with-hint",
                 "describedBy": "some-id",
                 "hint": {
                     "text": "Hint text goes here"
-                }
+                },
+                "items": [
+                    {
+                        "value": 1,
+                        "text": "GOV.UK frontend option 1"
+                    },
+                    {
+                        "value": 2,
+                        "text": "GOV.UK frontend option 2"
+                    }
+                ]
             },
-            "html": "<div class=\"govuk-form-group\">\n  \n\n  \n  \n  <div id=\"select-with-hint-hint\" class=\"govuk-hint\">\n    Hint text goes here\n  </div>\n\n\n  <select class=\"govuk-select\" id=\"select-with-hint\" name=\"\" aria-describedby=\"some-id select-with-hint-hint\">\n  \n  </select>\n</div>"
+            "html": "<div class=\"govuk-form-group\">\n  \n\n  \n  \n  <div id=\"select-with-hint-hint\" class=\"govuk-hint\">\n    Hint text goes here\n  </div>\n\n\n  <select class=\"govuk-select\" id=\"select-with-hint\" name=\"select-with-hint\" aria-describedby=\"some-id select-with-hint-hint\">\n  \n    \n      <option value=\"1\">GOV.UK frontend option 1</option>\n    \n  \n    \n      <option value=\"2\">GOV.UK frontend option 2</option>\n    \n  \n  </select>\n</div>"
         },
         {
             "name": "error",
             "options": {
                 "id": "select-with-error",
+                "name": "select-with-error",
                 "errorMessage": {
                     "text": "Error message"
-                }
+                },
+                "items": [
+                    {
+                        "value": 1,
+                        "text": "GOV.UK frontend option 1"
+                    },
+                    {
+                        "value": 2,
+                        "text": "GOV.UK frontend option 2"
+                    }
+                ]
             },
-            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  \n\n\n  \n  \n  <span id=\"select-with-error-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message\n  </span>\n\n  <select class=\"govuk-select govuk-select--error\" id=\"select-with-error\" name=\"\" aria-describedby=\"select-with-error-error\">\n  \n  </select>\n</div>"
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  \n\n\n  \n  \n  <span id=\"select-with-error-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message\n  </span>\n\n  <select class=\"govuk-select govuk-select--error\" id=\"select-with-error\" name=\"select-with-error\" aria-describedby=\"select-with-error-error\">\n  \n    \n      <option value=\"1\">GOV.UK frontend option 1</option>\n    \n  \n    \n      <option value=\"2\">GOV.UK frontend option 2</option>\n    \n  \n  </select>\n</div>"
         },
         {
             "name": "error and describedBy",
             "options": {
                 "id": "select-with-error",
+                "name": "select-with-error",
                 "describedBy": "some-id",
                 "errorMessage": {
                     "text": "Error message"
-                }
+                },
+                "items": [
+                    {
+                        "value": 1,
+                        "text": "GOV.UK frontend option 1"
+                    },
+                    {
+                        "value": 2,
+                        "text": "GOV.UK frontend option 2"
+                    }
+                ]
             },
-            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  \n\n\n  \n  \n  <span id=\"select-with-error-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message\n  </span>\n\n  <select class=\"govuk-select govuk-select--error\" id=\"select-with-error\" name=\"\" aria-describedby=\"some-id select-with-error-error\">\n  \n  </select>\n</div>"
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  \n\n\n  \n  \n  <span id=\"select-with-error-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message\n  </span>\n\n  <select class=\"govuk-select govuk-select--error\" id=\"select-with-error\" name=\"select-with-error\" aria-describedby=\"some-id select-with-error-error\">\n  \n    \n      <option value=\"1\">GOV.UK frontend option 1</option>\n    \n  \n    \n      <option value=\"2\">GOV.UK frontend option 2</option>\n    \n  \n  </select>\n</div>"
         }
     ]
 }

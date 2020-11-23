@@ -38,7 +38,7 @@
     {
         "name": "threshold",
         "type": "string",
-        "required": true,
+        "required": false,
         "description": "The percentage value of the limit at which point the count message is displayed. If this attribute is set, the count message will be hidden by default."
     },
     {

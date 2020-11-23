@@ -26,9 +26,10 @@
         {
             "name": "custom href",
             "options": {
+                "text": "Skip to custom content",
                 "href": "#custom"
             },
-            "html": "<a href=\"#custom\" class=\"govuk-skip-link\"></a>"
+            "html": "<a href=\"#custom\" class=\"govuk-skip-link\">Skip to custom content</a>"
         },
         {
             "name": "custom text",
@@ -54,19 +55,21 @@
         {
             "name": "classes",
             "options": {
+                "text": "Skip link",
                 "classes": "app-skip-link--custom-class"
             },
-            "html": "<a href=\"#content\" class=\"govuk-skip-link app-skip-link--custom-class\"></a>"
+            "html": "<a href=\"#content\" class=\"govuk-skip-link app-skip-link--custom-class\">Skip link</a>"
         },
         {
             "name": "attributes",
             "options": {
+                "text": "Skip link",
                 "attributes": {
                     "data-test": "attribute",
                     "aria-label": "Skip to content"
                 }
             },
-            "html": "<a href=\"#content\" class=\"govuk-skip-link\" data-test=\"attribute\" aria-label=\"Skip to content\"></a>"
+            "html": "<a href=\"#content\" class=\"govuk-skip-link\" data-test=\"attribute\" aria-label=\"Skip to content\">Skip link</a>"
         }
     ]
 }

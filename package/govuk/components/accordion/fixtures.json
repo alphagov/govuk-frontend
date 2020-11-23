@@ -138,6 +138,7 @@
         {
             "name": "classes",
             "options": {
+                "id": "accordion-classes",
                 "classes": "myClass",
                 "items": [
                     {
@@ -150,11 +151,12 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-accordion myClass\" data-module=\"govuk-accordion\" id=\"\">\n  \n    \n      <div class=\"govuk-accordion__section \">\n        <div class=\"govuk-accordion__section-header\">\n          <h2 class=\"govuk-accordion__section-heading\">\n            <span class=\"govuk-accordion__section-button\" id=\"-heading-1\">\n              Section A\n            </span>\n          </h2>\n          \n        </div>\n        <div id=\"-content-1\" class=\"govuk-accordion__section-content\" aria-labelledby=\"-heading-1\">\n          Some content\n        </div>\n      </div>\n    \n  \n</div>"
+            "html": "<div class=\"govuk-accordion myClass\" data-module=\"govuk-accordion\" id=\"accordion-classes\">\n  \n    \n      <div class=\"govuk-accordion__section \">\n        <div class=\"govuk-accordion__section-header\">\n          <h2 class=\"govuk-accordion__section-heading\">\n            <span class=\"govuk-accordion__section-button\" id=\"accordion-classes-heading-1\">\n              Section A\n            </span>\n          </h2>\n          \n        </div>\n        <div id=\"accordion-classes-content-1\" class=\"govuk-accordion__section-content\" aria-labelledby=\"accordion-classes-heading-1\">\n          Some content\n        </div>\n      </div>\n    \n  \n</div>"
         },
         {
             "name": "attributes",
             "options": {
+                "id": "accordion-attributes",
                 "attributes": {
                     "data-attribute": "value"
                 },
@@ -169,11 +171,12 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-accordion\" data-module=\"govuk-accordion\" id=\"\" data-attribute=\"value\">\n  \n    \n      <div class=\"govuk-accordion__section \">\n        <div class=\"govuk-accordion__section-header\">\n          <h2 class=\"govuk-accordion__section-heading\">\n            <span class=\"govuk-accordion__section-button\" id=\"-heading-1\">\n              Section A\n            </span>\n          </h2>\n          \n        </div>\n        <div id=\"-content-1\" class=\"govuk-accordion__section-content\" aria-labelledby=\"-heading-1\">\n          Some content\n        </div>\n      </div>\n    \n  \n</div>"
+            "html": "<div class=\"govuk-accordion\" data-module=\"govuk-accordion\" id=\"accordion-attributes\" data-attribute=\"value\">\n  \n    \n      <div class=\"govuk-accordion__section \">\n        <div class=\"govuk-accordion__section-header\">\n          <h2 class=\"govuk-accordion__section-heading\">\n            <span class=\"govuk-accordion__section-button\" id=\"accordion-attributes-heading-1\">\n              Section A\n            </span>\n          </h2>\n          \n        </div>\n        <div id=\"accordion-attributes-content-1\" class=\"govuk-accordion__section-content\" aria-labelledby=\"accordion-attributes-heading-1\">\n          Some content\n        </div>\n      </div>\n    \n  \n</div>"
         },
         {
             "name": "custom heading level",
             "options": {
+                "id": "accordion-heading",
                 "headingLevel": 3,
                 "items": [
                     {
@@ -186,11 +189,12 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-accordion\" data-module=\"govuk-accordion\" id=\"\">\n  \n    \n      <div class=\"govuk-accordion__section \">\n        <div class=\"govuk-accordion__section-header\">\n          <h3 class=\"govuk-accordion__section-heading\">\n            <span class=\"govuk-accordion__section-button\" id=\"-heading-1\">\n              Section A\n            </span>\n          </h3>\n          \n        </div>\n        <div id=\"-content-1\" class=\"govuk-accordion__section-content\" aria-labelledby=\"-heading-1\">\n          Some content\n        </div>\n      </div>\n    \n  \n</div>"
+            "html": "<div class=\"govuk-accordion\" data-module=\"govuk-accordion\" id=\"accordion-heading\">\n  \n    \n      <div class=\"govuk-accordion__section \">\n        <div class=\"govuk-accordion__section-header\">\n          <h3 class=\"govuk-accordion__section-heading\">\n            <span class=\"govuk-accordion__section-button\" id=\"accordion-heading-heading-1\">\n              Section A\n            </span>\n          </h3>\n          \n        </div>\n        <div id=\"accordion-heading-content-1\" class=\"govuk-accordion__section-content\" aria-labelledby=\"accordion-heading-heading-1\">\n          Some content\n        </div>\n      </div>\n    \n  \n</div>"
         },
         {
             "name": "heading html",
             "options": {
+                "id": "accordion-heading-html",
                 "items": [
                     {
                         "heading": {
@@ -202,11 +206,12 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-accordion\" data-module=\"govuk-accordion\" id=\"\">\n  \n    \n      <div class=\"govuk-accordion__section \">\n        <div class=\"govuk-accordion__section-header\">\n          <h2 class=\"govuk-accordion__section-heading\">\n            <span class=\"govuk-accordion__section-button\" id=\"-heading-1\">\n              <span class=\"myClass\">Section A</span>\n            </span>\n          </h2>\n          \n        </div>\n        <div id=\"-content-1\" class=\"govuk-accordion__section-content\" aria-labelledby=\"-heading-1\">\n          Some content\n        </div>\n      </div>\n    \n  \n</div>"
+            "html": "<div class=\"govuk-accordion\" data-module=\"govuk-accordion\" id=\"accordion-heading-html\">\n  \n    \n      <div class=\"govuk-accordion__section \">\n        <div class=\"govuk-accordion__section-header\">\n          <h2 class=\"govuk-accordion__section-heading\">\n            <span class=\"govuk-accordion__section-button\" id=\"accordion-heading-html-heading-1\">\n              <span class=\"myClass\">Section A</span>\n            </span>\n          </h2>\n          \n        </div>\n        <div id=\"accordion-heading-html-content-1\" class=\"govuk-accordion__section-content\" aria-labelledby=\"accordion-heading-html-heading-1\">\n          Some content\n        </div>\n      </div>\n    \n  \n</div>"
         },
         {
             "name": "with falsey values",
             "options": {
+                "id": "accordion-falsey",
                 "items": [
                     {
                         "heading": {
@@ -229,7 +234,7 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-accordion\" data-module=\"govuk-accordion\" id=\"\">\n  \n    \n      <div class=\"govuk-accordion__section \">\n        <div class=\"govuk-accordion__section-header\">\n          <h2 class=\"govuk-accordion__section-heading\">\n            <span class=\"govuk-accordion__section-button\" id=\"-heading-1\">\n              Section A\n            </span>\n          </h2>\n          \n        </div>\n        <div id=\"-content-1\" class=\"govuk-accordion__section-content\" aria-labelledby=\"-heading-1\">\n          Some content\n        </div>\n      </div>\n    \n  \n    \n  \n    \n  \n    \n  \n    \n      <div class=\"govuk-accordion__section \">\n        <div class=\"govuk-accordion__section-header\">\n          <h2 class=\"govuk-accordion__section-heading\">\n            <span class=\"govuk-accordion__section-button\" id=\"-heading-5\">\n              Section B\n            </span>\n          </h2>\n          \n        </div>\n        <div id=\"-content-5\" class=\"govuk-accordion__section-content\" aria-labelledby=\"-heading-5\">\n          Some content\n        </div>\n      </div>\n    \n  \n</div>"
+            "html": "<div class=\"govuk-accordion\" data-module=\"govuk-accordion\" id=\"accordion-falsey\">\n  \n    \n      <div class=\"govuk-accordion__section \">\n        <div class=\"govuk-accordion__section-header\">\n          <h2 class=\"govuk-accordion__section-heading\">\n            <span class=\"govuk-accordion__section-button\" id=\"accordion-falsey-heading-1\">\n              Section A\n            </span>\n          </h2>\n          \n        </div>\n        <div id=\"accordion-falsey-content-1\" class=\"govuk-accordion__section-content\" aria-labelledby=\"accordion-falsey-heading-1\">\n          Some content\n        </div>\n      </div>\n    \n  \n    \n  \n    \n  \n    \n  \n    \n      <div class=\"govuk-accordion__section \">\n        <div class=\"govuk-accordion__section-header\">\n          <h2 class=\"govuk-accordion__section-heading\">\n            <span class=\"govuk-accordion__section-button\" id=\"accordion-falsey-heading-5\">\n              Section B\n            </span>\n          </h2>\n          \n        </div>\n        <div id=\"accordion-falsey-content-5\" class=\"govuk-accordion__section-content\" aria-labelledby=\"accordion-falsey-heading-5\">\n          Some content\n        </div>\n      </div>\n    \n  \n</div>"
         }
     ]
 }

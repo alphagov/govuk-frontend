@@ -111,60 +111,102 @@
         {
             "name": "classes",
             "options": {
+                "id": "with-classes",
+                "name": "with-classes",
+                "maxlength": 10,
+                "label": {
+                    "text": "With classes"
+                },
                 "classes": "app-character-count--custom-modifier"
             },
-            "html": "<div class=\"govuk-character-count\" data-module=\"govuk-character-count\">\n  \n\n<div class=\"govuk-form-group\">\n  \n\n\n  <textarea class=\"govuk-textarea govuk-js-character-count app-character-count--custom-modifier\" id=\"\" name=\"\" rows=\"5\" aria-describedby=\"undefined-info\"></textarea>\n</div>\n\n  <div id=\"undefined-info\" class=\"govuk-hint govuk-character-count__message\" aria-live=\"polite\">\n  You can enter up to undefined characters\n</div>\n\n</div>"
+            "html": "<div class=\"govuk-character-count\" data-module=\"govuk-character-count\" data-maxlength=\"10\">\n  \n\n<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"with-classes\">\n    With classes\n  </label>\n\n\n  <textarea class=\"govuk-textarea govuk-js-character-count app-character-count--custom-modifier\" id=\"with-classes\" name=\"with-classes\" rows=\"5\" aria-describedby=\"with-classes-info\"></textarea>\n</div>\n\n  <div id=\"with-classes-info\" class=\"govuk-hint govuk-character-count__message\" aria-live=\"polite\">\n  You can enter up to 10 characters\n</div>\n\n</div>"
         },
         {
             "name": "attributes",
             "options": {
+                "id": "with-attributes",
+                "name": "with-attributes",
+                "maxlength": 10,
+                "label": {
+                    "text": "With attributes"
+                },
                 "attributes": {
                     "data-attribute": "my data value"
                 }
             },
-            "html": "<div class=\"govuk-character-count\" data-module=\"govuk-character-count\">\n  \n\n<div class=\"govuk-form-group\">\n  \n\n\n  <textarea class=\"govuk-textarea govuk-js-character-count\" id=\"\" name=\"\" rows=\"5\" aria-describedby=\"undefined-info\" data-attribute=\"my data value\"></textarea>\n</div>\n\n  <div id=\"undefined-info\" class=\"govuk-hint govuk-character-count__message\" aria-live=\"polite\">\n  You can enter up to undefined characters\n</div>\n\n</div>"
+            "html": "<div class=\"govuk-character-count\" data-module=\"govuk-character-count\" data-maxlength=\"10\">\n  \n\n<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"with-attributes\">\n    With attributes\n  </label>\n\n\n  <textarea class=\"govuk-textarea govuk-js-character-count\" id=\"with-attributes\" name=\"with-attributes\" rows=\"5\" aria-describedby=\"with-attributes-info\" data-attribute=\"my data value\"></textarea>\n</div>\n\n  <div id=\"with-attributes-info\" class=\"govuk-hint govuk-character-count__message\" aria-live=\"polite\">\n  You can enter up to 10 characters\n</div>\n\n</div>"
         },
         {
             "name": "formGroup with classes",
             "options": {
+                "id": "with-formgroup",
+                "name": "with-formgroup",
+                "maxlength": 10,
+                "label": {
+                    "text": "With formgroup"
+                },
                 "formGroup": {
                     "classes": "app-character-count--custom-modifier"
                 }
             },
-            "html": "<div class=\"govuk-character-count\" data-module=\"govuk-character-count\">\n  \n\n<div class=\"govuk-form-group app-character-count--custom-modifier\">\n  \n\n\n  <textarea class=\"govuk-textarea govuk-js-character-count\" id=\"\" name=\"\" rows=\"5\" aria-describedby=\"undefined-info\"></textarea>\n</div>\n\n  <div id=\"undefined-info\" class=\"govuk-hint govuk-character-count__message\" aria-live=\"polite\">\n  You can enter up to undefined characters\n</div>\n\n</div>"
+            "html": "<div class=\"govuk-character-count\" data-module=\"govuk-character-count\" data-maxlength=\"10\">\n  \n\n<div class=\"govuk-form-group app-character-count--custom-modifier\">\n  <label class=\"govuk-label\" for=\"with-formgroup\">\n    With formgroup\n  </label>\n\n\n  <textarea class=\"govuk-textarea govuk-js-character-count\" id=\"with-formgroup\" name=\"with-formgroup\" rows=\"5\" aria-describedby=\"with-formgroup-info\"></textarea>\n</div>\n\n  <div id=\"with-formgroup-info\" class=\"govuk-hint govuk-character-count__message\" aria-live=\"polite\">\n  You can enter up to 10 characters\n</div>\n\n</div>"
         },
         {
             "name": "custom classes on countMessage",
             "options": {
+                "id": "with-custom-countmessage-class",
+                "name": "with-custom-countmessage-class",
+                "maxlength": 10,
+                "label": {
+                    "text": "With custom countMessage class"
+                },
                 "countMessage": {
                     "classes": "app-custom-count-message"
                 }
             },
-            "html": "<div class=\"govuk-character-count\" data-module=\"govuk-character-count\">\n  \n\n<div class=\"govuk-form-group\">\n  \n\n\n  <textarea class=\"govuk-textarea govuk-js-character-count\" id=\"\" name=\"\" rows=\"5\" aria-describedby=\"undefined-info\"></textarea>\n</div>\n\n  <div id=\"undefined-info\" class=\"govuk-hint govuk-character-count__message app-custom-count-message\" aria-live=\"polite\">\n  You can enter up to undefined characters\n</div>\n\n</div>"
+            "html": "<div class=\"govuk-character-count\" data-module=\"govuk-character-count\" data-maxlength=\"10\">\n  \n\n<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"with-custom-countmessage-class\">\n    With custom countMessage class\n  </label>\n\n\n  <textarea class=\"govuk-textarea govuk-js-character-count\" id=\"with-custom-countmessage-class\" name=\"with-custom-countmessage-class\" rows=\"5\" aria-describedby=\"with-custom-countmessage-class-info\"></textarea>\n</div>\n\n  <div id=\"with-custom-countmessage-class-info\" class=\"govuk-hint govuk-character-count__message app-custom-count-message\" aria-live=\"polite\">\n  You can enter up to 10 characters\n</div>\n\n</div>"
         },
         {
             "name": "spellcheck enabled",
             "options": {
+                "id": "with-spellcheck",
+                "name": "with-spellcheck",
+                "maxlength": 10,
+                "label": {
+                    "text": "With spellcheck"
+                },
                 "spellcheck": true
             },
-            "html": "<div class=\"govuk-character-count\" data-module=\"govuk-character-count\">\n  \n\n<div class=\"govuk-form-group\">\n  \n\n\n  <textarea class=\"govuk-textarea govuk-js-character-count\" id=\"\" name=\"\" rows=\"5\" spellcheck=\"true\" aria-describedby=\"undefined-info\"></textarea>\n</div>\n\n  <div id=\"undefined-info\" class=\"govuk-hint govuk-character-count__message\" aria-live=\"polite\">\n  You can enter up to undefined characters\n</div>\n\n</div>"
+            "html": "<div class=\"govuk-character-count\" data-module=\"govuk-character-count\" data-maxlength=\"10\">\n  \n\n<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"with-spellcheck\">\n    With spellcheck\n  </label>\n\n\n  <textarea class=\"govuk-textarea govuk-js-character-count\" id=\"with-spellcheck\" name=\"with-spellcheck\" rows=\"5\" spellcheck=\"true\" aria-describedby=\"with-spellcheck-info\"></textarea>\n</div>\n\n  <div id=\"with-spellcheck-info\" class=\"govuk-hint govuk-character-count__message\" aria-live=\"polite\">\n  You can enter up to 10 characters\n</div>\n\n</div>"
         },
         {
             "name": "spellcheck disabled",
             "options": {
+                "id": "without-spellcheck",
+                "name": "without-spellcheck",
+                "maxlength": 10,
+                "label": {
+                    "text": "Without spellcheck"
+                },
                 "spellcheck": false
             },
-            "html": "<div class=\"govuk-character-count\" data-module=\"govuk-character-count\">\n  \n\n<div class=\"govuk-form-group\">\n  \n\n\n  <textarea class=\"govuk-textarea govuk-js-character-count\" id=\"\" name=\"\" rows=\"5\" spellcheck=\"false\" aria-describedby=\"undefined-info\"></textarea>\n</div>\n\n  <div id=\"undefined-info\" class=\"govuk-hint govuk-character-count__message\" aria-live=\"polite\">\n  You can enter up to undefined characters\n</div>\n\n</div>"
+            "html": "<div class=\"govuk-character-count\" data-module=\"govuk-character-count\" data-maxlength=\"10\">\n  \n\n<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"without-spellcheck\">\n    Without spellcheck\n  </label>\n\n\n  <textarea class=\"govuk-textarea govuk-js-character-count\" id=\"without-spellcheck\" name=\"without-spellcheck\" rows=\"5\" spellcheck=\"false\" aria-describedby=\"without-spellcheck-info\"></textarea>\n</div>\n\n  <div id=\"without-spellcheck-info\" class=\"govuk-hint govuk-character-count__message\" aria-live=\"polite\">\n  You can enter up to 10 characters\n</div>\n\n</div>"
         },
         {
             "name": "custom classes with error message",
             "options": {
+                "id": "with-custom-error-class",
+                "name": "with-custom-error-class",
+                "maxlength": 10,
+                "label": {
+                    "text": "With custom error class"
+                },
                 "classes": "app-character-count--custom-modifier",
                 "errorMessage": {
                     "text": "Error message"
                 }
             },
-            "html": "<div class=\"govuk-character-count\" data-module=\"govuk-character-count\">\n  \n\n<div class=\"govuk-form-group govuk-form-group--error\">\n  \n\n\n  \n  \n  <span id=\"undefined-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message\n  </span>\n\n  <textarea class=\"govuk-textarea govuk-textarea--error govuk-js-character-count govuk-textarea--error app-character-count--custom-modifier\" id=\"\" name=\"\" rows=\"5\" aria-describedby=\"undefined-info undefined-error\"></textarea>\n</div>\n\n  <div id=\"undefined-info\" class=\"govuk-hint govuk-character-count__message\" aria-live=\"polite\">\n  You can enter up to undefined characters\n</div>\n\n</div>"
+            "html": "<div class=\"govuk-character-count\" data-module=\"govuk-character-count\" data-maxlength=\"10\">\n  \n\n<div class=\"govuk-form-group govuk-form-group--error\">\n  <label class=\"govuk-label\" for=\"with-custom-error-class\">\n    With custom error class\n  </label>\n\n\n  \n  \n  <span id=\"with-custom-error-class-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message\n  </span>\n\n  <textarea class=\"govuk-textarea govuk-textarea--error govuk-js-character-count govuk-textarea--error app-character-count--custom-modifier\" id=\"with-custom-error-class\" name=\"with-custom-error-class\" rows=\"5\" aria-describedby=\"with-custom-error-class-info with-custom-error-class-error\"></textarea>\n</div>\n\n  <div id=\"with-custom-error-class-info\" class=\"govuk-hint govuk-character-count__message\" aria-live=\"polite\">\n  You can enter up to 10 characters\n</div>\n\n</div>"
         }
     ]
 }

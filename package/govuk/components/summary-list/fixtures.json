@@ -780,12 +780,22 @@
         {
             "name": "attributes",
             "options": {
+                "rows": [
+                    {
+                        "key": {
+                            "text": "Name"
+                        },
+                        "value": {
+                            "text": "Firstname Lastname"
+                        }
+                    }
+                ],
                 "attributes": {
                     "data-attribute-1": "value-1",
                     "data-attribute-2": "value-2"
                 }
             },
-            "html": "<dl class=\"govuk-summary-list\" data-attribute-1=\"value-1\" data-attribute-2=\"value-2\">\n  \n</dl>"
+            "html": "<dl class=\"govuk-summary-list\" data-attribute-1=\"value-1\" data-attribute-2=\"value-2\">\n  \n    \n      <div class=\"govuk-summary-list__row\">\n        <dt class=\"govuk-summary-list__key\">\n          Name\n        </dt>\n        <dd class=\"govuk-summary-list__value\">\n          Firstname Lastname\n        </dd>\n        \n      </div>\n    \n  \n</dl>"
         },
         {
             "name": "with falsey values",
@@ -794,6 +804,9 @@
                     {
                         "key": {
                             "text": "Name"
+                        },
+                        "value": {
+                            "text": "Firstname Lastname"
                         }
                     },
                     null,
@@ -802,11 +815,14 @@
                     {
                         "key": {
                             "text": "Name 2"
+                        },
+                        "value": {
+                            "text": "Firstname2 Lastname2"
                         }
                     }
                 ]
             },
-            "html": "<dl class=\"govuk-summary-list\">\n  \n    \n      <div class=\"govuk-summary-list__row\">\n        <dt class=\"govuk-summary-list__key\">\n          Name\n        </dt>\n        <dd class=\"govuk-summary-list__value\">\n          \n        </dd>\n        \n      </div>\n    \n  \n    \n  \n    \n  \n    \n  \n    \n      <div class=\"govuk-summary-list__row\">\n        <dt class=\"govuk-summary-list__key\">\n          Name 2\n        </dt>\n        <dd class=\"govuk-summary-list__value\">\n          \n        </dd>\n        \n      </div>\n    \n  \n</dl>"
+            "html": "<dl class=\"govuk-summary-list\">\n  \n    \n      <div class=\"govuk-summary-list__row\">\n        <dt class=\"govuk-summary-list__key\">\n          Name\n        </dt>\n        <dd class=\"govuk-summary-list__value\">\n          Firstname Lastname\n        </dd>\n        \n      </div>\n    \n  \n    \n  \n    \n  \n    \n  \n    \n      <div class=\"govuk-summary-list__row\">\n        <dt class=\"govuk-summary-list__key\">\n          Name 2\n        </dt>\n        <dd class=\"govuk-summary-list__value\">\n          Firstname2 Lastname2\n        </dd>\n        \n      </div>\n    \n  \n</dl>"
         },
         {
             "name": "key with html",
@@ -815,11 +831,14 @@
                     {
                         "key": {
                             "html": "<b>Name</b>"
+                        },
+                        "value": {
+                            "html": "<strong>Firstname Lastname</strong>"
                         }
                     }
                 ]
             },
-            "html": "<dl class=\"govuk-summary-list\">\n  \n    \n      <div class=\"govuk-summary-list__row\">\n        <dt class=\"govuk-summary-list__key\">\n          <b>Name</b>\n        </dt>\n        <dd class=\"govuk-summary-list__value\">\n          \n        </dd>\n        \n      </div>\n    \n  \n</dl>"
+            "html": "<dl class=\"govuk-summary-list\">\n  \n    \n      <div class=\"govuk-summary-list__row\">\n        <dt class=\"govuk-summary-list__key\">\n          <b>Name</b>\n        </dt>\n        <dd class=\"govuk-summary-list__value\">\n          <strong>Firstname Lastname</strong>\n        </dd>\n        \n      </div>\n    \n  \n</dl>"
         },
         {
             "name": "key with classes",
@@ -829,83 +848,115 @@
                         "key": {
                             "text": "Name",
                             "classes": "app-custom-class"
+                        },
+                        "value": {
+                            "text": "Firstname Lastname"
                         }
                     }
                 ]
             },
-            "html": "<dl class=\"govuk-summary-list\">\n  \n    \n      <div class=\"govuk-summary-list__row\">\n        <dt class=\"govuk-summary-list__key app-custom-class\">\n          Name\n        </dt>\n        <dd class=\"govuk-summary-list__value\">\n          \n        </dd>\n        \n      </div>\n    \n  \n</dl>"
+            "html": "<dl class=\"govuk-summary-list\">\n  \n    \n      <div class=\"govuk-summary-list__row\">\n        <dt class=\"govuk-summary-list__key app-custom-class\">\n          Name\n        </dt>\n        <dd class=\"govuk-summary-list__value\">\n          Firstname Lastname\n        </dd>\n        \n      </div>\n    \n  \n</dl>"
         },
         {
             "name": "value with html",
             "options": {
                 "rows": [
                     {
-                        "key": null,
+                        "key": {
+                            "text": "Name"
+                        },
                         "value": {
                             "html": "<span>email@email.com</span>"
                         }
                     }
                 ]
             },
-            "html": "<dl class=\"govuk-summary-list\">\n  \n    \n      <div class=\"govuk-summary-list__row\">\n        <dt class=\"govuk-summary-list__key\">\n          \n        </dt>\n        <dd class=\"govuk-summary-list__value\">\n          <span>email@email.com</span>\n        </dd>\n        \n      </div>\n    \n  \n</dl>"
+            "html": "<dl class=\"govuk-summary-list\">\n  \n    \n      <div class=\"govuk-summary-list__row\">\n        <dt class=\"govuk-summary-list__key\">\n          Name\n        </dt>\n        <dd class=\"govuk-summary-list__value\">\n          <span>email@email.com</span>\n        </dd>\n        \n      </div>\n    \n  \n</dl>"
         },
         {
             "name": "actions href",
             "options": {
                 "rows": [
                     {
+                        "key": {
+                            "text": "Name"
+                        },
+                        "value": {
+                            "text": "Firstname Lastname"
+                        },
                         "actions": {
                             "items": [
                                 {
-                                    "href": "https://www.gov.uk"
+                                    "href": "https://www.gov.uk",
+                                    "text": "Go to GOV.UK"
                                 }
                             ]
                         }
                     }
                 ]
             },
-            "html": "<dl class=\"govuk-summary-list\">\n  \n    \n      <div class=\"govuk-summary-list__row\">\n        <dt class=\"govuk-summary-list__key\">\n          \n        </dt>\n        <dd class=\"govuk-summary-list__value\">\n          \n        </dd>\n        \n          <dd class=\"govuk-summary-list__actions\">\n            \n              <a class=\"govuk-link\" href=\"https://www.gov.uk\">\n                </a>\n            \n          </dd>\n        \n      </div>\n    \n  \n</dl>"
+            "html": "<dl class=\"govuk-summary-list\">\n  \n    \n      <div class=\"govuk-summary-list__row\">\n        <dt class=\"govuk-summary-list__key\">\n          Name\n        </dt>\n        <dd class=\"govuk-summary-list__value\">\n          Firstname Lastname\n        </dd>\n        \n          <dd class=\"govuk-summary-list__actions\">\n            \n              <a class=\"govuk-link\" href=\"https://www.gov.uk\">\n                Go to GOV.UK</a>\n            \n          </dd>\n        \n      </div>\n    \n  \n</dl>"
         },
         {
             "name": "actions with html",
             "options": {
                 "rows": [
                     {
+                        "key": {
+                            "text": "Name"
+                        },
+                        "value": {
+                            "text": "Firstname Lastname"
+                        },
                         "actions": {
                             "items": [
                                 {
-                                    "html": "Edit<span class=\"visually-hidden\"> name</span>"
+                                    "html": "Edit<span class=\"visually-hidden\"> name</span>",
+                                    "href": "#"
                                 }
                             ]
                         }
                     }
                 ]
             },
-            "html": "<dl class=\"govuk-summary-list\">\n  \n    \n      <div class=\"govuk-summary-list__row\">\n        <dt class=\"govuk-summary-list__key\">\n          \n        </dt>\n        <dd class=\"govuk-summary-list__value\">\n          \n        </dd>\n        \n          <dd class=\"govuk-summary-list__actions\">\n            \n              <a class=\"govuk-link\" href=\"\">\n                Edit<span class=\"visually-hidden\"> name</span></a>\n            \n          </dd>\n        \n      </div>\n    \n  \n</dl>"
+            "html": "<dl class=\"govuk-summary-list\">\n  \n    \n      <div class=\"govuk-summary-list__row\">\n        <dt class=\"govuk-summary-list__key\">\n          Name\n        </dt>\n        <dd class=\"govuk-summary-list__value\">\n          Firstname Lastname\n        </dd>\n        \n          <dd class=\"govuk-summary-list__actions\">\n            \n              <a class=\"govuk-link\" href=\"#\">\n                Edit<span class=\"visually-hidden\"> name</span></a>\n            \n          </dd>\n        \n      </div>\n    \n  \n</dl>"
         },
         {
             "name": "actions with classes",
             "options": {
                 "rows": [
                     {
+                        "key": {
+                            "text": "Name"
+                        },
+                        "value": {
+                            "text": "Firstname Lastname"
+                        },
                         "actions": {
                             "classes": "app-custom-class",
                             "items": [
                                 {
-                                    "text": "Edit"
+                                    "text": "Edit",
+                                    "href": "/edit"
                                 }
                             ]
                         }
                     }
                 ]
             },
-            "html": "<dl class=\"govuk-summary-list\">\n  \n    \n      <div class=\"govuk-summary-list__row\">\n        <dt class=\"govuk-summary-list__key\">\n          \n        </dt>\n        <dd class=\"govuk-summary-list__value\">\n          \n        </dd>\n        \n          <dd class=\"govuk-summary-list__actions app-custom-class\">\n            \n              <a class=\"govuk-link\" href=\"\">\n                Edit</a>\n            \n          </dd>\n        \n      </div>\n    \n  \n</dl>"
+            "html": "<dl class=\"govuk-summary-list\">\n  \n    \n      <div class=\"govuk-summary-list__row\">\n        <dt class=\"govuk-summary-list__key\">\n          Name\n        </dt>\n        <dd class=\"govuk-summary-list__value\">\n          Firstname Lastname\n        </dd>\n        \n          <dd class=\"govuk-summary-list__actions app-custom-class\">\n            \n              <a class=\"govuk-link\" href=\"/edit\">\n                Edit</a>\n            \n          </dd>\n        \n      </div>\n    \n  \n</dl>"
         },
         {
             "name": "actions with attributes",
             "options": {
                 "rows": [
                     {
+                        "key": {
+                            "text": "Name"
+                        },
+                        "value": {
+                            "text": "Firstname Lastname"
+                        },
                         "actions": {
                             "items": [
                                 {
@@ -921,13 +972,19 @@
                     }
                 ]
             },
-            "html": "<dl class=\"govuk-summary-list\">\n  \n    \n      <div class=\"govuk-summary-list__row\">\n        <dt class=\"govuk-summary-list__key\">\n          \n        </dt>\n        <dd class=\"govuk-summary-list__value\">\n          \n        </dd>\n        \n          <dd class=\"govuk-summary-list__actions\">\n            \n              <a class=\"govuk-link\" href=\"#\" data-test-attribute=\"value\" data-test-attribute-2=\"value-2\">\n                Edit</a>\n            \n          </dd>\n        \n      </div>\n    \n  \n</dl>"
+            "html": "<dl class=\"govuk-summary-list\">\n  \n    \n      <div class=\"govuk-summary-list__row\">\n        <dt class=\"govuk-summary-list__key\">\n          Name\n        </dt>\n        <dd class=\"govuk-summary-list__value\">\n          Firstname Lastname\n        </dd>\n        \n          <dd class=\"govuk-summary-list__actions\">\n            \n              <a class=\"govuk-link\" href=\"#\" data-test-attribute=\"value\" data-test-attribute-2=\"value-2\">\n                Edit</a>\n            \n          </dd>\n        \n      </div>\n    \n  \n</dl>"
         },
         {
             "name": "single action with anchor",
             "options": {
                 "rows": [
                     {
+                        "key": {
+                            "text": "Name"
+                        },
+                        "value": {
+                            "text": "Firstname Lastname"
+                        },
                         "actions": {
                             "items": [
                                 {
@@ -939,13 +996,19 @@
                     }
                 ]
             },
-            "html": "<dl class=\"govuk-summary-list\">\n  \n    \n      <div class=\"govuk-summary-list__row\">\n        <dt class=\"govuk-summary-list__key\">\n          \n        </dt>\n        <dd class=\"govuk-summary-list__value\">\n          \n        </dd>\n        \n          <dd class=\"govuk-summary-list__actions\">\n            \n              <a class=\"govuk-link\" href=\"#\">\n                First action</a>\n            \n          </dd>\n        \n      </div>\n    \n  \n</dl>"
+            "html": "<dl class=\"govuk-summary-list\">\n  \n    \n      <div class=\"govuk-summary-list__row\">\n        <dt class=\"govuk-summary-list__key\">\n          Name\n        </dt>\n        <dd class=\"govuk-summary-list__value\">\n          Firstname Lastname\n        </dd>\n        \n          <dd class=\"govuk-summary-list__actions\">\n            \n              <a class=\"govuk-link\" href=\"#\">\n                First action</a>\n            \n          </dd>\n        \n      </div>\n    \n  \n</dl>"
         },
         {
             "name": "classes on items",
             "options": {
                 "rows": [
                     {
+                        "key": {
+                            "text": "Name"
+                        },
+                        "value": {
+                            "text": "Firstname Lastname"
+                        },
                         "actions": {
                             "items": [
                                 {
@@ -958,20 +1021,26 @@
                     }
                 ]
             },
-            "html": "<dl class=\"govuk-summary-list\">\n  \n    \n      <div class=\"govuk-summary-list__row\">\n        <dt class=\"govuk-summary-list__key\">\n          \n        </dt>\n        <dd class=\"govuk-summary-list__value\">\n          \n        </dd>\n        \n          <dd class=\"govuk-summary-list__actions\">\n            \n              <a class=\"govuk-link govuk-link--no-visited-state\" href=\"#\">\n                Edit</a>\n            \n          </dd>\n        \n      </div>\n    \n  \n</dl>"
+            "html": "<dl class=\"govuk-summary-list\">\n  \n    \n      <div class=\"govuk-summary-list__row\">\n        <dt class=\"govuk-summary-list__key\">\n          Name\n        </dt>\n        <dd class=\"govuk-summary-list__value\">\n          Firstname Lastname\n        </dd>\n        \n          <dd class=\"govuk-summary-list__actions\">\n            \n              <a class=\"govuk-link govuk-link--no-visited-state\" href=\"#\">\n                Edit</a>\n            \n          </dd>\n        \n      </div>\n    \n  \n</dl>"
         },
         {
             "name": "empty items array",
             "options": {
                 "rows": [
                     {
+                        "key": {
+                            "text": "Name"
+                        },
+                        "value": {
+                            "text": "Firstname Lastname"
+                        },
                         "actions": {
                             "items": []
                         }
                     }
                 ]
             },
-            "html": "<dl class=\"govuk-summary-list\">\n  \n    \n      <div class=\"govuk-summary-list__row\">\n        <dt class=\"govuk-summary-list__key\">\n          \n        </dt>\n        <dd class=\"govuk-summary-list__value\">\n          \n        </dd>\n        \n      </div>\n    \n  \n</dl>"
+            "html": "<dl class=\"govuk-summary-list\">\n  \n    \n      <div class=\"govuk-summary-list__row\">\n        <dt class=\"govuk-summary-list__key\">\n          Name\n        </dt>\n        <dd class=\"govuk-summary-list__value\">\n          Firstname Lastname\n        </dd>\n        \n      </div>\n    \n  \n</dl>"
         },
         {
             "name": "rows with classes",
@@ -981,11 +1050,14 @@
                         "key": {
                             "text": "Name"
                         },
+                        "value": {
+                            "text": "Firstname Lastname"
+                        },
                         "classes": "app-custom-class"
                     }
                 ]
             },
-            "html": "<dl class=\"govuk-summary-list\">\n  \n    \n      <div class=\"govuk-summary-list__row app-custom-class\">\n        <dt class=\"govuk-summary-list__key\">\n          Name\n        </dt>\n        <dd class=\"govuk-summary-list__value\">\n          \n        </dd>\n        \n      </div>\n    \n  \n</dl>"
+            "html": "<dl class=\"govuk-summary-list\">\n  \n    \n      <div class=\"govuk-summary-list__row app-custom-class\">\n        <dt class=\"govuk-summary-list__key\">\n          Name\n        </dt>\n        <dd class=\"govuk-summary-list__value\">\n          Firstname Lastname\n        </dd>\n        \n      </div>\n    \n  \n</dl>"
         }
     ]
 }

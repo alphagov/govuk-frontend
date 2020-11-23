@@ -59,6 +59,7 @@
         {
             "name": "with hints on items",
             "options": {
+                "name": "with-hints-on-items",
                 "fieldset": {
                     "legend": {
                         "text": "How do you want to sign in?",
@@ -233,7 +234,7 @@
         {
             "name": "with fieldset and error message",
             "options": {
-                "name": "colours",
+                "name": "nationality",
                 "errorMessage": {
                     "text": "Please accept the terms and conditions"
                 },
@@ -257,7 +258,7 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n\n  <fieldset class=\"govuk-fieldset\" aria-describedby=\"colours-error\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    What is your nationality?\n  \n  </legend>\n  \n\n  <span id=\"colours-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Please accept the terms and conditions\n  </span>\n\n  <div class=\"govuk-checkboxes\">\n    \n      \n          \n        \n        \n        \n        \n        \n        <div class=\"govuk-checkboxes__item\">\n          <input class=\"govuk-checkboxes__input\" id=\"colours\" name=\"colours\" type=\"checkbox\" value=\"british\">\n          <label class=\"govuk-label govuk-checkboxes__label\" for=\"colours\">\n        British\n      </label>\n          \n        </div>\n        \n      \n    \n      \n        \n        \n        \n        \n        \n        <div class=\"govuk-checkboxes__item\">\n          <input class=\"govuk-checkboxes__input\" id=\"colours-2\" name=\"colours\" type=\"checkbox\" value=\"irish\">\n          <label class=\"govuk-label govuk-checkboxes__label\" for=\"colours-2\">\n        Irish\n      </label>\n          \n        </div>\n        \n      \n    \n      \n        \n        \n        \n        \n        \n        <div class=\"govuk-checkboxes__item\">\n          <input class=\"govuk-checkboxes__input\" id=\"colours-3\" name=\"colours\" type=\"checkbox\" value=\"other\">\n          <label class=\"govuk-label govuk-checkboxes__label\" for=\"colours-3\">\n        Citizen of another country\n      </label>\n          \n        </div>\n        \n      \n    \n  </div>\n  \n\n</fieldset>\n\n\n</div>"
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n\n  <fieldset class=\"govuk-fieldset\" aria-describedby=\"nationality-error\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    What is your nationality?\n  \n  </legend>\n  \n\n  <span id=\"nationality-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Please accept the terms and conditions\n  </span>\n\n  <div class=\"govuk-checkboxes\">\n    \n      \n          \n        \n        \n        \n        \n        \n        <div class=\"govuk-checkboxes__item\">\n          <input class=\"govuk-checkboxes__input\" id=\"nationality\" name=\"nationality\" type=\"checkbox\" value=\"british\">\n          <label class=\"govuk-label govuk-checkboxes__label\" for=\"nationality\">\n        British\n      </label>\n          \n        </div>\n        \n      \n    \n      \n        \n        \n        \n        \n        \n        <div class=\"govuk-checkboxes__item\">\n          <input class=\"govuk-checkboxes__input\" id=\"nationality-2\" name=\"nationality\" type=\"checkbox\" value=\"irish\">\n          <label class=\"govuk-label govuk-checkboxes__label\" for=\"nationality-2\">\n        Irish\n      </label>\n          \n        </div>\n        \n      \n    \n      \n        \n        \n        \n        \n        \n        <div class=\"govuk-checkboxes__item\">\n          <input class=\"govuk-checkboxes__input\" id=\"nationality-3\" name=\"nationality\" type=\"checkbox\" value=\"other\">\n          <label class=\"govuk-label govuk-checkboxes__label\" for=\"nationality-3\">\n        Citizen of another country\n      </label>\n          \n        </div>\n        \n      \n    \n  </div>\n  \n\n</fieldset>\n\n\n</div>"
         },
         {
             "name": "with error message",
@@ -373,7 +374,7 @@
                         "value": "email",
                         "text": "Email",
                         "conditional": {
-                            "html": "<label class=\"govuk-label\" for=\"context-email\">Mobile phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"context-email\" type=\"text\" id=\"context-email\">\n"
+                            "html": "<label class=\"govuk-label\" for=\"context-email\">Email address</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"context-email\" type=\"text\" id=\"context-email\">\n"
                         }
                     },
                     {
@@ -392,7 +393,7 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-form-group\">\n\n  <fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    How do you want to be contacted?\n  \n  </legend>\n  \n\n  <div class=\"govuk-checkboxes\" data-module=\"govuk-checkboxes\">\n    \n      \n          \n        \n        \n        \n        \n        \n        <div class=\"govuk-checkboxes__item\">\n          <input class=\"govuk-checkboxes__input\" id=\"how-contacted\" name=\"with-conditional-items\" type=\"checkbox\" value=\"email\" data-aria-controls=\"conditional-how-contacted\">\n          <label class=\"govuk-label govuk-checkboxes__label\" for=\"how-contacted\">\n        Email\n      </label>\n          \n        </div>\n        \n          <div class=\"govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden\" id=\"conditional-how-contacted\">\n            <label class=\"govuk-label\" for=\"context-email\">Mobile phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"context-email\" type=\"text\" id=\"context-email\">\n\n          </div>\n        \n      \n    \n      \n        \n        \n        \n        \n        \n        <div class=\"govuk-checkboxes__item\">\n          <input class=\"govuk-checkboxes__input\" id=\"how-contacted-2\" name=\"with-conditional-items\" type=\"checkbox\" value=\"phone\" data-aria-controls=\"conditional-how-contacted-2\">\n          <label class=\"govuk-label govuk-checkboxes__label\" for=\"how-contacted-2\">\n        Phone\n      </label>\n          \n        </div>\n        \n          <div class=\"govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden\" id=\"conditional-how-contacted-2\">\n            <label class=\"govuk-label\" for=\"contact-phone\">Phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"contact-phone\" type=\"text\" id=\"contact-phone\">\n\n          </div>\n        \n      \n    \n      \n        \n        \n        \n        \n        \n        <div class=\"govuk-checkboxes__item\">\n          <input class=\"govuk-checkboxes__input\" id=\"how-contacted-3\" name=\"with-conditional-items\" type=\"checkbox\" value=\"text\" data-aria-controls=\"conditional-how-contacted-3\">\n          <label class=\"govuk-label govuk-checkboxes__label\" for=\"how-contacted-3\">\n        Text message\n      </label>\n          \n        </div>\n        \n          <div class=\"govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden\" id=\"conditional-how-contacted-3\">\n            <label class=\"govuk-label\" for=\"contact-text-message\">Mobile phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"contact-text-message\" type=\"text\" id=\"contact-text-message\">\n\n          </div>\n        \n      \n    \n  </div>\n  \n\n</fieldset>\n\n\n</div>"
+            "html": "<div class=\"govuk-form-group\">\n\n  <fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    How do you want to be contacted?\n  \n  </legend>\n  \n\n  <div class=\"govuk-checkboxes\" data-module=\"govuk-checkboxes\">\n    \n      \n          \n        \n        \n        \n        \n        \n        <div class=\"govuk-checkboxes__item\">\n          <input class=\"govuk-checkboxes__input\" id=\"how-contacted\" name=\"with-conditional-items\" type=\"checkbox\" value=\"email\" data-aria-controls=\"conditional-how-contacted\">\n          <label class=\"govuk-label govuk-checkboxes__label\" for=\"how-contacted\">\n        Email\n      </label>\n          \n        </div>\n        \n          <div class=\"govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden\" id=\"conditional-how-contacted\">\n            <label class=\"govuk-label\" for=\"context-email\">Email address</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"context-email\" type=\"text\" id=\"context-email\">\n\n          </div>\n        \n      \n    \n      \n        \n        \n        \n        \n        \n        <div class=\"govuk-checkboxes__item\">\n          <input class=\"govuk-checkboxes__input\" id=\"how-contacted-2\" name=\"with-conditional-items\" type=\"checkbox\" value=\"phone\" data-aria-controls=\"conditional-how-contacted-2\">\n          <label class=\"govuk-label govuk-checkboxes__label\" for=\"how-contacted-2\">\n        Phone\n      </label>\n          \n        </div>\n        \n          <div class=\"govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden\" id=\"conditional-how-contacted-2\">\n            <label class=\"govuk-label\" for=\"contact-phone\">Phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"contact-phone\" type=\"text\" id=\"contact-phone\">\n\n          </div>\n        \n      \n    \n      \n        \n        \n        \n        \n        \n        <div class=\"govuk-checkboxes__item\">\n          <input class=\"govuk-checkboxes__input\" id=\"how-contacted-3\" name=\"with-conditional-items\" type=\"checkbox\" value=\"text\" data-aria-controls=\"conditional-how-contacted-3\">\n          <label class=\"govuk-label govuk-checkboxes__label\" for=\"how-contacted-3\">\n        Text message\n      </label>\n          \n        </div>\n        \n          <div class=\"govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden\" id=\"conditional-how-contacted-3\">\n            <label class=\"govuk-label\" for=\"contact-text-message\">Mobile phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"contact-text-message\" type=\"text\" id=\"contact-text-message\">\n\n          </div>\n        \n      \n    \n  </div>\n  \n\n</fieldset>\n\n\n</div>"
         },
         {
             "name": "with conditional item checked",
@@ -410,7 +411,7 @@
                         "text": "Email",
                         "checked": true,
                         "conditional": {
-                            "html": "<label class=\"govuk-label\" for=\"context-email\">Mobile phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"context-email\" type=\"text\" id=\"context-email\">\n"
+                            "html": "<label class=\"govuk-label\" for=\"context-email\">Email address</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"context-email\" type=\"text\" id=\"context-email\">\n"
                         }
                     },
                     {
@@ -429,7 +430,7 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-form-group\">\n\n  <fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    How do you want to be contacted?\n  \n  </legend>\n  \n\n  <div class=\"govuk-checkboxes\" data-module=\"govuk-checkboxes\">\n    \n      \n          \n        \n        \n        \n        \n        \n        <div class=\"govuk-checkboxes__item\">\n          <input class=\"govuk-checkboxes__input\" id=\"how-contacted-checked\" name=\"how-contacted-checked\" type=\"checkbox\" value=\"email\" checked data-aria-controls=\"conditional-how-contacted-checked\">\n          <label class=\"govuk-label govuk-checkboxes__label\" for=\"how-contacted-checked\">\n        Email\n      </label>\n          \n        </div>\n        \n          <div class=\"govuk-checkboxes__conditional\" id=\"conditional-how-contacted-checked\">\n            <label class=\"govuk-label\" for=\"context-email\">Mobile phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"context-email\" type=\"text\" id=\"context-email\">\n\n          </div>\n        \n      \n    \n      \n        \n        \n        \n        \n        \n        <div class=\"govuk-checkboxes__item\">\n          <input class=\"govuk-checkboxes__input\" id=\"how-contacted-checked-2\" name=\"how-contacted-checked\" type=\"checkbox\" value=\"phone\" data-aria-controls=\"conditional-how-contacted-checked-2\">\n          <label class=\"govuk-label govuk-checkboxes__label\" for=\"how-contacted-checked-2\">\n        Phone\n      </label>\n          \n        </div>\n        \n          <div class=\"govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden\" id=\"conditional-how-contacted-checked-2\">\n            <label class=\"govuk-label\" for=\"contact-phone\">Phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"contact-phone\" type=\"text\" id=\"contact-phone\">\n\n          </div>\n        \n      \n    \n      \n        \n        \n        \n        \n        \n        <div class=\"govuk-checkboxes__item\">\n          <input class=\"govuk-checkboxes__input\" id=\"how-contacted-checked-3\" name=\"how-contacted-checked\" type=\"checkbox\" value=\"text\" data-aria-controls=\"conditional-how-contacted-checked-3\">\n          <label class=\"govuk-label govuk-checkboxes__label\" for=\"how-contacted-checked-3\">\n        Text message\n      </label>\n          \n        </div>\n        \n          <div class=\"govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden\" id=\"conditional-how-contacted-checked-3\">\n            <label class=\"govuk-label\" for=\"contact-text-message\">Mobile phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"contact-text-message\" type=\"text\" id=\"contact-text-message\">\n\n          </div>\n        \n      \n    \n  </div>\n  \n\n</fieldset>\n\n\n</div>"
+            "html": "<div class=\"govuk-form-group\">\n\n  <fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    How do you want to be contacted?\n  \n  </legend>\n  \n\n  <div class=\"govuk-checkboxes\" data-module=\"govuk-checkboxes\">\n    \n      \n          \n        \n        \n        \n        \n        \n        <div class=\"govuk-checkboxes__item\">\n          <input class=\"govuk-checkboxes__input\" id=\"how-contacted-checked\" name=\"how-contacted-checked\" type=\"checkbox\" value=\"email\" checked data-aria-controls=\"conditional-how-contacted-checked\">\n          <label class=\"govuk-label govuk-checkboxes__label\" for=\"how-contacted-checked\">\n        Email\n      </label>\n          \n        </div>\n        \n          <div class=\"govuk-checkboxes__conditional\" id=\"conditional-how-contacted-checked\">\n            <label class=\"govuk-label\" for=\"context-email\">Email address</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"context-email\" type=\"text\" id=\"context-email\">\n\n          </div>\n        \n      \n    \n      \n        \n        \n        \n        \n        \n        <div class=\"govuk-checkboxes__item\">\n          <input class=\"govuk-checkboxes__input\" id=\"how-contacted-checked-2\" name=\"how-contacted-checked\" type=\"checkbox\" value=\"phone\" data-aria-controls=\"conditional-how-contacted-checked-2\">\n          <label class=\"govuk-label govuk-checkboxes__label\" for=\"how-contacted-checked-2\">\n        Phone\n      </label>\n          \n        </div>\n        \n          <div class=\"govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden\" id=\"conditional-how-contacted-checked-2\">\n            <label class=\"govuk-label\" for=\"contact-phone\">Phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"contact-phone\" type=\"text\" id=\"contact-phone\">\n\n          </div>\n        \n      \n    \n      \n        \n        \n        \n        \n        \n        <div class=\"govuk-checkboxes__item\">\n          <input class=\"govuk-checkboxes__input\" id=\"how-contacted-checked-3\" name=\"how-contacted-checked\" type=\"checkbox\" value=\"text\" data-aria-controls=\"conditional-how-contacted-checked-3\">\n          <label class=\"govuk-label govuk-checkboxes__label\" for=\"how-contacted-checked-3\">\n        Text message\n      </label>\n          \n        </div>\n        \n          <div class=\"govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden\" id=\"conditional-how-contacted-checked-3\">\n            <label class=\"govuk-label\" for=\"contact-text-message\">Mobile phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"contact-text-message\" type=\"text\" id=\"contact-text-message\">\n\n          </div>\n        \n      \n    \n  </div>\n  \n\n</fieldset>\n\n\n</div>"
         },
         {
             "name": "with optional form-group classes showing group error",
@@ -449,7 +450,7 @@
                         "value": "email",
                         "text": "Email",
                         "conditional": {
-                            "html": "<label class=\"govuk-label\" for=\"context-email\">Mobile phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"context-email\" type=\"text\" id=\"context-email\">\n"
+                            "html": "<label class=\"govuk-label\" for=\"context-email\">Email address</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"context-email\" type=\"text\" id=\"context-email\">\n"
                         }
                     },
                     {
@@ -469,7 +470,7 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n\n  <fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    How do you want to be contacted?\n  \n  </legend>\n  \n\n  <div class=\"govuk-checkboxes\" data-module=\"govuk-checkboxes\">\n    \n      \n          \n        \n        \n        \n        \n        \n        <div class=\"govuk-checkboxes__item\">\n          <input class=\"govuk-checkboxes__input\" id=\"how-contacted-checked\" name=\"how-contacted-checked\" type=\"checkbox\" value=\"email\" data-aria-controls=\"conditional-how-contacted-checked\">\n          <label class=\"govuk-label govuk-checkboxes__label\" for=\"how-contacted-checked\">\n        Email\n      </label>\n          \n        </div>\n        \n          <div class=\"govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden\" id=\"conditional-how-contacted-checked\">\n            <label class=\"govuk-label\" for=\"context-email\">Mobile phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"context-email\" type=\"text\" id=\"context-email\">\n\n          </div>\n        \n      \n    \n      \n        \n        \n        \n        \n        \n        <div class=\"govuk-checkboxes__item\">\n          <input class=\"govuk-checkboxes__input\" id=\"how-contacted-checked-2\" name=\"how-contacted-checked\" type=\"checkbox\" value=\"phone\" checked data-aria-controls=\"conditional-how-contacted-checked-2\">\n          <label class=\"govuk-label govuk-checkboxes__label\" for=\"how-contacted-checked-2\">\n        Phone\n      </label>\n          \n        </div>\n        \n          <div class=\"govuk-checkboxes__conditional\" id=\"conditional-how-contacted-checked-2\">\n            <label class=\"govuk-label\" for=\"contact-phone\">Phone number</label>\n<span id=\"contact-phone-error\" class=\"govuk-error-message\">Problem with input</span>\n<input class=\"govuk-input govuk-input--error govuk-!-width-one-third\" name=\"contact-phone\" type=\"text\" id=\"contact-phone\" aria-describedby=\"contact-phone-error\">\n\n          </div>\n        \n      \n    \n      \n        \n        \n        \n        \n        \n        <div class=\"govuk-checkboxes__item\">\n          <input class=\"govuk-checkboxes__input\" id=\"how-contacted-checked-3\" name=\"how-contacted-checked\" type=\"checkbox\" value=\"text\" data-aria-controls=\"conditional-how-contacted-checked-3\">\n          <label class=\"govuk-label govuk-checkboxes__label\" for=\"how-contacted-checked-3\">\n        Text message\n      </label>\n          \n        </div>\n        \n          <div class=\"govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden\" id=\"conditional-how-contacted-checked-3\">\n            <label class=\"govuk-label\" for=\"contact-text-message\">Mobile phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"contact-text-message\" type=\"text\" id=\"contact-text-message\">\n\n          </div>\n        \n      \n    \n  </div>\n  \n\n</fieldset>\n\n\n</div>"
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n\n  <fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    How do you want to be contacted?\n  \n  </legend>\n  \n\n  <div class=\"govuk-checkboxes\" data-module=\"govuk-checkboxes\">\n    \n      \n          \n        \n        \n        \n        \n        \n        <div class=\"govuk-checkboxes__item\">\n          <input class=\"govuk-checkboxes__input\" id=\"how-contacted-checked\" name=\"how-contacted-checked\" type=\"checkbox\" value=\"email\" data-aria-controls=\"conditional-how-contacted-checked\">\n          <label class=\"govuk-label govuk-checkboxes__label\" for=\"how-contacted-checked\">\n        Email\n      </label>\n          \n        </div>\n        \n          <div class=\"govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden\" id=\"conditional-how-contacted-checked\">\n            <label class=\"govuk-label\" for=\"context-email\">Email address</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"context-email\" type=\"text\" id=\"context-email\">\n\n          </div>\n        \n      \n    \n      \n        \n        \n        \n        \n        \n        <div class=\"govuk-checkboxes__item\">\n          <input class=\"govuk-checkboxes__input\" id=\"how-contacted-checked-2\" name=\"how-contacted-checked\" type=\"checkbox\" value=\"phone\" checked data-aria-controls=\"conditional-how-contacted-checked-2\">\n          <label class=\"govuk-label govuk-checkboxes__label\" for=\"how-contacted-checked-2\">\n        Phone\n      </label>\n          \n        </div>\n        \n          <div class=\"govuk-checkboxes__conditional\" id=\"conditional-how-contacted-checked-2\">\n            <label class=\"govuk-label\" for=\"contact-phone\">Phone number</label>\n<span id=\"contact-phone-error\" class=\"govuk-error-message\">Problem with input</span>\n<input class=\"govuk-input govuk-input--error govuk-!-width-one-third\" name=\"contact-phone\" type=\"text\" id=\"contact-phone\" aria-describedby=\"contact-phone-error\">\n\n          </div>\n        \n      \n    \n      \n        \n        \n        \n        \n        \n        <div class=\"govuk-checkboxes__item\">\n          <input class=\"govuk-checkboxes__input\" id=\"how-contacted-checked-3\" name=\"how-contacted-checked\" type=\"checkbox\" value=\"text\" data-aria-controls=\"conditional-how-contacted-checked-3\">\n          <label class=\"govuk-label govuk-checkboxes__label\" for=\"how-contacted-checked-3\">\n        Text message\n      </label>\n          \n        </div>\n        \n          <div class=\"govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden\" id=\"conditional-how-contacted-checked-3\">\n            <label class=\"govuk-label\" for=\"contact-text-message\">Mobile phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"contact-text-message\" type=\"text\" id=\"contact-text-message\">\n\n          </div>\n        \n      \n    \n  </div>\n  \n\n</fieldset>\n\n\n</div>"
         },
         {
             "name": "small",
@@ -857,6 +858,16 @@
             "name": "with error message and hint",
             "options": {
                 "name": "example",
+                "items": [
+                    {
+                        "value": "british",
+                        "text": "British"
+                    },
+                    {
+                        "value": "irish",
+                        "text": "Irish"
+                    }
+                ],
                 "errorMessage": {
                     "text": "Please select an option"
                 },
@@ -869,7 +880,7 @@
                     "text": "If you have dual nationality, select all options that are relevant to you."
                 }
             },
-            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n\n  <fieldset class=\"govuk-fieldset\" aria-describedby=\"example-hint example-error\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    What is your nationality?\n  \n  </legend>\n  \n\n  <div id=\"example-hint\" class=\"govuk-hint\">\n    If you have dual nationality, select all options that are relevant to you.\n  </div>\n\n\n  \n  \n  <span id=\"example-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Please select an option\n  </span>\n\n  <div class=\"govuk-checkboxes\">\n    \n  </div>\n  \n\n</fieldset>\n\n\n</div>"
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n\n  <fieldset class=\"govuk-fieldset\" aria-describedby=\"example-hint example-error\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    What is your nationality?\n  \n  </legend>\n  \n\n  <div id=\"example-hint\" class=\"govuk-hint\">\n    If you have dual nationality, select all options that are relevant to you.\n  </div>\n\n\n  \n  \n  <span id=\"example-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Please select an option\n  </span>\n\n  <div class=\"govuk-checkboxes\">\n    \n      \n          \n        \n        \n        \n        \n        \n        <div class=\"govuk-checkboxes__item\">\n          <input class=\"govuk-checkboxes__input\" id=\"example\" name=\"example\" type=\"checkbox\" value=\"british\">\n          <label class=\"govuk-label govuk-checkboxes__label\" for=\"example\">\n        British\n      </label>\n          \n        </div>\n        \n      \n    \n      \n        \n        \n        \n        \n        \n        <div class=\"govuk-checkboxes__item\">\n          <input class=\"govuk-checkboxes__input\" id=\"example-2\" name=\"example\" type=\"checkbox\" value=\"irish\">\n          <label class=\"govuk-label govuk-checkboxes__label\" for=\"example-2\">\n        Irish\n      </label>\n          \n        </div>\n        \n      \n    \n  </div>\n  \n\n</fieldset>\n\n\n</div>"
         },
         {
             "name": "with error, hint and fieldset describedBy",
@@ -886,9 +897,19 @@
                 },
                 "hint": {
                     "text": "If you have dual nationality, select all options that are relevant to you."
-                }
+                },
+                "items": [
+                    {
+                        "value": "british",
+                        "text": "British"
+                    },
+                    {
+                        "value": "irish",
+                        "text": "Irish"
+                    }
+                ]
             },
-            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n\n  <fieldset class=\"govuk-fieldset\" aria-describedby=\"some-id example-hint example-error\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    What is your nationality?\n  \n  </legend>\n  \n\n  <div id=\"example-hint\" class=\"govuk-hint\">\n    If you have dual nationality, select all options that are relevant to you.\n  </div>\n\n\n  \n  \n  <span id=\"example-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Please select an option\n  </span>\n\n  <div class=\"govuk-checkboxes\">\n    \n  </div>\n  \n\n</fieldset>\n\n\n</div>"
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n\n  <fieldset class=\"govuk-fieldset\" aria-describedby=\"some-id example-hint example-error\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    What is your nationality?\n  \n  </legend>\n  \n\n  <div id=\"example-hint\" class=\"govuk-hint\">\n    If you have dual nationality, select all options that are relevant to you.\n  </div>\n\n\n  \n  \n  <span id=\"example-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Please select an option\n  </span>\n\n  <div class=\"govuk-checkboxes\">\n    \n      \n          \n        \n        \n        \n        \n        \n        <div class=\"govuk-checkboxes__item\">\n          <input class=\"govuk-checkboxes__input\" id=\"example\" name=\"example\" type=\"checkbox\" value=\"british\">\n          <label class=\"govuk-label govuk-checkboxes__label\" for=\"example\">\n        British\n      </label>\n          \n        </div>\n        \n      \n    \n      \n        \n        \n        \n        \n        \n        <div class=\"govuk-checkboxes__item\">\n          <input class=\"govuk-checkboxes__input\" id=\"example-2\" name=\"example\" type=\"checkbox\" value=\"irish\">\n          <label class=\"govuk-label govuk-checkboxes__label\" for=\"example-2\">\n        Irish\n      </label>\n          \n        </div>\n        \n      \n    \n  </div>\n  \n\n</fieldset>\n\n\n</div>"
         },
         {
             "name": "label with attributes",
@@ -925,9 +946,19 @@
                         "data-attribute": "value",
                         "data-second-attribute": "second-value"
                     }
-                }
+                },
+                "items": [
+                    {
+                        "value": "british",
+                        "text": "British"
+                    },
+                    {
+                        "value": "irish",
+                        "text": "Irish"
+                    }
+                ]
             },
-            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n\n  <fieldset class=\"govuk-fieldset app-fieldset--custom-modifier\" aria-describedby=\"example-name-error\" data-attribute=\"value\" data-second-attribute=\"second-value\">\n  \n\n  <span id=\"example-name-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Please select an option\n  </span>\n\n  <div class=\"govuk-checkboxes\">\n    \n  </div>\n  \n\n</fieldset>\n\n\n</div>"
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n\n  <fieldset class=\"govuk-fieldset app-fieldset--custom-modifier\" aria-describedby=\"example-name-error\" data-attribute=\"value\" data-second-attribute=\"second-value\">\n  \n\n  <span id=\"example-name-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Please select an option\n  </span>\n\n  <div class=\"govuk-checkboxes\">\n    \n      \n          \n        \n        \n        \n        \n        \n        <div class=\"govuk-checkboxes__item\">\n          <input class=\"govuk-checkboxes__input\" id=\"example-name\" name=\"example-name\" type=\"checkbox\" value=\"british\">\n          <label class=\"govuk-label govuk-checkboxes__label\" for=\"example-name\">\n        British\n      </label>\n          \n        </div>\n        \n      \n    \n      \n        \n        \n        \n        \n        \n        <div class=\"govuk-checkboxes__item\">\n          <input class=\"govuk-checkboxes__input\" id=\"example-name-2\" name=\"example-name\" type=\"checkbox\" value=\"irish\">\n          <label class=\"govuk-label govuk-checkboxes__label\" for=\"example-name-2\">\n        Irish\n      </label>\n          \n        </div>\n        \n      \n    \n  </div>\n  \n\n</fieldset>\n\n\n</div>"
         },
         {
             "name": "fieldset html params",
@@ -937,9 +968,19 @@
                     "legend": {
                         "html": "What is your <b>nationality</b>?"
                     }
-                }
+                },
+                "items": [
+                    {
+                        "value": "british",
+                        "text": "British"
+                    },
+                    {
+                        "value": "irish",
+                        "text": "Irish"
+                    }
+                ]
             },
-            "html": "<div class=\"govuk-form-group\">\n\n  <fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    What is your <b>nationality</b>?\n  \n  </legend>\n  \n\n  <div class=\"govuk-checkboxes\">\n    \n  </div>\n  \n\n</fieldset>\n\n\n</div>"
+            "html": "<div class=\"govuk-form-group\">\n\n  <fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    What is your <b>nationality</b>?\n  \n  </legend>\n  \n\n  <div class=\"govuk-checkboxes\">\n    \n      \n          \n        \n        \n        \n        \n        \n        <div class=\"govuk-checkboxes__item\">\n          <input class=\"govuk-checkboxes__input\" id=\"example-name\" name=\"example-name\" type=\"checkbox\" value=\"british\">\n          <label class=\"govuk-label govuk-checkboxes__label\" for=\"example-name\">\n        British\n      </label>\n          \n        </div>\n        \n      \n    \n      \n        \n        \n        \n        \n        \n        <div class=\"govuk-checkboxes__item\">\n          <input class=\"govuk-checkboxes__input\" id=\"example-name-2\" name=\"example-name\" type=\"checkbox\" value=\"irish\">\n          <label class=\"govuk-label govuk-checkboxes__label\" for=\"example-name-2\">\n        Irish\n      </label>\n          \n        </div>\n        \n      \n    \n  </div>\n  \n\n</fieldset>\n\n\n</div>"
         },
         {
             "name": "with single option set 'aria-describedby' on input, and describedBy",
@@ -1007,9 +1048,19 @@
                     "legend": {
                         "text": "What is your nationality?"
                     }
-                }
+                },
+                "items": [
+                    {
+                        "value": "british",
+                        "text": "British"
+                    },
+                    {
+                        "value": "irish",
+                        "text": "Irish"
+                    }
+                ]
             },
-            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n\n  <fieldset class=\"govuk-fieldset\" aria-describedby=\"some-id example-error\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    What is your nationality?\n  \n  </legend>\n  \n\n  <span id=\"example-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Please select an option\n  </span>\n\n  <div class=\"govuk-checkboxes\">\n    \n  </div>\n  \n\n</fieldset>\n\n\n</div>"
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n\n  <fieldset class=\"govuk-fieldset\" aria-describedby=\"some-id example-error\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    What is your nationality?\n  \n  </legend>\n  \n\n  <span id=\"example-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Please select an option\n  </span>\n\n  <div class=\"govuk-checkboxes\">\n    \n      \n          \n        \n        \n        \n        \n        \n        <div class=\"govuk-checkboxes__item\">\n          <input class=\"govuk-checkboxes__input\" id=\"example\" name=\"example\" type=\"checkbox\" value=\"british\">\n          <label class=\"govuk-label govuk-checkboxes__label\" for=\"example\">\n        British\n      </label>\n          \n        </div>\n        \n      \n    \n      \n        \n        \n        \n        \n        \n        <div class=\"govuk-checkboxes__item\">\n          <input class=\"govuk-checkboxes__input\" id=\"example-2\" name=\"example\" type=\"checkbox\" value=\"irish\">\n          <label class=\"govuk-label govuk-checkboxes__label\" for=\"example-2\">\n        Irish\n      </label>\n          \n        </div>\n        \n      \n    \n  </div>\n  \n\n</fieldset>\n\n\n</div>"
         }
     ]
 }
