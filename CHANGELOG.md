@@ -14,7 +14,7 @@ This was added in [pull request #1935: Create notification banner component](htt
 
 #### Customise input mode in the date component
 
-You can now change which keyboard type displays for mobile and tablet users. This enables users to enter characters other than numbers when they use the date input. To change the keyboard type, set the `inputmode` when you use the Nunjucks macro options.```
+You can now change which keyboard type displays for mobile and tablet users. This enables users to enter characters other than numbers when they use the date input. To change the keyboard type, set the `inputmode` when you use the Nunjucks macro options.
 
 This was added in [pull request #1975: Enable custom inputmode for date input component](https://github.com/alphagov/govuk-frontend/pull/1975). Thanks to [@foaly-nr1](https://github.com/foaly-nr1) for contributing this issue.
 
