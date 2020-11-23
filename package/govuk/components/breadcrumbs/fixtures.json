@@ -112,9 +112,14 @@
         {
             "name": "classes",
             "options": {
-                "classes": "app-breadcrumbs--custom-modifier"
+                "classes": "app-breadcrumbs--custom-modifier",
+                "items": [
+                    {
+                        "text": "Home"
+                    }
+                ]
             },
-            "html": "<div class=\"govuk-breadcrumbs app-breadcrumbs--custom-modifier\">\n  <ol class=\"govuk-breadcrumbs__list\">\n  \n  </ol>\n</div>"
+            "html": "<div class=\"govuk-breadcrumbs app-breadcrumbs--custom-modifier\">\n  <ol class=\"govuk-breadcrumbs__list\">\n  \n    \n    <li class=\"govuk-breadcrumbs__list-item\" aria-current=\"page\">Home</li>\n    \n  \n  </ol>\n</div>"
         },
         {
             "name": "attributes",
@@ -122,9 +127,14 @@
                 "attributes": {
                     "id": "my-navigation",
                     "role": "navigation"
-                }
+                },
+                "items": [
+                    {
+                        "text": "Home"
+                    }
+                ]
             },
-            "html": "<div class=\"govuk-breadcrumbs \" id=\"my-navigation\" role=\"navigation\">\n  <ol class=\"govuk-breadcrumbs__list\">\n  \n  </ol>\n</div>"
+            "html": "<div class=\"govuk-breadcrumbs \" id=\"my-navigation\" role=\"navigation\">\n  <ol class=\"govuk-breadcrumbs__list\">\n  \n    \n    <li class=\"govuk-breadcrumbs__list-item\" aria-current=\"page\">Home</li>\n    \n  \n  </ol>\n</div>"
         },
         {
             "name": "item attributes",

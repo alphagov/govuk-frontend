@@ -74,12 +74,12 @@
                 "name": "id",
                 "type": "string",
                 "required": false,
-                "description": "Specific id attribute for the checkbox item. If omitted, then idPrefix option will be applied."
+                "description": "Specific id attribute for the checkbox item. If omitted, then component global `idPrefix` option will be applied."
             },
             {
                 "name": "name",
                 "type": "string",
-                "required": true,
+                "required": false,
                 "description": "Specific name for the checkbox item. If omitted, then component global `name` string will be applied."
             },
             {

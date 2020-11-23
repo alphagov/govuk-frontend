@@ -306,36 +306,35 @@
             "html": "<div class=\"govuk-form-group\">\n<fieldset class=\"govuk-fieldset\" role=\"group\" aria-describedby=\"dob-with-input-attributes-hint\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    What is your date of birth?\n  \n  </legend>\n  \n\n  <div id=\"dob-with-input-attributes-hint\" class=\"govuk-hint\">\n    For example, 31 3 1980\n  </div>\n\n\n  <div class=\"govuk-date-input\" id=\"dob-with-input-attributes\">\n    \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"dob-with-input-attributes-day\">\n          Day\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"dob-with-input-attributes-day\" name=\"dob-with-input-attributes-day\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\" data-example-day=\"day\">\n      </div>\n    </div>\n  \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"dob-with-input-attributes-month\">\n          Month\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"dob-with-input-attributes-month\" name=\"dob-with-input-attributes-month\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\" data-example-month=\"month\">\n      </div>\n    </div>\n  \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"dob-with-input-attributes-year\">\n          Year\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-4\" id=\"dob-with-input-attributes-year\" name=\"dob-with-input-attributes-year\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\" data-example-year=\"year\">\n      </div>\n    </div>\n  \n  </div>\n  \n\n</fieldset>\n\n\n</div>"
         },
         {
-            "name": "no data",
-            "options": {},
-            "html": "<div class=\"govuk-form-group\">\n\n  <div class=\"govuk-date-input\">\n    \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"undefined-day\">\n          Day\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"undefined-day\" name=\"day\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"undefined-month\">\n          Month\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"undefined-month\" name=\"month\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"undefined-year\">\n          Year\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-4\" id=\"undefined-year\" name=\"year\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n  </div>\n\n</div>"
-        },
-        {
             "name": "classes",
             "options": {
+                "id": "with-classes",
                 "classes": "app-date-input--custom-modifier"
             },
-            "html": "<div class=\"govuk-form-group\">\n\n  <div class=\"govuk-date-input app-date-input--custom-modifier\">\n    \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"undefined-day\">\n          Day\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"undefined-day\" name=\"day\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"undefined-month\">\n          Month\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"undefined-month\" name=\"month\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"undefined-year\">\n          Year\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-4\" id=\"undefined-year\" name=\"year\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n  </div>\n\n</div>"
+            "html": "<div class=\"govuk-form-group\">\n\n  <div class=\"govuk-date-input app-date-input--custom-modifier\" id=\"with-classes\">\n    \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"with-classes-day\">\n          Day\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"with-classes-day\" name=\"day\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"with-classes-month\">\n          Month\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"with-classes-month\" name=\"month\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"with-classes-year\">\n          Year\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-4\" id=\"with-classes-year\" name=\"year\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n  </div>\n\n</div>"
         },
         {
             "name": "attributes",
             "options": {
+                "id": "with-attributes",
                 "attributes": {
                     "data-attribute": "my data value"
                 }
             },
-            "html": "<div class=\"govuk-form-group\">\n\n  <div class=\"govuk-date-input\" data-attribute=\"my data value\">\n    \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"undefined-day\">\n          Day\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"undefined-day\" name=\"day\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"undefined-month\">\n          Month\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"undefined-month\" name=\"month\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"undefined-year\">\n          Year\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-4\" id=\"undefined-year\" name=\"year\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n  </div>\n\n</div>"
+            "html": "<div class=\"govuk-form-group\">\n\n  <div class=\"govuk-date-input\" data-attribute=\"my data value\" id=\"with-attributes\">\n    \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"with-attributes-day\">\n          Day\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"with-attributes-day\" name=\"day\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"with-attributes-month\">\n          Month\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"with-attributes-month\" name=\"month\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"with-attributes-year\">\n          Year\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-4\" id=\"with-attributes-year\" name=\"year\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n  </div>\n\n</div>"
         },
         {
             "name": "with empty items",
             "options": {
+                "id": "with-empty-items",
                 "items": []
             },
-            "html": "<div class=\"govuk-form-group\">\n\n  <div class=\"govuk-date-input\">\n    \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"undefined-day\">\n          Day\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"undefined-day\" name=\"day\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"undefined-month\">\n          Month\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"undefined-month\" name=\"month\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"undefined-year\">\n          Year\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-4\" id=\"undefined-year\" name=\"year\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n  </div>\n\n</div>"
+            "html": "<div class=\"govuk-form-group\">\n\n  <div class=\"govuk-date-input\" id=\"with-empty-items\">\n    \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"with-empty-items-day\">\n          Day\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"with-empty-items-day\" name=\"day\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"with-empty-items-month\">\n          Month\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"with-empty-items-month\" name=\"month\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"with-empty-items-year\">\n          Year\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-4\" id=\"with-empty-items-year\" name=\"year\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n  </div>\n\n</div>"
         },
         {
             "name": "custom pattern",
             "options": {
+                "id": "with-custom-pattern",
                 "items": [
                     {
                         "name": "day",
@@ -343,11 +342,26 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-form-group\">\n\n  <div class=\"govuk-date-input\">\n    \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"undefined-day\">\n          Day\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input \" id=\"undefined-day\" name=\"day\" type=\"text\" pattern=\"[0-8]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n  </div>\n\n</div>"
+            "html": "<div class=\"govuk-form-group\">\n\n  <div class=\"govuk-date-input\" id=\"with-custom-pattern\">\n    \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"with-custom-pattern-day\">\n          Day\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input \" id=\"with-custom-pattern-day\" name=\"day\" type=\"text\" pattern=\"[0-8]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n  </div>\n\n</div>"
+        },
+        {
+            "name": "custom inputmode",
+            "options": {
+                "id": "with-custom-inputmode",
+                "items": [
+                    {
+                        "name": "day",
+                        "pattern": "[0-9X]*",
+                        "inputmode": "text"
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-form-group\">\n\n  <div class=\"govuk-date-input\" id=\"with-custom-inputmode\">\n    \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"with-custom-inputmode-day\">\n          Day\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input \" id=\"with-custom-inputmode-day\" name=\"day\" type=\"text\" pattern=\"[0-9X]*\" inputmode=\"text\">\n      </div>\n    </div>\n  \n  </div>\n\n</div>"
         },
         {
             "name": "with nested name",
             "options": {
+                "id": "with-nested-name",
                 "items": [
                     {
                         "name": "day[dd]"
@@ -360,24 +374,28 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-form-group\">\n\n  <div class=\"govuk-date-input\">\n    \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"undefined-day[dd]\">\n          Day[dd]\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input \" id=\"undefined-day[dd]\" name=\"day[dd]\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"undefined-month[mm]\">\n          Month[mm]\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input \" id=\"undefined-month[mm]\" name=\"month[mm]\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"undefined-year[yyyy]\">\n          Year[yyyy]\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input \" id=\"undefined-year[yyyy]\" name=\"year[yyyy]\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n  </div>\n\n</div>"
+            "html": "<div class=\"govuk-form-group\">\n\n  <div class=\"govuk-date-input\" id=\"with-nested-name\">\n    \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"with-nested-name-day[dd]\">\n          Day[dd]\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input \" id=\"with-nested-name-day[dd]\" name=\"day[dd]\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"with-nested-name-month[mm]\">\n          Month[mm]\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input \" id=\"with-nested-name-month[mm]\" name=\"month[mm]\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"with-nested-name-year[yyyy]\">\n          Year[yyyy]\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input \" id=\"with-nested-name-year[yyyy]\" name=\"year[yyyy]\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n  </div>\n\n</div>"
         },
         {
             "name": "with id on items",
             "options": {
+                "id": "with-item-id",
                 "items": [
                     {
-                        "id": "day"
+                        "id": "day",
+                        "name": "day"
                     },
                     {
-                        "id": "month"
+                        "id": "month",
+                        "name": "month"
                     },
                     {
-                        "year": "year"
+                        "id": "year",
+                        "name": "year"
                     }
                 ]
             },
-            "html": "<div class=\"govuk-form-group\">\n\n  <div class=\"govuk-date-input\">\n    \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        \n      \n      <input class=\"govuk-input govuk-date-input__input \" id=\"day\" name=\"\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        \n      \n      <input class=\"govuk-input govuk-date-input__input \" id=\"month\" name=\"\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        \n      \n      <input class=\"govuk-input govuk-date-input__input \" id=\"undefined-undefined\" name=\"\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n  </div>\n\n</div>"
+            "html": "<div class=\"govuk-form-group\">\n\n  <div class=\"govuk-date-input\" id=\"with-item-id\">\n    \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"day\">\n          Day\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input \" id=\"day\" name=\"day\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"month\">\n          Month\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input \" id=\"month\" name=\"month\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"year\">\n          Year\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input \" id=\"year\" name=\"year\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n  </div>\n\n</div>"
         },
         {
             "name": "suffixed id",
@@ -400,20 +418,24 @@
         {
             "name": "with values",
             "options": {
+                "id": "with-values",
                 "items": [
                     {
-                        "id": "day"
+                        "id": "day",
+                        "name": "day"
                     },
                     {
-                        "id": "month"
+                        "id": "month",
+                        "name": "month"
                     },
                     {
                         "id": "year",
+                        "name": "year",
                         "value": 2018
                     }
                 ]
             },
-            "html": "<div class=\"govuk-form-group\">\n\n  <div class=\"govuk-date-input\">\n    \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        \n      \n      <input class=\"govuk-input govuk-date-input__input \" id=\"day\" name=\"\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        \n      \n      <input class=\"govuk-input govuk-date-input__input \" id=\"month\" name=\"\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        \n      \n      <input class=\"govuk-input govuk-date-input__input \" id=\"year\" name=\"\" type=\"text\" value=\"2018\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n  </div>\n\n</div>"
+            "html": "<div class=\"govuk-form-group\">\n\n  <div class=\"govuk-date-input\" id=\"with-values\">\n    \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"day\">\n          Day\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input \" id=\"day\" name=\"day\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"month\">\n          Month\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input \" id=\"month\" name=\"month\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"year\">\n          Year\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input \" id=\"year\" name=\"year\" type=\"text\" value=\"2018\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n  </div>\n\n</div>"
         },
         {
             "name": "with hint and describedBy",
@@ -450,17 +472,19 @@
         {
             "name": "fieldset html",
             "options": {
+                "id": "with-fieldset-html",
                 "fieldset": {
                     "legend": {
                         "html": "What is your <b>date of birth</b>?"
                     }
                 }
             },
-            "html": "<div class=\"govuk-form-group\">\n<fieldset class=\"govuk-fieldset\" role=\"group\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    What is your <b>date of birth</b>?\n  \n  </legend>\n  \n\n  <div class=\"govuk-date-input\">\n    \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"undefined-day\">\n          Day\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"undefined-day\" name=\"day\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"undefined-month\">\n          Month\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"undefined-month\" name=\"month\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"undefined-year\">\n          Year\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-4\" id=\"undefined-year\" name=\"year\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n  </div>\n  \n\n</fieldset>\n\n\n</div>"
+            "html": "<div class=\"govuk-form-group\">\n<fieldset class=\"govuk-fieldset\" role=\"group\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    What is your <b>date of birth</b>?\n  \n  </legend>\n  \n\n  <div class=\"govuk-date-input\" id=\"with-fieldset-html\">\n    \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"with-fieldset-html-day\">\n          Day\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"with-fieldset-html-day\" name=\"day\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"with-fieldset-html-month\">\n          Month\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-2\" id=\"with-fieldset-html-month\" name=\"month\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"with-fieldset-html-year\">\n          Year\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input govuk-input--width-4\" id=\"with-fieldset-html-year\" name=\"year\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n  </div>\n  \n\n</fieldset>\n\n\n</div>"
         },
         {
             "name": "items with classes",
             "options": {
+                "id": "with-item-classes",
                 "items": [
                     {
                         "name": "day",
@@ -476,11 +500,12 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-form-group\">\n\n  <div class=\"govuk-date-input\">\n    \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"undefined-day\">\n          Day\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input app-date-input__day\" id=\"undefined-day\" name=\"day\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"undefined-month\">\n          Month\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input app-date-input__month\" id=\"undefined-month\" name=\"month\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"undefined-year\">\n          Year\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input app-date-input__year\" id=\"undefined-year\" name=\"year\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n  </div>\n\n</div>"
+            "html": "<div class=\"govuk-form-group\">\n\n  <div class=\"govuk-date-input\" id=\"with-item-classes\">\n    \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"with-item-classes-day\">\n          Day\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input app-date-input__day\" id=\"with-item-classes-day\" name=\"day\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"with-item-classes-month\">\n          Month\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input app-date-input__month\" id=\"with-item-classes-month\" name=\"month\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"with-item-classes-year\">\n          Year\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input app-date-input__year\" id=\"with-item-classes-year\" name=\"year\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n  </div>\n\n</div>"
         },
         {
             "name": "items without classes",
             "options": {
+                "id": "without-item-classes",
                 "items": [
                     {
                         "name": "day"
@@ -493,7 +518,7 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-form-group\">\n\n  <div class=\"govuk-date-input\">\n    \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"undefined-day\">\n          Day\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input \" id=\"undefined-day\" name=\"day\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"undefined-month\">\n          Month\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input \" id=\"undefined-month\" name=\"month\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"undefined-year\">\n          Year\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input \" id=\"undefined-year\" name=\"year\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n  </div>\n\n</div>"
+            "html": "<div class=\"govuk-form-group\">\n\n  <div class=\"govuk-date-input\" id=\"without-item-classes\">\n    \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"without-item-classes-day\">\n          Day\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input \" id=\"without-item-classes-day\" name=\"day\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"without-item-classes-month\">\n          Month\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input \" id=\"without-item-classes-month\" name=\"month\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n    <div class=\"govuk-date-input__item\">\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label govuk-date-input__label\" for=\"without-item-classes-year\">\n          Year\n        </label>\n      \n      <input class=\"govuk-input govuk-date-input__input \" id=\"without-item-classes-year\" name=\"year\" type=\"text\" pattern=\"[0-9]*\" inputmode=\"numeric\">\n      </div>\n    </div>\n  \n  </div>\n\n</div>"
         }
     ]
 }

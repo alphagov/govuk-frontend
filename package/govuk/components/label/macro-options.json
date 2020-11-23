@@ -14,7 +14,7 @@
     {
         "name": "for",
         "type": "string",
-        "required": true,
+        "required": false,
         "description": "The value of the for attribute, the id of the input the label is associated with."
     },
     {

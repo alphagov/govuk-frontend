@@ -20,7 +20,7 @@
     {
         "name": "inputmode",
         "type": "string",
-        "require": false,
+        "required": false,
         "description": "Optional value for [inputmode](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode)."
     },
     {

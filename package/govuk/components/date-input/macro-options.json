@@ -32,7 +32,7 @@
             {
                 "name": "label",
                 "type": "string",
-                "required": true,
+                "required": false,
                 "description": "Item-specific label text. If provided, this will be used instead of `name` for item label text."
             },
             {

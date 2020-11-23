@@ -157,82 +157,91 @@
             "name": "attributes",
             "options": {
                 "element": "button",
+                "text": "Submit",
                 "attributes": {
                     "aria-controls": "example-id",
                     "data-tracking-dimension": 123
                 }
             },
-            "html": "<button class=\"govuk-button\" data-module=\"govuk-button\" aria-controls=\"example-id\" data-tracking-dimension=\"123\">\n  \n</button>"
+            "html": "<button class=\"govuk-button\" data-module=\"govuk-button\" aria-controls=\"example-id\" data-tracking-dimension=\"123\">\n  Submit\n</button>"
         },
         {
             "name": "link attributes",
             "options": {
                 "element": "a",
+                "text": "Submit",
                 "attributes": {
                     "aria-controls": "example-id",
                     "data-tracking-dimension": 123
                 }
             },
-            "html": "<a href=\"#\" role=\"button\" draggable=\"false\" class=\"govuk-button\" data-module=\"govuk-button\" aria-controls=\"example-id\" data-tracking-dimension=\"123\">\n  \n</a>"
+            "html": "<a href=\"#\" role=\"button\" draggable=\"false\" class=\"govuk-button\" data-module=\"govuk-button\" aria-controls=\"example-id\" data-tracking-dimension=\"123\">\n  Submit\n</a>"
         },
         {
             "name": "input attributes",
             "options": {
                 "element": "input",
+                "text": "Submit",
                 "attributes": {
                     "aria-controls": "example-id",
                     "data-tracking-dimension": 123
                 }
             },
-            "html": "<input value=\"\" type=\"submit\" class=\"govuk-button\" data-module=\"govuk-button\" aria-controls=\"example-id\" data-tracking-dimension=\"123\">"
+            "html": "<input value=\"Submit\" type=\"submit\" class=\"govuk-button\" data-module=\"govuk-button\" aria-controls=\"example-id\" data-tracking-dimension=\"123\">"
         },
         {
             "name": "classes",
             "options": {
+                "text": "Submit",
                 "element": "button",
                 "classes": "app-button--custom-modifier"
             },
-            "html": "<button class=\"govuk-button app-button--custom-modifier\" data-module=\"govuk-button\">\n  \n</button>"
+            "html": "<button class=\"govuk-button app-button--custom-modifier\" data-module=\"govuk-button\">\n  Submit\n</button>"
         },
         {
             "name": "link classes",
             "options": {
+                "text": "Submit",
                 "element": "a",
                 "classes": "app-button--custom-modifier"
             },
-            "html": "<a href=\"#\" role=\"button\" draggable=\"false\" class=\"govuk-button app-button--custom-modifier\" data-module=\"govuk-button\">\n  \n</a>"
+            "html": "<a href=\"#\" role=\"button\" draggable=\"false\" class=\"govuk-button app-button--custom-modifier\" data-module=\"govuk-button\">\n  Submit\n</a>"
         },
         {
             "name": "input classes",
             "options": {
+                "text": "Submit",
                 "element": "input",
                 "classes": "app-button--custom-modifier"
             },
-            "html": "<input value=\"\" type=\"submit\" class=\"govuk-button app-button--custom-modifier\" data-module=\"govuk-button\">"
+            "html": "<input value=\"Submit\" type=\"submit\" class=\"govuk-button app-button--custom-modifier\" data-module=\"govuk-button\">"
         },
         {
             "name": "name",
             "options": {
+                "text": "Submit",
                 "element": "button",
                 "name": "start-now"
             },
-            "html": "<button name=\"start-now\" class=\"govuk-button\" data-module=\"govuk-button\">\n  \n</button>"
+            "html": "<button name=\"start-now\" class=\"govuk-button\" data-module=\"govuk-button\">\n  Submit\n</button>"
         },
         {
             "name": "type",
             "options": {
+                "text": "Submit",
                 "element": "button",
                 "type": "button"
             },
-            "html": "<button type=\"button\" class=\"govuk-button\" data-module=\"govuk-button\">\n  \n</button>"
+            "html": "<button type=\"button\" class=\"govuk-button\" data-module=\"govuk-button\">\n  Submit\n</button>"
         },
         {
             "name": "input type",
             "options": {
+                "text": "Submit",
                 "element": "input",
                 "type": "button"
             },
-            "html": "<input value=\"\" type=\"button\" class=\"govuk-button\" data-module=\"govuk-button\">"
+            "html": "<input value=\"Submit\" type=\"button\" class=\"govuk-button\" data-module=\"govuk-button\">"
         },
         {
             "name": "explicit link",
@@ -246,21 +255,24 @@
         {
             "name": "no href",
             "options": {
+                "text": "Submit",
                 "element": "a"
             },
-            "html": "<a href=\"#\" role=\"button\" draggable=\"false\" class=\"govuk-button\" data-module=\"govuk-button\">\n  \n</a>"
+            "html": "<a href=\"#\" role=\"button\" draggable=\"false\" class=\"govuk-button\" data-module=\"govuk-button\">\n  Submit\n</a>"
         },
         {
             "name": "value",
             "options": {
+                "text": "Submit",
                 "element": "button",
                 "value": "start"
             },
-            "html": "<button value=\"start\" class=\"govuk-button\" data-module=\"govuk-button\">\n  \n</button>"
+            "html": "<button value=\"start\" class=\"govuk-button\" data-module=\"govuk-button\">\n  Submit\n</button>"
         },
         {
             "name": "html",
             "options": {
+                "text": "Submit",
                 "element": "button",
                 "html": "Start <em>now</em>"
             },
