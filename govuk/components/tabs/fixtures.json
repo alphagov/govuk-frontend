@@ -62,32 +62,68 @@
         {
             "name": "classes",
             "options": {
-                "classes": "app-tabs--custom-modifier"
+                "classes": "app-tabs--custom-modifier",
+                "items": [
+                    {
+                        "label": "Tab 1",
+                        "id": "tab-1",
+                        "panel": {
+                            "text": "Information about tabs"
+                        }
+                    }
+                ]
             },
-            "html": "<div class=\"govuk-tabs app-tabs--custom-modifier\" data-module=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">\n    Contents\n  </h2>\n  \n  \n</div>"
+            "html": "<div class=\"govuk-tabs app-tabs--custom-modifier\" data-module=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">\n    Contents\n  </h2>\n  \n  <ul class=\"govuk-tabs__list\">\n    \n      \n        \n        <li class=\"govuk-tabs__list-item govuk-tabs__list-item--selected\">\n          <a class=\"govuk-tabs__tab\" href=\"#tab-1\">\n            Tab 1\n          </a>\n        </li>\n      \n    \n  </ul>\n  \n  \n    \n      \n      <div class=\"govuk-tabs__panel\" id=\"tab-1\">\n        Information about tabs\n      </div>\n    \n  \n</div>"
         },
         {
             "name": "id",
             "options": {
-                "id": "my-tabs"
+                "id": "my-tabs",
+                "items": [
+                    {
+                        "label": "Tab 1",
+                        "id": "tab-1",
+                        "panel": {
+                            "text": "Information about tabs"
+                        }
+                    }
+                ]
             },
-            "html": "<div id=\"my-tabs\" class=\"govuk-tabs\" data-module=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">\n    Contents\n  </h2>\n  \n  \n</div>"
+            "html": "<div id=\"my-tabs\" class=\"govuk-tabs\" data-module=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">\n    Contents\n  </h2>\n  \n  <ul class=\"govuk-tabs__list\">\n    \n      \n        \n        <li class=\"govuk-tabs__list-item govuk-tabs__list-item--selected\">\n          <a class=\"govuk-tabs__tab\" href=\"#tab-1\">\n            Tab 1\n          </a>\n        </li>\n      \n    \n  </ul>\n  \n  \n    \n      \n      <div class=\"govuk-tabs__panel\" id=\"tab-1\">\n        Information about tabs\n      </div>\n    \n  \n</div>"
         },
         {
             "name": "title",
             "options": {
-                "title": "Custom title for Contents"
+                "title": "Custom title for Contents",
+                "items": [
+                    {
+                        "label": "Tab 1",
+                        "id": "tab-1",
+                        "panel": {
+                            "text": "Information about tabs"
+                        }
+                    }
+                ]
             },
-            "html": "<div class=\"govuk-tabs\" data-module=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">\n    Custom title for Contents\n  </h2>\n  \n  \n</div>"
+            "html": "<div class=\"govuk-tabs\" data-module=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">\n    Custom title for Contents\n  </h2>\n  \n  <ul class=\"govuk-tabs__list\">\n    \n      \n        \n        <li class=\"govuk-tabs__list-item govuk-tabs__list-item--selected\">\n          <a class=\"govuk-tabs__tab\" href=\"#tab-1\">\n            Tab 1\n          </a>\n        </li>\n      \n    \n  </ul>\n  \n  \n    \n      \n      <div class=\"govuk-tabs__panel\" id=\"tab-1\">\n        Information about tabs\n      </div>\n    \n  \n</div>"
         },
         {
             "name": "attributes",
             "options": {
                 "attributes": {
                     "data-attribute": "my data value"
-                }
+                },
+                "items": [
+                    {
+                        "label": "Tab 1",
+                        "id": "tab-1",
+                        "panel": {
+                            "text": "Information about tabs"
+                        }
+                    }
+                ]
             },
-            "html": "<div class=\"govuk-tabs\" data-attribute=\"my data value\" data-module=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">\n    Contents\n  </h2>\n  \n  \n</div>"
+            "html": "<div class=\"govuk-tabs\" data-attribute=\"my data value\" data-module=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">\n    Contents\n  </h2>\n  \n  <ul class=\"govuk-tabs__list\">\n    \n      \n        \n        <li class=\"govuk-tabs__list-item govuk-tabs__list-item--selected\">\n          <a class=\"govuk-tabs__tab\" href=\"#tab-1\">\n            Tab 1\n          </a>\n        </li>\n      \n    \n  </ul>\n  \n  \n    \n      \n      <div class=\"govuk-tabs__panel\" id=\"tab-1\">\n        Information about tabs\n      </div>\n    \n  \n</div>"
         },
         {
             "name": "item with attributes",
@@ -96,6 +132,9 @@
                     {
                         "id": "tab-1",
                         "label": "Tab 1",
+                        "panel": {
+                            "text": "Information about tabs"
+                        },
                         "attributes": {
                             "data-attribute": "my-attribute",
                             "data-attribute-2": "my-attribute-2"
@@ -103,7 +142,7 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-tabs\" data-module=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">\n    Contents\n  </h2>\n  \n  <ul class=\"govuk-tabs__list\">\n    \n      \n        \n        <li class=\"govuk-tabs__list-item govuk-tabs__list-item--selected\">\n          <a class=\"govuk-tabs__tab\" href=\"#tab-1\" data-attribute=\"my-attribute\" data-attribute-2=\"my-attribute-2\">\n            Tab 1\n          </a>\n        </li>\n      \n    \n  </ul>\n  \n  \n    \n      \n      <div class=\"govuk-tabs__panel\" id=\"tab-1\">\n        \n      </div>\n    \n  \n</div>"
+            "html": "<div class=\"govuk-tabs\" data-module=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">\n    Contents\n  </h2>\n  \n  <ul class=\"govuk-tabs__list\">\n    \n      \n        \n        <li class=\"govuk-tabs__list-item govuk-tabs__list-item--selected\">\n          <a class=\"govuk-tabs__tab\" href=\"#tab-1\" data-attribute=\"my-attribute\" data-attribute-2=\"my-attribute-2\">\n            Tab 1\n          </a>\n        </li>\n      \n    \n  </ul>\n  \n  \n    \n      \n      <div class=\"govuk-tabs__panel\" id=\"tab-1\">\n        Information about tabs\n      </div>\n    \n  \n</div>"
         },
         {
             "name": "panel with attributes",
@@ -191,19 +230,21 @@
                 "items": [
                     {
                         "label": "Tab 1",
+                        "id": "tab-1",
                         "panel": {
                             "text": "<p>Panel 1 content</p>"
                         }
                     },
                     {
                         "label": "Tab 2",
+                        "id": "tab-2",
                         "panel": {
                             "text": "<p>Panel 2 content</p>"
                         }
                     }
                 ]
             },
-            "html": "<div class=\"govuk-tabs\" data-module=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">\n    Contents\n  </h2>\n  \n  <ul class=\"govuk-tabs__list\">\n    \n      \n        \n        <li class=\"govuk-tabs__list-item govuk-tabs__list-item--selected\">\n          <a class=\"govuk-tabs__tab\" href=\"#-1\">\n            Tab 1\n          </a>\n        </li>\n      \n    \n      \n        \n        <li class=\"govuk-tabs__list-item\">\n          <a class=\"govuk-tabs__tab\" href=\"#-2\">\n            Tab 2\n          </a>\n        </li>\n      \n    \n  </ul>\n  \n  \n    \n      \n      <div class=\"govuk-tabs__panel\" id=\"-1\">\n        &lt;p&gt;Panel 1 content&lt;/p&gt;\n      </div>\n    \n  \n    \n      \n      <div class=\"govuk-tabs__panel govuk-tabs__panel--hidden\" id=\"-2\">\n        &lt;p&gt;Panel 2 content&lt;/p&gt;\n      </div>\n    \n  \n</div>"
+            "html": "<div class=\"govuk-tabs\" data-module=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">\n    Contents\n  </h2>\n  \n  <ul class=\"govuk-tabs__list\">\n    \n      \n        \n        <li class=\"govuk-tabs__list-item govuk-tabs__list-item--selected\">\n          <a class=\"govuk-tabs__tab\" href=\"#tab-1\">\n            Tab 1\n          </a>\n        </li>\n      \n    \n      \n        \n        <li class=\"govuk-tabs__list-item\">\n          <a class=\"govuk-tabs__tab\" href=\"#tab-2\">\n            Tab 2\n          </a>\n        </li>\n      \n    \n  </ul>\n  \n  \n    \n      \n      <div class=\"govuk-tabs__panel\" id=\"tab-1\">\n        &lt;p&gt;Panel 1 content&lt;/p&gt;\n      </div>\n    \n  \n    \n      \n      <div class=\"govuk-tabs__panel govuk-tabs__panel--hidden\" id=\"tab-2\">\n        &lt;p&gt;Panel 2 content&lt;/p&gt;\n      </div>\n    \n  \n</div>"
         },
         {
             "name": "html",
@@ -211,19 +252,21 @@
                 "items": [
                     {
                         "label": "Tab 1",
+                        "id": "tab-1",
                         "panel": {
                             "html": "<p>Panel 1 content</p>"
                         }
                     },
                     {
                         "label": "Tab 2",
+                        "id": "tab-2",
                         "panel": {
                             "html": "<p>Panel 2 content</p>"
                         }
                     }
                 ]
             },
-            "html": "<div class=\"govuk-tabs\" data-module=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">\n    Contents\n  </h2>\n  \n  <ul class=\"govuk-tabs__list\">\n    \n      \n        \n        <li class=\"govuk-tabs__list-item govuk-tabs__list-item--selected\">\n          <a class=\"govuk-tabs__tab\" href=\"#-1\">\n            Tab 1\n          </a>\n        </li>\n      \n    \n      \n        \n        <li class=\"govuk-tabs__list-item\">\n          <a class=\"govuk-tabs__tab\" href=\"#-2\">\n            Tab 2\n          </a>\n        </li>\n      \n    \n  </ul>\n  \n  \n    \n      \n      <div class=\"govuk-tabs__panel\" id=\"-1\">\n        <p>Panel 1 content</p>\n      </div>\n    \n  \n    \n      \n      <div class=\"govuk-tabs__panel govuk-tabs__panel--hidden\" id=\"-2\">\n        <p>Panel 2 content</p>\n      </div>\n    \n  \n</div>"
+            "html": "<div class=\"govuk-tabs\" data-module=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">\n    Contents\n  </h2>\n  \n  <ul class=\"govuk-tabs__list\">\n    \n      \n        \n        <li class=\"govuk-tabs__list-item govuk-tabs__list-item--selected\">\n          <a class=\"govuk-tabs__tab\" href=\"#tab-1\">\n            Tab 1\n          </a>\n        </li>\n      \n    \n      \n        \n        <li class=\"govuk-tabs__list-item\">\n          <a class=\"govuk-tabs__tab\" href=\"#tab-2\">\n            Tab 2\n          </a>\n        </li>\n      \n    \n  </ul>\n  \n  \n    \n      \n      <div class=\"govuk-tabs__panel\" id=\"tab-1\">\n        <p>Panel 1 content</p>\n      </div>\n    \n  \n    \n      \n      <div class=\"govuk-tabs__panel govuk-tabs__panel--hidden\" id=\"tab-2\">\n        <p>Panel 2 content</p>\n      </div>\n    \n  \n</div>"
         }
     ]
 }

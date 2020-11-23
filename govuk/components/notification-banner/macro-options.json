@@ -1,0 +1,68 @@
+[
+    {
+        "name": "text",
+        "type": "string",
+        "required": true,
+        "description": "The text that displays in the notification banner. You can use any string with this option. If you set `html`, this option is not required and is ignored."
+    },
+    {
+        "name": "html",
+        "type": "string",
+        "required": true,
+        "description": "The HTML to use within the notification banner. You can use any string with this option. If you set `html`, `text` is not required and is ignored."
+    },
+    {
+        "name": "titleText",
+        "type": "string",
+        "required": false,
+        "description": "The title text that displays in the notification banner. You can use any string with this option. Use this option to set text that does not contain HTML. The available default values are 'Important', 'Success', and null:\n- if you do not set `type`, `titleText` defaults to 'Important'\n- if you set `type` to `success`, `titleText` defaults to 'Success'\n- if you set `titleHtml`, this option is ignored\n"
+    },
+    {
+        "name": "titleHtml",
+        "type": "string",
+        "required": false,
+        "description": "The title HTML to use within the notification banner. You can use any string with this option. Use this option to set text that contains HTML. If you set `titleHtml`, the `titleText` option is ignored."
+    },
+    {
+        "name": "titleHeadingLevel",
+        "type": "string",
+        "required": false,
+        "description": "Sets heading level for the title only. You can only use values between `1` and `6` with this option. The default is `2`."
+    },
+    {
+        "name": "type",
+        "type": "string",
+        "required": false,
+        "description": "The type of notification to render. You can use only the `success` or null values with this option. If you set `type` to `success`, the notification banner sets `role` to `alert`. JavaScript then moves the keyboard focus to the notification banner when the page loads. If you do not set `type`, the notification banner sets `role` to `region`."
+    },
+    {
+        "name": "role",
+        "type": "string",
+        "required": false,
+        "description": "Overrides the value of the `role` attribute for the notification banner. Defaults to `region`. If you set `type` to `success`, `role` defaults to `alert`."
+    },
+    {
+        "name": "titleId",
+        "type": "string",
+        "required": false,
+        "description": "The `id` for the banner title, and the `aria-labelledby` attribute in the banner. Defaults to `govuk-notification-banner-title`."
+    },
+    {
+        "name": "disableAutoFocus",
+        "type": "boolean",
+        "required": false,
+        "description": "If you set `type` to `success`, or `role` to `alert`, JavaScript moves the keyboard focus to the notification banner when the page loads. To disable this behaviour, set `disableAutoFocus` to `true`."
+    },
+    {
+        "name": "classes",
+        "type": "string",
+        "required": false,
+        "description": "The classes that you want to add to the notification banner."
+    },
+    {
+        "name": "attributes",
+        "type": "object",
+        "required": false,
+        "description": "The HTML attributes that you want to add to the notification banner, for example, data attributes."
+    }
+]

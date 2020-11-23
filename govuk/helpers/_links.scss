@@ -66,6 +66,100 @@
   }
 }
 
+/// Error link style mixin
+///
+/// Provides the error unvisited, visited, hover and active states for links.
+///
+/// If you use this mixin in a component you must also include the
+/// govuk-link-common mixin in order to get the focus state.
+///
+/// @example scss
+///   .govuk-component__link {
+///     @include govuk-link-common;
+///     @include govuk-link-style-error;
+///   }
+///
+/// @access public
+
+@mixin govuk-link-style-error {
+  &:link,
+  &:visited {
+    color: $govuk-error-colour;
+  }
+
+  &:hover {
+    color: scale-color($govuk-error-colour, $lightness: -30%);
+  }
+
+  &:active {
+    color: $govuk-error-colour;
+  }
+
+  // When focussed, the text colour needs to be darker to ensure that colour
+  // contrast is still acceptable
+  &:focus {
+    color: $govuk-focus-text-colour;
+  }
+
+  // alphagov/govuk_template includes a specific a:link:focus selector
+  // designed to make unvisited link  s a slightly darker blue when focussed, so
+  // we need to override the text colour for that combination of selectors so
+  // so that unvisited links styled as buttons do not end up with dark blue
+  // text when focussed.
+  @include govuk-compatibility(govuk_template) {
+    &:link:focus {
+      color: $govuk-focus-text-colour;
+    }
+  }
+}
+
+/// Success link style mixin
+///
+/// Provides the success unvisited, visited, hover and active states for links.
+///
+/// If you use this mixin in a component you must also include the
+/// govuk-link-common mixin in order to get the focus state.
+///
+/// @example scss
+///   .govuk-component__link {
+///     @include govuk-link-common;
+///     @include govuk-link-style-success;
+///   }
+///
+/// @access public
+
+@mixin govuk-link-style-success {
+  &:link,
+  &:visited {
+    color: $govuk-success-colour;
+  }
+
+  &:hover {
+    color: scale-color($govuk-success-colour, $lightness: -30%);
+  }
+
+  &:active {
+    color: $govuk-success-colour;
+  }
+
+  // When focussed, the text colour needs to be darker to ensure that colour
+  // contrast is still acceptable
+  &:focus {
+    color: $govuk-focus-text-colour;
+  }
+
+  // alphagov/govuk_template includes a specific a:link:focus selector
+  // designed to make unvisited link  s a slightly darker blue when focussed, so
+  // we need to override the text colour for that combination of selectors so
+  // so that unvisited links styled as buttons do not end up with dark blue
+  // text when focussed.
+  @include govuk-compatibility(govuk_template) {
+    &:link:focus {
+      color: $govuk-focus-text-colour;
+    }
+  }
+}
+
 /// Muted style link mixin
 ///
 /// Used for secondary links on a page - the link will appear in muted colours

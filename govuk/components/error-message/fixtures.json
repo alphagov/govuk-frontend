@@ -11,16 +11,18 @@
         {
             "name": "id",
             "options": {
-                "id": "my-error-message-id"
+                "id": "my-error-message-id",
+                "text": "This is an error message"
             },
-            "html": "<span id=\"my-error-message-id\" class=\"govuk-error-message\">\n  <span class=\"govuk-visually-hidden\">Error:</span> \n</span>"
+            "html": "<span id=\"my-error-message-id\" class=\"govuk-error-message\">\n  <span class=\"govuk-visually-hidden\">Error:</span> This is an error message\n</span>"
         },
         {
             "name": "classes",
             "options": {
-                "classes": "custom-class"
+                "classes": "custom-class",
+                "text": "This is an error message"
             },
-            "html": "<span class=\"govuk-error-message custom-class\">\n  <span class=\"govuk-visually-hidden\">Error:</span> \n</span>"
+            "html": "<span class=\"govuk-error-message custom-class\">\n  <span class=\"govuk-visually-hidden\">Error:</span> This is an error message\n</span>"
         },
         {
             "name": "html as text",
@@ -39,12 +41,13 @@
         {
             "name": "attributes",
             "options": {
+                "text": "This is an error message",
                 "attributes": {
                     "data-test": "attribute",
                     "id": "my-error-message"
                 }
             },
-            "html": "<span class=\"govuk-error-message\" data-test=\"attribute\" id=\"my-error-message\">\n  <span class=\"govuk-visually-hidden\">Error:</span> \n</span>"
+            "html": "<span class=\"govuk-error-message\" data-test=\"attribute\" id=\"my-error-message\">\n  <span class=\"govuk-visually-hidden\">Error:</span> This is an error message\n</span>"
         },
         {
             "name": "with visually hidden text",

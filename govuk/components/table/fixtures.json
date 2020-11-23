@@ -174,18 +174,38 @@
         {
             "name": "classes",
             "options": {
-                "classes": "custom-class-goes-here"
+                "classes": "custom-class-goes-here",
+                "rows": [
+                    [
+                        {
+                            "text": "Jan"
+                        },
+                        {
+                            "text": "Feb"
+                        }
+                    ]
+                ]
             },
-            "html": "<table class=\"govuk-table custom-class-goes-here\">\n  \n  \n  <tbody class=\"govuk-table__body\">\n    \n  </tbody>\n</table>"
+            "html": "<table class=\"govuk-table custom-class-goes-here\">\n  \n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >Jan</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >Feb</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>"
         },
         {
             "name": "attributes",
             "options": {
                 "attributes": {
                     "data-foo": "bar"
-                }
+                },
+                "rows": [
+                    [
+                        {
+                            "text": "Jan"
+                        },
+                        {
+                            "text": "Feb"
+                        }
+                    ]
+                ]
             },
-            "html": "<table class=\"govuk-table\" data-foo=\"bar\">\n  \n  \n  <tbody class=\"govuk-table__body\">\n    \n  </tbody>\n</table>"
+            "html": "<table class=\"govuk-table\" data-foo=\"bar\">\n  \n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >Jan</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >Feb</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>"
         },
         {
             "name": "html as text",
@@ -231,9 +251,19 @@
                         "text": "Foo",
                         "classes": "my-custom-class"
                     }
+                ],
+                "rows": [
+                    [
+                        {
+                            "text": "Jan"
+                        },
+                        {
+                            "text": "Feb"
+                        }
+                    ]
                 ]
             },
-            "html": "<table class=\"govuk-table\">\n  \n  \n  <thead class=\"govuk-table__head\">\n    <tr class=\"govuk-table__row\">\n    \n      <th scope=\"col\" class=\"govuk-table__header my-custom-class\">Foo</th>\n    \n    </tr>\n  </thead>\n  \n  <tbody class=\"govuk-table__body\">\n    \n  </tbody>\n</table>"
+            "html": "<table class=\"govuk-table\">\n  \n  \n  <thead class=\"govuk-table__head\">\n    <tr class=\"govuk-table__row\">\n    \n      <th scope=\"col\" class=\"govuk-table__header my-custom-class\">Foo</th>\n    \n    </tr>\n  </thead>\n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >Jan</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >Feb</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>"
         },
         {
             "name": "head with rowspan and colspan",
@@ -244,9 +274,19 @@
                         "rowspan": 2,
                         "colspan": 2
                     }
+                ],
+                "rows": [
+                    [
+                        {
+                            "text": "Jan"
+                        },
+                        {
+                            "text": "Feb"
+                        }
+                    ]
                 ]
             },
-            "html": "<table class=\"govuk-table\">\n  \n  \n  <thead class=\"govuk-table__head\">\n    <tr class=\"govuk-table__row\">\n    \n      <th scope=\"col\" class=\"govuk-table__header\" colspan=\"2\" rowspan=\"2\">Foo</th>\n    \n    </tr>\n  </thead>\n  \n  <tbody class=\"govuk-table__body\">\n    \n  </tbody>\n</table>"
+            "html": "<table class=\"govuk-table\">\n  \n  \n  <thead class=\"govuk-table__head\">\n    <tr class=\"govuk-table__row\">\n    \n      <th scope=\"col\" class=\"govuk-table__header\" colspan=\"2\" rowspan=\"2\">Foo</th>\n    \n    </tr>\n  </thead>\n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >Jan</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >Feb</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>"
         },
         {
             "name": "head with attributes",
@@ -257,9 +297,19 @@
                             "data-fizz": "buzz"
                         }
                     }
+                ],
+                "rows": [
+                    [
+                        {
+                            "text": "Jan"
+                        },
+                        {
+                            "text": "Feb"
+                        }
+                    ]
                 ]
             },
-            "html": "<table class=\"govuk-table\">\n  \n  \n  <thead class=\"govuk-table__head\">\n    <tr class=\"govuk-table__row\">\n    \n      <th scope=\"col\" class=\"govuk-table__header\" data-fizz=\"buzz\"></th>\n    \n    </tr>\n  </thead>\n  \n  <tbody class=\"govuk-table__body\">\n    \n  </tbody>\n</table>"
+            "html": "<table class=\"govuk-table\">\n  \n  \n  <thead class=\"govuk-table__head\">\n    <tr class=\"govuk-table__row\">\n    \n      <th scope=\"col\" class=\"govuk-table__header\" data-fizz=\"buzz\"></th>\n    \n    </tr>\n  </thead>\n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >Jan</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >Feb</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>"
         },
         {
             "name": "with firstCellIsHeader true",

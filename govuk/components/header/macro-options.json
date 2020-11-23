@@ -38,13 +38,13 @@
             {
                 "name": "text",
                 "type": "string",
-                "required": false,
+                "required": true,
                 "description": "Text for the navigation item. If `html` is provided, the `text` argument will be ignored."
             },
             {
                 "name": "html",
                 "type": "string",
-                "required": false,
+                "required": true,
                 "description": "HTML for the navigation item. If `html` is provided, the `text` argument will be ignored."
             },
             {

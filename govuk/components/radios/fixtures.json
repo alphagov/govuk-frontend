@@ -290,7 +290,7 @@
                         "value": "email",
                         "text": "Email",
                         "conditional": {
-                            "html": "<label class=\"govuk-label\" for=\"context-email\">Mobile phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"context-email\" type=\"text\" id=\"context-email\">\n"
+                            "html": "<label class=\"govuk-label\" for=\"context-email\">Email address</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"context-email\" type=\"text\" id=\"context-email\">\n"
                         }
                     },
                     {
@@ -309,7 +309,7 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-form-group\">\n\n  <fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    How do you want to be contacted?\n  \n  </legend>\n  \n\n  <div class=\"govuk-radios govuk-radios--conditional\" data-module=\"govuk-radios\">\n    \n      \n          \n        \n        \n        <div class=\"govuk-radios__item\">\n          <input class=\"govuk-radios__input\" id=\"how-contacted\" name=\"how-contacted\" type=\"radio\" value=\"email\" data-aria-controls=\"conditional-how-contacted\">\n          <label class=\"govuk-label govuk-radios__label\" for=\"how-contacted\">\n        Email\n      </label>\n          \n        </div>\n        \n          <div class=\"govuk-radios__conditional govuk-radios__conditional--hidden\" id=\"conditional-how-contacted\">\n            <label class=\"govuk-label\" for=\"context-email\">Mobile phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"context-email\" type=\"text\" id=\"context-email\">\n\n          </div>\n        \n        \n      \n    \n      \n        \n        \n        <div class=\"govuk-radios__item\">\n          <input class=\"govuk-radios__input\" id=\"how-contacted-2\" name=\"how-contacted\" type=\"radio\" value=\"phone\" data-aria-controls=\"conditional-how-contacted-2\">\n          <label class=\"govuk-label govuk-radios__label\" for=\"how-contacted-2\">\n        Phone\n      </label>\n          \n        </div>\n        \n          <div class=\"govuk-radios__conditional govuk-radios__conditional--hidden\" id=\"conditional-how-contacted-2\">\n            <label class=\"govuk-label\" for=\"contact-phone\">Phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"contact-phone\" type=\"text\" id=\"contact-phone\">\n\n          </div>\n        \n        \n      \n    \n      \n        \n        \n        <div class=\"govuk-radios__item\">\n          <input class=\"govuk-radios__input\" id=\"how-contacted-3\" name=\"how-contacted\" type=\"radio\" value=\"text\" data-aria-controls=\"conditional-how-contacted-3\">\n          <label class=\"govuk-label govuk-radios__label\" for=\"how-contacted-3\">\n        Text message\n      </label>\n          \n        </div>\n        \n          <div class=\"govuk-radios__conditional govuk-radios__conditional--hidden\" id=\"conditional-how-contacted-3\">\n            <label class=\"govuk-label\" for=\"contact-text-message\">Mobile phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"contact-text-message\" type=\"text\" id=\"contact-text-message\">\n\n          </div>\n        \n        \n      \n    \n  </div>\n  \n\n</fieldset>\n\n\n</div>"
+            "html": "<div class=\"govuk-form-group\">\n\n  <fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    How do you want to be contacted?\n  \n  </legend>\n  \n\n  <div class=\"govuk-radios govuk-radios--conditional\" data-module=\"govuk-radios\">\n    \n      \n          \n        \n        \n        <div class=\"govuk-radios__item\">\n          <input class=\"govuk-radios__input\" id=\"how-contacted\" name=\"how-contacted\" type=\"radio\" value=\"email\" data-aria-controls=\"conditional-how-contacted\">\n          <label class=\"govuk-label govuk-radios__label\" for=\"how-contacted\">\n        Email\n      </label>\n          \n        </div>\n        \n          <div class=\"govuk-radios__conditional govuk-radios__conditional--hidden\" id=\"conditional-how-contacted\">\n            <label class=\"govuk-label\" for=\"context-email\">Email address</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"context-email\" type=\"text\" id=\"context-email\">\n\n          </div>\n        \n        \n      \n    \n      \n        \n        \n        <div class=\"govuk-radios__item\">\n          <input class=\"govuk-radios__input\" id=\"how-contacted-2\" name=\"how-contacted\" type=\"radio\" value=\"phone\" data-aria-controls=\"conditional-how-contacted-2\">\n          <label class=\"govuk-label govuk-radios__label\" for=\"how-contacted-2\">\n        Phone\n      </label>\n          \n        </div>\n        \n          <div class=\"govuk-radios__conditional govuk-radios__conditional--hidden\" id=\"conditional-how-contacted-2\">\n            <label class=\"govuk-label\" for=\"contact-phone\">Phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"contact-phone\" type=\"text\" id=\"contact-phone\">\n\n          </div>\n        \n        \n      \n    \n      \n        \n        \n        <div class=\"govuk-radios__item\">\n          <input class=\"govuk-radios__input\" id=\"how-contacted-3\" name=\"how-contacted\" type=\"radio\" value=\"text\" data-aria-controls=\"conditional-how-contacted-3\">\n          <label class=\"govuk-label govuk-radios__label\" for=\"how-contacted-3\">\n        Text message\n      </label>\n          \n        </div>\n        \n          <div class=\"govuk-radios__conditional govuk-radios__conditional--hidden\" id=\"conditional-how-contacted-3\">\n            <label class=\"govuk-label\" for=\"contact-text-message\">Mobile phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"contact-text-message\" type=\"text\" id=\"contact-text-message\">\n\n          </div>\n        \n        \n      \n    \n  </div>\n  \n\n</fieldset>\n\n\n</div>"
         },
         {
             "name": "inline with conditional items",
@@ -403,7 +403,7 @@
                         "value": "email",
                         "text": "Email",
                         "conditional": {
-                            "html": "<label class=\"govuk-label\" for=\"context-email\">Mobile phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"context-email\" type=\"text\" id=\"context-email\">\n"
+                            "html": "<label class=\"govuk-label\" for=\"context-email\">Email address</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"context-email\" type=\"text\" id=\"context-email\">\n"
                         }
                     },
                     {
@@ -423,7 +423,7 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n\n  <fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    How do you want to be contacted?\n  \n  </legend>\n  \n\n  <div class=\"govuk-radios govuk-radios--conditional\" data-module=\"govuk-radios\">\n    \n      \n          \n        \n        \n        <div class=\"govuk-radios__item\">\n          <input class=\"govuk-radios__input\" id=\"how-contacted-2\" name=\"how-contacted-2\" type=\"radio\" value=\"email\" data-aria-controls=\"conditional-how-contacted-2\">\n          <label class=\"govuk-label govuk-radios__label\" for=\"how-contacted-2\">\n        Email\n      </label>\n          \n        </div>\n        \n          <div class=\"govuk-radios__conditional govuk-radios__conditional--hidden\" id=\"conditional-how-contacted-2\">\n            <label class=\"govuk-label\" for=\"context-email\">Mobile phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"context-email\" type=\"text\" id=\"context-email\">\n\n          </div>\n        \n        \n      \n    \n      \n        \n        \n        <div class=\"govuk-radios__item\">\n          <input class=\"govuk-radios__input\" id=\"how-contacted-2-2\" name=\"how-contacted-2\" type=\"radio\" value=\"phone\" checked data-aria-controls=\"conditional-how-contacted-2-2\">\n          <label class=\"govuk-label govuk-radios__label\" for=\"how-contacted-2-2\">\n        Phone\n      </label>\n          \n        </div>\n        \n          <div class=\"govuk-radios__conditional\" id=\"conditional-how-contacted-2-2\">\n            <label class=\"govuk-label\" for=\"contact-phone\">Phone number</label>\n<span id=\"contact-phone-error\" class=\"govuk-error-message\">Problem with input</span>\n<input class=\"govuk-input govuk-input--error govuk-!-width-one-third\" name=\"contact-phone\" type=\"text\" id=\"contact-phone\" aria-describedby=\"contact-phone-error\">\n\n          </div>\n        \n        \n      \n    \n      \n        \n        \n        <div class=\"govuk-radios__item\">\n          <input class=\"govuk-radios__input\" id=\"how-contacted-2-3\" name=\"how-contacted-2\" type=\"radio\" value=\"text\" data-aria-controls=\"conditional-how-contacted-2-3\">\n          <label class=\"govuk-label govuk-radios__label\" for=\"how-contacted-2-3\">\n        Text message\n      </label>\n          \n        </div>\n        \n          <div class=\"govuk-radios__conditional govuk-radios__conditional--hidden\" id=\"conditional-how-contacted-2-3\">\n            <label class=\"govuk-label\" for=\"contact-text-message\">Mobile phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"contact-text-message\" type=\"text\" id=\"contact-text-message\">\n\n          </div>\n        \n        \n      \n    \n  </div>\n  \n\n</fieldset>\n\n\n</div>"
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n\n  <fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    How do you want to be contacted?\n  \n  </legend>\n  \n\n  <div class=\"govuk-radios govuk-radios--conditional\" data-module=\"govuk-radios\">\n    \n      \n          \n        \n        \n        <div class=\"govuk-radios__item\">\n          <input class=\"govuk-radios__input\" id=\"how-contacted-2\" name=\"how-contacted-2\" type=\"radio\" value=\"email\" data-aria-controls=\"conditional-how-contacted-2\">\n          <label class=\"govuk-label govuk-radios__label\" for=\"how-contacted-2\">\n        Email\n      </label>\n          \n        </div>\n        \n          <div class=\"govuk-radios__conditional govuk-radios__conditional--hidden\" id=\"conditional-how-contacted-2\">\n            <label class=\"govuk-label\" for=\"context-email\">Email address</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"context-email\" type=\"text\" id=\"context-email\">\n\n          </div>\n        \n        \n      \n    \n      \n        \n        \n        <div class=\"govuk-radios__item\">\n          <input class=\"govuk-radios__input\" id=\"how-contacted-2-2\" name=\"how-contacted-2\" type=\"radio\" value=\"phone\" checked data-aria-controls=\"conditional-how-contacted-2-2\">\n          <label class=\"govuk-label govuk-radios__label\" for=\"how-contacted-2-2\">\n        Phone\n      </label>\n          \n        </div>\n        \n          <div class=\"govuk-radios__conditional\" id=\"conditional-how-contacted-2-2\">\n            <label class=\"govuk-label\" for=\"contact-phone\">Phone number</label>\n<span id=\"contact-phone-error\" class=\"govuk-error-message\">Problem with input</span>\n<input class=\"govuk-input govuk-input--error govuk-!-width-one-third\" name=\"contact-phone\" type=\"text\" id=\"contact-phone\" aria-describedby=\"contact-phone-error\">\n\n          </div>\n        \n        \n      \n    \n      \n        \n        \n        <div class=\"govuk-radios__item\">\n          <input class=\"govuk-radios__input\" id=\"how-contacted-2-3\" name=\"how-contacted-2\" type=\"radio\" value=\"text\" data-aria-controls=\"conditional-how-contacted-2-3\">\n          <label class=\"govuk-label govuk-radios__label\" for=\"how-contacted-2-3\">\n        Text message\n      </label>\n          \n        </div>\n        \n          <div class=\"govuk-radios__conditional govuk-radios__conditional--hidden\" id=\"conditional-how-contacted-2-3\">\n            <label class=\"govuk-label\" for=\"contact-text-message\">Mobile phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"contact-text-message\" type=\"text\" id=\"contact-text-message\">\n\n          </div>\n        \n        \n      \n    \n  </div>\n  \n\n</fieldset>\n\n\n</div>"
         },
         {
             "name": "small",
@@ -898,18 +898,22 @@
                 },
                 "items": [
                     {
+                        "value": "yes",
+                        "text": "Yes",
                         "hint": {
                             "text": "Hint for yes option here"
                         }
                     },
                     {
+                        "value": "no",
+                        "text": "No",
                         "hint": {
                             "text": "Hint for no option here"
                         }
                     }
                 ]
             },
-            "html": "<div class=\"govuk-form-group\">\n\n  <fieldset class=\"govuk-fieldset\" aria-describedby=\"example-multiple-hints-hint\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    Have you changed your name?\n  \n  </legend>\n  \n\n  <div id=\"example-multiple-hints-hint\" class=\"govuk-hint\">\n    This includes changing your last name or spelling your name differently.\n  </div>\n\n\n  <div class=\"govuk-radios\">\n    \n      \n          \n        \n        \n        <div class=\"govuk-radios__item\">\n          <input class=\"govuk-radios__input\" id=\"example-multiple-hints\" name=\"example-multiple-hints\" type=\"radio\" value=\"\" aria-describedby=\"example-multiple-hints-item-hint\">\n          \n          \n          <div id=\"example-multiple-hints-item-hint\" class=\"govuk-hint govuk-radios__hint\">\n        Hint for yes option here\n      </div>\n          \n        </div>\n        \n        \n      \n    \n      \n        \n        \n        <div class=\"govuk-radios__item\">\n          <input class=\"govuk-radios__input\" id=\"example-multiple-hints-2\" name=\"example-multiple-hints\" type=\"radio\" value=\"\" aria-describedby=\"example-multiple-hints-2-item-hint\">\n          \n          \n          <div id=\"example-multiple-hints-2-item-hint\" class=\"govuk-hint govuk-radios__hint\">\n        Hint for no option here\n      </div>\n          \n        </div>\n        \n        \n      \n    \n  </div>\n  \n\n</fieldset>\n\n\n</div>"
+            "html": "<div class=\"govuk-form-group\">\n\n  <fieldset class=\"govuk-fieldset\" aria-describedby=\"example-multiple-hints-hint\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    Have you changed your name?\n  \n  </legend>\n  \n\n  <div id=\"example-multiple-hints-hint\" class=\"govuk-hint\">\n    This includes changing your last name or spelling your name differently.\n  </div>\n\n\n  <div class=\"govuk-radios\">\n    \n      \n          \n        \n        \n        <div class=\"govuk-radios__item\">\n          <input class=\"govuk-radios__input\" id=\"example-multiple-hints\" name=\"example-multiple-hints\" type=\"radio\" value=\"yes\" aria-describedby=\"example-multiple-hints-item-hint\">\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-multiple-hints\">\n        Yes\n      </label>\n          \n          <div id=\"example-multiple-hints-item-hint\" class=\"govuk-hint govuk-radios__hint\">\n        Hint for yes option here\n      </div>\n          \n        </div>\n        \n        \n      \n    \n      \n        \n        \n        <div class=\"govuk-radios__item\">\n          <input class=\"govuk-radios__input\" id=\"example-multiple-hints-2\" name=\"example-multiple-hints\" type=\"radio\" value=\"no\" aria-describedby=\"example-multiple-hints-2-item-hint\">\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-multiple-hints-2\">\n        No\n      </label>\n          \n          <div id=\"example-multiple-hints-2-item-hint\" class=\"govuk-hint govuk-radios__hint\">\n        Hint for no option here\n      </div>\n          \n        </div>\n        \n        \n      \n    \n  </div>\n  \n\n</fieldset>\n\n\n</div>"
         },
         {
             "name": "with describedBy and hint",
@@ -923,9 +927,19 @@
                 },
                 "hint": {
                     "text": "This includes changing your last name or spelling your name differently."
-                }
+                },
+                "items": [
+                    {
+                        "value": "yes",
+                        "text": "Yes"
+                    },
+                    {
+                        "value": "no",
+                        "text": "No"
+                    }
+                ]
             },
-            "html": "<div class=\"govuk-form-group\">\n\n  <fieldset class=\"govuk-fieldset\" aria-describedby=\"some-id example-hint-describedby-hint\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    Have you changed your name?\n  \n  </legend>\n  \n\n  <div id=\"example-hint-describedby-hint\" class=\"govuk-hint\">\n    This includes changing your last name or spelling your name differently.\n  </div>\n\n\n  <div class=\"govuk-radios\">\n    \n  </div>\n  \n\n</fieldset>\n\n\n</div>"
+            "html": "<div class=\"govuk-form-group\">\n\n  <fieldset class=\"govuk-fieldset\" aria-describedby=\"some-id example-hint-describedby-hint\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    Have you changed your name?\n  \n  </legend>\n  \n\n  <div id=\"example-hint-describedby-hint\" class=\"govuk-hint\">\n    This includes changing your last name or spelling your name differently.\n  </div>\n\n\n  <div class=\"govuk-radios\">\n    \n      \n          \n        \n        \n        <div class=\"govuk-radios__item\">\n          <input class=\"govuk-radios__input\" id=\"example-hint-describedby\" name=\"example-hint-describedby\" type=\"radio\" value=\"yes\">\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-hint-describedby\">\n        Yes\n      </label>\n          \n        </div>\n        \n        \n      \n    \n      \n        \n        \n        <div class=\"govuk-radios__item\">\n          <input class=\"govuk-radios__input\" id=\"example-hint-describedby-2\" name=\"example-hint-describedby\" type=\"radio\" value=\"no\">\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-hint-describedby-2\">\n        No\n      </label>\n          \n        </div>\n        \n        \n      \n    \n  </div>\n  \n\n</fieldset>\n\n\n</div>"
         },
         {
             "name": "with error message",
@@ -933,9 +947,19 @@
                 "name": "example-error-message",
                 "errorMessage": {
                     "text": "Please select an option"
-                }
+                },
+                "items": [
+                    {
+                        "value": "yes",
+                        "text": "Yes"
+                    },
+                    {
+                        "value": "no",
+                        "text": "No"
+                    }
+                ]
             },
-            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n\n  <span id=\"example-error-message-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Please select an option\n  </span>\n\n  <div class=\"govuk-radios\">\n    \n  </div>\n\n</div>"
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n\n  <span id=\"example-error-message-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Please select an option\n  </span>\n\n  <div class=\"govuk-radios\">\n    \n      \n          \n        \n        \n        <div class=\"govuk-radios__item\">\n          <input class=\"govuk-radios__input\" id=\"example-error-message\" name=\"example-error-message\" type=\"radio\" value=\"yes\">\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-error-message\">\n        Yes\n      </label>\n          \n        </div>\n        \n        \n      \n    \n      \n        \n        \n        <div class=\"govuk-radios__item\">\n          <input class=\"govuk-radios__input\" id=\"example-error-message-2\" name=\"example-error-message\" type=\"radio\" value=\"no\">\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-error-message-2\">\n        No\n      </label>\n          \n        </div>\n        \n        \n      \n    \n  </div>\n\n</div>"
         },
         {
             "name": "with error message and idPrefix",
@@ -944,9 +968,19 @@
                 "idPrefix": "id-prefix",
                 "errorMessage": {
                     "text": "Please select an option"
-                }
+                },
+                "items": [
+                    {
+                        "value": "yes",
+                        "text": "Yes"
+                    },
+                    {
+                        "value": "no",
+                        "text": "No"
+                    }
+                ]
             },
-            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n\n  <span id=\"id-prefix-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Please select an option\n  </span>\n\n  <div class=\"govuk-radios\">\n    \n  </div>\n\n</div>"
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n\n  <span id=\"id-prefix-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Please select an option\n  </span>\n\n  <div class=\"govuk-radios\">\n    \n      \n          \n        \n        \n        <div class=\"govuk-radios__item\">\n          <input class=\"govuk-radios__input\" id=\"id-prefix\" name=\"example-error-message\" type=\"radio\" value=\"yes\">\n          <label class=\"govuk-label govuk-radios__label\" for=\"id-prefix\">\n        Yes\n      </label>\n          \n        </div>\n        \n        \n      \n    \n      \n        \n        \n        <div class=\"govuk-radios__item\">\n          <input class=\"govuk-radios__input\" id=\"id-prefix-2\" name=\"example-error-message\" type=\"radio\" value=\"no\">\n          <label class=\"govuk-label govuk-radios__label\" for=\"id-prefix-2\">\n        No\n      </label>\n          \n        </div>\n        \n        \n      \n    \n  </div>\n\n</div>"
         },
         {
             "name": "with hint and error message",
@@ -962,9 +996,19 @@
                 },
                 "hint": {
                     "text": "This includes changing your last name or spelling your name differently."
-                }
+                },
+                "items": [
+                    {
+                        "value": "yes",
+                        "text": "Yes"
+                    },
+                    {
+                        "value": "no",
+                        "text": "No"
+                    }
+                ]
             },
-            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n\n  <fieldset class=\"govuk-fieldset\" aria-describedby=\"example-error-message-hint-hint example-error-message-hint-error\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    Have you changed your name?\n  \n  </legend>\n  \n\n  <div id=\"example-error-message-hint-hint\" class=\"govuk-hint\">\n    This includes changing your last name or spelling your name differently.\n  </div>\n\n\n  \n  \n  <span id=\"example-error-message-hint-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Please select an option\n  </span>\n\n  <div class=\"govuk-radios\">\n    \n  </div>\n  \n\n</fieldset>\n\n\n</div>"
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n\n  <fieldset class=\"govuk-fieldset\" aria-describedby=\"example-error-message-hint-hint example-error-message-hint-error\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    Have you changed your name?\n  \n  </legend>\n  \n\n  <div id=\"example-error-message-hint-hint\" class=\"govuk-hint\">\n    This includes changing your last name or spelling your name differently.\n  </div>\n\n\n  \n  \n  <span id=\"example-error-message-hint-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Please select an option\n  </span>\n\n  <div class=\"govuk-radios\">\n    \n      \n          \n        \n        \n        <div class=\"govuk-radios__item\">\n          <input class=\"govuk-radios__input\" id=\"example-error-message-hint\" name=\"example-error-message-hint\" type=\"radio\" value=\"yes\">\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-error-message-hint\">\n        Yes\n      </label>\n          \n        </div>\n        \n        \n      \n    \n      \n        \n        \n        <div class=\"govuk-radios__item\">\n          <input class=\"govuk-radios__input\" id=\"example-error-message-hint-2\" name=\"example-error-message-hint\" type=\"radio\" value=\"no\">\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-error-message-hint-2\">\n        No\n      </label>\n          \n        </div>\n        \n        \n      \n    \n  </div>\n  \n\n</fieldset>\n\n\n</div>"
         },
         {
             "name": "with hint, error message and describedBy",
@@ -981,13 +1025,24 @@
                 },
                 "hint": {
                     "text": "This includes changing your last name or spelling your name differently."
-                }
+                },
+                "items": [
+                    {
+                        "value": "yes",
+                        "text": "Yes"
+                    },
+                    {
+                        "value": "no",
+                        "text": "No"
+                    }
+                ]
             },
-            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n\n  <fieldset class=\"govuk-fieldset\" aria-describedby=\"some-id example-error-message-hint-hint example-error-message-hint-error\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    Have you changed your name?\n  \n  </legend>\n  \n\n  <div id=\"example-error-message-hint-hint\" class=\"govuk-hint\">\n    This includes changing your last name or spelling your name differently.\n  </div>\n\n\n  \n  \n  <span id=\"example-error-message-hint-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Please select an option\n  </span>\n\n  <div class=\"govuk-radios\">\n    \n  </div>\n  \n\n</fieldset>\n\n\n</div>"
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n\n  <fieldset class=\"govuk-fieldset\" aria-describedby=\"some-id example-error-message-hint-hint example-error-message-hint-error\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    Have you changed your name?\n  \n  </legend>\n  \n\n  <div id=\"example-error-message-hint-hint\" class=\"govuk-hint\">\n    This includes changing your last name or spelling your name differently.\n  </div>\n\n\n  \n  \n  <span id=\"example-error-message-hint-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Please select an option\n  </span>\n\n  <div class=\"govuk-radios\">\n    \n      \n          \n        \n        \n        <div class=\"govuk-radios__item\">\n          <input class=\"govuk-radios__input\" id=\"example-error-message-hint\" name=\"example-error-message-hint\" type=\"radio\" value=\"yes\">\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-error-message-hint\">\n        Yes\n      </label>\n          \n        </div>\n        \n        \n      \n    \n      \n        \n        \n        <div class=\"govuk-radios__item\">\n          <input class=\"govuk-radios__input\" id=\"example-error-message-hint-2\" name=\"example-error-message-hint\" type=\"radio\" value=\"no\">\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-error-message-hint-2\">\n        No\n      </label>\n          \n        </div>\n        \n        \n      \n    \n  </div>\n  \n\n</fieldset>\n\n\n</div>"
         },
         {
             "name": "label with attributes",
             "options": {
+                "name": "with-label-attributes",
                 "items": [
                     {
                         "value": "yes",
@@ -1001,7 +1056,7 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-form-group\">\n\n  <div class=\"govuk-radios\">\n    \n      \n          \n        \n        \n        <div class=\"govuk-radios__item\">\n          <input class=\"govuk-radios__input\" id=\"\" name=\"\" type=\"radio\" value=\"yes\">\n          <label class=\"govuk-label govuk-radios__label\" data-attribute=\"value\" data-second-attribute=\"second-value\">\n        Yes\n      </label>\n          \n        </div>\n        \n        \n      \n    \n  </div>\n\n</div>"
+            "html": "<div class=\"govuk-form-group\">\n\n  <div class=\"govuk-radios\">\n    \n      \n          \n        \n        \n        <div class=\"govuk-radios__item\">\n          <input class=\"govuk-radios__input\" id=\"with-label-attributes\" name=\"with-label-attributes\" type=\"radio\" value=\"yes\">\n          <label class=\"govuk-label govuk-radios__label\" data-attribute=\"value\" data-second-attribute=\"second-value\" for=\"with-label-attributes\">\n        Yes\n      </label>\n          \n        </div>\n        \n        \n      \n    \n  </div>\n\n</div>"
         },
         {
             "name": "fieldset params",
@@ -1019,20 +1074,41 @@
                 },
                 "hint": {
                     "text": "This includes changing your last name or spelling your name differently."
-                }
+                },
+                "items": [
+                    {
+                        "value": "yes",
+                        "text": "Yes"
+                    },
+                    {
+                        "value": "no",
+                        "text": "No"
+                    }
+                ]
             },
-            "html": "<div class=\"govuk-form-group\">\n\n  <fieldset class=\"govuk-fieldset app-fieldset--custom-modifier\" aria-describedby=\"example-fieldset-params-hint\" data-attribute=\"value\" data-second-attribute=\"second-value\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    Have you changed your name?\n  \n  </legend>\n  \n\n  <div id=\"example-fieldset-params-hint\" class=\"govuk-hint\">\n    This includes changing your last name or spelling your name differently.\n  </div>\n\n\n  <div class=\"govuk-radios\">\n    \n  </div>\n  \n\n</fieldset>\n\n\n</div>"
+            "html": "<div class=\"govuk-form-group\">\n\n  <fieldset class=\"govuk-fieldset app-fieldset--custom-modifier\" aria-describedby=\"example-fieldset-params-hint\" data-attribute=\"value\" data-second-attribute=\"second-value\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    Have you changed your name?\n  \n  </legend>\n  \n\n  <div id=\"example-fieldset-params-hint\" class=\"govuk-hint\">\n    This includes changing your last name or spelling your name differently.\n  </div>\n\n\n  <div class=\"govuk-radios\">\n    \n      \n          \n        \n        \n        <div class=\"govuk-radios__item\">\n          <input class=\"govuk-radios__input\" id=\"example-fieldset-params\" name=\"example-fieldset-params\" type=\"radio\" value=\"yes\">\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-fieldset-params\">\n        Yes\n      </label>\n          \n        </div>\n        \n        \n      \n    \n      \n        \n        \n        <div class=\"govuk-radios__item\">\n          <input class=\"govuk-radios__input\" id=\"example-fieldset-params-2\" name=\"example-fieldset-params\" type=\"radio\" value=\"no\">\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-fieldset-params-2\">\n        No\n      </label>\n          \n        </div>\n        \n        \n      \n    \n  </div>\n  \n\n</fieldset>\n\n\n</div>"
         },
         {
             "name": "fieldset with html",
             "options": {
+                "name": "with-fieldset-html",
                 "fieldset": {
                     "legend": {
                         "html": "Have <b>you</b> changed your name?"
                     }
-                }
+                },
+                "items": [
+                    {
+                        "value": "yes",
+                        "text": "Yes"
+                    },
+                    {
+                        "value": "no",
+                        "text": "No"
+                    }
+                ]
             },
-            "html": "<div class=\"govuk-form-group\">\n\n  <fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    Have <b>you</b> changed your name?\n  \n  </legend>\n  \n\n  <div class=\"govuk-radios\">\n    \n  </div>\n  \n\n</fieldset>\n\n\n</div>"
+            "html": "<div class=\"govuk-form-group\">\n\n  <fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    Have <b>you</b> changed your name?\n  \n  </legend>\n  \n\n  <div class=\"govuk-radios\">\n    \n      \n          \n        \n        \n        <div class=\"govuk-radios__item\">\n          <input class=\"govuk-radios__input\" id=\"with-fieldset-html\" name=\"with-fieldset-html\" type=\"radio\" value=\"yes\">\n          <label class=\"govuk-label govuk-radios__label\" for=\"with-fieldset-html\">\n        Yes\n      </label>\n          \n        </div>\n        \n        \n      \n    \n      \n        \n        \n        <div class=\"govuk-radios__item\">\n          <input class=\"govuk-radios__input\" id=\"with-fieldset-html-2\" name=\"with-fieldset-html\" type=\"radio\" value=\"no\">\n          <label class=\"govuk-label govuk-radios__label\" for=\"with-fieldset-html-2\">\n        No\n      </label>\n          \n        </div>\n        \n        \n      \n    \n  </div>\n  \n\n</fieldset>\n\n\n</div>"
         },
         {
             "name": "with fieldset, error message and describedBy",

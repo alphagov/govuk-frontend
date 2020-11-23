@@ -66,7 +66,7 @@
         name: (params.namePrefix + "-" + item.name) if params.namePrefix else item.name,
         value: item.value,
         type: "text",
-        inputmode: "numeric",
+        inputmode: item.inputmode if item.inputmode else "numeric",
         autocomplete: item.autocomplete,
         pattern: item.pattern if item.pattern else "[0-9]*",
         attributes: item.attributes
