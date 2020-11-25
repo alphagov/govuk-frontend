@@ -7,6 +7,7 @@
 We’ve made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#2035: Fix hairline gap between notification banner header and outer border on high resolution screens in Chrome/Edge (Blink)](https://github.com/alphagov/govuk-frontend/pull/2035)
+- [#2036: Explicitly set the text colour for notification banner content, rather than using the user-agent default text colour](https://github.com/alphagov/govuk-frontend/pull/2036)
 
 ## 3.10.0 (Feature release)
 
