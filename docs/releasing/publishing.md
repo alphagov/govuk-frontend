@@ -26,7 +26,7 @@
 
 7. Update [`package/package.json`](../../package/package.json) version with the new version number.
 
-8. Save the changes. Do not commit.
+8. Save and commit your changes.
 
 9. Run `npm run build-release`, you will be prompted to continue or cancel.
 
