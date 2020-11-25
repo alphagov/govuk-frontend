@@ -5,6 +5,8 @@
 
     border: $govuk-border-width solid $govuk-brand-colour;
 
+    background-color: $govuk-brand-colour;
+
     &:focus {
       outline: $govuk-focus-width solid $govuk-focus-colour;
     }
@@ -15,8 +17,6 @@
 
     // Ensures the notification header appears separate to the notification body text in high contrast mode
     border-bottom: 1px solid transparent;
-
-    background-color: $govuk-brand-colour;
 
     @include govuk-media-query($from: tablet) {
       padding: 2px govuk-spacing(4) govuk-spacing(1);
@@ -34,10 +34,16 @@
   }
 
   .govuk-notification-banner__content {
-    margin: govuk-spacing(3);
+    padding: govuk-spacing(3);
+
+    background-color: $govuk-body-background-colour;
 
     @include govuk-media-query($from: tablet) {
-      margin: govuk-spacing(4);
+      padding: govuk-spacing(4);
+    }
+
+    > :last-child {
+      margin-bottom: 0;
     }
   }
 
@@ -57,9 +63,7 @@
   .govuk-notification-banner--success {
     border-color: $govuk-success-colour;
 
-    .govuk-notification-banner__header {
-      background-color: $govuk-success-colour;
-    }
+    background-color: $govuk-success-colour;
 
     .govuk-notification-banner__link {
       @include govuk-link-style-success;
