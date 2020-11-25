@@ -1,12 +1,6 @@
 #!/bin/sh
 set -e
 
-# Check if there are files that need to be commited
-if [[ -n $(git status --porcelain) ]]; then
-  echo "⚠️ You have unstaged files, please commit these and then try again."
-  exit 1
-fi
-
 echo "Starting to build release..."
 echo " "
 echo "This will:"
