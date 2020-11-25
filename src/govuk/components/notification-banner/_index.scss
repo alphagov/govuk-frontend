@@ -34,6 +34,7 @@
   }
 
   .govuk-notification-banner__content {
+    @include govuk-text-colour;
     padding: govuk-spacing(3);
 
     background-color: $govuk-body-background-colour;
