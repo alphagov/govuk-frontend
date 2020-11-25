@@ -32,7 +32,7 @@ TAG="v$ALL_PACKAGE_VERSION"
 CURRENT_BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
 
 if [ $(git tag -l "$TAG") ]; then
-    echo "⚠️ Git tag already exists."
+    echo "⚠️ Git tag $TAG already exists. Check you have updated the version in package/package.json correctly."
     exit 1;
 else
     git add .
