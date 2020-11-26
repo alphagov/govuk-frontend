@@ -710,9 +710,9 @@ examples:
     name: example-name
     errorMessage:
       text: Please select an option
-    legend:
-      text: What is your nationality?
     fieldset:
+      legend:
+        text: What is your nationality?
       classes: app-fieldset--custom-modifier
       attributes:
         data-attribute: value
