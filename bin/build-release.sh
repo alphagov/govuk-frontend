@@ -1,9 +1,12 @@
 #!/bin/sh
 set -e
 
-# Check if there are files that need to be commited
-if [[ -n $(git status --porcelain) ]]; then
-  echo "⚠️ You have unstaged files, please commit these and then try again."
+# Check if there are unexpected changes. Changes to CHANGELOG.md and the
+# package.json file are expected as part of the normal release process.
+changes="$(git status --porcelain -- ':!CHANGELOG.md' ':!package/package.json')"
+if [[ -n $changes ]]; then
+  echo "⚠ Unexpected changes in your working directory:"
+  echo "$changes"
   exit 1
 fi
 
