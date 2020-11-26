@@ -658,7 +658,8 @@ examples:
           text: Hint for british option here
       - value: irish
         text: Irish
-      - hint:
+      - value: other
+        hint:
           text: Hint for other option here
 - name: with error message and hint
   hidden: true
