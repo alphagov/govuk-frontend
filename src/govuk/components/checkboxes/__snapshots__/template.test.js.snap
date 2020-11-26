@@ -6,6 +6,9 @@ exports[`Checkboxes nested dependant components passes through fieldset params w
           data-attribute="value"
           data-second-attribute="second-value"
 >
+  <legend class="govuk-fieldset__legend">
+    What is your nationality?
+  </legend>
 </fieldset>
 `;
 
