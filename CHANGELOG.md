@@ -4,6 +4,8 @@
 
 ### Fixes
 
+## 3.10.1 (Fix release)
+
 We’ve made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#2035: Fix hairline gap between notification banner header and outer border on high resolution screens in Chrome/Edge (Blink)](https://github.com/alphagov/govuk-frontend/pull/2035)
