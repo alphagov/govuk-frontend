@@ -78,6 +78,24 @@ examples:
           <li><a href="#" class="govuk-notification-banner__link">government-strategy-v3-FINAL.pdf</a></li>
           <li><a href="#" class="govuk-notification-banner__link">government-strategy-v4-FINAL-v2.pdf</a></li>
       </ul>
+- name: with long heading
+  data:
+    text: This publication was withdrawn on 7 March 2014, before being sent in, sent back, queried, lost, found, subjected to public inquiry, lost again, and finally buried in soft peat for three months and recycled as firelighters.
+- name: with lots of content
+  data:
+    html: >
+      <h3 class="govuk-notification-banner__heading">
+        Check if you need to apply the reverse charge to this application
+      </h3>
+      <p class="govuk-body">You will have to apply the <a href="#" class="govuk-notification-banner__link">reverse charge</a> if the applicant supplies any of these services:</p>
+      <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+        <li>
+          constructing, altering, repairing, extending, demolishing or dismantling buildings or structures (whether permanent or not), including offshore installation services
+        </li>
+        <li>
+          constructing, altering, repairing, extending, demolishing of any works forming, or planned to form, part of the land, including (in particular) walls, roadworks, power lines, electronic communications equipment, aircraft runways, railways, inland waterways, docks and harbours
+        </li>
+      </ul>
 - name: auto-focus disabled, with type as success
   data:
     type: success
