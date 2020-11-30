@@ -71,7 +71,7 @@ function generateFixtures (file) {
           name: example.name,
           options: example.data,
           html: nunjucks.render(componentTemplatePath, { params: example.data }).trim(),
-          hidden: example.hidden
+          hidden: Boolean(example.hidden)
         }
 
         fixtures.fixtures.push(fixture)
