@@ -47,4 +47,25 @@
     display: table-caption;
     text-align: left;
   }
+
+  // Modifiers that make captions look more like their equivalent headings
+
+  .govuk-table__caption--xl {
+    @include govuk-font($size: 48, $weight: bold);
+    margin-bottom: govuk-spacing(3);
+  }
+
+  .govuk-table__caption--l {
+    @include govuk-font($size: 36, $weight: bold);
+    margin-bottom: govuk-spacing(3);
+  }
+
+  .govuk-table__caption--m {
+    @include govuk-font($size: 24, $weight: bold);
+    margin-bottom: govuk-spacing(3);
+  }
+
+  .govuk-table__caption--s {
+    @include govuk-font($size: 19, $weight: bold);
+  }
 }
