@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 3.10.1 (Patch release)
+
 ### Fixes
 
 We’ve made fixes to GOV.UK Frontend in the following pull requests:
