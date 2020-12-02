@@ -109,10 +109,8 @@ When you create the pull request for your contributions, list what you’ve test
 
 If your contribution changes how a component looks, include before and after screenshots if you can.
 
-### If GitHub shows the build failed
+### If GitHub shows that some checks were not successful
 
-1. At the bottom of your pull request in GitHub, find the line that says **Build Failed**.
-2. Select **Details**.
-3. Under **Build Failed**, select **The build**.
-4. Wait for the build log to appear.
-5. Use the information in the build log to find the problem and fix your code.
+At the bottom of your pull request in GitHub, find the checks marked as **Failing**.
+
+For each failing check, select 'Details' and use the build log to find the problem and fix your code.
