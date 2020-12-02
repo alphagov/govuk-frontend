@@ -1,0 +1,31 @@
+name: Tests
+
+on: [push, pull_request]
+
+jobs:
+  run-tests:
+    name: 🧪 Run tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Read node version from .nvmrc
+        id: nvm
+        run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
+
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: "${{ steps.nvm.outputs.NVMRC }}"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Check package-lock.json is up to date
+        # If there are new changes to package-lock.json after running npm
+        # install, this suggests package-lock.json needs to be updated
+        run: git diff --exit-code --quiet package-lock.json
+
+      - name: Run tests
+        run: npm test
