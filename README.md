@@ -1,5 +1,5 @@
 GOV.UK Frontend ·
-[![Build Status](https://travis-ci.com/alphagov/govuk-frontend.svg?branch=master)](https://travis-ci.com/alphagov/govuk-frontend)
+[![Build Status](https://github.com/alphagov/govuk-frontend/workflows/Tests/badge.svg)](https://github.com/alphagov/govuk-frontend/actions?query=workflow%3ATests+branch%3Amaster)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 =====================
 
