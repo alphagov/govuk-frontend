@@ -42,7 +42,7 @@ scenario: >-
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
         <form method="post" novalidate>
-            {% if isError %}
+            {% if isSuccess %}
                 {{ govukNotificationBanner({
                 "type": "success",
                 "html": "<p class=\"govuk-notification-banner__heading\">Success, your photo has been uploaded</p>\n"
