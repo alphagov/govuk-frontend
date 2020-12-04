@@ -1,0 +1,38 @@
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "button/macro.njk" import govukButton %}
+
+{% extends "layout.njk" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    "href": "/"
+  }) }}
+{% endblock %}
+
+{% block header %}
+
+<div style="background: #f3f2f1; padding-top: 30px;">
+    <div class="govuk-width-container">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                <h2 class="govuk-heading-m">Tell us whether you accept cookies</h2>
+                <p class="govuk-body">We use cookies to collect information about how you use GOV.UK. We use this information to make the website work as well as possible and improve government services.</p>
+            </div>
+
+            <div class="govuk-grid-column-full">
+                {{ govukButton({
+                "text": "Accept all cookies"
+                }) }}
+
+                {{ govukButton({
+                "text": "Reject all cookies"
+                }) }}
+
+                <a href="/#{{ randomPageHash }}" class="govuk-link govuk-link--align-button">
+                View and set cookie preferences
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -30,4 +30,8 @@
   .govuk-link--no-visited-state {
     @include govuk-link-style-no-visited-state;
   }
+
+  .govuk-link--align-button {
+    @include govuk-link-align-button;
+  }
 }

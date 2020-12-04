@@ -304,3 +304,22 @@
     }
   }
 }
+
+@mixin govuk-link-align-button {
+  @include govuk-font($size: 19, $line-height: 19px);
+  @include govuk-responsive-margin(6, "bottom", $adjustment: govuk-spacing(2));
+
+  box-sizing: border-box;
+  display: inline-block;
+  width: 100%;
+  margin-top: govuk-spacing(2);
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+
+  @include govuk-media-query($from: tablet) {
+    width: auto;
+    margin-right: govuk-spacing(2);
+    margin-left: govuk-spacing(2);
+  }
+}
