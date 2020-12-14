@@ -14,7 +14,7 @@ params:
   params:
   - name: value
     type: string
-    required: true
+    required: false
     description: Value for the option item.
   - name: text
     type: string
