@@ -658,7 +658,8 @@ examples:
           text: Hint for british option here
       - value: irish
         text: Irish
-      - hint:
+      - value: other
+        hint:
           text: Hint for other option here
 - name: with error message and hint
   hidden: true
@@ -710,9 +711,9 @@ examples:
     name: example-name
     errorMessage:
       text: Please select an option
-    legend:
-      text: What is your nationality?
     fieldset:
+      legend:
+        text: What is your nationality?
       classes: app-fieldset--custom-modifier
       attributes:
         data-attribute: value

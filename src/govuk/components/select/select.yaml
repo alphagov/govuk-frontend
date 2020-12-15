@@ -205,11 +205,13 @@ examples:
       items:
         -
           text: Option 1
+          value: 1
           attributes:
             data-attribute: ABC
             data-second-attribute: DEF
         -
           text: Option 2
+          value: 2
           attributes:
             data-attribute: GHI
             data-second-attribute: JKL
@@ -221,11 +223,13 @@ examples:
       items:
         -
           text: Option 1
+          value: 1
         - null
         - false
         - ""
         -
           text: Options 2
+          value: 2
   - name: hint
     hidden: true
     data:
