@@ -79,8 +79,8 @@ describe('Label', () => {
       const $ = render('label', examples.attributes)
 
       const $component = $('.govuk-label')
-      expect($component.attr('first-attribute')).toEqual('true')
-      expect($component.attr('second-attribute')).toEqual('false')
+      expect($component.attr('first-attribute')).toEqual('foo')
+      expect($component.attr('second-attribute')).toEqual('bar')
     })
   })
 })

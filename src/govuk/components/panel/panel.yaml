@@ -72,8 +72,8 @@ examples:
     titleText: Application complete
     text: Your reference number is HDJ2123F
     attributes:
-      first-attribute: true
-      second-attribute: false
+      first-attribute: foo
+      second-attribute: bar
 - name: title with no body text
   hidden: true
   data:

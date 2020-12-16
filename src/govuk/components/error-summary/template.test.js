@@ -115,8 +115,8 @@ describe('Error-summary', () => {
       const $ = render('error-summary', examples.attributes)
 
       const $component = $('.govuk-error-summary')
-      expect($component.attr('first-attribute')).toEqual('true')
-      expect($component.attr('second-attribute')).toEqual('false')
+      expect($component.attr('first-attribute')).toEqual('foo')
+      expect($component.attr('second-attribute')).toEqual('bar')
     })
 
     it('renders anchor tag with attributes', () => {

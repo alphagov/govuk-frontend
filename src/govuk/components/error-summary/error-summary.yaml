@@ -137,8 +137,8 @@ examples:
   data:
     titleText: There is a problem
     attributes:
-      first-attribute: 'true'
-      second-attribute: 'false'
+      first-attribute: 'foo'
+      second-attribute: 'bar'
     errorList:
       -
         text: Invalid username or password
