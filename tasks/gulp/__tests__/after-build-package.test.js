@@ -142,13 +142,12 @@ describe('package/', () => {
           )
 
           parsedData.fixtures.forEach((fixture) => {
-            expect(fixture).toEqual(
-              expect.objectContaining({
-                name: expect.any(String),
-                options: expect.any(Object),
-                html: expect.any(String)
-              })
-            )
+            expect(fixture).toEqual({
+              name: expect.any(String),
+              options: expect.any(Object),
+              html: expect.any(String),
+              hidden: expect.any(Boolean)
+            })
           })
         })
         .catch(error => {

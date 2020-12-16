@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### Fixes
+
+We’ve made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#2031: Expose hidden status of component examples in packaged fixtures](https://github.com/alphagov/govuk-frontend/pull/2031)
 ## 3.10.1 (Patch release)
 
 ### Fixes
