@@ -93,6 +93,6 @@ describe('Details', () => {
 
     const $component = $('.govuk-details')
     expect($component.attr('data-some-data-attribute')).toEqual('i-love-data')
-    expect($component.attr('another-attribute')).toEqual('true')
+    expect($component.attr('another-attribute')).toEqual('foo')
   })
 })

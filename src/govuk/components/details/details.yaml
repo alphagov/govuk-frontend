@@ -102,4 +102,4 @@ examples:
     summaryText: Expand me
     attributes:
       data-some-data-attribute: i-love-data
-      another-attribute: true
+      another-attribute: foo
