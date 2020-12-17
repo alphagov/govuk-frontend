@@ -7,7 +7,8 @@
                 "text": "Skip to main content",
                 "href": "#content"
             },
-            "html": "<a href=\"#content\" class=\"govuk-skip-link\">Skip to main content</a>"
+            "html": "<a href=\"#content\" class=\"govuk-skip-link\">Skip to main content</a>",
+            "hidden": false
         },
         {
             "name": "with focus",
@@ -16,12 +17,14 @@
                 "text": "Skip to main content",
                 "href": "#content"
             },
-            "html": "<a href=\"#content\" class=\"govuk-skip-link :focus\">Skip to main content</a>"
+            "html": "<a href=\"#content\" class=\"govuk-skip-link :focus\">Skip to main content</a>",
+            "hidden": false
         },
         {
             "name": "default values",
             "options": {},
-            "html": "<a href=\"#content\" class=\"govuk-skip-link\"></a>"
+            "html": "<a href=\"#content\" class=\"govuk-skip-link\"></a>",
+            "hidden": true
         },
         {
             "name": "custom href",
@@ -29,28 +32,32 @@
                 "text": "Skip to custom content",
                 "href": "#custom"
             },
-            "html": "<a href=\"#custom\" class=\"govuk-skip-link\">Skip to custom content</a>"
+            "html": "<a href=\"#custom\" class=\"govuk-skip-link\">Skip to custom content</a>",
+            "hidden": true
         },
         {
             "name": "custom text",
             "options": {
                 "text": "skip"
             },
-            "html": "<a href=\"#content\" class=\"govuk-skip-link\">skip</a>"
+            "html": "<a href=\"#content\" class=\"govuk-skip-link\">skip</a>",
+            "hidden": true
         },
         {
             "name": "html as text",
             "options": {
                 "text": "<p>skip</p>"
             },
-            "html": "<a href=\"#content\" class=\"govuk-skip-link\">&lt;p&gt;skip&lt;/p&gt;</a>"
+            "html": "<a href=\"#content\" class=\"govuk-skip-link\">&lt;p&gt;skip&lt;/p&gt;</a>",
+            "hidden": true
         },
         {
             "name": "html",
             "options": {
                 "html": "<p>skip</p>"
             },
-            "html": "<a href=\"#content\" class=\"govuk-skip-link\"><p>skip</p></a>"
+            "html": "<a href=\"#content\" class=\"govuk-skip-link\"><p>skip</p></a>",
+            "hidden": true
         },
         {
             "name": "classes",
@@ -58,7 +65,8 @@
                 "text": "Skip link",
                 "classes": "app-skip-link--custom-class"
             },
-            "html": "<a href=\"#content\" class=\"govuk-skip-link app-skip-link--custom-class\">Skip link</a>"
+            "html": "<a href=\"#content\" class=\"govuk-skip-link app-skip-link--custom-class\">Skip link</a>",
+            "hidden": true
         },
         {
             "name": "attributes",
@@ -69,7 +77,8 @@
                     "aria-label": "Skip to content"
                 }
             },
-            "html": "<a href=\"#content\" class=\"govuk-skip-link\" data-test=\"attribute\" aria-label=\"Skip to content\">Skip link</a>"
+            "html": "<a href=\"#content\" class=\"govuk-skip-link\" data-test=\"attribute\" aria-label=\"Skip to content\">Skip link</a>",
+            "hidden": true
         }
     ]
 }

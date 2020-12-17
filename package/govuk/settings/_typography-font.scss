@@ -52,6 +52,9 @@ $govuk-font-family-tabular: if(
 
 /// Font families to use for print media
 ///
+/// We recommend that you use system fonts when printing. This will avoid issues
+/// with some printer drivers and operating systems.
+///
 /// @type List
 /// @access public
 

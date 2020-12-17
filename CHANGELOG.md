@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 3.10.2 (Patch release)
+
 ### Fixes
 
 We’ve made fixes to the fixtures you can use to [check your HTML matches GOV.UK Frontend](https://frontend.design-system.service.gov.uk/testing-your-html/#test-if-your-html-matches-gov-uk-frontend).

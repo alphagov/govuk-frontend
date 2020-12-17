@@ -6,7 +6,8 @@
             "options": {
                 "text": "Error message about full name goes here"
             },
-            "html": "<span class=\"govuk-error-message\">\n  <span class=\"govuk-visually-hidden\">Error:</span> Error message about full name goes here\n</span>"
+            "html": "<span class=\"govuk-error-message\">\n  <span class=\"govuk-visually-hidden\">Error:</span> Error message about full name goes here\n</span>",
+            "hidden": false
         },
         {
             "name": "id",
@@ -14,7 +15,8 @@
                 "id": "my-error-message-id",
                 "text": "This is an error message"
             },
-            "html": "<span id=\"my-error-message-id\" class=\"govuk-error-message\">\n  <span class=\"govuk-visually-hidden\">Error:</span> This is an error message\n</span>"
+            "html": "<span id=\"my-error-message-id\" class=\"govuk-error-message\">\n  <span class=\"govuk-visually-hidden\">Error:</span> This is an error message\n</span>",
+            "hidden": true
         },
         {
             "name": "classes",
@@ -22,21 +24,24 @@
                 "classes": "custom-class",
                 "text": "This is an error message"
             },
-            "html": "<span class=\"govuk-error-message custom-class\">\n  <span class=\"govuk-visually-hidden\">Error:</span> This is an error message\n</span>"
+            "html": "<span class=\"govuk-error-message custom-class\">\n  <span class=\"govuk-visually-hidden\">Error:</span> This is an error message\n</span>",
+            "hidden": true
         },
         {
             "name": "html as text",
             "options": {
                 "text": "Unexpected > in body"
             },
-            "html": "<span class=\"govuk-error-message\">\n  <span class=\"govuk-visually-hidden\">Error:</span> Unexpected &gt; in body\n</span>"
+            "html": "<span class=\"govuk-error-message\">\n  <span class=\"govuk-visually-hidden\">Error:</span> Unexpected &gt; in body\n</span>",
+            "hidden": true
         },
         {
             "name": "html",
             "options": {
                 "html": "Unexpected <b>bold text</b> in body copy"
             },
-            "html": "<span class=\"govuk-error-message\">\n  <span class=\"govuk-visually-hidden\">Error:</span> Unexpected <b>bold text</b> in body copy\n</span>"
+            "html": "<span class=\"govuk-error-message\">\n  <span class=\"govuk-visually-hidden\">Error:</span> Unexpected <b>bold text</b> in body copy\n</span>",
+            "hidden": true
         },
         {
             "name": "attributes",
@@ -47,7 +52,8 @@
                     "id": "my-error-message"
                 }
             },
-            "html": "<span class=\"govuk-error-message\" data-test=\"attribute\" id=\"my-error-message\">\n  <span class=\"govuk-visually-hidden\">Error:</span> This is an error message\n</span>"
+            "html": "<span class=\"govuk-error-message\" data-test=\"attribute\" id=\"my-error-message\">\n  <span class=\"govuk-visually-hidden\">Error:</span> This is an error message\n</span>",
+            "hidden": true
         },
         {
             "name": "with visually hidden text",
@@ -55,7 +61,8 @@
                 "text": "Rhowch eich enw llawn",
                 "visuallyHiddenText": "Gwall"
             },
-            "html": "<span class=\"govuk-error-message\">\n  <span class=\"govuk-visually-hidden\">Gwall:</span> Rhowch eich enw llawn\n</span>"
+            "html": "<span class=\"govuk-error-message\">\n  <span class=\"govuk-visually-hidden\">Gwall:</span> Rhowch eich enw llawn\n</span>",
+            "hidden": true
         },
         {
             "name": "visually hidden text removed",
@@ -63,7 +70,8 @@
                 "text": "There is an error on line 42",
                 "visuallyHiddenText": false
             },
-            "html": "<span class=\"govuk-error-message\">\n  There is an error on line 42\n</span>"
+            "html": "<span class=\"govuk-error-message\">\n  There is an error on line 42\n</span>",
+            "hidden": true
         }
     ]
 }
