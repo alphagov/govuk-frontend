@@ -1,32 +1,30 @@
 # Components
 
-Find components in `src/govuk/components`.
+You can find components in `src/govuk/components`.
 
-Components must use the `.govuk-` namespace.
+## Name your components
 
-For example, `.govuk-button`.
+Generally, folder and file names should be singular, for example ‘accordion’, ‘backlink’, ‘button’. Only use plural names when the component is usually used in groups, for example ‘breadcrumbs’, ‘checkboxes’, ‘radios’.
 
-## Writing CSS for components
+## Structure your component folder
 
-Components must follow the conventions described in our [CSS coding standards](css.md).
+When creating your component, you should create the following files in the component’s folder:
 
-Components must:
-* use classes for child elements, scoped to the parent component
-* be flexible, not set a width or external padding and margins
-* set internal margins in a single direction
-* not rely on any other selector outside of the component scss file to style its children
-
-### Component folder structure and naming
-
-Component folder and files should be singular, except in cases where they are more commonly used in groups, for example, radios, breadcrumbs and checkboxes.
-
-The folder structure should be:
-
-    component-name
-      - `_component-name.scss`
-      - `component-name.html`
-      - `component-name.js`
       - `README.md`
+      - `_[component-name].scss`
+      - `_index.scss`
+      - `[component-name].yaml`
+      - `macro.njk`
+      - `template.njk`
+      - `template.test.js`
 
-## Nunjucks template API
-[Read more](nunjucks-api.md) about the way we write component templates.
+If your component uses JavaScript, you must also create the following files in the component’s folder:
+
+      - `_[component-name].js`
+      - `_[component-name].test.js`
+
+## Building your components
+
+If you need help building a component, [contact the Design System team](https://design-system.service.gov.uk/get-in-touch/) and we'll support you.
+
+Learn more about styling components in our [CSS style guide](https://github.com/alphagov/govuk-frontend/blob/master/docs/contributing/coding-standards/css.md). Our [JavaScript style guide](https://github.com/alphagov/govuk-frontend/blob/master/docs/contributing/coding-standards/js.md) has more information on coding components.
