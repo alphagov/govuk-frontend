@@ -4,9 +4,16 @@
 
 ### Fixes
 
-We’ve made fixes to GOV.UK Frontend in the following pull requests:
+We’ve made fixes to the fixtures you can use to [check your HTML matches GOV.UK Frontend](https://frontend.design-system.service.gov.uk/testing-your-html/#test-if-your-html-matches-gov-uk-frontend).
 
-- [#2031: Expose hidden status of component examples in packaged fixtures](https://github.com/alphagov/govuk-frontend/pull/2031)
+These changes were made in the following pull requests:
+
+- [#2031: Include hidden status of the component examples in published fixtures](https://github.com/alphagov/govuk-frontend/pull/2031) – thanks to [@andymantell](https://github.com/andymantell) for contributing this
+- [#2043: Fixes for a couple of component examples / fixtures](https://github.com/alphagov/govuk-frontend/pull/2043) – thanks to [@andymantell](https://github.com/andymantell) for contributing this as well!
+- [#2071: Use non-bool type strings for attributes in test fixtures](https://github.com/alphagov/govuk-frontend/pull/2071) – thanks to [@matthew-shaw](https://github.com/matthew-shaw) for contributing this
+
+There are no other changes to GOV.UK Frontend in this release.
+
 ## 3.10.1 (Patch release)
 
 ### Fixes
