@@ -21,7 +21,7 @@
                 "name": "value",
                 "type": "string",
                 "required": false,
-                "description": "Value for the option item."
+                "description": "Value for the option item. Defaults to an empty string."
             },
             {
                 "name": "text",
