@@ -1,0 +1,88 @@
+{% extends "_generic.njk" %}
+
+{% from "cookie-banner/macro.njk" import govukCookieBanner %}
+
+{% set homepage_url = "/" %}
+{% set pageTitle = "Testing Cookie Banner" %}
+{% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
+
+{% block cookieBanner %}
+  {{ govukCookieBanner({
+    questionBanner: {
+      title: "Cookies on [service name]",
+      html: "<p>We use cookies to make this service work</p><p>We'd like to set some additional cookies so we can remember your settings, understand how you use the service and make improvements.</p>",
+      acceptButtonText: "Accept cookies",
+      rejectButtonText: "Reject cookies",
+      link: {
+        text: "View cookies and set preferences",
+        href: "/cookie-preferences"
+      }
+    },
+    confirmationBanners: [
+      {
+        html: "<p>You've accepted additional cookies. You can <a href='/cookie-preferences'>change your cookie settings</a> at any time.</p>",
+        attributes: {
+          "data-module": "govuk-cookie-banner-accept",
+          "tabindex": "-1"
+        }
+      },
+      {
+        html: "<p>You've rejected additional cookies. You can <a href='/cookie-preferences'>change your cookie settings</a> at any time.</p>",
+        attributes: {
+          "data-module": "govuk-cookie-banner-reject",
+          "tabindex": "-1"
+        }
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <style>
+    .govuk-cookie-banner--confirmation {
+      display: none;
+    }
+  </style>
+
+  <script>
+    var acceptButton = document.querySelector('[data-accept-cookies]');
+    var rejectButton = document.querySelector('[data-reject-cookies]');
+    var questionBanner = document.querySelector("[data-module='govuk-cookie-banner-question']");
+
+    acceptButton.addEventListener('click', function() {
+      var acceptConfirmationBanner = document.querySelector("[data-module='govuk-cookie-banner-accept']");
+      acceptConfirmationBanner.style.display = 'block';
+      questionBanner.style.display = 'none';
+      acceptConfirmationBanner.focus();
+    })
+
+    rejectButton.addEventListener('click', function() {
+      var rejectConfirmationBanner = document.querySelector("[data-module='govuk-cookie-banner-reject']");
+      rejectConfirmationBanner.style.display = 'block';
+      questionBanner.style.display = 'none';
+      rejectConfirmationBanner.focus();
+    })
+  </script>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+       {{ pageTitle }}
+      </h1>
+
+      <p class="govuk-body">Scenario: Client Side</p>
+      <p class="govuk-body">
+        <ul class="govuk-list">
+          <li>Render all parts of banner, but only question banner is visible</li>
+          <li>User chooses an option</li>
+          <li>Client-side JS hides the question banner and shows the confirmation banner</li>
+          <li>Different approach needed for when JS not enabled?</li>
+        </ul>
+      </p>
+
+    </div>
+  </div>
+
+{% endblock %}
