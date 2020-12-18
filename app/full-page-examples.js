@@ -3,6 +3,7 @@ const fileHelper = require('../lib/file-helper')
 module.exports = (app) => {
   require('./views/full-page-examples/applicant-details')(app)
   require('./views/full-page-examples/cookie-banner-server')(app)
+  require('./views/full-page-examples/cookie-banner-2-server')(app)
   require('./views/full-page-examples/have-you-changed-your-name')(app)
   require('./views/full-page-examples/feedback')(app)
   require('./views/full-page-examples/how-do-you-want-to-sign-in')(app)
