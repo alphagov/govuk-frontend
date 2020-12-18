@@ -1,0 +1,35 @@
+{% from "../button/macro.njk" import govukButton -%}
+
+<div class="govuk-cookie-banner-question" data-module="govuk-cookie-banner-question">
+  <div class="govuk-width-container">
+    <h2>{{ params.title }}</h2>
+
+    {% if params.html %}
+      {{ params.html | safe }}
+    {% elif params.text %}
+      <p class="govuk-body">{{ params.text }}</p>
+    {% endif %}
+
+    {{ govukButton({
+        text: params.acceptButtonText,
+        name: 'cookies',
+        value: 'accept',
+        attributes: {
+          "data-accept-cookies": "true"
+        }
+      }) | indent(4) | trim }}
+
+     {{ govukButton({
+        text: params.rejectButtonText,
+        name: 'cookies',
+        value: 'reject',
+        attributes: {
+          "data-reject-cookies": "true"
+        }
+      }) | indent(4) | trim }}
+
+    {% if params.link %}
+      <a href={{ params.link.href }} >{{ params.link.text }}</a>
+    {% endif %}
+  </div>
+</div>

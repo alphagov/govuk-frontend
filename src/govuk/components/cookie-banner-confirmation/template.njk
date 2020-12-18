@@ -1,0 +1,13 @@
+<div class="govuk-cookie-banner-confirmation {%- if params.classes %} {{ params.classes }}{% endif %}"
+  data-module="govuk-cookie-banner-confirmation"
+  {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %} >
+  <div class="govuk-width-container">
+    {% if params.html %}
+      {{ params.html | safe }}
+    {% elif params.text %}
+      <p class="govuk-body">{{ params.text }}</p>
+    {% endif %}
+    <a href="#">Hide</a>
+  </div>
+</div>
+

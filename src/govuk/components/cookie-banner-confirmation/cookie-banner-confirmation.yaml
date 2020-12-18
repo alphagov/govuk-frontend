@@ -1,0 +1,27 @@
+params:
+  - name: text
+    type: string
+    required: false
+    description: Text for the confirmation banner. Ignored if html is provided
+  - name: html
+    type: string
+    required: false
+    description: Html for the confirmation banner. Text is ignored if html provided
+  - name: classes
+    type: string
+    required: false
+    description: Additional classes on the confirmation banner
+  - name: attributes
+    type: object
+    required: false
+    description: Additional attributes on the confirmation banner
+
+
+examples:
+  - name: accept
+    data:
+      html: <p>You've accepted additional cookies. You can <a href="/cookie-preferences">change your cookie settings</a> at any time.</p>
+
+  - name: reject
+    data:
+      html: <p>You've rejected additional cookies. You can <a href="/cookie-preferences">change your cookie settings</a> at any time.</p>
