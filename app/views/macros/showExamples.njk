@@ -2,7 +2,7 @@
 
 {% macro showExamples(componentSlug, componentName, data, legacyQuery) %}
 
-{% for example in data.examples %}
+{% for example in data.examples | rejectattr('hidden') %}
   {% set exampleSlug = (example.name | replace(" ", "-")) %}
   {% set iframePathQuery = legacyQuery + '&iframe=true' if legacyQuery != '' else '?iframe=true' %}
 
