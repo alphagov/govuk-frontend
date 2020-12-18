@@ -1,0 +1,8 @@
+@import "../button/index";
+
+@include govuk-exports("govuk/component/cookie-banner") {
+  .govuk-cookie-banner {
+    @include govuk-font($size: 19);
+    background-color: govuk-colour("light-grey", $legacy: "grey-3");
+  }
+}

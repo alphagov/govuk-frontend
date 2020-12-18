@@ -1,0 +1,52 @@
+{% from "../button/macro.njk" import govukButton -%}
+
+<div class="govuk-cookie-banner">
+  {% if params.questionBanner %}
+    <div class="govuk-cookie-banner--question govuk-width-container" data-module="govuk-cookie-banner-question">
+      <h2>{{ params.questionBanner.title }}</h2>
+
+      {% if params.questionBanner.html %}
+        {{ params.questionBanner.html | safe }}
+      {% elif params.questionBanner.text %}
+        <p class="govuk-body">{{ params.questionBanner.text }}</p>
+      {% endif %}
+
+      {{ govukButton({
+        text: params.questionBanner.acceptButtonText,
+        name: 'cookies',
+        value: 'accept',
+        attributes: {
+          "data-accept-cookies": "true"
+        }
+      }) | indent(4) | trim }}
+
+      {{ govukButton({
+        text: params.questionBanner.rejectButtonText,
+        name: 'cookies',
+        value: 'reject',
+        attributes: {
+          "data-reject-cookies": "true"
+        }
+      }) | indent(4) | trim }}
+
+      {% if params.questionBanner.link %}
+        <a href={{ params.questionBanner.link.href }} >{{ params.questionBanner.link.text }}</a>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {% for confirmationBanner in params.confirmationBanners %}
+    {% if confirmationBanner %}
+      <div class="govuk-width-container govuk-cookie-banner--confirmation {%- if confirmationBanner.classes %} {{ confirmationBanner.classes }}{% endif %}"
+          {%- for attribute, value in confirmationBanner.attributes %} {{ attribute }}="{{ value }}"{% endfor %} >
+        {% if confirmationBanner.html %}
+          {{ confirmationBanner.html | safe }}
+        {% elif confirmationBanner.text %}
+          <p class="govuk-body">{{ confirmationBanner.text }}</p>
+        {% endif %}
+        <a href="#">Hide</a>
+      </div>
+    {% endif %}
+  {% endfor %}
+
+</div>
