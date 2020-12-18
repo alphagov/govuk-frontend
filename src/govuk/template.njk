@@ -31,6 +31,10 @@
     <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
     {% block bodyStart %}{% endblock %}
 
+    {% block cookieBanner %}
+      {{ govukCookieBanner({}) }}
+    {% endblock %}
+
     {% block skipLink %}
       {{ govukSkipLink({
         href: '#main-content',
