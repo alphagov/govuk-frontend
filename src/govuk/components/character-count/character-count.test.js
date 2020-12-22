@@ -141,6 +141,16 @@ describe('Character count', () => {
           expect(ariaHidden).toBeFalsy()
         })
       })
+
+      describe('when the ID starts with a number', () => {
+        it('still works correctly', async () => {
+          await goToExample('with-id-starting-with-number')
+
+          const message = await page.$eval('.govuk-character-count__message', el => el.innerHTML.trim())
+
+          expect(message).toEqual('You have 10 characters remaining')
+        })
+      })
     })
 
     describe('when counting words', () => {
