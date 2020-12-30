@@ -112,7 +112,7 @@ gulp.task('scss:compile', () => {
     compileLegacy = gulp.src(path.join(configPaths.app, 'assets/scss/app-legacy.scss'))
       .pipe(plumber(errorHandler))
       .pipe(sass({
-        includePaths: ['node_modules/moaland_frontend_toolkit/stylesheets', 'node_modules']
+        includePaths: ['node_modules/govuk_frontend_toolkit/stylesheets', 'node_modules']
       }))
       .pipe(postcss([
         autoprefixer,
@@ -125,7 +125,7 @@ gulp.task('scss:compile', () => {
     compileLegacyIE8 = gulp.src(path.join(configPaths.app, 'assets/scss/app-legacy-ie8.scss'))
       .pipe(plumber(errorHandler))
       .pipe(sass({
-        includePaths: ['node_modules/moaland_frontend_toolkit/stylesheets', 'node_modules']
+        includePaths: ['node_modules/govuk_frontend_toolkit/stylesheets', 'node_modules']
       }))
       .pipe(postcss([
         autoprefixer,

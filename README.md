@@ -1,4 +1,5 @@
-# GOV.UK Frontend · [![Build Status](https://travis-ci.com/moaland/moaland-frontend.svg?branch=master)](https://travis-ci.com/moaland/moaland-frontend) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+# GOV.UK Frontend 
+[![Build Status](https://travis-ci.com/moaland/moaland-frontend.svg?branch=master)](https://travis-ci.com/moaland/moaland-frontend) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 GOV.UK Frontend contains the code you need to start building a user interface
 for government platforms and services.

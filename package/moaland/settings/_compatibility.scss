@@ -2,7 +2,7 @@
 /// 'Compatibility Mode'
 ///
 /// Enabling these flags improves compatibility if you are using GOV.UK Frontend
-/// in an application that also uses moaland_elements, moaland_frontend_toolkit or
+/// in an application that also uses moaland_elements, govuk_frontend_toolkit or
 /// moaland_template (the 'legacy repos').
 ///
 /// Enabling any of these settings will, by default:
@@ -68,7 +68,7 @@ $moaland-compatibility-moalandelements: false !default;
 /// @access private
 
 $_moaland-compatibility: (
-  moaland_frontend_toolkit: $moaland-compatibility-moalandfrontendtoolkit,
+  govuk_frontend_toolkit: $moaland-compatibility-moalandfrontendtoolkit,
   moaland_template: $moaland-compatibility-moalandtemplate,
   moaland_elements: $moaland-compatibility-moalandelements,
 );
