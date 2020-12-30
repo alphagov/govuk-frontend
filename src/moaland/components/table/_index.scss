@@ -1,0 +1,50 @@
+@include moaland-exports("moaland/component/table") {
+  .moaland-table {
+    @include moaland-font($size: 19);
+    @include moaland-text-colour;
+    width: 100%;
+    @include moaland-responsive-margin(6, "bottom");
+
+    border-spacing: 0;
+    border-collapse: collapse;
+  }
+
+  .moaland-table__header {
+    @include moaland-typography-weight-bold;
+  }
+
+  .moaland-table__header,
+  .moaland-table__cell {
+    padding: moaland-spacing(2) moaland-spacing(4) moaland-spacing(2) 0;
+    border-bottom: 1px solid $moaland-border-colour;
+    text-align: left;
+    vertical-align: top;
+    // GOV.MOA Elements sets the font-size and line-height for all headers and cells
+    // in tables.
+    @include moaland-compatibility(govuk_elements) {
+      font-size: inherit;
+      line-height: inherit;
+    }
+  }
+
+  .moaland-table__cell--numeric {
+    @include moaland-font($size: false, $tabular: true);
+  }
+
+  .moaland-table__header--numeric,
+  .moaland-table__cell--numeric {
+    text-align: right;
+  }
+
+  .moaland-table__header:last-child,
+  .moaland-table__cell:last-child {
+    padding-right: 0;
+  }
+
+  .moaland-table__caption {
+    @include moaland-typography-weight-bold;
+
+    display: table-caption;
+    text-align: left;
+  }
+}

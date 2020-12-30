@@ -1,0 +1,91 @@
+////
+/// @group helpers/layout
+////
+
+// =========================================================
+// Wrangle sass-mq config...
+// =========================================================
+
+// Pass our breakpoints and static breakpoint definitions through to sass-mq.
+$mq-breakpoints: if(variable-exists(moaland-breakpoints), $moaland-breakpoints, ());
+$mq-static-breakpoint: if(variable-exists(moaland-ie8-breakpoint), $moaland-ie8-breakpoint, desktop);
+
+$mq-show-breakpoints: ();
+
+@if (variable-exists(moaland-show-breakpoints) and $moaland-show-breakpoints) {
+  $mq-show-breakpoints: map-keys($moaland-breakpoints);
+}
+
+// When building a stylesheet for IE8, set $mq-responsive to false in order to
+// 'rasterize' any media queries.
+
+$mq-responsive: true;
+@if (variable-exists(moaland-is-ie8) and $moaland-is-ie8) {
+  $mq-responsive: false;
+}
+
+// This is a horrible, horrible hack to prevent the 'dev mode' CSS to display
+// the current breakpoint from being included multiple times.
+//
+// We can't use the `exports` mixin for this because import directives cannot be
+// used within control directives 😠
+$sass-mq-already-included: false !default;
+
+@if $sass-mq-already-included {
+  $mq-show-breakpoints: ();
+}
+
+@import "../vendor/sass-mq";
+
+$sass-mq-already-included: true;
+
+// =========================================================
+// Helpers
+// =========================================================
+
+/// Media Query
+///
+/// This is a currently a wrapper for sass-mq - abstracted so that we can
+/// replace it in the future if we so choose.
+///
+/// @param {String | Boolean} $from [false] - One of $moaland-breakpoints
+/// @param {String | Boolean} $until [false] - One of $moaland-breakpoints
+/// @param {String | Boolean} $and [false] - Additional media query parameters
+/// @param {String} $media-type [all] - Media type: screen, print…
+///
+/// @ignore Undocumented mq API, for advanced use only:
+/// @ignore @param {Map} $breakpoints [$moaland-breakpoints]
+/// @ignore @param {String} $static-breakpoint [$moaland-ie8-breakpoint]
+/// @ignore @param {Boolean} $responsive [$moaland-is-ie8]
+///
+/// @content styling rules, wrapped into a @media query when $responsive is true
+///
+/// @example scss
+///  .element {
+///    @include moaland-media-query($from: mobile) {
+///      color: red;
+///    }
+///    @include moaland-media-query($until: tablet) {
+///      color: blue;
+///    }
+///    @include moaland-media-query(mobile, tablet) {
+///      color: green;
+///    }
+///    @include moaland-media-query($from: tablet, $and: '(orientation: landscape)') {
+///      color: teal;
+///    }
+///    @include moaland-media-query(950px) {
+///      color: hotpink;
+///    }
+///    @include moaland-media-query(tablet, $media-type: screen) {
+///      color: hotpink;
+///    }
+///  }
+///
+/// @access public
+
+@mixin moaland-media-query($args...) {
+  @include mq($args...) {
+    @content;
+  }
+}

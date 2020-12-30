@@ -2,9 +2,9 @@
 
 ## Class naming convention
 
-## `govuk` namespacing
+## `moaland` namespacing
 
-All class names start with a `.govuk-` namespace to reduce the likelihood of
+All class names start with a `.moaland-` namespace to reduce the likelihood of
 conflicting with existing classes in your application. It also helps to identify
 where the styling for a particular element is coming from.
 
@@ -13,7 +13,7 @@ use a different prefix, for example `.app-` or the initials of your department.
 
 ## Block Element Modifier (BEM)
 
-GOV.UK Frontend uses the Block Element Modifier (BEM) methodology when naming
+GOV.MOA Frontend uses the Block Element Modifier (BEM) methodology when naming
 CSS classes. This is designed to help developers understand how the different
 classes relate to each other.
 
@@ -24,9 +24,9 @@ The naming convention follows this pattern:
 .block__element {}
 .block--modifier {}
 
-.govuk-card               // Block - the root of a component
-.govuk-card__body         // Element - a part of the block
-.govuk-card--active       // Modifier - a variant of the block
+.moaland-card               // Block - the root of a component
+.moaland-card__body         // Element - a part of the block
+.moaland-card--active       // Modifier - a variant of the block
 ```
 
 It uses double hyphens (`--`) and underscores (`__`) so that the block, element
@@ -35,9 +35,9 @@ or modifiers themselves can be hyphen delimited without causing ambiguity.
 For example:
 
 ```scss
-.govuk-phase-banner
-.govuk-phase-banner__phase-tag
-.govuk-phase-banner__phase-tag--light-blue
+.moaland-phase-banner
+.moaland-phase-banner__phase-tag
+.moaland-phase-banner__phase-tag--light-blue
 ```
 
 ### Further reading:
@@ -57,7 +57,7 @@ given class name. It also discourages excessive nesting.
 Bad:
 
 ```
-.govuk-breadcrumb {
+.moaland-breadcrumb {
   ...
   &__item {
     ...
@@ -68,11 +68,11 @@ Bad:
 Good:
 
 ```
-.govuk-breadcrumb {
+.moaland-breadcrumb {
   ...
 }
 
-.govuk-breadcrumb__item {
+.moaland-breadcrumb__item {
   ...
 }
 ```
@@ -98,11 +98,11 @@ other components.
 
 Keep all of the variants of a component in the same place.
 
-`.govuk-error-summary` modifies the `.govuk-list` component.
+`.moaland-error-summary` modifies the `.moaland-list` component.
 
 Component modifiers use an extra class, scoped to the component:
 
-`.govuk-error-summary__list`
+`.moaland-error-summary__list`
 
 This class is part of the component, rather than a parent of a component.
 
@@ -155,7 +155,7 @@ Bad:
 Good:
 ```
 .selector {
-  color: $govuk-blue;
+  color: $moaland-blue;
 }
 ```
 
@@ -198,7 +198,7 @@ Bad:
 
 Good:
 ```
-.govuk-wrapper {
+.moaland-wrapper {
   ...
 }
 ```
@@ -237,7 +237,7 @@ a {
 
 Bad:
 ```
-.govuk-breadcrumb {
+.moaland-breadcrumb {
   ...
   &__item {
     ...
@@ -247,11 +247,11 @@ Bad:
 
 Good:
 ```
-.govuk-breadcrumb {
+.moaland-breadcrumb {
   ...
 }
 
-.govuk-breadcrumb__item {
+.moaland-breadcrumb__item {
   ...
 }
 ```
@@ -388,14 +388,14 @@ Good:
 Bad:
 ```
 @mixin FONT_STACK() {
-  font-family: $govuk-font-stack;
+  font-family: $moaland-font-stack;
 }
 ```
 
 Good:
 ```
 @mixin font-stack() {
-  font-family: $govuk-font-stack;
+  font-family: $moaland-font-stack;
 }
 ```
 
@@ -458,6 +458,6 @@ More write up on [supported rules](https://stylelint.io/user-guide/rules/list).
 ##  SassDoC
 We document SCSS using [SassDoc](http://sassdoc.com/file-level-annotations/). This includes most of the settings, helpers and tools layers, with variables, functions and mixins being marked as private or public.
 
-The syntax is used to generate a [SassDoc application](http://govuk-frontend-review.herokuapp.com/docs/) that documents SCSS in a readable format.
+The syntax is used to generate a [SassDoc application](http://moaland-frontend-review.herokuapp.com/docs/) that documents SCSS in a readable format.
 
-See [colour.scss](../../../src/govuk/helpers/_colour.scss) for an example of SassDoc syntax.
+See [colour.scss](../../../src/moaland/helpers/_colour.scss) for an example of SassDoc syntax.

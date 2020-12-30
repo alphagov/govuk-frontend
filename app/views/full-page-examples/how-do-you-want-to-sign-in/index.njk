@@ -12,42 +12,42 @@ notes: Based on https://www.gov.uk/log-in-file-self-assessment-tax-return/sign-i
 
 {% extends "_generic.njk" %}
 
-{% from "back-link/macro.njk" import govukBackLink %}
-{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
-{% from "radios/macro.njk" import govukRadios %}
-{% from "button/macro.njk" import govukButton %}
-{% from "error-summary/macro.njk" import govukErrorSummary %}
+{% from "back-link/macro.njk" import moalandBackLink %}
+{% from "breadcrumbs/macro.njk" import moalandBreadcrumbs %}
+{% from "radios/macro.njk" import moalandRadios %}
+{% from "button/macro.njk" import moalandButton %}
+{% from "error-summary/macro.njk" import moalandErrorSummary %}
 
 {% set pageTitle = "How do you want to sign in?" %}
-{% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.UK{% endblock %}
+{% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.MOA{% endblock %}
 
 {% block beforeContent %}
-  {{ govukBackLink({
+  {{ moalandBackLink({
     text: "Back",
     href: "#"
   }) }}
 {% endblock %}
 
 {% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+  <div class="moaland-grid-row">
+    <div class="moaland-grid-column-two-thirds">
 
       <form method="post" novalidate>
           {% if errorSummary.length > 0 %}
-              {{ govukErrorSummary({
+              {{ moalandErrorSummary({
                   titleText: "There is a problem",
                   errorList: errorSummary
               }) }}
           {% endif %}
 
-        {{ govukRadios({
+        {{ moalandRadios({
           idPrefix: "sign-in",
           name: "sign-in",
           fieldset: {
             legend: {
               text: "How do you want to sign in?",
               isPageHeading: true,
-              classes: "govuk-fieldset__legend--xl"
+              classes: "moaland-fieldset__legend--xl"
             }
           },
           hint: {
@@ -59,18 +59,18 @@ notes: Based on https://www.gov.uk/log-in-file-self-assessment-tax-return/sign-i
               text: "Sign in with Government Gateway",
               checked: values["sign-in"] === "government-gateway",
               label: {
-                classes: "govuk-label--s"
+                classes: "moaland-label--s"
               },
               hint: {
                 text: "You'll have a user ID if you've registered for Self Assessment or filed a tax return online before."
               }
             },
             {
-              value: "govuk-verify",
-              text: "Sign in with GOV.UK Verify",
-              checked: values["sign-in"] === "govuk-verify",
+              value: "moaland-verify",
+              text: "Sign in with GOV.MOA Verify",
+              checked: values["sign-in"] === "moaland-verify",
               label: {
-                classes: "govuk-label--s"
+                classes: "moaland-label--s"
               },
               hint: {
                 text: "You'll have an account if you've already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity."
@@ -81,7 +81,7 @@ notes: Based on https://www.gov.uk/log-in-file-self-assessment-tax-return/sign-i
               text: "Sign in with a digital identity from another European country",
               checked: values["sign-in"] === "sign-in-with-a-digital-identity-from-another-european-country",
               label: {
-                classes: "govuk-label--s"
+                classes: "moaland-label--s"
               },
               hint: {
                 text: "If you are part of Germany’s Online-Ausweis you can use it here. Identity schemes from other countries will become available later."
@@ -95,7 +95,7 @@ notes: Based on https://www.gov.uk/log-in-file-self-assessment-tax-return/sign-i
               text: "Register for Self Assessment",
               checked: values["sign-in"] === "register-for-self-assessment",
               label: {
-                classes: "govuk-label--s"
+                classes: "moaland-label--s"
               },
               hint: {
                 text: "You must register before you can file your first tax return."
@@ -105,7 +105,7 @@ notes: Based on https://www.gov.uk/log-in-file-self-assessment-tax-return/sign-i
           errorMessage: errors["sign-in"]
         }) }}
 
-      {{ govukButton({
+      {{ moalandButton({
           text: "Continue"
         }) }}
       </form>

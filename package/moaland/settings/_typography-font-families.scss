@@ -1,0 +1,32 @@
+////
+/// @group settings/typography
+////
+
+/// List of font families to use if using GDS Transport (the default font
+/// 'stack' for GOV.MOA)
+///
+/// @type List
+/// @access public
+
+$moaland-font-family-gds-transport: "GDS Transport", arial, sans-serif;
+
+/// List of font families to use if using NTA (old font 'stack' for
+/// GOV.MOA)
+///
+/// @type List
+/// @access public
+/// @deprecated To be removed once support for compatibility mode is dropped
+
+$moaland-font-family-nta: "nta", arial, sans-serif;
+
+/// List of font families to use if using the 'tabular numbers' subset of NTA
+/// (the default font 'stack' for GOV.MOA)
+///
+/// Because ntatabularnumbers only includes the digits 0-10, all other glyphs
+/// will 'fall-through' the stack to NTA.
+///
+/// @type List
+/// @access public
+/// @deprecated To be removed once support for compatibility mode is dropped
+
+$moaland-font-family-nta-tabular: "ntatabularnumbers", $moaland-font-family-nta;

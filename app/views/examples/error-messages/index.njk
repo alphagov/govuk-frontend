@@ -1,13 +1,13 @@
-{% from "back-link/macro.njk" import govukBackLink %}
-{% from "fieldset/macro.njk" import govukFieldset %}
-{% from "label/macro.njk" import govukLabel %}
-{% from "input/macro.njk" import govukInput %}
-{% from "date-input/macro.njk" import govukDateInput %}
-{% from "button/macro.njk" import govukButton %}
-{% from "select/macro.njk" import govukSelect %}
-{% from 'checkboxes/macro.njk' import govukCheckboxes %}
-{% from 'radios/macro.njk' import govukRadios %}
-{% from 'textarea/macro.njk' import govukTextarea %}
+{% from "back-link/macro.njk" import moalandBackLink %}
+{% from "fieldset/macro.njk" import moalandFieldset %}
+{% from "label/macro.njk" import moalandLabel %}
+{% from "input/macro.njk" import moalandInput %}
+{% from "date-input/macro.njk" import moalandDateInput %}
+{% from "button/macro.njk" import moalandButton %}
+{% from "select/macro.njk" import moalandSelect %}
+{% from 'checkboxes/macro.njk' import moalandCheckboxes %}
+{% from 'radios/macro.njk' import moalandRadios %}
+{% from 'textarea/macro.njk' import moalandTextarea %}
 
 {% extends "layout.njk" %}
 
@@ -40,19 +40,19 @@
 {% endblock %}
 
 {% block beforeContent %}
-  {{ govukBackLink({
+  {{ moalandBackLink({
     "href": "/"
   }) }}
 {% endblock %}
 
 {% block content %}
-  <h1 class="govuk-heading-xl">Error messages</h1>
+  <h1 class="moaland-heading-xl">Error messages</h1>
 
 
   <form action="/" method="post">
-    <h2 class="govuk-heading-m">Simple input</h2>
+    <h2 class="moaland-heading-m">Simple input</h2>
 
-    {{ govukInput({
+    {{ moalandInput({
       label: {
         text: "National Insurance Number"
       },
@@ -67,14 +67,14 @@
       }
     }) }}
 
-    <h2 class="govuk-heading-m">Multiple inputs</h2>
+    <h2 class="moaland-heading-m">Multiple inputs</h2>
 
     {# Use fieldset to wrap around components and render collective error #}
-    {% call govukFieldset({
+    {% call moalandFieldset({
       legendText: "User address"
     }) %}
       {# Passing below to fieldset to render #}
-      {{ govukInput({
+      {{ moalandInput({
         label: {
           "text": "Street"
         },
@@ -84,14 +84,14 @@
           text: "Enter valid street name"
         }
       }) }}
-      {{ govukInput({
+      {{ moalandInput({
         label: {
           "text": "Town"
         },
         id: "input-3",
         name: "test-name"
       }) }}
-      {{ govukInput({
+      {{ moalandInput({
         label: {
           "text": "City"
         },
@@ -101,9 +101,9 @@
     {# end fieldset render #}
     {% endcall %}
 
-    <h2 class="govuk-heading-m">Radios with error message</h2>
+    <h2 class="moaland-heading-m">Radios with error message</h2>
 
-    {{ govukRadios({
+    {{ moalandRadios({
       fieldset: {
         legend: {
           text: "How do you want to be contacted?"
@@ -130,9 +130,9 @@
       ]
     }) }}
 
-    <h2 class="govuk-heading-m">Checkboxes with error message</h2>
+    <h2 class="moaland-heading-m">Checkboxes with error message</h2>
 
-    {{ govukCheckboxes({
+    {{ moalandCheckboxes({
       fieldset: {
         legend: {
           text: "What type of waste do you want to dispose of?"
@@ -159,9 +159,9 @@
       ]
     }) }}
 
-    <h2 class="govuk-heading-m">Date input with shared error message</h2>
+    <h2 class="moaland-heading-m">Date input with shared error message</h2>
 
-    {{- govukDateInput({
+    {{- moalandDateInput({
       fieldset: {
         legend: {
           text: "What is your date of birth?"
@@ -178,23 +178,23 @@
       items:[
         {
           name: 'day',
-          classes: 'govuk-input--width-2 govuk-input--error'
+          classes: 'moaland-input--width-2 moaland-input--error'
         },
         {
           name: 'month',
-          classes: 'govuk-input--width-2 govuk-input--error'
+          classes: 'moaland-input--width-2 moaland-input--error'
         },
         {
           name: 'year',
-          classes: 'govuk-input--width-4 govuk-input--error'
+          classes: 'moaland-input--width-4 moaland-input--error'
         }
       ]
       })
     -}}
 
-    <h2 class="govuk-heading-m">Date input with single error message</h2>
+    <h2 class="moaland-heading-m">Date input with single error message</h2>
 
-    {{- govukDateInput({
+    {{- moalandDateInput({
       fieldset: {
         legend: {
           text: "What is your date of birth?"
@@ -211,25 +211,25 @@
       items:[
         {
           name: 'day',
-          classes: 'govuk-input--width-2 govuk-input--error'
+          classes: 'moaland-input--width-2 moaland-input--error'
         },
         {
           name: 'month',
           value: '10',
-          classes: 'govuk-input--width-2'
+          classes: 'moaland-input--width-2'
         },
         {
           name: 'year',
           value: '1985',
-          classes: 'govuk-input--width-4'
+          classes: 'moaland-input--width-4'
         }
       ]
       })
     -}}
 
-    <h2 class="govuk-heading-m">Select with error message</h2>
+    <h2 class="moaland-heading-m">Select with error message</h2>
 
-    {{ govukSelect({
+    {{ moalandSelect({
       "id": "select-1",
       "name": "select-1",
       "label": {
@@ -241,23 +241,23 @@
       "items": [
         {
           "value": 1,
-          "text": "GOV.UK frontend option 1"
+          "text": "GOV.MOA frontend option 1"
         },
         {
           "value": 2,
-          "text": "GOV.UK frontend option 2",
+          "text": "GOV.MOA frontend option 2",
           "selected": true
         },
         {
           "value": 3,
-          "text": "GOV.UK frontend option 3"
+          "text": "GOV.MOA frontend option 3"
         }
       ]
       }) }}
 
-    <h2 class="govuk-heading-m">Textarea with error message</h2>
+    <h2 class="moaland-heading-m">Textarea with error message</h2>
 
-    {{ govukTextarea({
+    {{ moalandTextarea({
       id: "more-detail",
       name: "more-detail",
       label: {

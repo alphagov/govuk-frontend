@@ -1,0 +1,83 @@
+@include moaland-exports("moaland/component/details") {
+  .moaland-details {
+    @include moaland-font($size: 19);
+    @include moaland-text-colour;
+    @include moaland-responsive-margin(6, "bottom");
+
+    display: block;
+  }
+
+  .moaland-details__summary {
+    // Make the focus outline shrink-wrap the text content of the summary
+    display: inline-block;
+
+    // Absolutely position the marker against this element
+    position: relative;
+
+    margin-bottom: moaland-spacing(1);
+
+    // Allow for absolutely positioned marker and align with disclosed text
+    padding-left: moaland-spacing(4) + $moaland-border-width;
+
+    // Style the summary to look like a link...
+    color: $moaland-link-colour;
+    cursor: pointer;
+
+    &:hover {
+      color: $moaland-link-hover-colour;
+    }
+
+    &:focus {
+      @include moaland-focused-text;
+    }
+  }
+
+  // ...but only underline the text, not the arrow
+  .moaland-details__summary-text {
+    text-decoration: underline;
+  }
+
+  // Remove the underline when focussed to avoid duplicate borders
+  .moaland-details__summary:focus .moaland-details__summary-text {
+    text-decoration: none;
+  }
+
+  // Remove the default details marker so we can style our own consistently and
+  // ensure it displays in Firefox (see implementation.md for details)
+  .moaland-details__summary::-webkit-details-marker {
+    display: none;
+  }
+
+  // Append our own open / closed marker using a pseudo-element
+  .moaland-details__summary:before {
+    content: "";
+    position: absolute;
+
+    top: -1px;
+    bottom: 0;
+    left: 0;
+
+    margin: auto;
+
+    @include moaland-shape-arrow($direction: right, $base: 14px);
+
+    .moaland-details[open] > & {
+      @include moaland-shape-arrow($direction: down, $base: 14px);
+    }
+  }
+
+  .moaland-details__text {
+    padding: moaland-spacing(3);
+    padding-left: moaland-spacing(4);
+    border-left: $moaland-border-width solid $moaland-border-colour;
+  }
+
+  .moaland-details__text p {
+    margin-top: 0;
+    margin-bottom: moaland-spacing(4);
+  }
+
+  .moaland-details__text > :last-child {
+    margin-bottom: 0;
+  }
+}

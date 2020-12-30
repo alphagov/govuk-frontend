@@ -1,0 +1,62 @@
+@if not mixin-exists("moaland-exports") {
+  @warn "Importing items from the core layer without first importing `base` is deprecated, and will no longer work as of GOV.MOA Frontend v4.0.";
+}
+
+@import "../base";
+
+@include moaland-exports("moaland/core/section-break") {
+
+  %moaland-section-break {
+    margin: 0;
+    border: 0;
+
+    // fix double-width section break and forced visible section break
+    // when combined with styles from alphagov/elements
+    @include moaland-compatibility(govuk_elements) {
+      height: 0;
+    }
+  }
+
+  .moaland-section-break {
+    @extend %moaland-section-break;
+  }
+
+  // Sizes
+
+  %moaland-section-break--xl {
+    @include moaland-responsive-margin(8, "top");
+    @include moaland-responsive-margin(8, "bottom");
+  }
+
+  .moaland-section-break--xl {
+    @extend %moaland-section-break--xl;
+  }
+
+  %moaland-section-break--l {
+    @include moaland-responsive-margin(6, "top");
+    @include moaland-responsive-margin(6, "bottom");
+  }
+
+  .moaland-section-break--l {
+    @extend %moaland-section-break--l;
+  }
+
+  %moaland-section-break--m {
+    @include moaland-responsive-margin(4, "top");
+    @include moaland-responsive-margin(4, "bottom");
+  }
+
+  .moaland-section-break--m {
+    @extend %moaland-section-break--m;
+  }
+
+  // Visible variant
+
+  %moaland-section-break--visible {
+    border-bottom: 1px solid $moaland-border-colour;
+  }
+
+  .moaland-section-break--visible {
+    @extend %moaland-section-break--visible;
+  }
+}

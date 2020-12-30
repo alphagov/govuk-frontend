@@ -1,0 +1,105 @@
+////
+/// @group settings/measurements
+////
+
+// =========================================================
+// Page layout
+// =========================================================
+
+/// Width of main container
+///
+/// @type Number
+/// @access public
+
+$moaland-page-width: 960px !default;
+
+/// Map of grid column widths
+///
+/// @type Map
+/// @access public
+
+$moaland-grid-widths: (
+  one-quarter: 25%,
+  one-third: 33.3333%,
+  one-half: 50%,
+  two-thirds: 66.6666%,
+  three-quarters: 75%,
+  full: 100%
+) !default;
+
+/// Width of gutter between grid columns
+///
+/// @type Number
+/// @access public
+
+$moaland-gutter: 30px !default;
+
+/// Width of half the gutter between grid columns
+///
+/// @type Number
+/// @access public
+
+$moaland-gutter-half: $moaland-gutter / 2;
+
+// =========================================================
+// Borders
+// =========================================================
+
+/// Standard border width
+///
+/// @type Number
+/// @access public
+
+$moaland-border-width: 5px !default;
+
+/// Wide border width
+///
+/// @type Number
+/// @access public
+
+$moaland-border-width-wide: 10px !default;
+
+/// Narrow border width
+///
+/// @type Number
+/// @access public
+
+$moaland-border-width-narrow: 4px !default;
+
+/// Form control border width
+///
+/// @type Number
+/// @access public
+
+$moaland-border-width-form-element: 2px !default;
+
+/// Form control border width when in error state
+///
+/// @type Number
+/// @access public
+/// @deprecated Use $moaland-border-width-form-element instead. There should be no
+///   difference in thickness for inputs in the error state, in order to
+///   maintain a distinct focus state.
+
+$moaland-border-width-form-element-error: 2px !default;
+
+/// Form group border width when in error state
+///
+/// @type Number
+/// @access public
+
+$moaland-border-width-form-group-error: $moaland-border-width !default;
+
+/// Border width of focus outline
+///
+/// @type Number
+/// @access public
+
+$moaland-focus-width: 3px !default;
+
+/// Hover width for form controls with a hover state
+///
+/// @type Number
+/// @access public
+
+$moaland-hover-width: 10px !default;

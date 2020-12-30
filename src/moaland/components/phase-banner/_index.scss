@@ -1,0 +1,27 @@
+@import "../tag/index";
+
+@include moaland-exports("moaland/component/phase-banner") {
+  .moaland-phase-banner {
+    padding-top: moaland-spacing(2);
+    padding-bottom: moaland-spacing(2);
+
+    border-bottom: 1px solid $moaland-border-colour;
+  }
+
+  .moaland-phase-banner__content {
+    @include moaland-font($size: 16);
+    @include moaland-text-colour;
+
+    display: table;
+    margin: 0;
+  }
+
+  .moaland-phase-banner__content__tag {
+    margin-right: moaland-spacing(2);
+  }
+
+  .moaland-phase-banner__text {
+    display: table-cell;
+    vertical-align: baseline;
+  }
+}

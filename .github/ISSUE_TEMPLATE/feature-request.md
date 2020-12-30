@@ -12,7 +12,7 @@ assignees: ''
 
   Your issue might already exist. If so, add a comment to the existing issue instead of creating a new one. You can find existing issues here:
   - the community backlog: https://design-system.service.gov.uk/community/backlog/
-  - an existing Github issue: https://github.com/alphagov/govuk-frontend/issues
+  - an existing Github issue: https://github.com/moaland/moaland-frontend/issues
 
   If you are proposing a new component or pattern, please follow the instructions here: https://design-system.service.gov.uk/community/propose-a-component-or-pattern/
 -->

@@ -1,0 +1,9 @@
+<div class="moaland-warning-text {{- ' ' + params.classes if params.classes}}"
+  {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor -%}
+  >
+  <span class="moaland-warning-text__icon" aria-hidden="true">!</span>
+  <strong class="moaland-warning-text__text">
+    <span class="moaland-warning-text__assistive">{{ params.iconFallbackText }}</span>
+    {{ params.html | safe if params.html else params.text }}
+  </strong>
+</div>

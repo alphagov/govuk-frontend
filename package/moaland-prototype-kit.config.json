@@ -1,0 +1,14 @@
+{
+  "nunjucksPaths": [
+    "/"
+  ],
+  "scripts": [
+    "/moaland/all.js"
+  ],
+  "assets": [
+    "/moaland/assets"
+  ],
+  "sass": [
+    "/moaland/all.scss"
+  ]
+}

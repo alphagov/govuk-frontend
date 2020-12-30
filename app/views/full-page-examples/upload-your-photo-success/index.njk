@@ -8,58 +8,58 @@ scenario: >-
 {# This example is based of the live "Passport" service: https://www.passport.service.gov.uk/photo/upload #}
 {% extends "_generic.njk" %}
 
-{% from "back-link/macro.njk" import govukBackLink %}
-{% from "button/macro.njk" import govukButton %}
-{% from "checkboxes/macro.njk" import govukCheckboxes %}
-{% from "file-upload/macro.njk" import govukFileUpload %}
-{% from "notification-banner/macro.njk" import govukNotificationBanner %}
-{% from "phase-banner/macro.njk" import govukPhaseBanner %}
-{% from "radios/macro.njk" import govukRadios %}
+{% from "back-link/macro.njk" import moalandBackLink %}
+{% from "button/macro.njk" import moalandButton %}
+{% from "checkboxes/macro.njk" import moalandCheckboxes %}
+{% from "file-upload/macro.njk" import moalandFileUpload %}
+{% from "notification-banner/macro.njk" import moalandNotificationBanner %}
+{% from "phase-banner/macro.njk" import moalandPhaseBanner %}
+{% from "radios/macro.njk" import moalandRadios %}
 
-{% block pageTitle %}Upload your photo - GOV.UK{% endblock %}
+{% block pageTitle %}Upload your photo - GOV.MOA{% endblock %}
 
 {% block header %}
   {% include "../../partials/banner.njk" %}
-  {{ govukHeader({
+  {{ moalandHeader({
     serviceName: "Apply for a passport"
   }) }}
 {% endblock %}
 
 {% block beforeContent %}
-    {{ govukPhaseBanner({
+    {{ moalandPhaseBanner({
         tag: {
             text: "beta"
         },
-        html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+        html: 'This is a new service – your <a class="moaland-link" href="#">feedback</a> will help us to improve it.'
     }) }}
-    {{ govukBackLink({
+    {{ moalandBackLink({
         text: "Back",
         href: "#"
     }) }}
 {% endblock %}
 
 {% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+  <div class="moaland-grid-row">
+    <div class="moaland-grid-column-two-thirds">
         <form method="post" novalidate>
             {% if isSuccess %}
-                {{ govukNotificationBanner({
+                {{ moalandNotificationBanner({
                 "type": "success",
-                "html": "<p class=\"govuk-notification-banner__heading\">Success, your photo has been uploaded</p>\n"
+                "html": "<p class=\"moaland-notification-banner__heading\">Success, your photo has been uploaded</p>\n"
                 }) }}
             {% endif %}
 
-            <h1 class="govuk-heading-xl">Upload your photo</h1>
+            <h1 class="moaland-heading-xl">Upload your photo</h1>
 
-            <p class="govuk-body">
+            <p class="moaland-body">
                 Your photo will now go through an automated check.
             </p>
 
-            <p class="govuk-body">
+            <p class="moaland-body">
                 You’ll need to review it before you add the photo to your application.
             </p>
 
-            {{ govukFileUpload({
+            {{ moalandFileUpload({
                 id: "photo",
                 name: "photo",
                 label: {
@@ -71,20 +71,20 @@ scenario: >-
                 errorMessage: errors["photo"]
             }) }}
 
-            {{ govukCheckboxes({
+            {{ moalandCheckboxes({
                 idPrefix: "terms-and-conditions",
                 name: "terms-and-conditions",
                 items: [
                     {
                         value: "true",
-                        html: 'I accept the <a class="govuk-link" href="#">terms and conditions</a>',
+                        html: 'I accept the <a class="moaland-link" href="#">terms and conditions</a>',
                         checked: values["terms-and-conditions"]
                     }
                 ],
                 errorMessage: errors["terms-and-conditions"]
             }) }}
 
-            {{ govukButton({
+            {{ moalandButton({
                 text: "Submit your photo"
             }) }}
         </form>

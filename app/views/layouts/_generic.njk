@@ -4,12 +4,12 @@
 
   {% if legacy %}
     <!--[if !IE 8]><!-->
-      <link rel="stylesheet" href="/vendor/govuk_template/stylesheets/govuk-template.css">
+      <link rel="stylesheet" href="/vendor/govuk_template/stylesheets/moaland-template.css">
     <!--<![endif]-->
     <!--[if IE 8]>
-      <link rel="stylesheet" href="/vendor/govuk_template/govuk-template-ie8.css">
+      <link rel="stylesheet" href="/vendor/govuk_template/moaland-template-ie8.css">
     <![endif]-->
-    <link rel="stylesheet" media="print" href="/vendor/govuk_template/stylesheets/govuk-template-print.css">
+    <link rel="stylesheet" media="print" href="/vendor/govuk_template/stylesheets/moaland-template-print.css">
     <link rel="stylesheet" media="all" href="/vendor/govuk_template/stylesheets/fonts.css"/>
     <!--[if !IE 8]><!-->
       <link rel="stylesheet" href="/public/app-legacy.css">
@@ -42,7 +42,7 @@
   {{ super() }}
 {% endblock %}
 
-{% set mainClasses = 'govuk-main-wrapper--auto-spacing' %}
+{% set mainClasses = 'moaland-main-wrapper--auto-spacing' %}
 
 {% block bodyEnd %}
   {% if legacy %}
@@ -50,5 +50,5 @@
   {% endif %}
 
   <script src="/public/all.js"></script>
-  <script>window.GOVUKFrontend.initAll()</script>
+  <script>window.MoalandFrontend.initAll()</script>
 {% endblock %}

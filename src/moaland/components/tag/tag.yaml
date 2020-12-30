@@ -1,0 +1,79 @@
+params:
+- name: text
+  type: string
+  required: true
+  description: If `html` is set, this is not required. Text to use within the tag component. If `html` is provided, the `text` argument will be ignored.
+- name: html
+  type: string
+  required: true
+  description: If `text` is set, this is not required. HTML to use within the tag component. If `html` is provided, the `text` argument will be ignored.
+- name: classes
+  type: string
+  required: false
+  description: Classes to add to the tag.
+- name: attributes
+  type: object
+  required: false
+  description: HTML attributes (for example data attributes) to add to the tag.
+
+examples:
+- name: default
+  data:
+    text: alpha
+- name: inactive
+  data:
+    text: alpha
+    classes: moaland-tag--inactive
+- name: grey
+  data:
+    text: Grey
+    classes: moaland-tag--grey
+- name: blue
+  data:
+    text: Blue
+    classes: moaland-tag--blue
+- name: turquoise
+  data:
+    text: Turquoise
+    classes: moaland-tag--turquoise
+- name: green
+  data:
+    text: Green
+    classes: moaland-tag--green
+- name: purple
+  data:
+    text: Purple
+    classes: moaland-tag--purple
+- name: pink
+  data:
+    text: Pink
+    classes: moaland-tag--pink
+- name: red
+  data:
+    text: Red
+    classes: moaland-tag--red
+- name: orange
+  data:
+    text: Orange
+    classes: moaland-tag--orange
+- name: yellow
+  data:
+    text: Yellow
+    classes: moaland-tag--yellow
+
+# Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+- name: attributes
+  hidden: true
+  data:
+    text: Tag with attributes
+    attributes:
+      data-test: attribute
+      id: my-tag
+- name: html as text
+  hidden: true
+  data:
+    text: <span>alpha</span>
+- name: html
+  hidden: true
+  data:
+    html: <span>alpha</span>

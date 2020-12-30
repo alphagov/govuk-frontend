@@ -1,0 +1,34 @@
+@include moaland-exports("moaland/component/skip-link") {
+  .moaland-skip-link {
+    @include moaland-visually-hidden-focusable;
+    @include moaland-typography-common;
+    @include moaland-link-style-text;
+    @include moaland-typography-responsive($size: 16);
+
+    display: block;
+    padding: moaland-spacing(2) moaland-spacing(3);
+
+    // Respect 'display cutout' safe area (avoids notches and rounded corners)
+    @supports (padding: unquote("max(calc(0px))")) {
+      $padding-safe-area-right: calc(#{moaland-spacing(3)} + env(safe-area-inset-right));
+      $padding-safe-area-left: calc(#{moaland-spacing(3)} + env(safe-area-inset-left));
+
+      // Use max() to pick largest padding, default or with safe area
+      // Escaped due to Sass max() vs. CSS native max()
+      padding-right: unquote("max(#{moaland-spacing(3)}, #{$padding-safe-area-right})");
+      padding-left: unquote("max(#{moaland-spacing(3)}, #{$padding-safe-area-left})");
+    }
+
+    &:focus {
+      outline: $moaland-focus-width solid $moaland-focus-colour;
+      outline-offset: 0;
+      background-color: $moaland-focus-colour;
+
+      // Undo unwanted changes when global styles are enabled
+      @if ($moaland-global-styles) {
+        box-shadow: none;
+        text-decoration: underline;
+      }
+    }
+  }
+}

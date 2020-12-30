@@ -1,9 +1,9 @@
-{% from "back-link/macro.njk" import govukBackLink %}
+{% from "back-link/macro.njk" import moalandBackLink %}
 
 {% extends "layout.njk" %}
 
 {% block beforeContent %}
-  {{ govukBackLink({
+  {{ moalandBackLink({
     "href": "/"
   }) }}
 {% endblock %}
@@ -12,9 +12,9 @@
 
 {% set variants = {
   'Link': '',
-  'Link with no visited state': 'govuk-link--no-visited-state',
-  'Text link': 'govuk-link--text-colour',
-  'Muted link': 'govuk-link--muted'
+  'Link with no visited state': 'moaland-link--no-visited-state',
+  'Text link': 'moaland-link--text-colour',
+  'Muted link': 'moaland-link--muted'
 } %}
 
 {% set states = {
@@ -28,29 +28,29 @@
   'Focussed active link': ':focus :active'
 } %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+  <div class="moaland-grid-row">
+    <div class="moaland-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-xl">
+      <h1 class="moaland-heading-xl">
         Links
       </h1>
 
-      <p class="govuk-body">
-        <a class="govuk-link" href="#">Link with that wraps over two lines to test that the focus style works as expected</a>
+      <p class="moaland-body">
+        <a class="moaland-link" href="#">Link with that wraps over two lines to test that the focus style works as expected</a>
       </p>
 
-      <p class="govuk-body">
-        (<a class="govuk-link" href="#">Link with surrounding brackets</a>) test that the focus style does not overlap.
+      <p class="moaland-body">
+        (<a class="moaland-link" href="#">Link with surrounding brackets</a>) test that the focus style does not overlap.
       </p>
 
     {% for variant_description, variant_class in variants %}
 
-      <section class="govuk-!-margin-top-8">
-        <h2 class="govuk-heading-l">{{ variant_description }}</h2>
+      <section class="moaland-!-margin-top-8">
+        <h2 class="moaland-heading-l">{{ variant_description }}</h2>
 
       {% for state_description, state_class in states %}
-        <p class="govuk-body">
-          <a href="/#{{ randomPageHash }}" class="govuk-link {{ variant_class }} {{ state_class }}">
+        <p class="moaland-body">
+          <a href="/#{{ randomPageHash }}" class="moaland-link {{ variant_class }} {{ state_class }}">
             {{ state_description}}
           </a>
         </p>

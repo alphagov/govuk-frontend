@@ -1,0 +1,155 @@
+////
+/// @group settings/colours
+////
+
+@import "../helpers/colour";
+
+// =========================================================
+// Generic
+// =========================================================
+
+/// Brand colour
+///
+/// @type Colour
+/// @access public
+
+$moaland-brand-colour: moaland-colour("blue") !default;
+
+/// Text colour
+///
+/// @type Colour
+/// @access public
+
+$moaland-text-colour: moaland-colour("black") !default;
+
+/// Canvas background colour
+///
+/// Used by the footer component and template to give the illusion of a long
+/// footer.
+///
+/// @type Colour
+/// @access public
+
+$moaland-canvas-background-colour: moaland-colour("light-grey", $legacy: "grey-3") !default;
+
+/// Body background colour
+///
+/// @type Colour
+/// @access public
+
+$moaland-body-background-colour: moaland-colour("white") !default;
+
+/// Text colour for print media
+///
+/// Use 'true black' to avoid printers using colour ink to print body text
+///
+/// @type Colour
+/// @access public
+
+$moaland-print-text-colour: #000000 !default;
+
+/// Secondary text colour
+///
+/// Used in for example 'muted' text and help text.
+///
+/// @type Colour
+/// @access public
+
+$moaland-secondary-text-colour: moaland-colour("dark-grey", $legacy: "grey-1") !default;
+
+/// Focus colour
+///
+/// Used for outline (and background, where appropriate) when interactive
+/// elements (links, form controls) have keyboard focus.
+///
+/// @type Colour
+/// @access public
+
+$moaland-focus-colour: moaland-colour("yellow") !default;
+
+/// Focused text colour
+///
+/// Ensure that the contrast between the text and background colour passes
+/// WCAG Level AA contrast requirements.
+///
+/// @type Colour
+/// @access public
+
+$moaland-focus-text-colour: moaland-colour("black") !default;
+
+/// Error colour
+///
+/// Used to highlight error messages and form controls in an error state
+///
+/// @type Colour
+/// @access public
+
+$moaland-error-colour: moaland-colour("red") !default;
+
+/// Success colour
+///
+/// Used to highlight success messages and banners
+///
+/// @type Colour
+/// @access public
+
+$moaland-success-colour: moaland-colour("green") !default;
+
+/// Border colour
+///
+/// Used in for example borders, separators, rules and keylines.
+///
+/// @type Colour
+/// @access public
+
+$moaland-border-colour: moaland-colour("mid-grey", $legacy: "grey-2");
+
+/// Input border colour
+///
+/// Used for form inputs and controls
+///
+/// @type Colour
+/// @access public
+
+$moaland-input-border-colour: moaland-colour("black") !default;
+
+/// Input hover colour
+///
+/// Used for hover states on form controls
+///
+/// @type Colour
+/// @access public
+
+$moaland-hover-colour: moaland-colour("mid-grey", $legacy: "grey-3");
+
+// =============================================================================
+// Links
+// =============================================================================
+
+/// Link colour
+///
+/// @type Colour
+/// @access public
+
+$moaland-link-colour: moaland-colour("blue") !default;
+
+/// Visited link colour
+///
+/// @type Colour
+/// @access public
+
+$moaland-link-visited-colour: moaland-colour("purple", $legacy: #4c2c92) !default;
+
+/// Link hover colour
+///
+/// @type Colour
+/// @access public
+
+$moaland-link-hover-colour: moaland-colour("dark-blue", $legacy: "light-blue") !default;
+
+/// Active link colour
+///
+/// @type Colour
+/// @access public
+
+$moaland-link-active-colour: moaland-colour("black", $legacy: "light-blue") !default;

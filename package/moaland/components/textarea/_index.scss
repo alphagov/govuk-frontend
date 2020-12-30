@@ -1,0 +1,47 @@
+@import "../error-message/index";
+@import "../hint/index";
+@import "../label/index";
+
+@include moaland-exports("moaland/component/textarea") {
+  .moaland-textarea {
+    @include moaland-font($size: 19, $line-height: 1.25);
+
+    box-sizing: border-box; // should this be global?
+    display: block;
+    width: 100%;
+    min-height: 40px;
+    @include moaland-responsive-margin(6, "bottom");
+    padding: moaland-spacing(1);
+
+    resize: vertical;
+
+    border: $moaland-border-width-form-element solid $moaland-input-border-colour;
+    border-radius: 0;
+
+    -webkit-appearance: none;
+
+    &:focus {
+      outline: $moaland-focus-width solid $moaland-focus-colour;
+      // Ensure outline appears outside of the element
+      outline-offset: 0;
+      // Double the border by adding its width again. Use `box-shadow` to do
+      // this instead of changing `border-width` (which changes element size) and
+      // since `outline` is already used for the yellow focus state.
+      box-shadow: inset 0 0 0 $moaland-border-width-form-element;
+
+      @include moaland-if-ie8 {
+        // IE8 doesn't support `box-shadow` so double the border with
+        // `border-width`.
+        border-width: $moaland-border-width-form-element * 2;
+      }
+    }
+  }
+
+  .moaland-textarea--error {
+    border: $moaland-border-width-form-element-error solid $moaland-error-colour;
+
+    &:focus {
+      border-color: $moaland-input-border-colour;
+    }
+  }
+}

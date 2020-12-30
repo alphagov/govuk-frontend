@@ -1,12 +1,12 @@
-{% from "back-link/macro.njk" import govukBackLink %}
-{% from "panel/macro.njk" import govukPanel %}
-{% from "fieldset/macro.njk" import govukFieldset %}
-{% from "label/macro.njk" import govukLabel %}
-{% from "input/macro.njk" import govukInput %}
-{% from "button/macro.njk" import govukButton %}
-{% from "select/macro.njk" import govukSelect %}
-{% from "checkboxes/macro.njk" import govukCheckboxes %}
-{% from "radios/macro.njk" import govukRadios %}
+{% from "back-link/macro.njk" import moalandBackLink %}
+{% from "panel/macro.njk" import moalandPanel %}
+{% from "fieldset/macro.njk" import moalandFieldset %}
+{% from "label/macro.njk" import moalandLabel %}
+{% from "input/macro.njk" import moalandInput %}
+{% from "button/macro.njk" import moalandButton %}
+{% from "select/macro.njk" import moalandSelect %}
+{% from "checkboxes/macro.njk" import moalandCheckboxes %}
+{% from "radios/macro.njk" import moalandRadios %}
 
 {% extends "layout.njk" %}
 
@@ -39,77 +39,77 @@
 {% endblock %}
 
 {% block beforeContent %}
-  {{ govukBackLink({
+  {{ moalandBackLink({
     "href": "/"
   }) }}
 {% endblock %}
 
 {% block content %}
-  <h1 class="govuk-heading-xl">Form elements alignment</h1>
-  <h2 class="govuk-heading-m">Input and button</h2>
+  <h1 class="moaland-heading-xl">Form elements alignment</h1>
+  <h2 class="moaland-heading-m">Input and button</h2>
 
   <form action="/" method="post">
-    {% call govukFieldset() %}
-      {{ govukLabel({
+    {% call moalandFieldset() %}
+      {{ moalandLabel({
         "text": "National Insurance number",
-        "for": "govuk-input-a"
+        "for": "moaland-input-a"
       }) }}
       <div class="app-u-w-half">
-        {{ govukInput({
-          id: "govuk-input-a",
+        {{ moalandInput({
+          id: "moaland-input-a",
           name: "national-insurance-number"
         }) }}
       </div>
       <div class="app-u-w-half">
-        {{ govukButton({
+        {{ moalandButton({
           "text": "Save and continue"
         }) }}
       </div>
     {%- endcall %}
   </form>
 
-  <h2 class="govuk-heading-m">Select and button</h2>
+  <h2 class="moaland-heading-m">Select and button</h2>
 
   <form action="/" method="post">
-    {% call govukFieldset() %}
-      {{ govukLabel({
+    {% call moalandFieldset() %}
+      {{ moalandLabel({
         "text": "This is the label text",
         "for": "select-box"
       }) }}
       <div class="app-u-w-half">
-        {{ govukSelect({
+        {{ moalandSelect({
           "id": "select-box",
           "name": "select-box",
           "items": [
             {
               "value": 1,
-              "text": "GOV.UK elements option 1"
+              "text": "GOV.MOA elements option 1"
             },
             {
               "value": 2,
-              "text": "GOV.UK elements option 2"
+              "text": "GOV.MOA elements option 2"
             },
             {
               "value": 3,
-              "text": "GOV.UK elements option 3"
+              "text": "GOV.MOA elements option 3"
             }
           ]
         }) }}
       </div>
       <div class="app-u-w-half">
-        {{ govukButton({
+        {{ moalandButton({
           "text": "Save and continue"
         }) }}
       </div>
     {%- endcall %}
   </form>
 
-  <h2 class="govuk-heading-m">Input and select</h2>
+  <h2 class="moaland-heading-m">Input and select</h2>
 
   <form action="/" method="post">
-    {% call govukFieldset() %}
+    {% call moalandFieldset() %}
       <div class="app-u-w-half">
-          {{ govukInput({
+          {{ moalandInput({
             id: "input-and-select__text-input",
             label: {
               "text": "NIC"
@@ -117,7 +117,7 @@
           }) }}
       </div>
       <div class="app-u-w-half">
-        {{ govukSelect({
+        {{ moalandSelect({
           "label": {
             "text": "Select class"
           },
@@ -142,21 +142,21 @@
     {%- endcall %}
   </form>
 
-  <h2 class="govuk-heading-m">Input and checkboxes</h2>
+  <h2 class="moaland-heading-m">Input and checkboxes</h2>
 
   <form action="/" method="post">
-    {% call govukFieldset() %}
-      {{ govukLabel({
+    {% call moalandFieldset() %}
+      {{ moalandLabel({
         "text": "NIC",
         "for": "input-and-checkboxes__text-input"
       }) }}
       <div class="app-u-w-half">
-          {{ govukInput({
+          {{ moalandInput({
             id: "input-and-checkboxes__text-input"
           }) }}
       </div>
       <div class="app-u-w-half">
-        {{ govukCheckboxes({
+        {{ moalandCheckboxes({
           "idPrefix": "checkboxes-year",
           "name": "checkboxes-year",
           "items": [
@@ -170,21 +170,21 @@
     {%- endcall %}
   </form>
 
-  <h2 class="govuk-heading-m">Input and radios</h2>
+  <h2 class="moaland-heading-m">Input and radios</h2>
 
   <form action="/" method="post">
-    {% call govukFieldset() %}
-      {{ govukLabel({
+    {% call moalandFieldset() %}
+      {{ moalandLabel({
         "text": "NIC",
         "for": "input-and-radios__text-input"
       }) }}
       <div class="app-u-w-half">
-          {{ govukInput({
+          {{ moalandInput({
             id: "input-and-radios__text-input"
           }) }}
       </div>
       <div class="app-u-w-half">
-        {{ govukRadios({
+        {{ moalandRadios({
           "idPrefix": "radio",
           "name": "radio-group",
           "items": [
@@ -198,11 +198,11 @@
     {%- endcall %}
   </form>
 
-  <h2 class="govuk-heading-m">Radios, checkboxes and button</h2>
+  <h2 class="moaland-heading-m">Radios, checkboxes and button</h2>
   <form action="/" method="post">
-    {% call govukFieldset() %}
+    {% call moalandFieldset() %}
       <div class="app-u-w-quarter">
-        {{ govukCheckboxes({
+        {{ moalandCheckboxes({
           "idPrefix": "radio-checkboxes-button__checkboxes",
           "name": "radio-checkboxes-button__checkboxes",
           "items": [
@@ -214,7 +214,7 @@
         }) }}
       </div>
       <div class="app-u-w-quarter">
-        {{ govukRadios({
+        {{ moalandRadios({
           "idPrefix": "radio-checkboxes-button__radios",
           "name": "radio-group",
           "items": [
@@ -226,89 +226,89 @@
         }) }}
       </div>
       <div class="app-u-w-half">
-        {{ govukButton({
+        {{ moalandButton({
           "text": "Save and continue"
         }) }}
       </div>
     {%- endcall %}
   </form>
 
-  <h2 class="govuk-heading-m">Input with govuk-!-width</h2>
+  <h2 class="moaland-heading-m">Input with moaland-!-width</h2>
 
-  {% call govukFieldset() %}
-    {{ govukInput({
-      id: "govuk-!-width-one-quarter",
-      classes: "govuk-!-width-one-quarter",
+  {% call moalandFieldset() %}
+    {{ moalandInput({
+      id: "moaland-!-width-one-quarter",
+      classes: "moaland-!-width-one-quarter",
       label: {
-        text: "Input with govuk-!-width-one-quarter (25% width)"
+        text: "Input with moaland-!-width-one-quarter (25% width)"
       }
     }) }}
-    {{ govukInput({
-      id: "govuk-!-width-one-third",
-      classes: "govuk-!-width-one-third",
+    {{ moalandInput({
+      id: "moaland-!-width-one-third",
+      classes: "moaland-!-width-one-third",
       label: {
-        text: "Input with govuk-!-width-one-third (33% width)"
+        text: "Input with moaland-!-width-one-third (33% width)"
       }
     }) }}
-    {{ govukInput({
-      id: "govuk-!-width-one-half",
-      classes: "govuk-!-width-one-half",
+    {{ moalandInput({
+      id: "moaland-!-width-one-half",
+      classes: "moaland-!-width-one-half",
       label: {
-        text: "Input with govuk-!-width-one-half (50% width)"
+        text: "Input with moaland-!-width-one-half (50% width)"
       }
     }) }}
-    {{ govukInput({
-      id: "govuk-!-width-two-thirds",
-      classes: "govuk-!-width-two-thirds",
+    {{ moalandInput({
+      id: "moaland-!-width-two-thirds",
+      classes: "moaland-!-width-two-thirds",
       label: {
-        text: "Input with govuk-!-width-two-thirds (66% width)"
+        text: "Input with moaland-!-width-two-thirds (66% width)"
       }
     }) }}
-    {{ govukInput({
-      id: "govuk-!-width-three-quarters",
-      classes: "govuk-!-width-three-quarters",
+    {{ moalandInput({
+      id: "moaland-!-width-three-quarters",
+      classes: "moaland-!-width-three-quarters",
       label: {
-        text: "Input with govuk-!-width-width-three-quarters (75% width)"
+        text: "Input with moaland-!-width-width-three-quarters (75% width)"
       }
     }) }}
   {%- endcall %}
 
-  <h2 class="govuk-heading-m">Display with govuk-!-display</h2>
+  <h2 class="moaland-heading-m">Display with moaland-!-display</h2>
 
-  <h3 class="govuk-heading-s govuk-!-font-weight-regular">govuk-!-display-block</h2>
+  <h3 class="moaland-heading-s moaland-!-font-weight-regular">moaland-!-display-block</h2>
 
-  {{ govukButton({
-    classes: 'govuk-!-display-block',
+  {{ moalandButton({
+    classes: 'moaland-!-display-block',
     text:'Save and continue',
     element: 'input',
     href: '/'
   }) }}
 
-  {{ govukButton({
-    classes: 'govuk-!-display-block',
+  {{ moalandButton({
+    classes: 'moaland-!-display-block',
     text:'Save and continue',
     element: 'input',
     href: '/'
   }) }}
 
-  <h3 class="govuk-heading-s govuk-!-font-weight-regular">govuk-!-display-inline-block</h2>
+  <h3 class="moaland-heading-s moaland-!-font-weight-regular">moaland-!-display-inline-block</h2>
 
-    {{ govukPanel({
-      classes: 'govuk-!-display-inline-block',
+    {{ moalandPanel({
+      classes: 'moaland-!-display-inline-block',
       titleText: 'Application complete',
       html: 'Your reference number<br><strong>HDJ2123F</strong>'
     }) }}
 
 
-    {{ govukButton({
-      classes: 'govuk-!-display-inline-block',
+    {{ moalandButton({
+      classes: 'moaland-!-display-inline-block',
       text:'Save and continue',
       element: 'input',
       href: '/' })
     }}
 
-  <h3 class="govuk-heading-s govuk-!-font-weight-regular">govuk-!-display-inline</h2>
+  <h3 class="moaland-heading-s moaland-!-font-weight-regular">moaland-!-display-inline</h2>
 
-  <a class="govuk-!-display-inline govuk-link" href="#">Apples</a>
-  <a class="govuk-!-display-inline govuk-link" href="#">Oranges</a>
+  <a class="moaland-!-display-inline moaland-link" href="#">Apples</a>
+  <a class="moaland-!-display-inline moaland-link" href="#">Oranges</a>
 {% endblock %}

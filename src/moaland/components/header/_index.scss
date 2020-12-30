@@ -1,0 +1,309 @@
+@include moaland-exports("moaland/component/header") {
+
+  $moaland-header-background: moaland-colour("black");
+  $moaland-header-border-color: $moaland-brand-colour;
+  $moaland-header-border-width: moaland-spacing(2);
+  $moaland-header-text: moaland-colour("white");
+  $moaland-header-link: moaland-colour("white");
+  $moaland-header-link-hover: moaland-colour("white");
+  $moaland-header-link-active: #1d8feb;
+  $moaland-header-nav-item-border-color: #2e3133;
+
+  .moaland-header {
+    @include moaland-font($size: 16);
+
+    border-bottom: moaland-spacing(2) solid moaland-colour("white");
+    color: $moaland-header-text;
+    background: $moaland-header-background;
+  }
+
+  .moaland-header__container--full-width {
+    padding: 0 moaland-spacing(3);
+    border-color: $moaland-header-border-color;
+
+    .moaland-header__menu-button {
+      right: moaland-spacing(3);
+    }
+  }
+
+  .moaland-header__container {
+    @include moaland-clearfix;
+    position: relative;
+    margin-bottom: -$moaland-header-border-width;
+    padding-top: moaland-spacing(2);
+    border-bottom: $moaland-header-border-width solid $moaland-header-border-color;
+  }
+
+  .moaland-header__logotype {
+    display: inline-block;
+    margin-right: moaland-spacing(1);
+  }
+
+  .moaland-header__logotype-crown {
+    position: relative;
+    top: -1px;
+    margin-right: 1px;
+    fill: currentColor;
+    vertical-align: top;
+  }
+
+  .moaland-header__logotype-crown-fallback-image {
+    width: 36px;
+    height: 32px;
+    border: 0;
+    vertical-align: middle;
+  }
+
+  .moaland-header__product-name {
+    @include moaland-font($size: 24, $line-height: 1);
+    display: inline-table;
+    padding-right: moaland-spacing(2);
+  }
+
+  .moaland-header__link {
+    text-decoration: none;
+
+    &:link,
+    &:visited {
+      color: $moaland-header-link;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:focus {
+      @include moaland-focused-text;
+    }
+
+    // alphagov/govuk_template includes a specific a:link:focus selector
+    // designed to make unvisited links a slightly darker blue when focussed, so
+    // we need to override the text colour for that combination of selectors.
+    @include moaland-compatibility(govuk_template) {
+      &:link:focus {
+        @include moaland-text-colour;
+      }
+    }
+  }
+
+  .moaland-header__link--homepage {
+    // Font size needs to be set on the link so that the box sizing is correct
+    // in Firefox
+    @include moaland-font($size: false, $weight: bold);
+
+    display: inline-block;
+    font-size: 30px; // We don't have a mixin that produces 30px font size
+    line-height: 1;
+
+    &:link,
+    &:visited {
+      text-decoration: none;
+    }
+
+    &:hover,
+    &:active {
+      // Negate the added border
+      margin-bottom: -1px;
+      // Omitting colour will use default value of currentColor – if we
+      // specified currentColor explicitly IE8 would ignore this rule.
+      border-bottom: 1px solid;
+    }
+
+    // Remove any borders that show when focused and hovered.
+    &:focus {
+      margin-bottom: 0;
+      border-bottom: 0;
+    }
+  }
+
+  .moaland-header__link--service-name {
+    display: inline-block;
+    margin-bottom: moaland-spacing(2);
+    @include moaland-font($size: 24, $weight: bold);
+  }
+
+  .moaland-header__logo,
+  .moaland-header__content {
+    box-sizing: border-box;
+  }
+
+  .moaland-header__logo {
+    @include moaland-responsive-margin(2, "bottom");
+    padding-right: moaland-spacing(8);
+
+    @include moaland-media-query ($from: desktop) {
+      width: 33.33%;
+      padding-right: $moaland-gutter-half;
+      float: left;
+      vertical-align: top;
+    }
+  }
+
+  .moaland-header__content {
+    @include moaland-media-query ($from: desktop) {
+      width: 66.66%;
+      padding-left: $moaland-gutter-half;
+      float: left;
+    }
+  }
+
+  .moaland-header__menu-button {
+    @include moaland-font($size: 16);
+    display: none;
+    position: absolute;
+    top: moaland-spacing(4);
+    right: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    color: $moaland-header-link;
+    background: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:focus {
+      @include moaland-focused-text;
+    }
+
+    &:after {
+      @include moaland-shape-arrow($direction: down, $base: 10px, $display: inline-block);
+      content: "";
+      margin-left: moaland-spacing(1);
+    }
+
+    @include moaland-media-query ($from: tablet) {
+      top: moaland-spacing(3);
+    }
+  }
+
+  .moaland-header__menu-button--open {
+    &:after {
+      @include moaland-shape-arrow($direction: up, $base: 10px, $display: inline-block);
+    }
+  }
+
+  .moaland-header__navigation {
+    @include moaland-responsive-margin(2, "bottom");
+    display: block;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .js-enabled {
+    .moaland-header__menu-button {
+      display: block;
+      @include moaland-media-query ($from: desktop) {
+        display: none;
+      }
+    }
+
+    .moaland-header__navigation {
+      display: none;
+      @include moaland-media-query ($from: desktop) {
+        display: block;
+      }
+    }
+
+    .moaland-header__navigation--open {
+      display: block;
+    }
+  }
+
+  .moaland-header__navigation--end {
+    @include moaland-media-query ($from: desktop) {
+      margin: 0;
+      padding: moaland-spacing(1) 0;
+      text-align: right;
+    }
+  }
+
+  .moaland-header__navigation--no-service-name {
+    padding-top: moaland-spacing(7);
+  }
+
+  .moaland-header__navigation-item {
+    padding: moaland-spacing(2) 0;
+    border-bottom: 1px solid $moaland-header-nav-item-border-color;
+
+    @include moaland-media-query ($from: desktop) {
+      display: inline-block;
+      margin-right: moaland-spacing(3);
+      padding: moaland-spacing(1) 0;
+      border: 0;
+    }
+
+    a {
+      @include moaland-font($size: 16, $weight: bold);
+      white-space: nowrap;
+    }
+  }
+
+  .moaland-header__navigation-item--active {
+    a {
+      &:link,
+      &:hover,
+      &:visited {
+        color: $moaland-header-link-active;
+      }
+
+      // When focussed, the text colour needs to be darker to ensure that colour
+      // contrast is still acceptable
+      &:focus {
+        color: $moaland-focus-text-colour;
+      }
+    }
+  }
+
+  .moaland-header__navigation-item:last-child {
+    margin-right: 0;
+  }
+
+  @include moaland-media-query($media-type: print) {
+    .moaland-header {
+      border-bottom-width: 0;
+      color: moaland-colour("black");
+      background: transparent;
+    }
+
+    // Hide the inverted crown when printing in browsers that don't support SVG.
+    .moaland-header__logotype-crown-fallback-image {
+      display: none;
+    }
+
+    .moaland-header__link {
+      &:link,
+      &:visited {
+        color: moaland-colour("black");
+      }
+
+      // Do not append link href to GOV.MOA link when printing (e.g. '(/)')
+      &:after {
+        display: none;
+      }
+    }
+  }
+
+  @if $moaland-use-legacy-font {
+    // Begin adjustments for font baseline offset
+    // These should be removed when the font is updated with the correct baseline
+    .moaland-header__logotype-crown,
+    .moaland-header__logotype-crown-fallback-image {
+      position: relative;
+      top: -4px;
+      vertical-align: middle;
+    }
+
+    .moaland-header {
+      $offset: 3px;
+      padding-top: $offset;
+    }
+
+    .moaland-header__link--homepage {
+      line-height: 30px;
+    }
+    // End adjustments
+  }
+}

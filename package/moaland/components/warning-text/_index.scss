@@ -1,0 +1,57 @@
+@include moaland-exports("moaland/component/warning-text") {
+  .moaland-warning-text {
+    position: relative;
+    @include moaland-responsive-margin(6, "bottom");
+    padding: moaland-spacing(2) 0;
+  }
+
+  .moaland-warning-text__assistive {
+    @include moaland-visually-hidden;
+  }
+
+  .moaland-warning-text__icon {
+    @include moaland-font($size: false, $weight: bold);
+
+    box-sizing: border-box;
+
+    display: inline-block;
+
+    position: absolute;
+    left: 0;
+
+    min-width: 35px;
+    min-height: 35px;
+    margin-top: -7px;
+
+    @include moaland-media-query($from: tablet) {
+      margin-top: -5px;
+    }
+
+    // When a user customises their colours the background colour will often be removed.
+    // Adding a border to the component keeps it's shape as a circle.
+    border: 3px solid moaland-colour("black");
+    border-radius: 50%;
+
+    color: moaland-colour("white");
+    background: moaland-colour("black");
+
+    font-size: 30px;
+    line-height: 29px;
+
+    text-align: center;
+
+    // Prevent the exclamation mark from being included when the warning text
+    // is copied, for example.
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+  }
+
+  .moaland-warning-text__text {
+    @include moaland-font($size: 19, $weight: bold);
+    @include moaland-text-colour;
+    display: block;
+    padding-left: 45px;
+  }
+}

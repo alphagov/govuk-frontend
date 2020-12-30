@@ -11,8 +11,8 @@ assignees: ''
     Please fill in as much of the template below as you’re able to. If you're unsure whether the issue already exists or how to fill in the template, open an issue anyway. Our team will help you to complete the rest.
 
     Your issue might already exist. If so, add a comment to the existing issue instead of creating a new one. You can find existing issues here:
-    - an existing Github issue: https://github.com/alphagov/govuk-frontend/issues
-    - our known validation error/warning list: https://github.com/alphagov/govuk-frontend/issues/1280#issuecomment-509588851
+    - an existing Github issue: https://github.com/moaland/moaland-frontend/issues
+    - our known validation error/warning list: https://github.com/moaland/moaland-frontend/issues/1280#issuecomment-509588851
 -->
 
 ## Description of the issue
@@ -25,9 +25,9 @@ assignees: ''
 <!-- What is happening vs what would you expect to happen instead? -->
 
 ## Environment (where applicable)
-<!-- Details of your operating system, browser and the version of GOVUK Frontend you’re using may help us to reproduce your issue. -->
+<!-- Details of your operating system, browser and the version of Moaland Frontend you’re using may help us to reproduce your issue. -->
 
 - Operating system:
 - Browser:
 - Browser version:
-- GOV.UK Frontend Version:
+- GOV.MOA Frontend Version:

@@ -1,0 +1,50 @@
+@import "../error-message/index";
+@import "../hint/index";
+@import "../label/index";
+
+@include moaland-exports("moaland/component/file-upload") {
+  $component-padding: moaland-spacing(1);
+
+  .moaland-file-upload {
+    @include moaland-font($size: 19);
+    @include moaland-text-colour;
+    padding-top: $component-padding;
+    padding-bottom: $component-padding;
+
+    &:focus {
+      // "Yank" the padding with negative margin to avoid a jump
+      // when element is focused
+      margin-right: -$component-padding;
+      margin-left: -$component-padding;
+      padding-right: $component-padding;
+      padding-left: $component-padding;
+
+      outline: $moaland-focus-width solid $moaland-focus-colour;
+      // Use `box-shadow` to add border instead of changing `border-width`
+      // (which changes element size) and since `outline` is already used for the
+      // yellow focus state.
+      box-shadow: inset 0 0 0 4px $moaland-input-border-colour;
+
+      @include moaland-if-ie8 {
+        // IE8 doesn't support `box-shadow` so add an actual border
+        border: 4px solid $moaland-input-border-colour;
+      }
+    }
+
+    // Set "focus-within" to fix https://bugzilla.mozilla.org/show_bug.cgi?id=1430196
+    // so that component receives focus in Firefox.
+    // This can't be set together with `:focus` as all versions of IE fail
+    // to recognise `focus-within` and don't set any styles from the block
+    // when it's a selector.
+    &:focus-within {
+      margin-right: -$component-padding;
+      margin-left: -$component-padding;
+      padding-right: $component-padding;
+      padding-left: $component-padding;
+
+      outline: $moaland-focus-width solid $moaland-focus-colour;
+
+      box-shadow: inset 0 0 0 4px $moaland-input-border-colour;
+    }
+  }
+}

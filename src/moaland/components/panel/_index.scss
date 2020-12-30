@@ -1,0 +1,44 @@
+@include moaland-exports("moaland/component/panel") {
+  .moaland-panel {
+    @include moaland-font($size: 19);
+
+    box-sizing: border-box;
+
+    margin-bottom: moaland-spacing(3);
+    padding: moaland-spacing(7) - $moaland-border-width;
+
+    border: $moaland-border-width solid transparent;
+
+    text-align: center;
+
+    @include moaland-media-query($until: tablet) {
+      padding: moaland-spacing(6) - $moaland-border-width;
+    }
+  }
+
+  .moaland-panel--confirmation {
+    color: moaland-colour("white");
+    background: moaland-colour("green", $legacy: "turquoise");
+
+    @include moaland-media-query($media-type: print) {
+      border-color: currentColor;
+      color: $moaland-print-text-colour;
+      background: none;
+    }
+  }
+
+  .moaland-panel__title {
+    margin-top: 0;
+    margin-bottom: moaland-spacing(6);
+
+    @include moaland-font($size: 48, $weight: bold);
+  }
+
+  .moaland-panel__title:last-child {
+    margin-bottom: 0;
+  }
+
+  .moaland-panel__body {
+    @include moaland-font($size: 36);
+  }
+}

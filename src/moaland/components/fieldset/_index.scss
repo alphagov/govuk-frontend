@@ -1,0 +1,64 @@
+@include moaland-exports("moaland/component/fieldset") {
+  .moaland-fieldset {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    @include moaland-clearfix;
+  }
+
+  // Fix for Firefox < 53
+  // https://bugzilla.mozilla.org/show_bug.cgi?id=504622
+  @supports not (caret-color: auto) {
+    .moaland-fieldset,
+    x:-moz-any-link { // stylelint-disable-line selector-type-no-unknown
+      display: table-cell;
+    }
+  }
+
+  .moaland-fieldset__legend {
+    @include moaland-font($size: 19);
+    @include moaland-text-colour;
+
+    // Fix legend text wrapping in Edge and IE
+    // 1. IE9-11 & Edge 12-13
+    // 2. IE8-11
+    box-sizing: border-box; // 1
+    display: table;         // 2
+    max-width: 100%;        // 1
+    margin-bottom: moaland-spacing(2);
+    padding: 0;
+
+    white-space: normal;    // 1
+  }
+
+  // Modifiers that make legends look more like their equivalent headings
+
+  .moaland-fieldset__legend--xl {
+    @include moaland-font($size: 48, $weight: bold);
+    margin-bottom: moaland-spacing(3);
+  }
+
+  .moaland-fieldset__legend--l {
+    @include moaland-font($size: 36, $weight: bold);
+    margin-bottom: moaland-spacing(3);
+  }
+
+  .moaland-fieldset__legend--m {
+    @include moaland-font($size: 24, $weight: bold);
+    margin-bottom: moaland-spacing(3);
+  }
+
+  .moaland-fieldset__legend--s {
+    @include moaland-font($size: 19, $weight: bold);
+  }
+
+  // When the legend contains an H1, we want the H1 to inherit all styles from
+  // the legend. Effectively we want to be able to treat the heading as if it is
+  // not there.
+  .moaland-fieldset__heading {
+    margin: 0;
+    font-size: inherit;
+    font-weight: inherit;
+  }
+}

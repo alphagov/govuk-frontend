@@ -1,0 +1,212 @@
+@include moaland-exports("moaland/component/footer") {
+
+  $moaland-footer-background: $moaland-canvas-background-colour;
+  $moaland-footer-border: $moaland-border-colour;
+  // This variable can be removed entirely once the legacy palette goes away,
+  // as it'll just be the same as $moaland-footer-border.
+  $moaland-footer-border-top: $moaland-border-colour;
+  $moaland-footer-text: $moaland-text-colour;
+  $moaland-footer-link: $moaland-footer-text;
+  $moaland-footer-link-hover: false;
+
+  @if ($moaland-use-legacy-palette) {
+    $moaland-footer-border-top: #a1acb2;
+    $moaland-footer-border: moaland-colour("grey-2");
+    $moaland-footer-text: #454a4c;
+    $moaland-footer-link: $moaland-footer-text;
+
+    // Only used with the legacy palette
+    $moaland-footer-link-hover: #171819;
+  }
+
+  // Based on the moaland-crest-2x.png image dimensions.
+  $moaland-footer-crest-image-width-2x: 250px;
+  $moaland-footer-crest-image-height-2x: 204px;
+  // Half the 2x image so that it fits the regular 1x size.
+  $moaland-footer-crest-image-width: ($moaland-footer-crest-image-width-2x / 2);
+  $moaland-footer-crest-image-height: ($moaland-footer-crest-image-height-2x / 2);
+
+  .moaland-footer {
+    @include moaland-font($size: 16);
+    @include moaland-responsive-padding(7, "top");
+    @include moaland-responsive-padding(5, "bottom");
+
+    border-top: 1px solid $moaland-footer-border-top;
+    color: $moaland-footer-text;
+    background: $moaland-footer-background;
+  }
+
+  .moaland-footer__link {
+    @if ($moaland-use-legacy-palette) {
+      &:link,
+      &:visited {
+        color: $moaland-footer-link;
+      }
+
+      &:hover,
+      &:active {
+        color: $moaland-footer-link-hover;
+      }
+    } @else {
+      &:link,
+      &:visited,
+      &:hover,
+      &:active {
+        color: $moaland-footer-link;
+      }
+    }
+
+    &:focus {
+      @include moaland-focused-text;
+    }
+
+    // alphagov/govuk_template includes a specific a:link:focus selector
+    // designed to make unvisited links a slightly darker blue when focussed, so
+    // we need to override the text colour for that combination of selectors.
+    @include moaland-compatibility(govuk_template) {
+      &:link:focus {
+        @include moaland-text-colour;
+      }
+    }
+  }
+
+  .moaland-footer__section-break {
+    margin: 0; // Reset `<hr>` default margins
+    @include moaland-responsive-margin(8, "bottom");
+    border: 0; // Reset `<hr>` default borders
+    border-bottom: 1px solid $moaland-footer-border;
+  }
+
+  .moaland-footer__meta {
+    display: flex; // Support: Flexbox
+    margin-right: -$moaland-gutter-half;
+    margin-left: -$moaland-gutter-half;
+    flex-wrap: wrap; // Support: Flexbox
+    align-items: flex-end; // Support: Flexbox
+    justify-content: center; // Support: Flexbox
+  }
+
+  .moaland-footer__meta-item {
+    margin-right: $moaland-gutter-half;
+    margin-bottom: moaland-spacing(5);
+    margin-left: $moaland-gutter-half;
+  }
+
+  .moaland-footer__meta-item--grow {
+    flex: 1; // Support: Flexbox
+    @include moaland-media-query ($until: tablet) {
+      flex-basis: 320px; // Support: Flexbox
+    }
+  }
+
+  .moaland-footer__licence-logo {
+    display: inline-block;
+    margin-right: moaland-spacing(2);
+    @include moaland-media-query ($until: desktop) {
+      margin-bottom: moaland-spacing(3);
+    }
+    vertical-align: top;
+  }
+
+  .moaland-footer__licence-description {
+    display: inline-block;
+  }
+
+  .moaland-footer__copyright-logo {
+    display: inline-block;
+    min-width: $moaland-footer-crest-image-width;
+    padding-top: ($moaland-footer-crest-image-height + moaland-spacing(2));
+    background-image: moaland-image-url("moaland-crest.png");
+    @include moaland-device-pixel-ratio {
+      background-image: moaland-image-url("moaland-crest-2x.png");
+    }
+    background-repeat: no-repeat;
+    background-position: 50% 0%;
+    background-size: $moaland-footer-crest-image-width $moaland-footer-crest-image-height;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .moaland-footer__inline-list {
+    margin-top: 0;
+    margin-bottom: moaland-spacing(3);
+    padding: 0;
+  }
+
+  .moaland-footer__meta-custom {
+    margin-bottom: moaland-spacing(4);
+  }
+
+  .moaland-footer__inline-list-item {
+    display: inline-block;
+    margin-right: moaland-spacing(3);
+    margin-bottom: moaland-spacing(1);
+  }
+
+  .moaland-footer__heading {
+    @include moaland-responsive-margin(7, "bottom");
+    padding-bottom: moaland-spacing(4);
+    @include moaland-media-query ($until: tablet) {
+      padding-bottom: moaland-spacing(2);
+    }
+    border-bottom: 1px solid $moaland-footer-border;
+  }
+
+  .moaland-footer__navigation {
+    display: flex; // Support: Flexbox
+    margin-right: -$moaland-gutter-half;
+    margin-left: -$moaland-gutter-half;
+    flex-wrap: wrap; // Support: Flexbox
+  }
+
+  .moaland-footer__section {
+    display: inline-block;
+    margin-right: $moaland-gutter-half;
+    margin-bottom: $moaland-gutter;
+    margin-left: $moaland-gutter-half;
+    vertical-align: top;
+    // Ensure columns take up equal width (typically one-half:one-half)
+    flex-grow: 1; // Support: Flexbox
+    flex-shrink: 1; // Support: Flexbox
+    @include moaland-media-query ($until: desktop) {
+      // Make sure columns do not drop below 200px in width
+      // Will typically result in wrapping, and end up in a single column on smaller screens.
+      flex-basis: 200px; // Support: Flexbox
+    }
+  }
+
+  // If there are only two sections, set the layout to be two-third:one-third on desktop
+  @include moaland-media-query ($from: desktop) {
+    // We match the first section with `:first-child`.
+    // To ensure the section is one of two, we can count backwards using `:nth-last-child(2)`.
+    .moaland-footer__section:first-child:nth-last-child(2) {
+      flex-grow: 2; // Support: Flexbox
+    }
+  }
+
+  .moaland-footer__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    column-gap: $moaland-gutter; // Support: Columns
+  }
+
+  @include moaland-media-query ($from: desktop) {
+    .moaland-footer__list--columns-2 {
+      column-count: 2; // Support: Columns
+    }
+
+    .moaland-footer__list--columns-3 {
+      column-count: 3; // Support: Columns
+    }
+  }
+
+  .moaland-footer__list-item {
+    @include moaland-responsive-margin(4, "bottom");
+  }
+
+  .moaland-footer__list-item:last-child {
+    margin-bottom: 0;
+  }
+}

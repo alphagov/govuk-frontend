@@ -1,4 +1,4 @@
-{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "breadcrumbs/macro.njk" import moalandBreadcrumbs %}
 {% from "macros/showExamples.njk" import showExamples %}
 
 {% extends "full-width.njk" %}
@@ -15,17 +15,17 @@
 {% endset %}
 
 {% block beforeContent %}
-  {{ govukBreadcrumbs({
+  {{ moalandBreadcrumbs({
     "items": [
-    { text: 'GOV.UK Frontend', href: '/' + legacyQuery },
+    { text: 'GOV.MOA Frontend', href: '/' + legacyQuery },
     { text: componentNameHuman | capitalize }
     ]
   }) }}
 {% endblock %}
 
 {% block content %}
-  <div class="govuk-width-container">
-    <h1 class="govuk-heading-xl">
+  <div class="moaland-width-container">
+    <h1 class="moaland-heading-xl">
       {% block componentName %}
         {{ componentNameHuman | capitalize }}
       {% endblock %}

@@ -25,7 +25,7 @@ fi
 # ! npm team ls developers | grep -q $NPM_USER
 
 NPM_USER=$(npm whoami)
-if ! [ "govuk-patterns-and-tools" == "$NPM_USER" ]; then
+if ! [ "moaland-patterns-and-tools" == "$NPM_USER" ]; then
     echo "⚠️ FAILURE: You are not logged in with the correct user."
     exit 1
 fi
@@ -47,7 +47,7 @@ if [ $(git tag -l "$TAG") ]; then
     exit 1
 else
     echo "🗒 Tagging repo using tag version: $TAG ..."
-    git tag $TAG -m "GOV.UK Frontend release $TAG"
+    git tag $TAG -m "GOV.MOA Frontend release $TAG"
     git push --tags
     echo "🗒 Tag $TAG created and pushed to remote."
 

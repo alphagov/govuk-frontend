@@ -13,16 +13,16 @@ scenario: >-
 {# This example is based of the "Radios" example: https://design-system.service.gov.uk/components/radios #}
 {% extends "_generic.njk" %}
 
-{% from "back-link/macro.njk" import govukBackLink %}
-{% from "error-summary/macro.njk" import govukErrorSummary %}
-{% from "radios/macro.njk" import govukRadios %}
-{% from "button/macro.njk" import govukButton %}
+{% from "back-link/macro.njk" import moalandBackLink %}
+{% from "error-summary/macro.njk" import moalandErrorSummary %}
+{% from "radios/macro.njk" import moalandRadios %}
+{% from "button/macro.njk" import moalandButton %}
 
 {% set pageTitle = "Have you changed your name?" %}
-{% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.UK{% endblock %}
+{% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.MOA{% endblock %}
 
 {% block beforeContent %}
-  {{ govukBackLink({
+  {{ moalandBackLink({
     text: "Back",
     href: "#"
   }) }}
@@ -32,22 +32,22 @@ scenario: >-
 
   <form method="post" novalidate>
     {% if errorSummary.length > 0 %}
-        {{ govukErrorSummary({
+        {{ moalandErrorSummary({
             titleText: "There is a problem",
             errorList: errorSummary
         }) }}
     {% endif %}
 
 
-    {{ govukRadios({
-      classes: "govuk-radios--inline",
+    {{ moalandRadios({
+      classes: "moaland-radios--inline",
       idPrefix: "changed-name",
       name: "changed-name",
       fieldset: {
         legend: {
           text: pageTitle,
           isPageHeading: true,
-          classes: "govuk-fieldset__legend--xl"
+          classes: "moaland-fieldset__legend--xl"
         }
       },
       hint: {
@@ -66,7 +66,7 @@ scenario: >-
       errorMessage: errors["changed-name"]
     }) }}
 
-    {{ govukButton({
+    {{ moalandButton({
         text: "Continue"
       }) }}
   </form>

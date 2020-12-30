@@ -1,0 +1,89 @@
+@import "compatibility";
+@import "typography-font-families";
+
+////
+/// @group settings/typography
+////
+
+/// Use 'legacy' fonts
+///
+/// Whether or not to use v1 nta font from GOV.MOA Elements / Frontend
+/// Toolkit, for teams that are migrating to GOV.MOA Frontend and may be using
+/// components from both places in a single application.
+///
+/// @type Boolean
+/// @access public
+
+$moaland-use-legacy-font: if(
+  (
+    $moaland-compatibility-govukfrontendtoolkit or
+    $moaland-compatibility-govuktemplate or
+    $moaland-compatibility-govukelements
+  ),
+  true,
+  false
+) !default;
+
+// =========================================================
+// Font families
+// =========================================================
+
+/// Font families to use for all typography on screen media
+///
+/// @type List
+/// @access public
+
+$moaland-font-family: if(
+  $moaland-use-legacy-font,
+  $moaland-font-family-nta,
+  $moaland-font-family-gds-transport
+) !default;
+
+/// Font families to use when displaying tabular numbers
+///
+/// @type List
+/// @access public
+
+$moaland-font-family-tabular: if(
+  $moaland-use-legacy-font,
+  $moaland-font-family-nta-tabular,
+  false
+) !default;
+
+/// Font families to use for print media
+///
+/// We recommend that you use system fonts when printing. This will avoid issues
+/// with some printer drivers and operating systems.
+///
+/// @type List
+/// @access public
+
+$moaland-font-family-print: sans-serif !default;
+
+/// Include the default @font-face declarations
+///
+/// If you have set $moaland-font-family to something other than
+/// `$moaland-font-family-gds-transport` this option is disabled by default.
+///
+/// @type Boolean
+/// @access public
+
+$moaland-include-default-font-face: (
+  $moaland-font-family == $moaland-font-family-gds-transport
+) !default;
+
+// =========================================================
+// Font weights
+// =========================================================
+
+/// Font weight for regular typography
+///
+/// @type Number
+/// @access public
+$moaland-font-weight-regular: 400 !default;
+
+/// Font weight for bold typography
+///
+/// @type Number
+/// @access public
+$moaland-font-weight-bold: 700 !default;

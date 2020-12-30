@@ -1,0 +1,25 @@
+@if not mixin-exists("moaland-exports") {
+  @warn "Importing items from the core layer without first importing `base` is deprecated, and will no longer work as of GOV.MOA Frontend v4.0.";
+}
+
+@import "../base";
+
+@import "links";
+@import "typography";
+
+@mixin moaland-global-styles {
+  a {
+    @extend %moaland-link;
+  }
+
+  p {
+    @extend %moaland-body-m;
+  }
+}
+
+@include moaland-exports("moaland/core/global-styles") {
+
+  @if $moaland-global-styles == true {
+    @include moaland-global-styles;
+  }
+}

@@ -1,0 +1,86 @@
+@include moaland-exports("moaland/component/tag") {
+  .moaland-tag {
+
+    display: inline-block;
+
+    // When a user customises their colours often the background is removed,
+    // by adding a outline we ensure that the tag component still keeps it's meaning.
+    // https://accessibility.blog.gov.uk/2017/03/27/how-users-change-colours-on-websites/
+    outline: 2px solid transparent;
+    outline-offset: -2px;
+
+    color: moaland-colour("white");
+    background-color: moaland-colour("blue");
+    letter-spacing: 1px;
+
+    text-decoration: none;
+    text-transform: uppercase;
+
+    @if $moaland-use-legacy-font {
+      // Since New Transport sits slightly higher than other common fonts.
+      // We use intentionally uneven padding to make it balanced, this can be
+      // removed using the version of the font that has a more common vertical spacing.
+      @include moaland-font($size: 16, $weight: bold, $line-height: 1.25);
+      padding-top: 4px;
+      padding-right: 8px;
+      padding-bottom: 1px;
+      padding-left: 8px;
+    } @else {
+      @include moaland-font($size: 16, $weight: bold, $line-height: 1);
+      padding-top: 5px;
+      padding-right: 8px;
+      padding-bottom: 4px;
+      padding-left: 8px;
+    }
+  }
+
+  // Deprecated. We'll remove this class in a future release. Use `.moaland-tag--grey` instead.
+  .moaland-tag--inactive {
+    background-color: moaland-colour("dark-grey", $legacy: "grey-1");
+  }
+
+  .moaland-tag--grey {
+    color: moaland-shade(moaland-colour("dark-grey", $legacy: "grey-1"), 30);
+    background: moaland-tint(moaland-colour("dark-grey", $legacy: "grey-1"), 90);
+  }
+
+  .moaland-tag--purple {
+    color: moaland-shade(moaland-colour("purple"), 20);
+    background: moaland-tint(moaland-colour("purple"), 80);
+  }
+
+  .moaland-tag--turquoise {
+    color: moaland-shade(moaland-colour("turquoise"), 60);
+    background: moaland-tint(moaland-colour("turquoise"), 70);
+  }
+
+  .moaland-tag--blue {
+    color: moaland-shade(moaland-colour("blue"), 30);
+    background: moaland-tint(moaland-colour("blue"), 80);
+  }
+
+  .moaland-tag--yellow {
+    color: moaland-shade(moaland-colour("yellow"), 65);
+    background: moaland-tint(moaland-colour("yellow"), 75);
+  }
+
+  .moaland-tag--orange {
+    color: moaland-shade(moaland-colour("orange"), 55);
+    background: moaland-tint(moaland-colour("orange"), 70);
+  }
+
+  .moaland-tag--red {
+    color: moaland-shade(moaland-colour("red"), 30);
+    background: moaland-tint(moaland-colour("red"), 80);
+  }
+
+  .moaland-tag--pink {
+    color: moaland-shade(moaland-colour("pink"), 40);
+    background: moaland-tint(moaland-colour("pink"), 80);
+  }
+
+  .moaland-tag--green {
+    color: moaland-shade(moaland-colour("green"), 20);
+    background: moaland-tint(moaland-colour("green"), 80);
+  }
+}

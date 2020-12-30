@@ -1,0 +1,318 @@
+{
+    "component": "button",
+    "fixtures": [
+        {
+            "name": "default",
+            "options": {
+                "text": "Save and continue"
+            },
+            "html": "<button class=\"moaland-button\" data-module=\"moaland-button\">\n  Save and continue\n</button>",
+            "hidden": false
+        },
+        {
+            "name": "disabled",
+            "options": {
+                "text": "Disabled button",
+                "disabled": true
+            },
+            "html": "<button disabled=\"disabled\" aria-disabled=\"true\" class=\"moaland-button moaland-button--disabled\" data-module=\"moaland-button\">\n  Disabled button\n</button>",
+            "hidden": false
+        },
+        {
+            "name": "link",
+            "options": {
+                "text": "Link button",
+                "href": "/"
+            },
+            "html": "<a href=\"/\" role=\"button\" draggable=\"false\" class=\"moaland-button\" data-module=\"moaland-button\">\n  Link button\n</a>",
+            "hidden": false
+        },
+        {
+            "name": "link disabled",
+            "options": {
+                "text": "Disabled link button",
+                "href": "/",
+                "disabled": true
+            },
+            "html": "<a href=\"/\" role=\"button\" draggable=\"false\" class=\"moaland-button moaland-button--disabled\" data-module=\"moaland-button\">\n  Disabled link button\n</a>",
+            "hidden": false
+        },
+        {
+            "name": "start link",
+            "options": {
+                "text": "Start now link button",
+                "href": "/",
+                "isStartButton": true
+            },
+            "html": "<a href=\"/\" role=\"button\" draggable=\"false\" class=\"moaland-button moaland-button--start\" data-module=\"moaland-button\">\n  Start now link button\n  <svg class=\"moaland-button__start-icon\" xmlns=\"http://www.w3.org/2000/svg\" width=\"17.5\" height=\"19\" viewBox=\"0 0 33 40\" aria-hidden=\"true\" focusable=\"false\">\n    <path fill=\"currentColor\" d=\"M0 0h13l20 20-20 20H0l20-20z\"/>\n  </svg></a>",
+            "hidden": false
+        },
+        {
+            "name": "input",
+            "options": {
+                "element": "input",
+                "name": "start-now",
+                "text": "Start now"
+            },
+            "html": "<input value=\"Start now\" type=\"submit\" name=\"start-now\" class=\"moaland-button\" data-module=\"moaland-button\">",
+            "hidden": false
+        },
+        {
+            "name": "input disabled",
+            "options": {
+                "element": "input",
+                "text": "Explicit input button disabled",
+                "disabled": true
+            },
+            "html": "<input value=\"Explicit input button disabled\" type=\"submit\" disabled=\"disabled\" aria-disabled=\"true\" class=\"moaland-button moaland-button--disabled\" data-module=\"moaland-button\">",
+            "hidden": false
+        },
+        {
+            "name": "prevent double click",
+            "options": {
+                "text": "Submit",
+                "preventDoubleClick": true
+            },
+            "html": "<button data-prevent-double-click=\"true\" class=\"moaland-button\" data-module=\"moaland-button\">\n  Submit\n</button>",
+            "hidden": false
+        },
+        {
+            "name": "with active state",
+            "options": {
+                "name": "active",
+                "text": "Active",
+                "classes": ":active"
+            },
+            "html": "<button name=\"active\" class=\"moaland-button :active\" data-module=\"moaland-button\">\n  Active\n</button>",
+            "hidden": false
+        },
+        {
+            "name": "with hover state",
+            "options": {
+                "name": "hover",
+                "text": "Hovered",
+                "classes": ":hover"
+            },
+            "html": "<button name=\"hover\" class=\"moaland-button :hover\" data-module=\"moaland-button\">\n  Hovered\n</button>",
+            "hidden": false
+        },
+        {
+            "name": "with focus state",
+            "options": {
+                "name": "focus",
+                "text": "Focussed",
+                "classes": ":focus"
+            },
+            "html": "<button name=\"focus\" class=\"moaland-button :focus\" data-module=\"moaland-button\">\n  Focussed\n</button>",
+            "hidden": false
+        },
+        {
+            "name": "Secondary",
+            "options": {
+                "name": "secondary",
+                "text": "Secondary button",
+                "classes": "moaland-button--secondary"
+            },
+            "html": "<button name=\"secondary\" class=\"moaland-button moaland-button--secondary\" data-module=\"moaland-button\">\n  Secondary button\n</button>",
+            "hidden": false
+        },
+        {
+            "name": "Secondary disabled",
+            "options": {
+                "name": "secondary",
+                "text": "Secondary button disabled",
+                "classes": "moaland-button--secondary",
+                "disabled": true
+            },
+            "html": "<button name=\"secondary\" disabled=\"disabled\" aria-disabled=\"true\" class=\"moaland-button moaland-button--secondary moaland-button--disabled\" data-module=\"moaland-button\">\n  Secondary button disabled\n</button>",
+            "hidden": false
+        },
+        {
+            "name": "Secondary link",
+            "options": {
+                "name": "secondary",
+                "text": "Secondary button",
+                "href": "/",
+                "classes": "moaland-button--secondary"
+            },
+            "html": "<a href=\"/\" role=\"button\" draggable=\"false\" class=\"moaland-button moaland-button--secondary\" data-module=\"moaland-button\">\n  Secondary button\n</a>",
+            "hidden": false
+        },
+        {
+            "name": "Warning",
+            "options": {
+                "name": "Warning",
+                "text": "Warning button",
+                "classes": "moaland-button--warning"
+            },
+            "html": "<button name=\"Warning\" class=\"moaland-button moaland-button--warning\" data-module=\"moaland-button\">\n  Warning button\n</button>",
+            "hidden": false
+        },
+        {
+            "name": "Warning disabled",
+            "options": {
+                "name": "warning",
+                "text": "Warning button disabled",
+                "classes": "moaland-button--warning",
+                "disabled": true
+            },
+            "html": "<button name=\"warning\" disabled=\"disabled\" aria-disabled=\"true\" class=\"moaland-button moaland-button--warning moaland-button--disabled\" data-module=\"moaland-button\">\n  Warning button disabled\n</button>",
+            "hidden": false
+        },
+        {
+            "name": "Warning link",
+            "options": {
+                "name": "Warning",
+                "text": "Warning button",
+                "href": "/",
+                "classes": "moaland-button--warning"
+            },
+            "html": "<a href=\"/\" role=\"button\" draggable=\"false\" class=\"moaland-button moaland-button--warning\" data-module=\"moaland-button\">\n  Warning button\n</a>",
+            "hidden": false
+        },
+        {
+            "name": "attributes",
+            "options": {
+                "element": "button",
+                "text": "Submit",
+                "attributes": {
+                    "aria-controls": "example-id",
+                    "data-tracking-dimension": 123
+                }
+            },
+            "html": "<button class=\"moaland-button\" data-module=\"moaland-button\" aria-controls=\"example-id\" data-tracking-dimension=\"123\">\n  Submit\n</button>",
+            "hidden": true
+        },
+        {
+            "name": "link attributes",
+            "options": {
+                "element": "a",
+                "text": "Submit",
+                "attributes": {
+                    "aria-controls": "example-id",
+                    "data-tracking-dimension": 123
+                }
+            },
+            "html": "<a href=\"#\" role=\"button\" draggable=\"false\" class=\"moaland-button\" data-module=\"moaland-button\" aria-controls=\"example-id\" data-tracking-dimension=\"123\">\n  Submit\n</a>",
+            "hidden": true
+        },
+        {
+            "name": "input attributes",
+            "options": {
+                "element": "input",
+                "text": "Submit",
+                "attributes": {
+                    "aria-controls": "example-id",
+                    "data-tracking-dimension": 123
+                }
+            },
+            "html": "<input value=\"Submit\" type=\"submit\" class=\"moaland-button\" data-module=\"moaland-button\" aria-controls=\"example-id\" data-tracking-dimension=\"123\">",
+            "hidden": true
+        },
+        {
+            "name": "classes",
+            "options": {
+                "text": "Submit",
+                "element": "button",
+                "classes": "app-button--custom-modifier"
+            },
+            "html": "<button class=\"moaland-button app-button--custom-modifier\" data-module=\"moaland-button\">\n  Submit\n</button>",
+            "hidden": true
+        },
+        {
+            "name": "link classes",
+            "options": {
+                "text": "Submit",
+                "element": "a",
+                "classes": "app-button--custom-modifier"
+            },
+            "html": "<a href=\"#\" role=\"button\" draggable=\"false\" class=\"moaland-button app-button--custom-modifier\" data-module=\"moaland-button\">\n  Submit\n</a>",
+            "hidden": true
+        },
+        {
+            "name": "input classes",
+            "options": {
+                "text": "Submit",
+                "element": "input",
+                "classes": "app-button--custom-modifier"
+            },
+            "html": "<input value=\"Submit\" type=\"submit\" class=\"moaland-button app-button--custom-modifier\" data-module=\"moaland-button\">",
+            "hidden": true
+        },
+        {
+            "name": "name",
+            "options": {
+                "text": "Submit",
+                "element": "button",
+                "name": "start-now"
+            },
+            "html": "<button name=\"start-now\" class=\"moaland-button\" data-module=\"moaland-button\">\n  Submit\n</button>",
+            "hidden": true
+        },
+        {
+            "name": "type",
+            "options": {
+                "text": "Submit",
+                "element": "button",
+                "type": "button"
+            },
+            "html": "<button type=\"button\" class=\"moaland-button\" data-module=\"moaland-button\">\n  Submit\n</button>",
+            "hidden": true
+        },
+        {
+            "name": "input type",
+            "options": {
+                "text": "Submit",
+                "element": "input",
+                "type": "button"
+            },
+            "html": "<input value=\"Submit\" type=\"button\" class=\"moaland-button\" data-module=\"moaland-button\">",
+            "hidden": true
+        },
+        {
+            "name": "explicit link",
+            "options": {
+                "element": "a",
+                "href": "/",
+                "text": "Continue"
+            },
+            "html": "<a href=\"/\" role=\"button\" draggable=\"false\" class=\"moaland-button\" data-module=\"moaland-button\">\n  Continue\n</a>",
+            "hidden": true
+        },
+        {
+            "name": "no href",
+            "options": {
+                "text": "Submit",
+                "element": "a"
+            },
+            "html": "<a href=\"#\" role=\"button\" draggable=\"false\" class=\"moaland-button\" data-module=\"moaland-button\">\n  Submit\n</a>",
+            "hidden": true
+        },
+        {
+            "name": "value",
+            "options": {
+                "text": "Submit",
+                "element": "button",
+                "value": "start"
+            },
+            "html": "<button value=\"start\" class=\"moaland-button\" data-module=\"moaland-button\">\n  Submit\n</button>",
+            "hidden": true
+        },
+        {
+            "name": "html",
+            "options": {
+                "text": "Submit",
+                "element": "button",
+                "html": "Start <em>now</em>"
+            },
+            "html": "<button class=\"moaland-button\" data-module=\"moaland-button\">\n  Start <em>now</em>\n</button>",
+            "hidden": true
+        },
+        {
+            "name": "no data",
+            "options": {},
+            "html": "<button class=\"moaland-button\" data-module=\"moaland-button\">\n  \n</button>",
+            "hidden": true
+        }
+    ]
+}

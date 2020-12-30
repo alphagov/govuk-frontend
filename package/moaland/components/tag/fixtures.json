@@ -1,0 +1,131 @@
+{
+    "component": "tag",
+    "fixtures": [
+        {
+            "name": "default",
+            "options": {
+                "text": "alpha"
+            },
+            "html": "<strong class=\"moaland-tag\">\n  alpha\n</strong>",
+            "hidden": false
+        },
+        {
+            "name": "inactive",
+            "options": {
+                "text": "alpha",
+                "classes": "moaland-tag--inactive"
+            },
+            "html": "<strong class=\"moaland-tag moaland-tag--inactive\">\n  alpha\n</strong>",
+            "hidden": false
+        },
+        {
+            "name": "grey",
+            "options": {
+                "text": "Grey",
+                "classes": "moaland-tag--grey"
+            },
+            "html": "<strong class=\"moaland-tag moaland-tag--grey\">\n  Grey\n</strong>",
+            "hidden": false
+        },
+        {
+            "name": "blue",
+            "options": {
+                "text": "Blue",
+                "classes": "moaland-tag--blue"
+            },
+            "html": "<strong class=\"moaland-tag moaland-tag--blue\">\n  Blue\n</strong>",
+            "hidden": false
+        },
+        {
+            "name": "turquoise",
+            "options": {
+                "text": "Turquoise",
+                "classes": "moaland-tag--turquoise"
+            },
+            "html": "<strong class=\"moaland-tag moaland-tag--turquoise\">\n  Turquoise\n</strong>",
+            "hidden": false
+        },
+        {
+            "name": "green",
+            "options": {
+                "text": "Green",
+                "classes": "moaland-tag--green"
+            },
+            "html": "<strong class=\"moaland-tag moaland-tag--green\">\n  Green\n</strong>",
+            "hidden": false
+        },
+        {
+            "name": "purple",
+            "options": {
+                "text": "Purple",
+                "classes": "moaland-tag--purple"
+            },
+            "html": "<strong class=\"moaland-tag moaland-tag--purple\">\n  Purple\n</strong>",
+            "hidden": false
+        },
+        {
+            "name": "pink",
+            "options": {
+                "text": "Pink",
+                "classes": "moaland-tag--pink"
+            },
+            "html": "<strong class=\"moaland-tag moaland-tag--pink\">\n  Pink\n</strong>",
+            "hidden": false
+        },
+        {
+            "name": "red",
+            "options": {
+                "text": "Red",
+                "classes": "moaland-tag--red"
+            },
+            "html": "<strong class=\"moaland-tag moaland-tag--red\">\n  Red\n</strong>",
+            "hidden": false
+        },
+        {
+            "name": "orange",
+            "options": {
+                "text": "Orange",
+                "classes": "moaland-tag--orange"
+            },
+            "html": "<strong class=\"moaland-tag moaland-tag--orange\">\n  Orange\n</strong>",
+            "hidden": false
+        },
+        {
+            "name": "yellow",
+            "options": {
+                "text": "Yellow",
+                "classes": "moaland-tag--yellow"
+            },
+            "html": "<strong class=\"moaland-tag moaland-tag--yellow\">\n  Yellow\n</strong>",
+            "hidden": false
+        },
+        {
+            "name": "attributes",
+            "options": {
+                "text": "Tag with attributes",
+                "attributes": {
+                    "data-test": "attribute",
+                    "id": "my-tag"
+                }
+            },
+            "html": "<strong class=\"moaland-tag\" data-test=\"attribute\" id=\"my-tag\">\n  Tag with attributes\n</strong>",
+            "hidden": true
+        },
+        {
+            "name": "html as text",
+            "options": {
+                "text": "<span>alpha</span>"
+            },
+            "html": "<strong class=\"moaland-tag\">\n  &lt;span&gt;alpha&lt;/span&gt;\n</strong>",
+            "hidden": true
+        },
+        {
+            "name": "html",
+            "options": {
+                "html": "<span>alpha</span>"
+            },
+            "html": "<strong class=\"moaland-tag\">\n  <span>alpha</span>\n</strong>",
+            "hidden": true
+        }
+    ]
+}

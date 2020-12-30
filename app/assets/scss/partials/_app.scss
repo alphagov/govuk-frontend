@@ -1,9 +1,9 @@
 .app-no-canvas-background {
-  background-color: $govuk-body-background-colour;
+  background-color: $moaland-body-background-colour;
 }
 
 .app-width-container--wide {
-  @include govuk-width-container(1200px);
+  @include moaland-width-container(1200px);
 }
 
 // Injected into the preview page, that is then put in an iframe
@@ -15,7 +15,7 @@
   .app-whitespace-highlight {
     $app-preview-border-colour: #e4f2ff;
 
-    @include govuk-clearfix;
+    @include moaland-clearfix;
 
     content: " ";
     display: table;
@@ -23,7 +23,7 @@
     clear: both;
     box-shadow: 0 0 0 5px $app-preview-border-colour;
 
-    @include govuk-if-ie8 {
+    @include moaland-if-ie8 {
       outline: 5px solid $app-preview-border-colour;
     }
   }

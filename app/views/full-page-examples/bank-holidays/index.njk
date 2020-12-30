@@ -15,16 +15,16 @@ notes: >-
 ---
 {% extends "_generic.njk" %}
 
-{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
-{% from "tabs/macro.njk" import govukTabs %}
-{% from "panel/macro.njk" import govukPanel %}
-{% from "table/macro.njk" import govukTable %}
+{% from "breadcrumbs/macro.njk" import moalandBreadcrumbs %}
+{% from "tabs/macro.njk" import moalandTabs %}
+{% from "panel/macro.njk" import moalandPanel %}
+{% from "table/macro.njk" import moalandTable %}
 
 {% set pageTitle = "UK bank holidays" %}
-{% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
+{% block pageTitle %}{{ pageTitle }} - GOV.MOA{% endblock %}
 
 {% block beforeContent %}
-  {{ govukBreadcrumbs({
+  {{ moalandBreadcrumbs({
     items: [
       {
         text: "Home",
@@ -43,44 +43,44 @@ notes: >-
 {% endblock %}
 
 {% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl">{{ pageTitle }}</h1>
+  <div class="moaland-grid-row">
+    <div class="moaland-grid-column-two-thirds">
+      <h1 class="moaland-heading-xl">{{ pageTitle }}</h1>
 
       {% set englandAndWalesHTML %}
 
         {% set englandAndWalesPanelTitleHtml %}
-          <span class='govuk-!-font-size-36 govuk-!-margin-bottom-4 govuk-!-display-block'>
+          <span class='moaland-!-font-size-36 moaland-!-margin-bottom-4 moaland-!-display-block'>
             The next bank holiday in England and Wales is
           </span>
           19 April
         {% endset %}
 
-        {{ govukPanel({
+        {{ moalandPanel({
           headingLevel: 2,
           titleHtml: englandAndWalesPanelTitleHtml,
           text: 'Good Friday'
         }) }}
 
-        <hr class="govuk-section-break govuk-section-break--l">
+        <hr class="moaland-section-break moaland-section-break--l">
 
-        <h2 class="govuk-heading-m">Upcoming bank holidays in England and Wales</h2>
+        <h2 class="moaland-heading-m">Upcoming bank holidays in England and Wales</h2>
 
-        {{ govukTable({
+        {{ moalandTable({
           caption: "2019",
-          captionClasses: "govuk-!-margin-bottom-4",
+          captionClasses: "moaland-!-margin-bottom-4",
           head: [
             {
               text: "Date",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Day",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Name",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             }
           ],
           rows: [
@@ -164,21 +164,21 @@ notes: >-
           ]
         }) }}
 
-        {{ govukTable({
+        {{ moalandTable({
           caption: "2020",
-          captionClasses: "govuk-!-margin-bottom-4",
+          captionClasses: "moaland-!-margin-bottom-4",
           head: [
             {
               text: "Date",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Day",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Name",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             }
           ],
           rows: [
@@ -272,31 +272,31 @@ notes: >-
             ]
           ]
         }) }}
-        <p class="govuk-body">If a bank holiday is on a weekend, a ‘substitute’ weekday becomes a bank holiday, normally the following Monday.</p>
+        <p class="moaland-body">If a bank holiday is on a weekend, a ‘substitute’ weekday becomes a bank holiday, normally the following Monday.</p>
 
-        <p class="govuk-body">Your employer doesn’t have to give you <a class="govuk-link" href="/holiday-entitlement-rights" title="Holiday entitlement rights">paid leave on bank or public holidays</a>.</p>
+        <p class="moaland-body">Your employer doesn’t have to give you <a class="moaland-link" href="/holiday-entitlement-rights" title="Holiday entitlement rights">paid leave on bank or public holidays</a>.</p>
 
-        <p class="govuk-body">Bank holidays might affect <a class="govuk-link" href="/how-to-have-your-benefits-paid">how and when your benefits are paid</a>.</p>
+        <p class="moaland-body">Bank holidays might affect <a class="moaland-link" href="/how-to-have-your-benefits-paid">how and when your benefits are paid</a>.</p>
 
-        <hr class="govuk-section-break govuk-section-break--m">
+        <hr class="moaland-section-break moaland-section-break--m">
 
-        <h2 class="govuk-heading-m">Past bank holidays in England and Wales</h2>
+        <h2 class="moaland-heading-m">Past bank holidays in England and Wales</h2>
 
-        {{ govukTable({
+        {{ moalandTable({
           caption: "2019",
-          captionClasses: "govuk-!-margin-bottom-4",
+          captionClasses: "moaland-!-margin-bottom-4",
           head: [
             {
               text: "Date",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Day",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Name",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             }
           ],
           rows: [
@@ -314,21 +314,21 @@ notes: >-
           ]
         }) }}
 
-        {{ govukTable({
+        {{ moalandTable({
           caption: "2018",
-          captionClasses: "govuk-!-margin-bottom-4",
+          captionClasses: "moaland-!-margin-bottom-4",
           head: [
             {
               text: "Date",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Day",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Name",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             }
           ],
           rows: [
@@ -412,21 +412,21 @@ notes: >-
           ]
         }) }}
 
-        {{ govukTable({
+        {{ moalandTable({
           caption: "2017",
-          captionClasses: "govuk-!-margin-bottom-4",
+          captionClasses: "moaland-!-margin-bottom-4",
           head: [
             {
               text: "Date",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Day",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Name",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             }
           ],
           rows: [
@@ -510,21 +510,21 @@ notes: >-
           ]
         }) }}
 
-        {{ govukTable({
+        {{ moalandTable({
           caption: "2016",
-          captionClasses: "govuk-!-margin-bottom-4",
+          captionClasses: "moaland-!-margin-bottom-4",
           head: [
             {
               text: "Date",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Day",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Name",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             }
           ],
           rows: [
@@ -608,21 +608,21 @@ notes: >-
           ]
         }) }}
 
-        {{ govukTable({
+        {{ moalandTable({
           caption: "2015",
-          captionClasses: "govuk-!-margin-bottom-4",
+          captionClasses: "moaland-!-margin-bottom-4",
           head: [
             {
               text: "Date",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Day",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Name",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             }
           ],
           rows: [
@@ -706,21 +706,21 @@ notes: >-
           ]
         }) }}
 
-        {{ govukTable({
+        {{ moalandTable({
           caption: "2014",
-          captionClasses: "govuk-!-margin-bottom-4",
+          captionClasses: "moaland-!-margin-bottom-4",
           head: [
             {
               text: "Date",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Day",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Name",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             }
           ],
           rows: [
@@ -804,21 +804,21 @@ notes: >-
           ]
         }) }}
 
-        {{ govukTable({
+        {{ moalandTable({
           caption: "2013",
-          captionClasses: "govuk-!-margin-bottom-4",
+          captionClasses: "moaland-!-margin-bottom-4",
           head: [
             {
               text: "Date",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Day",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Name",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             }
           ],
           rows: [
@@ -902,21 +902,21 @@ notes: >-
           ]
         }) }}
 
-        {{ govukTable({
+        {{ moalandTable({
           caption: "2012",
-          captionClasses: "govuk-!-margin-bottom-4",
+          captionClasses: "moaland-!-margin-bottom-4",
           head: [
             {
               text: "Date",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Day",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Name",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             }
           ],
           rows: [
@@ -1005,38 +1005,38 @@ notes: >-
       {% set scotlandHTML %}
 
         {% set scotlandPanelTitleHtml %}
-          <span class='govuk-!-font-size-36 govuk-!-margin-bottom-4 govuk-!-display-block'>
+          <span class='moaland-!-font-size-36 moaland-!-margin-bottom-4 moaland-!-display-block'>
             The next bank holiday in Scotland is
           </span>
           19 April
         {% endset %}
 
-        {{ govukPanel({
+        {{ moalandPanel({
           headingLevel: 2,
           titleHtml: scotlandPanelTitleHtml,
           text: 'Good Friday'
         }) }}
 
-        <hr class="govuk-section-break govuk-section-break--l">
+        <hr class="moaland-section-break moaland-section-break--l">
 
-        <h2 class="govuk-heading-m">Upcoming bank holidays in Scotland</h2>
+        <h2 class="moaland-heading-m">Upcoming bank holidays in Scotland</h2>
 
 
-        {{ govukTable({
+        {{ moalandTable({
           caption: "2019",
-          captionClasses: "govuk-!-margin-bottom-4",
+          captionClasses: "moaland-!-margin-bottom-4",
           head: [
             {
               text: "Date",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Day",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Name",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             }
           ],
           rows: [
@@ -1120,21 +1120,21 @@ notes: >-
           ]
         }) }}
 
-        {{ govukTable({
+        {{ moalandTable({
           caption: "2020",
-          captionClasses: "govuk-!-margin-bottom-4",
+          captionClasses: "moaland-!-margin-bottom-4",
           head: [
             {
               text: "Date",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Day",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Name",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             }
           ],
           rows: [
@@ -1251,31 +1251,31 @@ notes: >-
           ]
         }) }}
 
-        <p class="govuk-body">If a bank holiday is on a weekend, a ‘substitute’ weekday becomes a bank holiday, normally the following Monday.</p>
+        <p class="moaland-body">If a bank holiday is on a weekend, a ‘substitute’ weekday becomes a bank holiday, normally the following Monday.</p>
 
-        <p class="govuk-body">Your employer doesn’t have to give you <a class="govuk-link" href="/holiday-entitlement-rights" title="Holiday entitlement rights">paid leave on bank or public holidays</a>.</p>
+        <p class="moaland-body">Your employer doesn’t have to give you <a class="moaland-link" href="/holiday-entitlement-rights" title="Holiday entitlement rights">paid leave on bank or public holidays</a>.</p>
 
-        <p class="govuk-body">Bank holidays might affect <a class="govuk-link" href="/how-to-have-your-benefits-paid">how and when your benefits are paid</a>.</p>
+        <p class="moaland-body">Bank holidays might affect <a class="moaland-link" href="/how-to-have-your-benefits-paid">how and when your benefits are paid</a>.</p>
 
-        <hr class="govuk-section-break govuk-section-break--m">
+        <hr class="moaland-section-break moaland-section-break--m">
 
-        <h2 class="govuk-heading-m">Past bank holidays in Scotland</h2>
+        <h2 class="moaland-heading-m">Past bank holidays in Scotland</h2>
 
-        {{ govukTable({
+        {{ moalandTable({
           caption: "2019",
-          captionClasses: "govuk-!-margin-bottom-4",
+          captionClasses: "moaland-!-margin-bottom-4",
           head: [
             {
               text: "Date",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Day",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Name",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             }
           ],
           rows: [
@@ -1293,21 +1293,21 @@ notes: >-
           ]
         }) }}
 
-        {{ govukTable({
+        {{ moalandTable({
           caption: "2018",
-          captionClasses: "govuk-!-margin-bottom-4",
+          captionClasses: "moaland-!-margin-bottom-4",
           head: [
             {
               text: "Date",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Day",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Name",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             }
           ],
           rows: [
@@ -1414,21 +1414,21 @@ notes: >-
           ]
         }) }}
 
-        {{ govukTable({
+        {{ moalandTable({
           caption: "2017",
-          captionClasses: "govuk-!-margin-bottom-4",
+          captionClasses: "moaland-!-margin-bottom-4",
           head: [
             {
               text: "Date",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Day",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Name",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             }
           ],
           rows: [
@@ -1535,21 +1535,21 @@ notes: >-
           ]
         }) }}
 
-        {{ govukTable({
+        {{ moalandTable({
           caption: "2016",
-          captionClasses: "govuk-!-margin-bottom-4",
+          captionClasses: "moaland-!-margin-bottom-4",
           head: [
             {
               text: "Date",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Day",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Name",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             }
           ],
           rows: [
@@ -1656,21 +1656,21 @@ notes: >-
           ]
         }) }}
 
-        {{ govukTable({
+        {{ moalandTable({
           caption: "2015",
-          captionClasses: "govuk-!-margin-bottom-4",
+          captionClasses: "moaland-!-margin-bottom-4",
           head: [
             {
               text: "Date",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Day",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Name",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             }
           ],
           rows: [
@@ -1777,21 +1777,21 @@ notes: >-
           ]
         }) }}
 
-        {{ govukTable({
+        {{ moalandTable({
           caption: "2014",
-          captionClasses: "govuk-!-margin-bottom-4",
+          captionClasses: "moaland-!-margin-bottom-4",
           head: [
             {
               text: "Date",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Day",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Name",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             }
           ],
           rows: [
@@ -1898,21 +1898,21 @@ notes: >-
           ]
         }) }}
 
-        {{ govukTable({
+        {{ moalandTable({
           caption: "2013",
-          captionClasses: "govuk-!-margin-bottom-4",
+          captionClasses: "moaland-!-margin-bottom-4",
           head: [
             {
               text: "Date",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Day",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Name",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             }
           ],
           rows: [
@@ -2019,21 +2019,21 @@ notes: >-
           ]
         }) }}
 
-        {{ govukTable({
+        {{ moalandTable({
           caption: "2012",
-          captionClasses: "govuk-!-margin-bottom-4",
+          captionClasses: "moaland-!-margin-bottom-4",
           head: [
             {
               text: "Date",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Day",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Name",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             }
           ],
           rows: [
@@ -2144,38 +2144,38 @@ notes: >-
       {% set irelandHTML %}
 
         {% set irelandPanelTitleHtml %}
-          <span class='govuk-!-font-size-36 govuk-!-margin-bottom-4 govuk-!-display-block'>
+          <span class='moaland-!-font-size-36 moaland-!-margin-bottom-4 moaland-!-display-block'>
             The next bank holiday in Northern Ireland is
           </span>
           19 April
         {% endset %}
 
-        {{ govukPanel({
+        {{ moalandPanel({
           headingLevel: 2,
           titleHtml: irelandPanelTitleHtml,
           text: 'Good Friday'
         }) }}
 
-        <hr class="govuk-section-break govuk-section-break--l">
+        <hr class="moaland-section-break moaland-section-break--l">
 
-        <h2 class="govuk-heading-m">Upcoming bank holidays in Northern Ireland</h2>
+        <h2 class="moaland-heading-m">Upcoming bank holidays in Northern Ireland</h2>
 
 
-        {{ govukTable({
+        {{ moalandTable({
           caption: "2019",
-          captionClasses: "govuk-!-margin-bottom-4",
+          captionClasses: "moaland-!-margin-bottom-4",
           head: [
             {
               text: "Date",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Day",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Name",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             }
           ],
           rows: [
@@ -2281,21 +2281,21 @@ notes: >-
           ]
         }) }}
 
-        {{ govukTable({
+        {{ moalandTable({
           caption: "2020",
-          captionClasses: "govuk-!-margin-bottom-4",
+          captionClasses: "moaland-!-margin-bottom-4",
           head: [
             {
               text: "Date",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Day",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Name",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             }
           ],
           rows: [
@@ -2412,31 +2412,31 @@ notes: >-
           ]
         }) }}
 
-        <p class="govuk-body">If a bank holiday is on a weekend, a ‘substitute’ weekday becomes a bank holiday, normally the following Monday.</p>
+        <p class="moaland-body">If a bank holiday is on a weekend, a ‘substitute’ weekday becomes a bank holiday, normally the following Monday.</p>
 
-        <p class="govuk-body">Your employer doesn’t have to give you <a class="govuk-link" href="/holiday-entitlement-rights" title="Holiday entitlement rights">paid leave on bank or public holidays</a>.</p>
+        <p class="moaland-body">Your employer doesn’t have to give you <a class="moaland-link" href="/holiday-entitlement-rights" title="Holiday entitlement rights">paid leave on bank or public holidays</a>.</p>
 
-        <p class="govuk-body">Bank holidays might affect <a class="govuk-link" href="/how-to-have-your-benefits-paid">how and when your benefits are paid</a>.</p>
+        <p class="moaland-body">Bank holidays might affect <a class="moaland-link" href="/how-to-have-your-benefits-paid">how and when your benefits are paid</a>.</p>
 
-        <hr class="govuk-section-break govuk-section-break--m">
+        <hr class="moaland-section-break moaland-section-break--m">
 
-        <h2 class="govuk-heading-m">Past bank holidays in Northern Ireland</h2>
+        <h2 class="moaland-heading-m">Past bank holidays in Northern Ireland</h2>
 
-        {{ govukTable({
+        {{ moalandTable({
           caption: "2019",
-          captionClasses: "govuk-!-margin-bottom-4",
+          captionClasses: "moaland-!-margin-bottom-4",
           head: [
             {
               text: "Date",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Day",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Name",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             }
           ],
           rows: [
@@ -2454,21 +2454,21 @@ notes: >-
           ]
         }) }}
 
-        {{ govukTable({
+        {{ moalandTable({
           caption: "2018",
-          captionClasses: "govuk-!-margin-bottom-4",
+          captionClasses: "moaland-!-margin-bottom-4",
           head: [
             {
               text: "Date",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Day",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Name",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             }
           ],
           rows: [
@@ -2552,21 +2552,21 @@ notes: >-
           ]
         }) }}
 
-        {{ govukTable({
+        {{ moalandTable({
           caption: "2017",
-          captionClasses: "govuk-!-margin-bottom-4",
+          captionClasses: "moaland-!-margin-bottom-4",
           head: [
             {
               text: "Date",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Day",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Name",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             }
           ],
           rows: [
@@ -2650,21 +2650,21 @@ notes: >-
           ]
         }) }}
 
-        {{ govukTable({
+        {{ moalandTable({
           caption: "2016",
-          captionClasses: "govuk-!-margin-bottom-4",
+          captionClasses: "moaland-!-margin-bottom-4",
           head: [
             {
               text: "Date",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Day",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Name",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             }
           ],
           rows: [
@@ -2748,21 +2748,21 @@ notes: >-
           ]
         }) }}
 
-        {{ govukTable({
+        {{ moalandTable({
           caption: "2015",
-          captionClasses: "govuk-!-margin-bottom-4",
+          captionClasses: "moaland-!-margin-bottom-4",
           head: [
             {
               text: "Date",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Day",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Name",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             }
           ],
           rows: [
@@ -2846,21 +2846,21 @@ notes: >-
           ]
         }) }}
 
-        {{ govukTable({
+        {{ moalandTable({
           caption: "2014",
-          captionClasses: "govuk-!-margin-bottom-4",
+          captionClasses: "moaland-!-margin-bottom-4",
           head: [
             {
               text: "Date",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Day",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Name",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             }
           ],
           rows: [
@@ -2944,21 +2944,21 @@ notes: >-
           ]
         }) }}
 
-        {{ govukTable({
+        {{ moalandTable({
           caption: "2013",
-          captionClasses: "govuk-!-margin-bottom-4",
+          captionClasses: "moaland-!-margin-bottom-4",
           head: [
             {
               text: "Date",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Day",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Name",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             }
           ],
           rows: [
@@ -3042,21 +3042,21 @@ notes: >-
           ]
         }) }}
 
-        {{ govukTable({
+        {{ moalandTable({
           caption: "2012",
-          captionClasses: "govuk-!-margin-bottom-4",
+          captionClasses: "moaland-!-margin-bottom-4",
           head: [
             {
               text: "Date",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Day",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             },
             {
               text: "Name",
-              classes: "govuk-visually-hidden"
+              classes: "moaland-visually-hidden"
             }
           ],
           rows: [
@@ -3144,7 +3144,7 @@ notes: >-
       {# "<article>" tag used in https://www.gov.uk/bank-holidays #}
       <article>
 
-        {{ govukTabs({
+        {{ moalandTabs({
           items: [
             {
               label: "England and Wales",
@@ -3170,26 +3170,26 @@ notes: >-
           ]
         }) }}
 
-        <p class="govuk-body">Last updated: 8 February 2019</p>
+        <p class="moaland-body">Last updated: 8 February 2019</p>
       </article>
 
     </div>
 
-    <div class="govuk-grid-column-one-third">
+    <div class="moaland-grid-column-one-third">
 
-      <!-- The Related items component is not part of GOV.UK Frontend but will be styled if used in the Prototype Kit -->
+      <!-- The Related items component is not part of GOV.MOA Frontend but will be styled if used in the Prototype Kit -->
 
       <aside class="app-related-items" role="complementary">
-        <h2 class="govuk-heading-m" id="subsection-title">
+        <h2 class="moaland-heading-m" id="subsection-title">
           Related content
         </h2>
         <nav role="navigation" aria-labelledby="subsection-title">
-          <ul class="govuk-list govuk-!-font-size-16">
+          <ul class="moaland-list moaland-!-font-size-16">
             <li class="gem-c-related-navigation__link">
-              <a class="govuk-link" href="#/holiday-entitlement-rights">Holiday entitlement</a>
+              <a class="moaland-link" href="#/holiday-entitlement-rights">Holiday entitlement</a>
             </li>
             <li class="gem-c-related-navigation__link">
-              <a class="govuk-link" href="#/school-term-holiday-dates">School term and holiday dates</a>
+              <a class="moaland-link" href="#/school-term-holiday-dates">School term and holiday dates</a>
             </li>
           </ul>
         </nav>

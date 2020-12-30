@@ -27,7 +27,7 @@ if [[ -n $(git status --porcelain) ]]; then
   echo "✍️ Commiting changed package"
   git add package/
 
-  git commit -m "Release GOV.UK Frontend to '$BRANCH_NAME' for testing"
+  git commit -m "Release GOV.MOA Frontend to '$BRANCH_NAME' for testing"
 
   # Create a local branch containing the package directory
   echo "✨ Filter the branch to only the package/ directory..."
@@ -46,4 +46,4 @@ git checkout -
 BRANCH_COMMIT_SHA=$(git rev-parse --short $BRANCH_NAME)
 
 echo
-echo "✅ To install the pushed branch release run 'npm install --save alphagov/govuk-frontend#$BRANCH_COMMIT_SHA'"
+echo "✅ To install the pushed branch release run 'npm install --save moaland/moaland-frontend#$BRANCH_COMMIT_SHA'"

@@ -1,4 +1,4 @@
-{% from "details/macro.njk" import govukDetails %}
+{% from "details/macro.njk" import moalandDetails %}
 
 {% macro showExamples(componentSlug, componentName, data, legacyQuery) %}
 
@@ -14,17 +14,17 @@
     {% set path = '/components/' + componentSlug + '/' + exampleSlug + "/preview" %}
   {% endif %}
 
-  <section aria-labelledby="heading-{{ exampleSlug }}" class="govuk-!-margin-bottom-9">
-    <div class="govuk-width-container">
-      <div class="govuk-heading-m">
+  <section aria-labelledby="heading-{{ exampleSlug }}" class="moaland-!-margin-bottom-9">
+    <div class="moaland-width-container">
+      <div class="moaland-heading-m">
         <h3 id="heading-{{ exampleSlug }}" class="app-!-di">{{ heading | safe }}</h3>
-        <a href="{{ path }}{{ legacyQuery }}" class="govuk-link govuk-!-margin-left-1 govuk-!-font-size-16">
+        <a href="{{ path }}{{ legacyQuery }}" class="moaland-link moaland-!-margin-left-1 moaland-!-font-size-16">
           (open in a new window)
         </a>
       </div>
 
     {% if example.description %}
-      <p class="govuk-body">
+      <p class="moaland-body">
         {{ example.description }}
       </p>
     {% endif %}
@@ -39,9 +39,9 @@
       ></iframe>
     </div>
 
-    <div class="govuk-width-container">
+    <div class="moaland-width-container">
       {% set detailsHtml %}{% include "partials/code.njk" %}{% endset %}
-      {{- govukDetails({ summaryText: "Code", html: detailsHtml }) -}}
+      {{- moalandDetails({ summaryText: "Code", html: detailsHtml }) -}}
     </div>
 
   </section>

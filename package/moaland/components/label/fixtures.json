@@ -1,0 +1,84 @@
+{
+    "component": "label",
+    "fixtures": [
+        {
+            "name": "default",
+            "options": {
+                "text": "National Insurance number"
+            },
+            "html": "<label class=\"moaland-label\">\n  National Insurance number\n</label>",
+            "hidden": false
+        },
+        {
+            "name": "with bold text",
+            "options": {
+                "classes": "moaland-label--s",
+                "text": "National Insurance number"
+            },
+            "html": "<label class=\"moaland-label moaland-label--s\">\n  National Insurance number\n</label>",
+            "hidden": false
+        },
+        {
+            "name": "as page heading",
+            "options": {
+                "text": "National Insurance number",
+                "classes": "moaland-label--xl",
+                "isPageHeading": true
+            },
+            "html": "<h1 class=\"moaland-label-wrapper\">\n  <label class=\"moaland-label moaland-label--xl\">\n    National Insurance number\n  </label>\n  </h1>",
+            "hidden": false
+        },
+        {
+            "name": "empty",
+            "options": {},
+            "html": "",
+            "hidden": true
+        },
+        {
+            "name": "classes",
+            "options": {
+                "text": "National Insurance number",
+                "classes": "extra-class one-more-class"
+            },
+            "html": "<label class=\"moaland-label extra-class one-more-class\">\n  National Insurance number\n</label>",
+            "hidden": true
+        },
+        {
+            "name": "html as text",
+            "options": {
+                "text": "National Insurance number, <em>NINO</em>"
+            },
+            "html": "<label class=\"moaland-label\">\n  National Insurance number, &lt;em&gt;NINO&lt;/em&gt;\n</label>",
+            "hidden": true
+        },
+        {
+            "name": "html",
+            "options": {
+                "html": "National Insurance number <em>NINO</em>"
+            },
+            "html": "<label class=\"moaland-label\">\n  National Insurance number <em>NINO</em>\n</label>",
+            "hidden": true
+        },
+        {
+            "name": "for",
+            "options": {
+                "for": "#dummy-input",
+                "text": "National Insurance number"
+            },
+            "html": "<label class=\"moaland-label\" for=\"#dummy-input\">\n  National Insurance number\n</label>",
+            "hidden": true
+        },
+        {
+            "name": "attributes",
+            "options": {
+                "text": "National Insurance number",
+                "attributes": {
+                    "first-attribute": "foo",
+                    "second-attribute": "bar"
+                }
+            },
+            "html": "<label class=\"moaland-label\" first-attribute=\"foo\" second-attribute=\"bar\">\n  National Insurance number\n</label>",
+            "hidden": true
+        }
+    ]
+}

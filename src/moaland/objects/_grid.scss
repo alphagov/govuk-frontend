@@ -1,0 +1,24 @@
+@import "../base";
+
+@include moaland-exports("moaland/objects/grid") {
+  .moaland-grid-row {
+    @include moaland-clearfix;
+    margin-right: - ($moaland-gutter-half);
+    margin-left: - ($moaland-gutter-half);
+  }
+
+  @each $width in map-keys($moaland-grid-widths) {
+    .moaland-grid-column-#{$width} {
+      @include moaland-grid-column($width);
+    }
+  }
+
+  // These *must* be defined in a separate loop as they have the same
+  // specificity as the non-breakpoint specific classes, so need to appear after
+  // them in the outputted CSS
+  @each $width in map-keys($moaland-grid-widths) {
+    .moaland-grid-column-#{$width}-from-desktop {
+      @include moaland-grid-column($width, $at: desktop);
+    }
+  }
+}

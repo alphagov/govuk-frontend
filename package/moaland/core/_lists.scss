@@ -1,0 +1,72 @@
+@if not mixin-exists("moaland-exports") {
+  @warn "Importing items from the core layer without first importing `base` is deprecated, and will no longer work as of GOV.MOA Frontend v4.0.";
+}
+
+@import "../base";
+
+@include moaland-exports("moaland/core/lists") {
+
+  %moaland-list {
+    @include moaland-font($size: 19);
+    @include moaland-text-colour;
+    margin-top: 0;
+    @include moaland-responsive-margin(4, "bottom");
+    padding-left: 0;
+    list-style-type: none;
+
+    // Add a top margin for nested lists
+    %moaland-list {
+      margin-top: moaland-spacing(2);
+    }
+  }
+
+  %moaland-list > li {
+    // Lists without numbers or bullets should always have extra space between
+    // list items. Lists with numbers or bullets only have this extra space on
+    // tablet and above
+    margin-bottom: moaland-spacing(1);
+  }
+
+  .moaland-list {
+    @extend %moaland-list;
+  }
+
+  %moaland-list--bullet {
+    padding-left: moaland-spacing(4);
+    list-style-type: disc;
+  }
+
+  %moaland-list--number {
+    padding-left: moaland-spacing(4);
+    list-style-type: decimal;
+  }
+
+  %moaland-list--bullet > li,
+  %moaland-list--number > li {
+    margin-bottom: 0;
+
+    @include moaland-media-query($from: tablet) {
+      margin-bottom: moaland-spacing(1);
+    }
+  }
+
+  %moaland-list--spaced > li {
+    margin-bottom: moaland-spacing(2);
+
+    @include moaland-media-query($from: tablet) {
+      margin-bottom: moaland-spacing(3);
+    }
+  }
+
+  .moaland-list--bullet {
+    @extend %moaland-list--bullet;
+  }
+
+  .moaland-list--number {
+    @extend %moaland-list--number;
+  }
+
+  .moaland-list--spaced {
+    @extend %moaland-list--spaced;
+  }
+}

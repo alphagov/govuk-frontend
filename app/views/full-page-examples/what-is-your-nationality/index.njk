@@ -21,31 +21,31 @@ scenario: >-
 {# This example is based of the  "What is your nationality?" example: https://www.registertovote.service.gov.uk/register-to-vote/nationality #}
 {% extends "_generic.njk" %}
 
-{% from "back-link/macro.njk" import govukBackLink %}
-{% from "checkboxes/macro.njk" import govukCheckboxes %}
-{% from "input/macro.njk" import govukInput %}
-{% from "details/macro.njk" import govukDetails %}
-{% from "textarea/macro.njk" import govukTextarea %}
-{% from "button/macro.njk" import govukButton %}
-{% from "error-summary/macro.njk" import govukErrorSummary %}
+{% from "back-link/macro.njk" import moalandBackLink %}
+{% from "checkboxes/macro.njk" import moalandCheckboxes %}
+{% from "input/macro.njk" import moalandInput %}
+{% from "details/macro.njk" import moalandDetails %}
+{% from "textarea/macro.njk" import moalandTextarea %}
+{% from "button/macro.njk" import moalandButton %}
+{% from "error-summary/macro.njk" import moalandErrorSummary %}
 
 {% set pageTitle = "What is your nationality?" %}
-{% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.UK{% endblock %}
+{% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.MOA{% endblock %}
 
 {% block beforeContent %}
-  {{ govukBackLink({
+  {{ moalandBackLink({
     text: "Back",
     href: "#"
   }) }}
 {% endblock %}
 
 {% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+  <div class="moaland-grid-row">
+    <div class="moaland-grid-column-two-thirds">
 
       <form method="post" novalidate>
           {% if errorSummary.length > 0 %}
-              {{ govukErrorSummary({
+              {{ moalandErrorSummary({
                   titleText: "There is a problem",
                   errorList: errorSummary
               }) }}
@@ -53,11 +53,11 @@ scenario: >-
 
         {% set otherCountryHtml %}
 
-          {{ govukInput({
+          {{ moalandInput({
             id: "country-name",
             name: "country-name",
             type: "text",
-            classes: "govuk-input--width-20",
+            classes: "moaland-input--width-20",
             label: {
               text: "Country name"
             },
@@ -66,14 +66,14 @@ scenario: >-
 
         {% endset %}
 
-        {{ govukCheckboxes({
+        {{ moalandCheckboxes({
           idPrefix: "confirm-nationality",
           name: "confirm-nationality",
           fieldset: {
             legend: {
               text: "What is your nationality?",
               isPageHeading: true,
-              classes: "govuk-fieldset__legend--xl"
+              classes: "moaland-fieldset__legend--xl"
             }
           },
           hint: {
@@ -110,14 +110,14 @@ scenario: >-
 
         {% set helpWithNationalityHtml %}
 
-          <p class="govuk-body">
+          <p class="moaland-body">
             We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.
           </p>
 
-          {{ govukTextarea({
+          {{ moalandTextarea({
             name: "details-cannot-provide-nationality",
             id: "details-cannot-provide-nationality",
-            classes: "govuk-!-margin-bottom-0",
+            classes: "moaland-!-margin-bottom-0",
             label: {
               text: "Can you provide more detail on why you cannot confirm your nationality?"
             },
@@ -126,12 +126,12 @@ scenario: >-
 
         {% endset %}
 
-        {{ govukDetails({
+        {{ moalandDetails({
           summaryText: "Help with nationality",
           html: helpWithNationalityHtml
         }) }}
 
-      {{ govukButton({
+      {{ moalandButton({
           text: "Continue"
         }) }}
       </form>

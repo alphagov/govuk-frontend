@@ -1,0 +1,25 @@
+////
+/// @group tools/assets
+////
+
+/// Image URL
+///
+/// If a custom image-url handler is defined ($moaland-image-url-function) then
+/// it will be called, otherwise a url will be returned with the filename
+/// appended to the image path.
+///
+/// @param {String} Filename for the image to load
+/// @return {String} URL for the filename, wrapped in `url()`
+/// @access public
+
+@function moaland-image-url($filename) {
+  $use-custom-function: variable-exists("moaland-image-url-function")
+    and $moaland-image-url-function
+    and function-exists($moaland-image-url-function);
+
+  @if ($use-custom-function) {
+    @return call(get-function($moaland-image-url-function), $filename);
+  } @else {
+    @return url($moaland-images-path + $filename);
+  }
+}

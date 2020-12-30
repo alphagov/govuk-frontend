@@ -1,12 +1,12 @@
 
 # Component API definition and use
-We have chosen as Nunjucks as the templating language for GOV.UK Frontend components. We expose those templates as reusable chunks of code: macros. Developers import macros into their application, call them as per documentation and provide data to its options.
+We have chosen as Nunjucks as the templating language for GOV.MOA Frontend components. We expose those templates as reusable chunks of code: macros. Developers import macros into their application, call them as per documentation and provide data to its options.
 
 To provide a level of consistency for developers we have standardised option names, their expected input, use and placement. There are expectations, and  if so they are documented accordingly.
 
 The options (arguments) accepted by the component macro are specified in a `[component-name].yaml` file as `params`. Each option should have the following attributes: `name`, `type`, `required`, `description`.
 
-An option can additionally contain `params` that denotes nested items in the option (see [breadcrumbs component](https://github.com/alphagov/govuk-frontend/blob/master/src/govuk/components/breadcrumbs/breadcrumbs.yaml#L6)) and `isComponent: true` where the option is another component (see [checkboxes component](https://github.com/alphagov/govuk-frontend/blob/master/src/govuk/components/checkboxes/checkboxes.yaml#L11)).
+An option can additionally contain `params` that denotes nested items in the option (see [breadcrumbs component](https://github.com/moaland/moaland-frontend/blob/master/src/moaland/components/breadcrumbs/breadcrumbs.yaml#L6)) and `isComponent: true` where the option is another component (see [checkboxes component](https://github.com/moaland/moaland-frontend/blob/master/src/moaland/components/checkboxes/checkboxes.yaml#L11)).
 
 Component macro options are shipped as  `macro-options.json` in `package`.
 
@@ -18,9 +18,9 @@ When providing *content* to a macro, say for a label or a button, we accept two 
 
 Example:
 
-`{{ govukButton({"text": "Button text"}) }}`
+`{{ moalandButton({"text": "Button text"}) }}`
 
-`{{ govukButton({"html": "Button <span class='bold'>text</span>"}) }}`
+`{{ moalandButton({"html": "Button <span class='bold'>text</span>"}) }}`
 
 Example of implementing logic in a component template:
 
@@ -35,7 +35,7 @@ If a component depends on another component, we group the options for the depend
 
 Example of a component depending on another component
 ```
-{{ govukLabel({
+{{ moalandLabel({
   "text": "Label text",
   "errorMessage": {
     "text": "Error message"
@@ -45,7 +45,7 @@ Example of a component depending on another component
 
 Example of a component depending on two other components
 ```
-{{ govukInput({
+{{ moalandInput({
   "name": "example-input",
   "label": {
     "text": "Label text"
@@ -61,9 +61,9 @@ When there is a need to specify html attributes, such as *checked, disabled, id,
 
 Example:
 
-`{{ govukButton({"disabled": true}) }}`
+`{{ moalandButton({"disabled": true}) }}`
 
-`{{ govukCheckbox({"checked": true}) }}`
+`{{ moalandCheckbox({"checked": true}) }}`
 
 
 ## Defining additional HTML attributes
@@ -73,7 +73,7 @@ You cannot use this to set attributes that are already defined, such as class â€
 
 Example:
 ```
-{{ govukButton({
+{{ moalandButton({
   "attributes" : {
     "data-target" : "contact-by-text",
     "aria-labelledby": "error-summary-heading-example-1",
@@ -87,7 +87,7 @@ When a component accepts a *single array of items* for an output, such as checkb
 
 Example:
 ```
-{{ govukCheckbox({
+{{ moalandCheckbox({
    "items": [
    {
       "value": "checkbox value",
@@ -105,14 +105,14 @@ When a component has multiple visual presentations, such default button vs start
 
 Default button example:
 ```
-{{ govukButton({
+{{ moalandButton({
   "text" : "Continue"
 }) }}
 ```
 Start button example:
 ```
-{{ govukButton({
+{{ moalandButton({
   "text" : "Start",
-  "classes" : "govuk-button--start"
+  "classes" : "moaland-button--start"
 }) }}
 ```

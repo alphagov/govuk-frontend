@@ -1,0 +1,30 @@
+@if not mixin-exists("moaland-exports") {
+  @warn "Importing items from the overrides layer without first importing `base` is deprecated, and will no longer work as of GOV.MOA Frontend v4.0.";
+}
+
+@import "../base";
+
+// stylelint-disable declaration-no-important
+@include moaland-exports("moaland/overrides/display") {
+  .moaland-\!-display-inline {
+    display: inline !important;
+  }
+
+  .moaland-\!-display-inline-block {
+    display: inline-block !important;
+  }
+
+  .moaland-\!-display-block {
+    display: block !important;
+  }
+
+  .moaland-\!-display-none {
+    display: none !important;
+  }
+
+  @include moaland-media-query($media-type: print) {
+    .moaland-\!-display-none-print {
+      display: none !important;
+    }
+  }
+}

@@ -30,11 +30,11 @@ const isDist = taskArguments.destination === 'dist' || false
 
 // Set the destination
 const destinationPath = function () {
-  // Public & Dist directories do no need namespaced with `govuk`
+  // Public & Dist directories do no need namespaced with `moaland`
   if (taskArguments.destination === 'dist' || taskArguments.destination === 'public') {
     return taskArguments.destination
   } else {
-    return `${taskArguments.destination}/govuk/`
+    return `${taskArguments.destination}/moaland/`
   }
 }
 
@@ -67,7 +67,7 @@ gulp.task('scss:compile', () => {
     ])))
     .pipe(gulpif(isDist,
       rename({
-        basename: 'govuk-frontend',
+        basename: 'moaland-frontend',
         extname: '.min.css'
       })
     ))
@@ -100,7 +100,7 @@ gulp.task('scss:compile', () => {
     ])))
     .pipe(gulpif(isDist,
       rename({
-        basename: 'govuk-frontend-ie8',
+        basename: 'moaland-frontend-ie8',
         extname: '.min.css'
       })
     ))
@@ -159,7 +159,7 @@ gulp.task('js:compile', () => {
   ])
     .pipe(rollup({
       // Used to set the `window` global and UMD/AMD export name.
-      name: 'GOVUKFrontend',
+      name: 'MoalandFrontend',
       // Legacy mode is required for IE8 support
       legacy: true,
       // UMD allows the published bundle to work in CommonJS and in the browser.
@@ -170,7 +170,7 @@ gulp.task('js:compile', () => {
     })))
     .pipe(gulpif(isDist,
       rename({
-        basename: 'govuk-frontend',
+        basename: 'moaland-frontend',
         extname: '.min.js'
       })
     ))

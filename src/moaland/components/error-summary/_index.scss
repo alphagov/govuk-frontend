@@ -1,0 +1,43 @@
+@import "../../core/lists";
+
+@include moaland-exports("moaland/component/error-summary") {
+  .moaland-error-summary {
+    @include moaland-text-colour;
+    @include moaland-responsive-padding(4);
+    @include moaland-responsive-margin(8, "bottom");
+
+    border: $moaland-border-width solid $moaland-error-colour;
+
+    &:focus {
+      outline: $moaland-focus-width solid $moaland-focus-colour;
+    }
+  }
+
+  .moaland-error-summary__title {
+    @include moaland-font($size: 24, $weight: bold);
+
+    margin-top: 0;
+    @include moaland-responsive-margin(4, "bottom");
+  }
+
+  .moaland-error-summary__body {
+    @include moaland-font($size: 19);
+
+    p {
+      margin-top: 0;
+      @include moaland-responsive-margin(4, "bottom");
+    }
+  }
+
+  // Cross-component class - adjusts styling of list component
+  .moaland-error-summary__list {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .moaland-error-summary__list a {
+    @include moaland-typography-weight-bold;
+    @include moaland-link-common;
+    @include moaland-link-style-error;
+  }
+}

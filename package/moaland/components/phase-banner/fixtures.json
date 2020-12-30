@@ -1,0 +1,76 @@
+{
+    "component": "phase-banner",
+    "fixtures": [
+        {
+            "name": "default",
+            "options": {
+                "tag": {
+                    "text": "alpha"
+                },
+                "html": "This is a new service - your <a href=\"#\" class=\"moaland-link\">feedback</a> will help us to improve it."
+            },
+            "html": "<div class=\"moaland-phase-banner\">\n  <p class=\"moaland-phase-banner__content\">\n    <strong class=\"moaland-tag moaland-phase-banner__content__tag\">\n      alpha\n    </strong>\n    <span class=\"moaland-phase-banner__text\">\n      This is a new service - your <a href=\"#\" class=\"moaland-link\">feedback</a> will help us to improve it.\n    </span>\n  </p>\n</div>",
+            "hidden": false
+        },
+        {
+            "name": "classes",
+            "options": {
+                "text": "This is a new service – your feedback will help us to improve it",
+                "classes": "extra-class one-more-class"
+            },
+            "html": "<div class=\"moaland-phase-banner extra-class one-more-class\">\n  <p class=\"moaland-phase-banner__content\">\n    <strong class=\"moaland-tag moaland-phase-banner__content__tag\">\n      \n    </strong>\n    <span class=\"moaland-phase-banner__text\">\n      This is a new service – your feedback will help us to improve it\n    </span>\n  </p>\n</div>",
+            "hidden": true
+        },
+        {
+            "name": "text",
+            "options": {
+                "text": "This is a new service – your feedback will help us to improve it"
+            },
+            "html": "<div class=\"moaland-phase-banner\">\n  <p class=\"moaland-phase-banner__content\">\n    <strong class=\"moaland-tag moaland-phase-banner__content__tag\">\n      \n    </strong>\n    <span class=\"moaland-phase-banner__text\">\n      This is a new service – your feedback will help us to improve it\n    </span>\n  </p>\n</div>",
+            "hidden": true
+        },
+        {
+            "name": "html as text",
+            "options": {
+                "text": "This is a new service - your <a href=\"#\" class=\"moaland-link\">feedback</a> will help us to improve it."
+            },
+            "html": "<div class=\"moaland-phase-banner\">\n  <p class=\"moaland-phase-banner__content\">\n    <strong class=\"moaland-tag moaland-phase-banner__content__tag\">\n      \n    </strong>\n    <span class=\"moaland-phase-banner__text\">\n      This is a new service - your &lt;a href=&quot;#&quot; class=&quot;moaland-link&quot;&gt;feedback&lt;/a&gt; will help us to improve it.\n    </span>\n  </p>\n</div>",
+            "hidden": true
+        },
+        {
+            "name": "attributes",
+            "options": {
+                "text": "This is a new service – your feedback will help us to improve it",
+                "attributes": {
+                    "first-attribute": "foo",
+                    "second-attribute": "bar"
+                }
+            },
+            "html": "<div class=\"moaland-phase-banner\" first-attribute=\"foo\" second-attribute=\"bar\">\n  <p class=\"moaland-phase-banner__content\">\n    <strong class=\"moaland-tag moaland-phase-banner__content__tag\">\n      \n    </strong>\n    <span class=\"moaland-phase-banner__text\">\n      This is a new service – your feedback will help us to improve it\n    </span>\n  </p>\n</div>",
+            "hidden": true
+        },
+        {
+            "name": "tag html",
+            "options": {
+                "text": "This is a new service – your feedback will help us to improve it",
+                "tag": {
+                    "html": "<em>alpha</em>"
+                }
+            },
+            "html": "<div class=\"moaland-phase-banner\">\n  <p class=\"moaland-phase-banner__content\">\n    <strong class=\"moaland-tag moaland-phase-banner__content__tag\">\n      <em>alpha</em>\n    </strong>\n    <span class=\"moaland-phase-banner__text\">\n      This is a new service – your feedback will help us to improve it\n    </span>\n  </p>\n</div>",
+            "hidden": true
+        },
+        {
+            "name": "tag classes",
+            "options": {
+                "text": "This is a new service – your feedback will help us to improve it",
+                "tag": {
+                    "classes": "moaland-tag--inactive",
+                    "text": "alpha"
+                }
+            },
+            "html": "<div class=\"moaland-phase-banner\">\n  <p class=\"moaland-phase-banner__content\">\n    <strong class=\"moaland-tag moaland-phase-banner__content__tag moaland-tag--inactive\">\n      alpha\n    </strong>\n    <span class=\"moaland-phase-banner__text\">\n      This is a new service – your feedback will help us to improve it\n    </span>\n  </p>\n</div>",
+            "hidden": true
+        }
+    ]
+}

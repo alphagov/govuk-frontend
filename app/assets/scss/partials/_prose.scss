@@ -1,58 +1,58 @@
 .app-prose-scope {
   h1 {
-    @extend %govuk-heading-xl;
+    @extend %moaland-heading-xl;
   }
 
   h2 {
-    @extend %govuk-heading-l;
+    @extend %moaland-heading-l;
   }
 
   h3 {
-    @extend %govuk-heading-m;
+    @extend %moaland-heading-m;
   }
 
   h4 {
-    @extend %govuk-heading-s;
+    @extend %moaland-heading-s;
   }
 
   p {
-    @extend %govuk-body-m;
+    @extend %moaland-body-m;
   }
 
   strong,
   b {
-    @include govuk-typography-weight-bold;
+    @include moaland-typography-weight-bold;
   }
 
   ul,
   ol {
-    @extend %govuk-list;
+    @extend %moaland-list;
   }
 
   ol {
-    @extend %govuk-list--number;
+    @extend %moaland-list--number;
   }
 
   ul {
-    @extend %govuk-list--bullet;
+    @extend %moaland-list--bullet;
   }
 
   a {
-    @extend %govuk-link;
+    @extend %moaland-link;
   }
 
   hr {
-    @extend %govuk-section-break;
-    @extend %govuk-section-break--visible;
-    @extend %govuk-section-break--xl;
+    @extend %moaland-section-break;
+    @extend %moaland-section-break--visible;
+    @extend %moaland-section-break--xl;
   }
 
   pre + h2 {
-    padding-top: govuk-spacing(4);
+    padding-top: moaland-spacing(4);
   }
 
   pre + h3,
   pre + h4 {
-    padding-top: govuk-spacing(2);
+    padding-top: moaland-spacing(2);
   }
 }

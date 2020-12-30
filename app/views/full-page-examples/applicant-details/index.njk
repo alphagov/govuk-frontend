@@ -3,16 +3,16 @@ scenario:
   As part of an online service you are asked to provide details for the
   applicant.
 notes: >-
-  This example shows GOV.UK Frontend used alongside our 'legacy' frontend
+  This example shows GOV.MOA Frontend used alongside our 'legacy' frontend
   frameworks. The full name field, and links within the header and footer have
   known accessibility issues.
 ---
 
 {% extends "legacy.njk" %}
 
-{% from "back-link/macro.njk" import govukBackLink %}
-{% from "date-input/macro.njk" import govukDateInput %}
-{% from "button/macro.njk" import govukButton %}
+{% from "back-link/macro.njk" import moalandBackLink %}
+{% from "date-input/macro.njk" import moalandDateInput %}
+{% from "button/macro.njk" import moalandButton %}
 
 {% set page_title = "Applicant details" %}
 
@@ -21,7 +21,7 @@ notes: >-
     <div class="grid-row">
       <div class="column-two-thirds">
 
-        {{ govukBackLink({
+        {{ moalandBackLink({
           text: "Back"
         }) }}
 
@@ -66,27 +66,27 @@ notes: >-
             <input class="form-control {%- if errors["full-name"] %} form-control-error {% endif %}" id="full-name" type="text" name="full-name" value="{{ values['full-name'] }}" autocomplete="name">
           </div>
 
-          {% set dateInputDayClass = "govuk-input--width-2" %}
-          {% set dateInputMonthClass = "govuk-input--width-2" %}
-          {% set dateInputYearClass = "govuk-input--width-4" %}
+          {% set dateInputDayClass = "moaland-input--width-2" %}
+          {% set dateInputMonthClass = "moaland-input--width-2" %}
+          {% set dateInputYearClass = "moaland-input--width-4" %}
 
           {% if errors["dob-day"] %}
-            {% set dateInputDayClass = dateInputDayClass + " govuk-input--error" %}
+            {% set dateInputDayClass = dateInputDayClass + " moaland-input--error" %}
           {% endif %}
           {% if errors["dob-month"] %}
-            {% set dateInputMonthClass = dateInputMonthClass + " govuk-input--error" %}
+            {% set dateInputMonthClass = dateInputMonthClass + " moaland-input--error" %}
           {% endif %}
           {% if errors["dob-year"] %}
-            {% set dateInputYearClass = dateInputYearClass + " govuk-input--error" %}
+            {% set dateInputYearClass = dateInputYearClass + " moaland-input--error" %}
           {% endif %}
 
-          {{ govukDateInput({
+          {{ moalandDateInput({
             id: "dob",
             namePrefix: "dob",
             fieldset: {
               legend: {
                 text: "Date of birth",
-                classes: "govuk-fieldset__legend--s"
+                classes: "moaland-fieldset__legend--s"
               }
             },
             hint: {
@@ -112,7 +112,7 @@ notes: >-
             errorMessage: errors["dob"]
           }) }}
 
-          {{ govukButton({
+          {{ moalandButton({
             text: "Continue"
           }) }}
 

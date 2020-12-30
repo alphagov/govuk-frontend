@@ -1,0 +1,33 @@
+@if not mixin-exists("moaland-exports") {
+  @warn "Importing items from the core layer without first importing `base` is deprecated, and will no longer work as of GOV.MOA Frontend v4.0.";
+}
+
+@import "../base";
+
+@include moaland-exports("moaland/core/links") {
+
+  %moaland-link {
+    @include moaland-link-common;
+    @include moaland-link-style-default;
+    @include moaland-link-print-friendly;
+  }
+
+  .moaland-link {
+    @extend %moaland-link;
+  }
+
+  // Variant classes should always be used in conjunction with the .moaland-link
+  // class, so we do not need the common link styles as they will be inherited.
+
+  .moaland-link--muted {
+    @include moaland-link-style-muted;
+  }
+
+  .moaland-link--text-colour {
+    @include moaland-link-style-text;
+  }
+
+  .moaland-link--no-visited-state {
+    @include moaland-link-style-no-visited-state;
+  }
+}

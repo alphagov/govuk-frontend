@@ -11,16 +11,16 @@ scenario: >-
 {# This example is based of the  "What is your home postcode?" example: https://design-system.service.gov.uk/patterns/question-pages/postcode/index.html #}
 {% extends "_generic.njk" %}
 
-{% from "back-link/macro.njk" import govukBackLink %}
-{% from "button/macro.njk" import govukButton %}
-{% from "error-summary/macro.njk" import govukErrorSummary %}
-{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import moalandBackLink %}
+{% from "button/macro.njk" import moalandButton %}
+{% from "error-summary/macro.njk" import moalandErrorSummary %}
+{% from "input/macro.njk" import moalandInput %}
 
 {% set pageTitle = "What is your home postcode?" %}
-{% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.UK{% endblock %}
+{% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.MOA{% endblock %}
 
 {% block beforeContent %}
-  {{ govukBackLink({
+  {{ moalandBackLink({
     text: "Back",
     href: "#"
   }) }}
@@ -30,26 +30,26 @@ scenario: >-
 
   <form method="post" novalidate>
     {% if errorSummary.length > 0 %}
-        {{ govukErrorSummary({
+        {{ moalandErrorSummary({
             titleText: "There is a problem",
             errorList: errorSummary
         }) }}
     {% endif %}
 
-    {{ govukInput({
+    {{ moalandInput({
       label: {
         text: pageTitle,
-        classes: "govuk-label--xl",
+        classes: "moaland-label--xl",
         isPageHeading: true
       },
-      classes: "govuk-input--width-10",
+      classes: "moaland-input--width-10",
       id: "address-postcode",
       name: "address-postcode",
       autocomplete: "postal-code",
       errorMessage: errors["address-postcode"]
     }) }}
 
-    {{ govukButton({
+    {{ moalandButton({
         text: "Continue"
       }) }}
   </form>

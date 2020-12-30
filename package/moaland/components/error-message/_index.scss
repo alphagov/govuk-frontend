@@ -1,0 +1,11 @@
+@include moaland-exports("moaland/component/error-message") {
+  .moaland-error-message {
+    @include moaland-font($size: 19, $weight: bold);
+
+    display: block;
+    margin-bottom: moaland-spacing(3);
+    clear: both;
+
+    color: $moaland-error-colour;
+  }
+}

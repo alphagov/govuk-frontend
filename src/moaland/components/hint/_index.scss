@@ -1,0 +1,44 @@
+@include moaland-exports("moaland/component/hint") {
+  .moaland-hint {
+    @include moaland-font($size: 19);
+
+    display: block;
+
+    margin-bottom: moaland-spacing(3);
+
+    color: $moaland-secondary-text-colour;
+  }
+
+  // Reduces margin-bottom of hint when used after the default label (no class)
+  // or moaland-label--s for better vertical alignment.
+
+  // This adjustment will not work when the label is inside the <h1>, however it
+  // is unlikely that the default or moaland-label--s class would be used in this
+  // case.
+
+  // This adjustment will not work in browsers that do not support :not().
+  // Users with these browsers will see the default size margin (5px larger).
+
+  .moaland-label:not(.moaland-label--m):not(.moaland-label--l):not(.moaland-label--xl) + .moaland-hint {
+    margin-bottom: moaland-spacing(2);
+  }
+
+  // Reduces margin-bottom of hint when used after the default legend (no class)
+  // or moaland-fieldset__legend--s for better vertical alignment.
+
+  // This adjustment will not work when the legend is outside the <h1>, however
+  // it is unlikely that the default or moaland-fieldset__legend--s class would be
+  // used in this case.
+
+  // This adjustment will not work in browsers that do not support :not().
+  // Users with these browsers will see the default size margin (5px larger).
+
+  .moaland-fieldset__legend:not(.moaland-fieldset__legend--m):not(.moaland-fieldset__legend--l):not(.moaland-fieldset__legend--xl) + .moaland-hint {
+    margin-bottom: moaland-spacing(2);
+  }
+
+  // Reduces visual spacing of legend when there is a hint
+  .moaland-fieldset__legend + .moaland-hint {
+    margin-top: -(moaland-spacing(1));
+  }
+}

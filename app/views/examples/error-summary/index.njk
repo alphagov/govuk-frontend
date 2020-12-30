@@ -1,19 +1,19 @@
-{% from "back-link/macro.njk" import govukBackLink %}
-{% from "button/macro.njk" import govukButton %}
-{% from "date-input/macro.njk" import govukDateInput %}
-{% from "error-summary/macro.njk" import govukErrorSummary %}
-{% from "fieldset/macro.njk" import govukFieldset %}
-{% from "file-upload/macro.njk" import govukFileUpload %}
-{% from "input/macro.njk" import govukInput %}
-{% from "select/macro.njk" import govukSelect %}
-{% from "radios/macro.njk" import govukRadios %}
-{% from "checkboxes/macro.njk" import govukCheckboxes %}
-{% from "textarea/macro.njk" import govukTextarea %}
+{% from "back-link/macro.njk" import moalandBackLink %}
+{% from "button/macro.njk" import moalandButton %}
+{% from "date-input/macro.njk" import moalandDateInput %}
+{% from "error-summary/macro.njk" import moalandErrorSummary %}
+{% from "fieldset/macro.njk" import moalandFieldset %}
+{% from "file-upload/macro.njk" import moalandFileUpload %}
+{% from "input/macro.njk" import moalandInput %}
+{% from "select/macro.njk" import moalandSelect %}
+{% from "radios/macro.njk" import moalandRadios %}
+{% from "checkboxes/macro.njk" import moalandCheckboxes %}
+{% from "textarea/macro.njk" import moalandTextarea %}
 
 {% extends "layout.njk" %}
 
 {% block beforeContent %}
-  {{ govukBackLink({
+  {{ moalandBackLink({
     "href": "/"
   }) }}
 {% endblock %}
@@ -21,7 +21,7 @@
 {% block content %}
 <form action="/" method="post" style="margin-bottom: 100vh;">
 
-  {{ govukErrorSummary({
+  {{ moalandErrorSummary({
     "titleText": "There is a problem",
     "classes": "optional-extra-class",
     "errorList": [
@@ -76,9 +76,9 @@
     ]
   }) }}
 
-  <h1 class="govuk-heading-xl">Your details</h1>
+  <h1 class="moaland-heading-xl">Your details</h1>
 
-  {{ govukInput({
+  {{ moalandInput({
     label: {
       "text": 'Label for input'
     },
@@ -89,7 +89,7 @@
     }
   }) }}
 
-  {{ govukTextarea({
+  {{ moalandTextarea({
     label: {
       "text": 'Label for textarea'
     },
@@ -100,7 +100,7 @@
     }
   }) }}
 
-  {{ govukSelect({
+  {{ moalandSelect({
     label: {
       "text": 'Label for select'
     },
@@ -121,7 +121,7 @@
     ]
   }) }}
 
-  {{ govukDateInput({
+  {{ moalandDateInput({
     fieldset: {
       legend: {
         text: 'Label for date input',
@@ -136,21 +136,21 @@
     "items": [
       {
         "name": "day",
-        "classes": "govuk-input--width-2 govuk-input--error"
+        "classes": "moaland-input--width-2 moaland-input--error"
       },
       {
         "name": "month",
-        "classes": "govuk-input--width-2 govuk-input--error"
+        "classes": "moaland-input--width-2 moaland-input--error"
       },
       {
         "name": "year",
-        "classes": "govuk-input--width-4 govuk-input--error"
+        "classes": "moaland-input--width-4 moaland-input--error"
       }
     ]
     })
   }}
 
-  {{ govukDateInput({
+  {{ moalandDateInput({
     fieldset: {
       legend: {
         text: 'Label for date input',
@@ -165,23 +165,23 @@
     "items": [
       {
         "name": "day",
-        "classes": "govuk-input--width-2",
+        "classes": "moaland-input--width-2",
         "value": 5
       },
       {
         "name": "month",
-        "classes": "govuk-input--width-2",
+        "classes": "moaland-input--width-2",
         "value": 12
       },
       {
         "name": "year",
-        "classes": "govuk-input--width-4 govuk-input--error"
+        "classes": "moaland-input--width-4 moaland-input--error"
       }
     ]
     })
   }}
 
-  {{ govukFileUpload({
+  {{ moalandFileUpload({
     label: {
       "text": 'Label for file upload'
     },
@@ -192,7 +192,7 @@
     }
   }) }}
 
-  {{ govukRadios({
+  {{ moalandRadios({
     fieldset: {
       legend: {
         text: 'Legend for radios'
@@ -218,7 +218,7 @@
     ]
   }) }}
 
-  {{ govukCheckboxes({
+  {{ moalandCheckboxes({
     fieldset: {
       legend: {
         text: 'Legend for checkboxes'
@@ -244,7 +244,7 @@
     ]
   }) }}
 
-  {{ govukCheckboxes({
+  {{ moalandCheckboxes({
     fieldset: false,
     name: "single-checkbox",
     errorMessage: {
@@ -260,7 +260,7 @@
   }) }}
 
   {% set yesField %}
-  {{ govukInput({
+  {{ moalandInput({
     label: {
       "text": 'Label for revealed text input'
     },
@@ -273,7 +273,7 @@
   {% endset %}
 
   {% set noField %}
-  {{ govukInput({
+  {{ moalandInput({
     label: {
       "text": 'Label for revealed text input'
     },
@@ -285,14 +285,14 @@
   }) }}
   {% endset %}
 
-  {{ govukRadios({
+  {{ moalandRadios({
     "idPrefix": "conditional",
     "name": "conditional",
     "fieldset": {
       "legend": {
         "text": "Legend for conditionally revealed content"
       },
-      "classes": "govuk-radios--error",
+      "classes": "moaland-radios--error",
       attributes: {
         id: 'test-conditional-reveal'
       }
@@ -317,15 +317,15 @@
     ]
   }) }}
 
-  {{ govukRadios({
-    classes: "govuk-radios--inline",
+  {{ moalandRadios({
+    classes: "moaland-radios--inline",
     idPrefix: "radios-big-heading",
     name: "radios-big-heading",
     fieldset: {
       legend: {
         text: "Have you supplied orders signed in triplicate, sent in, sent back, queried, lost, found, subjected to public inquiry, lost again, and finally buried in soft peat for three months and recycled as firelighters?",
         isPageHeading: true,
-        classes: "govuk-fieldset__legend--xl test-radios-big-heading-legend"
+        classes: "moaland-fieldset__legend--xl test-radios-big-heading-legend"
       }
     },
     errorMessge: {
@@ -343,63 +343,63 @@
     ]
   }) }}
 
-  {% call govukFieldset({
+  {% call moalandFieldset({
     legend: {
       text: "What is your address?",
-      classes: "govuk-fieldset__legend--xl",
+      classes: "moaland-fieldset__legend--xl",
       isPageHeading: true
     }
   }) %}
 
-    {{ govukInput({
+    {{ moalandInput({
       label: {
-        html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
+        html: 'Building and street <span class="moaland-visually-hidden">line 1 of 2</span>'
       },
       id: "address-line-1",
       name: "address-line-1"
     }) }}
 
-    {{ govukInput({
+    {{ moalandInput({
       label: {
-        html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
+        html: '<span class="moaland-visually-hidden">Building and street line 2 of 2</span>'
       },
       id: "address-line-2",
       name: "address-line-2"
     }) }}
 
-    {{ govukInput({
+    {{ moalandInput({
       label: {
         text: "Town or city"
       },
-      classes: "govuk-!-width-two-thirds",
+      classes: "moaland-!-width-two-thirds",
       id: "address-town",
       name: "address-town"
     }) }}
 
-    {{ govukInput({
+    {{ moalandInput({
       label: {
         text: "County"
       },
-      classes: "govuk-!-width-two-thirds",
+      classes: "moaland-!-width-two-thirds",
       id: "address-county",
       name: "address-county"
     }) }}
 
-    {{ govukInput({
+    {{ moalandInput({
       label: {
         text: "Postcode"
       },
       errorMessage: {
         text: "Enter a valid postcode"
       },
-      classes: "govuk-input--width-10",
+      classes: "moaland-input--width-10",
       id: "address-postcode",
       name: "address-postcode"
     }) }}
 
   {% endcall %}
 
-  {{ govukButton({
+  {{ moalandButton({
     "text": "Continue"
   }) }}
 

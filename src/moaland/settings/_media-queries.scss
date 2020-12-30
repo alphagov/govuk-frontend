@@ -1,0 +1,23 @@
+////
+/// @group settings/media-queries
+////
+
+/// Breakpoint definitions
+///
+/// @type Map
+/// @access public
+
+$moaland-breakpoints: (
+  mobile:  320px,
+  tablet:  641px,
+  desktop: 769px
+) !default;
+
+/// Show active breakpoint in top-right corner.
+///
+/// Only use this during local development.
+///
+/// @type Boolean
+/// @access public
+
+$moaland-show-breakpoints: false !default;

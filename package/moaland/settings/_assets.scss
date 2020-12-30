@@ -1,0 +1,82 @@
+////
+/// @group settings/assets
+////
+
+/// Path to the assets directory, with trailing slash.
+///
+/// This is the directory where the images and fonts subdirectories live. You
+/// will need to make this directory available via your application – see the
+/// README for details.
+///
+/// @type String
+/// @access public
+
+$moaland-assets-path: "/assets/" !default;
+
+/// Path to the images folder, with trailing slash.
+///
+/// @type String
+/// @access public
+
+$moaland-images-path: "#{$moaland-assets-path}images/" !default;
+
+/// Path to the fonts folder, with trailing slash.
+///
+/// @type String
+/// @access public
+
+$moaland-fonts-path: "#{$moaland-assets-path}fonts/" !default;
+
+/// Custom image URL function
+///
+/// If the built-in image URL helper does not meet your needs, you can specify
+/// the name of a custom handler – either built in or by writing your own
+/// function.
+///
+/// If you are writing your own handler, ensure that it returns a string wrapped
+/// with `url()`
+///
+/// @type String
+///
+/// @example scss - Rails asset handling
+///   $moaland-image-url-function: 'image-url';
+///
+/// @example scss - Custom asset handling
+///
+///   @function my-url-handler($filename) {
+///     // Some custom URL handling
+///     @return url('example.jpg');
+///   }
+///
+///   $moaland-image-url-function: 'my-url-handler';
+///
+/// @access public
+
+$moaland-image-url-function: false !default;
+
+/// Custom font URL function
+///
+/// If the built-in font URL helper does not meet your needs, you can specify
+/// the name of a custom handler – either built in or by writing your own
+/// function.
+///
+/// If you are writing your own handler, ensure that it returns a string wrapped
+/// with `url()`
+///
+/// @type String
+///
+/// @example scss - Rails asset handling
+///   $moaland-font-url-function: 'font-url';
+///
+/// @example scss - Custom asset handling
+///
+///   @function my-url-handler($filename) {
+///     // Some custom URL handling
+///     @return url('example.woff');
+///   }
+///
+///   $moaland-font-url-function: 'my-url-handler';
+///
+/// @access public
+
+$moaland-font-url-function: false !default;

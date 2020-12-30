@@ -1,0 +1,13 @@
+////
+/// @group settings/global-styles
+////
+
+/// Include 'global' styles
+///
+/// Whether to style paragraphs (`<p>`) and links (`<a>`) without explicitly
+/// having to apply the `moaland-body` and `moaland-link` classes.
+///
+/// @type Boolean
+/// @access public
+
+$moaland-global-styles: false !default;

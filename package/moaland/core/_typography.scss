@@ -1,0 +1,192 @@
+@if not mixin-exists("moaland-exports") {
+  @warn "Importing items from the core layer without first importing `base` is deprecated, and will no longer work as of GOV.MOA Frontend v4.0.";
+}
+
+@import "../base";
+
+@include moaland-exports("moaland/core/typography") {
+
+  // Headings
+
+  %moaland-heading-xl {
+    @include moaland-text-colour;
+    @include moaland-font($size: 48, $weight: bold);
+
+    display: block;
+
+    margin-top: 0;
+    @include moaland-responsive-margin(8, "bottom");
+  }
+
+  .moaland-heading-xl {
+    @extend %moaland-heading-xl;
+  }
+
+  %moaland-heading-l {
+    @include moaland-text-colour;
+    @include moaland-font($size: 36, $weight: bold);
+
+    display: block;
+
+    margin-top: 0;
+    @include moaland-responsive-margin(6, "bottom");
+  }
+
+  .moaland-heading-l {
+    @extend %moaland-heading-l;
+  }
+
+  %moaland-heading-m {
+    @include moaland-text-colour;
+    @include moaland-font($size: 24, $weight: bold);
+
+    display: block;
+
+    margin-top: 0;
+    @include moaland-responsive-margin(4, "bottom");
+  }
+
+  .moaland-heading-m {
+    @extend %moaland-heading-m;
+  }
+
+  %moaland-heading-s {
+    @include moaland-text-colour;
+    @include moaland-font($size: 19, $weight: bold);
+
+    display: block;
+
+    margin-top: 0;
+    @include moaland-responsive-margin(4, "bottom");
+  }
+
+  .moaland-heading-s {
+    @extend %moaland-heading-s;
+  }
+
+  // Captions to be used inside headings
+
+  .moaland-caption-xl {
+    @include moaland-font($size: 27);
+
+    display: block;
+
+    margin-bottom: moaland-spacing(1);
+
+    color: $moaland-secondary-text-colour;
+  }
+
+  .moaland-caption-l {
+    @include moaland-font($size: 24);
+
+    display: block;
+
+    margin-bottom: moaland-spacing(1);
+    color: $moaland-secondary-text-colour;
+
+    @include moaland-media-query($from: tablet) {
+      margin-bottom: 0;
+    }
+  }
+
+  .moaland-caption-m {
+    @include moaland-font($size: 19);
+
+    display: block;
+
+    color: $moaland-secondary-text-colour;
+  }
+
+  // Body (paragraphs)
+
+  %moaland-body-l {
+    @include moaland-text-colour;
+    @include moaland-font($size: 24);
+
+    margin-top: 0;
+    @include moaland-responsive-margin(6, "bottom");
+  }
+
+  .moaland-body-l {
+    @extend %moaland-body-l;
+  }
+
+  %moaland-body-m {
+    @include moaland-text-colour;
+    @include moaland-font($size: 19);
+
+    margin-top: 0;
+    @include moaland-responsive-margin(4, "bottom");
+  }
+
+  .moaland-body-m {
+    @extend %moaland-body-m;
+  }
+
+  %moaland-body-s {
+    @include moaland-text-colour;
+    @include moaland-font($size: 16);
+
+    margin-top: 0;
+    @include moaland-responsive-margin(4, "bottom");
+  }
+
+  .moaland-body-s {
+    @extend %moaland-body-s;
+  }
+
+  %moaland-body-xs {
+    @include moaland-text-colour;
+    @include moaland-font($size: 14);
+
+    margin-top: 0;
+    @include moaland-responsive-margin(4, "bottom");
+  }
+
+  .moaland-body-xs {
+    @extend %moaland-body-xs;
+  }
+
+  // Usage aliases
+
+  // Using extend to alias means we also inherit any contextual adjustments that
+  // refer to the 'original' class name
+
+  .moaland-body-lead {
+    @extend %moaland-body-l;
+  }
+
+  .moaland-body {
+    @extend %moaland-body-m;
+  }
+
+  // Contextual adjustments
+  // Add top padding to headings that appear directly after paragraphs.
+
+  %moaland-body-l  + %moaland-heading-l {
+    padding-top: moaland-spacing(1);
+
+    @include moaland-media-query($from: tablet) {
+      padding-top: moaland-spacing(2);
+    }
+  }
+
+  %moaland-body-m  + %moaland-heading-l,
+  %moaland-body-s  + %moaland-heading-l,
+  %moaland-list + %moaland-heading-l {
+    @include moaland-responsive-padding(4, "top");
+  }
+
+  %moaland-body-m + %moaland-heading-m,
+  %moaland-body-s + %moaland-heading-m,
+  %moaland-list + %moaland-heading-m,
+  %moaland-body-m + %moaland-heading-s,
+  %moaland-body-s + %moaland-heading-s,
+  %moaland-list + %moaland-heading-s {
+    padding-top: moaland-spacing(1);
+
+    @include moaland-media-query($from: tablet) {
+      padding-top: moaland-spacing(2);
+    }
+  }
+}

@@ -1,0 +1,52 @@
+@if not mixin-exists("moaland-exports") {
+  @warn "Importing items from the overrides layer without first importing `base` is deprecated, and will no longer work as of GOV.MOA Frontend v4.0.";
+}
+
+@import "../base";
+
+// stylelint-disable declaration-no-important
+@include moaland-exports("moaland/overrides/width") {
+  .moaland-\!-width-full {
+    width: 100% !important;
+  }
+
+  .moaland-\!-width-three-quarters {
+    width: 100% !important;
+
+    @include moaland-media-query($from: tablet) {
+      width: 75% !important;
+    }
+  }
+
+  .moaland-\!-width-two-thirds {
+    width: 100% !important;
+
+    @include moaland-media-query($from: tablet) {
+      width: 66.66% !important;
+    }
+  }
+
+  .moaland-\!-width-one-half {
+    width: 100% !important;
+
+    @include moaland-media-query($from: tablet) {
+      width: 50% !important;
+    }
+  }
+
+  .moaland-\!-width-one-third {
+    width: 100% !important;
+
+    @include moaland-media-query($from: tablet) {
+      width: 33.33% !important;
+    }
+  }
+
+  .moaland-\!-width-one-quarter {
+    width: 100% !important;
+
+    @include moaland-media-query($from: tablet) {
+      width: 25% !important;
+    }
+  }
+}

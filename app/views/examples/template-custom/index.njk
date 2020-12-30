@@ -1,10 +1,10 @@
 {# Example that changes every setting in the template #}
 
-{% from "back-link/macro.njk" import govukBackLink %}
-{% from "skip-link/macro.njk" import govukSkipLink %}
-{% from "header/macro.njk" import govukHeader %}
-{% from "phase-banner/macro.njk" import govukPhaseBanner %}
-{% from "footer/macro.njk" import govukFooter %}
+{% from "back-link/macro.njk" import moalandBackLink %}
+{% from "skip-link/macro.njk" import moalandSkipLink %}
+{% from "header/macro.njk" import moalandHeader %}
+{% from "phase-banner/macro.njk" import moalandPhaseBanner %}
+{% from "footer/macro.njk" import moalandFooter %}
 
 {% extends "template.njk" %}
 
@@ -15,7 +15,7 @@
 {% set bodyClasses = 'app-body-class' %}
 {% set containerClasses = "app-width-container--wide" %}
 
-{% block pageTitle %}GOV.UK - Le meilleur endroit pour trouver des services gouvernementaux et de l'information{% endblock %}
+{% block pageTitle %}GOV.MOA - Le meilleur endroit pour trouver des services gouvernementaux et de l'information{% endblock %}
 
 {% block headIcons %}
   <!-- block:headIcons -->
@@ -44,7 +44,7 @@
 
 {% block skipLink %}
   <!-- block:skipLink -->
-  {{ govukSkipLink({
+  {{ moalandSkipLink({
     href: '#main-content',
     text: 'Passer au contenu principal'
   }) }}
@@ -53,7 +53,7 @@
 
 {% block header %}
   <!-- block:header -->
-  {{ govukHeader({
+  {{ moalandHeader({
     serviceName: "Nom du service",
     containerClasses: "app-width-container--wide",
     navigation: [
@@ -75,7 +75,7 @@
   <!-- endblock:header -->
 {% endblock %}
 
-{% set mainClasses = 'govuk-main-wrapper--auto-spacing app-main-class' %}
+{% set mainClasses = 'moaland-main-wrapper--auto-spacing app-main-class' %}
 
 {% block main %}
   <!-- block:main -->
@@ -85,13 +85,13 @@
 
 {% block beforeContent %}
   <!-- block:beforeContent -->
-  {{ govukPhaseBanner({
+  {{ moalandPhaseBanner({
     tag: {
       text: "alpha"
     },
-    html: 'C\'est un nouveau service - vos <a class="govuk-link" href="#">commentaires</a> nous aideront à l\'améliorer.'
+    html: 'C\'est un nouveau service - vos <a class="moaland-link" href="#">commentaires</a> nous aideront à l\'améliorer.'
   }) }}
-  {{ govukBackLink({
+  {{ moalandBackLink({
     "href": "/"
   }) }}
   <!-- endblock:beforeContent -->
@@ -105,7 +105,7 @@
 
 {% block footer %}
   <!-- block:footer -->
-  {{ govukFooter({
+  {{ moalandFooter({
     containerClasses: "app-width-container--wide",
     "meta": {
       "items": [

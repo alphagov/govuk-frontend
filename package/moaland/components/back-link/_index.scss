@@ -1,0 +1,110 @@
+@include moaland-exports("moaland/component/back-link") {
+
+  // Size of chevron (excluding border)
+  $chevron-size: 7px;
+
+  // Size of chevron border
+  $chevron-border-width: 1px;
+
+  // Colour of chevron
+  $chevron-border-colour: $moaland-secondary-text-colour;
+
+  .moaland-back-link {
+    @include moaland-typography-responsive($size: 16);
+    @include moaland-link-common;
+    @include moaland-link-style-text;
+
+    display: inline-block;
+    position: relative;
+
+    margin-top: moaland-spacing(3);
+    margin-bottom: moaland-spacing(3);
+
+    // Allow space for the arrow
+    padding-left: 14px;
+  }
+
+  // Only underline if the component is linkable
+  .moaland-back-link[href] {
+    text-decoration: underline;
+
+    // When the back link is focused, hide the bottom link border as the
+    // focus styles has a bottom border.
+    &:focus {
+      text-decoration: none;
+
+      &:before {
+        border-color: $moaland-text-colour;
+      }
+    }
+  }
+
+  // Prepend left pointing chevron
+  .moaland-back-link:before {
+    content: "";
+    display: block;
+
+    // Vertically align with the parent element
+    position: absolute;
+
+    @if $moaland-use-legacy-font {
+      // Begin adjustments for font baseline offset
+      // These should be removed when legacy font support is dropped
+      top: -1px;
+      bottom: 1px;
+    } @else {
+      top: 0;
+      bottom: 0;
+    }
+
+    left: 3px;
+
+    width: $chevron-size;
+    height: $chevron-size;
+
+    margin: auto 0;
+
+    -webkit-transform: rotate(225deg);
+
+        -ms-transform: rotate(225deg);
+
+            transform: rotate(225deg);
+
+    border: solid;
+    border-width: $chevron-border-width $chevron-border-width 0 0;
+    border-color: $chevron-border-colour;
+
+    // Fall back to a less than sign for IE8
+    @include moaland-if-ie8 {
+      content: "\003c"; // Less than sign (<)
+      width: auto;
+      height: auto;
+      border: 0;
+      color: $chevron-border-colour;
+
+      // IE8 doesn't seem to like rendering pseudo-elements using @font-faces,
+      // so fall back to using another sans-serif font to render the chevron.
+      font-family: Arial, sans-serif;
+    }
+  }
+
+  .moaland-back-link:after {
+    content: "";
+    position: absolute;
+    top: -14px;
+    right: 0;
+    bottom: -14px;
+    left: 0;
+  }
+
+  @if $moaland-use-legacy-font {
+    // Begin adjustments for font baseline offset
+    // These should be removed when legacy font support is dropped
+    .moaland-back-link:before {
+      $offset: 1px;
+
+      top: $offset * -1;
+      bottom: $offset;
+    }
+  }
+}

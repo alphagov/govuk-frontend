@@ -1,0 +1,135 @@
+@include moaland-exports("moaland/component/tabs") {
+  .moaland-tabs {
+    @include moaland-responsive-margin(1, "top");
+    @include moaland-responsive-margin(6, "bottom");
+  }
+
+  .moaland-tabs__title {
+    @include moaland-font($size: 19);
+    @include moaland-text-colour;
+    margin-bottom: moaland-spacing(2);
+  }
+
+  .moaland-tabs__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    @include moaland-responsive-margin(6, "bottom");
+  }
+
+  .moaland-tabs__list-item {
+    @include moaland-font($size: 19);
+    margin-left: moaland-spacing(5);
+
+    &:before {
+      @include moaland-text-colour;
+      content: "\2014 "; // "— "
+      margin-left: - moaland-spacing(5);
+      padding-right: moaland-spacing(1);
+    }
+  }
+
+  .moaland-tabs__tab {
+    @include moaland-link-style-default;
+
+    display: inline-block;
+    margin-bottom: moaland-spacing(2);
+
+    // Focus state for mobile and when JavaScript is disabled
+    // It is removed for JS-enabled desktop styles
+    &:focus {
+      @include moaland-focused-text;
+    }
+  }
+
+  .moaland-tabs__panel {
+    @include moaland-responsive-margin(8, "bottom");
+  }
+
+  // JavaScript enabled
+  .js-enabled {
+
+    @include moaland-media-query($from: tablet) {
+      .moaland-tabs__list {
+        @include moaland-clearfix;
+        margin-bottom: 0;
+        border-bottom: 1px solid $moaland-border-colour;
+      }
+
+      .moaland-tabs__title {
+        display: none;
+      }
+
+      .moaland-tabs__list-item {
+        position: relative;
+
+        margin-right: moaland-spacing(1);
+        margin-bottom: 0;
+        margin-left: 0;
+        padding: moaland-spacing(2) moaland-spacing(4);
+
+        float: left;
+        background-color: moaland-colour("light-grey", $legacy: "grey-4");
+        text-align: center;
+
+        &:before {
+          content: none;
+        }
+      }
+
+      .moaland-tabs__list-item--selected {
+        $border-width: 1px;
+
+        position: relative;
+
+        margin-top: - moaland-spacing(1);
+
+        // Compensation for border (otherwise we get a shift)
+        margin-bottom: -$border-width;
+        padding-top: moaland-spacing(3) - $border-width;
+        padding-right: moaland-spacing(4) - $border-width;
+        padding-bottom: moaland-spacing(3) + $border-width;
+        padding-left: moaland-spacing(4) - $border-width;
+
+        border: $border-width solid $moaland-border-colour;
+        border-bottom: 0;
+
+        background-color: $moaland-body-background-colour;
+
+        .moaland-tabs__tab {
+          text-decoration: none;
+        }
+      }
+
+      .moaland-tabs__tab {
+        @include moaland-link-style-text;
+
+        margin-bottom: 0;
+
+        &:after {
+          content: "";
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+        }
+      }
+
+      .moaland-tabs__panel {
+        @include moaland-responsive-margin(0, "bottom");
+        padding: moaland-spacing(6) moaland-spacing(4);
+        border: 1px solid $moaland-border-colour;
+        border-top: 0;
+
+        & > :last-child {
+          margin-bottom: 0;
+        }
+      }
+
+      .moaland-tabs__panel--hidden {
+        display: none;
+      }
+    }
+  }
+}
