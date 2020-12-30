@@ -1,6 +1,6 @@
 ---
 scenario: >-
-  You have used a service called GOV.UK Verify and wish to report an issue.
+  You have used a service called GOV.MOA Verify and wish to report an issue.
 
 
   Things to try:
@@ -29,7 +29,7 @@ notes: Based on https://www.signin.service.gov.uk/feedback
 {% from "error-summary/macro.njk" import moalandErrorSummary %}
 
 {% set pageTitle = "Send your feedback" %}
-{% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - Verify - GOV.UK{% endblock %}
+{% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - Verify - GOV.MOA{% endblock %}
 
 {% block header %}
   {% include "../../partials/banner.njk" %}
@@ -52,7 +52,7 @@ notes: Based on https://www.signin.service.gov.uk/feedback
             <h1 class="moaland-heading-xl">{{ pageTitle }}</h1>
 
             <p class="moaland-body">
-                Use this form to ask a question, report a problem or suggest an improvement GOV.UK Verify can make.
+                Use this form to ask a question, report a problem or suggest an improvement GOV.MOA Verify can make.
             </p>
 
             {{ moalandWarningText({
@@ -85,7 +85,7 @@ notes: Based on https://www.signin.service.gov.uk/feedback
             }) }}
 
             {% set yesHTML %}
-                <p class="moaland-body">Leave your details below if you'd like a response from GOV.UK Verify.</p>
+                <p class="moaland-body">Leave your details below if you'd like a response from GOV.MOA Verify.</p>
 
                 {{ moalandInput({
                     id: "name",

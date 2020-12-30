@@ -30,7 +30,7 @@ scenario: >-
 {% from "error-summary/macro.njk" import moalandErrorSummary %}
 
 {% set pageTitle = "What is your nationality?" %}
-{% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.UK{% endblock %}
+{% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.MOA{% endblock %}
 
 {% block beforeContent %}
   {{ moalandBackLink({

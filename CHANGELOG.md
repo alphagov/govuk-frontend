@@ -4,7 +4,7 @@
 
 ### Fixes
 
-We’ve made fixes to GOV.UK Frontend in the following pull requests:
+We’ve made fixes to GOV.MOA Frontend in the following pull requests:
 
 - [#2080: Fix JavaScript error when character count ID starts with a number](https://github.com/moaland/moaland-frontend/pull/2080) - thanks to [@josef-vlach](https://github.com/josef-vlach) for reporting this issue.
 
@@ -12,7 +12,7 @@ We’ve made fixes to GOV.UK Frontend in the following pull requests:
 
 ### Fixes
 
-We’ve made fixes to the fixtures you can use to [check your HTML matches GOV.UK Frontend](https://frontend.design-system.service.gov.uk/testing-your-html/#test-if-your-html-matches-gov-uk-frontend).
+We’ve made fixes to the fixtures you can use to [check your HTML matches GOV.MOA Frontend](https://frontend.design-system.service.gov.uk/testing-your-html/#test-if-your-html-matches-gov-uk-frontend).
 
 These changes were made in the following pull requests:
 
@@ -20,13 +20,13 @@ These changes were made in the following pull requests:
 - [#2043: Fixes for a couple of component examples / fixtures](https://github.com/moaland/moaland-frontend/pull/2043) – thanks to [@andymantell](https://github.com/andymantell) for contributing this as well!
 - [#2071: Use non-bool type strings for attributes in test fixtures](https://github.com/moaland/moaland-frontend/pull/2071) – thanks to [@matthew-shaw](https://github.com/matthew-shaw) for contributing this
 
-There are no other changes to GOV.UK Frontend in this release.
+There are no other changes to GOV.MOA Frontend in this release.
 
 ## 3.10.1 (Patch release)
 
 ### Fixes
 
-We’ve made fixes to GOV.UK Frontend in the following pull requests:
+We’ve made fixes to GOV.MOA Frontend in the following pull requests:
 
 - [#2035: Fix hairline gap between notification banner header and outer border on high resolution screens in Chrome/Edge (Blink)](https://github.com/moaland/moaland-frontend/pull/2035)
 - [#2036: Explicitly set the text colour for notification banner content, rather than using the user-agent default text colour](https://github.com/moaland/moaland-frontend/pull/2036)
@@ -52,7 +52,7 @@ This was added in [pull request #1975: Enable custom inputmode for date input co
 
 ### Fixes
 
-We’ve made fixes to GOV.UK Frontend in the following pull requests:
+We’ve made fixes to GOV.MOA Frontend in the following pull requests:
 
 - [#1967: Fix navigation links in the header not being announced by screen readers](https://github.com/moaland/moaland-frontend/pull/1967)
 
@@ -64,11 +64,11 @@ We’ve made fixes to GOV.UK Frontend in the following pull requests:
 
 You can now [use prefixes and suffixes in the text input component](https://design-system.service.gov.uk/components/text-input/#prefixes-and-suffixes) to help users enter things like currencies and measurements.
 
-This was added in [pull request #1816: Add input prefix and suffix](https://github.com/moaland/moaland-frontend/pull/1816). Thanks to [@simonwhatley](https://github.com/simonwhatley) and the GOV.UK Coronavirus Services Team.
+This was added in [pull request #1816: Add input prefix and suffix](https://github.com/moaland/moaland-frontend/pull/1816). Thanks to [@simonwhatley](https://github.com/simonwhatley) and the GOV.MOA Coronavirus Services Team.
 
-#### Test if your HTML matches GOV.UK Frontend
+#### Test if your HTML matches GOV.MOA Frontend
 
-You can now use our test fixtures to [check you're outputting the same HTML that GOV.UK Frontend uses](http://frontend.design-system.service.gov.uk/testing-your-html/).
+You can now use our test fixtures to [check you're outputting the same HTML that GOV.MOA Frontend uses](http://frontend.design-system.service.gov.uk/testing-your-html/).
 
 This was added in [pull request #1925: Generate fixtures.json files for components on build:package](https://github.com/moaland/moaland-frontend/pull/1925). Thanks to everyone who fed back on [our test fixtures proposal](https://github.com/moaland/moaland-frontend/issues/1830#issuecomment-665075842).
 
@@ -127,7 +127,7 @@ This was added in [pull request #1921: Make it possible to exclude link from hea
 
 ### Fixes
 
-We’ve made fixes to GOV.UK Frontend in the following pull requests:
+We’ve made fixes to GOV.MOA Frontend in the following pull requests:
 
 - [#1918: Add new brand colour for FCDO](https://github.com/moaland/moaland-frontend/pull/1918) - thanks to [@deborahchua](https://github.com/deborahchua) and [@beccapearce](https://github.com/beccapearce) for contributing this
 - [#1942: Set aria-expanded and aria-hidden attributes on header menu button and menu when page loads](https://github.com/moaland/moaland-frontend/pull/1942)
@@ -137,7 +137,7 @@ We’ve made fixes to GOV.UK Frontend in the following pull requests:
 
 ### Fixes
 
-We’ve made fixes to GOV.UK Frontend in the following pull requests:
+We’ve made fixes to GOV.MOA Frontend in the following pull requests:
 
 - [#1912: Fix character count shrinking as you go over limit](https://github.com/moaland/moaland-frontend/pull/1912)
 
@@ -187,7 +187,7 @@ This was added in pull requests:
 
 #### $moaland-border-width-form-element-error
 
-From GOV.UK Frontend v4.0.0, you'll no longer be able to reference the [`$moaland-border-width-form-element-error`](https://frontend.design-system.service.gov.uk/sass-api-reference/#moaland-border-width-form-element-error) Sass setting.
+From GOV.MOA Frontend v4.0.0, you'll no longer be able to reference the [`$moaland-border-width-form-element-error`](https://frontend.design-system.service.gov.uk/sass-api-reference/#moaland-border-width-form-element-error) Sass setting.
 
 Change any references to `$moaland-border-width-form-element-error` in your Sass code so they reference `$moaland-border-width-form-element` instead.
 
@@ -195,7 +195,7 @@ This was changed in [pull request #1870: Reduce border width of form inputs in t
 
 ### Fixes
 
-We’ve made fixes to GOV.UK Frontend in the following pull requests:
+We’ve made fixes to GOV.MOA Frontend in the following pull requests:
 
 - [#1838: Correctly camel case SVG attributes in the header and footer](https://github.com/moaland/moaland-frontend/pull/1838)
 - [#1842: Preserve the state of conditional reveals when navigating 'back' in the browser](https://github.com/moaland/moaland-frontend/pull/1842)
@@ -227,11 +227,11 @@ You can now import `node_modules/moaland-frontend/moaland/base`, instead of impo
 
 #### Sass now compiles faster
 
-GOV.UK Frontend's Sass files now compile to CSS faster, because we've changed the way dependencies work when you import them.
+GOV.MOA Frontend's Sass files now compile to CSS faster, because we've changed the way dependencies work when you import them.
 
 If you already import `node_modules/moaland-frontend/moaland/all` in your Sass file, you do not need to do anything. Sass will automatically compile faster.
 
-If you import specific parts of GOV.UK Frontend in your Sass file instead, you can now make Sass compile faster by importing `base` then a component's `index` file. This will avoid GOV.UK Frontend importing dependencies multiple times.
+If you import specific parts of GOV.MOA Frontend in your Sass file instead, you can now make Sass compile faster by importing `base` then a component's `index` file. This will avoid GOV.MOA Frontend importing dependencies multiple times.
 
 For example:
 
@@ -282,14 +282,14 @@ To fix the warning, import `node_modules/moaland-frontend/moaland/base` first. F
 @import "node_modules/moaland-frontend/core/typography";
 ```
 
-If you do not import `node_modules/moaland-frontend/moaland/base` first, your service will no longer work from GOV.UK Frontend v4.0.0.
+If you do not import `node_modules/moaland-frontend/moaland/base` first, your service will no longer work from GOV.MOA Frontend v4.0.0.
 
 This was added in [pull request #1807: Warn if importing core, overrides without dependencies](https://github.com/moaland/moaland-frontend/pull/1807).
 
 
 ### Fixes
 
-We’ve made fixes to GOV.UK Frontend in the following pull requests:
+We’ve made fixes to GOV.MOA Frontend in the following pull requests:
 
 - [#1778: Fix accordion underline hover state being removed when hovering plus/minus symbol](https://github.com/moaland/moaland-frontend/pull/1778)
 - [#1765: Import textarea from character count](https://github.com/moaland/moaland-frontend/pull/1765)
@@ -497,7 +497,7 @@ moalandInput({
 You must make the following changes when you migrate to this release, or your service may break.
 
 #### Update file paths, attributes and class names
-To make sure GOV.UK Frontend's files do not conflict with your code, we've moved our package files into a directory called `moaland`.
+To make sure GOV.MOA Frontend's files do not conflict with your code, we've moved our package files into a directory called `moaland`.
 
 ##### If you’re using Sass
 
@@ -553,7 +553,7 @@ The [button](https://design-system.service.gov.uk/components/button/) and [detai
 
 If you're using your own JavaScript code to initialise components, add a `moaland-` prefix to any selectors that find components using the `data-module` attribute.
 
-[Pull request #1443: Ensure GOV.UK Frontend component selectors cannot conflict when initialised](https://github.com/moaland/moaland-frontend/pull/1443)
+[Pull request #1443: Ensure GOV.MOA Frontend component selectors cannot conflict when initialised](https://github.com/moaland/moaland-frontend/pull/1443)
 
 ###### Update CSS class names
 
@@ -562,13 +562,13 @@ You do not need to do anything if you're using Nunjucks.
 If you're using HTML or custom JavaScript, change:
 
 - `js-character-count` to `moaland-js-character-count`
-- `js-header-toggle` in the GOV.UK Frontend header component to `moaland-js-header-toggle`
+- `js-header-toggle` in the GOV.MOA Frontend header component to `moaland-js-header-toggle`
 
 [Pull request #1444: Renames `js-` css prefix to `moaland-js-`](https://github.com/moaland/moaland-frontend/pull/1444)
 
 ##### If you’re using Nunjucks
 
-1. Change the list of paths in `nunjucks.configure` so that the only GOV.UK Frontend path is `node_modules/moaland-frontend/`:
+1. Change the list of paths in `nunjucks.configure` so that the only GOV.MOA Frontend path is `node_modules/moaland-frontend/`:
 
 ```nunjucks
 nunjucks.configure([
@@ -612,7 +612,7 @@ You must [update your component’s focus state](https://design-system.service.g
 
 If you've extended or created components, you can no longer use the `moaland-focusable` or `moaland-focusable-fill` Sass mixins.
 
-If you're using `moaland-focusable`, you must remove it. There’s no direct replacement, so you must [use our Sass variables to make your components consistent](https://design-system.service.gov.uk/get-started/focus-states/#make-other-focusable-elements-accessible) with GOV.UK Frontend.
+If you're using `moaland-focusable`, you must remove it. There’s no direct replacement, so you must [use our Sass variables to make your components consistent](https://design-system.service.gov.uk/get-started/focus-states/#make-other-focusable-elements-accessible) with GOV.MOA Frontend.
 
 If you're using `moaland-focusable-fill`, include the `moaland-focused-text` mixin inside your component's `:focus` selector. For example:
 
@@ -675,7 +675,7 @@ We've also changed the background of the following components:
 - confirmation panels - `green` instead of `turquoise`
 - links in their hover state - `dark-blue` instead of `light-blue`
 
-If you're using legacy projects like GOV.UK Elements, you can keep your current colours by [turning on compatibility mode](https://github.com/moaland/moaland-frontend/blob/master/docs/installation/compatibility.md).
+If you're using legacy projects like GOV.MOA Elements, you can keep your current colours by [turning on compatibility mode](https://github.com/moaland/moaland-frontend/blob/master/docs/installation/compatibility.md).
 
 Read our [blog post about why we changed the colour palette](https://designnotes.blog.gov.uk/2019/07/29/weve-updated-the-gov-uk-colours-and-font/)
 
@@ -687,11 +687,11 @@ The size and baseline of the Design System's font are now more consistent with o
 
 If you've extended or created components, you should check that your text is still vertically aligned correctly.
 
-If you're using GOV.UK Frontend and [GOV.UK Template](https://github.com/alphagov/govuk_template), you can [turn on compatibility mode](https://github.com/moaland/moaland-frontend/blob/master/docs/installation/compatibility.md) to keep using the font from GOV.UK Template.
+If you're using GOV.MOA Frontend and [GOV.MOA Template](https://github.com/alphagov/govuk_template), you can [turn on compatibility mode](https://github.com/moaland/moaland-frontend/blob/master/docs/installation/compatibility.md) to keep using the font from GOV.MOA Template.
 
 Pull requests:
 
-- [#1434: Update font to use v2 of GOV.UK Transport font](https://github.com/moaland/moaland-frontend/pull/1434)
+- [#1434: Update font to use v2 of GOV.MOA Transport font](https://github.com/moaland/moaland-frontend/pull/1434)
 - [#1441: Removing font style adjustments](https://github.com/moaland/moaland-frontend/pull/1441)
 
 #### Update links from error summary components to radios and checkboxes
@@ -816,12 +816,12 @@ IE8 will now use Arial instead of GDS Transport.
 
 This is because IE8 requires a very large Embedded Open Type (.eot) font file for external fonts. Arial will take less time to render for IE8 users, who are likely to be on older computers.
 
-[Pull request #1434: Update font to use v2 of GOV.UK Transport font](https://github.com/moaland/moaland-frontend/pull/1434). Thanks to [@Nooshu](https://github.com/Nooshu).
+[Pull request #1434: Update font to use v2 of GOV.MOA Transport font](https://github.com/moaland/moaland-frontend/pull/1434). Thanks to [@Nooshu](https://github.com/Nooshu).
 
 ### Fixes
 
 - [Pull request #1310: The border on error summaries is now the correct width on mobile.
-GOV.UK Template's focused link colour no longer overrides GOV.UK Frontend](https://github.com/moaland/moaland-frontend/pull/1310).
+GOV.MOA Template's focused link colour no longer overrides GOV.MOA Frontend](https://github.com/moaland/moaland-frontend/pull/1310).
 - [Pull request #1316: Checkboxes and radios no longer have a transparent outline - because it's no longer needed to fix custom focus state colours](https://github.com/moaland/moaland-frontend/pull/1316).
 - [Pull request #1324: There’s no longer an outline when a user focuses an accordion element in Firefox](https://github.com/moaland/moaland-frontend/pull/1324).
 - [Pull request #1330: We've changed the spacing around lists in tabs on mobile and with JavasScript disabled, so they're consistent with other lists](https://github.com/moaland/moaland-frontend/pull/1330).
@@ -834,7 +834,7 @@ GOV.UK Template's focused link colour no longer overrides GOV.UK Frontend](https
 - [Pull request #1442: Character count components are now hidden to assistive technologies when they're not visible](https://github.com/moaland/moaland-frontend/pull/1442).
 - [Pull request #1434: The underline below links no longer sits too far down in Firefox](https://github.com/moaland/moaland-frontend/pull/1434).
 - [Pull request #1435: When a user resubmits a form, the error summary is now correctly focused instead of the form](https://github.com/moaland/moaland-frontend/pull/1435).
-- [Pull request #1473: We’ve removed icon-arrow-left.png and icon-important.png, because they were not used in GOV.UK Frontend](https://github.com/moaland/moaland-frontend/pull/1473)
+- [Pull request #1473: We’ve removed icon-arrow-left.png and icon-important.png, because they were not used in GOV.MOA Frontend](https://github.com/moaland/moaland-frontend/pull/1473)
 - [Pull request #1497: Users can now conditionally reveal content on pages with multiple grouped radios](https://github.com/moaland/moaland-frontend/pull/1497) - thanks to [@colinrotherham](https://github.com/colinrotherham) and [@frankieroberto](https://github.com/frankieroberto) for their help.
 
 ## 2.13.0
@@ -855,7 +855,7 @@ when they're disabled.
 
 - The crown logo image in the header now:
   - has height and width attributes set
-  - aligns better with 'GOV.UK' in IE8
+  - aligns better with 'GOV.MOA' in IE8
 
   ([Pull request #1419](https://github.com/moaland/moaland-frontend/pull/1419))
 
@@ -963,7 +963,7 @@ when they're disabled.
 
 - Allow initAll to be scoped to a specific part of a page
 
-  See ["Initialise GOV.UK Frontend in only certain sections of a page"](docs/installation/installing-with-npm.md#initialise-moaland-frontend-in-only-certain-sections-of-a-page) for more information.
+  See ["Initialise GOV.MOA Frontend in only certain sections of a page"](docs/installation/installing-with-npm.md#initialise-moaland-frontend-in-only-certain-sections-of-a-page) for more information.
 
   ([PR #1216](https://github.com/moaland/moaland-frontend/pull/1216))
 
@@ -977,7 +977,7 @@ when they're disabled.
 
 - Update padding of moaland-main-wrapper
 
-  This increases the padding of `moaland-main-wrapper` (on tablet and above) to be more inline with GOV.UK. When updating, your pages will have 10px more white space above and below the 'main' content area.
+  This increases the padding of `moaland-main-wrapper` (on tablet and above) to be more inline with GOV.MOA. When updating, your pages will have 10px more white space above and below the 'main' content area.
 
   ([PR #1073](https://github.com/moaland/moaland-frontend/pull/1073))
 
@@ -987,7 +987,7 @@ when they're disabled.
 
 - Ensure font is not loaded twice on slow networks
 
-  This is only an issue for users that are using alphagov/govuk_template alongside GOV.UK Frontend.
+  This is only an issue for users that are using alphagov/govuk_template alongside GOV.MOA Frontend.
 
   ([PR #1242](https://github.com/moaland/moaland-frontend/pull/1242))
 
@@ -1036,7 +1036,7 @@ If you're using your own components that rely on the overflow state of the docum
   As content vertical height grows (e.g. autocomplete results appear), browsers
   may add scroll bars causing the page to jump horizontally in position.
 
-  To avoid this, re-introduce fix from GOV.UK Template:
+  To avoid this, re-introduce fix from GOV.MOA Template:
   https://github.com/moaland/moaland-frontend/issues/1204
 
   ([PR #1230](https://github.com/moaland/moaland-frontend/pull/1230))
@@ -1430,7 +1430,7 @@ If you're using your own components that rely on the overflow state of the docum
 
 - Add component options (arguments) as `macro-options.json` to `package`
 
-  We want to be able to expose these options to GOV.UK Design System. This change includes them as `yaml` in `src/components` and adds a build step to transform them to `JSON` and copy them to `package/components`. It also adds a test to check if the copied files are valid JSON and contain expected attributes.
+  We want to be able to expose these options to GOV.MOA Design System. This change includes them as `yaml` in `src/components` and adds a build step to transform them to `JSON` and copy them to `package/components`. It also adds a test to check if the copied files are valid JSON and contain expected attributes.
 
   ([PR #998](https://github.com/moaland/moaland-frontend/pull/998))
 
@@ -1549,11 +1549,11 @@ If you're using your own components that rely on the overflow state of the docum
 
   ([PR #984](https://github.com/moaland/moaland-frontend/pull/984))
 
-- Turn off [compatibility mode](./docs/installation/installing-with-npm.md#compatibility-mode) by default for [GOV.UK Elements](https://github.com/alphagov/govuk_elements), [GOV.UK Template](https://github.com/alphagov/govuk_template), [GOV.UK Frontend Toolkit](https://github.com/alphagov/govuk_frontend_toolkit)
+- Turn off [compatibility mode](./docs/installation/installing-with-npm.md#compatibility-mode) by default for [GOV.MOA Elements](https://github.com/alphagov/govuk_elements), [GOV.MOA Template](https://github.com/alphagov/govuk_template), [GOV.MOA Frontend Toolkit](https://github.com/alphagov/govuk_frontend_toolkit)
 
-  You do not need to make any changes if you do not use these projects alongside GOV.UK Frontend.
+  You do not need to make any changes if you do not use these projects alongside GOV.MOA Frontend.
 
-  To migrate include the SCSS variables that correspond with the projects you depend on before importing GOV.UK Frontend styles into your app:
+  To migrate include the SCSS variables that correspond with the projects you depend on before importing GOV.MOA Frontend styles into your app:
 
   ```SCSS
   // application.scss
@@ -1566,13 +1566,13 @@ If you're using your own components that rely on the overflow state of the docum
 
 - Turn on relative typography (rem) by default
 
-  This allows for end-users to adjust GOV.UK Frontend components by setting their font size in their browser.
+  This allows for end-users to adjust GOV.MOA Frontend components by setting their font size in their browser.
 
-  If you are using GOV.UK Frontend on with no other frameworks this should not break your project.
+  If you are using GOV.MOA Frontend on with no other frameworks this should not break your project.
 
-  If you need to change this setting for compatibility with [GOV.UK Elements](https://github.com/alphagov/govuk_elements), [GOV.UK Template](https://github.com/alphagov/govuk_template), [GOV.UK Frontend Toolkit](https://github.com/alphagov/govuk_frontend_toolkit) consider enabling [compatibility mode](./docs/installation/installing-with-npm.md#compatibility-mode).
+  If you need to change this setting for compatibility with [GOV.MOA Elements](https://github.com/alphagov/govuk_elements), [GOV.MOA Template](https://github.com/alphagov/govuk_template), [GOV.MOA Frontend Toolkit](https://github.com/alphagov/govuk_frontend_toolkit) consider enabling [compatibility mode](./docs/installation/installing-with-npm.md#compatibility-mode).
 
-  Otherwise, set `$moaland-typography-use-rem` to `false` before importing GOV.UK Frontend styles into your app:
+  Otherwise, set `$moaland-typography-use-rem` to `false` before importing GOV.MOA Frontend styles into your app:
   ```SCSS
   // application.scss
   $moaland-typography-use-rem: false;
@@ -1586,7 +1586,7 @@ If you're using your own components that rely on the overflow state of the docum
 
   To migrate we recommend using adding `.moaland-link` class to any anchors within a moaland-list.
 
-  If you would like to replicate this functionality without adding a class you can also enable [global styles](https://github.com/moaland/moaland-frontend/blob/master/docs/installation/installing-with-npm.md#global-styles) (Note: global styles are enabled by default in the GOV.UK Prototype Kit)
+  If you would like to replicate this functionality without adding a class you can also enable [global styles](https://github.com/moaland/moaland-frontend/blob/master/docs/installation/installing-with-npm.md#global-styles) (Note: global styles are enabled by default in the GOV.MOA Prototype Kit)
 
   ([PR #985](https://github.com/moaland/moaland-frontend/pull/985))
 
@@ -1598,7 +1598,7 @@ If you're using your own components that rely on the overflow state of the docum
 
 - Use text colour on focus for better contrast
 
-  Updates the focus styles of links in GOV.UK Frontend so they pass WCAG contrast requirements.
+  Updates the focus styles of links in GOV.MOA Frontend so they pass WCAG contrast requirements.
 
   ([PR #982](https://github.com/moaland/moaland-frontend/pull/982))
 
@@ -1625,7 +1625,7 @@ If you're using your own components that rely on the overflow state of the docum
 
   ([PR #976](https://github.com/moaland/moaland-frontend/pull/976))
 
-- Defend tables against GOV.UK Elements code
+- Defend tables against GOV.MOA Elements code
   ([PR #983](https://github.com/moaland/moaland-frontend/pull/983))
 
 ## 1.3.0 (feature release)
@@ -1842,7 +1842,7 @@ If you're using your own components that rely on the overflow state of the docum
 
 - Define size of table in `px` rather than `em`
 
-  This brings the styling of tables inline with rest of GOV.UK Frontend which no longer uses `em` for measurements.
+  This brings the styling of tables inline with rest of GOV.MOA Frontend which no longer uses `em` for measurements.
 
   This change very slightly increases the padding of table cells on mobile viewport as the use of `em` meant the font size set in the table was used to calculate padding. `padding-top` and `padding-bottom` of cells increase by 1.5px respectively which very slightly increases the height of the table on mobile.
 
@@ -1934,9 +1934,9 @@ If you're using your own components that rely on the overflow state of the docum
 
 💥 Breaking changes:
 
-- The default build of the GOV.UK Frontend JavaScript now does not initialize all components automatically.
+- The default build of the GOV.MOA Frontend JavaScript now does not initialize all components automatically.
 
-  This allows you to initialize only the components you need, and gives you finer control over when the JavaScript for GOV.UK Frontend runs.
+  This allows you to initialize only the components you need, and gives you finer control over when the JavaScript for GOV.MOA Frontend runs.
 
   To migrate your project you need to change
   ```html
@@ -2003,7 +2003,7 @@ If you're using your own components that rely on the overflow state of the docum
 
   ([PR #748](https://github.com/moaland/moaland-frontend/pull/748))
 
-- Spacing has been refactored. You will need to update Sass that currently uses GOV.UK Frontend spacing:
+- Spacing has been refactored. You will need to update Sass that currently uses GOV.MOA Frontend spacing:
 
   - Instead of
   ``` css
@@ -2233,7 +2233,7 @@ You can now initialize individual components like so:
 🔧 Fixes:
 
 - Namespacing SCSS exports with 'moaland' prefix to avoid clashes with
-  exports in applications consuming GOV.UK Frontend
+  exports in applications consuming GOV.MOA Frontend
   ([PR #732](https://github.com/moaland/moaland-frontend/pull/732))
 
 - Fixes a bug whereby print styles were being 'rasterized' into the screen
@@ -2269,7 +2269,7 @@ You can now initialize individual components like so:
   See `src/settings/_assets.scss` for more information and examples.
   ([PR #733](https://github.com/moaland/moaland-frontend/pull/733))
 
-- Add boilerplate template, which is a Nunjucks replacement for [GOV.UK Template](https://github.com/alphagov/govuk_template).
+- Add boilerplate template, which is a Nunjucks replacement for [GOV.MOA Template](https://github.com/alphagov/govuk_template).
   ([PR #731](https://github.com/moaland/moaland-frontend/pull/731))
 
 🏠 Internal:
@@ -2420,7 +2420,7 @@ You can now initialize individual components like so:
   }) }}
   ```
 
-  For more examples of the new markup and Nunjucks macros see the GOV.UK Design System [Question Pages pattern](https://moaland-design-system-production.cloudapps.digital/patterns/question-pages/)
+  For more examples of the new markup and Nunjucks macros see the GOV.MOA Design System [Question Pages pattern](https://moaland-design-system-production.cloudapps.digital/patterns/question-pages/)
 
   ([PR #681](https://github.com/moaland/moaland-frontend/pull/681))
 
@@ -2574,7 +2574,7 @@ You can now initialize individual components like so:
 - Reinstate focus outline for radios and checkboxes on IE8
   (PR [#670](https://github.com/moaland/moaland-frontend/pull/670))
 
-- Fix section break styles when used with GOV.UK Elements
+- Fix section break styles when used with GOV.MOA Elements
   ([PR #682](https://github.com/moaland/moaland-frontend/pull/682))
 
 - Remove `-webkit-tap-highlight-color` from links (PR [#692](https://github.com/moaland/moaland-frontend/pull/692))
@@ -2599,9 +2599,9 @@ You can now initialize individual components like so:
 
   Global styles are not included by default.
 
-  This is to avoid the risk of these globals conflicting with any pre-existing globals, for example in GOV.UK Elements or GOV.UK Template.
+  This is to avoid the risk of these globals conflicting with any pre-existing globals, for example in GOV.MOA Elements or GOV.MOA Template.
 
-  Hovever, we do include them in the [GOV.UK Prototype Kit](https://github.com/alphagov/govuk-prototype-kit-private-beta) to speed up prototyping.
+  Hovever, we do include them in the [GOV.MOA Prototype Kit](https://github.com/alphagov/govuk-prototype-kit-private-beta) to speed up prototyping.
 
   To include global styles, you can set `$moaland-global-styles` variable to `true`.
 
@@ -2661,7 +2661,7 @@ Missing files were:
 🔧 Fixes:
 - Link styles, as well as links within the  back-link, breadcrumbs, button,
   error summary, footer and skip link components defend against the
-  `a:link:focus` selector in GOV.UK Template, which was overriding focussed
+  `a:link:focus` selector in GOV.MOA Template, which was overriding focussed
   links to always use the dark blue link colour for text.
   (PR [#609](https://github.com/moaland/moaland-frontend/pull/609))
 - Fix table captions to allow heading classes
@@ -2679,7 +2679,7 @@ Missing files were:
   (PR [#609](https://github.com/moaland/moaland-frontend/pull/609))
 - Introduce a new 'compatibility' mixin and settings to allow us to selectively
   include styles that 'counter' styles from the existing products
-  (e.g. GOV.UK Template)
+  (e.g. GOV.MOA Template)
   (PR [#609](https://github.com/moaland/moaland-frontend/pull/609))
 - The back link, breadcrumbs and skip link have been updated to use the
   text style link mixin
@@ -2689,7 +2689,7 @@ Missing files were:
 - Add details polyfill. This is automatically initialised in the main JS. (PR [#610](https://github.com/moaland/moaland-frontend/pull/610))
 - Add button polyfill. This is automatically initialised in the main JS. [#572](https://github.com/moaland/moaland-frontend/pull/572))
 
- Note: Our JavaScript work is ongoing. In the next release of GOV.UK Frontend both of our script will be modularised and split into common functions. This will allow you to use the polyfills in your bundler/build pipeline. For this reason, you might want to wait until the next release before adding these polyfill scripts into your project.
+ Note: Our JavaScript work is ongoing. In the next release of GOV.MOA Frontend both of our script will be modularised and split into common functions. This will allow you to use the polyfills in your bundler/build pipeline. For this reason, you might want to wait until the next release before adding these polyfill scripts into your project.
 
 🏠 Internal:
 - Update check script for new components and tweak docs
@@ -2763,7 +2763,7 @@ Missing files were:
   inherited from the main .moaland-c-button class
   (PR [#552](https://github.com/moaland/moaland-frontend/pull/552))
 - A fix to remove a black border from buttons in IE7 has been removed as we are
-  not targeting IE7 for GOV.UK Frontend
+  not targeting IE7 for GOV.MOA Frontend
   (PR [#552](https://github.com/moaland/moaland-frontend/pull/552))
 - The date input component now sets `type="number"` and `pattern="[0-9]*"` to
   match the previous implementation in Elements

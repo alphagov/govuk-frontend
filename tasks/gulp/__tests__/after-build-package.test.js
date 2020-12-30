@@ -86,8 +86,8 @@ describe('package/', () => {
     it('is not overwritten', () => {
       return readFile(path.join(configPaths.package, 'README.md'), 'utf8')
         .then(contents => {
-          // Look for H1 matching 'GOV.UK Frontend' from existing README
-          expect(contents).toMatch(/^# GOV.UK Frontend/)
+          // Look for H1 matching 'GOV.MOA Frontend' from existing README
+          expect(contents).toMatch(/^# GOV.MOA Frontend/)
         }).catch(error => {
           throw error
         })

@@ -6,7 +6,7 @@ See the [main README quick start guide](https://github.com/moaland/moaland-front
 
 ## Guidance and Examples
 
-Find out when to use the error summary component in your service in the [GOV.UK Design System](https://design-system.service.gov.uk/components/error-summary).
+Find out when to use the error summary component in your service in the [GOV.MOA Design System](https://design-system.service.gov.uk/components/error-summary).
 
 ## Component options
 

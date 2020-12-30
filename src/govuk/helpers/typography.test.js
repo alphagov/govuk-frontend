@@ -89,7 +89,7 @@ describe('@mixin moaland-typography-common', () => {
     expect(resultsString).not.toContain('font-family: "GDS Transport"')
     expect(resultsString).not.toContain('font-family: "ntatabularnumbers"')
   })
-  it('should not output a @font-face declaration when the user wants compatibility with GOV.UK Template', async () => {
+  it('should not output a @font-face declaration when the user wants compatibility with GOV.MOA Template', async () => {
     const sass = `
     $moaland-compatibility-moalandtemplate: true;
     @import "settings/all";

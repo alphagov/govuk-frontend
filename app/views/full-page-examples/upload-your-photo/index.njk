@@ -20,7 +20,7 @@ scenario: >-
 {% from "file-upload/macro.njk" import moalandFileUpload %}
 
 {% set pageTitle = "Upload your photo" %}
-{% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.UK{% endblock %}
+{% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.MOA{% endblock %}
 
 {% block header %}
   {% include "../../partials/banner.njk" %}

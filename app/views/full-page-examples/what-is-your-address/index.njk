@@ -19,7 +19,7 @@ scenario: >-
 {% from "button/macro.njk" import moalandButton %}
 
 {% set pageTitle = "What is your home address?" %}
-{% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.UK{% endblock %}
+{% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.MOA{% endblock %}
 
 {% block beforeContent %}
   {{ moalandBackLink({

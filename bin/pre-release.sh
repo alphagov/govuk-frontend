@@ -27,7 +27,7 @@ if [[ -n $(git status --porcelain) ]]; then
   echo "✍️ Commiting changed package"
   git add package/
 
-  git commit -m "Release GOV.UK Frontend to '$BRANCH_NAME' for testing"
+  git commit -m "Release GOV.MOA Frontend to '$BRANCH_NAME' for testing"
 
   # Create a local branch containing the package directory
   echo "✨ Filter the branch to only the package/ directory..."

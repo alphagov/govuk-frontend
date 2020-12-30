@@ -10,7 +10,7 @@ params:
 - name: productName
   type: string
   required: false
-  description: Product name, used when the product name follows on directly from ‘GOV.UK’. For example, GOV.UK Pay or GOV.UK Design System. In most circumstances, you should use serviceName.
+  description: Product name, used when the product name follows on directly from ‘GOV.MOA’. For example, GOV.MOA Pay or GOV.MOA Design System. In most circumstances, you should use serviceName.
 - name: serviceName
   type: string
   required: false
@@ -91,7 +91,7 @@ accessibilityCriteria: |
 
 examples:
 - name: default
-  description: The standard header as used on information pages on GOV.UK
+  description: The standard header as used on information pages on GOV.MOA
   data:
     {}
 

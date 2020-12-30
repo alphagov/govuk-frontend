@@ -96,7 +96,7 @@ describe('footer', () => {
 
       const $component = $('.moaland-footer')
       const $custom = $component.find('.moaland-footer__meta-custom')
-      expect($custom.text()).toContain('GOV.UK Prototype Kit v7.0.1')
+      expect($custom.text()).toContain('GOV.MOA Prototype Kit v7.0.1')
     })
 
     it('renders custom meta html as text', () => {
@@ -104,7 +104,7 @@ describe('footer', () => {
 
       const $component = $('.moaland-footer')
       const $custom = $component.find('.moaland-footer__meta-custom')
-      expect($custom.text()).toContain('GOV.UK Prototype Kit <strong>v7.0.1</strong>')
+      expect($custom.text()).toContain('GOV.MOA Prototype Kit <strong>v7.0.1</strong>')
     })
 
     it('renders custom meta html', () => {
@@ -112,7 +112,7 @@ describe('footer', () => {
 
       const $component = $('.moaland-footer')
       const $custom = $component.find('.moaland-footer__meta-custom')
-      expect($custom.text()).toContain('GOV.UK Prototype Kit v7.0.1')
+      expect($custom.text()).toContain('GOV.MOA Prototype Kit v7.0.1')
     })
 
     it('renders attributes on meta links', () => {

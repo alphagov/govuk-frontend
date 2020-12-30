@@ -1,5 +1,5 @@
 @if not mixin-exists("moaland-exports") {
-  @warn "Importing items from the overrides layer without first importing `base` is deprecated, and will no longer work as of GOV.UK Frontend v4.0.";
+  @warn "Importing items from the overrides layer without first importing `base` is deprecated, and will no longer work as of GOV.MOA Frontend v4.0.";
 }
 
 @import "../base";

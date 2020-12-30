@@ -12,7 +12,7 @@
 /// very specific link selector that otherwise affects buttons).
 ///
 /// @example scss
-///   // Override .my-class if GOV.UK Template is also being used
+///   // Override .my-class if GOV.MOA Template is also being used
 ///   @include moaland-compatibility(moaland_template) {
 ///     .my-class {
 ///       color: inherit;

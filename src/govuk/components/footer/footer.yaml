@@ -97,7 +97,7 @@ accessibilityCriteria: |
   Landmarks and Roles in the Footer should:
   - avoid navigation landmarks or roles
     "The footer element alone is sufficient for such cases; while a nav element can be used in such cases, it is usually unnecessary." - (https://www.w3.org/TR/html52/sections.html#the-nav-element)
-    Note: This decision has been made based on prior experience seeing removal of overuse of `<nav>` elements from www.GOV.UK, which made it confusing for users of assistive technologies to know what were the most important navigation aspects of GOV.UK.
+    Note: This decision has been made based on prior experience seeing removal of overuse of `<nav>` elements from www.GOV.MOA, which made it confusing for users of assistive technologies to know what were the most important navigation aspects of GOV.MOA.
     Should be challenged if user research indicates this is an issue.
 
   - have a role of `contentinfo` at the root of the component (<footer>) (https://www.w3.org/TR/wai-aria-1.1/#contentinfo)
@@ -130,7 +130,7 @@ examples:
   description: Custom meta section
   data:
     meta:
-      text: GOV.UK Prototype Kit v7.0.1
+      text: GOV.MOA Prototype Kit v7.0.1
 
 - name: with meta links and meta content
   description: Secondary navigation links and custom meta text
@@ -159,7 +159,7 @@ examples:
   description: Custom meta section
   data:
     meta:
-      text: GOV.UK Prototype Kit v7.0.1
+      text: GOV.MOA Prototype Kit v7.0.1
 
 - name: with navigation
   data:
@@ -188,8 +188,8 @@ examples:
           - href: '#3'
             text: Navigation item 3
 
-- name: GOV.UK
-  description: A full example based on GOV.UK's current footer
+- name: GOV.MOA
+  description: A full example based on GOV.MOA's current footer
   data:
     navigation:
       - title: Services and information
@@ -327,11 +327,11 @@ examples:
 - name: meta html as text
   data:
     meta:
-      text: GOV.UK Prototype Kit <strong>v7.0.1</strong>
+      text: GOV.MOA Prototype Kit <strong>v7.0.1</strong>
 - name: with meta html
   data:
     meta:
-      html: GOV.UK Prototype Kit <strong>v7.0.1</strong>
+      html: GOV.MOA Prototype Kit <strong>v7.0.1</strong>
 - name: with meta item attributes
   data:
     meta:

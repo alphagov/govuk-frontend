@@ -1,26 +1,26 @@
-# GOV.UK Frontend
+# GOV.MOA Frontend
 
-GOV.UK Frontend contains the code you need to start building a user interface
+GOV.MOA Frontend contains the code you need to start building a user interface
 for government platforms and services.
 
-See live examples of GOV.UK Frontend components, and guidance on when to use
-them in your service, in the [GOV.UK Design System](https://www.gov.uk/design-system).
+See live examples of GOV.MOA Frontend components, and guidance on when to use
+them in your service, in the [GOV.MOA Design System](https://www.gov.uk/design-system).
 
 ## Contact the team
 
-GOV.UK Frontend is maintained by a team at Government Digital Service. If you want to know more about GOV.UK Frontend, please email the [Design System
+GOV.MOA Frontend is maintained by a team at Government Digital Service. If you want to know more about GOV.MOA Frontend, please email the [Design System
 team](mailto:moa@moaland.wcys.co).
 
 ## Quick start
 
-There are 2 ways to start using GOV.UK Frontend in your app.
+There are 2 ways to start using GOV.MOA Frontend in your app.
 
 Once installed, you will be able to use the code from the examples in the
-[GOV.UK Design System](https://www.gov.uk/design-system) in your service.
+[GOV.MOA Design System](https://www.gov.uk/design-system) in your service.
 
 ### 1. Install with npm (recommended)
 
-We recommend [installing GOV.UK Frontend using node package manager
+We recommend [installing GOV.MOA Frontend using node package manager
 (npm)](https://frontend.design-system.service.gov.uk/installing-with-npm/).
 
 ### 2. Install by using compiled files
@@ -30,9 +30,9 @@ GitHub](https://frontend.design-system.service.gov.uk/installing-from-dist/).
 
 ## Importing styles
 
-You need to import the GOV.UK Frontend styles into the main Sass file in your
+You need to import the GOV.MOA Frontend styles into the main Sass file in your
 project. You should place the below code before your own Sass rules (or Sass
-imports) if you want to override GOV.UK Frontend with your own styles.
+imports) if you want to override GOV.MOA Frontend with your own styles.
 
 To import add the below to your Sass file:
 
@@ -44,7 +44,7 @@ To import add the below to your Sass file:
 
 ## Importing JavaScript
 
-Some of the JavaScript included in GOV.UK Frontend improves the usability and
+Some of the JavaScript included in GOV.MOA Frontend improves the usability and
 accessibility of the components. You should make sure that you are importing and
 initialising Javascript in your application to ensure that all users can use it successfully.
 
@@ -64,7 +64,7 @@ Next you need to initialise the script by adding:
 
 ## Importing assets
 
-In order to import GOV.UK Frontend images and fonts to your project, you should configure your application to reference or copy the relevant GOV.UK Frontend assets.
+In order to import GOV.MOA Frontend images and fonts to your project, you should configure your application to reference or copy the relevant GOV.MOA Frontend assets.
 
 [More details on importing assets](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#font-and-image-assets)
 
@@ -86,5 +86,5 @@ Open Government 3.0 licence.
 
 ## Contribution guidelines
 
-If you want to help us build GOV.UK Frontend, view our [contribution
+If you want to help us build GOV.MOA Frontend, view our [contribution
 guidelines](https://github.com/moaland/moaland-frontend/blob/master/CONTRIBUTING.md).

@@ -1,10 +1,10 @@
-# Publishing pre-release of GOV.UK Frontend
+# Publishing pre-release of GOV.MOA Frontend
 
 We use pre-releases when:
 - We are working on a new contribution and want to see it in the Design System website
 - We want to try an experimental feature as if it's pushed to npm.
 
-This is done by pushing the files used for a GOV.UK Frontend release (the contents of the `package` directory) to a new branch which can be installed by npm as if it was a released npm package.
+This is done by pushing the files used for a GOV.MOA Frontend release (the contents of the `package` directory) to a new branch which can be installed by npm as if it was a released npm package.
 
 No changes get published to npm as part of the process.
 

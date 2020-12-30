@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "moaland-frontend-repository",
-  "description": "Used only for the development of GOV.UK Frontend, see `package/package.json` for the published `package.json`",
+  "description": "Used only for the development of GOV.MOA Frontend, see `package/package.json` for the published `package.json`",
   "engines": {
     "node": "12.13.1"
   },

@@ -17,7 +17,7 @@ scenario: >-
 {% from "input/macro.njk" import moalandInput %}
 
 {% set pageTitle = "What is your home postcode?" %}
-{% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.UK{% endblock %}
+{% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.MOA{% endblock %}
 
 {% block beforeContent %}
   {{ moalandBackLink({

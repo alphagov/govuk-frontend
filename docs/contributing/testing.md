@@ -1,6 +1,6 @@
-# Test your GOV.UK Frontend contribution
+# Test your GOV.MOA Frontend contribution
 
-Before you submit your contribution to GOV.UK Frontend, you should:
+Before you submit your contribution to GOV.MOA Frontend, you should:
 
 - fix any CSS or JavaScript style errors
 - check your changes look right and behave correctly
@@ -11,7 +11,7 @@ Before you submit your contribution to GOV.UK Frontend, you should:
 Let us know in your pull request or [contact us](https://design-system.service.gov.uk/#support) if:
 
 - you cannot do some of the checks or tests
-- your contribution might affect other parts of GOV.UK Frontend
+- your contribution might affect other parts of GOV.MOA Frontend
 
 ## 1. Fix any CSS or JavaScript style errors
 
@@ -26,7 +26,7 @@ In your project folder, run `npm start`, then go to [http://localhost:3000/]([ht
 Check that:
 
 - the examples in the review app look right and behave correctly with your changes
-- your design is consistent with the rest of GOV.UK Frontend
+- your design is consistent with the rest of GOV.MOA Frontend
 
 ### Add an example
 

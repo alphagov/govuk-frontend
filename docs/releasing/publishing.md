@@ -1,12 +1,12 @@
-# Steps you must complete before you release a new version of GOV.UK Frontend
+# Steps you must complete before you release a new version of GOV.MOA Frontend
 
 1. Raise new issues in the team GitHub repositories ([moaland-frontend](https://github.com/moaland/moaland-frontend), [moaland-frontend-docs](https://github.com/moaland/moaland-frontend-docs), [moaland-prototype-kit](https://github.com/alphagov/govuk-prototype-kit)) to:
   - create release notes for the new release (example card: [#1986](https://github.com/moaland/moaland-frontend/issues/1986))
-  - create release notes for the new version of GOV.UK Prototype Kit (example card: [#958](https://github.com/alphagov/govuk-prototype-kit/issues/958))
-  - create a card for the new release of GOV.UK Frontend (example card: [#1987](https://github.com/moaland/moaland-frontend/issues/1987))
-  - update the GOV.UK Design System to use the new release of GOV.UK Frontend (example card: [#1347](https://github.com/alphagov/govuk-design-system/issues/1347))
-  - create a card for the new release of GOV.UK Prototype Kit (example card: [#917](https://github.com/alphagov/govuk-prototype-kit/issues/917))
-  - update the GOV.UK Prototype Kit to use the new release (example card: [#923](https://github.com/alphagov/govuk-prototype-kit/issues/923))
+  - create release notes for the new version of GOV.MOA Prototype Kit (example card: [#958](https://github.com/alphagov/govuk-prototype-kit/issues/958))
+  - create a card for the new release of GOV.MOA Frontend (example card: [#1987](https://github.com/moaland/moaland-frontend/issues/1987))
+  - update the GOV.MOA Design System to use the new release of GOV.MOA Frontend (example card: [#1347](https://github.com/alphagov/govuk-design-system/issues/1347))
+  - create a card for the new release of GOV.MOA Prototype Kit (example card: [#917](https://github.com/alphagov/govuk-prototype-kit/issues/917))
+  - update the GOV.MOA Prototype Kit to use the new release (example card: [#923](https://github.com/alphagov/govuk-prototype-kit/issues/923))
 
 2. Add the issues to the [Design System sprint board](https://github.com/orgs/alphagov/projects/4).
 
@@ -20,7 +20,7 @@
 
 5. Before you proceed to the next section, confirm with the appropriate person that the release notes and any related pull requests are ready to publish. Depending on the issue, the appropriate person may be the technical writer, the content designer, or a developer. If you’re unsure who it is, then ask within the [#moaland-design-system](https://gds.slack.com/archives/CAF8JA25U) Slack channel.
 
-# Steps you must complete to release a new version of GOV.UK Frontend
+# Steps you must complete to release a new version of GOV.MOA Frontend
 
 1. Checkout **master** and pull latest changes.
 
@@ -47,9 +47,9 @@
 
 8. Run `npm run build-release`, you will be prompted to continue or cancel.
 
-9. (Optional) Test in [GOV.UK Design System](git@github.com:alphagov/govuk-design-system.git)
+9. (Optional) Test in [GOV.MOA Design System](git@github.com:alphagov/govuk-design-system.git)
 
-  If you want to test your changes work correctly when used in the GOV.UK Design System you can use [npm link](https://docs.npmjs.com/cli/link) to test before publishing.
+  If you want to test your changes work correctly when used in the GOV.MOA Design System you can use [npm link](https://docs.npmjs.com/cli/link) to test before publishing.
 
   ```bash
   cd ../moaland-design-system
@@ -79,7 +79,7 @@
 15. View the created tag in the [Github interface](https://github.com/moaland/moaland-frontend/releases)
   - select the latest tag
   - press 'Edit tag'
-  - set "GOV.UK Frontend v[version-number]" as the title
+  - set "GOV.MOA Frontend v[version-number]" as the title
   - add release notes from changelog
   - attach the generated ZIP that has been generated at the root of this project
   - publish release
@@ -89,12 +89,12 @@
 npm logout
 ```
 
-# Steps you must complete after you release a new version of GOV.UK Frontend
+# Steps you must complete after you release a new version of GOV.MOA Frontend
 
-1. Update the GOV.UK Design System, Prototype Kit, and Frontend Docs to use a new release of GOV.UK Frontend, and release a new version of the Prototype Kit.
+1. Update the GOV.MOA Design System, Prototype Kit, and Frontend Docs to use a new release of GOV.MOA Frontend, and release a new version of the Prototype Kit.
 
 2. Post your summary of the:
-- GOV.UK Frontend release in the moaland-design-system channels on [GDS Slack](https://gds.slack.com/archives/CAF8JA25U) and [x-gov Slack](https://ukgovernmentdigital.slack.com/archives/C6DMEH5R6)
+- GOV.MOA Frontend release in the moaland-design-system channels on [GDS Slack](https://gds.slack.com/archives/CAF8JA25U) and [x-gov Slack](https://ukgovernmentdigital.slack.com/archives/C6DMEH5R6)
 - Prototype kit release in the [prototype-kit channel](https://ukgovernmentdigital.slack.com/archives/C0647LW4R) on x-gov Slack
 
 3. Move cards on the Design System [sprint board](https://github.com/orgs/alphagov/projects/4) from the **Ready to Release** column to **Done**.

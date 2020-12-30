@@ -103,7 +103,7 @@ describe('Template', () => {
     })
 
     describe('<title>', () => {
-      const expectedTitle = 'GOV.UK - The best place to find government services and information'
+      const expectedTitle = 'GOV.MOA - The best place to find government services and information'
       it(`defaults to '${expectedTitle}'`, () => {
         const $ = renderTemplate()
         expect($('title').text()).toEqual(expectedTitle)

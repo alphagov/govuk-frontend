@@ -2,7 +2,7 @@
 
 ## Structure
 
-GOV.UK Frontend is broken into a number of layers in order to help provide a
+GOV.MOA Frontend is broken into a number of layers in order to help provide a
 logical structure, loosely following the conventions of [ITCSS].
 
 1. [Settings](#settings)

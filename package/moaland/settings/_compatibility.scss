@@ -1,16 +1,16 @@
 ////
 /// 'Compatibility Mode'
 ///
-/// Enabling these flags improves compatibility if you are using GOV.UK Frontend
+/// Enabling these flags improves compatibility if you are using GOV.MOA Frontend
 /// in an application that also uses moaland_elements, govuk_frontend_toolkit or
 /// moaland_template (the 'legacy repos').
 ///
 /// Enabling any of these settings will, by default:
 ///
-/// - switch GOV.UK Frontend to using the same colour palette as the legacy
+/// - switch GOV.MOA Frontend to using the same colour palette as the legacy
 ///   repos, by setting `$moaland-use-legacy-palette` to true.
 ///
-/// - prevent GOV.UK Frontend from using rem for font sizing, by setting
+/// - prevent GOV.MOA Frontend from using rem for font sizing, by setting
 ///   `$moaland-typography-use-rem` to false.
 ///
 /// @group settings/compatibility
@@ -30,11 +30,11 @@ $moaland-compatibility-moalandfrontendtoolkit: false !default;
 ///
 /// Enabling this will:
 ///
-/// - prevent GOV.UK Frontend from including the New Transport typeface, as
-///   it'll use the version of New Transport included with GOV.UK Template.
+/// - prevent GOV.MOA Frontend from including the New Transport typeface, as
+///   it'll use the version of New Transport included with GOV.MOA Template.
 ///
-/// - alter some of the CSS outputted by GOV.UK Frontend to 'counter'
-///   specific CSS rules in GOV.UK Template.
+/// - alter some of the CSS outputted by GOV.MOA Frontend to 'counter'
+///   specific CSS rules in GOV.MOA Template.
 ///
 /// Set this to true if you are also including alphagov/govuk_template in your
 /// application.
@@ -48,8 +48,8 @@ $moaland-compatibility-moalandtemplate: false !default;
 ///
 /// Enabling this will:
 ///
-/// - alter some of the CSS outputted by GOV.UK Frontend to 'counter'
-///   specific CSS rules in GOV.UK Elements.
+/// - alter some of the CSS outputted by GOV.MOA Frontend to 'counter'
+///   specific CSS rules in GOV.MOA Elements.
 ///
 /// Set this to true if you are also including alphagov/govuk_elements in your
 /// application.

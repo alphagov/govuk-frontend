@@ -20,7 +20,7 @@ beforeAll(async (done) => {
   done()
 })
 
-describe('GOV.UK Frontend', () => {
+describe('GOV.MOA Frontend', () => {
   describe('javascript', () => {
     it('can be accessed via `MoalandFrontend`', async () => {
       await page.goto(baseUrl + '/', { waitUntil: 'load' })
@@ -43,7 +43,7 @@ describe('GOV.UK Frontend', () => {
 
       var components = Object.keys(MoalandFrontendGlobal).filter(method => method !== 'initAll')
 
-      // Ensure GOV.UK Frontend exports the expected components
+      // Ensure GOV.MOA Frontend exports the expected components
       expect(components).toEqual([
         'Accordion',
         'Button',
@@ -63,7 +63,7 @@ describe('GOV.UK Frontend', () => {
 
       var components = Object.keys(MoalandFrontendGlobal).filter(method => method !== 'initAll')
 
-      // Check that all the components on the GOV.UK Frontend global can be initialised
+      // Check that all the components on the GOV.MOA Frontend global can be initialised
       components.forEach(component => {
         page.evaluate(component => {
           const Component = window.MoalandFrontend[component]

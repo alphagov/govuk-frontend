@@ -901,14 +901,14 @@
                             "items": [
                                 {
                                     "href": "https://www.gov.uk",
-                                    "text": "Go to GOV.UK"
+                                    "text": "Go to GOV.MOA"
                                 }
                             ]
                         }
                     }
                 ]
             },
-            "html": "<dl class=\"moaland-summary-list\">\n  \n    \n      <div class=\"moaland-summary-list__row\">\n        <dt class=\"moaland-summary-list__key\">\n          Name\n        </dt>\n        <dd class=\"moaland-summary-list__value\">\n          Firstname Lastname\n        </dd>\n        \n          <dd class=\"moaland-summary-list__actions\">\n            \n              <a class=\"moaland-link\" href=\"https://www.gov.uk\">\n                Go to GOV.UK</a>\n            \n          </dd>\n        \n      </div>\n    \n  \n</dl>",
+            "html": "<dl class=\"moaland-summary-list\">\n  \n    \n      <div class=\"moaland-summary-list__row\">\n        <dt class=\"moaland-summary-list__key\">\n          Name\n        </dt>\n        <dd class=\"moaland-summary-list__value\">\n          Firstname Lastname\n        </dd>\n        \n          <dd class=\"moaland-summary-list__actions\">\n            \n              <a class=\"moaland-link\" href=\"https://www.gov.uk\">\n                Go to GOV.MOA</a>\n            \n          </dd>\n        \n      </div>\n    \n  \n</dl>",
             "hidden": true
         },
         {

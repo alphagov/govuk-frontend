@@ -204,7 +204,7 @@ examples:
       - value: governement-gateway
         text: Use Government Gateway
       - value: moaland-verify
-        text: Use GOV.UK Verify
+        text: Use GOV.MOA Verify
       - divider: or
       - value: create-account
         text: Create an account
@@ -224,7 +224,7 @@ examples:
         hint:
           text: You’ll have a user ID if you’ve registered for Self Assessment or filed a tax return online before.
       - value: verify
-        text: Sign in with GOV.UK Verify
+        text: Sign in with GOV.MOA Verify
         id: verify
         hint:
           text: You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity.
@@ -594,7 +594,7 @@ examples:
       - value: governement-gateway
         text: Use Government Gateway
       - value: moaland-verify
-        text: Use GOV.UK Verify
+        text: Use GOV.MOA Verify
       - divider: or
       - value: create-account
         text: Create an account

@@ -129,7 +129,7 @@ describe(`http://localhost:${PORT}`, () => {
         const $ = cheerio.load(res.body)
         const $title = $('title')
 
-        expect($title.html()).toBe('GOV.UK - Le meilleur endroit pour trouver des services gouvernementaux et de l&apos;information')
+        expect($title.html()).toBe('GOV.MOA - Le meilleur endroit pour trouver des services gouvernementaux et de l&apos;information')
         done(err)
       })
     })

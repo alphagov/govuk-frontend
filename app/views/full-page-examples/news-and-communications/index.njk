@@ -16,7 +16,7 @@ notes: >-
   of the sort of interactions that you would find on a search page.
 ---
 
-{# This example is based of the live "News and communications" GOV.UK page: https://www.gov.uk/news-and-communications #}
+{# This example is based of the live "News and communications" GOV.MOA page: https://www.gov.uk/news-and-communications #}
 {% extends "_generic.njk" %}
 
 {% from "breadcrumbs/macro.njk" import moalandBreadcrumbs %}
@@ -26,7 +26,7 @@ notes: >-
 {% from "button/macro.njk" import moalandButton %}
 
 {% set pageTitle = "News and communications" %}
-{% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
+{% block pageTitle %}{{ pageTitle }} - GOV.MOA{% endblock %}
 
 {% block head %}
     {{ super() }}

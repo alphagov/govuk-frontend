@@ -17,7 +17,7 @@ But we should make sure that we only make breaking changes when we have a good r
 Good examples of such situations would be:
 
 - issues that are barriers for end-users (users of services) based on evidence (for example user research)
-- issues that are barriers for users (users of GOV.UK Frontend) based on evidence
+- issues that are barriers for users (users of GOV.MOA Frontend) based on evidence
 - accessibility issues
 - security issues
 - performance issues
@@ -35,7 +35,7 @@ Whenever we decide to make a breaking change we must ensure we do our best to tr
 
 ## Proposal
 
-Some breaking changes that need discussion may first be proposed in the [GOV.UK Design System architecture repository](https://github.com/alphagov/govuk-design-system-architecture/blob/master/proposals/README.md).
+Some breaking changes that need discussion may first be proposed in the [GOV.MOA Design System architecture repository](https://github.com/alphagov/govuk-design-system-architecture/blob/master/proposals/README.md).
 
 This is to ensure the community can get involved with the decision.
 
@@ -82,7 +82,7 @@ The [Semantic Versioning specification](https://semver.org/) requires a public A
 > For this system to work, you first need to declare a public API. This may consist of documentation or be enforced by the code itself.
 
 ### Design System Website
-One of ways users interact with GOV.UK Frontend is through the [GOV.UK Design System website](https://design-system.service.gov.uk/).
+One of ways users interact with GOV.MOA Frontend is through the [GOV.MOA Design System website](https://design-system.service.gov.uk/).
 
 This includes:
 

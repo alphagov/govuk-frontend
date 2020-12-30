@@ -609,7 +609,7 @@ examples:
           actions:
             items:
               - href: https://www.gov.uk
-                text: Go to GOV.UK
+                text: Go to GOV.MOA
   - name: actions with html
     hidden: true
     data:

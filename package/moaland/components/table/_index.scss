@@ -19,7 +19,7 @@
     border-bottom: 1px solid $moaland-border-colour;
     text-align: left;
     vertical-align: top;
-    // GOV.UK Elements sets the font-size and line-height for all headers and cells
+    // GOV.MOA Elements sets the font-size and line-height for all headers and cells
     // in tables.
     @include moaland-compatibility(moaland_elements) {
       font-size: inherit;

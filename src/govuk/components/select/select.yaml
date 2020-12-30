@@ -79,14 +79,14 @@ examples:
       items:
         -
           value: 1
-          text: GOV.UK frontend option 1
+          text: GOV.MOA frontend option 1
         -
           value: 2
-          text: GOV.UK frontend option 2
+          text: GOV.MOA frontend option 2
           selected: true
         -
           value: 3
-          text: GOV.UK frontend option 3
+          text: GOV.MOA frontend option 3
           disabled: true
   - name: with hint text and error message
     data:
@@ -101,13 +101,13 @@ examples:
       items:
         -
           value: 1
-          text: GOV.UK frontend option 1
+          text: GOV.MOA frontend option 1
         -
           value: 2
-          text: GOV.UK frontend option 2
+          text: GOV.MOA frontend option 2
         -
           value: 3
-          text: GOV.UK frontend option 3
+          text: GOV.MOA frontend option 3
   - name: with label as page heading
     data:
       id: select-3
@@ -118,14 +118,14 @@ examples:
       items:
         -
           value: 1
-          text: GOV.UK frontend option 1
+          text: GOV.MOA frontend option 1
         -
           value: 2
-          text: GOV.UK frontend option 2
+          text: GOV.MOA frontend option 2
           selected: true
         -
           value: 3
-          text: GOV.UK frontend option 3
+          text: GOV.MOA frontend option 3
           disabled: true
   - name: with full width override
     data:
@@ -137,14 +137,14 @@ examples:
       items:
         -
           value: 1
-          text: GOV.UK frontend option 1
+          text: GOV.MOA frontend option 1
         -
           value: 2
-          text: GOV.UK frontend option 2
+          text: GOV.MOA frontend option 2
           selected: true
         -
           value: 3
-          text: GOV.UK frontend option 3
+          text: GOV.MOA frontend option 3
           disabled: true
   - name: with optional form-group classes
     data:
@@ -158,14 +158,14 @@ examples:
       items:
         -
           value: 1
-          text: GOV.UK frontend option 1
+          text: GOV.MOA frontend option 1
         -
           value: 2
-          text: GOV.UK frontend option 2
+          text: GOV.MOA frontend option 2
           selected: true
         -
           value: 3
-          text: GOV.UK frontend option 3
+          text: GOV.MOA frontend option 3
           disabled: true
 
 # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
@@ -177,10 +177,10 @@ examples:
       items:
         -
           value: 1
-          text: GOV.UK frontend option 1
+          text: GOV.MOA frontend option 1
         -
           value: 2
-          text: GOV.UK frontend option 2
+          text: GOV.MOA frontend option 2
       describedBy: some-id
   - name: attributes
     hidden: true
@@ -190,10 +190,10 @@ examples:
       items:
         -
           value: 1
-          text: GOV.UK frontend option 1
+          text: GOV.MOA frontend option 1
         -
           value: 2
-          text: GOV.UK frontend option 2
+          text: GOV.MOA frontend option 2
       attributes:
         data-attribute: my data value
   - name: attributes on items
@@ -248,10 +248,10 @@ examples:
       items:
         -
           value: 1
-          text: GOV.UK frontend option 1
+          text: GOV.MOA frontend option 1
         -
           value: 2
-          text: GOV.UK frontend option 2
+          text: GOV.MOA frontend option 2
   - name: error
     hidden: true
     data:
@@ -262,10 +262,10 @@ examples:
       items:
         -
           value: 1
-          text: GOV.UK frontend option 1
+          text: GOV.MOA frontend option 1
         -
           value: 2
-          text: GOV.UK frontend option 2
+          text: GOV.MOA frontend option 2
   - name: error and describedBy
     hidden: true
     data:
@@ -277,7 +277,7 @@ examples:
       items:
         -
           value: 1
-          text: GOV.UK frontend option 1
+          text: GOV.MOA frontend option 1
         -
           value: 2
-          text: GOV.UK frontend option 2
+          text: GOV.MOA frontend option 2

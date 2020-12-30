@@ -25,7 +25,7 @@ it.each(sassFiles)('%s renders with a deprecation warning', (file) => {
     return expect(mockWarnFunction.mock.calls[0][0].getValue())
       .toEqual(
         'Importing items from the overrides layer without first importing ' +
-        '`base` is deprecated, and will no longer work as of GOV.UK Frontend v4.0.'
+        '`base` is deprecated, and will no longer work as of GOV.MOA Frontend v4.0.'
       )
   })
 })

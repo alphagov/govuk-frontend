@@ -8,7 +8,7 @@ element.
 Unfortunately we want to use `display: inline-block` to 'shrink-wrap' the focus
 outline around the summary text, which means that the arrow no longer shows up.
 
-Previously in GOV.UK Elements we resolved this by targeting Firefox specifically
+Previously in GOV.MOA Elements we resolved this by targeting Firefox specifically
 and reverting to `display: list-item`:
 
 ```
