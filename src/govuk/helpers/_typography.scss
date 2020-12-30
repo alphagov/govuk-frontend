@@ -9,10 +9,10 @@
 /// Sets the font family and associated properties, such as font smoothing. Also
 /// overrides the font for print.
 ///
-/// @param {List} $font-family [$govuk-font-family] Font family to use
+/// @param {List} $font-family [$moaland-font-family] Font family to use
 /// @access public
 
-@mixin govuk-typography-common($font-family: $govuk-font-family) {
+@mixin moaland-typography-common($font-family: $moaland-font-family) {
   font-family: $font-family;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -23,12 +23,12 @@
   // We do not need to include the GDS Transport font-face declarations if
   // alphagov/govuk_template is being used since nta will already be included by
   // default.
-  @if ($govuk-include-default-font-face) {
-    @include _govuk-font-face-gds-transport;
+  @if ($moaland-include-default-font-face) {
+    @include _moaland-font-face-gds-transport;
   }
 
-  @include govuk-media-query($media-type: print) {
-    font-family: $govuk-font-family-print;
+  @include moaland-media-query($media-type: print) {
+    font-family: $moaland-font-family-print;
   }
 }
 
@@ -38,11 +38,11 @@
 ///
 /// @access public
 
-@mixin govuk-text-colour {
-  color: $govuk-text-colour;
+@mixin moaland-text-colour {
+  color: $moaland-text-colour;
 
-  @include govuk-media-query($media-type: print) {
-    color: $govuk-print-text-colour;
+  @include moaland-media-query($media-type: print) {
+    color: $moaland-print-text-colour;
   }
 }
 
@@ -52,8 +52,8 @@
 ///   `!important`. Generally Used to create override classes.
 /// @access public
 
-@mixin govuk-typography-weight-regular($important: false) {
-  font-weight: $govuk-font-weight-regular if($important, !important, null);
+@mixin moaland-typography-weight-regular($important: false) {
+  font-weight: $moaland-font-weight-regular if($important, !important, null);
 }
 
 /// Bold font weight helper
@@ -62,8 +62,8 @@
 ///   `!important`. Generally Used to create override classes.
 /// @access public
 
-@mixin govuk-typography-weight-bold($important: false) {
-  font-weight: $govuk-font-weight-bold if($important, !important, null);
+@mixin moaland-typography-weight-bold($important: false) {
+  font-weight: $moaland-font-weight-bold if($important, !important, null);
 }
 
 /// Convert line-heights specified in pixels into a relative value, unless
@@ -76,7 +76,7 @@
 ///
 /// @access private
 
-@function _govuk-line-height($line-height, $font-size) {
+@function _moaland-line-height($line-height, $font-size) {
   @if not unitless($line-height) and unit($line-height) == unit($font-size) {
     $line-height: $line-height / $font-size;
   }
@@ -114,19 +114,19 @@
 ///
 /// @access public
 
-@mixin govuk-typography-responsive($size, $override-line-height: false, $important: false) {
+@mixin moaland-typography-responsive($size, $override-line-height: false, $important: false) {
 
-  @if not map-has-key($govuk-typography-scale, $size) {
+  @if not map-has-key($moaland-typography-scale, $size) {
     @error "Unknown font size `#{$size}` - expected a point from the typography scale.";
   }
 
-  $font-map: map-get($govuk-typography-scale, $size);
+  $font-map: map-get($moaland-typography-scale, $size);
 
   @each $breakpoint, $breakpoint-map in $font-map {
     $font-size: map-get($breakpoint-map, "font-size");
-    $font-size-rem: govuk-px-to-rem($font-size);
+    $font-size-rem: moaland-px-to-rem($font-size);
 
-    $line-height: _govuk-line-height(
+    $line-height: _moaland-line-height(
       $line-height: if(
         $override-line-height,
         $override-line-height,
@@ -144,19 +144,19 @@
 
     @if $breakpoint == null {
       font-size: $font-size;
-      @if $govuk-typography-use-rem {
+      @if $moaland-typography-use-rem {
         font-size: $font-size-rem;
       }
       line-height: $line-height;
     } @else if $breakpoint == "print" {
-      @include govuk-media-query($media-type: print) {
+      @include moaland-media-query($media-type: print) {
         font-size: $font-size;
         line-height: $line-height;
       }
     } @else {
-      @include govuk-media-query($from: $breakpoint) {
+      @include moaland-media-query($from: $breakpoint) {
         font-size: $font-size;
-        @if $govuk-typography-use-rem {
+        @if $moaland-typography-use-rem {
           font-size: $font-size-rem;
         }
         line-height: $line-height;
@@ -175,13 +175,13 @@
 ///
 /// @access public
 
-@mixin govuk-font($size, $weight: regular, $tabular: false, $line-height: false) {
+@mixin moaland-font($size, $weight: regular, $tabular: false, $line-height: false) {
   @if $tabular {
-    // if govuk-font-family-tabular is set use $govuk-font-family-tabular
-    @if $govuk-font-family-tabular {
-      @include govuk-typography-common($font-family: $govuk-font-family-tabular);
+    // if moaland-font-family-tabular is set use $moaland-font-family-tabular
+    @if $moaland-font-family-tabular {
+      @include moaland-typography-common($font-family: $moaland-font-family-tabular);
     } @else {
-      @include govuk-typography-common;
+      @include moaland-typography-common;
       font-feature-settings: "tnum" 1;
 
       @supports (font-variant-numeric: tabular-nums) {
@@ -190,16 +190,16 @@
       }
     }
   } @else {
-    @include govuk-typography-common;
+    @include moaland-typography-common;
   }
 
   @if $weight == regular {
-    @include govuk-typography-weight-regular;
+    @include moaland-typography-weight-regular;
   } @else if $weight == bold {
-    @include govuk-typography-weight-bold;
+    @include moaland-typography-weight-bold;
   }
 
   @if $size {
-    @include govuk-typography-responsive($size, $override-line-height: $line-height);
+    @include moaland-typography-responsive($size, $override-line-height: $line-height);
   }
 }

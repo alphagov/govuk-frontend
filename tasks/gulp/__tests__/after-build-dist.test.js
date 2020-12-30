@@ -18,7 +18,7 @@ describe('dist/', () => {
           files => {
             return files
               // Remove /package prefix from filenames
-              .map(file => file.replace(/^src\/govuk\/assets\//, ''))
+              .map(file => file.replace(/^src\/moaland\/assets\//, ''))
               // Sort to make comparison easier
               .sort()
           },
@@ -54,8 +54,8 @@ describe('dist/', () => {
     })
   })
 
-  describe(`govuk-frontend-${version}.min.css`, () => {
-    const stylesheet = lib.readFileContents(path.join(configPaths.dist, `govuk-frontend-${version}.min.css`))
+  describe(`moaland-frontend-${version}.min.css`, () => {
+    const stylesheet = lib.readFileContents(path.join(configPaths.dist, `moaland-frontend-${version}.min.css`))
 
     it('should not contain current media query displayed on body element', () => {
       expect(stylesheet).not.toMatch(/body:before{content:/)
@@ -66,16 +66,16 @@ describe('dist/', () => {
     })
   })
 
-  describe(`govuk-frontend-ie8-${version}.min.css`, () => {
-    const stylesheet = lib.readFileContents(path.join(configPaths.dist, `govuk-frontend-ie8-${version}.min.css`))
+  describe(`moaland-frontend-ie8-${version}.min.css`, () => {
+    const stylesheet = lib.readFileContents(path.join(configPaths.dist, `moaland-frontend-ie8-${version}.min.css`))
 
     it('should not contain current media query displayed on body element', () => {
       expect(stylesheet).not.toMatch(/body:before{content:/)
     })
   })
 
-  describe(`govuk-frontend-${version}.min.js`, () => {
-    const javascript = lib.readFileContents(path.join(configPaths.dist, `govuk-frontend-${version}.min.js`))
+  describe(`moaland-frontend-${version}.min.js`, () => {
+    const javascript = lib.readFileContents(path.join(configPaths.dist, `moaland-frontend-${version}.min.js`))
 
     it('should have the correct version name', () => {
       expect(javascript).toBeTruthy()

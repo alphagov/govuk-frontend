@@ -43,7 +43,7 @@ examples:
 - name: with html
   data:
     html: |
-      It's on your National Insurance card, benefit letter, payslip or <a class="govuk-link" href="#">P60</a>.
+      It's on your National Insurance card, benefit letter, payslip or <a class="moaland-link" href="#">P60</a>.
       For example, 'QQ 12 34 56 C'.
 
 # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures

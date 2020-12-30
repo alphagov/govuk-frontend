@@ -15,17 +15,17 @@ const sassBootstrap = `
   $spacing-point: 2;
 
   // Emulates data from _settings/media-queries.scss
-  $govuk-breakpoints: (
+  $moaland-breakpoints: (
     my_breakpoint: 30em
   );
 
   // Emulates data from _settings/spacing.scss
-  $govuk-spacing-points: (
+  $moaland-spacing-points: (
     2: 15px
   );
 
   // Emulates data from _settings/spacing.scss
-  $govuk-spacing-responsive-scale: (
+  $moaland-spacing-responsive-scale: (
     2: (
       null: 15px,
       my_breakpoint: 25px
@@ -36,13 +36,13 @@ const sassBootstrap = `
   @import "tools/iff";
   @import "helpers/spacing";`
 
-describe('@function govuk-spacing', () => {
+describe('@function moaland-spacing', () => {
   it('returns CSS for a property based on the given spacing point', async () => {
     const sass = `
       ${sassBootstrap}
 
       .foo {
-        top: govuk-spacing($spacing-point)
+        top: moaland-spacing($spacing-point)
       }`
 
     const results = await renderSass({ data: sass, ...sassConfig })
@@ -57,7 +57,7 @@ describe('@function govuk-spacing', () => {
       ${sassBootstrap}
 
       .foo {
-        top: govuk-spacing('margin')
+        top: moaland-spacing('margin')
       }`
 
     await expect(renderSass({ data: sass, ...sassConfig }))
@@ -68,13 +68,13 @@ describe('@function govuk-spacing', () => {
   })
 })
 
-describe('@mixin _govuk-responsive-spacing', () => {
+describe('@mixin _moaland-responsive-spacing', () => {
   it('outputs CSS for a property based on the given spacing map', async () => {
     const sass = `
       ${sassBootstrap}
 
       .foo {
-        @include _govuk-responsive-spacing($spacing-point, 'margin')
+        @include _moaland-responsive-spacing($spacing-point, 'margin')
       }`
 
     const results = await renderSass({ data: sass, ...sassConfig })
@@ -92,7 +92,7 @@ describe('@mixin _govuk-responsive-spacing', () => {
       ${sassBootstrap}
 
       .foo {
-        @include _govuk-responsive-spacing($spacing-point, 'padding', 'top');
+        @include _moaland-responsive-spacing($spacing-point, 'padding', 'top');
       }`
 
     const results = await renderSass({ data: sass, ...sassConfig })
@@ -110,7 +110,7 @@ describe('@mixin _govuk-responsive-spacing', () => {
       ${sassBootstrap}
 
       .foo {
-        @include _govuk-responsive-spacing(14px, 'margin')
+        @include _moaland-responsive-spacing(14px, 'margin')
       }`
 
     await expect(renderSass({ data: sass, ...sassConfig }))
@@ -126,7 +126,7 @@ describe('@mixin _govuk-responsive-spacing', () => {
         ${sassBootstrap}
 
         .foo {
-          @include _govuk-responsive-spacing(
+          @include _moaland-responsive-spacing(
             $spacing-point,
             'margin',
             $important: true
@@ -148,7 +148,7 @@ describe('@mixin _govuk-responsive-spacing', () => {
         ${sassBootstrap}
 
         .foo {
-          @include _govuk-responsive-spacing(
+          @include _moaland-responsive-spacing(
             $spacing-point,
             'margin',
             'top',
@@ -173,7 +173,7 @@ describe('@mixin _govuk-responsive-spacing', () => {
         ${sassBootstrap}
 
         .foo {
-          @include _govuk-responsive-spacing(
+          @include _moaland-responsive-spacing(
             $spacing-point,
             'margin',
             $adjustment: 2px
@@ -195,7 +195,7 @@ describe('@mixin _govuk-responsive-spacing', () => {
         ${sassBootstrap}
 
         .foo {
-          @include _govuk-responsive-spacing(
+          @include _moaland-responsive-spacing(
             $spacing-point,
             'margin',
             'top',
@@ -215,13 +215,13 @@ describe('@mixin _govuk-responsive-spacing', () => {
   })
 })
 
-describe('@mixin govuk-responsive-margin', () => {
+describe('@mixin moaland-responsive-margin', () => {
   it('outputs simple responsive margins', async () => {
     const sass = `
         ${sassBootstrap}
 
         .foo {
-          @include govuk-responsive-margin($spacing-point)
+          @include moaland-responsive-margin($spacing-point)
         }`
 
     const results = await renderSass({ data: sass, ...sassConfig })
@@ -239,7 +239,7 @@ describe('@mixin govuk-responsive-margin', () => {
         ${sassBootstrap}
 
         .foo {
-          @include govuk-responsive-margin(
+          @include moaland-responsive-margin(
             $spacing-point,
             'top',
             $important: true,
@@ -258,13 +258,13 @@ describe('@mixin govuk-responsive-margin', () => {
   })
 })
 
-describe('@mixin govuk-responsive-padding', () => {
+describe('@mixin moaland-responsive-padding', () => {
   it('outputs simple responsive padding', async () => {
     const sass = `
         ${sassBootstrap}
 
         .foo {
-          @include govuk-responsive-padding($spacing-point)
+          @include moaland-responsive-padding($spacing-point)
         }`
 
     const results = await renderSass({ data: sass, ...sassConfig })
@@ -282,7 +282,7 @@ describe('@mixin govuk-responsive-padding', () => {
         ${sassBootstrap}
 
         .foo {
-          @include govuk-responsive-padding(
+          @include moaland-responsive-padding(
             $spacing-point,
             'top',
             $important: true,

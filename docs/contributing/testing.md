@@ -32,10 +32,10 @@ Check that:
 
 You should add an example to the review app if the existing examples do not reflect the changes you've made.
 
-1. Open `src/govuk/components/<COMPONENT>/<COMPONENT>.yaml`, where `<COMPONENT>` is the component you've changed.
+1. Open `src/moaland/components/<COMPONENT>/<COMPONENT>.yaml`, where `<COMPONENT>` is the component you've changed.
 2. Add or update examples in the `examples` list.
 
-If you've created a new component, create a new `src/govuk/<COMPONENT>/<COMPONENT>.yaml` file instead, where `<COMPONENT>` is the name of the component you've created.
+If you've created a new component, create a new `src/moaland/<COMPONENT>/<COMPONENT>.yaml` file instead, where `<COMPONENT>` is the name of the component you've created.
 
 ## 3. Test in supported browsers and assistive technology
 
@@ -60,24 +60,24 @@ You should write new tests if you’ve created a new component, or changed the w
 - changing or adding to the component's Nunjucks macro
 - creating or updating a Sass mixin or function
 
-Test files use examples from each component’s `.yaml` file, for example `src/govuk/components/button/button.yaml`. When you add or update tests, you can use the existing examples or add new ones.
+Test files use examples from each component’s `.yaml` file, for example `src/moaland/components/button/button.yaml`. When you add or update tests, you can use the existing examples or add new ones.
 
 Use `hidden: true` in a new example if you do not want to include the example in the review app. The example will still appear in our [test fixtures](http://frontend.design-system.service.gov.uk/testing-your-html/).
 
 ### If you created a component
 
-Create the following files in the `src/govuk/components` folder:
+Create the following files in the `src/moaland/components` folder:
 
 - `<COMPONENT>/<COMPONENT>.test.js` - to test functionality if the component uses JavaScript
 - `<COMPONENT>/template.test.js` - to test the Nunjucks macro
 
 Where `<COMPONENT>` is the name of the component you created.
 
-You can use the existing files in the `src/govuk/components` folder as templates for your new files.
+You can use the existing files in the `src/moaland/components` folder as templates for your new files.
 
 ### If you changed or added to a component
 
-In the `src/govuk/components` folder, update or add tests to:
+In the `src/moaland/components` folder, update or add tests to:
 
 - `<COMPONENT>/<COMPONENT>.test.js` - if you updated functionality
 - `<COMPONENT>/template.test.js` - if you updated the Nunjucks macro
@@ -88,7 +88,7 @@ Where `<COMPONENT>` is the name of the component you changed or added to.
 
 Update or add tests in the `.test.js` file that matches the name of the `.scss` file you created or updated. Create the `.test.js` file if it does not exist.
 
-For example, if you updated a mixin in `src/govuk/helpers/_colour.scss`, update or add tests in `src/govuk/helpers/_colour.test.js`.
+For example, if you updated a mixin in `src/moaland/helpers/_colour.scss`, update or add tests in `src/moaland/helpers/_colour.test.js`.
 
 ## 6. Update the snapshot tests
 
@@ -97,8 +97,8 @@ If your component uses another component, one of the [Jest snapshot tests](https
 If a snapshot test fails, follow these steps.
 
 1. Check that the component's new markup is correct.
-2. Run `npm test -- -u src/govuk/components/<COMPONENT>` to update the snapshot test with the new markup.
-3. Commit the updated file in the `/src/govuk/components/<COMPONENT>/__snapshots__/` folder.
+2. Run `npm test -- -u src/moaland/components/<COMPONENT>` to update the snapshot test with the new markup.
+3. Commit the updated file in the `/src/moaland/components/<COMPONENT>/__snapshots__/` folder.
 4. In the commit message, tell us you're updating the snapshot file and why.
 
 Where `<COMPONENT>` is the name of the component you've changed.

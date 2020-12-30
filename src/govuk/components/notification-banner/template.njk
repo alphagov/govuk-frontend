@@ -3,7 +3,7 @@
 {% endif %}
 
 {%- if successBanner %}
-  {% set typeClass = "govuk-notification-banner--" + params.type %}
+  {% set typeClass = "moaland-notification-banner--" + params.type %}
 {% endif %}
 
 {% if params.role %}
@@ -26,22 +26,22 @@
   {% set title = "Important" %}
 {%- endif -%}
 
-<div class="govuk-notification-banner{% if typeClass %} {{ typeClass }}{% endif %}{% if params.classes %} {{ params.classes }}{% endif %}" role="{{ role }}"
-  aria-labelledby="{{ params.titleId | default('govuk-notification-banner-title')}}"
-  data-module="govuk-notification-banner"
+<div class="moaland-notification-banner{% if typeClass %} {{ typeClass }}{% endif %}{% if params.classes %} {{ params.classes }}{% endif %}" role="{{ role }}"
+  aria-labelledby="{{ params.titleId | default('moaland-notification-banner-title')}}"
+  data-module="moaland-notification-banner"
   {%- if params.disableAutoFocus %} data-disable-auto-focus="true"{% endif %}
   {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
-  <div class="govuk-notification-banner__header">
-    <h{{ params.titleHeadingLevel | default(2) }} class="govuk-notification-banner__title" id="{{ params.titleId | default('govuk-notification-banner-title') }}" >
+  <div class="moaland-notification-banner__header">
+    <h{{ params.titleHeadingLevel | default(2) }} class="moaland-notification-banner__title" id="{{ params.titleId | default('moaland-notification-banner-title') }}" >
       {{ title }}
     </h{{ params.titleHeadingLevel | default(2) }}>
   </div>
-  <div class="govuk-notification-banner__content">
+  <div class="moaland-notification-banner__content">
     {%- if params.html -%}
       {{ params.html | safe }}
     {%- elif params.text -%}
       {# Set default style for single line content #}
-      <p class="govuk-notification-banner__heading">{{ params.text }}</p>
+      <p class="moaland-notification-banner__heading">{{ params.text }}</p>
     {%- endif -%}
   </div>
 </div>

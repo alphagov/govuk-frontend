@@ -1,12 +1,12 @@
-{% from "../error-message/macro.njk" import govukErrorMessage -%}
-{% from "../hint/macro.njk" import govukHint %}
-{% from "../label/macro.njk" import govukLabel %}
+{% from "../error-message/macro.njk" import moalandErrorMessage -%}
+{% from "../hint/macro.njk" import moalandHint %}
+{% from "../label/macro.njk" import moalandLabel %}
 
 {#- a record of other elements that we need to associate with the input using
    aria-describedby – for example hints or error messages -#}
 {% set describedBy = params.describedBy if params.describedBy else "" %}
-<div class="govuk-form-group {%- if params.errorMessage %} govuk-form-group--error{% endif %} {%- if params.formGroup.classes %} {{ params.formGroup.classes }}{% endif %}">
-  {{ govukLabel({
+<div class="moaland-form-group {%- if params.errorMessage %} moaland-form-group--error{% endif %} {%- if params.formGroup.classes %} {{ params.formGroup.classes }}{% endif %}">
+  {{ moalandLabel({
     html: params.label.html,
     text: params.label.text,
     classes: params.label.classes,
@@ -17,7 +17,7 @@
 {% if params.hint %}
   {% set hintId = params.id + '-hint' %}
   {% set describedBy = describedBy + ' ' + hintId if describedBy else hintId %}
-  {{ govukHint({
+  {{ moalandHint({
     id: hintId,
     classes: params.hint.classes,
     attributes: params.hint.attributes,
@@ -28,7 +28,7 @@
 {% if params.errorMessage %}
   {% set errorId = params.id + '-error' %}
   {% set describedBy = describedBy + ' ' + errorId if describedBy else errorId %}
-  {{ govukErrorMessage({
+  {{ moalandErrorMessage({
     id: errorId,
     classes: params.errorMessage.classes,
     attributes: params.errorMessage.attributes,
@@ -37,7 +37,7 @@
     visuallyHiddenText: params.errorMessage.visuallyHiddenText
   }) | indent(2) | trim }}
 {% endif %}
-  <input class="govuk-file-upload {%- if params.classes %} {{ params.classes }}{% endif %} {%- if params.errorMessage %} govuk-file-upload--error{% endif %}" id="{{ params.id }}" name="{{ params.name }}" type="file"
+  <input class="moaland-file-upload {%- if params.classes %} {{ params.classes }}{% endif %} {%- if params.errorMessage %} moaland-file-upload--error{% endif %}" id="{{ params.id }}" name="{{ params.name }}" type="file"
   {%- if params.value %} value="{{ params.value }}"{% endif %}
   {%- if describedBy %} aria-describedby="{{ describedBy }}"{% endif %}
   {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>

@@ -138,7 +138,7 @@ examples:
   - name: table with head and caption
     data:
      caption: 'Caption 1: Months and rates'
-     captionClasses: govuk-heading-m
+     captionClasses: moaland-heading-m
      firstCellIsHeader: true
      head:
        - text: Month you apply

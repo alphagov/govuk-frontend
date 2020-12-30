@@ -1,5 +1,5 @@
-@include govuk-exports("govuk/utilities/clearfix") {
-  .govuk-clearfix {
-    @include govuk-clearfix;
+@include moaland-exports("moaland/utilities/clearfix") {
+  .moaland-clearfix {
+    @include moaland-clearfix;
   }
 }

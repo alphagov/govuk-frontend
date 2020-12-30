@@ -9,7 +9,7 @@
 /// Get colour
 ///
 /// @param {String} $colour - Name of colour from the colour palette
-///   (`$govuk-colours`)
+///   (`$moaland-colours`)
 /// @param {String} $legacy - Either the name of colour from the legacy palette
 ///   or a colour literal, to return instead when in 'legacy mode' - matching
 ///   the palette from GOV.UK Template, Elements or Frontend Toolkit
@@ -17,19 +17,19 @@
 ///
 /// @example scss - Using legacy colours from the palette
 ///  .foo {
-///    background-colour: govuk-colour("mid-grey", $legacy: "grey-2");
+///    background-colour: moaland-colour("mid-grey", $legacy: "grey-2");
 ///  }
 ///
 /// @example scss - Using legacy colour literals
 ///  .foo {
-///    background-colour: govuk-colour("green", $legacy: #BADA55);
+///    background-colour: moaland-colour("green", $legacy: #BADA55);
 ///  }
 ///
 /// @throw if `$colour` is not a colour from the colour palette
 /// @access public
 
-@function govuk-colour($colour, $legacy: false) {
-  @if ($govuk-use-legacy-palette and $legacy) {
+@function moaland-colour($colour, $legacy: false) {
+  @if ($moaland-use-legacy-palette and $legacy) {
     @if (type-of($legacy) == "color") {
       @return $legacy;
     }
@@ -38,11 +38,11 @@
 
   $colour: quote($colour);
 
-  @if not map-has-key($govuk-colours, $colour) {
+  @if not map-has-key($moaland-colours, $colour) {
     @error "Unknown colour `#{$colour}`";
   }
 
-  @return map-get($govuk-colours, $colour);
+  @return map-get($moaland-colours, $colour);
 }
 
 /// Get the colour for a government organisation
@@ -58,12 +58,12 @@
 /// @throw if `$organisation` is not a known organisation
 /// @access public
 
-@function govuk-organisation-colour($organisation, $websafe: true) {
-  @if not map-has-key($govuk-colours-organisations, $organisation) {
+@function moaland-organisation-colour($organisation, $websafe: true) {
+  @if not map-has-key($moaland-colours-organisations, $organisation) {
     @error "Unknown organisation `#{$organisation}`";
   }
 
-  $org-colour: map-get($govuk-colours-organisations, $organisation);
+  $org-colour: map-get($moaland-colours-organisations, $organisation);
 
   @if ($websafe and map-has-key($org-colour, colour-websafe)) {
     @return map-get($org-colour, colour-websafe);
@@ -79,7 +79,7 @@
 /// @return {Colour}
 /// @access public
 
-@function govuk-shade($colour, $percentage) {
+@function moaland-shade($colour, $percentage) {
   @return mix(#000000, $colour, $percentage);
 }
 
@@ -90,6 +90,6 @@
 /// @return {Colour}
 /// @access public
 
-@function govuk-tint($colour, $percentage) {
-  @return mix(govuk-colour("white"), $colour, $percentage);
+@function moaland-tint($colour, $percentage) {
+  @return mix(moaland-colour("white"), $colour, $percentage);
 }

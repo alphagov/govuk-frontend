@@ -9,19 +9,19 @@
 ///
 /// @access public
 
-@mixin govuk-focused-text {
+@mixin moaland-focused-text {
   // When colours are overridden, for example when users have a dark mode,
   // backgrounds and box-shadows disappear, so we need to ensure there's a
   // transparent outline which will be set to a visible colour.
 
   // Since Internet Explorer 8 does not support box-shadow, we want to force the
   // user-agent outlines
-  @include govuk-not-ie8 {
-    outline: $govuk-focus-width solid transparent;
+  @include moaland-not-ie8 {
+    outline: $moaland-focus-width solid transparent;
   }
-  color: $govuk-focus-text-colour;
-  background-color: $govuk-focus-colour;
-  box-shadow: 0 -2px $govuk-focus-colour, 0 4px $govuk-focus-text-colour;
+  color: $moaland-focus-text-colour;
+  background-color: $moaland-focus-colour;
+  box-shadow: 0 -2px $moaland-focus-colour, 0 4px $moaland-focus-text-colour;
   // When link is focussed, hide the default underline since the
   // box shadow adds the "underline"
   text-decoration: none;

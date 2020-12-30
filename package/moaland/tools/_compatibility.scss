@@ -8,12 +8,12 @@
 /// $product is also identified as being used in the project.
 ///
 /// This can then be used to include styles that are only needed to override
-/// styles provided by those other products (e.g. where govuk_template has a
+/// styles provided by those other products (e.g. where moaland_template has a
 /// very specific link selector that otherwise affects buttons).
 ///
 /// @example scss
 ///   // Override .my-class if GOV.UK Template is also being used
-///   @include govuk-compatibility(govuk_template) {
+///   @include moaland-compatibility(moaland_template) {
 ///     .my-class {
 ///       color: inherit;
 ///     }
@@ -25,9 +25,9 @@
 /// @throw Errors if product name is not recognised
 /// @access public
 
-@mixin govuk-compatibility($product) {
-  @if map-has-key($_govuk-compatibility, $product) {
-    @if map-get($_govuk-compatibility, $product) == true {
+@mixin moaland-compatibility($product) {
+  @if map-has-key($_moaland-compatibility, $product) {
+    @if map-get($_moaland-compatibility, $product) == true {
       @content;
     }
   } @else {

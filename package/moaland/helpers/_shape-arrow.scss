@@ -11,7 +11,7 @@
 /// @return {Number} Calculated height of the triangle
 /// @access private
 
-@function _govuk-equilateral-height($base) {
+@function _moaland-equilateral-height($base) {
   $square-root-of-three: 1.732;
 
   @return ($base / 2) * $square-root-of-three;
@@ -35,7 +35,7 @@
 ///
 /// @access public
 
-@mixin govuk-shape-arrow($direction, $base, $height: null, $display: block) {
+@mixin moaland-shape-arrow($direction, $base, $height: null, $display: block) {
   display: $display;
 
   width: 0;
@@ -47,7 +47,7 @@
   $perpendicular: $base / 2;
 
   @if ($height == null) {
-    $height: _govuk-equilateral-height($base);
+    $height: _moaland-equilateral-height($base);
   }
 
   @if $direction == "up" {

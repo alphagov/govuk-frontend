@@ -14,9 +14,9 @@ notes: The links to change your answers are not functional.
 {# This example is based of the  "Check your answers before sending your application" example: https://design-system.service.gov.uk/patterns/check-answers/default/index.html #}
 {% extends "_generic.njk" %}
 
-{% from "back-link/macro.njk" import govukBackLink %}
-{% from "summary-list/macro.njk" import govukSummaryList %}
-{% from "button/macro.njk" import govukButton %}
+{% from "back-link/macro.njk" import moalandBackLink %}
+{% from "summary-list/macro.njk" import moalandSummaryList %}
+{% from "button/macro.njk" import moalandButton %}
 
 {% set pageTitle = "Check your answers" %}
 {% set serviceName = "Temporary events notice" %}
@@ -25,28 +25,28 @@ notes: The links to change your answers are not functional.
 
 {% block header %}
   {% include "../../partials/banner.njk" %}
-  {{ govukHeader({
+  {{ moalandHeader({
     serviceName: serviceName
   }) }}
 {% endblock %}
 
 {% block beforeContent %}
-  {{ govukBackLink({
+  {{ moalandBackLink({
     text: "Back",
     href: "#"
   }) }}
 {% endblock %}
 
 {% block content %}
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds-from-desktop">
+<div class="moaland-grid-row">
+  <div class="moaland-grid-column-two-thirds-from-desktop">
 
-    <h1 class="govuk-heading-xl">Check your answers before sending your application</h1>
+    <h1 class="moaland-heading-xl">Check your answers before sending your application</h1>
 
-    <h2 class="govuk-heading-m">Personal details</h2>
+    <h2 class="moaland-heading-m">Personal details</h2>
 
-    {{ govukSummaryList({
-      classes: 'govuk-!-margin-bottom-9',
+    {{ moalandSummaryList({
+      classes: 'moaland-!-margin-bottom-9',
       rows: [
         {
           key: {
@@ -104,7 +104,7 @@ notes: The links to change your answers are not functional.
             text: "Contact details"
           },
           value: {
-            html: '<p class="govuk-body">07700 900457</p><p class="govuk-body">sarah.phillips@example.com</p>'
+            html: '<p class="moaland-body">07700 900457</p><p class="moaland-body">sarah.phillips@example.com</p>'
           },
           actions: {
             items: [
@@ -120,10 +120,10 @@ notes: The links to change your answers are not functional.
     }) }}
 
 
-    <h2 class="govuk-heading-m">Application details</h2>
+    <h2 class="moaland-heading-m">Application details</h2>
 
-    {{ govukSummaryList({
-      classes: 'govuk-!-margin-bottom-9',
+    {{ moalandSummaryList({
+      classes: 'moaland-!-margin-bottom-9',
       rows: [
         {
           key: {
@@ -199,11 +199,11 @@ notes: The links to change your answers are not functional.
           },
           value: {
             html: '
-              <p class="govuk-body">I have contacted my council for a Temporary Event Notice (<abbr title="Temporary Event Notice">TEN</abbr>) as I want to carry out a ‘licensable activity’ on unlicensed premises in England or Wales.</p>
+              <p class="moaland-body">I have contacted my council for a Temporary Event Notice (<abbr title="Temporary Event Notice">TEN</abbr>) as I want to carry out a ‘licensable activity’ on unlicensed premises in England or Wales.</p>
 
-              <p class="govuk-body">Licensable activity includes:</p>
+              <p class="moaland-body">Licensable activity includes:</p>
 
-              <ul class="govuk-list govuk-list--bullet">
+              <ul class="moaland-list moaland-list--bullet">
                 <li>selling alcohol</li>
                 <li>serving alcohol to members of a private club</li>
                 <li>providing entertainment, such as music, dancing or indoor sporting events</li>
@@ -224,15 +224,15 @@ notes: The links to change your answers are not functional.
       ]
     }) }}
 
-    <h2 class="govuk-heading-m">Now send your application</h2>
+    <h2 class="moaland-heading-m">Now send your application</h2>
 
-    <p class="govuk-body">By submitting this notification you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
+    <p class="moaland-body">By submitting this notification you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
 
     <form action="/full-page-examples/check-your-answers" method="post">
 
       <input type="hidden" name="answers-checked" value="true">
 
-      {{ govukButton({
+      {{ moalandButton({
         text: "Accept and send"
       }) }}
 

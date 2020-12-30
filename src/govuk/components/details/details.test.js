@@ -31,7 +31,7 @@ describe('details', () => {
         return document.getElementById('default').querySelector('summary').getAttribute('aria-controls')
       })
       const controlledContainerId = await page.evaluate(() => {
-        return document.getElementById('default').querySelector('.govuk-details__text').getAttribute('id')
+        return document.getElementById('default').querySelector('.moaland-details__text').getAttribute('id')
       })
       expect(summaryAriaControls).toBe(controlledContainerId)
     })
@@ -49,7 +49,7 @@ describe('details', () => {
       await page.goto(baseUrl + '/examples/details-polyfill', { waitUntil: 'load' })
 
       const hiddenContainerAriaHidden = await page.evaluate(() => {
-        return document.getElementById('default').querySelector('.govuk-details__text').getAttribute('aria-hidden')
+        return document.getElementById('default').querySelector('.moaland-details__text').getAttribute('aria-hidden')
       })
       expect(hiddenContainerAriaHidden).toBe('true')
     })
@@ -81,7 +81,7 @@ describe('details', () => {
         await page.click('#default summary')
 
         const hiddenContainerAriaHidden = await page.evaluate(() => {
-          return document.getElementById('default').querySelector('.govuk-details__text').getAttribute('aria-hidden')
+          return document.getElementById('default').querySelector('.moaland-details__text').getAttribute('aria-hidden')
         })
         expect(hiddenContainerAriaHidden).toBe('false')
       })
@@ -113,7 +113,7 @@ describe('details', () => {
       await page.goto(baseUrl + '/examples/details-polyfill', { waitUntil: 'load' })
 
       const hiddenContainerAriaHidden = await page.evaluate(() => {
-        return document.getElementById('expanded').querySelector('.govuk-details__text').getAttribute('aria-hidden')
+        return document.getElementById('expanded').querySelector('.moaland-details__text').getAttribute('aria-hidden')
       })
       expect(hiddenContainerAriaHidden).toBe('false')
     })
@@ -130,7 +130,7 @@ describe('details', () => {
     it('should not be affected when clicking the revealed content', async () => {
       await page.goto(baseUrl + '/examples/details-polyfill', { waitUntil: 'load' })
 
-      await page.click('#expanded .govuk-details__text')
+      await page.click('#expanded .moaland-details__text')
 
       const summaryAriaExpanded = await page.evaluate(() => {
         return document.getElementById('expanded').querySelector('summary').getAttribute('aria-expanded')
@@ -156,7 +156,7 @@ describe('details', () => {
         await page.click('#expanded summary')
 
         const hiddenContainerAriaHidden = await page.evaluate(() => {
-          return document.getElementById('expanded').querySelector('.govuk-details__text').getAttribute('aria-hidden')
+          return document.getElementById('expanded').querySelector('.moaland-details__text').getAttribute('aria-hidden')
         })
         expect(hiddenContainerAriaHidden).toBe('true')
       })

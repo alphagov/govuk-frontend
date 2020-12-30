@@ -6,7 +6,7 @@
             "options": {
                 "text": "Save and continue"
             },
-            "html": "<button class=\"govuk-button\" data-module=\"govuk-button\">\n  Save and continue\n</button>",
+            "html": "<button class=\"moaland-button\" data-module=\"moaland-button\">\n  Save and continue\n</button>",
             "hidden": false
         },
         {
@@ -15,7 +15,7 @@
                 "text": "Disabled button",
                 "disabled": true
             },
-            "html": "<button disabled=\"disabled\" aria-disabled=\"true\" class=\"govuk-button govuk-button--disabled\" data-module=\"govuk-button\">\n  Disabled button\n</button>",
+            "html": "<button disabled=\"disabled\" aria-disabled=\"true\" class=\"moaland-button moaland-button--disabled\" data-module=\"moaland-button\">\n  Disabled button\n</button>",
             "hidden": false
         },
         {
@@ -24,7 +24,7 @@
                 "text": "Link button",
                 "href": "/"
             },
-            "html": "<a href=\"/\" role=\"button\" draggable=\"false\" class=\"govuk-button\" data-module=\"govuk-button\">\n  Link button\n</a>",
+            "html": "<a href=\"/\" role=\"button\" draggable=\"false\" class=\"moaland-button\" data-module=\"moaland-button\">\n  Link button\n</a>",
             "hidden": false
         },
         {
@@ -34,7 +34,7 @@
                 "href": "/",
                 "disabled": true
             },
-            "html": "<a href=\"/\" role=\"button\" draggable=\"false\" class=\"govuk-button govuk-button--disabled\" data-module=\"govuk-button\">\n  Disabled link button\n</a>",
+            "html": "<a href=\"/\" role=\"button\" draggable=\"false\" class=\"moaland-button moaland-button--disabled\" data-module=\"moaland-button\">\n  Disabled link button\n</a>",
             "hidden": false
         },
         {
@@ -44,7 +44,7 @@
                 "href": "/",
                 "isStartButton": true
             },
-            "html": "<a href=\"/\" role=\"button\" draggable=\"false\" class=\"govuk-button govuk-button--start\" data-module=\"govuk-button\">\n  Start now link button\n  <svg class=\"govuk-button__start-icon\" xmlns=\"http://www.w3.org/2000/svg\" width=\"17.5\" height=\"19\" viewBox=\"0 0 33 40\" aria-hidden=\"true\" focusable=\"false\">\n    <path fill=\"currentColor\" d=\"M0 0h13l20 20-20 20H0l20-20z\"/>\n  </svg></a>",
+            "html": "<a href=\"/\" role=\"button\" draggable=\"false\" class=\"moaland-button moaland-button--start\" data-module=\"moaland-button\">\n  Start now link button\n  <svg class=\"moaland-button__start-icon\" xmlns=\"http://www.w3.org/2000/svg\" width=\"17.5\" height=\"19\" viewBox=\"0 0 33 40\" aria-hidden=\"true\" focusable=\"false\">\n    <path fill=\"currentColor\" d=\"M0 0h13l20 20-20 20H0l20-20z\"/>\n  </svg></a>",
             "hidden": false
         },
         {
@@ -54,7 +54,7 @@
                 "name": "start-now",
                 "text": "Start now"
             },
-            "html": "<input value=\"Start now\" type=\"submit\" name=\"start-now\" class=\"govuk-button\" data-module=\"govuk-button\">",
+            "html": "<input value=\"Start now\" type=\"submit\" name=\"start-now\" class=\"moaland-button\" data-module=\"moaland-button\">",
             "hidden": false
         },
         {
@@ -64,7 +64,7 @@
                 "text": "Explicit input button disabled",
                 "disabled": true
             },
-            "html": "<input value=\"Explicit input button disabled\" type=\"submit\" disabled=\"disabled\" aria-disabled=\"true\" class=\"govuk-button govuk-button--disabled\" data-module=\"govuk-button\">",
+            "html": "<input value=\"Explicit input button disabled\" type=\"submit\" disabled=\"disabled\" aria-disabled=\"true\" class=\"moaland-button moaland-button--disabled\" data-module=\"moaland-button\">",
             "hidden": false
         },
         {
@@ -73,7 +73,7 @@
                 "text": "Submit",
                 "preventDoubleClick": true
             },
-            "html": "<button data-prevent-double-click=\"true\" class=\"govuk-button\" data-module=\"govuk-button\">\n  Submit\n</button>",
+            "html": "<button data-prevent-double-click=\"true\" class=\"moaland-button\" data-module=\"moaland-button\">\n  Submit\n</button>",
             "hidden": false
         },
         {
@@ -83,7 +83,7 @@
                 "text": "Active",
                 "classes": ":active"
             },
-            "html": "<button name=\"active\" class=\"govuk-button :active\" data-module=\"govuk-button\">\n  Active\n</button>",
+            "html": "<button name=\"active\" class=\"moaland-button :active\" data-module=\"moaland-button\">\n  Active\n</button>",
             "hidden": false
         },
         {
@@ -93,7 +93,7 @@
                 "text": "Hovered",
                 "classes": ":hover"
             },
-            "html": "<button name=\"hover\" class=\"govuk-button :hover\" data-module=\"govuk-button\">\n  Hovered\n</button>",
+            "html": "<button name=\"hover\" class=\"moaland-button :hover\" data-module=\"moaland-button\">\n  Hovered\n</button>",
             "hidden": false
         },
         {
@@ -103,7 +103,7 @@
                 "text": "Focussed",
                 "classes": ":focus"
             },
-            "html": "<button name=\"focus\" class=\"govuk-button :focus\" data-module=\"govuk-button\">\n  Focussed\n</button>",
+            "html": "<button name=\"focus\" class=\"moaland-button :focus\" data-module=\"moaland-button\">\n  Focussed\n</button>",
             "hidden": false
         },
         {
@@ -111,9 +111,9 @@
             "options": {
                 "name": "secondary",
                 "text": "Secondary button",
-                "classes": "govuk-button--secondary"
+                "classes": "moaland-button--secondary"
             },
-            "html": "<button name=\"secondary\" class=\"govuk-button govuk-button--secondary\" data-module=\"govuk-button\">\n  Secondary button\n</button>",
+            "html": "<button name=\"secondary\" class=\"moaland-button moaland-button--secondary\" data-module=\"moaland-button\">\n  Secondary button\n</button>",
             "hidden": false
         },
         {
@@ -121,10 +121,10 @@
             "options": {
                 "name": "secondary",
                 "text": "Secondary button disabled",
-                "classes": "govuk-button--secondary",
+                "classes": "moaland-button--secondary",
                 "disabled": true
             },
-            "html": "<button name=\"secondary\" disabled=\"disabled\" aria-disabled=\"true\" class=\"govuk-button govuk-button--secondary govuk-button--disabled\" data-module=\"govuk-button\">\n  Secondary button disabled\n</button>",
+            "html": "<button name=\"secondary\" disabled=\"disabled\" aria-disabled=\"true\" class=\"moaland-button moaland-button--secondary moaland-button--disabled\" data-module=\"moaland-button\">\n  Secondary button disabled\n</button>",
             "hidden": false
         },
         {
@@ -133,9 +133,9 @@
                 "name": "secondary",
                 "text": "Secondary button",
                 "href": "/",
-                "classes": "govuk-button--secondary"
+                "classes": "moaland-button--secondary"
             },
-            "html": "<a href=\"/\" role=\"button\" draggable=\"false\" class=\"govuk-button govuk-button--secondary\" data-module=\"govuk-button\">\n  Secondary button\n</a>",
+            "html": "<a href=\"/\" role=\"button\" draggable=\"false\" class=\"moaland-button moaland-button--secondary\" data-module=\"moaland-button\">\n  Secondary button\n</a>",
             "hidden": false
         },
         {
@@ -143,9 +143,9 @@
             "options": {
                 "name": "Warning",
                 "text": "Warning button",
-                "classes": "govuk-button--warning"
+                "classes": "moaland-button--warning"
             },
-            "html": "<button name=\"Warning\" class=\"govuk-button govuk-button--warning\" data-module=\"govuk-button\">\n  Warning button\n</button>",
+            "html": "<button name=\"Warning\" class=\"moaland-button moaland-button--warning\" data-module=\"moaland-button\">\n  Warning button\n</button>",
             "hidden": false
         },
         {
@@ -153,10 +153,10 @@
             "options": {
                 "name": "warning",
                 "text": "Warning button disabled",
-                "classes": "govuk-button--warning",
+                "classes": "moaland-button--warning",
                 "disabled": true
             },
-            "html": "<button name=\"warning\" disabled=\"disabled\" aria-disabled=\"true\" class=\"govuk-button govuk-button--warning govuk-button--disabled\" data-module=\"govuk-button\">\n  Warning button disabled\n</button>",
+            "html": "<button name=\"warning\" disabled=\"disabled\" aria-disabled=\"true\" class=\"moaland-button moaland-button--warning moaland-button--disabled\" data-module=\"moaland-button\">\n  Warning button disabled\n</button>",
             "hidden": false
         },
         {
@@ -165,9 +165,9 @@
                 "name": "Warning",
                 "text": "Warning button",
                 "href": "/",
-                "classes": "govuk-button--warning"
+                "classes": "moaland-button--warning"
             },
-            "html": "<a href=\"/\" role=\"button\" draggable=\"false\" class=\"govuk-button govuk-button--warning\" data-module=\"govuk-button\">\n  Warning button\n</a>",
+            "html": "<a href=\"/\" role=\"button\" draggable=\"false\" class=\"moaland-button moaland-button--warning\" data-module=\"moaland-button\">\n  Warning button\n</a>",
             "hidden": false
         },
         {
@@ -180,7 +180,7 @@
                     "data-tracking-dimension": 123
                 }
             },
-            "html": "<button class=\"govuk-button\" data-module=\"govuk-button\" aria-controls=\"example-id\" data-tracking-dimension=\"123\">\n  Submit\n</button>",
+            "html": "<button class=\"moaland-button\" data-module=\"moaland-button\" aria-controls=\"example-id\" data-tracking-dimension=\"123\">\n  Submit\n</button>",
             "hidden": true
         },
         {
@@ -193,7 +193,7 @@
                     "data-tracking-dimension": 123
                 }
             },
-            "html": "<a href=\"#\" role=\"button\" draggable=\"false\" class=\"govuk-button\" data-module=\"govuk-button\" aria-controls=\"example-id\" data-tracking-dimension=\"123\">\n  Submit\n</a>",
+            "html": "<a href=\"#\" role=\"button\" draggable=\"false\" class=\"moaland-button\" data-module=\"moaland-button\" aria-controls=\"example-id\" data-tracking-dimension=\"123\">\n  Submit\n</a>",
             "hidden": true
         },
         {
@@ -206,7 +206,7 @@
                     "data-tracking-dimension": 123
                 }
             },
-            "html": "<input value=\"Submit\" type=\"submit\" class=\"govuk-button\" data-module=\"govuk-button\" aria-controls=\"example-id\" data-tracking-dimension=\"123\">",
+            "html": "<input value=\"Submit\" type=\"submit\" class=\"moaland-button\" data-module=\"moaland-button\" aria-controls=\"example-id\" data-tracking-dimension=\"123\">",
             "hidden": true
         },
         {
@@ -216,7 +216,7 @@
                 "element": "button",
                 "classes": "app-button--custom-modifier"
             },
-            "html": "<button class=\"govuk-button app-button--custom-modifier\" data-module=\"govuk-button\">\n  Submit\n</button>",
+            "html": "<button class=\"moaland-button app-button--custom-modifier\" data-module=\"moaland-button\">\n  Submit\n</button>",
             "hidden": true
         },
         {
@@ -226,7 +226,7 @@
                 "element": "a",
                 "classes": "app-button--custom-modifier"
             },
-            "html": "<a href=\"#\" role=\"button\" draggable=\"false\" class=\"govuk-button app-button--custom-modifier\" data-module=\"govuk-button\">\n  Submit\n</a>",
+            "html": "<a href=\"#\" role=\"button\" draggable=\"false\" class=\"moaland-button app-button--custom-modifier\" data-module=\"moaland-button\">\n  Submit\n</a>",
             "hidden": true
         },
         {
@@ -236,7 +236,7 @@
                 "element": "input",
                 "classes": "app-button--custom-modifier"
             },
-            "html": "<input value=\"Submit\" type=\"submit\" class=\"govuk-button app-button--custom-modifier\" data-module=\"govuk-button\">",
+            "html": "<input value=\"Submit\" type=\"submit\" class=\"moaland-button app-button--custom-modifier\" data-module=\"moaland-button\">",
             "hidden": true
         },
         {
@@ -246,7 +246,7 @@
                 "element": "button",
                 "name": "start-now"
             },
-            "html": "<button name=\"start-now\" class=\"govuk-button\" data-module=\"govuk-button\">\n  Submit\n</button>",
+            "html": "<button name=\"start-now\" class=\"moaland-button\" data-module=\"moaland-button\">\n  Submit\n</button>",
             "hidden": true
         },
         {
@@ -256,7 +256,7 @@
                 "element": "button",
                 "type": "button"
             },
-            "html": "<button type=\"button\" class=\"govuk-button\" data-module=\"govuk-button\">\n  Submit\n</button>",
+            "html": "<button type=\"button\" class=\"moaland-button\" data-module=\"moaland-button\">\n  Submit\n</button>",
             "hidden": true
         },
         {
@@ -266,7 +266,7 @@
                 "element": "input",
                 "type": "button"
             },
-            "html": "<input value=\"Submit\" type=\"button\" class=\"govuk-button\" data-module=\"govuk-button\">",
+            "html": "<input value=\"Submit\" type=\"button\" class=\"moaland-button\" data-module=\"moaland-button\">",
             "hidden": true
         },
         {
@@ -276,7 +276,7 @@
                 "href": "/",
                 "text": "Continue"
             },
-            "html": "<a href=\"/\" role=\"button\" draggable=\"false\" class=\"govuk-button\" data-module=\"govuk-button\">\n  Continue\n</a>",
+            "html": "<a href=\"/\" role=\"button\" draggable=\"false\" class=\"moaland-button\" data-module=\"moaland-button\">\n  Continue\n</a>",
             "hidden": true
         },
         {
@@ -285,7 +285,7 @@
                 "text": "Submit",
                 "element": "a"
             },
-            "html": "<a href=\"#\" role=\"button\" draggable=\"false\" class=\"govuk-button\" data-module=\"govuk-button\">\n  Submit\n</a>",
+            "html": "<a href=\"#\" role=\"button\" draggable=\"false\" class=\"moaland-button\" data-module=\"moaland-button\">\n  Submit\n</a>",
             "hidden": true
         },
         {
@@ -295,7 +295,7 @@
                 "element": "button",
                 "value": "start"
             },
-            "html": "<button value=\"start\" class=\"govuk-button\" data-module=\"govuk-button\">\n  Submit\n</button>",
+            "html": "<button value=\"start\" class=\"moaland-button\" data-module=\"moaland-button\">\n  Submit\n</button>",
             "hidden": true
         },
         {
@@ -305,13 +305,13 @@
                 "element": "button",
                 "html": "Start <em>now</em>"
             },
-            "html": "<button class=\"govuk-button\" data-module=\"govuk-button\">\n  Start <em>now</em>\n</button>",
+            "html": "<button class=\"moaland-button\" data-module=\"moaland-button\">\n  Start <em>now</em>\n</button>",
             "hidden": true
         },
         {
             "name": "no data",
             "options": {},
-            "html": "<button class=\"govuk-button\" data-module=\"govuk-button\">\n  \n</button>",
+            "html": "<button class=\"moaland-button\" data-module=\"moaland-button\">\n  \n</button>",
             "hidden": true
         }
     ]

@@ -6,14 +6,14 @@ const sassConfig = {
   outputStyle: 'compressed'
 }
 
-describe('@mixin govuk-compatibility', () => {
+describe('@mixin moaland-compatibility', () => {
   it('does not output if the app is not marked as included', async () => {
     const sass = `
-      $_govuk-compatibility: (existing_app: false);
+      $_moaland-compatibility: (existing_app: false);
 
       @import "tools/compatibility";
 
-      @include govuk-compatibility(existing_app) {
+      @include moaland-compatibility(existing_app) {
         .foo {
           color: red;
         }
@@ -26,11 +26,11 @@ describe('@mixin govuk-compatibility', () => {
 
   it('outputs if the app is not marked as included', async () => {
     const sass = `
-      $_govuk-compatibility: (existing_app: true);
+      $_moaland-compatibility: (existing_app: true);
 
       @import "tools/compatibility";
 
-      @include govuk-compatibility(existing_app) {
+      @include moaland-compatibility(existing_app) {
         .foo {
           color: red;
         }
@@ -43,11 +43,11 @@ describe('@mixin govuk-compatibility', () => {
 
   it('throws an exception if the app is not recognised', async () => {
     const sass = `
-      $_govuk-compatibility: (existing_app: true);
+      $_moaland-compatibility: (existing_app: true);
 
       @import "tools/compatibility";
 
-      @include govuk-compatibility(non_existent_app) {
+      @include moaland-compatibility(non_existent_app) {
         .foo {
           color: red;
         }

@@ -20,7 +20,7 @@ describe('/components/tabs', () => {
 
       it('falls back to making all tab containers visible', async () => {
         await page.goto(baseUrl + '/components/tabs/preview', { waitUntil: 'load' })
-        const isContentVisible = await page.waitForSelector('.govuk-tabs__panel', { visible: true, timeout: 1000 })
+        const isContentVisible = await page.waitForSelector('.moaland-tabs__panel', { visible: true, timeout: 1000 })
         expect(isContentVisible).toBeTruthy()
       })
     })
@@ -29,24 +29,24 @@ describe('/components/tabs', () => {
       it('should indicate the open state of the first tab', async () => {
         await page.goto(baseUrl + '/components/tabs/preview', { waitUntil: 'load' })
 
-        const firstTabAriaSelected = await page.evaluate(() => document.body.querySelector('.govuk-tabs__list-item:first-child .govuk-tabs__tab').getAttribute('aria-selected'))
+        const firstTabAriaSelected = await page.evaluate(() => document.body.querySelector('.moaland-tabs__list-item:first-child .moaland-tabs__tab').getAttribute('aria-selected'))
         expect(firstTabAriaSelected).toEqual('true')
 
-        const firstTabClasses = await page.evaluate(() => document.body.querySelector('.govuk-tabs__list-item:first-child').className)
-        expect(firstTabClasses).toContain('govuk-tabs__list-item--selected')
+        const firstTabClasses = await page.evaluate(() => document.body.querySelector('.moaland-tabs__list-item:first-child').className)
+        expect(firstTabClasses).toContain('moaland-tabs__list-item--selected')
       })
 
       it('should display the first tab panel', async () => {
         await page.goto(baseUrl + '/components/tabs/preview', { waitUntil: 'load' })
 
-        const tabPanelIsHidden = await page.evaluate(() => document.body.querySelector('.govuk-tabs > .govuk-tabs__panel').classList.contains('govuk-tabs__panel--hidden'))
+        const tabPanelIsHidden = await page.evaluate(() => document.body.querySelector('.moaland-tabs > .moaland-tabs__panel').classList.contains('moaland-tabs__panel--hidden'))
         expect(tabPanelIsHidden).toBeFalsy()
       })
 
       it('should hide all the tab panels except for the first one', async () => {
         await page.goto(baseUrl + '/components/tabs/preview', { waitUntil: 'load' })
 
-        const tabPanelIsHidden = await page.evaluate(() => document.body.querySelector('.govuk-tabs > .govuk-tabs__panel ~ .govuk-tabs__panel').classList.contains('govuk-tabs__panel--hidden'))
+        const tabPanelIsHidden = await page.evaluate(() => document.body.querySelector('.moaland-tabs > .moaland-tabs__panel ~ .moaland-tabs__panel').classList.contains('moaland-tabs__panel--hidden'))
         expect(tabPanelIsHidden).toBeTruthy()
       })
     })
@@ -56,24 +56,24 @@ describe('/components/tabs', () => {
         await page.goto(baseUrl + '/components/tabs/preview', { waitUntil: 'load' })
 
         // Click the second tab
-        await page.click('.govuk-tabs__list-item:nth-child(2) .govuk-tabs__tab')
+        await page.click('.moaland-tabs__list-item:nth-child(2) .moaland-tabs__tab')
 
-        const secondTabAriaSelected = await page.evaluate(() => document.body.querySelector('.govuk-tabs__list-item:nth-child(2) .govuk-tabs__tab').getAttribute('aria-selected'))
+        const secondTabAriaSelected = await page.evaluate(() => document.body.querySelector('.moaland-tabs__list-item:nth-child(2) .moaland-tabs__tab').getAttribute('aria-selected'))
         expect(secondTabAriaSelected).toEqual('true')
 
-        const secondTabClasses = await page.evaluate(() => document.body.querySelector('.govuk-tabs__list-item:nth-child(2)').className)
-        expect(secondTabClasses).toContain('govuk-tabs__list-item--selected')
+        const secondTabClasses = await page.evaluate(() => document.body.querySelector('.moaland-tabs__list-item:nth-child(2)').className)
+        expect(secondTabClasses).toContain('moaland-tabs__list-item--selected')
       })
 
       it('should display the tab panel associated with the selected tab', async () => {
         await page.goto(baseUrl + '/components/tabs/preview', { waitUntil: 'load' })
 
         // Click the second tab
-        await page.click('.govuk-tabs__list-item:nth-child(2) .govuk-tabs__tab')
+        await page.click('.moaland-tabs__list-item:nth-child(2) .moaland-tabs__tab')
 
         const secondTabPanelIsHidden = await page.evaluate(() => {
-          const secondTabAriaControls = document.body.querySelector('.govuk-tabs__list-item:nth-child(2) .govuk-tabs__tab').getAttribute('aria-controls')
-          return document.body.querySelector(`[id="${secondTabAriaControls}"]`).classList.contains('govuk-tabs__panel--hidden')
+          const secondTabAriaControls = document.body.querySelector('.moaland-tabs__list-item:nth-child(2) .moaland-tabs__tab').getAttribute('aria-controls')
+          return document.body.querySelector(`[id="${secondTabAriaControls}"]`).classList.contains('moaland-tabs__panel--hidden')
         })
         expect(secondTabPanelIsHidden).toBeFalsy()
       })
@@ -84,16 +84,16 @@ describe('/components/tabs', () => {
 
           await page.evaluate(() => {
             // Replace contents of second tab with a DOM element
-            const secondTab = document.body.querySelector('.govuk-tabs__list-item:nth-child(2) .govuk-tabs__tab')
+            const secondTab = document.body.querySelector('.moaland-tabs__list-item:nth-child(2) .moaland-tabs__tab')
             secondTab.innerHTML = '<span>Tab 2</span>'
           })
 
           // Click the DOM element inside the second tab
-          await page.click('.govuk-tabs__list-item:nth-child(2) .govuk-tabs__tab span')
+          await page.click('.moaland-tabs__list-item:nth-child(2) .moaland-tabs__tab span')
 
           const secondTabPanelIsHidden = await page.evaluate(() => {
-            const secondTabAriaControls = document.body.querySelector('.govuk-tabs__list-item:nth-child(2) .govuk-tabs__tab').getAttribute('aria-controls')
-            return document.body.querySelector(`[id="${secondTabAriaControls}"]`).classList.contains('govuk-tabs__panel--hidden')
+            const secondTabAriaControls = document.body.querySelector('.moaland-tabs__list-item:nth-child(2) .moaland-tabs__tab').getAttribute('aria-controls')
+            return document.body.querySelector(`[id="${secondTabAriaControls}"]`).classList.contains('moaland-tabs__panel--hidden')
           })
           expect(secondTabPanelIsHidden).toBeFalsy()
         })
@@ -105,26 +105,26 @@ describe('/components/tabs', () => {
         await page.goto(baseUrl + '/components/tabs/preview', { waitUntil: 'load' })
 
         // Press right arrow when focused on the first tab
-        await page.focus('.govuk-tabs__list-item:first-child .govuk-tabs__tab')
+        await page.focus('.moaland-tabs__list-item:first-child .moaland-tabs__tab')
         await page.keyboard.press('ArrowRight')
 
-        const secondTabAriaSelected = await page.evaluate(() => document.body.querySelector('.govuk-tabs__list-item:nth-child(2) .govuk-tabs__tab').getAttribute('aria-selected'))
+        const secondTabAriaSelected = await page.evaluate(() => document.body.querySelector('.moaland-tabs__list-item:nth-child(2) .moaland-tabs__tab').getAttribute('aria-selected'))
         expect(secondTabAriaSelected).toEqual('true')
 
-        const secondTabClasses = await page.evaluate(() => document.body.querySelector('.govuk-tabs__list-item:nth-child(2)').className)
-        expect(secondTabClasses).toContain('govuk-tabs__list-item--selected')
+        const secondTabClasses = await page.evaluate(() => document.body.querySelector('.moaland-tabs__list-item:nth-child(2)').className)
+        expect(secondTabClasses).toContain('moaland-tabs__list-item--selected')
       })
 
       it('should display the tab panel associated with the selected tab', async () => {
         await page.goto(baseUrl + '/components/tabs/preview', { waitUntil: 'load' })
 
         // Press right arrow
-        await page.focus('.govuk-tabs__list-item:first-child .govuk-tabs__tab')
+        await page.focus('.moaland-tabs__list-item:first-child .moaland-tabs__tab')
         await page.keyboard.down('ArrowRight')
 
         const secondTabPanelIsHidden = await page.evaluate(() => {
-          const secondTabAriaControls = document.body.querySelector('.govuk-tabs__list-item:nth-child(2) .govuk-tabs__tab').getAttribute('aria-controls')
-          return document.body.querySelector(`[id="${secondTabAriaControls}"]`).classList.contains('govuk-tabs__panel--hidden')
+          const secondTabAriaControls = document.body.querySelector('.moaland-tabs__list-item:nth-child(2) .moaland-tabs__tab').getAttribute('aria-controls')
+          return document.body.querySelector(`[id="${secondTabAriaControls}"]`).classList.contains('moaland-tabs__panel--hidden')
         })
         expect(secondTabPanelIsHidden).toBeFalsy()
       })
@@ -134,13 +134,13 @@ describe('/components/tabs', () => {
       it('should indicate the open state of the associated tab', async () => {
         await page.goto(baseUrl + '/components/tabs/preview/#past-week', { waitUntil: 'load' })
 
-        const currentTabAriaSelected = await page.evaluate(() => document.body.querySelector('.govuk-tabs__tab[href="#past-week"]').getAttribute('aria-selected'))
+        const currentTabAriaSelected = await page.evaluate(() => document.body.querySelector('.moaland-tabs__tab[href="#past-week"]').getAttribute('aria-selected'))
         expect(currentTabAriaSelected).toEqual('true')
 
-        const currentTabClasses = await page.evaluate(() => document.body.querySelector('.govuk-tabs__tab[href="#past-week"]').parentNode.className)
-        expect(currentTabClasses).toContain('govuk-tabs__list-item--selected')
+        const currentTabClasses = await page.evaluate(() => document.body.querySelector('.moaland-tabs__tab[href="#past-week"]').parentNode.className)
+        expect(currentTabClasses).toContain('moaland-tabs__list-item--selected')
 
-        const currentTabPanelIsHidden = await page.evaluate(() => document.getElementById('past-week').classList.contains('govuk-tabs__panel--hidden'))
+        const currentTabPanelIsHidden = await page.evaluate(() => document.getElementById('past-week').classList.contains('moaland-tabs__panel--hidden'))
         expect(currentTabPanelIsHidden).toBeFalsy()
       })
       it('should only update based on hashes that are tabs', async () => {
@@ -157,7 +157,7 @@ describe('/components/tabs', () => {
       it('falls back to making the all tab containers visible', async () => {
         await page.emulate(iPhone)
         await page.goto(baseUrl + '/components/tabs/preview', { waitUntil: 'load' })
-        const isContentVisible = await page.waitForSelector('.govuk-tabs__panel', { visible: true, timeout: 1000 })
+        const isContentVisible = await page.waitForSelector('.moaland-tabs__panel', { visible: true, timeout: 1000 })
         expect(isContentVisible).toBeTruthy()
       })
     })

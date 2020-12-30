@@ -1,7 +1,7 @@
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
-	typeof define === 'function' && define.amd ? define('GOVUKFrontend', ['exports'], factory) :
-	(factory((global.GOVUKFrontend = {})));
+	typeof define === 'function' && define.amd ? define('MoalandFrontend', ['exports'], factory) :
+	(factory((global.MoalandFrontend = {})));
 }(this, (function (exports) { 'use strict';
 
 /**
@@ -776,20 +776,20 @@ if (detect) return
 function Accordion ($module) {
   this.$module = $module;
   this.moduleId = $module.getAttribute('id');
-  this.$sections = $module.querySelectorAll('.govuk-accordion__section');
+  this.$sections = $module.querySelectorAll('.moaland-accordion__section');
   this.$openAllButton = '';
   this.browserSupportsSessionStorage = helper.checkForSessionStorage();
 
-  this.controlsClass = 'govuk-accordion__controls';
-  this.openAllClass = 'govuk-accordion__open-all';
-  this.iconClass = 'govuk-accordion__icon';
+  this.controlsClass = 'moaland-accordion__controls';
+  this.openAllClass = 'moaland-accordion__open-all';
+  this.iconClass = 'moaland-accordion__icon';
 
-  this.sectionHeaderClass = 'govuk-accordion__section-header';
-  this.sectionHeaderFocusedClass = 'govuk-accordion__section-header--focused';
-  this.sectionHeadingClass = 'govuk-accordion__section-heading';
-  this.sectionSummaryClass = 'govuk-accordion__section-summary';
-  this.sectionButtonClass = 'govuk-accordion__section-button';
-  this.sectionExpandedClass = 'govuk-accordion__section--expanded';
+  this.sectionHeaderClass = 'moaland-accordion__section-header';
+  this.sectionHeaderFocusedClass = 'moaland-accordion__section-header--focused';
+  this.sectionHeadingClass = 'moaland-accordion__section-heading';
+  this.sectionSummaryClass = 'moaland-accordion__section-summary';
+  this.sectionButtonClass = 'moaland-accordion__section-button';
+  this.sectionExpandedClass = 'moaland-accordion__section--expanded';
 }
 
 // Initialize component
@@ -813,7 +813,7 @@ Accordion.prototype.initControls = function () {
   // Create "Open all" button and set attributes
   this.$openAllButton = document.createElement('button');
   this.$openAllButton.setAttribute('type', 'button');
-  this.$openAllButton.innerHTML = 'Open all <span class="govuk-visually-hidden">sections</span>';
+  this.$openAllButton.innerHTML = 'Open all <span class="moaland-visually-hidden">sections</span>';
   this.$openAllButton.setAttribute('class', this.openAllClass);
   this.$openAllButton.setAttribute('aria-expanded', 'false');
   this.$openAllButton.setAttribute('type', 'button');
@@ -954,7 +954,7 @@ Accordion.prototype.checkIfAllSectionsOpen = function () {
 // Update "Open all" button
 Accordion.prototype.updateOpenAllButton = function (expanded) {
   var newButtonText = expanded ? 'Close all' : 'Open all';
-  newButtonText += '<span class="govuk-visually-hidden"> sections</span>';
+  newButtonText += '<span class="moaland-visually-hidden"> sections</span>';
   this.$openAllButton.setAttribute('aria-expanded', expanded);
   this.$openAllButton.innerHTML = newButtonText;
 };
@@ -1496,7 +1496,7 @@ Details.prototype.polyfillHandleInputs = function (node, callback) {
 
 function CharacterCount ($module) {
   this.$module = $module;
-  this.$textarea = $module.querySelector('.govuk-js-character-count');
+  this.$textarea = $module.querySelector('.moaland-js-character-count');
   if (this.$textarea) {
     this.$countMessage = $module.querySelector('[id=' + this.$textarea.id + '-info]');
   }
@@ -1624,24 +1624,24 @@ CharacterCount.prototype.updateCountMessage = function () {
   var thresholdPercent = options.threshold ? options.threshold : 0;
   var thresholdValue = maxLength * thresholdPercent / 100;
   if (thresholdValue > currentLength) {
-    countMessage.classList.add('govuk-character-count__message--disabled');
+    countMessage.classList.add('moaland-character-count__message--disabled');
     // Ensure threshold is hidden for users of assistive technologies
     countMessage.setAttribute('aria-hidden', true);
   } else {
-    countMessage.classList.remove('govuk-character-count__message--disabled');
+    countMessage.classList.remove('moaland-character-count__message--disabled');
     // Ensure threshold is visible for users of assistive technologies
     countMessage.removeAttribute('aria-hidden');
   }
 
   // Update styles
   if (remainingNumber < 0) {
-    countElement.classList.add('govuk-textarea--error');
-    countMessage.classList.remove('govuk-hint');
-    countMessage.classList.add('govuk-error-message');
+    countElement.classList.add('moaland-textarea--error');
+    countMessage.classList.remove('moaland-hint');
+    countMessage.classList.add('moaland-error-message');
   } else {
-    countElement.classList.remove('govuk-textarea--error');
-    countMessage.classList.remove('govuk-error-message');
-    countMessage.classList.add('govuk-hint');
+    countElement.classList.remove('moaland-textarea--error');
+    countMessage.classList.remove('moaland-error-message');
+    countMessage.classList.add('moaland-hint');
   }
 
   // Update message
@@ -1743,11 +1743,11 @@ Checkboxes.prototype.syncAllConditionalReveals = function () {
 Checkboxes.prototype.syncConditionalRevealWithInputState = function ($input) {
   var $target = this.$module.querySelector('#' + $input.getAttribute('aria-controls'));
 
-  if ($target && $target.classList.contains('govuk-checkboxes__conditional')) {
+  if ($target && $target.classList.contains('moaland-checkboxes__conditional')) {
     var inputIsChecked = $input.checked;
 
     $input.setAttribute('aria-expanded', inputIsChecked);
-    $target.classList.toggle('govuk-checkboxes__conditional--hidden', !inputIsChecked);
+    $target.classList.toggle('moaland-checkboxes__conditional--hidden', !inputIsChecked);
   }
 };
 
@@ -2013,7 +2013,7 @@ NotificationBanner.prototype.setFocus = function () {
 
 function Header ($module) {
   this.$module = $module;
-  this.$menuButton = $module && $module.querySelector('.govuk-js-header-toggle');
+  this.$menuButton = $module && $module.querySelector('.moaland-js-header-toggle');
   this.$menu = this.$menuButton && $module.querySelector(
     '#' + this.$menuButton.getAttribute('aria-controls')
   );
@@ -2030,7 +2030,7 @@ Header.prototype.init = function () {
     return
   }
 
-  this.syncState(this.$menu.classList.contains('govuk-header__navigation--open'));
+  this.syncState(this.$menu.classList.contains('moaland-header__navigation--open'));
   this.$menuButton.addEventListener('click', this.handleMenuButtonClick.bind(this));
 };
 
@@ -2043,7 +2043,7 @@ Header.prototype.init = function () {
  * @param {boolean} isVisible Whether the menu is currently visible
  */
 Header.prototype.syncState = function (isVisible) {
-  this.$menuButton.classList.toggle('govuk-header__menu-button--open', isVisible);
+  this.$menuButton.classList.toggle('moaland-header__menu-button--open', isVisible);
   this.$menuButton.setAttribute('aria-expanded', isVisible);
 };
 
@@ -2054,7 +2054,7 @@ Header.prototype.syncState = function (isVisible) {
  * sync the accessibility state and menu button state
  */
 Header.prototype.handleMenuButtonClick = function () {
-  var isVisible = this.$menu.classList.toggle('govuk-header__navigation--open');
+  var isVisible = this.$menu.classList.toggle('moaland-header__navigation--open');
   this.syncState(isVisible);
 };
 
@@ -2133,11 +2133,11 @@ Radios.prototype.syncAllConditionalReveals = function () {
 Radios.prototype.syncConditionalRevealWithInputState = function ($input) {
   var $target = document.querySelector('#' + $input.getAttribute('aria-controls'));
 
-  if ($target && $target.classList.contains('govuk-radios__conditional')) {
+  if ($target && $target.classList.contains('moaland-radios__conditional')) {
     var inputIsChecked = $input.checked;
 
     $input.setAttribute('aria-expanded', inputIsChecked);
-    $target.classList.toggle('govuk-radios__conditional--hidden', !inputIsChecked);
+    $target.classList.toggle('moaland-radios__conditional--hidden', !inputIsChecked);
   }
 };
 
@@ -2215,10 +2215,10 @@ Radios.prototype.handleClick = function (event) {
 
 function Tabs ($module) {
   this.$module = $module;
-  this.$tabs = $module.querySelectorAll('.govuk-tabs__tab');
+  this.$tabs = $module.querySelectorAll('.moaland-tabs__tab');
 
   this.keys = { left: 37, right: 39, up: 38, down: 40 };
-  this.jsHiddenClass = 'govuk-tabs__panel--hidden';
+  this.jsHiddenClass = 'moaland-tabs__panel--hidden';
 }
 
 Tabs.prototype.init = function () {
@@ -2246,8 +2246,8 @@ Tabs.prototype.checkMode = function () {
 Tabs.prototype.setup = function () {
   var $module = this.$module;
   var $tabs = this.$tabs;
-  var $tabList = $module.querySelector('.govuk-tabs__list');
-  var $tabListItems = $module.querySelectorAll('.govuk-tabs__list-item');
+  var $tabList = $module.querySelector('.moaland-tabs__list');
+  var $tabListItems = $module.querySelectorAll('.moaland-tabs__list-item');
 
   if (!$tabs || !$tabList || !$tabListItems) {
     return
@@ -2287,8 +2287,8 @@ Tabs.prototype.setup = function () {
 Tabs.prototype.teardown = function () {
   var $module = this.$module;
   var $tabs = this.$tabs;
-  var $tabList = $module.querySelector('.govuk-tabs__list');
-  var $tabListItems = $module.querySelectorAll('.govuk-tabs__list-item');
+  var $tabList = $module.querySelector('.moaland-tabs__list');
+  var $tabListItems = $module.querySelectorAll('.moaland-tabs__list-item');
 
   if (!$tabs || !$tabList || !$tabListItems) {
     return
@@ -2345,7 +2345,7 @@ Tabs.prototype.showTab = function ($tab) {
 };
 
 Tabs.prototype.getTab = function (hash) {
-  return this.$module.querySelector('.govuk-tabs__tab[href="' + hash + '"]')
+  return this.$module.querySelector('.moaland-tabs__tab[href="' + hash + '"]')
 };
 
 Tabs.prototype.setAttributes = function ($tab) {
@@ -2380,7 +2380,7 @@ Tabs.prototype.unsetAttributes = function ($tab) {
 };
 
 Tabs.prototype.onTabClick = function (e) {
-  if (!e.target.classList.contains('govuk-tabs__tab')) {
+  if (!e.target.classList.contains('moaland-tabs__tab')) {
   // Allow events on child DOM elements to bubble up to tab parent
     return false
   }
@@ -2423,7 +2423,7 @@ Tabs.prototype.activateNextTab = function () {
   var currentTab = this.getCurrentTab();
   var nextTabListItem = currentTab.parentNode.nextElementSibling;
   if (nextTabListItem) {
-    var nextTab = nextTabListItem.querySelector('.govuk-tabs__tab');
+    var nextTab = nextTabListItem.querySelector('.moaland-tabs__tab');
   }
   if (nextTab) {
     this.hideTab(currentTab);
@@ -2437,7 +2437,7 @@ Tabs.prototype.activatePreviousTab = function () {
   var currentTab = this.getCurrentTab();
   var previousTabListItem = currentTab.parentNode.previousElementSibling;
   if (previousTabListItem) {
-    var previousTab = previousTabListItem.querySelector('.govuk-tabs__tab');
+    var previousTab = previousTabListItem.querySelector('.moaland-tabs__tab');
   }
   if (previousTab) {
     this.hideTab(currentTab);
@@ -2464,18 +2464,18 @@ Tabs.prototype.hidePanel = function (tab) {
 
 Tabs.prototype.unhighlightTab = function ($tab) {
   $tab.setAttribute('aria-selected', 'false');
-  $tab.parentNode.classList.remove('govuk-tabs__list-item--selected');
+  $tab.parentNode.classList.remove('moaland-tabs__list-item--selected');
   $tab.setAttribute('tabindex', '-1');
 };
 
 Tabs.prototype.highlightTab = function ($tab) {
   $tab.setAttribute('aria-selected', 'true');
-  $tab.parentNode.classList.add('govuk-tabs__list-item--selected');
+  $tab.parentNode.classList.add('moaland-tabs__list-item--selected');
   $tab.setAttribute('tabindex', '0');
 };
 
 Tabs.prototype.getCurrentTab = function () {
-  return this.$module.querySelector('.govuk-tabs__list-item--selected .govuk-tabs__tab')
+  return this.$module.querySelector('.moaland-tabs__list-item--selected .moaland-tabs__tab')
 };
 
 // this is because IE doesn't always return the actual value but a relative full path
@@ -2495,50 +2495,50 @@ function initAll (options) {
   // Defaults to the entire document if nothing is set.
   var scope = typeof options.scope !== 'undefined' ? options.scope : document;
 
-  var $buttons = scope.querySelectorAll('[data-module="govuk-button"]');
+  var $buttons = scope.querySelectorAll('[data-module="moaland-button"]');
   nodeListForEach($buttons, function ($button) {
     new Button($button).init();
   });
 
-  var $accordions = scope.querySelectorAll('[data-module="govuk-accordion"]');
+  var $accordions = scope.querySelectorAll('[data-module="moaland-accordion"]');
   nodeListForEach($accordions, function ($accordion) {
     new Accordion($accordion).init();
   });
 
-  var $details = scope.querySelectorAll('[data-module="govuk-details"]');
+  var $details = scope.querySelectorAll('[data-module="moaland-details"]');
   nodeListForEach($details, function ($detail) {
     new Details($detail).init();
   });
 
-  var $characterCounts = scope.querySelectorAll('[data-module="govuk-character-count"]');
+  var $characterCounts = scope.querySelectorAll('[data-module="moaland-character-count"]');
   nodeListForEach($characterCounts, function ($characterCount) {
     new CharacterCount($characterCount).init();
   });
 
-  var $checkboxes = scope.querySelectorAll('[data-module="govuk-checkboxes"]');
+  var $checkboxes = scope.querySelectorAll('[data-module="moaland-checkboxes"]');
   nodeListForEach($checkboxes, function ($checkbox) {
     new Checkboxes($checkbox).init();
   });
 
   // Find first error summary module to enhance.
-  var $errorSummary = scope.querySelector('[data-module="govuk-error-summary"]');
+  var $errorSummary = scope.querySelector('[data-module="moaland-error-summary"]');
   new ErrorSummary($errorSummary).init();
 
   // Find first header module to enhance.
-  var $toggleButton = scope.querySelector('[data-module="govuk-header"]');
+  var $toggleButton = scope.querySelector('[data-module="moaland-header"]');
   new Header($toggleButton).init();
 
-  var $notificationBanners = scope.querySelectorAll('[data-module="govuk-notification-banner"]');
+  var $notificationBanners = scope.querySelectorAll('[data-module="moaland-notification-banner"]');
   nodeListForEach($notificationBanners, function ($notificationBanner) {
     new NotificationBanner($notificationBanner).init();
   });
 
-  var $radios = scope.querySelectorAll('[data-module="govuk-radios"]');
+  var $radios = scope.querySelectorAll('[data-module="moaland-radios"]');
   nodeListForEach($radios, function ($radio) {
     new Radios($radio).init();
   });
 
-  var $tabs = scope.querySelectorAll('[data-module="govuk-tabs"]');
+  var $tabs = scope.querySelectorAll('[data-module="moaland-tabs"]');
   nodeListForEach($tabs, function ($tabs) {
     new Tabs($tabs).init();
   });

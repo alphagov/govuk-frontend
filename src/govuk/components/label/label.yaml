@@ -30,12 +30,12 @@ examples:
       text: National Insurance number
   - name: with bold text
     data:
-      classes: govuk-label--s
+      classes: moaland-label--s
       text: National Insurance number
   - name: as page heading
     data:
       text: National Insurance number
-      classes: govuk-label--xl
+      classes: moaland-label--xl
       isPageHeading: true
 
 # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures

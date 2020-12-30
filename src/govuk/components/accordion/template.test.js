@@ -20,14 +20,14 @@ describe('Accordion', () => {
 
     it('renders with heading button text', () => {
       const $ = render('accordion', examples.default)
-      const $componentHeadingButton = $('.govuk-accordion__section-button')
+      const $componentHeadingButton = $('.moaland-accordion__section-button')
 
       expect($componentHeadingButton.html().trim()).toEqual('Section A')
     })
 
     it('renders with content', () => {
       const $ = render('accordion', examples.default)
-      const $componentContent = $('.govuk-accordion__section-content').first()
+      const $componentContent = $('.moaland-accordion__section-content').first()
 
       expect($componentContent.text().trim()).toEqual('Example item 1')
     })
@@ -35,7 +35,7 @@ describe('Accordion', () => {
     it('renders with id', () => {
       const $ = render('accordion', examples.default)
 
-      const $component = $('.govuk-accordion')
+      const $component = $('.moaland-accordion')
       expect($component.attr('id')).toEqual('default-example')
     })
   })
@@ -44,48 +44,48 @@ describe('Accordion', () => {
     it('renders with classes', () => {
       const $ = render('accordion', examples.classes)
 
-      const $component = $('.govuk-accordion')
+      const $component = $('.moaland-accordion')
       expect($component.hasClass('myClass')).toBeTruthy()
     })
 
     it('renders with attributes', () => {
       const $ = render('accordion', examples.attributes)
-      const $component = $('.govuk-accordion')
+      const $component = $('.moaland-accordion')
       expect($component.attr('data-attribute')).toEqual('value')
     })
 
     it('renders with specified heading level', () => {
       const $ = render('accordion', examples['custom heading level'])
-      const $componentHeading = $('.govuk-accordion__section-heading')
+      const $componentHeading = $('.moaland-accordion__section-heading')
 
       expect($componentHeading.get(0).tagName).toEqual('h3')
     })
 
     it('renders with heading button html', () => {
       const $ = render('accordion', examples['heading html'])
-      const $componentHeadingButton = $('.govuk-accordion__section-button')
+      const $componentHeadingButton = $('.moaland-accordion__section-button')
 
       expect($componentHeadingButton.html().trim()).toEqual('<span class="myClass">Section A</span>')
     })
 
     it('renders with section expanded class', () => {
       const $ = render('accordion', examples['with one section open'])
-      const $componentSection = $('.govuk-accordion__section').first()
+      const $componentSection = $('.moaland-accordion__section').first()
 
-      expect($componentSection.hasClass('govuk-accordion__section--expanded')).toBeTruthy()
+      expect($componentSection.hasClass('moaland-accordion__section--expanded')).toBeTruthy()
     })
 
     it('renders with summary', () => {
       const $ = render('accordion', examples['with additional descriptions'])
-      const $componentSummary = $('.govuk-accordion__section-summary').first()
+      const $componentSummary = $('.moaland-accordion__section-summary').first()
 
       expect($componentSummary.text().trim()).toEqual('Additional description')
     })
 
     it('renders list without falsely values', () => {
       const $ = render('accordion', examples['with falsey values'])
-      const $component = $('.govuk-accordion')
-      const $items = $component.find('.govuk-accordion__section')
+      const $component = $('.moaland-accordion')
+      const $items = $component.find('.moaland-accordion__section')
 
       expect($items.length).toEqual(2)
     })

@@ -8,13 +8,13 @@ const sassConfig = {
   outputStyle: 'nested'
 }
 
-describe('@mixin govuk-width-container', () => {
+describe('@mixin moaland-width-container', () => {
   it('allows different widths to be specified using $width', async () => {
     const sass = `
       @import "objects/width-container";
 
       .app-width-container--wide {
-        @include govuk-width-container(1200px);
+        @include moaland-width-container(1200px);
       }
     `
     const results = await renderSass({ data: sass, ...sassConfig })

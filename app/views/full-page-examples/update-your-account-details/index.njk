@@ -10,37 +10,37 @@ scenario: >-
 
 {% extends "_generic.njk" %}
 
-{% from "back-link/macro.njk" import govukBackLink %}
-{% from "error-summary/macro.njk" import govukErrorSummary %}
-{% from "input/macro.njk" import govukInput %}
-{% from "button/macro.njk" import govukButton %}
+{% from "back-link/macro.njk" import moalandBackLink %}
+{% from "error-summary/macro.njk" import moalandErrorSummary %}
+{% from "input/macro.njk" import moalandInput %}
+{% from "button/macro.njk" import moalandButton %}
 
 {% set pageTitle = "Update your account details" %}
 {% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block beforeContent %}
-  {{ govukBackLink({
+  {{ moalandBackLink({
     text: "Back"
   }) }}
 {% endblock %}
 
 {% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+  <div class="moaland-grid-row">
+    <div class="moaland-grid-column-two-thirds">
       {% if errorSummary.length > 0 %}
-        {{ govukErrorSummary({
+        {{ moalandErrorSummary({
           titleText: "There is a problem",
           errorList: errorSummary
         }) }}
       {% endif %}
-      <h1 class="govuk-heading-xl">{{ pageTitle }}</h1>
+      <h1 class="moaland-heading-xl">{{ pageTitle }}</h1>
 
       <form method="post" novalidate>
 
-        {{ govukInput({
+        {{ moalandInput({
           label: {
             text: "Email address",
-            classes: "govuk-label--m"
+            classes: "moaland-label--m"
           },
           type: "email",
           id: "email",
@@ -51,10 +51,10 @@ scenario: >-
           spellcheck: false
         }) }}
 
-        {{ govukInput({
+        {{ moalandInput({
           label: {
             text: "New password",
-            classes: "govuk-label--m"
+            classes: "moaland-label--m"
           },
           type: "password",
           id: "password",
@@ -65,7 +65,7 @@ scenario: >-
           spellcheck: false
         }) }}
 
-        {{ govukButton({
+        {{ moalandButton({
           text: "Save account details"
         }) }}
 

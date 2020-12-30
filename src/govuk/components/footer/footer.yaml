@@ -153,7 +153,7 @@ examples:
           text: Fusce Sollicitudin
         - href: '#8'
           text:  Ligula Nullam Ultricies
-      html: Built by the <a href="#" class="govuk-footer__link">Department of Magical Law Enforcement</a>
+      html: Built by the <a href="#" class="moaland-footer__link">Department of Magical Law Enforcement</a>
 
 - name: with custom meta
   description: Custom meta section
@@ -253,7 +253,7 @@ examples:
           text: Terms and conditions
         - href: '/cymraeg'
           text: Rhestr o Wasanaethau Cymraeg
-      html: Built by the <a class="govuk-footer__link" href="#">Government Digital Service</a>
+      html: Built by the <a class="moaland-footer__link" href="#">Government Digital Service</a>
 
 - name: Three equal columns
   description: A full example to demonstrate three equal width columns

@@ -1,12 +1,12 @@
-{% from "back-link/macro.njk" import govukBackLink %}
-{% from "button/macro.njk" import govukButton %}
-{% from "date-input/macro.njk" import govukDateInput %}
-{% from "error-summary/macro.njk" import govukErrorSummary %}
+{% from "back-link/macro.njk" import moalandBackLink %}
+{% from "button/macro.njk" import moalandButton %}
+{% from "date-input/macro.njk" import moalandDateInput %}
+{% from "error-summary/macro.njk" import moalandErrorSummary %}
 
 {% extends "layout.njk" %}
 
 {% block beforeContent %}
-  {{ govukBackLink({
+  {{ moalandBackLink({
     "href": "/"
   }) }}
 {% endblock %}
@@ -14,7 +14,7 @@
 {% block content %}
 <form action="/" method="post">
 
-  {{ govukErrorSummary({
+  {{ moalandErrorSummary({
     "titleText": "Message to alert the user to a problem goes here",
     "descriptionText": "Optional description of the errors and how to correct them",
     "classes": "optional-extra-class",
@@ -26,14 +26,14 @@
     ]
   }) }}
 
-  {{ govukDateInput({
+  {{ moalandDateInput({
     id: 'dob',
     name: 'dob',
     fieldset: {
       legend: {
         text: 'What is your date of birth?',
         isPageHeading: true,
-        classes: 'govuk-fieldset__legend--xl'
+        classes: 'moaland-fieldset__legend--xl'
       }
     },
     hint: {
@@ -42,16 +42,16 @@
     items:[
       {
         name: 'day',
-        classes: 'govuk-input--width-2',
+        classes: 'moaland-input--width-2',
         value: '22'
       },
       {
         name: 'month',
-        classes: 'govuk-input--width-2 govuk-input--error'
+        classes: 'moaland-input--width-2 moaland-input--error'
       },
       {
         name: 'year',
-        classes: 'govuk-input--width-4 govuk-input--error'
+        classes: 'moaland-input--width-4 moaland-input--error'
       }
     ],
     errorMessage: {
@@ -60,7 +60,7 @@
     })
   }}
 
-  {{ govukButton({
+  {{ moalandButton({
     "text": "Continue"
   }) }}
 

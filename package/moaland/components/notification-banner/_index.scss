@@ -1,46 +1,46 @@
-@include govuk-exports("govuk/component/notification-banner") {
-  .govuk-notification-banner {
-    @include govuk-font($size: 19);
-    @include govuk-responsive-margin(8, "bottom");
+@include moaland-exports("moaland/component/notification-banner") {
+  .moaland-notification-banner {
+    @include moaland-font($size: 19);
+    @include moaland-responsive-margin(8, "bottom");
 
-    border: $govuk-border-width solid $govuk-brand-colour;
+    border: $moaland-border-width solid $moaland-brand-colour;
 
-    background-color: $govuk-brand-colour;
+    background-color: $moaland-brand-colour;
 
     &:focus {
-      outline: $govuk-focus-width solid $govuk-focus-colour;
+      outline: $moaland-focus-width solid $moaland-focus-colour;
     }
   }
 
-  .govuk-notification-banner__header {
-    padding: 2px govuk-spacing(3) govuk-spacing(1);
+  .moaland-notification-banner__header {
+    padding: 2px moaland-spacing(3) moaland-spacing(1);
 
     // Ensures the notification header appears separate to the notification body text in high contrast mode
     border-bottom: 1px solid transparent;
 
-    @include govuk-media-query($from: tablet) {
-      padding: 2px govuk-spacing(4) govuk-spacing(1);
+    @include moaland-media-query($from: tablet) {
+      padding: 2px moaland-spacing(4) moaland-spacing(1);
     }
   }
 
-  .govuk-notification-banner__title {
-    @include govuk-font($size: 19, $weight: bold);
+  .moaland-notification-banner__title {
+    @include moaland-font($size: 19, $weight: bold);
 
     margin: 0;
 
     padding: 0;
 
-    color: govuk-colour("white");
+    color: moaland-colour("white");
   }
 
-  .govuk-notification-banner__content {
-    $padding-tablet: govuk-spacing(4);
-    @include govuk-text-colour;
-    padding: govuk-spacing(3);
+  .moaland-notification-banner__content {
+    $padding-tablet: moaland-spacing(4);
+    @include moaland-text-colour;
+    padding: moaland-spacing(3);
 
-    background-color: $govuk-body-background-colour;
+    background-color: $moaland-body-background-colour;
 
-    @include govuk-media-query($from: tablet) {
+    @include moaland-media-query($from: tablet) {
       padding: $padding-tablet;
     }
 
@@ -52,10 +52,10 @@
       box-sizing: border-box;
 
       // Calculate the internal width of a two-thirds column...
-      $two-col-width: ($govuk-page-width * 2 / 3) - ($govuk-gutter * 1 / 3);
+      $two-col-width: ($moaland-page-width * 2 / 3) - ($moaland-gutter * 1 / 3);
 
       // ...and then factor in the left border and padding
-      $banner-exterior: ($padding-tablet + $govuk-border-width);
+      $banner-exterior: ($padding-tablet + $moaland-border-width);
       max-width: $two-col-width - $banner-exterior;
     }
 
@@ -64,26 +64,26 @@
     }
   }
 
-  .govuk-notification-banner__heading {
-    @include govuk-font($size: 24, $weight: bold);
+  .moaland-notification-banner__heading {
+    @include moaland-font($size: 24, $weight: bold);
 
-    margin: 0 0 govuk-spacing(3) 0;
+    margin: 0 0 moaland-spacing(3) 0;
 
     padding: 0;
   }
 
-  .govuk-notification-banner__link {
-    @include govuk-link-common;
-    @include govuk-link-style-no-visited-state;
+  .moaland-notification-banner__link {
+    @include moaland-link-common;
+    @include moaland-link-style-no-visited-state;
   }
 
-  .govuk-notification-banner--success {
-    border-color: $govuk-success-colour;
+  .moaland-notification-banner--success {
+    border-color: $moaland-success-colour;
 
-    background-color: $govuk-success-colour;
+    background-color: $moaland-success-colour;
 
-    .govuk-notification-banner__link {
-      @include govuk-link-style-success;
+    .moaland-notification-banner__link {
+      @include moaland-link-style-success;
     }
   }
 }

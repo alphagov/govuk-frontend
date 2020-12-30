@@ -16,11 +16,11 @@
 /// @type Boolean
 /// @access public
 
-$govuk-use-legacy-palette: if(
+$moaland-use-legacy-palette: if(
   (
-    $govuk-compatibility-govukfrontendtoolkit or
-    $govuk-compatibility-govuktemplate or
-    $govuk-compatibility-govukelements
+    $moaland-compatibility-moalandfrontendtoolkit or
+    $moaland-compatibility-moalandtemplate or
+    $moaland-compatibility-moalandelements
   ),
   true,
   false
@@ -30,11 +30,11 @@ $govuk-use-legacy-palette: if(
 ///
 /// This exists only because you cannot easily set a !default variable
 /// conditionally (thanks to the way scope works in Sass) so we set
-/// `$govuk-colour-palette` using the `if` function.
+/// `$moaland-colour-palette` using the `if` function.
 ///
 /// @access private
 
-$_govuk-colour-palette-modern: (
+$_moaland-colour-palette-modern: (
   "red": #d4351c,
   "yellow": #ffdd00,
   "green": #00703c,
@@ -63,11 +63,11 @@ $_govuk-colour-palette-modern: (
 ///
 /// This exists only because you cannot easily set a !default variable
 /// conditionally (thanks to the way scope works in Sass) so we set
-/// `$govuk-colour-palette` using the `if` function.
+/// `$moaland-colour-palette` using the `if` function.
 ///
 /// @access private
 
-$_govuk-colour-palette-legacy: (
+$_moaland-colour-palette-legacy: (
   "purple": #2e358b,
   "light-purple": #6f72af,
   "bright-purple": #912b88,
@@ -101,8 +101,8 @@ $_govuk-colour-palette-legacy: (
 ///
 /// @access public
 
-$govuk-colours: if(
-  $govuk-use-legacy-palette,
-  $_govuk-colour-palette-legacy,
-  $_govuk-colour-palette-modern
+$moaland-colours: if(
+  $moaland-use-legacy-palette,
+  $_moaland-colour-palette-legacy,
+  $_moaland-colour-palette-modern
 ) !default;

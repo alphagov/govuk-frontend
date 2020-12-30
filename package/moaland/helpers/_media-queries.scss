@@ -7,20 +7,20 @@
 // =========================================================
 
 // Pass our breakpoints and static breakpoint definitions through to sass-mq.
-$mq-breakpoints: if(variable-exists(govuk-breakpoints), $govuk-breakpoints, ());
-$mq-static-breakpoint: if(variable-exists(govuk-ie8-breakpoint), $govuk-ie8-breakpoint, desktop);
+$mq-breakpoints: if(variable-exists(moaland-breakpoints), $moaland-breakpoints, ());
+$mq-static-breakpoint: if(variable-exists(moaland-ie8-breakpoint), $moaland-ie8-breakpoint, desktop);
 
 $mq-show-breakpoints: ();
 
-@if (variable-exists(govuk-show-breakpoints) and $govuk-show-breakpoints) {
-  $mq-show-breakpoints: map-keys($govuk-breakpoints);
+@if (variable-exists(moaland-show-breakpoints) and $moaland-show-breakpoints) {
+  $mq-show-breakpoints: map-keys($moaland-breakpoints);
 }
 
 // When building a stylesheet for IE8, set $mq-responsive to false in order to
 // 'rasterize' any media queries.
 
 $mq-responsive: true;
-@if (variable-exists(govuk-is-ie8) and $govuk-is-ie8) {
+@if (variable-exists(moaland-is-ie8) and $moaland-is-ie8) {
   $mq-responsive: false;
 }
 
@@ -48,43 +48,43 @@ $sass-mq-already-included: true;
 /// This is a currently a wrapper for sass-mq - abstracted so that we can
 /// replace it in the future if we so choose.
 ///
-/// @param {String | Boolean} $from [false] - One of $govuk-breakpoints
-/// @param {String | Boolean} $until [false] - One of $govuk-breakpoints
+/// @param {String | Boolean} $from [false] - One of $moaland-breakpoints
+/// @param {String | Boolean} $until [false] - One of $moaland-breakpoints
 /// @param {String | Boolean} $and [false] - Additional media query parameters
 /// @param {String} $media-type [all] - Media type: screen, print…
 ///
 /// @ignore Undocumented mq API, for advanced use only:
-/// @ignore @param {Map} $breakpoints [$govuk-breakpoints]
-/// @ignore @param {String} $static-breakpoint [$govuk-ie8-breakpoint]
-/// @ignore @param {Boolean} $responsive [$govuk-is-ie8]
+/// @ignore @param {Map} $breakpoints [$moaland-breakpoints]
+/// @ignore @param {String} $static-breakpoint [$moaland-ie8-breakpoint]
+/// @ignore @param {Boolean} $responsive [$moaland-is-ie8]
 ///
 /// @content styling rules, wrapped into a @media query when $responsive is true
 ///
 /// @example scss
 ///  .element {
-///    @include govuk-media-query($from: mobile) {
+///    @include moaland-media-query($from: mobile) {
 ///      color: red;
 ///    }
-///    @include govuk-media-query($until: tablet) {
+///    @include moaland-media-query($until: tablet) {
 ///      color: blue;
 ///    }
-///    @include govuk-media-query(mobile, tablet) {
+///    @include moaland-media-query(mobile, tablet) {
 ///      color: green;
 ///    }
-///    @include govuk-media-query($from: tablet, $and: '(orientation: landscape)') {
+///    @include moaland-media-query($from: tablet, $and: '(orientation: landscape)') {
 ///      color: teal;
 ///    }
-///    @include govuk-media-query(950px) {
+///    @include moaland-media-query(950px) {
 ///      color: hotpink;
 ///    }
-///    @include govuk-media-query(tablet, $media-type: screen) {
+///    @include moaland-media-query(tablet, $media-type: screen) {
 ///      color: hotpink;
 ///    }
 ///  }
 ///
 /// @access public
 
-@mixin govuk-media-query($args...) {
+@mixin moaland-media-query($args...) {
   @include mq($args...) {
     @content;
   }

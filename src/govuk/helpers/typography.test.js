@@ -14,11 +14,11 @@ const sassBootstrap = `
   @import "settings/ie8";
   @import "settings/typography-responsive";
 
-  $govuk-breakpoints: (
+  $moaland-breakpoints: (
     desktop: 30em
   );
 
-  $govuk-typography-scale: (
+  $moaland-typography-scale: (
     12: (
       null: (
         font-size: 12px,
@@ -45,7 +45,7 @@ const sassBootstrap = `
   @import "tools/iff";
   @import "helpers/typography";`
 
-describe('@mixin govuk-typography-common', () => {
+describe('@mixin moaland-typography-common', () => {
   it('should output a @font-face declaration by default', async () => {
     const sass = `
     @import "settings/all";
@@ -53,10 +53,10 @@ describe('@mixin govuk-typography-common', () => {
     @import "tools/ie8";
 
     :root {
-      @include govuk-typography-common;
+      @include moaland-typography-common;
     }
     :root {
-      @include govuk-typography-common($font-family: $govuk-font-family-tabular);
+      @include moaland-typography-common($font-family: $moaland-font-family-tabular);
     }
     `
 
@@ -69,16 +69,16 @@ describe('@mixin govuk-typography-common', () => {
   })
   it('should not output a @font-face declaration when the user has changed their font', async () => {
     const sass = `
-    $govuk-font-family: Helvetica, Arial, sans-serif;
-    $govuk-font-family-tabular: monospace;
+    $moaland-font-family: Helvetica, Arial, sans-serif;
+    $moaland-font-family-tabular: monospace;
     @import "settings/all";
     @import "helpers/all";
 
     :root {
-      @include govuk-typography-common;
+      @include moaland-typography-common;
     }
     :root {
-      @include govuk-typography-common($font-family: $govuk-font-family-tabular);
+      @include moaland-typography-common($font-family: $moaland-font-family-tabular);
     }
     `
 
@@ -91,15 +91,15 @@ describe('@mixin govuk-typography-common', () => {
   })
   it('should not output a @font-face declaration when the user wants compatibility with GOV.UK Template', async () => {
     const sass = `
-    $govuk-compatibility-govuktemplate: true;
+    $moaland-compatibility-moalandtemplate: true;
     @import "settings/all";
     @import "helpers/all";
 
     :root {
-      @include govuk-typography-common;
+      @include moaland-typography-common;
     }
     :root {
-      @include govuk-typography-common($font-family: $govuk-font-family-tabular);
+      @include moaland-typography-common($font-family: $moaland-font-family-tabular);
     }
     `
 
@@ -112,15 +112,15 @@ describe('@mixin govuk-typography-common', () => {
   })
   it('should not output a @font-face declaration when the user has turned off this feature', async () => {
     const sass = `
-    $govuk-include-default-font-face: false;
+    $moaland-include-default-font-face: false;
     @import "settings/all";
     @import "helpers/all";
 
     :root {
-      @include govuk-typography-common;
+      @include moaland-typography-common;
     }
     :root {
-      @include govuk-typography-common($font-family: $govuk-font-family-tabular);
+      @include moaland-typography-common($font-family: $moaland-font-family-tabular);
     }
     `
 
@@ -133,17 +133,17 @@ describe('@mixin govuk-typography-common', () => {
   })
   it('should not output a @font-face declaration when the browser is IE8', async () => {
     const sass = `
-    $govuk-is-ie8: true;
+    $moaland-is-ie8: true;
 
     @import "settings/all";
     @import "helpers/all";
     @import "tools/ie8";
 
     :root {
-      @include govuk-typography-common;
+      @include moaland-typography-common;
     }
     :root {
-      @include govuk-typography-common($font-family: $govuk-font-family-tabular);
+      @include moaland-typography-common($font-family: $moaland-font-family-tabular);
     }
     `
 
@@ -155,13 +155,13 @@ describe('@mixin govuk-typography-common', () => {
   })
 })
 
-describe('@function _govuk-line-height', () => {
+describe('@function _moaland-line-height', () => {
   it('preserves line-height if already unitless', async () => {
     const sass = `
       @import "helpers/typography";
 
       .foo {
-        line-height: _govuk-line-height($line-height: 3.141, $font-size: 20px);
+        line-height: _moaland-line-height($line-height: 3.141, $font-size: 20px);
       }`
 
     const results = await renderSass({ data: sass, ...sassConfig })
@@ -176,7 +176,7 @@ describe('@function _govuk-line-height', () => {
       @import "helpers/typography";
 
       .foo {
-        line-height: _govuk-line-height($line-height: 2em, $font-size: 20px);
+        line-height: _moaland-line-height($line-height: 2em, $font-size: 20px);
       }`
 
     const results = await renderSass({ data: sass, ...sassConfig })
@@ -191,7 +191,7 @@ describe('@function _govuk-line-height', () => {
       @import "helpers/typography";
 
       .foo {
-        line-height: _govuk-line-height($line-height: 30px, $font-size: 20px);
+        line-height: _moaland-line-height($line-height: 30px, $font-size: 20px);
       }`
 
     const results = await renderSass({ data: sass, ...sassConfig })
@@ -202,13 +202,13 @@ describe('@function _govuk-line-height', () => {
   })
 })
 
-describe('@mixin govuk-typography-responsive', () => {
+describe('@mixin moaland-typography-responsive', () => {
   it('outputs CSS with suitable media queries', async () => {
     const sass = `
       ${sassBootstrap}
 
       .foo {
-        @include govuk-typography-responsive($size: 14)
+        @include moaland-typography-responsive($size: 14)
       }`
 
     const results = await renderSass({ data: sass, ...sassConfig })
@@ -230,7 +230,7 @@ describe('@mixin govuk-typography-responsive', () => {
       ${sassBootstrap}
 
       .foo {
-        @include govuk-typography-responsive($size: 12)
+        @include moaland-typography-responsive($size: 12)
       }`
 
     const results = await renderSass({ data: sass, ...sassConfig })
@@ -251,7 +251,7 @@ describe('@mixin govuk-typography-responsive', () => {
       ${sassBootstrap}
 
       .foo {
-        @include govuk-typography-responsive(3.14159265359)
+        @include moaland-typography-responsive(3.14159265359)
       }`
 
     await expect(renderSass({ data: sass, ...sassConfig }))
@@ -267,7 +267,7 @@ describe('@mixin govuk-typography-responsive', () => {
         ${sassBootstrap}
 
         .foo {
-          @include govuk-typography-responsive($size: 14, $important: true);
+          @include moaland-typography-responsive($size: 14, $important: true);
         }`
 
       const results = await renderSass({ data: sass, ...sassConfig })
@@ -289,7 +289,7 @@ describe('@mixin govuk-typography-responsive', () => {
         ${sassBootstrap}
 
         .foo {
-          @include govuk-typography-responsive($size: 12, $important: true);
+          @include moaland-typography-responsive($size: 12, $important: true);
         }`
 
       const results = await renderSass({ data: sass, ...sassConfig })
@@ -312,7 +312,7 @@ describe('@mixin govuk-typography-responsive', () => {
         ${sassBootstrap}
 
         .foo {
-          @include govuk-typography-responsive($size: 14, $override-line-height: 21px);
+          @include moaland-typography-responsive($size: 14, $override-line-height: 21px);
         }`
 
       const results = await renderSass({ data: sass, ...sassConfig })
@@ -330,14 +330,14 @@ describe('@mixin govuk-typography-responsive', () => {
     })
   })
 
-  describe('when $govuk-typography-use-rem is disabled', () => {
+  describe('when $moaland-typography-use-rem is disabled', () => {
     it('outputs CSS with suitable media queries', async () => {
       const sass = `
-        $govuk-typography-use-rem: false;
+        $moaland-typography-use-rem: false;
         ${sassBootstrap}
 
         .foo {
-          @include govuk-typography-responsive($size: 14)
+          @include moaland-typography-responsive($size: 14)
         }`
 
       const results = await renderSass({ data: sass, ...sassConfig })
@@ -354,12 +354,12 @@ describe('@mixin govuk-typography-responsive', () => {
 
     it('adjusts rem values based on root font size', async () => {
       const sass = `
-        $govuk-typography-use-rem: false;
-        $govuk-root-font-size: 10px;
+        $moaland-typography-use-rem: false;
+        $moaland-root-font-size: 10px;
         ${sassBootstrap}
 
         .foo {
-          @include govuk-typography-responsive($size: 14)
+          @include moaland-typography-responsive($size: 14)
         }`
 
       const results = await renderSass({ data: sass, ...sassConfig })
@@ -377,11 +377,11 @@ describe('@mixin govuk-typography-responsive', () => {
     describe('and $important is set to true', () => {
       it('marks font size and line height as important', async () => {
         const sass = `
-          $govuk-typography-use-rem: false;
+          $moaland-typography-use-rem: false;
           ${sassBootstrap}
 
           .foo {
-            @include govuk-typography-responsive($size: 14, $important: true);
+            @include moaland-typography-responsive($size: 14, $important: true);
           }`
 
         const results = await renderSass({ data: sass, ...sassConfig })
@@ -399,13 +399,13 @@ describe('@mixin govuk-typography-responsive', () => {
   })
 
   describe('when compatibility mode is set', () => {
-    it('$govuk-typography-use-rem is disabled by default', async () => {
+    it('$moaland-typography-use-rem is disabled by default', async () => {
       const sass = `
-        $govuk-compatibility-govuktemplate: true;
+        $moaland-compatibility-moalandtemplate: true;
         ${sassBootstrap}
 
         .foo {
-          @include govuk-typography-responsive($size: 14)
+          @include moaland-typography-responsive($size: 14)
         }`
 
       const results = await renderSass({ data: sass, ...sassConfig })

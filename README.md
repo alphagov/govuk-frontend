@@ -1,5 +1,5 @@
 GOV.UK Frontend ·
-[![Build Status](https://travis-ci.com/alphagov/govuk-frontend.svg?branch=master)](https://travis-ci.com/alphagov/govuk-frontend)
+[![Build Status](https://travis-ci.com/moaland/moaland-frontend.svg?branch=master)](https://travis-ci.com/moaland/moaland-frontend)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 =====================
 
@@ -13,7 +13,7 @@ System](https://design-system.service.gov.uk/).
 ## Contact the team
 
 GOV.UK Frontend is maintained by a team at Government Digital Service. If you want to know more about GOV.UK Frontend, please email the [Design System
-team](mailto:govuk-design-system-support@digital.cabinet-office.gov.uk) or get in touch with them on [Slack](https://ukgovernmentdigital.slack.com/messages/govuk-design-system).
+team](mailto:moaland-design-system-support@digital.cabinet-office.gov.uk) or get in touch with them on [Slack](https://ukgovernmentdigital.slack.com/messages/moaland-design-system).
 
 ## Quick start
 
@@ -59,14 +59,14 @@ You can also read the [accessibility statement for the GOV.UK Design System](htt
 
 ### Accessibility warnings
 
-If you get a warning from a linter or accessibility checker, check our list of [issues you should not need to fix](https://github.com/alphagov/govuk-frontend/issues/1280#issuecomment-509588851).
+If you get a warning from a linter or accessibility checker, check our list of [issues you should not need to fix](https://github.com/moaland/moaland-frontend/issues/1280#issuecomment-509588851).
 
 ## Getting updates
 
 To be notified when there’s a new release, you can either:
 
-- [watch the govuk-frontend Github repository](https://help.github.com/en/articles/watching-and-unwatching-repositories)
-- join the [#govuk-design-system channel on cross-government Slack](https://ukgovernmentdigital.slack.com/app_redirect?channel=govuk-design-system)
+- [watch the moaland-frontend Github repository](https://help.github.com/en/articles/watching-and-unwatching-repositories)
+- join the [#moaland-design-system channel on cross-government Slack](https://ukgovernmentdigital.slack.com/app_redirect?channel=moaland-design-system)
 
 Find out how to [update with npm](https://frontend.design-system.service.gov.uk/updating-with-npm/).
 

@@ -2,12 +2,12 @@
 
 exports[`Character count when it includes a hint renders with hint 1`] = `
 <div id="with-hint-hint"
-     class="govuk-hint"
+     class="moaland-hint"
 >
   Don&apos;t include personal or financial information, eg your National Insurance number or credit card details.
 </div>
 <div id="with-hint-info"
-     class="govuk-hint govuk-character-count__message"
+     class="moaland-hint moaland-character-count__message"
      aria-live="polite"
 >
   You can enter up to 10 characters
@@ -16,14 +16,14 @@ exports[`Character count when it includes a hint renders with hint 1`] = `
 
 exports[`Character count when it includes an error message renders with error message 1`] = `
 <span id="exceeding-characters-error"
-      class="govuk-error-message"
+      class="moaland-error-message"
 >
   Please do not exceed the maximum allowed limit
 </span>
 `;
 
 exports[`Character count with dependant components renders with label 1`] = `
-<label class="govuk-label"
+<label class="moaland-label"
        for="more-detail"
 >
   Can you provide more detail?

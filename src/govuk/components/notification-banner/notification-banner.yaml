@@ -34,7 +34,7 @@ params:
 - name: titleId
   type: string
   required: false
-  description: The `id` for the banner title, and the `aria-labelledby` attribute in the banner. Defaults to `govuk-notification-banner-title`.
+  description: The `id` for the banner title, and the `aria-labelledby` attribute in the banner. Defaults to `moaland-notification-banner-title`.
 - name: disableAutoFocus
   type: boolean
   required: false
@@ -54,11 +54,11 @@ examples:
     text: This publication was withdrawn on 7 March 2014.
 - name: paragraph as html heading
   data:
-    html: <p class="govuk-notification-banner__heading">You have 9 days to send a response.</p>
+    html: <p class="moaland-notification-banner__heading">You have 9 days to send a response.</p>
 - name: with text as html
   data:
     html: |
-      <h3 class="govuk-notification-banner__heading">This publication was withdrawn on 7 March 2014</h3><p class="govuk-body">Archived and replaced by the <a href="#" class="govuk-notification-banner__link">new planning guidance</a> launched 6 March 2014 on an external website</p>
+      <h3 class="moaland-notification-banner__heading">This publication was withdrawn on 7 March 2014</h3><p class="moaland-body">Archived and replaced by the <a href="#" class="moaland-notification-banner__link">new planning guidance</a> launched 6 March 2014 on an external website</p>
 - name: with type as success
   data:
     type: success
@@ -67,16 +67,16 @@ examples:
   data:
     type: success
     html: |
-      <h3 class="govuk-notification-banner__heading">4 files uploaded</h3><ul class="govuk-!-margin-0 govuk-list"><li><a href="link-1" class="govuk-notification-banner__link">government-strategy.pdf</a></li><li><a href="link-2" class="govuk-notification-banner__link">government-strategy-v1.pdf</a></li></ul>
+      <h3 class="moaland-notification-banner__heading">4 files uploaded</h3><ul class="moaland-!-margin-0 moaland-list"><li><a href="link-1" class="moaland-notification-banner__link">government-strategy.pdf</a></li><li><a href="link-2" class="moaland-notification-banner__link">government-strategy-v1.pdf</a></li></ul>
 - name: with a list
   data:
     html: |
-      <h3 class="govuk-notification-banner__heading">4 files uploaded</h3>
-      <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
-          <li><a href="#" class="govuk-notification-banner__link">government-strategy.pdf</a></li>
-          <li><a href="#" class="govuk-notification-banner__link">government-strategy-v2.pdf</a></li>
-          <li><a href="#" class="govuk-notification-banner__link">government-strategy-v3-FINAL.pdf</a></li>
-          <li><a href="#" class="govuk-notification-banner__link">government-strategy-v4-FINAL-v2.pdf</a></li>
+      <h3 class="moaland-notification-banner__heading">4 files uploaded</h3>
+      <ul class="moaland-list moaland-list--bullet moaland-!-margin-bottom-0">
+          <li><a href="#" class="moaland-notification-banner__link">government-strategy.pdf</a></li>
+          <li><a href="#" class="moaland-notification-banner__link">government-strategy-v2.pdf</a></li>
+          <li><a href="#" class="moaland-notification-banner__link">government-strategy-v3-FINAL.pdf</a></li>
+          <li><a href="#" class="moaland-notification-banner__link">government-strategy-v4-FINAL-v2.pdf</a></li>
       </ul>
 - name: with long heading
   data:
@@ -84,11 +84,11 @@ examples:
 - name: with lots of content
   data:
     html: >
-      <h3 class="govuk-notification-banner__heading">
+      <h3 class="moaland-notification-banner__heading">
         Check if you need to apply the reverse charge to this application
       </h3>
-      <p class="govuk-body">You will have to apply the <a href="#" class="govuk-notification-banner__link">reverse charge</a> if the applicant supplies any of these services:</p>
-      <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+      <p class="moaland-body">You will have to apply the <a href="#" class="moaland-notification-banner__link">reverse charge</a> if the applicant supplies any of these services:</p>
+      <ul class="moaland-list moaland-list--bullet moaland-list--spaced">
         <li>
           constructing, altering, repairing, extending, demolishing or dismantling buildings or structures (whether permanent or not), including offshore installation services
         </li>

@@ -10,9 +10,9 @@ notes: >-
 example: https://www.gov.uk/renew-driving-licence #}
 {% extends "legacy.njk" %}
 
-{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
-{% from "inset-text/macro.njk" import govukInsetText %}
-{% from "tabs/macro.njk" import govukTabs %}
+{% from "breadcrumbs/macro.njk" import moalandBreadcrumbs %}
+{% from "inset-text/macro.njk" import moalandInsetText %}
+{% from "tabs/macro.njk" import moalandTabs %}
 
 {% set page_title = "Renew your driving licence" %}
 
@@ -20,7 +20,7 @@ example: https://www.gov.uk/renew-driving-licence #}
   <main id="content" role="main">
     <div class="grid-row">
       <div class="column-two-thirds">
-        {{ govukBreadcrumbs({
+        {{ moalandBreadcrumbs({
           items: [
             {
               text: "Home",
@@ -43,11 +43,11 @@ example: https://www.gov.uk/renew-driving-licence #}
 
         <p>Renew your driving licence online with DVLA if you have a valid UK passport.</p>
 
-        {{ govukInsetText({
+        {{ moalandInsetText({
           html: "There’s a different way to <a href='#'>renew your licence if you’re 70 or over</a> and <a href='#'>renew a 5-year bus or lorry licence</a>."
         }) }}
 
-        <a class="button button-start govuk-!-margin-top-2 govuk-!-margin-bottom-8" href="#" role="button">Start now</a>
+        <a class="button button-start moaland-!-margin-top-2 moaland-!-margin-bottom-8" href="#" role="button">Start now</a>
 
         {% set moreInformationHTML %}
 
@@ -72,7 +72,7 @@ example: https://www.gov.uk/renew-driving-licence #}
 
           <p>Your driving licence should arrive within a week if you apply online.</p>
 
-          {{ govukInsetText({
+          {{ moalandInsetText({
             html: "You must send your old photocard licence to DVLA when you get your new licence. You’ll be told the address to use when you finish the application."
           }) }}
 
@@ -84,7 +84,7 @@ example: https://www.gov.uk/renew-driving-licence #}
         {% endset %}
 
         {% set otherWaysToApplyHTML %}
-          <h2 class="heading-medium govuk-!-margin-top-1">Apply at a Post Office</h2>
+          <h2 class="heading-medium moaland-!-margin-top-1">Apply at a Post Office</h2>
 
           <p>You’ll get a reminder letter in the post. Take it to a <a href="http://www.postoffice.co.uk/branch-finder">Post Office</a> that deals with DVLA photocard licence renewal.</p>
 
@@ -97,7 +97,7 @@ example: https://www.gov.uk/renew-driving-licence #}
 
           <p>If you do not have a reminder letter, you’ll need your photocard licence to apply at the Post Office.</p>
 
-          {{ govukInsetText({
+          {{ moalandInsetText({
             html: "You cannot apply at the Post Office if your name has changed. You’ll need to apply by post."
           }) }}
 
@@ -122,7 +122,7 @@ example: https://www.gov.uk/renew-driving-licence #}
 
         {% endset %}
 
-        {{ govukTabs({
+        {{ moalandTabs({
           items: [
             {
               label: "More information",

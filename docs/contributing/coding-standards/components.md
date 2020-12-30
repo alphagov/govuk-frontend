@@ -1,10 +1,10 @@
 # Components
 
-Find components in `src/govuk/components`.
+Find components in `src/moaland/components`.
 
-Components must use the `.govuk-` namespace.
+Components must use the `.moaland-` namespace.
 
-For example, `.govuk-button`.
+For example, `.moaland-button`.
 
 ## Writing CSS for components
 

@@ -131,7 +131,7 @@ examples:
     data:
       id: select-1
       name: select-1
-      classes: govuk-!-width-full
+      classes: moaland-!-width-full
       label:
         text: Label text goes here
       items:
@@ -150,7 +150,7 @@ examples:
     data:
       id: select-1
       name: select-1
-      classes: govuk-!-width-full
+      classes: moaland-!-width-full
       label:
         text: Label text goes here
       formGroup:

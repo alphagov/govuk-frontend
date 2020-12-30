@@ -14,12 +14,12 @@
 ///
 /// @example scss
 ///   .element {
-///     padding: govuk-spacing(5);
-///     top: govuk-spacing(2) !important; // if `!important` is required
+///     padding: moaland-spacing(5);
+///     top: moaland-spacing(2) !important; // if `!important` is required
 ///   }
 /// @access public
 
-@function govuk-spacing($spacing-point) {
+@function moaland-spacing($spacing-point) {
 
   $actual-input-type: type-of($spacing-point);
   @if $actual-input-type != "number" {
@@ -27,11 +27,11 @@
     + "#{$actual-input-type}.";
   }
 
-  @if not map-has-key($govuk-spacing-points, $spacing-point) {
+  @if not map-has-key($moaland-spacing-points, $spacing-point) {
     @error "Unknown spacing variable `#{$spacing-point}`. Make sure you are using a point from the spacing scale in `_settings/spacing.scss`.";
   }
 
-  @return map-get($govuk-spacing-points, $spacing-point);
+  @return map-get($moaland-spacing-points, $spacing-point);
 }
 
 /// Responsive spacing
@@ -40,8 +40,8 @@
 /// by fetching a 'spacing map' from the responsive spacing scale, which defines
 /// different spacing values at different breakpoints.
 ///
-/// To generate responsive spacing, use 'govuk-responsive-margin' or
-/// 'govuk-responsive-padding' mixins
+/// To generate responsive spacing, use 'moaland-responsive-margin' or
+/// 'moaland-responsive-padding' mixins
 ///
 /// @param {Number} $responsive-spacing-point - Point on the responsive spacing
 ///   scale, corresponds to a map of breakpoints and spacing values
@@ -53,20 +53,20 @@
 ///
 /// @access private
 
-@mixin _govuk-responsive-spacing($responsive-spacing-point, $property, $direction: "all", $important: false, $adjustment: false) {
+@mixin _moaland-responsive-spacing($responsive-spacing-point, $property, $direction: "all", $important: false, $adjustment: false) {
 
   $actual-input-type: type-of($responsive-spacing-point);
   @if $actual-input-type != "number" {
     @error "Expected a number (integer), but got a " + "#{$actual-input-type}.";
   }
 
-  @if not map-has-key($govuk-spacing-responsive-scale, $responsive-spacing-point) {
+  @if not map-has-key($moaland-spacing-responsive-scale, $responsive-spacing-point) {
     @error "Unknown spacing point `#{$responsive-spacing-point}`. Make sure you are using a point from the "
     + "responsive spacing scale in `_settings/spacing.scss`.";
   }
 
   // Make sure that the return value from `_settings/spacing.scss` is a map.
-  $scale-map: map-get($govuk-spacing-responsive-scale, $responsive-spacing-point);
+  $scale-map: map-get($moaland-spacing-responsive-scale, $responsive-spacing-point);
   $actual-map-type: type-of($scale-map);
   @if $actual-map-type != "map" {
     @error "Expected a number (integer), but got a "
@@ -89,7 +89,7 @@
         #{$property}-#{$direction}: $breakpoint-value if($important, !important, null);
       }
     } @else {
-      @include govuk-media-query($from: $breakpoint) {
+      @include moaland-media-query($from: $breakpoint) {
         @if $direction == all {
           #{$property}: $breakpoint-value if($important, !important, null);
         } @else {
@@ -104,9 +104,9 @@
 ///
 /// Adds responsive margin by fetching a 'spacing map' from the responsive
 /// spacing scale, which defines different spacing values at different
-/// breakpoints. Wrapper for the `_govuk-responsive-spacing` mixin.
+/// breakpoints. Wrapper for the `_moaland-responsive-spacing` mixin.
 ///
-/// @see {mixin} _govuk-responsive-spacing
+/// @see {mixin} _moaland-responsive-spacing
 ///
 /// @param {Number} $responsive-spacing-point - Point on the responsive spacing
 /// scale, corresponds to a map of breakpoints and spacing values
@@ -117,22 +117,22 @@
 ///
 /// @example scss
 ///   .element {
-///      @include govuk-responsive-margin(6, "left", $adjustment: 1px);
+///      @include moaland-responsive-margin(6, "left", $adjustment: 1px);
 ///   }
 ///
 /// @access public
 
-@mixin govuk-responsive-margin($responsive-spacing-point, $direction: "all", $important: false, $adjustment: false) {
-  @include _govuk-responsive-spacing($responsive-spacing-point, "margin", $direction, $important, $adjustment);
+@mixin moaland-responsive-margin($responsive-spacing-point, $direction: "all", $important: false, $adjustment: false) {
+  @include _moaland-responsive-spacing($responsive-spacing-point, "margin", $direction, $important, $adjustment);
 }
 
 /// Responsive padding
 ///
 /// Adds responsive padding by fetching a 'spacing map' from the responsive
 /// spacing scale, which defines different spacing values at different
-/// breakpoints. Wrapper for the `_govuk-responsive-spacing` mixin.
+/// breakpoints. Wrapper for the `_moaland-responsive-spacing` mixin.
 ///
-/// @see {mixin} _govuk-responsive-spacing
+/// @see {mixin} _moaland-responsive-spacing
 ///
 /// @param {Number} $responsive-spacing-point - Point on the responsive spacing
 ///   scale, corresponds to a map of breakpoints and spacing values
@@ -143,11 +143,11 @@
 ///
 /// @example scss
 ///   .element {
-///      @include govuk-responsive-padding(6, "left", $adjustment: 1px);
+///      @include moaland-responsive-padding(6, "left", $adjustment: 1px);
 ///   }
 ///
 /// @access public
 
-@mixin govuk-responsive-padding($responsive-spacing-point, $direction: "all", $important: false, $adjustment: false) {
-  @include _govuk-responsive-spacing($responsive-spacing-point, "padding", $direction, $important, $adjustment);
+@mixin moaland-responsive-padding($responsive-spacing-point, $direction: "all", $important: false, $adjustment: false) {
+  @include _moaland-responsive-spacing($responsive-spacing-point, "padding", $direction, $important, $adjustment);
 }

@@ -2,13 +2,13 @@
 /// @group settings/spacing
 ////
 
-/// Single point spacing variables. Access using `govuk-spacing()`
+/// Single point spacing variables. Access using `moaland-spacing()`
 /// (see `helpers/spacing`).
 ///
 /// @type Map
 /// @access private
 
-$govuk-spacing-points: (
+$moaland-spacing-points: (
   0: 0,
   1: 5px,
   2: 10px,
@@ -30,13 +30,13 @@ $govuk-spacing-points: (
 /// You can define different behaviour on tablet and desktop. The 'null'
 /// breakpoint is for mobile.
 ///
-/// Access responsive spacing with `govuk-responsive-margin` or
-/// `govuk-responsive-padding` mixins (see `helpers/spacing`).
+/// Access responsive spacing with `moaland-responsive-margin` or
+/// `moaland-responsive-padding` mixins (see `helpers/spacing`).
 ///
 /// @type Map
 /// @access private
 
-$govuk-spacing-responsive-scale: (
+$moaland-spacing-responsive-scale: (
   0: (
     null: 0,
     tablet: 0

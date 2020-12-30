@@ -1,72 +1,72 @@
-@if not mixin-exists("govuk-exports") {
+@if not mixin-exists("moaland-exports") {
   @warn "Importing items from the core layer without first importing `base` is deprecated, and will no longer work as of GOV.UK Frontend v4.0.";
 }
 
 @import "../base";
 
-@include govuk-exports("govuk/core/lists") {
+@include moaland-exports("moaland/core/lists") {
 
-  %govuk-list {
-    @include govuk-font($size: 19);
-    @include govuk-text-colour;
+  %moaland-list {
+    @include moaland-font($size: 19);
+    @include moaland-text-colour;
     margin-top: 0;
-    @include govuk-responsive-margin(4, "bottom");
+    @include moaland-responsive-margin(4, "bottom");
     padding-left: 0;
     list-style-type: none;
 
     // Add a top margin for nested lists
-    %govuk-list {
-      margin-top: govuk-spacing(2);
+    %moaland-list {
+      margin-top: moaland-spacing(2);
     }
   }
 
-  %govuk-list > li {
+  %moaland-list > li {
     // Lists without numbers or bullets should always have extra space between
     // list items. Lists with numbers or bullets only have this extra space on
     // tablet and above
-    margin-bottom: govuk-spacing(1);
+    margin-bottom: moaland-spacing(1);
   }
 
-  .govuk-list {
-    @extend %govuk-list;
+  .moaland-list {
+    @extend %moaland-list;
   }
 
-  %govuk-list--bullet {
-    padding-left: govuk-spacing(4);
+  %moaland-list--bullet {
+    padding-left: moaland-spacing(4);
     list-style-type: disc;
   }
 
-  %govuk-list--number {
-    padding-left: govuk-spacing(4);
+  %moaland-list--number {
+    padding-left: moaland-spacing(4);
     list-style-type: decimal;
   }
 
-  %govuk-list--bullet > li,
-  %govuk-list--number > li {
+  %moaland-list--bullet > li,
+  %moaland-list--number > li {
     margin-bottom: 0;
 
-    @include govuk-media-query($from: tablet) {
-      margin-bottom: govuk-spacing(1);
+    @include moaland-media-query($from: tablet) {
+      margin-bottom: moaland-spacing(1);
     }
   }
 
-  %govuk-list--spaced > li {
-    margin-bottom: govuk-spacing(2);
+  %moaland-list--spaced > li {
+    margin-bottom: moaland-spacing(2);
 
-    @include govuk-media-query($from: tablet) {
-      margin-bottom: govuk-spacing(3);
+    @include moaland-media-query($from: tablet) {
+      margin-bottom: moaland-spacing(3);
     }
   }
 
-  .govuk-list--bullet {
-    @extend %govuk-list--bullet;
+  .moaland-list--bullet {
+    @extend %moaland-list--bullet;
   }
 
-  .govuk-list--number {
-    @extend %govuk-list--number;
+  .moaland-list--number {
+    @extend %moaland-list--number;
   }
 
-  .govuk-list--spaced {
-    @extend %govuk-list--spaced;
+  .moaland-list--spaced {
+    @extend %moaland-list--spaced;
   }
 }

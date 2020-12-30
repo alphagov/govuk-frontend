@@ -11,14 +11,14 @@
 /// @type Number
 /// @access public
 
-$govuk-page-width: 960px !default;
+$moaland-page-width: 960px !default;
 
 /// Map of grid column widths
 ///
 /// @type Map
 /// @access public
 
-$govuk-grid-widths: (
+$moaland-grid-widths: (
   one-quarter: 25%,
   one-third: 33.3333%,
   one-half: 50%,
@@ -32,14 +32,14 @@ $govuk-grid-widths: (
 /// @type Number
 /// @access public
 
-$govuk-gutter: 30px !default;
+$moaland-gutter: 30px !default;
 
 /// Width of half the gutter between grid columns
 ///
 /// @type Number
 /// @access public
 
-$govuk-gutter-half: $govuk-gutter / 2;
+$moaland-gutter-half: $moaland-gutter / 2;
 
 // =========================================================
 // Borders
@@ -50,56 +50,56 @@ $govuk-gutter-half: $govuk-gutter / 2;
 /// @type Number
 /// @access public
 
-$govuk-border-width: 5px !default;
+$moaland-border-width: 5px !default;
 
 /// Wide border width
 ///
 /// @type Number
 /// @access public
 
-$govuk-border-width-wide: 10px !default;
+$moaland-border-width-wide: 10px !default;
 
 /// Narrow border width
 ///
 /// @type Number
 /// @access public
 
-$govuk-border-width-narrow: 4px !default;
+$moaland-border-width-narrow: 4px !default;
 
 /// Form control border width
 ///
 /// @type Number
 /// @access public
 
-$govuk-border-width-form-element: 2px !default;
+$moaland-border-width-form-element: 2px !default;
 
 /// Form control border width when in error state
 ///
 /// @type Number
 /// @access public
-/// @deprecated Use $govuk-border-width-form-element instead. There should be no
+/// @deprecated Use $moaland-border-width-form-element instead. There should be no
 ///   difference in thickness for inputs in the error state, in order to
 ///   maintain a distinct focus state.
 
-$govuk-border-width-form-element-error: 2px !default;
+$moaland-border-width-form-element-error: 2px !default;
 
 /// Form group border width when in error state
 ///
 /// @type Number
 /// @access public
 
-$govuk-border-width-form-group-error: $govuk-border-width !default;
+$moaland-border-width-form-group-error: $moaland-border-width !default;
 
 /// Border width of focus outline
 ///
 /// @type Number
 /// @access public
 
-$govuk-focus-width: 3px !default;
+$moaland-focus-width: 3px !default;
 
 /// Hover width for form controls with a hover state
 ///
 /// @type Number
 /// @access public
 
-$govuk-hover-width: 10px !default;
+$moaland-hover-width: 10px !default;

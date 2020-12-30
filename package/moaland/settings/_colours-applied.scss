@@ -13,14 +13,14 @@
 /// @type Colour
 /// @access public
 
-$govuk-brand-colour: govuk-colour("blue") !default;
+$moaland-brand-colour: moaland-colour("blue") !default;
 
 /// Text colour
 ///
 /// @type Colour
 /// @access public
 
-$govuk-text-colour: govuk-colour("black") !default;
+$moaland-text-colour: moaland-colour("black") !default;
 
 /// Canvas background colour
 ///
@@ -30,14 +30,14 @@ $govuk-text-colour: govuk-colour("black") !default;
 /// @type Colour
 /// @access public
 
-$govuk-canvas-background-colour: govuk-colour("light-grey", $legacy: "grey-3") !default;
+$moaland-canvas-background-colour: moaland-colour("light-grey", $legacy: "grey-3") !default;
 
 /// Body background colour
 ///
 /// @type Colour
 /// @access public
 
-$govuk-body-background-colour: govuk-colour("white") !default;
+$moaland-body-background-colour: moaland-colour("white") !default;
 
 /// Text colour for print media
 ///
@@ -46,7 +46,7 @@ $govuk-body-background-colour: govuk-colour("white") !default;
 /// @type Colour
 /// @access public
 
-$govuk-print-text-colour: #000000 !default;
+$moaland-print-text-colour: #000000 !default;
 
 /// Secondary text colour
 ///
@@ -55,7 +55,7 @@ $govuk-print-text-colour: #000000 !default;
 /// @type Colour
 /// @access public
 
-$govuk-secondary-text-colour: govuk-colour("dark-grey", $legacy: "grey-1") !default;
+$moaland-secondary-text-colour: moaland-colour("dark-grey", $legacy: "grey-1") !default;
 
 /// Focus colour
 ///
@@ -65,7 +65,7 @@ $govuk-secondary-text-colour: govuk-colour("dark-grey", $legacy: "grey-1") !defa
 /// @type Colour
 /// @access public
 
-$govuk-focus-colour: govuk-colour("yellow") !default;
+$moaland-focus-colour: moaland-colour("yellow") !default;
 
 /// Focused text colour
 ///
@@ -75,7 +75,7 @@ $govuk-focus-colour: govuk-colour("yellow") !default;
 /// @type Colour
 /// @access public
 
-$govuk-focus-text-colour: govuk-colour("black") !default;
+$moaland-focus-text-colour: moaland-colour("black") !default;
 
 /// Error colour
 ///
@@ -84,7 +84,7 @@ $govuk-focus-text-colour: govuk-colour("black") !default;
 /// @type Colour
 /// @access public
 
-$govuk-error-colour: govuk-colour("red") !default;
+$moaland-error-colour: moaland-colour("red") !default;
 
 /// Success colour
 ///
@@ -93,7 +93,7 @@ $govuk-error-colour: govuk-colour("red") !default;
 /// @type Colour
 /// @access public
 
-$govuk-success-colour: govuk-colour("green") !default;
+$moaland-success-colour: moaland-colour("green") !default;
 
 /// Border colour
 ///
@@ -102,7 +102,7 @@ $govuk-success-colour: govuk-colour("green") !default;
 /// @type Colour
 /// @access public
 
-$govuk-border-colour: govuk-colour("mid-grey", $legacy: "grey-2");
+$moaland-border-colour: moaland-colour("mid-grey", $legacy: "grey-2");
 
 /// Input border colour
 ///
@@ -111,7 +111,7 @@ $govuk-border-colour: govuk-colour("mid-grey", $legacy: "grey-2");
 /// @type Colour
 /// @access public
 
-$govuk-input-border-colour: govuk-colour("black") !default;
+$moaland-input-border-colour: moaland-colour("black") !default;
 
 /// Input hover colour
 ///
@@ -120,7 +120,7 @@ $govuk-input-border-colour: govuk-colour("black") !default;
 /// @type Colour
 /// @access public
 
-$govuk-hover-colour: govuk-colour("mid-grey", $legacy: "grey-3");
+$moaland-hover-colour: moaland-colour("mid-grey", $legacy: "grey-3");
 
 // =============================================================================
 // Links
@@ -131,25 +131,25 @@ $govuk-hover-colour: govuk-colour("mid-grey", $legacy: "grey-3");
 /// @type Colour
 /// @access public
 
-$govuk-link-colour: govuk-colour("blue") !default;
+$moaland-link-colour: moaland-colour("blue") !default;
 
 /// Visited link colour
 ///
 /// @type Colour
 /// @access public
 
-$govuk-link-visited-colour: govuk-colour("purple", $legacy: #4c2c92) !default;
+$moaland-link-visited-colour: moaland-colour("purple", $legacy: #4c2c92) !default;
 
 /// Link hover colour
 ///
 /// @type Colour
 /// @access public
 
-$govuk-link-hover-colour: govuk-colour("dark-blue", $legacy: "light-blue") !default;
+$moaland-link-hover-colour: moaland-colour("dark-blue", $legacy: "light-blue") !default;
 
 /// Active link colour
 ///
 /// @type Colour
 /// @access public
 
-$govuk-link-active-colour: govuk-colour("black", $legacy: "light-blue") !default;
+$moaland-link-active-colour: moaland-colour("black", $legacy: "light-blue") !default;

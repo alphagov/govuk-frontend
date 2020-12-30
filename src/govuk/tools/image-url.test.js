@@ -11,10 +11,10 @@ describe('@function image-url', () => {
     const sass = `
       @import "tools/image-url";
 
-      $govuk-images-path: '/path/to/images/';
+      $moaland-images-path: '/path/to/images/';
 
       .foo {
-        background-image: govuk-image-url("baz.png");
+        background-image: moaland-image-url("baz.png");
       }`
 
     const results = await renderSass({ data: sass, ...sassConfig })
@@ -28,10 +28,10 @@ describe('@function image-url', () => {
     const sass = `
       @import "tools/image-url";
 
-      $govuk-image-url-function: 'to_upper_case';
+      $moaland-image-url-function: 'to_upper_case';
 
       .foo {
-        background-image: govuk-image-url("baz.png");
+        background-image: moaland-image-url("baz.png");
       }`
 
     const results = await renderSass({ data: sass, ...sassConfig })
@@ -49,11 +49,11 @@ describe('@function image-url', () => {
         @return url("/custom/#{$filename}");
       }
 
-      $govuk-images-path: '/assets/fonts/';
-      $govuk-image-url-function: 'custom-url-handler';
+      $moaland-images-path: '/assets/fonts/';
+      $moaland-image-url-function: 'custom-url-handler';
 
       .foo {
-        background-image: govuk-image-url("baz.png");
+        background-image: moaland-image-url("baz.png");
       }`
 
     const results = await renderSass({ data: sass, ...sassConfig })

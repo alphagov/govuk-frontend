@@ -1,4 +1,4 @@
-@if not mixin-exists("govuk-exports") {
+@if not mixin-exists("moaland-exports") {
   @warn "Importing items from the overrides layer without first importing `base` is deprecated, and will no longer work as of GOV.UK Frontend v4.0.";
 }
 
@@ -28,37 +28,37 @@ $_spacing-directions: (
 /// @param {String} $property - Property to add spacing to (e.g. 'margin')
 ///
 /// @example scss
-///   .govuk-\!-margin-0 {
+///   .moaland-\!-margin-0 {
 ///      margin: 0;
 ///   }
 ///
-///  .govuk-\!-margin-top-1 {
+///  .moaland-\!-margin-top-1 {
 ///     margin-top: [whatever spacing point 1 is...]
 ///   }
 ///
 /// @access private
 
-@mixin _govuk-generate-spacing-overrides($property) {
+@mixin _moaland-generate-spacing-overrides($property) {
   // For each point in the spacing scale (defined in settings), create an
   // override that affects all directions...
-  @each $scale-point, $scale-map in $govuk-spacing-responsive-scale {
+  @each $scale-point, $scale-map in $moaland-spacing-responsive-scale {
 
-    .govuk-\!-#{$property}-#{$scale-point} {
+    .moaland-\!-#{$property}-#{$scale-point} {
 
-      @include _govuk-responsive-spacing($scale-point, $property, "all", true);
+      @include _moaland-responsive-spacing($scale-point, $property, "all", true);
     }
 
     // ... and then an override for each individual direction
     @each $direction in $_spacing-directions {
 
-      .govuk-\!-#{$property}-#{$direction}-#{$scale-point} {
-        @include _govuk-responsive-spacing($scale-point, $property, $direction, true);
+      .moaland-\!-#{$property}-#{$direction}-#{$scale-point} {
+        @include _moaland-responsive-spacing($scale-point, $property, $direction, true);
       }
     }
   }
 }
 
-@include govuk-exports("govuk/overrides/spacing") {
-  @include _govuk-generate-spacing-overrides("margin");
-  @include _govuk-generate-spacing-overrides("padding");
+@include moaland-exports("moaland/overrides/spacing") {
+  @include _moaland-generate-spacing-overrides("margin");
+  @include _moaland-generate-spacing-overrides("padding");
 }

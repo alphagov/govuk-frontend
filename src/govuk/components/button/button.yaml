@@ -107,12 +107,12 @@ examples:
   data:
     name: secondary
     text: Secondary button
-    classes: govuk-button--secondary
+    classes: moaland-button--secondary
 - name: Secondary disabled
   data:
     name: secondary
     text: Secondary button disabled
-    classes: govuk-button--secondary
+    classes: moaland-button--secondary
     disabled: true
 - name: Secondary link
   description: A link button for secondary actions
@@ -120,18 +120,18 @@ examples:
     name: secondary
     text: Secondary button
     href: '/'
-    classes: govuk-button--secondary
+    classes: moaland-button--secondary
 - name: Warning
   description: A button for actions that need a warning
   data:
     name: Warning
     text: Warning button
-    classes: govuk-button--warning
+    classes: moaland-button--warning
 - name: Warning disabled
   data:
     name: warning
     text: Warning button disabled
-    classes: govuk-button--warning
+    classes: moaland-button--warning
     disabled: true
 - name: Warning link
   description: A link button for actions that need a warning
@@ -139,7 +139,7 @@ examples:
     name: Warning
     text: Warning button
     href: '/'
-    classes: govuk-button--warning
+    classes: moaland-button--warning
 
 # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
 - name: attributes

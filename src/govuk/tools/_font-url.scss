@@ -4,7 +4,7 @@
 
 /// Font URL
 ///
-/// If a custom font-url handler is defined ($govuk-font-url-function) then
+/// If a custom font-url handler is defined ($moaland-font-url-function) then
 /// it will be called, otherwise a url will be returned with the filename
 /// appended to the font path.
 ///
@@ -12,14 +12,14 @@
 /// @return {String} URL for the filename, wrapped in `url()`
 /// @access public
 
-@function govuk-font-url($filename) {
-  $use-custom-function: variable-exists("govuk-font-url-function")
-    and $govuk-font-url-function
-    and function-exists($govuk-font-url-function);
+@function moaland-font-url($filename) {
+  $use-custom-function: variable-exists("moaland-font-url-function")
+    and $moaland-font-url-function
+    and function-exists($moaland-font-url-function);
 
   @if ($use-custom-function) {
-    @return call(get-function($govuk-font-url-function), $filename);
+    @return call(get-function($moaland-font-url-function), $filename);
   } @else {
-    @return url($govuk-fonts-path + $filename);
+    @return url($moaland-fonts-path + $filename);
   }
 }

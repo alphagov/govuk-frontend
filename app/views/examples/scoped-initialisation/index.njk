@@ -1,6 +1,6 @@
 {% extends "template.njk" %}
 
-{% from "checkboxes/macro.njk" import govukCheckboxes %}
+{% from "checkboxes/macro.njk" import moalandCheckboxes %}
 
 {% block head %}
   <!--[if !IE 8]><!-->
@@ -15,11 +15,11 @@
 {% endblock %}
 
 {% block content %}
-  <h1 class="govuk-heading-xl">Scoped initialisation</h1>
-  <h2 class="govuk-heading-m">Unscoped section</h2>
-  <p class="govuk-body">This example should intentionally not have JavaScript functionality</p>
+  <h1 class="moaland-heading-xl">Scoped initialisation</h1>
+  <h2 class="moaland-heading-m">Unscoped section</h2>
+  <p class="moaland-body">This example should intentionally not have JavaScript functionality</p>
 
-  {{ govukCheckboxes({
+  {{ moalandCheckboxes({
     idPrefix: "not-scoped",
     name: "not-scoped",
     items: [
@@ -27,16 +27,16 @@
         value: "not-scoped",
         text: "Not scoped",
         conditional: {
-          html: '<p class="govuk-body">Revealed not scoped text</p>'
+          html: '<p class="moaland-body">Revealed not scoped text</p>'
         }
       }
     ]
   }) }}
 
-  <h2 class="govuk-heading-m">Scoped section</h2>
-  <p class="govuk-body">Only this example should have JavaScript functionality</p>
+  <h2 class="moaland-heading-m">Scoped section</h2>
+  <p class="moaland-body">Only this example should have JavaScript functionality</p>
   <div id="scoped">
-    {{ govukCheckboxes({
+    {{ moalandCheckboxes({
       idPrefix: "scoped",
       name: "scoped",
       items: [
@@ -44,7 +44,7 @@
           value: "scoped",
           text: "Scoped",
           conditional: {
-            html: '<p class="govuk-body">Revealed scoped text</p>'
+            html: '<p class="moaland-body">Revealed scoped text</p>'
           }
         }
       ]
@@ -56,7 +56,7 @@
   <script src="/public/all.js"></script>
   <script>
     var $scope = document.getElementById('scoped')
-    window.GOVUKFrontend.initAll({
+    window.MoalandFrontend.initAll({
       scope: $scope
     })
   </script>

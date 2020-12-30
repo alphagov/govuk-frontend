@@ -14,11 +14,11 @@
 /// @type Boolean
 /// @access public
 
-$govuk-use-legacy-font: if(
+$moaland-use-legacy-font: if(
   (
-    $govuk-compatibility-govukfrontendtoolkit or
-    $govuk-compatibility-govuktemplate or
-    $govuk-compatibility-govukelements
+    $moaland-compatibility-moalandfrontendtoolkit or
+    $moaland-compatibility-moalandtemplate or
+    $moaland-compatibility-moalandelements
   ),
   true,
   false
@@ -33,10 +33,10 @@ $govuk-use-legacy-font: if(
 /// @type List
 /// @access public
 
-$govuk-font-family: if(
-  $govuk-use-legacy-font,
-  $govuk-font-family-nta,
-  $govuk-font-family-gds-transport
+$moaland-font-family: if(
+  $moaland-use-legacy-font,
+  $moaland-font-family-nta,
+  $moaland-font-family-gds-transport
 ) !default;
 
 /// Font families to use when displaying tabular numbers
@@ -44,9 +44,9 @@ $govuk-font-family: if(
 /// @type List
 /// @access public
 
-$govuk-font-family-tabular: if(
-  $govuk-use-legacy-font,
-  $govuk-font-family-nta-tabular,
+$moaland-font-family-tabular: if(
+  $moaland-use-legacy-font,
+  $moaland-font-family-nta-tabular,
   false
 ) !default;
 
@@ -58,18 +58,18 @@ $govuk-font-family-tabular: if(
 /// @type List
 /// @access public
 
-$govuk-font-family-print: sans-serif !default;
+$moaland-font-family-print: sans-serif !default;
 
 /// Include the default @font-face declarations
 ///
-/// If you have set $govuk-font-family to something other than
-/// `$govuk-font-family-gds-transport` this option is disabled by default.
+/// If you have set $moaland-font-family to something other than
+/// `$moaland-font-family-gds-transport` this option is disabled by default.
 ///
 /// @type Boolean
 /// @access public
 
-$govuk-include-default-font-face: (
-  $govuk-font-family == $govuk-font-family-gds-transport
+$moaland-include-default-font-face: (
+  $moaland-font-family == $moaland-font-family-gds-transport
 ) !default;
 
 // =========================================================
@@ -80,10 +80,10 @@ $govuk-include-default-font-face: (
 ///
 /// @type Number
 /// @access public
-$govuk-font-weight-regular: 400 !default;
+$moaland-font-weight-regular: 400 !default;
 
 /// Font weight for bold typography
 ///
 /// @type Number
 /// @access public
-$govuk-font-weight-bold: 700 !default;
+$moaland-font-weight-bold: 700 !default;

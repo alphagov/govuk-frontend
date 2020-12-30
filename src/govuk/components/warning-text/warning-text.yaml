@@ -44,7 +44,7 @@ examples:
     data:
       text: Warning text
       iconFallbackText: Warning
-      classes: govuk-warning-text--custom-class
+      classes: moaland-warning-text--custom-class
   - name: html
     hidden: true
     data:

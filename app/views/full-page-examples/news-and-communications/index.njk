@@ -19,11 +19,11 @@ notes: >-
 {# This example is based of the live "News and communications" GOV.UK page: https://www.gov.uk/news-and-communications #}
 {% extends "_generic.njk" %}
 
-{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
-{% from "select/macro.njk" import govukSelect %}
-{% from "radios/macro.njk" import govukRadios %}
-{% from "checkboxes/macro.njk" import govukCheckboxes %}
-{% from "button/macro.njk" import govukButton %}
+{% from "breadcrumbs/macro.njk" import moalandBreadcrumbs %}
+{% from "select/macro.njk" import moalandSelect %}
+{% from "radios/macro.njk" import moalandRadios %}
+{% from "checkboxes/macro.njk" import moalandCheckboxes %}
+{% from "button/macro.njk" import moalandButton %}
 
 {% set pageTitle = "News and communications" %}
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
@@ -57,7 +57,7 @@ notes: >-
 {% endblock %}
 
 {% block beforeContent %}
-    {{ govukBreadcrumbs({
+    {{ moalandBreadcrumbs({
         items: [
             {
                 text: "Home",
@@ -68,18 +68,18 @@ notes: >-
 {% endblock %}
 
 {% block content %}
-  <h1 class="govuk-heading-xl">{{ pageTitle }}</h1>
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-one-third">
+  <h1 class="moaland-heading-xl">{{ pageTitle }}</h1>
+  <div class="moaland-grid-row">
+    <div class="moaland-grid-column-one-third">
         <form method="get" novalidate>
-            {{ govukRadios({
+            {{ moalandRadios({
               idPrefix: "order",
               name: "order",
-              classes: "govuk-radios--small",
+              classes: "moaland-radios--small",
               fieldset: {
                 legend: {
                   text: "Sort by",
-                  classes: "govuk-fieldset__legend--s"
+                  classes: "moaland-fieldset__legend--s"
                 }
               },
               items: [
@@ -102,14 +102,14 @@ notes: >-
               ]
             }) }}
 
-            {{ govukCheckboxes({
+            {{ moalandCheckboxes({
               idPrefix: "organisation",
               name: "organisation",
-              classes: "govuk-checkboxes--small",
+              classes: "moaland-checkboxes--small",
               fieldset: {
                 legend: {
                   text: "Organisation",
-                  classes: "govuk-fieldset__legend--s"
+                  classes: "moaland-fieldset__legend--s"
                 }
               },
               items: [
@@ -131,29 +131,29 @@ notes: >-
               ]
             }) }}
 
-            {{ govukButton({
+            {{ moalandButton({
                 text: "Update filters"
             }) }}
         </form>
     </div>
-    <div class="govuk-grid-column-two-thirds">
-        <h2 class="govuk-heading-l">{{ total }} results</h2>
-        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+    <div class="moaland-grid-column-two-thirds">
+        <h2 class="moaland-heading-l">{{ total }} results</h2>
+        <hr class="moaland-section-break moaland-section-break--l moaland-section-break--visible">
         <ul class="app-document-list">
             {% for document in documents %}
                 {% set document = document.document %}
                 <li>
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-2">
-                      <a class="govuk-link" href="https://gov.uk{{ document.link }}">
+                    <h3 class="moaland-heading-s moaland-!-margin-bottom-2">
+                      <a class="moaland-link" href="https://gov.uk{{ document.link }}">
                         {{ document.title }}
                       </a>
                     </h3>
-                    <p class="govuk-body govuk-!-margin-bottom-4">
+                    <p class="moaland-body moaland-!-margin-bottom-4">
                         {{ document.summary }}
                     </p>
                     <ul class="app-metadata-list">
                         {% for data in document.metadata %}
-                            <li class="govuk-body govuk-!-font-size-16">
+                            <li class="moaland-body moaland-!-font-size-16">
                                 {% if data['is_text'] %}
                                     {{ data.value }}
                                 {% endif %}

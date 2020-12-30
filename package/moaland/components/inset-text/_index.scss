@@ -1,16 +1,16 @@
-@include govuk-exports("govuk/component/inset-text") {
-  .govuk-inset-text {
-    @include govuk-font($size: 19);
-    @include govuk-text-colour;
-    padding: govuk-spacing(3);
+@include moaland-exports("moaland/component/inset-text") {
+  .moaland-inset-text {
+    @include moaland-font($size: 19);
+    @include moaland-text-colour;
+    padding: moaland-spacing(3);
     // Margin top intended to collapse
     // This adds an additional 10px to the paragraph above
-    @include govuk-responsive-margin(6, "top");
-    @include govuk-responsive-margin(6, "bottom");
+    @include moaland-responsive-margin(6, "top");
+    @include moaland-responsive-margin(6, "bottom");
 
     clear: both;
 
-    border-left: $govuk-border-width-wide solid $govuk-border-colour;
+    border-left: $moaland-border-width-wide solid $moaland-border-colour;
 
     > :first-child {
       margin-top: 0;

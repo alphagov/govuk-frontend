@@ -7,7 +7,7 @@ const sassConfig = {
 }
 
 const sassBootstrap = `
-  $govuk-breakpoints: (
+  $moaland-breakpoints: (
     mobile:  320px,
     tablet:  740px,
     desktop: 980px,
@@ -15,13 +15,13 @@ const sassBootstrap = `
   );
 `
 
-describe('@mixin govuk-media-query', () => {
+describe('@mixin moaland-media-query', () => {
   it('allows you to target min-width using a numeric value', async () => {
     const sass = `
       @import "helpers/media-queries";
 
       .foo {
-        @include govuk-media-query($from: 20em) {
+        @include moaland-media-query($from: 20em) {
           color: red;
         }
       }`
@@ -37,7 +37,7 @@ describe('@mixin govuk-media-query', () => {
       @import "helpers/media-queries";
 
       .foo {
-        @include govuk-media-query($from: mobile) {
+        @include moaland-media-query($from: mobile) {
           color: red;
         }
       }`
@@ -52,7 +52,7 @@ describe('@mixin govuk-media-query', () => {
       @import "helpers/media-queries";
 
       .foo {
-        @include govuk-media-query($until: 20em) {
+        @include moaland-media-query($until: 20em) {
           color: red;
         }
       }`
@@ -68,7 +68,7 @@ describe('@mixin govuk-media-query', () => {
       @import "helpers/media-queries";
 
       .foo {
-        @include govuk-media-query($until: desktop) {
+        @include moaland-media-query($until: desktop) {
           color: red;
         }
       }`
@@ -83,7 +83,7 @@ describe('@mixin govuk-media-query', () => {
       @import "helpers/media-queries";
 
       .foo {
-        @include govuk-media-query($from: 20em, $until: 40em) {
+        @include moaland-media-query($from: 20em, $until: 40em) {
           color: red;
         }
       }`
@@ -99,7 +99,7 @@ describe('@mixin govuk-media-query', () => {
       @import "helpers/media-queries";
 
       .foo {
-        @include govuk-media-query($from: mobile, $until: tablet) {
+        @include moaland-media-query($from: mobile, $until: tablet) {
           color: red;
         }
       }`
@@ -114,7 +114,7 @@ describe('@mixin govuk-media-query', () => {
       @import "helpers/media-queries";
 
       .foo {
-        @include govuk-media-query($until: 40em, $and: '(orientation: landscape)') {
+        @include moaland-media-query($until: 40em, $and: '(orientation: landscape)') {
           color: red;
         }
       }`
@@ -129,7 +129,7 @@ describe('@mixin govuk-media-query', () => {
         @import "helpers/media-queries";
 
       .foo {
-        @include govuk-media-query($until: 40em, $media-type: 'aural') {
+        @include moaland-media-query($until: 40em, $media-type: 'aural') {
           color: red;
         }
       }`
@@ -142,9 +142,9 @@ describe('@mixin govuk-media-query', () => {
   describe('when compiling a rasterized stylesheet for IE8', () => {
     it('only outputs static breakpoint styles', async () => {
       const sass = `
-        $govuk-is-ie8: true;
+        $moaland-is-ie8: true;
 
-        $govuk-breakpoints: (
+        $moaland-breakpoints: (
           mobile:  320px,
           tablet:  740px,
           desktop: 980px,
@@ -154,10 +154,10 @@ describe('@mixin govuk-media-query', () => {
         @import "helpers/media-queries";
 
         .foo {
-          @include govuk-media-query($until: tablet) {
+          @include moaland-media-query($until: tablet) {
             color: lawngreen;
           }
-          @include govuk-media-query($from: desktop) {
+          @include moaland-media-query($from: desktop) {
               color: forestgreen;
           }
         }`
@@ -170,13 +170,13 @@ describe('@mixin govuk-media-query', () => {
     it('does not rasterize print queries', async () => {
       const sass = `
         ${sassBootstrap}
-        $govuk-is-ie8: true;
+        $moaland-is-ie8: true;
 
         @import "helpers/media-queries";
 
         .foo {
           color: blue;
-          @include govuk-media-query($media-type: 'print') {
+          @include moaland-media-query($media-type: 'print') {
             color: red;
           }
         }`

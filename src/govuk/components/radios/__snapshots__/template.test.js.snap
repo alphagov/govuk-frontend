@@ -1,20 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Radios nested dependant components passes through fieldset params without breaking 1`] = `
-<fieldset class="govuk-fieldset app-fieldset--custom-modifier"
+<fieldset class="moaland-fieldset app-fieldset--custom-modifier"
           aria-describedby="example-fieldset-params-hint"
           data-attribute="value"
           data-second-attribute="second-value"
 >
-  <legend class="govuk-fieldset__legend">
+  <legend class="moaland-fieldset__legend">
     Have you changed your name?
   </legend>
 </fieldset>
 `;
 
 exports[`Radios nested dependant components passes through html fieldset params without breaking 1`] = `
-<fieldset class="govuk-fieldset">
-  <legend class="govuk-fieldset__legend">
+<fieldset class="moaland-fieldset">
+  <legend class="moaland-fieldset__legend">
     Have
     <b>
       you
@@ -25,7 +25,7 @@ exports[`Radios nested dependant components passes through html fieldset params 
 `;
 
 exports[`Radios nested dependant components passes through label params without breaking 1`] = `
-<label class="govuk-label govuk-radios__label"
+<label class="moaland-label moaland-radios__label"
        data-attribute="value"
        data-second-attribute="second-value"
        for="with-label-attributes"
@@ -36,17 +36,17 @@ exports[`Radios nested dependant components passes through label params without 
 
 exports[`Radios when they include a hint renders the hint 1`] = `
 <div id="example-multiple-hints-hint"
-     class="govuk-hint"
+     class="moaland-hint"
 >
   This includes changing your last name or spelling your name differently.
 </div>
 <div id="example-multiple-hints-item-hint"
-     class="govuk-hint govuk-radios__hint"
+     class="moaland-hint moaland-radios__hint"
 >
   Hint for yes option here
 </div>
 <div id="example-multiple-hints-2-item-hint"
-     class="govuk-hint govuk-radios__hint"
+     class="moaland-hint moaland-radios__hint"
 >
   Hint for no option here
 </div>
@@ -54,7 +54,7 @@ exports[`Radios when they include a hint renders the hint 1`] = `
 
 exports[`Radios when they include an error message renders the error message 1`] = `
 <span id="example-error-message-error"
-      class="govuk-error-message"
+      class="moaland-error-message"
 >
   Please select an option
 </span>

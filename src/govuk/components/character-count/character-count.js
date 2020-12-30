@@ -4,7 +4,7 @@ import '../../vendor/polyfills/Element/prototype/classList'
 
 function CharacterCount ($module) {
   this.$module = $module
-  this.$textarea = $module.querySelector('.govuk-js-character-count')
+  this.$textarea = $module.querySelector('.moaland-js-character-count')
   if (this.$textarea) {
     this.$countMessage = $module.querySelector('[id="' + this.$textarea.id + '-info"]')
   }
@@ -132,24 +132,24 @@ CharacterCount.prototype.updateCountMessage = function () {
   var thresholdPercent = options.threshold ? options.threshold : 0
   var thresholdValue = maxLength * thresholdPercent / 100
   if (thresholdValue > currentLength) {
-    countMessage.classList.add('govuk-character-count__message--disabled')
+    countMessage.classList.add('moaland-character-count__message--disabled')
     // Ensure threshold is hidden for users of assistive technologies
     countMessage.setAttribute('aria-hidden', true)
   } else {
-    countMessage.classList.remove('govuk-character-count__message--disabled')
+    countMessage.classList.remove('moaland-character-count__message--disabled')
     // Ensure threshold is visible for users of assistive technologies
     countMessage.removeAttribute('aria-hidden')
   }
 
   // Update styles
   if (remainingNumber < 0) {
-    countElement.classList.add('govuk-textarea--error')
-    countMessage.classList.remove('govuk-hint')
-    countMessage.classList.add('govuk-error-message')
+    countElement.classList.add('moaland-textarea--error')
+    countMessage.classList.remove('moaland-hint')
+    countMessage.classList.add('moaland-error-message')
   } else {
-    countElement.classList.remove('govuk-textarea--error')
-    countMessage.classList.remove('govuk-error-message')
-    countMessage.classList.add('govuk-hint')
+    countElement.classList.remove('moaland-textarea--error')
+    countMessage.classList.remove('moaland-error-message')
+    countMessage.classList.add('moaland-hint')
   }
 
   // Update message

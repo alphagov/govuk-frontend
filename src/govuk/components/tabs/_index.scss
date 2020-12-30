@@ -1,75 +1,75 @@
-@include govuk-exports("govuk/component/tabs") {
-  .govuk-tabs {
-    @include govuk-responsive-margin(1, "top");
-    @include govuk-responsive-margin(6, "bottom");
+@include moaland-exports("moaland/component/tabs") {
+  .moaland-tabs {
+    @include moaland-responsive-margin(1, "top");
+    @include moaland-responsive-margin(6, "bottom");
   }
 
-  .govuk-tabs__title {
-    @include govuk-font($size: 19);
-    @include govuk-text-colour;
-    margin-bottom: govuk-spacing(2);
+  .moaland-tabs__title {
+    @include moaland-font($size: 19);
+    @include moaland-text-colour;
+    margin-bottom: moaland-spacing(2);
   }
 
-  .govuk-tabs__list {
+  .moaland-tabs__list {
     margin: 0;
     padding: 0;
     list-style: none;
-    @include govuk-responsive-margin(6, "bottom");
+    @include moaland-responsive-margin(6, "bottom");
   }
 
-  .govuk-tabs__list-item {
-    @include govuk-font($size: 19);
-    margin-left: govuk-spacing(5);
+  .moaland-tabs__list-item {
+    @include moaland-font($size: 19);
+    margin-left: moaland-spacing(5);
 
     &:before {
-      @include govuk-text-colour;
+      @include moaland-text-colour;
       content: "\2014 "; // "— "
-      margin-left: - govuk-spacing(5);
-      padding-right: govuk-spacing(1);
+      margin-left: - moaland-spacing(5);
+      padding-right: moaland-spacing(1);
     }
   }
 
-  .govuk-tabs__tab {
-    @include govuk-link-style-default;
+  .moaland-tabs__tab {
+    @include moaland-link-style-default;
 
     display: inline-block;
-    margin-bottom: govuk-spacing(2);
+    margin-bottom: moaland-spacing(2);
 
     // Focus state for mobile and when JavaScript is disabled
     // It is removed for JS-enabled desktop styles
     &:focus {
-      @include govuk-focused-text;
+      @include moaland-focused-text;
     }
   }
 
-  .govuk-tabs__panel {
-    @include govuk-responsive-margin(8, "bottom");
+  .moaland-tabs__panel {
+    @include moaland-responsive-margin(8, "bottom");
   }
 
   // JavaScript enabled
   .js-enabled {
 
-    @include govuk-media-query($from: tablet) {
-      .govuk-tabs__list {
-        @include govuk-clearfix;
+    @include moaland-media-query($from: tablet) {
+      .moaland-tabs__list {
+        @include moaland-clearfix;
         margin-bottom: 0;
-        border-bottom: 1px solid $govuk-border-colour;
+        border-bottom: 1px solid $moaland-border-colour;
       }
 
-      .govuk-tabs__title {
+      .moaland-tabs__title {
         display: none;
       }
 
-      .govuk-tabs__list-item {
+      .moaland-tabs__list-item {
         position: relative;
 
-        margin-right: govuk-spacing(1);
+        margin-right: moaland-spacing(1);
         margin-bottom: 0;
         margin-left: 0;
-        padding: govuk-spacing(2) govuk-spacing(4);
+        padding: moaland-spacing(2) moaland-spacing(4);
 
         float: left;
-        background-color: govuk-colour("light-grey", $legacy: "grey-4");
+        background-color: moaland-colour("light-grey", $legacy: "grey-4");
         text-align: center;
 
         &:before {
@@ -77,32 +77,32 @@
         }
       }
 
-      .govuk-tabs__list-item--selected {
+      .moaland-tabs__list-item--selected {
         $border-width: 1px;
 
         position: relative;
 
-        margin-top: - govuk-spacing(1);
+        margin-top: - moaland-spacing(1);
 
         // Compensation for border (otherwise we get a shift)
         margin-bottom: -$border-width;
-        padding-top: govuk-spacing(3) - $border-width;
-        padding-right: govuk-spacing(4) - $border-width;
-        padding-bottom: govuk-spacing(3) + $border-width;
-        padding-left: govuk-spacing(4) - $border-width;
+        padding-top: moaland-spacing(3) - $border-width;
+        padding-right: moaland-spacing(4) - $border-width;
+        padding-bottom: moaland-spacing(3) + $border-width;
+        padding-left: moaland-spacing(4) - $border-width;
 
-        border: $border-width solid $govuk-border-colour;
+        border: $border-width solid $moaland-border-colour;
         border-bottom: 0;
 
-        background-color: $govuk-body-background-colour;
+        background-color: $moaland-body-background-colour;
 
-        .govuk-tabs__tab {
+        .moaland-tabs__tab {
           text-decoration: none;
         }
       }
 
-      .govuk-tabs__tab {
-        @include govuk-link-style-text;
+      .moaland-tabs__tab {
+        @include moaland-link-style-text;
 
         margin-bottom: 0;
 
@@ -116,10 +116,10 @@
         }
       }
 
-      .govuk-tabs__panel {
-        @include govuk-responsive-margin(0, "bottom");
-        padding: govuk-spacing(6) govuk-spacing(4);
-        border: 1px solid $govuk-border-colour;
+      .moaland-tabs__panel {
+        @include moaland-responsive-margin(0, "bottom");
+        padding: moaland-spacing(6) moaland-spacing(4);
+        border: 1px solid $moaland-border-colour;
         border-top: 0;
 
         & > :last-child {
@@ -127,7 +127,7 @@
         }
       }
 
-      .govuk-tabs__panel--hidden {
+      .moaland-tabs__panel--hidden {
         display: none;
       }
     }

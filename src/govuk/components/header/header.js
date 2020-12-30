@@ -4,7 +4,7 @@ import '../../vendor/polyfills/Function/prototype/bind'
 
 function Header ($module) {
   this.$module = $module
-  this.$menuButton = $module && $module.querySelector('.govuk-js-header-toggle')
+  this.$menuButton = $module && $module.querySelector('.moaland-js-header-toggle')
   this.$menu = this.$menuButton && $module.querySelector(
     '#' + this.$menuButton.getAttribute('aria-controls')
   )
@@ -21,7 +21,7 @@ Header.prototype.init = function () {
     return
   }
 
-  this.syncState(this.$menu.classList.contains('govuk-header__navigation--open'))
+  this.syncState(this.$menu.classList.contains('moaland-header__navigation--open'))
   this.$menuButton.addEventListener('click', this.handleMenuButtonClick.bind(this))
 }
 
@@ -34,7 +34,7 @@ Header.prototype.init = function () {
  * @param {boolean} isVisible Whether the menu is currently visible
  */
 Header.prototype.syncState = function (isVisible) {
-  this.$menuButton.classList.toggle('govuk-header__menu-button--open', isVisible)
+  this.$menuButton.classList.toggle('moaland-header__menu-button--open', isVisible)
   this.$menuButton.setAttribute('aria-expanded', isVisible)
 }
 
@@ -45,7 +45,7 @@ Header.prototype.syncState = function (isVisible) {
  * sync the accessibility state and menu button state
  */
 Header.prototype.handleMenuButtonClick = function () {
-  var isVisible = this.$menu.classList.toggle('govuk-header__navigation--open')
+  var isVisible = this.$menu.classList.toggle('moaland-header__navigation--open')
   this.syncState(isVisible)
 }
 

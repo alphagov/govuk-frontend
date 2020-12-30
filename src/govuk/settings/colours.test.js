@@ -22,14 +22,14 @@ describe('Organisation colours', () => {
 
       $minimum-contrast: 4.5;
 
-      @each $organisation in map-keys($govuk-colours-organisations) {
+      @each $organisation in map-keys($moaland-colours-organisations) {
 
-        $colour: govuk-organisation-colour($organisation);
-        $contrast: ch-color-contrast($govuk-body-background-colour, $colour);
+        $colour: moaland-organisation-colour($organisation);
+        $contrast: ch-color-contrast($moaland-body-background-colour, $colour);
 
         @if ($contrast < $minimum-contrast) {
           @error "Contrast ratio for #{$organisation} too low."
-          + " #{$colour} on #{$govuk-body-background-colour} has a contrast of: #{$contrast}."
+          + " #{$colour} on #{$moaland-body-background-colour} has a contrast of: #{$contrast}."
           + " Must be higher than #{$minimum-contrast} for WCAG AA support.";
         }
       }`

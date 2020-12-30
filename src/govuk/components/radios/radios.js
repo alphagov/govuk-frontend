@@ -79,11 +79,11 @@ Radios.prototype.syncAllConditionalReveals = function () {
 Radios.prototype.syncConditionalRevealWithInputState = function ($input) {
   var $target = document.querySelector('#' + $input.getAttribute('aria-controls'))
 
-  if ($target && $target.classList.contains('govuk-radios__conditional')) {
+  if ($target && $target.classList.contains('moaland-radios__conditional')) {
     var inputIsChecked = $input.checked
 
     $input.setAttribute('aria-expanded', inputIsChecked)
-    $target.classList.toggle('govuk-radios__conditional--hidden', !inputIsChecked)
+    $target.classList.toggle('moaland-radios__conditional--hidden', !inputIsChecked)
   }
 }
 

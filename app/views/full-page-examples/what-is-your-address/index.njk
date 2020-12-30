@@ -12,44 +12,44 @@ scenario: >-
 {# This example is based of the  "What is your home address?" example: https://design-system.service.gov.uk/patterns/addresses/multiple/index.html #}
 {% extends "_generic.njk" %}
 
-{% from "back-link/macro.njk" import govukBackLink %}
-{% from "error-summary/macro.njk" import govukErrorSummary %}
-{% from "fieldset/macro.njk" import govukFieldset %}
-{% from "input/macro.njk" import govukInput %}
-{% from "button/macro.njk" import govukButton %}
+{% from "back-link/macro.njk" import moalandBackLink %}
+{% from "error-summary/macro.njk" import moalandErrorSummary %}
+{% from "fieldset/macro.njk" import moalandFieldset %}
+{% from "input/macro.njk" import moalandInput %}
+{% from "button/macro.njk" import moalandButton %}
 
 {% set pageTitle = "What is your home address?" %}
 {% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block beforeContent %}
-  {{ govukBackLink({
+  {{ moalandBackLink({
     text: "Back",
     href: "#"
   }) }}
 {% endblock %}
 
 {% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+  <div class="moaland-grid-row">
+    <div class="moaland-grid-column-two-thirds">
       <form method="post" novalidate>
         {% if errorSummary.length > 0 %}
-            {{ govukErrorSummary({
+            {{ moalandErrorSummary({
                 titleText: "There is a problem",
                 errorList: errorSummary
             }) }}
         {% endif %}
 
-        {% call govukFieldset({
+        {% call moalandFieldset({
           legend: {
             text: "What is your address?",
-            classes: "govuk-fieldset__legend--xl",
+            classes: "moaland-fieldset__legend--xl",
             isPageHeading: true
           }
         }) %}
 
-          {{ govukInput({
+          {{ moalandInput({
             label: {
-              html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
+              html: 'Building and street <span class="moaland-visually-hidden">line 1 of 2</span>'
             },
             id: "address-line-1",
             name: "address-line-1",
@@ -58,9 +58,9 @@ scenario: >-
             autocomplete: "address-line1"
           }) }}
 
-          {{ govukInput({
+          {{ moalandInput({
             label: {
-              html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
+              html: '<span class="moaland-visually-hidden">Building and street line 2 of 2</span>'
             },
             id: "address-line-2",
             name: "address-line-2",
@@ -68,33 +68,33 @@ scenario: >-
             autocomplete: "address-line2"
           }) }}
 
-          {{ govukInput({
+          {{ moalandInput({
             label: {
               text: "Town or city"
             },
-            classes: "govuk-!-width-two-thirds",
+            classes: "moaland-!-width-two-thirds",
             id: "address-town",
             name: "address-town",
             value: values["address-town"],
             errorMessage: errors["address-town"]
           }) }}
 
-          {{ govukInput({
+          {{ moalandInput({
             label: {
               text: "County"
             },
-            classes: "govuk-!-width-two-thirds",
+            classes: "moaland-!-width-two-thirds",
             id: "address-county",
             name: "address-county",
             value: values["address-county"],
             errorMessage: errors["address-county"]
           }) }}
 
-          {{ govukInput({
+          {{ moalandInput({
             label: {
               text: "Postcode"
             },
-            classes: "govuk-input--width-10",
+            classes: "moaland-input--width-10",
             id: "address-postcode",
             name: "address-postcode",
             value: values["address-postcode"],
@@ -104,7 +104,7 @@ scenario: >-
 
         {% endcall %}
 
-        {{ govukButton({
+        {{ moalandButton({
             text: "Continue"
           }) }}
       </form>

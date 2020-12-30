@@ -1,9 +1,9 @@
-@include govuk-exports("govuk/utilities/visually-hidden") {
-  .govuk-visually-hidden {
-    @include govuk-visually-hidden;
+@include moaland-exports("moaland/utilities/visually-hidden") {
+  .moaland-visually-hidden {
+    @include moaland-visually-hidden;
   }
 
-  .govuk-visually-hidden-focusable {
-    @include govuk-visually-hidden-focusable;
+  .moaland-visually-hidden-focusable {
+    @include moaland-visually-hidden-focusable;
   }
 }

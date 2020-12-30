@@ -8,7 +8,7 @@
                     "text": "What is your address?"
                 }
             },
-            "html": "<fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    What is your address?\n  \n  </legend>\n  \n\n</fieldset>",
+            "html": "<fieldset class=\"moaland-fieldset\">\n  \n  <legend class=\"moaland-fieldset__legend\">\n  \n    What is your address?\n  \n  </legend>\n  \n\n</fieldset>",
             "hidden": false
         },
         {
@@ -16,11 +16,11 @@
             "options": {
                 "legend": {
                     "text": "What is your address?",
-                    "classes": "govuk-fieldset__legend--xl",
+                    "classes": "moaland-fieldset__legend--xl",
                     "isPageHeading": true
                 }
             },
-            "html": "<fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend govuk-fieldset__legend--xl\">\n  \n    <h1 class=\"govuk-fieldset__heading\">\n      What is your address?\n    </h1>\n  \n  </legend>\n  \n\n</fieldset>",
+            "html": "<fieldset class=\"moaland-fieldset\">\n  \n  <legend class=\"moaland-fieldset__legend moaland-fieldset__legend--xl\">\n  \n    <h1 class=\"moaland-fieldset__heading\">\n      What is your address?\n    </h1>\n  \n  </legend>\n  \n\n</fieldset>",
             "hidden": false
         },
         {
@@ -31,7 +31,7 @@
                 },
                 "html": "<div class=\"my-content\">\n  <p>This is some content to put inside the fieldset</p>\n</div>\n"
             },
-            "html": "<fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    What is your address?\n  \n  </legend>\n  \n\n  <div class=\"my-content\">\n  <p>This is some content to put inside the fieldset</p>\n</div>\n\n\n</fieldset>",
+            "html": "<fieldset class=\"moaland-fieldset\">\n  \n  <legend class=\"moaland-fieldset__legend\">\n  \n    What is your address?\n  \n  </legend>\n  \n\n  <div class=\"my-content\">\n  <p>This is some content to put inside the fieldset</p>\n</div>\n\n\n</fieldset>",
             "hidden": true
         },
         {
@@ -39,7 +39,7 @@
             "options": {
                 "describedBy": "some-id"
             },
-            "html": "<fieldset class=\"govuk-fieldset\" aria-describedby=\"some-id\">\n  \n\n</fieldset>",
+            "html": "<fieldset class=\"moaland-fieldset\" aria-describedby=\"some-id\">\n  \n\n</fieldset>",
             "hidden": true
         },
         {
@@ -49,7 +49,7 @@
                     "text": "What is <b>your</b> address?"
                 }
             },
-            "html": "<fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    What is &lt;b&gt;your&lt;/b&gt; address?\n  \n  </legend>\n  \n\n</fieldset>",
+            "html": "<fieldset class=\"moaland-fieldset\">\n  \n  <legend class=\"moaland-fieldset__legend\">\n  \n    What is &lt;b&gt;your&lt;/b&gt; address?\n  \n  </legend>\n  \n\n</fieldset>",
             "hidden": true
         },
         {
@@ -59,7 +59,7 @@
                     "html": "What is <b>your</b> address?"
                 }
             },
-            "html": "<fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    What is <b>your</b> address?\n  \n  </legend>\n  \n\n</fieldset>",
+            "html": "<fieldset class=\"moaland-fieldset\">\n  \n  <legend class=\"moaland-fieldset__legend\">\n  \n    What is <b>your</b> address?\n  \n  </legend>\n  \n\n</fieldset>",
             "hidden": true
         },
         {
@@ -70,7 +70,7 @@
                     "classes": "my-custom-class"
                 }
             },
-            "html": "<fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend my-custom-class\">\n  \n    What is your address?\n  \n  </legend>\n  \n\n</fieldset>",
+            "html": "<fieldset class=\"moaland-fieldset\">\n  \n  <legend class=\"moaland-fieldset__legend my-custom-class\">\n  \n    What is your address?\n  \n  </legend>\n  \n\n</fieldset>",
             "hidden": true
         },
         {
@@ -78,7 +78,7 @@
             "options": {
                 "classes": "app-fieldset--custom-modifier"
             },
-            "html": "<fieldset class=\"govuk-fieldset app-fieldset--custom-modifier\">\n  \n\n</fieldset>",
+            "html": "<fieldset class=\"moaland-fieldset app-fieldset--custom-modifier\">\n  \n\n</fieldset>",
             "hidden": true
         },
         {
@@ -86,7 +86,7 @@
             "options": {
                 "role": "group"
             },
-            "html": "<fieldset class=\"govuk-fieldset\" role=\"group\">\n  \n\n</fieldset>",
+            "html": "<fieldset class=\"moaland-fieldset\" role=\"group\">\n  \n\n</fieldset>",
             "hidden": true
         },
         {
@@ -96,7 +96,7 @@
                     "data-attribute": "value"
                 }
             },
-            "html": "<fieldset class=\"govuk-fieldset\" data-attribute=\"value\">\n  \n\n</fieldset>",
+            "html": "<fieldset class=\"moaland-fieldset\" data-attribute=\"value\">\n  \n\n</fieldset>",
             "hidden": true
         }
     ]

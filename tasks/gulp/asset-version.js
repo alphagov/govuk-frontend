@@ -20,14 +20,14 @@ gulp.task('update-assets-version', () => {
   const pkg = require('../../' + configPaths.package + 'package.json')
   fs.writeFileSync(taskArguments.destination + '/VERSION.txt', pkg.version + '\r\n')
   return gulp.src([
-    taskArguments.destination + '/govuk-frontend.min.css',
-    taskArguments.destination + '/govuk-frontend-ie8.min.css',
-    taskArguments.destination + '/govuk-frontend.min.js'
+    taskArguments.destination + '/moaland-frontend.min.css',
+    taskArguments.destination + '/moaland-frontend-ie8.min.css',
+    taskArguments.destination + '/moaland-frontend.min.js'
   ])
     .pipe(vinylPaths(del))
     .pipe(gulpif(isDist,
       rename(obj => {
-        obj.basename = obj.basename.replace(/(govuk.*)(?=\.min)/g, '$1-' + pkg.version)
+        obj.basename = obj.basename.replace(/(moaland.*)(?=\.min)/g, '$1-' + pkg.version)
         return obj
       })
     ))

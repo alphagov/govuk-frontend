@@ -1,11 +1,11 @@
-{% from "../textarea/macro.njk" import govukTextarea %}
-{% from "../hint/macro.njk" import govukHint %}
+{% from "../textarea/macro.njk" import moalandTextarea %}
+{% from "../hint/macro.njk" import moalandHint %}
 
-<div class="govuk-character-count" data-module="govuk-character-count"
+<div class="moaland-character-count" data-module="moaland-character-count"
 {%- if params.maxlength %} data-maxlength="{{ params.maxlength }}"{% endif %}
 {%- if params.threshold %} data-threshold="{{ params.threshold }}"{% endif %}
 {%- if params.maxwords %} data-maxwords="{{ params.maxwords }}"{% endif %}>
-  {{ govukTextarea({
+  {{ moalandTextarea({
     id: params.id,
     name: params.name,
     describedBy: params.id + '-info',
@@ -13,7 +13,7 @@
     spellcheck: params.spellcheck,
     value: params.value,
     formGroup: params.formGroup,
-    classes: 'govuk-js-character-count' + (' govuk-textarea--error' if params.errorMessage) + (' ' + params.classes if params.classes),
+    classes: 'moaland-js-character-count' + (' moaland-textarea--error' if params.errorMessage) + (' ' + params.classes if params.classes),
     label: {
       html: params.label.html,
       text: params.label.text,
@@ -26,10 +26,10 @@
     errorMessage: params.errorMessage,
     attributes: params.attributes
   }) }}
-  {{ govukHint({
+  {{ moalandHint({
     text: 'You can enter up to ' + (params.maxlength or params.maxwords) + (' words' if params.maxwords else ' characters'),
     id: params.id + '-info',
-    classes: 'govuk-character-count__message' + (' ' + params.countMessage.classes if params.countMessage.classes),
+    classes: 'moaland-character-count__message' + (' ' + params.countMessage.classes if params.countMessage.classes),
     attributes: {
       'aria-live': 'polite'
     }

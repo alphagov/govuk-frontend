@@ -24,14 +24,14 @@ jobs:
       install: npm install -g node-sass@v3.4.0 # node-sass v3.4.0 = libsass v3.3.0
       script: 
         - node-sass --version
-        - time node-sass src/govuk/all.scss > /dev/null
+        - time node-sass src/moaland/all.scss > /dev/null
 
     - name: 🎯 Test Sass compiles using Dart Sass v1.0.0
       node_js: 8 # Assumed based on release date of dart-sass v1.0.0
       install: npm install -g sass@v1.0.0
       script: 
         - sass --version
-        - time sass src/govuk/all.scss > /dev/null
+        - time sass src/moaland/all.scss > /dev/null
 
     - name: 💎 Test Sass compiles using Ruby Sass v3.4.0 (deprecated)
       language: ruby
@@ -39,8 +39,8 @@ jobs:
       install: gem install sass -v 3.4.0
       script: 
         - sass --version
-        - time sass src/govuk/all.scss > /dev/null
+        - time sass src/moaland/all.scss > /dev/null
 
 # Heroku is configured to automatically deploy the following branches
 # once CI passes:
-# master         -> http://govuk-frontend-review.herokuapp.com/
+# master         -> http://moaland-frontend-review.herokuapp.com/

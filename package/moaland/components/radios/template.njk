@@ -1,7 +1,7 @@
-{% from "../error-message/macro.njk" import govukErrorMessage -%}
-{% from "../fieldset/macro.njk" import govukFieldset %}
-{% from "../hint/macro.njk" import govukHint %}
-{% from "../label/macro.njk" import govukLabel %}
+{% from "../error-message/macro.njk" import moalandErrorMessage -%}
+{% from "../fieldset/macro.njk" import moalandFieldset %}
+{% from "../hint/macro.njk" import moalandHint %}
+{% from "../label/macro.njk" import moalandLabel %}
 
 {#- If an id 'prefix' is not passed, fall back to using the name attribute
    instead. We need this for error messages and hints as well -#}
@@ -23,7 +23,7 @@
 {% if params.hint %}
   {% set hintId = idPrefix + '-hint' %}
   {% set describedBy = describedBy + ' ' + hintId if describedBy else hintId %}
-  {{ govukHint({
+  {{ moalandHint({
     id: hintId,
     classes: params.hint.classes,
     attributes: params.hint.attributes,
@@ -34,7 +34,7 @@
 {% if params.errorMessage %}
   {% set errorId = idPrefix + '-error' %}
   {% set describedBy = describedBy + ' ' + errorId if describedBy else errorId %}
-  {{ govukErrorMessage({
+  {{ moalandErrorMessage({
     id: errorId,
     classes: params.errorMessage.classes,
     attributes: params.errorMessage.attributes,
@@ -43,9 +43,9 @@
     visuallyHiddenText: params.errorMessage.visuallyHiddenText
   }) | indent(2) | trim }}
 {% endif %}
-  <div class="govuk-radios {%- if params.classes %} {{ params.classes }}{% endif %}{%- if isConditional %} govuk-radios--conditional{% endif -%}"
+  <div class="moaland-radios {%- if params.classes %} {{ params.classes }}{% endif %}{%- if isConditional %} moaland-radios--conditional{% endif -%}"
     {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}
-    {%- if isConditional %} data-module="govuk-radios"{% endif -%}>
+    {%- if isConditional %} data-module="moaland-radios"{% endif -%}>
     {% for item in params.items %}
       {% if item %}
         {#- If the user explicitly sets an id, use this instead of the regular idPrefix -#}
@@ -61,28 +61,28 @@
         {%- endif -%}
         {% set conditionalId = "conditional-" + id %}
         {%- if item.divider %}
-        <div class="govuk-radios__divider">{{ item.divider }}</div>
+        <div class="moaland-radios__divider">{{ item.divider }}</div>
         {%- else %}
         {% set hasHint = true if item.hint.text or item.hint.html %}
         {% set itemHintId = id + '-item-hint' %}
-        <div class="govuk-radios__item">
-          <input class="govuk-radios__input" id="{{ id }}" name="{{ params.name }}" type="radio" value="{{ item.value }}"
+        <div class="moaland-radios__item">
+          <input class="moaland-radios__input" id="{{ id }}" name="{{ params.name }}" type="radio" value="{{ item.value }}"
           {{-" checked" if item.checked }}
           {{-" disabled" if item.disabled }}
           {%- if item.conditional.html %} data-aria-controls="{{ conditionalId }}"{% endif -%}
           {%- if hasHint %} aria-describedby="{{ itemHintId }}"{% endif -%}
           {%- for attribute, value in item.attributes %} {{ attribute }}="{{ value }}"{% endfor -%}>
-          {{ govukLabel({
+          {{ moalandLabel({
             html: item.html,
             text: item.text,
-            classes: 'govuk-radios__label' + (' ' + item.label.classes if item.label.classes),
+            classes: 'moaland-radios__label' + (' ' + item.label.classes if item.label.classes),
             attributes: item.label.attributes,
             for: id
           }) | indent(6) | trim }}
           {% if hasHint %}
-          {{ govukHint({
+          {{ moalandHint({
             id: itemHintId,
-            classes: 'govuk-radios__hint' + (' ' + item.hint.classes if item.hint.classes),
+            classes: 'moaland-radios__hint' + (' ' + item.hint.classes if item.hint.classes),
             attributes: item.hint.attributes,
             html: item.hint.html,
             text: item.hint.text
@@ -90,7 +90,7 @@
           {% endif %}
         </div>
         {% if item.conditional.html %}
-          <div class="govuk-radios__conditional{% if not item.checked %} govuk-radios__conditional--hidden{% endif %}" id="{{ conditionalId }}">
+          <div class="moaland-radios__conditional{% if not item.checked %} moaland-radios__conditional--hidden{% endif %}" id="{{ conditionalId }}">
             {{ item.conditional.html | safe }}
           </div>
         {% endif %}
@@ -100,9 +100,9 @@
   </div>
 {% endset -%}
 
-<div class="govuk-form-group {%- if params.errorMessage %} govuk-form-group--error{% endif %} {%- if params.formGroup.classes %} {{ params.formGroup.classes }}{% endif %}">
+<div class="moaland-form-group {%- if params.errorMessage %} moaland-form-group--error{% endif %} {%- if params.formGroup.classes %} {{ params.formGroup.classes }}{% endif %}">
 {% if params.fieldset %}
-  {% call govukFieldset({
+  {% call moalandFieldset({
     describedBy: describedBy,
     classes: params.fieldset.classes,
     attributes: params.fieldset.attributes,

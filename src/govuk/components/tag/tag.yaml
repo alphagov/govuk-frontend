@@ -23,43 +23,43 @@ examples:
 - name: inactive
   data:
     text: alpha
-    classes: govuk-tag--inactive
+    classes: moaland-tag--inactive
 - name: grey
   data:
     text: Grey
-    classes: govuk-tag--grey
+    classes: moaland-tag--grey
 - name: blue
   data:
     text: Blue
-    classes: govuk-tag--blue
+    classes: moaland-tag--blue
 - name: turquoise
   data:
     text: Turquoise
-    classes: govuk-tag--turquoise
+    classes: moaland-tag--turquoise
 - name: green
   data:
     text: Green
-    classes: govuk-tag--green
+    classes: moaland-tag--green
 - name: purple
   data:
     text: Purple
-    classes: govuk-tag--purple
+    classes: moaland-tag--purple
 - name: pink
   data:
     text: Pink
-    classes: govuk-tag--pink
+    classes: moaland-tag--pink
 - name: red
   data:
     text: Red
-    classes: govuk-tag--red
+    classes: moaland-tag--red
 - name: orange
   data:
     text: Orange
-    classes: govuk-tag--orange
+    classes: moaland-tag--orange
 - name: yellow
   data:
     text: Yellow
-    classes: govuk-tag--yellow
+    classes: moaland-tag--yellow
 
 # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
 - name: attributes

@@ -24,28 +24,28 @@ describe('Input', () => {
     it('renders with id', () => {
       const $ = render('input', examples.default)
 
-      const $component = $('.govuk-input')
+      const $component = $('.moaland-input')
       expect($component.attr('id')).toEqual('input-example')
     })
 
     it('renders with name', () => {
       const $ = render('input', examples.default)
 
-      const $component = $('.govuk-input')
+      const $component = $('.moaland-input')
       expect($component.attr('name')).toEqual('test-name')
     })
 
     it('renders with type="text" by default', () => {
       const $ = render('input', examples.default)
 
-      const $component = $('.govuk-input')
+      const $component = $('.moaland-input')
       expect($component.attr('type')).toEqual('text')
     })
 
     it('renders with a form group wrapper', () => {
       const $ = render('input', examples.default)
 
-      const $formGroup = $('.govuk-form-group')
+      const $formGroup = $('.moaland-form-group')
       expect($formGroup.length).toBeTruthy()
     })
   })
@@ -54,56 +54,56 @@ describe('Input', () => {
     it('renders with classes', () => {
       const $ = render('input', examples.classes)
 
-      const $component = $('.govuk-input')
+      const $component = $('.moaland-input')
       expect($component.hasClass('app-input--custom-modifier')).toBeTruthy()
     })
 
     it('allows you to override the type', () => {
       const $ = render('input', examples['custom type'])
 
-      const $component = $('.govuk-input')
+      const $component = $('.moaland-input')
       expect($component.attr('type')).toEqual('number')
     })
 
     it('renders with pattern attribute', () => {
       const $ = render('input', examples['with pattern attribute'])
 
-      const $component = $('.govuk-input')
+      const $component = $('.moaland-input')
       expect($component.attr('pattern')).toEqual('[0-9]*')
     })
 
     it('renders with value', () => {
       const $ = render('input', examples.value)
 
-      const $component = $('.govuk-input')
+      const $component = $('.moaland-input')
       expect($component.val()).toEqual('QQ 12 34 56 C')
     })
 
     it('renders with aria-describedby', () => {
       const $ = render('input', examples['with describedBy'])
 
-      const $component = $('.govuk-input')
+      const $component = $('.moaland-input')
       expect($component.attr('aria-describedby')).toMatch('some-id')
     })
 
     it('renders with attributes', () => {
       const $ = render('input', examples.attributes)
 
-      const $component = $('.govuk-input')
+      const $component = $('.moaland-input')
       expect($component.attr('data-attribute')).toEqual('my data value')
     })
 
     it('renders with a form group wrapper that has extra classes', () => {
       const $ = render('input', examples['with optional form-group classes'])
 
-      const $formGroup = $('.govuk-form-group')
+      const $formGroup = $('.moaland-form-group')
       expect($formGroup.hasClass('extra-class')).toBeTruthy()
     })
 
     it('doesn\'t render the input wrapper', () => {
       const $ = render('input', examples.default)
 
-      const $wrapper = $('.govuk-form-group > .govuk-input__wrapper')
+      const $wrapper = $('.moaland-form-group > .moaland-input__wrapper')
       expect($wrapper.length).toBeFalsy()
     })
   })
@@ -112,14 +112,14 @@ describe('Input', () => {
     it('renders the hint', () => {
       const $ = render('input', examples['with hint text'])
 
-      expect(htmlWithClassName($, '.govuk-hint')).toMatchSnapshot()
+      expect(htmlWithClassName($, '.moaland-hint')).toMatchSnapshot()
     })
 
     it('associates the input as "described by" the hint', () => {
       const $ = render('input', examples['with hint text'])
 
-      const $input = $('.govuk-input')
-      const $hint = $('.govuk-hint')
+      const $input = $('.moaland-input')
+      const $hint = $('.moaland-hint')
 
       const hintId = new RegExp(
         WORD_BOUNDARY + $hint.attr('id') + WORD_BOUNDARY
@@ -132,8 +132,8 @@ describe('Input', () => {
     it('associates the input as "described by" the hint and parent fieldset', () => {
       const $ = render('input', examples['hint with describedBy'])
 
-      const $input = $('.govuk-input')
-      const $hint = $('.govuk-hint')
+      const $input = $('.moaland-input')
+      const $hint = $('.moaland-hint')
 
       const hintId = new RegExp(
         WORD_BOUNDARY + 'some-id' + WHITESPACE + $hint.attr('id') + WORD_BOUNDARY
@@ -148,14 +148,14 @@ describe('Input', () => {
     it('renders the error message', () => {
       const $ = render('input', examples['with error message'])
 
-      expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
+      expect(htmlWithClassName($, '.moaland-error-message')).toMatchSnapshot()
     })
 
     it('associates the input as "described by" the error message', () => {
       const $ = render('input', examples['with error message'])
 
-      const $input = $('.govuk-input')
-      const $errorMessage = $('.govuk-error-message')
+      const $input = $('.moaland-input')
+      const $errorMessage = $('.moaland-error-message')
 
       const errorMessageId = new RegExp(
         WORD_BOUNDARY + $errorMessage.attr('id') + WORD_BOUNDARY
@@ -168,8 +168,8 @@ describe('Input', () => {
     it('associates the input as "described by" the error message and parent fieldset', () => {
       const $ = render('input', examples['error with describedBy'])
 
-      const $input = $('.govuk-input')
-      const $errorMessage = $('.govuk-error-message')
+      const $input = $('.moaland-input')
+      const $errorMessage = $('.moaland-error-message')
 
       const errorMessageId = new RegExp(
         WORD_BOUNDARY + 'some-id' + WHITESPACE + $errorMessage.attr('id') + WORD_BOUNDARY
@@ -182,15 +182,15 @@ describe('Input', () => {
     it('includes the error class on the input', () => {
       const $ = render('input', examples['with error message'])
 
-      const $component = $('.govuk-input')
-      expect($component.hasClass('govuk-input--error')).toBeTruthy()
+      const $component = $('.moaland-input')
+      expect($component.hasClass('moaland-input--error')).toBeTruthy()
     })
 
     it('renders with a form group wrapper that has an error state', () => {
       const $ = render('input', examples['with error message'])
 
-      const $formGroup = $('.govuk-form-group')
-      expect($formGroup.hasClass('govuk-form-group--error')).toBeTruthy()
+      const $formGroup = $('.moaland-form-group')
+      expect($formGroup.hasClass('moaland-form-group--error')).toBeTruthy()
     })
   })
 
@@ -198,21 +198,21 @@ describe('Input', () => {
     it('renders with spellcheck attribute set to true', () => {
       const $ = render('input', examples['with spellcheck enabled'])
 
-      const $component = $('.govuk-input')
+      const $component = $('.moaland-input')
       expect($component.attr('spellcheck')).toEqual('true')
     })
 
     it('renders with spellcheck attribute set to false', () => {
       const $ = render('input', examples['with spellcheck disabled'])
 
-      const $component = $('.govuk-input')
+      const $component = $('.moaland-input')
       expect($component.attr('spellcheck')).toEqual('false')
     })
 
     it('renders without spellcheck attribute by default', () => {
       const $ = render('input', examples.default)
 
-      const $component = $('.govuk-input')
+      const $component = $('.moaland-input')
       expect($component.attr('spellcheck')).toBeUndefined()
     })
   })
@@ -221,9 +221,9 @@ describe('Input', () => {
     it('associates the input as described by both the hint and the error message', () => {
       const $ = render('input', examples['with error and hint'])
 
-      const $component = $('.govuk-input')
-      const errorMessageId = $('.govuk-error-message').attr('id')
-      const hintId = $('.govuk-hint').attr('id')
+      const $component = $('.moaland-input')
+      const errorMessageId = $('.moaland-error-message').attr('id')
+      const hintId = $('.moaland-hint').attr('id')
 
       const combinedIds = new RegExp(
         WORD_BOUNDARY + hintId + WHITESPACE + errorMessageId + WORD_BOUNDARY
@@ -236,9 +236,9 @@ describe('Input', () => {
     it('associates the input as described by the hint, error message and parent fieldset', () => {
       const $ = render('input', examples['with error, hint and describedBy'])
 
-      const $component = $('.govuk-input')
-      const errorMessageId = $('.govuk-error-message').attr('id')
-      const hintId = $('.govuk-hint').attr('id')
+      const $component = $('.moaland-input')
+      const errorMessageId = $('.moaland-error-message').attr('id')
+      const hintId = $('.moaland-hint').attr('id')
 
       const combinedIds = new RegExp(
         WORD_BOUNDARY + 'some-id' + WHITESPACE + hintId + WHITESPACE + errorMessageId + WORD_BOUNDARY
@@ -253,20 +253,20 @@ describe('Input', () => {
     it('have correct nesting order', () => {
       const $ = render('input', examples.default)
 
-      const $component = $('.govuk-form-group > .govuk-input')
+      const $component = $('.moaland-form-group > .moaland-input')
       expect($component.length).toBeTruthy()
     })
 
     it('renders with label', () => {
       const $ = render('input', examples.default)
 
-      expect(htmlWithClassName($, '.govuk-label')).toMatchSnapshot()
+      expect(htmlWithClassName($, '.moaland-label')).toMatchSnapshot()
     })
 
     it('renders label with "for" attribute reffering the input "id"', () => {
       const $ = render('input', examples.default)
 
-      const $label = $('.govuk-label')
+      const $label = $('.moaland-label')
       expect($label.attr('for')).toEqual('input-example')
     })
   })
@@ -275,7 +275,7 @@ describe('Input', () => {
     it('renders the autocomplete attribute', () => {
       const $ = render('input', examples['with autocomplete attribute'])
 
-      const $component = $('.govuk-input')
+      const $component = $('.moaland-input')
       expect($component.attr('autocomplete')).toEqual('postal-code')
     })
   })
@@ -284,7 +284,7 @@ describe('Input', () => {
     it('renders with an inputmode attached to the input', () => {
       const $ = render('input', examples.inputmode)
 
-      const $component = $('.govuk-form-group > .govuk-input')
+      const $component = $('.moaland-form-group > .moaland-input')
       expect($component.attr('inputmode')).toEqual('decimal')
     })
   })
@@ -293,21 +293,21 @@ describe('Input', () => {
     it('renders the input wrapper', () => {
       const $ = render('input', examples['with prefix'])
 
-      const $wrapper = $('.govuk-form-group > .govuk-input__wrapper')
+      const $wrapper = $('.moaland-form-group > .moaland-input__wrapper')
       expect($wrapper.length).toBeTruthy()
     })
 
     it('renders the prefix inside the wrapper', () => {
       const $ = render('input', examples['with prefix'])
 
-      const $prefix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix')
+      const $prefix = $('.moaland-form-group > .moaland-input__wrapper > .moaland-input__prefix')
       expect($prefix.length).toBeTruthy()
     })
 
     it('renders the text in the prefix', () => {
       const $ = render('input', examples['with prefix'])
 
-      const $prefix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix')
+      const $prefix = $('.moaland-form-group > .moaland-input__wrapper > .moaland-input__prefix')
 
       expect($prefix.html()).toEqual('&#xA3;')
     })
@@ -315,7 +315,7 @@ describe('Input', () => {
     it('allows prefix text to be passed whilst escaping HTML entities', () => {
       const $ = render('input', examples['with prefix with html as text'])
 
-      const $prefix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix')
+      const $prefix = $('.moaland-form-group > .moaland-input__wrapper > .moaland-input__prefix')
 
       expect($prefix.html()).toEqual('&lt;span&gt;&#xA3;&lt;/span&gt;')
     })
@@ -323,7 +323,7 @@ describe('Input', () => {
     it('allows prefix HTML to be passed un-escaped', () => {
       const $ = render('input', examples['with prefix with html'])
 
-      const $prefix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix')
+      const $prefix = $('.moaland-form-group > .moaland-input__wrapper > .moaland-input__prefix')
 
       expect($prefix.html()).toEqual('<span>&#xA3;</span>')
     })
@@ -331,21 +331,21 @@ describe('Input', () => {
     it('hides the prefix from screen readers using the aria-hidden attribute', () => {
       const $ = render('input', examples['with prefix'])
 
-      const $prefix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix')
+      const $prefix = $('.moaland-form-group > .moaland-input__wrapper > .moaland-input__prefix')
       expect($prefix.attr('aria-hidden')).toEqual('true')
     })
 
     it('renders with classes', () => {
       const $ = render('input', examples['with prefix with classes'])
 
-      const $prefix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix')
+      const $prefix = $('.moaland-form-group > .moaland-input__wrapper > .moaland-input__prefix')
       expect($prefix.hasClass('app-input__prefix--custom-modifier')).toBeTruthy()
     })
 
     it('renders with attributes', () => {
       const $ = render('input', examples['with prefix with attributes'])
 
-      const $prefix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix')
+      const $prefix = $('.moaland-form-group > .moaland-input__wrapper > .moaland-input__prefix')
       expect($prefix.attr('data-attribute')).toEqual('value')
     })
   })
@@ -354,21 +354,21 @@ describe('Input', () => {
     it('renders the input wrapper', () => {
       const $ = render('input', examples['with suffix'])
 
-      const $wrapper = $('.govuk-form-group > .govuk-input__wrapper')
+      const $wrapper = $('.moaland-form-group > .moaland-input__wrapper')
       expect($wrapper.length).toBeTruthy()
     })
 
     it('renders the suffix inside the wrapper', () => {
       const $ = render('input', examples['with suffix'])
 
-      const $suffix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__suffix')
+      const $suffix = $('.moaland-form-group > .moaland-input__wrapper > .moaland-input__suffix')
       expect($suffix.length).toBeTruthy()
     })
 
     it('renders the text in the prefix', () => {
       const $ = render('input', examples['with prefix'])
 
-      const $prefix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix')
+      const $prefix = $('.moaland-form-group > .moaland-input__wrapper > .moaland-input__prefix')
 
       expect($prefix.html()).toEqual('&#xA3;')
     })
@@ -376,7 +376,7 @@ describe('Input', () => {
     it('allows suffix text to be passed whilst escaping HTML entities', () => {
       const $ = render('input', examples['with suffix with html as text'])
 
-      const $suffix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__suffix')
+      const $suffix = $('.moaland-form-group > .moaland-input__wrapper > .moaland-input__suffix')
 
       expect($suffix.html()).toEqual('&lt;span&gt;kg&lt;/span&gt;')
     })
@@ -384,7 +384,7 @@ describe('Input', () => {
     it('allows suffix HTML to be passed un-escaped', () => {
       const $ = render('input', examples['with suffix with html'])
 
-      const $suffix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__suffix')
+      const $suffix = $('.moaland-form-group > .moaland-input__wrapper > .moaland-input__suffix')
 
       expect($suffix.html()).toEqual('<span>kg</span>')
     })
@@ -392,21 +392,21 @@ describe('Input', () => {
     it('hides the suffix from screen readers using the aria-hidden attribute', () => {
       const $ = render('input', examples['with suffix'])
 
-      const $suffix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__suffix')
+      const $suffix = $('.moaland-form-group > .moaland-input__wrapper > .moaland-input__suffix')
       expect($suffix.attr('aria-hidden')).toEqual('true')
     })
 
     it('renders with classes', () => {
       const $ = render('input', examples['with suffix with classes'])
 
-      const $suffix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__suffix')
+      const $suffix = $('.moaland-form-group > .moaland-input__wrapper > .moaland-input__suffix')
       expect($suffix.hasClass('app-input__suffix--custom-modifier')).toBeTruthy()
     })
 
     it('renders with attributes', () => {
       const $ = render('input', examples['with suffix with attributes'])
 
-      const $suffix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__suffix')
+      const $suffix = $('.moaland-form-group > .moaland-input__wrapper > .moaland-input__suffix')
       expect($suffix.attr('data-attribute')).toEqual('value')
     })
   })
@@ -415,7 +415,7 @@ describe('Input', () => {
     it('renders the prefix before the suffix', () => {
       const $ = render('input', examples['with prefix and suffix'])
 
-      const $prefixBeforeSuffix = $('.govuk-form-group > .govuk-input__wrapper > .govuk-input__prefix ~ .govuk-input__suffix')
+      const $prefixBeforeSuffix = $('.moaland-form-group > .moaland-input__wrapper > .moaland-input__prefix ~ .moaland-input__suffix')
       expect($prefixBeforeSuffix.length).toBeTruthy()
     })
   })

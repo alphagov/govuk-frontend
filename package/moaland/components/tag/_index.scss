@@ -1,5 +1,5 @@
-@include govuk-exports("govuk/component/tag") {
-  .govuk-tag {
+@include moaland-exports("moaland/component/tag") {
+  .moaland-tag {
 
     display: inline-block;
 
@@ -9,24 +9,24 @@
     outline: 2px solid transparent;
     outline-offset: -2px;
 
-    color: govuk-colour("white");
-    background-color: govuk-colour("blue");
+    color: moaland-colour("white");
+    background-color: moaland-colour("blue");
     letter-spacing: 1px;
 
     text-decoration: none;
     text-transform: uppercase;
 
-    @if $govuk-use-legacy-font {
+    @if $moaland-use-legacy-font {
       // Since New Transport sits slightly higher than other common fonts.
       // We use intentionally uneven padding to make it balanced, this can be
       // removed using the version of the font that has a more common vertical spacing.
-      @include govuk-font($size: 16, $weight: bold, $line-height: 1.25);
+      @include moaland-font($size: 16, $weight: bold, $line-height: 1.25);
       padding-top: 4px;
       padding-right: 8px;
       padding-bottom: 1px;
       padding-left: 8px;
     } @else {
-      @include govuk-font($size: 16, $weight: bold, $line-height: 1);
+      @include moaland-font($size: 16, $weight: bold, $line-height: 1);
       padding-top: 5px;
       padding-right: 8px;
       padding-bottom: 4px;
@@ -34,53 +34,53 @@
     }
   }
 
-  // Deprecated. We'll remove this class in a future release. Use `.govuk-tag--grey` instead.
-  .govuk-tag--inactive {
-    background-color: govuk-colour("dark-grey", $legacy: "grey-1");
+  // Deprecated. We'll remove this class in a future release. Use `.moaland-tag--grey` instead.
+  .moaland-tag--inactive {
+    background-color: moaland-colour("dark-grey", $legacy: "grey-1");
   }
 
-  .govuk-tag--grey {
-    color: govuk-shade(govuk-colour("dark-grey", $legacy: "grey-1"), 30);
-    background: govuk-tint(govuk-colour("dark-grey", $legacy: "grey-1"), 90);
+  .moaland-tag--grey {
+    color: moaland-shade(moaland-colour("dark-grey", $legacy: "grey-1"), 30);
+    background: moaland-tint(moaland-colour("dark-grey", $legacy: "grey-1"), 90);
   }
 
-  .govuk-tag--purple {
-    color: govuk-shade(govuk-colour("purple"), 20);
-    background: govuk-tint(govuk-colour("purple"), 80);
+  .moaland-tag--purple {
+    color: moaland-shade(moaland-colour("purple"), 20);
+    background: moaland-tint(moaland-colour("purple"), 80);
   }
 
-  .govuk-tag--turquoise {
-    color: govuk-shade(govuk-colour("turquoise"), 60);
-    background: govuk-tint(govuk-colour("turquoise"), 70);
+  .moaland-tag--turquoise {
+    color: moaland-shade(moaland-colour("turquoise"), 60);
+    background: moaland-tint(moaland-colour("turquoise"), 70);
   }
 
-  .govuk-tag--blue {
-    color: govuk-shade(govuk-colour("blue"), 30);
-    background: govuk-tint(govuk-colour("blue"), 80);
+  .moaland-tag--blue {
+    color: moaland-shade(moaland-colour("blue"), 30);
+    background: moaland-tint(moaland-colour("blue"), 80);
   }
 
-  .govuk-tag--yellow {
-    color: govuk-shade(govuk-colour("yellow"), 65);
-    background: govuk-tint(govuk-colour("yellow"), 75);
+  .moaland-tag--yellow {
+    color: moaland-shade(moaland-colour("yellow"), 65);
+    background: moaland-tint(moaland-colour("yellow"), 75);
   }
 
-  .govuk-tag--orange {
-    color: govuk-shade(govuk-colour("orange"), 55);
-    background: govuk-tint(govuk-colour("orange"), 70);
+  .moaland-tag--orange {
+    color: moaland-shade(moaland-colour("orange"), 55);
+    background: moaland-tint(moaland-colour("orange"), 70);
   }
 
-  .govuk-tag--red {
-    color: govuk-shade(govuk-colour("red"), 30);
-    background: govuk-tint(govuk-colour("red"), 80);
+  .moaland-tag--red {
+    color: moaland-shade(moaland-colour("red"), 30);
+    background: moaland-tint(moaland-colour("red"), 80);
   }
 
-  .govuk-tag--pink {
-    color: govuk-shade(govuk-colour("pink"), 40);
-    background: govuk-tint(govuk-colour("pink"), 80);
+  .moaland-tag--pink {
+    color: moaland-shade(moaland-colour("pink"), 40);
+    background: moaland-tint(moaland-colour("pink"), 80);
   }
 
-  .govuk-tag--green {
-    color: govuk-shade(govuk-colour("green"), 20);
-    background: govuk-tint(govuk-colour("green"), 80);
+  .moaland-tag--green {
+    color: moaland-shade(moaland-colour("green"), 20);
+    background: moaland-tint(moaland-colour("green"), 80);
   }
 }

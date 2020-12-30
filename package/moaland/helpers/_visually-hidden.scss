@@ -13,7 +13,7 @@
 ///
 /// @access public
 
-@mixin govuk-visually-hidden($important: true) {
+@mixin moaland-visually-hidden($important: true) {
   position: absolute if($important, !important, null);
 
   width: 1px if($important, !important, null);
@@ -47,7 +47,7 @@
 ///
 /// @access public
 
-@mixin govuk-visually-hidden-focusable($important: true) {
+@mixin moaland-visually-hidden-focusable($important: true) {
   position: absolute if($important, !important, null);
 
   width: 1px if($important, !important, null);

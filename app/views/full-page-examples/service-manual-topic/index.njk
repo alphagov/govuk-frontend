@@ -10,14 +10,14 @@ notes: The links within each section are not functional.
 {# This example is based of the live "Service Manual - Technology" page: https://www.gov.uk/service-manual/technology #}
 {% extends "_generic.njk" %}
 
-{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
-{% from "accordion/macro.njk" import govukAccordion %}
+{% from "breadcrumbs/macro.njk" import moalandBreadcrumbs %}
+{% from "accordion/macro.njk" import moalandAccordion %}
 
 {% set pageTitle = "Technology - Service Manual" %}
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block beforeContent %}
-  {{ govukBreadcrumbs({
+  {{ moalandBreadcrumbs({
     items: [
       {
         text: "Service manual",
@@ -31,13 +31,13 @@ notes: The links within each section are not functional.
 {% endblock %}
 
 {% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl">Technology</h1>
+  <div class="moaland-grid-row">
+    <div class="moaland-grid-column-two-thirds">
+      <h1 class="moaland-heading-xl">Technology</h1>
 
-      <p class="govuk-body govuk-!-font-size-24">Choosing technology, development, integration, hosting, testing, security and maintenance.</p>
+      <p class="moaland-body moaland-!-font-size-24">Choosing technology, development, integration, hosting, testing, security and maintenance.</p>
 
-      {{ govukAccordion({
+      {{ moalandAccordion({
         id: "accordion-with-summary-sections",
         items: [
           {
@@ -49,12 +49,12 @@ notes: The links within each section are not functional.
             },
             content: {
               html:
-              '<ul class="govuk-list">
+              '<ul class="moaland-list">
                   <li>
-                    <a class="govuk-link" href="#">Choosing technology: an introduction</a>
+                    <a class="moaland-link" href="#">Choosing technology: an introduction</a>
                   </li>
                   <li>
-                    <a class="govuk-link" href="#">Using common components</a>
+                    <a class="moaland-link" href="#">Using common components</a>
                   </li>
               </ul>'
             }
@@ -68,27 +68,27 @@ notes: The links within each section are not functional.
             },
             content: {
               html:
-              '<ul class="govuk-list">
+              '<ul class="moaland-list">
                   <li>
-                    <a class="govuk-link" href="#">Managing software dependencies</a>
+                    <a class="moaland-link" href="#">Managing software dependencies</a>
                   </li>
                   <li>
-                    <a class="govuk-link" href="#">Maintaining version control in coding</a>
+                    <a class="moaland-link" href="#">Maintaining version control in coding</a>
                   </li>
                   <li>
-                    <a class="govuk-link" href="#">Deploying software regularly</a>
+                    <a class="moaland-link" href="#">Deploying software regularly</a>
                   </li>
                   <li>
-                    <a class="govuk-link" href="#">Working in pre-production environments</a>
+                    <a class="moaland-link" href="#">Working in pre-production environments</a>
                   </li>
                   <li>
-                    <a class="govuk-link" href="#">Manage your software configuration</a>
+                    <a class="moaland-link" href="#">Manage your software configuration</a>
                   </li>
                   <li>
-                    <a class="govuk-link" href="#">Making source code open and reusable</a>
+                    <a class="moaland-link" href="#">Making source code open and reusable</a>
                   </li>
                   <li>
-                    <a class="govuk-link" href="#">Developing a roadmap</a>
+                    <a class="moaland-link" href="#">Developing a roadmap</a>
                   </li>
               </ul>'
             }
@@ -102,15 +102,15 @@ notes: The links within each section are not functional.
             },
             content: {
               html:
-              '<ul class="govuk-list">
+              '<ul class="moaland-list">
                   <li>
-                    <a class="govuk-link" href="#">Using HTTPS</a>
+                    <a class="moaland-link" href="#">Using HTTPS</a>
                   </li>
                   <li>
-                    <a class="govuk-link" href="#">Using progressive enhancement</a>
+                    <a class="moaland-link" href="#">Using progressive enhancement</a>
                   </li>
                   <li>
-                    <a class="govuk-link" href="#">Designing for different browsers and devices</a>
+                    <a class="moaland-link" href="#">Designing for different browsers and devices</a>
                   </li>
               </ul>'
             }
@@ -124,18 +124,18 @@ notes: The links within each section are not functional.
             },
             content: {
               html:
-              '<ul class="govuk-list">
+              '<ul class="moaland-list">
                   <li>
-                    <a class="govuk-link" href="#">Exploratory testing</a>
+                    <a class="moaland-link" href="#">Exploratory testing</a>
                   </li>
                   <li>
-                    <a class="govuk-link" href="#">Quality assurance: testing your service regularly</a>
+                    <a class="moaland-link" href="#">Quality assurance: testing your service regularly</a>
                   </li>
                   <li>
-                    <a class="govuk-link" href="#">Vulnerability and penetration testing</a>
+                    <a class="moaland-link" href="#">Vulnerability and penetration testing</a>
                   </li>
                   <li>
-                    <a class="govuk-link" href="#">Test your service\'s performance</a>
+                    <a class="moaland-link" href="#">Test your service\'s performance</a>
                   </li>
               </ul>'
             }
@@ -149,12 +149,12 @@ notes: The links within each section are not functional.
             },
             content: {
               html:
-              '<ul class="govuk-list">
+              '<ul class="moaland-list">
                   <li>
-                    <a class="govuk-link" href="#">Uptime and availability: keeping your service online</a>
+                    <a class="moaland-link" href="#">Uptime and availability: keeping your service online</a>
                   </li>
                   <li>
-                    <a class="govuk-link" href="#">Monitoring the status of your service</a>
+                    <a class="moaland-link" href="#">Monitoring the status of your service</a>
                   </li>
               </ul>'
             }
@@ -168,15 +168,15 @@ notes: The links within each section are not functional.
             },
             content: {
               html:
-              '<ul class="govuk-list">
+              '<ul class="moaland-list">
                   <li>
-                    <a class="govuk-link" href="#">Moving away from legacy systems</a>
+                    <a class="moaland-link" href="#">Moving away from legacy systems</a>
                   </li>
                   <li>
-                    <a class="govuk-link" href="#">Working with open standards</a>
+                    <a class="moaland-link" href="#">Working with open standards</a>
                   </li>
                   <li>
-                    <a class="govuk-link" href="#">Application programming interfaces (APIs)</a>
+                    <a class="moaland-link" href="#">Application programming interfaces (APIs)</a>
                   </li>
               </ul>'
             }
@@ -190,15 +190,15 @@ notes: The links within each section are not functional.
             },
             content: {
               html:
-              '<ul class="govuk-list">
+              '<ul class="moaland-list">
                   <li>
-                    <a class="govuk-link" href="#">Deciding how to host your service</a>
+                    <a class="moaland-link" href="#">Deciding how to host your service</a>
                   </li>
                   <li>
-                    <a class="govuk-link" href="#">Get a service domain name</a>
+                    <a class="moaland-link" href="#">Get a service domain name</a>
                   </li>
                   <li>
-                    <a class="govuk-link" href="#">Managing service domains</a>
+                    <a class="moaland-link" href="#">Managing service domains</a>
                   </li>
               </ul>'
             }
@@ -212,24 +212,24 @@ notes: The links within each section are not functional.
             },
             content: {
               html:
-              '<ul class="govuk-list">
+              '<ul class="moaland-list">
                   <li>
-                    <a class="govuk-link" href="#">Protecting your service against fraud</a>
+                    <a class="moaland-link" href="#">Protecting your service against fraud</a>
                   </li>
                   <li>
-                    <a class="govuk-link" href="#">Sending emails from your service domain</a>
+                    <a class="moaland-link" href="#">Sending emails from your service domain</a>
                   </li>
                   <li>
-                    <a class="govuk-link" href="#">Working with cookies and similar technologies</a>
+                    <a class="moaland-link" href="#">Working with cookies and similar technologies</a>
                   </li>
                   <li>
-                    <a class="govuk-link" href="#">Securing your information</a>
+                    <a class="moaland-link" href="#">Securing your information</a>
                   </li>
                   <li>
-                    <a class="govuk-link" href="#">Securing your cloud environment</a>
+                    <a class="moaland-link" href="#">Securing your cloud environment</a>
                   </li>
                   <li>
-                    <a class="govuk-link" href="#">Sending text messages securely</a>
+                    <a class="moaland-link" href="#">Sending text messages securely</a>
                   </li>
               </ul>'
             }
@@ -240,42 +240,42 @@ notes: The links within each section are not functional.
 
     </div>
 
-    <div class="govuk-grid-column-one-third">
+    <div class="moaland-grid-column-one-third">
 
       <!-- The Related items component is not part of GOV.UK Frontend but will be styled if used in the Prototype Kit -->
 
       <aside class="app-related-items" role="complementary">
-        <h2 class="govuk-heading-m" id="subsection-title">
+        <h2 class="moaland-heading-m" id="subsection-title">
           Join the community
         </h2>
-        <p class="govuk-body">Find out what the cross-government community does and how to get involved.</p>
+        <p class="moaland-body">Find out what the cross-government community does and how to get involved.</p>
         <nav role="navigation" aria-labelledby="subsection-title">
-          <ul class="govuk-list govuk-!-font-size-16">
+          <ul class="moaland-list moaland-!-font-size-16">
             <li class="gem-c-related-navigation__link">
-              <a class="govuk-link" href="#">Technology community (web operations)</a>
+              <a class="moaland-link" href="#">Technology community (web operations)</a>
             </li>
             <li class="gem-c-related-navigation__link">
-              <a class="govuk-link" href="#">Technology community (technical architecture)</a>
+              <a class="moaland-link" href="#">Technology community (technical architecture)</a>
             </li>
             <li class="gem-c-related-navigation__link">
-              <a class="govuk-link" href="#">Technology community (backend development)</a>
+              <a class="moaland-link" href="#">Technology community (backend development)</a>
             </li>
             <li class="gem-c-related-navigation__link">
-              <a class="govuk-link" href="#">Design community</a>
+              <a class="moaland-link" href="#">Design community</a>
             </li>
             <li class="gem-c-related-navigation__link">
-              <a class="govuk-link" href="#">Standards and assurance community</a>
+              <a class="moaland-link" href="#">Standards and assurance community</a>
             </li>
             <li class="gem-c-related-navigation__link">
-              <a class="govuk-link" href="#">Accessibility community</a>
+              <a class="moaland-link" href="#">Accessibility community</a>
             </li>
           </ul>
         </nav>
-        <h2 class="govuk-heading-m">
+        <h2 class="moaland-heading-m">
           Get notifications
         </h2>
-        <p class="govuk-body">When any guidance within this topic is updated
-          <a class="govuk-link related-item__email-link" href="/service-manual/technology/email-signup">email</a></p>
+        <p class="moaland-body">When any guidance within this topic is updated
+          <a class="moaland-link related-item__email-link" href="/service-manual/technology/email-signup">email</a></p>
       </aside>
 
     </div>

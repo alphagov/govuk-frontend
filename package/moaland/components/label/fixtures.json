@@ -6,26 +6,26 @@
             "options": {
                 "text": "National Insurance number"
             },
-            "html": "<label class=\"govuk-label\">\n  National Insurance number\n</label>",
+            "html": "<label class=\"moaland-label\">\n  National Insurance number\n</label>",
             "hidden": false
         },
         {
             "name": "with bold text",
             "options": {
-                "classes": "govuk-label--s",
+                "classes": "moaland-label--s",
                 "text": "National Insurance number"
             },
-            "html": "<label class=\"govuk-label govuk-label--s\">\n  National Insurance number\n</label>",
+            "html": "<label class=\"moaland-label moaland-label--s\">\n  National Insurance number\n</label>",
             "hidden": false
         },
         {
             "name": "as page heading",
             "options": {
                 "text": "National Insurance number",
-                "classes": "govuk-label--xl",
+                "classes": "moaland-label--xl",
                 "isPageHeading": true
             },
-            "html": "<h1 class=\"govuk-label-wrapper\">\n  <label class=\"govuk-label govuk-label--xl\">\n    National Insurance number\n  </label>\n  </h1>",
+            "html": "<h1 class=\"moaland-label-wrapper\">\n  <label class=\"moaland-label moaland-label--xl\">\n    National Insurance number\n  </label>\n  </h1>",
             "hidden": false
         },
         {
@@ -40,7 +40,7 @@
                 "text": "National Insurance number",
                 "classes": "extra-class one-more-class"
             },
-            "html": "<label class=\"govuk-label extra-class one-more-class\">\n  National Insurance number\n</label>",
+            "html": "<label class=\"moaland-label extra-class one-more-class\">\n  National Insurance number\n</label>",
             "hidden": true
         },
         {
@@ -48,7 +48,7 @@
             "options": {
                 "text": "National Insurance number, <em>NINO</em>"
             },
-            "html": "<label class=\"govuk-label\">\n  National Insurance number, &lt;em&gt;NINO&lt;/em&gt;\n</label>",
+            "html": "<label class=\"moaland-label\">\n  National Insurance number, &lt;em&gt;NINO&lt;/em&gt;\n</label>",
             "hidden": true
         },
         {
@@ -56,7 +56,7 @@
             "options": {
                 "html": "National Insurance number <em>NINO</em>"
             },
-            "html": "<label class=\"govuk-label\">\n  National Insurance number <em>NINO</em>\n</label>",
+            "html": "<label class=\"moaland-label\">\n  National Insurance number <em>NINO</em>\n</label>",
             "hidden": true
         },
         {
@@ -65,7 +65,7 @@
                 "for": "#dummy-input",
                 "text": "National Insurance number"
             },
-            "html": "<label class=\"govuk-label\" for=\"#dummy-input\">\n  National Insurance number\n</label>",
+            "html": "<label class=\"moaland-label\" for=\"#dummy-input\">\n  National Insurance number\n</label>",
             "hidden": true
         },
         {
@@ -77,7 +77,7 @@
                     "second-attribute": "bar"
                 }
             },
-            "html": "<label class=\"govuk-label\" first-attribute=\"foo\" second-attribute=\"bar\">\n  National Insurance number\n</label>",
+            "html": "<label class=\"moaland-label\" first-attribute=\"foo\" second-attribute=\"bar\">\n  National Insurance number\n</label>",
             "hidden": true
         }
     ]

@@ -11,11 +11,11 @@ describe('@function font-url', () => {
     const sass = `
       @import "tools/font-url";
 
-      $govuk-fonts-path: '/path/to/fonts/';
+      $moaland-fonts-path: '/path/to/fonts/';
 
       @font-face {
         font-family: "whatever";
-        src: govuk-font-url("whatever.woff2");
+        src: moaland-font-url("whatever.woff2");
       }`
 
     const results = await renderSass({ data: sass, ...sassConfig })
@@ -29,11 +29,11 @@ describe('@function font-url', () => {
     const sass = `
       @import "tools/font-url";
 
-      $govuk-font-url-function: 'to_upper_case';
+      $moaland-font-url-function: 'to_upper_case';
 
       @font-face {
         font-family: "whatever";
-        src: govuk-font-url("whatever.woff2");
+        src: moaland-font-url("whatever.woff2");
       }`
 
     const results = await renderSass({ data: sass, ...sassConfig })
@@ -51,12 +51,12 @@ describe('@function font-url', () => {
         @return url("/custom/#{$filename}");
       }
 
-      $govuk-fonts-path: '/assets/fonts/';
-      $govuk-font-url-function: 'custom-url-handler';
+      $moaland-fonts-path: '/assets/fonts/';
+      $moaland-font-url-function: 'custom-url-handler';
 
       @font-face {
         font-family: "whatever";
-        src: govuk-font-url("whatever.woff2");
+        src: moaland-font-url("whatever.woff2");
       }`
 
     const results = await renderSass({ data: sass, ...sassConfig })

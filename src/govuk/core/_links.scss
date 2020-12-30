@@ -1,33 +1,33 @@
-@if not mixin-exists("govuk-exports") {
+@if not mixin-exists("moaland-exports") {
   @warn "Importing items from the core layer without first importing `base` is deprecated, and will no longer work as of GOV.UK Frontend v4.0.";
 }
 
 @import "../base";
 
-@include govuk-exports("govuk/core/links") {
+@include moaland-exports("moaland/core/links") {
 
-  %govuk-link {
-    @include govuk-link-common;
-    @include govuk-link-style-default;
-    @include govuk-link-print-friendly;
+  %moaland-link {
+    @include moaland-link-common;
+    @include moaland-link-style-default;
+    @include moaland-link-print-friendly;
   }
 
-  .govuk-link {
-    @extend %govuk-link;
+  .moaland-link {
+    @extend %moaland-link;
   }
 
-  // Variant classes should always be used in conjunction with the .govuk-link
+  // Variant classes should always be used in conjunction with the .moaland-link
   // class, so we do not need the common link styles as they will be inherited.
 
-  .govuk-link--muted {
-    @include govuk-link-style-muted;
+  .moaland-link--muted {
+    @include moaland-link-style-muted;
   }
 
-  .govuk-link--text-colour {
-    @include govuk-link-style-text;
+  .moaland-link--text-colour {
+    @include moaland-link-style-text;
   }
 
-  .govuk-link--no-visited-state {
-    @include govuk-link-style-no-visited-state;
+  .moaland-link--no-visited-state {
+    @include moaland-link-style-no-visited-state;
   }
 }

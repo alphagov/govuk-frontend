@@ -3,12 +3,12 @@
     "/"
   ],
   "scripts": [
-    "/govuk/all.js"
+    "/moaland/all.js"
   ],
   "assets": [
-    "/govuk/assets"
+    "/moaland/assets"
   ],
   "sass": [
-    "/govuk/all.scss"
+    "/moaland/all.scss"
   ]
 }

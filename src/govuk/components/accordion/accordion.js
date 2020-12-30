@@ -20,20 +20,20 @@ import '../../vendor/polyfills/Element/prototype/classList'
 function Accordion ($module) {
   this.$module = $module
   this.moduleId = $module.getAttribute('id')
-  this.$sections = $module.querySelectorAll('.govuk-accordion__section')
+  this.$sections = $module.querySelectorAll('.moaland-accordion__section')
   this.$openAllButton = ''
   this.browserSupportsSessionStorage = helper.checkForSessionStorage()
 
-  this.controlsClass = 'govuk-accordion__controls'
-  this.openAllClass = 'govuk-accordion__open-all'
-  this.iconClass = 'govuk-accordion__icon'
+  this.controlsClass = 'moaland-accordion__controls'
+  this.openAllClass = 'moaland-accordion__open-all'
+  this.iconClass = 'moaland-accordion__icon'
 
-  this.sectionHeaderClass = 'govuk-accordion__section-header'
-  this.sectionHeaderFocusedClass = 'govuk-accordion__section-header--focused'
-  this.sectionHeadingClass = 'govuk-accordion__section-heading'
-  this.sectionSummaryClass = 'govuk-accordion__section-summary'
-  this.sectionButtonClass = 'govuk-accordion__section-button'
-  this.sectionExpandedClass = 'govuk-accordion__section--expanded'
+  this.sectionHeaderClass = 'moaland-accordion__section-header'
+  this.sectionHeaderFocusedClass = 'moaland-accordion__section-header--focused'
+  this.sectionHeadingClass = 'moaland-accordion__section-heading'
+  this.sectionSummaryClass = 'moaland-accordion__section-summary'
+  this.sectionButtonClass = 'moaland-accordion__section-button'
+  this.sectionExpandedClass = 'moaland-accordion__section--expanded'
 }
 
 // Initialize component
@@ -57,7 +57,7 @@ Accordion.prototype.initControls = function () {
   // Create "Open all" button and set attributes
   this.$openAllButton = document.createElement('button')
   this.$openAllButton.setAttribute('type', 'button')
-  this.$openAllButton.innerHTML = 'Open all <span class="govuk-visually-hidden">sections</span>'
+  this.$openAllButton.innerHTML = 'Open all <span class="moaland-visually-hidden">sections</span>'
   this.$openAllButton.setAttribute('class', this.openAllClass)
   this.$openAllButton.setAttribute('aria-expanded', 'false')
   this.$openAllButton.setAttribute('type', 'button')
@@ -198,7 +198,7 @@ Accordion.prototype.checkIfAllSectionsOpen = function () {
 // Update "Open all" button
 Accordion.prototype.updateOpenAllButton = function (expanded) {
   var newButtonText = expanded ? 'Close all' : 'Open all'
-  newButtonText += '<span class="govuk-visually-hidden"> sections</span>'
+  newButtonText += '<span class="moaland-visually-hidden"> sections</span>'
   this.$openAllButton.setAttribute('aria-expanded', expanded)
   this.$openAllButton.innerHTML = newButtonText
 }

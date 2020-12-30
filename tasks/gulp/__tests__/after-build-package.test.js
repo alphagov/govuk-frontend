@@ -41,12 +41,12 @@ describe('package/', () => {
         '*.test.js',
         '*.yaml',
         '*.snap',
-        '*/govuk/README.md'
+        '*/moaland/README.md'
       ]
 
       const additionalFilesNotInSrc = [
         'package.json',
-        'govuk-prototype-kit.config.json',
+        'moaland-prototype-kit.config.json',
         '**/macro-options.json',
         '**/fixtures.json',
         'README.md'
@@ -96,14 +96,14 @@ describe('package/', () => {
 
   describe('all.scss', () => {
     it('should compile without throwing an exception', async () => {
-      const allScssFile = path.join(configPaths.package, 'govuk', 'all.scss')
+      const allScssFile = path.join(configPaths.package, 'moaland', 'all.scss')
       await renderSass({ file: allScssFile })
     })
   })
 
   describe('component', () => {
     it.each(componentNames)('\'%s\' should have macro-options.json that contains JSON', (name) => {
-      const filePath = path.join(configPaths.package, 'govuk', 'components', name, 'macro-options.json')
+      const filePath = path.join(configPaths.package, 'moaland', 'components', name, 'macro-options.json')
       return readFile(filePath, 'utf8')
         .then((data) => {
           var parsedData = JSON.parse(data)
@@ -129,7 +129,7 @@ describe('package/', () => {
 
   describe('fixtures', () => {
     it.each(componentNames)('\'%s\' should have fixtures.json that contains JSON', (name) => {
-      const filePath = path.join(configPaths.package, 'govuk', 'components', name, 'fixtures.json')
+      const filePath = path.join(configPaths.package, 'moaland', 'components', name, 'fixtures.json')
       return readFile(filePath, 'utf8')
         .then((data) => {
           var parsedData = JSON.parse(data)

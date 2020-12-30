@@ -22,26 +22,26 @@ beforeAll(async (done) => {
 
 describe('GOV.UK Frontend', () => {
   describe('javascript', () => {
-    it('can be accessed via `GOVUKFrontend`', async () => {
+    it('can be accessed via `MoalandFrontend`', async () => {
       await page.goto(baseUrl + '/', { waitUntil: 'load' })
 
-      const GOVUKFrontendGlobal = await page.evaluate(() => window.GOVUKFrontend)
+      const MoalandFrontendGlobal = await page.evaluate(() => window.MoalandFrontend)
 
-      expect(typeof GOVUKFrontendGlobal).toBe('object')
+      expect(typeof MoalandFrontendGlobal).toBe('object')
     })
     it('exports `initAll` function', async () => {
       await page.goto(baseUrl + '/', { waitUntil: 'load' })
 
-      const typeofInitAll = await page.evaluate(() => typeof window.GOVUKFrontend.initAll)
+      const typeofInitAll = await page.evaluate(() => typeof window.MoalandFrontend.initAll)
 
       expect(typeofInitAll).toEqual('function')
     })
     it('exports Components', async () => {
       await page.goto(baseUrl + '/', { waitUntil: 'load' })
 
-      const GOVUKFrontendGlobal = await page.evaluate(() => window.GOVUKFrontend)
+      const MoalandFrontendGlobal = await page.evaluate(() => window.MoalandFrontend)
 
-      var components = Object.keys(GOVUKFrontendGlobal).filter(method => method !== 'initAll')
+      var components = Object.keys(MoalandFrontendGlobal).filter(method => method !== 'initAll')
 
       // Ensure GOV.UK Frontend exports the expected components
       expect(components).toEqual([
@@ -59,14 +59,14 @@ describe('GOV.UK Frontend', () => {
     it('exported Components can be initialised', async () => {
       await page.goto(baseUrl + '/', { waitUntil: 'load' })
 
-      const GOVUKFrontendGlobal = await page.evaluate(() => window.GOVUKFrontend)
+      const MoalandFrontendGlobal = await page.evaluate(() => window.MoalandFrontend)
 
-      var components = Object.keys(GOVUKFrontendGlobal).filter(method => method !== 'initAll')
+      var components = Object.keys(MoalandFrontendGlobal).filter(method => method !== 'initAll')
 
       // Check that all the components on the GOV.UK Frontend global can be initialised
       components.forEach(component => {
         page.evaluate(component => {
-          const Component = window.GOVUKFrontend[component]
+          const Component = window.MoalandFrontend[component]
           const $module = document.documentElement
           new Component($module).init()
         }, component)
@@ -106,7 +106,7 @@ describe('GOV.UK Frontend', () => {
     })
     it('are enabled if $global-styles variable is set to true', async () => {
       const sass = `
-        $govuk-global-styles: true;
+        $moaland-global-styles: true;
         @import "all";
       `
       const results = await renderSass({ data: sass })
@@ -126,32 +126,32 @@ describe('GOV.UK Frontend', () => {
   //
   // Example:
   //
-  //   @function govuk-double($number) {
+  //   @function moaland-double($number) {
   //     @return $number * 2;
   //   }
   //
   //   .my-class {
-  //     height: govuk-double(10px);
-  //     width: govuk-duoble(10px);
+  //     height: moaland-double(10px);
+  //     width: moaland-duoble(10px);
   //   }
   //
   // Rather than throwing an error, the compiled CSS would look like:
   //
   //   .my-class {
   //     height: 20px;
-  //     width: govuk-duoble(10px); // intentional typo
+  //     width: moaland-duoble(10px); // intentional typo
   //   }
   //
   // This test attempts to match anything that looks like a function call within
   // the compiled CSS - if it finds anything, it will result in the test
   // failing.
-  it('does not contain any unexpected govuk- function calls', async () => {
+  it('does not contain any unexpected moaland- function calls', async () => {
     const sass = '@import "all"'
 
     const results = await renderSass({ data: sass })
     const css = results.css.toString()
 
-    const functionCalls = css.match(/_?govuk-[\w-]+\(.*?\)/g)
+    const functionCalls = css.match(/_?moaland-[\w-]+\(.*?\)/g)
 
     expect(functionCalls).toBeNull()
   })

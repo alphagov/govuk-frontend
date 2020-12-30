@@ -1,16 +1,16 @@
-@include govuk-exports("govuk/component/warning-text") {
-  .govuk-warning-text {
+@include moaland-exports("moaland/component/warning-text") {
+  .moaland-warning-text {
     position: relative;
-    @include govuk-responsive-margin(6, "bottom");
-    padding: govuk-spacing(2) 0;
+    @include moaland-responsive-margin(6, "bottom");
+    padding: moaland-spacing(2) 0;
   }
 
-  .govuk-warning-text__assistive {
-    @include govuk-visually-hidden;
+  .moaland-warning-text__assistive {
+    @include moaland-visually-hidden;
   }
 
-  .govuk-warning-text__icon {
-    @include govuk-font($size: false, $weight: bold);
+  .moaland-warning-text__icon {
+    @include moaland-font($size: false, $weight: bold);
 
     box-sizing: border-box;
 
@@ -23,17 +23,17 @@
     min-height: 35px;
     margin-top: -7px;
 
-    @include govuk-media-query($from: tablet) {
+    @include moaland-media-query($from: tablet) {
       margin-top: -5px;
     }
 
     // When a user customises their colours the background colour will often be removed.
     // Adding a border to the component keeps it's shape as a circle.
-    border: 3px solid govuk-colour("black");
+    border: 3px solid moaland-colour("black");
     border-radius: 50%;
 
-    color: govuk-colour("white");
-    background: govuk-colour("black");
+    color: moaland-colour("white");
+    background: moaland-colour("black");
 
     font-size: 30px;
     line-height: 29px;
@@ -45,9 +45,9 @@
     user-select: none;
   }
 
-  .govuk-warning-text__text {
-    @include govuk-font($size: 19, $weight: bold);
-    @include govuk-text-colour;
+  .moaland-warning-text__text {
+    @include moaland-font($size: 19, $weight: bold);
+    @include moaland-text-colour;
     display: block;
     padding-left: 45px;
   }

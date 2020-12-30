@@ -1,28 +1,28 @@
 {% extends "layout.njk" %}
 
-{% from "back-link/macro.njk" import govukBackLink %}
-{% from "checkboxes/macro.njk" import govukCheckboxes %}
-{% from "radios/macro.njk" import govukRadios %}
-{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import moalandBackLink %}
+{% from "checkboxes/macro.njk" import moalandCheckboxes %}
+{% from "radios/macro.njk" import moalandRadios %}
+{% from "input/macro.njk" import moalandInput %}
 
 {% block beforeContent %}
-  {{ govukBackLink({
+  {{ moalandBackLink({
     "href": "/"
   }) }}
 {% endblock %}
 
 {% block content %}
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+<div class="moaland-grid-row">
+  <div class="moaland-grid-column-two-thirds">
 
     {% set emailHtml %}
-    {{ govukInput({
+    {{ moalandInput({
       id: "contact-by-email",
       name: "contact-by-email",
       type: "email",
       spellcheck: false,
-      classes: "govuk-!-width-one-third",
+      classes: "moaland-!-width-one-third",
       label: {
         text: "Email address"
       }
@@ -30,11 +30,11 @@
     {% endset -%}
 
     {% set phoneHtml %}
-    {{ govukInput({
+    {{ moalandInput({
       id: "contact-by-phone",
       name: "contact-by-phone",
       type: "tel",
-      classes: "govuk-!-width-one-third",
+      classes: "moaland-!-width-one-third",
       label: {
         text: "Phone number"
       }
@@ -42,27 +42,27 @@
     {% endset -%}
 
     {% set textHtml %}
-    {{ govukInput({
+    {{ moalandInput({
       id: "contact-by-text",
       name: "contact-by-text",
       type: "tel",
-      classes: "govuk-!-width-one-third",
+      classes: "moaland-!-width-one-third",
       label: {
         text: "Mobile phone number"
       }
     }) }}
     {% endset -%}
 
-    <a class="govuk-link" href="#">Focusable element</a>
+    <a class="moaland-link" href="#">Focusable element</a>
 
-    {{ govukCheckboxes({
+    {{ moalandCheckboxes({
       idPrefix: "contact",
       name: "contact",
       fieldset: {
         legend: {
           text: "How would you like to be contacted?",
           isPageHeading: true,
-          classes: "govuk-fieldset__legend--l"
+          classes: "moaland-fieldset__legend--l"
         }
       },
       hint: {
@@ -94,12 +94,12 @@
     }) }}
 
     {% set emailHtml %}
-    {{ govukInput({
+    {{ moalandInput({
       id: "radio-email",
       name: "contact-by-email",
       type: "email",
       spellcheck: false,
-      classes: "govuk-!-width-one-third",
+      classes: "moaland-!-width-one-third",
       label: {
         text: "Email address"
       }
@@ -107,11 +107,11 @@
     {% endset -%}
 
     {% set phoneHtml %}
-    {{ govukInput({
+    {{ moalandInput({
       id: "radio-phone",
       name: "contact-by-phone",
       type: "tel",
-      classes: "govuk-!-width-one-third",
+      classes: "moaland-!-width-one-third",
       label: {
         text: "Phone number"
       }
@@ -119,27 +119,27 @@
     {% endset -%}
 
     {% set textHtml %}
-    {{ govukInput({
+    {{ moalandInput({
       id: "radio-text",
       name: "contact-by-text",
       type: "tel",
-      classes: "govuk-!-width-one-third",
+      classes: "moaland-!-width-one-third",
       label: {
         text: "Mobile phone number"
       }
     }) }}
     {% endset -%}
 
-    <a class="govuk-link" href="#">Focusable element</a>
+    <a class="moaland-link" href="#">Focusable element</a>
 
-    {{ govukRadios({
+    {{ moalandRadios({
       idPrefix: "radio-contact",
       name: "contact",
       fieldset: {
         legend: {
           text: "How would you prefer to be contacted?",
           isPageHeading: true,
-          classes: "govuk-fieldset__legend--l"
+          classes: "moaland-fieldset__legend--l"
         }
       },
       hint: {

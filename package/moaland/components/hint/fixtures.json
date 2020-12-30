@@ -6,15 +6,15 @@
             "options": {
                 "text": "It's on your National Insurance card, benefit letter, payslip or P60.\nFor example, 'QQ 12 34 56 C'.\n"
             },
-            "html": "<div class=\"govuk-hint\">\n  It&#39;s on your National Insurance card, benefit letter, payslip or P60.\nFor example, &#39;QQ 12 34 56 C&#39;.\n\n</div>",
+            "html": "<div class=\"moaland-hint\">\n  It&#39;s on your National Insurance card, benefit letter, payslip or P60.\nFor example, &#39;QQ 12 34 56 C&#39;.\n\n</div>",
             "hidden": false
         },
         {
             "name": "with html",
             "options": {
-                "html": "It's on your National Insurance card, benefit letter, payslip or <a class=\"govuk-link\" href=\"#\">P60</a>.\nFor example, 'QQ 12 34 56 C'.\n"
+                "html": "It's on your National Insurance card, benefit letter, payslip or <a class=\"moaland-link\" href=\"#\">P60</a>.\nFor example, 'QQ 12 34 56 C'.\n"
             },
-            "html": "<div class=\"govuk-hint\">\n  It's on your National Insurance card, benefit letter, payslip or <a class=\"govuk-link\" href=\"#\">P60</a>.\nFor example, 'QQ 12 34 56 C'.\n\n</div>",
+            "html": "<div class=\"moaland-hint\">\n  It's on your National Insurance card, benefit letter, payslip or <a class=\"moaland-link\" href=\"#\">P60</a>.\nFor example, 'QQ 12 34 56 C'.\n\n</div>",
             "hidden": false
         },
         {
@@ -24,7 +24,7 @@
                 "classes": "app-hint--custom-modifier",
                 "text": "It's on your National Insurance card, benefit letter, payslip or P60."
             },
-            "html": "<div id=\"example-hint\" class=\"govuk-hint app-hint--custom-modifier\">\n  It&#39;s on your National Insurance card, benefit letter, payslip or P60.\n</div>",
+            "html": "<div id=\"example-hint\" class=\"moaland-hint app-hint--custom-modifier\">\n  It&#39;s on your National Insurance card, benefit letter, payslip or P60.\n</div>",
             "hidden": true
         },
         {
@@ -33,7 +33,7 @@
                 "id": "my-hint",
                 "text": "It's on your National Insurance card, benefit letter, payslip or P60."
             },
-            "html": "<div id=\"my-hint\" class=\"govuk-hint\">\n  It&#39;s on your National Insurance card, benefit letter, payslip or P60.\n</div>",
+            "html": "<div id=\"my-hint\" class=\"moaland-hint\">\n  It&#39;s on your National Insurance card, benefit letter, payslip or P60.\n</div>",
             "hidden": true
         },
         {
@@ -41,7 +41,7 @@
             "options": {
                 "text": "Unexpected <strong>bold text</strong> in body"
             },
-            "html": "<div class=\"govuk-hint\">\n  Unexpected &lt;strong&gt;bold text&lt;/strong&gt; in body\n</div>",
+            "html": "<div class=\"moaland-hint\">\n  Unexpected &lt;strong&gt;bold text&lt;/strong&gt; in body\n</div>",
             "hidden": true
         },
         {
@@ -52,7 +52,7 @@
                     "data-attribute": "my data value"
                 }
             },
-            "html": "<div class=\"govuk-hint\" data-attribute=\"my data value\">\n  It&#39;s on your National Insurance card, benefit letter, payslip or P60.\n</div>",
+            "html": "<div class=\"moaland-hint\" data-attribute=\"my data value\">\n  It&#39;s on your National Insurance card, benefit letter, payslip or P60.\n</div>",
             "hidden": true
         }
     ]

@@ -24,63 +24,63 @@ describe('Date input', () => {
     it('renders with id', () => {
       const $ = render('date-input', examples.default)
 
-      const $component = $('.govuk-date-input')
+      const $component = $('.moaland-date-input')
       expect($component.attr('id')).toEqual('dob')
     })
 
     it('renders default inputs', () => {
       const $ = render('date-input', examples.default)
 
-      const $items = $('.govuk-date-input__item')
+      const $items = $('.moaland-date-input__item')
       expect($items.length).toEqual(3)
     })
 
     it('renders item with capitalised label text', () => {
       const $ = render('date-input', examples.default)
 
-      const $firstItems = $('.govuk-date-input__item:first-child')
+      const $firstItems = $('.moaland-date-input__item:first-child')
       expect($firstItems.text().trim()).toEqual('Day')
     })
 
     it('renders inputs with type="text"', () => {
       const $ = render('date-input', examples.default)
 
-      const $firstInput = $('.govuk-date-input__item:first-child input')
+      const $firstInput = $('.moaland-date-input__item:first-child input')
       expect($firstInput.attr('type')).toEqual('text')
     })
 
     it('renders inputs with inputmode="numeric"', () => {
       const $ = render('date-input', examples.default)
 
-      const $firstInput = $('.govuk-date-input__item:first-child input')
+      const $firstInput = $('.moaland-date-input__item:first-child input')
       expect($firstInput.attr('inputmode')).toEqual('numeric')
     })
 
     it('renders inputs with pattern="[0-9]*" to trigger numeric keypad on iOS', () => {
       const $ = render('date-input', examples.default)
 
-      const $firstInput = $('.govuk-date-input__item:first-child input')
+      const $firstInput = $('.moaland-date-input__item:first-child input')
       expect($firstInput.attr('pattern')).toEqual('[0-9]*')
     })
 
     it('renders item with implicit class for label', () => {
       const $ = render('date-input', examples.default)
 
-      const $firstItems = $('.govuk-date-input__item:first-child label')
-      expect($firstItems.hasClass('govuk-date-input__label')).toBeTruthy()
+      const $firstItems = $('.moaland-date-input__item:first-child label')
+      expect($firstItems.hasClass('moaland-date-input__label')).toBeTruthy()
     })
 
     it('renders item with implicit class for input', () => {
       const $ = render('date-input', examples.default)
 
-      const $firstItems = $('.govuk-date-input__item:first-child input')
-      expect($firstItems.hasClass('govuk-date-input__input')).toBeTruthy()
+      const $firstItems = $('.moaland-date-input__item:first-child input')
+      expect($firstItems.hasClass('moaland-date-input__input')).toBeTruthy()
     })
 
     it('renders with a form group wrapper', () => {
       const $ = render('date-input', examples.default)
 
-      const $formGroup = $('.govuk-form-group')
+      const $formGroup = $('.moaland-form-group')
       expect($formGroup.length).toBeTruthy()
     })
   })
@@ -89,15 +89,15 @@ describe('Date input', () => {
     it('renders defaults when an empty item array is provided', () => {
       const $ = render('date-input', examples['with empty items'])
 
-      const $items = $('.govuk-date-input__item')
+      const $items = $('.moaland-date-input__item')
       expect($items.length).toEqual(3)
     })
 
     it('renders with default items', () => {
       const $ = render('date-input', examples.default)
 
-      const $items = $('.govuk-date-input__item')
-      const $firstItemInput = $('.govuk-date-input:first-child .govuk-date-input__input')
+      const $items = $('.moaland-date-input__item')
+      const $firstItemInput = $('.moaland-date-input:first-child .moaland-date-input__input')
 
       expect($items.length).toEqual(3)
       expect($firstItemInput.attr('name')).toEqual('day')
@@ -106,28 +106,28 @@ describe('Date input', () => {
     it('renders item with suffixed name for input', () => {
       const $ = render('date-input', examples['complete question'])
 
-      const $firstItems = $('.govuk-date-input__item:first-child input')
+      const $firstItems = $('.moaland-date-input__item:first-child input')
       expect($firstItems.attr('name')).toEqual('dob-day')
     })
 
     it('renders items with id', () => {
       const $ = render('date-input', examples['with id on items'])
 
-      const $firstItems = $('.govuk-date-input__item:first-child input')
+      const $firstItems = $('.moaland-date-input__item:first-child input')
       expect($firstItems.attr('id')).toEqual('day')
     })
 
     it('renders item with suffixed id for input', () => {
       const $ = render('date-input', examples['suffixed id'])
 
-      const $firstItems = $('.govuk-date-input__item:first-child input')
+      const $firstItems = $('.moaland-date-input__item:first-child input')
       expect($firstItems.attr('id')).toEqual('my-date-input-day')
     })
 
     it('renders items with value', () => {
       const $ = render('date-input', examples['with values'])
 
-      const $lastItems = $('.govuk-date-input__item:last-child input')
+      const $lastItems = $('.moaland-date-input__item:last-child input')
       expect($lastItems.val()).toEqual('2018')
     })
   })
@@ -136,23 +136,23 @@ describe('Date input', () => {
     it('renders with classes', () => {
       const $ = render('date-input', examples.classes)
 
-      const $component = $('.govuk-date-input')
+      const $component = $('.moaland-date-input')
       expect($component.hasClass('app-date-input--custom-modifier')).toBeTruthy()
     })
 
     it('renders with attributes', () => {
       const $ = render('date-input', examples.attributes)
 
-      const $component = $('.govuk-date-input')
+      const $component = $('.moaland-date-input')
       expect($component.attr('data-attribute')).toEqual('my data value')
     })
 
     it('renders with item attributes', () => {
       const $ = render('date-input', examples['with input attributes'])
 
-      const $input1 = $('.govuk-date-input__item:nth-of-type(1) input')
-      const $input2 = $('.govuk-date-input__item:nth-of-type(2) input')
-      const $input3 = $('.govuk-date-input__item:nth-of-type(3) input')
+      const $input1 = $('.moaland-date-input__item:nth-of-type(1) input')
+      const $input2 = $('.moaland-date-input__item:nth-of-type(2) input')
+      const $input3 = $('.moaland-date-input__item:nth-of-type(3) input')
 
       expect($input1.attr('data-example-day')).toEqual('day')
       expect($input2.attr('data-example-month')).toEqual('month')
@@ -162,28 +162,28 @@ describe('Date input', () => {
     it('renders items with name', () => {
       const $ = render('date-input', examples['with nested name'])
 
-      const $firstItems = $('.govuk-date-input__item:first-child input')
+      const $firstItems = $('.moaland-date-input__item:first-child input')
       expect($firstItems.attr('name')).toEqual('day[dd]')
     })
 
     it('renders inputs with custom pattern attribute', () => {
       const $ = render('date-input', examples['custom pattern'])
 
-      const $firstInput = $('.govuk-date-input__item:first-child input')
+      const $firstInput = $('.moaland-date-input__item:first-child input')
       expect($firstInput.attr('pattern')).toEqual('[0-8]*')
     })
 
     it('renders inputs with custom inputmode="text"', () => {
       const $ = render('date-input', examples['custom inputmode'])
 
-      const $firstInput = $('.govuk-date-input__item:first-child input')
+      const $firstInput = $('.moaland-date-input__item:first-child input')
       expect($firstInput.attr('inputmode')).toEqual('text')
     })
 
     it('renders with a form group wrapper that has extra classes', () => {
       const $ = render('date-input', examples['with optional form-group classes'])
 
-      const $formGroup = $('.govuk-form-group')
+      const $formGroup = $('.moaland-form-group')
       expect($formGroup.hasClass('extra-class')).toBeTruthy()
     })
   })
@@ -191,14 +191,14 @@ describe('Date input', () => {
   describe('when it includes a hint', () => {
     it('renders the hint', () => {
       const $ = render('date-input', examples['complete question'])
-      expect(htmlWithClassName($, '.govuk-hint')).toMatchSnapshot()
+      expect(htmlWithClassName($, '.moaland-hint')).toMatchSnapshot()
     })
 
     it('associates the fieldset as "described by" the hint', () => {
       const $ = render('date-input', examples['complete question'])
 
-      const $fieldset = $('.govuk-fieldset')
-      const $hint = $('.govuk-hint')
+      const $fieldset = $('.moaland-fieldset')
+      const $hint = $('.moaland-hint')
 
       const hintId = new RegExp(
         WORD_BOUNDARY + $hint.attr('id') + WORD_BOUNDARY
@@ -211,8 +211,8 @@ describe('Date input', () => {
     it('associates the fieldset as "described by" the hint and parent fieldset', () => {
       const $ = render('date-input', examples['with hint and describedBy'])
 
-      const $fieldset = $('.govuk-fieldset')
-      const $hint = $('.govuk-hint')
+      const $fieldset = $('.moaland-fieldset')
+      const $hint = $('.moaland-hint')
 
       const hintId = new RegExp(
         WORD_BOUNDARY + 'some-id' + WHITESPACE + $hint.attr('id') + WORD_BOUNDARY
@@ -226,13 +226,13 @@ describe('Date input', () => {
   describe('when it includes an error message', () => {
     it('renders the error message', () => {
       const $ = render('date-input', examples['with errors only'])
-      expect(htmlWithClassName($, '.govuk-error-message')).toMatchSnapshot()
+      expect(htmlWithClassName($, '.moaland-error-message')).toMatchSnapshot()
     })
 
     it('uses the id as a prefix for the error message id', () => {
       const $ = render('date-input', examples['with errors only'])
 
-      const $errorMessage = $('.govuk-error-message')
+      const $errorMessage = $('.moaland-error-message')
 
       expect($errorMessage.attr('id')).toEqual('dob-errors-error')
     })
@@ -240,8 +240,8 @@ describe('Date input', () => {
     it('associates the fieldset as "described by" the error message', () => {
       const $ = render('date-input', examples['with errors only'])
 
-      const $fieldset = $('.govuk-fieldset')
-      const $errorMessage = $('.govuk-error-message')
+      const $fieldset = $('.moaland-fieldset')
+      const $errorMessage = $('.moaland-error-message')
 
       const errorMessageId = new RegExp(
         WORD_BOUNDARY + $errorMessage.attr('id') + WORD_BOUNDARY
@@ -254,7 +254,7 @@ describe('Date input', () => {
     it('associates the fieldset as "described by" the error message and parent fieldset', () => {
       const $ = render('date-input', examples['with error and describedBy'])
 
-      const $fieldset = $('.govuk-fieldset')
+      const $fieldset = $('.moaland-fieldset')
 
       expect($fieldset.attr('aria-describedby'))
         .toMatch('some-id dob-errors-error')
@@ -263,8 +263,8 @@ describe('Date input', () => {
     it('renders with a form group wrapper that has an error state', () => {
       const $ = render('date-input', examples['with errors only'])
 
-      const $formGroup = $('.govuk-form-group')
-      expect($formGroup.hasClass('govuk-form-group--error')).toBeTruthy()
+      const $formGroup = $('.moaland-form-group')
+      expect($formGroup.hasClass('moaland-form-group--error')).toBeTruthy()
     })
   })
 
@@ -272,7 +272,7 @@ describe('Date input', () => {
     it('sets the `group` role on the fieldset to force JAWS18 to announce the hint and error message', () => {
       const $ = render('date-input', examples['with errors and hint'])
 
-      const $fieldset = $('.govuk-fieldset')
+      const $fieldset = $('.moaland-fieldset')
 
       expect($fieldset.attr('role')).toEqual('group')
     })
@@ -280,9 +280,9 @@ describe('Date input', () => {
     it('associates the fieldset as described by both the hint and the error message', () => {
       const $ = render('date-input', examples['with errors and hint'])
 
-      const $fieldset = $('.govuk-fieldset')
-      const errorMessageId = $('.govuk-error-message').attr('id')
-      const hintId = $('.govuk-hint').attr('id')
+      const $fieldset = $('.moaland-fieldset')
+      const errorMessageId = $('.moaland-error-message').attr('id')
+      const hintId = $('.moaland-hint').attr('id')
 
       const combinedIds = new RegExp(
         WORD_BOUNDARY + hintId + WHITESPACE + errorMessageId + WORD_BOUNDARY
@@ -295,7 +295,7 @@ describe('Date input', () => {
     it('associates the fieldset as described by the hint, error message and parent fieldset', () => {
       const $ = render('date-input', examples['with errors and hint'])
 
-      const $fieldset = $('.govuk-fieldset')
+      const $fieldset = $('.moaland-fieldset')
 
       expect($fieldset.attr('aria-describedby'))
         .toMatch('dob-errors-hint dob-errors-error')
@@ -306,27 +306,27 @@ describe('Date input', () => {
     it('have correct nesting order', () => {
       const $ = render('date-input', examples['complete question'])
 
-      const $component = $('.govuk-form-group > .govuk-fieldset > .govuk-date-input')
+      const $component = $('.moaland-form-group > .moaland-fieldset > .moaland-date-input')
       expect($component.length).toBeTruthy()
     })
 
     it('passes through label params without breaking', () => {
       const $ = render('date-input', examples.default)
 
-      expect(htmlWithClassName($, '.govuk-date-input__label')).toMatchSnapshot()
+      expect(htmlWithClassName($, '.moaland-date-input__label')).toMatchSnapshot()
     })
 
     it('passes through fieldset params without breaking', () => {
       const $ = render('date-input', examples['complete question'])
 
-      expect(htmlWithClassName($, '.govuk-fieldset')).toMatchSnapshot()
+      expect(htmlWithClassName($, '.moaland-fieldset')).toMatchSnapshot()
     })
   })
 
   it('passes through html fieldset params without breaking', () => {
     const $ = render('date-input', examples['fieldset html'])
 
-    expect(htmlWithClassName($, '.govuk-fieldset')).toMatchSnapshot()
+    expect(htmlWithClassName($, '.moaland-fieldset')).toMatchSnapshot()
   })
 
   it('can have classes for individual items', () => {
@@ -355,7 +355,7 @@ describe('Date input', () => {
     it('renders the autocomplete attribute', () => {
       const $ = render('date-input', examples['with autocomplete values'])
 
-      const $firstItems = $('.govuk-date-input__item:first-child input')
+      const $firstItems = $('.moaland-date-input__item:first-child input')
       expect($firstItems.attr('autocomplete')).toEqual('bday-day')
     })
   })

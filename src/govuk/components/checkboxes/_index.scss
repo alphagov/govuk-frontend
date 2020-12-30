@@ -3,85 +3,85 @@
 @import "../hint/index";
 @import "../label/index";
 
-@include govuk-exports("govuk/component/checkboxes") {
+@include moaland-exports("moaland/component/checkboxes") {
 
-  $govuk-touch-target-size: 44px;
-  $govuk-checkboxes-size: 40px;
-  $govuk-small-checkboxes-size: 24px;
-  $govuk-checkboxes-label-padding-left-right: govuk-spacing(3);
+  $moaland-touch-target-size: 44px;
+  $moaland-checkboxes-size: 40px;
+  $moaland-small-checkboxes-size: 24px;
+  $moaland-checkboxes-label-padding-left-right: moaland-spacing(3);
 
-  .govuk-checkboxes__item {
-    @include govuk-font($size: 19);
+  .moaland-checkboxes__item {
+    @include moaland-font($size: 19);
 
     display: block;
     position: relative;
 
-    min-height: $govuk-checkboxes-size;
+    min-height: $moaland-checkboxes-size;
 
-    margin-bottom: govuk-spacing(2);
-    padding-left: $govuk-checkboxes-size;
+    margin-bottom: moaland-spacing(2);
+    padding-left: $moaland-checkboxes-size;
 
     clear: left;
   }
 
-  .govuk-checkboxes__item:last-child,
-  .govuk-checkboxes__item:last-of-type {
+  .moaland-checkboxes__item:last-child,
+  .moaland-checkboxes__item:last-of-type {
     margin-bottom: 0;
   }
 
-  .govuk-checkboxes__input {
-    $input-offset: ($govuk-touch-target-size - $govuk-checkboxes-size) / 2;
+  .moaland-checkboxes__input {
+    $input-offset: ($moaland-touch-target-size - $moaland-checkboxes-size) / 2;
 
     cursor: pointer;
 
     // IE8 doesn’t support pseudo-elements, so we don’t want to hide native
     // elements there.
-    @include govuk-not-ie8 {
+    @include moaland-not-ie8 {
       position: absolute;
 
       z-index: 1;
       top: $input-offset * -1;
       left: $input-offset * -1;
 
-      width: $govuk-touch-target-size;
-      height: $govuk-touch-target-size;
+      width: $moaland-touch-target-size;
+      height: $moaland-touch-target-size;
       margin: 0;
 
       opacity: 0;
     }
 
-    @include govuk-if-ie8 {
+    @include moaland-if-ie8 {
       margin-top: 10px;
-      margin-right: $govuk-checkboxes-size / -2;
-      margin-left: $govuk-checkboxes-size / -2;
+      margin-right: $moaland-checkboxes-size / -2;
+      margin-left: $moaland-checkboxes-size / -2;
       float: left;
 
       // add focus outline to input
       &:focus {
-        outline: $govuk-focus-width solid $govuk-focus-colour;
+        outline: $moaland-focus-width solid $moaland-focus-colour;
       }
     }
   }
 
-  .govuk-checkboxes__label {
+  .moaland-checkboxes__label {
     display: inline-block;
     margin-bottom: 0;
-    padding: 8px $govuk-checkboxes-label-padding-left-right govuk-spacing(1);
+    padding: 8px $moaland-checkboxes-label-padding-left-right moaland-spacing(1);
     cursor: pointer;
     // remove 300ms pause on mobile
     touch-action: manipulation;
   }
 
   // [ ] Check box
-  .govuk-checkboxes__label:before {
+  .moaland-checkboxes__label:before {
     content: "";
     box-sizing: border-box;
     position: absolute;
     top: 0;
     left: 0;
-    width: $govuk-checkboxes-size;
-    height: $govuk-checkboxes-size;
-    border: $govuk-border-width-form-element solid currentColor;
+    width: $moaland-checkboxes-size;
+    height: $moaland-checkboxes-size;
+    border: $moaland-border-width-form-element solid currentColor;
     background: transparent;
   }
 
@@ -89,7 +89,7 @@
   //
   // The check mark is a box with a border on the left and bottom side (└──),
   // rotated 45 degrees
-  .govuk-checkboxes__label:after {
+  .moaland-checkboxes__label:after {
     content: "";
     box-sizing: border-box;
 
@@ -111,30 +111,30 @@
     background: transparent;
   }
 
-  .govuk-checkboxes__hint {
+  .moaland-checkboxes__hint {
     display: block;
-    padding-right: $govuk-checkboxes-label-padding-left-right;
-    padding-left: $govuk-checkboxes-label-padding-left-right;
+    padding-right: $moaland-checkboxes-label-padding-left-right;
+    padding-left: $moaland-checkboxes-label-padding-left-right;
   }
 
   // Focused state
-  .govuk-checkboxes__input:focus + .govuk-checkboxes__label:before {
+  .moaland-checkboxes__input:focus + .moaland-checkboxes__label:before {
     border-width: 4px;
-    box-shadow: 0 0 0 $govuk-focus-width $govuk-focus-colour;
+    box-shadow: 0 0 0 $moaland-focus-width $moaland-focus-colour;
   }
 
   // Selected state
-  .govuk-checkboxes__input:checked + .govuk-checkboxes__label:after {
+  .moaland-checkboxes__input:checked + .moaland-checkboxes__label:after {
     opacity: 1;
   }
 
   // Disabled state
-  .govuk-checkboxes__input:disabled,
-  .govuk-checkboxes__input:disabled + .govuk-checkboxes__label {
+  .moaland-checkboxes__input:disabled,
+  .moaland-checkboxes__input:disabled + .moaland-checkboxes__label {
     cursor: default;
   }
 
-  .govuk-checkboxes__input:disabled + .govuk-checkboxes__label {
+  .moaland-checkboxes__input:disabled + .moaland-checkboxes__label {
     opacity: .5;
   }
 
@@ -144,19 +144,19 @@
 
   // The narrow border is used in the conditional reveals because the border has
   // to be an even number in order to be centred under the 40px checkbox or radio.
-  $conditional-border-width: $govuk-border-width-narrow;
+  $conditional-border-width: $moaland-border-width-narrow;
   // Calculate the amount of padding needed to keep the border centered against the checkbox.
-  $conditional-border-padding: ($govuk-checkboxes-size / 2) - ($conditional-border-width / 2);
+  $conditional-border-padding: ($moaland-checkboxes-size / 2) - ($conditional-border-width / 2);
   // Move the border centered with the checkbox
   $conditional-margin-left: $conditional-border-padding;
   // Move the contents of the conditional inline with the label
-  $conditional-padding-left: $conditional-border-padding + $govuk-checkboxes-label-padding-left-right;
+  $conditional-padding-left: $conditional-border-padding + $moaland-checkboxes-label-padding-left-right;
 
-  .govuk-checkboxes__conditional {
-    @include govuk-responsive-margin(4, "bottom");
+  .moaland-checkboxes__conditional {
+    @include moaland-responsive-margin(4, "bottom");
     margin-left: $conditional-margin-left;
     padding-left: $conditional-padding-left;
-    border-left: $conditional-border-width solid $govuk-border-colour;
+    border-left: $conditional-border-width solid $moaland-border-colour;
 
     .js-enabled &--hidden {
       display: none;
@@ -171,13 +171,13 @@
   // Small checkboxes
   // =========================================================
 
-  .govuk-checkboxes--small {
+  .moaland-checkboxes--small {
 
-    $input-offset: ($govuk-touch-target-size - $govuk-small-checkboxes-size) / 2;
-    $label-offset: $govuk-touch-target-size - $input-offset;
+    $input-offset: ($moaland-touch-target-size - $moaland-small-checkboxes-size) / 2;
+    $label-offset: $moaland-touch-target-size - $input-offset;
 
-    .govuk-checkboxes__item {
-      @include govuk-clearfix;
+    .moaland-checkboxes__item {
+      @include moaland-clearfix;
       min-height: 0;
       margin-bottom: 0;
       padding-left: $label-offset;
@@ -193,13 +193,13 @@
     //  └┆▲──┘
     //  ▲┆└─ Check box pseudo element, aligned with margin
     //  └─── Touch target (invisible input), shifted into the margin
-    .govuk-checkboxes__input {
-      @include govuk-not-ie8 {
+    .moaland-checkboxes__input {
+      @include moaland-not-ie8 {
         left: $input-offset * -1;
       }
 
-      @include govuk-if-ie8 {
-        margin-left: $govuk-small-checkboxes-size * -1;
+      @include moaland-if-ie8 {
+        margin-left: $moaland-small-checkboxes-size * -1;
       }
     }
 
@@ -208,13 +208,13 @@
     // Unlike larger checkboxes, we also have to float the label in order to
     // 'shrink' it, preventing the hover state from kicking in across the full
     // width of the parent element.
-    .govuk-checkboxes__label {
+    .moaland-checkboxes__label {
       margin-top: -2px;
-      padding: 13px govuk-spacing(3) 13px 1px;
+      padding: 13px moaland-spacing(3) 13px 1px;
       float: left;
 
-      @include govuk-media-query($from: tablet) {
-        padding: 11px govuk-spacing(3) 10px 1px;
+      @include moaland-media-query($from: tablet) {
+        padding: 11px moaland-spacing(3) 10px 1px;
       }
     }
 
@@ -222,16 +222,16 @@
     //
     // Reduce the size of the check box [1], vertically center it within the
     // touch target [2]
-    .govuk-checkboxes__label:before {
-      top: $input-offset - $govuk-border-width-form-element; // 2
-      width: $govuk-small-checkboxes-size; // 1
-      height: $govuk-small-checkboxes-size; // 1
+    .moaland-checkboxes__label:before {
+      top: $input-offset - $moaland-border-width-form-element; // 2
+      width: $moaland-small-checkboxes-size; // 1
+      height: $moaland-small-checkboxes-size; // 1
     }
 
     // ✔ Check mark
     //
     // Reduce the size of the check mark and re-align within the checkbox
-    .govuk-checkboxes__label:after {
+    .moaland-checkboxes__label:after {
       top: 15px;
       left: 6px;
       width: 12px;
@@ -247,14 +247,14 @@
     //
     // (If you do use them, they won't look completely broken... but seriously,
     // don't use them)
-    .govuk-checkboxes__hint {
+    .moaland-checkboxes__hint {
       padding: 0;
       clear: both;
     }
 
     // Align conditional reveals with small checkboxes
-    .govuk-checkboxes__conditional {
-      $margin-left: ($govuk-small-checkboxes-size / 2) - ($conditional-border-width / 2);
+    .moaland-checkboxes__conditional {
+      $margin-left: ($moaland-small-checkboxes-size / 2) - ($conditional-border-width / 2);
       margin-left: $margin-left;
       padding-left: $label-offset - ($margin-left + $conditional-border-width);
       clear: both;
@@ -266,8 +266,8 @@
     // is so much larger than their visible size, and so we need to provide
     // feedback to the user as to which checkbox they will select when their
     // cursor is outside of the visible area.
-    .govuk-checkboxes__item:hover .govuk-checkboxes__input:not(:disabled) + .govuk-checkboxes__label:before {
-      box-shadow: 0 0 0 $govuk-hover-width $govuk-hover-colour;
+    .moaland-checkboxes__item:hover .moaland-checkboxes__input:not(:disabled) + .moaland-checkboxes__label:before {
+      box-shadow: 0 0 0 $moaland-hover-width $moaland-hover-colour;
     }
 
     // Because we've overridden the border-shadow provided by the focus state,
@@ -275,10 +275,10 @@
     //
     // We use two box shadows, one that restores the original focus state [1]
     // and another that then applies the hover state [2].
-    .govuk-checkboxes__item:hover .govuk-checkboxes__input:focus + .govuk-checkboxes__label:before {
+    .moaland-checkboxes__item:hover .moaland-checkboxes__input:focus + .moaland-checkboxes__label:before {
       box-shadow:
-        0 0 0 $govuk-focus-width $govuk-focus-colour, // 1
-        0 0 0 $govuk-hover-width $govuk-hover-colour; // 2
+        0 0 0 $moaland-focus-width $moaland-focus-colour, // 1
+        0 0 0 $moaland-hover-width $moaland-hover-colour; // 2
     }
 
     // For devices that explicitly don't support hover, don't provide a hover
@@ -288,12 +288,12 @@
     // state in browsers that don't support `@media (hover)` (like Internet
     // Explorer) – so we have to 'undo' the hover state instead.
     @media (hover: none), (pointer: coarse) {
-      .govuk-checkboxes__item:hover .govuk-checkboxes__input:not(:disabled) + .govuk-checkboxes__label:before {
+      .moaland-checkboxes__item:hover .moaland-checkboxes__input:not(:disabled) + .moaland-checkboxes__label:before {
         box-shadow: initial;
       }
 
-      .govuk-checkboxes__item:hover .govuk-checkboxes__input:focus + .govuk-checkboxes__label:before {
-        box-shadow: 0 0 0 $govuk-focus-width $govuk-focus-colour;
+      .moaland-checkboxes__item:hover .moaland-checkboxes__input:focus + .moaland-checkboxes__label:before {
+        box-shadow: 0 0 0 $moaland-focus-width $moaland-focus-colour;
       }
     }
   }

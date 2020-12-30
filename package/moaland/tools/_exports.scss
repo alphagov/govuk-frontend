@@ -7,7 +7,7 @@
 /// @type List
 /// @access private
 
-$_govuk-imported-modules: () !default;
+$_moaland-imported-modules: () !default;
 
 /// Export module
 ///
@@ -20,11 +20,11 @@ $_govuk-imported-modules: () !default;
 ///   $name has not already been outputted
 /// @access public
 
-@mixin govuk-exports($name) {
+@mixin moaland-exports($name) {
   // If the mixin is not in the list of modules already exported...
-  @if (index($_govuk-imported-modules, $name) == null) {
+  @if (index($_moaland-imported-modules, $name) == null) {
     // ... then add it to the list
-    $_govuk-imported-modules: append($_govuk-imported-modules, $name) !global;
+    $_moaland-imported-modules: append($_moaland-imported-modules, $name) !global;
     // ... and output the CSS for that module
     @content;
   }

@@ -1,4 +1,4 @@
-@if not mixin-exists("govuk-exports") {
+@if not mixin-exists("moaland-exports") {
   @warn "Importing items from the core layer without first importing `base` is deprecated, and will no longer work as of GOV.UK Frontend v4.0.";
 }
 
@@ -7,19 +7,19 @@
 @import "links";
 @import "typography";
 
-@mixin govuk-global-styles {
+@mixin moaland-global-styles {
   a {
-    @extend %govuk-link;
+    @extend %moaland-link;
   }
 
   p {
-    @extend %govuk-body-m;
+    @extend %moaland-body-m;
   }
 }
 
-@include govuk-exports("govuk/core/global-styles") {
+@include moaland-exports("moaland/core/global-styles") {
 
-  @if $govuk-global-styles == true {
-    @include govuk-global-styles;
+  @if $moaland-global-styles == true {
+    @include moaland-global-styles;
   }
 }

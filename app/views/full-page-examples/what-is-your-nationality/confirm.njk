@@ -1,14 +1,14 @@
 {% extends "_generic.njk" %}
 
-{% from "panel/macro.njk" import govukPanel %}
+{% from "panel/macro.njk" import moalandPanel %}
 
 {% set pageTitle = "Thank you for confirming your nationality" %}
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      {{ govukPanel({
+  <div class="moaland-grid-row">
+    <div class="moaland-grid-column-two-thirds">
+      {{ moalandPanel({
         titleText: pageTitle
       }) }}
     </div>

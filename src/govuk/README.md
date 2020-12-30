@@ -68,8 +68,8 @@ and override all other layers. Rules in this layer will generally be marked as
 !important.
 
 Class names within this layer use an additional prefix `-!-`, for example
-`.govuk-!-font-width-regular`.
+`.moaland-!-font-width-regular`.
 
-If a class only overrides when a condition is met, the condition will be at the end of the class name. For example `.govuk-!-display-none-print` will only override with `display: none` in a print layout.
+If a class only overrides when a condition is met, the condition will be at the end of the class name. For example `.moaland-!-display-none-print` will only override with `display: none` in a print layout.
 
 [ITCSS]: (http://www.creativebloq.com/web-design/manage-large-css-projects-itcss-101517528)

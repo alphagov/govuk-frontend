@@ -46,7 +46,7 @@
                     ]
                 ]
             },
-            "html": "<table class=\"govuk-table\">\n  \n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >January</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£85</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£95</td>\n          \n        \n        </tr>\n      \n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >February</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£75</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£55</td>\n          \n        \n        </tr>\n      \n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >March</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£165</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£125</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
+            "html": "<table class=\"moaland-table\">\n  \n  \n  <tbody class=\"moaland-table__body\">\n    \n      \n        <tr class=\"moaland-table__row\">\n        \n          \n          \n          <td class=\"moaland-table__cell\"\n          >January</td>\n          \n        \n          \n          \n          <td class=\"moaland-table__cell moaland-table__cell--numeric\"\n          >£85</td>\n          \n        \n          \n          \n          <td class=\"moaland-table__cell moaland-table__cell--numeric\"\n          >£95</td>\n          \n        \n        </tr>\n      \n    \n      \n        <tr class=\"moaland-table__row\">\n        \n          \n          \n          <td class=\"moaland-table__cell\"\n          >February</td>\n          \n        \n          \n          \n          <td class=\"moaland-table__cell moaland-table__cell--numeric\"\n          >£75</td>\n          \n        \n          \n          \n          <td class=\"moaland-table__cell moaland-table__cell--numeric\"\n          >£55</td>\n          \n        \n        </tr>\n      \n    \n      \n        <tr class=\"moaland-table__row\">\n        \n          \n          \n          <td class=\"moaland-table__cell\"\n          >March</td>\n          \n        \n          \n          \n          <td class=\"moaland-table__cell moaland-table__cell--numeric\"\n          >£165</td>\n          \n        \n          \n          \n          <td class=\"moaland-table__cell moaland-table__cell--numeric\"\n          >£125</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
             "hidden": false
         },
         {
@@ -107,14 +107,14 @@
                     ]
                 ]
             },
-            "html": "<table class=\"govuk-table\">\n  \n  \n  <thead class=\"govuk-table__head\">\n    <tr class=\"govuk-table__row\">\n    \n      <th scope=\"col\" class=\"govuk-table__header\">Month you apply</th>\n    \n      <th scope=\"col\" class=\"govuk-table__header govuk-table__header--numeric\">Rate for bicycles</th>\n    \n      <th scope=\"col\" class=\"govuk-table__header govuk-table__header--numeric\">Rate for vehicles</th>\n    \n    </tr>\n  </thead>\n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >January</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£85</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£95</td>\n          \n        \n        </tr>\n      \n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >February</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£75</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£55</td>\n          \n        \n        </tr>\n      \n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >March</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£165</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£125</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
+            "html": "<table class=\"moaland-table\">\n  \n  \n  <thead class=\"moaland-table__head\">\n    <tr class=\"moaland-table__row\">\n    \n      <th scope=\"col\" class=\"moaland-table__header\">Month you apply</th>\n    \n      <th scope=\"col\" class=\"moaland-table__header moaland-table__header--numeric\">Rate for bicycles</th>\n    \n      <th scope=\"col\" class=\"moaland-table__header moaland-table__header--numeric\">Rate for vehicles</th>\n    \n    </tr>\n  </thead>\n  \n  <tbody class=\"moaland-table__body\">\n    \n      \n        <tr class=\"moaland-table__row\">\n        \n          \n          \n          <td class=\"moaland-table__cell\"\n          >January</td>\n          \n        \n          \n          \n          <td class=\"moaland-table__cell moaland-table__cell--numeric\"\n          >£85</td>\n          \n        \n          \n          \n          <td class=\"moaland-table__cell moaland-table__cell--numeric\"\n          >£95</td>\n          \n        \n        </tr>\n      \n    \n      \n        <tr class=\"moaland-table__row\">\n        \n          \n          \n          <td class=\"moaland-table__cell\"\n          >February</td>\n          \n        \n          \n          \n          <td class=\"moaland-table__cell moaland-table__cell--numeric\"\n          >£75</td>\n          \n        \n          \n          \n          <td class=\"moaland-table__cell moaland-table__cell--numeric\"\n          >£55</td>\n          \n        \n        </tr>\n      \n    \n      \n        <tr class=\"moaland-table__row\">\n        \n          \n          \n          <td class=\"moaland-table__cell\"\n          >March</td>\n          \n        \n          \n          \n          <td class=\"moaland-table__cell moaland-table__cell--numeric\"\n          >£165</td>\n          \n        \n          \n          \n          <td class=\"moaland-table__cell moaland-table__cell--numeric\"\n          >£125</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
             "hidden": false
         },
         {
             "name": "table with head and caption",
             "options": {
                 "caption": "Caption 1: Months and rates",
-                "captionClasses": "govuk-heading-m",
+                "captionClasses": "moaland-heading-m",
                 "firstCellIsHeader": true,
                 "head": [
                     {
@@ -171,7 +171,7 @@
                     ]
                 ]
             },
-            "html": "<table class=\"govuk-table\">\n  \n  <caption class=\"govuk-table__caption govuk-heading-m\">Caption 1: Months and rates</caption>\n  \n  \n  <thead class=\"govuk-table__head\">\n    <tr class=\"govuk-table__row\">\n    \n      <th scope=\"col\" class=\"govuk-table__header\">Month you apply</th>\n    \n      <th scope=\"col\" class=\"govuk-table__header govuk-table__header--numeric\">Rate for bicycles</th>\n    \n      <th scope=\"col\" class=\"govuk-table__header govuk-table__header--numeric\">Rate for vehicles</th>\n    \n    </tr>\n  </thead>\n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <th scope=\"row\" class=\"govuk-table__header\"\n          >January</th>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£85</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£95</td>\n          \n        \n        </tr>\n      \n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <th scope=\"row\" class=\"govuk-table__header\"\n          >February</th>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£75</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£55</td>\n          \n        \n        </tr>\n      \n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <th scope=\"row\" class=\"govuk-table__header\"\n          >March</th>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£165</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£125</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
+            "html": "<table class=\"moaland-table\">\n  \n  <caption class=\"moaland-table__caption moaland-heading-m\">Caption 1: Months and rates</caption>\n  \n  \n  <thead class=\"moaland-table__head\">\n    <tr class=\"moaland-table__row\">\n    \n      <th scope=\"col\" class=\"moaland-table__header\">Month you apply</th>\n    \n      <th scope=\"col\" class=\"moaland-table__header moaland-table__header--numeric\">Rate for bicycles</th>\n    \n      <th scope=\"col\" class=\"moaland-table__header moaland-table__header--numeric\">Rate for vehicles</th>\n    \n    </tr>\n  </thead>\n  \n  <tbody class=\"moaland-table__body\">\n    \n      \n        <tr class=\"moaland-table__row\">\n        \n          \n          \n          <th scope=\"row\" class=\"moaland-table__header\"\n          >January</th>\n          \n        \n          \n          \n          <td class=\"moaland-table__cell moaland-table__cell--numeric\"\n          >£85</td>\n          \n        \n          \n          \n          <td class=\"moaland-table__cell moaland-table__cell--numeric\"\n          >£95</td>\n          \n        \n        </tr>\n      \n    \n      \n        <tr class=\"moaland-table__row\">\n        \n          \n          \n          <th scope=\"row\" class=\"moaland-table__header\"\n          >February</th>\n          \n        \n          \n          \n          <td class=\"moaland-table__cell moaland-table__cell--numeric\"\n          >£75</td>\n          \n        \n          \n          \n          <td class=\"moaland-table__cell moaland-table__cell--numeric\"\n          >£55</td>\n          \n        \n        </tr>\n      \n    \n      \n        <tr class=\"moaland-table__row\">\n        \n          \n          \n          <th scope=\"row\" class=\"moaland-table__header\"\n          >March</th>\n          \n        \n          \n          \n          <td class=\"moaland-table__cell moaland-table__cell--numeric\"\n          >£165</td>\n          \n        \n          \n          \n          <td class=\"moaland-table__cell moaland-table__cell--numeric\"\n          >£125</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
             "hidden": false
         },
         {
@@ -189,7 +189,7 @@
                     ]
                 ]
             },
-            "html": "<table class=\"govuk-table custom-class-goes-here\">\n  \n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >Jan</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >Feb</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
+            "html": "<table class=\"moaland-table custom-class-goes-here\">\n  \n  \n  <tbody class=\"moaland-table__body\">\n    \n      \n        <tr class=\"moaland-table__row\">\n        \n          \n          \n          <td class=\"moaland-table__cell\"\n          >Jan</td>\n          \n        \n          \n          \n          <td class=\"moaland-table__cell\"\n          >Feb</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
             "hidden": true
         },
         {
@@ -209,7 +209,7 @@
                     ]
                 ]
             },
-            "html": "<table class=\"govuk-table\" data-foo=\"bar\">\n  \n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >Jan</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >Feb</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
+            "html": "<table class=\"moaland-table\" data-foo=\"bar\">\n  \n  \n  <tbody class=\"moaland-table__body\">\n    \n      \n        <tr class=\"moaland-table__row\">\n        \n          \n          \n          <td class=\"moaland-table__cell\"\n          >Jan</td>\n          \n        \n          \n          \n          <td class=\"moaland-table__cell\"\n          >Feb</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
             "hidden": true
         },
         {
@@ -228,7 +228,7 @@
                     ]
                 ]
             },
-            "html": "<table class=\"govuk-table\">\n  \n  \n  <thead class=\"govuk-table__head\">\n    <tr class=\"govuk-table__row\">\n    \n      <th scope=\"col\" class=\"govuk-table__header\">Foo &lt;script&gt;hacking.do(1337)&lt;/script&gt;</th>\n    \n    </tr>\n  </thead>\n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >Foo &lt;script&gt;hacking.do(1337)&lt;/script&gt;</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
+            "html": "<table class=\"moaland-table\">\n  \n  \n  <thead class=\"moaland-table__head\">\n    <tr class=\"moaland-table__row\">\n    \n      <th scope=\"col\" class=\"moaland-table__header\">Foo &lt;script&gt;hacking.do(1337)&lt;/script&gt;</th>\n    \n    </tr>\n  </thead>\n  \n  <tbody class=\"moaland-table__body\">\n    \n      \n        <tr class=\"moaland-table__row\">\n        \n          \n          \n          <td class=\"moaland-table__cell\"\n          >Foo &lt;script&gt;hacking.do(1337)&lt;/script&gt;</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
             "hidden": true
         },
         {
@@ -247,7 +247,7 @@
                     ]
                 ]
             },
-            "html": "<table class=\"govuk-table\">\n  \n  \n  <thead class=\"govuk-table__head\">\n    <tr class=\"govuk-table__row\">\n    \n      <th scope=\"col\" class=\"govuk-table__header\">Foo <span>bar</span></th>\n    \n    </tr>\n  </thead>\n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >Foo <span>bar</span></td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
+            "html": "<table class=\"moaland-table\">\n  \n  \n  <thead class=\"moaland-table__head\">\n    <tr class=\"moaland-table__row\">\n    \n      <th scope=\"col\" class=\"moaland-table__header\">Foo <span>bar</span></th>\n    \n    </tr>\n  </thead>\n  \n  <tbody class=\"moaland-table__body\">\n    \n      \n        <tr class=\"moaland-table__row\">\n        \n          \n          \n          <td class=\"moaland-table__cell\"\n          >Foo <span>bar</span></td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
             "hidden": true
         },
         {
@@ -270,7 +270,7 @@
                     ]
                 ]
             },
-            "html": "<table class=\"govuk-table\">\n  \n  \n  <thead class=\"govuk-table__head\">\n    <tr class=\"govuk-table__row\">\n    \n      <th scope=\"col\" class=\"govuk-table__header my-custom-class\">Foo</th>\n    \n    </tr>\n  </thead>\n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >Jan</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >Feb</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
+            "html": "<table class=\"moaland-table\">\n  \n  \n  <thead class=\"moaland-table__head\">\n    <tr class=\"moaland-table__row\">\n    \n      <th scope=\"col\" class=\"moaland-table__header my-custom-class\">Foo</th>\n    \n    </tr>\n  </thead>\n  \n  <tbody class=\"moaland-table__body\">\n    \n      \n        <tr class=\"moaland-table__row\">\n        \n          \n          \n          <td class=\"moaland-table__cell\"\n          >Jan</td>\n          \n        \n          \n          \n          <td class=\"moaland-table__cell\"\n          >Feb</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
             "hidden": true
         },
         {
@@ -294,7 +294,7 @@
                     ]
                 ]
             },
-            "html": "<table class=\"govuk-table\">\n  \n  \n  <thead class=\"govuk-table__head\">\n    <tr class=\"govuk-table__row\">\n    \n      <th scope=\"col\" class=\"govuk-table__header\" colspan=\"2\" rowspan=\"2\">Foo</th>\n    \n    </tr>\n  </thead>\n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >Jan</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >Feb</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
+            "html": "<table class=\"moaland-table\">\n  \n  \n  <thead class=\"moaland-table__head\">\n    <tr class=\"moaland-table__row\">\n    \n      <th scope=\"col\" class=\"moaland-table__header\" colspan=\"2\" rowspan=\"2\">Foo</th>\n    \n    </tr>\n  </thead>\n  \n  <tbody class=\"moaland-table__body\">\n    \n      \n        <tr class=\"moaland-table__row\">\n        \n          \n          \n          <td class=\"moaland-table__cell\"\n          >Jan</td>\n          \n        \n          \n          \n          <td class=\"moaland-table__cell\"\n          >Feb</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
             "hidden": true
         },
         {
@@ -318,7 +318,7 @@
                     ]
                 ]
             },
-            "html": "<table class=\"govuk-table\">\n  \n  \n  <thead class=\"govuk-table__head\">\n    <tr class=\"govuk-table__row\">\n    \n      <th scope=\"col\" class=\"govuk-table__header\" data-fizz=\"buzz\"></th>\n    \n    </tr>\n  </thead>\n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >Jan</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >Feb</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
+            "html": "<table class=\"moaland-table\">\n  \n  \n  <thead class=\"moaland-table__head\">\n    <tr class=\"moaland-table__row\">\n    \n      <th scope=\"col\" class=\"moaland-table__header\" data-fizz=\"buzz\"></th>\n    \n    </tr>\n  </thead>\n  \n  <tbody class=\"moaland-table__body\">\n    \n      \n        <tr class=\"moaland-table__row\">\n        \n          \n          \n          <td class=\"moaland-table__cell\"\n          >Jan</td>\n          \n        \n          \n          \n          <td class=\"moaland-table__cell\"\n          >Feb</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
             "hidden": true
         },
         {
@@ -367,7 +367,7 @@
                     ]
                 ]
             },
-            "html": "<table class=\"govuk-table\">\n  \n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <th scope=\"row\" class=\"govuk-table__header\"\n          >January</th>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£85</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£95</td>\n          \n        \n        </tr>\n      \n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <th scope=\"row\" class=\"govuk-table__header\"\n          >February</th>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£75</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£55</td>\n          \n        \n        </tr>\n      \n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <th scope=\"row\" class=\"govuk-table__header\"\n          >March</th>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£165</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell govuk-table__cell--numeric\"\n          >£125</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
+            "html": "<table class=\"moaland-table\">\n  \n  \n  <tbody class=\"moaland-table__body\">\n    \n      \n        <tr class=\"moaland-table__row\">\n        \n          \n          \n          <th scope=\"row\" class=\"moaland-table__header\"\n          >January</th>\n          \n        \n          \n          \n          <td class=\"moaland-table__cell moaland-table__cell--numeric\"\n          >£85</td>\n          \n        \n          \n          \n          <td class=\"moaland-table__cell moaland-table__cell--numeric\"\n          >£95</td>\n          \n        \n        </tr>\n      \n    \n      \n        <tr class=\"moaland-table__row\">\n        \n          \n          \n          <th scope=\"row\" class=\"moaland-table__header\"\n          >February</th>\n          \n        \n          \n          \n          <td class=\"moaland-table__cell moaland-table__cell--numeric\"\n          >£75</td>\n          \n        \n          \n          \n          <td class=\"moaland-table__cell moaland-table__cell--numeric\"\n          >£55</td>\n          \n        \n        </tr>\n      \n    \n      \n        <tr class=\"moaland-table__row\">\n        \n          \n          \n          <th scope=\"row\" class=\"moaland-table__header\"\n          >March</th>\n          \n        \n          \n          \n          <td class=\"moaland-table__cell moaland-table__cell--numeric\"\n          >£165</td>\n          \n        \n          \n          \n          <td class=\"moaland-table__cell moaland-table__cell--numeric\"\n          >£125</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
             "hidden": true
         },
         {
@@ -383,7 +383,7 @@
                     ]
                 ]
             },
-            "html": "<table class=\"govuk-table\">\n  \n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <th scope=\"row\" class=\"govuk-table__header my-custom-class\"\n          >Foo</th>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
+            "html": "<table class=\"moaland-table\">\n  \n  \n  <tbody class=\"moaland-table__body\">\n    \n      \n        <tr class=\"moaland-table__row\">\n        \n          \n          \n          <th scope=\"row\" class=\"moaland-table__header my-custom-class\"\n          >Foo</th>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
             "hidden": true
         },
         {
@@ -398,7 +398,7 @@
                     ]
                 ]
             },
-            "html": "<table class=\"govuk-table\">\n  \n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <th scope=\"row\" class=\"govuk-table__header\"\n          >Foo <span>bar</span></th>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
+            "html": "<table class=\"moaland-table\">\n  \n  \n  <tbody class=\"moaland-table__body\">\n    \n      \n        <tr class=\"moaland-table__row\">\n        \n          \n          \n          <th scope=\"row\" class=\"moaland-table__header\"\n          >Foo <span>bar</span></th>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
             "hidden": true
         },
         {
@@ -413,7 +413,7 @@
                     ]
                 ]
             },
-            "html": "<table class=\"govuk-table\">\n  \n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <th scope=\"row\" class=\"govuk-table__header\"\n          >Foo &lt;script&gt;hacking.do(1337)&lt;/script&gt;</th>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
+            "html": "<table class=\"moaland-table\">\n  \n  \n  <tbody class=\"moaland-table__body\">\n    \n      \n        <tr class=\"moaland-table__row\">\n        \n          \n          \n          <th scope=\"row\" class=\"moaland-table__header\"\n          >Foo &lt;script&gt;hacking.do(1337)&lt;/script&gt;</th>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
             "hidden": true
         },
         {
@@ -430,7 +430,7 @@
                     ]
                 ]
             },
-            "html": "<table class=\"govuk-table\">\n  \n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <th scope=\"row\" class=\"govuk-table__header\" colspan=\"2\" rowspan=\"2\"\n          >Foo</th>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
+            "html": "<table class=\"moaland-table\">\n  \n  \n  <tbody class=\"moaland-table__body\">\n    \n      \n        <tr class=\"moaland-table__row\">\n        \n          \n          \n          <th scope=\"row\" class=\"moaland-table__header\" colspan=\"2\" rowspan=\"2\"\n          >Foo</th>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
             "hidden": true
         },
         {
@@ -448,7 +448,7 @@
                     ]
                 ]
             },
-            "html": "<table class=\"govuk-table\">\n  \n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <th scope=\"row\" class=\"govuk-table__header\" data-fizz=\"buzz\"\n          >Foo</th>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
+            "html": "<table class=\"moaland-table\">\n  \n  \n  <tbody class=\"moaland-table__body\">\n    \n      \n        <tr class=\"moaland-table__row\">\n        \n          \n          \n          <th scope=\"row\" class=\"moaland-table__header\" data-fizz=\"buzz\"\n          >Foo</th>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
             "hidden": true
         },
         {
@@ -483,7 +483,7 @@
                     ]
                 ]
             },
-            "html": "<table class=\"govuk-table\">\n  \n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >A</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >1</td>\n          \n        \n        </tr>\n      \n    \n      \n    \n      \n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >B</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >2</td>\n          \n        \n        </tr>\n      \n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >C</td>\n          \n        \n          \n          \n          <td class=\"govuk-table__cell\"\n          >3</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
+            "html": "<table class=\"moaland-table\">\n  \n  \n  <tbody class=\"moaland-table__body\">\n    \n      \n        <tr class=\"moaland-table__row\">\n        \n          \n          \n          <td class=\"moaland-table__cell\"\n          >A</td>\n          \n        \n          \n          \n          <td class=\"moaland-table__cell\"\n          >1</td>\n          \n        \n        </tr>\n      \n    \n      \n    \n      \n    \n      \n        <tr class=\"moaland-table__row\">\n        \n          \n          \n          <td class=\"moaland-table__cell\"\n          >B</td>\n          \n        \n          \n          \n          <td class=\"moaland-table__cell\"\n          >2</td>\n          \n        \n        </tr>\n      \n    \n      \n        <tr class=\"moaland-table__row\">\n        \n          \n          \n          <td class=\"moaland-table__cell\"\n          >C</td>\n          \n        \n          \n          \n          <td class=\"moaland-table__cell\"\n          >3</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
             "hidden": true
         },
         {
@@ -498,7 +498,7 @@
                     ]
                 ]
             },
-            "html": "<table class=\"govuk-table\">\n  \n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <td class=\"govuk-table__cell my-custom-class\"\n          >Foo</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
+            "html": "<table class=\"moaland-table\">\n  \n  \n  <tbody class=\"moaland-table__body\">\n    \n      \n        <tr class=\"moaland-table__row\">\n        \n          \n          \n          <td class=\"moaland-table__cell my-custom-class\"\n          >Foo</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
             "hidden": true
         },
         {
@@ -514,7 +514,7 @@
                     ]
                 ]
             },
-            "html": "<table class=\"govuk-table\">\n  \n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <td class=\"govuk-table__cell\" colspan=\"2\" rowspan=\"2\"\n          >Foo</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
+            "html": "<table class=\"moaland-table\">\n  \n  \n  <tbody class=\"moaland-table__body\">\n    \n      \n        <tr class=\"moaland-table__row\">\n        \n          \n          \n          <td class=\"moaland-table__cell\" colspan=\"2\" rowspan=\"2\"\n          >Foo</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
             "hidden": true
         },
         {
@@ -531,7 +531,7 @@
                     ]
                 ]
             },
-            "html": "<table class=\"govuk-table\">\n  \n  \n  <tbody class=\"govuk-table__body\">\n    \n      \n        <tr class=\"govuk-table__row\">\n        \n          \n          \n          <td class=\"govuk-table__cell\" data-fizz=\"buzz\"\n          >Foo</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
+            "html": "<table class=\"moaland-table\">\n  \n  \n  <tbody class=\"moaland-table__body\">\n    \n      \n        <tr class=\"moaland-table__row\">\n        \n          \n          \n          <td class=\"moaland-table__cell\" data-fizz=\"buzz\"\n          >Foo</td>\n          \n        \n        </tr>\n      \n    \n  </tbody>\n</table>",
             "hidden": true
         }
     ]

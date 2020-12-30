@@ -1,4 +1,4 @@
-@include govuk-exports("govuk/component/back-link") {
+@include moaland-exports("moaland/component/back-link") {
 
   // Size of chevron (excluding border)
   $chevron-size: 7px;
@@ -7,25 +7,25 @@
   $chevron-border-width: 1px;
 
   // Colour of chevron
-  $chevron-border-colour: $govuk-secondary-text-colour;
+  $chevron-border-colour: $moaland-secondary-text-colour;
 
-  .govuk-back-link {
-    @include govuk-typography-responsive($size: 16);
-    @include govuk-link-common;
-    @include govuk-link-style-text;
+  .moaland-back-link {
+    @include moaland-typography-responsive($size: 16);
+    @include moaland-link-common;
+    @include moaland-link-style-text;
 
     display: inline-block;
     position: relative;
 
-    margin-top: govuk-spacing(3);
-    margin-bottom: govuk-spacing(3);
+    margin-top: moaland-spacing(3);
+    margin-bottom: moaland-spacing(3);
 
     // Allow space for the arrow
     padding-left: 14px;
   }
 
   // Only underline if the component is linkable
-  .govuk-back-link[href] {
+  .moaland-back-link[href] {
     text-decoration: underline;
 
     // When the back link is focused, hide the bottom link border as the
@@ -34,20 +34,20 @@
       text-decoration: none;
 
       &:before {
-        border-color: $govuk-text-colour;
+        border-color: $moaland-text-colour;
       }
     }
   }
 
   // Prepend left pointing chevron
-  .govuk-back-link:before {
+  .moaland-back-link:before {
     content: "";
     display: block;
 
     // Vertically align with the parent element
     position: absolute;
 
-    @if $govuk-use-legacy-font {
+    @if $moaland-use-legacy-font {
       // Begin adjustments for font baseline offset
       // These should be removed when legacy font support is dropped
       top: -1px;
@@ -75,7 +75,7 @@
     border-color: $chevron-border-colour;
 
     // Fall back to a less than sign for IE8
-    @include govuk-if-ie8 {
+    @include moaland-if-ie8 {
       content: "\003c"; // Less than sign (<)
       width: auto;
       height: auto;
@@ -88,7 +88,7 @@
     }
   }
 
-  .govuk-back-link:after {
+  .moaland-back-link:after {
     content: "";
     position: absolute;
     top: -14px;
@@ -97,10 +97,10 @@
     left: 0;
   }
 
-  @if $govuk-use-legacy-font {
+  @if $moaland-use-legacy-font {
     // Begin adjustments for font baseline offset
     // These should be removed when legacy font support is dropped
-    .govuk-back-link:before {
+    .moaland-back-link:before {
       $offset: 1px;
 
       top: $offset * -1;

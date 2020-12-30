@@ -9,7 +9,7 @@
 /// @return {Number} Length in ems
 /// @access public
 
-@function govuk-em($value, $context-font-size) {
+@function moaland-em($value, $context-font-size) {
   @if (unitless($value)) {
     $value: $value * 1px;
   }

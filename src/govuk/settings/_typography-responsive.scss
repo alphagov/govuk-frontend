@@ -8,17 +8,17 @@
 /// allowing users to adjust the base font-size. This is enabled by default,
 /// unless any of the compatibility mode settings are enabled.
 ///
-/// You should make sure that $govuk-root-font-size is set correctly for your
+/// You should make sure that $moaland-root-font-size is set correctly for your
 /// project.
 ///
 /// @type Boolean
 /// @access public
 
-$govuk-typography-use-rem: if(
+$moaland-typography-use-rem: if(
   (
-    $govuk-compatibility-govukfrontendtoolkit or
-    $govuk-compatibility-govuktemplate or
-    $govuk-compatibility-govukelements
+    $moaland-compatibility-moalandfrontendtoolkit or
+    $moaland-compatibility-moalandtemplate or
+    $moaland-compatibility-moalandelements
   ),
   false,
   true
@@ -34,14 +34,14 @@ $govuk-typography-use-rem: if(
 /// should be set to 16px.
 ///
 /// If you are integrating Frontend into an existing project that also uses
-/// alphagov/govuk_template and you wish to enable `$govuk-typography-use-rem`
+/// alphagov/govuk_template and you wish to enable `$moaland-typography-use-rem`
 /// then you should set this to 10px to match the 62.5% (10px) base font size
-/// that govuk_template sets on the <html> element.
+/// that moaland_template sets on the <html> element.
 ///
 /// @type Number
 /// @access public
 
-$govuk-root-font-size: 16px !default;
+$moaland-root-font-size: 16px !default;
 
 /// Responsive typography font map
 ///
@@ -67,7 +67,7 @@ $govuk-root-font-size: 16px !default;
 ///
 /// @access public
 
-$govuk-typography-scale: (
+$moaland-typography-scale: (
   80: (
     null: (
       font-size: 53px,

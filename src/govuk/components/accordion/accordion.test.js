@@ -22,7 +22,7 @@ describe('/components/accordion', () => {
         const numberOfExampleSections = 2
 
         for (var i = 0; i < numberOfExampleSections; i++) {
-          var isContentVisible = await page.waitForSelector('.govuk-accordion .govuk-accordion__section:nth-of-type(' + (i + 1) + ') .govuk-accordion__section-content',
+          var isContentVisible = await page.waitForSelector('.moaland-accordion .moaland-accordion__section:nth-of-type(' + (i + 1) + ') .moaland-accordion__section-content',
             { visible: true, timeout: 1000 }
           )
           expect(isContentVisible).toBeTruthy()
@@ -32,7 +32,7 @@ describe('/components/accordion', () => {
       it('does not display "+/-" in the section headings', async () => {
         await page.goto(baseUrl + '/components/accordion/preview', { waitUntil: 'load' })
 
-        const numberOfIcons = await page.evaluate(() => document.body.querySelectorAll('.govuk-accordion .govuk-accordion__section .govuk-accordion__icon').length)
+        const numberOfIcons = await page.evaluate(() => document.body.querySelectorAll('.moaland-accordion .moaland-accordion__section .moaland-accordion__icon').length)
         expect(numberOfIcons).toEqual(0)
       })
     })
@@ -45,7 +45,7 @@ describe('/components/accordion', () => {
 
         for (var i = 0; i < numberOfExampleSections; i++) {
           const sectionHeaderButtonExpanded = await page.evaluate(function (i) {
-            return document.body.querySelector('.govuk-accordion .govuk-accordion__section:nth-of-type(' + (2 + i) + ') .govuk-accordion__section-button').getAttribute('aria-expanded')
+            return document.body.querySelector('.moaland-accordion .moaland-accordion__section:nth-of-type(' + (2 + i) + ') .moaland-accordion__section-button').getAttribute('aria-expanded')
           }, i)
 
           expect(sectionHeaderButtonExpanded).toEqual('false')
@@ -55,11 +55,11 @@ describe('/components/accordion', () => {
       it('should change the Open all button to Close all when both sections are opened', async () => {
         await page.goto(baseUrl + '/components/accordion/preview', { waitUntil: 'load' })
 
-        await page.click('.govuk-accordion .govuk-accordion__section:nth-of-type(2) .govuk-accordion__section-header')
+        await page.click('.moaland-accordion .moaland-accordion__section:nth-of-type(2) .moaland-accordion__section-header')
 
-        await page.click('.govuk-accordion .govuk-accordion__section:nth-of-type(3) .govuk-accordion__section-header')
+        await page.click('.moaland-accordion .moaland-accordion__section:nth-of-type(3) .moaland-accordion__section-header')
 
-        var openOrCloseAllButtonText = await page.evaluate(() => document.body.querySelector('.govuk-accordion__open-all').textContent)
+        var openOrCloseAllButtonText = await page.evaluate(() => document.body.querySelector('.moaland-accordion__open-all').textContent)
 
         expect(openOrCloseAllButtonText).toEqual('Close all sections')
       })
@@ -67,13 +67,13 @@ describe('/components/accordion', () => {
       it('should open both sections when the Open all button is clicked', async () => {
         await page.goto(baseUrl + '/components/accordion/preview', { waitUntil: 'load' })
 
-        await page.click('.govuk-accordion__open-all')
+        await page.click('.moaland-accordion__open-all')
 
-        const firstSectionHeaderButtonExpanded = await page.evaluate(() => document.body.querySelectorAll('.govuk-accordion__section').item(0).querySelector('.govuk-accordion__section-button').getAttribute('aria-expanded'))
+        const firstSectionHeaderButtonExpanded = await page.evaluate(() => document.body.querySelectorAll('.moaland-accordion__section').item(0).querySelector('.moaland-accordion__section-button').getAttribute('aria-expanded'))
 
         expect(firstSectionHeaderButtonExpanded).toBeTruthy()
 
-        const secondSectionHeaderButtonExpanded = await page.evaluate(() => document.body.querySelectorAll('.govuk-accordion__section').item(1).querySelector('.govuk-accordion__section-button').getAttribute('aria-expanded'))
+        const secondSectionHeaderButtonExpanded = await page.evaluate(() => document.body.querySelectorAll('.moaland-accordion__section').item(1).querySelector('.moaland-accordion__section-button').getAttribute('aria-expanded'))
 
         expect(secondSectionHeaderButtonExpanded).toBeTruthy()
       })
@@ -85,19 +85,19 @@ describe('/components/accordion', () => {
 
         for (var i = 0; i < numberOfExampleSections; i++) {
           const sectionHeaderButtonExpanded = await page.evaluate(function (i) {
-            return document.body.querySelector('.govuk-accordion .govuk-accordion__section:nth-of-type(' + (2 + i) + ') .govuk-accordion__section-button').getAttribute('aria-expanded')
+            return document.body.querySelector('.moaland-accordion .moaland-accordion__section:nth-of-type(' + (2 + i) + ') .moaland-accordion__section-button').getAttribute('aria-expanded')
           }, i)
 
           expect(sectionHeaderButtonExpanded).toEqual('true')
         }
 
-        const openOrCloseAllButtonText = await page.evaluate(() => document.body.querySelector('.govuk-accordion__open-all').textContent)
+        const openOrCloseAllButtonText = await page.evaluate(() => document.body.querySelector('.moaland-accordion__open-all').textContent)
 
         expect(openOrCloseAllButtonText).toEqual('Close all sections')
       })
 
       it('should maintain the expanded state after a page refresh', async () => {
-        const sectionHeaderButton = '.govuk-accordion .govuk-accordion__section:nth-of-type(2) .govuk-accordion__section-button'
+        const sectionHeaderButton = '.moaland-accordion .moaland-accordion__section:nth-of-type(2) .moaland-accordion__section-button'
 
         await page.goto(baseUrl + '/components/accordion/preview', { waitUntil: 'load' })
 
@@ -124,7 +124,7 @@ describe('/components/accordion', () => {
 
           const numberOfExampleSections = 2
 
-          const numberOfIcons = await page.evaluate(() => document.body.querySelectorAll('.govuk-accordion .govuk-accordion__section .govuk-accordion__icon').length)
+          const numberOfIcons = await page.evaluate(() => document.body.querySelectorAll('.moaland-accordion .moaland-accordion__section .moaland-accordion__icon').length)
           expect(numberOfIcons).toEqual(numberOfExampleSections)
         })
       })

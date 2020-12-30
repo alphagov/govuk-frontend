@@ -197,19 +197,19 @@ examples:
 
 - name: with product name
   data:
-    navigationClasses: govuk-header__navigation--end
+    navigationClasses: moaland-header__navigation--end
     productName: Product Name
 
 - name: full width
   data:
-    containerClasses: govuk-header__container--full-width
-    navigationClasses: govuk-header__navigation--end
+    containerClasses: moaland-header__container--full-width
+    navigationClasses: moaland-header__navigation--end
     productName: Product Name
 
 - name: full width with navigation
   data:
-    containerClasses: govuk-header__container--full-width
-    navigationClasses: govuk-header__navigation--end
+    containerClasses: moaland-header__container--full-width
+    navigationClasses: moaland-header__navigation--end
     productName: Product Name
     navigation:
       - href: '#1'

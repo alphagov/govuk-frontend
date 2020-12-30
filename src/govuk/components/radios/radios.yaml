@@ -121,7 +121,7 @@ examples:
 - name: inline
   data:
     idPrefix: example
-    classes: govuk-radios--inline
+    classes: moaland-radios--inline
     name: example
     fieldset:
       legend:
@@ -159,18 +159,18 @@ examples:
     fieldset:
       legend:
         text: Which part of the Housing Act was your licence issued under?
-        classes: govuk-fieldset__legend--l
+        classes: moaland-fieldset__legend--l
         isPageHeading: true
     hint:
       text: Select one of the options below.
     items:
       - value: part-2
         html:
-          <span class="govuk-heading-s govuk-!-margin-bottom-1">Part 2 of the Housing Act 2004</span>
+          <span class="moaland-heading-s moaland-!-margin-bottom-1">Part 2 of the Housing Act 2004</span>
           For properties that are 3 or more stories high and occupied by 5 or more people
       - value: part-3
         html:
-          <span class="govuk-heading-s govuk-!-margin-bottom-1">Part 3 of the Housing Act 2004</span>
+          <span class="moaland-heading-s moaland-!-margin-bottom-1">Part 3 of the Housing Act 2004</span>
           For properties that are within a geographical area defined by a local council
 
 - name: with a medium legend
@@ -180,17 +180,17 @@ examples:
     fieldset:
       legend:
         text: Which part of the Housing Act was your licence issued under?
-        classes: govuk-fieldset__legend--m
+        classes: moaland-fieldset__legend--m
     hint:
       text: Select one of the options below.
     items:
       - value: part-2
         html:
-          <span class="govuk-heading-s govuk-!-margin-bottom-1">Part 2 of the Housing Act 2004</span>
+          <span class="moaland-heading-s moaland-!-margin-bottom-1">Part 2 of the Housing Act 2004</span>
           For properties that are 3 or more stories high and occupied by 5 or more people
       - value: part-3
         html:
-          <span class="govuk-heading-s govuk-!-margin-bottom-1">Part 3 of the Housing Act 2004</span>
+          <span class="moaland-heading-s moaland-!-margin-bottom-1">Part 3 of the Housing Act 2004</span>
           For properties that are within a geographical area defined by a local council
 
 - name: with a divider
@@ -203,7 +203,7 @@ examples:
     items:
       - value: governement-gateway
         text: Use Government Gateway
-      - value: govuk-verify
+      - value: moaland-verify
         text: Use GOV.UK Verify
       - divider: or
       - value: create-account
@@ -306,24 +306,24 @@ examples:
         text: Email
         conditional:
           html: |
-            <label class="govuk-label" for="context-email">Email address</label>
-            <input class="govuk-input govuk-!-width-one-third" name="context-email" type="text" id="context-email">
+            <label class="moaland-label" for="context-email">Email address</label>
+            <input class="moaland-input moaland-!-width-one-third" name="context-email" type="text" id="context-email">
       - value: phone
         text: Phone
         conditional:
           html: |
-            <label class="govuk-label" for="contact-phone">Phone number</label>
-            <input class="govuk-input govuk-!-width-one-third" name="contact-phone" type="text" id="contact-phone">
+            <label class="moaland-label" for="contact-phone">Phone number</label>
+            <input class="moaland-input moaland-!-width-one-third" name="contact-phone" type="text" id="contact-phone">
       - value: text
         text: Text message
         conditional:
           html: |
-            <label class="govuk-label" for="contact-text-message">Mobile phone number</label>
-            <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
+            <label class="moaland-label" for="contact-text-message">Mobile phone number</label>
+            <input class="moaland-input moaland-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
 
 - name: inline with conditional items
   data:
-    classes: govuk-radios--inline
+    classes: moaland-radios--inline
     idPrefix: how-contacted
     name: how-contacted
     fieldset:
@@ -334,20 +334,20 @@ examples:
         text: Email
         conditional:
           html: |
-            <label class="govuk-label" for="context-email">Email address</label>
-            <input class="govuk-input govuk-!-width-one-third" name="context-email" type="text" id="context-email">
+            <label class="moaland-label" for="context-email">Email address</label>
+            <input class="moaland-input moaland-!-width-one-third" name="context-email" type="text" id="context-email">
       - value: phone
         text: Phone
         conditional:
           html: |
-            <label class="govuk-label" for="contact-phone">Phone number</label>
-            <input class="govuk-input govuk-!-width-one-third" name="contact-phone" type="text" id="contact-phone">
+            <label class="moaland-label" for="contact-phone">Phone number</label>
+            <input class="moaland-input moaland-!-width-one-third" name="contact-phone" type="text" id="contact-phone">
       - value: text
         text: Text message
         conditional:
           html: |
-            <label class="govuk-label" for="contact-text-message">Mobile phone number</label>
-            <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
+            <label class="moaland-label" for="contact-text-message">Mobile phone number</label>
+            <input class="moaland-input moaland-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
 
 
 - name: with conditional item checked
@@ -363,27 +363,27 @@ examples:
       checked: true
       conditional:
         html: |
-          <label class="govuk-label" for="context-email">Email</label>
-          <input class="govuk-input govuk-!-width-one-third" name="context-email" type="text" id="context-email">
+          <label class="moaland-label" for="context-email">Email</label>
+          <input class="moaland-input moaland-!-width-one-third" name="context-email" type="text" id="context-email">
     - value: phone
       text: Phone
       conditional:
         html: |
-          <label class="govuk-label" for="contact-phone">Phone number</label>
-          <input class="govuk-input govuk-!-width-one-third" name="contact-phone" type="text" id="contact-phone">
+          <label class="moaland-label" for="contact-phone">Phone number</label>
+          <input class="moaland-input moaland-!-width-one-third" name="contact-phone" type="text" id="contact-phone">
     - value: text
       text: Text message
       conditional:
         html: |
-          <label class="govuk-label" for="contact-text-message">Mobile phone number</label>
-          <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
+          <label class="moaland-label" for="contact-text-message">Mobile phone number</label>
+          <input class="moaland-input moaland-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
 
 - name: with optional form-group classes showing group error
   data:
     idPrefix: 'how-contacted-2'
     name: 'how-contacted-2'
     formGroup:
-      classes: 'govuk-form-group--error'
+      classes: 'moaland-form-group--error'
     fieldset:
       legend:
         text: How do you want to be contacted?
@@ -392,29 +392,29 @@ examples:
       text: Email
       conditional:
         html: |
-          <label class="govuk-label" for="context-email">Email address</label>
-          <input class="govuk-input govuk-!-width-one-third" name="context-email" type="text" id="context-email">
+          <label class="moaland-label" for="context-email">Email address</label>
+          <input class="moaland-input moaland-!-width-one-third" name="context-email" type="text" id="context-email">
     - value: phone
       text: Phone
       checked: true
       conditional:
         html: |
-          <label class="govuk-label" for="contact-phone">Phone number</label>
-          <span id="contact-phone-error" class="govuk-error-message">Problem with input</span>
-          <input class="govuk-input govuk-input--error govuk-!-width-one-third" name="contact-phone" type="text" id="contact-phone" aria-describedby="contact-phone-error">
+          <label class="moaland-label" for="contact-phone">Phone number</label>
+          <span id="contact-phone-error" class="moaland-error-message">Problem with input</span>
+          <input class="moaland-input moaland-input--error moaland-!-width-one-third" name="contact-phone" type="text" id="contact-phone" aria-describedby="contact-phone-error">
     - value: text
       text: Text message
       conditional:
         html: |
-          <label class="govuk-label" for="contact-text-message">Mobile phone number</label>
-          <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
+          <label class="moaland-label" for="contact-text-message">Mobile phone number</label>
+          <input class="moaland-input moaland-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
 
 - name: small
   data:
     idPrefix: 'how-contacted-2'
     name: 'how-contacted-2'
     formGroup:
-      classes: 'govuk-radios--small'
+      classes: 'moaland-radios--small'
     fieldset:
       legend:
         text: How do you want to be contacted?
@@ -430,7 +430,7 @@ examples:
   data:
     idPrefix: foo
     name: foo
-    classes: govuk-radios--small
+    classes: moaland-radios--small
     fieldset:
       legend:
         text: Venenatis Condimentum
@@ -464,7 +464,7 @@ examples:
     idPrefix: 'how-contacted-2'
     name: 'how-contacted-2'
     formGroup:
-      classes: 'govuk-radios--small'
+      classes: 'moaland-radios--small'
     fieldset:
       legend:
         text: How do you want to be contacted?
@@ -483,7 +483,7 @@ examples:
     idPrefix: 'how-contacted-2'
     name: 'how-contacted-2'
     formGroup:
-      classes: 'govuk-radios--small'
+      classes: 'moaland-radios--small'
     fieldset:
       legend:
         text: How do you want to be contacted?
@@ -502,7 +502,7 @@ examples:
     idPrefix: 'how-contacted-2'
     name: 'how-contacted-2'
     formGroup:
-      classes: 'govuk-radios--small'
+      classes: 'moaland-radios--small'
     fieldset:
       legend:
         text: How do you want to be contacted?
@@ -520,7 +520,7 @@ examples:
     idPrefix: 'how-contacted-2'
     name: 'how-contacted-2'
     formGroup:
-      classes: 'govuk-radios--small'
+      classes: 'moaland-radios--small'
     fieldset:
       legend:
         text: How do you want to be contacted?
@@ -529,8 +529,8 @@ examples:
       text: Email
       conditional:
         html: |
-          <label class="govuk-label" for="context-email">Foo</label>
-          <input class="govuk-input govuk-!-width-one-third" name="context-email" type="text" id="context-email">
+          <label class="moaland-label" for="context-email">Foo</label>
+          <input class="moaland-input moaland-!-width-one-third" name="context-email" type="text" id="context-email">
     - value: phone
       text: Phone
     - value: text
@@ -539,7 +539,7 @@ examples:
 - name: small inline
   data:
     idPrefix: sort
-    classes: govuk-radios--small govuk-radios--inline
+    classes: moaland-radios--small moaland-radios--inline
     name: example
     fieldset:
       legend:
@@ -555,7 +555,7 @@ examples:
 - name: small inline extreme
   data:
     idPrefix: sort
-    classes: govuk-radios--small govuk-radios--inline
+    classes: moaland-radios--small moaland-radios--inline
     name: example
     fieldset:
       legend:
@@ -589,11 +589,11 @@ examples:
     fieldset:
       legend:
         text: How do you want to sign in?
-    classes: govuk-radios--small
+    classes: moaland-radios--small
     items:
       - value: governement-gateway
         text: Use Government Gateway
-      - value: govuk-verify
+      - value: moaland-verify
         text: Use GOV.UK Verify
       - divider: or
       - value: create-account

@@ -1,11 +1,11 @@
 {% from "macros/loadComponentTemplate.njk" import loadComponentTemplate %}
 
-<h4 class="govuk-heading-s">Markup</h4>
+<h4 class="moaland-heading-s">Markup</h4>
 {% set componentHtml %}{{ loadComponentTemplate(componentSlug, example.data) }}{% endset %}
-<pre><code class="govuk-!-font-size-16">{{- componentHtml | e -}}</code></pre>
+<pre><code class="moaland-!-font-size-16">{{- componentHtml | e -}}</code></pre>
 
-<h4 class="govuk-heading-s">Macro</h4>
-<pre class="govuk-!-margin-bottom-0 govuk-!-font-size-16"><code>{% raw %}{%{% endraw %} from "{{ componentSlug }}/macro.njk" import {{ componentSlug | componentNameToMacroName }} {% raw %}%}{% endraw %}
+<h4 class="moaland-heading-s">Macro</h4>
+<pre class="moaland-!-margin-bottom-0 moaland-!-font-size-16"><code>{% raw %}{%{% endraw %} from "{{ componentSlug }}/macro.njk" import {{ componentSlug | componentNameToMacroName }} {% raw %}%}{% endraw %}
 
 {% raw %}{{ {% endraw %}{{ componentSlug | componentNameToMacroName }}(
   {{- example.data | dump(2) -}}

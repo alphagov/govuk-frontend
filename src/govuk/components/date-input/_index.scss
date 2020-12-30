@@ -3,24 +3,24 @@
 @import "../hint/index";
 @import "../label/index";
 
-@include govuk-exports("govuk/component/date-input") {
-  .govuk-date-input {
-    @include govuk-clearfix;
+@include moaland-exports("moaland/component/date-input") {
+  .moaland-date-input {
+    @include moaland-clearfix;
     // font-size: 0 removes whitespace caused by inline-block
     font-size: 0;
   }
 
-  .govuk-date-input__item {
+  .moaland-date-input__item {
     display: inline-block;
-    margin-right: govuk-spacing(4);
+    margin-right: moaland-spacing(4);
     margin-bottom: 0;
   }
 
-  .govuk-date-input__label {
+  .moaland-date-input__label {
     display: block;
   }
 
-  .govuk-date-input__input {
+  .moaland-date-input__input {
     margin-bottom: 0;
   }
 }

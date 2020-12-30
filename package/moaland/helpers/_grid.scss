@@ -9,9 +9,9 @@
 /// @throw if `$key` is not a valid grid width
 /// @access public
 
-@function govuk-grid-width($key) {
-  @if map-has-key($govuk-grid-widths, $key) {
-    @return map-get($govuk-grid-widths, $key);
+@function moaland-grid-width($key) {
+  @if map-has-key($moaland-grid-widths, $key) {
+    @return map-get($moaland-grid-widths, $key);
   }
 
   @error "Unknown grid width `#{$key}`";
@@ -21,41 +21,41 @@
 ///
 /// Creates a grid column with standard gutter between the columns.
 ///
-/// Grid widths are defined in the `$govuk-grid-widths` map.
+/// Grid widths are defined in the `$moaland-grid-widths` map.
 ///
 /// By default the column width changes from 100% to specified width at the
 /// 'tablet' breakpoint, but other breakpoints can be specified using the `$at`
 /// parameter.
 ///
-/// @param {String} $width [full] name of a grid width from $govuk-grid-widths
+/// @param {String} $width [full] name of a grid width from $moaland-grid-widths
 /// @param {String} $float [left] left | right
 /// @param {String} $at [tablet] - mobile | tablet | desktop | any custom breakpoint
 ///
 /// @example scss - Default
-///   .govuk-grid-column-two-thirds {
-///     @include govuk-grid-column(two-thirds)
+///   .moaland-grid-column-two-thirds {
+///     @include moaland-grid-column(two-thirds)
 ///   }
 ///
 /// @example scss - Customising the breakpoint where width percentage is applied
-///   .govuk-grid-column-one-half-at-desktop {
-///     @include govuk-grid-column(one-half, $at: desktop);
+///   .moaland-grid-column-one-half-at-desktop {
+///     @include moaland-grid-column(one-half, $at: desktop);
 ///   }
 ///
 /// @example scss - Customising the float direction
-///   .govuk-grid-column-one-half-right {
-///     @include govuk-grid-column(two-thirds, $float: right);
+///   .moaland-grid-column-one-half-right {
+///     @include moaland-grid-column(two-thirds, $float: right);
 ///   }
 ///
 /// @access public
 
-@mixin govuk-grid-column($width: full, $float: left, $at: tablet) {
+@mixin moaland-grid-column($width: full, $float: left, $at: tablet) {
   box-sizing: border-box;
   @if $at != desktop {
     width: 100%;
   }
-  padding: 0 $govuk-gutter-half;
-  @include govuk-media-query($from: $at) {
-    width: govuk-grid-width($width);
+  padding: 0 $moaland-gutter-half;
+  @include moaland-media-query($from: $at) {
+    width: moaland-grid-width($width);
     float: $float;
   }
 }

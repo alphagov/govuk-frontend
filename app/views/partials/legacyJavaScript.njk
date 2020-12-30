@@ -1,30 +1,30 @@
-<script src="/vendor/govuk_template/javascripts/govuk-template.js"></script>
+<script src="/vendor/moaland_template/javascripts/moaland-template.js"></script>
 
 {# Frontend Toolkit dependency #}
 <script src="/vendor/jquery/jquery.min.js"></script>
 {# Frontend Toolkit modules #}
-<script src="/vendor/govuk_frontend_toolkit/details.polyfill.js"></script>
-<script src="/vendor/govuk_frontend_toolkit/modules.js"></script>
-<script src="/vendor/govuk_frontend_toolkit/modules/auto-track-event.js"></script>
-<script src="/vendor/govuk_frontend_toolkit/primary-links.js"></script>
-<script src="/vendor/govuk_frontend_toolkit/shim-links-with-button-role.js"></script>
-<script src="/vendor/govuk_frontend_toolkit/show-hide-content.js"></script>
-<script src="/vendor/govuk_frontend_toolkit/stick-at-top-when-scrolling.js"></script>
-<script src="/vendor/govuk_frontend_toolkit/stop-scrolling-at-footer.js"></script>
+<script src="/vendor/moaland_frontend_toolkit/details.polyfill.js"></script>
+<script src="/vendor/moaland_frontend_toolkit/modules.js"></script>
+<script src="/vendor/moaland_frontend_toolkit/modules/auto-track-event.js"></script>
+<script src="/vendor/moaland_frontend_toolkit/primary-links.js"></script>
+<script src="/vendor/moaland_frontend_toolkit/shim-links-with-button-role.js"></script>
+<script src="/vendor/moaland_frontend_toolkit/show-hide-content.js"></script>
+<script src="/vendor/moaland_frontend_toolkit/stick-at-top-when-scrolling.js"></script>
+<script src="/vendor/moaland_frontend_toolkit/stop-scrolling-at-footer.js"></script>
 
 <script>
   (function() {
     // Instantiate Frontend Toolkit modules
     // Ordering follows what we do in test manifest: /spec/manifest.js
-    GOVUK.details.init()
-    GOVUK.modules.start()
-    GOVUK.primaryLinks.init()
+    Moaland.details.init()
+    Moaland.modules.start()
+    Moaland.primaryLinks.init()
 
-    var showHideContent = new GOVUK.ShowHideContent()
+    var showHideContent = new Moaland.ShowHideContent()
     showHideContent.init()
 
-    GOVUK.stickAtTopWhenScrolling.init()
-    GOVUK.shimLinksWithButtonRole.init()
+    Moaland.stickAtTopWhenScrolling.init()
+    Moaland.shimLinksWithButtonRole.init()
 
     // Copied from https://github.com/alphagov/govuk_elements/blob/ef0baed92fabbbfdc0f6ea09d7dd76bffa994bf8/assets/javascripts/application.js#L22
     $(window).load(function () {

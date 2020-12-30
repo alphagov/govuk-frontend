@@ -45,7 +45,7 @@
         "name": "titleId",
         "type": "string",
         "required": false,
-        "description": "The `id` for the banner title, and the `aria-labelledby` attribute in the banner. Defaults to `govuk-notification-banner-title`."
+        "description": "The `id` for the banner title, and the `aria-labelledby` attribute in the banner. Defaults to `moaland-notification-banner-title`."
     },
     {
         "name": "disableAutoFocus",

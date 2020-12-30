@@ -1,29 +1,29 @@
-@if not mixin-exists("govuk-exports") {
+@if not mixin-exists("moaland-exports") {
   @warn "Importing items from the overrides layer without first importing `base` is deprecated, and will no longer work as of GOV.UK Frontend v4.0.";
 }
 
 @import "../base";
 
 // stylelint-disable declaration-no-important
-@include govuk-exports("govuk/overrides/display") {
-  .govuk-\!-display-inline {
+@include moaland-exports("moaland/overrides/display") {
+  .moaland-\!-display-inline {
     display: inline !important;
   }
 
-  .govuk-\!-display-inline-block {
+  .moaland-\!-display-inline-block {
     display: inline-block !important;
   }
 
-  .govuk-\!-display-block {
+  .moaland-\!-display-block {
     display: block !important;
   }
 
-  .govuk-\!-display-none {
+  .moaland-\!-display-none {
     display: none !important;
   }
 
-  @include govuk-media-query($media-type: print) {
-    .govuk-\!-display-none-print {
+  @include moaland-media-query($media-type: print) {
+    .moaland-\!-display-none-print {
       display: none !important;
     }
   }

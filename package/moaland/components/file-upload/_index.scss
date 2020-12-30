@@ -2,12 +2,12 @@
 @import "../hint/index";
 @import "../label/index";
 
-@include govuk-exports("govuk/component/file-upload") {
-  $component-padding: govuk-spacing(1);
+@include moaland-exports("moaland/component/file-upload") {
+  $component-padding: moaland-spacing(1);
 
-  .govuk-file-upload {
-    @include govuk-font($size: 19);
-    @include govuk-text-colour;
+  .moaland-file-upload {
+    @include moaland-font($size: 19);
+    @include moaland-text-colour;
     padding-top: $component-padding;
     padding-bottom: $component-padding;
 
@@ -19,15 +19,15 @@
       padding-right: $component-padding;
       padding-left: $component-padding;
 
-      outline: $govuk-focus-width solid $govuk-focus-colour;
+      outline: $moaland-focus-width solid $moaland-focus-colour;
       // Use `box-shadow` to add border instead of changing `border-width`
       // (which changes element size) and since `outline` is already used for the
       // yellow focus state.
-      box-shadow: inset 0 0 0 4px $govuk-input-border-colour;
+      box-shadow: inset 0 0 0 4px $moaland-input-border-colour;
 
-      @include govuk-if-ie8 {
+      @include moaland-if-ie8 {
         // IE8 doesn't support `box-shadow` so add an actual border
-        border: 4px solid $govuk-input-border-colour;
+        border: 4px solid $moaland-input-border-colour;
       }
     }
 
@@ -42,9 +42,9 @@
       padding-right: $component-padding;
       padding-left: $component-padding;
 
-      outline: $govuk-focus-width solid $govuk-focus-colour;
+      outline: $moaland-focus-width solid $moaland-focus-colour;
 
-      box-shadow: inset 0 0 0 4px $govuk-input-border-colour;
+      box-shadow: inset 0 0 0 4px $moaland-input-border-colour;
     }
   }
 }

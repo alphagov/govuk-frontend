@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Phase banner with dependant components renders the tag component classes 1`] = `
-<strong class="govuk-tag govuk-phase-banner__content__tag govuk-tag--inactive">
+<strong class="moaland-tag moaland-phase-banner__content__tag moaland-tag--inactive">
   alpha
 </strong>
 `;
 
 exports[`Phase banner with dependant components renders the tag component html 1`] = `
-<strong class="govuk-tag govuk-phase-banner__content__tag">
+<strong class="moaland-tag moaland-phase-banner__content__tag">
   <em>
     alpha
   </em>
@@ -15,7 +15,7 @@ exports[`Phase banner with dependant components renders the tag component html 1
 `;
 
 exports[`Phase banner with dependant components renders the tag component text 1`] = `
-<strong class="govuk-tag govuk-phase-banner__content__tag">
+<strong class="moaland-tag moaland-phase-banner__content__tag">
   alpha
 </strong>
 `;

@@ -20,13 +20,13 @@ describe('grid system', () => {
 
     @import "tools/exports";
   `
-  describe('govuk-grid-width function', () => {
+  describe('moaland-grid-width function', () => {
     it('outputs the specified key value from the map of widths', async () => {
       const sass = `
         ${sassImports}
 
         .foo {
-          content: govuk-grid-width(one-quarter);
+          content: moaland-grid-width(one-quarter);
         }`
 
       const results = await renderSass({ data: sass, ...sassConfig })
@@ -40,7 +40,7 @@ describe('grid system', () => {
       const sass = `
         ${sassImports}
 
-        $value: govuk-grid-width(seven-fifths);
+        $value: moaland-grid-width(seven-fifths);
         `
 
       await expect(renderSass({ data: sass, ...sassConfig }))
@@ -49,13 +49,13 @@ describe('grid system', () => {
     })
   })
 
-  describe('@govuk-grid-column mixin', () => {
+  describe('@moaland-grid-column mixin', () => {
     it('outputs the CSS required for a column in the grid', async () => {
       const sass = `
         ${sassImports}
 
-        .govuk-grid-column-full {
-          @include govuk-grid-column();
+        .moaland-grid-column-full {
+          @include moaland-grid-column();
         }
         `
 
@@ -65,12 +65,12 @@ describe('grid system', () => {
         .toString()
         .trim())
         .toBe(outdent`
-        .govuk-grid-column-full {
+        .moaland-grid-column-full {
           box-sizing: border-box;
           width: 100%;
           padding: 0 15px; }
           @media (min-width: 40.0625em) {
-            .govuk-grid-column-full {
+            .moaland-grid-column-full {
               width: 100%;
               float: left; } }`)
     })
@@ -79,8 +79,8 @@ describe('grid system', () => {
       const sass = `
         ${sassImports}
 
-        .govuk-grid-column-two-thirds {
-          @include govuk-grid-column(two-thirds);
+        .moaland-grid-column-two-thirds {
+          @include moaland-grid-column(two-thirds);
         }
       `
       const results = await renderSass({ data: sass, ...sassConfig })
@@ -89,12 +89,12 @@ describe('grid system', () => {
         .toString()
         .trim())
         .toBe(outdent`
-        .govuk-grid-column-two-thirds {
+        .moaland-grid-column-two-thirds {
           box-sizing: border-box;
           width: 100%;
           padding: 0 15px; }
           @media (min-width: 40.0625em) {
-            .govuk-grid-column-two-thirds {
+            .moaland-grid-column-two-thirds {
               width: 66.6666%;
               float: left; } }
         `)
@@ -104,8 +104,8 @@ describe('grid system', () => {
       const sass = `
         ${sassImports}
 
-        .govuk-grid-column-one-quarter-at-desktop {
-          @include govuk-grid-column(one-quarter, $at: desktop);
+        .moaland-grid-column-one-quarter-at-desktop {
+          @include moaland-grid-column(one-quarter, $at: desktop);
         }
       `
       const results = await renderSass({ data: sass, ...sassConfig })
@@ -114,11 +114,11 @@ describe('grid system', () => {
         .toString()
         .trim())
         .toBe(outdent`
-        .govuk-grid-column-one-quarter-at-desktop {
+        .moaland-grid-column-one-quarter-at-desktop {
           box-sizing: border-box;
           padding: 0 15px; }
           @media (min-width: 48.0625em) {
-            .govuk-grid-column-one-quarter-at-desktop {
+            .moaland-grid-column-one-quarter-at-desktop {
               width: 25%;
               float: left; } }
         `)
@@ -127,8 +127,8 @@ describe('grid system', () => {
       const sass = `
         ${sassImports}
 
-        .govuk-grid-column-one-quarter-at-500px {
-          @include govuk-grid-column(one-quarter, $at: 500px);
+        .moaland-grid-column-one-quarter-at-500px {
+          @include moaland-grid-column(one-quarter, $at: 500px);
         }
       `
       const results = await renderSass({ data: sass, ...sassConfig })
@@ -137,12 +137,12 @@ describe('grid system', () => {
         .toString()
         .trim())
         .toBe(outdent`
-        .govuk-grid-column-one-quarter-at-500px {
+        .moaland-grid-column-one-quarter-at-500px {
           box-sizing: border-box;
           width: 100%;
           padding: 0 15px; }
           @media (min-width: 31.25em) {
-            .govuk-grid-column-one-quarter-at-500px {
+            .moaland-grid-column-one-quarter-at-500px {
               width: 25%;
               float: left; } }
         `)
@@ -152,8 +152,8 @@ describe('grid system', () => {
       const sass = `
         ${sassImports}
 
-        .govuk-grid-column-one-half-right {
-          @include govuk-grid-column(one-half, $float: right);
+        .moaland-grid-column-one-half-right {
+          @include moaland-grid-column(one-half, $float: right);
         }
       `
       const results = await renderSass({ data: sass, ...sassConfig })
@@ -162,12 +162,12 @@ describe('grid system', () => {
         .toString()
         .trim())
         .toBe(outdent`
-        .govuk-grid-column-one-half-right {
+        .moaland-grid-column-one-half-right {
           box-sizing: border-box;
           width: 100%;
           padding: 0 15px; }
           @media (min-width: 40.0625em) {
-            .govuk-grid-column-one-half-right {
+            .moaland-grid-column-one-half-right {
               width: 50%;
               float: right; } }
         `)

@@ -1,7 +1,7 @@
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-	typeof define === 'function' && define.amd ? define('GOVUKFrontend', factory) :
-	(global.GOVUKFrontend = factory());
+	typeof define === 'function' && define.amd ? define('MoalandFrontend', factory) :
+	(global.MoalandFrontend = factory());
 }(this, (function () { 'use strict';
 
 (function(undefined) {
@@ -1102,11 +1102,11 @@ Checkboxes.prototype.syncAllConditionalReveals = function () {
 Checkboxes.prototype.syncConditionalRevealWithInputState = function ($input) {
   var $target = this.$module.querySelector('#' + $input.getAttribute('aria-controls'));
 
-  if ($target && $target.classList.contains('govuk-checkboxes__conditional')) {
+  if ($target && $target.classList.contains('moaland-checkboxes__conditional')) {
     var inputIsChecked = $input.checked;
 
     $input.setAttribute('aria-expanded', inputIsChecked);
-    $target.classList.toggle('govuk-checkboxes__conditional--hidden', !inputIsChecked);
+    $target.classList.toggle('moaland-checkboxes__conditional--hidden', !inputIsChecked);
   }
 };
 

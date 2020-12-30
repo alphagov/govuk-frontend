@@ -2,16 +2,16 @@
 /// 'Compatibility Mode'
 ///
 /// Enabling these flags improves compatibility if you are using GOV.UK Frontend
-/// in an application that also uses govuk_elements, govuk_frontend_toolkit or
-/// govuk_template (the 'legacy repos').
+/// in an application that also uses moaland_elements, moaland_frontend_toolkit or
+/// moaland_template (the 'legacy repos').
 ///
 /// Enabling any of these settings will, by default:
 ///
 /// - switch GOV.UK Frontend to using the same colour palette as the legacy
-///   repos, by setting `$govuk-use-legacy-palette` to true.
+///   repos, by setting `$moaland-use-legacy-palette` to true.
 ///
 /// - prevent GOV.UK Frontend from using rem for font sizing, by setting
-///   `$govuk-typography-use-rem` to false.
+///   `$moaland-typography-use-rem` to false.
 ///
 /// @group settings/compatibility
 ////
@@ -24,7 +24,7 @@
 /// @type Boolean
 /// @access public
 
-$govuk-compatibility-govukfrontendtoolkit: false !default;
+$moaland-compatibility-moalandfrontendtoolkit: false !default;
 
 /// Compatibility Mode: alphagov/govuk_template
 ///
@@ -42,7 +42,7 @@ $govuk-compatibility-govukfrontendtoolkit: false !default;
 /// @type Boolean
 /// @access public
 
-$govuk-compatibility-govuktemplate: false !default;
+$moaland-compatibility-moalandtemplate: false !default;
 
 /// Compatibility Mode: alphagov/govuk_elements
 ///
@@ -57,18 +57,18 @@ $govuk-compatibility-govuktemplate: false !default;
 /// @type Boolean
 /// @access public
 
-$govuk-compatibility-govukelements: false !default;
+$moaland-compatibility-moalandelements: false !default;
 
 /// Compatibility Product Map
 ///
 /// Maps product names to their settings that we can use to lookup states from
-/// within the `@govuk-compatibility` mixin.
+/// within the `@moaland-compatibility` mixin.
 ///
 /// @type Map
 /// @access private
 
-$_govuk-compatibility: (
-  govuk_frontend_toolkit: $govuk-compatibility-govukfrontendtoolkit,
-  govuk_template: $govuk-compatibility-govuktemplate,
-  govuk_elements: $govuk-compatibility-govukelements,
+$_moaland-compatibility: (
+  moaland_frontend_toolkit: $moaland-compatibility-moalandfrontendtoolkit,
+  moaland_template: $moaland-compatibility-moalandtemplate,
+  moaland_elements: $moaland-compatibility-moalandelements,
 );

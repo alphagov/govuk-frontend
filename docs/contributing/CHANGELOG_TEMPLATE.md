@@ -10,7 +10,7 @@
 
   To migrate you need to change: X
 
-  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+  ([PR #N](https://github.com/moaland/moaland-frontend/pull/N))
 
 🆕 New features:
 
@@ -18,7 +18,7 @@
 
   Description goes here (optional)
 
-  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+  ([PR #N](https://github.com/moaland/moaland-frontend/pull/N))
 
 🔧 Fixes:
 
@@ -26,4 +26,4 @@
 
   Description goes here (optional)
 
-  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+  ([PR #N](https://github.com/moaland/moaland-frontend/pull/N))

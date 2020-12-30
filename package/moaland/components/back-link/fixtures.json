@@ -6,7 +6,7 @@
             "options": {
                 "href": "#"
             },
-            "html": "<a href=\"#\" class=\"govuk-back-link\">Back</a>",
+            "html": "<a href=\"#\" class=\"moaland-back-link\">Back</a>",
             "hidden": false
         },
         {
@@ -15,7 +15,7 @@
                 "href": "#",
                 "text": "Back to home"
             },
-            "html": "<a href=\"#\" class=\"govuk-back-link\">Back to home</a>",
+            "html": "<a href=\"#\" class=\"moaland-back-link\">Back to home</a>",
             "hidden": false
         },
         {
@@ -24,7 +24,7 @@
                 "classes": "app-back-link--custom-class",
                 "href": "#"
             },
-            "html": "<a href=\"#\" class=\"govuk-back-link app-back-link--custom-class\">Back</a>",
+            "html": "<a href=\"#\" class=\"moaland-back-link app-back-link--custom-class\">Back</a>",
             "hidden": true
         },
         {
@@ -33,7 +33,7 @@
                 "text": "<b>Home</b>",
                 "href": "#"
             },
-            "html": "<a href=\"#\" class=\"govuk-back-link\">&lt;b&gt;Home&lt;/b&gt;</a>",
+            "html": "<a href=\"#\" class=\"moaland-back-link\">&lt;b&gt;Home&lt;/b&gt;</a>",
             "hidden": true
         },
         {
@@ -42,7 +42,7 @@
                 "html": "<b>Back</b>",
                 "href": "#"
             },
-            "html": "<a href=\"#\" class=\"govuk-back-link\"><b>Back</b></a>",
+            "html": "<a href=\"#\" class=\"moaland-back-link\"><b>Back</b></a>",
             "hidden": true
         },
         {
@@ -55,7 +55,7 @@
                     "aria-label": "Back to home"
                 }
             },
-            "html": "<a href=\"#\" class=\"govuk-back-link\" data-test=\"attribute\" aria-label=\"Back to home\"><b>Back to home</b></a>",
+            "html": "<a href=\"#\" class=\"moaland-back-link\" data-test=\"attribute\" aria-label=\"Back to home\"><b>Back to home</b></a>",
             "hidden": true
         }
     ]

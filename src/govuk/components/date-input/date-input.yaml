@@ -93,13 +93,13 @@ examples:
     items:
       -
         name: day
-        classes: govuk-input--width-2
+        classes: moaland-input--width-2
       -
         name: month
-        classes: govuk-input--width-2
+        classes: moaland-input--width-2
       -
         name: year
-        classes: govuk-input--width-4
+        classes: moaland-input--width-4
 - name: with errors only
   data:
     id: dob-errors
@@ -111,13 +111,13 @@ examples:
     items:
       -
         name: day
-        classes: govuk-input--width-2 govuk-input--error
+        classes: moaland-input--width-2 moaland-input--error
       -
         name: month
-        classes: govuk-input--width-2 govuk-input--error
+        classes: moaland-input--width-2 moaland-input--error
       -
         name: year
-        classes: govuk-input--width-4 govuk-input--error
+        classes: moaland-input--width-4 moaland-input--error
 - name: with errors and hint
   data:
     id: dob-errors
@@ -131,13 +131,13 @@ examples:
     items:
       -
         name: day
-        classes: govuk-input--width-2 govuk-input--error
+        classes: moaland-input--width-2 moaland-input--error
       -
         name: month
-        classes: govuk-input--width-2 govuk-input--error
+        classes: moaland-input--width-2 moaland-input--error
       -
         name: year
-        classes: govuk-input--width-4 govuk-input--error
+        classes: moaland-input--width-4 moaland-input--error
 - name: with error on day input
   data:
     id: dob-day-error
@@ -152,13 +152,13 @@ examples:
     items:
       -
         name: day
-        classes: govuk-input--width-2 govuk-input--error
+        classes: moaland-input--width-2 moaland-input--error
       -
         name: month
-        classes: govuk-input--width-2
+        classes: moaland-input--width-2
       -
         name: year
-        classes: govuk-input--width-4
+        classes: moaland-input--width-4
 - name: with error on month input
   data:
     id: dob-month-error
@@ -173,13 +173,13 @@ examples:
     items:
       -
         name: day
-        classes: govuk-input--width-2
+        classes: moaland-input--width-2
       -
         name: month
-        classes: govuk-input--width-2 govuk-input--error
+        classes: moaland-input--width-2 moaland-input--error
       -
         name: year
-        classes: govuk-input--width-4
+        classes: moaland-input--width-4
 - name: with error on year input
   data:
     id: dob-year-error
@@ -194,13 +194,13 @@ examples:
     items:
       -
         name: day
-        classes: govuk-input--width-2
+        classes: moaland-input--width-2
       -
         name: month
-        classes: govuk-input--width-2
+        classes: moaland-input--width-2
       -
         name: year
-        classes: govuk-input--width-4 govuk-input--error
+        classes: moaland-input--width-4 moaland-input--error
 - name: with default items
   data:
     id: dob
@@ -233,15 +233,15 @@ examples:
     items:
       -
         name: day
-        classes: govuk-input--width-2
+        classes: moaland-input--width-2
         autocomplete: bday-day
       -
         name: month
-        classes: govuk-input--width-2
+        classes: moaland-input--width-2
         autocomplete: bday-month
       -
         name: year
-        classes: govuk-input--width-4
+        classes: moaland-input--width-4
         autocomplete: bday-year
 - name: with input attributes
   data:
@@ -255,17 +255,17 @@ examples:
     items:
       -
         name: day
-        classes: govuk-input--width-2
+        classes: moaland-input--width-2
         attributes:
           data-example-day: day
       -
         name: month
-        classes: govuk-input--width-2
+        classes: moaland-input--width-2
         attributes:
           data-example-month: month
       -
         name: year
-        classes: govuk-input--width-4
+        classes: moaland-input--width-4
         attributes:
           data-example-year: year
 

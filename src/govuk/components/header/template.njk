@@ -1,9 +1,9 @@
-<header class="govuk-header {{ params.classes if params.classes }}" role="banner" data-module="govuk-header"
+<header class="moaland-header {{ params.classes if params.classes }}" role="banner" data-module="moaland-header"
         {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
-  <div class="govuk-header__container {{ params.containerClasses | default('govuk-width-container') }}">
-    <div class="govuk-header__logo">
-      <a href="{{ params.homepageUrl | default('/') }}" class="govuk-header__link govuk-header__link--homepage">
-        <span class="govuk-header__logotype">
+  <div class="moaland-header__container {{ params.containerClasses | default('moaland-width-container') }}">
+    <div class="moaland-header__logo">
+      <a href="{{ params.homepageUrl | default('/') }}" class="moaland-header__link moaland-header__link--homepage">
+        <span class="moaland-header__logotype">
           {#- We use an inline SVG for the crown so that we can cascade the
           currentColor into the crown whilst continuing to support older browsers
           which do not support external SVGs without a Javascript polyfill. This
@@ -19,7 +19,7 @@
           <svg
             aria-hidden="true"
             focusable="false"
-            class="govuk-header__logotype-crown"
+            class="moaland-header__logotype-crown"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 132 97"
             height="30"
@@ -39,35 +39,35 @@
 
             In other browsers <image> is synonymous for the <img> tag and will be
             interpreted as such, displaying the fallback image. #}
-            <image src="{{ params.assetsPath | default('/assets/images') }}/govuk-logotype-crown.png" xlink:href="" class="govuk-header__logotype-crown-fallback-image" width="36" height="32"></image>
+            <image src="{{ params.assetsPath | default('/assets/images') }}/moaland-logotype-crown.png" xlink:href="" class="moaland-header__logotype-crown-fallback-image" width="36" height="32"></image>
           </svg>
-          <span class="govuk-header__logotype-text">
+          <span class="moaland-header__logotype-text">
             GOV.UK
           </span>
         </span>
         {% if (params.productName) %}
-        <span class="govuk-header__product-name">
+        <span class="moaland-header__product-name">
           {{ params.productName }}
         </span>
         {% endif %}
       </a>
     </div>
     {% if params.serviceName or params.navigation  %}
-    <div class="govuk-header__content">
+    <div class="moaland-header__content">
     {% if params.serviceName %}
-    <a href="{{ params.serviceUrl }}" class="govuk-header__link govuk-header__link--service-name">
+    <a href="{{ params.serviceUrl }}" class="moaland-header__link moaland-header__link--service-name">
       {{ params.serviceName }}
     </a>
     {% endif %}
     {% if params.navigation %}
-    <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="{{ params.menuButtonLabel | default('Show or hide navigation menu') }}">Menu</button>
+    <button type="button" class="moaland-header__menu-button moaland-js-header-toggle" aria-controls="navigation" aria-label="{{ params.menuButtonLabel | default('Show or hide navigation menu') }}">Menu</button>
     <nav>
-      <ul id="navigation" class="govuk-header__navigation {{ params.navigationClasses if params.navigationClasses }}" aria-label="{{ params.navigationLabel | default('Navigation menu') }}">
+      <ul id="navigation" class="moaland-header__navigation {{ params.navigationClasses if params.navigationClasses }}" aria-label="{{ params.navigationLabel | default('Navigation menu') }}">
         {% for item in params.navigation %}
           {% if item.text or item.html %}
-            <li class="govuk-header__navigation-item{{ ' govuk-header__navigation-item--active' if item.active }}">
+            <li class="moaland-header__navigation-item{{ ' moaland-header__navigation-item--active' if item.active }}">
               {% if item.href %}
-                <a class="govuk-header__link" href="{{ item.href }}"{% for attribute, value in item.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+                <a class="moaland-header__link" href="{{ item.href }}"{% for attribute, value in item.attributes %} {{attribute}}="{{value}}"{% endfor %}>
               {% endif %}
                 {{ item.html | safe if item.html else item.text }}
               {% if item.href %}

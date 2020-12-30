@@ -88,7 +88,7 @@ describe(`http://localhost:${PORT}`, () => {
         const $ = cheerio.load(res.body)
         const $html = $('html')
 
-        expect($html.attr('class')).toBe('govuk-template app-html-class')
+        expect($html.attr('class')).toBe('moaland-template app-html-class')
         done(err)
       })
     })
@@ -119,7 +119,7 @@ describe(`http://localhost:${PORT}`, () => {
         const $ = cheerio.load(res.body)
         const $body = $('body')
 
-        expect($body.attr('class')).toBe('govuk-template__body app-body-class')
+        expect($body.attr('class')).toBe('moaland-template__body app-body-class')
         done(err)
       })
     })
@@ -146,7 +146,7 @@ describe(`http://localhost:${PORT}`, () => {
     it('should have a custom Skip link component', done => {
       requestPath(templatePath, (err, res) => {
         const $ = cheerio.load(res.body)
-        const $skipLink = $('.govuk-skip-link')
+        const $skipLink = $('.moaland-skip-link')
         expect($skipLink.html()).toBe('Passer au contenu principal')
         done(err)
       })
@@ -155,8 +155,8 @@ describe(`http://localhost:${PORT}`, () => {
     it('should have a custom Header component', done => {
       requestPath(templatePath, (err, res) => {
         const $ = cheerio.load(res.body)
-        const $header = $('.govuk-header')
-        const $serviceName = $header.find('.govuk-header__link--service-name')
+        const $header = $('.moaland-header')
+        const $serviceName = $header.find('.moaland-header__link--service-name')
         expect($serviceName.html()).toContain('Nom du service')
         done(err)
       })
@@ -165,9 +165,9 @@ describe(`http://localhost:${PORT}`, () => {
     it('should have a Phase banner component', done => {
       requestPath.get(templatePath, (err, res) => {
         const $ = cheerio.load(res.body)
-        const $phaseBanner = $('.govuk-phase-banner')
-        const $text = $phaseBanner.find('.govuk-phase-banner__text')
-        expect($text.html()).toContain('C&apos;est un nouveau service - vos <a class="govuk-link" href="#">commentaires</a> nous aideront &#xE0; l&apos;am&#xE9;liorer.')
+        const $phaseBanner = $('.moaland-phase-banner')
+        const $text = $phaseBanner.find('.moaland-phase-banner__text')
+        expect($text.html()).toContain('C&apos;est un nouveau service - vos <a class="moaland-link" href="#">commentaires</a> nous aideront &#xE0; l&apos;am&#xE9;liorer.')
         done(err)
       })
     })
@@ -175,8 +175,8 @@ describe(`http://localhost:${PORT}`, () => {
     it('should have a custom Footer component', done => {
       requestPath.get(templatePath, (err, res) => {
         const $ = cheerio.load(res.body)
-        const $footer = $('.govuk-footer')
-        const $footerLink = $footer.find('.govuk-footer__link')
+        const $footer = $('.moaland-footer')
+        const $footerLink = $footer.find('.moaland-footer__link')
         expect($footerLink.html()).toContain('Aidez-moi')
         done(err)
       })
@@ -195,9 +195,9 @@ describe(`http://localhost:${PORT}`, () => {
     it('should have `beforeContent` outside the main section of the page', done => {
       requestPath.get(templatePath, (err, res) => {
         const $ = cheerio.load(res.body)
-        const $container = $('.govuk-width-container')
-        const $phaseBanner = $container.find('> .govuk-phase-banner')
-        const $backLink = $container.find('> .govuk-back-link')
+        const $container = $('.moaland-width-container')
+        const $phaseBanner = $container.find('> .moaland-phase-banner')
+        const $backLink = $container.find('> .moaland-back-link')
 
         expect($phaseBanner.length).toBe(1)
         expect($backLink.length).toBe(1)
@@ -210,7 +210,7 @@ describe(`http://localhost:${PORT}`, () => {
         const $ = cheerio.load(res.body)
         const $main = $('main')
 
-        expect($main.attr('class')).toBe('govuk-main-wrapper govuk-main-wrapper--auto-spacing app-main-class')
+        expect($main.attr('class')).toBe('moaland-main-wrapper moaland-main-wrapper--auto-spacing app-main-class')
         done(err)
       })
     })

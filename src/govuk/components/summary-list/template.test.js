@@ -30,14 +30,14 @@ describe('Summary list', () => {
     it('renders classes', async () => {
       const $ = render('summary-list', examples['no-border'])
 
-      const $component = $('.govuk-summary-list')
-      expect($component.hasClass('govuk-summary-list--no-border')).toBeTruthy()
+      const $component = $('.moaland-summary-list')
+      expect($component.hasClass('moaland-summary-list--no-border')).toBeTruthy()
     })
 
     it('renders with attributes', () => {
       const $ = render('summary-list', examples.attributes)
 
-      const $component = $('.govuk-summary-list')
+      const $component = $('.moaland-summary-list')
       expect($component.attr('data-attribute-1')).toEqual('value-1')
       expect($component.attr('data-attribute-2')).toEqual('value-2')
     })
@@ -47,16 +47,16 @@ describe('Summary list', () => {
     it('renders list without falsely values', async () => {
       const $ = render('summary-list', examples['with falsey values'])
 
-      const $component = $('.govuk-summary-list')
-      const $row = $component.find('.govuk-summary-list__row')
+      const $component = $('.moaland-summary-list')
+      const $row = $component.find('.moaland-summary-list__row')
       expect($row.length).toBe(2)
     })
 
     it('renders classes', async () => {
       const $ = render('summary-list', examples['rows with classes'])
 
-      const $component = $('.govuk-summary-list')
-      const $row = $component.find('.govuk-summary-list__row')
+      const $component = $('.moaland-summary-list')
+      const $row = $component.find('.moaland-summary-list__row')
       expect($row.hasClass('app-custom-class')).toBeTruthy()
     })
 
@@ -64,8 +64,8 @@ describe('Summary list', () => {
       it('renders text', async () => {
         const $ = render('summary-list', examples.default)
 
-        const $component = $('.govuk-summary-list')
-        const $key = $component.find('dt.govuk-summary-list__key')
+        const $component = $('.moaland-summary-list')
+        const $key = $component.find('dt.moaland-summary-list__key')
 
         expect($key.html()).toContain('Name')
       })
@@ -73,8 +73,8 @@ describe('Summary list', () => {
       it('renders html', async () => {
         const $ = render('summary-list', examples['key with html'])
 
-        const $component = $('.govuk-summary-list')
-        const $key = $component.find('dt.govuk-summary-list__key')
+        const $component = $('.moaland-summary-list')
+        const $key = $component.find('dt.moaland-summary-list__key')
 
         expect($key.html()).toContain('<b>Name</b>')
       })
@@ -82,8 +82,8 @@ describe('Summary list', () => {
       it('renders classes', async () => {
         const $ = render('summary-list', examples['key with classes'])
 
-        const $component = $('.govuk-summary-list')
-        const $key = $component.find('dt.govuk-summary-list__key')
+        const $component = $('.moaland-summary-list')
+        const $key = $component.find('dt.moaland-summary-list__key')
         expect($key.hasClass('app-custom-class')).toBeTruthy()
       })
     })
@@ -92,8 +92,8 @@ describe('Summary list', () => {
       it('renders text', async () => {
         const $ = render('summary-list', examples.default)
 
-        const $component = $('.govuk-summary-list')
-        const $value = $component.find('dd.govuk-summary-list__value')
+        const $component = $('.moaland-summary-list')
+        const $value = $component.find('dd.moaland-summary-list__value')
 
         expect($value.html()).toContain('Firstname Lastname')
       })
@@ -101,8 +101,8 @@ describe('Summary list', () => {
       it('renders html', async () => {
         const $ = render('summary-list', examples['value with html'])
 
-        const $component = $('.govuk-summary-list')
-        const $value = $component.find('dd.govuk-summary-list__value')
+        const $component = $('.moaland-summary-list')
+        const $value = $component.find('dd.moaland-summary-list__value')
 
         expect($value.html()).toContain('<span>email@email.com</span>')
       })
@@ -110,9 +110,9 @@ describe('Summary list', () => {
       it('renders classes', async () => {
         const $ = render('summary-list', examples['overridden-widths'])
 
-        const $component = $('.govuk-summary-list')
-        const $value = $component.find('dd.govuk-summary-list__value')
-        expect($value.hasClass('govuk-!-width-one-quarter')).toBeTruthy()
+        const $component = $('.moaland-summary-list')
+        const $value = $component.find('dd.moaland-summary-list__value')
+        expect($value.hasClass('moaland-!-width-one-quarter')).toBeTruthy()
       })
     })
 
@@ -120,8 +120,8 @@ describe('Summary list', () => {
       it('renders href', async () => {
         const $ = render('summary-list', examples['actions href'])
 
-        const $component = $('.govuk-summary-list')
-        const $actionLink = $component.find('.govuk-summary-list__actions > a')
+        const $component = $('.moaland-summary-list')
+        const $actionLink = $component.find('.moaland-summary-list__actions > a')
 
         expect($actionLink.attr('href')).toBe('https://www.gov.uk')
       })
@@ -129,8 +129,8 @@ describe('Summary list', () => {
       it('renders text', async () => {
         const $ = render('summary-list', examples['with actions'])
 
-        const $component = $('.govuk-summary-list')
-        const $actionLink = $component.find('.govuk-summary-list__actions > a')
+        const $component = $('.moaland-summary-list')
+        const $actionLink = $component.find('.moaland-summary-list__actions > a')
 
         expect($actionLink.text().trim()).toContain('Change date of birth')
       })
@@ -138,8 +138,8 @@ describe('Summary list', () => {
       it('renders html', async () => {
         const $ = render('summary-list', examples['actions with html'])
 
-        const $component = $('.govuk-summary-list')
-        const $actionLink = $component.find('.govuk-summary-list__actions > a')
+        const $component = $('.moaland-summary-list')
+        const $actionLink = $component.find('.moaland-summary-list__actions > a')
 
         expect($actionLink.html()).toContain('Edit<span class="visually-hidden"> name</span>')
       })
@@ -147,16 +147,16 @@ describe('Summary list', () => {
       it('renders custom accessible name', async () => {
         const $ = render('summary-list', examples['with actions'])
 
-        const $component = $('.govuk-summary-list')
-        const $actionLink = $component.find('.govuk-summary-list__actions > a')
+        const $component = $('.moaland-summary-list')
+        const $actionLink = $component.find('.moaland-summary-list__actions > a')
         expect($actionLink.text().trim()).toContain('Change date of birth')
       })
 
       it('renders classes', async () => {
         const $ = render('summary-list', examples['actions with classes'])
 
-        const $component = $('.govuk-summary-list')
-        const $actionList = $component.find('.govuk-summary-list__actions')
+        const $component = $('.moaland-summary-list')
+        const $actionList = $component.find('.moaland-summary-list__actions')
 
         expect($actionList.hasClass('app-custom-class')).toBeTruthy()
       })
@@ -164,8 +164,8 @@ describe('Summary list', () => {
       it('renders attributes', async () => {
         const $ = render('summary-list', examples['actions with attributes'])
 
-        const $component = $('.govuk-summary-list')
-        const $actionLink = $component.find('.govuk-summary-list__actions > a')
+        const $component = $('.moaland-summary-list')
+        const $actionLink = $component.find('.moaland-summary-list__actions > a')
 
         expect($actionLink.attr('data-test-attribute')).toEqual('value')
         expect($actionLink.attr('data-test-attribute-2')).toEqual('value-2')
@@ -174,8 +174,8 @@ describe('Summary list', () => {
       it('renders a single anchor with one action', async () => {
         const $ = render('summary-list', examples['single action with anchor'])
 
-        const $component = $('.govuk-summary-list')
-        const $action = $component.find('.govuk-summary-list__actions > a')
+        const $component = $('.moaland-summary-list')
+        const $action = $component.find('.moaland-summary-list__actions > a')
 
         expect($action.html().trim()).toBe('First action')
       })
@@ -183,9 +183,9 @@ describe('Summary list', () => {
       it('renders a list with mutliple actions', async () => {
         const $ = render('summary-list', examples['with some actions'])
 
-        const $component = $('.govuk-summary-list')
-        const $actionList = $component.find('.govuk-summary-list__actions')
-        const $secondAction = $actionList.find('.govuk-summary-list__actions-list-item:last-child')
+        const $component = $('.moaland-summary-list')
+        const $actionList = $component.find('.moaland-summary-list__actions')
+        const $secondAction = $actionList.find('.moaland-summary-list__actions-list-item:last-child')
 
         expect($secondAction.text().trim()).toBe('Delete name')
       })
@@ -193,17 +193,17 @@ describe('Summary list', () => {
       it('renders classes on actions', async () => {
         const $ = render('summary-list', examples['classes on items'])
 
-        const $component = $('.govuk-summary-list')
-        const $action = $component.find('.govuk-summary-list__actions > a')
+        const $component = $('.moaland-summary-list')
+        const $action = $component.find('.moaland-summary-list__actions > a')
 
-        expect($action.hasClass('govuk-link--no-visited-state')).toBeTruthy()
+        expect($action.hasClass('moaland-link--no-visited-state')).toBeTruthy()
       })
 
       it('skips the action column when no array is provided', async () => {
         const $ = render('summary-list', examples.default)
 
-        const $component = $('.govuk-summary-list')
-        const $action = $component.find('.govuk-summary-list__actions')
+        const $component = $('.moaland-summary-list')
+        const $action = $component.find('.moaland-summary-list__actions')
 
         expect($action.length).toEqual(0)
       })
@@ -211,8 +211,8 @@ describe('Summary list', () => {
       it('skips the action column when no items are in the array provided', async () => {
         const $ = render('summary-list', examples['empty items array'])
 
-        const $component = $('.govuk-summary-list')
-        const $action = $component.find('.govuk-summary-list__actions')
+        const $component = $('.moaland-summary-list')
+        const $action = $component.find('.moaland-summary-list__actions')
 
         expect($action.length).toEqual(0)
       })
@@ -220,8 +220,8 @@ describe('Summary list', () => {
       it('adds dummy action columns when only some rows have actions', async () => {
         const $ = render('summary-list', examples['with some actions'])
 
-        const $component = $('.govuk-summary-list')
-        const $action = $component.find('.govuk-summary-list__actions')
+        const $component = $('.moaland-summary-list')
+        const $action = $component.find('.moaland-summary-list__actions')
 
         // First action column contains link text
         expect($action[0].tagName).toEqual('dd')

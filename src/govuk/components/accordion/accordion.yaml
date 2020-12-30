@@ -58,14 +58,14 @@ examples:
           text: Section A
         content:
           html: |
-            <ul class="govuk-list govuk-list--bullet">
+            <ul class="moaland-list moaland-list--bullet">
               <li>Example item 1</li>
             </ul>
       - heading:
           text: Section B
         content:
           html: |
-            <ul class="govuk-list govuk-list--bullet">
+            <ul class="moaland-list moaland-list--bullet">
               <li>Example item 2</li>
             </ul>
 
@@ -79,16 +79,16 @@ examples:
           text: Additional description
         content:
           html: |
-            <ul class="govuk-list govuk-list--bullet">
+            <ul class="moaland-list moaland-list--bullet">
               <li>Example item 1</li>
             </ul>
       - heading:
          text: Test 2
         summary:
-          html: <span class="govuk-!-font-weight-regular">Additional description</span>
+          html: <span class="moaland-!-font-weight-regular">Additional description</span>
         content:
           html: |
-            <ul class="govuk-list govuk-list--bullet">
+            <ul class="moaland-list moaland-list--bullet">
               <li>Example item 2</li>
             </ul>
 
@@ -101,14 +101,14 @@ examples:
         expanded: true
         content:
           html: |
-            <ul class="govuk-list govuk-list--bullet">
+            <ul class="moaland-list moaland-list--bullet">
               <li>Example item 1</li>
             </ul>
       - heading:
           text: Section B
         content:
           html: |
-            <ul class="govuk-list govuk-list--bullet">
+            <ul class="moaland-list moaland-list--bullet">
               <li>Example item 2</li>
             </ul>
 
@@ -121,7 +121,7 @@ examples:
         expanded: true
         content:
           html: |
-            <ul class="govuk-list govuk-list--bullet">
+            <ul class="moaland-list moaland-list--bullet">
               <li>Example item 1</li>
             </ul>
       - heading:
@@ -129,7 +129,7 @@ examples:
         expanded: true
         content:
           html: |
-            <ul class="govuk-list govuk-list--bullet">
+            <ul class="moaland-list moaland-list--bullet">
               <li>Example item 2</li>
             </ul>
 
@@ -140,11 +140,11 @@ examples:
       - heading:
           text: Section A
         content:
-          html: <a class="govuk-link" href="#">Link A</a>
+          html: <a class="moaland-link" href="#">Link A</a>
       - heading:
           text: Section B
         content:
-          html: <a class="govuk-link" href="#">Link B</a>
+          html: <a class="moaland-link" href="#">Link B</a>
 
 # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
 - name: classes

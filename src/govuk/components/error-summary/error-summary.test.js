@@ -10,7 +10,7 @@ describe('Error Summary', () => {
     await page.goto(`${baseUrl}/components/error-summary/preview`, { waitUntil: 'load' })
 
     const moduleName = await page.evaluate(() => document.activeElement.dataset.module)
-    expect(moduleName).toBe('govuk-error-summary')
+    expect(moduleName).toBe('moaland-error-summary')
   })
 
   const inputTypes = [
@@ -34,7 +34,7 @@ describe('Error Summary', () => {
   describe.each(inputTypes)('when linking to %s', (_, inputId, legendOrLabelSelector) => {
     beforeAll(async () => {
       await page.goto(`${baseUrl}/examples/error-summary`, { waitUntil: 'load' })
-      await page.click(`.govuk-error-summary a[href="#${inputId}"]`)
+      await page.click(`.moaland-error-summary a[href="#${inputId}"]`)
     })
 
     it('focuses the target input', async () => {

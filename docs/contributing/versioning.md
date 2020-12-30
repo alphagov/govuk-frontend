@@ -51,8 +51,8 @@ Note: Our users may not know what 'deprecation' means, so it's important to also
 
 Example 1: Fixing a typo in a CSS class name.
 
-1. We discover the class name `.govuk-visually-hidden-focussable` includes the typo 'focussable'
-2. We raise a pull request that renames the class to `.govuk-visually-hidden-focusable` while keeping
+1. We discover the class name `.moaland-visually-hidden-focussable` includes the typo 'focussable'
+2. We raise a pull request that renames the class to `.moaland-visually-hidden-focusable` while keeping
 the previous class available.
 3. We add a comment to the source code that indicates this is deprecated, and raise an issue to remove it in a future breaking release.
 4. When releasing the change we include a clear summary that indicates what was the problem, what we've changed and how a user can migrate before the future breaking release.
@@ -65,7 +65,7 @@ When deprecating Sass, you can use the [deprecated annotation](http://sassdoc.co
 
 If there is an alias, for example if you are renaming something, you can use the [alias annotation](http://sassdoc.com/annotations/#alias).
 
-See [an example of deprecating a Sass mixin on GitHub](https://github.com/alphagov/govuk-frontend/blob/9424d87ed54764d2d8afe35d6e0077ee43d231e1/src/helpers/_grid.scss#L20-L26).
+See [an example of deprecating a Sass mixin on GitHub](https://github.com/moaland/moaland-frontend/blob/9424d87ed54764d2d8afe35d6e0077ee43d231e1/src/helpers/_grid.scss#L20-L26).
 
 ## Migration
 
@@ -91,7 +91,7 @@ This includes:
 - SCSS - for example [colours variables](https://design-system.service.gov.uk/styles/colour/)
 
 ### npm package
-The other primary way is through what is [published to npm](https://github.com/alphagov/govuk-frontend/tree/master/package).
+The other primary way is through what is [published to npm](https://github.com/moaland/moaland-frontend/tree/master/package).
 
 This includes:
 

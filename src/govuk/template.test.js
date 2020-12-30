@@ -45,13 +45,13 @@ describe('Template', () => {
 
   describe('<head>', () => {
     it('can have custom social media icons specified using the headIcons block', () => {
-      const headIcons = '<link rel="govuk-icon" href="/images/ytf-icon.png">'
+      const headIcons = '<link rel="moaland-icon" href="/images/ytf-icon.png">'
 
       const $ = renderTemplate({}, { headIcons })
 
       // Build a list of the rel values of all links with a rel ending 'icon'
       const icons = $('link[rel$="icon"]').map((_, link) => $(link).attr('rel')).get()
-      expect(icons).toEqual(['govuk-icon'])
+      expect(icons).toEqual(['moaland-icon'])
     })
 
     it('can have additional content added to the <head> using the head block', () => {
@@ -80,14 +80,14 @@ describe('Template', () => {
       const $ = renderTemplate({ assetPath: '/whatever' })
       const $ogImage = $('meta[property="og:image"]')
 
-      expect($ogImage.attr('content')).toEqual('/whatever/images/govuk-opengraph-image.png')
+      expect($ogImage.attr('content')).toEqual('/whatever/images/moaland-opengraph-image.png')
     })
 
     it('can have the assets URL overridden using assetUrl', () => {
       const $ = renderTemplate({ assetUrl: '//a.gov.uk' })
       const $ogImage = $('meta[property="og:image"]')
 
-      expect($ogImage.attr('content')).toEqual('//a.gov.uk/images/govuk-opengraph-image.png')
+      expect($ogImage.attr('content')).toEqual('//a.gov.uk/images/moaland-opengraph-image.png')
     })
 
     describe('<meta name="theme-color">', () => {
@@ -174,7 +174,7 @@ describe('Template', () => {
         const $ = renderTemplate({}, { skipLink })
 
         expect($('.my-skip-link').length).toEqual(1)
-        expect($('.govuk-skip-link').length).toEqual(0)
+        expect($('.moaland-skip-link').length).toEqual(0)
       })
     })
 
@@ -185,7 +185,7 @@ describe('Template', () => {
         const $ = renderTemplate({}, { header })
 
         expect($('.my-header').length).toEqual(1)
-        expect($('.govuk-header').length).toEqual(0)
+        expect($('.moaland-header').length).toEqual(0)
       })
     })
 
@@ -243,7 +243,7 @@ describe('Template', () => {
         const $ = renderTemplate({}, { footer })
 
         expect($('.my-footer').length).toEqual(1)
-        expect($('.govuk-footer').length).toEqual(0)
+        expect($('.moaland-footer').length).toEqual(0)
       })
     })
   })

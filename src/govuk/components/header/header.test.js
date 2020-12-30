@@ -26,7 +26,7 @@ describe('Header navigation', () => {
     })
 
     it('shows the navigation', async () => {
-      await expect(page).toMatchElement('.govuk-header__navigation', {
+      await expect(page).toMatchElement('.moaland-header__navigation', {
         visible: true,
         timeout: 1000
       })
@@ -51,7 +51,7 @@ describe('Header navigation', () => {
       })
 
       it('exposes the collapsed state of the menu button using aria-expanded', async () => {
-        const ariaExpanded = await page.$eval('.govuk-header__menu-button',
+        const ariaExpanded = await page.$eval('.moaland-header__menu-button',
           el => el.getAttribute('aria-expanded')
         )
 
@@ -64,27 +64,27 @@ describe('Header navigation', () => {
         await page.goto(`${baseUrl}/components/header/with-navigation/preview`, {
           waitUntil: 'load'
         })
-        await page.click('.govuk-js-header-toggle')
+        await page.click('.moaland-js-header-toggle')
       })
 
       it('adds the --open modifier class to the menu, making it visible', async () => {
-        const hasOpenClass = await page.$eval('.govuk-header__navigation',
-          el => el.classList.contains('govuk-header__navigation--open')
+        const hasOpenClass = await page.$eval('.moaland-header__navigation',
+          el => el.classList.contains('moaland-header__navigation--open')
         )
 
         expect(hasOpenClass).toBeTruthy()
       })
 
       it('adds the --open modifier class to the menu button', async () => {
-        const hasOpenClass = await page.$eval('.govuk-header__menu-button',
-          el => el.classList.contains('govuk-header__menu-button--open')
+        const hasOpenClass = await page.$eval('.moaland-header__menu-button',
+          el => el.classList.contains('moaland-header__menu-button--open')
         )
 
         expect(hasOpenClass).toBeTruthy()
       })
 
       it('exposes the expanded state of the menu button using aria-expanded', async () => {
-        const ariaExpanded = await page.$eval('.govuk-header__menu-button',
+        const ariaExpanded = await page.$eval('.moaland-header__menu-button',
           el => el.getAttribute('aria-expanded')
         )
 
@@ -97,28 +97,28 @@ describe('Header navigation', () => {
         await page.goto(`${baseUrl}/components/header/with-navigation/preview`, {
           waitUntil: 'load'
         })
-        await page.click('.govuk-js-header-toggle')
-        await page.click('.govuk-js-header-toggle')
+        await page.click('.moaland-js-header-toggle')
+        await page.click('.moaland-js-header-toggle')
       })
 
       it('removes the --open modifier class from the menu, hiding it', async () => {
-        const hasOpenClass = await page.$eval('.govuk-header__navigation',
-          el => el.classList.contains('govuk-header__navigation--open')
+        const hasOpenClass = await page.$eval('.moaland-header__navigation',
+          el => el.classList.contains('moaland-header__navigation--open')
         )
 
         expect(hasOpenClass).toBeFalsy()
       })
 
       it('removes the --open modifier class from the menu button', async () => {
-        const hasOpenClass = await page.$eval('.govuk-header__menu-button',
-          el => el.classList.contains('govuk-header__menu-button--open')
+        const hasOpenClass = await page.$eval('.moaland-header__menu-button',
+          el => el.classList.contains('moaland-header__menu-button--open')
         )
 
         expect(hasOpenClass).toBeFalsy()
       })
 
       it('exposes the collapsed state of the menu button using aria-expanded', async () => {
-        const ariaExpanded = await page.$eval('.govuk-header__menu-button',
+        const ariaExpanded = await page.$eval('.moaland-header__menu-button',
           el => el.getAttribute('aria-expanded')
         )
 

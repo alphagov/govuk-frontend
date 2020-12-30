@@ -41,10 +41,10 @@ describe('Checkboxes with conditional reveals', () => {
 
     it('has no ARIA attributes applied', async () => {
       const $ = await goToAndGetComponent('checkboxes', 'with-conditional-items')
-      const $component = $('.govuk-checkboxes')
+      const $component = $('.moaland-checkboxes')
 
-      const hasAriaExpanded = $component.find('.govuk-checkboxes__input[aria-expanded]').length
-      const hasAriaControls = $component.find('.govuk-checkboxes__input[aria-controls]').length
+      const hasAriaExpanded = $component.find('.moaland-checkboxes__input[aria-expanded]').length
+      const hasAriaControls = $component.find('.moaland-checkboxes__input[aria-controls]').length
 
       expect(hasAriaExpanded).toBeFalsy()
       expect(hasAriaControls).toBeFalsy()
@@ -52,63 +52,63 @@ describe('Checkboxes with conditional reveals', () => {
     it('falls back to making all conditional content visible', async () => {
       await goToAndGetComponent('checkboxes', 'with-conditional-items')
 
-      const isContentVisible = await waitForVisibleSelector('.govuk-checkboxes__conditional')
+      const isContentVisible = await waitForVisibleSelector('.moaland-checkboxes__conditional')
       expect(isContentVisible).toBeTruthy()
     })
   })
   describe('when JavaScript is available', () => {
     it('has conditional content revealed that is associated with a checked input', async () => {
       const $ = await goToAndGetComponent('checkboxes', 'with-conditional-item-checked')
-      const $component = $('.govuk-checkboxes')
-      const $checkedInput = $component.find('.govuk-checkboxes__input:checked')
+      const $component = $('.moaland-checkboxes')
+      const $checkedInput = $component.find('.moaland-checkboxes__input:checked')
       const inputAriaControls = $checkedInput.attr('aria-controls')
 
-      const isContentVisible = await waitForVisibleSelector(`[id="${inputAriaControls}"]:not(.govuk-checkboxes__conditional--hidden)`)
+      const isContentVisible = await waitForVisibleSelector(`[id="${inputAriaControls}"]:not(.moaland-checkboxes__conditional--hidden)`)
       expect(isContentVisible).toBeTruthy()
     })
     it('has no conditional content revealed that is associated with an unchecked input', async () => {
       const $ = await goToAndGetComponent('checkboxes', 'with-conditional-item-checked')
-      const $component = $('.govuk-checkboxes')
-      const $uncheckedInput = $component.find('.govuk-checkboxes__item').last().find('.govuk-checkboxes__input')
+      const $component = $('.moaland-checkboxes')
+      const $uncheckedInput = $component.find('.moaland-checkboxes__item').last().find('.moaland-checkboxes__input')
       const uncheckedInputAriaControls = $uncheckedInput.attr('aria-controls')
 
-      const isContentHidden = await waitForHiddenSelector(`[id="${uncheckedInputAriaControls}"].govuk-checkboxes__conditional--hidden`)
+      const isContentHidden = await waitForHiddenSelector(`[id="${uncheckedInputAriaControls}"].moaland-checkboxes__conditional--hidden`)
       expect(isContentHidden).toBeTruthy()
     })
     it('indicates when conditional content is collapsed or revealed', async () => {
       await goToAndGetComponent('checkboxes', 'with-conditional-items')
 
-      const isNotExpanded = await waitForVisibleSelector('.govuk-checkboxes__item:first-child .govuk-checkboxes__input[aria-expanded=false]')
+      const isNotExpanded = await waitForVisibleSelector('.moaland-checkboxes__item:first-child .moaland-checkboxes__input[aria-expanded=false]')
       expect(isNotExpanded).toBeTruthy()
 
-      await page.click('.govuk-checkboxes__item:first-child .govuk-checkboxes__input')
+      await page.click('.moaland-checkboxes__item:first-child .moaland-checkboxes__input')
 
-      const isExpanded = await waitForVisibleSelector('.govuk-checkboxes__item:first-child .govuk-checkboxes__input[aria-expanded=true]')
+      const isExpanded = await waitForVisibleSelector('.moaland-checkboxes__item:first-child .moaland-checkboxes__input[aria-expanded=true]')
       expect(isExpanded).toBeTruthy()
     })
     it('toggles the conditional content when clicking an input', async () => {
       const $ = await goToAndGetComponent('checkboxes', 'with-conditional-items')
-      const $component = $('.govuk-checkboxes')
-      const $firstInput = $component.find('.govuk-checkboxes__item:first-child .govuk-checkboxes__input')
+      const $component = $('.moaland-checkboxes')
+      const $firstInput = $component.find('.moaland-checkboxes__item:first-child .moaland-checkboxes__input')
       const firstInputAriaControls = $firstInput.attr('aria-controls')
 
-      await page.click('.govuk-checkboxes__item:first-child .govuk-checkboxes__input')
+      await page.click('.moaland-checkboxes__item:first-child .moaland-checkboxes__input')
 
       const isContentVisible = await waitForVisibleSelector(`[id="${firstInputAriaControls}"]`)
       expect(isContentVisible).toBeTruthy()
 
-      await page.click('.govuk-checkboxes__item:first-child .govuk-checkboxes__input')
+      await page.click('.moaland-checkboxes__item:first-child .moaland-checkboxes__input')
 
       const isContentHidden = await waitForHiddenSelector(`[id="${firstInputAriaControls}"]`)
       expect(isContentHidden).toBeTruthy()
     })
     it('toggles the conditional content when using an input with a keyboard', async () => {
       const $ = await goToAndGetComponent('checkboxes', 'with-conditional-items')
-      const $component = $('.govuk-checkboxes')
-      const $firstInput = $component.find('.govuk-checkboxes__item:first-child .govuk-checkboxes__input')
+      const $component = $('.moaland-checkboxes')
+      const $firstInput = $component.find('.moaland-checkboxes__item:first-child .moaland-checkboxes__input')
       const firstInputAriaControls = $firstInput.attr('aria-controls')
 
-      await page.focus('.govuk-checkboxes__item:first-child .govuk-checkboxes__input')
+      await page.focus('.moaland-checkboxes__item:first-child .moaland-checkboxes__input')
       await page.keyboard.press('Space')
 
       const isContentVisible = await waitForVisibleSelector(`[id="${firstInputAriaControls}"]`)

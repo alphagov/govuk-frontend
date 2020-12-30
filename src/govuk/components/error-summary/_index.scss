@@ -1,43 +1,43 @@
 @import "../../core/lists";
 
-@include govuk-exports("govuk/component/error-summary") {
-  .govuk-error-summary {
-    @include govuk-text-colour;
-    @include govuk-responsive-padding(4);
-    @include govuk-responsive-margin(8, "bottom");
+@include moaland-exports("moaland/component/error-summary") {
+  .moaland-error-summary {
+    @include moaland-text-colour;
+    @include moaland-responsive-padding(4);
+    @include moaland-responsive-margin(8, "bottom");
 
-    border: $govuk-border-width solid $govuk-error-colour;
+    border: $moaland-border-width solid $moaland-error-colour;
 
     &:focus {
-      outline: $govuk-focus-width solid $govuk-focus-colour;
+      outline: $moaland-focus-width solid $moaland-focus-colour;
     }
   }
 
-  .govuk-error-summary__title {
-    @include govuk-font($size: 24, $weight: bold);
+  .moaland-error-summary__title {
+    @include moaland-font($size: 24, $weight: bold);
 
     margin-top: 0;
-    @include govuk-responsive-margin(4, "bottom");
+    @include moaland-responsive-margin(4, "bottom");
   }
 
-  .govuk-error-summary__body {
-    @include govuk-font($size: 19);
+  .moaland-error-summary__body {
+    @include moaland-font($size: 19);
 
     p {
       margin-top: 0;
-      @include govuk-responsive-margin(4, "bottom");
+      @include moaland-responsive-margin(4, "bottom");
     }
   }
 
   // Cross-component class - adjusts styling of list component
-  .govuk-error-summary__list {
+  .moaland-error-summary__list {
     margin-top: 0;
     margin-bottom: 0;
   }
 
-  .govuk-error-summary__list a {
-    @include govuk-typography-weight-bold;
-    @include govuk-link-common;
-    @include govuk-link-style-error;
+  .moaland-error-summary__list a {
+    @include moaland-typography-weight-bold;
+    @include moaland-link-common;
+    @include moaland-link-style-error;
   }
 }

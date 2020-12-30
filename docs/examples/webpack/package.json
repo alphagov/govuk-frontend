@@ -1,12 +1,12 @@
 {
   "name": "webpack-boilerplate",
-  "description": "Webpack4 boilerplate consuming govuk-frontend",
+  "description": "Webpack4 boilerplate consuming moaland-frontend",
   "scripts": {
     "dev": "cross-env NODE_ENV=dev webpack-dev-server --progress --mode development --config webpack.config.js",
     "build": "webpack -p --progress --mode production --config webpack.config.js"
   },
   "dependencies": {
-    "govuk-frontend": "*"
+    "moaland-frontend": "*"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

@@ -7,7 +7,7 @@
 /// @type Map
 /// @access public
 
-$govuk-breakpoints: (
+$moaland-breakpoints: (
   mobile:  320px,
   tablet:  641px,
   desktop: 769px
@@ -20,4 +20,4 @@ $govuk-breakpoints: (
 /// @type Boolean
 /// @access public
 
-$govuk-show-breakpoints: false !default;
+$moaland-show-breakpoints: false !default;

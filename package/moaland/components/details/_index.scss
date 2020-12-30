@@ -1,55 +1,55 @@
-@include govuk-exports("govuk/component/details") {
-  .govuk-details {
-    @include govuk-font($size: 19);
-    @include govuk-text-colour;
-    @include govuk-responsive-margin(6, "bottom");
+@include moaland-exports("moaland/component/details") {
+  .moaland-details {
+    @include moaland-font($size: 19);
+    @include moaland-text-colour;
+    @include moaland-responsive-margin(6, "bottom");
 
     display: block;
   }
 
-  .govuk-details__summary {
+  .moaland-details__summary {
     // Make the focus outline shrink-wrap the text content of the summary
     display: inline-block;
 
     // Absolutely position the marker against this element
     position: relative;
 
-    margin-bottom: govuk-spacing(1);
+    margin-bottom: moaland-spacing(1);
 
     // Allow for absolutely positioned marker and align with disclosed text
-    padding-left: govuk-spacing(4) + $govuk-border-width;
+    padding-left: moaland-spacing(4) + $moaland-border-width;
 
     // Style the summary to look like a link...
-    color: $govuk-link-colour;
+    color: $moaland-link-colour;
     cursor: pointer;
 
     &:hover {
-      color: $govuk-link-hover-colour;
+      color: $moaland-link-hover-colour;
     }
 
     &:focus {
-      @include govuk-focused-text;
+      @include moaland-focused-text;
     }
   }
 
   // ...but only underline the text, not the arrow
-  .govuk-details__summary-text {
+  .moaland-details__summary-text {
     text-decoration: underline;
   }
 
   // Remove the underline when focussed to avoid duplicate borders
-  .govuk-details__summary:focus .govuk-details__summary-text {
+  .moaland-details__summary:focus .moaland-details__summary-text {
     text-decoration: none;
   }
 
   // Remove the default details marker so we can style our own consistently and
   // ensure it displays in Firefox (see implementation.md for details)
-  .govuk-details__summary::-webkit-details-marker {
+  .moaland-details__summary::-webkit-details-marker {
     display: none;
   }
 
   // Append our own open / closed marker using a pseudo-element
-  .govuk-details__summary:before {
+  .moaland-details__summary:before {
     content: "";
     position: absolute;
 
@@ -59,25 +59,25 @@
 
     margin: auto;
 
-    @include govuk-shape-arrow($direction: right, $base: 14px);
+    @include moaland-shape-arrow($direction: right, $base: 14px);
 
-    .govuk-details[open] > & {
-      @include govuk-shape-arrow($direction: down, $base: 14px);
+    .moaland-details[open] > & {
+      @include moaland-shape-arrow($direction: down, $base: 14px);
     }
   }
 
-  .govuk-details__text {
-    padding: govuk-spacing(3);
-    padding-left: govuk-spacing(4);
-    border-left: $govuk-border-width solid $govuk-border-colour;
+  .moaland-details__text {
+    padding: moaland-spacing(3);
+    padding-left: moaland-spacing(4);
+    border-left: $moaland-border-width solid $moaland-border-colour;
   }
 
-  .govuk-details__text p {
+  .moaland-details__text p {
     margin-top: 0;
-    margin-bottom: govuk-spacing(4);
+    margin-bottom: moaland-spacing(4);
   }
 
-  .govuk-details__text > :last-child {
+  .moaland-details__text > :last-child {
     margin-bottom: 0;
   }
 }

@@ -54,7 +54,7 @@ examples:
   data:
     legend:
       text: What is your address?
-      classes: govuk-fieldset__legend--xl
+      classes: moaland-fieldset__legend--xl
       isPageHeading: true
 
 # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures

@@ -1,24 +1,24 @@
 .app-banner {
-  padding-top: govuk-spacing(6);
-  padding-bottom: govuk-spacing(6);
+  padding-top: moaland-spacing(6);
+  padding-bottom: moaland-spacing(6);
   overflow: hidden;
-  @include govuk-font($size: 36, $line-height: 1.5);
+  @include moaland-font($size: 36, $line-height: 1.5);
 
-  .govuk-body {
+  .moaland-body {
     color: inherit;
     font-size: inherit;
   }
 
-  .govuk-link {
-    color: govuk-colour("white");
+  .moaland-link {
+    color: moaland-colour("white");
   }
 
-  .govuk-link:focus {
-    color: $govuk-focus-text-colour;
+  .moaland-link:focus {
+    color: $moaland-focus-text-colour;
   }
 }
 
 .app-banner--warning {
-  color: govuk-colour("white");
-  background: govuk-colour("red");
+  color: moaland-colour("white");
+  background: moaland-colour("red");
 }

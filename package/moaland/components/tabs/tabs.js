@@ -1,7 +1,7 @@
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-	typeof define === 'function' && define.amd ? define('GOVUKFrontend', factory) :
-	(global.GOVUKFrontend = factory());
+	typeof define === 'function' && define.amd ? define('MoalandFrontend', factory) :
+	(global.MoalandFrontend = factory());
 }(this, (function () { 'use strict';
 
 (function(undefined) {
@@ -1070,10 +1070,10 @@ function nodeListForEach (nodes, callback) {
 
 function Tabs ($module) {
   this.$module = $module;
-  this.$tabs = $module.querySelectorAll('.govuk-tabs__tab');
+  this.$tabs = $module.querySelectorAll('.moaland-tabs__tab');
 
   this.keys = { left: 37, right: 39, up: 38, down: 40 };
-  this.jsHiddenClass = 'govuk-tabs__panel--hidden';
+  this.jsHiddenClass = 'moaland-tabs__panel--hidden';
 }
 
 Tabs.prototype.init = function () {
@@ -1101,8 +1101,8 @@ Tabs.prototype.checkMode = function () {
 Tabs.prototype.setup = function () {
   var $module = this.$module;
   var $tabs = this.$tabs;
-  var $tabList = $module.querySelector('.govuk-tabs__list');
-  var $tabListItems = $module.querySelectorAll('.govuk-tabs__list-item');
+  var $tabList = $module.querySelector('.moaland-tabs__list');
+  var $tabListItems = $module.querySelectorAll('.moaland-tabs__list-item');
 
   if (!$tabs || !$tabList || !$tabListItems) {
     return
@@ -1142,8 +1142,8 @@ Tabs.prototype.setup = function () {
 Tabs.prototype.teardown = function () {
   var $module = this.$module;
   var $tabs = this.$tabs;
-  var $tabList = $module.querySelector('.govuk-tabs__list');
-  var $tabListItems = $module.querySelectorAll('.govuk-tabs__list-item');
+  var $tabList = $module.querySelector('.moaland-tabs__list');
+  var $tabListItems = $module.querySelectorAll('.moaland-tabs__list-item');
 
   if (!$tabs || !$tabList || !$tabListItems) {
     return
@@ -1200,7 +1200,7 @@ Tabs.prototype.showTab = function ($tab) {
 };
 
 Tabs.prototype.getTab = function (hash) {
-  return this.$module.querySelector('.govuk-tabs__tab[href="' + hash + '"]')
+  return this.$module.querySelector('.moaland-tabs__tab[href="' + hash + '"]')
 };
 
 Tabs.prototype.setAttributes = function ($tab) {
@@ -1235,7 +1235,7 @@ Tabs.prototype.unsetAttributes = function ($tab) {
 };
 
 Tabs.prototype.onTabClick = function (e) {
-  if (!e.target.classList.contains('govuk-tabs__tab')) {
+  if (!e.target.classList.contains('moaland-tabs__tab')) {
   // Allow events on child DOM elements to bubble up to tab parent
     return false
   }
@@ -1278,7 +1278,7 @@ Tabs.prototype.activateNextTab = function () {
   var currentTab = this.getCurrentTab();
   var nextTabListItem = currentTab.parentNode.nextElementSibling;
   if (nextTabListItem) {
-    var nextTab = nextTabListItem.querySelector('.govuk-tabs__tab');
+    var nextTab = nextTabListItem.querySelector('.moaland-tabs__tab');
   }
   if (nextTab) {
     this.hideTab(currentTab);
@@ -1292,7 +1292,7 @@ Tabs.prototype.activatePreviousTab = function () {
   var currentTab = this.getCurrentTab();
   var previousTabListItem = currentTab.parentNode.previousElementSibling;
   if (previousTabListItem) {
-    var previousTab = previousTabListItem.querySelector('.govuk-tabs__tab');
+    var previousTab = previousTabListItem.querySelector('.moaland-tabs__tab');
   }
   if (previousTab) {
     this.hideTab(currentTab);
@@ -1319,18 +1319,18 @@ Tabs.prototype.hidePanel = function (tab) {
 
 Tabs.prototype.unhighlightTab = function ($tab) {
   $tab.setAttribute('aria-selected', 'false');
-  $tab.parentNode.classList.remove('govuk-tabs__list-item--selected');
+  $tab.parentNode.classList.remove('moaland-tabs__list-item--selected');
   $tab.setAttribute('tabindex', '-1');
 };
 
 Tabs.prototype.highlightTab = function ($tab) {
   $tab.setAttribute('aria-selected', 'true');
-  $tab.parentNode.classList.add('govuk-tabs__list-item--selected');
+  $tab.parentNode.classList.add('moaland-tabs__list-item--selected');
   $tab.setAttribute('tabindex', '0');
 };
 
 Tabs.prototype.getCurrentTab = function () {
-  return this.$module.querySelector('.govuk-tabs__list-item--selected .govuk-tabs__tab')
+  return this.$module.querySelector('.moaland-tabs__list-item--selected .moaland-tabs__tab')
 };
 
 // this is because IE doesn't always return the actual value but a relative full path

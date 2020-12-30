@@ -18,50 +18,50 @@ function initAll (options) {
   // Defaults to the entire document if nothing is set.
   var scope = typeof options.scope !== 'undefined' ? options.scope : document
 
-  var $buttons = scope.querySelectorAll('[data-module="govuk-button"]')
+  var $buttons = scope.querySelectorAll('[data-module="moaland-button"]')
   nodeListForEach($buttons, function ($button) {
     new Button($button).init()
   })
 
-  var $accordions = scope.querySelectorAll('[data-module="govuk-accordion"]')
+  var $accordions = scope.querySelectorAll('[data-module="moaland-accordion"]')
   nodeListForEach($accordions, function ($accordion) {
     new Accordion($accordion).init()
   })
 
-  var $details = scope.querySelectorAll('[data-module="govuk-details"]')
+  var $details = scope.querySelectorAll('[data-module="moaland-details"]')
   nodeListForEach($details, function ($detail) {
     new Details($detail).init()
   })
 
-  var $characterCounts = scope.querySelectorAll('[data-module="govuk-character-count"]')
+  var $characterCounts = scope.querySelectorAll('[data-module="moaland-character-count"]')
   nodeListForEach($characterCounts, function ($characterCount) {
     new CharacterCount($characterCount).init()
   })
 
-  var $checkboxes = scope.querySelectorAll('[data-module="govuk-checkboxes"]')
+  var $checkboxes = scope.querySelectorAll('[data-module="moaland-checkboxes"]')
   nodeListForEach($checkboxes, function ($checkbox) {
     new Checkboxes($checkbox).init()
   })
 
   // Find first error summary module to enhance.
-  var $errorSummary = scope.querySelector('[data-module="govuk-error-summary"]')
+  var $errorSummary = scope.querySelector('[data-module="moaland-error-summary"]')
   new ErrorSummary($errorSummary).init()
 
   // Find first header module to enhance.
-  var $toggleButton = scope.querySelector('[data-module="govuk-header"]')
+  var $toggleButton = scope.querySelector('[data-module="moaland-header"]')
   new Header($toggleButton).init()
 
-  var $notificationBanners = scope.querySelectorAll('[data-module="govuk-notification-banner"]')
+  var $notificationBanners = scope.querySelectorAll('[data-module="moaland-notification-banner"]')
   nodeListForEach($notificationBanners, function ($notificationBanner) {
     new NotificationBanner($notificationBanner).init()
   })
 
-  var $radios = scope.querySelectorAll('[data-module="govuk-radios"]')
+  var $radios = scope.querySelectorAll('[data-module="moaland-radios"]')
   nodeListForEach($radios, function ($radio) {
     new Radios($radio).init()
   })
 
-  var $tabs = scope.querySelectorAll('[data-module="govuk-tabs"]')
+  var $tabs = scope.querySelectorAll('[data-module="moaland-tabs"]')
   nodeListForEach($tabs, function ($tabs) {
     new Tabs($tabs).init()
   })

@@ -6,12 +6,12 @@ const sassConfig = {
   outputStyle: 'compact'
 }
 
-describe('@function govuk-colour', () => {
+describe('@function moaland-colour', () => {
   let sassBootstrap = ''
 
   beforeEach(() => {
     sassBootstrap = `
-      $govuk-colours: (
+      $moaland-colours: (
         "red": #ff0000,
         "green": #00ff00,
         "blue": #0000ff
@@ -26,7 +26,7 @@ describe('@function govuk-colour', () => {
       ${sassBootstrap}
 
       .foo {
-        color: govuk-colour('red');
+        color: moaland-colour('red');
       }`
 
     const results = await renderSass({ data: sass, ...sassConfig })
@@ -39,7 +39,7 @@ describe('@function govuk-colour', () => {
       ${sassBootstrap}
 
       .foo {
-        color: govuk-colour(red);
+        color: moaland-colour(red);
       }`
 
     const results = await renderSass({ data: sass, ...sassConfig })
@@ -52,7 +52,7 @@ describe('@function govuk-colour', () => {
       ${sassBootstrap}
 
       .foo {
-        color: govuk-colour('hooloovoo');
+        color: moaland-colour('hooloovoo');
       }`
 
     await expect(renderSass({ data: sass, ...sassConfig }))
@@ -62,10 +62,10 @@ describe('@function govuk-colour', () => {
       )
   })
 
-  describe('when $govuk-use-legacy-palette is true', () => {
+  describe('when $moaland-use-legacy-palette is true', () => {
     beforeEach(() => {
       sassBootstrap = `
-        $govuk-use-legacy-palette: true;
+        $moaland-use-legacy-palette: true;
         ${sassBootstrap}
       `
     })
@@ -75,7 +75,7 @@ describe('@function govuk-colour', () => {
         ${sassBootstrap}
 
         .foo {
-          color: govuk-colour('red', $legacy: 'blue');
+          color: moaland-colour('red', $legacy: 'blue');
         }`
 
       const results = await renderSass({ data: sass, ...sassConfig })
@@ -88,7 +88,7 @@ describe('@function govuk-colour', () => {
         ${sassBootstrap}
 
         .foo {
-          color: govuk-colour('red', $legacy: #BADA55);
+          color: moaland-colour('red', $legacy: #BADA55);
         }`
 
       const results = await renderSass({ data: sass, ...sassConfig })
@@ -101,7 +101,7 @@ describe('@function govuk-colour', () => {
         ${sassBootstrap}
 
         .foo {
-          color: govuk-colour('hooloovoo', $legacy: 'blue');
+          color: moaland-colour('hooloovoo', $legacy: 'blue');
         }`
 
       const results = await renderSass({ data: sass, ...sassConfig })
@@ -113,7 +113,7 @@ describe('@function govuk-colour', () => {
       const sass = `
         ${sassBootstrap}
         .foo {
-          color: govuk-colour('red', $legacy: 'hooloovoo');
+          color: moaland-colour('red', $legacy: 'hooloovoo');
         }`
 
       await expect(renderSass({ data: sass, ...sassConfig }))
@@ -124,10 +124,10 @@ describe('@function govuk-colour', () => {
     })
   })
 
-  describe('when $govuk-use-legacy-palette is false', () => {
+  describe('when $moaland-use-legacy-palette is false', () => {
     beforeEach(() => {
       sassBootstrap = `
-        $govuk-use-legacy-palette: false;
+        $moaland-use-legacy-palette: false;
         ${sassBootstrap}
       `
     })
@@ -137,7 +137,7 @@ describe('@function govuk-colour', () => {
         ${sassBootstrap}
 
         .foo {
-          color: govuk-colour('red', $legacy: 'blue');
+          color: moaland-colour('red', $legacy: 'blue');
         }`
 
       const results = await renderSass({ data: sass, ...sassConfig })
@@ -150,7 +150,7 @@ describe('@function govuk-colour', () => {
         ${sassBootstrap}
 
         .foo {
-          color: govuk-colour('red', $legacy: #BADA55);
+          color: moaland-colour('red', $legacy: #BADA55);
         }`
 
       const results = await renderSass({ data: sass, ...sassConfig })
@@ -163,7 +163,7 @@ describe('@function govuk-colour', () => {
         ${sassBootstrap}
 
         .foo {
-          color: govuk-colour('hooloovoo', $legacy: 'blue');
+          color: moaland-colour('hooloovoo', $legacy: 'blue');
         }`
 
       await expect(renderSass({ data: sass, ...sassConfig }))
@@ -178,7 +178,7 @@ describe('@function govuk-colour', () => {
         ${sassBootstrap}
 
         .foo {
-          color: govuk-colour('red', $legacy: 'hooloovoo');
+          color: moaland-colour('red', $legacy: 'hooloovoo');
         }`
 
       const results = await renderSass({ data: sass, ...sassConfig })
@@ -188,9 +188,9 @@ describe('@function govuk-colour', () => {
   })
 })
 
-describe('@function govuk-organisation-colour', () => {
+describe('@function moaland-organisation-colour', () => {
   const sassBootstrap = `
-    $govuk-colours-organisations: (
+    $moaland-colours-organisations: (
       'floo-network-authority': (
         colour: #EC22FF,
         colour-websafe: #9A00A8
@@ -208,7 +208,7 @@ describe('@function govuk-organisation-colour', () => {
       ${sassBootstrap}
 
       .foo {
-        color: govuk-organisation-colour('floo-network-authority');
+        color: moaland-organisation-colour('floo-network-authority');
       }`
 
     const results = await renderSass({ data: sass, ...sassConfig })
@@ -221,7 +221,7 @@ describe('@function govuk-organisation-colour', () => {
       ${sassBootstrap}
 
       .foo {
-        color: govuk-organisation-colour('broom-regulatory-control');
+        color: moaland-organisation-colour('broom-regulatory-control');
       }`
 
     const results = await renderSass({ data: sass, ...sassConfig })
@@ -234,7 +234,7 @@ describe('@function govuk-organisation-colour', () => {
       ${sassBootstrap}
 
       .foo {
-        border-color: govuk-organisation-colour('floo-network-authority', $websafe: false);
+        border-color: moaland-organisation-colour('floo-network-authority', $websafe: false);
       }`
 
     const results = await renderSass({ data: sass, ...sassConfig })
@@ -247,7 +247,7 @@ describe('@function govuk-organisation-colour', () => {
       ${sassBootstrap}
 
       .foo {
-        color: govuk-organisation-colour('muggle-born-registration-commission');
+        color: moaland-organisation-colour('muggle-born-registration-commission');
       }`
 
     await expect(renderSass({ data: sass, ...sassConfig }))
