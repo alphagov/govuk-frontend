@@ -63,7 +63,7 @@ module.exports = (options) => {
   app.use('/vendor/html5-shiv/', express.static('node_modules/html5shiv/dist/'))
 
   // serve legacy code from node modules
-  app.use('/vendor/moaland_template/', express.static('node_modules/govuk_template_jinja/assets/'))
+  app.use('/vendor/govuk_template/', express.static('node_modules/govuk_template_jinja/assets/'))
   app.use('/vendor/govuk_frontend_toolkit/assets', express.static('node_modules/govuk_frontend_toolkit/images'))
   app.use('/vendor/govuk_frontend_toolkit/', express.static('node_modules/govuk_frontend_toolkit/javascripts/moaland/'))
   app.use('/vendor/jquery/', express.static('node_modules/jquery/dist'))

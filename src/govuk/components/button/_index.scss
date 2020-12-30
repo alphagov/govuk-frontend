@@ -99,7 +99,7 @@
     // we need to override the text colour for that combination of selectors so
     // so that unvisited links styled as buttons do not end up with dark blue
     // text when focussed.
-    @include moaland-compatibility(moaland_template) {
+    @include moaland-compatibility(govuk_template) {
       &:link:focus {
         color: $moaland-button-text-colour;
       }
@@ -186,7 +186,7 @@
     // we need to override the text colour for that combination of selectors so
     // so that unvisited links styled as buttons do not end up with dark blue
     // text when focussed.
-    @include moaland-compatibility(moaland_template) {
+    @include moaland-compatibility(govuk_template) {
       &:link:focus {
         color: $moaland-secondary-button-text-colour;
       }
@@ -218,7 +218,7 @@
     // we need to override the text colour for that combination of selectors so
     // so that unvisited links styled as buttons do not end up with dark blue
     // text when focussed.
-    @include moaland-compatibility(moaland_template) {
+    @include moaland-compatibility(govuk_template) {
       &:link:focus {
         color: $moaland-warning-button-text-colour;
       }

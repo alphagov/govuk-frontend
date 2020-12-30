@@ -1557,9 +1557,9 @@ If you're using your own components that rely on the overflow state of the docum
 
   ```SCSS
   // application.scss
-  $moaland-compatibility-moalandfrontendtoolkit: true;
-  $moaland-compatibility-moalandtemplate: true;
-  $moaland-compatibility-moalandelements: true;
+  $moaland-compatibility-govukfrontendtoolkit: true;
+  $moaland-compatibility-govuktemplate: true;
+  $moaland-compatibility-govukelements: true;
   @import "moaland-frontend/all";
   ```
   ([PR #981](https://github.com/moaland/moaland-frontend/pull/981))

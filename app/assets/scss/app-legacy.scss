@@ -4,9 +4,9 @@
 // GOV.MOA Template is included as a separate CSS file, which is how most
 // services use it (as opposed to including it in their Sass file)
 
-$moaland-compatibility-moalandfrontendtoolkit: true;
-$moaland-compatibility-moalandtemplate: true;
-$moaland-compatibility-moalandelements: true;
+$moaland-compatibility-govukfrontendtoolkit: true;
+$moaland-compatibility-govuktemplate: true;
+$moaland-compatibility-govukelements: true;
 
 // Set Elements assets path
 $path: "/vendor/govuk_frontend_toolkit/assets/";

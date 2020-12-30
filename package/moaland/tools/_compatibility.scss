@@ -8,12 +8,12 @@
 /// $product is also identified as being used in the project.
 ///
 /// This can then be used to include styles that are only needed to override
-/// styles provided by those other products (e.g. where moaland_template has a
+/// styles provided by those other products (e.g. where govuk_template has a
 /// very specific link selector that otherwise affects buttons).
 ///
 /// @example scss
 ///   // Override .my-class if GOV.MOA Template is also being used
-///   @include moaland-compatibility(moaland_template) {
+///   @include moaland-compatibility(govuk_template) {
 ///     .my-class {
 ///       color: inherit;
 ///     }

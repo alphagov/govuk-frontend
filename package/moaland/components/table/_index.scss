@@ -21,7 +21,7 @@
     vertical-align: top;
     // GOV.MOA Elements sets the font-size and line-height for all headers and cells
     // in tables.
-    @include moaland-compatibility(moaland_elements) {
+    @include moaland-compatibility(govuk_elements) {
       font-size: inherit;
       line-height: inherit;
     }

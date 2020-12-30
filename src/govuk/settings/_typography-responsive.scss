@@ -16,9 +16,9 @@
 
 $moaland-typography-use-rem: if(
   (
-    $moaland-compatibility-moalandfrontendtoolkit or
-    $moaland-compatibility-moalandtemplate or
-    $moaland-compatibility-moalandelements
+    $moaland-compatibility-govukfrontendtoolkit or
+    $moaland-compatibility-govuktemplate or
+    $moaland-compatibility-govukelements
   ),
   false,
   true
@@ -36,7 +36,7 @@ $moaland-typography-use-rem: if(
 /// If you are integrating Frontend into an existing project that also uses
 /// alphagov/govuk_template and you wish to enable `$moaland-typography-use-rem`
 /// then you should set this to 10px to match the 62.5% (10px) base font size
-/// that moaland_template sets on the <html> element.
+/// that govuk_template sets on the <html> element.
 ///
 /// @type Number
 /// @access public

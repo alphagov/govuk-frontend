@@ -16,9 +16,9 @@
 
 $moaland-use-legacy-font: if(
   (
-    $moaland-compatibility-moalandfrontendtoolkit or
-    $moaland-compatibility-moalandtemplate or
-    $moaland-compatibility-moalandelements
+    $moaland-compatibility-govukfrontendtoolkit or
+    $moaland-compatibility-govuktemplate or
+    $moaland-compatibility-govukelements
   ),
   true,
   false

@@ -91,7 +91,7 @@ describe('@mixin moaland-typography-common', () => {
   })
   it('should not output a @font-face declaration when the user wants compatibility with GOV.MOA Template', async () => {
     const sass = `
-    $moaland-compatibility-moalandtemplate: true;
+    $moaland-compatibility-govuktemplate: true;
     @import "settings/all";
     @import "helpers/all";
 
@@ -401,7 +401,7 @@ describe('@mixin moaland-typography-responsive', () => {
   describe('when compatibility mode is set', () => {
     it('$moaland-typography-use-rem is disabled by default', async () => {
       const sass = `
-        $moaland-compatibility-moalandtemplate: true;
+        $moaland-compatibility-govuktemplate: true;
         ${sassBootstrap}
 
         .foo {
