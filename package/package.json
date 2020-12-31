@@ -1,7 +1,7 @@
 {
   "name": "moaland-frontend",
   "description": "Moaland Frontend contains the code you need to start building a user interface for government platforms and services.",
-  "version": "0.3-MOA",
+  "version": "0.2-MOA",
   "main": "moaland/all.js",
   "sass": "moaland/all.scss",
   "engines": {
