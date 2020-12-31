@@ -222,6 +222,19 @@
             },
             "html": "<div class=\"moaland-character-count\" data-module=\"moaland-character-count\" data-maxlength=\"10\">\n  \n\n<div class=\"moaland-form-group moaland-form-group--error\">\n  <label class=\"moaland-label\" for=\"with-custom-error-class\">\n    With custom error class\n  </label>\n\n\n  \n  \n  <span id=\"with-custom-error-class-error\" class=\"moaland-error-message\">\n    <span class=\"moaland-visually-hidden\">Error:</span> Error message\n  </span>\n\n  <textarea class=\"moaland-textarea moaland-textarea--error moaland-js-character-count moaland-textarea--error app-character-count--custom-modifier\" id=\"with-custom-error-class\" name=\"with-custom-error-class\" rows=\"5\" aria-describedby=\"with-custom-error-class-info with-custom-error-class-error\"></textarea>\n</div>\n\n  <div id=\"with-custom-error-class-info\" class=\"moaland-hint moaland-character-count__message\" aria-live=\"polite\">\n  You can enter up to 10 characters\n</div>\n\n</div>",
             "hidden": true
+        },
+        {
+            "name": "with id starting with number",
+            "options": {
+                "name": "more-detail",
+                "id": "1_more-detail",
+                "maxlength": 10,
+                "label": {
+                    "text": "Can you provide more detail?"
+                }
+            },
+            "html": "<div class=\"moaland-character-count\" data-module=\"moaland-character-count\" data-maxlength=\"10\">\n  \n\n<div class=\"moaland-form-group\">\n  <label class=\"moaland-label\" for=\"1_more-detail\">\n    Can you provide more detail?\n  </label>\n\n\n  <textarea class=\"moaland-textarea moaland-js-character-count\" id=\"1_more-detail\" name=\"more-detail\" rows=\"5\" aria-describedby=\"1_more-detail-info\"></textarea>\n</div>\n\n  <div id=\"1_more-detail-info\" class=\"moaland-hint moaland-character-count__message\" aria-live=\"polite\">\n  You can enter up to 10 characters\n</div>\n\n</div>",
+            "hidden": true
         }
     ]
 }
