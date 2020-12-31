@@ -1,5 +1,5 @@
 # GOV.MOA Frontend 
-[![Build Status](https://travis-ci.com/moaland/moaland-frontend.svg?branch=master)](https://travis-ci.com/moaland/moaland-frontend) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![Build Status](https://travis-ci.com/moaland/moaland-frontend.svg?branch=master)](https://travis-ci.com/moaland/moaland-frontend) [![Netlify Status](https://api.netlify.com/api/v1/badges/6400e8e0-ca20-4ede-b10c-54fad4d6b39c/deploy-status)](https://app.netlify.com/sites/moaland-frontend/deploys) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 GOV.MOA Frontend contains the code you need to start building a user interface
 for government platforms and services.
