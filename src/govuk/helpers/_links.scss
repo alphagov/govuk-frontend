@@ -11,6 +11,10 @@
 @mixin govuk-link-common {
   @include govuk-typography-common;
 
+  &:hover {
+    text-decoration-thickness: unquote("max(2px, .15em)");
+  }
+
   &:focus {
     @include govuk-focused-text;
   }
