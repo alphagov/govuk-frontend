@@ -1,0 +1,43 @@
+name: Sass
+
+on: [push, pull_request]
+
+jobs:
+  dart-sass:
+    name: Dart Sass v1.0.0
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 8 # v8 required for sass v1.0.0
+      - run: |
+          npm install -g sass@v1.0.0
+          sass --version
+      - run: time sass src/govuk/all.scss > /dev/null
+
+  lib-sass:
+    name: LibSass v3.3.0 (deprecated)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 4 # v4 required for node-sass v3.4.0
+      - run: |
+          npm install -g node-sass@v3.4.0
+          node-sass --version
+      - run: time node-sass src/govuk/all.scss > /dev/null
+
+  ruby-sass:
+    name: Ruby Sass v3.4.0 (deprecated)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.1.9 # Oldest version available on ruby/setup-ruby
+      - run: |
+          gem install sass -v 3.4.0
+          sass --version
+      - run: time sass src/govuk/all.scss > /dev/null
