@@ -20,12 +20,7 @@ jobs:
           node-version: "${{ steps.nvm.outputs.NVMRC }}"
 
       - name: Install dependencies
-        run: npm install
-
-      - name: Check package-lock.json is up to date
-        # If there are new changes to package-lock.json after running npm
-        # install, this suggests package-lock.json needs to be updated
-        run: git diff --exit-code --quiet package-lock.json
+        run: npm ci
 
       - name: Run tests
         run: npm test
