@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   dart-sass:
-    name: 🎯 Dart Sass v1.0.0
+    name: Dart Sass v1.0.0
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -17,7 +17,7 @@ jobs:
       - run: time sass src/govuk/all.scss > /dev/null
 
   lib-sass:
-    name: 📚 LibSass v3.3.0 (deprecated)
+    name: LibSass v3.3.0 (deprecated)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -30,7 +30,7 @@ jobs:
       - run: time node-sass src/govuk/all.scss > /dev/null
 
   ruby-sass:
-    name: 💎 Ruby Sass v3.4.0 (deprecated)
+    name: Ruby Sass v3.4.0 (deprecated)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
