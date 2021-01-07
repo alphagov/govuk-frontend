@@ -14,6 +14,7 @@
   }
 
   .govuk-character-count__message {
+    @include govuk-font($size: false, $tabular: true);
     margin-top: 0;
     margin-bottom: 0;
   }
