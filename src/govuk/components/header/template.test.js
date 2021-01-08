@@ -226,6 +226,10 @@ describe('header', () => {
         // Cheerio converts xhref to href - https://github.com/cheeriojs/cheerio/issues/1101
         expect($fallbackImage.attr('href')).toEqual('data:,')
       })
+
+      it('hides the image when SVG is supported by using the SVG display attribute', () => {
+        expect($fallbackImage.attr('display')).toEqual('none')
+      })
     })
   })
 })
