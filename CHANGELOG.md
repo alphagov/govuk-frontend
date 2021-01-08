@@ -8,6 +8,7 @@ We’ve made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#2080: Fix JavaScript error when character count ID starts with a number](https://github.com/alphagov/govuk-frontend/pull/2080) - thanks to [@josef-vlach](https://github.com/josef-vlach) for reporting this issue.
 - [#2092: Use tabular numbers for character count message](https://github.com/alphagov/govuk-frontend/pull/2092)
+- [#2045: Stop same-site cookies from being wiped when printing in Internet Explorer 11](https://github.com/alphagov/govuk-frontend/pull/2045) – thanks to [@gunjam](https://github.com/gunjam) for contributing this
 
 ## 3.10.2 (Patch release)
 
