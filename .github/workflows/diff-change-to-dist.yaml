@@ -1,0 +1,49 @@
+name: Diff changes to dist
+
+on:
+  pull_request:
+    paths: ['dist/**']
+
+jobs:
+  generate-diff:
+    name: Generate Diff
+    runs-on: ubuntu-latest
+    # Abort if run from a fork, as token won't have write access to post comment
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # Need to also checkout the base branch to compare
+      - uses: actions/setup-node@v1
+      - name: Set up diff drivers
+        run: |
+          npm install -g js-beautify
+          git config diff.minjs.textconv js-beautify
+          git config diff.mincss.textconv js-beautify
+      - name: Generate diff
+        id: diff
+        run: |
+          diff=$(git diff -M1 origin/$GITHUB_BASE_REF -- dist)
+          # Escape new lines
+          diff="${diff//'%'/'%25'}"
+          diff="${diff//$'\n'/'%0A'}"
+          diff="${diff//$'\r'/'%0D'}"
+          echo "::set-output name=diff::$diff"
+      - name: Add comment to PR
+        uses: actions/github-script@v3
+        env:
+          DIFF: ${{ steps.diff.outputs.diff }}
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const commentText = '## Changes to dist\n' + 
+              '```diff\n' +
+              process.env.DIFF +
+              '\n```'
+
+            github.issues.createComment({
+              issue_number: context.payload.pull_request.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: commentText
+            })
