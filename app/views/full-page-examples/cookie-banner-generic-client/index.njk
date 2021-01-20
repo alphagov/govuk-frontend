@@ -36,6 +36,7 @@
       html: "<p>You've accepted additional cookies. You can <a href='/cookie-preferences'>change your cookie settings</a> at any time.</p>",
       attributes: {
         "data-module": "govuk-cookie-banner-accept",
+        "role": 'alert',
         "tabindex": "-1"
       },
       hidden: true
@@ -43,6 +44,7 @@
       html: "<p>You've rejected additional cookies. You can <a href='/cookie-preferences'>change your cookie settings</a> at any time.</p>",
       attributes: {
         "data-module": "govuk-cookie-banner-reject",
+        "role": 'alert',
         "tabindex": "-1"
       },
       hidden: true
@@ -59,6 +61,7 @@
     acceptButton.addEventListener('click', function() {
       var acceptConfirmationBanner = document.querySelector("[data-module='govuk-cookie-banner-accept']");
       acceptConfirmationBanner.classList.remove('govuk-visually-hidden');
+      acceptConfirmationBanner.style.display = 'block';
       questionBanner.style.display = 'none';
       acceptConfirmationBanner.focus();
     })
@@ -66,6 +69,7 @@
     rejectButton.addEventListener('click', function() {
       var rejectConfirmationBanner = document.querySelector("[data-module='govuk-cookie-banner-reject']");
       rejectConfirmationBanner.classList.remove('govuk-visually-hidden');
+      rejectConfirmationBanner.style.display = 'block';
       questionBanner.style.display = 'none';
       rejectConfirmationBanner.focus();
     })

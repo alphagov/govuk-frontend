@@ -11,7 +11,12 @@
     {{ govukCookieBannerGeneric({
       banners: [
         {
-          html: "<p>You've accepted additional cookies. You can <a href='/cookie-preferences'>change your cookie settings</a> at any time.</p>"
+          html: "<p>You've accepted additional cookies. You can <a href='/cookie-preferences'>change your cookie settings</a> at any time.</p>",
+          attributes: {
+            "role": "alert",
+            "tabindex": "-1",
+            "data-auto-focus": "true"
+          }
         }
       ]
     }) }}
@@ -19,7 +24,12 @@
     {{ govukCookieBannerGeneric({
       banners: [
         {
-          html: "<p>You've rejected additional cookies. You can <a href='/cookie-preferences'>change your cookie settings</a> at any time.</p>"
+          html: "<p>You've rejected additional cookies. You can <a href='/cookie-preferences'>change your cookie settings</a> at any time.</p>",
+          attributes: {
+            "role": "alert",
+            "tabindex": "-1",
+            "data-auto-focus": "true"
+          }
         }
       ]
     }) }}
@@ -51,6 +61,14 @@
 {% endblock %}
 
 {% block content %}
+
+  <script>
+    var confirmationBanner = document.querySelector('[data-auto-focus]');
+
+    if (confirmationBanner) {
+      confirmationBanner.focus()
+    }
+   </script>
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">

@@ -1,4 +1,8 @@
 params:
+- name: ariaLabel
+  type: string
+  required: false
+  description: Optional ariaLabel text for all banners. If not provided, the default is "Cookie Banner"
 - name: banners
   type: array
   required: true
@@ -11,7 +15,7 @@ params:
     - name: heading
       type: string
       required: false
-      description: Optional heading for the banner
+      description: Heading for the question banner. Also used as the aria-label for the banner unless a different one is passed.
     - name: text
       type: string
       required: false
