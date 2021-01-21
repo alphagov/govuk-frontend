@@ -222,9 +222,13 @@ describe('header', () => {
         expect($fallbackImage[0].tagName).toEqual('image')
       })
 
-      it('sets a blank xlink:href to prevent IE from downloading both the SVG and the PNG', () => {
+      it('sets an empty data URI xlink:href to prevent IE from downloading both the SVG and the PNG', () => {
         // Cheerio converts xhref to href - https://github.com/cheeriojs/cheerio/issues/1101
-        expect($fallbackImage.attr('href')).toEqual('')
+        expect($fallbackImage.attr('href')).toEqual('data:,')
+      })
+
+      it('hides the image when SVG is supported by using the SVG display attribute', () => {
+        expect($fallbackImage.attr('display')).toEqual('none')
       })
     })
   })
