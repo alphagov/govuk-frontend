@@ -1,0 +1,75 @@
+params:
+- name: ariaLabel
+  type: string
+  required: false
+  description: The text for the `aria-label` which labels the cookie banner region. This region applies to all banners that the cookie banner includes. For example, the question banner and the replacement banner. Defaults to "Cookie banner".
+- name: banners
+  type: array
+  required: true
+  description: Required. The different kinds of banners you can pass into the cookie banner. For example, the question banner and the replacement banner.
+  params:
+    - name: headingText
+      type: string
+      required: false
+      description: The heading text that displays in the cookie banner. You can use any string with this option. If you set `headingHtml`, `headingText` is ignored.
+    - name: headingHtml
+      type: string
+      required: false
+      description: The heading HTML to use within the cookie banner. You can use any string with this option. If you set `headingHtml`, `headingText` is ignored.If you are not passing HTML, use `headingText`.
+    - name: text
+      type: string
+      required: false
+      description: Required. The text for the main content within the banner. You can use any string with this option. If you set `html`, `text` is not required and is ignored.
+    - name: html
+      type: string
+      required: false
+      description: Required. The HTML for the main content within the banner. You can use any string with this option. If you set `html`, `text` is not required and is ignored. If you are not passing HTML, use `Text`.
+    - name: hidden
+      type: boolean
+      required: false
+      description: Defaults to false. If you set it to `true`, the banner is hidden. You can use `hidden` for client-side implementations where the replacement banner HTML is present, but hidden on the page.
+    - name: role
+      type: string
+      required: false
+      description: Set `role` to ’alert` on replacement banners to allow assistive tech to automatically read the message. You will also need to move focus to the replacement banner using JavaScript you have written yourself
+    - name: classes
+      type: string
+      required: false
+      description: The additional classes that you want to add to the cookie banner.
+    - name: attributes
+      type: object
+      required: false
+      description: The additional attributes that you want to add to the cookie banner. For example, data attributes.
+    - name: actions
+      type: array
+      required: false
+      description: The buttons and links that you want to display in the cookie banner. `actions` defaults to `button` unless you set `href`, which renders the action as a link.
+      params:
+        - name: text
+          type: string
+          required: false
+          description: Required. The button or link text that you want to add to the cookie banner.
+        - name: type
+          type: string
+          required: false
+          description: The type of button. Does not apply if you set `href`, which renders a link. You can choose `button` or `submit`.
+        - name: href
+          type: string
+          required: false
+          description: The `href` for a link. If you set `href`, users will see a link instead of a button.
+        - name: name
+          type: string
+          required: false
+          description: The name attribute for the button. Does not apply if you set `href`, which makes a link.
+        - name: value
+          type: string
+          required: false
+          description: The value attribute for the button. Does not apply if you set `href`, which makes a link.
+        - name: classes
+          type: string
+          required: false
+          description: The additional classes that you want to add to the button or link.
+        - name: attributes
+          type: object
+          required: false
+          description: The additional attributes that you want to add to the button or link. For example, data attributes.
