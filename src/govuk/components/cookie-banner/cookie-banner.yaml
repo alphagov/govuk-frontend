@@ -73,3 +73,44 @@ params:
           type: object
           required: false
           description: The additional attributes that you want to add to the button or link. For example, data attributes.
+
+examples:
+  - name: default
+    data:
+      banners:
+        - headingText: Cookies on this government service
+          text: We use analytics cookies to help understand how users use our service.
+          actions:
+            - text: Accept analytics cookies
+              type: submit
+              name: cookies
+              value: accept
+            - text: Reject analytics cookies
+              type: submit
+              name: cookies
+              value: reject
+            - text: View cookie preferences
+              href: /cookie-preferences
+
+  - name: accepted confirmation banner
+    data:
+      banners:
+        - text: Your cookie preferences have been saved. You have accepted cookies.
+          role: alert
+          actions:
+            - text: Hide this message
+              type: button
+              attributes:
+                "data-hide-button": "true"
+
+  - name: rejected confirmation banner
+    data:
+      banners:
+        - text: Your cookie preferences have been saved. You have rejected cookies.
+          role: alert
+          actions:
+            - text: Hide this message
+              type: button
+              attributes:
+                "data-hide-button": "true"
+
