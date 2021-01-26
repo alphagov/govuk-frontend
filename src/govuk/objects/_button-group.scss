@@ -41,6 +41,9 @@
     .govuk-link {
       @include govuk-font($size: 19, $line-height: 19px);
       display: inline-block;
+      // Prevent links overflowing their container in IE10/11 because of bug
+      // with align-items: center
+      max-width: 100%;
       margin-top: $link-spacing;
       margin-bottom: $link-spacing + $vertical-gap;
       text-align: center;
