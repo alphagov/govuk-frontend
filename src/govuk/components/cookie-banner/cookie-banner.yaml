@@ -114,3 +114,107 @@ examples:
               attributes:
                 "data-hide-button": "true"
 
+# Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+  - name: heading html
+    hidden: true
+    data:
+      banners:
+        - headingHtml: Cookies on <span>my service</span>
+  - name: heading html as text
+    hidden: true
+    data:
+      banners:
+        - headingText: Cookies on <span>my service</span>
+  - name: html
+    hidden: true
+    data:
+      banners:
+        - html: <p class="govuk-body">We use cookies in <span>our service</span>.</p>
+  - name: classes
+    hidden: true
+    data:
+      banners:
+        - classes: "app-my-class"
+  - name: attributes
+    hidden: true
+    data:
+      banners:
+        - attributes:
+            "data-attribute": "my-value"
+  - name: custom aria label
+    hidden: true
+    data:
+      ariaLabel: "Cookies on GOV.UK"
+      banners:
+        - text: "We use cookies on GOV.UK"
+  - name: hidden
+    hidden: true
+    data:
+      banners:
+        - hidden: true
+  - name: hidden false
+    hidden: true
+    data:
+      banners:
+        - hidden: false
+  - name: default action
+    hidden: true
+    data:
+      banners:
+        - actions:
+          - text: This is a button
+  - name: link
+    hidden: true
+    data:
+      banners:
+        - actions:
+          - text: This is a link
+            href: /link
+  - name: link with button options
+    hidden: true
+    data:
+      banners:
+        - actions:
+          - text: This is a link
+            href: /link
+            value: cookies
+            name: link
+  - name: type
+    hidden: true
+    data:
+      banners:
+        - actions:
+          - text: Button
+            type: button
+  - name: button classes
+    hidden: true
+    data:
+      banners:
+        - actions:
+          - text: Button with custom classes
+            classes: "my-button-class app-button-class"
+  - name: button attributes
+    hidden: true
+    data:
+      banners:
+        - actions:
+          - text: Button with attributes
+            attributes:
+              "data-button-attribute": "my-value"
+  - name: link classes
+    hidden: true
+    data:
+      banners:
+        - actions:
+          - text: Link with custom classes
+            href: /my-link
+            classes: "my-link-class app-link-class"
+  - name: link attributes
+    hidden: true
+    data:
+      banners:
+        - actions:
+          - text: Link with attributes
+            href: /link
+            attributes:
+              "data-link-attribute": "my-value"
