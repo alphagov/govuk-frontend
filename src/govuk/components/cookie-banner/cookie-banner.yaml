@@ -114,6 +114,18 @@ examples:
               attributes:
                 "data-hide-button": "true"
 
+  - name: hidden banner
+    data:
+      banners:
+        - text: Your cookie preferences have been saved. You have rejected cookies.
+          role: alert
+          hidden: true
+          actions:
+            - text: Hide this message
+              type: button
+              attributes:
+                "data-hide-button": "true"
+
 # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: heading html
     hidden: true
