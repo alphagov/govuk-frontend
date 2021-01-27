@@ -11,7 +11,7 @@ params:
   - name: html
     type: string
     required: true
-    description: If `text` is set, this is not required. HTML for cells in table rows. If `html` is provided, the `text` argument will be ignore
+    description: If `text` is set, this is not required. HTML for cells in table rows. If `html` is provided, the `text` argument will be ignored.
   - name: format
     type: string
     required: false
@@ -44,7 +44,7 @@ params:
   - name: html
     type: string
     required: false
-    description: If `text` is set, this is not required. HTML for table head cells. If `html` is provided, the `text` argument will be ignore
+    description: If `text` is set, this is not required. HTML for table head cells. If `html` is provided, the `text` argument will be ignored.
   - name: format
     type: string
     required: false
@@ -332,4 +332,3 @@ examples:
         - text: Foo
           attributes:
             data-fizz: buzz
-
