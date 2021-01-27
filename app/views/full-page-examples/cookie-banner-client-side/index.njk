@@ -1,0 +1,226 @@
+---
+name: Cookie banner (client side)
+scenario: >-
+  You need to make a choice about whether to accept cookies or not.
+
+notes: >-
+  For this example, when the user makes a choice to accept or reject cookies
+  their preference is handled entirely on the client side with no page
+  navigation, and JavaScript is used to swap out the cookie banner for the
+  'confirmation' banner.
+  
+  The choice to accept or reject cookies will not be remembered.
+
+  The content of the page is not important for this scenario.
+---
+
+{# This example is based of the live "Apply online for a UK passport" start page: https://www.gov.uk/apply-renew-passport #}
+{% extends "_generic.njk" %}
+
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "button/macro.njk" import govukButton %}
+{% from "cookie-banner/macro.njk" import govukCookieBanner %}
+{% from "tabs/macro.njk" import govukTabs %}
+
+{% set pageTitle = "Apply online for a UK passport" %}
+{% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
+
+{% block bodyStart %}
+    {{ govukCookieBanner({
+    "banners": [
+        {
+            "headingText": "Cookies on this government service",
+            "text": "We use analytics cookies to help understand how users use our service.",
+            "actions": [
+                {
+                    "text": "Accept analytics cookies",
+                    "type": "button",
+                    "name": "cookies",
+                    "value": "accept",
+                    "classes": "js-cookies-button-accept"
+                },
+                {
+                    "text": "Reject analytics cookies",
+                    "type": "button",
+                    "name": "cookies",
+                    "value": "reject",
+                    "classes": "js-cookies-button-reject"
+                },
+                {
+                    "text": "View cookie preferences",
+                    "href": "#"
+                }
+            ],
+            "classes": "js-cookies-banner"
+        },
+        {
+            "text": "Your cookie preferences have been saved. You have accepted cookies.",
+            "role": "alert",
+            "actions": [
+                {
+                    "text": "Hide this message",
+                    "type": "button",
+                    "classes": "js-hide"
+                }
+            ],
+            "classes": "js-cookies-accepted",
+            "hidden": true
+        },
+        {
+            "text": "Your cookie preferences have been saved. You have rejected cookies.",
+            "role": "alert",
+            "actions": [
+                {
+                    "text": "Hide this message",
+                    "type": "button",
+                    "classes": "js-hide"
+                }
+            ],
+            "classes": "js-cookies-rejected",
+            "hidden": true
+        }
+    ]
+    }) }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#/"
+      },
+      {
+        text: "Passports, travel and living abroad",
+        href: "#/browse/abroad"
+      },
+      {
+        text: "Passports",
+        href: "#/browse/abroad/passports"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">{{ pageTitle }}</h1>
+
+      <p class="govuk-body">You can apply for, renew, replace or update your passport and pay for it online.</p>
+
+      {{ govukButton({
+        text: "Start now",
+        href: "#",
+        classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-8",
+        isStartButton: true
+      }) }}
+
+      {% set moreInformationHTML %}
+        <p class="govuk-body">You’ll need a debit or credit card to use this service.</p>
+
+        <p class="govuk-body"><a class="govuk-link" href="#">It’s £9.50 cheaper</a> to apply for a passport online than by post.</p>
+
+        <p class="govuk-body">It should take around 6 weeks to get your first UK adult passport, but it can take longer.</p>
+
+        <p class="govuk-body">All other application types (for example, renewing a passport or getting a child passport) should take 3 weeks. It can take longer if more information is needed or your application hasn’t been filled out correctly.</p>
+
+        <p class="govuk-body">You should use a different service if you <a class="govuk-link" href="#">need your passport urgently</a>.</p>
+      {% endset %}
+
+      {% set otherWaysToApplyHTML %}
+        <p class="govuk-body">You can pick up passport application forms from your <a class="govuk-link" rel="external" href="http://www.postoffice.co.uk/branch-finder">local Post Office</a> and apply by post, or use the <a class="govuk-link" href="#">Post Office Check and Send service</a>.</p>
+      {% endset %}
+
+      {{ govukTabs({
+        items: [
+          {
+            label: "More information",
+            id: "more-information",
+            panel: {
+              html: moreInformationHTML
+            }
+          },
+          {
+            label: "Other ways to apply",
+            id: "other-ways-to-apply",
+            panel: {
+              html: otherWaysToApplyHTML
+            }
+          }
+        ]
+      }) }}
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+      <!-- The Related items component is not part of GOV.UK Frontend but will be styled if used in the Prototype Kit -->
+
+      <aside class="app-related-items" role="complementary">
+        <h2 class="govuk-heading-m" id="subsection-title">
+          Related content
+        </h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li class="gem-c-related-navigation__link">
+              <a class="govuk-link" href="#/get-a-passport-urgently">Get a passport urgently</a>
+            </li>
+            <li class="gem-c-related-navigation__link">
+              <a class="govuk-link" href="#/renew-adult-passport">Renew or replace your adult passport</a>
+            </li>
+            <li class="gem-c-related-navigation__link">
+              <a class="govuk-link" href="#/passport-fees">Passport fees</a>
+            </li>
+            <li class="gem-c-related-navigation__link">
+              <a class="govuk-link" href="#/government/news/need-to-renew-your-british-passport-go-online">Need to renew your British passport? Go online</a>
+            </li>
+            <li class="gem-c-related-navigation__link">
+              <a class="govuk-link" href="#/government/news/changes-to-passport-applications-for-british-nationals-living-abroad">Changes to passport applications for British nationals living abroad</a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+    </div>
+  </div>
+
+  <script>
+    var acceptButton = document.querySelector('.js-cookies-button-accept')
+    var rejectButton = document.querySelector('.js-cookies-button-reject')
+
+    var acceptedBanner = document.querySelector('.js-cookies-accepted')
+    var rejectedBanner = document.querySelector('.js-cookies-rejected')
+    var cookieBanner = document.querySelector('.js-cookies-banner')
+
+    function showBanner(banner) {
+        cookieBanner.setAttribute('hidden', 'hidden')
+        banner.removeAttribute('hidden')
+
+        // Shift focus to the banner
+        banner.setAttribute('tabindex', '-1')
+        banner.focus()
+        
+        banner.addEventListener('blur', function () {
+            banner.removeAttribute('tabindex')
+        })
+    }
+
+    acceptButton.addEventListener('click', function (event) {
+        showBanner(acceptedBanner)
+        event.preventDefault()
+    })
+
+    rejectButton.addEventListener('click', function (event) {
+        showBanner(rejectedBanner)
+        event.preventDefault()
+    })
+
+    acceptedBanner.querySelector('.js-hide').addEventListener('click', function() {
+      acceptedBanner.setAttribute('hidden', 'hidden')
+    })
+
+    rejectedBanner.querySelector('.js-hide').addEventListener('click', function() {
+      rejectedBanner.setAttribute('hidden', 'hidden')
+    })
+  </script>
+{% endblock %}
