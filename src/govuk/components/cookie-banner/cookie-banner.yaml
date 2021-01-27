@@ -100,8 +100,6 @@ examples:
           actions:
             - text: Hide this message
               type: button
-              attributes:
-                "data-hide-button": "true"
 
   - name: rejected confirmation banner
     data:
@@ -111,8 +109,36 @@ examples:
           actions:
             - text: Hide this message
               type: button
-              attributes:
-                "data-hide-button": "true"
+
+  - name: client-side implementation
+    data:
+      banners:
+        - headingText: Cookies on this service
+          text: We use cookies to help understand how users use our service.
+          actions:
+            - text: Accept analytics cookies
+              type: submit
+              name: cookies
+              value: accept
+            - text: Reject analytics cookies
+              type: submit
+              name: cookies
+              value: reject
+            - text: View cookie preferences
+              href: /cookie-preferences
+        - text: Your cookie preferences have been saved. You have accepted cookies.
+          role: alert
+          hidden: true
+          actions:
+            - text: Hide this message
+              type: button
+        - text: Your cookie preferences have been saved. You have rejected cookies.
+          role: alert
+          hidden: true
+          actions:
+            - text: Hide this message
+              type: button
+
 
 # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: heading html

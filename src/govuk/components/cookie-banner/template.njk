@@ -8,7 +8,7 @@
     {% endif -%}
 
     <div class="{{classNames}}" {% if banner.role %}role="{{banner.role}}"{% endif %}
-    {%- for attribute, value in banner.attributes %}{{attribute}}="{{value}}"{% endfor %}
+    {%- for attribute, value in banner.attributes %} {{attribute}}="{{value}}"{% endfor %}
     {% if banner.hidden %} hidden {% endif %}>
 
       {% if banner.headingHtml or banner.headingText %}
@@ -33,7 +33,7 @@
       <div class="govuk-button-group">
         {% for action in banner.actions %}
             {% if action.href %}
-              {% set linkClasses = "govuk-link govuk-link--align-button" %}
+              {% set linkClasses = "govuk-link" %}
               {% if action.classes %}
                 {% set linkClasses = linkClasses + " " + action.classes %}
               {% endif %}
