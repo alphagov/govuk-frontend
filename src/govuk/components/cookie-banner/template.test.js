@@ -123,14 +123,14 @@ describe('Cookie Banner', () => {
       const $ = render('cookie-banner', examples.hidden)
 
       const $component = $('.govuk-cookie-banner__container')
-      expect($component.attr('class')).toContain('govuk-cookie-banner__container--hidden')
+      expect($component.attr('hidden')).toBeTruthy()
     })
 
     it('does not hide banner if hidden option set to false', () => {
       const $ = render('cookie-banner', examples['hidden false'])
 
       const $component = $('.govuk-cookie-banner__container')
-      expect($component.attr('class')).not.toContain('govuk-cookie-banner__container--hidden')
+      expect($component.attr('hidden')).toBeUndefined()
     })
   })
 

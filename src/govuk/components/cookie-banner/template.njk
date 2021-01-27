@@ -6,12 +6,10 @@
     {% if banner.classes %}
       {%- set classNames = classNames + " " + banner.classes -%}
     {% endif -%}
-    {% if banner.hidden %}
-      {%- set classNames = classNames + " " + "govuk-cookie-banner__container--hidden" %}
-    {% endif %}
 
     <div class="{{classNames}}" {% if banner.role %}role="{{banner.role}}"{% endif %}
-    {%- for attribute, value in banner.attributes %}{{attribute}}="{{value}}"{% endfor %}>
+    {%- for attribute, value in banner.attributes %}{{attribute}}="{{value}}"{% endfor %}
+    {% if banner.hidden %} hidden {% endif %}>
 
       {% if banner.headingHtml or banner.headingText %}
         <h2 class="govuk-cookie-banner__heading govuk-heading-m">
