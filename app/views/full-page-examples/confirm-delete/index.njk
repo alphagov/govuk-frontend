@@ -26,17 +26,17 @@
       }) }}
 
       <form method="post" novalidate>
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Delete account",
+            classes: "govuk-button--warning"
+          }) }}
 
-        {{ govukButton({
-          text: "Delete account",
-          classes: "govuk-button--warning govuk-!-margin-right-3"
-        }) }}
-
-        {{ govukButton({
-          text: "Cancel",
-          classes: "govuk-button--secondary"
-        }) }}
-
+          {{ govukButton({
+            text: "Cancel",
+            classes: "govuk-button--secondary"
+          }) }}
+        </div>
       </form>
 
     </div>
