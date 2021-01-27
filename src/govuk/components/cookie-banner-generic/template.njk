@@ -2,7 +2,7 @@
 
 <div class="govuk-cookie-banner-generic" data-module="govuk-cookie-banner-generic" role="region" aria-label="{{ params.ariaLabel or "Cookie banner" }}">
   {% for banner in params.banners %}
-     <div class="govuk-width-container" {% if banner.hidden %}style="display:none;"{% endif %} {% for attribute, value in banner.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+     <div class="govuk-width-container" {% if banner.hidden %}hidden{% endif %} {% for attribute, value in banner.attributes %} {{attribute}}="{{value}}"{% endfor %}>
         {% if banner.title %}<h2 id="govuk-cookie-banner-generic__heading">{{ banner.title }}</h2>{% endif %}
 
         {% if banner.html %}

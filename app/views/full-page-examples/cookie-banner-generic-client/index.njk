@@ -61,7 +61,7 @@
     acceptButton.addEventListener('click', function() {
       var acceptConfirmationBanner = document.querySelector("[data-module='govuk-cookie-banner-accept']");
       acceptConfirmationBanner.classList.remove('govuk-visually-hidden');
-      acceptConfirmationBanner.style.display = 'block';
+      acceptConfirmationBanner.removeAttribute('hidden')
       questionBanner.style.display = 'none';
       acceptConfirmationBanner.focus();
     })
@@ -69,7 +69,7 @@
     rejectButton.addEventListener('click', function() {
       var rejectConfirmationBanner = document.querySelector("[data-module='govuk-cookie-banner-reject']");
       rejectConfirmationBanner.classList.remove('govuk-visually-hidden');
-      rejectConfirmationBanner.style.display = 'block';
+      acceptConfirmationBanner.removeAttribute('hidden')
       questionBanner.style.display = 'none';
       rejectConfirmationBanner.focus();
     })
