@@ -10,9 +10,12 @@
 
 @mixin govuk-link-common {
   @include govuk-typography-common;
+  text-decoration-thickness: 1px;
+  text-underline-offset: .1em;
 
   &:hover {
-    text-decoration-thickness: unquote("max(2px, .15em)");
+    // text-decoration-thickness: 3px;
+    text-decoration-thickness: unquote("max(2px, .18em)");
   }
 
   &:focus {
@@ -38,18 +41,22 @@
 @mixin govuk-link-style-default {
   &:link {
     color: $govuk-link-colour;
+    text-decoration-color: govuk-colour("light-blue");
   }
 
   &:visited {
     color: $govuk-link-visited-colour;
+    text-decoration-color: $govuk-link-visited-colour;
   }
 
   &:hover {
-    color: $govuk-link-hover-colour;
+    color: $govuk-link-colour;
+    text-decoration-color: $govuk-link-colour;
   }
 
   &:active {
     color: $govuk-link-active-colour;
+    text-decoration-color: $govuk-link-active-colour;
   }
 
   // When focussed, the text colour needs to be darker to ensure that colour
@@ -186,6 +193,7 @@
   &:hover,
   &:active {
     color: $govuk-secondary-text-colour;
+    text-decoration-color: $govuk-secondary-text-colour;
   }
 
   // When focussed, the text colour needs to be darker to ensure that colour
@@ -228,6 +236,7 @@
   &:active,
   &:focus {
     @include govuk-text-colour;
+    text-decoration-color: $govuk-text-colour;
   }
 
   // alphagov/govuk_template includes a specific a:link:focus selector designed
@@ -267,10 +276,11 @@
 
   &:visited {
     color: $govuk-link-colour;
+    text-decoration-color: govuk-colour("light-blue");
   }
 
   &:hover {
-    color: $govuk-link-hover-colour;
+    color: $govuk-link-colour;
   }
 
   &:active {
