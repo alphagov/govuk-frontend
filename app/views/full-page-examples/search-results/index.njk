@@ -1,0 +1,292 @@
+---
+
+---
+
+{# This example is based of the live search results page on GOV.UK, with a query of 'tax': https://www.gov.uk/search/all?keywords=tax&order=relevance #}
+{% extends "_generic.njk" %}
+
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "select/macro.njk" import govukSelect %}
+{% from "radios/macro.njk" import govukRadios %}
+{% from "checkboxes/macro.njk" import govukCheckboxes %}
+{% from "button/macro.njk" import govukButton %}
+{% from "input/macro.njk" import govukInput %}
+
+{% set pageTitle = "Search" %}
+{% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <style>
+        .app-document-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 0;
+            margin-bottom: 30px;
+        }
+        .app-document-list > li {
+            border-bottom: 1px solid #b1b4b6;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+        }
+        .app-metadata-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            margin-left: -5px;
+            margin-right: -5px;
+        }
+        .app-metadata-list > li {
+            display: inline-block;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+        .app-filter li {
+          border-bottom: 1px solid #b1b4b6;
+          padding-bottom: 20px;
+        }
+
+        .app-search-result-list__children {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          column-gap: 15px;
+          list-style: none;
+        }
+
+        .app-search-results-summary {
+          position: relative;
+        }
+
+        .app-search-results-summary .subscribe-link {
+          position: absolute;
+          top: 5px;
+          right: 0;
+        }
+
+        .app-search-result-sort {
+          font-size: 16px;
+          line-height: 20px;
+        }
+
+        .app-search-result-sort label {
+          display: inline;
+          margin-right: 5px;
+          font-size: 16px;
+          line-height: 20px;  
+        }
+    </style>
+{% endblock %}
+
+{% block beforeContent %}
+    {{ govukBreadcrumbs({
+        items: [
+            {
+                text: "Home",
+                href: "#"
+            }
+        ]
+    }) }}
+{% endblock %}
+
+{% block content %}
+  <h1 class="govuk-heading-xl govuk-!-margin-bottom-5">{{ pageTitle }}</h1>
+  
+
+  {{ govukInput({
+    label: {
+      text: "Search GOV.UK",
+      classes: "govuk-label--l, govuk-visually-hidden"
+    },
+    id: "search",
+    name: "search",
+    classes: "govuk-!-width-two-thirds",
+    value: "tax"
+  }) }}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+      <ul class="govuk-list govuk-list--spaced app-filter">
+        <li><a class="govuk-link" href="#">Topic</a></li>
+        <li><a class="govuk-link" href="#">Content type</a></li>
+        <li><a class="govuk-link" href="#">Updated</a></li>
+      </ul>
+    </div>
+    <div class="govuk-grid-column-two-thirds">
+      <div class="app-search-results-summary">
+        <h2 class="govuk-heading-s">58,779 results</h2>
+        <span class="subscribe-link"><a href="#" class="govuk-link govuk-body-s">Subscribe to feed</a></span>
+      </div>
+      <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible govuk-!-margin-bottom-3">
+      <div class="app-search-result-sort">
+        {{ govukSelect({
+          id: "sort",
+          name: "sort",
+          classes: "app-search-result-sort",
+          label: {
+            text: "Sort by"
+          },
+          items: [
+            {
+              value: "relevance",
+              text: "Relevance"
+            },
+            {
+              value: "updated-new",
+              text: "Updated (newest)",
+              selected: true
+            },
+            {
+              value: "updated-old",
+              text: "Updated (oldest)"
+            }
+          ]
+        }) }}
+      </div>
+      <ul class="app-document-list">
+        <li>
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-2">
+            <a class="govuk-link" href="#">
+              Tax your vehicle
+            </a>
+          </h3>
+          <p class="govuk-body-s">
+            Renew or <strong>tax</strong> your vehicle for the first time using a reminder letter, your log book or the green 'new keeper' slip - and how to <strong>tax</strong> if you do not have any documents
+          </p>
+        </li>
+        <li>
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-2">
+            <a class="govuk-link" href="#">
+              Income Tax
+            </a>
+          </h3>
+          <p class="govuk-body-s">
+            Income <strong>tax</strong> is a <strong>tax</strong> you pay on your earnings - find out about what it is, how you pay and how to check you're paying the right amount using HMRC's <strong>tax</strong> calculator
+          </p>
+          <ul class="app-search-result-list__children">
+            <li>
+              <h4 class="govuk-heading-xs govuk-!-margin-bottom-1 govuk-!-margin-top-1">
+                <a class="govuk-link" href="#">
+                  Overview
+                </a>
+              </h4>
+              <p class="govuk-body-s">
+                Income Tax is a tax you pay on your income. You do not have to pay tax on…
+              </p>
+            </li>
+            <li>
+              <h4 class="govuk-heading-xs govuk-!-margin-bottom-1 govuk-!-margin-top-1">
+                <a class="govuk-link" href="#">
+                  How you pay Income Tax
+                </a>
+              </h4>
+              <p class="govuk-body-s">      
+                Pay As You Earn (PAYE) Most people pay Income Tax through PAYE. This is…
+              </p>
+            </li>
+            <li>
+              <h4 class="govuk-heading-xs govuk-!-margin-bottom-1 govuk-!-margin-top-1">
+                <a class="govuk-link" href="#">
+                  Tax-free and taxable state benefits
+                </a>
+              </h4>
+              <p class="govuk-body-s">      
+                State benefits that are taxable The most common benefits that you pay…
+              </p>
+            </li>
+            <li>
+              <h4 class="govuk-heading-xs govuk-!-margin-bottom-1 govuk-!-margin-top-1">
+                <a class="govuk-link" href="#">
+                  Work out if you need to pay Income Tax
+                </a>
+              </h4>
+              <p class="govuk-body-s">                   
+                To work out if you should be paying Income Tax, follow these steps. Add up…
+              </p>
+            </li>
+            <li>
+              <h4 class="govuk-heading-xs govuk-!-margin-bottom-1 govuk-!-margin-top-1">
+                <a class="govuk-link" href="#">
+                  Check you're paying the right amount
+                </a>
+              </h4>
+              <p class="govuk-body-s">                   
+                You can see if you’re paying the right amount of Income Tax online. For…
+              </p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-2">
+            <a class="govuk-link" href="#">
+              Check if you need to send a Self Assessment tax return
+            </a>
+          </h3>
+          <p class="govuk-body-s">
+            Use this tool to find out if you need to send a tax return for the 2019 to 2020 tax year (6 April 2019 to 5 April 2020).
+          </p>
+        </li>
+        <li>
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-2">
+            <a class="govuk-link" href="#">
+              HMRC services: sign in or register
+            </a>
+          </h3>
+          <p class="govuk-body-s">
+            Sign in or register for your personal or business tax account, Self Assessment, Corporation Tax, PAYE for employers, VAT and other services
+          </p>
+        </li>
+        <li>
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-2">
+            <a class="govuk-link" href="#">
+              Check if a vehicle is taxed
+            </a>
+          </h3>
+          <p class="govuk-body-s">
+            Check and report if a vehicle has up-to-date vehicle tax or is 'off road' (SORN)
+          </p>
+        </li>
+        <li>
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-2">
+            <a class="govuk-link" href="#">
+              Apply for a Test and Trace Support Payment
+            </a>
+          </h3>
+          <p class="govuk-body-s">
+            Find out if you can get a Test and Trace Support Payment from your local council
+          </p>
+        </li>
+        <li>
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-2">
+            <a class="govuk-link" href="#">
+              HM Revenue & Customs
+            </a>
+          </h3>
+          <p class="govuk-body-s">
+            …We help the honest majority to get their tax right and make it hard for the dishonest minority to cheat the system.
+          </p>
+        </li>
+        <li>
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-2">
+            <a class="govuk-link" href="#">
+              Check your Income Tax for the current year
+            </a>
+          </h3>
+          <p class="govuk-body-s">
+            Check your Income Tax, Personal Allowance and tax code for the current tax year. Change your tax code if it's wrong.
+          </p>
+        </li>
+
+      </ul>
+
+      <div class="govuk-!-margin-left-5">
+        <p class="govuk-body">
+          <a class="govuk-link " href="#">
+            <span class="govuk-!-font-weight-bold">Next page</span><br>
+            <span class="govuk-!-font-size-16">2 of 2939</span>
+          </a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+{% endblock %}
