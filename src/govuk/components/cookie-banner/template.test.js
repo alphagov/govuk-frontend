@@ -71,7 +71,7 @@ describe('Cookie Banner', () => {
   })
 
   describe('role and aria attributes', () => {
-    it('has role=region by default', () => {
+    it('has a role of region', () => {
       const $ = render('cookie-banner', examples.default)
 
       const $component = $('.govuk-cookie-banner')
