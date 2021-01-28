@@ -2,11 +2,11 @@ params:
 - name: ariaLabel
   type: string
   required: false
-  description: The text for the `aria-label` which labels the cookie banner region. This region applies to all banners that the cookie banner includes. For example, the question banner and the replacement banner. Defaults to "Cookie banner".
+  description: The text for the `aria-label` which labels the cookie banner region. This region applies to all banners that the cookie banner includes. For example, the question banner and the replacement message. Defaults to "Cookie banner".
 - name: banners
   type: array
   required: true
-  description: Required. The different kinds of banners you can pass into the cookie banner. For example, the question banner and the replacement banner.
+  description: Required. The different kinds of banners you can pass into the cookie banner. For example, the question banner and the replacement message.
   params:
     - name: headingText
       type: string
@@ -15,7 +15,7 @@ params:
     - name: headingHtml
       type: string
       required: false
-      description: The heading HTML to use within the cookie banner. You can use any string with this option. If you set `headingHtml`, `headingText` is ignored.If you are not passing HTML, use `headingText`.
+      description: The heading HTML to use within the cookie banner. You can use any string with this option. If you set `headingHtml`, `headingText` is ignored. If you are not passing HTML, use `headingText`.
     - name: text
       type: string
       required: false
@@ -23,15 +23,15 @@ params:
     - name: html
       type: string
       required: false
-      description: Required. The HTML for the main content within the banner. You can use any string with this option. If you set `html`, `text` is not required and is ignored. If you are not passing HTML, use `Text`.
+      description: Required. The HTML for the main content within the banner. You can use any string with this option. If you set `html`, `text` is not required and is ignored. If you are not passing HTML, use `text`.
     - name: hidden
       type: boolean
       required: false
-      description: Defaults to false. If you set it to `true`, the banner is hidden. You can use `hidden` for client-side implementations where the replacement banner HTML is present, but hidden on the page.
+      description: Defaults to false. If you set it to `true`, the banner is hidden. You can use `hidden` for client-side implementations where the replacement message HTML is present, but hidden on the page.
     - name: role
       type: string
       required: false
-      description: Set `role` to ’alert` on replacement banners to allow assistive tech to automatically read the message. You will also need to move focus to the replacement banner using JavaScript you have written yourself
+      description: Set `role` to ’alert` on replacement messages to allow assistive tech to automatically read the message. You will also need to move focus to the replacement message using JavaScript you have written yourself.
     - name: classes
       type: string
       required: false
@@ -47,7 +47,7 @@ params:
       params:
         - name: text
           type: string
-          required: false
+          required: true
           description: Required. The button or link text that you want to add to the cookie banner.
         - name: type
           type: string
