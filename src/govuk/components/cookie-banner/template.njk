@@ -1,0 +1,56 @@
+{% from "../button/macro.njk" import govukButton -%}
+
+<div class="govuk-cookie-banner" role="region" aria-label="{{ params.ariaLabel | default("Cookie banner") }}">
+  {%- for banner in params.banners %}
+    {% set classNames = "govuk-cookie-banner__message govuk-width-container" %}
+    {% if banner.classes %}
+      {% set classNames = classNames + " " + banner.classes %}
+    {% endif %}
+
+    <div class="{{classNames}}" {%- if banner.role %} role="{{banner.role}}"{% endif %}
+    {%- for attribute, value in banner.attributes %} {{attribute}}="{{value}}"{% endfor %}
+    {% if banner.hidden %} hidden{% endif %}>
+
+      {% if banner.headingHtml or banner.headingText %}
+      <h2 class="govuk-cookie-banner__heading govuk-heading-m">
+        {%- if banner.headingHtml -%}
+          {{ banner.headingHtml | safe }}
+        {%- else -%}
+          {{ banner.headingText }}
+        {%- endif -%}
+      </h2>
+      {% endif %}
+
+      <div class="govuk-cookie-banner__content">
+        {%- if banner.html -%}
+          {{ banner.html | safe }}
+        {%- elif banner.text -%}
+          <p class="govuk-body">{{ banner.text }}</p>
+        {%- endif -%}
+      </div>
+
+      {% if banner.actions %}
+      <div class="govuk-button-group">
+        {% for action in banner.actions %}
+          {% if action.href %}
+            {% set linkClasses = "govuk-link" %}
+            {% if action.classes %}
+              {% set linkClasses = linkClasses + " " + action.classes %}
+            {% endif %}
+            <a class="{{ linkClasses }}" href="{{ action.href }}" {%- for attribute, value in action.attributes %} {{attribute}}="{{value}}"{% endfor %}>{{ action.text }}</a>
+          {% else %}
+            {{ govukButton({
+              "text": action.text,
+              "value": action.value,
+              "name": action.name,
+              "type": action.type,
+              "classes": action.classes,
+              "attributes": action.attributes
+            }) | indent(12) | trim }}
+          {% endif %}
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>
