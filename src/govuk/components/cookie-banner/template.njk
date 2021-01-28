@@ -2,7 +2,7 @@
 
 <div class="govuk-cookie-banner" role="region" aria-label="{{ params.ariaLabel | default("Cookie banner") }}">
   {%- for banner in params.banners %}
-    {% set classNames = "govuk-cookie-banner__container govuk-width-container" %}
+    {% set classNames = "govuk-cookie-banner__message govuk-width-container" %}
     {% if banner.classes %}
       {% set classNames = classNames + " " + banner.classes %}
     {% endif %}

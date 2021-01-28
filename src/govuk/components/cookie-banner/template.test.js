@@ -56,7 +56,7 @@ describe('Cookie Banner', () => {
     it('renders classes', () => {
       const $ = render('cookie-banner', examples.classes)
 
-      const $banner = $('.govuk-cookie-banner .govuk-cookie-banner__container')
+      const $banner = $('.govuk-cookie-banner .govuk-cookie-banner__message')
 
       expect($banner.hasClass('app-my-class')).toBeTruthy()
     })
@@ -64,7 +64,7 @@ describe('Cookie Banner', () => {
     it('renders attributes', () => {
       const $ = render('cookie-banner', examples.attributes)
 
-      const $banner = $('.govuk-cookie-banner .govuk-cookie-banner__container')
+      const $banner = $('.govuk-cookie-banner .govuk-cookie-banner__message')
 
       expect($banner.attr('data-attribute')).toEqual('my-value')
     })
@@ -105,7 +105,7 @@ describe('Cookie Banner', () => {
       const $ = render('cookie-banner', examples.default)
 
       const $component = $('.govuk-cookie-banner')
-      const $banner = $component.find('.govuk-cookie-banner__container')
+      const $banner = $component.find('.govuk-cookie-banner__message')
       expect($banner.attr('role')).toBeUndefined()
     })
 
@@ -113,21 +113,21 @@ describe('Cookie Banner', () => {
       const $ = render('cookie-banner', examples['accepted confirmation banner'])
 
       const $component = $('.govuk-cookie-banner')
-      const $banner = $component.find('.govuk-cookie-banner__container')
+      const $banner = $component.find('.govuk-cookie-banner__message')
       expect($banner.attr('role')).toEqual('alert')
     })
 
     it('hides banner if hidden option set to true', () => {
       const $ = render('cookie-banner', examples.hidden)
 
-      const $component = $('.govuk-cookie-banner__container')
+      const $component = $('.govuk-cookie-banner__message')
       expect($component.attr('hidden')).toBeTruthy()
     })
 
     it('does not hide banner if hidden option set to false', () => {
       const $ = render('cookie-banner', examples['hidden false'])
 
-      const $component = $('.govuk-cookie-banner__container')
+      const $component = $('.govuk-cookie-banner__message')
       expect($component.attr('hidden')).toBeUndefined()
     })
   })
@@ -228,14 +228,14 @@ describe('Cookie Banner', () => {
     it('renders 3 banners', () => {
       const $ = render('cookie-banner', examples['client-side implementation'])
 
-      const $actions = $('.govuk-cookie-banner__container')
+      const $actions = $('.govuk-cookie-banner__message')
       expect($actions.length).toEqual(3)
     })
 
     it('2 banners are hidden', () => {
       const $ = render('cookie-banner', examples['client-side implementation'])
 
-      const $actions = $('.govuk-cookie-banner__container[hidden]')
+      const $actions = $('.govuk-cookie-banner__message[hidden]')
       expect($actions.length).toEqual(2)
     })
   })
