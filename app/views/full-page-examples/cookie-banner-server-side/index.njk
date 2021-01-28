@@ -43,7 +43,8 @@ notes: >-
                     "type": "button",
                     "classes": "js-hide"
                 }
-            ]
+            ],
+            "classes": "js-confirmation-banner"
         }
     ]
     }) }}
@@ -183,8 +184,19 @@ notes: >-
 {# As the cookie banner component does not currently include JavaScript, we have
    to take care of the 'Hide' button to make the example functional #}
  <script>
-    var hideButton = document.querySelector('.js-hide');
-    var cookieBanner = document.querySelector(".govuk-cookie-banner");
+    var hideButton = document.querySelector('.js-hide')
+    var cookieBanner = document.querySelector(".govuk-cookie-banner")
+    var confirmationBanner = document.querySelector('.js-confirmation-banner')
+    
+    if (confirmationBanner) {
+      // Shift focus to the confirmation banner
+      confirmationBanner.setAttribute('tabindex', '-1')
+      confirmationBanner.focus()
+      
+      confirmationBanner.addEventListener('blur', function () {
+          confirmationBanner.removeAttribute('tabindex')
+      })
+    }
 
     hideButton.addEventListener('click', function() {
       cookieBanner.remove()
