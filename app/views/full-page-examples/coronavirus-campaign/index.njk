@@ -1,0 +1,195 @@
+---
+
+---
+
+{# This example is based off the coronavirus home page, to explore complex campaign-type pages, original available at https://www.gov.uk/coronavirus #}
+{% extends "_generic.njk" %}
+
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "select/macro.njk" import govukSelect %}
+{% from "radios/macro.njk" import govukRadios %}
+{% from "checkboxes/macro.njk" import govukCheckboxes %}
+{% from "button/macro.njk" import govukButton %}
+{% from "input/macro.njk" import govukInput %}
+
+{% set pageTitle = "Coronavirus (COVID‑19)" %}
+{% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <style>
+
+        .govuk-header {
+          padding-bottom: 10px;
+          border-bottom: 10px solid #fff500;
+        }
+
+        .govuk-header__container {
+          border-bottom: none;
+        }
+
+        .app-covid-banner-top {
+          background-color: #0b0c0c;
+          padding-bottom: 20px;     
+        }
+
+        .app-covid-banner-top .govuk-heading-xl{
+          color: #fff;
+          padding-top: 10px;
+        }
+
+        .app-covid-banner-bottom {
+          background-color: #272828;
+          padding: 15px 0 5px;
+          margin-bottom: 30px;
+        }
+
+        .app-covid-banner-bottom .govuk-body,
+        .app-covid-banner-bottom .govuk-heading-m {
+          color: #fff;
+        }
+
+        .app-covid-banner-bottom .govuk-link,
+        .app-covid-banner-top .govuk-breadcrumbs__link {
+          color: #fff;
+          text-decoration-color: #fff;
+        }
+
+        .app-section {
+          border-top: 2px solid #0b0c0c;
+          padding: 15px 0;
+        }
+
+        section .govuk-heading-m {
+          font-size: 27px
+        }
+
+        .app-updates {
+          background-color: #f3f2f1;
+          border: 1px solid #b1b4b6;
+          padding: 20px 20px 10px;
+          margin-bottom: 50px;
+        }
+
+        .app-nhs-box {
+          border: 5px solid #0b0c0c;
+          padding: 20px;
+          margin-bottom: 20px;
+        }
+
+        .app-danger-box {
+          color: #fff;
+          background-color: #272828;
+          padding: 30px 25px;
+          border-left: solid #fff500;
+          border-width: 0 0 0 10px;
+          border-image: repeating-linear-gradient(25deg, transparent 0, #fff500 1px, #fff500 10px, transparent 11px, transparent 20px) 25;
+        }
+
+        .app-danger-box .govuk-body,
+        .app-danger-box .govuk-heading-m,
+        .app-danger-box .govuk-link {
+          color: #fff;
+        }
+
+        .app-danger-box .govuk-link {
+          text-decoration-color: #fff;
+        }
+
+    </style>
+{% endblock %}
+
+{% block main %}
+
+  <div class="app-covid-banner-top">
+    <div class="govuk-width-container">
+      <div class="govuk-grid-row">  
+        <div class="govuk-grid-column-two-thirds">
+          {{ govukBreadcrumbs({
+              items: [
+                  {
+                      text: "Home",
+                      href: "#"
+                  }
+              ]
+          }) }}
+          <h1 class="govuk-heading-xl govuk-!-margin-bottom-5">{{ pageTitle }}</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="app-covid-banner-bottom">
+    <div class="govuk-width-container">
+      <div class="govuk-grid-row app-covid-banner-bottom">  
+        <div class="govuk-grid-column-two-thirds">
+          <h2 class="govuk-heading-m">National lockdown: stay at home</h2>
+          <p class="govuk-body">Coronavirus (COVID‑19) is spreading fast.</p>
+          <p class="govuk-body">Do not leave your home unless necessary.</p>
+          <p class="govuk-body">1 in 3 people who have the virus have no symptoms, so you could be spreading it without knowing it.</p>
+          <a class="govuk-link govuk-heading-s" href="">Find out what the rules are</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="govuk-width-container">  
+    <div class="govuk-grid-row">  
+      <div class="govuk-grid-column-one-third">
+        <div class="app-nhs-box">
+          <h2 class="govuk-heading-m">If you have any coronavirus symptoms:</h2>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>a high temperature</li>
+            <li>a new, continuous cough</li>
+            <li>a loss of, or change to, your sense of smell or taste</li>
+          </ul>
+          <p class="govuk-body govuk-!-font-weight-bold"><a class="govuk-link" href="#">Get a test</a> and stay at home</p>
+        </div>
+        <div class="app-danger-box">
+          <h2 class="govuk-heading-m">Find out what support you can get</h2>
+          <p class="govuk-body">For example, if you’re out of work, need to get food, or want to take care of your mental health.</p>
+          <p class="govuk-body govuk-!-font-weight-bold"><a class="govuk-link" href="#">Find support</a></p>
+        </div>
+      </div>
+      <div class="govuk-grid-column-two-thirds">
+        <section class="govuk-!-margin-bottom-8">
+          <h2 class="govuk-heading-m">Recent and upcoming changes</h2>
+          <h3 class="govuk-heading-s">27 January</h3>
+          <p class="govuk-body">The Prime Minister has announced that <a class="govuk-link" href="#">it’ll not be possible to resume face-to-face learning</a> for the majority of pupils and students until 8 March at the earliest.</p>
+          <p class="govuk-body">The Prime Minister has also announced <a class="govuk-link" href="#">further measures at the border</a>, including the strengthening of requirements for some arrivals through hotel isolation. We’ll set out more details in due course.</p>
+          <h3 class="govuk-heading-s">5 January</h3>
+          <p class="govuk-body"><a class="govuk-link" href="#">National lockdown rules apply in England</a>. Stay at home. Find out what the rules are in <a class="govuk-link" href="#">Scotland</a>, <a class="govuk-link" href="#">Wales</a> and <a class="govuk-link" href="#">Northern Ireland</a>.</p>
+          <p class="govuk-body"><a class="govuk-link" href="#">Shielding has resumed in England</a>. If you’re shielding, do not attend work, school, college or university. You can get <a class="govuk-link" href="#">support if you’re clinically extremely vulnerable</a>, for example priority access to supermarket deliveries.</p>
+        </section>
+        <section class="app-section">
+          <h2 class="govuk-heading-m">Announcements</h2>
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-1"><a class="govuk-link" href="#">Schools and colleges will not return to full face-to-face education after February half-term</a></h3>
+          <p class="govuk-body">Published 27 January 2021</p>
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-1"><a class="govuk-link" href="#">New rules for people travelling in to and out of the UK</a></h3>
+          <p class="govuk-body">Published 27 January 2021</p>
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-1"><a class="govuk-link" href="#">New hard-hitting national TV ad urges the nation to stay at home</a></h3>
+          <p class="govuk-body">Published 27 January 2021</p>
+          <p class="govuk-body"><a class="govuk-link" href="#">See all announcements</a></p>
+        </section>
+        <section class="app-section govuk-!-margin-bottom-8">
+          <h2 class="govuk-heading-m">Announcements</h2>
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-1"><a class="govuk-link" href="#">Daily summary of coronavirus testing, cases and vaccinatons</a></h3>
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-1"><a class="govuk-link" href="#">All data and analysis on coronavirus</a></h3>
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-1"><a class="govuk-link" href="#">Coronavirus cases by local authority</a></h3>
+        </section>
+        <section class="app-section govuk-!-margin-bottom-8">
+          <h2 class="govuk-heading-m">All coronavirus information on GOV.UK</h2>
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-1"><a class="govuk-link" href="#">Guidance</a></h3>
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-1"><a class="govuk-link" href="#">News</a></h3>
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-1"><a class="govuk-link" href="#">Legislation (legislation.gov.uk)</a></h3>
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-1"><a class="govuk-link" href="#">Press conferences (YouTube)</a></h3>
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-1"><a class="govuk-link" href="#">Press conference statements</a></h3>
+        </section>
+        <div class="app-updates">
+          <h3 class="govuk-heading-s">Stay up to date with GOV.UK</h3>
+          <p class="govuk-body"><a class="govuk-link" href="#">Sign up to get emails when we change any coronavirus information on the GOV.UK website</a></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+{% endblock %}
