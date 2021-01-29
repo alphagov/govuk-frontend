@@ -23,19 +23,19 @@ params:
     - name: headingText
       type: string
       required: false
-      description: The heading text that displays in the cookie banner. You can use any string with this option. If you set `headingHtml`, `headingText` is ignored.
+      description: The heading text that displays in the cookie message. You can use any string with this option. If you set `headingHtml`, `headingText` is ignored.
     - name: headingHtml
       type: string
       required: false
-      description: The heading HTML to use within the cookie banner. You can use any string with this option. If you set `headingHtml`, `headingText` is ignored. If you are not passing HTML, use `headingText`.
+      description: The heading HTML to use within the cookie message. You can use any string with this option. If you set `headingHtml`, `headingText` is ignored. If you are not passing HTML, use `headingText`.
     - name: text
       type: string
       required: false
-      description: Required. The text for the main content within the cookie banner. You can use any string with this option. If you set `html`, `text` is not required and is ignored.
+      description: Required. The text for the main content within the cookie message. You can use any string with this option. If you set `html`, `text` is not required and is ignored.
     - name: html
       type: string
       required: false
-      description: Required. The HTML for the main content within the cookie banner. You can use any string with this option. If you set `html`, `text` is not required and is ignored. If you are not passing HTML, use `text`.
+      description: Required. The HTML for the main content within the cookie message. You can use any string with this option. If you set `html`, `text` is not required and is ignored. If you are not passing HTML, use `text`.
     - name: hidden
       type: boolean
       required: false
@@ -55,12 +55,12 @@ params:
     - name: actions
       type: array
       required: false
-      description: The buttons and links that you want to display in the cookie banner. `actions` defaults to `button` unless you set `href`, which renders the action as a link.
+      description: The buttons and links that you want to display in the cookie message. `actions` defaults to `button` unless you set `href`, which renders the action as a link.
       params:
         - name: text
           type: string
           required: true
-          description: Required. The button or link text that you want to add to the cookie banner.
+          description: Required. The button or link text.
         - name: type
           type: string
           required: false
