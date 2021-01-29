@@ -1,5 +1,9 @@
 @include govuk-exports("govuk/component/cookie-banner") {
   // For supporting older browsers which don't hide elements with the `hidden` attribute
+  .govuk-cookie-banner[hidden] {
+    display: none;
+  }
+
   .govuk-cookie-banner__message[hidden] {
     display: none;
   }

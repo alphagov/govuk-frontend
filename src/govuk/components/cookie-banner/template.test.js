@@ -239,4 +239,20 @@ describe('Cookie Banner', () => {
       expect($actions.length).toEqual(2)
     })
   })
+
+  describe('full cookie banner hidden', () => {
+    it('HTML for 3 banners is present', () => {
+      const $ = render('cookie-banner', examples['full banner hidden'])
+
+      const $actions = $('.govuk-cookie-banner__message')
+      expect($actions.length).toEqual(3)
+    })
+
+    it('parent banner is hidden', () => {
+      const $ = render('cookie-banner', examples['full banner hidden'])
+
+      const $actions = $('.govuk-cookie-banner[hidden]')
+      expect($actions.length).toEqual(1)
+    })
+  })
 })

@@ -3,6 +3,10 @@ params:
   type: string
   required: false
   description: The text for the `aria-label` which labels the cookie banner region. This region applies to all banners that the cookie banner includes. For example, the question banner and the replacement message. Defaults to "Cookie banner".
+- name: hidden
+  type: boolean
+  required: false
+  description: Defaults to false. If you set it to `true`, the whole cookie banner (including all messages within) is hidden. You can use `hidden` for client-side implementations where the cookie banner HTML is present, but hidden until it is shown using JavaScript.
 - name: banners
   type: array
   required: true
@@ -244,3 +248,32 @@ examples:
             href: /link
             attributes:
               "data-link-attribute": "my-value"
+  - name: full banner hidden
+    hidden: true
+    data:
+      hidden: true
+      banners:
+        - headingText: Cookies on this service
+          text: We use cookies to help understand how users use our service.
+          actions:
+            - text: Accept analytics cookies
+              type: submit
+              name: cookies
+              value: accept
+            - text: Reject analytics cookies
+              type: submit
+              name: cookies
+              value: reject
+            - text: View cookie preferences
+              href: /cookie-preferences
+        - text: Your cookie preferences have been saved. You have accepted cookies.
+          role: alert
+          actions:
+            - text: Hide this message
+              type: button
+        - text: Your cookie preferences have been saved. You have rejected cookies.
+          role: alert
+          actions:
+            - text: Hide this message
+              type: button
+
