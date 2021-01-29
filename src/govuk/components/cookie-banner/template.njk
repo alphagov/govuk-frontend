@@ -4,37 +4,37 @@
   {%- if params.hidden %} hidden{% endif %}
   {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
 
-  {%- for banner in params.banners %}
+  {%- for message in params.messages %}
     {% set classNames = "govuk-cookie-banner__message govuk-width-container" %}
-    {% if banner.classes %}
-      {% set classNames = classNames + " " + banner.classes %}
+    {% if message.classes %}
+      {% set classNames = classNames + " " + message.classes %}
     {% endif %}
 
-    <div class="{{classNames}}" {%- if banner.role %} role="{{banner.role}}"{% endif %}
-    {%- for attribute, value in banner.attributes %} {{attribute}}="{{value}}"{% endfor %}
-    {% if banner.hidden %} hidden{% endif %}>
+    <div class="{{classNames}}" {%- if message.role %} role="{{message.role}}"{% endif %}
+    {%- for attribute, value in message.attributes %} {{attribute}}="{{value}}"{% endfor %}
+    {% if message.hidden %} hidden{% endif %}>
 
-      {% if banner.headingHtml or banner.headingText %}
+      {% if message.headingHtml or message.headingText %}
       <h2 class="govuk-cookie-banner__heading govuk-heading-m">
-        {%- if banner.headingHtml -%}
-          {{ banner.headingHtml | safe }}
+        {%- if message.headingHtml -%}
+          {{ message.headingHtml | safe }}
         {%- else -%}
-          {{ banner.headingText }}
+          {{ message.headingText }}
         {%- endif -%}
       </h2>
       {% endif %}
 
       <div class="govuk-cookie-banner__content">
-        {%- if banner.html -%}
-          {{ banner.html | safe }}
-        {%- elif banner.text -%}
-          <p class="govuk-body">{{ banner.text }}</p>
+        {%- if message.html -%}
+          {{ message.html | safe }}
+        {%- elif message.text -%}
+          <p class="govuk-body">{{ message.text }}</p>
         {%- endif -%}
       </div>
 
-      {% if banner.actions %}
+      {% if message.actions %}
       <div class="govuk-button-group">
-        {% for action in banner.actions %}
+        {% for action in message.actions %}
           {% if action.href %}
             {% set linkClasses = "govuk-link" %}
             {% if action.classes %}

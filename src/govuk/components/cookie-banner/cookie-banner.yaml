@@ -15,10 +15,10 @@ params:
   type: object
   required: false
   description: The additional attributes that you want to add to the button or link. For example, data attributes.
-- name: banners
+- name: messages
   type: array
   required: true
-  description: Required. The different kinds of banners you can pass into the cookie banner. For example, the question banner and the replacement message.
+  description: Required. The different messages you can pass into the cookie banner. For example, the question message and the replacement message.
   params:
     - name: headingText
       type: string
@@ -31,15 +31,15 @@ params:
     - name: text
       type: string
       required: false
-      description: Required. The text for the main content within the banner. You can use any string with this option. If you set `html`, `text` is not required and is ignored.
+      description: Required. The text for the main content within the cookie banner. You can use any string with this option. If you set `html`, `text` is not required and is ignored.
     - name: html
       type: string
       required: false
-      description: Required. The HTML for the main content within the banner. You can use any string with this option. If you set `html`, `text` is not required and is ignored. If you are not passing HTML, use `text`.
+      description: Required. The HTML for the main content within the cookie banner. You can use any string with this option. If you set `html`, `text` is not required and is ignored. If you are not passing HTML, use `text`.
     - name: hidden
       type: boolean
       required: false
-      description: Defaults to false. If you set it to `true`, the banner is hidden. You can use `hidden` for client-side implementations where the replacement message HTML is present, but hidden on the page.
+      description: Defaults to false. If you set it to `true`, the message is hidden. You can use `hidden` for client-side implementations where the replacement message HTML is present, but hidden on the page.
     - name: role
       type: string
       required: false
@@ -47,11 +47,11 @@ params:
     - name: classes
       type: string
       required: false
-      description: The additional classes that you want to add to the cookie banner.
+      description: The additional classes that you want to add to the message.
     - name: attributes
       type: object
       required: false
-      description: The additional attributes that you want to add to the cookie banner. For example, data attributes.
+      description: The additional attributes that you want to add to the message. For example, data attributes.
     - name: actions
       type: array
       required: false
@@ -89,7 +89,7 @@ params:
 examples:
   - name: default
     data:
-      banners:
+      messages:
         - headingText: Cookies on this government service
           text: We use analytics cookies to help understand how users use our service.
           actions:
@@ -106,7 +106,7 @@ examples:
 
   - name: accepted confirmation banner
     data:
-      banners:
+      messages:
         - text: Your cookie preferences have been saved. You have accepted cookies.
           role: alert
           actions:
@@ -115,7 +115,7 @@ examples:
 
   - name: rejected confirmation banner
     data:
-      banners:
+      messages:
         - text: Your cookie preferences have been saved. You have rejected cookies.
           role: alert
           actions:
@@ -124,7 +124,7 @@ examples:
 
   - name: client-side implementation
     data:
-      banners:
+      messages:
         - headingText: Cookies on this service
           text: We use cookies to help understand how users use our service.
           actions:
@@ -156,62 +156,62 @@ examples:
   - name: heading html
     hidden: true
     data:
-      banners:
+      messages:
         - headingHtml: Cookies on <span>my service</span>
   - name: heading html as text
     hidden: true
     data:
-      banners:
+      messages:
         - headingText: Cookies on <span>my service</span>
   - name: html
     hidden: true
     data:
-      banners:
+      messages:
         - html: <p class="govuk-body">We use cookies in <span>our service</span>.</p>
   - name: classes
     hidden: true
     data:
-      banners:
+      messages:
         - classes: "app-my-class"
   - name: attributes
     hidden: true
     data:
-      banners:
+      messages:
         - attributes:
             "data-attribute": "my-value"
   - name: custom aria label
     hidden: true
     data:
       ariaLabel: "Cookies on GOV.UK"
-      banners:
+      messages:
         - text: "We use cookies on GOV.UK"
   - name: hidden
     hidden: true
     data:
-      banners:
+      messages:
         - hidden: true
   - name: hidden false
     hidden: true
     data:
-      banners:
+      messages:
         - hidden: false
   - name: default action
     hidden: true
     data:
-      banners:
+      messages:
         - actions:
           - text: This is a button
   - name: link
     hidden: true
     data:
-      banners:
+      messages:
         - actions:
           - text: This is a link
             href: /link
   - name: link with button options
     hidden: true
     data:
-      banners:
+      messages:
         - actions:
           - text: This is a link
             href: /link
@@ -220,21 +220,21 @@ examples:
   - name: type
     hidden: true
     data:
-      banners:
+      messages:
         - actions:
           - text: Button
             type: button
   - name: button classes
     hidden: true
     data:
-      banners:
+      messages:
         - actions:
           - text: Button with custom classes
             classes: "my-button-class app-button-class"
   - name: button attributes
     hidden: true
     data:
-      banners:
+      messages:
         - actions:
           - text: Button with attributes
             attributes:
@@ -242,7 +242,7 @@ examples:
   - name: link classes
     hidden: true
     data:
-      banners:
+      messages:
         - actions:
           - text: Link with custom classes
             href: /my-link
@@ -250,7 +250,7 @@ examples:
   - name: link attributes
     hidden: true
     data:
-      banners:
+      messages:
         - actions:
           - text: Link with attributes
             href: /link
@@ -263,7 +263,7 @@ examples:
       classes: hide-cookie-banner
       attributes:
         "data-hide-cookie-banner": "true"
-      banners:
+      messages:
         - headingText: Cookies on this service
           text: We use cookies to help understand how users use our service.
           actions:

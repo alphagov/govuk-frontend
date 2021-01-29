@@ -7,7 +7,7 @@ notes: >-
   For this example, when the user makes a choice to accept or reject cookies the
   form is submitted and a page navigation occurs, with the confirmation banner
   shown on the next page.
-  
+
   The choice to accept or reject cookies will not be remembered.
 
   The content of the page is not important for this scenario.
@@ -33,7 +33,7 @@ notes: >-
     {% endif %}
 
     {{ govukCookieBanner({
-    "banners": [
+    "messages": [
         {
             "text": "Your cookie preferences have been saved. " + outcome,
             "role": "alert",
@@ -51,7 +51,7 @@ notes: >-
 {% else %}
 <form action="" method="POST">
     {{ govukCookieBanner({
-    "banners": [
+    "messages": [
         {
         "headingText": "Cookies on this government service",
         "text": "We use analytics cookies to help understand how users use our service.",
@@ -187,12 +187,12 @@ notes: >-
     var hideButton = document.querySelector('.js-hide')
     var cookieBanner = document.querySelector(".govuk-cookie-banner")
     var confirmationBanner = document.querySelector('.js-confirmation-banner')
-    
+
     if (confirmationBanner) {
       // Shift focus to the confirmation banner
       confirmationBanner.setAttribute('tabindex', '-1')
       confirmationBanner.focus()
-      
+
       confirmationBanner.addEventListener('blur', function () {
           confirmationBanner.removeAttribute('tabindex')
       })
