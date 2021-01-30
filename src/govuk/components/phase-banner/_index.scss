@@ -16,12 +16,17 @@
     margin: 0;
   }
 
+  .govuk-phase-banner__phase {
+    display: table-cell;
+    vertical-align: top;
+  }
+
   .govuk-phase-banner__content__tag {
     margin-right: govuk-spacing(2);
   }
 
   .govuk-phase-banner__text {
     display: table-cell;
-    vertical-align: baseline;
+    vertical-align: middle;
   }
 }
