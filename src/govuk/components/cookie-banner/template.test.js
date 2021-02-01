@@ -244,15 +244,29 @@ describe('Cookie Banner', () => {
     it('HTML for 3 banners is present', () => {
       const $ = render('cookie-banner', examples['full banner hidden'])
 
-      const $actions = $('.govuk-cookie-banner__message')
-      expect($actions.length).toEqual(3)
+      const $messages = $('.govuk-cookie-banner__message')
+      expect($messages.length).toEqual(3)
     })
 
     it('parent banner is hidden', () => {
       const $ = render('cookie-banner', examples['full banner hidden'])
 
-      const $actions = $('.govuk-cookie-banner[hidden]')
-      expect($actions.length).toEqual(1)
+      const $cookieBanner = $('.govuk-cookie-banner[hidden]')
+      expect($cookieBanner.length).toEqual(1)
+    })
+
+    it('adds classes to parent container when provided', () => {
+      const $ = render('cookie-banner', examples['full banner hidden'])
+
+      const $cookieBanner = $('.govuk-cookie-banner')
+      expect($cookieBanner.hasClass('hide-cookie-banner')).toBeTruthy()
+    })
+
+    it('adds attributes to parent container when provided', () => {
+      const $ = render('cookie-banner', examples['full banner hidden'])
+
+      const $cookieBanner = $('.govuk-cookie-banner')
+      expect($cookieBanner.attr('data-hide-cookie-banner')).toEqual('true')
     })
   })
 })

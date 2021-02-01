@@ -7,6 +7,14 @@ params:
   type: boolean
   required: false
   description: Defaults to false. If you set it to `true`, the whole cookie banner (including all messages within) is hidden. You can use `hidden` for client-side implementations where the cookie banner HTML is present, but hidden until it is shown using JavaScript.
+- name: classes
+  type: string
+  required: false
+  description: The additional classes that you want to add to the cookie banner.
+- name: attributes
+  type: object
+  required: false
+  description: The additional attributes that you want to add to the button or link. For example, data attributes.
 - name: banners
   type: array
   required: true
@@ -252,6 +260,9 @@ examples:
     hidden: true
     data:
       hidden: true
+      classes: hide-cookie-banner
+      attributes:
+        "data-hide-cookie-banner": "true"
       banners:
         - headingText: Cookies on this service
           text: We use cookies to help understand how users use our service.
