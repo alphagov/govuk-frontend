@@ -8,7 +8,7 @@ notes: >-
   their preference is handled entirely on the client side with no page
   navigation, and JavaScript is used to swap out the cookie banner for the
   'confirmation' banner.
-  
+
   The choice to accept or reject cookies will not be remembered.
 
   The content of the page is not important for this scenario.
@@ -27,6 +27,7 @@ notes: >-
 
 {% block bodyStart %}
     {{ govukCookieBanner({
+    "classes": "js-cookies-banner",
     "banners": [
         {
             "headingText": "Cookies on this government service",
@@ -47,7 +48,7 @@ notes: >-
                     "href": "#"
                 }
             ],
-            "classes": "js-cookies-banner"
+            "classes": "js-question-banner"
         },
         {
             "text": "Your cookie preferences have been saved. You have accepted cookies.",
@@ -186,16 +187,17 @@ notes: >-
 
     var acceptedBanner = document.querySelector('.js-cookies-accepted')
     var rejectedBanner = document.querySelector('.js-cookies-rejected')
+    var questionBanner = document.querySelector('.js-question-banner')
     var cookieBanner = document.querySelector('.js-cookies-banner')
 
     function showBanner(banner) {
-        cookieBanner.setAttribute('hidden', 'hidden')
+        questionBanner.setAttribute('hidden', 'hidden')
         banner.removeAttribute('hidden')
 
         // Shift focus to the banner
         banner.setAttribute('tabindex', '-1')
         banner.focus()
-        
+
         banner.addEventListener('blur', function () {
             banner.removeAttribute('tabindex')
         })
@@ -212,11 +214,11 @@ notes: >-
     })
 
     acceptedBanner.querySelector('.js-hide').addEventListener('click', function() {
-      acceptedBanner.setAttribute('hidden', 'hidden')
+      cookieBanner.setAttribute('hidden', 'hidden')
     })
 
     rejectedBanner.querySelector('.js-hide').addEventListener('click', function() {
-      rejectedBanner.setAttribute('hidden', 'hidden')
+      cookieBanner.setAttribute('hidden', 'hidden')
     })
   </script>
 {% endblock %}
