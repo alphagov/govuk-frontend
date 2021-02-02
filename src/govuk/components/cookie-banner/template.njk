@@ -14,23 +14,27 @@
     {%- for attribute, value in message.attributes %} {{attribute}}="{{value}}"{% endfor %}
     {% if message.hidden %} hidden{% endif %}>
 
-      {% if message.headingHtml or message.headingText %}
-      <h2 class="govuk-cookie-banner__heading govuk-heading-m">
-        {%- if message.headingHtml -%}
-          {{ message.headingHtml | safe }}
-        {%- else -%}
-          {{ message.headingText }}
-        {%- endif -%}
-      </h2>
-      {% endif %}
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        {% if message.headingHtml or message.headingText %}
+        <h2 class="govuk-cookie-banner__heading govuk-heading-m">
+          {%- if message.headingHtml -%}
+            {{ message.headingHtml | safe }}
+          {%- else -%}
+            {{ message.headingText }}
+          {%- endif -%}
+        </h2>
+        {% endif %}
 
-      <div class="govuk-cookie-banner__content">
-        {%- if message.html -%}
-          {{ message.html | safe }}
-        {%- elif message.text -%}
-          <p class="govuk-body">{{ message.text }}</p>
-        {%- endif -%}
+        <div class="govuk-cookie-banner__content">
+          {%- if message.html -%}
+            {{ message.html | safe }}
+          {%- elif message.text -%}
+            <p class="govuk-body">{{ message.text }}</p>
+          {%- endif -%}
+        </div>
       </div>
+    </div>
 
       {% if message.actions %}
       <div class="govuk-button-group">
