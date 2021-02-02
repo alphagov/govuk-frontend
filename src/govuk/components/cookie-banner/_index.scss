@@ -33,5 +33,19 @@
       display: none;
     }
 
+    &:focus {
+      // Remove the native visible focus indicator when the element is programmatically focused.
+      //
+      // The focused cookie banner is the first element on the page and the last thing the user
+      // interacted with prior to it gaining focus.
+      // We therefore assume that moving focus to it is not going to surprise users, and that giving
+      // it a visible focus indicator could be more confusing than helpful, especially as the
+      // element is not normally keyboard operable.
+      //
+      // We have flagged this in the research section of the guidance as something to monitor.
+      //
+      // A related discussion: https://github.com/w3c/wcag/issues/1001
+      outline: none;
+    }
   }
 }
