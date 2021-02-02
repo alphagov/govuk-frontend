@@ -2,7 +2,7 @@ params:
 - name: ariaLabel
   type: string
   required: false
-  description: The text for the `aria-label` which labels the cookie banner region. This region applies to all banners that the cookie banner includes. For example, the question banner and the replacement message. Defaults to "Cookie banner".
+  description: The text for the `aria-label` which labels the cookie banner region. This region applies to all messages that the cookie banner includes. For example, the cookie message and the replacement message. Defaults to "Cookie banner".
 - name: hidden
   type: boolean
   required: false
@@ -14,28 +14,28 @@ params:
 - name: attributes
   type: object
   required: false
-  description: The additional attributes that you want to add to the button or link. For example, data attributes.
+  description: The additional attributes that you want to add to the cookie banner. For example, data attributes.
 - name: messages
   type: array
   required: true
-  description: Required. The different messages you can pass into the cookie banner. For example, the question message and the replacement message.
+  description: Required. The different messages you can pass into the cookie banner. For example, the cookie message and the replacement message.
   params:
     - name: headingText
       type: string
       required: false
-      description: The heading text that displays in the cookie message. You can use any string with this option. If you set `headingHtml`, `headingText` is ignored.
+      description: The heading text that displays in the message. You can use any string with this option. If you set `headingHtml`, `headingText` is ignored.
     - name: headingHtml
       type: string
       required: false
-      description: The heading HTML to use within the cookie message. You can use any string with this option. If you set `headingHtml`, `headingText` is ignored. If you are not passing HTML, use `headingText`.
+      description: The heading HTML to use within the message. You can use any string with this option. If you set `headingHtml`, `headingText` is ignored. If you are not passing HTML, use `headingText`.
     - name: text
       type: string
       required: false
-      description: Required. The text for the main content within the cookie message. You can use any string with this option. If you set `html`, `text` is not required and is ignored.
+      description: Required. The text for the main content within the message. You can use any string with this option. If you set `html`, `text` is not required and is ignored.
     - name: html
       type: string
       required: false
-      description: Required. The HTML for the main content within the cookie message. You can use any string with this option. If you set `html`, `text` is not required and is ignored. If you are not passing HTML, use `text`.
+      description: Required. The HTML for the main content within the message. You can use any string with this option. If you set `html`, `text` is not required and is ignored. If you are not passing HTML, use `text`.
     - name: hidden
       type: boolean
       required: false
@@ -55,7 +55,7 @@ params:
     - name: actions
       type: array
       required: false
-      description: The buttons and links that you want to display in the cookie message. `actions` defaults to `button` unless you set `href`, which renders the action as a link.
+      description: The buttons and links that you want to display in the message. `actions` defaults to `button` unless you set `href`, which renders the action as a link.
       params:
         - name: text
           type: string
