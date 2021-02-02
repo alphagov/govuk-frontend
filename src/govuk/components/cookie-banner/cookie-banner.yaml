@@ -36,22 +36,6 @@ params:
       type: string
       required: false
       description: Required. The HTML for the main content within the message. You can use any string with this option. If you set `html`, `text` is not required and is ignored. If you are not passing HTML, use `text`.
-    - name: hidden
-      type: boolean
-      required: false
-      description: Defaults to false. If you set it to `true`, the message is hidden. You can use `hidden` for client-side implementations where the replacement message HTML is present, but hidden on the page.
-    - name: role
-      type: string
-      required: false
-      description: Set `role` to ’alert` on replacement messages to allow assistive tech to automatically read the message. You will also need to move focus to the replacement message using JavaScript you have written yourself.
-    - name: classes
-      type: string
-      required: false
-      description: The additional classes that you want to add to the message.
-    - name: attributes
-      type: object
-      required: false
-      description: The additional attributes that you want to add to the message. For example, data attributes.
     - name: actions
       type: array
       required: false
@@ -85,6 +69,22 @@ params:
           type: object
           required: false
           description: The additional attributes that you want to add to the button or link. For example, data attributes.
+    - name: hidden
+      type: boolean
+      required: false
+      description: Defaults to false. If you set it to `true`, the message is hidden. You can use `hidden` for client-side implementations where the replacement message HTML is present, but hidden on the page.
+    - name: role
+      type: string
+      required: false
+      description: Set `role` to ’alert` on replacement messages to allow assistive tech to automatically read the message. You will also need to move focus to the replacement message using JavaScript you have written yourself.
+    - name: classes
+      type: string
+      required: false
+      description: The additional classes that you want to add to the message.
+    - name: attributes
+      type: object
+      required: false
+      description: The additional attributes that you want to add to the message. For example, data attributes.
 
 examples:
   - name: default
