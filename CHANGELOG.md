@@ -10,6 +10,7 @@ We’ve made fixes to GOV.UK Frontend in the following pull requests:
 - [#2092: Use tabular numbers for character count message](https://github.com/alphagov/govuk-frontend/pull/2092)
 - [#2045: Stop same-site cookies from being wiped when printing in Internet Explorer 11](https://github.com/alphagov/govuk-frontend/pull/2045) – thanks to [@gunjam](https://github.com/gunjam) for contributing this
 - [#2093: Only output space after breadcrumbs class if there’s an additional class](https://github.com/alphagov/govuk-frontend/pull/2093) – thanks to [@frankieroberto](https://github.com/frankieroberto) for contributing this.
+- [#2133: Remove user-agent default 2px horizontal margins on buttons in Safari](https://github.com/alphagov/govuk-frontend/pull/2133)
 
 ## 3.10.2 (Patch release)
 

@@ -29,6 +29,8 @@
     position: relative;
     width: 100%;
     margin-top: 0;
+    margin-right: 0;
+    margin-left: 0;
     @include govuk-responsive-margin(6, "bottom", $adjustment: $button-shadow-size); // s2
     padding: (govuk-spacing(2) - $govuk-border-width-form-element) govuk-spacing(2) (govuk-spacing(2) - $govuk-border-width-form-element - ($button-shadow-size / 2)); // s1
     border: $govuk-border-width-form-element solid transparent;
