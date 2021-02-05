@@ -1,7 +1,7 @@
 {% from "../button/macro.njk" import govukButton -%}
 
 <div class="govuk-cookie-banner {{ params.classes if params.classes }}" role="region" aria-label="{{ params.ariaLabel | default("Cookie banner") }}"
-  {%- if params.hidden %} hidden{% endif %}
+  {%- if params.hidden %} style="display: none;"{% endif %}
   {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
 
   {%- for message in params.messages %}
@@ -12,7 +12,7 @@
 
     <div class="{{classNames}}" {%- if message.role %} role="{{message.role}}"{% endif %}
     {%- for attribute, value in message.attributes %} {{attribute}}="{{value}}"{% endfor %}
-    {% if message.hidden %} hidden{% endif %}>
+    {% if message.hidden %} style="display: none;"{% endif %}>
 
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">

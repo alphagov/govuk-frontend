@@ -191,8 +191,8 @@ notes: >-
     var cookieBanner = document.querySelector('.js-cookies-banner')
 
     function showBanner(banner) {
-        questionBanner.setAttribute('hidden', 'hidden')
-        banner.removeAttribute('hidden')
+        questionBanner.style.display = 'none';
+        banner.style.display = 'block';
 
         // Shift focus to the banner
         banner.setAttribute('tabindex', '-1')
@@ -214,11 +214,11 @@ notes: >-
     })
 
     acceptedBanner.querySelector('.js-hide').addEventListener('click', function() {
-      cookieBanner.setAttribute('hidden', 'hidden')
+      cookieBanner.style.display = 'none';
     })
 
     rejectedBanner.querySelector('.js-hide').addEventListener('click', function() {
-      cookieBanner.setAttribute('hidden', 'hidden')
+      cookieBanner.style.display = 'none';
     })
   </script>
 {% endblock %}
