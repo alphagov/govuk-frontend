@@ -6,7 +6,7 @@ params:
 - name: hidden
   type: boolean
   required: false
-  description: Defaults to `false`. If you set it to true, the whole cookie banner is hidden, including all messages within it. You can use `hidden` for client-side implementations where the cookie banner HTML is present, but hidden until it is shown using JavaScript.
+  description: Defaults to `false`. If you set this option to `true`, the whole cookie banner is hidden, including all messages within the banner. You can use `hidden` for client-side implementations where the cookie banner HTML is present, but hidden until the cookie banner is shown using JavaScript.
 - name: classes
   type: string
   required: false
@@ -287,4 +287,3 @@ examples:
           actions:
             - text: Hide this message
               type: button
-
