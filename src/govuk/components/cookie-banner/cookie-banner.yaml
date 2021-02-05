@@ -6,7 +6,7 @@ params:
 - name: hidden
   type: boolean
   required: false
-  description: Defaults to false. If you set it to `true`, the whole cookie banner (including all messages within) is hidden. You can use `hidden` for client-side implementations where the cookie banner HTML is present, but hidden until it is shown using JavaScript.
+  description: Defaults to `false`. If you set this option to `true`, the whole cookie banner is hidden, including all messages within the banner. You can use `hidden` for client-side implementations where the cookie banner HTML is present, but hidden until the cookie banner is shown using JavaScript.
 - name: classes
   type: string
   required: false
@@ -18,7 +18,7 @@ params:
 - name: messages
   type: array
   required: true
-  description: Required. The different messages you can pass into the cookie banner. For example, the cookie message and the replacement message.
+  description: The different messages you can pass into the cookie banner. For example, the cookie message and the replacement message.
   params:
     - name: headingText
       type: string
@@ -30,12 +30,12 @@ params:
       description: The heading HTML to use within the message. You can use any string with this option. If you set `headingHtml`, `headingText` is ignored. If you are not passing HTML, use `headingText`.
     - name: text
       type: string
-      required: false
-      description: Required. The text for the main content within the message. You can use any string with this option. If you set `html`, `text` is not required and is ignored.
+      required: true
+      description: The text for the main content within the message. You can use any string with this option. If you set `html`, `text` is not required and is ignored.
     - name: html
       type: string
-      required: false
-      description: Required. The HTML for the main content within the message. You can use any string with this option. If you set `html`, `text` is not required and is ignored. If you are not passing HTML, use `text`.
+      required: true
+      description: The HTML for the main content within the message. You can use any string with this option. If you set `html`, `text` is not required and is ignored. If you are not passing HTML, use `text`.
     - name: actions
       type: array
       required: false
@@ -44,7 +44,7 @@ params:
         - name: text
           type: string
           required: true
-          description: Required. The button or link text.
+          description: The button or link text.
         - name: type
           type: string
           required: false
@@ -72,7 +72,7 @@ params:
     - name: hidden
       type: boolean
       required: false
-      description: Defaults to false. If you set it to `true`, the message is hidden. You can use `hidden` for client-side implementations where the replacement message HTML is present, but hidden on the page.
+      description: Defaults to `false`. If you set it to `true`, the message is hidden. You can use `hidden` for client-side implementations where the replacement message HTML is present, but hidden on the page.
     - name: role
       type: string
       required: false
@@ -287,4 +287,3 @@ examples:
           actions:
             - text: Hide this message
               type: button
-
