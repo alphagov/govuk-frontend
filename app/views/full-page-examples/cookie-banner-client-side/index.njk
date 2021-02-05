@@ -193,14 +193,6 @@ notes: >-
     function showBanner(banner) {
         questionBanner.setAttribute('hidden', 'hidden')
         banner.removeAttribute('hidden')
-
-        // Shift focus to the banner
-        banner.setAttribute('tabindex', '-1')
-        banner.focus()
-
-        banner.addEventListener('blur', function () {
-            banner.removeAttribute('tabindex')
-        })
     }
 
     acceptButton.addEventListener('click', function (event) {
