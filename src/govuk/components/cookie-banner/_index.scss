@@ -23,6 +23,10 @@
     display: none;
   }
 
+  .govuk-cookie-banner:not([hidden]) {
+    display: block;
+  }
+
   .govuk-cookie-banner__message {
     // Remove the extra height added by the separator border.
     margin-bottom: -$border-bottom-width;

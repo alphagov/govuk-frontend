@@ -19,7 +19,7 @@ const cssnano = require('cssnano')
 const postcsspseudoclasses = require('postcss-pseudo-classes')({
   // Work around a bug in pseudo classes plugin that badly transforms
   // :not(:whatever) pseudo selectors
-  blacklist: [':not(', ':disabled)', ':last-child)', ':focus)', ':active)', ':hover)']
+  blacklist: [':not(', ':disabled)', ':last-child)', ':focus)', ':active)', ':hover)', '[hidden])']
 })
 
 // Compile CSS and JS task --------------
@@ -63,7 +63,7 @@ gulp.task('scss:compile', () => {
       autoprefixer,
       // Auto-generate 'companion' classes for pseudo-selector states - e.g. a
       // :hover class you can use to simulate the hover state in the review app
-      postcsspseudoclasses
+      // postcsspseudoclasses
     ])))
     .pipe(gulpif(isDist,
       rename({
