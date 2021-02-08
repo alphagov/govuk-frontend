@@ -33,13 +33,13 @@
 
             The <image> element is a valid SVG element. In SVG, you would specify
             the URL of the image file with the xlink:href – as we don't reference an
-            image it has no effect. It's important to include the empty xlink:href
-            attribute as this prevents versions of IE which support SVG from
-            downloading the fallback image when they don't need to.
+            image it has no effect. It's important to include an empty data URI
+            as the xlink:href attribute as this prevents versions of IE which
+            support SVG from downloading the fallback image when they don't need to.
 
             In other browsers <image> is synonymous for the <img> tag and will be
             interpreted as such, displaying the fallback image. #}
-            <image src="{{ params.assetsPath | default('/assets/images') }}/govuk-logotype-crown.png" xlink:href="" class="govuk-header__logotype-crown-fallback-image" width="36" height="32"></image>
+            <image src="{{ params.assetsPath | default('/assets/images') }}/govuk-logotype-crown.png" xlink:href="data:," display="none" class="govuk-header__logotype-crown-fallback-image" width="36" height="32"></image>
           </svg>
           <span class="govuk-header__logotype-text">
             GOV.UK

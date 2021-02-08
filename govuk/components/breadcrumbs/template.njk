@@ -1,8 +1,8 @@
 {# Set classes for this component #}
-{%- set classNames = "govuk-breadcrumbs " -%}
+{%- set classNames = "govuk-breadcrumbs" -%}
 
 {% if params.classes %}
-  {% set classNames = classNames + params.classes %}
+  {% set classNames = classNames + " " + params.classes %}
 {% endif -%}
 
 {% if params.collapseOnMobile %}

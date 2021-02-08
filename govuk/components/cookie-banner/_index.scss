@@ -1,0 +1,51 @@
+@include govuk-exports("govuk/component/cookie-banner") {
+
+  // This needs to be kept in sync with the header component's styles
+  $border-bottom-width: govuk-spacing(2);
+
+  .govuk-cookie-banner {
+    @include govuk-font($size: 19);
+
+    padding-top: govuk-spacing(4);
+    // The component does not set bottom spacing.
+    // The bottom spacing should be created by the items inside the component.
+
+    // Visually separate the cookie banner from content underneath
+    // when user changes colours in their browser.
+    border-bottom: $border-bottom-width solid transparent;
+
+    background-color: govuk-colour("light-grey", $legacy: "grey-3");
+  }
+
+  // Support older browsers which don't hide elements with the `hidden` attribute
+  // when user hides the whole cookie banner with a 'Hide' button.
+  .govuk-cookie-banner[hidden] {
+    display: none;
+  }
+
+  .govuk-cookie-banner__message {
+    // Remove the extra height added by the separator border.
+    margin-bottom: -$border-bottom-width;
+
+    &[hidden] {
+      // Support older browsers which don't hide elements with the `hidden` attribute
+      // when the visibility of cookie and replacement messages is toggled.
+      display: none;
+    }
+
+    &:focus {
+      // Remove the native visible focus indicator when the element is programmatically focused.
+      //
+      // The focused cookie banner is the first element on the page and the last thing the user
+      // interacted with prior to it gaining focus.
+      // We therefore assume that moving focus to it is not going to surprise users, and that giving
+      // it a visible focus indicator could be more confusing than helpful, especially as the
+      // element is not normally keyboard operable.
+      //
+      // We have flagged this in the research section of the guidance as something to monitor.
+      //
+      // A related discussion: https://github.com/w3c/wcag/issues/1001
+      outline: none;
+    }
+  }
+}

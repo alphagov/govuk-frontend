@@ -93,10 +93,10 @@
                 "summaryText": "Expand me",
                 "attributes": {
                     "data-some-data-attribute": "i-love-data",
-                    "another-attribute": true
+                    "another-attribute": "foo"
                 }
             },
-            "html": "<details class=\"govuk-details\" data-module=\"govuk-details\" data-some-data-attribute=\"i-love-data\" another-attribute=\"true\">\n  <summary class=\"govuk-details__summary\">\n    <span class=\"govuk-details__summary-text\">\n      Expand me\n    </span>\n  </summary>\n  <div class=\"govuk-details__text\">\n    Here are some more details\n  </div>\n</details>",
+            "html": "<details class=\"govuk-details\" data-module=\"govuk-details\" data-some-data-attribute=\"i-love-data\" another-attribute=\"foo\">\n  <summary class=\"govuk-details__summary\">\n    <span class=\"govuk-details__summary-text\">\n      Expand me\n    </span>\n  </summary>\n  <div class=\"govuk-details__text\">\n    Here are some more details\n  </div>\n</details>",
             "hidden": true
         }
     ]
