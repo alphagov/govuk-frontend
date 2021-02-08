@@ -4,12 +4,40 @@
 
 ### Fixes
 
+## 3.11.0 (Feature release)
+
+### New features
+
+#### Allow users to accept or reject cookies with a cookie banner
+
+You can now [use cookie banners](https://design-system.service.gov.uk/components/cookie-banner/) to allow users to accept or reject cookies which are not essential for making your service work.
+
+This was added in [pull request #2131: Add cookie banner component and button groups](https://github.com/alphagov/govuk-frontend/pull/2131)
+
+#### Group buttons and links
+
+You can now use a button group when you place two or more buttons together.
+
+Any links you include within a button group now line up visually with the buttons.
+
+Read more about [button groups on the Design System’s button page](https://design-system.service.gov.uk/components/button/#grouping-buttons).
+
+This was added in [pull request #2114: Add button groups for use in cookie banner](https://github.com/alphagov/govuk-frontend/pull/2114).
+
+#### Change the style of table captions
+
+You can now make table captions larger or smaller by applying the `govuk-table__caption--xl`, `govuk-table__caption--l`, `govuk-table__caption--m` or `govuk-table__caption--s` classes.
+
+This was added in [pull request #2048: Add modifiers for table captions](https://github.com/alphagov/govuk-frontend/pull/2048).
+
+### Fixes
+
 We’ve made fixes to GOV.UK Frontend in the following pull requests:
 
+- [#2045: Stop same-site cookies from being wiped when printing in Internet Explorer 11](https://github.com/alphagov/govuk-frontend/pull/2045) – thanks to [@gunjam](https://github.com/gunjam) for contributing this issue.
 - [#2080: Fix JavaScript error when character count ID starts with a number](https://github.com/alphagov/govuk-frontend/pull/2080) - thanks to [@josef-vlach](https://github.com/josef-vlach) for reporting this issue.
-- [#2092: Use tabular numbers for character count message](https://github.com/alphagov/govuk-frontend/pull/2092)
-- [#2045: Stop same-site cookies from being wiped when printing in Internet Explorer 11](https://github.com/alphagov/govuk-frontend/pull/2045) – thanks to [@gunjam](https://github.com/gunjam) for contributing this
-- [#2093: Only output space after breadcrumbs class if there’s an additional class](https://github.com/alphagov/govuk-frontend/pull/2093) – thanks to [@frankieroberto](https://github.com/frankieroberto) for contributing this.
+- [#2092: Use tabular numbers for character count message](https://github.com/alphagov/govuk-frontend/pull/2092) - thanks to [@quis](https://github.com/quis) for contributing this issue.
+- [#2093: Only output space after breadcrumbs class if there’s an additional class](https://github.com/alphagov/govuk-frontend/pull/2093) – thanks to [@frankieroberto](https://github.com/frankieroberto) for contributing this issue.
 - [#2133: Remove user-agent default 2px horizontal margins on buttons in Safari](https://github.com/alphagov/govuk-frontend/pull/2133)
 
 ## 3.10.2 (Patch release)
