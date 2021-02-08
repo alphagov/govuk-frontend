@@ -76,7 +76,7 @@ params:
     - name: role
       type: string
       required: false
-      description: Set `role` to ’alert` on replacement messages to allow assistive tech to automatically read the message. You will also need to move focus to the replacement message using JavaScript you have written yourself.
+      description: Set `role` to `alert` on replacement messages to allow assistive tech to automatically read the message. You will also need to move focus to the replacement message using JavaScript you have written yourself.
     - name: classes
       type: string
       required: false
