@@ -1,0 +1,111 @@
+{% extends "layout.njk" %}
+
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "button/macro.njk" import govukButton %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    "href": "/"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+  <div class="govuk-button-group">
+    {{ govukButton({
+      "text": "Accept analytics cookies"
+    }) }}
+
+    {{ govukButton({
+      "text": "Reject analytics cookies"
+    }) }}
+
+    <a href="#" class="govuk-link">View cookies</a>
+  </div>
+
+  <div class="govuk-button-group">
+    {{ govukButton({
+      "text": "Derbyn cwcis dadansoddeg"
+    }) }}
+
+    {{ govukButton({
+      "text": "Gwrthod cwcis dadansoddeg"
+    }) }}
+
+    <a href="#" class="govuk-link">Gweld cwcis</a>
+  </div>
+
+  <div class="govuk-button-group">
+    {{ govukButton({
+      "text": "Accept really important analytics cookies"
+    }) }}
+
+    {{ govukButton({
+      "text": "Reject really important analytics cookies but not essential cookies"
+    }) }}
+
+    <a href="#" class="govuk-link">View cookies and set preferences to do with whether we can set cookies</a>
+  </div>
+
+  <div class="govuk-button-group">
+    {{ govukButton({
+      "text": "Delete account",
+      "classes": "govuk-button--warning"
+    }) }}
+
+    <a href="#" class="govuk-link govuk-link--muted">Cancel</a>
+    <a href="#" class="govuk-link govuk-link--muted">Cancel and go back</a>
+  </div>
+
+  <div class="govuk-button-group">
+    <a href="#" class="govuk-link">Buy it</a>
+
+    {{ govukButton({
+      "text": "Use it"
+    }) }}
+
+    {{ govukButton({
+      "text": "Break it"
+    }) }}
+
+    <a href="#" class="govuk-link">Fix it</a>
+    <a href="#" class="govuk-link">Trash it</a>
+    <a href="#" class="govuk-link">Change it</a>
+
+    {{ govukButton({
+      "text": "Mail it"
+    }) }}
+
+    <a href="#" class="govuk-link">Upgrade it</a>
+    
+    <a href="#" class="govuk-link">Charge it</a>
+
+    {{ govukButton({
+      "text": "Point it"
+    }) }}
+
+    {{ govukButton({
+      "text": "Zoom it"
+    }) }}
+
+    {{ govukButton({
+      "text": "Press it"
+    }) }}
+  </div>
+
+  <div class="govuk-button-group">
+    {{ govukButton({
+      text: "Start now",
+      href: "#",
+      isStartButton: true
+    }) }}
+
+    <a href="#" class="govuk-link">Back</a>
+  </div>
+
+  </div>
+</div>
+{% endblock %}

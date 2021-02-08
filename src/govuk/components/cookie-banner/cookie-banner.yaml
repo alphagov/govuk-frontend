@@ -1,0 +1,289 @@
+params:
+- name: ariaLabel
+  type: string
+  required: false
+  description: The text for the `aria-label` which labels the cookie banner region. This region applies to all messages that the cookie banner includes. For example, the cookie message and the replacement message. Defaults to "Cookie banner".
+- name: hidden
+  type: boolean
+  required: false
+  description: Defaults to `false`. If you set this option to `true`, the whole cookie banner is hidden, including all messages within the banner. You can use `hidden` for client-side implementations where the cookie banner HTML is present, but hidden until the cookie banner is shown using JavaScript.
+- name: classes
+  type: string
+  required: false
+  description: The additional classes that you want to add to the cookie banner.
+- name: attributes
+  type: object
+  required: false
+  description: The additional attributes that you want to add to the cookie banner. For example, data attributes.
+- name: messages
+  type: array
+  required: true
+  description: The different messages you can pass into the cookie banner. For example, the cookie message and the replacement message.
+  params:
+    - name: headingText
+      type: string
+      required: false
+      description: The heading text that displays in the message. You can use any string with this option. If you set `headingHtml`, `headingText` is ignored.
+    - name: headingHtml
+      type: string
+      required: false
+      description: The heading HTML to use within the message. You can use any string with this option. If you set `headingHtml`, `headingText` is ignored. If you are not passing HTML, use `headingText`.
+    - name: text
+      type: string
+      required: true
+      description: The text for the main content within the message. You can use any string with this option. If you set `html`, `text` is not required and is ignored.
+    - name: html
+      type: string
+      required: true
+      description: The HTML for the main content within the message. You can use any string with this option. If you set `html`, `text` is not required and is ignored. If you are not passing HTML, use `text`.
+    - name: actions
+      type: array
+      required: false
+      description: The buttons and links that you want to display in the message. `actions` defaults to `button` unless you set `href`, which renders the action as a link.
+      params:
+        - name: text
+          type: string
+          required: true
+          description: The button or link text.
+        - name: type
+          type: string
+          required: false
+          description: The type of button. Does not apply if you set `href`, which renders a link. You can choose `button` or `submit`.
+        - name: href
+          type: string
+          required: false
+          description: The `href` for a link. If you set `href`, users will see a link instead of a button.
+        - name: name
+          type: string
+          required: false
+          description: The name attribute for the button. Does not apply if you set `href`, which makes a link.
+        - name: value
+          type: string
+          required: false
+          description: The value attribute for the button. Does not apply if you set `href`, which makes a link.
+        - name: classes
+          type: string
+          required: false
+          description: The additional classes that you want to add to the button or link.
+        - name: attributes
+          type: object
+          required: false
+          description: The additional attributes that you want to add to the button or link. For example, data attributes.
+    - name: hidden
+      type: boolean
+      required: false
+      description: Defaults to `false`. If you set it to `true`, the message is hidden. You can use `hidden` for client-side implementations where the replacement message HTML is present, but hidden on the page.
+    - name: role
+      type: string
+      required: false
+      description: Set `role` to ’alert` on replacement messages to allow assistive tech to automatically read the message. You will also need to move focus to the replacement message using JavaScript you have written yourself.
+    - name: classes
+      type: string
+      required: false
+      description: The additional classes that you want to add to the message.
+    - name: attributes
+      type: object
+      required: false
+      description: The additional attributes that you want to add to the message. For example, data attributes.
+
+examples:
+  - name: default
+    data:
+      messages:
+        - headingText: Cookies on this government service
+          text: We use analytics cookies to help understand how users use our service.
+          actions:
+            - text: Accept analytics cookies
+              type: submit
+              name: cookies
+              value: accept
+            - text: Reject analytics cookies
+              type: submit
+              name: cookies
+              value: reject
+            - text: View cookie preferences
+              href: /cookie-preferences
+
+  - name: accepted confirmation banner
+    data:
+      messages:
+        - text: Your cookie preferences have been saved. You have accepted cookies.
+          role: alert
+          actions:
+            - text: Hide this message
+              type: button
+
+  - name: rejected confirmation banner
+    data:
+      messages:
+        - text: Your cookie preferences have been saved. You have rejected cookies.
+          role: alert
+          actions:
+            - text: Hide this message
+              type: button
+
+  - name: client-side implementation
+    data:
+      messages:
+        - headingText: Cookies on this service
+          text: We use cookies to help understand how users use our service.
+          actions:
+            - text: Accept analytics cookies
+              type: submit
+              name: cookies
+              value: accept
+            - text: Reject analytics cookies
+              type: submit
+              name: cookies
+              value: reject
+            - text: View cookie preferences
+              href: /cookie-preferences
+        - text: Your cookie preferences have been saved. You have accepted cookies.
+          role: alert
+          hidden: true
+          actions:
+            - text: Hide this message
+              type: button
+        - text: Your cookie preferences have been saved. You have rejected cookies.
+          role: alert
+          hidden: true
+          actions:
+            - text: Hide this message
+              type: button
+
+
+# Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
+  - name: heading html
+    hidden: true
+    data:
+      messages:
+        - headingHtml: Cookies on <span>my service</span>
+  - name: heading html as text
+    hidden: true
+    data:
+      messages:
+        - headingText: Cookies on <span>my service</span>
+  - name: html
+    hidden: true
+    data:
+      messages:
+        - html: <p class="govuk-body">We use cookies in <span>our service</span>.</p>
+  - name: classes
+    hidden: true
+    data:
+      messages:
+        - classes: "app-my-class"
+  - name: attributes
+    hidden: true
+    data:
+      messages:
+        - attributes:
+            "data-attribute": "my-value"
+  - name: custom aria label
+    hidden: true
+    data:
+      ariaLabel: "Cookies on GOV.UK"
+      messages:
+        - text: "We use cookies on GOV.UK"
+  - name: hidden
+    hidden: true
+    data:
+      messages:
+        - hidden: true
+  - name: hidden false
+    hidden: true
+    data:
+      messages:
+        - hidden: false
+  - name: default action
+    hidden: true
+    data:
+      messages:
+        - actions:
+          - text: This is a button
+  - name: link
+    hidden: true
+    data:
+      messages:
+        - actions:
+          - text: This is a link
+            href: /link
+  - name: link with button options
+    hidden: true
+    data:
+      messages:
+        - actions:
+          - text: This is a link
+            href: /link
+            value: cookies
+            name: link
+  - name: type
+    hidden: true
+    data:
+      messages:
+        - actions:
+          - text: Button
+            type: button
+  - name: button classes
+    hidden: true
+    data:
+      messages:
+        - actions:
+          - text: Button with custom classes
+            classes: "my-button-class app-button-class"
+  - name: button attributes
+    hidden: true
+    data:
+      messages:
+        - actions:
+          - text: Button with attributes
+            attributes:
+              "data-button-attribute": "my-value"
+  - name: link classes
+    hidden: true
+    data:
+      messages:
+        - actions:
+          - text: Link with custom classes
+            href: /my-link
+            classes: "my-link-class app-link-class"
+  - name: link attributes
+    hidden: true
+    data:
+      messages:
+        - actions:
+          - text: Link with attributes
+            href: /link
+            attributes:
+              "data-link-attribute": "my-value"
+  - name: full banner hidden
+    hidden: true
+    data:
+      hidden: true
+      classes: hide-cookie-banner
+      attributes:
+        "data-hide-cookie-banner": "true"
+      messages:
+        - headingText: Cookies on this service
+          text: We use cookies to help understand how users use our service.
+          actions:
+            - text: Accept analytics cookies
+              type: submit
+              name: cookies
+              value: accept
+            - text: Reject analytics cookies
+              type: submit
+              name: cookies
+              value: reject
+            - text: View cookie preferences
+              href: /cookie-preferences
+        - text: Your cookie preferences have been saved. You have accepted cookies.
+          role: alert
+          actions:
+            - text: Hide this message
+              type: button
+        - text: Your cookie preferences have been saved. You have rejected cookies.
+          role: alert
+          actions:
+            - text: Hide this message
+              type: button
