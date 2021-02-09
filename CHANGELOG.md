@@ -12,7 +12,7 @@
 
 You can now [use cookie banners](https://design-system.service.gov.uk/components/cookie-banner/) to allow users to accept or reject cookies which are not essential for making your service work.
 
-This was added in [pull request #2131: Add cookie banner component and button groups](https://github.com/alphagov/govuk-frontend/pull/2131)
+This was added in [pull request #2131: Add cookie banner component and button groups](https://github.com/alphagov/govuk-frontend/pull/2131).
 
 #### Group buttons and links
 
