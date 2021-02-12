@@ -30,4 +30,12 @@
   .govuk-link--no-visited-state {
     @include govuk-link-style-no-visited-state;
   }
+
+  .govuk-link--error {
+    @include govuk-link-style-error;
+  }
+
+  .govuk-link--success {
+    @include govuk-link-style-success;
+  }
 }

@@ -23,6 +23,11 @@
   }
 }
 
+@mixin govuk-link-colour($colour) {
+  color: $colour;
+  text-decoration-color: lighten(desaturate($colour, 20.52), 14.71);
+}
+
 /// Default link style mixin
 ///
 /// Provides the default unvisited, visited, hover and active states for links.
@@ -40,13 +45,11 @@
 
 @mixin govuk-link-style-default {
   &:link {
-    color: $govuk-link-colour;
-    text-decoration-color: govuk-colour("light-blue");
+    @include govuk-link-colour($govuk-link-colour);
   }
 
   &:visited {
-    color: $govuk-link-visited-colour;
-    text-decoration-color: $govuk-link-visited-colour;
+    @include govuk-link-colour($govuk-link-visited-colour);
   }
 
   &:hover {
@@ -95,15 +98,18 @@
 @mixin govuk-link-style-error {
   &:link,
   &:visited {
-    color: $govuk-error-colour;
+    @include govuk-link-colour($govuk-error-colour);
   }
 
   &:hover {
-    color: scale-color($govuk-error-colour, $lightness: -30%);
+    $hover-color: scale-color($govuk-error-colour, $lightness: -30%);
+    color: $hover-color;
+    text-decoration-color: $hover-color;
   }
 
   &:active {
     color: $govuk-error-colour;
+    text-decoration-color: $govuk-error-colour;
   }
 
   // When focussed, the text colour needs to be darker to ensure that colour
@@ -142,15 +148,18 @@
 @mixin govuk-link-style-success {
   &:link,
   &:visited {
-    color: $govuk-success-colour;
+    @include govuk-link-colour($govuk-success-colour);
   }
 
   &:hover {
-    color: scale-color($govuk-success-colour, $lightness: -30%);
+    $hover-color: scale-color($govuk-success-colour, $lightness: -30%);
+    color: $hover-color;
+    text-decoration-color: $hover-color;
   }
 
   &:active {
     color: $govuk-success-colour;
+    text-decoration-color: $govuk-success-colour;
   }
 
   // When focussed, the text colour needs to be darker to ensure that colour
@@ -192,8 +201,7 @@
   &:visited,
   &:hover,
   &:active {
-    color: $govuk-secondary-text-colour;
-    text-decoration-color: $govuk-secondary-text-colour;
+    @include govuk-link-colour($govuk-secondary-text-colour);
   }
 
   // When focussed, the text colour needs to be darker to ensure that colour
@@ -235,8 +243,7 @@
   &:hover,
   &:active,
   &:focus {
-    @include govuk-text-colour;
-    text-decoration-color: $govuk-text-colour;
+    @include govuk-link-colour($govuk-text-colour);
   }
 
   // alphagov/govuk_template includes a specific a:link:focus selector designed
