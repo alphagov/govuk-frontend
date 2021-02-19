@@ -98,10 +98,11 @@
     @include govuk-link-colour($govuk-error-colour);
   }
 
-  &:hover {
-    $hover-color: scale-color($govuk-error-colour, $lightness: -30%);
-    color: $hover-color;
-  }
+  // Removing this for working group review
+  // &:hover {
+  //   $hover-color: scale-color($govuk-error-colour, $lightness: -30%);
+  //   color: $hover-color;
+  // }
 
   &:active {
     color: $govuk-error-colour;
@@ -146,10 +147,11 @@
     @include govuk-link-colour($govuk-success-colour);
   }
 
-  &:hover {
-    $hover-color: scale-color($govuk-success-colour, $lightness: -30%);
-    color: $hover-color;
-  }
+  // Removing this for the working group review
+  // &:hover {
+  //   $hover-color: scale-color($govuk-success-colour, $lightness: -30%);
+  //   color: $hover-color;
+  // }
 
   &:active {
     color: $govuk-success-colour;
