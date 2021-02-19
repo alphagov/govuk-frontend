@@ -25,7 +25,6 @@
 
 @mixin govuk-link-colour($colour) {
   color: $colour;
-  text-decoration-color: lighten(desaturate($colour, 20.52), 14.71);
 }
 
 /// Default link style mixin
@@ -54,12 +53,10 @@
 
   &:hover {
     color: $govuk-link-colour;
-    text-decoration-color: $govuk-link-colour;
   }
 
   &:active {
     color: $govuk-link-active-colour;
-    text-decoration-color: $govuk-link-active-colour;
   }
 
   // When focussed, the text colour needs to be darker to ensure that colour
@@ -104,12 +101,10 @@
   &:hover {
     $hover-color: scale-color($govuk-error-colour, $lightness: -30%);
     color: $hover-color;
-    text-decoration-color: $hover-color;
   }
 
   &:active {
     color: $govuk-error-colour;
-    text-decoration-color: $govuk-error-colour;
   }
 
   // When focussed, the text colour needs to be darker to ensure that colour
@@ -154,12 +149,10 @@
   &:hover {
     $hover-color: scale-color($govuk-success-colour, $lightness: -30%);
     color: $hover-color;
-    text-decoration-color: $hover-color;
   }
 
   &:active {
     color: $govuk-success-colour;
-    text-decoration-color: $govuk-success-colour;
   }
 
   // When focussed, the text colour needs to be darker to ensure that colour
@@ -283,7 +276,6 @@
 
   &:visited {
     color: $govuk-link-colour;
-    text-decoration-color: govuk-colour("light-blue");
   }
 
   &:hover {
