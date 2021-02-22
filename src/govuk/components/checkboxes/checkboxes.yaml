@@ -70,6 +70,10 @@ params:
     required: false
     description: Provide hint to each checkbox item.
     isComponent: true
+  - name: divider
+    type: string
+    required: false
+    description: Divider text to separate checkbox items, for example the text "or".      
   - name: checked
     type: boolean
     required: false
