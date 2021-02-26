@@ -4,6 +4,8 @@
 
 ### Fixes
 
+- [#2157 Use pointer cursor for 'Menu' button in header](https://github.com/alphagov/govuk-frontend/pull/2157) – thanks to [@MalcolmVonMoJ](https://github.com/MalcolmVonMoJ) for contributing this.
+
 ## 3.11.0 (Feature release)
 
 ### New features
