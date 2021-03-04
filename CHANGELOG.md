@@ -4,6 +4,7 @@
 
 ### Fixes
 
+- [#2132 Improve vertical alignment of phase banner tag on mobile devices](https://github.com/alphagov/govuk-frontend/pull/2132) – thanks to [@matthewmascord](https://github.com/matthewmascord) for contributing this.
 - [#2157 Use pointer cursor for 'Menu' button in header](https://github.com/alphagov/govuk-frontend/pull/2157) – thanks to [@MalcolmVonMoJ](https://github.com/MalcolmVonMoJ) for contributing this.
 
 ## 3.11.0 (Feature release)
