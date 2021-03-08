@@ -198,8 +198,10 @@ notes: >-
       })
     }
 
-    hideButton.addEventListener('click', function() {
-      cookieBanner.setAttribute('hidden', 'hidden')
-    })
+    if (hideButton) {
+      hideButton.addEventListener('click', function() {
+        cookieBanner.setAttribute('hidden', 'hidden')
+      })
+    }
   </script>
 {% endblock %}
