@@ -6,12 +6,12 @@ params:
 - name: fieldset
   type: object
   required: false
-  description: Options for the fieldset component (e.g. legend).
+  description: Options for the fieldset component (for example legend).
   isComponent: true
 - name: hint
   type: object
   required: false
-  description: Options for the hint component (e.g. text).
+  description: Options for the hint component (for example text).
   isComponent: true
 - name: errorMessage
   type: object
@@ -26,7 +26,7 @@ params:
   - name: classes
     type: string
     required: false
-    description: Classes to add to the form group (e.g. to show error state for the whole group)
+    description: Classes to add to the form group (for example to show error state for the whole group)
 - name: idPrefix
   type: string
   required: false
@@ -782,8 +782,3 @@ examples:
         text: British
       - value: irish
         text: Irish
-
-
-
-
-
