@@ -51,18 +51,25 @@
   // Append our own open / closed marker using a pseudo-element
   .govuk-details__summary:before {
     content: "";
+    display: block;
     position: absolute;
-
-    top: -1px;
+    top: 0;
     bottom: 0;
-    left: 0;
-
-    margin: auto;
-
-    @include govuk-shape-arrow($direction: right, $base: 14px);
-
+    left: 3px;
+    width: 7px;
+    height: 7px;
+    margin: auto 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    border: solid;
+    border-width: 2px 2px 0 0;
+    border-color: #1d70b8;
+      
     .govuk-details[open] > & {
-      @include govuk-shape-arrow($direction: down, $base: 14px);
+      -webkit-transform: rotate(135deg);
+      -ms-transform: rotate(135deg);
+      transform: rotate(135deg);
     }
   }
 
