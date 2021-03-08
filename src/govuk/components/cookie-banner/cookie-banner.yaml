@@ -208,7 +208,7 @@ examples:
         - actions:
           - text: This is a link
             href: /link
-  - name: link with button options
+  - name: link with false button options
     hidden: true
     data:
       messages:

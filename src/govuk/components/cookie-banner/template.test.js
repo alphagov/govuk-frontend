@@ -148,7 +148,7 @@ describe('Cookie Banner', () => {
     })
 
     it('ignores other button options if href provided', () => {
-      const $ = render('cookie-banner', examples['link with button options'])
+      const $ = render('cookie-banner', examples['link with false button options'])
 
       const $actions = $('.govuk-cookie-banner .govuk-link')
       expect($actions.get(0).tagName).toEqual('a')
