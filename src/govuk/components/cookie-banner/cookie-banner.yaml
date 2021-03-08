@@ -217,6 +217,14 @@ examples:
             href: /link
             value: cookies
             name: link
+  - name: link as a button
+    hidden: true
+    data:
+      messages:
+        - actions:
+          - text: This is a link
+            href: /link
+            type: button
   - name: type
     hidden: true
     data:

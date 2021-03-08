@@ -159,6 +159,16 @@ describe('Cookie Banner', () => {
       expect($actions.attr('name')).toBeUndefined()
     })
 
+    it('renders as a link button if href and type=button provided', () => {
+      const $ = render('cookie-banner', examples['link as a button'])
+
+      const $actions = $('.govuk-cookie-banner .govuk-button')
+      expect($actions.get(0).tagName).toEqual('a')
+      expect($actions.text().trim()).toEqual('This is a link')
+      expect($actions.attr('href')).toEqual('/link')
+      expect($actions.attr('role')).toEqual('button')
+    })
+
     it('renders button text', () => {
       const $ = render('cookie-banner', examples['default action'])
 
