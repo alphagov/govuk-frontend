@@ -1,5 +1,5 @@
 ---
-name: Cookie banner (server side)
+name: Cookie banner (server side with progressive enhancement)
 scenario: >-
   You need to make a choice about whether to accept cookies or not.
 
@@ -7,6 +7,9 @@ notes: >-
   For this example, when the user makes a choice to accept or reject cookies the
   form is submitted and a page navigation occurs, with the confirmation banner
   shown on the next page.
+
+  If the user chooses hides the confirmation banner, we progressively enhance the cookie banner to
+  hide with JavaScript. If JavaScript is not enabled, the page reloads.
 
   The choice to accept or reject cookies will not be remembered.
 
@@ -40,6 +43,7 @@ notes: >-
             "actions": [
                 {
                     "text": "Hide this message",
+                    "href": currentUrl,
                     "type": "button",
                     "classes": "js-hide"
                 }
@@ -182,7 +186,7 @@ notes: >-
   </div>
 
 {# As the cookie banner component does not currently include JavaScript, we have
-   to take care of the 'Hide' button to make the example functional #}
+   to take care of the 'Hide' button to make progressive enhancement in the example functional #}
  <script>
     var hideButton = document.querySelector('.js-hide')
     var cookieBanner = document.querySelector(".govuk-cookie-banner")
@@ -199,8 +203,9 @@ notes: >-
     }
 
     if (hideButton) {
-      hideButton.addEventListener('click', function() {
+      hideButton.addEventListener('click', function(event) {
         cookieBanner.setAttribute('hidden', 'hidden')
+        event.preventDefault()
       })
     }
   </script>
