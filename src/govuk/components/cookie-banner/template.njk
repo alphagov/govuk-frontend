@@ -40,11 +40,21 @@
       <div class="govuk-button-group">
         {% for action in message.actions %}
           {% if action.href %}
-            {% set linkClasses = "govuk-link" %}
-            {% if action.classes %}
-              {% set linkClasses = linkClasses + " " + action.classes %}
+            {% if action.type == "button" %}
+              {{ govukButton({
+                "text": action.text,
+                "type": "button",
+                "classes": action.classes,
+                "href": action.href,
+                "attributes": action.attributes
+              }) | indent(12) | trim }}
+            {% else %}
+              {% set linkClasses = "govuk-link" %}
+              {% if action.classes %}
+                {% set linkClasses = linkClasses + " " + action.classes %}
+              {% endif %}
+              <a class="{{ linkClasses }}" href="{{ action.href }}" {%- for attribute, value in action.attributes %} {{attribute}}="{{value}}"{% endfor %}>{{ action.text }}</a>
             {% endif %}
-            <a class="{{ linkClasses }}" href="{{ action.href }}" {%- for attribute, value in action.attributes %} {{attribute}}="{{value}}"{% endfor %}>{{ action.text }}</a>
           {% else %}
             {{ govukButton({
               "text": action.text,

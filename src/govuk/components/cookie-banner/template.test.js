@@ -148,7 +148,7 @@ describe('Cookie Banner', () => {
     })
 
     it('ignores other button options if href provided', () => {
-      const $ = render('cookie-banner', examples['link with button options'])
+      const $ = render('cookie-banner', examples['link with false button options'])
 
       const $actions = $('.govuk-cookie-banner .govuk-link')
       expect($actions.get(0).tagName).toEqual('a')
@@ -157,6 +157,16 @@ describe('Cookie Banner', () => {
 
       expect($actions.attr('value')).toBeUndefined()
       expect($actions.attr('name')).toBeUndefined()
+    })
+
+    it('renders as a link button if href and type=button provided', () => {
+      const $ = render('cookie-banner', examples['link as a button'])
+
+      const $actions = $('.govuk-cookie-banner .govuk-button')
+      expect($actions.get(0).tagName).toEqual('a')
+      expect($actions.text().trim()).toEqual('This is a link')
+      expect($actions.attr('href')).toEqual('/link')
+      expect($actions.attr('role')).toEqual('button')
     })
 
     it('renders button text', () => {

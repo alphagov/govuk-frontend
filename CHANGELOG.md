@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## New features
+
+- [#2164: Enable cookie banner to set link styled as a button](https://github.com/alphagov/govuk-frontend/pull/2164)
+
 ### Fixes
 
 - [#2132 Improve vertical alignment of phase banner tag on mobile devices](https://github.com/alphagov/govuk-frontend/pull/2132) – thanks to [@matthewmascord](https://github.com/matthewmascord) for contributing this.
