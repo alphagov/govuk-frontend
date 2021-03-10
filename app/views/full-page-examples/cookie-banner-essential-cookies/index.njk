@@ -1,17 +1,13 @@
 ---
-name: Cookie banner (server side with progressive enhancement)
+name: Cookie banner (essential cookies)
 scenario: >-
-  You need to make a choice about whether to accept cookies or not.
+  You are told about essential cookies, with a choice to hide the banner.
 
 notes: >-
-  For this example, when the user makes a choice to accept or reject cookies the
-  form is submitted and a page navigation occurs, with the confirmation banner
-  shown on the next page.
+  When the user hides the cookie banner, we progressively enhance the cookie banner to hide with
+  JavaScript. If JavaScript is not enabled, the form is submitted and a page navigation occurs.
 
-  If the user chooses hides the confirmation banner, we progressively enhance the cookie banner to
-  hide with JavaScript. If JavaScript is not enabled, the page reloads.
-
-  The choice to accept or reject cookies will not be remembered.
+  The choice to hide the banner on subsequent visits will not be remembered.
 
   The content of the page is not important for this scenario.
 ---
@@ -28,60 +24,32 @@ notes: >-
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block bodyStart %}
-{% if cookies == "accept" or cookies =="reject" %}
-    {% if cookies == "accept" %}
-        {% set outcome = "You have accepted cookies." %}
-    {% else %}
-        {% set outcome = "You have rejected cookies." %}
-    {% endif %}
 
-    {{ govukCookieBanner({
-    "messages": [
-        {
-            "text": "Your cookie preferences have been saved. " + outcome,
-            "role": "alert",
-            "actions": [
-                {
-                    "text": "Hide this message",
-                    "href": currentUrl,
-                    "type": "button",
-                    "classes": "js-hide"
-                }
-            ],
-            "classes": "js-confirmation-banner"
-        }
-    ]
-    }) }}
-{% else %}
-<form action="" method="POST">
-    {{ govukCookieBanner({
-    "messages": [
-        {
-        "headingText": "Cookies on this government service",
-        "text": "We use analytics cookies to help understand how users use our service.",
-        "actions": [
-            {
-            "text": "Accept analytics cookies",
-            "type": "submit",
-            "name": "cookies",
-            "value": "accept"
-            },
-            {
-            "text": "Reject analytics cookies",
-            "type": "submit",
-            "name": "cookies",
-            "value": "reject"
-            },
-            {
-            "text": "View cookie preferences",
-            "href": "#"
-            }
+  {% if cookies != "cookie-banner-dismissed" %}
+    <form action="" method="POST">
+      {{ govukCookieBanner({
+        messages: [
+          {
+            headingText: "Cookies on this government service",
+            text: "We use some essential cookies to make this service work.",
+            actions: [
+              {
+                text: "View cookies",
+                href: "#"
+              },
+              {
+                text: "Hide this message",
+                type: "submit",
+                name: "cookies",
+                value: "cookie-banner-dismissed",
+                classes: "js-hide"
+              }
+            ]
+          }
         ]
-        }
-    ]
-    }) }}
-</form>
-{% endif %}
+      }) }}
+    </form>
+  {% endif %}
 {% endblock %}
 
 {% block beforeContent %}
@@ -185,22 +153,10 @@ notes: >-
     </div>
   </div>
 
-{# As the cookie banner component does not currently include JavaScript, we have
-   to take care of the 'Hide' button to make progressive enhancement in the example functional #}
+{# As the cookie banner component does not currently include JavaScript, we have to take care of the 'Hide' button to make progressive enhancement in the example functional #}
  <script>
     var hideButton = document.querySelector('.js-hide')
     var cookieBanner = document.querySelector(".govuk-cookie-banner")
-    var confirmationBanner = document.querySelector('.js-confirmation-banner')
-
-    if (confirmationBanner) {
-      // Shift focus to the confirmation banner
-      confirmationBanner.setAttribute('tabindex', '-1')
-      confirmationBanner.focus()
-
-      confirmationBanner.addEventListener('blur', function () {
-          confirmationBanner.removeAttribute('tabindex')
-      })
-    }
 
     if (hideButton) {
       hideButton.addEventListener('click', function(event) {
