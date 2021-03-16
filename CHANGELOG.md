@@ -4,7 +4,13 @@
 
 ## New features
 
-- [#2164: Enable cookie banner to set link styled as a button](https://github.com/alphagov/govuk-frontend/pull/2164)
+#### Allow users to use cookie banner buttons as links
+
+You can now add links styled as buttons to cookie banners.
+
+Use this feature only if you need to. For example, you can set the **Hide** button to be a link styled as a button that reloads the page. You might want to do this if the cookie banner needs to work without JavaScript and the **Hide** button does not need to set a cookie, as the user has already accepted or rejected cookies.
+
+This was added in [pull request #2164: Enable cookie banner to set link styled as a button](https://github.com/alphagov/govuk-frontend/pull/2164)
 
 ### Fixes
 
