@@ -121,3 +121,72 @@ describe('Checkboxes with conditional reveals', () => {
     })
   })
 })
+
+describe('Checkboxes with a None checkbox', () => {
+  describe('when JavaScript is available', () => {
+    it('unchecks other checkboxes when the None checkbox is checked', async () => {
+      await goToAndGetComponent('checkboxes', 'with-divider-and-None')
+
+      // Check the first 3 checkboxes
+      await page.click('#with-divider-and-none')
+      await page.click('#with-divider-and-none-2')
+      await page.click('#with-divider-and-none-3')
+
+      // Check the None checkbox
+      await page.click('#with-divider-and-none-5')
+
+      // Expect first 3 checkboxes to have been unchecked
+      const firstCheckboxIsUnchecked = await waitForVisibleSelector('[id="with-divider-and-none"]:not(:checked)')
+      expect(firstCheckboxIsUnchecked).toBeTruthy()
+
+      const secondCheckboxIsUnchecked = await waitForVisibleSelector('[id="with-divider-and-none-2"]:not(:checked)')
+      expect(secondCheckboxIsUnchecked).toBeTruthy()
+
+      const thirdCheckboxIsUnchecked = await waitForVisibleSelector('[id="with-divider-and-none-3"]:not(:checked)')
+      expect(thirdCheckboxIsUnchecked).toBeTruthy()
+    })
+
+    it('unchecks the None checkbox when any other checkbox is checked', async () => {
+      await goToAndGetComponent('checkboxes', 'with-divider-and-None')
+
+      // Check the None checkbox
+      await page.click('#with-divider-and-none-5')
+
+      // Check the first checkbox
+      await page.click('#with-divider-and-none')
+
+      // Expect the None checkbox to have been unchecked
+      const noneCheckboxIsUnchecked = await waitForVisibleSelector('[id="with-divider-and-none-5"]:not(:checked)')
+      expect(noneCheckboxIsUnchecked).toBeTruthy()
+    })
+  })
+})
+
+describe('Checkboxes with a None checkbox and conditional reveals', () => {
+  describe('when JavaScript is available', () => {
+    it('unchecks other checkboxes and hides conditional reveals when the None checkbox is checked', async () => {
+      const $ = await goToAndGetComponent('checkboxes', 'with-divider,-None-and-conditional-items')
+
+      // Check the 4th checkbox, which reveals an additional field
+      await page.click('#with-divider-and-none-and-conditional-items-4')
+
+      const $checkedInput = $('#with-divider-and-none-and-conditional-items-4')
+      const conditionalContentId = $checkedInput.attr('aria-controls')
+
+      // Expect conditional content to have been revealed
+      const isConditionalContentVisible = await waitForVisibleSelector(`[id="${conditionalContentId}"]`)
+      expect(isConditionalContentVisible).toBeTruthy()
+
+      // Check the None checkbox
+      await page.click('#with-divider-and-none-and-conditional-items-6')
+
+      // Expect the 4th checkbox to have been unchecked
+      const forthCheckboxIsUnchecked = await waitForVisibleSelector('[id="with-divider-and-none-and-conditional-items-4"]:not(:checked)')
+      expect(forthCheckboxIsUnchecked).toBeTruthy()
+
+      // Expect conditional content to have been hidden
+      const isConditionalContentHidden = await waitForHiddenSelector(`[id="${conditionalContentId}"]`)
+      expect(isConditionalContentHidden).toBeTruthy()
+    })
+  })
+})
