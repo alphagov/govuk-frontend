@@ -86,6 +86,10 @@ params:
     type: string
     required: false
     description: Provide content for the conditional reveal.
+  - name: behaviour
+    type: string
+    required: false
+    description: If set to `exclusive`, implements a "None of these" type behaviour via javascript when checkboxes are clicked
   - name: disabled
     type: boolean
     required: false
@@ -124,6 +128,26 @@ examples:
         text: Irish
       - value: other
         text: Citizen of another country
+
+- name: with divider and None
+  data:
+    name: with-divider-and-none
+    fieldset:
+      legend:
+        text: Which types of waste do you transport regularly?
+        classes: govuk-fieldset__legend--l
+        isPageHeading: true
+    items:
+      - value: animal
+        text: Waste from animal carcasses
+      - value: mines
+        text: Waste from mines or quarries
+      - value: farm
+        text: Farm or agricultural waste
+      - divider: or
+      - value: none
+        text: None of these
+        behaviour: exclusive
 
 - name: with id and name
   data:
