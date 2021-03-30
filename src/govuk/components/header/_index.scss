@@ -57,7 +57,6 @@
   .govuk-header__product-name {
     @include govuk-font($size: 24, $line-height: 1);
     display: inline-table;
-    padding-right: govuk-spacing(2);
   }
 
   .govuk-header__link {
@@ -92,6 +91,7 @@
     @include govuk-font($size: false, $weight: bold);
 
     display: inline-block;
+    margin-right: govuk-spacing(2);
     font-size: 30px; // We don't have a mixin that produces 30px font size
     line-height: 1;
 
