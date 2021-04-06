@@ -36,7 +36,15 @@
 
   .govuk-header__logotype {
     display: inline-block;
+
+    // Add a gap between logo and any product name
     margin-right: govuk-spacing(1);
+
+    // But remove it if there's nothing after the logo to keep hover and focus
+    // states neat
+    &:last-child {
+      margin-right: 0;
+    }
   }
 
   .govuk-header__logotype-crown {
@@ -57,7 +65,6 @@
   .govuk-header__product-name {
     @include govuk-font($size: 24, $line-height: 1);
     display: inline-table;
-    padding-right: govuk-spacing(2);
   }
 
   .govuk-header__link {
@@ -92,6 +99,7 @@
     @include govuk-font($size: false, $weight: bold);
 
     display: inline-block;
+    margin-right: govuk-spacing(2);
     font-size: 30px; // We don't have a mixin that produces 30px font size
     line-height: 1;
 
