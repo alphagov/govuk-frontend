@@ -102,9 +102,9 @@
       }
 
       .govuk-tabs__tab {
-        @include govuk-link-style-text;
-
+        @include govuk-link-common;
         margin-bottom: 0;
+        color: $govuk-text-colour;
 
         &:after {
           content: "";

@@ -37,6 +37,7 @@
   }
 
   .govuk-footer__link {
+    @include govuk-link-common;
     @if ($govuk-use-legacy-palette) {
       &:link,
       &:visited {

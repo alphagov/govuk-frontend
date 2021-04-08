@@ -14,8 +14,7 @@
   text-underline-offset: .1em;
 
   &:hover {
-    // text-decoration-thickness: 3px;
-    text-decoration-thickness: unquote("max(2px, .18em)");
+    text-decoration-thickness: unquote("max(3px, .12em)");
   }
 
   &:focus {
@@ -51,9 +50,9 @@
     @include govuk-link-colour($govuk-link-visited-colour);
   }
 
-  &:hover {
-    color: $govuk-link-colour;
-  }
+  // &:hover {
+  //   color: inherit;
+  // }
 
   &:active {
     color: $govuk-link-active-colour;

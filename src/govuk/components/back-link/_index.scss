@@ -26,7 +26,8 @@
 
   // Only underline if the component is linkable
   .govuk-back-link[href] {
-    text-decoration: underline;
+    // Removing this so that the back link uses same approach as other links
+    // text-decoration: underline;
 
     // When the back link is focused, hide the bottom link border as the
     // focus styles has a bottom border.
