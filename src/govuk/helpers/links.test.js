@@ -3,7 +3,7 @@
 const { renderSass } = require('../../../lib/jest-helpers')
 
 const sassConfig = {
-  outputStyle: 'nested'
+  outputStyle: 'compact'
 }
 
 describe('@mixin govuk-link-decoration', () => {
@@ -64,6 +64,36 @@ describe('@mixin govuk-link-decoration', () => {
       const results = await renderSass({ data: sass, ...sassConfig })
 
       expect(results.css.toString()).not.toContain('text-underline-offset')
+    })
+  })
+
+  it('sets text-decoration-thickness on hover', async () => {
+    const sass = `
+    $govuk-link-hover-underline-thickness: 10px;
+      @import "base";
+
+      .foo {
+        @include govuk-link-decoration;
+      }`
+
+    const results = await renderSass({ data: sass, ...sassConfig })
+
+    expect(results.css.toString()).toContain('.foo:hover { text-decoration-thickness: 10px; }')
+  })
+
+  describe('when $govuk-link-hover-underline-thickness is falsey', () => {
+    it('does not set a hover state', async () => {
+      const sass = `
+      $govuk-link-hover-underline-thickness: false;
+      @import "base";
+
+      .foo {
+          @include govuk-link-decoration;
+      }`
+
+      const results = await renderSass({ data: sass, ...sassConfig })
+
+      expect(results.css.toString()).not.toContain(':hover')
     })
   })
 })

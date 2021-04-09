@@ -112,6 +112,14 @@ $govuk-hover-width: 10px !default;
 /// @access public
 $govuk-link-underline-thickness: 1px !default;
 
+/// Link hover state underline thickness
+///
+/// Set to false to disable setting a thickness
+///
+/// @type Number
+/// @access public
+$govuk-link-hover-underline-thickness: unquote("max(3px, .12em)") !default;
+
 /// Link underline offset.
 ///
 /// Set to false to disable setting an offset

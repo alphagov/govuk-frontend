@@ -34,6 +34,12 @@
   @if ($govuk-link-underline-offset) {
     text-underline-offset: $govuk-link-underline-offset;
   }
+
+  @if ($govuk-link-hover-underline-thickness) {
+    &:hover {
+      text-decoration-thickness: $govuk-link-hover-underline-thickness;
+    }
+  }
 }
 
 /// Default link style mixin
