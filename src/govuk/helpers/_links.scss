@@ -217,7 +217,6 @@
 /// @access public
 
 @mixin govuk-link-style-text {
-  // Override link colour to use text colour
   &:link,
   &:visited,
   &:hover,
@@ -232,6 +231,43 @@
   @include govuk-compatibility(govuk_template) {
     &:link:focus {
       @include govuk-text-colour;
+    }
+  }
+}
+
+/// Inverse style link mixin
+///
+/// Overrides the colour of links to work on a dark background.
+///
+/// If you use this mixin in a component you must also include the
+/// govuk-link-common mixin in order to get the focus state.
+///
+/// @example scss
+///   .govuk-component__link {
+///     @include govuk-link-common;
+///     @include govuk-link-style-inverse;
+///   }
+///
+/// @access public
+
+@mixin govuk-link-style-inverse {
+  &:link,
+  &:visited,
+  &:hover,
+  &:active {
+    color: govuk-colour("white");
+  }
+
+  &:focus {
+    color: $govuk-focus-text-colour;
+  }
+
+  // alphagov/govuk_template includes a specific a:link:focus selector designed
+  // to make unvisited links a slightly darker blue when focussed, so we need to
+  // override the text colour for that combination of selectors.
+  @include govuk-compatibility(govuk_template) {
+    &:link:focus {
+      color: $govuk-focus-text-colour;
     }
   }
 }
