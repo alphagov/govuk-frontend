@@ -10,9 +10,29 @@
 
 @mixin govuk-link-common {
   @include govuk-typography-common;
+  @include govuk-link-decoration;
 
   &:focus {
     @include govuk-focused-text;
+  }
+}
+
+/// Link decoration mixin
+///
+/// Provides the text decoration for links, including any underline offset
+///
+/// @access public
+@mixin govuk-link-decoration {
+  $thickness: if(
+    $govuk-link-underline-thickness,
+    $govuk-link-underline-thickness,
+    auto
+  );
+
+  text-decoration: solid underline $thickness;
+
+  @if ($govuk-link-underline-offset) {
+    text-underline-offset: $govuk-link-underline-offset;
   }
 }
 

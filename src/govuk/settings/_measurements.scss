@@ -103,3 +103,19 @@ $govuk-focus-width: 3px !default;
 /// @access public
 
 $govuk-hover-width: 10px !default;
+
+/// Link underline thickness
+///
+/// Set to false to disable setting a thickness
+///
+/// @type Number
+/// @access public
+$govuk-link-underline-thickness: 1px !default;
+
+/// Link underline offset.
+///
+/// Set to false to disable setting an offset
+///
+/// @type Number
+/// @access public
+$govuk-link-underline-offset: .1em !default;
