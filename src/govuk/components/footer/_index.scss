@@ -6,17 +6,13 @@
   // as it'll just be the same as $govuk-footer-border.
   $govuk-footer-border-top: $govuk-border-colour;
   $govuk-footer-text: $govuk-text-colour;
-  $govuk-footer-link: $govuk-footer-text;
-  $govuk-footer-link-hover: false;
+  $govuk-footer-link-hover-colour: null; // Only used with the legacy palette
 
   @if ($govuk-use-legacy-palette) {
     $govuk-footer-border-top: #a1acb2;
     $govuk-footer-border: govuk-colour("grey-2");
     $govuk-footer-text: #454a4c;
-    $govuk-footer-link: $govuk-footer-text;
-
-    // Only used with the legacy palette
-    $govuk-footer-link-hover: #171819;
+    $govuk-footer-link-hover-colour: #171819;
   }
 
   // Based on the govuk-crest-2x.png image dimensions.
@@ -37,27 +33,20 @@
   }
 
   .govuk-footer__link {
+    @include govuk-link-common;
+
     @if ($govuk-use-legacy-palette) {
       &:link,
       &:visited {
-        color: $govuk-footer-link;
+        color: $govuk-footer-text;
       }
 
       &:hover,
       &:active {
-        color: $govuk-footer-link-hover;
+        color: $govuk-footer-link-hover-colour;
       }
     } @else {
-      &:link,
-      &:visited,
-      &:hover,
-      &:active {
-        color: $govuk-footer-link;
-      }
-    }
-
-    &:focus {
-      @include govuk-focused-text;
+      @include govuk-link-style-text;
     }
 
     // alphagov/govuk_template includes a specific a:link:focus selector
