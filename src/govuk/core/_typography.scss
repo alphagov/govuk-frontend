@@ -10,7 +10,7 @@
 
   %govuk-heading-xl {
     @include govuk-text-colour;
-    @include govuk-font($size: 48, $weight: bold);
+    @include govuk-font($size: xl, $weight: bold);
 
     display: block;
 
@@ -24,7 +24,7 @@
 
   %govuk-heading-l {
     @include govuk-text-colour;
-    @include govuk-font($size: 36, $weight: bold);
+    @include govuk-font($size: l, $weight: bold);
 
     display: block;
 
@@ -38,7 +38,7 @@
 
   %govuk-heading-m {
     @include govuk-text-colour;
-    @include govuk-font($size: 24, $weight: bold);
+    @include govuk-font($size: m, $weight: bold);
 
     display: block;
 
@@ -52,7 +52,7 @@
 
   %govuk-heading-s {
     @include govuk-text-colour;
-    @include govuk-font($size: 19, $weight: bold);
+    @include govuk-font($size: s, $weight: bold);
 
     display: block;
 
@@ -101,7 +101,7 @@
 
   %govuk-body-l {
     @include govuk-text-colour;
-    @include govuk-font($size: 24);
+    @include govuk-font($size: l);
 
     margin-top: 0;
     @include govuk-responsive-margin(6, "bottom");
@@ -113,7 +113,7 @@
 
   %govuk-body-m {
     @include govuk-text-colour;
-    @include govuk-font($size: 19);
+    @include govuk-font($size: m);
 
     margin-top: 0;
     @include govuk-responsive-margin(4, "bottom");
@@ -125,7 +125,7 @@
 
   %govuk-body-s {
     @include govuk-text-colour;
-    @include govuk-font($size: 16);
+    @include govuk-font($size: s);
 
     margin-top: 0;
     @include govuk-responsive-margin(4, "bottom");
@@ -137,7 +137,7 @@
 
   %govuk-body-xs {
     @include govuk-text-colour;
-    @include govuk-font($size: 14);
+    @include govuk-font($size: xs);
 
     margin-top: 0;
     @include govuk-responsive-margin(4, "bottom");

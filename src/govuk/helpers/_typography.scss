@@ -116,6 +116,10 @@
 
 @mixin govuk-typography-responsive($size, $override-line-height: false, $important: false) {
 
+  @if map-has-key($govuk-typography-aliases, $size) {
+    $size: map-get($govuk-typography-aliases, $size);
+  }
+
   @if not map-has-key($govuk-typography-scale, $size) {
     @error "Unknown font size `#{$size}` - expected a point from the typography scale.";
   }

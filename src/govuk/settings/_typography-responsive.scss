@@ -181,3 +181,11 @@ $govuk-typography-scale: (
     )
   )
 ) !default;
+
+$govuk-typography-aliases : (
+  xl: 48,
+  l: 36,
+  m: 24,
+  s: 19,
+  xs: 16
+);

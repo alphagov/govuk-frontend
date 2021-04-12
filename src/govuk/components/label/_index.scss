@@ -11,22 +11,22 @@
   // Modifiers that make labels look more like their equivalent headings
 
   .govuk-label--xl {
-    @include govuk-font($size: 48, $weight: bold);
+    @include govuk-font($size: xl, $weight: bold);
     margin-bottom: govuk-spacing(3);
   }
 
   .govuk-label--l {
-    @include govuk-font($size: 36, $weight: bold);
+    @include govuk-font($size: l, $weight: bold);
     margin-bottom: govuk-spacing(3);
   }
 
   .govuk-label--m {
-    @include govuk-font($size: 24, $weight: bold);
+    @include govuk-font($size: m, $weight: bold);
     margin-bottom: govuk-spacing(2);
   }
 
   .govuk-label--s {
-    @include govuk-font($size: 19, $weight: bold);
+    @include govuk-font($size: s, $weight: bold);
   }
 
   // When the label is nested inside a heading, override the heading so that it
