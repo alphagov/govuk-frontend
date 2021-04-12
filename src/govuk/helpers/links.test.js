@@ -18,7 +18,7 @@ describe('@mixin govuk-link-decoration', () => {
 
     const results = await renderSass({ data: sass, ...sassConfig })
 
-    expect(results.css.toString()).toContain('text-decoration: solid underline 1px;')
+    expect(results.css.toString()).toContain('text-decoration-thickness: 1px;')
   })
 
   describe('when $govuk-link-underline-thickness is falsey', () => {
@@ -33,7 +33,7 @@ describe('@mixin govuk-link-decoration', () => {
 
       const results = await renderSass({ data: sass, ...sassConfig })
 
-      expect(results.css.toString()).toContain('text-decoration: solid underline auto;')
+      expect(results.css.toString()).not.toContain('text-decoration-thickness;')
     })
   })
 

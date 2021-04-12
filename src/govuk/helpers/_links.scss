@@ -23,13 +23,11 @@
 ///
 /// @access public
 @mixin govuk-link-decoration {
-  $thickness: if(
-    $govuk-link-underline-thickness,
-    $govuk-link-underline-thickness,
-    auto
-  );
+  text-decoration: underline;
 
-  text-decoration: solid underline $thickness;
+  @if ($govuk-link-underline-thickness) {
+    text-decoration-thickness: $govuk-link-underline-thickness;
+  }
 
   @if ($govuk-link-underline-offset) {
     text-underline-offset: $govuk-link-underline-offset;
