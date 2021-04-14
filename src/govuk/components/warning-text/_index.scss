@@ -43,6 +43,16 @@
     // Prevent the exclamation mark from being included when the warning text
     // is copied, for example.
     user-select: none;
+
+    // Improve rendering in Windows High Contrast Mode (Edge), where a
+    // readability backplate behind the exclamation mark obscures the circle
+    forced-color-adjust: none;
+
+    @media screen and (forced-colors: active) {
+      border-color: windowText;
+      color: windowText;
+      background: transparent;
+    }
   }
 
   .govuk-warning-text__text {
