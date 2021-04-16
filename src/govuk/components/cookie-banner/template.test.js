@@ -248,6 +248,13 @@ describe('Cookie Banner', () => {
       const $actions = $('.govuk-cookie-banner__message[hidden]')
       expect($actions.length).toEqual(2)
     })
+
+    it('has a data-nosnippet attribute to hide it from search result snippets', () => {
+      const $ = render('cookie-banner', examples['client-side implementation'])
+
+      const $parentContainer = $('.govuk-cookie-banner')
+      expect($parentContainer.attr('data-nosnippet')).toEqual('')
+    })
   })
 
   describe('full cookie banner hidden', () => {
