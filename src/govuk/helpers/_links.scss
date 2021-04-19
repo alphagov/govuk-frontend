@@ -202,10 +202,13 @@
 
 @mixin govuk-link-style-muted {
   &:link,
-  &:visited,
+  &:visited {
+    color: $govuk-secondary-text-colour;
+  }
+
   &:hover,
   &:active {
-    color: $govuk-secondary-text-colour;
+    color: $govuk-text-colour;
   }
 
   // When focussed, the text colour needs to be darker to ensure that colour
@@ -242,8 +245,16 @@
 
 @mixin govuk-link-style-text {
   &:link,
-  &:visited,
-  &:hover,
+  &:visited {
+    @include govuk-text-colour;
+  }
+
+  // Force a colour change on hover to work around a bug in Safari
+  // https://bugs.webkit.org/show_bug.cgi?id=224483
+  &:hover {
+    color: rgba($govuk-text-colour, .99);
+  }
+
   &:active,
   &:focus {
     @include govuk-text-colour;
@@ -276,10 +287,15 @@
 
 @mixin govuk-link-style-inverse {
   &:link,
-  &:visited,
+  &:visited {
+    color: govuk-colour("white");
+  }
+
+  // Force a colour change on hover to work around a bug in Safari
+  // https://bugs.webkit.org/show_bug.cgi?id=224483
   &:hover,
   &:active {
-    color: govuk-colour("white");
+    color: rgba(govuk-colour("white"), .99);
   }
 
   &:focus {
