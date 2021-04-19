@@ -288,16 +288,7 @@
 /// @access public
 
 @mixin govuk-link-style-no-underline {
-  &:link {
-    text-decoration-line: none;
-  }
-
-  &:hover,
-  &:active {
-    text-decoration-line: underline;
-  }
-
-  &:focus {
+  &:not(:hover):not(:active) {
     text-decoration: none;
   }
 }
