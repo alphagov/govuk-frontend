@@ -280,6 +280,28 @@
   }
 }
 
+/// No underline link mixin
+///
+/// Removes underlines from links (except on hover, or when the link is active).
+/// This does not work in IE8, because IE8 does not support `:not`.
+///
+/// @access public
+
+@mixin govuk-link-style-no-underline {
+  &:link {
+    text-decoration-line: none;
+  }
+
+  &:hover,
+  &:active {
+    text-decoration-line: underline;
+  }
+
+  &:focus {
+    text-decoration: none;
+  }
+}
+
 /// Print friendly link mixin
 ///
 /// When printing, append the the destination URL to the link text, as long
