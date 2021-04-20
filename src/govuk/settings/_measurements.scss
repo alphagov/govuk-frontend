@@ -103,35 +103,3 @@ $govuk-focus-width: 3px !default;
 /// @access public
 
 $govuk-hover-width: 10px !default;
-
-/// Link underline thickness
-///
-/// Default is a 1px underline for all links regardless of size, but is defined
-/// in rem so that it scales accordingly if the user has a different root font
-/// size ('zoom text only')
-///
-/// Set to false to disable setting a thickness
-///
-/// @type Number
-/// @access public
-$govuk-link-underline-thickness: .0625rem !default;
-
-/// Link hover state underline thickness
-///
-/// Default is, for a given link, whichever is the thicker:
-///  - a 3px underline (defined in rem to scale with the root font size)
-///  - .12em relative to the link's text size
-///
-/// Set to false to disable setting a thickness
-///
-/// @type Number
-/// @access public
-$govuk-link-hover-underline-thickness: unquote("max(.1875rem, .12em)") !default;
-
-/// Link underline offset.
-///
-/// Set to false to disable setting an offset
-///
-/// @type Number
-/// @access public
-$govuk-link-underline-offset: .1em !default;
