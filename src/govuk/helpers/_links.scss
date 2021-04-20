@@ -25,17 +25,19 @@
 @mixin govuk-link-decoration {
   text-decoration: underline;
 
-  @if ($govuk-link-underline-thickness) {
-    text-decoration-thickness: $govuk-link-underline-thickness;
-  }
+  @if ($govuk-new-link-styles) {
+    @if ($govuk-link-underline-thickness) {
+      text-decoration-thickness: $govuk-link-underline-thickness;
+    }
 
-  @if ($govuk-link-underline-offset) {
-    text-underline-offset: $govuk-link-underline-offset;
-  }
+    @if ($govuk-link-underline-offset) {
+      text-underline-offset: $govuk-link-underline-offset;
+    }
 
-  @if ($govuk-link-hover-underline-thickness) {
-    &:hover {
-      text-decoration-thickness: $govuk-link-hover-underline-thickness;
+    @if ($govuk-link-hover-underline-thickness) {
+      &:hover {
+        text-decoration-thickness: $govuk-link-hover-underline-thickness;
+      }
     }
   }
 }

@@ -2,6 +2,13 @@
 /// @group settings/links
 ////
 
+/// Enable new link styles
+///
+/// @type Boolean
+/// @access public
+
+$govuk-new-link-styles: false !default;
+
 /// Link underline thickness
 ///
 /// Default is a 1px underline for all links regardless of size, but is defined
