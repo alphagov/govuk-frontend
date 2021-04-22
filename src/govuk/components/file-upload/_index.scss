@@ -11,6 +11,17 @@
     padding-top: $component-padding;
     padding-bottom: $component-padding;
 
+    // The default file upload button in Safari does not
+    // support setting a custom font-size. Set `-webkit-appearance`
+    // to `button` to drop out of the native appearance so the
+    // font-size is set to 19px
+    // https://bugs.webkit.org/show_bug.cgi?id=224746
+    &::-webkit-file-upload-button {
+      -webkit-appearance: button;
+      color: inherit;
+      font: inherit;
+    }
+
     &:focus {
       // "Yank" the padding with negative margin to avoid a jump
       // when element is focused
