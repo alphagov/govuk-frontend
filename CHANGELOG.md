@@ -20,6 +20,7 @@ This was added in [pull request #2164: Enable cookie banner to set link styled a
 - [#2186: Fix display of warning text in Edge when Windows High Contrast Mode is enabled](https://github.com/alphagov/govuk-frontend/pull/2186)
 - [#2192: Add data-nosnippet to prevent cookie banner text appearing in Google Search snippets](https://github.com/alphagov/govuk-frontend/pull/2192)
 - [#2201: Set -webkit-appearance: button on file upload so text is aligned in Safari](https://github.com/alphagov/govuk-frontend/pull/2201)
+- [#2205: Stop file upload component 'jumping' on focus](https://github.com/alphagov/govuk-frontend/pull/2205)
 
 ## 3.11.0 (Feature release)
 
