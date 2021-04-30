@@ -14,7 +14,8 @@
   'Link': '',
   'Link with no visited state': 'govuk-link--no-visited-state',
   'Text link': 'govuk-link--text-colour',
-  'Muted link': 'govuk-link--muted'
+  'Muted link': 'govuk-link--muted',
+  'Inverse': 'govuk-link--inverse'
 } %}
 
 {% set states = {
@@ -49,8 +50,8 @@
 
     {% for variant_description, variant_class in variants %}
 
-      <section class="govuk-!-margin-top-8">
-        <h2 class="govuk-heading-l">{{ variant_description }}</h2>
+      <section class="govuk-!-margin-top-8"{% if variant_class == "govuk-link--inverse"%} style="background: #1d70b8; padding: 15px; margin: -15px;"{% endif %}>
+        <h2 class="govuk-heading-l"{% if variant_class == "govuk-link--inverse"%} style="color: #fff;"{% endif %}>{{ variant_description }}</h2>
 
       {% for state_description, state_class in states %}
         <p class="govuk-body">
