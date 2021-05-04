@@ -10,9 +10,46 @@
 
 @mixin govuk-link-common {
   @include govuk-typography-common;
+  @include govuk-link-decoration;
+
+  &:hover {
+    @include govuk-link-hover-decoration;
+  }
 
   &:focus {
     @include govuk-focused-text;
+  }
+}
+
+/// Link decoration mixin
+///
+/// Provides the text decoration for links, including any underline offset
+///
+/// @access public
+@mixin govuk-link-decoration {
+  text-decoration: underline;
+
+  @if ($govuk-new-link-styles) {
+    @if ($govuk-link-underline-thickness) {
+      text-decoration-thickness: $govuk-link-underline-thickness;
+    }
+
+    @if ($govuk-link-underline-offset) {
+      text-underline-offset: $govuk-link-underline-offset;
+    }
+  }
+}
+
+/// Link hover decoration mixin
+///
+/// Provides the text decoration for links in their hover state, intended to
+/// be used within a `:hover` pseudo-selector
+///
+/// @access public
+
+@mixin govuk-link-hover-decoration {
+  @if ($govuk-new-link-styles and $govuk-link-hover-underline-thickness) {
+    text-decoration-thickness: $govuk-link-hover-underline-thickness;
   }
 }
 
@@ -21,7 +58,7 @@
 /// Provides the default unvisited, visited, hover and active states for links.
 ///
 /// If you use this mixin in a component you must also include the
-/// govuk-link-common mixin in order to get the focus state.
+/// govuk-link-common mixin in order to get the correct focus and hover states.
 ///
 /// @example scss
 ///   .govuk-component__link {
@@ -71,7 +108,7 @@
 /// Provides the error unvisited, visited, hover and active states for links.
 ///
 /// If you use this mixin in a component you must also include the
-/// govuk-link-common mixin in order to get the focus state.
+/// govuk-link-common mixin in order to get the correct focus and hover states.
 ///
 /// @example scss
 ///   .govuk-component__link {
@@ -118,7 +155,7 @@
 /// Provides the success unvisited, visited, hover and active states for links.
 ///
 /// If you use this mixin in a component you must also include the
-/// govuk-link-common mixin in order to get the focus state.
+/// govuk-link-common mixin in order to get the correct focus and hover states.
 ///
 /// @example scss
 ///   .govuk-component__link {
@@ -166,7 +203,7 @@
 /// regardless of visited state.
 ///
 /// If you use this mixin in a component you must also include the
-/// govuk-link-common mixin in order to get the focus state.
+/// govuk-link-common mixin in order to get the correct focus and hover states.
 ///
 /// @example scss
 ///   .govuk-component__link {
@@ -178,10 +215,13 @@
 
 @mixin govuk-link-style-muted {
   &:link,
-  &:visited,
+  &:visited {
+    color: $govuk-secondary-text-colour;
+  }
+
   &:hover,
   &:active {
-    color: $govuk-secondary-text-colour;
+    color: $govuk-text-colour;
   }
 
   // When focussed, the text colour needs to be darker to ensure that colour
@@ -206,7 +246,7 @@
 /// navigation components, such as breadcrumbs or the back link.
 ///
 /// If you use this mixin in a component you must also include the
-/// govuk-link-common mixin in order to get the focus state.
+/// govuk-link-common mixin in order to get the correct focus and hover states.
 ///
 /// @example scss
 ///   .govuk-component__link {
@@ -217,10 +257,17 @@
 /// @access public
 
 @mixin govuk-link-style-text {
-  // Override link colour to use text colour
   &:link,
-  &:visited,
-  &:hover,
+  &:visited {
+    @include govuk-text-colour;
+  }
+
+  // Force a colour change on hover to work around a bug in Safari
+  // https://bugs.webkit.org/show_bug.cgi?id=224483
+  &:hover {
+    color: rgba($govuk-text-colour, .99);
+  }
+
   &:active,
   &:focus {
     @include govuk-text-colour;
@@ -236,6 +283,48 @@
   }
 }
 
+/// Inverse style link mixin
+///
+/// Overrides the colour of links to work on a dark background.
+///
+/// If you use this mixin in a component you must also include the
+/// govuk-link-common mixin in order to get the correct focus and hover states.
+///
+/// @example scss
+///   .govuk-component__link {
+///     @include govuk-link-common;
+///     @include govuk-link-style-inverse;
+///   }
+///
+/// @access public
+
+@mixin govuk-link-style-inverse {
+  &:link,
+  &:visited {
+    color: govuk-colour("white");
+  }
+
+  // Force a colour change on hover to work around a bug in Safari
+  // https://bugs.webkit.org/show_bug.cgi?id=224483
+  &:hover,
+  &:active {
+    color: rgba(govuk-colour("white"), .99);
+  }
+
+  &:focus {
+    color: $govuk-focus-text-colour;
+  }
+
+  // alphagov/govuk_template includes a specific a:link:focus selector designed
+  // to make unvisited links a slightly darker blue when focussed, so we need to
+  // override the text colour for that combination of selectors.
+  @include govuk-compatibility(govuk_template) {
+    &:link:focus {
+      color: $govuk-focus-text-colour;
+    }
+  }
+}
+
 /// No visited state link mixin
 ///
 /// Used in cases where it is not helpful to distinguish between visited and
@@ -246,7 +335,7 @@
 /// that you’ve visited it before is not important.
 ///
 /// If you use this mixin in a component you must also include the
-/// govuk-link-common mixin in order to get the focus state.
+/// govuk-link-common mixin in order to get the correct focus and hover states.
 ///
 /// @example scss
 ///   .govuk-component__link {
@@ -277,6 +366,19 @@
   // contrast is still acceptable
   &:focus {
     color: $govuk-focus-text-colour;
+  }
+}
+
+/// No underline link mixin
+///
+/// Removes underlines from links (except on hover, or when the link is active).
+/// This does not work in IE8, because IE8 does not support `:not`.
+///
+/// @access public
+
+@mixin govuk-link-style-no-underline {
+  &:not(:hover):not(:active) {
+    text-decoration: none;
   }
 }
 

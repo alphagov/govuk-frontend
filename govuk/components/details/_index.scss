@@ -34,7 +34,11 @@
 
   // ...but only underline the text, not the arrow
   .govuk-details__summary-text {
-    text-decoration: underline;
+    @include govuk-link-decoration;
+  }
+
+  .govuk-details__summary:hover .govuk-details__summary-text {
+    @include govuk-link-hover-decoration;
   }
 
   // Remove the underline when focussed to avoid duplicate borders
