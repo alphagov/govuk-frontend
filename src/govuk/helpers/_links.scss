@@ -10,9 +10,35 @@
 
 @mixin govuk-link-common {
   @include govuk-typography-common;
+  @include govuk-link-decoration;
 
   &:focus {
     @include govuk-focused-text;
+  }
+}
+
+/// Link decoration mixin
+///
+/// Provides the text decoration for links, including any underline offset
+///
+/// @access public
+@mixin govuk-link-decoration {
+  text-decoration: underline;
+
+  @if ($govuk-new-link-styles) {
+    @if ($govuk-link-underline-thickness) {
+      text-decoration-thickness: $govuk-link-underline-thickness;
+    }
+
+    @if ($govuk-link-underline-offset) {
+      text-underline-offset: $govuk-link-underline-offset;
+    }
+
+    @if ($govuk-link-hover-underline-thickness) {
+      &:hover {
+        text-decoration-thickness: $govuk-link-hover-underline-thickness;
+      }
+    }
   }
 }
 
@@ -21,7 +47,7 @@
 /// Provides the default unvisited, visited, hover and active states for links.
 ///
 /// If you use this mixin in a component you must also include the
-/// govuk-link-common mixin in order to get the focus state.
+/// govuk-link-common mixin in order to get the correct focus and hover states.
 ///
 /// @example scss
 ///   .govuk-component__link {
@@ -71,7 +97,7 @@
 /// Provides the error unvisited, visited, hover and active states for links.
 ///
 /// If you use this mixin in a component you must also include the
-/// govuk-link-common mixin in order to get the focus state.
+/// govuk-link-common mixin in order to get the correct focus and hover states.
 ///
 /// @example scss
 ///   .govuk-component__link {
@@ -118,7 +144,7 @@
 /// Provides the success unvisited, visited, hover and active states for links.
 ///
 /// If you use this mixin in a component you must also include the
-/// govuk-link-common mixin in order to get the focus state.
+/// govuk-link-common mixin in order to get the correct focus and hover states.
 ///
 /// @example scss
 ///   .govuk-component__link {
@@ -166,7 +192,7 @@
 /// regardless of visited state.
 ///
 /// If you use this mixin in a component you must also include the
-/// govuk-link-common mixin in order to get the focus state.
+/// govuk-link-common mixin in order to get the correct focus and hover states.
 ///
 /// @example scss
 ///   .govuk-component__link {
@@ -178,10 +204,13 @@
 
 @mixin govuk-link-style-muted {
   &:link,
-  &:visited,
+  &:visited {
+    color: $govuk-secondary-text-colour;
+  }
+
   &:hover,
   &:active {
-    color: $govuk-secondary-text-colour;
+    color: $govuk-text-colour;
   }
 
   // When focussed, the text colour needs to be darker to ensure that colour
@@ -206,7 +235,7 @@
 /// navigation components, such as breadcrumbs or the back link.
 ///
 /// If you use this mixin in a component you must also include the
-/// govuk-link-common mixin in order to get the focus state.
+/// govuk-link-common mixin in order to get the correct focus and hover states.
 ///
 /// @example scss
 ///   .govuk-component__link {
@@ -218,8 +247,16 @@
 
 @mixin govuk-link-style-text {
   &:link,
-  &:visited,
-  &:hover,
+  &:visited {
+    @include govuk-text-colour;
+  }
+
+  // Force a colour change on hover to work around a bug in Safari
+  // https://bugs.webkit.org/show_bug.cgi?id=224483
+  &:hover {
+    color: rgba($govuk-text-colour, .99);
+  }
+
   &:active,
   &:focus {
     @include govuk-text-colour;
@@ -240,7 +277,7 @@
 /// Overrides the colour of links to work on a dark background.
 ///
 /// If you use this mixin in a component you must also include the
-/// govuk-link-common mixin in order to get the focus state.
+/// govuk-link-common mixin in order to get the correct focus and hover states.
 ///
 /// @example scss
 ///   .govuk-component__link {
@@ -252,10 +289,15 @@
 
 @mixin govuk-link-style-inverse {
   &:link,
-  &:visited,
+  &:visited {
+    color: govuk-colour("white");
+  }
+
+  // Force a colour change on hover to work around a bug in Safari
+  // https://bugs.webkit.org/show_bug.cgi?id=224483
   &:hover,
   &:active {
-    color: govuk-colour("white");
+    color: rgba(govuk-colour("white"), .99);
   }
 
   &:focus {
@@ -282,7 +324,7 @@
 /// that you’ve visited it before is not important.
 ///
 /// If you use this mixin in a component you must also include the
-/// govuk-link-common mixin in order to get the focus state.
+/// govuk-link-common mixin in order to get the correct focus and hover states.
 ///
 /// @example scss
 ///   .govuk-component__link {

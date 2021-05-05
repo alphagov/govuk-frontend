@@ -1,0 +1,48 @@
+////
+/// @group settings/links
+////
+
+/// Enable new link styles
+///
+/// @type Boolean
+/// @access public
+
+$govuk-new-link-styles: false !default;
+
+/// Link underline thickness
+///
+/// The default is, for a given link, whichever is thicker:
+///  - an absolute 1px underline
+///  - .0625rem, equivalent to 1px but adjusts with the root font size if the
+///.   user has zoomed in 'text only'
+///
+/// Set to false to disable setting a thickness
+///
+/// @type Number
+/// @access public
+
+$govuk-link-underline-thickness: unquote("max(1px, .0625rem)") !default;
+
+/// Link underline offset.
+///
+/// Set to false to disable setting an offset
+///
+/// @type Number
+/// @access public
+
+$govuk-link-underline-offset: .1em !default;
+
+/// Link hover state underline thickness
+///
+/// The default is, for a given link, whichever is the thicker of:
+///  - an absolute 3px underline
+///  - .1875rem, which equivalent to 3px (at 16px root font size) but adjusts
+///    with the root font size if the user has zoomed in 'text only'
+///  - .12em relative to the link's text size
+///
+/// Set to false to disable setting a thickness
+///
+/// @type Number
+/// @access public
+
+$govuk-link-hover-underline-thickness: unquote("max(3px, .1875rem, .12em)") !default;
