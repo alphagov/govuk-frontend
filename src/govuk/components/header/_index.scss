@@ -4,10 +4,9 @@
   $govuk-header-border-color: $govuk-brand-colour;
   $govuk-header-border-width: govuk-spacing(2);
   $govuk-header-text: govuk-colour("white");
-  $govuk-header-link: govuk-colour("white");
-  $govuk-header-link-hover: govuk-colour("white");
   $govuk-header-link-active: #1d8feb;
   $govuk-header-nav-item-border-color: #2e3133;
+  $govuk-header-link-underline-thickness: 3px;
 
   .govuk-header {
     @include govuk-font($size: 16);
@@ -40,6 +39,10 @@
     // Add a gap between logo and any product name
     margin-right: govuk-spacing(1);
 
+    // Prevent readability backplate from obscuring underline in Windows
+    // High Contrast Mode
+    forced-color-adjust: none;
+
     // But remove it if there's nothing after the logo to keep hover and focus
     // states neat
     &:last-child {
@@ -68,28 +71,29 @@
   }
 
   .govuk-header__link {
-    text-decoration: none;
+    // Avoid using the `govuk-link-common` mixin because the links in the header
+    // get a special treatment, because:
+    //
+    // - underlines are only visible on hover
+    // - all links get a 3px underline regardless of text size, as there are
+    //   multiple grouped elements close to one another and having slightly
+    //   different underline widths looks unbalanced
+    @include govuk-typography-common;
+    @include govuk-link-style-inverse;
 
-    &:link,
-    &:visited {
-      color: $govuk-header-link;
-    }
+    text-decoration: none;
 
     &:hover {
       text-decoration: underline;
+      text-decoration-thickness: $govuk-header-link-underline-thickness;
+
+      @if ($govuk-link-underline-offset) {
+        text-underline-offset: $govuk-link-underline-offset;
+      }
     }
 
     &:focus {
       @include govuk-focused-text;
-    }
-
-    // alphagov/govuk_template includes a specific a:link:focus selector
-    // designed to make unvisited links a slightly darker blue when focussed, so
-    // we need to override the text colour for that combination of selectors.
-    @include govuk-compatibility(govuk_template) {
-      &:link:focus {
-        @include govuk-text-colour;
-      }
     }
   }
 
@@ -111,10 +115,10 @@
     &:hover,
     &:active {
       // Negate the added border
-      margin-bottom: -1px;
+      margin-bottom: $govuk-header-link-underline-thickness * -1;
       // Omitting colour will use default value of currentColor – if we
       // specified currentColor explicitly IE8 would ignore this rule.
-      border-bottom: 1px solid;
+      border-bottom: $govuk-header-link-underline-thickness solid;
     }
 
     // Remove any borders that show when focused and hovered.
@@ -164,12 +168,16 @@
     margin: 0;
     padding: 0;
     border: 0;
-    color: $govuk-header-link;
+    color: govuk-colour("white");
     background: none;
     cursor: pointer;
 
     &:hover {
-      text-decoration: underline;
+      text-decoration: solid underline $govuk-header-link-underline-thickness;
+
+      @if ($govuk-link-underline-offset) {
+        text-underline-offset: $govuk-link-underline-offset;
+      }
     }
 
     &:focus {

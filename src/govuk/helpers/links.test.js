@@ -33,19 +33,6 @@ describe('@mixin govuk-link-decoration', () => {
 
       expect(results.css.toString()).not.toContain('text-underline-offset')
     })
-
-    it('does not set a hover state', async () => {
-      const sass = `
-      @import "base";
-  
-      .foo {
-          @include govuk-link-decoration;
-      }`
-
-      const results = await renderSass({ data: sass, ...sassConfig })
-
-      expect(results.css.toString()).not.toContain(':hover')
-    })
   })
 
   describe('when $govuk-new-link-styles are enabled', () => {
@@ -79,21 +66,6 @@ describe('@mixin govuk-link-decoration', () => {
       expect(results.css.toString()).toContain('text-underline-offset: 0.1em;')
     })
 
-    it('sets text-decoration-thickness on hover', async () => {
-      const sass = `
-        $govuk-new-link-styles: true;
-        $govuk-link-hover-underline-thickness: 10px;
-        @import "base";
-  
-        .foo {
-          @include govuk-link-decoration;
-        }`
-
-      const results = await renderSass({ data: sass, ...sassConfig })
-
-      expect(results.css.toString()).toContain('.foo:hover { text-decoration-thickness: 10px; }')
-    })
-
     describe('when $govuk-link-underline-thickness is falsey', () => {
       it('does not set text-decoration-thickness', async () => {
         const sass = `
@@ -107,7 +79,7 @@ describe('@mixin govuk-link-decoration', () => {
 
         const results = await renderSass({ data: sass, ...sassConfig })
 
-        expect(results.css.toString()).not.toMatch(/\.foo {.*text-decoration-thickness.*}/)
+        expect(results.css.toString()).not.toContain('text-decoration-thickness')
       })
     })
 
@@ -127,6 +99,42 @@ describe('@mixin govuk-link-decoration', () => {
         expect(results.css.toString()).not.toContain('text-underline-offset')
       })
     })
+  })
+})
+
+describe('@mixin govuk-link-hover-decoration', () => {
+  describe('by default', () => {
+    it('does not set a hover state', async () => {
+      const sass = `
+      @import "base";
+  
+      // The mixin shouldn't return anything, so this selector ends up empty and
+      // is omitted from the CSS
+      .foo:hover {
+          @include govuk-link-hover-decoration;
+      }`
+
+      const results = await renderSass({ data: sass, ...sassConfig })
+
+      expect(results.css.toString()).not.toContain('.foo:hover')
+    })
+  })
+
+  describe('when $govuk-new-link-styles are enabled', () => {
+    it('sets text-decoration-thickness on hover', async () => {
+      const sass = `
+        $govuk-new-link-styles: true;
+        $govuk-link-hover-underline-thickness: 10px;
+        @import "base";
+
+        .foo:hover {
+          @include govuk-link-hover-decoration;
+        }`
+
+      const results = await renderSass({ data: sass, ...sassConfig })
+
+      expect(results.css.toString()).toContain('.foo:hover { text-decoration-thickness: 10px; }')
+    })
 
     describe('when $govuk-link-hover-underline-thickness is falsey', () => {
       it('does not set a hover state', async () => {
@@ -135,8 +143,10 @@ describe('@mixin govuk-link-decoration', () => {
         $govuk-link-hover-underline-thickness: false;
         @import "base";
     
-        .foo {
-            @include govuk-link-decoration;
+        // The mixin shouldn't return anything, so this selector ends up empty and
+        // is omitted from the CSS
+        .foo:hover {
+            @include govuk-link-hover-decoration;
         }`
 
         const results = await renderSass({ data: sass, ...sassConfig })

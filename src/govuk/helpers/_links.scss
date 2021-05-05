@@ -12,6 +12,10 @@
   @include govuk-typography-common;
   @include govuk-link-decoration;
 
+  &:hover {
+    @include govuk-link-hover-decoration;
+  }
+
   &:focus {
     @include govuk-focused-text;
   }
@@ -33,12 +37,19 @@
     @if ($govuk-link-underline-offset) {
       text-underline-offset: $govuk-link-underline-offset;
     }
+  }
+}
 
-    @if ($govuk-link-hover-underline-thickness) {
-      &:hover {
-        text-decoration-thickness: $govuk-link-hover-underline-thickness;
-      }
-    }
+/// Link hover decoration mixin
+///
+/// Provides the text decoration for links in their hover state, intended to
+/// be used within a `:hover` pseudo-selector
+///
+/// @access public
+
+@mixin govuk-link-hover-decoration {
+  @if ($govuk-new-link-styles and $govuk-link-hover-underline-thickness) {
+    text-decoration-thickness: $govuk-link-hover-underline-thickness;
   }
 }
 

@@ -2,6 +2,7 @@
   .govuk-skip-link {
     @include govuk-visually-hidden-focusable;
     @include govuk-typography-common;
+    @include govuk-link-decoration;
     @include govuk-link-style-text;
     @include govuk-typography-responsive($size: 16);
 
@@ -27,7 +28,6 @@
       // Undo unwanted changes when global styles are enabled
       @if ($govuk-global-styles) {
         box-shadow: none;
-        text-decoration: underline;
       }
     }
   }
