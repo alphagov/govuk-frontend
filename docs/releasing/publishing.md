@@ -79,7 +79,7 @@ Developers should pair on releases. When remote working, it can be useful to be 
 
 12. Checkout the **master** branch and pull the latest changes.
 
-13. Log into npm (`npm login`), using team [credentials](https://github.com/alphagov/design-system-team-credentials/tree/master/npm/govuk-patterns-and-tools).
+13. Log into npm (`npm login`), using team [credentials](https://github.com/alphagov/design-system-team-credentials/tree/main/npm/govuk-patterns-and-tools).
 
 14. Run `npm run publish-release`. You will now be prompted to continue or cancel.
 
