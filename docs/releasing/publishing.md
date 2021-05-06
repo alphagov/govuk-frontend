@@ -36,7 +36,7 @@
 
 Developers should pair on releases. When remote working, it can be useful to be on a call together.
 
-1. Checkout the **master** branch and pull the latest changes.
+1. Checkout the **main** branch and pull the latest changes.
 
 2. Run `nvm use` to make sure you are using the right version of Node.js and npm.
 
@@ -60,7 +60,7 @@ Developers should pair on releases. When remote working, it can be useful to be 
 
   ```bash
   cd ../govuk-design-system
-  git checkout master
+  git checkout main
   git pull
   npm install # note running `npm install` after `npm link` will destroy the link.
   npm link ../govuk-frontend/package/
@@ -75,9 +75,9 @@ Developers should pair on releases. When remote working, it can be useful to be 
 10. Create a pull request and copy the changelog text.
    When reviewing the PR, check that the version-numbers have been updated and that the compiled assets use this version-number.
 
-11. Once a reviewer approves the pull request, merge it to **master**.
+11. Once a reviewer approves the pull request, merge it to **main**.
 
-12. Checkout the **master** branch and pull the latest changes.
+12. Checkout the **main** branch and pull the latest changes.
 
 13. Log into npm (`npm login`), using team [credentials](https://github.com/alphagov/design-system-team-credentials/tree/main/npm/govuk-patterns-and-tools).
 
