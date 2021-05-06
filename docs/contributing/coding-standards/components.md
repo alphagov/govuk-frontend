@@ -27,4 +27,4 @@ If your component uses JavaScript, you must also create the following files in t
 
 If you need help building a component, [contact the Design System team](https://design-system.service.gov.uk/get-in-touch/) and we'll support you.
 
-Learn more about styling components in our [CSS style guide](https://github.com/alphagov/govuk-frontend/blob/master/docs/contributing/coding-standards/css.md). Our [JavaScript style guide](https://github.com/alphagov/govuk-frontend/blob/master/docs/contributing/coding-standards/js.md) has more information on coding components.
+Learn more about styling components in our [CSS style guide](./css.md). Our [JavaScript style guide](./js.md) has more information on coding components.

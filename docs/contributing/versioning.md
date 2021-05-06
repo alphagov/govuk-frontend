@@ -91,7 +91,7 @@ This includes:
 - SCSS - for example [colours variables](https://design-system.service.gov.uk/styles/colour/)
 
 ### npm package
-The other primary way is through what is [published to npm](https://github.com/alphagov/govuk-frontend/tree/master/package).
+The other primary way is through what is [published to npm](/package).
 
 This includes:
 
