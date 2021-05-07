@@ -24,21 +24,6 @@
     padding-left: 14px;
   }
 
-  // Only underline if the component is linkable
-  .govuk-back-link[href] {
-    text-decoration: underline;
-
-    // When the back link is focused, hide the bottom link border as the
-    // focus styles has a bottom border.
-    &:focus {
-      text-decoration: none;
-
-      &:before {
-        border-color: $govuk-text-colour;
-      }
-    }
-  }
-
   // Prepend left pointing chevron
   .govuk-back-link:before {
     content: "";
@@ -86,6 +71,10 @@
       // so fall back to using another sans-serif font to render the chevron.
       font-family: Arial, sans-serif;
     }
+  }
+
+  .govuk-back-link:focus:before {
+    border-color: $govuk-focus-text-colour;
   }
 
   .govuk-back-link:after {

@@ -1,0 +1,67 @@
+////
+/// @group settings/links
+////
+
+/// Enable new link styles
+///
+/// If enabled, the link styles will change. Underlines will:
+///
+/// - be consistently thinner and a bit further away from the link text
+/// - have a clearer hover state, where the underline gets thicker to make the
+///   link stand out to users
+///
+/// These changes are an opt-in feature because you may:
+///
+/// - need to make changes to your service to introduce these new link styles
+///   consistently
+/// - want to avoid opting in if you have links within a multiple-column layout
+///   in your CSS - there is [a Chromium bug that affects such
+///   links](https://github.com/alphagov/govuk-frontend/issues/2204)
+///
+/// These new link styles will be enabled by default in a future major version
+/// of GOV.UK Frontend.
+///
+/// @type Boolean
+/// @access public
+
+$govuk-new-link-styles: false !default;
+
+/// Thickness of link underlines
+///
+/// The default is whichever is calculated to be thicker:
+///
+///  - 1px
+///  - 0.0625rem (equivalent to 1px at 16px root font size, but scales if the
+///    user zooms in 'text only')
+///
+/// Set this variable to `false` to avoid setting a thickness.
+///
+/// @type Number
+/// @access public
+
+$govuk-link-underline-thickness: unquote("max(1px, .0625rem)") !default;
+
+/// Offset of link underlines from text baseline
+///
+/// Set this variable to `false` to avoid setting an offset.
+///
+/// @type Number
+/// @access public
+
+$govuk-link-underline-offset: .1em !default;
+
+/// Thickness of link underlines in hover state
+///
+/// The default is, for a given link, whichever is calculated to be thicker:
+///
+///  - 3px
+///  - 0.1875rem (equivalent to 3px at 16px root font size, but scales
+///    if the user has zooms in 'text only')
+///  - 0.12em (relative to the link's text size)
+///
+/// Set this variable to `false` to avoid setting a thickness.
+///
+/// @type Number
+/// @access public
+
+$govuk-link-hover-underline-thickness: unquote("max(3px, .1875rem, .12em)") !default;
