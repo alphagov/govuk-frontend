@@ -66,7 +66,7 @@ Your contribution needs to work with certain assistive technology as set out in 
 
 ## Commit hygiene
 
-Please see our [git style guide](https://github.com/alphagov/styleguides/blob/master/git.md)
+Please see our [git style guide](https://gds-way.cloudapps.digital/standards/source-code.html#commit-messages)
 which describes how we prefer git history and commit messages to read.
 
 ## Updating Changelog

@@ -35,7 +35,7 @@ Whenever we decide to make a breaking change we must ensure we do our best to tr
 
 ## Proposal
 
-Some breaking changes that need discussion may first be proposed in the [GOV.UK Design System architecture repository](https://github.com/alphagov/govuk-design-system-architecture/blob/master/proposals/README.md).
+Some breaking changes that need discussion may first be proposed in the [GOV.UK Design System architecture repository](https://github.com/alphagov/govuk-design-system-architecture/blob/main/proposals/README.md).
 
 This is to ensure the community can get involved with the decision.
 
@@ -91,7 +91,7 @@ This includes:
 - SCSS - for example [colours variables](https://design-system.service.gov.uk/styles/colour/)
 
 ### npm package
-The other primary way is through what is [published to npm](https://github.com/alphagov/govuk-frontend/tree/master/package).
+The other primary way is through what is [published to npm](/package).
 
 This includes:
 
