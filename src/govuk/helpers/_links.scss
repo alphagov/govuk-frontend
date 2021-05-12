@@ -2,7 +2,7 @@
 /// @group helpers/links
 ////
 
-/// Common link mixin
+/// Common link styles
 ///
 /// Provides the typography and focus state, regardless of link style.
 ///
@@ -21,9 +21,10 @@
   }
 }
 
-/// Link decoration mixin
+/// Link decoration
 ///
-/// Provides the text decoration for links, including any underline offset
+/// Provides the text decoration for links, including thickness and underline
+/// offset. Use this mixin only if you cannot use the `govuk-link-common` mixin.
 ///
 /// @access public
 @mixin govuk-link-decoration {
@@ -40,10 +41,11 @@
   }
 }
 
-/// Link hover decoration mixin
+/// Link hover decoration
 ///
-/// Provides the text decoration for links in their hover state, intended to
-/// be used within a `:hover` pseudo-selector
+/// Provides the text decoration for links in their hover state, for you to use
+/// within a `:hover` pseudo-selector. Use this mixin only if you cannot use the
+/// `govuk-link-common` mixin.
 ///
 /// @access public
 
@@ -53,12 +55,12 @@
   }
 }
 
-/// Default link style mixin
+/// Default link styles
 ///
-/// Provides the default unvisited, visited, hover and active states for links.
+/// Makes links use the default unvisited, visited, hover and active colours.
 ///
-/// If you use this mixin in a component you must also include the
-/// govuk-link-common mixin in order to get the correct focus and hover states.
+/// If you use this mixin in a component, you must also include the
+/// `govuk-link-common` mixin to get the correct focus and hover states.
 ///
 /// @example scss
 ///   .govuk-component__link {
@@ -103,12 +105,13 @@
   }
 }
 
-/// Error link style mixin
+/// Error link styles
 ///
-/// Provides the error unvisited, visited, hover and active states for links.
+/// Makes links use the error colour. The link will darken if it's active or a
+/// user hovers their cursor over it.
 ///
-/// If you use this mixin in a component you must also include the
-/// govuk-link-common mixin in order to get the correct focus and hover states.
+/// If you use this mixin in a component, you must also include the
+/// `govuk-link-common` mixin to get the correct focus and hover states.
 ///
 /// @example scss
 ///   .govuk-component__link {
@@ -150,12 +153,13 @@
   }
 }
 
-/// Success link style mixin
+/// Success link styles
 ///
-/// Provides the success unvisited, visited, hover and active states for links.
+/// Makes links use the success colour. The link will darken if it's active or a
+/// user hovers their cursor over it.
 ///
-/// If you use this mixin in a component you must also include the
-/// govuk-link-common mixin in order to get the correct focus and hover states.
+/// If you use this mixin in a component, you must also include the
+/// `govuk-link-common` mixin to get the correct focus and hover states.
 ///
 /// @example scss
 ///   .govuk-component__link {
@@ -197,13 +201,13 @@
   }
 }
 
-/// Muted style link mixin
+/// Muted link styles
 ///
-/// Used for secondary links on a page - the link will appear in muted colours
-/// regardless of visited state.
+/// Makes links use the secondary text colour. The link will darken if it's
+/// active or a user hovers their cursor over it.
 ///
-/// If you use this mixin in a component you must also include the
-/// govuk-link-common mixin in order to get the correct focus and hover states.
+/// If you use this mixin in a component, you must also include the
+/// `govuk-link-common` mixin to get the correct focus and hover states.
 ///
 /// @example scss
 ///   .govuk-component__link {
@@ -240,13 +244,13 @@
   }
 }
 
-/// Text style link mixin
+/// Text link styles
 ///
-/// Overrides the colour of links to match the text colour. Generally used by
+/// Makes links use the primary text colour, in all states. Use this mixin for
 /// navigation components, such as breadcrumbs or the back link.
 ///
-/// If you use this mixin in a component you must also include the
-/// govuk-link-common mixin in order to get the correct focus and hover states.
+/// If you use this mixin in a component, you must also include the
+/// `govuk-link-common` mixin to get the correct focus and hover states.
 ///
 /// @example scss
 ///   .govuk-component__link {
@@ -283,12 +287,13 @@
   }
 }
 
-/// Inverse style link mixin
+/// Inverse link styles
 ///
-/// Overrides the colour of links to work on a dark background.
+/// Makes links white, in all states. Use this mixin if you're displaying links
+/// against a dark background.
 ///
-/// If you use this mixin in a component you must also include the
-/// govuk-link-common mixin in order to get the correct focus and hover states.
+/// If you use this mixin in a component, you must also include the
+/// `govuk-link-common` mixin to get the correct focus and hover states.
 ///
 /// @example scss
 ///   .govuk-component__link {
@@ -325,17 +330,17 @@
   }
 }
 
-/// No visited state link mixin
+/// Default link styles, without a visited state
 ///
-/// Used in cases where it is not helpful to distinguish between visited and
-/// non-visited links.
+/// Makes links use the default unvisited, hover and active colours, with no
+/// distinct visited state.
 ///
-/// For example, navigation links to pages with dynamic content like admin
-/// dashboards. The content on the page is changing all the time, so the fact
-/// that you’ve visited it before is not important.
+/// Use this mixin when it's not helpful to distinguish between visited and
+/// non-visited links. For example, when you link to pages with
+/// frequently-changing content, such as the dashboard for an admin interface.
 ///
-/// If you use this mixin in a component you must also include the
-/// govuk-link-common mixin in order to get the correct focus and hover states.
+/// If you use this mixin in a component, you must also include the
+/// `govuk-link-common` mixin to get the correct focus and hover states.
 ///
 /// @example scss
 ///   .govuk-component__link {
@@ -369,10 +374,18 @@
   }
 }
 
-/// No underline link mixin
+/// Remove underline from links
 ///
-/// Removes underlines from links (except on hover, or when the link is active).
-/// This does not work in IE8, because IE8 does not support `:not`.
+/// Remove underlines from links unless the link is active or a user hovers
+/// their cursor over it. This has no effect in Internet Explorer 8 (IE8),
+/// because IE8 does not support `:not`.
+///
+/// @example scss
+///   .govuk-component__link {
+///     @include govuk-link-common;
+///     @include govuk-link-style-default;
+///     @include govuk-link-style-no-underline;
+///   }
 ///
 /// @access public
 
@@ -382,10 +395,10 @@
   }
 }
 
-/// Print friendly link mixin
+/// Include link destination when printing the page
 ///
-/// When printing, append the the destination URL to the link text, as long
-/// as the URL starts with either `/`, `http://` or `https://`.
+/// If the user prints the page, add the destination URL after the link text, if
+/// the URL starts with `/`, `http://` or `https://`.
 ///
 /// @access public
 

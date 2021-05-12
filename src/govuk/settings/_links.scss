@@ -4,43 +4,57 @@
 
 /// Enable new link styles
 ///
+/// If enabled, the link styles will change. Underlines will:
+///
+/// - be consistently thinner and a bit further away from the link text
+/// - have a clearer hover state, where the underline gets thicker to make the
+///   link stand out to users
+///
+/// You should only enable the new link styles if both:
+///
+/// - you've made sure your whole service will use the new style consistently
+/// - you do not have links in a multi-column CSS layout - there's [a Chromium
+///   bug that affects links](https://github.com/alphagov/govuk-frontend/issues/2204)
+///
 /// @type Boolean
 /// @access public
 
 $govuk-new-link-styles: false !default;
 
-/// Link underline thickness
+/// Thickness of link underlines
 ///
-/// The default is, for a given link, whichever is thicker:
-///  - an absolute 1px underline
-///  - .0625rem, equivalent to 1px but adjusts with the root font size if the
-///.   user has zoomed in 'text only'
+/// The default will be either:
 ///
-/// Set to false to disable setting a thickness
+///  - 1px
+///  - 0.0625rem, if it's thicker than 1px because the user has changed the text
+///    size in their browser
+///
+/// Set this variable to `false` to avoid setting a thickness.
 ///
 /// @type Number
 /// @access public
 
 $govuk-link-underline-thickness: unquote("max(1px, .0625rem)") !default;
 
-/// Link underline offset.
+/// Offset of link underlines from text baseline
 ///
-/// Set to false to disable setting an offset
+/// Set this variable to `false` to avoid setting an offset.
 ///
 /// @type Number
 /// @access public
 
 $govuk-link-underline-offset: .1em !default;
 
-/// Link hover state underline thickness
+/// Thickness of link underlines in hover state
 ///
-/// The default is, for a given link, whichever is the thicker of:
-///  - an absolute 3px underline
-///  - .1875rem, which equivalent to 3px (at 16px root font size) but adjusts
-///    with the root font size if the user has zoomed in 'text only'
-///  - .12em relative to the link's text size
+/// The default for each link will be the thickest of the following:
 ///
-/// Set to false to disable setting a thickness
+///  - 3px
+///  - 0.1875rem, if it's thicker than 3px because the user has changed the text
+///    size in their browser
+///  - 0.12em (relative to the link's text size)
+///
+/// Set this variable to `false` to avoid setting a thickness.
 ///
 /// @type Number
 /// @access public
