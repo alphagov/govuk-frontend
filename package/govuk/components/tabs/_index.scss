@@ -30,16 +30,11 @@
   }
 
   .govuk-tabs__tab {
+    @include govuk-link-common;
     @include govuk-link-style-default;
 
     display: inline-block;
     margin-bottom: govuk-spacing(2);
-
-    // Focus state for mobile and when JavaScript is disabled
-    // It is removed for JS-enabled desktop styles
-    &:focus {
-      @include govuk-focused-text;
-    }
   }
 
   .govuk-tabs__panel {
