@@ -56,7 +56,7 @@ This was added in [pull request #2213: Add inverse link mixin and modifier class
 
 #### Add links styled as buttons to cookie banners
 
-You can now add links styled as buttons to cookie banners. For example, you can set the **Hide** button to be a link styled as a button that reloads the page. Use this feature if you set non-essential cookies on the server and want to [help users keep their place using progressive enhancement](https://design-system.service.gov.uk/components/cookie-banner/#help-users-keep-their-place-using-progressive-enhancement).
+You can now add links styled as buttons to cookie banners. For example, you can set the **Hide** button to be a link styled as a button that reloads the page. Use this feature if you set non-essential cookies on the server and want to help users keep their place using progressive enhancement.
 
 This feature is enabled by default.
 
