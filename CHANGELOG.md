@@ -2,20 +2,70 @@
 
 ## Unreleased
 
-## New features
+## 3.12.0 (Feature release)
 
-#### Allow users to use cookie banner buttons as links
+### New features
 
-You can now add links styled as buttons to cookie banners.
+#### Links are easier to read and have a clearer hover state (opt-in)
 
-Use this feature only if you need to. For example, you can set the **Hide** button to be a link styled as a button that reloads the page. You might want to do this if the cookie banner needs to work without JavaScript and the **Hide** button does not need to set a cookie, as the user has already accepted or rejected cookies.
+Links now have underlines that are consistently thinner and a bit further away from the link text.
 
-This was added in [pull request #2164: Enable cookie banner to set link styled as a button](https://github.com/alphagov/govuk-frontend/pull/2164)
+Links also have a clearer hover state, where the underline gets thicker to make the link stand out to users.
+
+These changes are an opt-in feature because you may:
+
+- need to make changes to your service to introduce these new link styles consistently
+- want to avoid opting in if you have links within a [multiple-column layout](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Multiple-column_Layout) in your CSS - there is [a Chromium bug that affects such links](https://github.com/alphagov/govuk-frontend/issues/2204)
+
+To enable this feature, set `$govuk-new-link-styles` to `true` before you import GOV.UK Frontend in your Sass:
+
+```
+// application.scss
+$govuk-new-link-styles: true;
+@import "govuk-frontend/all";
+```
+
+If you have created your own link styles, you should review them to ensure their use is consistent across your service.
+
+To make it easier to be consistent in your use of link styles, we’ve also introduced new mixins and modifier classes for:
+
+- removing underlines
+- displaying white text on dark backgrounds
+
+These new link styles will be enabled by default in a future major version of GOV.UK Frontend.
+
+This was added in [pull request #2183: Updates to link styles and link hover states](https://github.com/alphagov/govuk-frontend/pull/2183).
+
+#### Style links to remove underlines
+
+You can now remove underlines from links by using either the:
+- [`govuk-link-style-no-underline` mixin](http://frontend.design-system.service.gov.uk/sass-api-reference/#govuk-link-style-no-underline) in your Sass, or
+- [`govuk-link--no-underline` class](https://design-system.service.gov.uk/styles/typography/#links-without-underlines) in your HTML
+
+An underline still appears when the user hovers their cursor over the link.
+
+This was added in [pull request #2214: Add no-underline mixin and modifier class](https://github.com/alphagov/govuk-frontend/pull/2214).
+
+#### Style links on dark backgrounds
+
+You can now style links on dark backgrounds to use white text colour by using either the:
+- [`govuk-link-style-inverse` mixin](http://frontend.design-system.service.gov.uk/sass-api-reference/#govuk-link-style-inverse) in your Sass, or
+- [`govuk-link--inverse` class](https://design-system.service.gov.uk/styles/typography/#links-on-dark-backgrounds) in your HTML
+
+This was added in [pull request #2213: Add inverse link mixin and modifier class](https://github.com/alphagov/govuk-frontend/pull/2213).
+
+#### Add links styled as buttons to cookie banners
+
+You can now add links styled as buttons to cookie banners. For example, you can set the **Hide** button to be a link styled as a button that reloads the page. Use this feature if you set non-essential cookies on the server and want to [help users keep their place using progressive enhancement](https://design-system.service.gov.uk/components/cookie-banner/#help-users-keep-their-place-using-progressive-enhancement).
+
+This feature is enabled by default.
+
+This was added in [pull request #2164: Enable cookie banner to set link styled as a button](https://github.com/alphagov/govuk-frontend/pull/2164).
 
 ### Fixes
 
-- [#2132: Improve vertical alignment of phase banner tag on mobile devices](https://github.com/alphagov/govuk-frontend/pull/2132) – thanks to [@matthewmascord](https://github.com/matthewmascord) for contributing this.
-- [#2157: Use pointer cursor for 'Menu' button in header](https://github.com/alphagov/govuk-frontend/pull/2157) – thanks to [@MalcolmVonMoJ](https://github.com/MalcolmVonMoJ) for contributing this.
+- [#2132: Improve vertical alignment of phase banner tag on mobile devices](https://github.com/alphagov/govuk-frontend/pull/2132) – thanks to [@matthewmascord](https://github.com/matthewmascord) for contributing this issue.
+- [#2157: Use pointer cursor for 'Menu' button in header](https://github.com/alphagov/govuk-frontend/pull/2157) – thanks to [@MalcolmVonMoJ](https://github.com/MalcolmVonMoJ) for contributing this issue.
 - [#2171: Fix padding on GOV.UK logo affecting hover and focus states](https://github.com/alphagov/govuk-frontend/pull/2171)
 - [#2186: Fix display of warning text in Edge when Windows High Contrast Mode is enabled](https://github.com/alphagov/govuk-frontend/pull/2186)
 - [#2192: Add data-nosnippet to prevent cookie banner text appearing in Google Search snippets](https://github.com/alphagov/govuk-frontend/pull/2192)
