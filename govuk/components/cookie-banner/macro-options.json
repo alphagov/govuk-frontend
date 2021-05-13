@@ -3,7 +3,7 @@
         "name": "ariaLabel",
         "type": "string",
         "required": false,
-        "description": "The text for the `aria-label` which labels the cookie banner region. This region applies to all messages that the cookie banner includes. For example, the cookie message and the replacement message. Defaults to \"Cookie banner\"."
+        "description": "The text for the `aria-label` which labels the cookie banner region. This region applies to all messages that the cookie banner includes. For example, the cookie message and the confirmation message. Defaults to \"Cookie banner\"."
     },
     {
         "name": "hidden",
@@ -27,7 +27,7 @@
         "name": "messages",
         "type": "array",
         "required": true,
-        "description": "The different messages you can pass into the cookie banner. For example, the cookie message and the replacement message.",
+        "description": "The different messages you can pass into the cookie banner. For example, the cookie message and the confirmation message.",
         "params": [
             {
                 "name": "headingText",
@@ -69,13 +69,13 @@
                         "name": "type",
                         "type": "string",
                         "required": false,
-                        "description": "The type of button. Does not apply if you set `href`, which renders a link. You can choose `button` or `submit`."
+                        "description": "The type of button. You can set `button` or `submit`. Set `button` and `href` to render a link styled as a button. If you set `href`, it overrides `submit`."
                     },
                     {
                         "name": "href",
                         "type": "string",
                         "required": false,
-                        "description": "The `href` for a link. If you set `href`, users will see a link instead of a button."
+                        "description": "The `href` for a link. Set `button` and `href` to render a link styled as a button."
                     },
                     {
                         "name": "name",
@@ -107,13 +107,13 @@
                 "name": "hidden",
                 "type": "boolean",
                 "required": false,
-                "description": "Defaults to `false`. If you set it to `true`, the message is hidden. You can use `hidden` for client-side implementations where the replacement message HTML is present, but hidden on the page."
+                "description": "Defaults to `false`. If you set it to `true`, the message is hidden. You can use `hidden` for client-side implementations where the confirmation message HTML is present, but hidden on the page."
             },
             {
                 "name": "role",
                 "type": "string",
                 "required": false,
-                "description": "Set `role` to `alert` on replacement messages to allow assistive tech to automatically read the message. You will also need to move focus to the replacement message using JavaScript you have written yourself."
+                "description": "Set `role` to `alert` on confirmation messages to allow assistive tech to automatically read the message. You will also need to move focus to the confirmation message using JavaScript you have written yourself."
             },
             {
                 "name": "classes",

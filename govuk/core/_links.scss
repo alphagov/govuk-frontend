@@ -27,6 +27,14 @@
     @include govuk-link-style-text;
   }
 
+  .govuk-link--inverse {
+    @include govuk-link-style-inverse;
+  }
+
+  .govuk-link--no-underline {
+    @include govuk-link-style-no-underline;
+  }
+
   .govuk-link--no-visited-state {
     @include govuk-link-style-no-visited-state;
   }
