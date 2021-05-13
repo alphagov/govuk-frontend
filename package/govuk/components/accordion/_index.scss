@@ -1,9 +1,4 @@
 @include govuk-exports("govuk/component/accordion") {
-
-  $govuk-accordion-link-colour: $govuk-link-colour;
-  $govuk-accordion-link-hover-colour: govuk-colour("light-blue");
-  $govuk-accordion-border-width: 3px;
-
   .govuk-accordion {
     @include govuk-responsive-margin(6, "bottom");
   }
@@ -98,17 +93,7 @@
       // Safe area on the right to avoid clashing with icon
       padding-right: 40px;
       border-top: 1px solid $govuk-border-colour;
-      color: $govuk-accordion-link-colour;
       cursor: pointer;
-    }
-
-    // For devices that can't hover such as touch devices,
-    // remove hover state as it can be stuck in that state (iOS).
-    @media (hover: none) {
-      .govuk-accordion__section-header:hover {
-        border-top-color: $govuk-accordion-link-colour;
-        box-shadow: inset 0 $govuk-accordion-border-width 0 0 $govuk-accordion-link-colour;
-      }
     }
 
     // Buttons within the headers don’t need default styling
@@ -119,7 +104,7 @@
       margin-left: 0;
       padding: 0;
       border-width: 0;
-      color: inherit;
+      color: $govuk-link-colour;
       background: none;
       text-align: left;
       cursor: pointer;
@@ -147,7 +132,13 @@
     }
 
     .govuk-accordion__section-button:hover:not(:focus) {
+      color: $govuk-link-hover-colour;
       text-decoration: underline;
+
+      // This needs to come after the text-decoration property otherwise
+      // text-decoration, as a shorthand property, resets it to auto
+      @include govuk-link-hover-decoration;
+      text-underline-offset: $govuk-link-underline-offset;
     }
 
     // For devices that can't hover such as touch devices,
