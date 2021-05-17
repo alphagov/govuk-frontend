@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Fixes
+
+- [#2228: Fix display of checkboxes in Internet Explorer 8](https://github.com/alphagov/govuk-frontend/pull/2228)
+
 ## 3.12.0 (Feature release)
 
 ### New features
