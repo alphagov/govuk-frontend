@@ -25,6 +25,9 @@ const postcsspseudoclasses = require('postcss-pseudo-classes')({
 // Compile CSS and JS task --------------
 // --------------------------------------
 
+// check if destination flag is public (this is the default)
+const isPublic = taskArguments.destination === 'public' || false
+
 // check if destination flag is dist
 const isDist = taskArguments.destination === 'dist' || false
 
@@ -152,12 +155,27 @@ function compileLegacyIE (done) {
   done()
 }
 
+function compileFullPageStyles (done) {
+  const compileFullPageExampleStylesheets = configPaths.fullPageExamples + '**/styles.scss'
+
+  gulp.src(compileFullPageExampleStylesheets)
+    .pipe(plumber(errorHandler))
+    .pipe(sass())
+    .pipe(rename(function (path) {
+      path.basename = path.dirname
+      path.dirname = ''
+    }))
+    .pipe(gulp.dest(taskArguments.destination + '/full-page-examples/'))
+
+  done()
+}
+
 gulp.task('scss:compile', function (done) {
   // Default tasks if compiling for dist
   var tasks = gulp.series(compileStyles, compileOldIE)
 
   if (isPublic) {
-    tasks = gulp.series(compileStyles, compileOldIE, compileLegacy, compileLegacyIE)
+    tasks = gulp.series(compileStyles, compileOldIE, compileLegacy, compileLegacyIE, compileFullPageStyles)
   } else if (!isDist) {
     tasks = gulp.series(compileStyles, compileOldIE, compileLegacy, compileLegacyIE)
   }
