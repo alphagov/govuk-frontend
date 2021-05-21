@@ -54,6 +54,16 @@ module.exports = (options) => {
     next()
   })
 
+  // Ensure robots are still able to crawl the pages.
+  //
+  // This might seem like a mistake, but it's not. If a page is blocked by
+  // robots.txt, the crawler will never see the noindex directive, and so the
+  // page can still appear in search results.
+  app.get('/robots.txt', function (req, res) {
+    res.type('text/plain')
+    res.send('User-agent: *\nAllow: /')
+  })
+
   // Set up middleware to serve static assets
   app.use('/public', express.static(configPaths.public))
 
@@ -194,11 +204,6 @@ module.exports = (options) => {
 
   // Full page example views
   require('./full-page-examples.js')(app)
-
-  app.get('/robots.txt', function (req, res) {
-    res.type('text/plain')
-    res.send('User-agent: *\nDisallow: /')
-  })
 
   return app
 }

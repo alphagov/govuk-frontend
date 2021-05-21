@@ -66,6 +66,15 @@ describe(`http://localhost:${PORT}`, () => {
     })
   })
 
+  describe('/robots.txt', () => {
+    it('should allow crawling by robots', done => {
+      requestPath('/robots.txt', (err, res) => {
+        expect(res.body).toMatch(/^Allow: \/$/m)
+        done(err)
+      })
+    })
+  })
+
   describe('/examples/template-custom', () => {
     const templatePath = '/examples/template-custom'
 
