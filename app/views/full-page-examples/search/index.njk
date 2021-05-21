@@ -18,7 +18,6 @@ notes: >-
   This example merges features seen on GOV.UK news and communication finders and search pages.
 ---
 
-{# This example is based of the live "News and communications" GOV.UK page: https://www.gov.uk/news-and-communications #}
 {% extends "_generic.njk" %}
 
 {% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
@@ -27,12 +26,12 @@ notes: >-
 {% from "checkboxes/macro.njk" import govukCheckboxes %}
 {% from "button/macro.njk" import govukButton %}
 
-{% set pageTitle = "News and communications" %}
+{% set pageTitle = "Search" %}
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block head %}
   {{ super() }}
-  <link rel="stylesheet" href="/public/full-page-examples/news-and-communications.css">
+  <link rel="stylesheet" href="/public/full-page-examples/search.css">
 {% endblock %}
 
 {% block beforeContent %}

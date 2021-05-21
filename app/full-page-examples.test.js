@@ -362,9 +362,9 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
       })
     })
 
-    describe('news-and-communications', () => {
+    describe('search', () => {
       it('should show most wanted results by default', (done) => {
-        requestPath.get('news-and-communications', (err, res) => {
+        requestPath.get('search', (err, res) => {
           const $ = cheerio.load(res.body)
           // Check the results are correct
           expect($.html()).toContain('822,411 results')
@@ -372,7 +372,7 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
         })
       })
       it('should show sorted results when selected', (done) => {
-        requestPath.get('news-and-communications?order=updated-newest', (err, res) => {
+        requestPath.get('search?order=updated-newest', (err, res) => {
           const $ = cheerio.load(res.body)
           // Check the results are correct
           expect($.html()).toContain('142,218 results')
@@ -380,7 +380,7 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
         })
       })
       it('should show organisation results when selected', (done) => {
-        requestPath.get('news-and-communications?order=updated-newest&organisation=hmrc', (err, res) => {
+        requestPath.get('search?order=updated-newest&organisation=hmrc', (err, res) => {
           const $ = cheerio.load(res.body)
           // Check the results are correct
           expect($.html()).toContain('421,182 results')

@@ -504,7 +504,7 @@
     }
   ],
   "page_count": 20,
-  "finder_name": "News and communications",
+  "finder_name": "Search",
   "any_filters_applied": false,
-  "atom_url": "/news-and-communications.atom?order=most-viewed&public_timestamp%5Bfrom%5D=&public_timestamp%5Bto%5D="
+  "atom_url": "/search.atom?order=most-viewed&public_timestamp%5Bfrom%5D=&public_timestamp%5Bto%5D="
 }
