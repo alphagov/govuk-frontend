@@ -39,9 +39,12 @@
     // Add a gap between logo and any product name
     margin-right: govuk-spacing(1);
 
-    // Prevent readability backplate from obscuring underline in Windows
-    // High Contrast Mode
-    forced-color-adjust: none;
+    // Prevent readability backplate from obscuring underline in Windows High
+    // Contrast Mode
+    @media (forced-colors: active) {
+      forced-color-adjust: none;
+      color: linktext;
+    }
 
     // But remove it if there's nothing after the logo to keep hover and focus
     // states neat
