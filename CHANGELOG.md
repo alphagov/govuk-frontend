@@ -7,6 +7,7 @@
 - [#2228: Fix display of checkboxes in Internet Explorer 8](https://github.com/alphagov/govuk-frontend/pull/2228)
 - [#2229: Change approach to fallback PNG in the header to fix blank data URI from triggering Content Security Policy errors](https://github.com/alphagov/govuk-frontend/pull/2229)
 - [#2229: Fix alignment of fallback PNG in the header](https://github.com/alphagov/govuk-frontend/pull/2229)
+- [#2237: Fix GOV.UK logo disappearing on light background in Windows High Contrast Mode](https://github.com/alphagov/govuk-frontend/pull/2237)
 
 ## 3.12.0 (Feature release)
 
