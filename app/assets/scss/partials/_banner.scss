@@ -8,14 +8,6 @@
     color: inherit;
     font-size: inherit;
   }
-
-  .govuk-link {
-    color: govuk-colour("white");
-  }
-
-  .govuk-link:focus {
-    color: $govuk-focus-text-colour;
-  }
 }
 
 .app-banner--warning {
