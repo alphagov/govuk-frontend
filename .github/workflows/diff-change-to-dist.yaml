@@ -23,7 +23,7 @@ jobs:
       - name: Generate diff
         id: diff
         run: |
-          git diff -M1 origin/$GITHUB_BASE_REF -- dist \
+          git diff -M05 origin/$GITHUB_BASE_REF -- dist \
             > $GITHUB_WORKSPACE/dist.diff
       - name: Add comment to PR
         uses: actions/github-script@v3
