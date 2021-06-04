@@ -23,22 +23,21 @@ jobs:
       - name: Generate diff
         id: diff
         run: |
-          diff=$(git diff -M1 origin/$GITHUB_BASE_REF -- dist)
-          # Escape new lines
-          diff="${diff//'%'/'%25'}"
-          diff="${diff//$'\n'/'%0A'}"
-          diff="${diff//$'\r'/'%0D'}"
-          echo "::set-output name=diff::$diff"
+          git diff -M1 origin/$GITHUB_BASE_REF -- dist \
+            > $GITHUB_WORKSPACE/dist.diff
       - name: Add comment to PR
         uses: actions/github-script@v3
-        env:
-          DIFF: ${{ steps.diff.outputs.diff }}
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            const commentText = '## Changes to dist\n' + 
+            const fs = require('fs').promises
+            const diff = await fs.readFile(
+              process.env.GITHUB_WORKSPACE + '/dist.diff', 'utf8'
+            )
+
+            const commentText = '## Changes to dist\n' +
               '```diff\n' +
-              process.env.DIFF +
+              diff +
               '\n```'
 
             github.issues.createComment({
