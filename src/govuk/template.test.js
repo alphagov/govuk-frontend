@@ -165,6 +165,18 @@ describe('Template', () => {
         // updating the hash published in https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#if-your-javascript-isn-t-working-properly
         expect('sha256-' + hash).toEqual('sha256-+6WnXIl4mbFTCARd8N3COQmT3bJJmo32N8q8ZSQAIcU=')
       })
+      it('should not have a nonce attribute by default', () => {
+        const $ = renderTemplate()
+        const scriptTag = $('body > script').first()
+
+        expect(scriptTag.attr('nonce')).toEqual(undefined)
+      })
+      it('should have a nonce attribute when nonce is provided', () => {
+        const $ = renderTemplate({ cspNonce: 'abcdef' })
+        const scriptTag = $('body > script').first()
+
+        expect(scriptTag.attr('nonce')).toEqual('abcdef')
+      })
     })
 
     describe('skip link', () => {
