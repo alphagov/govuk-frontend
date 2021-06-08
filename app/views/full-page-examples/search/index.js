@@ -4,7 +4,7 @@ const { documents } = require('./data.json')
 
 module.exports = (app) => {
   app.get(
-    '/full-page-examples/news-and-communications',
+    '/full-page-examples/search',
     (request, response) => {
       let { order, brexit, organisation } = request.query
       if (!order) {
@@ -21,7 +21,7 @@ module.exports = (app) => {
       // Make the total more readable
       const formattedTotal = randomizedTotal.substring(0, 3) + ',' + randomizedTotal.substring(3)
 
-      response.render('./full-page-examples/news-and-communications/index', {
+      response.render('./full-page-examples/search/index', {
         total: formattedTotal,
         documents: shuffledDocuments,
         order,

@@ -1,0 +1,190 @@
+---
+scenario: >-
+  You would like to find relevant articles by sorting the results and filtering
+  by the organisation(s) that published the articles.
+
+
+  Things to try:
+
+  1. Sort the list of results so that the oldest results are first.
+
+  2. Filter the list of results to show only those published by the Ministry of
+     Defence.
+
+notes: >-
+  The filtering and sorting may not be accurate – this is just a demonstration
+  of the sort of interactions that you would find on a search page.
+
+  This example merges features seen on GOV.UK news and communication finders and search pages.
+---
+
+{% extends "_generic.njk" %}
+
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "input/macro.njk" import govukInput %}
+{% from "select/macro.njk" import govukSelect %}
+{% from "checkboxes/macro.njk" import govukCheckboxes %}
+{% from "button/macro.njk" import govukButton %}
+
+{% set pageTitle = "Search" %}
+{% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
+
+{% block head %}
+  {{ super() }}
+  <link rel="stylesheet" href="/public/full-page-examples/search.css">
+{% endblock %}
+
+{% block beforeContent %}
+    {{ govukBreadcrumbs({
+        items: [
+            {
+                text: "Home",
+                href: "#"
+            }
+        ]
+    }) }}
+{% endblock %}
+
+{% block content %}
+  <h1 class="govuk-heading-xl">{{ pageTitle }}</h1>
+
+  {{ govukInput({
+    label: {
+      text: "Search GOV.UK",
+      classes: "govuk-label--l, govuk-visually-hidden"
+    },
+    id: "search",
+    name: "search",
+    classes: "govuk-!-width-two-thirds",
+    value: "driving"
+  }) }}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+      <ul class="govuk-list govuk-list--spaced app-filter">
+        <li><a class="govuk-link" href="#">Topic</a></li>
+        <li><a class="govuk-link" href="#">Content type</a></li>
+        <li><a class="govuk-link" href="#">Updated</a></li>
+      </ul>
+      <form method="get" novalidate>
+        {{ govukCheckboxes({
+          idPrefix: "organisation",
+          name: "organisation",
+          classes: "govuk-checkboxes--small",
+          fieldset: {
+            legend: {
+              html: "<a class='govuk-link' href=''>Organisation</a>",
+              classes: "app-open-fieldset govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            {
+              value: "hmrc",
+              text: "HM Revenue and Customs (HMRC)",
+              checked: values["organisation"]|length and "hmrc" in values["organisation"]
+            },
+            {
+              value: "employment-tribunal",
+              text: "Employment Tribunal",
+              checked: values["organisation"]|length and "employment-tribunal" in values["organisation"]
+            },
+            {
+              value: "mod",
+              text: "Ministry of Defence",
+              checked: values["organisation"]|length and "mod" in values["organisation"]
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+            text: "Update filters"
+        }) }}
+      </form>
+    </div>
+    <div class="govuk-grid-column-two-thirds">
+      <div class="app-search-results-summary">
+        <h2 class="govuk-heading-s">{{ total }} results</h2>
+        <span class="subscribe-link"><a href="#" class="govuk-link govuk-body-s">Subscribe to feed</a></span>
+      </div>
+        <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible govuk-!-margin-bottom-3">
+        <div class="app-search-result-sort">
+          {{ govukSelect({
+            id: "sort",
+            name: "sort",
+            classes: "app-search-result-sort",
+            label: {
+              text: "Sort by"
+            },
+            items: [
+              {
+                value: "relevance",
+                text: "Relevance"
+              },
+              {
+                value: "updated-new",
+                text: "Updated (newest)",
+                selected: true
+              },
+              {
+                value: "updated-old",
+                text: "Updated (oldest)"
+              }
+            ]
+          }) }}
+        </div>
+        <ul class="govuk-list app-document-list">
+            {% for document in documents %}
+                {% set document = document.document %}
+                <li>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-2">
+                      <a class="govuk-link govuk-link--no-underline" href="https://gov.uk{{ document.link }}">
+                        {{ document.title }}
+                      </a>
+                    </h3>
+                    <p class="govuk-body-s govuk-!-margin-bottom-4">
+                        {{ document.summary }}
+                    </p>
+                    {% if document.children %}
+                      <ul class="govuk-list app-search-result-list__children">
+                        {% for child in document.children %}
+                          <li>
+                            <h4 class="govuk-heading-xs govuk-!-margin-bottom-1 govuk-!-margin-top-1">
+                              <a class="govuk-link govuk-link--no-underline" href="#">
+                                {{ child.title }}
+                              </a>
+                            </h4>
+                            <p class="govuk-body-s">
+                              {{ child.summary }}
+                            </p>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    {% endif %}
+                    {% if document.metadata %}
+                      <ul class="app-metadata-list govuk-!-padding-0">
+                          {% for data in document.metadata %}
+                              <li class="govuk-body govuk-!-font-size-16">
+                                  {% if data['is_text'] %}
+                                      {{ data.value }}
+                                  {% endif %}
+                                  {% if data['is_date'] %}
+                                      Updated: {{ data['human_date'] }}
+                                  {% endif %}
+                              </li>
+                          {% endfor %}
+                      </ul>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+
+        <p class="govuk-body">
+        <a class="app-next-page govuk-link govuk-link--no-underline" href="#">
+          <span class="app-next-page__text govuk-!-font-weight-bold">Next page</span><br>
+          <span class="app-next-page__number govuk-!-font-size-16">2 of 2939</span>
+        </a>
+      </p>
+
+    </div>
+  </div>
+{% endblock %}

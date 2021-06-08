@@ -7,6 +7,43 @@
   "documents": [
     {
       "document": {
+        "title": "Income tax",
+        "link": "/income-tax-rates",
+        "summary": "Income tax is a tax you pay on your earnings - find out about what it is, how you pay and how to check you're paying the right amount using HMRC's tax calculator",
+        "is_historic": false,
+        "government_name": null,
+        "document_index": 1,
+        "children": [
+          {
+            "title": "Overview",
+            "link": "#",
+            "summary": "Income Tax is a tax you pay on your income. You do not have to pay tax on…"
+          },
+          {
+            "title": "How you pay Income Tax",
+            "link": "#",
+            "summary": "Pay As You Earn (PAYE) Most people pay Income Tax through PAYE. This is…"
+          },
+          {
+            "title": "Tax-free and taxable state benefits",
+            "link": "#",
+            "summary": "State benefits that are taxable The most common benefits that you pay…"
+          },
+          {
+            "title": "Work out if you need to pay Income Tax",
+            "link": "#",
+            "summary": "To work out if you should be paying Income Tax, follow these steps. Add up…"
+          },
+          {
+            "title": "Check you're paying the right amount",
+            "link": "#",
+            "summary": "You can see if you’re paying the right amount of Income Tax online. For…"
+          }
+        ]
+      }
+    },
+    {
+      "document": {
         "title": "Update 4: AAIB investigation into the loss of aircraft N264DB",
         "link": "/government/news/aaib-investigation-into-the-loss-of-aircraft-n264db",
         "summary": "The AAIB is investigating the loss of an aircraft north of Guernsey.",
@@ -467,7 +504,7 @@
     }
   ],
   "page_count": 20,
-  "finder_name": "News and communications",
+  "finder_name": "Search",
   "any_filters_applied": false,
-  "atom_url": "/news-and-communications.atom?order=most-viewed&public_timestamp%5Bfrom%5D=&public_timestamp%5Bto%5D="
+  "atom_url": "/search.atom?order=most-viewed&public_timestamp%5Bfrom%5D=&public_timestamp%5Bto%5D="
 }
