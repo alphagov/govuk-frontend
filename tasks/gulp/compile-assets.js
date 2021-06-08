@@ -171,12 +171,12 @@ function compileFullPageStyles (done) {
 
 gulp.task('scss:compile', function (done) {
   // Default tasks if compiling for dist
-  var tasks = gulp.series(compileStyles, compileOldIE)
+  var tasks = gulp.parallel(compileStyles, compileOldIE)
 
   if (isPublic) {
-    tasks = gulp.series(compileStyles, compileOldIE, compileLegacy, compileLegacyIE, compileFullPageStyles)
+    tasks = gulp.parallel(compileStyles, compileOldIE, compileLegacy, compileLegacyIE, compileFullPageStyles)
   } else if (!isDist) {
-    tasks = gulp.series(compileStyles, compileOldIE, compileLegacy, compileLegacyIE)
+    tasks = gulp.parallel(compileStyles, compileOldIE, compileLegacy, compileLegacyIE)
   }
 
   tasks()
