@@ -1,0 +1,1 @@
+Component made to test hide this page, based on code here: https://github.com/alphagov/govuk-design-system/pull/1381/files

@@ -38,6 +38,22 @@ notes: The links to change your answers are not functional.
 {% endblock %}
 
 {% block content %}
+
+<div class="govuk-quick-exit__container govuk-quick-exit__enabled">
+  <div class="govuk-quick-exit__position">
+    <a href="https://www.google.com" id="quick-exit" tabindex="-1" class="govuk-button govuk-button--warning govuk-quick-exit">
+    <strong>Hide this page</strong>
+      <span class="govuk-visually-hidden">Or press escape key to hide this page</span>
+    </a>
+    <p class="govuk-body govuk-quick-exit--info govuk-!-font-size-14">
+      (Or press Esc key)
+    </p>
+  </div>
+  <p class="govuk-button govuk-quick-exit__ie-sizing">
+    <strong>Hide this page</strong>
+  </p>
+</div>
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds-from-desktop">
 
