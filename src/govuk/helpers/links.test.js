@@ -121,7 +121,7 @@ describe('@mixin govuk-link-hover-decoration', () => {
   })
 
   describe('when $govuk-new-link-styles are enabled', () => {
-    it('sets text-decoration-thickness on hover', async () => {
+    it('sets a hover state', async () => {
       const sass = `
         $govuk-new-link-styles: true;
         $govuk-link-hover-underline-thickness: 10px;
@@ -133,7 +133,7 @@ describe('@mixin govuk-link-hover-decoration', () => {
 
       const results = await renderSass({ data: sass, ...sassConfig })
 
-      expect(results.css.toString()).toContain('.foo:hover { text-decoration-thickness: 10px; }')
+      expect(results.css.toString()).toContain('.foo:hover')
     })
 
     describe('when $govuk-link-hover-underline-thickness is falsey', () => {
