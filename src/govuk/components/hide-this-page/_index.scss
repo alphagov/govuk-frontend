@@ -60,14 +60,16 @@
   .js-enabled .govuk-quick-exit__container.govuk-visually-hidden {
     display: block;
 
-    ~.gem-c-cookie-banner__confirmation,
-    .gem-c-cookie-banner {
-      padding-top: 40px;
-    }
+    // Remove things that affect other components
+    // ~.gem-c-cookie-banner__confirmation,
+    // .gem-c-cookie-banner {
+    //   padding-top: 40px;
+    // }
 
-    ~#skiplink-container {
-      padding-top: 40px;
-    }
+    // Remove things that affect other components
+    // ~#skiplink-container {
+    //   padding-top: 40px;
+    // }
   }
 
   .govuk-quick-exit__container.govuk-quick-exit__enabled {
