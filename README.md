@@ -10,6 +10,18 @@ See live examples of GOV.UK Frontend components, and guidance on when to use
 them in your service, in the [GOV.UK Design
 System](https://design-system.service.gov.uk/).
 
+## Government Frontend Survey 2021 📝
+
+We want to find out about which frontend technologies and resources you use to support your project.
+
+[We've run the Government Frontend survey about every 2 years since 2016](https://technology.blog.gov.uk/2019/03/18/learn-the-results-from-the-cross-government-frontend-technology-survey/) and it helps us understand how to best support service teams across government.
+
+We'll share what we learn along with a comparison of our results.
+
+[Fill in the Government Frontend survey by 30 June 2021](https://surveys.publishing.service.gov.uk/s/2021_GovernmentFrontend_Survey/)
+
+This survey is open to anyone that does frontend in government or the public sector, even if it's not their main role, so please share with your wider communities if you can 🙂
+
 ## Contact the team
 
 GOV.UK Frontend is maintained by a team at Government Digital Service. If you want to know more about GOV.UK Frontend, please email the [Design System
