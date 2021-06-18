@@ -2,11 +2,40 @@
 
 ## Unreleased
 
+## 3.13.0 (Feature release)
+
+### New features
+
+#### Add a 'none' option and 'or' divider to checkboxes
+
+You can now add a 'none' option to checkboxes. For example, 'None of the above' or 'None of these options apply to me'.
+
+Use the 'none' option to [allow users to state that none of the checkboxes apply to them](https://design-system.service.gov.uk/components/checkboxes/#add-an-option-for-none-). Otherwise, users would have to work out that they should leave all the checkboxes unticked.
+
+You can now also add an 'or' divider before the 'none' option. Use the 'or' divider to make the 'none' option more visible to users.
+
+This was added in [pull request #2151: Add 'None of the above' and 'or' divider to checkboxes](https://github.com/alphagov/govuk-frontend/pull/2151). Thanks to [@frankieroberto](https://github.com/frankieroberto) for contributing this improvement.
+
+#### Add a `nonce` attribute to inline scripts
+
+If your service has a Content Security Policy (CSP), you can now add a `nonce` attribute to inline scripts within the Nunjucks page template. To do this, set the `cspNonce` Nunjucks variable. However, you should only add this attribute if you're not able to [include the hash for the inline scripts in your CSP](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#if-your-javascript-is-not-working-properly).
+
+Make sure you [understand the security implications of using this attribute](https://www.w3.org/TR/CSP/#security-considerations), as wrong implementation could affect your service’s security.
+
+[Read more about how to configure your CSP to work with GOV.UK Frontend](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#select-and-initialise-part-of-a-page).
+
+This was added in [pull request #2245: Allow the CSP `nonce` attribute to be set on the inline script in the page template](https://github.com/alphagov/govuk-frontend/pull/2245). Thanks to [@natcarey](https://github.com/natcarey) for contributing this issue and its solution.
+
 ### Fixes
 
+We've made the following fixes in [pull request #2229: Change approach to fallback PNG in the header to fix blank data URI from triggering Content Security Policy error](https://github.com/alphagov/govuk-frontend/pull/2229):
+
+- fix blank data URI from triggering CSP error
+- fix alignment of fallback PNG in the header
+
+We’ve also made fixes in the following pull requests:
+
 - [#2228: Fix display of checkboxes in Internet Explorer 8](https://github.com/alphagov/govuk-frontend/pull/2228)
-- [#2229: Change approach to fallback PNG in the header to fix blank data URI from triggering Content Security Policy errors](https://github.com/alphagov/govuk-frontend/pull/2229)
-- [#2229: Fix alignment of fallback PNG in the header](https://github.com/alphagov/govuk-frontend/pull/2229)
 - [#2237: Fix GOV.UK logo disappearing on light background in Windows High Contrast Mode](https://github.com/alphagov/govuk-frontend/pull/2237)
 - [#2251: Disable ink skipping for underlines in hover state](https://github.com/alphagov/govuk-frontend/pull/2251)
 
