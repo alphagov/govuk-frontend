@@ -11,13 +11,6 @@
    aria-describedby – for example hints or error messages -#}
 {% set describedBy = params.fieldset.describedBy if params.fieldset.describedBy else "" %}
 
-{% set isConditional = false %}
-{% for item in params.items %}
-  {% if item.conditional.html %}
-    {% set isConditional = true %}
-  {% endif %}
-{% endfor %}
-
 {#- Capture the HTML so we can optionally nest it in a fieldset -#}
 {% set innerHtml %}
 {% if params.hint %}
@@ -45,7 +38,7 @@
 {% endif %}
   <div class="govuk-radios {%- if params.classes %} {{ params.classes }}{% endif %}{%- if isConditional %} govuk-radios--conditional{% endif -%}"
     {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}
-    {%- if isConditional %} data-module="govuk-radios"{% endif -%}>
+    data-module="govuk-radios">
     {% for item in params.items %}
       {% if item %}
         {#- If the user explicitly sets an id, use this instead of the regular idPrefix -#}
