@@ -47,6 +47,21 @@ describe('Checkboxes', () => {
     expect($items.length).toEqual(2)
   })
 
+  it('render example with a divider and ‘None’ checkbox with exclusive behaviour', () => {
+    const $ = render('checkboxes', examples['with divider and None'])
+
+    const $component = $('.govuk-checkboxes')
+
+    const $divider = $component.find('.govuk-checkboxes__divider').first()
+    expect($divider.text().trim()).toEqual('or')
+
+    const $items = $component.find('.govuk-checkboxes__item')
+    expect($items.length).toEqual(4)
+
+    const $orItemInput = $items.last().find('input').first()
+    expect($orItemInput.attr('data-behaviour')).toEqual('exclusive')
+  })
+
   it('render additional label classes', () => {
     const $ = render('checkboxes', examples['with label classes'])
 
