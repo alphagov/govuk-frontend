@@ -76,7 +76,7 @@ Checkboxes.prototype.syncAllConditionalReveals = function () {
  * @param {HTMLInputElement} $input Checkbox input
  */
 Checkboxes.prototype.syncConditionalRevealWithInputState = function ($input) {
-  var $target = this.$module.querySelector('#' + $input.getAttribute('aria-controls'))
+  var $target = document.getElementById($input.getAttribute('aria-controls'))
 
   if ($target && $target.classList.contains('govuk-checkboxes__conditional')) {
     var inputIsChecked = $input.checked
@@ -99,10 +99,9 @@ Checkboxes.prototype.unCheckAllInputsExcept = function ($input) {
     var hasSameFormOwner = ($input.form === $inputWithSameName.form)
     if (hasSameFormOwner && $inputWithSameName !== $input) {
       $inputWithSameName.checked = false
+      this.syncConditionalRevealWithInputState($inputWithSameName)
     }
-  })
-
-  this.syncAllConditionalReveals()
+  }.bind(this))
 }
 
 /**
@@ -121,10 +120,9 @@ Checkboxes.prototype.unCheckExclusiveInputs = function ($input) {
     var hasSameFormOwner = ($input.form === $exclusiveInput.form)
     if (hasSameFormOwner) {
       $exclusiveInput.checked = false
+      this.syncConditionalRevealWithInputState($exclusiveInput)
     }
-  })
-
-  this.syncAllConditionalReveals()
+  }.bind(this))
 }
 
 /**
