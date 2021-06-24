@@ -1,0 +1,283 @@
+params:
+  - name: items
+    type: array
+    required: true
+    description: Array of tasks within the task list.
+    params:
+      - name: title
+        type: object
+        required: true
+        description: Object containing the main title for the task.
+        params:
+          - name: text
+            type: string
+            required: true
+            description: Text to use within the title. If `html` is provided, the `text` argument will be ignored.
+          - name: html
+            type: string
+            required: true
+            description: HTML to use within the title. If `html` is provided, the `text` argument will be ignored.
+          - name: classes
+            type: string
+            required: false
+            description: Classes to add to the title wrapper.
+      - name: hint
+        type: object
+        required: false
+        description: Object containing a hint for the task.
+        params:
+          - name: text
+            type: string
+            required: true
+            description: Text to use within the hint. If `html` is provided, the `text` argument will be ignored.
+          - name: html
+            type: string
+            required: true
+            description: HTML to use within the hint. If `html` is provided, the `text` argument will be ignored.
+      - name: status
+        type: object
+        required: true
+        description: Object containing the status of the task.
+        params:
+          - name: tag
+            type: object
+            required: false
+            descrption: Object containing the options for a tag that acts as the status for the task.
+            params:
+              - name: text
+                type: string
+                required: true
+                description: Text to use within the tag. If `html` is provided, the `text` argument will be ignored.
+              - name: html
+                type: string
+                required: true
+                description: HTML to use within the tag. If `html` is provided, the `text` argument will be ignored.
+              - name: classes
+                type: string
+                required: false
+                description: Classes to add to the tag.
+          - name: text
+            required: false
+            type: string
+            description: Text to use for the status, as an alternative to using a tag. If `html` or `tag` is provided, the `text` argument will be ignored.
+          - name: html
+            required: false
+            type: string
+            description: HTML to use for the status, as an alternative to using a tag. If `html` or `tag` is provided, the `text` argument will be ignored.
+          - name: classes
+            type: string
+            required: false
+            description: Classes to add to the status container.
+      - name: href
+        type: string
+        required: false
+        description: The value of the link’s `href` attribute for the task list item.
+      - name: classes
+        type: string
+        required: false
+        description: Classes to add to the item `div`.
+  - name: classes
+    type: string
+    required: false
+    description: Classes to add to the `ul` container for the task list.
+  - name: attributes
+    type: object
+    required: false
+    description: HTML attributes (for example data attributes) to add to the `ul` container for the task list.
+  - name: idPrefix
+    type: string
+    required: false
+    description: String to prefix ID for the tag and hint for each task list item. If `idPrefix` is not passed, fallback to using the `task-list` string instead.
+
+examples:
+  - name: default
+    data:
+      idPrefix: 'task-list-example'
+      items:
+        - title:
+            text: Company Directors
+          href: '#'
+          status:
+            text: Completed
+            classes: govuk-tag--black
+
+        - title:
+            text: Registered company details
+          href: '#'
+          status:
+            tag:
+              text: Incomplete
+              classes: govuk-tag--blue
+
+        - title:
+            text: Business plan
+          href: '#'
+          status:
+            tag:
+              text: Incomplete
+              classes: govuk-tag--blue
+
+  - name: example with 3 states
+    data:
+      idPrefix: 'task-list-example'
+      items:
+        - title:
+            text: Company Directors
+          href: '#'
+          status:
+            text: Completed
+        - title:
+            text: Registered company details
+          href: '#'
+          status:
+            tag:
+              text: Not started
+              classes: govuk-tag--light-blue
+        - title:
+            text: Business plan
+          href: '#'
+          status:
+            tag:
+              text: In progress
+              classes: govuk-tag--blue
+        - title:
+            text: Documentation
+          href: '#'
+          status:
+            tag:
+              text: Not started
+              classes: govuk-tag--light-blue
+
+  - name: example with hint text and additional states
+    data:
+      idPrefix: 'task-list-example'
+      items:
+        - title:
+            text: Company Directors
+          href: '#'
+          status:
+            text: Completed
+        - title:
+            text: Registered company details
+          href: '#'
+          status:
+            tag:
+              text: Not started
+              classes: govuk-tag--light-blue
+        - title:
+            text: Business plan
+          href: '#'
+          hint:
+            text: Ensure the plan covers objectives, strategies, sales, marketing and financial forecasts.
+          status:
+            tag:
+              text: Review
+              classes: govuk-tag--pink
+        - title:
+            text: Documentation
+          href: '#'
+          status:
+            tag:
+              text: In progress
+              classes: govuk-tag--blue
+        - title:
+            text: Charitable status
+          href: '#'
+          status:
+            tag:
+              text: Error
+              classes: govuk-tag--red
+        - classes: app-task-list__item--no-link
+          title:
+            text: Payment
+          hint:
+            text: It will cost between £15 and £75
+          status:
+            text: Cannot start yet
+            classes: govuk-task-list__status--cannot-start-yet
+
+  - name: example with all possible colours
+    data:
+      idPrefix: 'task-list-example'
+      items:
+        - title:
+            text: Task A
+          href: '#'
+          status:
+            text: Text colour
+        - title:
+            text: Task B
+          href: '#'
+          status:
+            text: Secondary text colour
+            classes: govuk-task-list__status--cannot-start-yet
+        - title:
+            text: Task C
+          href: '#'
+          status:
+            tag:
+              text: Grey
+              classes: govuk-tag--grey
+        - title:
+            text: Task D
+          href: '#'
+          status:
+            tag:
+              text: Blue
+              classes: govuk-tag--blue
+        - title:
+            text: Task E
+          href: '#'
+          status:
+            tag:
+              text: Light blue
+              classes: govuk-tag--light-blue
+        - title:
+            text: Task F
+          href: '#'
+          status:
+            tag:
+              text: Turquoise
+              classes: govuk-tag--turquoise
+        - title:
+            text: Task G
+          href: '#'
+          status:
+            tag:
+              text: Green
+              classes: govuk-tag--green
+        - title:
+            text: Task H
+          href: '#'
+          status:
+            tag:
+              text: Purple
+              classes: govuk-tag--purple
+        - title:
+            text: Task I
+          href: '#'
+          status:
+            tag:
+              text: Pink
+              classes: govuk-tag--pink
+        - title:
+            text: Task J
+          href: '#'
+          status:
+            tag:
+              text: Red
+              classes: govuk-tag--red
+        - title:
+            text: Task K
+          href: '#'
+          status:
+            tag:
+              text: Orange
+              classes: govuk-tag--orange
+        - title:
+            text: Task L
+          href: '#'
+          status:
+            tag:
+              text: Yellow
+              classes: govuk-tag--yellow
