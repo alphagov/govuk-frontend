@@ -4,6 +4,14 @@
 
 ### New features
 
+#### Task list component added
+
+A new component has been added which creates lists of tasks that users need to complete.
+
+Each task in the list can have a title, status, link and an optional hint. When a link is added, the whole row is clickable.
+
+This change was made in [pull request #2261: Task list component](https://github.com/alphagov/govuk-frontend/pull/2261).
+
 #### Tag design changes
 
 The design of the tag component has changed to improve accessibility and readability.
