@@ -52,6 +52,12 @@
 @mixin govuk-link-hover-decoration {
   @if ($govuk-new-link-styles and $govuk-link-hover-underline-thickness) {
     text-decoration-thickness: $govuk-link-hover-underline-thickness;
+    // Disable ink skipping on underlines on hover. Browsers haven't
+    // standardised on this part of the spec yet, so set both properties
+    -webkit-text-decoration-skip-ink: none;
+            text-decoration-skip-ink: none; // Chromium, Firefox
+    -webkit-text-decoration-skip: none;
+            text-decoration-skip: none; // Safari
   }
 }
 

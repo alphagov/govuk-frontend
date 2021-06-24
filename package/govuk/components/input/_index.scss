@@ -95,11 +95,13 @@
 
   .govuk-input__wrapper {
     display: -webkit-box;
+    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
 
     .govuk-input {
       -webkit-box-flex: 0;
+      -webkit-flex: 0 1 auto;
           -ms-flex: 0 1 auto;
               flex: 0 1 auto;
     }
@@ -149,6 +151,8 @@
     cursor: default;
 
     -webkit-box-flex: 0;
+
+    -webkit-flex: 0 0 auto;
 
         -ms-flex: 0 0 auto;
 

@@ -36,15 +36,19 @@
   .govuk-header__logotype {
     display: inline-block;
 
-    // Add a gap between logo and any product name
+    // Add a gap after the logo in case it's followed by a product name. This
+    // gets removed later if the logotype is a :last-child.
     margin-right: govuk-spacing(1);
 
-    // Prevent readability backplate from obscuring underline in Windows
-    // High Contrast Mode
-    forced-color-adjust: none;
+    // Prevent readability backplate from obscuring underline in Windows High
+    // Contrast Mode
+    @media (forced-colors: active) {
+      forced-color-adjust: none;
+      color: linktext;
+    }
 
-    // But remove it if there's nothing after the logo to keep hover and focus
-    // states neat
+    // Remove the gap after the logo if there's no product name to keep hover
+    // and focus states neat
     &:last-child {
       margin-right: 0;
     }
@@ -62,7 +66,7 @@
     width: 36px;
     height: 32px;
     border: 0;
-    vertical-align: middle;
+    vertical-align: bottom;
   }
 
   .govuk-header__product-name {

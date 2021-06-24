@@ -28,7 +28,9 @@
 
   // Respect 'display cutout' safe area (avoids notches and rounded corners)
   @supports (margin: unquote("max(calc(0px))")) {
+    $gutter-safe-area-right: -webkit-calc(#{$govuk-gutter-half} + env(safe-area-inset-right));
     $gutter-safe-area-right: calc(#{$govuk-gutter-half} + env(safe-area-inset-right));
+    $gutter-safe-area-left: -webkit-calc(#{$govuk-gutter-half} + env(safe-area-inset-left));
     $gutter-safe-area-left: calc(#{$govuk-gutter-half} + env(safe-area-inset-left));
 
     // Use max() to pick largest margin, default or with safe area
@@ -44,7 +46,9 @@
 
     // Respect 'display cutout' safe area (avoids notches and rounded corners)
     @supports (margin: unquote("max(calc(0px))")) {
+      $gutter-safe-area-right: -webkit-calc(#{$govuk-gutter-half} + env(safe-area-inset-right));
       $gutter-safe-area-right: calc(#{$govuk-gutter-half} + env(safe-area-inset-right));
+      $gutter-safe-area-left: -webkit-calc(#{$govuk-gutter-half} + env(safe-area-inset-left));
       $gutter-safe-area-left: calc(#{$govuk-gutter-half} + env(safe-area-inset-left));
 
       // Use max() to pick largest margin, default or with safe area
