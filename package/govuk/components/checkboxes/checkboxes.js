@@ -1111,6 +1111,47 @@ Checkboxes.prototype.syncConditionalRevealWithInputState = function ($input) {
 };
 
 /**
+ * Uncheck other checkboxes
+ *
+ * Find any other checkbox inputs with the same name value, and uncheck them.
+ * This is useful for when a “None of these" checkbox is checked.
+ */
+Checkboxes.prototype.unCheckAllInputsExcept = function ($input) {
+  var allInputsWithSameName = document.querySelectorAll('input[type="checkbox"][name="' + $input.name + '"]');
+
+  nodeListForEach(allInputsWithSameName, function ($inputWithSameName) {
+    var hasSameFormOwner = ($input.form === $inputWithSameName.form);
+    if (hasSameFormOwner && $inputWithSameName !== $input) {
+      $inputWithSameName.checked = false;
+    }
+  });
+
+  this.syncAllConditionalReveals();
+};
+
+/**
+ * Uncheck exclusive inputs
+ *
+ * Find any checkbox inputs with the same name value and the 'exclusive' behaviour,
+ * and uncheck them. This helps prevent someone checking both a regular checkbox and a
+ * "None of these" checkbox in the same fieldset.
+ */
+Checkboxes.prototype.unCheckExclusiveInputs = function ($input) {
+  var allInputsWithSameNameAndExclusiveBehaviour = document.querySelectorAll(
+    'input[data-behaviour="exclusive"][type="checkbox"][name="' + $input.name + '"]'
+  );
+
+  nodeListForEach(allInputsWithSameNameAndExclusiveBehaviour, function ($exclusiveInput) {
+    var hasSameFormOwner = ($input.form === $exclusiveInput.form);
+    if (hasSameFormOwner) {
+      $exclusiveInput.checked = false;
+    }
+  });
+
+  this.syncAllConditionalReveals();
+};
+
+/**
  * Click event handler
  *
  * Handle a click within the $module – if the click occurred on a checkbox, sync
@@ -1121,11 +1162,28 @@ Checkboxes.prototype.syncConditionalRevealWithInputState = function ($input) {
 Checkboxes.prototype.handleClick = function (event) {
   var $target = event.target;
 
-  // If a checkbox with aria-controls, handle click
-  var isCheckbox = $target.getAttribute('type') === 'checkbox';
+  // Ignore clicks on things that aren't checkbox inputs
+  if ($target.type !== 'checkbox') {
+    return
+  }
+
+  // If the checkbox conditionally-reveals some content, sync the state
   var hasAriaControls = $target.getAttribute('aria-controls');
-  if (isCheckbox && hasAriaControls) {
+  if (hasAriaControls) {
     this.syncConditionalRevealWithInputState($target);
+  }
+
+  // No further behaviour needed for unchecking
+  if (!$target.checked) {
+    return
+  }
+
+  // Handle 'exclusive' checkbox behaviour (ie "None of these")
+  var hasBehaviourExclusive = ($target.getAttribute('data-behaviour') === 'exclusive');
+  if (hasBehaviourExclusive) {
+    this.unCheckAllInputsExcept($target);
+  } else {
+    this.unCheckExclusiveInputs($target);
   }
 };
 
