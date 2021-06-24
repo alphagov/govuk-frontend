@@ -103,6 +103,12 @@
                 "isComponent": true
             },
             {
+                "name": "divider",
+                "type": "string",
+                "required": false,
+                "description": "Divider text to separate checkbox items, for example the text \"or\"."
+            },
+            {
                 "name": "checked",
                 "type": "boolean",
                 "required": false,
@@ -119,6 +125,12 @@
                 "type": "string",
                 "required": false,
                 "description": "Provide content for the conditional reveal."
+            },
+            {
+                "name": "behaviour",
+                "type": "string",
+                "required": false,
+                "description": "If set to `exclusive`, implements a \"None of these\" type behaviour via javascript when checkboxes are clicked"
             },
             {
                 "name": "disabled",

@@ -73,47 +73,49 @@
         touch-action: manipulation;
   }
 
-  // [ ] Check box
-  .govuk-checkboxes__label:before {
-    content: "";
-    box-sizing: border-box;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: $govuk-checkboxes-size;
-    height: $govuk-checkboxes-size;
-    border: $govuk-border-width-form-element solid currentColor;
-    background: transparent;
-  }
+  @include govuk-not-ie8 {
+    // [ ] Check box
+    .govuk-checkboxes__label:before {
+      content: "";
+      box-sizing: border-box;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: $govuk-checkboxes-size;
+      height: $govuk-checkboxes-size;
+      border: $govuk-border-width-form-element solid currentColor;
+      background: transparent;
+    }
 
-  // ✔ Check mark
-  //
-  // The check mark is a box with a border on the left and bottom side (└──),
-  // rotated 45 degrees
-  .govuk-checkboxes__label:after {
-    content: "";
-    box-sizing: border-box;
+    // ✔ Check mark
+    //
+    // The check mark is a box with a border on the left and bottom side (└──),
+    // rotated 45 degrees
+    .govuk-checkboxes__label:after {
+      content: "";
+      box-sizing: border-box;
 
-    position: absolute;
-    top: 11px;
-    left: 9px;
-    width: 23px;
-    height: 12px;
+      position: absolute;
+      top: 11px;
+      left: 9px;
+      width: 23px;
+      height: 12px;
 
-    -webkit-transform: rotate(-45deg);
+      -webkit-transform: rotate(-45deg);
 
-        -ms-transform: rotate(-45deg);
+          -ms-transform: rotate(-45deg);
 
-            transform: rotate(-45deg);
-    border: solid;
-    border-width: 0 0 5px 5px;
-    // Fix bug in IE11 caused by transform rotate (-45deg).
-    // See: alphagov/govuk_elements/issues/518
-    border-top-color: transparent;
+              transform: rotate(-45deg);
+      border: solid;
+      border-width: 0 0 5px 5px;
+      // Fix bug in IE11 caused by transform rotate (-45deg).
+      // See: alphagov/govuk_elements/issues/518
+      border-top-color: transparent;
 
-    opacity: 0;
+      opacity: 0;
 
-    background: transparent;
+      background: transparent;
+    }
   }
 
   .govuk-checkboxes__hint {
@@ -141,6 +143,19 @@
 
   .govuk-checkboxes__input:disabled + .govuk-checkboxes__label {
     opacity: .5;
+  }
+
+  // =========================================================
+  // Dividers ('or')
+  // =========================================================
+
+  .govuk-checkboxes__divider {
+    $govuk-divider-size: $govuk-checkboxes-size !default;
+    @include govuk-font($size: 19);
+    @include govuk-text-colour;
+    width: $govuk-divider-size;
+    margin-bottom: govuk-spacing(2);
+    text-align: center;
   }
 
   // =========================================================
