@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- [#2251: Update Accordion Design](https://github.com/alphagov/govuk-frontend/pull/2257)
+
 ### Fixes
 
 We’ve made fixes to GOV.UK Frontend in the following pull requests:
