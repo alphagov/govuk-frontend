@@ -58,20 +58,15 @@ examples:
       rows:
         - title:
             text: Section 1
-          url: 
-            text: '#'
+          href: '#'
           status:
             text: Complete
         - title:
             text: Section 2
-          url: 
-            text: '#'
+          href: '#'
           status:
             text: Incomplete
         - title:
             text: Section 3
-          url:
-            text: ''
           status:
               text: Cannot start yet
-  
