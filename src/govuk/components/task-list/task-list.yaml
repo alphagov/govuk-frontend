@@ -1,0 +1,77 @@
+params:
+- name: rows
+  type: array
+  required: true
+  description: Array of row item objects.
+  params:
+- name: classes
+  type: string
+  required: false
+  description: Classes to add to the row `div`
+- name: title.text
+  type: string
+  required: true
+  description: If `html` is set, this is not required. Text to use within the each title. If `html` is provided, the `text` argument will be ignored.
+- name: title.html
+  type: string
+  required: true
+- name: title.classes
+  type: string
+  required: false
+  description: Classes to add to the title wrapper
+- name: status.text
+  type: string
+  required: true
+  description: If `html` is set, this is not required. Text to use within the each value. If `html` is provided, the `text` argument will be ignored.
+- name: status.html
+  type: string
+  required: true
+  description: If `text` is set, this is not required. HTML to use within the each value. If `html` is provided, the `text` argument will be ignored.
+- name: status.classes
+  type: string
+  required: false
+  description: Classes to add to the status wrapper
+- name: url.text
+  type: string
+  required: false
+  description: If `html` is set, this is not required. Text to use within the each title. If `html` is provided, the `text` argument will be ignored.
+- name: url.html
+  type: string
+  required: false
+  description: If `text` is set, this is not required. HTML to use within the each value. If `html` is provided, the `text` argument will be ignored.
+- name: url.classes
+  type: string
+  required: false
+  description: Classes to add to the actions wrapper
+- name: classes
+  type: string
+  required: false
+  description: Classes to add to the container.
+- name: attributes
+  type: object
+  required: false
+  description: HTML attributes (for example data attributes) to add to the container.
+
+examples:
+  - name: default
+    data:
+      rows:
+        - title:
+            text: Section 1
+          url: 
+            text: '#'
+          status:
+            text: Complete
+        - title:
+            text: Section 2
+          url: 
+            text: '#'
+          status:
+            text: Incomplete
+        - title:
+            text: Section 3
+          url:
+            text: ''
+          status:
+              text: Cannot start yet
+  
