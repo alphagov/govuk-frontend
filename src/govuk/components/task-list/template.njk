@@ -5,10 +5,10 @@
            <span class="app-task-list__task-name">
             {% if urlExists %}
             <a class="govuk-link" href="{{ row.url.text }}">
-              {{ row.title.text | safe if row.title.html else row.title.text }}
+              {{ row.title.html | safe if row.title.html else row.title.text }}
             </a>
             {% else %}
-              {{ row.title.text | safe if row.title.html else row.title.text }}
+              {{ row.title.html | safe if row.title.html else row.title.text }}
             {% endif %}
           </span>
           <span class="govuk-task-list__status">
