@@ -3,7 +3,7 @@
        {% set urlExists = true if row.url.text | length else false %}
         <li class="govuk-task-list__item">
            <span class="app-task-list__task-name">
-            {% if urlExists %} 
+            {% if urlExists %}
             <a href="{{ row.url.text }}">
               {{ row.title.text | safe if row.title.html else row.title.text }}
             </a>
