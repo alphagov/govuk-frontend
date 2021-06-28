@@ -1,0 +1,56 @@
+@include govuk-exports("govuk/component/task-list") {
+  .govuk-task-list {
+    @include govuk-font($size: 19);
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0;
+    list-style-type: none;
+    @include govuk-media-query($from: tablet) {
+      min-width: 550px;
+    }
+  }
+
+  .govuk-task-list__section {
+    display: table;
+    @include govuk-font($size:24, $weight: bold);
+  }
+
+  .govuk-task-list__items {
+    @include govuk-font($size: 19);
+    @include govuk-responsive-margin(9, "bottom");
+    padding-left: 0;
+    list-style: none;
+    @include govuk-media-query($from: tablet) {
+      padding-left: govuk-spacing(6);
+    }
+  }
+
+  .govuk-task-list__item {
+    margin-bottom: 0;
+    padding-top: govuk-spacing(2);
+    padding-bottom: govuk-spacing(2);
+    border-bottom: 1px solid $govuk-border-colour;
+    @include govuk-clearfix;
+  }
+
+  .govuk-task-list__item:first-child {
+    border-top: 1px solid $govuk-border-colour;
+  }
+
+  .govuk-task-list__task-name {
+    display: block;
+    @include govuk-media-query($from: 450px) {
+      float: left;
+    }
+  }
+
+  .govuk-task-list__status {
+    margin-top: govuk-spacing(2);
+    margin-bottom: govuk-spacing(1);
+    @include govuk-media-query($from: 450px) {
+      margin-top: 0;
+      margin-bottom: 0;
+      float: right;
+    }
+  }
+}
