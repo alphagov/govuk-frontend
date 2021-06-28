@@ -1,10 +1,9 @@
 <ul class="govuk-task-list">
       {% for row in params.rows %}
-       {% set urlExists = true if row.url.text | length else false %}
         <li class="govuk-task-list__item">
            <span class="app-task-list__task-name">
-            {% if urlExists %}
-            <a class="govuk-link" href="{{ row.url.text }}">
+            {% if row.href %}
+            <a class="govuk-link" href="{{ row.href }}">
               {{ row.title.html | safe if row.title.html else row.title.text }}
             </a>
             {% else %}
