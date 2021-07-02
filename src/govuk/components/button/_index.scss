@@ -158,10 +158,6 @@
       cursor: default;
     }
 
-    &:focus {
-      outline: none;
-    }
-
     &:active {
       top: 0;
       box-shadow: 0 $button-shadow-size 0 $govuk-button-shadow-colour; // s0
