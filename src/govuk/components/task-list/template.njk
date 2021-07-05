@@ -3,16 +3,21 @@
     <li class="govuk-task-list__item">
       <span class="govuk-task-list__task-name">
         {% if row.href %}
-          <a class="govuk-link" href="{{ row.href }}">
+          <a class="govuk-link" href="{{ row.href }}" aria-describedby="hint status">
             {{ row.title.html | safe if row.title.html else row.title.text }}
           </a>
         {% else %}
           {{ row.title.html | safe if row.title.html else row.title.text }}
           {% endif %}
+        {% if row.hint %}
+          <span id="hint" class="govuk-task-list__hint"> 
+            {{ row.hint.html | safe if row.hint.html else row.hint.text }} 
+          </span>
+        {% endif %}
       </span>
-      <span class="govuk-task-list__status">
+      <span id="status" class="govuk-task-list__status">
         {{ row.status.text }}
-      </span>
+      </span>     
     </li>
   {% endfor %}
 </ul>
