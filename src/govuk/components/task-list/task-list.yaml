@@ -54,11 +54,13 @@ params:
 
 examples:
   - name: default
-    data:
+    data: 
       rows:
         - title:
             text: Section 1
           href: '#'
+          hint: 
+            text: This is a short description of this section
           status:
             text: Complete
         - title:
