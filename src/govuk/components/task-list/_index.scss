@@ -44,6 +44,11 @@
     }
   }
 
+  .govuk-task-list__hint {
+    display: block;
+    color: $govuk-secondary-text-colour;
+  }
+
   .govuk-task-list__status {
     margin-top: govuk-spacing(2);
     margin-bottom: govuk-spacing(1);
