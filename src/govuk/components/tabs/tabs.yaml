@@ -2,15 +2,15 @@ params:
 - name: id
   type: string
   required: false
-  description: This is used for the main component and to compose id attribute for each item.
+  description: This is used for the main component and to compose the ID attribute for each item.
 - name: idPrefix
   type: string
   required: false
-  description: String to prefix id for each tab item if no id is specified on each item
+  description: String to prefix id for each tab item if no id is specified on each item.
 - name: title
   type: string
   required: false
-  description: Title for the tabs table of contents
+  description: Title for the tabs table of contents.
 - name: items
   type: array
   required: true
@@ -19,7 +19,7 @@ params:
   - name: id
     type: string
     required: true
-    description: Specific id attribute for the tab item. If omitted, then `idPrefix` string is required instead.
+    description: Specific ID attribute for the tab item. If omitted, then `idPrefix` string is required instead.
   - name: label
     type: string
     required: true
@@ -320,5 +320,3 @@ examples:
           id: tab-2
           panel:
             html: <p>Panel 2 content</p>
-
-
