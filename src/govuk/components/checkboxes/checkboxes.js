@@ -2,7 +2,7 @@ import '../../vendor/polyfills/Function/prototype/bind'
 // addEventListener, event.target normalization and DOMContentLoaded
 import '../../vendor/polyfills/Event'
 import '../../vendor/polyfills/Element/prototype/classList'
-import { nodeListForEach } from '../../common'
+import { getSelectorForID, nodeListForEach } from '../../common'
 
 function Checkboxes ($module) {
   this.$module = $module
@@ -32,7 +32,7 @@ Checkboxes.prototype.init = function () {
 
     // Skip checkboxes without data-aria-controls attributes, or where the
     // target element does not exist.
-    if (!target || !$module.querySelector('#' + target)) {
+    if (!target || !$module.querySelector(getSelectorForID(target))) {
       return
     }
 
@@ -76,13 +76,17 @@ Checkboxes.prototype.syncAllConditionalReveals = function () {
  * @param {HTMLInputElement} $input Checkbox input
  */
 Checkboxes.prototype.syncConditionalRevealWithInputState = function ($input) {
-  var $target = this.$module.querySelector('#' + $input.getAttribute('aria-controls'))
+  var selector = getSelectorForID($input.getAttribute('aria-controls'))
 
-  if ($target && $target.classList.contains('govuk-checkboxes__conditional')) {
-    var inputIsChecked = $input.checked
+  if (selector) {
+    var $target = this.$module.querySelector(selector)
 
-    $input.setAttribute('aria-expanded', inputIsChecked)
-    $target.classList.toggle('govuk-checkboxes__conditional--hidden', !inputIsChecked)
+    if ($target && $target.classList.contains('govuk-checkboxes__conditional')) {
+      var inputIsChecked = $input.checked
+
+      $input.setAttribute('aria-expanded', inputIsChecked)
+      $target.classList.toggle('govuk-checkboxes__conditional--hidden', !inputIsChecked)
+    }
   }
 }
 

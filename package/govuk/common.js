@@ -33,7 +33,14 @@ function generateUniqueID () {
   })
 }
 
+function getSelectorForID (id) {
+  if (id && id.replace) {
+    return '#' + (id).replace(/([.:\][])/g, '\\$1')
+  }
+}
+
 exports.nodeListForEach = nodeListForEach;
 exports.generateUniqueID = generateUniqueID;
+exports.getSelectorForID = getSelectorForID;
 
 })));

@@ -1028,41 +1028,33 @@ function nodeListForEach (nodes, callback) {
   }
 }
 
+function getSelectorForID (id) {
+  if (id && id.replace) {
+    return '#' + (id).replace(/([.:\][])/g, '\\$1')
+  }
+}
+
 function Radios ($module) {
   this.$module = $module;
   this.$inputs = $module.querySelectorAll('input[type="radio"]');
 }
 
-/**
- * Initialise Radios
- *
- * Radios can be associated with a 'conditionally revealed' content block – for
- * example, a radio for 'Phone' could reveal an additional form field for the
- * user to enter their phone number.
- *
- * These associations are made using a `data-aria-controls` attribute, which is
- * promoted to an aria-controls attribute during initialisation.
- *
- * We also need to restore the state of any conditional reveals on the page (for
- * example if the user has navigated back), and set up event handlers to keep
- * the reveal in sync with the radio state.
- */
 Radios.prototype.init = function () {
   var $module = this.$module;
   var $inputs = this.$inputs;
 
   nodeListForEach($inputs, function ($input) {
-    var target = $input.getAttribute('data-aria-controls');
+    var targetSelector = getSelectorForID($input.getAttribute('data-aria-controls'));
 
     // Skip radios without data-aria-controls attributes, or where the
     // target element does not exist.
-    if (!target || !$module.querySelector('#' + target)) {
+    if (!targetSelector || !$module.querySelector(targetSelector)) {
       return
     }
 
     // Promote the data-aria-controls attribute to a aria-controls attribute
     // so that the relationship is exposed in the AOM
-    $input.setAttribute('aria-controls', target);
+    $input.setAttribute('aria-controls', $input.getAttribute('data-aria-controls'));
     $input.removeAttribute('data-aria-controls');
   });
 
@@ -1101,13 +1093,17 @@ Radios.prototype.syncAllConditionalReveals = function () {
  * @param {HTMLInputElement} $input Radio input
  */
 Radios.prototype.syncConditionalRevealWithInputState = function ($input) {
-  var $target = document.querySelector('#' + $input.getAttribute('aria-controls'));
+  var selectorForID = getSelectorForID($input.getAttribute('aria-controls'));
 
-  if ($target && $target.classList.contains('govuk-radios__conditional')) {
-    var inputIsChecked = $input.checked;
+  if (selectorForID) {
+    var $target = document.querySelector(selectorForID);
 
-    $input.setAttribute('aria-expanded', inputIsChecked);
-    $target.classList.toggle('govuk-radios__conditional--hidden', !inputIsChecked);
+    if ($target && $target.classList.contains('govuk-radios__conditional')) {
+      var inputIsChecked = $input.checked;
+
+      $input.setAttribute('aria-expanded', inputIsChecked);
+      $target.classList.toggle('govuk-radios__conditional--hidden', !inputIsChecked);
+    }
   }
 };
 

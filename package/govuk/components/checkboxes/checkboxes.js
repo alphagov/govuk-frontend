@@ -1028,6 +1028,12 @@ function nodeListForEach (nodes, callback) {
   }
 }
 
+function getSelectorForID (id) {
+  if (id && id.replace) {
+    return '#' + (id).replace(/([.:\][])/g, '\\$1')
+  }
+}
+
 function Checkboxes ($module) {
   this.$module = $module;
   this.$inputs = $module.querySelectorAll('input[type="checkbox"]');
@@ -1056,7 +1062,7 @@ Checkboxes.prototype.init = function () {
 
     // Skip checkboxes without data-aria-controls attributes, or where the
     // target element does not exist.
-    if (!target || !$module.querySelector('#' + target)) {
+    if (!target || !$module.querySelector(getSelectorForID(target))) {
       return
     }
 
@@ -1100,13 +1106,17 @@ Checkboxes.prototype.syncAllConditionalReveals = function () {
  * @param {HTMLInputElement} $input Checkbox input
  */
 Checkboxes.prototype.syncConditionalRevealWithInputState = function ($input) {
-  var $target = this.$module.querySelector('#' + $input.getAttribute('aria-controls'));
+  var selector = getSelectorForID($input.getAttribute('aria-controls'));
 
-  if ($target && $target.classList.contains('govuk-checkboxes__conditional')) {
-    var inputIsChecked = $input.checked;
+  if (selector) {
+    var $target = this.$module.querySelector(selector);
 
-    $input.setAttribute('aria-expanded', inputIsChecked);
-    $target.classList.toggle('govuk-checkboxes__conditional--hidden', !inputIsChecked);
+    if ($target && $target.classList.contains('govuk-checkboxes__conditional')) {
+      var inputIsChecked = $input.checked;
+
+      $input.setAttribute('aria-expanded', inputIsChecked);
+      $target.classList.toggle('govuk-checkboxes__conditional--hidden', !inputIsChecked);
+    }
   }
 };
 

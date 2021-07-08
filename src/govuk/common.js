@@ -26,3 +26,9 @@ export function generateUniqueID () {
     return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16)
   })
 }
+
+export function getSelectorForID (id) {
+  if (id && id.replace) {
+    return '#' + (id).replace(/([.:\][])/g, '\\$1')
+  }
+}

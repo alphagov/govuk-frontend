@@ -86,6 +86,17 @@ describe('Radios with conditional reveals', () => {
       const isExpanded = await waitForVisibleSelector('.govuk-radios__item:first-child .govuk-radios__input[aria-expanded=true]')
       expect(isExpanded).toBeTruthy()
     })
+    it('indicates when conditional content is collapsed or revealed with all special chars in the ID', async () => {
+      await goToAndGetComponent('radios', 'with-conditional-items-with-all-special-chars-in-id')
+
+      const isNotExpanded = await waitForVisibleSelector('.govuk-radios__item:first-child .govuk-radios__input[aria-expanded=false]')
+      expect(isNotExpanded).toBeTruthy()
+
+      await page.click('.govuk-radios__item:first-child .govuk-radios__input')
+
+      const isExpanded = await waitForVisibleSelector('.govuk-radios__item:first-child .govuk-radios__input[aria-expanded=true]')
+      expect(isExpanded).toBeTruthy()
+    })
     it('toggles the conditional content when clicking an input', async () => {
       const $ = await goToAndGetComponent('radios', 'with-conditional-items')
       const $component = $('.govuk-radios')

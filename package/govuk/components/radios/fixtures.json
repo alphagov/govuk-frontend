@@ -323,6 +323,50 @@
             "hidden": false
         },
         {
+            "name": "with conditional items with all special chars in id",
+            "options": {
+                "idPrefix": "with-conditional-items-with-all-special-chars-in-id",
+                "name": "with-conditional-items-with-all-special-chars-in-id",
+                "fieldset": {
+                    "legend": {
+                        "text": "How do you want to be contacted?"
+                    }
+                },
+                "items": [
+                    {
+                        "value": "email",
+                        "text": "Email",
+                        "id": "option-1:choice.condition[email]",
+                        "conditional": {
+                            "html": "<label class=\"govuk-label\" for=\"context-email\">Email address</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"context-email\" type=\"text\" id=\"context-email\">\n"
+                        }
+                    },
+                    {
+                        "value": "phone",
+                        "text": "Phone",
+                        "id": "option-1:choice.condition[phone]",
+                        "conditional": {
+                            "html": "<label class=\"govuk-label\" for=\"contact-phone\">Phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"contact-phone\" type=\"text\" id=\"contact-phone\">\n"
+                        }
+                    },
+                    {
+                        "value": "text",
+                        "text": "Text message",
+                        "id": "option-1:choice.condition[text]",
+                        "conditional": {
+                            "html": "<label class=\"govuk-label\" for=\"contact-text-message\">Mobile phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"contact-text-message\" type=\"text\" id=\"contact-text-message\">\n"
+                        }
+                    },
+                    {
+                        "value": "none",
+                        "text": "None of the above"
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-form-group\">\n\n  <fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    How do you want to be contacted?\n  \n  </legend>\n  \n\n  <div class=\"govuk-radios govuk-radios--conditional\" data-module=\"govuk-radios\">\n    \n      \n        \n        \n        <div class=\"govuk-radios__item\">\n          <input class=\"govuk-radios__input\" id=\"option-1:choice.condition[email]\" name=\"with-conditional-items-with-all-special-chars-in-id\" type=\"radio\" value=\"email\" data-aria-controls=\"conditional-option-1:choice.condition[email]\">\n          <label class=\"govuk-label govuk-radios__label\" for=\"option-1:choice.condition[email]\">\n        Email\n      </label>\n          \n        </div>\n        \n          <div class=\"govuk-radios__conditional govuk-radios__conditional--hidden\" id=\"conditional-option-1:choice.condition[email]\">\n            <label class=\"govuk-label\" for=\"context-email\">Email address</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"context-email\" type=\"text\" id=\"context-email\">\n\n          </div>\n        \n        \n      \n    \n      \n        \n        \n        <div class=\"govuk-radios__item\">\n          <input class=\"govuk-radios__input\" id=\"option-1:choice.condition[phone]\" name=\"with-conditional-items-with-all-special-chars-in-id\" type=\"radio\" value=\"phone\" data-aria-controls=\"conditional-option-1:choice.condition[phone]\">\n          <label class=\"govuk-label govuk-radios__label\" for=\"option-1:choice.condition[phone]\">\n        Phone\n      </label>\n          \n        </div>\n        \n          <div class=\"govuk-radios__conditional govuk-radios__conditional--hidden\" id=\"conditional-option-1:choice.condition[phone]\">\n            <label class=\"govuk-label\" for=\"contact-phone\">Phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"contact-phone\" type=\"text\" id=\"contact-phone\">\n\n          </div>\n        \n        \n      \n    \n      \n        \n        \n        <div class=\"govuk-radios__item\">\n          <input class=\"govuk-radios__input\" id=\"option-1:choice.condition[text]\" name=\"with-conditional-items-with-all-special-chars-in-id\" type=\"radio\" value=\"text\" data-aria-controls=\"conditional-option-1:choice.condition[text]\">\n          <label class=\"govuk-label govuk-radios__label\" for=\"option-1:choice.condition[text]\">\n        Text message\n      </label>\n          \n        </div>\n        \n          <div class=\"govuk-radios__conditional govuk-radios__conditional--hidden\" id=\"conditional-option-1:choice.condition[text]\">\n            <label class=\"govuk-label\" for=\"contact-text-message\">Mobile phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"contact-text-message\" type=\"text\" id=\"contact-text-message\">\n\n          </div>\n        \n        \n      \n    \n      \n        \n        \n        <div class=\"govuk-radios__item\">\n          <input class=\"govuk-radios__input\" id=\"with-conditional-items-with-all-special-chars-in-id-4\" name=\"with-conditional-items-with-all-special-chars-in-id\" type=\"radio\" value=\"none\">\n          <label class=\"govuk-label govuk-radios__label\" for=\"with-conditional-items-with-all-special-chars-in-id-4\">\n        None of the above\n      </label>\n          \n        </div>\n        \n        \n      \n    \n  </div>\n  \n\n</fieldset>\n\n\n</div>",
+            "hidden": false
+        },
+        {
             "name": "inline with conditional items",
             "options": {
                 "classes": "govuk-radios--inline",

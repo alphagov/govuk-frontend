@@ -86,6 +86,17 @@ describe('Checkboxes with conditional reveals', () => {
       const isExpanded = await waitForVisibleSelector('.govuk-checkboxes__item:first-child .govuk-checkboxes__input[aria-expanded=true]')
       expect(isExpanded).toBeTruthy()
     })
+    it('indicates when conditional content is collapsed or revealed with all special chars in the ID', async () => {
+      await goToAndGetComponent('checkboxes', 'with-conditional-items-with-all-special-chars-in-id')
+
+      const isNotExpanded = await waitForVisibleSelector('.govuk-checkboxes__item:first-child .govuk-checkboxes__input[aria-expanded=false]')
+      expect(isNotExpanded).toBeTruthy()
+
+      await page.click('.govuk-checkboxes__item:first-child .govuk-checkboxes__input')
+
+      const isExpanded = await waitForVisibleSelector('.govuk-checkboxes__item:first-child .govuk-checkboxes__input[aria-expanded=true]')
+      expect(isExpanded).toBeTruthy()
+    })
     it('toggles the conditional content when clicking an input', async () => {
       const $ = await goToAndGetComponent('checkboxes', 'with-conditional-items')
       const $component = $('.govuk-checkboxes')
