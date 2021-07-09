@@ -8,6 +8,7 @@ We’ve made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#2264: Improve focus state for radio and checkbox controls in forced color mode (for example Windows High Contrast Mode)](https://github.com/alphagov/govuk-frontend/pull/2264) – thanks to [@adamliptrot-oc](https://github.com/adamliptrot-oc) for reporting this issue.
 - [#2265: Don’t remove focus outline from disabled link buttons in forced color mode](https://github.com/alphagov/govuk-frontend/pull/2265)
+- [#2273: Fix invisible footer OGL logo in forced color mode](https://github.com/alphagov/govuk-frontend/pull/2273) – thanks to [@oscarduignan](https://github.com/oscarduignan) for reporting this issue.
 
 ## 3.13.0 (Feature release)
 
