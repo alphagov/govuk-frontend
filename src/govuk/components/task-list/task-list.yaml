@@ -60,7 +60,7 @@ examples:
         - title:
             text: Section 1
           href: '#'
-          hint: 
+          hint:
             text: This is a short description of this section
           status:
             text: Complete
