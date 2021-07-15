@@ -54,7 +54,8 @@ params:
 
 examples:
   - name: default
-    data: 
+    data:
+      idPrefix: "task-list-example"
       rows:
         - title:
             text: Section 1
