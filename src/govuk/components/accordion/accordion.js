@@ -3,9 +3,9 @@
   Accordion
 
   This allows a collection of sections to be collapsed by default,
-  showing only their headers. Sections can be exanded or collapsed
-  individually by clicking their headers. An "Open all" button is
-  also added to the top of the accordion, which switches to "Close all"
+  showing only their headers. Sections can be expanded or collapsed
+  individually by clicking their headers. An "Show all sections" button is
+  also added to the top of the accordion, which switches to "Hide all sections"
   when all the sections are expanded.
 
   The state of each section is saved to the DOM via the `aria-expanded`
@@ -54,14 +54,14 @@ Accordion.prototype.init = function () {
 
   this.initSectionHeaders()
 
-  // See if "Open all" button text should be updated
+  // See if "Show all sections" button text should be updated
   var areAllSectionsOpen = this.checkIfAllSectionsOpen()
   this.updateOpenAllButton(areAllSectionsOpen)
 }
 
 // Initialise controls and set attributes
 Accordion.prototype.initControls = function () {
-  // Create "Open all" button and set attributes
+  // Create "Show all" button and set attributes
   this.$openAllButton = document.createElement('button')
   this.$openAllButton.setAttribute('type', 'button')
   this.$openAllButton.innerHTML = 'Open all <span class="govuk-visually-hidden">sections</span>'
@@ -199,7 +199,7 @@ Accordion.prototype.setExpanded = function (expanded, $section) {
   var $button = $section.querySelector('.' + this.sectionButtonClass)
   $button.setAttribute('aria-expanded', expanded)
 
-  // Swap icon, change class
+  // Swap icon, toggle class
   if (expanded) {
     $section.classList.add(this.sectionExpandedClass)
     $icon.classList.remove(this.downChevronIconClass)
@@ -229,7 +229,7 @@ Accordion.prototype.checkIfAllSectionsOpen = function () {
   return areAllSectionsOpen
 }
 
-// Update "Open all" button
+// Update "Show all sections" button
 Accordion.prototype.updateOpenAllButton = function (expanded) {
   var newButtonText = expanded ? 'Close all' : 'Open all'
   newButtonText += '<span class="govuk-visually-hidden"> sections</span>'
@@ -258,7 +258,7 @@ var helper = {
 // Set the state of the accordions in sessionStorage
 Accordion.prototype.storeState = function ($section) {
   if (this.browserSupportsSessionStorage) {
-    // We need a unique way of identifying each content in the accordion. Since
+    // We need a unique way of identifying each content in the Accordion. Since
     // an `#id` should be unique and an `id` is required for `aria-` attributes
     // `id` can be safely used.
     var $button = $section.querySelector('.' + this.sectionButtonClass)
