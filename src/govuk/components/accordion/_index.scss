@@ -341,4 +341,19 @@
         }
       }
     }
+
+    // For devices that can't hover such as touch devices,
+    // remove hover state as it can be stuck in that state (iOS).
+    @media (hover: none) {
+      .govuk-accordion__section-header:hover {
+        border-top-color: $govuk-border-colour;
+
+        box-shadow: inset 0 $govuk-accordion-border-width 0 0 $govuk-link-colour;
+
+        .govuk-accordion__section-button {
+          border-top-color: $govuk-border-colour;
+        }
+      }
+    }
+  }
 }
