@@ -27,15 +27,18 @@ function Accordion ($module) {
   this.browserSupportsSessionStorage = helper.checkForSessionStorage()
 
   this.controlsClass = 'govuk-accordion__controls'
-  this.openAllClass = 'govuk-accordion__open-all'
-  this.iconClass = 'govuk-accordion__icon'
+  this.openAllClass = 'govuk-accordion__show-all'
+  this.openAllTextClass = 'govuk-accordion__show-all-text'
 
   this.sectionHeaderClass = 'govuk-accordion__section-header'
-  this.sectionHeaderFocusedClass = 'govuk-accordion__section-header--focused'
   this.sectionHeadingClass = 'govuk-accordion__section-heading'
+  this.sectionHeadingClassFocusWrapper = 'govuk-accordion__section-heading-focus-wrapper'
   this.sectionSummaryClass = 'govuk-accordion__section-summary'
   this.sectionButtonClass = 'govuk-accordion__section-button'
   this.sectionExpandedClass = 'govuk-accordion__section--expanded'
+  this.sectionInnerContent = 'govuk-accordion__section-content'
+  this.sectionShowHideToggleClass = 'govuk-accordion__section-toggle'
+  this.sectionShowHideTextClass = 'govuk-accordion__section-toggle-text'
   this.upChevronIconClass = 'govuk-accordion-nav__chevron'
   this.downChevronIconClass = 'govuk-accordion-nav__chevron--down'
 }
