@@ -275,4 +275,36 @@
     .govuk-accordion__section-toggle-text {
       margin-left: 5px;
     }
+
+    // High contrast / user colour adjustments
+    // When adjustments are active the inner button content is not visible.
+    // On hover add underline to toggle text to add extra affordance as icon colour changes on pseudo element are not respected.
+    // On focus add transparency to background so content is visible
+    @media screen and (forced-colors: active), (-ms-high-contrast: active) {
+      .govuk-accordion__section-button:hover,
+      .govuk-accordion__show-all:hover {
+        background: transparent;
+
+        .govuk-accordion-nav__chevron {
+          background-color: transparent;
+        }
+
+        .govuk-accordion__show-all-text,
+        .govuk-accordion__section-toggle {
+          text-decoration: underline;
+          text-decoration-thickness: $govuk-header-link-underline-thickness;
+        }
+      }
+
+      .govuk-accordion__show-all:focus,
+      .govuk-accordion__section-button:focus {
+        .govuk-accordion__section-heading-focus-wrapper,
+        .govuk-accordion__section-summary,
+        .govuk-accordion__section-toggle,
+        .govuk-accordion-nav__chevron {
+          background: transparent;
+          background-color: transparent;
+        }
+      }
+    }
 }
