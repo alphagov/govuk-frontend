@@ -19,7 +19,17 @@ In your project folder, run `npm test`.
 
 Fix any CSS or JavaScript style errors that the linting tests report.
 
-## 2. Check your changes in the ‘review app’
+## 2. Fix any invalid HTML
+
+To check whether your HTML markup is valid, [check your page with W3C's markup validator](https://validator.w3.org/).
+
+If you can, fix any errors or warnings the validator reports.
+
+You should not need to fix any [known issues with our components](https://github.com/alphagov/govuk-frontend/issues/1280#issuecomment-509588851) that the validator reports.
+
+If you need help with fixing an error or a warning, let us know in your pull request or [contact us](https://design-system.service.gov.uk/#support).
+
+## 3. Check your changes in the ‘review app’
 
 In your project folder, run `npm start`, then go to [http://localhost:3000/]([http://localhost:3000/]) in your browser to open the 'review app'.
 
@@ -37,22 +47,22 @@ You should add an example to the review app if the existing examples do not refl
 
 If you've created a new component, create a new `src/govuk/<COMPONENT>/<COMPONENT>.yaml` file instead, where `<COMPONENT>` is the name of the component you've created.
 
-## 3. Test in supported browsers and assistive technology
+## 4. Test in supported browsers and assistive technology
 
 You should test that your contribution works:
 
-- in [recommended browsers](https://www.gov.uk/service-manual/technology/designing-for-different-browsers-and-devices#browsers-to-test-in)
-- with [recommended assistive technologies](https://www.gov.uk/service-manual/technology/testing-with-assistive-technologies#what-to-test)
 - in [Internet Explorer 8](https://frontend.design-system.service.gov.uk/supporting-ie8/), 9 and 10 - components do not need to look perfect
+- in [recommended browsers](https://www.gov.uk/service-manual/technology/designing-for-different-browsers-and-devices#browsers-to-test-in)
 - when your users [override colours in Windows, Firefox and Chrome](https://accessibility.blog.gov.uk/2018/08/01/supporting-users-who-change-colours-on-gov-uk/)
+- with [recommended assistive technologies](https://www.gov.uk/service-manual/technology/testing-with-assistive-technologies#what-to-test)
 
-## 4. Run the automated tests
+## 5. Run the automated tests
 
 In your project folder, run `npm test` to run the automated tests, including linting.
 
 If a test fails, you should check your code for any errors, then update any tests you need to.
 
-## 5. Write new tests
+## 6. Write new tests
 
 You should write new tests if you’ve created a new component, or changed the way a component works by:
 
@@ -90,7 +100,7 @@ Update or add tests in the `.test.js` file that matches the name of the `.scss` 
 
 For example, if you updated a mixin in `src/govuk/helpers/_colour.scss`, update or add tests in `src/govuk/helpers/_colour.test.js`.
 
-## 6. Update the snapshot tests
+## 7. Update the snapshot tests
 
 If your component uses another component, one of the [Jest snapshot tests](https://jestjs.io/docs/en/snapshot-testing) may fail. Snapshot tests compare a component's current markup with a previously stored version.
 
@@ -103,7 +113,7 @@ If a snapshot test fails, follow these steps.
 
 Where `<COMPONENT>` is the name of the component you've changed.
 
-## 7. Tell us what you’ve tested and checked
+## 8. Tell us what you’ve tested and checked
 
 When you create the pull request for your contributions, list what you’ve tested and checked in the pull request description.
 
