@@ -65,7 +65,7 @@ If you get a warning from a linter or accessibility checker, check our list of [
 
 To be notified when there’s a new release, you can either:
 
-- [watch the govuk-frontend Github repository](https://help.github.com/en/articles/watching-and-unwatching-repositories)
+- [watch the govuk-frontend Github repository](https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/setting-up-notifications/configuring-notifications#configuring-your-watch-settings-for-an-individual-repository)
 - join the [#govuk-design-system channel on cross-government Slack](https://ukgovernmentdigital.slack.com/app_redirect?channel=govuk-design-system)
 
 Find out how to [update with npm](https://frontend.design-system.service.gov.uk/updating-with-npm/).
