@@ -39,6 +39,10 @@
         border-width: $govuk-border-width-form-element * 2;
       }
     }
+
+    &::-webkit-autofill::first-line {
+      @include govuk-font($size: 19);
+    }
   }
 
   .govuk-input::-webkit-outer-spin-button,
