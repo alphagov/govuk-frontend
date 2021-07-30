@@ -130,7 +130,7 @@
 
     // When in an explicit forced-color mode, we can use the Highlight system
     // color for the outline to better match focus states of native controls
-    @media screen and (forced-colors: active) {
+    @media screen and (forced-colors: active), (-ms-high-contrast: active) {
       outline-color: Highlight;
     }
 
