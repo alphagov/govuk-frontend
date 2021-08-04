@@ -21,13 +21,20 @@ Fix any CSS or JavaScript style errors that the linting tests report.
 
 ## 2. Fix any invalid HTML
 
-To check whether your HTML markup is valid, [check your page with W3C's markup validator](https://validator.w3.org/).
+To make sure your HTML markup is valid, [check your page with W3C's markup validator](https://validator.w3.org/).
 
-If you can, fix any errors or warnings the validator reports.
+You should also check your HTML markup is valid after JavaScript has modified it. To make sure, [check your page with W3C's 'Check serialized DOM of current page’ bookmarklet](https://validator.w3.org/nu/about.html#extras).
 
-You should not need to fix any [known issues with our components](https://github.com/alphagov/govuk-frontend/issues/1280#issuecomment-509588851) that the validator reports.
+You should use the bookmarklet if:
 
-If you need help with fixing an error or a warning, let us know in your pull request or [contact us](https://design-system.service.gov.uk/#support).
+- your page has a lot of JavaScript
+- you can only check your page when you've logged in to a site
+
+If you can, fix any errors or warnings reported by either the validator or bookmarklet.
+
+You do not need to fix any [known issues with our components](https://github.com/alphagov/govuk-frontend/issues/1280#issuecomment-509588851) reported by either the validator or bookmarklet.
+
+If you need help with fixing an error or a warning, leave a note in your pull request or [contact the Design System team](https://design-system.service.gov.uk/#support).
 
 ## 3. Check your changes in the ‘review app’
 
