@@ -157,7 +157,23 @@ Accordion.prototype.initHeaderAttributes = function ($headerWrapper, index) {
 
   // If summary content exists add to DOM in correct order
   if (typeof ($summary) !== 'undefined' && $summary !== null) {
-    $button.setAttribute('aria-describedby', this.moduleId + '-summary-' + (index + 1))
+    // Create new element, in order to swap the summary from div to span as the summary element is with a button
+    var $summarySpan = document.createElement('span')
+
+    // Get original attributes, and pass them to the replacement
+    for (var j = 0, l = $summary.attributes.length; j < l; ++j) {
+      var nodeName = $summary.attributes.item(j).nodeName
+      var nodeValue = $summary.attributes.item(j).nodeValue
+      $summarySpan.setAttribute(nodeName, nodeValue)
+    }
+
+    // Persist contents
+    $summarySpan.innerHTML = $summary.innerHTML
+
+    // Switch summary from div to span
+    $summary.parentNode.replaceChild($summarySpan, $summary)
+
+    $button.appendChild($summarySpan)
   }
 
   $button.appendChild($showIcons)
