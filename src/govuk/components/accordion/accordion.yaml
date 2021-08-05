@@ -85,7 +85,30 @@ examples:
       - heading:
          text: Test 2
         summary:
-          html: <span class="govuk-!-font-weight-regular">Additional description</span>
+          html: <span class="govuk-!-font-weight-regular">Additional description (wrapped in span)</span>
+        content:
+          html: |
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Example item 2</li>
+            </ul>
+
+- name: with additional Content & descriptions
+  data:
+    id: with-descriptions-and-longer-content
+    items:
+      - heading:
+          text: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis tortor porttitor.
+        summary:
+          text: Etiam diam dui, tempus ut pharetra in, aliquet non dui. Nunc pulvinar maximus tortor, ac finibus augue congue vitae. Donec sed cursus lorem.
+        content:
+          html: |
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Example item 1</li>
+            </ul>
+      - heading:
+         text: Praesent faucibus leo feugiat libero pharetra lacinia. Aliquam aliquet ante vitae mollis vestibulum. 
+        summary:
+          html: <span class="govuk-!-font-weight-regular">Maecenas nec <abbr>est</abbr> sapien<sup>1</sup>. Etiam varius luctus mauris non porttitor. </span>
         content:
           html: |
             <ul class="govuk-list govuk-list--bullet">
