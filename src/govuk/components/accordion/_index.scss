@@ -84,12 +84,12 @@
         }
 
         .govuk-accordion-nav__chevron {
-          border-color: $govuk-accordion-base-colour;
+          color: $govuk-accordion-base-colour;
           background: $govuk-accordion-base-colour;
         }
 
         .govuk-accordion-nav__chevron:after {
-          border-color: $govuk-accordion-hover-colour;
+          color: $govuk-accordion-hover-colour;
         }
       }
 
@@ -101,7 +101,7 @@
         }
 
         .govuk-accordion-nav__chevron:after {
-          border-color: $govuk-accordion-icon-focus-colour;
+          color: $govuk-accordion-icon-focus-colour;
         }
       }
     }
@@ -218,7 +218,7 @@
         }
 
         .govuk-accordion-nav__chevron:after {
-          border-color: $govuk-accordion-hover-colour;
+          color: $govuk-accordion-hover-colour;
         }
       }
 
@@ -234,12 +234,12 @@
         }
 
         .govuk-accordion-nav__chevron {
-          border-color: $govuk-accordion-base-colour;
+          color: $govuk-accordion-base-colour;
           background: $govuk-accordion-base-colour;
         }
 
         .govuk-accordion-nav__chevron:after {
-          border-color: $govuk-accordion-icon-focus-colour;
+          color: $govuk-accordion-icon-focus-colour;
         }
       }
 
