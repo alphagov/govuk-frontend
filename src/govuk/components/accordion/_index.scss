@@ -58,8 +58,8 @@
       position: relative;
       z-index: 1;
 
-      margin: 0 0 govuk-spacing(2) 0;
-      padding: 7px 2px 7px 0;
+      margin-bottom: 14px;
+      padding: 5px 2px 3px 0;
 
       border-width: 0;
 
@@ -78,6 +78,8 @@
       &:hover {
         color: $govuk-accordion-base-colour;
         background: $govuk-accordion-hover-colour;
+        // Mimic the focus styles so the height is the same changing from hover to focused
+        box-shadow: 0 -2px $govuk-accordion-hover-colour, 0 4px $govuk-accordion-hover-colour;
 
         .govuk-accordion__section-toggle-text {
           color: $govuk-accordion-base-colour;
