@@ -250,11 +250,45 @@
       }
     }
 
+    // NVDA fix
+    //
+    // NVDA treats any form of line break as a different announcement landmark and will therefore announce it separately.
+    // As you move through NVDA using arrow keys, this announces each element in turn (rather than a whole block) which could cause confusion for users
+    // This line break can come from both the semantics via br tags or two block-level tags, or via CSS using display: block or display: table
+    // In this case it was the span(s) within the button being styled using display: block.
+    // This fix forces a visual break but bypasses NVDA's line break interpreter, thus causing the accordion title and the inner Content to be read as a single sentence
+    //
+    // Consider NVDA output before:
+    // clickable  heading    level 2  button  collapsed    [Heading copy],Show
+    // heading    level 2  button  collapsed    this section
+    //
+    // After:
+    // clickable  heading    level 2  button  collapsed    [Heading copy] , Showthis section
+    //
+    // Additional details and testing videos can be found here:
+    // (https://github.com/alphagov/govuk-design-system/issues/1706#issuecomment-862451506)
+    .govuk-accordion__section-toggle,
+    .govuk-accordion__section-heading-focus-wrapper,
+    .govuk-accordion__section-summary {
+      display: inline;
+
+      &:before {
+        content: "";
+        display: block;
+      }
+    }
+
     // Add toggle link with Chevron icon on left.
     .govuk-accordion__section-toggle {
       @include govuk-font($size: 19, $line-height: 1);
 
       color: $govuk-link-colour;
+
+      // The NVDA fix means a display:inline element cannot receive box model spacing styling such as margin.
+      // As a result this is applied to the pseudo element that has a display:block property to maintain Design
+      &:before {
+        @include govuk-responsive-margin(1, "top");
+      }
     }
 
     // Hide body of expanded sections
