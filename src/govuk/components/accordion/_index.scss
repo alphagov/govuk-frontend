@@ -118,10 +118,10 @@
 
       position: relative;
 
-      width: 20px;
-      height: 20px;
+      width: govuk-em(20, 19);
+      height: govuk-em(20, 19);
 
-      border: 1px solid;
+      border: govuk-em(1, 16) solid;
       border-radius: 50%;
 
       vertical-align: text-top;
@@ -140,16 +140,16 @@
         display: block;
 
         position: absolute;
-        bottom: 5px;
-        left: 6px;
+        bottom: govuk-em(5, 19);
+        left: govuk-em(6, 19);
 
-        width: 6px;
-        height: 6px;
+        width: govuk-em(6, 19);
+        height: govuk-em(6, 19);
 
         transform: rotate(-45deg);
 
-        border-top: 2px solid $govuk-link-colour;
-        border-right: 2px solid $govuk-link-colour;
+        border-top: govuk-em(2, 16) solid;
+        border-right: govuk-em(2, 16) solid;
 
         // IE8 fallback of icon with HTML symbol
         @include govuk-if-ie8 {
