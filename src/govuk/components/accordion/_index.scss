@@ -281,14 +281,14 @@
     // Add toggle link with Chevron icon on left.
     .govuk-accordion__section-toggle {
       @include govuk-font($size: 19, $line-height: 1);
-
       color: $govuk-link-colour;
+    }
 
-      // The NVDA fix means a display:inline element cannot receive box model spacing styling such as margin.
-      // As a result this is applied to the pseudo element that has a display:block property to maintain Design
-      &:before {
-        @include govuk-responsive-margin(1, "top");
-      }
+    // The NVDA fix means a display:inline element cannot receive box model spacing styling such as margin.
+    // As a result this is applied to the pseudo element that has a display:block property to maintain Design
+    .govuk-accordion__section-summary:before,
+    .govuk-accordion__section-toggle:before {
+      @include govuk-responsive-margin(1, "top");
     }
 
     // Hide body of expanded sections
