@@ -58,7 +58,7 @@
       position: relative;
       z-index: 1;
 
-      margin-bottom: 14px;
+      margin-bottom: 9px;
       padding: 5px 2px 3px 0;
 
       border-width: 0;
@@ -68,6 +68,10 @@
 
       cursor: pointer;
       -webkit-appearance: none;
+
+      @include govuk-media-query ($from: desktop) {
+        margin-bottom: 14px;
+      }
 
       // Remove default button focus outline in Firefox
       &::-moz-focus-inner {
