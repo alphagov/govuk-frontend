@@ -11,6 +11,8 @@
   The state of each section is saved to the DOM via the `aria-expanded`
   attribute, which also provides accessibility.
 
+  A Chevron icon has been addded for extra affordance that this is an interactive element.
+
 */
 
 import { nodeListForEach } from '../../common'
@@ -34,6 +36,8 @@ function Accordion ($module) {
   this.sectionSummaryClass = 'govuk-accordion__section-summary'
   this.sectionButtonClass = 'govuk-accordion__section-button'
   this.sectionExpandedClass = 'govuk-accordion__section--expanded'
+  this.upChevronIconClass = 'govuk-accordion-nav__chevron'
+  this.downChevronIconClass = 'govuk-accordion-nav__chevron--down'
 }
 
 // Initialize component
@@ -61,6 +65,17 @@ Accordion.prototype.initControls = function () {
   this.$openAllButton.setAttribute('class', this.openAllClass)
   this.$openAllButton.setAttribute('aria-expanded', 'false')
   this.$openAllButton.setAttribute('type', 'button')
+
+  // Create icon, add to element
+  var $icon = document.createElement('span')
+  $icon.classList.add(this.upChevronIconClass)
+  this.$openAllButton.appendChild($icon)
+
+  // Create control wrapper and add controls to it
+  var $accordionControls = document.createElement('div')
+  $accordionControls.setAttribute('class', this.controlsClass)
+  $accordionControls.appendChild(this.$openAllButton)
+  this.$module.insertBefore($accordionControls, this.$module.firstChild)
 
   // Create control wrapper and add controls to it
   var accordionControls = document.createElement('div')
@@ -104,6 +119,18 @@ Accordion.prototype.initHeaderAttributes = function ($headerWrapper, index) {
   $button.setAttribute('id', this.moduleId + '-heading-' + (index + 1))
   $button.setAttribute('aria-controls', this.moduleId + '-content-' + (index + 1))
 
+  // Create show / hide icons with text.
+  var $showIcons = document.createElement('span')
+  $showIcons.classList.add(this.sectionShowHideToggleClass)
+
+  // Build additional wrapper for toggle text, place icon before wrapped text.
+  var $wrapperShowHideIcon = document.createElement('span')
+  var $icon = document.createElement('span')
+  $icon.classList.add(this.upChevronIconClass)
+  $showIcons.appendChild($icon)
+  $wrapperShowHideIcon.classList.add(this.sectionShowHideTextClass)
+  $showIcons.appendChild($wrapperShowHideIcon)
+
   // Copy all attributes (https://developer.mozilla.org/en-US/docs/Web/API/Element/attributes) from $span to $button
   for (var i = 0; i < $span.attributes.length; i++) {
     var attr = $span.attributes.item(i)
@@ -135,7 +162,7 @@ Accordion.prototype.initHeaderAttributes = function ($headerWrapper, index) {
   icon.className = this.iconClass
   icon.setAttribute('aria-hidden', 'true')
 
-  $button.appendChild(icon)
+  $button.appendChild($showIcons)
 }
 
 // When section toggled, set and store state
@@ -165,13 +192,17 @@ Accordion.prototype.onOpenOrCloseAllToggle = function () {
 
 // Set section attributes when opened/closed
 Accordion.prototype.setExpanded = function (expanded, $section) {
+  var $icon = $section.querySelector('.' + this.upChevronIconClass)
   var $button = $section.querySelector('.' + this.sectionButtonClass)
   $button.setAttribute('aria-expanded', expanded)
 
+  // Swap icon, change class
   if (expanded) {
     $section.classList.add(this.sectionExpandedClass)
+    $icon.classList.remove(this.downChevronIconClass)
   } else {
     $section.classList.remove(this.sectionExpandedClass)
+    $icon.classList.add(this.downChevronIconClass)
   }
 
   // See if "Open all" button text should be updated
