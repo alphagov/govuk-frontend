@@ -1,4 +1,6 @@
 @include govuk-exports("govuk/component/accordion") {
+  $govuk-accordion-icon-focus-colour: govuk-colour("yellow");
+
   .govuk-accordion {
     @include govuk-responsive-margin(6, "bottom");
   }
@@ -84,6 +86,71 @@
       &::-moz-focus-inner {
         padding: 0;
         border: 0;
+      }
+    }
+
+    // Create Chervon icon aligned with text
+    .govuk-accordion-nav__chevron {
+      box-sizing: border-box;
+      display: inline-block;
+
+      position: relative;
+
+      width: 20px;
+      height: 20px;
+
+      border: 1px solid;
+      border-radius: 50%;
+
+      vertical-align: text-top;
+
+      // IE8 fallback of icon
+      @include govuk-if-ie8 {
+        display: inline-block;
+        max-height: 20px;
+        line-height: 1;
+      }
+
+      // Create inner Chervon arrow
+      &:after {
+        content: "";
+        box-sizing: border-box;
+        display: block;
+
+        position: absolute;
+        bottom: 5px;
+        left: 6px;
+
+        width: 6px;
+        height: 6px;
+
+        transform: rotate(-45deg);
+
+        border-top: 2px solid $govuk-link-colour;
+        border-right: 2px solid $govuk-link-colour;
+
+        // IE8 fallback of icon with HTML symbol
+        @include govuk-if-ie8 {
+          content: "\25B2"; // "▲"
+
+          top: 0;
+          left: 0;
+
+          border: 0;
+        }
+      }
+    }
+
+    // Rotate icon to create "Down" version
+    .govuk-accordion-nav__chevron--down {
+      transform: rotate(180deg);
+
+      // IE8 fallback of arrow icon
+      @include govuk-if-ie8 {
+        &:after {
+          content: "\25BC"; // "▼"
+          transform: none;
+        }
       }
     }
 
