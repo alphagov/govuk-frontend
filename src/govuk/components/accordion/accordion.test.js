@@ -38,6 +38,11 @@ describe('/components/accordion', () => {
     })
 
     describe('when JavaScript is available', () => {
+      afterEach(async () => {
+        // clear accordion state
+        await page.evaluate(() => window.sessionStorage.clear())
+      })
+
       it('should indicate that the sections are not expanded', async () => {
         await page.goto(baseUrl + '/components/accordion/preview', { waitUntil: 'load' })
 
