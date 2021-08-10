@@ -59,7 +59,7 @@
       z-index: 1;
 
       margin-bottom: 9px;
-      padding: 5px 2px 3px 0;
+      padding: govuk-spacing(1) 2px govuk-spacing(1) 0;
 
       border-width: 0;
 
@@ -124,13 +124,13 @@
 
       position: relative;
 
-      width: govuk-em(20, 19);
-      height: govuk-em(20, 19);
+      width: govuk-px-to-rem(20px);
+      height: govuk-px-to-rem(20px);
 
-      border: govuk-em(1, 16) solid;
+      border: govuk-px-to-rem(1px) solid;
       border-radius: 50%;
 
-      vertical-align: text-top;
+      vertical-align: middle;
 
       // IE8 fallback of icon
       @include govuk-if-ie8 {
@@ -146,16 +146,16 @@
         display: block;
 
         position: absolute;
-        bottom: govuk-em(5, 19);
-        left: govuk-em(6, 19);
+        bottom: govuk-px-to-rem(5px);
+        left: govuk-px-to-rem(6px);
 
-        width: govuk-em(6, 19);
-        height: govuk-em(6, 19);
+        width: govuk-px-to-rem(6px);
+        height: govuk-px-to-rem(6px);
 
         transform: rotate(-45deg);
 
-        border-top: govuk-em(2, 16) solid;
-        border-right: govuk-em(2, 16) solid;
+        border-top: govuk-px-to-rem(2px) solid;
+        border-right: govuk-px-to-rem(2px) solid;
 
         // IE8 fallback of icon with HTML symbol
         @include govuk-if-ie8 {
@@ -313,7 +313,8 @@
     // Avoid placing on icon due to transform altering placement of margin
     .govuk-accordion__show-all-text,
     .govuk-accordion__section-toggle-text {
-      margin-left: 5px;
+      margin-left: govuk-em(5, 19);
+      vertical-align: middle;
     }
 
     // High contrast / user colour adjustments
