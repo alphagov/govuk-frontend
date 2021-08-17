@@ -1,27 +1,27 @@
 {% set idPrefix = params.idPrefix if params.idPrefix else "task-list" %}
 <ul class="govuk-task-list">
-  {% for row in params.rows %}
-    {% if row.hint %}
+  {% for item in params.items %}
+    {% if item.hint %}
       {%- set hintId = idPrefix + "-" + loop.index + "-hint" -%}
     {% endif %}
     {%- set statusId = idPrefix + "-" + loop.index + "-status" -%}
     <li class="govuk-task-list__item">
       <span class="govuk-task-list__task-name">
-        {% if row.href %}
-          <a class="govuk-link" href="{{ row.href }}" aria-describedby="{{ hintId + " " if row.hint }}{{ statusId }}">
-            {{ row.title.html | safe if row.title.html else row.title.text }}
+        {% if item.href %}
+          <a class="govuk-link" href="{{ item.href }}" aria-describedby="{{ hintId + " " if item.hint }}{{ statusId }}">
+            {{ item.title.html | safe if item.title.html else item.title.text }}
           </a>
         {% else %}
-          {{ row.title.html | safe if row.title.html else row.title.text }}
+          {{ item.title.html | safe if item.title.html else item.title.text }}
           {% endif %}
-        {% if row.hint %}
+        {% if item.hint %}
           <span id="{{ hintId }}" class="govuk-task-list__hint">
-            {{ row.hint.html | safe if row.hint.html else row.hint.text }}
+            {{ item.hint.html | safe if item.hint.html else item.hint.text }}
           </span>
         {% endif %}
       </span>
       <span id="{{ statusId }}" class="govuk-task-list__status">
-        {{ row.status.text }}
+        {{ item.status.text }}
       </span>
     </li>
   {% endfor %}
