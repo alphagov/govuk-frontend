@@ -1,13 +1,13 @@
 params:
-- name: rows
+- name: items
   type: array
   required: true
-  description: Array of row item objects.
+  description: Array of item objects.
   params:
 - name: classes
   type: string
   required: false
-  description: Classes to add to the row `div`
+  description: Classes to add to the item `div`
 - name: title.text
   type: string
   required: true
@@ -56,7 +56,7 @@ examples:
   - name: default
     data:
       idPrefix: "task-list-example"
-      rows:
+      items:
         - title:
             text: Section 1
           href: '#'
