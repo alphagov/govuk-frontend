@@ -2,7 +2,7 @@ params:
 - name: id
   type: string
   required: true
-  description: The id of the textarea.
+  description: The ID of the textarea.
 - name: name
   type: string
   required: true
@@ -10,7 +10,7 @@ params:
 - name: spellcheck
   type: boolean
   required: false
-  description: Optional field to enable or disable the spellcheck attribute on the textarea.
+  description: Optional field to enable or disable the `spellcheck` attribute on the textarea.
 - name: rows
   type: string
   required: false
@@ -41,12 +41,12 @@ params:
 - name: formGroup
   type: object
   required: false
-  description: Options for the form-group wrapper
+  description: Options for the form-group wrapper.
   params:
   - name: classes
     type: string
     required: false
-    description: Classes to add to the form group (for example to show error state for the whole group)
+    description: Classes to add to the form group (for example to show error state for the whole group).
 - name: classes
   type: string
   required: false
@@ -54,7 +54,7 @@ params:
 - name: autocomplete
   type: string
   required: false
-  description: Attribute to [identify input purpose](https://www.w3.org/WAI/WCAG21/Understanding/identify-input-purpose.html), for instance "postal-code" or "username". See [autofill](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill) for full list of attributes that can be used.
+  description: Attribute to [identify input purpose](https://www.w3.org/WAI/WCAG21/Understanding/identify-input-purpose.html), for example `postal-code` or `username`. See [autofill](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill) for full list of attributes that can be used.
 - name: attributes
   type: object
   required: false

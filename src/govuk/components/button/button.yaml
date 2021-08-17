@@ -65,6 +65,10 @@ examples:
     text: Disabled link button
     href: '/'
     disabled: true
+- name: start
+  data:
+    text: Start now button
+    isStartButton: true
 - name: start link
   data:
     text: Start now link button

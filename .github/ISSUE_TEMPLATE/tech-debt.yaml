@@ -1,0 +1,62 @@
+name: Tech debt
+description: For internal use only - Issue template for tracking technical debt
+labels: [tech debt, awaiting triage]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This is a template for creating issues that describe technical debt.
+
+        It is based off the [example in the GDS Way page on tracking technical debt](https://gds-way.cloudapps.digital/standards/technical-debt.html#example).
+
+  - type: textarea
+    attributes:
+      label: Cause
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Consequences
+    validations:
+      required: true
+
+  - type: dropdown
+    attributes:
+      label: Impact of debt
+      options: [Low, Medium, High]
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Reason (impact of debt)
+    validations:
+      required: false
+
+  - type: dropdown
+    attributes:
+      label: Effort to pay down
+      options: [Low, Medium, High]
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Reason (effort to pay down)
+    validations:
+      required: false
+
+  - type: dropdown
+    attributes:
+      label: Overall rating
+      options: [Low, Medium, High]
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Reason (overall rating)
+    validations:
+      required: false

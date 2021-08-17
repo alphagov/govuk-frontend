@@ -10,18 +10,6 @@ See live examples of GOV.UK Frontend components, and guidance on when to use
 them in your service, in the [GOV.UK Design
 System](https://design-system.service.gov.uk/).
 
-## Government Frontend Survey 2021 📝
-
-We want to find out about which frontend technologies and resources you use to support your project.
-
-[We've run the Government Frontend survey about every 2 years since 2016](https://technology.blog.gov.uk/2019/03/18/learn-the-results-from-the-cross-government-frontend-technology-survey/) and it helps us understand how to best support service teams across government.
-
-We'll share what we learn along with a comparison of our results.
-
-[Fill in the Government Frontend survey by 30 June 2021](https://surveys.publishing.service.gov.uk/s/2021_GovernmentFrontend_Survey/)
-
-This survey is open to anyone that does frontend in government or the public sector, even if it's not their main role, so please share with your wider communities if you can 🙂
-
 ## Contact the team
 
 GOV.UK Frontend is maintained by a team at Government Digital Service. If you want to know more about GOV.UK Frontend, please email the [Design System
@@ -77,7 +65,7 @@ If you get a warning from a linter or accessibility checker, check our list of [
 
 To be notified when there’s a new release, you can either:
 
-- [watch the govuk-frontend Github repository](https://help.github.com/en/articles/watching-and-unwatching-repositories)
+- [watch the govuk-frontend Github repository](https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/setting-up-notifications/configuring-notifications#configuring-your-watch-settings-for-an-individual-repository)
 - join the [#govuk-design-system channel on cross-government Slack](https://ukgovernmentdigital.slack.com/app_redirect?channel=govuk-design-system)
 
 Find out how to [update with npm](https://frontend.design-system.service.gov.uk/updating-with-npm/).
