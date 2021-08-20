@@ -71,16 +71,6 @@
     @include govuk-media-query($until: tablet) {
       margin-bottom: govuk-spacing(3);
     }
-    @include govuk-media-query($from: tablet) {
-      width: 50%;
-    }
-  }
-
-  // Expand width when value is last column (no action)
-  .govuk-summary-list__value:last-child {
-    @include govuk-media-query($from: tablet) {
-      width: 70%;
-    }
   }
 
   .govuk-summary-list__value > p {
