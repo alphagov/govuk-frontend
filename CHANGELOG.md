@@ -10,6 +10,7 @@ We’ve made fixes to GOV.UK Frontend in the following pull requests:
 - [#2265: Don’t remove focus outline from disabled link buttons in forced color mode](https://github.com/alphagov/govuk-frontend/pull/2265)
 - [#2273: Fix invisible footer OGL logo in forced color mode](https://github.com/alphagov/govuk-frontend/pull/2273) – thanks to [@oscarduignan](https://github.com/oscarduignan) for reporting this issue.
 - [#2277: Fix invisible start button chevron in forced color mode](https://github.com/alphagov/govuk-frontend/pull/2277)
+- [#2290: Improve support for IE11 with Windows High Contrast Mode](https://github.com/alphagov/govuk-frontend/pull/2290)
 
 ## 3.13.0 (Feature release)
 
