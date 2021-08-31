@@ -2,17 +2,19 @@
 
 ## Unreleased
 
+## 3.13.1 (Fix release)
+
 ### Fixes
 
 We’ve made fixes to GOV.UK Frontend in the following pull requests:
 
-- [#2264: Improve focus state for radio and checkbox controls in forced color mode (for example Windows High Contrast Mode)](https://github.com/alphagov/govuk-frontend/pull/2264) – thanks to [@adamliptrot-oc](https://github.com/adamliptrot-oc) for reporting this issue.
-- [#2265: Don’t remove focus outline from disabled link buttons in forced color mode](https://github.com/alphagov/govuk-frontend/pull/2265)
-- [#2273: Fix invisible footer OGL logo in forced color mode](https://github.com/alphagov/govuk-frontend/pull/2273) – thanks to [@oscarduignan](https://github.com/oscarduignan) for reporting this issue.
-- [#2277: Fix invisible start button chevron in forced color mode](https://github.com/alphagov/govuk-frontend/pull/2277)
-- [#2290: Improve support for IE11 with Windows High Contrast Mode](https://github.com/alphagov/govuk-frontend/pull/2290)
-- [#2312: Remove padding-right from details element](https://github.com/alphagov/govuk-frontend/pull/2312)
-- [#2306: Add max-width to file upload component](https://github.com/alphagov/govuk-frontend/pull/2306)
+- [#2264: Improve focus state for radio and checkbox controls in forced colors mode (for example, Windows High Contrast Mode)](https://github.com/alphagov/govuk-frontend/pull/2264) – thanks to [@adamliptrot-oc](https://github.com/adamliptrot-oc) for reporting this issue
+- [#2265: Do not remove focus outline from disabled link buttons in forced colors mode](https://github.com/alphagov/govuk-frontend/pull/2265)
+- [#2273: Fix invisible footer on Open Government Licence logo in forced colors mode](https://github.com/alphagov/govuk-frontend/pull/2273) – thanks to [@oscarduignan](https://github.com/oscarduignan) for reporting this issue
+- [#2277: Fix invisible start button chevron in forced colors mode](https://github.com/alphagov/govuk-frontend/pull/2277)
+- [#2290: Improve support for Internet Explorer 11 with Windows High Contrast Mode](https://github.com/alphagov/govuk-frontend/pull/2290)
+- [#2306: Add `max-width` to file upload component](https://github.com/alphagov/govuk-frontend/pull/2306)
+- [#2312: Remove `padding-right` from details component](https://github.com/alphagov/govuk-frontend/pull/2312)
 
 ## 3.13.0 (Feature release)
 
