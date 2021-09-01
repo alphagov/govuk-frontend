@@ -26,6 +26,22 @@ Checkboxes.prototype.init = function () {
 export default Checkboxes
 ```
 
+## Use data attributes to initialise component JavaScript
+
+Use `data-module` attributes in HTML to initialise a component in JavaScript. For example:
+
+```html
+data-module="govuk-accordion"
+```
+
+## Use classes to target DOM elements
+
+After you initialise a component, use `govuk-js-*` classes to target DOM elements. For example:
+
+```html
+class="govuk-js-header-toggle"
+```
+
 ## Comments
 
 Use `/** ... */` for multi-line comments. Include a description, and specify types and values for all parameters and return values.
