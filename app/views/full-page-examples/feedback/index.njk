@@ -19,7 +19,7 @@ scenario: >-
 
 notes: Based on https://www.signin.service.gov.uk/feedback
 ---
-{% extends "_generic.njk" %}
+{% extends "full-page-example.njk" %}
 
 {% from "warning-text/macro.njk" import govukWarningText %}
 {% from "radios/macro.njk" import govukRadios %}
@@ -32,7 +32,6 @@ notes: Based on https://www.signin.service.gov.uk/feedback
 {% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - Verify - GOV.UK{% endblock %}
 
 {% block header %}
-  {% include "../../partials/banner.njk" %}
   {{ govukHeader({
     productName: "Verify"
   }) }}

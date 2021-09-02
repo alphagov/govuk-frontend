@@ -8,7 +8,7 @@ notes: >-
   Based on https://www.gov.uk/coronavirus
 ---
 
-{% extends "_generic.njk" %}
+{% extends "full-page-example.njk" %}
 
 {% from "header/macro.njk" import govukHeader %}
 {% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
@@ -22,7 +22,6 @@ notes: >-
 {% endblock %}
 
 {% block header %}
-  {% include "../../partials/banner.njk" %}
   {{ govukHeader({
     homepageUrl: "#",
     classes: "app-header--campaign"
