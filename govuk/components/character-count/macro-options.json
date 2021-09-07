@@ -3,7 +3,7 @@
         "name": "id",
         "type": "string",
         "required": true,
-        "description": "The id of the textarea."
+        "description": "The ID of the textarea."
     },
     {
         "name": "name",
@@ -66,13 +66,13 @@
         "name": "formGroup",
         "type": "object",
         "required": false,
-        "description": "Options for the form-group wrapper",
+        "description": "Options for the form-group wrapper.",
         "params": [
             {
                 "name": "classes",
                 "type": "string",
                 "required": false,
-                "description": "Classes to add to the form group (for example to show error state for the whole group)"
+                "description": "Classes to add to the form group (for example to show error state for the whole group)."
             }
         ]
     },
@@ -92,19 +92,19 @@
         "name": "spellcheck",
         "type": "boolean",
         "required": false,
-        "description": "Optional field to enable or disable the spellcheck attribute on the character count."
+        "description": "Optional field to enable or disable the `spellcheck` attribute on the character count."
     },
     {
         "name": "countMessage",
         "type": "object",
         "required": false,
-        "description": "Options for the count message",
+        "description": "Options for the count message.",
         "params": [
             {
                 "name": "classes",
                 "type": "string",
                 "required": false,
-                "description": "Classes to add to the count message"
+                "description": "Classes to add to the count message."
             }
         ]
     }
