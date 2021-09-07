@@ -9,7 +9,7 @@
                 "name": "classes",
                 "type": "string",
                 "required": false,
-                "description": "Classes to add to the row `div`"
+                "description": "Classes to add to the row `div`."
             },
             {
                 "name": "key.text",
@@ -26,7 +26,7 @@
                 "name": "key.classes",
                 "type": "string",
                 "required": false,
-                "description": "Classes to add to the key wrapper"
+                "description": "Classes to add to the key wrapper."
             },
             {
                 "name": "value.text",
@@ -44,25 +44,25 @@
                 "name": "value.classes",
                 "type": "string",
                 "required": false,
-                "description": "Classes to add to the value wrapper"
+                "description": "Classes to add to the value wrapper."
             },
             {
                 "name": "actions.classes",
                 "type": "string",
                 "required": false,
-                "description": "Classes to add to the actions wrapper"
+                "description": "Classes to add to the actions wrapper."
             },
             {
                 "name": "actions.items",
                 "type": "array",
                 "required": false,
-                "description": "Array of action item objects",
+                "description": "Array of action item objects.",
                 "params": [
                     {
                         "name": "href",
                         "type": "string",
                         "required": true,
-                        "description": "The value of the link href attribute for an action item"
+                        "description": "The value of the link's `href` attribute for an action item."
                     },
                     {
                         "name": "text",
@@ -80,7 +80,7 @@
                         "name": "visuallyHiddenText",
                         "type": "string",
                         "required": false,
-                        "description": "Actions rely on context from the surrounding content so may require additional accessible text, text supplied to this option is appended to the end, use `html` for more complicated scenarios."
+                        "description": "Actions rely on context from the surrounding content so may require additional accessible text. Text supplied to this option is appended to the end. Use `html` for more complicated scenarios."
                     },
                     {
                         "name": "classes",

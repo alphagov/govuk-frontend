@@ -27,13 +27,13 @@
         "name": "id",
         "type": "string",
         "required": false,
-        "description": "Id to add to the details element."
+        "description": "ID to add to the details element."
     },
     {
         "name": "open",
         "type": "boolean",
         "required": false,
-        "description": "If true, details element will be expanded."
+        "description": "If `true`, details element will be expanded."
     },
     {
         "name": "classes",

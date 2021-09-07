@@ -15,7 +15,7 @@
         "name": "id",
         "type": "string",
         "required": false,
-        "description": "Id attribute to add to the error message span tag."
+        "description": "ID attribute to add to the error message span tag."
     },
     {
         "name": "classes",
@@ -27,12 +27,12 @@
         "name": "attributes",
         "type": "object",
         "required": false,
-        "description": "HTML attributes (for example data attributes) to add to the error message span tag"
+        "description": "HTML attributes (for example data attributes) to add to the error message span tag."
     },
     {
         "name": "visuallyHiddenText",
         "type": "string",
         "required": false,
-        "description": "A visually hidden prefix used before the error message. Defaults to \"Error\"."
+        "description": "A visually hidden prefix used before the error message. Defaults to 'Error'."
     }
 ]

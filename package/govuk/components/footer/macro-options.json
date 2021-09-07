@@ -9,7 +9,7 @@
                 "name": "visuallyHiddenTitle",
                 "type": "string",
                 "required": false,
-                "description": "Title for a meta item section, which defaults to Support links"
+                "description": "Title for a meta item section. Defaults to 'Support links'."
             },
             {
                 "name": "html",
@@ -61,7 +61,7 @@
                 "name": "title",
                 "type": "string",
                 "required": true,
-                "description": "Title for a section"
+                "description": "Title for a section."
             },
             {
                 "name": "columns",

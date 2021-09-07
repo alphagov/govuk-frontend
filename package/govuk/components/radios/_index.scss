@@ -121,6 +121,20 @@
   // Focused state
   .govuk-radios__input:focus + .govuk-radios__label:before {
     border-width: 4px;
+
+    // When colours are overridden, the yellow box-shadow becomes invisible
+    // which means the focus state is less obvious. By adding a transparent
+    // outline, which becomes solid (text-coloured) in that context, we ensure
+    // the focus remains clearly visible.
+    outline: $govuk-focus-width solid transparent;
+    outline-offset: 1px;
+
+    // When in an explicit forced-color mode, we can use the Highlight system
+    // color for the outline to better match focus states of native controls
+    @media screen and (forced-colors: active), (-ms-high-contrast: active) {
+      outline-color: Highlight;
+    }
+
     box-shadow: 0 0 0 $govuk-radios-focus-width $govuk-focus-colour;
   }
 

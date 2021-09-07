@@ -8,6 +8,7 @@
   .govuk-file-upload {
     @include govuk-font($size: 19);
     @include govuk-text-colour;
+    max-width: 100%;
     margin-left: -$component-padding;
     padding: $component-padding;
 

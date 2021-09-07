@@ -15,7 +15,7 @@
         "name": "headingLevel",
         "type": "integer",
         "required": false,
-        "description": "Heading level, from 1 to 6. Default is 1."
+        "description": "Heading level, from `1` to `6`. Default is `1`."
     },
     {
         "name": "text",

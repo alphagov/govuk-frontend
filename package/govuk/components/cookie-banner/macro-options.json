@@ -3,7 +3,7 @@
         "name": "ariaLabel",
         "type": "string",
         "required": false,
-        "description": "The text for the `aria-label` which labels the cookie banner region. This region applies to all messages that the cookie banner includes. For example, the cookie message and the confirmation message. Defaults to \"Cookie banner\"."
+        "description": "The text for the `aria-label` which labels the cookie banner region. This region applies to all messages that the cookie banner includes. For example, the cookie message and the confirmation message. Defaults to 'Cookie banner'."
     },
     {
         "name": "hidden",

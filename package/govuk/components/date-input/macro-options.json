@@ -3,7 +3,7 @@
         "name": "id",
         "type": "string",
         "required": true,
-        "description": "This is used for the main component and to compose id attribute for each item."
+        "description": "This is used for the main component and to compose the ID attribute for each item."
     },
     {
         "name": "namePrefix",
@@ -21,7 +21,7 @@
                 "name": "id",
                 "type": "string",
                 "required": false,
-                "description": "Item-specific id. If provided, it will be used instead of the generated id."
+                "description": "Item-specific ID. If provided, it will be used instead of the generated ID."
             },
             {
                 "name": "name",
@@ -45,7 +45,7 @@
                 "name": "autocomplete",
                 "type": "string",
                 "required": false,
-                "description": "Attribute to [identify input purpose](https://www.w3.org/WAI/WCAG21/Understanding/identify-input-purpose.html), for instance \"bday-day\". See [autofill](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill) for full list of attributes that can be used."
+                "description": "Attribute to [identify input purpose](https://www.w3.org/WAI/WCAG21/Understanding/identify-input-purpose.html), for instance `bday-day`. See [autofill](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill) for full list of attributes that can be used."
             },
             {
                 "name": "pattern",
@@ -85,13 +85,13 @@
         "name": "formGroup",
         "type": "object",
         "required": false,
-        "description": "Options for the form-group wrapper",
+        "description": "Options for the form-group wrapper.",
         "params": [
             {
                 "name": "classes",
                 "type": "string",
                 "required": false,
-                "description": "Classes to add to the form group (for example to show error state for the whole group)"
+                "description": "Classes to add to the form group (for example to show error state for the whole group)."
             }
         ]
     },
