@@ -111,6 +111,9 @@
       margin-bottom: govuk-spacing(3);
     }
     vertical-align: top;
+    // Work around SVGs not inheriting color from parent in forced color mode
+    // (https://github.com/w3c/csswg-drafts/issues/6310)
+    forced-color-adjust: auto;
   }
 
   .govuk-footer__licence-description {

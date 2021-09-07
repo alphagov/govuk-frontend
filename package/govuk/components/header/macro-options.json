@@ -3,7 +3,7 @@
         "name": "homepageUrl",
         "type": "string",
         "required": false,
-        "description": "The url of the homepage. Defaults to /"
+        "description": "The URL of the homepage. Defaults to `/`"
     },
     {
         "name": "assetsPath",
@@ -15,7 +15,7 @@
         "name": "productName",
         "type": "string",
         "required": false,
-        "description": "Product name, used when the product name follows on directly from ‘GOV.UK’. For example, GOV.UK Pay or GOV.UK Design System. In most circumstances, you should use serviceName."
+        "description": "Product name, used when the product name follows on directly from ‘GOV.UK’. For example, GOV.UK Pay or GOV.UK Design System. In most circumstances, you should use `serviceName`."
     },
     {
         "name": "serviceName",
@@ -27,7 +27,7 @@
         "name": "serviceUrl",
         "type": "string",
         "required": false,
-        "description": "Url for the service name anchor."
+        "description": "URL for the service name anchor."
     },
     {
         "name": "navigation",
@@ -51,7 +51,7 @@
                 "name": "href",
                 "type": "string",
                 "required": false,
-                "description": "Url of the navigation item anchor."
+                "description": "URL of the navigation item anchor."
             },
             {
                 "name": "active",
@@ -77,13 +77,13 @@
         "name": "navigationLabel",
         "type": "string",
         "required": false,
-        "description": "Text for the `aria-label` attribute of the navigation. Defaults to \"Navigation menu\"."
+        "description": "Text for the `aria-label` attribute of the navigation. Defaults to 'Navigation menu'."
     },
     {
         "name": "menuButtonLabel",
         "type": "string",
         "required": false,
-        "description": "Text for the `aria-label` attribute of the button that toggles the navigation. Defaults to \"Show or hide navigation menu\"."
+        "description": "Text for the `aria-label` attribute of the button that toggles the navigation. Defaults to 'Show or hide navigation menu'."
     },
     {
         "name": "containerClasses",

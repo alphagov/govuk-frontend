@@ -30,13 +30,13 @@
         "name": "formGroup",
         "type": "object",
         "required": false,
-        "description": "Options for the form-group wrapper",
+        "description": "Options for the form-group wrapper.",
         "params": [
             {
                 "name": "classes",
                 "type": "string",
                 "required": false,
-                "description": "Classes to add to the form group (for example to show error state for the whole group)"
+                "description": "Classes to add to the form group (for example to show error state for the whole group)."
             }
         ]
     },
@@ -74,7 +74,7 @@
                 "name": "id",
                 "type": "string",
                 "required": false,
-                "description": "Specific id attribute for the checkbox item. If omitted, then component global `idPrefix` option will be applied."
+                "description": "Specific ID attribute for the checkbox item. If omitted, then component global `idPrefix` option will be applied."
             },
             {
                 "name": "name",
@@ -106,19 +106,19 @@
                 "name": "divider",
                 "type": "string",
                 "required": false,
-                "description": "Divider text to separate checkbox items, for example the text \"or\"."
+                "description": "Divider text to separate checkbox items, for example the text 'or'."
             },
             {
                 "name": "checked",
                 "type": "boolean",
                 "required": false,
-                "description": "If true, checkbox will be checked."
+                "description": "If `true`, checkbox will be checked."
             },
             {
                 "name": "conditional",
                 "type": "boolean",
                 "required": false,
-                "description": "If true, content provided will be revealed when the item is checked."
+                "description": "If `true`, content provided will be revealed when the item is checked."
             },
             {
                 "name": "conditional.html",
@@ -130,13 +130,13 @@
                 "name": "behaviour",
                 "type": "string",
                 "required": false,
-                "description": "If set to `exclusive`, implements a \"None of these\" type behaviour via javascript when checkboxes are clicked"
+                "description": "If set to `exclusive`, implements a 'None of these' type behaviour via JavaScript when checkboxes are clicked."
             },
             {
                 "name": "disabled",
                 "type": "boolean",
                 "required": false,
-                "description": "If true, checkbox will be disabled."
+                "description": "If `true`, checkbox will be disabled."
             },
             {
                 "name": "attributes",

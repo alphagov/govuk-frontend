@@ -3,7 +3,7 @@
         "name": "id",
         "type": "string",
         "required": true,
-        "description": "Id for each select box."
+        "description": "ID for each select box."
     },
     {
         "name": "name",
@@ -80,13 +80,13 @@
         "name": "formGroup",
         "type": "object",
         "required": false,
-        "description": "Options for the form-group wrapper",
+        "description": "Options for the form-group wrapper.",
         "params": [
             {
                 "name": "classes",
                 "type": "string",
                 "required": false,
-                "description": "Classes to add to the form group (for example to show error state for the whole group)"
+                "description": "Classes to add to the form group (for example to show error state for the whole group)."
             }
         ]
     },

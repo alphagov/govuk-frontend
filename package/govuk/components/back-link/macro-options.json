@@ -3,19 +3,19 @@
         "name": "text",
         "type": "string",
         "required": false,
-        "description": "Text to use within the back link component. If `html` is provided, the `text` argument will be ignored. Defaults to \"Back\"."
+        "description": "Text to use within the back link component. If `html` is provided, the `text` argument will be ignored. Defaults to 'Back'."
     },
     {
         "name": "html",
         "type": "string",
         "required": false,
-        "description": "HTML to use within the back link component. If `html` is provided, the `text` argument will be ignored. Defaults to \"Back\"."
+        "description": "HTML to use within the back link component. If `html` is provided, the `text` argument will be ignored. Defaults to 'Back'."
     },
     {
         "name": "href",
         "type": "string",
         "required": true,
-        "description": "The value of the link href attribute."
+        "description": "The value of the link's `href` attribute."
     },
     {
         "name": "classes",

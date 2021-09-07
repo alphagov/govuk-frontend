@@ -3,7 +3,7 @@
         "name": "id",
         "type": "string",
         "required": true,
-        "description": "The id of the input."
+        "description": "The ID of the input."
     },
     {
         "name": "name",
@@ -15,7 +15,7 @@
         "name": "type",
         "type": "string",
         "required": false,
-        "description": "Type of input control to render. Defaults to \"text\"."
+        "description": "Type of input control to render. Defaults to `text`."
     },
     {
         "name": "inputmode",
@@ -98,13 +98,13 @@
                 "name": "text",
                 "type": "string",
                 "required": true,
-                "description": "Required. If `html` is set, this is not required. Text to use within the label. If `html` is provided, the `text` argument will be ignored."
+                "description": "If `html` is set, this is not required. Text to use within the label. If `html` is provided, the `text` argument will be ignored."
             },
             {
                 "name": "html",
                 "type": "string",
                 "required": true,
-                "description": "Required. If `text` is set, this is not required. HTML to use within the label. If `html` is provided, the `text` argument will be ignored."
+                "description": "If `text` is set, this is not required. HTML to use within the label. If `html` is provided, the `text` argument will be ignored."
             },
             {
                 "name": "classes",
@@ -124,13 +124,13 @@
         "name": "formGroup",
         "type": "object",
         "required": false,
-        "description": "Options for the form-group wrapper",
+        "description": "Options for the form-group wrapper.",
         "params": [
             {
                 "name": "classes",
                 "type": "string",
                 "required": false,
-                "description": "Classes to add to the form group (for example to show error state for the whole group)"
+                "description": "Classes to add to the form group (for example to show error state for the whole group)."
             }
         ]
     },
@@ -156,7 +156,7 @@
         "name": "spellcheck",
         "type": "boolean",
         "required": false,
-        "description": "Optional field to enable or disable the spellcheck attribute on the input."
+        "description": "Optional field to enable or disable the `spellcheck` attribute on the input."
     },
     {
         "name": "attributes",

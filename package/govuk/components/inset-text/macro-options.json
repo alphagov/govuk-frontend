@@ -15,7 +15,7 @@
         "name": "id",
         "type": "string",
         "required": false,
-        "description": "Id attribute to add to the inset text container."
+        "description": "ID attribute to add to the inset text container."
     },
     {
         "name": "classes",
