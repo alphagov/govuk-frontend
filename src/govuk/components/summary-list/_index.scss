@@ -21,6 +21,14 @@
     }
   }
 
+  // Provide an empty 'cell' for rows that don't have actions – otherwise the
+  // bottom border is not drawn for that part of the row.
+  .govuk-summary-list__row--no-actions:after {
+    content: "";
+    display: table-cell;
+    border-bottom: 1px solid $govuk-border-colour;
+  }
+
   .govuk-summary-list__key,
   .govuk-summary-list__value,
   .govuk-summary-list__actions {
