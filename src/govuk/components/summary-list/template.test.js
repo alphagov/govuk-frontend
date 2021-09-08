@@ -224,6 +224,13 @@ describe('Summary list', () => {
         expect($action[1].tagName).toEqual('span')
         expect($($action[1]).text()).toEqual('')
       })
+
+      it('passes accessibility tests when only some rows have actions', async () => {
+        const $ = render('summary-list', examples['with some actions'])
+  
+        const results = await axe($.html())
+        expect(results).toHaveNoViolations()
+      })
     })
   })
 })
