@@ -14,14 +14,7 @@ describe('Summary list', () => {
     it('passes accessibility tests', async () => {
       const $ = render('summary-list', examples.default)
 
-      const results = await axe($.html(), {
-        rules: {
-          // In newer versions of the HTML specification wrapper
-          // <div>s are allowed in a definition list
-          dlitem: { enabled: false },
-          'definition-list': { enabled: false }
-        }
-      })
+      const results = await axe($.html())
       expect(results).toHaveNoViolations()
     })
   })
