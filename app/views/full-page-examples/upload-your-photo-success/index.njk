@@ -6,7 +6,7 @@ scenario: >-
 ---
 
 {# This example is based of the live "Passport" service: https://www.passport.service.gov.uk/photo/upload #}
-{% extends "_generic.njk" %}
+{% extends "full-page-example.njk" %}
 
 {% from "back-link/macro.njk" import govukBackLink %}
 {% from "button/macro.njk" import govukButton %}
@@ -19,7 +19,6 @@ scenario: >-
 {% block pageTitle %}Upload your photo - GOV.UK{% endblock %}
 
 {% block header %}
-  {% include "../../partials/banner.njk" %}
   {{ govukHeader({
     serviceName: "Apply for a passport"
   }) }}

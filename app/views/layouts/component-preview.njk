@@ -4,8 +4,9 @@
  {{ bodyClasses }}
 {% endset %}
 
+{# Remove standard template banners/headers/frontmatter #}
 {% block skipLink %}{% endblock %}
-
+{% block bodyStart %} {% endblock %}
 {% block header %}{% endblock %}
 
 {% block content %}

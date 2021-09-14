@@ -2,7 +2,7 @@
 scenario: You want to read this article about '2018’s oddest requests from Brits abroad'.
 notes: Based on https://www.gov.uk/government/news/strictly-vampires-and-sausages-2018s-oddest-requests-from-brits-abroad
 ---
-{% extends "_generic.njk" %}
+{% extends "full-page-example.njk" %}
 
 {% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
 {% from "inset-text/macro.njk" import govukInsetText %}
@@ -11,7 +11,6 @@ notes: Based on https://www.gov.uk/government/news/strictly-vampires-and-sausage
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block header %}
-{% include "../../partials/banner.njk" %}
 {{ govukHeader({
   navigation: [
     {

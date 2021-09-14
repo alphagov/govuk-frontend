@@ -12,7 +12,7 @@ notes: The links to change your answers are not functional.
 ---
 
 {# This example is based of the  "Check your answers before sending your application" example: https://design-system.service.gov.uk/patterns/check-answers/default/index.html #}
-{% extends "_generic.njk" %}
+{% extends "full-page-example.njk" %}
 
 {% from "back-link/macro.njk" import govukBackLink %}
 {% from "summary-list/macro.njk" import govukSummaryList %}
@@ -24,7 +24,6 @@ notes: The links to change your answers are not functional.
 {% block pageTitle %}{{ pageTitle }} - {{ serviceName }} - GOV.UK{% endblock %}
 
 {% block header %}
-  {% include "../../partials/banner.njk" %}
   {{ govukHeader({
     serviceName: serviceName
   }) }}
