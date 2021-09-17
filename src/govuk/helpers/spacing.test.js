@@ -21,6 +21,7 @@ const sassBootstrap = `
 
   // Emulates data from _settings/spacing.scss
   $govuk-spacing-points: (
+    0: 0,
     2: 15px
   );
 
@@ -52,6 +53,21 @@ describe('@function govuk-spacing', () => {
         top: 15px; }`)
   })
 
+  it('returns CSS for a property based on a negative spacing point', async () => {
+    const sass = `
+      ${sassBootstrap}
+
+      .foo {
+        top: govuk-spacing(-2)
+      }`
+
+    const results = await renderSass({ data: sass, ...sassConfig })
+
+    expect(results.css.toString().trim()).toBe(outdent`
+      .foo {
+        top: -15px; }`)
+  })
+
   it('throws an error when passed anything other than a number', async () => {
     const sass = `
       ${sassBootstrap}
@@ -80,6 +96,36 @@ describe('@function govuk-spacing', () => {
       .toThrow(
         'Unknown spacing variable `999`. Make sure you are using a point from the spacing scale in `_settings/spacing.scss`.'
       )
+  })
+
+  it('throws an error when passed a non-existent negative point', async () => {
+    const sass = `
+      ${sassBootstrap}
+
+      .foo {
+        top: govuk-spacing(-999)
+      }`
+
+    await expect(renderSass({ data: sass, ...sassConfig }))
+      .rejects
+      .toThrow(
+        'Unknown spacing variable `999`. Make sure you are using a point from the spacing scale in `_settings/spacing.scss`.'
+      )
+  })
+
+  it('handles negative zero', async () => {
+    const sass = `
+      ${sassBootstrap}
+
+      .foo {
+        top: govuk-spacing(-0)
+      }`
+
+    const results = await renderSass({ data: sass, ...sassConfig })
+
+    expect(results.css.toString().trim()).toBe(outdent`
+      .foo {
+        top: 0; }`)
   })
 })
 
