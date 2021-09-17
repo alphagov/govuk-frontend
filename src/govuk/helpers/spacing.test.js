@@ -52,7 +52,7 @@ describe('@function govuk-spacing', () => {
         top: 15px; }`)
   })
 
-  it('throws an exception when passed anything other than a number', async () => {
+  it('throws an error when passed anything other than a number', async () => {
     const sass = `
       ${sassBootstrap}
 
@@ -64,6 +64,21 @@ describe('@function govuk-spacing', () => {
       .rejects
       .toThrow(
         'Expected a number (integer), but got a string.'
+      )
+  })
+
+  it('throws an error when passed a non-existent point', async () => {
+    const sass = `
+      ${sassBootstrap}
+
+      .foo {
+        top: govuk-spacing(999)
+      }`
+
+    await expect(renderSass({ data: sass, ...sassConfig }))
+      .rejects
+      .toThrow(
+        'Unknown spacing variable `999`. Make sure you are using a point from the spacing scale in `_settings/spacing.scss`.'
       )
   })
 })
