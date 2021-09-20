@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### New features
+
+- [#2339: Add text align override classes](https://github.com/alphagov/govuk-frontend/pull/2339)
+
 ## 3.13.1 (Fix release)
 
 ### Fixes
