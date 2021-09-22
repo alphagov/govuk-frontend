@@ -28,7 +28,7 @@
   // Buttons within the sections don’t need default styling
   .govuk-accordion__section-button {
     @include govuk-text-colour;
-    @include govuk-font($size: 24, $weight: bold, $line-height: 1.25);
+    @include govuk-font($size: 24, $weight: bold);
     display: block;
     margin-bottom: 0;
     padding-top: govuk-spacing(3);
@@ -202,6 +202,7 @@
       border: 0;
 
       border-top: $govuk-accordion-bottom-border-width solid $govuk-border-colour;
+
       // Visually separate the section from the one underneath when user changes colours in their
       // browser.
       border-bottom: govuk-spacing(2) solid transparent;
@@ -319,7 +320,7 @@
 
     // Add toggle link with Chevron icon on left.
     .govuk-accordion__section-toggle {
-      @include govuk-font($size: 19, $line-height: 1);
+      @include govuk-font($size: 19);
       color: $govuk-link-colour;
     }
 
@@ -327,7 +328,7 @@
     // As a result this is applied to the pseudo element that has a display:block property to maintain Design
     .govuk-accordion__section-summary:before,
     .govuk-accordion__section-toggle:before {
-      @include govuk-responsive-margin(1, "top");
+      margin-top: 8px;
     }
 
     // Space between icon and text,
