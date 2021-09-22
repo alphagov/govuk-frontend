@@ -109,7 +109,7 @@ notes: >-
               },
               expanded: true,
               content: {
-                html: "<p class='govuk-body'>This is the content for Staying for the<sup>1</sup> web.</p>"
+                html: "<p class='govuk-body'>This is the content for Staying for the web.</p>"
               }
             },
             {
@@ -165,7 +165,7 @@ notes: >-
                 text: "Providing assisted digital support"
               },
               summary: {
-                html: "<span class='govuk-!-font-weight-regular'>Helping people who don't have the skills or access to use a service.<sup>1</sup></span>"
+                html: "<span class='govuk-!-font-weight-regular'>Helping people who don't have the skills or access to use a service.</span>"
               },
               content: {
                 html: "<ul class='govuk-list'><li><a class='govuk-link' href='#'>Making your service accessible: an introduction</a></li><li><a class='govuk-link' href='#'>Understanding WCAG 2.1</a></li><li><a class='govuk-link' href='#'>Getting an accessibility audit</a></li><li><a class='govuk-link' href='#'>Testing for accessibility</a></li><li><a class='govuk-link' href='#'>Publishing information about your service's accessibility</a></li></ul>"
@@ -193,6 +193,35 @@ notes: >-
           <h3 class="govuk-heading-s govuk-!-margin-bottom-1"><a class="govuk-link" href="#">Press conferences (YouTube)</a></h3>
           <h3 class="govuk-heading-s govuk-!-margin-bottom-1"><a class="govuk-link" href="#">Press conference statements</a></h3>
         </section>
+
+        {{ govukAccordion({
+          id: "accordion-summaries-short",
+          items: [
+            {
+              heading: {
+                text: "Accessibility requirements"
+              },
+              summary: {
+                text: "Assessments"
+              },
+              content: {
+                html: "<ul class='govuk-list'><li><a class='govuk-link' href='#'>Making your service accessible: an introduction</a></li><li><a class='govuk-link' href='#'>Understanding WCAG 2.1</a></li><li><a class='govuk-link' href='#'>Getting an accessibility audit</a></li><li><a class='govuk-link' href='#'>Testing for accessibility</a></li><li><a class='govuk-link' href='#'>Publishing information about your service's accessibility</a></li></ul>"
+              }
+            },
+            {
+              heading: {
+                text: "User support"
+              },
+              summary: {
+                text: "Estimating demand"
+              },
+              content: {
+                html: "<ul class='govuk-list'><li><a class='govuk-link' href='#'>Making your service accessible: an introduction</a></li><li><a class='govuk-link' href='#'>Understanding WCAG 2.1</a></li><li><a class='govuk-link' href='#'>Getting an accessibility audit</a></li><li><a class='govuk-link' href='#'>Testing for accessibility</a></li><li><a class='govuk-link' href='#'>Publishing information about your service's accessibility</a></li></ul>"
+              }
+            }
+          ]
+        }) }}
+
         <div class="app-updates">
           <h3 class="govuk-heading-s">Stay up to date with GOV.UK</h3>
           <p class="govuk-body"><a class="govuk-link" href="#">Sign up to get emails when we change any coronavirus information on the GOV.UK website</a></p>
