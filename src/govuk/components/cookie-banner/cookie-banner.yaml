@@ -151,6 +151,23 @@ examples:
             - text: Hide this message
               type: button
 
+  - name: with html
+    data:
+      messages:
+        - headingHtml: Cookies on <span>my service</span>
+          html: <p class="govuk-body">We use cookies in <span>our service</span>.</p><p class="govuk-body">We’d like to use analytics cookies so we can understand how you use the Design System and make improvements.</p>
+          actions:
+            - text: Accept analytics cookies
+              type: submit
+              name: cookies
+              value: accept
+            - text: Reject analytics cookies
+              type: submit
+              name: cookies
+              value: reject
+            - text: View cookie preferences
+              href: /cookie-preferences
+
 
 # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: heading html
