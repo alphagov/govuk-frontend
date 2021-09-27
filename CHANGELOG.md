@@ -10,6 +10,14 @@ You can now use the `govuk-!-text-align-left`, `govuk-!-text-align-centre` and `
 
 This was added in [pull request #2368: Add text align override classes](https://github.com/alphagov/govuk-frontend/pull/2368).
 
+#### Define negative spacing using the `govuk-spacing` function
+
+You can now pass the negative equivalent of a point from the spacing scale to the `govuk-spacing` function to get negative spacing.
+
+For example, `govuk-spacing(1)` returns `5px`, and `govuk-spacing(-1)` returns `-5px`.
+
+This was added in [pull request #2367: Allow govuk-spacing to output negative spacing](https://github.com/alphagov/govuk-frontend/pull/2367).
+
 ### Fixes
 
 - [#2366: Fix panel text overflowing when zoomed in on mobile #2366](https://github.com/alphagov/govuk-frontend/pull/2366)
