@@ -4,7 +4,19 @@
 
 ### New features
 
-- [#2339: Add text align override classes](https://github.com/alphagov/govuk-frontend/pull/2339)
+#### Use override classes to set text alignment
+
+You can now use the `govuk-!-text-align-left`, `govuk-!-text-align-centre` and `govuk-!-text-align-right` CSS classes to set text alignment on elements.
+
+This was added in [pull request #2339: Add text align override classes](https://github.com/alphagov/govuk-frontend/pull/2339).
+
+#### Define negative spacing using the `govuk-spacing` function
+
+You can now pass the negative equivalent of a point from the spacing scale to the `govuk-spacing` function to get negative spacing.
+
+For example, `govuk-spacing(1)` returns `5px`, and `govuk-spacing(-1)` returns `-5px`.
+
+This was added in [pull request #2348: Allow govuk-spacing to output negative spacing](https://github.com/alphagov/govuk-frontend/pull/2348).
 
 ## 3.13.1 (Fix release)
 
