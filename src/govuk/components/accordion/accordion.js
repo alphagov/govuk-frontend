@@ -118,13 +118,6 @@ Accordion.prototype.initHeaderAttributes = function ($headerWrapper, index) {
   var $showIcons = document.createElement('span')
   $showIcons.classList.add(this.sectionShowHideToggleClass)
 
-  // Add pause (with a comma) after heading for assistive technology.
-  // Example: [heading]Section A ,[pause] Show this section.
-  // https://accessibility.blog.gov.uk/2017/12/18/what-working-on-gov-uk-navigation-taught-us-about-accessibility/
-  var $srPause = document.createElement('span')
-  $srPause.classList.add('govuk-visually-hidden')
-  $srPause.innerHTML = ', '
-
   // Wrapper of heading to receive focus state design
   // ID set to allow the heading alone to be referenced without "this section"
   var $wrapperFocusHeading = document.createElement('span')
@@ -151,7 +144,7 @@ Accordion.prototype.initHeaderAttributes = function ($headerWrapper, index) {
   $heading.removeChild($span)
   $heading.appendChild($button)
   $button.appendChild($wrapperFocusHeading)
-  $button.appendChild($srPause)
+  $button.appendChild(this.getButtonPunctuationEl())
   // span could contain HTML elements (see https://www.w3.org/TR/2011/WD-html5-20110525/content-models.html#phrasing-content)
   $wrapperFocusHeading.innerHTML = $span.innerHTML
 
@@ -174,6 +167,7 @@ Accordion.prototype.initHeaderAttributes = function ($headerWrapper, index) {
     $summary.parentNode.replaceChild($summarySpan, $summary)
 
     $button.appendChild($summarySpan)
+    $button.appendChild(this.getButtonPunctuationEl())
   }
 
   $button.appendChild($showIcons)
@@ -325,6 +319,25 @@ Accordion.prototype.setInitialState = function ($section) {
       }
     }
   }
+}
+
+/**
+* Create an element to improve semantics of the section button with punctuation
+* @return {object} DOM element
+*
+* Used to add pause (with a comma) for assistive technology.
+* Example: [heading]Section A ,[pause] Show this section.
+* https://accessibility.blog.gov.uk/2017/12/18/what-working-on-gov-uk-navigation-taught-us-about-accessibility/
+*
+* Adding punctuation to the button can also improve its general semantics by dividing its contents
+* into thematic chunks.
+* See https://github.com/alphagov/govuk-frontend/issues/2327#issuecomment-922957442
+*/
+Accordion.prototype.getButtonPunctuationEl = function () {
+  var $punctuationEl = document.createElement('span')
+  $punctuationEl.classList.add('govuk-visually-hidden', 'govuk-accordion__section-heading-divider')
+  $punctuationEl.innerHTML = ', '
+  return $punctuationEl
 }
 
 export default Accordion
