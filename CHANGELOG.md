@@ -6,6 +6,10 @@
 
 - [#2339: Add text align override classes](https://github.com/alphagov/govuk-frontend/pull/2339)
 
+### Fixes
+
+- [#2347: Fix panel text overflowing when zoomed in on mobile #2347](https://github.com/alphagov/govuk-frontend/pull/2347)
+
 ## 3.13.1 (Fix release)
 
 ### Fixes
