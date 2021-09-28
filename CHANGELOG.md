@@ -2,6 +2,15 @@
 
 ## Unreleased
 
+### New features
+
+#### Use override classes to set text alignment
+
+You can now use the `govuk-!-text-align-left`, `govuk-!-text-align-centre` and `govuk-!-text-align-right` CSS classes to set text alignment on elements.
+
+This was added in [pull request #2368: Add text align override classes](https://github.com/alphagov/govuk-frontend/pull/2368).
+
+
 ## 3.13.1 (Fix release)
 
 ### Fixes

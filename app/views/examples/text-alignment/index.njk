@@ -1,0 +1,198 @@
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "table/macro.njk" import govukTable %}
+
+{% extends "layout.njk" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    "href": "/"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <h1 class="govuk-heading-xl">Text alignment</h1>
+
+  <h2 class="govuk-heading-m">govuk-!-text-align-right</h2>
+  {{ govukTable({
+    caption: "Month you apply",
+    captionClasses: "govuk-table__caption--m",
+    firstCellIsHeader: true,
+    head: [
+      {
+        text: "Date"
+      },
+      {
+        text: "Rate for vehicles",
+        classes: 'govuk-!-text-align-right'
+      },
+      {
+        text: "Rate for bicycles",
+        classes: 'govuk-!-text-align-right'
+      }
+    ],
+    rows: [
+      [
+        {
+          text: "First 6 weeks"
+        },
+        {
+          text: "£109.80 per week",
+          classes: 'govuk-!-text-align-right'
+        },
+        {
+          text: "£59.10 per week",
+          classes: 'govuk-!-text-align-right'
+        }
+      ],
+      [
+        {
+          text: "Next 33 weeks"
+        },
+        {
+          text: "£159.80 per week",
+          classes: 'govuk-!-text-align-right'
+        },
+        {
+          text: "£89.10 per week",
+          classes: 'govuk-!-text-align-right'
+        }
+      ],
+      [
+        {
+          text: "Total estimated pay"
+        },
+        {
+          text: "£4,282.20",
+          classes: 'govuk-!-text-align-right'
+        },
+        {
+          text: "£2,182.20",
+          classes: 'govuk-!-text-align-right'
+        }
+      ]
+    ]
+  }) }}
+
+  <h2 class="govuk-heading-m">govuk-!-text-align-centre</h2>
+  {{ govukTable({
+    caption: "Month you apply",
+    captionClasses: "govuk-table__caption--m",
+    firstCellIsHeader: true,
+    head: [
+      {
+        text: "Date"
+      },
+      {
+        text: "Rate for vehicles",
+        classes: 'govuk-!-text-align-centre'
+      },
+      {
+        text: "Rate for bicycles",
+        classes: 'govuk-!-text-align-centre'
+      }
+    ],
+    rows: [
+      [
+        {
+          text: "First 6 weeks"
+        },
+        {
+          text: "£109.80 per week",
+          classes: 'govuk-!-text-align-centre'
+        },
+        {
+          text: "£59.10 per week",
+          classes: 'govuk-!-text-align-centre'
+        }
+      ],
+      [
+        {
+          text: "Next 33 weeks"
+        },
+        {
+          text: "£159.80 per week",
+          classes: 'govuk-!-text-align-centre'
+        },
+        {
+          text: "£89.10 per week",
+          classes: 'govuk-!-text-align-centre'
+        }
+      ],
+      [
+        {
+          text: "Total estimated pay"
+        },
+        {
+          text: "£4,282.20",
+          classes: 'govuk-!-text-align-centre'
+        },
+        {
+          text: "£2,182.20",
+          classes: 'govuk-!-text-align-centre'
+        }
+      ]
+    ]
+  }) }}
+
+  <h2 class="govuk-heading-m">govuk-!-text-align-left</h2>
+  {{ govukTable({
+    caption: "Month you apply",
+    captionClasses: "govuk-table__caption--m",
+    firstCellIsHeader: true,
+    head: [
+      {
+        text: "Date"
+      },
+      {
+        text: "Rate for vehicles",
+        classes: 'govuk-!-text-align-left'
+      },
+      {
+        text: "Rate for bicycles",
+        classes: 'govuk-!-text-align-left'
+      }
+    ],
+    rows: [
+      [
+        {
+          text: "First 6 weeks"
+        },
+        {
+          text: "£109.80 per week",
+          classes: 'govuk-!-text-align-left'
+        },
+        {
+          text: "£59.10 per week",
+          classes: 'govuk-!-text-align-left'
+        }
+      ],
+      [
+        {
+          text: "Next 33 weeks"
+        },
+        {
+          text: "£159.80 per week",
+          classes: 'govuk-!-text-align-left'
+        },
+        {
+          text: "£89.10 per week",
+          classes: 'govuk-!-text-align-left'
+        }
+      ],
+      [
+        {
+          text: "Total estimated pay"
+        },
+        {
+          text: "£4,282.20",
+          classes: 'govuk-!-text-align-left'
+        },
+        {
+          text: "£2,182.20",
+          classes: 'govuk-!-text-align-left'
+        }
+      ]
+    ]
+  }) }}
+
+{% endblock %}
