@@ -10,6 +10,9 @@ You can now use the `govuk-!-text-align-left`, `govuk-!-text-align-centre` and `
 
 This was added in [pull request #2368: Add text align override classes](https://github.com/alphagov/govuk-frontend/pull/2368).
 
+### Fixes
+
+- [#2366: Fix panel text overflowing when zoomed in on mobile #2366](https://github.com/alphagov/govuk-frontend/pull/2366)
 
 ## 3.13.1 (Fix release)
 
