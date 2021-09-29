@@ -2,13 +2,15 @@
 
 ## Unreleased
 
+## 3.14.0 (Feature release)
+
 ### New features
 
-#### Use override classes to set text alignment
+#### Set text alignment with override classes
 
 You can now use the `govuk-!-text-align-left`, `govuk-!-text-align-centre` and `govuk-!-text-align-right` CSS classes to set text alignment on elements.
 
-This was added in [pull request #2339: Add text align override classes](https://github.com/alphagov/govuk-frontend/pull/2339).
+This was added in [pull request #2339: Add `text-align` override classes](https://github.com/alphagov/govuk-frontend/pull/2339). Thanks to [Ed Horsford](https://github.com/edwardhorsford) for reporting this issue.
 
 #### Define negative spacing using the `govuk-spacing` function
 
@@ -16,11 +18,11 @@ You can now pass the negative equivalent of a point from the spacing scale to th
 
 For example, `govuk-spacing(1)` returns `5px`, and `govuk-spacing(-1)` returns `-5px`.
 
-This was added in [pull request #2348: Allow govuk-spacing to output negative spacing](https://github.com/alphagov/govuk-frontend/pull/2348).
+This was added in [pull request #2348: Allow `govuk-spacing` to output negative spacing](https://github.com/alphagov/govuk-frontend/pull/2348). Thanks to [Chris Hill-Scott](https://github.com/quis) for reporting this issue.
 
 ### Fixes
 
-- [#2347: Fix panel text overflowing when zoomed in on mobile #2347](https://github.com/alphagov/govuk-frontend/pull/2347)
+- [#2347: Prevent panel text overflowing when zoomed in on mobile](https://github.com/alphagov/govuk-frontend/pull/2347) - thanks to [Phil Sherry](https://github.com/philsherry) for reporting this issue.
 
 ## 3.13.1 (Fix release)
 
