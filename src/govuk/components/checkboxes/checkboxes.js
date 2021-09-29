@@ -32,7 +32,7 @@ Checkboxes.prototype.init = function () {
 
     // Skip checkboxes without data-aria-controls attributes, or where the
     // target element does not exist.
-    if (!target || !$module.querySelector('#' + target)) {
+    if (!target || !document.getElementById(target)) {
       return
     }
 
