@@ -30,7 +30,7 @@ We recommend [installing GOV.UK Frontend using node package manager
 
 ### 2. Install using compiled files
 
-You can also install GOV.UK Frontend by [copying our CSS, JavaScript and asset 
+You can also install GOV.UK Frontend by [copying our CSS, JavaScript and asset
 files into your project](https://frontend.design-system.service.gov.uk/install-using-precompiled-files/).
 
 ## Browser and assistive technology support
@@ -69,6 +69,12 @@ To be notified when there’s a new release, you can either:
 - join the [#govuk-design-system channel on cross-government Slack](https://ukgovernmentdigital.slack.com/app_redirect?channel=govuk-design-system)
 
 Find out how to [update with npm](https://frontend.design-system.service.gov.uk/updating-with-npm/).
+
+### Security
+
+GDS is an advocate of responsible vulnerability disclosure. If you’ve found a vulnerability, we would like to know so we can fix it.
+
+For full details on how to tell us about vulnerabilities, [see our security policy](https://github.com/alphagov/govuk-frontend/security/policy).
 
 ## Licence
 
