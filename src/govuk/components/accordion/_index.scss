@@ -15,8 +15,6 @@
 
   .govuk-accordion__section-heading {
     // Override browser defaults to ensure consistent element height
-    // Font size is set in .govuk-accordion__section-button
-    @include govuk-font(24);
 
     margin-top: 0; // Override browser default
     margin-bottom: 0; // Override browser default
@@ -28,10 +26,14 @@
   // Buttons within the sections don’t need default styling
   .govuk-accordion__section-button {
     @include govuk-text-colour;
-    @include govuk-font($size: 24, $weight: bold);
+
     display: block;
     margin-bottom: 0;
     padding-top: govuk-spacing(3);
+  }
+
+  .govuk-accordion__section-heading-focus-wrapper {
+    @include govuk-font($size: 24, $weight: bold);
   }
 
   // Remove the bottom margin from the last item inside the content
@@ -329,11 +331,7 @@
     // As a result this is applied to the pseudo element that has a display:block property to maintain Design
     .govuk-accordion__section-summary:before,
     .govuk-accordion__section-toggle:before {
-      margin-top: govuk-spacing(2);
-
-      @include govuk-media-query ($from: desktop) {
-        margin-top: 8px;
-      }
+      margin-top: 13px;
     }
 
     // Space between icon and text,
