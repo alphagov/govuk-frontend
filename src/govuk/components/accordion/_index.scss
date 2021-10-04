@@ -287,37 +287,11 @@
       }
     }
 
-    // 1. A fix to improve NVDA announcements.
-    //
-    // NVDA treats any form of line break as a different announcement landmark and will therefore announce it separately.
-    // As you move through NVDA using arrow keys, this announces each element in turn (rather than a whole block) which could cause confusion for users
-    // This line break can come from both the semantics via br tags or two block-level tags, or via CSS using display: block or display: table
-    // In this case it was the span(s) within the button being styled using display: block.
-    // This fix forces a visual break but bypasses NVDA's line break interpreter, thus causing the accordion title and the inner Content to be read as a single sentence
-    //
-    // Consider NVDA output before:
-    // clickable  heading    level 2  button  collapsed    [Heading copy],Show
-    // heading    level 2  button  collapsed    this section
-    //
-    // After:
-    // clickable  heading    level 2  button  collapsed    [Heading copy] , Showthis section
-    //
-    // Additional details and testing videos can be found here:
-    // (https://github.com/alphagov/govuk-design-system/issues/1706#issuecomment-862451506)
-    //
-    // 2. Limit the width of the focus state.
-    //
-    // This fix also has the unrelated but desirable effect of limiting the width of the focus
-    // state to only span the width of the contained text, rather than the width of the whole
-    // component. This impacts section-toggle, section-heading-focus-wrapper and section-summary.
     .govuk-accordion__section-toggle,
     .govuk-accordion__section-heading-focus-wrapper,
     .govuk-accordion__section-summary {
-      display: inline;
-
-      &:before {
-        content: "";
-        display: block;
+      display: block;
+      margin-top: 13px;
       }
     }
 
@@ -325,13 +299,6 @@
     .govuk-accordion__section-toggle {
       @include govuk-font($size: 19);
       color: $govuk-link-colour;
-    }
-
-    // The NVDA fix means a display:inline element cannot receive box model spacing styling such as margin.
-    // As a result this is applied to the pseudo element that has a display:block property to maintain Design
-    .govuk-accordion__section-summary:before,
-    .govuk-accordion__section-toggle:before {
-      margin-top: 13px;
     }
 
     // Space between icon and text,
