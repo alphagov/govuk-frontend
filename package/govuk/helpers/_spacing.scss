@@ -8,15 +8,26 @@
 ///
 /// Returns measurement corresponding to the spacing point requested.
 ///
-/// @param {Number} $spacing-point - Point on the spacing scale (set in `settings/_spacing.sccs`)
+/// @param {Number} $spacing-point - Point on the spacing scale
+///  (set in `settings/_spacing.scss`)
 ///
-/// @returns {String} Spacing Measurement eg. 10px
+/// @returns {String} Spacing measurement eg. 10px
 ///
 /// @example scss
 ///   .element {
 ///     padding: govuk-spacing(5);
-///     top: govuk-spacing(2) !important; // if `!important` is required
 ///   }
+///
+/// @example scss Using negative spacing
+///   .element {
+///     margin-top: govuk-spacing(-1);
+///   }
+///
+/// @example scss Marking spacing declarations as important
+///   .element {
+///     margin-top: govuk-spacing(1) !important;
+///   }
+///
 /// @access public
 
 @function govuk-spacing($spacing-point) {
@@ -27,11 +38,18 @@
     + "#{$actual-input-type}.";
   }
 
+  $is-negative: false;
+  @if ($spacing-point < 0) {
+    $is-negative: true;
+    $spacing-point: abs($spacing-point);
+  }
+
   @if not map-has-key($govuk-spacing-points, $spacing-point) {
     @error "Unknown spacing variable `#{$spacing-point}`. Make sure you are using a point from the spacing scale in `_settings/spacing.scss`.";
   }
 
-  @return map-get($govuk-spacing-points, $spacing-point);
+  $value: map-get($govuk-spacing-points, $spacing-point);
+  @return if($is-negative, $value * -1, $value);
 }
 
 /// Responsive spacing
