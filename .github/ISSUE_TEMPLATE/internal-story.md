@@ -17,7 +17,9 @@ assignees: ''
 
 ## Why
 
-## Who needs to know about this
+## Who needs to work on this
+
+## Who needs to review this
 
 ## Done when
 
