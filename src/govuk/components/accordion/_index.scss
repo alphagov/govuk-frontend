@@ -32,7 +32,7 @@
     padding-top: govuk-spacing(3);
   }
 
-  .govuk-accordion__section-heading-focus-wrapper {
+  .govuk-accordion__section-heading-text {
     @include govuk-font($size: 24, $weight: bold);
   }
 
@@ -196,7 +196,7 @@
     .govuk-accordion__section-button {
       width: 100%;
 
-      padding: govuk-spacing(2) 0 govuk-spacing(3) 0;
+      padding: govuk-spacing(2) 0 0 0;
 
       border: 0;
 
@@ -246,9 +246,9 @@
         // styling is being applied to inner text elements that receive focus
         outline: 0;
 
-        .govuk-accordion__section-heading-focus-wrapper,
-        .govuk-accordion__section-summary,
-        .govuk-accordion__section-toggle {
+        .govuk-accordion__section-heading-text-focus,
+        .govuk-accordion__section-summary-focus,
+        .govuk-accordion__section-toggle-focus {
           @include govuk-focused-text;
         }
 
@@ -279,7 +279,7 @@
 
     // As Chevron icon is vertically aligned it overlaps with the focus state bottom border
     // Styling adds some spacing
-    .govuk-accordion__section-button:focus .govuk-accordion__section-toggle {
+    .govuk-accordion__section-button:focus .govuk-accordion__section-toggle-focus {
       padding-bottom: 3px;
 
       @include govuk-media-query ($from: desktop) {
@@ -288,10 +288,15 @@
     }
 
     .govuk-accordion__section-toggle,
-    .govuk-accordion__section-heading-focus-wrapper,
+    .govuk-accordion__section-heading-text,
     .govuk-accordion__section-summary {
       display: block;
-      margin-top: 13px;
+      margin-bottom: 13px;
+
+      .govuk-accordion__section-heading-text-focus,
+      .govuk-accordion__section-summary-focus,
+      .govuk-accordion__section-toggle-focus {
+        display: inline;
       }
     }
 
@@ -321,19 +326,13 @@
         .govuk-accordion-nav__chevron {
           background-color: transparent;
         }
-
-        .govuk-accordion__show-all-text,
-        .govuk-accordion__section-toggle {
-          text-decoration: underline;
-          text-decoration-thickness: 3px;
-        }
       }
 
       .govuk-accordion__show-all:focus,
       .govuk-accordion__section-button:focus {
-        .govuk-accordion__section-heading-focus-wrapper,
-        .govuk-accordion__section-summary,
-        .govuk-accordion__section-toggle,
+        .govuk-accordion__section-heading-text-focus,
+        .govuk-accordion__section-summary-focus,
+        .govuk-accordion__section-toggle-focus,
         .govuk-accordion-nav__chevron {
           background: transparent;
           background-color: transparent;

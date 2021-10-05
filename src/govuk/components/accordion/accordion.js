@@ -32,14 +32,17 @@ function Accordion ($module) {
 
   this.sectionHeaderClass = 'govuk-accordion__section-header'
   this.sectionHeadingClass = 'govuk-accordion__section-heading'
-  this.sectionHeadingClassFocusWrapper = 'govuk-accordion__section-heading-focus-wrapper'
+  this.sectionHeadingTextClass = 'govuk-accordion__section-heading-text'
+  this.sectionHeadingTextFocusClass = 'govuk-accordion__section-heading-text-focus'
   this.sectionSummaryClass = 'govuk-accordion__section-summary'
   this.sectionButtonClass = 'govuk-accordion__section-button'
   this.sectionExpandedClass = 'govuk-accordion__section--expanded'
   this.sectionShowHideToggleClass = 'govuk-accordion__section-toggle'
+  this.sectionShowHideToggleFocusClass = 'govuk-accordion__section-toggle-focus'
   this.sectionShowHideTextClass = 'govuk-accordion__section-toggle-text'
   this.upChevronIconClass = 'govuk-accordion-nav__chevron'
   this.downChevronIconClass = 'govuk-accordion-nav__chevron--down'
+  this.sectionSummaryFocusClass = 'govuk-accordion__section-summary-focus'
 }
 
 // Initialize component
@@ -117,25 +120,33 @@ Accordion.prototype.initHeaderAttributes = function ($headerWrapper, index) {
   // Create show / hide icons with text.
   var $showIcons = document.createElement('span')
   $showIcons.classList.add(this.sectionShowHideToggleClass)
+  // Create an inner container to limit the width of the show/hide focus state
+  var $showIconsFocus = document.createElement('span')
+  $showIconsFocus.classList.add(this.sectionShowHideToggleFocusClass)
+  $showIcons.appendChild($showIconsFocus)
 
   // Wrapper of heading to receive focus state design
   // ID set to allow the heading alone to be referenced without "this section"
-  var $wrapperFocusHeading = document.createElement('span')
-  $wrapperFocusHeading.classList.add(this.sectionHeadingClassFocusWrapper)
-  $wrapperFocusHeading.setAttribute('id', this.moduleId + '-heading-' + (index + 1))
+  var $wrapperHeadingText = document.createElement('span')
+  $wrapperHeadingText.classList.add(this.sectionHeadingTextClass)
+  $wrapperHeadingText.setAttribute('id', this.moduleId + '-heading-' + (index + 1))
+  // Create an inner heading container to limit the width of the heading text focus state
+  var $wrapperHeadingTextFocus = document.createElement('span')
+  $wrapperHeadingTextFocus.classList.add(this.sectionHeadingTextFocusClass)
+  $wrapperHeadingText.appendChild($wrapperHeadingTextFocus)
 
   // Build additional wrapper for toggle text, place icon before wrapped text.
   var $wrapperToggleText = document.createElement('span')
   var $icon = document.createElement('span')
   $icon.classList.add(this.upChevronIconClass)
-  $showIcons.appendChild($icon)
+  $showIconsFocus.appendChild($icon)
   $wrapperToggleText.classList.add(this.sectionShowHideTextClass)
-  $showIcons.appendChild($wrapperToggleText)
+  $showIconsFocus.appendChild($wrapperToggleText)
 
   // Copy all attributes (https://developer.mozilla.org/en-US/docs/Web/API/Element/attributes) from $span to $button
   for (var i = 0; i < $span.attributes.length; i++) {
     var attr = $span.attributes.item(i)
-    // Add all attributes but not ID as this is being add directly on $wrapperFocusHeading
+    // Add all attributes but not ID as this is being added directly on $wrapperHeadingText
     if (attr.nodeName !== 'id') {
       $button.setAttribute(attr.nodeName, attr.nodeValue)
     }
@@ -143,15 +154,20 @@ Accordion.prototype.initHeaderAttributes = function ($headerWrapper, index) {
 
   $heading.removeChild($span)
   $heading.appendChild($button)
-  $button.appendChild($wrapperFocusHeading)
+  $button.appendChild($wrapperHeadingText)
+
   $button.appendChild(this.getButtonPunctuationEl())
   // span could contain HTML elements (see https://www.w3.org/TR/2011/WD-html5-20110525/content-models.html#phrasing-content)
-  $wrapperFocusHeading.innerHTML = $span.innerHTML
+  $wrapperHeadingTextFocus.innerHTML = $span.innerHTML
 
   // If summary content exists add to DOM in correct order
   if (typeof ($summary) !== 'undefined' && $summary !== null) {
     // Create new element, in order to swap the summary from div to span as the summary element is with a button
     var $summarySpan = document.createElement('span')
+    // Create an inner summary container to limit the width of the summary focus state
+    var $summarySpanFocus = document.createElement('span')
+    $summarySpanFocus.classList.add(this.sectionSummaryFocusClass)
+    $summarySpan.appendChild($summarySpanFocus)
 
     // Get original attributes, and pass them to the replacement
     for (var j = 0, l = $summary.attributes.length; j < l; ++j) {
@@ -161,7 +177,7 @@ Accordion.prototype.initHeaderAttributes = function ($headerWrapper, index) {
     }
 
     // Persist contents
-    $summarySpan.innerHTML = $summary.innerHTML
+    $summarySpanFocus.innerHTML = $summary.innerHTML
 
     // Switch summary from div to span
     $summary.parentNode.replaceChild($summarySpan, $summary)
