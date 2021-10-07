@@ -122,6 +122,46 @@ describe('/components/accordion', () => {
         expect(expandedState).toEqual(expandedStateAfterRefresh)
       })
 
+      it('should transform the button span to <button>', async () => {
+        await page.goto(baseUrl + '/components/accordion/preview', { waitUntil: 'load' })
+
+        const buttonTag = await page.evaluate(() => document.body.querySelector('.govuk-accordion .govuk-accordion__section-button').tagName)
+
+        expect(buttonTag).toEqual('BUTTON')
+      })
+
+      it('should contain a heading text container', async () => {
+        await page.goto(baseUrl + '/components/accordion/preview', { waitUntil: 'load' })
+
+        const headingTextContainer = await page.evaluate(() => document.body.querySelector('.govuk-accordion .govuk-accordion__section-button > .govuk-accordion__section-heading-text'))
+
+        expect(headingTextContainer).toBeTruthy()
+      })
+
+      describe('focus containers', () => {
+        it('should contain a heading text focus container', async () => {
+          await page.goto(baseUrl + '/components/accordion/preview', { waitUntil: 'load' })
+
+          const headingTextFocusContainer = await page.evaluate(() => document.body.querySelector('.govuk-accordion .govuk-accordion__section-button .govuk-accordion__section-heading-text > .govuk-accordion__section-heading-text-focus'))
+
+          expect(headingTextFocusContainer).toBeTruthy()
+        })
+        it('should contain a summary focus container', async () => {
+          await page.goto(baseUrl + '/components/accordion/with-additional-descriptions/preview', { waitUntil: 'load' })
+
+          const summaryFocusContainer = await page.evaluate(() => document.body.querySelector('.govuk-accordion .govuk-accordion__section-button > .govuk-accordion__section-summary > .govuk-accordion__section-summary-focus'))
+
+          expect(summaryFocusContainer).toBeTruthy()
+        })
+        it('should contain a show/hide focus container', async () => {
+          await page.goto(baseUrl + '/components/accordion/preview', { waitUntil: 'load' })
+
+          const headingTextFocusContainer = await page.evaluate(() => document.body.querySelector('.govuk-accordion .govuk-accordion__section-button .govuk-accordion__section-toggle > .govuk-accordion__section-toggle-focus'))
+
+          expect(headingTextFocusContainer).toBeTruthy()
+        })
+      })
+
       describe('"↓/↑" icon', () => {
         it('should display "↓/↑" in the section headings', async () => {
           await page.goto(baseUrl + '/components/accordion/preview', { waitUntil: 'load' })
@@ -134,37 +174,50 @@ describe('/components/accordion', () => {
       })
 
       describe('hidden comma', () => {
-        it('should contain hidden comma " ," for assistive technology', async () => {
+        it('should contain hidden comma " ," after the heading text for assistive technology', async () => {
           await page.goto(baseUrl + '/components/accordion/preview', { waitUntil: 'load' })
 
-          const numberOfExampleSections = 2
-          const numberOfCommas = await page.evaluate(() => document.body.querySelectorAll('.govuk-accordion .govuk-accordion__section .govuk-visually-hidden:first-child').length)
-          const firstComma = await page.evaluate(() => document.body.querySelectorAll('.govuk-accordion .govuk-accordion__section .govuk-visually-hidden')[0].innerHTML)
-          const secondComma = await page.evaluate(() => document.body.querySelectorAll('.govuk-accordion .govuk-accordion__section .govuk-visually-hidden')[2].innerHTML)
+          const commaAfterHeadingTextClassName = await page.evaluate(() => document.body.querySelector('.govuk-accordion__section-heading-text').nextElementSibling.className)
 
-          expect(numberOfCommas).toEqual(numberOfExampleSections)
-          expect(firstComma).toMatch(/, /)
-          expect(secondComma).toMatch(/, /)
+          const commaAfterHeadingTextContent = await page.evaluate(() => document.body.querySelector('.govuk-accordion__section-heading-text').nextElementSibling.innerHTML)
+
+          expect(commaAfterHeadingTextClassName).toEqual('govuk-visually-hidden govuk-accordion__section-heading-divider')
+
+          expect(commaAfterHeadingTextContent).toEqual(', ')
+        })
+
+        it('should contain hidden comma " ," after the summary line for assistive technology', async () => {
+          await page.goto(baseUrl + '/components/accordion/with-additional-descriptions/preview', { waitUntil: 'load' })
+
+          const commaAfterHeadingTextClassName = await page.evaluate(() => document.body.querySelector('.govuk-accordion__section-summary').nextElementSibling.className)
+
+          const commaAfterHeadingTextContent = await page.evaluate(() => document.body.querySelector('.govuk-accordion__section-summary').nextElementSibling.innerHTML)
+
+          expect(commaAfterHeadingTextClassName).toEqual('govuk-visually-hidden govuk-accordion__section-heading-divider')
+
+          expect(commaAfterHeadingTextContent).toEqual(', ')
         })
       })
 
-      describe('location of summary', () => {
-        it('should move the additional description to the button text in the correct order', async () => {
-          await page.goto(baseUrl + '/components/accordion/with-additional-descriptions/preview', { waitUntil: 'load' })
+      describe('summary line', () => {
+        describe('location of summary', () => {
+          it('should move the additional description to the button text in the correct order', async () => {
+            await page.goto(baseUrl + '/components/accordion/with-additional-descriptions/preview', { waitUntil: 'load' })
 
-          const summaryClass = 'govuk-accordion__section-summary govuk-body'
-          const firstSummaryElement = await page.evaluate(() => document.body.querySelectorAll('.govuk-accordion__section-button > span')[2].className)
-          expect(firstSummaryElement).toMatch(summaryClass)
+            const summaryClass = 'govuk-accordion__section-summary govuk-body'
+            const firstSummaryElement = await page.evaluate(() => document.body.querySelectorAll('.govuk-accordion__section-button > span')[2].className)
+            expect(firstSummaryElement).toMatch(summaryClass)
+          })
         })
-      })
 
-      describe('div to span', () => {
-        it('should have converted the div to a span tag', async () => {
-          await page.goto(baseUrl + '/components/accordion/with-additional-descriptions/preview', { waitUntil: 'load' })
+        describe('div to span', () => {
+          it('should have converted the div to a span tag', async () => {
+            await page.goto(baseUrl + '/components/accordion/with-additional-descriptions/preview', { waitUntil: 'load' })
 
-          const firstSummaryElement = await page.evaluate(() => document.body.querySelector('.govuk-accordion .govuk-accordion__section .govuk-accordion__section-summary').outerHTML)
+            const firstSummaryElement = await page.evaluate(() => document.body.querySelector('.govuk-accordion .govuk-accordion__section .govuk-accordion__section-summary').outerHTML)
 
-          expect(firstSummaryElement).toMatch(/<span[^>]*>/)
+            expect(firstSummaryElement).toMatch(/<span[^>]*>/)
+          })
         })
       })
 
