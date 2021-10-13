@@ -5,12 +5,18 @@
 ### Breaking changes
 You must make the following changes when you migrate to this release, or your service may break.
 
-#### Remove deprecated $govuk-border-width-form-element-error
-To make sure the border width of form elements in their error state is the same as form elements in their normal state, we've deprecated the `$govuk-border-width-form-element-error` setting.
+#### Remove deprecated `$govuk-border-width-form-element-error` variable
+In [GOV.UK Frontend version 3.8.0](https://github.com/alphagov/govuk-frontend/releases/tag/v3.8.0), we made the border width of form elements in their error state the same as for form elements in their normal state, and deprecated the `$govuk-border-width-form-element-error` variable.
 
-You must remove this setting. Otherwise, you would have to conditionally add overrides if users changed the `$govuk-border-width-form-element` to maintain a consistent focus state.
+We've now removed `$govuk-border-width-form-element-error` completely.
 
-This was added in [pull request 1963: Remove deprecated `$govuk-border-width-form-element-error` setting](https://github.com/alphagov/govuk-frontend/pull/1963).
+If you’re referencing `$govuk-border-width-form-element-error` in your own Sass, you must remove this variable. If you're also defining your own error state, you only need to change the border colour.
+
+You should avoid overriding the border width. For example, replace `border: $govuk-border-width-form-element-error solid $govuk-error-colour;` with `border-color: $govuk-error-colour;`.
+
+You should also remove any override of `$govuk-border-width-form-element-error` from your Sass. This override no longer does anything.
+
+This was added in [pull request 1963: Remove deprecated `$govuk-border-width-form-element-error` variable](https://github.com/alphagov/govuk-frontend/pull/1963).
 
 #### Update the HTML for summary lists
 
