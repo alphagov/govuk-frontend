@@ -11,7 +11,7 @@
   The state of each section is saved to the DOM via the `aria-expanded`
   attribute, which also provides accessibility.
 
-  A Chevron icon has been addded for extra affordance that this is an interactive element.
+  A Chevron icon has been added for extra affordance that this is an interactive element.
 
 */
 

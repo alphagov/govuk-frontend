@@ -92,9 +92,9 @@ examples:
               <li>Example item 2</li>
             </ul>
 
-- name: with additional Content & descriptions
+- name: with long content and description
   data:
-    id: with-descriptions-and-longer-content
+    id: with-long-content-and-description
     items:
       - heading:
           text: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis tortor porttitor.

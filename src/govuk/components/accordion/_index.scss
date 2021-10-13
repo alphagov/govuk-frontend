@@ -2,9 +2,7 @@
   $govuk-accordion-base-colour: govuk-colour("black");
   $govuk-accordion-hover-colour: govuk-colour("light-grey", $legacy: "grey-3");
   $govuk-accordion-icon-focus-colour: govuk-colour("yellow");
-  $govuk-accordion-border-width: 3px;
   $govuk-accordion-bottom-border-width: 1px;
-  $govuk-header-link-underline-thickness: 3px;
 
   .govuk-accordion {
     @include govuk-responsive-margin(6, "bottom");
@@ -50,7 +48,18 @@
 
     // Borders between accordion sections
     .govuk-accordion__section {
-      padding: 0;
+      padding-top: 0;
+    }
+
+    // Hide the body of collapsed sections
+    .govuk-accordion__section-content {
+      display: none;
+      @include govuk-responsive-padding(8, "bottom");
+    }
+
+    // Show the body of expanded sections
+    .govuk-accordion__section--expanded .govuk-accordion__section-content {
+      display: block;
     }
 
     .govuk-accordion__show-all {
@@ -82,7 +91,9 @@
       &:hover {
         color: $govuk-accordion-base-colour;
         background: $govuk-accordion-hover-colour;
-        // Mimic the focus styles so the height is the same changing from hover to focused
+        // The GOV.UK focus state adds a box-shadow to the top and bottom of the button. We add a
+        // grey box-shadow on hover too, to make the height of the hover state match the height of
+        // the focus state.
         box-shadow: 0 -2px $govuk-accordion-hover-colour, 0 4px $govuk-accordion-hover-colour;
 
         .govuk-accordion__section-toggle-text {
@@ -112,18 +123,19 @@
       }
     }
 
-    // Removing padding from once JavaScript loaded
     .govuk-accordion__section-heading {
       padding: 0;
+      border-top: $govuk-accordion-bottom-border-width solid $govuk-border-colour;
     }
 
-    // Create Chervon icon aligned with text
+    // Create Chevron icon aligned with text
     .govuk-accordion-nav__chevron {
       box-sizing: border-box;
       display: inline-block;
 
       position: relative;
 
+      // Set size using rems to make the icon scale with text if user resizes text in their browser
       width: govuk-px-to-rem(20px);
       height: govuk-px-to-rem(20px);
 
@@ -139,7 +151,7 @@
         line-height: 1;
       }
 
-      // Create inner Chervon arrow
+      // Create inner chevron arrow
       &:after {
         content: "";
         box-sizing: border-box;
@@ -182,20 +194,13 @@
       }
     }
 
-    .govuk-accordion__section-header {
-      padding: 0;
-    }
-
     // Buttons within the headers don’t need default styling
     .govuk-accordion__section-button {
-      position: relative;
-
       width: 100%;
 
       padding: govuk-spacing(2) 0 govuk-spacing(3);
 
-      border-top: $govuk-accordion-bottom-border-width solid $govuk-border-colour;
-      border-width: $govuk-accordion-bottom-border-width 0 0 0;
+      border-width: 0;
 
       color: $govuk-text-colour;
       background: none;
@@ -266,7 +271,7 @@
       }
     }
 
-    // NVDA fix
+    // 1. A fix to improve NVDA announcements.
     //
     // NVDA treats any form of line break as a different announcement landmark and will therefore announce it separately.
     // As you move through NVDA using arrow keys, this announces each element in turn (rather than a whole block) which could cause confusion for users
@@ -283,6 +288,12 @@
     //
     // Additional details and testing videos can be found here:
     // (https://github.com/alphagov/govuk-design-system/issues/1706#issuecomment-862451506)
+    //
+    // 2. Limit the width of the focus state.
+    //
+    // This fix also has the unrelated but desirable effect of limiting the width of the focus
+    // state to only span the width of the contained text, rather than the width of the whole
+    // component. This impacts section-toggle, section-heading-focus-wrapper and section-summary.
     .govuk-accordion__section-toggle,
     .govuk-accordion__section-heading-focus-wrapper,
     .govuk-accordion__section-summary {
@@ -307,23 +318,11 @@
       @include govuk-responsive-margin(1, "top");
     }
 
-    // Hide body of expanded sections
-    .govuk-accordion__section-content {
-      display: none;
-      @include govuk-responsive-padding(0, "top");
-      @include govuk-responsive-padding(8, "bottom");
-    }
-
-    // Show the body of expanded sections
-    .govuk-accordion__section--expanded .govuk-accordion__section-content {
-      display: block;
-    }
-
     // Space between icon and text,
     // Avoid placing on icon due to transform altering placement of margin
     .govuk-accordion__show-all-text,
     .govuk-accordion__section-toggle-text {
-      margin-left: govuk-em(5, 19);
+      margin-left: govuk-spacing(1);
       vertical-align: middle;
     }
 
@@ -343,7 +342,7 @@
         .govuk-accordion__show-all-text,
         .govuk-accordion__section-toggle {
           text-decoration: underline;
-          text-decoration-thickness: $govuk-header-link-underline-thickness;
+          text-decoration-thickness: 3px;
         }
       }
 
@@ -365,7 +364,7 @@
       .govuk-accordion__section-header:hover {
         border-top-color: $govuk-border-colour;
 
-        box-shadow: inset 0 $govuk-accordion-border-width 0 0 $govuk-link-colour;
+        box-shadow: inset 0 3px 0 0 $govuk-link-colour;
 
         .govuk-accordion__section-button {
           border-top-color: $govuk-border-colour;
