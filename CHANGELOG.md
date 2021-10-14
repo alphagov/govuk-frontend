@@ -20,10 +20,21 @@ Do not include an empty `<span class="govuk-summary-list__actions"></span>` with
 
 This change was introduced in [pull request #2323](https://github.com/alphagov/govuk-frontend/pull/2323).
 
-## Fixes
+#### Make sure components that conditionally reveal other questions still work as expected
 
-- [#2255: Fix conditionally revealed questions getting out of sync when multiple sets of radios and checkboxes contain inputs with the same name](https://github.com/alphagov/govuk-frontend/pull/2255)
+On radios and checkboxes, the JavaScript now looks within the whole page for conditionally revealed content. Before, it only looked within the same set of radios or checkboxes.
+
+If you see unexpected behaviour, make sure the revealed content's `id` is unique within the page the content is on. Reusing the same `id` within a page could cause a radio or checkbox to reveal and hide the wrong element, and also means your HTML is invalid.
+
+This change was introduced in [pull request #2370: Prevent issues with conditionally revealed content when content `id` includes CSS syntax characters](https://github.com/alphagov/govuk-frontend/pull/2370).
+
+### Fixes
+
+We’ve made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#2255: Prevent conditionally revealed questions getting out of sync when multiple sets of radios and checkboxes contain inputs with the same name](https://github.com/alphagov/govuk-frontend/pull/2255)
 - [#2323: Avoid invalid nesting of `<span>` within a `<dd>` in summary list](https://github.com/alphagov/govuk-frontend/pull/2323)
+- [#2370: Prevent issues with conditionally revealed content when content `id` includes CSS syntax characters](https://github.com/alphagov/govuk-frontend/pull/2370)
 
 ## 3.14.0 (Feature release)
 
