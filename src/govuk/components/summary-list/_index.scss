@@ -6,19 +6,28 @@
       display: table;
       width: 100%;
       table-layout: fixed; // Required to allow us to wrap words that overflow.
+      border-collapse: collapse;
     }
     margin: 0; // Reset default user agent styles
     @include govuk-responsive-margin(6, "bottom");
   }
 
   .govuk-summary-list__row {
+    border-bottom: 1px solid $govuk-border-colour;
+
     @include govuk-media-query($until: tablet) {
       margin-bottom: govuk-spacing(3);
-      border-bottom: 1px solid $govuk-border-colour;
     }
     @include govuk-media-query($from: tablet) {
       display: table-row;
     }
+  }
+
+  // Provide an empty 'cell' for rows that don't have actions – otherwise the
+  // bottom border is not drawn for that part of the row in some browsers.
+  .govuk-summary-list__row--no-actions:after {
+    content: "";
+    display: table-cell;
   }
 
   .govuk-summary-list__key,
@@ -31,7 +40,6 @@
       padding-top: govuk-spacing(2);
       padding-right: govuk-spacing(4);
       padding-bottom: govuk-spacing(2);
-      border-bottom: 1px solid $govuk-border-colour;
     }
   }
 
@@ -62,16 +70,6 @@
   .govuk-summary-list__value {
     @include govuk-media-query($until: tablet) {
       margin-bottom: govuk-spacing(3);
-    }
-    @include govuk-media-query($from: tablet) {
-      width: 50%;
-    }
-  }
-
-  // Expand width when value is last column (no action)
-  .govuk-summary-list__value:last-child {
-    @include govuk-media-query($from: tablet) {
-      width: 70%;
     }
   }
 
@@ -109,36 +107,30 @@
 
   // No border on entire summary list
   .govuk-summary-list--no-border {
-    @include govuk-media-query($until: tablet) {
-      .govuk-summary-list__row {
-        border: 0;
-      }
+    .govuk-summary-list__row {
+      border: 0;
     }
 
+    // Increase padding by 1px to compensate for 'missing' border
     @include govuk-media-query($from: tablet) {
       .govuk-summary-list__key,
       .govuk-summary-list__value,
       .govuk-summary-list__actions {
-        // Remove 1px border, add 1px height back on
         padding-bottom: govuk-spacing(2) + 1px;
-        border: 0;
       }
     }
   }
 
   // No border on specific rows
   .govuk-summary-list__row--no-border {
-    @include govuk-media-query($until: tablet) {
-      border: 0;
-    }
+    border: 0;
 
+    // Increase padding by 1px to compensate for 'missing' border
     @include govuk-media-query($from: tablet) {
       .govuk-summary-list__key,
       .govuk-summary-list__value,
       .govuk-summary-list__actions {
-        // Remove 1px border, add 1px height back on
         padding-bottom: govuk-spacing(2) + 1px;
-        border: 0;
       }
     }
   }

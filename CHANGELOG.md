@@ -12,9 +12,18 @@ You must remove this setting. Otherwise, you would have to conditionally add ove
 
 This was added in [pull request 1963: Remove deprecated `$govuk-border-width-form-element-error` setting](https://github.com/alphagov/govuk-frontend/pull/1963).
 
+#### Update the HTML for summary lists
+
+We've updated the HTML for the summary list component to avoid nesting `<span>` elements within `<dd>` elements, which is invalid HTML. This update only affects summary lists that include a mix of rows with and without actions.
+
+Do not include an empty `<span class="govuk-summary-list__actions"></span>` within the rows that do not have any actions. Instead, add the `govuk-summary-list__row--no-actions` modifier class to the row.
+
+This change was introduced in [pull request #2323](https://github.com/alphagov/govuk-frontend/pull/2323).
+
 ## Fixes
 
 - [#2255: Fix conditionally revealed questions getting out of sync when multiple sets of radios and checkboxes contain inputs with the same name](https://github.com/alphagov/govuk-frontend/pull/2255)
+- [#2323: Avoid invalid nesting of `<span>` within a `<dd>` in summary list](https://github.com/alphagov/govuk-frontend/pull/2323)
 
 ## 3.14.0 (Feature release)
 
