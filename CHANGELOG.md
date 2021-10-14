@@ -12,6 +12,9 @@ You must remove this setting. Otherwise, you would have to conditionally add ove
 
 This was added in [pull request 1963: Remove deprecated `$govuk-border-width-form-element-error` setting](https://github.com/alphagov/govuk-frontend/pull/1963).
 
+## Fixes
+
+- [#2255: Fix conditionally revealed questions getting out of sync when multiple sets of radios and checkboxes contain inputs with the same name](https://github.com/alphagov/govuk-frontend/pull/2255)
 
 ## 3.14.0 (Feature release)
 

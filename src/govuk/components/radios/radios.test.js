@@ -145,3 +145,29 @@ describe('Radios with conditional reveals', () => {
     })
   })
 })
+
+describe('Radios with multiple groups and conditional reveals', () => {
+  describe('when JavaScript is available', () => {
+    it('hides conditional reveals in other groups', async () => {
+      await page.goto(`${baseUrl}/examples/conditional-reveals`)
+
+      // Choose the second radio in the first group, which reveals additional content
+      await page.click('#fave-primary-2')
+
+      const conditionalContentId = await page.evaluate(
+        'document.getElementById("fave-primary-2").getAttribute("aria-controls")'
+      )
+
+      // Assert conditional reveal is visible
+      const isConditionalContentVisible = await waitForVisibleSelector(`[id="${conditionalContentId}"]`)
+      expect(isConditionalContentVisible).toBeTruthy()
+
+      // Choose a different radio with the same name, but in a different group
+      await page.click('#fave-other-3')
+
+      // Expect conditional content to have been hidden
+      const isConditionalContentHidden = await waitForHiddenSelector(`[id="${conditionalContentId}"]`)
+      expect(isConditionalContentHidden).toBeTruthy()
+    })
+  })
+})

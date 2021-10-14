@@ -190,3 +190,51 @@ describe('Checkboxes with a None checkbox and conditional reveals', () => {
     })
   })
 })
+
+describe('Checkboxes with multiple groups and a None checkbox and conditional reveals', () => {
+  describe('when JavaScript is available', () => {
+    it('none checkbox unchecks other checkboxes in other groups', async () => {
+      await page.goto(`${baseUrl}/examples/conditional-reveals`)
+
+      // Check some checkboxes in the first and second groups
+      await page.click('#colour-primary-3')
+      await page.click('#colour-secondary-2')
+
+      // Check the None checkbox in the third group
+      await page.click('#colour-other-3')
+
+      // Expect the checkboxes in the first and second groups to be unchecked
+      const firstCheckboxIsUnchecked = await waitForVisibleSelector('[id="colour-primary-3"]:not(:checked)')
+      expect(firstCheckboxIsUnchecked).toBeTruthy()
+
+      const secondCheckboxIsUnchecked = await waitForVisibleSelector('[id="colour-secondary-2"]:not(:checked)')
+      expect(secondCheckboxIsUnchecked).toBeTruthy()
+    })
+
+    it('hides conditional reveals in other groups', async () => {
+      await page.goto(`${baseUrl}/examples/conditional-reveals`)
+
+      // Check the second checkbox in the first group, which reveals additional content
+      await page.click('#colour-primary-2')
+
+      const conditionalContentId = await page.evaluate(
+        'document.getElementById("colour-primary-2").getAttribute("aria-controls")'
+      )
+
+      // Assert that conditional reveal is visible
+      const isConditionalContentVisible = await waitForVisibleSelector(`[id="${conditionalContentId}"]`)
+      expect(isConditionalContentVisible).toBeTruthy()
+
+      // Check the None checkbox
+      await page.click('#colour-other-3')
+
+      // Assert that the second checkbox in the first group is unchecked
+      const otherCheckboxIsUnchecked = await waitForVisibleSelector('[id="colour-primary-2"]:not(:checked)')
+      expect(otherCheckboxIsUnchecked).toBeTruthy()
+
+      // Expect conditional content to have been hidden
+      const isConditionalContentHidden = await waitForHiddenSelector(`[id="${conditionalContentId}"]`)
+      expect(isConditionalContentHidden).toBeTruthy()
+    })
+  })
+})
