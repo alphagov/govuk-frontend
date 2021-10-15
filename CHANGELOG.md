@@ -5,6 +5,15 @@
 ### Breaking changes
 You must make the following changes when you migrate to this release, or your service may break.
 
+#### Remove deprecated `govuk-main-wrapper` and `govuk-main-wrapper--l` mixins
+In [GOV.UK Frontend version 3.0.0](https://github.com/alphagov/govuk-frontend/releases/tag/v3.0.0), we deprecated the `govuk-main-wrapper` and `govuk-main-wrapper--l` Sass mixins.
+
+We've now removed the `govuk-main-wrapper` and `govuk-main-wrapper--l` mixins.
+
+Remove any use of these mixins in your own Sass. You can replace these mixins with direct references to the [spacing mixins](https://design-system.service.gov.uk/styles/spacing/#spacing-on-custom-components)
+
+This change was introduced in [pull request #2385: Remove deprecated `govuk-main-wrapper` and `govuk-main-wrapper--l` mixins](https://github.com/alphagov/govuk-frontend/pull/2385).
+
 #### Remove deprecated `$govuk-border-width-form-element-error` variable
 In [GOV.UK Frontend version 3.8.0](https://github.com/alphagov/govuk-frontend/releases/tag/v3.8.0), we made the border width of form elements in their error state the same as for form elements in their normal state, and deprecated the `$govuk-border-width-form-element-error` variable.
 
