@@ -24,7 +24,7 @@ We've updated the HTML for the summary list component to avoid nesting `<span>` 
 
 Do not include an empty `<span class="govuk-summary-list__actions"></span>` within the rows that do not have any actions. Instead, add the `govuk-summary-list__row--no-actions` modifier class to the row.
 
-This change was introduced in [pull request #2323](https://github.com/alphagov/govuk-frontend/pull/2323).
+This change was introduced in [pull request #2323: Avoid invalid nesting of `<span>` within a `<dd>` in summary list](https://github.com/alphagov/govuk-frontend/pull/2323).
 
 ## Fixes
 
