@@ -49,6 +49,7 @@ describe('Checkboxes with conditional reveals', () => {
       expect(hasAriaExpanded).toBeFalsy()
       expect(hasAriaControls).toBeFalsy()
     })
+
     it('falls back to making all conditional content visible', async () => {
       await goToAndGetComponent('checkboxes', 'with-conditional-items')
 
@@ -56,6 +57,7 @@ describe('Checkboxes with conditional reveals', () => {
       expect(isContentVisible).toBeTruthy()
     })
   })
+
   describe('when JavaScript is available', () => {
     it('has conditional content revealed that is associated with a checked input', async () => {
       const $ = await goToAndGetComponent('checkboxes', 'with-conditional-item-checked')
@@ -66,6 +68,7 @@ describe('Checkboxes with conditional reveals', () => {
       const isContentVisible = await waitForVisibleSelector(`[id="${inputAriaControls}"]:not(.govuk-checkboxes__conditional--hidden)`)
       expect(isContentVisible).toBeTruthy()
     })
+
     it('has no conditional content revealed that is associated with an unchecked input', async () => {
       const $ = await goToAndGetComponent('checkboxes', 'with-conditional-item-checked')
       const $component = $('.govuk-checkboxes')
@@ -75,6 +78,7 @@ describe('Checkboxes with conditional reveals', () => {
       const isContentHidden = await waitForHiddenSelector(`[id="${uncheckedInputAriaControls}"].govuk-checkboxes__conditional--hidden`)
       expect(isContentHidden).toBeTruthy()
     })
+
     it('indicates when conditional content is collapsed or revealed', async () => {
       await goToAndGetComponent('checkboxes', 'with-conditional-items')
 
@@ -86,6 +90,7 @@ describe('Checkboxes with conditional reveals', () => {
       const isExpanded = await waitForVisibleSelector('.govuk-checkboxes__item:first-child .govuk-checkboxes__input[aria-expanded=true]')
       expect(isExpanded).toBeTruthy()
     })
+
     it('toggles the conditional content when clicking an input', async () => {
       const $ = await goToAndGetComponent('checkboxes', 'with-conditional-items')
       const $component = $('.govuk-checkboxes')
@@ -102,6 +107,7 @@ describe('Checkboxes with conditional reveals', () => {
       const isContentHidden = await waitForHiddenSelector(`[id="${firstInputAriaControls}"]`)
       expect(isContentHidden).toBeTruthy()
     })
+
     it('toggles the conditional content when using an input with a keyboard', async () => {
       const $ = await goToAndGetComponent('checkboxes', 'with-conditional-items')
       const $component = $('.govuk-checkboxes')
@@ -118,6 +124,11 @@ describe('Checkboxes with conditional reveals', () => {
 
       const isContentHidden = await waitForHiddenSelector(`[id="${firstInputAriaControls}"]`)
       expect(isContentHidden).toBeTruthy()
+    })
+
+    it('does not error when ID of revealed content contains special characters', async () => {
+      // Errors logged to the console will cause this test to fail
+      await goToAndGetComponent('checkboxes', 'with-conditional-items-with-special-characters')
     })
   })
 })
