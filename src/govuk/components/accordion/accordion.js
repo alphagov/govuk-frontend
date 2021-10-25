@@ -94,7 +94,7 @@ Accordion.prototype.initSectionHeaders = function () {
   nodeListForEach(this.$sections, function ($section, i) {
     // Set header attributes
     var $header = $section.querySelector('.' + this.sectionHeaderClass)
-    this.initHeaderAttributes($header, i)
+    this.constructHeaderMarkup($header, i)
     this.setExpanded(this.isExpanded($section), $section)
 
     // Handle events
@@ -106,8 +106,7 @@ Accordion.prototype.initSectionHeaders = function () {
   }.bind(this))
 }
 
-// Set individual header attributes
-Accordion.prototype.initHeaderAttributes = function ($headerWrapper, index) {
+Accordion.prototype.constructHeaderMarkup = function ($headerWrapper, index) {
   var $span = $headerWrapper.querySelector('.' + this.sectionButtonClass)
   var $heading = $headerWrapper.querySelector('.' + this.sectionHeadingClass)
   var $summary = $headerWrapper.querySelector('.' + this.sectionSummaryClass)
