@@ -116,32 +116,6 @@ Accordion.prototype.constructHeaderMarkup = function ($headerWrapper, index) {
   $button.setAttribute('type', 'button')
   $button.setAttribute('aria-controls', this.moduleId + '-content-' + (index + 1))
 
-  // Create span for show / hide icons with text.
-  var $showIcons = document.createElement('span')
-  $showIcons.classList.add(this.sectionShowHideToggleClass)
-  // Create an inner container to limit the width of the show/hide focus state
-  var $showIconsFocus = document.createElement('span')
-  $showIconsFocus.classList.add(this.sectionShowHideToggleFocusClass)
-  $showIcons.appendChild($showIconsFocus)
-
-  // Wrapper of heading
-  // ID set to allow the heading alone to be referenced without "this section"
-  var $wrapperHeadingText = document.createElement('span')
-  $wrapperHeadingText.classList.add(this.sectionHeadingTextClass)
-  $wrapperHeadingText.setAttribute('id', this.moduleId + '-heading-' + (index + 1))
-  // Create an inner heading container to limit the width of the heading text focus state
-  var $wrapperHeadingTextFocus = document.createElement('span')
-  $wrapperHeadingTextFocus.classList.add(this.sectionHeadingTextFocusClass)
-  $wrapperHeadingText.appendChild($wrapperHeadingTextFocus)
-
-  // Build an additional wrapper for the show/hide text. Append text after the show/hide icon
-  var $wrapperToggleText = document.createElement('span')
-  var $icon = document.createElement('span')
-  $icon.classList.add(this.upChevronIconClass)
-  $showIconsFocus.appendChild($icon)
-  $wrapperToggleText.classList.add(this.sectionShowHideTextClass)
-  $showIconsFocus.appendChild($wrapperToggleText)
-
   // Copy all attributes (https://developer.mozilla.org/en-US/docs/Web/API/Element/attributes) from $span to $button
   for (var i = 0; i < $span.attributes.length; i++) {
     var attr = $span.attributes.item(i)
@@ -152,13 +126,36 @@ Accordion.prototype.constructHeaderMarkup = function ($headerWrapper, index) {
     }
   }
 
-  $heading.removeChild($span)
-  $heading.appendChild($button)
+  // Wrapper of heading
+  // ID set to allow the heading alone to be referenced without "this section"
+  var $wrapperHeadingText = document.createElement('span')
+  $wrapperHeadingText.classList.add(this.sectionHeadingTextClass)
+  $wrapperHeadingText.setAttribute('id', this.moduleId + '-heading-' + (index + 1))
+  // Create an inner heading container to limit the width of the heading text focus state
+  var $wrapperHeadingTextFocus = document.createElement('span')
+  $wrapperHeadingTextFocus.classList.add(this.sectionHeadingTextFocusClass)
+  $wrapperHeadingText.appendChild($wrapperHeadingTextFocus)
+  // span could contain HTML elements (see https://www.w3.org/TR/2011/WD-html5-20110525/content-models.html#phrasing-content)
+  $wrapperHeadingTextFocus.innerHTML = $span.innerHTML
+
+  // Build an additional wrapper for the show/hide text. Append text after the show/hide icon
+  // Create span for show / hide icons with text.
+  var $showIcons = document.createElement('span')
+  $showIcons.classList.add(this.sectionShowHideToggleClass)
+  // Create an inner container to limit the width of the focus state
+  var $showIconsFocus = document.createElement('span')
+  $showIconsFocus.classList.add(this.sectionShowHideToggleFocusClass)
+  $showIcons.appendChild($showIconsFocus)
+  var $wrapperToggleText = document.createElement('span')
+  var $icon = document.createElement('span')
+  $icon.classList.add(this.upChevronIconClass)
+  $showIconsFocus.appendChild($icon)
+  $wrapperToggleText.classList.add(this.sectionShowHideTextClass)
+  $showIconsFocus.appendChild($wrapperToggleText)
+
   $button.appendChild($wrapperHeadingText)
 
   $button.appendChild(this.getButtonPunctuationEl())
-  // span could contain HTML elements (see https://www.w3.org/TR/2011/WD-html5-20110525/content-models.html#phrasing-content)
-  $wrapperHeadingTextFocus.innerHTML = $span.innerHTML
 
   // If summary content exists add to DOM in correct order
   if (typeof ($summary) !== 'undefined' && $summary !== null) {
@@ -190,6 +187,9 @@ Accordion.prototype.constructHeaderMarkup = function ($headerWrapper, index) {
   }
 
   $button.appendChild($showIcons)
+
+  $heading.removeChild($span)
+  $heading.appendChild($button)
 }
 
 // When section toggled, set and store state
