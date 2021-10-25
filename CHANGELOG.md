@@ -25,7 +25,7 @@ You should avoid overriding the border width. For example, replace `border: $gov
 
 You should also remove any override of `$govuk-border-width-form-element-error` from your Sass. This override no longer does anything.
 
-This was added in [pull request 1963: Remove deprecated `$govuk-border-width-form-element-error` variable](https://github.com/alphagov/govuk-frontend/pull/1963).
+This change was introduced in [pull request #1963: Remove deprecated `$govuk-border-width-form-element-error` variable](https://github.com/alphagov/govuk-frontend/pull/1963).
 
 #### Update the HTML for summary lists
 
