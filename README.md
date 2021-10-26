@@ -76,6 +76,8 @@ GDS is an advocate of responsible vulnerability disclosure. If you’ve found a 
 
 For full details on how to tell us about vulnerabilities, [see our security policy](https://github.com/alphagov/govuk-frontend/security/policy).
 
+The govuk-frontend repository is public. We do not monitor it outside of office hours (10am to 4pm). To learn how to report inappropriate content, see [GitHub's page on reporting abuse or spam](https://docs.github.com/en/communities/maintaining-your-safety-on-github/reporting-abuse-or-spam). If you're not sure whether some content is appropriate, check it against our [code of conduct](https://github.com/alphagov/govuk-frontend/blob/main/CODE_OF_CONDUCT.md).
+
 ## Licence
 
 Unless stated otherwise, the codebase is released under the MIT License. This
