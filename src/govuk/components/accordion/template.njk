@@ -13,7 +13,7 @@
             </span>
           </h{{ headingLevel }}>
           {% if item.summary.html or item.summary.text %}
-            <div class="govuk-accordion__section-summary govuk-body">
+            <div class="govuk-accordion__section-summary govuk-body" id="{{ id }}-summary-{{ loop.index }}">
               {{ item.summary.html | safe if item.summary.html else item.summary.text }}
             </div>
           {% endif %}
