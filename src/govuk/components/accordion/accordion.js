@@ -126,26 +126,26 @@ Accordion.prototype.constructHeaderMarkup = function ($headerWrapper, index) {
     }
   }
 
-  // Wrapper of heading
+  // Create container for heading text so it can be styled
   // ID set to allow the heading alone to be referenced without "this section"
   var $wrapperHeadingText = document.createElement('span')
   $wrapperHeadingText.classList.add(this.sectionHeadingTextClass)
   $wrapperHeadingText.setAttribute('id', this.moduleId + '-heading-' + (index + 1))
-  // Create an inner heading container to limit the width of the heading text focus state
+  // Create an inner heading text container to limit the width of the focus state
   var $wrapperHeadingTextFocus = document.createElement('span')
   $wrapperHeadingTextFocus.classList.add(this.sectionHeadingTextFocusClass)
   $wrapperHeadingText.appendChild($wrapperHeadingTextFocus)
   // span could contain HTML elements (see https://www.w3.org/TR/2011/WD-html5-20110525/content-models.html#phrasing-content)
   $wrapperHeadingTextFocus.innerHTML = $span.innerHTML
 
-  // Build an additional wrapper for the show/hide text. Append text after the show/hide icon
-  // Create span for show / hide icons with text.
+  // Create container for show / hide icons and text.
   var $showIcons = document.createElement('span')
   $showIcons.classList.add(this.sectionShowHideToggleClass)
   // Create an inner container to limit the width of the focus state
   var $showIconsFocus = document.createElement('span')
   $showIconsFocus.classList.add(this.sectionShowHideToggleFocusClass)
   $showIcons.appendChild($showIconsFocus)
+  // Create wrapper for the show / hide text. Append text after the show/hide icon
   var $wrapperToggleText = document.createElement('span')
   var $icon = document.createElement('span')
   $icon.classList.add(this.upChevronIconClass)
@@ -153,8 +153,12 @@ Accordion.prototype.constructHeaderMarkup = function ($headerWrapper, index) {
   $wrapperToggleText.classList.add(this.sectionShowHideTextClass)
   $showIconsFocus.appendChild($wrapperToggleText)
 
+  // Append elements to the button:
+  // 1. Heading text
+  // 2. Punctuation
+  // 3. (Optional: Summary line followed by punctuation)
+  // 4. Show / hide toggle
   $button.appendChild($wrapperHeadingText)
-
   $button.appendChild(this.getButtonPunctuationEl())
 
   // If summary content exists add to DOM in correct order
