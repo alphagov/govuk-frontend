@@ -30,18 +30,20 @@ function Accordion ($module) {
   this.showAllClass = 'govuk-accordion__show-all'
   this.showAllTextClass = 'govuk-accordion__show-all-text'
 
+  this.sectionExpandedClass = 'govuk-accordion__section--expanded'
+  this.sectionButtonClass = 'govuk-accordion__section-button'
   this.sectionHeaderClass = 'govuk-accordion__section-header'
   this.sectionHeadingClass = 'govuk-accordion__section-heading'
   this.sectionHeadingTextClass = 'govuk-accordion__section-heading-text'
   this.sectionHeadingTextFocusClass = 'govuk-accordion__section-heading-text-focus'
-  this.sectionSummaryClass = 'govuk-accordion__section-summary'
-  this.sectionButtonClass = 'govuk-accordion__section-button'
-  this.sectionExpandedClass = 'govuk-accordion__section--expanded'
+
   this.sectionShowHideToggleClass = 'govuk-accordion__section-toggle'
   this.sectionShowHideToggleFocusClass = 'govuk-accordion__section-toggle-focus'
   this.sectionShowHideTextClass = 'govuk-accordion__section-toggle-text'
   this.upChevronIconClass = 'govuk-accordion-nav__chevron'
   this.downChevronIconClass = 'govuk-accordion-nav__chevron--down'
+
+  this.sectionSummaryClass = 'govuk-accordion__section-summary'
   this.sectionSummaryFocusClass = 'govuk-accordion__section-summary-focus'
 }
 
