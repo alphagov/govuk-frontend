@@ -23,12 +23,12 @@ function Accordion ($module) {
   this.$module = $module
   this.moduleId = $module.getAttribute('id')
   this.$sections = $module.querySelectorAll('.govuk-accordion__section')
-  this.$openAllButton = ''
+  this.$showAllButton = ''
   this.browserSupportsSessionStorage = helper.checkForSessionStorage()
 
   this.controlsClass = 'govuk-accordion__controls'
-  this.openAllClass = 'govuk-accordion__show-all'
-  this.openAllTextClass = 'govuk-accordion__show-all-text'
+  this.showAllClass = 'govuk-accordion__show-all'
+  this.showAllTextClass = 'govuk-accordion__show-all-text'
 
   this.sectionHeaderClass = 'govuk-accordion__section-header'
   this.sectionHeadingClass = 'govuk-accordion__section-heading'
@@ -57,35 +57,35 @@ Accordion.prototype.init = function () {
 
   // See if "Show all sections" button text should be updated
   var areAllSectionsOpen = this.checkIfAllSectionsOpen()
-  this.updateOpenAllButton(areAllSectionsOpen)
+  this.updateShowAllButton(areAllSectionsOpen)
 }
 
 // Initialise controls and set attributes
 Accordion.prototype.initControls = function () {
   // Create "Show all" button and set attributes
-  this.$openAllButton = document.createElement('button')
-  this.$openAllButton.setAttribute('type', 'button')
-  this.$openAllButton.setAttribute('class', this.openAllClass)
-  this.$openAllButton.setAttribute('aria-expanded', 'false')
+  this.$showAllButton = document.createElement('button')
+  this.$showAllButton.setAttribute('type', 'button')
+  this.$showAllButton.setAttribute('class', this.showAllClass)
+  this.$showAllButton.setAttribute('aria-expanded', 'false')
 
   // Create icon, add to element
   var $icon = document.createElement('span')
   $icon.classList.add(this.upChevronIconClass)
-  this.$openAllButton.appendChild($icon)
+  this.$showAllButton.appendChild($icon)
 
   // Create control wrapper and add controls to it
   var $accordionControls = document.createElement('div')
   $accordionControls.setAttribute('class', this.controlsClass)
-  $accordionControls.appendChild(this.$openAllButton)
+  $accordionControls.appendChild(this.$showAllButton)
   this.$module.insertBefore($accordionControls, this.$module.firstChild)
 
-  // Build additional wrapper for open all toggle text, place icon before wrapped text.
-  var $wrapperOpenAllText = document.createElement('span')
-  $wrapperOpenAllText.classList.add(this.openAllTextClass)
-  this.$openAllButton.appendChild($wrapperOpenAllText)
+  // Build additional wrapper for Show all toggle text and place after icon
+  var $wrappershowAllText = document.createElement('span')
+  $wrappershowAllText.classList.add(this.showAllTextClass)
+  this.$showAllButton.appendChild($wrappershowAllText)
 
-  // Handle events for the controls
-  this.$openAllButton.addEventListener('click', this.onOpenOrCloseAllToggle.bind(this))
+  // Handle click events on the show/hide all button
+  this.$showAllButton.addEventListener('click', this.onShowOrHideAllToggle.bind(this))
 }
 
 // Initialise section headers
@@ -112,12 +112,12 @@ Accordion.prototype.initHeaderAttributes = function ($headerWrapper, index) {
   var $heading = $headerWrapper.querySelector('.' + this.sectionHeadingClass)
   var $summary = $headerWrapper.querySelector('.' + this.sectionSummaryClass)
 
-  // Copy existing span element to an actual button element, for improved accessibility.
+  // Create a button element that will replace the '.govuk-accordion__section-button' span
   var $button = document.createElement('button')
   $button.setAttribute('type', 'button')
   $button.setAttribute('aria-controls', this.moduleId + '-content-' + (index + 1))
 
-  // Create show / hide icons with text.
+  // Create span for show / hide icons with text.
   var $showIcons = document.createElement('span')
   $showIcons.classList.add(this.sectionShowHideToggleClass)
   // Create an inner container to limit the width of the show/hide focus state
@@ -125,7 +125,7 @@ Accordion.prototype.initHeaderAttributes = function ($headerWrapper, index) {
   $showIconsFocus.classList.add(this.sectionShowHideToggleFocusClass)
   $showIcons.appendChild($showIconsFocus)
 
-  // Wrapper of heading to receive focus state design
+  // Wrapper of heading
   // ID set to allow the heading alone to be referenced without "this section"
   var $wrapperHeadingText = document.createElement('span')
   $wrapperHeadingText.classList.add(this.sectionHeadingTextClass)
@@ -135,7 +135,7 @@ Accordion.prototype.initHeaderAttributes = function ($headerWrapper, index) {
   $wrapperHeadingTextFocus.classList.add(this.sectionHeadingTextFocusClass)
   $wrapperHeadingText.appendChild($wrapperHeadingTextFocus)
 
-  // Build additional wrapper for toggle text, place icon before wrapped text.
+  // Build an additional wrapper for the show/hide text. Append text after the show/hide icon
   var $wrapperToggleText = document.createElement('span')
   var $icon = document.createElement('span')
   $icon.classList.add(this.upChevronIconClass)
@@ -146,7 +146,8 @@ Accordion.prototype.initHeaderAttributes = function ($headerWrapper, index) {
   // Copy all attributes (https://developer.mozilla.org/en-US/docs/Web/API/Element/attributes) from $span to $button
   for (var i = 0; i < $span.attributes.length; i++) {
     var attr = $span.attributes.item(i)
-    // Add all attributes but not ID as this is being added directly on $wrapperHeadingText
+    // Add all attributes but not ID as this is being added to
+    // the section heading ($wrapperHeadingText)
     if (attr.nodeName !== 'id') {
       $button.setAttribute(attr.nodeName, attr.nodeValue)
     }
@@ -162,7 +163,10 @@ Accordion.prototype.initHeaderAttributes = function ($headerWrapper, index) {
 
   // If summary content exists add to DOM in correct order
   if (typeof ($summary) !== 'undefined' && $summary !== null) {
-    // Create new element, in order to swap the summary from div to span as the summary element is with a button
+    // Create a new `span` element and copy the summary line content from the original `div` to the
+    // new `span`
+    // This is because the summary line text is now inside a button element, which can only contain
+    // phrasing content
     var $summarySpan = document.createElement('span')
     // Create an inner summary container to limit the width of the summary focus state
     var $summarySpanFocus = document.createElement('span')
@@ -176,10 +180,10 @@ Accordion.prototype.initHeaderAttributes = function ($headerWrapper, index) {
       $summarySpan.setAttribute(nodeName, nodeValue)
     }
 
-    // Persist contents
+    // Copy original contents of summary to the new summary span
     $summarySpanFocus.innerHTML = $summary.innerHTML
 
-    // Switch summary from div to span
+    // Replace the original summary `div` with the new summary `span`
     $summary.parentNode.replaceChild($summarySpan, $summary)
 
     $button.appendChild($summarySpan)
@@ -199,7 +203,7 @@ Accordion.prototype.onSectionToggle = function ($section) {
 }
 
 // When Open/Close All toggled, set and store state
-Accordion.prototype.onOpenOrCloseAllToggle = function () {
+Accordion.prototype.onShowOrHideAllToggle = function () {
   var $module = this
   var $sections = this.$sections
   var nowExpanded = !this.checkIfAllSectionsOpen()
@@ -210,7 +214,7 @@ Accordion.prototype.onOpenOrCloseAllToggle = function () {
     $module.storeState($section)
   })
 
-  $module.updateOpenAllButton(nowExpanded)
+  $module.updateShowAllButton(nowExpanded)
 }
 
 // Set section attributes when opened/closed
@@ -221,12 +225,12 @@ Accordion.prototype.setExpanded = function (expanded, $section) {
   var $newButtonText = expanded ? 'Hide' : 'Show'
 
   // Build additional copy of "this section" for assistive technology and place inside toggle link
-  var $srAdditionalCopy = document.createElement('span')
-  $srAdditionalCopy.classList.add('govuk-visually-hidden')
-  $srAdditionalCopy.innerHTML = ' this section'
+  var $visuallyHiddenText = document.createElement('span')
+  $visuallyHiddenText.classList.add('govuk-visually-hidden')
+  $visuallyHiddenText.innerHTML = ' this section'
 
   $showHideText.innerHTML = $newButtonText
-  $showHideText.appendChild($srAdditionalCopy)
+  $showHideText.appendChild($visuallyHiddenText)
   $button.setAttribute('aria-expanded', expanded)
 
   // Swap icon, change class
@@ -240,7 +244,7 @@ Accordion.prototype.setExpanded = function (expanded, $section) {
 
   // See if "Show all sections" button text should be updated
   var areAllSectionsOpen = this.checkIfAllSectionsOpen()
-  this.updateOpenAllButton(areAllSectionsOpen)
+  this.updateShowAllButton(areAllSectionsOpen)
 }
 
 // Get state of section
@@ -260,18 +264,18 @@ Accordion.prototype.checkIfAllSectionsOpen = function () {
 }
 
 // Update "Show all sections" button
-Accordion.prototype.updateOpenAllButton = function (expanded) {
-  var $icon = this.$openAllButton.querySelector('.' + this.upChevronIconClass)
-  var $openAllCopy = this.$openAllButton.querySelector('.' + this.openAllTextClass)
+Accordion.prototype.updateShowAllButton = function (expanded) {
+  var $showAllIcon = this.$showAllButton.querySelector('.' + this.upChevronIconClass)
+  var $showAllText = this.$showAllButton.querySelector('.' + this.showAllTextClass)
   var newButtonText = expanded ? 'Hide all sections' : 'Show all sections'
-  this.$openAllButton.setAttribute('aria-expanded', expanded)
-  $openAllCopy.innerHTML = newButtonText
+  this.$showAllButton.setAttribute('aria-expanded', expanded)
+  $showAllText.innerHTML = newButtonText
 
   // Swap icon, toggle class
   if (expanded) {
-    $icon.classList.remove(this.downChevronIconClass)
+    $showAllIcon.classList.remove(this.downChevronIconClass)
   } else {
-    $icon.classList.add(this.downChevronIconClass)
+    $showAllIcon.classList.add(this.downChevronIconClass)
   }
 }
 

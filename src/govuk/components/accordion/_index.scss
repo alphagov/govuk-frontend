@@ -8,22 +8,19 @@
     @include govuk-responsive-margin(6, "bottom");
   }
 
-  // Borders between accordion sections
   .govuk-accordion__section {
     padding-top: govuk-spacing(3);
   }
 
   .govuk-accordion__section-heading {
     // Override browser defaults to ensure consistent element height
-
-    margin-top: 0; // Override browser default
-    margin-bottom: 0; // Override browser default
+    margin-top: 0;
+    margin-bottom: 0;
 
     padding-top: govuk-spacing(3);
     padding-bottom: govuk-spacing(3);
   }
 
-  // Buttons within the sections don’t need default styling
   .govuk-accordion__section-button {
     @include govuk-text-colour;
 
@@ -48,7 +45,6 @@
       border-bottom: $govuk-accordion-bottom-border-width solid $govuk-border-colour;
     }
 
-    // Borders between accordion sections
     .govuk-accordion__section {
       padding-top: 0;
     }
@@ -93,9 +89,9 @@
       &:hover {
         color: $govuk-accordion-base-colour;
         background: $govuk-accordion-hover-colour;
-        // The GOV.UK focus state adds a box-shadow to the top and bottom of the button. We add a
-        // grey box-shadow on hover too, to make the height of the hover state match the height of
-        // the focus state.
+        // The GOV.UK Design System focus state adds a box-shadow to the top and bottom of the
+        // button. We add a grey box-shadow on hover too, to make the height of the hover state
+        // match the height of the focus state.
         box-shadow: 0 -2px $govuk-accordion-hover-colour, 0 4px $govuk-accordion-hover-colour;
 
         .govuk-accordion__section-toggle-text {
@@ -192,7 +188,6 @@
       }
     }
 
-    // Buttons within the headers don’t need default styling
     .govuk-accordion__section-button {
       width: 100%;
 
@@ -203,7 +198,7 @@
       border-top: $govuk-accordion-bottom-border-width solid $govuk-border-colour;
 
       // Visually separate the section from the one underneath when user changes colours in their
-      // browser.
+      // browser. See https://github.com/alphagov/govuk-frontend/issues/2321#issuecomment-924201488
       border-bottom: govuk-spacing(2) solid transparent;
 
       color: $govuk-text-colour;
@@ -306,8 +301,9 @@
       color: $govuk-link-colour;
     }
 
-    // Space between icon and text,
-    // Avoid placing on icon due to transform altering placement of margin
+    // Add space between the icon and text.
+    // Avoid applying spacing directly to the icon as the use of `transform` will change the
+    // placement of any margins.
     .govuk-accordion__show-all-text,
     .govuk-accordion__section-toggle-text {
       margin-left: govuk-spacing(1);
