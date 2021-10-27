@@ -42,7 +42,6 @@ const sassBootstrap = `
   );
 
   @import "helpers/media-queries";
-  @import "tools/iff";
   @import "helpers/typography";`
 
 describe('@mixin govuk-typography-common', () => {
