@@ -231,6 +231,14 @@ describe('/components/accordion', () => {
         expect(ShowOrHideButtonText).toEqual('Hide this section')
       })
 
+      it('should have a data-nosnippet attribute on the "Show / hide this section" container to hide it from search result snippets', async () => {
+        await page.goto(baseUrl + '/components/accordion/preview', { waitUntil: 'load' })
+
+        const dataNoSnippetAttribute = await page.evaluate(() => document.body.querySelector('.govuk-accordion__section-toggle').getAttribute('data-nosnippet'))
+
+        expect(dataNoSnippetAttribute).toEqual('')
+      })
+
       describe('hidden text', () => {
         it('should contain hidden text " this section" for assistive technology', async () => {
           await page.goto(baseUrl + '/components/accordion/preview', { waitUntil: 'load' })

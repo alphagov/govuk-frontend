@@ -143,6 +143,10 @@ Accordion.prototype.constructHeaderMarkup = function ($headerWrapper, index) {
   // Create container for show / hide icons and text.
   var $showToggle = document.createElement('span')
   $showToggle.classList.add(this.sectionShowHideToggleClass)
+  // Tell Google not to index the 'show' text as part of the heading
+  // For the snippet to work with JavaScript, it must be added before adding the page element to the
+  // page's DOM. See https://developers.google.com/search/docs/advanced/robots/robots_meta_tag#data-nosnippet-attr
+  $showToggle.setAttribute('data-nosnippet', '')
   // Create an inner container to limit the width of the focus state
   var $showToggleFocus = document.createElement('span')
   $showToggleFocus.classList.add(this.sectionShowHideToggleFocusClass)
