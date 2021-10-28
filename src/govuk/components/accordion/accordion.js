@@ -129,10 +129,12 @@ Accordion.prototype.constructHeaderMarkup = function ($headerWrapper, index) {
   }
 
   // Create container for heading text so it can be styled
-  // ID set to allow the heading alone to be referenced without "this section"
   var $headingText = document.createElement('span')
   $headingText.classList.add(this.sectionHeadingTextClass)
-  $headingText.setAttribute('id', this.moduleId + '-heading-' + (index + 1))
+  // Copy the span ID to the heading text to allow it to be referenced by `aria-labelledby` on the
+  // hidden content area without "Show this section"
+  $headingText.id = $span.id
+
   // Create an inner heading text container to limit the width of the focus state
   var $headingTextFocus = document.createElement('span')
   $headingTextFocus.classList.add(this.sectionHeadingTextFocusClass)

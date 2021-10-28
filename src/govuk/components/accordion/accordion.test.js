@@ -249,6 +249,18 @@ describe('/components/accordion', () => {
           expect(hiddenText).toEqual(numberOfExampleSections)
         })
       })
+
+      describe('expandable content', () => {
+        it('should have an aria-labelledby that matches the heading text ID', async () => {
+          await page.goto(baseUrl + '/components/accordion/preview', { waitUntil: 'load' })
+
+          const ariaLabelledByValue = await page.evaluate(() => document.body.querySelector('.govuk-accordion__section-content').getAttribute('aria-labelledby'))
+
+          const headingTextId = await page.evaluate(() => document.body.querySelector('.govuk-accordion__section-heading-text').getAttribute('id'))
+
+          expect(ariaLabelledByValue).toEqual(headingTextId)
+        })
+      })
     })
   })
 })
