@@ -6,18 +6,16 @@
 You must make the following changes when you migrate to this release, or your service may break.
 
 #### Remove deprecated `govuk-main-wrapper` and `govuk-main-wrapper--l` mixins
-In [GOV.UK Frontend version 3.0.0](https://github.com/alphagov/govuk-frontend/releases/tag/v3.0.0), we deprecated the `govuk-main-wrapper` and `govuk-main-wrapper--l` Sass mixins.
 
-We've now removed the `govuk-main-wrapper` and `govuk-main-wrapper--l` mixins.
+We've removed the `govuk-main-wrapper` and `govuk-main-wrapper--l` mixins which we deprecated in [GOV.UK Frontend v3.0.0](https://github.com/alphagov/govuk-frontend/releases/tag/v3.0.0).
 
 Remove any use of these mixins in your own Sass. You can replace these mixins with direct references to the [spacing mixins](https://design-system.service.gov.uk/styles/spacing/#spacing-on-custom-components)
 
 This change was introduced in [pull request #2385: Remove deprecated `govuk-main-wrapper` and `govuk-main-wrapper--l` mixins](https://github.com/alphagov/govuk-frontend/pull/2385).
 
 #### Remove deprecated `$govuk-border-width-form-element-error` variable
-In [GOV.UK Frontend version 3.8.0](https://github.com/alphagov/govuk-frontend/releases/tag/v3.8.0), we made the border width of form elements in their error state the same as for form elements in their normal state, and deprecated the `$govuk-border-width-form-element-error` variable.
 
-We've now removed `$govuk-border-width-form-element-error` completely.
+We've removed the `$govuk-border-width-form-element-error` variable which we deprecated in [GOV.UK Frontend v3.8.0](https://github.com/alphagov/govuk-frontend/releases/tag/v3.8.0). At that time, we made the border width of form elements in their error state the same as in their normal state.
 
 If you’re referencing `$govuk-border-width-form-element-error` in your own Sass, you must remove this variable. If you're also defining your own error state, you only need to change the border colour.
 
@@ -42,6 +40,14 @@ On radios and checkboxes, the JavaScript now looks within the whole page for con
 If you see unexpected behaviour, make sure the revealed content's `id` is unique within the page the content is on. Reusing the same `id` within a page could cause a radio or checkbox to reveal and hide the wrong element, and also means your HTML is invalid.
 
 This change was introduced in [pull request #2370: Prevent issues with conditionally revealed content when content `id` includes CSS syntax characters](https://github.com/alphagov/govuk-frontend/pull/2370).
+
+#### Remove calls to deprecated `iff` Sass function
+
+We've removed the `iff` function which we deprecated in [GOV.UK Frontend version 3.6.0](https://github.com/alphagov/govuk-frontend/releases/tag/v3.6.0).
+
+If you’re calling `iff` from your own Sass, you should use [Sass's native `if` function](https://sass-lang.com/documentation/modules#if) instead.
+
+This change was introduced in [pull request #2409: Remove deprecated `iff` Sass function](https://github.com/alphagov/govuk-frontend/pull/2409).
 
 ### Fixes
 

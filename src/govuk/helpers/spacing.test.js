@@ -34,7 +34,6 @@ const sassBootstrap = `
   );
 
   @import "helpers/media-queries";
-  @import "tools/iff";
   @import "helpers/spacing";`
 
 describe('@function govuk-spacing', () => {
