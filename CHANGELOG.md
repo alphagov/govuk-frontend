@@ -41,6 +41,14 @@ If you see unexpected behaviour, make sure the revealed content's `id` is unique
 
 This change was introduced in [pull request #2370: Prevent issues with conditionally revealed content when content `id` includes CSS syntax characters](https://github.com/alphagov/govuk-frontend/pull/2370).
 
+#### Make sure character counts still work as expected
+
+On character counts, the JavaScript now looks within the whole page for the count message. Before, it only looked around the character count.
+
+If you see unexpected behaviour, make sure the `id` for the  textarea is unique within the page the content is on. Reusing the same `id` within a page could cause the wrong count message to be updated, and also means your HTML is invalid.
+
+This change was introduced in [pull request #2408: Prevent issues with character count when textarea `id` includes CSS syntax characters](https://github.com/alphagov/govuk-frontend/pull/2408).
+
 #### Remove calls to deprecated `iff` Sass function
 
 We've removed the `iff` function which we deprecated in [GOV.UK Frontend version 3.6.0](https://github.com/alphagov/govuk-frontend/releases/tag/v3.6.0).
@@ -56,6 +64,7 @@ We’ve made fixes to GOV.UK Frontend in the following pull requests:
 - [#2255: Prevent conditionally revealed questions getting out of sync when multiple sets of radios and checkboxes contain inputs with the same name](https://github.com/alphagov/govuk-frontend/pull/2255)
 - [#2323: Avoid invalid nesting of `<span>` within a `<dd>` in summary list](https://github.com/alphagov/govuk-frontend/pull/2323)
 - [#2370: Prevent issues with conditionally revealed content when content `id` includes CSS syntax characters](https://github.com/alphagov/govuk-frontend/pull/2370)
+- [#2408: Prevent issues with character count when textarea id includes CSS syntax characters](https://github.com/alphagov/govuk-frontend/pull/2408)
 
 ## 3.14.0 (Feature release)
 

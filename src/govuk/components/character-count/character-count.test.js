@@ -142,9 +142,20 @@ describe('Character count', () => {
         })
       })
 
-      describe('when the ID starts with a number', () => {
+      // Errors logged to the console will cause these tests to fail
+      describe('when the textarea ID starts with a number', () => {
         it('still works correctly', async () => {
           await goToExample('with-id-starting-with-number')
+
+          const message = await page.$eval('.govuk-character-count__message', el => el.innerHTML.trim())
+
+          expect(message).toEqual('You have 10 characters remaining')
+        })
+      })
+
+      describe('when the textarea ID contains CSS syntax characters', () => {
+        it('still works correctly', async () => {
+          await goToExample('with-id-with-special-characters')
 
           const message = await page.$eval('.govuk-character-count__message', el => el.innerHTML.trim())
 
