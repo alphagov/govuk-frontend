@@ -2,7 +2,7 @@
 # Component API definition and use
 We have chosen as Nunjucks as the templating language for GOV.UK Frontend components. We expose those templates as reusable chunks of code: macros. Developers import macros into their application, call them as per documentation and provide data to its options.
 
-To provide a level of consistency for developers we have standardised option names, their expected input, use and placement. There are expectations, and  if so they are documented accordingly.
+To provide a level of consistency for developers we have standardised option names, their expected input, use and placement. There are exceptions, and  if so they are documented accordingly.
 
 The options (arguments) accepted by the component macro are specified in a `[component-name].yaml` file as `params`. Each option should have the following attributes: `name`, `type`, `required`, `description`.
 
