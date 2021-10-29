@@ -5,7 +5,7 @@
   <ul class="govuk-pagination__list">
     {%- if params.previous %}
       <li class="govuk-pagination__item  govuk-pagination__item--prev">
-        <a class="govuk-pagination__link" href="{{ params.previous.href }}">{{ params.previous.text }}<span class="govuk-visually-hidden"> set of pages</span></a>
+        <a class="govuk-pagination__link" href="{{ params.previous.href }}">{{ params.previous.text }}</a>
       </li>
     {% endif -%}
 
@@ -23,7 +23,7 @@
 
     {%- if params.next %}
       <li class="govuk-pagination__item  govuk-pagination__item--next">
-        <a class="govuk-pagination__link" href="{{ params.next.href }}">{{ params.next.text }}<span class="govuk-visually-hidden"> set of pages</span></a>
+        <a class="govuk-pagination__link" href="{{ params.next.href }}">{{ params.next.text }}</a>
       </li>
     {% endif -%}
   </ul>
