@@ -29,7 +29,15 @@
   </ul>
 
   {%- if params.results %}
-    <p class="govuk-pagination__results">Showing <b>{{ params.results.from }}</b> to <b>{{ params.results.to }}</b> of <b>{{params.results.count}}</b> results</p>
+
+  {% if params.results.type %}
+    {% set type = params.results.type %}
+  {% else %}
+    {# If no type is defined, set it to 'results' #}
+    {% set type = "results" %}
+  {% endif %}
+
+    <p class="govuk-pagination__results">Showing <b>{{ params.results.from }}</b> to <b>{{ params.results.to }}</b> of <b>{{params.results.count}}</b> {{type}}</p>
   {% endif -%}
 
 </nav>
