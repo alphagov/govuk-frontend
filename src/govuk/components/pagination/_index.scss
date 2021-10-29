@@ -1,7 +1,7 @@
 @include govuk-exports("govuk/component/pagination") {
   .govuk-pagination {
 
-    @include govuk-media-query($from: desktop) {
+    @include govuk-media-query($from: tablet) {
 
       // Alignment adjustments
       margin-right: - govuk-spacing(1);
@@ -25,7 +25,7 @@
     margin: 0;
     padding: 0;
     list-style: none;
-    @include govuk-media-query($from: desktop) {
+    @include govuk-media-query($from: tablet) {
       display: inline-block;
       margin-bottom: 0;
       vertical-align: middle;
@@ -36,7 +36,7 @@
     @include govuk-font(19);
     margin-top: 0;
     padding: govuk-spacing(1);
-    @include govuk-media-query($from: desktop) {
+    @include govuk-media-query($from: tablet) {
       display: inline-block;
       margin-bottom: 0;
       vertical-align: middle;
