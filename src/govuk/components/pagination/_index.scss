@@ -89,23 +89,10 @@
   .govuk-pagination__link {
     @include govuk-link-common;
     @include govuk-link-style-default;
+    @include govuk-link-style-no-underline;
     display: block;
     min-width: 25px;
     padding: govuk-spacing(1);
     text-align: center;
-    text-decoration: none;
-
-    &:link,
-    &:visited {
-      color: $govuk-link-colour;
-    }
-
-    &:hover {
-      color: govuk-tint($govuk-link-colour, 25);
-    }
-
-    &:focus {
-      color: govuk-colour("black");
-    }
   }
 }
