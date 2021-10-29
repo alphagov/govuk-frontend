@@ -1,6 +1,5 @@
 @include govuk-exports("govuk/component/pagination") {
   .govuk-pagination {
-    // text-align: center;
 
     @include govuk-media-query($from: desktop) {
 
