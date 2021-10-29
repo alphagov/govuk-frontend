@@ -1,20 +1,62 @@
 examples:
 - name: default
   data:
-    results:
-      from: 10
-      to: 20
-      count: 30
-    previous:
-      text: 'Previous'
-      href: ''
     next:
-      text: 'Next'
-      href: ''
+      text: 'Next page'
+      href: '/page=2'
     items:
     - text: '1'
       href: '/page=1'
+      selected: true
     - text: '2'
       href: '/page=2'
     - text: '3'
       href: '/page=3'
+- name: with results
+  data:
+    results:
+      from: 50
+      to: 100
+      count: 150
+    previous:
+      text: 'Previous page'
+      href: '/page=1'
+    next:
+      text: 'Next page'
+      href: '/page=3'
+    items:
+    - text: '1'
+      href: '/page=1'
+    - text: '2'
+      selected: true
+    - text: '3'
+      href: '/page=3'
+- name: with first and last pages
+  data:
+    results:
+      from: 1000
+      to: 1050
+      count: 2000
+    previous:
+      text: 'Previous page'
+      href: '/page=9'
+    next:
+      text: 'Next page'
+      href: '/page=11'
+    items:
+    - text: '1'
+      href: '/page=1'
+    - type: 'dots'
+    - text: '8'
+      href: '/page=8'
+    - text: '9'
+      href: '/page=9'
+    - text: '10'
+      selected: true
+    - text: '11'
+      href: '/page=11'
+    - text: '12'
+      href: '/page=12'
+    - type: 'dots'
+    - text: '40'
+      href: '/page=40'
