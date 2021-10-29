@@ -1,0 +1,116 @@
+@include govuk-exports("govuk/component/pagination") {
+  .govuk-pagination {
+    // text-align: center;
+
+    @include govuk-media-query($from: desktop) {
+
+      // Alignment adjustments
+      margin-left: - govuk-spacing(1);
+      margin-right: - govuk-spacing(1);
+
+      // Hide whitespace between elements
+      font-size: 0;
+
+      // Trick to remove the need for floats
+      text-align: justify;
+
+      &:after {
+        content: '';
+        display: inline-block;
+        width: 100%;
+      }
+    }
+
+  }
+
+  .govuk-pagination__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    @include govuk-media-query($from: desktop) {
+      display: inline-block;
+      margin-bottom: 0;
+      vertical-align: middle;
+    }
+  }
+
+  .govuk-pagination__results {
+    @include govuk-font(19);
+    margin-top: 0;
+    @include govuk-media-query($from: desktop) {
+      display: inline-block;
+      margin-bottom: 0;
+      vertical-align: middle;
+    }
+  }
+
+  .govuk-pagination__item {
+    @include govuk-font(19);
+    display: inline-block;
+  }
+
+  .govuk-pagination__item--active,
+  .govuk-pagination__item--dots {
+    font-weight: bold;
+    height: 25px;
+    padding: govuk-spacing(1) govuk-spacing(2);
+    text-align: center;
+  }
+
+  .govuk-pagination__item--dots {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .govuk-pagination__item--prev .govuk-pagination__link:before,
+  .govuk-pagination__item--next .govuk-pagination__link:after {
+      display: inline-block;
+      height: 10px;
+      width: 10px;
+      border-style: solid;
+      color: govuk-colour("black");
+      background: transparent;
+      -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+      content: "";
+  }
+
+  .govuk-pagination__item--prev .govuk-pagination__link:before {
+      border-width: 3px 0 0 3px;
+      margin-right: govuk-spacing(1);
+  }
+
+  .govuk-pagination__item--next .govuk-pagination__link:after {
+      border-width: 0 3px 3px 0;
+      margin-left: govuk-spacing(1);
+  }
+
+  .govuk-pagination__link {
+    @include govuk-link-common;
+    @include govuk-link-style-default;
+    display: block;
+    padding: govuk-spacing(1);
+    text-align: center;
+    text-decoration: none;
+    min-width: 25px;
+
+    &:link,
+    &:visited {
+      color: $govuk-link-colour;
+    }
+
+    &:hover {
+      color: govuk-tint($govuk-link-colour, 25);
+    }
+
+    &:focus {
+      color: govuk-colour("black");
+    }
+
+  }
+
+  .govuk-pagination__results {
+    padding: govuk-spacing(1);
+  }
+}

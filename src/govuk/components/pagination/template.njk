@@ -1,0 +1,35 @@
+<nav class="govuk-pagination {{- ' ' + params.classes if params.classes}}" id="pagination-label">
+
+  <p class="govuk-visually-hidden" aria-labelledby="pagination-label">Pagination navigation</p>
+
+  <ul class="govuk-pagination__list">
+    {%- if params.previous %}
+      <li class="govuk-pagination__item  govuk-pagination__item--prev">
+        <a class="govuk-pagination__link" href="{{ params.previous.href }}">{{ params.previous.text }}<span class="govuk-visually-hidden"> set of pages</span></a>
+      </li>
+    {% endif -%}
+
+    {%- for item in params.items %}
+      {%- if item.type == 'dots' %}
+        <li class="govuk-pagination__item govuk-pagination__item--dots">...</li>
+      {% else %}
+        {%- if item.selected %}
+          <li class="govuk-pagination__item govuk-pagination__item--active">{{ item.text }}</li>
+        {% else %}
+          <li class="govuk-pagination__item"><a class="govuk-pagination__link" href="{{ item.href }}">{{ item.text }}</a></li>
+        {% endif -%}
+      {% endif -%}
+    {% endfor -%}
+
+    {%- if params.next %}
+      <li class="govuk-pagination__item  govuk-pagination__item--next">
+        <a class="govuk-pagination__link" href="{{ params.next.href }}">{{ params.next.text }}<span class="govuk-visually-hidden"> set of pages</span></a>
+      </li>
+    {% endif -%}
+  </ul>
+
+  {%- if params.results %}
+    <p class="govuk-pagination__results">Showing <b>{{ params.results.from }}</b> to <b>{{ params.results.to }}</b> of <b>{{params.results.count}}</b> results</p>
+  {% endif -%}
+
+</nav>
