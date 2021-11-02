@@ -37,11 +37,11 @@ params:
   - name: type
     type: string
     required: false
-    description: Set to 'dots' to add elipses.
+    description: Set to 'dots' to indicate where a list has been truncated.
   - name: selected
     type: boolean
     required: false
-    description: Set to 'dots' to add elipses.
+    description: Set to 'true' to indicate the current page.
   - name: text
     type: string
     required: false
@@ -53,7 +53,7 @@ params:
 - name: results
   type: object
   required: false
-  description: Array of link objects.
+  description: Optional text describing the total number of results and which ones are on the current page.
   params:
   - name: from
     type: string
@@ -70,7 +70,7 @@ params:
   - name: type
     type: string
     required: false
-    description: The type of result. Defaults to 'results'.
+    description: Used to describe the component to screen-readers and in the results text. Defaults to 'results'.
 
 examples:
 - name: default

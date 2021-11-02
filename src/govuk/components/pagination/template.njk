@@ -1,6 +1,10 @@
-<nav class="govuk-pagination {{- ' ' + params.classes if params.classes}}" id="pagination-label">
-
-  <p class="govuk-visually-hidden" aria-labelledby="pagination-label">Pagination navigation</p>
+{% if params.results.type %}
+  {% set type = params.results.type %}
+{% else %}
+  {# If no type is defined, set it to 'results' #}
+  {% set type = "results" %}
+{% endif %}
+<nav class="govuk-pagination {{- ' ' + params.classes if params.classes}}" id="pagination-label" aria-label="{{type}} navigation">
 
   <ul class="govuk-pagination__list">
     {%- if params.previous %}
@@ -19,9 +23,9 @@
         <li class="govuk-pagination__item govuk-pagination__item--dots">...</li>
       {% else %}
         {%- if item.selected %}
-          <li class="govuk-pagination__item govuk-pagination__item--active">{{ item.text }}</li>
+          <li class="govuk-pagination__item govuk-pagination__item--active"><span class="govuk-visually-hidden">Page </span>{{ item.text }}<span class="govuk-visually-hidden"> (current page) </span></li>
         {% else %}
-          <li class="govuk-pagination__item"><a class="govuk-pagination__link" href="{{ item.href }}">{{ item.text }}</a></li>
+          <li class="govuk-pagination__item"><a class="govuk-pagination__link" href="{{ item.href }}"><span class="govuk-visually-hidden">Page </span>{{ item.text }}</a></li>
         {% endif -%}
       {% endif -%}
     {% endfor -%}
@@ -38,14 +42,6 @@
   </ul>
 
   {%- if params.results %}
-
-  {% if params.results.type %}
-    {% set type = params.results.type %}
-  {% else %}
-    {# If no type is defined, set it to 'results' #}
-    {% set type = "results" %}
-  {% endif %}
-
     <p class="govuk-pagination__results">Showing <b>{{ params.results.from }}</b> to <b>{{ params.results.to }}</b> of <b>{{params.results.count}}</b> {{type}}</p>
   {% endif -%}
 
