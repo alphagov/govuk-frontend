@@ -23,7 +23,7 @@ examples:
 - name: inactive
   data:
     text: alpha
-    classes: govuk-tag--inactive
+    classes: govuk-tag--grey
 - name: grey
   data:
     text: Grey

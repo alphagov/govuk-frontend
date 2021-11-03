@@ -30,7 +30,7 @@ describe('Tag', () => {
       const $ = render('tag', examples.inactive)
 
       const $component = $('.govuk-tag')
-      expect($component.hasClass('govuk-tag--inactive')).toBeTruthy()
+      expect($component.hasClass('govuk-tag--grey')).toBeTruthy()
     })
   })
 
