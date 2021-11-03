@@ -57,6 +57,14 @@ If you’re calling `iff` from your own Sass, you should use [Sass's native `if`
 
 This change was introduced in [pull request #2409: Remove deprecated `iff` Sass function](https://github.com/alphagov/govuk-frontend/pull/2409).
 
+#### Remove deprecated `govuk-tag--inactive` class
+
+We've removed the `govuk-tag--inactive` class which we deprecated in [GOV.UK Frontend v3.6.0](https://github.com/alphagov/govuk-frontend/releases/tag/v3.6.0).
+
+Replace any use of this class with the `govuk-tag--grey` class.
+
+This change was introduced in [pull request #2417: Remove deprecated `govuk-tag--inactive class`](https://github.com/alphagov/govuk-frontend/pull/2417).
+
 ### Fixes
 
 We’ve made fixes to GOV.UK Frontend in the following pull requests:
