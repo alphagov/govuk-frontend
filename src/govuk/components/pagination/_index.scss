@@ -1,5 +1,6 @@
 @include govuk-exports("govuk/component/pagination") {
   .govuk-pagination {
+    text-align: center;
 
     @include govuk-media-query($from: tablet) {
 
@@ -46,12 +47,29 @@
   .govuk-pagination__item {
     @include govuk-font(19);
     display: inline-block;
+
+    // Hide pages on small screens
+    @include govuk-media-query($until: tablet) {
+      display: none;
+    }
+  }
+
+  // Only show previous, next, first, last and current pages on mobile
+  .govuk-pagination__item--active,
+  .govuk-pagination__item--dots,
+  .govuk-pagination__item--prev,
+  .govuk-pagination__item--next,
+  .govuk-pagination__item:nth-child(2),
+  .govuk-pagination__item:nth-last-child(2) {
+    @include govuk-media-query($until: tablet) {
+      display: inline-block;
+    }
   }
 
   .govuk-pagination__item--active,
   .govuk-pagination__item--dots {
     height: 25px;
-    padding: govuk-spacing(1) govuk-spacing(1);
+    padding: govuk-spacing(1) govuk-spacing(2);
     font-weight: bold;
     text-align: center;
   }
@@ -72,18 +90,19 @@
   }
 
   .govuk-pagination__item--prev {
-    margin-right: govuk-spacing(2);
+    //margin-right: govuk-spacing(2);
   }
 
   .govuk-pagination__item--next {
-    margin-left: govuk-spacing(2);
+    //margin-left: govuk-spacing(2);
   }
 
   .govuk-pagination__link {
     @include govuk-link-common;
     @include govuk-link-style-default;
     @include govuk-link-style-no-underline;
-    min-width: 25px;
+    display: block;
+    min-width: 34px;
     padding: govuk-spacing(1);
     text-align: center;
   }
