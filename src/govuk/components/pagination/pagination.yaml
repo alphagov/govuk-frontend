@@ -11,10 +11,10 @@ params:
   - name: text
     type: string
     required: false
-    description: The previous page link text.
+    description: The previous page link text. Defaults to 'Previous page', where 'page' is visually hidden.
   - name: href
     type: string
-    required: false
+    required: true
     description: The previous page URL.
 - name: next
   type: object
@@ -24,10 +24,10 @@ params:
   - name: text
     type: string
     required: false
-    description: The next page link text.
+    description: The next page link text. Defaults to 'Next page', where 'page' is visually hidden.
   - name: href
     type: string
-    required: false
+    required: true
     description: The next page URL.
 - name: items
   type: array
@@ -76,6 +76,19 @@ examples:
 - name: default
   data:
     previous:
+      href: '/page=1'
+    next:
+      href: '/page=3'
+    items:
+    - text: '1'
+      href: '/page=1'
+    - text: '2'
+      selected: true
+    - text: '3'
+      href: '/page=3'
+- name: with custom link text
+  data:
+    previous:
       text: 'Previous page'
       href: '/page=1'
     next:
@@ -95,10 +108,8 @@ examples:
       to: 1050
       count: 2000
     previous:
-      text: 'Previous page'
       href: '/page=9'
     next:
-      text: 'Next page'
       href: '/page=11'
     items:
     - text: '1'
@@ -120,7 +131,6 @@ examples:
 - name: first page
   data:
     next:
-      text: 'Next page'
       href: '/page=2'
     items:
     - text: '1'
@@ -132,7 +142,6 @@ examples:
 - name: last page
   data:
     previous:
-      text: 'Previous page'
       href: '/page=1'
     items:
     - text: '1'
@@ -148,10 +157,8 @@ examples:
       to: 100
       count: 150
     previous:
-      text: 'Previous page'
       href: '/page=1'
     next:
-      text: 'Next page'
       href: '/page=3'
     items:
     - text: '1'
@@ -168,10 +175,8 @@ examples:
       count: 60
       type: 'team members'
     previous:
-      text: 'Previous page'
       href: '/page=1'
     next:
-      text: 'Next page'
       href: '/page=3'
     items:
     - text: '1'
