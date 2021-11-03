@@ -58,9 +58,9 @@ examples:
           text: Section A
         content:
           html: |
-            <ul class="govuk-list govuk-list--bullet">
-              <li>Example item 1</li>
-            </ul>
+            <p class="govuk-body">
+              We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.
+            </p>
       - heading:
           text: Section B
         content:
@@ -79,13 +79,39 @@ examples:
           text: Additional description
         content:
           html: |
+            <p class="govuk-body">
+              We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.
+            </p>
             <ul class="govuk-list govuk-list--bullet">
               <li>Example item 1</li>
             </ul>
       - heading:
          text: Test 2
         summary:
-          html: <span class="govuk-!-font-weight-regular">Additional description</span>
+          html: <span class="govuk-!-font-weight-regular">Additional description (wrapped in span)</span>
+        content:
+          html: |
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Example item 2</li>
+            </ul>
+
+- name: with long content and description
+  data:
+    id: with-long-content-and-description
+    items:
+      - heading:
+          text: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis tortor porttitor.
+        summary:
+          text: Etiam diam dui, tempus ut pharetra in, aliquet non dui. Nunc pulvinar maximus tortor, ac finibus augue congue vitae. Donec sed cursus lorem.
+        content:
+          html: |
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Example item 1</li>
+            </ul>
+      - heading:
+         text: Praesent faucibus leo feugiat libero pharetra lacinia. Aliquam aliquet ante vitae mollis vestibulum.
+        summary:
+          html: <span class="govuk-!-font-weight-regular">Maecenas nec <abbr>est</abbr> sapien. Etiam varius luctus mauris non porttitor. </span>
         content:
           html: |
             <ul class="govuk-list govuk-list--bullet">
