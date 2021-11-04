@@ -23,8 +23,8 @@
     {% endif -%}
 
     {%- for item in params.items %}
-      {%- if item.type == 'dots' %}
-        <li class="govuk-pagination__item govuk-pagination__item--dots">...</li>
+      {%- if item.type == 'elipses' %}
+        <li class="govuk-pagination__item govuk-pagination__item--elipses">&hellip;</li>
       {% else %}
         {%- if item.selected %}
           <li class="govuk-pagination__item govuk-pagination__item--active"><span class="govuk-visually-hidden">Page </span>{{ item.text }}<span class="govuk-visually-hidden"> (current page) </span></li>

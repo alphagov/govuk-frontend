@@ -56,7 +56,7 @@
 
   // Only show previous, next, first, last and current pages on mobile
   .govuk-pagination__item--active,
-  .govuk-pagination__item--dots,
+  .govuk-pagination__item--elipses,
   .govuk-pagination__item--prev,
   .govuk-pagination__item--next,
   .govuk-pagination__item:nth-child(2),
@@ -67,14 +67,14 @@
   }
 
   .govuk-pagination__item--active,
-  .govuk-pagination__item--dots {
+  .govuk-pagination__item--elipses {
     height: 25px;
     padding: govuk-spacing(1) govuk-spacing(3);
     font-weight: bold;
     text-align: center;
   }
 
-  .govuk-pagination__item--dots {
+  .govuk-pagination__item--elipses {
     padding-right: 0;
     padding-left: 0;
   }

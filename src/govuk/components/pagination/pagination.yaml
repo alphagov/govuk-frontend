@@ -37,7 +37,7 @@ params:
   - name: type
     type: string
     required: false
-    description: Set to 'dots' to indicate where a list has been truncated.
+    description: Set to 'elipses' to indicate where a list has been truncated.
   - name: selected
     type: boolean
     required: false
@@ -114,7 +114,7 @@ examples:
     items:
     - text: '1'
       href: '/page=1'
-    - type: 'dots'
+    - type: 'elipses'
     - text: '8'
       href: '/page=8'
     - text: '9'
@@ -125,7 +125,7 @@ examples:
       href: '/page=11'
     - text: '12'
       href: '/page=12'
-    - type: 'dots'
+    - type: 'elipses'
     - text: '40'
       href: '/page=40'
 - name: first page
