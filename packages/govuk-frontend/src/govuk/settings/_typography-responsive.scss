@@ -71,8 +71,8 @@ $govuk-typography-scale: (
   ),
   36: (
     null: (
-      font-size: 24px,
-      line-height: 25px
+      font-size: 27px,
+      line-height: 30px
     ),
     tablet: (
       font-size: 36px,
@@ -84,10 +84,12 @@ $govuk-typography-scale: (
     )
   ),
   27: (
-    null: (
-      font-size: 18px,
-      line-height: 20px
-    ),
+    // Made same as 24 on mobile (consider deprecating this size)
+    null:
+      (
+        font-size: 21px,
+        line-height: 25px
+      ),
     tablet: (
       font-size: 27px,
       line-height: 30px
@@ -98,10 +100,12 @@ $govuk-typography-scale: (
     )
   ),
   24: (
-    null: (
-      font-size: 18px,
-      line-height: 20px
-    ),
+    // Bump up mobile size from 18/20 to 21/25
+    null:
+      (
+        font-size: 21px,
+        line-height: 25px
+      ),
     tablet: (
       font-size: 24px,
       line-height: 30px
@@ -112,42 +116,36 @@ $govuk-typography-scale: (
     )
   ),
   19: (
-    null: (
-      font-size: 16px,
-      line-height: 20px
-    ),
-    tablet: (
-      font-size: 19px,
-      line-height: 25px
-    ),
+    // Stay at 19/25 at all sizes
+    null:
+      (
+        font-size: 19px,
+        line-height: 25px
+      ),
     print: (
       font-size: 14pt,
       line-height: 1.15
     )
   ),
   16: (
-    null: (
-      font-size: 14px,
-      line-height: 16px
-    ),
-    tablet: (
-      font-size: 16px,
-      line-height: 20px
-    ),
+    // Stay at 16/20 at all sizes
+    null:
+      (
+        font-size: 16px,
+        line-height: 20px
+      ),
     print: (
       font-size: 14pt,
       line-height: 1.2
     )
   ),
   14: (
-    null: (
-      font-size: 12px,
-      line-height: 15px
-    ),
-    tablet: (
-      font-size: 14px,
-      line-height: 20px
-    ),
+    // Stay at 14/20 at all sizes (consider deprecating this size)
+    null:
+      (
+        font-size: 14px,
+        line-height: 20px
+      ),
     print: (
       font-size: 12pt,
       line-height: 1.2
