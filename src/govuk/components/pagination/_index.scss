@@ -4,10 +4,6 @@
 
     @include govuk-media-query($from: tablet) {
 
-      // Alignment adjustments
-      margin-right: - govuk-spacing(1);
-      margin-left: - govuk-spacing(1);
-
       // Hide whitespace between elements
       font-size: 0;
 
@@ -36,7 +32,7 @@
   .govuk-pagination__results {
     @include govuk-font(19);
     margin-top: 0;
-    padding: govuk-spacing(1);
+    padding: govuk-spacing(1) 0;
     @include govuk-media-query($from: tablet) {
       display: inline-block;
       margin-bottom: 0;
