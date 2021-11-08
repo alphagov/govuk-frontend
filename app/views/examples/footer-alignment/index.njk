@@ -1,0 +1,311 @@
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "footer/macro.njk" import govukFooter %}
+
+{% extends "layout.njk" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    "href": "/"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <h1 class="govuk-heading-l">Example: Footer alignment</h1>
+
+  <h2 class="govuk-heading-m">Three equal columns</h2>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+      <h3 class="govuk-heading-m">One third</h3>
+      <p class="govuk-body">
+        This guide shows how to make your service look consistent with the rest of GOV.UK. It includes example code and guidance for layout, typography, colour, images, icons, forms, buttons and data.
+      </p>
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <h3 class="govuk-heading-m">One third</h3>
+      <p class="govuk-body">
+        This guide shows how to make your service look consistent with the rest of GOV.UK. It includes example code and guidance for layout, typography, colour, images, icons, forms, buttons and data.
+      </p>
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <h3 class="govuk-heading-m">One third</h3>
+      <p class="govuk-body">
+        This guide shows how to make your service look consistent with the rest of GOV.UK. It includes example code and guidance for layout, typography, colour, images, icons, forms, buttons and data.
+      </p>
+    </div>
+  </div>
+
+  {{ govukFooter({
+    "navigation": [
+      {
+        "title": "Single column list 1",
+        "columns": 1,
+        "items": [
+          {
+            "href": "#1",
+            "text": "Navigation item 1"
+          },
+          {
+            "href": "#2",
+            "text": "Navigation item 2"
+          },
+          {
+            "href": "#3",
+            "text": "Navigation item 3"
+          }
+        ]
+      },
+      {
+        "title": "Single column list 2",
+        "columns": 1,
+        "items": [
+          {
+            "href": "#1",
+            "text": "Navigation item 1"
+          },
+          {
+            "href": "#2",
+            "text": "Navigation item 2"
+          },
+          {
+            "href": "#3",
+            "text": "Navigation item 3"
+          }
+        ]
+      },
+      {
+        "title": "Single column list 3",
+        "columns": 1,
+        "items": [
+          {
+            "href": "#1",
+            "text": "Navigation item 1"
+          },
+          {
+            "href": "#2",
+            "text": "Navigation item 2"
+          },
+          {
+            "href": "#3",
+            "text": "Navigation item 3"
+          }
+        ]
+      }
+    ]
+  }) }}
+
+  <h2 class="govuk-heading-m govuk-!-margin-top-6">Two column list on the left</h2>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+      <h3 class="govuk-heading-m">One third</h3>
+      <p class="govuk-body">
+        This guide shows how to make your service look consistent with the rest of GOV.UK. It includes example code and guidance for layout, typography, colour, images, icons, forms, buttons and data.
+      </p>
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <h3 class="govuk-heading-m">One third</h3>
+      <p class="govuk-body">
+        This guide shows how to make your service look consistent with the rest of GOV.UK. It includes example code and guidance for layout, typography, colour, images, icons, forms, buttons and data.
+      </p>
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <h3 class="govuk-heading-m">One third</h3>
+      <p class="govuk-body">
+        This guide shows how to make your service look consistent with the rest of GOV.UK. It includes example code and guidance for layout, typography, colour, images, icons, forms, buttons and data.
+      </p>
+    </div>
+  </div>
+
+  {{ govukFooter({
+    "navigation": [
+      {
+        "title": "Two column list",
+        "columns": 2,
+        "items": [
+          {
+            "href": "#1",
+            "text": "Navigation item 1"
+          },
+          {
+            "href": "#2",
+            "text": "Navigation item 2"
+          },
+          {
+            "href": "#3",
+            "text": "Navigation item 3"
+          },
+          {
+            "href": "#4",
+            "text": "Navigation item 4"
+          },
+          {
+            "href": "#5",
+            "text": "Navigation item 5"
+          },
+          {
+            "href": "#6",
+            "text": "Navigation item 6"
+          }
+        ]
+      },
+      {
+        "title": "Single column list",
+        "items": [
+          {
+            "href": "#1",
+            "text": "Navigation item 1"
+          },
+          {
+            "href": "#2",
+            "text": "Navigation item 2"
+          },
+          {
+            "href": "#3",
+            "text": "Navigation item 3"
+          }
+        ]
+      }
+    ]
+  }) }}
+
+  <h2 class="govuk-heading-m govuk-!-margin-top-6">Two column list on the right</h2>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+      <h3 class="govuk-heading-m">One third</h3>
+      <p class="govuk-body">
+        This guide shows how to make your service look consistent with the rest of GOV.UK. It includes example code and guidance for layout, typography, colour, images, icons, forms, buttons and data.
+      </p>
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <h3 class="govuk-heading-m">One third</h3>
+      <p class="govuk-body">
+        This guide shows how to make your service look consistent with the rest of GOV.UK. It includes example code and guidance for layout, typography, colour, images, icons, forms, buttons and data.
+      </p>
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <h3 class="govuk-heading-m">One third</h3>
+      <p class="govuk-body">
+        This guide shows how to make your service look consistent with the rest of GOV.UK. It includes example code and guidance for layout, typography, colour, images, icons, forms, buttons and data.
+      </p>
+    </div>
+  </div>
+
+  {{ govukFooter({
+    "navigation": [
+      {
+        "title": "Single column list",
+        "items": [
+          {
+            "href": "#1",
+            "text": "Navigation item 1"
+          },
+          {
+            "href": "#2",
+            "text": "Navigation item 2"
+          },
+          {
+            "href": "#3",
+            "text": "Navigation item 3"
+          }
+        ]
+      },
+      {
+        "title": "Two column list",
+        "columns": 2,
+        "items": [
+          {
+            "href": "#1",
+            "text": "Navigation item 1"
+          },
+          {
+            "href": "#2",
+            "text": "Navigation item 2"
+          },
+          {
+            "href": "#3",
+            "text": "Navigation item 3"
+          },
+          {
+            "href": "#4",
+            "text": "Navigation item 4"
+          },
+          {
+            "href": "#5",
+            "text": "Navigation item 5"
+          },
+          {
+            "href": "#6",
+            "text": "Navigation item 6"
+          }
+        ]
+      }
+    ]
+  }) }}
+
+  <h2 class="govuk-heading-m govuk-!-margin-top-6">Two equal columns</h2>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-quarter">
+      <h3 class="govuk-heading-m">One quarter</h3>
+      <p class="govuk-body">
+        This guide shows how to make your service look consistent with the rest of GOV.UK. It includes example code and guidance for layout, typography, colour, images, icons, forms, buttons and data.
+      </p>
+    </div>
+    <div class="govuk-grid-column-one-quarter">
+      <h3 class="govuk-heading-m">One quarter</h3>
+      <p class="govuk-body">
+        This guide shows how to make your service look consistent with the rest of GOV.UK. It includes example code and guidance for layout, typography, colour, images, icons, forms, buttons and data.
+      </p>
+    </div>
+    <div class="govuk-grid-column-one-quarter">
+      <h3 class="govuk-heading-m">One quarter</h3>
+      <p class="govuk-body">
+        This guide shows how to make your service look consistent with the rest of GOV.UK. It includes example code and guidance for layout, typography, colour, images, icons, forms, buttons and data.
+      </p>
+    </div>
+    <div class="govuk-grid-column-one-quarter">
+      <h3 class="govuk-heading-m">One quarter</h3>
+      <p class="govuk-body">
+        This guide shows how to make your service look consistent with the rest of GOV.UK. It includes example code and guidance for layout, typography, colour, images, icons, forms, buttons and data.
+      </p>
+    </div>
+  </div>
+
+  {{ govukFooter({
+    "navigation": [
+      {
+        "title": "Single column list",
+        "items": [
+          {
+            "href": "#1",
+            "text": "Navigation item 1"
+          },
+          {
+            "href": "#2",
+            "text": "Navigation item 2"
+          },
+          {
+            "href": "#3",
+            "text": "Navigation item 3"
+          }
+        ]
+      },
+      {
+        "title": "Single column list",
+        "columns": 1,
+        "items": [
+          {
+            "href": "#1",
+            "text": "Navigation item 1"
+          },
+          {
+            "href": "#2",
+            "text": "Navigation item 2"
+          },
+          {
+            "href": "#3",
+            "text": "Navigation item 3"
+          }
+        ]
+      }
+    ]
+  }) }}
+{% endblock %}
