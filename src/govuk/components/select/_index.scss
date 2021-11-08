@@ -39,6 +39,89 @@
     background-color: govuk-colour("blue");
   }
 
+  .govuk-select__wrapper {
+    position: relative;
+  }
+
+  .govuk-select__input {
+    // Leave room on the right for the drop-down arrow
+    padding-right: 40px;
+  }
+
+  .govuk-select__drop-down-arrow {
+    display: inline-block;
+    position: absolute;
+
+    z-index: 1;
+    top: 5px;
+    right: 15px;
+
+    width: 18px;
+    height: 18px;
+
+    // Create a chevron using a box with borders on two sides, rotated 45deg.
+    &:before {
+      content: "";
+      display: block;
+
+      position: absolute;
+
+      width: 18px;
+      height: 18px;
+
+      margin: auto 0;
+
+      transform: rotate(45deg);
+
+      border: solid;
+      border-width: 0 2px 2px 0;
+      border-color: govuk_colour("black");
+    }
+  }
+
+  .govuk-select__option-list {
+    margin-top: 0;
+    margin-left: 0;
+    padding-left: 0;
+    list-style-type: none;
+    border-top-width: 0;
+    border-right-width: $govuk-border-width-form-element;
+    border-bottom-width: $govuk-border-width-form-element;
+    border-left-width: $govuk-border-width-form-element;
+    border-style: solid;
+    border-color: currentColor;
+  }
+
+  .govuk-select__option {
+    @include govuk-font($size: 19);
+    position: relative;
+    padding: 5px 5px 5px 32px;
+    border-bottom: solid #b1b4b6;
+    border-width: 1px 0;
+  }
+
+  .govuk-select__option[aria-selected=true]:before {
+    content: '';
+    box-sizing: border-box;
+
+    position: absolute;
+    top: 11px;
+    left: 5px;
+    width: 19px;
+    height: 10px;
+    transform: rotate(-45deg);
+
+    border: solid;
+    border-width: 0 0 3px 3px;
+
+    background: transparent;
+  }
+
+  .govuk-select__option:focus {
+    outline: 0;
+    background-color: $govuk-focus-colour;
+  }
+
   .govuk-select--error {
     border-color: $govuk-error-colour;
 

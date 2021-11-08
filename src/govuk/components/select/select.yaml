@@ -88,6 +88,66 @@ examples:
           value: 3
           text: GOV.UK frontend option 3
           disabled: true
+  - name: with auto-select
+    data:
+      attributes:
+        data-module: govuk-select
+      id: select-1
+      name: select-1
+      label:
+        text: Government department
+      items:
+        -
+          value:
+          text:
+        -
+          value: 1
+          text: Prime Minister's Office, 10 Downing Street
+        -
+          value: 2
+          text: Cabinet Office
+        -
+          value: 3
+          text: Department for Business, Energy & Industrial Strategy
+        -
+          value: 4
+          text: Department for Digital, Culture, Media & Sport
+        -
+          value: 5
+          text: Department for Education
+        -
+          value: 6
+          text: Department for Environment Food & Rural Affairs
+        -
+          value: 7
+          text: Department for International Trade
+        -
+          value: 8
+          text: Department for Levelling Up, Housing & Communities
+        -
+          value: 9
+          text: Department for Transport
+        -
+          value: 10
+          text: Department for Work & Pensions
+        -
+          value: 11
+          text: Department of Health & Social Care
+        -
+          value: 12
+          text: Foreign, Commonwealth & Development Office
+        -
+          value: 13
+          text: HM Treasury
+        -
+          value: 14
+          text: Home Office
+        -
+          value: 15
+          text: Ministry of Defence
+        -
+          value: 16
+          text: Ministry of Justice
   - name: with hint text and error message
     data:
       id: select-2

@@ -9,6 +9,7 @@ import NotificationBanner from './components/notification-banner/notification-ba
 import Header from './components/header/header'
 import Radios from './components/radios/radios'
 import Tabs from './components/tabs/tabs'
+import Select from './components/select/select'
 
 function initAll (options) {
   // Set the options to an empty object by default if no options are passed.
@@ -65,6 +66,12 @@ function initAll (options) {
   nodeListForEach($tabs, function ($tabs) {
     new Tabs($tabs).init()
   })
+
+  var $selects = scope.querySelectorAll('[data-module="govuk-select"]')
+  nodeListForEach($selects, function ($select) {
+    new Select($select).init()
+  })
+
 }
 
 export {
@@ -77,5 +84,6 @@ export {
   ErrorSummary,
   Header,
   Radios,
-  Tabs
+  Tabs,
+  Select
 }
