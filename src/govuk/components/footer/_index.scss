@@ -171,21 +171,23 @@
   }
 
   @include govuk-media-query ($from: tablet) {
-    .govuk-footer__section--span-2 {
+    .govuk-footer__section--span-2,
+    .govuk-footer__section--columns-2 {
       flex-grow: 0;
       width: (2 * 100% / 3);
     }
 
-    .govuk-footer__section--span-2 .govuk-footer__list {
+    .govuk-footer__section--columns-2 .govuk-footer__list {
       column-count: 2; // Support: Columns
     }
 
-    .govuk-footer__section--span-3 {
+    .govuk-footer__section--span-3,
+    .govuk-footer__section--columns-3 {
       flex-grow: 0;
       width: 100%;
     }
 
-    .govuk-footer__section--span-3 .govuk-footer__list {
+    .govuk-footer__section--columns-3 .govuk-footer__list {
       column-count: 3; // Support: Columns
     }
   }

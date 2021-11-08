@@ -176,7 +176,7 @@ describe('footer', () => {
 
       const $component = $('.govuk-footer')
       const $section = $component.find('div.govuk-footer__section')
-      expect($section.hasClass('govuk-footer__section--span-2')).toBeTruthy()
+      expect($section.hasClass('govuk-footer__section--columns-2')).toBeTruthy()
     })
   })
 

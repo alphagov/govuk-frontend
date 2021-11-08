@@ -46,6 +46,10 @@ params:
     type: integer
     required: false
     description: Amount of columns to display items in navigation section of the footer.
+  - name: span
+    type: integer
+    required: false
+    description: Amount of columns to span (without wrapping) in navigation section of the footer. Useful if you have a multi-row layout. Overrides columns.
   - name: items
     type: array
     required: false
