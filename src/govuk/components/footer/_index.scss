@@ -166,19 +166,21 @@
   }
 
   @include govuk-media-query ($from: desktop) {
+    .govuk-footer__section--columns-2,
     .govuk-footer__section--span-2 {
       grid-column: span 2; // Support: Grid
     }
 
-    .govuk-footer__section--span-2 .govuk-footer__list {
+    .govuk-footer__section--columns-2 .govuk-footer__list {
       column-count: 2; // Support: Columns
     }
 
+    .govuk-footer__section--columns-3,
     .govuk-footer__section--span-3 {
       grid-column: span 3; // Support: Grid
     }
 
-    .govuk-footer__section--span-3 .govuk-footer__list {
+    .govuk-footer__section--columns-3 .govuk-footer__list {
       column-count: 3; // Support: Columns
     }
   }

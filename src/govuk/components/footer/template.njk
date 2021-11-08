@@ -5,8 +5,10 @@
       <div class="govuk-footer__navigation">
         {% for nav in params.navigation %}
           {% set sectionClasses -%}
-            {%- if nav.columns -%}
-              govuk-footer__section--span-{{ nav.columns }}
+            {%- if nav.span -%}
+              govuk-footer__section--span-{{ nav.span }}
+            {%- elif nav.columns -%}
+              govuk-footer__section--columns-{{ nav.columns }}
             {%- endif -%}
           {%- endset %}
           <div class="govuk-footer__section{% if sectionClasses %} {{ sectionClasses }}{% endif %}">
