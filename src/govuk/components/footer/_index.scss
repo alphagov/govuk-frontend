@@ -155,16 +155,20 @@
   .govuk-footer__section {
     box-sizing: inherit;
     display: inline-block;
-    width: (100% / 3);
+    width: 100%;
     margin-bottom: $govuk-gutter;
     padding-right: $govuk-gutter-half;
     padding-left: $govuk-gutter-half;
     vertical-align: top;
     flex-grow: 1;
     flex-shrink: 1;
+
+    @include govuk-media-query ($from: tablet) {
+      width: (100% / 3);
+    }
   }
 
-  @include govuk-media-query ($from: desktop) {
+  @include govuk-media-query ($from: tablet) {
     .govuk-footer__section--span-2 {
       flex-grow: 0;
       width: (2 * 100% / 3);
