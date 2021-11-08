@@ -196,6 +196,15 @@ examples:
   description: A full example based on GOV.UK's current footer
   data:
     navigation:
+      - title: Coronavirus (COVID-19)
+        span: 2
+        items:
+          - href: '/coronavirus'
+            text: 'Coronavirus (COVID-19): guidance and support'
+      - title: Brexit
+        items:
+          - href: '/brexit'
+            text: Check what you need to do
       - title: Services and information
         columns: 2
         items:
@@ -239,12 +248,18 @@ examples:
             text: Departments
           - href: '/world'
             text: Worldwide
-          - href: '/government/policies'
-            text: Policies
-          - href: '/government/publications'
-            text: Publications
-          - href: '/government/announcements'
-            text: Announcements
+          - href: '/search/services'
+            text: Services
+          - href: '/search/guidance-and-regulation'
+            text: Guidance and regulation
+          - href: '/search/news-and-communications'
+            text: News and communications
+          - href: '/search/research-and-statistics'
+            text: Research and statistics
+          - href: '/search/policy-papers-and-consultations'
+            text: Policy papers and consultations
+          - href: '/search/transparency-and-freedom-of-information-releases'
+            text: Transparency and freedom of information release
     meta:
       items:
         - href: '/help'
