@@ -1,6 +1,6 @@
 'use strict'
 
-const helperFunctions = require('../../lib/helper-functions')
+const { componentNameToJavaScriptModuleName } = require('../../lib/helper-functions')
 
 const path = require('path')
 
@@ -189,18 +189,28 @@ gulp.task('scss:compile', function (done) {
 // Compile js task for preview ----------
 // --------------------------------------
 gulp.task('js:compile', (done) => {
-  // for dist/ folder we only want compiled 'all.js'
+  // For dist/ folder we only want compiled 'all.js'
   const fileLookup = isDist ? configPaths.src + 'all.js' : configPaths.src + '**/!(*.test).js'
+
+  // Perform a synchronous search and return an array of matching file names
   const srcFiles = glob.sync(fileLookup)
 
   srcFiles.forEach(function (file) {
-    const currentDirectory = path.dirname(file)
-    const newDirectory = currentDirectory.replace('src/govuk', '')
+    // This is combined with desinationPath in gulp.dest()
+    // so the files are output to the correct folders
+    const newDirectoryPath = path.dirname(file).replace('src/govuk', '')
+
+    // We only want to give component JavaScript a unique module name
+    let moduleName = 'GOVUKFrontend'
+    if (path.dirname(file).includes('/components/')) {
+      moduleName = componentNameToJavaScriptModuleName(path.parse(file).name)
+    }
 
     return gulp.src(file)
       .pipe(rollup({
-        // Used to set the `window` global and UMD/AMD export name.
-        name: 'GOVUKFrontend',
+        // Used to set the `window` global and UMD/AMD export name
+        // Component JavaScript is given a unique name to aid individual imports, e.g GOVUKFrontend.Accordion
+        name: moduleName,
         // Legacy mode is required for IE8 support
         legacy: true,
         // UMD allows the published bundle to work in CommonJS and in the browser.
@@ -216,7 +226,7 @@ gulp.task('js:compile', (done) => {
         })
       ))
       .pipe(eol())
-      .pipe(gulp.dest(destinationPath() + newDirectory))
+      .pipe(gulp.dest(destinationPath() + newDirectoryPath))
   })
   done()
 })
