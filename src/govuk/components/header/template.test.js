@@ -123,7 +123,7 @@ describe('header', () => {
       const $component = $('.govuk-header')
       const $nav = $component.find('nav')
 
-      expect($nav.attr('aria-label')).toEqual('Navigation menu')
+      expect($nav.attr('aria-label')).toEqual('Menu')
     })
 
     it('allows navigation label to be customised', () => {
@@ -191,7 +191,7 @@ describe('header', () => {
 
         const $button = $('.govuk-header__menu-button')
 
-        expect($button.attr('aria-label')).toEqual('Show or hide navigation menu')
+        expect($button.attr('aria-label')).toEqual('Show or hide menu')
       })
       it('allows label to be customised', () => {
         const $ = render('header', examples['with custom menu button label'])
