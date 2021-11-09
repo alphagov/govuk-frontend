@@ -104,7 +104,7 @@ examples:
 - name: with many pages
   data:
     results:
-      from: 1000
+      from: 1001
       to: 1050
       count: 2000
     previous:
@@ -153,7 +153,7 @@ examples:
 - name: with results
   data:
     results:
-      from: 50
+      from: 51
       to: 100
       count: 150
     previous:
@@ -170,7 +170,7 @@ examples:
 - name: with a different type of results
   data:
     results:
-      from: 20
+      from: 21
       to: 40
       count: 60
       type: 'team members'
