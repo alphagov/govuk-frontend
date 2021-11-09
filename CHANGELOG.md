@@ -9,7 +9,7 @@ You must make the following changes when you migrate to this release, or your se
 
 We've removed the `govuk-main-wrapper` and `govuk-main-wrapper--l` mixins which we deprecated in [GOV.UK Frontend v3.0.0](https://github.com/alphagov/govuk-frontend/releases/tag/v3.0.0).
 
-Remove any use of these mixins in your own Sass. You can replace these mixins with direct references to the [spacing mixins](https://design-system.service.gov.uk/styles/spacing/#spacing-on-custom-components)
+Remove any use of these mixins in your own Sass. You can replace these mixins with direct references to the [spacing mixins](https://design-system.service.gov.uk/styles/spacing/#spacing-on-custom-components).
 
 This change was introduced in [pull request #2385: Remove deprecated `govuk-main-wrapper` and `govuk-main-wrapper--l` mixins](https://github.com/alphagov/govuk-frontend/pull/2385).
 
@@ -72,7 +72,7 @@ We’ve made fixes to GOV.UK Frontend in the following pull requests:
 - [#2255: Prevent conditionally revealed questions getting out of sync when multiple sets of radios and checkboxes contain inputs with the same name](https://github.com/alphagov/govuk-frontend/pull/2255)
 - [#2323: Avoid invalid nesting of `<span>` within a `<dd>` in summary list](https://github.com/alphagov/govuk-frontend/pull/2323)
 - [#2370: Prevent issues with conditionally revealed content when content `id` includes CSS syntax characters](https://github.com/alphagov/govuk-frontend/pull/2370)
-- [#2408: Prevent issues with character count when textarea id includes CSS syntax characters](https://github.com/alphagov/govuk-frontend/pull/2408)
+- [#2408: Prevent issues with character count when textarea `id` includes CSS syntax characters](https://github.com/alphagov/govuk-frontend/pull/2408)
 
 ## 3.14.0 (Feature release)
 
