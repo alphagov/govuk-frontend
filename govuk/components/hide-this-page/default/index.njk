@@ -1,0 +1,21 @@
+---
+title: Asking for dates from documents
+layout: layout-example.njk
+---
+
+{% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+
+{{ govukDateInput({
+  id: "passport-issued",
+  namePrefix: "passport-issued",
+  fieldset: {
+    legend: {
+      text: "When was your passport issued?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  hint: {
+    text: "For example, 27 3 2007"
+  }
+}) }}

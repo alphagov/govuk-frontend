@@ -491,6 +491,43 @@
             "hidden": false
         },
         {
+            "name": "with conditional items with special characters",
+            "options": {
+                "name": "contact-prefs",
+                "idPrefix": "user.profile[contact-prefs]",
+                "fieldset": {
+                    "legend": {
+                        "text": "How do you want to be contacted?"
+                    }
+                },
+                "items": [
+                    {
+                        "value": "email",
+                        "text": "Email",
+                        "conditional": {
+                            "html": "<label class=\"govuk-label\" for=\"context-email\">Email address</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"context-email\" type=\"text\" id=\"context-email\">\n"
+                        }
+                    },
+                    {
+                        "value": "phone",
+                        "text": "Phone",
+                        "conditional": {
+                            "html": "<label class=\"govuk-label\" for=\"contact-phone\">Phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"contact-phone\" type=\"text\" id=\"contact-phone\">\n"
+                        }
+                    },
+                    {
+                        "value": "text",
+                        "text": "Text message",
+                        "conditional": {
+                            "html": "<label class=\"govuk-label\" for=\"contact-text-message\">Mobile phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"contact-text-message\" type=\"text\" id=\"contact-text-message\">\n"
+                        }
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-form-group\">\n\n  <fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    How do you want to be contacted?\n  \n  </legend>\n  \n\n  <div class=\"govuk-checkboxes\"\n    data-module=\"govuk-checkboxes\">\n    \n      \n          \n        \n          \n          \n          \n          \n          <div class=\"govuk-checkboxes__item\">\n            <input class=\"govuk-checkboxes__input\" id=\"user.profile[contact-prefs]\" name=\"contact-prefs\" type=\"checkbox\" value=\"email\" data-aria-controls=\"conditional-user.profile[contact-prefs]\">\n            <label class=\"govuk-label govuk-checkboxes__label\" for=\"user.profile[contact-prefs]\">\n        Email\n      </label>\n            \n          </div>\n          \n            <div class=\"govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden\" id=\"conditional-user.profile[contact-prefs]\">\n              <label class=\"govuk-label\" for=\"context-email\">Email address</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"context-email\" type=\"text\" id=\"context-email\">\n\n            </div>\n          \n        \n      \n    \n      \n        \n          \n          \n          \n          \n          <div class=\"govuk-checkboxes__item\">\n            <input class=\"govuk-checkboxes__input\" id=\"user.profile[contact-prefs]-2\" name=\"contact-prefs\" type=\"checkbox\" value=\"phone\" data-aria-controls=\"conditional-user.profile[contact-prefs]-2\">\n            <label class=\"govuk-label govuk-checkboxes__label\" for=\"user.profile[contact-prefs]-2\">\n        Phone\n      </label>\n            \n          </div>\n          \n            <div class=\"govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden\" id=\"conditional-user.profile[contact-prefs]-2\">\n              <label class=\"govuk-label\" for=\"contact-phone\">Phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"contact-phone\" type=\"text\" id=\"contact-phone\">\n\n            </div>\n          \n        \n      \n    \n      \n        \n          \n          \n          \n          \n          <div class=\"govuk-checkboxes__item\">\n            <input class=\"govuk-checkboxes__input\" id=\"user.profile[contact-prefs]-3\" name=\"contact-prefs\" type=\"checkbox\" value=\"text\" data-aria-controls=\"conditional-user.profile[contact-prefs]-3\">\n            <label class=\"govuk-label govuk-checkboxes__label\" for=\"user.profile[contact-prefs]-3\">\n        Text message\n      </label>\n            \n          </div>\n          \n            <div class=\"govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden\" id=\"conditional-user.profile[contact-prefs]-3\">\n              <label class=\"govuk-label\" for=\"contact-text-message\">Mobile phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"contact-text-message\" type=\"text\" id=\"contact-text-message\">\n\n            </div>\n          \n        \n      \n    \n  </div>\n  \n\n</fieldset>\n\n\n</div>",
+            "hidden": false
+        },
+        {
             "name": "with conditional item checked",
             "options": {
                 "name": "how-contacted-checked",

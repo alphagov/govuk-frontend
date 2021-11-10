@@ -1,0 +1,47 @@
+@import "../button/index";
+
+@include govuk-exports("govuk/component/hide-this-page") {
+  @media only screen {
+    .govuk-hide-this-page {
+      display: block;
+      position: -webkit-sticky;
+      position: sticky;
+      z-index: 1000;
+      top: 0;
+      float: right;
+    }
+
+    .govuk-hide-this-page__position {
+      z-index: 1000;
+
+      .govuk-hide-this-page {
+        width: 100%;
+      }
+    }
+  }
+
+  .govuk-hide-this-page__position {
+    position: fixed;
+  }
+
+  @media only screen and (min-width: 641px) {
+    @supports ((position: -webkit-sticky) or (position: sticky)) {
+      .govuk-hide-this-page__position {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+      }
+    }
+  }
+  @media only screen and (max-width: 640px) {
+    .govuk-hide-this-page {
+      float: none;
+
+      .govuk-hide-this-page__position {
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+      }
+    }
+  }
+}

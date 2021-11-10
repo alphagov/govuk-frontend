@@ -1056,7 +1056,7 @@ Radios.prototype.init = function () {
 
     // Skip radios without data-aria-controls attributes, or where the
     // target element does not exist.
-    if (!target || !$module.querySelector('#' + target)) {
+    if (!target || !document.getElementById(target)) {
       return
     }
 
@@ -1101,7 +1101,7 @@ Radios.prototype.syncAllConditionalReveals = function () {
  * @param {HTMLInputElement} $input Radio input
  */
 Radios.prototype.syncConditionalRevealWithInputState = function ($input) {
-  var $target = document.querySelector('#' + $input.getAttribute('aria-controls'));
+  var $target = document.getElementById($input.getAttribute('aria-controls'));
 
   if ($target && $target.classList.contains('govuk-radios__conditional')) {
     var inputIsChecked = $input.checked;

@@ -1,0 +1,13 @@
+{
+    "component": "hide-this-page",
+    "fixtures": [
+        {
+            "name": "default",
+            "options": {
+                "text": "Hide this page"
+            },
+            "html": "<div class=\"govuk-hide-this-page\">\n  <script>\n    function govukHideThisPage() {\n        window.open(\"http://bbc.co.uk/weather\", \"_newtab\");\n    }\n  </script>\n  <div class=\"govuk-hide-this-page__position\">\n    \n  \n\n\n  \n    \n  \n\n<a href=\"http://www.google.com\" role=\"button\" draggable=\"false\" class=\"govuk-button govuk-button--warning govuk-!-margin-bottom-0\" data-module=\"govuk-button\" onclick=\"govukHideThisPage()\">\n  Hide this page\n</a>\n\n  </div>\n</div>",
+            "hidden": false
+        }
+    ]
+}

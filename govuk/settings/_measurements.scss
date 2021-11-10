@@ -73,16 +73,6 @@ $govuk-border-width-narrow: 4px !default;
 
 $govuk-border-width-form-element: 2px !default;
 
-/// Form control border width when in error state
-///
-/// @type Number
-/// @access public
-/// @deprecated Use $govuk-border-width-form-element instead. There should be no
-///   difference in thickness for inputs in the error state, in order to
-///   maintain a distinct focus state.
-
-$govuk-border-width-form-element-error: 2px !default;
-
 /// Form group border width when in error state
 ///
 /// @type Number
