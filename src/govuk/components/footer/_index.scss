@@ -145,6 +145,7 @@
   }
 
   .govuk-footer__navigation {
+    @include govuk-clearfix;
     box-sizing: border-box;
     display: flex;
     margin-right: -$govuk-gutter-half;
@@ -159,6 +160,7 @@
     margin-bottom: $govuk-gutter;
     padding-right: $govuk-gutter-half;
     padding-left: $govuk-gutter-half;
+    float: left;
     vertical-align: top;
     flex-grow: 1;
     flex-shrink: 1;
