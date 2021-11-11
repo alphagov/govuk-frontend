@@ -1,5 +1,6 @@
 @include govuk-exports("govuk/component/pagination") {
   .govuk-pagination {
+    border-top: 1px solid $govuk-border-colour;
     text-align: center;
 
     @include govuk-media-query($from: tablet) {
@@ -27,6 +28,10 @@
       margin-bottom: 0;
       vertical-align: middle;
     }
+  }
+
+  .govuk-pagination__list.govuk-pagination__list--block {
+    display: block;
   }
 
   .govuk-pagination__results {
@@ -60,6 +65,19 @@
     @include govuk-media-query($until: tablet) {
       display: inline-block;
     }
+  }
+
+  // When link descriptions are used in previous and next links, align them vertically
+  .govuk-pagination__item.govuk-pagination__item--block {
+    display: block;
+
+    .govuk-pagination__link {
+      padding-left: 0;
+    }
+  }
+
+  .govuk-pagination__item.govuk-pagination__item--next.govuk-pagination__item--block {
+    border-top: 1px solid $govuk-border-colour;
   }
 
   .govuk-pagination__item--active,
@@ -97,7 +115,10 @@
     min-width: 45px;
     min-height: 45px;
     padding: 10px 18px;
-    text-align: center;
+    //text-align: center;
+    &:hover {
+      background: #f3f2f1;
+    }
   }
 
   .govuk-pagination__item--prev .govuk-pagination__link {

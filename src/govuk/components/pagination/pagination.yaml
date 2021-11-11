@@ -86,6 +86,16 @@ examples:
       selected: true
     - text: '3'
       href: '/page=3'
+- name: with page descriptions but no numbers
+  data:
+    previous:
+      text: 'Previous page'
+      description: '1 of 3'
+      href: '/page=1'
+    next:
+      text: 'Next page'
+      description: '3 of 3'
+      href: '/page=3'
 - name: with custom link text
   data:
     previous:
