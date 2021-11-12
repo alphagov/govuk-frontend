@@ -52,10 +52,13 @@
 
     .govuk-pagination__icon {
       margin-top: 6px;
+      margin-right: govuk-spacing(2);
     }
   }
 
   .govuk-pagination__item--next .govuk-pagination__icon {
+    margin-right: 0;
+    margin-left: govuk-spacing(3);
     float: right;
   }
 
@@ -87,6 +90,8 @@
       border-top: 1px solid $govuk-border-colour;
 
       .govuk-pagination__icon {
+        margin-right: govuk-spacing(2);
+        margin-left: 0;
         float: none;
       }
     }
@@ -138,7 +143,7 @@
 
     .govuk-pagination__link-label {
       display: block;
-      padding-left: govuk-spacing(5);
+      padding-left: 31px;
       @include govuk-font($size: 16, $weight: "regular");
     }
   }
