@@ -80,9 +80,11 @@
   }
 
   .govuk-select__option-list {
+    max-height: 300px;
     margin-top: 0;
     margin-left: 0;
     padding-left: 0;
+    overflow-y: scroll;
     list-style-type: none;
     border-top-width: 0;
     border-right-width: $govuk-border-width-form-element;
@@ -90,6 +92,20 @@
     border-left-width: $govuk-border-width-form-element;
     border-style: solid;
     border-color: currentColor;
+  }
+
+  // @include govuk-media-query($from: desktop) {
+  // Redefine scrollbars on desktop where these lists are scrollable
+  // so they are always visible in option lists
+  .govuk-select__option-list::-webkit-scrollbar {
+    width: 7px;
+    -webkit-appearance: none;
+  }
+
+  .govuk-select__option-list::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, .5);
+    -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .87);
   }
 
   .govuk-select__option {
