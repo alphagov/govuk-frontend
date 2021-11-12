@@ -86,7 +86,7 @@ examples:
       selected: true
     - text: '3'
       href: '/page=3'
-- name: with page descriptions but no numbers
+- name: with labels but no numbers
   data:
     classes: 'govuk-pagination__list--block'
     previous:

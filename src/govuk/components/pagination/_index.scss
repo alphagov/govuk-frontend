@@ -44,6 +44,7 @@
   .govuk-pagination__item {
     @include govuk-font(19);
     display: inline-block;
+    margin-bottom: govuk-spacing(4);
 
     // Hide items on small screens
     @include govuk-media-query($until: tablet) {
@@ -71,33 +72,6 @@
   .govuk-pagination__item:nth-last-child(2) {
     @include govuk-media-query($until: tablet) {
       display: inline-block;
-    }
-  }
-
-  // Block mode - position previous and next links above and below numbers
-  .govuk-pagination__list--block {
-    .govuk-pagination__list {
-      display: block;
-      text-align: justify;
-    }
-
-    .govuk-pagination__item--prev,
-    .govuk-pagination__item--next {
-      display: block;
-    }
-
-    .govuk-pagination__item--next {
-      border-top: 1px solid $govuk-border-colour;
-
-      .govuk-pagination__icon {
-        margin-right: govuk-spacing(2);
-        margin-left: 0;
-        float: none;
-      }
-    }
-
-    .govuk-pagination__link {
-      padding-left: 0;
     }
   }
 
@@ -129,22 +103,32 @@
 
   .govuk-pagination__link {
     @include govuk-link-common;
-    @include govuk-link-style-default;
-    @include govuk-link-style-no-underline;
     box-sizing: border-box;
     display: block;
     min-width: 45px;
     min-height: 45px;
     padding: 10px 18px;
-
-    &:hover {
-      background: #f3f2f1;
-    }
+    color: $govuk-link-colour;
+    text-decoration: none;
 
     .govuk-pagination__link-label {
+      @include govuk-font($size: 16, $weight: "regular");
       display: block;
       padding-left: 31px;
-      @include govuk-font($size: 16, $weight: "regular");
+      text-decoration: underline;
+    }
+
+    &:hover {
+      color: $govuk-link-colour;
+      background: #f3f2f1;
+
+      .govuk-pagination__link-label {
+        @include govuk-link-hover-decoration;
+      }
+
+      .govuk-pagination__link-title {
+        //@include govuk-link-hover-decoration;
+      }
     }
   }
 
@@ -156,5 +140,32 @@
   .govuk-pagination__item--next .govuk-pagination__link {
     padding-right: 0;
     font-weight: bold;
+  }
+
+  // Block mode - position previous and next links above and below numbers
+  .govuk-pagination__list--block {
+    .govuk-pagination__list {
+      display: block;
+      text-align: justify;
+    }
+
+    .govuk-pagination__item--prev,
+    .govuk-pagination__item--next {
+      display: block;
+    }
+
+    .govuk-pagination__item--next {
+      border-top: 1px solid $govuk-border-colour;
+
+      .govuk-pagination__icon {
+        margin-right: govuk-spacing(2);
+        margin-left: 0;
+        float: none;
+      }
+    }
+
+    .govuk-pagination__link {
+      padding-left: 0;
+    }
   }
 }
