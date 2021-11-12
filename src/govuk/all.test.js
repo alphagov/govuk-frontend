@@ -53,7 +53,8 @@ describe('GOV.UK Frontend', () => {
         'ErrorSummary',
         'Header',
         'Radios',
-        'Tabs'
+        'Tabs',
+        'Select'
       ])
     })
     it('exported Components can be initialised', async () => {
