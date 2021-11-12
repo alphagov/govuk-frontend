@@ -222,7 +222,7 @@ Select.prototype.hideList = function () {
 }
 
 Select.prototype.revertInputToCurrentlySelectedOption = function () {
-  if (this.$module.selectedOptions.length == 1) {
+  if (this.$module.selectedOptions.length === 1) {
     this.$input.value = this.$module.selectedOptions[0].textContent
   }
 }
