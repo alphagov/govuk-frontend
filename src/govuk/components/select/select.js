@@ -48,11 +48,9 @@ Select.prototype.init = function () {
   $module.setAttribute('id', $module.getAttribute('id') + '-select')
 
   document.addEventListener('click', this.handleDocumentClick.bind(this))
-
-  this.updateOptions()
 }
 
-Select.prototype.updateOptions = function() {
+Select.prototype.updateOptions = function(showAllOptions) {
   this.$ul.textContent = ''
 
   var options = this.$module.options
@@ -62,6 +60,7 @@ Select.prototype.updateOptions = function() {
       (opt.value != '') &&
       (
         this.$input.value == '' ||
+        showAllOptions ||
         (opt.textContent.toLowerCase().indexOf(this.$input.value.toLowerCase()) > -1)
       )
     ) {
@@ -92,7 +91,7 @@ Select.prototype.handleInputKeyUp = function(event) {
       break
     default:
       console.log(event.keyCode)
-      this.updateOptions()
+      this.updateOptions(false)
       this.$ul.hidden = false
   }
 }
@@ -129,6 +128,7 @@ Select.prototype.handleOptionsKeyUp = function(event) {
 }
 
 Select.prototype.handleInputClick = function() {
+  this.updateOptions(true)
   this.$ul.hidden = false
 }
 
