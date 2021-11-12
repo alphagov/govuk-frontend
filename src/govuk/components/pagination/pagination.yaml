@@ -88,13 +88,14 @@ examples:
       href: '/page=3'
 - name: with page descriptions but no numbers
   data:
+    classes: 'govuk-pagination__list--block'
     previous:
       text: 'Previous page'
-      description: '1 of 3'
+      label: '1 of 3'
       href: '/page=1'
     next:
       text: 'Next page'
-      description: '3 of 3'
+      label: '3 of 3'
       href: '/page=3'
 - name: with custom link text
   data:

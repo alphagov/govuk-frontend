@@ -30,10 +30,6 @@
     }
   }
 
-  .govuk-pagination__list.govuk-pagination__list--block {
-    display: block;
-  }
-
   .govuk-pagination__results {
     @include govuk-font(19);
     margin-top: 0;
@@ -53,6 +49,14 @@
     @include govuk-media-query($until: tablet) {
       display: none;
     }
+
+    .govuk-pagination__icon {
+      margin-top: 6px;
+    }
+  }
+
+  .govuk-pagination__item--next .govuk-pagination__icon {
+    float: right;
   }
 
   // Only show previous, next, first, last and current items on mobile
@@ -67,17 +71,29 @@
     }
   }
 
-  // When link descriptions are used in previous and next links, align them vertically
-  .govuk-pagination__item.govuk-pagination__item--block {
-    display: block;
+  // Block mode - position previous and next links above and below numbers
+  .govuk-pagination__list--block {
+    .govuk-pagination__list {
+      display: block;
+      text-align: justify;
+    }
+
+    .govuk-pagination__item--prev,
+    .govuk-pagination__item--next {
+      display: block;
+    }
+
+    .govuk-pagination__item--next {
+      border-top: 1px solid $govuk-border-colour;
+
+      .govuk-pagination__icon {
+        float: none;
+      }
+    }
 
     .govuk-pagination__link {
       padding-left: 0;
     }
-  }
-
-  .govuk-pagination__item.govuk-pagination__item--next.govuk-pagination__item--block {
-    border-top: 1px solid $govuk-border-colour;
   }
 
   .govuk-pagination__item--active,
@@ -115,17 +131,25 @@
     min-width: 45px;
     min-height: 45px;
     padding: 10px 18px;
-    //text-align: center;
+
     &:hover {
       background: #f3f2f1;
+    }
+
+    .govuk-pagination__link-label {
+      display: block;
+      padding-left: govuk-spacing(5);
+      @include govuk-font($size: 16, $weight: "regular");
     }
   }
 
   .govuk-pagination__item--prev .govuk-pagination__link {
     padding-left: 0;
+    font-weight: bold;
   }
 
   .govuk-pagination__item--next .govuk-pagination__link {
     padding-right: 0;
+    font-weight: bold;
   }
 }
