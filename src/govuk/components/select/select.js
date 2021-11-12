@@ -82,6 +82,13 @@ Select.prototype.updateOptions = function(showAllOptions) {
       this.$ul.appendChild(li)
     }
   }
+
+  if (!this.$ul.querySelector('li')) {
+    var li = document.createElement('li')
+    li.setAttribute('class', 'govuk-select__option govuk-select__option--no-results')
+    li.textContent = 'No results'
+    this.$ul.appendChild(li)
+  }
 }
 
 
@@ -94,7 +101,10 @@ Select.prototype.handleInputKeyDown = function(event) {
       } else {
         this.updateOptions(false)
       }
-      this.moveFocusToOptions()
+      // Move focus to first option if there are any.
+      if (this.$ul.querySelector('li[role="option"]')) {
+        this.moveFocusToOptions()
+      }
       event.preventDefault()
       break
     // Tab
@@ -107,7 +117,11 @@ Select.prototype.handleInputKeyDown = function(event) {
       } else {
         this.updateOptions(false)
       }
-      this.moveFocusToOptions(false)
+
+      // Move focus to last option if there are any.
+      if (this.$ul.querySelector('li[role="option"]')) {
+        this.moveFocusToOptions(false)
+      }
       event.preventDefault()
       break
     default:
@@ -218,6 +232,11 @@ Select.prototype.revertInputToCurrentlySelectedOption = function() {
   }
 }
 
+Select.prototype.clearInput = function() {
+  this.$module.value = ''
+  this.$input.value = ''
+}
+
 Select.prototype.handleMouseEntered = function(event) {
   var optionHovered = event.target
   optionHovered.focus()
@@ -226,7 +245,11 @@ Select.prototype.handleMouseEntered = function(event) {
 Select.prototype.handleDocumentClick = function(event) {
   var elementClicked = event.target
   if (!this.$wrapper.contains(elementClicked)) {
-    this.revertInputToCurrentlySelectedOption()
+    if (this.$module.value != '') {
+      this.revertInputToCurrentlySelectedOption()
+    } else {
+      this.clearInput()
+    }
     this.hideList()
   }
 }

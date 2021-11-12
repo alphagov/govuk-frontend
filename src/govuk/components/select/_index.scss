@@ -116,6 +116,13 @@
     border-width: 1px 0;
   }
 
+  .govuk-select__option--no-results {
+    padding-left: 5px;
+    color: $govuk-secondary-text-colour;
+    background-color: govuk-colour("light-grey", $legacy: "grey-4");
+    cursor: not-allowed;
+  }
+
   .govuk-select__option[aria-selected=true]:before {
     content: '';
     box-sizing: border-box;
