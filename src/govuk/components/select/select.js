@@ -15,10 +15,12 @@ function Select ($module) {
 Select.prototype.init = function () {
   var $module = this.$module
 
-  var $div = document.createElement('div')
-  $div.setAttribute('class', 'govuk-select__wrapper')
-
-  this.$wrapper = $div
+  this.$wrapper = document.createElement('div')
+  this.$wrapper.setAttribute('role', 'combobox')
+  this.$wrapper.setAttribute('aria-owns', $module.getAttribute('id'))
+  this.$wrapper.setAttribute('aria-haspopup', 'listbox')
+  this.$wrapper.setAttribute('aria-expanded', 'false')
+  this.$wrapper.setAttribute('class', 'govuk-select__wrapper')
 
   this.$input = document.createElement('input')
   this.$input.setAttribute('type', 'text')
@@ -26,24 +28,28 @@ Select.prototype.init = function () {
   this.$input.setAttribute('class', 'govuk-input govuk-select__input')
   this.$input.setAttribute('autocomplete', 'off')
   this.$input.setAttribute('name', $module.getAttribute('name'))
+  this.$input.setAttribute('aria-autocomplete', 'list')
+  this.$input.setAttribute('aria-controls', $module.getAttribute('id') + '-listbox')
 
   this.$input.addEventListener('click', this.handleInputClick.bind(this))
-  this.$input.addEventListener('keyup', this.handleInputKeyUp.bind(this))
+  this.$input.addEventListener('keydown', this.handleInputKeyDown.bind(this))
 
   var $dropDownArrow = document.createElement('div')
   $dropDownArrow.setAttribute('class', 'govuk-select__drop-down-arrow')
 
   this.$ul = document.createElement('ul')
+  this.$ul.setAttribute('id', $module.getAttribute('id') + '-listbox')
   this.$ul.addEventListener('click', this.handleOptionClicked.bind(this))
-  this.$ul.addEventListener('keyup',this.handleOptionsKeyUp.bind(this))
+  this.$ul.addEventListener('keydown',this.handleOptionsKeyDown.bind(this))
   this.$ul.hidden = true
   this.$ul.setAttribute('class', 'govuk-select__option-list')
+  this.$ul.setAttribute('role', 'listbox')
 
-  $div.appendChild($dropDownArrow)
-  $div.appendChild(this.$input)
-  $div.appendChild(this.$ul)
+  this.$wrapper.appendChild($dropDownArrow)
+  this.$wrapper.appendChild(this.$input)
+  this.$wrapper.appendChild(this.$ul)
 
-  $module.parentNode.insertBefore($div, $module)
+  $module.parentNode.insertBefore(this.$wrapper, $module)
   $module.style.display = 'none'
   $module.setAttribute('id', $module.getAttribute('id') + '-select')
 
@@ -79,24 +85,38 @@ Select.prototype.updateOptions = function(showAllOptions) {
 }
 
 
-Select.prototype.handleInputKeyUp = function(event) {
+Select.prototype.handleInputKeyDown = function(event) {
   switch (event.keyCode) {
     // Down
     case 40:
+      if (this.$ul.hidden == true) {
+        this.updateOptions(true)
+      } else {
+        this.updateOptions(false)
+      }
       this.moveFocusToOptions()
       event.preventDefault()
       break
     // Tab
     case 9:
       break
+    // Up
+    case 38:
+      if (this.$ul.hidden == true) {
+        this.updateOptions(true)
+      } else {
+        this.updateOptions(false)
+      }
+      this.moveFocusToOptions(false)
+      event.preventDefault()
+      break
     default:
-      console.log(event.keyCode)
       this.updateOptions(false)
-      this.$ul.hidden = false
+      this.displayList()
   }
 }
 
-Select.prototype.handleOptionsKeyUp = function(event) {
+Select.prototype.handleOptionsKeyDown = function(event) {
   switch (event.keyCode) {
     // Down
     case 40:
@@ -109,6 +129,7 @@ Select.prototype.handleOptionsKeyUp = function(event) {
       }
       event.preventDefault()
       break
+    // Up
     case 38:
       var optionSelected = this.$ul.querySelector('li:focus')
       if (optionSelected.previousSibling) {
@@ -118,22 +139,33 @@ Select.prototype.handleOptionsKeyUp = function(event) {
       }
       event.preventDefault()
       break
+    // Enter
     case 13:
       var optionSelected = this.$ul.querySelector('li:focus')
       this.selectOption(optionSelected)
       event.preventDefault()
       break
+    // Escape
+    case 27:
+      this.revertInputToCurrentlySelectedOption()
+      this.hideList()
+      this.$input.focus()
+      event.preventDefault()
+      break
+    default:
+    this.$input.focus()
+      // console.log(event.keyCode)
   }
 
 }
 
 Select.prototype.handleInputClick = function() {
   this.updateOptions(true)
-  this.$ul.hidden = false
+  this.displayList()
 }
 
-Select.prototype.moveFocusToOptions = function() {
-  this.$ul.hidden = false
+Select.prototype.moveFocusToOptions = function(defaultToFirstItem = true) {
+  this.displayList()
 
   if (this.$module.value != '') {
     var currentlySelectedOption = this.$ul.querySelector('li[data-value="' + this.$module.value + '"]')
@@ -141,15 +173,15 @@ Select.prototype.moveFocusToOptions = function() {
 
   if (currentlySelectedOption) {
     currentlySelectedOption.focus()
-  } else {
+  } else if (defaultToFirstItem) {
     this.$ul.getElementsByTagName('li')[0].focus()
+  } else {
+    this.$ul.getElementsByTagName("li")[this.$ul.getElementsByTagName("li").length - 1].focus()
   }
 }
 
 Select.prototype.handleOptionClicked = function(event) {
-
   var optionSelected = event.target
-
   this.selectOption(optionSelected)
 }
 
@@ -165,8 +197,25 @@ Select.prototype.selectOption = function(option) {
   this.$module.value = option.getAttribute('data-value')
 
   this.$input.focus()
-  this.$ul.hidden = true
+  this.hideList()
 
+}
+
+Select.prototype.displayList = function() {
+  this.$ul.hidden = false
+  this.$wrapper.setAttribute('aria-expanded', 'true')
+}
+
+Select.prototype.hideList = function() {
+  this.$ul.hidden = true
+  this.$wrapper.setAttribute('aria-expanded', 'false')
+}
+
+Select.prototype.revertInputToCurrentlySelectedOption = function() {
+  if (this.$module.value != '') {
+    var currentlySelectedOption = this.$ul.querySelector('li[data-value="' + this.$module.value + '"]')
+    this.$input.value = currentlySelectedOption.textContent
+  }
 }
 
 Select.prototype.handleMouseEntered = function(event) {
@@ -177,7 +226,8 @@ Select.prototype.handleMouseEntered = function(event) {
 Select.prototype.handleDocumentClick = function(event) {
   var elementClicked = event.target
   if (!this.$wrapper.contains(elementClicked)) {
-    this.$ul.hidden = true
+    this.revertInputToCurrentlySelectedOption()
+    this.hideList()
   }
 }
 
