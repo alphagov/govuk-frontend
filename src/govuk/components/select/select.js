@@ -222,9 +222,8 @@ Select.prototype.hideList = function () {
 }
 
 Select.prototype.revertInputToCurrentlySelectedOption = function () {
-  if (this.$module.value !== '') {
-    var currentlySelectedOption = this.$ul.querySelector('li[data-value="' + this.$module.value + '"]')
-    this.$input.value = currentlySelectedOption.textContent
+  if (this.$module.selectedOptions.length == 1) {
+    this.$input.value = this.$module.selectedOptions[0].textContent
   }
 }
 
