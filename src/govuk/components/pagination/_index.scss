@@ -26,18 +26,18 @@
     @include govuk-media-query($from: tablet) {
       display: inline-block;
       margin-bottom: 0;
-      vertical-align: middle;
     }
   }
 
   .govuk-pagination__results {
     @include govuk-font(19);
     margin-top: 0;
+    margin-bottom: govuk-spacing(4);
     padding: govuk-spacing(1) 0;
     @include govuk-media-query($from: tablet) {
       display: inline-block;
       margin-bottom: 0;
-      vertical-align: middle;
+      //vertical-align: middle;
     }
   }
 
@@ -53,7 +53,7 @@
 
     .govuk-pagination__icon {
       margin-top: 6px;
-      margin-right: govuk-spacing(2);
+      margin-right: govuk-spacing(3);
     }
   }
 
@@ -103,18 +103,18 @@
 
   .govuk-pagination__link {
     @include govuk-link-common;
+    @include govuk-link-style-no-underline;
     box-sizing: border-box;
     display: block;
     min-width: 45px;
     min-height: 45px;
     padding: 10px 18px;
     color: $govuk-link-colour;
-    text-decoration: none;
 
     .govuk-pagination__link-label {
       @include govuk-font($size: 16, $weight: "regular");
       display: block;
-      padding-left: 31px;
+      padding-left: 32px;
       text-decoration: underline;
     }
 
@@ -124,10 +124,6 @@
 
       .govuk-pagination__link-label {
         @include govuk-link-hover-decoration;
-      }
-
-      .govuk-pagination__link-title {
-        //@include govuk-link-hover-decoration;
       }
     }
   }
@@ -166,6 +162,7 @@
 
     .govuk-pagination__link {
       padding-left: 0;
+      text-decoration: none;
     }
   }
 }
