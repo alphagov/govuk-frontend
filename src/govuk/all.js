@@ -71,7 +71,6 @@ function initAll (options) {
   nodeListForEach($selects, function ($select) {
     new Select($select).init()
   })
-
 }
 
 export {
