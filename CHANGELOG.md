@@ -79,6 +79,29 @@ If you see unexpected behaviour, make sure the `id` for the  textarea is unique 
 
 This change was introduced in [pull request #2408: Prevent issues with character count when textarea `id` includes CSS syntax characters](https://github.com/alphagov/govuk-frontend/pull/2408).
 
+#### Make sure individually imported JavaScript modules work as expected
+
+You do not need to do anything if you have either:
+
+- followed our [Getting Started guide](https://frontend.design-system.service.gov.uk/get-started/#5-get-the-javascript-working) and are importing all of the GOV.UK Frontend JavaScript in one go via `all.js`
+- installed GOV.UK Frontend using precompiled files
+
+We've changed the naming of our components' JavaScript modules so that individual imports are now attached to
+`window.GOVUKFrontend.[ComponentName]` instead of `window.GOVUKFrontend`.
+
+You can now import multiple modules without overwriting the previous one, for example:
+
+```
+//= require govuk/components/accordion/accordion.js
+//= require govuk/components/button/button.js
+
+# These modules are available under window.GOVUKFrontend.Accordion and window.GOVUKFrontend.Button respectively
+```
+
+If you're importing JavaScript modules individually, you should check any references to `window.GOVUKFrontend` in your code and update them to point to the correct component, `window.GOVUKFrontend.[ComponentName]`. You can now remove any workarounds you may have implemented.
+
+This change was introduced in [pull request #1836: Rename exported JavaScript modules to include component name](https://github.com/alphagov/govuk-frontend/issues/1836)].
+
 #### Remove calls to deprecated `iff` Sass function
 
 We've removed the `iff` function which we deprecated in [GOV.UK Frontend version 3.6.0](https://github.com/alphagov/govuk-frontend/releases/tag/v3.6.0).
@@ -149,6 +172,7 @@ We’ve made fixes to GOV.UK Frontend in the following pull requests:
 - [#2370: Prevent issues with conditionally revealed content when content `id` includes CSS syntax characters](https://github.com/alphagov/govuk-frontend/pull/2370)
 - [#2408: Prevent issues with character count when textarea `id` includes CSS syntax characters](https://github.com/alphagov/govuk-frontend/pull/2408)
 - [#2434: Add brand colour for Department for Levelling Up, Housing and Communities (DLUHC)](https://github.com/alphagov/govuk-frontend/pull/2434)
+- [#1836: Rename exported JavaScript modules to include component name](https://github.com/alphagov/govuk-frontend/issues/1836))
 
 ## 3.14.0 (Feature release)
 
