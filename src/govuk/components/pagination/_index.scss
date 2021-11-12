@@ -54,6 +54,7 @@
     .govuk-pagination__icon {
       margin-top: 6px;
       margin-right: govuk-spacing(3);
+      fill: $govuk-secondary-text-colour;
     }
   }
 
@@ -81,6 +82,7 @@
     min-width: 45px;
     min-height: 45px;
     padding: 10px 18px;
+    color: $govuk-secondary-text-colour;
     font-weight: bold;
     text-align: center;
   }
