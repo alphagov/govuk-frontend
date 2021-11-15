@@ -1,5 +1,7 @@
 'use strict'
 
+const helperFunctions = require('../../lib/helper-functions')
+
 const path = require('path')
 
 const gulp = require('gulp')
