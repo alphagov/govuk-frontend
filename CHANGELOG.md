@@ -128,6 +128,14 @@ Replace any use of this class with the `govuk-tag--grey` class.
 
 This change was introduced in [pull request #2417: Remove deprecated `govuk-tag--inactive class`](https://github.com/alphagov/govuk-frontend/pull/2417).
 
+#### Style any custom HTML in your cookie banner
+
+We've removed the default font styles from the cookie banner Sass. This change makes it more obvious when classes and styles have not been added to any custom HTML.
+
+If you're passing custom HTML into the cookie banner component (for example, using the `html` Nunjucks parameter), you must make sure you're applying the appropriate classes and styles to that HTML, such as adding the `govuk-body` class to any paragraph tags. You must do this to prevent your cookie banner displaying with unstyled text.
+
+This change was introduced in [pull request #2432: Remove default font styles from cookie banner Sass](https://github.com/alphagov/govuk-frontend/pull/2432).
+
 ### Optional changes
 
 We've recently made some other changes to GOV.UK Frontend. While these are not breaking changes, implementing them will make your service work better.
