@@ -97,6 +97,17 @@ examples:
       text: 'Next page'
       label: '3 of 3'
       href: '/page=3'
+- name: with long labels
+  data:
+    classes: 'govuk-pagination__list--block'
+    previous:
+      text: 'Previous page'
+      label: 'Applying for a provisional lorry or bus licence'
+      href: '/page=1'
+    next:
+      text: 'Next page'
+      label: 'Driver CPC part 1 test: theory'
+      href: '/page=3'
 - name: with custom link text
   data:
     previous:
