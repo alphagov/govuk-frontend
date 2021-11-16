@@ -51,32 +51,16 @@
   .govuk-select__drop-down-arrow {
     display: inline-block;
     position: absolute;
-
-    z-index: 1;
     top: 5px;
-    right: 15px;
-
+    right: 10px;
     width: 18px;
     height: 18px;
-
-    // Create a chevron using a box with borders on two sides, rotated 45deg.
-    &:before {
-      content: "";
-      display: block;
-
-      position: absolute;
-
-      width: 18px;
-      height: 18px;
-
-      margin: auto 0;
-
-      transform: rotate(45deg);
-
-      border: solid;
-      border-width: 0 2px 2px 0;
-      border-color: govuk_colour("black");
-    }
+    margin: auto 0;
+    transform: rotate(45deg);
+    border: solid;
+    border-width: 0 2px 2px 0;
+    border-color: govuk_colour("black");
+    pointer-events: none;
   }
 
   .govuk-select__option-list {

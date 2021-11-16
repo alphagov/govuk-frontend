@@ -44,8 +44,8 @@ Select.prototype.init = function () {
   this.$ul.setAttribute('class', 'govuk-select__option-list')
   this.$ul.setAttribute('role', 'listbox')
 
-  this.$wrapper.appendChild($dropDownArrow)
   this.$wrapper.appendChild(this.$input)
+  this.$wrapper.appendChild($dropDownArrow)
   this.$wrapper.appendChild(this.$ul)
 
   $module.parentNode.insertBefore(this.$wrapper, $module)
