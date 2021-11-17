@@ -32,6 +32,7 @@ Select.prototype.init = function () {
 
   this.$input.addEventListener('click', this.handleInputClick.bind(this))
   this.$input.addEventListener('keydown', this.handleInputKeyDown.bind(this))
+  this.$input.addEventListener('input', this.handleInputInput.bind(this))
 
   var $dropDownArrow = document.createElement('div')
   $dropDownArrow.setAttribute('class', 'govuk-select__drop-down-arrow')
@@ -89,23 +90,19 @@ Select.prototype.updateOptions = function (showAllOptions) {
   }
 }
 
+// On key down, check if the key pressed an up/down arrow or tab
 Select.prototype.handleInputKeyDown = function (event) {
   switch (event.keyCode) {
     // Down
     case 40:
       if (this.$ul.hidden === true) {
         this.updateOptions(true)
-      } else {
-        this.updateOptions(false)
       }
       // Move focus to first option if there are any.
       if (this.$ul.querySelector('li[role="option"]')) {
         this.moveFocusToOptions()
       }
       event.preventDefault()
-      break
-    // Tab
-    case 9:
       break
     // Up
     case 38:
@@ -121,12 +118,29 @@ Select.prototype.handleInputKeyDown = function (event) {
       }
       event.preventDefault()
       break
-    default:
-      this.updateOptions(false)
-      this.displayList()
+    // Tab
+    case 9:
+      this.$ul.hidden = true
+      break
   }
 }
 
+// On input, update the options and display the list
+Select.prototype.handleInputInput = function (event) {
+  this.updateOptions(false)
+  this.displayList()
+}
+
+// On keydown when focused on an option, check if the key
+// was:
+// * an arrow – if so move the focus
+// * enter - select the focused option
+// * escape - hide the options and revert to selected option
+// * any other character - return focus to the input
+//
+// Note: this has to be triggered on keydown instead of keyup so that if another
+// character is pressed, the focus can be moved to the input before the keyup event
+// is fired, allowing the character to be entered into the input.
 Select.prototype.handleOptionsKeyDown = function (event) {
   var optionSelected
   switch (event.keyCode) {
@@ -136,8 +150,6 @@ Select.prototype.handleOptionsKeyDown = function (event) {
 
       if (optionSelected.nextSibling) {
         optionSelected.nextSibling.focus()
-      } else {
-        this.$ul.getElementsByTagName('li')[0].focus()
       }
       event.preventDefault()
       break
@@ -147,7 +159,7 @@ Select.prototype.handleOptionsKeyDown = function (event) {
       if (optionSelected.previousSibling) {
         optionSelected.previousSibling.focus()
       } else {
-        this.$ul.getElementsByTagName('li')[this.$ul.getElementsByTagName('li').length - 1].focus()
+        this.$input.focus()
       }
       event.preventDefault()
       break
