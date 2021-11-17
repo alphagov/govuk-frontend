@@ -148,6 +148,7 @@ We’ve made fixes to GOV.UK Frontend in the following pull requests:
 - [#2323: Avoid invalid nesting of `<span>` within a `<dd>` in summary list](https://github.com/alphagov/govuk-frontend/pull/2323)
 - [#2370: Prevent issues with conditionally revealed content when content `id` includes CSS syntax characters](https://github.com/alphagov/govuk-frontend/pull/2370)
 - [#2408: Prevent issues with character count when textarea `id` includes CSS syntax characters](https://github.com/alphagov/govuk-frontend/pull/2408)
+- [#2434: Add brand colour for Department for Levelling Up, Housing and Communities (DLUHC)](https://github.com/alphagov/govuk-frontend/pull/2434)
 
 ## 3.14.0 (Feature release)
 
