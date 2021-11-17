@@ -7,7 +7,7 @@ Where applicable, you must make the following changes when you migrate to this r
 
 #### Check your accordions still display as expected
 
-[See the new design and revised guidance for accordions in the Design System](https://design-system.service.gov.uk/components/accordion/). In particular, review the guidance on when and when not to use accordions.
+[See the new design for accordions, and read the revised guidance, particularly about when, and when not, to use accordions](https://design-system.service.gov.uk/components/accordion/).
 
 You should check that your accordions still display as expected if you:
 
@@ -41,9 +41,13 @@ This change was introduced in [pull request #2385: Remove deprecated `govuk-main
 
 #### Remove deprecated `$govuk-border-width-form-element-error` variable
 
-We've removed the `$govuk-border-width-form-element-error` variable which we deprecated in [GOV.UK Frontend v3.8.0](https://github.com/alphagov/govuk-frontend/releases/tag/v3.8.0). At that time, we made the border width of form elements in their error state the same as in their normal state.
+In [GOV.UK Frontend v3.8.0](https://github.com/alphagov/govuk-frontend/releases/tag/v3.8.0), we made the border width of form elements in their error state the same as for form elements in their normal state, and deprecated the `$govuk-border-width-form-element-error` variable.
 
-If you’re referencing `$govuk-border-width-form-element-error` in your own Sass, you must remove this variable. If you're also defining your own error state, you only need to change the border colour.
+Before, an element's border got thicker to show the element was in an error state. However, elements in their focused state also have a thicker border. As a result, when users focused an element in an error state, the only visible border-change was from red to black. Not all users could perceive this change. So, we reduced the element border's width, to make sure its thickness changes when users focus.
+
+We've now removed `$govuk-border-width-form-element-error` completely.
+
+If you’re referencing `$govuk-border-width-form-element-error` in your own Sass, you must remove it. If you're also defining your own error state, you only need to change the border colour.
 
 You should avoid overriding the border width. For example, replace `border: $govuk-border-width-form-element-error solid $govuk-error-colour;` with `border-color: $govuk-error-colour;`.
 
@@ -63,7 +67,7 @@ This change was introduced in [pull request #2323: Avoid invalid nesting of `<sp
 
 On radios and checkboxes, the JavaScript now looks within the whole page for conditionally revealed content. Before, it only looked within the same set of radios or checkboxes.
 
-If you see unexpected behaviour, make sure the revealed content's `id` is unique within the page the content is on. Reusing the same `id` within a page could cause a radio or checkbox to reveal and hide the wrong element, and also means your HTML is invalid.
+If you see unexpected behaviour, [make sure the revealed content's `id` is unique within the page the content is on](https://www.w3.org/WAI/WCAG21/Techniques/html/H93). Reusing the same `id` within a page could cause a radio or checkbox to reveal and hide the wrong element, and also means your HTML is invalid.
 
 This change was introduced in [pull request #2370: Prevent issues with conditionally revealed content when content `id` includes CSS syntax characters](https://github.com/alphagov/govuk-frontend/pull/2370).
 
@@ -90,6 +94,51 @@ We've removed the `govuk-tag--inactive` class which we deprecated in [GOV.UK Fro
 Replace any use of this class with the `govuk-tag--grey` class.
 
 This change was introduced in [pull request #2417: Remove deprecated `govuk-tag--inactive class`](https://github.com/alphagov/govuk-frontend/pull/2417).
+
+### Optional changes
+
+We've recently made some other changes to GOV.UK Frontend. While these are not breaking changes, implementing them will make your service work better.
+
+You do not need to do anything if you're using Nunjucks macros.
+
+#### Change date input from `type="number"` to `inputmode="numeric"`
+
+There are some known issues with inputs of `type="number"`. [Read our research into the issues with `type="number"`.](https://github.com/alphagov/govuk-frontend/issues/1449#issuecomment-503186819)
+
+If you’re not using Nunjucks macros, remove the `type="number"` attribute from the date input component.
+
+ Replace it with `type="text"` and `inputmode="numeric"`, for example:
+
+```
+<input class="govuk-input govuk-date-input__input" id="passport-issued-month" name="passport-issued-month" type="text" pattern="[0-9]*" inputmode="numeric">
+
+```
+
+This was added in [pull request #1704: Update date input to use `type=text` and  `inputmode=numeric`](https://github.com/alphagov/govuk-frontend/pull/1704).
+
+#### Fix fallback logo so Chrome will not flag it to screen readers
+
+If you’re not using Nunjucks macros, you will need to change the SVG markup within the header, footer and button components. We’ve added this fix so screen readers will not announce the fallback image to users.
+
+Replace `role="presentation"` with `aria-hidden="true"`. For example:
+
+```
+<svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+```
+
+This was added in [pull request #1724: Fix fallback logo so Chrome will not flag it to screen readers](https://github.com/alphagov/govuk-frontend/pull/1724).
+
+#### Add `data-nosnippet` attribute to cookie banner
+
+Apply a `data-nosnippet` attribute to the cookie banner component to stop it appearing in Google Search snippets.
+
+If you’re not using Nunjucks macros, add a new `data-nosnippet` attribute to the cookie banner.
+
+```
+<div class="govuk-cookie-banner " data-nosnippet role="region" aria-label="Cookies on your service">
+```
+
+This was added in [pull request #2192: Add data-nosnippet to prevent cookie banner text appearing in Google Search snippets](https://github.com/alphagov/govuk-frontend/pull/2192).
 
 ### Fixes
 
