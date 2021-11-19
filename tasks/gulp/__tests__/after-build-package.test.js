@@ -9,11 +9,13 @@ var glob = require('glob')
 
 const configPaths = require('../../../config/paths.json')
 const lib = require('../../../lib/file-helper')
+const { componentNameToJavaScriptModuleName } = require('../../../lib/helper-functions')
 
 const { renderSass } = require('../../../lib/jest-helpers')
 
 const readFile = util.promisify(fs.readFile)
 const componentNames = lib.allComponents.slice()
+const componentsWithJavaScript = glob.sync(configPaths.package + 'govuk/components/' + '**/!(*.test).js')
 
 describe('package/', () => {
   it('should contain the expected files', () => {
@@ -101,6 +103,19 @@ describe('package/', () => {
     })
   })
 
+  describe('all.js', () => {
+    it('should have correct module name', async () => {
+      const allJsFile = path.join(configPaths.package, 'govuk', 'all.js')
+      return readFile(allJsFile, 'utf8')
+        .then((data) => {
+          expect(data).toContain("typeof define === 'function' && define.amd ? define('GOVUKFrontend', ['exports'], factory)")
+        })
+        .catch(error => {
+          throw error
+        })
+    })
+  })
+
   describe('component', () => {
     it.each(componentNames)('\'%s\' should have macro-options.json that contains JSON', (name) => {
       const filePath = path.join(configPaths.package, 'govuk', 'components', name, 'macro-options.json')
@@ -120,6 +135,20 @@ describe('package/', () => {
               })
             )
           })
+        })
+        .catch(error => {
+          throw error
+        })
+    })
+  })
+
+  describe('components with JavaScript', () => {
+    it.each(componentsWithJavaScript)('\'%s\' should have component JavaScript file with correct module name', (javaScriptFile) => {
+      const moduleName = componentNameToJavaScriptModuleName(path.parse(javaScriptFile).name)
+
+      return readFile(javaScriptFile, 'utf8')
+        .then((data) => {
+          expect(data).toContain("typeof define === 'function' && define.amd ? define('" + moduleName + "', factory)")
         })
         .catch(error => {
           throw error
