@@ -2,8 +2,6 @@
   .govuk-hint {
     @include govuk-font($size: 19);
 
-    display: block;
-
     margin-bottom: govuk-spacing(3);
 
     color: $govuk-secondary-text-colour;
