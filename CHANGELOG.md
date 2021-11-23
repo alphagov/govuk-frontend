@@ -102,6 +102,16 @@ If you're importing JavaScript modules individually, you should check any refere
 
 This change was introduced in [pull request #1836: Rename exported JavaScript modules to include component name](https://github.com/alphagov/govuk-frontend/issues/1836)].
 
+#### Update the HTML for hints
+
+In GOV.UK Frontend v3.8.0, we [updated the HTML for hints to use a `<div>` rather than a `<span>` element, to allow the use of block elements](https://github.com/alphagov/govuk-frontend/issues/1835). We've now removed the styles which made the hint `<span>` display as block.
+
+To make sure your hints are styled correctly, update your hint HTML to use a `<div>` rather than a `<span>`. For example: `<div id="input-hint" class="govuk-hint"></div>`.
+
+You do not need to do anything if you're using Nunjucks macros.
+
+This change was introduced in [pull request #2437: Remove `display:block` on hint component](https://github.com/alphagov/govuk-frontend/pull/2437).
+
 #### Remove calls to deprecated `iff` Sass function
 
 We've removed the `iff` function which we deprecated in [GOV.UK Frontend version 3.6.0](https://github.com/alphagov/govuk-frontend/releases/tag/v3.6.0).
