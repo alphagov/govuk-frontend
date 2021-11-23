@@ -1,7 +1,7 @@
 'use strict'
 
 const gulp = require('gulp')
-const taskArguments = require('./task-arguments')
+const taskArguments = require('../task-arguments')
 const del = require('del')
 
 // Clean task for a specified folder --------------------
