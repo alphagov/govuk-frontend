@@ -9,6 +9,7 @@
   "scripts": {
     "preinstall": "node bin/check-nvmrc.js",
     "prestart": "node bin/check-nvmrc.js",
+    "lint:sass": "stylelint \"src/govuk/**/*.scss\" \"app/**/*.scss\"",
     "start": "gulp dev",
     "heroku": "gulp copy-assets && gulp sassdoc && node app/start.js",
     "build-release": "node bin/check-nvmrc.js && ./bin/build-release.sh",
