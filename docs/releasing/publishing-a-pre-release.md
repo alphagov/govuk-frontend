@@ -18,13 +18,15 @@ Projects can point to this branch in their package.json, instead of to the publi
 
 ## Publish a pre-release
 
-1. Run `git checkout -b BRANCH-NAME` to switch to the branch you want to pre-release.
+1. Run `git checkout -b BRANCH-NAME` to check out a new branch you want to pre-release, or `git checkout BRANCH-NAME` to check out an existing branch.
 
-2. Run `nvm use` to make sure you’re using the right version of Node.js and npm.
+2. Make any required changes and commit them.
 
-3. Run `npm install` to make sure you have the latest dependencies installed.
+3. Run `nvm use` to make sure you’re using the right version of Node.js and npm.
 
-4. Run `npm run pre-release` to create and push a new branch that contains your changes. This process may take a few moments and will display a `Success!` message.
+4. Run `npm ci` to make sure you have the correct dependencies installed.
+
+5. Run `npm run pre-release` to create and push a new branch that contains your changes. This process may take a few moments and will display a `Success!` message.
 
 ## Preview your changes
 
