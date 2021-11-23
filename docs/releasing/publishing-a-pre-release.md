@@ -33,3 +33,13 @@ Projects can point to this branch in their package.json, instead of to the publi
 1. If you need to update an existing project to use the pre-release, copy the command that displays after the `Success!`message.
 
 2. Navigate to the project in the command line and run the success notification command. Running this command makes the project point to the pre-release branch, instead of to the published [GOV.UK Frontend npm package](https://www.npmjs.com/package/govuk-frontend). You can now preview your trial changes to GOV.UK Frontend.
+
+## Update a pre-release
+
+1. Check out the Git branch you previously pre-released (this is the branch you work on, not the branch the script created).
+
+2. Make the required changes and commit them.
+
+3. Follow steps 3-5 in [Publish a pre-release](#publish-a-pre-release).
+
+4. Follow the steps in [Preview your changes](#preview-your-changes).
