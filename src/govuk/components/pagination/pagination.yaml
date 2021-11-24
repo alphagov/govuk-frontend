@@ -76,53 +76,53 @@ examples:
 - name: default
   data:
     previous:
-      href: '/page=1'
+      href: '#'
     next:
-      href: '/page=3'
+      href: '#'
     items:
     - text: '1'
-      href: '/page=1'
+      href: '#'
     - text: '2'
       current: true
     - text: '3'
-      href: '/page=3'
+      href: '#'
 - name: with labels but no numbers
   data:
     classes: 'govuk-pagination__list--block'
     previous:
       text: 'Previous page'
       label: '1 of 3'
-      href: '/page=1'
+      href: '#'
     next:
       text: 'Next page'
       label: '3 of 3'
-      href: '/page=3'
+      href: '#'
 - name: with long labels
   data:
     classes: 'govuk-pagination__list--block'
     previous:
       text: 'Previous page'
       label: 'Applying for a provisional lorry or bus licence'
-      href: '/page=1'
+      href: '#'
     next:
       text: 'Next page'
       label: 'Driver CPC part 1 test: theory'
-      href: '/page=3'
+      href: '#'
 - name: with custom link text
   data:
     previous:
       text: 'Previous page'
-      href: '/page=1'
+      href: '#'
     next:
       text: 'Next page'
-      href: '/page=3'
+      href: '#'
     items:
     - text: '1'
-      href: '/page=1'
+      href: '#'
     - text: '2'
       current: true
     - text: '3'
-      href: '/page=3'
+      href: '#'
 - name: with many pages
   data:
     results:
@@ -130,46 +130,46 @@ examples:
       to: 1050
       count: 2000
     previous:
-      href: '/page=9'
+      href: '#'
     next:
-      href: '/page=11'
+      href: '#'
     items:
     - text: '1'
-      href: '/page=1'
+      href: '#'
     - type: 'ellipses'
     - text: '8'
-      href: '/page=8'
+      href: '#'
     - text: '9'
-      href: '/page=9'
+      href: '#'
     - text: '10'
       current: true
     - text: '11'
-      href: '/page=11'
+      href: '#'
     - text: '12'
-      href: '/page=12'
+      href: '#'
     - type: 'ellipses'
     - text: '40'
-      href: '/page=40'
+      href: '#'
 - name: first page
   data:
     next:
-      href: '/page=2'
+      href: '#'
     items:
     - text: '1'
       current: true
     - text: '2'
-      href: '/page=2'
+      href: '#'
     - text: '3'
-      href: '/page=3'
+      href: '#'
 - name: last page
   data:
     previous:
-      href: '/page=1'
+      href: '#'
     items:
     - text: '1'
-      href: '/page=1'
+      href: '#'
     - text: '2'
-      href: '/page=2'
+      href: '#'
     - text: '3'
       current: true
 - name: with results
@@ -179,16 +179,16 @@ examples:
       to: 100
       count: 150
     previous:
-      href: '/page=1'
+      href: '#'
     next:
-      href: '/page=3'
+      href: '#'
     items:
     - text: '1'
-      href: '/page=1'
+      href: '#'
     - text: '2'
       current: true
     - text: '3'
-      href: '/page=3'
+      href: '#'
 - name: with a different type of results
   data:
     results:
@@ -197,13 +197,13 @@ examples:
       count: 60
       type: 'team members'
     previous:
-      href: '/page=1'
+      href: '#'
     next:
-      href: '/page=3'
+      href: '#'
     items:
     - text: '1'
-      href: '/page=1'
+      href: '#'
     - text: '2'
       current: true
     - text: '3'
-      href: '/page=3'
+      href: '#'
