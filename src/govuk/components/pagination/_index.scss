@@ -97,6 +97,7 @@
     padding-right: 0;
     padding-left: 0;
     color: $govuk-secondary-text-colour;
+    pointer-events: none;
   }
 
   .govuk-pagination__item--prev .govuk-pagination__link:before {
