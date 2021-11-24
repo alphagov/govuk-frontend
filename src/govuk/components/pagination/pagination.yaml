@@ -83,7 +83,7 @@ examples:
     - text: '1'
       href: '/page=1'
     - text: '2'
-      selected: true
+      current: true
     - text: '3'
       href: '/page=3'
 - name: with labels but no numbers
@@ -120,7 +120,7 @@ examples:
     - text: '1'
       href: '/page=1'
     - text: '2'
-      selected: true
+      current: true
     - text: '3'
       href: '/page=3'
 - name: with many pages
@@ -142,7 +142,7 @@ examples:
     - text: '9'
       href: '/page=9'
     - text: '10'
-      selected: true
+      current: true
     - text: '11'
       href: '/page=11'
     - text: '12'
@@ -156,7 +156,7 @@ examples:
       href: '/page=2'
     items:
     - text: '1'
-      selected: true
+      current: true
     - text: '2'
       href: '/page=2'
     - text: '3'
@@ -171,7 +171,7 @@ examples:
     - text: '2'
       href: '/page=2'
     - text: '3'
-      selected: true
+      current: true
 - name: with results
   data:
     results:
@@ -186,7 +186,7 @@ examples:
     - text: '1'
       href: '/page=1'
     - text: '2'
-      selected: true
+      current: true
     - text: '3'
       href: '/page=3'
 - name: with a different type of results
@@ -204,6 +204,6 @@ examples:
     - text: '1'
       href: '/page=1'
     - text: '2'
-      selected: true
+      current: true
     - text: '3'
       href: '/page=3'

@@ -25,8 +25,8 @@
     {%- if item.type == 'elipses' %}
     <li class="govuk-pagination__item govuk-pagination__item--elipses">…</li>
     {% else %}
-    {%- if item.selected %}
-    <li class="govuk-pagination__item govuk-pagination__item--active"><span class="govuk-visually-hidden">Page </span>{{ item.text }}<span class="govuk-visually-hidden"> (current page) </span></li>
+    {%- if item.current %}
+    <li class="govuk-pagination__item govuk-pagination__item--current"><span class="govuk-visually-hidden">Page </span>{{ item.text }}<span class="govuk-visually-hidden"> (current page) </span></li>
     {% else %}
     <li class="govuk-pagination__item"><a class="govuk-pagination__link" href="{{ item.href }}"><span class="govuk-visually-hidden">Page </span>{{ item.text }}</a></li>
     {% endif -%}
