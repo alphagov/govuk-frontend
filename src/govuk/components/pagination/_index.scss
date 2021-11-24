@@ -58,10 +58,16 @@
     }
   }
 
+  // Set next item to relative position, which doesn’t affect its own position, but allows
+  // the SVG icon with it to be positioned relative to this container.
+  .govuk-pagination__item--next {
+    position: relative;
+  }
+
+  // Position SVG right arrow on the right of the link
   .govuk-pagination__item--next .govuk-pagination__icon {
-    margin-right: 0;
-    margin-left: govuk-spacing(3);
-    float: right;
+    position: absolute;
+    right: -15px;
   }
 
   // Only show previous, next, first, last and current items on mobile
@@ -136,7 +142,7 @@
   }
 
   .govuk-pagination__item--next .govuk-pagination__link {
-    padding-right: 0;
+    padding-right: 28px;
     font-weight: bold;
   }
 
@@ -156,9 +162,9 @@
       border-top: 1px solid $govuk-border-colour;
 
       .govuk-pagination__icon {
+        position: initial;
         margin-right: govuk-spacing(2);
         margin-left: 0;
-        float: none;
       }
     }
 
