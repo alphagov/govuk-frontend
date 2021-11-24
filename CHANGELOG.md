@@ -100,7 +100,7 @@ You can now import multiple modules without overwriting the previous one, for ex
 
 If you're importing JavaScript modules individually, you should check any references to `window.GOVUKFrontend` in your code and update them to point to the correct component, `window.GOVUKFrontend.[ComponentName]`. You can now remove any workarounds you may have implemented.
 
-This change was introduced in [pull request #1836: Rename exported JavaScript modules to include component name](https://github.com/alphagov/govuk-frontend/issues/1836)].
+This change was introduced in [pull request #2426: Rename exported JavaScript modules to include component name](https://github.com/alphagov/govuk-frontend/pull/2426).
 
 #### Update the HTML for hints
 
@@ -181,8 +181,8 @@ We’ve made fixes to GOV.UK Frontend in the following pull requests:
 - [#2323: Avoid invalid nesting of `<span>` within a `<dd>` in summary list](https://github.com/alphagov/govuk-frontend/pull/2323)
 - [#2370: Prevent issues with conditionally revealed content when content `id` includes CSS syntax characters](https://github.com/alphagov/govuk-frontend/pull/2370)
 - [#2408: Prevent issues with character count when textarea `id` includes CSS syntax characters](https://github.com/alphagov/govuk-frontend/pull/2408)
+- [#2426: Rename exported JavaScript modules to include component name](https://github.com/alphagov/govuk-frontend/pull/2426)
 - [#2434: Add brand colour for Department for Levelling Up, Housing and Communities (DLUHC)](https://github.com/alphagov/govuk-frontend/pull/2434)
-- [#1836: Rename exported JavaScript modules to include component name](https://github.com/alphagov/govuk-frontend/issues/1836))
 
 ## 3.14.0 (Feature release)
 
