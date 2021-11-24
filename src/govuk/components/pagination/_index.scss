@@ -88,7 +88,6 @@
     min-width: 45px;
     min-height: 45px;
     padding: 10px 18px;
-    color: $govuk-secondary-text-colour;
     font-weight: bold;
     text-align: center;
   }
@@ -97,6 +96,7 @@
     margin: 0 -22.5px;
     padding-right: 0;
     padding-left: 0;
+    color: $govuk-secondary-text-colour;
   }
 
   .govuk-pagination__item--prev .govuk-pagination__link:before {
