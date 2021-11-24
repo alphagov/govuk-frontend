@@ -22,8 +22,8 @@
     {% endif -%}
 
     {%- for item in params.items %}
-    {%- if item.type == 'elipses' %}
-    <li class="govuk-pagination__item govuk-pagination__item--elipses">…</li>
+    {%- if item.type == 'ellipses' %}
+    <li class="govuk-pagination__item govuk-pagination__item--ellipses">…</li>
     {% else %}
     {%- if item.current %}
     <li class="govuk-pagination__item govuk-pagination__item--current"><span class="govuk-visually-hidden">Page </span>{{ item.text }}<span class="govuk-visually-hidden"> (current page) </span></li>
