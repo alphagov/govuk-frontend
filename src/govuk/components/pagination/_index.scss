@@ -126,13 +126,13 @@
       text-decoration: underline;
     }
 
-    &:hover {
-      color: $govuk-link-colour;
-      background: #f3f2f1;
+    &:focus {
+      box-shadow: 0 0 $govuk-focus-colour, 0 4px $govuk-focus-text-colour;
+      text-decoration: underline;
+    }
 
-      .govuk-pagination__link-label {
-        @include govuk-link-hover-decoration;
-      }
+    &:hover:not(:focus) {
+      background-color: govuk-colour("light-grey", $legacy: "grey-4");
     }
   }
 
