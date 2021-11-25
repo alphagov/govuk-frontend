@@ -112,7 +112,7 @@
 
   .govuk-pagination__link {
     @include govuk-link-common;
-    @include govuk-link-style-no-underline;
+    //@include govuk-link-style-no-underline;
     box-sizing: border-box;
     display: block;
     min-width: 45px;
