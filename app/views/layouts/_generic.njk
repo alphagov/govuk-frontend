@@ -37,9 +37,10 @@
   {% block styles %}{% endblock %}
 {% endblock %}
 
-{% block header %}
-  {% include "../partials/banner.njk" %}
-  {{ super() }}
+{% block bodyStart %}
+  {% block banner %}
+    {% include "../partials/banner.njk" %}
+  {% endblock %}
 {% endblock %}
 
 {% set mainClasses = 'govuk-main-wrapper--auto-spacing' %}

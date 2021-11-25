@@ -15,7 +15,7 @@ notes: >-
 ---
 
 {# This example is based of the live "Apply online for a UK passport" start page: https://www.gov.uk/apply-renew-passport #}
-{% extends "_generic.njk" %}
+{% extends "full-page-example.njk" %}
 
 {% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
 {% from "button/macro.njk" import govukButton %}
@@ -25,13 +25,26 @@ notes: >-
 {% set pageTitle = "Apply online for a UK passport" %}
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
 
+{% set html %}
+  <p class="govuk-body">We’d like to use analytics cookies so we can understand how you use this site.</p>
+  <p class="govuk-body">We also use essential cookies to remember if you’ve accepted analytics cookies.</p>
+{% endset %}
+
+{% set acceptHtml %}
+  <p class="govuk-body">You’ve accepted analytics cookies. You can <a class="govuk-link" href="/cookies">change your cookie settings</a> at any time.</p>
+{% endset %}
+
+{% set rejectHtml %}
+  <p class="govuk-body">You’ve rejected analytics cookies. You can <a class="govuk-link" href="/cookies">change your cookie settings</a> at any time.</p>
+{% endset %}
+
 {% block bodyStart %}
     {{ govukCookieBanner({
     "classes": "js-cookies-banner",
     "messages": [
         {
             "headingText": "Cookies on this government service",
-            "text": "We use analytics cookies to help understand how users use our service.",
+            "html": html,
             "actions": [
                 {
                     "text": "Accept analytics cookies",
@@ -51,7 +64,7 @@ notes: >-
             "classes": "js-question-banner"
         },
         {
-            "text": "Your cookie preferences have been saved. You have accepted cookies.",
+            "html": acceptHtml,
             "role": "alert",
             "actions": [
                 {
@@ -64,7 +77,7 @@ notes: >-
             "hidden": true
         },
         {
-            "text": "Your cookie preferences have been saved. You have rejected cookies.",
+            "html": rejectHtml,
             "role": "alert",
             "actions": [
                 {

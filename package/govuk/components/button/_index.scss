@@ -158,10 +158,6 @@
       cursor: default;
     }
 
-    &:focus {
-      outline: none;
-    }
-
     &:active {
       top: 0;
       box-shadow: 0 $button-shadow-size 0 $govuk-button-shadow-colour; // s0
@@ -270,6 +266,9 @@
     -webkit-align-self: center;
         -ms-flex-item-align: center;
             align-self: center;
+    // Work around SVGs not inheriting color from parent in forced color mode
+    // (https://github.com/w3c/csswg-drafts/issues/6310)
+    forced-color-adjust: auto;
   }
 
   @if $govuk-use-legacy-font {

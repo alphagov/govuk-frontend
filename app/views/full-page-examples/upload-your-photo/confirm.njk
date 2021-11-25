@@ -1,4 +1,4 @@
-{% extends "_generic.njk" %}
+{% extends "full-page-example.njk" %}
 
 {% from "panel/macro.njk" import govukPanel %}
 
@@ -6,7 +6,6 @@
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block header %}
-  {% include "../../partials/banner.njk" %}
   {{ govukHeader({
     serviceName: "Apply for a passport",
     navigation: [

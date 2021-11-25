@@ -1,15 +1,16 @@
-{% extends "_generic.njk" %}
+{% extends "full-page-example.njk" %}
 
 {% from "panel/macro.njk" import govukPanel %}
 
-{% set pageTitle = "Passport details submitted" %}
+{% set pageTitle = "We have emailed you a confirmation" %}
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
 
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       {{ govukPanel({
-        titleText: pageTitle
+        titleText: pageTitle,
+        html: "Your reference number<br><strong>HDJ2123F</strong>"
       }) }}
     </div>
   </div>

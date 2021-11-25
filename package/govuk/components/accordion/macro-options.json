@@ -3,13 +3,13 @@
         "name": "id",
         "type": "string",
         "required": true,
-        "description": "Must be **unique** across the domain of your service (as the expanded state of individual instances of the component persists across page loads using [`sessionStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage)). Used as an `id` in the HTML for the accordion as a whole, and also as a prefix for the `id`s of the section contents and the buttons that open them, so that those `id`s can be the target of `aria-labelledby` and `aria-control` attributes."
+        "description": "Must be unique across the domain of your service (as the expanded state of individual instances of the component persists across page loads using [`sessionStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage)). Used as an `id` in the HTML for the accordion as a whole, and also as a prefix for the `id`s of the section contents and the buttons that open them, so that those `id`s can be the target of `aria-labelledby` and `aria-control` attributes."
     },
     {
         "name": "headingLevel",
         "type": "integer",
         "required": false,
-        "description": "Heading level, from 1 to 6. Default is `2`."
+        "description": "Heading level, from `1` to `6`. Default is `2`."
     },
     {
         "name": "classes",

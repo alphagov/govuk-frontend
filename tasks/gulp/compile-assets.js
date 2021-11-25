@@ -4,7 +4,7 @@ const path = require('path')
 
 const gulp = require('gulp')
 const configPaths = require('../../config/paths.json')
-const sass = require('gulp-sass')
+const sass = require('gulp-sass')(require('node-sass'))
 const plumber = require('gulp-plumber')
 const postcss = require('gulp-postcss')
 const autoprefixer = require('autoprefixer')

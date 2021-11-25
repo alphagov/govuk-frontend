@@ -2,6 +2,7 @@
 
 {% from "back-link/macro.njk" import govukBackLink %}
 {% from "checkboxes/macro.njk" import govukCheckboxes %}
+{% from "fieldset/macro.njk" import govukFieldset %}
 {% from "radios/macro.njk" import govukRadios %}
 {% from "input/macro.njk" import govukInput %}
 
@@ -170,6 +171,166 @@
       ]
     }) }}
 
-    {% endblock %}
+    <hr class="govuk-section-break govuk-section-break--l">
+
+    {% call govukFieldset({
+      legend: {
+        text: "Which colours do you like?",
+        classes: "govuk-fieldset__legend--l"
+      }
+    })%}
+
+      <h2 class="govuk-heading-m">Primary colours</h2>
+
+      {{ govukCheckboxes({
+        idPrefix: "colour-primary",
+        name: "colour",
+        items: [
+          {
+            value: "red",
+            text: "Red"
+          },
+          {
+            value: "yellow",
+            text: "Yellow",
+            conditional: {
+              html: '<p class="govuk-body">Orange is much nicer than yellow!</p>'
+            }
+          },
+          {
+            value: "blue",
+            text: "Blue"
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">Secondary colours</h2>
+
+      {{ govukCheckboxes({
+        idPrefix: "colour-secondary",
+        name: "colour",
+        items: [
+          {
+            value: "green",
+            text: "Green"
+          },
+          {
+            value: "purple",
+            text: "Purple"
+          },
+          {
+            value: "orange",
+            text: "Orange",
+            conditional: {
+              html: '<p class="govuk-body">I like orange too!</p>'
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">Other colours</h2>
+
+      {{ govukCheckboxes({
+        idPrefix: "colour-other",
+        name: "colour",
+        items: [
+          {
+            value: "imaginary",
+            text: "An imaginary colour"
+          },
+          {
+            divider: "or"
+          },
+          {
+            value: "none",
+            text: "None of the above",
+            behaviour: "exclusive"
+          }
+        ]
+      }) }}
+
+    {% endcall %}
+
+    <hr class="govuk-section-break govuk-section-break--l">
+
+    {% call govukFieldset({
+      legend: {
+        text: "Which colour is your favourite?",
+        classes: "govuk-fieldset__legend--l"
+      }
+    })%}
+
+      <h2 class="govuk-heading-m">Primary colours</h2>
+
+      {{ govukRadios({
+        idPrefix: "fave-primary",
+        name: "fave",
+        items: [
+          {
+            value: "red",
+            text: "Red"
+          },
+          {
+            value: "yellow",
+            text: "Yellow",
+            conditional: {
+              html: '<p class="govuk-body">Orange is much nicer than yellow!</p>'
+            }
+          },
+          {
+            value: "blue",
+            text: "Blue"
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">Secondary colours</h2>
+
+      {{ govukRadios({
+        idPrefix: "fave-secondary",
+        name: "fave",
+        items: [
+          {
+            value: "green",
+            text: "Green"
+          },
+          {
+            value: "purple",
+            text: "Purple"
+          },
+          {
+            value: "orange",
+            text: "Orange",
+            conditional: {
+              html: '<p class="govuk-body">Orange is my favourite colour!</p>'
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">Other colours</h2>
+
+      {{ govukRadios({
+        idPrefix: "fave-other",
+        name: "fave",
+        items: [
+          {
+            value: "imaginary",
+            text: "An imaginary colour"
+          },
+          {
+            divider: "or"
+          },
+          {
+            value: "none",
+            text: "None of the above",
+            behaviour: "exclusive"
+          }
+        ]
+      }) }}
+
+    {% endcall %}
+
   </div>
 </div>
+{% endblock %}

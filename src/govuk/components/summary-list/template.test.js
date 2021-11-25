@@ -14,14 +14,7 @@ describe('Summary list', () => {
     it('passes accessibility tests', async () => {
       const $ = render('summary-list', examples.default)
 
-      const results = await axe($.html(), {
-        rules: {
-          // In newer versions of the HTML specification wrapper
-          // <div>s are allowed in a definition list
-          dlitem: { enabled: false },
-          'definition-list': { enabled: false }
-        }
-      })
+      const results = await axe($.html())
       expect(results).toHaveNoViolations()
     })
   })
@@ -217,19 +210,42 @@ describe('Summary list', () => {
         expect($action.length).toEqual(0)
       })
 
-      it('adds dummy action columns when only some rows have actions', async () => {
+      describe('when only some rows have actions', () => {
         const $ = render('summary-list', examples['with some actions'])
-
         const $component = $('.govuk-summary-list')
-        const $action = $component.find('.govuk-summary-list__actions')
 
-        // First action column contains link text
-        expect($action[0].tagName).toEqual('dd')
-        expect($($action[0]).text()).toContain('Edit')
+        it('passes accessibility tests', async () => {
+          const results = await axe($.html())
+          expect(results).toHaveNoViolations()
+        })
 
-        // Second action column is a dummy
-        expect($action[1].tagName).toEqual('span')
-        expect($($action[1]).text()).toEqual('')
+        it('does not add no-actions modifier class to rows with actions', () => {
+          // The first row has actions
+          const $firstRow = $component.find('.govuk-summary-list__row:first-child')
+          expect($firstRow.hasClass('govuk-summary-list__row--no-actions')).toBeFalsy()
+        })
+
+        it('adds no-actions modifier class to rows without actions', () => {
+          // The second row does not have actions
+          const $secondRow = $component.find('.govuk-summary-list__row:nth-child(2)')
+          expect($secondRow.hasClass('govuk-summary-list__row--no-actions')).toBeTruthy()
+        })
+      })
+
+      describe('when no rows have actions', () => {
+        const $ = render('summary-list', examples.default)
+        const $component = $('.govuk-summary-list')
+
+        it('passes accessibility tests', async () => {
+          const results = await axe($.html())
+          expect(results).toHaveNoViolations()
+        })
+
+        it('does not add no-actions modifier class to any of the rows', () => {
+          // The first row has actions
+          const $rows = $component.find('.govuk-summary-list__row')
+          expect($rows.hasClass('govuk-summary-list__row--no-actions')).toBeFalsy()
+        })
       })
     })
   })

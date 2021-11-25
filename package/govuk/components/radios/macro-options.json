@@ -24,13 +24,13 @@
         "name": "formGroup",
         "type": "object",
         "required": false,
-        "description": "Options for the form-group wrapper",
+        "description": "Options for the form-group wrapper.",
         "params": [
             {
                 "name": "classes",
                 "type": "string",
                 "required": false,
-                "description": "Classes to add to the form group (for example to show error state for the whole group)"
+                "description": "Classes to add to the form group (for example to show error state for the whole group)."
             }
         ]
     },
@@ -38,7 +38,7 @@
         "name": "idPrefix",
         "type": "string",
         "required": false,
-        "description": "String to prefix id for each radio item if no id is specified on each item. If `idPrefix` is not passed, fallback to using the name attribute instead."
+        "description": "String to prefix ID for each radio item if no ID is specified on each item. If `idPrefix` is not passed, fallback to using the `name` attribute instead."
     },
     {
         "name": "name",
@@ -68,7 +68,7 @@
                 "name": "id",
                 "type": "string",
                 "required": false,
-                "description": "Specific id attribute for the radio item. If omitted, then `idPrefix` string will be applied."
+                "description": "Specific ID attribute for the radio item. If omitted, then `idPrefix` string will be applied."
             },
             {
                 "name": "value",
@@ -94,19 +94,19 @@
                 "name": "divider",
                 "type": "string",
                 "required": false,
-                "description": "Divider text to separate radio items, for example the text \"or\"."
+                "description": "Divider text to separate radio items, for example the text 'or'."
             },
             {
                 "name": "checked",
                 "type": "boolean",
                 "required": false,
-                "description": "If true, radio will be checked."
+                "description": "If `true`, radio will be checked."
             },
             {
                 "name": "conditional",
                 "type": "string",
                 "required": false,
-                "description": "If true, content provided will be revealed when the item is checked."
+                "description": "If `true`, content provided will be revealed when the item is checked."
             },
             {
                 "name": "conditional.html",
@@ -118,7 +118,7 @@
                 "name": "disabled",
                 "type": "boolean",
                 "required": false,
-                "description": "If true, radio will be disabled."
+                "description": "If `true`, radio will be disabled."
             },
             {
                 "name": "attributes",

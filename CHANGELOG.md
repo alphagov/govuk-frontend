@@ -2,14 +2,105 @@
 
 ## Unreleased
 
+### Breaking changes
+You must make the following changes when you migrate to this release, or your service may break.
+
+#### Remove deprecated `govuk-main-wrapper` and `govuk-main-wrapper--l` mixins
+
+We've removed the `govuk-main-wrapper` and `govuk-main-wrapper--l` mixins which we deprecated in [GOV.UK Frontend v3.0.0](https://github.com/alphagov/govuk-frontend/releases/tag/v3.0.0).
+
+Remove any use of these mixins in your own Sass. You can replace these mixins with direct references to the [spacing mixins](https://design-system.service.gov.uk/styles/spacing/#spacing-on-custom-components)
+
+This change was introduced in [pull request #2385: Remove deprecated `govuk-main-wrapper` and `govuk-main-wrapper--l` mixins](https://github.com/alphagov/govuk-frontend/pull/2385).
+
+#### Remove deprecated `$govuk-border-width-form-element-error` variable
+
+We've removed the `$govuk-border-width-form-element-error` variable which we deprecated in [GOV.UK Frontend v3.8.0](https://github.com/alphagov/govuk-frontend/releases/tag/v3.8.0). At that time, we made the border width of form elements in their error state the same as in their normal state.
+
+If you’re referencing `$govuk-border-width-form-element-error` in your own Sass, you must remove this variable. If you're also defining your own error state, you only need to change the border colour.
+
+You should avoid overriding the border width. For example, replace `border: $govuk-border-width-form-element-error solid $govuk-error-colour;` with `border-color: $govuk-error-colour;`.
+
+You should also remove any override of `$govuk-border-width-form-element-error` from your Sass. This override no longer does anything.
+
+This change was introduced in [pull request #1963: Remove deprecated `$govuk-border-width-form-element-error` variable](https://github.com/alphagov/govuk-frontend/pull/1963).
+
+#### Update the HTML for summary lists
+
+We've updated the HTML for the summary list component to avoid nesting `<span>` elements within `<dd>` elements, which is invalid HTML. This update only affects summary lists that include a mix of rows with and without actions.
+
+Do not include an empty `<span class="govuk-summary-list__actions"></span>` within the rows that do not have any actions. Instead, add the `govuk-summary-list__row--no-actions` modifier class to the row.
+
+This change was introduced in [pull request #2323: Avoid invalid nesting of `<span>` within a `<dd>` in summary list](https://github.com/alphagov/govuk-frontend/pull/2323).
+
+#### Make sure components that conditionally reveal other questions still work as expected
+
+On radios and checkboxes, the JavaScript now looks within the whole page for conditionally revealed content. Before, it only looked within the same set of radios or checkboxes.
+
+If you see unexpected behaviour, make sure the revealed content's `id` is unique within the page the content is on. Reusing the same `id` within a page could cause a radio or checkbox to reveal and hide the wrong element, and also means your HTML is invalid.
+
+This change was introduced in [pull request #2370: Prevent issues with conditionally revealed content when content `id` includes CSS syntax characters](https://github.com/alphagov/govuk-frontend/pull/2370).
+
+#### Make sure character counts still work as expected
+
+On character counts, the JavaScript now looks within the whole page for the count message. Before, it only looked around the character count.
+
+If you see unexpected behaviour, make sure the `id` for the  textarea is unique within the page the content is on. Reusing the same `id` within a page could cause the wrong count message to be updated, and also means your HTML is invalid.
+
+This change was introduced in [pull request #2408: Prevent issues with character count when textarea `id` includes CSS syntax characters](https://github.com/alphagov/govuk-frontend/pull/2408).
+
+#### Remove calls to deprecated `iff` Sass function
+
+We've removed the `iff` function which we deprecated in [GOV.UK Frontend version 3.6.0](https://github.com/alphagov/govuk-frontend/releases/tag/v3.6.0).
+
+If you’re calling `iff` from your own Sass, you should use [Sass's native `if` function](https://sass-lang.com/documentation/modules#if) instead.
+
+This change was introduced in [pull request #2409: Remove deprecated `iff` Sass function](https://github.com/alphagov/govuk-frontend/pull/2409).
+
 ### Fixes
 
 We’ve made fixes to GOV.UK Frontend in the following pull requests:
 
-- [#2264: Improve focus state for radio and checkbox controls in forced color mode (for example Windows High Contrast Mode)](https://github.com/alphagov/govuk-frontend/pull/2264) – thanks to [@adamliptrot-oc](https://github.com/adamliptrot-oc) for reporting this issue.
-- [#2265: Don’t remove focus outline from disabled link buttons in forced color mode](https://github.com/alphagov/govuk-frontend/pull/2265)
-- [#2273: Fix invisible footer OGL logo in forced color mode](https://github.com/alphagov/govuk-frontend/pull/2273) – thanks to [@oscarduignan](https://github.com/oscarduignan) for reporting this issue.
-- [#2277: Fix invisible start button chevron in forced color mode](https://github.com/alphagov/govuk-frontend/pull/2277)
+- [#2255: Prevent conditionally revealed questions getting out of sync when multiple sets of radios and checkboxes contain inputs with the same name](https://github.com/alphagov/govuk-frontend/pull/2255)
+- [#2323: Avoid invalid nesting of `<span>` within a `<dd>` in summary list](https://github.com/alphagov/govuk-frontend/pull/2323)
+- [#2370: Prevent issues with conditionally revealed content when content `id` includes CSS syntax characters](https://github.com/alphagov/govuk-frontend/pull/2370)
+- [#2408: Prevent issues with character count when textarea id includes CSS syntax characters](https://github.com/alphagov/govuk-frontend/pull/2408)
+
+## 3.14.0 (Feature release)
+
+### New features
+
+#### Set text alignment with override classes
+
+You can now use the `govuk-!-text-align-left`, `govuk-!-text-align-centre` and `govuk-!-text-align-right` CSS classes to set text alignment on elements.
+
+This was added in [pull request #2339: Add `text-align` override classes](https://github.com/alphagov/govuk-frontend/pull/2339). Thanks to [Ed Horsford](https://github.com/edwardhorsford) for reporting this issue.
+
+#### Define negative spacing using the `govuk-spacing` function
+
+You can now pass the negative equivalent of a point from the spacing scale to the `govuk-spacing` function to get negative spacing.
+
+For example, `govuk-spacing(1)` returns `5px`, and `govuk-spacing(-1)` returns `-5px`.
+
+This was added in [pull request #2348: Allow `govuk-spacing` to output negative spacing](https://github.com/alphagov/govuk-frontend/pull/2348). Thanks to [Chris Hill-Scott](https://github.com/quis) for reporting this issue.
+
+### Fixes
+
+- [#2347: Prevent panel text overflowing when zoomed in on mobile](https://github.com/alphagov/govuk-frontend/pull/2347) - thanks to [Phil Sherry](https://github.com/philsherry) for reporting this issue.
+
+## 3.13.1 (Fix release)
+
+### Fixes
+
+We’ve made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#2264: Improve focus state for radio and checkbox controls in forced colors mode (for example, Windows High Contrast Mode)](https://github.com/alphagov/govuk-frontend/pull/2264) – thanks to [@adamliptrot-oc](https://github.com/adamliptrot-oc) for reporting this issue
+- [#2265: Do not remove focus outline from disabled link buttons in forced colors mode](https://github.com/alphagov/govuk-frontend/pull/2265)
+- [#2273: Fix invisible footer on Open Government Licence logo in forced colors mode](https://github.com/alphagov/govuk-frontend/pull/2273) – thanks to [@oscarduignan](https://github.com/oscarduignan) for reporting this issue
+- [#2277: Fix invisible start button chevron in forced colors mode](https://github.com/alphagov/govuk-frontend/pull/2277)
+- [#2290: Improve support for Internet Explorer 11 with Windows High Contrast Mode](https://github.com/alphagov/govuk-frontend/pull/2290)
+- [#2306: Add `max-width` to file upload component](https://github.com/alphagov/govuk-frontend/pull/2306)
+- [#2312: Remove `padding-right` from details component](https://github.com/alphagov/govuk-frontend/pull/2312)
 
 ## 3.13.0 (Feature release)
 

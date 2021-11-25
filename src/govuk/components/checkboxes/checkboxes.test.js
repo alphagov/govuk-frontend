@@ -49,6 +49,7 @@ describe('Checkboxes with conditional reveals', () => {
       expect(hasAriaExpanded).toBeFalsy()
       expect(hasAriaControls).toBeFalsy()
     })
+
     it('falls back to making all conditional content visible', async () => {
       await goToAndGetComponent('checkboxes', 'with-conditional-items')
 
@@ -56,6 +57,7 @@ describe('Checkboxes with conditional reveals', () => {
       expect(isContentVisible).toBeTruthy()
     })
   })
+
   describe('when JavaScript is available', () => {
     it('has conditional content revealed that is associated with a checked input', async () => {
       const $ = await goToAndGetComponent('checkboxes', 'with-conditional-item-checked')
@@ -66,6 +68,7 @@ describe('Checkboxes with conditional reveals', () => {
       const isContentVisible = await waitForVisibleSelector(`[id="${inputAriaControls}"]:not(.govuk-checkboxes__conditional--hidden)`)
       expect(isContentVisible).toBeTruthy()
     })
+
     it('has no conditional content revealed that is associated with an unchecked input', async () => {
       const $ = await goToAndGetComponent('checkboxes', 'with-conditional-item-checked')
       const $component = $('.govuk-checkboxes')
@@ -75,6 +78,7 @@ describe('Checkboxes with conditional reveals', () => {
       const isContentHidden = await waitForHiddenSelector(`[id="${uncheckedInputAriaControls}"].govuk-checkboxes__conditional--hidden`)
       expect(isContentHidden).toBeTruthy()
     })
+
     it('indicates when conditional content is collapsed or revealed', async () => {
       await goToAndGetComponent('checkboxes', 'with-conditional-items')
 
@@ -86,6 +90,7 @@ describe('Checkboxes with conditional reveals', () => {
       const isExpanded = await waitForVisibleSelector('.govuk-checkboxes__item:first-child .govuk-checkboxes__input[aria-expanded=true]')
       expect(isExpanded).toBeTruthy()
     })
+
     it('toggles the conditional content when clicking an input', async () => {
       const $ = await goToAndGetComponent('checkboxes', 'with-conditional-items')
       const $component = $('.govuk-checkboxes')
@@ -102,6 +107,7 @@ describe('Checkboxes with conditional reveals', () => {
       const isContentHidden = await waitForHiddenSelector(`[id="${firstInputAriaControls}"]`)
       expect(isContentHidden).toBeTruthy()
     })
+
     it('toggles the conditional content when using an input with a keyboard', async () => {
       const $ = await goToAndGetComponent('checkboxes', 'with-conditional-items')
       const $component = $('.govuk-checkboxes')
@@ -118,6 +124,11 @@ describe('Checkboxes with conditional reveals', () => {
 
       const isContentHidden = await waitForHiddenSelector(`[id="${firstInputAriaControls}"]`)
       expect(isContentHidden).toBeTruthy()
+    })
+
+    it('does not error when ID of revealed content contains special characters', async () => {
+      // Errors logged to the console will cause this test to fail
+      await goToAndGetComponent('checkboxes', 'with-conditional-items-with-special-characters')
     })
   })
 })
@@ -183,6 +194,54 @@ describe('Checkboxes with a None checkbox and conditional reveals', () => {
       // Expect the 4th checkbox to have been unchecked
       const forthCheckboxIsUnchecked = await waitForVisibleSelector('[id="with-divider-and-none-and-conditional-items-4"]:not(:checked)')
       expect(forthCheckboxIsUnchecked).toBeTruthy()
+
+      // Expect conditional content to have been hidden
+      const isConditionalContentHidden = await waitForHiddenSelector(`[id="${conditionalContentId}"]`)
+      expect(isConditionalContentHidden).toBeTruthy()
+    })
+  })
+})
+
+describe('Checkboxes with multiple groups and a None checkbox and conditional reveals', () => {
+  describe('when JavaScript is available', () => {
+    it('none checkbox unchecks other checkboxes in other groups', async () => {
+      await page.goto(`${baseUrl}/examples/conditional-reveals`)
+
+      // Check some checkboxes in the first and second groups
+      await page.click('#colour-primary-3')
+      await page.click('#colour-secondary-2')
+
+      // Check the None checkbox in the third group
+      await page.click('#colour-other-3')
+
+      // Expect the checkboxes in the first and second groups to be unchecked
+      const firstCheckboxIsUnchecked = await waitForVisibleSelector('[id="colour-primary-3"]:not(:checked)')
+      expect(firstCheckboxIsUnchecked).toBeTruthy()
+
+      const secondCheckboxIsUnchecked = await waitForVisibleSelector('[id="colour-secondary-2"]:not(:checked)')
+      expect(secondCheckboxIsUnchecked).toBeTruthy()
+    })
+
+    it('hides conditional reveals in other groups', async () => {
+      await page.goto(`${baseUrl}/examples/conditional-reveals`)
+
+      // Check the second checkbox in the first group, which reveals additional content
+      await page.click('#colour-primary-2')
+
+      const conditionalContentId = await page.evaluate(
+        'document.getElementById("colour-primary-2").getAttribute("aria-controls")'
+      )
+
+      // Assert that conditional reveal is visible
+      const isConditionalContentVisible = await waitForVisibleSelector(`[id="${conditionalContentId}"]`)
+      expect(isConditionalContentVisible).toBeTruthy()
+
+      // Check the None checkbox
+      await page.click('#colour-other-3')
+
+      // Assert that the second checkbox in the first group is unchecked
+      const otherCheckboxIsUnchecked = await waitForVisibleSelector('[id="colour-primary-2"]:not(:checked)')
+      expect(otherCheckboxIsUnchecked).toBeTruthy()
 
       // Expect conditional content to have been hidden
       const isConditionalContentHidden = await waitForHiddenSelector(`[id="${conditionalContentId}"]`)

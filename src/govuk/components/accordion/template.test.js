@@ -29,7 +29,7 @@ describe('Accordion', () => {
       const $ = render('accordion', examples.default)
       const $componentContent = $('.govuk-accordion__section-content').first()
 
-      expect($componentContent.text().trim()).toEqual('Example item 1')
+      expect($componentContent.text().trim()).toEqual('We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.')
     })
 
     it('renders with id', () => {
