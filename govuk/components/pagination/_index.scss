@@ -1,0 +1,181 @@
+@include govuk-exports("govuk/component/pagination") {
+  .govuk-pagination {
+    border-top: 1px solid $govuk-border-colour;
+    text-align: center;
+
+    @include govuk-media-query($from: tablet) {
+
+      // Hide whitespace between elements
+      font-size: 0;
+
+      // Trick to remove the need for floats
+      text-align: justify;
+
+      &:after {
+        content: '';
+        display: inline-block;
+        width: 100%;
+      }
+    }
+  }
+
+  .govuk-pagination__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    @include govuk-media-query($from: tablet) {
+      display: inline-block;
+      margin-bottom: 0;
+    }
+  }
+
+  .govuk-pagination__results {
+    @include govuk-font(19);
+    margin-top: 0;
+    margin-bottom: govuk-spacing(4);
+    padding: govuk-spacing(1) 0;
+    @include govuk-media-query($from: tablet) {
+      display: inline-block;
+      margin-bottom: 0;
+      //vertical-align: middle;
+    }
+  }
+
+  .govuk-pagination__item {
+    @include govuk-font(19);
+    display: inline-block;
+    margin-bottom: govuk-spacing(4);
+
+    // Hide items on small screens
+    @include govuk-media-query($until: tablet) {
+      display: none;
+    }
+
+    .govuk-pagination__icon {
+      margin-top: 6px;
+      margin-right: govuk-spacing(3);
+      fill: $govuk-secondary-text-colour;
+    }
+  }
+
+  // Set next item to relative position, which doesn’t affect its own position, but allows
+  // the SVG icon with it to be positioned relative to this container.
+  .govuk-pagination__item--next {
+    position: relative;
+  }
+
+  // Position SVG right arrow on the right of the link
+  .govuk-pagination__item--next .govuk-pagination__icon {
+    position: absolute;
+    right: -15px;
+  }
+
+  // Only show previous, next, first, last and current items on mobile
+  .govuk-pagination__item--current,
+  .govuk-pagination__item--ellipses,
+  .govuk-pagination__item--prev,
+  .govuk-pagination__item--next,
+  .govuk-pagination__item:nth-child(2),
+  .govuk-pagination__item:nth-last-child(2) {
+    @include govuk-media-query($until: tablet) {
+      display: inline-block;
+    }
+  }
+
+  .govuk-pagination__item--current,
+  .govuk-pagination__item--ellipses {
+    box-sizing: border-box;
+    min-width: 45px;
+    min-height: 45px;
+    padding: 10px 18px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .govuk-pagination__item--ellipses {
+    margin: 0 -22.5px;
+    padding-right: 0;
+    padding-left: 0;
+    color: $govuk-secondary-text-colour;
+    pointer-events: none;
+  }
+
+  .govuk-pagination__item--prev .govuk-pagination__link:before {
+    margin-right: govuk-spacing(1);
+    border-width: 3px 0 0 3px;
+  }
+
+  .govuk-pagination__item--next .govuk-pagination__link:after {
+    margin-left: govuk-spacing(1);
+    border-width: 0 3px 3px 0;
+  }
+
+  .govuk-pagination__link {
+    @include govuk-link-common;
+    //@include govuk-link-style-no-underline;
+    box-sizing: border-box;
+    display: block;
+    min-width: 45px;
+    min-height: 45px;
+    padding: 10px 18px;
+    color: $govuk-link-colour;
+
+    .govuk-pagination__link-label {
+      @include govuk-font($size: 16, $weight: "regular");
+      display: block;
+      padding-left: 32px;
+      text-decoration: underline;
+    }
+
+    &:hover .govuk-pagination__link-label {
+      @include govuk-link-hover-decoration;
+    }
+
+    &:focus {
+      box-shadow: 0 0 $govuk-focus-colour, 0 4px $govuk-focus-text-colour;
+      text-decoration: underline;
+    }
+
+    &:hover:not(:focus) {
+      background-color: govuk-colour("light-grey", $legacy: "grey-4");
+    }
+  }
+
+  .govuk-pagination__item--prev .govuk-pagination__link {
+    padding-left: 0;
+    font-weight: bold;
+  }
+
+  .govuk-pagination__item--next .govuk-pagination__link {
+    padding-right: 28px;
+    font-weight: bold;
+  }
+
+  // Block mode - position previous and next links above and below numbers
+  .govuk-pagination__list--block {
+    .govuk-pagination__list {
+      display: block;
+      text-align: left;
+    }
+
+    .govuk-pagination__item--prev,
+    .govuk-pagination__item--next {
+      display: block;
+    }
+
+    .govuk-pagination__item--next {
+      border-top: 1px solid $govuk-border-colour;
+
+      .govuk-pagination__icon {
+        position: initial;
+        margin-right: govuk-spacing(2);
+        margin-left: 0;
+      }
+    }
+
+    .govuk-pagination__link {
+      padding-left: 0;
+      text-decoration: none;
+    }
+  }
+}

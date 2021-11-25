@@ -12,7 +12,19 @@
     text-align: center;
 
     @include govuk-media-query($until: tablet) {
-      padding: govuk-spacing(6) - $govuk-border-width;
+      padding: govuk-spacing(3) - $govuk-border-width;
+
+      // This is an if-all-else-fails attempt to stop long words from overflowing the container
+      // on very narrow viewports by forcing them to break and wrap instead. This
+      // overflowing is more likely to happen when user increases text size on a mobile eg. using
+      // iOS Safari text resize controls.
+      //
+      // The overflowing is a particular problem with the panel component since it uses white
+      // text: when the text overflows the container, it is invisible on the white (page)
+      // background. When the text in our other components overflow, the user might have to scroll
+      // horizontally to view it but the the text remains legible.
+      overflow-wrap: break-word;
+      word-wrap: break-word; // Support IE (autoprefixer doesn't add this as it's not a prefix)
     }
   }
 

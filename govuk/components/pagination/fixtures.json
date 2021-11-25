@@ -1,0 +1,264 @@
+{
+    "component": "pagination",
+    "fixtures": [
+        {
+            "name": "default",
+            "options": {
+                "previous": {
+                    "href": "#"
+                },
+                "next": {
+                    "href": "#"
+                },
+                "items": [
+                    {
+                        "text": "1",
+                        "href": "#"
+                    },
+                    {
+                        "text": "2",
+                        "current": true
+                    },
+                    {
+                        "text": "3",
+                        "href": "#"
+                    }
+                ]
+            },
+            "html": "<nav class=\"govuk-pagination\" id=\"pagination-label\" aria-label=\"results navigation\">\n\n  <ul class=\"govuk-pagination__list\">\n    <li class=\"govuk-pagination__item govuk-pagination__item--prev\">\n      <a class=\"govuk-pagination__link\" href=\"#\">\n        <span class=\"govuk-pagination__link-title\">\n          <svg class=\"govuk-pagination__icon\" xmlns=\"http://www.w3.org/2000/svg\" height=\"13\" width=\"17\">\n            <path d=\"m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z\"></path>\n          </svg>Previous\n          <span class=\"govuk-visually-hidden\">page</span>\n          </span></a>\n    </li>\n    \n    <li class=\"govuk-pagination__item\"><a class=\"govuk-pagination__link\" href=\"#\"><span class=\"govuk-visually-hidden\">Page </span>1</a></li>\n    \n    <li class=\"govuk-pagination__item govuk-pagination__item--current\"><span class=\"govuk-visually-hidden\">Page </span>2<span class=\"govuk-visually-hidden\"> (current page) </span></li>\n    \n    <li class=\"govuk-pagination__item\"><a class=\"govuk-pagination__link\" href=\"#\"><span class=\"govuk-visually-hidden\">Page </span>3</a></li>\n    \n    <li class=\"govuk-pagination__item govuk-pagination__item--next\">\n      <a class=\"govuk-pagination__link\" href=\"#\">\n        <span class=\"govuk-pagination__link-title\">\n          <svg class=\"govuk-pagination__icon\" xmlns=\"http://www.w3.org/2000/svg\" height=\"13\" width=\"17\">\n            <path d=\"m10.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z\"></path>\n          </svg>\n          Next <span class=\"govuk-visually-hidden\">page</span>\n          </span></a>\n    </li>\n    </ul></nav>",
+            "hidden": false
+        },
+        {
+            "name": "with labels but no numbers",
+            "options": {
+                "classes": "govuk-pagination__list--block",
+                "previous": {
+                    "text": "Previous page",
+                    "label": "1 of 3",
+                    "href": "#"
+                },
+                "next": {
+                    "text": "Next page",
+                    "label": "3 of 3",
+                    "href": "#"
+                }
+            },
+            "html": "<nav class=\"govuk-pagination govuk-pagination__list--block\" id=\"pagination-label\" aria-label=\"results navigation\">\n\n  <ul class=\"govuk-pagination__list\">\n    <li class=\"govuk-pagination__item govuk-pagination__item--prev\">\n      <a class=\"govuk-pagination__link\" href=\"#\">\n        <span class=\"govuk-pagination__link-title\">\n          <svg class=\"govuk-pagination__icon\" xmlns=\"http://www.w3.org/2000/svg\" height=\"13\" width=\"17\">\n            <path d=\"m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z\"></path>\n          </svg>Previous page</span>\n        <span class=\"govuk-pagination__link-divider govuk-visually-hidden\">:</span>\n        <span class=\"govuk-pagination__link-label\">1 of 3</span>\n        </a>\n    </li>\n    \n    <li class=\"govuk-pagination__item govuk-pagination__item--next\">\n      <a class=\"govuk-pagination__link\" href=\"#\">\n        <span class=\"govuk-pagination__link-title\">\n          <svg class=\"govuk-pagination__icon\" xmlns=\"http://www.w3.org/2000/svg\" height=\"13\" width=\"17\">\n            <path d=\"m10.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z\"></path>\n          </svg>\n          Next page\n          </span>\n        <span class=\"govuk-pagination__link-divider govuk-visually-hidden\">:</span>\n        <span class=\"govuk-pagination__link-label\">3 of 3</span>\n        </a>\n    </li>\n    </ul></nav>",
+            "hidden": false
+        },
+        {
+            "name": "with long labels",
+            "options": {
+                "classes": "govuk-pagination__list--block",
+                "previous": {
+                    "text": "Previous page",
+                    "label": "Applying for a provisional lorry or bus licence",
+                    "href": "#"
+                },
+                "next": {
+                    "text": "Next page",
+                    "label": "Driver CPC part 1 test: theory",
+                    "href": "#"
+                }
+            },
+            "html": "<nav class=\"govuk-pagination govuk-pagination__list--block\" id=\"pagination-label\" aria-label=\"results navigation\">\n\n  <ul class=\"govuk-pagination__list\">\n    <li class=\"govuk-pagination__item govuk-pagination__item--prev\">\n      <a class=\"govuk-pagination__link\" href=\"#\">\n        <span class=\"govuk-pagination__link-title\">\n          <svg class=\"govuk-pagination__icon\" xmlns=\"http://www.w3.org/2000/svg\" height=\"13\" width=\"17\">\n            <path d=\"m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z\"></path>\n          </svg>Previous page</span>\n        <span class=\"govuk-pagination__link-divider govuk-visually-hidden\">:</span>\n        <span class=\"govuk-pagination__link-label\">Applying for a provisional lorry or bus licence</span>\n        </a>\n    </li>\n    \n    <li class=\"govuk-pagination__item govuk-pagination__item--next\">\n      <a class=\"govuk-pagination__link\" href=\"#\">\n        <span class=\"govuk-pagination__link-title\">\n          <svg class=\"govuk-pagination__icon\" xmlns=\"http://www.w3.org/2000/svg\" height=\"13\" width=\"17\">\n            <path d=\"m10.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z\"></path>\n          </svg>\n          Next page\n          </span>\n        <span class=\"govuk-pagination__link-divider govuk-visually-hidden\">:</span>\n        <span class=\"govuk-pagination__link-label\">Driver CPC part 1 test: theory</span>\n        </a>\n    </li>\n    </ul></nav>",
+            "hidden": false
+        },
+        {
+            "name": "with custom link text",
+            "options": {
+                "previous": {
+                    "text": "Previous page",
+                    "href": "#"
+                },
+                "next": {
+                    "text": "Next page",
+                    "href": "#"
+                },
+                "items": [
+                    {
+                        "text": "1",
+                        "href": "#"
+                    },
+                    {
+                        "text": "2",
+                        "current": true
+                    },
+                    {
+                        "text": "3",
+                        "href": "#"
+                    }
+                ]
+            },
+            "html": "<nav class=\"govuk-pagination\" id=\"pagination-label\" aria-label=\"results navigation\">\n\n  <ul class=\"govuk-pagination__list\">\n    <li class=\"govuk-pagination__item govuk-pagination__item--prev\">\n      <a class=\"govuk-pagination__link\" href=\"#\">\n        <span class=\"govuk-pagination__link-title\">\n          <svg class=\"govuk-pagination__icon\" xmlns=\"http://www.w3.org/2000/svg\" height=\"13\" width=\"17\">\n            <path d=\"m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z\"></path>\n          </svg>Previous page</span></a>\n    </li>\n    \n    <li class=\"govuk-pagination__item\"><a class=\"govuk-pagination__link\" href=\"#\"><span class=\"govuk-visually-hidden\">Page </span>1</a></li>\n    \n    <li class=\"govuk-pagination__item govuk-pagination__item--current\"><span class=\"govuk-visually-hidden\">Page </span>2<span class=\"govuk-visually-hidden\"> (current page) </span></li>\n    \n    <li class=\"govuk-pagination__item\"><a class=\"govuk-pagination__link\" href=\"#\"><span class=\"govuk-visually-hidden\">Page </span>3</a></li>\n    \n    <li class=\"govuk-pagination__item govuk-pagination__item--next\">\n      <a class=\"govuk-pagination__link\" href=\"#\">\n        <span class=\"govuk-pagination__link-title\">\n          <svg class=\"govuk-pagination__icon\" xmlns=\"http://www.w3.org/2000/svg\" height=\"13\" width=\"17\">\n            <path d=\"m10.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z\"></path>\n          </svg>\n          Next page\n          </span></a>\n    </li>\n    </ul></nav>",
+            "hidden": false
+        },
+        {
+            "name": "with many pages",
+            "options": {
+                "results": {
+                    "from": 1001,
+                    "to": 1050,
+                    "count": 2000
+                },
+                "previous": {
+                    "href": "#"
+                },
+                "next": {
+                    "href": "#"
+                },
+                "items": [
+                    {
+                        "text": "1",
+                        "href": "#"
+                    },
+                    {
+                        "type": "ellipses"
+                    },
+                    {
+                        "text": "8",
+                        "href": "#"
+                    },
+                    {
+                        "text": "9",
+                        "href": "#"
+                    },
+                    {
+                        "text": "10",
+                        "current": true
+                    },
+                    {
+                        "text": "11",
+                        "href": "#"
+                    },
+                    {
+                        "text": "12",
+                        "href": "#"
+                    },
+                    {
+                        "type": "ellipses"
+                    },
+                    {
+                        "text": "40",
+                        "href": "#"
+                    }
+                ]
+            },
+            "html": "<nav class=\"govuk-pagination\" id=\"pagination-label\" aria-label=\"results navigation\">\n\n  <ul class=\"govuk-pagination__list\">\n    <li class=\"govuk-pagination__item govuk-pagination__item--prev\">\n      <a class=\"govuk-pagination__link\" href=\"#\">\n        <span class=\"govuk-pagination__link-title\">\n          <svg class=\"govuk-pagination__icon\" xmlns=\"http://www.w3.org/2000/svg\" height=\"13\" width=\"17\">\n            <path d=\"m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z\"></path>\n          </svg>Previous\n          <span class=\"govuk-visually-hidden\">page</span>\n          </span></a>\n    </li>\n    \n    <li class=\"govuk-pagination__item\"><a class=\"govuk-pagination__link\" href=\"#\"><span class=\"govuk-visually-hidden\">Page </span>1</a></li>\n    \n    <li class=\"govuk-pagination__item govuk-pagination__item--ellipses\">…</li>\n    \n    <li class=\"govuk-pagination__item\"><a class=\"govuk-pagination__link\" href=\"#\"><span class=\"govuk-visually-hidden\">Page </span>8</a></li>\n    \n    <li class=\"govuk-pagination__item\"><a class=\"govuk-pagination__link\" href=\"#\"><span class=\"govuk-visually-hidden\">Page </span>9</a></li>\n    \n    <li class=\"govuk-pagination__item govuk-pagination__item--current\"><span class=\"govuk-visually-hidden\">Page </span>10<span class=\"govuk-visually-hidden\"> (current page) </span></li>\n    \n    <li class=\"govuk-pagination__item\"><a class=\"govuk-pagination__link\" href=\"#\"><span class=\"govuk-visually-hidden\">Page </span>11</a></li>\n    \n    <li class=\"govuk-pagination__item\"><a class=\"govuk-pagination__link\" href=\"#\"><span class=\"govuk-visually-hidden\">Page </span>12</a></li>\n    \n    <li class=\"govuk-pagination__item govuk-pagination__item--ellipses\">…</li>\n    \n    <li class=\"govuk-pagination__item\"><a class=\"govuk-pagination__link\" href=\"#\"><span class=\"govuk-visually-hidden\">Page </span>40</a></li>\n    \n    <li class=\"govuk-pagination__item govuk-pagination__item--next\">\n      <a class=\"govuk-pagination__link\" href=\"#\">\n        <span class=\"govuk-pagination__link-title\">\n          <svg class=\"govuk-pagination__icon\" xmlns=\"http://www.w3.org/2000/svg\" height=\"13\" width=\"17\">\n            <path d=\"m10.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z\"></path>\n          </svg>\n          Next <span class=\"govuk-visually-hidden\">page</span>\n          </span></a>\n    </li>\n    </ul>\n  <p class=\"govuk-pagination__results\">Showing <b>1001</b> to <b>1050</b> of <b>2000</b> results</p>\n  </nav>",
+            "hidden": false
+        },
+        {
+            "name": "first page",
+            "options": {
+                "next": {
+                    "href": "#"
+                },
+                "items": [
+                    {
+                        "text": "1",
+                        "current": true
+                    },
+                    {
+                        "text": "2",
+                        "href": "#"
+                    },
+                    {
+                        "text": "3",
+                        "href": "#"
+                    }
+                ]
+            },
+            "html": "<nav class=\"govuk-pagination\" id=\"pagination-label\" aria-label=\"results navigation\">\n\n  <ul class=\"govuk-pagination__list\">\n    <li class=\"govuk-pagination__item govuk-pagination__item--current\"><span class=\"govuk-visually-hidden\">Page </span>1<span class=\"govuk-visually-hidden\"> (current page) </span></li>\n    \n    <li class=\"govuk-pagination__item\"><a class=\"govuk-pagination__link\" href=\"#\"><span class=\"govuk-visually-hidden\">Page </span>2</a></li>\n    \n    <li class=\"govuk-pagination__item\"><a class=\"govuk-pagination__link\" href=\"#\"><span class=\"govuk-visually-hidden\">Page </span>3</a></li>\n    \n    <li class=\"govuk-pagination__item govuk-pagination__item--next\">\n      <a class=\"govuk-pagination__link\" href=\"#\">\n        <span class=\"govuk-pagination__link-title\">\n          <svg class=\"govuk-pagination__icon\" xmlns=\"http://www.w3.org/2000/svg\" height=\"13\" width=\"17\">\n            <path d=\"m10.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z\"></path>\n          </svg>\n          Next <span class=\"govuk-visually-hidden\">page</span>\n          </span></a>\n    </li>\n    </ul></nav>",
+            "hidden": false
+        },
+        {
+            "name": "last page",
+            "options": {
+                "previous": {
+                    "href": "#"
+                },
+                "items": [
+                    {
+                        "text": "1",
+                        "href": "#"
+                    },
+                    {
+                        "text": "2",
+                        "href": "#"
+                    },
+                    {
+                        "text": "3",
+                        "current": true
+                    }
+                ]
+            },
+            "html": "<nav class=\"govuk-pagination\" id=\"pagination-label\" aria-label=\"results navigation\">\n\n  <ul class=\"govuk-pagination__list\">\n    <li class=\"govuk-pagination__item govuk-pagination__item--prev\">\n      <a class=\"govuk-pagination__link\" href=\"#\">\n        <span class=\"govuk-pagination__link-title\">\n          <svg class=\"govuk-pagination__icon\" xmlns=\"http://www.w3.org/2000/svg\" height=\"13\" width=\"17\">\n            <path d=\"m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z\"></path>\n          </svg>Previous\n          <span class=\"govuk-visually-hidden\">page</span>\n          </span></a>\n    </li>\n    \n    <li class=\"govuk-pagination__item\"><a class=\"govuk-pagination__link\" href=\"#\"><span class=\"govuk-visually-hidden\">Page </span>1</a></li>\n    \n    <li class=\"govuk-pagination__item\"><a class=\"govuk-pagination__link\" href=\"#\"><span class=\"govuk-visually-hidden\">Page </span>2</a></li>\n    \n    <li class=\"govuk-pagination__item govuk-pagination__item--current\"><span class=\"govuk-visually-hidden\">Page </span>3<span class=\"govuk-visually-hidden\"> (current page) </span></li>\n    </ul></nav>",
+            "hidden": false
+        },
+        {
+            "name": "with results",
+            "options": {
+                "results": {
+                    "from": 51,
+                    "to": 100,
+                    "count": 150
+                },
+                "previous": {
+                    "href": "#"
+                },
+                "next": {
+                    "href": "#"
+                },
+                "items": [
+                    {
+                        "text": "1",
+                        "href": "#"
+                    },
+                    {
+                        "text": "2",
+                        "current": true
+                    },
+                    {
+                        "text": "3",
+                        "href": "#"
+                    }
+                ]
+            },
+            "html": "<nav class=\"govuk-pagination\" id=\"pagination-label\" aria-label=\"results navigation\">\n\n  <ul class=\"govuk-pagination__list\">\n    <li class=\"govuk-pagination__item govuk-pagination__item--prev\">\n      <a class=\"govuk-pagination__link\" href=\"#\">\n        <span class=\"govuk-pagination__link-title\">\n          <svg class=\"govuk-pagination__icon\" xmlns=\"http://www.w3.org/2000/svg\" height=\"13\" width=\"17\">\n            <path d=\"m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z\"></path>\n          </svg>Previous\n          <span class=\"govuk-visually-hidden\">page</span>\n          </span></a>\n    </li>\n    \n    <li class=\"govuk-pagination__item\"><a class=\"govuk-pagination__link\" href=\"#\"><span class=\"govuk-visually-hidden\">Page </span>1</a></li>\n    \n    <li class=\"govuk-pagination__item govuk-pagination__item--current\"><span class=\"govuk-visually-hidden\">Page </span>2<span class=\"govuk-visually-hidden\"> (current page) </span></li>\n    \n    <li class=\"govuk-pagination__item\"><a class=\"govuk-pagination__link\" href=\"#\"><span class=\"govuk-visually-hidden\">Page </span>3</a></li>\n    \n    <li class=\"govuk-pagination__item govuk-pagination__item--next\">\n      <a class=\"govuk-pagination__link\" href=\"#\">\n        <span class=\"govuk-pagination__link-title\">\n          <svg class=\"govuk-pagination__icon\" xmlns=\"http://www.w3.org/2000/svg\" height=\"13\" width=\"17\">\n            <path d=\"m10.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z\"></path>\n          </svg>\n          Next <span class=\"govuk-visually-hidden\">page</span>\n          </span></a>\n    </li>\n    </ul>\n  <p class=\"govuk-pagination__results\">Showing <b>51</b> to <b>100</b> of <b>150</b> results</p>\n  </nav>",
+            "hidden": false
+        },
+        {
+            "name": "with a different type of results",
+            "options": {
+                "results": {
+                    "from": 21,
+                    "to": 40,
+                    "count": 60,
+                    "type": "team members"
+                },
+                "previous": {
+                    "href": "#"
+                },
+                "next": {
+                    "href": "#"
+                },
+                "items": [
+                    {
+                        "text": "1",
+                        "href": "#"
+                    },
+                    {
+                        "text": "2",
+                        "current": true
+                    },
+                    {
+                        "text": "3",
+                        "href": "#"
+                    }
+                ]
+            },
+            "html": "<nav class=\"govuk-pagination\" id=\"pagination-label\" aria-label=\"team members navigation\">\n\n  <ul class=\"govuk-pagination__list\">\n    <li class=\"govuk-pagination__item govuk-pagination__item--prev\">\n      <a class=\"govuk-pagination__link\" href=\"#\">\n        <span class=\"govuk-pagination__link-title\">\n          <svg class=\"govuk-pagination__icon\" xmlns=\"http://www.w3.org/2000/svg\" height=\"13\" width=\"17\">\n            <path d=\"m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z\"></path>\n          </svg>Previous\n          <span class=\"govuk-visually-hidden\">page</span>\n          </span></a>\n    </li>\n    \n    <li class=\"govuk-pagination__item\"><a class=\"govuk-pagination__link\" href=\"#\"><span class=\"govuk-visually-hidden\">Page </span>1</a></li>\n    \n    <li class=\"govuk-pagination__item govuk-pagination__item--current\"><span class=\"govuk-visually-hidden\">Page </span>2<span class=\"govuk-visually-hidden\"> (current page) </span></li>\n    \n    <li class=\"govuk-pagination__item\"><a class=\"govuk-pagination__link\" href=\"#\"><span class=\"govuk-visually-hidden\">Page </span>3</a></li>\n    \n    <li class=\"govuk-pagination__item govuk-pagination__item--next\">\n      <a class=\"govuk-pagination__link\" href=\"#\">\n        <span class=\"govuk-pagination__link-title\">\n          <svg class=\"govuk-pagination__icon\" xmlns=\"http://www.w3.org/2000/svg\" height=\"13\" width=\"17\">\n            <path d=\"m10.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z\"></path>\n          </svg>\n          Next <span class=\"govuk-visually-hidden\">page</span>\n          </span></a>\n    </li>\n    </ul>\n  <p class=\"govuk-pagination__results\">Showing <b>21</b> to <b>40</b> of <b>60</b> team members</p>\n  </nav>",
+            "hidden": false
+        }
+    ]
+}

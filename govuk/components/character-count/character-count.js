@@ -1018,7 +1018,7 @@ function CharacterCount ($module) {
   this.$module = $module;
   this.$textarea = $module.querySelector('.govuk-js-character-count');
   if (this.$textarea) {
-    this.$countMessage = $module.querySelector('[id="' + this.$textarea.id + '-info"]');
+    this.$countMessage = document.getElementById(this.$textarea.id + '-info');
   }
 }
 

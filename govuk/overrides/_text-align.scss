@@ -1,0 +1,20 @@
+@if not mixin-exists("govuk-exports") {
+  @warn "Importing items from the overrides layer without first importing `base` is deprecated, and will no longer work as of GOV.UK Frontend v4.0.";
+}
+
+@import "../base";
+
+// stylelint-disable declaration-no-important
+@include govuk-exports("govuk/overrides/text-align") {
+  .govuk-\!-text-align-left {
+    text-align: left !important;
+  }
+
+  .govuk-\!-text-align-centre {
+    text-align: center !important;
+  }
+
+  .govuk-\!-text-align-right {
+    text-align: right !important;
+  }
+}

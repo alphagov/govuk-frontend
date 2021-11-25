@@ -235,6 +235,19 @@
             },
             "html": "<div class=\"govuk-character-count\" data-module=\"govuk-character-count\" data-maxlength=\"10\">\n  \n\n<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"1_more-detail\">\n    Can you provide more detail?\n  </label>\n\n\n  <textarea class=\"govuk-textarea govuk-js-character-count\" id=\"1_more-detail\" name=\"more-detail\" rows=\"5\" aria-describedby=\"1_more-detail-info\"></textarea>\n</div>\n\n  <div id=\"1_more-detail-info\" class=\"govuk-hint govuk-character-count__message\" aria-live=\"polite\">\n  You can enter up to 10 characters\n</div>\n\n</div>",
             "hidden": true
+        },
+        {
+            "name": "with id with special characters",
+            "options": {
+                "id": "user1.profile[address]",
+                "name": "address",
+                "maxlength": 10,
+                "label": {
+                    "text": "Full address"
+                }
+            },
+            "html": "<div class=\"govuk-character-count\" data-module=\"govuk-character-count\" data-maxlength=\"10\">\n  \n\n<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"user1.profile[address]\">\n    Full address\n  </label>\n\n\n  <textarea class=\"govuk-textarea govuk-js-character-count\" id=\"user1.profile[address]\" name=\"address\" rows=\"5\" aria-describedby=\"user1.profile[address]-info\"></textarea>\n</div>\n\n  <div id=\"user1.profile[address]-info\" class=\"govuk-hint govuk-character-count__message\" aria-live=\"polite\">\n  You can enter up to 10 characters\n</div>\n\n</div>",
+            "hidden": false
         }
     ]
 }
