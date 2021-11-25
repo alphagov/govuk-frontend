@@ -127,6 +127,10 @@
       text-decoration: underline;
     }
 
+    &:hover .govuk-pagination__link-label {
+      @include govuk-link-hover-decoration;
+    }
+
     &:focus {
       box-shadow: 0 0 $govuk-focus-colour, 0 4px $govuk-focus-text-colour;
       text-decoration: underline;
