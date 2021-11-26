@@ -74,35 +74,53 @@ Select.prototype.updateOptions = function (showAllOptions) {
       return new RegExp('\\b' + word, 'i')
     })
 
-  for (var opt of optionsWithAValue) {
+  var matchingOptions = []
+
+  for (var option of optionsWithAValue) {
+    var optionTextAndSynonyms = [option.textContent];
+    var synonyms = option.getAttribute('data-synonyms');
+
+    if (synonyms) {
+      optionTextAndSynonyms = optionTextAndSynonyms.concat(synonyms.split('|'))
+    }
 
     if (
+      this.$input.value === '' ||
+      showAllOptions ||
       (
-        this.$input.value === '' ||
-        showAllOptions ||
-        (
-          (queryRegexes.filter(function(regex) { return opt.textContent.search(regex) >= 0 }).length === queryRegexes.length)
-        )
+        optionTextAndSynonyms.find(function(name) {
+          return (queryRegexes.filter(function(regex) { return name.search(regex) >= 0 }).length === queryRegexes.length)
+        })
       )
-    ) {
-      var li = document.createElement('li')
-      li.textContent = opt.textContent
+    ) { matchingOptions.push(option) }
+  }
+
+  if (matchingOptions.length > 0) {
+    this.updateSuggestionsWithOptions(matchingOptions)
+  } else {
+    this.displayNoSuggestionsFound()
+  }
+}
+
+Select.prototype.updateSuggestionsWithOptions = function (options) {
+  for (var option of options) {
+    var li = document.createElement('li')
+      li.textContent = option.textContent
       li.setAttribute('role', 'option')
       li.setAttribute('tabindex', '-1')
-      li.setAttribute('aria-selected', opt.value === this.$module.value)
-      li.setAttribute('data-value', opt.value)
+      li.setAttribute('aria-selected', option.value === this.$module.value)
+      li.setAttribute('data-value', option.value)
       li.setAttribute('class', 'govuk-select__option')
       li.addEventListener('mouseenter', this.handleMouseEntered.bind(this))
       this.$ul.appendChild(li)
-    }
   }
+}
 
-  if (!this.$ul.querySelector('li')) {
-    var noResults = document.createElement('li')
-    noResults.setAttribute('class', 'govuk-select__option govuk-select__option--no-results')
-    noResults.textContent = 'No results'
-    this.$ul.appendChild(noResults)
-  }
+Select.prototype.displayNoSuggestionsFound = function () {
+  var noResults = document.createElement('li')
+  noResults.setAttribute('class', 'govuk-select__option govuk-select__option--no-results')
+  noResults.textContent = 'No results'
+  this.$ul.appendChild(noResults)
 }
 
 // On key down, check if the key pressed an up/down arrow or tab
