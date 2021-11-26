@@ -57,17 +57,32 @@ Select.prototype.init = function () {
 }
 
 Select.prototype.updateOptions = function (showAllOptions) {
+  // Remove all the existing suggestions
   this.$ul.textContent = ''
 
-  var options = this.$module.options
+  // Filter to only options with a non-blank value. Often the first option is blank to avoid
+  // setting an initial default option.
+  var optionsWithAValue = [].filter.call(this.$module.options, function(option) {
+      return option.value !== ''
+    })
 
-  for (var opt of options) {
+  // Build an array of regexes that search for each word of the query
+  var queryRegexes = this.$input.value.trim()
+    .replace(/['’]/g, '')
+    .replace(/[.,"/#!$%^&*;:{}=\-_~()]/g, ' ')
+    .split(/\s+/).map(function(word) {
+      return new RegExp('\\b' + word, 'i')
+    })
+
+  for (var opt of optionsWithAValue) {
+
     if (
-      (opt.value !== '') &&
       (
         this.$input.value === '' ||
         showAllOptions ||
-        (opt.textContent.toLowerCase().indexOf(this.$input.value.toLowerCase()) > -1)
+        (
+          (queryRegexes.filter(function(regex) { return opt.textContent.search(regex) >= 0 }).length === queryRegexes.length)
+        )
       )
     ) {
       var li = document.createElement('li')
