@@ -44,6 +44,7 @@
       <option value="{{ item.value }}"
         {{-" selected" if item.selected }}
         {{-" disabled" if item.disabled }}
+        {% if item.synonyms %} data-synonyms="{{ item.synonyms.join('|') }}"{% endif %}
         {%- for attribute, value in item.attributes %} {{ attribute }}="{{ value }}"{% endfor -%}>{{ item.text }}</option>
     {% endif %}
   {% endfor %}

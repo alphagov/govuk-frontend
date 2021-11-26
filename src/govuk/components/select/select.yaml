@@ -106,48 +106,82 @@ examples:
         -
           value: 2
           text: Cabinet Office
+          synonyms:
+            - CO
         -
           value: 3
           text: Department for Business, Energy & Industrial Strategy
+          synonyms:
+            - BEIS
         -
           value: 4
           text: Department for Digital, Culture, Media & Sport
+          synonyms:
+            - DCMS
         -
           value: 5
           text: Department for Education
+          synonyms:
+            - DfE
         -
           value: 6
           text: Department for Environment Food & Rural Affairs
+          synonyms:
+            - DEFRA
         -
           value: 7
           text: Department for International Trade
+          synonyms:
+            - DIT
         -
           value: 8
           text: Department for Levelling Up, Housing & Communities
+          synonyms:
+            - DLUHC
+            - MHCLG
+            - Ministry for Housing, Communities and Local Government
         -
           value: 9
           text: Department for Transport
+          synonyms:
+            - DfT
         -
           value: 10
           text: Department for Work & Pensions
+          synonyms:
+            - DWP
+            - Department for Work and Pensions
         -
           value: 11
           text: Department of Health & Social Care
+          synonyms:
+            - DHSC
         -
           value: 12
           text: Foreign, Commonwealth & Development Office
+          synonyms:
+            - FCDO
+            - FCO
         -
           value: 13
           text: HM Treasury
+          synonyms:
+            - HMT
         -
           value: 14
           text: Home Office
+          synonyms:
+            - HO
         -
           value: 15
           text: Ministry of Defence
+          synonyms:
+            - MOD
         -
           value: 16
           text: Ministry of Justice
+          synonyms:
+            - MOJ
         -
           value: 17
           text: Northern Ireland Office
@@ -157,21 +191,29 @@ examples:
         -
           value: 19
           text: HM Revenue & Customs
+          synonyms:
+            - HMRC
         -
           value: 20
           text: The Charity Commission
         -
           value: 21
           text: Competition and Markets Authority
+          synonyms:
+            - CMA
         -
           value: 22
           text: Food Standards Agency
+          synonyms:
+            - FSA
         -
           value: 23
           text: Forestry Commission
         -
           value: 24
           text: Office of Rail and Road
+          synonyms:
+            - ORR
         -
           value: 25
           text: Ofgem
