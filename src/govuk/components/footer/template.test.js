@@ -175,8 +175,8 @@ describe('footer', () => {
       const $ = render('footer', examples['with navigation'])
 
       const $component = $('.govuk-footer')
-      const $list = $component.find('ul.govuk-footer__list')
-      expect($list.hasClass('govuk-footer__list--columns-2')).toBeTruthy()
+      const $section = $component.find('div.govuk-footer__section')
+      expect($section.hasClass('govuk-footer__section--span-2')).toBeTruthy()
     })
   })
 
