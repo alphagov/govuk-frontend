@@ -135,6 +135,24 @@ You do not need to do anything if you're using Nunjucks macros.
 
 This change was introduced in [pull request #2437: Remove `display:block` on hint component](https://github.com/alphagov/govuk-frontend/pull/2437).
 
+#### Include JavaScript for skip link to improve screen reader announcements
+
+We've added JavaScript for the skip link component to set focus to the linked element, for example, the main content on the page. This helps screen readers read the linked content when users use the skip link.
+
+If you're not using Nunjucks macros, add a `data-module="govuk-skip-link"` attribute to the component HTML. For example:
+
+```html
+<div class="govuk-skip-link" data-module="govuk-skip-link">
+...
+</div>
+```
+
+If you're [importing JavaScript for individual components](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#select-and-initialise-an-individual-component), import the skip link JavaScript.
+
+Once you've made the changes, check that the skip link JavaScript works. To make sure, click the skip link and check that the linked element (usually the `<main>` element) in the browser has a `tabindex` attribute.
+
+This change was introduced in [pull request #2450: Set focus to skip link target to improve screen reader announcements](https://github.com/alphagov/govuk-frontend/pull/2450).
+
 #### Remove calls to deprecated `iff` Sass function
 
 We've removed the `iff` function which we deprecated in [GOV.UK Frontend version 3.6.0](https://github.com/alphagov/govuk-frontend/releases/tag/v3.6.0).
