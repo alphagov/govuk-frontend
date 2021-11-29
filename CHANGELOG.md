@@ -75,6 +75,24 @@ If you see unexpected behaviour, make sure the `id` for the  textarea is unique 
 
 This change was introduced in [pull request #2408: Prevent issues with character count when textarea `id` includes CSS syntax characters](https://github.com/alphagov/govuk-frontend/pull/2408).
 
+#### Include JavaScript for the skip link to improve screen reader announcements
+
+We've added JavaScript for the skip link component to set focus to the target element. This improves the announcements especially for Mac VoiceOver users and also for JAWS users.
+
+If you are not using Nunjucks macros, add a `data-module="govuk-skip-link"` attribute to the component HTML. For example:
+
+```html
+<div class="govuk-skip-link" data-module="govuk-skip-link">
+...
+</div>
+```
+
+If you're [importing JavaScript for individual components](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#select-and-initialise-an-individual-component), import the skip link JavaScript.
+
+Once you've made the changes, you can check that the script has focused the target element (commonly the `<main>` page element) by inspecting the markup in the inspector after clicking on the skip link: the target element should have a `tabindex` attribute.
+
+This change was introduced in [pull request #: ](https://github.com/alphagov/govuk-frontend/pull/).
+
 #### Remove calls to deprecated `iff` Sass function
 
 We've removed the `iff` function which we deprecated in [GOV.UK Frontend version 3.6.0](https://github.com/alphagov/govuk-frontend/releases/tag/v3.6.0).
