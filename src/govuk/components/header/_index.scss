@@ -206,11 +206,14 @@
   }
 
   .govuk-header__navigation {
-    @include govuk-responsive-margin(2, "bottom");
     display: block;
     margin: 0;
     padding: 0;
     list-style: none;
+
+    @include govuk-media-query ($from: desktop) {
+      margin-bottom: govuk-spacing(2);
+    }
   }
 
   .js-enabled {
