@@ -8,6 +8,7 @@ import ErrorSummary from './components/error-summary/error-summary'
 import NotificationBanner from './components/notification-banner/notification-banner'
 import Header from './components/header/header'
 import Radios from './components/radios/radios'
+import SkipLink from './components/skip-link/skip-link'
 import Tabs from './components/tabs/tabs'
 
 function initAll (options) {
@@ -60,6 +61,10 @@ function initAll (options) {
   nodeListForEach($radios, function ($radio) {
     new Radios($radio).init()
   })
+
+  // Find first skip link module to enhance.
+  var $skipLink = scope.querySelector('[data-module="govuk-skip-link"]')
+  new SkipLink($skipLink).init()
 
   var $tabs = scope.querySelectorAll('[data-module="govuk-tabs"]')
   nodeListForEach($tabs, function ($tabs) {
