@@ -74,7 +74,7 @@ Note: Before you go on annual leave, tell the delivery manager who will be looki
 
 8. Commit your changes, then push your new branch (see step 4) to GitHub and raise a pull request, with `support/<CURRENT MAJOR VERSION NUMBER>.x` as the base branch to merge into.
 
-9. Once a developer approves the pull request, merge it into `support/<CURRENT MAJOR VERSION NUMBER>.x`. It’s usually a developer who reviews the pull request, but sometimes pull requests need an extra review from another role. For example, if the pull request involves a design change, you may need a review from a designer. 
+9. Once a developer approves the pull request, merge it into `support/<CURRENT MAJOR VERSION NUMBER>.x`. It’s usually a developer who reviews the pull request, but sometimes pull requests need an extra review from another role. For example, if the pull request involves a design change, you may need a review from a designer.
 
 ### Build a new release
 
@@ -114,7 +114,7 @@ Note: Before you go on annual leave, tell the delivery manager who will be looki
 
 1. Check out `support/<CURRENT MAJOR VERSION NUMBER>.x` and pull the latest changes.
 
-2. Run `npm login` to sign into npm using our team credentials.
+2. Sign in to npm (`npm login`), using the npm/govuk-patterns-and-tools team [credentials](https://github.com/alphagov/design-system-team-credentials/tree/main/npm/govuk-patterns-and-tools).
 
 3. Run `npm run publish-release`, which will prompt you to either continue or cancel. Enter `y` to continue.
 
