@@ -285,7 +285,7 @@ Select.prototype.handleMouseEntered = function (event) {
 Select.prototype.handleDocumentClick = function (event) {
   var elementClicked = event.target
   if (!this.$wrapper.contains(elementClicked)) {
-    if (this.$module.value !== '') {
+    if (this.$module.value !== '' && this.$input.value !== '') {
       this.revertInputToCurrentlySelectedOption()
     } else {
       this.clearInput()
