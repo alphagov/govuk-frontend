@@ -31,4 +31,18 @@
       }
     }
   }
+
+  .govuk-skip-link-focused-element {
+    &:focus {
+      // Remove the native visible focus indicator when the element is programmatically focused.
+      //
+      // We set the focus on the main content element when the skip link is activated to improve Mac
+      // VoiceOver announcements. However, we don't display the visible focus indicator on the main
+      // content element because the user cannot interact with it, and the main content element is
+      // also predictably the first element after the 'Skip to main content' component is activated.
+      //
+      // A related discussion: https://github.com/w3c/wcag/issues/1001
+      outline: none;
+    }
+  }
 }
