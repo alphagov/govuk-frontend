@@ -53,12 +53,21 @@
   {%- if params.autocomplete %} autocomplete="{{ params.autocomplete}}"{% endif %}
   {%- if params.pattern %} pattern="{{ params.pattern }}"{% endif %}
   {%- if params.inputmode %} inputmode="{{ params.inputmode }}"{% endif %}
+  {%- if params.suggestions %}data-suggestions="{{ params.id}}-suggestions"{% endif %}
   {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor -%}>
 
   {%- if params.suffix.text or params.suffix.html %}
     <div class="govuk-input__suffix {{- ' ' + params.suffix.classes if params.suffix.classes }}" aria-hidden="true" {%- for attribute, value in params.suffix.attributes %} {{attribute}}="{{value}}"{% endfor %}>
       {{- params.suffix.html | safe if params.suffix.html else params.suffix.text -}}
     </div>
+  {% endif -%}
+
+  {%- if params.suggestions %}
+    <datalist id="{{ params.id }}-suggestions">
+      {%- for item in params.suggestions.items %}
+        <option {% if item.synonyms %} data-synonyms="{{ item.synonyms | join("|") }}"{% endif %}>{{ item.text }}</option>
+      {% endfor -%}
+    </datalist>
   {% endif -%}
 
 {%- if params.prefix or params.suffix %}</div>{% endif %}

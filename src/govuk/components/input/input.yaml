@@ -117,6 +117,614 @@ examples:
         text: National Insurance number
       id: input-example
       name: test-name
+  - name: with suggestions
+    data:
+      label:
+        text: University
+      id: input-with-suggestions
+      name: test-suggestions
+      attributes:
+        data-module: govuk-input
+      suggestions:
+        items:
+          -
+            text: AA School of Architecture
+          -
+            text: AECC University College
+          -
+            text: Abertay University
+          -
+            text: Aberystwyth University
+            synonyms:
+              - Aber
+          -
+            text: Anglia Ruskin University
+            synonyms:
+              - ARU
+          -
+            text: Arden University
+            synonyms:
+              - Resource development international
+          -
+            text: Arts University Bournemouth
+            synonyms:
+              - AUB
+          -
+            text: Aston University
+          -
+            text: BIMM Institute
+          -
+            text: BPP University
+          -
+            text: Bangor University
+            synonyms:
+              - University College of North Wales
+              - UCNW
+              - UWB
+          -
+            text: Bath Spa University
+          -
+            text: Birkbeck, University of London
+            synonyms:
+              - BBK
+              - University of London
+          -
+            text: Birmingham City University
+            synonyms:
+              - BCU
+              - Birmingham College of Art
+              - Birmingham Polytechnic
+          -
+            text: Bishop Grosseteste University
+            synonyms:
+              - BGU
+          -
+            text: Bournemouth University
+          -
+            text: Brunel University London
+            synonyms:
+              - West London Institute of HE
+          -
+            text: Buckinghamshire New University
+            synonyms:
+              - Bucks
+              - BNU
+          -
+            text: Canterbury Christ Church University
+            synonyms:
+              - CCCU
+          -
+            text: Cardiff Metropolitan University
+          -
+            text: Cardiff University
+            synonyms:
+              - Prifysgol Caerdydd
+              - University College Cardiff
+          -
+            text: City, University of London
+            synonyms:
+              - CUL
+              - The City University
+          -
+            text: Coventry University
+            synonyms:
+              - University of Coventry
+          -
+            text: Cranfield University
+          -
+            text: De Montfort University
+            synonyms:
+              - DMU
+          -
+            text: Durham University
+          -
+            text: Dyson Technical Training
+          -
+            text: Edge Hill University
+          -
+            text: Edinburgh Napier University
+          -
+            text: Fairfield School of Business
+          -
+            text: Falmouth University
+          -
+            text: ForMission
+          -
+            text: Glasgow Caledonian University
+            synonyms:
+              - GCU
+              - Caley
+          -
+            text: Glasgow School of Art
+          -
+            text: Goldsmiths, University of London
+            synonyms:
+              - GUL
+          -
+            text: Gower College Swansea
+          -
+            text: Grŵp Llandrillo Menai
+            synonyms:
+              - Coleg Llandrillo
+              - Coleg Menai
+              - Coleg Meirion-Dwyfor
+          -
+            text: Grŵp NPTC Group
+          -
+            text: Guildhall School of Music and Drama
+            synonyms:
+              - GSMD
+          -
+            text: Harper Adams University
+          -
+            text: Hartpury University
+          -
+            text: Heriot-Watt University
+            synonyms:
+              - The Scottish College of Textiles
+          -
+            text: Hult International Business School
+          -
+            text: Imperial College London
+          -
+            text: Keele University
+          -
+            text: Kensington College of Business
+          -
+            text: Kingston University
+          -
+            text: King’s College London
+            synonyms:
+              - KCL
+              - University of London
+          -
+            text: LAMDA
+          -
+            text: Lancaster University
+          -
+            text: Leeds Arts University
+          -
+            text: Leeds Beckett University
+            synonyms:
+              - LBU
+              - LMU
+          -
+            text: Leeds Trinity University
+          -
+            text: Liverpool Hope University
+          -
+            text: Liverpool John Moores University
+            synonyms:
+              - LJMU
+          -
+            text: Liverpool School of Tropical Medicine
+            synonyms:
+              - LSTM
+          -
+            text: London Business School
+            synonyms:
+              - LBS
+              - University of London
+          -
+            text: London Churchill College
+          -
+            text: London College of Business Studies
+          -
+            text: London Metropolitan University
+          -
+            text: London School of Economics and Political Science
+            synonyms:
+              - LSE
+              - University of London
+          -
+            text: London School of Hygiene and Tropical Medicine
+            synonyms:
+              - LSHTM
+              - University of London
+          -
+            text: London School of Science and Technology
+          -
+            text: London South Bank University
+            synonyms:
+              - LSBU
+          -
+            text: Loughborough University
+            synonyms:
+              - Loughborough College of Art and Design
+          -
+            text: Manchester Metropolitan University
+            synonyms:
+              - MMU
+          -
+            text: Middlesex University London
+            synonyms:
+              - MDX
+          -
+            text: NCG (Newcastle College Group)
+            synonyms:
+              - Newcastle College
+          -
+            text: New College of the Humanities
+            synonyms:
+              - NCH
+          -
+            text: Newcastle University
+          -
+            text: Newman University
+          -
+            text: Norland College
+          -
+            text: Northumbria University Newcastle
+          -
+            text: Norwich University of the Arts
+            synonyms:
+              - NUA
+          -
+            text: Nottingham Trent University
+            synonyms:
+              - NTU
+          -
+            text: Oxford Brookes University
+          -
+            text: Oxford Business College
+          -
+            text: Plymouth College of Art
+          -
+            text: Plymouth Marjon University
+          -
+            text: Queen Margaret University, Edinburgh
+            synonyms:
+              - QMU
+          -
+            text: Queen Mary University of London
+            synonyms:
+              - QMUL
+              - QM
+              - St Bartholomew's Hospital Medical College
+              - St Barts
+          -
+            text: Queen’s University Belfast
+            synonyms:
+              - QUB
+          -
+            text: Ravensbourne University London
+          -
+            text: Regent College
+          -
+            text: Regent’s University London
+          -
+            text: Richmond, The American International University in London
+          -
+            text: Robert Gordon University
+            synonyms:
+              - RGU
+          -
+            text: Rose Bruford College
+          -
+            text: Royal Academy of Music
+            synonyms:
+              - RAM
+              - University of London
+          -
+            text: Royal Agricultural University
+            synonyms:
+              - RAU
+          -
+            text: Royal Central School of Speech and Drama
+            synonyms:
+              - CSSD
+              - University of London
+          -
+            text: Royal College of Art
+            synonyms:
+              - RCA
+          -
+            text: Royal College of Music
+            synonyms:
+              - RCM
+          -
+            text: Royal Conservatoire of Scotland
+            synonyms:
+              - RCS
+          -
+            text: Royal Holloway, University of London
+            synonyms:
+              - RH
+              - RHUL
+          -
+            text: Royal Northern College of Music
+            synonyms:
+              - RNCM
+          -
+            text: Royal Veterinary College
+            synonyms:
+              - RVC
+              - University of London
+          -
+            text: SOAS, University of London
+          -
+            text: SRUC (Scotland’s Rural College)
+            synonyms:
+              - Scotland’s Rural College
+          -
+            text: Sheffield Hallam University
+            synonyms:
+              - SHU
+          -
+            text: Solent University, Southampton
+          -
+            text: St George’s, University of London
+            synonyms:
+              - SGUL
+          -
+            text: St Mary’s University College, Belfast
+          -
+            text: St Mary’s University, Twickenham
+          -
+            text: St Patrick’s International College
+          -
+            text: Staffordshire University
+          -
+            text: Stranmillis University College
+          -
+            text: Swansea University
+          -
+            text: TEC Partnership
+            synonyms:
+              - GIFHE
+              - Grimsby Institute
+              - Grimsby Institute of Further and Higher Education
+              - Grimsby Institute of Further & Higher Education
+          -
+            text: TEDI-London
+          -
+            text: Teesside University
+          -
+            text: The London Institute of Banking & Finance
+            synonyms:
+              - LIBF
+          -
+            text: The London Interdisciplinary School
+          -
+            text: The Open University
+            synonyms:
+              - OU
+              - Open University
+          -
+            text: The University of Edinburgh
+            synonyms:
+              - Edinburgh College of Art
+              - Moray House Institute of Education
+          -
+            text: The University of Law
+          -
+            text: The University of Manchester
+          -
+            text: The University of Manchester Institute of Science and Technology
+          -
+            text: The University of Sheffield
+            synonyms:
+              - TUOS
+              - Sheffield University
+          -
+            text: Trinity Laban Conservatoire of Music and Dance
+          -
+            text: Ulster University
+          -
+            text: University College Birmingham
+          -
+            text: University College London
+            synonyms:
+              - UCL
+              - University of London
+              - Institute of Education
+              - School of Pharmacy
+          -
+            text: University College of Estate Management
+            synonyms:
+              - UCEM
+          -
+            text: University College of Osteopathy
+            synonyms:
+              - UCO
+          -
+            text: University for the Creative Arts
+            synonyms:
+              - UCA
+          -
+            text: University of Aberdeen
+          -
+            text: University of Bath
+          -
+            text: University of Bedfordshire
+          -
+            text: University of Birmingham
+          -
+            text: University of Bolton
+          -
+            text: University of Bradford
+            synonyms:
+              - Leeds Conservatoire
+          -
+            text: University of Brighton
+          -
+            text: University of Bristol
+          -
+            text: University of Buckingham
+            synonyms:
+              - UB
+          -
+            text: University of Cambridge
+          -
+            text: University of Central Lancashire
+            synonyms:
+              - UCLan
+          -
+            text: University of Chester
+          -
+            text: University of Chichester
+          -
+            text: University of Cumbria
+          -
+            text: University of Derby
+          -
+            text: University of Dundee
+            synonyms:
+              - Duncan of Jordanstone College of Art
+          -
+            text: University of East Anglia
+            synonyms:
+              - UEA
+          -
+            text: University of East London
+            synonyms:
+              - UEL
+          -
+            text: University of Essex
+          -
+            text: University of Exeter
+          -
+            text: University of Glasgow
+          -
+            text: University of Gloucestershire
+          -
+            text: University of Greenwich
+          -
+            text: University of Hertfordshire
+            synonyms:
+              - UH
+              - UOH
+              - Herts
+          -
+            text: University of Huddersfield
+            synonyms:
+              - Northern College for Residential and Community Adult Education
+          -
+            text: University of Hull
+            synonyms:
+              - Leeds Conservatoire
+              - Grimsby Institute
+          -
+            text: University of Kent
+            synonyms:
+              - Northern School of Contemporary Dance
+              - NSCD
+          -
+            text: University of Leeds
+          -
+            text: University of Leicester
+          -
+            text: University of Lincoln
+          -
+            text: University of Liverpool
+          -
+            text: University of London
+            synonyms:
+              - Institute of Education
+          -
+            text: University of Northampton
+            synonyms:
+              - UON
+          -
+            text: University of Nottingham
+          -
+            text: University of Oxford
+            synonyms:
+              - Westminster College
+          -
+            text: University of Plymouth
+          -
+            text: University of Portsmouth
+          -
+            text: University of Reading
+          -
+            text: University of Roehampton
+          -
+            text: University of Salford
+            synonyms:
+              - University College Salford
+          -
+            text: University of South Wales
+            synonyms:
+              - University of Glamorgan
+              - University of Wales, Newport
+              - Royal Welsh College of Music and Drama
+          -
+            text: University of Southampton
+            synonyms:
+              - SOTON
+              - La Sainte Union College of HE
+              - Winchester School of Art
+          -
+            text: University of St Andrews
+          -
+            text: University of Stirling
+          -
+            text: University of Strathclyde
+            synonyms:
+              - Bell College
+          -
+            text: University of Suffolk
+            synonyms:
+              - UOS
+          -
+            text: University of Sunderland
+          -
+            text: University of Surrey
+            synonyms:
+              - Wimbledon School of Art
+          -
+            text: University of Sussex
+          -
+            text: University of Wales Trinity Saint David
+            synonyms:
+              - UWTSD
+          -
+            text: University of Warwick
+          -
+            text: University of West London
+            synonyms:
+              - UWL
+          -
+            text: University of Westminster
+          -
+            text: University of Winchester
+          -
+            text: University of Wolverhampton
+          -
+            text: University of Worcester
+          -
+            text: University of York
+          -
+            text: University of the Arts London
+            synonyms:
+              - UAL
+              - Wimbledon College of Art
+              - Wimbledon College of Arts
+          -
+            text: University of the Highlands and Islands
+            synonyms:
+              - UHI
+          -
+            text: University of the West of England, Bristol
+            synonyms:
+              - UWE
+          -
+            text: University of the West of Scotland
+            synonyms:
+              - UWS
+          -
+            text: WCG (Warwickshire College Group)
+          -
+            text: Wrexham Glyndŵr University
+          -
+            text: Writtle University College
+          -
+            text: York St John University
+            synonyms:
+              - YSJU
+          -
+
   - name: with hint text
     data:
       label:

@@ -174,4 +174,42 @@
       }
     }
   }
+
+  .govuk-input__suggestions-header {
+    margin-bottom: 0;
+    padding: 5px;
+    @include govuk-font($size: 19, $weight: bold);
+    border-width: $govuk-border-width-form-element $govuk-border-width-form-element 0 $govuk-border-width-form-element;
+    border-style: solid;
+    border-color: currentColor;
+    background-color: govuk-colour("light-grey", $legacy: "grey-3");
+  }
+
+  .govuk-input__suggestions-list {
+    max-height: 300px;
+    margin-top: 0;
+    margin-left: 0;
+    padding-left: 0;
+    overflow-y: scroll;
+    list-style-type: none;
+    border-top-width: $govuk-border-width-form-element;
+    border-right-width: $govuk-border-width-form-element;
+    border-bottom-width: $govuk-border-width-form-element;
+    border-left-width: $govuk-border-width-form-element;
+    border-style: solid;
+    border-color: currentColor;
+  }
+
+  .govuk-input__suggestion {
+    @include govuk-font($size: 19);
+    position: relative;
+    padding: 5px;
+    border-bottom: solid #b1b4b6;
+    border-width: 1px 0;
+  }
+
+  .govuk-input__suggestion:focus {
+    outline: 0;
+    background-color: $govuk-focus-colour;
+  }
 }
