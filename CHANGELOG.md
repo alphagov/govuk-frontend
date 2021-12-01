@@ -192,6 +192,7 @@ We’ve made fixes to GOV.UK Frontend in the following pull requests:
 - [#2426: Rename exported JavaScript modules to include component name](https://github.com/alphagov/govuk-frontend/pull/2426)
 - [#2434: Add brand colour for Department for Levelling Up, Housing and Communities (DLUHC)](https://github.com/alphagov/govuk-frontend/pull/2434)
 - [#2447: Remove bottom margin from navigation on tablets](https://github.com/alphagov/govuk-frontend/pull/2447)
+- [#2448: Remove the border from the last item in the collapsible navigation menu in the header](https://github.com/alphagov/govuk-frontend/pull/2448)
 
 ## 3.14.0 (Feature release)
 
