@@ -283,6 +283,7 @@
 
   .govuk-header__navigation-item:last-child {
     margin-right: 0;
+    border-bottom: 0;
   }
 
   @include govuk-media-query($media-type: print) {
