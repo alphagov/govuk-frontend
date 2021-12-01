@@ -192,7 +192,7 @@ examples:
           - href: '#3'
             text: Navigation item 3
 
-- name: GOV.UK
+- name: Full GDS example
   description: A full example based on GOV.UK's current footer
   data:
     navigation:
