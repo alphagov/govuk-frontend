@@ -179,7 +179,7 @@ If you’re not using Nunjucks macros, add a new `data-nosnippet` attribute to t
 <div class="govuk-cookie-banner " data-nosnippet role="region" aria-label="Cookies on your service">
 ```
 
-This was added in [pull request #2192: Add data-nosnippet to prevent cookie banner text appearing in Google Search snippets](https://github.com/alphagov/govuk-frontend/pull/2192).
+This was added in [pull request #2192: Add `data-nosnippet` to prevent cookie banner text appearing in Google Search snippets](https://github.com/alphagov/govuk-frontend/pull/2192).
 
 ### Fixes
 
