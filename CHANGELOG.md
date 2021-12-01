@@ -61,7 +61,7 @@ We've updated the HTML for the summary list component to avoid nesting `<span>` 
 
 Do not include an empty `<span class="govuk-summary-list__actions"></span>` within the rows that do not have any actions. Instead, add the `govuk-summary-list__row--no-actions` modifier class to the row.
 
-This change was introduced in [pull request #2323: Avoid invalid nesting of `<span>` within a `<dd>` in summary list](https://github.com/alphagov/govuk-frontend/pull/2323).
+This change was introduced in [pull request #2323: Avoid invalid nesting of `<span>` within a `<dd>` in summary list](https://github.com/alphagov/govuk-frontend/pull/2323). Thanks to [Malcolm Hire]( https://github.com/malcolmhire) for reporting this issue.
 
 #### Make sure components that conditionally reveal other questions still work as expected
 
@@ -100,7 +100,7 @@ You can now import multiple modules without overwriting the previous one, for ex
 
 If you're importing JavaScript modules individually, you should check any references to `window.GOVUKFrontend` in your code and update them to point to the correct component, `window.GOVUKFrontend.[ComponentName]`. You can now remove any workarounds you may have implemented.
 
-This change was introduced in [pull request #2426: Rename exported JavaScript modules to include component name](https://github.com/alphagov/govuk-frontend/pull/2426).
+This change was introduced in [pull request #2426: Rename exported JavaScript modules to include component name](https://github.com/alphagov/govuk-frontend/pull/2426). Thanks to [Alex Jurubita](https://github.com/alex-ju) for reporting this issue.
 
 #### Update the HTML for hints
 
@@ -190,7 +190,7 @@ We’ve made fixes to GOV.UK Frontend in the following pull requests:
 - [#2370: Prevent issues with conditionally revealed content when content `id` includes CSS syntax characters](https://github.com/alphagov/govuk-frontend/pull/2370)
 - [#2408: Prevent issues with character count when textarea `id` includes CSS syntax characters](https://github.com/alphagov/govuk-frontend/pull/2408)
 - [#2426: Rename exported JavaScript modules to include component name](https://github.com/alphagov/govuk-frontend/pull/2426)
-- [#2434: Add brand colour for Department for Levelling Up, Housing and Communities (DLUHC)](https://github.com/alphagov/govuk-frontend/pull/2434)
+- [#2434: Add brand colour for Department for Levelling Up, Housing and Communities (DLUHC)](https://github.com/alphagov/govuk-frontend/pull/2434) - thanks to [Bruce Bolt](https://github.com/brucebolt) for contributing this change
 - [#2447: Remove bottom margin from navigation on tablets](https://github.com/alphagov/govuk-frontend/pull/2447)
 
 ## 3.14.0 (Feature release)
