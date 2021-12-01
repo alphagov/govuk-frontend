@@ -102,6 +102,14 @@ If you're importing JavaScript modules individually, you should check any refere
 
 This change was introduced in [pull request #2426: Rename exported JavaScript modules to include component name](https://github.com/alphagov/govuk-frontend/pull/2426).
 
+#### Update the HTML for error messages
+
+We’ve updated the HTML for the error message component to use a paragraph element instead of a span element, as this is more semantically correct.
+
+If you’re not using Nunjucks macros, swap the `<span class="govuk-error-message">` for a `<p class="govuk-error-message">`.
+
+This change was introduced in [pull request #2452: Update error messages to use paragraph tags instead of spans](https://github.com/alphagov/govuk-frontend/pull/2452).
+
 #### Update the HTML for hints
 
 In GOV.UK Frontend v3.8.0, we [updated the HTML for hints to use a `<div>` rather than a `<span>` element, to allow the use of block elements](https://github.com/alphagov/govuk-frontend/issues/1835). We've now removed the styles which made the hint `<span>` display as block.
