@@ -136,12 +136,13 @@
   }
 
   .govuk-footer__heading {
-    @include govuk-responsive-margin(7, "bottom");
+    margin-bottom: govuk-spacing(6);
     padding-bottom: govuk-spacing(4);
+    border-bottom: 1px solid $govuk-footer-border;
+
     @include govuk-media-query ($until: tablet) {
       padding-bottom: govuk-spacing(2);
     }
-    border-bottom: 1px solid $govuk-footer-border;
   }
 
   .govuk-footer__navigation {
