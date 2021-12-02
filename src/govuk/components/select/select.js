@@ -62,23 +62,23 @@ Select.prototype.updateOptions = function (showAllOptions) {
 
   // Filter to only options with a non-blank value. Often the first option is blank to avoid
   // setting an initial default option.
-  var optionsWithAValue = [].filter.call(this.$module.options, function(option) {
-      return option.value !== ''
-    })
+  var optionsWithAValue = [].filter.call(this.$module.options, function (option) {
+    return option.value !== ''
+  })
 
   // Build an array of regexes that search for each word of the query
   var queryRegexes = this.$input.value.trim()
     .replace(/['’]/g, '')
     .replace(/[.,"/#!$%^&*;:{}=\-_~()]/g, ' ')
-    .split(/\s+/).map(function(word) {
+    .split(/\s+/).map(function (word) {
       return new RegExp('\\b' + word, 'i')
     })
 
   var matchingOptions = []
 
   for (var option of optionsWithAValue) {
-    var optionTextAndSynonyms = [option.textContent];
-    var synonyms = option.getAttribute('data-synonyms');
+    var optionTextAndSynonyms = [option.textContent]
+    var synonyms = option.getAttribute('data-synonyms')
 
     if (synonyms) {
       optionTextAndSynonyms = optionTextAndSynonyms.concat(synonyms.split('|'))
@@ -88,8 +88,8 @@ Select.prototype.updateOptions = function (showAllOptions) {
       this.$input.value === '' ||
       showAllOptions ||
       (
-        optionTextAndSynonyms.find(function(name) {
-          return (queryRegexes.filter(function(regex) { return name.search(regex) >= 0 }).length === queryRegexes.length)
+        optionTextAndSynonyms.find(function (name) {
+          return (queryRegexes.filter(function (regex) { return name.search(regex) >= 0 }).length === queryRegexes.length)
         })
       )
     ) { matchingOptions.push(option) }
@@ -105,14 +105,14 @@ Select.prototype.updateOptions = function (showAllOptions) {
 Select.prototype.updateSuggestionsWithOptions = function (options) {
   for (var option of options) {
     var li = document.createElement('li')
-      li.textContent = option.textContent
-      li.setAttribute('role', 'option')
-      li.setAttribute('tabindex', '-1')
-      li.setAttribute('aria-selected', option.value === this.$module.value)
-      li.setAttribute('data-value', option.value)
-      li.setAttribute('class', 'govuk-select__option')
-      li.addEventListener('mouseenter', this.handleMouseEntered.bind(this))
-      this.$ul.appendChild(li)
+    li.textContent = option.textContent
+    li.setAttribute('role', 'option')
+    li.setAttribute('tabindex', '-1')
+    li.setAttribute('aria-selected', option.value === this.$module.value)
+    li.setAttribute('data-value', option.value)
+    li.setAttribute('class', 'govuk-select__option')
+    li.addEventListener('mouseenter', this.handleMouseEntered.bind(this))
+    this.$ul.appendChild(li)
   }
 }
 
