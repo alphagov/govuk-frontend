@@ -723,8 +723,6 @@ examples:
             text: York St John University
             synonyms:
               - YSJU
-          -
-
   - name: with hint text
     data:
       label:
