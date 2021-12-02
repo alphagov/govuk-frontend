@@ -136,6 +136,22 @@ If you're passing custom HTML into the cookie banner component (for example, usi
 
 This change was introduced in [pull request #2432: Remove default font styles from cookie banner Sass](https://github.com/alphagov/govuk-frontend/pull/2432).
 
+#### Check your footer displays as expected
+
+We’ve made some fixes to the alignment of columns within the footer component, so they align with our grid. This involved changing the name and position of the `govuk-footer__list—columns` classes.
+
+Replace any instances of `govuk-footer__list—columns` classes with `govuk-footer__section—columns`.
+
+If you're using HTML, you'll also need to move the classes from the `govuk-footer__list` element to the `govuk-footer__section` element. For example:
+
+```
+<div class="govuk-footer__section govuk-footer__section—columns-2">
+  <ul class="govuk-footer__list">...</ul>
+</div>
+```
+
+This change was introduced in [pull request #2428: Fix footer alignment with grid classes](https://github.com/alphagov/govuk-frontend/pull/2428) and [pull request #2446: Add support for footer sections that span multiple columns](https://github.com/alphagov/govuk-frontend/pull/2446).
+
 ### Optional changes
 
 We've recently made some other changes to GOV.UK Frontend. While these are not breaking changes, implementing them will make your service work better.
@@ -180,6 +196,24 @@ If you’re not using Nunjucks macros, add a new `data-nosnippet` attribute to t
 ```
 
 This was added in [pull request #2192: Add data-nosnippet to prevent cookie banner text appearing in Google Search snippets](https://github.com/alphagov/govuk-frontend/pull/2192).
+
+### New Features
+
+#### Add footer sections which span multiple columns
+
+You can now have footer sections which span multiple columns, but do not contain multiple columns of list items.
+
+This may be helpful if you want to highlight a specific link in the footer, but you also want it to align with a section below that has multiple columns of list items.
+
+To do this, use the `span` macro option. If you're using the HTML component, apply the appropriate class to the `govuk-footer__section` element, for example:
+
+```
+<div class="govuk-footer__section govuk-footer__section—span-2">
+  <ul class="govuk-footer__list">...</ul>
+</div>
+```
+
+This feature was introduced in [pull request #2446: Add support for footer sections that span multiple columns](https://github.com/alphagov/govuk-frontend/pull/2446)
 
 ### Fixes
 
