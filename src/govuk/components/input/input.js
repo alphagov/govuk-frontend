@@ -1,15 +1,14 @@
 import '../../vendor/polyfills/Function/prototype/bind'
- // addEventListener, event.target normalization and DOMContentLoaded
- import '../../vendor/polyfills/Event'
- import '../../vendor/polyfills/Element/prototype/classList'
+// addEventListener, event.target normalization and DOMContentLoaded
+import '../../vendor/polyfills/Event'
+import '../../vendor/polyfills/Element/prototype/classList'
 
 function Input ($module) {
   this.$module = $module
 }
 
 Input.prototype.init = function () {
-
-  this.$formGroup = this.$module.parentNode.parentNode   // .form-group
+  this.$formGroup = this.$module.parentNode.parentNode // .form-group
 
   var suggestionsId = this.$module.getAttribute('data-suggestions')
 
@@ -25,7 +24,6 @@ Input.prototype.init = function () {
     this.$suggestionsHeader.setAttribute('class', 'govuk-input__suggestions-header')
     this.$suggestionsHeader.textContent = 'Suggestions'
     this.$suggestionsHeader.hidden = true
-
 
     this.$ul = document.createElement('ul')
     this.$ul.setAttribute('id', this.$module.getAttribute('id') + '-suggestions')
@@ -49,7 +47,6 @@ Input.prototype.handleInputInput = function (event) {
 }
 
 Input.prototype.updateSuggestions = function () {
-
   if (this.$module.value.trim().length < 2) {
     this.hideSuggestions()
     return
@@ -59,15 +56,15 @@ Input.prototype.updateSuggestions = function () {
   var queryRegexes = this.$module.value.trim()
     .replace(/['’]/g, '')
     .replace(/[.,"/#!$%^&*;:{}=\-_~()]/g, ' ')
-    .split(/\s+/).map(function(word) {
+    .split(/\s+/).map(function (word) {
       return new RegExp('\\b' + word, 'i')
     })
 
   var matchingOptions = []
 
   for (var option of this.suggestions.getElementsByTagName('option')) {
-    var optionTextAndSynonyms = [option.textContent];
-    var synonyms = option.getAttribute('data-synonyms');
+    var optionTextAndSynonyms = [option.textContent]
+    var synonyms = option.getAttribute('data-synonyms')
 
     if (synonyms) {
       optionTextAndSynonyms = optionTextAndSynonyms.concat(synonyms.split('|'))
@@ -75,18 +72,14 @@ Input.prototype.updateSuggestions = function () {
 
     if (
       (
-        optionTextAndSynonyms.find(function(name) {
-          return (queryRegexes.filter(function(regex) { return name.search(regex) >= 0 }).length === queryRegexes.length)
+        optionTextAndSynonyms.find(function (name) {
+          return (queryRegexes.filter(function (regex) { return name.search(regex) >= 0 }).length === queryRegexes.length)
         })
       )
     ) { matchingOptions.push(option) }
   }
 
- // if (matchingOptions.length === 1 && matchingOptions[0].textContent === this.$module.value.trim()) {
- //    this.hideSuggestions()
- //  } else
-
-  if (matchingOptions.length == 0) {
+  if (matchingOptions.length === 0) {
     this.displayNoSuggestionsFound()
   } else if (matchingOptions.length === 1 && matchingOptions[0].textContent === this.$module.value.trim()) {
     this.hideSuggestions()
@@ -96,20 +89,19 @@ Input.prototype.updateSuggestions = function () {
 }
 
 Input.prototype.updateSuggestionsWithOptions = function (options) {
-
   // Remove all the existing suggestions
   this.$ul.textContent = ''
 
   for (var option of options) {
     var li = document.createElement('li')
-      li.textContent = option.textContent
-      li.setAttribute('role', 'option')
-      li.setAttribute('tabindex', '-1')
-      li.setAttribute('aria-selected', option.value === this.$module.value)
-      li.setAttribute('data-value', option.value)
-      li.setAttribute('class', 'govuk-input__suggestion')
-      // li.addEventListener('mouseenter', this.handleMouseEntered.bind(this))
-      this.$ul.appendChild(li)
+    li.textContent = option.textContent
+    li.setAttribute('role', 'option')
+    li.setAttribute('tabindex', '-1')
+    li.setAttribute('aria-selected', option.value === this.$module.value)
+    li.setAttribute('data-value', option.value)
+    li.setAttribute('class', 'govuk-input__suggestion')
+    // li.addEventListener('mouseenter', this.handleMouseEntered.bind(this))
+    this.$ul.appendChild(li)
   }
 
   this.$ul.hidden = false
@@ -117,9 +109,9 @@ Input.prototype.updateSuggestionsWithOptions = function (options) {
 }
 
 Input.prototype.handleSuggestionClicked = function (event) {
-   var suggestionClicked = event.target
-   this.selectSuggestion(suggestionClicked)
- }
+  var suggestionClicked = event.target
+  this.selectSuggestion(suggestionClicked)
+}
 
 Input.prototype.selectSuggestion = function (option) {
   option.setAttribute('aria-selected', 'true')
@@ -127,7 +119,7 @@ Input.prototype.selectSuggestion = function (option) {
 
   this.$module.focus()
   this.hideSuggestions()
- }
+}
 
 // On key down, check if the key pressed an up/down arrow or tab
 Input.prototype.handleInputKeyDown = function (event) {
@@ -191,7 +183,6 @@ Input.prototype.handleSuggestionsKeyDown = function (event) {
       break
     default:
       this.$module.focus()
-      // console.log(event.keyCode)
   }
 }
 
