@@ -109,7 +109,7 @@ describe('header', () => {
       const $ = render('header', examples['with navigation'])
 
       const $component = $('.govuk-header')
-      const $list = $component.find('ul.govuk-header__navigation')
+      const $list = $component.find('ul.govuk-header__navigation-list')
       const $items = $list.find('li.govuk-header__navigation-item')
       const $firstItem = $items.find('a.govuk-header__link:first-child')
       expect($items.length).toEqual(4)

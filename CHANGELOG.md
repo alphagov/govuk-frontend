@@ -67,6 +67,8 @@ This change was introduced in [pull request #2323: Avoid invalid nesting of `<sp
 
 We've updated the HTML for the header. This update only affects you if your header includes navigation.
 
+Any additional classes passed using the `navigationClasses` Nunjucks option are now applied to the `<nav>` rather than the `<ul>`. Check that the additional classes are still doing what you expect.
+
 If you're not using Nunjucks macros, then you should move:
 
 - the `<button>` inside the `<nav>`, immediately before the `<ul>`
