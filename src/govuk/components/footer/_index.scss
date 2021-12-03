@@ -136,44 +136,25 @@
   }
 
   .govuk-footer__heading {
-    @include govuk-responsive-margin(7, "bottom");
+    margin-bottom: govuk-spacing(6);
     padding-bottom: govuk-spacing(4);
+    border-bottom: 1px solid $govuk-footer-border;
+
     @include govuk-media-query ($until: tablet) {
       padding-bottom: govuk-spacing(2);
     }
-    border-bottom: 1px solid $govuk-footer-border;
   }
 
   .govuk-footer__navigation {
-    display: flex; // Support: Flexbox
+    @include govuk-clearfix;
     margin-right: -$govuk-gutter-half;
     margin-left: -$govuk-gutter-half;
-    flex-wrap: wrap; // Support: Flexbox
   }
 
   .govuk-footer__section {
     display: inline-block;
-    margin-right: $govuk-gutter-half;
     margin-bottom: $govuk-gutter;
-    margin-left: $govuk-gutter-half;
     vertical-align: top;
-    // Ensure columns take up equal width (typically one-half:one-half)
-    flex-grow: 1; // Support: Flexbox
-    flex-shrink: 1; // Support: Flexbox
-    @include govuk-media-query ($until: desktop) {
-      // Make sure columns do not drop below 200px in width
-      // Will typically result in wrapping, and end up in a single column on smaller screens.
-      flex-basis: 200px; // Support: Flexbox
-    }
-  }
-
-  // If there are only two sections, set the layout to be two-third:one-third on desktop
-  @include govuk-media-query ($from: desktop) {
-    // We match the first section with `:first-child`.
-    // To ensure the section is one of two, we can count backwards using `:nth-last-child(2)`.
-    .govuk-footer__section:first-child:nth-last-child(2) {
-      flex-grow: 2; // Support: Flexbox
-    }
   }
 
   .govuk-footer__list {

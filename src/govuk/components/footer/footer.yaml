@@ -46,6 +46,10 @@ params:
     type: integer
     required: false
     description: Amount of columns to display items in navigation section of the footer.
+  - name: width
+    type: string
+    required: false
+    description: Set the width for each navigation section, by passing the appropriate grid name. For example "two-thirds" or "full"
   - name: items
     type: array
     required: false
@@ -188,11 +192,22 @@ examples:
           - href: '#3'
             text: Navigation item 3
 
-- name: GOV.UK
+- name: Full GDS example
   description: A full example based on GOV.UK's current footer
   data:
     navigation:
+      - title: Coronavirus (COVID-19)
+        width: two-thirds
+        items:
+          - href: '/coronavirus'
+            text: 'Coronavirus (COVID-19): guidance and support'
+      - title: Brexit
+        classes: one-third
+        items:
+          - href: '/brexit'
+            text: Check what you need to do
       - title: Services and information
+        width: govuk-grid-column-two-thirds
         columns: 2
         items:
           - href: '/browse/benefits'
@@ -228,6 +243,7 @@ examples:
           - href: '/browse/working'
             text: Working, jobs and pensions
       - title: Departments and policy
+        width: govuk-grid-column-one-third
         items:
           - href: '/government/how-government-works'
             text: How government works
