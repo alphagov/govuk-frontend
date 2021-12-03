@@ -136,6 +136,19 @@ If you're passing custom HTML into the cookie banner component (for example, usi
 
 This change was introduced in [pull request #2432: Remove default font styles from cookie banner Sass](https://github.com/alphagov/govuk-frontend/pull/2432).
 
+#### Import 'base' before importing Sass files from `core` or `overrides` layers
+
+If you import individual files from the `core` or `overrides` layers, you might see the error `Undefined mixin 'govuk-exports'` or `no mixin named govuk-exports` when compiling your Sass.
+
+To fix the error, import `node_modules/govuk-frontend/govuk/base` first. For example:
+
+```scss
+@import "node_modules/govuk-frontend/govuk/base";
+@import "node_modules/govuk-frontend/core/typography";
+```
+
+This change was introduced in [pull request #2455: Remove 'base' import from files in `core` and `overrides` layers](https://github.com/alphagov/govuk-frontend/pull/2455).
+
 ### Optional changes
 
 We've recently made some other changes to GOV.UK Frontend. While these are not breaking changes, implementing them will make your service work better.
