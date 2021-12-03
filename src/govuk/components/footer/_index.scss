@@ -167,15 +167,6 @@
     }
   }
 
-  // If there are only two sections, set the layout to be two-third:one-third on desktop
-  @include govuk-media-query ($from: desktop) {
-    // We match the first section with `:first-child`.
-    // To ensure the section is one of two, we can count backwards using `:nth-last-child(2)`.
-    .govuk-footer__section:first-child:nth-last-child(2) {
-      flex-grow: 2; // Support: Flexbox
-    }
-  }
-
   .govuk-footer__list {
     margin: 0;
     padding: 0;
