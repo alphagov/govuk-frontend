@@ -15,11 +15,11 @@ exports[`Character count when it includes a hint renders with hint 1`] = `
 `;
 
 exports[`Character count when it includes an error message renders with error message 1`] = `
-<span id="exceeding-characters-error"
-      class="govuk-error-message"
+<p id="exceeding-characters-error"
+   class="govuk-error-message"
 >
   Please do not exceed the maximum allowed limit
-</span>
+</p>
 `;
 
 exports[`Character count with dependant components renders with label 1`] = `

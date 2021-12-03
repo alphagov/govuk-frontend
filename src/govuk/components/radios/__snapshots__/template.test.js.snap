@@ -53,9 +53,9 @@ exports[`Radios when they include a hint renders the hint 1`] = `
 `;
 
 exports[`Radios when they include an error message renders the error message 1`] = `
-<span id="example-error-message-error"
-      class="govuk-error-message"
+<p id="example-error-message-error"
+   class="govuk-error-message"
 >
   Please select an option
-</span>
+</p>
 `;
