@@ -136,8 +136,9 @@
   }
 
   .govuk-footer__heading {
-    @include govuk-responsive-margin(7, "bottom");
+    margin-bottom: govuk-spacing(6);
     padding-bottom: govuk-spacing(4);
+
     @include govuk-media-query ($until: tablet) {
       padding-bottom: govuk-spacing(2);
     }
