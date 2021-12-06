@@ -54,9 +54,10 @@
     </a>
     {% endif %}
     {% if params.navigation %}
-    <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="{{ params.menuButtonLabel | default('Show or hide navigation menu') }}">Menu</button>
-    <nav>
-      <ul id="navigation" class="govuk-header__navigation {{ params.navigationClasses if params.navigationClasses }}" aria-label="{{ params.navigationLabel | default('Navigation menu') }}">
+    <nav aria-label="{{ params.navigationLabel | default('Menu') }}" class="govuk-header__navigation {{ params.navigationClasses if params.navigationClasses }}">
+      <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="{{ params.menuButtonLabel | default('Show or hide menu') }}">Menu</button>
+
+      <ul id="navigation" class="govuk-header__navigation-list">
         {% for item in params.navigation %}
           {% if item.text or item.html %}
             <li class="govuk-header__navigation-item{{ ' govuk-header__navigation-item--active' if item.active }}">

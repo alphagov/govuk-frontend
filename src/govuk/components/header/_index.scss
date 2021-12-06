@@ -206,14 +206,16 @@
   }
 
   .govuk-header__navigation {
-    display: block;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-
     @include govuk-media-query ($from: desktop) {
       margin-bottom: govuk-spacing(2);
     }
+  }
+
+  .govuk-header__navigation-list {
+    // Reset user-agent default list styles
+    margin: 0;
+    padding: 0;
+    list-style: none;
   }
 
   .js-enabled {
@@ -224,14 +226,14 @@
       }
     }
 
-    .govuk-header__navigation {
+    .govuk-header__navigation-list {
       display: none;
       @include govuk-media-query ($from: desktop) {
         display: block;
       }
     }
 
-    .govuk-header__navigation--open {
+    .govuk-header__navigation-list--open {
       display: block;
     }
   }

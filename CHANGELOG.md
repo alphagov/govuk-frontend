@@ -63,6 +63,21 @@ Do not include an empty `<span class="govuk-summary-list__actions"></span>` with
 
 This change was introduced in [pull request #2323: Avoid invalid nesting of `<span>` within a `<dd>` in summary list](https://github.com/alphagov/govuk-frontend/pull/2323). Thanks to [Malcolm Hire]( https://github.com/malcolmhire) for reporting this issue.
 
+#### Update the HTML for navigation in the header
+
+We've updated the HTML for the header. This update only affects you if your header includes navigation.
+
+Any additional classes passed using the `navigationClasses` Nunjucks option are now applied to the `<nav>` rather than the `<ul>`. Check that the additional classes are still doing what you expect.
+
+If you're not using Nunjucks macros, then you should move:
+
+- the `<button>` inside the `<nav>`, immediately before the `<ul>`
+- the `aria-label` from the `<ul>` to the `<nav>`
+
+Check your changes against the [header example in the Design System](https://design-system.service.gov.uk/components/header/#header-with-service-name-and-navigation).
+
+This change was introduced in [pull request #2427: Improve the screen reader experience for the header menu](https://github.com/alphagov/govuk-frontend/pull/2427).
+
 #### Make sure components that conditionally reveal other questions still work as expected
 
 On radios and checkboxes, the JavaScript now looks within the whole page for conditionally revealed content. Before, it only looked within the same set of radios or checkboxes.
