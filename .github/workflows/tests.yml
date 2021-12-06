@@ -2,10 +2,14 @@ name: Tests
 
 on: [push, pull_request]
 
+env:
+  NPM_TOKEN: none  # needed for npm@6
+
 jobs:
   run-tests:
     name: Run tests
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2

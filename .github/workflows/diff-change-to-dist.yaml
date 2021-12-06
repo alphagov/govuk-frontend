@@ -4,6 +4,9 @@ on:
   pull_request:
     paths: ['dist/**']
 
+env:
+  NPM_TOKEN: none  # needed for npm@6
+
 jobs:
   generate-diff:
     name: Generate Diff

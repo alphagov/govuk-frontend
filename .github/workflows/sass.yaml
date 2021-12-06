@@ -2,6 +2,9 @@ name: Sass
 
 on: [push, pull_request]
 
+env:
+  NPM_TOKEN: none  # needed for npm@6
+
 jobs:
   dart-sass:
     name: Dart Sass v1.0.0
