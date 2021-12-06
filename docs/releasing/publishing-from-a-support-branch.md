@@ -114,7 +114,7 @@ Note: Before you go on annual leave, tell the delivery manager who will be looki
 
 1. Check out `support/<CURRENT MAJOR VERSION NUMBER>.x` and pull the latest changes.
 
-2. Sign in to npm (`npm login`), using the npm/govuk-patterns-and-tools team [credentials](https://github.com/alphagov/design-system-team-credentials/tree/main/npm/govuk-patterns-and-tools).
+2. Sign in to npm using the npm/govuk-patterns-and-tools [access token](https://github.com/alphagov/design-system-team-credentials/tree/main/npm/govuk-patterns-and-tools): `export NPM_TOKEN="$(ds-pass npm/govuk-patterns-and-tools/token)"`.
 
 3. Run `npm run publish-release`, which will prompt you to either continue or cancel. Enter `y` to continue.
 
@@ -127,7 +127,7 @@ Note: Before you go on annual leave, tell the delivery manager who will be looki
     - attach the generated ZIP that has been generated at the root of this project
     - publish release
 
-5. Run `npm logout` to sign out from npm.
+5. Run `unset NPM_TOKEN` to log out from npm (do not use `npm logout`, as this will revoke the token).
 
 ## After you publish the new release
 
