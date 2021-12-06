@@ -198,6 +198,20 @@ To fix this error, replace any imports of `node_modules/govuk-frontend/govuk/cor
 
 This change was introduced in [pull request #22463: Move template styles from `core` to `objects` layer](https://github.com/alphagov/govuk-frontend/pull/2463).
 
+#### Check your footer displays as expected
+
+We’ve made some fixes to the alignment of columns within the footer component, so they align with our grid. We've also removed the logic that assumes a 2-section layout displays as a 'two-thirds and one-third' layout. Footer sections now display as full-width by default.
+
+If you're using the Nunjucks macros, check your footer displays as expected and use the `width` macro option to set the width you want for each section.
+
+If you're not using the Nunjucks macros, check your footer displays as expected and use the standard Design System grid classes on the `govuk-footer__section` element to set the width. For example:
+
+```html
+<div class="govuk-footer__section govuk-grid-column-two-thirds">...</div>
+```
+
+This change was introduced in [pull request #2462: Fix footer alignment with grid classes and add `width` macro option](https://github.com/alphagov/govuk-frontend/pull/2462).
+
 ### Optional changes
 
 We've recently made some other changes to GOV.UK Frontend. While these are not breaking changes, implementing them will make your service work better.
