@@ -1,4 +1,6 @@
-@include govuk-exports("govuk/core/template") {
+@import "../base";
+
+@include govuk-exports("govuk/objects/template") {
 
   // Applied to the <html> element
   .govuk-template {

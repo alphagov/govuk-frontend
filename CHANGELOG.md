@@ -190,6 +190,14 @@ To fix the error, import `node_modules/govuk-frontend/govuk/base` first. For exa
 
 This change was introduced in [pull request #2455: Remove 'base' import from files in `core` and `overrides` layers](https://github.com/alphagov/govuk-frontend/pull/2455).
 
+#### Import 'template' Sass file from the `objects` layer instead of the `core` layer
+
+If you import the 'template' Sass file from the `core` layer, you might see the error `File to import not found or unreadable: template` when compiling your Sass.
+
+To fix this error, replace any imports of `node_modules/govuk-frontend/govuk/core/template` with `node_modules/govuk-frontend/govuk/objects/template`.
+
+This change was introduced in [pull request #22463: Move template styles from `core` to `objects` layer](https://github.com/alphagov/govuk-frontend/pull/2463).
+
 ### Optional changes
 
 We've recently made some other changes to GOV.UK Frontend. While these are not breaking changes, implementing them will make your service work better.
