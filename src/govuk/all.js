@@ -81,6 +81,7 @@ export {
   Checkboxes,
   ErrorSummary,
   Header,
+  NotificationBanner,
   Radios,
   SkipLink,
   Tabs
