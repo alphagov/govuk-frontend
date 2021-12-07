@@ -53,6 +53,7 @@ describe('GOV.UK Frontend', () => {
         'ErrorSummary',
         'Header',
         'Radios',
+        'SkipLink',
         'Tabs'
       ])
     })
