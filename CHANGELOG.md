@@ -17,7 +17,7 @@ You should check that your accordions still display as expected if you:
 
 You do not need to make changes to the content that accordions hide or show - this release's changes do not affect it.
 
-These changes were introduced in [pull request #2257: Update accordion design](https://github.com/alphagov/govuk-frontend/pull/2257).
+These changes were introduced in [pull request #2257: Update accordion design](https://github.com/alphagov/govuk-frontend/pull/2257). Thanks to [Mia Allers](https://github.com/mia-allers-gds), [Owen Jones](https://github.com/owenatgov), [Nikin Nagewadia](https://github.com/nnagewad) and [Chris Yoong](https://github.com/chris-gds) for their contributions.
 
 #### Review and revise the accordion's summary line content
 
