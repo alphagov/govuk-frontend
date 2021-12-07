@@ -30,6 +30,10 @@ Select.prototype.init = function () {
   this.$input.setAttribute('aria-autocomplete', 'list')
   this.$input.setAttribute('aria-controls', $module.getAttribute('id') + '-listbox')
 
+  if (this.$module.classList.contains('govuk-select--error')) {
+    this.$input.classList.add('govuk-input--error')
+  }
+
   this.$input.addEventListener('click', this.handleInputClick.bind(this))
   this.$input.addEventListener('keydown', this.handleInputKeyDown.bind(this))
   this.$input.addEventListener('input', this.handleInputInput.bind(this))
