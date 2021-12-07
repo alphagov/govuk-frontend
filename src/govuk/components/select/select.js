@@ -49,6 +49,8 @@ Select.prototype.init = function () {
   this.$wrapper.appendChild($dropDownArrow)
   this.$wrapper.appendChild(this.$ul)
 
+  this.noResultsText = $module.getAttribute('data-no-results') || "No results"
+
   $module.parentNode.insertBefore(this.$wrapper, $module)
   $module.style.display = 'none'
   $module.setAttribute('id', $module.getAttribute('id') + '-select')
@@ -119,7 +121,7 @@ Select.prototype.updateSuggestionsWithOptions = function (options) {
 Select.prototype.displayNoSuggestionsFound = function () {
   var noResults = document.createElement('li')
   noResults.setAttribute('class', 'govuk-select__option govuk-select__option--no-results')
-  noResults.textContent = 'No results'
+  noResults.textContent = this.noResultsText
   this.$ul.appendChild(noResults)
 }
 
