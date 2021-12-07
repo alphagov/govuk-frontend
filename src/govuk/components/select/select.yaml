@@ -88,12 +88,12 @@ examples:
           value: 3
           text: GOV.UK frontend option 3
           disabled: true
-  - name: with auto-select
+  - name: with search
     data:
       attributes:
         data-module: govuk-select
-      id: select-1
-      name: select-1
+      id: with-search
+      name: with-search
       label:
         text: Government department
       items:
@@ -223,6 +223,99 @@ examples:
         -
           value: 27
           text: Ofsted
+  - name: with auto-select and a custom no results message
+    data:
+      attributes:
+        data-module: govuk-select
+      id: with-search-and-custom-message
+      name: with-search-and-custom-message
+      label:
+        text: Subject
+      noResults: No subject found – contact support if you need to add a subject
+      items:
+        -
+          value:
+          text:
+        -
+          value: english
+          text: English
+        -
+          value: maths
+          text: Mathematics
+          synonyms:
+            - Maths
+        -
+          value: science
+          text: Science
+        -
+          value: french
+          text: French
+        -
+          value: german
+          text: German
+        -
+          value: geography
+          text: Georgraphy
+        -
+          value: history
+          text: History
+  - name: with search and a hint
+    data:
+      attributes:
+        data-module: govuk-select
+      id: with-search-and-a-hint
+      name: with-search-and-a-hint
+      label:
+        text: Subject
+      hint:
+        text: Select the closest match
+      items:
+        -
+          value:
+          text:
+        -
+          value: english
+          text: English
+        -
+          value: maths
+          text: Mathematics
+          synonyms:
+            - Maths
+        -
+          value: science
+          text: Science
+        -
+          value: french
+          text: French
+        -
+          value: german
+          text: German
+        -
+          value: geography
+          text: Georgraphy
+        -
+          value: history
+          text: History
+  - name: with search and error message
+    data:
+      id: with-search-and-error
+      name: with-search-and-error
+      label:
+        text: Label text goes here
+      errorMessage:
+        text: Error message goes here
+      attributes:
+        data-module: govuk-select
+      items:
+        -
+          value: 1
+          text: GOV.UK frontend option 1
+        -
+          value: 2
+          text: GOV.UK frontend option 2
+        -
+          value: 3
+          text: GOV.UK frontend option 3
   - name: with hint text and error message
     data:
       id: select-2
