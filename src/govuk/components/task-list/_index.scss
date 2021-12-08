@@ -27,8 +27,8 @@
 
   .govuk-task-list__item {
     margin-bottom: 0;
-    padding-top: govuk-spacing(2);
-    padding-bottom: govuk-spacing(2);
+    padding-top: govuk-spacing(3);
+    padding-bottom: govuk-spacing(3);
     border-bottom: 1px solid $govuk-border-colour;
     @include govuk-clearfix;
   }
@@ -46,6 +46,7 @@
 
   .govuk-task-list__hint {
     display: block;
+    margin-top: 5px;
     color: $govuk-secondary-text-colour;
   }
 
