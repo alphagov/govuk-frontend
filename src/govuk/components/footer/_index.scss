@@ -151,7 +151,6 @@
   }
 
   .govuk-footer__section {
-    @include govuk-grid-column('full');
     display: inline-block;
     margin-bottom: $govuk-gutter;
     vertical-align: top;

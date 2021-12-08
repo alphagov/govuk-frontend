@@ -46,6 +46,10 @@ params:
     type: integer
     required: false
     description: Amount of columns to display items in navigation section of the footer.
+  - name: width
+    type: string
+    required: false
+    description: Width of each navigation section in the footer. Defaults to full width. You can pass any design system grid width here, for example, 'one-third'; 'two-thirds'; 'one-half'.
   - name: items
     type: array
     required: false
@@ -160,6 +164,41 @@ examples:
   data:
     meta:
       text: GOV.UK Prototype Kit v7.0.1
+
+- name: with default width navigation (one column)
+  data:
+    navigation:
+      - title: Navigation section
+        items:
+          - href: '#1'
+            text: Navigation item 1
+          - href: '#2'
+            text: Navigation item 2
+          - href: '#3'
+            text: Navigation item 3
+          - href: '#4'
+            text: Navigation item 4
+          - href: '#5'
+            text: Navigation item 5
+          - href: '#6'
+
+- name: with default width navigation (two columns)
+  data:
+    navigation:
+      - title: Navigation section
+        columns: 2
+        items:
+          - href: '#1'
+            text: Navigation item 1
+          - href: '#2'
+            text: Navigation item 2
+          - href: '#3'
+            text: Navigation item 3
+          - href: '#4'
+            text: Navigation item 4
+          - href: '#5'
+            text: Navigation item 5
+          - href: '#6'
 
 - name: with navigation
   data:

@@ -178,6 +178,30 @@ describe('footer', () => {
       const $list = $component.find('ul.govuk-footer__list')
       expect($list.hasClass('govuk-footer__list--columns-2')).toBeTruthy()
     })
+
+    it('renders one-column section full width by default', () => {
+      const $ = render('footer', examples['with default width navigation (one column)'])
+
+      const $component = $('.govuk-footer')
+      const $section = $component.find('.govuk-footer__section')
+      expect($section.hasClass('govuk-grid-column-full')).toBeTruthy()
+    })
+
+    it('renders two-column section full width by default', () => {
+      const $ = render('footer', examples['with default width navigation (two columns)'])
+
+      const $component = $('.govuk-footer')
+      const $section = $component.find('.govuk-footer__section')
+      expect($section.hasClass('govuk-grid-column-full')).toBeTruthy()
+    })
+
+    it('renders section custom width when width specified', () => {
+      const $ = render('footer', examples['with navigation'])
+
+      const $component = $('.govuk-footer')
+      const $section = $component.find('.govuk-footer__section')
+      expect($section.hasClass('govuk-grid-column-two-thirds')).toBeTruthy()
+    })
   })
 
   describe('section break', () => {
