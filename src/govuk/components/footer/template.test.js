@@ -75,15 +75,13 @@ describe('footer', () => {
     it('doesn\'t render footer link list when no items are provided', () => {
       const $ = render('footer', examples['with empty meta items'])
 
-      const $component = $('.govuk-footer')
-      expect($component.find('.govuk-footer__inline-list').length).toEqual(0)
+      expect($('.govuk-footer__inline-list').length).toEqual(0)
     })
 
     it('renders links', () => {
       const $ = render('footer', examples['with meta'])
 
-      const $component = $('.govuk-footer')
-      const $list = $component.find('ul.govuk-footer__inline-list')
+      const $list = $('ul.govuk-footer__inline-list')
       const $items = $list.find('li.govuk-footer__inline-list-item')
       const $firstItem = $items.find('a.govuk-footer__link:first-child')
       expect($items.length).toEqual(3)
@@ -94,24 +92,21 @@ describe('footer', () => {
     it('renders custom meta text', () => {
       const $ = render('footer', examples['with custom meta'])
 
-      const $component = $('.govuk-footer')
-      const $custom = $component.find('.govuk-footer__meta-custom')
+      const $custom = $('.govuk-footer__meta-custom')
       expect($custom.text()).toContain('GOV.UK Prototype Kit v7.0.1')
     })
 
     it('renders custom meta html as text', () => {
       const $ = render('footer', examples['meta html as text'])
 
-      const $component = $('.govuk-footer')
-      const $custom = $component.find('.govuk-footer__meta-custom')
+      const $custom = $('.govuk-footer__meta-custom')
       expect($custom.text()).toContain('GOV.UK Prototype Kit <strong>v7.0.1</strong>')
     })
 
     it('renders custom meta html', () => {
       const $ = render('footer', examples['with meta html'])
 
-      const $component = $('.govuk-footer')
-      const $custom = $component.find('.govuk-footer__meta-custom')
+      const $custom = $('.govuk-footer__meta-custom')
       expect($custom.text()).toContain('GOV.UK Prototype Kit v7.0.1')
     })
 
@@ -135,16 +130,14 @@ describe('footer', () => {
     it('no items displayed when no item array is provided', () => {
       const $ = render('footer', examples['with empty navigation'])
 
-      const $component = $('.govuk-footer')
-      expect($component.find('.govuk-footer__navigation').length).toEqual(0)
+      expect($('.govuk-footer__navigation').length).toEqual(0)
     })
 
     it('renders headings', () => {
       const $ = render('footer', examples['with navigation'])
 
-      const $component = $('.govuk-footer')
-      const $firstSection = $component.find('.govuk-footer__section:first-child')
-      const $lastSection = $component.find('.govuk-footer__section:last-child')
+      const $firstSection = $('.govuk-footer__section:first-child')
+      const $lastSection = $('.govuk-footer__section:last-child')
       const $firstHeading = $firstSection.find('h2.govuk-footer__heading')
       const $lastHeading = $lastSection.find('h2.govuk-footer__heading')
       expect($firstHeading.text()).toEqual('Two column list')
@@ -154,8 +147,7 @@ describe('footer', () => {
     it('renders lists of links', () => {
       const $ = render('footer', examples['with navigation'])
 
-      const $component = $('.govuk-footer')
-      const $list = $component.find('ul.govuk-footer__list')
+      const $list = $('ul.govuk-footer__list')
       const $items = $list.find('li.govuk-footer__list-item')
       const $firstItem = $items.find('a.govuk-footer__link:first-child')
       expect($items.length).toEqual(9)
@@ -174,32 +166,28 @@ describe('footer', () => {
     it('renders lists in columns', () => {
       const $ = render('footer', examples['with navigation'])
 
-      const $component = $('.govuk-footer')
-      const $list = $component.find('ul.govuk-footer__list')
+      const $list = $('ul.govuk-footer__list')
       expect($list.hasClass('govuk-footer__list--columns-2')).toBeTruthy()
     })
 
     it('renders one-column section full width by default', () => {
       const $ = render('footer', examples['with default width navigation (one column)'])
 
-      const $component = $('.govuk-footer')
-      const $section = $component.find('.govuk-footer__section')
+      const $section = $('.govuk-footer__section')
       expect($section.hasClass('govuk-grid-column-full')).toBeTruthy()
     })
 
     it('renders two-column section full width by default', () => {
       const $ = render('footer', examples['with default width navigation (two columns)'])
 
-      const $component = $('.govuk-footer')
-      const $section = $component.find('.govuk-footer__section')
+      const $section = $('.govuk-footer__section')
       expect($section.hasClass('govuk-grid-column-full')).toBeTruthy()
     })
 
     it('renders section custom width when width specified', () => {
       const $ = render('footer', examples['with navigation'])
 
-      const $component = $('.govuk-footer')
-      const $section = $component.find('.govuk-footer__section')
+      const $section = $('.govuk-footer__section')
       expect($section.hasClass('govuk-grid-column-two-thirds')).toBeTruthy()
     })
   })
@@ -208,16 +196,14 @@ describe('footer', () => {
     it('renders when there is a navigation', () => {
       const $ = render('footer', examples['with navigation'])
 
-      const $component = $('.govuk-footer')
-      const $sectionBreak = $component.find('hr.govuk-footer__section-break')
+      const $sectionBreak = $('hr.govuk-footer__section-break')
       expect($sectionBreak.length).toBeTruthy()
     })
 
     it('renders nothing when there is only meta', () => {
       const $ = render('footer', examples['with meta'])
 
-      const $component = $('.govuk-footer')
-      const $sectionBreak = $component.find('hr.govuk-footer__section-break')
+      const $sectionBreak = $('hr.govuk-footer__section-break')
       expect($sectionBreak.length).toBeFalsy()
     })
   })
