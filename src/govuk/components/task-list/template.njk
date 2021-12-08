@@ -20,7 +20,7 @@
           </span>
         {% endif %}
       </span>
-      <span id="{{ statusId }}" class="govuk-task-list__status">
+      <span id="{{ statusId }}" class="govuk-task-list__status {{ item.status.classes }}">
         {{ item.status.text }}
       </span>
     </li>

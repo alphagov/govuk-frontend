@@ -53,45 +53,39 @@
   .govuk-task-list__status {
     margin-top: govuk-spacing(2);
     margin-bottom: govuk-spacing(1);
+    margin-left: govuk-spacing(1);
+    padding: 2px 4px;
     @include govuk-media-query($from: 450px) {
       margin-top: 0;
       margin-bottom: 0;
       float: right;
     }
-  }
 
-  .tag {
-    margin: 0 0 0 10px;
-    padding: 2px 4px;
-  }
-
-  .tag-highlight {
-
-    &__not-started {
-        color: #00703c;
-        background-color: #dbffe5;
+    &--not-started {
+      color: #00703c;
+      background-color: #dbffe5;
     }
 
-    &__in-progress {
-        color: #00396b;
-        background-color: #e7edff;
+    &--in-progress {
+      color: #00396b;
+      background-color: #e7edff;
     }
 
-    &__completed {
-        color: #505a5f;
+    &--completed {
+      color: #505a5f;
     }
 
-    &__incomplete {
-        color: #9f0000;
-        background-color: #ffe7e8 ;
+    &--incomplete {
+      color: #9f0000;
+      background-color: #ffe7e8;
     }
 
-    &__cannot-start-yet {
-        color: #b1b4b6;
+    &--cannot-start-yet {
+      color: #b1b4b6;
     }
 
     &__mono {
-        background-color: #e1e4e6;
+      background-color: #e1e4e6;
     }
   }
 }
