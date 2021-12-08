@@ -9,7 +9,7 @@ const { renderSass } = require('../../lib/jest-helpers')
 
 const baseUrl = 'http://localhost:' + PORT
 
-beforeAll(async (done) => {
+beforeAll(() => {
   // Capture JavaScript errors.
   page.on('pageerror', error => {
     // If the stack trace includes 'all.js' then we want to fail these tests.
@@ -17,7 +17,6 @@ beforeAll(async (done) => {
       throw error
     }
   })
-  done()
 })
 
 describe('GOV.UK Frontend', () => {
