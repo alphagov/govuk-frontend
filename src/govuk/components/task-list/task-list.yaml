@@ -58,18 +58,34 @@ examples:
       idPrefix: "task-list-example"
       items:
         - title:
-            text: Section 1
+            text: Company Directors
+          href: '#'
+          status:
+            text: Completed
+
+        - title:
+            text: Registered company details 
+          href: '#'
+          status:
+              text: Not started
+
+        - title:
+            text: Financial history
           href: '#'
           hint:
-            text: This is a short description of this section
-          status:
-            text: Complete
-        - title:
-            text: Section 2
-          href: '#'
+            text: Include 5 years of the company's relevant financial information.
           status:
             text: Incomplete
+
         - title:
-            text: Section 3
+            text: Business plan
+          href: '#'
+          hint:
+            text: Ensure the plan covers objectives, strategies, sales, marketing and financial forecasts.
           status:
-              text: Cannot start yet
+            text: Not started
+        
+        - title:
+            text: References
+          status:
+            text: Cannot start yet
