@@ -145,26 +145,16 @@
   }
 
   .govuk-footer__navigation {
-    display: flex; // Support: Flexbox
+    @include govuk-clearfix;
     margin-right: -$govuk-gutter-half;
     margin-left: -$govuk-gutter-half;
-    flex-wrap: wrap; // Support: Flexbox
   }
 
   .govuk-footer__section {
+    @include govuk-grid-column('full');
     display: inline-block;
-    margin-right: $govuk-gutter-half;
     margin-bottom: $govuk-gutter;
-    margin-left: $govuk-gutter-half;
     vertical-align: top;
-    // Ensure columns take up equal width (typically one-half:one-half)
-    flex-grow: 1; // Support: Flexbox
-    flex-shrink: 1; // Support: Flexbox
-    @include govuk-media-query ($until: desktop) {
-      // Make sure columns do not drop below 200px in width
-      // Will typically result in wrapping, and end up in a single column on smaller screens.
-      flex-basis: 200px; // Support: Flexbox
-    }
   }
 
   .govuk-footer__list {
