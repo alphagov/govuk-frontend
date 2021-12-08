@@ -53,7 +53,7 @@
     "html5shiv": "^3.7.3",
     "jest": "^27.4.3",
     "jest-axe": "^5.0.1",
-    "jest-puppeteer": "^5.0.4",
+    "jest-puppeteer": "^6.0.2",
     "jest-serializer-html": "^7.0.0",
     "jquery": "1.12.4",
     "js-yaml": "^3.14.0",
