@@ -58,21 +58,20 @@ describe('GOV.UK Frontend', () => {
         'Tabs'
       ])
     })
-    it('exported Components can be initialised', async () => {
+    it('exported Components have an init function', async () => {
       await page.goto(baseUrl + '/', { waitUntil: 'load' })
 
-      const GOVUKFrontendGlobal = await page.evaluate(() => window.GOVUKFrontend)
+      var componentsWithoutInitFunctions = await page.evaluate(() => {
+        var components = Object.keys(window.GOVUKFrontend)
+          .filter(method => method !== 'initAll')
 
-      var components = Object.keys(GOVUKFrontendGlobal).filter(method => method !== 'initAll')
-
-      // Check that all the components on the GOV.UK Frontend global can be initialised
-      components.forEach(component => {
-        page.evaluate(component => {
-          const Component = window.GOVUKFrontend[component]
-          const $module = document.documentElement
-          new Component($module).init()
-        }, component)
+        return components.filter(component => {
+          var prototype = window.GOVUKFrontend[component].prototype
+          return typeof prototype.init !== 'function'
+        })
       })
+
+      expect(componentsWithoutInitFunctions).toEqual([])
     })
     it('can be initialised scoped to certain sections of the page', async () => {
       await page.goto(baseUrl + '/examples/scoped-initialisation', { waitUntil: 'load' })
