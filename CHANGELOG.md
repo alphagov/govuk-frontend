@@ -69,10 +69,12 @@ We've updated the HTML for the header. This update only affects you if your head
 
 Any additional classes passed using the `navigationClasses` Nunjucks option are now applied to the `<nav>` rather than the `<ul>`. Check that the additional classes are still doing what you expect.
 
-If you're not using Nunjucks macros, then you should move:
+If you're not using Nunjucks macros, then you should:
 
-- the `<button>` inside the `<nav>`, immediately before the `<ul>`
-- the `aria-label` from the `<ul>` to the `<nav>`
+- move the `<button>` inside the `<nav>`, immediately before the `<ul>`
+- move the `aria-label` attribute from the `<ul>` to the `<nav>`
+- move the `govuk-header__navigation` class from the `<ul>` to the `<nav>`
+- add the `govuk-header__navigation-list` class to the `<ul>`
 
 Check your changes against the [header example in the Design System](https://design-system.service.gov.uk/components/header/#header-with-service-name-and-navigation).
 
