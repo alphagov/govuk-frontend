@@ -8,9 +8,8 @@ const PORT = configPaths.ports.test
 const baseUrl = 'http://localhost:' + PORT
 
 describe('Header navigation', () => {
-  beforeAll(async (done) => {
+  beforeAll(async () => {
     await page.emulate(iPhone)
-    done()
   })
 
   describe('when JavaScript is unavailable or fails', () => {
