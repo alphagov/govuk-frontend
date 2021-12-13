@@ -91,5 +91,5 @@ export {
   NotificationBanner,
   Radios,
   SkipLink,
-  Tabs,
+  Tabs
 }
