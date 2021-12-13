@@ -60,6 +60,7 @@ describe('@mixin govuk-typography-common', () => {
     expect(resultsString).toContain('font-family: "GDS Transport"')
     expect(resultsString).toContain('font-family: "GDS Transport"')
   })
+
   it('should not output a @font-face declaration when the user has changed their font', async () => {
     const sass = `
     $govuk-font-family: Helvetica, Arial, sans-serif;
@@ -82,6 +83,7 @@ describe('@mixin govuk-typography-common', () => {
     expect(resultsString).not.toContain('font-family: "GDS Transport"')
     expect(resultsString).not.toContain('font-family: "ntatabularnumbers"')
   })
+
   it('should not output a @font-face declaration when the user wants compatibility with GOV.UK Template', async () => {
     const sass = `
     $govuk-compatibility-govuktemplate: true;
@@ -103,6 +105,7 @@ describe('@mixin govuk-typography-common', () => {
     expect(resultsString).toContain('font-family: "nta"')
     expect(resultsString).toContain('font-family: "ntatabularnumbers"')
   })
+
   it('should not output a @font-face declaration when the user has turned off this feature', async () => {
     const sass = `
     $govuk-include-default-font-face: false;
@@ -124,6 +127,7 @@ describe('@mixin govuk-typography-common', () => {
     expect(resultsString).toContain('font-family: "GDS Transport"')
     expect(resultsString).toContain('font-family: "GDS Transport"')
   })
+
   it('should not output a @font-face declaration when the browser is IE8', async () => {
     const sass = `
     $govuk-is-ie8: true;
