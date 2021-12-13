@@ -4,8 +4,6 @@
   $border-bottom-width: govuk-spacing(2);
 
   .govuk-cookie-banner {
-    @include govuk-font($size: 19);
-
     padding-top: govuk-spacing(4);
     // The component does not set bottom spacing.
     // The bottom spacing should be created by the items inside the component.

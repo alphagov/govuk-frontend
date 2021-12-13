@@ -9,11 +9,11 @@ exports[`File upload when it includes a hint renders with hint 1`] = `
 `;
 
 exports[`File upload when it includes an error message renders with error message 1`] = `
-<span id="file-upload-with-error-error"
-      class="govuk-error-message"
+<p id="file-upload-with-error-error"
+   class="govuk-error-message"
 >
   Error message
-</span>
+</p>
 `;
 
 exports[`File upload with dependant components renders with label 1`] = `

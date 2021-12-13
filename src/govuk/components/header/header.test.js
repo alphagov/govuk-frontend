@@ -8,9 +8,8 @@ const PORT = configPaths.ports.test
 const baseUrl = 'http://localhost:' + PORT
 
 describe('Header navigation', () => {
-  beforeAll(async (done) => {
+  beforeAll(async () => {
     await page.emulate(iPhone)
-    done()
   })
 
   describe('when JavaScript is unavailable or fails', () => {
@@ -68,8 +67,8 @@ describe('Header navigation', () => {
       })
 
       it('adds the --open modifier class to the menu, making it visible', async () => {
-        const hasOpenClass = await page.$eval('.govuk-header__navigation',
-          el => el.classList.contains('govuk-header__navigation--open')
+        const hasOpenClass = await page.$eval('.govuk-header__navigation-list',
+          el => el.classList.contains('govuk-header__navigation-list--open')
         )
 
         expect(hasOpenClass).toBeTruthy()
@@ -102,8 +101,8 @@ describe('Header navigation', () => {
       })
 
       it('removes the --open modifier class from the menu, hiding it', async () => {
-        const hasOpenClass = await page.$eval('.govuk-header__navigation',
-          el => el.classList.contains('govuk-header__navigation--open')
+        const hasOpenClass = await page.$eval('.govuk-header__navigation-list',
+          el => el.classList.contains('govuk-header__navigation-list--open')
         )
 
         expect(hasOpenClass).toBeFalsy()

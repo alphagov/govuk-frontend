@@ -76,5 +76,13 @@ describe('Skip link', () => {
       expect($component.attr('data-test')).toEqual('attribute')
       expect($component.attr('aria-label')).toEqual('Skip to content')
     })
+
+    it('renders a data-module attribute to initialise JavaScript', () => {
+      const $ = render('skip-link', examples.default)
+
+      const $component = $('.govuk-skip-link')
+
+      expect($component.attr('data-module')).toEqual('govuk-skip-link')
+    })
   })
 })

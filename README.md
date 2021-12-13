@@ -83,7 +83,12 @@ covers both the codebase and any sample code in the documentation. The
 documentation is &copy; Crown copyright and available under the terms of the
 Open Government 3.0 licence.
 
-## Contribution guidelines
+## Contributing
 
-If you want to help us build GOV.UK Frontend, view our [contribution
-guidelines](CONTRIBUTING.md).
+[To learn how to help us build GOV.UK Frontend, see our contribution guidelines.](https://github.com/alphagov/govuk-frontend/blob/f07569c9e7724606970c0d2764f1e9ce7fa14092/CONTRIBUTING.md)
+
+The govuk-frontend repository is public and we welcome contributions from anyone.
+
+Contributors to alphagov repositories are expected to follow the [Contributor Covenant Code of Conduct](https://github.com/alphagov/.github/blob/main/CODE_OF_CONDUCT.md#contributor-covenant-code-of-conduct). Contributors working within government are also expected to follow the [Civil Service code](https://www.gov.uk/government/publications/civil-service-code/the-civil-service-code).
+
+We're unable to monitor activity on this repository outside of our office hours (10am to 4pm, UK time). To get a faster response at other times, you can [report abuse or spam to GitHub](https://docs.github.com/en/communities/maintaining-your-safety-on-github/reporting-abuse-or-spam).

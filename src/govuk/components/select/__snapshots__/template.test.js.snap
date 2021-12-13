@@ -9,11 +9,11 @@ exports[`Select when it includes a hint renders the hint 1`] = `
 `;
 
 exports[`Select when it includes an error message renders with error message 1`] = `
-<span id="select-with-error-error"
-      class="govuk-error-message"
+<p id="select-with-error-error"
+   class="govuk-error-message"
 >
   Error message
-</span>
+</p>
 `;
 
 exports[`Select with dependant components renders with label 1`] = `

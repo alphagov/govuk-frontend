@@ -55,9 +55,9 @@ exports[`Checkboxes when they include a hint renders the hint 1`] = `
 `;
 
 exports[`Checkboxes when they include an error message renders the error message 1`] = `
-<span id="waste-error"
-      class="govuk-error-message"
+<p id="waste-error"
+   class="govuk-error-message"
 >
   Please select an option
-</span>
+</p>
 `;
