@@ -9,11 +9,6 @@ const sassConfig = {
 }
 
 const sassBootstrap = `
-  @import "settings/compatibility";
-  @import "settings/media-queries";
-  @import "settings/ie8";
-  @import "settings/typography-responsive";
-
   $govuk-breakpoints: (
     desktop: 30em
   );
@@ -41,8 +36,7 @@ const sassBootstrap = `
     )
   );
 
-  @import "helpers/media-queries";
-  @import "helpers/typography";`
+  @import "base";`
 
 describe('@mixin govuk-typography-common', () => {
   it('should output a @font-face declaration by default', async () => {
@@ -417,6 +411,162 @@ describe('@mixin govuk-typography-responsive', () => {
             .foo {
               font-size: 14px;
               line-height: 1.42857; } }`)
+    })
+  })
+
+  describe('@mixin govuk-font', () => {
+    it('outputs all required typographic CSS properties', async () => {
+      const sass = `
+      // Avoid font face being output in tests
+      $govuk-include-default-font-face: false;
+      ${sassBootstrap}
+
+      .foo {
+        @include govuk-font($size: 14)
+      }`
+
+      const results = await renderSass({ data: sass, ...sassConfig })
+
+      expect(results.css.toString().trim()).toBe(outdent`
+        .foo {
+          font-family: "GDS Transport", arial, sans-serif;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+          font-weight: 400;
+          font-size: 12px;
+          font-size: 0.75rem;
+          line-height: 1.25; }
+          @media print {
+            .foo {
+              font-family: sans-serif; } }
+          @media (min-width: 30em) {
+            .foo {
+              font-size: 14px;
+              font-size: 0.875rem;
+              line-height: 1.42857; } }`)
+    })
+
+    it('enables tabular numbers opentype feature flags if $tabular: true', async () => {
+      const sass = `
+      ${sassBootstrap}
+
+      .foo {
+        @include govuk-font($size: 14, $tabular: true)
+      }`
+
+      const results = await renderSass({ data: sass, ...sassConfig })
+      const css = results.css.toString()
+
+      expect(css).toContain('font-feature-settings: "tnum" 1;')
+      expect(css).toContain(outdent`
+      ${outdent}
+        @supports (font-variant-numeric: tabular-nums) {
+          .foo {
+            font-feature-settings: normal;
+            font-variant-numeric: tabular-nums; } }`)
+    })
+
+    it('uses the tabular font instead if defined and $tabular: true', async () => {
+      const sass = `
+      $govuk-font-family-tabular: "ntatabularnumbers";
+      ${sassBootstrap}
+
+      .foo {
+        @include govuk-font($size: 14, $tabular: true)
+      }`
+
+      const results = await renderSass({ data: sass, ...sassConfig })
+      const css = results.css.toString()
+
+      expect(css).toContain('font-family: "ntatabularnumbers"')
+      expect(css).not.toContain('font-feature-settings')
+    })
+
+    it('sets font-size based on $size', async () => {
+      const sass = `
+      ${sassBootstrap}
+
+      .foo {
+        @include govuk-font($size: 12)
+      }`
+
+      const results = await renderSass({ data: sass, ...sassConfig })
+
+      expect(results.css.toString()).toContain('font-size: 12px')
+      expect(results.css.toString()).not.toContain('font-size: 14px')
+    })
+
+    it('does not output font-size if $size: false', async () => {
+      const sass = `
+      ${sassBootstrap}
+
+      .foo {
+        @include govuk-font($size: false)
+      }`
+
+      const results = await renderSass({ data: sass, ...sassConfig })
+
+      expect(results.css.toString()).not.toContain('font-size')
+    })
+
+    it('sets font-weight based on $weight', async () => {
+      const sass = `
+      // Avoid font face being output in tests
+      $govuk-include-default-font-face: false;
+      ${sassBootstrap}
+
+      .foo {
+        @include govuk-font($size: 14, $weight: bold)
+      }`
+
+      const results = await renderSass({ data: sass, ...sassConfig })
+
+      expect(results.css.toString()).toContain('font-weight: 700')
+    })
+
+    it('does not output font-weight if $weight: false', async () => {
+      const sass = `
+      // Avoid font face being output in tests
+      $govuk-include-default-font-face: false;
+      ${sassBootstrap}
+
+      .foo {
+        @include govuk-font($size: 14, $weight: false)
+      }`
+
+      const results = await renderSass({ data: sass, ...sassConfig })
+
+      expect(results.css.toString()).not.toContain('font-weight')
+    })
+
+    it('ignores undefined font-weights', async () => {
+      const sass = `
+      // Avoid font face being output in tests
+      $govuk-include-default-font-face: false;
+      ${sassBootstrap}
+
+      .foo {
+        @include govuk-font($size: 14, $weight: superdupermegabold)
+      }`
+
+      const results = await renderSass({ data: sass, ...sassConfig })
+
+      expect(results.css.toString()).not.toContain('font-weight')
+    })
+
+    it('sets line-height based on $line-height', async () => {
+      const sass = `
+      // Avoid font face being output in tests
+      $govuk-include-default-font-face: false;
+      ${sassBootstrap}
+
+      .foo {
+        @include govuk-font($size: 14, $line-height: 1.337)
+      }`
+
+      const results = await renderSass({ data: sass, ...sassConfig })
+
+      expect(results.css.toString()).toContain('line-height: 1.337;')
     })
   })
 })
