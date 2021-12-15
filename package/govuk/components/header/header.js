@@ -1,7 +1,7 @@
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-	typeof define === 'function' && define.amd ? define('GOVUKFrontend', factory) :
-	(global.GOVUKFrontend = factory());
+	typeof define === 'function' && define.amd ? define('GOVUKFrontend.Header', factory) :
+	(global.GOVUKFrontend = global.GOVUKFrontend || {}, global.GOVUKFrontend.Header = factory());
 }(this, (function () { 'use strict';
 
 (function(undefined) {
@@ -1033,7 +1033,7 @@ Header.prototype.init = function () {
     return
   }
 
-  this.syncState(this.$menu.classList.contains('govuk-header__navigation--open'));
+  this.syncState(this.$menu.classList.contains('govuk-header__navigation-list--open'));
   this.$menuButton.addEventListener('click', this.handleMenuButtonClick.bind(this));
 };
 
@@ -1057,7 +1057,7 @@ Header.prototype.syncState = function (isVisible) {
  * sync the accessibility state and menu button state
  */
 Header.prototype.handleMenuButtonClick = function () {
-  var isVisible = this.$menu.classList.toggle('govuk-header__navigation--open');
+  var isVisible = this.$menu.classList.toggle('govuk-header__navigation-list--open');
   this.syncState(isVisible);
 };
 

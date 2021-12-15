@@ -43,7 +43,7 @@
                     "text": "Error message goes here"
                 }
             },
-            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  <label class=\"govuk-label\" for=\"input-with-error-message\">\n    National Insurance number\n  </label>\n\n  \n  \n  <div id=\"input-with-error-message-hint\" class=\"govuk-hint\">\n    It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.\n  </div>\n\n\n  \n  \n  <span id=\"input-with-error-message-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message goes here\n  </span>\n<input class=\"govuk-input govuk-input--error\" id=\"input-with-error-message\" name=\"test-name-3\" type=\"text\" aria-describedby=\"input-with-error-message-hint input-with-error-message-error\">\n</div>",
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  <label class=\"govuk-label\" for=\"input-with-error-message\">\n    National Insurance number\n  </label>\n\n  \n  \n  <div id=\"input-with-error-message-hint\" class=\"govuk-hint\">\n    It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.\n  </div>\n\n\n  \n  \n  <p id=\"input-with-error-message-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message goes here\n  </p>\n<input class=\"govuk-input govuk-input--error\" id=\"input-with-error-message\" name=\"test-name-3\" type=\"text\" aria-describedby=\"input-with-error-message-hint input-with-error-message-error\">\n</div>",
             "hidden": false
         },
         {
@@ -325,7 +325,7 @@
                     "text": "Error message goes here"
                 }
             },
-            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  <label class=\"govuk-label\" for=\"input-with-prefix-suffix\">\n    Cost per item, in pounds\n  </label>\n\n\n  \n  \n  <span id=\"input-with-prefix-suffix-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message goes here\n  </span>\n<div class=\"govuk-input__wrapper\">\n    <div class=\"govuk-input__prefix\" aria-hidden=\"true\">£</div>\n  <input class=\"govuk-input govuk-input--error\" id=\"input-with-prefix-suffix\" name=\"cost\" type=\"text\" aria-describedby=\"input-with-prefix-suffix-error\">\n    <div class=\"govuk-input__suffix\" aria-hidden=\"true\">per item</div>\n  </div>\n</div>",
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  <label class=\"govuk-label\" for=\"input-with-prefix-suffix\">\n    Cost per item, in pounds\n  </label>\n\n\n  \n  \n  <p id=\"input-with-prefix-suffix-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message goes here\n  </p>\n<div class=\"govuk-input__wrapper\">\n    <div class=\"govuk-input__prefix\" aria-hidden=\"true\">£</div>\n  <input class=\"govuk-input govuk-input--error\" id=\"input-with-prefix-suffix\" name=\"cost\" type=\"text\" aria-describedby=\"input-with-prefix-suffix-error\">\n    <div class=\"govuk-input__suffix\" aria-hidden=\"true\">per item</div>\n  </div>\n</div>",
             "hidden": false
         },
         {
@@ -443,7 +443,7 @@
                     "text": "Error message"
                 }
             },
-            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  <label class=\"govuk-label\" for=\"with-error-describedby\">\n    With error describedBy\n  </label>\n\n\n  \n  \n  <span id=\"with-error-describedby-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message\n  </span>\n<input class=\"govuk-input govuk-input--error\" id=\"with-error-describedby\" name=\"with-error-describedby\" type=\"text\" aria-describedby=\"some-id with-error-describedby-error\">\n</div>",
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  <label class=\"govuk-label\" for=\"with-error-describedby\">\n    With error describedBy\n  </label>\n\n\n  \n  \n  <p id=\"with-error-describedby-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message\n  </p>\n<input class=\"govuk-input govuk-input--error\" id=\"with-error-describedby\" name=\"with-error-describedby\" type=\"text\" aria-describedby=\"some-id with-error-describedby-error\">\n</div>",
             "hidden": true
         },
         {
@@ -461,7 +461,7 @@
                     "text": "Hint"
                 }
             },
-            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  <label class=\"govuk-label\" for=\"with-error-hint\">\n    With error and hint\n  </label>\n\n  \n  \n  <div id=\"with-error-hint-hint\" class=\"govuk-hint\">\n    Hint\n  </div>\n\n\n  \n  \n  <span id=\"with-error-hint-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message\n  </span>\n<input class=\"govuk-input govuk-input--error\" id=\"with-error-hint\" name=\"with-error-hint\" type=\"text\" aria-describedby=\"with-error-hint-hint with-error-hint-error\">\n</div>",
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  <label class=\"govuk-label\" for=\"with-error-hint\">\n    With error and hint\n  </label>\n\n  \n  \n  <div id=\"with-error-hint-hint\" class=\"govuk-hint\">\n    Hint\n  </div>\n\n\n  \n  \n  <p id=\"with-error-hint-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message\n  </p>\n<input class=\"govuk-input govuk-input--error\" id=\"with-error-hint\" name=\"with-error-hint\" type=\"text\" aria-describedby=\"with-error-hint-hint with-error-hint-error\">\n</div>",
             "hidden": true
         },
         {
@@ -480,7 +480,7 @@
                 },
                 "describedBy": "some-id"
             },
-            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  <label class=\"govuk-label\" for=\"with-error-hint-describedby\">\n    With error, hint and describedBy\n  </label>\n\n  \n  \n  <div id=\"with-error-hint-describedby-hint\" class=\"govuk-hint\">\n    Hint\n  </div>\n\n\n  \n  \n  <span id=\"with-error-hint-describedby-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message\n  </span>\n<input class=\"govuk-input govuk-input--error\" id=\"with-error-hint-describedby\" name=\"with-error-hint-describedby\" type=\"text\" aria-describedby=\"some-id with-error-hint-describedby-hint with-error-hint-describedby-error\">\n</div>",
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  <label class=\"govuk-label\" for=\"with-error-hint-describedby\">\n    With error, hint and describedBy\n  </label>\n\n  \n  \n  <div id=\"with-error-hint-describedby-hint\" class=\"govuk-hint\">\n    Hint\n  </div>\n\n\n  \n  \n  <p id=\"with-error-hint-describedby-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message\n  </p>\n<input class=\"govuk-input govuk-input--error\" id=\"with-error-hint-describedby\" name=\"with-error-hint-describedby\" type=\"text\" aria-describedby=\"some-id with-error-hint-describedby-hint with-error-hint-describedby-error\">\n</div>",
             "hidden": true
         },
         {

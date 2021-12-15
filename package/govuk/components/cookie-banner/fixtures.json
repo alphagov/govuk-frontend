@@ -124,6 +124,37 @@
             "hidden": false
         },
         {
+            "name": "with html",
+            "options": {
+                "messages": [
+                    {
+                        "headingHtml": "Cookies on <span>my service</span>",
+                        "html": "<p class=\"govuk-body\">We use cookies in <span>our service</span>.</p><p class=\"govuk-body\">We’d like to use analytics cookies so we can understand how you use the Design System and make improvements.</p>",
+                        "actions": [
+                            {
+                                "text": "Accept analytics cookies",
+                                "type": "submit",
+                                "name": "cookies",
+                                "value": "accept"
+                            },
+                            {
+                                "text": "Reject analytics cookies",
+                                "type": "submit",
+                                "name": "cookies",
+                                "value": "reject"
+                            },
+                            {
+                                "text": "View cookie preferences",
+                                "href": "/cookie-preferences"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "html": "<div class=\"govuk-cookie-banner \" data-nosnippet role=\"region\" aria-label=\"Cookie banner\">\n    \n    \n\n    <div class=\"govuk-cookie-banner__message govuk-width-container\"\n    >\n\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n        \n        <h2 class=\"govuk-cookie-banner__heading govuk-heading-m\">Cookies on <span>my service</span></h2>\n        \n\n        <div class=\"govuk-cookie-banner__content\"><p class=\"govuk-body\">We use cookies in <span>our service</span>.</p><p class=\"govuk-body\">We’d like to use analytics cookies so we can understand how you use the Design System and make improvements.</p></div>\n      </div>\n    </div>\n\n      \n      <div class=\"govuk-button-group\">\n        \n          \n            <button value=\"accept\" type=\"submit\" name=\"cookies\" class=\"govuk-button\" data-module=\"govuk-button\">\n              Accept analytics cookies\n            </button>\n          \n        \n          \n            <button value=\"reject\" type=\"submit\" name=\"cookies\" class=\"govuk-button\" data-module=\"govuk-button\">\n              Reject analytics cookies\n            </button>\n          \n        \n          \n            \n              \n              \n              <a class=\"govuk-link\" href=\"/cookie-preferences\">View cookie preferences</a>\n            \n          \n        \n      </div>\n      \n    </div>\n  \n</div>",
+            "hidden": false
+        },
+        {
             "name": "heading html",
             "options": {
                 "messages": [

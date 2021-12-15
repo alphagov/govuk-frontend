@@ -24,7 +24,7 @@
     &:before {
       @include govuk-text-colour;
       content: "\2014 "; // "— "
-      margin-left: - govuk-spacing(5);
+      margin-left: govuk-spacing(-5);
       padding-right: govuk-spacing(1);
     }
   }
@@ -77,7 +77,7 @@
 
         position: relative;
 
-        margin-top: - govuk-spacing(1);
+        margin-top: govuk-spacing(-1);
 
         // Compensation for border (otherwise we get a shift)
         margin-bottom: -$border-width;

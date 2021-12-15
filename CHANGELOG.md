@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 4.0.0 (Breaking release)
+
 ### Breaking changes
 This release contains a lot of breaking changes, but we expect many of them will only affect a small number of users. However, to make sure your service still works after you upgrade, you should read the release notes and make any required changes.
 

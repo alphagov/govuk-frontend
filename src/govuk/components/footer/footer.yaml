@@ -181,6 +181,7 @@ examples:
           - href: '#5'
             text: Navigation item 5
           - href: '#6'
+            text: Navigation item 6
 
 - name: with default width navigation (two columns)
   data:
@@ -199,6 +200,7 @@ examples:
           - href: '#5'
             text: Navigation item 5
           - href: '#6'
+            text: Navigation item 6
 
 - name: with navigation
   data:
