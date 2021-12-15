@@ -13,9 +13,9 @@
             "name": "inactive",
             "options": {
                 "text": "alpha",
-                "classes": "govuk-tag--inactive"
+                "classes": "govuk-tag--grey"
             },
-            "html": "<strong class=\"govuk-tag govuk-tag--inactive\">\n  alpha\n</strong>",
+            "html": "<strong class=\"govuk-tag govuk-tag--grey\">\n  alpha\n</strong>",
             "hidden": false
         },
         {

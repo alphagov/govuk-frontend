@@ -3,6 +3,7 @@
     @include govuk-font($size: 19, $weight: bold);
 
     display: block;
+    margin-top: 0; // Reset any default browser margins for paragraphs
     margin-bottom: govuk-spacing(3);
     clear: both;
 

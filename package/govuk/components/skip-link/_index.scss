@@ -33,4 +33,17 @@
       }
     }
   }
+
+  .govuk-skip-link-focused-element {
+    &:focus {
+      // Remove the native visible focus indicator when the element is programmatically focused.
+      //
+      // We set the focus on the linked element (this is usually the <main> element) when the skip
+      // link is activated to improve screen reader announcements. However, we remove the visible
+      // focus indicator from the linked element because the user cannot interact with it.
+      //
+      // A related discussion: https://github.com/w3c/wcag/issues/1001
+      outline: none;
+    }
+  }
 }

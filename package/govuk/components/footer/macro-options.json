@@ -70,6 +70,12 @@
                 "description": "Amount of columns to display items in navigation section of the footer."
             },
             {
+                "name": "width",
+                "type": "string",
+                "required": false,
+                "description": "Width of each navigation section in the footer. Defaults to full width. You can pass any design system grid width here, for example, 'one-third'; 'two-thirds'; 'one-half'."
+            },
+            {
                 "name": "items",
                 "type": "array",
                 "required": false,
