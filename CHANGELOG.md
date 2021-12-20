@@ -95,7 +95,7 @@ This change was introduced in [pull request #2450: Set focus to skip link target
 
 #### Update the HTML for error messages
 
-We’ve updated the HTML for the error message component to use a `<paragraph>` element instead of a `<span>` element, as this is more semantically correct.
+We’ve updated the HTML for the error message component to use a `<p>` element instead of a `<span>` element, as this is more semantically correct.
 
 If you’re not using Nunjucks macros, swap the `<span class="govuk-error-message">` for a `<p class="govuk-error-message">`.
 
