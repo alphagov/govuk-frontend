@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Fixes
+
+- [#2475: Tweak whitespace in input component HTML for improved readability](https://github.com/alphagov/govuk-frontend/pull/2475)
+
 ## 4.0.0 (Breaking release)
 
 ### Breaking changes
