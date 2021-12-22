@@ -16,6 +16,11 @@ const oldie = require('oldie')({
   unmq: { disable: true },
   pseudo: { disable: true }
 })
+const postcsspseudoclasses = require('postcss-pseudo-classes')({
+  // Work around a bug in pseudo classes plugin that badly transforms
+  // :not(:whatever) pseudo selectors
+  blacklist: [':not(', ':disabled)', ':last-child)', ':focus)', ':active)', ':hover)']
+})
 
 const taskArguments = require('./task-arguments')
 const configPaths = require('../config/paths.json')
@@ -25,29 +30,78 @@ if (destination === "dist") {
   compileDist()
 }
 
-function compilePublic() {
+if (destination === "public") {
+  compilePublic()
+}
 
+function compilePublic() {
+  // Compile styles
+  compileStyles({
+    filePath: configPaths.app + 'assets/scss/app.scss',
+    isDist: false
+  })
+
+  // Compile IE styles
+  compileIEStyles({
+    filePath: configPaths.app + 'assets/scss/app-ie8.scss',
+    isDist: false
+  })
 }
 
 async function compileDist() {
   // Fetch package.json version to update VERSION.txt and append to filenames
   const packageJson = require('../' + configPaths.package + 'package.json')
+
+  // Update VERSION.txt
   fs.writeFileSync(taskArguments.destination + '/VERSION.txt', packageJson.version + '\r\n')
 
   // Compile styles
-  const stylesheet = configPaths.src + 'all.scss'
+  compileStyles({
+    filePath: configPaths.src + 'all.scss',
+    isDist: true,
+    version: packageJson.version
+  })
+
+  // Compile IE styles
+  compileIEStyles({
+    filePath: configPaths.src + 'all-ie8.scss',
+    isDist: true,
+    version: packageJson.version
+  })
+
+  // Compile all.js
+  compileAllJS()
+}
+
+function compilePackage() {
+
+}
+
+function compileStyles({ filePath, isDist, version }) {
+  // Compile styles
+  const stylesheet = filePath
 
   const css = sass.renderSync({
     file: stylesheet
   });
 
-  postcss([ autoprefixer, cssnano ]).process(css.css).then(result => {
+  const postcssPlugins = isDist ? [ autoprefixer, cssnano ] : [ autoprefixer, postcsspseudoclasses ]
+
+  postcss(postcssPlugins).process(css.css).then(result => {
     if (result) {
       result.warnings().forEach(warn => {
         console.warn(warn.toString())
       })
 
-      fs.writeFile(taskArguments.destination + '/govuk-frontend-' + packageJson.version + '.min.css', result.css, err => {
+      const filename = isDist ? '/govuk-frontend-' + version + '.min.css' : '/app.css'
+
+      // Create the directory if it doesn't already exist
+      if (!fs.existsSync(taskArguments.destination)) {
+        fs.mkdirSync(taskArguments.destination);
+      }
+
+      // Write the compiled styles to a file in the chosen directory
+      fs.writeFile(taskArguments.destination + filename, result.css, err => {
         if (err) {
           console.error(err)
           return
@@ -55,21 +109,33 @@ async function compileDist() {
       })
     }
   })
+}
 
+function compileIEStyles({ filePath, isDist, version }) {
   // Compile old IE styles
-  const IeStylesheet = configPaths.src + 'all-ie8.scss'
+  const IeStylesheet = filePath
 
   const IeCss = sass.renderSync({
     file: IeStylesheet
   });
 
-  postcss([ autoprefixer, cssnano, oldie]).process(IeCss.css).then(result => {
+  const postcssPlugins = isDist ? [ autoprefixer, cssnano, oldie] : [ autoprefixer, oldie]
+
+  postcss(postcssPlugins).process(IeCss.css).then(result => {
     if (result) {
       result.warnings().forEach(warn => {
         console.warn(warn.toString())
       })
 
-      fs.writeFile(taskArguments.destination + '/govuk-frontend-ie8-' + packageJson.version + '.min.css', result.css, err => {
+      const filename = isDist ? '/govuk-frontend-ie8-' + version + '.min.css' : '/app-ie8.css'
+
+      // Create the directory if it doesn't already exist
+      if (!fs.existsSync(taskArguments.destination)) {
+        fs.mkdirSync(taskArguments.destination);
+      }
+
+      // Write the compiled styles to a file in the chosen directory
+      fs.writeFile(taskArguments.destination + filename, result.css, err => {
         if (err) {
           console.error(err)
           return
@@ -77,7 +143,9 @@ async function compileDist() {
       })
     }
   })
+}
 
+function compileAllJS() {
   // Compile JS
   const js = configPaths.src + 'all.js'
 
@@ -105,9 +173,4 @@ async function compileDist() {
       return
     }
   })
-
-}
-
-function compilePackage() {
-
 }
