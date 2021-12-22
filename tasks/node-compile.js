@@ -27,6 +27,10 @@ function compilePublic() {
 }
 
 function compileDist() {
+  // Fetch package.json version to update VERSION.txt and append to filenames
+  const packageJson = require('../' + configPaths.package + 'package.json')
+  fs.writeFileSync(taskArguments.destination + '/VERSION.txt', packageJson.version + '\r\n')
+
   // Compile styles
   const stylesheet = configPaths.src + 'all.scss'
 
@@ -40,7 +44,7 @@ function compileDist() {
         console.warn(warn.toString())
       })
 
-      fs.writeFile(taskArguments.destination + '/govuk-frontend.min.css', result.css, err => {
+      fs.writeFile(taskArguments.destination + '/govuk-frontend-' + packageJson.version + '.min.css', result.css, err => {
         if (err) {
           console.error(err)
           return
@@ -62,7 +66,7 @@ function compileDist() {
         console.warn(warn.toString())
       })
 
-      fs.writeFile(taskArguments.destination + '/govuk-frontend-ie8.min.css', result.css, err => {
+      fs.writeFile(taskArguments.destination + '/govuk-frontend-ie8-' + packageJson.version + '.min.css', result.css, err => {
         if (err) {
           console.error(err)
           return
