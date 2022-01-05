@@ -2,9 +2,18 @@
 
 ## Unreleased
 
+### Recommended changes
+
+#### Remove the tabindex attribute from the Error Summary component
+
+If you're not using Nunjucks macros, remove the `tabindex` attribute from the HTML for the Error Summary component. This attribute is now added and removed by the JavaScript.
+
+This change was introduced in [#2491: Prevent error summary from being re-focused after it has been initially focused on page load](https://github.com/alphagov/govuk-frontend/pull/2491).
+
 ### Fixes
 
 - [#2475: Tweak whitespace in input component HTML for improved readability](https://github.com/alphagov/govuk-frontend/pull/2475)
+- [#2491: Prevent error summary from being re-focused after it has been initially focused on page load](https://github.com/alphagov/govuk-frontend/pull/2491)
 
 ## 4.0.0 (Breaking release)
 
