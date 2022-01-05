@@ -13,6 +13,15 @@ describe('Error Summary', () => {
     expect(moduleName).toBe('govuk-error-summary')
   })
 
+  it('removes the tabindex attribute on blur', async () => {
+    await page.goto(baseUrl + '/components/error-summary/preview', { waitUntil: 'load' })
+
+    await page.$eval('.govuk-error-summary', el => el.blur())
+
+    const tabindex = await page.$eval('.govuk-error-summary', el => el.getAttribute('tabindex'))
+    expect(tabindex).toBeNull()
+  })
+
   const inputTypes = [
     // [description, input id, selector for label or legend]
     ['an input', 'input', 'label[for="input"]'],
