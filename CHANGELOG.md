@@ -14,6 +14,7 @@ This change was introduced in [#2491: Prevent error summary from being re-focuse
 
 - [#2475: Tweak whitespace in input component HTML for improved readability](https://github.com/alphagov/govuk-frontend/pull/2475)
 - [#2491: Prevent error summary from being re-focused after it has been initially focused on page load](https://github.com/alphagov/govuk-frontend/pull/2491)
+- [#2494: Allow disabling autofocus on error summary](https://github.com/alphagov/govuk-frontend/pull/2494)
 
 ## 4.0.0 (Breaking release)
 
