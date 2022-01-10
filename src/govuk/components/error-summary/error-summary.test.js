@@ -6,6 +6,13 @@ const PORT = configPaths.ports.test
 const baseUrl = 'http://localhost:' + PORT
 
 describe('Error Summary', () => {
+  it('adds the tabindex attribute on page load', async () => {
+    await page.goto(baseUrl + '/components/error-summary/preview', { waitUntil: 'load' })
+
+    const tabindex = await page.$eval('.govuk-error-summary', el => el.getAttribute('tabindex'))
+    expect(tabindex).toEqual('-1')
+  })
+
   it('is automatically focused when the page loads', async () => {
     await page.goto(`${baseUrl}/components/error-summary/preview`, { waitUntil: 'load' })
 
