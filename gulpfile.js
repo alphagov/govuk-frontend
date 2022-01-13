@@ -14,7 +14,6 @@ require('./tasks/gulp/watch.js')
 require('./tasks/gulp/copy-to-destination.js')
 require('./tasks/gulp/asset-version.js')
 require('./tasks/gulp/sassdoc.js')
-require('./tasks/gulp/stylelint.js')
 
 // Umbrella scripts tasks for preview ---
 // Runs js lint and compilation
@@ -24,10 +23,9 @@ gulp.task('scripts', gulp.series(
 ))
 
 // Umbrella styles tasks for preview ----
-// Runs scss lint and compilation
+// Runs scss compilation
 // --------------------------------------
 gulp.task('styles', gulp.series(
-  'scss:lint',
   'scss:compile'
 ))
 
@@ -43,7 +41,6 @@ gulp.task('copy:assets', () => {
 // Runs js, scss and accessibility tests
 // --------------------------------------
 gulp.task('test', gulp.series(
-  'scss:lint',
   'scss:compile'
 ))
 
