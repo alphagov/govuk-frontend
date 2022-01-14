@@ -6,11 +6,27 @@ const PORT = configPaths.ports.test
 const baseUrl = 'http://localhost:' + PORT
 
 describe('Error Summary', () => {
+  it('adds the tabindex attribute on page load', async () => {
+    await page.goto(baseUrl + '/components/error-summary/preview', { waitUntil: 'load' })
+
+    const tabindex = await page.$eval('.govuk-error-summary', el => el.getAttribute('tabindex'))
+    expect(tabindex).toEqual('-1')
+  })
+
   it('is automatically focused when the page loads', async () => {
     await page.goto(`${baseUrl}/components/error-summary/preview`, { waitUntil: 'load' })
 
     const moduleName = await page.evaluate(() => document.activeElement.dataset.module)
     expect(moduleName).toBe('govuk-error-summary')
+  })
+
+  it('removes the tabindex attribute on blur', async () => {
+    await page.goto(baseUrl + '/components/error-summary/preview', { waitUntil: 'load' })
+
+    await page.$eval('.govuk-error-summary', el => el.blur())
+
+    const tabindex = await page.$eval('.govuk-error-summary', el => el.getAttribute('tabindex'))
+    expect(tabindex).toBeNull()
   })
 
   const inputTypes = [
