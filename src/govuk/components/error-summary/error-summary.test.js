@@ -29,6 +29,24 @@ describe('Error Summary', () => {
     expect(tabindex).toBeNull()
   })
 
+  describe('when auto-focus is disabled', () => {
+    it('does not have a tabindex attribute', async () => {
+      await page.goto(`${baseUrl}/components/error-summary/autofocus-disabled/preview`, { waitUntil: 'load' })
+
+      const tabindex = await page.$eval('.govuk-error-summary', el => el.getAttribute('tabindex'))
+
+      expect(tabindex).toBeNull()
+    })
+
+    it('does not focus on page load', async () => {
+      await page.goto(`${baseUrl}/components/error-summary/autofocus-disabled/preview`, { waitUntil: 'load' })
+
+      const activeElement = await page.evaluate(() => document.activeElement.dataset.module)
+
+      expect(activeElement).not.toBe('govuk-error-summary')
+    })
+  })
+
   const inputTypes = [
     // [description, input id, selector for label or legend]
     ['an input', 'input', 'label[for="input"]'],

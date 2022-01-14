@@ -22,6 +22,10 @@ ErrorSummary.prototype.init = function () {
 ErrorSummary.prototype.setFocus = function () {
   var $module = this.$module
 
+  if ($module.getAttribute('data-disable-auto-focus') === 'true') {
+    return
+  }
+
   // Set tabindex to -1 to make the element programmatically focusable, but
   // remove it on blur as the error summary doesn't need to be focused again.
   $module.setAttribute('tabindex', '-1')
