@@ -37,13 +37,6 @@ gulp.task('copy:assets', () => {
     .pipe(gulp.dest(taskArguments.destination + '/assets/'))
 })
 
-// All test combined --------------------
-// Runs js, scss and accessibility tests
-// --------------------------------------
-gulp.task('test', gulp.series(
-  'scss:compile'
-))
-
 // Copy assets task for local & heroku --
 // Copies files to
 // taskArguments.destination (public)
