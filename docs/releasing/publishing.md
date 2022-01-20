@@ -19,7 +19,7 @@
     - GOV.UK Prototype kit
   - check who the release’s contributors are and if we have consent to include their name
 
-5. Technical writer to finalise draft of release notes and get 2i on them.
+5. Technical writer to finalise draft of release notes and get 2i on them. If the technical writer is unavailable, ask for help in the [gds-technical-writing Slack channel](https://gds.slack.com/archives/CAD0R2NQG).
 
 6. Content designer or designer to update community backlog with rationale for any decisions we made.
 
@@ -34,7 +34,7 @@
 
 # Publish a new version of GOV.UK Frontend
 
-Developers should pair on releases. When remote working, it can be useful to be on a call together.
+Developers should pair on releases. When remote working, it can be useful to be on a call together. Likewise, to help align releases, members of the Design System and Prototype Kit teams should both join the release call.
 
 1. Check out the **main** branch and pull the latest changes.
 
