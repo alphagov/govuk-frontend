@@ -16,6 +16,7 @@ This change was introduced in [#2491: Prevent error summary from being re-focuse
 - [#2491: Prevent error summary from being re-focused after it has been initially focused on page load](https://github.com/alphagov/govuk-frontend/pull/2491)
 - [#2494: Allow disabling autofocus on error summary](https://github.com/alphagov/govuk-frontend/pull/2494)
 - [#2515: Add explicit width to summary list row with no actions pseudoelement](https://github.com/alphagov/govuk-frontend/pull/2515)
+- [#2514: Fix accordion heading style while JavaScript is disabled](https://github.com/alphagov/govuk-frontend/pull/2514)
 
 ## 4.0.0 (Breaking release)
 
