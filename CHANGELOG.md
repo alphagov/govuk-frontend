@@ -17,6 +17,7 @@ This change was introduced in [#2491: Prevent error summary from being re-focuse
 - [#2494: Allow disabling autofocus on error summary](https://github.com/alphagov/govuk-frontend/pull/2494)
 - [#2515: Add explicit width to summary list row with no actions pseudoelement](https://github.com/alphagov/govuk-frontend/pull/2515)
 - [#2514: Fix accordion heading style while JavaScript is disabled](https://github.com/alphagov/govuk-frontend/pull/2514)
+- [#2524: Fix select component renders with grey background in Firefox and Safari](https://github.com/alphagov/govuk-frontend/pull/2524)
 
 ## 4.0.0 (Breaking release)
 
