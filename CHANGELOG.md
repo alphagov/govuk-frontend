@@ -14,6 +14,8 @@ This change was introduced in [pull request #2491: Prevent error summary from be
 
 ### Fixes
 
+We’ve made fixes to GOV.UK Frontend in the following pull requests:
+
 - [#2475: Tweak whitespace in input component HTML to improve readability](https://github.com/alphagov/govuk-frontend/pull/2475)
 - [#2494: Allow disabling autofocus on error summary](https://github.com/alphagov/govuk-frontend/pull/2494)
 - [#2514: Fix accordion heading style while JavaScript is disabled](https://github.com/alphagov/govuk-frontend/pull/2514)
