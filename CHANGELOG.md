@@ -4,19 +4,20 @@
 
 ### Recommended changes
 
-#### Remove the tabindex attribute from the Error Summary component
+We've recently made some changes to GOV.UK Frontend. While these are not breaking changes, implementing them will make your service work better.
 
-If you're not using Nunjucks macros, remove the `tabindex` attribute from the HTML for the Error Summary component. This attribute is now added and removed by the JavaScript.
+#### Remove the `tabindex` attribute from the error summary component
 
-This change was introduced in [#2491: Prevent error summary from being re-focused after it has been initially focused on page load](https://github.com/alphagov/govuk-frontend/pull/2491).
+If you're not using Nunjucks macros, remove the `tabindex` attribute from the error summary's HTML. The component JavaScript now adds and removes this attribute.
+
+This change was introduced in [pull request #2491: Prevent error summary from being re-focused after it has been initially focused on page load](https://github.com/alphagov/govuk-frontend/pull/2491).
 
 ### Fixes
 
-- [#2475: Tweak whitespace in input component HTML for improved readability](https://github.com/alphagov/govuk-frontend/pull/2475)
-- [#2491: Prevent error summary from being re-focused after it has been initially focused on page load](https://github.com/alphagov/govuk-frontend/pull/2491)
+- [#2475: Tweak whitespace in input component HTML to improve readability](https://github.com/alphagov/govuk-frontend/pull/2475)
 - [#2494: Allow disabling autofocus on error summary](https://github.com/alphagov/govuk-frontend/pull/2494)
-- [#2515: Add explicit width to summary list row with no actions pseudoelement](https://github.com/alphagov/govuk-frontend/pull/2515)
 - [#2514: Fix accordion heading style while JavaScript is disabled](https://github.com/alphagov/govuk-frontend/pull/2514)
+- [#2515: Add explicit width to summary list row with 'no actions' pseudo-element](https://github.com/alphagov/govuk-frontend/pull/2515)
 - [#2524: Fix select component renders with grey background in Firefox and Safari](https://github.com/alphagov/govuk-frontend/pull/2524)
 
 ## 4.0.0 (Breaking release)
