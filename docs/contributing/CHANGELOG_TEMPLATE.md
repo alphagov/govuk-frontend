@@ -2,28 +2,35 @@
 
 ## Unreleased
 
-💥 Breaking changes:
+### Breaking changes
 
-- Pull Request Title goes here
+Although this release contains breaking changes, we expect some of them will only affect a small number of users. However, to make sure your service still works after you upgrade, you should read the release notes and make any required changes.
 
-  Description goes here (optional)
+#### Heading (h4) to summarise change goes here
 
-  To migrate you need to change: X
+Description goes here - tell the user what change they need to make, and in what circumstances. For example, if the change only affects users who are not using Nunjucks macros.
 
-  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+This change was introduced in `[pull request #xxxx: PULL-REQUEST-TITLE](LINK-TO-PULL-REQUEST)`. (Include the next line when appropriate.) Thanks to `[@GITHUB-NAME](LINK-TO-CONTRIBUTOR-GITHUB-PAGE)` for reporting/contributing this issue.
 
-🆕 New features:
+### Recommended changes
 
-- Pull Request Title goes here
+We've recently made some changes to GOV.UK Frontend. While these are not breaking changes, implementing them will make your service work better.
 
-  Description goes here (optional)
+#### Heading (h4) to summarise change goes here
 
-  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+Description goes here - tell the user what change they need to make, and in what circumstances. For example, if the change only affects users who are not using Nunjucks macros.
 
-🔧 Fixes:
+This change was introduced in `[pull request #xxxx: PULL-REQUEST-TITLE](LINK-TO-PULL-REQUEST)`. (Include the next line when appropriate.) Thanks to `[@GITHUB-NAME](LINK-TO-CONTRIBUTOR-GITHUB-PAGE)` for reporting/contributing this issue.
 
-- Pull Request Title goes here
+### New features
 
-  Description goes here (optional)
+#### Heading (h4) to summarise feature goes here
 
-  ([PR #N](https://github.com/alphagov/govuk-frontend/pull/N))
+Description goes here.
+
+This was added in `[pull request #xxxx: PULL-REQUEST-TITLE](LINK-TO-PULL-REQUEST)`. (Include the next line when appropriate.) Thanks to `[@GITHUB-NAME](LINK-TO-CONTRIBUTOR-GITHUB-PAGE)` for reporting/contributing this issue.
+
+### Fixes
+
+We’ve made fixes to GOV.UK Frontend in the following pull requests:
+- `[pull request #xxxx: PULL-REQUEST-TITLE](LINK-TO-PULL-REQUEST)` - (optional) thanks to `[@GITHUB-NAME](LINK-TO-CONTRIBUTOR-GITHUB-PAGE)` for reporting this issue/contributing this change
