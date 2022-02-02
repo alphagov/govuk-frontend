@@ -4,13 +4,13 @@
 
 ### Recommended changes
 
-We've recently made some changes to GOV.UK Frontend. While these are not breaking changes, implementing them will make your service work better.
+We've recently made some non-breaking changes to GOV.UK Frontend. Implementing these changes will make your service work better.
 
 #### Remove the `tabindex` attribute from the error summary component
 
 If you're not using Nunjucks macros, remove the `tabindex` attribute from the error summary's HTML. The component JavaScript now adds and removes this attribute.
 
-This change was introduced in [pull request #2491: Prevent error summary from being re-focused after it has been initially focused on page load](https://github.com/alphagov/govuk-frontend/pull/2491).
+This change was introduced in [pull request #2491: Prevent error summary from being refocused after it has been initially focused on page load](https://github.com/alphagov/govuk-frontend/pull/2491).
 
 ### Fixes
 
