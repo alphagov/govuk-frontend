@@ -34,6 +34,13 @@ Projects can point to this branch in their package.json, instead of to the publi
 
 2. Navigate to the project in the command line and run the success notification command. Running this command makes the project point to the pre-release branch, instead of to the published [GOV.UK Frontend npm package](https://www.npmjs.com/package/govuk-frontend). You can now preview your trial changes to GOV.UK Frontend.
 
+Depending on your terminal, you may have issues when you run the command that displays after the `Success!` message.
+
+To resolve these issues, do one of the following:
+
+- put quotes around the pre-release part of the command - this will look like `alphagov/govuk-frontend#{pre-release hash}`
+- run the command on different terminal software
+
 ## Update a pre-release
 
 1. Check out the Git branch you previously pre-released (this is the branch you work on, not the branch the script created).
