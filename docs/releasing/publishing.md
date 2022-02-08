@@ -87,7 +87,7 @@ Developers should pair on releases. When remote working, it can be useful to be 
 
 4. View the created tag in the [Github interface](https://github.com/alphagov/govuk-frontend/releases) as follows:
   - select the latest tag
-  - press **Edit tag**
+  - press **Create release from tag**
   - set 'GOV.UK Frontend v[version-number]' as the title
   - add release notes from changelog
   - attach the generated ZIP that has been generated at the root of this project
