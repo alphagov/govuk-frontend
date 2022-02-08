@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 4.0.1 (Fix release)
+
 ### Recommended changes
 
 We've recently made some non-breaking changes to GOV.UK Frontend. Implementing these changes will make your service work better.

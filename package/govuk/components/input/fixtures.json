@@ -10,7 +10,7 @@
                 "id": "input-example",
                 "name": "test-name"
             },
-            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-example\">\n    National Insurance number\n  </label>\n\n<input class=\"govuk-input\" id=\"input-example\" name=\"test-name\" type=\"text\">\n</div>",
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-example\">\n    National Insurance number\n  </label>\n\n<input class=\"govuk-input\" id=\"input-example\" name=\"test-name\" type=\"text\">\n\n</div>",
             "hidden": false
         },
         {
@@ -25,7 +25,7 @@
                 "id": "input-with-hint-text",
                 "name": "test-name-2"
             },
-            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-with-hint-text\">\n    National insurance number\n  </label>\n\n  \n  \n  <div id=\"input-with-hint-text-hint\" class=\"govuk-hint\">\n    It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.\n  </div>\n\n<input class=\"govuk-input\" id=\"input-with-hint-text\" name=\"test-name-2\" type=\"text\" aria-describedby=\"input-with-hint-text-hint\">\n</div>",
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-with-hint-text\">\n    National insurance number\n  </label>\n\n  \n  \n  <div id=\"input-with-hint-text-hint\" class=\"govuk-hint\">\n    It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.\n  </div>\n\n<input class=\"govuk-input\" id=\"input-with-hint-text\" name=\"test-name-2\" type=\"text\" aria-describedby=\"input-with-hint-text-hint\">\n\n</div>",
             "hidden": false
         },
         {
@@ -43,7 +43,7 @@
                     "text": "Error message goes here"
                 }
             },
-            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  <label class=\"govuk-label\" for=\"input-with-error-message\">\n    National Insurance number\n  </label>\n\n  \n  \n  <div id=\"input-with-error-message-hint\" class=\"govuk-hint\">\n    It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.\n  </div>\n\n\n  \n  \n  <p id=\"input-with-error-message-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message goes here\n  </p>\n<input class=\"govuk-input govuk-input--error\" id=\"input-with-error-message\" name=\"test-name-3\" type=\"text\" aria-describedby=\"input-with-error-message-hint input-with-error-message-error\">\n</div>",
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  <label class=\"govuk-label\" for=\"input-with-error-message\">\n    National Insurance number\n  </label>\n\n  \n  \n  <div id=\"input-with-error-message-hint\" class=\"govuk-hint\">\n    It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.\n  </div>\n\n\n  \n  \n  <p id=\"input-with-error-message-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message goes here\n  </p>\n<input class=\"govuk-input govuk-input--error\" id=\"input-with-error-message\" name=\"test-name-3\" type=\"text\" aria-describedby=\"input-with-error-message-hint input-with-error-message-error\">\n\n</div>",
             "hidden": false
         },
         {
@@ -59,7 +59,7 @@
                 "name": "test-width-2",
                 "classes": "govuk-input--width-2"
             },
-            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-width-2\">\n    National insurance number\n  </label>\n\n  \n  \n  <div id=\"input-width-2-hint\" class=\"govuk-hint\">\n    It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.\n  </div>\n\n<input class=\"govuk-input govuk-input--width-2\" id=\"input-width-2\" name=\"test-width-2\" type=\"text\" aria-describedby=\"input-width-2-hint\">\n</div>",
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-width-2\">\n    National insurance number\n  </label>\n\n  \n  \n  <div id=\"input-width-2-hint\" class=\"govuk-hint\">\n    It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.\n  </div>\n\n<input class=\"govuk-input govuk-input--width-2\" id=\"input-width-2\" name=\"test-width-2\" type=\"text\" aria-describedby=\"input-width-2-hint\">\n\n</div>",
             "hidden": false
         },
         {
@@ -75,7 +75,7 @@
                 "name": "test-width-3",
                 "classes": "govuk-input--width-3"
             },
-            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-width-3\">\n    National insurance number\n  </label>\n\n  \n  \n  <div id=\"input-width-3-hint\" class=\"govuk-hint\">\n    It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.\n  </div>\n\n<input class=\"govuk-input govuk-input--width-3\" id=\"input-width-3\" name=\"test-width-3\" type=\"text\" aria-describedby=\"input-width-3-hint\">\n</div>",
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-width-3\">\n    National insurance number\n  </label>\n\n  \n  \n  <div id=\"input-width-3-hint\" class=\"govuk-hint\">\n    It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.\n  </div>\n\n<input class=\"govuk-input govuk-input--width-3\" id=\"input-width-3\" name=\"test-width-3\" type=\"text\" aria-describedby=\"input-width-3-hint\">\n\n</div>",
             "hidden": false
         },
         {
@@ -91,7 +91,7 @@
                 "name": "test-width-4",
                 "classes": "govuk-input--width-4"
             },
-            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-width-4\">\n    National insurance number\n  </label>\n\n  \n  \n  <div id=\"input-width-4-hint\" class=\"govuk-hint\">\n    It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.\n  </div>\n\n<input class=\"govuk-input govuk-input--width-4\" id=\"input-width-4\" name=\"test-width-4\" type=\"text\" aria-describedby=\"input-width-4-hint\">\n</div>",
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-width-4\">\n    National insurance number\n  </label>\n\n  \n  \n  <div id=\"input-width-4-hint\" class=\"govuk-hint\">\n    It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.\n  </div>\n\n<input class=\"govuk-input govuk-input--width-4\" id=\"input-width-4\" name=\"test-width-4\" type=\"text\" aria-describedby=\"input-width-4-hint\">\n\n</div>",
             "hidden": false
         },
         {
@@ -107,7 +107,7 @@
                 "name": "test-width-5",
                 "classes": "govuk-input--width-5"
             },
-            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-width-5\">\n    National insurance number\n  </label>\n\n  \n  \n  <div id=\"input-width-5-hint\" class=\"govuk-hint\">\n    It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.\n  </div>\n\n<input class=\"govuk-input govuk-input--width-5\" id=\"input-width-5\" name=\"test-width-5\" type=\"text\" aria-describedby=\"input-width-5-hint\">\n</div>",
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-width-5\">\n    National insurance number\n  </label>\n\n  \n  \n  <div id=\"input-width-5-hint\" class=\"govuk-hint\">\n    It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.\n  </div>\n\n<input class=\"govuk-input govuk-input--width-5\" id=\"input-width-5\" name=\"test-width-5\" type=\"text\" aria-describedby=\"input-width-5-hint\">\n\n</div>",
             "hidden": false
         },
         {
@@ -123,7 +123,7 @@
                 "name": "test-width-10",
                 "classes": "govuk-input--width-10"
             },
-            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-width-10\">\n    National insurance number\n  </label>\n\n  \n  \n  <div id=\"input-width-10-hint\" class=\"govuk-hint\">\n    It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.\n  </div>\n\n<input class=\"govuk-input govuk-input--width-10\" id=\"input-width-10\" name=\"test-width-10\" type=\"text\" aria-describedby=\"input-width-10-hint\">\n</div>",
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-width-10\">\n    National insurance number\n  </label>\n\n  \n  \n  <div id=\"input-width-10-hint\" class=\"govuk-hint\">\n    It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.\n  </div>\n\n<input class=\"govuk-input govuk-input--width-10\" id=\"input-width-10\" name=\"test-width-10\" type=\"text\" aria-describedby=\"input-width-10-hint\">\n\n</div>",
             "hidden": false
         },
         {
@@ -139,7 +139,7 @@
                 "name": "test-width-20",
                 "classes": "govuk-input--width-20"
             },
-            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-width-20\">\n    National insurance number\n  </label>\n\n  \n  \n  <div id=\"input-width-20-hint\" class=\"govuk-hint\">\n    It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.\n  </div>\n\n<input class=\"govuk-input govuk-input--width-20\" id=\"input-width-20\" name=\"test-width-20\" type=\"text\" aria-describedby=\"input-width-20-hint\">\n</div>",
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-width-20\">\n    National insurance number\n  </label>\n\n  \n  \n  <div id=\"input-width-20-hint\" class=\"govuk-hint\">\n    It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.\n  </div>\n\n<input class=\"govuk-input govuk-input--width-20\" id=\"input-width-20\" name=\"test-width-20\" type=\"text\" aria-describedby=\"input-width-20-hint\">\n\n</div>",
             "hidden": false
         },
         {
@@ -155,7 +155,7 @@
                 "name": "test-width-30",
                 "classes": "govuk-input--width-30"
             },
-            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-width-30\">\n    National insurance number\n  </label>\n\n  \n  \n  <div id=\"input-width-30-hint\" class=\"govuk-hint\">\n    It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.\n  </div>\n\n<input class=\"govuk-input govuk-input--width-30\" id=\"input-width-30\" name=\"test-width-30\" type=\"text\" aria-describedby=\"input-width-30-hint\">\n</div>",
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-width-30\">\n    National insurance number\n  </label>\n\n  \n  \n  <div id=\"input-width-30-hint\" class=\"govuk-hint\">\n    It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.\n  </div>\n\n<input class=\"govuk-input govuk-input--width-30\" id=\"input-width-30\" name=\"test-width-30\" type=\"text\" aria-describedby=\"input-width-30-hint\">\n\n</div>",
             "hidden": false
         },
         {
@@ -168,7 +168,7 @@
                 "id": "input-with-page-heading",
                 "name": "test-name"
             },
-            "html": "<div class=\"govuk-form-group\">\n  <h1 class=\"govuk-label-wrapper\">\n    <label class=\"govuk-label\" for=\"input-with-page-heading\">\n      National Insurance number\n    </label>\n    </h1>\n\n<input class=\"govuk-input\" id=\"input-with-page-heading\" name=\"test-name\" type=\"text\">\n</div>",
+            "html": "<div class=\"govuk-form-group\">\n  <h1 class=\"govuk-label-wrapper\">\n    <label class=\"govuk-label\" for=\"input-with-page-heading\">\n      National Insurance number\n    </label>\n    </h1>\n\n<input class=\"govuk-input\" id=\"input-with-page-heading\" name=\"test-name\" type=\"text\">\n\n</div>",
             "hidden": false
         },
         {
@@ -183,7 +183,7 @@
                     "classes": "extra-class"
                 }
             },
-            "html": "<div class=\"govuk-form-group extra-class\">\n  <label class=\"govuk-label\" for=\"input-example\">\n    National Insurance number\n  </label>\n\n<input class=\"govuk-input\" id=\"input-example\" name=\"test-name\" type=\"text\">\n</div>",
+            "html": "<div class=\"govuk-form-group extra-class\">\n  <label class=\"govuk-label\" for=\"input-example\">\n    National Insurance number\n  </label>\n\n<input class=\"govuk-input\" id=\"input-example\" name=\"test-name\" type=\"text\">\n\n</div>",
             "hidden": false
         },
         {
@@ -196,7 +196,7 @@
                 "name": "postcode",
                 "autocomplete": "postal-code"
             },
-            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-with-autocomplete-attribute\">\n    Postcode\n  </label>\n\n<input class=\"govuk-input\" id=\"input-with-autocomplete-attribute\" name=\"postcode\" type=\"text\" autocomplete=\"postal-code\">\n</div>",
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-with-autocomplete-attribute\">\n    Postcode\n  </label>\n\n<input class=\"govuk-input\" id=\"input-with-autocomplete-attribute\" name=\"postcode\" type=\"text\" autocomplete=\"postal-code\">\n\n</div>",
             "hidden": false
         },
         {
@@ -210,7 +210,7 @@
                 "type": "number",
                 "pattern": "[0-9]*"
             },
-            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-with-pattern-attribute\">\n    Numbers only\n  </label>\n\n<input class=\"govuk-input\" id=\"input-with-pattern-attribute\" name=\"numbers-only\" type=\"number\" pattern=\"[0-9]*\">\n</div>",
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-with-pattern-attribute\">\n    Numbers only\n  </label>\n\n<input class=\"govuk-input\" id=\"input-with-pattern-attribute\" name=\"numbers-only\" type=\"number\" pattern=\"[0-9]*\">\n\n</div>",
             "hidden": false
         },
         {
@@ -224,7 +224,7 @@
                 "type": "text",
                 "spellcheck": true
             },
-            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-with-spellcheck-enabled\">\n    Spellcheck is enabled\n  </label>\n\n<input class=\"govuk-input\" id=\"input-with-spellcheck-enabled\" name=\"spellcheck\" type=\"text\" spellcheck=\"true\">\n</div>",
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-with-spellcheck-enabled\">\n    Spellcheck is enabled\n  </label>\n\n<input class=\"govuk-input\" id=\"input-with-spellcheck-enabled\" name=\"spellcheck\" type=\"text\" spellcheck=\"true\">\n\n</div>",
             "hidden": false
         },
         {
@@ -238,7 +238,7 @@
                 "type": "text",
                 "spellcheck": false
             },
-            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-with-spellcheck-disabled\">\n    Spellcheck is disabled\n  </label>\n\n<input class=\"govuk-input\" id=\"input-with-spellcheck-disabled\" name=\"spellcheck\" type=\"text\" spellcheck=\"false\">\n</div>",
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-with-spellcheck-disabled\">\n    Spellcheck is disabled\n  </label>\n\n<input class=\"govuk-input\" id=\"input-with-spellcheck-disabled\" name=\"spellcheck\" type=\"text\" spellcheck=\"false\">\n\n</div>",
             "hidden": false
         },
         {
@@ -253,7 +253,7 @@
                     "text": "£"
                 }
             },
-            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-with-prefix\">\n    Amount, in pounds\n  </label>\n\n<div class=\"govuk-input__wrapper\">\n    <div class=\"govuk-input__prefix\" aria-hidden=\"true\">£</div>\n  <input class=\"govuk-input\" id=\"input-with-prefix\" name=\"amount\" type=\"text\"></div>\n</div>",
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-with-prefix\">\n    Amount, in pounds\n  </label>\n\n<div class=\"govuk-input__wrapper\"><div class=\"govuk-input__prefix\" aria-hidden=\"true\">£</div>\n  <input class=\"govuk-input\" id=\"input-with-prefix\" name=\"amount\" type=\"text\"></div>\n\n</div>",
             "hidden": false
         },
         {
@@ -268,7 +268,7 @@
                     "text": "kg"
                 }
             },
-            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-with-suffix\">\n    Weight, in kilograms\n  </label>\n\n<div class=\"govuk-input__wrapper\"><input class=\"govuk-input\" id=\"input-with-suffix\" name=\"weight\" type=\"text\">\n    <div class=\"govuk-input__suffix\" aria-hidden=\"true\">kg</div>\n  </div>\n</div>",
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-with-suffix\">\n    Weight, in kilograms\n  </label>\n\n<div class=\"govuk-input__wrapper\"><input class=\"govuk-input\" id=\"input-with-suffix\" name=\"weight\" type=\"text\"><div class=\"govuk-input__suffix\" aria-hidden=\"true\">kg</div>\n  </div>\n\n</div>",
             "hidden": false
         },
         {
@@ -286,7 +286,7 @@
                     "text": "per item"
                 }
             },
-            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-with-prefix-suffix\">\n    Cost per item, in pounds\n  </label>\n\n<div class=\"govuk-input__wrapper\">\n    <div class=\"govuk-input__prefix\" aria-hidden=\"true\">£</div>\n  <input class=\"govuk-input\" id=\"input-with-prefix-suffix\" name=\"cost\" type=\"text\">\n    <div class=\"govuk-input__suffix\" aria-hidden=\"true\">per item</div>\n  </div>\n</div>",
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-with-prefix-suffix\">\n    Cost per item, in pounds\n  </label>\n\n<div class=\"govuk-input__wrapper\"><div class=\"govuk-input__prefix\" aria-hidden=\"true\">£</div>\n  <input class=\"govuk-input\" id=\"input-with-prefix-suffix\" name=\"cost\" type=\"text\"><div class=\"govuk-input__suffix\" aria-hidden=\"true\">per item</div>\n  </div>\n\n</div>",
             "hidden": false
         },
         {
@@ -304,7 +304,7 @@
                     "text": "per household member"
                 }
             },
-            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-with-prefix-suffix\">\n    Cost per item, in pounds, per household member\n  </label>\n\n<div class=\"govuk-input__wrapper\">\n    <div class=\"govuk-input__prefix\" aria-hidden=\"true\">£</div>\n  <input class=\"govuk-input\" id=\"input-with-prefix-suffix\" name=\"cost\" type=\"text\">\n    <div class=\"govuk-input__suffix\" aria-hidden=\"true\">per household member</div>\n  </div>\n</div>",
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-with-prefix-suffix\">\n    Cost per item, in pounds, per household member\n  </label>\n\n<div class=\"govuk-input__wrapper\"><div class=\"govuk-input__prefix\" aria-hidden=\"true\">£</div>\n  <input class=\"govuk-input\" id=\"input-with-prefix-suffix\" name=\"cost\" type=\"text\"><div class=\"govuk-input__suffix\" aria-hidden=\"true\">per household member</div>\n  </div>\n\n</div>",
             "hidden": false
         },
         {
@@ -325,7 +325,7 @@
                     "text": "Error message goes here"
                 }
             },
-            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  <label class=\"govuk-label\" for=\"input-with-prefix-suffix\">\n    Cost per item, in pounds\n  </label>\n\n\n  \n  \n  <p id=\"input-with-prefix-suffix-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message goes here\n  </p>\n<div class=\"govuk-input__wrapper\">\n    <div class=\"govuk-input__prefix\" aria-hidden=\"true\">£</div>\n  <input class=\"govuk-input govuk-input--error\" id=\"input-with-prefix-suffix\" name=\"cost\" type=\"text\" aria-describedby=\"input-with-prefix-suffix-error\">\n    <div class=\"govuk-input__suffix\" aria-hidden=\"true\">per item</div>\n  </div>\n</div>",
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  <label class=\"govuk-label\" for=\"input-with-prefix-suffix\">\n    Cost per item, in pounds\n  </label>\n\n\n  \n  \n  <p id=\"input-with-prefix-suffix-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message goes here\n  </p>\n<div class=\"govuk-input__wrapper\"><div class=\"govuk-input__prefix\" aria-hidden=\"true\">£</div>\n  <input class=\"govuk-input govuk-input--error\" id=\"input-with-prefix-suffix\" name=\"cost\" type=\"text\" aria-describedby=\"input-with-prefix-suffix-error\"><div class=\"govuk-input__suffix\" aria-hidden=\"true\">per item</div>\n  </div>\n\n</div>",
             "hidden": false
         },
         {
@@ -344,7 +344,7 @@
                     "text": "per item"
                 }
             },
-            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-with-prefix-suffix\">\n    Cost per item, in pounds\n  </label>\n\n<div class=\"govuk-input__wrapper\">\n    <div class=\"govuk-input__prefix\" aria-hidden=\"true\">£</div>\n  <input class=\"govuk-input govuk-input--width-5\" id=\"input-with-prefix-suffix\" name=\"cost\" type=\"text\">\n    <div class=\"govuk-input__suffix\" aria-hidden=\"true\">per item</div>\n  </div>\n</div>",
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-with-prefix-suffix\">\n    Cost per item, in pounds\n  </label>\n\n<div class=\"govuk-input__wrapper\"><div class=\"govuk-input__prefix\" aria-hidden=\"true\">£</div>\n  <input class=\"govuk-input govuk-input--width-5\" id=\"input-with-prefix-suffix\" name=\"cost\" type=\"text\"><div class=\"govuk-input__suffix\" aria-hidden=\"true\">per item</div>\n  </div>\n\n</div>",
             "hidden": false
         },
         {
@@ -357,7 +357,7 @@
                 },
                 "classes": "app-input--custom-modifier"
             },
-            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"with-classes\">\n    With classes\n  </label>\n\n<input class=\"govuk-input app-input--custom-modifier\" id=\"with-classes\" name=\"with-classes\" type=\"text\">\n</div>",
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"with-classes\">\n    With classes\n  </label>\n\n<input class=\"govuk-input app-input--custom-modifier\" id=\"with-classes\" name=\"with-classes\" type=\"text\">\n\n</div>",
             "hidden": true
         },
         {
@@ -370,7 +370,7 @@
                 },
                 "type": "number"
             },
-            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"with-custom-type\">\n    With custom type\n  </label>\n\n<input class=\"govuk-input\" id=\"with-custom-type\" name=\"with-custom-type\" type=\"number\">\n</div>",
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"with-custom-type\">\n    With custom type\n  </label>\n\n<input class=\"govuk-input\" id=\"with-custom-type\" name=\"with-custom-type\" type=\"number\">\n\n</div>",
             "hidden": true
         },
         {
@@ -383,7 +383,7 @@
                 },
                 "value": "QQ 12 34 56 C"
             },
-            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"with-value\">\n    With value\n  </label>\n\n<input class=\"govuk-input\" id=\"with-value\" name=\"with-value\" type=\"text\" value=\"QQ 12 34 56 C\">\n</div>",
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"with-value\">\n    With value\n  </label>\n\n<input class=\"govuk-input\" id=\"with-value\" name=\"with-value\" type=\"text\" value=\"QQ 12 34 56 C\">\n\n</div>",
             "hidden": true
         },
         {
@@ -396,7 +396,7 @@
                 },
                 "describedBy": "some-id"
             },
-            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"with-describedby\">\n    With describedBy\n  </label>\n\n<input class=\"govuk-input\" id=\"with-describedby\" name=\"with-describedby\" type=\"text\" aria-describedby=\"some-id\">\n</div>",
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"with-describedby\">\n    With describedBy\n  </label>\n\n<input class=\"govuk-input\" id=\"with-describedby\" name=\"with-describedby\" type=\"text\" aria-describedby=\"some-id\">\n\n</div>",
             "hidden": true
         },
         {
@@ -411,7 +411,7 @@
                     "data-attribute": "my data value"
                 }
             },
-            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"with-attributes\">\n    With attributes\n  </label>\n\n<input class=\"govuk-input\" id=\"with-attributes\" name=\"with-attributes\" type=\"text\" data-attribute=\"my data value\">\n</div>",
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"with-attributes\">\n    With attributes\n  </label>\n\n<input class=\"govuk-input\" id=\"with-attributes\" name=\"with-attributes\" type=\"text\" data-attribute=\"my data value\">\n\n</div>",
             "hidden": true
         },
         {
@@ -427,7 +427,7 @@
                     "text": "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
                 }
             },
-            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"with-hint-describedby\">\n    With hint describedBy\n  </label>\n\n  \n  \n  <div id=\"with-hint-describedby-hint\" class=\"govuk-hint\">\n    It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.\n  </div>\n\n<input class=\"govuk-input\" id=\"with-hint-describedby\" name=\"with-hint-describedby\" type=\"text\" aria-describedby=\"some-id with-hint-describedby-hint\">\n</div>",
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"with-hint-describedby\">\n    With hint describedBy\n  </label>\n\n  \n  \n  <div id=\"with-hint-describedby-hint\" class=\"govuk-hint\">\n    It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.\n  </div>\n\n<input class=\"govuk-input\" id=\"with-hint-describedby\" name=\"with-hint-describedby\" type=\"text\" aria-describedby=\"some-id with-hint-describedby-hint\">\n\n</div>",
             "hidden": true
         },
         {
@@ -443,7 +443,7 @@
                     "text": "Error message"
                 }
             },
-            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  <label class=\"govuk-label\" for=\"with-error-describedby\">\n    With error describedBy\n  </label>\n\n\n  \n  \n  <p id=\"with-error-describedby-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message\n  </p>\n<input class=\"govuk-input govuk-input--error\" id=\"with-error-describedby\" name=\"with-error-describedby\" type=\"text\" aria-describedby=\"some-id with-error-describedby-error\">\n</div>",
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  <label class=\"govuk-label\" for=\"with-error-describedby\">\n    With error describedBy\n  </label>\n\n\n  \n  \n  <p id=\"with-error-describedby-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message\n  </p>\n<input class=\"govuk-input govuk-input--error\" id=\"with-error-describedby\" name=\"with-error-describedby\" type=\"text\" aria-describedby=\"some-id with-error-describedby-error\">\n\n</div>",
             "hidden": true
         },
         {
@@ -461,7 +461,7 @@
                     "text": "Hint"
                 }
             },
-            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  <label class=\"govuk-label\" for=\"with-error-hint\">\n    With error and hint\n  </label>\n\n  \n  \n  <div id=\"with-error-hint-hint\" class=\"govuk-hint\">\n    Hint\n  </div>\n\n\n  \n  \n  <p id=\"with-error-hint-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message\n  </p>\n<input class=\"govuk-input govuk-input--error\" id=\"with-error-hint\" name=\"with-error-hint\" type=\"text\" aria-describedby=\"with-error-hint-hint with-error-hint-error\">\n</div>",
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  <label class=\"govuk-label\" for=\"with-error-hint\">\n    With error and hint\n  </label>\n\n  \n  \n  <div id=\"with-error-hint-hint\" class=\"govuk-hint\">\n    Hint\n  </div>\n\n\n  \n  \n  <p id=\"with-error-hint-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message\n  </p>\n<input class=\"govuk-input govuk-input--error\" id=\"with-error-hint\" name=\"with-error-hint\" type=\"text\" aria-describedby=\"with-error-hint-hint with-error-hint-error\">\n\n</div>",
             "hidden": true
         },
         {
@@ -480,7 +480,7 @@
                 },
                 "describedBy": "some-id"
             },
-            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  <label class=\"govuk-label\" for=\"with-error-hint-describedby\">\n    With error, hint and describedBy\n  </label>\n\n  \n  \n  <div id=\"with-error-hint-describedby-hint\" class=\"govuk-hint\">\n    Hint\n  </div>\n\n\n  \n  \n  <p id=\"with-error-hint-describedby-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message\n  </p>\n<input class=\"govuk-input govuk-input--error\" id=\"with-error-hint-describedby\" name=\"with-error-hint-describedby\" type=\"text\" aria-describedby=\"some-id with-error-hint-describedby-hint with-error-hint-describedby-error\">\n</div>",
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  <label class=\"govuk-label\" for=\"with-error-hint-describedby\">\n    With error, hint and describedBy\n  </label>\n\n  \n  \n  <div id=\"with-error-hint-describedby-hint\" class=\"govuk-hint\">\n    Hint\n  </div>\n\n\n  \n  \n  <p id=\"with-error-hint-describedby-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message\n  </p>\n<input class=\"govuk-input govuk-input--error\" id=\"with-error-hint-describedby\" name=\"with-error-hint-describedby\" type=\"text\" aria-describedby=\"some-id with-error-hint-describedby-hint with-error-hint-describedby-error\">\n\n</div>",
             "hidden": true
         },
         {
@@ -493,7 +493,7 @@
                 },
                 "inputmode": "decimal"
             },
-            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"with-inputmode\">\n    With inputmode\n  </label>\n\n<input class=\"govuk-input\" id=\"with-inputmode\" name=\"with-inputmode\" type=\"text\" inputmode=\"decimal\">\n</div>",
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"with-inputmode\">\n    With inputmode\n  </label>\n\n<input class=\"govuk-input\" id=\"with-inputmode\" name=\"with-inputmode\" type=\"text\" inputmode=\"decimal\">\n\n</div>",
             "hidden": true
         },
         {
@@ -508,7 +508,7 @@
                     "text": "<span>£</span>"
                 }
             },
-            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-with-prefix\">\n    Amount, in pounds\n  </label>\n\n<div class=\"govuk-input__wrapper\">\n    <div class=\"govuk-input__prefix\" aria-hidden=\"true\">&lt;span&gt;£&lt;/span&gt;</div>\n  <input class=\"govuk-input\" id=\"input-with-prefix\" name=\"amount\" type=\"text\"></div>\n</div>",
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-with-prefix\">\n    Amount, in pounds\n  </label>\n\n<div class=\"govuk-input__wrapper\"><div class=\"govuk-input__prefix\" aria-hidden=\"true\">&lt;span&gt;£&lt;/span&gt;</div>\n  <input class=\"govuk-input\" id=\"input-with-prefix\" name=\"amount\" type=\"text\"></div>\n\n</div>",
             "hidden": true
         },
         {
@@ -523,7 +523,7 @@
                     "html": "<span>£</span>"
                 }
             },
-            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-with-prefix\">\n    Amount, in pounds\n  </label>\n\n<div class=\"govuk-input__wrapper\">\n    <div class=\"govuk-input__prefix\" aria-hidden=\"true\"><span>£</span></div>\n  <input class=\"govuk-input\" id=\"input-with-prefix\" name=\"amount\" type=\"text\"></div>\n</div>",
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-with-prefix\">\n    Amount, in pounds\n  </label>\n\n<div class=\"govuk-input__wrapper\"><div class=\"govuk-input__prefix\" aria-hidden=\"true\"><span>£</span></div>\n  <input class=\"govuk-input\" id=\"input-with-prefix\" name=\"amount\" type=\"text\"></div>\n\n</div>",
             "hidden": true
         },
         {
@@ -539,7 +539,7 @@
                     "classes": "app-input__prefix--custom-modifier"
                 }
             },
-            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-with-prefix-element\">\n    Amount, in pounds\n  </label>\n\n<div class=\"govuk-input__wrapper\">\n    <div class=\"govuk-input__prefix app-input__prefix--custom-modifier\" aria-hidden=\"true\">£</div>\n  <input class=\"govuk-input\" id=\"input-with-prefix-element\" name=\"amount\" type=\"text\"></div>\n</div>",
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-with-prefix-element\">\n    Amount, in pounds\n  </label>\n\n<div class=\"govuk-input__wrapper\"><div class=\"govuk-input__prefix app-input__prefix--custom-modifier\" aria-hidden=\"true\">£</div>\n  <input class=\"govuk-input\" id=\"input-with-prefix-element\" name=\"amount\" type=\"text\"></div>\n\n</div>",
             "hidden": true
         },
         {
@@ -557,7 +557,7 @@
                     }
                 }
             },
-            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-with-prefix-element\">\n    Amount, in pounds\n  </label>\n\n<div class=\"govuk-input__wrapper\">\n    <div class=\"govuk-input__prefix\" aria-hidden=\"true\" data-attribute=\"value\">£</div>\n  <input class=\"govuk-input\" id=\"input-with-prefix-element\" name=\"amount\" type=\"text\"></div>\n</div>",
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-with-prefix-element\">\n    Amount, in pounds\n  </label>\n\n<div class=\"govuk-input__wrapper\"><div class=\"govuk-input__prefix\" aria-hidden=\"true\" data-attribute=\"value\">£</div>\n  <input class=\"govuk-input\" id=\"input-with-prefix-element\" name=\"amount\" type=\"text\"></div>\n\n</div>",
             "hidden": true
         },
         {
@@ -572,7 +572,7 @@
                     "text": "<span>kg</span>"
                 }
             },
-            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-with-suffix\">\n    Weight, in kilograms\n  </label>\n\n<div class=\"govuk-input__wrapper\"><input class=\"govuk-input\" id=\"input-with-suffix\" name=\"weight\" type=\"text\">\n    <div class=\"govuk-input__suffix\" aria-hidden=\"true\">&lt;span&gt;kg&lt;/span&gt;</div>\n  </div>\n</div>",
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-with-suffix\">\n    Weight, in kilograms\n  </label>\n\n<div class=\"govuk-input__wrapper\"><input class=\"govuk-input\" id=\"input-with-suffix\" name=\"weight\" type=\"text\"><div class=\"govuk-input__suffix\" aria-hidden=\"true\">&lt;span&gt;kg&lt;/span&gt;</div>\n  </div>\n\n</div>",
             "hidden": true
         },
         {
@@ -587,7 +587,7 @@
                     "html": "<span>kg</span>"
                 }
             },
-            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-with-suffix\">\n    Weight, in kilograms\n  </label>\n\n<div class=\"govuk-input__wrapper\"><input class=\"govuk-input\" id=\"input-with-suffix\" name=\"weight\" type=\"text\">\n    <div class=\"govuk-input__suffix\" aria-hidden=\"true\"><span>kg</span></div>\n  </div>\n</div>",
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-with-suffix\">\n    Weight, in kilograms\n  </label>\n\n<div class=\"govuk-input__wrapper\"><input class=\"govuk-input\" id=\"input-with-suffix\" name=\"weight\" type=\"text\"><div class=\"govuk-input__suffix\" aria-hidden=\"true\"><span>kg</span></div>\n  </div>\n\n</div>",
             "hidden": true
         },
         {
@@ -603,7 +603,7 @@
                     "classes": "app-input__suffix--custom-modifier"
                 }
             },
-            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-with-suffix\">\n    Weight, in kilograms\n  </label>\n\n<div class=\"govuk-input__wrapper\"><input class=\"govuk-input\" id=\"input-with-suffix\" name=\"weight\" type=\"text\">\n    <div class=\"govuk-input__suffix app-input__suffix--custom-modifier\" aria-hidden=\"true\"><span>kg</span></div>\n  </div>\n</div>",
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-with-suffix\">\n    Weight, in kilograms\n  </label>\n\n<div class=\"govuk-input__wrapper\"><input class=\"govuk-input\" id=\"input-with-suffix\" name=\"weight\" type=\"text\"><div class=\"govuk-input__suffix app-input__suffix--custom-modifier\" aria-hidden=\"true\"><span>kg</span></div>\n  </div>\n\n</div>",
             "hidden": true
         },
         {
@@ -621,7 +621,7 @@
                     }
                 }
             },
-            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-with-suffix\">\n    Weight, in kilograms\n  </label>\n\n<div class=\"govuk-input__wrapper\"><input class=\"govuk-input\" id=\"input-with-suffix\" name=\"weight\" type=\"text\">\n    <div class=\"govuk-input__suffix\" aria-hidden=\"true\" data-attribute=\"value\"><span>kg</span></div>\n  </div>\n</div>",
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"input-with-suffix\">\n    Weight, in kilograms\n  </label>\n\n<div class=\"govuk-input__wrapper\"><input class=\"govuk-input\" id=\"input-with-suffix\" name=\"weight\" type=\"text\"><div class=\"govuk-input__suffix\" aria-hidden=\"true\" data-attribute=\"value\"><span>kg</span></div>\n  </div>\n\n</div>",
             "hidden": true
         }
     ]
