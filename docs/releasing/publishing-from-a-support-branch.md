@@ -92,23 +92,17 @@ Note: Before you go on annual leave, tell the delivery manager who will be looki
 
 7. Save the changes. Do not commit.
 
-8. Run `npm run build-release`, which will prompt you to either continue or cancel. Enter `y` to continue.
+8. Run `npm run build-release` to:
 
-9. If you want to make sure your changes work when used in the GOV.UK Design System, use [`npm-link`](https://docs.npmjs.com/cli/v7/commands/npm-link) to test before publishing:
+- build GOV.UK Frontend into the `/package` and `/dist` directories
+- commit the changes
+- push a branch to GitHub
 
-  ```bash
-  cd ../govuk-design-system
-  git checkout main
-  git pull
-  npm install # note running `npm install` after `npm link` will destroy the link.
-  npm link ../govuk-frontend/package/
-  ```
+  You will now be prompted to continue or cancel.
 
-10. When you finish testing, run `npm unlink ../govuk-frontend/package/` to unlink the package.
+9. Raise a pull request, with `support/<CURRENT MAJOR VERSION NUMBER>.x` as the base branch to merge into.
 
-11. Raise a pull request, with `support/<CURRENT MAJOR VERSION NUMBER>.x` as the base branch to merge into.
-
-12. Once a developer approves the pull request, merge it into `support/<CURRENT MAJOR VERSION NUMBER>.x`.
+10. Once a developer approves the pull request, merge it into `support/<CURRENT MAJOR VERSION NUMBER>.x`.
 
 ### Publish the release to npm
 

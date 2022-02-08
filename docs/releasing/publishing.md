@@ -52,30 +52,18 @@ Developers should pair on releases. When remote working, it can be useful to be 
 
 7. Save the changes. Do not commit.
 
-8. Run `npm run build-release`. You will be now be prompted to continue or cancel.
+8. Run `npm run build-release` to:
 
-9. (Optional) Test in [GOV.UK Design System](git@github.com:alphagov/govuk-design-system.git)
+- build GOV.UK Frontend into the `/package` and `/dist` directories
+- commit the changes
+- push a branch to GitHub
 
-  If you want to test that your changes work in the GOV.UK Design System, you can use [npm link](https://docs.npmjs.com/cli/link) to test before publishing.
+  You will now be prompted to continue or cancel.
 
-  ```bash
-  cd ../govuk-design-system
-  git checkout main
-  git pull
-  npm install # note running `npm install` after `npm link` will destroy the link.
-  npm link ../govuk-frontend/package/
-  ```
-
-  When you have finished, you need to unlink the package.
-
-  ```bash
-  npm unlink ../govuk-frontend/package/
-  ```
-
-10. Create a pull request and copy the changelog text.
+9. Create a pull request and copy the changelog text.
    When reviewing the PR, check that the version-numbers have been updated and that the compiled assets use this version-number.
 
-11. Once a reviewer approves the pull request, merge it to **main**.
+10. Once a reviewer approves the pull request, merge it to **main**.
 
 ## Publish a release to npm
 
