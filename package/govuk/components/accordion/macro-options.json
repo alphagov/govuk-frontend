@@ -69,7 +69,7 @@
                 "name": "expanded",
                 "type": "boolean",
                 "required": false,
-                "description": "Whether the section should be expanded upon initial load or not. Defaults to `false`."
+                "description": "Sets whether the section should be expanded when the page loads for the first time. Defaults to `false`."
             }
         ]
     }

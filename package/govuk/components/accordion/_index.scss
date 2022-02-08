@@ -22,15 +22,12 @@
   }
 
   .govuk-accordion__section-button {
+    @include govuk-font($size: 24, $weight: bold);
     @include govuk-text-colour;
 
     display: block;
     margin-bottom: 0;
     padding-top: govuk-spacing(3);
-  }
-
-  .govuk-accordion__section-heading-text {
-    @include govuk-font($size: 24, $weight: bold);
   }
 
   // Remove the bottom margin from the last item inside the content
@@ -305,7 +302,8 @@
 
     // Add toggle link with Chevron icon on left.
     .govuk-accordion__section-toggle {
-      @include govuk-font($size: 19);
+      @include govuk-typography-responsive($size: 19);
+      @include govuk-typography-weight-regular;
       color: $govuk-link-colour;
     }
 
