@@ -360,44 +360,6 @@
             "hidden": false
         },
         {
-            "name": "inline with conditional items",
-            "options": {
-                "classes": "govuk-radios--inline",
-                "idPrefix": "how-contacted",
-                "name": "how-contacted",
-                "fieldset": {
-                    "legend": {
-                        "text": "How do you want to be contacted?"
-                    }
-                },
-                "items": [
-                    {
-                        "value": "email",
-                        "text": "Email",
-                        "conditional": {
-                            "html": "<label class=\"govuk-label\" for=\"context-email\">Email address</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"context-email\" type=\"text\" id=\"context-email\">\n"
-                        }
-                    },
-                    {
-                        "value": "phone",
-                        "text": "Phone",
-                        "conditional": {
-                            "html": "<label class=\"govuk-label\" for=\"contact-phone\">Phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"contact-phone\" type=\"text\" id=\"contact-phone\">\n"
-                        }
-                    },
-                    {
-                        "value": "text",
-                        "text": "Text message",
-                        "conditional": {
-                            "html": "<label class=\"govuk-label\" for=\"contact-text-message\">Mobile phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"contact-text-message\" type=\"text\" id=\"contact-text-message\">\n"
-                        }
-                    }
-                ]
-            },
-            "html": "<div class=\"govuk-form-group\">\n\n  <fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    How do you want to be contacted?\n  \n  </legend>\n  \n\n  <div class=\"govuk-radios govuk-radios--inline\"\n    data-module=\"govuk-radios\">\n    \n      \n          \n        \n        \n        <div class=\"govuk-radios__item\">\n          <input class=\"govuk-radios__input\" id=\"how-contacted\" name=\"how-contacted\" type=\"radio\" value=\"email\" data-aria-controls=\"conditional-how-contacted\">\n          <label class=\"govuk-label govuk-radios__label\" for=\"how-contacted\">\n        Email\n      </label>\n          \n        </div>\n        \n          <div class=\"govuk-radios__conditional govuk-radios__conditional--hidden\" id=\"conditional-how-contacted\">\n            <label class=\"govuk-label\" for=\"context-email\">Email address</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"context-email\" type=\"text\" id=\"context-email\">\n\n          </div>\n        \n        \n      \n    \n      \n        \n        \n        <div class=\"govuk-radios__item\">\n          <input class=\"govuk-radios__input\" id=\"how-contacted-2\" name=\"how-contacted\" type=\"radio\" value=\"phone\" data-aria-controls=\"conditional-how-contacted-2\">\n          <label class=\"govuk-label govuk-radios__label\" for=\"how-contacted-2\">\n        Phone\n      </label>\n          \n        </div>\n        \n          <div class=\"govuk-radios__conditional govuk-radios__conditional--hidden\" id=\"conditional-how-contacted-2\">\n            <label class=\"govuk-label\" for=\"contact-phone\">Phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"contact-phone\" type=\"text\" id=\"contact-phone\">\n\n          </div>\n        \n        \n      \n    \n      \n        \n        \n        <div class=\"govuk-radios__item\">\n          <input class=\"govuk-radios__input\" id=\"how-contacted-3\" name=\"how-contacted\" type=\"radio\" value=\"text\" data-aria-controls=\"conditional-how-contacted-3\">\n          <label class=\"govuk-label govuk-radios__label\" for=\"how-contacted-3\">\n        Text message\n      </label>\n          \n        </div>\n        \n          <div class=\"govuk-radios__conditional govuk-radios__conditional--hidden\" id=\"conditional-how-contacted-3\">\n            <label class=\"govuk-label\" for=\"contact-text-message\">Mobile phone number</label>\n<input class=\"govuk-input govuk-!-width-one-third\" name=\"contact-text-message\" type=\"text\" id=\"contact-text-message\">\n\n          </div>\n        \n        \n      \n    \n  </div>\n  \n\n</fieldset>\n\n\n</div>",
-            "hidden": false
-        },
-        {
             "name": "with conditional item checked",
             "options": {
                 "idPrefix": "how-contacted-checked",

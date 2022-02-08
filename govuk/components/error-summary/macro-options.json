@@ -56,6 +56,12 @@
         ]
     },
     {
+        "name": "disableAutoFocus",
+        "type": "boolean",
+        "required": false,
+        "description": "Prevent moving focus to the error summary when the page loads."
+    },
+    {
         "name": "classes",
         "type": "string",
         "required": false,

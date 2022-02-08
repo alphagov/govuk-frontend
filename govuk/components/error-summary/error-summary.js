@@ -715,9 +715,30 @@ ErrorSummary.prototype.init = function () {
   if (!$module) {
     return
   }
-  $module.focus();
 
+  this.setFocus();
   $module.addEventListener('click', this.handleClick.bind(this));
+};
+
+/**
+ * Focus the error summary
+ */
+ErrorSummary.prototype.setFocus = function () {
+  var $module = this.$module;
+
+  if ($module.getAttribute('data-disable-auto-focus') === 'true') {
+    return
+  }
+
+  // Set tabindex to -1 to make the element programmatically focusable, but
+  // remove it on blur as the error summary doesn't need to be focused again.
+  $module.setAttribute('tabindex', '-1');
+
+  $module.addEventListener('blur', function () {
+    $module.removeAttribute('tabindex');
+  });
+
+  $module.focus();
 };
 
 /**

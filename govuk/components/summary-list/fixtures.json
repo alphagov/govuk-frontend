@@ -152,6 +152,91 @@
             "hidden": false
         },
         {
+            "name": "with no first action",
+            "options": {
+                "rows": [
+                    {
+                        "key": {
+                            "text": "Name"
+                        },
+                        "value": {
+                            "text": "Sarah Philips"
+                        }
+                    },
+                    {
+                        "key": {
+                            "text": "Date of birth"
+                        },
+                        "value": {
+                            "text": "5 January 1978"
+                        },
+                        "actions": {
+                            "items": [
+                                {
+                                    "href": "#",
+                                    "text": "Change",
+                                    "visuallyHiddenText": "date of birth"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": {
+                            "text": "Address"
+                        },
+                        "value": {
+                            "html": "72 Guild Street<br>\nLondon<br>\nSE23 6FH\n"
+                        },
+                        "actions": {
+                            "items": [
+                                {
+                                    "href": "#",
+                                    "text": "Change",
+                                    "visuallyHiddenText": "address"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": {
+                            "text": "Contact details"
+                        },
+                        "value": {
+                            "html": "07700 900457<br>\nsarah.phillips@example.com\n"
+                        },
+                        "actions": {
+                            "items": [
+                                {
+                                    "href": "#",
+                                    "text": "Change",
+                                    "visuallyHiddenText": "contact details"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "key": {
+                            "text": "Licence period"
+                        },
+                        "value": {
+                            "html": "<p class=\"govuk-body\">This is a longer paragraph of text provided by the user to provide additional information.</p>\n<p class=\"govuk-body\">This is a second paragraph of text provided by the user.</p>\n"
+                        },
+                        "actions": {
+                            "items": [
+                                {
+                                    "href": "#",
+                                    "text": "Change",
+                                    "visuallyHiddenText": "licence period"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "html": "<dl class=\"govuk-summary-list\">\n  \n    \n      <div class=\"govuk-summary-list__row govuk-summary-list__row--no-actions\">\n        <dt class=\"govuk-summary-list__key\">\n          Name\n        </dt>\n        <dd class=\"govuk-summary-list__value\">\n          Sarah Philips\n        </dd>\n        \n      </div>\n    \n  \n    \n      <div class=\"govuk-summary-list__row\">\n        <dt class=\"govuk-summary-list__key\">\n          Date of birth\n        </dt>\n        <dd class=\"govuk-summary-list__value\">\n          5 January 1978\n        </dd>\n        \n          <dd class=\"govuk-summary-list__actions\">\n            \n              <a class=\"govuk-link\" href=\"#\">\n                Change<span class=\"govuk-visually-hidden\"> date of birth</span>\n                </a>\n            \n          </dd>\n        \n      </div>\n    \n  \n    \n      <div class=\"govuk-summary-list__row\">\n        <dt class=\"govuk-summary-list__key\">\n          Address\n        </dt>\n        <dd class=\"govuk-summary-list__value\">\n          72 Guild Street<br>\n        London<br>\n        SE23 6FH\n        </dd>\n        \n          <dd class=\"govuk-summary-list__actions\">\n            \n              <a class=\"govuk-link\" href=\"#\">\n                Change<span class=\"govuk-visually-hidden\"> address</span>\n                </a>\n            \n          </dd>\n        \n      </div>\n    \n  \n    \n      <div class=\"govuk-summary-list__row\">\n        <dt class=\"govuk-summary-list__key\">\n          Contact details\n        </dt>\n        <dd class=\"govuk-summary-list__value\">\n          07700 900457<br>\n        sarah.phillips@example.com\n        </dd>\n        \n          <dd class=\"govuk-summary-list__actions\">\n            \n              <a class=\"govuk-link\" href=\"#\">\n                Change<span class=\"govuk-visually-hidden\"> contact details</span>\n                </a>\n            \n          </dd>\n        \n      </div>\n    \n  \n    \n      <div class=\"govuk-summary-list__row\">\n        <dt class=\"govuk-summary-list__key\">\n          Licence period\n        </dt>\n        <dd class=\"govuk-summary-list__value\">\n          <p class=\"govuk-body\">This is a longer paragraph of text provided by the user to provide additional information.</p>\n        <p class=\"govuk-body\">This is a second paragraph of text provided by the user.</p>\n        </dd>\n        \n          <dd class=\"govuk-summary-list__actions\">\n            \n              <a class=\"govuk-link\" href=\"#\">\n                Change<span class=\"govuk-visually-hidden\"> licence period</span>\n                </a>\n            \n          </dd>\n        \n      </div>\n    \n  \n</dl>",
+            "hidden": false
+        },
+        {
             "name": "no-border",
             "options": {
                 "classes": "govuk-summary-list--no-border",
