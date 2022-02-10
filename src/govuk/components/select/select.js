@@ -53,7 +53,7 @@ Select.prototype.init = function () {
   this.$wrapper.appendChild($dropDownArrow)
   this.$wrapper.appendChild(this.$ul)
 
-  this.noResultsText = $module.getAttribute('data-no-results') || "No results"
+  this.noResultsText = $module.getAttribute('data-no-results') || 'No results'
 
   $module.parentNode.insertBefore(this.$wrapper, $module)
   $module.style.display = 'none'
