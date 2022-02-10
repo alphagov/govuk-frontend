@@ -53,7 +53,7 @@
   {%- if params.autocomplete %} autocomplete="{{ params.autocomplete}}"{% endif %}
   {%- if params.pattern %} pattern="{{ params.pattern }}"{% endif %}
   {%- if params.inputmode %} inputmode="{{ params.inputmode }}"{% endif %}
-  {%- if params.suggestions %}data-suggestions="{{ params.id}}-suggestions"{% endif %}
+  {%- if params.suggestions %}data-suggestions="{{ params.id}}-suggestions-source"{% endif %}
   {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor -%}>
 
   {%- if params.suffix.text or params.suffix.html -%}
@@ -63,7 +63,7 @@
   {% endif -%}
 
   {%- if params.suggestions %}
-    <datalist id="{{ params.id }}-suggestions">
+    <datalist id="{{ params.id }}-suggestions-source">
       {%- for item in params.suggestions.items %}
         <option {% if item.synonyms %} data-synonyms="{{ item.synonyms | join("|") }}"{% endif %}>{{ item.text }}</option>
       {% endfor -%}

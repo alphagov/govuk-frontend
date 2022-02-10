@@ -10,10 +10,10 @@ function Input ($module) {
 Input.prototype.init = function () {
   this.$formGroup = this.$module.parentNode.parentNode // .form-group
 
-  var suggestionsId = this.$module.getAttribute('data-suggestions')
+  var suggestionsSourceId = this.$module.getAttribute('data-suggestions')
 
-  if (suggestionsId) {
-    this.suggestions = document.getElementById(suggestionsId)
+  if (suggestionsSourceId) {
+    this.suggestions = document.getElementById(suggestionsSourceId)
 
     this.$formGroup.setAttribute('role', 'combobox')
     this.$formGroup.setAttribute('aria-owns', this.$module.getAttribute('id'))
@@ -35,6 +35,9 @@ Input.prototype.init = function () {
 
     this.$formGroup.appendChild(this.$suggestionsHeader)
     this.$formGroup.appendChild(this.$ul)
+
+    this.$module.setAttribute('aria-autocomplete', 'list')
+    this.$module.setAttribute('aria-controls', this.$module.getAttribute('id') + '-suggestions')
 
     this.$module.addEventListener('input', this.handleInputInput.bind(this))
     this.$module.addEventListener('keydown', this.handleInputKeyDown.bind(this))
