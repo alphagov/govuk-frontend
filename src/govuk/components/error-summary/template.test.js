@@ -32,13 +32,6 @@ describe('Error-summary', () => {
       expect(roleAttr).toEqual('alert')
     })
 
-    it('has the correct tabindex attribute to be focussed', () => {
-      const $ = render('error-summary', examples.default)
-      const tabindexAttr = $('.govuk-error-summary').attr('tabindex')
-
-      expect(tabindexAttr).toEqual('-1')
-    })
-
     it('renders title text', () => {
       const $ = render('error-summary', examples.default)
       const summaryTitle = $('.govuk-error-summary__title').text().trim()

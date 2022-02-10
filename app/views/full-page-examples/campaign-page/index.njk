@@ -13,6 +13,7 @@ notes: >-
 {% from "header/macro.njk" import govukHeader %}
 {% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
 {% from "accordion/macro.njk" import govukAccordion %}
+{% from "footer/macro.njk" import govukFooter %}
 
 {% set pageTitle = "Coronavirus (COVID‑19)" %}
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
@@ -229,4 +230,149 @@ notes: >-
       </div>
     </div>
   </div>
+{% endblock %}
+
+{% block footer %}
+
+
+  {{ govukFooter({
+    navigation: [
+      {
+        title: "Coronavirus (COVID-19)",
+        width: "two-thirds",
+        columns: 2,
+        items: [
+          {
+            href: "#",
+            text: "Coronavirus (COVID-19): guidance and support"
+          },
+          {
+            href: "#",
+            text: "Another link"
+          },
+          {
+            href: "#",
+            text: "Another link"
+          },
+          {
+            href: "#4",
+            text: "Another link"
+          }
+        ]
+      },
+      {
+        title: "Services and Information",
+        width: "two-thirds",
+        columns: 2,
+        items: [
+          {
+            href: "#",
+            text: "Benefits"
+          },
+          {
+            href: "#",
+            text: "Births, deaths and marriages"
+          },
+          {
+            href: "#",
+            text: "Business and self-employed"
+          },
+          {
+            href: "#",
+            text: "Childcare and parenting"
+          },
+          {
+            href: "#",
+            text: "Citizenship and living in the UK"
+          },
+          {
+            href: "#",
+            text: "Crime, justice and the law"
+          },
+          {
+            href: "#",
+            text: "Disabled people"
+          },
+          {
+            href: "#",
+            text: "Driving and transport"
+          },
+          {
+            href: "#",
+            text: "Education and learning"
+          },
+          {
+            href: "#",
+            text: "Employing people"
+          },
+          {
+            href: "#",
+            text: "Environment and countryside"
+          },
+          {
+            href: "#",
+            text: "Housing and local services"
+          },
+          {
+            href: "#",
+            text: "Money and tax"
+          },
+          {
+            href: "#",
+            text: "Passports and living abroad"
+          },
+          {
+            href: "#",
+            text: "Visas and immigration"
+          },
+          {
+            href: "#",
+            text: "Working, jobs and pensions"
+          }
+        ]
+      },
+      {
+        title: "Departments and policy",
+        width: "one-third",
+        items: [
+          {
+            href: "#",
+            text: "How government works"
+          },
+          {
+            href: "#",
+            text: "Departments"
+          },
+          {
+            href: "#",
+            text: "Worldwide"
+          },
+          {
+            href: "#",
+            text: "Services"
+          },
+          {
+            href: "#",
+            text: "Guidance and regulation"
+          },
+          {
+            href: "#",
+            text: "News and communications"
+          },
+          {
+            href: "#",
+            text: "Research and statistics"
+          },
+          {
+            href: "#",
+            text: "Policy papers and consultations"
+          },
+          {
+            href: "#",
+            text: "Transparency and freedom of information releases"
+          }
+        ]
+      }
+    ]
+  }) }}
 {% endblock %}

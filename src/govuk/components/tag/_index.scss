@@ -34,11 +34,6 @@
     }
   }
 
-  // Deprecated. We'll remove this class in a future release. Use `.govuk-tag--grey` instead.
-  .govuk-tag--inactive {
-    background-color: govuk-colour("dark-grey", $legacy: "grey-1");
-  }
-
   .govuk-tag--grey {
     color: govuk-shade(govuk-colour("dark-grey", $legacy: "grey-1"), 30);
     background: govuk-tint(govuk-colour("dark-grey", $legacy: "grey-1"), 90);

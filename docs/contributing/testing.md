@@ -120,7 +120,25 @@ If a snapshot test fails, follow these steps.
 
 Where `<COMPONENT>` is the name of the component you've changed.
 
-## 8. Tell us what you’ve tested and checked
+## 8. Test that your changes work in the GOV.UK Design System (optional)
+
+To make sure your changes work in the Design System, use `npm link` to test before publishing, as follows:
+
+```bash
+cd ../govuk-design-system
+git checkout main
+git pull
+npm install # note running `npm install` after `npm link` will destroy the link.
+npm link ../govuk-frontend/package/
+ ```
+
+When you've finished testing, run this command to unlink the package:
+
+```bash
+npm unlink ../govuk-frontend/package/
+```
+
+## 9. Tell us what you’ve tested and checked
 
 When you create the pull request for your contributions, list what you’ve tested and checked in the pull request description.
 

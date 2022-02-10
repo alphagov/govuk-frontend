@@ -178,6 +178,56 @@ examples:
                 Address line 4<br>
                 Address line 5
               </p>
+  - name: with no first action
+    data:
+      rows:
+        - key:
+            text: Name
+          value:
+            text: Sarah Philips
+        - key:
+            text: Date of birth
+          value:
+            text: 5 January 1978
+          actions:
+            items:
+            - href: '#'
+              text: Change
+              visuallyHiddenText: date of birth
+        - key:
+            text: Address
+          value:
+            html: |
+              72 Guild Street<br>
+              London<br>
+              SE23 6FH
+          actions:
+            items:
+              - href: '#'
+                text: Change
+                visuallyHiddenText: address
+        - key:
+            text: Contact details
+          value:
+            html: |
+              07700 900457<br>
+              sarah.phillips@example.com
+          actions:
+            items:
+              - href: '#'
+                text: Change
+                visuallyHiddenText: contact details
+        - key:
+            text: Licence period
+          value:
+            html: |
+              <p class="govuk-body">This is a longer paragraph of text provided by the user to provide additional information.</p>
+              <p class="govuk-body">This is a second paragraph of text provided by the user.</p>
+          actions:
+            items:
+              - href: '#'
+                text: Change
+                visuallyHiddenText: licence period
   - name: no-border
     data:
       classes: govuk-summary-list--no-border

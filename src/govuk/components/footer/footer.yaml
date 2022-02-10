@@ -46,6 +46,10 @@ params:
     type: integer
     required: false
     description: Amount of columns to display items in navigation section of the footer.
+  - name: width
+    type: string
+    required: false
+    description: Width of each navigation section in the footer. Defaults to full width. You can pass any design system grid width here, for example, 'one-third'; 'two-thirds'; 'one-half'.
   - name: items
     type: array
     required: false
@@ -161,10 +165,48 @@ examples:
     meta:
       text: GOV.UK Prototype Kit v7.0.1
 
+- name: with default width navigation (one column)
+  data:
+    navigation:
+      - title: Navigation section
+        items:
+          - href: '#1'
+            text: Navigation item 1
+          - href: '#2'
+            text: Navigation item 2
+          - href: '#3'
+            text: Navigation item 3
+          - href: '#4'
+            text: Navigation item 4
+          - href: '#5'
+            text: Navigation item 5
+          - href: '#6'
+            text: Navigation item 6
+
+- name: with default width navigation (two columns)
+  data:
+    navigation:
+      - title: Navigation section
+        columns: 2
+        items:
+          - href: '#1'
+            text: Navigation item 1
+          - href: '#2'
+            text: Navigation item 2
+          - href: '#3'
+            text: Navigation item 3
+          - href: '#4'
+            text: Navigation item 4
+          - href: '#5'
+            text: Navigation item 5
+          - href: '#6'
+            text: Navigation item 6
+
 - name: with navigation
   data:
     navigation:
       - title: Two column list
+        width: two-thirds
         columns: 2
         items:
           - href: '#1'
@@ -180,6 +222,7 @@ examples:
           - href: '#6'
             text: Navigation item 6
       - title: Single column list
+        width: one-third
         items:
           - href: '#1'
             text: Navigation item 1
@@ -188,11 +231,22 @@ examples:
           - href: '#3'
             text: Navigation item 3
 
-- name: GOV.UK
+- name: Full GDS example
   description: A full example based on GOV.UK's current footer
   data:
     navigation:
+      - title: Coronavirus (COVID-19)
+        width: two-thirds
+        items:
+          - href: '/coronavirus'
+            text: 'Coronavirus (COVID-19): guidance and support'
+      - title: Brexit
+        width: one-third
+        items:
+          - href: '/brexit'
+            text: Check what you need to do
       - title: Services and information
+        width: two-thirds
         columns: 2
         items:
           - href: '/browse/benefits'
@@ -228,6 +282,7 @@ examples:
           - href: '/browse/working'
             text: Working, jobs and pensions
       - title: Departments and policy
+        width: one-third
         items:
           - href: '/government/how-government-works'
             text: How government works
@@ -260,6 +315,7 @@ examples:
   data:
     navigation:
       - title: Single column list 1
+        width: one-third
         columns: 1
         items:
           - href: '#1'
@@ -275,6 +331,7 @@ examples:
           - href: '#6'
             text: Navigation item 6
       - title: Single column list 2
+        width: one-third
         columns: 1
         items:
           - href: '#1'
@@ -290,6 +347,7 @@ examples:
           - href: '#6'
             text: Navigation item 6
       - title: Single column list 3
+        width: one-third
         columns: 1
         items:
           - href: '#1'
@@ -307,32 +365,40 @@ examples:
 
 # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
 - name: attributes
+  hidden: true
   data:
     attributes:
       data-test-attribute: value
       data-test-attribute-2: value-2
 - name: classes
+  hidden: true
   data:
     classes: app-footer--custom-modifier
 - name: with container classes
+  hidden: true
   data:
     containerClasses: app-width-container
 - name: with empty meta
+  hidden: true
   data:
     meta: {}
 - name: with empty meta items
+  hidden: true
   data:
     meta:
       items: []
 - name: meta html as text
+  hidden: true
   data:
     meta:
       text: GOV.UK Prototype Kit <strong>v7.0.1</strong>
 - name: with meta html
+  hidden: true
   data:
     meta:
       html: GOV.UK Prototype Kit <strong>v7.0.1</strong>
 - name: with meta item attributes
+  hidden: true
   data:
     meta:
       items:
@@ -342,9 +408,11 @@ examples:
             data-attribute: my-attribute
             data-attribute-2: my-attribute-2
 - name: with empty navigation
+  hidden: true
   data:
     navigation: []
 - name: with navigation item attributes
+  hidden: true
   data:
     navigation:
       - title: Single column list 1

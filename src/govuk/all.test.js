@@ -9,7 +9,7 @@ const { renderSass } = require('../../lib/jest-helpers')
 
 const baseUrl = 'http://localhost:' + PORT
 
-beforeAll(async (done) => {
+beforeAll(() => {
   // Capture JavaScript errors.
   page.on('pageerror', error => {
     // If the stack trace includes 'all.js' then we want to fail these tests.
@@ -17,7 +17,6 @@ beforeAll(async (done) => {
       throw error
     }
   })
-  done()
 })
 
 describe('GOV.UK Frontend', () => {
@@ -52,26 +51,28 @@ describe('GOV.UK Frontend', () => {
         'Checkboxes',
         'ErrorSummary',
         'Header',
+        'NotificationBanner',
         'Radios',
         'Tabs',
-        'Select'
+        'Select',
+        'SkipLink',
+        'Tabs'
       ])
     })
-    it('exported Components can be initialised', async () => {
+    it('exported Components have an init function', async () => {
       await page.goto(baseUrl + '/', { waitUntil: 'load' })
 
-      const GOVUKFrontendGlobal = await page.evaluate(() => window.GOVUKFrontend)
+      var componentsWithoutInitFunctions = await page.evaluate(() => {
+        var components = Object.keys(window.GOVUKFrontend)
+          .filter(method => method !== 'initAll')
 
-      var components = Object.keys(GOVUKFrontendGlobal).filter(method => method !== 'initAll')
-
-      // Check that all the components on the GOV.UK Frontend global can be initialised
-      components.forEach(component => {
-        page.evaluate(component => {
-          const Component = window.GOVUKFrontend[component]
-          const $module = document.documentElement
-          new Component($module).init()
-        }, component)
+        return components.filter(component => {
+          var prototype = window.GOVUKFrontend[component].prototype
+          return typeof prototype.init !== 'function'
+        })
       })
+
+      expect(componentsWithoutInitFunctions).toEqual([])
     })
     it('can be initialised scoped to certain sections of the page', async () => {
       await page.goto(baseUrl + '/examples/scoped-initialisation', { waitUntil: 'load' })

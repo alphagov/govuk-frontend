@@ -7,7 +7,7 @@
                 "text": "Skip to main content",
                 "href": "#content"
             },
-            "html": "<a href=\"#content\" class=\"govuk-skip-link\">Skip to main content</a>",
+            "html": "<a href=\"#content\" class=\"govuk-skip-link\" data-module=\"govuk-skip-link\">Skip to main content</a>",
             "hidden": false
         },
         {
@@ -17,13 +17,13 @@
                 "text": "Skip to main content",
                 "href": "#content"
             },
-            "html": "<a href=\"#content\" class=\"govuk-skip-link :focus\">Skip to main content</a>",
+            "html": "<a href=\"#content\" class=\"govuk-skip-link :focus\" data-module=\"govuk-skip-link\">Skip to main content</a>",
             "hidden": false
         },
         {
             "name": "default values",
             "options": {},
-            "html": "<a href=\"#content\" class=\"govuk-skip-link\"></a>",
+            "html": "<a href=\"#content\" class=\"govuk-skip-link\" data-module=\"govuk-skip-link\"></a>",
             "hidden": true
         },
         {
@@ -32,7 +32,7 @@
                 "text": "Skip to custom content",
                 "href": "#custom"
             },
-            "html": "<a href=\"#custom\" class=\"govuk-skip-link\">Skip to custom content</a>",
+            "html": "<a href=\"#custom\" class=\"govuk-skip-link\" data-module=\"govuk-skip-link\">Skip to custom content</a>",
             "hidden": true
         },
         {
@@ -40,7 +40,7 @@
             "options": {
                 "text": "skip"
             },
-            "html": "<a href=\"#content\" class=\"govuk-skip-link\">skip</a>",
+            "html": "<a href=\"#content\" class=\"govuk-skip-link\" data-module=\"govuk-skip-link\">skip</a>",
             "hidden": true
         },
         {
@@ -48,7 +48,7 @@
             "options": {
                 "text": "<p>skip</p>"
             },
-            "html": "<a href=\"#content\" class=\"govuk-skip-link\">&lt;p&gt;skip&lt;/p&gt;</a>",
+            "html": "<a href=\"#content\" class=\"govuk-skip-link\" data-module=\"govuk-skip-link\">&lt;p&gt;skip&lt;/p&gt;</a>",
             "hidden": true
         },
         {
@@ -56,7 +56,7 @@
             "options": {
                 "html": "<p>skip</p>"
             },
-            "html": "<a href=\"#content\" class=\"govuk-skip-link\"><p>skip</p></a>",
+            "html": "<a href=\"#content\" class=\"govuk-skip-link\" data-module=\"govuk-skip-link\"><p>skip</p></a>",
             "hidden": true
         },
         {
@@ -65,7 +65,7 @@
                 "text": "Skip link",
                 "classes": "app-skip-link--custom-class"
             },
-            "html": "<a href=\"#content\" class=\"govuk-skip-link app-skip-link--custom-class\">Skip link</a>",
+            "html": "<a href=\"#content\" class=\"govuk-skip-link app-skip-link--custom-class\" data-module=\"govuk-skip-link\">Skip link</a>",
             "hidden": true
         },
         {
@@ -77,7 +77,7 @@
                     "aria-label": "Skip to content"
                 }
             },
-            "html": "<a href=\"#content\" class=\"govuk-skip-link\" data-test=\"attribute\" aria-label=\"Skip to content\">Skip link</a>",
+            "html": "<a href=\"#content\" class=\"govuk-skip-link\" data-test=\"attribute\" aria-label=\"Skip to content\" data-module=\"govuk-skip-link\">Skip link</a>",
             "hidden": true
         }
     ]

@@ -2,8 +2,6 @@
   .govuk-hint {
     @include govuk-font($size: 19);
 
-    display: block;
-
     margin-bottom: govuk-spacing(3);
 
     color: $govuk-secondary-text-colour;
@@ -39,6 +37,6 @@
 
   // Reduces visual spacing of legend when there is a hint
   .govuk-fieldset__legend + .govuk-hint {
-    margin-top: -(govuk-spacing(1));
+    margin-top: govuk-spacing(-1);
   }
 }
