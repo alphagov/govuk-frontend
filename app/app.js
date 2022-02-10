@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const nunjucks = require('nunjucks')
+const { marked } = require('marked')
 const util = require('util')
 const fs = require('fs')
 const path = require('path')
@@ -39,7 +40,7 @@ module.exports = (options) => {
 
   // make the function available as a filter for all templates
   env.addFilter('componentNameToMacroName', helperFunctions.componentNameToMacroName)
-  env.addGlobal('markdown', require('marked'))
+  env.addGlobal('markdown', marked)
 
   // Set view engine
   app.set('view engine', 'njk')

@@ -2,64 +2,65 @@
 
 ## Unreleased
 
+## 4.0.1 (Fix release)
+
+### Recommended changes
+
+We've recently made some non-breaking changes to GOV.UK Frontend. Implementing these changes will make your service work better.
+
+#### Remove the `tabindex` attribute from the error summary component
+
+If you're not using Nunjucks macros, remove the `tabindex` attribute from the error summary's HTML. The component JavaScript now adds and removes this attribute.
+
+This change was introduced in [pull request #2491: Prevent error summary from being refocused after it has been initially focused on page load](https://github.com/alphagov/govuk-frontend/pull/2491).
+
+### Fixes
+
+We’ve made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#2475: Tweak whitespace HTML for text input component to improve readability](https://github.com/alphagov/govuk-frontend/pull/2475)
+- [#2494: Allow disabling autofocus on error summary](https://github.com/alphagov/govuk-frontend/pull/2494)
+- [#2514: Fix accordion heading style while JavaScript is disabled](https://github.com/alphagov/govuk-frontend/pull/2514)
+- [#2515: Add explicit width to summary list row with 'no actions' pseudo-element](https://github.com/alphagov/govuk-frontend/pull/2515)
+- [#2524: Fix select component renders with grey background in Firefox and Safari](https://github.com/alphagov/govuk-frontend/pull/2524)
+
+## 4.0.0 (Breaking release)
+
 ### Breaking changes
-Where applicable, you must make the following changes when you migrate to this release, or your service may break.
+This release contains a lot of breaking changes, but we expect many of them will only affect a small number of users. However, to make sure your service still works after you upgrade, you should read the release notes and make any required changes.
 
 #### Check your accordions still display as expected
 
-[See the new design for accordions, and read the revised guidance, particularly about when, and when not, to use accordions](https://design-system.service.gov.uk/components/accordion/).
+We've changed the design of the accordion. You can [see its new look and read the revised guidance, particularly about when and when not to use accordions](https://design-system.service.gov.uk/components/accordion/).
 
-You should check that your accordions still display as expected if you:
+You should check your accordions still display as expected if you have any:
 
-- have applied any custom styles to your accordions
-- use accordions in non-standard ways
-- have section headings that contain unusual formatting (for example, wrappers)
+- accordions with custom styles
+- section headings that contain unusual formatting (for example, wrappers)
 
-You do not need to make changes to the content that accordions hide or show - this release's changes do not affect it.
+You do not need to make changes to the content that accordions hide or show, as this release's changes do not affect it.
 
 These changes were introduced in [pull request #2257: Update accordion design](https://github.com/alphagov/govuk-frontend/pull/2257). Thanks to [Mia Allers](https://github.com/mia-allers-gds), [Owen Jones](https://github.com/owenatgov), [Nikin Nagewadia](https://github.com/nnagewad) and [Chris Yoong](https://github.com/chris-gds) for their contributions.
 
-#### Review and revise the accordion's summary line content
-
-If you're already using the summary line, review your use to make sure you actually need it.
-
-If you need to keep the summary line, [review the accordion guidance](https://design-system.service.gov.uk/components/accordion/) and make it as short as possible.
-
 #### Only use the accordion’s summary line for ‘phrasing content’
 
-The summary line is now inside the HTML `button` element, so you can only add ['phrasing content'](https://html.spec.whatwg.org/#phrasing-content) to it. Do not use any non-phrasing content, as the resulting HTML will not be valid.
+The summary line is now inside the HTML `button` element, so you can only add ['phrasing content'](https://www.w3.org/TR/2011/WD-html5-20110525/content-models.html#phrasing-content-0) to it. Do not use any non-phrasing content, as the resulting HTML will not be valid.
 
 This change was introduced in [pull request #2257: Update accordion design](https://github.com/alphagov/govuk-frontend/pull/2257).
 
-#### Remove deprecated `govuk-main-wrapper` and `govuk-main-wrapper--l` mixins
+#### Review and revise the accordion's summary line content
 
-We've removed the `govuk-main-wrapper` and `govuk-main-wrapper--l` mixins which we deprecated in [GOV.UK Frontend v3.0.0](https://github.com/alphagov/govuk-frontend/releases/tag/v3.0.0).
+Only add a summary line if you need to, as it's likely to make the button text too long.
 
-Remove any use of these mixins in your own Sass. You can replace these mixins with direct references to the [spacing mixins](https://design-system.service.gov.uk/styles/spacing/#spacing-on-custom-components).
+If you're already using the summary line, review your use of the summary line to make sure you actually need it.
 
-This change was introduced in [pull request #2385: Remove deprecated `govuk-main-wrapper` and `govuk-main-wrapper--l` mixins](https://github.com/alphagov/govuk-frontend/pull/2385).
-
-#### Remove deprecated `$govuk-border-width-form-element-error` variable
-
-In [GOV.UK Frontend v3.8.0](https://github.com/alphagov/govuk-frontend/releases/tag/v3.8.0), we made the border width of form elements in their error state the same as for form elements in their normal state, and deprecated the `$govuk-border-width-form-element-error` variable.
-
-Before, an element's border got thicker to show the element was in an error state. However, elements in their focused state also have a thicker border. As a result, when users focused an element in an error state, the only visible border-change was from red to black. Not all users could perceive this change. So, we reduced the element border's width, to make sure its thickness changes when users focus.
-
-We've now removed `$govuk-border-width-form-element-error` completely.
-
-If you’re referencing `$govuk-border-width-form-element-error` in your own Sass, you must remove it. If you're also defining your own error state, you only need to change the border colour.
-
-You should avoid overriding the border width. For example, replace `border: $govuk-border-width-form-element-error solid $govuk-error-colour;` with `border-color: $govuk-error-colour;`.
-
-You should also remove any override of `$govuk-border-width-form-element-error` from your Sass. This override no longer does anything.
-
-This change was introduced in [pull request #1963: Remove deprecated `$govuk-border-width-form-element-error` variable](https://github.com/alphagov/govuk-frontend/pull/1963).
+If you need to keep the summary line, [review the accordion guidance](https://design-system.service.gov.uk/components/accordion/) and make the summary line as short as possible.
 
 #### Update the HTML for summary lists
 
-We've updated the HTML for the summary list component to avoid nesting `<span>` elements within `<dd>` elements, which is invalid HTML. This update only affects summary lists that include a mix of rows with and without actions.
+We've updated the HTML for the summary list component to avoid nesting `<span>` elements within `<dd>` elements, which is invalid HTML. This update only affects you if you have summary lists that include a mix of rows with and without actions. You can [read more about adding actions to rows](https://design-system.service.gov.uk/components/summary-list/#adding-actions-to-each-row).
 
-Do not include an empty `<span class="govuk-summary-list__actions"></span>` within the rows that do not have any actions. Instead, add the `govuk-summary-list__row--no-actions` modifier class to the row.
+If you're not using Nunjucks macros, do not include an empty `<span class="govuk-summary-list__actions"></span>` in rows without actions. Instead, add the `govuk-summary-list__row--no-actions` modifier class to the row.
 
 This change was introduced in [pull request #2323: Avoid invalid nesting of `<span>` within a `<dd>` in summary list](https://github.com/alphagov/govuk-frontend/pull/2323). Thanks to [Malcolm Hire]( https://github.com/malcolmhire) for reporting this issue.
 
@@ -67,7 +68,7 @@ This change was introduced in [pull request #2323: Avoid invalid nesting of `<sp
 
 We've updated the HTML for the header. This update only affects you if your header includes navigation.
 
-Any additional classes passed using the `navigationClasses` Nunjucks option are now applied to the `<nav>` rather than the `<ul>`. Check that the additional classes are still doing what you expect.
+Any additional classes passed using the `navigationClasses` Nunjucks option are now applied to the `<nav>` rather than the `<ul>`. Check the additional classes are still doing what you expect.
 
 If you're not using Nunjucks macros, then you should:
 
@@ -76,34 +77,76 @@ If you're not using Nunjucks macros, then you should:
 - move the `govuk-header__navigation` class from the `<ul>` to the `<nav>`
 - add the `govuk-header__navigation-list` class to the `<ul>`
 
-Check your changes against the [header example in the Design System](https://design-system.service.gov.uk/components/header/#header-with-service-name-and-navigation).
+[Check your changes against the header example in the Design System](https://design-system.service.gov.uk/components/header/#header-with-service-name-and-navigation) to make sure you have correctly implemented them.
 
 This change was introduced in [pull request #2427: Improve the screen reader experience for the header menu](https://github.com/alphagov/govuk-frontend/pull/2427).
 
-#### Make sure components that conditionally reveal other questions still work as expected
+#### Style any custom HTML in your cookie banner
 
-On radios and checkboxes, the JavaScript now looks within the whole page for conditionally revealed content. Before, it only looked within the same set of radios or checkboxes.
+We've removed the default font styles from the cookie banner Sass. This change makes it more obvious when you have not added classes and styles to any custom HTML.
 
-If you see unexpected behaviour, [make sure the revealed content's `id` is unique within the page the content is on](https://www.w3.org/WAI/WCAG21/Techniques/html/H93). Reusing the same `id` within a page could cause a radio or checkbox to reveal and hide the wrong element, and also means your HTML is invalid.
+If you're passing custom HTML into the cookie banner component (for example, using the `html` Nunjucks parameter), you must make sure you're applying the appropriate classes and styles to that HTML. This could look like, for example, adding the `govuk-body` class to any paragraph tags. You must do this to prevent your cookie banner displaying with unstyled text.
+
+This change was introduced in [pull request #2432: Remove default font styles from cookie banner Sass](https://github.com/alphagov/govuk-frontend/pull/2432).
+
+#### Update the HTML for hints
+
+In GOV.UK Frontend v3.8.0, we [updated the HTML for hints to use a `<div>` rather than a `<span>` element, to allow the use of block elements](https://github.com/alphagov/govuk-frontend/issues/1835). We've now removed the styles which made the hint `<span>` display as block.
+
+If you’re not using Nunjucks macros, update your hint HTML to use a `<div>` rather than a `<span>`. For example: `<div id="input-hint" class="govuk-hint"></div>` instead of `<span id="input-hint" class="govuk-hint"></span>`.
+
+This change was introduced in [pull request #2437: Remove `display:block` on hint component](https://github.com/alphagov/govuk-frontend/pull/2437).
+
+#### Include JavaScript for skip link to improve screen reader announcements
+
+We've added JavaScript for the skip link component to set focus to the linked element, for example, the main content on the page. This helps screen readers read the linked content when users use the skip link component.
+
+If you're [importing JavaScript for individual components](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#select-and-initialise-an-individual-component), import the skip link JavaScript.
+
+If you're not using Nunjucks macros, add a `data-module="govuk-skip-link"` attribute to the component HTML. For example:
+
+```html
+<div class="govuk-skip-link" data-module="govuk-skip-link">
+...
+</div>
+```
+
+Once you've made the changes, check the skip link JavaScript works. To do this, select the skip link and check the linked element (usually the `<main>` element) in the browser has a `tabindex` attribute.
+
+This change was introduced in [pull request #2450: Set focus to skip link target to improve screen reader announcements](https://github.com/alphagov/govuk-frontend/pull/2450).
+
+#### Update the HTML for error messages
+
+We’ve updated the HTML for the error message component to use a `<p>` element instead of a `<span>` element, as this is more semantically correct.
+
+If you’re not using Nunjucks macros, swap the `<span class="govuk-error-message">` for a `<p class="govuk-error-message">`.
+
+This change was introduced in [pull request #2452: Update error messages to use paragraph tags instead of spans](https://github.com/alphagov/govuk-frontend/pull/2452).
+
+#### Check components that conditionally reveal content still work
+
+On radios and checkboxes, the JavaScript now looks within the whole page for conditionally-revealed content. Before, it only looked within the same set of radios or checkboxes.
+
+If you see unexpected behaviour, [make sure the revealed content's `id` is unique within the page the content is on](https://www.w3.org/WAI/WCAG21/Techniques/html/H93). Reusing the same `id` within a page could cause a radio or checkbox to reveal or hide the wrong element, and also means your HTML is invalid.
 
 This change was introduced in [pull request #2370: Prevent issues with conditionally revealed content when content `id` includes CSS syntax characters](https://github.com/alphagov/govuk-frontend/pull/2370).
 
-#### Make sure character counts still work as expected
+#### Check the character count component still works as expected
 
-On character counts, the JavaScript now looks within the whole page for the count message. Before, it only looked around the character count.
+On character counts, the JavaScript now looks within the whole page for the count message, which will be something similar to “You have 200 characters remaining”. Before, it only looked within the character count component.
 
-If you see unexpected behaviour, make sure the `id` for the  textarea is unique within the page the content is on. Reusing the same `id` within a page could cause the wrong count message to be updated, and also means your HTML is invalid.
+If you see unexpected behaviour, make sure the `id` for the textarea component is unique within the page the content is on. Reusing the same `id` within a page could cause the wrong count message to update, and also means your HTML is invalid.
 
 This change was introduced in [pull request #2408: Prevent issues with character count when textarea `id` includes CSS syntax characters](https://github.com/alphagov/govuk-frontend/pull/2408).
 
-#### Make sure individually imported JavaScript modules work as expected
+#### Check individually-imported JavaScript modules work as expected
 
-You do not need to do anything if you have either:
+You do not need to do anything if you have done at least one of the following:
 
 - followed our [Getting Started guide](https://frontend.design-system.service.gov.uk/get-started/#5-get-the-javascript-working) and are importing all of the GOV.UK Frontend JavaScript in one go via `all.js`
 - installed GOV.UK Frontend using precompiled files
 
-We've changed the naming of our components' JavaScript modules so that individual imports are now attached to
+We've changed the naming of our components' JavaScript modules so individual imports are now attached to
 `window.GOVUKFrontend.[ComponentName]` instead of `window.GOVUKFrontend`.
 
 You can now import multiple modules without overwriting the previous one, for example:
@@ -118,66 +161,6 @@ You can now import multiple modules without overwriting the previous one, for ex
 If you're importing JavaScript modules individually, you should check any references to `window.GOVUKFrontend` in your code and update them to point to the correct component, `window.GOVUKFrontend.[ComponentName]`. You can now remove any workarounds you may have implemented.
 
 This change was introduced in [pull request #2426: Rename exported JavaScript modules to include component name](https://github.com/alphagov/govuk-frontend/pull/2426). Thanks to [Alex Jurubita](https://github.com/alex-ju) for reporting this issue.
-
-#### Update the HTML for error messages
-
-We’ve updated the HTML for the error message component to use a paragraph element instead of a span element, as this is more semantically correct.
-
-If you’re not using Nunjucks macros, swap the `<span class="govuk-error-message">` for a `<p class="govuk-error-message">`.
-
-This change was introduced in [pull request #2452: Update error messages to use paragraph tags instead of spans](https://github.com/alphagov/govuk-frontend/pull/2452).
-
-#### Update the HTML for hints
-
-In GOV.UK Frontend v3.8.0, we [updated the HTML for hints to use a `<div>` rather than a `<span>` element, to allow the use of block elements](https://github.com/alphagov/govuk-frontend/issues/1835). We've now removed the styles which made the hint `<span>` display as block.
-
-To make sure your hints are styled correctly, update your hint HTML to use a `<div>` rather than a `<span>`. For example: `<div id="input-hint" class="govuk-hint"></div>`.
-
-You do not need to do anything if you're using Nunjucks macros.
-
-This change was introduced in [pull request #2437: Remove `display:block` on hint component](https://github.com/alphagov/govuk-frontend/pull/2437).
-
-#### Include JavaScript for skip link to improve screen reader announcements
-
-We've added JavaScript for the skip link component to set focus to the linked element, for example, the main content on the page. This helps screen readers read the linked content when users use the skip link.
-
-If you're not using Nunjucks macros, add a `data-module="govuk-skip-link"` attribute to the component HTML. For example:
-
-```html
-<div class="govuk-skip-link" data-module="govuk-skip-link">
-...
-</div>
-```
-
-If you're [importing JavaScript for individual components](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#select-and-initialise-an-individual-component), import the skip link JavaScript.
-
-Once you've made the changes, check that the skip link JavaScript works. To make sure, click the skip link and check that the linked element (usually the `<main>` element) in the browser has a `tabindex` attribute.
-
-This change was introduced in [pull request #2450: Set focus to skip link target to improve screen reader announcements](https://github.com/alphagov/govuk-frontend/pull/2450).
-
-#### Remove calls to deprecated `iff` Sass function
-
-We've removed the `iff` function which we deprecated in [GOV.UK Frontend version 3.6.0](https://github.com/alphagov/govuk-frontend/releases/tag/v3.6.0).
-
-If you’re calling `iff` from your own Sass, you should use [Sass's native `if` function](https://sass-lang.com/documentation/modules#if) instead.
-
-This change was introduced in [pull request #2409: Remove deprecated `iff` Sass function](https://github.com/alphagov/govuk-frontend/pull/2409).
-
-#### Remove deprecated `govuk-tag--inactive` class
-
-We've removed the `govuk-tag--inactive` class which we deprecated in [GOV.UK Frontend v3.6.0](https://github.com/alphagov/govuk-frontend/releases/tag/v3.6.0).
-
-Replace any use of this class with the `govuk-tag--grey` class.
-
-This change was introduced in [pull request #2417: Remove deprecated `govuk-tag--inactive class`](https://github.com/alphagov/govuk-frontend/pull/2417).
-
-#### Style any custom HTML in your cookie banner
-
-We've removed the default font styles from the cookie banner Sass. This change makes it more obvious when classes and styles have not been added to any custom HTML.
-
-If you're passing custom HTML into the cookie banner component (for example, using the `html` Nunjucks parameter), you must make sure you're applying the appropriate classes and styles to that HTML, such as adding the `govuk-body` class to any paragraph tags. You must do this to prevent your cookie banner displaying with unstyled text.
-
-This change was introduced in [pull request #2432: Remove default font styles from cookie banner Sass](https://github.com/alphagov/govuk-frontend/pull/2432).
 
 #### Import 'base' before importing Sass files from `core` or `overrides` layers
 
@@ -198,11 +181,11 @@ If you import the 'template' Sass file from the `core` layer, you might see the 
 
 To fix this error, replace any imports of `node_modules/govuk-frontend/govuk/core/template` with `node_modules/govuk-frontend/govuk/objects/template`.
 
-This change was introduced in [pull request #22463: Move template styles from `core` to `objects` layer](https://github.com/alphagov/govuk-frontend/pull/2463).
+This change was introduced in [pull request #2463: Move template styles from `core` to `objects` layer](https://github.com/alphagov/govuk-frontend/pull/2463).
 
 #### Check your footer displays as expected
 
-We’ve made some fixes to the alignment of columns within the footer component, so they align with our grid. We've also removed the logic that assumes a 2-section layout displays as a 'two-thirds and one-third' layout. Footer sections now display as full-width by default.
+We’ve made some fixes to the alignment of columns within the footer component, so they now align with our grid. We've also removed the logic that assumes a 2-section layout displays as a 'two-thirds and one-third' layout. Footer sections now display as full-width by default.
 
 If you're using the Nunjucks macros, check your footer displays as expected and use the `width` macro option to set the width you want for each section.
 
@@ -214,7 +197,47 @@ If you're not using the Nunjucks macros, check your footer displays as expected 
 
 This change was introduced in [pull request #2462: Fix footer alignment with grid classes and add `width` macro option](https://github.com/alphagov/govuk-frontend/pull/2462).
 
-### Optional changes
+#### Remove deprecated `$govuk-border-width-form-element-error` variable
+
+In [GOV.UK Frontend v3.8.0](https://github.com/alphagov/govuk-frontend/releases/tag/v3.8.0), we made the border width of form elements in their error state the same as for form elements in their normal state and deprecated the `$govuk-border-width-form-element-error` variable.
+
+Before, an element's border got thicker to show the element was in an error state. However, elements in their focused state also have a thicker border. As a result, when users focused an element in an error state, the only visible border-change was from red to black. Not all users could perceive this change. So, we reduced the element border's width, to make sure its thickness changes when users focus.
+
+We've now removed `$govuk-border-width-form-element-error` completely.
+
+If you’re referencing `$govuk-border-width-form-element-error` in your own Sass, you must remove it. If you're also defining your own error state, you only need to change the border colour.
+
+You should avoid overriding the border width. For example, replace `border: $govuk-border-width-form-element-error solid $govuk-error-colour;` with `border-color: $govuk-error-colour;`.
+
+You should also remove any override of `$govuk-border-width-form-element-error` from your Sass. This override no longer does anything.
+
+This change was introduced in [pull request #1963: Remove deprecated `$govuk-border-width-form-element-error` variable](https://github.com/alphagov/govuk-frontend/pull/1963).
+
+#### Remove deprecated `govuk-main-wrapper` and `govuk-main-wrapper--l` mixins
+
+We've removed the `govuk-main-wrapper` and `govuk-main-wrapper--l` mixins we deprecated in [GOV.UK Frontend v3.0.0](https://github.com/alphagov/govuk-frontend/releases/tag/v3.0.0).
+
+Remove any use of these mixins in your own Sass. You can replace these mixins with direct references to the [spacing mixins](https://design-system.service.gov.uk/styles/spacing/#spacing-on-custom-components).
+
+This change was introduced in [pull request #2385: Remove deprecated `govuk-main-wrapper` and `govuk-main-wrapper--l` mixins](https://github.com/alphagov/govuk-frontend/pull/2385).
+
+#### Remove calls to deprecated `iff` Sass function
+
+We've removed the `iff` function we deprecated in [GOV.UK Frontend version 3.6.0](https://github.com/alphagov/govuk-frontend/releases/tag/v3.6.0).
+
+If you’re calling `iff` from your own Sass, you should use [Sass's native `if` function](https://sass-lang.com/documentation/modules#if) instead.
+
+This change was introduced in [pull request #2409: Remove deprecated `iff` Sass function](https://github.com/alphagov/govuk-frontend/pull/2409).
+
+#### Remove deprecated `govuk-tag--inactive` class
+
+We've removed the `govuk-tag--inactive` class we deprecated in [GOV.UK Frontend v3.6.0](https://github.com/alphagov/govuk-frontend/releases/tag/v3.6.0).
+
+Replace any use of this class with the `govuk-tag--grey` class.
+
+This change was introduced in [pull request #2417: Remove deprecated `govuk-tag--inactive class`](https://github.com/alphagov/govuk-frontend/pull/2417).
+
+### Recommended changes
 
 We've recently made some other changes to GOV.UK Frontend. While these are not breaking changes, implementing them will make your service work better.
 
@@ -226,26 +249,26 @@ There are some known issues with inputs of `type="number"`. [Read our research i
 
 If you’re not using Nunjucks macros, remove the `type="number"` attribute from the date input component.
 
- Replace it with `type="text"` and `inputmode="numeric"`, for example:
+Replace it with `type="text"` and `inputmode="numeric"`. For example:
 
 ```
 <input class="govuk-input govuk-date-input__input" id="passport-issued-month" name="passport-issued-month" type="text" pattern="[0-9]*" inputmode="numeric">
 
 ```
 
-This was added in [pull request #1704: Update date input to use `type=text` and  `inputmode=numeric`](https://github.com/alphagov/govuk-frontend/pull/1704).
+This change was introduced in [pull request #1704: Update date input to use `type=text` and  `inputmode=numeric`](https://github.com/alphagov/govuk-frontend/pull/1704).
 
 #### Fix fallback logo so Chrome will not flag it to screen readers
 
-If you’re not using Nunjucks macros, you will need to change the SVG markup within the header, footer and button components. We’ve added this fix so screen readers will not announce the fallback image to users.
+If you’re not using Nunjucks macros, change the SVG markup within the header, footer and button components. We’ve added this fix so screen readers will not announce the fallback image to users.
 
-Replace `role="presentation"` with `aria-hidden="true"`. For example:
+For the header, footer and button, replace `role="presentation"` with `aria-hidden="true"`. For example:
 
 ```
 <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
 ```
 
-This was added in [pull request #1724: Fix fallback logo so Chrome will not flag it to screen readers](https://github.com/alphagov/govuk-frontend/pull/1724).
+This change was introduced in [pull request #1724: Fix fallback logo so Chrome will not flag it to screen readers](https://github.com/alphagov/govuk-frontend/pull/1724).
 
 #### Add `data-nosnippet` attribute to cookie banner
 
@@ -257,7 +280,7 @@ If you’re not using Nunjucks macros, add a new `data-nosnippet` attribute to t
 <div class="govuk-cookie-banner " data-nosnippet role="region" aria-label="Cookies on your service">
 ```
 
-This was added in [pull request #2192: Add `data-nosnippet` to prevent cookie banner text appearing in Google Search snippets](https://github.com/alphagov/govuk-frontend/pull/2192).
+This change was introduced in [pull request #2192: Add `data-nosnippet` to prevent cookie banner text appearing in Google Search snippets](https://github.com/alphagov/govuk-frontend/pull/2192).
 
 ### Fixes
 

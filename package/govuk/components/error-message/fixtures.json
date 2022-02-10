@@ -6,7 +6,7 @@
             "options": {
                 "text": "Error message about full name goes here"
             },
-            "html": "<span class=\"govuk-error-message\">\n  <span class=\"govuk-visually-hidden\">Error:</span> Error message about full name goes here\n</span>",
+            "html": "<p class=\"govuk-error-message\">\n  <span class=\"govuk-visually-hidden\">Error:</span> Error message about full name goes here\n</p>",
             "hidden": false
         },
         {
@@ -15,7 +15,7 @@
                 "id": "my-error-message-id",
                 "text": "This is an error message"
             },
-            "html": "<span id=\"my-error-message-id\" class=\"govuk-error-message\">\n  <span class=\"govuk-visually-hidden\">Error:</span> This is an error message\n</span>",
+            "html": "<p id=\"my-error-message-id\" class=\"govuk-error-message\">\n  <span class=\"govuk-visually-hidden\">Error:</span> This is an error message\n</p>",
             "hidden": true
         },
         {
@@ -24,7 +24,7 @@
                 "classes": "custom-class",
                 "text": "This is an error message"
             },
-            "html": "<span class=\"govuk-error-message custom-class\">\n  <span class=\"govuk-visually-hidden\">Error:</span> This is an error message\n</span>",
+            "html": "<p class=\"govuk-error-message custom-class\">\n  <span class=\"govuk-visually-hidden\">Error:</span> This is an error message\n</p>",
             "hidden": true
         },
         {
@@ -32,7 +32,7 @@
             "options": {
                 "text": "Unexpected > in body"
             },
-            "html": "<span class=\"govuk-error-message\">\n  <span class=\"govuk-visually-hidden\">Error:</span> Unexpected &gt; in body\n</span>",
+            "html": "<p class=\"govuk-error-message\">\n  <span class=\"govuk-visually-hidden\">Error:</span> Unexpected &gt; in body\n</p>",
             "hidden": true
         },
         {
@@ -40,7 +40,7 @@
             "options": {
                 "html": "Unexpected <b>bold text</b> in body copy"
             },
-            "html": "<span class=\"govuk-error-message\">\n  <span class=\"govuk-visually-hidden\">Error:</span> Unexpected <b>bold text</b> in body copy\n</span>",
+            "html": "<p class=\"govuk-error-message\">\n  <span class=\"govuk-visually-hidden\">Error:</span> Unexpected <b>bold text</b> in body copy\n</p>",
             "hidden": true
         },
         {
@@ -52,7 +52,7 @@
                     "id": "my-error-message"
                 }
             },
-            "html": "<span class=\"govuk-error-message\" data-test=\"attribute\" id=\"my-error-message\">\n  <span class=\"govuk-visually-hidden\">Error:</span> This is an error message\n</span>",
+            "html": "<p class=\"govuk-error-message\" data-test=\"attribute\" id=\"my-error-message\">\n  <span class=\"govuk-visually-hidden\">Error:</span> This is an error message\n</p>",
             "hidden": true
         },
         {
@@ -61,7 +61,7 @@
                 "text": "Rhowch eich enw llawn",
                 "visuallyHiddenText": "Gwall"
             },
-            "html": "<span class=\"govuk-error-message\">\n  <span class=\"govuk-visually-hidden\">Gwall:</span> Rhowch eich enw llawn\n</span>",
+            "html": "<p class=\"govuk-error-message\">\n  <span class=\"govuk-visually-hidden\">Gwall:</span> Rhowch eich enw llawn\n</p>",
             "hidden": true
         },
         {
@@ -70,7 +70,7 @@
                 "text": "There is an error on line 42",
                 "visuallyHiddenText": false
             },
-            "html": "<span class=\"govuk-error-message\">\n  There is an error on line 42\n</span>",
+            "html": "<p class=\"govuk-error-message\">\n  There is an error on line 42\n</p>",
             "hidden": true
         }
     ]

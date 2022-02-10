@@ -65,11 +65,11 @@
             "options": {
                 "text": "This is a new service – your feedback will help us to improve it",
                 "tag": {
-                    "classes": "govuk-tag--inactive",
+                    "classes": "govuk-tag--grey",
                     "text": "alpha"
                 }
             },
-            "html": "<div class=\"govuk-phase-banner\">\n  <p class=\"govuk-phase-banner__content\">\n    <strong class=\"govuk-tag govuk-phase-banner__content__tag govuk-tag--inactive\">\n      alpha\n    </strong>\n    <span class=\"govuk-phase-banner__text\">\n      This is a new service – your feedback will help us to improve it\n    </span>\n  </p>\n</div>",
+            "html": "<div class=\"govuk-phase-banner\">\n  <p class=\"govuk-phase-banner__content\">\n    <strong class=\"govuk-tag govuk-phase-banner__content__tag govuk-tag--grey\">\n      alpha\n    </strong>\n    <span class=\"govuk-phase-banner__text\">\n      This is a new service – your feedback will help us to improve it\n    </span>\n  </p>\n</div>",
             "hidden": true
         }
     ]

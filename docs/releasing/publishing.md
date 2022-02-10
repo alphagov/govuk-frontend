@@ -19,7 +19,7 @@
     - GOV.UK Prototype kit
   - check who the release’s contributors are and if we have consent to include their name
 
-5. Technical writer to finalise draft of release notes and get 2i on them.
+5. Technical writer to finalise draft of release notes and get 2i on them. If the technical writer is unavailable, ask for help in the [gds-technical-writing Slack channel](https://gds.slack.com/archives/CAD0R2NQG).
 
 6. Content designer or designer to update community backlog with rationale for any decisions we made.
 
@@ -34,7 +34,7 @@
 
 # Publish a new version of GOV.UK Frontend
 
-Developers should pair on releases. When remote working, it can be useful to be on a call together.
+Developers should pair on releases. When remote working, it can be useful to be on a call together. Likewise, to help align releases, members of the Design System and Prototype Kit teams should both join the release call.
 
 1. Check out the **main** branch and pull the latest changes.
 
@@ -52,30 +52,18 @@ Developers should pair on releases. When remote working, it can be useful to be 
 
 7. Save the changes. Do not commit.
 
-8. Run `npm run build-release`. You will be now be prompted to continue or cancel.
+8. Run `npm run build-release` to:
 
-9. (Optional) Test in [GOV.UK Design System](git@github.com:alphagov/govuk-design-system.git)
+- build GOV.UK Frontend into the `/package` and `/dist` directories
+- commit the changes
+- push a branch to GitHub
 
-  If you want to test that your changes work in the GOV.UK Design System, you can use [npm link](https://docs.npmjs.com/cli/link) to test before publishing.
+  You will now be prompted to continue or cancel.
 
-  ```bash
-  cd ../govuk-design-system
-  git checkout main
-  git pull
-  npm install # note running `npm install` after `npm link` will destroy the link.
-  npm link ../govuk-frontend/package/
-  ```
-
-  When you have finished, you need to unlink the package.
-
-  ```bash
-  npm unlink ../govuk-frontend/package/
-  ```
-
-10. Create a pull request and copy the changelog text.
+9. Create a pull request and copy the changelog text.
    When reviewing the PR, check that the version-numbers have been updated and that the compiled assets use this version-number.
 
-11. Once a reviewer approves the pull request, merge it to **main**.
+10. Once a reviewer approves the pull request, merge it to **main**.
 
 ## Publish a release to npm
 
@@ -87,7 +75,7 @@ Developers should pair on releases. When remote working, it can be useful to be 
 
 4. View the created tag in the [Github interface](https://github.com/alphagov/govuk-frontend/releases) as follows:
   - select the latest tag
-  - press **Edit tag**
+  - press **Create release from tag**
   - set 'GOV.UK Frontend v[version-number]' as the title
   - add release notes from changelog
   - attach the generated ZIP that has been generated at the root of this project

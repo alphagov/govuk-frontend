@@ -4,6 +4,9 @@ on:
   pull_request:
     paths: ['dist/**']
 
+permissions:
+  pull-requests: write
+
 jobs:
   generate-diff:
     name: Generate Diff

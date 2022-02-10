@@ -15,6 +15,11 @@
     padding: govuk-spacing(1); // was 5px 4px 4px - size of it should be adjusted to match other form elements
     border: $govuk-border-width-form-element solid $govuk-input-border-colour;
 
+    // Default user agent colours for selects can have low contrast,
+    // and may look disabled (#2435)
+    color: $govuk-text-colour;
+    background-color: govuk-colour("white");
+
     &:focus {
       outline: $govuk-focus-width solid $govuk-focus-colour;
       // Ensure outline appears outside of the element

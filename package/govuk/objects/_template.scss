@@ -1,10 +1,6 @@
-@if not mixin-exists("govuk-exports") {
-  @warn "Importing items from the core layer without first importing `base` is deprecated, and will no longer work as of GOV.UK Frontend v4.0.";
-}
-
 @import "../base";
 
-@include govuk-exports("govuk/core/template") {
+@include govuk-exports("govuk/objects/template") {
 
   // Applied to the <html> element
   .govuk-template {
