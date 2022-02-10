@@ -109,6 +109,7 @@ Input.prototype.updateSuggestionsWithOptions = function (options) {
 
   this.$ul.hidden = false
   this.$suggestionsHeader.hidden = false
+  this.$formGroup.setAttribute('aria-expanded', 'true')
 }
 
 Input.prototype.handleSuggestionClicked = function (event) {
@@ -196,11 +197,13 @@ Input.prototype.moveFocusToOptions = function () {
 Input.prototype.hideSuggestions = function () {
   this.$ul.hidden = true
   this.$suggestionsHeader.hidden = true
+  this.$formGroup.setAttribute('aria-expanded', 'false')
 }
 
 Input.prototype.displayNoSuggestionsFound = function () {
   this.$ul.hidden = true
   this.$suggestionsHeader.hidden = true
+  this.$formGroup.setAttribute('aria-expanded', 'false')
 }
 
 export default Input
