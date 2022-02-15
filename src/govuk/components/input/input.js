@@ -22,7 +22,7 @@ Input.prototype.init = function () {
 
     this.$suggestionsHeader = document.createElement('h2')
     this.$suggestionsHeader.setAttribute('class', 'govuk-input__suggestions-header')
-    this.$suggestionsHeader.textContent = 'Suggestions'
+    this.$suggestionsHeader.textContent = this.$module.getAttribute('data-suggestions-header')
     this.$suggestionsHeader.hidden = true
 
     this.$ul = document.createElement('ul')

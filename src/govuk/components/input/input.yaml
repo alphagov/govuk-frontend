@@ -125,6 +125,7 @@ examples:
       name: test-suggestions
       attributes:
         data-module: govuk-input
+        data-suggestions-header: Suggestions
       suggestions:
         items:
           -
