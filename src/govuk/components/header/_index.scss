@@ -111,6 +111,16 @@
     font-size: 30px; // We don't have a mixin that produces 30px font size
     line-height: 1;
 
+    @include govuk-media-query($from: tablet) {
+      display: inline;
+
+      &:focus {
+        // Replicate the focus box shadow but without the -2px y-offset of the first yellow shadow
+        // This is to stop the logo getting cut off by the box shadow when focused on above a product name
+        box-shadow: 0 0 $govuk-focus-colour;
+      }
+    }
+
     &:link,
     &:visited {
       text-decoration: none;

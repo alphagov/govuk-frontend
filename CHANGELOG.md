@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Fixes
+
+[#2549: Fix header with product name focus and hover state length](https://github.com/alphagov/govuk-frontend/pull/2549)
+
 ## 4.0.1 (Fix release)
 
 ### Recommended changes
