@@ -40,7 +40,14 @@ it.each(allComponents)('%s.scss renders to CSS without errors', (component) => {
   })
 })
 
-it.each(allComponents)('generate screenshots for Percy visual regression', async (component) => {
+it.each(allComponents)('generate screenshots for Percy visual regression, with JavaScript disabled', async (component) => {
+  await page.setJavaScriptEnabled(false)
   await page.goto(baseUrl + '/components/' + component + '/preview', { waitUntil: 'load' })
-  await percySnapshot(page, component)
+  await percySnapshot(page, 'no-js: ' + component)
+})
+
+it.each(allComponents)('generate screenshots for Percy visual regression, with JavaScript enabled', async (component) => {
+  await page.setJavaScriptEnabled(true)
+  await page.goto(baseUrl + '/components/' + component + '/preview', { waitUntil: 'load' })
+  await percySnapshot(page, 'js: ' + component)
 })
