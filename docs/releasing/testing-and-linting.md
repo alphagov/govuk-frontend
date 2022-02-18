@@ -1,6 +1,6 @@
 # Testing and linting
 
-The CI lints SASS and JavaScript, and runs unit and functional tests with Node.
+The CI lints SASS and JavaScript, runs unit and functional tests with Node, and generates snapshots for visual regression testing (Percy.io).
 
 ## Running all tests locally
 
@@ -47,3 +47,13 @@ If a snapshot test fails, review the difference in the console. If the change is
 `npm test -- -u src/govuk/components/button`
 
 This will update the snapshot file. Commit this file separately with a commit message that explains you're updating the snapshot file and an explanation of what caused the change.
+
+## Visual regression testing with Percy
+
+We use [Percy](https://percy.io/), a visual regression testing tool, to generate and store screenshots of our components to help us check for any unintended visual changes.
+
+We generate two screenshots for each default example of every component: one with JavaScript enabled and one with JavaScript disabled. Screenshots are not taken for all the different variations of each component. This tool is not a replacement for manual testing.
+
+The screenshots are public, so they can be checked without logging in. A BrowserStack account is needed to approve or reject any changes. It's the responsibility of the person reviewing the pull request code to approve any visual changes that Percy highlights.
+
+Note: when running the tests locally via `npm test`, Percy commands are ignored and no screenshots are generated. You will see the following message in your command line output: `[percy] Percy is not running, disabling snapshots`.
