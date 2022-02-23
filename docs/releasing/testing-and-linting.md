@@ -56,4 +56,14 @@ We generate two screenshots for each default example of every component: one wit
 
 The screenshots are public, so they can be checked without logging in. A BrowserStack account is needed to approve or reject any changes. It's the responsibility of the person reviewing the pull request code to approve any visual changes that Percy highlights.
 
-Note: when running the tests locally via `npm test`, Percy commands are ignored and no screenshots are generated. You will see the following message in your command line output: `[percy] Percy is not running, disabling snapshots`.
+When running the tests locally (e.g: via `npm test`), Percy commands are ignored and no screenshots are generated. You will see the following message in your command line output: `[percy] Percy is not running, disabling snapshots`.
+
+### PRs from forks
+When Github Actions is running against a PR from a fork, the Percy secret is not available and therefore no screenshots are generated. Other tests will continue to run as normal. You will see the following messages in the output:
+
+```
+[percy] Skipping visual tests
+[percy] Error: Missing Percy token
+```
+
+This is the reason why we are unable to make Percy a required check for this repo. However, we should continue to act as if it is required. Percy runs should be approved before merging, and we should treat any failures as blocking.
