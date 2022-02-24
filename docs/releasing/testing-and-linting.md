@@ -1,6 +1,6 @@
 # Testing and linting
 
-The CI lints SASS and JavaScript, runs unit and functional tests with Node, and generates snapshots for visual regression testing (Percy.io).
+The CI lints SASS and JavaScript, runs unit and functional tests with Node, and generates snapshots for [visual regression testing](https://www.browserstack.com/percy/visual-testing).
 
 ## Running all tests locally
 
@@ -50,20 +50,20 @@ This will update the snapshot file. Commit this file separately with a commit me
 
 ## Visual regression testing with Percy
 
-We use [Percy](https://percy.io/), a visual regression testing tool, to generate and store screenshots of our components to help us check for any unintended visual changes.
+[Percy](https://percy.io/) is a visual regression testing tool. We use it to generate and store screenshots of our components to help us check for any unintended visual changes.
 
-We generate two screenshots for each default example of every component: one with JavaScript enabled and one with JavaScript disabled. Screenshots are not taken for all the different variations of each component. This tool is not a replacement for manual testing.
+We generate 2 screenshots for each default example of every component. One example has JavaScript enabled, the other has JavaScript disabled. Screenshots are not taken for all the different variations of each component. This tool is not a replacement for manual testing.
 
-The screenshots are public, so they can be checked without logging in. A BrowserStack account is needed to approve or reject any changes. It's the responsibility of the person reviewing the pull request code to approve any visual changes that Percy highlights.
+The screenshots are public, so you can check them without logging in. A BrowserStack account is needed to approve or reject any changes (if you don't have access, ask your tech lead for help). If you're the reviewer of the pull request code, it's your responsibility to approve or request changes for any visual changes Percy highlights.
 
-When running the tests locally (e.g: via `npm test`), Percy commands are ignored and no screenshots are generated. You will see the following message in your command line output: `[percy] Percy is not running, disabling snapshots`.
+When you run the tests locally (for example, using `npm test`), Percy commands are ignored and Percy does not generate any screenshots. You will see the following message in your command line output: `[percy] Percy is not running, disabling snapshots`.
 
 ### PRs from forks
-When Github Actions is running against a PR from a fork, the Percy secret is not available and therefore no screenshots are generated. Other tests will continue to run as normal. You will see the following messages in the output:
+When Github Actions is running against a PR from a fork, the Percy secret is not available and Percy does not generate any screenshots. Other tests will continue to run as normal. You will see the following messages in the output:
 
 ```
 [percy] Skipping visual tests
 [percy] Error: Missing Percy token
 ```
 
-This is the reason why we are unable to make Percy a required check for this repo. However, we should continue to act as if it is required. Percy runs should be approved before merging, and we should treat any failures as blocking.
+Being unable to run Percy on PRs from forks is the reason we're unable to make Percy a required check for this repo. However, we should continue to act as if a Percy check is required. If the Percy build fails, do not merge the pull request even though GitHub would let you. Continue to review the changes, and approve or reject them as you would normally.
