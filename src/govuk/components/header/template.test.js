@@ -109,7 +109,7 @@ describe('header', () => {
       const $ = render('header', examples['with navigation'])
 
       const $component = $('.govuk-header')
-      const $list = $component.find('ul.govuk-header__navigation')
+      const $list = $component.find('ul.govuk-header__navigation-list')
       const $items = $list.find('li.govuk-header__navigation-item')
       const $firstItem = $items.find('a.govuk-header__link:first-child')
       expect($items.length).toEqual(4)
@@ -121,18 +121,18 @@ describe('header', () => {
       const $ = render('header', examples['with navigation'])
 
       const $component = $('.govuk-header')
-      const $list = $component.find('ul.govuk-header__navigation')
+      const $nav = $component.find('nav')
 
-      expect($list.attr('aria-label')).toEqual('Navigation menu')
+      expect($nav.attr('aria-label')).toEqual('Menu')
     })
 
     it('allows navigation label to be customised', () => {
       const $ = render('header', examples['with custom navigation label'])
 
       const $component = $('.govuk-header')
-      const $list = $component.find('ul.govuk-header__navigation')
+      const $nav = $component.find('nav')
 
-      expect($list.attr('aria-label')).toEqual('Custom navigation label')
+      expect($nav.attr('aria-label')).toEqual('Custom navigation label')
     })
 
     it('renders navigation with active item', () => {
@@ -191,7 +191,7 @@ describe('header', () => {
 
         const $button = $('.govuk-header__menu-button')
 
-        expect($button.attr('aria-label')).toEqual('Show or hide navigation menu')
+        expect($button.attr('aria-label')).toEqual('Show or hide menu')
       })
       it('allows label to be customised', () => {
         const $ = render('header', examples['with custom menu button label'])

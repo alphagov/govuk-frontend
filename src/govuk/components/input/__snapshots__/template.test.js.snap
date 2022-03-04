@@ -9,11 +9,11 @@ exports[`Input when it includes a hint renders the hint 1`] = `
 `;
 
 exports[`Input when it includes an error message renders the error message 1`] = `
-<span id="input-with-error-message-error"
-      class="govuk-error-message"
+<p id="input-with-error-message-error"
+   class="govuk-error-message"
 >
   Error message goes here
-</span>
+</p>
 `;
 
 exports[`Input with dependant components renders with label 1`] = `

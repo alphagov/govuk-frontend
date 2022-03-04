@@ -9,11 +9,11 @@ exports[`Textarea when it includes a hint renders with hint 1`] = `
 `;
 
 exports[`Textarea when it includes an error message renders with error message 1`] = `
-<span id="no-ni-reason-error"
-      class="govuk-error-message"
+<p id="no-ni-reason-error"
+   class="govuk-error-message"
 >
   You must provide an explanation
-</span>
+</p>
 `;
 
 exports[`Textarea with dependant components renders with label 1`] = `

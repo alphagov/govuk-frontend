@@ -58,7 +58,7 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  <label class=\"govuk-label\" for=\"select-2\">\n    Label text goes here\n  </label>\n\n  \n  \n  <div id=\"select-2-hint\" class=\"govuk-hint\">\n    Hint text goes here\n  </div>\n\n\n  \n  \n  <span id=\"select-2-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message goes here\n  </span>\n\n  <select class=\"govuk-select govuk-select--error\" id=\"select-2\" name=\"select-2\" aria-describedby=\"select-2-hint select-2-error\">\n  \n    \n      <option value=\"1\">GOV.UK frontend option 1</option>\n    \n  \n    \n      <option value=\"2\">GOV.UK frontend option 2</option>\n    \n  \n    \n      <option value=\"3\">GOV.UK frontend option 3</option>\n    \n  \n  </select>\n</div>",
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  <label class=\"govuk-label\" for=\"select-2\">\n    Label text goes here\n  </label>\n\n  \n  \n  <div id=\"select-2-hint\" class=\"govuk-hint\">\n    Hint text goes here\n  </div>\n\n\n  \n  \n  <p id=\"select-2-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message goes here\n  </p>\n\n  <select class=\"govuk-select govuk-select--error\" id=\"select-2\" name=\"select-2\" aria-describedby=\"select-2-hint select-2-error\">\n  \n    \n      <option value=\"1\">GOV.UK frontend option 1</option>\n    \n  \n    \n      <option value=\"2\">GOV.UK frontend option 2</option>\n    \n  \n    \n      <option value=\"3\">GOV.UK frontend option 3</option>\n    \n  \n  </select>\n</div>",
             "hidden": false
         },
         {
@@ -297,7 +297,7 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  \n\n\n  \n  \n  <span id=\"select-with-error-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message\n  </span>\n\n  <select class=\"govuk-select govuk-select--error\" id=\"select-with-error\" name=\"select-with-error\" aria-describedby=\"select-with-error-error\">\n  \n    \n      <option value=\"1\">GOV.UK frontend option 1</option>\n    \n  \n    \n      <option value=\"2\">GOV.UK frontend option 2</option>\n    \n  \n  </select>\n</div>",
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  \n\n\n  \n  \n  <p id=\"select-with-error-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message\n  </p>\n\n  <select class=\"govuk-select govuk-select--error\" id=\"select-with-error\" name=\"select-with-error\" aria-describedby=\"select-with-error-error\">\n  \n    \n      <option value=\"1\">GOV.UK frontend option 1</option>\n    \n  \n    \n      <option value=\"2\">GOV.UK frontend option 2</option>\n    \n  \n  </select>\n</div>",
             "hidden": true
         },
         {
@@ -320,7 +320,7 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  \n\n\n  \n  \n  <span id=\"select-with-error-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message\n  </span>\n\n  <select class=\"govuk-select govuk-select--error\" id=\"select-with-error\" name=\"select-with-error\" aria-describedby=\"some-id select-with-error-error\">\n  \n    \n      <option value=\"1\">GOV.UK frontend option 1</option>\n    \n  \n    \n      <option value=\"2\">GOV.UK frontend option 2</option>\n    \n  \n  </select>\n</div>",
+            "html": "<div class=\"govuk-form-group govuk-form-group--error\">\n  \n\n\n  \n  \n  <p id=\"select-with-error-error\" class=\"govuk-error-message\">\n    <span class=\"govuk-visually-hidden\">Error:</span> Error message\n  </p>\n\n  <select class=\"govuk-select govuk-select--error\" id=\"select-with-error\" name=\"select-with-error\" aria-describedby=\"some-id select-with-error-error\">\n  \n    \n      <option value=\"1\">GOV.UK frontend option 1</option>\n    \n  \n    \n      <option value=\"2\">GOV.UK frontend option 2</option>\n    \n  \n  </select>\n</div>",
             "hidden": true
         }
     ]

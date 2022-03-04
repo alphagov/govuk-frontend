@@ -12,6 +12,14 @@
   <![endif]-->
 {% endblock %}
 
+{% block content %}
+  <!-- block:content -->
+  <h1 class="govuk-heading-xl">Default page template</h1>
+  <!-- endblock:content -->
+{% endblock %}
+
+
 {% block bodyEnd %}
   <script src="/public/all.js"></script>
+  <script>window.GOVUKFrontend.initAll()</script>
 {% endblock %}
