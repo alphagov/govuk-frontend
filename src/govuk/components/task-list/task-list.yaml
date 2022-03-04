@@ -70,7 +70,7 @@ examples:
           href: '#'
           status:
             text: Not started
-            classes: govuk-task-list__status--not-started
+            classes: govuk-task-list__status--blue
 
         - title:
             text: Financial history
@@ -88,7 +88,7 @@ examples:
             text: Ensure the plan covers objectives, strategies, sales, marketing and financial forecasts.
           status:
             text: In progress
-            classes: govuk-task-list__status--in-progress
+            classes: govuk-task-list__status--light-blue
 
         - title:
             text: References
