@@ -63,23 +63,14 @@ examples:
           href: '#'
           status:
             text: Completed
-            classes: govuk-task-list__status--completed
+            classes: govuk-task-list__status--black
 
         - title:
             text: Registered company details
           href: '#'
           status:
             text: Not started
-            classes: govuk-task-list__status--not-started
-
-        - title:
-            text: Financial history
-          href: '#'
-          hint:
-            text: Include 5 years of the company's relevant financial information.
-          status:
-            text: Incomplete
-            classes: govuk-task-list__status--incomplete
+            classes: govuk-task-list__status--blue
 
         - title:
             text: Business plan
@@ -88,10 +79,28 @@ examples:
             text: Ensure the plan covers objectives, strategies, sales, marketing and financial forecasts.
           status:
             text: In progress
-            classes: govuk-task-list__status--in-progress
+            classes: govuk-task-list__status--light-blue
 
         - title:
             text: References
           status:
             text: Cannot start yet
-            classes: govuk-task-list__status--cannot-start-yet
+            classes: govuk-task-list__status--white
+        
+        - title:
+            text: Documentation
+          status:
+            text: Review
+            classes: govuk-task-list__status--purple
+        
+        - title:
+            text: Systemic
+          status:
+            text: Error
+            classes: govuk-task-list__status--error
+        
+        - title:
+            text: Submission
+          status:
+            text: Pre HTB
+            classes: govuk-task-list__status--grey
