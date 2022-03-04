@@ -69,38 +69,140 @@ examples:
             text: Registered company details
           href: '#'
           status:
-            text: Not started
+            text: Incomplete
             classes: govuk-task-list__status--blue
 
+        - title:
+            text: Business plan
+          href: '#'
+          status:
+            text: Incomplete
+            classes: govuk-task-list__status--blue
+
+
+  - name: example with 3 states
+    data:
+      idPrefix: "task-list-example"
+      items:
+        - title:
+            text: Company Directors
+          href: '#'
+          status:
+            text: Completed
+            classes: govuk-task-list__status--black
+        - title:
+            text: Registered company details
+          href: '#'
+          status:
+            text: Not started
+            classes: govuk-task-list__status--light-blue
+        - title:
+            text: Business plan
+          href: '#'
+          status:
+            text: In progress
+            classes: govuk-task-list__status--blue
+        - title:
+            text: Documentation
+          href: '#'
+          status:
+          status:
+            text: Not started
+            classes: govuk-task-list__status--light-blue
+
+  - name: example with hint text and additional states
+    data:
+      idPrefix: "task-list-example"
+      items:
+        - title:
+            text: Company Directors
+          href: '#'
+          status:
+            text: Completed
+            classes: govuk-task-list__status--black
+        - title:
+            text: Registered company details
+          href: '#'
+          status:
+            text: Not started
+            classes: govuk-task-list__status--light-blue
         - title:
             text: Business plan
           href: '#'
           hint:
             text: Ensure the plan covers objectives, strategies, sales, marketing and financial forecasts.
           status:
-            text: In progress
-            classes: govuk-task-list__status--light-blue
-
-        - title:
-            text: References
-          status:
-            text: Cannot start yet
-            classes: govuk-task-list__status--white
-        
+            text: Review
+            classes: govuk-task-list__status--pink
         - title:
             text: Documentation
+          href: '#'
           status:
-            text: Review
-            classes: govuk-task-list__status--purple
-        
+            text: In progress
+            classes: govuk-task-list__status--blue
         - title:
-            text: Systemic
+            text: Charitable status
+          href: '#'
           status:
             text: Error
             classes: govuk-task-list__status--error
-        
         - title:
-            text: Submission
+            text: Payment
+          hint:
+            text: It will cost between £15 and £75
           status:
-            text: Pre HTB
+            text: Cannot start yet
+            classes: govuk-task-list__status--white
+
+  - name: example with all possible colours
+    data:
+      idPrefix: "task-list-example"
+      items:
+        - title:
+            text: Task A
+          href: '#'
+          status:
+            text: Black
+            classes: govuk-task-list__status--black
+        - title:
+            text: Task B
+          href: '#'
+          status:
+            text: Light blue
+            classes: govuk-task-list__status--light-blue
+        - title:
+            text: Task C
+          href: '#'
+          status:
+            text: Blue
+            classes: govuk-task-list__status--blue
+        - title:
+            text: Task D
+          href: '#'
+          status:
+            text: White
+            classes: govuk-task-list__status--white
+        - title:
+            text: Task E
+          href: '#'
+          status:
+            text: Grey
             classes: govuk-task-list__status--grey
+        - title:
+            text: Task F
+          href: '#'
+          status:
+            text: Pink
+            classes: govuk-task-list__status--pink
+        - title:
+            text: Task G
+          href: '#'
+          status:
+            text: Purple
+            classes: govuk-task-list__status--purple
+        - title:
+            text: Task H
+          href: '#'
+          status:
+            text: Error
+            classes: govuk-task-list__status--error
