@@ -61,31 +61,42 @@
       float: right;
     }
 
-    &--not-started {
-      color: #00703c;
-      background-color: #dbffe5;
+    &--light-blue {
+      color: govuk-shade(govuk-colour("blue"), 60);
+      background-color: govuk-tint(govuk-colour("blue"), 90);
     }
 
-    &--in-progress {
-      color: #00396b;
-      background-color: #e7edff;
+    &--blue {
+      color: govuk-shade(govuk-colour("blue"), 60);
+      background-color: govuk-tint(govuk-colour("blue"), 75);
     }
 
-    &--completed {
-      color: #505a5f;
+    &--white {
+      color: $govuk-secondary-text-colour;
     }
 
-    &--incomplete {
-      color: #9f0000;
-      background-color: #ffe7e8;
+    &--black {
+      color: govuk-colour("black");
     }
 
-    &--cannot-start-yet {
-      color: #b1b4b6;
+    &--purple {
+      color: govuk-shade(govuk-colour("bright-purple"), 50);
+      background-color: govuk-tint(govuk-colour("bright-purple"), 85);
     }
 
-    &__mono {
-      background-color: #e1e4e6;
+    &--grey {
+      color: govuk-shade(govuk-colour("dark-grey", $legacy: "grey-1"), 50);
+      background-color: govuk-tint(govuk-colour("dark-grey", $legacy: "grey-1"), 85);
+    }
+
+    &--pink {
+      color: govuk-shade(govuk-colour("pink"), 50);
+      background-color: govuk-tint(govuk-colour("pink"), 85);
+    }
+
+    &--error {
+      color: govuk-shade(govuk-colour("red"), 80);
+      background-color: govuk-tint(govuk-colour("red"), 75);
     }
   }
 }
