@@ -26,7 +26,7 @@ We love contributions! We've compiled these docs to help you understand our cont
 
 
 ## Code of Conduct
-Please read [the `alphagov` CODE_OF_CONDUCT.md](https://github.com/alphagov/blob/main/.github/CODE_OF_CONDUCT.md) before contributing.
+Please read [the `alphagov` CODE_OF_CONDUCT.md](https://github.com/alphagov/.github/blob/main/CODE_OF_CONDUCT.md) before contributing.
 
 ## Application architecture
 
