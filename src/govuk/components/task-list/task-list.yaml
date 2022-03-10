@@ -106,7 +106,6 @@ examples:
             text: Documentation
           href: '#'
           status:
-          status:
             text: Not started
             classes: govuk-task-list__status--light-blue
 
