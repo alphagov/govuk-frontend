@@ -273,7 +273,7 @@
   // Force a colour change on hover to work around a bug in Safari
   // https://bugs.webkit.org/show_bug.cgi?id=224483
   &:hover {
-    color: rgba($govuk-text-colour, .99);
+    color: if($govuk-text-colour == inherit, inherit, rgba($govuk-text-colour, .99));
   }
 
   &:active,
