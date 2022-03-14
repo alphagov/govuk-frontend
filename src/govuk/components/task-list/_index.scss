@@ -10,11 +10,6 @@
     }
   }
 
-  .govuk-task-list__section {
-    display: table;
-    @include govuk-font($size:24, $weight: bold);
-  }
-
   .govuk-task-list__items {
     @include govuk-font($size: 19);
     @include govuk-responsive-margin(9, "bottom");
