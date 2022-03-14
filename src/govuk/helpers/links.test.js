@@ -188,9 +188,7 @@ describe('@mixin govuk-link-style-text', () => {
 
       const results = await renderSass({ data: sass, ...sassConfig })
 
-      expect(results.css.toString()).toContain(':hover')
       expect(results.css.toString()).not.toContain('rgba(')
-      expect(results.css.toString()).toContain('color: inherit')
     })
   })
 })
