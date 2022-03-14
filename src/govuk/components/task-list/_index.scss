@@ -46,13 +46,19 @@
   }
 
   .govuk-task-list__status {
+    display: inline-block;
     margin-top: govuk-spacing(2);
     margin-bottom: govuk-spacing(1);
-    margin-left: govuk-spacing(1);
-    padding: 2px 4px;
+    margin-left: 0;
+    padding-top: 2px;
+    padding-right: 4px;
+    padding-bottom: 2px;
+    padding-left: 0;
     @include govuk-media-query($from: 450px) {
       margin-top: 0;
       margin-bottom: 0;
+      margin-left: govuk-spacing(1);
+      padding-left: 4px;
       float: right;
     }
 
