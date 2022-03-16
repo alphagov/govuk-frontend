@@ -37,7 +37,7 @@ The component's guidance must include these sections:
 
 ### Content
 The component must:
-- [ ] include Nunjucks documentation
+- [ ] include Nunjucks documentation, which the technical writing community has 2i'd
 - [ ] have PR commits with [commit messages that are easy to understand](https://github.com/alphagov/design-system-team-docs/blob/main/development/commit-messages.md)
 
 ### Reviews
