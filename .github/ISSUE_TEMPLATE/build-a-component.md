@@ -30,8 +30,8 @@ For more information on accessibility testing, [read our documentation on testin
 
 ### Coding standards
 The component's guidance must include these sections:
-- [ ] have Nunjucks options that are consistent with other Design System components
-- [ ] have commonly available Nunjuck options
+- [ ] have [Nunjucks options that are consistent with other Design System components](https://github.com/alphagov/govuk-frontend/blob/main/docs/contributing/coding-standards/nunjucks-api.md)
+- [ ] have commonly available Nunjucks options
 - [ ] follow GOV.UK Frontend coding conventions
 - [ ] follow the code style guide
 
@@ -49,6 +49,7 @@ The component must:
 The component must:
 - [ ] avoid a breaking change
 - [ ] work with Javascript disabled
+- [ ] work with CSS disabled
 - [ ] work and look as expected at different breakpoints
 - [ ] have a macro the user can use to pass data into the component
 - [ ] have unit tests which each macro option passes
