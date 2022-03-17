@@ -33,7 +33,6 @@ The component's guidance must include these sections:
 - [ ] have [Nunjucks options that are consistent with other Design System components](https://github.com/alphagov/govuk-frontend/blob/main/docs/contributing/coding-standards/nunjucks-api.md)
 - [ ] have commonly available Nunjucks options
 - [ ] follow GOV.UK Frontend coding conventions
-- [ ] follow the code style guide
 
 ### Content
 The component must:
@@ -53,6 +52,7 @@ The component must:
 - [ ] work and look as expected at different breakpoints
 - [ ] have a macro the user can use to pass data into the component
 - [ ] have unit tests which each macro option passes
+- [ ] have JavaScript tests, if the component uses JavaScript
 - [ ] support the [browsers listed in the Service Manual](https://www.gov.uk/service-manual/technology/designing-for-different-browsers-and-devices), and have semantic markup
 - [ ] work on devices listed in the Service Manual
 - [ ] pass linter and tests
