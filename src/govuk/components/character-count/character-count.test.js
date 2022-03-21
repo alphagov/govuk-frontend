@@ -35,7 +35,7 @@ describe('Character count', () => {
       it('shows the dynamic message', async () => {
         await goToExample()
 
-        const message = await page.$eval('.govuk-character-count__message', el => el.innerHTML.trim())
+        const message = await page.$eval('.govuk-character-count__status', el => el.innerHTML.trim())
 
         expect(message).toEqual('You have 10 characters remaining')
       })
@@ -43,7 +43,7 @@ describe('Character count', () => {
       it('shows the characters remaining if the field is pre-filled', async () => {
         await goToExample('with-default-value')
 
-        const message = await page.$eval('.govuk-character-count__message', el => el.innerHTML.trim())
+        const message = await page.$eval('.govuk-character-count__status', el => el.innerHTML.trim())
 
         expect(message).toEqual('You have 67 characters remaining')
       })
@@ -52,7 +52,7 @@ describe('Character count', () => {
         await goToExample()
         await page.type('.govuk-js-character-count', 'A')
 
-        const message = await page.$eval('.govuk-character-count__message', el => el.innerHTML.trim())
+        const message = await page.$eval('.govuk-character-count__status', el => el.innerHTML.trim())
 
         expect(message).toEqual('You have 9 characters remaining')
       })
@@ -61,7 +61,7 @@ describe('Character count', () => {
         await goToExample()
         await page.type('.govuk-js-character-count', 'A'.repeat(9))
 
-        const message = await page.$eval('.govuk-character-count__message', el => el.innerHTML.trim())
+        const message = await page.$eval('.govuk-character-count__status', el => el.innerHTML.trim())
 
         expect(message).toEqual('You have 1 character remaining')
       })
@@ -73,14 +73,14 @@ describe('Character count', () => {
         })
 
         it('shows the number of characters over the limit', async () => {
-          const message = await page.$eval('.govuk-character-count__message', el => el.innerHTML.trim())
+          const message = await page.$eval('.govuk-character-count__status', el => el.innerHTML.trim())
           expect(message).toEqual('You have 1 character too many')
         })
 
         it('uses the plural when the limit is exceeded by 2 or more', async () => {
           await page.type('.govuk-js-character-count', 'A')
 
-          const message = await page.$eval('.govuk-character-count__message', el => el.innerHTML.trim())
+          const message = await page.$eval('.govuk-character-count__status', el => el.innerHTML.trim())
           expect(message).toEqual('You have 2 characters too many')
         })
 
@@ -90,7 +90,7 @@ describe('Character count', () => {
         })
 
         it('adds error styles to the count message', async () => {
-          const messageClasses = await page.$eval('.govuk-character-count__message', el => el.className)
+          const messageClasses = await page.$eval('.govuk-character-count__status', el => el.className)
           expect(messageClasses).toContain('govuk-error-message')
         })
       })
@@ -101,7 +101,7 @@ describe('Character count', () => {
         })
 
         it('shows the number of characters over the limit', async () => {
-          const message = await page.$eval('.govuk-character-count__message', el => el.innerHTML.trim())
+          const message = await page.$eval('.govuk-character-count__status', el => el.innerHTML.trim())
           expect(message).toEqual('You have 23 characters too many')
         })
 
@@ -111,7 +111,7 @@ describe('Character count', () => {
         })
 
         it('adds error styles to the count message', async () => {
-          const messageClasses = await page.$eval('.govuk-character-count__message', el => el.className)
+          const messageClasses = await page.$eval('.govuk-character-count__status', el => el.className)
           expect(messageClasses).toContain('govuk-error-message')
         })
       })
@@ -122,22 +122,22 @@ describe('Character count', () => {
         })
 
         it('does not show the limit until the threshold is reached', async () => {
-          const visibility = await page.$eval('.govuk-character-count__message', el => window.getComputedStyle(el).visibility)
+          const visibility = await page.$eval('.govuk-character-count__status', el => window.getComputedStyle(el).visibility)
           expect(visibility).toEqual('hidden')
 
           // Ensure threshold is hidden for users of assistive technologies
-          const ariaHidden = await page.$eval('.govuk-character-count__message', el => el.getAttribute('aria-hidden'))
+          const ariaHidden = await page.$eval('.govuk-character-count__status', el => el.getAttribute('aria-hidden'))
           expect(ariaHidden).toEqual('true')
         })
 
         it('becomes visible once the threshold is reached', async () => {
           await page.type('.govuk-js-character-count', 'A'.repeat(8))
 
-          const visibility = await page.$eval('.govuk-character-count__message', el => window.getComputedStyle(el).visibility)
+          const visibility = await page.$eval('.govuk-character-count__status', el => window.getComputedStyle(el).visibility)
           expect(visibility).toEqual('visible')
 
           // Ensure threshold is visible for users of assistive technologies
-          const ariaHidden = await page.$eval('.govuk-character-count__message', el => el.getAttribute('aria-hidden'))
+          const ariaHidden = await page.$eval('.govuk-character-count__status', el => el.getAttribute('aria-hidden'))
           expect(ariaHidden).toBeFalsy()
         })
       })
@@ -147,7 +147,7 @@ describe('Character count', () => {
         it('still works correctly', async () => {
           await goToExample('with-id-starting-with-number')
 
-          const message = await page.$eval('.govuk-character-count__message', el => el.innerHTML.trim())
+          const message = await page.$eval('.govuk-character-count__status', el => el.innerHTML.trim())
 
           expect(message).toEqual('You have 10 characters remaining')
         })
@@ -157,7 +157,7 @@ describe('Character count', () => {
         it('still works correctly', async () => {
           await goToExample('with-id-with-special-characters')
 
-          const message = await page.$eval('.govuk-character-count__message', el => el.innerHTML.trim())
+          const message = await page.$eval('.govuk-character-count__status', el => el.innerHTML.trim())
 
           expect(message).toEqual('You have 10 characters remaining')
         })
@@ -168,7 +168,7 @@ describe('Character count', () => {
       it('shows the dynamic message', async () => {
         await goToExample('with-word-count')
 
-        const message = await page.$eval('.govuk-character-count__message', el => el.innerHTML.trim())
+        const message = await page.$eval('.govuk-character-count__status', el => el.innerHTML.trim())
 
         expect(message).toEqual('You have 10 words remaining')
       })
@@ -177,7 +177,7 @@ describe('Character count', () => {
         await goToExample('with-word-count')
         await page.type('.govuk-js-character-count', 'Hello world')
 
-        const message = await page.$eval('.govuk-character-count__message', el => el.innerHTML.trim())
+        const message = await page.$eval('.govuk-character-count__status', el => el.innerHTML.trim())
 
         expect(message).toEqual('You have 8 words remaining')
       })
@@ -186,7 +186,7 @@ describe('Character count', () => {
         await goToExample('with-word-count')
         await page.type('.govuk-js-character-count', 'Hello '.repeat(9))
 
-        const message = await page.$eval('.govuk-character-count__message', el => el.innerHTML.trim())
+        const message = await page.$eval('.govuk-character-count__status', el => el.innerHTML.trim())
 
         expect(message).toEqual('You have 1 word remaining')
       })
@@ -198,14 +198,14 @@ describe('Character count', () => {
         })
 
         it('shows the number of words over the limit', async () => {
-          const message = await page.$eval('.govuk-character-count__message', el => el.innerHTML.trim())
+          const message = await page.$eval('.govuk-character-count__status', el => el.innerHTML.trim())
           expect(message).toEqual('You have 1 word too many')
         })
 
         it('uses the plural when the limit is exceeded by 2 or more', async () => {
           await page.type('.govuk-js-character-count', 'World')
 
-          const message = await page.$eval('.govuk-character-count__message', el => el.innerHTML.trim())
+          const message = await page.$eval('.govuk-character-count__status', el => el.innerHTML.trim())
           expect(message).toEqual('You have 2 words too many')
         })
 
@@ -215,7 +215,7 @@ describe('Character count', () => {
         })
 
         it('adds error styles to the count message', async () => {
-          const messageClasses = await page.$eval('.govuk-character-count__message', el => el.className)
+          const messageClasses = await page.$eval('.govuk-character-count__status', el => el.className)
           expect(messageClasses).toContain('govuk-error-message')
         })
       })

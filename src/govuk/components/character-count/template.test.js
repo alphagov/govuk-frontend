@@ -114,13 +114,6 @@ describe('Character count', () => {
       const $countMessage = $('.govuk-character-count__message')
       expect($countMessage.hasClass('app-custom-count-message')).toBeTruthy()
     })
-
-    it('renders with aria live set to polite', () => {
-      const $ = render('character-count', examples.default)
-
-      const $countMessage = $('.govuk-character-count__message')
-      expect($countMessage.attr('aria-live')).toEqual('polite')
-    })
   })
 
   describe('when it has the spellcheck attribute', () => {

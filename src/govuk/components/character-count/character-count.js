@@ -6,7 +6,7 @@ function CharacterCount ($module) {
   this.$module = $module
   this.$textarea = $module.querySelector('.govuk-js-character-count')
   if (this.$textarea) {
-    this.$countMessage = document.getElementById(this.$textarea.id + '-info')
+    this.$fallbackLimitMessage = document.getElementById(this.$textarea.id + '-info')
   }
 }
 
@@ -20,15 +20,27 @@ CharacterCount.prototype.init = function () {
   // Check for module
   var $module = this.$module
   var $textarea = this.$textarea
-  var $countMessage = this.$countMessage
+  var $fallbackLimitMessage = this.$fallbackLimitMessage
 
-  if (!$textarea || !$countMessage) {
+  if (!$textarea) {
     return
   }
 
-  // We move count message right after the field
+  // We move fallback count message right after the field
   // Kept for backwards compatibility
-  $textarea.insertAdjacentElement('afterend', $countMessage)
+  $textarea.insertAdjacentElement('afterend', $fallbackLimitMessage)
+
+  // Create our live-updating counter element, copying the classes from the
+  // fallback element for backwards compatibility as these may have been configured
+  var $countMessage = document.createElement('div')
+  $countMessage.className = $fallbackLimitMessage.className
+  $countMessage.classList.add('govuk-character-count__status')
+  $countMessage.setAttribute('aria-live', 'polite')
+  this.$countMessage = $countMessage
+  $fallbackLimitMessage.insertAdjacentElement('afterend', $countMessage)
+
+  // Hide the fallback limit message
+  $fallbackLimitMessage.classList.add('govuk-visually-hidden')
 
   // Read options set using dataset ('data-' values)
   this.options = this.getDataset($module)
