@@ -29,7 +29,7 @@ The component must:
 The component's guidance must include these sections:
 - [ ] 'When to use this component' (use cases)
 - [ ] 'When not to use this component' (use cases for other components)
-- [ ] 'How it works' (implementation guidance )
+- [ ] 'How it works' (implementation guidance)
 - [ ] 'Research on this component' (further research that's required)
 - [ ] 'Help improve this page' (Github links to discussion of component and how to propose changes)
 
