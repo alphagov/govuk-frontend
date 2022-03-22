@@ -20,7 +20,7 @@ assignees: ''
 <!-- Customise, and add component-specific checklist items to, this list of criteria all components need to meet -->
 ### Accessibility
 In general, the component must:
-- [ ] work with [assistive technologies listed in the service manual(https://www.gov.uk/service-manual/technology/designing-for-different-browsers-and-devices)
+- [ ] work with [assistive technologies listed in the service manual](https://www.gov.uk/service-manual/technology/designing-for-different-browsers-and-devices)
 - [ ] pass tests on tools like axe and HTML validator
 - [ ] works when zoomed at high resolution
 - [ ] work in high contrast mode
