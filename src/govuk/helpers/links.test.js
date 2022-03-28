@@ -156,3 +156,39 @@ describe('@mixin govuk-link-hover-decoration', () => {
     })
   })
 })
+
+describe('@mixin govuk-link-style-text', () => {
+  describe('when $govuk-text-colour is a colour', () => {
+    it('applies the rgba function', async () => {
+      const sass = `
+        $govuk-text-colour: black;
+        @import "base";
+
+        a {
+            @include govuk-link-style-text;
+        }`
+
+      const results = await renderSass({ data: sass, ...sassConfig })
+
+      expect(results.css.toString()).toContain(':hover')
+      expect(results.css.toString()).toContain('color:')
+      expect(results.css.toString()).toContain('rgba(')
+    })
+  })
+
+  describe('when $govuk-text-colour is inherit', () => {
+    it('does NOT apply the rgba function', async () => {
+      const sass = `
+        $govuk-text-colour: inherit;
+        @import "base";
+
+        a {
+            @include govuk-link-style-text;
+        }`
+
+      const results = await renderSass({ data: sass, ...sassConfig })
+
+      expect(results.css.toString()).not.toContain('rgba(')
+    })
+  })
+})

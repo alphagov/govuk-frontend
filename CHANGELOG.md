@@ -4,7 +4,8 @@
 
 ### Fixes
 
-[#2549: Fix header with product name focus and hover state length](https://github.com/alphagov/govuk-frontend/pull/2549)
+- [#2549: Fix header with product name focus and hover state length](https://github.com/alphagov/govuk-frontend/pull/2549)
+- [#2573: Better handle cases where govuk-text-colour is set to a non-colour value](https://github.com/alphagov/govuk-frontend/pull/2573)
 
 ## 4.0.1 (Fix release)
 
