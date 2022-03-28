@@ -12,7 +12,7 @@
 /// @access public
 
 @function govuk-px-to-rem($value) {
-  @if (unitless($value)) {
+  @if unitless($value) {
     $value: $value * 1px;
   }
 

@@ -46,7 +46,7 @@
 
   $perpendicular: $base / 2;
 
-  @if ($height == null) {
+  @if $height == null {
     $height: _govuk-equilateral-height($base);
   }
 

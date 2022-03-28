@@ -91,7 +91,7 @@
       text-decoration: underline;
       text-decoration-thickness: $govuk-header-link-underline-thickness;
 
-      @if ($govuk-link-underline-offset) {
+      @if $govuk-link-underline-offset {
         text-underline-offset: $govuk-link-underline-offset;
       }
     }
@@ -189,7 +189,7 @@
     &:hover {
       text-decoration: solid underline $govuk-header-link-underline-thickness;
 
-      @if ($govuk-link-underline-offset) {
+      @if $govuk-link-underline-offset {
         text-underline-offset: $govuk-link-underline-offset;
       }
     }
