@@ -142,7 +142,7 @@
     $font-size-rem: $font-size-rem if($important, !important, null);
     $line-height: $line-height if($important, !important, null);
 
-    @if $breakpoint == null {
+    @if not $breakpoint {
       font-size: $font-size;
       @if $govuk-typography-use-rem {
         font-size: $font-size-rem;

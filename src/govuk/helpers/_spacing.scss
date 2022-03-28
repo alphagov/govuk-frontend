@@ -99,7 +99,7 @@
     }
 
     // The 'null' breakpoint is for mobile.
-    @if $breakpoint == null {
+    @if not $breakpoint {
 
       @if $direction == all {
         #{$property}: $breakpoint-value if($important, !important, null);
