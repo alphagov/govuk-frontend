@@ -61,10 +61,26 @@ describe('package/', () => {
           filesNotInSrc = glob.sync('{' + additionalFilesNotInSrc.join(',') + '}', { cwd: 'package' })
 
           return files
-            // Remove /src prefix from filenames
-            .map(file => file.replace(/^src\//, ''))
+            .map(file => {
+              // Remove /src prefix from filenames
+              var fileWithoutSrc = file.replace(/^src\//, '')
+
+              // Account for govuk-esm folder
+              if (fileWithoutSrc.split('.').pop() === 'js') {
+                var esmFile = fileWithoutSrc.replace('govuk/', 'govuk-esm/')
+
+                if (!esmFile.includes('vendor/')) {
+                  esmFile = esmFile.replace('.js', '.mjs')
+                }
+
+                return [fileWithoutSrc, esmFile]
+              } else {
+                return fileWithoutSrc
+              }
+            })
             // Allow for additional files that are not in src
             .concat(filesNotInSrc)
+            .flat()
             // Sort to make comparison easier
             .sort()
         },
@@ -106,6 +122,7 @@ describe('package/', () => {
   describe('all.js', () => {
     it('should have correct module name', async () => {
       const allJsFile = path.join(configPaths.package, 'govuk', 'all.js')
+
       return readFile(allJsFile, 'utf8')
         .then((data) => {
           expect(data).toContain("typeof define === 'function' && define.amd ? define('GOVUKFrontend', ['exports'], factory)")
