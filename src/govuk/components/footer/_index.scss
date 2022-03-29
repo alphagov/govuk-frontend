@@ -8,7 +8,7 @@
   $govuk-footer-text: $govuk-text-colour;
   $govuk-footer-link-hover-colour: null; // Only used with the legacy palette
 
-  @if ($govuk-use-legacy-palette) {
+  @if $govuk-use-legacy-palette {
     $govuk-footer-border-top: #a1acb2;
     $govuk-footer-border: govuk-colour("grey-2");
     $govuk-footer-text: #454a4c;
@@ -35,7 +35,7 @@
   .govuk-footer__link {
     @include govuk-link-common;
 
-    @if ($govuk-use-legacy-palette) {
+    @if $govuk-use-legacy-palette {
       &:link,
       &:visited {
         color: $govuk-footer-text;
