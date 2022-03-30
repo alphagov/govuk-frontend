@@ -1,7 +1,7 @@
 /* eslint-env jest */
 
 const { allComponents } = require('../../../lib/file-helper')
-const { renderSass } = require('../../../lib/jest-helpers')
+const { renderSassFile } = require('../../../lib/jest-helpers')
 
 const configPaths = require('../../../config/paths.json')
 
@@ -29,15 +29,11 @@ describe('When nunjucks is configured with a different base path', () => {
 })
 
 it('_all.scss renders to CSS without errors', () => {
-  return renderSass({
-    file: `${configPaths.src}/components/_all.scss`
-  })
+  return renderSassFile(`${configPaths.src}/components/_all.scss`)
 })
 
 it.each(allComponents)('%s.scss renders to CSS without errors', (component) => {
-  return renderSass({
-    file: `${configPaths.src}/components/${component}/_${component}.scss`
-  })
+  return renderSassFile(`${configPaths.src}/components/${component}/_${component}.scss`)
 })
 
 it.each(allComponents)('generate screenshots for Percy visual regression, with JavaScript disabled', async (component) => {

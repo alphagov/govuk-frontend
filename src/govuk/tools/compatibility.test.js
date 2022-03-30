@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-const { renderSass } = require('../../../lib/jest-helpers')
+const { renderSassString } = require('../../../lib/jest-helpers')
 
 const sassConfig = {
   outputStyle: 'compressed'
@@ -19,7 +19,7 @@ describe('@mixin govuk-compatibility', () => {
         }
       }`
 
-    const results = await renderSass({ data: sass, ...sassConfig })
+    const results = await renderSassString(sass, sassConfig)
 
     expect(results.css.toString()).toEqual('')
   })
@@ -36,7 +36,7 @@ describe('@mixin govuk-compatibility', () => {
         }
       }`
 
-    const results = await renderSass({ data: sass, ...sassConfig })
+    const results = await renderSassString(sass, sassConfig)
 
     expect(results.css.toString().trim()).toBe('.foo{color:red}')
   })
@@ -53,7 +53,7 @@ describe('@mixin govuk-compatibility', () => {
         }
       }`
 
-    await expect(renderSass({ data: sass, ...sassConfig }))
+    await expect(renderSassString(sass, sassConfig))
       .rejects
       .toThrow('Non existent product \'non_existent_app\'')
   })

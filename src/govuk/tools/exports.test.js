@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-const { renderSass } = require('../../../lib/jest-helpers')
+const { renderSassString } = require('../../../lib/jest-helpers')
 
 const sassConfig = {
   outputStyle: 'compressed'
@@ -23,7 +23,7 @@ describe('@mixin govuk-exports', () => {
         }
       }`
 
-    const results = await renderSass({ data: sass, ...sassConfig })
+    const results = await renderSassString(sass, sassConfig)
 
     expect(results.css.toString().trim()).toEqual('.foo{color:red}')
   })
@@ -44,7 +44,7 @@ describe('@mixin govuk-exports', () => {
         }
       }`
 
-    const results = await renderSass({ data: sass, ...sassConfig })
+    const results = await renderSassString(sass, sassConfig)
 
     expect(results.css.toString().trim())
       .toEqual('.foo{color:red}.bar{color:blue}')

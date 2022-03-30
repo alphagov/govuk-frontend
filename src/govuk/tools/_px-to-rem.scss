@@ -16,5 +16,5 @@
     $value: $value * 1px;
   }
 
-  @return $value / $govuk-root-font-size * 1rem;
+  @return divideby($value, $govuk-root-font-size) * 1rem;
 }

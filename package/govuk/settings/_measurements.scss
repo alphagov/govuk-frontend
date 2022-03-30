@@ -11,6 +11,8 @@
 /// @type Number
 /// @access public
 
+@import "../tools/compatible-math";
+
 $govuk-page-width: 960px !default;
 
 /// Map of grid column widths
@@ -39,7 +41,7 @@ $govuk-gutter: 30px !default;
 /// @type Number
 /// @access public
 
-$govuk-gutter-half: $govuk-gutter / 2;
+$govuk-gutter-half: divideby($govuk-gutter, 2);
 
 // =========================================================
 // Borders

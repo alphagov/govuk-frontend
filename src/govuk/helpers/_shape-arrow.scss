@@ -2,6 +2,8 @@
 /// @group helpers/shapes
 ////
 
+@import "../tools/compatible-math";
+
 /// Calculate the height of an equilateral triangle
 ///
 /// Multiplying half the length of the base of an equilateral triangle by the
@@ -14,7 +16,7 @@
 @function _govuk-equilateral-height($base) {
   $square-root-of-three: 1.732;
 
-  @return ($base / 2) * $square-root-of-three;
+  @return divideby($base, 2) * $square-root-of-three;
 }
 
 /// Arrow mixin
@@ -44,7 +46,7 @@
   border-style: solid;
   border-color: transparent; // 1
 
-  $perpendicular: $base / 2;
+  $perpendicular: divideby($base, 2);
 
   @if not $height {
     $height: _govuk-equilateral-height($base);

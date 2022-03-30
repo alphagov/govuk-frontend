@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-const { renderSass } = require('../../../lib/jest-helpers')
+const { renderSassString } = require('../../../lib/jest-helpers')
 
 const sassConfig = {
   outputStyle: 'compact'
@@ -29,7 +29,7 @@ describe('@function govuk-colour', () => {
         color: govuk-colour('red');
       }`
 
-    const results = await renderSass({ data: sass, ...sassConfig })
+    const results = await renderSassString(sass, sassConfig)
 
     expect(results.css.toString().trim()).toBe('.foo { color: #ff0000; }')
   })
@@ -42,7 +42,7 @@ describe('@function govuk-colour', () => {
         color: govuk-colour(red);
       }`
 
-    const results = await renderSass({ data: sass, ...sassConfig })
+    const results = await renderSassString(sass, sassConfig)
 
     expect(results.css.toString().trim()).toBe('.foo { color: #ff0000; }')
   })
@@ -55,7 +55,7 @@ describe('@function govuk-colour', () => {
         color: govuk-colour('hooloovoo');
       }`
 
-    await expect(renderSass({ data: sass, ...sassConfig }))
+    await expect(renderSassString(sass, sassConfig))
       .rejects
       .toThrow(
         'Unknown colour `hooloovoo`'
@@ -78,7 +78,7 @@ describe('@function govuk-colour', () => {
           color: govuk-colour('red', $legacy: 'blue');
         }`
 
-      const results = await renderSass({ data: sass, ...sassConfig })
+      const results = await renderSassString(sass, sassConfig)
 
       expect(results.css.toString().trim()).toBe('.foo { color: #0000ff; }')
     })
@@ -91,7 +91,7 @@ describe('@function govuk-colour', () => {
           color: govuk-colour('red', $legacy: #BADA55);
         }`
 
-      const results = await renderSass({ data: sass, ...sassConfig })
+      const results = await renderSassString(sass, sassConfig)
 
       expect(results.css.toString().trim()).toBe('.foo { color: #BADA55; }')
     })
@@ -104,7 +104,7 @@ describe('@function govuk-colour', () => {
           color: govuk-colour('hooloovoo', $legacy: 'blue');
         }`
 
-      const results = await renderSass({ data: sass, ...sassConfig })
+      const results = await renderSassString(sass, sassConfig)
 
       expect(results.css.toString().trim()).toBe('.foo { color: #0000ff; }')
     })
@@ -116,7 +116,7 @@ describe('@function govuk-colour', () => {
           color: govuk-colour('red', $legacy: 'hooloovoo');
         }`
 
-      await expect(renderSass({ data: sass, ...sassConfig }))
+      await expect(renderSassString(sass, sassConfig))
         .rejects
         .toThrow(
           'Unknown colour `hooloovoo`'
@@ -140,7 +140,7 @@ describe('@function govuk-colour', () => {
           color: govuk-colour('red', $legacy: 'blue');
         }`
 
-      const results = await renderSass({ data: sass, ...sassConfig })
+      const results = await renderSassString(sass, sassConfig)
 
       expect(results.css.toString().trim()).toBe('.foo { color: #ff0000; }')
     })
@@ -153,7 +153,7 @@ describe('@function govuk-colour', () => {
           color: govuk-colour('red', $legacy: #BADA55);
         }`
 
-      const results = await renderSass({ data: sass, ...sassConfig })
+      const results = await renderSassString(sass, sassConfig)
 
       expect(results.css.toString().trim()).toBe('.foo { color: #ff0000; }')
     })
@@ -166,7 +166,7 @@ describe('@function govuk-colour', () => {
           color: govuk-colour('hooloovoo', $legacy: 'blue');
         }`
 
-      await expect(renderSass({ data: sass, ...sassConfig }))
+      await expect(renderSassString(sass, sassConfig))
         .rejects
         .toThrow(
           'Unknown colour `hooloovoo`'
@@ -181,7 +181,7 @@ describe('@function govuk-colour', () => {
           color: govuk-colour('red', $legacy: 'hooloovoo');
         }`
 
-      const results = await renderSass({ data: sass, ...sassConfig })
+      const results = await renderSassString(sass, sassConfig)
 
       expect(results.css.toString().trim()).toBe('.foo { color: #ff0000; }')
     })
@@ -211,7 +211,7 @@ describe('@function govuk-organisation-colour', () => {
         color: govuk-organisation-colour('floo-network-authority');
       }`
 
-    const results = await renderSass({ data: sass, ...sassConfig })
+    const results = await renderSassString(sass, sassConfig)
 
     expect(results.css.toString().trim()).toBe('.foo { color: #9A00A8; }')
   })
@@ -224,7 +224,7 @@ describe('@function govuk-organisation-colour', () => {
         color: govuk-organisation-colour('broom-regulatory-control');
       }`
 
-    const results = await renderSass({ data: sass, ...sassConfig })
+    const results = await renderSassString(sass, sassConfig)
 
     expect(results.css.toString().trim()).toBe('.foo { color: #A81223; }')
   })
@@ -237,7 +237,7 @@ describe('@function govuk-organisation-colour', () => {
         border-color: govuk-organisation-colour('floo-network-authority', $websafe: false);
       }`
 
-    const results = await renderSass({ data: sass, ...sassConfig })
+    const results = await renderSassString(sass, sassConfig)
 
     expect(results.css.toString().trim()).toBe('.foo { border-color: #EC22FF; }')
   })
@@ -250,7 +250,7 @@ describe('@function govuk-organisation-colour', () => {
         color: govuk-organisation-colour('muggle-born-registration-commission');
       }`
 
-    await expect(renderSass({ data: sass, ...sassConfig }))
+    await expect(renderSassString(sass, sassConfig))
       .rejects
       .toThrow(
         'Unknown organisation `muggle-born-registration-commission`'

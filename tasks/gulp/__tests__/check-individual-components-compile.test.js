@@ -2,7 +2,7 @@
 
 const path = require('path')
 
-const { renderSass } = require('../../../lib/jest-helpers')
+const { renderSassFile } = require('../../../lib/jest-helpers')
 
 const lib = require('../../../lib/file-helper')
 const configPaths = require('../../../config/paths.json')
@@ -14,7 +14,7 @@ describe('Individual components', () => {
     const getSassRenders = () => {
       return componentNames.map(name => {
         const filePath = path.join(configPaths.components, name, `_${name}.scss`)
-        return renderSass({ file: filePath })
+        return renderSassFile(filePath)
       })
     }
 

@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-const { renderSass } = require('../../../lib/jest-helpers')
+const { renderSassString } = require('../../../lib/jest-helpers')
 
 const sassConfig = {
   outputStyle: 'compressed'
@@ -18,7 +18,7 @@ describe('@function font-url', () => {
         src: govuk-font-url("whatever.woff2");
       }`
 
-    const results = await renderSass({ data: sass, ...sassConfig })
+    const results = await renderSassString(sass, sassConfig)
 
     expect(results.css.toString().trim()).toEqual(
       '@font-face{font-family:"whatever";src:url("/path/to/fonts/whatever.woff2")}'
@@ -36,7 +36,7 @@ describe('@function font-url', () => {
         src: govuk-font-url("whatever.woff2");
       }`
 
-    const results = await renderSass({ data: sass, ...sassConfig })
+    const results = await renderSassString(sass, sassConfig)
 
     expect(results.css.toString().trim()).toEqual(
       '@font-face{font-family:"whatever";src:"WHATEVER.WOFF2"}'
@@ -59,7 +59,7 @@ describe('@function font-url', () => {
         src: govuk-font-url("whatever.woff2");
       }`
 
-    const results = await renderSass({ data: sass, ...sassConfig })
+    const results = await renderSassString(sass, sassConfig)
 
     expect(results.css.toString().trim()).toEqual(
       '@font-face{font-family:"whatever";src:url("/custom/whatever.woff2")}'

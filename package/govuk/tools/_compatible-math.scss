@@ -1,0 +1,3 @@
+@function divideby($numerator, $denominator) {
+  @return calc($numerator / $denominator);
+}

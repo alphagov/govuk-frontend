@@ -1,3 +1,5 @@
+@import "../../tools/compatible-math";
+
 @include govuk-exports("govuk/component/notification-banner") {
   .govuk-notification-banner {
     @include govuk-font($size: 19);
@@ -52,7 +54,7 @@
       box-sizing: border-box;
 
       // Calculate the internal width of a two-thirds column...
-      $two-col-width: ($govuk-page-width * 2 / 3) - ($govuk-gutter * 1 / 3);
+      $two-col-width: divideby($govuk-page-width * 2, 3) - divideby($govuk-gutter * 1, 3);
 
       // ...and then factor in the left border and padding
       $banner-exterior: ($padding-tablet + $govuk-border-width);

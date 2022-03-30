@@ -1,0 +1,5 @@
+@use "sass:math";
+
+@function divideby($numerator, $denominator) {
+  @return math.div($numerator, $denominator);
+}

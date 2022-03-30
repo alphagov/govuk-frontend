@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-const { renderSass } = require('../../../lib/jest-helpers')
+const { renderSassString } = require('../../../lib/jest-helpers')
 
 const configPaths = require('../../../config/paths.json')
 
@@ -34,6 +34,6 @@ describe('Organisation colours', () => {
         }
       }`
 
-    await renderSass({ data: sass, ...sassConfig })
+    await renderSassString(sass, sassConfig)
   })
 })

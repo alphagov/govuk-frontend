@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-const { renderSass } = require('../../../lib/jest-helpers')
+const { renderSassString } = require('../../../lib/jest-helpers')
 
 const sassConfig = {
   outputStyle: 'compact'
@@ -16,7 +16,7 @@ describe('@mixin govuk-link-decoration', () => {
           @include govuk-link-decoration;
         }`
 
-      const results = await renderSass({ data: sass, ...sassConfig })
+      const results = await renderSassString(sass, sassConfig)
 
       expect(results.css.toString()).not.toContain('text-decoration-thickness')
     })
@@ -29,7 +29,7 @@ describe('@mixin govuk-link-decoration', () => {
           @include govuk-link-decoration;
         }`
 
-      const results = await renderSass({ data: sass, ...sassConfig })
+      const results = await renderSassString(sass, sassConfig)
 
       expect(results.css.toString()).not.toContain('text-underline-offset')
     })
@@ -41,12 +41,12 @@ describe('@mixin govuk-link-decoration', () => {
         $govuk-new-link-styles: true;
         $govuk-link-underline-thickness: 1px;
         @import "base";
-  
+
         .foo {
           @include govuk-link-decoration;
         }`
 
-      const results = await renderSass({ data: sass, ...sassConfig })
+      const results = await renderSassString(sass, sassConfig)
 
       expect(results.css.toString()).toContain('text-decoration-thickness: 1px;')
     })
@@ -56,12 +56,12 @@ describe('@mixin govuk-link-decoration', () => {
         $govuk-new-link-styles: true;
         $govuk-link-underline-offset: .1em;
         @import "base";
-  
+
         .foo {
           @include govuk-link-decoration;
         }`
 
-      const results = await renderSass({ data: sass, ...sassConfig })
+      const results = await renderSassString(sass, sassConfig)
 
       expect(results.css.toString()).toContain('text-underline-offset: 0.1em;')
     })
@@ -72,12 +72,12 @@ describe('@mixin govuk-link-decoration', () => {
           $govuk-new-link-styles: true;
           $govuk-link-underline-thickness: false;
           @import "base";
-  
+
           .foo {
             @include govuk-link-decoration;
           }`
 
-        const results = await renderSass({ data: sass, ...sassConfig })
+        const results = await renderSassString(sass, sassConfig)
 
         expect(results.css.toString()).not.toContain('text-decoration-thickness')
       })
@@ -89,12 +89,12 @@ describe('@mixin govuk-link-decoration', () => {
         $govuk-new-link-styles: true;
         $govuk-link-underline-offset: false;
         @import "base";
-  
+
         .foo {
             @include govuk-link-decoration;
         }`
 
-        const results = await renderSass({ data: sass, ...sassConfig })
+        const results = await renderSassString(sass, sassConfig)
 
         expect(results.css.toString()).not.toContain('text-underline-offset')
       })
@@ -107,14 +107,14 @@ describe('@mixin govuk-link-hover-decoration', () => {
     it('does not set a hover state', async () => {
       const sass = `
       @import "base";
-  
+
       // The mixin shouldn't return anything, so this selector ends up empty and
       // is omitted from the CSS
       .foo:hover {
           @include govuk-link-hover-decoration;
       }`
 
-      const results = await renderSass({ data: sass, ...sassConfig })
+      const results = await renderSassString(sass, sassConfig)
 
       expect(results.css.toString()).not.toContain('.foo:hover')
     })
@@ -131,7 +131,7 @@ describe('@mixin govuk-link-hover-decoration', () => {
           @include govuk-link-hover-decoration;
         }`
 
-      const results = await renderSass({ data: sass, ...sassConfig })
+      const results = await renderSassString(sass, sassConfig)
 
       expect(results.css.toString()).toContain('.foo:hover')
     })
@@ -142,14 +142,14 @@ describe('@mixin govuk-link-hover-decoration', () => {
         $govuk-new-link-styles: true;
         $govuk-link-hover-underline-thickness: false;
         @import "base";
-    
+
         // The mixin shouldn't return anything, so this selector ends up empty and
         // is omitted from the CSS
         .foo:hover {
             @include govuk-link-hover-decoration;
         }`
 
-        const results = await renderSass({ data: sass, ...sassConfig })
+        const results = await renderSassString(sass, sassConfig)
 
         expect(results.css.toString()).not.toContain('.foo:hover')
       })
@@ -168,7 +168,7 @@ describe('@mixin govuk-link-style-text', () => {
             @include govuk-link-style-text;
         }`
 
-      const results = await renderSass({ data: sass, ...sassConfig })
+      const results = await renderSassString(sass, sassConfig)
 
       expect(results.css.toString()).toContain(':hover')
       expect(results.css.toString()).toContain('color:')
@@ -186,7 +186,7 @@ describe('@mixin govuk-link-style-text', () => {
             @include govuk-link-style-text;
         }`
 
-      const results = await renderSass({ data: sass, ...sassConfig })
+      const results = await renderSassString(sass, sassConfig)
 
       expect(results.css.toString()).not.toContain('rgba(')
     })

@@ -2,7 +2,7 @@
 
 const outdent = require('outdent')
 
-const { renderSass } = require('../../../lib/jest-helpers')
+const { renderSassString } = require('../../../lib/jest-helpers')
 
 const sassConfig = {
   outputStyle: 'nested'
@@ -29,7 +29,7 @@ describe('grid system', () => {
           content: govuk-grid-width(one-quarter);
         }`
 
-      const results = await renderSass({ data: sass, ...sassConfig })
+      const results = await renderSassString(sass, sassConfig)
 
       expect(results.css.toString().trim()).toBe(outdent`
       .foo {
@@ -43,7 +43,7 @@ describe('grid system', () => {
         $value: govuk-grid-width(seven-fifths);
         `
 
-      await expect(renderSass({ data: sass, ...sassConfig }))
+      await expect(renderSassString(sass, sassConfig))
         .rejects
         .toThrow('Unknown grid width `seven-fifths`')
     })
@@ -59,7 +59,7 @@ describe('grid system', () => {
         }
         `
 
-      const results = await renderSass({ data: sass, ...sassConfig })
+      const results = await renderSassString(sass, sassConfig)
 
       expect(results.css
         .toString()
@@ -83,7 +83,7 @@ describe('grid system', () => {
           @include govuk-grid-column(two-thirds);
         }
       `
-      const results = await renderSass({ data: sass, ...sassConfig })
+      const results = await renderSassString(sass, sassConfig)
 
       expect(results.css
         .toString()
@@ -108,7 +108,7 @@ describe('grid system', () => {
           @include govuk-grid-column(one-quarter, $at: desktop);
         }
       `
-      const results = await renderSass({ data: sass, ...sassConfig })
+      const results = await renderSassString(sass, sassConfig)
 
       expect(results.css
         .toString()
@@ -131,7 +131,7 @@ describe('grid system', () => {
           @include govuk-grid-column(one-quarter, $at: 500px);
         }
       `
-      const results = await renderSass({ data: sass, ...sassConfig })
+      const results = await renderSassString(sass, sassConfig)
 
       expect(results.css
         .toString()
@@ -156,7 +156,7 @@ describe('grid system', () => {
           @include govuk-grid-column(one-half, $float: right);
         }
       `
-      const results = await renderSass({ data: sass, ...sassConfig })
+      const results = await renderSassString(sass, sassConfig)
 
       expect(results.css
         .toString()

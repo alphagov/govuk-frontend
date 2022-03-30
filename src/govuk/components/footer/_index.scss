@@ -1,3 +1,5 @@
+@import "../../tools/compatible-math";
+
 @include govuk-exports("govuk/component/footer") {
 
   $govuk-footer-background: $govuk-canvas-background-colour;
@@ -19,8 +21,8 @@
   $govuk-footer-crest-image-width-2x: 250px;
   $govuk-footer-crest-image-height-2x: 204px;
   // Half the 2x image so that it fits the regular 1x size.
-  $govuk-footer-crest-image-width: ($govuk-footer-crest-image-width-2x / 2);
-  $govuk-footer-crest-image-height: ($govuk-footer-crest-image-height-2x / 2);
+  $govuk-footer-crest-image-width: divideby($govuk-footer-crest-image-width-2x, 2);
+  $govuk-footer-crest-image-height: divideby($govuk-footer-crest-image-height-2x, 2);
 
   .govuk-footer {
     @include govuk-font($size: 16);

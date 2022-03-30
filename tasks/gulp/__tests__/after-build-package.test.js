@@ -6,12 +6,11 @@ const util = require('util')
 
 const recursive = require('recursive-readdir')
 var glob = require('glob')
+const sass = require('sass')
 
 const configPaths = require('../../../config/paths.json')
 const lib = require('../../../lib/file-helper')
 const { componentNameToJavaScriptModuleName } = require('../../../lib/helper-functions')
-
-const { renderSass } = require('../../../lib/jest-helpers')
 
 const readFile = util.promisify(fs.readFile)
 const componentNames = lib.allComponents.slice()
@@ -97,9 +96,9 @@ describe('package/', () => {
   })
 
   describe('all.scss', () => {
-    it('should compile without throwing an exception', async () => {
+    it('should compile without throwing an exception', () => {
       const allScssFile = path.join(configPaths.package, 'govuk', 'all.scss')
-      await renderSass({ file: allScssFile })
+      sass.renderSync({ file: allScssFile })
     })
   })
 
