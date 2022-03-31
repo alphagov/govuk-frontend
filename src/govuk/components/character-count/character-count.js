@@ -6,6 +6,8 @@ function CharacterCount ($module) {
   this.$module = $module
   this.$textarea = $module.querySelector('.govuk-js-character-count')
   this.$countMessage = null
+  this.lastInputTimestamp = null
+  this.debouncedInputTimer = null
 }
 
 CharacterCount.prototype.defaults = {
@@ -60,21 +62,17 @@ CharacterCount.prototype.init = function () {
   // Remove hard limit if set
   $module.removeAttribute('maxlength')
 
+  this.bindChangeEvents()
+
   // When the page is restored after navigating 'back' in some browsers the
   // state of the character count is not restored until *after* the DOMContentLoaded
-  // event is fired, so we need to sync after the pageshow event in browsers
-  // that support it.
+  // event is fired, so we need to manually update it after the pageshow event
+  // in browsers that support it.
   if ('onpageshow' in window) {
-    window.addEventListener('pageshow', this.sync.bind(this))
+    window.addEventListener('pageshow', this.updateCountMessage.bind(this))
   } else {
-    window.addEventListener('DOMContentLoaded', this.sync.bind(this))
+    window.addEventListener('DOMContentLoaded', this.updateCountMessage.bind(this))
   }
-
-  this.sync()
-}
-
-CharacterCount.prototype.sync = function () {
-  this.bindChangeEvents()
   this.updateCountMessage()
 }
 
@@ -109,7 +107,7 @@ CharacterCount.prototype.count = function (text) {
 // Bind input propertychange to the elements and update based on the change
 CharacterCount.prototype.bindChangeEvents = function () {
   var $textarea = this.$textarea
-  $textarea.addEventListener('keyup', this.checkIfValueChanged.bind(this))
+  $textarea.addEventListener('keyup', this.handleKeyUp.bind(this))
 
   // Bind focus/blur events to start/stop polling
   $textarea.addEventListener('focus', this.handleFocus.bind(this))
@@ -177,9 +175,25 @@ CharacterCount.prototype.updateCountMessage = function () {
   countMessage.innerHTML = 'You have ' + displayNumber + ' ' + charNoun + ' ' + charVerb
 }
 
+// Debounce updating the character counter until after a user has stopped typing
+// for a short period of time. This helps prevent screen readers from queuing up
+// multiple text updates in rapid succession.
+CharacterCount.prototype.handleKeyUp = function () {
+  this.lastInputTimestamp = Date.now()
+  clearTimeout(this.debouncedInputTimer)
+  this.debouncedInputTimer = setTimeout(this.updateCountMessage.bind(this), 250)
+}
+
 CharacterCount.prototype.handleFocus = function () {
-  // Check if value changed on focus
-  this.valueChecker = setInterval(this.checkIfValueChanged.bind(this), 1000)
+  // If the field is focused, and a keyup event hasn't been detected for at
+  // least 1000 ms (1 second), then run the manual change check.
+  // This is so that the update triggered by the manual comparison doesn't
+  // conflict with debounced KeyboardEvent updates.
+  this.valueChecker = setInterval(function () {
+    if (!this.lastInputTimestamp || (Date.now() - 1000) >= this.lastInputTimestamp) {
+      this.checkIfValueChanged.bind(this)
+    }
+  }.bind(this), 1000)
 }
 
 CharacterCount.prototype.handleBlur = function () {
