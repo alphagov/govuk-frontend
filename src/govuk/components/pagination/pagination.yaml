@@ -1,0 +1,233 @@
+params:
+- name: items
+  type: array
+  required: false
+  description: The array of link objects.
+  params:
+  - name: number
+    type: string
+    required: false
+    description: The pagination item text - usually a page number.
+  - name: visuallyHiddenText
+    type: string
+    required: false
+    description: The visually hidden label (for the pagination item) which will be applied to an `aria-label` and announced by screen readers on the pagination item link. Should include page number.
+  - name: href
+    type: string
+    required: true
+    description: The link's URL.
+  - name: current
+    type: boolean
+    required: false
+    description: Set to `true` to indicate the current page the user is on.
+  - name: ellipsis
+    type: boolean
+    required: false
+    description: Use this option if you want to specify an ellipsis at a given point between numbers. If you set this option as `true`, any other options for the item are ignored.
+  - name: attributes
+    type: object
+    required: false
+    description: The HTML attributes (for example, data attributes) you want to add to the anchor.
+- name: previous
+  type: object
+  required: false
+  description: A link to the previous page, if there is a previous page.
+  params:
+  - name: text
+    type: string
+    required: false
+    description: The link text to the previous page. Defaults to 'Previous page', where 'page' is visually hidden.
+  - name: labelText
+    type: string
+    required: false
+    description: The optional label that goes underneath the link to the previous page, providing further context for the user about where the link goes.
+  - name: href
+    type: string
+    required: true
+    description: The previous page's URL.
+  - name: attributes
+    type: object
+    required: false
+    description: The HTML attributes (for example, data attributes) you want to add to the anchor.
+- name: next
+  type: object
+  required: false
+  description: A link to the next page, if there is a next page.
+  params:
+  - name: text
+    type: string
+    required: false
+    description: The link text to the next page. Defaults to 'Next page', where 'page' is visually hidden.
+  - name: labelText
+    type: string
+    required: false
+    description: The optional label that goes underneath the link to the next page, providing further context for the user about where the link goes.
+  - name: href
+    type: string
+    required: true
+    description: The next page's URL.
+  - name: attributes
+    type: object
+    required: false
+    description: The HTML attributes (for example, data attributes) you want to add to the anchor.
+- name: landmarkLabel
+  type: string
+  required: false
+  description: The label for the navigation landmark that wraps the pagination. Defaults to 'results'.
+- name: classes
+  type: string
+  required: false
+  description: The classes you want to add to the pagination `nav` parent.
+- name: attributes
+  type: object
+  required: false
+  description: The HTML attributes (for example, data attributes) you want to add to the pagination `nav` parent.
+
+examples:
+- name: default
+  data:
+    previous:
+      href: '/previous'
+    next:
+      href: '/next'
+    items:
+    - number: 1
+      href: '/page/1'
+    - number: 2
+      current: true
+    - number: 3
+      href: '/page/3'
+- name: with custom navigation landmark
+  data:
+    previous:
+      href: '/previous'
+    next:
+      href: '/next'
+    landmarkLabel: 'search'
+    items:
+    - number: 1
+      href: '/page/1'
+    - number: 2
+      current: true
+    - number: 3
+      href: '/page/3'
+- name: with custom link and item text
+  data:
+    previous:
+      href: '/previous'
+      text: 'Previous page'
+    next:
+      href: '/next'
+      text: 'Next page'
+    items:
+    - number: 'one'
+      href: '/page/1'
+    - number: 'two'
+      current: true
+    - number: 'three'
+      href: '/page/3'
+- name: with custom accessible labels on item links
+  data:
+    previous:
+      href: '/previous'
+    next:
+      href: '/next'
+    items:
+    - number: 1
+      href: '/page/1'
+      visuallyHiddenText: '1st page'
+    - number: 2
+      current: true
+      visuallyHiddenText: '2nd page (you are currently on this page)'
+    - number: 3
+      href: '/page/3'
+      visuallyHiddenText: '3rd page'
+- name: with many pages
+  data:
+    previous:
+      href: '/previous'
+    next:
+      href: '/next'
+    items:
+    - number: 1
+      href: '/page/1'
+    - ellipsis: true
+    - number: 8
+      href: '/page/8'
+    - number: 9
+      href: '/page/9'
+    - number: 10
+      current: true
+    - number: 11
+      href: '/page/11'
+    - number: 12
+      href: '/page/12'
+    - ellipsis: true
+    - number: 40
+      href: '/page/40'
+- name: first page
+  data:
+    next:
+      href: '/next'
+    items:
+    - number: 1
+      current: true
+    - number: 2
+      href: '/page/2'
+    - number: 3
+      href: '/page/3'
+- name: last page
+  data:
+    previous:
+      href: '/previous'
+    items:
+    - number: 1
+      href: '/page/1'
+    - number: 2
+      href: '/page/2'
+    - number: 3
+      current: true
+- name: with prev and next only
+  data:
+    previous:
+      href: '/previous'
+    next:
+      href: '/next'
+- name: with prev and next only and labels
+  data:
+    previous:
+      text: 'Previous page'
+      labelText: '1 of 3'
+      href: '/previous'
+    next:
+      text: 'Next page'
+      labelText: '3 of 3'
+      href: '/next'
+- name: with prev and next only and very long labels
+  data:
+    previous:
+      text: 'Previous page'
+      labelText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+      href: '/previous'
+    next:
+      text: 'Next page'
+      labelText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+      href: '/next'
+- name: with prev and next only in a different language
+  data:
+    previous:
+      text: 'précédente'
+      href: '/previous'
+      visuallyHiddenText: 'Page précédente'
+    next:
+      text: 'suivante'
+      href: '/next'
+      visuallyHiddenText: 'Page suivante'
+- name: with previous only
+  data:
+    previous:
+      href: '/previous'
+- name: with next only
+  data:
+    next:
+      href: '/next'
