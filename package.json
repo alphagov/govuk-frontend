@@ -7,7 +7,9 @@
   "exports": {
     "import": "./govuk-esm/all.mjs"
   },
-  "sideEffects": true,
+  "sideEffects": [
+    "govuk-esm/vendor/**"
+  ],
   "sass": "govuk/all.scss",
   "engines": {
     "node": ">= 4.2.0"
