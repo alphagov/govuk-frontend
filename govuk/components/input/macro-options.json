@@ -15,7 +15,7 @@
         "name": "type",
         "type": "string",
         "required": false,
-        "description": "Type of input control to render. Defaults to `text`."
+        "description": "Type of input control to render, for example, a password input control. Defaults to `text`."
     },
     {
         "name": "inputmode",
