@@ -238,3 +238,12 @@ examples:
       maxlength: 10
       label:
         text: Full address
+  - name: with textarea maxlength attribute
+    data:
+      id: maxlength-should-be-removed
+      name: address
+      maxlength: 10
+      attributes:
+        maxlength: 10
+      label:
+        text: Full address
