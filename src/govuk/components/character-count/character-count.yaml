@@ -239,6 +239,7 @@ examples:
       label:
         text: Full address
   - name: with textarea maxlength attribute
+    hidden: true
     data:
       id: maxlength-should-be-removed
       name: address
