@@ -69,7 +69,7 @@ CharacterCount.prototype.init = function () {
   }
 
   // Remove hard limit if set
-  $module.removeAttribute('maxlength')
+  $textarea.removeAttribute('maxlength')
 
   this.bindChangeEvents()
 
