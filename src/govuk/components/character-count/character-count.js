@@ -5,7 +5,8 @@ import '../../vendor/polyfills/Element/prototype/classList'
 function CharacterCount ($module) {
   this.$module = $module
   this.$textarea = $module.querySelector('.govuk-js-character-count')
-  this.$countMessage = null
+  this.$visibleCountMessage = null
+  this.$screenReaderCountMessage = null
   this.lastInputTimestamp = null
   this.debouncedInputTimer = null
 }
@@ -30,14 +31,22 @@ CharacterCount.prototype.init = function () {
   // Kept for backwards compatibility
   $textarea.insertAdjacentElement('afterend', $fallbackLimitMessage)
 
+  // Create the *screen reader* specific live-updating counter
+  // This doesn't need any styling classes, as it is never visible
+  var $screenReaderCountMessage = document.createElement('div')
+  $screenReaderCountMessage.className = 'govuk-character-count__sr-status govuk-visually-hidden'
+  $screenReaderCountMessage.setAttribute('aria-live', 'polite')
+  this.$screenReaderCountMessage = $screenReaderCountMessage
+  $fallbackLimitMessage.insertAdjacentElement('afterend', $screenReaderCountMessage)
+
   // Create our live-updating counter element, copying the classes from the
   // fallback element for backwards compatibility as these may have been configured
-  var $countMessage = document.createElement('div')
-  $countMessage.className = $fallbackLimitMessage.className
-  $countMessage.classList.add('govuk-character-count__status')
-  $countMessage.setAttribute('aria-live', 'polite')
-  this.$countMessage = $countMessage
-  $fallbackLimitMessage.insertAdjacentElement('afterend', $countMessage)
+  var $visibleCountMessage = document.createElement('div')
+  $visibleCountMessage.className = $fallbackLimitMessage.className
+  $visibleCountMessage.classList.add('govuk-character-count__status')
+  $visibleCountMessage.setAttribute('aria-hidden', 'true')
+  this.$visibleCountMessage = $visibleCountMessage
+  $fallbackLimitMessage.insertAdjacentElement('afterend', $visibleCountMessage)
 
   // Hide the fallback limit message
   $fallbackLimitMessage.classList.add('govuk-visually-hidden')
@@ -125,28 +134,25 @@ CharacterCount.prototype.checkIfValueChanged = function () {
   }
 }
 
-// Update message box
+// Helper function to update both the visible and screen reader-specific
+// counters simultaneously (e.g. on init)
 CharacterCount.prototype.updateCountMessage = function () {
+  this.updateVisibleCountMessage()
+  this.updateScreenReaderCountMessage()
+}
+
+// Update visible counter
+CharacterCount.prototype.updateVisibleCountMessage = function () {
   var countElement = this.$textarea
-  var options = this.options
-  var countMessage = this.$countMessage
+  var countMessage = this.$visibleCountMessage
+  var remainingNumber = this.maxLength - this.count(countElement.value)
 
-  // Determine the remaining number of characters/words
-  var currentLength = this.count(countElement.value)
-  var maxLength = this.maxLength
-  var remainingNumber = maxLength - currentLength
-
-  // Set threshold if presented in options
-  var thresholdPercent = options.threshold ? options.threshold : 0
-  var thresholdValue = maxLength * thresholdPercent / 100
-  if (thresholdValue > currentLength) {
-    countMessage.classList.add('govuk-character-count__message--disabled')
-    // Ensure threshold is hidden for users of assistive technologies
-    countMessage.setAttribute('aria-hidden', true)
-  } else {
+  // If input is over the threshold, remove the disabled class which renders the
+  // counter invisible.
+  if (this.isOverThreshold()) {
     countMessage.classList.remove('govuk-character-count__message--disabled')
-    // Ensure threshold is visible for users of assistive technologies
-    countMessage.removeAttribute('aria-hidden')
+  } else {
+    countMessage.classList.add('govuk-character-count__message--disabled')
   }
 
   // Update styles
@@ -161,6 +167,31 @@ CharacterCount.prototype.updateCountMessage = function () {
   }
 
   // Update message
+  countMessage.innerHTML = this.formatUpdateMessage()
+}
+
+// Update screen reader-specific counter
+CharacterCount.prototype.updateScreenReaderCountMessage = function () {
+  var countMessage = this.$screenReaderCountMessage
+
+  // If other the threshold, remove the aria-hidden attribute, allowing screen
+  // readers to announce the content of the element.
+  if (this.isOverThreshold()) {
+    countMessage.removeAttribute('aria-hidden')
+  } else {
+    countMessage.setAttribute('aria-hidden', true)
+  }
+
+  // Update message
+  countMessage.innerHTML = this.formatUpdateMessage()
+}
+
+// Format update message
+CharacterCount.prototype.formatUpdateMessage = function () {
+  var countElement = this.$textarea
+  var options = this.options
+  var remainingNumber = this.maxLength - this.count(countElement.value)
+
   var charVerb = 'remaining'
   var charNoun = 'character'
   var displayNumber = remainingNumber
@@ -172,16 +203,38 @@ CharacterCount.prototype.updateCountMessage = function () {
   charVerb = (remainingNumber < 0) ? 'too many' : 'remaining'
   displayNumber = Math.abs(remainingNumber)
 
-  countMessage.innerHTML = 'You have ' + displayNumber + ' ' + charNoun + ' ' + charVerb
+  return 'You have ' + displayNumber + ' ' + charNoun + ' ' + charVerb
 }
 
-// Debounce updating the character counter until after a user has stopped typing
-// for a short period of time. This helps prevent screen readers from queuing up
-// multiple text updates in rapid succession.
+// Checks whether the value is over the configured threshold for the input.
+// If there is no configured threshold, it is set to 0 and this function will
+// always return true.
+CharacterCount.prototype.isOverThreshold = function () {
+  var countElement = this.$textarea
+  var options = this.options
+
+  // Determine the remaining number of characters/words
+  var currentLength = this.count(countElement.value)
+  var maxLength = this.maxLength
+
+  // Set threshold if presented in options
+  var thresholdPercent = options.threshold ? options.threshold : 0
+  var thresholdValue = maxLength * thresholdPercent / 100
+
+  return (thresholdValue <= currentLength)
+}
+
+// Handle the user typing.
+// Debounces updating the screen reader counter until after a user has stopped
+// typing for a short period of time. This helps prevent screen readers from
+// queuing up multiple text updates in rapid succession.
 CharacterCount.prototype.handleKeyUp = function () {
-  this.lastInputTimestamp = Date.now()
+  // Update the visible character counter and keep track of when the update happened
+  this.updateVisibleCountMessage()
+
+  // Clear the previous timeout, as an update has just taken place, and set a new one
   clearTimeout(this.debouncedInputTimer)
-  this.debouncedInputTimer = setTimeout(this.updateCountMessage.bind(this), 250)
+  this.debouncedInputTimer = setTimeout(this.updateScreenReaderCountMessage.bind(this), 500)
 }
 
 CharacterCount.prototype.handleFocus = function () {

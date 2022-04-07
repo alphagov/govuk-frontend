@@ -52,9 +52,6 @@ describe('Character count', () => {
         await goToExample()
         await page.type('.govuk-js-character-count', 'A')
 
-        // Wait for debounced update to happen
-        await new Promise((resolve) => setTimeout(resolve, 300))
-
         const message = await page.$eval('.govuk-character-count__status', el => el.innerHTML.trim())
 
         expect(message).toEqual('You have 9 characters remaining')
@@ -63,9 +60,6 @@ describe('Character count', () => {
       it('uses the singular when there is only one character remaining', async () => {
         await goToExample()
         await page.type('.govuk-js-character-count', 'A'.repeat(9))
-
-        // Wait for debounced update to happen
-        await new Promise((resolve) => setTimeout(resolve, 300))
 
         const message = await page.$eval('.govuk-character-count__status', el => el.innerHTML.trim())
 
@@ -76,9 +70,6 @@ describe('Character count', () => {
         beforeAll(async () => {
           await goToExample()
           await page.type('.govuk-js-character-count', 'A'.repeat(11))
-
-          // Wait for debounced update to happen
-          await new Promise((resolve) => setTimeout(resolve, 300))
         })
 
         it('shows the number of characters over the limit', async () => {
@@ -88,9 +79,6 @@ describe('Character count', () => {
 
         it('uses the plural when the limit is exceeded by 2 or more', async () => {
           await page.type('.govuk-js-character-count', 'A')
-
-          // Wait for debounced update to happen
-          await new Promise((resolve) => setTimeout(resolve, 300))
 
           const message = await page.$eval('.govuk-character-count__status', el => el.innerHTML.trim())
           expect(message).toEqual('You have 2 characters too many')
@@ -137,22 +125,25 @@ describe('Character count', () => {
           const visibility = await page.$eval('.govuk-character-count__status', el => window.getComputedStyle(el).visibility)
           expect(visibility).toEqual('hidden')
 
+          // Wait for debounced update to happen
+          await new Promise((resolve) => setTimeout(resolve, 1100))
+
           // Ensure threshold is hidden for users of assistive technologies
-          const ariaHidden = await page.$eval('.govuk-character-count__status', el => el.getAttribute('aria-hidden'))
+          const ariaHidden = await page.$eval('.govuk-character-count__sr-status', el => el.getAttribute('aria-hidden'))
           expect(ariaHidden).toEqual('true')
         })
 
         it('becomes visible once the threshold is reached', async () => {
           await page.type('.govuk-js-character-count', 'A'.repeat(8))
 
-          // Wait for debounced update to happen
-          await new Promise((resolve) => setTimeout(resolve, 300))
-
           const visibility = await page.$eval('.govuk-character-count__status', el => window.getComputedStyle(el).visibility)
           expect(visibility).toEqual('visible')
 
+          // Wait for debounced update to happen
+          await new Promise((resolve) => setTimeout(resolve, 1100))
+
           // Ensure threshold is visible for users of assistive technologies
-          const ariaHidden = await page.$eval('.govuk-character-count__status', el => el.getAttribute('aria-hidden'))
+          const ariaHidden = await page.$eval('.govuk-character-count__sr-status', el => el.getAttribute('aria-hidden'))
           expect(ariaHidden).toBeFalsy()
         })
       })
@@ -192,9 +183,6 @@ describe('Character count', () => {
         await goToExample('with-word-count')
         await page.type('.govuk-js-character-count', 'Hello world')
 
-        // Wait for debounced update to happen
-        await new Promise((resolve) => setTimeout(resolve, 300))
-
         const message = await page.$eval('.govuk-character-count__status', el => el.innerHTML.trim())
 
         expect(message).toEqual('You have 8 words remaining')
@@ -203,9 +191,6 @@ describe('Character count', () => {
       it('uses the singular when there is only one word remaining', async () => {
         await goToExample('with-word-count')
         await page.type('.govuk-js-character-count', 'Hello '.repeat(9))
-
-        // Wait for debounced update to happen
-        await new Promise((resolve) => setTimeout(resolve, 300))
 
         const message = await page.$eval('.govuk-character-count__status', el => el.innerHTML.trim())
 
@@ -216,9 +201,6 @@ describe('Character count', () => {
         beforeAll(async () => {
           await goToExample('with-word-count')
           await page.type('.govuk-js-character-count', 'Hello '.repeat(11))
-
-          // Wait for debounced update to happen
-          await new Promise((resolve) => setTimeout(resolve, 300))
         })
 
         it('shows the number of words over the limit', async () => {
@@ -228,9 +210,6 @@ describe('Character count', () => {
 
         it('uses the plural when the limit is exceeded by 2 or more', async () => {
           await page.type('.govuk-js-character-count', 'World')
-
-          // Wait for debounced update to happen
-          await new Promise((resolve) => setTimeout(resolve, 300))
 
           const message = await page.$eval('.govuk-character-count__status', el => el.innerHTML.trim())
           expect(message).toEqual('You have 2 words too many')
