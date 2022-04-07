@@ -25,6 +25,7 @@ We’ve also made fixes in the following pull requests:
 
 - [#2549: Fix header with product name focus and hover state length](https://github.com/alphagov/govuk-frontend/pull/2549)
 - [#2573: Better handle cases where `$govuk-text-colour` is set to a non-colour value](https://github.com/alphagov/govuk-frontend/pull/2573)
+- [#2590: Maxlength attribute should not be present on textarea after character-count JavaScript has kicked in](https://github.com/alphagov/govuk-frontend/pull/2590)
 
 ## 4.0.1 (Fix release)
 
