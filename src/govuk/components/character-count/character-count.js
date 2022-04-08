@@ -8,7 +8,6 @@ function CharacterCount ($module) {
   this.$visibleCountMessage = null
   this.$screenReaderCountMessage = null
   this.lastInputTimestamp = null
-  this.debouncedInputTimer = null
 }
 
 CharacterCount.prototype.defaults = {
@@ -224,18 +223,11 @@ CharacterCount.prototype.isOverThreshold = function () {
   return (thresholdValue <= currentLength)
 }
 
-// Handle the user typing.
-// Debounces updating the screen reader counter until after a user has stopped
-// typing for a short period of time. This helps prevent screen readers from
-// queuing up multiple text updates in rapid succession.
+// Update the visible character counter and keep track of when the last update
+// happened for each keypress
 CharacterCount.prototype.handleKeyUp = function () {
-  // Update the visible character counter and keep track of when the update happened
   this.updateVisibleCountMessage()
   this.lastInputTimestamp = Date.now()
-
-  // Clear the previous timeout, as an update has just taken place, and set a new one
-  clearTimeout(this.debouncedInputTimer)
-  this.debouncedInputTimer = setTimeout(this.updateScreenReaderCountMessage.bind(this), 500)
 }
 
 CharacterCount.prototype.handleFocus = function () {
@@ -244,7 +236,7 @@ CharacterCount.prototype.handleFocus = function () {
   // This is so that the update triggered by the manual comparison doesn't
   // conflict with debounced KeyboardEvent updates.
   this.valueChecker = setInterval(function () {
-    if (!this.lastInputTimestamp || (Date.now() - 1000) >= this.lastInputTimestamp) {
+    if (!this.lastInputTimestamp || (Date.now() - 500) >= this.lastInputTimestamp) {
       this.checkIfValueChanged()
     }
   }.bind(this), 1000)
