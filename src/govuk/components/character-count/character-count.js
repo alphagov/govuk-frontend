@@ -231,6 +231,7 @@ CharacterCount.prototype.isOverThreshold = function () {
 CharacterCount.prototype.handleKeyUp = function () {
   // Update the visible character counter and keep track of when the update happened
   this.updateVisibleCountMessage()
+  this.lastInputTimestamp = Date.now()
 
   // Clear the previous timeout, as an update has just taken place, and set a new one
   clearTimeout(this.debouncedInputTimer)
@@ -244,7 +245,7 @@ CharacterCount.prototype.handleFocus = function () {
   // conflict with debounced KeyboardEvent updates.
   this.valueChecker = setInterval(function () {
     if (!this.lastInputTimestamp || (Date.now() - 1000) >= this.lastInputTimestamp) {
-      this.checkIfValueChanged.bind(this)
+      this.checkIfValueChanged()
     }
   }.bind(this), 1000)
 }
