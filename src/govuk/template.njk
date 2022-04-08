@@ -27,7 +27,7 @@
     {# image url needs to be absolute e.g. http://wwww.domain.com/.../govuk-opengraph-image.png #}
     <meta property="og:image" content="{{ assetUrl | default('/assets') }}/images/govuk-opengraph-image.png">
   </head>
-  <body class="govuk-template__body {{ bodyClasses }}" {%- for attribute, value in bodyAttributes %} {{attribute}}="{{value}}"{% endfor %}>
+  <body class="govuk-template__body {{ bodyClasses }} {{ brandClass }}" {%- for attribute, value in bodyAttributes %} {{attribute}}="{{value}}"{% endfor %}>
     <script{% if cspNonce %} nonce="{{ cspNonce }}"{% endif %}>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
     {% block bodyStart %}{% endblock %}
 
@@ -39,7 +39,7 @@
     {% endblock %}
 
     {% block header %}
-      {{ govukHeader({}) }}
+      {{ govukHeader({ organisationName: organisationName }) }}
     {% endblock %}
 
     {% block main %}

@@ -7,3 +7,19 @@
 
 @import "utilities/all";
 @import "overrides/all";
+
+.govuk-template__body-brand--dfe {
+  .govuk-header__container--full-width {
+    border-color: govuk-organisation-colour("department-for-education");
+  }
+
+  .govuk-header__container {
+    border-bottom-color: govuk-organisation-colour("department-for-education");
+  }
+
+  .govuk-notification-banner {
+    border-color: govuk-organisation-colour("department-for-education");
+
+    background-color: govuk-organisation-colour("department-for-education");
+  }
+}

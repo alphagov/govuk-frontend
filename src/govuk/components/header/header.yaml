@@ -15,6 +15,10 @@ params:
   type: string
   required: false
   description: The name of your service, included in the header.
+- name: organisationName
+  type: string
+  required: false
+  description: The name of your organisation, replacing the default logotype crown.
 - name: serviceUrl
   type: string
   required: false
@@ -235,6 +239,170 @@ examples:
 
 - name: navigation item with text without link
   data:
+    serviceName: Service Name
+    serviceUrl: '/components/header'
+    navigation:
+      - text: Navigation item 1
+      - text: Navigation item 2
+      - text: Navigation item 3
+
+
+- name: organisation name
+  description: If your service is not on www.gov.uk, *.service.gov.uk or service.gov.uk/* then you must diplay the approriate crest
+  data:
+    organisationName: Department<br/>for Education
+
+- name: organisation name with service name
+  description: If your service is more than a few pages long, you can help users understand where they are by adding the service name.
+  data:
+    organisationName: Department<br/>for Education
+    serviceName: Service Name
+    serviceUrl: '/components/header'
+
+- name: organisation name with navigation
+  data:
+    organisationName: Department<br/>for Education
+    navigation:
+      - href: '#1'
+        text: Navigation item 1
+        active: true
+      - href: '#2'
+        text: Navigation item 2
+      - href: '#3'
+        text: Navigation item 3
+      - href: '#4'
+        text: Navigation item 4
+
+- name: organisation name with custom navigation label
+  data:
+    organisationName: Department<br/>for Education
+    navigationLabel: Custom navigation label
+    navigation:
+      - href: '#1'
+        text: Navigation item 1
+        active: true
+      - href: '#2'
+        text: Navigation item 2
+      - href: '#3'
+        text: Navigation item 3
+      - href: '#4'
+        text: Navigation item 4
+
+- name: organisation name with custom menu button label
+  data:
+    organisationName: Department<br/>for Education
+    menuButtonLabel: Custom button label
+    navigation:
+      - href: '#1'
+        text: Navigation item 1
+        active: true
+      - href: '#2'
+        text: Navigation item 2
+      - href: '#3'
+        text: Navigation item 3
+      - href: '#4'
+        text: Navigation item 4
+
+- name: organisation name with service name and navigation
+  description: If you need to include basic navigation, contact or account management links.
+  data:
+    organisationName: Department<br/>for Education
+    serviceName: Service Name
+    serviceUrl: '/components/header'
+    navigation:
+      - href: '#1'
+        text: Navigation item 1
+        active: true
+      - href: '#2'
+        text: Navigation item 2
+      - href: '#3'
+        text: Navigation item 3
+      - href: '#4'
+        text: Navigation item 4
+
+- name: organisation name with large navigation
+  description: An edge case example with a large number of navitation items with long names used to test wrapping
+  data:
+    organisationName: Department<br/>for Education
+    navigation:
+      - href: '/browse/benefits'
+        text: Benefits
+      - href: '/browse/births-deaths-marriages'
+        text: Births, deaths, marriages and care
+      - href: '/browse/business'
+        text: Business and self-employed
+      - href: '/browse/childcare-parenting'
+        text: Childcare and parenting
+      - href: '/browse/citizenship'
+        text: Citizenship and living in the UK
+      - href: '/browse/justice'
+        text: Crime, justice and the law
+      - href: '/browse/disabilities'
+        text: Disabled people
+      - href: '/browse/driving'
+        text: Driving and transport
+      - href: '/browse/education'
+        text: Education and learning
+      - href: '/browse/employing-people'
+        text: Employing people
+      - href: '/browse/environment-countryside'
+        text: Environment and countryside
+      - href: '/browse/housing-local-services'
+        text: Housing and local services
+      - href: '/browse/tax'
+        text: Money and tax
+      - href: '/browse/abroad'
+        text: Passports, travel and living abroad
+      - href: '/browse/visas-immigration'
+        text: Visas and immigration
+      - href: '/browse/working'
+        text: Working, jobs and pensions
+
+- name: organisation name with product name
+  data:
+    organisationName: Department<br/>for Education
+    navigationClasses: govuk-header__navigation--end
+    productName: Product Name
+
+- name: organisation name full width
+  data:
+    organisationName: Department<br/>for Education
+    containerClasses: govuk-header__container--full-width
+    navigationClasses: govuk-header__navigation--end
+    productName: Product Name
+
+- name: organisation name full width with navigation
+  data:
+    organisationName: Department<br/>for Education
+    containerClasses: govuk-header__container--full-width
+    navigationClasses: govuk-header__navigation--end
+    productName: Product Name
+    navigation:
+      - href: '#1'
+        text: Navigation item 1
+        active: true
+      - href: '#2'
+        text: Navigation item 2
+      - href: '#3'
+        text: Navigation item 3
+
+- name: organisation name navigation item with html
+  data:
+    organisationName: Department<br/>for Education
+    serviceName: Service Name
+    serviceUrl: '/components/header'
+    navigation:
+      - href: '#1'
+        html: <em>Navigation item 1</em>
+        active: true
+      - href: '#2'
+        html: <em>Navigation item 2</em>
+      - href: '#3'
+        html: <em>Navigation item 3</em>
+
+- name: organisation name navigation item with text without link
+  data:
+    organisationName: Department<br/>for Education
     serviceName: Service Name
     serviceUrl: '/components/header'
     navigation:

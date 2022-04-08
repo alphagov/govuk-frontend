@@ -1,3 +1,21 @@
+@mixin crest($crest) {
+  background: url("/assets/images/crests/#{$crest}_13px.png") no-repeat 0;
+  background-size: auto 26px;
+
+  @include govuk-device-pixel-ratio {
+    background-image: url("/assets/images/crests/#{$crest}_13px_x2.png");
+  }
+
+  @include govuk-media-query($from: tablet) {
+    background: url("/assets/images/crests/#{$crest}_18px.png") no-repeat 0;
+    background-size: auto 32px;
+
+    @include govuk-device-pixel-ratio {
+      background-image: url("/assets/images/crests/#{$crest}_18px_x2.png");
+    }
+  }
+}
+
 @include govuk-exports("govuk/component/header") {
 
   $govuk-header-background: govuk-colour("black");
@@ -342,5 +360,55 @@
       line-height: 30px;
     }
     // End adjustments
+  }
+
+  // Scale images on smaller viewports
+  .govuk-header__organisation-logotype-crest {
+    @include crest("org_crest");
+    display: inline-block;
+    max-width: 100%;
+    padding-left: 48px;
+    vertical-align: text-top;
+
+    .brand--executive-office & {
+      padding-left: 0;
+      border-left-width: 0;
+      background-position: 0 0;
+    }
+  }
+
+  .govuk-header__organisation-logo {
+    @include govuk-responsive-margin(2, "bottom");
+    box-sizing: border-box;
+    padding-right: govuk-spacing(8);
+
+    @include govuk-media-query ($from: desktop) {
+      width: 33.33%;
+      padding-right: $govuk-gutter-half;
+      float: left;
+      vertical-align: top;
+    }
+
+    .govuk-header__link {
+      @include govuk-font($size: 19, $line-height: 1);
+      display: inline-block;
+      font-weight: bold;
+
+      &:active .govuk-header__organisation-logotype-crest,
+      &:focus .govuk-header__organisation-logotype-crest {
+        @include crest("org_crest_black");
+      }
+
+      @include govuk-compatibility(govuk_template) {
+        &:link:focus .govuk-header__organisation-logotype-crest {
+          @include crest("org_crest_black");
+        }
+      }
+    }
+  }
+
+  .govuk-header__organisation-logotype-name {
+    display: inline-block;
+    vertical-align: text-top;
   }
 }
