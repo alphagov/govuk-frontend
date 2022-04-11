@@ -17,16 +17,17 @@ CharacterCount.prototype.defaults = {
 
 // Initialize component
 CharacterCount.prototype.init = function () {
-  // Check for module
-  var $module = this.$module
-  var $textarea = this.$textarea
-  var $fallbackLimitMessage = document.getElementById(this.$textarea.id + '-info')
-
-  if (!$textarea) {
+  // Check that required elements are present
+  if (!this.$textarea) {
     return
   }
 
-  // We move fallback count message right after the field
+  // Check for module
+  var $module = this.$module
+  var $textarea = this.$textarea
+  var $fallbackLimitMessage = document.getElementById($textarea.id + '-info')
+
+  // Move the fallback count message to be immediately after the textarea
   // Kept for backwards compatibility
   $textarea.insertAdjacentElement('afterend', $fallbackLimitMessage)
 
