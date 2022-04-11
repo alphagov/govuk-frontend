@@ -143,54 +143,54 @@ CharacterCount.prototype.updateCountMessage = function () {
 
 // Update visible counter
 CharacterCount.prototype.updateVisibleCountMessage = function () {
-  var countElement = this.$textarea
-  var countMessage = this.$visibleCountMessage
-  var remainingNumber = this.maxLength - this.count(countElement.value)
+  var $textarea = this.$textarea
+  var $visibleCountMessage = this.$visibleCountMessage
+  var remainingNumber = this.maxLength - this.count($textarea.value)
 
   // If input is over the threshold, remove the disabled class which renders the
   // counter invisible.
   if (this.isOverThreshold()) {
-    countMessage.classList.remove('govuk-character-count__message--disabled')
+    $visibleCountMessage.classList.remove('govuk-character-count__message--disabled')
   } else {
-    countMessage.classList.add('govuk-character-count__message--disabled')
+    $visibleCountMessage.classList.add('govuk-character-count__message--disabled')
   }
 
   // Update styles
   if (remainingNumber < 0) {
-    countElement.classList.add('govuk-textarea--error')
-    countMessage.classList.remove('govuk-hint')
-    countMessage.classList.add('govuk-error-message')
+    $textarea.classList.add('govuk-textarea--error')
+    $visibleCountMessage.classList.remove('govuk-hint')
+    $visibleCountMessage.classList.add('govuk-error-message')
   } else {
-    countElement.classList.remove('govuk-textarea--error')
-    countMessage.classList.remove('govuk-error-message')
-    countMessage.classList.add('govuk-hint')
+    $textarea.classList.remove('govuk-textarea--error')
+    $visibleCountMessage.classList.remove('govuk-error-message')
+    $visibleCountMessage.classList.add('govuk-hint')
   }
 
   // Update message
-  countMessage.innerHTML = this.formatUpdateMessage()
+  $visibleCountMessage.innerHTML = this.formatUpdateMessage()
 }
 
 // Update screen reader-specific counter
 CharacterCount.prototype.updateScreenReaderCountMessage = function () {
-  var countMessage = this.$screenReaderCountMessage
+  var $screenReaderCountMessage = this.$screenReaderCountMessage
 
-  // If other the threshold, remove the aria-hidden attribute, allowing screen
+  // If over the threshold, remove the aria-hidden attribute, allowing screen
   // readers to announce the content of the element.
   if (this.isOverThreshold()) {
-    countMessage.removeAttribute('aria-hidden')
+    $screenReaderCountMessage.removeAttribute('aria-hidden')
   } else {
-    countMessage.setAttribute('aria-hidden', true)
+    $screenReaderCountMessage.setAttribute('aria-hidden', true)
   }
 
   // Update message
-  countMessage.innerHTML = this.formatUpdateMessage()
+  $screenReaderCountMessage.innerHTML = this.formatUpdateMessage()
 }
 
 // Format update message
 CharacterCount.prototype.formatUpdateMessage = function () {
-  var countElement = this.$textarea
+  var $textarea = this.$textarea
   var options = this.options
-  var remainingNumber = this.maxLength - this.count(countElement.value)
+  var remainingNumber = this.maxLength - this.count($textarea.value)
 
   var charVerb = 'remaining'
   var charNoun = 'character'
@@ -210,11 +210,11 @@ CharacterCount.prototype.formatUpdateMessage = function () {
 // If there is no configured threshold, it is set to 0 and this function will
 // always return true.
 CharacterCount.prototype.isOverThreshold = function () {
-  var countElement = this.$textarea
+  var $textarea = this.$textarea
   var options = this.options
 
   // Determine the remaining number of characters/words
-  var currentLength = this.count(countElement.value)
+  var currentLength = this.count($textarea.value)
   var maxLength = this.maxLength
 
   // Set threshold if presented in options
