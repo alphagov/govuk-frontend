@@ -167,7 +167,7 @@ CharacterCount.prototype.updateVisibleCountMessage = function () {
   }
 
   // Update message
-  $visibleCountMessage.innerHTML = this.formatUpdateMessage()
+  $visibleCountMessage.innerHTML = this.formattedUpdateMessage()
 }
 
 // Update screen reader-specific counter
@@ -183,11 +183,11 @@ CharacterCount.prototype.updateScreenReaderCountMessage = function () {
   }
 
   // Update message
-  $screenReaderCountMessage.innerHTML = this.formatUpdateMessage()
+  $screenReaderCountMessage.innerHTML = this.formattedUpdateMessage()
 }
 
 // Format update message
-CharacterCount.prototype.formatUpdateMessage = function () {
+CharacterCount.prototype.formattedUpdateMessage = function () {
   var $textarea = this.$textarea
   var options = this.options
   var remainingNumber = this.maxLength - this.count($textarea.value)
