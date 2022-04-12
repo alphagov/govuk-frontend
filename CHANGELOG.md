@@ -2,10 +2,29 @@
 
 ## Unreleased
 
+### Recommended changes
+
+We've recently made some non-breaking changes to GOV.UK Frontend. Implementing these changes will make your service work better. 
+
+#### Remove `aria-live` from the character count component
+
+If you're not using the Nunjucks macros, remove the `aria-live` attribute from the character count message element. This element's content no longer updates, as we've moved the live counter functionality to a new element injected by JavaScript. 
+
+This change was introduced in [pull request #2577: Refactor character count to inject new element](https://github.com/alphagov/govuk-frontend/pull/2577)
+
 ### Fixes
 
+We've made the following fixes in [pull request #2577: Refactor character count to inject new element](https://github.com/alphagov/govuk-frontend/pull/2577):
+
+- fix character count message being repeated twice by screen readers
+- fix character count hint text being announced as part of the count message
+- fix multiple outdated character count messages being announced at once
+- fix character count message being announced when input length is below a defined threshold
+
+We’ve also made fixes in the following pull requests:
+
 - [#2549: Fix header with product name focus and hover state length](https://github.com/alphagov/govuk-frontend/pull/2549)
-- [#2573: Better handle cases where govuk-text-colour is set to a non-colour value](https://github.com/alphagov/govuk-frontend/pull/2573)
+- [#2573: Better handle cases where `$govuk-text-colour` is set to a non-colour value](https://github.com/alphagov/govuk-frontend/pull/2573)
 
 ## 4.0.1 (Fix release)
 
