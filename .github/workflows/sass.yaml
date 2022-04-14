@@ -16,6 +16,21 @@ jobs:
           sass --version
       - run: time sass src/govuk/all.scss > /dev/null
 
+  dart-sass-latest:
+    name: Dart Sass v1 (latest)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - run: |
+          npm install -g sass@v1
+          sass --version
+      - run: time sass src/govuk/all.scss > /dev/null
+
+
+  # Node Sass v3.4.0 = LibSass v3.3.0
   lib-sass:
     name: LibSass v3.3.0 (deprecated)
     runs-on: ubuntu-latest
@@ -29,6 +44,20 @@ jobs:
           node-sass --version
       - run: time node-sass src/govuk/all.scss > /dev/null
 
+  # Node Sass v7.x = LibSass v3 latest
+  lib-sass-latest:
+    name: LibSass v3 (latest, deprecated)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - run: |
+          npm install -g node-sass@v7
+          node-sass --version
+      - run: time node-sass src/govuk/all.scss > /dev/null
+
   ruby-sass:
     name: Ruby Sass v3.4.0 (deprecated)
     runs-on: ubuntu-latest
@@ -39,5 +68,19 @@ jobs:
           ruby-version: 2.1.9 # Oldest version available on ruby/setup-ruby
       - run: |
           gem install sass -v 3.4.0
+          sass --version
+      - run: time sass src/govuk/all.scss > /dev/null
+
+  # Ruby Sass is EOL so we can pin to the last release
+  ruby-sass-latest:
+    name: Ruby Sass v3.7.4 (latest, deprecated)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.6 # Latest Ruby when Ruby Sass was EOL'ed (April 2019)
+      - run: |
+          gem install sass -v 3.7.4
           sass --version
       - run: time sass src/govuk/all.scss > /dev/null
