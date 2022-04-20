@@ -226,6 +226,17 @@ describe('Character count', () => {
           expect(srMessage).toEqual('You have 10 characters remaining')
         })
       })
+
+      describe('when a maxlength attribute is specified on the textarea', () => {
+        beforeAll(async () => {
+          await goToExample('with-textarea-maxlength-attribute')
+        })
+
+        it('should not have a maxlength attribute once the JS has run', async () => {
+          const textareaMaxLength = await page.$eval('.govuk-textarea', el => el.getAttribute('maxlength'))
+          expect(textareaMaxLength).toBeNull()
+        })
+      })
     })
 
     describe('when counting words', () => {
