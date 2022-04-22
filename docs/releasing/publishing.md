@@ -3,8 +3,13 @@
 1. At stand up, person leading the release to tell the GOV.UK Design System team we are close to releasing so we can coordinate the final cutoff date. Once the cutoff date passes, do not add any further major changes to the release. We can still add small fixes before step 7 as long as we notify the content designer and technical writer. However, we should try to avoid adding too many fixes in this way, as it requires us to repeat some of steps 4-6.
 
 2. Developers to raise new issues in the team GitHub repositories ([govuk-frontend](https://github.com/alphagov/govuk-frontend), [govuk-frontend-docs](https://github.com/alphagov/govuk-frontend-docs), [govuk-prototype-kit](https://github.com/alphagov/govuk-prototype-kit)) to:
-  - create announcement draft for the new release (example card: [#2108](https://github.com/alphagov/govuk-frontend/issues/2108))
-  - create release notes for the new release (example card: [#1986](https://github.com/alphagov/govuk-frontend/issues/1986))
+  - draft comms for the new release (example card: [#2507](https://github.com/alphagov/govuk-frontend/issues/2507))
+  - create release notes for the new release (example card: [#2508](https://github.com/alphagov/govuk-frontend/issues/2508))
+  - release the new version of GOV.UK Frontend to NPM (example card: [#2509](https://github.com/alphagov/govuk-frontend/issues/2509))
+  - update the GOV.UK Design System to use the new release of GOV.UK Frontend (example card: [#2024](https://github.com/alphagov/govuk-design-system/issues/2024))
+  - update the GOV.UK Frontend Docs to use the new release of GOV.UK Frontend (example card: [#184](https://github.com/alphagov/govuk-frontend-docs/issues/184))
+  - post the comms and do tidy-up tasks (example card: [#2510](https://github.com/alphagov/govuk-frontend/issues/2510))
+
   - create release notes for the new release of GOV.UK Prototype Kit (example card: [#958](https://github.com/alphagov/govuk-prototype-kit/issues/958))
   - create a card for the new release of GOV.UK Frontend (example card: [#1987](https://github.com/alphagov/govuk-frontend/issues/1987))
   - update the GOV.UK Design System to use the new release of GOV.UK Frontend (example card: [#1347](https://github.com/alphagov/govuk-design-system/issues/1347))
