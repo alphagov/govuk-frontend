@@ -77,9 +77,8 @@ jobs:
           sass --version
       - run: time sass src/govuk/all.scss > /dev/null
 
-  # Ruby Sass is EOL so we can pin to the last release
   ruby-sass-latest:
-    name: Ruby Sass v3.7.4 (latest, deprecated)
+    name: Ruby Sass v3 (latest, deprecated)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -87,6 +86,6 @@ jobs:
         with:
           ruby-version: 2.6 # Latest Ruby when Ruby Sass was EOL'ed (April 2019)
       - run: |
-          gem install sass -v 3.7.4
+          gem install sass -v '~> 3.0'
           sass --version
       - run: time sass src/govuk/all.scss > /dev/null
