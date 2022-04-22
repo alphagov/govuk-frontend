@@ -18,7 +18,7 @@
   - create a card for the new release of GOV.UK Prototype Kit (example card: [#917](https://github.com/alphagov/govuk-prototype-kit/issues/917))
   - update the GOV.UK Prototype Kit to use the new release (example card: [#923](https://github.com/alphagov/govuk-prototype-kit/issues/923))
 
-3. Person leading the release to add the issues to the [Design System sprint board](https://github.com/orgs/alphagov/projects/4).
+3. Person leading the release to add the issues to the [Design System kanban board](https://github.com/orgs/alphagov/projects/4).
 
 4. Content designer to:
   - write announcements to post on Slack after we release:
