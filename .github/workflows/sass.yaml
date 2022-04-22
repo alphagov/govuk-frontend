@@ -27,7 +27,13 @@ jobs:
       - run: |
           npm install -g sass@v1
           sass --version
-      - run: time sass src/govuk/all.scss > /dev/null
+      # Treat GOV.UK Frontend as a dependency by importing it via load paths,
+      # allowing us to mimic the way we recommend our users silence deprecation
+      # warnings using the `quiet-deps` flag.
+      #
+      # Run the command through a shell to ensure `time` measures the time
+      # taken by the entire pipeline, as we are now piping input into `sass`.
+      - run: time sh -c 'echo "@import "\""govuk/all"\"";" | sass --stdin --quiet-deps --load-path=src > /dev/null'
 
 
   # Node Sass v3.4.0 = LibSass v3.3.0
