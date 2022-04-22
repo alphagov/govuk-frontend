@@ -12,9 +12,9 @@
 
   Once the developers have created these cards, the person leading the release should add them to an epic (example card: [#2511](https://github.com/alphagov/govuk-frontend/issues/2511)).
 
+  You should also check with the GOV.UK Prototype Kit team to see if they'll be doing a corresponding release. If they will, then the people responsible for the Kit release will need to:
+
   - create release notes for the new release of GOV.UK Prototype Kit (example card: [#958](https://github.com/alphagov/govuk-prototype-kit/issues/958))
-  - create a card for the new release of GOV.UK Frontend (example card: [#1987](https://github.com/alphagov/govuk-frontend/issues/1987))
-  - update the GOV.UK Design System to use the new release of GOV.UK Frontend (example card: [#1347](https://github.com/alphagov/govuk-design-system/issues/1347))
   - create a card for the new release of GOV.UK Prototype Kit (example card: [#917](https://github.com/alphagov/govuk-prototype-kit/issues/917))
   - update the GOV.UK Prototype Kit to use the new release (example card: [#923](https://github.com/alphagov/govuk-prototype-kit/issues/923))
 
