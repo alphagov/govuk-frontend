@@ -10,6 +10,8 @@
   - update the GOV.UK Frontend Docs to use the new release of GOV.UK Frontend (example card: [#184](https://github.com/alphagov/govuk-frontend-docs/issues/184))
   - post the comms and do tidy-up tasks (example card: [#2510](https://github.com/alphagov/govuk-frontend/issues/2510))
 
+  Once the developers have created these cards, the person leading the release should add them to an epic (example card: [#2511](https://github.com/alphagov/govuk-frontend/issues/2511)).
+
   - create release notes for the new release of GOV.UK Prototype Kit (example card: [#958](https://github.com/alphagov/govuk-prototype-kit/issues/958))
   - create a card for the new release of GOV.UK Frontend (example card: [#1987](https://github.com/alphagov/govuk-frontend/issues/1987))
   - update the GOV.UK Design System to use the new release of GOV.UK Frontend (example card: [#1347](https://github.com/alphagov/govuk-design-system/issues/1347))
