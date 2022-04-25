@@ -51,6 +51,14 @@ If you're not using the Nunjucks macros, remove the `aria-live` attribute from t
 
 This change was introduced in [pull request #2577: Refactor character count to inject new element](https://github.com/alphagov/govuk-frontend/pull/2577).
 
+#### Remove `pattern` from the date input component
+
+If you're not using the Nunjucks macros, remove `pattern="[0-9]*"` from each of the date input component's elements.
+
+This attribute was originally added to enforce numeric keyboard functionality in Safari on iOS. The `inputmode` attribute provides this functionality for newer Safari versions, so we no longer need to use the `pattern` attribute. 
+
+This change was introduced in [pull request #2599: Remove pattern attribute from date input component](https://github.com/alphagov/govuk-frontend/pull/2599).
+
 ### Fixes
 
 We've made the following fixes in [pull request #2577: Refactor character count to inject new element](https://github.com/alphagov/govuk-frontend/pull/2577):

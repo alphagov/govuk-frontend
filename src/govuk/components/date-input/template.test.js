@@ -56,13 +56,6 @@ describe('Date input', () => {
       expect($firstInput.attr('inputmode')).toEqual('numeric')
     })
 
-    it('renders inputs with pattern="[0-9]*" to trigger numeric keypad on iOS', () => {
-      const $ = render('date-input', examples.default)
-
-      const $firstInput = $('.govuk-date-input__item:first-child input')
-      expect($firstInput.attr('pattern')).toEqual('[0-9]*')
-    })
-
     it('renders item with implicit class for label', () => {
       const $ = render('date-input', examples.default)
 
