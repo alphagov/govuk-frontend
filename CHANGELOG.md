@@ -2,6 +2,45 @@
 
 ## Unreleased
 
+### New features
+
+#### Import GOV.UK Frontend JavaScript as ES modules
+
+You can now import our component JavaScript into your service as ES modules, if you're using a bundler.
+
+This change allows you to import only the JavaScript you need, and helps reduce duplication of polyfills.
+
+As we're now shipping ES modules in addition to how we already ship JavaScript (using UMD, or Universal Module Definition), this change is backwards compatible. You will not be required to make any changes unless you want to.
+
+To import our ES modules, use `import` to only import the JavaScript for components you're using in your service. For example:
+
+```javascript
+import { SkipLink, Radios } from 'govuk-frontend'
+
+var $skipLink = document.querySelector('[data-module="govuk-skip-link"]')
+if ($skipLink) {
+  new SkipLink($skipLink).init()
+}
+
+var $radios = document.querySelectorAll('[data-module="govuk-radios]')
+if ($radios) {
+  for (var i = 0; i < $radios.length; i++) {
+    new Radios($radios[i]).init()
+  }
+}
+```
+
+If you need to import all of GOV.UK Frontend's components, then run the `initAll` function to initialise them:
+
+```javascript
+import { initAll } from 'govuk-frontend'
+initAll()
+```
+
+Depending on the bundler you use, you may also need to make changes to your JavaScript bundler configuration file. [Read more in our installation instructions about importing JavaScript using a bundler](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#import-javascript-using-a-bundler).
+
+This was added in [pull request #2586: Publish our JavaScript as ES modules alongside Universal Module Definition (UMD)](https://github.com/alphagov/govuk-frontend/pull/2586).
+
 ### Recommended changes
 
 We've recently made some non-breaking changes to GOV.UK Frontend. Implementing these changes will make your service work better.
