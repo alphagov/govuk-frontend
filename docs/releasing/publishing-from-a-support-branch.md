@@ -22,13 +22,13 @@ However, this approach has risks. For example, it creates a messy commit history
 1. At stand-up, person leading the release (usually a developer) to tell the GOV.UK Design System team we are close to releasing.
 
 2. Developers to raise new issues in the team GitHub repositories ([govuk-frontend](https://github.com/alphagov/govuk-frontend), [govuk-frontend-docs](https://github.com/alphagov/govuk-frontend-docs), [govuk-prototype-kit](https://github.com/alphagov/govuk-prototype-kit)) to:
-    - create announcement draft for the new release (example card: [#2108](https://github.com/alphagov/govuk-frontend/issues/2108))
-    - create release notes for the new release (example card: [#1986](https://github.com/alphagov/govuk-frontend/issues/1986))
-    - create release notes for the new release of GOV.UK Prototype Kit (example card: [#958](https://github.com/alphagov/govuk-prototype-kit/issues/958))
-    - create a card for the new release of GOV.UK Frontend (example card: [#1987](https://github.com/alphagov/govuk-frontend/issues/1987))
-    - update the GOV.UK Design System to use the new release of GOV.UK Frontend (example card: [#1347](https://github.com/alphagov/govuk-design-system/issues/1347))
-    - create a card for the new release of GOV.UK Prototype Kit (example card: [#917](https://github.com/alphagov/govuk-prototype-kit/issues/917))
-    - update the GOV.UK Prototype Kit to use the new release (example card: [#923](https://github.com/alphagov/govuk-prototype-kit/issues/923))
+    - create announcement draft for the new release (example issue: [#2108](https://github.com/alphagov/govuk-frontend/issues/2108))
+    - create release notes for the new release (example issue: [#1986](https://github.com/alphagov/govuk-frontend/issues/1986))
+    - create release notes for the new release of GOV.UK Prototype Kit (example issue: [#958](https://github.com/alphagov/govuk-prototype-kit/issues/958))
+    - create an issue for the new release of GOV.UK Frontend (example issue: [#1987](https://github.com/alphagov/govuk-frontend/issues/1987))
+    - update the GOV.UK Design System to use the new release of GOV.UK Frontend (example issue: [#1347](https://github.com/alphagov/govuk-design-system/issues/1347))
+    - create an issue for the new release of GOV.UK Prototype Kit (example issue: [#917](https://github.com/alphagov/govuk-prototype-kit/issues/917))
+    - update the GOV.UK Prototype Kit to use the new release (example issue: [#923](https://github.com/alphagov/govuk-prototype-kit/issues/923))
 
 3. Person leading the release to add the issues to the [Design System sprint board](https://github.com/orgs/alphagov/projects/4).
 
@@ -129,7 +129,7 @@ Note: Before you go on annual leave, tell the delivery manager who will be looki
 
 2. On the [Design System Kanban Board](https://github.com/orgs/alphagov/projects/4):
 
-    - move any relevant cards from the 'Ready to Release' column to 'Done'
+    - move any relevant issues from the 'Ready to Release' column to 'Done'
     - close any associated milestones
 
 ## Update the `main` branch
