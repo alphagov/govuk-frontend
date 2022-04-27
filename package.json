@@ -111,14 +111,5 @@
       "/package/**/*.mjs",
       "/src/govuk/vendor/polyfills/**/*.mjs"
     ]
-  },
-  "jest": {
-    "preset": "jest-puppeteer",
-    "setupFilesAfterEnv": [
-      "./config/jest-setup.js"
-    ],
-    "snapshotSerializers": [
-      "jest-serializer-html"
-    ]
   }
 }
