@@ -51,5 +51,14 @@
   {% endif %}
 
   <script src="/public/all.js"></script>
-  <script>window.GOVUKFrontend.initAll()</script>
+  <script>window.GOVUKFrontend.initAll({
+    i18n: {
+      "translations": {
+        "accordion": {
+          "show_this_section": "Expand this one section",
+          "show_all_sections": "Expand all the things"
+        }
+      }
+    }
+  })</script>
 {% endblock %}

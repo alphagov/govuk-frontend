@@ -1,9 +1,12 @@
+import I18nFunction from '../../i18n'
 import '../../vendor/polyfills/Function/prototype/bind'
 import '../../vendor/polyfills/Event' // addEventListener and event.target normaliziation
 import '../../vendor/polyfills/Element/prototype/classList'
 
-function CharacterCount ($module) {
+function CharacterCount ($module, i18nInstance) {
   this.$module = $module
+  this.i18n = typeof i18nInstance !== 'undefined' ? i18nInstance : new I18nFunction()
+
   this.$textarea = $module.querySelector('.govuk-js-character-count')
   this.$visibleCountMessage = null
   this.$screenReaderCountMessage = null
@@ -192,18 +195,27 @@ CharacterCount.prototype.formattedUpdateMessage = function () {
   var options = this.options
   var remainingNumber = this.maxLength - this.count($textarea.value)
 
-  var charVerb = 'remaining'
-  var charNoun = 'character'
-  var displayNumber = remainingNumber
-  if (options.maxwords) {
-    charNoun = 'word'
+  if (options.maxwords && remainingNumber < 0) {
+    return this.i18n.t('character_count.words_over_limit', {
+      fallback: 'You have %{count} words too many',
+      count: Math.abs(remainingNumber)
+    })
+  } else if (options.maxwords) {
+    return this.i18n.t('character_count.words_under_limit', {
+      fallback: 'You have %{count} words remaining',
+      count: remainingNumber
+    })
+  } else if (remainingNumber < 0) {
+    return this.i18n.t('character_count.characters_over_limit', {
+      fallback: 'You have %{count} characters too many',
+      count: Math.abs(remainingNumber)
+    })
+  } else {
+    return this.i18n.t('character_count.characters_under_limit', {
+      fallback: 'You have %{count} characters remaining',
+      count: remainingNumber
+    })
   }
-  charNoun = charNoun + ((remainingNumber === -1 || remainingNumber === 1) ? '' : 's')
-
-  charVerb = (remainingNumber < 0) ? 'too many' : 'remaining'
-  displayNumber = Math.abs(remainingNumber)
-
-  return 'You have ' + displayNumber + ' ' + charNoun + ' ' + charVerb
 }
 
 // Checks whether the value is over the configured threshold for the input.
