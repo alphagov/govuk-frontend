@@ -12,8 +12,12 @@ const config = {
     },
     {
       displayName: 'JavaScript behaviour tests',
-      testMatch: ['./**/*.test.js', '!./**/template.test.js'],
+      testMatch: ['./**/*.test.js', '!./**/template.test.js', '!./**/*.unit.test.js'],
       preset: 'jest-puppeteer'
+    },
+    {
+      displayName: 'JavaScript unit tests',
+      testMatch: ['./**/*.unit.test.js']
     }
   ]
 }
