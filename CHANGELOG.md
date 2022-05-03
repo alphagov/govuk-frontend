@@ -53,11 +53,11 @@ This change was introduced in [pull request #2577: Refactor character count to i
 
 #### Remove `pattern` from the date input component
 
-If you're not using the Nunjucks macros, remove `pattern="[0-9]*"` from each of the date input component's elements.
+If you're not using the Nunjucks macros, remove `pattern="[0-9]*"` from each of the date input's elements.
 
-This attribute was originally added to enforce numeric keyboard functionality in Safari on iOS. The `inputmode` attribute provides this functionality for newer Safari versions, so we no longer need to use the `pattern` attribute. 
+We originally added the `pattern` attribute to make numeric keypad functionality the default functionality in Safari on iOS. However, we no longer need to use it, as the `inputmode` attribute provides this functionality for newer Safari versions.
 
-This change was introduced in [pull request #2599: Remove pattern attribute from date input component](https://github.com/alphagov/govuk-frontend/pull/2599).
+This change was introduced in [pull request #2599: Remove `pattern` attribute from date input component](https://github.com/alphagov/govuk-frontend/pull/2599).
 
 ### Fixes
 
