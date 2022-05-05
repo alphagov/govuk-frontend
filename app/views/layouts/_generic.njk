@@ -50,10 +50,20 @@
     {% include "partials/legacyJavaScript.njk" %}
   {% endif %}
 
+  <script>window.GOVUKFrontendI18n = {
+    // These could also be expressed as "accordion.showThisSection" — they don't need to be nested objects
+    "accordion": {
+      "showThisSection": "Widen ye search radius",
+      "hideThisSection": "Narrow ye search radius",
+      "showAllSections": "Search the seven seas",
+      "hideAllSections": "Return to shore"
+    },
+    "characterCount": {
+      "charactersRemaining": "Ye got %{smart_count} scribble too many. |||| Ye got %{smart_count} scribbles too many.",
+    }
+  }
+  </script>
+
   <script src="/public/all.js"></script>
-  <script>window.GOVUKFrontend.i18n = {
-    "accordion.showThisSection": "Expand this one section",
-    "accordion.showAllSections": "Expand all the things"
-  }</script>
   <script>window.GOVUKFrontend.initAll()</script>
 {% endblock %}
