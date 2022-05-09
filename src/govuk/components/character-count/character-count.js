@@ -1,3 +1,4 @@
+import i18n from '../../i18n'
 import '../../vendor/polyfills/Function/prototype/bind'
 import '../../vendor/polyfills/Event' // addEventListener and event.target normaliziation
 import '../../vendor/polyfills/Element/prototype/classList'
@@ -192,18 +193,23 @@ CharacterCount.prototype.formattedUpdateMessage = function () {
   var options = this.options
   var remainingNumber = this.maxLength - this.count($textarea.value)
 
-  var charVerb = 'remaining'
-  var charNoun = 'character'
-  var displayNumber = remainingNumber
-  if (options.maxwords) {
-    charNoun = 'word'
+  if (options.maxwords && remainingNumber < 0) {
+    return i18n.t('characterCount.wordsTooMany', {
+      count: Math.abs(remainingNumber)
+    })
+  } else if (options.maxwords) {
+    return i18n.t('characterCount.wordsRemaining', {
+      count: remainingNumber
+    })
+  } else if (remainingNumber < 0) {
+    return i18n.t('characterCount.charactersTooMany', {
+      count: Math.abs(remainingNumber)
+    })
+  } else {
+    return i18n.t('characterCount.charactersRemaining', {
+      count: remainingNumber
+    })
   }
-  charNoun = charNoun + ((remainingNumber === -1 || remainingNumber === 1) ? '' : 's')
-
-  charVerb = (remainingNumber < 0) ? 'too many' : 'remaining'
-  displayNumber = Math.abs(remainingNumber)
-
-  return 'You have ' + displayNumber + ' ' + charNoun + ' ' + charVerb
 }
 
 // Checks whether the value is over the configured threshold for the input.

@@ -235,8 +235,8 @@ Accordion.prototype.setExpanded = function (expanded, $section) {
   var $showHideText = $section.querySelector('.' + this.sectionShowHideTextClass)
   var $button = $section.querySelector('.' + this.sectionButtonClass)
   var $newButtonText = expanded
-    ? i18n('accordion.hideThisSection', { fallback: 'Hide<span class="govuk-visually-hidden"> this section</span>' })
-    : i18n('accordion.showThisSection', { fallback: 'Show<span class="govuk-visually-hidden"> this section</span>' })
+    ? i18n.t('accordion.hideThisSection')
+    : i18n.t('accordion.showThisSection')
 
   $showHideText.innerHTML = $newButtonText
   $button.setAttribute('aria-expanded', expanded)
@@ -276,8 +276,8 @@ Accordion.prototype.updateShowAllButton = function (expanded) {
   var $showAllIcon = this.$showAllButton.querySelector('.' + this.upChevronIconClass)
   var $showAllText = this.$showAllButton.querySelector('.' + this.showAllTextClass)
   var newButtonText = expanded
-    ? i18n('accordion.hideAllSections', { fallback: 'Hide all sections' })
-    : i18n('accordion.showAllSections', { fallback: 'Show all sections' })
+    ? i18n.t('accordion.hideAllSections')
+    : i18n.t('accordion.showAllSections')
   this.$showAllButton.setAttribute('aria-expanded', expanded)
   $showAllText.innerHTML = newButtonText
 

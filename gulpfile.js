@@ -32,6 +32,14 @@ gulp.task('styles', gulp.series(
   'scss:compile'
 ))
 
+// Copy locales task --------------------
+// Copies localisation files to taskArguments.destination (public)
+// --------------------------------------
+gulp.task('copy:locales', () => {
+  return gulp.src(paths.src + 'locales/**/*')
+    .pipe(gulp.dest(taskArguments.destination + '/locales/'))
+})
+
 // Copy assets task ----------------------
 // Copies assets to taskArguments.destination (public)
 // --------------------------------------
@@ -82,6 +90,7 @@ gulp.task('build:dist', gulp.series(
   'clean',
   'copy-assets',
   'copy:assets',
+  'copy:locales',
   'update-assets-version'
 ))
 

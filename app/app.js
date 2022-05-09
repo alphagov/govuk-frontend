@@ -80,6 +80,7 @@ module.exports = (options) => {
   app.use('/vendor/jquery/', express.static('node_modules/jquery/dist'))
 
   app.use('/assets', express.static(path.join(configPaths.src, 'assets')))
+  app.use('/locales', express.static(path.join(configPaths.src, 'locales')))
 
   // Turn form POSTs into data that can be used for validation.
   app.use(bodyParser.urlencoded({ extended: true }))

@@ -106,6 +106,7 @@
     ],
     "ignore": [
       "/dist/**/*.js",
+      "/src/govuk/locales/**/*.js",
       "/package/**/*.js",
       "/package/**/*.mjs",
       "/src/govuk/vendor/polyfills/**/*.js"
@@ -119,5 +120,8 @@
     "snapshotSerializers": [
       "jest-serializer-html"
     ]
+  },
+  "dependencies": {
+    "i18next": "^21.8.0"
   }
 }
