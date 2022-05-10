@@ -13,7 +13,7 @@ module.exports = {
     ]
   },
   server: {
-    command: `PORT=${PORT} node app/start.js`,
+    command: `cross-env PORT=${PORT} node app/start.js`,
     launchTimeout: 30000, // Allow time for application to start
     port: PORT
   }

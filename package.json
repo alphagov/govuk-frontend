@@ -22,7 +22,7 @@
     "test:build:dist": "jest tasks/gulp/__tests__/after-build-dist.test.js",
     "lint": "npm run lint:js && npm run lint:scss",
     "lint:js": "standard",
-    "lint:scss": "stylelint 'app/**/*.scss' 'src/**/*.scss'"
+    "lint:scss": "stylelint \"app/**/*.scss\" \"src/**/*.scss\""
   },
   "devDependencies": {
     "@percy/cli": "^1.0.0-beta.75",
@@ -33,6 +33,7 @@
     "body-parser": "^1.18.3",
     "cheerio": "^1.0.0-rc.3",
     "cookie-parser": "^1.4.5",
+    "cross-env": "^7.0.3",
     "cssnano": "^4.1.11",
     "del": "^5.0.0",
     "eslint": "^6.8.0",
