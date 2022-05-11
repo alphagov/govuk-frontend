@@ -197,22 +197,34 @@ CharacterCount.prototype.formattedUpdateMessage = function () {
 
   if (options.maxwords && remainingNumber < 0) {
     return this.i18n.t('character_count.words_over_limit', {
-      fallback: 'You have %{count} words too many',
+      fallback: {
+        one: 'You have %{count} word too many',
+        other: 'You have %{count} words too many'
+      },
       count: Math.abs(remainingNumber)
     })
   } else if (options.maxwords) {
     return this.i18n.t('character_count.words_under_limit', {
-      fallback: 'You have %{count} words remaining',
+      fallback: {
+        one: 'You have %{count} word remaining',
+        other: 'You have %{count} words remaining'
+      },
       count: remainingNumber
     })
   } else if (remainingNumber < 0) {
     return this.i18n.t('character_count.characters_over_limit', {
-      fallback: 'You have %{count} characters too many',
+      fallback: {
+        one: 'You have %{count} character too many',
+        other: 'You have %{count} characters too many'
+      },
       count: Math.abs(remainingNumber)
     })
   } else {
     return this.i18n.t('character_count.characters_under_limit', {
-      fallback: 'You have %{count} characters remaining',
+      fallback: {
+        one: 'You have %{count} character remaining',
+        other: 'You have %{count} characters remaining'
+      },
       count: remainingNumber
     })
   }
