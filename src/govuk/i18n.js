@@ -45,8 +45,10 @@ function i18n (options) {
 i18n.prototype.t = function (lookupKey, options) {
   options = options || {}
 
-  // Use the lookupKey itself as the ultimate fallback
-  var outputString = lookupKey
+  // Search the translations object for a matching key
+  // Otherwise, use the fallback string
+  // Otherwise, use the lookupKey itself as the ultimate fallback
+  var outputString = this.translations[lookupKey] || options.fallback || lookupKey
 
   // If the `count` option is set, determine which plural suffix is needed
   // In order of priority:
