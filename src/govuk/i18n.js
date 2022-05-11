@@ -4,19 +4,19 @@
  * @constructor
  * @param    {object}  options               - Options object.
  * @param    {string}  options.locale        - The locale to use, currently this is only used for pluralisation rules. If undefined, tries to use html[lang].
- * @param    {object}  options.translations  - Key-value pairs of the translation strings to use.
  * @param    {array}   options.separators    - An array of two items matching the start and end strings to search for when performing interpolation. Defaults to ['%{', '}']
+ * @param    {object}  options.translations  - Key-value pairs of the translation strings to use.
  */
 function i18n (options) {
   options = options || {}
 
   // Get user-defined locale setting,
-  // otherwise try and detect it from the document,
-  // otherwise set to English
+  // Otherwise, try and detect it from the document,
+  // Otherwise, set to English
   this.locale = options.locale || document.documentElement.lang || 'en'
 
   // Get user-defined interpolation separators,
-  // otherwise, use the same Ruby-like syntax as GOV.UK (e.g. %{keyName})
+  // Otherwise, use the same Ruby-like syntax as GOV.UK (e.g. %{keyName})
   // e.g. https://github.com/alphagov/govuk_publishing_components/blob/22944a9efaea3ae495a518717415694c71cfdb35/config/locales/en.yml
   this.separators = options.separators && options.separators.length === 2
     ? options.separators
@@ -27,10 +27,11 @@ function i18n (options) {
 }
 
 /**
- * The most used function - looks up translation strings and sorts what operations to perform on them.
+ * The most used function - looks up translation strings and sorts what
+ * operations to perform on them.
  *
- * ALL properties passed to `options` will be exposed as options for string interpolation,
- * but only `count` and `fallback` initiate special functionality.
+ * ALL properties passed to `options` will be exposed as options for string
+ * interpolation, but only `count` and `fallback` initiate special functionality.
  *
  * TODO: Do we want to put string interpolation options in their own object (e.g. `options.data`) to avoid potential conflict in future?
  * TODO: Do we need some context/gendered forms support? Not sure if anything currently in Frontend necessitates this.
@@ -52,9 +53,9 @@ i18n.prototype.t = function (lookupKey, options) {
 
   // If the `count` option is set, determine which plural suffix is needed
   // In order of priority:
-  // 1. pluralised lookup key provided in translations
-  // 2. plural object fallback text
-  // 3. string fallback text
+  // 1. Pluralised lookup key provided in translations
+  // 2. Plural object fallback text
+  // 3. String fallback text
   if (typeof options.count !== 'undefined') {
     var pluralSuffix = this.getPluralSuffix(options.count)
     var pluralLookupKey = lookupKey + '_' + pluralSuffix
@@ -77,7 +78,7 @@ i18n.prototype.t = function (lookupKey, options) {
  * Ingests phrases containing placeholders and spits out the formatted phrase.
  *
  * @param    {string}  phrase          - The phrase containing the placeholder.
- * @param    {object}  placeholderMap  - Key-value pairs of objects to be swapped out
+ * @param    {object}  placeholderMap  - Key-value pairs of placeholders and the values that replace them.
  */
 i18n.prototype.replacePlaceholders = function (phrase, placeholderMap) {
   for (var key in placeholderMap) {
@@ -128,9 +129,10 @@ i18n.prototype.flatten = function (translationsObject) {
 /**
  * Get the appropriate suffix for the plural form.
  *
- * The locale may include a regional indicator (such as en-GB), but we don't *usually* care about this part,
- * as pluralisation rules are *usually* the same regardless of region. There are exceptions, however, (e.g.
- * Portuguese) so this searches by the full version first and the short version, just to be sure.
+ * The locale may include a regional indicator (such as en-GB), but we don't
+ * usually care about this part, as pluralisation rules are usually the same
+ * regardless of region. There are exceptions, however, (e.g. Portuguese) so
+ * this searches by both the full and shortened locale codes, just to be sure.
  *
  * @param    {number}  count       - Number used to determine which pluralisation to use.
  * @returns  {string}              - The suffix associated with the correct pluralisation for this locale.
@@ -155,9 +157,10 @@ i18n.prototype.getPluralSuffix = function (count) {
 /**
  * Different pluralisation rule sets
  *
- * Returns the appropriate key for the plural form, if necessary, by appending a suffix to the base key.
- * Possible suffixes: 'zero', 'one', 'two', 'few', 'many', 'other' (the actual meaning of each differs per locale).
- * In most situations, 'other' should exist if any of the other options exist.
+ * Returns the appropriate suffix for the plural form associated with `n`.
+ * Possible suffixes: 'zero', 'one', 'two', 'few', 'many', 'other' (the actual
+ * meaning of each differs per locale). 'other' should always exist, even in
+ * languages without plurals, such as Chinese.
  * https://unicode-org.github.io/cldr-staging/charts/latest/supplemental/language_plural_rules.html
  *
  * @param    {number}  n  - The `count` number being passed through. This must be a positive integer. Negative numbers and decimals aren't accounted for.
@@ -272,8 +275,10 @@ i18n.prototype.pluralRules = {
 /**
  * Map of plural rules to languages where those rules apply.
  *
- * Note: These groups are named for the most dominant or recognisable language that uses each system.
- * The groupings do not imply that the languages are related to one another. Many languages have evolved the same systems independently of one another.
+ * Note: These groups are named for the most dominant or recognisable language
+ * that uses each system. The groupings do not imply that the languages are
+ * related to one another. Many languages have evolved the same systems
+ * independently of one another.
  *
  * Spreadsheet of which languages require which plural forms:
  * https://docs.google.com/spreadsheets/d/1sFMhSX-ma7-_myYoRGh6DboHfN0xuN-1VRJ0ClVvNa8/edit
