@@ -32,7 +32,6 @@ function i18n (options) {
  * ALL properties passed to `options` will be exposed as options for string interpolation,
  * but only `count` and `fallback` initiate special functionality.
  *
- * TODO: Add pluralisation support for fallback strings.
  * TODO: Do we want to put string interpolation options in their own object (e.g. `options.data`) to avoid potential conflict in future?
  * TODO: Do we need some context/gendered forms support? Not sure if anything currently in Frontend necessitates this.
  *
@@ -40,20 +39,31 @@ function i18n (options) {
  * @param    {object}  options           - Options object.
  * @param    {number}  options.count     - Number used to determine which pluralisation to use.
  * @param    {string}  options.fallback  - Fallback string to use if a string associated with the key could not be found.
+ * @param    {object}  options.fallback  - Object of key-value pairs, used if pluralisation support is needed in fallback text.
  * @returns  {string}                    - The formatted, localised string.
  */
 i18n.prototype.t = function (lookupKey, options) {
   options = options || {}
 
-  // If the `count` option is set, get the lookup key for the appropriate plural
-  lookupKey = (typeof options.count !== 'undefined')
-    ? this.getPluralKey(lookupKey, options.count)
-    : lookupKey
+  // Use the lookupKey itself as the ultimate fallback
+  var outputString = lookupKey
 
-  // Get the string from the translations object,
-  // otherwise use the fallback, if one is defined,
-  // otherwise just output the key name (better than nothing!)
-  var outputString = this.translations[lookupKey] || options.fallback || lookupKey
+  // If the `count` option is set, determine which plural suffix is needed
+  // In order of priority:
+  // 1. pluralised lookup key provided in translations
+  // 2. plural object fallback text
+  // 3. string fallback text
+  if (typeof options.count !== 'undefined') {
+    var pluralSuffix = this.getPluralSuffix(options.count)
+    var pluralLookupKey = lookupKey + '_' + pluralSuffix
+    if (this.translations[pluralLookupKey]) {
+      outputString = this.translations[pluralLookupKey]
+    } else if (typeof options.fallback === 'object') {
+      outputString = options.fallback[pluralSuffix]
+    } else if (typeof options.fallback === 'string') {
+      outputString = options.fallback
+    }
+  }
 
   // Replace any placeholders in the string with the actual data
   outputString = this.replacePlaceholders(outputString, options)
@@ -114,17 +124,16 @@ i18n.prototype.flatten = function (translationsObject) {
 }
 
 /**
- * Get the appropriate lookup key for the plural form by appending a suffix to the base key.
+ * Get the appropriate suffix for the plural form.
  *
  * The locale may include a regional indicator (such as en-GB), but we don't *usually* care about this part,
  * as pluralisation rules are *usually* the same regardless of region. There are exceptions, however, (e.g.
  * Portuguese) so this searches by the full version first and the short version, just to be sure.
  *
- * @param    {string}  lookupKey  - The lookup key of the string to search for.
- * @param    {number}  count      - Number used to determine which pluralisation to use.
- * @returns  {string}             - The lookup key needed to obtain the correct pluralisation.
+ * @param    {number}  count       - Number used to determine which pluralisation to use.
+ * @returns  {string}              - The suffix associated with the correct pluralisation for this locale.
  */
-i18n.prototype.getPluralKey = function (lookupKey, count) {
+i18n.prototype.getPluralSuffix = function (count) {
   var locale = this.locale
   var localeShort = (locale.length > 2) ? locale.substring(0, 2) : locale
   var keySuffix = 'other'
@@ -138,7 +147,7 @@ i18n.prototype.getPluralKey = function (lookupKey, count) {
       }
     }
   }
-  return lookupKey + '_' + keySuffix
+  return keySuffix
 }
 
 /**
