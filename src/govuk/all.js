@@ -1,5 +1,5 @@
 import { nodeListForEach } from './common'
-import I18nFunction from './i18n'
+import I18n from './i18n'
 import Accordion from './components/accordion/accordion'
 import Button from './components/button/button'
 import Details from './components/details/details'
@@ -20,7 +20,7 @@ function initAll (options) {
   // Defaults to the entire document if nothing is set.
   var scope = typeof options.scope !== 'undefined' ? options.scope : document
 
-  var i18nInstance = new I18nFunction(options.i18n || {})
+  var i18nInstance = new I18n(options.i18n || {})
   console.log(i18nInstance)
 
   var $buttons = scope.querySelectorAll('[data-module="govuk-button"]')
@@ -78,6 +78,7 @@ function initAll (options) {
 
 export {
   initAll,
+  I18n,
   Accordion,
   Button,
   Details,
