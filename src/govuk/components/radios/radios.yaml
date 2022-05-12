@@ -137,19 +137,23 @@ examples:
 
 - name: with disabled
   data:
-    idPrefix: example-disabled
-    name: example-disabled
+    idPrefix: gov
+    name: gov
     fieldset:
       legend:
-        text: Have you changed your name?
-    hint:
-      text: This includes changing your last name or spelling your name differently.
+        text: How do you want to sign in?
+        isPageHeading: true
     items:
-      - value: yes
-        text: Yes
-        disabled: true
-      - value: no
-        text: No
+      - value: gateway
+        text: Sign in with Government Gateway
+        id: gateway
+        hint:
+          text: You’ll have a user ID if you’ve registered for Self Assessment or filed a tax return online before.
+      - value: verify
+        text: Sign in with GOV.UK Verify
+        id: verify
+        hint:
+          text: You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity.
         disabled: true
 
 - name: with legend as page heading
