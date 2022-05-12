@@ -73,6 +73,7 @@ We’ve also made fixes in the following pull requests:
 - [#2549: Fix header with product name focus and hover state length](https://github.com/alphagov/govuk-frontend/pull/2549)
 - [#2573: Better handle cases where `$govuk-text-colour` is set to a non-colour value](https://github.com/alphagov/govuk-frontend/pull/2573)
 - [#2590: Remove `maxlength` attribute from `textarea` after character count JavaScript has been initialised](https://github.com/alphagov/govuk-frontend/pull/2590)
+- [#2615: Fix hints for disabled checkboxes/radios appearing darker than the associated labels](https://github.com/alphagov/govuk-frontend/pull/2615)
 
 ## 4.0.1 (Fix release)
 
