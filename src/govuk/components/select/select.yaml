@@ -23,7 +23,7 @@ params:
   - name: selected
     type: boolean
     required: false
-    description: Sets the option as the selected.
+    description: Sets the option as selected when the page loads.
   - name: disabled
     type: boolean
     required: false
@@ -32,6 +32,10 @@ params:
     type: object
     required: false
     description: HTML attributes (for example data attributes) to add to the option.
+- name: value
+  type: string
+  required: false
+  description: Value for the option which should be selected. Use this as an alternative to setting the `selected` option on each individual item.
 - name: describedBy
   type: string
   required: false
@@ -88,6 +92,25 @@ examples:
           value: 3
           text: GOV.UK frontend option 3
           disabled: true
+  - name: with selected value
+    data:
+      id: select-1
+      name: select-1
+      label:
+        text: Label text goes here
+      items:
+        -
+          value: 1
+          text: GOV.UK frontend option 1
+        -
+          value: 2
+          text: GOV.UK frontend option 2
+          selected: true
+        -
+          value: 3
+          text: GOV.UK frontend option 3
+          disabled: true
+      value: 3
   - name: with hint text and error message
     data:
       id: select-2

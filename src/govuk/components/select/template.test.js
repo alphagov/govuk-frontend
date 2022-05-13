@@ -62,6 +62,13 @@ describe('Select', () => {
       expect($selectedItem.attr('selected')).toBeTruthy()
     })
 
+    it('selects options using selected value', () => {
+      const $ = render('select', examples['with selected value'])
+
+      const $selectedItem = $('option[value="2"]')
+      expect($selectedItem.attr('selected')).toBeTruthy()
+    })
+
     it('renders item with disabled', () => {
       const $ = render('select', examples.default)
 

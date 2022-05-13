@@ -122,10 +122,18 @@ describe('Radios', () => {
     })
 
     it('render checked', () => {
-      const $ = render('radios', examples.default)
+      const $ = render('radios', examples.prechecked)
 
       const $component = $('.govuk-radios')
       const $lastInput = $component.find('.govuk-radios__item:last-child input')
+      expect($lastInput.attr('checked')).toEqual('checked')
+    })
+
+    it('checks the radio that matches value', () => {
+      const $ = render('radios', examples['prechecked using value'])
+
+      const $component = $('.govuk-radios')
+      const $lastInput = $component.find('input[value="no"]')
       expect($lastInput.attr('checked')).toEqual('checked')
     })
 
@@ -175,6 +183,14 @@ describe('Radios', () => {
         const $hiddenConditional = $component.find('.govuk-radios__conditional').first()
         expect($hiddenConditional.text()).toContain('Email address')
         expect($hiddenConditional.hasClass('govuk-radios__conditional--hidden')).toBeTruthy()
+      })
+
+      it('visible when checked because of checkedValue', () => {
+        const $ = render('radios', examples['with conditional items and pre-checked value'])
+
+        const $conditional = $('.govuk-radios__conditional').last()
+        expect($conditional.text()).toContain('Mobile phone number')
+        expect($conditional.hasClass('govuk-radios__conditional--hidden')).toBeFalsy()
       })
 
       it('visible by default when checked', () => {

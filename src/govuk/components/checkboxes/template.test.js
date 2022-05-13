@@ -183,6 +183,17 @@ describe('Checkboxes', () => {
       expect($lastInput.attr('checked')).toEqual('checked')
     })
 
+    it('checks the checkboxes in values', () => {
+      const $ = render('checkboxes', examples['with pre-checked values'])
+
+      const $component = $('.govuk-checkboxes')
+      const $british = $component.find('input[value="british"]')
+      expect($british.attr('checked')).toEqual('checked')
+
+      const $other = $component.find('input[value="other"]')
+      expect($other.attr('checked')).toEqual('checked')
+    })
+
     describe('when they include attributes', () => {
       it('it renders the attributes', () => {
         const $ = render('checkboxes', examples['items with attributes'])
@@ -238,6 +249,16 @@ describe('Checkboxes', () => {
 
       const $firstConditional = $component.find('.govuk-checkboxes__conditional').first()
       expect($firstConditional.text().trim()).toContain('Email address')
+      expect($firstConditional.hasClass('govuk-checkboxes__conditional--hidden')).toBeFalsy()
+    })
+
+    it('visible when checked with pre-checked values', () => {
+      const $ = render('checkboxes', examples['with pre-checked values'])
+
+      const $component = $('.govuk-checkboxes')
+
+      const $firstConditional = $component.find('.govuk-checkboxes__conditional').first()
+      expect($firstConditional.text().trim()).toContain('Country')
       expect($firstConditional.hasClass('govuk-checkboxes__conditional--hidden')).toBeFalsy()
     })
 

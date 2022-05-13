@@ -69,7 +69,7 @@ params:
   - name: checked
     type: boolean
     required: false
-    description: If `true`, radio will be checked.
+    description: If `true`, the radio will be checked when the page loads.
   - name: conditional
     type: string
     required: false
@@ -86,6 +86,10 @@ params:
     type: object
     required: false
     description: HTML attributes (for example data attributes) to add to the radio input tag.
+- name: value
+  type: string
+  required: false
+  description: The value for the radio which should be checked when the page loads. Use this as an alternative to setting the `checked` option on each individual item.
 - name: classes
   type: string
   required: false
@@ -116,7 +120,6 @@ examples:
         text: Yes
       - value: no
         text: No
-        checked: true
 
 - name: inline
   data:
@@ -379,6 +382,56 @@ examples:
         html: |
           <label class="govuk-label" for="contact-text-message">Mobile phone number</label>
           <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
+
+- name: prechecked
+  data:
+    name: example-default
+    hint:
+      text: This includes changing your last name or spelling your name differently.
+    items:
+      - value: yes
+        text: Yes
+      - value: no
+        text: No
+        checked: true
+
+- name: prechecked using value
+  data:
+    name: example-default
+    items:
+      - value: yes
+        text: Yes
+      - value: no
+        text: No
+    value: no
+
+- name: with conditional items and pre-checked value
+  data:
+    idPrefix: 'how-contacted-checked'
+    name: 'how-contacted-checked'
+    fieldset:
+      legend:
+        text: How do you want to be contacted?
+    items:
+    - value: email
+      text: Email
+      conditional:
+        html: |
+          <label class="govuk-label" for="context-email">Email</label>
+          <input class="govuk-input govuk-!-width-one-third" name="context-email" type="text" id="context-email">
+    - value: phone
+      text: Phone
+      conditional:
+        html: |
+          <label class="govuk-label" for="contact-phone">Phone number</label>
+          <input class="govuk-input govuk-!-width-one-third" name="contact-phone" type="text" id="contact-phone">
+    - value: text
+      text: Text message
+      conditional:
+        html: |
+          <label class="govuk-label" for="contact-text-message">Mobile phone number</label>
+          <input class="govuk-input govuk-!-width-one-third" name="contact-text-message" type="text" id="contact-text-message">
+    value: text
 
 - name: with optional form-group classes showing group error
   data:
