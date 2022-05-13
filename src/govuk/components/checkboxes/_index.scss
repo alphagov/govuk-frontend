@@ -150,7 +150,8 @@
     cursor: default;
   }
 
-  .govuk-checkboxes__input:disabled + .govuk-checkboxes__label {
+  .govuk-checkboxes__input:disabled + .govuk-checkboxes__label,
+  .govuk-checkboxes__input:disabled ~ .govuk-hint {
     opacity: .5;
   }
 

@@ -148,7 +148,8 @@
     cursor: default;
   }
 
-  .govuk-radios__input:disabled + .govuk-radios__label {
+  .govuk-radios__input:disabled + .govuk-radios__label,
+  .govuk-radios__input:disabled ~ .govuk-hint {
     opacity: .5;
   }
 
