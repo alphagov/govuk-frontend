@@ -101,6 +101,10 @@ examples:
     serviceName: Service Name
     serviceUrl: '/components/header'
 
+- name: with service name but no service url
+  data:
+    serviceName: Service Name
+
 - name: with navigation
   data:
     navigation:

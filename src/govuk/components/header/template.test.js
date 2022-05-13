@@ -84,16 +84,26 @@ describe('header', () => {
       const $ = render('header', examples['with service name'])
 
       const $component = $('.govuk-header')
-      const $serviceName = $component.find('.govuk-header__link--service-name')
+      const $serviceName = $component.find('.govuk-header__service-name')
       expect($serviceName.text().trim()).toEqual('Service Name')
     })
 
-    it('renders with service url', () => {
+    it('wraps the service name with a link when a url is provided', () => {
       const $ = render('header', examples['with service name'])
 
       const $component = $('.govuk-header')
-      const $serviceName = $component.find('.govuk-header__link--service-name')
+      const $serviceName = $component.find('.govuk-header__service-name')
+      expect($serviceName.get(0).tagName).toEqual('a')
       expect($serviceName.attr('href')).toEqual('/components/header')
+    })
+
+    it('does not use a link when no service url is provided', () => {
+      const $ = render('header', examples['with service name but no service url'])
+
+      const $component = $('.govuk-header')
+      const $serviceName = $component.find('.govuk-header__service-name')
+      expect($serviceName.get(0).tagName).toEqual('span')
+      expect($serviceName.attr('href')).toBeUndefined()
     })
   })
 
