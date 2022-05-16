@@ -30,6 +30,35 @@
             "hidden": false
         },
         {
+            "name": "with selected value",
+            "options": {
+                "id": "select-1",
+                "name": "select-1",
+                "label": {
+                    "text": "Label text goes here"
+                },
+                "items": [
+                    {
+                        "value": 1,
+                        "text": "GOV.UK frontend option 1"
+                    },
+                    {
+                        "value": 2,
+                        "text": "GOV.UK frontend option 2",
+                        "selected": true
+                    },
+                    {
+                        "value": 3,
+                        "text": "GOV.UK frontend option 3",
+                        "disabled": true
+                    }
+                ],
+                "selectedValue": 3
+            },
+            "html": "<div class=\"govuk-form-group\">\n  <label class=\"govuk-label\" for=\"select-1\">\n    Label text goes here\n  </label>\n\n\n  <select class=\"govuk-select\" id=\"select-1\" name=\"select-1\">\n  \n    \n      <option value=\"1\">GOV.UK frontend option 1</option>\n    \n  \n    \n      <option value=\"2\" selected>GOV.UK frontend option 2</option>\n    \n  \n    \n      <option value=\"3\" selected disabled>GOV.UK frontend option 3</option>\n    \n  \n  </select>\n</div>",
+            "hidden": false
+        },
+        {
             "name": "with hint text and error message",
             "options": {
                 "id": "select-2",

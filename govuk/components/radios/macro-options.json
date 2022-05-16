@@ -100,7 +100,7 @@
                 "name": "checked",
                 "type": "boolean",
                 "required": false,
-                "description": "If `true`, radio will be checked."
+                "description": "If `true`, the radio will be checked when the page loads."
             },
             {
                 "name": "conditional",
@@ -127,6 +127,12 @@
                 "description": "HTML attributes (for example data attributes) to add to the radio input tag."
             }
         ]
+    },
+    {
+        "name": "checkedValue",
+        "type": "string",
+        "required": false,
+        "description": "The value for the radio which should be checked when the page loads. This can be used as an alternative to setting the `checked` option on each individual item."
     },
     {
         "name": "classes",

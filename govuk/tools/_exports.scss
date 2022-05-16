@@ -22,7 +22,7 @@ $_govuk-imported-modules: () !default;
 
 @mixin govuk-exports($name) {
   // If the mixin is not in the list of modules already exported...
-  @if (index($_govuk-imported-modules, $name) == null) {
+  @if not index($_govuk-imported-modules, $name) {
     // ... then add it to the list
     $_govuk-imported-modules: append($_govuk-imported-modules, $name) !global;
     // ... and output the CSS for that module

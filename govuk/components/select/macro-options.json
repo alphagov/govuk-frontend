@@ -33,7 +33,7 @@
                 "name": "selected",
                 "type": "boolean",
                 "required": false,
-                "description": "Sets the option as the selected."
+                "description": "Sets the option as selected when the page loads."
             },
             {
                 "name": "disabled",
@@ -48,6 +48,12 @@
                 "description": "HTML attributes (for example data attributes) to add to the option."
             }
         ]
+    },
+    {
+        "name": "selectedItem",
+        "type": "string",
+        "required": false,
+        "description": "Value for the option which should be selected. This can be used as an alternative to setting the `selected` option on each individual item."
     },
     {
         "name": "describedBy",

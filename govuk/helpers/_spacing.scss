@@ -39,7 +39,7 @@
   }
 
   $is-negative: false;
-  @if ($spacing-point < 0) {
+  @if $spacing-point < 0 {
     $is-negative: true;
     $spacing-point: abs($spacing-point);
   }
@@ -94,12 +94,12 @@
   // Loop through each breakpoint in the map
   @each $breakpoint, $breakpoint-value in $scale-map {
 
-    @if ($adjustment) {
+    @if $adjustment {
       $breakpoint-value: $breakpoint-value + $adjustment;
     }
 
     // The 'null' breakpoint is for mobile.
-    @if $breakpoint == null {
+    @if not $breakpoint {
 
       @if $direction == all {
         #{$property}: $breakpoint-value if($important, !important, null);
