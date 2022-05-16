@@ -494,9 +494,20 @@ Good:
 
 More write up on [supported rules](https://stylelint.io/user-guide/rules/list).
 
-##  SassDoc
+## Comments
+
+For comments, you should normally use 2 slashes (`//`) at the start of the line.
+
+If you need to include the comment in the compiled CSS, use the multi-line ('loud') comment style, which starts with `/*` and ends at the next `*/`.
+
+Wrap comments at 80 characters wherever possible.
+
+### SassDoc
+
 We document SCSS using [SassDoc](http://sassdoc.com/). This includes most of the settings, helpers and tools layers, with variables, functions and mixins being marked as private or public.
 
 The SassDoc comments are used to generate the [Sass API reference in the GOV.UK Frontend docs](https://frontend.design-system.service.gov.uk/sass-api-reference/).
+
+For SassDoc comments, use 3 slashes (`///`) at the start of the line.
 
 See [colour.scss](../../../src/govuk/helpers/_colour.scss) for an example of SassDoc syntax.

@@ -117,10 +117,7 @@ describe('Radios', () => {
 
       const $component = $('.govuk-radios')
 
-      const $firstInput = $component.find('.govuk-radios__item:first-child input')
-      expect($firstInput.attr('disabled')).toEqual('disabled')
-
-      const $lastInput = $component.find('.govuk-radios__item:last-child input')
+      const $lastInput = $component.find('input[value="verify"]')
       expect($lastInput.attr('disabled')).toEqual('disabled')
     })
 
