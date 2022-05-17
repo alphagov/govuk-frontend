@@ -39,8 +39,27 @@ GOV.UK Frontend supports:
 
 - [recommended browsers](https://www.gov.uk/service-manual/technology/designing-for-different-browsers-and-devices#browsers-to-test-in)
 - [recommended assistive technologies](https://www.gov.uk/service-manual/technology/testing-with-assistive-technologies#which-assistive-technologies-to-test-with)
-- Internet Explorer 8, 9 and 10, although components may not look perfect
 - your users overriding colours in Windows, Firefox and Chrome
+
+### Internet Explorer (IE)
+
+We're planning to [reduce our level of support for all versions of IE](https://github.com/alphagov/govuk-frontend/discussions/2607).
+
+In a future major release, we'll reduce the level of support for IE11 from 'compliant' to 'functional'.
+
+We'll also be ending support for IE versions 8, 9 and 10.
+
+For now, you should keep using [GOV.UK Frontend v4.0.0](https://github.com/alphagov/govuk-frontend/releases/tag/v4.0.0) if:
+
+- you need to continue providing a ‘compliant’ experience in IE11
+- your service needs to support IE versions 8, 9 or 10
+
+We’ll continue to provide limited support for GOV.UK Frontend v4.0.0 for the next 12 months by publishing:
+
+- urgent security updates
+- major bug fixes
+
+We will not add any new components to GOV.UK Frontend v4.0.0, or update it to meet Web Content Accessibility Guidelines (WCAG) 2.2. After 12 months, we’ll look at the data again and decide whether to keep providing support.
 
 ## Accessibility
 
