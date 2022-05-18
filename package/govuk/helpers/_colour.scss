@@ -29,8 +29,8 @@
 /// @access public
 
 @function govuk-colour($colour, $legacy: false) {
-  @if ($govuk-use-legacy-palette and $legacy) {
-    @if (type-of($legacy) == "color") {
+  @if $govuk-use-legacy-palette and $legacy {
+    @if type-of($legacy) == "color" {
       @return $legacy;
     }
     $colour: $legacy;
@@ -65,7 +65,7 @@
 
   $org-colour: map-get($govuk-colours-organisations, $organisation);
 
-  @if ($websafe and map-has-key($org-colour, colour-websafe)) {
+  @if $websafe and map-has-key($org-colour, colour-websafe) {
     @return map-get($org-colour, colour-websafe);
   } @else {
     @return map-get($org-colour, colour);

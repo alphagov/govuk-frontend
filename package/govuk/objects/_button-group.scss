@@ -29,19 +29,12 @@
     // margins, but unfortunately the support isn't there (yet) and @supports
     // doesn't play nicely with it
     // (https://github.com/w3c/csswg-drafts/issues/3559)
-    display: -webkit-box;
-    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: column;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-direction: column;
+        flex-direction: column;
+    -ms-flex-align: center;
+        align-items: center;
 
     // Give links within the button group the same font-size and line-height
     // as buttons.
@@ -71,22 +64,13 @@
       // Cancel out the column gap for the last item in each row
       margin-right: ($horizontal-gap * -1);
 
-      -webkit-box-orient: horizontal;
+      -ms-flex-direction: row;
 
-      -webkit-box-direction: normal;
-
-      -webkit-flex-direction: row;
-
-          -ms-flex-direction: row;
-
-              flex-direction: row;
-      -webkit-flex-wrap: wrap;
-          -ms-flex-wrap: wrap;
-              flex-wrap: wrap;
-      -webkit-box-align: baseline;
-      -webkit-align-items: baseline;
-          -ms-flex-align: baseline;
-              align-items: baseline;
+          flex-direction: row;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+      -ms-flex-align: baseline;
+          align-items: baseline;
 
       .govuk-button,
       .govuk-link {

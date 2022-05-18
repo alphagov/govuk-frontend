@@ -15,7 +15,7 @@
         "name": "type",
         "type": "string",
         "required": false,
-        "description": "Type of input control to render. Defaults to `text`."
+        "description": "Type of input control to render, for example, a password input control. Defaults to `text`."
     },
     {
         "name": "inputmode",
@@ -66,13 +66,13 @@
                 "name": "text",
                 "type": "string",
                 "required": true,
-                "description": "Required. If `html` is set, this is not required. Text to use within the label. If `html` is provided, the `text` argument will be ignored."
+                "description": "Required. If `html` is set, this is not required. Text to use within the label. If `html` is provided, the `text` option will be ignored."
             },
             {
                 "name": "html",
                 "type": "string",
                 "required": true,
-                "description": "Required. If `text` is set, this is not required. HTML to use within the label. If `html` is provided, the `text` argument will be ignored."
+                "description": "Required. If `text` is set, this is not required. HTML to use within the label. If `html` is provided, the `text` option will be ignored."
             },
             {
                 "name": "classes",
@@ -98,13 +98,13 @@
                 "name": "text",
                 "type": "string",
                 "required": true,
-                "description": "If `html` is set, this is not required. Text to use within the label. If `html` is provided, the `text` argument will be ignored."
+                "description": "If `html` is set, this is not required. Text to use within the label. If `html` is provided, the `text` option will be ignored."
             },
             {
                 "name": "html",
                 "type": "string",
                 "required": true,
-                "description": "If `text` is set, this is not required. HTML to use within the label. If `html` is provided, the `text` argument will be ignored."
+                "description": "If `text` is set, this is not required. HTML to use within the label. If `html` is provided, the `text` option will be ignored."
             },
             {
                 "name": "classes",

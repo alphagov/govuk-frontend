@@ -3,25 +3,25 @@
         "name": "summaryText",
         "type": "string",
         "required": true,
-        "description": "If `summmaryHtml` is set, this is not required. Text to use within the summary element (the visible part of the details element). If `summaryHtml` is provided, the `summaryText` argument will be ignored."
+        "description": "If `summmaryHtml` is set, this is not required. Text to use within the summary element (the visible part of the details element). If `summaryHtml` is provided, the `summaryText` option will be ignored."
     },
     {
         "name": "summaryHtml",
         "type": "string",
         "required": true,
-        "description": "If `summmaryText` is set, this is not required. HTML to use within the summary element (the visible part of the details element). If `summaryHtml` is provided, the `summaryText` argument will be ignored."
+        "description": "If `summmaryText` is set, this is not required. HTML to use within the summary element (the visible part of the details element). If `summaryHtml` is provided, the `summaryText` option will be ignored."
     },
     {
         "name": "text",
         "type": "string",
         "required": true,
-        "description": "If `html` is set, this is not required. Text to use within the disclosed part of the details element. If `html` is provided, the `text` argument will be ignored."
+        "description": "If `html` is set, this is not required. Text to use within the disclosed part of the details element. If `html` is provided, the `text` option will be ignored."
     },
     {
         "name": "html",
         "type": "string",
         "required": true,
-        "description": "If `text` is set, this is not required. HTML to use within the disclosed part of the details element. If `html` is provided, the `text` argument will be ignored."
+        "description": "If `text` is set, this is not required. HTML to use within the disclosed part of the details element. If `html` is provided, the `text` option will be ignored."
     },
     {
         "name": "id",

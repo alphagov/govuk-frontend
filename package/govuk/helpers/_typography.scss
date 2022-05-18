@@ -23,7 +23,7 @@
   // We do not need to include the GDS Transport font-face declarations if
   // alphagov/govuk_template is being used since nta will already be included by
   // default.
-  @if ($govuk-include-default-font-face) {
+  @if $govuk-include-default-font-face {
     @include _govuk-font-face-gds-transport;
   }
 
@@ -142,7 +142,7 @@
     $font-size-rem: $font-size-rem if($important, !important, null);
     $line-height: $line-height if($important, !important, null);
 
-    @if $breakpoint == null {
+    @if not $breakpoint {
       font-size: $font-size;
       @if $govuk-typography-use-rem {
         font-size: $font-size-rem;

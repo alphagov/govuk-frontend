@@ -55,30 +55,35 @@
         {
             "name": "with disabled",
             "options": {
-                "idPrefix": "example-disabled",
-                "name": "example-disabled",
+                "idPrefix": "gov",
+                "name": "gov",
                 "fieldset": {
                     "legend": {
-                        "text": "Have you changed your name?"
+                        "text": "How do you want to sign in?",
+                        "isPageHeading": true
                     }
-                },
-                "hint": {
-                    "text": "This includes changing your last name or spelling your name differently."
                 },
                 "items": [
                     {
-                        "value": "yes",
-                        "text": "Yes",
-                        "disabled": true
+                        "value": "gateway",
+                        "text": "Sign in with Government Gateway",
+                        "id": "gateway",
+                        "hint": {
+                            "text": "You’ll have a user ID if you’ve registered for Self Assessment or filed a tax return online before."
+                        }
                     },
                     {
-                        "value": "no",
-                        "text": "No",
+                        "value": "verify",
+                        "text": "Sign in with GOV.UK Verify",
+                        "id": "verify",
+                        "hint": {
+                            "text": "You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity."
+                        },
                         "disabled": true
                     }
                 ]
             },
-            "html": "<div class=\"govuk-form-group\">\n\n  <fieldset class=\"govuk-fieldset\" aria-describedby=\"example-disabled-hint\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    Have you changed your name?\n  \n  </legend>\n  \n\n  <div id=\"example-disabled-hint\" class=\"govuk-hint\">\n    This includes changing your last name or spelling your name differently.\n  </div>\n\n\n  <div class=\"govuk-radios\"\n    data-module=\"govuk-radios\">\n    \n      \n          \n        \n        \n        <div class=\"govuk-radios__item\">\n          <input class=\"govuk-radios__input\" id=\"example-disabled\" name=\"example-disabled\" type=\"radio\" value=\"yes\" disabled>\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-disabled\">\n        Yes\n      </label>\n          \n        </div>\n        \n        \n      \n    \n      \n        \n        \n        <div class=\"govuk-radios__item\">\n          <input class=\"govuk-radios__input\" id=\"example-disabled-2\" name=\"example-disabled\" type=\"radio\" value=\"no\" disabled>\n          <label class=\"govuk-label govuk-radios__label\" for=\"example-disabled-2\">\n        No\n      </label>\n          \n        </div>\n        \n        \n      \n    \n  </div>\n  \n\n</fieldset>\n\n\n</div>",
+            "html": "<div class=\"govuk-form-group\">\n\n  <fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    <h1 class=\"govuk-fieldset__heading\">\n      How do you want to sign in?\n    </h1>\n  \n  </legend>\n  \n\n  <div class=\"govuk-radios\"\n    data-module=\"govuk-radios\">\n    \n      \n        \n        \n        <div class=\"govuk-radios__item\">\n          <input class=\"govuk-radios__input\" id=\"gateway\" name=\"gov\" type=\"radio\" value=\"gateway\" aria-describedby=\"gateway-item-hint\">\n          <label class=\"govuk-label govuk-radios__label\" for=\"gateway\">\n        Sign in with Government Gateway\n      </label>\n          \n          <div id=\"gateway-item-hint\" class=\"govuk-hint govuk-radios__hint\">\n        You’ll have a user ID if you’ve registered for Self Assessment or filed a tax return online before.\n      </div>\n          \n        </div>\n        \n        \n      \n    \n      \n        \n        \n        <div class=\"govuk-radios__item\">\n          <input class=\"govuk-radios__input\" id=\"verify\" name=\"gov\" type=\"radio\" value=\"verify\" disabled aria-describedby=\"verify-item-hint\">\n          <label class=\"govuk-label govuk-radios__label\" for=\"verify\">\n        Sign in with GOV.UK Verify\n      </label>\n          \n          <div id=\"verify-item-hint\" class=\"govuk-hint govuk-radios__hint\">\n        You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity.\n      </div>\n          \n        </div>\n        \n        \n      \n    \n  </div>\n  \n\n</fieldset>\n\n\n</div>",
             "hidden": false
         },
         {
