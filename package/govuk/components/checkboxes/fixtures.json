@@ -176,24 +176,36 @@
         {
             "name": "with disabled item",
             "options": {
-                "name": "colours",
+                "name": "sign-in",
+                "fieldset": {
+                    "legend": {
+                        "text": "How do you want to sign in?",
+                        "isPageHeading": true
+                    }
+                },
                 "items": [
                     {
-                        "value": "red",
-                        "text": "Red"
+                        "name": "gateway",
+                        "id": "government-gateway",
+                        "value": "gov-gateway",
+                        "text": "Sign in with Government Gateway",
+                        "hint": {
+                            "text": "You'll have a user ID if you've registered for Self Assessment or filed a tax return online before."
+                        }
                     },
                     {
-                        "value": "green",
-                        "text": "Green"
-                    },
-                    {
-                        "value": "blue",
-                        "text": "Blue",
+                        "name": "verify",
+                        "id": "govuk-verify",
+                        "value": "gov-verify",
+                        "text": "Sign in with GOV.UK Verify",
+                        "hint": {
+                            "text": "You'll have an account if you've already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity."
+                        },
                         "disabled": true
                     }
                 ]
             },
-            "html": "<div class=\"govuk-form-group\">\n\n  <div class=\"govuk-checkboxes\"\n    data-module=\"govuk-checkboxes\">\n    \n      \n          \n        \n          \n          \n          \n          \n          <div class=\"govuk-checkboxes__item\">\n            <input class=\"govuk-checkboxes__input\" id=\"colours\" name=\"colours\" type=\"checkbox\" value=\"red\">\n            <label class=\"govuk-label govuk-checkboxes__label\" for=\"colours\">\n        Red\n      </label>\n            \n          </div>\n          \n        \n      \n    \n      \n        \n          \n          \n          \n          \n          <div class=\"govuk-checkboxes__item\">\n            <input class=\"govuk-checkboxes__input\" id=\"colours-2\" name=\"colours\" type=\"checkbox\" value=\"green\">\n            <label class=\"govuk-label govuk-checkboxes__label\" for=\"colours-2\">\n        Green\n      </label>\n            \n          </div>\n          \n        \n      \n    \n      \n        \n          \n          \n          \n          \n          <div class=\"govuk-checkboxes__item\">\n            <input class=\"govuk-checkboxes__input\" id=\"colours-3\" name=\"colours\" type=\"checkbox\" value=\"blue\" disabled>\n            <label class=\"govuk-label govuk-checkboxes__label\" for=\"colours-3\">\n        Blue\n      </label>\n            \n          </div>\n          \n        \n      \n    \n  </div>\n\n</div>",
+            "html": "<div class=\"govuk-form-group\">\n\n  <fieldset class=\"govuk-fieldset\">\n  \n  <legend class=\"govuk-fieldset__legend\">\n  \n    <h1 class=\"govuk-fieldset__heading\">\n      How do you want to sign in?\n    </h1>\n  \n  </legend>\n  \n\n  <div class=\"govuk-checkboxes\"\n    data-module=\"govuk-checkboxes\">\n    \n      \n        \n          \n          \n          \n          \n          <div class=\"govuk-checkboxes__item\">\n            <input class=\"govuk-checkboxes__input\" id=\"government-gateway\" name=\"gateway\" type=\"checkbox\" value=\"gov-gateway\" aria-describedby=\"government-gateway-item-hint\">\n            <label class=\"govuk-label govuk-checkboxes__label\" for=\"government-gateway\">\n        Sign in with Government Gateway\n      </label>\n            \n            <div id=\"government-gateway-item-hint\" class=\"govuk-hint govuk-checkboxes__hint\">\n        You&#39;ll have a user ID if you&#39;ve registered for Self Assessment or filed a tax return online before.\n      </div>\n            \n          </div>\n          \n        \n      \n    \n      \n        \n          \n          \n          \n          \n          <div class=\"govuk-checkboxes__item\">\n            <input class=\"govuk-checkboxes__input\" id=\"govuk-verify\" name=\"verify\" type=\"checkbox\" value=\"gov-verify\" disabled aria-describedby=\"govuk-verify-item-hint\">\n            <label class=\"govuk-label govuk-checkboxes__label\" for=\"govuk-verify\">\n        Sign in with GOV.UK Verify\n      </label>\n            \n            <div id=\"govuk-verify-item-hint\" class=\"govuk-hint govuk-checkboxes__hint\">\n        You&#39;ll have an account if you&#39;ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity.\n      </div>\n            \n          </div>\n          \n        \n      \n    \n  </div>\n  \n\n</fieldset>\n\n\n</div>",
             "hidden": false
         },
         {

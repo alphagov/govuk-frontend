@@ -22,7 +22,6 @@
 
     // Disable inner shadow and remove rounded corners
     -webkit-appearance: none;
-       -moz-appearance: none;
             appearance: none;
 
     &:focus {
@@ -94,16 +93,12 @@
   }
 
   .govuk-input__wrapper {
-    display: -webkit-box;
-    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
 
     .govuk-input {
-      -webkit-box-flex: 0;
-      -webkit-flex: 0 1 auto;
-          -ms-flex: 0 1 auto;
-              flex: 0 1 auto;
+      -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
     }
 
     .govuk-input:focus {
@@ -150,13 +145,9 @@
     // Emphasise non-editable status of prefixes and suffixes
     cursor: default;
 
-    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
 
-    -webkit-flex: 0 0 auto;
-
-        -ms-flex: 0 0 auto;
-
-            flex: 0 0 auto;
+        flex: 0 0 auto;
 
     // Split prefix/suffix onto separate lines on narrow screens
     @include govuk-media-query($until: mobile) {

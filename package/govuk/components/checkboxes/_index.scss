@@ -83,7 +83,7 @@
       left: 0;
       width: $govuk-checkboxes-size;
       height: $govuk-checkboxes-size;
-      border: $govuk-border-width-form-element solid currentColor;
+      border: $govuk-border-width-form-element solid currentcolor;
       background: transparent;
     }
 
@@ -155,7 +155,8 @@
     cursor: default;
   }
 
-  .govuk-checkboxes__input:disabled + .govuk-checkboxes__label {
+  .govuk-checkboxes__input:disabled + .govuk-checkboxes__label,
+  .govuk-checkboxes__input:disabled ~ .govuk-hint {
     opacity: .5;
   }
 

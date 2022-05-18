@@ -17,7 +17,7 @@
     and $govuk-font-url-function
     and function-exists($govuk-font-url-function);
 
-  @if ($use-custom-function) {
+  @if $use-custom-function {
     @return call(get-function($govuk-font-url-function), $filename);
   } @else {
     @return url($govuk-fonts-path + $filename);

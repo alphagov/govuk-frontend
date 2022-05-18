@@ -235,22 +235,14 @@
     @include govuk-typography-weight-bold;
     @include govuk-typography-responsive($size: 24, $override-line-height: 1);
 
-    display: -webkit-inline-box;
-
-    display: -webkit-inline-flex;
-
     display: -ms-inline-flexbox;
 
     display: inline-flex;
     min-height: auto;
 
-    -webkit-box-pack: center;
+    -ms-flex-pack: center;
 
-    -webkit-justify-content: center;
-
-        -ms-flex-pack: center;
-
-            justify-content: center;
+        justify-content: center;
   }
 
   .govuk-button__start-icon {
@@ -260,12 +252,10 @@
       margin-left: govuk-spacing(2);
     }
     vertical-align: middle;
-    -webkit-flex-shrink: 0;
-        -ms-flex-negative: 0;
-            flex-shrink: 0;
-    -webkit-align-self: center;
-        -ms-flex-item-align: center;
-            align-self: center;
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+    -ms-flex-item-align: center;
+        align-self: center;
     // Work around SVGs not inheriting color from parent in forced color mode
     // (https://github.com/w3c/csswg-drafts/issues/6310)
     forced-color-adjust: auto;

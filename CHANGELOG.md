@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 4.1.0 (Feature release)
+
 ### New features
 
 #### Import GOV.UK Frontend JavaScript as ECMAScript (ES) modules
