@@ -11,9 +11,7 @@
 
     // Respect 'display cutout' safe area (avoids notches and rounded corners)
     @supports (padding: unquote("max(calc(0px))")) {
-      $padding-safe-area-right: -webkit-calc(#{govuk-spacing(3)} + env(safe-area-inset-right));
       $padding-safe-area-right: calc(#{govuk-spacing(3)} + env(safe-area-inset-right));
-      $padding-safe-area-left: -webkit-calc(#{govuk-spacing(3)} + env(safe-area-inset-left));
       $padding-safe-area-left: calc(#{govuk-spacing(3)} + env(safe-area-inset-left));
 
       // Use max() to pick largest padding, default or with safe area
@@ -28,7 +26,7 @@
       background-color: $govuk-focus-colour;
 
       // Undo unwanted changes when global styles are enabled
-      @if ($govuk-global-styles) {
+      @if $govuk-global-styles {
         box-shadow: none;
       }
     }

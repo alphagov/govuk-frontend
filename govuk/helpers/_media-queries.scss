@@ -12,7 +12,7 @@ $mq-static-breakpoint: if(variable-exists(govuk-ie8-breakpoint), $govuk-ie8-brea
 
 $mq-show-breakpoints: ();
 
-@if (variable-exists(govuk-show-breakpoints) and $govuk-show-breakpoints) {
+@if variable-exists(govuk-show-breakpoints) and $govuk-show-breakpoints {
   $mq-show-breakpoints: map-keys($govuk-breakpoints);
 }
 
@@ -20,7 +20,7 @@ $mq-show-breakpoints: ();
 // 'rasterize' any media queries.
 
 $mq-responsive: true;
-@if (variable-exists(govuk-is-ie8) and $govuk-is-ie8) {
+@if variable-exists(govuk-is-ie8) and $govuk-is-ie8 {
   $mq-responsive: false;
 }
 
