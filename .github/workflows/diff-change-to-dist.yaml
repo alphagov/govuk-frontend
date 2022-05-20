@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0 # Need to also checkout the base branch to compare
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v3
       - name: Set up diff drivers
         run: |
           npm install -g js-beautify
