@@ -78,9 +78,16 @@ Developers should pair on releases. When remote working, it can be useful to be 
 
 2. Sign in to npm (`npm login`), using the npm/govuk-patterns-and-tools team [credentials](https://github.com/alphagov/design-system-team-credentials/tree/main/npm/govuk-patterns-and-tools).
 
-3. Run `npm run publish-release`, which will prompt you to either continue or cancel. Enter `y` to continue.
+3. Run `npm run publish-release`, which will prompt you to check whether the NPM tag looks as expected.
 
-4. View the created tag in the [Github interface](https://github.com/alphagov/govuk-frontend/releases) as follows:
+  If you're following these instructions, you're probably doing a sequential release, meaning
+  the tag should be 'latest'.
+
+  Enter `y` to continue. If you think the tag should be different, enter `N` to have the option to set your own NPM tag.
+
+4. You will now be prompted to continue or cancel the release. Check the details and enter `y` to continue. If something does not look right, press `N` to cancel the release.
+
+5. View the created tag in the [Github interface](https://github.com/alphagov/govuk-frontend/releases) as follows:
   - select the latest tag
   - press **Create release from tag**
   - set 'GOV.UK Frontend v[version-number]' as the title
@@ -88,7 +95,7 @@ Developers should pair on releases. When remote working, it can be useful to be 
   - attach the generated ZIP that has been generated at the root of this project
   - publish release
 
-5. Run `npm logout` to log out from npm.
+6. Run `npm logout` to log out from npm.
 
 # After you publish the new release
 
