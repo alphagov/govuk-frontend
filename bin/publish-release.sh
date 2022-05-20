@@ -1,14 +1,29 @@
 #!/bin/sh
 set -e
 
+source ./bin/generate-npm-tag.sh
+
+# Check NPM tag looks as expected
+# https://npm.github.io/publishing-pkgs-docs/updating/using-tags.html#publishing-with-tags
+echo "This will publish the package with the following NPM tag:"
+echo $NPM_TAG
+echo " "
+
+read -r -p "Does this look correct? [y/N] " continue_prompt
+
+if [[ $continue_prompt != 'y' ]]; then
+    read -r -p "What should the NPM tag be: " NPM_TAG
+fi
+
 echo "Starting a release..."
 echo " "
 echo "This will:"
 echo "- check that you're logged in to npm as the correct user"
-echo "- publish the package if it has not been published already"
-echo "- check that there is not already a tag published"
-echo "- create a new tag"
-echo "- push the tag to remote origin"
+echo "- publish the package to NPM if it has not been published already"
+echo "- tag the package on NPM with '$NPM_TAG'"
+echo "- check that there is not already a Github tag published"
+echo "- create a new Github tag"
+echo "- push the Github tag to remote origin"
 echo "- create a zip file of the 'dist/' directory locally"
 echo " "
 
@@ -34,7 +49,7 @@ echo "📦  Publishing package..."
 
 # Try publishing
 cd package
-npm publish
+[ $NPM_TAG = "latest" ] && npm publish || npm publish --tag $NPM_TAG
 echo "🗒 Package published!"
 cd ..
 
