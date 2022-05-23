@@ -82,7 +82,7 @@ i18n.prototype.t = function (lookupKey, options) {
  */
 i18n.prototype.replacePlaceholders = function (phrase, placeholderMap) {
   for (var key in placeholderMap) {
-    phrase = phrase.replaceAll(this.separators[0] + key + this.separators[1], placeholderMap[key])
+    phrase = phrase.replace(new RegExp(this.separators[0] + key + this.separators[1], 'g'), placeholderMap[key])
   }
   return phrase
 }
@@ -145,7 +145,7 @@ i18n.prototype.getPluralSuffix = function (count) {
   for (var pluralRule in this.pluralRulesMap) {
     if (Object.prototype.hasOwnProperty.call(this.pluralRulesMap, pluralRule)) {
       var languages = this.pluralRulesMap[pluralRule]
-      if (languages.includes(locale) || languages.includes(localeShort)) {
+      if (languages.indexOf(locale) > -1 || languages.indexOf(localeShort) > -1) {
         keySuffix = this.pluralRules[pluralRule](count)
         break
       }
