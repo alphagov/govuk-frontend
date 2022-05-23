@@ -1,3 +1,5 @@
+import './vendor/polyfills/Object/keys'
+
 /**
  * i18n support initialisation function
  *
@@ -112,7 +114,9 @@ i18n.prototype.replacePlaceholders = function (phrase, placeholderMap) {
 i18n.prototype.flatten = function (translationsObject) {
   var flattenedObject = {}
   var flattenLoop = function (translations, prefix) {
-    Object.keys(translations).forEach(function (key) {
+    var lookupKeys = Object.keys(translations)
+    for (var i = 0; i < lookupKeys.length; i++) {
+      var key = lookupKeys[i]
       var phrase = translations[key]
       var prefixedKey = prefix ? prefix + '.' + key : key
       if (typeof phrase === 'object') {
@@ -120,7 +124,7 @@ i18n.prototype.flatten = function (translationsObject) {
       } else {
         flattenedObject[prefixedKey] = phrase
       }
-    })
+    }
   }
   flattenLoop(translationsObject)
   return flattenedObject
