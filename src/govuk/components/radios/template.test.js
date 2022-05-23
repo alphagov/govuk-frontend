@@ -137,6 +137,13 @@ describe('Radios', () => {
       expect($lastInput.attr('checked')).toEqual('checked')
     })
 
+    it('allows item.checked to override value', () => {
+      const $ = render('radios', examples['item checked overrides value'])
+
+      const $green = $('.govuk-radios').find('input[value="green"]')
+      expect($green.attr('checked')).toBeUndefined()
+    })
+
     describe('when they include attributes', () => {
       it('it renders the attributes', () => {
         const $ = render('radios', examples['items with attributes'])

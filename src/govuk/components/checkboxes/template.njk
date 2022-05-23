@@ -63,7 +63,7 @@
         {%- if item.divider %}
           <div class="govuk-checkboxes__divider">{{ item.divider }}</div>
         {%- else %}
-          {% set isChecked = item.checked or (params.values and item.value in params.values) %}
+          {% set isChecked = item.checked | default(params.values and item.value in params.values) %}
           {% set hasHint = true if item.hint.text or item.hint.html %}
           {% set itemHintId = id + "-item-hint" if hasHint else "" %}
           {% set itemDescribedBy = describedBy if not hasFieldset else "" %}

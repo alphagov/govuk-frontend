@@ -194,6 +194,13 @@ describe('Checkboxes', () => {
       expect($other.attr('checked')).toEqual('checked')
     })
 
+    it('allows item.checked to override values', () => {
+      const $ = render('checkboxes', examples['item checked overrides values'])
+
+      const $green = $('.govuk-checkboxes').find('input[value="green"]')
+      expect($green.attr('checked')).toBeUndefined()
+    })
+
     describe('when they include attributes', () => {
       it('it renders the attributes', () => {
         const $ = render('checkboxes', examples['items with attributes'])

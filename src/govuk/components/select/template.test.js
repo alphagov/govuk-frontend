@@ -69,6 +69,13 @@ describe('Select', () => {
       expect($selectedItem.attr('selected')).toBeTruthy()
     })
 
+    it('allows item.selected to override value', () => {
+      const $ = render('select', examples['item selected overrides value'])
+
+      const $selectedItem = $('option[value="green"]')
+      expect($selectedItem.attr('selected')).toBeUndefined()
+    })
+
     it('renders item with disabled', () => {
       const $ = render('select', examples.default)
 

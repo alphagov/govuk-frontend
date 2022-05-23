@@ -23,7 +23,7 @@ params:
   - name: selected
     type: boolean
     required: false
-    description: Sets the option as selected when the page loads.
+    description: Whether the option should be selected when the page loads. Takes precedence over the top-level `value` option.
   - name: disabled
     type: boolean
     required: false
@@ -304,3 +304,17 @@ examples:
         -
           value: 2
           text: GOV.UK frontend option 2
+
+  - name: item selected overrides value
+    hidden: true
+    data:
+      name: colors
+      items:
+        - value: red
+          text: Red
+        - value: green
+          text: Green
+          selected: false
+        - value: blue
+          text: Blue
+      value: green

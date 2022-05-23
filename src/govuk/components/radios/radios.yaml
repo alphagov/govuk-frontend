@@ -69,7 +69,7 @@ params:
   - name: checked
     type: boolean
     required: false
-    description: If `true`, the radio will be checked when the page loads.
+    description: Whether the radio should be checked when the page loads. Takes precedence over the top-level `value` option.
   - name: conditional
     type: string
     required: false
@@ -889,3 +889,17 @@ examples:
       - value: no
         text: No
         checked: true
+
+- name: item checked overrides value
+  hidden: true
+  data:
+    name: colors
+    items:
+      - value: red
+        text: Red
+      - value: green
+        text: Green
+        checked: false
+      - value: blue
+        text: Blue
+    value: green
