@@ -1,3 +1,4 @@
+import './vendor/polyfills/Array/prototype/indexOf'
 import './vendor/polyfills/Object/keys'
 
 /**
