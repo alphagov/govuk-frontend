@@ -2,6 +2,22 @@
 
 ## Unreleased
 
+### Recommended changes
+
+#### Replace deprecated `govuk-header__link--service-name` class in the header
+
+If you're not using the Nunjucks macros, replace any instances in the header of the class `govuk-header__link--service-name` with `govuk-header__service-name`.
+
+We've deprecated the `govuk-header__link--service-name` class, and will remove it in a future major release.
+
+This change was introduced in [pull request #2617: Do not make the service name in the header a link if no `serviceUrl` is provided](https://github.com/alphagov/govuk-frontend/pull/2617).
+
+### Fixes
+
+We’ve made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#2617: Do not make the service name in the header a link if no `serviceUrl` is provided](https://github.com/alphagov/govuk-frontend/pull/2617)
+
 ## 4.1.0 (Feature release)
 
 ### New features
