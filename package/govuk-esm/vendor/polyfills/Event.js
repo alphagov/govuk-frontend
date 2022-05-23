@@ -1,5 +1,6 @@
 import './Window'
 import './Element'
+import './Array/prototype/indexOf'
 import './Object/defineProperty'
 
 (function(undefined) {
@@ -48,20 +49,6 @@ if (detect) return
 	// However, we asssume there are no browsers with worker support that lack proper
 	// support for `Event` within the worker
 	if (typeof document === 'undefined' || typeof window === 'undefined') return;
-
-	function indexOf(array, element) {
-		var
-		index = -1,
-		length = array.length;
-
-		while (++index < length) {
-			if (index in array && array[index] === element) {
-				return index;
-			}
-		}
-
-		return -1;
-	}
 
 	var existingProto = (window.Event && window.Event.prototype) || null;
 	window.Event = Window.prototype.Event = function Event(type, eventInitDict) {
@@ -151,7 +138,7 @@ if (detect) return
 						if (index in events) {
 							eventElement = events[index];
 
-							if (indexOf(list, eventElement) !== -1 && typeof eventElement === 'function') {
+							if (list.indexOf(eventElement) !== -1 && typeof eventElement === 'function') {
 								eventElement.call(element, event);
 							}
 						}
@@ -176,7 +163,7 @@ if (detect) return
 			index;
 
 			if (element._events && element._events[type] && element._events[type].list) {
-				index = indexOf(element._events[type].list, listener);
+				index = element._events[type].list.indexOf(listener);
 
 				if (index !== -1) {
 					element._events[type].list.splice(index, 1);
