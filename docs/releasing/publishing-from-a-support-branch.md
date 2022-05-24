@@ -111,8 +111,7 @@ Note: Before you go on annual leave, tell the delivery manager who will be looki
 
 3. Run `npm run publish-release`, which will prompt you to check whether the npm tag looks as expected.
 
-  If you're following these instructions, you may be publishing an out-of-order release. Do
-  not tag this release as the 'latest' release on npm. Instead, give the tag the format `latest-[major-version-number]`, for example, `latest-4`.
+  If you're publishing a release for a previous major version, do not tag this release as the 'latest' release on npm. Instead, give the tag the format `latest-[major-version-number]`, for example, `latest-4`.
 
   Enter `y` to continue. If you think the tag should be different, enter `N` to have the option to set your own npm tag.
 
