@@ -44,6 +44,7 @@ describe('GOV.UK Frontend', () => {
 
       // Ensure GOV.UK Frontend exports the expected components
       expect(components).toEqual([
+        'I18n',
         'Accordion',
         'Button',
         'Details',

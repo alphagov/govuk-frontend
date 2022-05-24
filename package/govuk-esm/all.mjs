@@ -21,7 +21,6 @@ function initAll (options) {
   var scope = typeof options.scope !== 'undefined' ? options.scope : document
 
   var i18nInstance = new I18n(options.i18n || {})
-  console.log(i18nInstance)
 
   var $buttons = scope.querySelectorAll('[data-module="govuk-button"]')
   nodeListForEach($buttons, function ($button) {
