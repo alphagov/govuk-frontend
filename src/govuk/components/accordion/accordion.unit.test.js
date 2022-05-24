@@ -50,6 +50,7 @@ beforeEach(() => {
 })
 
 afterEach(() => {
+  i18nInstance = null
   jest.clearAllMocks()
 })
 
@@ -79,5 +80,23 @@ describe('i18n', () => {
     const showHideText = showHideButton.querySelector('.govuk-accordion__show-all-text')
 
     expect(showHideText.innerHTML).toBe('Embiggen all sections')
+  })
+})
+
+describe('not testing i18n', () => {
+  test('blah', () => {
+    i18nInstance = new I18n({})
+    const accordion = new Accordion(accordionHTML, i18nInstance)
+    accordion.init()
+
+    const showHideButton = document.querySelector('.govuk-accordion__show-all')
+
+    if (showHideButton.getAttribute('aria-expanded')) {
+      showHideButton.click()
+    }
+
+    const showHideText = showHideButton.querySelector('.govuk-accordion__show-all-text')
+
+    expect(showHideText.innerHTML).toBe('Show all sections')
   })
 })
