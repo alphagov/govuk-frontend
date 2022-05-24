@@ -26,7 +26,7 @@ function i18n (options) {
     : ['%{', '}']
 
   // Flatten the list of translations
-  this.translations = this.flatten(options.translations)
+  this.translations = options.translations ? this.flatten(options.translations) : {}
 }
 
 /**
