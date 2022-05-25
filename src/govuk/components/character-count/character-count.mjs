@@ -1,11 +1,11 @@
-import I18nFunction from '../../i18n.mjs'
+import I18n from '../../i18n.mjs'
 import '../../vendor/polyfills/Function/prototype/bind.mjs'
 import '../../vendor/polyfills/Event.mjs' // addEventListener and event.target normaliziation
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
 
 function CharacterCount ($module, i18nInstance) {
   this.$module = $module
-  this.i18n = typeof i18nInstance !== 'undefined' ? i18nInstance : new I18nFunction()
+  this.i18n = i18nInstance || I18n.getInstance()
 
   this.$textarea = $module.querySelector('.govuk-js-character-count')
   this.$visibleCountMessage = null

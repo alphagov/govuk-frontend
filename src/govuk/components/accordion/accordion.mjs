@@ -15,14 +15,14 @@
 
 */
 
-import I18nFunction from '../../i18n.mjs'
+import I18n from '../../i18n.mjs'
 import { nodeListForEach } from '../../common.mjs'
 import '../../vendor/polyfills/Function/prototype/bind.mjs'
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
 
 function Accordion ($module, i18nInstance) {
   this.$module = $module
-  this.i18n = typeof i18nInstance !== 'undefined' ? i18nInstance : new I18nFunction()
+  this.i18n = i18nInstance || I18n.getInstance()
 
   this.moduleId = $module.getAttribute('id')
   this.$sections = $module.querySelectorAll('.govuk-accordion__section')

@@ -27,6 +27,17 @@ function I18n (options) {
 
   // Flatten the list of translations
   this.translations = options.translations ? this.flatten(options.translations) : {}
+
+  if (!I18n._instance) {
+    I18n._instance = this
+  }
+}
+
+I18n.getInstance = function () {
+  if (I18n._instance) {
+    return I18n._instance
+  }
+  return new I18n()
 }
 
 /**
