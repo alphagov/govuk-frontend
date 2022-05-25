@@ -33,6 +33,14 @@ function I18n (options) {
   }
 }
 
+/**
+ * Static function to get the "default" (currently, always the first) instance
+ * of the I18n function. If no default instance exists, a new one is created
+ * with the default options.
+ *
+ * @static
+ * @returns  { function }  - A configured instance of the I18n function.
+ */
 I18n.getInstance = function () {
   if (I18n._instance) {
     return I18n._instance
