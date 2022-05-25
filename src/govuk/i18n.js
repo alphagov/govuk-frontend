@@ -10,7 +10,7 @@ import './vendor/polyfills/Object/keys'
  * @param    {array}   options.separators    - An array of two items matching the start and end strings to search for when performing interpolation. Defaults to ['%{', '}']
  * @param    {object}  options.translations  - Key-value pairs of the translation strings to use.
  */
-function i18n (options) {
+function I18n (options) {
   options = options || {}
 
   // Get user-defined locale setting,
@@ -46,7 +46,7 @@ function i18n (options) {
  * @param    {object}  options.fallback  - Object of key-value pairs, used if pluralisation support is needed in fallback text.
  * @returns  {string}                    - The formatted, localised string.
  */
-i18n.prototype.t = function (lookupKey, options) {
+I18n.prototype.t = function (lookupKey, options) {
   options = options || {}
 
   // Search the translations object for a matching key
@@ -83,7 +83,7 @@ i18n.prototype.t = function (lookupKey, options) {
  * @param    {string}  phrase          - The phrase containing the placeholder.
  * @param    {object}  placeholderMap  - Key-value pairs of placeholders and the values that replace them.
  */
-i18n.prototype.replacePlaceholders = function (phrase, placeholderMap) {
+I18n.prototype.replacePlaceholders = function (phrase, placeholderMap) {
   for (var key in placeholderMap) {
     phrase = phrase.replace(new RegExp(this.separators[0] + key + this.separators[1], 'g'), placeholderMap[key])
   }
@@ -112,7 +112,7 @@ i18n.prototype.replacePlaceholders = function (phrase, placeholderMap) {
  * @param    {object} translationsObject  - A (potentially nested) object of translation key-value pairs.
  * @returns  {object}                     - A single level "flattened" object of translation key-value pairs.
  */
-i18n.prototype.flatten = function (translationsObject) {
+I18n.prototype.flatten = function (translationsObject) {
   var flattenedObject = {}
   var flattenLoop = function (translations, prefix) {
     var lookupKeys = Object.keys(translations)
@@ -142,7 +142,7 @@ i18n.prototype.flatten = function (translationsObject) {
  * @param    {number}  count       - Number used to determine which pluralisation to use.
  * @returns  {string}              - The suffix associated with the correct pluralisation for this locale.
  */
-i18n.prototype.getPluralSuffix = function (count) {
+I18n.prototype.getPluralSuffix = function (count) {
   var locale = this.locale
   var localeShort = (locale.length > 2) ? locale.substring(0, 2) : locale
   var keySuffix = 'other'
@@ -171,7 +171,7 @@ i18n.prototype.getPluralSuffix = function (count) {
  * @param    {number}  n  - The `count` number being passed through. This must be a positive integer. Negative numbers and decimals aren't accounted for.
  * @returns  {string}     - The string that needs to be suffixed to the key (without separator).
  */
-i18n.prototype.pluralRules = {
+I18n.prototype.pluralRules = {
   arabic: function (n) {
     if (n === 0) { return 'zero' }
     if (n === 1) { return 'one' }
@@ -308,7 +308,7 @@ i18n.prototype.pluralRules = {
  * Spanish: European Portuguese (pt-PT), Italian (it), Spanish (es)
  * Welsh: Welsh (cy)
  */
-i18n.prototype.pluralRulesMap = {
+I18n.prototype.pluralRulesMap = {
   arabic: ['ar'],
   belarusian: ['be'],
   chinese: ['my', 'zh', 'id', 'ja', 'jv', 'ko', 'ms', 'th', 'vi'],
@@ -329,4 +329,4 @@ i18n.prototype.pluralRulesMap = {
   welsh: ['cy']
 }
 
-export default i18n
+export default I18n
