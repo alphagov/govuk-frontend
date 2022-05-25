@@ -49,9 +49,15 @@
     {% if params.serviceName or params.navigation  %}
     <div class="govuk-header__content">
     {% if params.serviceName %}
-    <a href="{{ params.serviceUrl }}" class="govuk-header__link govuk-header__link--service-name">
-      {{ params.serviceName }}
-    </a>
+    {% if params.serviceUrl %}
+      <a href="{{ params.serviceUrl }}" class="govuk-header__link govuk-header__service-name">
+        {{ params.serviceName }}
+      </a>
+    {% else%}
+      <span class="govuk-header__service-name">
+        {{ params.serviceName }}
+      </span>
+    {% endif %}
     {% endif %}
     {% if params.navigation %}
     <nav aria-label="{{ params.navigationLabel | default('Menu') }}" class="govuk-header__navigation {{ params.navigationClasses if params.navigationClasses }}">

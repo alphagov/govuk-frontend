@@ -33,7 +33,7 @@
     background: govuk-colour("green", $legacy: "turquoise");
 
     @include govuk-media-query($media-type: print) {
-      border-color: currentColor;
+      border-color: currentcolor;
       color: $govuk-print-text-colour;
       background: none;
     }

@@ -142,6 +142,9 @@
     }
   }
 
+  // The govuk-header__link--service-name class is deprecated - use
+  // govuk-header__service-name instead.
+  .govuk-header__service-name,
   .govuk-header__link--service-name {
     display: inline-block;
     margin-bottom: govuk-spacing(2);
