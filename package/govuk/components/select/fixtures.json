@@ -68,7 +68,6 @@
                 "name": "select-3",
                 "label": {
                     "text": "Label text goes here",
-                    "classes": "govuk-label--l",
                     "isPageHeading": true
                 },
                 "items": [
@@ -88,7 +87,7 @@
                     }
                 ]
             },
-            "html": "<div class=\"govuk-form-group\">\n  <h1 class=\"govuk-label-wrapper\">\n    <label class=\"govuk-label govuk-label--l\" for=\"select-3\">\n      Label text goes here\n    </label>\n    </h1>\n\n\n  <select class=\"govuk-select\" id=\"select-3\" name=\"select-3\">\n  \n    \n      <option value=\"1\">GOV.UK frontend option 1</option>\n    \n  \n    \n      <option value=\"2\" selected>GOV.UK frontend option 2</option>\n    \n  \n    \n      <option value=\"3\" disabled>GOV.UK frontend option 3</option>\n    \n  \n  </select>\n</div>",
+            "html": "<div class=\"govuk-form-group\">\n  <h1 class=\"govuk-label-wrapper\">\n    <label class=\"govuk-label\" for=\"select-3\">\n      Label text goes here\n    </label>\n    </h1>\n\n\n  <select class=\"govuk-select\" id=\"select-3\" name=\"select-3\">\n  \n    \n      <option value=\"1\">GOV.UK frontend option 1</option>\n    \n  \n    \n      <option value=\"2\" selected>GOV.UK frontend option 2</option>\n    \n  \n    \n      <option value=\"3\" disabled>GOV.UK frontend option 3</option>\n    \n  \n  </select>\n</div>",
             "hidden": false
         },
         {

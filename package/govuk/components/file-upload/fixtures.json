@@ -66,11 +66,10 @@
                 "name": "file-upload-1",
                 "label": {
                     "text": "Upload a file",
-                    "classes": "govuk-label--l",
                     "isPageHeading": true
                 }
             },
-            "html": "<div class=\"govuk-form-group\">\n  <h1 class=\"govuk-label-wrapper\">\n    <label class=\"govuk-label govuk-label--l\" for=\"file-upload-1\">\n      Upload a file\n    </label>\n    </h1>\n\n\n  <input class=\"govuk-file-upload\" id=\"file-upload-1\" name=\"file-upload-1\" type=\"file\">\n</div>",
+            "html": "<div class=\"govuk-form-group\">\n  <h1 class=\"govuk-label-wrapper\">\n    <label class=\"govuk-label\" for=\"file-upload-1\">\n      Upload a file\n    </label>\n    </h1>\n\n\n  <input class=\"govuk-file-upload\" id=\"file-upload-1\" name=\"file-upload-1\" type=\"file\">\n</div>",
             "hidden": false
         },
         {
