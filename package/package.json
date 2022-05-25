@@ -5,7 +5,8 @@
   "main": "govuk/all.js",
   "module": "govuk-esm/all.mjs",
   "exports": {
-    "import": "./govuk-esm/all.mjs"
+    "import": "./govuk-esm/all.mjs",
+    "require": "./govuk/all.js"
   },
   "sideEffects": [
     "govuk-esm/vendor/**"
