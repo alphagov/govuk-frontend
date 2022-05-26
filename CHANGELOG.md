@@ -4,6 +4,12 @@
 
 ### New features
 
+#### Visually separate multiple summary lists on a single page with summary cards
+
+You can now use the [summary card](https://design-system.service.gov.uk/components/summary-list#summary-cards) to help you design and build pages with multiple summary lists to help you visually distinguish them and to allow users to use actions that apply to entire lists.
+
+This was added in [pull request #2931: Add summary card enhancement to summary list](https://github.com/alphagov/govuk-frontend/pull/2931).
+
 #### Search within accordion content on supporting browsers
 
 We've updated the Accordion component to use the new [`hidden="until-found"` attribute value](https://developer.chrome.com/articles/hidden-until-found/).
