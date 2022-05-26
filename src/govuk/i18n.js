@@ -68,10 +68,19 @@ I18n.getInstance = function () {
 I18n.prototype.t = function (lookupKey, options) {
   options = options || {}
 
-  // Search the translations object for a matching key
+  // As a default, use the fallback string if one exists
+  // Otherwise, return "UNDEFINED"
+  var outputString = options.fallback || 'UNDEFINED'
+
+  // If a lookupKey is given:
+  // Search the translations object for a matching key and use it
   // Otherwise, use the fallback string
   // Otherwise, use the lookupKey itself as the ultimate fallback
-  var outputString = this.translations[lookupKey] || options.fallback || lookupKey
+  if (lookupKey) {
+    outputString = this.translations[lookupKey] || options.fallback || lookupKey
+  } else {
+    console.log(new Error('No i18n lookup key defined. Please provide a key so that this string can be localised.'))
+  }
 
   // If the `count` option is set, determine which plural suffix is needed
   // In order of priority:
