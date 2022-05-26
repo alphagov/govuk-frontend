@@ -7,7 +7,6 @@ import './vendor/polyfills/Object/keys'
  * @constructor
  * @param    {object}  options               - Options object.
  * @param    {string}  options.locale        - The locale to use, currently this is only used for pluralisation rules. If undefined, tries to use html[lang].
- * @param    {array}   options.separators    - An array of two items matching the start and end strings to search for when performing interpolation. Defaults to ['%{', '}']
  * @param    {object}  options.translations  - Key-value pairs of the translation strings to use.
  */
 function I18n (options) {
@@ -18,12 +17,10 @@ function I18n (options) {
   // Otherwise, set to English
   this.locale = options.locale || document.documentElement.lang || 'en'
 
-  // Get user-defined interpolation separators,
-  // Otherwise, use the same Ruby-like syntax as GOV.UK (e.g. %{keyName})
+  // Define the separators used for placeholders.
+  // Currently uses the same syntax as GOV.UK (e.g. %{keyName}).
   // e.g. https://github.com/alphagov/govuk_publishing_components/blob/22944a9efaea3ae495a518717415694c71cfdb35/config/locales/en.yml
-  this.separators = options.separators && options.separators.length === 2
-    ? options.separators
-    : ['%{', '}']
+  this.separators = ['%{', '}']
 
   // Flatten the list of translations
   this.translations = options.translations ? this.flatten(options.translations) : {}
