@@ -175,6 +175,19 @@ I18n.prototype.getPluralSuffix = function (count) {
   var localeShort = (locale.length > 2) ? locale.substring(0, 2) : locale
   var keySuffix = 'other'
 
+  // Validate that the number is actually a number.
+  //
+  // Number(count) will turn anything that can't be converted to a Number type
+  // into 'NaN'. isFinite filters out NaN, as it isn't a finite number.
+  count = Number(count)
+  if (!isFinite(count)) { return keySuffix }
+
+  // Currently we only have code to handle positive integers, so let's make sure
+  // our number is one of those.
+  count = Math.abs(Math.floor(count))
+
+  // Look through the plural rules map to find which `pluralRule` is appropriate
+  // for our current `locale`.
   for (var pluralRule in this.pluralRulesMap) {
     if (Object.prototype.hasOwnProperty.call(this.pluralRulesMap, pluralRule)) {
       var languages = this.pluralRulesMap[pluralRule]
