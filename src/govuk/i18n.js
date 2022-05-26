@@ -98,7 +98,6 @@ I18n.prototype.t = function (lookupKey, options) {
 
   // Replace any placeholders in the string with the actual data
   if (outputString.match(new RegExp(this.separators[0] + '.+' + this.separators[1]))) {
-    console.log('found placeholders')
     outputString = this.replacePlaceholders(outputString, options)
   }
 
