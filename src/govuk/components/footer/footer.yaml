@@ -67,6 +67,14 @@ params:
       type: object
       required: false
       description: HTML attributes (for example data attributes) to add to the anchor in the footer navigation section.
+- name: contentLicence
+  type: string
+  required: false
+  description: HTML or text to replace the default Open Government Licence notice with.
+- name: copyright
+  type: string
+  required: false
+  description: Text to replace the default Crown Copyright notice with.
 - name: containerClasses
   type: string
   required: false
@@ -117,6 +125,12 @@ examples:
   data:
     {}
 
+- name: with custom licence and copyright notices
+  description: Licence and copyright information translated into Welsh
+  data:
+    contentLicence: 'Mae’r holl gynnwys ar gael dan <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Drwydded y Llywodraeth Agored v3.0</a>, ac eithrio lle nodir yn wahanol'
+    copyright: '© Hawlfraint y Goron'
+
 - name: with meta
   description: Secondary navigation with meta information relating to the site
   data:
@@ -158,12 +172,6 @@ examples:
         - href: '#8'
           text:  Ligula Nullam Ultricies
       html: Built by the <a href="#" class="govuk-footer__link">Department of Magical Law Enforcement</a>
-
-- name: with custom meta
-  description: Custom meta section
-  data:
-    meta:
-      text: GOV.UK Prototype Kit v7.0.1
 
 - name: with default width navigation (one column)
   data:
