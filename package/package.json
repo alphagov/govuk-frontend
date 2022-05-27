@@ -9,7 +9,8 @@
       "sass": "./govuk/all.scss",
       "import": "./govuk-esm/all.mjs",
       "require": "./govuk/all.js"
-    }
+    },
+    "./govuk/": "./govuk/"
   },
   "sideEffects": [
     "govuk-esm/vendor/**"
