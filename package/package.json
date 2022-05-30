@@ -10,7 +10,8 @@
       "import": "./govuk-esm/all.mjs",
       "require": "./govuk/all.js"
     },
-    "./govuk/": "./govuk/"
+    "./govuk/": "./govuk/",
+    "./govuk-esm/": "./govuk-esm/"
   },
   "sideEffects": [
     "govuk-esm/vendor/**"
