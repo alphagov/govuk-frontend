@@ -71,10 +71,18 @@ params:
   type: string
   required: false
   description: HTML or text to replace the default Open Government Licence notice with.
+- name: hideOpenGovernmentLicenceLogo
+  type: boolean
+  required: false
+  description: Removes the Open Government Licence logo, if the licence being used isn't the OGL.
 - name: copyright
   type: string
   required: false
   description: Text to replace the default Crown Copyright notice with.
+- name: hideCrownCopyrightArms
+  type: boolean
+  required: false
+  description: Removes the Crown Copyright notice and royal coat of arms.
 - name: containerClasses
   type: string
   required: false
@@ -130,6 +138,14 @@ examples:
   data:
     contentLicence: 'Mae’r holl gynnwys ar gael dan <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Drwydded y Llywodraeth Agored v3.0</a>, ac eithrio lle nodir yn wahanol'
     copyright: '© Hawlfraint y Goron'
+
+- name: with licence and copyright graphics removed
+  description: Suitable for services where the Open Government Licence and Crown Copyright don't apply, such as internal caseworking systems
+  data:
+    hideOpenGovernmentLicenceLogo: true
+    hideCrownCopyrightArms: true
+    copyright: © Megadodo Publications
+    contentLicence: <i>The Hitchhiker's Guide</i> is available under a <a class="govuk-footer__link" rel="license" href="http://creativecommons.org/licenses/by/4.0/">CC Attribution 4.0 Interplanetary Licence</a>
 
 - name: with meta
   description: Secondary navigation with meta information relating to the site
