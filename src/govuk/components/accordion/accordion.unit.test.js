@@ -7,7 +7,6 @@ import I18n from '../../i18n'
 import Accordion from './accordion'
 
 let accordionHTML = false
-let i18nInstance = null
 
 beforeEach(() => {
   accordionHTML = document.createElement('div')
@@ -47,28 +46,33 @@ beforeEach(() => {
 
   accordionHTML.appendChild(accordionSection)
   document.body.appendChild(accordionHTML)
-})
 
-afterEach(() => {
-  i18nInstance = null
-  jest.clearAllMocks()
-})
+  console.log('helloooo')
+  console.log(I18n.getInstance())
 
-describe('i18n', () => {
-  beforeEach(() => {
-    const i18n = {
+  I18n.getInstance = jest.fn(() => {
+    return {
+      locale: 'en',
+      separators: ['%{', '}'],
       translations: {
         accordion: {
           show_all_sections: 'Embiggen all sections'
         }
       }
     }
+  })
+})
 
-    i18nInstance = new I18n(i18n)
+afterEach(() => {
+  jest.clearAllMocks()
+})
+
+describe('i18n', () => {
+  beforeEach(() => {
   })
 
   test('test', () => {
-    const accordion = new Accordion(accordionHTML, i18nInstance)
+    const accordion = new Accordion(accordionHTML)
     accordion.init()
 
     const showHideButton = document.querySelector('.govuk-accordion__show-all')
@@ -85,8 +89,7 @@ describe('i18n', () => {
 
 describe('not testing i18n', () => {
   test('blah', () => {
-    i18nInstance = new I18n({})
-    const accordion = new Accordion(accordionHTML, i18nInstance)
+    const accordion = new Accordion(accordionHTML)
     accordion.init()
 
     const showHideButton = document.querySelector('.govuk-accordion__show-all')
