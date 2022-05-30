@@ -56,6 +56,10 @@ params:
   type: string
   required: false
   description: Text for the `aria-label` attribute of the button that toggles the navigation. Defaults to 'Show or hide menu'.
+- name: menuButtonText
+  type: string
+  required: false
+  description: Text for the button that toggles the navigation. This should be the shortest useful text that describes the button's purpose. Defaults to 'Menu'.
 - name: containerClasses
   type: string
   required: false
@@ -131,6 +135,21 @@ examples:
         text: Navigation item 3
       - href: '#4'
         text: Navigation item 4
+        
+- name: with custom menu button text
+  description: Button translated into Welsh
+  data:
+    menuButtonText: Dewislen
+    navigation:
+      - href: '#1'
+        text: Eitem llywio 1
+        active: true
+      - href: '#2'
+        text: Eitem llywio 2
+      - href: '#3'
+        text: Eitem llywio 3
+      - href: '#4'
+        text: Eitem llywio 4
 
 - name: with custom menu button label
   data:

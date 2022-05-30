@@ -217,6 +217,20 @@ describe('header', () => {
 
         expect($button.attr('aria-label')).toEqual('Custom button label')
       })
+      it('renders default text correctly', () => {
+        const $ = render('header', examples['with navigation'])
+
+        const $button = $('.govuk-header__menu-button')
+
+        expect($button.text()).toEqual('Menu')
+      })
+      it('allows text to be customised', () => {
+        const $ = render('header', examples['with custom menu button text'])
+
+        const $button = $('.govuk-header__menu-button')
+
+        expect($button.text()).toEqual('Dewislen')
+      })
     })
   })
 
