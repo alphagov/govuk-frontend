@@ -50,6 +50,7 @@
     .govuk-accordion__section-content {
       display: none;
       @include govuk-responsive-padding(8, "bottom");
+      @include govuk-responsive-padding(3, "top");
     }
 
     // Show the body of expanded sections

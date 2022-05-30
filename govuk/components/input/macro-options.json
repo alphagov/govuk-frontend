@@ -162,6 +162,6 @@
         "name": "attributes",
         "type": "object",
         "required": false,
-        "description": "HTML attributes (for example data attributes) to add to the anchor tag."
+        "description": "HTML attributes (for example data attributes) to add to the input."
     }
 ]
