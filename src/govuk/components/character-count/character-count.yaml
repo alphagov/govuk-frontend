@@ -37,6 +37,10 @@ params:
   required: false
   description: Options for the hint component.
   isComponent: true
+- name: limitHint
+  type: string
+  required: false
+  description: Text describing the maximum number of characters or words that can be entered, which is announced to screen readers and displayed as a fallback if the character count JavaScript does not run. Instances of `%{count}` within the string will be replaced by the value of either the `maxlength` or `maxwords` parameters. By default, fallback text in English is constructed based on what other parameters are provided to the component.
 - name: errorMessage
   type: object
   required: false
@@ -92,6 +96,16 @@ examples:
       hint:
         text: Don't include personal or financial information, eg your
               National Insurance number or credit card details.
+  
+  - name: with customised limit hint
+    description: Fallback limit text translated to Welsh
+    data:
+      name: with-limit-hint
+      id: with-limit-hint
+      maxlength: 10
+      label:
+        text: Can you provide more detail?
+      limitHint: Gallwch nodi hyd at %{count} nod
 
   - name: with default value
     data:
