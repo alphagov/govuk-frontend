@@ -1,8 +1,8 @@
-import '../../vendor/polyfills/Function/prototype/bind'
+import '../../vendor/polyfills/Function/prototype/bind.js'
 // addEventListener, event.target normalization and DOMContentLoaded
-import '../../vendor/polyfills/Event'
-import '../../vendor/polyfills/Element/prototype/classList'
-import { nodeListForEach } from '../../common'
+import '../../vendor/polyfills/Event.js'
+import '../../vendor/polyfills/Element/prototype/classList.js'
+import { nodeListForEach } from '../../common.js'
 
 function Checkboxes ($module) {
   this.$module = $module

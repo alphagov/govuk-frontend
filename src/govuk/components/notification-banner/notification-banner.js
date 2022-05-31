@@ -1,4 +1,4 @@
-import '../../vendor/polyfills/Event' // addEventListener
+import '../../vendor/polyfills/Event.js' // addEventListener
 
 function NotificationBanner ($module) {
   this.$module = $module

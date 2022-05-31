@@ -15,9 +15,9 @@
 
 */
 
-import { nodeListForEach } from '../../common'
-import '../../vendor/polyfills/Function/prototype/bind'
-import '../../vendor/polyfills/Element/prototype/classList'
+import { nodeListForEach } from '../../common.js'
+import '../../vendor/polyfills/Function/prototype/bind.js'
+import '../../vendor/polyfills/Element/prototype/classList.js'
 
 function Accordion ($module) {
   this.$module = $module

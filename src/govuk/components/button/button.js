@@ -1,5 +1,5 @@
-import '../../vendor/polyfills/Event' // addEventListener and event.target normaliziation
-import '../../vendor/polyfills/Function/prototype/bind'
+import '../../vendor/polyfills/Event.js' // addEventListener and event.target normaliziation
+import '../../vendor/polyfills/Function/prototype/bind.js'
 
 var KEY_SPACE = 32
 var DEBOUNCE_TIMEOUT_IN_SECONDS = 1
