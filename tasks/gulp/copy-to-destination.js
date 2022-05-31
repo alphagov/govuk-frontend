@@ -95,6 +95,15 @@ gulp.task('js:copy-esm', () => {
         var matches = fileContents.matchAll(importRegex);
 
         for (const match of matches) {
+          if (!match[0].includes('.js') && !match[0].includes('.mjs')) {
+            throw new Error(`Import statement found without file extension specified
+              Make sure all JavaScript imports end with a '.js' file extension
+
+              ${match[0]}
+
+              In file, ${file.path}`)
+          }
+
           if (!match[0].includes('vendor')) {
             const newMatch = match[0].replace('.js\'', '.mjs\'')
             fileContents = fileContents.replace(match[0], newMatch)
