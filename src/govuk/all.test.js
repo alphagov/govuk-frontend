@@ -44,6 +44,7 @@ describe('GOV.UK Frontend', () => {
 
       // Ensure GOV.UK Frontend exports the expected components
       expect(components).toEqual([
+        'I18n',
         'Accordion',
         'Button',
         'Details',
@@ -62,7 +63,7 @@ describe('GOV.UK Frontend', () => {
 
       var componentsWithoutInitFunctions = await page.evaluate(() => {
         var components = Object.keys(window.GOVUKFrontend)
-          .filter(method => method !== 'initAll')
+          .filter(method => method !== 'initAll' && method !== 'I18n')
 
         return components.filter(component => {
           var prototype = window.GOVUKFrontend[component].prototype
