@@ -20,9 +20,11 @@ import { nodeListForEach } from '../../common.mjs'
 import '../../vendor/polyfills/Function/prototype/bind.mjs'
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
 
-function Accordion ($module, i18nInstance) {
+function Accordion ($module, options) {
   this.$module = $module
-  this.i18n = i18nInstance || I18n.getInstance()
+  this.options = options || {}
+
+  this.i18n = this.options.i18n ? new I18n(this.options.i18n) : I18n.getInstance()
 
   this.moduleId = $module.getAttribute('id')
   this.$sections = $module.querySelectorAll('.govuk-accordion__section')

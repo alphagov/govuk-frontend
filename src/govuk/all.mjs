@@ -80,7 +80,6 @@ function initAll (options) {
 
 export {
   initAll,
-  I18n,
   Accordion,
   Button,
   Details,
