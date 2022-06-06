@@ -3,9 +3,11 @@ import '../../vendor/polyfills/Function/prototype/bind'
 import '../../vendor/polyfills/Event' // addEventListener and event.target normaliziation
 import '../../vendor/polyfills/Element/prototype/classList'
 
-function CharacterCount ($module, i18nInstance) {
+function CharacterCount ($module, options) {
   this.$module = $module
-  this.i18n = i18nInstance || I18n.getInstance()
+  this.options = options || {}
+
+  this.i18n = this.options.i18n ? new I18n(this.options.i18n) : I18n.getInstance()
 
   this.$textarea = $module.querySelector('.govuk-js-character-count')
   this.$visibleCountMessage = null
