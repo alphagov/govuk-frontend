@@ -69,9 +69,7 @@ describe('package/', () => {
               if (fileWithoutSrc.split('.').pop() === 'js') {
                 var esmFile = fileWithoutSrc.replace('govuk/', 'govuk-esm/')
 
-                if (!esmFile.includes('vendor/')) {
-                  esmFile = esmFile.replace('.js', '.mjs')
-                }
+                esmFile = esmFile.replace('.js', '.mjs')
 
                 return [fileWithoutSrc, esmFile]
               } else {

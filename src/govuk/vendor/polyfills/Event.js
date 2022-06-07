@@ -1,6 +1,6 @@
-import './Window'
-import './Element'
-import './Object/defineProperty'
+import './Window.js'
+import './Element.js'
+import './Object/defineProperty.js'
 
 (function(undefined) {
 

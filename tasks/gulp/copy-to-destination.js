@@ -88,8 +88,6 @@ function generateFixtures (file) {
 gulp.task('js:copy-esm', () => {
   return gulp.src([configPaths.src + '**/*.js', '!' + configPaths.src + '/**/*.test.js'])
     .pipe(map(function (file, done) {
-      if (!file.path.includes('vendor')) {
-        // Replace any import statements using .js to .mjs, excluding polyfills
         var fileContents = file.contents.toString();
         const importRegex = new RegExp("import.*'(.*?)'",'g');
         var matches = fileContents.matchAll(importRegex);
@@ -104,11 +102,8 @@ gulp.task('js:copy-esm', () => {
               In file, ${file.path}`)
           }
 
-          if (!match[0].includes('vendor')) {
-            const newMatch = match[0].replace('.js\'', '.mjs\'')
-            fileContents = fileContents.replace(match[0], newMatch)
-          }
-        }
+          const newMatch = match[0].replace('.js\'', '.mjs\'')
+          fileContents = fileContents.replace(match[0], newMatch)
 
         file.contents = Buffer.from(fileContents);
       }
@@ -116,9 +111,7 @@ gulp.task('js:copy-esm', () => {
       done(null, file);
     }))
     .pipe(rename(function (path) {
-      if (!path.dirname.includes('vendor')) {
-        path.extname = '.mjs'
-      }
+      path.extname = '.mjs'
     }))
     .pipe(gulp.dest(taskArguments.destination + '/govuk-esm/'))
 })

@@ -1,6 +1,6 @@
-import '../../Object/defineProperty'
-import '../../DOMTokenList'
-import '../../Element'
+import '../../Object/defineProperty.js'
+import '../../DOMTokenList.js'
+import '../../Element.js'
 
 (function(undefined) {
 

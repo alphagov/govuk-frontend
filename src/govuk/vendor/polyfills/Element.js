@@ -1,4 +1,4 @@
-import './Document'
+import './Document.js'
 
 (function(undefined) {
 
