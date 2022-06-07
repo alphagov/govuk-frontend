@@ -18,6 +18,7 @@ We’ve made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#2617: Do not make the service name in the header a link if no `serviceUrl` is provided](https://github.com/alphagov/govuk-frontend/pull/2617)
 - [#2640: Add top padding to accordion section](https://github.com/alphagov/govuk-frontend/pull/2640)
+- [#2644: Allow users to use require.resolve to import GOV.UK Frontend JavaScript](https://github.com/alphagov/govuk-frontend/pull/2644)
 
 ## 4.1.0 (Feature release)
 
