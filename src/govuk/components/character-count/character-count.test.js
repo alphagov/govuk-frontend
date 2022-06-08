@@ -28,9 +28,9 @@ describe('Character count', () => {
 
     it('shows the static message', async () => {
       await goToExample()
-      const message = await page.$eval('.govuk-character-count__message', el => el.innerHTML.trim())
+      const messageClasses = await page.$eval('.govuk-character-count__message', el => el.className)
 
-      expect(message).toEqual('You can enter up to 10 characters')
+      expect(messageClasses).not.toContain('govuk-visually-hidden')
     })
   })
 
