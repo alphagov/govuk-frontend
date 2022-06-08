@@ -207,4 +207,50 @@ describe('footer', () => {
       expect($sectionBreak.length).toBeFalsy()
     })
   })
+
+  describe('content licence', () => {
+    it('is visible', () => {
+      const $ = render('footer', examples.default)
+
+      const $licenceMessage = $('.govuk-footer__licence-description')
+      expect($licenceMessage.text().trim()).toContain('Open Government Licence v3.0')
+    })
+
+    it('can be customised', () => {
+      const $ = render('footer', examples['with custom licence and copyright notices'])
+
+      const $licenceMessage = $('.govuk-footer__licence-description')
+      expect($licenceMessage.text().trim()).toContain('Drwydded y Llywodraeth Agored v3.0')
+    })
+
+    it('logo can be hidden', () => {
+      const $ = render('footer', examples['with licence and copyright graphics removed'])
+
+      const $licenceLogo = $('.govuk-footer__licence-logo')
+      expect($licenceLogo.length).toBeFalsy()
+    })
+  })
+
+  describe('crown copyright', () => {
+    it('is visible', () => {
+      const $ = render('footer', examples.default)
+
+      const $copyrightMessage = $('.govuk-footer__copyright-logo')
+      expect($copyrightMessage.text().trim()).toContain('© Crown copyright')
+    })
+
+    it('can be customised', () => {
+      const $ = render('footer', examples['with custom licence and copyright notices'])
+
+      const $copyrightMessage = $('.govuk-footer__copyright-logo')
+      expect($copyrightMessage.text().trim()).toContain('© Hawlfraint y Goron')
+    })
+
+    it('logo can be hidden', () => {
+      const $ = render('footer', examples['with licence and copyright graphics removed'])
+
+      const $copyrightLogo = $('.govuk-footer__copyright-logo')
+      expect($copyrightLogo.length).toBeFalsy()
+    })
+  })
 })

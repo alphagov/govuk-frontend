@@ -114,6 +114,13 @@ describe('Character count', () => {
       const $countMessage = $('.govuk-character-count__message')
       expect($countMessage.hasClass('app-custom-count-message')).toBeTruthy()
     })
+
+    it('can be localised', async () => {
+      const $ = render('character-count', examples['with localised fallback text'])
+
+      const $countMessage = $('.govuk-character-count__message')
+      expect($countMessage.text()).toContain('Gallwch nodi hyd at 10 o gymeriadau')
+    })
   })
 
   describe('when it has the spellcheck attribute', () => {

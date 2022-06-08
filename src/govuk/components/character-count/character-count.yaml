@@ -168,6 +168,17 @@ examples:
       threshold: 75
       label:
         text: Full address
+  
+  - name: with localised fallback text
+    description: Fallback counter text (shown if JavaScript is not available) translated into Welsh
+    data: 
+      id: with-localisation
+      name: with-localisation
+      maxlength: 10
+      label: 
+        text: Full address
+      limitHint: Gallwch nodi hyd at %{count} o gymeriadau
+    
 
 # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: classes
@@ -247,6 +258,7 @@ examples:
       label:
         text: Can you provide more detail?
   - name: with id with special characters
+    hidden: true
     data:
       id: user1.profile[address]
       name: address
