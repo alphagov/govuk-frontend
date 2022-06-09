@@ -5,8 +5,13 @@
   "main": "govuk/all.js",
   "module": "govuk-esm/all.mjs",
   "exports": {
-    "import": "./govuk-esm/all.mjs",
-    "require": "./govuk/all.js"
+    ".": {
+      "sass": "./govuk/all.scss",
+      "import": "./govuk-esm/all.mjs",
+      "require": "./govuk/all.js"
+    },
+    "./govuk/": "./govuk/",
+    "./govuk-esm/": "./govuk-esm/"
   },
   "sideEffects": [
     "govuk-esm/vendor/**"
