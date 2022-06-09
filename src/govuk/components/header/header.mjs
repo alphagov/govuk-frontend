@@ -1,6 +1,6 @@
-import '../../vendor/polyfills/Event.js'
-import '../../vendor/polyfills/Element/prototype/classList.js'
-import '../../vendor/polyfills/Function/prototype/bind.js'
+import '../../vendor/polyfills/Event.mjs'
+import '../../vendor/polyfills/Element/prototype/classList.mjs'
+import '../../vendor/polyfills/Function/prototype/bind.mjs'
 
 function Header ($module) {
   this.$module = $module

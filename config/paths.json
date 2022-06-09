@@ -13,6 +13,7 @@
   "sassdoc": "sassdoc/",
   "src": "src/govuk/",
     "components": "src/govuk/components/",
+    "vendor": "src/govuk/vendor",
   "ports": {
     "app": 3000,
     "test": 8888

@@ -1,6 +1,6 @@
-import '../../vendor/polyfills/Function/prototype/bind.js'
-import '../../vendor/polyfills/Element/prototype/classList.js'
-import '../../vendor/polyfills/Event.js' // addEventListener and event.target normalization
+import '../../vendor/polyfills/Function/prototype/bind.mjs'
+import '../../vendor/polyfills/Element/prototype/classList.mjs'
+import '../../vendor/polyfills/Event.mjs' // addEventListener and event.target normalization
 
 function SkipLink ($module) {
   this.$module = $module

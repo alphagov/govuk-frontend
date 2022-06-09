@@ -1,6 +1,6 @@
-import './Window.js'
-import './Element.js'
-import './Object/defineProperty.js'
+import './Window.mjs'
+import './Element.mjs'
+import './Object/defineProperty.mjs'
 
 (function(undefined) {
 

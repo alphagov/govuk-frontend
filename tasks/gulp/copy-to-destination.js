@@ -20,7 +20,8 @@ gulp.task('copy-files', () => {
   return gulp.src([
     configPaths.src + '**/*',
     '!**/.DS_Store',
-    '!**/*.test.js',
+    '!**/*.mjs',
+    '!**/*.test.*',
     '!' + configPaths.src + 'README.md', // Don't override the existing README in /package
     '!' + configPaths.components + '**/__snapshots__/**',
     '!' + configPaths.components + '**/__snapshots__/'
@@ -86,33 +87,7 @@ function generateFixtures (file) {
 }
 
 gulp.task('js:copy-esm', () => {
-  return gulp.src([configPaths.src + '**/*.js', '!' + configPaths.src + '/**/*.test.js'])
-    .pipe(map(function (file, done) {
-        var fileContents = file.contents.toString();
-        const importRegex = new RegExp("import.*'(.*?)'",'g');
-        var matches = fileContents.matchAll(importRegex);
-
-        for (const match of matches) {
-          if (!match[0].includes('.js') && !match[0].includes('.mjs')) {
-            throw new Error(`Import statement found without file extension specified
-              Make sure all JavaScript imports end with a '.js' file extension
-
-              ${match[0]}
-
-              In file, ${file.path}`)
-          }
-
-          const newMatch = match[0].replace('.js\'', '.mjs\'')
-          fileContents = fileContents.replace(match[0], newMatch)
-
-        file.contents = Buffer.from(fileContents);
-      }
-
-      done(null, file);
-    }))
-    .pipe(rename(function (path) {
-      path.extname = '.mjs'
-    }))
+  return gulp.src([configPaths.src + '**/*.mjs', configPaths.src + '**/*.js', '!' + configPaths.src + '/**/*.test.mjs', '!' + configPaths.src + '/**/*.test.js'])
     .pipe(gulp.dest(taskArguments.destination + '/govuk-esm/'))
 })
 

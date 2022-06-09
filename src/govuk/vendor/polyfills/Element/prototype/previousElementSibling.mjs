@@ -1,5 +1,5 @@
-import '../../Object/defineProperty.js'
-import '../../Element.js'
+import '../../Object/defineProperty.mjs'
+import '../../Element.mjs'
 
 (function(undefined) {
 

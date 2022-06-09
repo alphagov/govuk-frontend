@@ -66,12 +66,15 @@ describe('package/', () => {
               var fileWithoutSrc = file.replace(/^src\//, '')
 
               // Account for govuk-esm folder
-              if (fileWithoutSrc.split('.').pop() === 'js') {
+              if (fileWithoutSrc.split('.').pop() === 'mjs') {
                 var esmFile = fileWithoutSrc.replace('govuk/', 'govuk-esm/')
+                var umdFile = fileWithoutSrc.replace('.mjs', '.js')
 
-                esmFile = esmFile.replace('.js', '.mjs')
+                return [umdFile, esmFile]
+              } else if (fileWithoutSrc.split('.').pop() === 'js' && fileWithoutSrc.includes('vendor')) {
+                var esmVendorFile = fileWithoutSrc.replace('govuk/', 'govuk-esm/')
 
-                return [fileWithoutSrc, esmFile]
+                return [fileWithoutSrc, esmVendorFile]
               } else {
                 return fileWithoutSrc
               }
@@ -114,20 +117,6 @@ describe('package/', () => {
     it('should compile without throwing an exception', async () => {
       const allScssFile = path.join(configPaths.package, 'govuk', 'all.scss')
       await renderSass({ file: allScssFile })
-    })
-  })
-
-  describe('all.js', () => {
-    it('should have correct module name', async () => {
-      const allJsFile = path.join(configPaths.package, 'govuk', 'all.js')
-
-      return readFile(allJsFile, 'utf8')
-        .then((data) => {
-          expect(data).toContain("typeof define === 'function' && define.amd ? define('GOVUKFrontend', ['exports'], factory)")
-        })
-        .catch(error => {
-          throw error
-        })
     })
   })
 
