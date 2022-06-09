@@ -20,7 +20,8 @@ gulp.task('copy-files', () => {
   return gulp.src([
     configPaths.src + '**/*',
     '!**/.DS_Store',
-    '!**/*.test.js',
+    '!**/*.mjs',
+    '!**/*.test.*',
     '!' + configPaths.src + 'README.md', // Don't override the existing README in /package
     '!' + configPaths.components + '**/__snapshots__/**',
     '!' + configPaths.components + '**/__snapshots__/'
@@ -86,12 +87,7 @@ function generateFixtures (file) {
 }
 
 gulp.task('js:copy-esm', () => {
-  return gulp.src([configPaths.src + '**/*.js', '!' + configPaths.src + '/**/*.test.js'])
-    .pipe(rename(function (path) {
-      if (!path.dirname.includes('vendor')) {
-        path.extname = '.mjs'
-      }
-    }))
+  return gulp.src([configPaths.src + '**/*.mjs', configPaths.src + '**/*.js', '!' + configPaths.src + '/**/*.test.js'])
     .pipe(gulp.dest(taskArguments.destination + '/govuk-esm/'))
 })
 

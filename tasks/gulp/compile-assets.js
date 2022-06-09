@@ -190,7 +190,7 @@ gulp.task('scss:compile', function (done) {
 // --------------------------------------
 gulp.task('js:compile', (done) => {
   // For dist/ folder we only want compiled 'all.js'
-  const fileLookup = isDist ? configPaths.src + 'all.js' : configPaths.src + '**/!(*.test).js'
+  const fileLookup = isDist ? configPaths.src + 'all.mjs' : configPaths.src + '**/!(*.test).mjs'
 
   // Perform a synchronous search and return an array of matching file names
   const srcFiles = glob.sync(fileLookup)
@@ -225,6 +225,9 @@ gulp.task('js:compile', (done) => {
           extname: '.min.js'
         })
       ))
+      .pipe(rename({
+        extname: '.js'
+      }))
       .pipe(eol())
       .pipe(gulp.dest(destinationPath() + newDirectoryPath))
   })
