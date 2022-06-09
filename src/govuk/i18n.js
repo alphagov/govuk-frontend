@@ -181,22 +181,45 @@ I18n.prototype.getPluralSuffix = function (count) {
   count = Number(count)
   if (!isFinite(count)) { return keySuffix }
 
-  // Currently we only have code to handle positive integers, so let's make sure
-  // our number is one of those.
-  count = Math.abs(Math.floor(count))
+  // Check to verify that all the requirements for Intl.PluralRules are met.
+  // If so, we can use that instead of our custom implementation. Otherwise,
+  // use the hardcoded fallback.
+  if (this.hasIntlSupport()) {
+    var pluralRules = new Intl.PluralRules(this.locale)
+    keySuffix = pluralRules.select(count)
+  } else {
+    // Currently we only have code to handle positive integers, so let's make sure
+    // our number is one of those.
+    count = Math.abs(Math.floor(count))
 
-  // Look through the plural rules map to find which `pluralRule` is appropriate
-  // for our current `locale`.
-  for (var pluralRule in this.pluralRulesMap) {
-    if (Object.prototype.hasOwnProperty.call(this.pluralRulesMap, pluralRule)) {
-      var languages = this.pluralRulesMap[pluralRule]
-      if (languages.indexOf(locale) > -1 || languages.indexOf(localeShort) > -1) {
-        keySuffix = this.pluralRules[pluralRule](count)
-        break
+    // Look through the plural rules map to find which `pluralRule` is appropriate
+    // for our current `locale`.
+    for (var pluralRule in this.pluralRulesMap) {
+      if (Object.prototype.hasOwnProperty.call(this.pluralRulesMap, pluralRule)) {
+        var languages = this.pluralRulesMap[pluralRule]
+        if (languages.indexOf(locale) > -1 || languages.indexOf(localeShort) > -1) {
+          keySuffix = this.pluralRules[pluralRule](count)
+          break
+        }
       }
     }
   }
+
   return keySuffix
+}
+
+/**
+ * Check to see if the browser supports Intl and the parts of it we want to use.
+ *
+ * It requires all conditions to be met in order to be supported:
+ * - The browser supports the Intl class (true in IE11)
+ * - The implementation of Intl supports PluralRules (NOT true in IE11)
+ * - The browser/OS has plural rules for the current locale (browser dependent)
+ *
+ * @returns  {boolean}  - Returns true if all conditions are met. Returns false otherwise.
+ */
+I18n.prototype.hasIntlSupport = function () {
+  return Boolean(window.Intl && ('PluralRules' in window.Intl && Intl.PluralRules.supportedLocalesOf(this.locale).length))
 }
 
 /**
