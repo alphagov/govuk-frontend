@@ -5,7 +5,7 @@
 2. Developers to raise new issues in the team GitHub repositories ([govuk-frontend](https://github.com/alphagov/govuk-frontend), [govuk-frontend-docs](https://github.com/alphagov/govuk-frontend-docs), [govuk-prototype-kit](https://github.com/alphagov/govuk-prototype-kit)) to:
   - draft comms for the new release (example issue: [#2507](https://github.com/alphagov/govuk-frontend/issues/2507))
   - create release notes for the new release (example issue: [#2508](https://github.com/alphagov/govuk-frontend/issues/2508))
-  - release the new version of GOV.UK Frontend to NPM (example issue: [#2509](https://github.com/alphagov/govuk-frontend/issues/2509))
+  - release the new version of GOV.UK Frontend to npm (example issue: [#2509](https://github.com/alphagov/govuk-frontend/issues/2509))
   - update the GOV.UK Design System to use the new release of GOV.UK Frontend (example issue: [#2024](https://github.com/alphagov/govuk-design-system/issues/2024))
   - update the GOV.UK Frontend Docs to use the new release of GOV.UK Frontend (example issue: [#184](https://github.com/alphagov/govuk-frontend-docs/issues/184))
   - post the comms and do tidy-up tasks (example issue: [#2510](https://github.com/alphagov/govuk-frontend/issues/2510))
@@ -78,12 +78,12 @@ Developers should pair on releases. When remote working, it can be useful to be 
 
 2. Sign in to npm (`npm login`), using the npm/govuk-patterns-and-tools team [credentials](https://github.com/alphagov/design-system-team-credentials/tree/main/npm/govuk-patterns-and-tools).
 
-3. Run `npm run publish-release`, which will prompt you to check whether the NPM tag looks as expected.
+3. Run `npm run publish-release`, which will prompt you to check whether the npm tag looks as expected.
 
   If you're following these instructions, you're probably doing a sequential release, meaning
   the tag should be 'latest'.
 
-  Enter `y` to continue. If you think the tag should be different, enter `N` to have the option to set your own NPM tag.
+  Enter `y` to continue. If you think the tag should be different, enter `N` to have the option to set your own npm tag.
 
 4. You will now be prompted to continue or cancel the release. Check the details and enter `y` to continue. If something does not look right, press `N` to cancel the release.
 
