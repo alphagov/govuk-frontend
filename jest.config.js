@@ -14,6 +14,14 @@ const config = {
       displayName: 'JavaScript behaviour tests',
       testMatch: ['./**/*.test.js', '!./**/template.test.js'],
       preset: 'jest-puppeteer'
+    },
+    {
+      displayName: 'JavaScript unit tests',
+      transform: {
+        '.*.js$': 'rollup-jest'
+      },
+      moduleFileExtensions: ['js', 'mjs'],
+      testMatch: ['./**/*.unit.test.mjs']
     }
   ]
 }

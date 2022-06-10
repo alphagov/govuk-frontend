@@ -16,6 +16,10 @@ ErrorSummary.prototype.init = function () {
   $module.addEventListener('click', this.handleClick.bind(this))
 }
 
+ErrorSummary.prototype.sum = function () {
+  return 1 + 2
+}
+
 /**
  * Focus the error summary
  */
