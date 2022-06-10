@@ -22,6 +22,7 @@ gulp.task('update-assets-version', () => {
   return gulp.src([
     taskArguments.destination + '/govuk-frontend.min.css',
     taskArguments.destination + '/govuk-frontend-ie8.min.css',
+    taskArguments.destination + '/govuk-frontend-rtl.min.css',
     taskArguments.destination + '/govuk-frontend.min.js'
   ])
     .pipe(vinylPaths(del))

@@ -18,6 +18,7 @@ const eol = require('gulp-eol')
 const glob = require('glob')
 const rename = require('gulp-rename')
 const cssnano = require('cssnano')
+const postcssrtl = require('postcss-rtlcss')
 const postcsspseudoclasses = require('postcss-pseudo-classes')({
   // Work around a bug in pseudo classes plugin that badly transforms
   // :not(:whatever) pseudo selectors
@@ -73,6 +74,41 @@ function compileStyles (done) {
       rename({
         basename: 'govuk-frontend',
         extname: '.min.css'
+      })
+    ))
+    .pipe(gulp.dest(taskArguments.destination + '/'))
+
+  done()
+}
+
+function compileRTLStyles (done) {
+  const compileStylesheet = isDist ? configPaths.src + 'all.scss' : configPaths.app + 'assets/scss/app.scss'
+
+  gulp.src(compileStylesheet)
+    .pipe(plumber(errorHandler))
+    .pipe(sass())
+    // minify css add vendor prefixes and normalize to compiled css
+    .pipe(gulpif(isDist, postcss([
+      postcssrtl({ mode: 'diff' }),
+      autoprefixer,
+      cssnano
+    ])))
+    .pipe(gulpif(!isDist, postcss([
+      postcssrtl({ mode: 'diff' }),
+      autoprefixer,
+      // Auto-generate 'companion' classes for pseudo-selector states - e.g. a
+      // :hover class you can use to simulate the hover state in the review app
+      postcsspseudoclasses
+    ])))
+    .pipe(gulpif(isDist,
+      rename({
+        basename: 'govuk-frontend-rtl',
+        extname: '.min.css'
+      })
+    ))
+    .pipe(gulpif(!isDist,
+      rename({
+        suffix: '-rtl'
       })
     ))
     .pipe(gulp.dest(taskArguments.destination + '/'))
@@ -174,12 +210,12 @@ function compileFullPageStyles (done) {
 
 gulp.task('scss:compile', function (done) {
   // Default tasks if compiling for dist
-  var tasks = gulp.parallel(compileStyles, compileOldIE)
+  var tasks = gulp.parallel(compileStyles, compileRTLStyles, compileOldIE)
 
   if (isPublic) {
-    tasks = gulp.parallel(compileStyles, compileOldIE, compileLegacy, compileLegacyIE, compileFullPageStyles)
+    tasks = gulp.parallel(compileStyles, compileRTLStyles, compileOldIE, compileLegacy, compileLegacyIE, compileFullPageStyles)
   } else if (!isDist) {
-    tasks = gulp.parallel(compileStyles, compileOldIE, compileLegacy, compileLegacyIE)
+    tasks = gulp.parallel(compileStyles, compileRTLStyles, compileOldIE, compileLegacy, compileLegacyIE)
   }
 
   tasks()
