@@ -96,16 +96,6 @@ examples:
       hint:
         text: Don't include personal or financial information, eg your
               National Insurance number or credit card details.
-  
-  - name: with customised limit hint
-    description: Fallback limit text translated to Welsh
-    data:
-      name: with-limit-hint
-      id: with-limit-hint
-      maxlength: 10
-      label:
-        text: Can you provide more detail?
-      limitHint: Gallwch nodi hyd at %{count} nod
 
   - name: with default value
     data:
