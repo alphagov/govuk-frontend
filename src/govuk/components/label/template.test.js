@@ -69,7 +69,7 @@ describe('Label', () => {
     })
 
     it('can be nested inside an H1 using isPageHeading', () => {
-      const $ = render('label', examples['as page heading'])
+      const $ = render('label', examples['as page heading l'])
 
       const $selector = $('h1 > .govuk-label')
       expect($selector.length).toBeTruthy()
