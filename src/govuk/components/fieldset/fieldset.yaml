@@ -50,11 +50,34 @@ examples:
   data:
     legend:
       text: What is your address?
-- name: as page heading
+- name: as page heading xl
   data:
     legend:
       text: What is your address?
       classes: govuk-fieldset__legend--xl
+      isPageHeading: true
+- name: as page heading l
+  data:
+    legend:
+      text: What is your address?
+      classes: govuk-fieldset__legend--l
+      isPageHeading: true
+- name: as page heading m
+  data:
+    legend:
+      text: What is your address?
+      classes: govuk-fieldset__legend--m
+      isPageHeading: true
+- name: as page heading s
+  data:
+    legend:
+      text: What is your address?
+      classes: govuk-fieldset__legend--s
+      isPageHeading: true
+- name: as page heading without class
+  data:
+    legend:
+      text: What is your address?
       isPageHeading: true
 
 # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
