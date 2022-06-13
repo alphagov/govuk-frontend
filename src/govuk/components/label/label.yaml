@@ -32,6 +32,22 @@ examples:
     data:
       classes: govuk-label--s
       text: National Insurance number
+  - name: styled as xl text
+    data:
+      text: National Insurance number
+      classes: govuk-label--xl
+  - name: styled as large text
+    data:
+      text: National Insurance number
+      classes: govuk-label--l
+  - name: styled as medium text
+    data:
+      text: National Insurance number
+      classes: govuk-label--m
+  - name: styled as small text
+    data:
+      text: National Insurance number
+      classes: govuk-label--s
   - name: as page heading xl
     data:
       text: National Insurance number

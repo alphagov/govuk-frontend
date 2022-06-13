@@ -50,6 +50,26 @@ examples:
   data:
     legend:
       text: What is your address?
+- name: styled as xl text
+  data:
+    legend:
+      text: What is your address?
+      classes: govuk-fieldset__legend--xl
+- name: styled as large text
+  data:
+    legend:
+      text: What is your address?
+      classes: govuk-fieldset__legend--l
+- name: styled as medium text
+  data:
+    legend:
+      text: What is your address?
+      classes: govuk-fieldset__legend--m
+- name: styled as small text
+  data:
+    legend:
+      text: What is your address?
+      classes: govuk-fieldset__legend--s
 - name: as page heading xl
   data:
     legend:
