@@ -112,7 +112,16 @@ I18n.prototype.t = function (lookupKey, options) {
  */
 I18n.prototype.replacePlaceholders = function (phrase, placeholderMap) {
   for (var key in placeholderMap) {
-    phrase = phrase.replace(new RegExp(this.separators[0] + key + this.separators[1], 'g'), placeholderMap[key])
+    var value = placeholderMap[key]
+
+    // If the key is `count`, subject the value to number formatting
+    // This is limiting, just so we don't accidentally format things like phone numbers
+    if (this.hasIntlNumberFormatSupport() && key === 'count') {
+      value = Intl.NumberFormat(this.locale).format(value)
+    }
+
+    // Perform the replacement
+    phrase = phrase.replace(new RegExp(this.separators[0] + key + this.separators[1], 'g'), value)
   }
   return phrase
 }
@@ -184,7 +193,7 @@ I18n.prototype.getPluralSuffix = function (count) {
   // Check to verify that all the requirements for Intl.PluralRules are met.
   // If so, we can use that instead of our custom implementation. Otherwise,
   // use the hardcoded fallback.
-  if (this.hasIntlSupport()) {
+  if (this.hasIntlPluralRulesSupport()) {
     var pluralRules = new Intl.PluralRules(this.locale)
     keySuffix = pluralRules.select(count)
   } else {
@@ -209,7 +218,7 @@ I18n.prototype.getPluralSuffix = function (count) {
 }
 
 /**
- * Check to see if the browser supports Intl and the parts of it we want to use.
+ * Check to see if the browser supports Intl and Intl.PluralRules.
  *
  * It requires all conditions to be met in order to be supported:
  * - The browser supports the Intl class (true in IE11)
@@ -218,8 +227,22 @@ I18n.prototype.getPluralSuffix = function (count) {
  *
  * @returns  {boolean}  - Returns true if all conditions are met. Returns false otherwise.
  */
-I18n.prototype.hasIntlSupport = function () {
+I18n.prototype.hasIntlPluralRulesSupport = function () {
   return Boolean(window.Intl && ('PluralRules' in window.Intl && Intl.PluralRules.supportedLocalesOf(this.locale).length))
+}
+
+/**
+ * Check to see if the browser supports Intl and Intl.NumberFormat.
+ *
+ * It requires all conditions to be met in order to be supported:
+ * - The browser supports the Intl class (true in IE11)
+ * - The implementation of Intl supports NumberFormat (also true in IE11)
+ * - The browser/OS has number formatting rules for the current locale (browser dependent)
+ *
+ * @returns  {boolean}  - Returns true if all conditions are met. Returns false otherwise.
+ */
+I18n.prototype.hasIntlNumberFormatSupport = function () {
+  return Boolean(window.Intl && ('NumberFormat' in window.Intl && Intl.NumberFormat.supportedLocalesOf(this.locale).length))
 }
 
 /**

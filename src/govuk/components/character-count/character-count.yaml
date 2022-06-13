@@ -157,6 +157,14 @@ examples:
       threshold: 75
       label:
         text: Full address
+        
+  - name: with very high character limit
+    data:
+      id: with-very-high-limit
+      name: with-very-high-limit
+      maxlength: 1280
+      label:
+        text: Life story
   
   - name: with localised fallback text
     description: Fallback counter text (shown if JavaScript is not available) translated into Welsh
