@@ -135,6 +135,7 @@ examples:
       maxlength: 10
       label:
         text: Full address
+        classes: govuk-label--l
         isPageHeading: true
 
   - name: with word count

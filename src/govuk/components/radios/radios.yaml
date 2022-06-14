@@ -142,6 +142,7 @@ examples:
     fieldset:
       legend:
         text: How do you want to sign in?
+        classes: govuk-fieldset__legend--l
         isPageHeading: true
     items:
       - value: gateway
@@ -220,6 +221,7 @@ examples:
     fieldset:
       legend:
         text: How do you want to sign in?
+        classes: govuk-fieldset__legend--l
         isPageHeading: true
     items:
       - value: gateway
