@@ -1,4 +1,4 @@
-import '../../Object/defineProperty'
+import '../../Object/defineProperty.mjs'
 
 (function(undefined) {
   // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Function/prototype/bind/detect.js
