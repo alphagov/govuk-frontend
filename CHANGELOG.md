@@ -20,6 +20,7 @@ We’ve made fixes to GOV.UK Frontend in the following pull requests:
 - [#2640: Add top padding to accordion section](https://github.com/alphagov/govuk-frontend/pull/2640)
 - [#2644: Allow users to use require.resolve to import GOV.UK Frontend JavaScript](https://github.com/alphagov/govuk-frontend/pull/2644)
 - [#2647: Allow users to import sass files via Webpack sass-loader](https://github.com/alphagov/govuk-frontend/pull/2647)
+- [#2659: Add missing label and legend classes to HTML fixtures](https://github.com/alphagov/govuk-frontend/pull/2659)
 
 ## 4.1.0 (Feature release)
 
