@@ -6,14 +6,14 @@ JavaScript files have the same name as the component's folder name. Test files h
 
 ```
 checkboxes
-├── checkboxes.js
+├── checkboxes.mjs
 └── checkboxes.test.js
 ```
 
 ## Skeleton
 
 ```js
-import { nodeListForEach } from '../vendor/common'
+import { nodeListForEach } from '../vendor/common.mjs'
 
 function Checkboxes ($module) {
   // code goes here
@@ -109,12 +109,14 @@ var myCheckbox = new Checkbox().init()
 Use ES6 modules (`import`/`export`) over a non-standard module system. You can always transpile to your preferred module system.
 
 ```js
-import { nodeListForEach } from '../vendor/common'
+import { nodeListForEach } from '../vendor/common.mjs'
 // code goes here
 export default Checkboxes
 ```
 
 Avoid using wildcard (`import * as nodeListForEach`) imports.
+
+You must specify the file extension for a file when importing it.
 
 Use default export over named export.
 
@@ -125,7 +127,7 @@ If you need to support older browsers, import the necessary [polyfills](/src/gov
 For example, if you want to polyfill `addEventListener` for IE8, import the Event polyfills.
 
 ```js
-import '../vendor/polyfills/Event'
+import '../vendor/polyfills/Event.mjs'
 ```
 
 If you need polyfills for features that are not yet included in this project, please see the following guide on [how to add polyfills](../polyfilling.md).
