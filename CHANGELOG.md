@@ -4,6 +4,12 @@
 
 ### New features
 
+#### Help users navigate through pages with pagination
+
+You can now use [pagination](https://design-system.service.gov.uk/components/pagination/) to help users navigate forwards and backwards through a series of pages. For example, in search results or guidance that's divided into multiple website pages.
+
+This was added in [pull request #2610: Add pagination component](https://github.com/alphagov/govuk-frontend/pull/2610).
+
 #### Check checkboxes by using the `values` Nunjucks option
 
 When using the `govukCheckboxes` Nunjucks macro, you can now use the `values` option to indicate which checkboxes should be checked when the page loads.
@@ -44,13 +50,17 @@ We've deprecated the `govuk-header__link--service-name` class, and will remove i
 
 This change was introduced in [pull request #2617: Do not make the service name in the header a link if no `serviceUrl` is provided](https://github.com/alphagov/govuk-frontend/pull/2617).
 
-### New features
+#### File extensions added for JavaScript ES Module imports
 
-#### Help users navigate through pages with pagination
+We have updated our component ES module JavaScript to include [missing file extensions](https://nodejs.org/api/esm.html#mandatory-file-extensions) not provided in release 4.1.0. If you have received an error similar to the one below, this fix should resolve the issue.
 
-You can now use [pagination](https://design-system.service.gov.uk/components/pagination/) to help users navigate forwards and backwards through a series of pages. For example, in search results or guidance that's divided into multiple website pages.
+```
+Cannot find module '../node_modules/govuk-frontend/govuk-esm/common' imported from ../node_modules/govuk-frontend/govuk-esm/all.mjs
+```
 
-This was added in [pull request #2610: Add pagination component](https://github.com/alphagov/govuk-frontend/pull/2610).
+You should not need to make any changes if you are successfully importing our JavaScript as ES modules with version 4.1.0, but there still might be config you can remove. For example, removing `fullySpecified: false` from your Webpack config file.
+
+This change was introduced in [pull request #2658: Add missing mandatory file extensions for ESM JavaScript](https://github.com/alphagov/govuk-frontend/pull/2658)
 
 ### Fixes
 
