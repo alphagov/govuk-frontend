@@ -17,7 +17,7 @@
     and $govuk-image-url-function
     and function-exists($govuk-image-url-function);
 
-  @if ($use-custom-function) {
+  @if $use-custom-function {
     @return call(get-function($govuk-image-url-function), $filename);
   } @else {
     @return url($govuk-images-path + $filename);

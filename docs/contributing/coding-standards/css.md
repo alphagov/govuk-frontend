@@ -132,14 +132,14 @@ We use the following rules when linting files:
 
 Bad:
 ```
-.selector {border: 0; padding: 0;}
+.selector {padding: 0; border: 0;}
 ```
 
 Good:
 ```
 .selector {
-  border: 0;
   padding: 0;
+  border: 0;
 }
 ```
 
@@ -171,22 +171,6 @@ Good:
 $white: #ffffff;
 ```
 
-### Use `border: 0` not `none` to denote no border
-
-Bad:
-```
-.selector {
-  border: none;
-}
-```
-
-Good:
-```
-.selector {
-  border: 0;
-}
-```
-
 ### Avoid using ID selectors
 
 Bad:
@@ -200,6 +184,24 @@ Good:
 ```
 .govuk-wrapper {
   ...
+}
+```
+
+### Use single colons for pseudo-element selectors
+
+This is to ensure compatibility with Internet Explorer 8, which doesn't support the double colon syntax.
+
+Bad:
+```
+.selector::before {
+  content: "foo";
+}
+```
+
+Good:
+```
+.selector:before {
+  content: "foo";
 }
 ```
 
@@ -279,22 +281,45 @@ Good:
 ```
 margin: 1px 2px 3px;
 ```
-### Files should always have a final newline
 
-### Commas in lists should be followed by a space
+### Strings should always use double quotes
+
+Bad:
+```
+@import 'foo';
+
+$govuk-font-family-gds-transport: 'GDS Transport', arial, sans-serif;
+
+.bar {
+  content: 'baz';
+}
+```
+
+Good:
+```
+@import "foo";
+
+$govuk-font-family-gds-transport: "GDS Transport", arial, sans-serif;
+
+.bar {
+  content: "baz";
+}
+```
+
+### Files should always have a final newline
 
 ### The basenames of `@import`ed SCSS partials should not begin with an underscore and should not include the filename extension
 
 Bad:
 ```
-@import '_foo.scss';
-@import '_bar/foo.scss';
+@import "_foo.scss";
+@import "_bar/foo.scss";
 ```
 
 Good:
 ```
-@import 'foo';
-@import 'bar/foo';
+@import "foo";
+@import "bar/foo";
 ```
 
 ### Properties should be formatted with a single space separating the colon from the property's value
@@ -302,14 +327,46 @@ Good:
 Bad:
 ```
 .foo {
-  content:'bar';
+  content:"bar";
 }
 ```
 
 Good:
 ```
 .foo {
-  content: 'bar';
+  content: "bar";
+}
+```
+
+### `@if` statements should be written without surrounding brackets 
+
+Bad:
+```
+@if ($foo == $bar) {
+  $baz: 1;
+}
+```
+
+Good:
+```
+@if $foo == $bar {
+  $baz: 1;
+}
+```
+
+### `@if` statements comparing against `null` values should use `not`
+
+Bad:
+```
+@if $foo == null {
+  $baz: 1;
+}
+```
+
+Good:
+```
+@if not $foo {
+  $baz: 1;
 }
 ```
 
@@ -325,7 +382,7 @@ $foo: 1;
 $bar: 3;
 
 .selector {
-  margin: $foo+$bar+'px';
+  margin: $foo+$bar+"px";
 }
 
 $foo: 1+1;
@@ -335,7 +392,7 @@ $bar: 2-1;
   $baz: 1;
 }
 
-@if ($foo!=$bar) {
+@if $foo!=$bar {
   $baz: 1;
 }
 ```
@@ -350,7 +407,7 @@ $foo: 1;
 $bar: 3;
 
 .selector {
-  margin: $foo + $bar + 'px';
+  margin: $foo + $bar + "px";
 }
 
 $foo: 1 + 1;
@@ -360,26 +417,8 @@ $bar: 2 - 1;
   $baz: 1;
 }
 
-@if ($foo != $bar) {
+@if $foo != $bar {
   $baz: 1;
-}
-```
-
-### Avoid whitespace between parentheses and the arguments
-
-Bad:
-
-```
-@function foo( $bar, $baz ) {
-  @return $bar + $baz;
-}
-```
-
-Good:
-
-```
-@function foo($bar, $baz) {
-  @return $bar + $baz;
 }
 ```
 
@@ -435,7 +474,7 @@ Good:
 $my-example-var: value;
 ```
 
-### Don't write trailing zeroes for numeric values with a decimal point
+### Don't write leading or trailing zeroes for numeric values with a decimal point
 
 Bad:
 ```
@@ -455,9 +494,20 @@ Good:
 
 More write up on [supported rules](https://stylelint.io/user-guide/rules/list).
 
-##  SassDoC
+## Comments
+
+For comments, you should normally use 2 slashes (`//`) at the start of the line.
+
+If you need to include the comment in the compiled CSS, use the multi-line ('loud') comment style, which starts with `/*` and ends at the next `*/`.
+
+Wrap comments at 80 characters wherever possible.
+
+### SassDoc
+
 We document SCSS using [SassDoc](http://sassdoc.com/). This includes most of the settings, helpers and tools layers, with variables, functions and mixins being marked as private or public.
 
 The SassDoc comments are used to generate the [Sass API reference in the GOV.UK Frontend docs](https://frontend.design-system.service.gov.uk/sass-api-reference/).
+
+For SassDoc comments, use 3 slashes (`///`) at the start of the line.
 
 See [colour.scss](../../../src/govuk/helpers/_colour.scss) for an example of SassDoc syntax.

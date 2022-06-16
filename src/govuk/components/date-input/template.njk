@@ -68,7 +68,7 @@
         type: "text",
         inputmode: item.inputmode if item.inputmode else "numeric",
         autocomplete: item.autocomplete,
-        pattern: item.pattern if item.pattern else "[0-9]*",
+        pattern: item.pattern,
         attributes: item.attributes
       }) | indent(6) | trim }}
     </div>

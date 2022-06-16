@@ -10,17 +10,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Read node version from .nvmrc
-        id: nvm
-        run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
-
       - name: Setup node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
-          node-version: "${{ steps.nvm.outputs.NVMRC }}"
+          node-version-file: '.nvmrc'
 
       - name: Install dependencies
         run: npm ci
 
       - name: Run tests
-        run: npm test
+        run: node_modules/.bin/percy exec -- npm test
+        env:
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}

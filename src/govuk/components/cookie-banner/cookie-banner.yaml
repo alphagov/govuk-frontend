@@ -110,7 +110,7 @@ examples:
         - text: Your cookie preferences have been saved. You have accepted cookies.
           role: alert
           actions:
-            - text: Hide this message
+            - text: Hide cookie message
               type: button
 
   - name: rejected confirmation banner
@@ -119,7 +119,7 @@ examples:
         - text: Your cookie preferences have been saved. You have rejected cookies.
           role: alert
           actions:
-            - text: Hide this message
+            - text: Hide cookie message
               type: button
 
   - name: client-side implementation
@@ -142,13 +142,13 @@ examples:
           role: alert
           hidden: true
           actions:
-            - text: Hide this message
+            - text: Hide cookie message
               type: button
         - text: Your cookie preferences have been saved. You have rejected cookies.
           role: alert
           hidden: true
           actions:
-            - text: Hide this message
+            - text: Hide cookie message
               type: button
 
   - name: with html
@@ -305,10 +305,10 @@ examples:
         - text: Your cookie preferences have been saved. You have accepted cookies.
           role: alert
           actions:
-            - text: Hide this message
+            - text: Hide cookie message
               type: button
         - text: Your cookie preferences have been saved. You have rejected cookies.
           role: alert
           actions:
-            - text: Hide this message
+            - text: Hide cookie message
               type: button

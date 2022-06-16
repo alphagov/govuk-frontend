@@ -2,6 +2,101 @@
 
 ## Unreleased
 
+### Recommended changes
+
+#### Replace deprecated `govuk-header__link--service-name` class in the header
+
+If you're not using the Nunjucks macros, replace any instances in the header of the class `govuk-header__link--service-name` with `govuk-header__service-name`.
+
+We've deprecated the `govuk-header__link--service-name` class, and will remove it in a future major release.
+
+This change was introduced in [pull request #2617: Do not make the service name in the header a link if no `serviceUrl` is provided](https://github.com/alphagov/govuk-frontend/pull/2617).
+
+### Fixes
+
+We’ve made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#2617: Do not make the service name in the header a link if no `serviceUrl` is provided](https://github.com/alphagov/govuk-frontend/pull/2617)
+- [#2640: Add top padding to accordion section](https://github.com/alphagov/govuk-frontend/pull/2640)
+- [#2644: Allow users to use require.resolve to import GOV.UK Frontend JavaScript](https://github.com/alphagov/govuk-frontend/pull/2644)
+- [#2647: Allow users to import sass files via Webpack sass-loader](https://github.com/alphagov/govuk-frontend/pull/2647)
+- [#2659: Add missing label and legend classes to HTML fixtures](https://github.com/alphagov/govuk-frontend/pull/2659)
+
+## 4.1.0 (Feature release)
+
+### New features
+
+#### Import GOV.UK Frontend JavaScript as ECMAScript (ES) modules
+
+You can now import our component JavaScript into your service as ES modules, if you're using a bundler.
+
+This change allows you to import only the JavaScript you need, and helps reduce duplication of polyfills.
+
+Because we're shipping ES modules in addition to how we currently publish our component JavaScript, this change is backwards compatible. You will not be required to make any changes unless you want to.
+
+If you want to import using ES modules, we recommend you only use `import` to import the JavaScript for components you're using in your service. For example:
+
+```javascript
+import { SkipLink, Radios } from 'govuk-frontend'
+
+var $skipLink = document.querySelector('[data-module="govuk-skip-link"]')
+if ($skipLink) {
+  new SkipLink($skipLink).init()
+}
+
+var $radios = document.querySelectorAll('[data-module="govuk-radios]')
+if ($radios) {
+  for (var i = 0; i < $radios.length; i++) {
+    new Radios($radios[i]).init()
+  }
+}
+```
+
+If you need to import all of GOV.UK Frontend's components, then use the `initAll` function to initialise them:
+
+```javascript
+import { initAll } from 'govuk-frontend'
+initAll()
+```
+
+Depending on the bundler you use, you may also need to make changes to your JavaScript bundler configuration file. You can [read more in our installation instructions about importing JavaScript using a bundler](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#import-javascript-using-a-bundler).
+
+This was added in [pull request #2586: Publish our JavaScript as ES modules alongside Universal Module Definition (UMD)](https://github.com/alphagov/govuk-frontend/pull/2586).
+
+### Recommended changes
+
+We've recently made some non-breaking changes to GOV.UK Frontend. Implementing these changes will make your service work better.
+
+#### Remove `aria-live` from the character count component
+
+If you're not using the Nunjucks macros, remove the `aria-live` attribute from the character count message element. This element's content no longer updates, as we've moved the live counter functionality to a new element injected by JavaScript.
+
+This change was introduced in [pull request #2577: Refactor character count to inject new element](https://github.com/alphagov/govuk-frontend/pull/2577).
+
+#### Remove `pattern` from the date input component
+
+If you're not using the Nunjucks macros, remove `pattern="[0-9]*"` from each of the date input's elements.
+
+We originally added the `pattern` attribute to make numeric keypad functionality the default functionality in Safari on iOS. However, we no longer need to use it, as the `inputmode` attribute provides this functionality for newer Safari versions.
+
+This change was introduced in [pull request #2599: Remove `pattern` attribute from date input component](https://github.com/alphagov/govuk-frontend/pull/2599).
+
+### Fixes
+
+We've made the following fixes in [pull request #2577: Refactor character count to inject new element](https://github.com/alphagov/govuk-frontend/pull/2577):
+
+- fix character count message being repeated twice by screen readers
+- fix character count hint text being announced as part of the count message
+- fix multiple outdated character count messages being announced at once
+- fix character count message being announced when input length is below a defined threshold
+
+We’ve also made fixes in the following pull requests:
+
+- [#2549: Fix header with product name focus and hover state length](https://github.com/alphagov/govuk-frontend/pull/2549)
+- [#2573: Better handle cases where `$govuk-text-colour` is set to a non-colour value](https://github.com/alphagov/govuk-frontend/pull/2573)
+- [#2590: Remove `maxlength` attribute from `textarea` after character count JavaScript has been initialised](https://github.com/alphagov/govuk-frontend/pull/2590)
+- [#2615: Fix hints for disabled checkboxes or radios appearing darker than the associated labels](https://github.com/alphagov/govuk-frontend/pull/2615)
+
 ## 4.0.1 (Fix release)
 
 ### Recommended changes

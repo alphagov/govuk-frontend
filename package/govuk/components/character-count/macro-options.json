@@ -27,13 +27,13 @@
         "name": "maxlength",
         "type": "string",
         "required": true,
-        "description": "If `maxwords` is set, this is not required. The maximum number of characters. If `maxwords` is provided, the `maxlength` argument will be ignored."
+        "description": "If `maxwords` is set, this is not required. The maximum number of characters. If `maxwords` is provided, the `maxlength` option will be ignored."
     },
     {
         "name": "maxwords",
         "type": "string",
         "required": true,
-        "description": "If `maxlength` is set, this is not required. The maximum number of words. If `maxwords` is provided, the `maxlength` argument will be ignored."
+        "description": "If `maxlength` is set, this is not required. The maximum number of words. If `maxwords` is provided, the `maxlength` option will be ignored."
     },
     {
         "name": "threshold",

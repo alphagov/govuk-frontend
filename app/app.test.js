@@ -165,7 +165,7 @@ describe(`http://localhost:${PORT}`, () => {
       requestPath(templatePath, (err, res) => {
         const $ = cheerio.load(res.body)
         const $header = $('.govuk-header')
-        const $serviceName = $header.find('.govuk-header__link--service-name')
+        const $serviceName = $header.find('.govuk-header__service-name')
         expect($serviceName.html()).toContain('Nom du service')
         done(err)
       })

@@ -10,10 +10,10 @@
 /// @access public
 
 @function govuk-em($value, $context-font-size) {
-  @if (unitless($value)) {
+  @if unitless($value) {
     $value: $value * 1px;
   }
-  @if (unitless($context-font-size)) {
+  @if unitless($context-font-size) {
     $context-font-size: $context-font-size * 1px;
   }
   @return $value / $context-font-size * 1em;

@@ -11,11 +11,11 @@ params:
   - name: text
     type: string
     required: true
-    description: If `html` is set, this is not required. Text to use within the legend. If `html` is provided, the `text` argument will be ignored.
+    description: If `html` is set, this is not required. Text to use within the legend. If `html` is provided, the `text` option will be ignored.
   - name: html
     type: string
     required: true
-    description: If `text` is set, this is not required. HTML to use within the legend. If `html` is provided, the `text` argument will be ignored.
+    description: If `text` is set, this is not required. HTML to use within the legend. If `html` is provided, the `text` option will be ignored.
   - name: classes
     type: string
     required: false
@@ -50,11 +50,54 @@ examples:
   data:
     legend:
       text: What is your address?
-- name: as page heading
+- name: styled as xl text
   data:
     legend:
       text: What is your address?
       classes: govuk-fieldset__legend--xl
+- name: styled as large text
+  data:
+    legend:
+      text: What is your address?
+      classes: govuk-fieldset__legend--l
+- name: styled as medium text
+  data:
+    legend:
+      text: What is your address?
+      classes: govuk-fieldset__legend--m
+- name: styled as small text
+  data:
+    legend:
+      text: What is your address?
+      classes: govuk-fieldset__legend--s
+- name: as page heading xl
+  data:
+    legend:
+      text: What is your address?
+      classes: govuk-fieldset__legend--xl
+      isPageHeading: true
+- name: as page heading l
+  data:
+    legend:
+      text: What is your address?
+      classes: govuk-fieldset__legend--l
+      isPageHeading: true
+- name: as page heading m
+  data:
+    legend:
+      text: What is your address?
+      classes: govuk-fieldset__legend--m
+      isPageHeading: true
+- name: as page heading s
+  data:
+    legend:
+      text: What is your address?
+      classes: govuk-fieldset__legend--s
+      isPageHeading: true
+- name: as page heading without class
+  data:
+    legend:
+      text: What is your address?
       isPageHeading: true
 
 # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures

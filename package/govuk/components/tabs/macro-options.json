@@ -51,13 +51,13 @@
                         "name": "text",
                         "type": "string",
                         "required": true,
-                        "description": "If `html` is set, this is not required. Text to use within each tab panel. If `html` is provided, the `text` argument will be ignored."
+                        "description": "If `html` is set, this is not required. Text to use within each tab panel. If `html` is provided, the `text` option will be ignored."
                     },
                     {
                         "name": "html",
                         "type": "string",
                         "required": true,
-                        "description": "If `text` is set, this is not required. HTML to use within the each tab panel. If `html` is provided, the `text` argument will be ignored."
+                        "description": "If `text` is set, this is not required. HTML to use within the each tab panel. If `html` is provided, the `text` option will be ignored."
                     },
                     {
                         "name": "attributes",

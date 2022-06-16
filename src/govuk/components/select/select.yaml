@@ -114,6 +114,7 @@ examples:
       name: select-3
       label:
         text: Label text goes here
+        classes: govuk-label--l
         isPageHeading: true
       items:
         -

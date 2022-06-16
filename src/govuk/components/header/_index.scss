@@ -58,7 +58,7 @@
     position: relative;
     top: -1px;
     margin-right: 1px;
-    fill: currentColor;
+    fill: currentcolor;
     vertical-align: top;
   }
 
@@ -91,7 +91,7 @@
       text-decoration: underline;
       text-decoration-thickness: $govuk-header-link-underline-thickness;
 
-      @if ($govuk-link-underline-offset) {
+      @if $govuk-link-underline-offset {
         text-underline-offset: $govuk-link-underline-offset;
       }
     }
@@ -110,6 +110,16 @@
     margin-right: govuk-spacing(2);
     font-size: 30px; // We don't have a mixin that produces 30px font size
     line-height: 1;
+
+    @include govuk-media-query($from: tablet) {
+      display: inline;
+
+      &:focus {
+        // Replicate the focus box shadow but without the -2px y-offset of the first yellow shadow
+        // This is to stop the logo getting cut off by the box shadow when focused on above a product name
+        box-shadow: 0 0 $govuk-focus-colour;
+      }
+    }
 
     &:link,
     &:visited {
@@ -132,6 +142,9 @@
     }
   }
 
+  // The govuk-header__link--service-name class is deprecated - use
+  // govuk-header__service-name instead.
+  .govuk-header__service-name,
   .govuk-header__link--service-name {
     display: inline-block;
     margin-bottom: govuk-spacing(2);
@@ -179,7 +192,7 @@
     &:hover {
       text-decoration: solid underline $govuk-header-link-underline-thickness;
 
-      @if ($govuk-link-underline-offset) {
+      @if $govuk-link-underline-offset {
         text-underline-offset: $govuk-link-underline-offset;
       }
     }

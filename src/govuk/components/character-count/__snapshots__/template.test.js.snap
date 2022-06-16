@@ -8,7 +8,6 @@ exports[`Character count when it includes a hint renders with hint 1`] = `
 </div>
 <div id="with-hint-info"
      class="govuk-hint govuk-character-count__message"
-     aria-live="polite"
 >
   You can enter up to 10 characters
 </div>

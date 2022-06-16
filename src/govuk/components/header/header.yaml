@@ -27,11 +27,11 @@ params:
   - name: text
     type: string
     required: true
-    description: Text for the navigation item. If `html` is provided, the `text` argument will be ignored.
+    description: Text for the navigation item. If `html` is provided, the `text` option will be ignored.
   - name: html
     type: string
     required: true
-    description: HTML for the navigation item. If `html` is provided, the `text` argument will be ignored.
+    description: HTML for the navigation item. If `html` is provided, the `text` option will be ignored.
   - name: href
     type: string
     required: false
@@ -100,6 +100,10 @@ examples:
   data:
     serviceName: Service Name
     serviceUrl: '/components/header'
+
+- name: with service name but no service url
+  data:
+    serviceName: Service Name
 
 - name: with navigation
   data:

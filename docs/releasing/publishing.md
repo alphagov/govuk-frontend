@@ -3,15 +3,22 @@
 1. At stand up, person leading the release to tell the GOV.UK Design System team we are close to releasing so we can coordinate the final cutoff date. Once the cutoff date passes, do not add any further major changes to the release. We can still add small fixes before step 7 as long as we notify the content designer and technical writer. However, we should try to avoid adding too many fixes in this way, as it requires us to repeat some of steps 4-6.
 
 2. Developers to raise new issues in the team GitHub repositories ([govuk-frontend](https://github.com/alphagov/govuk-frontend), [govuk-frontend-docs](https://github.com/alphagov/govuk-frontend-docs), [govuk-prototype-kit](https://github.com/alphagov/govuk-prototype-kit)) to:
-  - create announcement draft for the new release (example card: [#2108](https://github.com/alphagov/govuk-frontend/issues/2108))
-  - create release notes for the new release (example card: [#1986](https://github.com/alphagov/govuk-frontend/issues/1986))
-  - create release notes for the new release of GOV.UK Prototype Kit (example card: [#958](https://github.com/alphagov/govuk-prototype-kit/issues/958))
-  - create a card for the new release of GOV.UK Frontend (example card: [#1987](https://github.com/alphagov/govuk-frontend/issues/1987))
-  - update the GOV.UK Design System to use the new release of GOV.UK Frontend (example card: [#1347](https://github.com/alphagov/govuk-design-system/issues/1347))
-  - create a card for the new release of GOV.UK Prototype Kit (example card: [#917](https://github.com/alphagov/govuk-prototype-kit/issues/917))
-  - update the GOV.UK Prototype Kit to use the new release (example card: [#923](https://github.com/alphagov/govuk-prototype-kit/issues/923))
+  - draft comms for the new release (example issue: [#2507](https://github.com/alphagov/govuk-frontend/issues/2507))
+  - create release notes for the new release (example issue: [#2508](https://github.com/alphagov/govuk-frontend/issues/2508))
+  - release the new version of GOV.UK Frontend to npm (example issue: [#2509](https://github.com/alphagov/govuk-frontend/issues/2509))
+  - update the GOV.UK Design System to use the new release of GOV.UK Frontend (example issue: [#2024](https://github.com/alphagov/govuk-design-system/issues/2024))
+  - update the GOV.UK Frontend Docs to use the new release of GOV.UK Frontend (example issue: [#184](https://github.com/alphagov/govuk-frontend-docs/issues/184))
+  - post the comms and do tidy-up tasks (example issue: [#2510](https://github.com/alphagov/govuk-frontend/issues/2510))
 
-3. Person leading the release to add the issues to the [Design System sprint board](https://github.com/orgs/alphagov/projects/4).
+  Once the developers have created these issues, the person leading the release should add them to an epic (example issue: [#2511](https://github.com/alphagov/govuk-frontend/issues/2511)).
+
+  You should also check with the GOV.UK Prototype Kit team to see if they'll be doing a corresponding release. If they will, then the people responsible for the Kit release will need to:
+
+  - create release notes for the new release of GOV.UK Prototype Kit (example issue: [#958](https://github.com/alphagov/govuk-prototype-kit/issues/958))
+  - create an issue for the new release of GOV.UK Prototype Kit (example issue: [#917](https://github.com/alphagov/govuk-prototype-kit/issues/917))
+  - update the GOV.UK Prototype Kit to use the new release (example issue: [#923](https://github.com/alphagov/govuk-prototype-kit/issues/923))
+
+3. Person leading the release to add the issues to the [Design System kanban board](https://github.com/orgs/alphagov/projects/4).
 
 4. Content designer to:
   - write announcements to post on Slack after we release:
@@ -71,9 +78,16 @@ Developers should pair on releases. When remote working, it can be useful to be 
 
 2. Sign in to npm (`npm login`), using the npm/govuk-patterns-and-tools team [credentials](https://github.com/alphagov/design-system-team-credentials/tree/main/npm/govuk-patterns-and-tools).
 
-3. Run `npm run publish-release`, which will prompt you to either continue or cancel. Enter `y` to continue.
+3. Run `npm run publish-release`, which will prompt you to check whether the npm tag looks as expected.
 
-4. View the created tag in the [Github interface](https://github.com/alphagov/govuk-frontend/releases) as follows:
+  If you're following these instructions, you're probably doing a sequential release, meaning
+  the tag should be 'latest'.
+
+  Enter `y` to continue. If you think the tag should be different, enter `N` to have the option to set your own npm tag.
+
+4. You will now be prompted to continue or cancel the release. Check the details and enter `y` to continue. If something does not look right, press `N` to cancel the release.
+
+5. View the created tag in the [Github interface](https://github.com/alphagov/govuk-frontend/releases) as follows:
   - select the latest tag
   - press **Create release from tag**
   - set 'GOV.UK Frontend v[version-number]' as the title
@@ -81,7 +95,7 @@ Developers should pair on releases. When remote working, it can be useful to be 
   - attach the generated ZIP that has been generated at the root of this project
   - publish release
 
-5. Run `npm logout` to log out from npm.
+6. Run `npm logout` to log out from npm.
 
 # After you publish the new release
 
@@ -95,6 +109,6 @@ Developers should pair on releases. When remote working, it can be useful to be 
   - let the team know they can post social comms
   - let stakeholders know the release is live
 
-3. Move cards on the [Design System Kanban board](https://github.com/orgs/alphagov/projects/4) from the **Ready to Release** column to **Done**.
+3. Move issues on the [Design System Kanban board](https://github.com/orgs/alphagov/projects/4) from the **Ready to Release** column to **Done**.
 
 4. Close any associated milestones.

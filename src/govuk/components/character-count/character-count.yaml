@@ -18,11 +18,11 @@ params:
 - name: maxlength
   type: string
   required: true
-  description: If `maxwords` is set, this is not required. The maximum number of characters. If `maxwords` is provided, the `maxlength` argument will be ignored.
+  description: If `maxwords` is set, this is not required. The maximum number of characters. If `maxwords` is provided, the `maxlength` option will be ignored.
 - name: maxwords
   type: string
   required: true
-  description: If `maxlength` is set, this is not required. The maximum number of words. If `maxwords` is provided, the `maxlength` argument will be ignored.
+  description: If `maxlength` is set, this is not required. The maximum number of words. If `maxwords` is provided, the `maxlength` option will be ignored.
 - name: threshold
   type: string
   required: false
@@ -135,6 +135,7 @@ examples:
       maxlength: 10
       label:
         text: Full address
+        classes: govuk-label--l
         isPageHeading: true
 
   - name: with word count
@@ -236,5 +237,15 @@ examples:
       id: user1.profile[address]
       name: address
       maxlength: 10
+      label:
+        text: Full address
+  - name: with textarea maxlength attribute
+    hidden: true
+    data:
+      id: maxlength-should-be-removed
+      name: address
+      maxlength: 10
+      attributes:
+        maxlength: 10
       label:
         text: Full address
