@@ -6,7 +6,7 @@
     {% endif %}
     {%- set statusId = idPrefix + "-" + loop.index + "-status" -%}
     <li class="govuk-task-list__item">
-      <span class="govuk-task-list__task-name">
+      <div class="govuk-task-list__task-name">
         {% if item.href %}
           <a class="govuk-link" href="{{ item.href }}" aria-describedby="{{ hintId + " " if item.hint }}{{ statusId }}">
             {{ item.title.html | safe if item.title.html else item.title.text }}
@@ -15,11 +15,11 @@
           {{ item.title.html | safe if item.title.html else item.title.text }}
           {% endif %}
         {% if item.hint %}
-          <span id="{{ hintId }}" class="govuk-task-list__hint">
+          <div id="{{ hintId }}" class="govuk-task-list__hint">
             {{ item.hint.html | safe if item.hint.html else item.hint.text }}
-          </span>
+          </div>
         {% endif %}
-      </span>
+      </div>
       <span id="{{ statusId }}" class="govuk-task-list__status {{ item.status.classes }}">
         {{ item.status.text }}
       </span>

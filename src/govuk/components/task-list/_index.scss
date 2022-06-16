@@ -33,14 +33,12 @@
   }
 
   .govuk-task-list__task-name {
-    display: block;
     @include govuk-media-query($from: 450px) {
       float: left;
     }
   }
 
   .govuk-task-list__hint {
-    display: block;
     margin-top: 5px;
     color: $govuk-secondary-text-colour;
   }
