@@ -53,12 +53,11 @@
     padding-top: 2px;
     padding-right: 4px;
     padding-bottom: 2px;
-    padding-left: 0;
+    padding-left: 4px;
     @include govuk-media-query($from: 450px) {
       margin-top: 0;
       margin-bottom: 0;
       margin-left: govuk-spacing(1);
-      padding-left: 4px;
       float: right;
     }
 
