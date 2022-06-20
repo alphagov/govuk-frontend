@@ -1,4 +1,4 @@
-import './Document'
+import './Document.mjs'
 
 (function(undefined) {
 

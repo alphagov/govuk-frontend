@@ -66,14 +66,11 @@ describe('package/', () => {
               var fileWithoutSrc = file.replace(/^src\//, '')
 
               // Account for govuk-esm folder
-              if (fileWithoutSrc.split('.').pop() === 'js') {
+              if (fileWithoutSrc.split('.').pop() === 'mjs') {
                 var esmFile = fileWithoutSrc.replace('govuk/', 'govuk-esm/')
+                var umdFile = fileWithoutSrc.replace('.mjs', '.js')
 
-                if (!esmFile.includes('vendor/')) {
-                  esmFile = esmFile.replace('.js', '.mjs')
-                }
-
-                return [fileWithoutSrc, esmFile]
+                return [umdFile, esmFile]
               } else {
                 return fileWithoutSrc
               }

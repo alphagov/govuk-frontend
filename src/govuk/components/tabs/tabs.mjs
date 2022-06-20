@@ -1,9 +1,9 @@
-import '../../vendor/polyfills/Function/prototype/bind'
-import '../../vendor/polyfills/Element/prototype/classList'
-import '../../vendor/polyfills/Element/prototype/nextElementSibling'
-import '../../vendor/polyfills/Element/prototype/previousElementSibling'
-import '../../vendor/polyfills/Event' // addEventListener and event.target normaliziation
-import { nodeListForEach } from '../../common'
+import '../../vendor/polyfills/Function/prototype/bind.mjs'
+import '../../vendor/polyfills/Element/prototype/classList.mjs'
+import '../../vendor/polyfills/Element/prototype/nextElementSibling.mjs'
+import '../../vendor/polyfills/Element/prototype/previousElementSibling.mjs'
+import '../../vendor/polyfills/Event.mjs' // addEventListener and event.target normaliziation
+import { nodeListForEach } from '../../common.mjs'
 
 function Tabs ($module) {
   this.$module = $module
