@@ -25,6 +25,7 @@ notes: >-
 {% from "select/macro.njk" import govukSelect %}
 {% from "checkboxes/macro.njk" import govukCheckboxes %}
 {% from "button/macro.njk" import govukButton %}
+{% from "pagination/macro.njk" import govukPagination %}
 
 {% set pageTitle = "Search" %}
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}
@@ -106,85 +107,85 @@ notes: >-
         <h2 class="govuk-heading-s">{{ total }} results</h2>
         <span class="subscribe-link"><a href="#" class="govuk-link govuk-body-s">Subscribe to feed</a></span>
       </div>
-        <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible govuk-!-margin-bottom-3">
-        <div class="app-search-result-sort">
-          {{ govukSelect({
-            id: "sort",
-            name: "sort",
-            classes: "app-search-result-sort",
-            label: {
-              text: "Sort by"
+      <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible govuk-!-margin-bottom-3">
+      <div class="app-search-result-sort">
+        {{ govukSelect({
+          id: "sort",
+          name: "sort",
+          classes: "app-search-result-sort",
+          label: {
+            text: "Sort by"
+          },
+          items: [
+            {
+              value: "relevance",
+              text: "Relevance"
             },
-            items: [
-              {
-                value: "relevance",
-                text: "Relevance"
-              },
-              {
-                value: "updated-new",
-                text: "Updated (newest)",
-                selected: true
-              },
-              {
-                value: "updated-old",
-                text: "Updated (oldest)"
-              }
-            ]
-          }) }}
-        </div>
-        <ul class="govuk-list app-document-list">
-            {% for document in documents %}
-                {% set document = document.document %}
-                <li>
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-2">
-                      <a class="govuk-link govuk-link--no-underline" href="https://gov.uk{{ document.link }}">
-                        {{ document.title }}
-                      </a>
-                    </h3>
-                    <p class="govuk-body-s govuk-!-margin-bottom-4">
-                        {{ document.summary }}
-                    </p>
-                    {% if document.children %}
-                      <ul class="govuk-list app-search-result-list__children">
-                        {% for child in document.children %}
-                          <li>
-                            <h4 class="govuk-heading-xs govuk-!-margin-bottom-1 govuk-!-margin-top-1">
-                              <a class="govuk-link govuk-link--no-underline" href="#">
-                                {{ child.title }}
-                              </a>
-                            </h4>
-                            <p class="govuk-body-s">
-                              {{ child.summary }}
-                            </p>
-                          </li>
+            {
+              value: "updated-new",
+              text: "Updated (newest)",
+              selected: true
+            },
+            {
+              value: "updated-old",
+              text: "Updated (oldest)"
+            }
+          ]
+        }) }}
+      </div>
+      <ul class="govuk-list app-document-list">
+          {% for document in documents %}
+              {% set document = document.document %}
+              <li>
+                  <h3 class="govuk-heading-s govuk-!-margin-bottom-2">
+                    <a class="govuk-link govuk-link--no-underline" href="https://gov.uk{{ document.link }}">
+                      {{ document.title }}
+                    </a>
+                  </h3>
+                  <p class="govuk-body-s govuk-!-margin-bottom-4">
+                      {{ document.summary }}
+                  </p>
+                  {% if document.children %}
+                    <ul class="govuk-list app-search-result-list__children">
+                      {% for child in document.children %}
+                        <li>
+                          <h4 class="govuk-heading-xs govuk-!-margin-bottom-1 govuk-!-margin-top-1">
+                            <a class="govuk-link govuk-link--no-underline" href="#">
+                              {{ child.title }}
+                            </a>
+                          </h4>
+                          <p class="govuk-body-s">
+                            {{ child.summary }}
+                          </p>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+                  {% if document.metadata %}
+                    <ul class="app-metadata-list govuk-!-padding-0">
+                        {% for data in document.metadata %}
+                            <li class="govuk-body govuk-!-font-size-16">
+                                {% if data['is_text'] %}
+                                    {{ data.value }}
+                                {% endif %}
+                                {% if data['is_date'] %}
+                                    Updated: {{ data['human_date'] }}
+                                {% endif %}
+                            </li>
                         {% endfor %}
-                      </ul>
-                    {% endif %}
-                    {% if document.metadata %}
-                      <ul class="app-metadata-list govuk-!-padding-0">
-                          {% for data in document.metadata %}
-                              <li class="govuk-body govuk-!-font-size-16">
-                                  {% if data['is_text'] %}
-                                      {{ data.value }}
-                                  {% endif %}
-                                  {% if data['is_date'] %}
-                                      Updated: {{ data['human_date'] }}
-                                  {% endif %}
-                              </li>
-                          {% endfor %}
-                      </ul>
-                    {% endif %}
-                </li>
-            {% endfor %}
-        </ul>
+                    </ul>
+                  {% endif %}
+              </li>
+          {% endfor %}
+      </ul>
 
-        <p class="govuk-body">
-        <a class="app-next-page govuk-link govuk-link--no-underline" href="#">
-          <span class="app-next-page__text govuk-!-font-weight-bold">Next page</span><br>
-          <span class="app-next-page__number govuk-!-font-size-16">2 of 2939</span>
-        </a>
-      </p>
-
+      {{ govukPagination({
+        next: {
+          text: 'Next page',
+          href: '#',
+          labelText: '2 of 2939'
+        }
+      }) }}
     </div>
   </div>
 {% endblock %}

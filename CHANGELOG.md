@@ -44,6 +44,14 @@ We've deprecated the `govuk-header__link--service-name` class, and will remove i
 
 This change was introduced in [pull request #2617: Do not make the service name in the header a link if no `serviceUrl` is provided](https://github.com/alphagov/govuk-frontend/pull/2617).
 
+### New features
+
+#### Help users navigate through pages with pagination
+
+You can now use [pagination](https://design-system.service.gov.uk/components/pagination/) to help users navigate forwards and backwards through a series of pages. For example, in search results or guidance that's divided into multiple website pages.
+
+This was added in [pull request #2610: Add pagination component](https://github.com/alphagov/govuk-frontend/pull/2610).
+
 ### Fixes
 
 We’ve made fixes to GOV.UK Frontend in the following pull requests:
