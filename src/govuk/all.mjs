@@ -19,12 +19,6 @@ function initAll (options) {
   // Defaults to the entire document if nothing is set.
   var scope = typeof options.scope !== 'undefined' ? options.scope : document
 
-  // Initialise a new I18n instance. This is used as the default instance for
-  // localisations in all components, unless a component has had a new instance
-  // manually passed to it.
-  /* eslint-disable no-new */
-  new I18n(options.i18n || {})
-
   var $buttons = scope.querySelectorAll('[data-module="govuk-button"]')
   nodeListForEach($buttons, function ($button) {
     new Button($button).init()
@@ -32,7 +26,7 @@ function initAll (options) {
 
   var $accordions = scope.querySelectorAll('[data-module="govuk-accordion"]')
   nodeListForEach($accordions, function ($accordion) {
-    new Accordion($accordion).init()
+    new Accordion($accordion, options.accordion || {}).init()
   })
 
   var $details = scope.querySelectorAll('[data-module="govuk-details"]')
@@ -42,7 +36,7 @@ function initAll (options) {
 
   var $characterCounts = scope.querySelectorAll('[data-module="govuk-character-count"]')
   nodeListForEach($characterCounts, function ($characterCount) {
-    new CharacterCount($characterCount).init()
+    new CharacterCount($characterCount, options.character_count || {}).init()
   })
 
   var $checkboxes = scope.querySelectorAll('[data-module="govuk-checkboxes"]')

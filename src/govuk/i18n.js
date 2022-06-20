@@ -1,5 +1,4 @@
 import './vendor/polyfills/Array/prototype/indexOf'
-import './vendor/polyfills/Object/keys'
 
 /**
  * i18n support initialisation function
@@ -22,61 +21,36 @@ function I18n (options) {
   // e.g. https://github.com/alphagov/govuk_publishing_components/blob/22944a9efaea3ae495a518717415694c71cfdb35/config/locales/en.yml
   this.separators = ['%{', '}']
 
-  // Flatten the list of translations
-  this.translations = options.translations ? this.flatten(options.translations) : {}
-
-  if (!I18n._instance) {
-    I18n._instance = this
-  }
+  // List of translations
+  this.translations = options.translations
 }
 
 /**
- * Static function to get the "default" (currently, always the first) instance
- * of the I18n function. If no default instance exists, a new one is created
- * with the default options.
- *
- * @static
- * @returns  { function }  - A configured instance of the I18n function.
- */
-I18n.getInstance = function () {
-  if (I18n._instance) {
-    return I18n._instance
-  }
-  return new I18n()
-}
-
-/**
- * The most used function - looks up translation strings and sorts what
- * operations to perform on them.
+ * The most used function - processes translation strings, determining which
+ * plural forms to use and running placeholder replacement.
  *
  * ALL properties passed to `options` will be exposed as options for string
- * interpolation, but only `count` and `fallback` initiate special functionality.
+ * interpolation, but only `count` initiates special functionality.
  *
  * TODO: Do we want to put string interpolation options in their own object (e.g. `options.data`) to avoid potential conflict in future?
  * TODO: Do we need some context/gendered forms support? Not sure if anything currently in Frontend necessitates this.
  *
- * @param    {string}  lookupKey         - The lookup key of the string to obtain
+ * @param    {string}  lookupKey         - The lookup key of the string to use.
  * @param    {object}  options           - Options object.
  * @param    {number}  options.count     - Number used to determine which pluralisation to use.
- * @param    {string}  options.fallback  - Fallback string to use if a string associated with the key could not be found.
- * @param    {object}  options.fallback  - Object of key-value pairs, used if pluralisation support is needed in fallback text.
- * @returns  {string}                    - The formatted, localised string.
+ * @returns  {string}                    - The formatted translation string.
  */
 I18n.prototype.t = function (lookupKey, options) {
   options = options || {}
+  var outputString = lookupKey
 
-  // As a default, use the fallback string if one exists
-  // Otherwise, return "UNDEFINED"
-  var outputString = options.fallback || 'UNDEFINED'
-
-  // If a lookupKey is given:
-  // Search the translations object for a matching key and use it
-  // Otherwise, use the fallback string
-  // Otherwise, use the lookupKey itself as the ultimate fallback
-  if (lookupKey) {
-    outputString = this.translations[lookupKey] || options.fallback || lookupKey
+  // Error if no lookup key has been provided
+  // Otherwise assign the string to our processing variable
+  if (!lookupKey) {
+    console.log(new Error('i18n lookup key missing.'))
+    return
   } else {
-    console.log(new Error('No i18n lookup key defined. Please provide a key so that this string can be localised.'))
+    outputString = this.translations[lookupKey]
   }
 
   // If the `count` option is set, determine which plural suffix is needed
@@ -89,10 +63,6 @@ I18n.prototype.t = function (lookupKey, options) {
     var pluralLookupKey = lookupKey + '_' + pluralSuffix
     if (this.translations[pluralLookupKey]) {
       outputString = this.translations[pluralLookupKey]
-    } else if (typeof options.fallback === 'object') {
-      outputString = options.fallback[pluralSuffix]
-    } else if (typeof options.fallback === 'string') {
-      outputString = options.fallback
     }
   }
 
@@ -124,47 +94,6 @@ I18n.prototype.replacePlaceholders = function (phrase, placeholderMap) {
     phrase = phrase.replace(new RegExp(this.separators[0] + key + this.separators[1], 'g'), value)
   }
   return phrase
-}
-
-/**
- * Recursively flattens nested objects, whilst maintaining the parent key name on the flattened list.
- *
- * For example, this structure:
- * {
- *   "hello": "Hello %{name}",
- *   "member_area": {
- *     "log_in": "Log in",
- *     "register": "Register account"
- *   }
- * }
- *
- * Will be flattened to this:
- * {
- *   "hello": "Hello %{name}",
- *   "member_area.log_in": "Log in",
- *   "member_area.register": "Register account"
- * }
- *
- * @param    {object} translationsObject  - A (potentially nested) object of translation key-value pairs.
- * @returns  {object}                     - A single level "flattened" object of translation key-value pairs.
- */
-I18n.prototype.flatten = function (translationsObject) {
-  var flattenedObject = {}
-  var flattenLoop = function (translations, prefix) {
-    var lookupKeys = Object.keys(translations)
-    for (var i = 0; i < lookupKeys.length; i++) {
-      var key = lookupKeys[i]
-      var phrase = translations[key]
-      var prefixedKey = prefix ? prefix + '.' + key : key
-      if (typeof phrase === 'object') {
-        flattenLoop(phrase, prefixedKey)
-      } else {
-        flattenedObject[prefixedKey] = phrase
-      }
-    }
-  }
-  flattenLoop(translationsObject)
-  return flattenedObject
 }
 
 /**

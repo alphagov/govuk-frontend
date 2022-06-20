@@ -19,12 +19,23 @@ import I18n from '../../i18n.mjs'
 import { nodeListForEach } from '../../common.mjs'
 import '../../vendor/polyfills/Function/prototype/bind.mjs'
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
+import '../../vendor/polyfills/Object/assign.mjs'
 
 function Accordion ($module, options) {
   this.$module = $module
-  this.options = options || {}
 
-  this.i18n = this.options.i18n ? new I18n(this.options.i18n) : I18n.getInstance()
+  var defaultOptions = {
+    i18n: {
+      translations: {
+        show_this_section: 'Show this section',
+        hide_this_section: 'Hide this section',
+        show_all_sections: 'Show all sections',
+        hide_all_sections: 'Hide all sections'
+      }
+    }
+  }
+  this.options = Object.assign({}, defaultOptions, options)
+  this.i18n = new I18n(this.options.i18n)
 
   this.moduleId = $module.getAttribute('id')
   this.$sections = $module.querySelectorAll('.govuk-accordion__section')
@@ -239,8 +250,8 @@ Accordion.prototype.setExpanded = function (expanded, $section) {
   var $showHideText = $section.querySelector('.' + this.sectionShowHideTextClass)
   var $button = $section.querySelector('.' + this.sectionButtonClass)
   var $newButtonText = expanded
-    ? this.i18n.t('accordion.hide_this_section', { fallback: 'Hide<span class="govuk-visually-hidden"> this section</span>' })
-    : this.i18n.t('accordion.show_this_section', { fallback: 'Show<span class="govuk-visually-hidden"> this section</span>' })
+    ? this.i18n.t('hide_this_section')
+    : this.i18n.t('show_this_section')
 
   $showHideText.innerHTML = $newButtonText
   $button.setAttribute('aria-expanded', expanded)
@@ -280,8 +291,8 @@ Accordion.prototype.updateShowAllButton = function (expanded) {
   var $showAllIcon = this.$showAllButton.querySelector('.' + this.upChevronIconClass)
   var $showAllText = this.$showAllButton.querySelector('.' + this.showAllTextClass)
   var newButtonText = expanded
-    ? this.i18n.t('accordion.hide_all_sections', { fallback: 'Hide all sections' })
-    : this.i18n.t('accordion.show_all_sections', { fallback: 'Show all sections' })
+    ? this.i18n.t('hide_all_sections')
+    : this.i18n.t('show_all_sections')
   this.$showAllButton.setAttribute('aria-expanded', expanded)
   $showAllText.innerHTML = newButtonText
 
