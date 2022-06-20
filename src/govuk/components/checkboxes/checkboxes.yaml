@@ -77,7 +77,7 @@ params:
   - name: checked
     type: boolean
     required: false
-    description: If `true`, checkbox will be checked.
+    description: Whether the checkbox should be checked when the page loads. Takes precedence over the top-level `values` option.
   - name: conditional
     type: boolean
     required: false
@@ -98,6 +98,10 @@ params:
     type: object
     required: false
     description: HTML attributes (for example data attributes) to add to the checkbox input tag.
+- name: values
+  type: array
+  required: false
+  description: Array of values for checkboxes which should be checked when the page loads. Use this as an alternative to setting the `checked` option on each individual item.
 - name: classes
   type: string
   required: false
@@ -128,6 +132,28 @@ examples:
         text: Irish
       - value: other
         text: Citizen of another country
+
+- name: with pre-checked values
+  data:
+    name: nationality
+    items:
+      - value: british
+        text: British
+      - value: irish
+        text: Irish
+      - value: other
+        text: Citizen of another country
+        conditional:
+          html: |
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="input-example">
+                Country
+              </label>
+            <input class="govuk-input" id="other-country" name="other-country" type="text" value="Ravka">
+            </div>
+    values: 
+      - british
+      - other
 
 - name: with divider and None
   data:
@@ -875,3 +901,17 @@ examples:
         text: British
       - value: irish
         text: Irish
+
+- name: item checked overrides values
+  hidden: true
+  data:
+    name: colors
+    items:
+      - value: red
+        text: Red
+      - value: green
+        text: Green
+        checked: false
+      - value: blue
+        text: Blue
+    values: [red, green]

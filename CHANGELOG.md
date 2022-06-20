@@ -2,6 +2,38 @@
 
 ## Unreleased
 
+### New features
+
+#### Check checkboxes by using the `values` Nunjucks option
+
+When using the `govukCheckboxes` Nunjucks macro, you can now use the `values` option to indicate which checkboxes should be checked when the page loads.
+
+For example, `values: ['red', 'blue']` would check any checkboxes that have a `value` of 'red' or 'blue'.
+
+This is an alternative to setting the boolean `checked` option on each individual checkbox.
+
+This change was introduced in [pull request #2616: Allow selecting options by passing current values](https://github.com/alphagov/govuk-frontend/pull/2616).
+
+#### Check a radio button by using the `value` Nunjucks option
+
+When using the `govukRadios` Nunjucks macro, you can now use the `value` option to indicate which radio should be checked when the page loads.
+
+For example, `value: 'red'` would check the radio that has a `value` of 'red'.
+
+This is an alternative to setting the boolean `checked` option on each individual radio.
+
+This change was introduced in [pull request #2616: Allow selecting options by passing current values](https://github.com/alphagov/govuk-frontend/pull/2616).
+
+#### Select an option in a select by using the `value` Nunjucks option
+
+When using the `govukSelect` Nunjucks macro, you can now use the `value` option to indicate which option should be selected when the page loads.
+
+For example, `value: 'red'` would select the option that has a `value` of 'red'.
+
+This is an alternative to setting the boolean `selected` option on each individual option.
+
+This change was introduced in [pull request #2616: Allow selecting options by passing current values](https://github.com/alphagov/govuk-frontend/pull/2616).
+
 ### Recommended changes
 
 #### Replace deprecated `govuk-header__link--service-name` class in the header
