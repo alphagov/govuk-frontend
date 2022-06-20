@@ -2,6 +2,7 @@ import I18n from '../../i18n.mjs'
 import '../../vendor/polyfills/Function/prototype/bind.mjs'
 import '../../vendor/polyfills/Event.mjs' // addEventListener and event.target normaliziation
 import '../../vendor/polyfills/Element/prototype/classList.mjs'
+import '../../vendor/polyfills/Object/assign.mjs'
 
 function CharacterCount ($module, options) {
   this.$module = $module

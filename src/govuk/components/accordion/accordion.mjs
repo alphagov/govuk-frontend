@@ -27,8 +27,8 @@ function Accordion ($module, options) {
   var defaultOptions = {
     i18n: {
       translations: {
-        show_this_section: 'Show this section',
-        hide_this_section: 'Hide this section',
+        show_this_section: 'Show<span class="govuk-visually-hidden"> this section</span>',
+        hide_this_section: 'Hide<span class="govuk-visually-hidden"> this section</span>',
         show_all_sections: 'Show all sections',
         hide_all_sections: 'Hide all sections'
       }
