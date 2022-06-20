@@ -7,7 +7,22 @@ function CharacterCount ($module, options) {
   this.$module = $module
   this.options = options || {}
 
-  this.i18n = this.options.i18n ? new I18n(this.options.i18n) : I18n.getInstance()
+  var defaultOptions = {
+    i18n: {
+      translations: {
+        characters_under_limit_one: 'You have %{count} character remaining',
+        characters_under_limit_other: 'You have %{count} characters remaining',
+        characters_over_limit_one: 'You have %{count} character too many',
+        characters_over_limit_other: 'You have %{count} characters too many',
+        words_under_limit_one: 'You have %{count} word remaining',
+        words_under_limit_other: 'You have %{count} words remaining',
+        words_over_limit_one: 'You have %{count} word too many',
+        words_over_limit_other: 'You have %{count} words too many'
+      }
+    }
+  }
+  this.options = Object.assign({}, defaultOptions, options)
+  this.i18n = new I18n(this.options.i18n)
 
   this.$textarea = $module.querySelector('.govuk-js-character-count')
   this.$visibleCountMessage = null
@@ -198,35 +213,19 @@ CharacterCount.prototype.formattedUpdateMessage = function () {
   var remainingNumber = this.maxLength - this.count($textarea.value)
 
   if (options.maxwords && remainingNumber < 0) {
-    return this.i18n.t('character_count.words_over_limit', {
-      fallback: {
-        one: 'You have %{count} word too many',
-        other: 'You have %{count} words too many'
-      },
+    return this.i18n.t('words_over_limit', {
       count: Math.abs(remainingNumber)
     })
   } else if (options.maxwords) {
-    return this.i18n.t('character_count.words_under_limit', {
-      fallback: {
-        one: 'You have %{count} word remaining',
-        other: 'You have %{count} words remaining'
-      },
+    return this.i18n.t('words_under_limit', {
       count: remainingNumber
     })
   } else if (remainingNumber < 0) {
-    return this.i18n.t('character_count.characters_over_limit', {
-      fallback: {
-        one: 'You have %{count} character too many',
-        other: 'You have %{count} characters too many'
-      },
+    return this.i18n.t('characters_over_limit', {
       count: Math.abs(remainingNumber)
     })
   } else {
-    return this.i18n.t('character_count.characters_under_limit', {
-      fallback: {
-        one: 'You have %{count} character remaining',
-        other: 'You have %{count} characters remaining'
-      },
+    return this.i18n.t('characters_under_limit', {
       count: remainingNumber
     })
   }
