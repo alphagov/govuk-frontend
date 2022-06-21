@@ -1,5 +1,5 @@
-import './vendor/polyfills/Array/prototype/indexOf'
-import './vendor/polyfills/Object/keys'
+import './vendor/polyfills/Array/prototype/indexOf.mjs'
+import './vendor/polyfills/Object/keys.mjs'
 
 /**
  * i18n support initialisation function
