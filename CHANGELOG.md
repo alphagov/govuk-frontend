@@ -1,6 +1,6 @@
 # Changelog
 
-## 4.2.0 (Feature release)
+## Unreleased
 
 ### New features
 
