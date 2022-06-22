@@ -72,7 +72,6 @@ We’ve made fixes to GOV.UK Frontend in the following pull requests:
 - [#2647: Allow users to import sass files via Webpack `sass-loader`](https://github.com/alphagov/govuk-frontend/pull/2647) - thanks to @Garethp for reporting this issue, and to @Garethp and @richpjames for testing the fix
 - [#2659: Add missing label and legend classes to HTML fixtures](https://github.com/alphagov/govuk-frontend/pull/2659)
 
-
 ## 4.1.0 (Feature release)
 
 ### New features
