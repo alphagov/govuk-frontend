@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 4.2.0 (Feature release)
 
 ### New features
 
@@ -12,31 +12,31 @@ This was added in [pull request #2610: Add pagination component](https://github.
 
 #### Check checkboxes by using the `values` Nunjucks option
 
-When using the `govukCheckboxes` Nunjucks macro, you can now use the `values` option to indicate which checkboxes should be checked when the page loads.
+When using the `govukCheckboxes` Nunjucks macro, you can now use the `values` option to determine which checkboxes should already be checked when the page loads.
 
 For example, `values: ['red', 'blue']` would check any checkboxes that have a `value` of 'red' or 'blue'.
 
-This is an alternative to setting the boolean `checked` option on each individual checkbox.
+You can use this option instead of setting the boolean `checked` option on each individual checkbox.
 
 This change was introduced in [pull request #2616: Allow selecting options by passing current values](https://github.com/alphagov/govuk-frontend/pull/2616).
 
 #### Check a radio button by using the `value` Nunjucks option
 
-When using the `govukRadios` Nunjucks macro, you can now use the `value` option to indicate which radio should be checked when the page loads.
+When using the `govukRadios` Nunjucks macro, you can now use the `value` option to determine which radio should already be checked when the page loads.
 
 For example, `value: 'red'` would check the radio that has a `value` of 'red'.
 
-This is an alternative to setting the boolean `checked` option on each individual radio.
+You can use this option instead of setting the boolean `checked` option on each individual radio.
 
 This change was introduced in [pull request #2616: Allow selecting options by passing current values](https://github.com/alphagov/govuk-frontend/pull/2616).
 
 #### Select an option in a select by using the `value` Nunjucks option
 
-When using the `govukSelect` Nunjucks macro, you can now use the `value` option to indicate which option should be selected when the page loads.
+When using the `govukSelect` Nunjucks macro, you can now use the `value` option to determine which option should already be selected when the page loads.
 
 For example, `value: 'red'` would select the option that has a `value` of 'red'.
 
-This is an alternative to setting the boolean `selected` option on each individual option.
+You can use this option instead of setting the boolean `selected` option on each individual option.
 
 This change was introduced in [pull request #2616: Allow selecting options by passing current values](https://github.com/alphagov/govuk-frontend/pull/2616).
 
@@ -44,7 +44,7 @@ This change was introduced in [pull request #2616: Allow selecting options by pa
 
 #### Replace deprecated `govuk-header__link--service-name` class in the header
 
-If you're not using the Nunjucks macros, replace any instances in the header of the class `govuk-header__link--service-name` with `govuk-header__service-name`.
+If you're not using the Nunjucks macros in the header, replace any instances of the class `govuk-header__link--service-name` with `govuk-header__service-name`.
 
 We've deprecated the `govuk-header__link--service-name` class, and will remove it in a future major release.
 
@@ -52,7 +52,7 @@ This change was introduced in [pull request #2617: Do not make the service name 
 
 #### File extensions added for JavaScript ES Module imports
 
-We have updated our component ES module JavaScript to include [missing file extensions](https://nodejs.org/api/esm.html#mandatory-file-extensions) not provided in release 4.1.0. If you have received an error similar to the one below, this fix should resolve the issue.
+We have updated our component ES module JavaScript to include [missing file extensions](https://nodejs.org/api/esm.html#mandatory-file-extensions) not provided in release 4.1.0. If you have received an error similar to the following, for example when running or building your application, this fix should resolve the issue.
 
 ```
 Cannot find module '../node_modules/govuk-frontend/govuk-esm/common' imported from ../node_modules/govuk-frontend/govuk-esm/all.mjs
@@ -60,7 +60,7 @@ Cannot find module '../node_modules/govuk-frontend/govuk-esm/common' imported fr
 
 You should not need to make any changes if you are successfully importing our JavaScript as ES modules with version 4.1.0, but there still might be config you can remove. For example, removing `fullySpecified: false` from your Webpack config file.
 
-This change was introduced in [pull request #2658: Add missing mandatory file extensions for ESM JavaScript](https://github.com/alphagov/govuk-frontend/pull/2658)
+This change was introduced in [pull request #2658: Add missing mandatory file extensions for ESM JavaScript](https://github.com/alphagov/govuk-frontend/pull/2658). Thanks to @colinrotheram for reporting issues and suggesting and testing fixes.
 
 ### Fixes
 
@@ -68,9 +68,10 @@ We’ve made fixes to GOV.UK Frontend in the following pull requests:
 
 - [#2617: Do not make the service name in the header a link if no `serviceUrl` is provided](https://github.com/alphagov/govuk-frontend/pull/2617)
 - [#2640: Add top padding to accordion section](https://github.com/alphagov/govuk-frontend/pull/2640)
-- [#2644: Allow users to use require.resolve to import GOV.UK Frontend JavaScript](https://github.com/alphagov/govuk-frontend/pull/2644)
-- [#2647: Allow users to import sass files via Webpack sass-loader](https://github.com/alphagov/govuk-frontend/pull/2647)
+- [#2644: Allow users to use `require.resolve` to import GOV.UK Frontend JavaScript](https://github.com/alphagov/govuk-frontend/pull/2644) - thanks to @HughePaul for reporting this issue and testing the fix
+- [#2647: Allow users to import sass files via Webpack `sass-loader`](https://github.com/alphagov/govuk-frontend/pull/2647) - thanks to @Garethp for reporting this issue, and to @Garethp and @richpjames for testing the fix
 - [#2659: Add missing label and legend classes to HTML fixtures](https://github.com/alphagov/govuk-frontend/pull/2659)
+
 
 ## 4.1.0 (Feature release)
 
