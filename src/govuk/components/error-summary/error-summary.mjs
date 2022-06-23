@@ -16,11 +16,6 @@ ErrorSummary.prototype.init = function () {
   $module.addEventListener('click', this.handleClick.bind(this))
 }
 
-// TODO Delete this - only for testing unit testing set-up is working
-ErrorSummary.prototype.sum = function () {
-  return 1 + 2
-}
-
 /**
  * Focus the error summary
  */
