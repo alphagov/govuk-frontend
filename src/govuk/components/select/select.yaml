@@ -92,6 +92,13 @@ examples:
           value: 3
           text: GOV.UK frontend option 3
           disabled: true
+  - name: with no items
+    data:
+      id: select-1
+      name: select-1
+      label:
+        text: Horse with no name
+      items: []
   - name: with selected value
     data:
       id: select-1
