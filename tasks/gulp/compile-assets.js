@@ -21,7 +21,7 @@ const cssnano = require('cssnano')
 const postcsspseudoclasses = require('postcss-pseudo-classes')({
   // Work around a bug in pseudo classes plugin that badly transforms
   // :not(:whatever) pseudo selectors
-  blacklist: [':not(', ':disabled)', ':last-child)', ':focus)', ':active)', ':hover)']
+  blacklist: [':not(', ':disabled)', ':first-child)', ':last-child)', ':focus)', ':active)', ':hover)']
 })
 
 // Compile CSS and JS task --------------
