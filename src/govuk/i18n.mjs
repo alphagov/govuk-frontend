@@ -1,4 +1,4 @@
-import './vendor/polyfills/Array/prototype/indexOf'
+import './vendor/polyfills/Array/prototype/indexOf.mjs'
 
 /**
  * i18n support initialisation function
